@@ -4,48 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C692AC10F1A
-	for <linux-rockchip@archiver.kernel.org>; Tue,  7 May 2024 13:21:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4EF14C25B4F
+	for <linux-rockchip@archiver.kernel.org>; Tue,  7 May 2024 13:21:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=lOwI1Bb2KIuQINsU0g/fOn5JAEyIt6dBsKPROlCy0Lc=; b=4C+X9bsX8xd1yq
-	v2ZDJP669uvcCQoPbpdjEQjmWWeub/uWjO686aOLijIB/vMxvVhUla17RAVjfWDIqPmfXqUXJW4ZK
-	kjIW8ZsB4MsiuBm66OmsbSZLaEXv3cbdcHOS9Yj+uoQZLKakNfP1zyS33axLyJan76+WtfW6zzru1
-	pNevQTMJh6jCPYk/JLsjwx3ov+Il/E4cX8bp9y9GJc4RiWUTa5q5cKRsDZx7/IdPf1HVIXsSc+qqa
-	GqcEYrUVY/lv2iOIfBS9F7GgeLIOzMPAHA4L/oMTaZFGI0wKIk4XacqpK0XBFMyC10p3SDzh87xyx
-	CnYIknUD0zXan4Lhg6Qw==;
+	List-Owner; bh=KxlIewo3NWEwSmAO9nOgMOKEmi/R/REysia9PFerryA=; b=NKtjBLHVOWdQZX
+	Z5NEBy41k2bDlubZCGa/is0uKqCsJcqohDfpjr2RnTLmZYTvVEGw2LWNrBFHaS4jNamB8QHcIjsHo
+	JqvvwAvtvxy4Kep06mLhmcpdwyRuwXVcgrpcXKjUnjmBr+hvxRvUGxUeeWqJKaoqMmrXYVIBTFfZh
+	ZHIV4gRaKnf3EqFDNV1QESI6bZXmfrxNHvk7HdhX400O8Bz2OAAEhGdp+c8a0Dk+wtXsnIDmfM2Eh
+	+3QXb3euvzOsOHnEbeh1KWnouoNM913fDQECy1NLlw+2mU6xOZj2pU6U8h193UwSv6MyxUvOjQHUg
+	h0dTIXPrd4ynSUMtno+Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s4Kkm-0000000BBf7-2wr1;
-	Tue, 07 May 2024 13:21:09 +0000
+	id 1s4Kky-0000000BBpF-28AL;
+	Tue, 07 May 2024 13:21:20 +0000
 Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s4KiU-0000000B9le-28aD;
-	Tue, 07 May 2024 13:18:53 +0000
+	id 1s4Kid-0000000B9le-0gyZ;
+	Tue, 07 May 2024 13:19:02 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 443E361794;
-	Tue,  7 May 2024 13:18:46 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B6CBAC4AF66;
-	Tue,  7 May 2024 13:18:45 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id D7BCB61773;
+	Tue,  7 May 2024 13:18:54 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3C5FBC2BBFC;
+	Tue,  7 May 2024 13:18:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1715087926;
-	bh=5SC8jBSEzHmgckW1BacEcaTXRBSM2iUEZbvY/yF9KWs=;
+	s=k20201202; t=1715087934;
+	bh=mxuD7pT2tlDQ0zzNZkqWfj36MC0sF3/2cyZNsO+d0UQ=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=M1cgbs1xsswHihdBh4A+Hu8loIKHp5QQl7S45vJ1oM1nnNChjAcp8AkWlW+n1Eraq
-	 5DIQBe2e+gaC1RaHlOnWvJmfuE/edIo4G0UMc9A/5lilm5XE+Vpmv6JgjGb6XdDFVl
-	 p/4bIrtE9gUXe4oz5rJbinII2wPkx3D/4d3Gby2H0Y789dFksJ1ZM/sdSAb/JmMeZE
-	 0Wz17jjc4ZCJZaUct+7mQcxIk7c84bdBuiukr3j96DqBe0BZSc5EZfBINEUUIVmBiv
-	 Z2vgeXdaivP3VDT26vD5DZsnQvQI/BjJN+pfsACoGIjyDZdnSN8x5k2wQze2yk4GHF
-	 GOfpLL3j94xWQ==
+	b=C7Skz4oWmm7q6tad0dSn62GOGTbg4unvNaJjxDdz2rBEV0wH/V9C3VBGle8OxXlPc
+	 YT3dFbDZD5V7apomiZ6JcF5leIFhtV9mBvsA0NsAxcudAMLiZTECdquX4KN08vnTlP
+	 oXJTWOpBnHYqozJ9Zy7xDdS0oJWZntx61iMZE2FnzGmghE53K3DSBGSHgtZnrYbZGk
+	 LSDL1Cddos0jHHTEoiI8LhwdZhS9TmdfPW0fR64mXxgKQHzQsKo5JWFo5fifdEx1Jp
+	 fGoOfAC8JKaYulPoDHt496GVfhbnosb++zyo4yulmV+6Fuj5hdSGTukjna8svQUdxb
+	 RdIGJW6PFTJlA==
 From: Maxime Ripard <mripard@kernel.org>
-Date: Tue, 07 May 2024 15:17:40 +0200
-Subject: [PATCH v13 22/28] drm/tests: Add infoframes test
+Date: Tue, 07 May 2024 15:17:43 +0200
+Subject: [PATCH v13 25/28] drm/vc4: tests: Remove vc4_dummy_plane structure
 MIME-Version: 1.0
-Message-Id: <20240507-kms-hdmi-connector-state-v13-22-8fafc5efe8be@kernel.org>
+Message-Id: <20240507-kms-hdmi-connector-state-v13-25-8fafc5efe8be@kernel.org>
 References: <20240507-kms-hdmi-connector-state-v13-0-8fafc5efe8be@kernel.org>
 In-Reply-To: <20240507-kms-hdmi-connector-state-v13-0-8fafc5efe8be@kernel.org>
 To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
@@ -61,19 +61,20 @@ Cc: Hans Verkuil <hverkuil@xs4all.nl>,
  dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, 
  linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org, 
  linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
- linux-sunxi@lists.linux.dev, Maxime Ripard <mripard@kernel.org>
+ linux-sunxi@lists.linux.dev, Maxime Ripard <mripard@kernel.org>, 
+ =?utf-8?q?Ma=C3=ADra_Canal?= <mcanal@igalia.com>
 X-Mailer: b4 0.13.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=8730; i=mripard@kernel.org;
- h=from:subject:message-id; bh=5SC8jBSEzHmgckW1BacEcaTXRBSM2iUEZbvY/yF9KWs=;
- b=owGbwMvMwCmsHn9OcpHtvjLG02pJDGlWmh8Zm6bFJLPWZC0/4SItaLrH8q5sutYJ4fvbas5GO
- 6qbvp3ZMZWFQZiTQVZMkeWJTNjp5e2LqxzsV/6AmcPKBDKEgYtTACZSsoix4faVO//1+8pUH6dp
- fbt3/8WMg7ten5ZeOy/m4tprr0rP6BT/8FmnWytRsOLW2l2Sp3lv9jDWxyw0C+5/7On9N3/++bo
- 9u9b4rDik889uR+Ol7BNTfL8V5Dtd5NHs6N1SEzb3hMcaYU8pAA==
+X-Developer-Signature: v=1; a=openpgp-sha256; l=3744; i=mripard@kernel.org;
+ h=from:subject:message-id; bh=mxuD7pT2tlDQ0zzNZkqWfj36MC0sF3/2cyZNsO+d0UQ=;
+ b=owGbwMvMwCmsHn9OcpHtvjLG02pJDGlWmp+8lCerRpqt2XrQgSm2xTAv+R1zrm7Q9rA/i199N
+ 99a4zCpYyoLgzAng6yYIssTmbDTy9sXVznYr/wBM4eVCWQIAxenAEwkcCZjnT3Xx03q7yPWG9+w
+ KbrE9nzF/jkpiZpNj8T2H3zItPjE39oo0zM8ksUvdt5891vjQveh94wNc2YJJfnJnUu7tfNJsqd
+ oLOudumW5F7SD1WYwyLPPM3JXqtrb37IzUqic/cH6rsU1mpwA
 X-Developer-Key: i=mripard@kernel.org; a=openpgp;
  fpr=BE5675C37E818C8B5764241C254BCFC56BF6CE8D
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240507_061847_015664_F69EA6E1 
-X-CRM114-Status: GOOD (  12.05  )
+X-CRM114-CacheID: sfid-20240507_061855_697817_6026935C 
+X-CRM114-Status: GOOD (  13.46  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,271 +86,75 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The previous patch added the generation of the infoframes matching an
-HDMI connector state. Let's add a few tests to make sure it works as
-expected.
-
-Signed-off-by: Maxime Ripard <mripard@kernel.org>
----
- drivers/gpu/drm/tests/drm_connector_test.c | 219 +++++++++++++++++++++++++++++
- 1 file changed, 219 insertions(+)
-
-diff --git a/drivers/gpu/drm/tests/drm_connector_test.c b/drivers/gpu/drm/tests/drm_connector_test.c
-index 4e3c2c7dfaf2..9ea228266de2 100644
---- a/drivers/gpu/drm/tests/drm_connector_test.c
-+++ b/drivers/gpu/drm/tests/drm_connector_test.c
-@@ -219,10 +219,221 @@ static void drm_test_connector_hdmi_init_null_ddc(struct kunit *test)
- 				       BIT(HDMI_COLORSPACE_RGB),
- 				       8);
- 	KUNIT_EXPECT_EQ(test, ret, 0);
- }
- 
-+/*
-+ * Test that the registration of an HDMI connector with a NULL vendor
-+ * fails.
-+ */
-+static void drm_test_connector_hdmi_init_null_vendor(struct kunit *test)
-+{
-+	struct drm_connector_init_priv *priv = test->priv;
-+	int ret;
-+
-+	ret = drmm_connector_hdmi_init(&priv->drm, &priv->connector,
-+				       NULL, "Product",
-+				       &dummy_funcs,
-+				       &dummy_hdmi_funcs,
-+				       DRM_MODE_CONNECTOR_HDMIA,
-+				       &priv->ddc,
-+				       BIT(HDMI_COLORSPACE_RGB),
-+				       8);
-+	KUNIT_EXPECT_LT(test, ret, 0);
-+}
-+
-+/*
-+ * Test that the registration of an HDMI connector with a NULL product
-+ * fails.
-+ */
-+static void drm_test_connector_hdmi_init_null_product(struct kunit *test)
-+{
-+	struct drm_connector_init_priv *priv = test->priv;
-+	int ret;
-+
-+	ret = drmm_connector_hdmi_init(&priv->drm, &priv->connector,
-+				       "Vendor", NULL,
-+				       &dummy_funcs,
-+				       &dummy_hdmi_funcs,
-+				       DRM_MODE_CONNECTOR_HDMIA,
-+				       &priv->ddc,
-+				       BIT(HDMI_COLORSPACE_RGB),
-+				       8);
-+	KUNIT_EXPECT_LT(test, ret, 0);
-+}
-+
-+/*
-+ * Test that the registration of a connector with a valid, shorter than
-+ * the max length, product name succeeds, and is stored padded with 0.
-+ */
-+static void drm_test_connector_hdmi_init_product_valid(struct kunit *test)
-+{
-+	struct drm_connector_init_priv *priv = test->priv;
-+	const unsigned char expected_product[DRM_CONNECTOR_HDMI_PRODUCT_LEN] = {
-+		'P', 'r', 'o', 'd',
-+	};
-+	const char *product_name = "Prod";
-+	int ret;
-+
-+	KUNIT_ASSERT_LT(test, strlen(product_name), DRM_CONNECTOR_HDMI_PRODUCT_LEN);
-+
-+	ret = drmm_connector_hdmi_init(&priv->drm, &priv->connector,
-+				       "Vendor", product_name,
-+				       &dummy_funcs,
-+				       &dummy_hdmi_funcs,
-+				       DRM_MODE_CONNECTOR_HDMIA,
-+				       &priv->ddc,
-+				       BIT(HDMI_COLORSPACE_RGB),
-+				       8);
-+	KUNIT_EXPECT_EQ(test, ret, 0);
-+	KUNIT_EXPECT_MEMEQ(test,
-+			   priv->connector.hdmi.product,
-+			   expected_product,
-+			   sizeof(priv->connector.hdmi.product));
-+}
-+
-+/*
-+ * Test that the registration of a connector with a valid, at max
-+ * length, product name succeeds, and is stored padded without any
-+ * trailing \0.
-+ */
-+static void drm_test_connector_hdmi_init_product_length_exact(struct kunit *test)
-+{
-+	struct drm_connector_init_priv *priv = test->priv;
-+	const unsigned char expected_product[DRM_CONNECTOR_HDMI_PRODUCT_LEN] = {
-+		'P', 'r', 'o', 'd', 'u', 'c', 't',
-+		'P', 'r', 'o', 'd', 'u', 'c', 't',
-+		'P', 'r',
-+	};
-+	const char *product_name = "ProductProductPr";
-+	int ret;
-+
-+	KUNIT_ASSERT_EQ(test, strlen(product_name), DRM_CONNECTOR_HDMI_PRODUCT_LEN);
-+
-+	ret = drmm_connector_hdmi_init(&priv->drm, &priv->connector,
-+				       "Vendor", product_name,
-+				       &dummy_funcs,
-+				       &dummy_hdmi_funcs,
-+				       DRM_MODE_CONNECTOR_HDMIA,
-+				       &priv->ddc,
-+				       BIT(HDMI_COLORSPACE_RGB),
-+				       8);
-+	KUNIT_EXPECT_EQ(test, ret, 0);
-+	KUNIT_EXPECT_MEMEQ(test,
-+			   priv->connector.hdmi.product,
-+			   expected_product,
-+			   sizeof(priv->connector.hdmi.product));
-+}
-+
-+/*
-+ * Test that the registration of a connector with a product name larger
-+ * than the maximum length fails.
-+ */
-+static void drm_test_connector_hdmi_init_product_length_too_long(struct kunit *test)
-+{
-+	struct drm_connector_init_priv *priv = test->priv;
-+	const char *product_name = "ProductProductProduct";
-+	int ret;
-+
-+	KUNIT_ASSERT_GT(test, strlen(product_name), DRM_CONNECTOR_HDMI_PRODUCT_LEN);
-+
-+	ret = drmm_connector_hdmi_init(&priv->drm, &priv->connector,
-+				       "Vendor", product_name,
-+				       &dummy_funcs,
-+				       &dummy_hdmi_funcs,
-+				       DRM_MODE_CONNECTOR_HDMIA,
-+				       &priv->ddc,
-+				       BIT(HDMI_COLORSPACE_RGB),
-+				       8);
-+	KUNIT_EXPECT_LT(test, ret, 0);
-+}
-+
-+/*
-+ * Test that the registration of a connector with a vendor name smaller
-+ * than the maximum length succeeds, and is stored padded with zeros.
-+ */
-+static void drm_test_connector_hdmi_init_vendor_valid(struct kunit *test)
-+{
-+	struct drm_connector_init_priv *priv = test->priv;
-+	const char expected_vendor[DRM_CONNECTOR_HDMI_VENDOR_LEN] = {
-+		'V', 'e', 'n', 'd',
-+	};
-+	const char *vendor_name = "Vend";
-+	int ret;
-+
-+	KUNIT_ASSERT_LT(test, strlen(vendor_name), DRM_CONNECTOR_HDMI_VENDOR_LEN);
-+
-+	ret = drmm_connector_hdmi_init(&priv->drm, &priv->connector,
-+				       vendor_name, "Product",
-+				       &dummy_funcs,
-+				       &dummy_hdmi_funcs,
-+				       DRM_MODE_CONNECTOR_HDMIA,
-+				       &priv->ddc,
-+				       BIT(HDMI_COLORSPACE_RGB),
-+				       8);
-+	KUNIT_EXPECT_EQ(test, ret, 0);
-+	KUNIT_EXPECT_MEMEQ(test,
-+			   priv->connector.hdmi.vendor,
-+			   expected_vendor,
-+			   sizeof(priv->connector.hdmi.vendor));
-+}
-+
-+/*
-+ * Test that the registration of a connector with a vendor name at the
-+ * maximum length succeeds, and is stored padded without the trailing
-+ * zero.
-+ */
-+static void drm_test_connector_hdmi_init_vendor_length_exact(struct kunit *test)
-+{
-+	struct drm_connector_init_priv *priv = test->priv;
-+	const char expected_vendor[DRM_CONNECTOR_HDMI_VENDOR_LEN] = {
-+		'V', 'e', 'n', 'd', 'o', 'r',
-+		'V', 'e',
-+	};
-+	const char *vendor_name = "VendorVe";
-+	int ret;
-+
-+	KUNIT_ASSERT_EQ(test, strlen(vendor_name), DRM_CONNECTOR_HDMI_VENDOR_LEN);
-+
-+	ret = drmm_connector_hdmi_init(&priv->drm, &priv->connector,
-+				       vendor_name, "Product",
-+				       &dummy_funcs,
-+				       &dummy_hdmi_funcs,
-+				       DRM_MODE_CONNECTOR_HDMIA,
-+				       &priv->ddc,
-+				       BIT(HDMI_COLORSPACE_RGB),
-+				       8);
-+	KUNIT_EXPECT_EQ(test, ret, 0);
-+	KUNIT_EXPECT_MEMEQ(test,
-+			   priv->connector.hdmi.vendor,
-+			   expected_vendor,
-+			   sizeof(priv->connector.hdmi.vendor));
-+}
-+
-+/*
-+ * Test that the registration of a connector with a vendor name larger
-+ * than the maximum length fails.
-+ */
-+static void drm_test_connector_hdmi_init_vendor_length_too_long(struct kunit *test)
-+{
-+	struct drm_connector_init_priv *priv = test->priv;
-+	const char *vendor_name = "VendorVendor";
-+	int ret;
-+
-+	KUNIT_ASSERT_GT(test, strlen(vendor_name), DRM_CONNECTOR_HDMI_VENDOR_LEN);
-+
-+	ret = drmm_connector_hdmi_init(&priv->drm, &priv->connector,
-+				       vendor_name, "Product",
-+				       &dummy_funcs,
-+				       &dummy_hdmi_funcs,
-+				       DRM_MODE_CONNECTOR_HDMIA,
-+				       &priv->ddc,
-+				       BIT(HDMI_COLORSPACE_RGB),
-+				       8);
-+	KUNIT_EXPECT_LT(test, ret, 0);
-+}
-+
- /*
-  * Test that the registration of a connector with an invalid maximum bpc
-  * count fails.
-  */
- static void drm_test_connector_hdmi_init_bpc_invalid(struct kunit *test)
-@@ -499,10 +710,18 @@ static struct kunit_case drmm_connector_hdmi_init_tests[] = {
- 	KUNIT_CASE(drm_test_connector_hdmi_init_bpc_invalid),
- 	KUNIT_CASE(drm_test_connector_hdmi_init_bpc_null),
- 	KUNIT_CASE(drm_test_connector_hdmi_init_formats_empty),
- 	KUNIT_CASE(drm_test_connector_hdmi_init_formats_no_rgb),
- 	KUNIT_CASE(drm_test_connector_hdmi_init_null_ddc),
-+	KUNIT_CASE(drm_test_connector_hdmi_init_null_product),
-+	KUNIT_CASE(drm_test_connector_hdmi_init_null_vendor),
-+	KUNIT_CASE(drm_test_connector_hdmi_init_product_length_exact),
-+	KUNIT_CASE(drm_test_connector_hdmi_init_product_length_too_long),
-+	KUNIT_CASE(drm_test_connector_hdmi_init_product_valid),
-+	KUNIT_CASE(drm_test_connector_hdmi_init_vendor_length_exact),
-+	KUNIT_CASE(drm_test_connector_hdmi_init_vendor_length_too_long),
-+	KUNIT_CASE(drm_test_connector_hdmi_init_vendor_valid),
- 	KUNIT_CASE_PARAM(drm_test_connector_hdmi_init_type_valid,
- 			 drm_connector_hdmi_init_type_valid_gen_params),
- 	KUNIT_CASE_PARAM(drm_test_connector_hdmi_init_type_invalid,
- 			 drm_connector_hdmi_init_type_invalid_gen_params),
- 	{ }
-
--- 
-2.45.0
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+VGhlIHZjNF9kdW1teV9wbGFuZSBzdHJ1Y3R1cmUgd2FzIGludHJvZHVjZWQgYXMgYSBtZWFuIHRv
+IGFkZAptb2NrLXNwZWNpZmljIGZpZWxkcy4KCkhvd2V2ZXIsIHdlIG5ldmVyIHJlYWxseSB1c2Vk
+IGl0IGFuZCBpdCdzIHN0aWxsIHN0cmljdGx5IGVxdWl2YWxlbnQgdG8KdmM0X3BsYW5lICh3aGlj
+aCBpcyBpbiB0aGUgc2FtZSBzaXR1YXRpb24gdnMgZHJtX3BsYW5lKSwgc28gd2UgY2FuCnNpbXBs
+eSByZW1vdmUgdGhlIHZjNF9kdW1teV9wbGFuZSBzdHJ1Y3R1cmUgYW5kIG1ha2UgdGhlIG1vY2sg
+Y29kZQpjbGVhbmVyLgoKUmV2aWV3ZWQtYnk6IE1hw61yYSBDYW5hbCA8bWNhbmFsQGlnYWxpYS5j
+b20+ClNpZ25lZC1vZmYtYnk6IE1heGltZSBSaXBhcmQgPG1yaXBhcmRAa2VybmVsLm9yZz4KLS0t
+CiBkcml2ZXJzL2dwdS9kcm0vdmM0L3Rlc3RzL3ZjNF9tb2NrLmMgICAgICAgfCAgNiArKy0tLS0K
+IGRyaXZlcnMvZ3B1L2RybS92YzQvdGVzdHMvdmM0X21vY2suaCAgICAgICB8ICA5ICsrLS0tLS0t
+LQogZHJpdmVycy9ncHUvZHJtL3ZjNC90ZXN0cy92YzRfbW9ja19wbGFuZS5jIHwgMTQgKysrKyst
+LS0tLS0tLS0KIDMgZmlsZXMgY2hhbmdlZCwgOSBpbnNlcnRpb25zKCspLCAyMCBkZWxldGlvbnMo
+LSkKCmRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vdmM0L3Rlc3RzL3ZjNF9tb2NrLmMgYi9k
+cml2ZXJzL2dwdS9kcm0vdmM0L3Rlc3RzL3ZjNF9tb2NrLmMKaW5kZXggYmVjYjNkYmFhNTQ4Li4w
+NzMxYTdkODVkN2EgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvZ3B1L2RybS92YzQvdGVzdHMvdmM0X21v
+Y2suYworKysgYi9kcml2ZXJzL2dwdS9kcm0vdmM0L3Rlc3RzL3ZjNF9tb2NrLmMKQEAgLTEwNywy
+MCArMTA3LDE4IEBAIHN0YXRpYyBjb25zdCBzdHJ1Y3QgdmM0X21vY2tfZGVzYyB2YzVfbW9jayA9
+CiApOwogCiBzdGF0aWMgaW50IF9fYnVpbGRfb25lX3BpcGUoc3RydWN0IGt1bml0ICp0ZXN0LCBz
+dHJ1Y3QgZHJtX2RldmljZSAqZHJtLAogCQkJICAgIGNvbnN0IHN0cnVjdCB2YzRfbW9ja19waXBl
+X2Rlc2MgKnBpcGUpCiB7Ci0Jc3RydWN0IHZjNF9kdW1teV9wbGFuZSAqZHVtbXlfcGxhbmU7CiAJ
+c3RydWN0IGRybV9wbGFuZSAqcGxhbmU7CiAJc3RydWN0IHZjNF9kdW1teV9jcnRjICpkdW1teV9j
+cnRjOwogCXN0cnVjdCBkcm1fY3J0YyAqY3J0YzsKIAl1bnNpZ25lZCBpbnQgaTsKIAotCWR1bW15
+X3BsYW5lID0gdmM0X2R1bW15X3BsYW5lKHRlc3QsIGRybSwgRFJNX1BMQU5FX1RZUEVfUFJJTUFS
+WSk7Ci0JS1VOSVRfQVNTRVJUX05PVF9FUlJfT1JfTlVMTCh0ZXN0LCBkdW1teV9wbGFuZSk7CisJ
+cGxhbmUgPSB2YzRfZHVtbXlfcGxhbmUodGVzdCwgZHJtLCBEUk1fUExBTkVfVFlQRV9QUklNQVJZ
+KTsKKwlLVU5JVF9BU1NFUlRfTk9UX0VSUl9PUl9OVUxMKHRlc3QsIHBsYW5lKTsKIAotCXBsYW5l
+ID0gJmR1bW15X3BsYW5lLT5wbGFuZS5iYXNlOwogCWR1bW15X2NydGMgPSB2YzRfbW9ja19wdih0
+ZXN0LCBkcm0sIHBsYW5lLCBwaXBlLT5kYXRhKTsKIAlLVU5JVF9BU1NFUlRfTk9UX0VSUl9PUl9O
+VUxMKHRlc3QsIGR1bW15X2NydGMpOwogCiAJY3J0YyA9ICZkdW1teV9jcnRjLT5jcnRjLmJhc2U7
+CiAJZm9yIChpID0gMDsgaSA8IHBpcGUtPm5vdXRwdXRzOyBpKyspIHsKZGlmZiAtLWdpdCBhL2Ry
+aXZlcnMvZ3B1L2RybS92YzQvdGVzdHMvdmM0X21vY2suaCBiL2RyaXZlcnMvZ3B1L2RybS92YzQv
+dGVzdHMvdmM0X21vY2suaAppbmRleCAyZDBiMzM5YmQ5ZjMuLjAwMmI2MjE4OTYwYyAxMDA2NDQK
+LS0tIGEvZHJpdmVycy9ncHUvZHJtL3ZjNC90ZXN0cy92YzRfbW9jay5oCisrKyBiL2RyaXZlcnMv
+Z3B1L2RybS92YzQvdGVzdHMvdmM0X21vY2suaApAQCAtMTksMTcgKzE5LDEyIEBAIHN0cnVjdCBk
+cm1fY3J0YyAqdmM0X2ZpbmRfY3J0Y19mb3JfZW5jb2RlcihzdHJ1Y3Qga3VuaXQgKnRlc3QsCiAJ
+CQlyZXR1cm4gY3J0YzsKIAogCXJldHVybiBOVUxMOwogfQogCi1zdHJ1Y3QgdmM0X2R1bW15X3Bs
+YW5lIHsKLQlzdHJ1Y3QgdmM0X3BsYW5lIHBsYW5lOwotfTsKLQotc3RydWN0IHZjNF9kdW1teV9w
+bGFuZSAqdmM0X2R1bW15X3BsYW5lKHN0cnVjdCBrdW5pdCAqdGVzdCwKLQkJCQkJc3RydWN0IGRy
+bV9kZXZpY2UgKmRybSwKLQkJCQkJZW51bSBkcm1fcGxhbmVfdHlwZSB0eXBlKTsKK3N0cnVjdCBk
+cm1fcGxhbmUgKnZjNF9kdW1teV9wbGFuZShzdHJ1Y3Qga3VuaXQgKnRlc3QsIHN0cnVjdCBkcm1f
+ZGV2aWNlICpkcm0sCisJCQkJICBlbnVtIGRybV9wbGFuZV90eXBlIHR5cGUpOwogCiBzdHJ1Y3Qg
+dmM0X2R1bW15X2NydGMgewogCXN0cnVjdCB2YzRfY3J0YyBjcnRjOwogfTsKIApkaWZmIC0tZ2l0
+IGEvZHJpdmVycy9ncHUvZHJtL3ZjNC90ZXN0cy92YzRfbW9ja19wbGFuZS5jIGIvZHJpdmVycy9n
+cHUvZHJtL3ZjNC90ZXN0cy92YzRfbW9ja19wbGFuZS5jCmluZGV4IDYyYjE4ZjVmNDFkYi4uOTcz
+ZjVmOTI5MDk3IDEwMDY0NAotLS0gYS9kcml2ZXJzL2dwdS9kcm0vdmM0L3Rlc3RzL3ZjNF9tb2Nr
+X3BsYW5lLmMKKysrIGIvZHJpdmVycy9ncHUvZHJtL3ZjNC90ZXN0cy92YzRfbW9ja19wbGFuZS5j
+CkBAIC0yMCwyOCArMjAsMjQgQEAgc3RhdGljIGNvbnN0IHN0cnVjdCBkcm1fcGxhbmVfZnVuY3Mg
+dmM0X2R1bW15X3BsYW5lX2Z1bmNzID0gewogCiBzdGF0aWMgY29uc3QgdWludDMyX3QgdmM0X2R1
+bW15X3BsYW5lX2Zvcm1hdHNbXSA9IHsKIAlEUk1fRk9STUFUX1hSR0I4ODg4LAogfTsKIAotc3Ry
+dWN0IHZjNF9kdW1teV9wbGFuZSAqdmM0X2R1bW15X3BsYW5lKHN0cnVjdCBrdW5pdCAqdGVzdCwK
+LQkJCQkJc3RydWN0IGRybV9kZXZpY2UgKmRybSwKLQkJCQkJZW51bSBkcm1fcGxhbmVfdHlwZSB0
+eXBlKQorc3RydWN0IGRybV9wbGFuZSAqdmM0X2R1bW15X3BsYW5lKHN0cnVjdCBrdW5pdCAqdGVz
+dCwgc3RydWN0IGRybV9kZXZpY2UgKmRybSwKKwkJCQkgIGVudW0gZHJtX3BsYW5lX3R5cGUgdHlw
+ZSkKIHsKLQlzdHJ1Y3QgdmM0X2R1bW15X3BsYW5lICpkdW1teV9wbGFuZTsKIAlzdHJ1Y3QgZHJt
+X3BsYW5lICpwbGFuZTsKIAotCWR1bW15X3BsYW5lID0gZHJtbV91bml2ZXJzYWxfcGxhbmVfYWxs
+b2MoZHJtLAotCQkJCQkJIHN0cnVjdCB2YzRfZHVtbXlfcGxhbmUsIHBsYW5lLmJhc2UsCisJcGxh
+bmUgPSBfX2RybW1fdW5pdmVyc2FsX3BsYW5lX2FsbG9jKGRybSwgc2l6ZW9mKHN0cnVjdCBkcm1f
+cGxhbmUpLCAwLAogCQkJCQkJIDAsCiAJCQkJCQkgJnZjNF9kdW1teV9wbGFuZV9mdW5jcywKIAkJ
+CQkJCSB2YzRfZHVtbXlfcGxhbmVfZm9ybWF0cywKIAkJCQkJCSBBUlJBWV9TSVpFKHZjNF9kdW1t
+eV9wbGFuZV9mb3JtYXRzKSwKIAkJCQkJCSBOVUxMLAogCQkJCQkJIERSTV9QTEFORV9UWVBFX1BS
+SU1BUlksCiAJCQkJCQkgTlVMTCk7Ci0JS1VOSVRfQVNTRVJUX05PVF9FUlJfT1JfTlVMTCh0ZXN0
+LCBkdW1teV9wbGFuZSk7CisJS1VOSVRfQVNTRVJUX05PVF9FUlJfT1JfTlVMTCh0ZXN0LCBwbGFu
+ZSk7CiAKLQlwbGFuZSA9ICZkdW1teV9wbGFuZS0+cGxhbmUuYmFzZTsKIAlkcm1fcGxhbmVfaGVs
+cGVyX2FkZChwbGFuZSwgJnZjNF9kdW1teV9wbGFuZV9oZWxwZXJfZnVuY3MpOwogCi0JcmV0dXJu
+IGR1bW15X3BsYW5lOworCXJldHVybiBwbGFuZTsKIH0KCi0tIAoyLjQ1LjAKCgpfX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWls
+aW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMu
+aW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
