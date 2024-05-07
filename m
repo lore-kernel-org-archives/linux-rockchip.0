@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4D8B7C25B5F
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2527EC10F1A
 	for <linux-rockchip@archiver.kernel.org>; Tue,  7 May 2024 14:31:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,55 +12,40 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=8fCMWPbZnaYKM6gwPxCnm4KH0UyabIx4N4ZKj7K2pds=; b=dv2M8nlcAhvNbj
-	kOhJ0vsn5p9MRJE3Xr0p1B1+DRN2raXe3x7aSdyUe4/Gf7TbpiGd//CQ0KZf1qvmermv5udq/vMFT
-	IpPMcsz7WNGhs26YhhE8v+Qp73Bt1DH/FgqL5hWTZlH+7xLHE25555/sxg16mixlTvQg9JxCJkRx3
-	ZVp5CQwT3nWI6nBnw7kufSH/HyJ8xoX0Czo0rvZ4ZSovWlGe1g+gnNdTg1K9Z6jfgNDtqh1ZxrGcE
-	ePLsszE2HC1UXC/00hLzPrNN0RLhBzG3QiWAkFMDwVxr/EjARJCXt0G1xHKSB+H8QGTp8SIwd/iW3
-	y+b/SX2hHk892I1BuaqA==;
+	List-Owner; bh=PrKWSiZYVBtRDUu2/oyITsls2croH4SgzAxdDDVPdIA=; b=S+OPpRru0jPnfX
+	EbQZ4Umw9pQIk6pdTrT49HL1/Mgxq/xnTR6PUn3qg3v5fKwWLClagbCLioUboQeTIeXat44VvEYbh
+	IMFxPHPzgZ1jEHlmBJZdR4iKn7yOjBk6mwIwPCBky3TsCrnsJNL9mLotOnCLNOrXfepI5aRXaereC
+	l7ZnliCSEkD9e8ccXmySjVEouMuqK76T39ZKEO3MNcGAUJVjXOOujhXp7vPIFmEwHaOdKvmQ3zIo4
+	ATSW9NLc7FSOZRv3zbG9P0PctO3IKv7FATJhfhQL5arjZJBeQtQX4Z94Raowri9SJ5b+vkJeluhhq
+	XxFEOJzj92zVDxE0Xtzg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s4LqF-0000000BVhF-2UkP;
-	Tue, 07 May 2024 14:30:51 +0000
-Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
-	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s4KiD-0000000B9gC-1ADy;
-	Tue, 07 May 2024 13:18:29 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=casper.20170209; h=Cc:To:In-Reply-To:References:Message-Id
-	:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:Sender
-	:Reply-To:Content-ID:Content-Description;
-	bh=XDFIJMWA4a4nEAmxQkxO31pCyt7mb57OrH62gbB9Yy8=; b=E2EjF9s701GwUUAqefXN0grYom
-	+0t4Yo+wRlsDNKEbA9A4/Q14i++8aqMwCIiDWRFv4VAu46tpwIEuxHAjCMkebj09FgvXEWrWbrkGd
-	sMB9xL60peCquUvf1ZXPlOrYG7I+gNmnVD5/Z64R7lEqoXggu0GOhWscmlnWZdnbkRSTpyTq51T4J
-	Yl9YcVYzw2pfGH7gvUqTm5WoOsuKLw4lZQqHCfk4myMH5rJW22R+G/Lx+h5FJLTPlm/OqQ9NFWEZO
-	6InSKxed7cRg918cmv0PYmJGHp0eyCIvC+9YMiMGApAvxjC55uWLV+gCTnlgl1Ht9pHOBF4g5gNMI
-	hk9xZgzQ==;
+	id 1s4Lq9-0000000BVc2-29vw;
+	Tue, 07 May 2024 14:30:45 +0000
 Received: from dfw.source.kernel.org ([139.178.84.217])
-	by casper.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s4Ki9-0000000DIS2-393W;
-	Tue, 07 May 2024 13:18:27 +0000
+	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
+	id 1s4Khf-0000000B9F8-42N5;
+	Tue, 07 May 2024 13:17:58 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 4265761765;
-	Tue,  7 May 2024 13:18:15 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B683DC4AF66;
-	Tue,  7 May 2024 13:18:14 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 5424F6172F;
+	Tue,  7 May 2024 13:17:55 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9D35DC4DDE2;
+	Tue,  7 May 2024 13:17:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1715087895;
-	bh=6UrkHeOkLdRsP7WmUBf8nPF7wHJAC2Ss/adKlg8oLp0=;
+	s=k20201202; t=1715087875;
+	bh=ZxPNHVmZZvp6DhYb1bewrikyiz/zTJuIlSDKJ6zcGWQ=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=qbIOZDBnAoSy9xT+oO1HK5207Wm/oyQqLhxc95ZTuGcpJ3Yag057pMjSm3AjugMdD
-	 rHEFqeCoSiHBXLNOJfIY3k4rSftL0DgBGbdHd2CUlRkEJ/KlXI0UvkViRMF4BpuueT
-	 +6Z0VbzD3JnylprlJXJikvAzds62jo/nkhlW961iGeDYtlmfdac9XvKlP4/Jbq6BPu
-	 PCFtkw8dyvAp54txD8AaFPLUS6h3Rs1NMACLOjUuTka9CH+DaIVpadehW6wTINMxzW
-	 8Sx53sEchv7F3Oa76zlM/DWg3my3CQRzfhop5L6vSbd1tZLcUKuKUdU0d/wNEZ188P
-	 kGSXpdsXj75Zg==
+	b=QQQr7lb9+9pjIEC+yhJrLszRuvSfDgr3FfOlDZTytA6GxlWbQ084ypTVQzAFymX+4
+	 XjJhSv/RRb2ZfVY9MqWoHHtQ6FIG2OtWuqn2chXcUGmTLiFYlXWsX3yJCs9DJaPImr
+	 qSKY8svnIg3W+bpPzO/kzvvjwleqZDR5sJHDXWR4LheScred+t/PV2PdrKDstPQj1m
+	 fgLsoQCHzSrPg/FsI1h8K98s590ndE0T9jp0Csg3cYsnQmW7zgmB7/mGyr4yIuOMl1
+	 tmPqE29Hlqol7+/BqP3v4K7er6jMdsVE52bxTe+8PXhW/HWRApOyTYQBTi0c3Jcr5/
+	 Tc6NJUXH5JU4w==
 From: Maxime Ripard <mripard@kernel.org>
-Date: Tue, 07 May 2024 15:17:29 +0200
-Subject: [PATCH v13 11/28] drm/connector: hdmi: Calculate TMDS character
- rate
+Date: Tue, 07 May 2024 15:17:22 +0200
+Subject: [PATCH v13 04/28] drm/connector: hdmi: Create an HDMI sub-state
 MIME-Version: 1.0
-Message-Id: <20240507-kms-hdmi-connector-state-v13-11-8fafc5efe8be@kernel.org>
+Message-Id: <20240507-kms-hdmi-connector-state-v13-4-8fafc5efe8be@kernel.org>
 References: <20240507-kms-hdmi-connector-state-v13-0-8fafc5efe8be@kernel.org>
 In-Reply-To: <20240507-kms-hdmi-connector-state-v13-0-8fafc5efe8be@kernel.org>
 To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
@@ -77,19 +62,20 @@ Cc: Hans Verkuil <hverkuil@xs4all.nl>,
  linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org, 
  linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
  linux-sunxi@lists.linux.dev, Maxime Ripard <mripard@kernel.org>, 
- Dave Stevenson <dave.stevenson@raspberrypi.com>
+ Dave Stevenson <dave.stevenson@raspberrypi.com>, 
+ Sui Jingfeng <sui.jingfeng@linux.dev>
 X-Mailer: b4 0.13.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=6362; i=mripard@kernel.org;
- h=from:subject:message-id; bh=6UrkHeOkLdRsP7WmUBf8nPF7wHJAC2Ss/adKlg8oLp0=;
- b=owGbwMvMwCmsHn9OcpHtvjLG02pJDGlWmq/1y9iX5ZeznHqibqx4Ilvm+3IzY+nQu7/Yfp009
- yqdad3SMZWFQZiTQVZMkeWJTNjp5e2LqxzsV/6AmcPKBDKEgYtTACYi1MbY0ClvovEmhdkpegNn
- 9gqF4u8zkjYL/cl26V+971rPzMkRWyN8nTdm9nefsqiPVPMVyjnC2LA+3SHo45y5acs/Li3zrZW
- +c/1aqLn+HJucXX9VtFqFZyeKMfzMXaZc5Sr3OkSefaGeEQA=
+X-Developer-Signature: v=1; a=openpgp-sha256; l=5176; i=mripard@kernel.org;
+ h=from:subject:message-id; bh=ZxPNHVmZZvp6DhYb1bewrikyiz/zTJuIlSDKJ6zcGWQ=;
+ b=owGbwMvMwCmsHn9OcpHtvjLG02pJDGlWmi8YX4Zmt5dmsN39/WPPltCN/v91FT0v9jCUrTO6/
+ bY9Tehvx1QWBmFOBlkxRZYnMmGnl7cvrnKwX/kDZg4rE8gQBi5OAZgI73zGhoU+q/Oyp2mLbrq8
+ 1r+yYtGHXRvrZ+jKh9lY+bV6vWLbtz/vxtSfKd3nvgQ2r2rfFLNWgLHh17Z3WX+e/F5zYLX1B6W
+ 6vFWXlvS0WS6zf+aw+9xLyQ1PDd91M9R+21H1Li77XZhW2bpAAA==
 X-Developer-Key: i=mripard@kernel.org; a=openpgp;
  fpr=BE5675C37E818C8B5764241C254BCFC56BF6CE8D
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240507_141826_082562_6D9FA071 
-X-CRM114-Status: GOOD (  16.23  )
+X-CRM114-CacheID: sfid-20240507_061756_357458_C782BE52 
+X-CRM114-Status: GOOD (  16.13  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,181 +92,148 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Most HDMI drivers have some code to calculate the TMDS character rate,
-usually to adjust an internal clock to match what the mode requires.
+The next features we will need to share across drivers will need to
+store some parameters for drivers to use, such as the selected output
+format.
 
-Since the TMDS character rates mostly depends on the resolution, whether
-we need to repeat pixels or not, the bpc count and the format, we can
-now derive it from the HDMI connector state that stores all those infos
-and remove the duplication from drivers.
+Let's create a new connector sub-state dedicated to HDMI controllers,
+that will eventually store everything we need.
 
 Reviewed-by: Dave Stevenson <dave.stevenson@raspberrypi.com>
+Reviewed-by: Sui Jingfeng <sui.jingfeng@linux.dev>
 Signed-off-by: Maxime Ripard <mripard@kernel.org>
 ---
- drivers/gpu/drm/display/drm_hdmi_state_helper.c    | 67 ++++++++++++++++++++++
- drivers/gpu/drm/drm_atomic.c                       |  1 +
- drivers/gpu/drm/tests/drm_hdmi_state_helper_test.c |  3 +
- include/drm/drm_connector.h                        |  5 ++
- 4 files changed, 76 insertions(+)
+ drivers/gpu/drm/display/Kconfig                 |  7 +++++
+ drivers/gpu/drm/display/Makefile                |  2 ++
+ drivers/gpu/drm/display/drm_hdmi_state_helper.c | 41 +++++++++++++++++++++++++
+ include/drm/display/drm_hdmi_state_helper.h     | 16 ++++++++++
+ include/drm/drm_connector.h                     |  7 +++++
+ 5 files changed, 73 insertions(+)
 
+diff --git a/drivers/gpu/drm/display/Kconfig b/drivers/gpu/drm/display/Kconfig
+index 864a6488bfdf..14114b597ef4 100644
+--- a/drivers/gpu/drm/display/Kconfig
++++ b/drivers/gpu/drm/display/Kconfig
+@@ -68,5 +68,12 @@ config DRM_DISPLAY_HDCP_HELPER
+ config DRM_DISPLAY_HDMI_HELPER
+ 	bool
+ 	depends on DRM_DISPLAY_HELPER
+ 	help
+ 	  DRM display helpers for HDMI.
++
++config DRM_DISPLAY_HDMI_STATE_HELPER
++	bool
++	depends on DRM_DISPLAY_HELPER
++	depends on DRM_DISPLAY_HDMI_HELPER
++	help
++	  DRM KMS state helpers for HDMI.
+diff --git a/drivers/gpu/drm/display/Makefile b/drivers/gpu/drm/display/Makefile
+index 17d2cc73ff56..629df2f4d322 100644
+--- a/drivers/gpu/drm/display/Makefile
++++ b/drivers/gpu/drm/display/Makefile
+@@ -12,9 +12,11 @@ drm_display_helper-$(CONFIG_DRM_DISPLAY_DP_TUNNEL) += \
+ 	drm_dp_tunnel.o
+ drm_display_helper-$(CONFIG_DRM_DISPLAY_HDCP_HELPER) += drm_hdcp_helper.o
+ drm_display_helper-$(CONFIG_DRM_DISPLAY_HDMI_HELPER) += \
+ 	drm_hdmi_helper.o \
+ 	drm_scdc_helper.o
++drm_display_helper-$(CONFIG_DRM_DISPLAY_HDMI_STATE_HELPER) += \
++	drm_hdmi_state_helper.o
+ drm_display_helper-$(CONFIG_DRM_DISPLAY_DP_AUX_CHARDEV) += drm_dp_aux_dev.o
+ drm_display_helper-$(CONFIG_DRM_DISPLAY_DP_AUX_CEC) += drm_dp_cec.o
+ 
+ obj-$(CONFIG_DRM_DISPLAY_HELPER) += drm_display_helper.o
 diff --git a/drivers/gpu/drm/display/drm_hdmi_state_helper.c b/drivers/gpu/drm/display/drm_hdmi_state_helper.c
-index f6cd0612ea2c..08630561d864 100644
---- a/drivers/gpu/drm/display/drm_hdmi_state_helper.c
+new file mode 100644
+index 000000000000..1e92c1108d23
+--- /dev/null
 +++ b/drivers/gpu/drm/display/drm_hdmi_state_helper.c
-@@ -1,10 +1,11 @@
- // SPDX-License-Identifier: MIT
- 
- #include <drm/drm_atomic.h>
- #include <drm/drm_connector.h>
- 
-+#include <drm/display/drm_hdmi_helper.h>
- #include <drm/display/drm_hdmi_state_helper.h>
- 
- /**
-  * __drm_atomic_helper_connector_hdmi_reset() - Initializes all HDMI @drm_connector_state resources
-  * @connector: DRM connector
-@@ -23,10 +24,67 @@ void __drm_atomic_helper_connector_hdmi_reset(struct drm_connector *connector,
- 	new_conn_state->max_bpc = max_bpc;
- 	new_conn_state->max_requested_bpc = max_bpc;
- }
- EXPORT_SYMBOL(__drm_atomic_helper_connector_hdmi_reset);
- 
-+static const struct drm_display_mode *
-+connector_state_get_mode(const struct drm_connector_state *conn_state)
+@@ -0,0 +1,41 @@
++// SPDX-License-Identifier: MIT
++
++#include <drm/drm_atomic.h>
++#include <drm/drm_connector.h>
++
++#include <drm/display/drm_hdmi_state_helper.h>
++
++/**
++ * __drm_atomic_helper_connector_hdmi_reset() - Initializes all HDMI @drm_connector_state resources
++ * @connector: DRM connector
++ * @new_conn_state: connector state to reset
++ *
++ * Initializes all HDMI resources from a @drm_connector_state without
++ * actually allocating it. This is useful for HDMI drivers, in
++ * combination with __drm_atomic_helper_connector_reset() or
++ * drm_atomic_helper_connector_reset().
++ */
++void __drm_atomic_helper_connector_hdmi_reset(struct drm_connector *connector,
++					      struct drm_connector_state *new_conn_state)
 +{
-+	struct drm_atomic_state *state;
-+	struct drm_crtc_state *crtc_state;
-+	struct drm_crtc *crtc;
-+
-+	state = conn_state->state;
-+	if (!state)
-+		return NULL;
-+
-+	crtc = conn_state->crtc;
-+	if (!crtc)
-+		return NULL;
-+
-+	crtc_state = drm_atomic_get_new_crtc_state(state, crtc);
-+	if (!crtc_state)
-+		return NULL;
-+
-+	return &crtc_state->mode;
 +}
++EXPORT_SYMBOL(__drm_atomic_helper_connector_hdmi_reset);
 +
-+static enum drm_mode_status
-+hdmi_clock_valid(const struct drm_connector *connector,
-+		 const struct drm_display_mode *mode,
-+		 unsigned long long clock)
++/**
++ * drm_atomic_helper_connector_hdmi_check() - Helper to check HDMI connector atomic state
++ * @connector: DRM Connector
++ * @state: the DRM State object
++ *
++ * Provides a default connector state check handler for HDMI connectors.
++ * Checks that a desired connector update is valid, and updates various
++ * fields of derived state.
++ *
++ * RETURNS:
++ * Zero on success, or an errno code otherwise.
++ */
++int drm_atomic_helper_connector_hdmi_check(struct drm_connector *connector,
++					   struct drm_atomic_state *state)
 +{
-+	const struct drm_display_info *info = &connector->display_info;
-+
-+	if (info->max_tmds_clock && clock > info->max_tmds_clock * 1000)
-+		return MODE_CLOCK_HIGH;
-+
-+	return MODE_OK;
-+}
-+
-+static int
-+hdmi_compute_clock(const struct drm_connector *connector,
-+		   struct drm_connector_state *conn_state,
-+		   const struct drm_display_mode *mode,
-+		   unsigned int bpc, enum hdmi_colorspace fmt)
-+{
-+	enum drm_mode_status status;
-+	unsigned long long clock;
-+
-+	clock = drm_hdmi_compute_mode_clock(mode, bpc, fmt);
-+	if (!clock)
-+		return -EINVAL;
-+
-+	status = hdmi_clock_valid(connector, mode, clock);
-+	if (status != MODE_OK)
-+		return -EINVAL;
-+
-+	conn_state->hdmi.tmds_char_rate = clock;
-+
 +	return 0;
 +}
++EXPORT_SYMBOL(drm_atomic_helper_connector_hdmi_check);
+diff --git a/include/drm/display/drm_hdmi_state_helper.h b/include/drm/display/drm_hdmi_state_helper.h
+new file mode 100644
+index 000000000000..6021983e2602
+--- /dev/null
++++ b/include/drm/display/drm_hdmi_state_helper.h
+@@ -0,0 +1,16 @@
++#/* SPDX-License-Identifier: MIT */
 +
- /**
-  * drm_atomic_helper_connector_hdmi_check() - Helper to check HDMI connector atomic state
-  * @connector: DRM Connector
-  * @state: the DRM State object
-  *
-@@ -42,10 +100,19 @@ int drm_atomic_helper_connector_hdmi_check(struct drm_connector *connector,
- {
- 	struct drm_connector_state *old_conn_state =
- 		drm_atomic_get_old_connector_state(state, connector);
- 	struct drm_connector_state *new_conn_state =
- 		drm_atomic_get_new_connector_state(state, connector);
-+	const struct drm_display_mode *mode =
-+		connector_state_get_mode(new_conn_state);
-+	int ret;
++#ifndef DRM_HDMI_STATE_HELPER_H_
++#define DRM_HDMI_STATE_HELPER_H_
 +
-+	ret = hdmi_compute_clock(connector, new_conn_state, mode,
-+				 new_conn_state->hdmi.output_bpc,
-+				 new_conn_state->hdmi.output_format);
-+	if (ret)
-+		return ret;
- 
- 	if (old_conn_state->hdmi.output_bpc != new_conn_state->hdmi.output_bpc ||
- 	    old_conn_state->hdmi.output_format != new_conn_state->hdmi.output_format) {
- 		struct drm_crtc *crtc = new_conn_state->crtc;
- 		struct drm_crtc_state *crtc_state;
-diff --git a/drivers/gpu/drm/drm_atomic.c b/drivers/gpu/drm/drm_atomic.c
-index 8730137baa86..26f9e525c0a0 100644
---- a/drivers/gpu/drm/drm_atomic.c
-+++ b/drivers/gpu/drm/drm_atomic.c
-@@ -1146,10 +1146,11 @@ static void drm_atomic_connector_print_state(struct drm_printer *p,
- 	if (connector->connector_type == DRM_MODE_CONNECTOR_HDMIA ||
- 	    connector->connector_type == DRM_MODE_CONNECTOR_HDMIB) {
- 		drm_printf(p, "\toutput_bpc=%u\n", state->hdmi.output_bpc);
- 		drm_printf(p, "\toutput_format=%s\n",
- 			   drm_hdmi_connector_get_output_format_name(state->hdmi.output_format));
-+		drm_printf(p, "\ttmds_char_rate=%llu\n", state->hdmi.tmds_char_rate);
- 	}
- 
- 	if (connector->connector_type == DRM_MODE_CONNECTOR_WRITEBACK)
- 		if (state->writeback_job && state->writeback_job->fb)
- 			drm_printf(p, "\tfb=%d\n", state->writeback_job->fb->base.id);
-diff --git a/drivers/gpu/drm/tests/drm_hdmi_state_helper_test.c b/drivers/gpu/drm/tests/drm_hdmi_state_helper_test.c
-index 8bc1f9b0b12b..4f46a70a5017 100644
---- a/drivers/gpu/drm/tests/drm_hdmi_state_helper_test.c
-+++ b/drivers/gpu/drm/tests/drm_hdmi_state_helper_test.c
-@@ -70,10 +70,13 @@ static int light_up_connector(struct kunit *test,
- 	KUNIT_ASSERT_NOT_ERR_OR_NULL(test, state);
- 
- 	conn_state = drm_atomic_get_connector_state(state, connector);
- 	KUNIT_ASSERT_NOT_ERR_OR_NULL(test, conn_state);
- 
-+	conn_state->hdmi.output_bpc = connector->max_bpc;
-+	conn_state->hdmi.output_format = HDMI_COLORSPACE_RGB;
++struct drm_atomic_state;
++struct drm_connector;
++struct drm_connector_state;
 +
- 	ret = drm_atomic_set_crtc_for_connector(conn_state, crtc);
- 	KUNIT_EXPECT_EQ(test, ret, 0);
- 
- 	crtc_state = drm_atomic_get_crtc_state(state, crtc);
- 	KUNIT_ASSERT_NOT_ERR_OR_NULL(test, crtc_state);
++void __drm_atomic_helper_connector_hdmi_reset(struct drm_connector *connector,
++					      struct drm_connector_state *new_conn_state);
++
++int drm_atomic_helper_connector_hdmi_check(struct drm_connector *connector,
++					   struct drm_atomic_state *state);
++
++#endif // DRM_HDMI_STATE_HELPER_H_
 diff --git a/include/drm/drm_connector.h b/include/drm/drm_connector.h
-index 29883e6f8e50..54899c030031 100644
+index 4491c4c2fb6e..000a2a156619 100644
 --- a/include/drm/drm_connector.h
 +++ b/include/drm/drm_connector.h
-@@ -1047,10 +1047,15 @@ struct drm_connector_state {
- 
- 		/**
- 		 * @output_format: Pixel format to output in.
- 		 */
- 		enum hdmi_colorspace output_format;
+@@ -1029,10 +1029,17 @@ struct drm_connector_state {
+ 	/**
+ 	 * @hdr_output_metadata:
+ 	 * DRM blob property for HDR output metadata
+ 	 */
+ 	struct drm_property_blob *hdr_output_metadata;
 +
-+		/**
-+		 * @tmds_char_rate: TMDS Character Rate, in Hz.
-+		 */
-+		unsigned long long tmds_char_rate;
- 	} hdmi;
++	/**
++	 * @hdmi: HDMI-related variable and properties. Filled by
++	 * @drm_atomic_helper_connector_hdmi_check().
++	 */
++	struct {
++	} hdmi;
  };
  
  /**
   * struct drm_connector_funcs - control connectors on a given device
+  *
 
 -- 
 2.45.0
