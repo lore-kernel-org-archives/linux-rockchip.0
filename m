@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1F81AC25B4F
-	for <linux-rockchip@archiver.kernel.org>; Tue,  7 May 2024 23:00:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 773B6C19F4F
+	for <linux-rockchip@archiver.kernel.org>; Tue,  7 May 2024 23:01:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=L2+jFL75Rb1df1x+Kj8ud+bqr03xMu1skjYKWeovc0M=; b=jmtq7Bhj7JWVVA
-	XdfpT8KrOgF2BC53qSXmgICvnottbvrt9zPmsy2W3B7/jiNohjSeD/JO6/BwJZY67NkiQLBekIWnK
-	1xImHl6zKvXn1wMmfVsllGaSgLv4KnLz4w0IGuaGrmnfg2SuHEh4xrx2w3O99KGBZhXY1TPumxUHV
-	hCopZaDz3DTpKlAz6gEuW06xEkQ0evA/IWObiqaI/sJQ4HVmfdNKlwYa+5wSnOBnvBVq04CBfhjSd
-	ONlSRqXSJgSc6xUIUPZ72egqLEC9UsYLwncamcPNm3zUjrxN82QhphH3A9oqLderAGUF1rP5s9pe7
-	K/atFgs7nbZV6o5xWnqQ==;
+	List-Owner; bh=+Itw/w+FTE94kRCTUAcduF9M3e1z2l+we/p0zEH7vaA=; b=U8puYZ0DKj/wB6
+	aKrD/d0P2I6KrqHT8bg37d7DOiGwhEn9VfHDCAFcq+MivAnt61QuQggxWNTyy7p8uCMzl+GXPSL5D
+	0AHCV0a6AgQqKihSOg4+0TQ8FTrq9c10hSdum3jqMGLjOCItnMpSye+OEf7ZeSZ5yoU2mcdUOqUgH
+	zCBl4cjfMXTBajh5g12vQFS5B/jyuhnNEqCRCH1zv9gLQcxW7SMysQpQhZ3jc5xWpg9uWBgQ95klx
+	plzdb2DbjxE/tMwBq9LuJSzXhKWGJx9Kx3F3yUBb6kPyGX236T6kSPFNgazLNIl+qOjiIkGxMESFQ
+	IeCG01uozKCWpB7fPPIg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s4Tnj-0000000D7O4-0VL9;
-	Tue, 07 May 2024 23:00:47 +0000
-Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
+	id 1s4ToM-0000000D7iN-3QfS;
+	Tue, 07 May 2024 23:01:26 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s4Tne-0000000D7Lc-3SLl;
-	Tue, 07 May 2024 23:00:44 +0000
+	id 1s4ToI-0000000D7gh-0fcV;
+	Tue, 07 May 2024 23:01:24 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 120FDCE10C7;
-	Tue,  7 May 2024 23:00:41 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B19E0C2BBFC;
-	Tue,  7 May 2024 23:00:38 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 8AFB961A05;
+	Tue,  7 May 2024 23:01:21 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A5667C4AF17;
+	Tue,  7 May 2024 23:01:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1715122840;
-	bh=VyDzfSvgygGoJ6vgcUYx97XIpCc+SJbIDApetEfwgow=;
+	s=k20201202; t=1715122881;
+	bh=rFAC8oNtjUVBchYHdF8+lnywIFKHivJ6mH4y+PqvvW0=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=knJ4GvmEM6d5YJ7Wx3Nqh7G0CIFr64pbuARoobRbPKTKQL7LxBDh2LWPmxqxTpyXE
-	 2B8IENtKNg9OqzXsYIeV/2fwmWqudwdhki27OpDkdxHZnhMyw0PFUtmoyCOviTKbBG
-	 nHCz+zm8U12wmxbGhYQWAZBJBvR9X0oDAQ6vPOGd/hxegv0lebFlSpkYXqEacgPCrn
-	 7xrsDb2iAyEYTiDn/txAB/ebNYGyh5jeYxLde1DjgWi6lCr1roq7z9hQoq2CCxMzw0
-	 m8g3RFy9NOg85ehxaOh4mS0C7umtYrY7OiYt1fxzFM7ViVZgKdrYGzqliA1r3Hg9Mz
-	 Nz5oZtD+kaT0A==
+	b=dfzDXk2If9DqyP2OSdNXqmdslfPiWI68Fa/0paak/Pd/UU6AtVAbCxCEPwNZOspu7
+	 c/IYzE34xVvNlvNrdDvWJiiXdtwTqpUxGA6lVULH+E1msGZaRrkYpx6w4dm49rlBvn
+	 NkVrEObqKCLVXmZQ15CVQPkEL0TfOx+0obStFHo9lKs1XjZ8uwAJ92zi7t92Bb37Og
+	 ex+o4XkTQY3whNZBcL5nyZJQgme6/OuFwkj46xN1o9tZeK/+ZAZiPWK14wTXD1J1BQ
+	 jtWM3lstdSLRAXCEtklXSD0XEzz5MI9qxKSRJ8nRejXnzSTOwbhwyj0R94Tv05JavU
+	 /iptvHDfISeSg==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
@@ -51,25 +51,25 @@ Cc: Rob Herring <robh@kernel.org>,
 	krzk+dt@kernel.org,
 	conor+dt@kernel.org,
 	sebastian.reichel@collabora.com,
-	s.hauer@pengutronix.de,
 	cristian.ciocaltea@collabora.com,
 	andy.yan@rock-chips.com,
+	s.hauer@pengutronix.de,
 	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org
-Subject: [PATCH AUTOSEL 6.1 04/12] dt-bindings: rockchip: grf: Add missing type to 'pcie-phy' node
-Date: Tue,  7 May 2024 19:00:06 -0400
-Message-ID: <20240507230031.391436-4-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 5.15 2/5] dt-bindings: rockchip: grf: Add missing type to 'pcie-phy' node
+Date: Tue,  7 May 2024 19:01:06 -0400
+Message-ID: <20240507230115.391725-2-sashal@kernel.org>
 X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20240507230031.391436-1-sashal@kernel.org>
-References: <20240507230031.391436-1-sashal@kernel.org>
+In-Reply-To: <20240507230115.391725-1-sashal@kernel.org>
+References: <20240507230115.391725-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
-X-stable-base: Linux 6.1.90
+X-stable-base: Linux 5.15.158
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240507_160043_161907_A192E089 
-X-CRM114-Status: UNSURE (   8.10  )
+X-CRM114-CacheID: sfid-20240507_160122_281944_DFBF6FD7 
+X-CRM114-Status: UNSURE (   8.23  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -105,10 +105,10 @@ Signed-off-by: Sasha Levin <sashal@kernel.org>
  1 file changed, 1 insertion(+)
 
 diff --git a/Documentation/devicetree/bindings/soc/rockchip/grf.yaml b/Documentation/devicetree/bindings/soc/rockchip/grf.yaml
-index 2ed8cca79b59c..e4eade2661f6b 100644
+index dfebf425ca49c..8fe31a7083db8 100644
 --- a/Documentation/devicetree/bindings/soc/rockchip/grf.yaml
 +++ b/Documentation/devicetree/bindings/soc/rockchip/grf.yaml
-@@ -151,6 +151,7 @@ allOf:
+@@ -141,6 +141,7 @@ allOf:
            unevaluatedProperties: false
  
          pcie-phy:
