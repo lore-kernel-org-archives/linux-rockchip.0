@@ -4,59 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4A2ECC10F1A
-	for <linux-rockchip@archiver.kernel.org>; Tue,  7 May 2024 06:04:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 69116C25B5F
+	for <linux-rockchip@archiver.kernel.org>; Tue,  7 May 2024 06:05:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=1tzxcfLnJa+KWIGGkYdLDqnynvb5zPP++tFmli1GxOs=; b=3N4AxYpkE141Qx
-	QbKw6clnS62lLVq0i6yRgaj3ni2E1nfTCo1w7SzcfH6jcS4bzia9kCanqjvIdoaYKoNzw9g/1Ep1e
-	TNktuXBth2aGuXFO+cb1zo01hdIlNAbyAOlPKBzs9oWil2zeT+vFjdmwU1J34H2ywDwkI/yAqo6F6
-	t9ZfTFrdL9KLes09uAN/0GBdicLN1nGDJVwlpcLeqQQjVbmdWQVlp3LiAK1CsPKhQL4wPUvhon6WG
-	3FUmTjHOLQGVLtgO7JNNNjjw5bzdlqlwZ1EZ5eTJ4Vwfaw+uNnplLPMxmA0gUyXWXzIsSoGij/n0z
-	jppC/yCLFGSIJrnHYmHQ==;
+	List-Owner; bh=1GnKo+cyuqzuELqSoW03VdxwN3OBCQ+oHOnH74Bdeug=; b=N8afVPm3F2DfJc
+	Ha1XScFP2sLmrZoE2dkErHN3izwi3Ap1swVHYywyIN3Fd/++VFoQyBtRopqVEMJIg0Es2/0qMVymO
+	08fZaiKNatrLmYLbI3IfedvHunAFpEq+SIGfWcM8SRTKeFkPDxA2+8MLIfOgH8buLBDzlGqV0T40/
+	cxvwsg7WFfPa0as88QTjEmw7zMJcwqhvlPF7iToOfTkXYJA8FEj/OvEoJCfuYrb/iphhi2kUdqBCm
+	D1dxEOraUehNunmaTVzGGv/pICIsPvYcJJ3tBbIro1gccv2t4gjXZu11/YDPZBeyVblKTrqKVrhfn
+	CNAjDkOiGaKQjREvGvRg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s4DwJ-00000009mDk-0Hp2;
-	Tue, 07 May 2024 06:04:35 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
+	id 1s4Dx4-00000009mLg-1VV9;
+	Tue, 07 May 2024 06:05:22 +0000
+Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s4DwH-00000009mD2-0ueZ
-	for linux-rockchip@lists.infradead.org;
-	Tue, 07 May 2024 06:04:34 +0000
-Received: from pendragon.ideasonboard.com (81-175-209-231.bb.dnainternet.fi [81.175.209.231])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 24F523D5;
-	Tue,  7 May 2024 08:04:30 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1715061870;
-	bh=RAPmK72phmkriSbjoQmb+/8N9Rmmk6IR6aCJ9mNc7W8=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=DDmOJhpR0xyBItft6dgXe+lt/5pkKB+cpas5CWwK3kY+hhK/Hx9Mv1yHrgc2kDuCx
-	 FW3CRlteozWHOEGBm2BhYa/3dfQaxbb6B9NFJQT/u2e+mpwmPQrEXDnPy/bDE39161
-	 j/P33BtiJc28ghI/iwjM59qJ/oxY7Rc1fgK8Dx8E=
-Date: Tue, 7 May 2024 09:04:24 +0300
-From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-To: Sakari Ailus <sakari.ailus@iki.fi>
-Cc: linux-media@vger.kernel.org, linux-renesas-soc@vger.kernel.org,
-	Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>,
-	Hans Verkuil <hverkuil-cisco@xs4all.nl>,
-	Dafna Hirschfeld <dafna@fastmail.com>,
-	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH 1/2] media: v4l2-subdev: Provide const-aware subdev state
- accessors
-Message-ID: <20240507060424.GE26689@pendragon.ideasonboard.com>
-References: <20240506175255.24394-1-laurent.pinchart+renesas@ideasonboard.com>
- <20240506175255.24394-2-laurent.pinchart+renesas@ideasonboard.com>
- <ZjlRTuivOz2JUpcc@valkosipuli.retiisi.eu>
+	id 1s4Dx0-00000009mKQ-0Or1;
+	Tue, 07 May 2024 06:05:19 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1715061914;
+	bh=XaJZC5PL1T4P8BdZuPh4ToU1OjptKCbM97Ct2QTMfyI=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=1rhG4H0ioEk6/d1h8UdHEzCjmn/pGlvnSAlOaXvcLhzET8elIGJ9z3q+10yZplMjK
+	 HNGpwaluEKtnfVa68Sts8ACiILAo9b0SdCwORGlU+PprjN/QdtNvEoz+EWj0cl4Zx4
+	 kmzxDdRQZ+T1YpBjTk4SCsyHPiq+VOIJ72f8OUHWVFdUVEF4lA6F/jmMSNk8wPTbWi
+	 SAI+dJM41Y+DJlwbdAAQyDbmjOr0Bmp+XqzNDsSFMG4FsjarJagikMH95y+ytUhFmN
+	 rd8dK2pG7al4+1qmNttfGZhvvjkbdKZdqx1KDc93aJnz2BJQ/SXlaJgjWek3J0M1wF
+	 hBtdgJNLMETSA==
+Received: from [100.66.96.193] (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: vignesh)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 2C32B3782112;
+	Tue,  7 May 2024 06:05:10 +0000 (UTC)
+Message-ID: <c5e7f5a1-48e7-4f8d-821b-50d94931fc4b@collabora.com>
+Date: Tue, 7 May 2024 11:35:04 +0530
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <ZjlRTuivOz2JUpcc@valkosipuli.retiisi.eu>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v1 4/5] drm/ci: skip driver specific tests
+Content-Language: en-US
+To: Helen Koike <helen.koike@collabora.com>, dri-devel@lists.freedesktop.org
+Cc: daniels@collabora.com, airlied@gmail.com, daniel@ffwll.ch,
+ robdclark@gmail.com, david.heidelberg@collabora.com,
+ guilherme.gallo@collabora.com, sergi.blanch.torne@collabora.com,
+ dmitry.baryshkov@linaro.org, mcanal@igalia.com,
+ linux-mediatek@lists.infradead.org, linux-amlogic@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, amd-gfx@lists.freedesktop.org,
+ linux-arm-msm@vger.kernel.org, intel-gfx@lists.freedesktop.org,
+ virtualization@lists.linux-foundation.org, linux-kernel@vger.kernel.org
+References: <20240430091121.508099-1-vignesh.raman@collabora.com>
+ <20240430091121.508099-5-vignesh.raman@collabora.com>
+ <9cfcc12f-1261-4865-930b-d0355da0e818@collabora.com>
+From: Vignesh Raman <vignesh.raman@collabora.com>
+In-Reply-To: <9cfcc12f-1261-4865-930b-d0355da0e818@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240506_230433_427914_D6A98D78 
-X-CRM114-Status: GOOD (  32.63  )
+X-CRM114-CacheID: sfid-20240506_230518_421702_B56BF77B 
+X-CRM114-Status: GOOD (  14.90  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,246 +77,265 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, May 06, 2024 at 09:53:18PM +0000, Sakari Ailus wrote:
-> Hi Laurent,
-> 
-> Thanks for the patch.
-> 
-> On Mon, May 06, 2024 at 08:52:54PM +0300, Laurent Pinchart wrote:
-> > It would be useful to mark instances of v4l2_subdev_state structures as
-> > const when code needs to access them read-only. This isn't currently
-> > possible, as the v4l2_subdev_state_get_*() accessor functions take a
-> > non-const pointer to the state.
-> > 
-> > Use _Generic() to provide two different versions of the accessors, for
-> > const and non-const states respectively. The former returns a const
-> > pointer to the requested format, rectangle or interval, implementing
-> > const-correctness. The latter returns a non-const pointer, preserving
-> > the current behaviour for drivers.
-> > 
-> > Signed-off-by: Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>
-> > ---
-> > Bike-shedding about names and the 4 leading underscores is allowed (and
-> > expected).
-> > ---
-> >  drivers/media/v4l2-core/v4l2-subdev.c | 24 +++++-----
-> >  include/media/v4l2-subdev.h           | 66 ++++++++++++++++++---------
-> >  2 files changed, 57 insertions(+), 33 deletions(-)
-> > 
-> > diff --git a/drivers/media/v4l2-core/v4l2-subdev.c b/drivers/media/v4l2-core/v4l2-subdev.c
-> > index 83c6d1e36871..af1fbc28c8f0 100644
-> > --- a/drivers/media/v4l2-core/v4l2-subdev.c
-> > +++ b/drivers/media/v4l2-core/v4l2-subdev.c
-> > @@ -1616,8 +1616,8 @@ void v4l2_subdev_cleanup(struct v4l2_subdev *sd)
-> >  EXPORT_SYMBOL_GPL(v4l2_subdev_cleanup);
-> >  
-> >  struct v4l2_mbus_framefmt *
-> > -__v4l2_subdev_state_get_format(struct v4l2_subdev_state *state,
-> > -			       unsigned int pad, u32 stream)
-> > +____v4l2_subdev_state_get_format(struct v4l2_subdev_state *state,
-> > +				 unsigned int pad, u32 stream)
-> >  {
-> >  	struct v4l2_subdev_stream_configs *stream_configs;
-> >  	unsigned int i;
-> > @@ -1647,11 +1647,11 @@ __v4l2_subdev_state_get_format(struct v4l2_subdev_state *state,
-> >  
-> >  	return NULL;
-> >  }
-> > -EXPORT_SYMBOL_GPL(__v4l2_subdev_state_get_format);
-> > +EXPORT_SYMBOL_GPL(____v4l2_subdev_state_get_format);
-> >  
-> >  struct v4l2_rect *
-> > -__v4l2_subdev_state_get_crop(struct v4l2_subdev_state *state, unsigned int pad,
-> > -			     u32 stream)
-> > +____v4l2_subdev_state_get_crop(struct v4l2_subdev_state *state, unsigned int pad,
-> > +			       u32 stream)
-> >  {
-> >  	struct v4l2_subdev_stream_configs *stream_configs;
-> >  	unsigned int i;
-> > @@ -1681,11 +1681,11 @@ __v4l2_subdev_state_get_crop(struct v4l2_subdev_state *state, unsigned int pad,
-> >  
-> >  	return NULL;
-> >  }
-> > -EXPORT_SYMBOL_GPL(__v4l2_subdev_state_get_crop);
-> > +EXPORT_SYMBOL_GPL(____v4l2_subdev_state_get_crop);
-> >  
-> >  struct v4l2_rect *
-> > -__v4l2_subdev_state_get_compose(struct v4l2_subdev_state *state,
-> > -				unsigned int pad, u32 stream)
-> > +____v4l2_subdev_state_get_compose(struct v4l2_subdev_state *state,
-> > +				  unsigned int pad, u32 stream)
-> >  {
-> >  	struct v4l2_subdev_stream_configs *stream_configs;
-> >  	unsigned int i;
-> > @@ -1715,11 +1715,11 @@ __v4l2_subdev_state_get_compose(struct v4l2_subdev_state *state,
-> >  
-> >  	return NULL;
-> >  }
-> > -EXPORT_SYMBOL_GPL(__v4l2_subdev_state_get_compose);
-> > +EXPORT_SYMBOL_GPL(____v4l2_subdev_state_get_compose);
-> >  
-> >  struct v4l2_fract *
-> > -__v4l2_subdev_state_get_interval(struct v4l2_subdev_state *state,
-> > -				 unsigned int pad, u32 stream)
-> > +____v4l2_subdev_state_get_interval(struct v4l2_subdev_state *state,
-> > +				   unsigned int pad, u32 stream)
-> >  {
-> >  	struct v4l2_subdev_stream_configs *stream_configs;
-> >  	unsigned int i;
-> > @@ -1751,7 +1751,7 @@ __v4l2_subdev_state_get_interval(struct v4l2_subdev_state *state,
-> >  
-> >  	return NULL;
-> >  }
-> > -EXPORT_SYMBOL_GPL(__v4l2_subdev_state_get_interval);
-> > +EXPORT_SYMBOL_GPL(____v4l2_subdev_state_get_interval);
-> >  
-> >  #if defined(CONFIG_VIDEO_V4L2_SUBDEV_API)
-> >  
-> > diff --git a/include/media/v4l2-subdev.h b/include/media/v4l2-subdev.h
-> > index e30c463d90e5..ba722ab501c1 100644
-> > --- a/include/media/v4l2-subdev.h
-> > +++ b/include/media/v4l2-subdev.h
-> > @@ -1340,21 +1340,27 @@ void v4l2_subdev_cleanup(struct v4l2_subdev *sd);
-> >   */
-> >  /*
-> >   * Wrap v4l2_subdev_state_get_format(), allowing the function to be called with
-> > - * two or three arguments. The purpose of the __v4l2_subdev_state_get_format()
-> > + * two or three arguments. The purpose of the __v4l2_subdev_state_gen_call()
-> >   * macro below is to come up with the name of the function or macro to call,
-> >   * using the last two arguments (_stream and _pad). The selected function or
-> >   * macro is then called using the arguments specified by the caller. A similar
-> >   * arrangement is used for v4l2_subdev_state_crop() and
-> >   * v4l2_subdev_state_compose() below.
-> >   */
-> > -#define v4l2_subdev_state_get_format(state, pad, ...)			\
-> > -	__v4l2_subdev_state_gen_call(format, ##__VA_ARGS__, , _pad)	\
-> > +#define v4l2_subdev_state_get_format(state, pad, ...)				\
-> > +	__v4l2_subdev_state_gen_call(format, ##__VA_ARGS__, , _pad)		\
-> >  		(state, pad, ##__VA_ARGS__)
-> > -#define __v4l2_subdev_state_get_format_pad(state, pad)	\
-> > +#define __v4l2_subdev_state_get_format_pad(state, pad)				\
-> >  	__v4l2_subdev_state_get_format(state, pad, 0)
-> > +#define __v4l2_subdev_state_get_format(state, pad, stream)			\
-> > +	_Generic(state,								\
-> > +		const struct v4l2_subdev_state *: ((const struct v4l2_mbus_framefmt *)	\
-> > +			____v4l2_subdev_state_get_format((struct v4l2_subdev_state *)state, pad, stream)), \
-> > +		default: ____v4l2_subdev_state_get_format((struct v4l2_subdev_state *)state, pad, stream) \
-> > +	)
-> >  struct v4l2_mbus_framefmt *
-> > -__v4l2_subdev_state_get_format(struct v4l2_subdev_state *state,
-> > -			       unsigned int pad, u32 stream);
-> > +____v4l2_subdev_state_get_format(struct v4l2_subdev_state *state,
-> > +				 unsigned int pad, u32 stream);
-> >  
-> >  /**
-> >   * v4l2_subdev_state_get_crop() - Get pointer to a stream crop rectangle
-> > @@ -1368,14 +1374,20 @@ __v4l2_subdev_state_get_format(struct v4l2_subdev_state *state,
-> >   * For stream-unaware drivers the crop rectangle for the corresponding pad is
-> >   * returned. If the pad does not exist, NULL is returned.
-> >   */
-> > -#define v4l2_subdev_state_get_crop(state, pad, ...)			\
-> > -	__v4l2_subdev_state_gen_call(crop, ##__VA_ARGS__, , _pad)	\
-> > +#define v4l2_subdev_state_get_crop(state, pad, ...)				\
-> > +	__v4l2_subdev_state_gen_call(crop, ##__VA_ARGS__, , _pad)		\
-> >  		(state, pad, ##__VA_ARGS__)
-> > -#define __v4l2_subdev_state_get_crop_pad(state, pad)	\
-> > +#define __v4l2_subdev_state_get_crop_pad(state, pad)				\
-> >  	__v4l2_subdev_state_get_crop(state, pad, 0)
-> > +#define __v4l2_subdev_state_get_crop(state, pad, stream)			\
-> > +	_Generic(state,								\
-> > +		const struct v4l2_subdev_state *: ((const struct v4l2_rect *)		\
-> > +			____v4l2_subdev_state_get_crop((struct v4l2_subdev_state *)state, pad, stream)), \
-> > +		default: ____v4l2_subdev_state_get_crop((struct v4l2_subdev_state *)state, pad, stream) \
-> > +	)
-> >  struct v4l2_rect *
-> > -__v4l2_subdev_state_get_crop(struct v4l2_subdev_state *state, unsigned int pad,
-> > -			     u32 stream);
-> > +____v4l2_subdev_state_get_crop(struct v4l2_subdev_state *state, unsigned int pad,
-> > +			       u32 stream);
-> >  
-> >  /**
-> >   * v4l2_subdev_state_get_compose() - Get pointer to a stream compose rectangle
-> > @@ -1389,14 +1401,20 @@ __v4l2_subdev_state_get_crop(struct v4l2_subdev_state *state, unsigned int pad,
-> >   * For stream-unaware drivers the compose rectangle for the corresponding pad is
-> >   * returned. If the pad does not exist, NULL is returned.
-> >   */
-> > -#define v4l2_subdev_state_get_compose(state, pad, ...)			\
-> > -	__v4l2_subdev_state_gen_call(compose, ##__VA_ARGS__, , _pad)	\
-> > +#define v4l2_subdev_state_get_compose(state, pad, ...)				\
-> > +	__v4l2_subdev_state_gen_call(compose, ##__VA_ARGS__, , _pad)		\
-> >  		(state, pad, ##__VA_ARGS__)
-> > -#define __v4l2_subdev_state_get_compose_pad(state, pad)	\
-> > +#define __v4l2_subdev_state_get_compose_pad(state, pad)				\
-> >  	__v4l2_subdev_state_get_compose(state, pad, 0)
-> > +#define __v4l2_subdev_state_get_compose(state, pad, stream)			\
-> > +	_Generic(state,								\
-> > +		const struct v4l2_subdev_state *: ((const struct v4l2_rect *)		\
-> > +			____v4l2_subdev_state_get_compose((struct v4l2_subdev_state *)state, pad, stream)), \
-> > +		default: ____v4l2_subdev_state_get_compose((struct v4l2_subdev_state *)state, pad, stream) \
-> > +	)
-> >  struct v4l2_rect *
-> > -__v4l2_subdev_state_get_compose(struct v4l2_subdev_state *state,
-> > -				unsigned int pad, u32 stream);
-> > +____v4l2_subdev_state_get_compose(struct v4l2_subdev_state *state,
-> > +				  unsigned int pad, u32 stream);
-> >  
-> >  /**
-> >   * v4l2_subdev_state_get_interval() - Get pointer to a stream frame interval
-> > @@ -1410,14 +1428,20 @@ __v4l2_subdev_state_get_compose(struct v4l2_subdev_state *state,
-> >   * For stream-unaware drivers the frame interval for the corresponding pad is
-> >   * returned. If the pad does not exist, NULL is returned.
-> >   */
-> > -#define v4l2_subdev_state_get_interval(state, pad, ...)			\
-> > -	__v4l2_subdev_state_gen_call(interval, ##__VA_ARGS__, , _pad)	\
-> > +#define v4l2_subdev_state_get_interval(state, pad, ...)				\
-> > +	__v4l2_subdev_state_gen_call(interval, ##__VA_ARGS__, , _pad)		\
-> >  		(state, pad, ##__VA_ARGS__)
-> > -#define __v4l2_subdev_state_get_interval_pad(state, pad)	\
-> > +#define __v4l2_subdev_state_get_interval_pad(state, pad)			\
-> >  	__v4l2_subdev_state_get_interval(state, pad, 0)
-> > +#define __v4l2_subdev_state_get_interval(state, pad, stream)			\
-> > +	_Generic(state,								\
-> > +		const struct v4l2_subdev_state *: ((const struct v4l2_frac *)		\
-> > +			____v4l2_subdev_state_get_interval((struct v4l2_subdev_state *)state, pad, stream)), \
-> > +		default: ____v4l2_subdev_state_get_interval((struct v4l2_subdev_state *)state, pad, stream) \
-> 
-> Is the cast necessary in the latter case? It would seem like we lose most
-> of the type safety checks as a result.
-
-It is, and I was surprised by it. The reason is that all branches of the
-_Generic statement must compile, even the ones that are not selected.
-When the macro is called with a const state, the first branch is taken,
-but the second branch must compile too. Without the cast, the compiler
-complains that the state argument passed to
-____v4l2_subdev_state_get_interval() is const.
-
-> Could this be implemented using a similar arrangement than the gen_call
-> macro above, so that we wouldn't have three very similar sets of macros
-> here?
-
-I've sent a v2 that does that.
-
-> > +	)
-> >  struct v4l2_fract *
-> > -__v4l2_subdev_state_get_interval(struct v4l2_subdev_state *state,
-> > -				 unsigned int pad, u32 stream);
-> > +____v4l2_subdev_state_get_interval(struct v4l2_subdev_state *state,
-> > +				   unsigned int pad, u32 stream);
-> >  
-> >  #if defined(CONFIG_VIDEO_V4L2_SUBDEV_API)
-> >  
-
--- 
-Regards,
-
-Laurent Pinchart
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGkgSGVsZW4sCgpPbiAzMC8wNC8yNCAyMDowMSwgSGVsZW4gS29pa2Ugd3JvdGU6Cj4gCj4gCj4g
+T24gMzAvMDQvMjAyNCAwNjoxMSwgVmlnbmVzaCBSYW1hbiB3cm90ZToKPj4gU2tpcCBkcml2ZXIg
+c3BlY2lmaWMgdGVzdHMgYW5kIHNraXAga21zIHRlc3RzIGZvcgo+PiBwYW5mcm9zdCBkcml2ZXIg
+c2luY2UgaXQgaXMgbm90IGEga21zIGRyaXZlci4KPj4KPj4gU2lnbmVkLW9mZi1ieTogVmlnbmVz
+aCBSYW1hbiA8dmlnbmVzaC5yYW1hbkBjb2xsYWJvcmEuY29tPgo+PiAtLS0KPj4gwqAgLi4uL2dw
+dS9kcm0vY2kveGZhaWxzL2FtZGdwdS1zdG9uZXktc2tpcHMudHh0wqDCoCB8IDE0ICsrKysrKysr
+KysrKystCj4+IMKgIGRyaXZlcnMvZ3B1L2RybS9jaS94ZmFpbHMvaTkxNS1hbWx5LXNraXBzLnR4
+dMKgwqAgfCAxNCArKysrKysrKysrKysrLQo+PiDCoCBkcml2ZXJzL2dwdS9kcm0vY2kveGZhaWxz
+L2k5MTUtYXBsLXNraXBzLnR4dMKgwqDCoCB8IDE0ICsrKysrKysrKysrKystCj4+IMKgIGRyaXZl
+cnMvZ3B1L2RybS9jaS94ZmFpbHMvaTkxNS1jbWwtc2tpcHMudHh0wqDCoMKgIHwgMTIgKysrKysr
+KysrKysrCj4+IMKgIGRyaXZlcnMvZ3B1L2RybS9jaS94ZmFpbHMvaTkxNS1nbGstc2tpcHMudHh0
+wqDCoMKgIHwgMTQgKysrKysrKysrKysrKy0KPj4gwqAgZHJpdmVycy9ncHUvZHJtL2NpL3hmYWls
+cy9pOTE1LWtibC1za2lwcy50eHTCoMKgwqAgfCAxNCArKysrKysrKysrKysrLQo+PiDCoCBkcml2
+ZXJzL2dwdS9kcm0vY2kveGZhaWxzL2k5MTUtdGdsLXNraXBzLnR4dMKgwqDCoCB8IDE0ICsrKysr
+KysrKysrKystCj4+IMKgIGRyaXZlcnMvZ3B1L2RybS9jaS94ZmFpbHMvaTkxNS13aGwtc2tpcHMu
+dHh0wqDCoMKgIHwgMTQgKysrKysrKysrKysrKy0KPj4gwqAgLi4uL2dwdS9kcm0vY2kveGZhaWxz
+L21lZGlhdGVrLW10ODE3My1za2lwcy50eHQgfCAxMiArKysrKysrKysrKysKPj4gwqAgLi4uL2dw
+dS9kcm0vY2kveGZhaWxzL21lZGlhdGVrLW10ODE4My1za2lwcy50eHQgfCAxNCArKysrKysrKysr
+KysrKwo+PiDCoCBkcml2ZXJzL2dwdS9kcm0vY2kveGZhaWxzL21lc29uLWcxMmItc2tpcHMudHh0
+wqAgfCAxNCArKysrKysrKysrKysrKwo+PiDCoCBkcml2ZXJzL2dwdS9kcm0vY2kveGZhaWxzL21z
+bS1hcHE4MDE2LXNraXBzLnR4dCB8IDE0ICsrKysrKysrKysrKysrCj4+IMKgIGRyaXZlcnMvZ3B1
+L2RybS9jaS94ZmFpbHMvbXNtLWFwcTgwOTYtc2tpcHMudHh0IHwgMTQgKysrKysrKysrKysrKy0K
+Pj4gwqAgLi4uL21zbS1zYzcxODAtdHJvZ2Rvci1raW5nb2Z0b3duLXNraXBzLnR4dMKgwqDCoMKg
+IHwgMTUgKysrKysrKysrKysrKysrCj4+IMKgIC4uLi9tc20tc2M3MTgwLXRyb2dkb3ItbGF6b3It
+bGltb3plZW4tc2tpcHMudHh0IHwgMTUgKysrKysrKysrKysrKysrCj4+IMKgIGRyaXZlcnMvZ3B1
+L2RybS9jaS94ZmFpbHMvbXNtLXNkbTg0NS1za2lwcy50eHTCoCB8IDE1ICsrKysrKysrKysrKysr
+Kwo+PiDCoCAuLi4vZ3B1L2RybS9jaS94ZmFpbHMvcm9ja2NoaXAtcmszMjg4LXNraXBzLnR4dCB8
+IDE3ICsrKysrKysrKysrKysrKystCj4+IMKgIC4uLi9ncHUvZHJtL2NpL3hmYWlscy9yb2NrY2hp
+cC1yazMzOTktc2tpcHMudHh0IHwgMTUgKysrKysrKysrKysrKysrCj4+IMKgIC4uLi9ncHUvZHJt
+L2NpL3hmYWlscy92aXJ0aW9fZ3B1LW5vbmUtc2tpcHMudHh0IHwgMTUgKysrKysrKysrKysrKyst
+Cj4+IMKgIDE5IGZpbGVzIGNoYW5nZWQsIDI2MCBpbnNlcnRpb25zKCspLCAxMCBkZWxldGlvbnMo
+LSkKPj4gwqAgY3JlYXRlIG1vZGUgMTAwNjQ0IGRyaXZlcnMvZ3B1L2RybS9jaS94ZmFpbHMvbWVk
+aWF0ZWstbXQ4MTczLXNraXBzLnR4dAo+PiDCoCBjcmVhdGUgbW9kZSAxMDA2NDQgZHJpdmVycy9n
+cHUvZHJtL2NpL3hmYWlscy9tZWRpYXRlay1tdDgxODMtc2tpcHMudHh0Cj4+IMKgIGNyZWF0ZSBt
+b2RlIDEwMDY0NCBkcml2ZXJzL2dwdS9kcm0vY2kveGZhaWxzL21lc29uLWcxMmItc2tpcHMudHh0
+Cj4+IMKgIGNyZWF0ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL2dwdS9kcm0vY2kveGZhaWxzL21zbS1h
+cHE4MDE2LXNraXBzLnR4dAo+Pgo+PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL2NpL3hm
+YWlscy9hbWRncHUtc3RvbmV5LXNraXBzLnR4dCAKPj4gYi9kcml2ZXJzL2dwdS9kcm0vY2kveGZh
+aWxzL2FtZGdwdS1zdG9uZXktc2tpcHMudHh0Cj4+IGluZGV4IGUyYzUzOGEwZjk1NC4uNzBlMmY5
+MjVkMDZmIDEwMDY0NAo+PiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vY2kveGZhaWxzL2FtZGdwdS1z
+dG9uZXktc2tpcHMudHh0Cj4+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9jaS94ZmFpbHMvYW1kZ3B1
+LXN0b25leS1za2lwcy50eHQKPj4gQEAgLTEsMiArMSwxNCBAQAo+PiDCoCAjIFN1c3BlbmQgdG8g
+UkFNIHNlZW1zIHRvIGJlIGJyb2tlbiBvbiB0aGlzIG1hY2hpbmUKPj4gLS4qc3VzcGVuZC4qCj4+
+IFwgTm8gbmV3bGluZSBhdCBlbmQgb2YgZmlsZQo+PiArLipzdXNwZW5kLioKPj4gKwo+PiArIyBT
+a2lwIGRyaXZlciBzcGVjaWZpYyB0ZXN0cwo+PiArbXNtXy4qCj4+ICtub3V2ZWF1Xy4qCj4+ICtw
+YW5mcm9zdF8uKgo+PiArXnYzZC4qCj4+ICtedmM0LioKPj4gK152bXdnZngqCj4+ICsKPj4gKyMg
+U2tpcCBpbnRlbCBzcGVjaWZpYyB0ZXN0cwo+PiArZ2VtXy4qCj4+ICtpOTE1Xy4qCj4+IGRpZmYg
+LS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vY2kveGZhaWxzL2k5MTUtYW1seS1za2lwcy50eHQgCj4+
+IGIvZHJpdmVycy9ncHUvZHJtL2NpL3hmYWlscy9pOTE1LWFtbHktc2tpcHMudHh0Cj4+IGluZGV4
+IGZlNTU1NDBhM2Y5YS4uNTlmOGFjZmFhNWJhIDEwMDY0NAo+PiAtLS0gYS9kcml2ZXJzL2dwdS9k
+cm0vY2kveGZhaWxzL2k5MTUtYW1seS1za2lwcy50eHQKPj4gKysrIGIvZHJpdmVycy9ncHUvZHJt
+L2NpL3hmYWlscy9pOTE1LWFtbHktc2tpcHMudHh0Cj4+IEBAIC0xLDQgKzEsMTYgQEAKPj4gwqAg
+IyBTdXNwZW5kIHRvIFJBTSBzZWVtcyB0byBiZSBicm9rZW4gb24gdGhpcyBtYWNoaW5lCj4+IMKg
+IC4qc3VzcGVuZC4qCj4+IMKgICMgVGhpcyBpcyBnZW5lcmF0aW5nIGtlcm5lbCBvb3BzIHdpdGgg
+ZGl2aWRlIGVycm9yCj4+IC1rbXNfcGxhbmVfc2NhbGluZ0BpbnZhbGlkLXBhcmFtZXRlcnMKPj4g
+XCBObyBuZXdsaW5lIGF0IGVuZCBvZiBmaWxlCj4+ICtrbXNfcGxhbmVfc2NhbGluZ0BpbnZhbGlk
+LXBhcmFtZXRlcnMKPj4gKwo+PiArIyBTa2lwIGRyaXZlciBzcGVjaWZpYyB0ZXN0cwo+PiArXmFt
+ZGdwdS4qCj4+ICttc21fLioKPj4gK25vdXZlYXVfLioKPj4gK3BhbmZyb3N0Xy4qCj4+ICtedjNk
+LioKPj4gK152YzQuKgo+PiArXnZtd2dmeCoKPj4gKwo+PiArIyBHRU0gdGVzdHMgdGFrZXMgfjEw
+MDAgaG91cnMsIHNvIHNraXAgaXQKPj4gK2dlbV8uKgo+PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9n
+cHUvZHJtL2NpL3hmYWlscy9pOTE1LWFwbC1za2lwcy50eHQgCj4+IGIvZHJpdmVycy9ncHUvZHJt
+L2NpL3hmYWlscy9pOTE1LWFwbC1za2lwcy50eHQKPj4gaW5kZXggMzQzMGIyMTVjMDZlLi5kOTdi
+YzAzOGI2M2EgMTAwNjQ0Cj4+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9jaS94ZmFpbHMvaTkxNS1h
+cGwtc2tpcHMudHh0Cj4+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9jaS94ZmFpbHMvaTkxNS1hcGwt
+c2tpcHMudHh0Cj4+IEBAIC0zLDQgKzMsMTYgQEAKPj4gwqAgIyBUaGlzIGlzIGdlbmVyYXRpbmcg
+a2VybmVsIG9vcHMgd2l0aCBkaXZpZGUgZXJyb3IKPj4gwqAga21zX3BsYW5lX3NjYWxpbmdAaW52
+YWxpZC1wYXJhbWV0ZXJzCj4+IMKgICMgVGhpcyBpcyBjYXNjYWRpbmcgaXNzdWVzCj4+IC1rbXNf
+M2QKPj4gXCBObyBuZXdsaW5lIGF0IGVuZCBvZiBmaWxlCj4+ICtrbXNfM2QKPj4gKwo+PiArIyBT
+a2lwIGRyaXZlciBzcGVjaWZpYyB0ZXN0cwo+PiArXmFtZGdwdS4qCj4+ICttc21fLioKPj4gK25v
+dXZlYXVfLioKPj4gK3BhbmZyb3N0Xy4qCj4+ICtedjNkLioKPj4gK152YzQuKgo+PiArXnZtd2dm
+eCoKPj4gKwo+PiArIyBHRU0gdGVzdHMgdGFrZXMgfjEwMDAgaG91cnMsIHNvIHNraXAgaXQKPj4g
+K2dlbV8uKgo+PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL2NpL3hmYWlscy9pOTE1LWNt
+bC1za2lwcy50eHQgCj4+IGIvZHJpdmVycy9ncHUvZHJtL2NpL3hmYWlscy9pOTE1LWNtbC1za2lw
+cy50eHQKPj4gaW5kZXggNmQzZDdkZGMzNzdmLi45MmMwZmZlZTgyODMgMTAwNjQ0Cj4+IC0tLSBh
+L2RyaXZlcnMvZ3B1L2RybS9jaS94ZmFpbHMvaTkxNS1jbWwtc2tpcHMudHh0Cj4+ICsrKyBiL2Ry
+aXZlcnMvZ3B1L2RybS9jaS94ZmFpbHMvaTkxNS1jbWwtc2tpcHMudHh0Cj4+IEBAIC0xLDIgKzEs
+MTQgQEAKPj4gwqAgIyBUaGlzIGlzIGdlbmVyYXRpbmcga2VybmVsIG9vcHMgd2l0aCBkaXZpZGUg
+ZXJyb3IKPj4gwqAga21zX3BsYW5lX3NjYWxpbmdAaW52YWxpZC1wYXJhbWV0ZXJzCj4+ICsKPj4g
+KyMgU2tpcCBkcml2ZXIgc3BlY2lmaWMgdGVzdHMKPj4gK15hbWRncHUuKgo+PiArbXNtXy4qCj4+
+ICtub3V2ZWF1Xy4qCj4+ICtwYW5mcm9zdF8uKgo+PiArXnYzZC4qCj4+ICtedmM0LioKPj4gK152
+bXdnZngqCj4+ICsKPj4gKyMgR0VNIHRlc3RzIHRha2VzIH4xMDAwIGhvdXJzLCBzbyBza2lwIGl0
+Cj4+ICtnZW1fLioKPj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9jaS94ZmFpbHMvaTkx
+NS1nbGstc2tpcHMudHh0IAo+PiBiL2RyaXZlcnMvZ3B1L2RybS9jaS94ZmFpbHMvaTkxNS1nbGst
+c2tpcHMudHh0Cj4+IGluZGV4IDRjN2QwMGNlMTRiYy4uYTE2ODcyMmNhZjEzIDEwMDY0NAo+PiAt
+LS0gYS9kcml2ZXJzL2dwdS9kcm0vY2kveGZhaWxzL2k5MTUtZ2xrLXNraXBzLnR4dAo+PiArKysg
+Yi9kcml2ZXJzL2dwdS9kcm0vY2kveGZhaWxzL2k5MTUtZ2xrLXNraXBzLnR4dAo+PiBAQCAtMiw0
+ICsyLDE2IEBACj4+IMKgIC4qc3VzcGVuZC4qCj4+IMKgICMgVGhpcyBpcyBnZW5lcmF0aW5nIGtl
+cm5lbCBvb3BzIHdpdGggZGl2aWRlIGVycm9yCj4+IC1rbXNfcGxhbmVfc2NhbGluZ0BpbnZhbGlk
+LXBhcmFtZXRlcnMKPj4gXCBObyBuZXdsaW5lIGF0IGVuZCBvZiBmaWxlCj4+ICtrbXNfcGxhbmVf
+c2NhbGluZ0BpbnZhbGlkLXBhcmFtZXRlcnMKPj4gKwo+PiArIyBTa2lwIGRyaXZlciBzcGVjaWZp
+YyB0ZXN0cwo+PiArXmFtZGdwdS4qCj4+ICttc21fLioKPj4gK25vdXZlYXVfLioKPj4gK3BhbmZy
+b3N0Xy4qCj4+ICtedjNkLioKPj4gK152YzQuKgo+PiArXnZtd2dmeCoKPj4gKwo+PiArIyBHRU0g
+dGVzdHMgdGFrZXMgfjEwMDAgaG91cnMsIHNvIHNraXAgaXQKPj4gK2dlbV8uKgo+PiBkaWZmIC0t
+Z2l0IGEvZHJpdmVycy9ncHUvZHJtL2NpL3hmYWlscy9pOTE1LWtibC1za2lwcy50eHQgCj4+IGIv
+ZHJpdmVycy9ncHUvZHJtL2NpL3hmYWlscy9pOTE1LWtibC1za2lwcy50eHQKPj4gaW5kZXggNGM3
+ZDAwY2UxNGJjLi5hMTY4NzIyY2FmMTMgMTAwNjQ0Cj4+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9j
+aS94ZmFpbHMvaTkxNS1rYmwtc2tpcHMudHh0Cj4+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9jaS94
+ZmFpbHMvaTkxNS1rYmwtc2tpcHMudHh0Cj4+IEBAIC0yLDQgKzIsMTYgQEAKPj4gwqAgLipzdXNw
+ZW5kLioKPj4gwqAgIyBUaGlzIGlzIGdlbmVyYXRpbmcga2VybmVsIG9vcHMgd2l0aCBkaXZpZGUg
+ZXJyb3IKPj4gLWttc19wbGFuZV9zY2FsaW5nQGludmFsaWQtcGFyYW1ldGVycwo+PiBcIE5vIG5l
+d2xpbmUgYXQgZW5kIG9mIGZpbGUKPj4gK2ttc19wbGFuZV9zY2FsaW5nQGludmFsaWQtcGFyYW1l
+dGVycwo+PiArCj4+ICsjIFNraXAgZHJpdmVyIHNwZWNpZmljIHRlc3RzCj4+ICteYW1kZ3B1LioK
+Pj4gK21zbV8uKgo+PiArbm91dmVhdV8uKgo+PiArcGFuZnJvc3RfLioKPj4gK152M2QuKgo+PiAr
+XnZjNC4qCj4+ICtedm13Z2Z4Kgo+PiArCj4+ICsjIEdFTSB0ZXN0cyB0YWtlcyB+MTAwMCBob3Vy
+cywgc28gc2tpcCBpdAo+PiArZ2VtXy4qCj4+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0v
+Y2kveGZhaWxzL2k5MTUtdGdsLXNraXBzLnR4dCAKPj4gYi9kcml2ZXJzL2dwdS9kcm0vY2kveGZh
+aWxzL2k5MTUtdGdsLXNraXBzLnR4dAo+PiBpbmRleCAxZDA2MjE3NTBiMTQuLmQ0MTM0NDYyNzI2
+MSAxMDA2NDQKPj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL2NpL3hmYWlscy9pOTE1LXRnbC1za2lw
+cy50eHQKPj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL2NpL3hmYWlscy9pOTE1LXRnbC1za2lwcy50
+eHQKPj4gQEAgLTgsNCArOCwxNiBAQCBnZW1fZWlvLioKPj4gwqAga21zX2ZsaXBAYWJzb2x1dGUt
+d2ZfdmJsYW5rQGEtZWRwMQo+PiDCoCAjIFRoaXMgaXMgZ2VuZXJhdGluZyBrZXJuZWwgb29wcyB3
+aXRoIGRpdmlkZSBlcnJvcgo+PiAta21zX3BsYW5lX3NjYWxpbmdAaW52YWxpZC1wYXJhbWV0ZXJz
+Cj4+IFwgTm8gbmV3bGluZSBhdCBlbmQgb2YgZmlsZQo+PiAra21zX3BsYW5lX3NjYWxpbmdAaW52
+YWxpZC1wYXJhbWV0ZXJzCj4+ICsKPj4gKyMgU2tpcCBkcml2ZXIgc3BlY2lmaWMgdGVzdHMKPj4g
+K15hbWRncHUuKgo+PiArbXNtXy4qCj4+ICtub3V2ZWF1Xy4qCj4+ICtwYW5mcm9zdF8uKgo+PiAr
+XnYzZC4qCj4+ICtedmM0LioKPj4gK152bXdnZngqCj4+ICsKPj4gKyMgR0VNIHRlc3RzIHRha2Vz
+IH4xMDAwIGhvdXJzLCBzbyBza2lwIGl0Cj4+ICtnZW1fLioKPj4gZGlmZiAtLWdpdCBhL2RyaXZl
+cnMvZ3B1L2RybS9jaS94ZmFpbHMvaTkxNS13aGwtc2tpcHMudHh0IAo+PiBiL2RyaXZlcnMvZ3B1
+L2RybS9jaS94ZmFpbHMvaTkxNS13aGwtc2tpcHMudHh0Cj4+IGluZGV4IGYzYmUwODg4YTIxNC4u
+OTJjMGZmZWU4MjgzIDEwMDY0NAo+PiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vY2kveGZhaWxzL2k5
+MTUtd2hsLXNraXBzLnR4dAo+PiArKysgYi9kcml2ZXJzL2dwdS9kcm0vY2kveGZhaWxzL2k5MTUt
+d2hsLXNraXBzLnR4dAo+PiBAQCAtMSwyICsxLDE0IEBACj4+IMKgICMgVGhpcyBpcyBnZW5lcmF0
+aW5nIGtlcm5lbCBvb3BzIHdpdGggZGl2aWRlIGVycm9yCj4+IC1rbXNfcGxhbmVfc2NhbGluZ0Bp
+bnZhbGlkLXBhcmFtZXRlcnMKPj4gXCBObyBuZXdsaW5lIGF0IGVuZCBvZiBmaWxlCj4+ICtrbXNf
+cGxhbmVfc2NhbGluZ0BpbnZhbGlkLXBhcmFtZXRlcnMKPj4gKwo+PiArIyBTa2lwIGRyaXZlciBz
+cGVjaWZpYyB0ZXN0cwo+PiArXmFtZGdwdS4qCj4+ICttc21fLioKPj4gK25vdXZlYXVfLioKPj4g
+K3BhbmZyb3N0Xy4qCj4+ICtedjNkLioKPj4gK152YzQuKgo+PiArXnZtd2dmeCoKPj4gKwo+PiAr
+IyBHRU0gdGVzdHMgdGFrZXMgfjEwMDAgaG91cnMsIHNvIHNraXAgaXQKPj4gK2dlbV8uKgo+PiBk
+aWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL2NpL3hmYWlscy9tZWRpYXRlay1tdDgxNzMtc2tp
+cHMudHh0IAo+PiBiL2RyaXZlcnMvZ3B1L2RybS9jaS94ZmFpbHMvbWVkaWF0ZWstbXQ4MTczLXNr
+aXBzLnR4dAo+PiBuZXcgZmlsZSBtb2RlIDEwMDY0NAo+PiBpbmRleCAwMDAwMDAwMDAwMDAuLmRi
+MGM5ZGJiZWI2MQo+PiAtLS0gL2Rldi9udWxsCj4+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9jaS94
+ZmFpbHMvbWVkaWF0ZWstbXQ4MTczLXNraXBzLnR4dAo+PiBAQCAtMCwwICsxLDEyIEBACj4+ICsj
+IFNraXAgZHJpdmVyIHNwZWNpZmljIHRlc3RzCj4+ICteYW1kZ3B1LioKPj4gK21zbV8uKgo+PiAr
+bm91dmVhdV8uKgo+PiArcGFuZnJvc3RfLioKPj4gK152M2QuKgo+PiArXnZjNC4qCj4+ICtedm13
+Z2Z4Kgo+PiArCj4+ICsjIFNraXAgaW50ZWwgc3BlY2lmaWMgdGVzdHMKPj4gK2dlbV8uKgo+PiAr
+aTkxNV8uKgo+PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL2NpL3hmYWlscy9tZWRpYXRl
+ay1tdDgxODMtc2tpcHMudHh0IAo+PiBiL2RyaXZlcnMvZ3B1L2RybS9jaS94ZmFpbHMvbWVkaWF0
+ZWstbXQ4MTgzLXNraXBzLnR4dAo+PiBuZXcgZmlsZSBtb2RlIDEwMDY0NAo+PiBpbmRleCAwMDAw
+MDAwMDAwMDAuLjdhMWM4YmU4OWU1Ygo+PiAtLS0gL2Rldi9udWxsCj4+ICsrKyBiL2RyaXZlcnMv
+Z3B1L2RybS9jaS94ZmFpbHMvbWVkaWF0ZWstbXQ4MTgzLXNraXBzLnR4dAo+PiBAQCAtMCwwICsx
+LDE0IEBACj4+ICsjIFNraXAgZHJpdmVyIHNwZWNpZmljIHRlc3RzCj4+ICteYW1kZ3B1LioKPj4g
+K21zbV8uKgo+PiArbm91dmVhdV8uKgo+PiArXnYzZC4qCj4+ICtedmM0LioKPj4gK152bXdnZngq
+Cj4+ICsKPj4gKyMgU2tpcCBpbnRlbCBzcGVjaWZpYyB0ZXN0cwo+PiArZ2VtXy4qCj4+ICtpOTE1
+Xy4qCj4+ICsKPj4gKyMgUGFuZnJvc3QgaXMgbm90IGEgS01TIGRyaXZlciwgc28gc2tpcCB0aGUg
+S01TIHRlc3RzCj4+ICtrbXNfLioKPj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9jaS94
+ZmFpbHMvbWVzb24tZzEyYi1za2lwcy50eHQgCj4+IGIvZHJpdmVycy9ncHUvZHJtL2NpL3hmYWls
+cy9tZXNvbi1nMTJiLXNraXBzLnR4dAo+PiBuZXcgZmlsZSBtb2RlIDEwMDY0NAo+PiBpbmRleCAw
+MDAwMDAwMDAwMDAuLjdhMWM4YmU4OWU1Ygo+PiAtLS0gL2Rldi9udWxsCj4+ICsrKyBiL2RyaXZl
+cnMvZ3B1L2RybS9jaS94ZmFpbHMvbWVzb24tZzEyYi1za2lwcy50eHQKPj4gQEAgLTAsMCArMSwx
+NCBAQAo+PiArIyBTa2lwIGRyaXZlciBzcGVjaWZpYyB0ZXN0cwo+PiArXmFtZGdwdS4qCj4+ICtt
+c21fLioKPj4gK25vdXZlYXVfLioKPj4gK152M2QuKgo+PiArXnZjNC4qCj4+ICtedm13Z2Z4Kgo+
+PiArCj4+ICsjIFNraXAgaW50ZWwgc3BlY2lmaWMgdGVzdHMKPj4gK2dlbV8uKgo+PiAraTkxNV8u
+Kgo+PiArCj4+ICsjIFBhbmZyb3N0IGlzIG5vdCBhIEtNUyBkcml2ZXIsIHNvIHNraXAgdGhlIEtN
+UyB0ZXN0cwo+PiAra21zXy4qCj4+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vY2kveGZh
+aWxzL21zbS1hcHE4MDE2LXNraXBzLnR4dCAKPj4gYi9kcml2ZXJzL2dwdS9kcm0vY2kveGZhaWxz
+L21zbS1hcHE4MDE2LXNraXBzLnR4dAo+PiBuZXcgZmlsZSBtb2RlIDEwMDY0NAo+PiBpbmRleCAw
+MDAwMDAwMDAwMDAuLmNjMGMyZjFlY2NhNwo+PiAtLS0gL2Rldi9udWxsCj4+ICsrKyBiL2RyaXZl
+cnMvZ3B1L2RybS9jaS94ZmFpbHMvbXNtLWFwcTgwMTYtc2tpcHMudHh0Cj4+IEBAIC0wLDAgKzEs
+MTQgQEAKPj4gKyMgU2tpcCBkcml2ZXIgc3BlY2lmaWMgdGVzdHMKPj4gK15hbWRncHUuKgo+PiAr
+bm91dmVhdV8uKgo+PiArcGFuZnJvc3RfLioKPj4gK152M2QuKgo+PiArXnZjNC4qCj4+ICtedm13
+Z2Z4Kgo+PiArCj4+ICsjIFNraXAgaW50ZWwgc3BlY2lmaWMgdGVzdHMKPj4gK2dlbV8uKgo+PiAr
+aTkxNV8uKgo+PiArCj4+ICsjIFNraXAgdGhlc2UgdGVzdHMgYXMgY29yZV9nZXRyZXZpc2lvbiBm
+YWlscwo+IAo+IERPIHlvdSBtZWFuIGNvcmVfaG90dW5wbHVnIGluIHRoZSBjb21tZW50cz8KCk5v
+LiBjb3JlX2hvdHVucGx1ZyBmYWlscyBhbmQgdGhlIG1hY2hpbmUgaXMgYSBiYWQgc3RhdGUuIFNv
+IApjb3JlX2dldHJldmlzaW9uIHRlc3QgYWxzbyBmYWlscyBhbmQgb3RoZXIgdGVzdHMgYXJlIG5v
+dCBydW4uCldpbGwgdXBkYXRlIHRoZSBjb21tZW50IHNlY3Rpb24uCgpSZWdhcmRzLApWaWduZXNo
+Cgo+IAo+PiArY29yZV9ob3R1bnBsdWcuKgo+PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJt
+L2NpL3hmYWlscy9tc20tYXBxODA5Ni1za2lwcy50eHQgCj4+IGIvZHJpdmVycy9ncHUvZHJtL2Np
+L3hmYWlscy9tc20tYXBxODA5Ni1za2lwcy50eHQKPj4gaW5kZXggY2Q0OWM4Y2UyMDU5Li45YWIy
+MTc3ZGYxYWIgMTAwNjQ0Cj4+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9jaS94ZmFpbHMvbXNtLWFw
+cTgwOTYtc2tpcHMudHh0Cj4+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9jaS94ZmFpbHMvbXNtLWFw
+cTgwOTYtc2tpcHMudHh0Cj4+IEBAIC0xLDIgKzEsMTQgQEAKPj4gwqAgIyBXaG9sZSBtYWNoaW5l
+IGhhbmdzCj4+IC1rbXNfY3Vyc29yX2xlZ2FjeUBhbGwtcGlwZXMtdG9ydHVyZS1tb3ZlCj4+IFwg
+Tm8gbmV3bGluZSBhdCBlbmQgb2YgZmlsZQo+PiAra21zX2N1cnNvcl9sZWdhY3lAYWxsLXBpcGVz
+LXRvcnR1cmUtbW92ZQo+PiArCj4+ICsjIFNraXAgZHJpdmVyIHNwZWNpZmljIHRlc3RzCj4+ICte
+YW1kZ3B1LioKPj4gK25vdXZlYXVfLioKPj4gK3BhbmZyb3N0Xy4qCj4+ICtedjNkLioKPj4gK152
+YzQuKgo+PiArXnZtd2dmeCoKPj4gKwo+PiArIyBTa2lwIGludGVsIHNwZWNpZmljIHRlc3RzCj4+
+ICtnZW1fLioKPj4gK2k5MTVfLioKPj4gZGlmZiAtLWdpdCAKPj4gYS9kcml2ZXJzL2dwdS9kcm0v
+Y2kveGZhaWxzL21zbS1zYzcxODAtdHJvZ2Rvci1raW5nb2Z0b3duLXNraXBzLnR4dCAKPj4gYi9k
+cml2ZXJzL2dwdS9kcm0vY2kveGZhaWxzL21zbS1zYzcxODAtdHJvZ2Rvci1raW5nb2Z0b3duLXNr
+aXBzLnR4dAo+PiBpbmRleCAzMjcwMzlmNzAyNTIuLjA1MzgxMGEyNDY5MSAxMDA2NDQKPj4gLS0t
+IGEvZHJpdmVycy9ncHUvZHJtL2NpL3hmYWlscy9tc20tc2M3MTgwLXRyb2dkb3Ita2luZ29mdG93
+bi1za2lwcy50eHQKPj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL2NpL3hmYWlscy9tc20tc2M3MTgw
+LXRyb2dkb3Ita2luZ29mdG93bi1za2lwcy50eHQKPj4gQEAgLTEsMiArMSwxNyBAQAo+PiDCoCAj
+IFN1c3BlbmQgdG8gUkFNIHNlZW1zIHRvIGJlIGJyb2tlbiBvbiB0aGlzIG1hY2hpbmUKPj4gwqAg
+LipzdXNwZW5kLioKPj4gKwo+PiArIyBTa2lwIGRyaXZlciBzcGVjaWZpYyB0ZXN0cwo+PiArXmFt
+ZGdwdS4qCj4+ICtub3V2ZWF1Xy4qCj4+ICtwYW5mcm9zdF8uKgo+PiArXnYzZC4qCj4+ICtedmM0
+LioKPj4gK152bXdnZngqCj4+ICsKPj4gKyMgU2tpcCBpbnRlbCBzcGVjaWZpYyB0ZXN0cwo+PiAr
+Z2VtXy4qCj4+ICtpOTE1Xy4qCj4+ICsKPj4gKyMgU2tpcCB0aGVzZSB0ZXN0cyBhcyBjb3JlX2dl
+dHJldmlzaW9uIGZhaWxzCj4+ICtjb3JlX2hvdHVucGx1Zy4qCj4+IGRpZmYgLS1naXQgCj4+IGEv
+ZHJpdmVycy9ncHUvZHJtL2NpL3hmYWlscy9tc20tc2M3MTgwLXRyb2dkb3ItbGF6b3ItbGltb3pl
+ZW4tc2tpcHMudHh0IGIvZHJpdmVycy9ncHUvZHJtL2NpL3hmYWlscy9tc20tc2M3MTgwLXRyb2dk
+b3ItbGF6b3ItbGltb3plZW4tc2tpcHMudHh0Cj4+IGluZGV4IDMyNzAzOWY3MDI1Mi4uMDUzODEw
+YTI0NjkxIDEwMDY0NAo+PiAtLS0gCj4+IGEvZHJpdmVycy9ncHUvZHJtL2NpL3hmYWlscy9tc20t
+c2M3MTgwLXRyb2dkb3ItbGF6b3ItbGltb3plZW4tc2tpcHMudHh0Cj4+ICsrKyAKPj4gYi9kcml2
+ZXJzL2dwdS9kcm0vY2kveGZhaWxzL21zbS1zYzcxODAtdHJvZ2Rvci1sYXpvci1saW1vemVlbi1z
+a2lwcy50eHQKPj4gQEAgLTEsMiArMSwxNyBAQAo+PiDCoCAjIFN1c3BlbmQgdG8gUkFNIHNlZW1z
+IHRvIGJlIGJyb2tlbiBvbiB0aGlzIG1hY2hpbmUKPj4gwqAgLipzdXNwZW5kLioKPj4gKwo+PiAr
+IyBTa2lwIGRyaXZlciBzcGVjaWZpYyB0ZXN0cwo+PiArXmFtZGdwdS4qCj4+ICtub3V2ZWF1Xy4q
+Cj4+ICtwYW5mcm9zdF8uKgo+PiArXnYzZC4qCj4+ICtedmM0LioKPj4gK152bXdnZngqCj4+ICsK
+Pj4gKyMgU2tpcCBpbnRlbCBzcGVjaWZpYyB0ZXN0cwo+PiArZ2VtXy4qCj4+ICtpOTE1Xy4qCj4+
+ICsKPj4gKyMgU2tpcCB0aGVzZSB0ZXN0cyBhcyBjb3JlX2dldHJldmlzaW9uIGZhaWxzCj4+ICtj
+b3JlX2hvdHVucGx1Zy4qCj4+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vY2kveGZhaWxz
+L21zbS1zZG04NDUtc2tpcHMudHh0IAo+PiBiL2RyaXZlcnMvZ3B1L2RybS9jaS94ZmFpbHMvbXNt
+LXNkbTg0NS1za2lwcy50eHQKPj4gaW5kZXggNjE4ZTNhM2E3Mjc3Li44NzExMTA4NDViNTIgMTAw
+NjQ0Cj4+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9jaS94ZmFpbHMvbXNtLXNkbTg0NS1za2lwcy50
+eHQKPj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL2NpL3hmYWlscy9tc20tc2RtODQ1LXNraXBzLnR4
+dAo+PiBAQCAtNSwzICs1LDE4IEBAIGttc19idy4qCj4+IMKgICMgCj4+IGh0dHBzOi8vZ2l0bGFi
+LmZyZWVkZXNrdG9wLm9yZy9nZngtY2kvbGludXgvLS9jb21taXQvNGI0OWY5MDJlYzZmMmJiMzgy
+Y2JiZjQ4OTg3MDU3M2Y0YjQzMzcxZQo+PiDCoCAjIAo+PiBodHRwczovL2dpdGxhYi5mcmVlZGVz
+a3RvcC5vcmcvZ2Z4LWNpL2xpbnV4Ly0vY29tbWl0LzM4Y2RmNGM1NTU5NzcxZTI0NzRhZTBmZWNl
+Zjg0NjlmNjUxNDdiYzEKPj4gwqAgbXNtX21hcHBpbmdAKgo+PiArCj4+ICsjIFNraXAgZHJpdmVy
+IHNwZWNpZmljIHRlc3RzCj4+ICteYW1kZ3B1LioKPj4gK25vdXZlYXVfLioKPj4gK3BhbmZyb3N0
+Xy4qCj4+ICtedjNkLioKPj4gK152YzQuKgo+PiArXnZtd2dmeCoKPj4gKwo+PiArIyBTa2lwIGlu
+dGVsIHNwZWNpZmljIHRlc3RzCj4+ICtnZW1fLioKPj4gK2k5MTVfLioKPj4gKwo+PiArIyBTa2lw
+IHRoZXNlIHRlc3RzIGFzIGNvcmVfZ2V0cmV2aXNpb24gZmFpbHMKPj4gK2NvcmVfaG90dW5wbHVn
+LioKPj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9jaS94ZmFpbHMvcm9ja2NoaXAtcmsz
+Mjg4LXNraXBzLnR4dCAKPj4gYi9kcml2ZXJzL2dwdS9kcm0vY2kveGZhaWxzL3JvY2tjaGlwLXJr
+MzI4OC1za2lwcy50eHQKPj4gaW5kZXggZjIwYzM1NzRiNzVhLi5jMzNkYzk1YjdmYzEgMTAwNjQ0
+Cj4+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9jaS94ZmFpbHMvcm9ja2NoaXAtcmszMjg4LXNraXBz
+LnR4dAo+PiArKysgYi9kcml2ZXJzL2dwdS9kcm0vY2kveGZhaWxzL3JvY2tjaGlwLXJrMzI4OC1z
+a2lwcy50eHQKPj4gQEAgLTQ5LDQgKzQ5LDE5IEBAIGttc19wbGFuZV9sb3dyZXNAcGlwZS1GLXRp
+bGluZy15Cj4+IMKgIGttc19jdXJzb3JfY3JjLioKPj4gwqAgIyBNYWNoaW5lIGlzIGhhbmdpbmcg
+aW4gdGhpcyB0ZXN0LCBzbyBza2lwIGl0Cj4+IC1rbXNfcGlwZV9jcmNfYmFzaWNAZGlzYWJsZS1j
+cmMtYWZ0ZXItY3J0Ywo+PiBcIE5vIG5ld2xpbmUgYXQgZW5kIG9mIGZpbGUKPj4gK2ttc19waXBl
+X2NyY19iYXNpY0BkaXNhYmxlLWNyYy1hZnRlci1jcnRjCj4+ICsKPj4gKyMgU2tpcCBkcml2ZXIg
+c3BlY2lmaWMgdGVzdHMKPj4gK15hbWRncHUuKgo+PiArbXNtXy4qCj4+ICtub3V2ZWF1Xy4qCj4+
+ICtedjNkLioKPj4gK152YzQuKgo+PiArXnZtd2dmeCoKPj4gKwo+PiArIyBTa2lwIGludGVsIHNw
+ZWNpZmljIHRlc3RzCj4+ICtnZW1fLioKPj4gK2k5MTVfLioKPj4gKwo+PiArIyBQYW5mcm9zdCBp
+cyBub3QgYSBLTVMgZHJpdmVyLCBzbyBza2lwIHRoZSBLTVMgdGVzdHMKPj4gK2ttc18uKgo+PiBk
+aWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL2NpL3hmYWlscy9yb2NrY2hpcC1yazMzOTktc2tp
+cHMudHh0IAo+PiBiL2RyaXZlcnMvZ3B1L2RybS9jaS94ZmFpbHMvcm9ja2NoaXAtcmszMzk5LXNr
+aXBzLnR4dAo+PiBpbmRleCAxMGMzZDgxYTkxOWEuLjhhN2M5NDY0YjMwZCAxMDA2NDQKPj4gLS0t
+IGEvZHJpdmVycy9ncHUvZHJtL2NpL3hmYWlscy9yb2NrY2hpcC1yazMzOTktc2tpcHMudHh0Cj4+
+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9jaS94ZmFpbHMvcm9ja2NoaXAtcmszMzk5LXNraXBzLnR4
+dAo+PiBAQCAtMywzICszLDE4IEBACj4+IMKgICMgVG9vIHVuc3RhYmxlLCBtYWNoaW5lIGVuZHMg
+dXAgaGFuZ2luZyBhZnRlciBsb3RzIG9mIE9vcHNlcwo+PiDCoCBrbXNfY3Vyc29yX2xlZ2FjeS4q
+Cj4+ICsKPj4gKyMgU2tpcCBkcml2ZXIgc3BlY2lmaWMgdGVzdHMKPj4gK15hbWRncHUuKgo+PiAr
+bXNtXy4qCj4+ICtub3V2ZWF1Xy4qCj4+ICtedjNkLioKPj4gK152YzQuKgo+PiArXnZtd2dmeCoK
+Pj4gKwo+PiArIyBTa2lwIGludGVsIHNwZWNpZmljIHRlc3RzCj4+ICtnZW1fLioKPj4gK2k5MTVf
+LioKPj4gKwo+PiArIyBQYW5mcm9zdCBpcyBub3QgYSBLTVMgZHJpdmVyLCBzbyBza2lwIHRoZSBL
+TVMgdGVzdHMKPj4gK2ttc18uKgo+PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL2NpL3hm
+YWlscy92aXJ0aW9fZ3B1LW5vbmUtc2tpcHMudHh0IAo+PiBiL2RyaXZlcnMvZ3B1L2RybS9jaS94
+ZmFpbHMvdmlydGlvX2dwdS1ub25lLXNraXBzLnR4dAo+PiBpbmRleCA3OGJlMTgxNzQwMTIuLjZm
+MDBkMzY3MDUzMCAxMDA2NDQKPj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL2NpL3hmYWlscy92aXJ0
+aW9fZ3B1LW5vbmUtc2tpcHMudHh0Cj4+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9jaS94ZmFpbHMv
+dmlydGlvX2dwdS1ub25lLXNraXBzLnR4dAo+PiBAQCAtMyw0ICszLDE3IEBACj4+IMKgIGttc19j
+dXJzb3JfbGVnYWN5LioKPj4gwqAgIyBKb2IganVzdCBoYW5ncyB3aXRob3V0IGFueSBvdXRwdXQK
+Pj4gLWttc19mbGlwQGZsaXAtdnMtc3VzcGVuZC4qCj4+IFwgTm8gbmV3bGluZSBhdCBlbmQgb2Yg
+ZmlsZQo+PiAra21zX2ZsaXBAZmxpcC12cy1zdXNwZW5kLioKPj4gKwo+PiArIyBTa2lwIGRyaXZl
+ciBzcGVjaWZpYyB0ZXN0cwo+PiArXmFtZGdwdS4qCj4+ICttc21fLioKPj4gK25vdXZlYXVfLioK
+Pj4gK3BhbmZyb3N0Xy4qCj4+ICtedjNkLioKPj4gK152YzQuKgo+PiArXnZtd2dmeCoKPj4gKwo+
+PiArIyBTa2lwIGludGVsIHNwZWNpZmljIHRlc3RzCj4+ICtnZW1fLioKPj4gK2k5MTVfLioKCl9f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tj
+aGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6
+Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
