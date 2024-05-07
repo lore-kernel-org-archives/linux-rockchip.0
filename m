@@ -4,39 +4,39 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 736CBC25B5F
-	for <linux-rockchip@archiver.kernel.org>; Tue,  7 May 2024 06:03:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8A75DC10F1A
+	for <linux-rockchip@archiver.kernel.org>; Tue,  7 May 2024 06:03:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=gWWo465111qT2LazEcJNQkL7wVR7/K7M1ItvmCCaWv8=; b=NtfI821w/3C1JV
-	zfvd287vS8OnAHB82UCjQcFUvt0o2v3Mb+1bRTXkB+MwSUNx2hz/e5zI4SMy/yv6CtDdVH0Szttoy
-	vN3+kR/BnLNGWwfQUunms3wNlX70yG5fGRXQKyGN4d6lc7GRrPfnwqiFXFz7KxuWQ0W7kkufcmPEL
-	m9sUFZybBSFqr6sb1UFkAS1K7/9ff+ca7PHlceq1M9sTjGaqBN1SFI02m6XE2qiWYLoKFEUDYTivf
-	58jKOJCQ7tIs1dpMGhM301NY1i8LVVcI1255EcCjO/NGye4Ke0v3gUwPNaTzS6arTExr9ymLEfmZi
-	xzqHAxDsKng1qq6Autww==;
+	List-Owner; bh=PBR+VUB0WwHKm3k2BmVMblnrg9m61rESyZMho1aifj0=; b=qp76ShEnP05r7B
+	xHytx9LZeG1LzU+EB+5dwJYqiKb7TMrd5XzjqRXAofKV6V4FotjTxjj/cniOphftwd+Azz3heL+bJ
+	TEuLm+loHfAMm0WEEij+Sx/dFhz6MEzczE6THH+zBWhvEvZTFgTg9jTMezizceiL4NewB5fTpi/NH
+	ZGiXIQ/yLc64stq+hAbzEAFUQxdJtFAWQEoGRMBLgz708fdsUWP6Dt47BE+2pG6Bo5+lL42DlV3lv
+	7bm9KtwiCBiDVPGk+878RxwjvOKm7HD8YQrtToIFVVIZCK9Xiollf+v7g+7sGu4Ct0i+ctJbcO3gD
+	xmNIxNo2tDtWaoXbRVVg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s4DvQ-00000009lyn-27SZ;
-	Tue, 07 May 2024 06:03:40 +0000
+	id 1s4DvQ-00000009lzE-495K;
+	Tue, 07 May 2024 06:03:41 +0000
 Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s4DvL-00000009lwL-2nRC
+	id 1s4DvL-00000009lwB-0ykC
 	for linux-rockchip@lists.infradead.org;
 	Tue, 07 May 2024 06:03:37 +0000
 Received: from pendragon.ideasonboard.com (81-175-209-231.bb.dnainternet.fi [81.175.209.231])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 73FC5DC9;
-	Tue,  7 May 2024 08:03:32 +0200 (CEST)
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 101ABA98;
+	Tue,  7 May 2024 08:03:31 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1715061812;
-	bh=Y0faM+U61JHbDE16uPhf6jDmA9FQGes5Rn/PQHPGf54=;
+	s=mail; t=1715061811;
+	bh=CAfZBviyEOgNMqsGAM9sVQjH0LaJVid1J1G79UQlAb4=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=o3YBl3Xf4ALliRL1YcnRiMZ5bCxe3qA1IKOqW9GKq7scna5B2beX6bPbaKigtInP4
-	 RhL/GotNt4PJbj93zHN0kkKsss5voFjwM7AfakWkBY6xiLGFHs5L96upBd+kcNCKxG
-	 fgUcmQS04LhoJXlNVTt0DoOnE1f6avrbrJxvTzi4=
+	b=UnNNn23ezDwfKmjV52iKAmgE72r7W2zhEZII5A/1ySGgNqm8MCuW9aXm+vypdzqcO
+	 3Nvw2nKQYkQ82bPlvD7M2YxOjoG6cQmPnM2ClldQJNYZlfAZ0gZjxmMsJHfPKGBekz
+	 d/vVpA2Mqbuo3b0uxVqGtLSAZD6CMQZe8h95esLQ=
 From: Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>
 To: linux-media@vger.kernel.org
 Cc: linux-renesas-soc@vger.kernel.org,
@@ -45,16 +45,16 @@ Cc: linux-renesas-soc@vger.kernel.org,
 	Hans Verkuil <hverkuil-cisco@xs4all.nl>,
 	Dafna Hirschfeld <dafna@fastmail.com>,
 	linux-rockchip@lists.infradead.org
-Subject: [PATCH v2 2/2] media: rkisp1: Mark subdev state pointers as const
-Date: Tue,  7 May 2024 09:03:23 +0300
-Message-ID: <20240507060323.26950-3-laurent.pinchart+renesas@ideasonboard.com>
+Subject: [PATCH v2 1/2] media: v4l2-subdev: Provide const-aware subdev state accessors
+Date: Tue,  7 May 2024 09:03:22 +0300
+Message-ID: <20240507060323.26950-2-laurent.pinchart+renesas@ideasonboard.com>
 X-Mailer: git-send-email 2.43.2
 In-Reply-To: <20240507060323.26950-1-laurent.pinchart+renesas@ideasonboard.com>
 References: <20240507060323.26950-1-laurent.pinchart+renesas@ideasonboard.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240506_230335_853398_A320D070 
-X-CRM114-Status: GOOD (  10.14  )
+X-CRM114-CacheID: sfid-20240506_230335_575238_59D84856 
+X-CRM114-Status: GOOD (  15.50  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,83 +71,112 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Several subdev state pointers are used to access the state read-only.
-Mark them as const.
+It would be useful to mark instances of v4l2_subdev_state structures as
+const when code needs to access them read-only. This isn't currently
+possible, as the v4l2_subdev_state_get_*() accessor functions take a
+non-const pointer to the state.
+
+Use _Generic() to provide two different versions of the accessors, for
+const and non-const states respectively. The former returns a const
+pointer to the requested format, rectangle or interval, implementing
+const-correctness. The latter returns a non-const pointer, preserving
+the current behaviour for drivers.
 
 Signed-off-by: Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>
 ---
- drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c     | 8 ++++----
- drivers/media/platform/rockchip/rkisp1/rkisp1-resizer.c | 8 ++++----
- 2 files changed, 8 insertions(+), 8 deletions(-)
+Changes since v1:
 
-diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
-index e45a213baf49..91301d17d356 100644
---- a/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
-+++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
-@@ -173,7 +173,7 @@ static void rkisp1_gasket_disable(struct rkisp1_device *rkisp1)
-  * or at the frame end interrupt
+- Wrap the accessors with _Generic() using a single macro instead of
+  adding a _Generic() statement in each of them.
+---
+ include/media/v4l2-subdev.h | 40 +++++++++++++++++++++++++------------
+ 1 file changed, 27 insertions(+), 13 deletions(-)
+
+diff --git a/include/media/v4l2-subdev.h b/include/media/v4l2-subdev.h
+index e30c463d90e5..c8cfa1eaa82f 100644
+--- a/include/media/v4l2-subdev.h
++++ b/include/media/v4l2-subdev.h
+@@ -1326,6 +1326,16 @@ void v4l2_subdev_cleanup(struct v4l2_subdev *sd);
+ #define __v4l2_subdev_state_gen_call(NAME, _1, ARG, ...)	\
+ 	__v4l2_subdev_state_get_ ## NAME ## ARG
+ 
++/*
++ * A macro to constify the return value of the state accessors when the state
++ * parameter is const.
++ */
++#define __v4l2_subdev_state_constify_call(state, value)			\
++	_Generic(state,							\
++		const typeof(*(state)) *: (const typeof(value))value,	\
++		default: value						\
++	)
++
+ /**
+  * v4l2_subdev_state_get_format() - Get pointer to a stream format
+  * @state: subdevice state
+@@ -1340,16 +1350,17 @@ void v4l2_subdev_cleanup(struct v4l2_subdev *sd);
   */
- static void rkisp1_config_ism(struct rkisp1_isp *isp,
--			      struct v4l2_subdev_state *sd_state)
-+			      const struct v4l2_subdev_state *sd_state)
- {
- 	const struct v4l2_rect *src_crop =
- 		v4l2_subdev_state_get_crop(sd_state,
-@@ -201,7 +201,7 @@ static void rkisp1_config_ism(struct rkisp1_isp *isp,
-  * configure ISP blocks with input format, size......
+ /*
+  * Wrap v4l2_subdev_state_get_format(), allowing the function to be called with
+- * two or three arguments. The purpose of the __v4l2_subdev_state_get_format()
++ * two or three arguments. The purpose of the __v4l2_subdev_state_gen_call()
+  * macro below is to come up with the name of the function or macro to call,
+  * using the last two arguments (_stream and _pad). The selected function or
+  * macro is then called using the arguments specified by the caller. A similar
+  * arrangement is used for v4l2_subdev_state_crop() and
+  * v4l2_subdev_state_compose() below.
   */
- static int rkisp1_config_isp(struct rkisp1_isp *isp,
--			     struct v4l2_subdev_state *sd_state,
-+			     const struct v4l2_subdev_state *sd_state,
- 			     enum v4l2_mbus_type mbus_type, u32 mbus_flags)
- {
- 	struct rkisp1_device *rkisp1 = isp->rkisp1;
-@@ -309,7 +309,7 @@ static int rkisp1_config_isp(struct rkisp1_isp *isp,
- 	if (src_fmt->pixel_enc == V4L2_PIXEL_ENC_BAYER) {
- 		rkisp1_params_disable(&rkisp1->params);
- 	} else {
--		struct v4l2_mbus_framefmt *src_frm;
-+		const struct v4l2_mbus_framefmt *src_frm;
- 
- 		src_frm = v4l2_subdev_state_get_format(sd_state,
- 						       RKISP1_ISP_PAD_SOURCE_VIDEO);
-@@ -429,7 +429,7 @@ static void rkisp1_config_clk(struct rkisp1_isp *isp)
- }
- 
- static int rkisp1_isp_start(struct rkisp1_isp *isp,
--			    struct v4l2_subdev_state *sd_state,
-+			    const struct v4l2_subdev_state *sd_state,
- 			    struct media_pad *source)
- {
- 	struct rkisp1_device *rkisp1 = isp->rkisp1;
-diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-resizer.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-resizer.c
-index 6f3931ca5b51..1fa991227fa9 100644
---- a/drivers/media/platform/rockchip/rkisp1/rkisp1-resizer.c
-+++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-resizer.c
-@@ -135,11 +135,11 @@ static void rkisp1_dcrop_disable(struct rkisp1_resizer *rsz,
- 
- /* configure dual-crop unit */
- static void rkisp1_dcrop_config(struct rkisp1_resizer *rsz,
--				struct v4l2_subdev_state *sd_state)
-+				const struct v4l2_subdev_state *sd_state)
- {
- 	struct rkisp1_device *rkisp1 = rsz->rkisp1;
--	struct v4l2_mbus_framefmt *sink_fmt;
--	struct v4l2_rect *sink_crop;
-+	const struct v4l2_mbus_framefmt *sink_fmt;
-+	const struct v4l2_rect *sink_crop;
- 	u32 dc_ctrl;
- 
- 	sink_crop = v4l2_subdev_state_get_crop(sd_state, RKISP1_RSZ_PAD_SINK);
-@@ -264,7 +264,7 @@ static void rkisp1_rsz_config_regs(struct rkisp1_resizer *rsz,
- }
- 
- static void rkisp1_rsz_config(struct rkisp1_resizer *rsz,
--			      struct v4l2_subdev_state *sd_state,
-+			      const struct v4l2_subdev_state *sd_state,
- 			      enum rkisp1_shadow_regs_when when)
- {
- 	const struct rkisp1_rsz_yuv_mbus_info *sink_yuv_info, *src_yuv_info;
+-#define v4l2_subdev_state_get_format(state, pad, ...)			\
+-	__v4l2_subdev_state_gen_call(format, ##__VA_ARGS__, , _pad)	\
+-		(state, pad, ##__VA_ARGS__)
++#define v4l2_subdev_state_get_format(state, pad, ...)				\
++	__v4l2_subdev_state_constify_call(state,				\
++		__v4l2_subdev_state_gen_call(format, ##__VA_ARGS__, , _pad)	\
++			((struct v4l2_subdev_state *)state, pad, ##__VA_ARGS__))
+ #define __v4l2_subdev_state_get_format_pad(state, pad)	\
+ 	__v4l2_subdev_state_get_format(state, pad, 0)
+ struct v4l2_mbus_framefmt *
+@@ -1368,9 +1379,10 @@ __v4l2_subdev_state_get_format(struct v4l2_subdev_state *state,
+  * For stream-unaware drivers the crop rectangle for the corresponding pad is
+  * returned. If the pad does not exist, NULL is returned.
+  */
+-#define v4l2_subdev_state_get_crop(state, pad, ...)			\
+-	__v4l2_subdev_state_gen_call(crop, ##__VA_ARGS__, , _pad)	\
+-		(state, pad, ##__VA_ARGS__)
++#define v4l2_subdev_state_get_crop(state, pad, ...)				\
++	__v4l2_subdev_state_constify_call(state,				\
++		__v4l2_subdev_state_gen_call(crop, ##__VA_ARGS__, , _pad)	\
++			((struct v4l2_subdev_state *)state, pad, ##__VA_ARGS__))
+ #define __v4l2_subdev_state_get_crop_pad(state, pad)	\
+ 	__v4l2_subdev_state_get_crop(state, pad, 0)
+ struct v4l2_rect *
+@@ -1389,9 +1401,10 @@ __v4l2_subdev_state_get_crop(struct v4l2_subdev_state *state, unsigned int pad,
+  * For stream-unaware drivers the compose rectangle for the corresponding pad is
+  * returned. If the pad does not exist, NULL is returned.
+  */
+-#define v4l2_subdev_state_get_compose(state, pad, ...)			\
+-	__v4l2_subdev_state_gen_call(compose, ##__VA_ARGS__, , _pad)	\
+-		(state, pad, ##__VA_ARGS__)
++#define v4l2_subdev_state_get_compose(state, pad, ...)				\
++	__v4l2_subdev_state_constify_call(state,				\
++		__v4l2_subdev_state_gen_call(compose, ##__VA_ARGS__, , _pad)	\
++			((struct v4l2_subdev_state *)state, pad, ##__VA_ARGS__))
+ #define __v4l2_subdev_state_get_compose_pad(state, pad)	\
+ 	__v4l2_subdev_state_get_compose(state, pad, 0)
+ struct v4l2_rect *
+@@ -1410,9 +1423,10 @@ __v4l2_subdev_state_get_compose(struct v4l2_subdev_state *state,
+  * For stream-unaware drivers the frame interval for the corresponding pad is
+  * returned. If the pad does not exist, NULL is returned.
+  */
+-#define v4l2_subdev_state_get_interval(state, pad, ...)			\
+-	__v4l2_subdev_state_gen_call(interval, ##__VA_ARGS__, , _pad)	\
+-		(state, pad, ##__VA_ARGS__)
++#define v4l2_subdev_state_get_interval(state, pad, ...)				\
++	__v4l2_subdev_state_constify_call(state,				\
++		__v4l2_subdev_state_gen_call(interval, ##__VA_ARGS__, , _pad)	\
++			((struct v4l2_subdev_state *)state, pad, ##__VA_ARGS__))
+ #define __v4l2_subdev_state_get_interval_pad(state, pad)	\
+ 	__v4l2_subdev_state_get_interval(state, pad, 0)
+ struct v4l2_fract *
 -- 
 Regards,
 
