@@ -4,60 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CFEC1C25B4F
-	for <linux-rockchip@archiver.kernel.org>; Wed,  8 May 2024 07:06:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F0021C25B4F
+	for <linux-rockchip@archiver.kernel.org>; Wed,  8 May 2024 07:07:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=vVyWxpzuFvrbP5JwgxmXLLFsydcTWCZIAQc6GBwZqcY=; b=YquHlWJTyFjd/Y
-	18sos21TPeZuWBzBTqAQUvCofcotosK48GV4eopDo4LtD1+rvl/AYe4ro+QtRpCrI/WljpkftZ/SD
-	xZd+tuYgM9MaQlDLacivLuxE56hNn+PbS4YYtZVqbFyjfq//Aw6K8pupI7cunM3pUm3pEQuh4IK+h
-	wIBPK6AZH/pV5B/+cjYNQU+ZjX1Gm0c9bHL0nXpkVzkDsXCvzLsXNisJDDc3XXuSw/3sbczW3QzCV
-	yrw85g/e5tl8LwDp+uBT5zoHM1z9P48MKWF2V1QsvFyWQ4blsAqY+gI4U6vKt8TD3wOwWlKVch0Hi
-	2gwJ3dgl3t3oNuqnXdPg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=/js1Yu0MLX9l5R1d/sjiFFhLhDuM9H/dNYF9Pm2Q2aE=; b=M3ivAIB7EZhhM5
+	CCdwyPpCDsfM2w7mCBcj6ox+14jBScKO6bhNO/DNStIwmMQX9u7BBy16011bKvLSU3EJrV/89GBpU
+	b+lvlNHxxt/OANY8nw15B3J3njoK3K4ibMvC9TmmcFjUg0fHjoEYn5uisDp0KH9XaxcNdyDVhifMa
+	W1/gLUSSeXtjJSm3Wi/3OduOe/d3B/TL1/n7rWP5mN3CtHBIWNm+OXoqSrGgHZOlv+t+z99m7TMX8
+	xW4ElSpfWFWk25eFZA56qScjiRableNJYHEWOK00g+/NRjF+lnT0l2/BQ55ieDsjfIBnDOv/Wpqmw
+	kJUIwODPEKcZ/IYn13WQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s4bNy-0000000EL4U-2Tpp;
-	Wed, 08 May 2024 07:06:42 +0000
-Received: from smtp.forwardemail.net ([149.28.215.223])
+	id 1s4bON-0000000ELKO-0hiS;
+	Wed, 08 May 2024 07:07:07 +0000
+Received: from smtp.forwardemail.net ([167.172.40.54])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s4bNt-0000000EL1g-0E0H
+	id 1s4bOD-0000000ELBI-3Vz9
 	for linux-rockchip@lists.infradead.org;
-	Wed, 08 May 2024 07:06:41 +0000
+	Wed, 08 May 2024 07:07:04 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
- h=Content-Transfer-Encoding: MIME-Version: Message-ID: Date: Subject: Cc:
- To: From; q=dns/txt; s=fe-e1b5cab7be; t=1715151981;
- bh=4SBiHj3UaP8h4i4SKqdmJI+KpeU5a4XOxwcb5Gg0phs=;
- b=c26aNat1iwpw6RjewIhz+qWHNs+JRdSGgO2yYl3sGKESI+o0hm2YR1xkitEARc64wnKUdUjDL
- q8Uxgmewl0av0bnjgHeJs/oLQDTo/NAtV6d046j9R4V84uZNMem92up7tZ7wQn0eDBZI9H583cG
- D5dyFypnRiobUXUqNLEIZJz8dngNGPKisEE9BpAfQCjKVdczGrJi2CldRyaYD1zfa5XJMXcChtk
- hDAh/Bv/6x5HxUZUEN9FIkyp7833KL3PNA7jL6JDTWUrhkpmB2dANEpyjlPS9N/zkQ12N74IeQ/
- RsJhFrqxo5xFjb5Qo74euzN2CThAYochQZeDopTAuXVw==
+ h=Content-Transfer-Encoding: MIME-Version: References: In-Reply-To:
+ Message-ID: Date: Subject: Cc: To: From; q=dns/txt; s=fe-e1b5cab7be;
+ t=1715151984; bh=mVIeb7oUJg1K51CEIumat9UUkWRnHB3Y/jVf7dq3VYQ=;
+ b=anzykPHQTMEJl4m4sJJbGk2RdvA7XC6ugV8pnRHTWpCTXi2LXVMA7IrcVBhaHDyu62nhauD2p
+ bOr2ZVesN9ptmq+/H5KjXzW+adzlegO2PGJf/LDheEbf6vJKzSRqfzWdvMYihy0deZzBy26uZXe
+ Wn441qqe6NwikYndJJix+o8gpEDBolUOchXe3wTstZ2lMkMsGrrjDJOoHz+olsKr/2+rkv/8jHI
+ GS1VEfY1Jd9bWDHoCWiTEcHcXAm6KGde1Ffm69/SLL4iyxqyEoE6gH/aqlfwXAP+womgQA+48xn
+ oC40pA3B2vNvI9BoDUXklbsC1ncyMNuyj5Nors6ZhjSw==
 From: Jonas Karlman <jonas@kwiboo.se>
 To: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh@kernel.org>,
  Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley
- <conor+dt@kernel.org>
+ <conor+dt@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>
 Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Jonas
- Karlman <jonas@kwiboo.se>
-Subject: [PATCH v5 0/2] arm64: dts: rockchip: Add Radxa ZERO 3W/3E
-Date: Wed,  8 May 2024 07:06:03 +0000
-Message-ID: <20240508070611.4153602-1-jonas@kwiboo.se>
+ Karlman <jonas@kwiboo.se>, Krzysztof Kozlowski
+ <krzysztof.kozlowski@linaro.org>
+Subject: [PATCH v5 1/2] dt-bindings: arm: rockchip: Add Radxa ZERO 3W/3E
+Date: Wed,  8 May 2024 07:06:04 +0000
+Message-ID: <20240508070611.4153602-2-jonas@kwiboo.se>
 X-Mailer: git-send-email 2.43.2
+In-Reply-To: <20240508070611.4153602-1-jonas@kwiboo.se>
+References: <20240508070611.4153602-1-jonas@kwiboo.se>
 MIME-Version: 1.0
 X-Report-Abuse-To: abuse@forwardemail.net
 X-Report-Abuse: abuse@forwardemail.net
 X-Complaints-To: abuse@forwardemail.net
 X-ForwardEmail-Version: 0.4.40
 X-ForwardEmail-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
- 149.28.215.223
-X-ForwardEmail-ID: 663b2469a86e8ee0e42ddc14
+ 167.172.40.54
+X-ForwardEmail-ID: 663b246da86e8ee0e42ddc26
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240508_000637_471300_8102C45C 
-X-CRM114-Status: GOOD (  10.71  )
+X-CRM114-CacheID: sfid-20240508_000658_208347_833A5EAA 
+X-CRM114-Status: UNSURE (   7.41  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,58 +78,41 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This series adds initial support for the Radxa ZERO 3W/3E boards.
+Add devicetree binding documentation for Radxa ZERO 3W/3E boards.
 
 The Radxa ZERO 3W/3E is an ultra-small, high-performance single board
 computer based on the Rockchip RK3566, with a compact form factor and
 rich interfaces.
 
-Schematic for ZERO 3W and ZERO 3E can be found at:
-https://dl.radxa.com/zero3/docs/hw/3w/radxa_zero_3w_v1110_schematic.pdf
-https://dl.radxa.com/zero3/docs/hw/3e/radxa_zero_3e_v1200_schematic.pdf
+Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+---
+v2: Collect acked-by tag
+v3: Fix devicetree spelling
+v4: No change
+v5: No change
+---
+ Documentation/devicetree/bindings/arm/rockchip.yaml | 7 +++++++
+ 1 file changed, 7 insertions(+)
 
-Changes in v2:
-- Collect acked-by tag
-- Add to Makefile
-- Add patch to fix #sound-dai-cells warning
-
-Changes in v3:
-- Fix devicetree spelling
-- Sort hdmi-con, leds, pmic@20 and regulator@40 nodes
-- Change to regulator-off-in-suspend for vdd_logic
-- Drop patch to fix #sound-dai-cells warning, similar patch [1] already
-  exists
-
-Changes in v4:
-- Change compatible of vdd_logic
-- Add vcc5v_midu and vbus regulator and related vcc8/vcc9-supply prop
-- Adjust clock_in_out prop for gmac1
-- Add cap-mmc-highspeed prop to sdhci
-- Add sdmmc1 and uart1 nodes used for wifi/bt on 3W
-- Rename rk3566-radxa-zero3.dtsi to rk3566-radxa-zero-3.dtsi
-- Rebase on latest mmind/for-next tree
-
-Changes in v5:
-- Rename regulator-fixed nodes
-- Add keep-power-in-suspend to sdmmc1 node
-- Add uart-has-rtscts to uart1 node
-
-[1] https://lore.kernel.org/linux-rockchip/3a035c16-75b5-471d-aa9d-e91c2bb9f8d0@gmail.com/
-
-Jonas Karlman (2):
-  dt-bindings: arm: rockchip: Add Radxa ZERO 3W/3E
-  arm64: dts: rockchip: Add Radxa ZERO 3W/3E
-
- .../devicetree/bindings/arm/rockchip.yaml     |   7 +
- arch/arm64/boot/dts/rockchip/Makefile         |   2 +
- .../dts/rockchip/rk3566-radxa-zero-3.dtsi     | 464 ++++++++++++++++++
- .../dts/rockchip/rk3566-radxa-zero-3e.dts     |  41 ++
- .../dts/rockchip/rk3566-radxa-zero-3w.dts     |  87 ++++
- 5 files changed, 601 insertions(+)
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3566-radxa-zero-3.dtsi
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3566-radxa-zero-3e.dts
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3566-radxa-zero-3w.dts
-
+diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
+index e04c213a0dee..51cdaabaf0d9 100644
+--- a/Documentation/devicetree/bindings/arm/rockchip.yaml
++++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
+@@ -814,6 +814,13 @@ properties:
+           - const: radxa,rock-5b
+           - const: rockchip,rk3588
+ 
++      - description: Radxa ZERO 3W/3E
++        items:
++          - enum:
++              - radxa,zero-3e
++              - radxa,zero-3w
++          - const: rockchip,rk3566
++
+       - description: Rikomagic MK808 v1
+         items:
+           - const: rikomagic,mk808
 -- 
 2.43.2
 
