@@ -4,62 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5B80EC19F4F
-	for <linux-rockchip@archiver.kernel.org>; Wed,  8 May 2024 16:28:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 57E85C25B4F
+	for <linux-rockchip@archiver.kernel.org>; Wed,  8 May 2024 18:45:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=y2SMFOUzf7fD3b8zTIJZrlWx7XsUxnX/G2Dy+X7D0Pc=; b=EUdYkoo0imd2/FApVOZGLDcsa1
-	4CEFPSGo/eX/YUpDv08sMd2wsQmIAQNbH+l3T58fvoO6PTG4vQOunp61d4jCzX0mQk3dBW6t1MZ/+
-	71xUsVBR56kEJtmMC0Kdrur/uF+85l02Vr8Uu3+ciJXkvEQktN6VQ3wk7WbI223G8l77Ks0pEsxTO
-	0wsPWvwW9QTcbcv1IRDA1cGeDPJDzrcC/NLbGNgQIb4D91rr7chla8RWDDQZBcZ9qE1c1KKSQ5gW/
-	xBRwWwlj3nnLtdc1MwWMPvNcfqwj7YlplWcYatldIrwtozvWBctVdb7IKyC1U2eCyRqphitlrwGj6
-	2ALJ9Rjg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=oxC6vTaXpbbZ1dic5DX3HPuMKLwqm0/FlpWDRijR5js=; b=b1OzxMTta3ANQo
+	B4XkPUr72NFbDWEiWJkgX6dnBmmcWNNmVCT23VEc8kfKhtKs2RQGjhuQbDpoOei3cdyX1iPi+10Tc
+	ElmTYXgFaJxQfdM5yj867cCQ7USaRjxQoCtUO5rUqvrCntu7TtWlCxxN68+Nnh8L4Z1cFytL/EEdS
+	rdLTB4OuiK60fWO/pU5DiE1dtO7vfm6ic66nwO0rRlmS4HoDGyvsjh2Es/T28PbLkHNEDsN39IbsR
+	nM2Oi+tzFdAb0fPXkElrQJMtOPn8P7ZbK7vsYbtYpbLouBbgJfz7v1so4Sk0wRNtz+jhL1zVZTnVL
+	/PDZJsLkAmPQvlSV0bNA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s4k9O-0000000GBGY-3W6E;
-	Wed, 08 May 2024 16:28:14 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1s4mHh-0000000Ga1z-169p;
+	Wed, 08 May 2024 18:44:57 +0000
+Received: from lahtoruutu.iki.fi ([185.185.170.37])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s4k9J-0000000GBCJ-0g8b;
-	Wed, 08 May 2024 16:28:11 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 41F4C61CA5;
-	Wed,  8 May 2024 16:28:08 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7D4B5C2BD11;
-	Wed,  8 May 2024 16:28:05 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1715185688;
-	bh=UYa9nQFbXFsPXVOkMa9L+1nCg7GuO4KyEPe7MnFS6Gw=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=GENxTopRekGLP/hpvKlsVPa/uM3UMefaKagfqUrxUv1AgSMFQrYTZ65RRMZiGt0bz
-	 AnRMB47LJwr6GbmCWt7RMWoP9Mk+vuS5sdsdjenp9iCf5HtcxE3z8q+8cUtjTc27xu
-	 Yx78/lzsuitziWFznkN8LKwJNUZ5DrmShAwGO1HAAf9cdGurgmG15c3HxSUVrUeBxM
-	 i3LXC7vm/6ZQ/GVCn1qJ+2oZgQMRO99r/oYkBgYDJ7o30hcKbGy/weZ5jR3ShQlNd7
-	 P3hAr+P3O81+lANvBLv7MuYKTeso51NDVU5o9M+UkfFcqUykBJNuscY2S0c7cVF9iE
-	 9F5gZ+Bzx6/Xg==
-Date: Wed, 8 May 2024 17:28:03 +0100
-From: Conor Dooley <conor@kernel.org>
-To: Markus Elfring <Markus.Elfring@web.de>
-Cc: Jonas Karlman <jonas@kwiboo.se>, linux-rockchip@lists.infradead.org,
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	kernel-janitors@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>,
-	Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Rob Herring <robh@kernel.org>, LKML <linux-kernel@vger.kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
-Subject: Re: [PATCH v5 2/2] arm64: dts: rockchip: Add Radxa ZERO 3W/3E
-Message-ID: <20240508-blaming-kinfolk-7a0cf7f9a7c0@spud>
-References: <20240508070611.4153602-3-jonas@kwiboo.se>
- <662d3052-d0ab-4034-84d3-fff4f985875b@web.de>
+	id 1s4mHc-0000000Ga0S-3oLZ
+	for linux-rockchip@lists.infradead.org;
+	Wed, 08 May 2024 18:44:55 +0000
+Received: from hillosipuli.retiisi.eu (80-248-247-191.cust.suomicom.net [80.248.247.191])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: sailus)
+	by lahtoruutu.iki.fi (Postfix) with ESMTPSA id 4VZPFj17xVz49Q47;
+	Wed,  8 May 2024 21:44:40 +0300 (EEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=iki.fi; s=lahtoruutu;
+	t=1715193882;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=HRQ6ktTcY6IyP0yNGoqX7mYAD8bbo36PpZGLoGu3HvM=;
+	b=tmfe9z6c4wm6VpM9pQyT+EvTjHr/EtPqf05l+ezD6R1rNv3t+SGDy0sNsnvYypqwoN4Nq5
+	wGXfdV6fiJKA9wCciwf9xJY6qKZDck4zddP89orRREQ5f0YKa6Wf8CyNxHcP3mt/6mg70L
+	xAreWFWKwQ+/oHJI9fGudmKgJB3sb5Y3Lbh8tFz8MI3/lZD2Yb39nXb0CGMvpfnH/XDR/S
+	O9NSgeYfTzjWqv0/Szh90MZW7JpwT9J+kjMAhaBfbVq/CDvHhrokLxvFna+kWQHtrGCOcU
+	gqalG5ngxOFZxZ168TRA93qxn6IO0/vk7js5l7KsgNjm1w/fA1hgSJDi+VdkzQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=iki.fi;
+	s=lahtoruutu; t=1715193882;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=HRQ6ktTcY6IyP0yNGoqX7mYAD8bbo36PpZGLoGu3HvM=;
+	b=dvFsYt1EDeKGJjdDbSKWj0b7j2bz7JO93Rf5UaNix1ls1Xurxp3LGggXYYvipubEqc0KPm
+	lSWjmxNoMdPV8KE0dFbw+emrXDPh10w7VtJwYOOmgjaxoSdULpiQAByyJuIZb8Xm3b8Q6b
+	JxqPzdQ+eEwkE5EjT1ljXUk64fNpkJl/Ji3vd7gcCbERS3AMnJpmtIbaYalPY6EWLu/jcY
+	GiPg38YfqAKb38vydxwX/DbxY/ybAHXrXmE5GxnJkOl9+BX5O5Yn4CXLQRXuvnoEfGhY6Q
+	IGxV3vYpPHxwf0cbgRKYkFl4DWnl5P7pz2n8Ng/IFR5FG86E4DqYiM24AUlZIg==
+ARC-Authentication-Results: i=1;
+	ORIGINATING;
+	auth=pass smtp.auth=sailus smtp.mailfrom=sakari.ailus@iki.fi
+ARC-Seal: i=1; s=lahtoruutu; d=iki.fi; t=1715193882; a=rsa-sha256;
+	cv=none;
+	b=upbfWpYaDry47wMomZZACGg2z6O+QXRqaHikfcC7pZX9XUoZJ27SV4afme64Cc1lj0Ly9M
+	X+DagOVTV3h93+Bgi1lRdlLzHjgjmVGxXT+imKL+twI0cyjOnlPmFOVsRd/yyH31UBcSGO
+	SkNOvW4Uod2vsh2MKU8eXHAicRm5Q8na00Amq2C4S4SGVcXy7RO5MbV+0tUZnUdMTBWTd+
+	jY2o51Trqg68fuXQyoDeKzibC0eFF+V+KhIHdJdCTC10G9CS9D2ylIdj6pY40eFxJuIAjz
+	3KPCHC9J3unISMzlUEyJmskhQN05VL+cLcjAZNakwYZ33LFYnxKSICMBhkkpbQ==
+Received: from valkosipuli.retiisi.eu (valkosipuli.localdomain [192.168.4.2])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	by hillosipuli.retiisi.eu (Postfix) with ESMTPS id 8FABC634C94;
+	Wed,  8 May 2024 21:44:40 +0300 (EEST)
+Date: Wed, 8 May 2024 18:44:40 +0000
+From: Sakari Ailus <sakari.ailus@iki.fi>
+To: Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>
+Cc: linux-media@vger.kernel.org, linux-renesas-soc@vger.kernel.org,
+	Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>,
+	Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+	Dafna Hirschfeld <dafna@fastmail.com>,
+	linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH v3 1/2] media: v4l2-subdev: Provide const-aware subdev
+ state accessors
+Message-ID: <ZjvIGDaAAGK0WJo1@valkosipuli.retiisi.eu>
+References: <20240507161907.27747-1-laurent.pinchart+renesas@ideasonboard.com>
+ <20240507161907.27747-2-laurent.pinchart+renesas@ideasonboard.com>
 MIME-Version: 1.0
-In-Reply-To: <662d3052-d0ab-4034-84d3-fff4f985875b@web.de>
+Content-Disposition: inline
+In-Reply-To: <20240507161907.27747-2-laurent.pinchart+renesas@ideasonboard.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240508_092809_277179_6B988BC5 
-X-CRM114-Status: GOOD (  11.32  )
+X-CRM114-CacheID: sfid-20240508_114453_152386_BF6C633F 
+X-CRM114-Status: GOOD (  28.89  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,55 +102,151 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============4670099479603916420=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Hi Laurent,
 
---===============4670099479603916420==
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="p7P9ZT5PsCFLYhGM"
-Content-Disposition: inline
+Thanks for the update.
 
+This is starting to look very nice. A few comments below...
 
---p7P9ZT5PsCFLYhGM
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+On Tue, May 07, 2024 at 07:19:06PM +0300, Laurent Pinchart wrote:
+> It would be useful to mark instances of v4l2_subdev_state structures as
+> const when code needs to access them read-only. This isn't currently
+> possible, as the v4l2_subdev_state_get_*() accessor functions take a
+> non-const pointer to the state.
+> 
+> Use _Generic() to provide two different versions of the accessors, for
+> const and non-const states respectively. The former returns a const
+> pointer to the requested format, rectangle or interval, implementing
+> const-correctness. The latter returns a non-const pointer, preserving
+> the current behaviour for drivers.
+> 
+> Signed-off-by: Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>
+> ---
+> Changes since v2:
+> 
+> - Specify types explicitly in _Generic() expression
+> - Fix cast of value to const pointer
+> 
+> Changes since v1:
+> 
+> - Wrap the accessors with _Generic() using a single macro instead of
+>   adding a _Generic() statement in each of them.
+> ---
+>  include/media/v4l2-subdev.h | 40 +++++++++++++++++++++++++------------
+>  1 file changed, 27 insertions(+), 13 deletions(-)
+> 
+> diff --git a/include/media/v4l2-subdev.h b/include/media/v4l2-subdev.h
+> index e30c463d90e5..cd3e9e2ebe4d 100644
+> --- a/include/media/v4l2-subdev.h
+> +++ b/include/media/v4l2-subdev.h
+> @@ -1326,6 +1326,16 @@ void v4l2_subdev_cleanup(struct v4l2_subdev *sd);
+>  #define __v4l2_subdev_state_gen_call(NAME, _1, ARG, ...)	\
+>  	__v4l2_subdev_state_get_ ## NAME ## ARG
+>  
+> +/*
+> + * A macro to constify the return value of the state accessors when the state
+> + * parameter is const.
+> + */
+> +#define __v4l2_subdev_state_constify_call(state, value)				\
 
-On Wed, May 08, 2024 at 12:22:52PM +0200, Markus Elfring wrote:
-> =E2=80=A6
-> > This adds initial support for =E2=80=A6
->=20
-> Please convert this change description to an imperative wording.
+This function just changes the return value constness. How about calling it
+e.g. __v4l2_subdev_state_constify_ret instead?
 
-I think that sending a new version for s/This adds/Add/ would be a
-complete waste of developer time.
+Either way,
 
---p7P9ZT5PsCFLYhGM
-Content-Type: application/pgp-signature; name="signature.asc"
+Reviewed-by: Sakari Ailus <sakari.ailus@linux.intel.com>
 
------BEGIN PGP SIGNATURE-----
+> +	_Generic(state,								\
+> +		const struct v4l2_subdev_state *: (const typeof(*(value)) *)(value), \
+> +		struct v4l2_subdev_state *: (value)				\
+> +	)
+> +
+>  /**
+>   * v4l2_subdev_state_get_format() - Get pointer to a stream format
+>   * @state: subdevice state
+> @@ -1340,16 +1350,17 @@ void v4l2_subdev_cleanup(struct v4l2_subdev *sd);
+>   */
+>  /*
+>   * Wrap v4l2_subdev_state_get_format(), allowing the function to be called with
+> - * two or three arguments. The purpose of the __v4l2_subdev_state_get_format()
+> + * two or three arguments. The purpose of the __v4l2_subdev_state_gen_call()
+>   * macro below is to come up with the name of the function or macro to call,
+>   * using the last two arguments (_stream and _pad). The selected function or
+>   * macro is then called using the arguments specified by the caller. A similar
+>   * arrangement is used for v4l2_subdev_state_crop() and
+>   * v4l2_subdev_state_compose() below.
 
-iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZjuoEwAKCRB4tDGHoIJi
-0s48APwMPgOmyAXUppUMok08TEEu0Pz4L/HNda6y7HTL5uyrmAEAlCipL3IL9oOH
-3dCsFvC7ldVF8jBqCdFSEl+5pu5BgQE=
-=6FNx
------END PGP SIGNATURE-----
+These function names are missing _get after the prefix.
 
---p7P9ZT5PsCFLYhGM--
+Could you also add the interval function here, too?
 
+The would fit well for a separate patch.
 
---===============4670099479603916420==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+>   */
+> -#define v4l2_subdev_state_get_format(state, pad, ...)			\
+> -	__v4l2_subdev_state_gen_call(format, ##__VA_ARGS__, , _pad)	\
+> -		(state, pad, ##__VA_ARGS__)
+> +#define v4l2_subdev_state_get_format(state, pad, ...)				\
+> +	__v4l2_subdev_state_constify_call(state,				\
+> +		__v4l2_subdev_state_gen_call(format, ##__VA_ARGS__, , _pad)	\
+> +			((struct v4l2_subdev_state *)state, pad, ##__VA_ARGS__))
+>  #define __v4l2_subdev_state_get_format_pad(state, pad)	\
+>  	__v4l2_subdev_state_get_format(state, pad, 0)
+>  struct v4l2_mbus_framefmt *
+> @@ -1368,9 +1379,10 @@ __v4l2_subdev_state_get_format(struct v4l2_subdev_state *state,
+>   * For stream-unaware drivers the crop rectangle for the corresponding pad is
+>   * returned. If the pad does not exist, NULL is returned.
+>   */
+> -#define v4l2_subdev_state_get_crop(state, pad, ...)			\
+> -	__v4l2_subdev_state_gen_call(crop, ##__VA_ARGS__, , _pad)	\
+> -		(state, pad, ##__VA_ARGS__)
+> +#define v4l2_subdev_state_get_crop(state, pad, ...)				\
+> +	__v4l2_subdev_state_constify_call(state,				\
+> +		__v4l2_subdev_state_gen_call(crop, ##__VA_ARGS__, , _pad)	\
+> +			((struct v4l2_subdev_state *)state, pad, ##__VA_ARGS__))
+>  #define __v4l2_subdev_state_get_crop_pad(state, pad)	\
+>  	__v4l2_subdev_state_get_crop(state, pad, 0)
+>  struct v4l2_rect *
+> @@ -1389,9 +1401,10 @@ __v4l2_subdev_state_get_crop(struct v4l2_subdev_state *state, unsigned int pad,
+>   * For stream-unaware drivers the compose rectangle for the corresponding pad is
+>   * returned. If the pad does not exist, NULL is returned.
+>   */
+> -#define v4l2_subdev_state_get_compose(state, pad, ...)			\
+> -	__v4l2_subdev_state_gen_call(compose, ##__VA_ARGS__, , _pad)	\
+> -		(state, pad, ##__VA_ARGS__)
+> +#define v4l2_subdev_state_get_compose(state, pad, ...)				\
+> +	__v4l2_subdev_state_constify_call(state,				\
+> +		__v4l2_subdev_state_gen_call(compose, ##__VA_ARGS__, , _pad)	\
+> +			((struct v4l2_subdev_state *)state, pad, ##__VA_ARGS__))
+>  #define __v4l2_subdev_state_get_compose_pad(state, pad)	\
+>  	__v4l2_subdev_state_get_compose(state, pad, 0)
+>  struct v4l2_rect *
+> @@ -1410,9 +1423,10 @@ __v4l2_subdev_state_get_compose(struct v4l2_subdev_state *state,
+>   * For stream-unaware drivers the frame interval for the corresponding pad is
+>   * returned. If the pad does not exist, NULL is returned.
+>   */
+> -#define v4l2_subdev_state_get_interval(state, pad, ...)			\
+> -	__v4l2_subdev_state_gen_call(interval, ##__VA_ARGS__, , _pad)	\
+> -		(state, pad, ##__VA_ARGS__)
+> +#define v4l2_subdev_state_get_interval(state, pad, ...)				\
+> +	__v4l2_subdev_state_constify_call(state,				\
+> +		__v4l2_subdev_state_gen_call(interval, ##__VA_ARGS__, , _pad)	\
+> +			((struct v4l2_subdev_state *)state, pad, ##__VA_ARGS__))
+>  #define __v4l2_subdev_state_get_interval_pad(state, pad)	\
+>  	__v4l2_subdev_state_get_interval(state, pad, 0)
+>  struct v4l2_fract *
+
+-- 
+Kind regards,
+
+Sakari Ailus
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============4670099479603916420==--
-
