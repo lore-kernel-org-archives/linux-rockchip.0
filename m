@@ -4,39 +4,39 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D7619C25B4F
-	for <linux-rockchip@archiver.kernel.org>; Wed,  8 May 2024 21:41:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 82C7EC25B74
+	for <linux-rockchip@archiver.kernel.org>; Wed,  8 May 2024 21:41:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=+VM3gL6CpgoJSEBjdmOIXnpey6sIfdte3n71g0oHzYA=; b=cGtm9AZK1WTPy7
-	/w6KVQkZ1x689O+fWTp1RB3NPt2pJ7DtZkaCMYhvg+TJ2YJ1aZLJIdtnxLm8OQVMuH6EfzNuGA1HB
-	UF1kZwCp/wmVGiLPIGKOBNWuHP2fADGA8ORdmfu9lSS5y6qu5yWErX/82nDokExeUzSXDJGS6d5oM
-	bH5eD+CiBTc0F9dUAEN9sd9+IeOUL9C6hWj/F8O5pQx+i3T+nXlcL0NoNyyPgL1hWEUZNSOXvL86h
-	C8umw0q5Tt7bWCMwWXRfHZR4RaDUOMOezHMalPO9qkYMw4qtxPPfRfalrPYX77FZdw75vDRzmsvTl
-	yi/MhUiGMnGxfzjuMdXg==;
+	List-Owner; bh=gWWo465111qT2LazEcJNQkL7wVR7/K7M1ItvmCCaWv8=; b=hTTPbX6XlrTHf4
+	mFhAG9ARiDSFqeEkWqdPiQaqVv14U0TZJP3khp9G1RauHN963X+gY7ncJ1ed8++qot0sBVTBl6soO
+	Cyv78kGm60q0GrS9d+tyfn7G6FgW4o8me2o8paX0jxHNxMn/Rs/GtqVeZcEJb+gYYUvykYfaM31Np
+	RbK3JN6g/xkP750GYWXNw+V8gNgq3a6f4hi1JuebANpqO5nGJ6l/MYV5k7E+kHiO68hOB8TBCODfu
+	SijybhS9UhZEJlB9j60OPxhcJBNPJW9jS2rEV9CZ7vB4R4WeK5VzG0OOR5OHC1Wc5xhFFgfEE8t3J
+	NOiVCaE5+2DPUcvbSo8Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s4p26-0000000H3JT-3y2k;
-	Wed, 08 May 2024 21:41:02 +0000
+	id 1s4p27-0000000H3Jn-3xQr;
+	Wed, 08 May 2024 21:41:03 +0000
 Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s4p21-0000000H3H3-0OCm
+	id 1s4p23-0000000H3IE-3QfL
 	for linux-rockchip@lists.infradead.org;
-	Wed, 08 May 2024 21:40:59 +0000
+	Wed, 08 May 2024 21:41:01 +0000
 Received: from pendragon.ideasonboard.com (81-175-209-231.bb.dnainternet.fi [81.175.209.231])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 9399819FA;
-	Wed,  8 May 2024 23:40:52 +0200 (CEST)
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 8177A2D31;
+	Wed,  8 May 2024 23:40:55 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1715204452;
-	bh=ve9t/Y3usH4BO78+BB5FxHWk4otvPB0zxV74NSyc/OI=;
+	s=mail; t=1715204455;
+	bh=Y0faM+U61JHbDE16uPhf6jDmA9FQGes5Rn/PQHPGf54=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=Au5roWwOF4OjBFBJ0p1QVPwBKx1W3hIqup0QAMedIUXqWGNLiqo2MknWv+KkC7cz6
-	 czQNeqFi7mbelavOAfVgxf/LdlmmkpAV+QBVOF2/a1JZrQ8dY4w1a6dyqGEp0qysKw
-	 +++IuLQ+gMcEdPDV1pCwhnU7Wp6se79erxX3dXXE=
+	b=q6+4nBQHw5IJkuGW9HVA5RhNA5MqafUydy4qqnRD5XBVVTs5FSb+gcgB8fOASsq7P
+	 IKMQjrO4D0O/KSF8fouH3AuQM+8uhuWtQOJ2PLL+lWZwFrtNUuCQVJFE9NLEyWCjjv
+	 I2NWlY+138BBThc8KLqVCvzawWYLUD9cvVtMiY9w=
 From: Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>
 To: linux-media@vger.kernel.org
 Cc: linux-renesas-soc@vger.kernel.org,
@@ -45,16 +45,16 @@ Cc: linux-renesas-soc@vger.kernel.org,
 	Hans Verkuil <hverkuil-cisco@xs4all.nl>,
 	Dafna Hirschfeld <dafna@fastmail.com>,
 	linux-rockchip@lists.infradead.org
-Subject: [PATCH v4 1/3] media: v4l2-subdev: Fix v4l2_subdev_state_get_format() documentation
-Date: Thu,  9 May 2024 00:40:43 +0300
-Message-ID: <20240508214045.24716-2-laurent.pinchart+renesas@ideasonboard.com>
+Subject: [PATCH v4 3/3] media: rkisp1: Mark subdev state pointers as const
+Date: Thu,  9 May 2024 00:40:45 +0300
+Message-ID: <20240508214045.24716-4-laurent.pinchart+renesas@ideasonboard.com>
 X-Mailer: git-send-email 2.43.2
 In-Reply-To: <20240508214045.24716-1-laurent.pinchart+renesas@ideasonboard.com>
 References: <20240508214045.24716-1-laurent.pinchart+renesas@ideasonboard.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240508_144057_324886_BBE73D4B 
-X-CRM114-Status: GOOD (  11.86  )
+X-CRM114-CacheID: sfid-20240508_144100_172315_50FEEDB3 
+X-CRM114-Status: GOOD (  10.53  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,37 +71,83 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The documentation of the v4l2_subdev_state_get_format() macro
-incorrectly references __v4l2_subdev_state_get_format() instead of
-__v4l2_subdev_state_gen_call(). Fix it, and also update the list of
-similar macros to add the missing v4l2_subdev_state_get_interval().
+Several subdev state pointers are used to access the state read-only.
+Mark them as const.
 
-Suggested-by: Sakari Ailus <sakari.ailus@linux.intel.com>
 Signed-off-by: Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>
 ---
- include/media/v4l2-subdev.h | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c     | 8 ++++----
+ drivers/media/platform/rockchip/rkisp1/rkisp1-resizer.c | 8 ++++----
+ 2 files changed, 8 insertions(+), 8 deletions(-)
 
-diff --git a/include/media/v4l2-subdev.h b/include/media/v4l2-subdev.h
-index e30c463d90e5..b25b6e97ecbd 100644
---- a/include/media/v4l2-subdev.h
-+++ b/include/media/v4l2-subdev.h
-@@ -1340,12 +1340,12 @@ void v4l2_subdev_cleanup(struct v4l2_subdev *sd);
+diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
+index e45a213baf49..91301d17d356 100644
+--- a/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
++++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
+@@ -173,7 +173,7 @@ static void rkisp1_gasket_disable(struct rkisp1_device *rkisp1)
+  * or at the frame end interrupt
   */
- /*
-  * Wrap v4l2_subdev_state_get_format(), allowing the function to be called with
-- * two or three arguments. The purpose of the __v4l2_subdev_state_get_format()
-+ * two or three arguments. The purpose of the __v4l2_subdev_state_gen_call()
-  * macro below is to come up with the name of the function or macro to call,
-  * using the last two arguments (_stream and _pad). The selected function or
-  * macro is then called using the arguments specified by the caller. A similar
-- * arrangement is used for v4l2_subdev_state_crop() and
-- * v4l2_subdev_state_compose() below.
-+ * arrangement is used for v4l2_subdev_state_crop(), v4l2_subdev_state_compose()
-+ * and v4l2_subdev_state_get_interval() below.
+ static void rkisp1_config_ism(struct rkisp1_isp *isp,
+-			      struct v4l2_subdev_state *sd_state)
++			      const struct v4l2_subdev_state *sd_state)
+ {
+ 	const struct v4l2_rect *src_crop =
+ 		v4l2_subdev_state_get_crop(sd_state,
+@@ -201,7 +201,7 @@ static void rkisp1_config_ism(struct rkisp1_isp *isp,
+  * configure ISP blocks with input format, size......
   */
- #define v4l2_subdev_state_get_format(state, pad, ...)			\
- 	__v4l2_subdev_state_gen_call(format, ##__VA_ARGS__, , _pad)	\
+ static int rkisp1_config_isp(struct rkisp1_isp *isp,
+-			     struct v4l2_subdev_state *sd_state,
++			     const struct v4l2_subdev_state *sd_state,
+ 			     enum v4l2_mbus_type mbus_type, u32 mbus_flags)
+ {
+ 	struct rkisp1_device *rkisp1 = isp->rkisp1;
+@@ -309,7 +309,7 @@ static int rkisp1_config_isp(struct rkisp1_isp *isp,
+ 	if (src_fmt->pixel_enc == V4L2_PIXEL_ENC_BAYER) {
+ 		rkisp1_params_disable(&rkisp1->params);
+ 	} else {
+-		struct v4l2_mbus_framefmt *src_frm;
++		const struct v4l2_mbus_framefmt *src_frm;
+ 
+ 		src_frm = v4l2_subdev_state_get_format(sd_state,
+ 						       RKISP1_ISP_PAD_SOURCE_VIDEO);
+@@ -429,7 +429,7 @@ static void rkisp1_config_clk(struct rkisp1_isp *isp)
+ }
+ 
+ static int rkisp1_isp_start(struct rkisp1_isp *isp,
+-			    struct v4l2_subdev_state *sd_state,
++			    const struct v4l2_subdev_state *sd_state,
+ 			    struct media_pad *source)
+ {
+ 	struct rkisp1_device *rkisp1 = isp->rkisp1;
+diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-resizer.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-resizer.c
+index 6f3931ca5b51..1fa991227fa9 100644
+--- a/drivers/media/platform/rockchip/rkisp1/rkisp1-resizer.c
++++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-resizer.c
+@@ -135,11 +135,11 @@ static void rkisp1_dcrop_disable(struct rkisp1_resizer *rsz,
+ 
+ /* configure dual-crop unit */
+ static void rkisp1_dcrop_config(struct rkisp1_resizer *rsz,
+-				struct v4l2_subdev_state *sd_state)
++				const struct v4l2_subdev_state *sd_state)
+ {
+ 	struct rkisp1_device *rkisp1 = rsz->rkisp1;
+-	struct v4l2_mbus_framefmt *sink_fmt;
+-	struct v4l2_rect *sink_crop;
++	const struct v4l2_mbus_framefmt *sink_fmt;
++	const struct v4l2_rect *sink_crop;
+ 	u32 dc_ctrl;
+ 
+ 	sink_crop = v4l2_subdev_state_get_crop(sd_state, RKISP1_RSZ_PAD_SINK);
+@@ -264,7 +264,7 @@ static void rkisp1_rsz_config_regs(struct rkisp1_resizer *rsz,
+ }
+ 
+ static void rkisp1_rsz_config(struct rkisp1_resizer *rsz,
+-			      struct v4l2_subdev_state *sd_state,
++			      const struct v4l2_subdev_state *sd_state,
+ 			      enum rkisp1_shadow_regs_when when)
+ {
+ 	const struct rkisp1_rsz_yuv_mbus_info *sink_yuv_info, *src_yuv_info;
 -- 
 Regards,
 
