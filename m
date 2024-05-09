@@ -4,63 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ED94BC25B10
-	for <linux-rockchip@archiver.kernel.org>; Thu,  9 May 2024 14:07:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6278AC10F1A
+	for <linux-rockchip@archiver.kernel.org>; Thu,  9 May 2024 14:07:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=HDl0Mbcq5i9jfFGWMrnL8cRu6tg62rfE9wIQfSi0LbU=; b=NhTCQ8PLXDyrS/
-	uIJf1DPjvGrLPhiaNFMckshG7CxevgHeRU9oy6SpjUpPrxEdJ3C0kkssQQ2BcFmQjf4rEWbTestoe
-	d52gNdL4P/9thA/ahpKg/wGpYQX5bYI38bHtZzkKVqugwxsXfBEc7E5LYkPJTdgMno8Iqe1BlneQb
-	PK8/Ar3qNquKiBRHpK6FeKWzxgJuNF01SAW1nz4/Nk/7yBdvG1W8XpsrOyU89Wk9sgzOISwYd/uMz
-	5tjP2SJ8JNUrbqU8CoApUiYm1Xiqo7zOONRZvWOVV1ddAPzFHUzIUUttCAS3m62fT04Mw3m1yu0y6
-	Xv55bfX2t5mW1AkcimIw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=xlqHfNAM7dDosZGJt7d1wM1Nbhw7l0tZ+aRQJNgICks=; b=r9GxABN/4Vw3Ww
+	F8mk1IV4uxvYHvwDopDOYcbVAXwhSJ0pwIsLN/nS/EHUKK+WmL8xShdN8lSZsEvHgW9xZxPLWQWmx
+	mOYhFB6DHi2OVKm53+KMpIGjNKbrn9oh/Mum+FV0y+w/rNwJFyaKFlfP05KH3o01od16mZJVXFALG
+	pTnaySQIGhkXwNJQ/wV6qqv72CfwCxsAiytyqi9RqPcayo3xgJBsN9BNVmM5cJJCbdU29ET1G346M
+	ELN81+yZmSWOR513E9crc1122cL2ouRHwc9m1DyJ+y81EAV6ltll1KbyzVXhze+NSuuxKNQqnYu9Q
+	ByOfhALH6kKmjEZ8Hrjw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s54QQ-00000001fD0-3JFp;
-	Thu, 09 May 2024 14:07:10 +0000
-Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
+	id 1s54QV-00000001fHU-1iyx;
+	Thu, 09 May 2024 14:07:15 +0000
+Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s54QJ-00000001f1i-02qL;
-	Thu, 09 May 2024 14:07:04 +0000
-Received: by mail-wm1-x333.google.com with SMTP id 5b1f17b1804b1-41b79450f78so5856905e9.2;
-        Thu, 09 May 2024 07:06:57 -0700 (PDT)
+	id 1s54QL-00000001f2X-02jR;
+	Thu, 09 May 2024 14:07:06 +0000
+Received: by mail-wm1-x32f.google.com with SMTP id 5b1f17b1804b1-41fd5dc04e2so3658385e9.3;
+        Thu, 09 May 2024 07:06:58 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1715263616; x=1715868416; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=ygKOaLULm9Ty8/azGUq2u8NIEd5rcobuUSoqUbVVSBY=;
-        b=W4gEUzPljs4wbjrF5Bo0JQEzRJBCzkuhlbXJrOzxi60bhvnb0Ot4Xb57+NfQwrNK1y
-         LztTBNM+hj1cw4lUxVXUeKYsoA/dDriCAD5NAI+S1d/79a/YaWFpa61ZiBgUuIZkupcj
-         Gdb48Gc+rSo+s/CITK5vCaOMx6cjm8mHfStSHT/IxmhAuBD0yD6AN4sby5Tml5H+QY6D
-         Q3JqmUTnQ3m+fKnObEs2zpRrUhMueLXT/oyET9H365IOlVGhBUHJg3MtPSjq4Cm03pr3
-         vFjoGS8nWHtJjN3raBnHdXzCnQZ9PKh0Q1qot4tkFG+2BRhiE5U+O1vKCVJK3QZwFOd5
-         87Ng==
+        d=gmail.com; s=20230601; t=1715263618; x=1715868418; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=wbWVkqkhZ2d0PkibWvpex0qMFtjGLxAjIIoCdT+E/c8=;
+        b=d+KEPrDpMFNRG6o+quZ9ErgI9b/YlGipkDXwkxwcM2e6tlPIcakT628xEiIb0Wqbbx
+         KXcr/ViscGvG8naxRdq16XwbJSfh8Ey3TxD0rMpxgxuYXU0qsWuOW6CJ2E7uM8jRPOko
+         IdiJVxecxkN1+86HtI1Qk2O4Zjx98tdShYh8J9qqAMfE/cY0gTceQ1hti/RsNtZNHry9
+         PyiE40Z2XEtQTh9VFLBvw2FLkX5r8qt+o0EmjlRfkBoQEZaUyOzh+Wn5wLwbaAv9R9oz
+         yV3vfiPzKgn7VuZjFBKK1DTLuAXbr+YEs7FA4acLFnn4LnfaNIqkh0paIMwUNusGShCc
+         zFjA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1715263616; x=1715868416;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=ygKOaLULm9Ty8/azGUq2u8NIEd5rcobuUSoqUbVVSBY=;
-        b=D19M/mci1qEIDxmte2fcOmVuJlHHibYPykvi7hTRzep1eD8WZ1+pSaoPNPbq7bgGV7
-         YIhhlW31CBtQgpxJ+vpPETE5XYsjTqaTc/zRusNeotnynLrf0C/OVekDvMvDqDU0XL0U
-         1GNaHseLdZXPLoeU0NWiDpxT749rmQhwU/0dMW0U7BXXTi5D9zYJUDnYliWIc921fA8A
-         tvcAsQsD4cXbMQBSwkReJQ6ojlO8KreRqY+XsxPUlfcD3KJFmwP/uPHgXB82mAicemys
-         ORh8+oYCThibNAZO/Zyiqovo8yQVUX2oFuy6UBdqLpWiaNgKfvu2AbDFuuyv6Lwec7ZN
-         HMfA==
-X-Forwarded-Encrypted: i=1; AJvYcCVJ2Y9lPsG/LnTHsdVRyxLvupWgKIPXdYwB9V5fpzjaprkETH2jFxnrwdyI9sv8Fd9Xbca21kTzsZDbVMEQ5uhCThxfEUQvy714eYqQYGybZjvAY1lNPAFXZyKiU0LQ0ixb3u68G5u88/pxczV4NA+wUqA2bUO8Puo=
-X-Gm-Message-State: AOJu0YwN6age+nP+Izaq1/WUSfGEIEz0jZhLLitCnhWeG/fdvyU0Qcab
-	IAjQXG9uKSMQeqfbXbXTIqZAtdb5HJcgUxQ5MOD06f8n9D/YVxI=
-X-Google-Smtp-Source: AGHT+IHVkPjBZZWpO88u2YrMojjQRZm2+OXl2pDCRbpsX72BfqrrTJABv2eO9OkV1+awudthPDrRNQ==
-X-Received: by 2002:a05:600c:4f0c:b0:41a:8b39:8040 with SMTP id 5b1f17b1804b1-41f71ec26d4mr53830265e9.20.1715263616318;
-        Thu, 09 May 2024 07:06:56 -0700 (PDT)
+        d=1e100.net; s=20230601; t=1715263618; x=1715868418;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=wbWVkqkhZ2d0PkibWvpex0qMFtjGLxAjIIoCdT+E/c8=;
+        b=P6OOpDaQ0Q3z+NJwkZywbNfu+3gMpHgMnB/kHwSSyYGe8nYMrgrecCjIhB78qHxEzV
+         Gx4IjqKfq0aTvGyJtu7ut/HjN0miMwPjq9+2bnQkPHfFxGN/aMxR2meQkx2MbK/rIRZy
+         TPgpZobOR7qapwDMwBAbdQ9SAmZa159XlnbbMGUlSGDBJB1vomMTW8l6zOqkT39+CUvK
+         Fq7BU/pmCp7U/AA5D0npsphyDLPw+wiVjM9ongU2q/B9tIdyIP/MudTOLPxZG1UIzRCT
+         nnyPgU3CrCa6nrH8jV03+YXDLlhxHLYXtNn7+8zh6z61m6artEb9vcO1CdYrH+bFOKuh
+         MgBQ==
+X-Forwarded-Encrypted: i=1; AJvYcCV0O7NnHuaRlZ6z1rb1FRg7GgSMVaZkk+VtHBetQm86k85+32suTY/At3K7GX2+A5LEa5VPCNfpNIlB9/Sjdys7tbE4c9UjMyUBFlcNs8W5dLXcrPsq+bcXl0IjDNa1ej2cXXHKpelRJCUbyMSIh7lC7yT1ya40+ac=
+X-Gm-Message-State: AOJu0YwFE89O3F/dLNe+foEc6OFpWJ1sv4u+MoVzndJBPU8vY/9gmg5V
+	Re/F4bbpoQmeYJSP3f6bMzOqGeBxSfYhilwksmMjPTwO118BOnE=
+X-Google-Smtp-Source: AGHT+IGJGV6bFqKBadGxqXhAzkF2pE6cCKZpD95eQc6VzdGRYvOXM2SRAFICzVxoDStLNZJ7jxAXuA==
+X-Received: by 2002:a5d:6e8c:0:b0:34d:8c1f:3194 with SMTP id ffacd0b85a97d-34fcafcd7afmr3768024f8f.35.1715263617622;
+        Thu, 09 May 2024 07:06:57 -0700 (PDT)
 Received: from U4.lan ([2a02:810b:f40:4600:b44:d8c3:6fa8:c46f])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3502baad058sm1793311f8f.66.2024.05.09.07.06.54
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3502baad058sm1793311f8f.66.2024.05.09.07.06.56
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 09 May 2024 07:06:55 -0700 (PDT)
+        Thu, 09 May 2024 07:06:56 -0700 (PDT)
 From: Alex Bee <knaerzche@gmail.com>
 To: Sandy Huang <hjc@rock-chips.com>,
 	=?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
@@ -81,15 +82,19 @@ Cc: dri-devel@lists.freedesktop.org,
 	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	linux-clk@vger.kernel.org,
-	Alex Bee <knaerzche@gmail.com>
-Subject: [PATCH v3 0/7] Add DSI support for RK3128
-Date: Thu,  9 May 2024 16:06:46 +0200
-Message-ID: <20240509140653.168591-1-knaerzche@gmail.com>
+	Alex Bee <knaerzche@gmail.com>,
+	Conor Dooley <conor.dooley@microchip.com>
+Subject: [PATCH v3 1/7] dt-bindings: display: rockchip,dw-mipi-dsi: Document RK3128 DSI
+Date: Thu,  9 May 2024 16:06:47 +0200
+Message-ID: <20240509140653.168591-2-knaerzche@gmail.com>
 X-Mailer: git-send-email 2.43.2
+In-Reply-To: <20240509140653.168591-1-knaerzche@gmail.com>
+References: <20240509140653.168591-1-knaerzche@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240509_070703_060220_AB687D13 
-X-CRM114-Status: GOOD (  16.53  )
+X-CRM114-CacheID: sfid-20240509_070705_074311_DB5456EA 
+X-CRM114-Status: UNSURE (   9.84  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,48 +111,41 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This series aims to add support for the DesignWare MIPI DSI controller and
-the Innoslicon D-PHY found in RK3128 SoCs. The code additions are rather
-tiny: It only need some code in the Rockchip dw-mipi-dsi glue layer for
-this SoC and do some changes in the SoC's clock driver. Support for the phy
-was already added when the Innosilicon D-PHY driver was initially
-submitted. I tested it with a 800x1280 DSI panel where all 4 lanes that are
-supported are used.
+Document the MIPI DSI controller for Rockchip RK3128. The integration is
+similar to PX30 so it's bindings-constraints can be re-used.
 
-changes in v2:
-  To improve power-efficiency when the DSI controller is not in use, I
-  dropped the patch which made hclk_vio_h2p a critical clock and instead
-  added support for an AHB clock to the DSI controller driver and updated
-  the bindings and the addition to the SoC DT accordingly.
+Signed-off-by: Alex Bee <knaerzche@gmail.com>
+Acked-by: Conor Dooley <conor.dooley@microchip.com>
+---
+changes since v1:
+ - added ahb clock
 
-Link to v1:
-https://lore.kernel.org/linux-kernel/20240506194343.282119-1-knaerzche@gmail.com/
+changes since v2:
+ - revert added ahb clock
+ 
+ .../rockchip/rockchip,dw-mipi-dsi.yaml        | 25 ++++++++++++++++++-
+ 1 file changed, 24 insertions(+), 1 deletion(-)
 
-changes in v3:
- Dropped the changes for the additional AHB clock for the DSI controller,
- as it's not part of the IP block. (Heiko)
-
-Link to v2:
-https://lore.kernel.org/linux-kernel/20240509120715.86694-1-knaerzche@gmail.com/
-
-Please see individual patches for details about the changes.
-
-Alex Bee (7):
-  dt-bindings: display: rockchip,dw-mipi-dsi: Document RK3128 DSI
-  dt-bindings: clock: rk3128: Add PCLK_MIPIPHY
-  clk: rockchip: rk3128: Export PCLK_MIPIPHY
-  clk: rockchip: rk3128: Add hclk_vio_h2p to critical clocks
-  drm/rockchip: dsi: Add support for RK3128
-  ARM: dts: rockchip: Add D-PHY for RK3128
-  ARM: dts: rockchip: Add DSI for RK3128
-
- .../rockchip/rockchip,dw-mipi-dsi.yaml        |  2 +
- arch/arm/boot/dts/rockchip/rk3128.dtsi        | 50 +++++++++++++++++++
- drivers/clk/rockchip/clk-rk3128.c             |  3 +-
- .../gpu/drm/rockchip/dw-mipi-dsi-rockchip.c   | 20 ++++++++
- include/dt-bindings/clock/rk3128-cru.h        |  1 +
- 5 files changed, 75 insertions(+), 1 deletion(-)
-
+diff --git a/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-mipi-dsi.yaml b/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-mipi-dsi.yaml
+index ccf79e738fa1..ccd71c5324af 100644
+--- a/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-mipi-dsi.yaml
++++ b/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-mipi-dsi.yaml
+@@ -15,6 +15,7 @@ properties:
+     items:
+       - enum:
+           - rockchip,px30-mipi-dsi
++          - rockchip,rk3128-mipi-dsi
+           - rockchip,rk3288-mipi-dsi
+           - rockchip,rk3399-mipi-dsi
+           - rockchip,rk3568-mipi-dsi
+@@ -77,6 +78,7 @@ allOf:
+           contains:
+             enum:
+               - rockchip,px30-mipi-dsi
++              - rockchip,rk3128-mipi-dsi
+               - rockchip,rk3568-mipi-dsi
+               - rockchip,rv1126-mipi-dsi
+ 
 -- 
 2.43.2
 
