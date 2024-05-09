@@ -4,64 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3B667C25B4F
-	for <linux-rockchip@archiver.kernel.org>; Thu,  9 May 2024 12:08:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0F410C10F1A
+	for <linux-rockchip@archiver.kernel.org>; Thu,  9 May 2024 12:08:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=5HfAvgCb3fhk/wniq8UNsdVcoCiRdH4iYw5jmqiRzKM=; b=UeZf8bKEPsSvdt
-	Qo6jomkjl5YizEjucR9I+NvXPpaVcLVa8WRckV+3xm65smkHCPA1loG3CmZIIfGAfYt02v61zhr4B
-	8OYLv0dHYePC55lzq1xNXclNeV/XhmL7DFiozAPT2DGg2FR8fwlvEwB50s+rW7IQA2triP5x5D34V
-	8WJw8Ags/HM0XftYAPYuTb9YWjOm4/dD6NIvNMLXNyCchIqb/TM0HV9xHkeZ2qmBenk3yEA4i3dIj
-	Kp7/psl3ZhYk2MkzDs4FxqidOhOt/V1Mw+bc73/nWIf6lxqtk/1Sgct2+E0IaVyzAj7cyg+2Qxgkx
-	ymlPle/UrEp5dygtWIuA==;
+	List-Owner; bh=qRzsTBOrM3eUmzojFFCaZOt6taQCKY85caApP1fZaM0=; b=rrK/PN8JoQBROX
+	lgfZryAcWaqK2AwOnW5iZLs5OP/GGqc1EjaZcSWq2nvBaRzvXdIyUR+5tcvNKeOHewL3IyIEfhz6i
+	1rQcCJV3s28UKmYFgV6y1U/Kio517rD38HLlMtxQZ3v8CVU0VuMRwf+CsULQ9TVgXQeq7D9rxvjfw
+	PBT+1VZtZxkv6mJfdN9ac5SKsWV4NHfYCAAuolIXVphO44wKkoeZIT+jgDaahG5+ZajyVdUKD6fZx
+	G5lMI9ngQt5oJeK2p+PRdD70cKihiR1yjnEPPG8ZzzyAVKJ5DgURUvt8ftiwuP4v9np2GBs4xjlKZ
+	MT96bODprlxLZm4WcFrA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s52ZD-00000001MeW-0uwz;
-	Thu, 09 May 2024 12:08:07 +0000
-Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
+	id 1s52ZQ-00000001Mp4-2rVV;
+	Thu, 09 May 2024 12:08:20 +0000
+Received: from mail-lj1-x22d.google.com ([2a00:1450:4864:20::22d])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s52Yb-00000001M4G-2qpp;
-	Thu, 09 May 2024 12:07:31 +0000
-Received: by mail-wm1-x32c.google.com with SMTP id 5b1f17b1804b1-41e82b78387so5974605e9.0;
-        Thu, 09 May 2024 05:07:23 -0700 (PDT)
+	id 1s52Yd-00000001M5m-3Iq1;
+	Thu, 09 May 2024 12:07:33 +0000
+Received: by mail-lj1-x22d.google.com with SMTP id 38308e7fff4ca-2e242b1dfd6so9924051fa.0;
+        Thu, 09 May 2024 05:07:29 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1715256442; x=1715861242; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1715256448; x=1715861248; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=TAif8iJN8V1k3wa8UJdZQ5GifnX9nyDTgUZq5/d7HCc=;
-        b=XHJH5y/qsTYVZiESnyYYqy5I/Dnv3oEACP2lMk2mtAB35RywhnpPoeQFBDyrC+tQOW
-         LPRXXd8+pgDPGHotxjTkDeUU7RUTa7YSrkBhyg2UfKs4VBlTb0LqA6QjPxMT7PinFrVt
-         pDd/1Zxf79PoAsUAltUvSyFNakik2lmRw9MsxVxZzByCikUc6pykUTcolZlTLcH2Ztra
-         hv/eOiz4BdPuoyHa8tFSDwRnuPNr8+gXKIGEHOEW5+oAR66Jt0/ECZ5C1gBjCP7404TE
-         3hTiMD48opvV6xg3r0bw9c/jKIE97cNVgKm3zGzGD9j94buK0X4uZzH4iLzIaNRbt6Ta
-         CM8Q==
+        bh=UJEaWHpHfTjOx8txJp83KCReKfr+CJyqA30JyxkgRQs=;
+        b=gCMAyeE7NTeTKTIraGqjfGtTIkN9SYgiihexEO4j1eQsk6rZaea2xXNdFlDMWU5EVb
+         fe8C5Jecp3hVZWEBgvp7m0oTZpH2aLK3TAK1/UNTRWACt3qAJJ03VamLVq5GO09Cua9h
+         F1dsrZz+NQDpralOtqMx6MzuvY/O8D+oFuq0yKY4MFcirDSjZUaFr4ePZkedynHdY9O2
+         27nZSadRNrOaTlo90FiTbbT/AfT5YJXLM7hxoySq8+4/tXZY5SSuKCsq8sI1vyR+oF8a
+         kRFH3h86JjdIx+w803R+Ju3ha4t/Xf/3EIQ2qOSmd96VydBCDFgPUMOqiSqbcUzVDr8s
+         wzRQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1715256442; x=1715861242;
+        d=1e100.net; s=20230601; t=1715256448; x=1715861248;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=TAif8iJN8V1k3wa8UJdZQ5GifnX9nyDTgUZq5/d7HCc=;
-        b=TDXrAVKv0H8wq/voa3wSHtlNc0Tlms7ziQFxSGoYJfY657e0UpD1EsHDOHQpoq3Gsy
-         +DSQNwshBVG5gbJ7e8KdMtu57S6AGHeLw9Tr7gyAeSyXN0KmyfxBmOY2gyQ2aHmgPHnT
-         bbFFnjbFXAqwricDgrjRosWbxllKaD6JesHV0dtoqtNi5bHsCxWlpO+b2+/2INEDNblA
-         mfKdPe951qdPFS0LqfgOENbQSbj7WbvSw8Mq5N2ZGlcZ2crNUytUXKItqpfSvlRZ3XAb
-         pdVk/OrF6jQX0Twm7/GrGcd9AswoI7tK7zp7rlfhIdF7RUoaE86PPOcUNhUkF5HIl+0R
-         pNNA==
-X-Forwarded-Encrypted: i=1; AJvYcCUoBzMNC1dPUX4te+iLaLzxqsvfcd6rITfw/O203v56hsuNU8ayN3HWgXV1hFjii55nBgGP25BWju7p+Oxqyn1byqK/919PGMnHgFXjREWrO1XQvgwmlvj8lIS7eds0dt7tP67Wi1KduGWe5gOD9kj4UP6Gpuq+QGA=
-X-Gm-Message-State: AOJu0Yx4JSH8cpDvUOD2GOnB+m8zEUonP+oB+oVpnAaZZgHVXaF6wn5F
-	jgiiJYFsxG3UIS5qJlTymsw3VJh/rgc6UokTi4xiJPi6+Ls9HPQ=
-X-Google-Smtp-Source: AGHT+IHTG1IHRUpJsEvbfsclIDD11n/Cn0Dv06smo6eYHnW+6ah5dzq6AfYFQdIT1VKgAJhmoFvavg==
-X-Received: by 2002:a05:600c:5128:b0:418:2b26:47a3 with SMTP id 5b1f17b1804b1-41f71ecb1fcmr44191365e9.32.1715256442507;
-        Thu, 09 May 2024 05:07:22 -0700 (PDT)
+        bh=UJEaWHpHfTjOx8txJp83KCReKfr+CJyqA30JyxkgRQs=;
+        b=rts2t7/RA47StQXgGjipHfwnRfoVNi1lRXEBJg17tmul+29ybdooORyCLWaH/ZrsP5
+         8IZZIsFizRFCmxJ6/PCEdRKfISvA+dbi4bPxJf+NwoHEzIKnZ/OM8uy0D/qnI7g+a3Y6
+         Lb8lsEoGWQT0pqZ53/4hFUrkTgH2praV30Ktcg3lmwNuK1C7Uw+BDImT3Th3/yT4zC7Z
+         D1TOLxxVfjtN9eO2uAGxTA3+TEpDzrgi66Du1xy1pj8qyVbKeo2vDb/Pt8psqs7E/nUz
+         qIMI28TVZPko6wiZhn+wZe748on/Udjl7ScfIQZeMw4mr3YWMwD/RjDJTirqTjOHlDGx
+         BlEg==
+X-Forwarded-Encrypted: i=1; AJvYcCUnUKnNQ426hUdYoFoNXq27JYmgf4ceg/iL8ctbRutUExdbHuknXRjQVONv4v3LuN+RHFit9YazWTWAd2Umn1agKzzqS6B++6gcsDndff7N5JSx6hYsaz5X5rmu9/JA4Pfn0zUiJ6I5WOF8U3zuG8EGv97UqWjjLpA=
+X-Gm-Message-State: AOJu0YwTxLx8lgsb61RI4gx1yjdgBvZj/WjX75qKvS0/gNxJ7C99NOs4
+	UUdK1ePzxM5vF+DZWt/LyaVU3mmowwrua0IrcSLEUcoX19LpwDo=
+X-Google-Smtp-Source: AGHT+IEOGVpnlxc4D9Jfg4bzT5yUTxC5Nb1l7o9iKNsaxhKiAZ+w5GYZsS4D630ujkwBJ9hHrRUsqA==
+X-Received: by 2002:a2e:4602:0:b0:2e0:3132:94d4 with SMTP id 38308e7fff4ca-2e446f7c72amr28137541fa.16.1715256447777;
+        Thu, 09 May 2024 05:07:27 -0700 (PDT)
 Received: from U4.lan ([2a02:810b:f40:4600:b44:d8c3:6fa8:c46f])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-41fccce1912sm24112005e9.11.2024.05.09.05.07.21
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-41fccce1912sm24112005e9.11.2024.05.09.05.07.27
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 09 May 2024 05:07:22 -0700 (PDT)
+        Thu, 09 May 2024 05:07:27 -0700 (PDT)
 From: Alex Bee <knaerzche@gmail.com>
 To: Sandy Huang <hjc@rock-chips.com>,
 	=?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
@@ -83,16 +83,16 @@ Cc: dri-devel@lists.freedesktop.org,
 	linux-kernel@vger.kernel.org,
 	linux-clk@vger.kernel.org,
 	Alex Bee <knaerzche@gmail.com>
-Subject: [PATCH v2 1/7] dt-bindings: display: rockchip,dw-mipi-dsi: Document RK3128 DSI
-Date: Thu,  9 May 2024 14:07:09 +0200
-Message-ID: <20240509120715.86694-2-knaerzche@gmail.com>
+Subject: [PATCH v2 7/7] ARM: dts: rockchip: Add DSI for RK3128
+Date: Thu,  9 May 2024 14:07:15 +0200
+Message-ID: <20240509120715.86694-8-knaerzche@gmail.com>
 X-Mailer: git-send-email 2.43.2
 In-Reply-To: <20240509120715.86694-1-knaerzche@gmail.com>
 References: <20240509120715.86694-1-knaerzche@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240509_050729_786899_E9F6720D 
-X-CRM114-Status: GOOD (  10.40  )
+X-CRM114-CacheID: sfid-20240509_050732_047133_3C009591 
+X-CRM114-Status: GOOD (  10.83  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,67 +109,63 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Document the MIPI DSI controller for Rockchip RK3128. The integration is
-very similar to PX30, but it has an additional AHB clock.
+Add the Designware MIPI DSI controller and it's port nodes.
 
 Signed-off-by: Alex Bee <knaerzche@gmail.com>
 ---
 changes since v1:
- - added ahb clock
- 
- .../rockchip/rockchip,dw-mipi-dsi.yaml        | 25 ++++++++++++++++++-
- 1 file changed, 24 insertions(+), 1 deletion(-)
+ - added HCLK_VIO_H2P as ahb clock
 
-diff --git a/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-mipi-dsi.yaml b/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-mipi-dsi.yaml
-index ccf79e738fa1..fdd1c8ad6045 100644
---- a/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-mipi-dsi.yaml
-+++ b/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-mipi-dsi.yaml
-@@ -15,6 +15,7 @@ properties:
-     items:
-       - enum:
-           - rockchip,px30-mipi-dsi
-+          - rockchip,rk3128-mipi-dsi
-           - rockchip,rk3288-mipi-dsi
-           - rockchip,rk3399-mipi-dsi
-           - rockchip,rk3568-mipi-dsi
-@@ -36,7 +37,10 @@ properties:
-           - const: pclk
-           - const: phy_cfg
-           - const: grf
--      - const: pclk
-+      - minItems: 1
-+        items:
-+          - const: pclk
-+          - const: ahb
+ arch/arm/boot/dts/rockchip/rk3128.dtsi | 36 ++++++++++++++++++++++++++
+ 1 file changed, 36 insertions(+)
+
+diff --git a/arch/arm/boot/dts/rockchip/rk3128.dtsi b/arch/arm/boot/dts/rockchip/rk3128.dtsi
+index fbd95bb08cd3..1ed4436549ee 100644
+--- a/arch/arm/boot/dts/rockchip/rk3128.dtsi
++++ b/arch/arm/boot/dts/rockchip/rk3128.dtsi
+@@ -277,6 +277,42 @@ vop_out_hdmi: endpoint@0 {
+ 				reg = <0>;
+ 				remote-endpoint = <&hdmi_in_vop>;
+ 			};
++
++			vop_out_dsi: endpoint@1 {
++				reg = <1>;
++				remote-endpoint = <&dsi_in_vop>;
++			};
++		};
++	};
++
++	dsi: dsi@10110000 {
++		compatible = "rockchip,rk3128-mipi-dsi", "snps,dw-mipi-dsi";
++		reg = <0x10110000 0x4000>;
++		interrupts = <GIC_SPI 33 IRQ_TYPE_LEVEL_HIGH>;
++		clocks = <&cru PCLK_MIPI>, <&cru HCLK_VIO_H2P>;
++		clock-names = "pclk", "ahb";
++		phys = <&dphy>;
++		phy-names = "dphy";
++		resets = <&cru SRST_VIO_MIPI_DSI>;
++		reset-names = "apb";
++		rockchip,grf = <&grf>;
++		power-domains = <&power RK3128_PD_VIO>;
++		status = "disabled";
++
++		ports {
++			#address-cells = <1>;
++			#size-cells = <0>;
++
++			dsi_in: port@0 {
++				reg = <0>;
++				dsi_in_vop: endpoint {
++					remote-endpoint = <&vop_out_dsi>;
++				};
++			};
++
++			dsi_out: port@1 {
++				reg = <1>;
++			};
+ 		};
+ 	};
  
-   rockchip,grf:
-     $ref: /schemas/types.yaml#/definitions/phandle
-@@ -120,6 +124,25 @@ allOf:
-         clock-names:
-           minItems: 4
- 
-+  - if:
-+      properties:
-+        compatible:
-+          contains:
-+            enum:
-+              - rockchip,rk3128-mipi-dsi
-+
-+    then:
-+      properties:
-+        clocks:
-+          minItems: 2
-+
-+        clock-names:
-+          minItems: 2
-+
-+      required:
-+        - phys
-+        - phy-names
-+
- unevaluatedProperties: false
- 
- examples:
 -- 
 2.43.2
 
