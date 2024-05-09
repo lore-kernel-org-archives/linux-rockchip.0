@@ -4,93 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C9C8AC10F1A
-	for <linux-rockchip@archiver.kernel.org>; Thu,  9 May 2024 18:30:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9E596C10F1A
+	for <linux-rockchip@archiver.kernel.org>; Thu,  9 May 2024 18:39:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=3rcfYSwYYzSc/J2pk+roDGLJvp4P1d7Ot/EeLTMD1t8=; b=F4b8XyXfdYFFX8
-	v1Q+orxDkB3LKv/wjEF5nqEUpaM+LVzeQ6eZKB04MZ9p9LtDLN6SekJ/zCT6tZtuBmi/k2Crg5KEk
-	5n+BQvPd+rRH5B7GB2QFUQ3F6AY+/JwqROI9lpRYzDT6tA0P5HJ4ie31YlCWxPOhf0KOuDNonFehH
-	LLCGlkWhnXFSWLweSY4lBbIE5G8YHhzZwf8zfd5xfUxw/sv7qMiM7utqq93BIVqoPa+j73IUUa1LN
-	PefIrDkJ7OwBq2JxQEdIfF8EnWkvD3/6IX1MUt+/kb0B0AhbtSJ1Twr2pIHY8Qq5lVk+JqV94MZY3
-	/Npemt7iqzRptceDONLw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=8TcvO/ea+37mjK+C7MclBQ80hID5v24P/dhCVYjel+4=; b=GmFePZX+DNfEEO
+	Ul4duP910kRIp5O6vJhP7oDRCShRkFUTY1sAvuepdHsYppL+kU3jxXkIh5U0DtOyxYW49HeUCCDX1
+	C41kCsoZ2XBQ9bWnw24VODzUci2G5COMMMcgFlZWrZjoBEiBlpGmHkvclT+xNcdPy8pX5brIFAuk8
+	nRgfu8Ns7KY5WVjPv6yeC0+MhiIR3MAiWCad0eoVY4Brk3joCdv6i7R/rMv3VMApctgGzc1nZ1amk
+	hacE77zlafzARhVgZaDpzIajjH2NbRMKyNm23EBCdSpi8jMJOJRsrblnDkgMzv7MhhAOqRaKZQDxE
+	36JFV3tZ48N32nv3U+ow==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s58Wh-00000002Nwo-3X0W;
-	Thu, 09 May 2024 18:29:55 +0000
-Received: from lahtoruutu.iki.fi ([185.185.170.37])
+	id 1s58fi-00000002OpX-2eU8;
+	Thu, 09 May 2024 18:39:14 +0000
+Received: from fllv0016.ext.ti.com ([198.47.19.142])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s58Wb-00000002NvF-49XN
+	id 1s58fg-00000002OoM-0HLc
 	for linux-rockchip@lists.infradead.org;
-	Thu, 09 May 2024 18:29:54 +0000
-Received: from hillosipuli.retiisi.eu (80-248-247-191.cust.suomicom.net [80.248.247.191])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: sailus)
-	by lahtoruutu.iki.fi (Postfix) with ESMTPSA id 4Vb0sy3YRKz49Pwn;
-	Thu,  9 May 2024 21:29:42 +0300 (EEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=iki.fi; s=lahtoruutu;
-	t=1715279384;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=7A4xPDEgAQQdMdt52bCRjKFOBSibDEcEKYLBHN2iw5E=;
-	b=FdchrSAS/rkEX7K4SCLBSmv4gsvA9kEgIr6ZlVRFo7Ty7yWLoTnyDeRd505V9OfhOo7ig6
-	dYcbJBEucAERnmbsNRJNNDcBx8ezW69VKUos6mPiJCfkEvlXxFxjy/cbbcDxsg7oWwBiQK
-	+0IMojFOzu2cNwx2zCA1sNCKYzAClI6zpMnFz8ntM7uOu2PYqw/5Hs8TaHH9hYobkgnraG
-	CLpYBBGzxZOTpmSLOuzk//FnIXOuvzn6/hBqPoex3UXfYDTcN6OCMiWOtttAfFGImlVlfF
-	ynQU/RIu3WIGO1780pllahfLdzf414NJXhvN86caexRN+ZMdh8hwhfEcF5d/yA==
-ARC-Seal: i=1; s=lahtoruutu; d=iki.fi; t=1715279384; a=rsa-sha256;
-	cv=none;
-	b=d2Y/U8geglk/aao9oANk7ZuwFu2+3cBPXZYAnm6kUVXYYcbaYatFCB8qmNCZ2sk93eY7LQ
-	myj04ct8F/Uw04gtP4PWkL7lFhwXQid3OeF4L5tPiGK57AtyUAGeHoBjOxIClVX5xWoFxp
-	RV3FkTAN0niqiikA/NYCgqEbiTXAWkCk59V5oSmPYwJ37mCohPKI67y4Q9xw+D60bDWcEX
-	Wc/ATDSPfmaQU2oxWJJyEeVzD8fSHtUiUJDZ2pnoss6nODLBX8m8N7aqz9I2Twsq+IcA41
-	418yqi2KFRnlTRVvEzXk7NMsKysiKvfKh10Up9P9zA0Jl/ukgiItHn7vQrM1SQ==
-ARC-Authentication-Results: i=1;
-	ORIGINATING;
-	auth=pass smtp.auth=sailus smtp.mailfrom=sakari.ailus@iki.fi
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=iki.fi;
-	s=lahtoruutu; t=1715279384;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=7A4xPDEgAQQdMdt52bCRjKFOBSibDEcEKYLBHN2iw5E=;
-	b=e2tcMHI7+kyoQS3stRFo3OSo0rbnruwnqXWwdOlmjJ7spynxNiWwu7V0mXc/K1yDCeoWgd
-	rXavGj70o3XPy0p6Z8a5+tJBbttkIBuCFKNu65aiV6RCYkvGG7Cd9QVMMJu34iKbAAiuUm
-	PzkgHF9eNi/RHJFoolPnPHdahzAAXRrtNoPHzbWu1YYcWVgHyXZv//A+ewu6UrRP6yuDHw
-	UTr3O2evOmGlF8ih7nkFZP1x/OmYH3hB23oECUlUCYRmPbSQ0mmAUY3uxu4c9doq0LfEDk
-	0Rq7bTj1l+cEr3oyXG5mMWB9vU4/Jp99JNC5rfdtQ0BH5cWToY3R4+jnZH7b2g==
-Received: from valkosipuli.retiisi.eu (valkosipuli.localdomain [192.168.4.2])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	by hillosipuli.retiisi.eu (Postfix) with ESMTPS id 1897D634C93;
-	Thu,  9 May 2024 21:29:42 +0300 (EEST)
-Date: Thu, 9 May 2024 18:29:41 +0000
-From: Sakari Ailus <sakari.ailus@iki.fi>
-To: Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>
-Cc: linux-media@vger.kernel.org, linux-renesas-soc@vger.kernel.org,
-	Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>,
-	Hans Verkuil <hverkuil-cisco@xs4all.nl>,
-	Dafna Hirschfeld <dafna@fastmail.com>,
-	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH v4 1/3] media: v4l2-subdev: Fix
- v4l2_subdev_state_get_format() documentation
-Message-ID: <Zj0WFQo0cHReRCcU@valkosipuli.retiisi.eu>
-References: <20240508214045.24716-1-laurent.pinchart+renesas@ideasonboard.com>
- <20240508214045.24716-2-laurent.pinchart+renesas@ideasonboard.com>
+	Thu, 09 May 2024 18:39:13 +0000
+Received: from lelv0265.itg.ti.com ([10.180.67.224])
+	by fllv0016.ext.ti.com (8.15.2/8.15.2) with ESMTP id 449Icp2o059675;
+	Thu, 9 May 2024 13:38:51 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ti.com;
+	s=ti-com-17Q1; t=1715279931;
+	bh=+EBsg+MBavvoLe4uw8H9uyV1BuH7NSV3Xnw72/49t8I=;
+	h=From:To:CC:Subject:Date;
+	b=sxDXrfqk2zVS185lviPF7OTRtVV01UEs9crR72p8RdzBPcT22jZrNj9t59nfysEq6
+	 8MaHm48CW1GzF1Oq1gt25Z9E9yjnhnFbAhckDFzKc3Zi6nUMYCGfSlF7YhOIYqzElE
+	 kvSi6wRGSPj92mlySBa3ecplabnAzPPHf7mIWmzE=
+Received: from DLEE101.ent.ti.com (dlee101.ent.ti.com [157.170.170.31])
+	by lelv0265.itg.ti.com (8.15.2/8.15.2) with ESMTPS id 449Icpqc028334
+	(version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=FAIL);
+	Thu, 9 May 2024 13:38:51 -0500
+Received: from DLEE110.ent.ti.com (157.170.170.21) by DLEE101.ent.ti.com
+ (157.170.170.31) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.2507.23; Thu, 9
+ May 2024 13:38:51 -0500
+Received: from lelvsmtp6.itg.ti.com (10.180.75.249) by DLEE110.ent.ti.com
+ (157.170.170.21) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.2507.23 via
+ Frontend Transport; Thu, 9 May 2024 13:38:50 -0500
+Received: from localhost (ti.dhcp.ti.com [172.24.227.95] (may be forged))
+	by lelvsmtp6.itg.ti.com (8.15.2/8.15.2) with ESMTP id 449Ico8E003719;
+	Thu, 9 May 2024 13:38:50 -0500
+From: Devarsh Thakkar <devarsht@ti.com>
+To: <mchehab@kernel.org>, <robh@kernel.org>,
+        <krzysztof.kozlowski+dt@linaro.org>, <conor+dt@kernel.org>,
+        <hverkuil-cisco@xs4all.nl>, <linux-media@vger.kernel.org>,
+        <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+        <benjamin.gaignard@collabora.com>, <sebastian.fricke@collabora.com>
+CC: <laurent.pinchart@ideasonboard.com>, <praneeth@ti.com>, <nm@ti.com>,
+        <vigneshr@ti.com>, <a-bhatia1@ti.com>, <j-luthra@ti.com>,
+        <b-brnich@ti.com>, <detheridge@ti.com>, <p-mantena@ti.com>,
+        <vijayp@ti.com>, <devarsht@ti.com>, <andrzej.p@collabora.com>,
+        <nicolas@ndufresne.ca>, <akpm@linux-foundation.org>,
+        <gregkh@linuxfoundation.org>, <andriy.shevchenko@linux.intel.com>,
+        <adobriyan@gmail.com>, <p.zabel@pengutronix.de>, <airlied@gmail.com>,
+        <daniel@ffwll.ch>, <jani.nikula@intel.com>,
+        <linux-rockchip@lists.infradead.org>
+Subject: [PATCH v7 0/8] [PATCH v7 0/8] Add V4L2 M2M Driver for E5010 JPEG Encoder
+Date: Fri, 10 May 2024 00:08:49 +0530
+Message-ID: <20240509183849.4060521-1-devarsht@ti.com>
+X-Mailer: git-send-email 2.39.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20240508214045.24716-2-laurent.pinchart+renesas@ideasonboard.com>
+X-EXCLAIMER-MD-CONFIG: e1e8a2fd-e40a-4ac6-ac9b-f7e9cc9ee180
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240509_112952_189933_B198F171 
-X-CRM114-Status: GOOD (  19.81  )
+X-CRM114-CacheID: sfid-20240509_113912_218491_78E80784 
+X-CRM114-Status: UNSURE (   9.93  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,50 +93,112 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Laurent,
+This adds support for V4L2 M2M based driver for E5010 JPEG Encoder
+which is a stateful JPEG encoder from Imagination technologies
+and is present in TI AM62A SoC.
 
-Thanks for posting this.
+While adding support for it, following additional framework changes were
+made:
+ - Moved reference quantization and huffman tables provided in
+   ITU-T-REC-T.81 to v4l2-jpeg.c as suggested in mailing list [1].
+ - Add macros to round to closest integer (either higher or lower) while
+   rounding in order of 2.
 
-On Thu, May 09, 2024 at 12:40:43AM +0300, Laurent Pinchart wrote:
-> The documentation of the v4l2_subdev_state_get_format() macro
-> incorrectly references __v4l2_subdev_state_get_format() instead of
-> __v4l2_subdev_state_gen_call(). Fix it, and also update the list of
-> similar macros to add the missing v4l2_subdev_state_get_interval().
-> 
-> Suggested-by: Sakari Ailus <sakari.ailus@linux.intel.com>
-> Signed-off-by: Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>
-> ---
->  include/media/v4l2-subdev.h | 6 +++---
->  1 file changed, 3 insertions(+), 3 deletions(-)
-> 
-> diff --git a/include/media/v4l2-subdev.h b/include/media/v4l2-subdev.h
-> index e30c463d90e5..b25b6e97ecbd 100644
-> --- a/include/media/v4l2-subdev.h
-> +++ b/include/media/v4l2-subdev.h
-> @@ -1340,12 +1340,12 @@ void v4l2_subdev_cleanup(struct v4l2_subdev *sd);
->   */
->  /*
->   * Wrap v4l2_subdev_state_get_format(), allowing the function to be called with
-> - * two or three arguments. The purpose of the __v4l2_subdev_state_get_format()
-> + * two or three arguments. The purpose of the __v4l2_subdev_state_gen_call()
->   * macro below is to come up with the name of the function or macro to call,
+v4l2-compliance test :
+Link: https://gist.github.com/devarsht/1f039c631ca953a57f405cfce1b69e49
 
-You could drop "below" here, too: the macro definition is above the text.
+E5010 JPEG Encoder Manual tests :
 
-Reviewed-by: Sakari Ailus <sakari.ailus@linux.intel.com>
+Performance:
+Link: https://gist.github.com/devarsht/c40672944fd71c9a53ab55adbfd9e28b
 
->   * using the last two arguments (_stream and _pad). The selected function or
->   * macro is then called using the arguments specified by the caller. A similar
-> - * arrangement is used for v4l2_subdev_state_crop() and
-> - * v4l2_subdev_state_compose() below.
-> + * arrangement is used for v4l2_subdev_state_crop(), v4l2_subdev_state_compose()
-> + * and v4l2_subdev_state_get_interval() below.
->   */
->  #define v4l2_subdev_state_get_format(state, pad, ...)			\
->  	__v4l2_subdev_state_gen_call(format, ##__VA_ARGS__, , _pad)	\
+Functionality:
+Link: https://gist.github.com/devarsht/8e88fcaabff016bb2bac83d89c9d23ce
+
+Compression Quality:
+Link: https://gist.github.com/devarsht/cbcc7cd97e8c48ba1486caa2b7884655
+
+Multi Instance:
+Link: https://gist.github.com/devarsht/22c2fca08cd3441fb40f2c7a4cebc95a
+
+Crop support:
+Link: https://gist.github.com/devarsht/de6f5142f678bb1a5338abfd9f814abd
+
+Runtime PM:
+Link: https://gist.github.com/devarsht/70cd95d4440ddc678489d93885ddd4dd
+
+[1]: 
+https://lore.kernel.org/all/de46aefe-36da-4e1a-b4fa-b375b2749181@xs4all.nl/
+
+Changelog:
+V6->V7:
+ - Fix cropping support
+ - Move reference huffman and quantization tables to v4l2-jpeg.c
+ - Fix suspend/resume use-case
+
+Patch-Diff between the series :
+
+V3->V4 Range diff :
+https://gist.github.com/devarsht/22a744d999080de6e813bcfb5a596272
+
+V4->V5 Range diff :
+https://gist.github.com/devarsht/298790af819f299a0a05fec89371097b
+
+V5->V6 Range diff :
+https://gist.github.com/devarsht/c89180ac2b0d2814614f2b59d0705c19
+
+V6->V7 Range diff :
+https://gist.github.com/devarsht/1db185b1e187eaf397e9e4c37066777e
+
+Previous patch series:
+V2: https://lore.kernel.org/all/20230727112546.2201995-1-devarsht@ti.com/
+V3: https://lore.kernel.org/all/20230816152210.4080779-1-devarsht@ti.com/
+V4: https://lore.kernel.org/all/20240205114239.924697-1-devarsht@ti.com/
+V5: https://lore.kernel.org/all/20240215134641.3381478-1-devarsht@ti.com/
+V6: https://lore.kernel.org/all/20240228141140.3530612-1-devarsht@ti.com/
+
+Devarsh Thakkar (8):
+  media: dt-bindings: Add Imagination E5010 JPEG Encoder
+  media: imagination: Add E5010 JPEG Encoder driver
+  media: v4l2-jpeg: Export reference quantization and huffman tables
+  media: imagination: Use exported tables from v4l2-jpeg core
+  media: verisilcon : Use exported tables from v4l2-jpeg for hantro
+    codec
+  math.h Add macros to round to closest specified power of 2
+  media: imagination: Round to closest multiple for cropping region
+  gpu: ipu-v3: Use generic macro for rounding to nearest multiple
+
+ .../bindings/media/img,e5010-jpeg-enc.yaml    |   75 +
+ MAINTAINERS                                   |    7 +
+ drivers/gpu/ipu-v3/ipu-image-convert.c        |    4 +-
+ drivers/media/platform/Kconfig                |    1 +
+ drivers/media/platform/Makefile               |    1 +
+ drivers/media/platform/imagination/Kconfig    |   12 +
+ drivers/media/platform/imagination/Makefile   |    3 +
+ .../platform/imagination/e5010-core-regs.h    |  585 ++++++
+ .../platform/imagination/e5010-jpeg-enc-hw.c  |  267 +++
+ .../platform/imagination/e5010-jpeg-enc-hw.h  |   42 +
+ .../platform/imagination/e5010-jpeg-enc.c     | 1646 +++++++++++++++++
+ .../platform/imagination/e5010-jpeg-enc.h     |  168 ++
+ .../platform/imagination/e5010-mmu-regs.h     |  311 ++++
+ .../media/platform/verisilicon/hantro_jpeg.c  |  128 +-
+ drivers/media/v4l2-core/v4l2-jpeg.c           |  162 +-
+ include/linux/math.h                          |   36 +
+ include/media/v4l2-jpeg.h                     |   11 +
+ 17 files changed, 3341 insertions(+), 118 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/media/img,e5010-jpeg-enc.yaml
+ create mode 100644 drivers/media/platform/imagination/Kconfig
+ create mode 100644 drivers/media/platform/imagination/Makefile
+ create mode 100644 drivers/media/platform/imagination/e5010-core-regs.h
+ create mode 100644 drivers/media/platform/imagination/e5010-jpeg-enc-hw.c
+ create mode 100644 drivers/media/platform/imagination/e5010-jpeg-enc-hw.h
+ create mode 100644 drivers/media/platform/imagination/e5010-jpeg-enc.c
+ create mode 100644 drivers/media/platform/imagination/e5010-jpeg-enc.h
+ create mode 100644 drivers/media/platform/imagination/e5010-mmu-regs.h
 
 -- 
-Sakari Ailus
+2.39.1
+
 
 _______________________________________________
 Linux-rockchip mailing list
