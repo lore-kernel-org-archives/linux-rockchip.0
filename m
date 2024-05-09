@@ -4,63 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BB51AC10F1A
-	for <linux-rockchip@archiver.kernel.org>; Thu,  9 May 2024 14:05:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ED94BC25B10
+	for <linux-rockchip@archiver.kernel.org>; Thu,  9 May 2024 14:07:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=HDl0Mbcq5i9jfFGWMrnL8cRu6tg62rfE9wIQfSi0LbU=; b=WFJw8hZCMIJCiZ
-	GtjlcRToP5sUcCaUhS/CRsais0fTM8beGGjvWVWi352N6/mOzDaDRb49PChs5rdqSaxwoA2JiE4me
-	WWIEfq1/KLtMpH8UAIjtYgNMZfNjtekvFdK70lhDrxHTNEH9CO4BZ32+/BAGV6YnlCCtHoTpzd85h
-	Wb5imnXLUgX0OPm/sxXBPxb7O7lyZGJsMWEtboDM1CraI4Vuv8hjU3isCn3m7/865hapYsAsS7wGt
-	ex5Bz7RJa56wze3wfPq5/Izu/wegtPc23aEODLITNlheE6dmciCgvOX/Rxe9mTATr64pb/SrIsMs+
-	B2sFqmz8+pUEGSm3GFRw==;
+	List-Owner; bh=HDl0Mbcq5i9jfFGWMrnL8cRu6tg62rfE9wIQfSi0LbU=; b=NhTCQ8PLXDyrS/
+	uIJf1DPjvGrLPhiaNFMckshG7CxevgHeRU9oy6SpjUpPrxEdJ3C0kkssQQ2BcFmQjf4rEWbTestoe
+	d52gNdL4P/9thA/ahpKg/wGpYQX5bYI38bHtZzkKVqugwxsXfBEc7E5LYkPJTdgMno8Iqe1BlneQb
+	PK8/Ar3qNquKiBRHpK6FeKWzxgJuNF01SAW1nz4/Nk/7yBdvG1W8XpsrOyU89Wk9sgzOISwYd/uMz
+	5tjP2SJ8JNUrbqU8CoApUiYm1Xiqo7zOONRZvWOVV1ddAPzFHUzIUUttCAS3m62fT04Mw3m1yu0y6
+	Xv55bfX2t5mW1AkcimIw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s54OH-00000001edh-2wKa;
-	Thu, 09 May 2024 14:04:57 +0000
-Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
+	id 1s54QQ-00000001fD0-3JFp;
+	Thu, 09 May 2024 14:07:10 +0000
+Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s54OD-00000001ec2-3vrd;
-	Thu, 09 May 2024 14:04:55 +0000
-Received: by mail-wr1-x42d.google.com with SMTP id ffacd0b85a97d-34f0e55787aso626365f8f.2;
-        Thu, 09 May 2024 07:04:50 -0700 (PDT)
+	id 1s54QJ-00000001f1i-02qL;
+	Thu, 09 May 2024 14:07:04 +0000
+Received: by mail-wm1-x333.google.com with SMTP id 5b1f17b1804b1-41b79450f78so5856905e9.2;
+        Thu, 09 May 2024 07:06:57 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1715263489; x=1715868289; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1715263616; x=1715868416; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:message-id:date:subject:cc
          :to:from:from:to:cc:subject:date:message-id:reply-to;
         bh=ygKOaLULm9Ty8/azGUq2u8NIEd5rcobuUSoqUbVVSBY=;
-        b=MeNrf/c7YLfqqzV52O751+9iPp/ZYRxIQTG8ga8A9Svg6jxhgGeGcEGekv5Z8t4J3b
-         rBlSJPgwf61IKCN6LYWbHhjLPc8wuQVYJrPunfP5MSeX8NEN8TrPt8V98bFiFpXTsz+N
-         riFOpNIV4fr/PgDu81FL9z18qFxCECnLycm3RktdxwflFcFcj7wcYD3YDRozZTzh8CJc
-         v6Ujnt59dIP/ds+ZzXtP0syKn73rDOMAs3TOP6ocsM9vrumOSYz9CgBNkgbrD13xGZgv
-         UcIZ3afG8smAAoMDIEgdNUc1F0R7sGKzG+GMvjWPSXvEUbetmcOQ5q5La7WknHHFL92Z
-         6oOw==
+        b=W4gEUzPljs4wbjrF5Bo0JQEzRJBCzkuhlbXJrOzxi60bhvnb0Ot4Xb57+NfQwrNK1y
+         LztTBNM+hj1cw4lUxVXUeKYsoA/dDriCAD5NAI+S1d/79a/YaWFpa61ZiBgUuIZkupcj
+         Gdb48Gc+rSo+s/CITK5vCaOMx6cjm8mHfStSHT/IxmhAuBD0yD6AN4sby5Tml5H+QY6D
+         Q3JqmUTnQ3m+fKnObEs2zpRrUhMueLXT/oyET9H365IOlVGhBUHJg3MtPSjq4Cm03pr3
+         vFjoGS8nWHtJjN3raBnHdXzCnQZ9PKh0Q1qot4tkFG+2BRhiE5U+O1vKCVJK3QZwFOd5
+         87Ng==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1715263489; x=1715868289;
+        d=1e100.net; s=20230601; t=1715263616; x=1715868416;
         h=content-transfer-encoding:mime-version:message-id:date:subject:cc
          :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
         bh=ygKOaLULm9Ty8/azGUq2u8NIEd5rcobuUSoqUbVVSBY=;
-        b=SB/4qvnHutlfMc4P9Au5tizyJD24r0kxbfDVD0Wlg45Z2pAPX0CabWDYvyNjIS10Uw
-         pgwJQfyNxHDCwwXV8sJfVwr5Dx76AFqi1D95NTQ5krtLFKcQcs+k/r3UwQgq/ygaJQRh
-         Og5vL34uAXRAK3ZZeQZkdFXkcCURya0Oobf4c0iO9atS5dUIybAZ7FwqlBhd+QpttAka
-         ao3NbxwtCP0hKTF1jvG1gG19LggYM+WQoBkniMyfuOb/qkg+sZ1xOkmgtO78dKMG/9an
-         UhFM0f8aHFHoWjAoZWEhv3W2xyXYMREPi1IabVxx2ua22o1WvqmPwdgMSrWRo2Je5LB1
-         Pa/A==
-X-Forwarded-Encrypted: i=1; AJvYcCXf1XqGUc4KpanQdZ70Wn0WFoVkTXvNafX5uaV9RQKDlUfBRycgTxbcBpotRaCzxmWxyHjG57t78ctESQeUFMuJ1pbKToJvZ5pspHH3Xu756n+U4anW154U6L3xJ51sdqFwy07wCQGeMjjy+CWUVmuaY3t6tFc1jyc=
-X-Gm-Message-State: AOJu0Ywqko01/WCOSEVGhChBqs7r9BH8V/SLdOOIIxwG0vW7GRmVzoQq
-	08vX6X5uefhn6/iEEvXfvoQZUoyp72ilHrvHKDn8+FqdSMFjAQU=
-X-Google-Smtp-Source: AGHT+IGJQUoq4KBpZVLF1jIA/JtqfJbPLkQQBLMgSeQVY1xajdJgFURlR2LWCEqpPMRCfEMg1QA8dQ==
-X-Received: by 2002:a5d:6e55:0:b0:34a:3f3d:bb14 with SMTP id ffacd0b85a97d-34fca242709mr3566295f8f.27.1715263489393;
-        Thu, 09 May 2024 07:04:49 -0700 (PDT)
+        b=D19M/mci1qEIDxmte2fcOmVuJlHHibYPykvi7hTRzep1eD8WZ1+pSaoPNPbq7bgGV7
+         YIhhlW31CBtQgpxJ+vpPETE5XYsjTqaTc/zRusNeotnynLrf0C/OVekDvMvDqDU0XL0U
+         1GNaHseLdZXPLoeU0NWiDpxT749rmQhwU/0dMW0U7BXXTi5D9zYJUDnYliWIc921fA8A
+         tvcAsQsD4cXbMQBSwkReJQ6ojlO8KreRqY+XsxPUlfcD3KJFmwP/uPHgXB82mAicemys
+         ORh8+oYCThibNAZO/Zyiqovo8yQVUX2oFuy6UBdqLpWiaNgKfvu2AbDFuuyv6Lwec7ZN
+         HMfA==
+X-Forwarded-Encrypted: i=1; AJvYcCVJ2Y9lPsG/LnTHsdVRyxLvupWgKIPXdYwB9V5fpzjaprkETH2jFxnrwdyI9sv8Fd9Xbca21kTzsZDbVMEQ5uhCThxfEUQvy714eYqQYGybZjvAY1lNPAFXZyKiU0LQ0ixb3u68G5u88/pxczV4NA+wUqA2bUO8Puo=
+X-Gm-Message-State: AOJu0YwN6age+nP+Izaq1/WUSfGEIEz0jZhLLitCnhWeG/fdvyU0Qcab
+	IAjQXG9uKSMQeqfbXbXTIqZAtdb5HJcgUxQ5MOD06f8n9D/YVxI=
+X-Google-Smtp-Source: AGHT+IHVkPjBZZWpO88u2YrMojjQRZm2+OXl2pDCRbpsX72BfqrrTJABv2eO9OkV1+awudthPDrRNQ==
+X-Received: by 2002:a05:600c:4f0c:b0:41a:8b39:8040 with SMTP id 5b1f17b1804b1-41f71ec26d4mr53830265e9.20.1715263616318;
+        Thu, 09 May 2024 07:06:56 -0700 (PDT)
 Received: from U4.lan ([2a02:810b:f40:4600:b44:d8c3:6fa8:c46f])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3502b896a29sm1788467f8f.43.2024.05.09.07.04.48
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3502baad058sm1793311f8f.66.2024.05.09.07.06.54
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 09 May 2024 07:04:48 -0700 (PDT)
+        Thu, 09 May 2024 07:06:55 -0700 (PDT)
 From: Alex Bee <knaerzche@gmail.com>
 To: Sandy Huang <hjc@rock-chips.com>,
 	=?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
@@ -83,12 +83,12 @@ Cc: dri-devel@lists.freedesktop.org,
 	linux-clk@vger.kernel.org,
 	Alex Bee <knaerzche@gmail.com>
 Subject: [PATCH v3 0/7] Add DSI support for RK3128
-Date: Thu,  9 May 2024 16:04:32 +0200
-Message-ID: <20240509140438.168429-2-knaerzche@gmail.com>
+Date: Thu,  9 May 2024 16:06:46 +0200
+Message-ID: <20240509140653.168591-1-knaerzche@gmail.com>
 X-Mailer: git-send-email 2.43.2
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240509_070454_000650_C354FA36 
+X-CRM114-CacheID: sfid-20240509_070703_060220_AB687D13 
 X-CRM114-Status: GOOD (  16.53  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
