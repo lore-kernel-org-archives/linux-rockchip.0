@@ -4,64 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6278AC10F1A
-	for <linux-rockchip@archiver.kernel.org>; Thu,  9 May 2024 14:07:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EBDBEC25B10
+	for <linux-rockchip@archiver.kernel.org>; Thu,  9 May 2024 14:07:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=xlqHfNAM7dDosZGJt7d1wM1Nbhw7l0tZ+aRQJNgICks=; b=r9GxABN/4Vw3Ww
-	F8mk1IV4uxvYHvwDopDOYcbVAXwhSJ0pwIsLN/nS/EHUKK+WmL8xShdN8lSZsEvHgW9xZxPLWQWmx
-	mOYhFB6DHi2OVKm53+KMpIGjNKbrn9oh/Mum+FV0y+w/rNwJFyaKFlfP05KH3o01od16mZJVXFALG
-	pTnaySQIGhkXwNJQ/wV6qqv72CfwCxsAiytyqi9RqPcayo3xgJBsN9BNVmM5cJJCbdU29ET1G346M
-	ELN81+yZmSWOR513E9crc1122cL2ouRHwc9m1DyJ+y81EAV6ltll1KbyzVXhze+NSuuxKNQqnYu9Q
-	ByOfhALH6kKmjEZ8Hrjw==;
+	List-Owner; bh=RH3j4FP+/nqBSjcY1G4g2YtcN70rAD3DpK3beGxPJ6E=; b=GrhcAq8KoHBj+R
+	MC1Our1BEvy/w6wKdW/NTxMkmWSrSEN3JMimWoHwUw/ZKBZ55GEt91WZWPNy23Jx6lxcbg1pgYvXd
+	ZjcSsTmasFY47uPbh1nbaPonhNWi83UQaCNXEDtplsVNqG57uLgvuYohLQVfY5aryJIWREQ6I7hVR
+	gBWm7gWiO2afiW99ft630o9XLnFULVJlwlbJpSxTK8pREtxpel6uQqDAvNfRYsBdBhAIGW4LiUdpZ
+	nPn7z/JTj76J9yq7DWY4/mqJDivRnXMQLrA8+ReW2lsHuqw4yqEZheKjGWl9baQ2o+wCfq1XUBdcu
+	XjwYKzqigoMVmDzDH93g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s54QV-00000001fHU-1iyx;
-	Thu, 09 May 2024 14:07:15 +0000
-Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
+	id 1s54Qg-00000001fSO-0lxX;
+	Thu, 09 May 2024 14:07:26 +0000
+Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s54QL-00000001f2X-02jR;
-	Thu, 09 May 2024 14:07:06 +0000
-Received: by mail-wm1-x32f.google.com with SMTP id 5b1f17b1804b1-41fd5dc04e2so3658385e9.3;
-        Thu, 09 May 2024 07:06:58 -0700 (PDT)
+	id 1s54QP-00000001f4b-2n36;
+	Thu, 09 May 2024 14:07:11 +0000
+Received: by mail-wr1-x432.google.com with SMTP id ffacd0b85a97d-34dc129accaso625443f8f.0;
+        Thu, 09 May 2024 07:07:00 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1715263618; x=1715868418; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1715263619; x=1715868419; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=wbWVkqkhZ2d0PkibWvpex0qMFtjGLxAjIIoCdT+E/c8=;
-        b=d+KEPrDpMFNRG6o+quZ9ErgI9b/YlGipkDXwkxwcM2e6tlPIcakT628xEiIb0Wqbbx
-         KXcr/ViscGvG8naxRdq16XwbJSfh8Ey3TxD0rMpxgxuYXU0qsWuOW6CJ2E7uM8jRPOko
-         IdiJVxecxkN1+86HtI1Qk2O4Zjx98tdShYh8J9qqAMfE/cY0gTceQ1hti/RsNtZNHry9
-         PyiE40Z2XEtQTh9VFLBvw2FLkX5r8qt+o0EmjlRfkBoQEZaUyOzh+Wn5wLwbaAv9R9oz
-         yV3vfiPzKgn7VuZjFBKK1DTLuAXbr+YEs7FA4acLFnn4LnfaNIqkh0paIMwUNusGShCc
-         zFjA==
+        bh=CkypWPW9zjRDxFdsbSAq2JqA2c+afHrqHIvisMDjIts=;
+        b=IYIUk68CCi0xq9mNg/48t9nFWWUN50Ga/38xFfuHaIelEQOVETYwpv9RlCbWKHjvyX
+         XRK8IWhVzBaG7b8xXEju/UGuBIwWDMHJjRtvfcs1ZAKrCH9QJm8G5Shncu9ECteEaVbE
+         FtXZMECfCboB/vc+CmGc3JY8Af1UuRjWGDKuc0ZKmVznaa5KIHgqYroD8s/XFlgcHtHj
+         A/NFd+Um6qzehqNokwIFECL638reTIggdaE1s6WIkK+je15dTGaJv5In4qqcge1YAGeY
+         ZrBb2NlH67jME2stNphBDxyy2nLmprMxvJrNl6AwBfZ/Wsfk5yZmoKY9x57h2st+EeEB
+         9uqw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1715263618; x=1715868418;
+        d=1e100.net; s=20230601; t=1715263619; x=1715868419;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=wbWVkqkhZ2d0PkibWvpex0qMFtjGLxAjIIoCdT+E/c8=;
-        b=P6OOpDaQ0Q3z+NJwkZywbNfu+3gMpHgMnB/kHwSSyYGe8nYMrgrecCjIhB78qHxEzV
-         Gx4IjqKfq0aTvGyJtu7ut/HjN0miMwPjq9+2bnQkPHfFxGN/aMxR2meQkx2MbK/rIRZy
-         TPgpZobOR7qapwDMwBAbdQ9SAmZa159XlnbbMGUlSGDBJB1vomMTW8l6zOqkT39+CUvK
-         Fq7BU/pmCp7U/AA5D0npsphyDLPw+wiVjM9ongU2q/B9tIdyIP/MudTOLPxZG1UIzRCT
-         nnyPgU3CrCa6nrH8jV03+YXDLlhxHLYXtNn7+8zh6z61m6artEb9vcO1CdYrH+bFOKuh
-         MgBQ==
-X-Forwarded-Encrypted: i=1; AJvYcCV0O7NnHuaRlZ6z1rb1FRg7GgSMVaZkk+VtHBetQm86k85+32suTY/At3K7GX2+A5LEa5VPCNfpNIlB9/Sjdys7tbE4c9UjMyUBFlcNs8W5dLXcrPsq+bcXl0IjDNa1ej2cXXHKpelRJCUbyMSIh7lC7yT1ya40+ac=
-X-Gm-Message-State: AOJu0YwFE89O3F/dLNe+foEc6OFpWJ1sv4u+MoVzndJBPU8vY/9gmg5V
-	Re/F4bbpoQmeYJSP3f6bMzOqGeBxSfYhilwksmMjPTwO118BOnE=
-X-Google-Smtp-Source: AGHT+IGJGV6bFqKBadGxqXhAzkF2pE6cCKZpD95eQc6VzdGRYvOXM2SRAFICzVxoDStLNZJ7jxAXuA==
-X-Received: by 2002:a5d:6e8c:0:b0:34d:8c1f:3194 with SMTP id ffacd0b85a97d-34fcafcd7afmr3768024f8f.35.1715263617622;
-        Thu, 09 May 2024 07:06:57 -0700 (PDT)
+        bh=CkypWPW9zjRDxFdsbSAq2JqA2c+afHrqHIvisMDjIts=;
+        b=APgJeH9ST7Fh0T92R4sS8kGX2uL4Tw+1QgjDBBY9uitQ6kBx/GNlBtfcAaG7JWij5D
+         YtC91poT/yCMWiqa8CJDf/TXLyngQiQQkTL62L3X/reW43LS5j/ndfIHBSvN5LmV6ChF
+         FkOckWHgSGUCK+onymnFVzZKADcCMGkVPQsfXKY7qo+ou3DtklSQXgKgXmOPd8B4asfw
+         PHx2n9WuHGWIEaS+qLQWIf/0cfSnt/ZujCSYAvp1RGMX5oEOaF8JJ+E0GSDYzhUQCOWP
+         5J7ShheEHjbbzkulWPlu8CLr4wPR46aycuq/FJAp5REOW4YOPddXDP5cUl4HbboLbJPG
+         Di3w==
+X-Forwarded-Encrypted: i=1; AJvYcCVfPWYe4VzDbQO3wl36deorhmdq9QM7P1As+5JDOTlxlWkFx4txyBjdVRtAEcdPyhCoYxZM0RDPhva33Jkv+IoFI75f9qxlnqUTV97DrsN/NdZ/OzzvQgUspznuHpC3SCvw5rrHtP/abRi8hrITJJjM1hiDxK5WFsc=
+X-Gm-Message-State: AOJu0YzcXN1MWPIGLJ0wDOF2SjdmAaPjfsoKuWpoU3yAJgFjXdD0KiHO
+	T9E/nwSOOxin/6+YvYiWv+VXkps5s/7gRlLC9NENgLsuRiaQKdM=
+X-Google-Smtp-Source: AGHT+IFqb5Butmg/XL3s32gTYjgv+S8OXC4Ust9AbxM9joeLAhE7w7QJYm4NxRM4exE+Z+nqR7jOZg==
+X-Received: by 2002:adf:e904:0:b0:34f:7788:37ef with SMTP id ffacd0b85a97d-34fca244116mr4586628f8f.29.1715263619359;
+        Thu, 09 May 2024 07:06:59 -0700 (PDT)
 Received: from U4.lan ([2a02:810b:f40:4600:b44:d8c3:6fa8:c46f])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3502baad058sm1793311f8f.66.2024.05.09.07.06.56
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3502baad058sm1793311f8f.66.2024.05.09.07.06.57
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 09 May 2024 07:06:56 -0700 (PDT)
+        Thu, 09 May 2024 07:06:58 -0700 (PDT)
 From: Alex Bee <knaerzche@gmail.com>
 To: Sandy Huang <hjc@rock-chips.com>,
 	=?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
@@ -84,16 +84,16 @@ Cc: dri-devel@lists.freedesktop.org,
 	linux-clk@vger.kernel.org,
 	Alex Bee <knaerzche@gmail.com>,
 	Conor Dooley <conor.dooley@microchip.com>
-Subject: [PATCH v3 1/7] dt-bindings: display: rockchip,dw-mipi-dsi: Document RK3128 DSI
-Date: Thu,  9 May 2024 16:06:47 +0200
-Message-ID: <20240509140653.168591-2-knaerzche@gmail.com>
+Subject: [PATCH v3 2/7] dt-bindings: clock: rk3128: Add PCLK_MIPIPHY
+Date: Thu,  9 May 2024 16:06:48 +0200
+Message-ID: <20240509140653.168591-3-knaerzche@gmail.com>
 X-Mailer: git-send-email 2.43.2
 In-Reply-To: <20240509140653.168591-1-knaerzche@gmail.com>
 References: <20240509140653.168591-1-knaerzche@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240509_070705_074311_DB5456EA 
-X-CRM114-Status: UNSURE (   9.84  )
+X-CRM114-CacheID: sfid-20240509_070709_801777_8B4D59E5 
+X-CRM114-Status: UNSURE (   9.79  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -111,41 +111,30 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Document the MIPI DSI controller for Rockchip RK3128. The integration is
-similar to PX30 so it's bindings-constraints can be re-used.
+The DPHY's APB clock is required to be exposed in order to be able to
+enable it and access the phy's registers.
 
 Signed-off-by: Alex Bee <knaerzche@gmail.com>
 Acked-by: Conor Dooley <conor.dooley@microchip.com>
 ---
 changes since v1:
- - added ahb clock
+ - none
 
-changes since v2:
- - revert added ahb clock
- 
- .../rockchip/rockchip,dw-mipi-dsi.yaml        | 25 ++++++++++++++++++-
- 1 file changed, 24 insertions(+), 1 deletion(-)
+ include/dt-bindings/clock/rk3128-cru.h | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-mipi-dsi.yaml b/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-mipi-dsi.yaml
-index ccf79e738fa1..ccd71c5324af 100644
---- a/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-mipi-dsi.yaml
-+++ b/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-mipi-dsi.yaml
-@@ -15,6 +15,7 @@ properties:
-     items:
-       - enum:
-           - rockchip,px30-mipi-dsi
-+          - rockchip,rk3128-mipi-dsi
-           - rockchip,rk3288-mipi-dsi
-           - rockchip,rk3399-mipi-dsi
-           - rockchip,rk3568-mipi-dsi
-@@ -77,6 +78,7 @@ allOf:
-           contains:
-             enum:
-               - rockchip,px30-mipi-dsi
-+              - rockchip,rk3128-mipi-dsi
-               - rockchip,rk3568-mipi-dsi
-               - rockchip,rv1126-mipi-dsi
+diff --git a/include/dt-bindings/clock/rk3128-cru.h b/include/dt-bindings/clock/rk3128-cru.h
+index 6a47825dac5d..1be455ba4985 100644
+--- a/include/dt-bindings/clock/rk3128-cru.h
++++ b/include/dt-bindings/clock/rk3128-cru.h
+@@ -116,6 +116,7 @@
+ #define PCLK_GMAC		367
+ #define PCLK_PMU_PRE		368
+ #define PCLK_SIM_CARD		369
++#define PCLK_MIPIPHY		370
  
+ /* hclk gates */
+ #define HCLK_SPDIF		440
 -- 
 2.43.2
 
