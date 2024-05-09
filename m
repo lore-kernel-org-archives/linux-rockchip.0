@@ -4,95 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CD886C25B10
-	for <linux-rockchip@archiver.kernel.org>; Thu,  9 May 2024 15:16:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C9C8AC10F1A
+	for <linux-rockchip@archiver.kernel.org>; Thu,  9 May 2024 18:30:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=W37jaJgdZwjZ3Oe+NhP5ZzbfNpCPF7PU8RObF449rqI=; b=ksVL26DvnBBlwj
-	mlwlLg1lPp3G9G/Yp6mTMCYFf0L9Fg/k8K4kFyRlTeWYIYiG6GSCoNwY63KjaszE0aDoHCiEqQ9Rl
-	SDLzI3AWWzeh5IUhHLYxFm5Dz+5NS6UXnIoTeeSJuHhZr2caDX5ZmmZTDcfOIs4mDkaWI/bTMWbyT
-	ahbbcgroz8n+IaMVkJzWFieYVTWZ1HhIOoftsHnwvALgTZBGv3z2olRyaJl/NX7MPiw/VFrLY++7v
-	UYSt4Nqck9o54Y/d0+35OrKC044WIXQvXCYW6z3oBmDh6QzId0Z2aFTl2Oz/QGUPDz9lQXGK1QHcV
-	kr98jLdmPHNNv8bZHlyQ==;
+	List-Owner; bh=3rcfYSwYYzSc/J2pk+roDGLJvp4P1d7Ot/EeLTMD1t8=; b=F4b8XyXfdYFFX8
+	v1Q+orxDkB3LKv/wjEF5nqEUpaM+LVzeQ6eZKB04MZ9p9LtDLN6SekJ/zCT6tZtuBmi/k2Crg5KEk
+	5n+BQvPd+rRH5B7GB2QFUQ3F6AY+/JwqROI9lpRYzDT6tA0P5HJ4ie31YlCWxPOhf0KOuDNonFehH
+	LLCGlkWhnXFSWLweSY4lBbIE5G8YHhzZwf8zfd5xfUxw/sv7qMiM7utqq93BIVqoPa+j73IUUa1LN
+	PefIrDkJ7OwBq2JxQEdIfF8EnWkvD3/6IX1MUt+/kb0B0AhbtSJ1Twr2pIHY8Qq5lVk+JqV94MZY3
+	/Npemt7iqzRptceDONLw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s55VV-00000001rAu-133j;
-	Thu, 09 May 2024 15:16:29 +0000
-Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
+	id 1s58Wh-00000002Nwo-3X0W;
+	Thu, 09 May 2024 18:29:55 +0000
+Received: from lahtoruutu.iki.fi ([185.185.170.37])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s54QI-00000001f5D-101b;
-	Thu, 09 May 2024 14:07:03 +0000
-Received: by mail-wr1-x434.google.com with SMTP id ffacd0b85a97d-34c8592b8dbso700028f8f.3;
-        Thu, 09 May 2024 07:07:01 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1715263621; x=1715868421; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=lAJ0ir3EvsiOixSkrLpbfd6IrLvM1qhtQ0lJENdLIss=;
-        b=l9YVvA8OeraO4YEAQWr2N9elhTqMES5trG5G3pmHvyQv62/V53vZkBVkBBp5X4RBr3
-         zbfuwkDdHyu0RGMawroDVPn8RCBN9Q7li5eljIgwc05vOgDmthmEgZ2bFGzZt65uUpkA
-         BYrFMWQOXMomlBptNTbpo9/KWXD41uGmwpa9olmm05QoATyKiNOsm3MT1/VbQJ6lIHjp
-         mpNfL4+XExfmNRYjGdKljAdvdtKdnFuOmlgRnKIvMtAJ39Yy6DUVY1T5Oy0KTAgawy01
-         rbK5zGHjzpLw65Flf3HI/jxGT8fWafN9nYeORphufFCFL4Ik4B8wgUwlYYWYrXqmb3zw
-         NZpg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1715263621; x=1715868421;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=lAJ0ir3EvsiOixSkrLpbfd6IrLvM1qhtQ0lJENdLIss=;
-        b=jd8rfzqcdvTvwHgjLe4PqRE3uTeVVMuTjGQpJhxQhwrS4viQ/hSjI5shcpSb/kV1y/
-         5ei7n1qAMFHssxe9WVwcTMgw4tEXF1vWvuQJGrrT24xh0mbe29DPkSo1n8e/d8oxDjdL
-         dVsMuE+OSu6/6RvpJGoYGvTPwnQd3C1h5h7neLJJDEpLCuvHp/XTa0yTctXHXgM9CdeK
-         SmxT3xzPRALCUgiUeyWEzUS4pxLnbRLV5GOl0ur/GHPye7nB5omZd3ul/+6ZAZNPuAHO
-         qxvtCOvJ5e2oIerZ+I9iUks9Kq09A4xn1/fRv5oBYrqfTZG5lFg/i46GTDvSqINZe3Aw
-         xspQ==
-X-Forwarded-Encrypted: i=1; AJvYcCUTz/4jwzXDREYqgwkXsJEPEV7sN6me2gsapaVwUcbOTgfj4f5ekRyjJrvigqxaXU+O4M2nTHJtEfiMsj/KuBgmv7Igc6QEEXj8xO3yhupLAefiXCN6QYPQL4MnEbdPie6lkGIp5giWao9FSVO0Qy5e6CZnezJT5DM=
-X-Gm-Message-State: AOJu0Yz9dzsmbwn54dVTK/B1VIn0plbOby2fU5XdnH7JxGj4mAut/cs/
-	JYyV2fLsRbvE3/XiHPX+gykc1UGI8CqRsAlhiyDAl8Rc94PEagU=
-X-Google-Smtp-Source: AGHT+IGDm2zqiPzTsp+rCVEziHjhfj96YGRsnuCAnq5URS0U33f4RSu428fC/l+DFwekkggv2NMBOw==
-X-Received: by 2002:adf:fa07:0:b0:34d:b4db:9927 with SMTP id ffacd0b85a97d-34fca6214femr4085933f8f.50.1715263620665;
-        Thu, 09 May 2024 07:07:00 -0700 (PDT)
-Received: from U4.lan ([2a02:810b:f40:4600:b44:d8c3:6fa8:c46f])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3502baad058sm1793311f8f.66.2024.05.09.07.06.59
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 09 May 2024 07:06:59 -0700 (PDT)
-From: Alex Bee <knaerzche@gmail.com>
-To: Sandy Huang <hjc@rock-chips.com>,
-	=?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
-	Andy Yan <andy.yan@rock-chips.com>,
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	David Airlie <airlied@gmail.com>,
-	Daniel Vetter <daniel@ffwll.ch>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Michael Turquette <mturquette@baylibre.com>,
-	Stephen Boyd <sboyd@kernel.org>
-Cc: dri-devel@lists.freedesktop.org,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-clk@vger.kernel.org,
-	Alex Bee <knaerzche@gmail.com>
-Subject: [PATCH v3 3/7] clk: rockchip: rk3128: Export PCLK_MIPIPHY
-Date: Thu,  9 May 2024 16:06:49 +0200
-Message-ID: <20240509140653.168591-4-knaerzche@gmail.com>
-X-Mailer: git-send-email 2.43.2
-In-Reply-To: <20240509140653.168591-1-knaerzche@gmail.com>
-References: <20240509140653.168591-1-knaerzche@gmail.com>
+	id 1s58Wb-00000002NvF-49XN
+	for linux-rockchip@lists.infradead.org;
+	Thu, 09 May 2024 18:29:54 +0000
+Received: from hillosipuli.retiisi.eu (80-248-247-191.cust.suomicom.net [80.248.247.191])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: sailus)
+	by lahtoruutu.iki.fi (Postfix) with ESMTPSA id 4Vb0sy3YRKz49Pwn;
+	Thu,  9 May 2024 21:29:42 +0300 (EEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=iki.fi; s=lahtoruutu;
+	t=1715279384;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=7A4xPDEgAQQdMdt52bCRjKFOBSibDEcEKYLBHN2iw5E=;
+	b=FdchrSAS/rkEX7K4SCLBSmv4gsvA9kEgIr6ZlVRFo7Ty7yWLoTnyDeRd505V9OfhOo7ig6
+	dYcbJBEucAERnmbsNRJNNDcBx8ezW69VKUos6mPiJCfkEvlXxFxjy/cbbcDxsg7oWwBiQK
+	+0IMojFOzu2cNwx2zCA1sNCKYzAClI6zpMnFz8ntM7uOu2PYqw/5Hs8TaHH9hYobkgnraG
+	CLpYBBGzxZOTpmSLOuzk//FnIXOuvzn6/hBqPoex3UXfYDTcN6OCMiWOtttAfFGImlVlfF
+	ynQU/RIu3WIGO1780pllahfLdzf414NJXhvN86caexRN+ZMdh8hwhfEcF5d/yA==
+ARC-Seal: i=1; s=lahtoruutu; d=iki.fi; t=1715279384; a=rsa-sha256;
+	cv=none;
+	b=d2Y/U8geglk/aao9oANk7ZuwFu2+3cBPXZYAnm6kUVXYYcbaYatFCB8qmNCZ2sk93eY7LQ
+	myj04ct8F/Uw04gtP4PWkL7lFhwXQid3OeF4L5tPiGK57AtyUAGeHoBjOxIClVX5xWoFxp
+	RV3FkTAN0niqiikA/NYCgqEbiTXAWkCk59V5oSmPYwJ37mCohPKI67y4Q9xw+D60bDWcEX
+	Wc/ATDSPfmaQU2oxWJJyEeVzD8fSHtUiUJDZ2pnoss6nODLBX8m8N7aqz9I2Twsq+IcA41
+	418yqi2KFRnlTRVvEzXk7NMsKysiKvfKh10Up9P9zA0Jl/ukgiItHn7vQrM1SQ==
+ARC-Authentication-Results: i=1;
+	ORIGINATING;
+	auth=pass smtp.auth=sailus smtp.mailfrom=sakari.ailus@iki.fi
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=iki.fi;
+	s=lahtoruutu; t=1715279384;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=7A4xPDEgAQQdMdt52bCRjKFOBSibDEcEKYLBHN2iw5E=;
+	b=e2tcMHI7+kyoQS3stRFo3OSo0rbnruwnqXWwdOlmjJ7spynxNiWwu7V0mXc/K1yDCeoWgd
+	rXavGj70o3XPy0p6Z8a5+tJBbttkIBuCFKNu65aiV6RCYkvGG7Cd9QVMMJu34iKbAAiuUm
+	PzkgHF9eNi/RHJFoolPnPHdahzAAXRrtNoPHzbWu1YYcWVgHyXZv//A+ewu6UrRP6yuDHw
+	UTr3O2evOmGlF8ih7nkFZP1x/OmYH3hB23oECUlUCYRmPbSQ0mmAUY3uxu4c9doq0LfEDk
+	0Rq7bTj1l+cEr3oyXG5mMWB9vU4/Jp99JNC5rfdtQ0BH5cWToY3R4+jnZH7b2g==
+Received: from valkosipuli.retiisi.eu (valkosipuli.localdomain [192.168.4.2])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	by hillosipuli.retiisi.eu (Postfix) with ESMTPS id 1897D634C93;
+	Thu,  9 May 2024 21:29:42 +0300 (EEST)
+Date: Thu, 9 May 2024 18:29:41 +0000
+From: Sakari Ailus <sakari.ailus@iki.fi>
+To: Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>
+Cc: linux-media@vger.kernel.org, linux-renesas-soc@vger.kernel.org,
+	Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>,
+	Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+	Dafna Hirschfeld <dafna@fastmail.com>,
+	linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH v4 1/3] media: v4l2-subdev: Fix
+ v4l2_subdev_state_get_format() documentation
+Message-ID: <Zj0WFQo0cHReRCcU@valkosipuli.retiisi.eu>
+References: <20240508214045.24716-1-laurent.pinchart+renesas@ideasonboard.com>
+ <20240508214045.24716-2-laurent.pinchart+renesas@ideasonboard.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20240508214045.24716-2-laurent.pinchart+renesas@ideasonboard.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240509_070702_282717_8D06565D 
-X-CRM114-Status: GOOD (  12.53  )
+X-CRM114-CacheID: sfid-20240509_112952_189933_B198F171 
+X-CRM114-Status: GOOD (  19.81  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,33 +107,50 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Export the D-DHY's APB clock for usage in the DT. Also drop the
-CLK_IGNORE_UNUSED-flag, as the clock will be enabled on demand.
+Hi Laurent,
 
-Signed-off-by: Alex Bee <knaerzche@gmail.com>
----
-changes since v1:
- - reword commit message
+Thanks for posting this.
 
- drivers/clk/rockchip/clk-rk3128.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+On Thu, May 09, 2024 at 12:40:43AM +0300, Laurent Pinchart wrote:
+> The documentation of the v4l2_subdev_state_get_format() macro
+> incorrectly references __v4l2_subdev_state_get_format() instead of
+> __v4l2_subdev_state_gen_call(). Fix it, and also update the list of
+> similar macros to add the missing v4l2_subdev_state_get_interval().
+> 
+> Suggested-by: Sakari Ailus <sakari.ailus@linux.intel.com>
+> Signed-off-by: Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>
+> ---
+>  include/media/v4l2-subdev.h | 6 +++---
+>  1 file changed, 3 insertions(+), 3 deletions(-)
+> 
+> diff --git a/include/media/v4l2-subdev.h b/include/media/v4l2-subdev.h
+> index e30c463d90e5..b25b6e97ecbd 100644
+> --- a/include/media/v4l2-subdev.h
+> +++ b/include/media/v4l2-subdev.h
+> @@ -1340,12 +1340,12 @@ void v4l2_subdev_cleanup(struct v4l2_subdev *sd);
+>   */
+>  /*
+>   * Wrap v4l2_subdev_state_get_format(), allowing the function to be called with
+> - * two or three arguments. The purpose of the __v4l2_subdev_state_get_format()
+> + * two or three arguments. The purpose of the __v4l2_subdev_state_gen_call()
+>   * macro below is to come up with the name of the function or macro to call,
 
-diff --git a/drivers/clk/rockchip/clk-rk3128.c b/drivers/clk/rockchip/clk-rk3128.c
-index 75071e0cd321..a20d1fd25e2a 100644
---- a/drivers/clk/rockchip/clk-rk3128.c
-+++ b/drivers/clk/rockchip/clk-rk3128.c
-@@ -526,7 +526,7 @@ static struct rockchip_clk_branch common_clk_branches[] __initdata = {
- 	GATE(PCLK_ACODEC, "pclk_acodec", "pclk_cpu", 0, RK2928_CLKGATE_CON(5), 14, GFLAGS),
- 	GATE(0, "pclk_ddrupctl", "pclk_cpu", CLK_IGNORE_UNUSED, RK2928_CLKGATE_CON(5), 7, GFLAGS),
- 	GATE(0, "pclk_grf", "pclk_cpu", CLK_IGNORE_UNUSED, RK2928_CLKGATE_CON(5), 4, GFLAGS),
--	GATE(0, "pclk_mipiphy", "pclk_cpu", CLK_IGNORE_UNUSED, RK2928_CLKGATE_CON(5), 0, GFLAGS),
-+	GATE(PCLK_MIPIPHY, "pclk_mipiphy", "pclk_cpu", 0, RK2928_CLKGATE_CON(5), 0, GFLAGS),
- 
- 	GATE(0, "pclk_pmu", "pclk_pmu_pre", 0, RK2928_CLKGATE_CON(9), 2, GFLAGS),
- 	GATE(0, "pclk_pmu_niu", "pclk_pmu_pre", CLK_IGNORE_UNUSED, RK2928_CLKGATE_CON(9), 3, GFLAGS),
+You could drop "below" here, too: the macro definition is above the text.
+
+Reviewed-by: Sakari Ailus <sakari.ailus@linux.intel.com>
+
+>   * using the last two arguments (_stream and _pad). The selected function or
+>   * macro is then called using the arguments specified by the caller. A similar
+> - * arrangement is used for v4l2_subdev_state_crop() and
+> - * v4l2_subdev_state_compose() below.
+> + * arrangement is used for v4l2_subdev_state_crop(), v4l2_subdev_state_compose()
+> + * and v4l2_subdev_state_get_interval() below.
+>   */
+>  #define v4l2_subdev_state_get_format(state, pad, ...)			\
+>  	__v4l2_subdev_state_gen_call(format, ##__VA_ARGS__, , _pad)	\
+
 -- 
-2.43.2
-
+Sakari Ailus
 
 _______________________________________________
 Linux-rockchip mailing list
