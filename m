@@ -4,89 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 60724C25B10
-	for <linux-rockchip@archiver.kernel.org>; Fri, 10 May 2024 10:11:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2C08DC25B10
+	for <linux-rockchip@archiver.kernel.org>; Fri, 10 May 2024 14:47:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=l3nfyim3OCzrat6TkTk/+IfgUAwQFAz9EpcRs165PgE=; b=XzugD+y1PvSpAj
-	Zquo2HCODwvfX5jX3QXTKobryCrpZq+qdaeYvFGLRQyPKRyEHfEz1gvixgyCzh5LKU5OiM96+kvDu
-	mYkeJnUShUtPwwx9po+YBl+q1wn0QyasvY0sqhohU6y0vKLm3HlUI/QzcjaAQTH5lwJuAU8oEe3LD
-	8AJDSver3RCxRZUNgn1ZXZje6nJCIxxPDKQ5YV3VJPZZMhLATbCBVrk8ZHAlU5wFfeyHIfVIJZ77s
-	zQszUF9+gNU4imnRa/w61amN1xJ1l1+5Pg8pO2nW6kc1YqIT7RFH3hDL2Lf49YzI1nzQNaks19xRX
-	CqQen2OoGWXYUypJPjYg==;
+	List-Owner; bh=EncjeaJPLdyKvkGJkCbPM9Op+QycHEr8s1uQ7Jp/hnI=; b=rW1D5WLjUfs1Cs
+	7vW/MR4y0CqchjHoLfBodot+4exKZzpr5nQ5awbUYvFQCvYmaHFkRRz5Q3jjUuwO3HTDbLPTkpI6H
+	i8LJblNl3fStD4LY76nS5d7fQCHkzzeY5z6T9GtY/09kVZuXzh4SbBGPA+Aa4r2eDjXdzm6mpqcCj
+	iM+Tvz3Oh7MjwWwJZs2YSFU4uigljCNXcczr4M6+r9B1huFRFyguMDB8oHZqqf4hykwjXm3DFWMoV
+	pdnGjq8kEDUnRASQ23gGsgcDqlorxWdqHAaOynWy2au4ArjgqZ3vEUIgpE7A3Munx1vOv6vyX2VD2
+	+HoXd5v4X97LjCgjDEEQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s5NDu-00000004pO1-05Ge;
-	Fri, 10 May 2024 10:11:30 +0000
-Received: from madrid.collaboradmins.com ([46.235.227.194])
+	id 1s5RXB-00000005baC-3ZXN;
+	Fri, 10 May 2024 14:47:41 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s5NDq-00000004pMc-0Ott;
-	Fri, 10 May 2024 10:11:27 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1715335884;
-	bh=c1waZ+eyh/3LEv2xQyu5LjuVf0SWbog1966q3KjkEqw=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=xJk+hOhpaV0T+ju3F8+sGmHBtzFTyVUG4277e8N/HYwbkr3BX3CzBx/+wcN2hgGpe
-	 y3AQfCENjfRWsQqdzX9NFQcE6TCs0Uotjwtt9fg9LZId1pbDM11ZYIgJo4uNpzZkdY
-	 PnTqo9/+m/7JFxbRrFDEoqFkqIJ0VZ6crTG9McyI4maP8wggHhvKx30Wg8XTzClStG
-	 9FwDc0JokaW1oDrkqv4OxNLzVAO+B3GnAKvPKu5ny7tz7dWVkxfryNJjCzGuw1FWRn
-	 SruPRMpQcZD28dXZLjtT+UObBpWlZRpJ164RAFgDp6ZALOCqDHsItLhm9U+1Qm20Vt
-	 af9aDi8aR6llA==
-Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 1D92A3782185;
-	Fri, 10 May 2024 10:11:22 +0000 (UTC)
-Message-ID: <d95cafca-bc4c-4571-a6ed-b66b6f63a579@collabora.com>
-Date: Fri, 10 May 2024 12:11:21 +0200
+	id 1s5RX4-00000005bYv-2Sg4;
+	Fri, 10 May 2024 14:47:35 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 9AA7661F0F;
+	Fri, 10 May 2024 14:47:33 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E2FC5C113CC;
+	Fri, 10 May 2024 14:47:29 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1715352453;
+	bh=TnctR5VIFK9cG6OWB0Ya5IbDIo4SYtggYGdcqptbWFs=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=Li9vp/TemlmLoGa4Drj5pMqrB9B/eOJ8kRGM9FJy8eKVlpYt0yEDycu79BLt8bMFT
+	 ZSbJrlTAFYmLm9w61RoIGnFUvDguhCJau2YdBOb5EcLVMhWCnwh4cEu19HqGuLKtK8
+	 CzbyV3grZA7zvPzYepKxWUGbRjq2KQy1z0B3BlX+mS5MeK+6L9pcbb/uVY00aaDU6l
+	 jHJnij6hDeqdzK0/jSuDqeONHD6Vs66goJwDZqkYewjuzZq3cb9Qq5Bifmt9XexbtV
+	 OwbO+e21a8eUDlmFFVhKpJUJlL80dRmtQm9j7CH0yKpqhDwOH42DOlLe0bciQ0xxT/
+	 z7Z9Jf89ol4wg==
+Date: Fri, 10 May 2024 15:47:26 +0100
+From: Lee Jones <lee@kernel.org>
+To: Alex Bee <knaerzche@gmail.com>
+Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Linus Walleij <linus.walleij@linaro.org>,
+	Liam Girdwood <lgirdwood@gmail.com>,
+	Mark Brown <broonie@kernel.org>,
+	Sebastian Reichel <sebastian.reichel@collabora.com>,
+	Chris Zhong <zyw@rock-chips.com>,
+	Zhang Qing <zhangqing@rock-chips.com>, devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+	linux-gpio@vger.kernel.org
+Subject: [GIT PULL] Immutable branch between MFD, Pinctrl and Regulator due
+ for the v6.10 merge window
+Message-ID: <20240510144726.GB6146@google.com>
+References: <20240416161237.2500037-1-knaerzche@gmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 1/1] nvmem: Change return type of reg read/write to
- ssize_t
-To: Joy Chakraborty <joychakr@google.com>, Hector Martin <marcan@marcan.st>,
- Sven Peter <sven@svenpeter.dev>, Alyssa Rosenzweig <alyssa@rosenzweig.io>,
- Srinivas Kandagatla <srinivas.kandagatla@linaro.org>,
- Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>,
- Vladimir Zapolskiy <vz@mleia.com>, Neil Armstrong
- <neil.armstrong@linaro.org>, Kevin Hilman <khilman@baylibre.com>,
- Jerome Brunet <jbrunet@baylibre.com>,
- Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
- Claudiu Beznea <claudiu.beznea@tuxon.dev>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Bjorn Andersson <andersson@kernel.org>,
- Konrad Dybcio <konrad.dybcio@linaro.org>, Heiko Stuebner <heiko@sntech.de>,
- Orson Zhai <orsonzhai@gmail.com>, Baolin Wang
- <baolin.wang@linux.alibaba.com>, Chunyan Zhang <zhang.lyra@gmail.com>,
- Maxime Coquelin <mcoquelin.stm32@gmail.com>,
- Alexandre Torgue <alexandre.torgue@foss.st.com>,
- Vincent Shih <vincent.sunplus@gmail.com>, Chen-Yu Tsai <wens@csie.org>,
- Jernej Skrabec <jernej.skrabec@gmail.com>,
- Samuel Holland <samuel@sholland.org>, Rafal Milecki <rafal@milecki.pl>,
- Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
- Masami Hiramatsu <mhiramat@kernel.org>, Michal Simek <michal.simek@amd.com>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, asahi@lists.linux.dev,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-amlogic@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-arm-msm@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-stm32@st-md-mailman.stormreply.com, linux-sunxi@lists.linux.dev,
- manugautam@google.com
-References: <20240510082929.3792559-1-joychakr@google.com>
- <20240510082929.3792559-2-joychakr@google.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20240510082929.3792559-2-joychakr@google.com>
+Content-Disposition: inline
+In-Reply-To: <20240416161237.2500037-1-knaerzche@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240510_031126_345785_862BA961 
-X-CRM114-Status: UNSURE (   8.96  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240510_074734_713794_A6CA1C3E 
+X-CRM114-Status: GOOD (  10.77  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,28 +77,38 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Il 10/05/24 10:29, Joy Chakraborty ha scritto:
-> Change return type of reg_read() and reg_write() callback to ssize_t for
-> nvmem suppliers to return number of bytes read/written to the nvmem core.
-> 
-> Currently nvmem core assumes the amount of data read/written is equal
-> to what it has requested from the supplier, this return code facilitates
-> better error handling in the nvmem core.
-> 
-> Signed-off-by: Joy Chakraborty <joychakr@google.com>
-
-For MediaTek:
-
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+RW5qb3khCgpUaGUgZm9sbG93aW5nIGNoYW5nZXMgc2luY2UgY29tbWl0IDRjZWNlNzY0OTY1MDIw
+YzIyY2ZmNzY2NWIxOGEwMTIwMDYzNTkwOTU6CgogIExpbnV4IDYuOS1yYzEgKDIwMjQtMDMtMjQg
+MTQ6MTA6MDUgLTA3MDApCgphcmUgYXZhaWxhYmxlIGluIHRoZSBHaXQgcmVwb3NpdG9yeSBhdDoK
+CiAgZ2l0Oi8vZ2l0Lmtlcm5lbC5vcmcvcHViL3NjbS9saW51eC9rZXJuZWwvZ2l0L2xlZS9tZmQu
+Z2l0IGliLW1mZC1waW5jdHJsLXJlZ3VsYXRvci12Ni4xMAoKZm9yIHlvdSB0byBmZXRjaCBjaGFu
+Z2VzIHVwIHRvIDVlYjA2OGRhNzRhMGI0NDNmYjk5YTg5ZDllNTA2MjY5MTY0OWM0NzA6CgogIHJl
+Z3VsYXRvcjogcms4MDg6IEFkZCBSSzgxNiBzdXBwb3J0ICgyMDI0LTA1LTAzIDA5OjE1OjM4ICsw
+MTAwKQoKLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLQpJbW11dGFibGUgYnJhbmNoIGJldHdlZW4gTUZELCBQaW5jdHJsIGFuZCBS
+ZWd1bGF0b3IgZHVlIGZvciB0aGUgdjYuMTAgbWVyZ2Ugd2luZG93CgotLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tCkFsZXggQmVl
+ICg1KToKICAgICAgZHQtYmluZGluZ3M6IG1mZDogQWRkIHJrODE2IGJpbmRpbmcKICAgICAgbWZk
+OiByazh4eDogQWRkIFJLODE2IHN1cHBvcnQKICAgICAgcGluY3RybDogcms4MDU6IEFkZCByazgx
+NiBwaW5jdHJsIHN1cHBvcnQKICAgICAgcmVndWxhdG9yOiByazgwODogU3VwcG9ydCBhcHBseV9i
+aXQgZm9yIHJrODA4X3NldF9zdXNwZW5kX3ZvbHRhZ2VfcmFuZ2UKICAgICAgcmVndWxhdG9yOiBy
+azgwODogQWRkIFJLODE2IHN1cHBvcnQKCiAuLi4vZGV2aWNldHJlZS9iaW5kaW5ncy9tZmQvcm9j
+a2NoaXAscms4MTYueWFtbCAgICB8IDI3NCArKysrKysrKysrKysrKysrKysrKysKIGRyaXZlcnMv
+bWZkL0tjb25maWcgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwgICA0ICstCiBkcml2
+ZXJzL21mZC9yazh4eC1jb3JlLmMgICAgICAgICAgICAgICAgICAgICAgICAgICB8IDEwNCArKysr
+KysrKwogZHJpdmVycy9tZmQvcms4eHgtaTJjLmMgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+fCAgNDUgKysrLQogZHJpdmVycy9waW5jdHJsL3BpbmN0cmwtcms4MDUuYyAgICAgICAgICAgICAg
+ICAgICAgfCAgNjkgKysrKysrCiBkcml2ZXJzL3JlZ3VsYXRvci9yazgwOC1yZWd1bGF0b3IuYyAg
+ICAgICAgICAgICAgICB8IDIxOCArKysrKysrKysrKysrKystCiBpbmNsdWRlL2xpbnV4L21mZC9y
+azgwOC5oICAgICAgICAgICAgICAgICAgICAgICAgICB8IDE0NCArKysrKysrKysrKwogNyBmaWxl
+cyBjaGFuZ2VkLCA4NTEgaW5zZXJ0aW9ucygrKSwgNyBkZWxldGlvbnMoLSkKIGNyZWF0ZSBtb2Rl
+IDEwMDY0NCBEb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvbWZkL3JvY2tjaGlwLHJr
+ODE2LnlhbWwKCi0tIApMZWUgSm9uZXMgW+adjueQvOaWr10KCl9fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApM
+aW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQu
+b3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
