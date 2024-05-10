@@ -4,79 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5EF83C25B4F
-	for <linux-rockchip@archiver.kernel.org>; Fri, 10 May 2024 08:26:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C7D55C25B75
+	for <linux-rockchip@archiver.kernel.org>; Fri, 10 May 2024 08:30:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=F+Uq7ADGjhwTm4VtNz+Vgdb2Ib+vg1OVUg7IBxhnhZ0=; b=3dWdLCot5vrTzC
-	lGZ2b5o+YPDaAiEIFkKQ5kJL9HI2DtIKdOYVULClpDWckwGSYIrRO3UGmVivNvHeLcoswcLE5gyrK
-	9rDd5MKD9Qh9QGoq2JQ4HtVPRqS2WbIWajCnv0QXNsoTXPkVs8BRo2GL6lahkF/9TJNucReDWLh4u
-	x96UPATLQKrGLze7T8t62uLggWbFcAvQQ2nJ1E8GURjiiP/wPUj9oPF9Ac9HHCq0yg/nApi1fv73P
-	5mDT0kJywS452P8D5i4s9U1fGcjYgT/lYhecWJGiItQFPab7aYuPTEb9iBflb9fHzzNTUnv5PoqsT
-	Fnnj3DP012wXJugl5dxQ==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:From:Subject:Message-ID:
+	Mime-Version:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
+	References:List-Owner; bh=l+++DdsvQi2q29ZpJP4TKyhkjPDbpHBHMTJ/OgGX1TE=; b=4Pj
+	YHZYT4gbDL6ixye/0gRuELqTaXEx7mR0YZKh6MMxCFYAooL1bPNAky+gIpHLSSw1VXKBjWl0oFml/
+	jyDcTPegE+BIR8FUxOVybE/Y3Y5QzKpGzb4GpFIy6wh6DItDvqZay3F2l2ltc9vUeM7G3hlt6SC0w
+	dkZYdhWQpUNzIwTvmUfXiPePTe8NecOcw+uoqrFdHJWpuT1koJmqObV9SGR1rn7BKB/dNezZXyJAv
+	N0amjKliJbZigQYiuEQwM929ye/z1QTtrghHy7jsrTagv6NMX/QKa6n5SSnCdDuBSxkDlpXylLFs1
+	rmVPyomeoa0jusCkV2T1GNXWtUoSZcg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s5LaH-00000004Ukw-09PR;
-	Fri, 10 May 2024 08:26:29 +0000
-Received: from lelv0142.ext.ti.com ([198.47.23.249])
+	id 1s5Ldp-00000004VKX-0NlC;
+	Fri, 10 May 2024 08:30:09 +0000
+Received: from mail-yb1-xb4a.google.com ([2607:f8b0:4864:20::b4a])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s5LaC-00000004Uj6-4Bhx
+	id 1s5LdT-00000004VBD-3NzJ
 	for linux-rockchip@lists.infradead.org;
-	Fri, 10 May 2024 08:26:26 +0000
-Received: from lelv0265.itg.ti.com ([10.180.67.224])
-	by lelv0142.ext.ti.com (8.15.2/8.15.2) with ESMTP id 44A8Q5uk046308;
-	Fri, 10 May 2024 03:26:05 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ti.com;
-	s=ti-com-17Q1; t=1715329565;
-	bh=YdcFZc8R+BnYa7VpNx181spvw1M0wU17yKzxqlsBZ3o=;
-	h=From:To:CC:Subject:Date;
-	b=foGbgR0LjfWNsD0tojjtFSbMofx/jQj0C4DE9XZCaeohL0DfumndDHqO3H6EwacqX
-	 XRZHKRKqeSXbcJPslJ+T4fxJt8nEuEI0CGCG4BVXp55Y9qs9wtMzibT26RU61WOcgT
-	 TiJsX9h6PbtEPLx2SFHWbWce4eExAmOj7/wSmFB4=
-Received: from DFLE100.ent.ti.com (dfle100.ent.ti.com [10.64.6.21])
-	by lelv0265.itg.ti.com (8.15.2/8.15.2) with ESMTPS id 44A8Q4Rx012222
-	(version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=FAIL);
-	Fri, 10 May 2024 03:26:05 -0500
-Received: from DFLE107.ent.ti.com (10.64.6.28) by DFLE100.ent.ti.com
- (10.64.6.21) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.2507.23; Fri, 10
- May 2024 03:26:04 -0500
-Received: from lelvsmtp6.itg.ti.com (10.180.75.249) by DFLE107.ent.ti.com
- (10.64.6.28) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.2507.23 via
- Frontend Transport; Fri, 10 May 2024 03:26:04 -0500
-Received: from localhost (ti.dhcp.ti.com [172.24.227.95] (may be forged))
-	by lelvsmtp6.itg.ti.com (8.15.2/8.15.2) with ESMTP id 44A8Q3Os084438;
-	Fri, 10 May 2024 03:26:04 -0500
-From: Devarsh Thakkar <devarsht@ti.com>
-To: <mchehab@kernel.org>, <robh@kernel.org>,
-        <krzysztof.kozlowski+dt@linaro.org>, <conor+dt@kernel.org>,
-        <hverkuil-cisco@xs4all.nl>, <linux-media@vger.kernel.org>,
-        <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-        <benjamin.gaignard@collabora.com>, <sebastian.fricke@collabora.com>
-CC: <laurent.pinchart@ideasonboard.com>, <praneeth@ti.com>, <nm@ti.com>,
-        <vigneshr@ti.com>, <a-bhatia1@ti.com>, <j-luthra@ti.com>,
-        <b-brnich@ti.com>, <detheridge@ti.com>, <p-mantena@ti.com>,
-        <vijayp@ti.com>, <devarsht@ti.com>, <andrzej.p@collabora.com>,
-        <nicolas@ndufresne.ca>, <akpm@linux-foundation.org>,
-        <gregkh@linuxfoundation.org>, <andriy.shevchenko@linux.intel.com>,
-        <adobriyan@gmail.com>, <p.zabel@pengutronix.de>, <airlied@gmail.com>,
-        <daniel@ffwll.ch>, <jani.nikula@intel.com>,
-        <dri-devel@lists.freedesktop.org>,
-        <linux-rockchip@lists.infradead.org>
-Subject: [PATCH RESEND v7 0/8] Add V4L2 M2M Driver for E5010 JPEG Encoder
-Date: Fri, 10 May 2024 13:56:03 +0530
-Message-ID: <20240510082603.1263256-1-devarsht@ti.com>
-X-Mailer: git-send-email 2.39.1
-MIME-Version: 1.0
-X-EXCLAIMER-MD-CONFIG: e1e8a2fd-e40a-4ac6-ac9b-f7e9cc9ee180
+	Fri, 10 May 2024 08:30:03 +0000
+Received: by mail-yb1-xb4a.google.com with SMTP id 3f1490d57ef6-ddaf2f115f2so2707525276.3
+        for <linux-rockchip@lists.infradead.org>; Fri, 10 May 2024 01:29:37 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=google.com; s=20230601; t=1715329776; x=1715934576; darn=lists.infradead.org;
+        h=cc:to:from:subject:message-id:mime-version:date:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=dnr78Drl0hwy8QosBN5FMiEeANWK1Ml2Xi29sDzFrpE=;
+        b=g4wIewXaq45bxU5f6OeoxEha1ACMN1rD0f6f5V2V9IgHqKXxr3HPNX5SMNwAUFt/cU
+         KurMXhILeZGIqWGtUnUNH1eJnvB5c6WDmWEIbE+I1A7vRRllJFxyyZI6lQEVi/o6exWA
+         +HYxxXrzt7PNpNXMU4+PeCK9KaXIEQPuLQi0XcLOx2KnoBXH0F+Ulk0k2AraefoZ9uQm
+         IARKU0pj62QcYfHnWI/Bew1tTYoBvNXjivY/lZ2imibDZ9HEBvcnq+eYag97GOa98fkS
+         VS16d/TZ07BWq5MKtEWhzzdDHIKgcdxi86FPcKi4EIoePioIBKxHWKR8/SP3mLWtKjNR
+         J3gA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1715329776; x=1715934576;
+        h=cc:to:from:subject:message-id:mime-version:date:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=dnr78Drl0hwy8QosBN5FMiEeANWK1Ml2Xi29sDzFrpE=;
+        b=CeYbOEwISbgxxDaOTIqXeaRQ/gyY5POYpHMTHzveZujLP5AeB9SRwxBePt1OLSW3c4
+         FYHxfx0Tc7wUvoSqRpG/AoQ7VH4r6CWo08g0o+oD8ZM0ZvJGJtDmvL9vIJlm68lie0B2
+         g0rIWMRBQ5j6c+Pw59rBb1gTZIQK7f1ljXsAYdjeig7jzUEKP7HOf5zn637L57iKgSyk
+         PagY/lstWlupo/SEqIcI5pjdUK4q0NX6l+ebeB8Y1J45Sj0U57mZxsjrU6QMuXFpXfmj
+         QgQrwbvP119QmuxFYw48MlnICWMaO8GdGVN+Q1Elqj1LmAQo0PY7iC2qa3q+amfeoAsC
+         Q/1g==
+X-Forwarded-Encrypted: i=1; AJvYcCVFiTMEWrqilD7kgfHsyQP/iBFFKm0LYmbAdaO0IKqZ6RIohtRjg+bO7FfujlhQG/kT5sp19+eKOOl2GDJQA/uokk9j/3xdNc24/SdBWP00+ZAm
+X-Gm-Message-State: AOJu0Yx2HKqw8zRssHesBNBCA94jU5TDTp0OgsbRABDK/FdvOoF+hXh4
+	VXBcPh2jVt/WGQtOsiTwGP5d/2ZqOw7XkUTnF0AEfJPCgPbexVQvs5IzuQWwvPFrJmy9mRXs0ra
+	GVuHz2r+HUg==
+X-Google-Smtp-Source: AGHT+IEiknRtBHdrQ2HgiFa5pD74L/Ye3Nv3Q0grhoikyts9vAUMehW+Dt9fd3K3/ZrjmNUP76nhD8GAX7HaoA==
+X-Received: from joychakr.c.googlers.com ([fda3:e722:ac3:cc00:4f:4b78:c0a8:6ea])
+ (user=joychakr job=sendgmr) by 2002:a05:6902:c09:b0:de5:5304:3206 with SMTP
+ id 3f1490d57ef6-dee4f52d715mr180759276.11.1715329776091; Fri, 10 May 2024
+ 01:29:36 -0700 (PDT)
+Date: Fri, 10 May 2024 08:29:28 +0000
+Mime-Version: 1.0
+X-Mailer: git-send-email 2.45.0.118.g7fe29c98d7-goog
+Message-ID: <20240510082929.3792559-1-joychakr@google.com>
+Subject: [PATCH v3 0/1] nvmem: Handle actual amount of data read/written by suppliers
+From: Joy Chakraborty <joychakr@google.com>
+To: Hector Martin <marcan@marcan.st>, Sven Peter <sven@svenpeter.dev>, 
+	Alyssa Rosenzweig <alyssa@rosenzweig.io>, Srinivas Kandagatla <srinivas.kandagatla@linaro.org>, 
+	Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, 
+	Pengutronix Kernel Team <kernel@pengutronix.de>, Fabio Estevam <festevam@gmail.com>, 
+	NXP Linux Team <linux-imx@nxp.com>, Vladimir Zapolskiy <vz@mleia.com>, 
+	Neil Armstrong <neil.armstrong@linaro.org>, Kevin Hilman <khilman@baylibre.com>, 
+	Jerome Brunet <jbrunet@baylibre.com>, 
+	Martin Blumenstingl <martin.blumenstingl@googlemail.com>, 
+	Claudiu Beznea <claudiu.beznea@tuxon.dev>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Bjorn Andersson <andersson@kernel.org>, Konrad Dybcio <konrad.dybcio@linaro.org>, 
+	Heiko Stuebner <heiko@sntech.de>, Orson Zhai <orsonzhai@gmail.com>, 
+	Baolin Wang <baolin.wang@linux.alibaba.com>, Chunyan Zhang <zhang.lyra@gmail.com>, 
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>, Alexandre Torgue <alexandre.torgue@foss.st.com>, 
+	Vincent Shih <vincent.sunplus@gmail.com>, Chen-Yu Tsai <wens@csie.org>, 
+	Jernej Skrabec <jernej.skrabec@gmail.com>, Samuel Holland <samuel@sholland.org>, 
+	Rafal Milecki <rafal@milecki.pl>, Kunihiko Hayashi <hayashi.kunihiko@socionext.com>, 
+	Masami Hiramatsu <mhiramat@kernel.org>, Michal Simek <michal.simek@amd.com>
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, asahi@lists.linux.dev, 
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	linux-amlogic@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	linux-arm-msm@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+	linux-stm32@st-md-mailman.stormreply.com, linux-sunxi@lists.linux.dev, 
+	manugautam@google.com, Joy Chakraborty <joychakr@google.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240510_012625_245526_4C791E2A 
-X-CRM114-Status: GOOD (  15.06  )
+X-CRM114-CacheID: sfid-20240510_012959_676261_236BC545 
+X-CRM114-Status: GOOD (  13.11  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,170 +109,72 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Resending this V7 series to have proper linking of patches in the series
-with cover-letter while doing git send-email.
+This Patch series stems from discussions in patchset,
+"[PATCH v2] nvmem: rmem: Fix return value of rmem_read()"
+(https://lore.kernel.org/all/20240206042408.224138-1-joychakr@google.com/).
+Where we come across the fact that currently the nvmem suppliers do not
+actually let the core know how much data has been actually read or written.
+Instead they are expected to return 0 for success and the core assumes that
+the amount of data written is equal to what the core has requested.
 
-Original cover letter: 
-This adds support for V4L2 M2M based driver for E5010 JPEG Encoder
-which is a stateful JPEG encoder from Imagination technologies
-and is present in TI AM62A SoC.
+On addition this patchset will also add some guards and checks based on the
+count of data returned by the nvmem supplier.
+---
+V3 Changes : Fix return value of reg_read in sunxi_sid.c driver
+---
+V2 Changes : Rebase on for-next.
+---
+V1 Changes : Change read/write callback prototype to ssize_t and
+supplier changes to accomodate the same with core checks and bounds.
+---
 
-While adding support for it, following additional framework changes were
-made:
- - Moved reference quantization and huffman tables provided in
-   ITU-T-REC-T.81 to v4l2-jpeg.c as suggested in mailing list [1].
- - Add macros to round to closest integer (either higher or lower) while
-   rounding in order of 2.
+Joy Chakraborty (1):
+  nvmem: Change return type of reg read/write to ssize_t
 
-v4l2-compliance test :
-Link: https://gist.github.com/devarsht/1f039c631ca953a57f405cfce1b69e49
-
-E5010 JPEG Encoder Manual tests :
-
-Performance:
-Link: https://gist.github.com/devarsht/c40672944fd71c9a53ab55adbfd9e28b
-
-Functionality:
-Link: https://gist.github.com/devarsht/8e88fcaabff016bb2bac83d89c9d23ce
-
-Compression Quality:
-Link: https://gist.github.com/devarsht/cbcc7cd97e8c48ba1486caa2b7884655
-
-Multi Instance:
-Link: https://gist.github.com/devarsht/22c2fca08cd3441fb40f2c7a4cebc95a
-
-Crop support:
-Link: https://gist.github.com/devarsht/de6f5142f678bb1a5338abfd9f814abd
-
-Runtime PM:
-Link: https://gist.github.com/devarsht/70cd95d4440ddc678489d93885ddd4dd
-
-[1]: 
-https://lore.kernel.org/all/de46aefe-36da-4e1a-b4fa-b375b2749181@xs4all.nl/
-
-Changelog:
-V6->V7:
- - Fix cropping support
- - Move reference huffman and quantization tables to v4l2-jpeg.c
- - Fix suspend/resume use-case
- - Add Reviewed-by
-
-V5->V6:
- - Fix sparse warnings
-
-V4->V5:
- - Sort the #includes in driver file alphabetically
- - Rename huffman and quantization tables to not use '_'
- - Add Reviewed-by tag
-
-V3->V4:
-- Use ti-specific compatible ti,am62a-jpeg-enc as secondary one in
-  dt-binding
-- Remove clock-names as only single clock in dt-binding
-- Fix issue with default params setting
-- Correct v4l2 error prints
-- Simplify register write functions with single statement return values
-- Remove unrequired error checks from get_queue()
-- Drop explicit device_caps setting as it is already taken care by v4l2
-  core
-- Remove unrequired multiplanar checks and memset from s_fmt, g_fmt
-  callback functions
-- Fix try_fmt callback to not update the queues
-- Remove unrequired contiguous format attribute from queue_init
-- Use dynamic allocation for video_device and remove unrequired
-  assignments in probe()
-- Remove unrequired checks from queue_setup function
-- Return queued buffers back if start_streaming fails
-- Use ARRAY_SIZE in place of hard-coding
-- Use huffman and quantization tables from reference header file
-
-V2->V3:
-- Add DONOTMERGE patches for dts and defconfig
-- Update driver with below changes :
-  - Correct license headers
-  - Use more generic name core instead of jasper for base registers
-  - Add Comment for forward declarations
-  - Simplify quantization table calculations
-  - Use v4l2_apply_frmsize_constraints for updating framesize and remove
-    unrequired functions
-  - Place TODO at top of file and in commit message too
-  - Use dev_err_probe helper in probe function
-  - Fix return value checking for failure scenarios in probe function
-  - Use v4l2_err/info/warn helpers instead of dev_err/info/warn helpers
-  - Fix unexpected indentation
-  - Correct commit message
-- Update dt-bindings with below changes :
-  - Add vendor specific compatible 
-  - Fix commit title and message
-  - Update reg names
-  - Update clocks to 1
-  - Fix dts example with proper naming
-
-V1->V2:
- - Send dt-bindings and driver together
-
-Patch-Diff between the series :
-
-V3->V4 Range diff :
-https://gist.github.com/devarsht/22a744d999080de6e813bcfb5a596272
-
-V4->V5 Range diff :
-https://gist.github.com/devarsht/298790af819f299a0a05fec89371097b
-
-V5->V6 Range diff :
-https://gist.github.com/devarsht/c89180ac2b0d2814614f2b59d0705c19
-
-V6->V7 Range diff :
-https://gist.github.com/devarsht/1db185b1e187eaf397e9e4c37066777e
-
-Previous patch series:
-V2: https://lore.kernel.org/all/20230727112546.2201995-1-devarsht@ti.com/
-V3: https://lore.kernel.org/all/20230816152210.4080779-1-devarsht@ti.com/
-V4: https://lore.kernel.org/all/20240205114239.924697-1-devarsht@ti.com/
-V5: https://lore.kernel.org/all/20240215134641.3381478-1-devarsht@ti.com/
-V6: https://lore.kernel.org/all/20240228141140.3530612-1-devarsht@ti.com/
-
-Devarsh Thakkar (8):
-  media: dt-bindings: Add Imagination E5010 JPEG Encoder
-  media: imagination: Add E5010 JPEG Encoder driver
-  media: v4l2-jpeg: Export reference quantization and huffman tables
-  media: imagination: Use exported tables from v4l2-jpeg core
-  media: verisilcon : Use exported tables from v4l2-jpeg for hantro
-    codec
-  math.h Add macros to round to closest specified power of 2
-  media: imagination: Round to closest multiple for cropping region
-  gpu: ipu-v3: Use generic macro for rounding to nearest multiple
-
- .../bindings/media/img,e5010-jpeg-enc.yaml    |   75 +
- MAINTAINERS                                   |    7 +
- drivers/gpu/ipu-v3/ipu-image-convert.c        |    4 +-
- drivers/media/platform/Kconfig                |    1 +
- drivers/media/platform/Makefile               |    1 +
- drivers/media/platform/imagination/Kconfig    |   12 +
- drivers/media/platform/imagination/Makefile   |    3 +
- .../platform/imagination/e5010-core-regs.h    |  585 ++++++
- .../platform/imagination/e5010-jpeg-enc-hw.c  |  267 +++
- .../platform/imagination/e5010-jpeg-enc-hw.h  |   42 +
- .../platform/imagination/e5010-jpeg-enc.c     | 1646 +++++++++++++++++
- .../platform/imagination/e5010-jpeg-enc.h     |  168 ++
- .../platform/imagination/e5010-mmu-regs.h     |  311 ++++
- .../media/platform/verisilicon/hantro_jpeg.c  |  128 +-
- drivers/media/v4l2-core/v4l2-jpeg.c           |  162 +-
- include/linux/math.h                          |   36 +
- include/media/v4l2-jpeg.h                     |   11 +
- 17 files changed, 3341 insertions(+), 118 deletions(-)
- create mode 100644 Documentation/devicetree/bindings/media/img,e5010-jpeg-enc.yaml
- create mode 100644 drivers/media/platform/imagination/Kconfig
- create mode 100644 drivers/media/platform/imagination/Makefile
- create mode 100644 drivers/media/platform/imagination/e5010-core-regs.h
- create mode 100644 drivers/media/platform/imagination/e5010-jpeg-enc-hw.c
- create mode 100644 drivers/media/platform/imagination/e5010-jpeg-enc-hw.h
- create mode 100644 drivers/media/platform/imagination/e5010-jpeg-enc.c
- create mode 100644 drivers/media/platform/imagination/e5010-jpeg-enc.h
- create mode 100644 drivers/media/platform/imagination/e5010-mmu-regs.h
+ drivers/nvmem/apple-efuses.c        |  7 +--
+ drivers/nvmem/bcm-ocotp.c           | 12 ++---
+ drivers/nvmem/brcm_nvram.c          | 10 ++--
+ drivers/nvmem/core.c                | 83 +++++++++++++----------------
+ drivers/nvmem/imx-iim.c             |  6 +--
+ drivers/nvmem/imx-ocotp-ele.c       |  4 +-
+ drivers/nvmem/imx-ocotp-scu.c       | 12 ++---
+ drivers/nvmem/imx-ocotp.c           | 10 ++--
+ drivers/nvmem/jz4780-efuse.c        |  7 +--
+ drivers/nvmem/lan9662-otpc.c        | 12 ++---
+ drivers/nvmem/layerscape-sfp.c      | 11 ++--
+ drivers/nvmem/lpc18xx_eeprom.c      | 14 ++---
+ drivers/nvmem/lpc18xx_otp.c         |  6 +--
+ drivers/nvmem/meson-efuse.c         | 22 +++++---
+ drivers/nvmem/meson-mx-efuse.c      |  6 +--
+ drivers/nvmem/microchip-otpc.c      |  6 +--
+ drivers/nvmem/mtk-efuse.c           |  6 +--
+ drivers/nvmem/mxs-ocotp.c           |  7 +--
+ drivers/nvmem/nintendo-otp.c        |  6 +--
+ drivers/nvmem/qcom-spmi-sdam.c      | 12 ++---
+ drivers/nvmem/qfprom.c              | 14 ++---
+ drivers/nvmem/qoriq-efuse.c         |  6 +--
+ drivers/nvmem/rave-sp-eeprom.c      | 18 +++----
+ drivers/nvmem/rmem.c                |  4 +-
+ drivers/nvmem/rockchip-efuse.c      | 19 +++----
+ drivers/nvmem/rockchip-otp.c        | 19 +++----
+ drivers/nvmem/sc27xx-efuse.c        |  3 +-
+ drivers/nvmem/sec-qfprom.c          |  4 +-
+ drivers/nvmem/snvs_lpgpr.c          | 17 +++---
+ drivers/nvmem/sprd-efuse.c          |  8 +--
+ drivers/nvmem/stm32-bsec-optee-ta.c | 12 ++---
+ drivers/nvmem/stm32-bsec-optee-ta.h | 20 +++----
+ drivers/nvmem/stm32-romem.c         | 26 ++++-----
+ drivers/nvmem/sunplus-ocotp.c       |  4 +-
+ drivers/nvmem/sunxi_sid.c           | 18 ++++---
+ drivers/nvmem/u-boot-env.c          |  6 +--
+ drivers/nvmem/uniphier-efuse.c      |  6 +--
+ drivers/nvmem/vf610-ocotp.c         |  7 +--
+ drivers/nvmem/zynqmp_nvmem.c        | 13 ++---
+ include/linux/nvmem-provider.h      |  4 +-
+ 40 files changed, 255 insertions(+), 232 deletions(-)
 
 -- 
-2.39.1
+2.45.0.118.g7fe29c98d7-goog
 
 
 _______________________________________________
