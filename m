@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DC631C04FFE
-	for <linux-rockchip@archiver.kernel.org>; Tue, 14 May 2024 15:24:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5F800C25B78
+	for <linux-rockchip@archiver.kernel.org>; Tue, 14 May 2024 15:24:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=u9IpUvu98XjSS3tKT6EMXITv6ilRlqeJthnZpHKj4f8=; b=ps5Q7yY++oa3/G
-	aJn5mzvTWcboCM+tFtQkUpTtaffWWPSf8flIb4/c6m07MNUMsdkL24k35960QRjbwCP2raPEESJDF
-	4mb8EB4N3L03IZnZSTheNoUWVFU0t0k1N2V0LZdzFJPPCBGCD5aGYH5PwDEhyPdJrLCVLM4eKqxTT
-	JwNmJuSXtzkqD0cVnqOIWHMqzVuGr+3dcpOHEQA7lVi08VkDSQMIyoPeD/gNxYxJCuM/yNofTvsZB
-	DVq/SLKIWuA+Gm+hKQDTOL2jOmZ40kVy1HUHG+yHP8mOq4/YbdYQ5+k7Kej+aZG0OYLLRRcDrhi5I
-	qi/xKItVLMCFJ10AHVKQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=EI0m8KKxBe48cO77fmlE93DYWjGWHg2BSsRkpANVfIY=; b=fiK8534/7H0OAW
+	JWO/vkMq4TJApiQlW879iW6XLHpd9dxNRc8KmU7+TEtGod3AF5dcbXQKzte5yvz7cmfLK6+WGsMJe
+	XvDTy3hxg7vNU/GGS+x1xJg7TyaN4H3qmg5v2ghYLi2cc3XYSNuDr3kt7qtGB5z3v0nVDMUhkS/1q
+	oICu1xURaGRIj4WK4EOPzI+xCZ8V2w27bVI3yjluHa1d8B5qw9LctWP1iPHZ7oNxKTBluFfUzcwZv
+	y0CdpLgQfuNejREyNLIrG/VJq8gX5SxcQbePwsCRjSIHHHYuAaD5imO5wSL0QI0NUx1CDOXATA3qI
+	+tC8oirYC1ZoXxldGALA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s6u0p-0000000GJXi-1gUM;
-	Tue, 14 May 2024 15:24:19 +0000
-Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
+	id 1s6u0v-0000000GJcF-20vH;
+	Tue, 14 May 2024 15:24:25 +0000
+Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s6u0l-0000000GJVD-2m0q;
-	Tue, 14 May 2024 15:24:17 +0000
+	id 1s6u0n-0000000GJVd-1BnL;
+	Tue, 14 May 2024 15:24:18 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1715700250;
-	bh=CqnaB1BN4nBb+zItuDL9d2XlJtw6H0xho2dEcrDXwOs=;
-	h=From:To:Cc:Subject:Date:From;
-	b=h6j0Oi32w48wjQBW7NWOXa7mbVqQFc69vrfraAeHWNegLn+qS56X3wPmDRBlxfTCA
-	 nZ5rx+Fm1LJTt10D1FLZjSeLwXqxohZWaYkSmlUoXHiLdD2Xrpk2yutUzv+RQWYga9
-	 T22iQyj1PzcD6/UWX5IePmOVIWFhOUQ4gXlXRxUr/lvx4/eQs0a1yiXOz6JHmRCyeT
-	 6Ei4olmbRS/CMynULtfFHAC7COmP98F3SSY7pW3mBy6n5SyOBf3dbh0+RKqX6cUWm+
-	 68fjXNy+SawuwicCdGep/8CKL520KVpe+q+BiGvWNNzsN8qZIo16wNFvG2FpvAGjeG
-	 ZzYtNvIAbFeAQ==
+	s=mail; t=1715700254;
+	bh=PA/IrvxvIM1ep8+7B89JcUeTkpU1YjsSPqMoeUWmhXE=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=FTBoB/7uotXXUuwJ8K2YfoYtA/rDvdjmDaQQEPVWDdXWA202pbtg8J7SPXQoW3ufN
+	 UaQMlPxpioSSIfoX90k0nPA377XM0GYLVHL/atltBTMSY33pYN64CCHQQW2my9agS7
+	 k/on0z/UGaaQs0akuOubpl1+KtZ0ciLAtOcDl+vC+Hyi4BtJpRN89jDlNUrO7rnnWK
+	 cv7xupPLy+51AxvvlgSE/2fR+O/+lO4g/0ed1R8e9SxfRo6db8xh+lYlmgiZ1dkIEb
+	 DhQ9mtc51bNAsvyVAR5SrC1jJpcitZuhfkPgAdQdHPBPYBZlL4v17cAt9ZzhixLReG
+	 S7lwSTHqRC0EA==
 Received: from arisu.hitronhub.home (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: detlev)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 1D45637811D1;
-	Tue, 14 May 2024 15:24:06 +0000 (UTC)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id ED28B3782191;
+	Tue, 14 May 2024 15:24:10 +0000 (UTC)
 From: Detlev Casanova <detlev.casanova@collabora.com>
 To: linux-kernel@vger.kernel.org
 Cc: Sandy Huang <hjc@rock-chips.com>,
@@ -67,15 +67,16 @@ Cc: Sandy Huang <hjc@rock-chips.com>,
 	linux-rockchip@lists.infradead.org,
 	devicetree@vger.kernel.org,
 	Detlev Casanova <detlev.casanova@collabora.com>
-Subject: [PATCH 0/3] drm/rockchip: vop2: Add VP clock resets support
-Date: Tue, 14 May 2024 11:19:44 -0400
-Message-ID: <20240514152328.21415-1-detlev.casanova@collabora.com>
+Subject: [PATCH 1/3] drm/rockchip: vop2: Add clock resets support
+Date: Tue, 14 May 2024 11:19:45 -0400
+Message-ID: <20240514152328.21415-2-detlev.casanova@collabora.com>
 X-Mailer: git-send-email 2.43.2
+In-Reply-To: <20240514152328.21415-1-detlev.casanova@collabora.com>
+References: <20240514152328.21415-1-detlev.casanova@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240514_082416_022567_63F1073B 
-X-CRM114-Status: UNSURE (   8.44  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240514_082417_496081_188F5A50 
+X-CRM114-Status: GOOD (  15.85  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,22 +93,86 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The clock reset must be used when the VOP is configured. Skipping it can
-put the VOP in an unknown state where the HDMI signal is either lost or
-not matching the selected mode.
+At the end of initialization, each VP clock needs to be reset before
+they can be used.
 
-This adds support for rk3588(s) based SoCs.
+Failing to do so can put the VOP in an undefined state where the
+generated HDMI signal is either lost or not matching the selected mode.
 
-Detlev Casanova (3):
-  drm/rockchip: vop2: Add clock resets support
-  arm64: dts: rockchip: Add VOP clock resets for rk3588s
-  dt-bindings: display: vop2: Add VP clock resets
+Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
+---
+ drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 30 ++++++++++++++++++++
+ 1 file changed, 30 insertions(+)
 
- .../display/rockchip/rockchip-vop2.yaml       | 27 +++++++++++++++++
- arch/arm64/boot/dts/rockchip/rk3588s.dtsi     |  8 +++++
- drivers/gpu/drm/rockchip/rockchip_drm_vop2.c  | 30 +++++++++++++++++++
- 3 files changed, 65 insertions(+)
-
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+index fdd768bbd487c..e81a67161d29a 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+@@ -17,6 +17,7 @@
+ #include <linux/platform_device.h>
+ #include <linux/pm_runtime.h>
+ #include <linux/regmap.h>
++#include <linux/reset.h>
+ #include <linux/swab.h>
+ 
+ #include <drm/drm.h>
+@@ -157,6 +158,7 @@ struct vop2_win {
+ struct vop2_video_port {
+ 	struct drm_crtc crtc;
+ 	struct vop2 *vop2;
++	struct reset_control *dclk_rst;
+ 	struct clk *dclk;
+ 	unsigned int id;
+ 	const struct vop2_video_port_data *data;
+@@ -1915,6 +1917,26 @@ static int us_to_vertical_line(struct drm_display_mode *mode, int us)
+ 	return us * mode->clock / mode->htotal / 1000;
+ }
+ 
++static int vop2_clk_reset(struct vop2_video_port *vp)
++{
++	struct reset_control *rstc = vp->dclk_rst;
++	struct vop2 *vop2 = vp->vop2;
++	int ret;
++
++	if (!rstc)
++		return 0;
++
++	ret = reset_control_assert(rstc);
++	if (ret < 0)
++		drm_warn(vop2->drm, "failed to assert reset\n");
++	udelay(10);
++	ret = reset_control_deassert(rstc);
++	if (ret < 0)
++		drm_warn(vop2->drm, "failed to deassert reset\n");
++
++	return ret;
++}
++
+ static void vop2_crtc_atomic_enable(struct drm_crtc *crtc,
+ 				    struct drm_atomic_state *state)
+ {
+@@ -2055,6 +2077,8 @@ static void vop2_crtc_atomic_enable(struct drm_crtc *crtc,
+ 
+ 	vop2_vp_write(vp, RK3568_VP_DSP_CTRL, dsp_ctrl);
+ 
++	vop2_clk_reset(vp);
++
+ 	drm_crtc_vblank_on(crtc);
+ 
+ 	vop2_unlock(vop2);
+@@ -2706,6 +2730,12 @@ static int vop2_create_crtcs(struct vop2 *vop2)
+ 		vp->data = vp_data;
+ 
+ 		snprintf(dclk_name, sizeof(dclk_name), "dclk_vp%d", vp->id);
++		vp->dclk_rst = devm_reset_control_get_optional(vop2->dev, dclk_name);
++		if (IS_ERR(vp->dclk_rst)) {
++		        drm_err(vop2->drm, "failed to get %s reset\n", dclk_name);
++		        return PTR_ERR(vp->dclk_rst);
++		}
++
+ 		vp->dclk = devm_clk_get(vop2->dev, dclk_name);
+ 		if (IS_ERR(vp->dclk)) {
+ 			drm_err(vop2->drm, "failed to get %s\n", dclk_name);
 -- 
 2.43.2
 
