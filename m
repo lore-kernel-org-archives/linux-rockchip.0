@@ -4,64 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 85FD1C25B75
-	for <linux-rockchip@archiver.kernel.org>; Tue, 14 May 2024 16:21:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D2240C04FFE
+	for <linux-rockchip@archiver.kernel.org>; Tue, 14 May 2024 20:08:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=LmvvtXWlWgFNNGTa7VIbRtkJBTeMHSDoM+On9m+vAK4=; b=PFYqhbKLXxqeGu
-	HhQPs5oqdOrcHSzch1W5d18P+p63fA62LBcrcIsgr+QS9OjiX6sNSM0n5zZMsqlw5dL9jnzjvuXHq
-	GMVAPBa7lfXvAXEyZR1ewv9+xAyWnpx1DwwT408uOfYUc18oKWvaqUOJjAc31VJxYxwWhVEwQ00Lb
-	DEbir43KlU+2bNMYngutmO6CrREZ2jLxLafhwISIWWaCH/PoUIrSvgnIwAU+IlmenOMsZqfHKUxnC
-	yrhwB2a4G4gEes2WinvBcY1l7OqW1CxffB5fXJIjlp0jHzperwpVCxO3+qDfPBy67fSBhx5Rmy9qI
-	0dK01QNCefhZ6QE/6DvA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:Cc:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=xIAXlWOLBPSuHde60JRQbKAQUgkAtJPWTZqPrkIcf2w=; b=vY2rdKftV2rRAt
+	GIHXri4z+wCeKsJqUAhuTBcOAVEjAJ88jJr9+B4Tqphj7eILYXc8V8/hmImyHfmIOlRwUlGGNzS+6
+	Q2RUZj8EUvUQQ4Cqd6euHp+pQvW/JdK+6IfPt8QM8ZFWGCnYPX2RFVRrth7spi+RdSkMM4wR343A+
+	SLKIrz/bV/mpqot+0l8keIn1/MV6yk/+cSxFxwAFK5SC9KB4LoOBwS/k3tBBdovPG+D8aiFvsd61u
+	m+DQzblc6yZgvP8V7ZsbNshAlpFbUkkMGH+JcM7M2gJFVYtEchUDt9mN1MAIn7Xln/EmC82eB0mzd
+	NLcj+ic4916/RK33qnOw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s6utn-0000000GVIH-1aqu;
-	Tue, 14 May 2024 16:21:07 +0000
-Received: from madrid.collaboradmins.com ([46.235.227.194])
+	id 1s6yRJ-0000000H2WT-0NEA;
+	Tue, 14 May 2024 20:07:57 +0000
+Received: from mail-qk1-x735.google.com ([2607:f8b0:4864:20::735])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s6utk-0000000GVGk-14WD
+	id 1s6yRG-0000000H2Vl-0qMb
 	for linux-rockchip@lists.infradead.org;
-	Tue, 14 May 2024 16:21:06 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1715703660;
-	bh=sOi7W1+C/MDe4EJSbvHzQbwK+uiTr+8hwJd8RjWm/Vs=;
-	h=From:To:Cc:Subject:Date:From;
-	b=NwCEZ+9oc8a1VzMSJMAfCYGtb+t+Jhxqq5Cp9OUetTgKC8JuQOkDcOxvLLBLRsydg
-	 +9PAeJlG7v02fi3WE+7cZsLLhsb0JWiSlV7ZTOe5ymghYHDhvOvVLSMApPeaGPB4bj
-	 XjjAZR8FDWJAppiro3rdRCf42jHIfA3iYWOYeY9C6P39ZlF0/AbPecW3o/Lfv+hCgY
-	 e9rNYU3CPMshM8/8wRhJrbnhLMO4toxRHHv1QYPZe7IDaOdOzlyDwFbs0cnx20N9lA
-	 +p7htZnHEzXbTuUknXKG6hV/aviYM3OAPMklsIJgUl479mRUfF2X5qKYGSlMw8YVp2
-	 ekRiMAkNbv2aw==
-Received: from benjamin-XPS-13-9310.. (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: benjamin.gaignard)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 00D893780A0B;
-	Tue, 14 May 2024 16:20:59 +0000 (UTC)
-From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-To: ezequiel@vanguardiasur.com.ar,
-	p.zabel@pengutronix.de,
-	mchehab@kernel.org,
-	nicolas.dufresne@collabora.com
-Cc: linux-media@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	kernel@collabora.com,
-	Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: [PATCH] media: verisilicon: Add reference buffers compression
-Date: Tue, 14 May 2024 18:20:54 +0200
-Message-Id: <20240514162054.294002-1-benjamin.gaignard@collabora.com>
-X-Mailer: git-send-email 2.40.1
+	Tue, 14 May 2024 20:07:55 +0000
+Received: by mail-qk1-x735.google.com with SMTP id af79cd13be357-792b934de39so520980985a.3
+        for <linux-rockchip@lists.infradead.org>; Tue, 14 May 2024 13:07:50 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=ndufresne-ca.20230601.gappssmtp.com; s=20230601; t=1715717270; x=1716322070; darn=lists.infradead.org;
+        h=mime-version:user-agent:content-transfer-encoding:references
+         :in-reply-to:date:cc:to:from:subject:message-id:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=vb0UKKfHIuC/I3bhXCJ6Vce1eZRAne4WwGjNCda9wdY=;
+        b=WEV6//IYEbI4epMh1el2SqhObCiVf4kjFYVZx7pBZz+GtVE59oKor7dmpwlTJMLKGJ
+         eeyxaMBCm/LYXku76UvrtwoxeGWjU4S7bThxhjl4YrtNo9yjYsOupOdoNmhkH84bBdEK
+         q3QxS+xCwrOo8slXRM7q+ycx60A/b7vuRZA39LsXQoFUFlWPQCMpa0e1ADqwFzBlVQMO
+         iNuxqrsb6rmoNM4yptP+DPy/ioumIYMVXdSkiUfJoc7p5dgnGJ75a5ysW6XWQonp45oU
+         1vO7vBBmSA5ZkaIR4uYjquiCH6FAFukgBFnsgwuPsYS9gaEj5MscHsjpnbPVj16b0T4w
+         yy/g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1715717270; x=1716322070;
+        h=mime-version:user-agent:content-transfer-encoding:references
+         :in-reply-to:date:cc:to:from:subject:message-id:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=vb0UKKfHIuC/I3bhXCJ6Vce1eZRAne4WwGjNCda9wdY=;
+        b=reIOVWxHKwAz3NkSWhKWmWkbjDYoi+ORyIPx7u8jlJNDSZHHZOR31kc/lQX53B1QQM
+         dTrfKjGvrAAe99Jmn5JHbNG8ZbIy0jWg4VDXtfwmOAz2p+4LNPcX6qsmwHrc2uAFjZxU
+         a1PI+tYz7b3JG8GKDW//khC1nw7Siy7qQn8sbxbezcomc4W3U815KzahkbKhPx8XmBNk
+         Mdiffvh1GwGPdav6UrkxE13N6JqA6bMBC8BY25i3wultlvGixXyyD9Jbq9Gc8Aa3E/yl
+         TlbIQw+agfz0wZmVjjR3iIl8TQr3WmhRUAPBcC9R7yNV+sjoumYXNfKhcBJ5xiobTu5F
+         GOvA==
+X-Forwarded-Encrypted: i=1; AJvYcCUh5kHkO1O4fgPJKUGr/WASN0QvdELgmgXo0S+gVkM0qNUvgyjzyF3oDBiAoyfjkh466zPPrep+udoP5K8Hfta0Vr7Tmse/S/pGdLna/w673zBq
+X-Gm-Message-State: AOJu0YyFAbEYJr4FkJvg57MGSKm+RXhijz7nxlh12y6jvSfUcK1g3sQY
+	DA01blmBVBq+W6pUqCLcswGl5fAOj81lbFKnjgVc733RGIexEANcuR56xx+LPPM=
+X-Google-Smtp-Source: AGHT+IF3thX8SgvM4yonafhVQxSjjJkNE7UDA+c3/H6eAkRIIaHDe33Q3N9n5NZSsmCPQOku+LQk9w==
+X-Received: by 2002:ae9:c103:0:b0:790:cb19:3205 with SMTP id af79cd13be357-792c75ffa6emr1539120285a.74.1715717269774;
+        Tue, 14 May 2024 13:07:49 -0700 (PDT)
+Received: from nicolas-tpx395.lan ([2606:6d00:17:6448::7a9])
+        by smtp.gmail.com with ESMTPSA id af79cd13be357-792bf2972cdsm595605885a.54.2024.05.14.13.07.49
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 14 May 2024 13:07:49 -0700 (PDT)
+Message-ID: <95484ab70cd762ef92d32669d6b3551fd5931bd4.camel@ndufresne.ca>
+Subject: Re: [PATCH 2/2] media: rkisp1: Mark subdev state pointers as const
+From: Nicolas Dufresne <nicolas@ndufresne.ca>
+To: Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>, 
+	linux-media@vger.kernel.org
+Cc: linux-renesas-soc@vger.kernel.org, Sakari Ailus <sakari.ailus@iki.fi>, 
+ Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>, Hans Verkuil
+ <hverkuil-cisco@xs4all.nl>, Dafna Hirschfeld <dafna@fastmail.com>,
+ linux-rockchip@lists.infradead.org
+Date: Tue, 14 May 2024 16:07:48 -0400
+In-Reply-To: <20240506175255.24394-3-laurent.pinchart+renesas@ideasonboard.com>
+References: <20240506175255.24394-1-laurent.pinchart+renesas@ideasonboard.com>
+	 <20240506175255.24394-3-laurent.pinchart+renesas@ideasonboard.com>
+User-Agent: Evolution 3.52.1 (3.52.1-1.fc40) 
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240514_092104_639090_302FB6F5 
-X-CRM114-Status: GOOD (  17.76  )
+X-CRM114-CacheID: sfid-20240514_130754_266294_51D4EC68 
+X-CRM114-Status: GOOD (  14.33  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,333 +92,74 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Reference frame compression is a feature added in G2 decoder to compress
-frame buffers so that the bandwidth of storing/loading reference frames
-can be reduced, especially when the resolution of decoded stream is of
-high definition.
-
-The impact of compressed frames is confirmed when using perf to monitor
-the number of memory accesses with or without compression feature.
-The following command
-perf stat -a -e imx8_ddr0/cycles/,imx8_ddr0/read-cycles/,imx8_ddr0/write-cycles/ gst-launch-1.0 filesrc location=Jockey_3840x2160_120fps_420_8bit_HEVC_RAW.hevc ! queue ! h265parse ! v4l2slh265dec ! fakesink
-
-give us these results
-without compression feature:
-Performance counter stats for 'system wide':
-
-        1711300345      imx8_ddr0/cycles/
-         892207924      imx8_ddr0/read-cycles/
-        1291785864      imx8_ddr0/write-cycles/
-
-      13.760048353 seconds time elapsed
-
-with compression feature:
-Performance counter stats for 'system wide':
-
-         274526799      imx8_ddr0/cycles/
-         453120194      imx8_ddr0/read-cycles/
-         833391434      imx8_ddr0/write-cycles/
-
-      18.257831534 seconds time elapsed
-
-As expected the number of read/write cycles are really lower when compression
-is used.
-
-Since storing compression data requires more memory a module
-parameter named 'hevc_use_compression' is used to enable/disable
-this feature and, by default, compression isn't used.
-
-Enabling compression feature means that decoder output frames
-are stored with a specific compression pixel format. Since this
-pixel format is unknown, this patch restrain compression feature
-usage to the cases where post-processor pixels formats (NV12 or NV15)
-are selected by the applications.
-
-Fluster compliance HEVC test suite score is still 141/147 after this patch.
-
-Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
----
- .../media/platform/verisilicon/hantro_g2.c    | 35 +++++++++++++++++
- .../platform/verisilicon/hantro_g2_hevc_dec.c | 20 ++++++++--
- .../platform/verisilicon/hantro_g2_regs.h     |  4 ++
- .../media/platform/verisilicon/hantro_hevc.c  |  8 ++++
- .../media/platform/verisilicon/hantro_hw.h    | 39 +++++++++++++++++++
- .../platform/verisilicon/hantro_postproc.c    |  6 ++-
- 6 files changed, 108 insertions(+), 4 deletions(-)
-
-diff --git a/drivers/media/platform/verisilicon/hantro_g2.c b/drivers/media/platform/verisilicon/hantro_g2.c
-index b880a6849d58..62ca91427360 100644
---- a/drivers/media/platform/verisilicon/hantro_g2.c
-+++ b/drivers/media/platform/verisilicon/hantro_g2.c
-@@ -9,6 +9,12 @@
- #include "hantro_g2_regs.h"
- 
- #define G2_ALIGN	16
-+#define CBS_SIZE	16	/* compression table size in bytes */
-+#define CBS_LUMA	8	/* luminance CBS is composed of 1 8x8 coded block */
-+#define CBS_CHROMA_W	(8 * 2)	/* chrominance CBS is composed of two 8x4 coded
-+				 * blocks, with Cb CB first then Cr CB following
-+				 */
-+#define CBS_CHROMA_H	4
- 
- void hantro_g2_check_idle(struct hantro_dev *vpu)
- {
-@@ -56,3 +62,32 @@ size_t hantro_g2_motion_vectors_offset(struct hantro_ctx *ctx)
- 
- 	return ALIGN((cr_offset * 3) / 2, G2_ALIGN);
- }
-+
-+static size_t hantro_g2_mv_size(struct hantro_ctx *ctx)
-+{
-+	const struct hantro_hevc_dec_ctrls *ctrls = &ctx->hevc_dec.ctrls;
-+	const struct v4l2_ctrl_hevc_sps *sps = ctrls->sps;
-+	unsigned int pic_width_in_ctbs, pic_height_in_ctbs;
-+	unsigned int max_log2_ctb_size;
-+
-+	max_log2_ctb_size = sps->log2_min_luma_coding_block_size_minus3 + 3 +
-+			    sps->log2_diff_max_min_luma_coding_block_size;
-+	pic_width_in_ctbs = (sps->pic_width_in_luma_samples +
-+			    (1 << max_log2_ctb_size) - 1) >> max_log2_ctb_size;
-+	pic_height_in_ctbs = (sps->pic_height_in_luma_samples + (1 << max_log2_ctb_size) - 1)
-+			     >> max_log2_ctb_size;
-+
-+	return pic_width_in_ctbs * pic_height_in_ctbs * (1 << (2 * (max_log2_ctb_size - 4))) * 16;
-+}
-+
-+size_t hantro_g2_luma_compress_offset(struct hantro_ctx *ctx)
-+{
-+	return hantro_g2_motion_vectors_offset(ctx) +
-+	       hantro_g2_mv_size(ctx);
-+}
-+
-+size_t hantro_g2_chroma_compress_offset(struct hantro_ctx *ctx)
-+{
-+	return hantro_g2_luma_compress_offset(ctx) +
-+	       hantro_hevc_luma_compressed_size(ctx->dst_fmt.width, ctx->dst_fmt.height);
-+}
-diff --git a/drivers/media/platform/verisilicon/hantro_g2_hevc_dec.c b/drivers/media/platform/verisilicon/hantro_g2_hevc_dec.c
-index d3f8c33eb16c..85a44143b378 100644
---- a/drivers/media/platform/verisilicon/hantro_g2_hevc_dec.c
-+++ b/drivers/media/platform/verisilicon/hantro_g2_hevc_dec.c
-@@ -367,11 +367,14 @@ static int set_ref(struct hantro_ctx *ctx)
- 	const struct v4l2_ctrl_hevc_decode_params *decode_params = ctrls->decode_params;
- 	const struct v4l2_hevc_dpb_entry *dpb = decode_params->dpb;
- 	dma_addr_t luma_addr, chroma_addr, mv_addr = 0;
-+	dma_addr_t compress_luma_addr, compress_chroma_addr = 0;
- 	struct hantro_dev *vpu = ctx->dev;
- 	struct vb2_v4l2_buffer *vb2_dst;
- 	struct hantro_decoded_buffer *dst;
- 	size_t cr_offset = hantro_g2_chroma_offset(ctx);
- 	size_t mv_offset = hantro_g2_motion_vectors_offset(ctx);
-+	size_t compress_luma_offset = hantro_g2_luma_compress_offset(ctx);
-+	size_t compress_chroma_offset = hantro_g2_chroma_compress_offset(ctx);
- 	u32 max_ref_frames;
- 	u16 dpb_longterm_e;
- 	static const struct hantro_reg cur_poc[] = {
-@@ -445,6 +448,8 @@ static int set_ref(struct hantro_ctx *ctx)
- 
- 		chroma_addr = luma_addr + cr_offset;
- 		mv_addr = luma_addr + mv_offset;
-+		compress_luma_addr = luma_addr + compress_luma_offset;
-+		compress_chroma_addr = luma_addr + compress_chroma_offset;
- 
- 		if (dpb[i].flags & V4L2_HEVC_DPB_ENTRY_LONG_TERM_REFERENCE)
- 			dpb_longterm_e |= BIT(V4L2_HEVC_DPB_ENTRIES_NUM_MAX - 1 - i);
-@@ -452,6 +457,8 @@ static int set_ref(struct hantro_ctx *ctx)
- 		hantro_write_addr(vpu, G2_REF_LUMA_ADDR(i), luma_addr);
- 		hantro_write_addr(vpu, G2_REF_CHROMA_ADDR(i), chroma_addr);
- 		hantro_write_addr(vpu, G2_REF_MV_ADDR(i), mv_addr);
-+		hantro_write_addr(vpu, G2_REF_COMP_LUMA_ADDR(i), compress_luma_addr);
-+		hantro_write_addr(vpu, G2_REF_COMP_CHROMA_ADDR(i), compress_chroma_addr);
- 	}
- 
- 	vb2_dst = hantro_get_dst_buf(ctx);
-@@ -465,19 +472,27 @@ static int set_ref(struct hantro_ctx *ctx)
- 
- 	chroma_addr = luma_addr + cr_offset;
- 	mv_addr = luma_addr + mv_offset;
-+	compress_luma_addr = luma_addr + compress_luma_offset;
-+	compress_chroma_addr = luma_addr + compress_chroma_offset;
- 
- 	hantro_write_addr(vpu, G2_REF_LUMA_ADDR(i), luma_addr);
- 	hantro_write_addr(vpu, G2_REF_CHROMA_ADDR(i), chroma_addr);
--	hantro_write_addr(vpu, G2_REF_MV_ADDR(i++), mv_addr);
-+	hantro_write_addr(vpu, G2_REF_MV_ADDR(i), mv_addr);
-+	hantro_write_addr(vpu, G2_REF_COMP_LUMA_ADDR(i), compress_luma_addr);
-+	hantro_write_addr(vpu, G2_REF_COMP_CHROMA_ADDR(i++), compress_chroma_addr);
- 
- 	hantro_write_addr(vpu, G2_OUT_LUMA_ADDR, luma_addr);
- 	hantro_write_addr(vpu, G2_OUT_CHROMA_ADDR, chroma_addr);
- 	hantro_write_addr(vpu, G2_OUT_MV_ADDR, mv_addr);
-+	hantro_write_addr(vpu, G2_OUT_COMP_LUMA_ADDR, compress_luma_addr);
-+	hantro_write_addr(vpu, G2_OUT_COMP_CHROMA_ADDR, compress_chroma_addr);
- 
- 	for (; i < V4L2_HEVC_DPB_ENTRIES_NUM_MAX; i++) {
- 		hantro_write_addr(vpu, G2_REF_LUMA_ADDR(i), 0);
- 		hantro_write_addr(vpu, G2_REF_CHROMA_ADDR(i), 0);
- 		hantro_write_addr(vpu, G2_REF_MV_ADDR(i), 0);
-+		hantro_write_addr(vpu, G2_REF_COMP_LUMA_ADDR(i), 0);
-+		hantro_write_addr(vpu, G2_REF_COMP_CHROMA_ADDR(i), 0);
- 	}
- 
- 	hantro_reg_write(vpu, &g2_refer_lterm_e, dpb_longterm_e);
-@@ -594,8 +609,7 @@ int hantro_g2_hevc_dec_run(struct hantro_ctx *ctx)
- 	/* Don't disable output */
- 	hantro_reg_write(vpu, &g2_out_dis, 0);
- 
--	/* Don't compress buffers */
--	hantro_reg_write(vpu, &g2_ref_compress_bypass, 1);
-+	hantro_reg_write(vpu, &g2_ref_compress_bypass, !ctx->hevc_dec.use_compression);
- 
- 	/* Bus width and max burst */
- 	hantro_reg_write(vpu, &g2_buswidth, BUS_WIDTH_128);
-diff --git a/drivers/media/platform/verisilicon/hantro_g2_regs.h b/drivers/media/platform/verisilicon/hantro_g2_regs.h
-index 82606783591a..b943b1816db7 100644
---- a/drivers/media/platform/verisilicon/hantro_g2_regs.h
-+++ b/drivers/media/platform/verisilicon/hantro_g2_regs.h
-@@ -318,6 +318,10 @@
- #define G2_TILE_BSD_ADDR		(G2_SWREG(183))
- #define G2_DS_DST			(G2_SWREG(186))
- #define G2_DS_DST_CHR			(G2_SWREG(188))
-+#define G2_OUT_COMP_LUMA_ADDR		(G2_SWREG(190))
-+#define G2_REF_COMP_LUMA_ADDR(i)	(G2_SWREG(192) + ((i) * 0x8))
-+#define G2_OUT_COMP_CHROMA_ADDR		(G2_SWREG(224))
-+#define G2_REF_COMP_CHROMA_ADDR(i)	(G2_SWREG(226) + ((i) * 0x8))
- 
- #define g2_strm_buffer_len	G2_DEC_REG(258, 0, 0xffffffff)
- #define g2_strm_start_offset	G2_DEC_REG(259, 0, 0xffffffff)
-diff --git a/drivers/media/platform/verisilicon/hantro_hevc.c b/drivers/media/platform/verisilicon/hantro_hevc.c
-index 2c14330bc562..895dc0c76c74 100644
---- a/drivers/media/platform/verisilicon/hantro_hevc.c
-+++ b/drivers/media/platform/verisilicon/hantro_hevc.c
-@@ -25,6 +25,11 @@
- #define MAX_TILE_COLS 20
- #define MAX_TILE_ROWS 22
- 
-+bool hevc_use_compression;
-+module_param_named(hevc_use_compression, hevc_use_compression, bool, 0644);
-+MODULE_PARM_DESC(hevc_use_compression,
-+		 "Use reference frame compression for HEVC");
-+
- void hantro_hevc_ref_init(struct hantro_ctx *ctx)
- {
- 	struct hantro_hevc_dec_hw_ctx *hevc_dec = &ctx->hevc_dec;
-@@ -275,5 +280,8 @@ int hantro_hevc_dec_init(struct hantro_ctx *ctx)
- 
- 	hantro_hevc_ref_init(ctx);
- 
-+	hevc_dec->use_compression =
-+		hevc_use_compression & hantro_needs_postproc(ctx, ctx->vpu_dst_fmt);
-+
- 	return 0;
- }
-diff --git a/drivers/media/platform/verisilicon/hantro_hw.h b/drivers/media/platform/verisilicon/hantro_hw.h
-index 7737320cc8cc..43d4ff637376 100644
---- a/drivers/media/platform/verisilicon/hantro_hw.h
-+++ b/drivers/media/platform/verisilicon/hantro_hw.h
-@@ -42,6 +42,14 @@
- 
- #define MAX_POSTPROC_BUFFERS	64
- 
-+#define G2_ALIGN	16
-+#define CBS_SIZE	16	/* compression table size in bytes */
-+#define CBS_LUMA	8	/* luminance CBS is composed of 1 8x8 coded block */
-+#define CBS_CHROMA_W	(8 * 2)	/* chrominance CBS is composed of two 8x4 coded
-+				 * blocks, with Cb CB first then Cr CB following
-+				 */
-+#define CBS_CHROMA_H	4
-+
- struct hantro_dev;
- struct hantro_ctx;
- struct hantro_buf;
-@@ -144,6 +152,7 @@ struct hantro_hevc_dec_ctrls {
-  * @ref_bufs_used:	Bitfield of used reference buffers
-  * @ctrls:		V4L2 controls attached to a run
-  * @num_tile_cols_allocated: number of allocated tiles
-+ * @use_compression:	use reference buffer compression
-  */
- struct hantro_hevc_dec_hw_ctx {
- 	struct hantro_aux_buf tile_sizes;
-@@ -156,6 +165,7 @@ struct hantro_hevc_dec_hw_ctx {
- 	u32 ref_bufs_used;
- 	struct hantro_hevc_dec_ctrls ctrls;
- 	unsigned int num_tile_cols_allocated;
-+	bool use_compression;
- };
- 
- /**
-@@ -510,6 +520,33 @@ hantro_hevc_mv_size(unsigned int width, unsigned int height)
- 	return width * height / 16;
- }
- 
-+static inline size_t
-+hantro_hevc_luma_compressed_size(unsigned int width, unsigned int height)
-+{
-+	u32 pic_width_in_cbsy =
-+		round_up((width + CBS_LUMA - 1) / CBS_LUMA, CBS_SIZE);
-+	u32 pic_height_in_cbsy = (height + CBS_LUMA - 1) / CBS_LUMA;
-+
-+	return round_up(pic_width_in_cbsy * pic_height_in_cbsy, CBS_SIZE);
-+}
-+
-+static inline size_t
-+hantro_hevc_chroma_compressed_size(unsigned int width, unsigned int height)
-+{
-+	u32 pic_width_in_cbsc =
-+		round_up((width + CBS_CHROMA_W - 1) / CBS_CHROMA_W, CBS_SIZE);
-+	u32 pic_height_in_cbsc = (height / 2 + CBS_CHROMA_H - 1) / CBS_CHROMA_H;
-+
-+	return round_up(pic_width_in_cbsc * pic_height_in_cbsc, CBS_SIZE);
-+}
-+
-+static inline size_t
-+hantro_hevc_compressed_size(unsigned int width, unsigned int height)
-+{
-+	return hantro_hevc_luma_compressed_size(width, height) +
-+	       hantro_hevc_chroma_compressed_size(width, height);
-+}
-+
- static inline unsigned short hantro_av1_num_sbs(unsigned short dimension)
- {
- 	return DIV_ROUND_UP(dimension, 64);
-@@ -525,6 +562,8 @@ hantro_av1_mv_size(unsigned int width, unsigned int height)
- 
- size_t hantro_g2_chroma_offset(struct hantro_ctx *ctx);
- size_t hantro_g2_motion_vectors_offset(struct hantro_ctx *ctx);
-+size_t hantro_g2_luma_compress_offset(struct hantro_ctx *ctx);
-+size_t hantro_g2_chroma_compress_offset(struct hantro_ctx *ctx);
- 
- int hantro_g1_mpeg2_dec_run(struct hantro_ctx *ctx);
- int rockchip_vpu2_mpeg2_dec_run(struct hantro_ctx *ctx);
-diff --git a/drivers/media/platform/verisilicon/hantro_postproc.c b/drivers/media/platform/verisilicon/hantro_postproc.c
-index 41e93176300b..232c93eea7ee 100644
---- a/drivers/media/platform/verisilicon/hantro_postproc.c
-+++ b/drivers/media/platform/verisilicon/hantro_postproc.c
-@@ -213,9 +213,13 @@ static unsigned int hantro_postproc_buffer_size(struct hantro_ctx *ctx)
- 	else if (ctx->vpu_src_fmt->fourcc == V4L2_PIX_FMT_VP9_FRAME)
- 		buf_size += hantro_vp9_mv_size(pix_mp.width,
- 					       pix_mp.height);
--	else if (ctx->vpu_src_fmt->fourcc == V4L2_PIX_FMT_HEVC_SLICE)
-+	else if (ctx->vpu_src_fmt->fourcc == V4L2_PIX_FMT_HEVC_SLICE) {
- 		buf_size += hantro_hevc_mv_size(pix_mp.width,
- 						pix_mp.height);
-+		if (ctx->hevc_dec.use_compression)
-+			buf_size += hantro_hevc_compressed_size(pix_mp.width,
-+								pix_mp.height);
-+	}
- 	else if (ctx->vpu_src_fmt->fourcc == V4L2_PIX_FMT_AV1_FRAME)
- 		buf_size += hantro_av1_mv_size(pix_mp.width,
- 					       pix_mp.height);
--- 
-2.40.1
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SnVzdCBwYXNzZWQgYnkgdGhpcyBvbmUgLi4uCgpMZSBsdW5kaSAwNiBtYWkgMjAyNCDDoCAyMDo1
+MiArMDMwMCwgTGF1cmVudCBQaW5jaGFydCBhIMOpY3JpdMKgOgo+IFNldmVyYWwgc3ViZGV2IHN0
+YXRlIHBvaW50ZXJzIGFyZSB1c2VkIHRvIGFjY2VzcyB0aGUgc3RhdGUgcmVhZC1vbmx5Lgo+IE1h
+cmsgdGhlbSBhcyBjb25zdC4KPiAKPiBTaWduZWQtb2ZmLWJ5OiBMYXVyZW50IFBpbmNoYXJ0IDxs
+YXVyZW50LnBpbmNoYXJ0K3JlbmVzYXNAaWRlYXNvbmJvYXJkLmNvbT4KClJldmlld2VkLWJ5OiBO
+aWNvbGFzIER1ZnJlc25lIDxuaWNvbGFzLmR1ZnJlc25lQGNvbGxhYm9yYS5jb20+Cgo+IC0tLQo+
+ICBkcml2ZXJzL21lZGlhL3BsYXRmb3JtL3JvY2tjaGlwL3JraXNwMS9ya2lzcDEtaXNwLmMgICAg
+IHwgOCArKysrLS0tLQo+ICBkcml2ZXJzL21lZGlhL3BsYXRmb3JtL3JvY2tjaGlwL3JraXNwMS9y
+a2lzcDEtcmVzaXplci5jIHwgOCArKysrLS0tLQo+ICAyIGZpbGVzIGNoYW5nZWQsIDggaW5zZXJ0
+aW9ucygrKSwgOCBkZWxldGlvbnMoLSkKPiAKPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9tZWRpYS9w
+bGF0Zm9ybS9yb2NrY2hpcC9ya2lzcDEvcmtpc3AxLWlzcC5jIGIvZHJpdmVycy9tZWRpYS9wbGF0
+Zm9ybS9yb2NrY2hpcC9ya2lzcDEvcmtpc3AxLWlzcC5jCj4gaW5kZXggZTQ1YTIxM2JhZjQ5Li45
+MTMwMWQxN2QzNTYgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS9yb2NrY2hp
+cC9ya2lzcDEvcmtpc3AxLWlzcC5jCj4gKysrIGIvZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS9yb2Nr
+Y2hpcC9ya2lzcDEvcmtpc3AxLWlzcC5jCj4gQEAgLTE3Myw3ICsxNzMsNyBAQCBzdGF0aWMgdm9p
+ZCBya2lzcDFfZ2Fza2V0X2Rpc2FibGUoc3RydWN0IHJraXNwMV9kZXZpY2UgKnJraXNwMSkKPiAg
+ICogb3IgYXQgdGhlIGZyYW1lIGVuZCBpbnRlcnJ1cHQKPiAgICovCj4gIHN0YXRpYyB2b2lkIHJr
+aXNwMV9jb25maWdfaXNtKHN0cnVjdCBya2lzcDFfaXNwICppc3AsCj4gLQkJCSAgICAgIHN0cnVj
+dCB2NGwyX3N1YmRldl9zdGF0ZSAqc2Rfc3RhdGUpCj4gKwkJCSAgICAgIGNvbnN0IHN0cnVjdCB2
+NGwyX3N1YmRldl9zdGF0ZSAqc2Rfc3RhdGUpCj4gIHsKPiAgCWNvbnN0IHN0cnVjdCB2NGwyX3Jl
+Y3QgKnNyY19jcm9wID0KPiAgCQl2NGwyX3N1YmRldl9zdGF0ZV9nZXRfY3JvcChzZF9zdGF0ZSwK
+PiBAQCAtMjAxLDcgKzIwMSw3IEBAIHN0YXRpYyB2b2lkIHJraXNwMV9jb25maWdfaXNtKHN0cnVj
+dCBya2lzcDFfaXNwICppc3AsCj4gICAqIGNvbmZpZ3VyZSBJU1AgYmxvY2tzIHdpdGggaW5wdXQg
+Zm9ybWF0LCBzaXplLi4uLi4uCj4gICAqLwo+ICBzdGF0aWMgaW50IHJraXNwMV9jb25maWdfaXNw
+KHN0cnVjdCBya2lzcDFfaXNwICppc3AsCj4gLQkJCSAgICAgc3RydWN0IHY0bDJfc3ViZGV2X3N0
+YXRlICpzZF9zdGF0ZSwKPiArCQkJICAgICBjb25zdCBzdHJ1Y3QgdjRsMl9zdWJkZXZfc3RhdGUg
+KnNkX3N0YXRlLAo+ICAJCQkgICAgIGVudW0gdjRsMl9tYnVzX3R5cGUgbWJ1c190eXBlLCB1MzIg
+bWJ1c19mbGFncykKPiAgewo+ICAJc3RydWN0IHJraXNwMV9kZXZpY2UgKnJraXNwMSA9IGlzcC0+
+cmtpc3AxOwo+IEBAIC0zMDksNyArMzA5LDcgQEAgc3RhdGljIGludCBya2lzcDFfY29uZmlnX2lz
+cChzdHJ1Y3Qgcmtpc3AxX2lzcCAqaXNwLAo+ICAJaWYgKHNyY19mbXQtPnBpeGVsX2VuYyA9PSBW
+NEwyX1BJWEVMX0VOQ19CQVlFUikgewo+ICAJCXJraXNwMV9wYXJhbXNfZGlzYWJsZSgmcmtpc3Ax
+LT5wYXJhbXMpOwo+ICAJfSBlbHNlIHsKPiAtCQlzdHJ1Y3QgdjRsMl9tYnVzX2ZyYW1lZm10ICpz
+cmNfZnJtOwo+ICsJCWNvbnN0IHN0cnVjdCB2NGwyX21idXNfZnJhbWVmbXQgKnNyY19mcm07Cj4g
+IAo+ICAJCXNyY19mcm0gPSB2NGwyX3N1YmRldl9zdGF0ZV9nZXRfZm9ybWF0KHNkX3N0YXRlLAo+
+ICAJCQkJCQkgICAgICAgUktJU1AxX0lTUF9QQURfU09VUkNFX1ZJREVPKTsKPiBAQCAtNDI5LDcg
+KzQyOSw3IEBAIHN0YXRpYyB2b2lkIHJraXNwMV9jb25maWdfY2xrKHN0cnVjdCBya2lzcDFfaXNw
+ICppc3ApCj4gIH0KPiAgCj4gIHN0YXRpYyBpbnQgcmtpc3AxX2lzcF9zdGFydChzdHJ1Y3Qgcmtp
+c3AxX2lzcCAqaXNwLAo+IC0JCQkgICAgc3RydWN0IHY0bDJfc3ViZGV2X3N0YXRlICpzZF9zdGF0
+ZSwKPiArCQkJICAgIGNvbnN0IHN0cnVjdCB2NGwyX3N1YmRldl9zdGF0ZSAqc2Rfc3RhdGUsCj4g
+IAkJCSAgICBzdHJ1Y3QgbWVkaWFfcGFkICpzb3VyY2UpCj4gIHsKPiAgCXN0cnVjdCBya2lzcDFf
+ZGV2aWNlICpya2lzcDEgPSBpc3AtPnJraXNwMTsKPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9tZWRp
+YS9wbGF0Zm9ybS9yb2NrY2hpcC9ya2lzcDEvcmtpc3AxLXJlc2l6ZXIuYyBiL2RyaXZlcnMvbWVk
+aWEvcGxhdGZvcm0vcm9ja2NoaXAvcmtpc3AxL3JraXNwMS1yZXNpemVyLmMKPiBpbmRleCA2ZjM5
+MzFjYTViNTEuLjFmYTk5MTIyN2ZhOSAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL21lZGlhL3BsYXRm
+b3JtL3JvY2tjaGlwL3JraXNwMS9ya2lzcDEtcmVzaXplci5jCj4gKysrIGIvZHJpdmVycy9tZWRp
+YS9wbGF0Zm9ybS9yb2NrY2hpcC9ya2lzcDEvcmtpc3AxLXJlc2l6ZXIuYwo+IEBAIC0xMzUsMTEg
+KzEzNSwxMSBAQCBzdGF0aWMgdm9pZCBya2lzcDFfZGNyb3BfZGlzYWJsZShzdHJ1Y3Qgcmtpc3Ax
+X3Jlc2l6ZXIgKnJzeiwKPiAgCj4gIC8qIGNvbmZpZ3VyZSBkdWFsLWNyb3AgdW5pdCAqLwo+ICBz
+dGF0aWMgdm9pZCBya2lzcDFfZGNyb3BfY29uZmlnKHN0cnVjdCBya2lzcDFfcmVzaXplciAqcnN6
+LAo+IC0JCQkJc3RydWN0IHY0bDJfc3ViZGV2X3N0YXRlICpzZF9zdGF0ZSkKPiArCQkJCWNvbnN0
+IHN0cnVjdCB2NGwyX3N1YmRldl9zdGF0ZSAqc2Rfc3RhdGUpCj4gIHsKPiAgCXN0cnVjdCBya2lz
+cDFfZGV2aWNlICpya2lzcDEgPSByc3otPnJraXNwMTsKPiAtCXN0cnVjdCB2NGwyX21idXNfZnJh
+bWVmbXQgKnNpbmtfZm10Owo+IC0Jc3RydWN0IHY0bDJfcmVjdCAqc2lua19jcm9wOwo+ICsJY29u
+c3Qgc3RydWN0IHY0bDJfbWJ1c19mcmFtZWZtdCAqc2lua19mbXQ7Cj4gKwljb25zdCBzdHJ1Y3Qg
+djRsMl9yZWN0ICpzaW5rX2Nyb3A7Cj4gIAl1MzIgZGNfY3RybDsKPiAgCj4gIAlzaW5rX2Nyb3Ag
+PSB2NGwyX3N1YmRldl9zdGF0ZV9nZXRfY3JvcChzZF9zdGF0ZSwgUktJU1AxX1JTWl9QQURfU0lO
+Syk7Cj4gQEAgLTI2NCw3ICsyNjQsNyBAQCBzdGF0aWMgdm9pZCBya2lzcDFfcnN6X2NvbmZpZ19y
+ZWdzKHN0cnVjdCBya2lzcDFfcmVzaXplciAqcnN6LAo+ICB9Cj4gIAo+ICBzdGF0aWMgdm9pZCBy
+a2lzcDFfcnN6X2NvbmZpZyhzdHJ1Y3Qgcmtpc3AxX3Jlc2l6ZXIgKnJzeiwKPiAtCQkJICAgICAg
+c3RydWN0IHY0bDJfc3ViZGV2X3N0YXRlICpzZF9zdGF0ZSwKPiArCQkJICAgICAgY29uc3Qgc3Ry
+dWN0IHY0bDJfc3ViZGV2X3N0YXRlICpzZF9zdGF0ZSwKPiAgCQkJICAgICAgZW51bSBya2lzcDFf
+c2hhZG93X3JlZ3Nfd2hlbiB3aGVuKQo+ICB7Cj4gIAljb25zdCBzdHJ1Y3Qgcmtpc3AxX3Jzel95
+dXZfbWJ1c19pbmZvICpzaW5rX3l1dl9pbmZvLCAqc3JjX3l1dl9pbmZvOwoKCl9fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxp
+bmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5p
+bmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
