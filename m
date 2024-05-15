@@ -4,62 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6E5C3C25B75
-	for <linux-rockchip@archiver.kernel.org>; Wed, 15 May 2024 21:13:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D94AAC25B75
+	for <linux-rockchip@archiver.kernel.org>; Wed, 15 May 2024 21:14:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Message-ID:
 	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
-	List-Owner; bh=dJV88N6LV/SDxnR1u74CuSIOK221Y6QY6ybbtPhtPS8=; b=udnpilIhBmtTQ/
-	Dw9x+Y7rGQNI+lEoIICI60d2e0zuQw6PFXBXCmPg6JRhtmtSlf9c85Sqb4cu07Vm+lgNfIvyIWZuu
-	/bYl2y+ZT1OZW3MVr7zK6Up2rcTdBXckjEYYBAbHiTPPosXp3jXltVMObtRrpmCipEhZalToezjNG
-	rZyP6wiVdYiKyvglGAl1HGXur6LQAvutp5UAR3WR7eD5FclVtc71f9PF8Yn2uedxqTS2qN+o3mjRU
-	wJvHtxXXIVK0W088HbBBaPrE9LTVw/r4TA89e/987IxH/JzkJzKyyJVPjF64POzcozzplvZO0vOj7
-	yIQ97wDp934+FCJhKYow==;
+	List-Owner; bh=K8+xLJuMXoWhbDSCU5MTRniHObIBSokoWEaz3dpkSO4=; b=0/R+I8Z8xNm1Qn
+	A7VRPRlubGFCyQVR3H7Qc07m41Yt6zbO7OnaYvg3hgYjPgtfD+VN0ckRl5cruKXh/aoZayenUSEyP
+	bdvlmPXOulyprdQoGmKQ9Z9V3IOYrm0jJW6W+hUM52m645JwIggfM0lLn5jALZgwCTX+3I9CqnPHp
+	d8+m/krVeKift54IlmoYZwy2vyBPdS/WTo2aLMDQEsjTOi/ZmlkZga3goGdb/rEjY8viAP2w1o3yt
+	0otCjcbILiKQwllV+v8eS+0nQqY9q9U5CEYnVB3j7I25LQm7fVlhM5ZtB71zOHk7m5eI0Yvm3x2i9
+	ROVFvVaQRIYXsDEAuBnQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s7Lwi-00000002svK-1Gj4;
-	Wed, 15 May 2024 21:13:56 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1s7Lx6-00000002t6u-0rvu;
+	Wed, 15 May 2024 21:14:20 +0000
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s7Lwe-00000002sss-3h67;
-	Wed, 15 May 2024 21:13:54 +0000
+	id 1s7Lx2-00000002t48-0otK;
+	Wed, 15 May 2024 21:14:17 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 33D3F615D5;
-	Wed, 15 May 2024 21:13:52 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 990FAC32781;
-	Wed, 15 May 2024 21:13:51 +0000 (UTC)
+	by sin.source.kernel.org (Postfix) with ESMTP id 483F4CE17C8;
+	Wed, 15 May 2024 21:14:14 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 593B9C116B1;
+	Wed, 15 May 2024 21:14:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1715807631;
-	bh=92Bg9W1jfudPogCMHlnwGwZOFXqjwzrhqg+gfddCvgc=;
+	s=k20201202; t=1715807653;
+	bh=it91atMIvH+S1hh7KTPixQTxjOewGFSIV5K2G3BKGP4=;
 	h=Date:From:To:Cc:Subject:In-Reply-To:From;
-	b=S8BA31QH7LK+QVdeB6Mu1tL7+oDDrVuB4pRkhH06CYUtwMegzUFlB095Sb4Zwbpxw
-	 VCTDALqX31X7kPYjnVtfuNvBOfAMqp4H+tFZ51c8ck9ZLD/PZJon2wzFZUaVnmgwPf
-	 VymrE+aaYcnRQ18OYFpYbHeRsJvbpYkdkY0+nSbVdVAXVDHlPcV27HTs0JBMc1e9lE
-	 Kmnw5ArBPlB1/loKB0GII383RGiB5aqWOZEhmn0bP2SaYXt6Jobj78xGr5ImNgYquk
-	 tWoxD5bSzr/EzVgKknGN1ep3dhmHUtvGcD+NiTrtSTfBHHnmmCL3IrgrobAWP4w3yG
-	 ZWxO6cM77OF/g==
-Date: Wed, 15 May 2024 16:13:50 -0500
+	b=ck9f3UoZ7IOwB+QGO0+yu15XrGwC9cBQEGWnqlv0GwfLTbEH7rufz5R/udo4XPZca
+	 CAiykIzMjc9wY3/EdWhe9RSR7bfFLoZ7cTcUTXtkFuKFlSXtCAK9JZXU9DaOetuHgz
+	 +Yv3Hqk+1tyy/9LrgvnQ40sNRe+MYrvuqyXeiV1ZhVZKfSUydoCHaT9mhyW5O8/XuJ
+	 94xi6F9fbTrpPMhYAwbsFXi/E7NifU8UGa8MUeY1RlFWT/LcPtUJAcAOzAaD6ovi8r
+	 jdIBCzkF05zqGGqOkLnexiqvizpSh4K3hRQ/ONhviccFQRKNpSzOta1+/lkJ9yhFsm
+	 NRa5EksIpAuaQ==
+Date: Wed, 15 May 2024 16:14:11 -0500
 From: Bjorn Helgaas <helgaas@kernel.org>
-To: Rick Wertenbroek <rick.wertenbroek@gmail.com>
-Cc: rick.wertenbroek@heig-vd.ch, dlemoal@kernel.org, stable@vger.kernel.org,
-	Shawn Lin <shawn.lin@rock-chips.com>,
+To: Damien Le Moal <dlemoal@kernel.org>
+Cc: Shawn Lin <shawn.lin@rock-chips.com>,
+	Bjorn Helgaas <bhelgaas@google.com>,
+	Heiko Stuebner <heiko@sntech.de>, linux-pci@vger.kernel.org,
 	Lorenzo Pieralisi <lpieralisi@kernel.org>,
 	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
-	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
-	Heiko Stuebner <heiko@sntech.de>, linux-pci@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] PCI: rockchip-ep: Remove wrong mask on subsys_vendor_id
-Message-ID: <20240515211350.GA2139074@bhelgaas>
+	linux-arm-kernel@lists.infradead.org
+Subject: Re: [PATCH v4 0/2] rockchip rk3399 port initialization fixes
+Message-ID: <20240515211411.GA2138954@bhelgaas>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20240515205547.GA2137633@bhelgaas>
+In-Reply-To: <20240413004120.1099089-1-dlemoal@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240515_141353_001735_5CCEC8CC 
-X-CRM114-Status: GOOD (  23.63  )
+X-CRM114-CacheID: sfid-20240515_141416_435616_E424FD47 
+X-CRM114-Status: GOOD (  11.72  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,55 +75,33 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, May 15, 2024 at 03:55:49PM -0500, Bjorn Helgaas wrote:
-> On Wed, Apr 03, 2024 at 04:45:08PM +0200, Rick Wertenbroek wrote:
-> > Remove wrong mask on subsys_vendor_id. Both the Vendor ID and Subsystem
-> > Vendor ID are u16 variables and are written to a u32 register of the
-> > controller. The Subsystem Vendor ID was always 0 because the u16 value
-> > was masked incorrectly with GENMASK(31,16) resulting in all lower 16
-> > bits being set to 0 prior to the shift.
-> > 
-> > Remove both masks as they are unnecessary and set the register correctly
-> > i.e., the lower 16-bits are the Vendor ID and the upper 16-bits are the
-> > Subsystem Vendor ID.
-> > 
-> > This is documented in the RK3399 TRM section 17.6.7.1.17
-> > 
-> > Fixes: cf590b078391 ("PCI: rockchip: Add EP driver for Rockchip PCIe controller")
-> > Signed-off-by: Rick Wertenbroek <rick.wertenbroek@gmail.com>
-> > Cc: stable@vger.kernel.org
+On Sat, Apr 13, 2024 at 09:41:18AM +0900, Damien Le Moal wrote:
+> A couple of patches to have the rockchip rk3399 host controller port
+> initialization follow the PCI specifications around PERST# signal timing
+> handling.
 > 
-> Applied to pci/controller/rockchip by Krzysztof, but his outgoing mail
-> queue got stuck.  I added Damien's Reviewed-by.  Trying to squeeze
-> into v6.9.
+> Changes from v3:
+>  - Fixed commit messages as suggested by Bjorn.
+> 
+> Changes from v2:
+>  - Use PCIE_T_PVPERL_MS macro in patch 1 (and remove useless comments).
+>  - Split second msleep() addition into patch 2 as suggested by Bjorn.
+> 
+> Changes from v1:
+>  - Add more specification details to the commit message.
+>  - Add missing msleep(100) after PERST# is deasserted.
+> 
+> Damien Le Moal (2):
+>   PCI: rockchip-host: Fix rockchip_pcie_host_init_port() PERST# handling
+>   PCI: rockchip-host: Wait 100ms after reset before starting configuration
+> 
+>  drivers/pci/controller/pcie-rockchip-host.c | 3 +++
+>  drivers/pci/pci.h                           | 7 +++++++
+>  2 files changed, 10 insertions(+)
 
-Sorry, I meant v6.10.  v6.9 is already done.
-
-> > ---
-> >  drivers/pci/controller/pcie-rockchip-ep.c | 7 +++----
-> >  1 file changed, 3 insertions(+), 4 deletions(-)
-> > 
-> > diff --git a/drivers/pci/controller/pcie-rockchip-ep.c b/drivers/pci/controller/pcie-rockchip-ep.c
-> > index c9046e97a1d2..37d4bcb8bd5b 100644
-> > --- a/drivers/pci/controller/pcie-rockchip-ep.c
-> > +++ b/drivers/pci/controller/pcie-rockchip-ep.c
-> > @@ -98,10 +98,9 @@ static int rockchip_pcie_ep_write_header(struct pci_epc *epc, u8 fn, u8 vfn,
-> >  
-> >  	/* All functions share the same vendor ID with function 0 */
-> >  	if (fn == 0) {
-> > -		u32 vid_regs = (hdr->vendorid & GENMASK(15, 0)) |
-> > -			       (hdr->subsys_vendor_id & GENMASK(31, 16)) << 16;
-> > -
-> > -		rockchip_pcie_write(rockchip, vid_regs,
-> > +		rockchip_pcie_write(rockchip,
-> > +				    hdr->vendorid |
-> > +				    hdr->subsys_vendor_id << 16,
-> >  				    PCIE_CORE_CONFIG_VENDOR);
-> >  	}
-> >  
-> > -- 
-> > 2.25.1
-> > 
+Both applied by Krzysztof with Mani's Reviewed-by to
+pci/controller/rockchip, but his outgoing mail queue got stuck.  It's
+really too late, but trying to squeeze this into v6.10.
 
 _______________________________________________
 Linux-rockchip mailing list
