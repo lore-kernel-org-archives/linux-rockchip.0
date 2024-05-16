@@ -4,63 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C8C6CC25B74
-	for <linux-rockchip@archiver.kernel.org>; Thu, 16 May 2024 07:49:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D0F32C25B74
+	for <linux-rockchip@archiver.kernel.org>; Thu, 16 May 2024 08:41:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ZblQgLkm4ra2vqkC59akeyLozeRaAS9d0KdkJq6nVSE=; b=gmfm6k9G6N6KYc
-	8iUsN0/wZo39pjfpzhzyDppS2wP33SrYFiFh5eLBJtM8czOv3sXhFWxjSvZBIJRyHGjq3BsCVCAHq
-	VBN0lmjKT2LUbp8fE68n48WQfgyCfHjxje6PeArkpWf3QvKKAbSozCEoaL3k/I8IKQL9vO3gzRNxy
-	2wHg1evTlmW2rLXUR2m1Mpsqc0X6NegVE2lq6W4n7Uql9K+Ak41ulG0oQDq9ieIElF0+DXNHg/9Zd
-	cahxhWCGUf5xMbze4LFgyT022gjaLZMuIuqmMjFlt9fM25PQS36Y2S4sbpFhzFOWA9Wyni9fkagL0
-	xLtlWUmEOXQ6z+fpQsJA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=0Om6o4lEmzaJnP/HlZ+eV3BEmAhg6d6JVi5Ht5kxqv8=; b=ptFR39ReU0bw5A
+	dIsyYhh23El22BcA09uusj/YFQ0GTtORTZvjeityNyEsda1tXTipfxo5UgKZ4jzIytyIRPfwIYYK1
+	4NQKHZcK3BSbSKDCrU8NzNNVHyUL6HW2BwZA5tIGi472TA5qnTCTSDNm6TaITpI/KuNDO+7KU2DM1
+	ZwGigU/elmaPkb2lAzhv3u529455mNX6hOt4m17Lk9ZGSdNZxYozBungiUs9kjqnIGyiAqBBoR3XF
+	l/qM71YjNRLF/KK1aYKJPjA1lIsv2OnHeo1S3CAla2j/ZJlnfop4+eWIbk45Pg+TYXBF47jGOmjAm
+	Jw09AcoBqhealappBkUQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s7Vrp-000000042Oe-3kMd;
-	Thu, 16 May 2024 07:49:33 +0000
-Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
+	id 1s7Wfx-00000004CHj-3JJm;
+	Thu, 16 May 2024 08:41:21 +0000
+Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s7Vrn-000000042NN-0wic
+	id 1s7Wft-00000004CEp-2UeI
 	for linux-rockchip@lists.infradead.org;
-	Thu, 16 May 2024 07:49:33 +0000
+	Thu, 16 May 2024 08:41:19 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1715845767;
-	bh=fh97yPEiZKC4xTQBr4NpLiFiLmrqRio3gdLh04+oAIE=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=QCEBCFV5x/6O6ud6KPBABqmv4C4ugvWmaMA9W5Zwo0oJeJQIMxeNycqhwUYuOzjO5
-	 xSywp9KuBmCWzZaYtgLe/5CHYgzCx6tr1q4I/vBdGvYGERdz5xFzY+OBdDO11S9liz
-	 CaazF+ZK2WKRRJHY6fPxGJd16ZgQtpKrgpzjzaPk+872O8CR29mEVzC8g7bEwKVvR9
-	 NlOMpFzhQMYCxIUv0dlYGabHooQ3RbLYMn3M3+DZjMnBtJb2Ux7muFm5IRehV6uNG8
-	 Hg4XCvuzZvO+4QReLLMklunNLUzwJo9kZ8u0jL7cNEv4zQnJBut4RpQJNDzmVQTo5d
-	 9hxyvaEFsgbQg==
-Received: from [100.93.89.217] (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	s=mail; t=1715848874;
+	bh=4KLkMCbZUKnHQ9N54Zv0Cup9+GEhrxn6Rra6jaeTtrE=;
+	h=From:To:Cc:Subject:Date:From;
+	b=l8ZZo/Z49ch8G9srlc0FLz/sJXV1RZiKw5sq+1dYXYmU7D8DiBCD0JNLjOc5UsvZu
+	 dYYd8lWE9W68K+3bHk7iCd/DSQP7zxGWFHj3lIUfLtJ+og5/WmSqnCc8Sbds3rthwR
+	 cFh804GeelUBJ+CnaYcAqUwEyRzPU7Sp7SZNMoftXywxRvvlQdSK3PbvDQD/5k94+Z
+	 Qw7kje0aqZ4Lpa4nrzqrB1+XNeZ2PUVBgNo0baSWRxakQ59e0vzxAxweRvkh70IQ2j
+	 AHzzRPqQXw3dHgGVckP8DtveZfSrxzby+uwWg2NlExrCvTCAHog+7VzMFDZIyJErGl
+	 DLHdtbVO8fKQQ==
+Received: from benjamin-XPS-13-9310.. (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: benjamin.gaignard)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 914A637821A7;
-	Thu, 16 May 2024 07:49:26 +0000 (UTC)
-Message-ID: <880e5e74-dc26-4c09-9372-f3465c3e9ee2@collabora.com>
-Date: Thu, 16 May 2024 09:49:26 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] media: verisilicon: Add reference buffers compression
-To: Nicolas Dufresne <nicolas.dufresne@collabora.com>,
- ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de, mchehab@kernel.org
-Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org, kernel@collabora.com
-References: <20240514162054.294002-1-benjamin.gaignard@collabora.com>
- <2bfd5af3b56cd2c90e5236792c13f44e19d274f6.camel@collabora.com>
-Content-Language: en-US
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 9FD90378218B;
+	Thu, 16 May 2024 08:41:13 +0000 (UTC)
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-In-Reply-To: <2bfd5af3b56cd2c90e5236792c13f44e19d274f6.camel@collabora.com>
+To: ezequiel@vanguardiasur.com.ar,
+	p.zabel@pengutronix.de,
+	mchehab@kernel.org,
+	nicolas.dufresne@collabora.com
+Cc: linux-media@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	kernel@collabora.com,
+	Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Subject: [PATCH v2] media: verisilicon: Add reference buffers compression
+Date: Thu, 16 May 2024 10:41:07 +0200
+Message-Id: <20240516084107.37083-1-benjamin.gaignard@collabora.com>
+X-Mailer: git-send-email 2.40.1
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240516_004931_572981_49176740 
-X-CRM114-Status: GOOD (  22.83  )
+X-CRM114-CacheID: sfid-20240516_014118_018535_F2D027B5 
+X-CRM114-Status: GOOD (  19.56  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,273 +73,359 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-CkxlIDE1LzA1LzIwMjQgw6AgMTk6MzEsIE5pY29sYXMgRHVmcmVzbmUgYSDDqWNyaXTCoDoKPiBI
-aSwKPgo+IExlIG1hcmRpIDE0IG1haSAyMDI0IMOgIDE4OjIwICswMjAwLCBCZW5qYW1pbiBHYWln
-bmFyZCBhIMOpY3JpdMKgOgo+PiBSZWZlcmVuY2UgZnJhbWUgY29tcHJlc3Npb24gaXMgYSBmZWF0
-dXJlIGFkZGVkIGluIEcyIGRlY29kZXIgdG8gY29tcHJlc3MKPj4gZnJhbWUgYnVmZmVycyBzbyB0
-aGF0IHRoZSBiYW5kd2lkdGggb2Ygc3RvcmluZy9sb2FkaW5nIHJlZmVyZW5jZSBmcmFtZXMKPj4g
-Y2FuIGJlIHJlZHVjZWQsIGVzcGVjaWFsbHkgd2hlbiB0aGUgcmVzb2x1dGlvbiBvZiBkZWNvZGVk
-IHN0cmVhbSBpcyBvZgo+PiBoaWdoIGRlZmluaXRpb24uCj4+Cj4+IFRoZSBpbXBhY3Qgb2YgY29t
-cHJlc3NlZCBmcmFtZXMgaXMgY29uZmlybWVkIHdoZW4gdXNpbmcgcGVyZiB0byBtb25pdG9yCj4+
-IHRoZSBudW1iZXIgb2YgbWVtb3J5IGFjY2Vzc2VzIHdpdGggb3Igd2l0aG91dCBjb21wcmVzc2lv
-biBmZWF0dXJlLgo+PiBUaGUgZm9sbG93aW5nIGNvbW1hbmQKPj4gcGVyZiBzdGF0IC1hIC1lIGlt
-eDhfZGRyMC9jeWNsZXMvLGlteDhfZGRyMC9yZWFkLWN5Y2xlcy8saW14OF9kZHIwL3dyaXRlLWN5
-Y2xlcy8gZ3N0LWxhdW5jaC0xLjAgZmlsZXNyYyBsb2NhdGlvbj1Kb2NrZXlfMzg0MHgyMTYwXzEy
-MGZwc180MjBfOGJpdF9IRVZDX1JBVy5oZXZjICEgcXVldWUgISBoMjY1cGFyc2UgISB2NGwyc2xo
-MjY1ZGVjICEgZmFrZXNpbmsKPj4KPj4gZ2l2ZSB1cyB0aGVzZSByZXN1bHRzCj4+IHdpdGhvdXQg
-Y29tcHJlc3Npb24gZmVhdHVyZToKPj4gUGVyZm9ybWFuY2UgY291bnRlciBzdGF0cyBmb3IgJ3N5
-c3RlbSB3aWRlJzoKPj4KPj4gICAgICAgICAgMTcxMTMwMDM0NSAgICAgIGlteDhfZGRyMC9jeWNs
-ZXMvCj4+ICAgICAgICAgICA4OTIyMDc5MjQgICAgICBpbXg4X2RkcjAvcmVhZC1jeWNsZXMvCj4+
-ICAgICAgICAgIDEyOTE3ODU4NjQgICAgICBpbXg4X2RkcjAvd3JpdGUtY3ljbGVzLwo+Pgo+PiAg
-ICAgICAgMTMuNzYwMDQ4MzUzIHNlY29uZHMgdGltZSBlbGFwc2VkCj4+Cj4+IHdpdGggY29tcHJl
-c3Npb24gZmVhdHVyZToKPj4gUGVyZm9ybWFuY2UgY291bnRlciBzdGF0cyBmb3IgJ3N5c3RlbSB3
-aWRlJzoKPj4KPj4gICAgICAgICAgIDI3NDUyNjc5OSAgICAgIGlteDhfZGRyMC9jeWNsZXMvCj4+
-ICAgICAgICAgICA0NTMxMjAxOTQgICAgICBpbXg4X2RkcjAvcmVhZC1jeWNsZXMvCj4+ICAgICAg
-ICAgICA4MzMzOTE0MzQgICAgICBpbXg4X2RkcjAvd3JpdGUtY3ljbGVzLwo+Pgo+PiAgICAgICAg
-MTguMjU3ODMxNTM0IHNlY29uZHMgdGltZSBlbGFwc2VkCj4gT24gbXkgb3duIHRlc3RpbmcgdGhl
-IGR1cmF0aW9uIHJlbWFpbmVkIHRoZSBzYW1lLiBQZXJoYXBzIHlvdSBoYWQgc29tZXRoaW5nIGVs
-c2UKPiBydW5uaW5nIGR1cmluZyB5b3VyIHRlc3QgPyBJIHdvdWxkIHN1Z2dlc3QgdG8gYWx3YXlz
-IHJ1bnMgbXVsdGlwbGUgdGltZSBzdWNoIGEKPiB0ZXN0IGJlZm9yZSBzaGFyaW5nIHRvIGF2b2lk
-IHNuYXBzaG90IGVmZmVjdCBhbmQgcG9zc2libHkgd3JvbmcgaW50ZXJwcmV0YXRpb24KCllvdSBu
-ZWVkIHRvIGZvcmNlIHRoZSBkZWNvZGVyIHRvIHByb2R1Y2UgTlYxMiB0byBzZWUgdGhlIGVmZmVj
-dCBvZiBwYXRjaC4KSSB3aWxsIHVwZGF0ZSB0aGUgdGVzdCBjb21tYW5kIGxpbmUgaW4gdGhlIGNv
-bW1pdCBtZXNzYWdlLgoKPgo+IHJlZ2FyZHMsCj4gTmljb2xhcwo+Cj4+IEFzIGV4cGVjdGVkIHRo
-ZSBudW1iZXIgb2YgcmVhZC93cml0ZSBjeWNsZXMgYXJlIHJlYWxseSBsb3dlciB3aGVuIGNvbXBy
-ZXNzaW9uCj4+IGlzIHVzZWQuCj4+Cj4+IFNpbmNlIHN0b3JpbmcgY29tcHJlc3Npb24gZGF0YSBy
-ZXF1aXJlcyBtb3JlIG1lbW9yeSBhIG1vZHVsZQo+PiBwYXJhbWV0ZXIgbmFtZWQgJ2hldmNfdXNl
-X2NvbXByZXNzaW9uJyBpcyB1c2VkIHRvIGVuYWJsZS9kaXNhYmxlCj4+IHRoaXMgZmVhdHVyZSBh
-bmQsIGJ5IGRlZmF1bHQsIGNvbXByZXNzaW9uIGlzbid0IHVzZWQuCj4gUGVyaGFwcyBhIEtDb25m
-aWcgdG8gY2hhbmdlIHRoZSBkZWZhdWx0ID8KClRoYXQgd2lsbCBiZSBpbiB2MgpSZWdhcmRzLApC
-ZW5qYW1pbgoKPgo+PiBFbmFibGluZyBjb21wcmVzc2lvbiBmZWF0dXJlIG1lYW5zIHRoYXQgZGVj
-b2RlciBvdXRwdXQgZnJhbWVzCj4+IGFyZSBzdG9yZWQgd2l0aCBhIHNwZWNpZmljIGNvbXByZXNz
-aW9uIHBpeGVsIGZvcm1hdC4gU2luY2UgdGhpcwo+PiBwaXhlbCBmb3JtYXQgaXMgdW5rbm93biwg
-dGhpcyBwYXRjaCByZXN0cmFpbiBjb21wcmVzc2lvbiBmZWF0dXJlCj4+IHVzYWdlIHRvIHRoZSBj
-YXNlcyB3aGVyZSBwb3N0LXByb2Nlc3NvciBwaXhlbHMgZm9ybWF0cyAoTlYxMiBvciBOVjE1KQo+
-PiBhcmUgc2VsZWN0ZWQgYnkgdGhlIGFwcGxpY2F0aW9ucy4KPj4KPj4gRmx1c3RlciBjb21wbGlh
-bmNlIEhFVkMgdGVzdCBzdWl0ZSBzY29yZSBpcyBzdGlsbCAxNDEvMTQ3IGFmdGVyIHRoaXMgcGF0
-Y2guCj4+Cj4+IFNpZ25lZC1vZmYtYnk6IEJlbmphbWluIEdhaWduYXJkIDxiZW5qYW1pbi5nYWln
-bmFyZEBjb2xsYWJvcmEuY29tPgo+IFRlc3RlZC1ieTogTmljb2xhcyBEdWZyZXNuZSA8bmljb2xh
-cy5kdWZyZXNuZUBjb2xsYWJvcmEuY29tPgo+Cj4+IC0tLQo+PiAgIC4uLi9tZWRpYS9wbGF0Zm9y
-bS92ZXJpc2lsaWNvbi9oYW50cm9fZzIuYyAgICB8IDM1ICsrKysrKysrKysrKysrKysrCj4+ICAg
-Li4uL3BsYXRmb3JtL3ZlcmlzaWxpY29uL2hhbnRyb19nMl9oZXZjX2RlYy5jIHwgMjAgKysrKysr
-KystLQo+PiAgIC4uLi9wbGF0Zm9ybS92ZXJpc2lsaWNvbi9oYW50cm9fZzJfcmVncy5oICAgICB8
-ICA0ICsrCj4+ICAgLi4uL21lZGlhL3BsYXRmb3JtL3ZlcmlzaWxpY29uL2hhbnRyb19oZXZjLmMg
-IHwgIDggKysrKwo+PiAgIC4uLi9tZWRpYS9wbGF0Zm9ybS92ZXJpc2lsaWNvbi9oYW50cm9faHcu
-aCAgICB8IDM5ICsrKysrKysrKysrKysrKysrKysKPj4gICAuLi4vcGxhdGZvcm0vdmVyaXNpbGlj
-b24vaGFudHJvX3Bvc3Rwcm9jLmMgICAgfCAgNiArKy0KPj4gICA2IGZpbGVzIGNoYW5nZWQsIDEw
-OCBpbnNlcnRpb25zKCspLCA0IGRlbGV0aW9ucygtKQo+Pgo+PiBkaWZmIC0tZ2l0IGEvZHJpdmVy
-cy9tZWRpYS9wbGF0Zm9ybS92ZXJpc2lsaWNvbi9oYW50cm9fZzIuYyBiL2RyaXZlcnMvbWVkaWEv
-cGxhdGZvcm0vdmVyaXNpbGljb24vaGFudHJvX2cyLmMKPj4gaW5kZXggYjg4MGE2ODQ5ZDU4Li42
-MmNhOTE0MjczNjAgMTAwNjQ0Cj4+IC0tLSBhL2RyaXZlcnMvbWVkaWEvcGxhdGZvcm0vdmVyaXNp
-bGljb24vaGFudHJvX2cyLmMKPj4gKysrIGIvZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS92ZXJpc2ls
-aWNvbi9oYW50cm9fZzIuYwo+PiBAQCAtOSw2ICs5LDEyIEBACj4+ICAgI2luY2x1ZGUgImhhbnRy
-b19nMl9yZWdzLmgiCj4+ICAgCj4+ICAgI2RlZmluZSBHMl9BTElHTgkxNgo+PiArI2RlZmluZSBD
-QlNfU0laRQkxNgkvKiBjb21wcmVzc2lvbiB0YWJsZSBzaXplIGluIGJ5dGVzICovCj4+ICsjZGVm
-aW5lIENCU19MVU1BCTgJLyogbHVtaW5hbmNlIENCUyBpcyBjb21wb3NlZCBvZiAxIDh4OCBjb2Rl
-ZCBibG9jayAqLwo+PiArI2RlZmluZSBDQlNfQ0hST01BX1cJKDggKiAyKQkvKiBjaHJvbWluYW5j
-ZSBDQlMgaXMgY29tcG9zZWQgb2YgdHdvIDh4NCBjb2RlZAo+PiArCQkJCSAqIGJsb2Nrcywgd2l0
-aCBDYiBDQiBmaXJzdCB0aGVuIENyIENCIGZvbGxvd2luZwo+PiArCQkJCSAqLwo+PiArI2RlZmlu
-ZSBDQlNfQ0hST01BX0gJNAo+PiAgIAo+PiAgIHZvaWQgaGFudHJvX2cyX2NoZWNrX2lkbGUoc3Ry
-dWN0IGhhbnRyb19kZXYgKnZwdSkKPj4gICB7Cj4+IEBAIC01NiwzICs2MiwzMiBAQCBzaXplX3Qg
-aGFudHJvX2cyX21vdGlvbl92ZWN0b3JzX29mZnNldChzdHJ1Y3QgaGFudHJvX2N0eCAqY3R4KQo+
-PiAgIAo+PiAgIAlyZXR1cm4gQUxJR04oKGNyX29mZnNldCAqIDMpIC8gMiwgRzJfQUxJR04pOwo+
-PiAgIH0KPj4gKwo+PiArc3RhdGljIHNpemVfdCBoYW50cm9fZzJfbXZfc2l6ZShzdHJ1Y3QgaGFu
-dHJvX2N0eCAqY3R4KQo+PiArewo+PiArCWNvbnN0IHN0cnVjdCBoYW50cm9faGV2Y19kZWNfY3Ry
-bHMgKmN0cmxzID0gJmN0eC0+aGV2Y19kZWMuY3RybHM7Cj4+ICsJY29uc3Qgc3RydWN0IHY0bDJf
-Y3RybF9oZXZjX3NwcyAqc3BzID0gY3RybHMtPnNwczsKPj4gKwl1bnNpZ25lZCBpbnQgcGljX3dp
-ZHRoX2luX2N0YnMsIHBpY19oZWlnaHRfaW5fY3RiczsKPj4gKwl1bnNpZ25lZCBpbnQgbWF4X2xv
-ZzJfY3RiX3NpemU7Cj4+ICsKPj4gKwltYXhfbG9nMl9jdGJfc2l6ZSA9IHNwcy0+bG9nMl9taW5f
-bHVtYV9jb2RpbmdfYmxvY2tfc2l6ZV9taW51czMgKyAzICsKPj4gKwkJCSAgICBzcHMtPmxvZzJf
-ZGlmZl9tYXhfbWluX2x1bWFfY29kaW5nX2Jsb2NrX3NpemU7Cj4+ICsJcGljX3dpZHRoX2luX2N0
-YnMgPSAoc3BzLT5waWNfd2lkdGhfaW5fbHVtYV9zYW1wbGVzICsKPj4gKwkJCSAgICAoMSA8PCBt
-YXhfbG9nMl9jdGJfc2l6ZSkgLSAxKSA+PiBtYXhfbG9nMl9jdGJfc2l6ZTsKPj4gKwlwaWNfaGVp
-Z2h0X2luX2N0YnMgPSAoc3BzLT5waWNfaGVpZ2h0X2luX2x1bWFfc2FtcGxlcyArICgxIDw8IG1h
-eF9sb2cyX2N0Yl9zaXplKSAtIDEpCj4+ICsJCQkgICAgID4+IG1heF9sb2cyX2N0Yl9zaXplOwo+
-PiArCj4+ICsJcmV0dXJuIHBpY193aWR0aF9pbl9jdGJzICogcGljX2hlaWdodF9pbl9jdGJzICog
-KDEgPDwgKDIgKiAobWF4X2xvZzJfY3RiX3NpemUgLSA0KSkpICogMTY7Cj4+ICt9Cj4+ICsKPj4g
-K3NpemVfdCBoYW50cm9fZzJfbHVtYV9jb21wcmVzc19vZmZzZXQoc3RydWN0IGhhbnRyb19jdHgg
-KmN0eCkKPj4gK3sKPj4gKwlyZXR1cm4gaGFudHJvX2cyX21vdGlvbl92ZWN0b3JzX29mZnNldChj
-dHgpICsKPj4gKwkgICAgICAgaGFudHJvX2cyX212X3NpemUoY3R4KTsKPj4gK30KPj4gKwo+PiAr
-c2l6ZV90IGhhbnRyb19nMl9jaHJvbWFfY29tcHJlc3Nfb2Zmc2V0KHN0cnVjdCBoYW50cm9fY3R4
-ICpjdHgpCj4+ICt7Cj4+ICsJcmV0dXJuIGhhbnRyb19nMl9sdW1hX2NvbXByZXNzX29mZnNldChj
-dHgpICsKPj4gKwkgICAgICAgaGFudHJvX2hldmNfbHVtYV9jb21wcmVzc2VkX3NpemUoY3R4LT5k
-c3RfZm10LndpZHRoLCBjdHgtPmRzdF9mbXQuaGVpZ2h0KTsKPj4gK30KPj4gZGlmZiAtLWdpdCBh
-L2RyaXZlcnMvbWVkaWEvcGxhdGZvcm0vdmVyaXNpbGljb24vaGFudHJvX2cyX2hldmNfZGVjLmMg
-Yi9kcml2ZXJzL21lZGlhL3BsYXRmb3JtL3ZlcmlzaWxpY29uL2hhbnRyb19nMl9oZXZjX2RlYy5j
-Cj4+IGluZGV4IGQzZjhjMzNlYjE2Yy4uODVhNDQxNDNiMzc4IDEwMDY0NAo+PiAtLS0gYS9kcml2
-ZXJzL21lZGlhL3BsYXRmb3JtL3ZlcmlzaWxpY29uL2hhbnRyb19nMl9oZXZjX2RlYy5jCj4+ICsr
-KyBiL2RyaXZlcnMvbWVkaWEvcGxhdGZvcm0vdmVyaXNpbGljb24vaGFudHJvX2cyX2hldmNfZGVj
-LmMKPj4gQEAgLTM2NywxMSArMzY3LDE0IEBAIHN0YXRpYyBpbnQgc2V0X3JlZihzdHJ1Y3QgaGFu
-dHJvX2N0eCAqY3R4KQo+PiAgIAljb25zdCBzdHJ1Y3QgdjRsMl9jdHJsX2hldmNfZGVjb2RlX3Bh
-cmFtcyAqZGVjb2RlX3BhcmFtcyA9IGN0cmxzLT5kZWNvZGVfcGFyYW1zOwo+PiAgIAljb25zdCBz
-dHJ1Y3QgdjRsMl9oZXZjX2RwYl9lbnRyeSAqZHBiID0gZGVjb2RlX3BhcmFtcy0+ZHBiOwo+PiAg
-IAlkbWFfYWRkcl90IGx1bWFfYWRkciwgY2hyb21hX2FkZHIsIG12X2FkZHIgPSAwOwo+PiArCWRt
-YV9hZGRyX3QgY29tcHJlc3NfbHVtYV9hZGRyLCBjb21wcmVzc19jaHJvbWFfYWRkciA9IDA7Cj4+
-ICAgCXN0cnVjdCBoYW50cm9fZGV2ICp2cHUgPSBjdHgtPmRldjsKPj4gICAJc3RydWN0IHZiMl92
-NGwyX2J1ZmZlciAqdmIyX2RzdDsKPj4gICAJc3RydWN0IGhhbnRyb19kZWNvZGVkX2J1ZmZlciAq
-ZHN0Owo+PiAgIAlzaXplX3QgY3Jfb2Zmc2V0ID0gaGFudHJvX2cyX2Nocm9tYV9vZmZzZXQoY3R4
-KTsKPj4gICAJc2l6ZV90IG12X29mZnNldCA9IGhhbnRyb19nMl9tb3Rpb25fdmVjdG9yc19vZmZz
-ZXQoY3R4KTsKPj4gKwlzaXplX3QgY29tcHJlc3NfbHVtYV9vZmZzZXQgPSBoYW50cm9fZzJfbHVt
-YV9jb21wcmVzc19vZmZzZXQoY3R4KTsKPj4gKwlzaXplX3QgY29tcHJlc3NfY2hyb21hX29mZnNl
-dCA9IGhhbnRyb19nMl9jaHJvbWFfY29tcHJlc3Nfb2Zmc2V0KGN0eCk7Cj4+ICAgCXUzMiBtYXhf
-cmVmX2ZyYW1lczsKPj4gICAJdTE2IGRwYl9sb25ndGVybV9lOwo+PiAgIAlzdGF0aWMgY29uc3Qg
-c3RydWN0IGhhbnRyb19yZWcgY3VyX3BvY1tdID0gewo+PiBAQCAtNDQ1LDYgKzQ0OCw4IEBAIHN0
-YXRpYyBpbnQgc2V0X3JlZihzdHJ1Y3QgaGFudHJvX2N0eCAqY3R4KQo+PiAgIAo+PiAgIAkJY2hy
-b21hX2FkZHIgPSBsdW1hX2FkZHIgKyBjcl9vZmZzZXQ7Cj4+ICAgCQltdl9hZGRyID0gbHVtYV9h
-ZGRyICsgbXZfb2Zmc2V0Owo+PiArCQljb21wcmVzc19sdW1hX2FkZHIgPSBsdW1hX2FkZHIgKyBj
-b21wcmVzc19sdW1hX29mZnNldDsKPj4gKwkJY29tcHJlc3NfY2hyb21hX2FkZHIgPSBsdW1hX2Fk
-ZHIgKyBjb21wcmVzc19jaHJvbWFfb2Zmc2V0Owo+PiAgIAo+PiAgIAkJaWYgKGRwYltpXS5mbGFn
-cyAmIFY0TDJfSEVWQ19EUEJfRU5UUllfTE9OR19URVJNX1JFRkVSRU5DRSkKPj4gICAJCQlkcGJf
-bG9uZ3Rlcm1fZSB8PSBCSVQoVjRMMl9IRVZDX0RQQl9FTlRSSUVTX05VTV9NQVggLSAxIC0gaSk7
-Cj4+IEBAIC00NTIsNiArNDU3LDggQEAgc3RhdGljIGludCBzZXRfcmVmKHN0cnVjdCBoYW50cm9f
-Y3R4ICpjdHgpCj4+ICAgCQloYW50cm9fd3JpdGVfYWRkcih2cHUsIEcyX1JFRl9MVU1BX0FERFIo
-aSksIGx1bWFfYWRkcik7Cj4+ICAgCQloYW50cm9fd3JpdGVfYWRkcih2cHUsIEcyX1JFRl9DSFJP
-TUFfQUREUihpKSwgY2hyb21hX2FkZHIpOwo+PiAgIAkJaGFudHJvX3dyaXRlX2FkZHIodnB1LCBH
-Ml9SRUZfTVZfQUREUihpKSwgbXZfYWRkcik7Cj4+ICsJCWhhbnRyb193cml0ZV9hZGRyKHZwdSwg
-RzJfUkVGX0NPTVBfTFVNQV9BRERSKGkpLCBjb21wcmVzc19sdW1hX2FkZHIpOwo+PiArCQloYW50
-cm9fd3JpdGVfYWRkcih2cHUsIEcyX1JFRl9DT01QX0NIUk9NQV9BRERSKGkpLCBjb21wcmVzc19j
-aHJvbWFfYWRkcik7Cj4+ICAgCX0KPj4gICAKPj4gICAJdmIyX2RzdCA9IGhhbnRyb19nZXRfZHN0
-X2J1ZihjdHgpOwo+PiBAQCAtNDY1LDE5ICs0NzIsMjcgQEAgc3RhdGljIGludCBzZXRfcmVmKHN0
-cnVjdCBoYW50cm9fY3R4ICpjdHgpCj4+ICAgCj4+ICAgCWNocm9tYV9hZGRyID0gbHVtYV9hZGRy
-ICsgY3Jfb2Zmc2V0Owo+PiAgIAltdl9hZGRyID0gbHVtYV9hZGRyICsgbXZfb2Zmc2V0Owo+PiAr
-CWNvbXByZXNzX2x1bWFfYWRkciA9IGx1bWFfYWRkciArIGNvbXByZXNzX2x1bWFfb2Zmc2V0Owo+
-PiArCWNvbXByZXNzX2Nocm9tYV9hZGRyID0gbHVtYV9hZGRyICsgY29tcHJlc3NfY2hyb21hX29m
-ZnNldDsKPj4gICAKPj4gICAJaGFudHJvX3dyaXRlX2FkZHIodnB1LCBHMl9SRUZfTFVNQV9BRERS
-KGkpLCBsdW1hX2FkZHIpOwo+PiAgIAloYW50cm9fd3JpdGVfYWRkcih2cHUsIEcyX1JFRl9DSFJP
-TUFfQUREUihpKSwgY2hyb21hX2FkZHIpOwo+PiAtCWhhbnRyb193cml0ZV9hZGRyKHZwdSwgRzJf
-UkVGX01WX0FERFIoaSsrKSwgbXZfYWRkcik7Cj4+ICsJaGFudHJvX3dyaXRlX2FkZHIodnB1LCBH
-Ml9SRUZfTVZfQUREUihpKSwgbXZfYWRkcik7Cj4+ICsJaGFudHJvX3dyaXRlX2FkZHIodnB1LCBH
-Ml9SRUZfQ09NUF9MVU1BX0FERFIoaSksIGNvbXByZXNzX2x1bWFfYWRkcik7Cj4+ICsJaGFudHJv
-X3dyaXRlX2FkZHIodnB1LCBHMl9SRUZfQ09NUF9DSFJPTUFfQUREUihpKyspLCBjb21wcmVzc19j
-aHJvbWFfYWRkcik7Cj4+ICAgCj4+ICAgCWhhbnRyb193cml0ZV9hZGRyKHZwdSwgRzJfT1VUX0xV
-TUFfQUREUiwgbHVtYV9hZGRyKTsKPj4gICAJaGFudHJvX3dyaXRlX2FkZHIodnB1LCBHMl9PVVRf
-Q0hST01BX0FERFIsIGNocm9tYV9hZGRyKTsKPj4gICAJaGFudHJvX3dyaXRlX2FkZHIodnB1LCBH
-Ml9PVVRfTVZfQUREUiwgbXZfYWRkcik7Cj4+ICsJaGFudHJvX3dyaXRlX2FkZHIodnB1LCBHMl9P
-VVRfQ09NUF9MVU1BX0FERFIsIGNvbXByZXNzX2x1bWFfYWRkcik7Cj4+ICsJaGFudHJvX3dyaXRl
-X2FkZHIodnB1LCBHMl9PVVRfQ09NUF9DSFJPTUFfQUREUiwgY29tcHJlc3NfY2hyb21hX2FkZHIp
-Owo+PiAgIAo+PiAgIAlmb3IgKDsgaSA8IFY0TDJfSEVWQ19EUEJfRU5UUklFU19OVU1fTUFYOyBp
-KyspIHsKPj4gICAJCWhhbnRyb193cml0ZV9hZGRyKHZwdSwgRzJfUkVGX0xVTUFfQUREUihpKSwg
-MCk7Cj4+ICAgCQloYW50cm9fd3JpdGVfYWRkcih2cHUsIEcyX1JFRl9DSFJPTUFfQUREUihpKSwg
-MCk7Cj4+ICAgCQloYW50cm9fd3JpdGVfYWRkcih2cHUsIEcyX1JFRl9NVl9BRERSKGkpLCAwKTsK
-Pj4gKwkJaGFudHJvX3dyaXRlX2FkZHIodnB1LCBHMl9SRUZfQ09NUF9MVU1BX0FERFIoaSksIDAp
-Owo+PiArCQloYW50cm9fd3JpdGVfYWRkcih2cHUsIEcyX1JFRl9DT01QX0NIUk9NQV9BRERSKGkp
-LCAwKTsKPj4gICAJfQo+PiAgIAo+PiAgIAloYW50cm9fcmVnX3dyaXRlKHZwdSwgJmcyX3JlZmVy
-X2x0ZXJtX2UsIGRwYl9sb25ndGVybV9lKTsKPj4gQEAgLTU5NCw4ICs2MDksNyBAQCBpbnQgaGFu
-dHJvX2cyX2hldmNfZGVjX3J1bihzdHJ1Y3QgaGFudHJvX2N0eCAqY3R4KQo+PiAgIAkvKiBEb24n
-dCBkaXNhYmxlIG91dHB1dCAqLwo+PiAgIAloYW50cm9fcmVnX3dyaXRlKHZwdSwgJmcyX291dF9k
-aXMsIDApOwo+PiAgIAo+PiAtCS8qIERvbid0IGNvbXByZXNzIGJ1ZmZlcnMgKi8KPj4gLQloYW50
-cm9fcmVnX3dyaXRlKHZwdSwgJmcyX3JlZl9jb21wcmVzc19ieXBhc3MsIDEpOwo+PiArCWhhbnRy
-b19yZWdfd3JpdGUodnB1LCAmZzJfcmVmX2NvbXByZXNzX2J5cGFzcywgIWN0eC0+aGV2Y19kZWMu
-dXNlX2NvbXByZXNzaW9uKTsKPj4gICAKPj4gICAJLyogQnVzIHdpZHRoIGFuZCBtYXggYnVyc3Qg
-Ki8KPj4gICAJaGFudHJvX3JlZ193cml0ZSh2cHUsICZnMl9idXN3aWR0aCwgQlVTX1dJRFRIXzEy
-OCk7Cj4+IGRpZmYgLS1naXQgYS9kcml2ZXJzL21lZGlhL3BsYXRmb3JtL3ZlcmlzaWxpY29uL2hh
-bnRyb19nMl9yZWdzLmggYi9kcml2ZXJzL21lZGlhL3BsYXRmb3JtL3ZlcmlzaWxpY29uL2hhbnRy
-b19nMl9yZWdzLmgKPj4gaW5kZXggODI2MDY3ODM1OTFhLi5iOTQzYjE4MTZkYjcgMTAwNjQ0Cj4+
-IC0tLSBhL2RyaXZlcnMvbWVkaWEvcGxhdGZvcm0vdmVyaXNpbGljb24vaGFudHJvX2cyX3JlZ3Mu
-aAo+PiArKysgYi9kcml2ZXJzL21lZGlhL3BsYXRmb3JtL3ZlcmlzaWxpY29uL2hhbnRyb19nMl9y
-ZWdzLmgKPj4gQEAgLTMxOCw2ICszMTgsMTAgQEAKPj4gICAjZGVmaW5lIEcyX1RJTEVfQlNEX0FE
-RFIJCShHMl9TV1JFRygxODMpKQo+PiAgICNkZWZpbmUgRzJfRFNfRFNUCQkJKEcyX1NXUkVHKDE4
-NikpCj4+ICAgI2RlZmluZSBHMl9EU19EU1RfQ0hSCQkJKEcyX1NXUkVHKDE4OCkpCj4+ICsjZGVm
-aW5lIEcyX09VVF9DT01QX0xVTUFfQUREUgkJKEcyX1NXUkVHKDE5MCkpCj4+ICsjZGVmaW5lIEcy
-X1JFRl9DT01QX0xVTUFfQUREUihpKQkoRzJfU1dSRUcoMTkyKSArICgoaSkgKiAweDgpKQo+PiAr
-I2RlZmluZSBHMl9PVVRfQ09NUF9DSFJPTUFfQUREUgkJKEcyX1NXUkVHKDIyNCkpCj4+ICsjZGVm
-aW5lIEcyX1JFRl9DT01QX0NIUk9NQV9BRERSKGkpCShHMl9TV1JFRygyMjYpICsgKChpKSAqIDB4
-OCkpCj4+ICAgCj4+ICAgI2RlZmluZSBnMl9zdHJtX2J1ZmZlcl9sZW4JRzJfREVDX1JFRygyNTgs
-IDAsIDB4ZmZmZmZmZmYpCj4+ICAgI2RlZmluZSBnMl9zdHJtX3N0YXJ0X29mZnNldAlHMl9ERUNf
-UkVHKDI1OSwgMCwgMHhmZmZmZmZmZikKPj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvbWVkaWEvcGxh
-dGZvcm0vdmVyaXNpbGljb24vaGFudHJvX2hldmMuYyBiL2RyaXZlcnMvbWVkaWEvcGxhdGZvcm0v
-dmVyaXNpbGljb24vaGFudHJvX2hldmMuYwo+PiBpbmRleCAyYzE0MzMwYmM1NjIuLjg5NWRjMGM3
-NmM3NCAxMDA2NDQKPj4gLS0tIGEvZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS92ZXJpc2lsaWNvbi9o
-YW50cm9faGV2Yy5jCj4+ICsrKyBiL2RyaXZlcnMvbWVkaWEvcGxhdGZvcm0vdmVyaXNpbGljb24v
-aGFudHJvX2hldmMuYwo+PiBAQCAtMjUsNiArMjUsMTEgQEAKPj4gICAjZGVmaW5lIE1BWF9USUxF
-X0NPTFMgMjAKPj4gICAjZGVmaW5lIE1BWF9USUxFX1JPV1MgMjIKPj4gICAKPj4gK2Jvb2wgaGV2
-Y191c2VfY29tcHJlc3Npb247Cj4+ICttb2R1bGVfcGFyYW1fbmFtZWQoaGV2Y191c2VfY29tcHJl
-c3Npb24sIGhldmNfdXNlX2NvbXByZXNzaW9uLCBib29sLCAwNjQ0KTsKPj4gK01PRFVMRV9QQVJN
-X0RFU0MoaGV2Y191c2VfY29tcHJlc3Npb24sCj4+ICsJCSAiVXNlIHJlZmVyZW5jZSBmcmFtZSBj
-b21wcmVzc2lvbiBmb3IgSEVWQyIpOwo+PiArCj4+ICAgdm9pZCBoYW50cm9faGV2Y19yZWZfaW5p
-dChzdHJ1Y3QgaGFudHJvX2N0eCAqY3R4KQo+PiAgIHsKPj4gICAJc3RydWN0IGhhbnRyb19oZXZj
-X2RlY19od19jdHggKmhldmNfZGVjID0gJmN0eC0+aGV2Y19kZWM7Cj4+IEBAIC0yNzUsNSArMjgw
-LDggQEAgaW50IGhhbnRyb19oZXZjX2RlY19pbml0KHN0cnVjdCBoYW50cm9fY3R4ICpjdHgpCj4+
-ICAgCj4+ICAgCWhhbnRyb19oZXZjX3JlZl9pbml0KGN0eCk7Cj4+ICAgCj4+ICsJaGV2Y19kZWMt
-PnVzZV9jb21wcmVzc2lvbiA9Cj4+ICsJCWhldmNfdXNlX2NvbXByZXNzaW9uICYgaGFudHJvX25l
-ZWRzX3Bvc3Rwcm9jKGN0eCwgY3R4LT52cHVfZHN0X2ZtdCk7Cj4+ICsKPj4gICAJcmV0dXJuIDA7
-Cj4+ICAgfQo+PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS92ZXJpc2lsaWNv
-bi9oYW50cm9faHcuaCBiL2RyaXZlcnMvbWVkaWEvcGxhdGZvcm0vdmVyaXNpbGljb24vaGFudHJv
-X2h3LmgKPj4gaW5kZXggNzczNzMyMGNjOGNjLi40M2Q0ZmY2MzczNzYgMTAwNjQ0Cj4+IC0tLSBh
-L2RyaXZlcnMvbWVkaWEvcGxhdGZvcm0vdmVyaXNpbGljb24vaGFudHJvX2h3LmgKPj4gKysrIGIv
-ZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS92ZXJpc2lsaWNvbi9oYW50cm9faHcuaAo+PiBAQCAtNDIs
-NiArNDIsMTQgQEAKPj4gICAKPj4gICAjZGVmaW5lIE1BWF9QT1NUUFJPQ19CVUZGRVJTCTY0Cj4+
-ICAgCj4+ICsjZGVmaW5lIEcyX0FMSUdOCTE2Cj4+ICsjZGVmaW5lIENCU19TSVpFCTE2CS8qIGNv
-bXByZXNzaW9uIHRhYmxlIHNpemUgaW4gYnl0ZXMgKi8KPj4gKyNkZWZpbmUgQ0JTX0xVTUEJOAkv
-KiBsdW1pbmFuY2UgQ0JTIGlzIGNvbXBvc2VkIG9mIDEgOHg4IGNvZGVkIGJsb2NrICovCj4+ICsj
-ZGVmaW5lIENCU19DSFJPTUFfVwkoOCAqIDIpCS8qIGNocm9taW5hbmNlIENCUyBpcyBjb21wb3Nl
-ZCBvZiB0d28gOHg0IGNvZGVkCj4+ICsJCQkJICogYmxvY2tzLCB3aXRoIENiIENCIGZpcnN0IHRo
-ZW4gQ3IgQ0IgZm9sbG93aW5nCj4+ICsJCQkJICovCj4+ICsjZGVmaW5lIENCU19DSFJPTUFfSAk0
-Cj4+ICsKPj4gICBzdHJ1Y3QgaGFudHJvX2RldjsKPj4gICBzdHJ1Y3QgaGFudHJvX2N0eDsKPj4g
-ICBzdHJ1Y3QgaGFudHJvX2J1ZjsKPj4gQEAgLTE0NCw2ICsxNTIsNyBAQCBzdHJ1Y3QgaGFudHJv
-X2hldmNfZGVjX2N0cmxzIHsKPj4gICAgKiBAcmVmX2J1ZnNfdXNlZDoJQml0ZmllbGQgb2YgdXNl
-ZCByZWZlcmVuY2UgYnVmZmVycwo+PiAgICAqIEBjdHJsczoJCVY0TDIgY29udHJvbHMgYXR0YWNo
-ZWQgdG8gYSBydW4KPj4gICAgKiBAbnVtX3RpbGVfY29sc19hbGxvY2F0ZWQ6IG51bWJlciBvZiBh
-bGxvY2F0ZWQgdGlsZXMKPj4gKyAqIEB1c2VfY29tcHJlc3Npb246CXVzZSByZWZlcmVuY2UgYnVm
-ZmVyIGNvbXByZXNzaW9uCj4+ICAgICovCj4+ICAgc3RydWN0IGhhbnRyb19oZXZjX2RlY19od19j
-dHggewo+PiAgIAlzdHJ1Y3QgaGFudHJvX2F1eF9idWYgdGlsZV9zaXplczsKPj4gQEAgLTE1Niw2
-ICsxNjUsNyBAQCBzdHJ1Y3QgaGFudHJvX2hldmNfZGVjX2h3X2N0eCB7Cj4+ICAgCXUzMiByZWZf
-YnVmc191c2VkOwo+PiAgIAlzdHJ1Y3QgaGFudHJvX2hldmNfZGVjX2N0cmxzIGN0cmxzOwo+PiAg
-IAl1bnNpZ25lZCBpbnQgbnVtX3RpbGVfY29sc19hbGxvY2F0ZWQ7Cj4+ICsJYm9vbCB1c2VfY29t
-cHJlc3Npb247Cj4+ICAgfTsKPj4gICAKPj4gICAvKioKPj4gQEAgLTUxMCw2ICs1MjAsMzMgQEAg
-aGFudHJvX2hldmNfbXZfc2l6ZSh1bnNpZ25lZCBpbnQgd2lkdGgsIHVuc2lnbmVkIGludCBoZWln
-aHQpCj4+ICAgCXJldHVybiB3aWR0aCAqIGhlaWdodCAvIDE2Owo+PiAgIH0KPj4gICAKPj4gK3N0
-YXRpYyBpbmxpbmUgc2l6ZV90Cj4+ICtoYW50cm9faGV2Y19sdW1hX2NvbXByZXNzZWRfc2l6ZSh1
-bnNpZ25lZCBpbnQgd2lkdGgsIHVuc2lnbmVkIGludCBoZWlnaHQpCj4+ICt7Cj4+ICsJdTMyIHBp
-Y193aWR0aF9pbl9jYnN5ID0KPj4gKwkJcm91bmRfdXAoKHdpZHRoICsgQ0JTX0xVTUEgLSAxKSAv
-IENCU19MVU1BLCBDQlNfU0laRSk7Cj4+ICsJdTMyIHBpY19oZWlnaHRfaW5fY2JzeSA9IChoZWln
-aHQgKyBDQlNfTFVNQSAtIDEpIC8gQ0JTX0xVTUE7Cj4+ICsKPj4gKwlyZXR1cm4gcm91bmRfdXAo
-cGljX3dpZHRoX2luX2Nic3kgKiBwaWNfaGVpZ2h0X2luX2Nic3ksIENCU19TSVpFKTsKPj4gK30K
-Pj4gKwo+PiArc3RhdGljIGlubGluZSBzaXplX3QKPj4gK2hhbnRyb19oZXZjX2Nocm9tYV9jb21w
-cmVzc2VkX3NpemUodW5zaWduZWQgaW50IHdpZHRoLCB1bnNpZ25lZCBpbnQgaGVpZ2h0KQo+PiAr
-ewo+PiArCXUzMiBwaWNfd2lkdGhfaW5fY2JzYyA9Cj4+ICsJCXJvdW5kX3VwKCh3aWR0aCArIENC
-U19DSFJPTUFfVyAtIDEpIC8gQ0JTX0NIUk9NQV9XLCBDQlNfU0laRSk7Cj4+ICsJdTMyIHBpY19o
-ZWlnaHRfaW5fY2JzYyA9IChoZWlnaHQgLyAyICsgQ0JTX0NIUk9NQV9IIC0gMSkgLyBDQlNfQ0hS
-T01BX0g7Cj4+ICsKPj4gKwlyZXR1cm4gcm91bmRfdXAocGljX3dpZHRoX2luX2Nic2MgKiBwaWNf
-aGVpZ2h0X2luX2Nic2MsIENCU19TSVpFKTsKPj4gK30KPj4gKwo+PiArc3RhdGljIGlubGluZSBz
-aXplX3QKPj4gK2hhbnRyb19oZXZjX2NvbXByZXNzZWRfc2l6ZSh1bnNpZ25lZCBpbnQgd2lkdGgs
-IHVuc2lnbmVkIGludCBoZWlnaHQpCj4+ICt7Cj4+ICsJcmV0dXJuIGhhbnRyb19oZXZjX2x1bWFf
-Y29tcHJlc3NlZF9zaXplKHdpZHRoLCBoZWlnaHQpICsKPj4gKwkgICAgICAgaGFudHJvX2hldmNf
-Y2hyb21hX2NvbXByZXNzZWRfc2l6ZSh3aWR0aCwgaGVpZ2h0KTsKPj4gK30KPj4gKwo+PiAgIHN0
-YXRpYyBpbmxpbmUgdW5zaWduZWQgc2hvcnQgaGFudHJvX2F2MV9udW1fc2JzKHVuc2lnbmVkIHNo
-b3J0IGRpbWVuc2lvbikKPj4gICB7Cj4+ICAgCXJldHVybiBESVZfUk9VTkRfVVAoZGltZW5zaW9u
-LCA2NCk7Cj4+IEBAIC01MjUsNiArNTYyLDggQEAgaGFudHJvX2F2MV9tdl9zaXplKHVuc2lnbmVk
-IGludCB3aWR0aCwgdW5zaWduZWQgaW50IGhlaWdodCkKPj4gICAKPj4gICBzaXplX3QgaGFudHJv
-X2cyX2Nocm9tYV9vZmZzZXQoc3RydWN0IGhhbnRyb19jdHggKmN0eCk7Cj4+ICAgc2l6ZV90IGhh
-bnRyb19nMl9tb3Rpb25fdmVjdG9yc19vZmZzZXQoc3RydWN0IGhhbnRyb19jdHggKmN0eCk7Cj4+
-ICtzaXplX3QgaGFudHJvX2cyX2x1bWFfY29tcHJlc3Nfb2Zmc2V0KHN0cnVjdCBoYW50cm9fY3R4
-ICpjdHgpOwo+PiArc2l6ZV90IGhhbnRyb19nMl9jaHJvbWFfY29tcHJlc3Nfb2Zmc2V0KHN0cnVj
-dCBoYW50cm9fY3R4ICpjdHgpOwo+PiAgIAo+PiAgIGludCBoYW50cm9fZzFfbXBlZzJfZGVjX3J1
-bihzdHJ1Y3QgaGFudHJvX2N0eCAqY3R4KTsKPj4gICBpbnQgcm9ja2NoaXBfdnB1Ml9tcGVnMl9k
-ZWNfcnVuKHN0cnVjdCBoYW50cm9fY3R4ICpjdHgpOwo+PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9t
-ZWRpYS9wbGF0Zm9ybS92ZXJpc2lsaWNvbi9oYW50cm9fcG9zdHByb2MuYyBiL2RyaXZlcnMvbWVk
-aWEvcGxhdGZvcm0vdmVyaXNpbGljb24vaGFudHJvX3Bvc3Rwcm9jLmMKPj4gaW5kZXggNDFlOTMx
-NzYzMDBiLi4yMzJjOTNlZWE3ZWUgMTAwNjQ0Cj4+IC0tLSBhL2RyaXZlcnMvbWVkaWEvcGxhdGZv
-cm0vdmVyaXNpbGljb24vaGFudHJvX3Bvc3Rwcm9jLmMKPj4gKysrIGIvZHJpdmVycy9tZWRpYS9w
-bGF0Zm9ybS92ZXJpc2lsaWNvbi9oYW50cm9fcG9zdHByb2MuYwo+PiBAQCAtMjEzLDkgKzIxMywx
-MyBAQCBzdGF0aWMgdW5zaWduZWQgaW50IGhhbnRyb19wb3N0cHJvY19idWZmZXJfc2l6ZShzdHJ1
-Y3QgaGFudHJvX2N0eCAqY3R4KQo+PiAgIAllbHNlIGlmIChjdHgtPnZwdV9zcmNfZm10LT5mb3Vy
-Y2MgPT0gVjRMMl9QSVhfRk1UX1ZQOV9GUkFNRSkKPj4gICAJCWJ1Zl9zaXplICs9IGhhbnRyb192
-cDlfbXZfc2l6ZShwaXhfbXAud2lkdGgsCj4+ICAgCQkJCQkgICAgICAgcGl4X21wLmhlaWdodCk7
-Cj4+IC0JZWxzZSBpZiAoY3R4LT52cHVfc3JjX2ZtdC0+Zm91cmNjID09IFY0TDJfUElYX0ZNVF9I
-RVZDX1NMSUNFKQo+PiArCWVsc2UgaWYgKGN0eC0+dnB1X3NyY19mbXQtPmZvdXJjYyA9PSBWNEwy
-X1BJWF9GTVRfSEVWQ19TTElDRSkgewo+PiAgIAkJYnVmX3NpemUgKz0gaGFudHJvX2hldmNfbXZf
-c2l6ZShwaXhfbXAud2lkdGgsCj4+ICAgCQkJCQkJcGl4X21wLmhlaWdodCk7Cj4+ICsJCWlmIChj
-dHgtPmhldmNfZGVjLnVzZV9jb21wcmVzc2lvbikKPj4gKwkJCWJ1Zl9zaXplICs9IGhhbnRyb19o
-ZXZjX2NvbXByZXNzZWRfc2l6ZShwaXhfbXAud2lkdGgsCj4+ICsJCQkJCQkJCXBpeF9tcC5oZWln
-aHQpOwo+PiArCX0KPj4gICAJZWxzZSBpZiAoY3R4LT52cHVfc3JjX2ZtdC0+Zm91cmNjID09IFY0
-TDJfUElYX0ZNVF9BVjFfRlJBTUUpCj4+ICAgCQlidWZfc2l6ZSArPSBoYW50cm9fYXYxX212X3Np
-emUocGl4X21wLndpZHRoLAo+PiAgIAkJCQkJICAgICAgIHBpeF9tcC5oZWlnaHQpOwo+CgpfX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hp
-cCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8v
-bGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+Reference frame compression is a feature added in G2 decoder to compress
+frame buffers so that the bandwidth of storing/loading reference frames
+can be reduced, especially when the resolution of decoded stream is of
+high definition.
+
+The impact of compressed frames is confirmed when using perf to monitor
+the number of memory accesses with or without compression feature.
+The following command
+perf stat -a -e imx8_ddr0/cycles/,imx8_ddr0/read-cycles/,imx8_ddr0/write-cycles/ gst-launch-1.0 filesrc location=Jockey_3840x2160_120fps_420_8bit_HEVC_RAW.hevc ! queue ! h265parse ! v4l2slh265dec ! video/x-raw,format=NV12 ! fakesink
+
+give us these results
+without compression feature:
+Performance counter stats for 'system wide':
+
+        1711300345      imx8_ddr0/cycles/
+         892207924      imx8_ddr0/read-cycles/
+        1291785864      imx8_ddr0/write-cycles/
+
+      13.760048353 seconds time elapsed
+
+with compression feature:
+Performance counter stats for 'system wide':
+
+         274526799      imx8_ddr0/cycles/
+         453120194      imx8_ddr0/read-cycles/
+         833391434      imx8_ddr0/write-cycles/
+
+      18.257831534 seconds time elapsed
+
+As expected the number of read/write cycles are really lower when compression
+is used.
+
+Since storing compression data requires more memory a module
+parameter named 'hevc_use_compression' is used to enable/disable
+this feature and, by default, compression isn't used.
+
+Enabling compression feature means that decoder output frames
+are stored with a specific compression pixel format. Since this
+pixel format is unknown, this patch restrain compression feature
+usage to the cases where post-processor pixels formats (NV12 or NV15)
+are selected by the applications.
+
+Fluster compliance HEVC test suite score is still 141/147 after this patch.
+
+Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Tested-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+---
+version 2:
+- Make 'bool hevc_use_compression' static
+- Add Kconfig to enable/disable the feature
+- Fix test command in commit message.
+
+ drivers/media/platform/verisilicon/Kconfig    |  8 ++++
+ .../media/platform/verisilicon/hantro_g2.c    | 35 +++++++++++++++++
+ .../platform/verisilicon/hantro_g2_hevc_dec.c | 20 ++++++++--
+ .../platform/verisilicon/hantro_g2_regs.h     |  4 ++
+ .../media/platform/verisilicon/hantro_hevc.c  |  8 ++++
+ .../media/platform/verisilicon/hantro_hw.h    | 39 +++++++++++++++++++
+ .../platform/verisilicon/hantro_postproc.c    |  6 ++-
+ 7 files changed, 116 insertions(+), 4 deletions(-)
+
+diff --git a/drivers/media/platform/verisilicon/Kconfig b/drivers/media/platform/verisilicon/Kconfig
+index 9a34d14c6e40..9adefb628d73 100644
+--- a/drivers/media/platform/verisilicon/Kconfig
++++ b/drivers/media/platform/verisilicon/Kconfig
+@@ -20,6 +20,14 @@ config VIDEO_HANTRO
+ 	  To compile this driver as a module, choose M here: the module
+ 	  will be called hantro-vpu.
+ 
++config VIDEO_HANTRO_HEVC_RFC
++	bool "Use reference frame compression for HEVC"
++	depends on VIDEO_HANTRO
++	default n
++	help
++	  Enable reference frame compression feature for HEVC codec.
++	  It will use more memory but save bandwidth on memory bus.
++
+ config VIDEO_HANTRO_IMX8M
+ 	bool "Hantro VPU i.MX8M support"
+ 	depends on VIDEO_HANTRO
+diff --git a/drivers/media/platform/verisilicon/hantro_g2.c b/drivers/media/platform/verisilicon/hantro_g2.c
+index b880a6849d58..62ca91427360 100644
+--- a/drivers/media/platform/verisilicon/hantro_g2.c
++++ b/drivers/media/platform/verisilicon/hantro_g2.c
+@@ -9,6 +9,12 @@
+ #include "hantro_g2_regs.h"
+ 
+ #define G2_ALIGN	16
++#define CBS_SIZE	16	/* compression table size in bytes */
++#define CBS_LUMA	8	/* luminance CBS is composed of 1 8x8 coded block */
++#define CBS_CHROMA_W	(8 * 2)	/* chrominance CBS is composed of two 8x4 coded
++				 * blocks, with Cb CB first then Cr CB following
++				 */
++#define CBS_CHROMA_H	4
+ 
+ void hantro_g2_check_idle(struct hantro_dev *vpu)
+ {
+@@ -56,3 +62,32 @@ size_t hantro_g2_motion_vectors_offset(struct hantro_ctx *ctx)
+ 
+ 	return ALIGN((cr_offset * 3) / 2, G2_ALIGN);
+ }
++
++static size_t hantro_g2_mv_size(struct hantro_ctx *ctx)
++{
++	const struct hantro_hevc_dec_ctrls *ctrls = &ctx->hevc_dec.ctrls;
++	const struct v4l2_ctrl_hevc_sps *sps = ctrls->sps;
++	unsigned int pic_width_in_ctbs, pic_height_in_ctbs;
++	unsigned int max_log2_ctb_size;
++
++	max_log2_ctb_size = sps->log2_min_luma_coding_block_size_minus3 + 3 +
++			    sps->log2_diff_max_min_luma_coding_block_size;
++	pic_width_in_ctbs = (sps->pic_width_in_luma_samples +
++			    (1 << max_log2_ctb_size) - 1) >> max_log2_ctb_size;
++	pic_height_in_ctbs = (sps->pic_height_in_luma_samples + (1 << max_log2_ctb_size) - 1)
++			     >> max_log2_ctb_size;
++
++	return pic_width_in_ctbs * pic_height_in_ctbs * (1 << (2 * (max_log2_ctb_size - 4))) * 16;
++}
++
++size_t hantro_g2_luma_compress_offset(struct hantro_ctx *ctx)
++{
++	return hantro_g2_motion_vectors_offset(ctx) +
++	       hantro_g2_mv_size(ctx);
++}
++
++size_t hantro_g2_chroma_compress_offset(struct hantro_ctx *ctx)
++{
++	return hantro_g2_luma_compress_offset(ctx) +
++	       hantro_hevc_luma_compressed_size(ctx->dst_fmt.width, ctx->dst_fmt.height);
++}
+diff --git a/drivers/media/platform/verisilicon/hantro_g2_hevc_dec.c b/drivers/media/platform/verisilicon/hantro_g2_hevc_dec.c
+index d3f8c33eb16c..85a44143b378 100644
+--- a/drivers/media/platform/verisilicon/hantro_g2_hevc_dec.c
++++ b/drivers/media/platform/verisilicon/hantro_g2_hevc_dec.c
+@@ -367,11 +367,14 @@ static int set_ref(struct hantro_ctx *ctx)
+ 	const struct v4l2_ctrl_hevc_decode_params *decode_params = ctrls->decode_params;
+ 	const struct v4l2_hevc_dpb_entry *dpb = decode_params->dpb;
+ 	dma_addr_t luma_addr, chroma_addr, mv_addr = 0;
++	dma_addr_t compress_luma_addr, compress_chroma_addr = 0;
+ 	struct hantro_dev *vpu = ctx->dev;
+ 	struct vb2_v4l2_buffer *vb2_dst;
+ 	struct hantro_decoded_buffer *dst;
+ 	size_t cr_offset = hantro_g2_chroma_offset(ctx);
+ 	size_t mv_offset = hantro_g2_motion_vectors_offset(ctx);
++	size_t compress_luma_offset = hantro_g2_luma_compress_offset(ctx);
++	size_t compress_chroma_offset = hantro_g2_chroma_compress_offset(ctx);
+ 	u32 max_ref_frames;
+ 	u16 dpb_longterm_e;
+ 	static const struct hantro_reg cur_poc[] = {
+@@ -445,6 +448,8 @@ static int set_ref(struct hantro_ctx *ctx)
+ 
+ 		chroma_addr = luma_addr + cr_offset;
+ 		mv_addr = luma_addr + mv_offset;
++		compress_luma_addr = luma_addr + compress_luma_offset;
++		compress_chroma_addr = luma_addr + compress_chroma_offset;
+ 
+ 		if (dpb[i].flags & V4L2_HEVC_DPB_ENTRY_LONG_TERM_REFERENCE)
+ 			dpb_longterm_e |= BIT(V4L2_HEVC_DPB_ENTRIES_NUM_MAX - 1 - i);
+@@ -452,6 +457,8 @@ static int set_ref(struct hantro_ctx *ctx)
+ 		hantro_write_addr(vpu, G2_REF_LUMA_ADDR(i), luma_addr);
+ 		hantro_write_addr(vpu, G2_REF_CHROMA_ADDR(i), chroma_addr);
+ 		hantro_write_addr(vpu, G2_REF_MV_ADDR(i), mv_addr);
++		hantro_write_addr(vpu, G2_REF_COMP_LUMA_ADDR(i), compress_luma_addr);
++		hantro_write_addr(vpu, G2_REF_COMP_CHROMA_ADDR(i), compress_chroma_addr);
+ 	}
+ 
+ 	vb2_dst = hantro_get_dst_buf(ctx);
+@@ -465,19 +472,27 @@ static int set_ref(struct hantro_ctx *ctx)
+ 
+ 	chroma_addr = luma_addr + cr_offset;
+ 	mv_addr = luma_addr + mv_offset;
++	compress_luma_addr = luma_addr + compress_luma_offset;
++	compress_chroma_addr = luma_addr + compress_chroma_offset;
+ 
+ 	hantro_write_addr(vpu, G2_REF_LUMA_ADDR(i), luma_addr);
+ 	hantro_write_addr(vpu, G2_REF_CHROMA_ADDR(i), chroma_addr);
+-	hantro_write_addr(vpu, G2_REF_MV_ADDR(i++), mv_addr);
++	hantro_write_addr(vpu, G2_REF_MV_ADDR(i), mv_addr);
++	hantro_write_addr(vpu, G2_REF_COMP_LUMA_ADDR(i), compress_luma_addr);
++	hantro_write_addr(vpu, G2_REF_COMP_CHROMA_ADDR(i++), compress_chroma_addr);
+ 
+ 	hantro_write_addr(vpu, G2_OUT_LUMA_ADDR, luma_addr);
+ 	hantro_write_addr(vpu, G2_OUT_CHROMA_ADDR, chroma_addr);
+ 	hantro_write_addr(vpu, G2_OUT_MV_ADDR, mv_addr);
++	hantro_write_addr(vpu, G2_OUT_COMP_LUMA_ADDR, compress_luma_addr);
++	hantro_write_addr(vpu, G2_OUT_COMP_CHROMA_ADDR, compress_chroma_addr);
+ 
+ 	for (; i < V4L2_HEVC_DPB_ENTRIES_NUM_MAX; i++) {
+ 		hantro_write_addr(vpu, G2_REF_LUMA_ADDR(i), 0);
+ 		hantro_write_addr(vpu, G2_REF_CHROMA_ADDR(i), 0);
+ 		hantro_write_addr(vpu, G2_REF_MV_ADDR(i), 0);
++		hantro_write_addr(vpu, G2_REF_COMP_LUMA_ADDR(i), 0);
++		hantro_write_addr(vpu, G2_REF_COMP_CHROMA_ADDR(i), 0);
+ 	}
+ 
+ 	hantro_reg_write(vpu, &g2_refer_lterm_e, dpb_longterm_e);
+@@ -594,8 +609,7 @@ int hantro_g2_hevc_dec_run(struct hantro_ctx *ctx)
+ 	/* Don't disable output */
+ 	hantro_reg_write(vpu, &g2_out_dis, 0);
+ 
+-	/* Don't compress buffers */
+-	hantro_reg_write(vpu, &g2_ref_compress_bypass, 1);
++	hantro_reg_write(vpu, &g2_ref_compress_bypass, !ctx->hevc_dec.use_compression);
+ 
+ 	/* Bus width and max burst */
+ 	hantro_reg_write(vpu, &g2_buswidth, BUS_WIDTH_128);
+diff --git a/drivers/media/platform/verisilicon/hantro_g2_regs.h b/drivers/media/platform/verisilicon/hantro_g2_regs.h
+index 82606783591a..b943b1816db7 100644
+--- a/drivers/media/platform/verisilicon/hantro_g2_regs.h
++++ b/drivers/media/platform/verisilicon/hantro_g2_regs.h
+@@ -318,6 +318,10 @@
+ #define G2_TILE_BSD_ADDR		(G2_SWREG(183))
+ #define G2_DS_DST			(G2_SWREG(186))
+ #define G2_DS_DST_CHR			(G2_SWREG(188))
++#define G2_OUT_COMP_LUMA_ADDR		(G2_SWREG(190))
++#define G2_REF_COMP_LUMA_ADDR(i)	(G2_SWREG(192) + ((i) * 0x8))
++#define G2_OUT_COMP_CHROMA_ADDR		(G2_SWREG(224))
++#define G2_REF_COMP_CHROMA_ADDR(i)	(G2_SWREG(226) + ((i) * 0x8))
+ 
+ #define g2_strm_buffer_len	G2_DEC_REG(258, 0, 0xffffffff)
+ #define g2_strm_start_offset	G2_DEC_REG(259, 0, 0xffffffff)
+diff --git a/drivers/media/platform/verisilicon/hantro_hevc.c b/drivers/media/platform/verisilicon/hantro_hevc.c
+index 2c14330bc562..83cd12b0ddd6 100644
+--- a/drivers/media/platform/verisilicon/hantro_hevc.c
++++ b/drivers/media/platform/verisilicon/hantro_hevc.c
+@@ -25,6 +25,11 @@
+ #define MAX_TILE_COLS 20
+ #define MAX_TILE_ROWS 22
+ 
++static bool hevc_use_compression = IS_ENABLED(CONFIG_VIDEO_HANTRO_HEVC_RFC);
++module_param_named(hevc_use_compression, hevc_use_compression, bool, 0644);
++MODULE_PARM_DESC(hevc_use_compression,
++		 "Use reference frame compression for HEVC");
++
+ void hantro_hevc_ref_init(struct hantro_ctx *ctx)
+ {
+ 	struct hantro_hevc_dec_hw_ctx *hevc_dec = &ctx->hevc_dec;
+@@ -275,5 +280,8 @@ int hantro_hevc_dec_init(struct hantro_ctx *ctx)
+ 
+ 	hantro_hevc_ref_init(ctx);
+ 
++	hevc_dec->use_compression =
++		hevc_use_compression & hantro_needs_postproc(ctx, ctx->vpu_dst_fmt);
++
+ 	return 0;
+ }
+diff --git a/drivers/media/platform/verisilicon/hantro_hw.h b/drivers/media/platform/verisilicon/hantro_hw.h
+index 7737320cc8cc..43d4ff637376 100644
+--- a/drivers/media/platform/verisilicon/hantro_hw.h
++++ b/drivers/media/platform/verisilicon/hantro_hw.h
+@@ -42,6 +42,14 @@
+ 
+ #define MAX_POSTPROC_BUFFERS	64
+ 
++#define G2_ALIGN	16
++#define CBS_SIZE	16	/* compression table size in bytes */
++#define CBS_LUMA	8	/* luminance CBS is composed of 1 8x8 coded block */
++#define CBS_CHROMA_W	(8 * 2)	/* chrominance CBS is composed of two 8x4 coded
++				 * blocks, with Cb CB first then Cr CB following
++				 */
++#define CBS_CHROMA_H	4
++
+ struct hantro_dev;
+ struct hantro_ctx;
+ struct hantro_buf;
+@@ -144,6 +152,7 @@ struct hantro_hevc_dec_ctrls {
+  * @ref_bufs_used:	Bitfield of used reference buffers
+  * @ctrls:		V4L2 controls attached to a run
+  * @num_tile_cols_allocated: number of allocated tiles
++ * @use_compression:	use reference buffer compression
+  */
+ struct hantro_hevc_dec_hw_ctx {
+ 	struct hantro_aux_buf tile_sizes;
+@@ -156,6 +165,7 @@ struct hantro_hevc_dec_hw_ctx {
+ 	u32 ref_bufs_used;
+ 	struct hantro_hevc_dec_ctrls ctrls;
+ 	unsigned int num_tile_cols_allocated;
++	bool use_compression;
+ };
+ 
+ /**
+@@ -510,6 +520,33 @@ hantro_hevc_mv_size(unsigned int width, unsigned int height)
+ 	return width * height / 16;
+ }
+ 
++static inline size_t
++hantro_hevc_luma_compressed_size(unsigned int width, unsigned int height)
++{
++	u32 pic_width_in_cbsy =
++		round_up((width + CBS_LUMA - 1) / CBS_LUMA, CBS_SIZE);
++	u32 pic_height_in_cbsy = (height + CBS_LUMA - 1) / CBS_LUMA;
++
++	return round_up(pic_width_in_cbsy * pic_height_in_cbsy, CBS_SIZE);
++}
++
++static inline size_t
++hantro_hevc_chroma_compressed_size(unsigned int width, unsigned int height)
++{
++	u32 pic_width_in_cbsc =
++		round_up((width + CBS_CHROMA_W - 1) / CBS_CHROMA_W, CBS_SIZE);
++	u32 pic_height_in_cbsc = (height / 2 + CBS_CHROMA_H - 1) / CBS_CHROMA_H;
++
++	return round_up(pic_width_in_cbsc * pic_height_in_cbsc, CBS_SIZE);
++}
++
++static inline size_t
++hantro_hevc_compressed_size(unsigned int width, unsigned int height)
++{
++	return hantro_hevc_luma_compressed_size(width, height) +
++	       hantro_hevc_chroma_compressed_size(width, height);
++}
++
+ static inline unsigned short hantro_av1_num_sbs(unsigned short dimension)
+ {
+ 	return DIV_ROUND_UP(dimension, 64);
+@@ -525,6 +562,8 @@ hantro_av1_mv_size(unsigned int width, unsigned int height)
+ 
+ size_t hantro_g2_chroma_offset(struct hantro_ctx *ctx);
+ size_t hantro_g2_motion_vectors_offset(struct hantro_ctx *ctx);
++size_t hantro_g2_luma_compress_offset(struct hantro_ctx *ctx);
++size_t hantro_g2_chroma_compress_offset(struct hantro_ctx *ctx);
+ 
+ int hantro_g1_mpeg2_dec_run(struct hantro_ctx *ctx);
+ int rockchip_vpu2_mpeg2_dec_run(struct hantro_ctx *ctx);
+diff --git a/drivers/media/platform/verisilicon/hantro_postproc.c b/drivers/media/platform/verisilicon/hantro_postproc.c
+index 41e93176300b..232c93eea7ee 100644
+--- a/drivers/media/platform/verisilicon/hantro_postproc.c
++++ b/drivers/media/platform/verisilicon/hantro_postproc.c
+@@ -213,9 +213,13 @@ static unsigned int hantro_postproc_buffer_size(struct hantro_ctx *ctx)
+ 	else if (ctx->vpu_src_fmt->fourcc == V4L2_PIX_FMT_VP9_FRAME)
+ 		buf_size += hantro_vp9_mv_size(pix_mp.width,
+ 					       pix_mp.height);
+-	else if (ctx->vpu_src_fmt->fourcc == V4L2_PIX_FMT_HEVC_SLICE)
++	else if (ctx->vpu_src_fmt->fourcc == V4L2_PIX_FMT_HEVC_SLICE) {
+ 		buf_size += hantro_hevc_mv_size(pix_mp.width,
+ 						pix_mp.height);
++		if (ctx->hevc_dec.use_compression)
++			buf_size += hantro_hevc_compressed_size(pix_mp.width,
++								pix_mp.height);
++	}
+ 	else if (ctx->vpu_src_fmt->fourcc == V4L2_PIX_FMT_AV1_FRAME)
+ 		buf_size += hantro_av1_mv_size(pix_mp.width,
+ 					       pix_mp.height);
+-- 
+2.40.1
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
