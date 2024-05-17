@@ -4,76 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 18868C04FFE
-	for <linux-rockchip@archiver.kernel.org>; Fri, 17 May 2024 17:34:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 809B1C25B78
+	for <linux-rockchip@archiver.kernel.org>; Fri, 17 May 2024 19:50:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=5jOLPbFMzzZZn3V130sGl9FexpenzqszEJ+VcmobAT8=; b=mFQWPG10BzLJLQ
-	1/bBESAzYWPuufgVlQMjCJcmQEME3LmyE4Ir6InFyat1/TW1LbcQbZssjNUz7Q/sQcIylA3pxaaig
-	QQdeAf1zldNuoldXSOvq1RwaZ6+W48cNY/ie2PvZimq/EuRKBaGSYFnSN6qeqxIYCA+k09rEDJAmm
-	JfA1SmFNO+3ACnQ3yiQOhPrmJZZFg6xLP+1PgpcGfdSt2MyUAphXoHaTbWeHStMQyWmGJDfY7d8N7
-	M0ERVL9Ik4JondovAzNYH0q7+OKkDARMUqDJ6YPn5Ubp4w+cExqO4gDnxeF7SSN7lb3ZYc35q2JpI
-	yM7m7YMhw+hd/gK2gPtA==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=ujNfTUMdKjA5sJzU23Fw3UhPMHjyjbM/P9BfjvSNPT0=; b=Urx3LwDzmuhf18
+	3Kdt9+ZgCRNMyqG96MMU5P0feAoA1lF27O+MuanTgOzUYMOpB95r4RXkHbYQn8LtgydyZ1aejDQey
+	iwpzICLcEITLNRuJFCiQTQzK0M3gpp7TtE9UGbwG5fI0IYiluz2zixmHvXOPht2YfqFSbzduUE4a/
+	nEeb7Gqlo9Rvd+org0ZS16ErQBqNnZp3d0sgyH/Xen2HGxkux2baKAB9MWvohprNaAUIqrWyIxdJ7
+	8uQJ3U4mjOaRhF6TZEK9rMd3mSPckuJ93qn6IfKx6dAHkYGZ8+P93T1hD0qFzd77dbLoCfBaxxW6P
+	NLXOgVbz4r6EXPbfBxew==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s81TA-00000008Xx6-2Mn3;
-	Fri, 17 May 2024 17:34:12 +0000
-Received: from lelv0142.ext.ti.com ([198.47.23.249])
+	id 1s83ad-00000008rEX-2N5O;
+	Fri, 17 May 2024 19:50:03 +0000
+Received: from mail-pl1-x631.google.com ([2607:f8b0:4864:20::631])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s81T6-00000008XvL-2s6D
-	for linux-rockchip@lists.infradead.org;
-	Fri, 17 May 2024 17:34:10 +0000
-Received: from fllv0034.itg.ti.com ([10.64.40.246])
-	by lelv0142.ext.ti.com (8.15.2/8.15.2) with ESMTP id 44HHXll8076357;
-	Fri, 17 May 2024 12:33:47 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ti.com;
-	s=ti-com-17Q1; t=1715967227;
-	bh=0EwXBKCRAxAG/OUrii9PbnBkQTkKx1Oyx40xLcmJkHc=;
-	h=From:To:CC:Subject:Date:In-Reply-To:References;
-	b=yuqCwIRGryJJCFv4t/A1EbMyhABgAZN37kxYiW0K+lngX6AC0MEbpXil18+R2PptY
-	 MDULYJNyfPdc7mBIXkrcU/3uhDi8yZOkQ7lVTjGKN3QLvMWzrH4Usp7CEkeo0+ONj8
-	 CPxE4PE4xXKE9POTkrg0hE/cJC4vFfxY37zz1MMk=
-Received: from DFLE102.ent.ti.com (dfle102.ent.ti.com [10.64.6.23])
-	by fllv0034.itg.ti.com (8.15.2/8.15.2) with ESMTPS id 44HHXlU7042232
-	(version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=FAIL);
-	Fri, 17 May 2024 12:33:47 -0500
-Received: from DFLE102.ent.ti.com (10.64.6.23) by DFLE102.ent.ti.com
- (10.64.6.23) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.2507.23; Fri, 17
- May 2024 12:33:47 -0500
-Received: from lelvsmtp5.itg.ti.com (10.180.75.250) by DFLE102.ent.ti.com
- (10.64.6.23) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.2507.23 via
- Frontend Transport; Fri, 17 May 2024 12:33:47 -0500
-Received: from localhost (ti.dhcp.ti.com [172.24.227.95] (may be forged))
-	by lelvsmtp5.itg.ti.com (8.15.2/8.15.2) with ESMTP id 44HHXktI128304;
-	Fri, 17 May 2024 12:33:46 -0500
-From: Devarsh Thakkar <devarsht@ti.com>
-To: <mchehab@kernel.org>, <hverkuil-cisco@xs4all.nl>,
-        <linux-media@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-        <benjamin.gaignard@collabora.com>, <sebastian.fricke@collabora.com>,
-        <ezequiel@vanguardiasur.com.ar>, <p.zabel@pengutronix.de>,
-        <linux-rockchip@lists.infradead.org>
-CC: <laurent.pinchart@ideasonboard.com>, <praneeth@ti.com>, <nm@ti.com>,
-        <vigneshr@ti.com>, <a-bhatia1@ti.com>, <j-luthra@ti.com>,
-        <b-brnich@ti.com>, <detheridge@ti.com>, <p-mantena@ti.com>,
-        <vijayp@ti.com>, <devarsht@ti.com>, <andrzej.p@collabora.com>,
-        <nicolas@ndufresne.ca>
-Subject: [PATCH v8 05/10] media: verisilcon : Use exported tables from v4l2-jpeg for hantro codec
-Date: Fri, 17 May 2024 23:03:46 +0530
-Message-ID: <20240517173346.794542-1-devarsht@ti.com>
-X-Mailer: git-send-email 2.39.1
-In-Reply-To: <20240517171532.748684-1-devarsht@ti.com>
-References: <20240517171532.748684-1-devarsht@ti.com>
+	id 1s83ab-00000008rDa-1RDd;
+	Fri, 17 May 2024 19:50:02 +0000
+Received: by mail-pl1-x631.google.com with SMTP id d9443c01a7336-1ed5cbf7b49so2290115ad.2;
+        Fri, 17 May 2024 12:49:59 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1715975399; x=1716580199; darn=lists.infradead.org;
+        h=cc:to:subject:message-id:date:from:mime-version:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=DkC02ajmDp8au8nOQAmSiKZwlbDJdPCrp7KJQmbB5LI=;
+        b=E6YfVOFQXfVjRzLNIjDo+Ma9+j9v7LjOAXFe+BpxF5h8t3swAC/0UJ3vaWoizbyt7M
+         d4/4fyutqWIplhLVK9YhAwyhlVAYyyUpfm7Mf/Seyoyaquf2y7Wy/5Pta17Y7KkFfzgL
+         B2e5oHnlK89iLznxl61XdcObYAjPm4RnDb3E/T5wBj1qdH+Muu6hfIgrjLoqrjXBAtoV
+         T4A1OU0YGpVY1ObfaVIHtTmt2AkZi/WA6K1rfF5q7DnvU4f5En2T6vLPxd3y6l1R4nkt
+         Xeo3Ad8aKL/IQvdIzquQDlx/+oFJ3302sZt7ZAS+TXE3kHLz/Cn33S4BEgMIOx7koBQL
+         v00w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1715975399; x=1716580199;
+        h=cc:to:subject:message-id:date:from:mime-version:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=DkC02ajmDp8au8nOQAmSiKZwlbDJdPCrp7KJQmbB5LI=;
+        b=whO/CEqHhNs0kmADigFkPkmyEqa8xF1HLyAK8a+5+kNT2rGredGKwe24KuRUIYR7EP
+         ak7qAei3Wj0bc3dmYJk5tPDSEe0ZNilf6MdYFOgV6zuoWvqFlA4ScnHI+x6I5kLjQFO8
+         GDprF8xEMANTDdBir7PnqytSG2N71c+gB3/TA60PIUZggqlqsacrGqcd9nKvUcz5A4yZ
+         9/5xC0pewURH2pSb9gbjOJBfn0lfKWYTiETUWlRmJYHuqCZ+rHWdg8YP4eQBs484nBa2
+         jy1auO+9fD+xm1ja+CUpq2OAaOgiz6Db65i0N2vebEEcuikiHFTo94naP2Y227MUlSka
+         AkEw==
+X-Forwarded-Encrypted: i=1; AJvYcCULtJCU2ltRdlcBV/0GS8eutt1wCcjETGMcs6RzF3QqUymib3XqQGM1k/wWD/wLmhFI2nh8q2BdKw3rmdp+ayObvmx60U6LZ0zllZsiXw79ErcWdD4ND8/dJ31cjM7/hhaXeWFUsqfCCAUWWvW8qKpi/RbBmK6wg/Y=
+X-Gm-Message-State: AOJu0YzNvBN1hzrNubYoL7ZCn0L7eEIAQ2o3QlGPzNubVDMcYVMG8JFU
+	Qj5ah/Q1O6o6059nTG54S2IpvKK9nvGAopW9rtOVQyS7/upghFiurfaX1JdgMtLjjYMPr5J3kIR
+	hX/I5sGTFF22UakwjQ4/iRsuricg=
+X-Google-Smtp-Source: AGHT+IHoGq3IWj7advFtjZZYLQJht5smm9rTMguTThuxymXQmX3xKdysGKnWcNRH2uPZihxbeifZaQku1+dwYWHzZSM=
+X-Received: by 2002:a17:90a:8c7:b0:2b6:20a0:441e with SMTP id
+ 98e67ed59e1d1-2b6cd1f1b31mr21460875a91.4.1715975399291; Fri, 17 May 2024
+ 12:49:59 -0700 (PDT)
 MIME-Version: 1.0
-X-EXCLAIMER-MD-CONFIG: e1e8a2fd-e40a-4ac6-ac9b-f7e9cc9ee180
+From: Fabio Estevam <festevam@gmail.com>
+Date: Fri, 17 May 2024 16:49:47 -0300
+Message-ID: <CAOMZO5Bp1kfq9C7HpK=V+v=LytZFdbfcvgg1MmhYqqkntHVb2A@mail.gmail.com>
+Subject: rv1108: SPI DMA failure
+To: Mark Brown <broonie@kernel.org>, Andy Yan <andy.yan@rock-chips.com>
+Cc: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
+	linux-rockchip@lists.infradead.org, 
+	"moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE" <linux-arm-kernel@lists.infradead.org>, 
+	linux-spi <linux-spi@vger.kernel.org>, Otavio Salvador <otavio@ossystems.com.br>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240517_103408_819902_2982A4C5 
-X-CRM114-Status: GOOD (  12.49  )
+X-CRM114-CacheID: sfid-20240517_125001_408456_F917C503 
+X-CRM114-Status: UNSURE (   9.51  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,217 +88,63 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Use v4l2-jpeg core API to import reference quantization and huffman tables
-used for JPEG Encoding.
+Hi,
 
-Signed-off-by: Devarsh Thakkar <devarsht@ti.com>
-Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
-Acked-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
----
-V8: Add Reviewed-by and Acked-by tags
-V1->V6 (No change, patch introduced in V7)
----
- .../media/platform/verisilicon/hantro_jpeg.c  | 128 ++----------------
- 1 file changed, 14 insertions(+), 114 deletions(-)
+On the new revision of a rv1108-elgin board, there is an Infineon SPL9670
+TPM device connected to the SPI bus.
 
-diff --git a/drivers/media/platform/verisilicon/hantro_jpeg.c b/drivers/media/platform/verisilicon/hantro_jpeg.c
-index d07b1b449b61..fa4e8ee92c05 100644
---- a/drivers/media/platform/verisilicon/hantro_jpeg.c
-+++ b/drivers/media/platform/verisilicon/hantro_jpeg.c
-@@ -11,6 +11,7 @@
- #include <linux/build_bug.h>
- #include <linux/kernel.h>
- #include <linux/string.h>
-+#include <media/v4l2-jpeg.h>
- #include "hantro_jpeg.h"
- #include "hantro.h"
- 
-@@ -24,42 +25,6 @@
- #define HUFF_CHROMA_DC_OFF	394
- #define HUFF_CHROMA_AC_OFF	427
- 
--/* Default tables from JPEG ITU-T.81
-- * (ISO/IEC 10918-1) Annex K, tables K.1 and K.2
-- */
--static const unsigned char luma_q_table[] = {
--	0x10, 0x0b, 0x0a, 0x10, 0x18, 0x28, 0x33, 0x3d,
--	0x0c, 0x0c, 0x0e, 0x13, 0x1a, 0x3a, 0x3c, 0x37,
--	0x0e, 0x0d, 0x10, 0x18, 0x28, 0x39, 0x45, 0x38,
--	0x0e, 0x11, 0x16, 0x1d, 0x33, 0x57, 0x50, 0x3e,
--	0x12, 0x16, 0x25, 0x38, 0x44, 0x6d, 0x67, 0x4d,
--	0x18, 0x23, 0x37, 0x40, 0x51, 0x68, 0x71, 0x5c,
--	0x31, 0x40, 0x4e, 0x57, 0x67, 0x79, 0x78, 0x65,
--	0x48, 0x5c, 0x5f, 0x62, 0x70, 0x64, 0x67, 0x63
--};
--
--static const unsigned char chroma_q_table[] = {
--	0x11, 0x12, 0x18, 0x2f, 0x63, 0x63, 0x63, 0x63,
--	0x12, 0x15, 0x1a, 0x42, 0x63, 0x63, 0x63, 0x63,
--	0x18, 0x1a, 0x38, 0x63, 0x63, 0x63, 0x63, 0x63,
--	0x2f, 0x42, 0x63, 0x63, 0x63, 0x63, 0x63, 0x63,
--	0x63, 0x63, 0x63, 0x63, 0x63, 0x63, 0x63, 0x63,
--	0x63, 0x63, 0x63, 0x63, 0x63, 0x63, 0x63, 0x63,
--	0x63, 0x63, 0x63, 0x63, 0x63, 0x63, 0x63, 0x63,
--	0x63, 0x63, 0x63, 0x63, 0x63, 0x63, 0x63, 0x63
--};
--
--static const unsigned char zigzag[] = {
--	 0,  1,  8, 16,  9,  2,  3, 10,
--	17, 24, 32, 25, 18, 11,  4,  5,
--	12, 19, 26, 33, 40, 48, 41, 34,
--	27, 20, 13,  6,  7, 14, 21, 28,
--	35, 42, 49, 56, 57, 50, 43, 36,
--	29, 22, 15, 23, 30, 37, 44, 51,
--	58, 59, 52, 45, 38, 31, 39, 46,
--	53, 60, 61, 54, 47, 55, 62, 63
--};
--
- static const u32 hw_reorder[] = {
- 	 0,  8, 16, 24,  1,  9, 17, 25,
- 	32, 40, 48, 56, 33, 41, 49, 57,
-@@ -71,73 +36,6 @@ static const u32 hw_reorder[] = {
- 	38, 46, 54, 62, 39, 47, 55, 63
- };
- 
--/* Huffman tables are shared with CODA */
--static const unsigned char luma_dc_table[] = {
--	0x00, 0x01, 0x05, 0x01, 0x01, 0x01, 0x01, 0x01,
--	0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
--	0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07,
--	0x08, 0x09, 0x0a, 0x0b,
--};
--
--static const unsigned char chroma_dc_table[] = {
--	0x00, 0x03, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01,
--	0x01, 0x01, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00,
--	0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07,
--	0x08, 0x09, 0x0a, 0x0b,
--};
--
--static const unsigned char luma_ac_table[] = {
--	0x00, 0x02, 0x01, 0x03, 0x03, 0x02, 0x04, 0x03,
--	0x05, 0x05, 0x04, 0x04, 0x00, 0x00, 0x01, 0x7d,
--	0x01, 0x02, 0x03, 0x00, 0x04, 0x11, 0x05, 0x12,
--	0x21, 0x31, 0x41, 0x06, 0x13, 0x51, 0x61, 0x07,
--	0x22, 0x71, 0x14, 0x32, 0x81, 0x91, 0xa1, 0x08,
--	0x23, 0x42, 0xb1, 0xc1, 0x15, 0x52, 0xd1, 0xf0,
--	0x24, 0x33, 0x62, 0x72, 0x82, 0x09, 0x0a, 0x16,
--	0x17, 0x18, 0x19, 0x1a, 0x25, 0x26, 0x27, 0x28,
--	0x29, 0x2a, 0x34, 0x35, 0x36, 0x37, 0x38, 0x39,
--	0x3a, 0x43, 0x44, 0x45, 0x46, 0x47, 0x48, 0x49,
--	0x4a, 0x53, 0x54, 0x55, 0x56, 0x57, 0x58, 0x59,
--	0x5a, 0x63, 0x64, 0x65, 0x66, 0x67, 0x68, 0x69,
--	0x6a, 0x73, 0x74, 0x75, 0x76, 0x77, 0x78, 0x79,
--	0x7a, 0x83, 0x84, 0x85, 0x86, 0x87, 0x88, 0x89,
--	0x8a, 0x92, 0x93, 0x94, 0x95, 0x96, 0x97, 0x98,
--	0x99, 0x9a, 0xa2, 0xa3, 0xa4, 0xa5, 0xa6, 0xa7,
--	0xa8, 0xa9, 0xaa, 0xb2, 0xb3, 0xb4, 0xb5, 0xb6,
--	0xb7, 0xb8, 0xb9, 0xba, 0xc2, 0xc3, 0xc4, 0xc5,
--	0xc6, 0xc7, 0xc8, 0xc9, 0xca, 0xd2, 0xd3, 0xd4,
--	0xd5, 0xd6, 0xd7, 0xd8, 0xd9, 0xda, 0xe1, 0xe2,
--	0xe3, 0xe4, 0xe5, 0xe6, 0xe7, 0xe8, 0xe9, 0xea,
--	0xf1, 0xf2, 0xf3, 0xf4, 0xf5, 0xf6, 0xf7, 0xf8,
--	0xf9, 0xfa,
--};
--
--static const unsigned char chroma_ac_table[] = {
--	0x00, 0x02, 0x01, 0x02, 0x04, 0x04, 0x03, 0x04,
--	0x07, 0x05, 0x04, 0x04, 0x00, 0x01, 0x02, 0x77,
--	0x00, 0x01, 0x02, 0x03, 0x11, 0x04, 0x05, 0x21,
--	0x31, 0x06, 0x12, 0x41, 0x51, 0x07, 0x61, 0x71,
--	0x13, 0x22, 0x32, 0x81, 0x08, 0x14, 0x42, 0x91,
--	0xa1, 0xb1, 0xc1, 0x09, 0x23, 0x33, 0x52, 0xf0,
--	0x15, 0x62, 0x72, 0xd1, 0x0a, 0x16, 0x24, 0x34,
--	0xe1, 0x25, 0xf1, 0x17, 0x18, 0x19, 0x1a, 0x26,
--	0x27, 0x28, 0x29, 0x2a, 0x35, 0x36, 0x37, 0x38,
--	0x39, 0x3a, 0x43, 0x44, 0x45, 0x46, 0x47, 0x48,
--	0x49, 0x4a, 0x53, 0x54, 0x55, 0x56, 0x57, 0x58,
--	0x59, 0x5a, 0x63, 0x64, 0x65, 0x66, 0x67, 0x68,
--	0x69, 0x6a, 0x73, 0x74, 0x75, 0x76, 0x77, 0x78,
--	0x79, 0x7a, 0x82, 0x83, 0x84, 0x85, 0x86, 0x87,
--	0x88, 0x89, 0x8a, 0x92, 0x93, 0x94, 0x95, 0x96,
--	0x97, 0x98, 0x99, 0x9a, 0xa2, 0xa3, 0xa4, 0xa5,
--	0xa6, 0xa7, 0xa8, 0xa9, 0xaa, 0xb2, 0xb3, 0xb4,
--	0xb5, 0xb6, 0xb7, 0xb8, 0xb9, 0xba, 0xc2, 0xc3,
--	0xc4, 0xc5, 0xc6, 0xc7, 0xc8, 0xc9, 0xca, 0xd2,
--	0xd3, 0xd4, 0xd5, 0xd6, 0xd7, 0xd8, 0xd9, 0xda,
--	0xe2, 0xe3, 0xe4, 0xe5, 0xe6, 0xe7, 0xe8, 0xe9,
--	0xea, 0xf2, 0xf3, 0xf4, 0xf5, 0xf6, 0xf7, 0xf8,
--	0xf9, 0xfa,
--};
--
- /* For simplicity, we keep a pre-formatted JPEG header,
-  * and we'll use fixed offsets to change the width, height
-  * quantization tables, etc.
-@@ -291,10 +189,11 @@ jpeg_scale_quant_table(unsigned char *file_q_tab,
- 		       const unsigned char *tab, int scale)
- {
- 	int i;
-+	const u8 *zigzag;
- 
--	BUILD_BUG_ON(ARRAY_SIZE(zigzag) != JPEG_QUANT_SIZE);
- 	BUILD_BUG_ON(ARRAY_SIZE(hw_reorder) != JPEG_QUANT_SIZE);
- 
-+	v4l2_jpeg_get_zig_zag_scan(&zigzag);
- 	for (i = 0; i < JPEG_QUANT_SIZE; i++) {
- 		file_q_tab[i] = jpeg_scale_qp(tab[zigzag[i]], scale);
- 		reordered_q_tab[i] = jpeg_scale_qp(tab[hw_reorder[i]], scale);
-@@ -304,6 +203,7 @@ jpeg_scale_quant_table(unsigned char *file_q_tab,
- static void jpeg_set_quality(struct hantro_jpeg_ctx *ctx)
- {
- 	int scale;
-+	const u8 *luma_q_table, *chroma_q_table;
- 
- 	/*
- 	 * Non-linear scaling factor:
-@@ -314,21 +214,23 @@ static void jpeg_set_quality(struct hantro_jpeg_ctx *ctx)
- 	else
- 		scale = 200 - 2 * ctx->quality;
- 
--	BUILD_BUG_ON(ARRAY_SIZE(luma_q_table) != JPEG_QUANT_SIZE);
--	BUILD_BUG_ON(ARRAY_SIZE(chroma_q_table) != JPEG_QUANT_SIZE);
- 	BUILD_BUG_ON(ARRAY_SIZE(ctx->hw_luma_qtable) != JPEG_QUANT_SIZE);
- 	BUILD_BUG_ON(ARRAY_SIZE(ctx->hw_chroma_qtable) != JPEG_QUANT_SIZE);
- 
-+	v4l2_jpeg_get_reference_quantization_tables(&luma_q_table, &chroma_q_table);
- 	jpeg_scale_quant_table(ctx->buffer + LUMA_QUANT_OFF,
--			       ctx->hw_luma_qtable, luma_q_table, scale);
-+			       ctx->hw_luma_qtable, (const unsigned char *)luma_q_table, scale);
- 	jpeg_scale_quant_table(ctx->buffer + CHROMA_QUANT_OFF,
--			       ctx->hw_chroma_qtable, chroma_q_table, scale);
-+			       ctx->hw_chroma_qtable, (const unsigned char *)chroma_q_table, scale);
- }
- 
- void hantro_jpeg_header_assemble(struct hantro_jpeg_ctx *ctx)
- {
- 	char *buf = ctx->buffer;
-+	const u8 *luma_dc_table, *chroma_dc_table, *luma_ac_table, *chroma_ac_table;
- 
-+	v4l2_jpeg_get_reference_huffman_tables(&luma_dc_table,  &luma_ac_table, &chroma_dc_table,
-+					       &chroma_ac_table);
- 	memcpy(buf, hantro_jpeg_header,
- 	       sizeof(hantro_jpeg_header));
- 
-@@ -337,12 +239,10 @@ void hantro_jpeg_header_assemble(struct hantro_jpeg_ctx *ctx)
- 	buf[WIDTH_OFF + 0] = ctx->width >> 8;
- 	buf[WIDTH_OFF + 1] = ctx->width;
- 
--	memcpy(buf + HUFF_LUMA_DC_OFF, luma_dc_table, sizeof(luma_dc_table));
--	memcpy(buf + HUFF_LUMA_AC_OFF, luma_ac_table, sizeof(luma_ac_table));
--	memcpy(buf + HUFF_CHROMA_DC_OFF, chroma_dc_table,
--	       sizeof(chroma_dc_table));
--	memcpy(buf + HUFF_CHROMA_AC_OFF, chroma_ac_table,
--	       sizeof(chroma_ac_table));
-+	memcpy(buf + HUFF_LUMA_DC_OFF, luma_dc_table, V4L2_JPEG_REF_HT_DC_LEN);
-+	memcpy(buf + HUFF_LUMA_AC_OFF, luma_ac_table, V4L2_JPEG_REF_HT_AC_LEN);
-+	memcpy(buf + HUFF_CHROMA_DC_OFF, chroma_dc_table, V4L2_JPEG_REF_HT_DC_LEN);
-+	memcpy(buf + HUFF_CHROMA_AC_OFF, chroma_ac_table, V4L2_JPEG_REF_HT_AC_LEN);
- 
- 	jpeg_set_quality(ctx);
- }
--- 
-2.39.1
+On kernel 6.9, the following SPI transfer errors occur:
 
+[    2.747002] tpm_tis_spi spi0.0: SPI transfer timed out
+[    2.747564] spi_master spi0: failed to transfer one message from queue
+[    2.748239] spi_master spi0: noqueue transfer failed
+[    2.749039] tpm tpm0: tpm_transmit: tpm_recv: error -110
+[    2.749569] tpm tpm0: TPM in field failure mode, requires firmware upgrade
+
+The same issue happens with older kernels, such as 5.4.
+
+If SPI DMA support is removed like this:
+
+&spi {
+    pinctrl-names = "default";
+    pinctrl-0 = <&spim1_clk &spim1_cs0 &spim1_tx &spim1_rx>;
+    /delete-property/ dmas;
+    /delete-property/ dma-names;
+    status = "okay";
+
+    tpm@0 {
+        compatible = "infineon,slb9670", "tcg,tpm_tis-spi";
+        reg = <0>;
+        spi-max-frequency = <10000000>;
+    };
+};
+
+
+Then the TPM device works correctly.
+
+An old RV1108 SPI bug was reported by Otavio:
+
+https://lore.kernel.org/linux-spi/CAP9ODKpW=h6SVtsn-uuDQ4+TgR0NnjBW==8vwyQD4+x_dbFzRQ@mail.gmail.com/
+
+That indicates an RV1108 SPI problem after moving from polling to IRQ.
+
+Mark's made a good point in reply to Otavio's report:
+
+"Does the interrupt ever fire?  I'm wondering if the DT is wired up
+correctly for the particular SoC you have, or if it's even wired up at
+all in the hardware."
+
+Can we get some help from Rockchip to clarify these issues on the RV1108 SPI?
+
+Have RV1108 SPI DMA and IRQ been tested by Rockchip?
+
+Are the rv1108 SPI DMA/IRQ descriptions in the rv1108.dtsi correct?
+
+Any known SPI hardware issue on RV1108?
+
+Thanks,
+
+Fabio Estevam
 
 _______________________________________________
 Linux-rockchip mailing list
