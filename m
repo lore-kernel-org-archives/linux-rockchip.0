@@ -4,96 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0ED44C04FFE
-	for <linux-rockchip@archiver.kernel.org>; Fri, 17 May 2024 17:05:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D2349C04FFE
+	for <linux-rockchip@archiver.kernel.org>; Fri, 17 May 2024 17:16:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Sa3gSCCv0U5DZrJuJGy1tpawVj6myf76KmgUzGNEotk=; b=VFKilfzpeYxq1x
-	39jeeNF70n3QuAdexYV0Oz8kcnerE3++P9VkB9Yna6KPib6Cb7R/Z/bwC2dL0fKBLxYJBxZhJvy+o
-	uLT0xMCzMAmMgvQKhyXjzynFHxw1zzFyVW3Z3p1/r69Eu+3vuVh9lGTWQ5ti1KA31oOUPxRS7ZJsK
-	f6hQYO8PTzilZlFmmXiKzW28e2dYAy9Yd4ExZMoQ75qHb8rPNwZhA/eicQqf8fnDeWDu9dz+u+ptU
-	qkHDXJdFcY4U8+vHzaLOdLIr/uBlCqnWz2n7rhCCnHGQZ5in2ELte5/ylzaBx4bCXaz7zSy0YswtE
-	5narKxgsLH840Gux+Hhg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=M07khNAWsuMElrCuY9768hZbRucE3T5HtG8DsOr3KeQ=; b=CHfH2U19FzVf7X
+	eCPsPtLJixJ8LyQX31rzSPZzZpWMbNsvtkUnqPwdefitUIUODHctL6Djq/TGjFOGEaZxjBeZ4/JLH
+	usZSyUArAYtK1F8xthXAJrY6AZvfJRvnP4txrneEtX2pacI9eO5euqzdfblcqj89G7y1WmXQJBa4V
+	7VzLEy7s+H43sphHYckCMmY1khIqhhjHldk/43gF9mHoFva0/WdhtlzOcNSHoe2uDEf+qCZaVE+q8
+	uffsTWVGQ+g/4W4Ss4YiD3yH435+jAVqwsBHeAF4q0LKQUzXM62hI7ExbK4g+wf8HdwdOB7YVTIvn
+	FvvQpfLEOAnQ8PfGjQBg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s8111-00000008T2o-2YDv;
-	Fri, 17 May 2024 17:05:07 +0000
-Received: from mail-pf1-f171.google.com ([209.85.210.171])
+	id 1s81Bc-00000008Uxr-1Bw8;
+	Fri, 17 May 2024 17:16:04 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s810x-00000008T27-2Gbj;
-	Fri, 17 May 2024 17:05:06 +0000
-Received: by mail-pf1-f171.google.com with SMTP id d2e1a72fcca58-6f44bcbaae7so1253397b3a.2;
-        Fri, 17 May 2024 10:05:02 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1715965501; x=1716570301;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=ZAF2nClB9tdRe2nZvO7iQeg/IDzJ4PErDPhyqSEtfbs=;
-        b=mTTHSQRDY481G9/KaFfQLxxJ5sffFsXiLDqkFLO6yDLWmiAQ3A/VsZMuKM3Rmn1Yrs
-         WmiV1joDLbNQfGjQcdphgE1sAjLNDo0H1o8BfRQjPsMsIHL8ZXOckyDwElTPl4twWe8K
-         5ndWogdWP6M42ikf2zhbfHNI3iZeagq4w2ZqoQydKn5djqQr+jqWKoiYGVmaiedvOnlQ
-         hlULKSKucGiQ66Lx8vtzfGEgA/Si86+8szIskG5NpuqMc+sbubMEmHt2rwgH1Csm+RNq
-         YACPXSl3GHwmuiv1OTHU+L4SBGcrsOJoPG142BjXmf4Sb+AiIadRu1Oxs8klwY5W5mec
-         CJNQ==
-X-Forwarded-Encrypted: i=1; AJvYcCWmWiWdCInuXJEyPCg23iSofM+Lqt9Z3wzZJTec9nZSkjBwC4gR2VGShUsNc3n85GXyWKpRwJTn6vDGq407l5fKKUQ0DIBuAOUFR+kDgCvcGVq3Q6Ppv8ir2Ck2saJcpC2qHct9VH6FkQTPIYeDV+gbzkqKnsjtz9o=
-X-Gm-Message-State: AOJu0YzLAqP2cM3A1+whxafRfm6OMcmmCTlXr5qVv9ommkwiAermnW9P
-	sHxGCHVb334lWxI4Q+8mVNWei35KCmYupjAUFh6xVhamEARyMWYl
-X-Google-Smtp-Source: AGHT+IGDk5wz8T58ydDnsgGbyCZmHKCAeGjDn9utiYyGXMhzVl4Lcok/JS9rF8CQMUTTLF/lj2nWEQ==
-X-Received: by 2002:a05:6a00:238b:b0:6ea:afdb:6d03 with SMTP id d2e1a72fcca58-6f4e02d3ef9mr24111615b3a.19.1715965501417;
-        Fri, 17 May 2024 10:05:01 -0700 (PDT)
-Received: from localhost (fpd11144dd.ap.nuro.jp. [209.17.68.221])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-6f68c7d3651sm1904783b3a.183.2024.05.17.10.04.59
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 17 May 2024 10:04:59 -0700 (PDT)
-Date: Sat, 18 May 2024 02:04:58 +0900
-From: Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>
-To: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
-Cc: Jingoo Han <jingoohan1@gmail.com>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
-	Marek Vasut <marek.vasut+renesas@gmail.com>,
-	Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>,
-	Thierry Reding <thierry.reding@gmail.com>,
-	Jonathan Hunter <jonathanh@nvidia.com>,
-	Vidya Sagar <vidyas@nvidia.com>,
-	Vignesh Raghavendra <vigneshr@ti.com>,
-	Richard Zhu <hongxing.zhu@nxp.com>,
-	Lucas Stach <l.stach@pengutronix.de>,
-	Shawn Guo <shawnguo@kernel.org>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Pengutronix Kernel Team <kernel@pengutronix.de>,
-	Fabio Estevam <festevam@gmail.com>,
-	NXP Linux Team <linux-imx@nxp.com>,
-	Minghuan Lian <minghuan.Lian@nxp.com>,
-	Mingkai Hu <mingkai.hu@nxp.com>, Roy Zang <roy.zang@nxp.com>,
-	Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
-	Masami Hiramatsu <mhiramat@kernel.org>,
-	Kishon Vijay Abraham I <kishon@kernel.org>,
-	Jesper Nilsson <jesper.nilsson@axis.com>,
-	Srikanth Thokala <srikanth.thokala@intel.com>,
-	Shawn Lin <shawn.lin@rock-chips.com>,
-	Heiko Stuebner <heiko@sntech.de>, linux-pci@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-renesas-soc@vger.kernel.org,
-	linux-arm-msm@vger.kernel.org, linux-tegra@vger.kernel.org,
-	linux-omap@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linuxppc-dev@lists.ozlabs.org, Niklas Cassel <cassel@kernel.org>,
-	linux-arm-kernel@axis.com, linux-rockchip@lists.infradead.org,
-	Frank Li <Frank.Li@nxp.com>
-Subject: Re: [PATCH v12 0/8] PCI: dwc: ep: Fix DBI access failure for drivers
- requiring refclk from host
-Message-ID: <20240517170458.GA1947919@rocinante>
-References: <20240327-pci-dbi-rework-v12-0-082625472414@linaro.org>
+	id 1s81Ba-00000008UxW-2Iec
+	for linux-rockchip@bombadil.infradead.org;
+	Fri, 17 May 2024 17:16:02 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Type:Content-Transfer-Encoding
+	:MIME-Version:Message-ID:Date:Subject:CC:To:From:Sender:Reply-To:Content-ID:
+	Content-Description:In-Reply-To:References;
+	bh=t8moko48WHwLaYXtZeG1loeYfbAEGTbnPD1sU1i82L0=; b=OLeK1AkXDjpmloo4lAz8LIy9D7
+	hI9igPl4a53uciRHO/4E/UWR1SoysDHyIgaheKpNJ+YFKass/+AnDKpr4vhVKWLDka6rHZXIJWoUM
+	0WQK8RcI9CGhk6oD+4M0Uly+DNdQm4oKKqRdPk+er+Q/oFOUNu561jxJgXs8xrcIWJlW1N+cqSVtv
+	hZTMlhj0dLnyxeqMnrh0H+aMNRaZoeL3wJ4jC1xAXNszcX/La5pirC3pC0KlRVFt4jk5EBe5emYci
+	Bg+DGOexKpW85CjOezR0KfTik77paFEPUA5mNXCWH4+3ijI88gHrx5wSSRTrs3vCg59UQt8JkugKL
+	fNlJ5TMg==;
+Received: from lelv0143.ext.ti.com ([198.47.23.248])
+	by desiato.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
+	id 1s81BW-00000005l0D-1zKi
+	for linux-rockchip@lists.infradead.org;
+	Fri, 17 May 2024 17:16:01 +0000
+Received: from fllv0035.itg.ti.com ([10.64.41.0])
+	by lelv0143.ext.ti.com (8.15.2/8.15.2) with ESMTP id 44HHFXro002873;
+	Fri, 17 May 2024 12:15:33 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ti.com;
+	s=ti-com-17Q1; t=1715966134;
+	bh=t8moko48WHwLaYXtZeG1loeYfbAEGTbnPD1sU1i82L0=;
+	h=From:To:CC:Subject:Date;
+	b=hfZTxmghkPiT6kevmt5lLE+qDkrLgEXUkuDnSqsVsdcqrdKDdo0zTHYmfZYxoFSVO
+	 OvIm5W5WBWEAh6ogEX84zkVIrEpELDT3/Hd5qlHg8t21Rp8bpC/WuuI7WJHcKoVYZq
+	 4pcnnFrta/mEgc/UKcsp19Z2EAgDehiB/3jCHoQE=
+Received: from DFLE112.ent.ti.com (dfle112.ent.ti.com [10.64.6.33])
+	by fllv0035.itg.ti.com (8.15.2/8.15.2) with ESMTPS id 44HHFXWd126445
+	(version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=FAIL);
+	Fri, 17 May 2024 12:15:33 -0500
+Received: from DFLE115.ent.ti.com (10.64.6.36) by DFLE112.ent.ti.com
+ (10.64.6.33) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.2507.23; Fri, 17
+ May 2024 12:15:33 -0500
+Received: from lelvsmtp6.itg.ti.com (10.180.75.249) by DFLE115.ent.ti.com
+ (10.64.6.36) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.2507.23 via
+ Frontend Transport; Fri, 17 May 2024 12:15:33 -0500
+Received: from localhost (ti.dhcp.ti.com [172.24.227.95] (may be forged))
+	by lelvsmtp6.itg.ti.com (8.15.2/8.15.2) with ESMTP id 44HHFWXr106902;
+	Fri, 17 May 2024 12:15:33 -0500
+From: Devarsh Thakkar <devarsht@ti.com>
+To: <mchehab@kernel.org>, <robh@kernel.org>,
+        <krzysztof.kozlowski+dt@linaro.org>, <conor+dt@kernel.org>,
+        <hverkuil-cisco@xs4all.nl>, <linux-media@vger.kernel.org>,
+        <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+        <benjamin.gaignard@collabora.com>, <sebastian.fricke@collabora.com>
+CC: <laurent.pinchart@ideasonboard.com>, <praneeth@ti.com>, <nm@ti.com>,
+        <vigneshr@ti.com>, <a-bhatia1@ti.com>, <j-luthra@ti.com>,
+        <b-brnich@ti.com>, <detheridge@ti.com>, <p-mantena@ti.com>,
+        <vijayp@ti.com>, <devarsht@ti.com>, <andrzej.p@collabora.com>,
+        <nicolas@ndufresne.ca>, <akpm@linux-foundation.org>,
+        <gregkh@linuxfoundation.org>, <andriy.shevchenko@linux.intel.com>,
+        <adobriyan@gmail.com>, <p.zabel@pengutronix.de>, <airlied@gmail.com>,
+        <daniel@ffwll.ch>, <jani.nikula@intel.com>,
+        <dri-devel@lists.freedesktop.org>,
+        <linux-rockchip@lists.infradead.org>, <davidgow@google.com>,
+        <dlatypov@google.com>
+Subject: [PATCH v8 00/10] Add V4L2 M2M Driver for E5010 JPEG Encoder
+Date: Fri, 17 May 2024 22:45:32 +0530
+Message-ID: <20240517171532.748684-1-devarsht@ti.com>
+X-Mailer: git-send-email 2.39.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20240327-pci-dbi-rework-v12-0-082625472414@linaro.org>
+X-EXCLAIMER-MD-CONFIG: e1e8a2fd-e40a-4ac6-ac9b-f7e9cc9ee180
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240517_100503_606801_0C63D161 
-X-CRM114-Status: GOOD (  17.77  )
+X-CRM114-CacheID: sfid-20240517_181559_107218_338D15E7 
+X-CRM114-Status: GOOD (  15.47  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -110,58 +109,189 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+This adds support for V4L2 M2M based driver for E5010 JPEG Encoder
+which is a stateful JPEG encoder from Imagination technologies
+and is present in TI AM62A SoC.
 
-Hello,
+While adding support for it, following additional framework changes were
+made:
+ - Moved reference quantization and huffman tables provided in
+   ITU-T-REC-T.81 to v4l2-jpeg.c as suggested in mailing list [1].
+ - Add macros to round to closest integer (either higher or lower) while
+   rounding in order of 2.
+ - Add KUnit tests for math functions.
 
-> This series is the continuation of previous work by Vidya Sagar [1] to fix the
-> issues related to accessing DBI register space before completing the core
-> initialization in some EP platforms like Tegra194/234 and Qcom EP.
-> 
-> Since Vidya is busy, I took over the series based on his consent (off-list
-> discussion).
-> 
-> NOTE
-> ====
-> 
-> Based on the comments received in v7 [2], I've heavily modified the series
-> to fix several other issues reported by Bjorn and Niklas. One noticeable
-> change is getting rid of the 'core_init_notifer' flag added to differentiate
-> between glue drivers requiring refclk from host and drivers getting refclk
-> locally.
-> 
-> By getting rid of this flag, now both the DWC EP driver and the EPF drivers
-> can use a single flow and need not distinguish between the glue drivers.
-> 
-> We can also get rid of the 'link_up_notifier' flag in the future by following
-> the same convention.
-> 
-> Testing
-> =======
-> 
-> I've tested the series on Qcom SM8450 based dev board that depends on refclk
-> from host with EPF_MHI driver. It'd be good to test this series on platforms
-> that generate refclk locally and also with EPF_TEST driver.
+v4l2-compliance test :
+Link: https://gist.github.com/devarsht/1f039c631ca953a57f405cfce1b69e49
 
-Applied to controller/dwc, thank you!
+E5010 JPEG Encoder Manual tests :
 
-[01/08] PCI: dwc: ep: Fix DBI access failure for drivers requiring refclk from host
-        https://git.kernel.org/pci/pci/c/869bc5253406
-[02/08] PCI: dwc: ep: Add Kernel-doc comments for APIs
-        https://git.kernel.org/pci/pci/c/7cbebc86c72a
-[03/08] PCI: dwc: ep: Remove deinit() callback from struct dw_pcie_ep_ops
-        https://git.kernel.org/pci/pci/c/b7dec6b85089
-[04/08] PCI: dwc: ep: Rename dw_pcie_ep_exit() to dw_pcie_ep_deinit()
-        https://git.kernel.org/pci/pci/c/c8682a3314c1
-[05/08] PCI: dwc: ep: Introduce dw_pcie_ep_cleanup() API for drivers supporting PERST#
-        https://git.kernel.org/pci/pci/c/570d7715eed8
-[06/08] PCI: dwc: ep: Rename dw_pcie_ep_init_complete() to dw_pcie_ep_init_registers()
-        https://git.kernel.org/pci/pci/c/7d6e64c443ea
-[07/08] PCI: dwc: ep: Call dw_pcie_ep_init_registers() API directly from all glue drivers
-        https://git.kernel.org/pci/pci/c/df69e17ccc2f
-[08/08] PCI: endpoint: Remove "core_init_notifier" flag
-        https://git.kernel.org/pci/pci/c/a01e7214bef9
+Performance:
+Link: https://gist.github.com/devarsht/c40672944fd71c9a53ab55adbfd9e28b
 
-	Krzysztof
+Functionality:
+Link: https://gist.github.com/devarsht/8e88fcaabff016bb2bac83d89c9d23ce
+
+Compression Quality:
+Link: https://gist.github.com/devarsht/cbcc7cd97e8c48ba1486caa2b7884655
+
+Multi Instance:
+Link: https://gist.github.com/devarsht/22c2fca08cd3441fb40f2c7a4cebc95a
+
+Crop support:
+Link: https://gist.github.com/devarsht/de6f5142f678bb1a5338abfd9f814abd
+
+Runtime PM:
+Link: https://gist.github.com/devarsht/70cd95d4440ddc678489d93885ddd4dd
+
+Math lib KUnit tests:
+Link: https://gist.github.com/devarsht/3f9042825be3da4e133b8f4eda067876
+
+[1]: 
+https://lore.kernel.org/all/de46aefe-36da-4e1a-b4fa-b375b2749181@xs4all.nl/
+
+Changelog:
+V7->V8:
+ - Add KUnit tests for math functions
+ - Add roundclosest() for supporting rounding for non-multiple of 2
+ - Update commit message as suggested
+ - Add Reviewed-by and Acked-by tags to patches as received
+
+V6->V7:
+ - Fix cropping support
+ - Move reference huffman and quantization tables to v4l2-jpeg.c
+ - Fix suspend/resume use-case
+ - Add Reviewed-by
+
+V5->V6:
+ - Fix sparse warnings
+
+V4->V5:
+ - Sort the #includes in driver file alphabetically
+ - Rename huffman and quantization tables to not use '_'
+ - Add Reviewed-by tag
+
+V3->V4:
+- Use ti-specific compatible ti,am62a-jpeg-enc as secondary one in
+  dt-binding
+- Remove clock-names as only single clock in dt-binding
+- Fix issue with default params setting
+- Correct v4l2 error prints
+- Simplify register write functions with single statement return values
+- Remove unrequired error checks from get_queue()
+- Drop explicit device_caps setting as it is already taken care by v4l2
+  core
+- Remove unrequired multiplanar checks and memset from s_fmt, g_fmt
+  callback functions
+- Fix try_fmt callback to not update the queues
+- Remove unrequired contiguous format attribute from queue_init
+- Use dynamic allocation for video_device and remove unrequired
+  assignments in probe()
+- Remove unrequired checks from queue_setup function
+- Return queued buffers back if start_streaming fails
+- Use ARRAY_SIZE in place of hard-coding
+- Use huffman and quantization tables from reference header file
+
+V2->V3:
+- Add DONOTMERGE patches for dts and defconfig
+- Update driver with below changes :
+  - Correct license headers
+  - Use more generic name core instead of jasper for base registers
+  - Add Comment for forward declarations
+  - Simplify quantization table calculations
+  - Use v4l2_apply_frmsize_constraints for updating framesize and remove
+    unrequired functions
+  - Place TODO at top of file and in commit message too
+  - Use dev_err_probe helper in probe function
+  - Fix return value checking for failure scenarios in probe function
+  - Use v4l2_err/info/warn helpers instead of dev_err/info/warn helpers
+  - Fix unexpected indentation
+  - Correct commit message
+- Update dt-bindings with below changes :
+  - Add vendor specific compatible 
+  - Fix commit title and message
+  - Update reg names
+  - Update clocks to 1
+  - Fix dts example with proper naming
+
+V1->V2:
+ - Send dt-bindings and driver together
+
+Patch-Diff between the series :
+V7->V8 Range diff :
+https://gist.github.com/devarsht/3fd6c4e8031ab114248f93d01c8dfc74
+
+V6->V7 Range diff :
+https://gist.github.com/devarsht/1db185b1e187eaf397e9e4c37066777e
+
+V5->V6 Range diff :
+https://gist.github.com/devarsht/c89180ac2b0d2814614f2b59d0705c19
+
+V4->V5 Range diff :
+https://gist.github.com/devarsht/298790af819f299a0a05fec89371097b
+
+V3->V4 Range diff :
+https://gist.github.com/devarsht/22a744d999080de6e813bcfb5a596272
+
+Previous patch series:
+V7: https://lore.kernel.org/all/20240510082603.1263256-1-devarsht@ti.com/
+V6: https://lore.kernel.org/all/20240228141140.3530612-1-devarsht@ti.com/
+V5: https://lore.kernel.org/all/20240215134641.3381478-1-devarsht@ti.com/
+V4: https://lore.kernel.org/all/20240205114239.924697-1-devarsht@ti.com/
+V3: https://lore.kernel.org/all/20230816152210.4080779-1-devarsht@ti.com/
+V2: https://lore.kernel.org/all/20230727112546.2201995-1-devarsht@ti.com/
+
+Daniel Latypov (1):
+  lib: add basic KUnit test for lib/math
+
+Devarsh Thakkar (9):
+  media: dt-bindings: Add Imagination E5010 JPEG Encoder
+  media: imagination: Add E5010 JPEG Encoder driver
+  media: v4l2-jpeg: Export reference quantization and huffman tables
+  media: imagination: Use exported tables from v4l2-jpeg core
+  media: verisilcon : Use exported tables from v4l2-jpeg for hantro
+    codec
+  math.h: Add macros for rounding to closest value
+  lib: math_kunit: Add tests for new macros related to rounding to
+    nearest value
+  media: imagination: Round to closest multiple for cropping region
+  gpu: ipu-v3: Use generic macro for rounding closest to specified value
+
+ .../bindings/media/img,e5010-jpeg-enc.yaml    |   75 +
+ MAINTAINERS                                   |    7 +
+ drivers/gpu/ipu-v3/ipu-image-convert.c        |    4 +-
+ drivers/media/platform/Kconfig                |    1 +
+ drivers/media/platform/Makefile               |    1 +
+ drivers/media/platform/imagination/Kconfig    |   12 +
+ drivers/media/platform/imagination/Makefile   |    3 +
+ .../platform/imagination/e5010-core-regs.h    |  585 ++++++
+ .../platform/imagination/e5010-jpeg-enc-hw.c  |  267 +++
+ .../platform/imagination/e5010-jpeg-enc-hw.h  |   42 +
+ .../platform/imagination/e5010-jpeg-enc.c     | 1646 +++++++++++++++++
+ .../platform/imagination/e5010-jpeg-enc.h     |  168 ++
+ .../platform/imagination/e5010-mmu-regs.h     |  311 ++++
+ .../media/platform/verisilicon/hantro_jpeg.c  |  128 +-
+ drivers/media/v4l2-core/v4l2-jpeg.c           |  162 +-
+ include/linux/math.h                          |   65 +
+ include/media/v4l2-jpeg.h                     |   11 +
+ lib/math/Kconfig                              |   11 +
+ lib/math/Makefile                             |    1 +
+ lib/math/math_kunit.c                         |  326 ++++
+ 20 files changed, 3708 insertions(+), 118 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/media/img,e5010-jpeg-enc.yaml
+ create mode 100644 drivers/media/platform/imagination/Kconfig
+ create mode 100644 drivers/media/platform/imagination/Makefile
+ create mode 100644 drivers/media/platform/imagination/e5010-core-regs.h
+ create mode 100644 drivers/media/platform/imagination/e5010-jpeg-enc-hw.c
+ create mode 100644 drivers/media/platform/imagination/e5010-jpeg-enc-hw.h
+ create mode 100644 drivers/media/platform/imagination/e5010-jpeg-enc.c
+ create mode 100644 drivers/media/platform/imagination/e5010-jpeg-enc.h
+ create mode 100644 drivers/media/platform/imagination/e5010-mmu-regs.h
+ create mode 100644 lib/math/math_kunit.c
+
+-- 
+2.39.1
+
 
 _______________________________________________
 Linux-rockchip mailing list
