@@ -4,75 +4,113 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A7CA7C25B78
-	for <linux-rockchip@archiver.kernel.org>; Fri, 17 May 2024 10:32:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1B6B3C04FFE
+	for <linux-rockchip@archiver.kernel.org>; Fri, 17 May 2024 10:41:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=fdsK/wc/SPl42Z74cWkgP/xYqtzxqs+ojdAo3aB8PMc=; b=Bz9CExP5Zx1HCi
-	sWvVEGojck5C/FVGfzv/bTt9RinM/DKEkbIL15wzxmIy4w2aG8eKeAtjbtWY9xlZE7MPbRhzmPmnY
-	UvtAqSbWP6UrRt/KKfchN0Eg+xqBGroWfSpiL1x6wfMpk2+VgUEL2mhGG1pXI3bnow7o5aabJFqtn
-	kNUvzh3c+S2ikMmP7IP0Ht+ny9cyDUxmdQCF3w7afIfJZqersNJkxU8he2TyXlc60xRVu8EsAndXl
-	I2/JQi36xGgZDElT3Yk2xDmtgDxbBDpLrMW425UCIT7h3IQnRmjUKTYWcQQRP9U9ODadLvohthX5i
-	mhVeizFAGRFYiCjtMHTg==;
+	List-Owner; bh=NucwmwqVfPBEtFCQfK0QRzOI0X2SpMTlU5m4mq4NHmE=; b=T5a05zQbX4Towc
+	BSy9KjtYxKQHy7U8Z78p/3RBU+4N+SbqWu30xUlRf/GtEPug6zdY5LtSXyFIk4trqydY2YM79Of/Q
+	doLeLb+xYwuqA+Kj2seMDcWKnqdAdb5auVHwN9xuY9a3ERVCRXI0VoP2OXuSP54viFbRLB/mO/ja9
+	SBg6ZZxn/OFDTqFOA62WvbY05eQ38mBRqoxvpmKqDoEZINT6Dk9k8975n2JbtcDUSxii3PtWdhsV4
+	GpMze+I7u3pTZnqjlnXYqspJsRPKS0YZNq6x3Qj/NjTWq/4GptqZfkAPWat+T4MrwbnuqUT+FglrH
+	FzTApFn58nn+bG6JDrqA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s7ut4-00000007X2g-1DDy;
-	Fri, 17 May 2024 10:32:30 +0000
-Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
+	id 1s7v1t-00000007YAo-1IFA;
+	Fri, 17 May 2024 10:41:37 +0000
+Received: from mail-oo1-f41.google.com ([209.85.161.41])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s7tqD-00000007KkQ-1mWn;
-	Fri, 17 May 2024 09:25:32 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1715937927;
-	bh=iVG5TznlZSbapY+dfzdsSGk+uIVJwQXm3dejanoZ0vk=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=xSmje+K4XscK5ePBslevLDzyBGG7U45O+jVEn4EXvgEXrIyUV3tSMGtLwuKWYWaPP
-	 8v95fH7ZRzaeu3klhSnyHdLRns3MxGVr8T2J4tubV2M5U43rYOmDDNEeai2jzlA5Np
-	 mPLAfaQXVvkM2GPH74pHnxH6AX/MUraCpi+3QJc42EmkXuyFo164+Uq5nnHe6kZ6Fz
-	 IM7RbfImZc3tYbKZapVpEiNMU7+QD7AXJ0CmC201V7UqNF59Y3KD+3LH4/tVugdy01
-	 uObX3gd1vOy9TleG+RDZFXntkersrs5XXLcBXikhpby9E/2+P4pWztPqtmsVpWnxcV
-	 40fJlzLtTB6pQ==
-Received: from localhost.localdomain (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: vignesh)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id DED9637821C2;
-	Fri, 17 May 2024 09:25:23 +0000 (UTC)
-From: Vignesh Raman <vignesh.raman@collabora.com>
-To: dri-devel@lists.freedesktop.org
-Cc: daniels@collabora.com,
-	helen.koike@collabora.com,
-	airlied@gmail.com,
-	daniel@ffwll.ch,
-	robdclark@gmail.com,
-	david.heidelberg@collabora.com,
-	guilherme.gallo@collabora.com,
-	sergi.blanch.torne@collabora.com,
-	dmitry.baryshkov@linaro.org,
-	mcanal@igalia.com,
-	linux-mediatek@lists.infradead.org,
-	linux-amlogic@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	amd-gfx@lists.freedesktop.org,
-	linux-arm-msm@vger.kernel.org,
-	intel-gfx@lists.freedesktop.org,
-	virtualization@lists.linux-foundation.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH v2 3/6] drm/ci: build virtual GPU driver as module
-Date: Fri, 17 May 2024 14:54:59 +0530
-Message-Id: <20240517092502.647420-4-vignesh.raman@collabora.com>
-X-Mailer: git-send-email 2.40.1
-In-Reply-To: <20240517092502.647420-1-vignesh.raman@collabora.com>
-References: <20240517092502.647420-1-vignesh.raman@collabora.com>
+	id 1s7v1n-00000007Y7o-1KJR;
+	Fri, 17 May 2024 10:41:32 +0000
+Received: by mail-oo1-f41.google.com with SMTP id 006d021491bc7-5b27ad74c40so3968eaf.3;
+        Fri, 17 May 2024 03:41:30 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1715942489; x=1716547289;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=8ep6WjZ/XECenrwVHNZ6CdFGyjtlB5or+xofNQVT1ak=;
+        b=e0tS8KlJ8wPbiurnxAeBZETotP8Lufy9o8k+9KD56raLNAL2uHApAZ0W8fdJlvJwvx
+         kPN+1OvKz2uOHpQvDMfFhjMxtleVGQMIPaoFhi1YXQZRvhq68/V2VrJ75i6JqrQHSdAH
+         u2IV4LGKKBYsjIVA4PTb6Vo+uW8Js+ENXkQ76j1f+WsCIHpOHIdzFn8hDA0HTHfiQ1Ko
+         RU+GwMejcnHyDGb+VJ/eb81FSyfERIR7mwCDnfjrXrbZWlN8uh/col/HXWxivnEfYJ7c
+         zGMw3toNU0aoa8cpY1lJAIIB6VWno/OdCG40l65A+8XSYUIVkGwT10lqa0W8VcywLEgv
+         y3NA==
+X-Forwarded-Encrypted: i=1; AJvYcCVq/C15+22hFLo5BP3MvpuOQ/60Bmg5Lcd0OcGiXGxb2Nv/2NbQITIpFqvzVv14nw+hgUdjv5Si8SPmc7ENd+tX/hib8jCCNyQQoopUNbNjo/j/PEeJ8Zs9fteQX0zGvXoSXkJ9T3ydcKJENll4kl1rWsL548Kw/+vu6PCoDrP2dlxOQgPkF/mVBuOsEIrr7m/wPJEuob0jdxkQzWrilKcy8vFCAreUNyOHj5076UsyN4CDkPlU1zUhNPctEXoiouC3vQ==
+X-Gm-Message-State: AOJu0YzUmgD/cigsVjQ02LEMwPHAJC+EnVVkxc2SlJ5Jvm4RrUCoxbEY
+	HlJH76rtuvhLemCMFSLmTsWD3BLSccgCYtMt1Yn+bGCY0jR3gGxM
+X-Google-Smtp-Source: AGHT+IHryVBDZpZ02HKgPHTEO7zKqNKHDK8Mg2XTift9Qc3NF8SYMoDnU3GekdswLqk1/o4nC69OcQ==
+X-Received: by 2002:a05:6358:c005:b0:18a:78c2:7ccf with SMTP id e5c5f4694b2df-193bb628645mr2477851655d.13.1715942489450;
+        Fri, 17 May 2024 03:41:29 -0700 (PDT)
+Received: from localhost (fpd11144dd.ap.nuro.jp. [209.17.68.221])
+        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-658764fda40sm3257811a12.5.2024.05.17.03.41.28
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 17 May 2024 03:41:28 -0700 (PDT)
+Date: Fri, 17 May 2024 19:41:25 +0900
+From: Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Cc: Bjorn Helgaas <bhelgaas@google.com>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Hector Martin <marcan@marcan.st>, Sven Peter <sven@svenpeter.dev>,
+	Alyssa Rosenzweig <alyssa@rosenzweig.io>,
+	Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>,
+	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
+	Florian Fainelli <florian.fainelli@broadcom.com>,
+	Jim Quinlan <jim2101024@gmail.com>,
+	Nicolas Saenz Julienne <nsaenz@kernel.org>,
+	Will Deacon <will@kernel.org>,
+	Linus Walleij <linus.walleij@linaro.org>,
+	Srikanth Thokala <srikanth.thokala@intel.com>,
+	Ryder Lee <ryder.lee@mediatek.com>,
+	Jianjun Wang <jianjun.wang@mediatek.com>,
+	Sergio Paracuellos <sergio.paracuellos@gmail.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Daire McNamara <daire.mcnamara@microchip.com>,
+	Bjorn Andersson <andersson@kernel.org>,
+	Konrad Dybcio <konrad.dybcio@linaro.org>,
+	Marek Vasut <marek.vasut+renesas@gmail.com>,
+	Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>,
+	Shawn Lin <shawn.lin@rock-chips.com>,
+	Heiko Stuebner <heiko@sntech.de>, Jingoo Han <jingoohan1@gmail.com>,
+	Gustavo Pimentel <gustavo.pimentel@synopsys.com>,
+	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
+	Bharat Kumar Gogada <bharat.kumar.gogada@amd.com>,
+	Michal Simek <michal.simek@amd.com>,
+	Geert Uytterhoeven <geert+renesas@glider.be>,
+	Magnus Damm <magnus.damm@gmail.com>,
+	Neil Armstrong <neil.armstrong@linaro.org>,
+	Mark Kettenis <kettenis@openbsd.org>,
+	Tom Joseph <tjoseph@cadence.com>,
+	Ahmad Zainie <wan.ahmad.zainie.wan.mohamad@intel.com>,
+	Jiaxun Yang <jiaxun.yang@flygoat.com>,
+	Kishon Vijay Abraham I <kishon@kernel.org>,
+	Thippeswamy Havalige <thippeswamy.havalige@amd.com>,
+	linux-pci@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, asahi@lists.linux.dev,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rpi-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+	linux-renesas-soc@vger.kernel.org,
+	linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH v3 1/4] dt-bindings: PCI: cdns,cdns-pcie-host: drop
+ redundant msi-parent and pci-bus.yaml
+Message-ID: <20240517104125.GJ202520@rocinante>
+References: <20240413151617.35630-1-krzysztof.kozlowski@linaro.org>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20240413151617.35630-1-krzysztof.kozlowski@linaro.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240517_022529_911969_01F091C3 
-X-CRM114-Status: GOOD (  12.65  )
+X-CRM114-CacheID: sfid-20240517_034131_375544_E829D46A 
+X-CRM114-Status: UNSURE (   8.33  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,97 +127,24 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-With latest IGT, the tests tries to load the module and it
-fails. So build the virtual GPU driver for virtio as module.
+Hello,
 
-Signed-off-by: Vignesh Raman <vignesh.raman@collabora.com>
----
+> The binding reference common cdns-pcie-host.yaml, which already defines
+> msi-parent and has a reference to pci-bus.yaml schema.  Drop redundant
+> pieces here to make it a bit smaller.
 
-v2:
-  - No changes.
+Applied to dt-bindings, thank you!
 
----
- drivers/gpu/drm/ci/build.sh       | 1 -
- drivers/gpu/drm/ci/igt_runner.sh  | 6 +++---
- drivers/gpu/drm/ci/image-tags.yml | 4 ++--
- drivers/gpu/drm/ci/test.yml       | 1 +
- drivers/gpu/drm/ci/x86_64.config  | 2 +-
- 5 files changed, 7 insertions(+), 7 deletions(-)
+[01/04] dt-bindings: PCI: cdns,cdns-pcie-host: Drop redundant msi-parent and pci-bus.yaml
+        https://git.kernel.org/pci/pci/c/51ef0538d4e1
+[02/04] dt-bindings: PCI: mediatek,mt7621: Add missing child node reg
+        https://git.kernel.org/pci/pci/c/36fbed38549c
+[03/04] dt-bindings: PCI: host-bridges: Switch from deprecated pci-bus.yaml
+        https://git.kernel.org/pci/pci/c/5db62b7d3c37
+[04/04] dt-bindings: PCI: mediatek,mt7621-pcie: Switch from deprecated pci-bus.yaml
+        https://git.kernel.org/pci/pci/c/d3fa4be9033b
 
-diff --git a/drivers/gpu/drm/ci/build.sh b/drivers/gpu/drm/ci/build.sh
-index a67871fdcd3f..e938074ac8e7 100644
---- a/drivers/gpu/drm/ci/build.sh
-+++ b/drivers/gpu/drm/ci/build.sh
-@@ -157,7 +157,6 @@ fi
- 
- mkdir -p artifacts/install/lib
- mv install/* artifacts/install/.
--rm -rf artifacts/install/modules
- ln -s common artifacts/install/ci-common
- cp .config artifacts/${CI_JOB_NAME}_config
- 
-diff --git a/drivers/gpu/drm/ci/igt_runner.sh b/drivers/gpu/drm/ci/igt_runner.sh
-index 20026612a9bd..55532f79fbdc 100755
---- a/drivers/gpu/drm/ci/igt_runner.sh
-+++ b/drivers/gpu/drm/ci/igt_runner.sh
-@@ -30,10 +30,10 @@ case "$DRIVER_NAME" in
-             export IGT_FORCE_DRIVER="panfrost"
-         fi
-         ;;
--    amdgpu)
-+    amdgpu|virtio_gpu)
-         # Cannot use HWCI_KERNEL_MODULES as at that point we don't have the module in /lib
--        mv /install/modules/lib/modules/* /lib/modules/.
--        modprobe amdgpu
-+        mv /install/modules/lib/modules/* /lib/modules/. || true
-+        modprobe --first-time $DRIVER_NAME
-         ;;
- esac
- 
-diff --git a/drivers/gpu/drm/ci/image-tags.yml b/drivers/gpu/drm/ci/image-tags.yml
-index 60323ebc7304..328f5c560742 100644
---- a/drivers/gpu/drm/ci/image-tags.yml
-+++ b/drivers/gpu/drm/ci/image-tags.yml
-@@ -4,9 +4,9 @@ variables:
-    DEBIAN_BASE_TAG: "${CONTAINER_TAG}"
- 
-    DEBIAN_X86_64_BUILD_IMAGE_PATH: "debian/x86_64_build"
--   DEBIAN_BUILD_TAG: "2023-10-08-config"
-+   DEBIAN_BUILD_TAG: "2024-05-09-virtio"
- 
--   KERNEL_ROOTFS_TAG: "2023-10-06-amd"
-+   KERNEL_ROOTFS_TAG: "2024-05-09-virtio"
- 
-    DEBIAN_X86_64_TEST_BASE_IMAGE: "debian/x86_64_test-base"
-    DEBIAN_X86_64_TEST_IMAGE_GL_PATH: "debian/x86_64_test-gl"
-diff --git a/drivers/gpu/drm/ci/test.yml b/drivers/gpu/drm/ci/test.yml
-index 612c9ede3507..864ac3809d84 100644
---- a/drivers/gpu/drm/ci/test.yml
-+++ b/drivers/gpu/drm/ci/test.yml
-@@ -350,6 +350,7 @@ virtio_gpu:none:
-   script:
-     - ln -sf $CI_PROJECT_DIR/install /install
-     - mv install/bzImage /lava-files/bzImage
-+    - mkdir -p /lib/modules
-     - mkdir -p $CI_PROJECT_DIR/results
-     - ln -sf $CI_PROJECT_DIR/results /results
-     - install/crosvm-runner.sh install/igt_runner.sh
-diff --git a/drivers/gpu/drm/ci/x86_64.config b/drivers/gpu/drm/ci/x86_64.config
-index 1cbd49a5b23a..78479f063e8e 100644
---- a/drivers/gpu/drm/ci/x86_64.config
-+++ b/drivers/gpu/drm/ci/x86_64.config
-@@ -91,7 +91,7 @@ CONFIG_KVM=y
- CONFIG_KVM_GUEST=y
- CONFIG_VIRT_DRIVERS=y
- CONFIG_VIRTIO_FS=y
--CONFIG_DRM_VIRTIO_GPU=y
-+CONFIG_DRM_VIRTIO_GPU=m
- CONFIG_SERIAL_8250_CONSOLE=y
- CONFIG_VIRTIO_NET=y
- CONFIG_VIRTIO_CONSOLE=y
--- 
-2.40.1
-
+	Krzysztof
 
 _______________________________________________
 Linux-rockchip mailing list
