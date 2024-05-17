@@ -4,143 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 293CDC04FFE
-	for <linux-rockchip@archiver.kernel.org>; Fri, 17 May 2024 06:46:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8524BC04FFE
+	for <linux-rockchip@archiver.kernel.org>; Fri, 17 May 2024 06:58:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:CC:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=CYDuZvaBdAfI9RFByRuE60kSFDRe3u+h5c2OGvfDxZU=; b=htDMNXtgljU9wL
-	V3EOdbe9++6FrysPFpSObRmZWcmy9pPZBbWqdeKnfVDFK9mpw4xJtedFMWHVP7C1sWbTaWh8vyaWU
-	8172lj/M+JeHCHaChR7CGQSXfM1+HwP9JRGUIqdIwFOJDINXqSM6mJjJdM085qEmp9iAtfhJ9CDJA
-	k6XqyPGHLAnYLdLGVbE5xKe/t3NC+qJgIdpoj/hPbEs4TgLbCxJ/OiVJVcq/7mpFBshhJjtgNMukb
-	s+jd8OFwre5wWKS7fnko/un4MeMmhfnFcs8+17Rp8nNuRJZ1PS62c6hoPPbEwkZKX+q2VCYVDzzUX
-	zcHI5jWzW3p+nCRAAcpw==;
+	List-Owner; bh=DOosXZcXuUatSWZXxBYl3i8UXpu/eMwelktMduONQsY=; b=GwN7em6oSABNEw
+	0vfjQ1VnIYfj8hxRWUHmdytmqPzHMXjSc5Hk4c0QE18R1sFlx2SP4DUIqkNNmQKVxeBeVaoLMavpK
+	lvNferl2klrTE3/B1RjOOz9bUraRv/GT5Jp6PCkRylN8FDI8dmBBOwuL/WNjMjj/nps4Yi0fxgXRh
+	R6G1e8P+vYuR3LNA5pM7LzWbHxYj3F/nDEByrscVsz3RLzY0T4swj8I6g+sl5HXCk5qTMChRQvjYv
+	BSfRt2Bsg0bfGiWcVp6m+bQG3s8/ps9dGM2Y3HBaKY/sFQUE+x1bNhXLNJ6ooeDvDQP9dPPLYOg5m
+	1huIrUtx/PNqKm6eimqQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s7rMN-00000006yvk-0YSH;
-	Fri, 17 May 2024 06:46:31 +0000
-Received: from mx07-00178001.pphosted.com ([185.132.182.106])
+	id 1s7rYE-00000007042-0EN9;
+	Fri, 17 May 2024 06:58:46 +0000
+Received: from relay3-d.mail.gandi.net ([217.70.183.195])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s7rMK-00000006yuw-07fS;
-	Fri, 17 May 2024 06:46:29 +0000
-Received: from pps.filterd (m0288072.ppops.net [127.0.0.1])
-	by mx07-00178001.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 44GKOJUN015055;
-	Fri, 17 May 2024 08:45:53 +0200
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=foss.st.com; h=
-	message-id:date:mime-version:subject:to:cc:references:from
-	:in-reply-to:content-type:content-transfer-encoding; s=
-	selector1; bh=z/uK7yf6eIe+jSuaXNY0ImTzPYAvaGtkUIkCxsmH9qM=; b=tM
-	myJ/dMGKQ2x/4Ia33JfzZHcbgnx7LWrzROgMgfHhzPWq0PRz9OjTTociU4rQ6I5R
-	IYFzIFLY0ReOsUeTwx91iz945oEF7HmCnXypJxQbRi3+yIQ+10AwkrblW/lieGiG
-	65WmOoAnpKxBY/y2iy7RqLElDrZOTGjUwgSsM2gVxnZyEqUNzyno7y/GRQZZjFEV
-	OSxYVDjB6Y2pyBD6b+pV2aLeUDSz9GEULXeSjZOMbAB/C/K1yx0SCrI3zfofnHJ6
-	AZOrbjQ26YwAEE/E5uByqagJzdtxukCnzwMGt6xODMYg2i6T+bOOvR/RP2gycvfH
-	b3ijlVxPrqbcbkxrKm6w==
-Received: from beta.dmz-ap.st.com (beta.dmz-ap.st.com [138.198.100.35])
-	by mx07-00178001.pphosted.com (PPS) with ESMTPS id 3y4sxv8p52-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Fri, 17 May 2024 08:45:53 +0200 (MEST)
-Received: from euls16034.sgp.st.com (euls16034.sgp.st.com [10.75.44.20])
-	by beta.dmz-ap.st.com (STMicroelectronics) with ESMTP id 7B0074002D;
-	Fri, 17 May 2024 08:45:47 +0200 (CEST)
-Received: from Webmail-eu.st.com (shfdag1node1.st.com [10.75.129.69])
-	by euls16034.sgp.st.com (STMicroelectronics) with ESMTP id 871E621058D;
-	Fri, 17 May 2024 08:44:26 +0200 (CEST)
-Received: from [10.48.87.62] (10.48.87.62) by SHFDAG1NODE1.st.com
- (10.75.129.69) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.35; Fri, 17 May
- 2024 08:44:23 +0200
-Message-ID: <e2b89d34-0222-42a1-98ae-c417220f9b39@foss.st.com>
-Date: Fri, 17 May 2024 08:44:23 +0200
+	id 1s7rY9-0000000703E-2e7Q;
+	Fri, 17 May 2024 06:58:43 +0000
+Received: by mail.gandi.net (Postfix) with ESMTPSA id 5366060016;
+	Fri, 17 May 2024 06:58:35 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=gm1;
+	t=1715929116;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=8+WtpG+JowVcU8bh3DYjQQ6K0ukhxfEGwefCmJzc8YA=;
+	b=f8KVFHeNh2VvHZZ6hzRy0KYo2z1+B2wGwXn7zUG349l2A4tKLI0ZDhpexlh3IUzFtK/cnH
+	G4vfuEDwNMPNJmSzzVKJTqJkec3UDkhb7Ri4LEuTyTyQUy6andM+Hdr7ASxso739ADCNPf
+	Ko2E4NMePCqgMC1A7+eqx3f8QeIF3NA3fUwPrU+0d2wbbE4Xl5hJJ2PXaQO6+G79OZlB49
+	Vj8Yl1i5JyjqZXeJ6PFT0cGNZNX4RmNQb3gU6C55uHf8H9w8r1JsdI8Hp2gyLKvg/YudPM
+	6YxX7AHARvGW/6A5RRP+N28w/ZyAq10mTdiG1jEHqlveht7usBO2Q8V8FqmNjQ==
+Date: Fri, 17 May 2024 08:58:32 +0200
+From: Luca Ceresoli <luca.ceresoli@bootlin.com>
+To: Dmitry Yashin <dmt.yashin@gmail.com>
+Cc: Linus Walleij <linus.walleij@linaro.org>, Heiko Stuebner
+ <heiko@sntech.de>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Rob Herring <robh@kernel.org>, Jianqun Xu
+ <jay.xu@rock-chips.com>, devicetree@vger.kernel.org,
+ linux-gpio@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH 3/3] pinctrl: rockchip: add rk3308b SoC support
+Message-ID: <20240517085832.365ac878@booty>
+In-Reply-To: <81aa0e4e-a3c7-41d1-8cd2-4d060730b37a@gmail.com>
+References: <20240515121634.23945-1-dmt.yashin@gmail.com>
+	<20240515121634.23945-4-dmt.yashin@gmail.com>
+	<20240515182954.03c4a475@booty>
+	<81aa0e4e-a3c7-41d1-8cd2-4d060730b37a@gmail.com>
+Organization: Bootlin
+X-Mailer: Claws Mail 4.0.0 (GTK+ 3.24.33; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 08/20] pinctrl: st: Use scope based of_node_put()
- cleanups
-To: "Peng Fan (OSS)" <peng.fan@oss.nxp.com>,
-        Linus Walleij
-	<linus.walleij@linaro.org>,
-        Thierry Reding <thierry.reding@gmail.com>,
-        Jonathan Hunter <jonathanh@nvidia.com>,
-        Dvorkin Dmitry <dvorkin@tibbo.com>, Wells Lu <wellslutw@gmail.com>,
-        Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-        Alexandre Torgue <alexandre.torgue@foss.st.com>,
-        Emil Renner Berthing
-	<kernel@esmil.dk>,
-        Jianlong Huang <jianlong.huang@starfivetech.com>,
-        Hal Feng
-	<hal.feng@starfivetech.com>,
-        Orson Zhai <orsonzhai@gmail.com>,
-        Baolin Wang
-	<baolin.wang@linux.alibaba.com>,
-        Chunyan Zhang <zhang.lyra@gmail.com>,
-        Viresh
- Kumar <vireshk@kernel.org>,
-        Shiraz Hashim <shiraz.linux.kernel@gmail.com>, <soc@kernel.org>,
-        Krzysztof Kozlowski <krzk@kernel.org>,
-        Sylwester Nawrocki
-	<s.nawrocki@samsung.com>,
-        Alim Akhtar <alim.akhtar@samsung.com>,
-        Geert
- Uytterhoeven <geert+renesas@glider.be>,
-        Heiko Stuebner <heiko@sntech.de>, Damien Le Moal <dlemoal@kernel.org>,
-        Ludovic Desroches
-	<ludovic.desroches@microchip.com>,
-        Nicolas Ferre
-	<nicolas.ferre@microchip.com>,
-        Alexandre Belloni
-	<alexandre.belloni@bootlin.com>,
-        Claudiu Beznea <claudiu.beznea@tuxon.dev>,
-        Dong Aisheng <aisheng.dong@nxp.com>,
-        Fabio Estevam <festevam@gmail.com>, Shawn Guo <shawnguo@kernel.org>,
-        Jacky Bai <ping.bai@nxp.com>,
-        Pengutronix
- Kernel Team <kernel@pengutronix.de>,
-        Chester Lin <chester62515@gmail.com>,
-        Matthias Brugger <mbrugger@suse.com>,
-        Ghennadi Procopciuc
-	<ghennadi.procopciuc@oss.nxp.com>,
-        Sean Wang <sean.wang@kernel.org>,
-        Matthias
- Brugger <matthias.bgg@gmail.com>,
-        AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>,
-        Sascha Hauer
-	<s.hauer@pengutronix.de>,
-        Andrew Jeffery <andrew@codeconstruct.com.au>,
-        Joel
- Stanley <joel@jms.id.au>,
-        Dan Carpenter <dan.carpenter@linaro.org>,
-        Tony
- Lindgren <tony@atomide.com>,
-        Stephen Warren <swarren@wwwdotorg.org>
-CC: <linux-gpio@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-        <linux-tegra@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-        <linux-stm32@st-md-mailman.stormreply.com>,
-        <linux-samsung-soc@vger.kernel.org>,
-        <linux-renesas-soc@vger.kernel.org>,
-        <linux-rockchip@lists.infradead.org>,
-        <linux-riscv@lists.infradead.org>,
-        <linux-mediatek@lists.infradead.org>, <imx@lists.linux.dev>,
-        <linux-aspeed@lists.ozlabs.org>, <openbmc@lists.ozlabs.org>,
-        Peng Fan
-	<peng.fan@nxp.com>
-References: <20240504-pinctrl-cleanup-v2-0-26c5f2dc1181@nxp.com>
- <20240504-pinctrl-cleanup-v2-8-26c5f2dc1181@nxp.com>
-Content-Language: en-US
-From: Patrice CHOTARD <patrice.chotard@foss.st.com>
-In-Reply-To: <20240504-pinctrl-cleanup-v2-8-26c5f2dc1181@nxp.com>
-X-Originating-IP: [10.48.87.62]
-X-ClientProxiedBy: SHFCAS1NODE1.st.com (10.75.129.72) To SHFDAG1NODE1.st.com
- (10.75.129.69)
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1039,Hydra:6.0.650,FMLib:17.11.176.26
- definitions=2024-05-16_07,2024-05-15_01,2023-05-22_02
+X-GND-Sasl: luca.ceresoli@bootlin.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240516_234628_386102_06E44811 
-X-CRM114-Status: GOOD (  20.03  )
+X-CRM114-CacheID: sfid-20240516_235841_977333_B1AAA91B 
+X-CRM114-Status: GOOD (  22.15  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -157,146 +79,56 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Hello Dmitry,
 
+On Thu, 16 May 2024 17:06:46 +0500
+Dmitry Yashin <dmt.yashin@gmail.com> wrote:
 
-On 5/4/24 15:20, Peng Fan (OSS) wrote:
-> From: Peng Fan <peng.fan@nxp.com>
+> Hi Luca,
 > 
-> Use scope based of_node_put() cleanup to simplify code.
+> On 15.05.24 21:29, Luca Ceresoli wrote:
+> > I'm skeptical about this being bound to a new DT compatible. As far as I
+> > know the RK3308 and RK3308B are mostly equivalent, so it looks as the
+> > pinctrl implementation could be detected at runtime. This would let
+> > products to be built with either chip version and work on any without
+> > any DT change.  
 > 
-> Signed-off-by: Peng Fan <peng.fan@nxp.com>
-> ---
->  drivers/pinctrl/pinctrl-st.c | 37 +++++++++++--------------------------
->  1 file changed, 11 insertions(+), 26 deletions(-)
 > 
-> diff --git a/drivers/pinctrl/pinctrl-st.c b/drivers/pinctrl/pinctrl-st.c
-> index 5d9abd6547d0..fe2d52e434db 100644
-> --- a/drivers/pinctrl/pinctrl-st.c
-> +++ b/drivers/pinctrl/pinctrl-st.c
-> @@ -1195,10 +1195,10 @@ static int st_pctl_dt_parse_groups(struct device_node *np,
->  	struct property *pp;
->  	struct device *dev = info->dev;
->  	struct st_pinconf *conf;
-> -	struct device_node *pins;
-> +	struct device_node *pins __free(device_node) = NULL;
->  	phandle bank;
->  	unsigned int offset;
-> -	int i = 0, npins = 0, nr_props, ret = 0;
-> +	int i = 0, npins = 0, nr_props;
->  
->  	pins = of_get_child_by_name(np, "st,pins");
->  	if (!pins)
-> @@ -1213,8 +1213,7 @@ static int st_pctl_dt_parse_groups(struct device_node *np,
->  			npins++;
->  		} else {
->  			pr_warn("Invalid st,pins in %pOFn node\n", np);
-> -			ret = -EINVAL;
-> -			goto out_put_node;
-> +			return -EINVAL;
->  		}
->  	}
->  
-> @@ -1223,10 +1222,8 @@ static int st_pctl_dt_parse_groups(struct device_node *np,
->  	grp->pins = devm_kcalloc(dev, npins, sizeof(*grp->pins), GFP_KERNEL);
->  	grp->pin_conf = devm_kcalloc(dev, npins, sizeof(*grp->pin_conf), GFP_KERNEL);
->  
-> -	if (!grp->pins || !grp->pin_conf) {
-> -		ret = -ENOMEM;
-> -		goto out_put_node;
-> -	}
-> +	if (!grp->pins || !grp->pin_conf)
-> +		return -ENOMEM;
->  
->  	/* <bank offset mux direction rt_type rt_delay rt_clk> */
->  	for_each_property_of_node(pins, pp) {
-> @@ -1260,17 +1257,13 @@ static int st_pctl_dt_parse_groups(struct device_node *np,
->  		i++;
->  	}
->  
-> -out_put_node:
-> -	of_node_put(pins);
-> -
-> -	return ret;
-> +	return 0;
->  }
->  
->  static int st_pctl_parse_functions(struct device_node *np,
->  			struct st_pinctrl *info, u32 index, int *grp_index)
->  {
->  	struct device *dev = info->dev;
-> -	struct device_node *child;
->  	struct st_pmx_func *func;
->  	struct st_pctl_group *grp;
->  	int ret, i;
-> @@ -1285,15 +1278,13 @@ static int st_pctl_parse_functions(struct device_node *np,
->  		return -ENOMEM;
->  
->  	i = 0;
-> -	for_each_child_of_node(np, child) {
-> +	for_each_child_of_node_scoped(np, child) {
->  		func->groups[i] = child->name;
->  		grp = &info->groups[*grp_index];
->  		*grp_index += 1;
->  		ret = st_pctl_dt_parse_groups(child, grp, info, i++);
-> -		if (ret) {
-> -			of_node_put(child);
-> +		if (ret)
->  			return ret;
-> -		}
->  	}
->  	dev_info(dev, "Function[%d\t name:%s,\tgroups:%d]\n", index, func->name, func->ngroups);
->  
-> @@ -1601,7 +1592,6 @@ static int st_pctl_probe_dt(struct platform_device *pdev,
->  	int i = 0, j = 0, k = 0, bank;
->  	struct pinctrl_pin_desc *pdesc;
->  	struct device_node *np = dev->of_node;
-> -	struct device_node *child;
->  	int grp_index = 0;
->  	int irq = 0;
->  
-> @@ -1646,25 +1636,21 @@ static int st_pctl_probe_dt(struct platform_device *pdev,
->  	pctl_desc->pins = pdesc;
->  
->  	bank = 0;
-> -	for_each_child_of_node(np, child) {
-> +	for_each_child_of_node_scoped(np, child) {
->  		if (of_property_read_bool(child, "gpio-controller")) {
->  			const char *bank_name = NULL;
->  			char **pin_names;
->  
->  			ret = st_gpiolib_register_bank(info, bank, child);
-> -			if (ret) {
-> -				of_node_put(child);
-> +			if (ret)
->  				return ret;
-> -			}
->  
->  			k = info->banks[bank].range.pin_base;
->  			bank_name = info->banks[bank].range.name;
->  
->  			pin_names = devm_kasprintf_strarray(dev, bank_name, ST_GPIO_PINS_PER_BANK);
-> -			if (IS_ERR(pin_names)) {
-> -				of_node_put(child);
-> +			if (IS_ERR(pin_names))
->  				return PTR_ERR(pin_names);
-> -			}
->  
->  			for (j = 0; j < ST_GPIO_PINS_PER_BANK; j++, k++) {
->  				pdesc->number = k;
-> @@ -1678,7 +1664,6 @@ static int st_pctl_probe_dt(struct platform_device *pdev,
->  							i++, &grp_index);
->  			if (ret) {
->  				dev_err(dev, "No functions found.\n");
-> -				of_node_put(child);
->  				return ret;
->  			}
->  		}
+> Thanks for your feedback.
 > 
+> Indeed, these SoC's have a lot in common, but as I can see the rk3308b
+> has more blocks, like extra PWM's (rk3308 datasheet 1.5 [0] shows only
+> 1x PWM 4ch, when rk3308b and rk3308b-s have 3x PWM 4ch), 1-wire and
+> CAN controller (mentioned in the TRM, but dropped from rk3308b
+> datasheet for some reason).
+> 
+> So, in my view, it really makes sense to add rk3308b.dtsi, where extra
+> PWM's, pinctrl compatible and its pin functions can be moved. And if
+> its not worth it, then I will try to adapt the entire series to runtime
+> config based on cpuid like you suggested.
 
-Reviewed-by: Patrice Chotard <patrice.chotard@foss.st.com>
+Having a rk3308b.dtsi would probably make sense, yes, as there are
+several differences as you described. However for the pinctrl it seems
+probably not necessary.
 
-Thanks
-Patrice
+I've seen actual products being manufactured with two different RK3308
+variants in different lots of production, but with the same DT that has
+rockchip,rk3308-pinctrl in it. Those would need a _selective_ DT
+upgrade in order to benefit from your changes.
+
+And even if a product had always used the B variant, it would need DT
+upgrade when upgrading to a kernel with your changes. Otherwise with
+patch 1/3 of this series the pictrl driver would lose many routes after
+upgrading the kernel (but not the DT): can this lead to
+previously-working devices to stop working? I think this is a
+fundamental question to reply.
+
+Luca
+
+-- 
+Luca Ceresoli, Bootlin
+Embedded Linux and Kernel engineering
+https://bootlin.com
 
 _______________________________________________
 Linux-rockchip mailing list
