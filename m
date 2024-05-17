@@ -4,74 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3879BC25B78
-	for <linux-rockchip@archiver.kernel.org>; Fri, 17 May 2024 11:22:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DBB88C04FFE
+	for <linux-rockchip@archiver.kernel.org>; Fri, 17 May 2024 12:26:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=asBKxA9zJA3Acx3iqugzve12351pZjmO9xdj0h0yTY8=; b=b/PUSIY6MYPRoP
-	bbj5vAe6V2dSCQKFt/Vu1o1wui06gT1DuLYhWXckdMNviHGMwNnIrI+qrDavyQ96ka9CKhiddfNj8
-	TheK0hdxby+pd8T9qUcyHf2T6rQAaJi9TvK5fuU0ltokWr1RJ9s0i8rHa4zYIFBalo7pp2cUF5rVZ
-	tPhGA+wz8HvoZUaMnm5SulZeAZNH1k+vHa/1eO/MnrM5OrZYGSJDCziA+dc95hlEmehFJVRRMxHl0
-	iWWi5VN5heS9N+wpILTL3IL1FZxRnOwmNGF1+66cZJf7uV9XVn3y2xo4oj+4pWpX/ZDd9ZaVXyRi/
-	cQvVJjhhDv6POL9go+QA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=NMPxAYPoUnixZFkVeyXbWRiXrUaRa39vRLSzdKdcOS0=; b=MuMQuslJM/8k4S
+	DnTZflI7YMx4r/K3d4qDCmCs4uDc9zjznj8UsGOc3ZifC8drFHstRDDgcZcnOzCKJR4NMueLPrxId
+	IN8SPIn1ceHDRxueZ0ZdWWCBQ6Lb6/nmsuUtNVPxAdTe0T2ePyAnJpegH3bJkiuwGe555xS2ncBeC
+	MTcbA6v0oEfaF802eTQPGZefoZ33MOkk4mSMhi6lTdNVAn4dCR0bX2wIhe53FnLDJ/SVekIpYBlxJ
+	i5QSjrSWVmKy5thJPENMdOoWOfbIRsIq7SZpNHeDInMX+pfgwdjJ2HwFyKK/C63W6DqoYpUdEHzvy
+	Zh8xfOzkCr8HtOD3NoGQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s7vfj-00000007dnb-3Mmu;
-	Fri, 17 May 2024 11:22:47 +0000
-Received: from mail-pl1-f173.google.com ([209.85.214.173])
+	id 1s7wfE-00000007op2-2Hru;
+	Fri, 17 May 2024 12:26:20 +0000
+Received: from mail-lj1-x235.google.com ([2a00:1450:4864:20::235])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s7vff-00000007dmE-1Qqn;
-	Fri, 17 May 2024 11:22:44 +0000
-Received: by mail-pl1-f173.google.com with SMTP id d9443c01a7336-1ec486198b6so4496975ad.1;
-        Fri, 17 May 2024 04:22:43 -0700 (PDT)
+	id 1s7wfA-00000007okQ-3Mgj;
+	Fri, 17 May 2024 12:26:18 +0000
+Received: by mail-lj1-x235.google.com with SMTP id 38308e7fff4ca-2e3e18c24c1so21001011fa.1;
+        Fri, 17 May 2024 05:26:04 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1715948763; x=1716553563; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=BTfbpSzPiGIEgV303dsq51yFhN3J0xYTsTq4AVxFCHI=;
+        b=Nh0cRZieZt5u5QbHyqzi9qr6HbYhE/EWxIqq5SzpZ72hoh76A0rR8rXARn/zjb8Ewz
+         q2lNLxrWI7Z9fJGG8KAn0gM9HxjuTh1pRn+OZzixSNCfeiVOGhWQOcwpHtvWgAYh8tyF
+         dhatcm/gZDfe4dUv2YWuWMIB1fGedk70Psd+KmXYZY10vVX076xxvY6hf7vGVZJyk+dv
+         8/Dr2JLJKp515tCILdb6gQEbqkk7rk35pk1aagLy/9rYsQfG8Dd2E2ZlPnSnwUr7PAT6
+         nw4yQ1XCDVkXE65lR5UIpniFpqBotguNxyErnWbm6NAMu9Vm/2adMgCeBUXHL4ezPHCW
+         1MAA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1715944962; x=1716549762;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=G2dvI+vZE8pCZhViJyMM66y2U5LdOWJJxNSUxl+PGww=;
-        b=nMvQd15oBO9z+kk8uOLWdb0pMKeDjQndKJTFCcwZU2Djq4DBvwfQ/b1OBlv9/GUHQJ
-         aa6UgUFYaeJf2xGpihG2ApTFSSvaTITCUdBmwApIbdl/XAID3NbTqycHiZmIlfNCfAum
-         WVQvbSPuBYT16vpkJbbpdLGM4JtMZd84jjiInfpbcAUxA71Q7wiVKgic45is6IyNVvp/
-         5szIZd8nznwgoPGDTifaZgF5q2EV6tKeGuBi7mNvvf/o04hsDzsFnOC8R6rgJYeKdpN0
-         k+Sx4S5R7P+vYs/4U6UZ+9u441aFZnwwnmFIIVep8QhdpWpDnDvEMQ2djjxep2h8sqYz
-         SclA==
-X-Forwarded-Encrypted: i=1; AJvYcCWsXRAhLusk/iigryFMikgROR8RxeNf0FG2vr6iZngC23EGaUvfD+J05iSL1t/Cw5l0Ug6r8ZShNQWclF4EY52RVn6eVsvYCLQtrLmp4TQgOn1gZKxJb/KMkJ3oyFxkoVtFqbCypEnoUtp8yYP14UPPg9JRMDc3/HQ=
-X-Gm-Message-State: AOJu0YzKFQYYNxyCGHsca6pQH/FNtBTPAf4Z93JaOWgMqNs3M3b3NfPb
-	sGY6uNmESud4J5KhFBQEFJ35xruSZTR0UOEIVfRYTW5GjCzmT+jO
-X-Google-Smtp-Source: AGHT+IHeIMz2gvttVbu8YvoQNX0R+DpY+pIkhaL/+tyli1VVIoZ7xusCcFeOVbaL7QVaVkzkH6ZC4g==
-X-Received: by 2002:a17:903:245:b0:1e4:4ade:f504 with SMTP id d9443c01a7336-1ef44161e45mr231310545ad.46.1715944962575;
-        Fri, 17 May 2024 04:22:42 -0700 (PDT)
-Received: from localhost (fpd11144dd.ap.nuro.jp. [209.17.68.221])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-1ef0bad9d22sm155932115ad.72.2024.05.17.04.22.40
+        d=1e100.net; s=20230601; t=1715948763; x=1716553563;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=BTfbpSzPiGIEgV303dsq51yFhN3J0xYTsTq4AVxFCHI=;
+        b=CfuapNP1/0StilWgUajOAbs06FCphE4pavOdfnDIiUf880CM3vP27DqBb8L+aYgo1N
+         mwdrDwb6Mugtzr0T8206M1wq9uWTU3MWafXGaxfAo68FqQnP1Dq0YCFIXDp90Cg3pXqR
+         MXM98uvpMOuGXijug8/YdcVK5975j+TD2e5qh7xWmnm8UB5220/4E2z0hHeF4IdQqEoL
+         NjF6Bu0HLW6tCM6AX8AasQ/gxpLW+RazMs0BOu1CiEsXglfHU4vi51A5YldiS9J/51nD
+         TbI05MHHS/kv4IvNN1LDCFFAYhiFy+x1nDoHSTlLLoW8KU94m21O/JuN/6+nukARs6/B
+         z8cg==
+X-Forwarded-Encrypted: i=1; AJvYcCWOjn8dNim4u7tHhe3i7NVDW88axTSP2kQ4lWdcz72E9ewk8hBd+UScUrNqoYVGNc0MbP9pCq4vetPtRUEvFJXpaRzHzc2/5xBLe4oTK3qcSrF6WWlMXhOpmnUfdY7oLxg4d1a5mUwaMQMGvcAXSDZpsBPY6vP2KIg=
+X-Gm-Message-State: AOJu0Yxutjl0+AdNtV2EPC4k3bLAkZND8TT+jj7QSh6AHeFvSihf4Lpx
+	GK48NlI2VrcjaPeimJssUyfL9vOwvUWVZMaQo9yEU2/F9WmSkK+c9eEavH71cbM=
+X-Google-Smtp-Source: AGHT+IESDynaSNz+w7Kg/DLSAjwanT7vil/v6O+GgjNjyOp7XS/RC3dSkeivfIryg2jvuKTuAI0Z9A==
+X-Received: by 2002:a2e:7805:0:b0:2e1:bdfd:ce70 with SMTP id 38308e7fff4ca-2e51fd2dd0amr164028651fa.6.1715948762536;
+        Fri, 17 May 2024 05:26:02 -0700 (PDT)
+Received: from latitude-fedora.letovo.school ([194.247.191.114])
+        by smtp.gmail.com with ESMTPSA id 38308e7fff4ca-2e4d15156d3sm26598971fa.99.2024.05.17.05.26.01
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 17 May 2024 04:22:41 -0700 (PDT)
-Date: Fri, 17 May 2024 20:22:39 +0900
-From: Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>
-To: Niklas Cassel <cassel@kernel.org>
-Cc: Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
-	Heiko Stuebner <heiko@sntech.de>, Simon Xue <xxm@rock-chips.com>,
-	Kever Yang <kever.yang@rock-chips.com>,
-	Damien Le Moal <dlemoal@kernel.org>,
-	Jianfeng Liu <liujianfeng1994@gmail.com>,
-	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
-	stable@vger.kernel.org, linux-pci@vger.kernel.org,
+        Fri, 17 May 2024 05:26:02 -0700 (PDT)
+From: Alexey Charkov <alchark@gmail.com>
+To: Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>
+Cc: Alexey Charkov <alchark@gmail.com>,
+	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH v3] PCI: dw-rockchip: Fix initial PERST# GPIO value
-Message-ID: <20240517112239.GU202520@rocinante>
-References: <20240417164227.398901-1-cassel@kernel.org>
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH] arm64: dts: rockchip: add rfkill node for M.2 Key E Bluetooth on Rock 5B
+Date: Fri, 17 May 2024 16:25:08 +0400
+Message-ID: <20240517122509.4626-1-alchark@gmail.com>
+X-Mailer: git-send-email 2.45.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20240417164227.398901-1-cassel@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240517_042243_402325_BD403DFE 
-X-CRM114-Status: GOOD (  14.25  )
+X-CRM114-CacheID: sfid-20240517_052616_863281_7C218BEA 
+X-CRM114-Status: GOOD (  10.99  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,53 +95,40 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello,
+By default the BT WAKE signal inside the M.2 key E connector on Radxa
+Rock 5B is driven low, which results in the Bluetooth function being
+disabled even if the inserted M.2 card supports it. Expose this signal
+as an RFKILL device so that it can be enabled by the userspace.
 
-> PERST# is active low according to the PCIe specification.
-> 
-> However, the existing pcie-dw-rockchip.c driver does:
-> gpiod_set_value(..., 0); msleep(100); gpiod_set_value(..., 1);
-> When asserting + deasserting PERST#.
-> 
-> This is of course wrong, but because all the device trees for this
-> compatible string have also incorrectly marked this GPIO as ACTIVE_HIGH:
-> $ git grep -B 10 reset-gpios arch/arm64/boot/dts/rockchip/rk3568*
-> $ git grep -B 10 reset-gpios arch/arm64/boot/dts/rockchip/rk3588*
-> 
-> The actual toggling of PERST# is correct.
-> (And we cannot change it anyway, since that would break device tree
-> compatibility.)
-> 
-> However, this driver does request the GPIO to be initialized as
-> GPIOD_OUT_HIGH, which does cause a silly sequence where PERST# gets
-> toggled back and forth for no good reason.
-> 
-> Fix this by requesting the GPIO to be initialized as GPIOD_OUT_LOW
-> (which for this driver means PERST# asserted).
-> 
-> This will avoid an unnecessary signal change where PERST# gets deasserted
-> (by devm_gpiod_get_optional()) and then gets asserted
-> (by rockchip_pcie_start_link()) just a few instructions later.
-> 
-> Before patch, debug prints on EP side, when booting RC:
-> [  845.606810] pci: PERST# asserted by host!
-> [  852.483985] pci: PERST# de-asserted by host!
-> [  852.503041] pci: PERST# asserted by host!
-> [  852.610318] pci: PERST# de-asserted by host!
-> 
-> After patch, debug prints on EP side, when booting RC:
-> [  125.107921] pci: PERST# asserted by host!
-> [  132.111429] pci: PERST# de-asserted by host!
-> 
-> This extra, very short, PERST# assertion + deassertion has been reported
-> to cause issues with certain WLAN controllers, e.g. RTL8822CE.
+Tested with an Intel AX210 card, which connects a Bluetooth device over
+the USB 2.0 bus.
 
-Applied to controller/rockchip, thank you!
+Signed-off-by: Alexey Charkov <alchark@gmail.com>
+---
+ arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts | 7 +++++++
+ 1 file changed, 7 insertions(+)
 
-[1/1] PCI: dw-rockchip: Fix initial PERST# GPIO value
-      https://git.kernel.org/pci/pci/c/b00c483a1075
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
+index b70313643af8..27dd95f92f33 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
+@@ -65,6 +65,13 @@ rfkill {
+ 		shutdown-gpios = <&gpio4 RK_PA2 GPIO_ACTIVE_HIGH>;
+ 	};
+ 
++	rfkill-bt {
++		compatible = "rfkill-gpio";
++		label = "rfkill-m2-bt";
++		radio-type = "bluetooth";
++		shutdown-gpios = <&gpio3 RK_PD5 GPIO_ACTIVE_HIGH>;
++	};
++
+ 	vcc3v3_pcie2x1l0: vcc3v3-pcie2x1l0-regulator {
+ 		compatible = "regulator-fixed";
+ 		enable-active-high;
+-- 
+2.45.0
 
-	Krzysztof
 
 _______________________________________________
 Linux-rockchip mailing list
