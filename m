@@ -4,113 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1B6B3C04FFE
-	for <linux-rockchip@archiver.kernel.org>; Fri, 17 May 2024 10:41:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4D41BC04FFE
+	for <linux-rockchip@archiver.kernel.org>; Fri, 17 May 2024 11:13:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=NucwmwqVfPBEtFCQfK0QRzOI0X2SpMTlU5m4mq4NHmE=; b=T5a05zQbX4Towc
-	BSy9KjtYxKQHy7U8Z78p/3RBU+4N+SbqWu30xUlRf/GtEPug6zdY5LtSXyFIk4trqydY2YM79Of/Q
-	doLeLb+xYwuqA+Kj2seMDcWKnqdAdb5auVHwN9xuY9a3ERVCRXI0VoP2OXuSP54viFbRLB/mO/ja9
-	SBg6ZZxn/OFDTqFOA62WvbY05eQ38mBRqoxvpmKqDoEZINT6Dk9k8975n2JbtcDUSxii3PtWdhsV4
-	GpMze+I7u3pTZnqjlnXYqspJsRPKS0YZNq6x3Qj/NjTWq/4GptqZfkAPWat+T4MrwbnuqUT+FglrH
-	FzTApFn58nn+bG6JDrqA==;
+	List-Owner; bh=bl6sGeuXaFesufBhU3trGhncAYVKuYOy6DwbIITqCaM=; b=QHNE+ncevGB2WQ
+	zEBNrMUnYPXinWeNjpSmO7eP6d7MhzDiB7TLO/NhcgjyvdL0Ln4KJ3TUaxwA0nZIvrnKIIgZyt4mY
+	9PHr/TNCJbSuwP+qvIS2Y7RTYtmYHtYRwv/3ADoCzKgqYrxnDKfe87Hl1eARXtN2nMVzpiUh3pi4j
+	FQWZOI9QYjPc75oYDuQls0QR7AEnnxR9jezZkG2t1NU2r5vwmUNZRmZxOUTakaKR7ea8ovCK1DGp2
+	J+xe+0Ygqky6Nh5eng1YHGK0zd8tFJphSgDdeaYazKOYNkTaFjUPNBiBCaA1MnSzig92Jr9O/MYE9
+	Ex+p6FkIMTjjiTIF/r+Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s7v1t-00000007YAo-1IFA;
-	Fri, 17 May 2024 10:41:37 +0000
-Received: from mail-oo1-f41.google.com ([209.85.161.41])
+	id 1s7vWO-00000007bqz-2hlT;
+	Fri, 17 May 2024 11:13:08 +0000
+Received: from mail-il1-f173.google.com ([209.85.166.173])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s7v1n-00000007Y7o-1KJR;
-	Fri, 17 May 2024 10:41:32 +0000
-Received: by mail-oo1-f41.google.com with SMTP id 006d021491bc7-5b27ad74c40so3968eaf.3;
-        Fri, 17 May 2024 03:41:30 -0700 (PDT)
+	id 1s7vWL-00000007bor-0di2;
+	Fri, 17 May 2024 11:13:06 +0000
+Received: by mail-il1-f173.google.com with SMTP id e9e14a558f8ab-36c9c603b1dso6694885ab.1;
+        Fri, 17 May 2024 04:12:55 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1715942489; x=1716547289;
+        d=1e100.net; s=20230601; t=1715944375; x=1716549175;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=8ep6WjZ/XECenrwVHNZ6CdFGyjtlB5or+xofNQVT1ak=;
-        b=e0tS8KlJ8wPbiurnxAeBZETotP8Lufy9o8k+9KD56raLNAL2uHApAZ0W8fdJlvJwvx
-         kPN+1OvKz2uOHpQvDMfFhjMxtleVGQMIPaoFhi1YXQZRvhq68/V2VrJ75i6JqrQHSdAH
-         u2IV4LGKKBYsjIVA4PTb6Vo+uW8Js+ENXkQ76j1f+WsCIHpOHIdzFn8hDA0HTHfiQ1Ko
-         RU+GwMejcnHyDGb+VJ/eb81FSyfERIR7mwCDnfjrXrbZWlN8uh/col/HXWxivnEfYJ7c
-         zGMw3toNU0aoa8cpY1lJAIIB6VWno/OdCG40l65A+8XSYUIVkGwT10lqa0W8VcywLEgv
-         y3NA==
-X-Forwarded-Encrypted: i=1; AJvYcCVq/C15+22hFLo5BP3MvpuOQ/60Bmg5Lcd0OcGiXGxb2Nv/2NbQITIpFqvzVv14nw+hgUdjv5Si8SPmc7ENd+tX/hib8jCCNyQQoopUNbNjo/j/PEeJ8Zs9fteQX0zGvXoSXkJ9T3ydcKJENll4kl1rWsL548Kw/+vu6PCoDrP2dlxOQgPkF/mVBuOsEIrr7m/wPJEuob0jdxkQzWrilKcy8vFCAreUNyOHj5076UsyN4CDkPlU1zUhNPctEXoiouC3vQ==
-X-Gm-Message-State: AOJu0YzUmgD/cigsVjQ02LEMwPHAJC+EnVVkxc2SlJ5Jvm4RrUCoxbEY
-	HlJH76rtuvhLemCMFSLmTsWD3BLSccgCYtMt1Yn+bGCY0jR3gGxM
-X-Google-Smtp-Source: AGHT+IHryVBDZpZ02HKgPHTEO7zKqNKHDK8Mg2XTift9Qc3NF8SYMoDnU3GekdswLqk1/o4nC69OcQ==
-X-Received: by 2002:a05:6358:c005:b0:18a:78c2:7ccf with SMTP id e5c5f4694b2df-193bb628645mr2477851655d.13.1715942489450;
-        Fri, 17 May 2024 03:41:29 -0700 (PDT)
+        bh=/eHjitQqyqxkdwddMgK+syMYj+ckIZ7XvdRdxqO+nwA=;
+        b=q8lnOgLejcQT5uV+Q+uL2+QkKDten6loTRRS3vrpVXpiESiU/gYr+SRUlK1Z+raC8a
+         RRQQ1ytT5RrlSRecY3CC/1H9kitIvdZNeIoCg6UnEAB9irWal/EF7Rovg3BKTNoqUAkm
+         z4YTVPSUzgW4LCVMIhOmHhPksAdy+SgM8ZU+MYCUmAeRupdLqflvdrF2cJSCis1jj/Xe
+         xCR4RFIRRq3raOIP55o9m89yqSCbkxVXdb5p25SSbpysorfdBDO9+Qpw3nKRdKVrss5S
+         FclzxtVRhoUF6Pj0+54N6LOg5QhQ+hNFPYOOvge7P0T6UAtc7/9EyU4y8fTd36pVjdq9
+         wC/w==
+X-Forwarded-Encrypted: i=1; AJvYcCXckwwkTBUyNphSJpPQhJ0HA03i7EKS9pC9qQEtYz8migTYjpIk1ga2v8g+EWGgjEIZoIUNrC9xUQjYqZJ5udaKc30aUixYSmtkOxBFNV5IzVF9qeHPIspKgLujAG/BKiWEXhWPN4nkidXZwalQVQk0pF8GpmmCqIg=
+X-Gm-Message-State: AOJu0YxK5ppT9Zg3O0+2OqnrXyyj1S+TZ5R2k1Q0xLk9SkvM8tnuDV/h
+	b8sYqnYvlLF4+tFxFER5bA3lhNnYgF1QGA7e4hqSMNH670PDKKIr
+X-Google-Smtp-Source: AGHT+IFh7zapzrWdJbKFo1EKEJxjYaG/QR+RjVCvwVxJ2x+NE3Fd7xt0ctaolpGz4+C75fzUHqjaVQ==
+X-Received: by 2002:a05:6e02:1546:b0:36b:80d:b90f with SMTP id e9e14a558f8ab-36cc14c0b62mr264039485ab.26.1715944374806;
+        Fri, 17 May 2024 04:12:54 -0700 (PDT)
 Received: from localhost (fpd11144dd.ap.nuro.jp. [209.17.68.221])
-        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-658764fda40sm3257811a12.5.2024.05.17.03.41.28
+        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-6340b862572sm13065196a12.37.2024.05.17.04.12.53
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 17 May 2024 03:41:28 -0700 (PDT)
-Date: Fri, 17 May 2024 19:41:25 +0900
+        Fri, 17 May 2024 04:12:54 -0700 (PDT)
+Date: Fri, 17 May 2024 20:12:53 +0900
 From: Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Cc: Bjorn Helgaas <bhelgaas@google.com>,
+To: Niklas Cassel <cassel@kernel.org>
+Cc: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
 	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Hector Martin <marcan@marcan.st>, Sven Peter <sven@svenpeter.dev>,
-	Alyssa Rosenzweig <alyssa@rosenzweig.io>,
-	Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>,
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
-	Florian Fainelli <florian.fainelli@broadcom.com>,
-	Jim Quinlan <jim2101024@gmail.com>,
-	Nicolas Saenz Julienne <nsaenz@kernel.org>,
-	Will Deacon <will@kernel.org>,
-	Linus Walleij <linus.walleij@linaro.org>,
-	Srikanth Thokala <srikanth.thokala@intel.com>,
-	Ryder Lee <ryder.lee@mediatek.com>,
-	Jianjun Wang <jianjun.wang@mediatek.com>,
-	Sergio Paracuellos <sergio.paracuellos@gmail.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Daire McNamara <daire.mcnamara@microchip.com>,
-	Bjorn Andersson <andersson@kernel.org>,
-	Konrad Dybcio <konrad.dybcio@linaro.org>,
-	Marek Vasut <marek.vasut+renesas@gmail.com>,
-	Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>,
+	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
 	Shawn Lin <shawn.lin@rock-chips.com>,
-	Heiko Stuebner <heiko@sntech.de>, Jingoo Han <jingoohan1@gmail.com>,
-	Gustavo Pimentel <gustavo.pimentel@synopsys.com>,
-	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
-	Bharat Kumar Gogada <bharat.kumar.gogada@amd.com>,
-	Michal Simek <michal.simek@amd.com>,
-	Geert Uytterhoeven <geert+renesas@glider.be>,
-	Magnus Damm <magnus.damm@gmail.com>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Mark Kettenis <kettenis@openbsd.org>,
-	Tom Joseph <tjoseph@cadence.com>,
-	Ahmad Zainie <wan.ahmad.zainie.wan.mohamad@intel.com>,
-	Jiaxun Yang <jiaxun.yang@flygoat.com>,
+	Heiko Stuebner <heiko@sntech.de>,
 	Kishon Vijay Abraham I <kishon@kernel.org>,
-	Thippeswamy Havalige <thippeswamy.havalige@amd.com>,
-	linux-pci@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, asahi@lists.linux.dev,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rpi-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
-	linux-renesas-soc@vger.kernel.org,
-	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH v3 1/4] dt-bindings: PCI: cdns,cdns-pcie-host: drop
- redundant msi-parent and pci-bus.yaml
-Message-ID: <20240517104125.GJ202520@rocinante>
-References: <20240413151617.35630-1-krzysztof.kozlowski@linaro.org>
+	Shradha Todi <shradha.t@samsung.com>,
+	Damien Le Moal <dlemoal@kernel.org>, linux-pci@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org
+Subject: Re: [PATCH v4 0/7] minor PCI endpoint cleanups
+Message-ID: <20240517111253.GO202520@rocinante>
+References: <20240320113157.322695-1-cassel@kernel.org>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20240413151617.35630-1-krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20240320113157.322695-1-cassel@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240517_034131_375544_E829D46A 
-X-CRM114-Status: UNSURE (   8.33  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240517_041305_214423_BDD7F118 
+X-CRM114-Status: GOOD (  10.04  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -129,20 +90,45 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 Hello,
 
-> The binding reference common cdns-pcie-host.yaml, which already defines
-> msi-parent and has a reference to pci-bus.yaml schema.  Drop redundant
-> pieces here to make it a bit smaller.
+> This series used to be called:
+> "PCI: endpoint: set prefetchable bit for 64-bit BARs"
+> 
+> However, since after discussions with Arnd and Mani, that patch has been
+> dropped, however, the other cleanups are still worth including IMO, thus
+> the series has been renamed.
+[...]
+>   PCI: endpoint: pci-epf-test: Simplify pci_epf_test_alloc_space() loop
+>   PCI: endpoint: Allocate a 64-bit BAR if that is the only option
+>   PCI: endpoint: pci-epf-test: Remove superfluous code
+>   PCI: endpoint: pci-epf-test: Simplify pci_epf_test_set_bar() loop
+>   PCI: endpoint: pci-epf-test: Clean up pci_epf_test_unbind()
 
-Applied to dt-bindings, thank you!
+Applied to endpoint, thank you!
 
-[01/04] dt-bindings: PCI: cdns,cdns-pcie-host: Drop redundant msi-parent and pci-bus.yaml
-        https://git.kernel.org/pci/pci/c/51ef0538d4e1
-[02/04] dt-bindings: PCI: mediatek,mt7621: Add missing child node reg
-        https://git.kernel.org/pci/pci/c/36fbed38549c
-[03/04] dt-bindings: PCI: host-bridges: Switch from deprecated pci-bus.yaml
-        https://git.kernel.org/pci/pci/c/5db62b7d3c37
-[04/04] dt-bindings: PCI: mediatek,mt7621-pcie: Switch from deprecated pci-bus.yaml
-        https://git.kernel.org/pci/pci/c/d3fa4be9033b
+[01/05] PCI: endpoint: pci-epf-test: Simplify pci_epf_test_alloc_space() loop
+        https://git.kernel.org/pci/pci/c/417660525d6f
+[02/05] PCI: endpoint: Allocate a 64-bit BAR if that is the only option
+        https://git.kernel.org/pci/pci/c/29a025b6fbf3
+[03/05] PCI: endpoint: pci-epf-test: Remove superfluous code
+        https://git.kernel.org/pci/pci/c/828e870431aa
+[04/05] PCI: endpoint: pci-epf-test: Simplify pci_epf_test_set_bar() loop
+        https://git.kernel.org/pci/pci/c/e49eab944cfb
+[05/05] PCI: endpoint: pci-epf-test: Clean up pci_epf_test_unbind()
+        https://git.kernel.org/pci/pci/c/597ac0fa37b8
+
+>   PCI: cadence: Set a 64-bit BAR if requested
+
+Applied to controller/cadence, thank you!
+
+[1/1] PCI: cadence: Set a 64-bit BAR if requested
+      https://git.kernel.org/pci/pci/c/07db0fa80cf3
+
+>   PCI: rockchip-ep: Set a 64-bit BAR if requested
+
+Applied to controller/rockchip, thank you!
+
+[1/1] PCI: rockchip-ep: Set a 64-bit BAR if requested
+      https://git.kernel.org/pci/pci/c/de66b37a174f
 
 	Krzysztof
 
