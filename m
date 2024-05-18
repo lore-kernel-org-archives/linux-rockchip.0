@@ -4,74 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 809B1C25B78
-	for <linux-rockchip@archiver.kernel.org>; Fri, 17 May 2024 19:50:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CB8A2C25B74
+	for <linux-rockchip@archiver.kernel.org>; Sat, 18 May 2024 03:41:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=ujNfTUMdKjA5sJzU23Fw3UhPMHjyjbM/P9BfjvSNPT0=; b=Urx3LwDzmuhf18
-	3Kdt9+ZgCRNMyqG96MMU5P0feAoA1lF27O+MuanTgOzUYMOpB95r4RXkHbYQn8LtgydyZ1aejDQey
-	iwpzICLcEITLNRuJFCiQTQzK0M3gpp7TtE9UGbwG5fI0IYiluz2zixmHvXOPht2YfqFSbzduUE4a/
-	nEeb7Gqlo9Rvd+org0ZS16ErQBqNnZp3d0sgyH/Xen2HGxkux2baKAB9MWvohprNaAUIqrWyIxdJ7
-	8uQJ3U4mjOaRhF6TZEK9rMd3mSPckuJ93qn6IfKx6dAHkYGZ8+P93T1hD0qFzd77dbLoCfBaxxW6P
-	NLXOgVbz4r6EXPbfBxew==;
+	List-Owner; bh=cE6vD8g1qN7XFt++iqfOn5DjbcXhl4/7pRNJKzeLrsg=; b=a+wJvr0YsyKNwG
+	u0uPXKhMXUubZ0RklkOlsjptq0xU2xaHKMd1dJoVf5WUZpExP8uXu+1MkkQmmgfeDFtlxtvZxz2Nd
+	vlViGgM8KBYVRFdb8dPWTY8S4dGArXGXuaqpUZ/RUFEgKuq5n1yCERn/IbuU7JE2ny1D9T3yrT5Mn
+	1IfTmRrGziI05bQ2AWB5nyiMB91TQsycGkt/ECUybkivB68TtloOwfaGFJgCX1KDF9oEvlJK/6lfm
+	c82OuGaSTALBn0f1XSvl9Sg6IGGJQEbcdTph1kO+Z+EbnSaObwrcwzmW5Vbx+HSsZmtrkOOwlNJ2V
+	yn2w+TX84subQI7Q4LZg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s83ad-00000008rEX-2N5O;
-	Fri, 17 May 2024 19:50:03 +0000
-Received: from mail-pl1-x631.google.com ([2607:f8b0:4864:20::631])
+	id 1s8Awu-00000009VQJ-3z07;
+	Sat, 18 May 2024 03:41:32 +0000
+Received: from out-183.mta1.migadu.com ([2001:41d0:203:375::b7])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s83ab-00000008rDa-1RDd;
-	Fri, 17 May 2024 19:50:02 +0000
-Received: by mail-pl1-x631.google.com with SMTP id d9443c01a7336-1ed5cbf7b49so2290115ad.2;
-        Fri, 17 May 2024 12:49:59 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1715975399; x=1716580199; darn=lists.infradead.org;
-        h=cc:to:subject:message-id:date:from:mime-version:from:to:cc:subject
-         :date:message-id:reply-to;
-        bh=DkC02ajmDp8au8nOQAmSiKZwlbDJdPCrp7KJQmbB5LI=;
-        b=E6YfVOFQXfVjRzLNIjDo+Ma9+j9v7LjOAXFe+BpxF5h8t3swAC/0UJ3vaWoizbyt7M
-         d4/4fyutqWIplhLVK9YhAwyhlVAYyyUpfm7Mf/Seyoyaquf2y7Wy/5Pta17Y7KkFfzgL
-         B2e5oHnlK89iLznxl61XdcObYAjPm4RnDb3E/T5wBj1qdH+Muu6hfIgrjLoqrjXBAtoV
-         T4A1OU0YGpVY1ObfaVIHtTmt2AkZi/WA6K1rfF5q7DnvU4f5En2T6vLPxd3y6l1R4nkt
-         Xeo3Ad8aKL/IQvdIzquQDlx/+oFJ3302sZt7ZAS+TXE3kHLz/Cn33S4BEgMIOx7koBQL
-         v00w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1715975399; x=1716580199;
-        h=cc:to:subject:message-id:date:from:mime-version:x-gm-message-state
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=DkC02ajmDp8au8nOQAmSiKZwlbDJdPCrp7KJQmbB5LI=;
-        b=whO/CEqHhNs0kmADigFkPkmyEqa8xF1HLyAK8a+5+kNT2rGredGKwe24KuRUIYR7EP
-         ak7qAei3Wj0bc3dmYJk5tPDSEe0ZNilf6MdYFOgV6zuoWvqFlA4ScnHI+x6I5kLjQFO8
-         GDprF8xEMANTDdBir7PnqytSG2N71c+gB3/TA60PIUZggqlqsacrGqcd9nKvUcz5A4yZ
-         9/5xC0pewURH2pSb9gbjOJBfn0lfKWYTiETUWlRmJYHuqCZ+rHWdg8YP4eQBs484nBa2
-         jy1auO+9fD+xm1ja+CUpq2OAaOgiz6Db65i0N2vebEEcuikiHFTo94naP2Y227MUlSka
-         AkEw==
-X-Forwarded-Encrypted: i=1; AJvYcCULtJCU2ltRdlcBV/0GS8eutt1wCcjETGMcs6RzF3QqUymib3XqQGM1k/wWD/wLmhFI2nh8q2BdKw3rmdp+ayObvmx60U6LZ0zllZsiXw79ErcWdD4ND8/dJ31cjM7/hhaXeWFUsqfCCAUWWvW8qKpi/RbBmK6wg/Y=
-X-Gm-Message-State: AOJu0YzNvBN1hzrNubYoL7ZCn0L7eEIAQ2o3QlGPzNubVDMcYVMG8JFU
-	Qj5ah/Q1O6o6059nTG54S2IpvKK9nvGAopW9rtOVQyS7/upghFiurfaX1JdgMtLjjYMPr5J3kIR
-	hX/I5sGTFF22UakwjQ4/iRsuricg=
-X-Google-Smtp-Source: AGHT+IHoGq3IWj7advFtjZZYLQJht5smm9rTMguTThuxymXQmX3xKdysGKnWcNRH2uPZihxbeifZaQku1+dwYWHzZSM=
-X-Received: by 2002:a17:90a:8c7:b0:2b6:20a0:441e with SMTP id
- 98e67ed59e1d1-2b6cd1f1b31mr21460875a91.4.1715975399291; Fri, 17 May 2024
- 12:49:59 -0700 (PDT)
+	id 1s8Awr-00000009VON-0Uix
+	for linux-rockchip@lists.infradead.org;
+	Sat, 18 May 2024 03:41:30 +0000
+X-Envelope-To: val@packett.cool
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=packett.cool;
+	s=key1; t=1716003678;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=2ubBRvLZp8rewt/xkDpvLy7GWRXEow8xsujDo199KHU=;
+	b=WENIuJj/YXcKEi4kz6nEU7g+zESvAbhk3zTLBwUdv/uDETPmGXqgrKI6NNOj4c+G58BpXd
+	3oN26gFOGsl3CzU+DZO9Tv1i71Tl9yXrLu3sBJM+QQdHg+Tz/N0FyOLzrzd9dk5DW6C26k
+	nqiwM5Fd+HBcfQLFldSySPJMQ0PGNLR++bnxrbMhl2FrVWU2dgN80dpFAw/fjRCMxON7Pl
+	TBuSMjtzJE1fHxln1/H6XbpFBXhq8q1lNs8RF4z/ifEcQlzXbDfGpj+Rq9d+CmGVQ1VffO
+	ztMYpKYvwp6DX2nubhc97sOtnaMq3SyLNUgPq0uRJp8G92vtx1IOmWg5WwS1bg==
+X-Envelope-To: miquel.raynal@bootlin.com
+X-Envelope-To: richard@nod.at
+X-Envelope-To: vigneshr@ti.com
+X-Envelope-To: heiko@sntech.de
+X-Envelope-To: sfr@canb.auug.org.au
+X-Envelope-To: linux-mtd@lists.infradead.org
+X-Envelope-To: linux-arm-kernel@lists.infradead.org
+X-Envelope-To: linux-rockchip@lists.infradead.org
+X-Envelope-To: linux-kernel@vger.kernel.org
+X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
+From: Val Packett <val@packett.cool>
+To: 
+Cc: Val Packett <val@packett.cool>,
+	Miquel Raynal <miquel.raynal@bootlin.com>,
+	Richard Weinberger <richard@nod.at>,
+	Vignesh Raghavendra <vigneshr@ti.com>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Stephen Rothwell <sfr@canb.auug.org.au>,
+	linux-mtd@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH] mtd: rawnand: rockchip: reject NVDDR timings when checked
+Date: Sat, 18 May 2024 00:31:13 -0300
+Message-ID: <20240518033923.5577-2-val@packett.cool>
 MIME-Version: 1.0
-From: Fabio Estevam <festevam@gmail.com>
-Date: Fri, 17 May 2024 16:49:47 -0300
-Message-ID: <CAOMZO5Bp1kfq9C7HpK=V+v=LytZFdbfcvgg1MmhYqqkntHVb2A@mail.gmail.com>
-Subject: rv1108: SPI DMA failure
-To: Mark Brown <broonie@kernel.org>, Andy Yan <andy.yan@rock-chips.com>
-Cc: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
-	linux-rockchip@lists.infradead.org, 
-	"moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE" <linux-arm-kernel@lists.infradead.org>, 
-	linux-spi <linux-spi@vger.kernel.org>, Otavio Salvador <otavio@ossystems.com.br>
+X-Migadu-Flow: FLOW_OUT
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240517_125001_408456_F917C503 
-X-CRM114-Status: UNSURE (   9.51  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240517_204129_314626_B8447876 
+X-CRM114-Status: GOOD (  11.92  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,63 +85,44 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi,
+.setup_interface first gets called with a negative "target" value
+NAND_DATA_IFACE_CHECK_ONLY, in which case an error is expected
+if the controller driver does not support the timing mode (NVDDR).
 
-On the new revision of a rv1108-elgin board, there is an Infineon SPL9670
-TPM device connected to the SPI bus.
+Signed-off-by: Val Packett <val@packett.cool>
+---
+Hello everyone, first Linux patch from a long time FreeBSD person :)
 
-On kernel 6.9, the following SPI transfer errors occur:
+This was required to get the NAND controller to attach on the random
+old RK3066 tablet I'm bringing up mainline on.
+---
+ drivers/mtd/nand/raw/rockchip-nand-controller.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-[    2.747002] tpm_tis_spi spi0.0: SPI transfer timed out
-[    2.747564] spi_master spi0: failed to transfer one message from queue
-[    2.748239] spi_master spi0: noqueue transfer failed
-[    2.749039] tpm tpm0: tpm_transmit: tpm_recv: error -110
-[    2.749569] tpm tpm0: TPM in field failure mode, requires firmware upgrade
+diff --git a/drivers/mtd/nand/raw/rockchip-nand-controller.c b/drivers/mtd/nand/raw/rockchip-nand-controller.c
+index 7baaef69d..555804476 100644
+--- a/drivers/mtd/nand/raw/rockchip-nand-controller.c
++++ b/drivers/mtd/nand/raw/rockchip-nand-controller.c
+@@ -420,13 +420,13 @@ static int rk_nfc_setup_interface(struct nand_chip *chip, int target,
+ 	u32 rate, tc2rw, trwpw, trw2c;
+ 	u32 temp;
+ 
+-	if (target < 0)
+-		return 0;
+-
+ 	timings = nand_get_sdr_timings(conf);
+ 	if (IS_ERR(timings))
+ 		return -EOPNOTSUPP;
+ 
++	if (target < 0)
++		return 0;
++
+ 	if (IS_ERR(nfc->nfc_clk))
+ 		rate = clk_get_rate(nfc->ahb_clk);
+ 	else
+-- 
+2.45.0
 
-The same issue happens with older kernels, such as 5.4.
-
-If SPI DMA support is removed like this:
-
-&spi {
-    pinctrl-names = "default";
-    pinctrl-0 = <&spim1_clk &spim1_cs0 &spim1_tx &spim1_rx>;
-    /delete-property/ dmas;
-    /delete-property/ dma-names;
-    status = "okay";
-
-    tpm@0 {
-        compatible = "infineon,slb9670", "tcg,tpm_tis-spi";
-        reg = <0>;
-        spi-max-frequency = <10000000>;
-    };
-};
-
-
-Then the TPM device works correctly.
-
-An old RV1108 SPI bug was reported by Otavio:
-
-https://lore.kernel.org/linux-spi/CAP9ODKpW=h6SVtsn-uuDQ4+TgR0NnjBW==8vwyQD4+x_dbFzRQ@mail.gmail.com/
-
-That indicates an RV1108 SPI problem after moving from polling to IRQ.
-
-Mark's made a good point in reply to Otavio's report:
-
-"Does the interrupt ever fire?  I'm wondering if the DT is wired up
-correctly for the particular SoC you have, or if it's even wired up at
-all in the hardware."
-
-Can we get some help from Rockchip to clarify these issues on the RV1108 SPI?
-
-Have RV1108 SPI DMA and IRQ been tested by Rockchip?
-
-Are the rv1108 SPI DMA/IRQ descriptions in the rv1108.dtsi correct?
-
-Any known SPI hardware issue on RV1108?
-
-Thanks,
-
-Fabio Estevam
 
 _______________________________________________
 Linux-rockchip mailing list
