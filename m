@@ -4,79 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 03429C25B75
-	for <linux-rockchip@archiver.kernel.org>; Sun, 19 May 2024 07:41:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D5717C25B75
+	for <linux-rockchip@archiver.kernel.org>; Sun, 19 May 2024 07:59:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=bT0W6mqen1pvQm7PglHjCOiOyM5Yf8sEDXbK3lE6w3g=; b=ot6O6xtV3fdmod
-	0AfrZuzbbW6gfNHptIfl8QbhO5TWrYb0/g/RiZrzQSznXeEFxcHeqO159HDOWPvWjv5BXvTFscEvo
-	f5zBhbCDwmkyd7IH7EqhZojxIlDsPXU4L3KACq4esDZXfhpYLamvD4RF3GPctFSD5Blwz0EoTi3v6
-	38/mpq70mIR7rF7wn5icgi7LgW8gVLIMH+UxDEVQ6DNBBbq8561DjRNFtKQMLjxuzZMLEFDYTFEmb
-	ZwjrQSutnOzfUh0f5uvqODQAnSUxiWBCksYnc8/AoOiixd1YwWweiFilXva6zdwThKrucB/of64gX
-	hPJGHn+otjlvIGVh7e+Q==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=9H3tAlOAaRPbx2sR8PkytdaObJXv3CREx6zr+4A7fxI=; b=PxuwbeT5NQtYeu
+	uL1a55MZvQXYLgRbUbORsRoiG+nvZnWWRSS38HCgt2TPPyEJ5EQnkiCGktsLukX5xfXswhstv+L7X
+	2S6IsdlrJdFTARGu90GYLGzLLm705xEAErRpmp8C9AbBHbjsaVRNomQT8gv70n0nh9gVLghCTvBQ0
+	sVgyuAjN1P0rXmKuyfwOkmufUnGQQRbaXGOolHnkqUNjl79v9GzwBoJyjyFZ5OSvM4cckViqGVTFz
+	zAwGE9CShssupsx0QTt+9n9y0oM5SMY6A5qE54Hbcsy6DRLeSudVJrZfDy+Xx/8qDUN+qHKl0oyTg
+	oU8k14zRz/OtxoAILIRQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s8bAo-0000000BZWI-0DlF;
-	Sun, 19 May 2024 07:41:38 +0000
-Received: from out-186.mta1.migadu.com ([2001:41d0:203:375::ba])
+	id 1s8bSH-0000000Bb8S-3gMg;
+	Sun, 19 May 2024 07:59:41 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s8bAk-0000000BZUH-24eS
-	for linux-rockchip@lists.infradead.org;
-	Sun, 19 May 2024 07:41:36 +0000
-X-Envelope-To: val@packett.cool
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=packett.cool;
-	s=key1; t=1716104484;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding;
-	bh=iCzZwZj36Iz4vA1dDun7lszpPSZPxwDHKR4L5BLCjIg=;
-	b=uyHLxjhMy3s5Tm8T1twQKRP6W5/3ZNw6oYwG7SQFEmrp6HRLn9yvjp+J4WS2RYr0/Xug/7
-	IeOM96jyjfSeADjc5wXZsFDZ4PzL0NkAM2Hnekudu2iQACIYkoHkFHCOFZQeXs0KQi4HxY
-	Qz7n9kvfBdnt6WINxFLWpbPNiVTQMrghArcTu81SSvTOh6mO29DLWYTeC6gHJwKnNw3QDj
-	l0mR9Pwt6Iq2XP+guouOVkxYjVkvdwEhbxXV8CA2/ZQo//VrO1UA51+Be3fIRslylfuj3b
-	CvzZt6Tv3PIRaXu12T4LcfDUSYbmP79QoZiW1g815fC0gY//CBQtKBSTSGN+YQ==
-X-Envelope-To: stable@vger.kernel.org
-X-Envelope-To: hjc@rock-chips.com
-X-Envelope-To: heiko@sntech.de
-X-Envelope-To: andy.yan@rock-chips.com
-X-Envelope-To: maarten.lankhorst@linux.intel.com
-X-Envelope-To: mripard@kernel.org
-X-Envelope-To: tzimmermann@suse.de
-X-Envelope-To: airlied@gmail.com
-X-Envelope-To: daniel@ffwll.ch
-X-Envelope-To: dri-devel@lists.freedesktop.org
-X-Envelope-To: linux-arm-kernel@lists.infradead.org
-X-Envelope-To: linux-rockchip@lists.infradead.org
-X-Envelope-To: linux-kernel@vger.kernel.org
-X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
-From: Val Packett <val@packett.cool>
-To: 
-Cc: Val Packett <val@packett.cool>,
-	stable@vger.kernel.org,
-	Sandy Huang <hjc@rock-chips.com>,
-	=?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
+	id 1s8bSE-0000000Bb7g-1z59;
+	Sun, 19 May 2024 07:59:39 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 5334760DFB;
+	Sun, 19 May 2024 07:59:35 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 70A4FC32781;
+	Sun, 19 May 2024 07:59:34 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
+	s=korg; t=1716105575;
+	bh=H/2+qHdYi7ZEH7Zr9/SLo5WPHWSoGzS8PBcfWjDh6Hg=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=Q+2tvIxpjbjvQNCxXWSJzFAJeeMCAvdCKktm2TtN70Zxn9KA+SXM7CaJRPaq/WpPl
+	 IbyyFYOyMX8vooiPyAgSrFHyI9DSfvabTdmqdXmlpaS87pHIqmS4kUQO6IRUWyUr7Y
+	 9b3oYYAIZC/B0s3437qH/UsmtvzKbdxc5YeUFnf0=
+Date: Sun, 19 May 2024 09:59:32 +0200
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Val Packett <val@packett.cool>
+Cc: stable@vger.kernel.org, Sandy Huang <hjc@rock-chips.com>,
+	Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>,
 	Andy Yan <andy.yan@rock-chips.com>,
 	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
 	Maxime Ripard <mripard@kernel.org>,
 	Thomas Zimmermann <tzimmermann@suse.de>,
-	David Airlie <airlied@gmail.com>,
-	Daniel Vetter <daniel@ffwll.ch>,
+	David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>,
 	dri-devel@lists.freedesktop.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH 1/2] drm/rockchip: vop: clear DMA stop bit on flush on RK3066
-Date: Sun, 19 May 2024 04:31:31 -0300
-Message-ID: <20240519074019.10424-1-val@packett.cool>
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH 2/2] drm/rockchip: vop: enable VOP_FEATURE_INTERNAL_RGB
+ on RK3066
+Message-ID: <2024051907-extruding-overplant-54f1@gregkh>
+References: <20240519074019.10424-1-val@packett.cool>
+ <20240519074019.10424-2-val@packett.cool>
 MIME-Version: 1.0
-X-Migadu-Flow: FLOW_OUT
+Content-Disposition: inline
+In-Reply-To: <20240519074019.10424-2-val@packett.cool>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240519_004134_836604_BBB05275 
-X-CRM114-Status: GOOD (  14.74  )
+X-CRM114-CacheID: sfid-20240519_005938_613152_885056D4 
+X-CRM114-Status: UNSURE (   8.84  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,68 +79,17 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On the RK3066, there is a bit that must be cleared on flush, otherwise
-we do not get display output (at least for RGB).
+On Sun, May 19, 2024 at 04:31:32AM -0300, Val Packett wrote:
+> Signed-off-by: Val Packett <val@packett.cool>
+> Cc: stable@vger.kernel.org
+> ---
+>  drivers/gpu/drm/rockchip/rockchip_vop_reg.c | 1 +
+>  1 file changed, 1 insertion(+)
 
-Signed-off-by: Val Packett <val@packett.cool>
-Cc: stable@vger.kernel.org
----
-Hi! This was required to get display working on an old RK3066 tablet,
-along with the next tiny patch in the series enabling the RGB output.
+Maybe the DRM subsystem has more lax rules, but I know I can't take
+patches without any changelog text at all, sorry.
 
-I have spent quite a lot of time banging my head against the wall debugging
-that display (especially since at the same time a scaler chip is used for
-LVDS encoding), but finally adding debug prints showed that RK3066_SYS_CTRL0
-ended up being reset to all-zero after being written correctly upon init.
-Looking at the register definitions in the vendor driver revealed that the
-reason was pretty self-explanatory: "dma_stop".
----
- drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 3 +++
- drivers/gpu/drm/rockchip/rockchip_drm_vop.h | 1 +
- drivers/gpu/drm/rockchip/rockchip_vop_reg.c | 1 +
- 3 files changed, 5 insertions(+)
-
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-index a13473b2d..d4daeba74 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-@@ -1578,6 +1578,9 @@ static void vop_crtc_atomic_flush(struct drm_crtc *crtc,
- 
- 	spin_lock(&vop->reg_lock);
- 
-+	/* If the chip has a DMA stop bit (RK3066), it must be cleared. */
-+	VOP_REG_SET(vop, common, dma_stop, 0);
-+
- 	/* Enable AFBC if there is some AFBC window, disable otherwise. */
- 	s = to_rockchip_crtc_state(crtc->state);
- 	VOP_AFBC_SET(vop, enable, s->enable_afbc);
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.h b/drivers/gpu/drm/rockchip/rockchip_drm_vop.h
-index b33e5bdc2..0cf512cc1 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.h
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.h
-@@ -122,6 +122,7 @@ struct vop_common {
- 	struct vop_reg lut_buffer_index;
- 	struct vop_reg gate_en;
- 	struct vop_reg mmu_en;
-+	struct vop_reg dma_stop;
- 	struct vop_reg out_mode;
- 	struct vop_reg standby;
- };
-diff --git a/drivers/gpu/drm/rockchip/rockchip_vop_reg.c b/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
-index b9ee02061..9bcb40a64 100644
---- a/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
-@@ -466,6 +466,7 @@ static const struct vop_output rk3066_output = {
- };
- 
- static const struct vop_common rk3066_common = {
-+	.dma_stop = VOP_REG(RK3066_SYS_CTRL0, 0x1, 0),
- 	.standby = VOP_REG(RK3066_SYS_CTRL0, 0x1, 1),
- 	.out_mode = VOP_REG(RK3066_DSP_CTRL0, 0xf, 0),
- 	.cfg_done = VOP_REG(RK3066_REG_CFG_DONE, 0x1, 0),
--- 
-2.45.0
-
+greg k-h
 
 _______________________________________________
 Linux-rockchip mailing list
