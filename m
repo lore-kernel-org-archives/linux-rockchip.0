@@ -4,53 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3C785C25B7A
-	for <linux-rockchip@archiver.kernel.org>; Tue, 21 May 2024 21:11:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 41F8CC25B74
+	for <linux-rockchip@archiver.kernel.org>; Tue, 21 May 2024 21:11:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=kNImmoMN2V2dwOPAPtuA1AbxLXhFe28vBcazRqkfCV8=; b=e2DTqvZmAd7i6R
-	0XpXjjkGr1CfdUjC5mR+yrOinsrGbYdilcnFjIsw/P+gbU02SZAEVKj787IF+YLAiaxrh03TxjG6E
-	ya3FjrCuH7UPZUmzBG8SxJxiaQM/6Khex18SH3+936C14sOBvTbCseA8F7s40yAftUlb6cEDQReKr
-	m/w8mSKpZaavCbHmHXYGc6KE3ZsZjuGU47D9Kv2F3I0eTCqxktzo35O3vdriKWS0joHrBhrCp5AvH
-	qS+eFv1qWoqEQqI9gfH06lT0IdlqMHOtY0pW948BimBdF8S87GGIBjsuDVbs5f2XzGlveq1rjYHNT
-	TdyTpx568MRsRijkZX1A==;
+	List-Owner; bh=jFvBLdhwtmwEdMeUUTmDfstPTUZ9mdc/D06a3oO0GAk=; b=sCpU7VkkUfoE9x
+	SFsyKdDWZgR5+Mf6Qp3hxFhNbAxv1fsPhD1HrchEn0/c7LkUyNHWsYjCXa3/xwpiOaCnpYWIeaZu7
+	tSOEsABxP6jSA0dODvN2Xjlg6d098VFCWk6mXwIr9h7GXABNNqQv0qimMTtOsKxua15zGz/i1WpgK
+	iU1ULymRgSj+ux4ydj2i7bOxGUPW3FhjPmDyYUK2mQ01ePa97wm+epyLmyOkXSR6wX4w6Y9VAahGr
+	EtD3QQDOjuivlenh46/Ar8QcDpURpICekXl3oVer/94boFmNR6b5GgIs/04dk6eYqAMAMNshmh0TG
+	pXVhpW7mL7b7+BBbEEkA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s9WlM-000000016QG-01U4;
-	Tue, 21 May 2024 21:11:12 +0000
+	id 1s9WlT-000000016WT-1ct2;
+	Tue, 21 May 2024 21:11:19 +0000
 Received: from smtp.forwardemail.net ([149.28.215.223])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s9Wl8-000000016Et-1Ohp
+	id 1s9WlA-000000016Hc-1yrQ
 	for linux-rockchip@lists.infradead.org;
-	Tue, 21 May 2024 21:11:00 +0000
+	Tue, 21 May 2024 21:11:02 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
  h=Content-Transfer-Encoding: MIME-Version: References: In-Reply-To:
  Message-ID: Date: Subject: Cc: To: From; q=dns/txt; s=fe-e1b5cab7be;
- t=1716325841; bh=PGvuLTeSZXbOGOX7STN02fCIGy5L2QPSCNlAObw3PHo=;
- b=gPPx+Q8FHyG7eJHxSzssdQ033h6mewfr56kY2lKemL3ERR87t43/CTEcQ3q9W92yj2fYMntmV
- fFVI9lh9uSRW+13Hzl0sOwK5ThnNBcW5SM0Ha6uWifdDTw5y2TTGctRGsB2TAVsXEE84LX+dABS
- i/3WBC4kt0JWLXCPsQ2i2eTmByR0OInXjRI885C1il/WznrYJpGUmCV1EZI3bgxwQkgg7/v2/Vh
- BYN2VIKJCri0xaqt36jT+GCLgMkf6iq2Cqu5o4lmIuouAVoa5S9mc6CZodJGVUdeJrdnn/8iS+d
- 9V0DP2teDhKPUr5UrwviWJEHbBhg4cNvkvrDtkLtC9BA==
+ t=1716325851; bh=aD5ElAXuf7/SqhPMov55JPF9VkiI9/bGsfbICmFQCbQ=;
+ b=E4Fk6iaZ2ObfYyVGavisOGDYxRJSx5X+OIItJ+Nk17X+9Y0TkOkM0SENkr3+OTzqTeJ5pUnCz
+ kCy8QB8AUmet32Ef0TZ8W3g5dyHjuOmM7D6dcGXnA3LMM/To4aGC4iK4Id5jVB3F2DN3OwcrsO1
+ HHYesovdcCBo7FD2/6RJINlXa4ClCchvMpSTZ+TwwNuRu7tfGq9sRMcgxtDY2IEf30sn+LW/wyH
+ c6uwNThw9LmyZP1Oq+VInf9wkYh0BmEvzHorLmu6MwvTePsLCIMdiztINSSY8XqlEdDLGNdBaDn
+ bGbvIjBy696G22UL7sy/pIvMiwNDglPjjQ9UhZye/+gg==
 From: Jonas Karlman <jonas@kwiboo.se>
 To: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh@kernel.org>,
  Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, "David S. Miller" <davem@davemloft.net>, Eric
- Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, Paolo
- Abeni <pabeni@redhat.com>, Alexandre Torgue
- <alexandre.torgue@foss.st.com>, Giuseppe Cavallaro
- <peppe.cavallaro@st.com>, Jose Abreu <joabreu@synopsys.com>, Tobias
- Schramm <t.schramm@manjaro.org>
+ <conor+dt@kernel.org>, Sjoerd Simons <sjoerd@collabora.com>, Akash Gajjar
+ <akash@openedev.com>
 Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Jonas
- Karlman <jonas@kwiboo.se>, netdev@vger.kernel.org
-Subject: [PATCH 01/13] dt-bindings: net: rockchip-dwmac: Fix rockchip,rk3308-gmac compatible
-Date: Tue, 21 May 2024 21:10:04 +0000
-Message-ID: <20240521211029.1236094-2-jonas@kwiboo.se>
+ Karlman <jonas@kwiboo.se>
+Subject: [PATCH 03/13] arm64: dts: rockchip: rk3308-rock-pi-s: Fix SD NAND and eMMC init
+Date: Tue, 21 May 2024 21:10:06 +0000
+Message-ID: <20240521211029.1236094-4-jonas@kwiboo.se>
 X-Mailer: git-send-email 2.43.2
 In-Reply-To: <20240521211029.1236094-1-jonas@kwiboo.se>
 References: <20240521211029.1236094-1-jonas@kwiboo.se>
@@ -61,11 +57,10 @@ X-Complaints-To: abuse@forwardemail.net
 X-ForwardEmail-Version: 0.4.40
 X-ForwardEmail-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
  149.28.215.223
-X-ForwardEmail-ID: 664d0dcf8b6b0c828344aea6
+X-ForwardEmail-ID: 664d0dd88b6b0c828344aeca
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240521_141058_446596_D9780046 
-X-CRM114-Status: UNSURE (   7.73  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240521_141100_968980_04EC8D1C 
+X-CRM114-Status: GOOD (  10.52  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,35 +77,53 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Schema validation using rockchip,rk3308-gmac compatible fails with:
+Radxa ROCK Pi S have optional onboard SD NAND on board revision v1.1,
+v1.2 and v1.3, revision v1.5 changed to use optional onboard eMMC.
 
-  ethernet@ff4e0000: compatible: ['rockchip,rk3308-gmac'] does not contain items matching the given schema
-        from schema $id: http://devicetree.org/schemas/net/rockchip-dwmac.yaml#
-  ethernet@ff4e0000: Unevaluated properties are not allowed ('interrupt-names', 'interrupts', 'phy-mode',
-                     'reg', 'reset-names', 'resets', 'snps,reset-active-low', 'snps,reset-delays-us',
-                     'snps,reset-gpio' were unexpected)
-        from schema $id: http://devicetree.org/schemas/net/rockchip-dwmac.yaml#
+The optional SD NAND typically fails to initialize:
 
-Add rockchip,rk3308-gmac to snps,dwmac.yaml to fix DT schema validation.
+  mmc_host mmc0: Bus speed (slot 0) = 400000Hz (slot req 400000Hz, actual 400000HZ div = 0)
+  mmc0: error -110 whilst initialising SD card
+  mmc_host mmc0: Bus speed (slot 0) = 300000Hz (slot req 300000Hz, actual 300000HZ div = 0)
+  mmc0: error -110 whilst initialising SD card
+  mmc_host mmc0: Bus speed (slot 0) = 200000Hz (slot req 200000Hz, actual 200000HZ div = 0)
+  mmc0: error -110 whilst initialising SD card
+  mmc_host mmc0: Bus speed (slot 0) = 100000Hz (slot req 100000Hz, actual 100000HZ div = 0)
+  mmc0: error -110 whilst initialising SD card
 
-Fixes: 2cc8c910f515 ("dt-bindings: net: rockchip-dwmac: add rk3308 gmac compatible")
+Add pinctrl and cap-sd-highspeed to fix SD NAND initialization. Also
+drop bus-width and mmc-hs200-1_8v to fix eMMC initialization on the new
+v1.5 board revision, only 3v3 signal voltage is used.
+
+Fixes: 2e04c25b1320 ("arm64: dts: rockchip: add ROCK Pi S DTS support")
 Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
 ---
- Documentation/devicetree/bindings/net/snps,dwmac.yaml | 1 +
- 1 file changed, 1 insertion(+)
+Hardware revision changes can be found at:
+- https://wiki.radxa.com/RockpiS/hardware/revisions
+- https://docs.radxa.com/en/rockpi/rockpis/hardware/hardware-revision
+---
+ arch/arm64/boot/dts/rockchip/rk3308-rock-pi-s.dts | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/net/snps,dwmac.yaml b/Documentation/devicetree/bindings/net/snps,dwmac.yaml
-index 21cc27e75f50..3bab4e1f3fbf 100644
---- a/Documentation/devicetree/bindings/net/snps,dwmac.yaml
-+++ b/Documentation/devicetree/bindings/net/snps,dwmac.yaml
-@@ -76,6 +76,7 @@ properties:
-         - rockchip,rk3128-gmac
-         - rockchip,rk3228-gmac
-         - rockchip,rk3288-gmac
-+        - rockchip,rk3308-gmac
-         - rockchip,rk3328-gmac
-         - rockchip,rk3366-gmac
-         - rockchip,rk3368-gmac
+diff --git a/arch/arm64/boot/dts/rockchip/rk3308-rock-pi-s.dts b/arch/arm64/boot/dts/rockchip/rk3308-rock-pi-s.dts
+index b47fe02c33fb..84f4b4a44644 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3308-rock-pi-s.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3308-rock-pi-s.dts
+@@ -126,10 +126,12 @@ &cpu0 {
+ };
+ 
+ &emmc {
+-	bus-width = <4>;
+ 	cap-mmc-highspeed;
+-	mmc-hs200-1_8v;
++	cap-sd-highspeed;
++	no-sdio;
+ 	non-removable;
++	pinctrl-names = "default";
++	pinctrl-0 = <&emmc_bus8 &emmc_clk &emmc_cmd>;
+ 	vmmc-supply = <&vcc_io>;
+ 	status = "okay";
+ };
 -- 
 2.43.2
 
