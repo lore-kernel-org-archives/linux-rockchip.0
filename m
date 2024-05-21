@@ -4,48 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 68B9BC25B75
-	for <linux-rockchip@archiver.kernel.org>; Tue, 21 May 2024 10:17:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 77443C25B75
+	for <linux-rockchip@archiver.kernel.org>; Tue, 21 May 2024 10:18:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=+Wh1f14Gmwu1OI07JNm1Rk64dtTjm2JO/jamzFwLecY=; b=FMk/xbUCcqfq3O
-	VUJl+SZEM/D8I4oZPGR0/oB+soF8D1SJ45FJH7gUq0TUQnJCGdE5yJYvHqnbrNlZ/MlnxwFzIKJjQ
-	s7cxfmqCx9csayXHqhzFGsqaMvAqDNlWkQJr0FsSOkBnE58dha+CMKfTiEWUyNolR2/jglKi9YLvQ
-	9tHrtnDRgIU20wgN12g+hzPmVg3F7vBGUyAqtbWb6opYlF2phs8u9+Ne/46z6UHugSdtDhXqWfF8N
-	AENwULfLML4DtNQAB4ES6Q9pGdjEd59HodqErpjXsBVGy3qL3pUkkKpGp7jU2JC9HLV8cYbEe52q5
-	z1OhV9rEDefOFj3zDmxg==;
+	List-Owner; bh=QaTunQykim94uRc/vmXhPel3RxF/7FFncEzSbCgN5HY=; b=HYjnvCWM3Dv93m
+	WbjWOM2oYrVaFNMNnbXwRNOucpzwVSzVeNrACofna6O2E9z0wNKxgTGAoxcFy+mJ/crnnLK7VC4ut
+	s40sZhbXU174qwUAPArDOs971q+ugskemKOCcEuaHB++20Q8uGabtQH0d2B0khBwLs5H7mdsjvPSl
+	8O8RaHxKTmrKxfGvP2x4E8DGKYmatQa3toQElG/XrUCBaz9CGUMTMxcqTDi35bAdvHCUOnv/+rA43
+	9yxfVBDE6eH5wO41yd+AGl7bJ+5NTo+53MwAsNw5hfmFzYhs1efpTFEPhINSpZhaMj39zAPSr4/nI
+	p4rttIuFLYVPQhfvSLmA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s9MZ6-0000000H3NT-1ptf;
-	Tue, 21 May 2024 10:17:52 +0000
+	id 1s9MZB-0000000H3Qq-16Ty;
+	Tue, 21 May 2024 10:17:57 +0000
 Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s9MWP-0000000H27S-4Bi5;
-	Tue, 21 May 2024 10:15:10 +0000
+	id 1s9MWU-0000000H22T-2zZA;
+	Tue, 21 May 2024 10:15:15 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 425C762121;
-	Tue, 21 May 2024 10:15:05 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 66847C4AF0B;
-	Tue, 21 May 2024 10:15:04 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 7B10562133;
+	Tue, 21 May 2024 10:15:10 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id ED04AC4AF09;
+	Tue, 21 May 2024 10:15:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1716286504;
-	bh=7kp1dFVIU1GWBJN/S2jYDRC3Mp7yeADRvgV4od+K6E0=;
+	s=k20201202; t=1716286510;
+	bh=zPGAazY1u9qYna183Z1tT1mvzEzSQ6HXQjNF0q4fp6A=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=pF7n/aD1m0nX8qtx2mMskIiVvyXu0B+gCRR90mOnTFK9Ium5E0FC6xbSkqQTwIia4
-	 sWfHSQTi65xkRLHf/TRBneFHEExRiwNqLOw75KbBau4TadOuos+O1d8leVP2dv14Dz
-	 rMg0jdFJjtUmkEtmLvwKLg3F99EHCD3GTXkPfhaNMEnyrCaFQoaxPJQGx5y82Ydb9v
-	 BtLBb+cnc6Aw0c5WmT7JHU15uLagcEgwT9X0Ouon18s3lwD1sFFX0u/dTgSRDhZpGS
-	 6ViqMn82kYCFngVm1zw3odZkNT27dumsDJ87tBU+2K9LGhWwV834RMBpgAbtbKA4yz
-	 7BvboGtrEve8A==
+	b=eYZH3Kt3iW748O+OqS1RwW42t9E8QhiOtXdGIFzlbFjOlJs0jNTeCFxfjP5QTfEkd
+	 xNjOWnExKisLjDQoPmWROZFeMYE8onNT9f7Mf2obhqnggW35/qNTCLAkoY6oagDCku
+	 hHUv/w/ZaMM/yFFqH0UeZwf34RlonzhT6Y/NrOwf52hDvie8WwIul3Fq5YtwHaiHfg
+	 WnPxLCF4AkuH8dH02BW/V10cCtEy8XY+YAxkPARSlE6zEMicn1+7XiFL48wmRtWvjV
+	 6zL8zs1URRRfMBdA71b1smIIeAuUTQu+xxGv3ouSinUKtsJPVVp6gpnsU0Ap0ErT3v
+	 4PAxZOh7A9/UQ==
 From: Maxime Ripard <mripard@kernel.org>
-Date: Tue, 21 May 2024 12:13:59 +0200
-Subject: [PATCH v14 26/28] drm/vc4: tests: Convert to plane creation helper
+Date: Tue, 21 May 2024 12:14:01 +0200
+Subject: [PATCH v14 28/28] drm/sun4i: hdmi: Switch to HDMI connector
 MIME-Version: 1.0
-Message-Id: <20240521-kms-hdmi-connector-state-v14-26-51950db4fedb@kernel.org>
+Message-Id: <20240521-kms-hdmi-connector-state-v14-28-51950db4fedb@kernel.org>
 References: <20240521-kms-hdmi-connector-state-v14-0-51950db4fedb@kernel.org>
 In-Reply-To: <20240521-kms-hdmi-connector-state-v14-0-51950db4fedb@kernel.org>
 To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
@@ -62,19 +62,19 @@ Cc: Hans Verkuil <hverkuil@xs4all.nl>,
  linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org, 
  linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
  linux-sunxi@lists.linux.dev, Maxime Ripard <mripard@kernel.org>, 
- =?utf-8?q?Ma=C3=ADra_Canal?= <mcanal@igalia.com>
+ Sui Jingfeng <sui.jingfeng@linux.dev>
 X-Mailer: b4 0.13.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2115; i=mripard@kernel.org;
- h=from:subject:message-id; bh=7kp1dFVIU1GWBJN/S2jYDRC3Mp7yeADRvgV4od+K6E0=;
- b=owGbwMvMwCmsHn9OcpHtvjLG02pJDGk+xXeKCmw6+Ct1dobu0PqWxXB/n5RJWFWBwIOXZw05M
- q1mSC/smMrCIMzJICumyPJEJuz08vbFVQ72K3/AzGFlAhnCwMUpABO5Mpmxvsj1pY/+46/td3pn
- VXG0TOm1dP+78Fl2eYH73rrT963mneaV4pm4aP204puCf05lr3d7ydhwTFjn3NPAqtJOz+f9ZrW
- 3LzEqFm2bbJX3xKj61sODUxMv/938d/6pCPYDUzzzr0m29KcAAA==
+X-Developer-Signature: v=1; a=openpgp-sha256; l=7714; i=mripard@kernel.org;
+ h=from:subject:message-id; bh=zPGAazY1u9qYna183Z1tT1mvzEzSQ6HXQjNF0q4fp6A=;
+ b=owGbwMvMwCmsHn9OcpHtvjLG02pJDGk+xXcnHo/llls0N/XJ5pVTzlzk5r8UeF1m2zTfhl8LZ
+ bgLRXc5d0xlYRDmZJAVU2R5IhN2enn74ioH+5U/YOawMoEMYeDiFICJ/NvJ2DA1Lf0E4875putP
+ OFnxp/rmX9gs77dxgXvBtceeAgv+HNrbY9awLFwvNyL+b29eyfffixnrNKYmPb02OX/OcW/vTOe
+ PL2aX2m2KeL43of3Bk7k3Qv0mnz7n4rRrRqbc6TXOUuHO1rOiAA==
 X-Developer-Key: i=mripard@kernel.org; a=openpgp;
  fpr=BE5675C37E818C8B5764241C254BCFC56BF6CE8D
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240521_031506_925372_0B72C6E7 
-X-CRM114-Status: GOOD (  10.30  )
+X-CRM114-CacheID: sfid-20240521_031511_070911_CC84512A 
+X-CRM114-Status: GOOD (  19.99  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,47 +86,233 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Tm93IHRoYXQgd2UgaGF2ZSBhIHBsYW5lIGNyZWF0ZSBoZWxwZXIgZm9yIGt1bml0IG1vY2tlZCBk
-cml2ZXJzLCBsZXQncwpjb252ZXJ0IHRvIGl0IGluIHZjNC4KClJldmlld2VkLWJ5OiBNYcOtcmEg
-Q2FuYWwgPG1jYW5hbEBpZ2FsaWEuY29tPgpTaWduZWQtb2ZmLWJ5OiBNYXhpbWUgUmlwYXJkIDxt
-cmlwYXJkQGtlcm5lbC5vcmc+Ci0tLQogZHJpdmVycy9ncHUvZHJtL3ZjNC90ZXN0cy92YzRfbW9j
-a19wbGFuZS5jIHwgMzQgKysrKysrKy0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tCiAxIGZpbGUgY2hh
-bmdlZCwgOCBpbnNlcnRpb25zKCspLCAyNiBkZWxldGlvbnMoLSkKCmRpZmYgLS1naXQgYS9kcml2
-ZXJzL2dwdS9kcm0vdmM0L3Rlc3RzL3ZjNF9tb2NrX3BsYW5lLmMgYi9kcml2ZXJzL2dwdS9kcm0v
-dmM0L3Rlc3RzL3ZjNF9tb2NrX3BsYW5lLmMKaW5kZXggOTczZjVmOTI5MDk3Li4xNDM1N2RiODIy
-MzggMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvZ3B1L2RybS92YzQvdGVzdHMvdmM0X21vY2tfcGxhbmUu
-YworKysgYi9kcml2ZXJzL2dwdS9kcm0vdmM0L3Rlc3RzL3ZjNF9tb2NrX3BsYW5lLmMKQEAgLTEs
-NDMgKzEsMjUgQEAKIC8vIFNQRFgtTGljZW5zZS1JZGVudGlmaWVyOiBHUEwtMi4wCiAKLSNpbmNs
-dWRlIDxkcm0vZHJtX2F0b21pY19zdGF0ZV9oZWxwZXIuaD4KLSNpbmNsdWRlIDxkcm0vZHJtX2Zv
-dXJjYy5oPgotI2luY2x1ZGUgPGRybS9kcm1fbW9kZXNldF9oZWxwZXJfdnRhYmxlcy5oPgorI2lu
-Y2x1ZGUgPGRybS9kcm1fa3VuaXRfaGVscGVycy5oPgogI2luY2x1ZGUgPGRybS9kcm1fcGxhbmUu
-aD4KIAogI2luY2x1ZGUgPGt1bml0L3Rlc3QuaD4KIAogI2luY2x1ZGUgInZjNF9tb2NrLmgiCiAK
-LXN0YXRpYyBjb25zdCBzdHJ1Y3QgZHJtX3BsYW5lX2hlbHBlcl9mdW5jcyB2YzRfZHVtbXlfcGxh
-bmVfaGVscGVyX2Z1bmNzID0gewotfTsKLQotc3RhdGljIGNvbnN0IHN0cnVjdCBkcm1fcGxhbmVf
-ZnVuY3MgdmM0X2R1bW15X3BsYW5lX2Z1bmNzID0gewotCS5hdG9taWNfZGVzdHJveV9zdGF0ZQk9
-IGRybV9hdG9taWNfaGVscGVyX3BsYW5lX2Rlc3Ryb3lfc3RhdGUsCi0JLmF0b21pY19kdXBsaWNh
-dGVfc3RhdGUJPSBkcm1fYXRvbWljX2hlbHBlcl9wbGFuZV9kdXBsaWNhdGVfc3RhdGUsCi0JLnJl
-c2V0CQkJPSBkcm1fYXRvbWljX2hlbHBlcl9wbGFuZV9yZXNldCwKLX07Ci0KLXN0YXRpYyBjb25z
-dCB1aW50MzJfdCB2YzRfZHVtbXlfcGxhbmVfZm9ybWF0c1tdID0gewotCURSTV9GT1JNQVRfWFJH
-Qjg4ODgsCi19OwotCiBzdHJ1Y3QgZHJtX3BsYW5lICp2YzRfZHVtbXlfcGxhbmUoc3RydWN0IGt1
-bml0ICp0ZXN0LCBzdHJ1Y3QgZHJtX2RldmljZSAqZHJtLAogCQkJCSAgZW51bSBkcm1fcGxhbmVf
-dHlwZSB0eXBlKQogewogCXN0cnVjdCBkcm1fcGxhbmUgKnBsYW5lOwogCi0JcGxhbmUgPSBfX2Ry
-bW1fdW5pdmVyc2FsX3BsYW5lX2FsbG9jKGRybSwgc2l6ZW9mKHN0cnVjdCBkcm1fcGxhbmUpLCAw
-LAotCQkJCQkJIDAsCi0JCQkJCQkgJnZjNF9kdW1teV9wbGFuZV9mdW5jcywKLQkJCQkJCSB2YzRf
-ZHVtbXlfcGxhbmVfZm9ybWF0cywKLQkJCQkJCSBBUlJBWV9TSVpFKHZjNF9kdW1teV9wbGFuZV9m
-b3JtYXRzKSwKLQkJCQkJCSBOVUxMLAotCQkJCQkJIERSTV9QTEFORV9UWVBFX1BSSU1BUlksCi0J
-CQkJCQkgTlVMTCk7Ci0JS1VOSVRfQVNTRVJUX05PVF9FUlJfT1JfTlVMTCh0ZXN0LCBwbGFuZSk7
-CisJS1VOSVRfQVNTRVJUX0VRKHRlc3QsIHR5cGUsIERSTV9QTEFORV9UWVBFX1BSSU1BUlkpOwog
-Ci0JZHJtX3BsYW5lX2hlbHBlcl9hZGQocGxhbmUsICZ2YzRfZHVtbXlfcGxhbmVfaGVscGVyX2Z1
-bmNzKTsKKwlwbGFuZSA9IGRybV9rdW5pdF9oZWxwZXJfY3JlYXRlX3ByaW1hcnlfcGxhbmUodGVz
-dCwgZHJtLAorCQkJCQkJICAgICAgTlVMTCwKKwkJCQkJCSAgICAgIE5VTEwsCisJCQkJCQkgICAg
-ICBOVUxMLCAwLAorCQkJCQkJICAgICAgTlVMTCk7CisJS1VOSVRfQVNTRVJUX05PVF9FUlJfT1Jf
-TlVMTCh0ZXN0LCBwbGFuZSk7CiAKIAlyZXR1cm4gcGxhbmU7CiB9CgotLSAKMi40NS4wCgoKX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2No
-aXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDov
-L2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+The new HDMI connector infrastructure allows to remove some boilerplate,
+especially to generate infoframes. Let's switch to it.
+
+Reviewed-by: Jernej Skrabec <jernej.skrabec@gmail.com>
+Acked-by: Sui Jingfeng <sui.jingfeng@linux.dev>
+Signed-off-by: Maxime Ripard <mripard@kernel.org>
+---
+ drivers/gpu/drm/sun4i/Kconfig          |  3 ++
+ drivers/gpu/drm/sun4i/sun4i_hdmi_enc.c | 81 +++++++++++++++++++++-------------
+ 2 files changed, 54 insertions(+), 30 deletions(-)
+
+diff --git a/drivers/gpu/drm/sun4i/Kconfig b/drivers/gpu/drm/sun4i/Kconfig
+index 4741d9f6544c..4037e085430e 100644
+--- a/drivers/gpu/drm/sun4i/Kconfig
++++ b/drivers/gpu/drm/sun4i/Kconfig
+@@ -16,10 +16,13 @@ config DRM_SUN4I
+ if DRM_SUN4I
+ 
+ config DRM_SUN4I_HDMI
+ 	tristate "Allwinner A10/A10s/A20/A31 HDMI Controller Support"
+ 	depends on ARM || COMPILE_TEST
++	select DRM_DISPLAY_HDMI_HELPER
++	select DRM_DISPLAY_HDMI_STATE_HELPER
++	select DRM_DISPLAY_HELPER
+ 	default DRM_SUN4I
+ 	help
+ 	  Choose this option if you have an Allwinner A10/A10s/A20/A31
+ 	  SoC with an HDMI controller.
+ 
+diff --git a/drivers/gpu/drm/sun4i/sun4i_hdmi_enc.c b/drivers/gpu/drm/sun4i/sun4i_hdmi_enc.c
+index 1c6cda2bfb14..0e652dd480c9 100644
+--- a/drivers/gpu/drm/sun4i/sun4i_hdmi_enc.c
++++ b/drivers/gpu/drm/sun4i/sun4i_hdmi_enc.c
+@@ -38,34 +38,28 @@
+ 	container_of_const(e, struct sun4i_hdmi, encoder)
+ 
+ #define drm_connector_to_sun4i_hdmi(c)		\
+ 	container_of_const(c, struct sun4i_hdmi, connector)
+ 
+-static int sun4i_hdmi_setup_avi_infoframes(struct sun4i_hdmi *hdmi,
+-					   struct drm_display_mode *mode)
++static int sun4i_hdmi_write_infoframe(struct drm_connector *connector,
++				      enum hdmi_infoframe_type type,
++				      const u8 *buffer, size_t len)
+ {
+-	struct hdmi_avi_infoframe frame;
+-	u8 buffer[17];
+-	int i, ret;
++	struct sun4i_hdmi *hdmi = drm_connector_to_sun4i_hdmi(connector);
++	int i;
+ 
+-	ret = drm_hdmi_avi_infoframe_from_display_mode(&frame,
+-						       &hdmi->connector, mode);
+-	if (ret < 0) {
+-		DRM_ERROR("Failed to get infoframes from mode\n");
+-		return ret;
++	if (type != HDMI_INFOFRAME_TYPE_AVI) {
++		drm_err(connector->dev,
++			"Unsupported infoframe type: %u\n", type);
++		return 0;
+ 	}
+ 
+-	ret = hdmi_avi_infoframe_pack(&frame, buffer, sizeof(buffer));
+-	if (ret < 0) {
+-		DRM_ERROR("Failed to pack infoframes\n");
+-		return ret;
+-	}
+-
+-	for (i = 0; i < sizeof(buffer); i++)
++	for (i = 0; i < len; i++)
+ 		writeb(buffer[i], hdmi->base + SUN4I_HDMI_AVI_INFOFRAME_REG(i));
+ 
+ 	return 0;
++
+ }
+ 
+ static void sun4i_hdmi_disable(struct drm_encoder *encoder,
+ 			       struct drm_atomic_state *state)
+ {
+@@ -84,18 +78,22 @@ static void sun4i_hdmi_disable(struct drm_encoder *encoder,
+ static void sun4i_hdmi_enable(struct drm_encoder *encoder,
+ 			      struct drm_atomic_state *state)
+ {
+ 	struct drm_display_mode *mode = &encoder->crtc->state->adjusted_mode;
+ 	struct sun4i_hdmi *hdmi = drm_encoder_to_sun4i_hdmi(encoder);
+-	struct drm_display_info *display = &hdmi->connector.display_info;
++	struct drm_connector *connector = &hdmi->connector;
++	struct drm_display_info *display = &connector->display_info;
++	struct drm_connector_state *conn_state =
++		drm_atomic_get_new_connector_state(state, connector);
++	unsigned long long tmds_rate = conn_state->hdmi.tmds_char_rate;
+ 	unsigned int x, y;
+ 	u32 val = 0;
+ 
+ 	DRM_DEBUG_DRIVER("Enabling the HDMI Output\n");
+ 
+-	clk_set_rate(hdmi->mod_clk, mode->crtc_clock * 1000);
+-	clk_set_rate(hdmi->tmds_clk, mode->crtc_clock * 1000);
++	clk_set_rate(hdmi->mod_clk, tmds_rate);
++	clk_set_rate(hdmi->tmds_clk, tmds_rate);
+ 
+ 	/* Set input sync enable */
+ 	writel(SUN4I_HDMI_UNKNOWN_INPUT_SYNC,
+ 	       hdmi->base + SUN4I_HDMI_UNKNOWN_REG);
+ 
+@@ -144,11 +142,12 @@ static void sun4i_hdmi_enable(struct drm_encoder *encoder,
+ 
+ 	writel(val, hdmi->base + SUN4I_HDMI_VID_TIMING_POL_REG);
+ 
+ 	clk_prepare_enable(hdmi->tmds_clk);
+ 
+-	sun4i_hdmi_setup_avi_infoframes(hdmi, mode);
++	drm_atomic_helper_connector_hdmi_update_infoframes(connector, state);
++
+ 	val |= SUN4I_HDMI_PKT_CTRL_TYPE(0, SUN4I_HDMI_PKT_AVI);
+ 	val |= SUN4I_HDMI_PKT_CTRL_TYPE(1, SUN4I_HDMI_PKT_END);
+ 	writel(val, hdmi->base + SUN4I_HDMI_PKT_CTRL_REG(0));
+ 
+ 	val = SUN4I_HDMI_VID_CTRL_ENABLE;
+@@ -197,23 +196,26 @@ static int sun4i_hdmi_connector_atomic_check(struct drm_connector *connector,
+ 	struct drm_crtc_state *crtc_state = crtc->state;
+ 	struct drm_display_mode *mode = &crtc_state->adjusted_mode;
+ 	enum drm_mode_status status;
+ 
+ 	status = sun4i_hdmi_connector_clock_valid(connector, mode,
+-						  mode->clock * 1000);
++						  conn_state->hdmi.tmds_char_rate);
+ 	if (status != MODE_OK)
+ 		return -EINVAL;
+ 
+ 	return 0;
+ }
+ 
+ static enum drm_mode_status
+ sun4i_hdmi_connector_mode_valid(struct drm_connector *connector,
+ 				struct drm_display_mode *mode)
+ {
+-	return sun4i_hdmi_connector_clock_valid(connector, mode,
+-						mode->clock * 1000);
++	unsigned long long rate =
++		drm_connector_hdmi_compute_mode_clock(mode, 8,
++						      HDMI_COLORSPACE_RGB);
++
++	return sun4i_hdmi_connector_clock_valid(connector, mode, rate);
+ }
+ 
+ static int sun4i_hdmi_get_modes(struct drm_connector *connector)
+ {
+ 	struct sun4i_hdmi *hdmi = drm_connector_to_sun4i_hdmi(connector);
+@@ -259,10 +261,15 @@ static struct i2c_adapter *sun4i_hdmi_get_ddc(struct device *dev)
+ 		return ERR_PTR(-EPROBE_DEFER);
+ 
+ 	return ddc;
+ }
+ 
++static const struct drm_connector_hdmi_funcs sun4i_hdmi_hdmi_connector_funcs = {
++	.tmds_char_rate_valid	= sun4i_hdmi_connector_clock_valid,
++	.write_infoframe	= sun4i_hdmi_write_infoframe,
++};
++
+ static const struct drm_connector_helper_funcs sun4i_hdmi_connector_helper_funcs = {
+ 	.atomic_check	= sun4i_hdmi_connector_atomic_check,
+ 	.mode_valid	= sun4i_hdmi_connector_mode_valid,
+ 	.get_modes	= sun4i_hdmi_get_modes,
+ };
+@@ -280,15 +287,20 @@ sun4i_hdmi_connector_detect(struct drm_connector *connector, bool force)
+ 	}
+ 
+ 	return connector_status_connected;
+ }
+ 
++static void sun4i_hdmi_connector_reset(struct drm_connector *connector)
++{
++	drm_atomic_helper_connector_reset(connector);
++	__drm_atomic_helper_connector_hdmi_reset(connector, connector->state);
++}
++
+ static const struct drm_connector_funcs sun4i_hdmi_connector_funcs = {
+ 	.detect			= sun4i_hdmi_connector_detect,
+ 	.fill_modes		= drm_helper_probe_single_connector_modes,
+-	.destroy		= drm_connector_cleanup,
+-	.reset			= drm_atomic_helper_connector_reset,
++	.reset			= sun4i_hdmi_connector_reset,
+ 	.atomic_duplicate_state	= drm_atomic_helper_connector_duplicate_state,
+ 	.atomic_destroy_state	= drm_atomic_helper_connector_destroy_state,
+ };
+ 
+ #ifdef CONFIG_DRM_SUN4I_HDMI_CEC
+@@ -643,14 +655,23 @@ static int sun4i_hdmi_bind(struct device *dev, struct device *master,
+ 	       hdmi->base + SUN4I_HDMI_CEC);
+ #endif
+ 
+ 	drm_connector_helper_add(&hdmi->connector,
+ 				 &sun4i_hdmi_connector_helper_funcs);
+-	ret = drm_connector_init_with_ddc(drm, &hdmi->connector,
+-					  &sun4i_hdmi_connector_funcs,
+-					  DRM_MODE_CONNECTOR_HDMIA,
+-					  hdmi->ddc_i2c);
++	ret = drmm_connector_hdmi_init(drm, &hdmi->connector,
++				       /*
++					* NOTE: Those are likely to be
++					* wrong, but I couldn't find the
++					* actual ones in the BSP.
++					*/
++				       "AW", "HDMI",
++				       &sun4i_hdmi_connector_funcs,
++				       &sun4i_hdmi_hdmi_connector_funcs,
++				       DRM_MODE_CONNECTOR_HDMIA,
++				       hdmi->ddc_i2c,
++				       BIT(HDMI_COLORSPACE_RGB),
++				       8);
+ 	if (ret) {
+ 		dev_err(dev,
+ 			"Couldn't initialise the HDMI connector\n");
+ 		goto err_cleanup_connector;
+ 	}
+
+-- 
+2.45.0
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
