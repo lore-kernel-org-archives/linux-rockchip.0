@@ -4,76 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 69698C25B74
-	for <linux-rockchip@archiver.kernel.org>; Tue, 21 May 2024 11:31:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 612EDC25B74
+	for <linux-rockchip@archiver.kernel.org>; Tue, 21 May 2024 15:26:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
-	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=lOwI1Bb2KIuQINsU0g/fOn5JAEyIt6dBsKPROlCy0Lc=; b=AjG7oZcuioMKhw
-	yYY5I0+03Tl7auqbTIsZckh/0XDFRPrf33rskmxSm6BRudi44oFTzus3WvBOYDzjeJWF2MNyNcmqB
-	xnWi2W5b7g6jFw/NdoHT+73Oh3STr1HIszPN6f2d9OLFDHiHxN9g0DwX99BID1BmAevdLxsytiO9s
-	KvmTBMePVVHttKS+CHrZpIMtIii8oaXvJVolVT2KpjXsi4gH3neF2F2MY9u8cfiqETfBY+ERWtXSv
-	a6nR2YUnPDhT+HvbofCDPT1tP1TtYhL8o+eKxuc+eZ4wmeIqLoLJI7/nKnB6+AVmaqkkqEB4n+5Yg
-	7UJuqcu2FORwbcs1h6/A==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=zDlPgKJ8xfci9ZgzDK6vRdfKjHupT4tZNJke0G5chlQ=; b=PifuRd/dD/j86h
+	1xqdywh9Tg1i7++J4vRgOye+J+cW51RAWaETCG/BLRN2O4IGw/64C+kt0gDJjnz9+/q4ilWqMpgd+
+	7SGnHh5tOj9JN1vAuVivl0dfOptLOwMP40EFNle+Fpm8bo8M3e+bccxhW6Ej1wDbFAXUxPLs6zdmb
+	HYrOwIvN5ta37mc3eH56PSYuzb2GfTIar74voMo9dWZRrQPKVXlMaouFQTXusQEwdcHiJLPQPHLvC
+	iDArc+oZyitSeca7wJhWoj84EwqXoQX+Hwpk4zpNOFYSAKPvloiolgd9LLlbbKKCnm8Y/dYjK9SvE
+	Bn2FaMlneIx5EI8CPtpg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s9NiJ-0000000HIJD-1H3q;
-	Tue, 21 May 2024 11:31:27 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1s9RNZ-00000000L0f-0JXa;
+	Tue, 21 May 2024 15:26:17 +0000
+Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s9MWE-0000000H1y7-2IMQ;
-	Tue, 21 May 2024 10:14:58 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id BD29D62103;
-	Tue, 21 May 2024 10:14:53 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 21047C32782;
-	Tue, 21 May 2024 10:14:52 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1716286493;
-	bh=5SC8jBSEzHmgckW1BacEcaTXRBSM2iUEZbvY/yF9KWs=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=VD8Xy8UrnrNq9K1E09B9oR0btavcI9VU8zts6c7+NS+Tg9dkSpvl3crjS5qOp9FGV
-	 GtVsMwk996o2U01I5NyaurFqAdvA0af3Jdr1vCP8W2jCNqIySYDknKJtBhNepjnjOr
-	 1RBNtr3jNJ7TT+Mm1QYFf/HPfNPIaO1FWab2ZLUZctj00T+VboiWVYtozNNdv1n6OT
-	 boBzzWMnvIhPjfXbEgF20MVZ16yHYeMoMllCQW4q6NCNa7beKrigCY9yZ1LgfmF9Nm
-	 MaqFVTyeivxnF27keEmdR7dCI6ddD87t0XMyHa25h9OmLMoBoMcCX4NjJGzNnJKRla
-	 7kv0othCVWYXg==
-From: Maxime Ripard <mripard@kernel.org>
-Date: Tue, 21 May 2024 12:13:55 +0200
-Subject: [PATCH v14 22/28] drm/tests: Add infoframes test
+	id 1s9RNV-00000000KyM-1Wz3;
+	Tue, 21 May 2024 15:26:14 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1716305169;
+	bh=ehEGmLPbdflG9SwAJyNTXNFXo36LoESCFkUyqyn/9rE=;
+	h=From:To:Cc:Subject:Date:From;
+	b=YRcCxUSoYk2jqtJS2oUMkMYXVP2UsiGWYpj6GvD6ACMAvrMToPH4gjF+lTPCTsjdp
+	 AaMBchr/vwUGg/XyzzNA3Efh9iIHJSootB6GzHKCE4MXxaTnrBg3RIng/o9eGXHjyG
+	 8auuIIJFlzei0KUr1ce2kFTvMehyHkOHVY1BZ0W4BPckuNRC6a+3H8baySiOBr6KXq
+	 ouGAP6zR2tuQ9pq5mlNa4mjm19lowg/gQ1D2dN8TD8duZdYWcKckxtyQumCCglzg9h
+	 3XZSYJNZMKTYG7WeeyTTVLWaCOSgD7lBFOEP2myOGOYAfZ8rFAdBwu05eOJ5yYiEgQ
+	 k0UYBVDpn7y9w==
+Received: from benjamin-XPS-13-9310.. (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: benjamin.gaignard)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 94768378212E;
+	Tue, 21 May 2024 15:26:08 +0000 (UTC)
+From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+To: ezequiel@vanguardiasur.com.ar,
+	p.zabel@pengutronix.de,
+	mchehab@kernel.org,
+	heiko@sntech.de
+Cc: linux-media@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	kernel@collabora.com,
+	Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Subject: [PATCH] media: verisilicon: AV1: Correct some registers fields size or position
+Date: Tue, 21 May 2024 17:26:03 +0200
+Message-Id: <20240521152603.120723-1-benjamin.gaignard@collabora.com>
+X-Mailer: git-send-email 2.40.1
 MIME-Version: 1.0
-Message-Id: <20240521-kms-hdmi-connector-state-v14-22-51950db4fedb@kernel.org>
-References: <20240521-kms-hdmi-connector-state-v14-0-51950db4fedb@kernel.org>
-In-Reply-To: <20240521-kms-hdmi-connector-state-v14-0-51950db4fedb@kernel.org>
-To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
- Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, 
- Daniel Vetter <daniel@ffwll.ch>, Jonathan Corbet <corbet@lwn.net>, 
- Sandy Huang <hjc@rock-chips.com>, 
- =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
- Chen-Yu Tsai <wens@csie.org>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
- Samuel Holland <samuel@sholland.org>, Andy Yan <andy.yan@rock-chips.com>
-Cc: Hans Verkuil <hverkuil@xs4all.nl>, 
- Sebastian Wick <sebastian.wick@redhat.com>, 
- =?utf-8?q?Ville_Syrj=C3=A4l=C3=A4?= <ville.syrjala@linux.intel.com>, 
- dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, 
- linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
- linux-sunxi@lists.linux.dev, Maxime Ripard <mripard@kernel.org>
-X-Mailer: b4 0.13.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=8730; i=mripard@kernel.org;
- h=from:subject:message-id; bh=5SC8jBSEzHmgckW1BacEcaTXRBSM2iUEZbvY/yF9KWs=;
- b=owGbwMvMwCmsHn9OcpHtvjLG02pJDGk+xbdWXqsS2vhse9SaW79eh3JLfYoTW+AQ+Vd4zWn5Z
- MXnqqs4O6ayMAhzMsiKKbI8kQk7vbx9cZWD/cofMHNYmUCGMHBxCsBEkt0Y69Tq17Fop9b/n1K7
- Y86jLfVGF//KnHmxrcvjUsj7Evl3M8X+nL9179ikq7ymO37a8F2w2sHYcC9BjO2s9yJBptSQG5t
- 9bqWddLLl7TzDvz5OQN4h8aD13OwoYe2kT9MXzZixQ5LVuuoPAA==
-X-Developer-Key: i=mripard@kernel.org; a=openpgp;
- fpr=BE5675C37E818C8B5764241C254BCFC56BF6CE8D
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240521_031454_899960_1E5D8D85 
-X-CRM114-Status: GOOD (  12.33  )
+X-CRM114-CacheID: sfid-20240521_082613_739496_0AA09BB6 
+X-CRM114-Status: UNSURE (   8.74  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,263 +79,47 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The previous patch added the generation of the infoframes matching an
-HDMI connector state. Let's add a few tests to make sure it works as
-expected.
+Some fields aren't well positionned or with incorrect size inside the
+hardware registers. Fix them.
 
-Signed-off-by: Maxime Ripard <mripard@kernel.org>
+That doesn't impact Fluster score test.
+
+Fixes: 727a400686a2 ("media: verisilicon: Add Rockchip AV1 decoder")
+Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 ---
- drivers/gpu/drm/tests/drm_connector_test.c | 219 +++++++++++++++++++++++++++++
- 1 file changed, 219 insertions(+)
+ .../media/platform/verisilicon/rockchip_vpu981_regs.h  | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
 
-diff --git a/drivers/gpu/drm/tests/drm_connector_test.c b/drivers/gpu/drm/tests/drm_connector_test.c
-index 4e3c2c7dfaf2..9ea228266de2 100644
---- a/drivers/gpu/drm/tests/drm_connector_test.c
-+++ b/drivers/gpu/drm/tests/drm_connector_test.c
-@@ -219,10 +219,221 @@ static void drm_test_connector_hdmi_init_null_ddc(struct kunit *test)
- 				       BIT(HDMI_COLORSPACE_RGB),
- 				       8);
- 	KUNIT_EXPECT_EQ(test, ret, 0);
- }
+diff --git a/drivers/media/platform/verisilicon/rockchip_vpu981_regs.h b/drivers/media/platform/verisilicon/rockchip_vpu981_regs.h
+index 182e6c830ff6..990f8e69524a 100644
+--- a/drivers/media/platform/verisilicon/rockchip_vpu981_regs.h
++++ b/drivers/media/platform/verisilicon/rockchip_vpu981_regs.h
+@@ -327,7 +327,7 @@
  
-+/*
-+ * Test that the registration of an HDMI connector with a NULL vendor
-+ * fails.
-+ */
-+static void drm_test_connector_hdmi_init_null_vendor(struct kunit *test)
-+{
-+	struct drm_connector_init_priv *priv = test->priv;
-+	int ret;
-+
-+	ret = drmm_connector_hdmi_init(&priv->drm, &priv->connector,
-+				       NULL, "Product",
-+				       &dummy_funcs,
-+				       &dummy_hdmi_funcs,
-+				       DRM_MODE_CONNECTOR_HDMIA,
-+				       &priv->ddc,
-+				       BIT(HDMI_COLORSPACE_RGB),
-+				       8);
-+	KUNIT_EXPECT_LT(test, ret, 0);
-+}
-+
-+/*
-+ * Test that the registration of an HDMI connector with a NULL product
-+ * fails.
-+ */
-+static void drm_test_connector_hdmi_init_null_product(struct kunit *test)
-+{
-+	struct drm_connector_init_priv *priv = test->priv;
-+	int ret;
-+
-+	ret = drmm_connector_hdmi_init(&priv->drm, &priv->connector,
-+				       "Vendor", NULL,
-+				       &dummy_funcs,
-+				       &dummy_hdmi_funcs,
-+				       DRM_MODE_CONNECTOR_HDMIA,
-+				       &priv->ddc,
-+				       BIT(HDMI_COLORSPACE_RGB),
-+				       8);
-+	KUNIT_EXPECT_LT(test, ret, 0);
-+}
-+
-+/*
-+ * Test that the registration of a connector with a valid, shorter than
-+ * the max length, product name succeeds, and is stored padded with 0.
-+ */
-+static void drm_test_connector_hdmi_init_product_valid(struct kunit *test)
-+{
-+	struct drm_connector_init_priv *priv = test->priv;
-+	const unsigned char expected_product[DRM_CONNECTOR_HDMI_PRODUCT_LEN] = {
-+		'P', 'r', 'o', 'd',
-+	};
-+	const char *product_name = "Prod";
-+	int ret;
-+
-+	KUNIT_ASSERT_LT(test, strlen(product_name), DRM_CONNECTOR_HDMI_PRODUCT_LEN);
-+
-+	ret = drmm_connector_hdmi_init(&priv->drm, &priv->connector,
-+				       "Vendor", product_name,
-+				       &dummy_funcs,
-+				       &dummy_hdmi_funcs,
-+				       DRM_MODE_CONNECTOR_HDMIA,
-+				       &priv->ddc,
-+				       BIT(HDMI_COLORSPACE_RGB),
-+				       8);
-+	KUNIT_EXPECT_EQ(test, ret, 0);
-+	KUNIT_EXPECT_MEMEQ(test,
-+			   priv->connector.hdmi.product,
-+			   expected_product,
-+			   sizeof(priv->connector.hdmi.product));
-+}
-+
-+/*
-+ * Test that the registration of a connector with a valid, at max
-+ * length, product name succeeds, and is stored padded without any
-+ * trailing \0.
-+ */
-+static void drm_test_connector_hdmi_init_product_length_exact(struct kunit *test)
-+{
-+	struct drm_connector_init_priv *priv = test->priv;
-+	const unsigned char expected_product[DRM_CONNECTOR_HDMI_PRODUCT_LEN] = {
-+		'P', 'r', 'o', 'd', 'u', 'c', 't',
-+		'P', 'r', 'o', 'd', 'u', 'c', 't',
-+		'P', 'r',
-+	};
-+	const char *product_name = "ProductProductPr";
-+	int ret;
-+
-+	KUNIT_ASSERT_EQ(test, strlen(product_name), DRM_CONNECTOR_HDMI_PRODUCT_LEN);
-+
-+	ret = drmm_connector_hdmi_init(&priv->drm, &priv->connector,
-+				       "Vendor", product_name,
-+				       &dummy_funcs,
-+				       &dummy_hdmi_funcs,
-+				       DRM_MODE_CONNECTOR_HDMIA,
-+				       &priv->ddc,
-+				       BIT(HDMI_COLORSPACE_RGB),
-+				       8);
-+	KUNIT_EXPECT_EQ(test, ret, 0);
-+	KUNIT_EXPECT_MEMEQ(test,
-+			   priv->connector.hdmi.product,
-+			   expected_product,
-+			   sizeof(priv->connector.hdmi.product));
-+}
-+
-+/*
-+ * Test that the registration of a connector with a product name larger
-+ * than the maximum length fails.
-+ */
-+static void drm_test_connector_hdmi_init_product_length_too_long(struct kunit *test)
-+{
-+	struct drm_connector_init_priv *priv = test->priv;
-+	const char *product_name = "ProductProductProduct";
-+	int ret;
-+
-+	KUNIT_ASSERT_GT(test, strlen(product_name), DRM_CONNECTOR_HDMI_PRODUCT_LEN);
-+
-+	ret = drmm_connector_hdmi_init(&priv->drm, &priv->connector,
-+				       "Vendor", product_name,
-+				       &dummy_funcs,
-+				       &dummy_hdmi_funcs,
-+				       DRM_MODE_CONNECTOR_HDMIA,
-+				       &priv->ddc,
-+				       BIT(HDMI_COLORSPACE_RGB),
-+				       8);
-+	KUNIT_EXPECT_LT(test, ret, 0);
-+}
-+
-+/*
-+ * Test that the registration of a connector with a vendor name smaller
-+ * than the maximum length succeeds, and is stored padded with zeros.
-+ */
-+static void drm_test_connector_hdmi_init_vendor_valid(struct kunit *test)
-+{
-+	struct drm_connector_init_priv *priv = test->priv;
-+	const char expected_vendor[DRM_CONNECTOR_HDMI_VENDOR_LEN] = {
-+		'V', 'e', 'n', 'd',
-+	};
-+	const char *vendor_name = "Vend";
-+	int ret;
-+
-+	KUNIT_ASSERT_LT(test, strlen(vendor_name), DRM_CONNECTOR_HDMI_VENDOR_LEN);
-+
-+	ret = drmm_connector_hdmi_init(&priv->drm, &priv->connector,
-+				       vendor_name, "Product",
-+				       &dummy_funcs,
-+				       &dummy_hdmi_funcs,
-+				       DRM_MODE_CONNECTOR_HDMIA,
-+				       &priv->ddc,
-+				       BIT(HDMI_COLORSPACE_RGB),
-+				       8);
-+	KUNIT_EXPECT_EQ(test, ret, 0);
-+	KUNIT_EXPECT_MEMEQ(test,
-+			   priv->connector.hdmi.vendor,
-+			   expected_vendor,
-+			   sizeof(priv->connector.hdmi.vendor));
-+}
-+
-+/*
-+ * Test that the registration of a connector with a vendor name at the
-+ * maximum length succeeds, and is stored padded without the trailing
-+ * zero.
-+ */
-+static void drm_test_connector_hdmi_init_vendor_length_exact(struct kunit *test)
-+{
-+	struct drm_connector_init_priv *priv = test->priv;
-+	const char expected_vendor[DRM_CONNECTOR_HDMI_VENDOR_LEN] = {
-+		'V', 'e', 'n', 'd', 'o', 'r',
-+		'V', 'e',
-+	};
-+	const char *vendor_name = "VendorVe";
-+	int ret;
-+
-+	KUNIT_ASSERT_EQ(test, strlen(vendor_name), DRM_CONNECTOR_HDMI_VENDOR_LEN);
-+
-+	ret = drmm_connector_hdmi_init(&priv->drm, &priv->connector,
-+				       vendor_name, "Product",
-+				       &dummy_funcs,
-+				       &dummy_hdmi_funcs,
-+				       DRM_MODE_CONNECTOR_HDMIA,
-+				       &priv->ddc,
-+				       BIT(HDMI_COLORSPACE_RGB),
-+				       8);
-+	KUNIT_EXPECT_EQ(test, ret, 0);
-+	KUNIT_EXPECT_MEMEQ(test,
-+			   priv->connector.hdmi.vendor,
-+			   expected_vendor,
-+			   sizeof(priv->connector.hdmi.vendor));
-+}
-+
-+/*
-+ * Test that the registration of a connector with a vendor name larger
-+ * than the maximum length fails.
-+ */
-+static void drm_test_connector_hdmi_init_vendor_length_too_long(struct kunit *test)
-+{
-+	struct drm_connector_init_priv *priv = test->priv;
-+	const char *vendor_name = "VendorVendor";
-+	int ret;
-+
-+	KUNIT_ASSERT_GT(test, strlen(vendor_name), DRM_CONNECTOR_HDMI_VENDOR_LEN);
-+
-+	ret = drmm_connector_hdmi_init(&priv->drm, &priv->connector,
-+				       vendor_name, "Product",
-+				       &dummy_funcs,
-+				       &dummy_hdmi_funcs,
-+				       DRM_MODE_CONNECTOR_HDMIA,
-+				       &priv->ddc,
-+				       BIT(HDMI_COLORSPACE_RGB),
-+				       8);
-+	KUNIT_EXPECT_LT(test, ret, 0);
-+}
-+
- /*
-  * Test that the registration of a connector with an invalid maximum bpc
-  * count fails.
-  */
- static void drm_test_connector_hdmi_init_bpc_invalid(struct kunit *test)
-@@ -499,10 +710,18 @@ static struct kunit_case drmm_connector_hdmi_init_tests[] = {
- 	KUNIT_CASE(drm_test_connector_hdmi_init_bpc_invalid),
- 	KUNIT_CASE(drm_test_connector_hdmi_init_bpc_null),
- 	KUNIT_CASE(drm_test_connector_hdmi_init_formats_empty),
- 	KUNIT_CASE(drm_test_connector_hdmi_init_formats_no_rgb),
- 	KUNIT_CASE(drm_test_connector_hdmi_init_null_ddc),
-+	KUNIT_CASE(drm_test_connector_hdmi_init_null_product),
-+	KUNIT_CASE(drm_test_connector_hdmi_init_null_vendor),
-+	KUNIT_CASE(drm_test_connector_hdmi_init_product_length_exact),
-+	KUNIT_CASE(drm_test_connector_hdmi_init_product_length_too_long),
-+	KUNIT_CASE(drm_test_connector_hdmi_init_product_valid),
-+	KUNIT_CASE(drm_test_connector_hdmi_init_vendor_length_exact),
-+	KUNIT_CASE(drm_test_connector_hdmi_init_vendor_length_too_long),
-+	KUNIT_CASE(drm_test_connector_hdmi_init_vendor_valid),
- 	KUNIT_CASE_PARAM(drm_test_connector_hdmi_init_type_valid,
- 			 drm_connector_hdmi_init_type_valid_gen_params),
- 	KUNIT_CASE_PARAM(drm_test_connector_hdmi_init_type_invalid,
- 			 drm_connector_hdmi_init_type_invalid_gen_params),
- 	{ }
-
+ #define av1_apf_threshold		AV1_DEC_REG(55, 0, 0xffff)
+ #define av1_apf_single_pu_mode		AV1_DEC_REG(55, 30, 0x1)
+-#define av1_apf_disable			AV1_DEC_REG(55, 30, 0x1)
++#define av1_apf_disable			AV1_DEC_REG(55, 31, 0x1)
+ 
+ #define av1_dec_max_burst		AV1_DEC_REG(58, 0, 0xff)
+ #define av1_dec_buswidth		AV1_DEC_REG(58, 8, 0x7)
+@@ -337,10 +337,10 @@
+ #define av1_dec_mc_polltime		AV1_DEC_REG(58, 17, 0x3ff)
+ #define av1_dec_mc_pollmode		AV1_DEC_REG(58,	27, 0x3)
+ 
+-#define av1_filt_ref_adj_3		AV1_DEC_REG(59, 0, 0x3f)
+-#define av1_filt_ref_adj_2		AV1_DEC_REG(59, 7, 0x3f)
+-#define av1_filt_ref_adj_1		AV1_DEC_REG(59, 14, 0x3f)
+-#define av1_filt_ref_adj_0		AV1_DEC_REG(59, 21, 0x3f)
++#define av1_filt_ref_adj_3		AV1_DEC_REG(59, 0, 0x7f)
++#define av1_filt_ref_adj_2		AV1_DEC_REG(59, 7, 0x7f)
++#define av1_filt_ref_adj_1		AV1_DEC_REG(59, 14, 0x7f)
++#define av1_filt_ref_adj_0		AV1_DEC_REG(59, 21, 0x7f)
+ #define av1_ref0_sign_bias		AV1_DEC_REG(59, 28, 0x1)
+ #define av1_ref1_sign_bias		AV1_DEC_REG(59, 29, 0x1)
+ #define av1_ref2_sign_bias		AV1_DEC_REG(59, 30, 0x1)
 -- 
-2.45.0
+2.40.1
 
 
 _______________________________________________
