@@ -4,48 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A8796C25B74
-	for <linux-rockchip@archiver.kernel.org>; Tue, 21 May 2024 11:31:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CA922C25B7A
+	for <linux-rockchip@archiver.kernel.org>; Tue, 21 May 2024 11:31:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=jcTwrbH3kJCcUezO4GF+pC8SAJKCY/3RA0YVWZ3fSjE=; b=VBCt7ZnGG2BaoA
-	19eWv6k0+WljaJ83vSjwTEkT2rAJH5bJ3kHW2YY4C03laJHb0RqJcvUJysvMxX9TkF8YxjiRe1AoO
-	km7FRfjW7YAlyZbpBkvl0SNu+hMRmDPxGgv4hlOXOIDKF38DW3JrsiwK4VUBg+veGLRFU1VmwWwUv
-	5jb1qnH09ryfx781Je1SBWtsUHlWj57eD/hGPPahnMeTwoUxh4t4bDC/zw2bmonKIMJjxtJOAHJau
-	Z3kL1t/Uxp48gN00USX2404On1Pg8io3cg04g9ojoN+1IukjsWR/hUzDo3Pl3ioSU/hFhZgEAKHGj
-	+++S7sQg4RWHDPpGQJNQ==;
+	List-Owner; bh=EFNqlQDY6KJMKCTCeGWhpOttWyrmvrZZushCUPiXyqI=; b=C9Poh2UHGKvHEy
+	Dk88mLtlkseA6ODqFDwOsXTHcDjlJRdALz3xI8YYHfkAElkduVVHPlNCeRTkF/WHu7ZOHgVOydT1t
+	lM+GKc8bAHVSSaBbgMYQ3X2c5GlQqKpO+7P55lM+hEG1SVA9cSjo8Z5JXCUxSWP0NP6ArZ9a5Kj2P
+	oUsiumfDCxCFg9H2d1jSQ80qw3OLGRC/seH68N3L04oqSNuE0BEwjCaoitr5TqYTUabYJ3r4PhtFm
+	/pkoLh5PJuvKj3/ED4p7sCEsF7kmjh5cNQW9/paza3YOzx4ttDXXlLpiG8g/YXcumdDxRNLBr71Q9
+	a9YddYce/XBVulWwfjRg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s9Ni5-0000000HI6D-1b1P;
-	Tue, 21 May 2024 11:31:13 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1s9Ni7-0000000HI8T-3eTx;
+	Tue, 21 May 2024 11:31:15 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s9MW1-0000000H1o0-1Z5D;
-	Tue, 21 May 2024 10:14:51 +0000
+	id 1s9MW3-0000000H1pu-1uej;
+	Tue, 21 May 2024 10:14:53 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 323CC62120;
-	Tue, 21 May 2024 10:14:40 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 83E41C2BD11;
-	Tue, 21 May 2024 10:14:39 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id C0E136212D;
+	Tue, 21 May 2024 10:14:42 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 40D21C4AF0A;
+	Tue, 21 May 2024 10:14:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1716286479;
-	bh=vkFDNfYcYw97dmutxNWUK5pEt5v9Q0kGhsMeHwDkBao=;
+	s=k20201202; t=1716286482;
+	bh=JXa+IVsW9prpWJbHiohOgnPWpZAy+pZGq51p0wD7ywg=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=nv360DaPBwpJb7yGZG3TBorIW2kx8erBdo1RXo8HZNhPMpzAPZ+jqBZAe5hG3mwMi
-	 ZaXMFQxgbWietR3jcU5xiG3n0vM49+La8sh1BijX/20FZiZ86hx1uoglSnJ+AKE4ci
-	 usFcc+DWSaLK8KqUyXlN/V09mj1ybDLG+XtOXwjAPYi4lJNz+L12/SCf0SOBES00ec
-	 ZOuSwwNzNqCKrZFWA3wxC6/UKQ8h7zwLoAXRsvNkxEsmbMZMCBPJQD1ooqMRkmtLEJ
-	 BdeLHBquCOWtHW4h1drjTGZcicTAdJGMvJxpR1FSXqBkEUGLaf2RitUQ79VdBdVc20
-	 eaYKd/6n+GZUw==
+	b=Wv+E+eYlou6wF1LovkaUF1NmcjH186nUuArfJePnZOhlQwIdkJew2CfLZO0Fyh24R
+	 G+USvcMyqaduSQ4CRCrncjATXvlFeq9ctXwvGY/4C26P7entZBdNhEFbp27qaLn1m6
+	 HAXdgukgT/n9RJrdURBKhSoPQAKgZ5XcWh+myWGua+axldL60Gh1QkS2WRxJJ27ZUb
+	 WtzpCZ98BhUPIOujgpL0dQRaWG7U0VFTIHelKr5LtKfbTtn6Jhr9ptLL9u9azw9Kmk
+	 g+iEkbZFBSNn0migFT0ayMvPrYP9wopnQLKA67p7yMgPJZ1iP+ipa9r/aFsZhb8nYT
+	 9Bi68024rs5Lw==
 From: Maxime Ripard <mripard@kernel.org>
-Date: Tue, 21 May 2024 12:13:50 +0200
-Subject: [PATCH v14 17/28] drm/connector: hdmi: Add Broadcast RGB property
+Date: Tue, 21 May 2024 12:13:51 +0200
+Subject: [PATCH v14 18/28] drm/tests: Add tests for Broadcast RGB property
 MIME-Version: 1.0
-Message-Id: <20240521-kms-hdmi-connector-state-v14-17-51950db4fedb@kernel.org>
+Message-Id: <20240521-kms-hdmi-connector-state-v14-18-51950db4fedb@kernel.org>
 References: <20240521-kms-hdmi-connector-state-v14-0-51950db4fedb@kernel.org>
 In-Reply-To: <20240521-kms-hdmi-connector-state-v14-0-51950db4fedb@kernel.org>
 To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
@@ -62,20 +62,19 @@ Cc: Hans Verkuil <hverkuil@xs4all.nl>,
  linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org, 
  linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
  linux-sunxi@lists.linux.dev, Maxime Ripard <mripard@kernel.org>, 
- Dave Stevenson <dave.stevenson@raspberrypi.com>, 
- Pekka Paalanen <pekka.paalanen@collabora.com>
+ Dave Stevenson <dave.stevenson@raspberrypi.com>
 X-Mailer: b4 0.13.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=14188; i=mripard@kernel.org;
- h=from:subject:message-id; bh=vkFDNfYcYw97dmutxNWUK5pEt5v9Q0kGhsMeHwDkBao=;
- b=owGbwMvMwCmsHn9OcpHtvjLG02pJDGk+xTfiGGqU8u0a5kyr4O4/Wt0gdyKS84e5toaHxTs9t
- g+K0RIdU1kYhDkZZMUUWZ7IhJ1e3r64ysF+5Q+YOaxMIEMYuDgFYCKWeYy1Um17C2Wt1tw9zPCh
- iWf6sYoDNd2c/WqBpxZ4zO24l+79X0yxXTCleI/RnRBHz02rD51mrPflKCnum6Z3Z268WEyy6v0
- a+RUR26s1Wr0+hf/bfVii7eKrp7X2ht/+135ac3Tmhb0ikgA=
+X-Developer-Signature: v=1; a=openpgp-sha256; l=13780; i=mripard@kernel.org;
+ h=from:subject:message-id; bh=JXa+IVsW9prpWJbHiohOgnPWpZAy+pZGq51p0wD7ywg=;
+ b=owGbwMvMwCmsHn9OcpHtvjLG02pJDGk+xTei2S/firmnWhxjkudjl7Tqx5Kvyzm5/v9of7dPS
+ n/mCqbqjqksDMKcDLJiiixPZMJOL29fXOVgv/IHzBxWJpAhDFycAjCRzQ6MDU0ntkcfnbLppnSs
+ pNTd+Tw5Di1G/p0S3PmBwawHZXZOc8ruY9Uss05KjDeILFgjfu87Y62M0D7hPyF8xSW8Mmttnpz
+ XaThQJKhttOzoz56ChEkVFmrVt9qZA+pibzDu/7ch+Wh+HAA=
 X-Developer-Key: i=mripard@kernel.org; a=openpgp;
  fpr=BE5675C37E818C8B5764241C254BCFC56BF6CE8D
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240521_031442_312452_0D285364 
-X-CRM114-Status: GOOD (  30.18  )
+X-CRM114-CacheID: sfid-20240521_031444_197540_331F3ED6 
+X-CRM114-Status: GOOD (  17.30  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,255 +86,384 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-VGhlIGk5MTUgZHJpdmVyIGhhcyBhIHByb3BlcnR5IHRvIGZvcmNlIHRoZSBSR0IgcmFuZ2Ugb2Yg
-YW4gSERNSSBvdXRwdXQuClRoZSB2YzQgZHJpdmVyIHRoZW4gaW1wbGVtZW50ZWQgdGhlIHNhbWUg
-cHJvcGVydHkgd2l0aCB0aGUgc2FtZQpzZW1hbnRpY3MuIEtXaW4gaGFzIHN1cHBvcnQgZm9yIGl0
-LCBhbmQgYSBQUiBmb3IgbXV0dGVyIGlzIGFsc28gdGhlcmUgdG8Kc3VwcG9ydCBpdC4KCkJvdGgg
-ZHJpdmVycyBpbXBsZW1lbnRpbmcgdGhlIHNhbWUgcHJvcGVydHkgd2l0aCB0aGUgc2FtZSBzZW1h
-bnRpY3MsCnBsdXMgdGhlIHVzZXJzcGFjZSBoYXZpbmcgc3VwcG9ydCBmb3IgaXQsIGlzIHByb29m
-IGVub3VnaCB0aGF0IGl0J3MKcHJldHR5IG11Y2ggYSBkZS1mYWN0byBzdGFuZGFyZCBub3cgYW5k
-IHdlIGNhbiBwcm92aWRlIGhlbHBlcnMgZm9yIGl0LgoKTGV0J3MgcGx1bWIgaXQgaW50byB0aGUg
-bmV3bHkgY3JlYXRlZCBIRE1JIGNvbm5lY3Rvci4KClJldmlld2VkLWJ5OiBEYXZlIFN0ZXZlbnNv
-biA8ZGF2ZS5zdGV2ZW5zb25AcmFzcGJlcnJ5cGkuY29tPgpBY2tlZC1ieTogUGVra2EgUGFhbGFu
-ZW4gPHBla2thLnBhYWxhbmVuQGNvbGxhYm9yYS5jb20+ClJldmlld2VkLWJ5OiBTZWJhc3RpYW4g
-V2ljayA8c2ViYXN0aWFuLndpY2tAcmVkaGF0LmNvbT4KU2lnbmVkLW9mZi1ieTogTWF4aW1lIFJp
-cGFyZCA8bXJpcGFyZEBrZXJuZWwub3JnPgotLS0KIERvY3VtZW50YXRpb24vZ3B1L2ttcy1wcm9w
-ZXJ0aWVzLmNzdiAgICAgICAgICAgIHwgIDEgLQogZHJpdmVycy9ncHUvZHJtL2Rpc3BsYXkvZHJt
-X2hkbWlfc3RhdGVfaGVscGVyLmMgfCAgNCArLQogZHJpdmVycy9ncHUvZHJtL2RybV9hdG9taWMu
-YyAgICAgICAgICAgICAgICAgICAgfCAgMiArCiBkcml2ZXJzL2dwdS9kcm0vZHJtX2F0b21pY191
-YXBpLmMgICAgICAgICAgICAgICB8ICA0ICsrCiBkcml2ZXJzL2dwdS9kcm0vZHJtX2Nvbm5lY3Rv
-ci5jICAgICAgICAgICAgICAgICB8IDg4ICsrKysrKysrKysrKysrKysrKysrKysrKysKIGluY2x1
-ZGUvZHJtL2RybV9jb25uZWN0b3IuaCAgICAgICAgICAgICAgICAgICAgIHwgMzYgKysrKysrKysr
-KwogNiBmaWxlcyBjaGFuZ2VkLCAxMzMgaW5zZXJ0aW9ucygrKSwgMiBkZWxldGlvbnMoLSkKCmRp
-ZmYgLS1naXQgYS9Eb2N1bWVudGF0aW9uL2dwdS9rbXMtcHJvcGVydGllcy5jc3YgYi9Eb2N1bWVu
-dGF0aW9uL2dwdS9rbXMtcHJvcGVydGllcy5jc3YKaW5kZXggMGY5NTkwODM0ODI5Li5jYWVmMTRj
-NTMyZDQgMTAwNjQ0Ci0tLSBhL0RvY3VtZW50YXRpb24vZ3B1L2ttcy1wcm9wZXJ0aWVzLmNzdgor
-KysgYi9Eb2N1bWVudGF0aW9uL2dwdS9rbXMtcHJvcGVydGllcy5jc3YKQEAgLTE1LDExICsxNSwx
-MCBAQCBPd25lciBNb2R1bGUvRHJpdmVycyxHcm91cCxQcm9wZXJ0eSBOYW1lLFR5cGUsUHJvcGVy
-dHkgVmFsdWVzLE9iamVjdCBhdHRhY2hlZCxEZQogLCzigJxzYXR1cmF0aW9u4oCdLFJBTkdFLCJN
-aW49MCwgTWF4PTEwMCIsQ29ubmVjdG9yLFRCRAogLCzigJxodWXigJ0sUkFOR0UsIk1pbj0wLCBN
-YXg9MTAwIixDb25uZWN0b3IsVEJECiAsVmlydHVhbCBHUFUs4oCcc3VnZ2VzdGVkIFjigJ0sUkFO
-R0UsIk1pbj0wLCBNYXg9MHhmZmZmZmZmZiIsQ29ubmVjdG9yLHByb3BlcnR5IHRvIHN1Z2dlc3Qg
-YW4gWCBvZmZzZXQgZm9yIGEgY29ubmVjdG9yCiAsLOKAnHN1Z2dlc3RlZCBZ4oCdLFJBTkdFLCJN
-aW49MCwgTWF4PTB4ZmZmZmZmZmYiLENvbm5lY3Rvcixwcm9wZXJ0eSB0byBzdWdnZXN0IGFuIFkg
-b2Zmc2V0IGZvciBhIGNvbm5lY3RvcgogLE9wdGlvbmFsLCIiImFzcGVjdCByYXRpbyIiIixFTlVN
-LCJ7ICIiTm9uZSIiLCAiIjQ6MyIiLCAiIjE2OjkiIiB9IixDb25uZWN0b3IsVERCCi1pOTE1LEdl
-bmVyaWMsIiIiQnJvYWRjYXN0IFJHQiIiIixFTlVNLCJ7ICIiQXV0b21hdGljIiIsICIiRnVsbCIi
-LCAiIkxpbWl0ZWQgMTY6MjM1IiIgfSIsQ29ubmVjdG9yLCJXaGVuIHRoaXMgcHJvcGVydHkgaXMg
-c2V0IHRvIExpbWl0ZWQgMTY6MjM1IGFuZCBDVE0gaXMgc2V0LCB0aGUgaGFyZHdhcmUgd2lsbCBi
-ZSBwcm9ncmFtbWVkIHdpdGggdGhlIHJlc3VsdCBvZiB0aGUgbXVsdGlwbGljYXRpb24gb2YgQ1RN
-IGJ5IHRoZSBsaW1pdGVkIHJhbmdlIG1hdHJpeCB0byBlbnN1cmUgdGhlIHBpeGVscyBub3JtYWxs
-eSBpbiB0aGUgcmFuZ2UgMC4uMS4wIGFyZSByZW1hcHBlZCB0byB0aGUgcmFuZ2UgMTYvMjU1Li4y
-MzUvMjU1LiIKICws4oCcYXVkaW/igJ0sRU5VTSwieyAiImZvcmNlLWR2aSIiLCAiIm9mZiIiLCAi
-ImF1dG8iIiwgIiJvbiIiIH0iLENvbm5lY3RvcixUQkQKICxTRFZPLVRWLOKAnG1vZGXigJ0sRU5V
-TSwieyAiIk5UU0NfTSIiLCAiIk5UU0NfSiIiLCAiIk5UU0NfNDQzIiIsICIiUEFMX0IiIiB9IGV0
-Yy4iLENvbm5lY3RvcixUQkQKICwsIiIibGVmdF9tYXJnaW4iIiIsUkFOR0UsIk1pbj0wLCBNYXg9
-IFNEVk8gZGVwZW5kZW50IixDb25uZWN0b3IsVEJECiAsLCIiInJpZ2h0X21hcmdpbiIiIixSQU5H
-RSwiTWluPTAsIE1heD0gU0RWTyBkZXBlbmRlbnQiLENvbm5lY3RvcixUQkQKICwsIiIidG9wX21h
-cmdpbiIiIixSQU5HRSwiTWluPTAsIE1heD0gU0RWTyBkZXBlbmRlbnQiLENvbm5lY3RvcixUQkQK
-ZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9kaXNwbGF5L2RybV9oZG1pX3N0YXRlX2hlbHBl
-ci5jIGIvZHJpdmVycy9ncHUvZHJtL2Rpc3BsYXkvZHJtX2hkbWlfc3RhdGVfaGVscGVyLmMKaW5k
-ZXggOTNjYjMwZGJhODZlLi44ODhmZTFmZTk1OTQgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvZ3B1L2Ry
-bS9kaXNwbGF5L2RybV9oZG1pX3N0YXRlX2hlbHBlci5jCisrKyBiL2RyaXZlcnMvZ3B1L2RybS9k
-aXNwbGF5L2RybV9oZG1pX3N0YXRlX2hlbHBlci5jCkBAIC0yMywxMCArMjMsMTEgQEAgdm9pZCBf
-X2RybV9hdG9taWNfaGVscGVyX2Nvbm5lY3Rvcl9oZG1pX3Jlc2V0KHN0cnVjdCBkcm1fY29ubmVj
-dG9yICpjb25uZWN0b3IsCiB7CiAJdW5zaWduZWQgaW50IG1heF9icGMgPSBjb25uZWN0b3ItPm1h
-eF9icGM7CiAKIAluZXdfY29ubl9zdGF0ZS0+bWF4X2JwYyA9IG1heF9icGM7CiAJbmV3X2Nvbm5f
-c3RhdGUtPm1heF9yZXF1ZXN0ZWRfYnBjID0gbWF4X2JwYzsKKwluZXdfY29ubl9zdGF0ZS0+aGRt
-aS5icm9hZGNhc3RfcmdiID0gRFJNX0hETUlfQlJPQURDQVNUX1JHQl9BVVRPOwogfQogRVhQT1JU
-X1NZTUJPTChfX2RybV9hdG9taWNfaGVscGVyX2Nvbm5lY3Rvcl9oZG1pX3Jlc2V0KTsKIAogc3Rh
-dGljIGNvbnN0IHN0cnVjdCBkcm1fZGlzcGxheV9tb2RlICoKIGNvbm5lY3Rvcl9zdGF0ZV9nZXRf
-bW9kZShjb25zdCBzdHJ1Y3QgZHJtX2Nvbm5lY3Rvcl9zdGF0ZSAqY29ubl9zdGF0ZSkKQEAgLTMx
-OCwxMSArMzE5LDEyIEBAIGludCBkcm1fYXRvbWljX2hlbHBlcl9jb25uZWN0b3JfaGRtaV9jaGVj
-ayhzdHJ1Y3QgZHJtX2Nvbm5lY3RvciAqY29ubmVjdG9yLAogCiAJcmV0ID0gaGRtaV9jb21wdXRl
-X2NvbmZpZyhjb25uZWN0b3IsIG5ld19jb25uX3N0YXRlLCBtb2RlKTsKIAlpZiAocmV0KQogCQly
-ZXR1cm4gcmV0OwogCi0JaWYgKG9sZF9jb25uX3N0YXRlLT5oZG1pLm91dHB1dF9icGMgIT0gbmV3
-X2Nvbm5fc3RhdGUtPmhkbWkub3V0cHV0X2JwYyB8fAorCWlmIChvbGRfY29ubl9zdGF0ZS0+aGRt
-aS5icm9hZGNhc3RfcmdiICE9IG5ld19jb25uX3N0YXRlLT5oZG1pLmJyb2FkY2FzdF9yZ2IgfHwK
-KwkgICAgb2xkX2Nvbm5fc3RhdGUtPmhkbWkub3V0cHV0X2JwYyAhPSBuZXdfY29ubl9zdGF0ZS0+
-aGRtaS5vdXRwdXRfYnBjIHx8CiAJICAgIG9sZF9jb25uX3N0YXRlLT5oZG1pLm91dHB1dF9mb3Jt
-YXQgIT0gbmV3X2Nvbm5fc3RhdGUtPmhkbWkub3V0cHV0X2Zvcm1hdCkgewogCQlzdHJ1Y3QgZHJt
-X2NydGMgKmNydGMgPSBuZXdfY29ubl9zdGF0ZS0+Y3J0YzsKIAkJc3RydWN0IGRybV9jcnRjX3N0
-YXRlICpjcnRjX3N0YXRlOwogCiAJCWNydGNfc3RhdGUgPSBkcm1fYXRvbWljX2dldF9jcnRjX3N0
-YXRlKHN0YXRlLCBjcnRjKTsKZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9kcm1fYXRvbWlj
-LmMgYi9kcml2ZXJzL2dwdS9kcm0vZHJtX2F0b21pYy5jCmluZGV4IDI2ZjllNTI1YzBhMC4uM2U1
-N2Q5OGQ4NDE4IDEwMDY0NAotLS0gYS9kcml2ZXJzL2dwdS9kcm0vZHJtX2F0b21pYy5jCisrKyBi
-L2RyaXZlcnMvZ3B1L2RybS9kcm1fYXRvbWljLmMKQEAgLTExNDMsMTAgKzExNDMsMTIgQEAgc3Rh
-dGljIHZvaWQgZHJtX2F0b21pY19jb25uZWN0b3JfcHJpbnRfc3RhdGUoc3RydWN0IGRybV9wcmlu
-dGVyICpwLAogCWRybV9wcmludGYocCwgIlx0bWF4X3JlcXVlc3RlZF9icGM9JWRcbiIsIHN0YXRl
-LT5tYXhfcmVxdWVzdGVkX2JwYyk7CiAJZHJtX3ByaW50ZihwLCAiXHRjb2xvcnNwYWNlPSVzXG4i
-LCBkcm1fZ2V0X2NvbG9yc3BhY2VfbmFtZShzdGF0ZS0+Y29sb3JzcGFjZSkpOwogCiAJaWYgKGNv
-bm5lY3Rvci0+Y29ubmVjdG9yX3R5cGUgPT0gRFJNX01PREVfQ09OTkVDVE9SX0hETUlBIHx8CiAJ
-ICAgIGNvbm5lY3Rvci0+Y29ubmVjdG9yX3R5cGUgPT0gRFJNX01PREVfQ09OTkVDVE9SX0hETUlC
-KSB7CisJCWRybV9wcmludGYocCwgIlx0YnJvYWRjYXN0X3JnYj0lc1xuIiwKKwkJCSAgIGRybV9o
-ZG1pX2Nvbm5lY3Rvcl9nZXRfYnJvYWRjYXN0X3JnYl9uYW1lKHN0YXRlLT5oZG1pLmJyb2FkY2Fz
-dF9yZ2IpKTsKIAkJZHJtX3ByaW50ZihwLCAiXHRvdXRwdXRfYnBjPSV1XG4iLCBzdGF0ZS0+aGRt
-aS5vdXRwdXRfYnBjKTsKIAkJZHJtX3ByaW50ZihwLCAiXHRvdXRwdXRfZm9ybWF0PSVzXG4iLAog
-CQkJICAgZHJtX2hkbWlfY29ubmVjdG9yX2dldF9vdXRwdXRfZm9ybWF0X25hbWUoc3RhdGUtPmhk
-bWkub3V0cHV0X2Zvcm1hdCkpOwogCQlkcm1fcHJpbnRmKHAsICJcdHRtZHNfY2hhcl9yYXRlPSVs
-bHVcbiIsIHN0YXRlLT5oZG1pLnRtZHNfY2hhcl9yYXRlKTsKIAl9CmRpZmYgLS1naXQgYS9kcml2
-ZXJzL2dwdS9kcm0vZHJtX2F0b21pY191YXBpLmMgYi9kcml2ZXJzL2dwdS9kcm0vZHJtX2F0b21p
-Y191YXBpLmMKaW5kZXggZmMxNmZkZGVlNWM1Li4yMmJiYjJkODNlMzAgMTAwNjQ0Ci0tLSBhL2Ry
-aXZlcnMvZ3B1L2RybS9kcm1fYXRvbWljX3VhcGkuYworKysgYi9kcml2ZXJzL2dwdS9kcm0vZHJt
-X2F0b21pY191YXBpLmMKQEAgLTc3NCwxMCArNzc0LDEyIEBAIHN0YXRpYyBpbnQgZHJtX2F0b21p
-Y19jb25uZWN0b3Jfc2V0X3Byb3BlcnR5KHN0cnVjdCBkcm1fY29ubmVjdG9yICpjb25uZWN0b3Is
-CiAJCQkJCQkgICBmZW5jZV9wdHIpOwogCX0gZWxzZSBpZiAocHJvcGVydHkgPT0gY29ubmVjdG9y
-LT5tYXhfYnBjX3Byb3BlcnR5KSB7CiAJCXN0YXRlLT5tYXhfcmVxdWVzdGVkX2JwYyA9IHZhbDsK
-IAl9IGVsc2UgaWYgKHByb3BlcnR5ID09IGNvbm5lY3Rvci0+cHJpdmFjeV9zY3JlZW5fc3dfc3Rh
-dGVfcHJvcGVydHkpIHsKIAkJc3RhdGUtPnByaXZhY3lfc2NyZWVuX3N3X3N0YXRlID0gdmFsOwor
-CX0gZWxzZSBpZiAocHJvcGVydHkgPT0gY29ubmVjdG9yLT5icm9hZGNhc3RfcmdiX3Byb3BlcnR5
-KSB7CisJCXN0YXRlLT5oZG1pLmJyb2FkY2FzdF9yZ2IgPSB2YWw7CiAJfSBlbHNlIGlmIChjb25u
-ZWN0b3ItPmZ1bmNzLT5hdG9taWNfc2V0X3Byb3BlcnR5KSB7CiAJCXJldHVybiBjb25uZWN0b3It
-PmZ1bmNzLT5hdG9taWNfc2V0X3Byb3BlcnR5KGNvbm5lY3RvciwKIAkJCQlzdGF0ZSwgcHJvcGVy
-dHksIHZhbCk7CiAJfSBlbHNlIHsKIAkJZHJtX2RiZ19hdG9taWMoY29ubmVjdG9yLT5kZXYsCkBA
-IC04NTcsMTAgKzg1OSwxMiBAQCBkcm1fYXRvbWljX2Nvbm5lY3Rvcl9nZXRfcHJvcGVydHkoc3Ry
-dWN0IGRybV9jb25uZWN0b3IgKmNvbm5lY3RvciwKIAkJKnZhbCA9IDA7CiAJfSBlbHNlIGlmIChw
-cm9wZXJ0eSA9PSBjb25uZWN0b3ItPm1heF9icGNfcHJvcGVydHkpIHsKIAkJKnZhbCA9IHN0YXRl
-LT5tYXhfcmVxdWVzdGVkX2JwYzsKIAl9IGVsc2UgaWYgKHByb3BlcnR5ID09IGNvbm5lY3Rvci0+
-cHJpdmFjeV9zY3JlZW5fc3dfc3RhdGVfcHJvcGVydHkpIHsKIAkJKnZhbCA9IHN0YXRlLT5wcml2
-YWN5X3NjcmVlbl9zd19zdGF0ZTsKKwl9IGVsc2UgaWYgKHByb3BlcnR5ID09IGNvbm5lY3Rvci0+
-YnJvYWRjYXN0X3JnYl9wcm9wZXJ0eSkgeworCQkqdmFsID0gc3RhdGUtPmhkbWkuYnJvYWRjYXN0
-X3JnYjsKIAl9IGVsc2UgaWYgKGNvbm5lY3Rvci0+ZnVuY3MtPmF0b21pY19nZXRfcHJvcGVydHkp
-IHsKIAkJcmV0dXJuIGNvbm5lY3Rvci0+ZnVuY3MtPmF0b21pY19nZXRfcHJvcGVydHkoY29ubmVj
-dG9yLAogCQkJCXN0YXRlLCBwcm9wZXJ0eSwgdmFsKTsKIAl9IGVsc2UgewogCQlkcm1fZGJnX2F0
-b21pYyhkZXYsCmRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vZHJtX2Nvbm5lY3Rvci5jIGIv
-ZHJpdmVycy9ncHUvZHJtL2RybV9jb25uZWN0b3IuYwppbmRleCA1NTVlYWMyMGU1YTQuLmJkZDMz
-NjFjY2M3MyAxMDA2NDQKLS0tIGEvZHJpdmVycy9ncHUvZHJtL2RybV9jb25uZWN0b3IuYworKysg
-Yi9kcml2ZXJzL2dwdS9kcm0vZHJtX2Nvbm5lY3Rvci5jCkBAIC0xMjEwLDEwICsxMjEwLDMzIEBA
-IHN0YXRpYyBjb25zdCB1MzIgZHBfY29sb3JzcGFjZXMgPQogCUJJVChEUk1fTU9ERV9DT0xPUklN
-RVRSWV9TWUNDXzYwMSkgfAogCUJJVChEUk1fTU9ERV9DT0xPUklNRVRSWV9PUFlDQ182MDEpIHwK
-IAlCSVQoRFJNX01PREVfQ09MT1JJTUVUUllfQlQyMDIwX0NZQ0MpIHwKIAlCSVQoRFJNX01PREVf
-Q09MT1JJTUVUUllfQlQyMDIwX1lDQyk7CiAKK3N0YXRpYyBjb25zdCBzdHJ1Y3QgZHJtX3Byb3Bf
-ZW51bV9saXN0IGJyb2FkY2FzdF9yZ2JfbmFtZXNbXSA9IHsKKwl7IERSTV9IRE1JX0JST0FEQ0FT
-VF9SR0JfQVVUTywgIkF1dG9tYXRpYyIgfSwKKwl7IERSTV9IRE1JX0JST0FEQ0FTVF9SR0JfRlVM
-TCwgIkZ1bGwiIH0sCisJeyBEUk1fSERNSV9CUk9BRENBU1RfUkdCX0xJTUlURUQsICJMaW1pdGVk
-IDE2OjIzNSIgfSwKK307CisKKy8qCisgKiBkcm1faGRtaV9jb25uZWN0b3JfZ2V0X2Jyb2FkY2Fz
-dF9yZ2JfbmFtZSAtIFJldHVybiBhIHN0cmluZyBmb3IgSERNSSBjb25uZWN0b3IgUkdCIGJyb2Fk
-Y2FzdCBzZWxlY3Rpb24KKyAqIEBicm9hZGNhc3RfcmdiOiBCcm9hZGNhc3QgUkdCIHNlbGVjdGlv
-biB0byBjb21wdXRlIG5hbWUgb2YKKyAqCisgKiBSZXR1cm5zOiB0aGUgbmFtZSBvZiB0aGUgQnJv
-YWRjYXN0IFJHQiBzZWxlY3Rpb24sIG9yIE5VTEwgaWYgdGhlIHR5cGUKKyAqIGlzIG5vdCB2YWxp
-ZC4KKyAqLworY29uc3QgY2hhciAqCitkcm1faGRtaV9jb25uZWN0b3JfZ2V0X2Jyb2FkY2FzdF9y
-Z2JfbmFtZShlbnVtIGRybV9oZG1pX2Jyb2FkY2FzdF9yZ2IgYnJvYWRjYXN0X3JnYikKK3sKKwlp
-ZiAoYnJvYWRjYXN0X3JnYiA+PSBBUlJBWV9TSVpFKGJyb2FkY2FzdF9yZ2JfbmFtZXMpKQorCQly
-ZXR1cm4gTlVMTDsKKworCXJldHVybiBicm9hZGNhc3RfcmdiX25hbWVzW2Jyb2FkY2FzdF9yZ2Jd
-Lm5hbWU7Cit9CitFWFBPUlRfU1lNQk9MKGRybV9oZG1pX2Nvbm5lY3Rvcl9nZXRfYnJvYWRjYXN0
-X3JnYl9uYW1lKTsKKwogc3RhdGljIGNvbnN0IGNoYXIgKiBjb25zdCBvdXRwdXRfZm9ybWF0X3N0
-cltdID0gewogCVtIRE1JX0NPTE9SU1BBQ0VfUkdCXQkJPSAiUkdCIiwKIAlbSERNSV9DT0xPUlNQ
-QUNFX1lVVjQyMF0JPSAiWVVWIDQ6MjowIiwKIAlbSERNSV9DT0xPUlNQQUNFX1lVVjQyMl0JPSAi
-WVVWIDQ6MjoyIiwKIAlbSERNSV9DT0xPUlNQQUNFX1lVVjQ0NF0JPSAiWVVWIDQ6NDo0IiwKQEAg
-LTE3MDYsMTAgKzE3MjksNDIgQEAgdm9pZCBkcm1fY29ubmVjdG9yX2F0dGFjaF9kcF9zdWJjb25u
-ZWN0b3JfcHJvcGVydHkoc3RydWN0IGRybV9jb25uZWN0b3IgKmNvbm5lY3QKIEVYUE9SVF9TWU1C
-T0woZHJtX2Nvbm5lY3Rvcl9hdHRhY2hfZHBfc3ViY29ubmVjdG9yX3Byb3BlcnR5KTsKIAogLyoq
-CiAgKiBET0M6IEhETUkgY29ubmVjdG9yIHByb3BlcnRpZXMKICAqCisgKiBCcm9hZGNhc3QgUkdC
-IChIRE1JIHNwZWNpZmljKQorICogICAgICBJbmRpY2F0ZXMgdGhlIFF1YW50aXphdGlvbiBSYW5n
-ZSAoRnVsbCB2cyBMaW1pdGVkKSB1c2VkLiBUaGUgY29sb3IKKyAqICAgICAgcHJvY2Vzc2luZyBw
-aXBlbGluZSB3aWxsIGJlIGFkanVzdGVkIHRvIG1hdGNoIHRoZSB2YWx1ZSBvZiB0aGUKKyAqICAg
-ICAgcHJvcGVydHksIGFuZCB0aGUgSW5mb2ZyYW1lcyB3aWxsIGJlIGdlbmVyYXRlZCBhbmQgc2Vu
-dCBhY2NvcmRpbmdseS4KKyAqCisgKiAgICAgIFRoaXMgcHJvcGVydHkgaXMgb25seSByZWxldmFu
-dCBpZiB0aGUgSERNSSBvdXRwdXQgZm9ybWF0IGlzIFJHQi4gSWYKKyAqICAgICAgaXQncyBvbmUg
-b2YgdGhlIFlDYkNyIHZhcmlhbnQsIGl0IHdpbGwgYmUgaWdub3JlZC4KKyAqCisgKiAgICAgIFRo
-ZSBDUlRDIGF0dGFjaGVkIHRvIHRoZSBjb25uZWN0b3IgbXVzdCBiZSBjb25maWd1cmVkIGJ5IHVz
-ZXItc3BhY2UgdG8KKyAqICAgICAgYWx3YXlzIHByb2R1Y2UgZnVsbC1yYW5nZSBwaXhlbHMuCisg
-KgorICogICAgICBUaGUgdmFsdWUgb2YgdGhpcyBwcm9wZXJ0eSBjYW4gYmUgb25lIG9mIHRoZSBm
-b2xsb3dpbmc6CisgKgorICogICAgICBBdXRvbWF0aWM6CisgKiAgICAgICAgICAgICAgVGhlIHF1
-YW50aXphdGlvbiByYW5nZSBpcyBzZWxlY3RlZCBhdXRvbWF0aWNhbGx5IGJhc2VkIG9uIHRoZQor
-ICogICAgICAgICAgICAgIG1vZGUgYWNjb3JkaW5nIHRvIHRoZSBIRE1JIHNwZWNpZmljYXRpb25z
-IChIRE1JIDEuNGIgLSBTZWN0aW9uCisgKiAgICAgICAgICAgICAgNi42IC0gVmlkZW8gUXVhbnRp
-emF0aW9uIFJhbmdlcykuCisgKgorICogICAgICBGdWxsOgorICogICAgICAgICAgICAgIEZ1bGwg
-cXVhbnRpemF0aW9uIHJhbmdlIGlzIGZvcmNlZC4KKyAqCisgKiAgICAgIExpbWl0ZWQgMTY6MjM1
-OgorICogICAgICAgICAgICAgIExpbWl0ZWQgcXVhbnRpemF0aW9uIHJhbmdlIGlzIGZvcmNlZC4g
-VW5saWtlIHRoZSBuYW1lIHN1Z2dlc3RzLAorICogICAgICAgICAgICAgIHRoaXMgd29ya3MgZm9y
-IGFueSBudW1iZXIgb2YgYml0cy1wZXItY29tcG9uZW50LgorICoKKyAqICAgICAgUHJvcGVydHkg
-dmFsdWVzIG90aGVyIHRoYW4gQXV0b21hdGljIGNhbiByZXN1bHQgaW4gY29sb3JzIGJlaW5nIG9m
-ZiAoaWYKKyAqICAgICAgbGltaXRlZCBpcyBzZWxlY3RlZCBidXQgdGhlIGRpc3BsYXkgZXhwZWN0
-cyBmdWxsKSwgb3IgYSBibGFjayBzY3JlZW4KKyAqICAgICAgKGlmIGZ1bGwgaXMgc2VsZWN0ZWQg
-YnV0IHRoZSBkaXNwbGF5IGV4cGVjdHMgbGltaXRlZCkuCisgKgorICogICAgICBEcml2ZXJzIGNh
-biBzZXQgdXAgdGhpcyBwcm9wZXJ0eSBieSBjYWxsaW5nCisgKiAgICAgIGRybV9jb25uZWN0b3Jf
-YXR0YWNoX2Jyb2FkY2FzdF9yZ2JfcHJvcGVydHkoKS4KKyAqCiAgKiBjb250ZW50IHR5cGUgKEhE
-TUkgc3BlY2lmaWMpOgogICoJSW5kaWNhdGVzIGNvbnRlbnQgdHlwZSBzZXR0aW5nIHRvIGJlIHVz
-ZWQgaW4gSERNSSBpbmZvZnJhbWVzIHRvIGluZGljYXRlCiAgKgljb250ZW50IHR5cGUgZm9yIHRo
-ZSBleHRlcm5hbCBkZXZpY2UsIHNvIHRoYXQgaXQgYWRqdXN0cyBpdHMgZGlzcGxheQogICoJc2V0
-dGluZ3MgYWNjb3JkaW5nbHkuCiAgKgpAQCAtMjU2OCwxMCArMjYyMyw0MyBAQCBpbnQgZHJtX2Nv
-bm5lY3Rvcl9hdHRhY2hfaGRyX291dHB1dF9tZXRhZGF0YV9wcm9wZXJ0eShzdHJ1Y3QgZHJtX2Nv
-bm5lY3RvciAqY29ubgogCiAJcmV0dXJuIDA7CiB9CiBFWFBPUlRfU1lNQk9MKGRybV9jb25uZWN0
-b3JfYXR0YWNoX2hkcl9vdXRwdXRfbWV0YWRhdGFfcHJvcGVydHkpOwogCisvKioKKyAqIGRybV9j
-b25uZWN0b3JfYXR0YWNoX2Jyb2FkY2FzdF9yZ2JfcHJvcGVydHkgLSBhdHRhY2ggIkJyb2FkY2Fz
-dCBSR0IiIHByb3BlcnR5CisgKiBAY29ubmVjdG9yOiBjb25uZWN0b3IgdG8gYXR0YWNoIHRoZSBw
-cm9wZXJ0eSBvbi4KKyAqCisgKiBUaGlzIGlzIHVzZWQgdG8gYWRkIHN1cHBvcnQgZm9yIGZvcmNp
-bmcgdGhlIFJHQiByYW5nZSBvbiBhIGNvbm5lY3RvcgorICoKKyAqIFJldHVybnM6CisgKiBaZXJv
-IG9uIHN1Y2Nlc3MsIG5lZ2F0aXZlIGVycm5vIG9uIGZhaWx1cmUuCisgKi8KK2ludCBkcm1fY29u
-bmVjdG9yX2F0dGFjaF9icm9hZGNhc3RfcmdiX3Byb3BlcnR5KHN0cnVjdCBkcm1fY29ubmVjdG9y
-ICpjb25uZWN0b3IpCit7CisJc3RydWN0IGRybV9kZXZpY2UgKmRldiA9IGNvbm5lY3Rvci0+ZGV2
-OworCXN0cnVjdCBkcm1fcHJvcGVydHkgKnByb3A7CisKKwlwcm9wID0gY29ubmVjdG9yLT5icm9h
-ZGNhc3RfcmdiX3Byb3BlcnR5OworCWlmICghcHJvcCkgeworCQlwcm9wID0gZHJtX3Byb3BlcnR5
-X2NyZWF0ZV9lbnVtKGRldiwgRFJNX01PREVfUFJPUF9FTlVNLAorCQkJCQkJIkJyb2FkY2FzdCBS
-R0IiLAorCQkJCQkJYnJvYWRjYXN0X3JnYl9uYW1lcywKKwkJCQkJCUFSUkFZX1NJWkUoYnJvYWRj
-YXN0X3JnYl9uYW1lcykpOworCQlpZiAoIXByb3ApCisJCQlyZXR1cm4gLUVJTlZBTDsKKworCQlj
-b25uZWN0b3ItPmJyb2FkY2FzdF9yZ2JfcHJvcGVydHkgPSBwcm9wOworCX0KKworCWRybV9vYmpl
-Y3RfYXR0YWNoX3Byb3BlcnR5KCZjb25uZWN0b3ItPmJhc2UsIHByb3AsCisJCQkJICAgRFJNX0hE
-TUlfQlJPQURDQVNUX1JHQl9BVVRPKTsKKworCXJldHVybiAwOworfQorRVhQT1JUX1NZTUJPTChk
-cm1fY29ubmVjdG9yX2F0dGFjaF9icm9hZGNhc3RfcmdiX3Byb3BlcnR5KTsKKwogLyoqCiAgKiBk
-cm1fY29ubmVjdG9yX2F0dGFjaF9jb2xvcnNwYWNlX3Byb3BlcnR5IC0gYXR0YWNoICJDb2xvcnNw
-YWNlIiBwcm9wZXJ0eQogICogQGNvbm5lY3RvcjogY29ubmVjdG9yIHRvIGF0dGFjaCB0aGUgcHJv
-cGVydHkgb24uCiAgKgogICogVGhpcyBpcyB1c2VkIHRvIGFsbG93IHRoZSB1c2Vyc3BhY2UgdG8g
-c2lnbmFsIHRoZSBvdXRwdXQgY29sb3JzcGFjZQpkaWZmIC0tZ2l0IGEvaW5jbHVkZS9kcm0vZHJt
-X2Nvbm5lY3Rvci5oIGIvaW5jbHVkZS9kcm0vZHJtX2Nvbm5lY3Rvci5oCmluZGV4IDNjMGI2Njk0
-MDc0Zi4uYTQwZWFmM2E4Y2U0IDEwMDY0NAotLS0gYS9pbmNsdWRlL2RybS9kcm1fY29ubmVjdG9y
-LmgKKysrIGIvaW5jbHVkZS9kcm0vZHJtX2Nvbm5lY3Rvci5oCkBAIC0zNjcsMTAgKzM2NywzMyBA
-QCBlbnVtIGRybV9wYW5lbF9vcmllbnRhdGlvbiB7CiAJRFJNX01PREVfUEFORUxfT1JJRU5UQVRJ
-T05fQk9UVE9NX1VQLAogCURSTV9NT0RFX1BBTkVMX09SSUVOVEFUSU9OX0xFRlRfVVAsCiAJRFJN
-X01PREVfUEFORUxfT1JJRU5UQVRJT05fUklHSFRfVVAsCiB9OwogCisvKioKKyAqIGVudW0gZHJt
-X2hkbWlfYnJvYWRjYXN0X3JnYiAtIEJyb2FkY2FzdCBSR0IgU2VsZWN0aW9uIGZvciBhbiBIRE1J
-IEBkcm1fY29ubmVjdG9yCisgKi8KK2VudW0gZHJtX2hkbWlfYnJvYWRjYXN0X3JnYiB7CisJLyoq
-CisJICogQERSTV9IRE1JX0JST0FEQ0FTVF9SR0JfQVVUTzogVGhlIFJHQiByYW5nZSBpcyBzZWxl
-Y3RlZAorCSAqIGF1dG9tYXRpY2FsbHkgYmFzZWQgb24gdGhlIG1vZGUuCisJICovCisJRFJNX0hE
-TUlfQlJPQURDQVNUX1JHQl9BVVRPLAorCisJLyoqCisJICogQERSTV9IRE1JX0JST0FEQ0FTVF9S
-R0JfRlVMTDogRnVsbCByYW5nZSBSR0IgaXMgZm9yY2VkLgorCSAqLworCURSTV9IRE1JX0JST0FE
-Q0FTVF9SR0JfRlVMTCwKKworCS8qKgorCSAqIEBEUk1fSERNSV9CUk9BRENBU1RfUkdCX0xJTUlU
-RUQ6IExpbWl0ZWQgcmFuZ2UgUkdCIGlzIGZvcmNlZC4KKwkgKi8KKwlEUk1fSERNSV9CUk9BRENB
-U1RfUkdCX0xJTUlURUQsCit9OworCitjb25zdCBjaGFyICoKK2RybV9oZG1pX2Nvbm5lY3Rvcl9n
-ZXRfYnJvYWRjYXN0X3JnYl9uYW1lKGVudW0gZHJtX2hkbWlfYnJvYWRjYXN0X3JnYiBicm9hZGNh
-c3RfcmdiKTsKIGNvbnN0IGNoYXIgKgogZHJtX2hkbWlfY29ubmVjdG9yX2dldF9vdXRwdXRfZm9y
-bWF0X25hbWUoZW51bSBoZG1pX2NvbG9yc3BhY2UgZm10KTsKIAogLyoqCiAgKiBzdHJ1Y3QgZHJt
-X21vbml0b3JfcmFuZ2VfaW5mbyAtIFBhbmVsJ3MgTW9uaXRvciByYW5nZSBpbiBFRElEIGZvcgpA
-QCAtMTAzOSwxMCArMTA2MiwxNiBAQCBzdHJ1Y3QgZHJtX2Nvbm5lY3Rvcl9zdGF0ZSB7CiAJLyoq
-CiAJICogQGhkbWk6IEhETUktcmVsYXRlZCB2YXJpYWJsZSBhbmQgcHJvcGVydGllcy4gRmlsbGVk
-IGJ5CiAJICogQGRybV9hdG9taWNfaGVscGVyX2Nvbm5lY3Rvcl9oZG1pX2NoZWNrKCkuCiAJICov
-CiAJc3RydWN0IHsKKwkJLyoqCisJCSAqIEBicm9hZGNhc3RfcmdiOiBDb25uZWN0b3IgcHJvcGVy
-dHkgdG8gcGFzcyB0aGUKKwkJICogQnJvYWRjYXN0IFJHQiBzZWxlY3Rpb24gdmFsdWUuCisJCSAq
-LworCQllbnVtIGRybV9oZG1pX2Jyb2FkY2FzdF9yZ2IgYnJvYWRjYXN0X3JnYjsKKwogCQkvKioK
-IAkJICogQG91dHB1dF9icGM6IEJpdHMgcGVyIGNvbG9yIGNoYW5uZWwgdG8gb3V0cHV0LgogCQkg
-Ki8KIAkJdW5zaWduZWQgaW50IG91dHB1dF9icGM7CiAKQEAgLTE3NTEsMTAgKzE3ODAsMTYgQEAg
-c3RydWN0IGRybV9jb25uZWN0b3IgewogCSAqIEBwcml2YWN5X3NjcmVlbl9od19zdGF0ZV9wcm9w
-ZXJ0eTogT3B0aW9uYWwgYXRvbWljIHByb3BlcnR5IGZvciB0aGUKIAkgKiBjb25uZWN0b3IgdG8g
-cmVwb3J0IHRoZSBhY3R1YWwgaW50ZWdyYXRlZCBwcml2YWN5IHNjcmVlbiBzdGF0ZS4KIAkgKi8K
-IAlzdHJ1Y3QgZHJtX3Byb3BlcnR5ICpwcml2YWN5X3NjcmVlbl9od19zdGF0ZV9wcm9wZXJ0eTsK
-IAorCS8qKgorCSAqIEBicm9hZGNhc3RfcmdiX3Byb3BlcnR5OiBDb25uZWN0b3IgcHJvcGVydHkg
-dG8gc2V0IHRoZQorCSAqIEJyb2FkY2FzdCBSR0Igc2VsZWN0aW9uIHRvIG91dHB1dCB3aXRoLgor
-CSAqLworCXN0cnVjdCBkcm1fcHJvcGVydHkgKmJyb2FkY2FzdF9yZ2JfcHJvcGVydHk7CisKICNk
-ZWZpbmUgRFJNX0NPTk5FQ1RPUl9QT0xMX0hQRCAoMSA8PCAwKQogI2RlZmluZSBEUk1fQ09OTkVD
-VE9SX1BPTExfQ09OTkVDVCAoMSA8PCAxKQogI2RlZmluZSBEUk1fQ09OTkVDVE9SX1BPTExfRElT
-Q09OTkVDVCAoMSA8PCAyKQogCiAJLyoqCkBAIC0yMDkwLDEwICsyMTI1LDExIEBAIGludCBkcm1f
-bW9kZV9jcmVhdGVfc2NhbGluZ19tb2RlX3Byb3BlcnR5KHN0cnVjdCBkcm1fZGV2aWNlICpkZXYp
-OwogaW50IGRybV9jb25uZWN0b3JfYXR0YWNoX2NvbnRlbnRfdHlwZV9wcm9wZXJ0eShzdHJ1Y3Qg
-ZHJtX2Nvbm5lY3RvciAqZGV2KTsKIGludCBkcm1fY29ubmVjdG9yX2F0dGFjaF9zY2FsaW5nX21v
-ZGVfcHJvcGVydHkoc3RydWN0IGRybV9jb25uZWN0b3IgKmNvbm5lY3RvciwKIAkJCQkJICAgICAg
-IHUzMiBzY2FsaW5nX21vZGVfbWFzayk7CiBpbnQgZHJtX2Nvbm5lY3Rvcl9hdHRhY2hfdnJyX2Nh
-cGFibGVfcHJvcGVydHkoCiAJCXN0cnVjdCBkcm1fY29ubmVjdG9yICpjb25uZWN0b3IpOworaW50
-IGRybV9jb25uZWN0b3JfYXR0YWNoX2Jyb2FkY2FzdF9yZ2JfcHJvcGVydHkoc3RydWN0IGRybV9j
-b25uZWN0b3IgKmNvbm5lY3Rvcik7CiBpbnQgZHJtX2Nvbm5lY3Rvcl9hdHRhY2hfY29sb3JzcGFj
-ZV9wcm9wZXJ0eShzdHJ1Y3QgZHJtX2Nvbm5lY3RvciAqY29ubmVjdG9yKTsKIGludCBkcm1fY29u
-bmVjdG9yX2F0dGFjaF9oZHJfb3V0cHV0X21ldGFkYXRhX3Byb3BlcnR5KHN0cnVjdCBkcm1fY29u
-bmVjdG9yICpjb25uZWN0b3IpOwogYm9vbCBkcm1fY29ubmVjdG9yX2F0b21pY19oZHJfbWV0YWRh
-dGFfZXF1YWwoc3RydWN0IGRybV9jb25uZWN0b3Jfc3RhdGUgKm9sZF9zdGF0ZSwKIAkJCQkJICAg
-ICBzdHJ1Y3QgZHJtX2Nvbm5lY3Rvcl9zdGF0ZSAqbmV3X3N0YXRlKTsKIGludCBkcm1fbW9kZV9j
-cmVhdGVfYXNwZWN0X3JhdGlvX3Byb3BlcnR5KHN0cnVjdCBkcm1fZGV2aWNlICpkZXYpOwoKLS0g
-CjIuNDUuMAoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-CkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRl
-YWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgt
-cm9ja2NoaXAK
+This had a bunch of kunit tests to make sure our code to handle the
+Broadcast RGB property behaves properly.
+
+This requires bringing a bit of infrastructure to create mock HDMI
+connectors, with custom EDIDs.
+
+Reviewed-by: Dave Stevenson <dave.stevenson@raspberrypi.com>
+Signed-off-by: Maxime Ripard <mripard@kernel.org>
+---
+ drivers/gpu/drm/tests/drm_connector_test.c         | 116 ++++++++++++++++
+ drivers/gpu/drm/tests/drm_hdmi_state_helper_test.c | 151 +++++++++++++++++++++
+ 2 files changed, 267 insertions(+)
+
+diff --git a/drivers/gpu/drm/tests/drm_connector_test.c b/drivers/gpu/drm/tests/drm_connector_test.c
+index 34d96f7fbb25..672b74bc9e23 100644
+--- a/drivers/gpu/drm/tests/drm_connector_test.c
++++ b/drivers/gpu/drm/tests/drm_connector_test.c
+@@ -564,10 +564,67 @@ static struct kunit_case drm_get_tv_mode_from_name_tests[] = {
+ static struct kunit_suite drm_get_tv_mode_from_name_test_suite = {
+ 	.name = "drm_get_tv_mode_from_name",
+ 	.test_cases = drm_get_tv_mode_from_name_tests,
+ };
+ 
++struct drm_hdmi_connector_get_broadcast_rgb_name_test {
++	unsigned int kind;
++	const char *expected_name;
++};
++
++#define BROADCAST_RGB_TEST(_kind, _name)	\
++	{					\
++		.kind = _kind,			\
++		.expected_name = _name,		\
++	}
++
++static void drm_test_drm_hdmi_connector_get_broadcast_rgb_name(struct kunit *test)
++{
++	const struct drm_hdmi_connector_get_broadcast_rgb_name_test *params =
++		test->param_value;
++
++	KUNIT_EXPECT_STREQ(test,
++			   drm_hdmi_connector_get_broadcast_rgb_name(params->kind),
++			   params->expected_name);
++}
++
++static const
++struct drm_hdmi_connector_get_broadcast_rgb_name_test
++drm_hdmi_connector_get_broadcast_rgb_name_valid_tests[] = {
++	BROADCAST_RGB_TEST(DRM_HDMI_BROADCAST_RGB_AUTO, "Automatic"),
++	BROADCAST_RGB_TEST(DRM_HDMI_BROADCAST_RGB_FULL, "Full"),
++	BROADCAST_RGB_TEST(DRM_HDMI_BROADCAST_RGB_LIMITED, "Limited 16:235"),
++};
++
++static void
++drm_hdmi_connector_get_broadcast_rgb_name_valid_desc(const struct drm_hdmi_connector_get_broadcast_rgb_name_test *t,
++						     char *desc)
++{
++	sprintf(desc, "%s", t->expected_name);
++}
++
++KUNIT_ARRAY_PARAM(drm_hdmi_connector_get_broadcast_rgb_name_valid,
++		  drm_hdmi_connector_get_broadcast_rgb_name_valid_tests,
++		  drm_hdmi_connector_get_broadcast_rgb_name_valid_desc);
++
++static void drm_test_drm_hdmi_connector_get_broadcast_rgb_name_invalid(struct kunit *test)
++{
++	KUNIT_EXPECT_NULL(test, drm_hdmi_connector_get_broadcast_rgb_name(3));
++};
++
++static struct kunit_case drm_hdmi_connector_get_broadcast_rgb_name_tests[] = {
++	KUNIT_CASE_PARAM(drm_test_drm_hdmi_connector_get_broadcast_rgb_name,
++			 drm_hdmi_connector_get_broadcast_rgb_name_valid_gen_params),
++	KUNIT_CASE(drm_test_drm_hdmi_connector_get_broadcast_rgb_name_invalid),
++	{ }
++};
++
++static struct kunit_suite drm_hdmi_connector_get_broadcast_rgb_name_test_suite = {
++	.name = "drm_hdmi_connector_get_broadcast_rgb_name",
++	.test_cases = drm_hdmi_connector_get_broadcast_rgb_name_tests,
++};
++
+ struct drm_hdmi_connector_get_output_format_name_test {
+ 	unsigned int kind;
+ 	const char *expected_name;
+ };
+ 
+@@ -622,10 +679,67 @@ static struct kunit_case drm_hdmi_connector_get_output_format_name_tests[] = {
+ static struct kunit_suite drm_hdmi_connector_get_output_format_name_test_suite = {
+ 	.name = "drm_hdmi_connector_get_output_format_name",
+ 	.test_cases = drm_hdmi_connector_get_output_format_name_tests,
+ };
+ 
++static void drm_test_drm_connector_attach_broadcast_rgb_property(struct kunit *test)
++{
++	struct drm_connector_init_priv *priv = test->priv;
++	struct drm_connector *connector = &priv->connector;
++	struct drm_property *prop;
++	int ret;
++
++	ret = drmm_connector_init(&priv->drm, connector,
++				  &dummy_funcs,
++				  DRM_MODE_CONNECTOR_HDMIA,
++				  &priv->ddc);
++	KUNIT_ASSERT_EQ(test, ret, 0);
++
++	ret = drm_connector_attach_broadcast_rgb_property(connector);
++	KUNIT_ASSERT_EQ(test, ret, 0);
++
++	prop = connector->broadcast_rgb_property;
++	KUNIT_ASSERT_NOT_NULL(test, prop);
++	KUNIT_EXPECT_NOT_NULL(test, drm_mode_obj_find_prop_id(&connector->base, prop->base.id));
++}
++
++static void drm_test_drm_connector_attach_broadcast_rgb_property_hdmi_connector(struct kunit *test)
++{
++	struct drm_connector_init_priv *priv = test->priv;
++	struct drm_connector *connector = &priv->connector;
++	struct drm_property *prop;
++	int ret;
++
++	ret = drmm_connector_hdmi_init(&priv->drm, connector,
++				       &dummy_funcs,
++				       &dummy_hdmi_funcs,
++				       DRM_MODE_CONNECTOR_HDMIA,
++				       &priv->ddc,
++				       BIT(HDMI_COLORSPACE_RGB),
++				       8);
++	KUNIT_EXPECT_EQ(test, ret, 0);
++
++	ret = drm_connector_attach_broadcast_rgb_property(connector);
++	KUNIT_ASSERT_EQ(test, ret, 0);
++
++	prop = connector->broadcast_rgb_property;
++	KUNIT_ASSERT_NOT_NULL(test, prop);
++	KUNIT_EXPECT_NOT_NULL(test, drm_mode_obj_find_prop_id(&connector->base, prop->base.id));
++}
++
++static struct kunit_case drm_connector_attach_broadcast_rgb_property_tests[] = {
++	KUNIT_CASE(drm_test_drm_connector_attach_broadcast_rgb_property),
++	KUNIT_CASE(drm_test_drm_connector_attach_broadcast_rgb_property_hdmi_connector),
++	{ }
++};
++
++static struct kunit_suite drm_connector_attach_broadcast_rgb_property_test_suite = {
++	.name = "drm_connector_attach_broadcast_rgb_property",
++	.init = drm_test_connector_init,
++	.test_cases = drm_connector_attach_broadcast_rgb_property_tests,
++};
++
+ /*
+  * Test that for a given mode, with 8bpc and an RGB output the TMDS
+  * character rate is equal to the mode pixel clock.
+  */
+ static void drm_test_drm_hdmi_compute_mode_clock_rgb(struct kunit *test)
+@@ -916,12 +1030,14 @@ static struct kunit_suite drm_hdmi_compute_mode_clock_test_suite = {
+ };
+ 
+ kunit_test_suites(
+ 	&drmm_connector_hdmi_init_test_suite,
+ 	&drmm_connector_init_test_suite,
++	&drm_connector_attach_broadcast_rgb_property_test_suite,
+ 	&drm_get_tv_mode_from_name_test_suite,
+ 	&drm_hdmi_compute_mode_clock_test_suite,
++	&drm_hdmi_connector_get_broadcast_rgb_name_test_suite,
+ 	&drm_hdmi_connector_get_output_format_name_test_suite
+ );
+ 
+ MODULE_AUTHOR("Maxime Ripard <maxime@cerno.tech>");
+ MODULE_LICENSE("GPL");
+diff --git a/drivers/gpu/drm/tests/drm_hdmi_state_helper_test.c b/drivers/gpu/drm/tests/drm_hdmi_state_helper_test.c
+index 968204781928..ff9a882201eb 100644
+--- a/drivers/gpu/drm/tests/drm_hdmi_state_helper_test.c
++++ b/drivers/gpu/drm/tests/drm_hdmi_state_helper_test.c
+@@ -225,10 +225,138 @@ drm_atomic_helper_connector_hdmi_init(struct kunit *test,
+ 	KUNIT_ASSERT_EQ(test, ret, 0);
+ 
+ 	return priv;
+ }
+ 
++/*
++ * Test that if we change the RGB quantization property to a different
++ * value, we trigger a mode change on the connector's CRTC, which will
++ * in turn disable/enable the connector.
++ */
++static void drm_test_check_broadcast_rgb_crtc_mode_changed(struct kunit *test)
++{
++	struct drm_atomic_helper_connector_hdmi_priv *priv;
++	struct drm_modeset_acquire_ctx *ctx;
++	struct drm_connector_state *old_conn_state;
++	struct drm_connector_state *new_conn_state;
++	struct drm_crtc_state *crtc_state;
++	struct drm_atomic_state *state;
++	struct drm_display_mode *preferred;
++	struct drm_connector *conn;
++	struct drm_device *drm;
++	struct drm_crtc *crtc;
++	int ret;
++
++	priv = drm_atomic_helper_connector_hdmi_init(test,
++						     BIT(HDMI_COLORSPACE_RGB),
++						     8);
++	KUNIT_ASSERT_NOT_NULL(test, priv);
++
++	ctx = drm_kunit_helper_acquire_ctx_alloc(test);
++	KUNIT_ASSERT_NOT_ERR_OR_NULL(test, ctx);
++
++	conn = &priv->connector;
++	preferred = find_preferred_mode(conn);
++	KUNIT_ASSERT_NOT_NULL(test, preferred);
++
++	drm = &priv->drm;
++	crtc = priv->crtc;
++	ret = light_up_connector(test, drm, crtc, conn, preferred, ctx);
++	KUNIT_ASSERT_EQ(test, ret, 0);
++
++	state = drm_kunit_helper_atomic_state_alloc(test, drm, ctx);
++	KUNIT_ASSERT_NOT_ERR_OR_NULL(test, state);
++
++	new_conn_state = drm_atomic_get_connector_state(state, conn);
++	KUNIT_ASSERT_NOT_ERR_OR_NULL(test, new_conn_state);
++
++	old_conn_state = drm_atomic_get_old_connector_state(state, conn);
++	KUNIT_ASSERT_NOT_ERR_OR_NULL(test, old_conn_state);
++
++	new_conn_state->hdmi.broadcast_rgb = DRM_HDMI_BROADCAST_RGB_FULL;
++
++	KUNIT_ASSERT_NE(test,
++			old_conn_state->hdmi.broadcast_rgb,
++			new_conn_state->hdmi.broadcast_rgb);
++
++	ret = drm_atomic_check_only(state);
++	KUNIT_ASSERT_EQ(test, ret, 0);
++
++	new_conn_state = drm_atomic_get_new_connector_state(state, conn);
++	KUNIT_ASSERT_NOT_ERR_OR_NULL(test, new_conn_state);
++	KUNIT_EXPECT_EQ(test, new_conn_state->hdmi.broadcast_rgb, DRM_HDMI_BROADCAST_RGB_FULL);
++
++	crtc_state = drm_atomic_get_new_crtc_state(state, crtc);
++	KUNIT_ASSERT_NOT_ERR_OR_NULL(test, crtc_state);
++	KUNIT_EXPECT_TRUE(test, crtc_state->mode_changed);
++}
++
++/*
++ * Test that if we set the RGB quantization property to the same value,
++ * we don't trigger a mode change on the connector's CRTC and leave the
++ * connector unaffected.
++ */
++static void drm_test_check_broadcast_rgb_crtc_mode_not_changed(struct kunit *test)
++{
++	struct drm_atomic_helper_connector_hdmi_priv *priv;
++	struct drm_modeset_acquire_ctx *ctx;
++	struct drm_connector_state *old_conn_state;
++	struct drm_connector_state *new_conn_state;
++	struct drm_crtc_state *crtc_state;
++	struct drm_atomic_state *state;
++	struct drm_display_mode *preferred;
++	struct drm_connector *conn;
++	struct drm_device *drm;
++	struct drm_crtc *crtc;
++	int ret;
++
++	priv = drm_atomic_helper_connector_hdmi_init(test,
++						     BIT(HDMI_COLORSPACE_RGB),
++						     8);
++	KUNIT_ASSERT_NOT_NULL(test, priv);
++
++	ctx = drm_kunit_helper_acquire_ctx_alloc(test);
++	KUNIT_ASSERT_NOT_ERR_OR_NULL(test, ctx);
++
++	conn = &priv->connector;
++	preferred = find_preferred_mode(conn);
++	KUNIT_ASSERT_NOT_NULL(test, preferred);
++
++	drm = &priv->drm;
++	crtc = priv->crtc;
++	ret = light_up_connector(test, drm, crtc, conn, preferred, ctx);
++	KUNIT_ASSERT_EQ(test, ret, 0);
++
++	state = drm_kunit_helper_atomic_state_alloc(test, drm, ctx);
++	KUNIT_ASSERT_NOT_ERR_OR_NULL(test, state);
++
++	new_conn_state = drm_atomic_get_connector_state(state, conn);
++	KUNIT_ASSERT_NOT_ERR_OR_NULL(test, new_conn_state);
++
++	old_conn_state = drm_atomic_get_old_connector_state(state, conn);
++	KUNIT_ASSERT_NOT_ERR_OR_NULL(test, old_conn_state);
++
++	new_conn_state->hdmi.broadcast_rgb = old_conn_state->hdmi.broadcast_rgb;
++
++	ret = drm_atomic_check_only(state);
++	KUNIT_ASSERT_EQ(test, ret, 0);
++
++	old_conn_state = drm_atomic_get_old_connector_state(state, conn);
++	KUNIT_ASSERT_NOT_ERR_OR_NULL(test, old_conn_state);
++
++	new_conn_state = drm_atomic_get_new_connector_state(state, conn);
++	KUNIT_ASSERT_NOT_ERR_OR_NULL(test, new_conn_state);
++
++	KUNIT_EXPECT_EQ(test,
++			old_conn_state->hdmi.broadcast_rgb,
++			new_conn_state->hdmi.broadcast_rgb);
++
++	crtc_state = drm_atomic_get_new_crtc_state(state, crtc);
++	KUNIT_ASSERT_NOT_ERR_OR_NULL(test, crtc_state);
++	KUNIT_EXPECT_FALSE(test, crtc_state->mode_changed);
++}
++
+ /*
+  * Test that if we change the maximum bpc property to a different value,
+  * we trigger a mode change on the connector's CRTC, which will in turn
+  * disable/enable the connector.
+  */
+@@ -1064,10 +1192,12 @@ static void drm_test_check_output_bpc_format_display_8bpc_only(struct kunit *tes
+ 	KUNIT_EXPECT_EQ(test, conn_state->hdmi.output_bpc, 8);
+ 	KUNIT_EXPECT_EQ(test, conn_state->hdmi.output_format, HDMI_COLORSPACE_RGB);
+ }
+ 
+ static struct kunit_case drm_atomic_helper_connector_hdmi_check_tests[] = {
++	KUNIT_CASE(drm_test_check_broadcast_rgb_crtc_mode_changed),
++	KUNIT_CASE(drm_test_check_broadcast_rgb_crtc_mode_not_changed),
+ 	KUNIT_CASE(drm_test_check_hdmi_funcs_reject_rate),
+ 	KUNIT_CASE(drm_test_check_max_tmds_rate_bpc_fallback),
+ 	KUNIT_CASE(drm_test_check_max_tmds_rate_format_fallback),
+ 	KUNIT_CASE(drm_test_check_output_bpc_crtc_mode_changed),
+ 	KUNIT_CASE(drm_test_check_output_bpc_crtc_mode_not_changed),
+@@ -1095,10 +1225,30 @@ static struct kunit_case drm_atomic_helper_connector_hdmi_check_tests[] = {
+ static struct kunit_suite drm_atomic_helper_connector_hdmi_check_test_suite = {
+ 	.name		= "drm_atomic_helper_connector_hdmi_check",
+ 	.test_cases	= drm_atomic_helper_connector_hdmi_check_tests,
+ };
+ 
++/*
++ * Test that the value of the Broadcast RGB property out of reset is set
++ * to auto.
++ */
++static void drm_test_check_broadcast_rgb_value(struct kunit *test)
++{
++	struct drm_atomic_helper_connector_hdmi_priv *priv;
++	struct drm_connector_state *conn_state;
++	struct drm_connector *conn;
++
++	priv = drm_atomic_helper_connector_hdmi_init(test,
++						     BIT(HDMI_COLORSPACE_RGB),
++						     8);
++	KUNIT_ASSERT_NOT_NULL(test, priv);
++
++	conn = &priv->connector;
++	conn_state = conn->state;
++	KUNIT_EXPECT_EQ(test, conn_state->hdmi.broadcast_rgb, DRM_HDMI_BROADCAST_RGB_AUTO);
++}
++
+ /*
+  * Test that if the connector was initialised with a maximum bpc of 8,
+  * the value of the max_bpc and max_requested_bpc properties out of
+  * reset are also set to 8, and output_bpc is set to 0 and will be
+  * filled at atomic_check time.
+@@ -1212,10 +1362,11 @@ static void drm_test_check_tmds_char_value(struct kunit *test)
+ 	conn_state = conn->state;
+ 	KUNIT_EXPECT_EQ(test, conn_state->hdmi.tmds_char_rate, 0);
+ }
+ 
+ static struct kunit_case drm_atomic_helper_connector_hdmi_reset_tests[] = {
++	KUNIT_CASE(drm_test_check_broadcast_rgb_value),
+ 	KUNIT_CASE(drm_test_check_bpc_8_value),
+ 	KUNIT_CASE(drm_test_check_bpc_10_value),
+ 	KUNIT_CASE(drm_test_check_bpc_12_value),
+ 	KUNIT_CASE(drm_test_check_format_value),
+ 	KUNIT_CASE(drm_test_check_tmds_char_value),
+
+-- 
+2.45.0
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
