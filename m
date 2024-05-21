@@ -4,76 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 237C3C25B74
-	for <linux-rockchip@archiver.kernel.org>; Tue, 21 May 2024 18:32:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 215BFC25B74
+	for <linux-rockchip@archiver.kernel.org>; Tue, 21 May 2024 20:29:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Hj/jXj95VJl8t4cRZcvhGKiTT8k2UGTNH69SE8Fils4=; b=S3DbKgslvotHSm1V9RDtpay/7m
-	KzkRt6rCiw3sOgF6IMwPYk8Bjsm9vNY+L6ABwFpMI1RbRkuzWhEZYm9uQOmAmys0wWQmcID8/l+9r
-	DAEyU8eQYENkAWH/2hGgZKjV/MLGbM3K330vXI5zhEhXWJP+enM4WlZRsPye653r+YsBCLIFRZpQo
-	PHAZDR738zlc1mCwbfM6KIMCTUI5q8k0i+opb6dZbsK8RDhSyoFfzBSYNc6KIkyIq1pFlBFhCACZB
-	l1MJeAuxjZYvo7EoAqUVMcje3OW0PR26+DNtGjVDVjKBAjeYXhP1ote9ceMnkFFSc2H/JGNnyyWSN
-	nbMfsg+w==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=wyVUZvMim9IJkbWLotYIxuvxx/Kk/V07ZzPArLc2AKQ=; b=hVVJkB6aJPyU49
+	dsYNKWhIegPzLDWCSu2j62f4SASHXvvrxaCDbuu7A0AnaTwfoQFBebB742WfbTrVoEfv1gWxKeY4p
+	nS5qV12uDT2iyzw5LOlmOwOEpA4gVL5mXJQ6jLnqluhXfQPWkoy3dWQi/ziqHhmT4BRuzsPpgH6OC
+	lr5uta1k4nydEGBqXBwF+q9M7anF4wlVM0bpt3w6eQPWRRbGD3IH7z6ckweHctokoWC2cIUhLb7Wn
+	fCx6Cg/9ixCxDuLVxHTlGADuI+K8XzbOgwHQKU7rdeFeF1O9yvPy3N0zNHzEhx8Mon17v3DNMBrxB
+	ShAzEes1/1hu0dLEHd5A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s9UHK-00000000mCx-2hmD;
-	Tue, 21 May 2024 18:32:02 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1s9W6n-000000010fl-0psH;
+	Tue, 21 May 2024 20:29:17 +0000
+Received: from smtp.forwardemail.net ([167.172.40.54])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s9UHH-00000000mB7-0eks;
-	Tue, 21 May 2024 18:32:01 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id E6B83623F2;
-	Tue, 21 May 2024 18:31:57 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 43C90C2BD11;
-	Tue, 21 May 2024 18:31:53 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1716316317;
-	bh=73vaEc2+Ila3l2dDk9+94NR4FaAuj1CJocbODWzqAFA=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=EWsp6MCxzQpqz5SpHf3xVk0D/9iv7MMU9rMvhEOxMl8R74bdHXIcV+reNkhyrWM6c
-	 Z+aKJdfkvC1tS1A5kHVg6Yc0FjFl2SFERlC8So7+BWuBo//ANiyD6mZW5jkDHvjxiw
-	 EY0mTzmtEVh/3/7h+O7tNPpwgkgvOh5vYmMLbHm3dEz6DOaloLqtmq4uNT2Pr6PrMY
-	 EH06i/oI6jaZP8XLtEuRrDXB6Bpuu3waTR630XnR6ozYIV0ngU9xfgIJrT9u0vnsBt
-	 3530qbHyqCQ0vS193WSOHgHQtCdDHqp2qhMBe5A8Uj0JqyM1eP9YGUJDWF2oY99oK4
-	 iLyTMBabjaydQ==
-Date: Tue, 21 May 2024 19:31:51 +0100
-From: Conor Dooley <conor@kernel.org>
-To: Detlev Casanova <detlev.casanova@collabora.com>
-Cc: Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>,
-	linux-kernel@vger.kernel.org, Sandy Huang <hjc@rock-chips.com>,
-	Andy Yan <andy.yan@rock-chips.com>,
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Heiko Stuebner <heiko.stuebner@cherry.de>,
-	Sebastian Reichel <sebastian.reichel@collabora.com>,
-	Dragan Simic <dsimic@manjaro.org>,
-	Chris Morgan <macromorgan@hotmail.com>,
-	Diederik de Haas <didi.debian@cknow.org>,
-	Boris Brezillon <boris.brezillon@collabora.com>,
-	dri-devel@lists.freedesktop.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org
-Subject: Re: [PATCH 3/3] dt-bindings: display: vop2: Add VP clock resets
-Message-ID: <20240521-silver-exciting-bb3725dc495d@spud>
-References: <20240514152328.21415-1-detlev.casanova@collabora.com>
- <20240515-risk-exes-13db315da6bb@spud>
- <2182693.irdbgypaU6@diego>
- <13628421.uLZWGnKmhe@arisu>
+	id 1s9W6h-000000010bm-1M2D
+	for linux-rockchip@lists.infradead.org;
+	Tue, 21 May 2024 20:29:13 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
+ h=Content-Transfer-Encoding: MIME-Version: References: In-Reply-To:
+ Message-ID: Date: Subject: Cc: To: From; q=dns/txt; s=fe-e1b5cab7be;
+ t=1716323304; bh=fcefaUUjcIVFz8cXLo03BezrzCivGislzB62c0WvQU0=;
+ b=b4laSxmhyQ/5aQXtN8M9kEY7oRw+GMri4Sw+4HGzpCj46o0z6I43AiHJ//Dsdshc4DKZoMFaR
+ 8Zp77mZr/VTxdVVqz0r6f9DdOI4SFZ8prV6KN4d0hvfyVtoma9b8xyUzYv2XvO3ZkhAWSuTp7Ek
+ ZivYfPO02ctu8AVE/W+kLOzLLc000IqcvHHp3cSHpLB1kWwdLBVA3hE/U8mj7QXt4cvGnEN9L1z
+ ez32KWO9yAZr+v3YF6sCVD2nJ36KoEj+rDV6Sw3ZCNgN4PVNX3VYw/ACfDZmFYvz9S0qIKFE3M8
+ 6jlw1yTyx+X/a3LbbaJYaKHw8Zzu6DlVqjAJMMMmTRSw==
+From: Jonas Karlman <jonas@kwiboo.se>
+To: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Jonas
+ Karlman <jonas@kwiboo.se>, Krzysztof Kozlowski
+ <krzysztof.kozlowski@linaro.org>
+Subject: [PATCH v6 1/2] dt-bindings: arm: rockchip: Add Radxa ZERO 3W/3E
+Date: Tue, 21 May 2024 20:28:04 +0000
+Message-ID: <20240521202810.1225636-2-jonas@kwiboo.se>
+X-Mailer: git-send-email 2.43.2
+In-Reply-To: <20240521202810.1225636-1-jonas@kwiboo.se>
+References: <20240521202810.1225636-1-jonas@kwiboo.se>
 MIME-Version: 1.0
-In-Reply-To: <13628421.uLZWGnKmhe@arisu>
+X-Report-Abuse-To: abuse@forwardemail.net
+X-Report-Abuse: abuse@forwardemail.net
+X-Complaints-To: abuse@forwardemail.net
+X-ForwardEmail-Version: 0.4.40
+X-ForwardEmail-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
+ 167.172.40.54
+X-ForwardEmail-ID: 664d03e4f0b0d6a409517482
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240521_113159_311574_8E10E209 
-X-CRM114-Status: GOOD (  20.39  )
+X-CRM114-CacheID: sfid-20240521_132911_664402_340BEC7B 
+X-CRM114-Status: UNSURE (   7.46  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,77 +73,52 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============7241195746276676667=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Add devicetree binding documentation for Radxa ZERO 3W/3E boards.
 
---===============7241195746276676667==
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="r8AEGgMh3QAZNC29"
-Content-Disposition: inline
+The Radxa ZERO 3W/3E is an ultra-small, high-performance single board
+computer based on the Rockchip RK3566, with a compact form factor and
+rich interfaces.
 
+Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+---
+v2: Collect acked-by tag
+v3: Fix devicetree spelling
+v4: No change
+v5: No change
+v6: No change
+---
+ Documentation/devicetree/bindings/arm/rockchip.yaml | 7 +++++++
+ 1 file changed, 7 insertions(+)
 
---r8AEGgMh3QAZNC29
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
+index e04c213a0dee..51cdaabaf0d9 100644
+--- a/Documentation/devicetree/bindings/arm/rockchip.yaml
++++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
+@@ -814,6 +814,13 @@ properties:
+           - const: radxa,rock-5b
+           - const: rockchip,rk3588
+ 
++      - description: Radxa ZERO 3W/3E
++        items:
++          - enum:
++              - radxa,zero-3e
++              - radxa,zero-3w
++          - const: rockchip,rk3566
++
+       - description: Rikomagic MK808 v1
+         items:
+           - const: rikomagic,mk808
+-- 
+2.43.2
 
-On Tue, May 21, 2024 at 01:15:46PM -0400, Detlev Casanova wrote:
-> On Wednesday, May 15, 2024 12:33:22 P.M. EDT Heiko St=FCbner wrote:
-> > Am Mittwoch, 15. Mai 2024, 18:19:29 CEST schrieb Conor Dooley:
-> > > On Tue, May 14, 2024 at 11:19:47AM -0400, Detlev Casanova wrote:
-> > > > Add the documentation for VOP2 video ports reset clocks.
-> > > > One reset can be set per video port.
-> > > >=20
-> > > > Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
-> > >=20
-> > > Are these resets valid for all VOPs or just the one on 3588?
-> >=20
-> > Not in that form.
-> > I.e. rk3588 has 4 video-ports (0-3), while rk3568 has 3 (0-2).
-> >=20
-> > So the binding should take into account that rk3568 also has the
-> > SRST_VOP0 ... SRST_VOP2.
->=20
-> That is what is set in the example and the reason why I set minItems to 3=
- in=20
-> the main bindings.
-> Then, the rk3588 specific part sets it to 4.
->=20
-> Isn't that enough ?
-
-Not quite - you need to restrict maxItems to 3 for the other devices if
-the clocks are not valid. What you've got says that 4 clocks are
-possible but not needed on !rk3588.
-
-Cheers,
-Conor.
-
---r8AEGgMh3QAZNC29
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZkzolwAKCRB4tDGHoIJi
-0n6OAP4wwXEM/mpcp22FOi2YHaUbxut8mO+9Vbudzw42lFwLEAD+LZI8reFtSZ0L
-4FVV8PWuTYl0PJwEL+Xc2KHa7boG/AE=
-=rTte
------END PGP SIGNATURE-----
-
---r8AEGgMh3QAZNC29--
-
-
---===============7241195746276676667==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============7241195746276676667==--
-
