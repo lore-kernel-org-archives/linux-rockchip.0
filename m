@@ -4,38 +4,38 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D4BC8C25B74
-	for <linux-rockchip@archiver.kernel.org>; Tue, 21 May 2024 20:39:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 35A49C25B7C
+	for <linux-rockchip@archiver.kernel.org>; Tue, 21 May 2024 21:10:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=rr7oDmDiq5xErVQe4d5oAfoylhAnfdeqKXW9Kf3a+XM=; b=Ke6wiT8yHw3EGr
-	aINLD03jZB6HuVAYT1W9m318CQ1DImNN1wbEsXLSaAZHEWiBpr1WnU4oUnSwROVH9k+9xBP24z8Dq
-	lh1a4ajEFzDwP7/IX+q0T3qIPKOYQvFx3ysGdh699wLfOSS51nI17ZSYH4zwYR9gqmwXRIEZp85et
-	bJObDT5oswnXHALnXmwlFM2T8Qm4W92EV68QGX2GLImbAnocfjgXmxKEHW/EJLJaAciuApgfhpIUq
-	i38YXsDaJhmToEhXEa/KszV2td7V1dcw2QgrdlwcT8TnYMaFwYrSpsXbZQffSW7iByaaUVWLyWX7A
-	49ig/3BOT+xRofj/zxHw==;
+	List-Owner; bh=pEZlUpFPy5SrnbW9IKz+urD3aqflVyR161gBZQf771U=; b=ionOF3GAt54MDE
+	h2HF1Oi4o8FbpAkA9eboq9cpyKwWMSJHmlL/6oH0P6jaAVdF3uEPKG1DLT95TBHpDuqXlv9Hi4bte
+	uxuNkdEKUQr6Y/3rCzvLEquLq5+hPSq4sR1Q+JTStYmvkXE7inZ35dZU/hcMEFtDbtvHcT0dh+6P8
+	FjJ03wyEBRxKYuxkxLLlmlqcPHoJxNtqskrsTCflNblHRqwrGSUkBBuItRe5pmTesyGQ9Ysqp9Sln
+	uWbZwoZzyavSDImZUZQza3cCxv/TP1UqRfae3N/3ytBztigt74CrZ5jNlm4IIfBPLgxNU+xIanqGV
+	psvzqTGmdMZdD00VFPAg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s9WGB-0000000122m-00ba;
-	Tue, 21 May 2024 20:38:59 +0000
+	id 1s9Wl2-000000016Bn-1iRP;
+	Tue, 21 May 2024 21:10:52 +0000
 Received: from smtp.forwardemail.net ([149.28.215.223])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s9WG7-0000000120t-039F
+	id 1s9Wkz-000000016AV-1hfi
 	for linux-rockchip@lists.infradead.org;
-	Tue, 21 May 2024 20:38:56 +0000
+	Tue, 21 May 2024 21:10:50 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
  h=Content-Transfer-Encoding: MIME-Version: Message-ID: Date: Subject: Cc:
- To: From; q=dns/txt; s=fe-e1b5cab7be; t=1716323917;
- bh=7w1YK0PAlX2rnVkpWCKz2KPIKlOShCuH6VsJyB17muk=;
- b=kZC2fsXspWSpKsXzUd6uxxDiIvGjwAhNPStAKcza/hAtbb8TPjzlEfNGq1Od92lPV2t+vhQtt
- sNmSPemi7KlhAr+vKSB6WrVWMOfDWHcqjajBRQ+UCKk83YuQrTuzn1aEmcFKyXrCjbOIS6Wb7hJ
- xnmZZ6arFLl7UkbLG9DKlF0qnmTZgJSDFl80D9Trk3n+MbCh6UPJO+C0liAm+xF23DnMlmtOa6k
- t1pJ8R+Q9sU716473bAx6x6TNCtqSPbepHLWZlAct1NC61KoQcy8UjmiNuejBNiuKbgi36GJkBv
- Q9gJtOz3f0zh2VHUTblX2P447HQ2UdtFbLGKqb2J2Npw==
+ To: From; q=dns/txt; s=fe-e1b5cab7be; t=1716325836;
+ bh=CngQAMHgs11xPbXeeW6bhvCsMpbYaqV/+RYWVdlvtmw=;
+ b=0Q7Z6al0I4Ke4HeLwCaNYwpxM/WxgoWi77FQLARLAD2zl5mcBrN5YXjGbYLoXvRMXElMr2VX2
+ QfCajEkB/FVXcudoboBshN6yTG79nd7Om4e1iG0zILX7CHfUF1P1xwRBkEmf2m2LWd9i/Ancwks
+ xzSKbNk+lA28ypNsNErK/Nhapcw3mnOucYF6o1Yw5ko6AssD3hBgT2ZmKrXA6VwfUKO3ZqZdGOM
+ sDEUaHPvAgpDcGhJK4LuvY5fv6ss00q97Z3zSBqIdeiwgGuaAUpd2ttwOnzfJyHLAyKEP/GjJBo
+ jrZ/jqtnLFHOxgSiEmwBFufyMvfljV+oztpcOqMucNVg==
 From: Jonas Karlman <jonas@kwiboo.se>
 To: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh@kernel.org>,
  Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
@@ -43,9 +43,9 @@ To: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh@kernel.org>,
 Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Jonas
  Karlman <jonas@kwiboo.se>
-Subject: [PATCH v6 0/2] arm64: dts: rockchip: Add Radxa ZERO 3W/3E
-Date: Tue, 21 May 2024 20:28:03 +0000
-Message-ID: <20240521202810.1225636-1-jonas@kwiboo.se>
+Subject: [PATCH 00/13] rockchip: Fixes and improvements for ROCK Pi S
+Date: Tue, 21 May 2024 21:10:03 +0000
+Message-ID: <20240521211029.1236094-1-jonas@kwiboo.se>
 X-Mailer: git-send-email 2.43.2
 MIME-Version: 1.0
 X-Report-Abuse-To: abuse@forwardemail.net
@@ -54,10 +54,11 @@ X-Complaints-To: abuse@forwardemail.net
 X-ForwardEmail-Version: 0.4.40
 X-ForwardEmail-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
  149.28.215.223
-X-ForwardEmail-ID: 664d03e0f0b0d6a40951746e
+X-ForwardEmail-ID: 664d0dcb8b6b0c828344ae94
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240521_133855_128363_E2A60AA1 
-X-CRM114-Status: GOOD (  11.29  )
+X-CRM114-CacheID: sfid-20240521_141049_536613_D06434E8 
+X-CRM114-Status: UNSURE (   8.13  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,63 +75,48 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This series adds initial support for the Radxa ZERO 3W/3E boards.
+This series include fixes for DT schema validation, fixes and improve
+support for onboard features of the Radxa ROCK Pi S board.
 
-The Radxa ZERO 3W/3E is an ultra-small, high-performance single board
-computer based on the Rockchip RK3566, with a compact form factor and
-rich interfaces.
+Patch 1-2 fixes DT schema validation of ethernet and audio codec.
 
-Schematic for ZERO 3W and ZERO 3E can be found at:
-https://dl.radxa.com/zero3/docs/hw/3w/radxa_zero_3w_v1110_schematic.pdf
-https://dl.radxa.com/zero3/docs/hw/3e/radxa_zero_3e_v1200_schematic.pdf
+Patch 3 fixes use of onboard SD NAND and eMMC.
 
-Changes in v2:
-- Collect acked-by tag
-- Add to Makefile
-- Add patch to fix #sound-dai-cells warning
+Patch 4-7 improve details and support for onboard features.
 
-Changes in v3:
-- Fix devicetree spelling
-- Sort hdmi-con, leds, pmic@20 and regulator@40 nodes
-- Change to regulator-off-in-suspend for vdd_logic
-- Drop patch to fix #sound-dai-cells warning, similar patch [1] already
-  exists
+Patch 8 add OTP device node to SoC DT.
 
-Changes in v4:
-- Change compatible of vdd_logic
-- Add vcc5v_midu and vbus regulator and related vcc8/vcc9-supply prop
-- Adjust clock_in_out prop for gmac1
-- Add cap-mmc-highspeed prop to sdhci
-- Add sdmmc1 and uart1 nodes used for wifi/bt on 3W
-- Rename rk3566-radxa-zero3.dtsi to rk3566-radxa-zero-3.dtsi
-- Rebase on latest mmind/for-next tree
+Patch 9-11 add support for RK3308 IO voltage domain to driver and DT.
 
-Changes in v5:
-- Rename regulator-fixed nodes
-- Add keep-power-in-suspend to sdmmc1 node
-- Add uart-has-rtscts to uart1 node
+Patch 12-13 correctly configures IO voltage domain and fixes WiFi/BT.
 
-Changes in v6:
-- Use imperative wording in commit message 
-- Move led-green pinctrl props to gpio-leds node
-- Add pinctrl props to ethernet-phy node
-- Add no-mmc/no-sd/no-sdio props to sdhci/sdmmc0 nodes
+This series have been tested on a v1.3 board having a RK3308B SoC.
 
-[1] https://lore.kernel.org/linux-rockchip/3a035c16-75b5-471d-aa9d-e91c2bb9f8d0@gmail.com/
+David Wu (1):
+  soc: rockchip: io-domain: Add RK3308 IO voltage domains
 
-Jonas Karlman (2):
-  dt-bindings: arm: rockchip: Add Radxa ZERO 3W/3E
-  arm64: dts: rockchip: Add Radxa ZERO 3W/3E
+Jonas Karlman (12):
+  dt-bindings: net: rockchip-dwmac: Fix rockchip,rk3308-gmac compatible
+  arm64: dts: rockchip: rk3308: Fix codec@ff560000 reset-names
+  arm64: dts: rockchip: rk3308-rock-pi-s: Fix SD NAND and eMMC init
+  arm64: dts: rockchip: rk3308-rock-pi-s: Add sdmmc related properties
+  arm64: dts: rockchip: rk3308-rock-pi-s: Add pinctrl for UART0
+  arm64: dts: rockchip: rk3308-rock-pi-s: Rename LED related pinctrl
+    nodes
+  arm64: dts: rockchip: rk3308-rock-pi-s: Add mdio and ethernet-phy
+    nodes
+  arm64: dts: rockchip: Add OTP device node for RK3308
+  dt-bindings: power: rockchip: Document RK3308 IO voltage domains
+  arm64: dts: rockchip: Add RK3308 IO voltage domains
+  arm64: dts: rockchip: rk3308-rock-pi-s: Enable the io-domains node
+  arm64: dts: rockchip: rk3308-rock-pi-s: Update WIFi/BT related nodes
 
- .../devicetree/bindings/arm/rockchip.yaml     |   7 +
- arch/arm64/boot/dts/rockchip/Makefile         |   2 +
- .../dts/rockchip/rk3566-radxa-zero-3.dtsi     | 463 ++++++++++++++++++
- .../dts/rockchip/rk3566-radxa-zero-3e.dts     |  51 ++
- .../dts/rockchip/rk3566-radxa-zero-3w.dts     |  91 ++++
- 5 files changed, 614 insertions(+)
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3566-radxa-zero-3.dtsi
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3566-radxa-zero-3e.dts
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3566-radxa-zero-3w.dts
+ .../devicetree/bindings/net/snps,dwmac.yaml   |  1 +
+ .../bindings/power/rockchip-io-domain.yaml    | 24 +++++
+ .../boot/dts/rockchip/rk3308-rock-pi-s.dts    | 99 ++++++++++++++++---
+ arch/arm64/boot/dts/rockchip/rk3308.dtsi      | 31 +++++-
+ drivers/soc/rockchip/io-domain.c              | 40 ++++++++
+ 5 files changed, 182 insertions(+), 13 deletions(-)
 
 -- 
 2.43.2
