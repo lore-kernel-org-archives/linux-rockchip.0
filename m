@@ -4,48 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1F615C25B74
-	for <linux-rockchip@archiver.kernel.org>; Tue, 21 May 2024 21:12:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 775DBC25B74
+	for <linux-rockchip@archiver.kernel.org>; Tue, 21 May 2024 21:12:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=skwDp9QhHML/53cKeMJA4ntxdH0JDPvWg+y0AwoZkKY=; b=xLemnfa2OEjUj1
-	q1Xmqc1zEKkH7X63vkTSHs0+taZHdnoyPCLXj8n2qt8+KspSZmzGTUJ2L2Mp2WZlXu3GFMQ1r1QPG
-	rZlcUfvEzhl1msU1qGWRsXHsyKxMwfxiplG54h3rzVMHR1dYzqYteIa6CQj5f47a/B9mHh0Pyv9nX
-	So1VWCNucfaBuFQSz6k4IFmhVOchdL7Hdh046xsZMFr15f/N6BmLX8KWqxow+YKZozaM7turtdDON
-	kUm5/a2e44nLX7sQU6ecu0g2ohHFRHkfY7Vy0cwhGbuxtNZ6D2ax5v2n/wnfryQKb1g5n9Tkz5UCF
-	DzyvruVrP7gIjDUrwWHg==;
+	List-Owner; bh=xNr33hNHWqVgiNefDqdrgBuZd9oTnOgLx294C3UKcpU=; b=CaSEHE64+WUXvT
+	Zc+tPGJqUvte4bXOrjnbQ3u2Gda4zlAzRCppNSiewGT2p8mPobAcOnC52MskkMwFo6o5mmP9KXEpX
+	iXB8Nuc72bbRx04Jw8VxOQhNp8sjTyyKcc+NnP3JNV0+7v9YMpwP0BrBfR73nGZNLpdtkweUqp+ET
+	78uOeCKZtqGheYE9fcHQd71nKCyUTo+p9xIn5YAUV6kqFCe8YuAvWKUTIGsfVT87GbTX99PpCAJmR
+	bo7W4fFFUSJ4wSr9hO9USHAriMOz2QGzzoenly1N/1MKxjTeHG4ROcFl4UAbTN2iCOcn7LClBmpvN
+	oE5sUw4Cvj2bHHGsd16A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s9Wmf-000000017ON-2UqG;
-	Tue, 21 May 2024 21:12:33 +0000
+	id 1s9Wmq-000000017VL-2LAl;
+	Tue, 21 May 2024 21:12:44 +0000
 Received: from smtp.forwardemail.net ([167.172.40.54])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s9Wm0-000000016v7-3GSG
+	id 1s9Wm4-0000000170U-3Hlk
 	for linux-rockchip@lists.infradead.org;
-	Tue, 21 May 2024 21:12:03 +0000
+	Tue, 21 May 2024 21:12:05 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
  h=Content-Transfer-Encoding: MIME-Version: References: In-Reply-To:
  Message-ID: Date: Subject: Cc: To: From; q=dns/txt; s=fe-e1b5cab7be;
- t=1716325887; bh=fq2OvK7SXWF/bksH5MfdcoQtqn5vKwKJIs3XwiGaAgk=;
- b=w/yo98BVP39OzhJIKLpQuI7F2gUaq7aIAdr8jQ85Ol0dqo6xHKrk0BG1Lc/KLYsZ/xVnx9+7C
- xJxo08dvhTzxiJY1mHejzwt3FjTv5EFPTyBOqs2lBe2nfInONizylk4QSojGo6At+stDaDYKrzR
- 0hN3/7KsKXDtjS9je3+kAVlg7pczSNKebn1+W6tuW3UVcT1stuElJjS4n2LRKSDUZa/RubLKXHc
- MDRQaDRwDyeR9iOrU1k6bO81WHeAZhauu/ZH57M0qZM+f2uPCw51X66xdtgdcpznKtd31ALd1nk
- 6PtgzeFD3p8ChKB6GqIvk5A72AF25MiRddtvMZX958Gw==
+ t=1716325892; bh=e2XmCYKg+DEbJTHFYQfWLLGn67ZCrbca5etc71lmhE0=;
+ b=a2QKBYdf73bmZZFxbhFtjbLuBJKDBig6R3CJ0GyooYRCq7pi9l24NR+ICoNEQ2Z/aLTX5H343
+ ObHT1orjHzKCipicUScyVQ1J9nlKNw6Bc5LaNSCf9/XsqnRoYn6qMS5ChZK6gCOP83K2KwBOMSg
+ BHc3Tm0JaKuZmvRtI5/sH0hUIPAISkEQg9Iu+DykYNpIUllPofVi+m2r7jE2i995T0/lM0owL2m
+ p61H71yX8ZGejkoJHA4rllkECedTsAHwajM5T4J97syteBuOYCFWK4/IX5SVrsDNYt33oL5OdNl
+ ecTWyiPQf7DztzUL2DyPZgHHcp+fqFZ0lgBH981oKqMg==
 From: Jonas Karlman <jonas@kwiboo.se>
 To: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh@kernel.org>,
  Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>
+ <conor+dt@kernel.org>, Sjoerd Simons <sjoerd@collabora.com>
 Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Jonas
  Karlman <jonas@kwiboo.se>
-Subject: [PATCH 11/13] arm64: dts: rockchip: Add RK3308 IO voltage domains
-Date: Tue, 21 May 2024 21:10:14 +0000
-Message-ID: <20240521211029.1236094-12-jonas@kwiboo.se>
+Subject: [PATCH 13/13] arm64: dts: rockchip: rk3308-rock-pi-s: Update WIFi/BT related nodes
+Date: Tue, 21 May 2024 21:10:16 +0000
+Message-ID: <20240521211029.1236094-14-jonas@kwiboo.se>
 X-Mailer: git-send-email 2.43.2
 In-Reply-To: <20240521211029.1236094-1-jonas@kwiboo.se>
 References: <20240521211029.1236094-1-jonas@kwiboo.se>
@@ -56,11 +56,10 @@ X-Complaints-To: abuse@forwardemail.net
 X-ForwardEmail-Version: 0.4.40
 X-ForwardEmail-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
  167.172.40.54
-X-ForwardEmail-ID: 664d0df98b6b0c828344af66
+X-ForwardEmail-ID: 664d0e018b6b0c828344af8f
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240521_141153_828557_D9685A95 
-X-CRM114-Status: UNSURE (   8.47  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240521_141157_670010_C5ED6F1D 
+X-CRM114-Status: GOOD (  10.18  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,29 +76,97 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add a disabled RK3308 IO voltage domains node to SoC DT.
+Update WiFi SDIO and BT UART related props to better reflect details
+about the optional onboard RTL8723DS WiFi/BT module.
 
+Also correct the compatible used for bluetooth to match the WiFi/BT
+module used on the board.
+
+Fixes: bc3753aed81f ("arm64: dts: rockchip: rock-pi-s add more peripherals")
 Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
 ---
- arch/arm64/boot/dts/rockchip/rk3308.dtsi | 5 +++++
- 1 file changed, 5 insertions(+)
+ .../boot/dts/rockchip/rk3308-rock-pi-s.dts    | 40 +++++++++++++++++--
+ 1 file changed, 36 insertions(+), 4 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3308.dtsi b/arch/arm64/boot/dts/rockchip/rk3308.dtsi
-index 6531ede13af9..31c25de2d689 100644
---- a/arch/arm64/boot/dts/rockchip/rk3308.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3308.dtsi
-@@ -173,6 +173,11 @@ grf: grf@ff000000 {
- 		compatible = "rockchip,rk3308-grf", "syscon", "simple-mfd";
- 		reg = <0x0 0xff000000 0x0 0x08000>;
+diff --git a/arch/arm64/boot/dts/rockchip/rk3308-rock-pi-s.dts b/arch/arm64/boot/dts/rockchip/rk3308-rock-pi-s.dts
+index 5c702f00b27f..62d18ca769a1 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3308-rock-pi-s.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3308-rock-pi-s.dts
+@@ -17,6 +17,7 @@ aliases {
+ 		ethernet0 = &gmac;
+ 		mmc0 = &emmc;
+ 		mmc1 = &sdmmc;
++		mmc2 = &sdio;
+ 	};
  
-+		io_domains: io-domains {
-+			compatible = "rockchip,rk3308-io-voltage-domain";
-+			status = "disabled";
+ 	chosen {
+@@ -245,6 +246,20 @@ &pinctrl {
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&rtc_32k>;
+ 
++	bluetooth {
++		bt_reg_on: bt-reg-on {
++			rockchip,pins = <4 RK_PB3 RK_FUNC_GPIO &pcfg_pull_none>;
 +		};
 +
- 		reboot-mode {
- 			compatible = "syscon-reboot-mode";
- 			offset = <0x500>;
++		bt_wake_host: bt-wake-host {
++			rockchip,pins = <4 RK_PB4 RK_FUNC_GPIO &pcfg_pull_down>;
++		};
++
++		host_wake_bt: host-wake-bt {
++			rockchip,pins = <4 RK_PB2 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++	};
++
+ 	gmac {
+ 		mac_rst: mac-rst {
+ 			rockchip,pins = <0 RK_PA7 RK_FUNC_GPIO &pcfg_pull_none>;
+@@ -294,11 +309,24 @@ &sdio {
+ 	cap-sd-highspeed;
+ 	cap-sdio-irq;
+ 	keep-power-in-suspend;
+-	max-frequency = <1000000>;
++	max-frequency = <100000000>;
+ 	mmc-pwrseq = <&sdio_pwrseq>;
++	no-mmc;
++	no-sd;
+ 	non-removable;
+-	sd-uhs-sdr104;
++	sd-uhs-sdr50;
++	vmmc-supply = <&vcc_io>;
++	vqmmc-supply = <&vcc_1v8>;
+ 	status = "okay";
++
++	rtl8723ds: wifi@1 {
++		reg = <1>;
++		interrupt-parent = <&gpio0>;
++		interrupts = <RK_PA0 IRQ_TYPE_LEVEL_HIGH>;
++		interrupt-names = "host-wake";
++		pinctrl-names = "default";
++		pinctrl-0 = <&wifi_host_wake>;
++	};
+ };
+ 
+ &sdmmc {
+@@ -330,12 +358,16 @@ &uart0 {
+ };
+ 
+ &uart4 {
++	uart-has-rtscts;
+ 	status = "okay";
+ 
+ 	bluetooth {
+-		compatible = "realtek,rtl8723bs-bt";
+-		device-wake-gpios = <&gpio4 RK_PB3 GPIO_ACTIVE_HIGH>;
++		compatible = "realtek,rtl8723ds-bt";
++		device-wake-gpios = <&gpio4 RK_PB2 GPIO_ACTIVE_HIGH>;
++		enable-gpios = <&gpio4 RK_PB3 GPIO_ACTIVE_HIGH>;
+ 		host-wake-gpios = <&gpio4 RK_PB4 GPIO_ACTIVE_HIGH>;
++		pinctrl-names = "default";
++		pinctrl-0 = <&bt_reg_on &bt_wake_host &host_wake_bt>;
+ 	};
+ };
+ 
 -- 
 2.43.2
 
