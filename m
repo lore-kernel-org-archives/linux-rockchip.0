@@ -4,48 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 775DBC25B74
-	for <linux-rockchip@archiver.kernel.org>; Tue, 21 May 2024 21:12:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6C6B1C25B74
+	for <linux-rockchip@archiver.kernel.org>; Tue, 21 May 2024 21:13:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=xNr33hNHWqVgiNefDqdrgBuZd9oTnOgLx294C3UKcpU=; b=CaSEHE64+WUXvT
-	Zc+tPGJqUvte4bXOrjnbQ3u2Gda4zlAzRCppNSiewGT2p8mPobAcOnC52MskkMwFo6o5mmP9KXEpX
-	iXB8Nuc72bbRx04Jw8VxOQhNp8sjTyyKcc+NnP3JNV0+7v9YMpwP0BrBfR73nGZNLpdtkweUqp+ET
-	78uOeCKZtqGheYE9fcHQd71nKCyUTo+p9xIn5YAUV6kqFCe8YuAvWKUTIGsfVT87GbTX99PpCAJmR
-	bo7W4fFFUSJ4wSr9hO9USHAriMOz2QGzzoenly1N/1MKxjTeHG4ROcFl4UAbTN2iCOcn7LClBmpvN
-	oE5sUw4Cvj2bHHGsd16A==;
+	List-Owner; bh=U1RwFbKP8kG8iF9JOI9TKJR+uIHw8xOwrJPcxwSe/pU=; b=1tumgQgp/rvfLg
+	zvoaQWfeA72ZUFV/C+HVEid1AcPO3ptfQ/CpyX3kyp9bRjHN5kASyYNoFfC2hgrjOULjKHMgT9FLs
+	z0Mx8ALWsz/dE6ktTb4dB3n13PrDyyZk6JMuHGG+nPPoUS10Sw8gttCqxnpeq305QBmyPmsQFn+oG
+	jNPhQ/vZdhdMGk4GJ275qWIMvAWHuqyw/hZJ5h6/sobPl07K/Hc3pr2Bhsqn/CIUSaGy9AJziHy9H
+	KTiZ/e+YlcBzCTb5ttBJTMUho6UwJCnLjq/BuiWMLlOvbdQJFkAeCBLuLtTfcVJ+pqLQMxXdWySpY
+	DAZTQavnNmwOj0GflKCA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s9Wmq-000000017VL-2LAl;
-	Tue, 21 May 2024 21:12:44 +0000
-Received: from smtp.forwardemail.net ([167.172.40.54])
+	id 1s9Wn4-000000017e0-21l7;
+	Tue, 21 May 2024 21:12:58 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s9Wm4-0000000170U-3Hlk
+	id 1s9WmR-000000017HM-0PFs
+	for linux-rockchip@bombadil.infradead.org;
+	Tue, 21 May 2024 21:12:19 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
+	:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-Type:Content-ID:Content-Description;
+	bh=TbuWClfxS444Bp9GH5+7Y6TEZ8t3Nu88jxI+lE7Avhc=; b=EAR2uI+/NBNk3jr1cA5X4gHimJ
+	vDu947WvOoeSh6M1RDESOQPlP6YawJdncerUQtuZkhy1Jqa0M9TxtCGs60DxcX0ZN/gbEd/h94W5A
+	d616kmEBxYKGQMUvQQ9Jrw7PG9ImjKVZrO4O4w/n5l4YPR6TkQtKRnmHAgwG/SW4Of5QSGiYwjG84
+	OVbWWlYHbVzZCE4ktSaOsMuLqMLw9cFQC2CGXNRJMQrc5gtCMwTR8qJGS0Q+AxQkBhaLjwTF5Cdrg
+	1eskDpVAMiWxsAPtSorubuAsCySIJ5jWoNKArVPkqdMRRgWyLtYnG1r8FKcJr9fbFvqZg31w04ZSE
+	phyfUEcg==;
+Received: from smtp.forwardemail.net ([167.172.40.54])
+	by desiato.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
+	id 1s9WmL-00000007RaW-3nAi
 	for linux-rockchip@lists.infradead.org;
-	Tue, 21 May 2024 21:12:05 +0000
+	Tue, 21 May 2024 21:12:17 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
  h=Content-Transfer-Encoding: MIME-Version: References: In-Reply-To:
  Message-ID: Date: Subject: Cc: To: From; q=dns/txt; s=fe-e1b5cab7be;
- t=1716325892; bh=e2XmCYKg+DEbJTHFYQfWLLGn67ZCrbca5etc71lmhE0=;
- b=a2QKBYdf73bmZZFxbhFtjbLuBJKDBig6R3CJ0GyooYRCq7pi9l24NR+ICoNEQ2Z/aLTX5H343
- ObHT1orjHzKCipicUScyVQ1J9nlKNw6Bc5LaNSCf9/XsqnRoYn6qMS5ChZK6gCOP83K2KwBOMSg
- BHc3Tm0JaKuZmvRtI5/sH0hUIPAISkEQg9Iu+DykYNpIUllPofVi+m2r7jE2i995T0/lM0owL2m
- p61H71yX8ZGejkoJHA4rllkECedTsAHwajM5T4J97syteBuOYCFWK4/IX5SVrsDNYt33oL5OdNl
- ecTWyiPQf7DztzUL2DyPZgHHcp+fqFZ0lgBH981oKqMg==
+ t=1716325887; bh=TbuWClfxS444Bp9GH5+7Y6TEZ8t3Nu88jxI+lE7Avhc=;
+ b=IdmECserqUEUeoVnl4SgRw4sSCMfuVLBW6y8wI7OySZP8wRzPljqEg6LbfvcvoilVqGDAF1Cg
+ pRfiIDPs/j2zyAjhEwOxcY1GFxL1sw9eSN+CCrFzcov1pwSee2V90IOHKBvQIgc+fhdvrI/BvlE
+ vGb/0/86rT54ZOyIN3X+aYCNx7v1BP9gE9bBMlncS3L5wyxfkom5MIqwzogshH5OlrR5Zt26cAj
+ Dx+PwFXxZUek1Xb96U8KSq1hGjtNrxDrEfpTKdbXBuNOVjYKWlPXfnMbazjmD7jLSUWiLjyvaIM
+ guuqiPtkd1W+VPnwoffUcDA+RLalKB/Cn9AKVT8CyXww==
 From: Jonas Karlman <jonas@kwiboo.se>
 To: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh@kernel.org>,
  Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Sjoerd Simons <sjoerd@collabora.com>
+ <conor+dt@kernel.org>
 Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Jonas
  Karlman <jonas@kwiboo.se>
-Subject: [PATCH 13/13] arm64: dts: rockchip: rk3308-rock-pi-s: Update WIFi/BT related nodes
-Date: Tue, 21 May 2024 21:10:16 +0000
-Message-ID: <20240521211029.1236094-14-jonas@kwiboo.se>
+Subject: [PATCH 12/13] arm64: dts: rockchip: rk3308-rock-pi-s: Enable the io-domains node
+Date: Tue, 21 May 2024 21:10:15 +0000
+Message-ID: <20240521211029.1236094-13-jonas@kwiboo.se>
 X-Mailer: git-send-email 2.43.2
 In-Reply-To: <20240521211029.1236094-1-jonas@kwiboo.se>
 References: <20240521211029.1236094-1-jonas@kwiboo.se>
@@ -56,10 +71,11 @@ X-Complaints-To: abuse@forwardemail.net
 X-ForwardEmail-Version: 0.4.40
 X-ForwardEmail-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
  167.172.40.54
-X-ForwardEmail-ID: 664d0e018b6b0c828344af8f
+X-ForwardEmail-ID: 664d0dfd8b6b0c828344af78
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240521_141157_670010_C5ED6F1D 
-X-CRM114-Status: GOOD (  10.18  )
+X-CRM114-CacheID: sfid-20240521_221215_512990_83CF9039 
+X-CRM114-Status: UNSURE (   8.88  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,97 +92,36 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Update WiFi SDIO and BT UART related props to better reflect details
-about the optional onboard RTL8723DS WiFi/BT module.
+The VCCIO4 io-domain used for WiFi/BT is using 1v8 IO signal voltage.
 
-Also correct the compatible used for bluetooth to match the WiFi/BT
-module used on the board.
+Add io-domains node with the VCCIO supplies connected on the board.
 
-Fixes: bc3753aed81f ("arm64: dts: rockchip: rock-pi-s add more peripherals")
 Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
 ---
- .../boot/dts/rockchip/rk3308-rock-pi-s.dts    | 40 +++++++++++++++++--
- 1 file changed, 36 insertions(+), 4 deletions(-)
+ arch/arm64/boot/dts/rockchip/rk3308-rock-pi-s.dts | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
 
 diff --git a/arch/arm64/boot/dts/rockchip/rk3308-rock-pi-s.dts b/arch/arm64/boot/dts/rockchip/rk3308-rock-pi-s.dts
-index 5c702f00b27f..62d18ca769a1 100644
+index f6fb90e13ad0..5c702f00b27f 100644
 --- a/arch/arm64/boot/dts/rockchip/rk3308-rock-pi-s.dts
 +++ b/arch/arm64/boot/dts/rockchip/rk3308-rock-pi-s.dts
-@@ -17,6 +17,7 @@ aliases {
- 		ethernet0 = &gmac;
- 		mmc0 = &emmc;
- 		mmc1 = &sdmmc;
-+		mmc2 = &sdio;
- 	};
+@@ -231,6 +231,16 @@ &i2c1 {
+ 	status = "okay";
+ };
  
- 	chosen {
-@@ -245,6 +246,20 @@ &pinctrl {
++&io_domains {
++	vccio0-supply = <&vcc_io>;
++	vccio1-supply = <&vcc_io>;
++	vccio2-supply = <&vcc_io>;
++	vccio3-supply = <&vcc_io>;
++	vccio4-supply = <&vcc_1v8>;
++	vccio5-supply = <&vcc_io>;
++	status = "okay";
++};
++
+ &pinctrl {
  	pinctrl-names = "default";
  	pinctrl-0 = <&rtc_32k>;
- 
-+	bluetooth {
-+		bt_reg_on: bt-reg-on {
-+			rockchip,pins = <4 RK_PB3 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+
-+		bt_wake_host: bt-wake-host {
-+			rockchip,pins = <4 RK_PB4 RK_FUNC_GPIO &pcfg_pull_down>;
-+		};
-+
-+		host_wake_bt: host-wake-bt {
-+			rockchip,pins = <4 RK_PB2 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
-+
- 	gmac {
- 		mac_rst: mac-rst {
- 			rockchip,pins = <0 RK_PA7 RK_FUNC_GPIO &pcfg_pull_none>;
-@@ -294,11 +309,24 @@ &sdio {
- 	cap-sd-highspeed;
- 	cap-sdio-irq;
- 	keep-power-in-suspend;
--	max-frequency = <1000000>;
-+	max-frequency = <100000000>;
- 	mmc-pwrseq = <&sdio_pwrseq>;
-+	no-mmc;
-+	no-sd;
- 	non-removable;
--	sd-uhs-sdr104;
-+	sd-uhs-sdr50;
-+	vmmc-supply = <&vcc_io>;
-+	vqmmc-supply = <&vcc_1v8>;
- 	status = "okay";
-+
-+	rtl8723ds: wifi@1 {
-+		reg = <1>;
-+		interrupt-parent = <&gpio0>;
-+		interrupts = <RK_PA0 IRQ_TYPE_LEVEL_HIGH>;
-+		interrupt-names = "host-wake";
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&wifi_host_wake>;
-+	};
- };
- 
- &sdmmc {
-@@ -330,12 +358,16 @@ &uart0 {
- };
- 
- &uart4 {
-+	uart-has-rtscts;
- 	status = "okay";
- 
- 	bluetooth {
--		compatible = "realtek,rtl8723bs-bt";
--		device-wake-gpios = <&gpio4 RK_PB3 GPIO_ACTIVE_HIGH>;
-+		compatible = "realtek,rtl8723ds-bt";
-+		device-wake-gpios = <&gpio4 RK_PB2 GPIO_ACTIVE_HIGH>;
-+		enable-gpios = <&gpio4 RK_PB3 GPIO_ACTIVE_HIGH>;
- 		host-wake-gpios = <&gpio4 RK_PB4 GPIO_ACTIVE_HIGH>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&bt_reg_on &bt_wake_host &host_wake_bt>;
- 	};
- };
- 
 -- 
 2.43.2
 
