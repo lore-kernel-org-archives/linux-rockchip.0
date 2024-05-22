@@ -4,106 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 830C8C25B7A
-	for <linux-rockchip@archiver.kernel.org>; Wed, 22 May 2024 10:06:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CDD0FC25B78
+	for <linux-rockchip@archiver.kernel.org>; Wed, 22 May 2024 15:32:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=m5HSAwbOg8BSb0cGQPPPbvvv0xivo2+O7HBRgCKmJ+8=; b=jQ3xmkQ1jqGKMI
-	lMqFwpcVFB0OI3jbbGPjDIDV3VV4930rWwT1XTrTuSkiTC081nHBmN6lBqSHxii9BJUrx1HF2xwZo
-	IBnqCxwF5LK3ArvafSIDMrisX5DpsJBPFD43ZFOY8wffA6owfy/29p01dIvaRCasVWaAROlv+6QGT
-	EKLyplOdVaaff8z4HTnCKJuwaVRj1xNxyny7Y+7VA3NpoHpo5XBo1ovVjrLlqcuR2PSODudn2DGOQ
-	aZu2yFdMk/AqpY02ZwkRMrc5spTODjpoAB+DlG0jWUx3H2UQageb/UCICoQxqcS7iXEfHQsB1gyg4
-	SyrcFHt0QYWtFNWgLbqw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=z7+Hk2fW9oE6oV/OjFWceAl2aOIJKwr4r55QiViKn3s=; b=DKah1zORo5JqXqbd6LgbIzsLIX
+	EKCQDhSNsFhnwDdQ44rS+fcjNPVv8amo+1fOjuAnVXoppOiSoHD9i3uw6cj5n5we4gr6qZOywBlGm
+	J0xxsujPHp/HMW/4ws/g7nSGAHk+fy058kwOZF7pbCsGUL0em+sdN13TMPwZYt9idQRYkzMW0qiAS
+	SBHmKk2DChxWTCdqPg7IYz77EX9MAbhizhZZgF1Ma9FtTy6z9BIIZQiTdNLH8BVhARi0lLArw7/As
+	3FRyjAaU1F9CbKuCK32k2WCV15SUxc0/4/emDVMFjrL3nKnoL0MiNGY0xy9hAlPUXSJJrSHp+XFgi
+	hxr+btJg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s9irz-00000002ayZ-2Ppu;
-	Wed, 22 May 2024 10:06:51 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1s9nwl-00000003NQs-0dgc;
+	Wed, 22 May 2024 15:32:07 +0000
+Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s9iru-00000002awz-3eet;
-	Wed, 22 May 2024 10:06:48 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 2CDEE62909;
-	Wed, 22 May 2024 10:06:46 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9D89FC2BD11;
-	Wed, 22 May 2024 10:06:42 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1716372405;
-	bh=e/FPyLPqNB3CxEyT/jh1OUEbyOkGN/mPJXyW5rNfoF0=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=SdyrD5ufQpO74snjQRZTtR6GjeVJd3CChVnhIs8pQyfuFOHG4pwwF0TMt7X50D0Pf
-	 Hb+jrUFiwotOrpYHgYuC/83DRSRRON6unJSuXKd4+au4kp60zY9dbnOjAV6ZE7Cu6C
-	 oPxcrBnAqmbaTWwJXyguervAoMzFLSCJLSiNx8DGqD2JP74NB98F4hZcV72vicuuE9
-	 f77+4zSjL0YPVonEaSkATknL5tQtOzQnDNS2bTBioa2X11V0xBXPCRNpMVS11ABPU3
-	 51NHvQ8FUyjolt9K5pQXZkUf6sLdiaDZW8iSgaPAr1lz51k8HSCA4lFm3INwTPnA9u
-	 m42Kzr+m22loA==
-Message-ID: <bba486cf-1340-413f-88d9-e3e81b667cb8@kernel.org>
-Date: Wed, 22 May 2024 12:06:39 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 09/13] dt-bindings: power: rockchip: Document RK3308 IO
- voltage domains
-To: Jonas Karlman <jonas@kwiboo.se>, Heiko Stuebner <heiko@sntech.de>,
+	id 1s9nwh-00000003NPB-13m9;
+	Wed, 22 May 2024 15:32:04 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1716391918;
+	bh=kUTVaEv+CluhtL7Oa3Hy8QzRC+vL3NJAb+fI1CqZcJE=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=4NYcg31OsYHSC+HF3tIyiUc8hndE22wxc7pw+Q//fSm65c4ZbKpBNGiXNEakYxEKh
+	 kFWIaK4OWeKsH84HGAYssMKq5MBRpgzAoN1s03GfYY7LGjcjXBPiiVrMAD8HqMxS7q
+	 viLAhoCr/Nz8JNU7TxFJ0vq2SkqG3bLvrrb+seTGVSE3CRBVotdfU6equ9jLzrF5Bn
+	 Am5+q5tl0byg9K2Sn+vTLN20ze4856ucuQbsxGdS5+X56VQmtzLdUY1hg6YUGAzqjo
+	 ozxWLSPJUKpRuDwxk24x483I5nOEfa9oUMRoUr7AZ006YwG2xkAqMZMkJO6GKoV9Ja
+	 /GxF7YCrLeABQ==
+Received: from arisu.localnet (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: detlev)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id BE6243782170;
+	Wed, 22 May 2024 15:31:55 +0000 (UTC)
+From: Detlev Casanova <detlev.casanova@collabora.com>
+To: Conor Dooley <conor@kernel.org>
+Cc: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>,
+ linux-kernel@vger.kernel.org, Sandy Huang <hjc@rock-chips.com>,
+ Andy Yan <andy.yan@rock-chips.com>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>,
  Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>
-Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-References: <20240521211029.1236094-1-jonas@kwiboo.se>
- <20240521211029.1236094-10-jonas@kwiboo.se>
-From: Krzysztof Kozlowski <krzk@kernel.org>
-Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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 fv0=
-In-Reply-To: <20240521211029.1236094-10-jonas@kwiboo.se>
+ Conor Dooley <conor+dt@kernel.org>,
+ Heiko Stuebner <heiko.stuebner@cherry.de>,
+ Sebastian Reichel <sebastian.reichel@collabora.com>,
+ Dragan Simic <dsimic@manjaro.org>, Chris Morgan <macromorgan@hotmail.com>,
+ Diederik de Haas <didi.debian@cknow.org>,
+ Boris Brezillon <boris.brezillon@collabora.com>,
+ dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org
+Subject: Re: [PATCH 3/3] dt-bindings: display: vop2: Add VP clock resets
+Date: Wed, 22 May 2024 11:31:36 -0400
+Message-ID: <3334403.5fSG56mABF@arisu>
+Organization: Collabora
+In-Reply-To: <20240521-silver-exciting-bb3725dc495d@spud>
+References: <20240514152328.21415-1-detlev.casanova@collabora.com>
+ <13628421.uLZWGnKmhe@arisu> <20240521-silver-exciting-bb3725dc495d@spud>
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240522_030647_041685_D93D9801 
-X-CRM114-Status: UNSURE (   5.11  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240522_083203_474059_45820361 
+X-CRM114-Status: GOOD (  23.94  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -115,24 +82,112 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============3999636615728603519=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 21/05/2024 23:10, Jonas Karlman wrote:
-> Document dt-bindings for RK3308 IO voltage domains.
-> 
-> Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
-> ---
+--===============3999636615728603519==
+Content-Type: multipart/signed; boundary="nextPart6053228.MhkbZ0Pkbq";
+ micalg="pgp-sha256"; protocol="application/pgp-signature"
 
-Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+--nextPart6053228.MhkbZ0Pkbq
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="iso-8859-1"; protected-headers="v1"
+From: Detlev Casanova <detlev.casanova@collabora.com>
+To: Conor Dooley <conor@kernel.org>
+Date: Wed, 22 May 2024 11:31:36 -0400
+Message-ID: <3334403.5fSG56mABF@arisu>
+Organization: Collabora
+In-Reply-To: <20240521-silver-exciting-bb3725dc495d@spud>
+MIME-Version: 1.0
 
-Best regards,
-Krzysztof
+On Tuesday, May 21, 2024 2:31:51 P.M. EDT Conor Dooley wrote:
+> On Tue, May 21, 2024 at 01:15:46PM -0400, Detlev Casanova wrote:
+> > On Wednesday, May 15, 2024 12:33:22 P.M. EDT Heiko St=FCbner wrote:
+> > > Am Mittwoch, 15. Mai 2024, 18:19:29 CEST schrieb Conor Dooley:
+> > > > On Tue, May 14, 2024 at 11:19:47AM -0400, Detlev Casanova wrote:
+> > > > > Add the documentation for VOP2 video ports reset clocks.
+> > > > > One reset can be set per video port.
+> > > > >=20
+> > > > > Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
+> > > >=20
+> > > > Are these resets valid for all VOPs or just the one on 3588?
+> > >=20
+> > > Not in that form.
+> > > I.e. rk3588 has 4 video-ports (0-3), while rk3568 has 3 (0-2).
+> > >=20
+> > > So the binding should take into account that rk3568 also has the
+> > > SRST_VOP0 ... SRST_VOP2.
+> >=20
+> > That is what is set in the example and the reason why I set minItems to=
+ 3
+> > in the main bindings.
+> > Then, the rk3588 specific part sets it to 4.
+> >=20
+> > Isn't that enough ?
+>=20
+> Not quite - you need to restrict maxItems to 3 for the other devices if
+> the clocks are not valid. What you've got says that 4 clocks are
+> possible but not needed on !rk3588.
+>=20
+> Cheers,
+> Conor.
 
+I don't understand what "properties: resets: minItems: 3" means then. I=20
+thought it means that all devices should have at least 3 resets. Then the=20
+allOf below specifies the special case of rk3588 which has a minimum of 4=20
+resets.
+
+Do I need to add=20
+        resets:
+          minItems: 3
+        reset-names:
+          minItems: 3
+in the "else:" ?
+
+So in that case, I can remove "properties: resets: minItems: 3" above ?
+
+Also, what do you mean "If the clocks are not valid" ?
+
+Detlev.
+
+
+--nextPart6053228.MhkbZ0Pkbq
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: This is a digitally signed message part.
+Content-Transfer-Encoding: 7Bit
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCAAdFiEEonF9IvGrXNkDg+CX5EFKUk4x7bYFAmZOD9gACgkQ5EFKUk4x
+7bY7TQf+JupJtDv/HvUIX8L38oBOIr0TEHcquMrWumq4ACE/y2HjwxHAhYw7NufO
+qC1OuNVis+e3pQ5kqoy5z9iNiyvA8weC2Uu2Ig0UgtdLPwhf88oj9IxHr9OtzY0J
+Z1019PaHyov5yb3copVh66aW8rtadOKfNCio2F+zSNITxfwzdFJJ3pbk5JqHf4de
+06zd16nvuYlQ6IUoony8xKi+NfJICvmo8XvR/UR5EEtlYPto8SnLPhqRw+vbRe4U
+Bia87NTBM9o7bkq8kk00EOyO+PDEYlg3AU5mGLnnf0ES5kZPa10EDHJQZ1SHeM8k
+sUP3VPs8I/S9Jk1QMusS6foYdtbshQ==
+=vt+N
+-----END PGP SIGNATURE-----
+
+--nextPart6053228.MhkbZ0Pkbq--
+
+
+
+
+
+--===============3999636615728603519==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============3999636615728603519==--
+
+
+
+
