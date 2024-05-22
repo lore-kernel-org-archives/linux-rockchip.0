@@ -4,65 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B2925C25B7C
-	for <linux-rockchip@archiver.kernel.org>; Wed, 22 May 2024 22:17:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A273EC25B78
+	for <linux-rockchip@archiver.kernel.org>; Wed, 22 May 2024 22:25:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=e2V7VETMdSazhBDDDqBhi3l6NebYrwlYRVX/TiNsfCk=; b=q6/jEfJuxao6yD
-	SPtRy0enbPsFWdGvWoGY59be7cOlcLf9kqsTHjfzIlYegXNq/pVcZXdUI/ZOxXSJqeXv+3577qZOM
-	bUtvXv5hnWEcO7Q7ip53oHADONABvKgJsMT80nJ8Pw3XesjCa25ghiH3ML9QSKWOgx2oSQhRGLjjh
-	GP8Azxz3tQqjdOkSX/DVKuD7/fXcmdB0Jcofj7fVrcP7DJod+6MpAvU2r0k8eMKZ8twOz+ylpD4Sg
-	s+D5dTPCQ5mkbNE+UZZZUqZvBZasiGwHlxGn3ibjKe45KV9UUCQXgQAiA+L4GcYHV0amwB9Le4wL0
-	juYPAEZD83Jt54YWhrOA==;
+	List-Owner; bh=MiC5YgFi92FCTsvQwBTNNzGcL1tdWCr7Pi3pEBH10eU=; b=SVhDhu1sc833A0
+	wC/YBWZfJ7ZU/79W0ha8/qjcm+pP1X7wgqFHMmAAmmwC3lbvHNNh3ulGTY6mtKtu26Bjt6kyZkXg5
+	qklOn3lbwrkzjWDkaYdzUlDgbwhSSvxllh32CaLKsqGu0HXuQAhy92CWVPfFwHGZtGIxxX6BsFO58
+	IS78IDWeeP3pWzkwbzEmk9ULLDdhWA5vDoISoQdPP1aZvtukHNtj1Ydpu3fCd8wybfu77wooMTqe0
+	+8ULQ/MsRx0B9sJ3vSqb21luJrPpaiLvblomgVcAnO+2OLw+5jROQKR4fPl1Z8tdhtHVW82+AgWAW
+	YHma1mkAfSGWLO/djnsg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s9uH7-00000004FXR-1orr;
-	Wed, 22 May 2024 22:17:33 +0000
-Received: from mail-lf1-x136.google.com ([2a00:1450:4864:20::136])
+	id 1s9uOp-00000004Gs6-2Nw9;
+	Wed, 22 May 2024 22:25:31 +0000
+Received: from mail-lf1-x12a.google.com ([2a00:1450:4864:20::12a])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s9uH3-00000004FTZ-34zA
+	id 1s9uOl-00000004Gqg-26nc
 	for linux-rockchip@lists.infradead.org;
-	Wed, 22 May 2024 22:17:32 +0000
-Received: by mail-lf1-x136.google.com with SMTP id 2adb3069b0e04-52389c1308dso7028903e87.3
-        for <linux-rockchip@lists.infradead.org>; Wed, 22 May 2024 15:17:25 -0700 (PDT)
+	Wed, 22 May 2024 22:25:29 +0000
+Received: by mail-lf1-x12a.google.com with SMTP id 2adb3069b0e04-51f99f9e0faso8481600e87.2
+        for <linux-rockchip@lists.infradead.org>; Wed, 22 May 2024 15:25:24 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1716416243; x=1717021043; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1716416723; x=1717021523; darn=lists.infradead.org;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=MKjPVo1pobuPoRvHj1uEO1HEyVXXDgMeLw2a17VZbrU=;
-        b=CCb3O9GZb4xUIOWfrz5DQ3IevfFbepbcS2JGJL19wPka5YZxZTLyYMoViBMD0HLp/I
-         h+AUJlvoenZOnTs+I/u3pOYV8chX5oIAx3OlCp+ohx0h0lVakHEIYpN6to1gkkTfBoZS
-         NEiHBxy3PbiVEkH9SlCGHMKGjYuz23zLBiJ/zd2Ou7AGQe8XVGt5Gk+bqGjgghrwfzRI
-         BgO1jtQ47n+MHFBoxARlQ3NTaDOxulkeAIuxwJVEAa7sPQYCzqAxDlKh2MQ39P+0yprz
-         fzHwjtlBUdybifo7cET87/BGuN7Jo3mvR3qmm5J5XPoczX8CInccorPwyutJAuF1iPdu
-         XUmg==
+        bh=0B2JbRhNTxBGKVMHTsItxZYaFytK7xf2SG3yQV20MJg=;
+        b=FnHFvkDVGZXqCErtnrD5QcxhWp/LNFgwPHnKuieQM5sYtAJ/VjHu4c/AmWadRuxHcg
+         8NqwwQhaFZAREjqS89TIyO/ww9/7vwHvB1MLG56MYs8EDR9S2Tyzc+4pbPJ4Rvn+tIc5
+         8fYcHaTOFwYjtKA+RIN40GGKyRKnx09/UKRkVj3nbA0XchkjSkcB48KHehFZHnMwn2Us
+         gZgFlmlR9wRLelLqE3S4Zr4XQ1wHdW8HiVvVK8hBZT/x50BC3qjzt2WYguLV2FruRHc5
+         k3eFCwkTo1KaaIwPoetBkSRCVYM1KslTAA7Ge7z3zuBxE2bVjRdLjqij0pZdwjwRC2HB
+         8F6Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1716416243; x=1717021043;
+        d=1e100.net; s=20230601; t=1716416723; x=1717021523;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=MKjPVo1pobuPoRvHj1uEO1HEyVXXDgMeLw2a17VZbrU=;
-        b=i8qsPnrlZn92YaUr3zJ7aJ9yfGyeaLKiHNQCn48NT1HcMI6T+p0kTjzptCu7us9Xeg
-         CwLGAHrLFMlfSaOiJ7WCkP4hkvnrNFheZPyZPFJj1dSLGYvDoDzVNW7F9JmVbS8rNqkj
-         M7wcnG3/VoQCIRXQ97hFoWVjRtLwvhlJVXRO33FsgoWB2Q7vWQksBl3LoPWx/c4L7X5y
-         /Y4518m1IL5LzH2EOrYqHFkQAMbIiKm01y+RVfvTzLrKeowQ2OLHREZrIctB0gxbhC/S
-         /lEDe/DZp6ib01nV/XaJ7a7R6TP3HaaO2bfF7EqTaxJD/LgAR/MqaoyWWHLRxM+Iawlm
-         QjDw==
-X-Forwarded-Encrypted: i=1; AJvYcCU1aeWyYSZ6qwXaCJBtd39SmRT18ltmEixYeNdaArbm/4bDS5jkhzSQdWTsZbFkJFC/3FZf9jLVIYzstO6///IYfKz8OzWl1Z19DSu8xtkqdK3o
-X-Gm-Message-State: AOJu0YxsmLwZ/QHq912ptUqvSQoGXjKvE300X1xDI1xWf0GFMmtcs5jm
-	TD56tqFyE69U3K/9bOLjBuN1k8zAa8bIdkPXgh5a7VzU8mP/dswFnqpeAhR1c8A=
-X-Google-Smtp-Source: AGHT+IHfhjtR8bEAU54UWtngodjp97JPGUmwO1OM74aRntp9IkGMZ3Yej1SUNJLq9vHd0wtc+li0YA==
-X-Received: by 2002:ac2:4c95:0:b0:523:72b8:8002 with SMTP id 2adb3069b0e04-526be315f14mr1967940e87.30.1716416243518;
-        Wed, 22 May 2024 15:17:23 -0700 (PDT)
+        bh=0B2JbRhNTxBGKVMHTsItxZYaFytK7xf2SG3yQV20MJg=;
+        b=FZzWVuPz0gpMZDRhbxpCruEk+6qp0ODoZUBR5s+whK65+VLqCoIC0N4GGhFhH2NNPp
+         ezOaIxiQJY4ZMoPkAC5+dC+Y5D5gmsOam4/NMeoJdupP+C9QVzdqrfozwmjWoZE9Jz67
+         4+AQCdOK3Q1O5s3t7hYZvCBg1D+DKXpd82uslI7Be2cZ0hjP276OkSZgodNGb52lkUzp
+         iz/AhTgOrX/3F2KS5svnZc4wi8mPtS3mva67b+fe5e5SdVnf2xMXs76LeC61kOERDzJy
+         5NNtE67ZXeQ6H6zXzXmx4g0M25n4jRfTyqgPDYpWUE3+d9khLyl8OK5AxpJjBHV6En7C
+         sWKg==
+X-Forwarded-Encrypted: i=1; AJvYcCX41teKsHbtnRAmo1u6OZidoOo8mGl5itRZ4RQCJQfidzywO47KPrWtxU5l8uYcc7CduwwaRhYMUQjo2tXXrn5dDAeklM/WJ8jVUfyP4XxYUBwK
+X-Gm-Message-State: AOJu0YxUhiqCN6Iqd7dGOTwSECeeN8XFQ0rUm9UmApjbbqGKSo5IjBdO
+	yhjmGXsKH6nTlgpsGstKY/urSSlaRsco6GI3X7OPHTc2Vpu40Qix02i3UIvblAU=
+X-Google-Smtp-Source: AGHT+IEdRcdYbBoQQzpqYVDzxkuMPcPMqGC5L1AwkkRW2Odahvetj8UXht61AaeWnM+5cMkq4/v0ww==
+X-Received: by 2002:ac2:5ded:0:b0:519:6a93:ed3a with SMTP id 2adb3069b0e04-526bd6935bfmr2114964e87.23.1716416722617;
+        Wed, 22 May 2024 15:25:22 -0700 (PDT)
 Received: from eriador.lumag.spb.ru (dzdbxzyyyyyyyyyyyykxt-3.rev.dnainternet.fi. [2001:14ba:a0c3:3a00::227])
-        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-521f38d8b66sm5075515e87.195.2024.05.22.15.17.22
+        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-521f35ad499sm5106336e87.20.2024.05.22.15.25.21
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 22 May 2024 15:17:23 -0700 (PDT)
-Date: Thu, 23 May 2024 01:17:21 +0300
+        Wed, 22 May 2024 15:25:22 -0700 (PDT)
+Date: Thu, 23 May 2024 01:25:20 +0300
 From: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
 To: Maxime Ripard <mripard@kernel.org>
 Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
@@ -75,17 +75,18 @@ Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
 	Ville =?utf-8?B?U3lyasOkbMOk?= <ville.syrjala@linux.intel.com>, dri-devel@lists.freedesktop.org, 
 	linux-arm-kernel@lists.infradead.org, linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org, 
 	linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-sunxi@lists.linux.dev, 
-	Dave Stevenson <dave.stevenson@raspberrypi.com>, Sui Jingfeng <sui.jingfeng@linux.dev>
-Subject: Re: [PATCH v14 04/28] drm/connector: hdmi: Create an HDMI sub-state
-Message-ID: <zeg3lwkgc36lheoh3wdieexta2roqhhx74crxtw7dygdffkgzn@fwkfx2ixhu4q>
+	Dave Stevenson <dave.stevenson@raspberrypi.com>
+Subject: Re: [PATCH v14 05/28] drm/connector: hdmi: Add output BPC to the
+ connector state
+Message-ID: <ikljb6koxeg6urdzjyg4nbqtl6pzxs2vakavjkxjudsjhsklyp@3ib3inb2oq4s>
 References: <20240521-kms-hdmi-connector-state-v14-0-51950db4fedb@kernel.org>
- <20240521-kms-hdmi-connector-state-v14-4-51950db4fedb@kernel.org>
+ <20240521-kms-hdmi-connector-state-v14-5-51950db4fedb@kernel.org>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20240521-kms-hdmi-connector-state-v14-4-51950db4fedb@kernel.org>
+In-Reply-To: <20240521-kms-hdmi-connector-state-v14-5-51950db4fedb@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240522_151729_851966_76A6D1A7 
-X-CRM114-Status: GOOD (  13.05  )
+X-CRM114-CacheID: sfid-20240522_152527_596548_5394962E 
+X-CRM114-Status: GOOD (  12.00  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,24 +103,19 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, May 21, 2024 at 12:13:37PM +0200, Maxime Ripard wrote:
-> The next features we will need to share across drivers will need to
-> store some parameters for drivers to use, such as the selected output
-> format.
-> 
-> Let's create a new connector sub-state dedicated to HDMI controllers,
-> that will eventually store everything we need.
+On Tue, May 21, 2024 at 12:13:38PM +0200, Maxime Ripard wrote:
+> We'll add automatic selection of the output BPC in a following patch,
+> but let's add it to the HDMI connector state already.
 > 
 > Reviewed-by: Dave Stevenson <dave.stevenson@raspberrypi.com>
-> Reviewed-by: Sui Jingfeng <sui.jingfeng@linux.dev>
 > Signed-off-by: Maxime Ripard <mripard@kernel.org>
 > ---
->  drivers/gpu/drm/display/Kconfig                 |  7 +++++
->  drivers/gpu/drm/display/Makefile                |  2 ++
->  drivers/gpu/drm/display/drm_hdmi_state_helper.c | 41 +++++++++++++++++++++++++
->  include/drm/display/drm_hdmi_state_helper.h     | 16 ++++++++++
->  include/drm/drm_connector.h                     |  7 +++++
->  5 files changed, 73 insertions(+)
+>  drivers/gpu/drm/display/drm_hdmi_state_helper.c | 20 ++++++++++++++++++++
+>  drivers/gpu/drm/drm_atomic.c                    |  5 +++++
+>  drivers/gpu/drm/drm_connector.c                 | 20 +++++++++++++++++++-
+>  drivers/gpu/drm/tests/drm_connector_test.c      | 12 ++++++++----
+>  include/drm/drm_connector.h                     | 12 +++++++++++-
+>  5 files changed, 63 insertions(+), 6 deletions(-)
 > 
 
 Reviewed-by: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
