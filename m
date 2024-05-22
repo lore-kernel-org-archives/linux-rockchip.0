@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7E145C25B78
-	for <linux-rockchip@archiver.kernel.org>; Wed, 22 May 2024 19:00:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4A0ACC25B7A
+	for <linux-rockchip@archiver.kernel.org>; Wed, 22 May 2024 19:00:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ZGhEPjTr2/xKBTF7c0Sr5Mvdk1W4XsCVL2V22bjatBA=; b=CtzxIOByYeBR34
-	/tsbBVCiCYjTnkOVLHiI+4GzFuZqeH+C0CcxlLfACiIobkLNy7idh9h0kEovCejHwX8/hAoyPLJ96
-	VojjNLDunKrqsXsgYi/Sd4c8cmqpP3tkA0HQvvu/RB2etLZ+xidsCjJXEZPemHRlLVe5mgAwqeMlm
-	MVfPVMN3QYYJ0xkuf739GUoEi7a+5ddohmHS4uzTYJG0N14Rw5F9HB8C+wTnYgc/Fl/mLTNTIXrC7
-	V6pcR7IztvdAWSIM/jHBVipwRN/aN7tzCaFRZVgUze6lgPlPxFcgizWUGKgzKpZwjv6Ru8tnQ6MjE
-	IQTw8MWhWrGArl+dWg/g==;
+	List-Owner; bh=AvXUZPpgt7WJiOt0ulohNcUXU9eTyEqFtEroLNlS/Bw=; b=pDcnMC+0paSO9b
+	yFYSIymgEfWEQvyqENzz2cRFAxPDho4dwYscuPv9e6MTpgNtrUGk6ukNEypEGmMyDafInbxV1pwYc
+	hxjb1WhfA3NG56XjFLJWiO6CzklGtHuU1U+zjYxRIz4u4R1DpCJU1SDkmKi+V6hCxA1vsM3u6oDBm
+	2CVCV13Mnpjuu/Bj7s7p799ke/3PQlJizqeuJbtQEM8K1J3IuCoAGl0N+yU03eq/Jooa2kAZTBkyZ
+	NkwCTSw5g3bjw6qJFM4gxG055/G0B/l+8HHxkHfvCBhDy/wWvxvBj3fVa2Pf/4ny7E+Ow5n6cT/q/
+	IAEOeSpZ8iPUiQb8tf1A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s9rCM-00000003s0Y-143n;
-	Wed, 22 May 2024 19:00:26 +0000
-Received: from madrid.collaboradmins.com ([46.235.227.194])
+	id 1s9rCR-00000003s4Q-0tWo;
+	Wed, 22 May 2024 19:00:31 +0000
+Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s9rC2-00000003rjL-0XgX;
-	Wed, 22 May 2024 19:00:07 +0000
+	id 1s9rC2-00000003rl1-29oo;
+	Wed, 22 May 2024 19:00:08 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1716404400;
-	bh=PVF+wmm/VCwQDTYpdenLM3gXX3oTTIiq5Q5qfjbuvLE=;
+	s=mail; t=1716404405;
+	bh=LfctjAd5uH9RnEI2V0jx8z9y7pEnFvsn8ifaV8F3Mx8=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=08XQe887W1a3THcyloUj9bHJ9IdB4JXxZhcaOun91U4AUljYMREpO5d+Wky9QpOmN
-	 epFZT7kJTR7z18QGZ2CouCWvGCO9u/QbMjuT1CrHNTfCEAu3fv2K8g8KFpknPFqvbc
-	 KJvXpL3MTUMgpskmorA9bY7aIKkbEUkeN7iR94CGMrA1xGWP+ggURlhE1OhX/l6YwX
-	 Z+dulPucGSU24QeJN55sMqu/Dt6+fMfsdy7KJsGoslcc4CQvrvlOXSAfB+1rt+lf7q
-	 WimPioxOoZ1fyLn8aAXs4MEg/sOfQ/o/RbQr1XtQiuVo29Hcuq5mgp3Bbz+BAtFAMn
-	 ANtpc5obaYsTQ==
+	b=45kzaSJ9T8lf1/Zh9CeVPM38MgoiD8SDrf9tCrazJTsjXVyWvNSa/nIDKi7WRfbj2
+	 6I9b89QkEE95FUQkExwMerQySbVOMOE8TWimMwgB3Nzji4cUiwRvYjf3iBsNbxoYHH
+	 qJiH5xRlMKYotPQm2MiQ8/h6ftj7W7NlepNWewPpLSraNtJ1t4UCOwV6tjXxFQ0hIy
+	 Dx4R++SLb7DKY8gU2DyZZKqFmjm5LKf+SPONJ7IV4ULmuO/wZ4GjbD3i+QOYY5kxOt
+	 Cof3tOtLPyloyx3Vf5yhvtp19dVbfz9Bnii+/yDs8/JcjS07CgSAs55t7naznmaRfC
+	 lOIcKq9MC0QgQ==
 Received: from arisu.mtl.collabora.ca (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: detlev)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 37792378218D;
-	Wed, 22 May 2024 18:59:57 +0000 (UTC)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 5C6BD37821A4;
+	Wed, 22 May 2024 19:00:02 +0000 (UTC)
 From: Detlev Casanova <detlev.casanova@collabora.com>
 To: linux-kernel@vger.kernel.org
 Cc: Sandy Huang <hjc@rock-chips.com>,
@@ -67,16 +67,17 @@ Cc: Sandy Huang <hjc@rock-chips.com>,
 	linux-rockchip@lists.infradead.org,
 	devicetree@vger.kernel.org,
 	Detlev Casanova <detlev.casanova@collabora.com>
-Subject: [PATCH v2 1/3] vop2: Add clock resets support
-Date: Wed, 22 May 2024 14:57:48 -0400
-Message-ID: <20240522185924.461742-2-detlev.casanova@collabora.com>
+Subject: [PATCH v2 2/3] arm64: dts: rockchip: Add VOP clock resets for rk3588s
+Date: Wed, 22 May 2024 14:57:49 -0400
+Message-ID: <20240522185924.461742-3-detlev.casanova@collabora.com>
 X-Mailer: git-send-email 2.44.1
 In-Reply-To: <20240522185924.461742-1-detlev.casanova@collabora.com>
 References: <20240522185924.461742-1-detlev.casanova@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240522_120006_454909_B6BD81BC 
-X-CRM114-Status: GOOD (  15.90  )
+X-CRM114-CacheID: sfid-20240522_120006_816388_C17C87C8 
+X-CRM114-Status: UNSURE (   8.96  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,86 +94,36 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-At the end of initialization, each VP clock needs to be reset before
-they can be used.
-
-Failing to do so can put the VOP in an undefined state where the
-generated HDMI signal is either lost or not matching the selected mode.
+This adds the needed clock resets for all rk3588(s) based SOCs.
 
 Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
 ---
- drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 30 ++++++++++++++++++++
- 1 file changed, 30 insertions(+)
+ arch/arm64/boot/dts/rockchip/rk3588s.dtsi | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
 
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-index fdd768bbd487c..e81a67161d29a 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-@@ -17,6 +17,7 @@
- #include <linux/platform_device.h>
- #include <linux/pm_runtime.h>
- #include <linux/regmap.h>
-+#include <linux/reset.h>
- #include <linux/swab.h>
- 
- #include <drm/drm.h>
-@@ -157,6 +158,7 @@ struct vop2_win {
- struct vop2_video_port {
- 	struct drm_crtc crtc;
- 	struct vop2 *vop2;
-+	struct reset_control *dclk_rst;
- 	struct clk *dclk;
- 	unsigned int id;
- 	const struct vop2_video_port_data *data;
-@@ -1915,6 +1917,26 @@ static int us_to_vertical_line(struct drm_display_mode *mode, int us)
- 	return us * mode->clock / mode->htotal / 1000;
- }
- 
-+static int vop2_clk_reset(struct vop2_video_port *vp)
-+{
-+	struct reset_control *rstc = vp->dclk_rst;
-+	struct vop2 *vop2 = vp->vop2;
-+	int ret;
-+
-+	if (!rstc)
-+		return 0;
-+
-+	ret = reset_control_assert(rstc);
-+	if (ret < 0)
-+		drm_warn(vop2->drm, "failed to assert reset\n");
-+	udelay(10);
-+	ret = reset_control_deassert(rstc);
-+	if (ret < 0)
-+		drm_warn(vop2->drm, "failed to deassert reset\n");
-+
-+	return ret;
-+}
-+
- static void vop2_crtc_atomic_enable(struct drm_crtc *crtc,
- 				    struct drm_atomic_state *state)
- {
-@@ -2055,6 +2077,8 @@ static void vop2_crtc_atomic_enable(struct drm_crtc *crtc,
- 
- 	vop2_vp_write(vp, RK3568_VP_DSP_CTRL, dsp_ctrl);
- 
-+	vop2_clk_reset(vp);
-+
- 	drm_crtc_vblank_on(crtc);
- 
- 	vop2_unlock(vop2);
-@@ -2706,6 +2730,12 @@ static int vop2_create_crtcs(struct vop2 *vop2)
- 		vp->data = vp_data;
- 
- 		snprintf(dclk_name, sizeof(dclk_name), "dclk_vp%d", vp->id);
-+		vp->dclk_rst = devm_reset_control_get_optional(vop2->dev, dclk_name);
-+		if (IS_ERR(vp->dclk_rst)) {
-+		        drm_err(vop2->drm, "failed to get %s reset\n", dclk_name);
-+		        return PTR_ERR(vp->dclk_rst);
-+		}
-+
- 		vp->dclk = devm_clk_get(vop2->dev, dclk_name);
- 		if (IS_ERR(vp->dclk)) {
- 			drm_err(vop2->drm, "failed to get %s\n", dclk_name);
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588s.dtsi b/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
+index 6ac5ac8b48abb..490a525700498 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
+@@ -1193,6 +1193,18 @@ vop: vop@fdd90000 {
+ 			      "pclk_vop";
+ 		iommus = <&vop_mmu>;
+ 		power-domains = <&power RK3588_PD_VOP>;
++		resets = <&cru SRST_A_VOP>,
++			 <&cru SRST_H_VOP>,
++			 <&cru SRST_D_VOP0>,
++			 <&cru SRST_D_VOP1>,
++			 <&cru SRST_D_VOP2>,
++			 <&cru SRST_D_VOP3>;
++		reset-names = "aclk",
++			      "hclk",
++			      "dclk_vp0",
++			      "dclk_vp1",
++			      "dclk_vp2",
++			      "dclk_vp3";
+ 		rockchip,grf = <&sys_grf>;
+ 		rockchip,vop-grf = <&vop_grf>;
+ 		rockchip,vo1-grf = <&vo1_grf>;
 -- 
 2.44.1
 
