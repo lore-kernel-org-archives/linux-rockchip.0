@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 54E8DC25B79
-	for <linux-rockchip@archiver.kernel.org>; Thu, 23 May 2024 05:46:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 90659C25B75
+	for <linux-rockchip@archiver.kernel.org>; Thu, 23 May 2024 06:07:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To:From:Subject:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
 	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=CigDal+yHU3WGSnPjQrw7sAmU5PtZe68c7aQzGjJvFU=; b=xTvxpUZExJTovy
-	PjZ6joviNBq+zfH5Shic+DP9Ck5upiyrndwMColHqrX9y1uopX490gwxDXJ9jSqDo5EJbtAc8cvFb
-	rtWYJS1DuAKTXvgve+f1FJOH7kCECrprFhRocmuM8YzbwuJarA8whSRAD4ZkGLMWzF9DyrVAZMUZ7
-	nKVMMo76qZ1fq/fXNjhKPZSJQXUumFEwgMS0cklx1KlyGUkmi1gf/H+fG4zQhwsLMaXEsmpuii5+p
-	VYnL+P1lfgSGZ+2UqfPwuBewPv8LBewC17Ew2nXY+aawQIzjWGS5CrizCNcVZDndOqA9Pj+hyY2cj
-	Z/TIY5L5fX0xKtoR4VYw==;
+	List-Owner; bh=bMmrbMFwhlBJaklBV1fER+rdSlOLc56viDhqGkRNoUo=; b=RGK/4E++r9TM2b
+	ohMALi8GAj6GzQvDXDoYj6cb5bbZ7UiPFnN92Ys6yZ/IPDhIs6RTrIMNyLld0Bybv+VyFEX6GygZt
+	tj54TgVlTJJtnfaECTdgYrxC/eB6NWHseze7CFoDNqYZ5aMFTjf26EKl7M+isGLOvbVCegCIMyW+t
+	3A69ULl5RJEKzR4X9sNDLTXPuRv+OTpba/FtuOCB2KtLbOyPZOUfUY0lxhA5OuRepNdy+nztUIrOV
+	bvo2hdFZM5L7SlS4l0aw11P/W6PXZYVcZZN3/iu9tAJb8+5ZC7oNrYwB/zniS5+naARCquycEgKFQ
+	bt1BenmieEi2svjG417Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sA1H3-00000005884-1iHF;
-	Thu, 23 May 2024 05:45:57 +0000
+	id 1sA1c8-00000005Abx-01QF;
+	Thu, 23 May 2024 06:07:44 +0000
 Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sA1Gz-00000005874-00ed;
-	Thu, 23 May 2024 05:45:55 +0000
+	id 1sA1c3-00000005AaZ-17JM;
+	Thu, 23 May 2024 06:07:41 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1716443149;
-	bh=ixt8OajYR20IPA+H5M4ytRrCuvQEPCIDj6wZr5U9vZU=;
-	h=Date:Subject:From:To:Cc:References:In-Reply-To:From;
-	b=V6XZISe2rHRPDxCU3RcaRltfEjMsf3Um1F7s2Knx3jBoPnoWXYLTzBB1x2GEXFNlA
-	 zCUCvq/awcplJhGU9EHEmA06ZVtHfJe0QRL0SxHOCBDpNUeLpks5b6o7YrYR8Z+0JD
-	 jJVHUHbOum7lO29ITpT33LzBWBmhEmtjVsm1AeUnTM81zmzbDR00y3AVw7dE0/xQ7q
-	 wgIzSxGobBDfFQRLyrrVAK78jMvSAybnilANfAm2CwRhrPydRXI5h2h1YYYNI9aIDM
-	 pVoGtRcF0sS4YgQRyYQUvx/UVf6KA9mvN2TP05pxOmAzrMSCZx594KP6GwZlPhptpQ
-	 PQxZ6jnI5aOrg==
+	s=mail; t=1716444457;
+	bh=ous1oe/kRPBiEhDvboed42vXxlkNgqhP3ypAKRJeMQM=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=coShTuf2hYo7TRLfb7IfCR4Zujw4PpdPG/DQ3NeLkqe74gGerapIkIcVEgSnRTEdu
+	 iOlykt96+WfRFsm4hkM0sokeNs/qFailldaa+TvEqawT9IqysUGEFIomjMQ0oZ89W8
+	 abpgCL8RunDK5HZKJmbOM/zlXZMAaHlbb5d0T5BertoWrBqCyjfkyVoCfCQ+KNHYBi
+	 ZwR4PFk8JEyOe44RHUQtaYpgxxES0m4vpV6y45qmXnufBqR0eluXBefdpqyTFNgmu0
+	 r/ZWUUGsW01BBxSm2uF2EbAXIVUcnL0IjG1GlADRP0rMZvgtnTUbnHj4cy3ivwp3V1
+	 Z8oTMTKl/pE1g==
 Received: from [100.66.96.193] (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: vignesh)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 8AA8637820E5;
-	Thu, 23 May 2024 05:45:45 +0000 (UTC)
-Message-ID: <bb94b70d-cb6d-4ca6-8c80-abb6a12c2ef3@collabora.com>
-Date: Thu, 23 May 2024 11:15:42 +0530
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 119D137820E5;
+	Thu, 23 May 2024 06:07:33 +0000 (UTC)
+Message-ID: <9cd0667a-12ee-4d45-80e8-dc34259bf01d@collabora.com>
+Date: Thu, 23 May 2024 11:37:31 +0530
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 3/6] drm/ci: build virtual GPU driver as module
-From: Vignesh Raman <vignesh.raman@collabora.com>
+Subject: Re: [PATCH v2 1/6] drm/ci: uprev mesa version
+Content-Language: en-US
 To: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
 Cc: dri-devel@lists.freedesktop.org, daniels@collabora.com,
  helen.koike@collabora.com, airlied@gmail.com, daniel@ffwll.ch,
@@ -60,14 +60,13 @@ Cc: dri-devel@lists.freedesktop.org, daniels@collabora.com,
  intel-gfx@lists.freedesktop.org, virtualization@lists.linux-foundation.org,
  linux-kernel@vger.kernel.org
 References: <20240517092502.647420-1-vignesh.raman@collabora.com>
- <20240517092502.647420-4-vignesh.raman@collabora.com>
- <elftuzsd7lhz6y5ow6rb5uu5fb5b5jcprxtvxtxtojo774rnyr@swpeg4vkgtnc>
- <f3646d66-01f0-476c-8b7f-5df102790fcb@collabora.com>
-Content-Language: en-US
-In-Reply-To: <f3646d66-01f0-476c-8b7f-5df102790fcb@collabora.com>
+ <20240517092502.647420-2-vignesh.raman@collabora.com>
+ <2qzmfv3oc6feihwxu3tl37rg6w3qsj2vddu5olvqk6vhqr26cc@bxu5y6ijvtfa>
+From: Vignesh Raman <vignesh.raman@collabora.com>
+In-Reply-To: <2qzmfv3oc6feihwxu3tl37rg6w3qsj2vddu5olvqk6vhqr26cc@bxu5y6ijvtfa>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240522_224553_361740_41B74EE7 
-X-CRM114-Status: GOOD (  18.10  )
+X-CRM114-CacheID: sfid-20240522_230739_509549_34320281 
+X-CRM114-Status: GOOD (  16.23  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,98 +78,81 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGkgRG1pdHJ5LAoKT24gMjEvMDUvMjQgMTI6MzksIFZpZ25lc2ggUmFtYW4gd3JvdGU6Cj4gSGkg
-RG1pdHJ5LAo+IAo+IE9uIDIwLzA1LzI0IDE2OjMyLCBEbWl0cnkgQmFyeXNoa292IHdyb3RlOgo+
-PiBPbiBGcmksIE1heSAxNywgMjAyNCBhdCAwMjo1NDo1OVBNICswNTMwLCBWaWduZXNoIFJhbWFu
-IHdyb3RlOgo+Pj4gV2l0aCBsYXRlc3QgSUdULCB0aGUgdGVzdHMgdHJpZXMgdG8gbG9hZCB0aGUg
-bW9kdWxlIGFuZCBpdAo+Pj4gZmFpbHMuIFNvIGJ1aWxkIHRoZSB2aXJ0dWFsIEdQVSBkcml2ZXIg
-Zm9yIHZpcnRpbyBhcyBtb2R1bGUuCj4+Cj4+IFdoeT8gSWYgdGhlIHRlc3QgZmFpbHMgb24gbW9k
-dWxlIGxvYWRpbmcgKGlmIHRoZSBkcml2ZXIgaXMgYnVpbHQtaW4pCj4+IHRoZW4gaXQncyB0aGUg
-dGVzdCB0aGF0IG5lZWRzIHRvIGJlIGZpeGVkLCBub3QgdGhlIGtlcmVuZWwgY29uZmlnLgo+Pgo+
-PiBJdCdzIGZpbmUgYXMgYSB0ZW1wb3JhbCB3b3JrYXJvdW5kLCBidXQgcGxlYXNlIGluY2x1ZGUg
-YSBsaW5rIHRvIHRoZQo+PiBwYXRjaCBwb3N0ZWQgdG8gZml4IHRoZSBpc3N1ZS4KPiAKPiBJIHdp
-bGwgcmVjaGVjayB0aGlzIGlzc3VlIGFuZCBwb3N0IGEgbGluayB0byB0aGUgZml4LgoKClRoaXMg
-d2FzIHRoZSBpc3N1ZSBzZWVuIHdpdGggSUdUIGNvbW1pdCAKaHR0cHM6Ly9naXRsYWIuZnJlZWRl
-c2t0b3Aub3JnL2RybS9pZ3QtZ3B1LXRvb2xzLy0vY29tbWl0LzdkMTg0MTMxN2MxM2MxOWMyNmI2
-MzUyZjkyM2IyMDVkNDM3NDJjNTUgCgoKWyAgICA0LjQ1MDU3MV0gW2RybTp2aXJ0aW9fZ3B1X2lu
-aXRdICpFUlJPUiogZmFpbGVkIHRvIGZpbmQgdmlydCBxdWV1ZXMKWyAgICA0LjQ1MDk2Ml0gdmly
-dGlvX2dwdSB2aXJ0aW8wOiBwcm9iZSB3aXRoIGRyaXZlciB2aXJ0aW9fZ3B1IGZhaWxlZCAKd2l0
-aCBlcnJvciAtMgpbICAgIDUuNDcxNDE3XSBbZHJtOnZpcnRpb19ncHVfaW5pdF0gKkVSUk9SKiBm
-YWlsZWQgdG8gZmluZCB2aXJ0IHF1ZXVlcwpbICAgIDUuNDcxOTE2XSB2aXJ0aW9fZ3B1IHZpcnRp
-bzA6IHByb2JlIHdpdGggZHJpdmVyIHZpcnRpb19ncHUgZmFpbGVkIAp3aXRoIGVycm9yIC0yCgpo
-dHRwczovL2dpdGxhYi5mcmVlZGVza3RvcC5vcmcvdmlnbmVzaHJhbWFuL2xpbnV4Ly0vam9icy81
-OTAzNzEyMgoKV2l0aCB0aGUgcmVjZW50IHVwcmV2IG9mIElHVCB0byAKaHR0cHM6Ly9naXRsYWIu
-ZnJlZWRlc2t0b3Aub3JnL2RybS9pZ3QtZ3B1LXRvb2xzLy0vY29tbWl0LzBkZjdiOWI5N2Y5ZGEw
-ZTM2NGY1ZWUzMGZlMzMxMDA0YjhjODZiNTYsCnRoaXMgaXNzdWUgaXMgbm90IHNlZW4uIFNvIHdp
-bGwgZHJvcCB0aGlzIGNvbW1pdC4KClJlZ2FyZHMsClZpZ25lc2gKCj4gCj4gUmVnYXJkcywKPiBW
-aWduZXNoCj4gCj4+Cj4+Pgo+Pj4gU2lnbmVkLW9mZi1ieTogVmlnbmVzaCBSYW1hbiA8dmlnbmVz
-aC5yYW1hbkBjb2xsYWJvcmEuY29tPgo+Pj4gLS0tCj4+Pgo+Pj4gdjI6Cj4+PiDCoMKgIC0gTm8g
-Y2hhbmdlcy4KPj4+Cj4+PiAtLS0KPj4+IMKgIGRyaXZlcnMvZ3B1L2RybS9jaS9idWlsZC5zaMKg
-wqDCoMKgwqDCoCB8IDEgLQo+Pj4gwqAgZHJpdmVycy9ncHUvZHJtL2NpL2lndF9ydW5uZXIuc2jC
-oCB8IDYgKysrLS0tCj4+PiDCoCBkcml2ZXJzL2dwdS9kcm0vY2kvaW1hZ2UtdGFncy55bWwgfCA0
-ICsrLS0KPj4+IMKgIGRyaXZlcnMvZ3B1L2RybS9jaS90ZXN0LnltbMKgwqDCoMKgwqDCoCB8IDEg
-Kwo+Pj4gwqAgZHJpdmVycy9ncHUvZHJtL2NpL3g4Nl82NC5jb25maWfCoCB8IDIgKy0KPj4+IMKg
-IDUgZmlsZXMgY2hhbmdlZCwgNyBpbnNlcnRpb25zKCspLCA3IGRlbGV0aW9ucygtKQo+Pj4KPj4+
-IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vY2kvYnVpbGQuc2ggYi9kcml2ZXJzL2dwdS9k
-cm0vY2kvYnVpbGQuc2gKPj4+IGluZGV4IGE2Nzg3MWZkY2QzZi4uZTkzODA3NGFjOGU3IDEwMDY0
-NAo+Pj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL2NpL2J1aWxkLnNoCj4+PiArKysgYi9kcml2ZXJz
-L2dwdS9kcm0vY2kvYnVpbGQuc2gKPj4+IEBAIC0xNTcsNyArMTU3LDYgQEAgZmkKPj4+IMKgIG1r
-ZGlyIC1wIGFydGlmYWN0cy9pbnN0YWxsL2xpYgo+Pj4gwqAgbXYgaW5zdGFsbC8qIGFydGlmYWN0
-cy9pbnN0YWxsLy4KPj4+IC1ybSAtcmYgYXJ0aWZhY3RzL2luc3RhbGwvbW9kdWxlcwo+Pj4gwqAg
-bG4gLXMgY29tbW9uIGFydGlmYWN0cy9pbnN0YWxsL2NpLWNvbW1vbgo+Pj4gwqAgY3AgLmNvbmZp
-ZyBhcnRpZmFjdHMvJHtDSV9KT0JfTkFNRX1fY29uZmlnCj4+PiBkaWZmIC0tZ2l0IGEvZHJpdmVy
-cy9ncHUvZHJtL2NpL2lndF9ydW5uZXIuc2ggCj4+PiBiL2RyaXZlcnMvZ3B1L2RybS9jaS9pZ3Rf
-cnVubmVyLnNoCj4+PiBpbmRleCAyMDAyNjYxMmE5YmQuLjU1NTMyZjc5ZmJkYyAxMDA3NTUKPj4+
-IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9jaS9pZ3RfcnVubmVyLnNoCj4+PiArKysgYi9kcml2ZXJz
-L2dwdS9kcm0vY2kvaWd0X3J1bm5lci5zaAo+Pj4gQEAgLTMwLDEwICszMCwxMCBAQCBjYXNlICIk
-RFJJVkVSX05BTUUiIGluCj4+PiDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBleHBvcnQgSUdU
-X0ZPUkNFX0RSSVZFUj0icGFuZnJvc3QiCj4+PiDCoMKgwqDCoMKgwqDCoMKgwqAgZmkKPj4+IMKg
-wqDCoMKgwqDCoMKgwqDCoCA7Owo+Pj4gLcKgwqDCoCBhbWRncHUpCj4+PiArwqDCoMKgIGFtZGdw
-dXx2aXJ0aW9fZ3B1KQo+Pj4gwqDCoMKgwqDCoMKgwqDCoMKgICMgQ2Fubm90IHVzZSBIV0NJX0tF
-Uk5FTF9NT0RVTEVTIGFzIGF0IHRoYXQgcG9pbnQgd2UgZG9uJ3QgCj4+PiBoYXZlIHRoZSBtb2R1
-bGUgaW4gL2xpYgo+Pj4gLcKgwqDCoMKgwqDCoMKgIG12IC9pbnN0YWxsL21vZHVsZXMvbGliL21v
-ZHVsZXMvKiAvbGliL21vZHVsZXMvLgo+Pj4gLcKgwqDCoMKgwqDCoMKgIG1vZHByb2JlIGFtZGdw
-dQo+Pj4gK8KgwqDCoMKgwqDCoMKgIG12IC9pbnN0YWxsL21vZHVsZXMvbGliL21vZHVsZXMvKiAv
-bGliL21vZHVsZXMvLiB8fCB0cnVlCj4+PiArwqDCoMKgwqDCoMKgwqAgbW9kcHJvYmUgLS1maXJz
-dC10aW1lICREUklWRVJfTkFNRQo+Pj4gwqDCoMKgwqDCoMKgwqDCoMKgIDs7Cj4+PiDCoCBlc2Fj
-Cj4+PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL2NpL2ltYWdlLXRhZ3MueW1sIAo+Pj4g
-Yi9kcml2ZXJzL2dwdS9kcm0vY2kvaW1hZ2UtdGFncy55bWwKPj4+IGluZGV4IDYwMzIzZWJjNzMw
-NC4uMzI4ZjVjNTYwNzQyIDEwMDY0NAo+Pj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL2NpL2ltYWdl
-LXRhZ3MueW1sCj4+PiArKysgYi9kcml2ZXJzL2dwdS9kcm0vY2kvaW1hZ2UtdGFncy55bWwKPj4+
-IEBAIC00LDkgKzQsOSBAQCB2YXJpYWJsZXM6Cj4+PiDCoMKgwqDCoCBERUJJQU5fQkFTRV9UQUc6
-ICIke0NPTlRBSU5FUl9UQUd9Igo+Pj4gwqDCoMKgwqAgREVCSUFOX1g4Nl82NF9CVUlMRF9JTUFH
-RV9QQVRIOiAiZGViaWFuL3g4Nl82NF9idWlsZCIKPj4+IC3CoMKgIERFQklBTl9CVUlMRF9UQUc6
-ICIyMDIzLTEwLTA4LWNvbmZpZyIKPj4+ICvCoMKgIERFQklBTl9CVUlMRF9UQUc6ICIyMDI0LTA1
-LTA5LXZpcnRpbyIKPj4+IC3CoMKgIEtFUk5FTF9ST09URlNfVEFHOiAiMjAyMy0xMC0wNi1hbWQi
-Cj4+PiArwqDCoCBLRVJORUxfUk9PVEZTX1RBRzogIjIwMjQtMDUtMDktdmlydGlvIgo+Pj4gwqDC
-oMKgwqAgREVCSUFOX1g4Nl82NF9URVNUX0JBU0VfSU1BR0U6ICJkZWJpYW4veDg2XzY0X3Rlc3Qt
-YmFzZSIKPj4+IMKgwqDCoMKgIERFQklBTl9YODZfNjRfVEVTVF9JTUFHRV9HTF9QQVRIOiAiZGVi
-aWFuL3g4Nl82NF90ZXN0LWdsIgo+Pj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9jaS90
-ZXN0LnltbCBiL2RyaXZlcnMvZ3B1L2RybS9jaS90ZXN0LnltbAo+Pj4gaW5kZXggNjEyYzllZGUz
-NTA3Li44NjRhYzM4MDlkODQgMTAwNjQ0Cj4+PiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vY2kvdGVz
-dC55bWwKPj4+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9jaS90ZXN0LnltbAo+Pj4gQEAgLTM1MCw2
-ICszNTAsNyBAQCB2aXJ0aW9fZ3B1Om5vbmU6Cj4+PiDCoMKgwqAgc2NyaXB0Ogo+Pj4gwqDCoMKg
-wqDCoCAtIGxuIC1zZiAkQ0lfUFJPSkVDVF9ESVIvaW5zdGFsbCAvaW5zdGFsbAo+Pj4gwqDCoMKg
-wqDCoCAtIG12IGluc3RhbGwvYnpJbWFnZSAvbGF2YS1maWxlcy9iekltYWdlCj4+PiArwqDCoMKg
-IC0gbWtkaXIgLXAgL2xpYi9tb2R1bGVzCj4+Cj4+IElzIGl0IG5lY2Vzc2FyeSB0byBjcmVhdGUg
-aXQgbWFudWFsbHkgaGVyZT8KPj4KPj4+IMKgwqDCoMKgwqAgLSBta2RpciAtcCAkQ0lfUFJPSkVD
-VF9ESVIvcmVzdWx0cwo+Pj4gwqDCoMKgwqDCoCAtIGxuIC1zZiAkQ0lfUFJPSkVDVF9ESVIvcmVz
-dWx0cyAvcmVzdWx0cwo+Pj4gwqDCoMKgwqDCoCAtIGluc3RhbGwvY3Jvc3ZtLXJ1bm5lci5zaCBp
-bnN0YWxsL2lndF9ydW5uZXIuc2gKPj4+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vY2kv
-eDg2XzY0LmNvbmZpZyAKPj4+IGIvZHJpdmVycy9ncHUvZHJtL2NpL3g4Nl82NC5jb25maWcKPj4+
-IGluZGV4IDFjYmQ0OWE1YjIzYS4uNzg0NzlmMDYzZThlIDEwMDY0NAo+Pj4gLS0tIGEvZHJpdmVy
-cy9ncHUvZHJtL2NpL3g4Nl82NC5jb25maWcKPj4+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9jaS94
-ODZfNjQuY29uZmlnCj4+PiBAQCAtOTEsNyArOTEsNyBAQCBDT05GSUdfS1ZNPXkKPj4+IMKgIENP
-TkZJR19LVk1fR1VFU1Q9eQo+Pj4gwqAgQ09ORklHX1ZJUlRfRFJJVkVSUz15Cj4+PiDCoCBDT05G
-SUdfVklSVElPX0ZTPXkKPj4+IC1DT05GSUdfRFJNX1ZJUlRJT19HUFU9eQo+Pj4gK0NPTkZJR19E
-Uk1fVklSVElPX0dQVT1tCj4+PiDCoCBDT05GSUdfU0VSSUFMXzgyNTBfQ09OU09MRT15Cj4+PiDC
-oCBDT05GSUdfVklSVElPX05FVD15Cj4+PiDCoCBDT05GSUdfVklSVElPX0NPTlNPTEU9eQo+Pj4g
-LS0gCj4+PiAyLjQwLjEKPj4+Cj4+CgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBA
-bGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xp
-c3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+Hi Dmitry,
+
+On 20/05/24 16:13, Dmitry Baryshkov wrote:
+> On Fri, May 17, 2024 at 02:54:57PM +0530, Vignesh Raman wrote:
+>> zlib.net is not allowing tarball download anymore and results
+>> in below error in kernel+rootfs_arm32 container build,
+>> urllib.error.HTTPError: HTTP Error 403: Forbidden
+>> urllib.error.HTTPError: HTTP Error 415: Unsupported Media Type
+>>
+>> Uprev mesa to latest version which includes a fix for this issue.
+>> https://gitlab.freedesktop.org/mesa/mesa/-/commit/908f444e
+>>
+>> Use id_tokens for JWT authentication. Since s3 bucket is migrated to
+>> mesa-rootfs, update the variables accordingly. Also copy helper scripts
+>> to install, so that the ci jobs can use these scripts for logging.
+>>
+>> Signed-off-by: Vignesh Raman <vignesh.raman@collabora.com>
+>> ---
+>>
+>> v2:
+>>    - Uprev to recent version and use id_tokens for JWT authentication
+>>
+>> ---
+>>   drivers/gpu/drm/ci/build-igt.sh   |  2 +-
+>>   drivers/gpu/drm/ci/build.sh       |  6 +++--
+>>   drivers/gpu/drm/ci/container.yml  | 12 +++------
+>>   drivers/gpu/drm/ci/gitlab-ci.yml  | 44 +++++++++++++++++++++----------
+>>   drivers/gpu/drm/ci/image-tags.yml |  2 +-
+>>   drivers/gpu/drm/ci/lava-submit.sh |  4 +--
+>>   drivers/gpu/drm/ci/test.yml       |  2 ++
+>>   7 files changed, 44 insertions(+), 28 deletions(-)
+>>
+> 
+> [skipped]
+> 
+>> diff --git a/drivers/gpu/drm/ci/test.yml b/drivers/gpu/drm/ci/test.yml
+>> index 8bc63912fddb..612c9ede3507 100644
+>> --- a/drivers/gpu/drm/ci/test.yml
+>> +++ b/drivers/gpu/drm/ci/test.yml
+>> @@ -150,6 +150,8 @@ msm:sdm845:
+>>       BM_KERNEL: https://${PIPELINE_ARTIFACTS_BASE}/arm64/cheza-kernel
+>>       GPU_VERSION: sdm845
+>>       RUNNER_TAG: google-freedreno-cheza
+>> +    DEVICE_TYPE: sdm845-cheza-r3
+>> +    FARM: google
+> 
+> I see that this is the only user of the FARM: tag. Is it correct?
+
+No, we need to add FARM variable for other jobs as well.
+
+> Also we miss DEVICE_TYPE for several other boards. Should we be adding
+> them?
+
+Yes, device type needs to be added for msm:apq8016, msm:apq8096, virtio_gpu.
+
+I will add this. Thanks.
+
+Regards,
+Vignesh
+
+> 
+>>     script:
+>>       - ./install/bare-metal/cros-servo.sh
+>>   
+>> -- 
+>> 2.40.1
+>>
+> 
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
