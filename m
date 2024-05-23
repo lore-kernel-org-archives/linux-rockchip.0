@@ -4,89 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 932C1C25B75
-	for <linux-rockchip@archiver.kernel.org>; Thu, 23 May 2024 09:41:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3235BC25B75
+	for <linux-rockchip@archiver.kernel.org>; Thu, 23 May 2024 10:00:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=o717JS1JLnkO5dVvBzMdwuSk5N6aEDh3YgWCq2XXBwE=; b=FMv/z+xhjBukKi
-	OdoU+eVk6Jo66BB+lIzisEBDd2Ji4VWoR4g8g0euogFKyJAJQPxEB0JBASWLUmnoR69g8jtsteUvF
-	ttj9yAtH8dE1jQ+Gh56xQfUVtm/ZO6EGRE2CDD3OiOULQDowDWXp8tyhXK6xaKz+uAfjl6FzZHbap
-	gKpsrZQ+xqEvrehmHhRjG1zDWeheAXAdQmY6y9XJURBCnGR4Zldq5Ogf7T1dStxm+HE2wUzBhfiQa
-	rtEuycYShUQpBPt1xbqpxsWrG1lsfaab7yejjcmEmXJvTbdAcCAlXA7bwb3xUt4vuevAMsZ2UcshW
-	TnLeor/z5VinRmCQWswg==;
+	List-Owner; bh=wlCMLp/g/TqoWvjaPdSRRjeJd+j6K8f96P6Tu1Jr4UU=; b=JMlvf5otKeRSxO
+	ncV4o9AnccTMi0TZRGJAtafzU3dyMgn++LZeL9ruFvSanmgu6aF+pdRV/3Z/LaZnH11l/Zw9pJ1Rr
+	o/tdlHTvD95uXhRP68Y0nUl01E5iO4HX6sKLe5uEAcKrcILzABbWCvtXRmF97ZdX/lLx/0Hw35Dzy
+	Js1iPZnBj41CTKSsPZO5+X8vTCQ/qRvo5FRqXAkB98c3xlgyJ0cUuTkPrgGuJ4T1RUivYBC20ojZV
+	pIfvrz9A6NhkVgA5xJkevyU6UpircBNJSvfO0UsSjJoo4alGn0aN6bWGCVjEKrPRvFnRU7avANcfS
+	pMr3acjh7aY/wvqOMzKQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sA4wp-00000005jYN-3HYj;
-	Thu, 23 May 2024 09:41:19 +0000
-Received: from mail-lf1-x12f.google.com ([2a00:1450:4864:20::12f])
+	id 1sA5F5-00000005mm2-2t8h;
+	Thu, 23 May 2024 10:00:11 +0000
+Received: from mail-yb1-xb2a.google.com ([2607:f8b0:4864:20::b2a])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sA4wj-00000005jW9-0InW
+	id 1sA5F0-00000005mf7-2TV4
 	for linux-rockchip@lists.infradead.org;
-	Thu, 23 May 2024 09:41:17 +0000
-Received: by mail-lf1-x12f.google.com with SMTP id 2adb3069b0e04-52192578b95so8679499e87.2
-        for <linux-rockchip@lists.infradead.org>; Thu, 23 May 2024 02:41:11 -0700 (PDT)
+	Thu, 23 May 2024 10:00:09 +0000
+Received: by mail-yb1-xb2a.google.com with SMTP id 3f1490d57ef6-de462979e00so2141341276.3
+        for <linux-rockchip@lists.infradead.org>; Thu, 23 May 2024 02:59:48 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1716457270; x=1717062070; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=ymOIxLRXX6/t992boJGrCdN0THAC8qBuamXJNsylAfs=;
-        b=T1qki1J4cEnk/9NUted2Hr2PnKvW4UOy0ftcSzfzxhfqSQ9zbsnuOJx5Xk7gB37W+e
-         6l12IYKlU+BhacEp+9YwHw1E8jf5mTdzukkgbnK/0P80Ay/4eclrUowUj85SsTaXoCKY
-         I4AIJaAat5SNOmHrlK8En3iD3+n+P/5H3QsV1tMllmrAMHSe8iyc+38E3pZzli/7mwSd
-         bkBIZ1+WajQ2pMYs+5srgDsYwRTj4xTNqNZ3X1H66i+2befSlCxeUi5Wtl63YH8JEWU5
-         p/FstgbVx/m0W+ubsvkTZh+FwgEQYNukFCi7yGlclfbOXbvfG8izsyFxMHGbUo67XcKL
-         j7pw==
+        d=linaro.org; s=google; t=1716458387; x=1717063187; darn=lists.infradead.org;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=4eLg5W63v6nyWYGdaPlQGL+64DpELLePyMxWT5qrNUU=;
+        b=LHlbMoN2BMkR1zqM2oMj9WF2LORnlpSE6g9qflAr3L27IKc8eKpfyOAN5KdOvlrIY/
+         7oTScg6zIU/QH8E/MJCH/vEGq9S8UUTPMSpcJV9qfy8tsLUczohxNsYGYqgwOVtzVy01
+         Xfbumzsj57L26tMP8LVodh172Rosv5FoihT79+n9s77EAUKyJ237v+2bF11eXYQdA8kW
+         08TmR+voAYDHl4KGtSyAAcVhaZmTxNEkTlma97wAjCAfw5xcwDXtdlQcnyT5b4h/oLp4
+         hm+cyg4pvPXj1YK6ZHaLKt/3cf3Jv0xr6J+35EYpyASVBVbZuKJuReaw5nO18Xc7+gyx
+         IOPA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1716457270; x=1717062070;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=ymOIxLRXX6/t992boJGrCdN0THAC8qBuamXJNsylAfs=;
-        b=OSQkOWHvA8V5mgldQnmdmaPPCHxqw5iRVkSGY6tVNGRe6BTKTg6stcS1BY3kA6u+tf
-         Ekq8gpA+0uz2FZhTwncgC/5nefcbO8lJlrMvwDg+kRiohNGlnot9IumqXNCPANvqrbLt
-         zlwvhJg+LSmih8H2Y7HJbBPrn07X+YunVD8dIdy0t+Fs2Bn6OVATzr6Ye2JktYedqlay
-         HbltIBavvhehYDIffGCr6dMFWVk0DFxKN1KI4muGo1kIFC37Ckr0aozodMJJHAp4evLy
-         epmShJ1vWZa/9dcRu2fj0BrXjC4/EWVktVGnkSIwZr41fqWtLBOSh5BmvnMcEKNg2rdc
-         6udg==
-X-Forwarded-Encrypted: i=1; AJvYcCXIVMpBLUjHFJqr3FUfcDwo6cUt/fpQRvYhzcNuCRteuVm2Fmvj38K+IYscr2hTU2g/5J4KrFue/vkEQJ4N4MOzlMdHODwDk2lak7UgbPk/uf7j
-X-Gm-Message-State: AOJu0YwtnaN3poRuLyiOzqJyY4BnYxoeDpbAkX6tudZFkI+4mpm7x4Zz
-	kfR7nryPwBGKOvyqpRFVjGMSs6brcRO5QbQC83e+QBq2nFWx9Zml9bSIHyIIBTw=
-X-Google-Smtp-Source: AGHT+IGDBnS6Yxc91Ez/LJRvHEhoF+0Je5SmLoZcaOOlSUX1bIaRGc7t5bjpMnVmIRgP+hN+dWcqmQ==
-X-Received: by 2002:a05:6512:611:b0:51e:f1a6:ac39 with SMTP id 2adb3069b0e04-526be6ea79amr2624505e87.12.1716457269807;
-        Thu, 23 May 2024 02:41:09 -0700 (PDT)
-Received: from eriador.lumag.spb.ru (dzdbxzyyyyyyyyyyyykxt-3.rev.dnainternet.fi. [2001:14ba:a0c3:3a00::227])
-        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-52394a319f1sm2983965e87.64.2024.05.23.02.41.09
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 23 May 2024 02:41:09 -0700 (PDT)
-Date: Thu, 23 May 2024 12:41:07 +0300
-From: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
-To: Maxime Ripard <mripard@kernel.org>
-Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
-	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, 
-	Daniel Vetter <daniel@ffwll.ch>, Jonathan Corbet <corbet@lwn.net>, 
-	Sandy Huang <hjc@rock-chips.com>, Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, 
-	Chen-Yu Tsai <wens@csie.org>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
-	Samuel Holland <samuel@sholland.org>, Andy Yan <andy.yan@rock-chips.com>, 
-	Hans Verkuil <hverkuil@xs4all.nl>, Sebastian Wick <sebastian.wick@redhat.com>, 
-	Ville =?utf-8?B?U3lyasOkbMOk?= <ville.syrjala@linux.intel.com>, dri-devel@lists.freedesktop.org, 
-	linux-arm-kernel@lists.infradead.org, linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-sunxi@lists.linux.dev, 
-	Dave Stevenson <dave.stevenson@raspberrypi.com>
-Subject: Re: [PATCH v14 12/28] drm/tests: Add TDMS character rate connector
- state tests
-Message-ID: <ghotwzdstmtpnovbmt2fgvxxkcno67hfwydzjzbyfn6dkt247c@52ycrfinmimo>
-References: <20240521-kms-hdmi-connector-state-v14-0-51950db4fedb@kernel.org>
- <20240521-kms-hdmi-connector-state-v14-12-51950db4fedb@kernel.org>
+        d=1e100.net; s=20230601; t=1716458387; x=1717063187;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=4eLg5W63v6nyWYGdaPlQGL+64DpELLePyMxWT5qrNUU=;
+        b=F9YQsYapFS/xOVhZYnXU/NvZt9pX7c7O7xtvIyAhwyPT/N1e3gBjzIs9ff/P9cPQPk
+         pwsJhwG0oWZft+ogrGTAkN5wN8ewm4iMe6vWXohK7kt+zecGY5ZLFmsbcGajnQs9ePlQ
+         CEKakz06xOHXBl6LKtieJpuvVMf+Kz1IQ94jOmdiVxDbrkTZphSJuSt6Ec9phFjbFfNd
+         m/urSoozpcF8aavP4CoHVQfSpKcddejBIhnvHtm7RkBoUxrIzxmNnHL4HiOrjuBX+AtT
+         cCQHeoEsz0TrfpbAnhU1qyT4J+0O8NIPd0tkOaLqE/YNMZrxqyi3DRO6GrK6FdkMugPz
+         a6rw==
+X-Forwarded-Encrypted: i=1; AJvYcCULK2tfuv/NJrPGGG3S54c+iR0vHN+ka/9HsN8AD26mIhWyp0z3MsC8PJ5kegdF5JnmQTeqOjeq4PUBNgCBvsoqmoDW6z1thXnRaCnh2+Sq7XAz
+X-Gm-Message-State: AOJu0Yw22NV/BLDb3VTiIwCLMjpoqkYS2luQtwJJKZNavAM8+7rClOgJ
+	LVy8xueBrFsdT46t35TiLi7CPi9IGUbzrv/BAU/pgEleyLjYHOtWL6JquXu0m/WLORw0id0ZwJt
+	yRfpyj1gS4rcbLqH5ur/SHI8WxSQFtJUf8T8/wg==
+X-Google-Smtp-Source: AGHT+IEH2bet0vxbyQkGUI55R017CbgvtHVbrVup5m0zjkPeCkh3N7ZUjMndzd5BhJJAs4TMZp+oQ52G6r3Sss4urHM=
+X-Received: by 2002:a25:b181:0:b0:dee:607c:3528 with SMTP id
+ 3f1490d57ef6-df4e0a9cfa9mr4821493276.3.1716458387642; Thu, 23 May 2024
+ 02:59:47 -0700 (PDT)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20240521-kms-hdmi-connector-state-v14-12-51950db4fedb@kernel.org>
+References: <20240517092502.647420-1-vignesh.raman@collabora.com>
+ <20240517092502.647420-2-vignesh.raman@collabora.com> <2qzmfv3oc6feihwxu3tl37rg6w3qsj2vddu5olvqk6vhqr26cc@bxu5y6ijvtfa>
+ <9cd0667a-12ee-4d45-80e8-dc34259bf01d@collabora.com>
+In-Reply-To: <9cd0667a-12ee-4d45-80e8-dc34259bf01d@collabora.com>
+From: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
+Date: Thu, 23 May 2024 12:59:36 +0300
+Message-ID: <CAA8EJprVVkQO7aPkehwL2zhYkGRkm4Foc13ErfuY6ikBA_4nLQ@mail.gmail.com>
+Subject: Re: [PATCH v2 1/6] drm/ci: uprev mesa version
+To: Vignesh Raman <vignesh.raman@collabora.com>
+Cc: dri-devel@lists.freedesktop.org, daniels@collabora.com, 
+	helen.koike@collabora.com, airlied@gmail.com, daniel@ffwll.ch, 
+	robdclark@gmail.com, david.heidelberg@collabora.com, 
+	guilherme.gallo@collabora.com, sergi.blanch.torne@collabora.com, 
+	mcanal@igalia.com, linux-mediatek@lists.infradead.org, 
+	linux-amlogic@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+	amd-gfx@lists.freedesktop.org, linux-arm-msm@vger.kernel.org, 
+	intel-gfx@lists.freedesktop.org, virtualization@lists.linux-foundation.org, 
+	linux-kernel@vger.kernel.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240523_024113_139091_A23D40B3 
-X-CRM114-Status: GOOD (  11.81  )
+X-CRM114-CacheID: sfid-20240523_030006_692427_257CBE94 
+X-CRM114-Status: GOOD (  23.94  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,20 +98,86 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, May 21, 2024 at 12:13:45PM +0200, Maxime Ripard wrote:
-> The previous patch stores in the connector state the expected TMDS
-> character rate matching the configuration of the HDMI connector. Let's
-> add a few tests to make sure it works as expected.
-> 
-> Reviewed-by: Dave Stevenson <dave.stevenson@raspberrypi.com>
-> Signed-off-by: Maxime Ripard <mripard@kernel.org>
-> ---
->  drivers/gpu/drm/tests/drm_hdmi_state_helper_test.c | 166 ++++++++++++++++
->  drivers/gpu/drm/tests/drm_kunit_edid.h             | 216 +++++++++++++++++++++
->  2 files changed, 382 insertions(+)
+On Thu, 23 May 2024 at 09:07, Vignesh Raman <vignesh.raman@collabora.com> wrote:
+>
+> Hi Dmitry,
+>
+> On 20/05/24 16:13, Dmitry Baryshkov wrote:
+> > On Fri, May 17, 2024 at 02:54:57PM +0530, Vignesh Raman wrote:
+> >> zlib.net is not allowing tarball download anymore and results
+> >> in below error in kernel+rootfs_arm32 container build,
+> >> urllib.error.HTTPError: HTTP Error 403: Forbidden
+> >> urllib.error.HTTPError: HTTP Error 415: Unsupported Media Type
+> >>
+> >> Uprev mesa to latest version which includes a fix for this issue.
+> >> https://gitlab.freedesktop.org/mesa/mesa/-/commit/908f444e
+> >>
+> >> Use id_tokens for JWT authentication. Since s3 bucket is migrated to
+> >> mesa-rootfs, update the variables accordingly. Also copy helper scripts
+> >> to install, so that the ci jobs can use these scripts for logging.
+> >>
+> >> Signed-off-by: Vignesh Raman <vignesh.raman@collabora.com>
+> >> ---
+> >>
+> >> v2:
+> >>    - Uprev to recent version and use id_tokens for JWT authentication
+> >>
+> >> ---
+> >>   drivers/gpu/drm/ci/build-igt.sh   |  2 +-
+> >>   drivers/gpu/drm/ci/build.sh       |  6 +++--
+> >>   drivers/gpu/drm/ci/container.yml  | 12 +++------
+> >>   drivers/gpu/drm/ci/gitlab-ci.yml  | 44 +++++++++++++++++++++----------
+> >>   drivers/gpu/drm/ci/image-tags.yml |  2 +-
+> >>   drivers/gpu/drm/ci/lava-submit.sh |  4 +--
+> >>   drivers/gpu/drm/ci/test.yml       |  2 ++
+> >>   7 files changed, 44 insertions(+), 28 deletions(-)
+> >>
+> >
+> > [skipped]
+> >
+> >> diff --git a/drivers/gpu/drm/ci/test.yml b/drivers/gpu/drm/ci/test.yml
+> >> index 8bc63912fddb..612c9ede3507 100644
+> >> --- a/drivers/gpu/drm/ci/test.yml
+> >> +++ b/drivers/gpu/drm/ci/test.yml
+> >> @@ -150,6 +150,8 @@ msm:sdm845:
+> >>       BM_KERNEL: https://${PIPELINE_ARTIFACTS_BASE}/arm64/cheza-kernel
+> >>       GPU_VERSION: sdm845
+> >>       RUNNER_TAG: google-freedreno-cheza
+> >> +    DEVICE_TYPE: sdm845-cheza-r3
+> >> +    FARM: google
+> >
+> > I see that this is the only user of the FARM: tag. Is it correct?
+>
+> No, we need to add FARM variable for other jobs as well.
+
+Why? Even if we have to, we don't have them now and the change doesn't
+seem to be related to the uprev'ing of mesa. So this probably should
+go to a separate commit.
+
+>
+> > Also we miss DEVICE_TYPE for several other boards. Should we be adding
+> > them?
+>
+> Yes, device type needs to be added for msm:apq8016, msm:apq8096, virtio_gpu.
+>
+> I will add this. Thanks.
+
+I'd guess, separate commit too.
+
+>
+> Regards,
+> Vignesh
+>
+> >
+> >>     script:
+> >>       - ./install/bare-metal/cros-servo.sh
+> >>
+> >> --
+> >> 2.40.1
+> >>
+> >
 
 
-Reviewed-by: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
 
 -- 
 With best wishes
