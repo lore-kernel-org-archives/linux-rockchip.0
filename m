@@ -4,65 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 74493C25B75
-	for <linux-rockchip@archiver.kernel.org>; Thu, 23 May 2024 10:24:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0F4B3C25B75
+	for <linux-rockchip@archiver.kernel.org>; Thu, 23 May 2024 10:25:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=2Ur+30iL2NSRO8yEVnyzz3J55KF5sVwIhsTgzDQnpl8=; b=E7g+y3YfmDusIS
-	tACP1G8ii1C3ty4HSOZLUDa37p/38s+lKEkx6bYDKMC2yZ9ucVJt0vPiaGnh3503BT12JZf1qrnCh
-	jBV5am11C9FI312a2kOxVt6hO/GXzda7KeTioOXelU0HnquL9Rs7ZebgBZHi5GHXmi/dedSb3B1Fs
-	CjeqI3AUrg2Ik2lzvHFuzZqE8ABl25k9TVjRhpBxHyW8mUenYFY9303Td+3He634c1vKjPPxyV9qd
-	5YtWRxmuabVHiqOW85PetykhUy2d12B16dOkoyG5v4rNV3Rgj04/9BF42/RUhbHKHwi27l1Qc2OFz
-	GLSBhmYxB9C5mCDmDnYw==;
+	List-Owner; bh=ElOepXB/wcYPsRhXOyMuOHwkYfPMjrHdw7Oglw8owaU=; b=2IeQh9yrzBFcn1
+	M8g18ySnjkp39ogk6S8Opy8wgb/MuErcE6mlEFeV9FBLwvg/L0cnv1wX2G0mfe0dKwpIBbYTLFn9S
+	LDYdYYkTmhFWwQXqE3EMUQJlmi08gEmn9kHt0Q7IRSNUJa3ua+49KbukrdIKJPhiXCU5cUr1QnOWa
+	fVyYEsvIhtoZLKs5EmmdXv8Zv1omp6ZRrNdmAkV5TScD2Urn8YDElTDbFB2xw+vK9Ezkkp03TCKmO
+	PcYkBFCrNWm5O2r2u5QtEpbJbdwFa8d9ftnIj20DV49DpuV47HB9I9CzwOztl5uxp3ki9UVHgVNrv
+	HXuPZT9fYeWNBvt52+2g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sA5cq-00000005sEl-3tZi;
-	Thu, 23 May 2024 10:24:44 +0000
-Received: from mail-lf1-x12f.google.com ([2a00:1450:4864:20::12f])
+	id 1sA5dl-00000005sUf-1EqW;
+	Thu, 23 May 2024 10:25:41 +0000
+Received: from mail-lf1-x12b.google.com ([2a00:1450:4864:20::12b])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sA5co-00000005sD1-2LeH
+	id 1sA5df-00000005sTE-25QX
 	for linux-rockchip@lists.infradead.org;
-	Thu, 23 May 2024 10:24:43 +0000
-Received: by mail-lf1-x12f.google.com with SMTP id 2adb3069b0e04-523b20e2615so8747280e87.1
-        for <linux-rockchip@lists.infradead.org>; Thu, 23 May 2024 03:24:42 -0700 (PDT)
+	Thu, 23 May 2024 10:25:40 +0000
+Received: by mail-lf1-x12b.google.com with SMTP id 2adb3069b0e04-5210684cee6so8059629e87.0
+        for <linux-rockchip@lists.infradead.org>; Thu, 23 May 2024 03:25:35 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1716459881; x=1717064681; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1716459934; x=1717064734; darn=lists.infradead.org;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=YTs4KhPH145/AJRmP8+6lMsBop1Ixgucc2xC1shylpk=;
-        b=yNZ3/MMgNxw27tEkb/3cwHvWprlFXi70+rOYVhtYbXBqwMyyn9vTyY5OroSASuqKsE
-         6mfhJfzbhxs1fXx7Lsi+J4GQso0jtN/Vp2k7wD1o2aNTHNJp/B6EcEQn8sV6HjR1rGoY
-         cHFmgtU5++525Y/o0tkPVYrUwGJMdp6l5Lf2E3dqT/Be/1udl1SthHehEOI5sXiUAN4Q
-         nTcYmhCPGauFxg2y+zlik3UOs6XOdfsNGEK9Xsq1c/x/nGcQbU0EQRkzdaKaNtXJnuUm
-         LtYOUooZBQ1aZxeQ3puMlnDuaR2lQ6TEkpFmqa/wwelpg62f9BCAD8RgU9HIC7wG+UWs
-         AIPg==
+        bh=h0Y/Ql63/IxwaJL+O/h+E6/ion+Rk9v6vnf8eimobm8=;
+        b=uvEd7RD9e4X3xilnJliRpHFLHy9v2k/jZA+0yxlewKrFIhxLbfsPI2g9YPa57duZM5
+         EmWF5iqPUkBG4ZBR6CWcFdtiqXE3cHFvVHzc+SV++o4D4PmpeitWSCMcFuywR7sGulrR
+         oQnT+um9sJn/rH5TccfcNVekMQmntEyyhOATcPnTDklcPnNgLonL6lXGLHgXEmRfrP21
+         W/fFmawI6EtkmCmOTpz6co1BgZNzyb3FqztQiZpqzwog22aWe4pcqlGDN5tx63+g3K5r
+         LPLMK7MlPJYAox7si+ULZ4QlkavrxZrz1g0/M24L5lQnB5iaEuG1BhSV743u2WKkVN2p
+         ziDQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1716459881; x=1717064681;
+        d=1e100.net; s=20230601; t=1716459934; x=1717064734;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=YTs4KhPH145/AJRmP8+6lMsBop1Ixgucc2xC1shylpk=;
-        b=xK8VJSqjtS2exUuppcekqKD+jZDA/YQKE8Qkw8ZMwrtD3IFhpCwAhA0nKr7Mluhl/v
-         OrZYiqtav+BnCbl6SCIEcfZ4h/3Gagdlbp6RRX546YVhJRAfXcwg495wUYJaoXsnxqMo
-         k2nPLPKzVf3eL5DinlFGrL6U0kaXpI4t32Mig9FNnBhfQn4U24PNJ2z+jgBLiFrM2j74
-         g70C94KhCwyAnlfk2mO3GOzcEeI1XPUm5xzVxfxW1raHfG2rHXdmGyQha2lVdcgP9vS0
-         wlomJRpgieRMVrZjLpKqLzKH5IdMvMWp7AO+uT6YMQOGykk1r02qJvbWixpqtvjnAp3k
-         b+bA==
-X-Forwarded-Encrypted: i=1; AJvYcCXR6C8sj88IJMBvLwUMH0tesQTiL8LUescBytcNgCG6AVmpkzHj5XERMcOUL/7IH0UtEmq8V/2h5Of9e22O9svf0/XrQwz0MxQSmykKfq/Eq3jW
-X-Gm-Message-State: AOJu0Yx2kUBTvg7a8wQ3wmHsrL5N/PcRoK5+TE4fIyCgLGa6O0boPceJ
-	gBIGY+SFssQ5tWUqAjvIFhOSqvqOGqtlFSjZrQfvty6+PcXgxHlx/sZRM7treLA=
-X-Google-Smtp-Source: AGHT+IFh8tvpeC+TwvjC1fPxZfM+UwuyED0DKgyl3oWL27XorJPrG1npFHJwvig7HdSlbfPLtqhR9Q==
-X-Received: by 2002:a05:6512:3141:b0:521:9207:189d with SMTP id 2adb3069b0e04-526c121522amr2191728e87.65.1716459880614;
-        Thu, 23 May 2024 03:24:40 -0700 (PDT)
+        bh=h0Y/Ql63/IxwaJL+O/h+E6/ion+Rk9v6vnf8eimobm8=;
+        b=wQtQld1XSotUekl5qOxEQX16jAdLsW9me3YeA+aQE5VINH5nLDW3iGrfsZU2GvvSa8
+         YW+U9hOQDl1GQDqAyTjdD+TPDP1p01ZnGMsztG7/3Qyq9Cx8yL7lW5+WEOB0vvo5v+BV
+         IGUEsRkaGWFACYKdCsot7L6GtmHVhY6EfR60W5lpg+D4VMXidn3vROPjvTf5pCUw4gHF
+         LwGdVMMEI5tm1vrElka97vR4nd1OcomGy3WI0Po6NDdN1bQ2BOn1m3MwbPX0DNs3rJvj
+         DDFvETh5w/6yV+XItdxmFOsAtFsLgS7v6i2/sEzrTBZ0R188N9GQpzPGc6BzaZGdV8L0
+         oayg==
+X-Forwarded-Encrypted: i=1; AJvYcCWAfNONGgne7IxznumgN7IjCkawbnzkTN5VeHLef0Fk+oP7uZu5t5+g/UrPIiLLvRLZvxoo/StIU8A5WJYUqpV9RCdcgM+6BrcoNZ8ibdlqfCzh
+X-Gm-Message-State: AOJu0Yw6Lfy9P/d6FsxF/54NO5XWWx+KPlUF5SMODoeNQ4bgTuOkXJtR
+	YWaooJ1YR4bQm+rJTvWLe4pplg8w5DW+8lFvo3J+UYx/4WS4U2oMnfmLHQcdvOQ=
+X-Google-Smtp-Source: AGHT+IG3S9HxgA+BRyKc+tEiIJocVHkYeAAUZVOvMSsA2E8b2S+QZ7Z9TP78uV3Je9C7031yrjAtlg==
+X-Received: by 2002:a19:5208:0:b0:519:2a88:add6 with SMTP id 2adb3069b0e04-526c0782f50mr2886400e87.55.1716459933553;
+        Thu, 23 May 2024 03:25:33 -0700 (PDT)
 Received: from eriador.lumag.spb.ru (dzdbxzyyyyyyyyyyyykxt-3.rev.dnainternet.fi. [2001:14ba:a0c3:3a00::227])
-        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-521f35ad526sm5387014e87.54.2024.05.23.03.24.39
+        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-521f35ba739sm5323969e87.101.2024.05.23.03.25.32
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 23 May 2024 03:24:39 -0700 (PDT)
-Date: Thu, 23 May 2024 13:24:38 +0300
+        Thu, 23 May 2024 03:25:32 -0700 (PDT)
+Date: Thu, 23 May 2024 13:25:31 +0300
 From: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
 To: Maxime Ripard <mripard@kernel.org>
 Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
@@ -76,17 +76,16 @@ Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
 	linux-arm-kernel@lists.infradead.org, linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org, 
 	linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-sunxi@lists.linux.dev, 
 	Dave Stevenson <dave.stevenson@raspberrypi.com>
-Subject: Re: [PATCH v14 19/28] drm/connector: hdmi: Add RGB Quantization
- Range to the connector state
-Message-ID: <evhxta7gk6mogntoafibz7kxcgziikrhitrjg45t3p3lhify2k@uwwdo6i4bqbx>
+Subject: Re: [PATCH v14 20/28] drm/tests: Add RGB Quantization tests
+Message-ID: <pruqf2ou26m7i7ez2p6rgjdfbzkngqyuwfv3bnx5d3jzxce3af@sa3d467uka3d>
 References: <20240521-kms-hdmi-connector-state-v14-0-51950db4fedb@kernel.org>
- <20240521-kms-hdmi-connector-state-v14-19-51950db4fedb@kernel.org>
+ <20240521-kms-hdmi-connector-state-v14-20-51950db4fedb@kernel.org>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20240521-kms-hdmi-connector-state-v14-19-51950db4fedb@kernel.org>
+In-Reply-To: <20240521-kms-hdmi-connector-state-v14-20-51950db4fedb@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240523_032442_688456_A3132A83 
-X-CRM114-Status: GOOD (  12.94  )
+X-CRM114-CacheID: sfid-20240523_032537_655632_DD9E3905 
+X-CRM114-Status: GOOD (  13.10  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,18 +102,19 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, May 21, 2024 at 12:13:52PM +0200, Maxime Ripard wrote:
-> HDMI controller drivers will need to figure out the RGB range they need
-> to configure based on a mode and property values. Let's expose that in
-> the HDMI connector state so drivers can just use that value.
+On Tue, May 21, 2024 at 12:13:53PM +0200, Maxime Ripard wrote:
+> The previous commit added the infrastructure to the connector state to
+> track what RGB Quantization should be used in a given state for an HDMI
+> connector.
+> 
+> Let's add some kunit tests to make sure it works as expected.
 > 
 > Reviewed-by: Dave Stevenson <dave.stevenson@raspberrypi.com>
 > Signed-off-by: Maxime Ripard <mripard@kernel.org>
 > ---
->  drivers/gpu/drm/display/drm_hdmi_state_helper.c | 29 +++++++++++++++++++++++++
->  drivers/gpu/drm/drm_atomic.c                    |  1 +
->  include/drm/drm_connector.h                     |  6 +++++
->  3 files changed, 36 insertions(+)
+>  drivers/gpu/drm/tests/drm_hdmi_state_helper_test.c | 355 +++++++++++++++++++++
+>  1 file changed, 355 insertions(+)
+> 
 
 
 Reviewed-by: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
