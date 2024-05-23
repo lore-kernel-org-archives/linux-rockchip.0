@@ -4,65 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EE948C25B75
-	for <linux-rockchip@archiver.kernel.org>; Thu, 23 May 2024 09:40:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 932C1C25B75
+	for <linux-rockchip@archiver.kernel.org>; Thu, 23 May 2024 09:41:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=QSZjVjs5bCb8+dVu2JMAZcFi3fvnM6AoQwrIbxtk+GE=; b=oaFdHeLedye3v5
-	47vSdqFaEgGMUvoXk1xGvcUPPHz5dRKIMchHWowcxBiMtcCHbz45VhA4DYxVKM8Mn8+y3B5vB6YWE
-	cYF71HnrkHQMte/XF0As3S6a/xleHalvTJc6jpjuGtozfHB+CQ3tY/VuhKsnDzBdY/T/Lhu3SHTLJ
-	Ou4n0SKteEzHYAAVK1QwklRFWzosXB9lFzCGR/A+oRiSoomrEW5o7Ha3zayOA58c3+GiSmQtn1WLU
-	YgBG7yFPqjZgOrm1s2v230mF4rGfRogfni2QN6EY3qwCDRKV1WZXIZ+XsI+CDZMjPx3nQJdUiz1Ld
-	nopWSZyTdx7CAt4toi8w==;
+	List-Owner; bh=o717JS1JLnkO5dVvBzMdwuSk5N6aEDh3YgWCq2XXBwE=; b=FMv/z+xhjBukKi
+	OdoU+eVk6Jo66BB+lIzisEBDd2Ji4VWoR4g8g0euogFKyJAJQPxEB0JBASWLUmnoR69g8jtsteUvF
+	ttj9yAtH8dE1jQ+Gh56xQfUVtm/ZO6EGRE2CDD3OiOULQDowDWXp8tyhXK6xaKz+uAfjl6FzZHbap
+	gKpsrZQ+xqEvrehmHhRjG1zDWeheAXAdQmY6y9XJURBCnGR4Zldq5Ogf7T1dStxm+HE2wUzBhfiQa
+	rtEuycYShUQpBPt1xbqpxsWrG1lsfaab7yejjcmEmXJvTbdAcCAlXA7bwb3xUt4vuevAMsZ2UcshW
+	TnLeor/z5VinRmCQWswg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sA4vX-00000005j4u-0Zz6;
-	Thu, 23 May 2024 09:39:59 +0000
-Received: from mail-lj1-x236.google.com ([2a00:1450:4864:20::236])
+	id 1sA4wp-00000005jYN-3HYj;
+	Thu, 23 May 2024 09:41:19 +0000
+Received: from mail-lf1-x12f.google.com ([2a00:1450:4864:20::12f])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sA4vO-00000005j2D-2RqP
+	id 1sA4wj-00000005jW9-0InW
 	for linux-rockchip@lists.infradead.org;
-	Thu, 23 May 2024 09:39:52 +0000
-Received: by mail-lj1-x236.google.com with SMTP id 38308e7fff4ca-2e73359b8fbso41455421fa.2
-        for <linux-rockchip@lists.infradead.org>; Thu, 23 May 2024 02:39:49 -0700 (PDT)
+	Thu, 23 May 2024 09:41:17 +0000
+Received: by mail-lf1-x12f.google.com with SMTP id 2adb3069b0e04-52192578b95so8679499e87.2
+        for <linux-rockchip@lists.infradead.org>; Thu, 23 May 2024 02:41:11 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1716457188; x=1717061988; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1716457270; x=1717062070; darn=lists.infradead.org;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=nZr+4M+DoXpeV8oSkkFyzaRfzRj8DnnoccV995epHpo=;
-        b=RHdZpL3As1EHSy5FUJ6Yn/efYZzotRQL9wGu0/gQY2wOTLuKE/G/wy9iQxV21kYGs7
-         eEtLbU/lScYyeBN2MdSXY7LFyyG+mSdYv83ohwZnFEoev8gUuveRC/Mj8OpBPMkaVBNx
-         9mjs5LACpDetsHae5jv2A33cHDFZKIN6kWhkHyRAabHTdFUCFpMslLKL3pm/7De3kcSh
-         AaMDPyA3gRGuyXpyMSLvRsZy0viW0whXNYSLGXYvzFUVYIGHmaCfDsoEcK1rWkSpfoIh
-         B7BOcSS9HwDQl2r/v/3Q4cLNc6L6mFmn1AaBkHb+YcIXwI9JHfEW6lxELvOm9W9kjTnH
-         TBbQ==
+        bh=ymOIxLRXX6/t992boJGrCdN0THAC8qBuamXJNsylAfs=;
+        b=T1qki1J4cEnk/9NUted2Hr2PnKvW4UOy0ftcSzfzxhfqSQ9zbsnuOJx5Xk7gB37W+e
+         6l12IYKlU+BhacEp+9YwHw1E8jf5mTdzukkgbnK/0P80Ay/4eclrUowUj85SsTaXoCKY
+         I4AIJaAat5SNOmHrlK8En3iD3+n+P/5H3QsV1tMllmrAMHSe8iyc+38E3pZzli/7mwSd
+         bkBIZ1+WajQ2pMYs+5srgDsYwRTj4xTNqNZ3X1H66i+2befSlCxeUi5Wtl63YH8JEWU5
+         p/FstgbVx/m0W+ubsvkTZh+FwgEQYNukFCi7yGlclfbOXbvfG8izsyFxMHGbUo67XcKL
+         j7pw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1716457188; x=1717061988;
+        d=1e100.net; s=20230601; t=1716457270; x=1717062070;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=nZr+4M+DoXpeV8oSkkFyzaRfzRj8DnnoccV995epHpo=;
-        b=i0I2NtN9gw7lW7so6SmkgSS/LR22KOGay55C++FMDnmREOZTQG2mTWbGjsEIJ/UGP/
-         aofeBp2Yg0gWXpK9SinmDJkwA0Uva6ChKZEb280WRYRDdiTMMxjENrppx2tvxhmuinEq
-         pti3rq9sNBpQVhY+MJG69jFnjQGAjYb/aRI+W6w4oGrLe7e5f62YQxR1GMBLpu5XpqdW
-         +4xnN6ILw8rajC53RGg9Vtd3iYi6E/7UfmMdOfyEveGkRqW/gqOVNID76ZPx/07owRnT
-         e1hOW92FrCFwBakNHnUlI34+UCS6FvHYlPYsW66WdQDYnOwgKxdm/cjrf4haaUraazto
-         pxIw==
-X-Forwarded-Encrypted: i=1; AJvYcCVCBIjQRrTSxwbFTkla3+nyAEXgTb1irMsIw9is+8U0RcO72WI5dPibjsDlhYWjGs3tiA+VdHHuuS41DBjbXkveCzbYBeqga+YGp6/4IdspmwDa
-X-Gm-Message-State: AOJu0YyhGH5z5TIOIGzKQ+l891AsA+fSd4k0R0DLnNmTog8i1gIqJxBx
-	Z8nurR8CCa4dbv4AZf8oS6reVlz3evZukhEIn3tWpQD9d1yuRFnDEeVS1fFlois=
-X-Google-Smtp-Source: AGHT+IHZxrSIuUr68retAsDGyT49V7Bjyk+0v3vLZlctFxxYj5K8ZOcu4gphFsf8YhaZBtcNl5CRiw==
-X-Received: by 2002:a19:520a:0:b0:518:eef0:45c0 with SMTP id 2adb3069b0e04-526c0a68dcbmr3895711e87.48.1716457188090;
-        Thu, 23 May 2024 02:39:48 -0700 (PDT)
+        bh=ymOIxLRXX6/t992boJGrCdN0THAC8qBuamXJNsylAfs=;
+        b=OSQkOWHvA8V5mgldQnmdmaPPCHxqw5iRVkSGY6tVNGRe6BTKTg6stcS1BY3kA6u+tf
+         Ekq8gpA+0uz2FZhTwncgC/5nefcbO8lJlrMvwDg+kRiohNGlnot9IumqXNCPANvqrbLt
+         zlwvhJg+LSmih8H2Y7HJbBPrn07X+YunVD8dIdy0t+Fs2Bn6OVATzr6Ye2JktYedqlay
+         HbltIBavvhehYDIffGCr6dMFWVk0DFxKN1KI4muGo1kIFC37Ckr0aozodMJJHAp4evLy
+         epmShJ1vWZa/9dcRu2fj0BrXjC4/EWVktVGnkSIwZr41fqWtLBOSh5BmvnMcEKNg2rdc
+         6udg==
+X-Forwarded-Encrypted: i=1; AJvYcCXIVMpBLUjHFJqr3FUfcDwo6cUt/fpQRvYhzcNuCRteuVm2Fmvj38K+IYscr2hTU2g/5J4KrFue/vkEQJ4N4MOzlMdHODwDk2lak7UgbPk/uf7j
+X-Gm-Message-State: AOJu0YwtnaN3poRuLyiOzqJyY4BnYxoeDpbAkX6tudZFkI+4mpm7x4Zz
+	kfR7nryPwBGKOvyqpRFVjGMSs6brcRO5QbQC83e+QBq2nFWx9Zml9bSIHyIIBTw=
+X-Google-Smtp-Source: AGHT+IGDBnS6Yxc91Ez/LJRvHEhoF+0Je5SmLoZcaOOlSUX1bIaRGc7t5bjpMnVmIRgP+hN+dWcqmQ==
+X-Received: by 2002:a05:6512:611:b0:51e:f1a6:ac39 with SMTP id 2adb3069b0e04-526be6ea79amr2624505e87.12.1716457269807;
+        Thu, 23 May 2024 02:41:09 -0700 (PDT)
 Received: from eriador.lumag.spb.ru (dzdbxzyyyyyyyyyyyykxt-3.rev.dnainternet.fi. [2001:14ba:a0c3:3a00::227])
-        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-521f39d2c63sm5212392e87.278.2024.05.23.02.39.47
+        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-52394a319f1sm2983965e87.64.2024.05.23.02.41.09
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 23 May 2024 02:39:47 -0700 (PDT)
-Date: Thu, 23 May 2024 12:39:46 +0300
+        Thu, 23 May 2024 02:41:09 -0700 (PDT)
+Date: Thu, 23 May 2024 12:41:07 +0300
 From: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
 To: Maxime Ripard <mripard@kernel.org>
 Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
@@ -76,17 +76,17 @@ Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
 	linux-arm-kernel@lists.infradead.org, linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org, 
 	linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-sunxi@lists.linux.dev, 
 	Dave Stevenson <dave.stevenson@raspberrypi.com>
-Subject: Re: [PATCH v14 11/28] drm/connector: hdmi: Calculate TMDS character
- rate
-Message-ID: <2drjirwwj3cwm4saboa5qnhwi7wev5gnilg24u7svz2iw3gtef@jainjgtog3uf>
+Subject: Re: [PATCH v14 12/28] drm/tests: Add TDMS character rate connector
+ state tests
+Message-ID: <ghotwzdstmtpnovbmt2fgvxxkcno67hfwydzjzbyfn6dkt247c@52ycrfinmimo>
 References: <20240521-kms-hdmi-connector-state-v14-0-51950db4fedb@kernel.org>
- <20240521-kms-hdmi-connector-state-v14-11-51950db4fedb@kernel.org>
+ <20240521-kms-hdmi-connector-state-v14-12-51950db4fedb@kernel.org>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20240521-kms-hdmi-connector-state-v14-11-51950db4fedb@kernel.org>
+In-Reply-To: <20240521-kms-hdmi-connector-state-v14-12-51950db4fedb@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240523_023951_312441_598FB2D8 
-X-CRM114-Status: GOOD (  13.27  )
+X-CRM114-CacheID: sfid-20240523_024113_139091_A23D40B3 
+X-CRM114-Status: GOOD (  11.81  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,23 +103,17 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, May 21, 2024 at 12:13:44PM +0200, Maxime Ripard wrote:
-> Most HDMI drivers have some code to calculate the TMDS character rate,
-> usually to adjust an internal clock to match what the mode requires.
-> 
-> Since the TMDS character rates mostly depends on the resolution, whether
-> we need to repeat pixels or not, the bpc count and the format, we can
-> now derive it from the HDMI connector state that stores all those infos
-> and remove the duplication from drivers.
+On Tue, May 21, 2024 at 12:13:45PM +0200, Maxime Ripard wrote:
+> The previous patch stores in the connector state the expected TMDS
+> character rate matching the configuration of the HDMI connector. Let's
+> add a few tests to make sure it works as expected.
 > 
 > Reviewed-by: Dave Stevenson <dave.stevenson@raspberrypi.com>
 > Signed-off-by: Maxime Ripard <mripard@kernel.org>
 > ---
->  drivers/gpu/drm/display/drm_hdmi_state_helper.c    | 67 ++++++++++++++++++++++
->  drivers/gpu/drm/drm_atomic.c                       |  1 +
->  drivers/gpu/drm/tests/drm_hdmi_state_helper_test.c |  3 +
->  include/drm/drm_connector.h                        |  5 ++
->  4 files changed, 76 insertions(+)
+>  drivers/gpu/drm/tests/drm_hdmi_state_helper_test.c | 166 ++++++++++++++++
+>  drivers/gpu/drm/tests/drm_kunit_edid.h             | 216 +++++++++++++++++++++
+>  2 files changed, 382 insertions(+)
 
 
 Reviewed-by: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
