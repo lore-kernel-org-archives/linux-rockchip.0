@@ -4,71 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 20C9CC25B7D
-	for <linux-rockchip@archiver.kernel.org>; Fri, 24 May 2024 06:46:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3ADC7C25B79
+	for <linux-rockchip@archiver.kernel.org>; Fri, 24 May 2024 09:26:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Cbj/wFxmv05fvzvtcKPJwKNoKuNtleUxjEmluEtTRLE=; b=0fS97CErw/VqQB
-	Y+sJcFlrluubLVtPjcnWLxKMM70FNrzxofkNWaZJDoDS8DGy2Ig6RbObBLx8qkwQbY/G0NOQSkZVz
-	vC/1DpHV1zotURhU8nYRjklKayW+9QnAh3iBnWjoqgKV0AY0hPEA/evRXziimAU0NVMsqGWR7qVTk
-	LEDZ3V2fQaGlqrwIobY1Z1E1o1eezXGa7JhdpUsFOR/mA/4KTkD4i1oI1FJi2v69aHBxn72ChJSvA
-	eQ6mC36lzKzEMFzqGEwsPDG4Y040cTSO0158QhsGihbaBfjMLOJ/kOcc2SU4z06LBBx62sIQWRJV0
-	MLRPzlR5LnthoP9xLAuA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=sZPYfk82CBeieqGVSCzUcFRNqc/mvow6DqJRFOTE96Q=; b=gv2asKO/CXpsUd
+	Bl4x8d3TNWb5Lnk0FJH6aXNSsONPHfd15BKSK2+4na4YP21cmr1m4sx5WXgwrDqxmL+5qWv+y8s83
+	CuXEfAaol0NQTo2ATkQMXwxC0JXmfSDfJg6fZZwgkJ3qJrWloMtgWlHGE9AJCM2JwLVNhq8f40olZ
+	kl69PwO02/rxZL2agfnRIC/snuLLpkhkZwG4lsPtXstvpezKk311qtjM5kL6mX78hiivVCJkWyoye
+	Zcp/8GCAmaS4P1u9Y8nzEzzw9UP54IJ5Za/m+0WGqkQhe6933vNazy6i/5qDN1GswQkqAOOH8JXww
+	OFJ6ZNMPTAhv+9ciD4Sw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sAOhC-00000008CZP-46Dx;
-	Fri, 24 May 2024 06:46:30 +0000
-Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
+	id 1sARBV-00000008Y0p-0Pvk;
+	Fri, 24 May 2024 09:25:57 +0000
+Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sAOh8-00000008CXJ-0aSv;
-	Fri, 24 May 2024 06:46:28 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1716533179;
-	bh=0x62kCjeY+J4sbdaaUkUR2ly1ES+mb2DRDWplkfWUds=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=SJsYf8+E0w6OSLbVoUwUSsolkuQTmZhNQnLJw0QsNGkjkGYFd8n2xohI2RvX5otBP
-	 89R+6Situxt4jvifcn/oo6h1jodewOReqLFgkPyO9orxk+p9HUp+wYrFC7qzl8HDEZ
-	 7Iug8I4CKu6KR7NsudZhhVAhPKnRF6vR5VhCUZOUF9nMO8lRZLiU3gcIdSKk4hzLK2
-	 yLDS4DuHt67z9bG4pm8+ip4ABXYYphDpTcBSlhEfnasesHdepNcZs58eczinwd+R6J
-	 KPTwxQuv4O3Nj8hmmAISzONjCXIq08lvpx/QwLGR59wg8MJT17+g5O+Y2/eECAIvcT
-	 1XQUtvRcgYCTw==
-Received: from [100.66.96.193] (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: vignesh)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id CC0FA3782112;
-	Fri, 24 May 2024 06:46:15 +0000 (UTC)
-Message-ID: <b695a2a3-2b4f-400d-a0b7-5d436926f49a@collabora.com>
-Date: Fri, 24 May 2024 12:16:11 +0530
+	id 1sARBS-00000008XzE-2P0h
+	for linux-rockchip@lists.infradead.org;
+	Fri, 24 May 2024 09:25:55 +0000
+Received: from dude04.red.stw.pengutronix.de ([2a0a:edc0:0:1101:1d::ac])
+	by metis.whiteo.stw.pengutronix.de with esmtp (Exim 4.92)
+	(envelope-from <s.pueschel@pengutronix.de>)
+	id 1sARBB-0007SY-J8; Fri, 24 May 2024 11:25:37 +0200
+From: =?UTF-8?q?Sven=20P=C3=BCschel?= <s.pueschel@pengutronix.de>
+To: hjc@rock-chips.com,
+	heiko@sntech.de,
+	andy.yan@rock-chips.com,
+	maarten.lankhorst@linux.intel.com,
+	mripard@kernel.org,
+	tzimmermann@suse.de,
+	airlied@gmail.com,
+	daniel@ffwll.ch
+Cc: dri-devel@lists.freedesktop.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	kernel@pengutronix.de,
+	Michael Tretter <m.tretter@pengutronix.de>,
+	=?UTF-8?q?Sven=20P=C3=BCschel?= <s.pueschel@pengutronix.de>
+Subject: [PATCH] drm/rockchip: Set DMA max segment size
+Date: Fri, 24 May 2024 11:23:59 +0200
+Message-Id: <20240524092400.2019587-1-s.pueschel@pengutronix.de>
+X-Mailer: git-send-email 2.39.2
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 1/6] drm/ci: uprev mesa version
-Content-Language: en-US
-To: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
-Cc: dri-devel@lists.freedesktop.org, daniels@collabora.com,
- helen.koike@collabora.com, airlied@gmail.com, daniel@ffwll.ch,
- robdclark@gmail.com, david.heidelberg@collabora.com,
- guilherme.gallo@collabora.com, sergi.blanch.torne@collabora.com,
- mcanal@igalia.com, linux-mediatek@lists.infradead.org,
- linux-amlogic@lists.infradead.org, linux-rockchip@lists.infradead.org,
- amd-gfx@lists.freedesktop.org, linux-arm-msm@vger.kernel.org,
- intel-gfx@lists.freedesktop.org, virtualization@lists.linux-foundation.org,
- linux-kernel@vger.kernel.org
-References: <20240517092502.647420-1-vignesh.raman@collabora.com>
- <20240517092502.647420-2-vignesh.raman@collabora.com>
- <2qzmfv3oc6feihwxu3tl37rg6w3qsj2vddu5olvqk6vhqr26cc@bxu5y6ijvtfa>
- <9cd0667a-12ee-4d45-80e8-dc34259bf01d@collabora.com>
- <CAA8EJprVVkQO7aPkehwL2zhYkGRkm4Foc13ErfuY6ikBA_4nLQ@mail.gmail.com>
-From: Vignesh Raman <vignesh.raman@collabora.com>
-In-Reply-To: <CAA8EJprVVkQO7aPkehwL2zhYkGRkm4Foc13ErfuY6ikBA_4nLQ@mail.gmail.com>
+X-SA-Exim-Connect-IP: 2a0a:edc0:0:1101:1d::ac
+X-SA-Exim-Mail-From: s.pueschel@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240523_234626_508159_6FA00478 
-X-CRM114-Status: GOOD (  17.17  )
+X-CRM114-CacheID: sfid-20240524_022554_613361_149206FC 
+X-CRM114-Status: UNSURE (   7.53  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,103 +71,32 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Dmitry,
-
-On 23/05/24 15:29, Dmitry Baryshkov wrote:
-> On Thu, 23 May 2024 at 09:07, Vignesh Raman <vignesh.raman@collabora.com> wrote:
->>
->> Hi Dmitry,
->>
->> On 20/05/24 16:13, Dmitry Baryshkov wrote:
->>> On Fri, May 17, 2024 at 02:54:57PM +0530, Vignesh Raman wrote:
->>>> zlib.net is not allowing tarball download anymore and results
->>>> in below error in kernel+rootfs_arm32 container build,
->>>> urllib.error.HTTPError: HTTP Error 403: Forbidden
->>>> urllib.error.HTTPError: HTTP Error 415: Unsupported Media Type
->>>>
->>>> Uprev mesa to latest version which includes a fix for this issue.
->>>> https://gitlab.freedesktop.org/mesa/mesa/-/commit/908f444e
->>>>
->>>> Use id_tokens for JWT authentication. Since s3 bucket is migrated to
->>>> mesa-rootfs, update the variables accordingly. Also copy helper scripts
->>>> to install, so that the ci jobs can use these scripts for logging.
->>>>
->>>> Signed-off-by: Vignesh Raman <vignesh.raman@collabora.com>
->>>> ---
->>>>
->>>> v2:
->>>>     - Uprev to recent version and use id_tokens for JWT authentication
->>>>
->>>> ---
->>>>    drivers/gpu/drm/ci/build-igt.sh   |  2 +-
->>>>    drivers/gpu/drm/ci/build.sh       |  6 +++--
->>>>    drivers/gpu/drm/ci/container.yml  | 12 +++------
->>>>    drivers/gpu/drm/ci/gitlab-ci.yml  | 44 +++++++++++++++++++++----------
->>>>    drivers/gpu/drm/ci/image-tags.yml |  2 +-
->>>>    drivers/gpu/drm/ci/lava-submit.sh |  4 +--
->>>>    drivers/gpu/drm/ci/test.yml       |  2 ++
->>>>    7 files changed, 44 insertions(+), 28 deletions(-)
->>>>
->>>
->>> [skipped]
->>>
->>>> diff --git a/drivers/gpu/drm/ci/test.yml b/drivers/gpu/drm/ci/test.yml
->>>> index 8bc63912fddb..612c9ede3507 100644
->>>> --- a/drivers/gpu/drm/ci/test.yml
->>>> +++ b/drivers/gpu/drm/ci/test.yml
->>>> @@ -150,6 +150,8 @@ msm:sdm845:
->>>>        BM_KERNEL: https://${PIPELINE_ARTIFACTS_BASE}/arm64/cheza-kernel
->>>>        GPU_VERSION: sdm845
->>>>        RUNNER_TAG: google-freedreno-cheza
->>>> +    DEVICE_TYPE: sdm845-cheza-r3
->>>> +    FARM: google
->>>
->>> I see that this is the only user of the FARM: tag. Is it correct?
->>
->> No, we need to add FARM variable for other jobs as well.
-> 
-> Why? Even if we have to, we don't have them now and the change doesn't
-> seem to be related to the uprev'ing of mesa. So this probably should
-> go to a separate commit.
-
-I will move them to separate commit.
-
-Regards,
-Vignesh
-
-> 
->>
->>> Also we miss DEVICE_TYPE for several other boards. Should we be adding
->>> them?
->>
->> Yes, device type needs to be added for msm:apq8016, msm:apq8096, virtio_gpu.
->>
->> I will add this. Thanks.
-> 
-> I'd guess, separate commit too.
-> 
->>
->> Regards,
->> Vignesh
->>
->>>
->>>>      script:
->>>>        - ./install/bare-metal/cros-servo.sh
->>>>
->>>> --
->>>> 2.40.1
->>>>
->>>
-> 
-> 
-> 
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+RnJvbTogTWljaGFlbCBUcmV0dGVyIDxtLnRyZXR0ZXJAcGVuZ3V0cm9uaXguZGU+CgpUaGVyZSBp
+cyBubyByZWFzb24gdG8gbGltaXQgdGhlIERNQSBtYXggc2VnbWVudCBzaXplIGZvciB0aGUgUm9j
+a2NoaXAKVk9QIGFuZCBWT1AyLiBTZXQgaXQgdG8gdGhlIG1heGltdW0uCgpUaGlzIHByZXZlbnRz
+IHRoZSBmb2xsb3dpbmcgd2FybmluZyB3aGVuIERNQSBBUEkgZGVidWdnaW5nIGlzIGVuYWJsZWQK
+d2l0aCBDT05GSUdfRE1BX0FQSV9ERUJVR19TRz15OgoKCURNQS1BUEk6IHJvY2tjaGlwLWRybSBk
+aXNwbGF5LXN1YnN5c3RlbTogbWFwcGluZyBzZyBzZWdtZW50IGxvbmdlciB0aGFuIGRldmljZSBj
+bGFpbXMgdG8gc3VwcG9ydCBbbGVuPTIwODg5Nl0gW21heD02NTUzNl0KClNpZ25lZC1vZmYtYnk6
+IE1pY2hhZWwgVHJldHRlciA8bS50cmV0dGVyQHBlbmd1dHJvbml4LmRlPgpTaWduZWQtb2ZmLWJ5
+OiBTdmVuIFDDvHNjaGVsIDxzLnB1ZXNjaGVsQHBlbmd1dHJvbml4LmRlPgotLS0KIGRyaXZlcnMv
+Z3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZHJ2LmMgfCAyICsrCiAxIGZpbGUgY2hhbmdl
+ZCwgMiBpbnNlcnRpb25zKCspCgpkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlw
+L3JvY2tjaGlwX2RybV9kcnYuYyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9k
+cm1fZHJ2LmMKaW5kZXggYWI1NWQ3MTMyNTUwLi4wZjkzZWZkMWE4ZmEgMTAwNjQ0Ci0tLSBhL2Ry
+aXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZHJ2LmMKKysrIGIvZHJpdmVycy9n
+cHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9kcnYuYwpAQCAtNjcsNiArNjcsOCBAQCBpbnQg
+cm9ja2NoaXBfZHJtX2RtYV9hdHRhY2hfZGV2aWNlKHN0cnVjdCBkcm1fZGV2aWNlICpkcm1fZGV2
+LAogCQl9CiAJfQogCisJZG1hX3NldF9tYXhfc2VnX3NpemUoZHJtX2Rldi0+ZGV2LCBVSU5UX01B
+WCk7CisKIAlyZXQgPSBpb21tdV9hdHRhY2hfZGV2aWNlKHByaXZhdGUtPmRvbWFpbiwgZGV2KTsK
+IAlpZiAocmV0KSB7CiAJCURSTV9ERVZfRVJST1IoZGV2LCAiRmFpbGVkIHRvIGF0dGFjaCBpb21t
+dSBkZXZpY2VcbiIpOwoKYmFzZS1jb21taXQ6IDM5YmMyN2JkNjg4MDY2YTYzZTU2ZjdmNjRhZDM0
+ZmFlMDNmYmUzYjgKLS0gCjIuMzkuMgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hp
+cEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4v
+bGlzdGluZm8vbGludXgtcm9ja2NoaXAK
