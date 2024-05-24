@@ -4,77 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A756BC25B74
-	for <linux-rockchip@archiver.kernel.org>; Fri, 24 May 2024 03:10:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 20C9CC25B7D
+	for <linux-rockchip@archiver.kernel.org>; Fri, 24 May 2024 06:46:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Message-ID:MIME-Version:References:
-	In-Reply-To:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=DrHHt50M3rHdrH46pVm+hWpvuqhQSbtPM3p5hTqOSP8=; b=Z0LO2K/q2PYSmH
-	H7EE0bzCUdpxyxHm4R/4tjfk5iAy/ceQAHpwT8AIKpaJBvmA6qOs3faGc2KgMQya/QpnZzU/GdVAh
-	DJ81siFeoYUmvugH9Z1ggdYeW8W79HC6LuLLl3n9Q2CYMqEWbBhLRQcxneVB9wcFbo616srwAcvXr
-	5ryXTeae8aVSNg7HUqPONjrpCNeJMoGa7NUlyjcFW3jpkD5p1PuzT0tdCGqnWDZcqEfg2eggM7q7F
-	o7L7O3TYr0Sh8ezwELSQWsc5+/0UNgCw1oGQbLtQwIzehtLmuFT8lfsvm+gU6MPzZEpj576ePpJEA
-	/4cQmE4AKqjDJ2Lvh/vw==;
+	List-Owner; bh=Cbj/wFxmv05fvzvtcKPJwKNoKuNtleUxjEmluEtTRLE=; b=0fS97CErw/VqQB
+	Y+sJcFlrluubLVtPjcnWLxKMM70FNrzxofkNWaZJDoDS8DGy2Ig6RbObBLx8qkwQbY/G0NOQSkZVz
+	vC/1DpHV1zotURhU8nYRjklKayW+9QnAh3iBnWjoqgKV0AY0hPEA/evRXziimAU0NVMsqGWR7qVTk
+	LEDZ3V2fQaGlqrwIobY1Z1E1o1eezXGa7JhdpUsFOR/mA/4KTkD4i1oI1FJi2v69aHBxn72ChJSvA
+	eQ6mC36lzKzEMFzqGEwsPDG4Y040cTSO0158QhsGihbaBfjMLOJ/kOcc2SU4z06LBBx62sIQWRJV0
+	MLRPzlR5LnthoP9xLAuA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sALK3-00000007u3R-3VtI;
-	Fri, 24 May 2024 03:10:23 +0000
-Received: from m16.mail.163.com ([220.197.31.5])
-	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sALJy-00000007u2n-0yA1;
-	Fri, 24 May 2024 03:10:22 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=Date:From:Subject:Content-Type:MIME-Version:
-	Message-ID; bh=E7quKQSp6wqPBOxJtlAAvy+lNHP6WJxdOO82/8s9fPk=; b=a
-	b04E9kI7+OdT2yaqDGkR1UikXvmVRXIvdlsY3/Qze5/0STZ5xcfYjosylhz5X4vc
-	5btnBuK3OwEK76Ea49B49RsBtiaCYmLN813AVmmV0i7FAqPRRLM8W4EymUSNBtk7
-	Fjd8x5+ydNDKtpytKxbVI+IgYxjIXc4lkxeBiOJnSc=
-Received: from andyshrk$163.com ( [58.22.7.114] ) by
- ajax-webmail-wmsvr-40-137 (Coremail) ; Fri, 24 May 2024 11:09:26 +0800
- (CST)
-X-Originating-IP: [58.22.7.114]
-Date: Fri, 24 May 2024 11:09:26 +0800 (CST)
-From: "Andy Yan" <andyshrk@163.com>
-To: "Detlev Casanova" <detlev.casanova@collabora.com>
-Cc: linux-kernel@vger.kernel.org, "Sandy Huang" <hjc@rock-chips.com>, 
-	=?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
-	"Andy Yan" <andy.yan@rock-chips.com>, 
-	"Maarten Lankhorst" <maarten.lankhorst@linux.intel.com>, 
-	"Maxime Ripard" <mripard@kernel.org>, 
-	"Thomas Zimmermann" <tzimmermann@suse.de>, 
-	"David Airlie" <airlied@gmail.com>, 
-	"Daniel Vetter" <daniel@ffwll.ch>, "Rob Herring" <robh@kernel.org>, 
-	"Krzysztof Kozlowski" <krzk+dt@kernel.org>, 
-	"Conor Dooley" <conor+dt@kernel.org>, 
-	"Heiko Stuebner" <heiko.stuebner@cherry.de>, 
-	"Sebastian Reichel" <sebastian.reichel@collabora.com>, 
-	"Dragan Simic" <dsimic@manjaro.org>, 
-	"Chris Morgan" <macromorgan@hotmail.com>, 
-	"Diederik de Haas" <didi.debian@cknow.org>, 
-	"Boris Brezillon" <boris.brezillon@collabora.com>, 
-	dri-devel@lists.freedesktop.org, 
-	linux-arm-kernel@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org
-Subject: Re:[PATCH v2 1/3] vop2: Add clock resets support
-X-Priority: 3
-X-Mailer: Coremail Webmail Server Version XT5.0.14 build 20230109(dcb5de15)
- Copyright (c) 2002-2024 www.mailtech.cn 163com
-In-Reply-To: <20240522185924.461742-2-detlev.casanova@collabora.com>
-References: <20240522185924.461742-1-detlev.casanova@collabora.com>
- <20240522185924.461742-2-detlev.casanova@collabora.com>
-X-NTES-SC: AL_Qu2aBPmZv0kt4CKRYukZnEobh+Y5UcK2s/ki2YFXN5k0iiXU6CEOXlxdIkXL1MCdLxyrkzuuXCZcxvRRTZhhQYZ9GRoRGOM2Exvvy1jUA6OU
+	id 1sAOhC-00000008CZP-46Dx;
+	Fri, 24 May 2024 06:46:30 +0000
+Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
+	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
+	id 1sAOh8-00000008CXJ-0aSv;
+	Fri, 24 May 2024 06:46:28 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1716533179;
+	bh=0x62kCjeY+J4sbdaaUkUR2ly1ES+mb2DRDWplkfWUds=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=SJsYf8+E0w6OSLbVoUwUSsolkuQTmZhNQnLJw0QsNGkjkGYFd8n2xohI2RvX5otBP
+	 89R+6Situxt4jvifcn/oo6h1jodewOReqLFgkPyO9orxk+p9HUp+wYrFC7qzl8HDEZ
+	 7Iug8I4CKu6KR7NsudZhhVAhPKnRF6vR5VhCUZOUF9nMO8lRZLiU3gcIdSKk4hzLK2
+	 yLDS4DuHt67z9bG4pm8+ip4ABXYYphDpTcBSlhEfnasesHdepNcZs58eczinwd+R6J
+	 KPTwxQuv4O3Nj8hmmAISzONjCXIq08lvpx/QwLGR59wg8MJT17+g5O+Y2/eECAIvcT
+	 1XQUtvRcgYCTw==
+Received: from [100.66.96.193] (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: vignesh)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id CC0FA3782112;
+	Fri, 24 May 2024 06:46:15 +0000 (UTC)
+Message-ID: <b695a2a3-2b4f-400d-a0b7-5d436926f49a@collabora.com>
+Date: Fri, 24 May 2024 12:16:11 +0530
 MIME-Version: 1.0
-Message-ID: <6a3d3fb1.3755.18fa893239e.Coremail.andyshrk@163.com>
-X-Coremail-Locale: zh_CN
-X-CM-TRANSID: _____wDH7_DmBFBmSo1FAA--.362W
-X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/xtbBEB7oXmVOEKBR3wACsv
-X-Coremail-Antispam: 1U5529EdanIXcx71UUUUU7vcSsGvfC2KfnxnUU==
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 1/6] drm/ci: uprev mesa version
+Content-Language: en-US
+To: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
+Cc: dri-devel@lists.freedesktop.org, daniels@collabora.com,
+ helen.koike@collabora.com, airlied@gmail.com, daniel@ffwll.ch,
+ robdclark@gmail.com, david.heidelberg@collabora.com,
+ guilherme.gallo@collabora.com, sergi.blanch.torne@collabora.com,
+ mcanal@igalia.com, linux-mediatek@lists.infradead.org,
+ linux-amlogic@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ amd-gfx@lists.freedesktop.org, linux-arm-msm@vger.kernel.org,
+ intel-gfx@lists.freedesktop.org, virtualization@lists.linux-foundation.org,
+ linux-kernel@vger.kernel.org
+References: <20240517092502.647420-1-vignesh.raman@collabora.com>
+ <20240517092502.647420-2-vignesh.raman@collabora.com>
+ <2qzmfv3oc6feihwxu3tl37rg6w3qsj2vddu5olvqk6vhqr26cc@bxu5y6ijvtfa>
+ <9cd0667a-12ee-4d45-80e8-dc34259bf01d@collabora.com>
+ <CAA8EJprVVkQO7aPkehwL2zhYkGRkm4Foc13ErfuY6ikBA_4nLQ@mail.gmail.com>
+From: Vignesh Raman <vignesh.raman@collabora.com>
+In-Reply-To: <CAA8EJprVVkQO7aPkehwL2zhYkGRkm4Foc13ErfuY6ikBA_4nLQ@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240523_201018_648697_710506D3 
-X-CRM114-Status: GOOD (  10.10  )
+X-CRM114-CacheID: sfid-20240523_234626_508159_6FA00478 
+X-CRM114-Status: GOOD (  17.17  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,64 +80,103 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-CkhpIERldGxldu+8jAoKCkF0IDIwMjQtMDUtMjMgMDI6NTc6NDgsICJEZXRsZXYgQ2FzYW5vdmEi
-IDxkZXRsZXYuY2FzYW5vdmFAY29sbGFib3JhLmNvbT4gd3JvdGU6Cj5BdCB0aGUgZW5kIG9mIGlu
-aXRpYWxpemF0aW9uLCBlYWNoIFZQIGNsb2NrIG5lZWRzIHRvIGJlIHJlc2V0IGJlZm9yZQo+dGhl
-eSBjYW4gYmUgdXNlZC4KPgo+RmFpbGluZyB0byBkbyBzbyBjYW4gcHV0IHRoZSBWT1AgaW4gYW4g
-dW5kZWZpbmVkIHN0YXRlIHdoZXJlIHRoZQo+Z2VuZXJhdGVkIEhETUkgc2lnbmFsIGlzIGVpdGhl
-ciBsb3N0IG9yIG5vdCBtYXRjaGluZyB0aGUgc2VsZWN0ZWQgbW9kZS4KCldvdWxkIHlvdSBwbGVh
-c2UgcHJvdmlkZSBhIGRldGFpbGVkIGRlc2NyaXB0aW9uIG9mIHlvdXIgdGVzdCBjYXNlPwoKCj4K
-PlNpZ25lZC1vZmYtYnk6IERldGxldiBDYXNhbm92YSA8ZGV0bGV2LmNhc2Fub3ZhQGNvbGxhYm9y
-YS5jb20+Cj4tLS0KPiBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcDIu
-YyB8IDMwICsrKysrKysrKysrKysrKysrKysrCj4gMSBmaWxlIGNoYW5nZWQsIDMwIGluc2VydGlv
-bnMoKykKPgo+ZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9k
-cm1fdm9wMi5jIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AyLmMK
-PmluZGV4IGZkZDc2OGJiZDQ4N2MuLmU4MWE2NzE2MWQyOWEgMTAwNjQ0Cj4tLS0gYS9kcml2ZXJz
-L2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcDIuYwo+KysrIGIvZHJpdmVycy9ncHUv
-ZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AyLmMKPkBAIC0xNyw2ICsxNyw3IEBACj4gI2lu
-Y2x1ZGUgPGxpbnV4L3BsYXRmb3JtX2RldmljZS5oPgo+ICNpbmNsdWRlIDxsaW51eC9wbV9ydW50
-aW1lLmg+Cj4gI2luY2x1ZGUgPGxpbnV4L3JlZ21hcC5oPgo+KyNpbmNsdWRlIDxsaW51eC9yZXNl
-dC5oPgo+ICNpbmNsdWRlIDxsaW51eC9zd2FiLmg+Cj4gCj4gI2luY2x1ZGUgPGRybS9kcm0uaD4K
-PkBAIC0xNTcsNiArMTU4LDcgQEAgc3RydWN0IHZvcDJfd2luIHsKPiBzdHJ1Y3Qgdm9wMl92aWRl
-b19wb3J0IHsKPiAJc3RydWN0IGRybV9jcnRjIGNydGM7Cj4gCXN0cnVjdCB2b3AyICp2b3AyOwo+
-KwlzdHJ1Y3QgcmVzZXRfY29udHJvbCAqZGNsa19yc3Q7Cj4gCXN0cnVjdCBjbGsgKmRjbGs7Cj4g
-CXVuc2lnbmVkIGludCBpZDsKPiAJY29uc3Qgc3RydWN0IHZvcDJfdmlkZW9fcG9ydF9kYXRhICpk
-YXRhOwo+QEAgLTE5MTUsNiArMTkxNywyNiBAQCBzdGF0aWMgaW50IHVzX3RvX3ZlcnRpY2FsX2xp
-bmUoc3RydWN0IGRybV9kaXNwbGF5X21vZGUgKm1vZGUsIGludCB1cykKPiAJcmV0dXJuIHVzICog
-bW9kZS0+Y2xvY2sgLyBtb2RlLT5odG90YWwgLyAxMDAwOwo+IH0KPiAKPitzdGF0aWMgaW50IHZv
-cDJfY2xrX3Jlc2V0KHN0cnVjdCB2b3AyX3ZpZGVvX3BvcnQgKnZwKQo+K3sKPisJc3RydWN0IHJl
-c2V0X2NvbnRyb2wgKnJzdGMgPSB2cC0+ZGNsa19yc3Q7Cj4rCXN0cnVjdCB2b3AyICp2b3AyID0g
-dnAtPnZvcDI7Cj4rCWludCByZXQ7Cj4rCj4rCWlmICghcnN0YykKPisJCXJldHVybiAwOwoKCklu
-IGZhY3QsIHRoaXMgY2hlY2sgaXMgbm90IG5lY2Vzc2FyeSBoZXJlLiAgVGhlIGZvbGxvd2luZyBy
-ZXNldCBjb250cm9sIGFwaSB3aWxsIGNoZWNrIGZvciBOVUxMIHBvaW50ZXLjgIIKCj4rCj4rCXJl
-dCA9IHJlc2V0X2NvbnRyb2xfYXNzZXJ0KHJzdGMpOwo+KwlpZiAocmV0IDwgMCkKPisJCWRybV93
-YXJuKHZvcDItPmRybSwgImZhaWxlZCB0byBhc3NlcnQgcmVzZXRcbiIpOwo+Kwl1ZGVsYXkoMTAp
-Owo+KwlyZXQgPSByZXNldF9jb250cm9sX2RlYXNzZXJ0KHJzdGMpOwo+KwlpZiAocmV0IDwgMCkK
-PisJCWRybV93YXJuKHZvcDItPmRybSwgImZhaWxlZCB0byBkZWFzc2VydCByZXNldFxuIik7Cj4r
-Cj4rCXJldHVybiByZXQ7Cj4rfQo+Kwo+IHN0YXRpYyB2b2lkIHZvcDJfY3J0Y19hdG9taWNfZW5h
-YmxlKHN0cnVjdCBkcm1fY3J0YyAqY3J0YywKPiAJCQkJICAgIHN0cnVjdCBkcm1fYXRvbWljX3N0
-YXRlICpzdGF0ZSkKPiB7Cj5AQCAtMjA1NSw2ICsyMDc3LDggQEAgc3RhdGljIHZvaWQgdm9wMl9j
-cnRjX2F0b21pY19lbmFibGUoc3RydWN0IGRybV9jcnRjICpjcnRjLAo+IAo+IAl2b3AyX3ZwX3dy
-aXRlKHZwLCBSSzM1NjhfVlBfRFNQX0NUUkwsIGRzcF9jdHJsKTsKPiAKPisJdm9wMl9jbGtfcmVz
-ZXQodnApOwo+Kwo+IAlkcm1fY3J0Y192Ymxhbmtfb24oY3J0Yyk7Cj4gCj4gCXZvcDJfdW5sb2Nr
-KHZvcDIpOwo+QEAgLTI3MDYsNiArMjczMCwxMiBAQCBzdGF0aWMgaW50IHZvcDJfY3JlYXRlX2Ny
-dGNzKHN0cnVjdCB2b3AyICp2b3AyKQo+IAkJdnAtPmRhdGEgPSB2cF9kYXRhOwo+IAo+IAkJc25w
-cmludGYoZGNsa19uYW1lLCBzaXplb2YoZGNsa19uYW1lKSwgImRjbGtfdnAlZCIsIHZwLT5pZCk7
-Cj4rCQl2cC0+ZGNsa19yc3QgPSBkZXZtX3Jlc2V0X2NvbnRyb2xfZ2V0X29wdGlvbmFsKHZvcDIt
-PmRldiwgZGNsa19uYW1lKTsKPisJCWlmIChJU19FUlIodnAtPmRjbGtfcnN0KSkgewo+KwkJICAg
-ICAgICBkcm1fZXJyKHZvcDItPmRybSwgImZhaWxlZCB0byBnZXQgJXMgcmVzZXRcbiIsIGRjbGtf
-bmFtZSk7Cj4rCQkgICAgICAgIHJldHVybiBQVFJfRVJSKHZwLT5kY2xrX3JzdCk7Cj4rCQl9Cj4r
-Cj4gCQl2cC0+ZGNsayA9IGRldm1fY2xrX2dldCh2b3AyLT5kZXYsIGRjbGtfbmFtZSk7Cj4gCQlp
-ZiAoSVNfRVJSKHZwLT5kY2xrKSkgewo+IAkJCWRybV9lcnIodm9wMi0+ZHJtLCAiZmFpbGVkIHRv
-IGdldCAlc1xuIiwgZGNsa19uYW1lKTsKPi0tIAo+Mi40NC4xCj4KPgo+X19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KPmxpbnV4LWFybS1rZXJuZWwgbWFpbGlu
-ZyBsaXN0Cj5saW51eC1hcm0ta2VybmVsQGxpc3RzLmluZnJhZGVhZC5vcmcKPmh0dHA6Ly9saXN0
-cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtYXJtLWtlcm5lbApfX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBt
-YWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlz
-dHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+Hi Dmitry,
+
+On 23/05/24 15:29, Dmitry Baryshkov wrote:
+> On Thu, 23 May 2024 at 09:07, Vignesh Raman <vignesh.raman@collabora.com> wrote:
+>>
+>> Hi Dmitry,
+>>
+>> On 20/05/24 16:13, Dmitry Baryshkov wrote:
+>>> On Fri, May 17, 2024 at 02:54:57PM +0530, Vignesh Raman wrote:
+>>>> zlib.net is not allowing tarball download anymore and results
+>>>> in below error in kernel+rootfs_arm32 container build,
+>>>> urllib.error.HTTPError: HTTP Error 403: Forbidden
+>>>> urllib.error.HTTPError: HTTP Error 415: Unsupported Media Type
+>>>>
+>>>> Uprev mesa to latest version which includes a fix for this issue.
+>>>> https://gitlab.freedesktop.org/mesa/mesa/-/commit/908f444e
+>>>>
+>>>> Use id_tokens for JWT authentication. Since s3 bucket is migrated to
+>>>> mesa-rootfs, update the variables accordingly. Also copy helper scripts
+>>>> to install, so that the ci jobs can use these scripts for logging.
+>>>>
+>>>> Signed-off-by: Vignesh Raman <vignesh.raman@collabora.com>
+>>>> ---
+>>>>
+>>>> v2:
+>>>>     - Uprev to recent version and use id_tokens for JWT authentication
+>>>>
+>>>> ---
+>>>>    drivers/gpu/drm/ci/build-igt.sh   |  2 +-
+>>>>    drivers/gpu/drm/ci/build.sh       |  6 +++--
+>>>>    drivers/gpu/drm/ci/container.yml  | 12 +++------
+>>>>    drivers/gpu/drm/ci/gitlab-ci.yml  | 44 +++++++++++++++++++++----------
+>>>>    drivers/gpu/drm/ci/image-tags.yml |  2 +-
+>>>>    drivers/gpu/drm/ci/lava-submit.sh |  4 +--
+>>>>    drivers/gpu/drm/ci/test.yml       |  2 ++
+>>>>    7 files changed, 44 insertions(+), 28 deletions(-)
+>>>>
+>>>
+>>> [skipped]
+>>>
+>>>> diff --git a/drivers/gpu/drm/ci/test.yml b/drivers/gpu/drm/ci/test.yml
+>>>> index 8bc63912fddb..612c9ede3507 100644
+>>>> --- a/drivers/gpu/drm/ci/test.yml
+>>>> +++ b/drivers/gpu/drm/ci/test.yml
+>>>> @@ -150,6 +150,8 @@ msm:sdm845:
+>>>>        BM_KERNEL: https://${PIPELINE_ARTIFACTS_BASE}/arm64/cheza-kernel
+>>>>        GPU_VERSION: sdm845
+>>>>        RUNNER_TAG: google-freedreno-cheza
+>>>> +    DEVICE_TYPE: sdm845-cheza-r3
+>>>> +    FARM: google
+>>>
+>>> I see that this is the only user of the FARM: tag. Is it correct?
+>>
+>> No, we need to add FARM variable for other jobs as well.
+> 
+> Why? Even if we have to, we don't have them now and the change doesn't
+> seem to be related to the uprev'ing of mesa. So this probably should
+> go to a separate commit.
+
+I will move them to separate commit.
+
+Regards,
+Vignesh
+
+> 
+>>
+>>> Also we miss DEVICE_TYPE for several other boards. Should we be adding
+>>> them?
+>>
+>> Yes, device type needs to be added for msm:apq8016, msm:apq8096, virtio_gpu.
+>>
+>> I will add this. Thanks.
+> 
+> I'd guess, separate commit too.
+> 
+>>
+>> Regards,
+>> Vignesh
+>>
+>>>
+>>>>      script:
+>>>>        - ./install/bare-metal/cros-servo.sh
+>>>>
+>>>> --
+>>>> 2.40.1
+>>>>
+>>>
+> 
+> 
+> 
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
