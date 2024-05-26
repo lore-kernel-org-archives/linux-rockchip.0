@@ -4,66 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 087E8C25B74
-	for <linux-rockchip@archiver.kernel.org>; Fri, 24 May 2024 10:42:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BE94FC25B7A
+	for <linux-rockchip@archiver.kernel.org>; Sun, 26 May 2024 17:57:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To:From:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=oKpCwTgZeYwp6jCjplP/N3bMvoqDm3qOiGYH7N4nMJA=; b=g5gaem6cLCDet3
-	7qLEEJ6FTGgmLWBHII6sVz0O7a71ZOeWMqf4SF9Ya7bdxZwkWbV677VfQG5g4/Wp8ykbg+ZjxO8WS
-	HbdoOK05St3d0HCI7whtiQEu9JjehxGM55UEl32Z7J1wQKh9UeU8Ik4x6PC5JB22HhZrVRuMrZHlz
-	6jEcr/cuodNSQVMwUKbYmNM90MSJml9FrYqrj5CONszVCsQywj8W/DAqNnOr8RKbQZPaG80Hz54ST
-	gW5nd990QHI24lAaZc7xRE2vSV/L4tnl9Ec0eBeOZRjwxiWTvrdiAlTt2eHdRCFGH1DPclQy6mwLo
-	zjT7OdjkEnSQjKDiFemA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=pN7p6xowyGLiwnr3y0tvrOPFsQpuO65BqtMKeI44ST4=; b=wIvnL7VHunKwjA
+	alC8JZLV/dO1g2RoBPFdT/MaQZvMyIha0jHgRQYbLdMQooeeN4CuVBcDSWlk0+JvxPBvBKhqccKgd
+	eTA+1iajccuULaoPf9PaPU9BGEVidOKPZAXVPrRR6olTRzKrPlwJLiXvXZhRYw0RltT0URYnYfADU
+	/JS0+8TA0ff4omWX3dj+75Ovl2Cz+xWnjW81lt0iyGOHN9KyP7XGddqkBYk1VUAixnitnnM2WCnpf
+	X+RniHgztAmiSr1oPgsPJzcynr0TFBY91xwSyVbWqThCGnLgGUQGMWUwRAzELV9ll8XDEnGETA4q0
+	LMGW7+BmjxYxLlQ5HmkQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sASNh-00000008iFB-15EP;
-	Fri, 24 May 2024 10:42:37 +0000
-Received: from mail-m15572.qiye.163.com ([101.71.155.72])
+	id 1sBI7Z-0000000D2kQ-1UXZ;
+	Sun, 26 May 2024 17:57:25 +0000
+Received: from fllv0016.ext.ti.com ([198.47.19.142])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sASNd-00000008iD3-1OsR
+	id 1sBI7V-0000000D2i0-20Kl
 	for linux-rockchip@lists.infradead.org;
-	Fri, 24 May 2024 10:42:35 +0000
-DKIM-Signature: a=rsa-sha256;
-	b=GkfVqmOeodjSsHUIq7QZo9oKtwtbKwTt1qnHgCTG7/yWGhv2yHi+u/CK66SOf+nx56G2fHNn+AAnB5zgRSEuWjsTBo7MLRQ4oNxI3lq9VLlgWAJc6ywdMRjS2vUfXHuxgqyIoQ9fOYEhpFMhZiu+gSqQmlvfR259P0J6HSLXrSY=;
-	c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=vlYy6kfDRcuOHsQw1Qcrcg0CgVRI1V2ODtI9AvFKsJ4=;
-	h=date:mime-version:subject:message-id:from;
-Received: from [172.16.12.141] (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTPA id ADE8E840B0B;
-	Fri, 24 May 2024 18:41:51 +0800 (CST)
-Message-ID: <5dec9bd2-88ed-46e6-bb8d-fa899b563fd3@rock-chips.com>
-Date: Fri, 24 May 2024 18:41:51 +0800
+	Sun, 26 May 2024 17:57:24 +0000
+Received: from lelv0265.itg.ti.com ([10.180.67.224])
+	by fllv0016.ext.ti.com (8.15.2/8.15.2) with ESMTP id 44QHuvZ3055262;
+	Sun, 26 May 2024 12:56:57 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ti.com;
+	s=ti-com-17Q1; t=1716746217;
+	bh=7x5QJeZY2rdnnAQKrhfcOhJcGH4F2nkBoyn9SE/tYGU=;
+	h=From:To:CC:Subject:Date;
+	b=yVTvSE13f5Gn+8FQHGaopajGzuJ8BkEOII4wjIXU636N0nSJnJysNshFtii/rJ6ti
+	 3okVf9u6eMF0pHQfmK486oEnWGt779WMhcc31qH3M2D0Me2UGRjUi+bBZfhqKyW1Ih
+	 4LeOVQFCWmN6s5QHHt9Eewz2SUqp5mMgeRKMUac8=
+Received: from DLEE101.ent.ti.com (dlee101.ent.ti.com [157.170.170.31])
+	by lelv0265.itg.ti.com (8.15.2/8.15.2) with ESMTPS id 44QHuvCL009621
+	(version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=FAIL);
+	Sun, 26 May 2024 12:56:57 -0500
+Received: from DLEE112.ent.ti.com (157.170.170.23) by DLEE101.ent.ti.com
+ (157.170.170.31) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.2507.23; Sun, 26
+ May 2024 12:56:56 -0500
+Received: from lelvsmtp5.itg.ti.com (10.180.75.250) by DLEE112.ent.ti.com
+ (157.170.170.23) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.2507.23 via
+ Frontend Transport; Sun, 26 May 2024 12:56:56 -0500
+Received: from localhost (ti.dhcp.ti.com [172.24.227.95] (may be forged))
+	by lelvsmtp5.itg.ti.com (8.15.2/8.15.2) with ESMTP id 44QHuteW077438;
+	Sun, 26 May 2024 12:56:56 -0500
+From: Devarsh Thakkar <devarsht@ti.com>
+To: <mchehab@kernel.org>, <robh@kernel.org>,
+        <krzysztof.kozlowski+dt@linaro.org>, <conor+dt@kernel.org>,
+        <hverkuil-cisco@xs4all.nl>, <linux-media@vger.kernel.org>,
+        <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+        <benjamin.gaignard@collabora.com>, <sebastian.fricke@collabora.com>
+CC: <laurent.pinchart@ideasonboard.com>, <praneeth@ti.com>, <nm@ti.com>,
+        <vigneshr@ti.com>, <a-bhatia1@ti.com>, <j-luthra@ti.com>,
+        <b-brnich@ti.com>, <detheridge@ti.com>, <p-mantena@ti.com>,
+        <vijayp@ti.com>, <devarsht@ti.com>, <andrzej.p@collabora.com>,
+        <nicolas@ndufresne.ca>, <akpm@linux-foundation.org>,
+        <gregkh@linuxfoundation.org>, <andriy.shevchenko@linux.intel.com>,
+        <adobriyan@gmail.com>, <p.zabel@pengutronix.de>, <airlied@gmail.com>,
+        <daniel@ffwll.ch>, <jani.nikula@intel.com>,
+        <dri-devel@lists.freedesktop.org>,
+        <linux-rockchip@lists.infradead.org>, <davidgow@google.com>,
+        <dlatypov@google.com>
+Subject: [PATCH v9 00/10] Add V4L2 M2M Driver for E5010 JPEG Encoder
+Date: Sun, 26 May 2024 23:26:55 +0530
+Message-ID: <20240526175655.1093707-1-devarsht@ti.com>
+X-Mailer: git-send-email 2.39.1
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: (subset) [PATCH v5 00/16] Add VOP2 support on rk3588
-From: Andy Yan <andy.yan@rock-chips.com>
-To: Heiko Stuebner <heiko@sntech.de>, Andy Yan <andyshrk@163.com>
-Cc: sebastian.reichel@collabora.com, krzysztof.kozlowski+dt@linaro.org,
- chris.obbard@collabora.com, robh+dt@kernel.org, devicetree@vger.kernel.org,
- kever.yang@rock-chips.com, linux-rockchip@lists.infradead.org,
- hjc@rock-chips.com, dri-devel@lists.freedesktop.org,
- linux-kernel@vger.kernel.org
-References: <20231211115547.1784587-1-andyshrk@163.com>
- <170247871959.753029.11166929824242336708.b4-ty@sntech.de>
- <7a20761b-4cec-4b65-b9fa-efce73ac4c83@rock-chips.com>
-Content-Language: en-US
-In-Reply-To: <7a20761b-4cec-4b65-b9fa-efce73ac4c83@rock-chips.com>
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGkJOS1YdTExOHUoeTRlOTkhVEwETFh
-	oSFyQUDg9ZV1kYEgtZQVlOQ1VJSVVMVUpKT1lXWRYaDxIVHRRZQVlPS0hVSk1PSU5JVUpLS1VKQl
-	kG
-X-HM-Tid: 0a8faa315ab403a4kunmade8e840b0b
-X-HM-MType: 1
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6MRw6Kxw6QzNDMRcDFi5ISUMR
-	Gj8KCi5VSlVKTEpNTk9MSEpJTU5OVTMWGhIXVRoVHwJVAhoVOwkUGBBWGBMSCwhVGBQWRVlXWRIL
-	WUFZTkNVSUlVTFVKSk9ZV1kIAVlBSEhCTTcG
+X-EXCLAIMER-MD-CONFIG: e1e8a2fd-e40a-4ac6-ac9b-f7e9cc9ee180
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240524_034233_672019_ABC8AA7F 
-X-CRM114-Status: GOOD (  10.40  )
+X-CRM114-CacheID: sfid-20240526_105721_609211_A4DDD7AD 
+X-CRM114-Status: GOOD (  15.64  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,39 +89,204 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGkgSGVpa28sCgpPbiAxMi8xNC8yMyAxNDo0NiwgQW5keSBZYW4gd3JvdGU6Cj4gSGkgSGVpa286
-Cj4gCj4gT24gMTIvMTMvMjMgMjI6NDYsIEhlaWtvIFN0dWVibmVyIHdyb3RlOgo+PiBPbiBNb24s
-IDExIERlYyAyMDIzIDE5OjU1OjQ3ICswODAwLCBBbmR5IFlhbiB3cm90ZToKPj4+IEZyb206IEFu
-ZHkgWWFuIDxhbmR5LnlhbkByb2NrLWNoaXBzLmNvbT4KPj4+Cj4+PiBUaGlzIHBhdGNoIHNldHMg
-YWltcyBhdCBlbmFibGUgdGhlIFZPUDIgc3VwcG9ydCBvbiByazM1ODguCj4+Pgo+Pj4gTWFpbiBm
-ZWF0dXJlIG9mIFZPUDIgb24gcmszNTg4Ogo+Pj4gRm91ciB2aWRlbyBwb3J0czoKPj4+IFZQMCBN
-YXggNDA5NngyMTYwCj4+PiBWUDEgTWF4IDQwOTZ4MjE2MAo+Pj4gVlAyIE1heCA0MDk2eDIxNjAK
-Pj4+IFZQMyBNYXggMjA0OHgxMDgwCj4+Pgo+Pj4gWy4uLl0KPj4KPj4gQXBwbGllZCwgdGhhbmtz
-IQo+Pgo+PiBbMTAvMTZdIGR0LWJpbmRpbmdzOiBkaXNwbGF5OiB2b3AyOiBBZGQgcmszNTg4IHN1
-cHBvcnQKPj4gwqDCoMKgwqDCoMKgwqDCoCBjb21taXQ6IDRjY2RjOTJjMWZlYTczMmZhYzhmMzQz
-OGQ2Mjg4NzE5MDU1ZmExNDEKPj4gWzExLzE2XSBkdC1iaW5kaW5nczogcm9ja2NoaXAsdm9wMjog
-QWRkIG1vcmUgZW5kcG9pbnQgZGVmaW5pdGlvbgo+PiDCoMKgwqDCoMKgwqDCoMKgIGNvbW1pdDog
-ZGM3MjI2YWNhY2M2NTAyMjkxNDQ2ZjllMzNjZjk2MjQ2ZWM0OWEzMAo+PiBbMTIvMTZdIGRybS9y
-b2NrY2hpcDogdm9wMjogQWRkIHN1cHBvcnQgZm9yIHJrMzU4OAo+PiDCoMKgwqDCoMKgwqDCoMKg
-IGNvbW1pdDogNWEwMjhlOGYwNjJmYzg2MmYwNTFmOGU2MmEwZDVhMWFiYWM5MTk1NQo+PiBbMTMv
-MTZdIGRybS9yb2NrY2hpcDogdm9wMjogcmVuYW1lIFZPUF9GRUFUVVJFX09VVFBVVF8xMEJJVCB0
-byBWT1AyX1ZQX0ZFQVRVUkVfT1VUUFVUXzEwQklUCj4+IMKgwqDCoMKgwqDCoMKgwqAgY29tbWl0
-OiA5ZDdmZTc3MDRkNTM0YzJkMDQzYWZmMjk4N2YxMDY3MWE4YjQzNzNkCj4+IFsxNi8xNl0gTUFJ
-TlRBSU5FUlM6IEFkZCBteXNlbGYgYXMgYSByZXZpZXdlciBmb3Igcm9ja2NoaXAgZHJtCj4+IMKg
-wqDCoMKgwqDCoMKgwqAgY29tbWl0OiA2YzNhYjIxZjM3YTk3YTg2ODE5M2NjYmViOGE0OTJlNTEy
-MTBmZjMxCj4+Cj4+Cj4+IEkgc2tpcHBlZCB0aGUgZGVidWdmcyBwYXRjaCBmb3Igbm93LCBhcyBJ
-IG5lZWQgdG8gbG9vayBhdCB0aGF0IHNlcGFyYXRlbHkKPj4gYW5kIG9mIGNvdXJzZSB0aGUgZHRz
-IHBhdGNoIGFzIHRoYXQgbmVlZHMgdG8gd2FpdCBmb3IgaW9tbXUgbWFpbnRhaW5lcnMKPj4gdG8g
-cGljayB1cCB0aGUgYmluZGluZyBhZGRpdGlvbi4KPiAKPiBUaGF0J3MgZmluZS4gVGhhbmtzIGZv
-ciBwaWNraW5nIHRoZXNlIHNlcmllcy4KCldvdWxkIHlvdSBwbGVhc2UgdGFrZSBhIGxvb2sgYXQg
-dGhlIGRlYnVnZnMgcGF0Y2ggd2hlbiBpdCdzIGNvbnZlbmllbnQgZm9yIHlvdT8KSXQncyByZWFs
-bHkgdXNlZnVsIGZvciBkZXZlbG9wbWVudCBhbmQgYnVnIGh1bnRpbmcuCgo+IAo+Pgo+Pgo+PiBC
-ZXN0IHJlZ2FyZHMsCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5m
-cmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xp
-bnV4LXJvY2tjaGlwCg==
+This adds support for V4L2 M2M based driver for E5010 JPEG Encoder
+which is a stateful JPEG encoder from Imagination technologies
+and is present in TI AM62A SoC.
+
+While adding support for it, following additional framework changes were
+made:
+ - Moved reference quantization and huffman tables provided in
+   ITU-T-REC-T.81 to v4l2-jpeg.c as suggested in mailing list [1].
+ - Add macros to round to closest integer (either higher or lower) while
+   rounding in order of 2.
+ - Add KUnit tests for math functions.
+
+v4l2-compliance test :
+Link: https://gist.github.com/devarsht/1f039c631ca953a57f405cfce1b69e49
+
+E5010 JPEG Encoder Manual tests :
+
+Performance:
+Link: https://gist.github.com/devarsht/c40672944fd71c9a53ab55adbfd9e28b
+
+Functionality:
+Link: https://gist.github.com/devarsht/8e88fcaabff016bb2bac83d89c9d23ce
+
+Compression Quality:
+Link: https://gist.github.com/devarsht/cbcc7cd97e8c48ba1486caa2b7884655
+
+Multi Instance:
+Link: https://gist.github.com/devarsht/22c2fca08cd3441fb40f2c7a4cebc95a
+
+Crop support:
+Link: https://gist.github.com/devarsht/de6f5142f678bb1a5338abfd9f814abd
+
+Runtime PM:
+Link: https://gist.github.com/devarsht/70cd95d4440ddc678489d93885ddd4dd
+
+Math lib KUnit tests:
+Link: https://gist.github.com/devarsht/3f9042825be3da4e133b8f4eda067876
+
+[1]: 
+https://lore.kernel.org/all/de46aefe-36da-4e1a-b4fa-b375b2749181@xs4all.nl/
+
+Changelog:
+V8->V9:
+ - Remove kernel.h header file
+ - Remove stale filler data on jpeg header in E5010 jpeg driver
+
+V7->V8:
+ - Add KUnit tests for math functions
+ - Add roundclosest() for supporting rounding for non-multiple of 2
+ - Update commit message as suggested
+ - Add Reviewed-by and Acked-by tags to patches as received
+
+V6->V7:
+ - Fix cropping support
+ - Move reference huffman and quantization tables to v4l2-jpeg.c
+ - Fix suspend/resume use-case
+ - Add Reviewed-by
+
+V5->V6:
+ - Fix sparse warnings
+
+V4->V5:
+ - Sort the #includes in driver file alphabetically
+ - Rename huffman and quantization tables to not use '_'
+ - Add Reviewed-by tag
+
+V3->V4:
+- Use ti-specific compatible ti,am62a-jpeg-enc as secondary one in
+  dt-binding
+- Remove clock-names as only single clock in dt-binding
+- Fix issue with default params setting
+- Correct v4l2 error prints
+- Simplify register write functions with single statement return values
+- Remove unrequired error checks from get_queue()
+- Drop explicit device_caps setting as it is already taken care by v4l2
+  core
+- Remove unrequired multiplanar checks and memset from s_fmt, g_fmt
+  callback functions
+- Fix try_fmt callback to not update the queues
+- Remove unrequired contiguous format attribute from queue_init
+- Use dynamic allocation for video_device and remove unrequired
+  assignments in probe()
+- Remove unrequired checks from queue_setup function
+- Return queued buffers back if start_streaming fails
+- Use ARRAY_SIZE in place of hard-coding
+- Use huffman and quantization tables from reference header file
+
+V2->V3:
+- Add DONOTMERGE patches for dts and defconfig
+- Update driver with below changes :
+  - Correct license headers
+  - Use more generic name core instead of jasper for base registers
+  - Add Comment for forward declarations
+  - Simplify quantization table calculations
+  - Use v4l2_apply_frmsize_constraints for updating framesize and remove
+    unrequired functions
+  - Place TODO at top of file and in commit message too
+  - Use dev_err_probe helper in probe function
+  - Fix return value checking for failure scenarios in probe function
+  - Use v4l2_err/info/warn helpers instead of dev_err/info/warn helpers
+  - Fix unexpected indentation
+  - Correct commit message
+- Update dt-bindings with below changes :
+  - Add vendor specific compatible 
+  - Fix commit title and message
+  - Update reg names
+  - Update clocks to 1
+  - Fix dts example with proper naming
+
+V1->V2:
+ - Send dt-bindings and driver together
+
+Patch-Diff between the series :
+V8->V9 Range diff :
+https://gist.github.com/devarsht/3fd6c4e8031ab114248f93d01c8dfc74
+
+V7->V8 Range diff :
+https://gist.github.com/devarsht/3fd6c4e8031ab114248f93d01c8dfc74
+
+V6->V7 Range diff :
+https://gist.github.com/devarsht/1db185b1e187eaf397e9e4c37066777e
+
+V5->V6 Range diff :
+https://gist.github.com/devarsht/c89180ac2b0d2814614f2b59d0705c19
+
+V4->V5 Range diff :
+https://gist.github.com/devarsht/298790af819f299a0a05fec89371097b
+
+V3->V4 Range diff :
+https://gist.github.com/devarsht/22a744d999080de6e813bcfb5a596272
+
+Previous patch series:
+V8: https://lore.kernel.org/all/20240517171532.748684-1-devarsht@ti.com/
+V7: https://lore.kernel.org/all/20240510082603.1263256-1-devarsht@ti.com/
+V6: https://lore.kernel.org/all/20240228141140.3530612-1-devarsht@ti.com/
+V5: https://lore.kernel.org/all/20240215134641.3381478-1-devarsht@ti.com/
+V4: https://lore.kernel.org/all/20240205114239.924697-1-devarsht@ti.com/
+V3: https://lore.kernel.org/all/20230816152210.4080779-1-devarsht@ti.com/
+V2: https://lore.kernel.org/all/20230727112546.2201995-1-devarsht@ti.com/
+
+Daniel Latypov (1):
+  lib: add basic KUnit test for lib/math
+
+Devarsh Thakkar (9):
+  media: dt-bindings: Add Imagination E5010 JPEG Encoder
+  media: imagination: Add E5010 JPEG Encoder driver
+  media: v4l2-jpeg: Export reference quantization and huffman tables
+  media: imagination: Use exported tables from v4l2-jpeg core
+  media: verisilcon : Use exported tables from v4l2-jpeg for hantro
+    codec
+  math.h: Add macros for rounding to closest value
+  lib: math_kunit: Add tests for new macros related to rounding to
+    nearest value
+  media: imagination: Round to closest multiple for cropping region
+  gpu: ipu-v3: Use generic macro for rounding closest to specified value
+
+ .../bindings/media/img,e5010-jpeg-enc.yaml    |   75 +
+ MAINTAINERS                                   |    7 +
+ drivers/gpu/ipu-v3/ipu-image-convert.c        |    4 +-
+ drivers/media/platform/Kconfig                |    1 +
+ drivers/media/platform/Makefile               |    1 +
+ drivers/media/platform/imagination/Kconfig    |   12 +
+ drivers/media/platform/imagination/Makefile   |    3 +
+ .../platform/imagination/e5010-core-regs.h    |  585 ++++++
+ .../platform/imagination/e5010-jpeg-enc-hw.c  |  267 +++
+ .../platform/imagination/e5010-jpeg-enc-hw.h  |   42 +
+ .../platform/imagination/e5010-jpeg-enc.c     | 1644 +++++++++++++++++
+ .../platform/imagination/e5010-jpeg-enc.h     |  168 ++
+ .../platform/imagination/e5010-mmu-regs.h     |  311 ++++
+ .../media/platform/verisilicon/hantro_jpeg.c  |  128 +-
+ drivers/media/v4l2-core/v4l2-jpeg.c           |  162 +-
+ include/linux/math.h                          |   65 +
+ include/media/v4l2-jpeg.h                     |   11 +
+ lib/math/Kconfig                              |   11 +
+ lib/math/Makefile                             |    1 +
+ lib/math/math_kunit.c                         |  325 ++++
+ 20 files changed, 3705 insertions(+), 118 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/media/img,e5010-jpeg-enc.yaml
+ create mode 100644 drivers/media/platform/imagination/Kconfig
+ create mode 100644 drivers/media/platform/imagination/Makefile
+ create mode 100644 drivers/media/platform/imagination/e5010-core-regs.h
+ create mode 100644 drivers/media/platform/imagination/e5010-jpeg-enc-hw.c
+ create mode 100644 drivers/media/platform/imagination/e5010-jpeg-enc-hw.h
+ create mode 100644 drivers/media/platform/imagination/e5010-jpeg-enc.c
+ create mode 100644 drivers/media/platform/imagination/e5010-jpeg-enc.h
+ create mode 100644 drivers/media/platform/imagination/e5010-mmu-regs.h
+ create mode 100644 lib/math/math_kunit.c
+
+-- 
+2.39.1
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
