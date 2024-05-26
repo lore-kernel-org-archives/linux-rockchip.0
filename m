@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0120CC25B75
-	for <linux-rockchip@archiver.kernel.org>; Sun, 26 May 2024 23:33:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 82DB2C25B75
+	for <linux-rockchip@archiver.kernel.org>; Mon, 27 May 2024 00:42:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=UYkTL7aJFuHLx3I47yQcBmBYI78WdRSl7zcKak1NE4o=; b=hMzLvI8C0YCLHH
-	lb2pAtfiBqvarI1OY/LRka0fw9r36uUKZHA3Shg7xrnlx77hJ8lkfT8gsunApFckhlLCUXiIN9RJ/
-	jG30fZYMuvEL/RBwmgi/5LEmyTf7Jb+TQBpR3cAy5e8xUAl0FPlca1MH681AjDfzvFGKFNpmLkZBU
-	a7NgMDkiDj/r+gumJJvFGhZmh2ooIi1OeA/Ne7sErPS93IWllJ92seiI30KT60dJABM+yFdXwCTt5
-	5DoTmv9Yr+lzdTd/WnKdYmN9MHpnxDNe+aBt/Bv/KXKPQoW9obmrCisnZlopGNNXidVEfbMdiSNCU
-	8W2LLTHN0fEgqsR55i8Q==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=KuoEfaNDet1m/+NaZeExdmJkmu8CaojCENjPWV8l9To=; b=sfDlxJhL3A45do
+	sRjjv79nlO06xLNSkO1M1/5kkUyNa5xE4StRfOd7bN+xYB+hUNCB2UeRGUe5uDDWxH9bpRaPaF/SL
+	Qae1nLOtOfYgU55UPwcUVAmPGbGHEDDgVcrodyAySQl66e3FK9hmJh62M6A3/pBfL3sr0NXF+HUEH
+	Ou+yhCgytVQRnHB/748bRjd1aKJBc08Eh2WAwfBmJEb3LDlajL3xEF+sLmOKMrdv4xpIZTYmIOLHC
+	l4bOch8+TF17fQycbb0itJrZSNpTW8uaKAvaPTtaEpXYq0uxRsSApSSu0dv65XoxJ6H8i27D616ZX
+	9F/XxiMumJph2SQ9VulQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sBNMy-0000000DPn1-1M4B;
-	Sun, 26 May 2024 23:33:40 +0000
+	id 1sBORR-0000000DV4a-02eT;
+	Mon, 27 May 2024 00:42:21 +0000
 Received: from mout.web.de ([212.227.15.14])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sBNMu-0000000DPmG-1MvX;
-	Sun, 26 May 2024 23:33:38 +0000
+	id 1sBORO-0000000DV40-1dgd;
+	Mon, 27 May 2024 00:42:20 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=web.de;
-	s=s29768273; t=1716766402; x=1717371202; i=seb-dev@web.de;
-	bh=Ck9yiP7ihI2T91SwUO4f1rkfndnqU2p6BXfIvig2gCk=;
-	h=X-UI-Sender-Class:From:To:Cc:Subject:Date:Message-ID:
-	 MIME-Version:Content-Transfer-Encoding:cc:
+	s=s29768273; t=1716770531; x=1717375331; i=seb-dev@web.de;
+	bh=frJ0lI8uicyNb2amZaZ+JjmJ6+ptKOdlxCG1Cr4tB24=;
+	h=X-UI-Sender-Class:From:To:Cc:Subject:Date:Message-ID:In-Reply-To:
+	 References:MIME-Version:Content-Transfer-Encoding:cc:
 	 content-transfer-encoding:content-type:date:from:message-id:
 	 mime-version:reply-to:subject:to;
-	b=QptUMr+arYl5MZp/xa6LZ8b3ptXqm/cOxcMvWNiuSf3Zi2G3eQ7cpcoUu2zvfIvJ
-	 iOe7bf797xsyweXv1uN0b1rVd6eH+bLEmJWUPAaTXdJGlio3bycorF68EpPQV1olT
-	 mqsF266MB6RE7EprOQPNJaVofBbwWfcG36I6zPpCL3Qv94GWyyz7C1hW5QWkYAap0
-	 1u46QGzk1pij3Zi/WoWrPWgtlyl0qwMB6wQ8h3ZPbiL544YF7lloaeo0EKomAh2kn
-	 zgip5aG62kIjfAs1Pywk3tqfH31v9BZdiOZlkiiVv1XrSn2vsbqYt5UJwf7AsOfM+
-	 mQQ9mBcTevUmoFFE0w==
+	b=FvyhgoxR9pswppgtaepeMLhibem16GBxIrisWItGNokJYJ8JPLFFQYSK4ljnsDpW
+	 R0yS7X2lLJBItQsU8PElSbIAzwp3CddShEmmu1BhBDdT9iZCWOZDfOHUqPhRDxuHz
+	 GKjszeSz0uAoamBRuxdq1UGYUlS+Y0H8aA1J5/0QPZcl1urRpT2mLfZavfCLnk+v7
+	 Yiw+od5VBnRhCgeZBjahcBLcYhkl1/JFf7kJOKWto40Tt8SqfImOzPA9m21UHxmMe
+	 173anCLOkmAAUGisLzkHtQ1TbSRq6fIWTJkBlzFmMZvKQQzk/LBZTxADfsnbE628V
+	 6nqPWtCpiHI6HQ2e/w==
 X-UI-Sender-Class: 814a7b36-bfc1-4dae-8640-3722d8ec6cd6
 Received: from localhost.localdomain ([84.155.184.248]) by smtp.web.de
- (mrweb006 [213.165.67.108]) with ESMTPSA (Nemesis) id
- 1MUUAG-1s2Xf02wlc-00Qf6F; Mon, 27 May 2024 01:33:22 +0200
+ (mrweb005 [213.165.67.108]) with ESMTPSA (Nemesis) id
+ 1N2BI2-1seN2q3Wla-00tG0q; Mon, 27 May 2024 02:42:10 +0200
 From: Sebastian Kropatsch <seb-dev@web.de>
 To: Heiko Stuebner <heiko@sntech.de>,
 	linux-rockchip@lists.infradead.org
@@ -54,31 +54,34 @@ Cc: Rob Herring <robh@kernel.org>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	Sebastian Kropatsch <seb-dev@web.de>
-Subject: [PATCH 0/2] RK3588: FriendlyElec CM3588 NAS board support
-Date: Sun, 26 May 2024 23:42:15 +0200
-Message-ID: <20240526214340.8459-1-seb-dev@web.de>
+Subject: [PATCH 1/2] dt-bindings: arm: rockchip: Add CM3588 NAS
+Date: Sun, 26 May 2024 23:46:22 +0200
+Message-ID: <20240526214625.8830-1-seb-dev@web.de>
 X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20240526214340.8459-1-seb-dev@web.de>
+References: <20240526214340.8459-1-seb-dev@web.de>
 MIME-Version: 1.0
-X-Provags-ID: V03:K1:UgF7Y/I2rFfSRmOfe5K9q7vLJJ0MHmaYtmPoJ40u8djNgfnfKlk
- +q5ycSPzDccYAp0qkQpvwxAJvxy4N3/Z8dld+M4F43q0zR2JV5QfisMxtOFNXqoRz0BPrQi
- nwkfA+8Qufr2ar+eRszvoaCFbJe6nMs0ZOQg6yFeud5Fem68IUyA6kP29co/AeRittvstoz
- +n2Ifsq9V1zmbsmZ/xxYg==
-UI-OutboundReport: notjunk:1;M01:P0:mCzxCoR1YFo=;U39Y6KVr2BoiWscYlUxP30KLxFB
- d1aIuZq+RiHz+5DlSNZcjT4FEnz4mTrOEegtDs6z23CNcEXlP8XKxIRiPLHMG5tuQgYukDjTW
- NxhCpX5smb9jVAk8Fqd3hXLYjIiBCexwGNgl9jUdEtW7grUH6SjX223v1WpP9BerBLoM3Vq3I
- 2IzI1PvX0tHmZTvNEStBRkhNd0KipV2XjfgyvnAzsXUCetsQyfGq+em7XwnerPVgRCQQhs4ie
- QkmMHslnqnlQnbPVbgLzuPRneI7L9XFGs0NKtYJrvjzlw2vq3kJZWxL5IIy0kapGY6st10oFT
- JjtvEJSs/O6vp78aw1If+yob+bCBNCv0uNz7rpN5Mp0g6War8rettZgbBw1yfgEtp2MLy15HU
- AQvxCK8YSymI0TD47eqE+HyluxI8H9ml3bdZDgc26NEzi3AIEl6j4i/A1axBe8AndkAkcrq6V
- vkIlaxLButWpWvhweiZNRjRZoOmRFpuyHlYiMmtli34VntIkznlD8tqzptiIAIcXV0Nba4GVm
- izgsBVaibPcA9uq4AS8QimJPeVwCgdUIsilqxiKbyjS8Mte1JUhPvIwsm2ynEchm2N8MdEI3g
- NbRcfmvhy9vdG7/4QFFu+QKyUQihIlbklv3k72laiINiX6GkmSSuJMVSOnSPlpEHZyNJ1F6Mb
- G1STDjwc8pb774XK5uXcsNVXOkTztqwxDL9BKQaYWY8+s4lj2voMN/OZcrZAqYTRxsedBZjpD
- IzxyvGrhXWh2iI36j5G/9kmSSfgxDdmiWSz6NJZaACvymPa0d2i5FRd+jBrajb58yCXwIwg5I
- +EVgGwCnR74YER28y0BlelmfpUWuAX1AoooPvzPVbYk68=
+X-Provags-ID: V03:K1:eDvQynp6rlZyxtMKGWx5rnGRjj8VMcE0Df3Mot2Fj73oulGPFk9
+ YitcjfcUUj2onb+BqftY/Kez/h7VYIK2JHJjPH6hQRhivqoDHGPvNXiBtolQzBf0qayzZqf
+ CZjMgLxlVfbByS4q7/rdkE0zp10ypiPV06Pkz/oQsGefz0A2ZLyOq8KKXfZJDMQvkc8jeXQ
+ Z8UTC0CDGhlPAxeLIurOA==
+UI-OutboundReport: notjunk:1;M01:P0:7rTnEiaqkUc=;C+r37ENNb8ObuTCUnBL8kCFvDY9
+ m8XPPSnC7bhX6kTzi1v9ZI9EPjdpbjXIbsSkNGyOSwVViICeiKsGeB2b2TvNYMzDSY35Kveqz
+ GG6upZcGjS4f3SNt219cmAqRLHRXpg8mkmULb+RZjTmjdxt0L71aBkKTh8GkdIond0+5JWl6z
+ 8zCyO3p4p39u9+K6TnUUiEMCqXNFI89XpSD5ktY3xmW87ujehq8l3G20XwzZiZ7COzNMYsFPS
+ MBV5blAhLmCj7kgqnR6eFcig1b8OBU/HpVzQK3IHRa4TrQoZoz5aVgdNSNx3a1m5krTCdub7U
+ Oxesej3CUoKy9N1+N70GrC5r9K5f58T26nJwkM4DH/eD/qVsyZ9Z8D0+on7Nka2NfFhBKueIb
+ F1xz1YzbPDZLZ1rmpd4IvgNwLq1miHdBAyfJqa79If32z0HztrZe/jL/TmTPBYTJtfRc1Z3/x
+ AhnnrvuO1B//Pc8czODYYgxUgW5utBb/akPXoZoD8OClpCeI5uh3E+HgZTH10W2OvoiS02Mbi
+ 2LcAIkqojLj0W3SDNrGCXbRdWxBh6ClrmBEw5wKiGbAlT2q8llV51w/nZ6Kn/PZxRJgGSVWEm
+ CDzPsE1klYMCxUWbwu7Pg0mCcljjC5NT0JEW/z8mjv5jDYbdA82me/F9qQTZF1C/hz/umJSEe
+ OK2dVFKY1RA/IP8YQuRRxk5zzpyMCeKyNGRIb8WiwLFF8xO4q6WAhW0QBpNdl/NNXDtcIH1lM
+ Pta+DO8YpcqSmNwiluClcGmiamCmhpfe+RbtEky0Z8KJUSUDzAgICrkJy94nhoh358W+bcO6Y
+ noV0Y1FlYTNiAX62cvbY8W8Wjae5M14CAv40Z4yJREwUQ=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240526_163336_774897_FFF8F6B1 
-X-CRM114-Status: GOOD (  16.44  )
+X-CRM114-CacheID: sfid-20240526_174218_930313_3A722B12 
+X-CRM114-Status: UNSURE (   7.17  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,52 +98,32 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello!
+Add devicetree binding for the FriendlyElec CM3588 NAS board.
 
-This adds support for the FriendlyElec CM3588 NAS board.
-The board's device tree makes use of the latest upstream advances on the
-RK3588 like USB3 DRD and GPU support as well as the latest Rockchip PCIe
-driver bifurcation fixes, but some features such as thermal management
-and HDMI will have to be added later when SoC support for these features
-is merged.
-Since the hardware has similarities with FriendlyElec's NanoPC T6, the
-device tree for the CM3588 NAS also partially shares some sections with
-the NanoPC T6 tree.
+The CM3588 NAS by FriendlyElec pairs the CM3588 compute module, based on
+the Rockchip RK3588 SoC, with the CM3588 NAS Kit carrier board.
 
-Minor issue:
-The device enumeration of NVMe SSDs plugged into the four PCIe M.2 slots
-does not follow the order of the slots on the board: The slots are
-physically named from 1 to 4, top to bottom. However, they do not show
-up in this same order in Linux when all slots are polulated:
-   - SSD in physical slot 1 shows up as nvme0
-   - SSD in physical slot 2 shows up as nvme2
-   - SSD in physical slot 3 shows up as nvme1
-   - SSD in physical slot 4 shows up as nvme3
-This is the same order in which the data lanes are mapped for PCIe
-bifurcation (dts property: data-lanes = <1 3 2 4>).
-I could not solve this by using aliases for the PCIe nodes in the device
-tree. Perhaps this is something that can only be solved at driver level?
-I am not sure if this behaviour is even considered a bug or if this is
-intended behaviour by design.
-
-Devicetree validation:
-`make CHECK_DTBS=y rockchip/rk3588-cm3588-nas.dtb` does not give any
-warnings or errors, tested on Linux next-20240523.
-
-Best regards,
-Sebastian Kropatsch
-
+Signed-off-by: Sebastian Kropatsch <seb-dev@web.de>
 ---
-Sebastian Kropatsch (2):
-  dt-bindings: arm: rockchip: Add CM3588 NAS
-  arm64: dts: rockchip: Add CM3588 NAS board
+ Documentation/devicetree/bindings/arm/rockchip.yaml | 5 +++++
+ 1 file changed, 5 insertions(+)
 
- .../devicetree/bindings/arm/rockchip.yaml     |    5 +
- arch/arm64/boot/dts/rockchip/Makefile         |    1 +
- .../boot/dts/rockchip/rk3588-cm3588-nas.dts   | 1269 +++++++++++++++++
- 3 files changed, 1275 insertions(+)
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3588-cm3588-nas.dts
+diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
+index e04c213a0dee..93d671e13f18 100644
+--- a/Documentation/devicetree/bindings/arm/rockchip.yaml
++++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
+@@ -248,6 +248,11 @@ properties:
+           - const: friendlyarm,nanopc-t6
+           - const: rockchip,rk3588
 
++      - description: FriendlyElec CM3588 NAS
++        items:
++          - const: friendlyarm,cm3588-nas
++          - const: rockchip,rk3588
++
+       - description: GameForce Chi
+         items:
+           - const: gameforce,chi
 --
 2.43.0
 
