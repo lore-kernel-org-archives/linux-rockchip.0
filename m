@@ -4,76 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5652FC25B75
-	for <linux-rockchip@archiver.kernel.org>; Sun, 26 May 2024 18:08:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0120CC25B75
+	for <linux-rockchip@archiver.kernel.org>; Sun, 26 May 2024 23:33:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=2uin0oTDqlarMhZy4fF4yKMlNWU33msKjcnTxpmd4b0=; b=Zz5WbmtcRGF4Em
-	gmTUtGeruFjDTDzJdeSyRm++XR40Gjan6RrFbX6AazxSUetmmOOBsWZmwfBVAxwWDVOY4q0Dyc6u4
-	Uw4QSIZyqfkdihRNMsgi+a4klFot5svpnhtGeEPrHvt+Ku1VN6qqSr1OwXN44WYP/hVaismFgHRJu
-	78HnL6/HB8oiYiaTY3V6HjQGIoy9971y+VlBRQKfqbbMJktVqfc04nGAYIfsBO4WBnIsGBIEbRrUg
-	TB/t2Oj5AFE3fi89qa73WZ04FPstXub3/n75o+MpQ+IhNf9iuvmQZ4tLz9aZRgIhjRteGafC6MLbU
-	vxFshVOZL42mfaLZ1VqQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=UYkTL7aJFuHLx3I47yQcBmBYI78WdRSl7zcKak1NE4o=; b=hMzLvI8C0YCLHH
+	lb2pAtfiBqvarI1OY/LRka0fw9r36uUKZHA3Shg7xrnlx77hJ8lkfT8gsunApFckhlLCUXiIN9RJ/
+	jG30fZYMuvEL/RBwmgi/5LEmyTf7Jb+TQBpR3cAy5e8xUAl0FPlca1MH681AjDfzvFGKFNpmLkZBU
+	a7NgMDkiDj/r+gumJJvFGhZmh2ooIi1OeA/Ne7sErPS93IWllJ92seiI30KT60dJABM+yFdXwCTt5
+	5DoTmv9Yr+lzdTd/WnKdYmN9MHpnxDNe+aBt/Bv/KXKPQoW9obmrCisnZlopGNNXidVEfbMdiSNCU
+	8W2LLTHN0fEgqsR55i8Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sBIIG-0000000D3mF-1WFg;
-	Sun, 26 May 2024 18:08:28 +0000
-Received: from fllv0016.ext.ti.com ([198.47.19.142])
+	id 1sBNMy-0000000DPn1-1M4B;
+	Sun, 26 May 2024 23:33:40 +0000
+Received: from mout.web.de ([212.227.15.14])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sBIID-0000000D3l1-03Kl
-	for linux-rockchip@lists.infradead.org;
-	Sun, 26 May 2024 18:08:26 +0000
-Received: from lelv0266.itg.ti.com ([10.180.67.225])
-	by fllv0016.ext.ti.com (8.15.2/8.15.2) with ESMTP id 44QI8H9L056720;
-	Sun, 26 May 2024 13:08:17 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ti.com;
-	s=ti-com-17Q1; t=1716746897;
-	bh=KsULcLgmRswxQJSniBSyFxAPMndg5HaAe6P+m987zk8=;
-	h=From:To:CC:Subject:Date:In-Reply-To:References;
-	b=UvhyYHM1qmfj391NtqggDvG5lYF79PA8TfI0MAI+djMyOab3t2jmp2Inv4IKiKeVC
-	 XqQ8vyBrP3PLLkVctOxH8BCxw4hp65Lo7Q9M7OXLMfinMFr1RDjGrmaIyZo17yyu3l
-	 SRJ3PqzmWWQa7xbiWJYy/S6du7IXm7xYBNiwvUeI=
-Received: from DLEE100.ent.ti.com (dlee100.ent.ti.com [157.170.170.30])
-	by lelv0266.itg.ti.com (8.15.2/8.15.2) with ESMTPS id 44QI8Hae102304
-	(version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=FAIL);
-	Sun, 26 May 2024 13:08:17 -0500
-Received: from DLEE112.ent.ti.com (157.170.170.23) by DLEE100.ent.ti.com
- (157.170.170.30) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.2507.23; Sun, 26
- May 2024 13:08:17 -0500
-Received: from lelvsmtp6.itg.ti.com (10.180.75.249) by DLEE112.ent.ti.com
- (157.170.170.23) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.2507.23 via
- Frontend Transport; Sun, 26 May 2024 13:08:16 -0500
-Received: from localhost (ti.dhcp.ti.com [172.24.227.95] (may be forged))
-	by lelvsmtp6.itg.ti.com (8.15.2/8.15.2) with ESMTP id 44QI8GCk060390;
-	Sun, 26 May 2024 13:08:16 -0500
-From: Devarsh Thakkar <devarsht@ti.com>
-To: <mchehab@kernel.org>, <hverkuil-cisco@xs4all.nl>,
-        <linux-media@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-        <benjamin.gaignard@collabora.com>, <sebastian.fricke@collabora.com>,
-        <ezequiel@vanguardiasur.com.ar>, <p.zabel@pengutronix.de>,
-        <linux-rockchip@lists.infradead.org>
-CC: <laurent.pinchart@ideasonboard.com>, <praneeth@ti.com>, <nm@ti.com>,
-        <vigneshr@ti.com>, <a-bhatia1@ti.com>, <j-luthra@ti.com>,
-        <b-brnich@ti.com>, <detheridge@ti.com>, <p-mantena@ti.com>,
-        <vijayp@ti.com>, <devarsht@ti.com>, <andrzej.p@collabora.com>,
-        <nicolas@ndufresne.ca>
-Subject: [PATCH v9 05/10] media: verisilcon : Use exported tables from v4l2-jpeg for hantro codec
-Date: Sun, 26 May 2024 23:38:15 +0530
-Message-ID: <20240526180815.1122620-1-devarsht@ti.com>
-X-Mailer: git-send-email 2.39.1
-In-Reply-To: <20240526175655.1093707-1-devarsht@ti.com>
-References: <20240526175655.1093707-1-devarsht@ti.com>
+	id 1sBNMu-0000000DPmG-1MvX;
+	Sun, 26 May 2024 23:33:38 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=web.de;
+	s=s29768273; t=1716766402; x=1717371202; i=seb-dev@web.de;
+	bh=Ck9yiP7ihI2T91SwUO4f1rkfndnqU2p6BXfIvig2gCk=;
+	h=X-UI-Sender-Class:From:To:Cc:Subject:Date:Message-ID:
+	 MIME-Version:Content-Transfer-Encoding:cc:
+	 content-transfer-encoding:content-type:date:from:message-id:
+	 mime-version:reply-to:subject:to;
+	b=QptUMr+arYl5MZp/xa6LZ8b3ptXqm/cOxcMvWNiuSf3Zi2G3eQ7cpcoUu2zvfIvJ
+	 iOe7bf797xsyweXv1uN0b1rVd6eH+bLEmJWUPAaTXdJGlio3bycorF68EpPQV1olT
+	 mqsF266MB6RE7EprOQPNJaVofBbwWfcG36I6zPpCL3Qv94GWyyz7C1hW5QWkYAap0
+	 1u46QGzk1pij3Zi/WoWrPWgtlyl0qwMB6wQ8h3ZPbiL544YF7lloaeo0EKomAh2kn
+	 zgip5aG62kIjfAs1Pywk3tqfH31v9BZdiOZlkiiVv1XrSn2vsbqYt5UJwf7AsOfM+
+	 mQQ9mBcTevUmoFFE0w==
+X-UI-Sender-Class: 814a7b36-bfc1-4dae-8640-3722d8ec6cd6
+Received: from localhost.localdomain ([84.155.184.248]) by smtp.web.de
+ (mrweb006 [213.165.67.108]) with ESMTPSA (Nemesis) id
+ 1MUUAG-1s2Xf02wlc-00Qf6F; Mon, 27 May 2024 01:33:22 +0200
+From: Sebastian Kropatsch <seb-dev@web.de>
+To: Heiko Stuebner <heiko@sntech.de>,
+	linux-rockchip@lists.infradead.org
+Cc: Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Sebastian Reichel <sebastian.reichel@collabora.com>,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Sebastian Kropatsch <seb-dev@web.de>
+Subject: [PATCH 0/2] RK3588: FriendlyElec CM3588 NAS board support
+Date: Sun, 26 May 2024 23:42:15 +0200
+Message-ID: <20240526214340.8459-1-seb-dev@web.de>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-X-EXCLAIMER-MD-CONFIG: e1e8a2fd-e40a-4ac6-ac9b-f7e9cc9ee180
+X-Provags-ID: V03:K1:UgF7Y/I2rFfSRmOfe5K9q7vLJJ0MHmaYtmPoJ40u8djNgfnfKlk
+ +q5ycSPzDccYAp0qkQpvwxAJvxy4N3/Z8dld+M4F43q0zR2JV5QfisMxtOFNXqoRz0BPrQi
+ nwkfA+8Qufr2ar+eRszvoaCFbJe6nMs0ZOQg6yFeud5Fem68IUyA6kP29co/AeRittvstoz
+ +n2Ifsq9V1zmbsmZ/xxYg==
+UI-OutboundReport: notjunk:1;M01:P0:mCzxCoR1YFo=;U39Y6KVr2BoiWscYlUxP30KLxFB
+ d1aIuZq+RiHz+5DlSNZcjT4FEnz4mTrOEegtDs6z23CNcEXlP8XKxIRiPLHMG5tuQgYukDjTW
+ NxhCpX5smb9jVAk8Fqd3hXLYjIiBCexwGNgl9jUdEtW7grUH6SjX223v1WpP9BerBLoM3Vq3I
+ 2IzI1PvX0tHmZTvNEStBRkhNd0KipV2XjfgyvnAzsXUCetsQyfGq+em7XwnerPVgRCQQhs4ie
+ QkmMHslnqnlQnbPVbgLzuPRneI7L9XFGs0NKtYJrvjzlw2vq3kJZWxL5IIy0kapGY6st10oFT
+ JjtvEJSs/O6vp78aw1If+yob+bCBNCv0uNz7rpN5Mp0g6War8rettZgbBw1yfgEtp2MLy15HU
+ AQvxCK8YSymI0TD47eqE+HyluxI8H9ml3bdZDgc26NEzi3AIEl6j4i/A1axBe8AndkAkcrq6V
+ vkIlaxLButWpWvhweiZNRjRZoOmRFpuyHlYiMmtli34VntIkznlD8tqzptiIAIcXV0Nba4GVm
+ izgsBVaibPcA9uq4AS8QimJPeVwCgdUIsilqxiKbyjS8Mte1JUhPvIwsm2ynEchm2N8MdEI3g
+ NbRcfmvhy9vdG7/4QFFu+QKyUQihIlbklv3k72laiINiX6GkmSSuJMVSOnSPlpEHZyNJ1F6Mb
+ G1STDjwc8pb774XK5uXcsNVXOkTztqwxDL9BKQaYWY8+s4lj2voMN/OZcrZAqYTRxsedBZjpD
+ IzxyvGrhXWh2iI36j5G/9kmSSfgxDdmiWSz6NJZaACvymPa0d2i5FRd+jBrajb58yCXwIwg5I
+ +EVgGwCnR74YER28y0BlelmfpUWuAX1AoooPvzPVbYk68=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240526_110825_433557_64E604C3 
-X-CRM114-Status: GOOD (  12.66  )
+X-CRM114-CacheID: sfid-20240526_163336_774897_FFF8F6B1 
+X-CRM114-Status: GOOD (  16.44  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,217 +95,54 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Use v4l2-jpeg core API to import reference quantization and huffman tables
-used for JPEG Encoding.
+Hello!
 
-Signed-off-by: Devarsh Thakkar <devarsht@ti.com>
-Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
-Acked-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
----
-V9: No change
-V8: Add Reviewed-by and Acked-by tags
-V1->V6 (No change, patch introduced in V7)
----
- .../media/platform/verisilicon/hantro_jpeg.c  | 128 ++----------------
- 1 file changed, 14 insertions(+), 114 deletions(-)
+This adds support for the FriendlyElec CM3588 NAS board.
+The board's device tree makes use of the latest upstream advances on the
+RK3588 like USB3 DRD and GPU support as well as the latest Rockchip PCIe
+driver bifurcation fixes, but some features such as thermal management
+and HDMI will have to be added later when SoC support for these features
+is merged.
+Since the hardware has similarities with FriendlyElec's NanoPC T6, the
+device tree for the CM3588 NAS also partially shares some sections with
+the NanoPC T6 tree.
 
-diff --git a/drivers/media/platform/verisilicon/hantro_jpeg.c b/drivers/media/platform/verisilicon/hantro_jpeg.c
-index d07b1b449b61..fa4e8ee92c05 100644
---- a/drivers/media/platform/verisilicon/hantro_jpeg.c
-+++ b/drivers/media/platform/verisilicon/hantro_jpeg.c
-@@ -11,6 +11,7 @@
- #include <linux/build_bug.h>
- #include <linux/kernel.h>
- #include <linux/string.h>
-+#include <media/v4l2-jpeg.h>
- #include "hantro_jpeg.h"
- #include "hantro.h"
- 
-@@ -24,42 +25,6 @@
- #define HUFF_CHROMA_DC_OFF	394
- #define HUFF_CHROMA_AC_OFF	427
- 
--/* Default tables from JPEG ITU-T.81
-- * (ISO/IEC 10918-1) Annex K, tables K.1 and K.2
-- */
--static const unsigned char luma_q_table[] = {
--	0x10, 0x0b, 0x0a, 0x10, 0x18, 0x28, 0x33, 0x3d,
--	0x0c, 0x0c, 0x0e, 0x13, 0x1a, 0x3a, 0x3c, 0x37,
--	0x0e, 0x0d, 0x10, 0x18, 0x28, 0x39, 0x45, 0x38,
--	0x0e, 0x11, 0x16, 0x1d, 0x33, 0x57, 0x50, 0x3e,
--	0x12, 0x16, 0x25, 0x38, 0x44, 0x6d, 0x67, 0x4d,
--	0x18, 0x23, 0x37, 0x40, 0x51, 0x68, 0x71, 0x5c,
--	0x31, 0x40, 0x4e, 0x57, 0x67, 0x79, 0x78, 0x65,
--	0x48, 0x5c, 0x5f, 0x62, 0x70, 0x64, 0x67, 0x63
--};
--
--static const unsigned char chroma_q_table[] = {
--	0x11, 0x12, 0x18, 0x2f, 0x63, 0x63, 0x63, 0x63,
--	0x12, 0x15, 0x1a, 0x42, 0x63, 0x63, 0x63, 0x63,
--	0x18, 0x1a, 0x38, 0x63, 0x63, 0x63, 0x63, 0x63,
--	0x2f, 0x42, 0x63, 0x63, 0x63, 0x63, 0x63, 0x63,
--	0x63, 0x63, 0x63, 0x63, 0x63, 0x63, 0x63, 0x63,
--	0x63, 0x63, 0x63, 0x63, 0x63, 0x63, 0x63, 0x63,
--	0x63, 0x63, 0x63, 0x63, 0x63, 0x63, 0x63, 0x63,
--	0x63, 0x63, 0x63, 0x63, 0x63, 0x63, 0x63, 0x63
--};
--
--static const unsigned char zigzag[] = {
--	 0,  1,  8, 16,  9,  2,  3, 10,
--	17, 24, 32, 25, 18, 11,  4,  5,
--	12, 19, 26, 33, 40, 48, 41, 34,
--	27, 20, 13,  6,  7, 14, 21, 28,
--	35, 42, 49, 56, 57, 50, 43, 36,
--	29, 22, 15, 23, 30, 37, 44, 51,
--	58, 59, 52, 45, 38, 31, 39, 46,
--	53, 60, 61, 54, 47, 55, 62, 63
--};
--
- static const u32 hw_reorder[] = {
- 	 0,  8, 16, 24,  1,  9, 17, 25,
- 	32, 40, 48, 56, 33, 41, 49, 57,
-@@ -71,73 +36,6 @@ static const u32 hw_reorder[] = {
- 	38, 46, 54, 62, 39, 47, 55, 63
- };
- 
--/* Huffman tables are shared with CODA */
--static const unsigned char luma_dc_table[] = {
--	0x00, 0x01, 0x05, 0x01, 0x01, 0x01, 0x01, 0x01,
--	0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
--	0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07,
--	0x08, 0x09, 0x0a, 0x0b,
--};
--
--static const unsigned char chroma_dc_table[] = {
--	0x00, 0x03, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01,
--	0x01, 0x01, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00,
--	0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07,
--	0x08, 0x09, 0x0a, 0x0b,
--};
--
--static const unsigned char luma_ac_table[] = {
--	0x00, 0x02, 0x01, 0x03, 0x03, 0x02, 0x04, 0x03,
--	0x05, 0x05, 0x04, 0x04, 0x00, 0x00, 0x01, 0x7d,
--	0x01, 0x02, 0x03, 0x00, 0x04, 0x11, 0x05, 0x12,
--	0x21, 0x31, 0x41, 0x06, 0x13, 0x51, 0x61, 0x07,
--	0x22, 0x71, 0x14, 0x32, 0x81, 0x91, 0xa1, 0x08,
--	0x23, 0x42, 0xb1, 0xc1, 0x15, 0x52, 0xd1, 0xf0,
--	0x24, 0x33, 0x62, 0x72, 0x82, 0x09, 0x0a, 0x16,
--	0x17, 0x18, 0x19, 0x1a, 0x25, 0x26, 0x27, 0x28,
--	0x29, 0x2a, 0x34, 0x35, 0x36, 0x37, 0x38, 0x39,
--	0x3a, 0x43, 0x44, 0x45, 0x46, 0x47, 0x48, 0x49,
--	0x4a, 0x53, 0x54, 0x55, 0x56, 0x57, 0x58, 0x59,
--	0x5a, 0x63, 0x64, 0x65, 0x66, 0x67, 0x68, 0x69,
--	0x6a, 0x73, 0x74, 0x75, 0x76, 0x77, 0x78, 0x79,
--	0x7a, 0x83, 0x84, 0x85, 0x86, 0x87, 0x88, 0x89,
--	0x8a, 0x92, 0x93, 0x94, 0x95, 0x96, 0x97, 0x98,
--	0x99, 0x9a, 0xa2, 0xa3, 0xa4, 0xa5, 0xa6, 0xa7,
--	0xa8, 0xa9, 0xaa, 0xb2, 0xb3, 0xb4, 0xb5, 0xb6,
--	0xb7, 0xb8, 0xb9, 0xba, 0xc2, 0xc3, 0xc4, 0xc5,
--	0xc6, 0xc7, 0xc8, 0xc9, 0xca, 0xd2, 0xd3, 0xd4,
--	0xd5, 0xd6, 0xd7, 0xd8, 0xd9, 0xda, 0xe1, 0xe2,
--	0xe3, 0xe4, 0xe5, 0xe6, 0xe7, 0xe8, 0xe9, 0xea,
--	0xf1, 0xf2, 0xf3, 0xf4, 0xf5, 0xf6, 0xf7, 0xf8,
--	0xf9, 0xfa,
--};
--
--static const unsigned char chroma_ac_table[] = {
--	0x00, 0x02, 0x01, 0x02, 0x04, 0x04, 0x03, 0x04,
--	0x07, 0x05, 0x04, 0x04, 0x00, 0x01, 0x02, 0x77,
--	0x00, 0x01, 0x02, 0x03, 0x11, 0x04, 0x05, 0x21,
--	0x31, 0x06, 0x12, 0x41, 0x51, 0x07, 0x61, 0x71,
--	0x13, 0x22, 0x32, 0x81, 0x08, 0x14, 0x42, 0x91,
--	0xa1, 0xb1, 0xc1, 0x09, 0x23, 0x33, 0x52, 0xf0,
--	0x15, 0x62, 0x72, 0xd1, 0x0a, 0x16, 0x24, 0x34,
--	0xe1, 0x25, 0xf1, 0x17, 0x18, 0x19, 0x1a, 0x26,
--	0x27, 0x28, 0x29, 0x2a, 0x35, 0x36, 0x37, 0x38,
--	0x39, 0x3a, 0x43, 0x44, 0x45, 0x46, 0x47, 0x48,
--	0x49, 0x4a, 0x53, 0x54, 0x55, 0x56, 0x57, 0x58,
--	0x59, 0x5a, 0x63, 0x64, 0x65, 0x66, 0x67, 0x68,
--	0x69, 0x6a, 0x73, 0x74, 0x75, 0x76, 0x77, 0x78,
--	0x79, 0x7a, 0x82, 0x83, 0x84, 0x85, 0x86, 0x87,
--	0x88, 0x89, 0x8a, 0x92, 0x93, 0x94, 0x95, 0x96,
--	0x97, 0x98, 0x99, 0x9a, 0xa2, 0xa3, 0xa4, 0xa5,
--	0xa6, 0xa7, 0xa8, 0xa9, 0xaa, 0xb2, 0xb3, 0xb4,
--	0xb5, 0xb6, 0xb7, 0xb8, 0xb9, 0xba, 0xc2, 0xc3,
--	0xc4, 0xc5, 0xc6, 0xc7, 0xc8, 0xc9, 0xca, 0xd2,
--	0xd3, 0xd4, 0xd5, 0xd6, 0xd7, 0xd8, 0xd9, 0xda,
--	0xe2, 0xe3, 0xe4, 0xe5, 0xe6, 0xe7, 0xe8, 0xe9,
--	0xea, 0xf2, 0xf3, 0xf4, 0xf5, 0xf6, 0xf7, 0xf8,
--	0xf9, 0xfa,
--};
--
- /* For simplicity, we keep a pre-formatted JPEG header,
-  * and we'll use fixed offsets to change the width, height
-  * quantization tables, etc.
-@@ -291,10 +189,11 @@ jpeg_scale_quant_table(unsigned char *file_q_tab,
- 		       const unsigned char *tab, int scale)
- {
- 	int i;
-+	const u8 *zigzag;
- 
--	BUILD_BUG_ON(ARRAY_SIZE(zigzag) != JPEG_QUANT_SIZE);
- 	BUILD_BUG_ON(ARRAY_SIZE(hw_reorder) != JPEG_QUANT_SIZE);
- 
-+	v4l2_jpeg_get_zig_zag_scan(&zigzag);
- 	for (i = 0; i < JPEG_QUANT_SIZE; i++) {
- 		file_q_tab[i] = jpeg_scale_qp(tab[zigzag[i]], scale);
- 		reordered_q_tab[i] = jpeg_scale_qp(tab[hw_reorder[i]], scale);
-@@ -304,6 +203,7 @@ jpeg_scale_quant_table(unsigned char *file_q_tab,
- static void jpeg_set_quality(struct hantro_jpeg_ctx *ctx)
- {
- 	int scale;
-+	const u8 *luma_q_table, *chroma_q_table;
- 
- 	/*
- 	 * Non-linear scaling factor:
-@@ -314,21 +214,23 @@ static void jpeg_set_quality(struct hantro_jpeg_ctx *ctx)
- 	else
- 		scale = 200 - 2 * ctx->quality;
- 
--	BUILD_BUG_ON(ARRAY_SIZE(luma_q_table) != JPEG_QUANT_SIZE);
--	BUILD_BUG_ON(ARRAY_SIZE(chroma_q_table) != JPEG_QUANT_SIZE);
- 	BUILD_BUG_ON(ARRAY_SIZE(ctx->hw_luma_qtable) != JPEG_QUANT_SIZE);
- 	BUILD_BUG_ON(ARRAY_SIZE(ctx->hw_chroma_qtable) != JPEG_QUANT_SIZE);
- 
-+	v4l2_jpeg_get_reference_quantization_tables(&luma_q_table, &chroma_q_table);
- 	jpeg_scale_quant_table(ctx->buffer + LUMA_QUANT_OFF,
--			       ctx->hw_luma_qtable, luma_q_table, scale);
-+			       ctx->hw_luma_qtable, (const unsigned char *)luma_q_table, scale);
- 	jpeg_scale_quant_table(ctx->buffer + CHROMA_QUANT_OFF,
--			       ctx->hw_chroma_qtable, chroma_q_table, scale);
-+			       ctx->hw_chroma_qtable, (const unsigned char *)chroma_q_table, scale);
- }
- 
- void hantro_jpeg_header_assemble(struct hantro_jpeg_ctx *ctx)
- {
- 	char *buf = ctx->buffer;
-+	const u8 *luma_dc_table, *chroma_dc_table, *luma_ac_table, *chroma_ac_table;
- 
-+	v4l2_jpeg_get_reference_huffman_tables(&luma_dc_table,  &luma_ac_table, &chroma_dc_table,
-+					       &chroma_ac_table);
- 	memcpy(buf, hantro_jpeg_header,
- 	       sizeof(hantro_jpeg_header));
- 
-@@ -337,12 +239,10 @@ void hantro_jpeg_header_assemble(struct hantro_jpeg_ctx *ctx)
- 	buf[WIDTH_OFF + 0] = ctx->width >> 8;
- 	buf[WIDTH_OFF + 1] = ctx->width;
- 
--	memcpy(buf + HUFF_LUMA_DC_OFF, luma_dc_table, sizeof(luma_dc_table));
--	memcpy(buf + HUFF_LUMA_AC_OFF, luma_ac_table, sizeof(luma_ac_table));
--	memcpy(buf + HUFF_CHROMA_DC_OFF, chroma_dc_table,
--	       sizeof(chroma_dc_table));
--	memcpy(buf + HUFF_CHROMA_AC_OFF, chroma_ac_table,
--	       sizeof(chroma_ac_table));
-+	memcpy(buf + HUFF_LUMA_DC_OFF, luma_dc_table, V4L2_JPEG_REF_HT_DC_LEN);
-+	memcpy(buf + HUFF_LUMA_AC_OFF, luma_ac_table, V4L2_JPEG_REF_HT_AC_LEN);
-+	memcpy(buf + HUFF_CHROMA_DC_OFF, chroma_dc_table, V4L2_JPEG_REF_HT_DC_LEN);
-+	memcpy(buf + HUFF_CHROMA_AC_OFF, chroma_ac_table, V4L2_JPEG_REF_HT_AC_LEN);
- 
- 	jpeg_set_quality(ctx);
- }
--- 
-2.39.1
+Minor issue:
+The device enumeration of NVMe SSDs plugged into the four PCIe M.2 slots
+does not follow the order of the slots on the board: The slots are
+physically named from 1 to 4, top to bottom. However, they do not show
+up in this same order in Linux when all slots are polulated:
+   - SSD in physical slot 1 shows up as nvme0
+   - SSD in physical slot 2 shows up as nvme2
+   - SSD in physical slot 3 shows up as nvme1
+   - SSD in physical slot 4 shows up as nvme3
+This is the same order in which the data lanes are mapped for PCIe
+bifurcation (dts property: data-lanes = <1 3 2 4>).
+I could not solve this by using aliases for the PCIe nodes in the device
+tree. Perhaps this is something that can only be solved at driver level?
+I am not sure if this behaviour is even considered a bug or if this is
+intended behaviour by design.
+
+Devicetree validation:
+`make CHECK_DTBS=y rockchip/rk3588-cm3588-nas.dtb` does not give any
+warnings or errors, tested on Linux next-20240523.
+
+Best regards,
+Sebastian Kropatsch
+
+---
+Sebastian Kropatsch (2):
+  dt-bindings: arm: rockchip: Add CM3588 NAS
+  arm64: dts: rockchip: Add CM3588 NAS board
+
+ .../devicetree/bindings/arm/rockchip.yaml     |    5 +
+ arch/arm64/boot/dts/rockchip/Makefile         |    1 +
+ .../boot/dts/rockchip/rk3588-cm3588-nas.dts   | 1269 +++++++++++++++++
+ 3 files changed, 1275 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3588-cm3588-nas.dts
+
+--
+2.43.0
 
 
 _______________________________________________
