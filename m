@@ -4,78 +4,118 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2A481C25B7D
-	for <linux-rockchip@archiver.kernel.org>; Mon, 27 May 2024 14:03:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C96ECC25B74
+	for <linux-rockchip@archiver.kernel.org>; Mon, 27 May 2024 14:27:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
-	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:Subject:References:Cc:
+	To:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=c8KRwrPY/q25cIygS4IuIOhr4qh+kSIJDD74Y6wAHgM=; b=F/EK1Xf3Av7OZO
-	KxDpkhVKqpXMDXmD8udKh+k5EvBiKEmOi7w7HfnzmhT5RyMI69qlUUcfVrKlPwHaqX3QpfQprGyXL
-	Y5MlgGOEvMrdphHwy/KcfhEoGtf8/VC4Jg/58gd7GdccWDP3yyr3WyLJtlVwqwe6fs2wGtVfvZvx9
-	iREsAfeV4T9HCaIIIgQiS8WyS+KLT3kyw3FFYUdwZSyOKGgJDpvENE3tRg8P/shYh1mklE4AvwBbe
-	aLSuAE4VTpDslxzR0QaattMFp9c7SOxiJ4BawdXwcI1HMlR8kFIVCSbNMjFWXBv5SHwOMggXx5TIK
-	Z6Yti3TI+fPnKjJN56+g==;
+	List-Owner; bh=7zDTcbVUwaDaEPtWQcFxRQmSimHm8KLWCxfdDWechVo=; b=s3wu9aCskB7HfC
+	XJgsK9nEsx1d/yq6c96OcbZCjpQ0brcALfU9hgWLBtTQOT3S5YPCaCuJC43mmU4+ILs/EIrefHnWa
+	UPtXhMlKZW3pbRqiasi7B3+RviNYb1+LN0a/S+dpsQ5xIpujz9mknxwoQkqE7/zjeIpygDGBc3FOr
+	leWzguVnSBe9Yqwa7uabKk4PqAFVT+Sj32nG0dMQU2nRBVjr3ovyeTlOZzF1fG/PyW8osOp8OCvl1
+	nrNWtoJlplZ9mrjzNoCqWzOenHOEXSmSYRM7ctkudcD2eda0kX1mvFIvVPqnu8zjNzJ3Tqhm45a44
+	xCWzr2kdEl3Rj/iS4P0w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sBawx-0000000FFkV-1TaG;
-	Mon, 27 May 2024 14:03:43 +0000
-Received: from sin.source.kernel.org ([145.40.73.55])
+	id 1sBbJg-0000000FMfa-0ACS;
+	Mon, 27 May 2024 14:27:12 +0000
+Received: from mout.web.de ([212.227.17.12])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sBasg-0000000FD71-250e;
-	Mon, 27 May 2024 13:59:26 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id BC171CE0EBF;
-	Mon, 27 May 2024 13:59:15 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A70BAC32781;
-	Mon, 27 May 2024 13:59:14 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1716818355;
-	bh=O9JW27njJm+aYBAQyeNRFptyT1x+G6F+sYjE79pnkks=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=RlzDCJ+p+VnePxdwl5lqKgDaTwaZRQFM536yldfx3MpX7622uLqY4cg2Sx/4vYhio
-	 KaREQRosWDKywooNpIWe3YCs/82XoD74n6jQJz+tLtNbIgioskksGopS4KPlnD4eVp
-	 jC9r4dQtcJdqEKSniudpfKzXUkMGsTiQ4kLpNelKbjxZhTDg/xdb5Cg8SmnT0cx/Uu
-	 +2JqH3yiQ3c1hqhEc401DsuOiIV9PrTSvcWR69cPD810lcQ0feFwPgTpptUtqljPUR
-	 N6plVHPUEWhJuaudVc/bYXV44IF0UFPB7NkBqSpfoljDZUg2hcoIX+bKTaQQSTlXc1
-	 nwshQQkqFr8SA==
-From: Maxime Ripard <mripard@kernel.org>
-Date: Mon, 27 May 2024 15:58:13 +0200
-Subject: [PATCH v15 24/29] drm/connector: hdmi: Create Infoframe DebugFS
- entries
+	id 1sBbJD-0000000FMKS-0kaT;
+	Mon, 27 May 2024 14:26:46 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=web.de;
+	s=s29768273; t=1716819939; x=1717424739; i=markus.elfring@web.de;
+	bh=WBD5fZbJKASRGqCVJjwjF0/sBlA3tJ1is50PhfAuexQ=;
+	h=X-UI-Sender-Class:Message-ID:Date:MIME-Version:To:Cc:References:
+	 Subject:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:
+	 cc:content-transfer-encoding:content-type:date:from:message-id:
+	 mime-version:reply-to:subject:to;
+	b=vX3VhVktvAsC3VEpXA8voazwMQsxjS3krCXirqMDaKAZ3hS5dLEBLJJcYH/CnQUD
+	 LX884yPHk6T2CjcYkXrEWl3j7h+qjsuQr6krfiSjSbT9o7hELP6R1MOL3ePslfGIM
+	 nUn+Cno9/WCN6Qt7tnw9wJkEH43RGHNxZEMJFx1wgs5oyZoUK9bL3MJfGys243Jnt
+	 RWe1fGAwlia3NmWKjA9buWb62mNSN4PEffNKdBdV4ee2XJY9EETUDzwTlBNTo8KlT
+	 kv2IvCfd4sTrUVWvA5STc6LBECDk34micjPSbDUs3ES7nw1m899uLKkS35frEPwr4
+	 gv2XA0CeWBiz5oCAtw==
+X-UI-Sender-Class: 814a7b36-bfc1-4dae-8640-3722d8ec6cd6
+Received: from [192.168.178.21] ([94.31.83.95]) by smtp.web.de (mrweb105
+ [213.165.67.124]) with ESMTPSA (Nemesis) id 1Mtgyj-1sV3WP3CJT-017EBc; Mon, 27
+ May 2024 16:25:38 +0200
+Message-ID: <96beb071-ec2c-475f-8fa2-d519a1b1dc28@web.de>
+Date: Mon, 27 May 2024 16:25:18 +0200
 MIME-Version: 1.0
-Message-Id: <20240527-kms-hdmi-connector-state-v15-24-c5af16c3aae2@kernel.org>
-References: <20240527-kms-hdmi-connector-state-v15-0-c5af16c3aae2@kernel.org>
-In-Reply-To: <20240527-kms-hdmi-connector-state-v15-0-c5af16c3aae2@kernel.org>
-To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
- Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, 
- Daniel Vetter <daniel@ffwll.ch>, Jonathan Corbet <corbet@lwn.net>, 
- Sandy Huang <hjc@rock-chips.com>, 
- =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
- Chen-Yu Tsai <wens@csie.org>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
- Samuel Holland <samuel@sholland.org>, Andy Yan <andy.yan@rock-chips.com>
-Cc: Hans Verkuil <hverkuil@xs4all.nl>, 
- Sebastian Wick <sebastian.wick@redhat.com>, 
- =?utf-8?q?Ville_Syrj=C3=A4l=C3=A4?= <ville.syrjala@linux.intel.com>, 
- dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, 
- linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
- linux-sunxi@lists.linux.dev, Maxime Ripard <mripard@kernel.org>, 
- Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
-X-Mailer: b4 0.13.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=5480; i=mripard@kernel.org;
- h=from:subject:message-id; bh=O9JW27njJm+aYBAQyeNRFptyT1x+G6F+sYjE79pnkks=;
- b=owGbwMvMwCmsHn9OcpHtvjLG02pJDGkhE7M01dJ59dYsrF35ekG68UaX7E3bWeVt7hQkPFhqv
- GZVcdekjqksDMKcDLJiiixPZMJOL29fXOVgv/IHzBxWJpAhDFycAjARc0XGhj164gs/sjVMOdKo
- bzC7zWfxpYyJV1Pf+kfYLT1Y7c8evVzgoWLYg57/m77uMJ+muPRRLWND/703v5k901/mvy2dwas
- aGpO7hH9lRPrJcO5L2w0DE3/KSoXefTD9l6j57HkzmPPvvfIHAA==
-X-Developer-Key: i=mripard@kernel.org; a=openpgp;
- fpr=BE5675C37E818C8B5764241C254BCFC56BF6CE8D
+User-Agent: Mozilla Thunderbird
+To: Peng Fan <peng.fan@nxp.com>, soc@kernel.org,
+ Alexandre Belloni <alexandre.belloni@bootlin.com>,
+ Alexandre Torgue <alexandre.torgue@foss.st.com>,
+ Alim Akhtar <alim.akhtar@samsung.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>,
+ Angelo Gioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Baolin Wang <baolin.wang@linux.alibaba.com>,
+ Chester Lin <chester62515@gmail.com>, Chunyan Zhang <zhang.lyra@gmail.com>,
+ Claudiu Beznea <claudiu.beznea@tuxon.dev>,
+ Damien Le Moal <dlemoal@kernel.org>, Dan Carpenter
+ <dan.carpenter@linaro.org>, Dong Aisheng <aisheng.dong@nxp.com>,
+ Dvorkin Dmitry <dvorkin@tibbo.com>, Emil Renner Berthing <kernel@esmil.dk>,
+ Fabio Estevam <festevam@gmail.com>,
+ Geert Uytterhoeven <geert+renesas@glider.be>,
+ Ghennadi Procopciuc <ghennadi.procopciuc@oss.nxp.com>,
+ Hal Feng <hal.feng@starfivetech.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?=
+ <heiko@sntech.de>, Jacky Bai <ping.bai@nxp.com>,
+ Jianlong Huang <jianlong.huang@starfivetech.com>,
+ Joel Stanley <joel@jms.id.au>, Jonathan Hunter <jonathanh@nvidia.com>,
+ Krzysztof Kozlowski <krzk@kernel.org>,
+ Linus Walleij <linus.walleij@linaro.org>,
+ Ludovic Desroches <ludovic.desroches@microchip.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Matthias Brugger <mbrugger@suse.com>,
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+ Nicolas Ferre <nicolas.ferre@microchip.com>, Orson Zhai
+ <orsonzhai@gmail.com>, Patrice Chotard <patrice.chotard@foss.st.com>,
+ Sascha Hauer <s.hauer@pengutronix.de>, Sean Wang <sean.wang@kernel.org>,
+ Shawn Guo <shawnguo@kernel.org>,
+ Shiraz Hashim <shiraz.linux.kernel@gmail.com>,
+ Stephen Warren <swarren@wwwdotorg.org>,
+ Sylwester Nawrocki <s.nawrocki@samsung.com>,
+ Thierry Reding <thierry.reding@gmail.com>, Tony Lindgren <tony@atomide.com>,
+ Viresh Kumar <vireshk@kernel.org>, Wells Lu <wellslutw@gmail.com>
+Cc: LKML <linux-kernel@vger.kernel.org>, linux-gpio@vger.kernel.org,
+ linux-tegra@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-stm32@st-md-mailman.stormreply.com, linux-samsung-soc@vger.kernel.org,
+ linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ linux-riscv@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ imx@lists.linux.dev, linux-aspeed@lists.ozlabs.org,
+ openbmc@lists.ozlabs.org, kernel@pengutronix.de,
+ Peng Fan <peng.fan@oss.nxp.com>,
+ Emil Renner Berthing <emil.renner.berthing@canonical.com>
+References: <20240504-pinctrl-cleanup-v2-4-26c5f2dc1181@nxp.com>
+Subject: Re: [PATCH v2 04/20] pinctrl: starfive: Use scope based of_node_put()
+ cleanups
+Content-Language: en-GB
+From: Markus Elfring <Markus.Elfring@web.de>
+In-Reply-To: <20240504-pinctrl-cleanup-v2-4-26c5f2dc1181@nxp.com>
+X-Provags-ID: V03:K1:+RyPoq5wWT0ZiaKtbHEM7oUjpYEVZsaQY6N7Y3GqAcCCbvu/2JH
+ u2A1o9G2LZb7XdHLU3H69K/ZAgfhJvU9jxdpYiqAnNWG9BA1SqA6BdADoQmnmuaRrP6fAil
+ 8Vj3+benFoPx5AOFPUxJJt7XUQwXd4D4fxOV2u0S4nMX3GZIShaRs493PFfPvepvyAbRCtv
+ sA0TyVvmVIL0Nk6+KE4zA==
+UI-OutboundReport: notjunk:1;M01:P0:31oKYLNiYt8=;Hxns51jU3fPbLxYZhS6Zxy9O8BL
+ qcSJkc+8tI81FYEgYUDEjPFyxO5CsD0G4Yr1KM0HiJM1RAdO+budqXdzmwIJQJO5p6Qgg2nVe
+ YKgM7j5yLFrWsSzyaik+NFTvY+PW6VUe11QHVHkDricbyYHE5P9qzbTg86+yeRiFSOOQZksg9
+ Xdrs6r2eTX9AowMfEJqKIKNofU6TcDdmBmEh2hd5cMEugRlaO/xU/ubiYD/XRmfkiGEw2Tk9X
+ NW8zaQg81GL2PPwft4f4poEafCoYwl+CIrmPHqURH/2YArZiC4UDm9VTu3lTVR8WSADgs2juL
+ WzjmfuF3Nb/H8VSJqqzY977EL7BYu0JfjXhqczsj/AJHIU8x7U9FkHQwVLD+/aW9Q5b/a9OPw
+ LI1zUhjAqpzjkl9ILHME5dfhA7gkD4YfqDP0iVyWu+VnmZh/pblaybHt4rD5ZI5OfaaxJKTej
+ VGs+IMuQBrMttXj/4DWsuAy6tL2ASvq9ajbc+W4PfJFRO8eiyAiXlRr8A1ilG3Wwi2usEs8x0
+ pyhK5u8Ye84ZDNXC0xiObkf3AMdCBhIc+0OAJbS7S/lr4Wa88XoId5G8Ib9v3q3Danb/+yyUK
+ 5YECHUaogBhuwKJTAPf6awFWX25sWIKFsuMiL9bOP098OSKsVamHNvrpo4VNiI2KTPlO3jYMF
+ m4zC6H3fMiyTT6q5AwrZQbBuPo5FStw2mq46jULp/VkrI2I5mP81da+ZdY2nuNi0JHqnAsXYb
+ nCNKXCaTB/N8hkFz1ZJ6BaXlj9tzCbHQ/4RlK/pJC38X/hUvhfMryOHSpF+68/zEebizBSnT2
+ Xmop5HdbEWKcl91rEpyYcoeHY0XK5F3NVihbciHAlOag4=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240527_065919_595056_543ADFED 
-X-CRM114-Status: GOOD (  15.70  )
+X-CRM114-CacheID: sfid-20240527_072644_227595_5AF20FA8 
+X-CRM114-Status: GOOD (  10.41  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,211 +127,49 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-There has been some discussions recently about the infoframes sent by
-drivers and if they were properly generated.
-
-In parallel, there's been some interest in creating an infoframe-decode
-tool similar to edid-decode.
-
-Both would be much easier if we were to expose the infoframes programmed
-in the hardware. It won't be perfect since we have no guarantee that
-it's actually what goes through the wire, but it's the best we can do.
-
-Reviewed-by: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
-Signed-off-by: Maxime Ripard <mripard@kernel.org>
----
- drivers/gpu/drm/drm_debugfs.c | 152 ++++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 152 insertions(+)
-
-diff --git a/drivers/gpu/drm/drm_debugfs.c b/drivers/gpu/drm/drm_debugfs.c
-index 08fcefd804bc..dd39a5b7a711 100644
---- a/drivers/gpu/drm/drm_debugfs.c
-+++ b/drivers/gpu/drm/drm_debugfs.c
-@@ -518,10 +518,160 @@ static const struct file_operations drm_connector_fops = {
- 	.llseek = seq_lseek,
- 	.release = single_release,
- 	.write = connector_write
- };
- 
-+#define HDMI_MAX_INFOFRAME_SIZE		29
-+
-+static ssize_t
-+audio_infoframe_read(struct file *filp, char __user *ubuf, size_t count, loff_t *ppos)
-+{
-+	struct drm_connector_hdmi_infoframe *infoframe;
-+	struct drm_connector *connector;
-+	union hdmi_infoframe *frame;
-+	u8 buf[HDMI_INFOFRAME_SIZE(AUDIO)];
-+	ssize_t len = 0;
-+
-+	connector = filp->private_data;
-+	mutex_lock(&connector->hdmi.infoframes.lock);
-+
-+	infoframe = &connector->hdmi.infoframes.audio;
-+	if (!infoframe->set)
-+		goto out;
-+
-+	frame = &infoframe->data;
-+	len = hdmi_infoframe_pack(frame, buf, sizeof(buf));
-+	if (len < 0)
-+		goto out;
-+
-+	len = simple_read_from_buffer(ubuf, count, ppos, buf, len);
-+
-+out:
-+	mutex_unlock(&connector->hdmi.infoframes.lock);
-+	return len;
-+}
-+
-+static const struct file_operations audio_infoframe_fops = {
-+	.owner   = THIS_MODULE,
-+	.open    = simple_open,
-+	.read    = audio_infoframe_read,
-+};
-+
-+static int create_hdmi_audio_infoframe_file(struct drm_connector *connector,
-+					    struct dentry *parent)
-+{
-+	struct dentry *file;
-+
-+	file = debugfs_create_file("audio", 0400, parent, connector, &audio_infoframe_fops);
-+	if (IS_ERR(file))
-+		return PTR_ERR(file);
-+
-+	return 0;
-+}
-+
-+#define DEFINE_INFOFRAME_FILE(_f) \
-+static ssize_t _f##_read_infoframe(struct file *filp, \
-+				   char __user *ubuf, \
-+				   size_t count,      \
-+				   loff_t *ppos)      \
-+{ \
-+	struct drm_connector_hdmi_infoframe *infoframe; \
-+	struct drm_connector_state *conn_state; \
-+	struct drm_connector *connector; \
-+	union hdmi_infoframe *frame; \
-+	struct drm_device *dev; \
-+	u8 buf[HDMI_MAX_INFOFRAME_SIZE]; \
-+	ssize_t len = 0; \
-+	\
-+	connector = filp->private_data; \
-+	dev = connector->dev; \
-+	\
-+	drm_modeset_lock(&dev->mode_config.connection_mutex, NULL); \
-+	\
-+	conn_state = connector->state; \
-+	infoframe = &conn_state->hdmi.infoframes._f; \
-+	if (!infoframe->set) \
-+		goto out; \
-+	\
-+	frame = &infoframe->data; \
-+	len = hdmi_infoframe_pack(frame, buf, sizeof(buf)); \
-+	if (len < 0) \
-+		goto out; \
-+	\
-+	len = simple_read_from_buffer(ubuf, count, ppos, buf, len); \
-+	\
-+out: \
-+	drm_modeset_unlock(&dev->mode_config.connection_mutex); \
-+	return len; \
-+} \
-+\
-+static const struct file_operations _f##_infoframe_fops = { \
-+	.owner = THIS_MODULE, \
-+	.open = simple_open, \
-+	.read = _f##_read_infoframe, \
-+}; \
-+\
-+static int create_hdmi_## _f ## _infoframe_file (struct drm_connector *connector, \
-+						 struct dentry *parent) \
-+{ \
-+	struct dentry *file; \
-+	\
-+	file = debugfs_create_file(#_f, 0400, parent, connector, & _f ## _infoframe_fops); \
-+	if (IS_ERR(file)) \
-+		return PTR_ERR(file); \
-+	\
-+	return 0; \
-+}
-+
-+DEFINE_INFOFRAME_FILE(avi);
-+DEFINE_INFOFRAME_FILE(hdmi);
-+DEFINE_INFOFRAME_FILE(hdr_drm);
-+DEFINE_INFOFRAME_FILE(spd);
-+
-+static int create_hdmi_infoframe_files(struct drm_connector *connector,
-+				       struct dentry *parent)
-+{
-+	int ret;
-+
-+	ret = create_hdmi_audio_infoframe_file(connector, parent);
-+	if (ret)
-+		return ret;
-+
-+	ret = create_hdmi_avi_infoframe_file(connector, parent);
-+	if (ret)
-+		return ret;
-+
-+	ret = create_hdmi_hdmi_infoframe_file(connector, parent);
-+	if (ret)
-+		return ret;
-+
-+	ret = create_hdmi_hdr_drm_infoframe_file(connector, parent);
-+	if (ret)
-+		return ret;
-+
-+	ret = create_hdmi_spd_infoframe_file(connector, parent);
-+	if (ret)
-+		return ret;
-+
-+	return 0;
-+}
-+
-+static void hdmi_debugfs_add(struct drm_connector *connector)
-+{
-+	struct dentry *dir;
-+
-+	if (!(connector->connector_type == DRM_MODE_CONNECTOR_HDMIA ||
-+	      connector->connector_type == DRM_MODE_CONNECTOR_HDMIB))
-+		return;
-+
-+	dir = debugfs_create_dir("infoframes", connector->debugfs_entry);
-+	if (IS_ERR(dir))
-+		return;
-+
-+	create_hdmi_infoframe_files(connector, dir);
-+}
-+
- void drm_debugfs_connector_add(struct drm_connector *connector)
- {
- 	struct drm_device *dev = connector->dev;
- 	struct dentry *root;
- 
-@@ -545,10 +695,12 @@ void drm_debugfs_connector_add(struct drm_connector *connector)
- 
- 	/* max bpc */
- 	debugfs_create_file("output_bpc", 0444, root, connector,
- 			    &output_bpc_fops);
- 
-+	hdmi_debugfs_add(connector);
-+
- 	if (connector->funcs->debugfs_init)
- 		connector->funcs->debugfs_init(connector, root);
- }
- 
- void drm_debugfs_connector_remove(struct drm_connector *connector)
-
--- 
-2.45.0
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+PiBVc2Ugc2NvcGUgYmFzZWQgb2Zfbm9kZV9wdXQoKSBjbGVhbnVwIHRvIHNpbXBsaWZ5IGNvZGUu
+CgpJIHNlZSBvcHBvcnR1bml0aWVzIHRvIGltcHJvdmUgYWZmZWN0ZWQgZnVuY3Rpb24gaW1wbGVt
+ZW50YXRpb25zIGFub3RoZXIgYml0LgoKCuKApgo+ICsrKyBiL2RyaXZlcnMvcGluY3RybC9zdGFy
+Zml2ZS9waW5jdHJsLXN0YXJmaXZlLWpoNzEwMC5jCuKApgo+IEBAIC01NDMsMTggKzU0MCwxOCBA
+QCBzdGF0aWMgaW50IHN0YXJmaXZlX2R0X25vZGVfdG9fbWFwKHN0cnVjdCBwaW5jdHJsX2RldiAq
+cGN0bGRldiwKPiAgCQkJcGlucyA9IGRldm1fa2NhbGxvYyhkZXYsIG5waW5zLCBzaXplb2YoKnBp
+bnMpLCBHRlBfS0VSTkVMKTsKPiAgCQkJaWYgKCFwaW5zKSB7Cj4gIAkJCQlyZXQgPSAtRU5PTUVN
+Owo+IC0JCQkJZ290byBwdXRfY2hpbGQ7Cj4gKwkJCQlnb3RvIGZyZWVfbWFwOwo+ICAJCQl9Cj4K
+PiAgCQkJcGlubXV4ID0gZGV2bV9rY2FsbG9jKGRldiwgbnBpbnMsIHNpemVvZigqcGlubXV4KSwg
+R0ZQX0tFUk5FTCk7Cj4gIAkJCWlmICghcGlubXV4KSB7Cj4gIAkJCQlyZXQgPSAtRU5PTUVNOwo+
+IC0JCQkJZ290byBwdXRfY2hpbGQ7Cj4gKwkJCQlnb3RvIGZyZWVfbWFwOwo+ICAJCQl9CuKApgo+
+IEBAIC02MjMsOCArNjIwLDYgQEAgc3RhdGljIGludCBzdGFyZml2ZV9kdF9ub2RlX3RvX21hcChz
+dHJ1Y3QgcGluY3RybF9kZXYgKnBjdGxkZXYsCj4gIAltdXRleF91bmxvY2soJnNmcC0+bXV0ZXgp
+Owo+ICAJcmV0dXJuIDA7Cj4KPiAtcHV0X2NoaWxkOgo+IC0Jb2Zfbm9kZV9wdXQoY2hpbGQpOwo+
+ICBmcmVlX21hcDoKPiAgCXBpbmN0cmxfdXRpbHNfZnJlZV9tYXAocGN0bGRldiwgbWFwLCBubWFw
+cyk7Cj4gIAltdXRleF91bmxvY2soJnNmcC0+bXV0ZXgpOwrigKYKPiArKysgYi9kcml2ZXJzL3Bp
+bmN0cmwvc3RhcmZpdmUvcGluY3RybC1zdGFyZml2ZS1qaDcxMTAuYwrigKYKPiBAQCAtMTc1LDE4
+ICsxNzUsMTggQEAgc3RhdGljIGludCBqaDcxMTBfZHRfbm9kZV90b19tYXAoc3RydWN0IHBpbmN0
+cmxfZGV2ICpwY3RsZGV2LAo+ICAJCXBpbnMgPSBkZXZtX2tjYWxsb2MoZGV2LCBucGlucywgc2l6
+ZW9mKCpwaW5zKSwgR0ZQX0tFUk5FTCk7Cj4gIAkJaWYgKCFwaW5zKSB7Cj4gIAkJCXJldCA9IC1F
+Tk9NRU07Cj4gLQkJCWdvdG8gcHV0X2NoaWxkOwo+ICsJCQlnb3RvIGZyZWVfbWFwOwo+ICAJCX0K
+Pgo+ICAJCXBpbm11eCA9IGRldm1fa2NhbGxvYyhkZXYsIG5waW5zLCBzaXplb2YoKnBpbm11eCks
+IEdGUF9LRVJORUwpOwo+ICAJCWlmICghcGlubXV4KSB7Cj4gIAkJCXJldCA9IC1FTk9NRU07Cj4g
+LQkJCWdvdG8gcHV0X2NoaWxkOwo+ICsJCQlnb3RvIGZyZWVfbWFwOwo+ICAJCX0K4oCmCj4gQEAg
+LTIzMyw4ICsyMzMsNiBAQCBzdGF0aWMgaW50IGpoNzExMF9kdF9ub2RlX3RvX21hcChzdHJ1Y3Qg
+cGluY3RybF9kZXYgKnBjdGxkZXYsCj4gIAkqbnVtX21hcHMgPSBubWFwczsKPiAgCXJldHVybiAw
+Owo+Cj4gLXB1dF9jaGlsZDoKPiAtCW9mX25vZGVfcHV0KGNoaWxkKTsKPiAgZnJlZV9tYXA6Cj4g
+IAlwaW5jdHJsX3V0aWxzX2ZyZWVfbWFwKHBjdGxkZXYsIG1hcCwgbm1hcHMpOwo+ICAJbXV0ZXhf
+dW5sb2NrKCZzZnAtPm11dGV4KTsKCgoxLiBFeGNlcHRpb24gaGFuZGxpbmcgaXMgcmVwZWF0ZWQg
+YSBmZXcgdGltZXMgYWxzbyBhY2NvcmRpbmcgdG8gbWVtb3J5IGFsbG9jYXRpb24gZmFpbHVyZXMu
+CiAgIEhvdyBkbyB5b3UgdGhpbmsgYWJvdXQgdG8gdXNlIGEgY29ycmVzcG9uZGluZyBsYWJlbCBs
+aWtlIOKAnGVfbm9tZW3igJ0KICAgc28gdGhhdCBhbm90aGVyIGJpdCBvZiBkdXBsaWNhdGUgc291
+cmNlIGNvZGUgY2FuIGJlIGF2b2lkZWQ/CiAgIGh0dHBzOi8vd2lraS5zZWkuY211LmVkdS9jb25m
+bHVlbmNlL2Rpc3BsYXkvYy9NRU0xMi1DLitDb25zaWRlcit1c2luZythK2dvdG8rY2hhaW4rd2hl
+bitsZWF2aW5nK2ErZnVuY3Rpb24rb24rZXJyb3Ird2hlbit1c2luZythbmQrcmVsZWFzaW5nK3Jl
+c291cmNlcwoKMi4gV2lsbCBkZXZlbG9wbWVudCBpbnRlcmVzdHMgZ3JvdyBmb3IgdGhlIHVzYWdl
+IG9mIGEgc3RhdGVtZW50IGxpa2Ug4oCcZ3VhcmQobXV0ZXgpKCZzZnAtPm11dGV4KTvigJ0/CgoK
+UmVnYXJkcywKTWFya3VzCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMu
+aW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZv
+L2xpbnV4LXJvY2tjaGlwCg==
