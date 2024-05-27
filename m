@@ -4,50 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DF135C25B74
-	for <linux-rockchip@archiver.kernel.org>; Mon, 27 May 2024 20:54:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E76D4C25B79
+	for <linux-rockchip@archiver.kernel.org>; Mon, 27 May 2024 22:14:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=yJ956OKgv+BhZ7sL4Pqaw2NZF+/ePNDfOX4VyIrtGww=; b=1BtxKf8U0DAt/U
-	WDW8tVPyKaew7R1fh8yqP5QB1tWgilLsZJV82yfu916JAF4nVgtLjQHvngCx8zgRgZ4u5KxVw0dju
-	DXs5Tw49MnsVvl5FeuG6qP37oNd2ucxIGXETGfPtPFhGuPsVnSuzdW+WnPaHpi78jO2UkhgfA4JOb
-	1IQS5Zw8IqVbLe11LzjJ0FAibrBDednb8ify9tbW+OimzGQPWuBofXsQ1WB6XYS+KTL1VH//UM/6z
-	DMk4g7iCenNnAVQzjJoTioom+nP2LDlthwQ+cCKVPbXIuMJOtDNdvh3gBhbKySkrt5i3E1SZgrhkO
-	E0OEvM7c1gEDmW1p3F/w==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Cc:To
+	:Subject:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=dti141VCFcUNCqVVVRnxowQtDkALspJAPDU0l4sGJ6U=; b=WSAI3z6qtwUj335+0xn3UBD7cN
+	yAbVLggNfIfW1tfs/+pa1ns7bRK9C73Ez0ZmjDUHCqvJT4xXXxGhrkSeVKCvXoJKSbL0sGkDkQk9y
+	DQdcSu+16NiYKgaEUDIXnW3qMJvaTZxHipVlEd1wGyLRmxMlhwNSzYZ2dbyK9L8dy1Wks8BjmT92B
+	8GU5IrzuHW4iw84/kV6q3ZU4renwkSoOCx2ggb2qrHWQUhLv88fq93Yl/vuSc7dTsubf88K6jJPgd
+	RM2kzMwS4zAr/XPmJ917KKqCHYqyNk1c/Y14n5tcvNXKNuWvvJDAeIhKq+h+LzzxioD0pM1R0BvHj
+	q4Xg3wAQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sBhMr-0000000GI7m-2t6y;
-	Mon, 27 May 2024 20:54:53 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1sBibz-0000000GSWL-3tqe;
+	Mon, 27 May 2024 22:14:35 +0000
+Received: from out-181.mta0.migadu.com ([91.218.175.181])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sBhMp-0000000GI7M-0Sdd;
-	Mon, 27 May 2024 20:54:52 +0000
-Received: from i5e86193d.versanet.de ([94.134.25.61] helo=diego.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1sBhMi-0004Xw-Qy; Mon, 27 May 2024 22:54:44 +0200
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: Sebastian Kropatsch <seb-dev@web.de>, Jonas Karlman <jonas@kwiboo.se>
-Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>,
- Sebastian Reichel <sebastian.reichel@collabora.com>,
- linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH 2/2] arm64: dts: rockchip: Add CM3588 NAS board
-Date: Mon, 27 May 2024 22:54:43 +0200
-Message-ID: <3609340.LM0AJKV5NW@diego>
-In-Reply-To: <9f40c748-691b-4a03-bbd6-54870f46bf05@kwiboo.se>
-References: <20240526214340.8459-1-seb-dev@web.de> <20240526214820.9381-1-seb-dev@web.de>
- <9f40c748-691b-4a03-bbd6-54870f46bf05@kwiboo.se>
+	id 1sBibu-0000000GSUM-2LEg
+	for linux-rockchip@lists.infradead.org;
+	Mon, 27 May 2024 22:14:32 +0000
+X-Envelope-To: heiko@sntech.de
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=packett.cool;
+	s=key1; t=1716848065;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=YnZ/NUIKzPnirf4nzS8FsKuGvYh2MR991UL4fFHPwO0=;
+	b=IGHQr9iszj6g7WZYaa2WxnCqObS9wjX+wmrILoqd0qwIfKD7ZV1Gy9wcIX0s3yRYOUw9g7
+	spQvOraVGUghBymnz2UaYZZQa1Qh0T86Cd5SIYEb5lsQTuMQxsKPiZsAMz0PR8dsXNb6u4
+	saUafCkEbA+yf0Ftk/AYo1iPgdym15rTqitQNvFfUXMANtcUR9UquykghQKNfFUuzJ0XqS
+	tC0j1hpFWd1P82j3ZKHHH1kMDiR+26hAgjlFdTV4ATw4Yb6Ebpe/Iv2f3GX+gVIG5/AuPJ
+	tK/B/po651uYGQ8hw3R0zls/uBmcy17wC6qxD8tZUf+sWgGMp9RTi/uL9BITpA==
+X-Envelope-To: stable@vger.kernel.org
+X-Envelope-To: hjc@rock-chips.com
+X-Envelope-To: andy.yan@rock-chips.com
+X-Envelope-To: maarten.lankhorst@linux.intel.com
+X-Envelope-To: mripard@kernel.org
+X-Envelope-To: tzimmermann@suse.de
+X-Envelope-To: airlied@gmail.com
+X-Envelope-To: daniel@ffwll.ch
+X-Envelope-To: dri-devel@lists.freedesktop.org
+X-Envelope-To: linux-arm-kernel@lists.infradead.org
+X-Envelope-To: linux-rockchip@lists.infradead.org
+X-Envelope-To: linux-kernel@vger.kernel.org
+Date: Mon, 27 May 2024 19:13:59 -0300
+X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
+From: Val Packett <val@packett.cool>
+Subject: Re: [PATCH v2 1/2] drm/rockchip: vop: clear DMA stop bit upon vblank
+ on RK3066
+To: Heiko =?iso-8859-1?q?St=FCbner?= <heiko@sntech.de>
+Cc: stable@vger.kernel.org, Sandy Huang <hjc@rock-chips.com>, Andy Yan
+	<andy.yan@rock-chips.com>, Maarten Lankhorst
+	<maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>,
+	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>,
+	Daniel Vetter <daniel@ffwll.ch>, dri-devel@lists.freedesktop.org,
+	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Message-Id: <BF06ES.TD22854ZPLB92@packett.cool>
+In-Reply-To: <1817371.3VsfAaAtOV@diego>
+References: <2024051930-canteen-produce-1ba7@gregkh>
+	<20240527071736.21784-1-val@packett.cool> <1817371.3VsfAaAtOV@diego>
 MIME-Version: 1.0
+X-Migadu-Flow: FLOW_OUT
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240527_135451_270293_DF6DA082 
-X-CRM114-Status: GOOD (  28.67  )
+X-CRM114-CacheID: sfid-20240527_151430_984469_810A868D 
+X-CRM114-Status: GOOD (  16.57  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -59,126 +85,94 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="iso-8859-1"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Am Montag, 27. Mai 2024, 21:02:02 CEST schrieb Jonas Karlman:
-> Hi Sebastian,
-> 
-> On 2024-05-26 23:48, Sebastian Kropatsch wrote:
-> > The CM3588 NAS by FriendlyElec pairs the CM3588 compute module, based on
-> > the Rockchip RK3588 SoC, with the CM3588 NAS Kit carrier board.
-> > 
-> > Hardware features:
-> >     - Rockchip RK3588 SoC
-> >     - 4GB/8GB/16GB LPDDR4x RAM
-> >     - 64GB eMMC
-> >     - MicroSD card slot
-> >     - 1x RTL8125B 2.5G Ethernet
-> >     - 4x M.2 M-Key with PCIe 3.0 x1 (via bifurcation) for NVMe SSDs
-> >     - 2x USB 3.0 (USB 3.1 Gen1) Type-A, 1x USB 2.0 Type-A
-> >     - 1x USB 3.0 Type-C with DP AltMode support
-> >     - 2x HDMI 2.1 out, 1x HDMI in
-> >     - MIPI-CSI Connector, MIPI-DSI Connector
-> >     - 40-pin GPIO header
-> >     - 4 buttons: power, reset, recovery, MASK, user button
-> >     - 3.5mm Headphone out, 2.0mm PH-2A Mic in
-> >     - 5V Fan connector, PWM buzzer, IR receiver, RTC battery connector
-> > 
-> > PCIe bifurcation is used to handle all four M.2 sockets at PCIe 3.0 x1
-> > speed. Data lane mapping in the DT is done like described in commit
-> > f8020dfb311d ("phy: rockchip-snps-pcie3: fix bifurcation on rk3588").
-> > 
-> > This device tree includes support for eMMC, SD card, ethernet, all USB2
-> > and USB3 ports, all four M.2 slots, GPU, RTC, buzzer, UART debugging as
-> > well as the buttons and LEDs.
-> > The GPIOs are labeled according to the schematics.
-> > 
-> > Signed-off-by: Sebastian Kropatsch <seb-dev@web.de>
-> > ---
-> >  arch/arm64/boot/dts/rockchip/Makefile         |    1 +
-> >  .../boot/dts/rockchip/rk3588-cm3588-nas.dts   | 1269 +++++++++++++++++
-> >  2 files changed, 1270 insertions(+)
-> >  create mode 100644 arch/arm64/boot/dts/rockchip/rk3588-cm3588-nas.dts
-> 
-> Because the CM3588 is a SoM and the NAS is a carrier board this should
-> probably be split in two, cm3588.dtsi and cm3588-nas.dts.
-
-also, because of that way too generic name "cm", please incorporate the
-company name in the filename as well. For the same reason we named
-the rk3568-wolfvision-pf5.dts that way ;-) [Wolfvision being the company]
-
-So maybe:
-rk3588-friendlyelec-cm3588.dtsi and rk3588-friendlyelec-cm3588-nas.dts
-
- 
-> > diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
-> > index c544ff507d20..f1ff58bdf2cd 100644
-> > --- a/arch/arm64/boot/dts/rockchip/Makefile
-> > +++ b/arch/arm64/boot/dts/rockchip/Makefile
-> > @@ -114,6 +114,7 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-wolfvision-pf5.dtb
-> >  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-wolfvision-pf5-display-vz.dtbo
-> >  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-wolfvision-pf5-io-expander.dtbo
-> >  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-armsom-sige7.dtb
-> > +dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-cm3588-nas.dtb
-> >  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-coolpi-cm5-evb.dtb
-> >  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-edgeble-neu6a-io.dtb
-> >  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-edgeble-neu6a-wifi.dtbo
-> > diff --git a/arch/arm64/boot/dts/rockchip/rk3588-cm3588-nas.dts b/arch/arm64/boot/dts/rockchip/rk3588-cm3588-nas.dts
-> > new file mode 100644
-> > index 000000000000..6c45b376d001
-> > --- /dev/null
-> > +++ b/arch/arm64/boot/dts/rockchip/rk3588-cm3588-nas.dts
-> > @@ -0,0 +1,1269 @@
-> > +// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
-> > +/*
-> > + * Copyright (c) 2021 Rockchip Electronics Co., Ltd.
-> > + * Copyright (c) 2023 FriendlyElec Computer Tech. Co., Ltd.
-> > + * Copyright (c) 2023 Thomas McKahan
-> > + * Copyright (c) 2024 Sebastian Kropatsch
-> > + *
-> > + */
-> > +
-> > +/dts-v1/;
-> > +
-> > +#include <dt-bindings/gpio/gpio.h>
-> > +#include <dt-bindings/input/input.h>
-> > +#include <dt-bindings/pinctrl/rockchip.h>
-> > +#include <dt-bindings/soc/rockchip,vop2.h>
-> > +#include <dt-bindings/usb/pd.h>
-> > +#include "rk3588.dtsi"
-> > +
-> > +/ {
-> > +	model = "FriendlyElec CM3588 NAS";
-> > +	compatible = "friendlyarm,cm3588-nas", "rockchip,rk3588";
-> 
-> Maybe this should be something like:
-> 
->   "friendlyarm,cm3588-nas", "friendlyarm,cm3588", "rockchip,rk3588";
-
-This also needs an update of the binding document. Please use a similar
-notion as the other som + baseboard entries
-(const for the som + enum with one entry with the baseboard)
-
-[...]
 
 
-> > +/* Connected to 5V Fan */
-> > +&pwm1 {
-> > +	pinctrl-0 = <&pwm1m1_pins>;
-> 
-> pinctrl-names is missing, should typically always be defined together
-> with pinctrl-X props, same for multiple nodes.
+On Mon, May 27 2024 at 22:43:18 +02:00:00, Heiko St=FCbner =
 
-A rationale being that you don't want the soc dtsi in a later stage adding
-a possible pinctrl-1 with the board only overriding the pinctrl-0.
-When you set the pinctrl-names as well, you get independent from that.
+<heiko@sntech.de> wrote:
+> Hi Val,
+> =
+
+> Am Montag, 27. Mai 2024, 09:16:33 CEST schrieb Val Packett:
+>>  On the RK3066, there is a bit that must be cleared, otherwise
+>>  the picture does not show up
+>> on the display (at least for RGB).
+>> =
+
+>>  Fixes: f4a6de8 ("drm: rockchip: vop: add rk3066 vop definitions")
+>>  Cc: stable@vger.kernel.org
+>>  Signed-off-by: Val Packett <val@packett.cool>
+>>  ---
+>>  v2: doing this on vblank makes more sense; added fixes tag
+> =
+
+> can you give a rationale for this please?
+> =
+
+> I.e. does this dma-stop bit need to be set on each vblank that happens
+> to push this frame to the display somehow?
 
 
-Thanks
-Heiko
+The only things I'm 100% sure about:
+
+- that bit is called dma_stop in the Android kernel's header;
+- without ever setting that bit to 1, it was getting set to 1 by the =
+
+chip itself, as logging the register on flush was showing a 1 in that =
+
+position (it was the only set bit - I guess others aren't readable =
+
+after cfg_done?);
+- without clearing it "between" frames, the whole screen is always =
+
+filled with noise, the picture is not visible.
+
+The rest is at least a bit (ha) speculative:
+
+As I understand from what the name implies, the hardware sets it to =
+
+indicate that it has scanned out the frame and is waiting for =
+
+acknowledgment (clearing) to be able to scan out the next frame. I =
+
+guess it's a redundant synchronization mechanism that was removed in =
+
+later iterations of the VOP hardware block.
+
+I've been trying to see if moving where I clear the bit affects the =
+
+sort-of-tearing-but-vertical glitches that sometimes happen, especially =
+
+early on after the system has just booted, but that seems to be =
+
+completely unrelated pixel clock craziness (the Android kernel runs the =
+
+screen at 66 fps, interestingly).
+
+I'm fairly confident that both places are "correct". The reason I'm =
+
+more on the side of vblank now is that it made logical sense to me when =
+
+I thought about it more: acknowledging that the frame has been scanned =
+
+out is a reaction to the frame having been scanned out. It's a =
+
+consequence of *that* that the acknowledgment is required for the next =
+
+frame to be drawn.
+
+Unless we can get the opinion of someone closely familiar with this =
+
+decade-old hardware, we only have this reasoning to go off of :)
+
+~val
+> =
+
 
 
 
