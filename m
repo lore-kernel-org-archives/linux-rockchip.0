@@ -4,41 +4,42 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 76145C25B79
-	for <linux-rockchip@archiver.kernel.org>; Mon, 27 May 2024 23:12:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CC37EC25B79
+	for <linux-rockchip@archiver.kernel.org>; Mon, 27 May 2024 23:15:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=a1yfhs3oIRmmjUh9ga0/5GkhTCC02JhwEd9/E7b7Exs=; b=qfPxcFNfL9LmFt
-	8vAhXoMOmVUKvAN+7Zwz8cpjW2kL3I434qqkHaxhzws3PD0aQkRByM4MJPHsbLHyKv/5AH2bMiZf9
-	Cc/MgjTNgwFRcLq5x4TcJTAevZMPcepWqdiCyOM8zPGvy0tvb2IdfDnjPUXFhqTKugFrBI+vPaH5+
-	A+1RxTmFNqV/Z6G0b/a67EffxB6LpgN+W2MSUcpHM0AbNnVpEqqPUxv9QyG9bby38NDflOmc7AZnT
-	qr0LqzZCIUMLhQoo1HcfT+uOOnvrZ6pnOI1AWU+TO0REaavu+/59by8H+m0DXqUi2gLGMMSMS0oFn
-	NJkN+TwRp1sAoslNS4fw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=vp3P9eIDi31cH5VbyymdZfCDVuQXf00gmFQTIQk/d0k=; b=oiP5rrz/QXvZi2
+	igdAdAVoQJ4Lx6x1SAi9r6Nc54nKfBV9ghkx9BwVm0HnkAe2YZbJ0vLXkBJ4rzmIRA1yQ2D+iNmD1
+	xMDMFNdughs37HskBrB0CdRu0jQkQKJE9W6uYoXxwto03E8YQZ1YgrqDZPLkt/juS1FDhtXPFRgIR
+	Mpnn1TdIG37+QL/zFmT2XfCWbtzbBh8qK0flKv4n+DT4rI6pGQhZ5YvFcOEzk6DZCag5fFsTL5ptx
+	CTJEZNFBS+K5XAJJm4LGKN5ls1NLHt7iQ2AdPJ+Vqm29H3Z9zl7LXxUschkh5iTLDtVbOhhu5qwIf
+	7HvtWscu0gmfOTWGh75w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sBjWL-0000000GYce-1SAo;
-	Mon, 27 May 2024 23:12:49 +0000
-Received: from out-179.mta0.migadu.com ([2001:41d0:1004:224b::b3])
+	id 1sBjYa-0000000GYtb-3O2P;
+	Mon, 27 May 2024 23:15:08 +0000
+Received: from out-182.mta1.migadu.com ([2001:41d0:203:375::b6])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sBjWI-0000000GYbY-25DM
+	id 1sBjYX-0000000GYsM-3qmi
 	for linux-rockchip@lists.infradead.org;
-	Mon, 27 May 2024 23:12:48 +0000
+	Mon, 27 May 2024 23:15:07 +0000
 X-Envelope-To: heiko@sntech.de
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=packett.cool;
-	s=key1; t=1716851561;
+	s=key1; t=1716851701;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding;
-	bh=NhJB2QVODdUA35I9pFEh6dmBBV56wUfJsZyxgaUD6Yc=;
-	b=V+rroTeFfCggIU6g9FhwO+eUXGJJS0N0JEH51ksOYwRUE1xcX8iTW1M2Lz3MLIx3L8gEaE
-	AMkJdPsStaC/7RR4woi4luZbmlVOy+Bd4AktN+ZMXGpthefQM4EVwhH+9IZCpRzwuU+lqQ
-	wLNLgFWNkmVKrPD5uAScrjw0LRhXVUXb1PB2ovRXV7rOqnnUztJ+qUxrBfsrwFt7/g0L4b
-	xLaL860E8FHpdok32JAMsdBjCjIvOUNAi0bqeHaCSFEBNpkapW4pBiZZorrZ+TbEjQx6AW
-	BgB63Xzdtil7TkB9VqkaJG0js7plpSgPDkxcwaQXOsZnkv5QHfUWBKmX35mRdg==
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=rhKW4Bfr7IbOIo36QDv8YnlYGqdpuvdoz4eoKDgahks=;
+	b=tCedHw5U+efuSzlAcKzL3k5UiQmzWU6hA2YKu8o3x7zoQT7f7VMMg8TD5wtYdZTChRamu4
+	27AyblLy1CdnsFxC2KAZ8OO6G4F+fc0mbRbArJrmGFVEKYtNEJSwu87QgLSKdHiQr71KHs
+	1kBNcX2G1XJmp1DZqyNbkzMD8rk29TZwlNq7xRVN7BnUarZpFtwFhZ9ZR0sswINmTX+SBh
+	k9f8py5HHnVCBD/RKIdBi/6/ZERzFEwU+46SfCkb2Mg4p6P0xsVTFZNuWsDowM2N0QX1wy
+	rkGtGqsMjqMdRFY/cUbK1pD/eYEuDXgDRKktnMNpl7+otTpaJF5ORBWz1K8Q4A==
 X-Envelope-To: val@packett.cool
 X-Envelope-To: stable@vger.kernel.org
 X-Envelope-To: hjc@rock-chips.com
@@ -68,14 +69,17 @@ Cc: Val Packett <val@packett.cool>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org
-Subject: [PATCH v3 1/2] drm/rockchip: vop: clear DMA stop bit upon vblank on RK3066
-Date: Mon, 27 May 2024 20:11:49 -0300
-Message-ID: <20240527231202.23365-1-val@packett.cool>
+Subject: [PATCH v3 2/2] drm/rockchip: vop: enable VOP_FEATURE_INTERNAL_RGB on RK3066
+Date: Mon, 27 May 2024 20:14:17 -0300
+Message-ID: <20240527231440.24021-1-val@packett.cool>
+In-Reply-To: <20240527231202.23365-1-val@packett.cool>
+References: <20240527231202.23365-1-val@packett.cool>
 MIME-Version: 1.0
 X-Migadu-Flow: FLOW_OUT
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240527_161246_708864_2CEBEC40 
-X-CRM114-Status: GOOD (  12.31  )
+X-CRM114-CacheID: sfid-20240527_161506_098645_BDAEC369 
+X-CRM114-Status: UNSURE (   7.84  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,67 +96,27 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The RK3066 VOP sets a dma_stop bit when it's done scanning out a frame
-and needs the driver to acknowledge that by clearing the bit.
-
-So unless we clear it "between" frames, the RGB output only shows noise
-instead of the picture. vblank seems to be the most appropriate place to
-do it, since it indicates exactly that: that the hardware is done
-with the frame.
-
-This seems to be a redundant synchronization mechanism that was removed
-in later iterations of the VOP hardware block.
+The RK3066 does have RGB display output, so it should be marked as such.
 
 Fixes: f4a6de8 ("drm: rockchip: vop: add rk3066 vop definitions")
 Cc: stable@vger.kernel.org
 Signed-off-by: Val Packett <val@packett.cool>
 ---
- drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 6 ++++++
- drivers/gpu/drm/rockchip/rockchip_drm_vop.h | 1 +
  drivers/gpu/drm/rockchip/rockchip_vop_reg.c | 1 +
- 3 files changed, 8 insertions(+)
+ 1 file changed, 1 insertion(+)
 
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-index a13473b2d..2731fe2b2 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-@@ -1766,6 +1766,12 @@ static void vop_handle_vblank(struct vop *vop)
- 	}
- 	spin_unlock(&drm->event_lock);
- 
-+	if (VOP_HAS_REG(vop, common, dma_stop)) {
-+		spin_lock(&vop->reg_lock);
-+		VOP_REG_SET(vop, common, dma_stop, 0);
-+		spin_unlock(&vop->reg_lock);
-+	}
-+
- 	if (test_and_clear_bit(VOP_PENDING_FB_UNREF, &vop->pending))
- 		drm_flip_work_commit(&vop->fb_unref_work, system_unbound_wq);
- }
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.h b/drivers/gpu/drm/rockchip/rockchip_drm_vop.h
-index b33e5bdc2..0cf512cc1 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.h
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.h
-@@ -122,6 +122,7 @@ struct vop_common {
- 	struct vop_reg lut_buffer_index;
- 	struct vop_reg gate_en;
- 	struct vop_reg mmu_en;
-+	struct vop_reg dma_stop;
- 	struct vop_reg out_mode;
- 	struct vop_reg standby;
- };
 diff --git a/drivers/gpu/drm/rockchip/rockchip_vop_reg.c b/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
-index b9ee02061..9bcb40a64 100644
+index 9bcb40a64..e2c6ba26f 100644
 --- a/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
 +++ b/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
-@@ -466,6 +466,7 @@ static const struct vop_output rk3066_output = {
+@@ -515,6 +515,7 @@ static const struct vop_data rk3066_vop = {
+ 	.output = &rk3066_output,
+ 	.win = rk3066_vop_win_data,
+ 	.win_size = ARRAY_SIZE(rk3066_vop_win_data),
++	.feature = VOP_FEATURE_INTERNAL_RGB,
+ 	.max_output = { 1920, 1080 },
  };
  
- static const struct vop_common rk3066_common = {
-+	.dma_stop = VOP_REG(RK3066_SYS_CTRL0, 0x1, 0),
- 	.standby = VOP_REG(RK3066_SYS_CTRL0, 0x1, 1),
- 	.out_mode = VOP_REG(RK3066_DSP_CTRL0, 0xf, 0),
- 	.cfg_done = VOP_REG(RK3066_REG_CFG_DONE, 0x1, 0),
 -- 
 2.45.1
 
