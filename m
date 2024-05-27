@@ -4,69 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 982DFC25B74
-	for <linux-rockchip@archiver.kernel.org>; Mon, 27 May 2024 13:30:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2B3D9C25B79
+	for <linux-rockchip@archiver.kernel.org>; Mon, 27 May 2024 13:58:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Rj4KAVWbS003bdRvNlEQlOMlVLppgMB9hSDskOBA64A=; b=qEXUuSqMkOOQGsKZHGZRoheaBB
-	Rilf13J3D7FEzHuda3gsgUZalI+L40PRw7KZ9FUQI+0ifT3t4o9cr/JOf9e6nJsUpn8J1DmH1XQAO
-	XRAOaV3qxr0Yk/eXSkWpEJ+slCEoVnDJGvV4i8Ow8n8xmPFDXzmAi3vdJZcOK3EgGbT+3z9XC3Sc1
-	w8hS7kGwtjFZU6vxfHVbulrpcVRoXYt0hPY1YPjcAdiCGn6EbrJoPqDyO2pzCbOR9TZUV9BG2W5OJ
-	Aph2funQCeueYgbUd8jRUMfNnfI2+nhQgS9lIDRzFzFCp2b+j9k9kgSdDDJDFCJp+6hT8pylpQbYM
-	XXGrIfEQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
+	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=BqKHHIYDaQ3JhdJ1aEVIt9S3kPpu7k5gLSEsimN1l8c=; b=tYdt2vc/glaSDU
+	Dt/mCAKxGD4xPBBdf+QwaS4ZU+GMIBdtefH64PgCIrYWeEXY+d4Rk8hPkUq6Ca01LWefDHisZ0sNi
+	jcXeEkH9CEAO478c+cPkUfia2FE6HrVnVrKx24iEc7TaMfsWXEykPagRmwMx997HKbNv71oOom+D4
+	zdFGUy56gydvLphbsxMLy1tq2tyJOdbNm6BkD9KdR/gZnz4h0mW4FR+MQbr8A8IAc0n1pkeYAOqMh
+	Y/+IvJwASOueZ6/wOFnFXtqfuTttYWno78YSkj60kedRQbzudnQ0+y0BmgO1Hbha4iH8zW6DHwKJA
+	0AGwdKCdjuB755LPO0mw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sBaR3-0000000F6CD-0k1z;
-	Mon, 27 May 2024 13:30:45 +0000
-Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
+	id 1sBarf-0000000FCNb-3ly0;
+	Mon, 27 May 2024 13:58:16 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sBaQj-0000000F5uW-11Yz;
-	Mon, 27 May 2024 13:30:28 +0000
+	id 1sBarc-0000000FCM1-0JCt;
+	Mon, 27 May 2024 13:58:13 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 07814CE0F25;
-	Mon, 27 May 2024 13:30:23 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 48CB1C4AF07;
-	Mon, 27 May 2024 13:30:22 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 5BD0961884;
+	Mon, 27 May 2024 13:58:11 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A20CBC2BBFC;
+	Mon, 27 May 2024 13:58:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1716816622;
-	bh=TF/G2ffwfrBRISpD7K1d5EZ9ItCYMb2x92oWHu7T4AM=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=F2glDx+39JvZ8wnXQ32eLjUP4/ijfHmYOPAR3IWCS52WYonp3adypyoHL43pOKEIw
-	 pua5H9IocB1EWiS+PP8277F61bmkw/7YM6Zq/yAJnDph5evoOKVrSMVPEEC8kfF0Lc
-	 eCinKxXlFityRJ45ODnWMC4rgTnkq1De/XcY6nde07CDm+9iFxYSe1hibktpnIBBA8
-	 u5g/nqZzec8VeOsqqIqlj+ggMKD4mFYlVtfUDdcqlReD4FRfkGlNeMTtcWH0MUdHrL
-	 DzfbRjC7mgqW3t9+cKg/mO/eRsTT+seji5fjvNsd1TkEPIKzMzkKVXvTv2v83M68us
-	 +LBBBDXRC+udA==
-Date: Mon, 27 May 2024 15:30:19 +0200
+	s=k20201202; t=1716818291;
+	bh=d1VbX/wJwLIo5m0XWKY1JQJGOOMNNk/jkKVB9eskgVE=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
+	b=F/X2/b3I0d09ZfyOROE2I68AblaU4/8hY3CPvoRy4++u61Kjbs3zkiguvk0Dt6d+H
+	 z+ZG619ekx1IXEeMjTPRZHqpt2WC9/lcwf9ImWGF/+ub7IUI9LlYSfHHiDzHdmoioS
+	 FMF65iiMUH05FT7IHfzupvFGNt8vBKqv8yiSlIG+APrcljrgsBujhDVy20qZQiFUI0
+	 9keciHbuinECk4ium2/t1Y44NOG4JToZ0liNf6FlDdETVlPNI3benmxg9FVdDF6q8R
+	 7Qtqou+eFBWfXk+XJ7xWNmtgwY+0OxQWt0wv3H04lZbVJchY0WIXltXsxpGEExZGhw
+	 gtl7RJKyzZ+mQ==
 From: Maxime Ripard <mripard@kernel.org>
-To: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
-Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
-	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, 
-	Daniel Vetter <daniel@ffwll.ch>, Jonathan Corbet <corbet@lwn.net>, 
-	Sandy Huang <hjc@rock-chips.com>, Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, 
-	Chen-Yu Tsai <wens@csie.org>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
-	Samuel Holland <samuel@sholland.org>, Andy Yan <andy.yan@rock-chips.com>, 
-	Hans Verkuil <hverkuil@xs4all.nl>, Sebastian Wick <sebastian.wick@redhat.com>, 
-	Ville =?utf-8?B?U3lyasOkbMOk?= <ville.syrjala@linux.intel.com>, dri-devel@lists.freedesktop.org, 
-	linux-arm-kernel@lists.infradead.org, linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-sunxi@lists.linux.dev, 
-	Dave Stevenson <dave.stevenson@raspberrypi.com>, Pekka Paalanen <pekka.paalanen@collabora.com>
-Subject: Re: [PATCH v14 17/28] drm/connector: hdmi: Add Broadcast RGB property
-Message-ID: <20240527-colorful-orange-bug-bbeefe@houat>
-References: <20240521-kms-hdmi-connector-state-v14-0-51950db4fedb@kernel.org>
- <20240521-kms-hdmi-connector-state-v14-17-51950db4fedb@kernel.org>
- <4n55dbl2h275z5ubebigri4xjtjsvt44w62n656srdgndcav2j@rrq5haucqx5u>
- <20240527-adamant-just-spaniel-ebed4e@houat>
- <a65wtf2hy7ufimkcgo5k2c34ygvtv7erwh567ngsnuaha7qiny@nl6lx67qsjuw>
+Date: Mon, 27 May 2024 15:57:50 +0200
+Subject: [PATCH v15 01/29] drm/connector: Introduce an HDMI connector
+ initialization function
 MIME-Version: 1.0
-In-Reply-To: <a65wtf2hy7ufimkcgo5k2c34ygvtv7erwh567ngsnuaha7qiny@nl6lx67qsjuw>
+Message-Id: <20240527-kms-hdmi-connector-state-v15-1-c5af16c3aae2@kernel.org>
+References: <20240527-kms-hdmi-connector-state-v15-0-c5af16c3aae2@kernel.org>
+In-Reply-To: <20240527-kms-hdmi-connector-state-v15-0-c5af16c3aae2@kernel.org>
+To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+ Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, 
+ Daniel Vetter <daniel@ffwll.ch>, Jonathan Corbet <corbet@lwn.net>, 
+ Sandy Huang <hjc@rock-chips.com>, 
+ =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
+ Chen-Yu Tsai <wens@csie.org>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
+ Samuel Holland <samuel@sholland.org>, Andy Yan <andy.yan@rock-chips.com>
+Cc: Hans Verkuil <hverkuil@xs4all.nl>, 
+ Sebastian Wick <sebastian.wick@redhat.com>, 
+ =?utf-8?q?Ville_Syrj=C3=A4l=C3=A4?= <ville.syrjala@linux.intel.com>, 
+ dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, 
+ linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+ linux-sunxi@lists.linux.dev, Maxime Ripard <mripard@kernel.org>, 
+ Dave Stevenson <dave.stevenson@raspberrypi.com>, 
+ Sui Jingfeng <sui.jingfeng@linux.dev>, 
+ Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
+X-Mailer: b4 0.13.0
+X-Developer-Signature: v=1; a=openpgp-sha256; l=3905; i=mripard@kernel.org;
+ h=from:subject:message-id; bh=d1VbX/wJwLIo5m0XWKY1JQJGOOMNNk/jkKVB9eskgVE=;
+ b=owGbwMvMwCmsHn9OcpHtvjLG02pJDGkhExOOLp5YsbQpaL9J4jq/HM/EmSazhXd4mEccDbrwv
+ caB/5NUx1QWBmFOBlkxRZYnMmGnl7cvrnKwX/kDZg4rE8gQBi5OAZjI3C+M9fGrKrs5vSyifkVL
+ TiwWbzPYeXLtkbL9d5eYT1Ps9z2hM//pDstm1fSiqFt1BrO3J21/wlinnxr/PMSa6ciShck7SgM
+ nuR0MeS4erPL66ynVYMWUlqWu68/tMPgtfFVapmK+abNhnioA
+X-Developer-Key: i=mripard@kernel.org; a=openpgp;
+ fpr=BE5675C37E818C8B5764241C254BCFC56BF6CE8D
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240527_063026_622213_C43CD539 
-X-CRM114-Status: GOOD (  35.31  )
+X-CRM114-CacheID: sfid-20240527_065812_250595_BE772981 
+X-CRM114-Status: GOOD (  15.49  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,131 +89,119 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============4279475060883824096=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+A lot of the various HDMI drivers duplicate some logic that depends on
+the HDMI spec itself and not really a particular hardware
+implementation.
 
---===============4279475060883824096==
-Content-Type: multipart/signed; micalg=pgp-sha384;
-	protocol="application/pgp-signature"; boundary="rh4txa2gphc5y7co"
-Content-Disposition: inline
+Output BPC or format selection, infoframe generation are good examples
+of such areas.
 
+This creates a lot of boilerplate, with a lot of variations, which makes
+it hard for userspace to rely on, and makes it difficult to get it right
+for drivers.
 
---rh4txa2gphc5y7co
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+In the next patches, we'll add a lot of infrastructure around the
+drm_connector and drm_connector_state structures, which will allow to
+abstract away the duplicated logic. This infrastructure comes with a few
+requirements though, and thus we need a new initialization function.
 
-Hi,
+Hopefully, this will make drivers simpler to handle, and their behaviour
+more consistent.
 
-On Mon, May 27, 2024 at 12:43:18PM GMT, Dmitry Baryshkov wrote:
-> On Mon, May 27, 2024 at 11:02:13AM +0200, Maxime Ripard wrote:
-> > Hi,
-> >=20
-> > Thanks again for that thorough review :)
-> >=20
-> > On Thu, May 23, 2024 at 01:22:56PM GMT, Dmitry Baryshkov wrote:
-> > > On Tue, May 21, 2024 at 12:13:50PM +0200, Maxime Ripard wrote:
-> > > > The i915 driver has a property to force the RGB range of an HDMI ou=
-tput.
-> > > > The vc4 driver then implemented the same property with the same
-> > > > semantics. KWin has support for it, and a PR for mutter is also the=
-re to
-> > > > support it.
-> > > >=20
-> > > > Both drivers implementing the same property with the same semantics,
-> > > > plus the userspace having support for it, is proof enough that it's
-> > > > pretty much a de-facto standard now and we can provide helpers for =
-it.
-> > > >=20
-> > > > Let's plumb it into the newly created HDMI connector.
-> > > >=20
-> > > > Reviewed-by: Dave Stevenson <dave.stevenson@raspberrypi.com>
-> > > > Acked-by: Pekka Paalanen <pekka.paalanen@collabora.com>
-> > > > Reviewed-by: Sebastian Wick <sebastian.wick@redhat.com>
-> > > > Signed-off-by: Maxime Ripard <mripard@kernel.org>
-> > > > ---
-> > > >  Documentation/gpu/kms-properties.csv            |  1 -
-> > > >  drivers/gpu/drm/display/drm_hdmi_state_helper.c |  4 +-
-> > > >  drivers/gpu/drm/drm_atomic.c                    |  2 +
-> > > >  drivers/gpu/drm/drm_atomic_uapi.c               |  4 ++
-> > > >  drivers/gpu/drm/drm_connector.c                 | 88 +++++++++++++=
-++++++++++++
-> > > >  include/drm/drm_connector.h                     | 36 ++++++++++
-> > > >  6 files changed, 133 insertions(+), 2 deletions(-)
-> > > >=20
-> > > > diff --git a/Documentation/gpu/kms-properties.csv b/Documentation/g=
-pu/kms-properties.csv
-> > > > index 0f9590834829..caef14c532d4 100644
-> > > > --- a/Documentation/gpu/kms-properties.csv
-> > > > +++ b/Documentation/gpu/kms-properties.csv
-> > > > @@ -15,11 +15,10 @@ Owner Module/Drivers,Group,Property Name,Type,P=
-roperty Values,Object attached,De
-> > > >  ,,=E2=80=9Csaturation=E2=80=9D,RANGE,"Min=3D0, Max=3D100",Connecto=
-r,TBD
-> > > >  ,,=E2=80=9Chue=E2=80=9D,RANGE,"Min=3D0, Max=3D100",Connector,TBD
-> > > >  ,Virtual GPU,=E2=80=9Csuggested X=E2=80=9D,RANGE,"Min=3D0, Max=3D0=
-xffffffff",Connector,property to suggest an X offset for a connector
-> > > >  ,,=E2=80=9Csuggested Y=E2=80=9D,RANGE,"Min=3D0, Max=3D0xffffffff",=
-Connector,property to suggest an Y offset for a connector
-> > > >  ,Optional,"""aspect ratio""",ENUM,"{ ""None"", ""4:3"", ""16:9"" }=
-",Connector,TDB
-> > > > -i915,Generic,"""Broadcast RGB""",ENUM,"{ ""Automatic"", ""Full"", =
-""Limited 16:235"" }",Connector,"When this property is set to Limited 16:23=
-5 and CTM is set, the hardware will be programmed with the result of the mu=
-ltiplication of CTM by the limited range matrix to ensure the pixels normal=
-ly in the range 0..1.0 are remapped to the range 16/255..235/255."
-> > >=20
-> > > Should it still be defined as a generic property?
-> >=20
-> > I'm not sure what you mean here, sorry. It's being documented as a
-> > connector property now, so it's very much still listed as a generic
-> > property?
->=20
-> I didn't perform my duty well enough and I didn't check the file for
-> other instances of the property. Now I indeed see a generic "Broadcast
-> RGB" property, but to me it looks like having a different set of values:
->=20
-> ,,"""Broadcast RGB""",ENUM,"{ =E2=80=9Coff=E2=80=9D, =E2=80=9Cauto=E2=80=
-=9D, =E2=80=9Con=E2=80=9D }",Connector,TBD
+Reviewed-by: Dave Stevenson <dave.stevenson@raspberrypi.com>
+Reviewed-by: Sui Jingfeng <sui.jingfeng@linux.dev>
+Reviewed-by: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
+Signed-off-by: Maxime Ripard <mripard@kernel.org>
+---
+ drivers/gpu/drm/drm_connector.c | 39 +++++++++++++++++++++++++++++++++++++++
+ include/drm/drm_connector.h     |  5 +++++
+ 2 files changed, 44 insertions(+)
 
-That's not really what I meant: that file is deprecated now and it's not
-where we document the properties anymore. This patch has improved that
-documentation and moved it to the new place, and removed the deprecated
-part.
+diff --git a/drivers/gpu/drm/drm_connector.c b/drivers/gpu/drm/drm_connector.c
+index b0516505f7ae..d9961cce8245 100644
+--- a/drivers/gpu/drm/drm_connector.c
++++ b/drivers/gpu/drm/drm_connector.c
+@@ -450,10 +450,49 @@ int drmm_connector_init(struct drm_device *dev,
+ 
+ 	return 0;
+ }
+ EXPORT_SYMBOL(drmm_connector_init);
+ 
++/**
++ * drmm_connector_hdmi_init - Init a preallocated HDMI connector
++ * @dev: DRM device
++ * @connector: A pointer to the HDMI connector to init
++ * @funcs: callbacks for this connector
++ * @connector_type: user visible type of the connector
++ * @ddc: optional pointer to the associated ddc adapter
++ *
++ * Initialises a preallocated HDMI connector. Connectors can be
++ * subclassed as part of driver connector objects.
++ *
++ * Cleanup is automatically handled with a call to
++ * drm_connector_cleanup() in a DRM-managed action.
++ *
++ * The connector structure should be allocated with drmm_kzalloc().
++ *
++ * Returns:
++ * Zero on success, error code on failure.
++ */
++int drmm_connector_hdmi_init(struct drm_device *dev,
++			     struct drm_connector *connector,
++			     const struct drm_connector_funcs *funcs,
++			     int connector_type,
++			     struct i2c_adapter *ddc)
++{
++	int ret;
++
++	if (!(connector_type == DRM_MODE_CONNECTOR_HDMIA ||
++	      connector_type == DRM_MODE_CONNECTOR_HDMIB))
++		return -EINVAL;
++
++	ret = drmm_connector_init(dev, connector, funcs, connector_type, ddc);
++	if (ret)
++		return ret;
++
++	return 0;
++}
++EXPORT_SYMBOL(drmm_connector_hdmi_init);
++
+ /**
+  * drm_connector_attach_edid_property - attach edid property.
+  * @connector: the connector
+  *
+  * Some connector types like DRM_MODE_CONNECTOR_VIRTUAL do not get a
+diff --git a/include/drm/drm_connector.h b/include/drm/drm_connector.h
+index fe88d7fc6b8f..4491c4c2fb6e 100644
+--- a/include/drm/drm_connector.h
++++ b/include/drm/drm_connector.h
+@@ -1902,10 +1902,15 @@ int drm_connector_init_with_ddc(struct drm_device *dev,
+ int drmm_connector_init(struct drm_device *dev,
+ 			struct drm_connector *connector,
+ 			const struct drm_connector_funcs *funcs,
+ 			int connector_type,
+ 			struct i2c_adapter *ddc);
++int drmm_connector_hdmi_init(struct drm_device *dev,
++			     struct drm_connector *connector,
++			     const struct drm_connector_funcs *funcs,
++			     int connector_type,
++			     struct i2c_adapter *ddc);
+ void drm_connector_attach_edid_property(struct drm_connector *connector);
+ int drm_connector_register(struct drm_connector *connector);
+ void drm_connector_unregister(struct drm_connector *connector);
+ int drm_connector_attach_encoder(struct drm_connector *connector,
+ 				      struct drm_encoder *encoder);
 
-However, this line shouldn't be there at all. I'll add a patch to remove
-it.
+-- 
+2.45.0
 
-Thanks!
-Maxime
-
---rh4txa2gphc5y7co
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iJUEABMJAB0WIQTkHFbLp4ejekA/qfgnX84Zoj2+dgUCZlSK6wAKCRAnX84Zoj2+
-duG9AYDdUpGu5aVO7zw3zFdz1kudBfe8bhW4zbk7Rqh2F38nbF9k6OHwGoXKxcQe
-BoqzGpYBf2GmKLiAj1MKfeIjRVsuVzqIgaw1sWlPvBOTPP+4TYXBl/H+8CBtp9KB
-EgfYt9ctqg==
-=NOy6
------END PGP SIGNATURE-----
-
---rh4txa2gphc5y7co--
-
-
---===============4279475060883824096==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============4279475060883824096==--
-
