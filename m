@@ -4,48 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0F473C25B7D
-	for <linux-rockchip@archiver.kernel.org>; Mon, 27 May 2024 13:59:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E818BC25B79
+	for <linux-rockchip@archiver.kernel.org>; Mon, 27 May 2024 13:59:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=vkc/4Va5WccrAQKdoAIy8E+fUsa2HcMukr9SWI5gFAU=; b=hDXGuZ6NzfnGWW
-	HTAIUzNdVeK0DzHaW30X06ugUuEm2UYMfJJ0qIBXQZiH2p9U4byIxq0LYbs4rVDPpizteZEl81ELu
-	dWW4A4XxNsdcv9mtnus6zGzeEg3mMGm8qHUXrqNSXoRWVkuPU4qRMR727u4Q+a5muXKgrtGwzib+M
-	3DaZf9zvvVLrl1fkOtDza2mKOYoT3ERTvwCWB/SsJ9+aizNvnmnKP107IZa+BooDMDS5Az9X5+UOM
-	i3ew/2EUilZ4W8o3wrcL8+Xa8uGYQdX3rci9ecKy5xq6ZeXlWo3bH1sUr23tWUAuZ8XHsa5xNngUw
-	PMa1in2/FfPOJl+xrmng==;
+	List-Owner; bh=VM5ysTF7XhaRymAwdzJH+i3NqU7LPGHjdLSZxT9oc+c=; b=meJBVbyjcezNX+
+	w4K4Pts7v/RW+DLg7cofoWLnvLY/fphCsK7x8QVNH8IPl6cBPuQ/A5uAlbUoXTfNQVy9MFXAzaRPn
+	SzWUmFJOZhsF6YPYri+VsUZzwr25lbJmEUm58X4CVrRMEvkANhWQO5EsSkdPpw3HUaC7k3F56OdHH
+	78ynJFnzHLqtX/fm02OZ/cCyTEqh9aCm2RDOOQoYleVoAHJ+hKzD8VJS6sgmB1kdcrYoRYD23+shf
+	iiSDJ0o0esbcE0ZefsD1IiSiwKUcVvkBlJE+7+M+ZqI8mX2JEZspU2ob9P4O45Mq5gO0QETlyjrN0
+	9/j7pPsEP9+kaSRjVhrA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sBasS-0000000FCwt-1qG0;
-	Mon, 27 May 2024 13:59:04 +0000
+	id 1sBasu-0000000FDK6-0p2j;
+	Mon, 27 May 2024 13:59:32 +0000
 Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sBarm-0000000FCPn-3bbc;
-	Mon, 27 May 2024 13:58:25 +0000
+	id 1sBarz-0000000FCZP-3B7x;
+	Mon, 27 May 2024 13:58:43 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 082A6CE0EBF;
-	Mon, 27 May 2024 13:58:18 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7067FC4AF09;
-	Mon, 27 May 2024 13:58:16 +0000 (UTC)
+	by sin.source.kernel.org (Postfix) with ESMTP id B6CFDCE0F8B;
+	Mon, 27 May 2024 13:58:31 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 91C48C4AF08;
+	Mon, 27 May 2024 13:58:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1716818297;
-	bh=yFSA4w+ARQ3QxiRHadSdscbu33xQm71NKpYfvHru96g=;
+	s=k20201202; t=1716818311;
+	bh=SOQPfNrUwyqfTmtStDudqnm+AIbryO28dU1DQhlSVNA=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=GV9MYTmTwngBdCcXfzHETJ8Wbcgt3aKov2LNZ2uH4lGVYolSIKHUTUQn0/lBfz43G
-	 lA6l74M2PsSMkeO2vAQiaoSQANNEOe1EKSIDLPIn//dlg1TMr2o+pDfrgeGHvofvUw
-	 RiEtLljY52Gxd+YrG06WUK8A+IxkckEFW9+3D3QjOS7fN6AmyQFh1ANWM1Cmu+BYpv
-	 L+dASaKGiEHxMvOAl9ev7uiF1VN5fCIiNrOP+DY18AgI/GUB7bVCny9VlGfcF95Xau
-	 Vt2Vgqzgu2NdN41JQ9Vf/Fr4AxCp2iC0Hr/AG849jX1idgixX+xlLtZB9TvlK4KDhz
-	 fdTwjDAa2Q1WA==
+	b=A5t1oU+Fa3Jeawwrep/wT9yuKMMZ2wZoE965Z9B4b2FiXwC3x3QQxH2KQs9jXizyZ
+	 gnfpnzuN81RwA4EmaEZ3R/PGpHizbAwh+yv12DrWlmfC0EOBsWD56qsM4SReyzgpfZ
+	 ARxmx88hFYkrCP6YfmmTHh+aGeZtilz6Nt0ASGbyFdY02fmGrfo9QAoTJH0AVVTQVL
+	 imY7fZSpcshW3gbZdhrYx5C+B4+HmutroOgftsjRsH6bUGCT3HfQOd9fdsJPSSxreN
+	 hIwZBYfsmzVjKe+T5pmClCemDwccLYwKU2CLOS0iy6GUueD7Yia2dAevq1ywVv891R
+	 +58pnbUYiHRGg==
 From: Maxime Ripard <mripard@kernel.org>
-Date: Mon, 27 May 2024 15:57:52 +0200
-Subject: [PATCH v15 03/29] drm/connector: hdmi: Create an HDMI sub-state
+Date: Mon, 27 May 2024 15:57:57 +0200
+Subject: [PATCH v15 08/29] drm/tests: Add output formats tests
 MIME-Version: 1.0
-Message-Id: <20240527-kms-hdmi-connector-state-v15-3-c5af16c3aae2@kernel.org>
+Message-Id: <20240527-kms-hdmi-connector-state-v15-8-c5af16c3aae2@kernel.org>
 References: <20240527-kms-hdmi-connector-state-v15-0-c5af16c3aae2@kernel.org>
 In-Reply-To: <20240527-kms-hdmi-connector-state-v15-0-c5af16c3aae2@kernel.org>
 To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
@@ -63,20 +63,19 @@ Cc: Hans Verkuil <hverkuil@xs4all.nl>,
  linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
  linux-sunxi@lists.linux.dev, Maxime Ripard <mripard@kernel.org>, 
  Dave Stevenson <dave.stevenson@raspberrypi.com>, 
- Sui Jingfeng <sui.jingfeng@linux.dev>, 
  Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
 X-Mailer: b4 0.13.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=5237; i=mripard@kernel.org;
- h=from:subject:message-id; bh=yFSA4w+ARQ3QxiRHadSdscbu33xQm71NKpYfvHru96g=;
- b=owGbwMvMwCmsHn9OcpHtvjLG02pJDGkhExOjrrW5br3RsM4p4k9SbEVKxC/fplOGBpfFCtJXb
- T1ZzcvQMZWFQZiTQVZMkeWJTNjp5e2LqxzsV/6AmcPKBDKEgYtTACYS/oixYev59ic1Gt3HT9+9
- ukK0bffZML9DXPlFPMsY2a5ceypmnP3f7ICu+0uBpU7GSe/TrvxpZ6wz/XVn82cDKVenGTwqcn4
- Bz8K4qu7Jssi8k774+tHppbrJzfcEV610jOqJ5Fh0aP/kBaYA
+X-Developer-Signature: v=1; a=openpgp-sha256; l=8085; i=mripard@kernel.org;
+ h=from:subject:message-id; bh=SOQPfNrUwyqfTmtStDudqnm+AIbryO28dU1DQhlSVNA=;
+ b=owGbwMvMwCmsHn9OcpHtvjLG02pJDGkhE5Mn371k9kp7FdMnvqUOf9Y4p+7J6Ty+pz/y+NRty
+ 6viDx3e0zGVhUGYk0FWTJHliUzY6eXti6sc7Ff+gJnDygQyhIGLUwAmMmkqY30OW7+EXrrz9p7t
+ m5OVVOInP94uo7U0btrKk8mH5gWwJ5Xzr530IYBr+fSH8ZwVJ5qf/mJs2LS/7LvNrZrP23tWMwh
+ +tl7jqeh9vaJx6rukgI6Zpq+OXDpq90r+v+O27ueNR7rPF6beAAA=
 X-Developer-Key: i=mripard@kernel.org; a=openpgp;
  fpr=BE5675C37E818C8B5764241C254BCFC56BF6CE8D
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240527_065823_761565_E3C0342B 
-X-CRM114-Status: GOOD (  15.83  )
+X-CRM114-CacheID: sfid-20240527_065837_227100_A5DEF37A 
+X-CRM114-Status: GOOD (  17.91  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,149 +92,217 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The next features we will need to share across drivers will need to
-store some parameters for drivers to use, such as the selected output
-format.
-
-Let's create a new connector sub-state dedicated to HDMI controllers,
-that will eventually store everything we need.
+Now that we track the HDMI output format as part of the connector state,
+let's add a few tests to make sure it works as expected.
 
 Reviewed-by: Dave Stevenson <dave.stevenson@raspberrypi.com>
-Reviewed-by: Sui Jingfeng <sui.jingfeng@linux.dev>
 Reviewed-by: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
 Signed-off-by: Maxime Ripard <mripard@kernel.org>
 ---
- drivers/gpu/drm/display/Kconfig                 |  7 +++++
- drivers/gpu/drm/display/Makefile                |  2 ++
- drivers/gpu/drm/display/drm_hdmi_state_helper.c | 41 +++++++++++++++++++++++++
- include/drm/display/drm_hdmi_state_helper.h     | 16 ++++++++++
- include/drm/drm_connector.h                     |  7 +++++
- 5 files changed, 73 insertions(+)
+ drivers/gpu/drm/tests/drm_connector_test.c         | 99 +++++++++++++++++++++-
+ drivers/gpu/drm/tests/drm_hdmi_state_helper_test.c | 32 +++++++
+ 2 files changed, 130 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/gpu/drm/display/Kconfig b/drivers/gpu/drm/display/Kconfig
-index 864a6488bfdf..14114b597ef4 100644
---- a/drivers/gpu/drm/display/Kconfig
-+++ b/drivers/gpu/drm/display/Kconfig
-@@ -68,5 +68,12 @@ config DRM_DISPLAY_HDCP_HELPER
- config DRM_DISPLAY_HDMI_HELPER
- 	bool
- 	depends on DRM_DISPLAY_HELPER
- 	help
- 	  DRM display helpers for HDMI.
-+
-+config DRM_DISPLAY_HDMI_STATE_HELPER
-+	bool
-+	depends on DRM_DISPLAY_HELPER
-+	depends on DRM_DISPLAY_HDMI_HELPER
-+	help
-+	  DRM KMS state helpers for HDMI.
-diff --git a/drivers/gpu/drm/display/Makefile b/drivers/gpu/drm/display/Makefile
-index 17d2cc73ff56..629df2f4d322 100644
---- a/drivers/gpu/drm/display/Makefile
-+++ b/drivers/gpu/drm/display/Makefile
-@@ -12,9 +12,11 @@ drm_display_helper-$(CONFIG_DRM_DISPLAY_DP_TUNNEL) += \
- 	drm_dp_tunnel.o
- drm_display_helper-$(CONFIG_DRM_DISPLAY_HDCP_HELPER) += drm_hdcp_helper.o
- drm_display_helper-$(CONFIG_DRM_DISPLAY_HDMI_HELPER) += \
- 	drm_hdmi_helper.o \
- 	drm_scdc_helper.o
-+drm_display_helper-$(CONFIG_DRM_DISPLAY_HDMI_STATE_HELPER) += \
-+	drm_hdmi_state_helper.o
- drm_display_helper-$(CONFIG_DRM_DISPLAY_DP_AUX_CHARDEV) += drm_dp_aux_dev.o
- drm_display_helper-$(CONFIG_DRM_DISPLAY_DP_AUX_CEC) += drm_dp_cec.o
+diff --git a/drivers/gpu/drm/tests/drm_connector_test.c b/drivers/gpu/drm/tests/drm_connector_test.c
+index 37e6efd46d7e..250348ddfa70 100644
+--- a/drivers/gpu/drm/tests/drm_connector_test.c
++++ b/drivers/gpu/drm/tests/drm_connector_test.c
+@@ -361,10 +361,46 @@ static void drm_test_connector_hdmi_init_bpc_12(struct kunit *test)
+ 	prop = priv->drm.mode_config.hdr_output_metadata_property;
+ 	KUNIT_ASSERT_NOT_NULL(test, prop);
+ 	KUNIT_EXPECT_NOT_NULL(test, drm_mode_obj_find_prop_id(&connector->base, prop->base.id));
+ }
  
- obj-$(CONFIG_DRM_DISPLAY_HELPER) += drm_display_helper.o
-diff --git a/drivers/gpu/drm/display/drm_hdmi_state_helper.c b/drivers/gpu/drm/display/drm_hdmi_state_helper.c
-new file mode 100644
-index 000000000000..1e92c1108d23
---- /dev/null
-+++ b/drivers/gpu/drm/display/drm_hdmi_state_helper.c
-@@ -0,0 +1,41 @@
-+// SPDX-License-Identifier: MIT
-+
-+#include <drm/drm_atomic.h>
-+#include <drm/drm_connector.h>
-+
-+#include <drm/display/drm_hdmi_state_helper.h>
-+
-+/**
-+ * __drm_atomic_helper_connector_hdmi_reset() - Initializes all HDMI @drm_connector_state resources
-+ * @connector: DRM connector
-+ * @new_conn_state: connector state to reset
-+ *
-+ * Initializes all HDMI resources from a @drm_connector_state without
-+ * actually allocating it. This is useful for HDMI drivers, in
-+ * combination with __drm_atomic_helper_connector_reset() or
-+ * drm_atomic_helper_connector_reset().
++/*
++ * Test that the registration of an HDMI connector with no supported
++ * format fails.
 + */
-+void __drm_atomic_helper_connector_hdmi_reset(struct drm_connector *connector,
-+					      struct drm_connector_state *new_conn_state)
++static void drm_test_connector_hdmi_init_formats_empty(struct kunit *test)
 +{
-+}
-+EXPORT_SYMBOL(__drm_atomic_helper_connector_hdmi_reset);
++	struct drm_connector_init_priv *priv = test->priv;
++	int ret;
 +
-+/**
-+ * drm_atomic_helper_connector_hdmi_check() - Helper to check HDMI connector atomic state
-+ * @connector: DRM Connector
-+ * @state: the DRM State object
-+ *
-+ * Provides a default connector state check handler for HDMI connectors.
-+ * Checks that a desired connector update is valid, and updates various
-+ * fields of derived state.
-+ *
-+ * RETURNS:
-+ * Zero on success, or an errno code otherwise.
++	ret = drmm_connector_hdmi_init(&priv->drm, &priv->connector,
++				       &dummy_funcs,
++				       DRM_MODE_CONNECTOR_HDMIA,
++				       &priv->ddc,
++				       0,
++				       8);
++	KUNIT_EXPECT_LT(test, ret, 0);
++}
++
++/*
++ * Test that the registration of an HDMI connector not listing RGB as a
++ * supported format fails.
 + */
-+int drm_atomic_helper_connector_hdmi_check(struct drm_connector *connector,
-+					   struct drm_atomic_state *state)
++static void drm_test_connector_hdmi_init_formats_no_rgb(struct kunit *test)
 +{
-+	return 0;
++	struct drm_connector_init_priv *priv = test->priv;
++	int ret;
++
++	ret = drmm_connector_hdmi_init(&priv->drm, &priv->connector,
++				       &dummy_funcs,
++				       DRM_MODE_CONNECTOR_HDMIA,
++				       &priv->ddc,
++				       BIT(HDMI_COLORSPACE_YUV422),
++				       8);
++	KUNIT_EXPECT_LT(test, ret, 0);
 +}
-+EXPORT_SYMBOL(drm_atomic_helper_connector_hdmi_check);
-diff --git a/include/drm/display/drm_hdmi_state_helper.h b/include/drm/display/drm_hdmi_state_helper.h
-new file mode 100644
-index 000000000000..6021983e2602
---- /dev/null
-+++ b/include/drm/display/drm_hdmi_state_helper.h
-@@ -0,0 +1,16 @@
-+#/* SPDX-License-Identifier: MIT */
 +
-+#ifndef DRM_HDMI_STATE_HELPER_H_
-+#define DRM_HDMI_STATE_HELPER_H_
-+
-+struct drm_atomic_state;
-+struct drm_connector;
-+struct drm_connector_state;
-+
-+void __drm_atomic_helper_connector_hdmi_reset(struct drm_connector *connector,
-+					      struct drm_connector_state *new_conn_state);
-+
-+int drm_atomic_helper_connector_hdmi_check(struct drm_connector *connector,
-+					   struct drm_atomic_state *state);
-+
-+#endif // DRM_HDMI_STATE_HELPER_H_
-diff --git a/include/drm/drm_connector.h b/include/drm/drm_connector.h
-index 4491c4c2fb6e..000a2a156619 100644
---- a/include/drm/drm_connector.h
-+++ b/include/drm/drm_connector.h
-@@ -1029,10 +1029,17 @@ struct drm_connector_state {
- 	/**
- 	 * @hdr_output_metadata:
- 	 * DRM blob property for HDR output metadata
- 	 */
- 	struct drm_property_blob *hdr_output_metadata;
-+
-+	/**
-+	 * @hdmi: HDMI-related variable and properties. Filled by
-+	 * @drm_atomic_helper_connector_hdmi_check().
-+	 */
-+	struct {
-+	} hdmi;
+ /*
+  * Test that the registration of an HDMI connector with an HDMI
+  * connector type succeeds.
+  */
+ static void drm_test_connector_hdmi_init_type_valid(struct kunit *test)
+@@ -446,10 +482,12 @@ static struct kunit_case drmm_connector_hdmi_init_tests[] = {
+ 	KUNIT_CASE(drm_test_connector_hdmi_init_bpc_8),
+ 	KUNIT_CASE(drm_test_connector_hdmi_init_bpc_10),
+ 	KUNIT_CASE(drm_test_connector_hdmi_init_bpc_12),
+ 	KUNIT_CASE(drm_test_connector_hdmi_init_bpc_invalid),
+ 	KUNIT_CASE(drm_test_connector_hdmi_init_bpc_null),
++	KUNIT_CASE(drm_test_connector_hdmi_init_formats_empty),
++	KUNIT_CASE(drm_test_connector_hdmi_init_formats_no_rgb),
+ 	KUNIT_CASE(drm_test_connector_hdmi_init_null_ddc),
+ 	KUNIT_CASE_PARAM(drm_test_connector_hdmi_init_type_valid,
+ 			 drm_connector_hdmi_init_type_valid_gen_params),
+ 	KUNIT_CASE_PARAM(drm_test_connector_hdmi_init_type_invalid,
+ 			 drm_connector_hdmi_init_type_invalid_gen_params),
+@@ -523,13 +561,72 @@ static struct kunit_case drm_get_tv_mode_from_name_tests[] = {
+ static struct kunit_suite drm_get_tv_mode_from_name_test_suite = {
+ 	.name = "drm_get_tv_mode_from_name",
+ 	.test_cases = drm_get_tv_mode_from_name_tests,
  };
  
- /**
-  * struct drm_connector_funcs - control connectors on a given device
-  *
++struct drm_hdmi_connector_get_output_format_name_test {
++	unsigned int kind;
++	const char *expected_name;
++};
++
++#define OUTPUT_FORMAT_TEST(_kind, _name)	\
++	{					\
++		.kind = _kind,			\
++		.expected_name = _name,		\
++	}
++
++static void drm_test_drm_hdmi_connector_get_output_format_name(struct kunit *test)
++{
++	const struct drm_hdmi_connector_get_output_format_name_test *params =
++		test->param_value;
++
++	KUNIT_EXPECT_STREQ(test,
++			   drm_hdmi_connector_get_output_format_name(params->kind),
++			   params->expected_name);
++}
++
++static const
++struct drm_hdmi_connector_get_output_format_name_test
++drm_hdmi_connector_get_output_format_name_valid_tests[] = {
++	OUTPUT_FORMAT_TEST(HDMI_COLORSPACE_RGB, "RGB"),
++	OUTPUT_FORMAT_TEST(HDMI_COLORSPACE_YUV420, "YUV 4:2:0"),
++	OUTPUT_FORMAT_TEST(HDMI_COLORSPACE_YUV422, "YUV 4:2:2"),
++	OUTPUT_FORMAT_TEST(HDMI_COLORSPACE_YUV444, "YUV 4:4:4"),
++};
++
++static void
++drm_hdmi_connector_get_output_format_name_valid_desc(const struct drm_hdmi_connector_get_output_format_name_test *t,
++						     char *desc)
++{
++	sprintf(desc, "%s", t->expected_name);
++}
++
++KUNIT_ARRAY_PARAM(drm_hdmi_connector_get_output_format_name_valid,
++		  drm_hdmi_connector_get_output_format_name_valid_tests,
++		  drm_hdmi_connector_get_output_format_name_valid_desc);
++
++static void drm_test_drm_hdmi_connector_get_output_format_name_invalid(struct kunit *test)
++{
++	KUNIT_EXPECT_NULL(test, drm_hdmi_connector_get_output_format_name(4));
++};
++
++static struct kunit_case drm_hdmi_connector_get_output_format_name_tests[] = {
++	KUNIT_CASE_PARAM(drm_test_drm_hdmi_connector_get_output_format_name,
++			 drm_hdmi_connector_get_output_format_name_valid_gen_params),
++	KUNIT_CASE(drm_test_drm_hdmi_connector_get_output_format_name_invalid),
++	{ }
++};
++
++static struct kunit_suite drm_hdmi_connector_get_output_format_name_test_suite = {
++	.name = "drm_hdmi_connector_get_output_format_name",
++	.test_cases = drm_hdmi_connector_get_output_format_name_tests,
++};
++
+ kunit_test_suites(
+ 	&drmm_connector_hdmi_init_test_suite,
+ 	&drmm_connector_init_test_suite,
+-	&drm_get_tv_mode_from_name_test_suite
++	&drm_get_tv_mode_from_name_test_suite,
++	&drm_hdmi_connector_get_output_format_name_test_suite
+ );
+ 
+ MODULE_AUTHOR("Maxime Ripard <maxime@cerno.tech>");
+ MODULE_LICENSE("GPL");
+diff --git a/drivers/gpu/drm/tests/drm_hdmi_state_helper_test.c b/drivers/gpu/drm/tests/drm_hdmi_state_helper_test.c
+index 333c81b8cf4f..8bc1f9b0b12b 100644
+--- a/drivers/gpu/drm/tests/drm_hdmi_state_helper_test.c
++++ b/drivers/gpu/drm/tests/drm_hdmi_state_helper_test.c
+@@ -347,10 +347,19 @@ static void drm_test_check_output_bpc_crtc_mode_not_changed(struct kunit *test)
+ }
+ 
+ static struct kunit_case drm_atomic_helper_connector_hdmi_check_tests[] = {
+ 	KUNIT_CASE(drm_test_check_output_bpc_crtc_mode_changed),
+ 	KUNIT_CASE(drm_test_check_output_bpc_crtc_mode_not_changed),
++	/*
++	 * TODO: We should have tests to check that a change in the
++	 * format triggers a CRTC mode change just like we do for the
++	 * RGB Quantization and BPC.
++	 *
++	 * However, we don't have any way to control which format gets
++	 * picked up aside from changing the BPC or mode which would
++	 * already trigger a mode change.
++	 */
+ 	{ }
+ };
+ 
+ static struct kunit_suite drm_atomic_helper_connector_hdmi_check_test_suite = {
+ 	.name		= "drm_atomic_helper_connector_hdmi_check",
+@@ -427,14 +436,37 @@ static void drm_test_check_bpc_12_value(struct kunit *test)
+ 	KUNIT_EXPECT_EQ(test, conn_state->max_bpc, 12);
+ 	KUNIT_EXPECT_EQ(test, conn_state->max_requested_bpc, 12);
+ 	KUNIT_EXPECT_EQ(test, conn_state->hdmi.output_bpc, 0);
+ }
+ 
++/*
++ * Test that the value of the output format property out of reset is set
++ * to RGB, even if the driver supports more than that.
++ */
++static void drm_test_check_format_value(struct kunit *test)
++{
++	struct drm_atomic_helper_connector_hdmi_priv *priv;
++	struct drm_connector_state *conn_state;
++	struct drm_connector *conn;
++
++	priv = drm_atomic_helper_connector_hdmi_init(test,
++						     BIT(HDMI_COLORSPACE_RGB) |
++						     BIT(HDMI_COLORSPACE_YUV422) |
++						     BIT(HDMI_COLORSPACE_YUV444),
++						     8);
++	KUNIT_ASSERT_NOT_NULL(test, priv);
++
++	conn = &priv->connector;
++	conn_state = conn->state;
++	KUNIT_EXPECT_EQ(test, conn_state->hdmi.output_format, HDMI_COLORSPACE_RGB);
++}
++
+ static struct kunit_case drm_atomic_helper_connector_hdmi_reset_tests[] = {
+ 	KUNIT_CASE(drm_test_check_bpc_8_value),
+ 	KUNIT_CASE(drm_test_check_bpc_10_value),
+ 	KUNIT_CASE(drm_test_check_bpc_12_value),
++	KUNIT_CASE(drm_test_check_format_value),
+ 	{ }
+ };
+ 
+ static struct kunit_suite drm_atomic_helper_connector_hdmi_reset_test_suite = {
+ 	.name		= "drm_atomic_helper_connector_hdmi_reset",
 
 -- 
 2.45.0
