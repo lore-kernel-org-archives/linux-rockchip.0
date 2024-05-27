@@ -4,48 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5C251C25B7D
-	for <linux-rockchip@archiver.kernel.org>; Mon, 27 May 2024 14:03:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BC8EAC25B74
+	for <linux-rockchip@archiver.kernel.org>; Mon, 27 May 2024 14:03:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=KxlIewo3NWEwSmAO9nOgMOKEmi/R/REysia9PFerryA=; b=WoY4/sOc4JoEKX
-	kH/ujUXPT7T5MAtunTqC7wn/ewMA5NIsd8mPXmoo43hDEF/IWGLj9cuY9+yQm9adbnRTmYhlB1TcM
-	tvRQeTldrQvsHENziian3fhlO0GI67unZj0kjdzXPpV+KqfC3cEs0G1H5vvT0WHH4dHiBoWIACX2S
-	UbR9vBcSLBNxCN2Fh2YtjYntZjH5O+9OP3smgGJVrq1iW4sLBNOqdojYq3KfnK1uOxZJuxZosh3n9
-	FBAMbOvdihbIhYpMh/Dy7KM+9u+5bN182bvkaRRgplM7vVjRO8QVHBYLlmrzul/ry1D0PO0WC3+Sq
-	FgZknwtQEhRGP/uGZitA==;
+	List-Owner; bh=x9LKTpRy/DllXlwKoFRLx5jc2ReZ9Bs7WqUw5+ntGf4=; b=okZj1y1DTg9IU0
+	Ph8uh7vNsjn2gX3ARC+SAUhqT2oDQO3a/1p0LbjwUiDpxA3uWCkcEGZJYnGx67ML1twX3JCc2C0pL
+	xllecF4n1DbVF5aUIlGiGtJWCJGD6f7Gz+sZLHINRwT7LeRl2VOr8PQnuS4Ui3ws76xNl6LKZHJcP
+	yzAYB9J+b1CeNvJ+AnE8TOLGGhXtLCGfjmojmee/ec+gHEA2jSIZ+N4VJNbnMIaAWqkbjo22m71Ni
+	wrekGslzf48OBdWHBXKg60Zh8CcI+tNdANn1eNhwcMMDwNbc9cO8pr8H0JeyhYNOpZRTphMrlebDc
+	E4Tb13bKBOfIej5Hc3pw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sBawE-0000000FFCs-0MPw;
-	Mon, 27 May 2024 14:02:58 +0000
-Received: from sin.source.kernel.org ([145.40.73.55])
+	id 1sBawB-0000000FFAp-123J;
+	Mon, 27 May 2024 14:02:55 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sBasn-0000000FDCP-0i0M;
+	id 1sBass-0000000FDIT-1Kmu;
 	Mon, 27 May 2024 13:59:30 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
+	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	From:Sender:Reply-To:Content-ID:Content-Description;
+	bh=P5kIPnMqRGoILxDN9S+GpoOXhTa5qXHA+55xgvgXSDI=; b=pVgQeBVFXGD8nNfX7cdPOhxSpH
+	AsuTgPaprdn4ia4tDNEVdRobOtOu9N+F/UlLDg/9NLkxb98444qKmBPUDSkUxclU6BKzSUXXHXf3v
+	giqWym3dACcDlDE1HxEfaxRO9Hb3krQSe9YrRmv5zq8oyuG38Rp1nMW3nT5FJ/BxGvct/3xIdst6M
+	S1Wc//ZYcqUWSgpFTnlTceChHp3KLmS+Y38vgi/ZaLaXW8T2r5gA1H0J7kCF0mJYtvtKBRoDEKRLa
+	zQMMifvi/4cIzXdrNZ/a3mE0Z9lWHUKbhGSOT0lMWXGpzMQdAozwP8CGZBe8pxCKY8hVYrL1jdI92
+	6t5GlEMA==;
+Received: from sin.source.kernel.org ([145.40.73.55])
+	by desiato.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
+	id 1sBaso-0000000BKGi-0pWo;
+	Mon, 27 May 2024 13:59:29 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 81333CE0F31;
-	Mon, 27 May 2024 13:59:21 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 50293C32789;
+	by sin.source.kernel.org (Postfix) with ESMTP id 05AA5CE0F96;
 	Mon, 27 May 2024 13:59:20 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5AB47C4AF0A;
+	Mon, 27 May 2024 13:59:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1716818360;
-	bh=mxuD7pT2tlDQ0zzNZkqWfj36MC0sF3/2cyZNsO+d0UQ=;
+	s=k20201202; t=1716818357;
+	bh=QrxDEXHUeZrcTXqXGbZtRdhc7jRZ/NOEiZ+VD6dKy0I=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=FKuryF+22rQwG/qEy5/4v9bTlcjIZHihnPXlqThJ8uifXGXWQJmU0JO5leNjcERAE
-	 DcMGln1awzi2ANxya+/nSnp1i6KUc0BNpNdlZQZXex1kSe3x2gJQzVtdesgnO+vqW9
-	 eNo/B4NXIbSntIKKIRUzi47MlWLwfTVt6/DKG+HMCZu77IZGwpKDLHsb2ELt9YrIwp
-	 Av/UDH3TzC9Wj6lXRNBQF8hOYefqlkShxIUHX+apR1U0p+scINUYmc/87GVUI/Y4KT
-	 hRgaotCU+D+Oe2Sq1SzvaEBDgPETnVnJd+Jy/JlerRGOdfP3Wq+qFfEcCbeXpOAdZh
-	 yunFfOpw+wapg==
+	b=eNCOYBwh9bAxaILCALDZ67ln4kJMmJUtOopyrX8rtu/oTCnleA1sVIqOToHjRswSC
+	 yPHHT2gAlaCvPhvXV8jPloniaQbjId2KL0le4Hb/uK/pVj/IIzcHdog7mzqtRe8nRL
+	 Lnq/jhaRs5PlgS/e1l1PvP0VoavpVmpXI1gWUcoV7xneU1Lic2dB8Jc62aERR7VMOT
+	 p+x5Xxjnwhqnv2c4bWOuJkKCqBxyVU0heNZj0wrgYEvoJe4u6H5yzOHtzVp/UsQB4Z
+	 jKg410m457E+8TSlR9GXLcfUH6lo/RnMQrcT55lpi9GbpxYH1P3VFCQruy8gdzd89R
+	 95Kl8yr2QSCuw==
 From: Maxime Ripard <mripard@kernel.org>
-Date: Mon, 27 May 2024 15:58:15 +0200
-Subject: [PATCH v15 26/29] drm/vc4: tests: Remove vc4_dummy_plane structure
+Date: Mon, 27 May 2024 15:58:14 +0200
+Subject: [PATCH v15 25/29] drm/vc4: hdmi: Switch to HDMI connector
 MIME-Version: 1.0
-Message-Id: <20240527-kms-hdmi-connector-state-v15-26-c5af16c3aae2@kernel.org>
+Message-Id: <20240527-kms-hdmi-connector-state-v15-25-c5af16c3aae2@kernel.org>
 References: <20240527-kms-hdmi-connector-state-v15-0-c5af16c3aae2@kernel.org>
 In-Reply-To: <20240527-kms-hdmi-connector-state-v15-0-c5af16c3aae2@kernel.org>
 To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
@@ -62,19 +76,19 @@ Cc: Hans Verkuil <hverkuil@xs4all.nl>,
  linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org, 
  linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
  linux-sunxi@lists.linux.dev, Maxime Ripard <mripard@kernel.org>, 
- =?utf-8?q?Ma=C3=ADra_Canal?= <mcanal@igalia.com>
+ Sui Jingfeng <sui.jingfeng@linux.dev>
 X-Mailer: b4 0.13.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=3744; i=mripard@kernel.org;
- h=from:subject:message-id; bh=mxuD7pT2tlDQ0zzNZkqWfj36MC0sF3/2cyZNsO+d0UQ=;
- b=owGbwMvMwCmsHn9OcpHtvjLG02pJDGkhE7PDI86breGa0lSze/XRXVbVmefeHjj0YlntiY6vs
- w2uSK3b2zGVhUGYk0FWTJHliUzY6eXti6sc7Ff+gJnDygQyhIGLUwAmcqSJsc74+oGgP1Fhkosd
- VEuc3NRcSm6dWMHUYTunN1CpYd9TkYB7/12vmF7N3r3tEHvgexsva8aGw9U31t9bMVPq76ULbyV
- fcXkrcX9ryK7ds0Y7ruDuqeOx89znKKSXHbBVvbJy98Ls7glyAA==
+X-Developer-Signature: v=1; a=openpgp-sha256; l=43310; i=mripard@kernel.org;
+ h=from:subject:message-id; bh=QrxDEXHUeZrcTXqXGbZtRdhc7jRZ/NOEiZ+VD6dKy0I=;
+ b=owGbwMvMwCmsHn9OcpHtvjLG02pJDGkhE7O5a4yfVnPYqn5MNz//0NJmxcLHvbVqlbm70zz+3
+ vhy4aNBx1QWBmFOBlkxRZYnMmGnl7cvrnKwX/kDZg4rE8gQBi5OAZiI117GKuaNfQZLNsYxv41T
+ F+PIl4pUPKNz3HXRBv8vl9TLRPIDluzc90vR1u5E71uPFIO6bEkdxoYrBpME7l114Znk9/jWtH8
+ pmu2rky2f3nt98PDq5isSIdYLOk74Ghde3Ro1O/Tw2UOVLd8B
 X-Developer-Key: i=mripard@kernel.org; a=openpgp;
  fpr=BE5675C37E818C8B5764241C254BCFC56BF6CE8D
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240527_065926_170256_5A5FEDFE 
-X-CRM114-Status: GOOD (  13.25  )
+X-CRM114-CacheID: sfid-20240527_145927_356007_02DD2072 
+X-CRM114-Status: GOOD (  19.02  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,75 +100,1291 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-VGhlIHZjNF9kdW1teV9wbGFuZSBzdHJ1Y3R1cmUgd2FzIGludHJvZHVjZWQgYXMgYSBtZWFuIHRv
-IGFkZAptb2NrLXNwZWNpZmljIGZpZWxkcy4KCkhvd2V2ZXIsIHdlIG5ldmVyIHJlYWxseSB1c2Vk
-IGl0IGFuZCBpdCdzIHN0aWxsIHN0cmljdGx5IGVxdWl2YWxlbnQgdG8KdmM0X3BsYW5lICh3aGlj
-aCBpcyBpbiB0aGUgc2FtZSBzaXR1YXRpb24gdnMgZHJtX3BsYW5lKSwgc28gd2UgY2FuCnNpbXBs
-eSByZW1vdmUgdGhlIHZjNF9kdW1teV9wbGFuZSBzdHJ1Y3R1cmUgYW5kIG1ha2UgdGhlIG1vY2sg
-Y29kZQpjbGVhbmVyLgoKUmV2aWV3ZWQtYnk6IE1hw61yYSBDYW5hbCA8bWNhbmFsQGlnYWxpYS5j
-b20+ClNpZ25lZC1vZmYtYnk6IE1heGltZSBSaXBhcmQgPG1yaXBhcmRAa2VybmVsLm9yZz4KLS0t
-CiBkcml2ZXJzL2dwdS9kcm0vdmM0L3Rlc3RzL3ZjNF9tb2NrLmMgICAgICAgfCAgNiArKy0tLS0K
-IGRyaXZlcnMvZ3B1L2RybS92YzQvdGVzdHMvdmM0X21vY2suaCAgICAgICB8ICA5ICsrLS0tLS0t
-LQogZHJpdmVycy9ncHUvZHJtL3ZjNC90ZXN0cy92YzRfbW9ja19wbGFuZS5jIHwgMTQgKysrKyst
-LS0tLS0tLS0KIDMgZmlsZXMgY2hhbmdlZCwgOSBpbnNlcnRpb25zKCspLCAyMCBkZWxldGlvbnMo
-LSkKCmRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vdmM0L3Rlc3RzL3ZjNF9tb2NrLmMgYi9k
-cml2ZXJzL2dwdS9kcm0vdmM0L3Rlc3RzL3ZjNF9tb2NrLmMKaW5kZXggYmVjYjNkYmFhNTQ4Li4w
-NzMxYTdkODVkN2EgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvZ3B1L2RybS92YzQvdGVzdHMvdmM0X21v
-Y2suYworKysgYi9kcml2ZXJzL2dwdS9kcm0vdmM0L3Rlc3RzL3ZjNF9tb2NrLmMKQEAgLTEwNywy
-MCArMTA3LDE4IEBAIHN0YXRpYyBjb25zdCBzdHJ1Y3QgdmM0X21vY2tfZGVzYyB2YzVfbW9jayA9
-CiApOwogCiBzdGF0aWMgaW50IF9fYnVpbGRfb25lX3BpcGUoc3RydWN0IGt1bml0ICp0ZXN0LCBz
-dHJ1Y3QgZHJtX2RldmljZSAqZHJtLAogCQkJICAgIGNvbnN0IHN0cnVjdCB2YzRfbW9ja19waXBl
-X2Rlc2MgKnBpcGUpCiB7Ci0Jc3RydWN0IHZjNF9kdW1teV9wbGFuZSAqZHVtbXlfcGxhbmU7CiAJ
-c3RydWN0IGRybV9wbGFuZSAqcGxhbmU7CiAJc3RydWN0IHZjNF9kdW1teV9jcnRjICpkdW1teV9j
-cnRjOwogCXN0cnVjdCBkcm1fY3J0YyAqY3J0YzsKIAl1bnNpZ25lZCBpbnQgaTsKIAotCWR1bW15
-X3BsYW5lID0gdmM0X2R1bW15X3BsYW5lKHRlc3QsIGRybSwgRFJNX1BMQU5FX1RZUEVfUFJJTUFS
-WSk7Ci0JS1VOSVRfQVNTRVJUX05PVF9FUlJfT1JfTlVMTCh0ZXN0LCBkdW1teV9wbGFuZSk7CisJ
-cGxhbmUgPSB2YzRfZHVtbXlfcGxhbmUodGVzdCwgZHJtLCBEUk1fUExBTkVfVFlQRV9QUklNQVJZ
-KTsKKwlLVU5JVF9BU1NFUlRfTk9UX0VSUl9PUl9OVUxMKHRlc3QsIHBsYW5lKTsKIAotCXBsYW5l
-ID0gJmR1bW15X3BsYW5lLT5wbGFuZS5iYXNlOwogCWR1bW15X2NydGMgPSB2YzRfbW9ja19wdih0
-ZXN0LCBkcm0sIHBsYW5lLCBwaXBlLT5kYXRhKTsKIAlLVU5JVF9BU1NFUlRfTk9UX0VSUl9PUl9O
-VUxMKHRlc3QsIGR1bW15X2NydGMpOwogCiAJY3J0YyA9ICZkdW1teV9jcnRjLT5jcnRjLmJhc2U7
-CiAJZm9yIChpID0gMDsgaSA8IHBpcGUtPm5vdXRwdXRzOyBpKyspIHsKZGlmZiAtLWdpdCBhL2Ry
-aXZlcnMvZ3B1L2RybS92YzQvdGVzdHMvdmM0X21vY2suaCBiL2RyaXZlcnMvZ3B1L2RybS92YzQv
-dGVzdHMvdmM0X21vY2suaAppbmRleCAyZDBiMzM5YmQ5ZjMuLjAwMmI2MjE4OTYwYyAxMDA2NDQK
-LS0tIGEvZHJpdmVycy9ncHUvZHJtL3ZjNC90ZXN0cy92YzRfbW9jay5oCisrKyBiL2RyaXZlcnMv
-Z3B1L2RybS92YzQvdGVzdHMvdmM0X21vY2suaApAQCAtMTksMTcgKzE5LDEyIEBAIHN0cnVjdCBk
-cm1fY3J0YyAqdmM0X2ZpbmRfY3J0Y19mb3JfZW5jb2RlcihzdHJ1Y3Qga3VuaXQgKnRlc3QsCiAJ
-CQlyZXR1cm4gY3J0YzsKIAogCXJldHVybiBOVUxMOwogfQogCi1zdHJ1Y3QgdmM0X2R1bW15X3Bs
-YW5lIHsKLQlzdHJ1Y3QgdmM0X3BsYW5lIHBsYW5lOwotfTsKLQotc3RydWN0IHZjNF9kdW1teV9w
-bGFuZSAqdmM0X2R1bW15X3BsYW5lKHN0cnVjdCBrdW5pdCAqdGVzdCwKLQkJCQkJc3RydWN0IGRy
-bV9kZXZpY2UgKmRybSwKLQkJCQkJZW51bSBkcm1fcGxhbmVfdHlwZSB0eXBlKTsKK3N0cnVjdCBk
-cm1fcGxhbmUgKnZjNF9kdW1teV9wbGFuZShzdHJ1Y3Qga3VuaXQgKnRlc3QsIHN0cnVjdCBkcm1f
-ZGV2aWNlICpkcm0sCisJCQkJICBlbnVtIGRybV9wbGFuZV90eXBlIHR5cGUpOwogCiBzdHJ1Y3Qg
-dmM0X2R1bW15X2NydGMgewogCXN0cnVjdCB2YzRfY3J0YyBjcnRjOwogfTsKIApkaWZmIC0tZ2l0
-IGEvZHJpdmVycy9ncHUvZHJtL3ZjNC90ZXN0cy92YzRfbW9ja19wbGFuZS5jIGIvZHJpdmVycy9n
-cHUvZHJtL3ZjNC90ZXN0cy92YzRfbW9ja19wbGFuZS5jCmluZGV4IDYyYjE4ZjVmNDFkYi4uOTcz
-ZjVmOTI5MDk3IDEwMDY0NAotLS0gYS9kcml2ZXJzL2dwdS9kcm0vdmM0L3Rlc3RzL3ZjNF9tb2Nr
-X3BsYW5lLmMKKysrIGIvZHJpdmVycy9ncHUvZHJtL3ZjNC90ZXN0cy92YzRfbW9ja19wbGFuZS5j
-CkBAIC0yMCwyOCArMjAsMjQgQEAgc3RhdGljIGNvbnN0IHN0cnVjdCBkcm1fcGxhbmVfZnVuY3Mg
-dmM0X2R1bW15X3BsYW5lX2Z1bmNzID0gewogCiBzdGF0aWMgY29uc3QgdWludDMyX3QgdmM0X2R1
-bW15X3BsYW5lX2Zvcm1hdHNbXSA9IHsKIAlEUk1fRk9STUFUX1hSR0I4ODg4LAogfTsKIAotc3Ry
-dWN0IHZjNF9kdW1teV9wbGFuZSAqdmM0X2R1bW15X3BsYW5lKHN0cnVjdCBrdW5pdCAqdGVzdCwK
-LQkJCQkJc3RydWN0IGRybV9kZXZpY2UgKmRybSwKLQkJCQkJZW51bSBkcm1fcGxhbmVfdHlwZSB0
-eXBlKQorc3RydWN0IGRybV9wbGFuZSAqdmM0X2R1bW15X3BsYW5lKHN0cnVjdCBrdW5pdCAqdGVz
-dCwgc3RydWN0IGRybV9kZXZpY2UgKmRybSwKKwkJCQkgIGVudW0gZHJtX3BsYW5lX3R5cGUgdHlw
-ZSkKIHsKLQlzdHJ1Y3QgdmM0X2R1bW15X3BsYW5lICpkdW1teV9wbGFuZTsKIAlzdHJ1Y3QgZHJt
-X3BsYW5lICpwbGFuZTsKIAotCWR1bW15X3BsYW5lID0gZHJtbV91bml2ZXJzYWxfcGxhbmVfYWxs
-b2MoZHJtLAotCQkJCQkJIHN0cnVjdCB2YzRfZHVtbXlfcGxhbmUsIHBsYW5lLmJhc2UsCisJcGxh
-bmUgPSBfX2RybW1fdW5pdmVyc2FsX3BsYW5lX2FsbG9jKGRybSwgc2l6ZW9mKHN0cnVjdCBkcm1f
-cGxhbmUpLCAwLAogCQkJCQkJIDAsCiAJCQkJCQkgJnZjNF9kdW1teV9wbGFuZV9mdW5jcywKIAkJ
-CQkJCSB2YzRfZHVtbXlfcGxhbmVfZm9ybWF0cywKIAkJCQkJCSBBUlJBWV9TSVpFKHZjNF9kdW1t
-eV9wbGFuZV9mb3JtYXRzKSwKIAkJCQkJCSBOVUxMLAogCQkJCQkJIERSTV9QTEFORV9UWVBFX1BS
-SU1BUlksCiAJCQkJCQkgTlVMTCk7Ci0JS1VOSVRfQVNTRVJUX05PVF9FUlJfT1JfTlVMTCh0ZXN0
-LCBkdW1teV9wbGFuZSk7CisJS1VOSVRfQVNTRVJUX05PVF9FUlJfT1JfTlVMTCh0ZXN0LCBwbGFu
-ZSk7CiAKLQlwbGFuZSA9ICZkdW1teV9wbGFuZS0+cGxhbmUuYmFzZTsKIAlkcm1fcGxhbmVfaGVs
-cGVyX2FkZChwbGFuZSwgJnZjNF9kdW1teV9wbGFuZV9oZWxwZXJfZnVuY3MpOwogCi0JcmV0dXJu
-IGR1bW15X3BsYW5lOworCXJldHVybiBwbGFuZTsKIH0KCi0tIAoyLjQ1LjAKCgpfX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWls
-aW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMu
-aW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+The new HDMI connector infrastructure allows us to remove a lot of
+boilerplate, so let's switch to it.
+
+Acked-by: Sui Jingfeng <sui.jingfeng@linux.dev>
+Signed-off-by: Maxime Ripard <mripard@kernel.org>
+---
+ drivers/gpu/drm/vc4/Kconfig        |   1 +
+ drivers/gpu/drm/vc4/vc4_hdmi.c     | 644 +++++--------------------------------
+ drivers/gpu/drm/vc4/vc4_hdmi.h     |  44 +--
+ drivers/gpu/drm/vc4/vc4_hdmi_phy.c |   6 +-
+ 4 files changed, 92 insertions(+), 603 deletions(-)
+
+diff --git a/drivers/gpu/drm/vc4/Kconfig b/drivers/gpu/drm/vc4/Kconfig
+index 91dcf8d174d6..269b5f26b2ea 100644
+--- a/drivers/gpu/drm/vc4/Kconfig
++++ b/drivers/gpu/drm/vc4/Kconfig
+@@ -8,10 +8,11 @@ config DRM_VC4
+ 	depends on DRM
+ 	depends on SND && SND_SOC
+ 	depends on COMMON_CLK
+ 	depends on PM
+ 	select DRM_DISPLAY_HDMI_HELPER
++	select DRM_DISPLAY_HDMI_STATE_HELPER
+ 	select DRM_DISPLAY_HELPER
+ 	select DRM_KMS_HELPER
+ 	select DRM_GEM_DMA_HELPER
+ 	select DRM_PANEL_BRIDGE
+ 	select SND_PCM
+diff --git a/drivers/gpu/drm/vc4/vc4_hdmi.c b/drivers/gpu/drm/vc4/vc4_hdmi.c
+index d30f8e8e8967..d57c4a5948c8 100644
+--- a/drivers/gpu/drm/vc4/vc4_hdmi.c
++++ b/drivers/gpu/drm/vc4/vc4_hdmi.c
+@@ -30,10 +30,11 @@
+  * The driver does not yet support CEC control, though the HDMI
+  * encoder block has CEC support.
+  */
+ 
+ #include <drm/display/drm_hdmi_helper.h>
++#include <drm/display/drm_hdmi_state_helper.h>
+ #include <drm/display/drm_scdc_helper.h>
+ #include <drm/drm_atomic_helper.h>
+ #include <drm/drm_drv.h>
+ #include <drm/drm_edid.h>
+ #include <drm/drm_probe_helper.h>
+@@ -108,29 +109,10 @@
+ #define HSM_MIN_CLOCK_FREQ	120000000
+ #define CEC_CLOCK_FREQ 40000
+ 
+ #define HDMI_14_MAX_TMDS_CLK   (340 * 1000 * 1000)
+ 
+-static const char * const output_format_str[] = {
+-	[VC4_HDMI_OUTPUT_RGB]		= "RGB",
+-	[VC4_HDMI_OUTPUT_YUV420]	= "YUV 4:2:0",
+-	[VC4_HDMI_OUTPUT_YUV422]	= "YUV 4:2:2",
+-	[VC4_HDMI_OUTPUT_YUV444]	= "YUV 4:4:4",
+-};
+-
+-static const char *vc4_hdmi_output_fmt_str(enum vc4_hdmi_output_format fmt)
+-{
+-	if (fmt >= ARRAY_SIZE(output_format_str))
+-		return "invalid";
+-
+-	return output_format_str[fmt];
+-}
+-
+-static unsigned long long
+-vc4_hdmi_encoder_compute_mode_clock(const struct drm_display_mode *mode,
+-				    unsigned int bpc, enum vc4_hdmi_output_format fmt);
+-
+ static bool vc4_hdmi_supports_scrambling(struct vc4_hdmi *vc4_hdmi)
+ {
+ 	struct drm_display_info *display = &vc4_hdmi->connector.display_info;
+ 
+ 	lockdep_assert_held(&vc4_hdmi->mutex);
+@@ -145,32 +127,17 @@ static bool vc4_hdmi_supports_scrambling(struct vc4_hdmi *vc4_hdmi)
+ 	return true;
+ }
+ 
+ static bool vc4_hdmi_mode_needs_scrambling(const struct drm_display_mode *mode,
+ 					   unsigned int bpc,
+-					   enum vc4_hdmi_output_format fmt)
++					   enum hdmi_colorspace fmt)
+ {
+-	unsigned long long clock = vc4_hdmi_encoder_compute_mode_clock(mode, bpc, fmt);
++	unsigned long long clock = drm_hdmi_compute_mode_clock(mode, bpc, fmt);
+ 
+ 	return clock > HDMI_14_MAX_TMDS_CLK;
+ }
+ 
+-static bool vc4_hdmi_is_full_range(struct vc4_hdmi *vc4_hdmi,
+-				   struct vc4_hdmi_connector_state *vc4_state)
+-{
+-	const struct drm_display_mode *mode = &vc4_hdmi->saved_adjusted_mode;
+-	struct drm_display_info *display = &vc4_hdmi->connector.display_info;
+-
+-	if (vc4_state->broadcast_rgb == VC4_HDMI_BROADCAST_RGB_LIMITED)
+-		return false;
+-	else if (vc4_state->broadcast_rgb == VC4_HDMI_BROADCAST_RGB_FULL)
+-		return true;
+-
+-	return !display->is_hdmi ||
+-		drm_default_rgb_quant_range(mode) == HDMI_QUANTIZATION_RANGE_FULL;
+-}
+-
+ static int vc4_hdmi_debugfs_regs(struct seq_file *m, void *unused)
+ {
+ 	struct drm_debugfs_entry *entry = m->private;
+ 	struct vc4_hdmi *vc4_hdmi = entry->file.data;
+ 	struct drm_device *drm = vc4_hdmi->connector.dev;
+@@ -522,11 +489,11 @@ static int vc4_hdmi_connector_get_modes(struct drm_connector *connector)
+ 	if (!vc4->hvs->vc5_hdmi_enable_hdmi_20) {
+ 		struct drm_device *drm = connector->dev;
+ 		const struct drm_display_mode *mode;
+ 
+ 		list_for_each_entry(mode, &connector->probed_modes, head) {
+-			if (vc4_hdmi_mode_needs_scrambling(mode, 8, VC4_HDMI_OUTPUT_RGB)) {
++			if (vc4_hdmi_mode_needs_scrambling(mode, 8, HDMI_COLORSPACE_RGB)) {
+ 				drm_warn_once(drm, "The core clock cannot reach frequencies high enough to support 4k @ 60Hz.");
+ 				drm_warn_once(drm, "Please change your config.txt file to add hdmi_enable_4kp60.");
+ 			}
+ 		}
+ 	}
+@@ -537,16 +504,12 @@ static int vc4_hdmi_connector_get_modes(struct drm_connector *connector)
+ static int vc4_hdmi_connector_atomic_check(struct drm_connector *connector,
+ 					   struct drm_atomic_state *state)
+ {
+ 	struct drm_connector_state *old_state =
+ 		drm_atomic_get_old_connector_state(state, connector);
+-	struct vc4_hdmi_connector_state *old_vc4_state =
+-		conn_state_to_vc4_hdmi_conn_state(old_state);
+ 	struct drm_connector_state *new_state =
+ 		drm_atomic_get_new_connector_state(state, connector);
+-	struct vc4_hdmi_connector_state *new_vc4_state =
+-		conn_state_to_vc4_hdmi_conn_state(new_state);
+ 	struct drm_crtc *crtc = new_state->crtc;
+ 
+ 	if (!crtc)
+ 		return 0;
+ 
+@@ -574,174 +537,66 @@ static int vc4_hdmi_connector_atomic_check(struct drm_connector *connector,
+ 		ret = drm_atomic_add_affected_planes(state, crtc);
+ 		if (ret)
+ 			return ret;
+ 	}
+ 
+-	if (old_state->colorspace != new_state->colorspace ||
+-	    old_vc4_state->broadcast_rgb != new_vc4_state->broadcast_rgb ||
+-	    !drm_connector_atomic_hdr_metadata_equal(old_state, new_state)) {
++	if (old_state->colorspace != new_state->colorspace) {
+ 		struct drm_crtc_state *crtc_state;
+ 
+ 		crtc_state = drm_atomic_get_crtc_state(state, crtc);
+ 		if (IS_ERR(crtc_state))
+ 			return PTR_ERR(crtc_state);
+ 
+ 		crtc_state->mode_changed = true;
+ 	}
+ 
+-	return 0;
+-}
+-
+-static int vc4_hdmi_connector_get_property(struct drm_connector *connector,
+-					   const struct drm_connector_state *state,
+-					   struct drm_property *property,
+-					   uint64_t *val)
+-{
+-	struct drm_device *drm = connector->dev;
+-	struct vc4_hdmi *vc4_hdmi =
+-		connector_to_vc4_hdmi(connector);
+-	const struct vc4_hdmi_connector_state *vc4_conn_state =
+-		conn_state_to_vc4_hdmi_conn_state(state);
+-
+-	if (property == vc4_hdmi->broadcast_rgb_property) {
+-		*val = vc4_conn_state->broadcast_rgb;
+-	} else {
+-		drm_dbg(drm, "Unknown property [PROP:%d:%s]\n",
+-			property->base.id, property->name);
+-		return -EINVAL;
+-	}
+-
+-	return 0;
+-}
+-
+-static int vc4_hdmi_connector_set_property(struct drm_connector *connector,
+-					   struct drm_connector_state *state,
+-					   struct drm_property *property,
+-					   uint64_t val)
+-{
+-	struct drm_device *drm = connector->dev;
+-	struct vc4_hdmi *vc4_hdmi =
+-		connector_to_vc4_hdmi(connector);
+-	struct vc4_hdmi_connector_state *vc4_conn_state =
+-		conn_state_to_vc4_hdmi_conn_state(state);
+-
+-	if (property == vc4_hdmi->broadcast_rgb_property) {
+-		vc4_conn_state->broadcast_rgb = val;
+-		return 0;
+-	}
+-
+-	drm_dbg(drm, "Unknown property [PROP:%d:%s]\n",
+-		property->base.id, property->name);
+-	return -EINVAL;
++	return drm_atomic_helper_connector_hdmi_check(connector, state);
+ }
+ 
+ static void vc4_hdmi_connector_reset(struct drm_connector *connector)
+ {
+-	struct vc4_hdmi_connector_state *old_state =
+-		conn_state_to_vc4_hdmi_conn_state(connector->state);
+-	struct vc4_hdmi_connector_state *new_state =
+-		kzalloc(sizeof(*new_state), GFP_KERNEL);
+-
+-	if (connector->state)
+-		__drm_atomic_helper_connector_destroy_state(connector->state);
+-
+-	kfree(old_state);
+-	__drm_atomic_helper_connector_reset(connector, &new_state->base);
+-
+-	if (!new_state)
+-		return;
+-
+-	new_state->base.max_bpc = 8;
+-	new_state->base.max_requested_bpc = 8;
+-	new_state->output_format = VC4_HDMI_OUTPUT_RGB;
+-	new_state->broadcast_rgb = VC4_HDMI_BROADCAST_RGB_AUTO;
++	drm_atomic_helper_connector_reset(connector);
++	__drm_atomic_helper_connector_hdmi_reset(connector, connector->state);
+ 	drm_atomic_helper_connector_tv_margins_reset(connector);
+ }
+ 
+-static struct drm_connector_state *
+-vc4_hdmi_connector_duplicate_state(struct drm_connector *connector)
+-{
+-	struct drm_connector_state *conn_state = connector->state;
+-	struct vc4_hdmi_connector_state *vc4_state = conn_state_to_vc4_hdmi_conn_state(conn_state);
+-	struct vc4_hdmi_connector_state *new_state;
+-
+-	new_state = kzalloc(sizeof(*new_state), GFP_KERNEL);
+-	if (!new_state)
+-		return NULL;
+-
+-	new_state->tmds_char_rate = vc4_state->tmds_char_rate;
+-	new_state->output_bpc = vc4_state->output_bpc;
+-	new_state->output_format = vc4_state->output_format;
+-	new_state->broadcast_rgb = vc4_state->broadcast_rgb;
+-	__drm_atomic_helper_connector_duplicate_state(connector, &new_state->base);
+-
+-	return &new_state->base;
+-}
+-
+-static void vc4_hdmi_connector_destroy_state(struct drm_connector *connector,
+-					     struct drm_connector_state *state)
+-{
+-	struct vc4_hdmi_connector_state *vc4_state =
+-		conn_state_to_vc4_hdmi_conn_state(state);
+-
+-	__drm_atomic_helper_connector_destroy_state(state);
+-	kfree(vc4_state);
+-}
+-
+ static const struct drm_connector_funcs vc4_hdmi_connector_funcs = {
+ 	.fill_modes = drm_helper_probe_single_connector_modes,
+ 	.reset = vc4_hdmi_connector_reset,
+-	.atomic_duplicate_state = vc4_hdmi_connector_duplicate_state,
+-	.atomic_destroy_state = vc4_hdmi_connector_destroy_state,
+-	.atomic_get_property = vc4_hdmi_connector_get_property,
+-	.atomic_set_property = vc4_hdmi_connector_set_property,
++	.atomic_duplicate_state = drm_atomic_helper_connector_duplicate_state,
++	.atomic_destroy_state = drm_atomic_helper_connector_destroy_state,
+ };
+ 
+ static const struct drm_connector_helper_funcs vc4_hdmi_connector_helper_funcs = {
+ 	.detect_ctx = vc4_hdmi_connector_detect_ctx,
+ 	.get_modes = vc4_hdmi_connector_get_modes,
+ 	.atomic_check = vc4_hdmi_connector_atomic_check,
+ };
+ 
+-static const struct drm_prop_enum_list broadcast_rgb_names[] = {
+-	{ VC4_HDMI_BROADCAST_RGB_AUTO, "Automatic" },
+-	{ VC4_HDMI_BROADCAST_RGB_FULL, "Full" },
+-	{ VC4_HDMI_BROADCAST_RGB_LIMITED, "Limited 16:235" },
+-};
+-
+-static void
+-vc4_hdmi_attach_broadcast_rgb_property(struct drm_device *dev,
+-				       struct vc4_hdmi *vc4_hdmi)
+-{
+-	struct drm_property *prop = vc4_hdmi->broadcast_rgb_property;
+-
+-	if (!prop) {
+-		prop = drm_property_create_enum(dev, DRM_MODE_PROP_ENUM,
+-						"Broadcast RGB",
+-						broadcast_rgb_names,
+-						ARRAY_SIZE(broadcast_rgb_names));
+-		if (!prop)
+-			return;
+-
+-		vc4_hdmi->broadcast_rgb_property = prop;
+-	}
+-
+-	drm_object_attach_property(&vc4_hdmi->connector.base, prop,
+-				   VC4_HDMI_BROADCAST_RGB_AUTO);
+-}
++static const struct drm_connector_hdmi_funcs vc4_hdmi_hdmi_connector_funcs;
+ 
+ static int vc4_hdmi_connector_init(struct drm_device *dev,
+ 				   struct vc4_hdmi *vc4_hdmi)
+ {
+ 	struct drm_connector *connector = &vc4_hdmi->connector;
+ 	struct drm_encoder *encoder = &vc4_hdmi->encoder.base;
++	unsigned int max_bpc = 8;
+ 	int ret;
+ 
+-	ret = drmm_connector_init(dev, connector,
+-				  &vc4_hdmi_connector_funcs,
+-				  DRM_MODE_CONNECTOR_HDMIA,
+-				  vc4_hdmi->ddc);
++	if (vc4_hdmi->variant->supports_hdr)
++		max_bpc = 12;
++
++	ret = drmm_connector_hdmi_init(dev, connector,
++				       "Broadcom", "Videocore",
++				       &vc4_hdmi_connector_funcs,
++				       &vc4_hdmi_hdmi_connector_funcs,
++				       DRM_MODE_CONNECTOR_HDMIA,
++				       vc4_hdmi->ddc,
++				       BIT(HDMI_COLORSPACE_RGB) |
++				       BIT(HDMI_COLORSPACE_YUV422) |
++				       BIT(HDMI_COLORSPACE_YUV444),
++				       max_bpc);
+ 	if (ret)
+ 		return ret;
+ 
+ 	drm_connector_helper_add(connector, &vc4_hdmi_connector_helper_funcs);
+ 
+@@ -761,34 +616,31 @@ static int vc4_hdmi_connector_init(struct drm_device *dev,
+ 	if (ret)
+ 		return ret;
+ 
+ 	drm_connector_attach_colorspace_property(connector);
+ 	drm_connector_attach_tv_margin_properties(connector);
+-	drm_connector_attach_max_bpc_property(connector, 8, 12);
+ 
+ 	connector->polled = (DRM_CONNECTOR_POLL_CONNECT |
+ 			     DRM_CONNECTOR_POLL_DISCONNECT);
+ 
+ 	connector->interlace_allowed = 1;
+ 	connector->doublescan_allowed = 0;
+ 	connector->stereo_allowed = 1;
+ 
+-	if (vc4_hdmi->variant->supports_hdr)
+-		drm_connector_attach_hdr_output_metadata_property(connector);
+-
+-	vc4_hdmi_attach_broadcast_rgb_property(dev, vc4_hdmi);
++	ret = drm_connector_attach_broadcast_rgb_property(connector);
++	if (ret)
++		return ret;
+ 
+ 	drm_connector_attach_encoder(connector, encoder);
+ 
+ 	return 0;
+ }
+ 
+-static int vc4_hdmi_stop_packet(struct drm_encoder *encoder,
++static int vc4_hdmi_stop_packet(struct vc4_hdmi *vc4_hdmi,
+ 				enum hdmi_infoframe_type type,
+ 				bool poll)
+ {
+-	struct vc4_hdmi *vc4_hdmi = encoder_to_vc4_hdmi(encoder);
+ 	struct drm_device *drm = vc4_hdmi->connector.dev;
+ 	u32 packet_id = type - 0x80;
+ 	unsigned long flags;
+ 	int ret = 0;
+ 	int idx;
+@@ -808,41 +660,45 @@ static int vc4_hdmi_stop_packet(struct drm_encoder *encoder,
+ 
+ 	drm_dev_exit(idx);
+ 	return ret;
+ }
+ 
+-static void vc4_hdmi_write_infoframe(struct drm_encoder *encoder,
+-				     union hdmi_infoframe *frame)
++static int vc4_hdmi_write_infoframe(struct drm_connector *connector,
++				    enum hdmi_infoframe_type type,
++				    const u8 *infoframe, size_t len)
+ {
+-	struct vc4_hdmi *vc4_hdmi = encoder_to_vc4_hdmi(encoder);
+-	struct drm_device *drm = vc4_hdmi->connector.dev;
+-	u32 packet_id = frame->any.type - 0x80;
++	struct vc4_hdmi *vc4_hdmi = connector_to_vc4_hdmi(connector);
++	struct drm_device *drm = connector->dev;
++	u32 packet_id = type - 0x80;
+ 	const struct vc4_hdmi_register *ram_packet_start =
+ 		&vc4_hdmi->variant->registers[HDMI_RAM_PACKET_START];
+ 	u32 packet_reg = ram_packet_start->offset + VC4_HDMI_PACKET_STRIDE * packet_id;
+ 	u32 packet_reg_next = ram_packet_start->offset +
+ 		VC4_HDMI_PACKET_STRIDE * (packet_id + 1);
+ 	void __iomem *base = __vc4_hdmi_get_field_base(vc4_hdmi,
+ 						       ram_packet_start->reg);
+ 	uint8_t buffer[VC4_HDMI_PACKET_STRIDE] = {};
+ 	unsigned long flags;
+-	ssize_t len, i;
++	ssize_t i;
+ 	int ret;
+ 	int idx;
+ 
+ 	if (!drm_dev_enter(drm, &idx))
+-		return;
++		return 0;
++
++	if (len > sizeof(buffer)) {
++		ret = -ENOMEM;
++		goto out;
++	}
++
++	memcpy(buffer, infoframe, len);
+ 
+ 	WARN_ONCE(!(HDMI_READ(HDMI_RAM_PACKET_CONFIG) &
+ 		    VC4_HDMI_RAM_PACKET_ENABLE),
+ 		  "Packet RAM has to be on to store the packet.");
+ 
+-	len = hdmi_infoframe_pack(frame, buffer, sizeof(buffer));
+-	if (len < 0)
+-		goto out;
+-
+-	ret = vc4_hdmi_stop_packet(encoder, frame->any.type, true);
++	ret = vc4_hdmi_stop_packet(vc4_hdmi, type, true);
+ 	if (ret) {
+ 		DRM_ERROR("Failed to wait for infoframe to go idle: %d\n", ret);
+ 		goto out;
+ 	}
+ 
+@@ -880,134 +736,11 @@ static void vc4_hdmi_write_infoframe(struct drm_encoder *encoder,
+ 	if (ret)
+ 		DRM_ERROR("Failed to wait for infoframe to start: %d\n", ret);
+ 
+ out:
+ 	drm_dev_exit(idx);
+-}
+-
+-static void vc4_hdmi_avi_infoframe_colorspace(struct hdmi_avi_infoframe *frame,
+-					      enum vc4_hdmi_output_format fmt)
+-{
+-	switch (fmt) {
+-	case VC4_HDMI_OUTPUT_RGB:
+-		frame->colorspace = HDMI_COLORSPACE_RGB;
+-		break;
+-
+-	case VC4_HDMI_OUTPUT_YUV420:
+-		frame->colorspace = HDMI_COLORSPACE_YUV420;
+-		break;
+-
+-	case VC4_HDMI_OUTPUT_YUV422:
+-		frame->colorspace = HDMI_COLORSPACE_YUV422;
+-		break;
+-
+-	case VC4_HDMI_OUTPUT_YUV444:
+-		frame->colorspace = HDMI_COLORSPACE_YUV444;
+-		break;
+-
+-	default:
+-		break;
+-	}
+-}
+-
+-static void vc4_hdmi_set_avi_infoframe(struct drm_encoder *encoder)
+-{
+-	struct vc4_hdmi *vc4_hdmi = encoder_to_vc4_hdmi(encoder);
+-	struct drm_connector *connector = &vc4_hdmi->connector;
+-	struct drm_connector_state *cstate = connector->state;
+-	struct vc4_hdmi_connector_state *vc4_state =
+-		conn_state_to_vc4_hdmi_conn_state(cstate);
+-	const struct drm_display_mode *mode = &vc4_hdmi->saved_adjusted_mode;
+-	union hdmi_infoframe frame;
+-	int ret;
+-
+-	lockdep_assert_held(&vc4_hdmi->mutex);
+-
+-	ret = drm_hdmi_avi_infoframe_from_display_mode(&frame.avi,
+-						       connector, mode);
+-	if (ret < 0) {
+-		DRM_ERROR("couldn't fill AVI infoframe\n");
+-		return;
+-	}
+-
+-	drm_hdmi_avi_infoframe_quant_range(&frame.avi,
+-					   connector, mode,
+-					   vc4_hdmi_is_full_range(vc4_hdmi, vc4_state) ?
+-					   HDMI_QUANTIZATION_RANGE_FULL :
+-					   HDMI_QUANTIZATION_RANGE_LIMITED);
+-	drm_hdmi_avi_infoframe_colorimetry(&frame.avi, cstate);
+-	vc4_hdmi_avi_infoframe_colorspace(&frame.avi, vc4_state->output_format);
+-	drm_hdmi_avi_infoframe_bars(&frame.avi, cstate);
+-
+-	vc4_hdmi_write_infoframe(encoder, &frame);
+-}
+-
+-static void vc4_hdmi_set_spd_infoframe(struct drm_encoder *encoder)
+-{
+-	union hdmi_infoframe frame;
+-	int ret;
+-
+-	ret = hdmi_spd_infoframe_init(&frame.spd, "Broadcom", "Videocore");
+-	if (ret < 0) {
+-		DRM_ERROR("couldn't fill SPD infoframe\n");
+-		return;
+-	}
+-
+-	frame.spd.sdi = HDMI_SPD_SDI_PC;
+-
+-	vc4_hdmi_write_infoframe(encoder, &frame);
+-}
+-
+-static void vc4_hdmi_set_audio_infoframe(struct drm_encoder *encoder)
+-{
+-	struct vc4_hdmi *vc4_hdmi = encoder_to_vc4_hdmi(encoder);
+-	struct hdmi_audio_infoframe *audio = &vc4_hdmi->audio.infoframe;
+-	union hdmi_infoframe frame;
+-
+-	memcpy(&frame.audio, audio, sizeof(*audio));
+-
+-	if (vc4_hdmi->packet_ram_enabled)
+-		vc4_hdmi_write_infoframe(encoder, &frame);
+-}
+-
+-static void vc4_hdmi_set_hdr_infoframe(struct drm_encoder *encoder)
+-{
+-	struct vc4_hdmi *vc4_hdmi = encoder_to_vc4_hdmi(encoder);
+-	struct drm_connector *connector = &vc4_hdmi->connector;
+-	struct drm_connector_state *conn_state = connector->state;
+-	union hdmi_infoframe frame;
+-
+-	lockdep_assert_held(&vc4_hdmi->mutex);
+-
+-	if (!vc4_hdmi->variant->supports_hdr)
+-		return;
+-
+-	if (!conn_state->hdr_output_metadata)
+-		return;
+-
+-	if (drm_hdmi_infoframe_set_hdr_metadata(&frame.drm, conn_state))
+-		return;
+-
+-	vc4_hdmi_write_infoframe(encoder, &frame);
+-}
+-
+-static void vc4_hdmi_set_infoframes(struct drm_encoder *encoder)
+-{
+-	struct vc4_hdmi *vc4_hdmi = encoder_to_vc4_hdmi(encoder);
+-
+-	lockdep_assert_held(&vc4_hdmi->mutex);
+-
+-	vc4_hdmi_set_avi_infoframe(encoder);
+-	vc4_hdmi_set_spd_infoframe(encoder);
+-	/*
+-	 * If audio was streaming, then we need to reenabled the audio
+-	 * infoframe here during encoder_enable.
+-	 */
+-	if (vc4_hdmi->audio.streaming)
+-		vc4_hdmi_set_audio_infoframe(encoder);
+-
+-	vc4_hdmi_set_hdr_infoframe(encoder);
++	return ret;
+ }
+ 
+ #define SCRAMBLING_POLLING_DELAY_MS	1000
+ 
+ static void vc4_hdmi_enable_scrambling(struct drm_encoder *encoder)
+@@ -1172,12 +905,10 @@ static void vc4_hdmi_encoder_post_crtc_powerdown(struct drm_encoder *encoder,
+ 
+ static void vc4_hdmi_csc_setup(struct vc4_hdmi *vc4_hdmi,
+ 			       struct drm_connector_state *state,
+ 			       const struct drm_display_mode *mode)
+ {
+-	struct vc4_hdmi_connector_state *vc4_state =
+-		conn_state_to_vc4_hdmi_conn_state(state);
+ 	struct drm_device *drm = vc4_hdmi->connector.dev;
+ 	unsigned long flags;
+ 	u32 csc_ctl;
+ 	int idx;
+ 
+@@ -1187,11 +918,11 @@ static void vc4_hdmi_csc_setup(struct vc4_hdmi *vc4_hdmi,
+ 	spin_lock_irqsave(&vc4_hdmi->hw_lock, flags);
+ 
+ 	csc_ctl = VC4_SET_FIELD(VC4_HD_CSC_CTL_ORDER_BGR,
+ 				VC4_HD_CSC_CTL_ORDER);
+ 
+-	if (!vc4_hdmi_is_full_range(vc4_hdmi, vc4_state)) {
++	if (state->hdmi.is_limited_range) {
+ 		/* CEA VICs other than #1 requre limited range RGB
+ 		 * output unless overridden by an AVI infoframe.
+ 		 * Apply a colorspace conversion to squash 0-255 down
+ 		 * to 16-235.  The matrix here is:
+ 		 *
+@@ -1410,13 +1141,11 @@ static const u16
+ static void vc5_hdmi_csc_setup(struct vc4_hdmi *vc4_hdmi,
+ 			       struct drm_connector_state *state,
+ 			       const struct drm_display_mode *mode)
+ {
+ 	struct drm_device *drm = vc4_hdmi->connector.dev;
+-	struct vc4_hdmi_connector_state *vc4_state =
+-		conn_state_to_vc4_hdmi_conn_state(state);
+-	unsigned int lim_range = vc4_hdmi_is_full_range(vc4_hdmi, vc4_state) ? 0 : 1;
++	unsigned int lim_range = state->hdmi.is_limited_range ? 1 : 0;
+ 	unsigned long flags;
+ 	const u16 (*csc)[4];
+ 	u32 if_cfg = 0;
+ 	u32 if_xbar = 0x543210;
+ 	u32 csc_chan_ctl = 0;
+@@ -1427,18 +1156,18 @@ static void vc5_hdmi_csc_setup(struct vc4_hdmi *vc4_hdmi,
+ 	if (!drm_dev_enter(drm, &idx))
+ 		return;
+ 
+ 	spin_lock_irqsave(&vc4_hdmi->hw_lock, flags);
+ 
+-	switch (vc4_state->output_format) {
+-	case VC4_HDMI_OUTPUT_YUV444:
++	switch (state->hdmi.output_format) {
++	case HDMI_COLORSPACE_YUV444:
+ 		csc = vc5_hdmi_find_yuv_csc_coeffs(vc4_hdmi, state->colorspace, !!lim_range);
+ 
+ 		vc5_hdmi_set_csc_coeffs_swap(vc4_hdmi, csc);
+ 		break;
+ 
+-	case VC4_HDMI_OUTPUT_YUV422:
++	case HDMI_COLORSPACE_YUV422:
+ 		csc = vc5_hdmi_find_yuv_csc_coeffs(vc4_hdmi, state->colorspace, !!lim_range);
+ 
+ 		csc_ctl |= VC4_SET_FIELD(VC5_MT_CP_CSC_CTL_FILTER_MODE_444_TO_422_STANDARD,
+ 					 VC5_MT_CP_CSC_CTL_FILTER_MODE_444_TO_422) |
+ 			VC5_MT_CP_CSC_CTL_USE_444_TO_422 |
+@@ -1451,11 +1180,11 @@ static void vc5_hdmi_csc_setup(struct vc4_hdmi *vc4_hdmi,
+ 					VC5_DVP_HT_VEC_INTERFACE_CFG_SEL_422);
+ 
+ 		vc5_hdmi_set_csc_coeffs(vc4_hdmi, csc);
+ 		break;
+ 
+-	case VC4_HDMI_OUTPUT_RGB:
++	case HDMI_COLORSPACE_RGB:
+ 		if_xbar = 0x354021;
+ 
+ 		vc5_hdmi_set_csc_coeffs(vc4_hdmi, vc5_hdmi_csc_full_rgb_to_rgb[lim_range]);
+ 		break;
+ 
+@@ -1540,12 +1269,10 @@ static void vc4_hdmi_set_timings(struct vc4_hdmi *vc4_hdmi,
+ static void vc5_hdmi_set_timings(struct vc4_hdmi *vc4_hdmi,
+ 				 struct drm_connector_state *state,
+ 				 const struct drm_display_mode *mode)
+ {
+ 	struct drm_device *drm = vc4_hdmi->connector.dev;
+-	const struct vc4_hdmi_connector_state *vc4_state =
+-		conn_state_to_vc4_hdmi_conn_state(state);
+ 	bool hsync_pos = mode->flags & DRM_MODE_FLAG_PHSYNC;
+ 	bool vsync_pos = mode->flags & DRM_MODE_FLAG_PVSYNC;
+ 	bool interlaced = mode->flags & DRM_MODE_FLAG_INTERLACE;
+ 	u32 pixel_rep = (mode->flags & DRM_MODE_FLAG_DBLCLK) ? 2 : 1;
+ 	u32 verta = (VC4_SET_FIELD(mode->crtc_vsync_end - mode->crtc_vsync_start,
+@@ -1593,11 +1320,11 @@ static void vc5_hdmi_set_timings(struct vc4_hdmi *vc4_hdmi,
+ 	HDMI_WRITE(HDMI_VERTA1, verta);
+ 
+ 	HDMI_WRITE(HDMI_VERTB0, vertb_even);
+ 	HDMI_WRITE(HDMI_VERTB1, vertb);
+ 
+-	switch (vc4_state->output_bpc) {
++	switch (state->hdmi.output_bpc) {
+ 	case 12:
+ 		gcp = 6;
+ 		break;
+ 	case 10:
+ 		gcp = 5;
+@@ -1610,11 +1337,11 @@ static void vc5_hdmi_set_timings(struct vc4_hdmi *vc4_hdmi,
+ 
+ 	/*
+ 	 * YCC422 is always 36-bit and not considered deep colour so
+ 	 * doesn't signal in GCP.
+ 	 */
+-	if (vc4_state->output_format == VC4_HDMI_OUTPUT_YUV422) {
++	if (state->hdmi.output_format == HDMI_COLORSPACE_YUV422) {
+ 		gcp = 0;
+ 	}
+ 
+ 	reg = HDMI_READ(HDMI_DEEP_COLOR_CONFIG_1);
+ 	reg &= ~(VC5_HDMI_DEEP_COLOR_CONFIG_1_INIT_PACK_PHASE_MASK |
+@@ -1694,14 +1421,12 @@ static void vc4_hdmi_encoder_pre_crtc_configure(struct drm_encoder *encoder,
+ 	struct vc4_hdmi *vc4_hdmi = encoder_to_vc4_hdmi(encoder);
+ 	struct drm_device *drm = vc4_hdmi->connector.dev;
+ 	struct drm_connector *connector = &vc4_hdmi->connector;
+ 	struct drm_connector_state *conn_state =
+ 		drm_atomic_get_new_connector_state(state, connector);
+-	struct vc4_hdmi_connector_state *vc4_conn_state =
+-		conn_state_to_vc4_hdmi_conn_state(conn_state);
+ 	const struct drm_display_mode *mode = &vc4_hdmi->saved_adjusted_mode;
+-	unsigned long tmds_char_rate = vc4_conn_state->tmds_char_rate;
++	unsigned long long tmds_char_rate = conn_state->hdmi.tmds_char_rate;
+ 	unsigned long bvb_rate, hsm_rate;
+ 	unsigned long flags;
+ 	int ret;
+ 	int idx;
+ 
+@@ -1732,11 +1457,11 @@ static void vc4_hdmi_encoder_pre_crtc_configure(struct drm_encoder *encoder,
+ 	 * Additionally, the AXI clock needs to be at least 25% of
+ 	 * pixel clock, but HSM ends up being the limiting factor.
+ 	 */
+ 	hsm_rate = max_t(unsigned long,
+ 			 HSM_MIN_CLOCK_FREQ,
+-			 (tmds_char_rate / 100) * 101);
++			 div_u64(tmds_char_rate, 100) * 101);
+ 	ret = clk_set_min_rate(vc4_hdmi->hsm_clock, hsm_rate);
+ 	if (ret) {
+ 		DRM_ERROR("Failed to set HSM clock rate: %d\n", ret);
+ 		goto err_put_runtime_pm;
+ 	}
+@@ -1774,11 +1499,11 @@ static void vc4_hdmi_encoder_pre_crtc_configure(struct drm_encoder *encoder,
+ 		DRM_ERROR("Failed to turn on pixel bvb clock: %d\n", ret);
+ 		goto err_disable_pixel_clock;
+ 	}
+ 
+ 	if (vc4_hdmi->variant->phy_init)
+-		vc4_hdmi->variant->phy_init(vc4_hdmi, vc4_conn_state);
++		vc4_hdmi->variant->phy_init(vc4_hdmi, conn_state);
+ 
+ 	spin_lock_irqsave(&vc4_hdmi->hw_lock, flags);
+ 
+ 	HDMI_WRITE(HDMI_SCHEDULER_CONTROL,
+ 		   HDMI_READ(HDMI_SCHEDULER_CONTROL) |
+@@ -1839,11 +1564,12 @@ static void vc4_hdmi_encoder_pre_crtc_enable(struct drm_encoder *encoder,
+ 
+ static void vc4_hdmi_encoder_post_crtc_enable(struct drm_encoder *encoder,
+ 					      struct drm_atomic_state *state)
+ {
+ 	struct vc4_hdmi *vc4_hdmi = encoder_to_vc4_hdmi(encoder);
+-	struct drm_device *drm = vc4_hdmi->connector.dev;
++	struct drm_connector *connector = &vc4_hdmi->connector;
++	struct drm_device *drm = connector->dev;
+ 	const struct drm_display_mode *mode = &vc4_hdmi->saved_adjusted_mode;
+ 	struct drm_display_info *display = &vc4_hdmi->connector.display_info;
+ 	bool hsync_pos = mode->flags & DRM_MODE_FLAG_PHSYNC;
+ 	bool vsync_pos = mode->flags & DRM_MODE_FLAG_PVSYNC;
+ 	unsigned long flags;
+@@ -1905,11 +1631,11 @@ static void vc4_hdmi_encoder_post_crtc_enable(struct drm_encoder *encoder,
+ 			   VC4_HDMI_RAM_PACKET_ENABLE);
+ 
+ 		spin_unlock_irqrestore(&vc4_hdmi->hw_lock, flags);
+ 		vc4_hdmi->packet_ram_enabled = true;
+ 
+-		vc4_hdmi_set_infoframes(encoder);
++		drm_atomic_helper_connector_hdmi_update_infoframes(connector, state);
+ 	}
+ 
+ 	vc4_hdmi_recenter_fifo(vc4_hdmi);
+ 	vc4_hdmi_enable_scrambling(encoder);
+ 
+@@ -1922,112 +1648,25 @@ static void vc4_hdmi_encoder_post_crtc_enable(struct drm_encoder *encoder,
+ static void vc4_hdmi_encoder_atomic_mode_set(struct drm_encoder *encoder,
+ 					     struct drm_crtc_state *crtc_state,
+ 					     struct drm_connector_state *conn_state)
+ {
+ 	struct vc4_hdmi *vc4_hdmi = encoder_to_vc4_hdmi(encoder);
+-	struct vc4_hdmi_connector_state *vc4_state =
+-		conn_state_to_vc4_hdmi_conn_state(conn_state);
+ 
+ 	mutex_lock(&vc4_hdmi->mutex);
+ 	drm_mode_copy(&vc4_hdmi->saved_adjusted_mode,
+ 		      &crtc_state->adjusted_mode);
+-	vc4_hdmi->output_bpc = vc4_state->output_bpc;
+-	vc4_hdmi->output_format = vc4_state->output_format;
++	vc4_hdmi->output_bpc = conn_state->hdmi.output_bpc;
++	vc4_hdmi->output_format = conn_state->hdmi.output_format;
+ 	mutex_unlock(&vc4_hdmi->mutex);
+ }
+ 
+-static bool
+-vc4_hdmi_sink_supports_format_bpc(const struct vc4_hdmi *vc4_hdmi,
+-				  const struct drm_display_info *info,
+-				  const struct drm_display_mode *mode,
+-				  unsigned int format, unsigned int bpc)
+-{
+-	struct drm_device *dev = vc4_hdmi->connector.dev;
+-	u8 vic = drm_match_cea_mode(mode);
+-
+-	if (vic == 1 && bpc != 8) {
+-		drm_dbg(dev, "VIC1 requires a bpc of 8, got %u\n", bpc);
+-		return false;
+-	}
+-
+-	if (!info->is_hdmi &&
+-	    (format != VC4_HDMI_OUTPUT_RGB || bpc != 8)) {
+-		drm_dbg(dev, "DVI Monitors require an RGB output at 8 bpc\n");
+-		return false;
+-	}
+-
+-	switch (format) {
+-	case VC4_HDMI_OUTPUT_RGB:
+-		drm_dbg(dev, "RGB Format, checking the constraints.\n");
+-
+-		if (!(info->color_formats & DRM_COLOR_FORMAT_RGB444))
+-			return false;
+-
+-		if (bpc == 10 && !(info->edid_hdmi_rgb444_dc_modes & DRM_EDID_HDMI_DC_30)) {
+-			drm_dbg(dev, "10 BPC but sink doesn't support Deep Color 30.\n");
+-			return false;
+-		}
+-
+-		if (bpc == 12 && !(info->edid_hdmi_rgb444_dc_modes & DRM_EDID_HDMI_DC_36)) {
+-			drm_dbg(dev, "12 BPC but sink doesn't support Deep Color 36.\n");
+-			return false;
+-		}
+-
+-		drm_dbg(dev, "RGB format supported in that configuration.\n");
+-
+-		return true;
+-
+-	case VC4_HDMI_OUTPUT_YUV422:
+-		drm_dbg(dev, "YUV422 format, checking the constraints.\n");
+-
+-		if (!(info->color_formats & DRM_COLOR_FORMAT_YCBCR422)) {
+-			drm_dbg(dev, "Sink doesn't support YUV422.\n");
+-			return false;
+-		}
+-
+-		if (bpc != 12) {
+-			drm_dbg(dev, "YUV422 only supports 12 bpc.\n");
+-			return false;
+-		}
+-
+-		drm_dbg(dev, "YUV422 format supported in that configuration.\n");
+-
+-		return true;
+-
+-	case VC4_HDMI_OUTPUT_YUV444:
+-		drm_dbg(dev, "YUV444 format, checking the constraints.\n");
+-
+-		if (!(info->color_formats & DRM_COLOR_FORMAT_YCBCR444)) {
+-			drm_dbg(dev, "Sink doesn't support YUV444.\n");
+-			return false;
+-		}
+-
+-		if (bpc == 10 && !(info->edid_hdmi_ycbcr444_dc_modes & DRM_EDID_HDMI_DC_30)) {
+-			drm_dbg(dev, "10 BPC but sink doesn't support Deep Color 30.\n");
+-			return false;
+-		}
+-
+-		if (bpc == 12 && !(info->edid_hdmi_ycbcr444_dc_modes & DRM_EDID_HDMI_DC_36)) {
+-			drm_dbg(dev, "12 BPC but sink doesn't support Deep Color 36.\n");
+-			return false;
+-		}
+-
+-		drm_dbg(dev, "YUV444 format supported in that configuration.\n");
+-
+-		return true;
+-	}
+-
+-	return false;
+-}
+-
+ static enum drm_mode_status
+-vc4_hdmi_encoder_clock_valid(const struct vc4_hdmi *vc4_hdmi,
+-			     const struct drm_display_mode *mode,
+-			     unsigned long long clock)
++vc4_hdmi_connector_clock_valid(const struct drm_connector *connector,
++			       const struct drm_display_mode *mode,
++			       unsigned long long clock)
+ {
+-	const struct drm_connector *connector = &vc4_hdmi->connector;
+-	const struct drm_display_info *info = &connector->display_info;
++	const struct vc4_hdmi *vc4_hdmi = connector_to_vc4_hdmi(connector);
+ 	struct vc4_dev *vc4 = to_vc4_dev(connector->dev);
+ 
+ 	if (clock > vc4_hdmi->variant->max_pixel_clock)
+ 		return MODE_CLOCK_HIGH;
+ 
+@@ -2038,148 +1677,29 @@ vc4_hdmi_encoder_clock_valid(const struct vc4_hdmi *vc4_hdmi,
+ 	if (!vc4->hvs->vc5_hdmi_enable_4096by2160 &&
+ 	    mode->hdisplay > 3840 && mode->vdisplay >= 2160 &&
+ 	    drm_mode_vrefresh(mode) >= 50)
+ 		return MODE_CLOCK_HIGH;
+ 
+-	if (info->max_tmds_clock && clock > (info->max_tmds_clock * 1000))
+-		return MODE_CLOCK_HIGH;
+-
+ 	return MODE_OK;
+ }
+ 
+-static unsigned long long
+-vc4_hdmi_encoder_compute_mode_clock(const struct drm_display_mode *mode,
+-				    unsigned int bpc,
+-				    enum vc4_hdmi_output_format fmt)
+-{
+-	unsigned long long clock = mode->clock * 1000ULL;
+-
+-	if (mode->flags & DRM_MODE_FLAG_DBLCLK)
+-		clock = clock * 2;
+-
+-	if (fmt == VC4_HDMI_OUTPUT_YUV422)
+-		bpc = 8;
+-
+-	clock = clock * bpc;
+-	do_div(clock, 8);
+-
+-	return clock;
+-}
+-
+-static int
+-vc4_hdmi_encoder_compute_clock(const struct vc4_hdmi *vc4_hdmi,
+-			       struct vc4_hdmi_connector_state *vc4_state,
+-			       const struct drm_display_mode *mode,
+-			       unsigned int bpc, unsigned int fmt)
+-{
+-	unsigned long long clock;
+-
+-	clock = vc4_hdmi_encoder_compute_mode_clock(mode, bpc, fmt);
+-	if (vc4_hdmi_encoder_clock_valid(vc4_hdmi, mode, clock) != MODE_OK)
+-		return -EINVAL;
+-
+-	vc4_state->tmds_char_rate = clock;
+-
+-	return 0;
+-}
+-
+-static int
+-vc4_hdmi_encoder_compute_format(const struct vc4_hdmi *vc4_hdmi,
+-				struct vc4_hdmi_connector_state *vc4_state,
+-				const struct drm_display_mode *mode,
+-				unsigned int bpc)
+-{
+-	struct drm_device *dev = vc4_hdmi->connector.dev;
+-	const struct drm_connector *connector = &vc4_hdmi->connector;
+-	const struct drm_display_info *info = &connector->display_info;
+-	unsigned int format;
+-
+-	drm_dbg(dev, "Trying with an RGB output\n");
+-
+-	format = VC4_HDMI_OUTPUT_RGB;
+-	if (vc4_hdmi_sink_supports_format_bpc(vc4_hdmi, info, mode, format, bpc)) {
+-		int ret;
+-
+-		ret = vc4_hdmi_encoder_compute_clock(vc4_hdmi, vc4_state,
+-						     mode, bpc, format);
+-		if (!ret) {
+-			vc4_state->output_format = format;
+-			return 0;
+-		}
+-	}
+-
+-	drm_dbg(dev, "Failed, Trying with an YUV422 output\n");
+-
+-	format = VC4_HDMI_OUTPUT_YUV422;
+-	if (vc4_hdmi_sink_supports_format_bpc(vc4_hdmi, info, mode, format, bpc)) {
+-		int ret;
+-
+-		ret = vc4_hdmi_encoder_compute_clock(vc4_hdmi, vc4_state,
+-						     mode, bpc, format);
+-		if (!ret) {
+-			vc4_state->output_format = format;
+-			return 0;
+-		}
+-	}
+-
+-	drm_dbg(dev, "Failed. No Format Supported for that bpc count.\n");
+-
+-	return -EINVAL;
+-}
+-
+-static int
+-vc4_hdmi_encoder_compute_config(const struct vc4_hdmi *vc4_hdmi,
+-				struct vc4_hdmi_connector_state *vc4_state,
+-				const struct drm_display_mode *mode)
+-{
+-	struct drm_device *dev = vc4_hdmi->connector.dev;
+-	struct drm_connector_state *conn_state = &vc4_state->base;
+-	unsigned int max_bpc = clamp_t(unsigned int, conn_state->max_bpc, 8, 12);
+-	unsigned int bpc;
+-	int ret;
+-
+-	for (bpc = max_bpc; bpc >= 8; bpc -= 2) {
+-		drm_dbg(dev, "Trying with a %d bpc output\n", bpc);
+-
+-		ret = vc4_hdmi_encoder_compute_format(vc4_hdmi, vc4_state,
+-						      mode, bpc);
+-		if (ret)
+-			continue;
+-
+-		vc4_state->output_bpc = bpc;
+-
+-		drm_dbg(dev,
+-			"Mode %ux%u @ %uHz: Found configuration: bpc: %u, fmt: %s, clock: %llu\n",
+-			mode->hdisplay, mode->vdisplay, drm_mode_vrefresh(mode),
+-			vc4_state->output_bpc,
+-			vc4_hdmi_output_fmt_str(vc4_state->output_format),
+-			vc4_state->tmds_char_rate);
+-
+-		break;
+-	}
+-
+-	return ret;
+-}
++static const struct drm_connector_hdmi_funcs vc4_hdmi_hdmi_connector_funcs = {
++	.tmds_char_rate_valid	= vc4_hdmi_connector_clock_valid,
++	.write_infoframe	= vc4_hdmi_write_infoframe,
++};
+ 
+ #define WIFI_2_4GHz_CH1_MIN_FREQ	2400000000ULL
+ #define WIFI_2_4GHz_CH1_MAX_FREQ	2422000000ULL
+ 
+ static int vc4_hdmi_encoder_atomic_check(struct drm_encoder *encoder,
+ 					 struct drm_crtc_state *crtc_state,
+ 					 struct drm_connector_state *conn_state)
+ {
+ 	struct vc4_hdmi *vc4_hdmi = encoder_to_vc4_hdmi(encoder);
+-	struct drm_connector *connector = &vc4_hdmi->connector;
+-	struct drm_connector_state *old_conn_state =
+-		drm_atomic_get_old_connector_state(conn_state->state, connector);
+-	struct vc4_hdmi_connector_state *old_vc4_state =
+-		conn_state_to_vc4_hdmi_conn_state(old_conn_state);
+-	struct vc4_hdmi_connector_state *vc4_state = conn_state_to_vc4_hdmi_conn_state(conn_state);
+ 	struct drm_display_mode *mode = &crtc_state->adjusted_mode;
+ 	unsigned long long tmds_char_rate = mode->clock * 1000;
+ 	unsigned long long tmds_bit_rate;
+-	int ret;
+ 
+ 	if (vc4_hdmi->variant->unsupported_odd_h_timings) {
+ 		if (mode->flags & DRM_MODE_FLAG_DBLCLK) {
+ 			/* Only try to fixup DBLCLK modes to get 480i and 576i
+ 			 * working.
+@@ -2211,35 +1731,28 @@ static int vc4_hdmi_encoder_atomic_check(struct drm_encoder *encoder,
+ 	     tmds_bit_rate <= WIFI_2_4GHz_CH1_MAX_FREQ)) {
+ 		mode->clock = 238560;
+ 		tmds_char_rate = mode->clock * 1000;
+ 	}
+ 
+-	ret = vc4_hdmi_encoder_compute_config(vc4_hdmi, vc4_state, mode);
+-	if (ret)
+-		return ret;
+-
+-	/* vc4_hdmi_encoder_compute_config may have changed output_bpc and/or output_format */
+-	if (vc4_state->output_bpc != old_vc4_state->output_bpc ||
+-	    vc4_state->output_format != old_vc4_state->output_format)
+-		crtc_state->mode_changed = true;
+-
+ 	return 0;
+ }
+ 
+ static enum drm_mode_status
+ vc4_hdmi_encoder_mode_valid(struct drm_encoder *encoder,
+ 			    const struct drm_display_mode *mode)
+ {
+ 	struct vc4_hdmi *vc4_hdmi = encoder_to_vc4_hdmi(encoder);
++	unsigned long long rate;
+ 
+ 	if (vc4_hdmi->variant->unsupported_odd_h_timings &&
+ 	    !(mode->flags & DRM_MODE_FLAG_DBLCLK) &&
+ 	    ((mode->hdisplay % 2) || (mode->hsync_start % 2) ||
+ 	     (mode->hsync_end % 2) || (mode->htotal % 2)))
+ 		return MODE_H_ILLEGAL;
+ 
+-	return vc4_hdmi_encoder_clock_valid(vc4_hdmi, mode, mode->clock * 1000);
++	rate = drm_hdmi_compute_mode_clock(mode, 8, HDMI_COLORSPACE_RGB);
++	return vc4_hdmi_connector_clock_valid(&vc4_hdmi->connector, mode, rate);
+ }
+ 
+ static const struct drm_encoder_helper_funcs vc4_hdmi_encoder_helper_funcs = {
+ 	.atomic_check = vc4_hdmi_encoder_atomic_check,
+ 	.atomic_mode_set = vc4_hdmi_encoder_atomic_mode_set,
+@@ -2427,19 +1940,18 @@ static int vc4_hdmi_audio_startup(struct device *dev, void *data)
+ 	return ret;
+ }
+ 
+ static void vc4_hdmi_audio_reset(struct vc4_hdmi *vc4_hdmi)
+ {
+-	struct drm_encoder *encoder = &vc4_hdmi->encoder.base;
+ 	struct device *dev = &vc4_hdmi->pdev->dev;
+ 	unsigned long flags;
+ 	int ret;
+ 
+ 	lockdep_assert_held(&vc4_hdmi->mutex);
+ 
+ 	vc4_hdmi->audio.streaming = false;
+-	ret = vc4_hdmi_stop_packet(encoder, HDMI_INFOFRAME_TYPE_AUDIO, false);
++	ret = vc4_hdmi_stop_packet(vc4_hdmi, HDMI_INFOFRAME_TYPE_AUDIO, false);
+ 	if (ret)
+ 		dev_err(dev, "Failed to stop audio infoframe: %d\n", ret);
+ 
+ 	spin_lock_irqsave(&vc4_hdmi->hw_lock, flags);
+ 
+@@ -2526,11 +2038,11 @@ static int vc4_hdmi_audio_prepare(struct device *dev, void *data,
+ 				  struct hdmi_codec_daifmt *daifmt,
+ 				  struct hdmi_codec_params *params)
+ {
+ 	struct vc4_hdmi *vc4_hdmi = dev_get_drvdata(dev);
+ 	struct drm_device *drm = vc4_hdmi->connector.dev;
+-	struct drm_encoder *encoder = &vc4_hdmi->encoder.base;
++	struct drm_connector *connector = &vc4_hdmi->connector;
+ 	unsigned int sample_rate = params->sample_rate;
+ 	unsigned int channels = params->channels;
+ 	unsigned long flags;
+ 	u32 audio_packet_config, channel_mask;
+ 	u32 channel_map;
+@@ -2603,12 +2115,14 @@ static int vc4_hdmi_audio_prepare(struct device *dev, void *data,
+ 
+ 	vc4_hdmi_set_n_cts(vc4_hdmi, sample_rate);
+ 
+ 	spin_unlock_irqrestore(&vc4_hdmi->hw_lock, flags);
+ 
+-	memcpy(&vc4_hdmi->audio.infoframe, &params->cea, sizeof(params->cea));
+-	vc4_hdmi_set_audio_infoframe(encoder);
++	ret = drm_atomic_helper_connector_hdmi_update_audio_infoframe(connector,
++								      &params->cea);
++	if (ret)
++		goto out_dev_exit;
+ 
+ out_dev_exit:
+ 	drm_dev_exit(idx);
+ out:
+ 	mutex_unlock(&vc4_hdmi->mutex);
+diff --git a/drivers/gpu/drm/vc4/vc4_hdmi.h b/drivers/gpu/drm/vc4/vc4_hdmi.h
+index 934d5d61485a..b37f1d2c3fe5 100644
+--- a/drivers/gpu/drm/vc4/vc4_hdmi.h
++++ b/drivers/gpu/drm/vc4/vc4_hdmi.h
+@@ -8,11 +8,10 @@
+ 
+ #include "vc4_drv.h"
+ 
+ struct vc4_hdmi;
+ struct vc4_hdmi_register;
+-struct vc4_hdmi_connector_state;
+ 
+ enum vc4_hdmi_phy_channel {
+ 	PHY_LANE_0 = 0,
+ 	PHY_LANE_1,
+ 	PHY_LANE_2,
+@@ -74,11 +73,11 @@ struct vc4_hdmi_variant {
+ 			    struct drm_connector_state *state,
+ 			    const struct drm_display_mode *mode);
+ 
+ 	/* Callback to initialize the PHY according to the connector state */
+ 	void (*phy_init)(struct vc4_hdmi *vc4_hdmi,
+-			 struct vc4_hdmi_connector_state *vc4_conn_state);
++			 struct drm_connector_state *conn_state);
+ 
+ 	/* Callback to disable the PHY */
+ 	void (*phy_disable)(struct vc4_hdmi *vc4_hdmi);
+ 
+ 	/* Callback to enable the RNG in the PHY */
+@@ -108,23 +107,10 @@ struct vc4_hdmi_audio {
+ 	struct hdmi_audio_infoframe infoframe;
+ 	struct platform_device *codec_pdev;
+ 	bool streaming;
+ };
+ 
+-enum vc4_hdmi_output_format {
+-	VC4_HDMI_OUTPUT_RGB,
+-	VC4_HDMI_OUTPUT_YUV422,
+-	VC4_HDMI_OUTPUT_YUV444,
+-	VC4_HDMI_OUTPUT_YUV420,
+-};
+-
+-enum vc4_hdmi_broadcast_rgb {
+-	VC4_HDMI_BROADCAST_RGB_AUTO,
+-	VC4_HDMI_BROADCAST_RGB_FULL,
+-	VC4_HDMI_BROADCAST_RGB_LIMITED,
+-};
+-
+ /* General HDMI hardware state. */
+ struct vc4_hdmi {
+ 	struct vc4_hdmi_audio audio;
+ 
+ 	struct platform_device *pdev;
+@@ -133,12 +119,10 @@ struct vc4_hdmi {
+ 	struct vc4_encoder encoder;
+ 	struct drm_connector connector;
+ 
+ 	struct delayed_work scrambling_work;
+ 
+-	struct drm_property *broadcast_rgb_property;
+-
+ 	struct i2c_adapter *ddc;
+ 	void __iomem *hdmicore_regs;
+ 	void __iomem *hd_regs;
+ 
+ 	/* VC5 Only */
+@@ -216,20 +200,21 @@ struct vc4_hdmi {
+ 	 * the scrambler on? Protected by @mutex.
+ 	 */
+ 	bool scdc_enabled;
+ 
+ 	/**
+-	 * @output_bpc: Copy of @vc4_connector_state.output_bpc for use
+-	 * outside of KMS hooks. Protected by @mutex.
++	 * @output_bpc: Copy of @drm_connector_state.hdmi.output_bpc for
++	 * use outside of KMS hooks. Protected by @mutex.
+ 	 */
+ 	unsigned int output_bpc;
+ 
+ 	/**
+-	 * @output_format: Copy of @vc4_connector_state.output_format
+-	 * for use outside of KMS hooks. Protected by @mutex.
++	 * @output_format: Copy of
++	 * @drm_connector_state.hdmi.output_format for use outside of
++	 * KMS hooks. Protected by @mutex.
+ 	 */
+-	enum vc4_hdmi_output_format output_format;
++	enum hdmi_colorspace output_format;
+ };
+ 
+ #define connector_to_vc4_hdmi(_connector)				\
+ 	container_of_const(_connector, struct vc4_hdmi, connector)
+ 
+@@ -238,29 +223,18 @@ encoder_to_vc4_hdmi(struct drm_encoder *encoder)
+ {
+ 	struct vc4_encoder *_encoder = to_vc4_encoder(encoder);
+ 	return container_of_const(_encoder, struct vc4_hdmi, encoder);
+ }
+ 
+-struct vc4_hdmi_connector_state {
+-	struct drm_connector_state	base;
+-	unsigned long long		tmds_char_rate;
+-	unsigned int 			output_bpc;
+-	enum vc4_hdmi_output_format	output_format;
+-	enum vc4_hdmi_broadcast_rgb	broadcast_rgb;
+-};
+-
+-#define conn_state_to_vc4_hdmi_conn_state(_state)			\
+-	container_of_const(_state, struct vc4_hdmi_connector_state, base)
+-
+ void vc4_hdmi_phy_init(struct vc4_hdmi *vc4_hdmi,
+-		       struct vc4_hdmi_connector_state *vc4_conn_state);
++		       struct drm_connector_state *conn_state);
+ void vc4_hdmi_phy_disable(struct vc4_hdmi *vc4_hdmi);
+ void vc4_hdmi_phy_rng_enable(struct vc4_hdmi *vc4_hdmi);
+ void vc4_hdmi_phy_rng_disable(struct vc4_hdmi *vc4_hdmi);
+ 
+ void vc5_hdmi_phy_init(struct vc4_hdmi *vc4_hdmi,
+-		       struct vc4_hdmi_connector_state *vc4_conn_state);
++		       struct drm_connector_state *conn_state);
+ void vc5_hdmi_phy_disable(struct vc4_hdmi *vc4_hdmi);
+ void vc5_hdmi_phy_rng_enable(struct vc4_hdmi *vc4_hdmi);
+ void vc5_hdmi_phy_rng_disable(struct vc4_hdmi *vc4_hdmi);
+ 
+ #endif /* _VC4_HDMI_H_ */
+diff --git a/drivers/gpu/drm/vc4/vc4_hdmi_phy.c b/drivers/gpu/drm/vc4/vc4_hdmi_phy.c
+index ec24999bf96d..1f5507fc7a03 100644
+--- a/drivers/gpu/drm/vc4/vc4_hdmi_phy.c
++++ b/drivers/gpu/drm/vc4/vc4_hdmi_phy.c
+@@ -126,11 +126,11 @@
+ #define VC4_HDMI_RM_FORMAT_SHIFT_MASK			VC4_MASK(25, 24)
+ 
+ #define OSCILLATOR_FREQUENCY	54000000
+ 
+ void vc4_hdmi_phy_init(struct vc4_hdmi *vc4_hdmi,
+-		       struct vc4_hdmi_connector_state *conn_state)
++		       struct drm_connector_state *conn_state)
+ {
+ 	unsigned long flags;
+ 
+ 	/* PHY should be in reset, like
+ 	 * vc4_hdmi_encoder_disable() does.
+@@ -359,15 +359,15 @@ static void vc5_hdmi_reset_phy(struct vc4_hdmi *vc4_hdmi)
+ 	HDMI_WRITE(HDMI_TX_PHY_RESET_CTL, 0x0f);
+ 	HDMI_WRITE(HDMI_TX_PHY_POWERDOWN_CTL, BIT(10));
+ }
+ 
+ void vc5_hdmi_phy_init(struct vc4_hdmi *vc4_hdmi,
+-		       struct vc4_hdmi_connector_state *conn_state)
++		       struct drm_connector_state *conn_state)
+ {
+ 	const struct phy_lane_settings *chan0_settings, *chan1_settings, *chan2_settings, *clock_settings;
+ 	const struct vc4_hdmi_variant *variant = vc4_hdmi->variant;
+-	unsigned long long pixel_freq = conn_state->tmds_char_rate;
++	unsigned long long pixel_freq = conn_state->hdmi.tmds_char_rate;
+ 	unsigned long long vco_freq;
+ 	unsigned char word_sel;
+ 	unsigned long flags;
+ 	u8 vco_sel, vco_div;
+ 
+
+-- 
+2.45.0
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
