@@ -4,53 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6292EC25B7C
-	for <linux-rockchip@archiver.kernel.org>; Tue, 28 May 2024 11:52:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 837DCC25B78
+	for <linux-rockchip@archiver.kernel.org>; Tue, 28 May 2024 12:18:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=XKSGmxmMyDMUHRAWv6PkTNByrC6rYRSX/krNVULhseM=; b=kCZ50xna17ZqQO
-	yhLaOA4ZfiB2hu9apIo41kf8PNUhSvjrDQfA2bQHU3Nwto3Je7/CwKkQe/pYP+6He2mIvodf5qkOP
-	OdZ8OQLj5I2qi+QP1IJaLCMA7DfRuBHkveQ5y3gIAahqZD2byWDD5mh1rZponNlfcCz11e1BZvvTL
-	GjBzLViARDcQYa0BvgYqHDIK2B5AIsttyPoGj8qtBWj4XpKBvR1VL9ZaAcUvv6fKhZXIHsPENleEd
-	dhbrnMoYxe9xSwJRlmcr4O7si4aSCNFiOmh3D83D7nr/17zOS8sZ258hxL22t/WqS5Rb5L+DRhfQX
-	krbt1Ys0M34eyOc3ymuQ==;
+	List-Owner; bh=+qrrzPG1opM6Yve6rwmP4EO3gI/cTQA53UExIQtJ3/g=; b=M2RG+f0Yoh58hx
+	IcXgIflFeN+npa7yWKz+fQ14a0jsMHKX4rl/3W3unPIv/l6Hq0NC0/3HvcoBXCiGECJ/iaBmvZUs4
+	zAhqp+tbACVovQccwC2/xfLn+evCGQ7ah2qGNiLfKQZ5fWYwjVjcGi69ESAE4sA1Mvk2mDbOlj1Iq
+	sadaSms1JX2qxLtDCAL0svfzgpYa95YFMIX0ObRU/vHfBwJYfgNBPsdreW04tr+ZJrmL8JTaabec+
+	X5RD0H1bn4HzzjigruGcLdWWKOYoCyc/3u4nWI+1Qb1TNNHEEVE5jpUMQqoAX5wcH6SdN9Cvv+lSg
+	4sbE0jpn4ZSBZIVgFW7g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sBvNQ-00000000SUF-2UgO;
-	Tue, 28 May 2024 11:52:24 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1sBvmw-00000000Xcs-34d8;
+	Tue, 28 May 2024 12:18:46 +0000
+Received: from mail-lj1-x229.google.com ([2a00:1450:4864:20::229])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sBvNN-00000000SSO-2DOA;
-	Tue, 28 May 2024 11:52:22 +0000
-Received: from i5e86193d.versanet.de ([94.134.25.61] helo=diego.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1sBvNH-0003GJ-RU; Tue, 28 May 2024 13:52:15 +0200
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: Dmitry Yashin <dmt.yashin@gmail.com>,
+	id 1sBvmt-00000000Xax-0H3L;
+	Tue, 28 May 2024 12:18:44 +0000
+Received: by mail-lj1-x229.google.com with SMTP id 38308e7fff4ca-2e95a74d51fso9886471fa.2;
+        Tue, 28 May 2024 05:18:41 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1716898720; x=1717503520; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=jLL8Ft99cJVseIi4ayW8bS5YO6VTvNhFoRwZq32Fda8=;
+        b=fbu6AS5cznAw6FwSnhdu3Uxx0HTOwt+DfKObrdF3wTKgVoLH3ItUV5ECv9yU+jWDlR
+         5v4NCvKpYoOIm4Qe93UWSG40gT1k6h9gGMRgNEUHJ5pXP/G1yET6ieXVsqVRkt162F5H
+         xCdD26pJokUVpt4Gg/u28wFUa1609GXPAKA4gf+Deb1biITdwCrlL2eSnv6X5nF4zmqQ
+         P6UQ97dGeFyK1L0yid7rfhmAiw173OM4JZwQRpwzT7XnpLAzlUJII51O/iydaCcF86hF
+         ZjlY7Zwd4qO1/tIxthwpU9SHkoXx5MXTVhHXOnmT7LCqRWWuxNXM+6PTmYIMnzzfs2IZ
+         mNOg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1716898720; x=1717503520;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=jLL8Ft99cJVseIi4ayW8bS5YO6VTvNhFoRwZq32Fda8=;
+        b=MCnuZe2Q5ZdJ/FAWmD2dkIojqVXdmMFrklfx+EfM6qX1UguQp299RpY8YMWiKm7aX7
+         C7fVajvd+EWJurveGVTn804+XhIsJGnTuiFXjMooxiVa/gT0xGL/tsLjFmS4Z397WcQR
+         EL90ouLrmcELULtTm3ON3YxyXHBOcZ6h+b5wH/wOsc8Mc5z6XDpCrpaNzVomROjsjpeq
+         NToe6o0KfWGcHTt9uzPtI7Wmsd04Y5WychSNpUxB4RIMWk5L8ljoHNy5rFCFfSe92e/s
+         tqQGx9xaIldqa7gI6V8YRhUUoU+MgutZ2/S41P8LHZdbW8tfJdw0mmWFt4thtsJW/woU
+         gUcw==
+X-Forwarded-Encrypted: i=1; AJvYcCXtFUuEo8QhilJjI+c6NUAl5++QdmmjLiHvfi1xMVh/xly9GOx1XymhXv6JRI5/ApMU6Pj2/uTfnJWbHzOwM7U4TMZEXVthLhTj6Sjy0Ml/182KmMFPcloayLaVWrqzN0vj1M6ocI+6bT/1IEWsc0VngcWOXr6srhM=
+X-Gm-Message-State: AOJu0YyaD+JBZ2dHid1BjaEJqGMOelvbck/tiR9CN7VIcGhN0R+oCzMt
+	2VkD4rlRjiJhRCW+qQI9kAO7FtVEwBLsVtiO9PeMoEgN0dMGcypf
+X-Google-Smtp-Source: AGHT+IGc0NnrB9tTNcE2A4QQn3xBsUhlCFH1lh48wmiR1tIpieoZLdQlD0imMwEebqbi4mFbk8xh6w==
+X-Received: by 2002:a05:651c:1030:b0:2e9:8c0a:746a with SMTP id 38308e7fff4ca-2e98c0a7a92mr6741881fa.52.1716898719317;
+        Tue, 28 May 2024 05:18:39 -0700 (PDT)
+Received: from [10.20.30.169] ([178.218.200.115])
+        by smtp.gmail.com with ESMTPSA id 38308e7fff4ca-2e95bdcc963sm22551431fa.86.2024.05.28.05.18.37
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 28 May 2024 05:18:39 -0700 (PDT)
+Message-ID: <a54be779-9728-4ac4-9b85-8cf6787f491d@gmail.com>
+Date: Tue, 28 May 2024 17:18:35 +0500
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 1/3] pinctrl: rockchip: update rk3308 iomux routes
+To: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>,
  Linus Walleij <linus.walleij@linaro.org>
 Cc: Krzysztof Kozlowski <krzk+dt@kernel.org>,
  Conor Dooley <conor+dt@kernel.org>, Rob Herring <robh@kernel.org>,
- Luca Ceresoli <luca.ceresoli@bootlin.com>,
- Jianqun Xu <jay.xu@rock-chips.com>, devicetree@vger.kernel.org,
+ Luca Ceresoli <luca.ceresoli@bootlin.com>, Jianqun Xu
+ <jay.xu@rock-chips.com>, devicetree@vger.kernel.org,
  linux-gpio@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH 1/3] pinctrl: rockchip: update rk3308 iomux routes
-Date: Tue, 28 May 2024 13:52:14 +0200
-Message-ID: <1770701.X513TT2pbd@diego>
-In-Reply-To: <CACRpkdYO_zr=OEZCv8LKtw+fNOwJ906ZVKyPhbbyA=9gP5XQgg@mail.gmail.com>
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+ Dmitry Yashin <dmt.yashin@gmail.com>
 References: <20240515121634.23945-1-dmt.yashin@gmail.com>
  <20240515121634.23945-2-dmt.yashin@gmail.com>
  <CACRpkdYO_zr=OEZCv8LKtw+fNOwJ906ZVKyPhbbyA=9gP5XQgg@mail.gmail.com>
-MIME-Version: 1.0
+ <1770701.X513TT2pbd@diego>
+Content-Language: en-US
+From: Dmitry Yashin <dmt.yashin@gmail.com>
+In-Reply-To: <1770701.X513TT2pbd@diego>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240528_045221_587365_4FD4C7AF 
-X-CRM114-Status: GOOD (  13.97  )
+X-CRM114-CacheID: sfid-20240528_051843_129008_C770633F 
+X-CRM114-Status: GOOD (  13.01  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,19 +102,23 @@ Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGkgTGludXMsCgpBbSBEaWVuc3RhZywgMjguIE1haSAyMDI0LCAxMzoyOToxMiBDRVNUIHNjaHJp
-ZWIgTGludXMgV2FsbGVpajoKPiBPbiBXZWQsIE1heSAxNSwgMjAyNCBhdCAyOjE34oCvUE0gRG1p
-dHJ5IFlhc2hpbiA8ZG10Lnlhc2hpbkBnbWFpbC5jb20+IHdyb3RlOgo+IAo+ID4gU29tZSBvZiB0
-aGUgcmszMzA4IGlvbXV4IHJvdXRlcyBpbiByazMzMDhfbXV4X3JvdXRlX2RhdGEgYmVsb25nIHRv
-Cj4gPiB0aGUgcmszMzA4YiBTb0MuIFJlbW92ZSB0aGVtIGFuZCBjb3JyZWN0IGkyYzMgcm91dGVz
-Lgo+ID4KPiA+IEZpeGVzOiA3ODI1YWViN2IyMDggKCJwaW5jdHJsOiByb2NrY2hpcDogYWRkIHJr
-MzMwOCBTb0Mgc3VwcG9ydCIpCj4gPiBTaWduZWQtb2ZmLWJ5OiBEbWl0cnkgWWFzaGluIDxkbXQu
-eWFzaGluQGdtYWlsLmNvbT4KPiAKPiBXaGlsZSB5b3UgZ3V5cyBhcmUgdGhpbmtpbmcgYWJvdXQg
-dGhlIFJLMzMwOEIgc3VwcG9ydCwgaXMgdGhpcyBmaXgKPiBzb21ldGhpbmcgSSBjYW4ganVzdCBh
-cHBseT8KCkknZCB0aGluayBzby4gSSd2ZSBkZXRhaWxlZCBzdHVmZiBpbiBteSBSZXZpZXcgbWFp
-bCBJIGp1c3Qgc2VudC4KQm90aCB0aGUgc29jIGl0c2VsZiBhbmQgYWxzbyB0aGUgYWZmZWN0ZWQg
-cGluIGZ1bmN0aW9ucyBhcmUgbmljaGUKZW5vdWdoIHRoYXQgdGhpcyBzaG91bGQgbm90IGNhdXNl
-IGJyZWFrYWdlLgoKCkhlaWtvCgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBs
-aXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlz
-dGluZm8vbGludXgtcm9ja2NoaXAK
+SGkgSGVpa28sCgpPbiA1LzI4LzI0IDQ6NTIgUE0sIEhlaWtvIFN0w7xibmVyIHdyb3RlOgo+IEhp
+IExpbnVzLAo+Cj4gQW0gRGllbnN0YWcsIDI4LiBNYWkgMjAyNCwgMTM6Mjk6MTIgQ0VTVCBzY2hy
+aWViIExpbnVzIFdhbGxlaWo6Cj4+IE9uIFdlZCwgTWF5IDE1LCAyMDI0IGF0IDI6MTfigK9QTSBE
+bWl0cnkgWWFzaGluIDxkbXQueWFzaGluQGdtYWlsLmNvbT4gd3JvdGU6Cj4+Cj4+PiBTb21lIG9m
+IHRoZSByazMzMDggaW9tdXggcm91dGVzIGluIHJrMzMwOF9tdXhfcm91dGVfZGF0YSBiZWxvbmcg
+dG8KPj4+IHRoZSByazMzMDhiIFNvQy4gUmVtb3ZlIHRoZW0gYW5kIGNvcnJlY3QgaTJjMyByb3V0
+ZXMuCj4+Pgo+Pj4gRml4ZXM6IDc4MjVhZWI3YjIwOCAoInBpbmN0cmw6IHJvY2tjaGlwOiBhZGQg
+cmszMzA4IFNvQyBzdXBwb3J0IikKPj4+IFNpZ25lZC1vZmYtYnk6IERtaXRyeSBZYXNoaW4gPGRt
+dC55YXNoaW5AZ21haWwuY29tPgo+PiBXaGlsZSB5b3UgZ3V5cyBhcmUgdGhpbmtpbmcgYWJvdXQg
+dGhlIFJLMzMwOEIgc3VwcG9ydCwgaXMgdGhpcyBmaXgKPj4gc29tZXRoaW5nIEkgY2FuIGp1c3Qg
+YXBwbHk/Cj4gSSdkIHRoaW5rIHNvLiBJJ3ZlIGRldGFpbGVkIHN0dWZmIGluIG15IFJldmlldyBt
+YWlsIEkganVzdCBzZW50Lgo+IEJvdGggdGhlIHNvYyBpdHNlbGYgYW5kIGFsc28gdGhlIGFmZmVj
+dGVkIHBpbiBmdW5jdGlvbnMgYXJlIG5pY2hlCj4gZW5vdWdoIHRoYXQgdGhpcyBzaG91bGQgbm90
+IGNhdXNlIGJyZWFrYWdlLgo+Cj4KPiBIZWlrbwo+Cj4KPgoKU2hvdWxkIGkganVzdCBkcm9wIDEv
+MyBmcm9tIFYyIHRoZW4/CgpUaGFua3MgZXZlcnlvbmUgZm9yIHRoZSBmZWVkYmFjayBvbiB0aGlz
+IHNlcmllcy4gSSdsbCBwcmVwYXJlIFYyIGJhc2VkCm9uIHJ1bnRpbWUgY2hpcCBkZXRlY3Rpb24g
+d2l0aCB1c2Ugb2YgR1JGX0NISVBfSUQuCgotLSAKVGhhbmtzLApEbWl0cnkKCgpfX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWls
+aW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMu
+aW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
