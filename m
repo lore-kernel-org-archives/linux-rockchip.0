@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 44E9BC27C44
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D1EB8C27C50
 	for <linux-rockchip@archiver.kernel.org>; Tue, 28 May 2024 14:05:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,30 +12,30 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=oI4s09P5hwgl2Tlf0BB477xUrLFEwyWbf/ZwzNnK4/Y=; b=SSRqc0TBiBzJcH
-	OVnxIMKq6aWnNNd3o8LjSovVBpo/Vra3zh036ztv5e7wp4PhYDvzfCtVEBqxtJEAEOl2IxoF/H0Mk
-	ToxpD4OEIoLEEu/ubI4RB1QFKEadCVflE85hzRYI4/m61FPNpsE9lDaGL8gBU7VCw5F1+hP3xqLsb
-	NVylWc64DsvrjBIb/uC9QLJSFH/MPdi9jeByYbKUR8bgsISJ2pj0NY8BPbmX2kP/32EWdhC4375zT
-	7djXoW8DTvGkMxpxL2qEYB5GFDfjvOVZMEZYziuBWuLXPt7dRSzdT89URM0zM7WF2xbHIimjFZ0lx
-	lFauozuO/BD89ynyK1jw==;
+	List-Owner; bh=ZjW95DMEuZCp6CCRs+HZpgVn61+gzQzSFqyB+43UR+0=; b=xBp2dvhcbJgvvQ
+	Lan3AR1Ux7uE3Sajpe+lHvdoSobYbLyrwpyn6etbviI0r6r96+2hXxxM6VjfUSXRzG2c8SZz6o9BT
+	LZ+g1VgU9TZnyctx5gqftnpItaWK+djruS3u3P/h0LTyrhA0aoUwblvYpf4yOLSPbuOC22u4X/1nk
+	f38U1KmvAPw5t/tdSLW8Lmdnw3Fh3J14Rb0eXOjkBt3arxLF45JFfFqcc2Om0m27cweStcB7Rp/4u
+	XCBxNuVVWXgRySmI6UtsrTHSa+rsszYZUglqGfY7EUzDpVs0dcun95gCCmGu0597cWc1eVnb86HtJ
+	ui0DkzQOyYA6XIFKQObQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sBxSN-00000000vhL-0pFa;
+	id 1sBxSN-00000000vi0-3aln;
 	Tue, 28 May 2024 14:05:39 +0000
 Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sBxS5-00000000vWk-464i
+	id 1sBxS7-00000000vXS-0hKS
 	for linux-rockchip@lists.infradead.org;
-	Tue, 28 May 2024 14:05:23 +0000
+	Tue, 28 May 2024 14:05:24 +0000
 Received: from dude05.red.stw.pengutronix.de ([2a0a:edc0:0:1101:1d::54])
 	by metis.whiteo.stw.pengutronix.de with esmtp (Exim 4.92)
 	(envelope-from <m.tretter@pengutronix.de>)
-	id 1sBxS0-0005wE-OR; Tue, 28 May 2024 16:05:16 +0200
+	id 1sBxS0-0005wE-Pd; Tue, 28 May 2024 16:05:16 +0200
 From: Michael Tretter <m.tretter@pengutronix.de>
-Date: Tue, 28 May 2024 16:05:13 +0200
-Subject: [PATCH 1/2] media: rockchip: rga: fix field in OUTPUT buffers
+Date: Tue, 28 May 2024 16:05:14 +0200
+Subject: [PATCH 2/2] media: rockchip: rga: fix sequence number handling
 MIME-Version: 1.0
-Message-Id: <20240528-rk3568-rga-v1-1-b946e55d9d37@pengutronix.de>
+Message-Id: <20240528-rk3568-rga-v1-2-b946e55d9d37@pengutronix.de>
 References: <20240528-rk3568-rga-v1-0-b946e55d9d37@pengutronix.de>
 In-Reply-To: <20240528-rk3568-rga-v1-0-b946e55d9d37@pengutronix.de>
 To: Jacob Chen <jacob-chen@iotwrt.com>, 
@@ -51,8 +51,8 @@ X-SA-Exim-Mail-From: m.tretter@pengutronix.de
 X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
 X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240528_070522_075094_8C6BD4F9 
-X-CRM114-Status: GOOD (  10.67  )
+X-CRM114-CacheID: sfid-20240528_070523_632926_A991193F 
+X-CRM114-Status: GOOD (  12.79  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,35 +69,70 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Returned buffers shouldn't contain V4L2_FIELD_ANY as field. Set the
-field to V4L2_FIELD_NONE, if it isn't set.
+The RGA driver didn't set the sequence numbers of the returned buffers.
+
+Keep track of the CAPTURE and OUTPUT sequence numbers, and set the
+sequence numbers in the source and destination buffers.
 
 Signed-off-by: Michael Tretter <m.tretter@pengutronix.de>
 ---
- drivers/media/platform/rockchip/rga/rga-buf.c | 10 ++++++++++
- 1 file changed, 10 insertions(+)
+ drivers/media/platform/rockchip/rga/rga-buf.c | 5 +++++
+ drivers/media/platform/rockchip/rga/rga.c     | 4 ++++
+ drivers/media/platform/rockchip/rga/rga.h     | 3 +++
+ 3 files changed, 12 insertions(+)
 
 diff --git a/drivers/media/platform/rockchip/rga/rga-buf.c b/drivers/media/platform/rockchip/rga/rga-buf.c
-index 662c81b6d0b5..77c7535893e3 100644
+index 77c7535893e3..48bb45ec0230 100644
 --- a/drivers/media/platform/rockchip/rga/rga-buf.c
 +++ b/drivers/media/platform/rockchip/rga/rga-buf.c
-@@ -119,6 +119,16 @@ static int rga_buf_prepare(struct vb2_buffer *vb)
- 	if (IS_ERR(f))
- 		return PTR_ERR(f);
+@@ -205,6 +205,11 @@ static int rga_buf_start_streaming(struct vb2_queue *q, unsigned int count)
+ 		return ret;
+ 	}
  
-+	if (V4L2_TYPE_IS_OUTPUT(vb->vb2_queue->type)) {
-+		if (vbuf->field == V4L2_FIELD_ANY)
-+			vbuf->field = V4L2_FIELD_NONE;
-+		if (vbuf->field != V4L2_FIELD_NONE) {
-+			v4l2_err(&ctx->rga->v4l2_dev, "Unsupported field %s\n",
-+				 v4l2_field_names[vbuf->field]);
-+			return -EINVAL;
-+		}
-+	}
++	if (V4L2_TYPE_IS_OUTPUT(q->type))
++		ctx->osequence = 0;
++	else
++		ctx->csequence = 0;
 +
- 	for (i = 0; i < vb->num_planes; i++) {
- 		vb2_set_plane_payload(vb, i, f->pix.plane_fmt[i].sizeimage);
+ 	return 0;
+ }
  
+diff --git a/drivers/media/platform/rockchip/rga/rga.c b/drivers/media/platform/rockchip/rga/rga.c
+index 00fdfa9e10bc..0e768f3e9eda 100644
+--- a/drivers/media/platform/rockchip/rga/rga.c
++++ b/drivers/media/platform/rockchip/rga/rga.c
+@@ -43,6 +43,8 @@ static void device_run(void *prv)
+ 	rga->curr = ctx;
+ 
+ 	src = v4l2_m2m_next_src_buf(ctx->fh.m2m_ctx);
++	src->sequence = ctx->osequence++;
++
+ 	dst = v4l2_m2m_next_dst_buf(ctx->fh.m2m_ctx);
+ 
+ 	rga_hw_start(rga, vb_to_rga(src), vb_to_rga(dst));
+@@ -75,6 +77,8 @@ static irqreturn_t rga_isr(int irq, void *prv)
+ 
+ 		v4l2_m2m_buf_copy_metadata(src, dst, true);
+ 
++		dst->sequence = ctx->csequence++;
++
+ 		v4l2_m2m_buf_done(src, VB2_BUF_STATE_DONE);
+ 		v4l2_m2m_buf_done(dst, VB2_BUF_STATE_DONE);
+ 		v4l2_m2m_job_finish(rga->m2m_dev, ctx->fh.m2m_ctx);
+diff --git a/drivers/media/platform/rockchip/rga/rga.h b/drivers/media/platform/rockchip/rga/rga.h
+index 3502dff6055c..8105bb2efe57 100644
+--- a/drivers/media/platform/rockchip/rga/rga.h
++++ b/drivers/media/platform/rockchip/rga/rga.h
+@@ -57,6 +57,9 @@ struct rga_ctx {
+ 	struct rga_frame out;
+ 	struct v4l2_ctrl_handler ctrl_handler;
+ 
++	int osequence;
++	int csequence;
++
+ 	/* Control values */
+ 	u32 op;
+ 	u32 hflip;
 
 -- 
 2.39.2
