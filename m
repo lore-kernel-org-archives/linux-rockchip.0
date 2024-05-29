@@ -4,49 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F31E7C25B75
-	for <linux-rockchip@archiver.kernel.org>; Wed, 29 May 2024 08:29:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AE4D3C25B7E
+	for <linux-rockchip@archiver.kernel.org>; Wed, 29 May 2024 08:29:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=kuu1EincVhfArC24yw9NP2q+5r+JuuNL2wgX4VZDpcg=; b=eP9dH0Z3JyS6Ms
-	XekPMfVWTcYc6ph84kFYZeCK3nXDdBCrgZUIsrxWX7VgBmZX/cZuYx2iFeG7V+txMJOVa1fb42MB2
-	4KKjFjGwSb/CLrNM4ucsQP5EYrUeGpBKC0lFJYL4Ka/3KtwTWT3qOpZjg+gD0SCuqma3HceR2Jj4m
-	Jp23d9Is3X6fR68HVjYRGzd8yp5OO7LCGCCxRQ0NdHlNck5fRPcoK4wArTroaf85tuLn9yZ4tO/dv
-	irwU/nnp4wF4Fd4N8gr/texpXqLqeMofyu0PREVEQimroTFLKHb6ahpBi5BxyyvFTYXAmY9uUZ0VH
-	MxAmr/pYh7xIPHZtr4CQ==;
+	List-Owner; bh=T7dBJLZ9R9SttLCs983lYECjtArWC9Yrz8lIPl4sgYI=; b=hXWyW7+uIFX2V7
+	Pe+8txj9UVWKoZZ6en1nTVavhV/5CNvc/yR5iGhDhtQivUEnUhUvjgYILzDnrwc86gNB9z3q6l+0i
+	CxgluI/K12sIbwLWYZ0bhjzA+M87o/Jd7d2xfyHrh/xK1Ug59butnSMUddONCWMFrygtsmasN5EJk
+	pkyZxN0sZsxVbzCsOIA/WdqWuyu+kqxYSVB9WHuW7bLnn98JldwX3MMPCRANSua6B7+/fVm9zVBUW
+	ez5+cyspauQ57UDfsNjLrLWnGlw3HjY19V2EhN8yysypfwPifvC6cvNJdamH1Vd44xNDXBYNVHSxV
+	0MycnlXDDUWWVK442VOg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sCEgw-00000003Oi2-1I2q;
-	Wed, 29 May 2024 08:29:50 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1sCEgy-00000003Oji-0H4w;
+	Wed, 29 May 2024 08:29:52 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sCEgr-00000003OeB-04oe
+	id 1sCEgt-00000003OgN-3XDH
 	for linux-rockchip@lists.infradead.org;
-	Wed, 29 May 2024 08:29:48 +0000
+	Wed, 29 May 2024 08:29:50 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 3820C626FC;
+	by dfw.source.kernel.org (Postfix) with ESMTP id 5D518626F4;
+	Wed, 29 May 2024 08:29:47 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5DB7CC2BD10;
 	Wed, 29 May 2024 08:29:43 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3BD3EC4AF0A;
-	Wed, 29 May 2024 08:29:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1716971382;
-	bh=j29Odjmid02gVXIY5mRFCi+Esy8gIr9tXG/wl62J2qI=;
+	s=k20201202; t=1716971387;
+	bh=HSVP5fO1xteYLr3eNC2G4UOEz2LEMqziZSkp+Sf41N0=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=RFGVC93vi/1w7P/FWNhVdBwm1mpeCcOFUviLios9IyLqeoSSHA/D/z8wlYXVys4RC
-	 F4H2umpX32USOj8b8AaoyvuAUzuhVOs4EnxXq6mXZo6ajpluMp6KKy7+NTD+XM6pWd
-	 78doFhIvyx7GooTRDiKxhhP0zIvqf2J9YNyuFzVJIoNyDr9pbYAlIx0maZmv9B7/Xe
-	 Pkf+RumNOZ0Ln1Q4e0Wna0FoHdkFRwjUdAjj82jaYTKOy5SDZkOk18JS3A2Cew64Ed
-	 xFFtFothCeXw/QV1IEwlgoveIsLvWSMGZYMX3mzLagQeLZIE3RtEM9xRDYgqr2mMZb
-	 Q91twdZtTvpgw==
+	b=NRNGiRuSrg3XQvmSdOFqBeLUMZzgzkBW5Xz64cPyI8nrqs1N0pSHv9nDK5CHw8UOn
+	 Khbl/n25WgD+f7yVQz0a3wUCz8p6Di9WMKmlsPQR93TH9wBUK5GUsf6osBTjuRte72
+	 3kSVjARIAQ5GiBFkKaRILNDlqDzuTp/JzYlCLLlyQuCmwVFNe6LGxSCd516/Cf6Viy
+	 zFbbx3nMychM1zH0ikxVUsYZBHJ0p12ybUKTOwiyl5Ko8AW1SfiGbb/xCoxWZ4PK/3
+	 fzgBu77mseltWWamhU0mwKofrElyxLfLrcDDmOeRE5ljIb5lL4QcVJWcZvPbwE3l4C
+	 5h+QiQTzpwoEw==
 From: Niklas Cassel <cassel@kernel.org>
-Date: Wed, 29 May 2024 10:29:01 +0200
-Subject: [PATCH v4 07/13] PCI: dw-rockchip: Fix weird indentation
+Date: Wed, 29 May 2024 10:29:02 +0200
+Subject: [PATCH v4 08/13] PCI: dw-rockchip: Add rockchip_pcie_get_ltssm()
+ helper
 MIME-Version: 1.0
-Message-Id: <20240529-rockchip-pcie-ep-v1-v4-7-3dc00fe21a78@kernel.org>
+Message-Id: <20240529-rockchip-pcie-ep-v1-v4-8-3dc00fe21a78@kernel.org>
 References: <20240529-rockchip-pcie-ep-v1-v4-0-3dc00fe21a78@kernel.org>
 In-Reply-To: <20240529-rockchip-pcie-ep-v1-v4-0-3dc00fe21a78@kernel.org>
 To: Jingoo Han <jingoohan1@gmail.com>, 
@@ -63,18 +64,17 @@ To: Jingoo Han <jingoohan1@gmail.com>,
 Cc: linux-pci@vger.kernel.org, devicetree@vger.kernel.org, 
  linux-rockchip@lists.infradead.org
 X-Mailer: b4 0.13.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1187; i=cassel@kernel.org;
- h=from:subject:message-id; bh=j29Odjmid02gVXIY5mRFCi+Esy8gIr9tXG/wl62J2qI=;
- b=owGbwMvMwCV2MsVw8cxjvkWMp9WSGNLCnoeevvBM8P2lxolLF685d/3q2VuF7AclEhxTXOI9J
- 0ozdVyL6ChlYRDjYpAVU2Tx/eGyv7jbfcpxxTs2MHNYmUCGMHBxCsBEeBMY/mcIV9clmN7Mlnz5
- stO+wPLI1YdXIq9Lvz83xaXnhrnNRX2Gv2JOG7ccyfHr1q2M5bmarJO2ZemkHSvnX5utb5JXLSD
- UwwYA
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1426; i=cassel@kernel.org;
+ h=from:subject:message-id; bh=HSVP5fO1xteYLr3eNC2G4UOEz2LEMqziZSkp+Sf41N0=;
+ b=owGbwMvMwCV2MsVw8cxjvkWMp9WSGNLCnoc68fivD7KdkMf+XcE076Rx4JLj0xfdKLRVfjP/w
+ sUq/uB9HaUsDGJcDLJiiiy+P1z2F3e7TzmueMcGZg4rE8gQBi5OAZiIQQvDPwX/QvYryeE7yo3W
+ neM917/picEVo/uNrSHdNQxF9xZc3MnIcGufYtubLc8WGvx64berIso9TqnY7ceJyUXdKtEn6/O
+ yWQE=
 X-Developer-Key: i=cassel@kernel.org; a=openpgp;
  fpr=5ADE635C0E631CBBD5BE065A352FE6582ED9B5DA
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240529_012946_977507_359FB235 
-X-CRM114-Status: UNSURE (   9.22  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240529_012947_995602_2A9E321D 
+X-CRM114-Status: GOOD (  10.23  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,37 +91,39 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Fix the indentation of rockchip_pcie_{readl,writel}_apb() parameters to
-match the opening parenthesis.
+Add a rockchip_pcie_ltssm() helper function that reads the LTSSM status.
+This helper will be used in additional places in follow-up commits.
 
 Signed-off-by: Niklas Cassel <cassel@kernel.org>
-Reviewed-by: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
 ---
- drivers/pci/controller/dwc/pcie-dw-rockchip.c | 7 +++----
- 1 file changed, 3 insertions(+), 4 deletions(-)
+ drivers/pci/controller/dwc/pcie-dw-rockchip.c | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-index 61b1acba7182..3dfed08ef456 100644
+index 3dfed08ef456..1380e3a5284b 100644
 --- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
 +++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-@@ -60,14 +60,13 @@ struct rockchip_pcie {
- 	struct irq_domain		*irq_domain;
- };
- 
--static int rockchip_pcie_readl_apb(struct rockchip_pcie *rockchip,
--					     u32 reg)
-+static int rockchip_pcie_readl_apb(struct rockchip_pcie *rockchip, u32 reg)
- {
- 	return readl_relaxed(rockchip->apb_base + reg);
+@@ -143,6 +143,11 @@ static int rockchip_pcie_init_irq_domain(struct rockchip_pcie *rockchip)
+ 	return 0;
  }
  
--static void rockchip_pcie_writel_apb(struct rockchip_pcie *rockchip,
--						u32 val, u32 reg)
-+static void rockchip_pcie_writel_apb(struct rockchip_pcie *rockchip, u32 val,
-+				     u32 reg)
++static u32 rockchip_pcie_get_ltssm(struct rockchip_pcie *rockchip)
++{
++	return rockchip_pcie_readl_apb(rockchip, PCIE_CLIENT_LTSSM_STATUS);
++}
++
+ static void rockchip_pcie_enable_ltssm(struct rockchip_pcie *rockchip)
  {
- 	writel_relaxed(val, rockchip->apb_base + reg);
- }
+ 	rockchip_pcie_writel_apb(rockchip, PCIE_CLIENT_ENABLE_LTSSM,
+@@ -152,7 +157,7 @@ static void rockchip_pcie_enable_ltssm(struct rockchip_pcie *rockchip)
+ static int rockchip_pcie_link_up(struct dw_pcie *pci)
+ {
+ 	struct rockchip_pcie *rockchip = to_rockchip_pcie(pci);
+-	u32 val = rockchip_pcie_readl_apb(rockchip, PCIE_CLIENT_LTSSM_STATUS);
++	u32 val = rockchip_pcie_get_ltssm(rockchip);
+ 
+ 	if ((val & PCIE_LINKUP) == PCIE_LINKUP &&
+ 	    (val & PCIE_LTSSM_STATUS_MASK) == PCIE_L0S_ENTRY)
 
 -- 
 2.45.1
