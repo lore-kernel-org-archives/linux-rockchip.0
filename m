@@ -4,69 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 54A1CC25B78
-	for <linux-rockchip@archiver.kernel.org>; Wed, 29 May 2024 02:17:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CF0D0C25B78
+	for <linux-rockchip@archiver.kernel.org>; Wed, 29 May 2024 02:41:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
-	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=bL3fxCUGN7056p7KNEBo0UETKeKC4asTanQQNeIw5bY=; b=pXEW+carYd9PFrbQ+EOJoef9h0
-	7U6PN5sn3t7NbRUsSWdjH+3mVTjLrlycltEnXUYg9mjk5nUzLwYrZHzQeJsw7KfMJsdaGtEToRqaR
-	AV5NvcbJ8fBGCoyyH66eMbhX5GCnTRz3honKGVLbc+ZcFlfBI1zg46Jlvwd0qYYEKtGDQZQ2BDR8Q
-	/7u9Xol4DcPeYgGjhFwEvLa97hiIdXFDB2dJAfPIu7kTgIPotsdhCbJKaSp/rKK5kUOOPTVj/q83e
-	KMwSx5Xnr9DuRRNgA+cM8ij7x16Ma0vVMAjqQlsHuDWfYDVq0v6X/tSWU1sCro1H2/ySj5hqR83O7
-	k+Zjbkew==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=HdTx0HXDk6Bgko4dixrtKFORVgm4WG6MEHFRrt2+Uns=; b=hAXCOdQEtb8893
+	+Z5V4cptnwm5/k+hq/H1LCunj3Slef85BrhgJ0CubOk41vuVqE377Tc5T/z+z2mGUr2Ly7J6kEgGr
+	DAaCMARlB/NrW4CxqIJF25LpjRLMwchEVY4PTYx3/y+0KFGqQm5dkBK3fKNc23hCd/2JudJvzAFq7
+	0wz13NBySwMmU4r0V3/k+tG8OLkIgZuPVGaFwJNVLywsennU/pyL5WEZaylQlf6F4sPV/yfzBnMl5
+	Fq08kD60DisSaBvqcHv1fTIBIDarsu5ehExaf1UKyO6bhtg5ogKnvxmsVI9cS7R0iYacF2a9PzC/R
+	7K42797177UnwVmhdHiw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sC8s6-00000002aI5-1iYr;
-	Wed, 29 May 2024 02:16:58 +0000
-Received: from mail.manjaro.org ([2a01:4f8:c0c:51f3::1])
+	id 1sC9G9-00000002cTu-1lnx;
+	Wed, 29 May 2024 02:41:49 +0000
+Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sC8s2-00000002aH7-1JWD;
-	Wed, 29 May 2024 02:16:56 +0000
+	id 1sC9G4-00000002cRK-2cjH;
+	Wed, 29 May 2024 02:41:46 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1716950498;
+	bh=8I5N/bPH995IFvJcI2gT3VcEir2faP4m3D/1Jo2TbsI=;
+	h=From:To:Cc:Subject:Date:From;
+	b=LHd3UvExj3TjVSuh8o857nGSYP8gUy2nERuemFdb7ldwmZX/mxGl3dCc/nAlMV2yo
+	 JTll4zrW2byD3wN4nNISCW6P7TpWspg4zvklT/yKNeGRimFMoLunEglZTsdhYVvlcv
+	 /oaBaEAGtx/lGz8PzEFJpU3mSdP1HKgJSKCBWysMvBmT9X2VqEvCq3tKGxarTYAIKH
+	 7Rt80MfjzqNsva1NrnyNfGKacDBQiRek1aoKboGMLvCgJSR6QzAFJhjHhpdoloLc/c
+	 eS6pFt4dwT481gNDolKtc0cr3fptmgpkCYRSbfckbwhxwyz1tqimzMolyhJGTTbRES
+	 4HxN0OWDIq9Pw==
+Received: from localhost.localdomain (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: vignesh)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id B337E3781FE6;
+	Wed, 29 May 2024 02:41:33 +0000 (UTC)
+From: Vignesh Raman <vignesh.raman@collabora.com>
+To: dri-devel@lists.freedesktop.org
+Cc: daniels@collabora.com,
+	helen.koike@collabora.com,
+	airlied@gmail.com,
+	daniel@ffwll.ch,
+	robdclark@gmail.com,
+	david.heidelberg@collabora.com,
+	guilherme.gallo@collabora.com,
+	sergi.blanch.torne@collabora.com,
+	dmitry.baryshkov@linaro.org,
+	mcanal@igalia.com,
+	linux-mediatek@lists.infradead.org,
+	linux-amlogic@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	amd-gfx@lists.freedesktop.org,
+	linux-arm-msm@vger.kernel.org,
+	intel-gfx@lists.freedesktop.org,
+	virtualization@lists.linux-foundation.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH v3 0/6] drm/ci: uprev mesa/IGT and generate testlist
+Date: Wed, 29 May 2024 08:10:43 +0530
+Message-Id: <20240529024049.356327-1-vignesh.raman@collabora.com>
+X-Mailer: git-send-email 2.40.1
 MIME-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
-	t=1716949009;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=4JFLurwnOLvIBCNTM500Idl7vSQefC7CtF5bl+YuMyQ=;
-	b=nxh/8fo85My8hC8k0l47rmqyLY5E0iCg7kqDnKfox56MABozQPwSiiCv/DDd4ojO86msqf
-	AsO0o864fLyhYCXg1YLQ8xYg0m4ihevbdre0kNJWtEyCpmcbSFNL3r7xtMgTycEHR/uDLX
-	ZldVmRSGnsbi976v7ZbFga8LQOLZt3Y6Ev4D+p8Kx+lTVVl0+fQO26oa0V9+P+u4WVOXBS
-	hEmS1T+DgEa8B8pLuU6ywqYqDl1lfPZfYWuB5UWzHSz15yRd4DfDIqJFwdbAwhGMvKIr2T
-	0r6amFMg5XADO2tzeHuwmGFBGYu2cZIGuTgUHjF1TPhDT4X94F6rXEAjv4FBTQ==
-Date: Wed, 29 May 2024 04:16:49 +0200
-From: Dragan Simic <dsimic@manjaro.org>
-To: Alexey Charkov <alchark@gmail.com>
-Cc: Quentin Schulz <quentin.schulz@cherry.de>, Heiko Stuebner
- <heiko@sntech.de>, Chen-Yu Tsai <wens@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Daniel Lezcano <daniel.lezcano@linaro.org>, Diederik
- de Haas <didi.debian@cknow.org>, Krzysztof Kozlowski
- <krzysztof.kozlowski+dt@linaro.org>, Rob Herring <robh+dt@kernel.org>,
- Viresh Kumar <viresh.kumar@linaro.org>, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH v4 0/6] RK3588 and Rock 5B dts additions: thermal, OPP and
- fan
-In-Reply-To: <035a274be262528012173d463e25b55f@manjaro.org>
-References: <20240506-rk-dts-additions-v4-0-271023ddfd40@gmail.com>
- <5122636.irdbgypaU6@phil> <8727e1c29bd6f562a7fc3de0ddac62cf@manjaro.org>
- <6230150.aeNJFYEL58@phil>
- <CABjd4YyRJS0AGehuBTDn8ys9uRRkGc0Usme3GX1POq3AQiWTBA@mail.gmail.com>
- <646a33e0-5c1b-471c-8183-2c0df40ea51a@cherry.de>
- <CABjd4Yxi=+3gkNnH3BysUzzYsji-=-yROtzEc8jM_g0roKB0-w@mail.gmail.com>
- <035a274be262528012173d463e25b55f@manjaro.org>
-Message-ID: <c547d6165ae80d4008966021eb0d1ef2@manjaro.org>
-X-Sender: dsimic@manjaro.org
-Authentication-Results: ORIGINATING;
-	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240528_191654_681873_210F6E7A 
-X-CRM114-Status: GOOD (  39.06  )
+X-CRM114-CacheID: sfid-20240528_194145_159638_3683CF27 
+X-CRM114-Status: GOOD (  12.20  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,144 +82,110 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gMjAyNC0wNS0yOSAwMjozNSwgRHJhZ2FuIFNpbWljIHdyb3RlOgo+IE9uIDIwMjQtMDUtMjgg
-MjE6MjYsIEFsZXhleSBDaGFya292IHdyb3RlOgo+PiBPbiBUdWUsIE1heSAyOCwgMjAyNCBhdCA4
-OjA44oCvUE0gUXVlbnRpbiBTY2h1bHogCj4+IDxxdWVudGluLnNjaHVsekBjaGVycnkuZGU+IHdy
-b3RlOgo+Pj4gT24gNS8yOC8yNCA1OjQyIFBNLCBBbGV4ZXkgQ2hhcmtvdiB3cm90ZToKPj4+ID4g
-T24gVHVlLCAyOCBNYXkgMjAyNCBhdCAxOToxNiwgSGVpa28gU3R1ZWJuZXIgPGhlaWtvQHNudGVj
-aC5kZT4gd3JvdGU6Cj4+PiA+PiBBbSBEaWVuc3RhZywgMjguIE1haSAyMDI0LCAxNzowMTo0OCBD
-RVNUIHNjaHJpZWIgRHJhZ2FuIFNpbWljOgo+Pj4gPj4+IE9uIDIwMjQtMDUtMjggMTY6MzQsIEhl
-aWtvIFN0dWVibmVyIHdyb3RlOgo+Pj4gPj4+PiBBbSBEaWVuc3RhZywgMjguIE1haSAyMDI0LCAx
-NjowNTowNCBDRVNUIHNjaHJpZWIgRHJhZ2FuIFNpbWljOgo+Pj4gPj4+Pj4gT24gMjAyNC0wNS0y
-OCAxMTo0OSwgQWxleGV5IENoYXJrb3Ygd3JvdGU6Cj4+PiA+Pj4+Pj4gSGkgSGVpa28sCj4+PiA+
-Pj4+Pj4KPj4+ID4+Pj4+PiBEbyB5b3UgdGhpbmsgdGhpcyBjYW4gYmUgbWVyZ2VkIGZvciA2LjEx
-PyBMb29rcyBsaWtlIHRoZXJlIGhhc24ndAo+Pj4gPj4gYmVlbgo+Pj4gPj4+Pj4+IGFueSBuZXcg
-ZmVlZGJhY2sgaW4gYSB3aGlsZSwgYW5kIGl0IHdvdWxkIGJlIGdvb2QgdG8gaGF2ZSBmcmVxdWVu
-Y3kKPj4+ID4+Pj4+PiBzY2FsaW5nIGluIHBsYWNlIGZvciBSSzM1ODguCj4+PiA+Pj4+Pj4KPj4+
-ID4+Pj4+PiBQbGVhc2UgbGV0IG1lIGtub3cgaWYgeW91IGhhdmUgYW55IHJlc2VydmF0aW9ucyBv
-ciBpZiB3ZSBuZWVkIGFueQo+Pj4gPj4+Pj4+IGJyb2FkZXIgZGlzY3Vzc2lvbi4KPj4+ID4+Pj4K
-Pj4+ID4+Pj4gbm90IHJlYWxseSByZXNlcnZhdGlvbnMsIG1vcmUgbGlrZSB0aGVyZSB3YXMgc3Rp
-bGwgZGlzY3Vzc2lvbiBnb2luZyBvbgo+Pj4gPj4+PiBhcm91bmQgdGhlIE9QUHMuIE1lYW53aGls
-ZSB3ZSBoYWQgbW9yZSBkaXNjdXNzaW9ucyByZWdhcmRpbmcgdGhlIHdob2xlCj4+PiA+Pj4+IHNw
-ZWVkIGJpbm5pbmcgUm9ja2NoaXAgc2VlbXMgdG8gZG8gZm9yIHJrMzU4OCB2YXJpYW50cy4KPj4+
-ID4+Pj4KPj4+ID4+Pj4gQW5kIHdhaXRpbmcgZm9yIHRoZSB0ZXN0aW5nIERyYWdhbiB3YW50ZWQg
-dG8gZG8gOy0pIC4KPj4+ID4+Pgo+Pj4gPj4+IEknbSBzb3JyeSBmb3IgdGhlIGRlbGF5cy4KPj4+
-ID4+Cj4+PiA+PiBXYXMgZGVmaW5pdGx5IF9ub3RfIG1lYW50IGFzIGJsYW1lIDstKSAuCj4+PiA+
-Pgo+Pj4gPj4gVGhlIHNlcmllcyBoYXMganVzdCB0b28gbWFueSBkaXNjdXNzaW9ucyB0aHJlYWRz
-IHRvIHVucmF2ZWwgb24gaGFsZgo+Pj4gPj4gYW4gYWZ0ZXJub29uLgo+Pj4gPgo+Pj4gPgo+Pj4g
-PiBGV0lXLCBJIHRoaW5rIHRoZSBsYXRlc3QgZXhjaGFuZ2Ugd2UgaGFkIHdpdGggUXVlbnRpbiBy
-ZWdhcmRpbmcgdGhlIE9QUHMKPj4+ID4gY29uY2x1ZGVkIGluIOKAnGZhbHNlIGFsYXJt4oCdLCBn
-aXZlbiB0aGF0IHRoaXMgdmVyc2lvbiBvZiB0aGUgc2VyaWVzIG9ubHkKPj4+ID4gaW50cm9kdWNl
-cyBhIHN1YnNldCBvZiB0aGVtIHdoaWNoIHNob3VsZCBhcHBseSB0byBhbGwgUkszNTg4KHMpCj4+
-PiAKPj4+IENvcnJlY3QuCj4+PiAKPj4+IEhvd2V2ZXIuLi4gSSdtIHdvbmRlcmluZyBpZiB3ZSBz
-aG91bGRuJ3Qgc29tZWhvdyBmb2xsb3cgdGhlIHNhbWUgCj4+PiBwYXR0ZXJuCj4+PiB3ZSBoYXZl
-IHVzZWQgZm9yIHRoZSByazMzOTkgT1BQcz8gV2UgaGF2ZSBhIGZpbGUgZm9yIHRoZSAidHJ1ZSIg
-Cj4+PiBSSzMzOTkKPj4+IE9QUHMsIHRoZW4gdGhlIE9QMSB2YXJpYW50IGFuZCB0aGUgUkszMzk5
-VC4KPj4+IAo+Pj4gV2UgYWxyZWFkeSBrbm93IHRoZXJlIGFyZSBhIGZldyB2YXJpYW50cyBvZiBS
-SzM1ODggd2l0aCBkaWZmZXJlbnQgCj4+PiBPUFBzOgo+Pj4gUkszNTg4KFMvUzI/KSwgUkszNTg4
-SiBhbmQgUkszNTg4TS4gSSB3b3VsZG4ndCBiZSBzdXJwcmlzZWQgaWYgdGhlCj4+PiBSSzM1ODIg
-KHRob3VnaCB0aGlzIG9uZSBoYXMgYWxyZWFkeSBvbmUgYmlnIGNsdXN0ZXIgKG9yIHR3byBiaWcg
-Cj4+PiBjb3JlcykKPj4+IGZld2VyIHRoYW4gUkszNTg4KSBoYXMgZGlmZmVyZW50IE9QUHMgYXMg
-d2VsbD8KPj4+IAo+Pj4gU28uIFdlIGhhdmUgYWxyZWFkeSBkaXNjdXNzZWQgdGhhdCB0aGUgT1BQ
-cyBpbiB0aGF0IHBhdGNoIGFyZSB2YWxpZCAKPj4+IGZvcgo+Pj4gUkszNTg4KFMpIGJ1dCB0aGV5
-IGFyZW4ndCBmb3IgdGhlIG90aGVyIHZhcmlhbnRzLgo+PiAKPj4gSG1tLiBMb29raW5nIGF0IFJv
-Y2tjaGlwIHNvdXJjZXMgWzFdIG1vcmUgY2xvc2VseSBhcyBvcHBvc2VkIHRvIHRoZQo+PiBSYWR4
-YSB0cmVlIEkndmUgYmVlbiB1c2luZyBhcyB0aGUgYmFzaXMsIGl0IGRvZXMgaW5kZWVkIHNob3cg
-dGhhdAo+PiBSSzM1ODhKIGFuZCBSSzM1ODhNIHVzZSBhIGRpZmZlcmVudCBPUFAgdGFibGUgYWx0
-b2dldGhlciAoZnJlcXVlbmNpZXMKPj4gYXJlIHNpbWlsYXIsIGJ1dCB2b2x0YWdlcyBkaWZmZXIp
-Lgo+PiAKPj4gV2UgY3VycmVudGx5IGhhdmUgYW4gUkszNTg4SiBiYXNlZCBib2FyZCBpbiB0aGUg
-bWFpbmxpbmUgdHJlZQo+PiAocmszNTg4LWVkZ2VibGUtbmV1NmItaW8uZHRzKSwgc28gaXQgY2Fu
-J3QgYmUgaWdub3JlZC4gSG93ZXZlciwgZ2l2ZW4KPj4gdGhhdCBSb2NrY2hpcCBzb3VyY2VzIG9u
-bHkgZGlmZmVyZW50aWF0ZSB0aG9zZSBPUFBzIGJ5IFNvQyByZXZpc2lvbiwKPj4gYW5kIHRoYXQg
-aXMgKGN1cnJlbnRseT8pIGtub3duIGZvciBlYWNoIGJvYXJkIGF0IGR0YiBjb21waWxlIHRpbWUs
-IGl0Cj4+IHNlZW1zIGVhc2llciB0byBqdXN0IGluY2x1ZGUgdHdvIGRpZmZlcmVudCBPUFAgdGFi
-bGVzIGZvciBSSzM1ODgoUykKPj4gdnMuIFJLMzU4OEogLSB0aHVzIGF2b2lkaW5nIGFsbCB0aGUg
-aGVhZGFjaGUgd2l0aCBvcHAtc3VwcG9ydGVkLWh3Lgo+PiBTaW1pbGFyIHRvIFJLMzM5OSwgeWVz
-Lgo+PiAKPj4gV2lsbCBzcGxpdCB0aG9zZSBvdXQgYW5kIHNlbmQgYSBzZXBhcmF0ZSB2ZXJzaW9u
-Lgo+IAo+IEFoLCB5b3UgYWxyZWFkeSBhbnN3ZXJlZCBteSBxdWVzdGlvbiBhYm91dCB0aGUgZXhp
-c3RlbmNlIG9mIHN1cHBvcnRlZAo+IGJvYXJkcyB3aXRoIHRoZSBSSzM1ODhKIGFuZCBSSzM1ODhN
-IHZhcmlhbnRzLiA6KSBbMl0gIEkgdG90YWxseSBhZ3JlZQo+IGFib3V0IHNwbGl0dGluZyB0aGUg
-T1BQcyBpbnRvIHRoZSBzZXBhcmF0ZSAuZHRzaSBmaWxlcywgaS5lLiBmb2xsb3dpbmcKPiB0aGUg
-YXBwcm9hY2ggYWxyZWFkeSBlc3RhYmxpc2hlZCBieSB0aGUgUkszMzk5Lgo+IAo+IFBlcmhhcHMg
-dGhlIG5ldyBmaWxlcyBzaG91bGQgYmUgbmFtZWQgcmszNTg4LW9wcC5kdHNpIGFuZCAKPiByazM1
-ODhqLW9wcC5kdHNpLAo+IHRvIChhbG1vc3QgZnVsbHkpIGZvbGxvdyB0aGUgYWxyZWFkeSBlc3Rh
-Ymxpc2hlZCBuYW1pbmcgc2NoZW1lLiAgTWF5YmUKPiB0aGUgT1BQIGRhdGEgY291bGQgaW5zdGVh
-ZCBiZSBhZGRlZCB0byB0aGUgYWxyZWFkeSBleGlzdGluZyAKPiByazM1ODguZHRzaSwKPiByazM1
-ODhzLmR0c2kgYW5kIHJrMzU4OGouZHRzaSBmaWxlcywgd2hpY2ggd291bGQgYWN0dWFsbHkgbWFr
-ZSBtb3JlIAo+IHNlbnNlCj4gYmVjYXVzZSB0aG9zZSAuZHRzaSBmaWxlcyBhbHJlYWR5IGFkZHJl
-c3MgdGhlIHNwZWNpZmljIFNvQyB2YXJpYW50cywgCj4gYnV0Cj4gdGhlIGFwcHJvYWNoIHdpdGgg
-dGhlIHNlcGFyYXRlIG5ldyByazM1ODgqLW9wcC5kdHNpIGZpbGVzIHNlZW1zIGNsZWFuZXIKPiBm
-cm9tIHRoZSBpbXBsZW1lbnRhdGlvbiBwb2ludCBvZiB2aWV3LCBhbmQgaXMgYSBiaXQgc2FmZXIu
-Cj4gCj4gSWYgeW91IHNlZSBhIGNsZWFuIHdheSBmb3Igc3R1ZmZpbmcgdGhlIE9QUCBkYXRhIGlu
-dG8gdGhlIGFscmVhZHkgCj4gZXhpc3RpbmcKPiByazM1ODguZHRzaSwgcmszNTg4cy5kdHNpIGFu
-ZCByazM1ODhqLmR0c2kgZmlsZXMsIGluc3RlYWQgb2YgCj4gaW50cm9kdWNpbmcKPiBuZXcgcmsz
-NTg4Ki1vcHAuZHRzaSBmaWxlcywgSSdkIGJlIGhhcHB5IHRvIHN1cHBvcnQgaXQuCj4gCj4gWzJd
-IAo+IGh0dHBzOi8vbG9yZS5rZXJuZWwub3JnL2xpbnV4LXJvY2tjaGlwLzdiMDllMThlODUwZmYw
-ODMyYmQ3MjM2ODEwYjgzZTY0QG1hbmphcm8ub3JnLwoKT24gc2Vjb25kIHRob3VnaHQsIGl0IG1h
-a2VzIG1vcmUgc2Vuc2UgdG8gcmVuYW1lIGFuZCBzaHVmZmxlIHRoZSBSSzM1ODgKZHRzaSBmaWxl
-cyBhIGJpdCwgdG8gbWFrZSBpdCBwb3NzaWJsZSB0byBoYXZlIHRoZSBPUFBzIGFscmVhZHkgc3Bl
-Y2lmaWVkCndoZW4gYSBib2FyZCBkdHMgZmlsZSBpbmNsdWRlcyB0aGUgZHRzaSBmaWxlIGZvciBh
-IFJLMzU4OCB2YXJpYW50LiAgClRodXMsCkkgd2VudCBhaGVhZCBhbmQgcHJlcGFyZWQgYW4gUkZD
-IHBhdGNoIHRoYXQgZG9lcyBleGFjdGx5IHRoYXQuIFszXQoKUGxlYXNlLCBoYXZlIGEgbG9vayBh
-dCB0aGF0IFJGQyBwYXRjaC4gIFRvIHF1b3RlIGl0cyBkZXNjcmlwdGlvbjoKCi0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLQpSZW5hbWUgYW5kIG1vZGlmeSB0aGUgUkszNTg4IGR0c2kgZmlsZXMgYSBiaXQsIHRv
-IG1ha2UgcHJlcGFyYXRpb25zIGZvcgp0aGUgYWJpbGl0eSB0byBzcGVjaWZ5IGRpZmZlcmVudCBD
-UFUgYW5kIEdQVSBPUFBzIGZvciBlYWNoIG9mIHRoZSAKc3VwcG9ydGVkClJLMzU4OCBTb0MgdmFy
-aWFudHMsIGluY2x1ZGluZyB0aGUgUkszNTg4Si4KCkFzIGFscmVhZHkgZGlzY3Vzc2VkLCBzb21l
-IG9mIHRoZSBkaWZmZXJlbnQgUkszNTg4IFNvQyB2YXJpYW50cwpyZXF1aXJlIGRpZmZlcmVudCBP
-UFBzLCBhbmQgaXQgbWFrZXMgbW9yZSBzZW5zZSB0byBoYXZlIHRoZSBPUFBzIGFscmVhZHkKZGVm
-aW5lZCB3aGVuIGEgYm9hcmQgZHRzIGluY2x1ZGVzIG9uZSBvZiB0aGUgU29DIGR0c2kgZmlsZXMg
-CihyazM1ODguZHRzaSwKcmszNTg4ai5kdHNpIG9yIHJrMzU4OHMuZHRzaSksIHJhdGhlciB0aGFu
-IHJlcXVpcmluZyB0aGUgYm9hcmQgZHRzIGZpbGUgCnRvCmFsc28gaW5jbHVkZSBhIHNlcGFyYXRl
-IHJrMzU4OCotb3BwLmR0c2kgZmlsZS4gIFRoZSBjaG9pY2Ugb2YgdGhlIFNvQyAKdmFyaWFudApp
-cyBhbHJlYWR5IG1hZGUgYnkgdGhlIGluY2x1c2lvbiBvZiB0aGUgU29DIGR0c2kgZmlsZSwgYW5k
-IGl0IGRvZXNuJ3QgCm1ha2UKbXVjaCBzZW5zZSB0bywgZWZmZWN0aXZlbHksIGFsbG93IHRoZSBi
-b2FyZCBkdHMgZmlsZSB0byBpbmNsdWRlIGFuZCB1c2UgCmFuCmluY29tcGF0aWJsZSBzZXQgb2Yg
-T1BQcyBmb3IgdGhlIGFscmVhZHkgc2VsZWN0ZWQgU29DIHZhcmlhbnQuCgpObyBpbnRlbmRlZCBm
-dW5jdGlvbmFsIGNoYW5nZXMgYXJlIGludHJvZHVjZWQuICAoU3RpbGwgdG8gYmUgCmFkZGl0aW9u
-YWxseQp2ZXJpZmllZCBpZiB0aGUgcGF0Y2ggbW92ZXMgZm9yd2FyZCBmcm9tIHRoZSBSRkMgc3Rh
-dGUuKQotLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0KClszXSAKaHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcvbGlu
-dXgtcm9ja2NoaXAvNjczZGNmNDc1OTZlN2JjOGJhMDY1MDM0ZTMzOWJiMWJiZjljZGNiMC4xNzE2
-OTQ4MTU5LmdpdC5kc2ltaWNAbWFuamFyby5vcmcvCgo+Pj4gSW4gdGhlIGRvd25zdHJlYW0ga2Vy
-bmVsLCBhbnkgT1BQIHdob3NlIG9wcC1zdXBwb3J0ZWQtaHcgaGFzIGEgZmlyc3QKPj4+IHZhbHVl
-IG1hc2tlZCBieSBCSVQoMSkgcmV0dXJuIG5vbi0wIGlzIHN1cHBvcnRlZCBieSBSSzM1ODhNLiBJ
-biB0aGUKPj4+IGRvd25zdHJlYW0ga2VybmVsLCBhbnkgT1BQIHdob3NlIG9wcC1zdXBwb3J0ZWQt
-aHcgaGFzIGEgZmlyc3QgdmFsdWUKPj4+IG1hc2tlZCBieSBCSVQoMikgcmV0dXJuIG5vbi0wIGlz
-IHN1cHBvcnRlZCBieSBSSzM1ODhKLgo+Pj4gCj4+PiBUaGlzIG1lYW5zIHRoYXQsIGZvciBMSVRU
-TEUgY2x1c3RlcnM6Cj4+PiAtIG9wcC0xNjA4MDAwMDAwIG5vdCBzdXBwb3J0ZWQgb24gUkszNTg4
-Sgo+Pj4gLSBvcHAtMTcwNDAwMDAwMCBvbmx5IHN1cHBvcnRlZCBvbiBSSzM1ODhNIChidXQgYWxy
-ZWFkeSBhYnNlbnQgaW4gCj4+PiB0aGlzCj4+PiBwYXRjaCBzZXJpZXMpCj4+PiAtIG9wcC0xODAw
-MDAwMDAwIG9ubHkgc3VwcG9ydGVkIG9uIFJLMzU4OChTKSwgbm90IFJLMzU4OEogbm9yIFJLMzU4
-OE0KPj4+IAo+Pj4gRm9yIGJpZyBjbHVzdGVyczoKPj4+IC0gb3BwLTE4MDAwMDAwMDAgbm90IHN1
-cHBvcnRlZCBvbiBSSzM1ODhKCj4+PiAtIG9wcC0yMDE2MDAwMDAwIG5vdCBzdXBwb3J0ZWQgb24g
-UkszNTg4Sgo+Pj4gLSBvcHAtMjIwODAwMDAwMCBvbmx5IHN1cHBvcnRlZCBvbiBSSzM1ODgoUyks
-IG5vdCBSSzM1ODhKIG5vciBSSzM1ODhNCj4+PiAtIG9wcC0yMjU2MDAwMDAwIG9ubHkgc3VwcG9y
-dGVkIG9uIFJLMzU4OChTKSwgbm90IFJLMzU4OEogbm9yIFJLMzU4OE0KPj4+IC0gb3BwLTIzMDQw
-MDAwMDAgb25seSBzdXBwb3J0ZWQgb24gUkszNTg4KFMpLCBub3QgUkszNTg4SiBub3IgUkszNTg4
-TQo+Pj4gLSBvcHAtMjM1MjAwMDAwMCBvbmx5IHN1cHBvcnRlZCBvbiBSSzM1ODgoUyksIG5vdCBS
-SzM1ODhKIG5vciBSSzM1ODhNCj4+PiAtIG9wcC0yNDAwMDAwMDAwIG9ubHkgc3VwcG9ydGVkIG9u
-IFJLMzU4OChTKSwgbm90IFJLMzU4OEogbm9yIFJLMzU4OE0KPj4+IAo+Pj4gVGhpcyBpcyBzb21l
-aG93IGFsc28gZW5mb3JjZWQgaW4gZG93bnN0cmVhbSBrZXJuZWwgYnkgcmVtb3ZpbmcgdGhlIAo+
-Pj4gT1BQCj4+PiBub2RlcyBkaXJlY3RseSAoaGVuY2UsIG5vdCBldmVuIHJlcXVpcmluZyB0aGUg
-Y2hlY2sgb2YgCj4+PiBvcHAtc3VwcG9ydGVkLWh3Cj4+PiB2YWx1ZSksIGMuZi46Cj4+PiBodHRw
-czovL2dpdC50aGVvYnJvbWEtc3lzdGVtcy5jb20vdGlnZXItbGludXguZ2l0L3RyZWUvYXJjaC9h
-cm02NC9ib290L2R0cy9yb2NrY2hpcC9yazM1ODhqLmR0c2kKPj4+IGh0dHBzOi8vZ2l0LnRoZW9i
-cm9tYS1zeXN0ZW1zLmNvbS90aWdlci1saW51eC5naXQvdHJlZS9hcmNoL2FybTY0L2Jvb3QvZHRz
-L3JvY2tjaGlwL3JrMzU4OG0uZHRzaQo+Pj4gCj4+PiBZb3UnbGwgbm90IHRoYXQgdGhlIFJLMzU4
-OEogYWxzbyBoYXMgbGVzcyBPUFBzIGZvciB0aGUgR1BVIGFuZCBOUFUgCj4+PiAoYnV0Cj4+PiB0
-aG9zZSBzaG91bGQgYWxzbyBiZSBtYXNrZWQgYnkgdGhlIG9wcC1zdXBwb3J0ZWQtaHcgdmFsdWUp
-Lgo+PiAKPj4gU2FtZSB3aXRoIERNQywgYnV0IHdlIGRvbid0IGN1cnJlbnRseSBoYXZlIGVpdGhl
-ciBETUMgb3IgTlBVIGluIHRoZQo+PiBtYWlubGluZSB0cmVlLCBzbyBpdCBzb3VuZHMgbGlrZSBz
-b21ldGhpbmcgdG8gYmUgZGVhbHQgd2l0aCBsYXRlciA6KQo+PiAKPj4gWzFdIAo+PiBodHRwczov
-L2dpdGh1Yi5jb20vcm9ja2NoaXAtbGludXgva2VybmVsL2Jsb2IvZGV2ZWxvcC01LjEwL2FyY2gv
-YXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszNTg4cy5kdHNpCgpfX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QK
-TGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFk
-Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+Uprev mesa and IGT to the latest version and stop vendoring the
+testlist into the kernel. Instead, use the testlist from the
+IGT build to ensure we do not miss renamed or newly added tests.
+Update the xfails with the latest testlist run.
+
+Add farm variable and update device type variable.
+
+https://gitlab.freedesktop.org/vigneshraman/linux/-/pipelines/1187556
+
+Vignesh Raman (6):
+  drm/ci: uprev mesa version
+  drm/ci: add farm variable
+  drm/ci: generate testlist from build
+  drm/ci: uprev IGT
+  drm/ci: skip driver specific tests
+  drm/ci: update xfails for the new testlist
+
+ drivers/gpu/drm/ci/build-igt.sh               |   41 +-
+ drivers/gpu/drm/ci/build.sh                   |    6 +-
+ drivers/gpu/drm/ci/container.yml              |   12 +-
+ drivers/gpu/drm/ci/gitlab-ci.yml              |   46 +-
+ drivers/gpu/drm/ci/igt_runner.sh              |    9 +-
+ drivers/gpu/drm/ci/image-tags.yml             |    2 +-
+ drivers/gpu/drm/ci/lava-submit.sh             |    4 +-
+ drivers/gpu/drm/ci/test.yml                   |   17 +-
+ drivers/gpu/drm/ci/testlist.txt               | 2761 -----------------
+ .../gpu/drm/ci/xfails/amdgpu-stoney-fails.txt |   41 +-
+ .../drm/ci/xfails/amdgpu-stoney-flakes.txt    |    7 +
+ .../gpu/drm/ci/xfails/amdgpu-stoney-skips.txt |   33 +-
+ drivers/gpu/drm/ci/xfails/i915-amly-fails.txt |   31 +
+ .../gpu/drm/ci/xfails/i915-amly-flakes.txt    |    9 +
+ drivers/gpu/drm/ci/xfails/i915-amly-skips.txt |   22 +-
+ drivers/gpu/drm/ci/xfails/i915-apl-fails.txt  |   46 +-
+ drivers/gpu/drm/ci/xfails/i915-apl-flakes.txt |    6 +
+ drivers/gpu/drm/ci/xfails/i915-apl-skips.txt  |   26 +-
+ drivers/gpu/drm/ci/xfails/i915-cml-fails.txt  |   38 +
+ drivers/gpu/drm/ci/xfails/i915-cml-flakes.txt |    6 +
+ drivers/gpu/drm/ci/xfails/i915-cml-skips.txt  |   23 +
+ drivers/gpu/drm/ci/xfails/i915-glk-fails.txt  |   41 +-
+ drivers/gpu/drm/ci/xfails/i915-glk-flakes.txt |    7 +
+ drivers/gpu/drm/ci/xfails/i915-glk-skips.txt  |   26 +-
+ drivers/gpu/drm/ci/xfails/i915-kbl-fails.txt  |   42 +-
+ drivers/gpu/drm/ci/xfails/i915-kbl-flakes.txt |    7 +-
+ drivers/gpu/drm/ci/xfails/i915-kbl-skips.txt  |   36 +-
+ drivers/gpu/drm/ci/xfails/i915-tgl-fails.txt  |   77 +-
+ drivers/gpu/drm/ci/xfails/i915-tgl-skips.txt  |   28 +-
+ drivers/gpu/drm/ci/xfails/i915-whl-fails.txt  |   63 +-
+ drivers/gpu/drm/ci/xfails/i915-whl-flakes.txt |    6 +
+ drivers/gpu/drm/ci/xfails/i915-whl-skips.txt  |   22 +-
+ .../drm/ci/xfails/mediatek-mt8173-fails.txt   |   30 +-
+ .../drm/ci/xfails/mediatek-mt8173-flakes.txt  |   11 +
+ .../drm/ci/xfails/mediatek-mt8173-skips.txt   |   16 +
+ .../drm/ci/xfails/mediatek-mt8183-fails.txt   |   21 +-
+ .../drm/ci/xfails/mediatek-mt8183-skips.txt   |   18 +
+ .../gpu/drm/ci/xfails/meson-g12b-fails.txt    |   24 +-
+ .../gpu/drm/ci/xfails/meson-g12b-skips.txt    |   18 +
+ .../gpu/drm/ci/xfails/msm-apq8016-fails.txt   |   12 +-
+ .../gpu/drm/ci/xfails/msm-apq8016-skips.txt   |   15 +
+ .../gpu/drm/ci/xfails/msm-apq8096-fails.txt   |    7 +
+ .../gpu/drm/ci/xfails/msm-apq8096-flakes.txt  |    6 +
+ .../gpu/drm/ci/xfails/msm-apq8096-skips.txt   |   26 +-
+ .../msm-sc7180-trogdor-kingoftown-fails.txt   |  175 +-
+ .../msm-sc7180-trogdor-kingoftown-flakes.txt  |    8 +
+ .../msm-sc7180-trogdor-kingoftown-skips.txt   |   19 +
+ ...sm-sc7180-trogdor-lazor-limozeen-fails.txt |  175 +-
+ ...m-sc7180-trogdor-lazor-limozeen-flakes.txt |    6 +
+ ...sm-sc7180-trogdor-lazor-limozeen-skips.txt |   16 +
+ .../gpu/drm/ci/xfails/msm-sdm845-fails.txt    |   38 +-
+ .../gpu/drm/ci/xfails/msm-sdm845-flakes.txt   |   25 +-
+ .../gpu/drm/ci/xfails/msm-sdm845-skips.txt    |   19 +
+ .../drm/ci/xfails/rockchip-rk3288-fails.txt   |   62 +-
+ .../drm/ci/xfails/rockchip-rk3288-skips.txt   |   21 +-
+ .../drm/ci/xfails/rockchip-rk3399-fails.txt   |   83 +-
+ .../drm/ci/xfails/rockchip-rk3399-flakes.txt  |   13 +-
+ .../drm/ci/xfails/rockchip-rk3399-skips.txt   |   19 +
+ drivers/gpu/drm/ci/xfails/update-xfails.py    |    4 +-
+ .../drm/ci/xfails/virtio_gpu-none-fails.txt   |   94 +-
+ .../drm/ci/xfails/virtio_gpu-none-skips.txt   |   20 +-
+ 61 files changed, 1348 insertions(+), 3194 deletions(-)
+ delete mode 100644 drivers/gpu/drm/ci/testlist.txt
+ create mode 100644 drivers/gpu/drm/ci/xfails/i915-amly-flakes.txt
+ create mode 100644 drivers/gpu/drm/ci/xfails/i915-apl-flakes.txt
+ create mode 100644 drivers/gpu/drm/ci/xfails/i915-cml-flakes.txt
+ create mode 100644 drivers/gpu/drm/ci/xfails/i915-glk-flakes.txt
+ create mode 100644 drivers/gpu/drm/ci/xfails/i915-whl-flakes.txt
+ create mode 100644 drivers/gpu/drm/ci/xfails/mediatek-mt8173-flakes.txt
+ create mode 100644 drivers/gpu/drm/ci/xfails/mediatek-mt8173-skips.txt
+ create mode 100644 drivers/gpu/drm/ci/xfails/mediatek-mt8183-skips.txt
+ create mode 100644 drivers/gpu/drm/ci/xfails/meson-g12b-skips.txt
+ create mode 100644 drivers/gpu/drm/ci/xfails/msm-apq8016-skips.txt
+ create mode 100644 drivers/gpu/drm/ci/xfails/msm-apq8096-flakes.txt
+ create mode 100644 drivers/gpu/drm/ci/xfails/msm-sc7180-trogdor-kingoftown-flakes.txt
+ create mode 100644 drivers/gpu/drm/ci/xfails/msm-sc7180-trogdor-lazor-limozeen-flakes.txt
+
+-- 
+2.40.1
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
