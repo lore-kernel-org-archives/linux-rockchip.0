@@ -4,63 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 43F2DC25B78
-	for <linux-rockchip@archiver.kernel.org>; Wed, 29 May 2024 00:10:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 59CC2C25B78
+	for <linux-rockchip@archiver.kernel.org>; Wed, 29 May 2024 00:35:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
 	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=bU8/IRaVRaqAGEvhZpwbw43ULKXIGJcQTeN0rA8bkDI=; b=xBNTrEZgxdDJs4YXsBwfrUtDez
-	d9CMFzqUitwx4Z+EK5hOF5kzJX6IEM5Jt4N63ICKpNv7llCfxaTnzrM5Qw230aq8CE0O30SeyotZX
-	WftWGLZiWiBrdFheKkX940a0ZLorfHaJyrN1HouPSeakaeYm9P/cm4uLVVDHcVao5sp8YIX+8rJt+
-	TGkTHDToBdFUu+cNekiGakv1O9VpDLKh0V/wmCGXYSizF3qK/xLEUPlfJNs5+UoUcIk6S1VASDVLO
-	IuqVBfx4SHyIYpzki4Pg05PwRzT8Ds0wayG5k+7zXMYPZ5pT4MhFFk6/rWfM/ddeF0eSt4va73eWr
-	JwobRtoQ==;
+	bh=Qp9PaC6Hu5b1DqHMKTxk14cHsWGJGOpyG7IivF1AWzI=; b=ODp4jFmDUBbDwi7/UhhvygBsrg
+	/b2FoVVpB4N7ojmw/QiasToWDRESFMq8Er542FO+faUNidNARA4g4ZKHaOgOCScT2+4BPhemmMYuO
+	LerR2bxv3S4klJ66BHB/UpzyGCEWygXonPM6D86z3wLNrrOR0PIulwRig3G9KiIcdrZaX6yg1/Zow
+	ZDgdiJfbHvSnfovvOcIMVglGeBPzLqutfhuqxuYk7yB/TcPBg8lJK9F3DRIAYW89AEEEF7NMo/dG8
+	QVWO3Wi3nRsdOLFalnIhW6wGyrG6zHvfM158hIv/02eA8IvlcX/QBNVNorRah4Yc+jBO9wrvPc/9c
+	oDyWmOcg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sC6tz-00000002Ofq-1DbX;
-	Wed, 29 May 2024 00:10:47 +0000
+	id 1sC7I4-00000002QPb-20JT;
+	Wed, 29 May 2024 00:35:40 +0000
 Received: from mail.manjaro.org ([2a01:4f8:c0c:51f3::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sC6tu-00000002OfH-23Dt;
-	Wed, 29 May 2024 00:10:44 +0000
+	id 1sC7I0-00000002QP5-0eQF;
+	Wed, 29 May 2024 00:35:38 +0000
 MIME-Version: 1.0
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
-	t=1716941440;
+	t=1716942934;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=7z6F1Ao1L/n/qQAEst7AHuaT7MITPT2BokqzLZjAtkw=;
-	b=oviVzV2CR0rzR2GZkxMTnKGG3dxWHNwxm0rcUxfymyh2sXXP+ybudxEfHhyAPcSU8fheO/
-	/gpNHludd2JY83m/g3BWiVhGsreWWUhgGC28vJiyQ/ntFDx6N/pkJDTF3vYLsZht87gmLz
-	W+oWD1aJuE45p2MJL1GgT5klAmcsdkdAVD3b6rSECtBRvxf5MQahneEFmkdFLysX8YSBf4
-	0MrVLwy7bI6fQ7tic+/sROdvcdqlFlR7fCwG+HvX+jOEZc7DDYbInXr2NcyOrio9+AePsu
-	xgLu0l4h5FTxgkZ7lYfkYaKRBdnGhDlveSJ3jkwRysOuFafFn6b/S23TJ+Igdw==
-Date: Wed, 29 May 2024 02:10:38 +0200
+	bh=71X99pLxYEXtF/kBtjJLmEkhkBG5cLKD5nnB6W0SAu4=;
+	b=C1OW3VFy+SO7kw6uH08RHiVPcT7IMWnvtM3S4sLhS8jy3VMPHLxLGvO6KjtjOuhbgx9xgU
+	QA1y9QofRg6sRqoVPDCTH4epkik2pZaNUYD96LkNjm9JDxH5E0IGTz5SHb6MJ5R/5TX58S
+	FrJuow9QXuSF/DfOgSbYfXCLqmpyK3HEJjhBOYkKXii3+DMt0hkjJOzTkVzLFK7lVq+Cf/
+	UZZWDiBIXXTFibJcorWv6RJr+7tklxuzqak860Le6YPZGS3siE0bN6oChv0xqAwHF8biyl
+	EYgd8+3GMaJWaCM55y+XOqliC9Blo+tF3KVvqxcq25GFIMPJD/B2Xpt709v5gg==
+Date: Wed, 29 May 2024 02:35:34 +0200
 From: Dragan Simic <dsimic@manjaro.org>
-To: Sebastian Kropatsch <seb-dev@web.de>
-Cc: Jonas Karlman <jonas@kwiboo.se>, Heiko Stuebner <heiko@sntech.de>, Rob
- Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor
- Dooley <conor+dt@kernel.org>, Sebastian Reichel
- <sebastian.reichel@collabora.com>, linux-rockchip@lists.infradead.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org
-Subject: Re: [PATCH 2/2] arm64: dts: rockchip: Add CM3588 NAS board
-In-Reply-To: <29e5cf31-3d9a-469a-befa-41a5aa2fe8b3@web.de>
-References: <20240526214340.8459-1-seb-dev@web.de>
- <20240526214820.9381-1-seb-dev@web.de>
- <9f40c748-691b-4a03-bbd6-54870f46bf05@kwiboo.se>
- <29e5cf31-3d9a-469a-befa-41a5aa2fe8b3@web.de>
-Message-ID: <bccd8879a19ceacfd92a41e7533b324c@manjaro.org>
+To: Alexey Charkov <alchark@gmail.com>
+Cc: Quentin Schulz <quentin.schulz@cherry.de>, Heiko Stuebner
+ <heiko@sntech.de>, Chen-Yu Tsai <wens@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Daniel Lezcano <daniel.lezcano@linaro.org>, Diederik
+ de Haas <didi.debian@cknow.org>, Krzysztof Kozlowski
+ <krzysztof.kozlowski+dt@linaro.org>, Rob Herring <robh+dt@kernel.org>,
+ Viresh Kumar <viresh.kumar@linaro.org>, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH v4 0/6] RK3588 and Rock 5B dts additions: thermal, OPP and
+ fan
+In-Reply-To: <CABjd4Yxi=+3gkNnH3BysUzzYsji-=-yROtzEc8jM_g0roKB0-w@mail.gmail.com>
+References: <20240506-rk-dts-additions-v4-0-271023ddfd40@gmail.com>
+ <5122636.irdbgypaU6@phil> <8727e1c29bd6f562a7fc3de0ddac62cf@manjaro.org>
+ <6230150.aeNJFYEL58@phil>
+ <CABjd4YyRJS0AGehuBTDn8ys9uRRkGc0Usme3GX1POq3AQiWTBA@mail.gmail.com>
+ <646a33e0-5c1b-471c-8183-2c0df40ea51a@cherry.de>
+ <CABjd4Yxi=+3gkNnH3BysUzzYsji-=-yROtzEc8jM_g0roKB0-w@mail.gmail.com>
+Message-ID: <035a274be262528012173d463e25b55f@manjaro.org>
 X-Sender: dsimic@manjaro.org
 Authentication-Results: ORIGINATING;
 	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240528_171042_870635_8BC4F9BA 
-X-CRM114-Status: GOOD (  18.96  )
+X-CRM114-CacheID: sfid-20240528_173536_527438_DEAC333E 
+X-CRM114-Status: GOOD (  36.39  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,68 +77,114 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello Sebastian,
-
-On 2024-05-28 19:22, Sebastian Kropatsch wrote:
-> Am 27.05.2024 um 21:02 schrieb Jonas Karlman:
->> On 2024-05-26 23:48, Sebastian Kropatsch wrote:
->>> The CM3588 NAS by FriendlyElec pairs the CM3588 compute module, based 
->>> on
->>> the Rockchip RK3588 SoC, with the CM3588 NAS Kit carrier board.
->>> 
->>> [...]
->>> 
->>> PCIe bifurcation is used to handle all four M.2 sockets at PCIe 3.0 
->>> x1
->>> speed. Data lane mapping in the DT is done like described in commit
->>> f8020dfb311d ("phy: rockchip-snps-pcie3: fix bifurcation on rk3588").
->>> 
->>> This device tree includes support for eMMC, SD card, ethernet, all 
->>> USB2
->>> and USB3 ports, all four M.2 slots, GPU, RTC, buzzer, UART debugging 
->>> as
->>> well as the buttons and LEDs.
->>> The GPIOs are labeled according to the schematics.
->>> 
->>> Signed-off-by: Sebastian Kropatsch <seb-dev@web.de>
->>> ---
->>>   arch/arm64/boot/dts/rockchip/Makefile         |    1 +
->>>   .../boot/dts/rockchip/rk3588-cm3588-nas.dts   | 1269 
->>> +++++++++++++++++
->>>   2 files changed, 1270 insertions(+)
->>>   create mode 100644 
->>> arch/arm64/boot/dts/rockchip/rk3588-cm3588-nas.dts
->> 
->> Because the CM3588 is a SoM and the NAS is a carrier board this should
->> probably be split in two, cm3588.dtsi and cm3588-nas.dts.
-> 
-> I thought about this before submitting. My reason for not splitting 
-> this
-> into two files for now was that as far as I know this board is the only
-> combination for the CM, maybe no other daughter board will ever get
-> released. If another carrier board compatible with the CM3588 is
-> released, the splitting could be done at that point in time.
-> 
-> But since both you and Heiko prefer to have it split, I will figure out
-> a way how and which parts will have to split up to the CM so we can
-> have two files in the end. I guess most things will go into the NAS dts
-> anyway.
-> 
-> I'll have a look how other Rockchip compute modules with split device
-> trees were done in the past and orient myself by that.
-
-I also support the DT split between the SoM and the carrier board,
-even if there are currently no more carrier boards available for
-the particular SoM.  That may seem redundant, but it reflects the
-nature of the hardware setup, in which the SoM plugs into the carrier
-board.  This follows the principle of the DT describing hardware.
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGVsbG8gQWxleGV5IGFuZCBRdWVudGluLAoKT24gMjAyNC0wNS0yOCAyMToyNiwgQWxleGV5IENo
+YXJrb3Ygd3JvdGU6Cj4gT24gVHVlLCBNYXkgMjgsIDIwMjQgYXQgODowOOKAr1BNIFF1ZW50aW4g
+U2NodWx6IAo+IDxxdWVudGluLnNjaHVsekBjaGVycnkuZGU+IHdyb3RlOgo+PiBPbiA1LzI4LzI0
+IDU6NDIgUE0sIEFsZXhleSBDaGFya292IHdyb3RlOgo+PiA+IE9uIFR1ZSwgMjggTWF5IDIwMjQg
+YXQgMTk6MTYsIEhlaWtvIFN0dWVibmVyIDxoZWlrb0BzbnRlY2guZGU+IHdyb3RlOgo+PiA+PiBB
+bSBEaWVuc3RhZywgMjguIE1haSAyMDI0LCAxNzowMTo0OCBDRVNUIHNjaHJpZWIgRHJhZ2FuIFNp
+bWljOgo+PiA+Pj4gT24gMjAyNC0wNS0yOCAxNjozNCwgSGVpa28gU3R1ZWJuZXIgd3JvdGU6Cj4+
+ID4+Pj4gQW0gRGllbnN0YWcsIDI4LiBNYWkgMjAyNCwgMTY6MDU6MDQgQ0VTVCBzY2hyaWViIERy
+YWdhbiBTaW1pYzoKPj4gPj4+Pj4gT24gMjAyNC0wNS0yOCAxMTo0OSwgQWxleGV5IENoYXJrb3Yg
+d3JvdGU6Cj4+ID4+Pj4+PiBIaSBIZWlrbywKPj4gPj4+Pj4+Cj4+ID4+Pj4+PiBEbyB5b3UgdGhp
+bmsgdGhpcyBjYW4gYmUgbWVyZ2VkIGZvciA2LjExPyBMb29rcyBsaWtlIHRoZXJlIGhhc24ndAo+
+PiA+PiBiZWVuCj4+ID4+Pj4+PiBhbnkgbmV3IGZlZWRiYWNrIGluIGEgd2hpbGUsIGFuZCBpdCB3
+b3VsZCBiZSBnb29kIHRvIGhhdmUgZnJlcXVlbmN5Cj4+ID4+Pj4+PiBzY2FsaW5nIGluIHBsYWNl
+IGZvciBSSzM1ODguCj4+ID4+Pj4+Pgo+PiA+Pj4+Pj4gUGxlYXNlIGxldCBtZSBrbm93IGlmIHlv
+dSBoYXZlIGFueSByZXNlcnZhdGlvbnMgb3IgaWYgd2UgbmVlZCBhbnkKPj4gPj4+Pj4+IGJyb2Fk
+ZXIgZGlzY3Vzc2lvbi4KPj4gPj4+Pgo+PiA+Pj4+IG5vdCByZWFsbHkgcmVzZXJ2YXRpb25zLCBt
+b3JlIGxpa2UgdGhlcmUgd2FzIHN0aWxsIGRpc2N1c3Npb24gZ29pbmcgb24KPj4gPj4+PiBhcm91
+bmQgdGhlIE9QUHMuIE1lYW53aGlsZSB3ZSBoYWQgbW9yZSBkaXNjdXNzaW9ucyByZWdhcmRpbmcg
+dGhlIHdob2xlCj4+ID4+Pj4gc3BlZWQgYmlubmluZyBSb2NrY2hpcCBzZWVtcyB0byBkbyBmb3Ig
+cmszNTg4IHZhcmlhbnRzLgo+PiA+Pj4+Cj4+ID4+Pj4gQW5kIHdhaXRpbmcgZm9yIHRoZSB0ZXN0
+aW5nIERyYWdhbiB3YW50ZWQgdG8gZG8gOy0pIC4KPj4gPj4+Cj4+ID4+PiBJJ20gc29ycnkgZm9y
+IHRoZSBkZWxheXMuCj4+ID4+Cj4+ID4+IFdhcyBkZWZpbml0bHkgX25vdF8gbWVhbnQgYXMgYmxh
+bWUgOy0pIC4KPj4gPj4KPj4gPj4gVGhlIHNlcmllcyBoYXMganVzdCB0b28gbWFueSBkaXNjdXNz
+aW9ucyB0aHJlYWRzIHRvIHVucmF2ZWwgb24gaGFsZgo+PiA+PiBhbiBhZnRlcm5vb24uCj4+ID4K
+Pj4gPgo+PiA+IEZXSVcsIEkgdGhpbmsgdGhlIGxhdGVzdCBleGNoYW5nZSB3ZSBoYWQgd2l0aCBR
+dWVudGluIHJlZ2FyZGluZyB0aGUgT1BQcwo+PiA+IGNvbmNsdWRlZCBpbiDigJxmYWxzZSBhbGFy
+beKAnSwgZ2l2ZW4gdGhhdCB0aGlzIHZlcnNpb24gb2YgdGhlIHNlcmllcyBvbmx5Cj4+ID4gaW50
+cm9kdWNlcyBhIHN1YnNldCBvZiB0aGVtIHdoaWNoIHNob3VsZCBhcHBseSB0byBhbGwgUkszNTg4
+KHMpCj4+IAo+PiBDb3JyZWN0Lgo+PiAKPj4gSG93ZXZlci4uLiBJJ20gd29uZGVyaW5nIGlmIHdl
+IHNob3VsZG4ndCBzb21laG93IGZvbGxvdyB0aGUgc2FtZSAKPj4gcGF0dGVybgo+PiB3ZSBoYXZl
+IHVzZWQgZm9yIHRoZSByazMzOTkgT1BQcz8gV2UgaGF2ZSBhIGZpbGUgZm9yIHRoZSAidHJ1ZSIg
+UkszMzk5Cj4+IE9QUHMsIHRoZW4gdGhlIE9QMSB2YXJpYW50IGFuZCB0aGUgUkszMzk5VC4KPj4g
+Cj4+IFdlIGFscmVhZHkga25vdyB0aGVyZSBhcmUgYSBmZXcgdmFyaWFudHMgb2YgUkszNTg4IHdp
+dGggZGlmZmVyZW50IAo+PiBPUFBzOgo+PiBSSzM1ODgoUy9TMj8pLCBSSzM1ODhKIGFuZCBSSzM1
+ODhNLiBJIHdvdWxkbid0IGJlIHN1cnByaXNlZCBpZiB0aGUKPj4gUkszNTgyICh0aG91Z2ggdGhp
+cyBvbmUgaGFzIGFscmVhZHkgb25lIGJpZyBjbHVzdGVyIChvciB0d28gYmlnIGNvcmVzKQo+PiBm
+ZXdlciB0aGFuIFJLMzU4OCkgaGFzIGRpZmZlcmVudCBPUFBzIGFzIHdlbGw/Cj4+IAo+PiBTby4g
+V2UgaGF2ZSBhbHJlYWR5IGRpc2N1c3NlZCB0aGF0IHRoZSBPUFBzIGluIHRoYXQgcGF0Y2ggYXJl
+IHZhbGlkIAo+PiBmb3IKPj4gUkszNTg4KFMpIGJ1dCB0aGV5IGFyZW4ndCBmb3IgdGhlIG90aGVy
+IHZhcmlhbnRzLgo+IAo+IEhtbS4gTG9va2luZyBhdCBSb2NrY2hpcCBzb3VyY2VzIFsxXSBtb3Jl
+IGNsb3NlbHkgYXMgb3Bwb3NlZCB0byB0aGUKPiBSYWR4YSB0cmVlIEkndmUgYmVlbiB1c2luZyBh
+cyB0aGUgYmFzaXMsIGl0IGRvZXMgaW5kZWVkIHNob3cgdGhhdAo+IFJLMzU4OEogYW5kIFJLMzU4
+OE0gdXNlIGEgZGlmZmVyZW50IE9QUCB0YWJsZSBhbHRvZ2V0aGVyIChmcmVxdWVuY2llcwo+IGFy
+ZSBzaW1pbGFyLCBidXQgdm9sdGFnZXMgZGlmZmVyKS4KPiAKPiBXZSBjdXJyZW50bHkgaGF2ZSBh
+biBSSzM1ODhKIGJhc2VkIGJvYXJkIGluIHRoZSBtYWlubGluZSB0cmVlCj4gKHJrMzU4OC1lZGdl
+YmxlLW5ldTZiLWlvLmR0cyksIHNvIGl0IGNhbid0IGJlIGlnbm9yZWQuIEhvd2V2ZXIsIGdpdmVu
+Cj4gdGhhdCBSb2NrY2hpcCBzb3VyY2VzIG9ubHkgZGlmZmVyZW50aWF0ZSB0aG9zZSBPUFBzIGJ5
+IFNvQyByZXZpc2lvbiwKPiBhbmQgdGhhdCBpcyAoY3VycmVudGx5Pykga25vd24gZm9yIGVhY2gg
+Ym9hcmQgYXQgZHRiIGNvbXBpbGUgdGltZSwgaXQKPiBzZWVtcyBlYXNpZXIgdG8ganVzdCBpbmNs
+dWRlIHR3byBkaWZmZXJlbnQgT1BQIHRhYmxlcyBmb3IgUkszNTg4KFMpCj4gdnMuIFJLMzU4OEog
+LSB0aHVzIGF2b2lkaW5nIGFsbCB0aGUgaGVhZGFjaGUgd2l0aCBvcHAtc3VwcG9ydGVkLWh3Lgo+
+IFNpbWlsYXIgdG8gUkszMzk5LCB5ZXMuCj4gCj4gV2lsbCBzcGxpdCB0aG9zZSBvdXQgYW5kIHNl
+bmQgYSBzZXBhcmF0ZSB2ZXJzaW9uLgoKQWgsIHlvdSBhbHJlYWR5IGFuc3dlcmVkIG15IHF1ZXN0
+aW9uIGFib3V0IHRoZSBleGlzdGVuY2Ugb2Ygc3VwcG9ydGVkCmJvYXJkcyB3aXRoIHRoZSBSSzM1
+ODhKIGFuZCBSSzM1ODhNIHZhcmlhbnRzLiA6KSBbMl0gIEkgdG90YWxseSBhZ3JlZQphYm91dCBz
+cGxpdHRpbmcgdGhlIE9QUHMgaW50byB0aGUgc2VwYXJhdGUgLmR0c2kgZmlsZXMsIGkuZS4gZm9s
+bG93aW5nCnRoZSBhcHByb2FjaCBhbHJlYWR5IGVzdGFibGlzaGVkIGJ5IHRoZSBSSzMzOTkuCgpQ
+ZXJoYXBzIHRoZSBuZXcgZmlsZXMgc2hvdWxkIGJlIG5hbWVkIHJrMzU4OC1vcHAuZHRzaSBhbmQg
+CnJrMzU4OGotb3BwLmR0c2ksCnRvIChhbG1vc3QgZnVsbHkpIGZvbGxvdyB0aGUgYWxyZWFkeSBl
+c3RhYmxpc2hlZCBuYW1pbmcgc2NoZW1lLiAgTWF5YmUKdGhlIE9QUCBkYXRhIGNvdWxkIGluc3Rl
+YWQgYmUgYWRkZWQgdG8gdGhlIGFscmVhZHkgZXhpc3RpbmcgcmszNTg4LmR0c2ksCnJrMzU4OHMu
+ZHRzaSBhbmQgcmszNTg4ai5kdHNpIGZpbGVzLCB3aGljaCB3b3VsZCBhY3R1YWxseSBtYWtlIG1v
+cmUgCnNlbnNlCmJlY2F1c2UgdGhvc2UgLmR0c2kgZmlsZXMgYWxyZWFkeSBhZGRyZXNzIHRoZSBz
+cGVjaWZpYyBTb0MgdmFyaWFudHMsIGJ1dAp0aGUgYXBwcm9hY2ggd2l0aCB0aGUgc2VwYXJhdGUg
+bmV3IHJrMzU4OCotb3BwLmR0c2kgZmlsZXMgc2VlbXMgY2xlYW5lcgpmcm9tIHRoZSBpbXBsZW1l
+bnRhdGlvbiBwb2ludCBvZiB2aWV3LCBhbmQgaXMgYSBiaXQgc2FmZXIuCgpJZiB5b3Ugc2VlIGEg
+Y2xlYW4gd2F5IGZvciBzdHVmZmluZyB0aGUgT1BQIGRhdGEgaW50byB0aGUgYWxyZWFkeSAKZXhp
+c3RpbmcKcmszNTg4LmR0c2ksIHJrMzU4OHMuZHRzaSBhbmQgcmszNTg4ai5kdHNpIGZpbGVzLCBp
+bnN0ZWFkIG9mIGludHJvZHVjaW5nCm5ldyByazM1ODgqLW9wcC5kdHNpIGZpbGVzLCBJJ2QgYmUg
+aGFwcHkgdG8gc3VwcG9ydCBpdC4KClsyXSAKaHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcvbGludXgt
+cm9ja2NoaXAvN2IwOWUxOGU4NTBmZjA4MzJiZDcyMzY4MTBiODNlNjRAbWFuamFyby5vcmcvCgo+
+PiBJbiB0aGUgZG93bnN0cmVhbSBrZXJuZWwsIGFueSBPUFAgd2hvc2Ugb3BwLXN1cHBvcnRlZC1o
+dyBoYXMgYSBmaXJzdAo+PiB2YWx1ZSBtYXNrZWQgYnkgQklUKDEpIHJldHVybiBub24tMCBpcyBz
+dXBwb3J0ZWQgYnkgUkszNTg4TS4gSW4gdGhlCj4+IGRvd25zdHJlYW0ga2VybmVsLCBhbnkgT1BQ
+IHdob3NlIG9wcC1zdXBwb3J0ZWQtaHcgaGFzIGEgZmlyc3QgdmFsdWUKPj4gbWFza2VkIGJ5IEJJ
+VCgyKSByZXR1cm4gbm9uLTAgaXMgc3VwcG9ydGVkIGJ5IFJLMzU4OEouCj4+IAo+PiBUaGlzIG1l
+YW5zIHRoYXQsIGZvciBMSVRUTEUgY2x1c3RlcnM6Cj4+IC0gb3BwLTE2MDgwMDAwMDAgbm90IHN1
+cHBvcnRlZCBvbiBSSzM1ODhKCj4+IC0gb3BwLTE3MDQwMDAwMDAgb25seSBzdXBwb3J0ZWQgb24g
+UkszNTg4TSAoYnV0IGFscmVhZHkgYWJzZW50IGluIHRoaXMKPj4gcGF0Y2ggc2VyaWVzKQo+PiAt
+IG9wcC0xODAwMDAwMDAwIG9ubHkgc3VwcG9ydGVkIG9uIFJLMzU4OChTKSwgbm90IFJLMzU4OEog
+bm9yIFJLMzU4OE0KPj4gCj4+IEZvciBiaWcgY2x1c3RlcnM6Cj4+IC0gb3BwLTE4MDAwMDAwMDAg
+bm90IHN1cHBvcnRlZCBvbiBSSzM1ODhKCj4+IC0gb3BwLTIwMTYwMDAwMDAgbm90IHN1cHBvcnRl
+ZCBvbiBSSzM1ODhKCj4+IC0gb3BwLTIyMDgwMDAwMDAgb25seSBzdXBwb3J0ZWQgb24gUkszNTg4
+KFMpLCBub3QgUkszNTg4SiBub3IgUkszNTg4TQo+PiAtIG9wcC0yMjU2MDAwMDAwIG9ubHkgc3Vw
+cG9ydGVkIG9uIFJLMzU4OChTKSwgbm90IFJLMzU4OEogbm9yIFJLMzU4OE0KPj4gLSBvcHAtMjMw
+NDAwMDAwMCBvbmx5IHN1cHBvcnRlZCBvbiBSSzM1ODgoUyksIG5vdCBSSzM1ODhKIG5vciBSSzM1
+ODhNCj4+IC0gb3BwLTIzNTIwMDAwMDAgb25seSBzdXBwb3J0ZWQgb24gUkszNTg4KFMpLCBub3Qg
+UkszNTg4SiBub3IgUkszNTg4TQo+PiAtIG9wcC0yNDAwMDAwMDAwIG9ubHkgc3VwcG9ydGVkIG9u
+IFJLMzU4OChTKSwgbm90IFJLMzU4OEogbm9yIFJLMzU4OE0KPj4gCj4+IFRoaXMgaXMgc29tZWhv
+dyBhbHNvIGVuZm9yY2VkIGluIGRvd25zdHJlYW0ga2VybmVsIGJ5IHJlbW92aW5nIHRoZSBPUFAK
+Pj4gbm9kZXMgZGlyZWN0bHkgKGhlbmNlLCBub3QgZXZlbiByZXF1aXJpbmcgdGhlIGNoZWNrIG9m
+IAo+PiBvcHAtc3VwcG9ydGVkLWh3Cj4+IHZhbHVlKSwgYy5mLjoKPj4gaHR0cHM6Ly9naXQudGhl
+b2Jyb21hLXN5c3RlbXMuY29tL3RpZ2VyLWxpbnV4LmdpdC90cmVlL2FyY2gvYXJtNjQvYm9vdC9k
+dHMvcm9ja2NoaXAvcmszNTg4ai5kdHNpCj4+IGh0dHBzOi8vZ2l0LnRoZW9icm9tYS1zeXN0ZW1z
+LmNvbS90aWdlci1saW51eC5naXQvdHJlZS9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3Jr
+MzU4OG0uZHRzaQo+PiAKPj4gWW91J2xsIG5vdCB0aGF0IHRoZSBSSzM1ODhKIGFsc28gaGFzIGxl
+c3MgT1BQcyBmb3IgdGhlIEdQVSBhbmQgTlBVIAo+PiAoYnV0Cj4+IHRob3NlIHNob3VsZCBhbHNv
+IGJlIG1hc2tlZCBieSB0aGUgb3BwLXN1cHBvcnRlZC1odyB2YWx1ZSkuCj4gCj4gU2FtZSB3aXRo
+IERNQywgYnV0IHdlIGRvbid0IGN1cnJlbnRseSBoYXZlIGVpdGhlciBETUMgb3IgTlBVIGluIHRo
+ZQo+IG1haW5saW5lIHRyZWUsIHNvIGl0IHNvdW5kcyBsaWtlIHNvbWV0aGluZyB0byBiZSBkZWFs
+dCB3aXRoIGxhdGVyIDopCj4gCj4gWzFdIAo+IGh0dHBzOi8vZ2l0aHViLmNvbS9yb2NrY2hpcC1s
+aW51eC9rZXJuZWwvYmxvYi9kZXZlbG9wLTUuMTAvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hp
+cC9yazM1ODhzLmR0c2kKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5p
+bmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8v
+bGludXgtcm9ja2NoaXAK
