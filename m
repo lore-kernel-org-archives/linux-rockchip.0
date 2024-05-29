@@ -4,84 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4A565C27C44
-	for <linux-rockchip@archiver.kernel.org>; Wed, 29 May 2024 08:10:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 13755C25B7C
+	for <linux-rockchip@archiver.kernel.org>; Wed, 29 May 2024 08:29:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=JI8hypRR9LZz1Dp3EXwpqdlTjRB98rZP38RUItFmSYY=; b=OxToxJdanvjo1P
-	BgiGm4/hICoQNrLjybwEME6ZGCsgsgjaTh0gluFsrZW+E+9NT9k9407zSHdXIKsnzERZW416qleAH
-	d05waSS0L7Dtx3aNgeM0DK/xrWDuz1JytxBtMuSfySYTwVTlZk2CUkR8qW/Ze8YPX0clQLkCO5B3e
-	+CLpm9AB/xQf0Em6qt6Y2r6UmifRy02gbSIvm2z3Fs8AEc9CphMiPT5vmqODIhxh6OY34PpOLe5Cw
-	WeOQ0K1mNKlUj/1fPTkWs64fcBDFTBB+wU34qno6jBNEOZ1Gvqa7wY6aP5OgWe/sS7uO2QZ30O3xM
-	OQ+VP6oD4f6A91mihPQQ==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
+	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=5KBsNAtV+Wqs2wtOcIB/dBJbhK7onqwAoGZCh2EYSeA=; b=btvjWvGOSRbIeS
+	mjCcUr7hY9M2CEzB+CNUqxRqiaPidtyfsRINbamGQZcTAsbIvJLbBNci5Z/bLxbzM7qvAD8niHNBp
+	eKqvdZcAR59f+D8XIC+jshn8+njQx4z/rRHC58IDqwyZubQ6A3p/8KkUDOlgEtA0pe7hz2/OcPWpi
+	0RqrnclZOT5sZIYJFHJ5B1TGAMhpUmoRAF7p+vqP3KXhEQDzDypEzjTMbxVdYODzWem9PLK/E+msF
+	fPFLzO0UUk92nLFaLPGlJ7Ddrq15MHk50xTDiFLU8wGy5+suH7/qJlZPwgxDYthAgviUkv8iZMU7V
+	UhTOGNzBvwI3HxHrAadQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sCENk-00000003IWv-3kP2;
-	Wed, 29 May 2024 08:10:00 +0000
-Received: from mail-lf1-x12b.google.com ([2a00:1450:4864:20::12b])
+	id 1sCEgQ-00000003OKi-0ecO;
+	Wed, 29 May 2024 08:29:18 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sCENh-00000003IUL-16bu
+	id 1sCEgM-00000003OIK-2ue1
 	for linux-rockchip@lists.infradead.org;
-	Wed, 29 May 2024 08:09:59 +0000
-Received: by mail-lf1-x12b.google.com with SMTP id 2adb3069b0e04-52965199234so2003391e87.2
-        for <linux-rockchip@lists.infradead.org>; Wed, 29 May 2024 01:09:57 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1716970195; x=1717574995; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=enlxS5GkWub7qfeq6FBQU5uJl3JqVotYfwFdD9Rt9Ng=;
-        b=OO07Fuvf61OoDPVRqYGj7bgtRiJzgNdxdYegvrqz5eau/vreEA5cJNJh0X6i44JBaW
-         eHvmNjnYW+2Z8TH/iiig4kBZyLEYC1BZJ7xE0dn2c2x6fjjoxhd4dde0e5qKJRNEwdbQ
-         K5N8KFZNuulmtBwGPsjXojzxkWqBLpif6Pixt7nvOy/kTpDUA/hmyqwL8wtye5ASLIP7
-         KaJC6HYy8nDqG/Zdl9uZ1lCg+DKH59oIxQPUATunvdSnsA8LLbf4o1pQYByZRPtoc5IR
-         fzcb6K1x/wk20DfzdetukeHgXhMrL1DB4f9mnB8uRNI199Bw2UDpOeDFO6mgT74SD7IB
-         X68w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1716970195; x=1717574995;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=enlxS5GkWub7qfeq6FBQU5uJl3JqVotYfwFdD9Rt9Ng=;
-        b=NJxW92eiVePmP8exGOAt0bEJSJYp8zkgna8dPVB+rseLS9rZKvA33iNP2ZRfhdYreQ
-         EmVehKexeug3qTP7g3zxb5z6Tkws5iZmS27pqqo6MUjym7xuglTZ3qZJslor277LZIVo
-         TcFWzT8T1arV/A7eZuXNBIUVOpquYQWgEr7aL3nbswjKcC8eJu3ldZ+eewHzl62yh8qy
-         pCICm7ouiPAx6B6U9zCb6MdHVEq7QscFcQ8YJLlKpsT9S6N/l8UWDGJDjDmVDaK13p9p
-         cFG2siki12Jr5O0sNvEdVQjqQ6mKTqDjq+Do2PQpV/1mdk28z5zPpfUEYdT+YjhudS33
-         4tKQ==
-X-Forwarded-Encrypted: i=1; AJvYcCWff2+qUY6gDLNuQo4cnX+Jt0EzqVLgBWkVLve8Mm8g9OzR618IMK4lGJ9eqqXTewn9cBlchfneLDBwUXx/4k6u5sAgzwR9FUw56Y44xaiWot/W
-X-Gm-Message-State: AOJu0YznxyLUVza/BvuWKXy46/Xg5wDtronSasLsRzdxJkeVu9ao8UM8
-	WjwUqHQcipHguAmwROezAUYWNzbYMbahBqWhRsY7mAOLkMolqnDxWv6+fQb0gCw=
-X-Google-Smtp-Source: AGHT+IHAAOSe1YF9ohma3qLilcNBhTgUrp5XW+R17Dfxhf/XQBKuTb9CXtbrrq9LBMBwT336LwrXXQ==
-X-Received: by 2002:a05:6512:3128:b0:522:33cd:64bd with SMTP id 2adb3069b0e04-52964aba466mr8988769e87.27.1716970195416;
-        Wed, 29 May 2024 01:09:55 -0700 (PDT)
-Received: from eriador.lumag.spb.ru (dzdbxzyyyyyyyyyyyykxt-3.rev.dnainternet.fi. [2001:14ba:a0c3:3a00::227])
-        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-529aa049e3csm859093e87.167.2024.05.29.01.09.54
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 29 May 2024 01:09:55 -0700 (PDT)
-Date: Wed, 29 May 2024 11:09:53 +0300
-From: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
-To: Vignesh Raman <vignesh.raman@collabora.com>
-Cc: dri-devel@lists.freedesktop.org, daniels@collabora.com, 
-	helen.koike@collabora.com, airlied@gmail.com, daniel@ffwll.ch, robdclark@gmail.com, 
-	david.heidelberg@collabora.com, guilherme.gallo@collabora.com, sergi.blanch.torne@collabora.com, 
-	mcanal@igalia.com, linux-mediatek@lists.infradead.org, 
-	linux-amlogic@lists.infradead.org, linux-rockchip@lists.infradead.org, 
-	amd-gfx@lists.freedesktop.org, linux-arm-msm@vger.kernel.org, intel-gfx@lists.freedesktop.org, 
-	virtualization@lists.linux-foundation.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v3 4/6] drm/ci: uprev IGT
-Message-ID: <bj6mpegmxo6i5o34xyxwiytdaokv2u6p5iu4eoek3ctqimwviy@jbo5aw7gy4ue>
-References: <20240529024049.356327-1-vignesh.raman@collabora.com>
- <20240529024049.356327-5-vignesh.raman@collabora.com>
+	Wed, 29 May 2024 08:29:17 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 340AE62064;
+	Wed, 29 May 2024 08:29:14 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 35DC2C32789;
+	Wed, 29 May 2024 08:29:10 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1716971353;
+	bh=MgwDf96qBLd8DG/E0kYwrD5/3Cs6wtuSusdjrxBPL7Q=;
+	h=From:Subject:Date:To:Cc:From;
+	b=SaTTOJWM+478Ejseg+YAcZ0e5cHiY3IMKM5hER0OyXgjq3LPjXIwtFfyJHNvUfJ49
+	 27ZbzMaelq8g6sou/bzaSZHSnKifvg+LNNqNTen/TgfpRKFLoY2G35GgjvndweR4+4
+	 tpm6Fcvh/YnZHlxrCT+g58U+mPxB1PIqYNQ8qUhS3bIwoYTEKmavGBsP/lWznSe8ct
+	 HKpi5eO06eF0UQ1njSLQS3PuwIED0x93Pqfniqm7JZykvN1zFmK7hu2hyQNTEsSaIn
+	 vLMRzh3UxOrslOJKDJZMI8993rEkOvT1Vxr7OaXjCdBgWj0pHT79rA4/pTJNAUG6+j
+	 wMI1/jQUL4wFg==
+From: Niklas Cassel <cassel@kernel.org>
+Subject: [PATCH v4 00/13] PCI: dw-rockchip: Add endpoint mode support
+Date: Wed, 29 May 2024 10:28:54 +0200
+Message-Id: <20240529-rockchip-pcie-ep-v1-v4-0-3dc00fe21a78@kernel.org>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20240529024049.356327-5-vignesh.raman@collabora.com>
+X-B4-Tracking: v=1; b=H4sIAEbnVmYC/33NywrCMBAF0F8pWRuZPNoEV/6HuMhj2oZKG1IpS
+ um/m3ajYhFmc4c7Z2YyYgo4klMxk4RTGMPQ5yAPBXGt6RukwedMOHAJkkuaBte5NkQaXUCKkU6
+ MauWUtqzypXAkX8aEdXhs6uWacxvG+5Ce25OJrdv/Xh6glhng3htflXDuMPV4Ow6pISs48Q9Ew
+ D7CM2KgLhG5UcpWP4h4IyXofURkhCmpMdcsaPmFLMvyAnTG2hxBAQAA
+To: Jingoo Han <jingoohan1@gmail.com>, 
+ Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, 
+ Bjorn Helgaas <bhelgaas@google.com>, 
+ Lorenzo Pieralisi <lpieralisi@kernel.org>, 
+ =?utf-8?q?Krzysztof_Wilczy=C5=84ski?= <kw@linux.com>, 
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+ Niklas Cassel <cassel@kernel.org>, 
+ Kishon Vijay Abraham I <kishon@kernel.org>, Arnd Bergmann <arnd@arndb.de>, 
+ Damien Le Moal <dlemoal@kernel.org>, Jon Lin <jon.lin@rock-chips.com>, 
+ Shawn Lin <shawn.lin@rock-chips.com>, Simon Xue <xxm@rock-chips.com>
+Cc: linux-pci@vger.kernel.org, devicetree@vger.kernel.org, 
+ linux-rockchip@lists.infradead.org
+X-Mailer: b4 0.13.0
+X-Developer-Signature: v=1; a=openpgp-sha256; l=9636; i=cassel@kernel.org;
+ h=from:subject:message-id; bh=MgwDf96qBLd8DG/E0kYwrD5/3Cs6wtuSusdjrxBPL7Q=;
+ b=owGbwMvMwCV2MsVw8cxjvkWMp9WSGNLCnodunda7+5+wVo/BGpZ5oVWsPpe7cw4euG0l4XG6W
+ cDL6MiljlIWBjEuBlkxRRbfHy77i7vdpxxXvGMDM4eVCWQIAxenAEwkJJjhNytbZGW8dPO9awZO
+ unG/35+eslK754hgcs2eEo7pNS9XHGNkODD5YW+iSOPHJtmCJ7rXFBVc55uo/Za8x9zxS/TyEo0
+ NHAA=
+X-Developer-Key: i=cassel@kernel.org; a=openpgp;
+ fpr=5ADE635C0E631CBBD5BE065A352FE6582ED9B5DA
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240529_010957_341070_7C7EEF85 
-X-CRM114-Status: GOOD (  18.03  )
+X-CRM114-CacheID: sfid-20240529_012914_931598_3C4447DB 
+X-CRM114-Status: GOOD (  16.01  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,68 +92,246 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, May 29, 2024 at 08:10:47AM +0530, Vignesh Raman wrote:
-> test-list.txt and test-list-full.txt are not generated for
-> cross-builds and they are required by drm-ci for testing
-> arm32 targets. This is fixed in igt-gpu-tools. So uprev
-> IGT to include the commit which fixes this issue. Also
-> disable building xe driver tests for non-intel platforms.
-> 
-> Reviewed-by: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
-> Signed-off-by: Vignesh Raman <vignesh.raman@collabora.com>
-> ---
-> 
-> v2:
->   - Split IGT uprev to seperate patch.
-> 
-> v3:
->   - No changes.
-> 
-> ---
->  drivers/gpu/drm/ci/build-igt.sh  | 4 ++++
->  drivers/gpu/drm/ci/gitlab-ci.yml | 2 +-
->  2 files changed, 5 insertions(+), 1 deletion(-)
-> 
-> diff --git a/drivers/gpu/drm/ci/build-igt.sh b/drivers/gpu/drm/ci/build-igt.sh
-> index b7d2a49a6db3..eddb5f782a5e 100644
-> --- a/drivers/gpu/drm/ci/build-igt.sh
-> +++ b/drivers/gpu/drm/ci/build-igt.sh
-> @@ -45,6 +45,10 @@ MESON_OPTIONS="-Doverlay=disabled                    \
->                 -Dlibunwind=enabled                   \
->                 -Dprefix=/igt"
->  
-> +if [[ "$KERNEL_ARCH" = "arm64" ]] || [[ "$KERNEL_ARCH" = "arm" ]]; then
-> +    MESON_OPTIONS="$MESON_OPTIONS -Dxe_driver=disabled"
-> +fi
-> +
->  mkdir -p /igt
->  meson build $MESON_OPTIONS $EXTRA_MESON_ARGS
->  ninja -C build -j${FDO_CI_CONCURRENT:-4} || ninja -C build -j 1
-> diff --git a/drivers/gpu/drm/ci/gitlab-ci.yml b/drivers/gpu/drm/ci/gitlab-ci.yml
-> index 8f32de63d92e..1b29c3b6406b 100644
-> --- a/drivers/gpu/drm/ci/gitlab-ci.yml
-> +++ b/drivers/gpu/drm/ci/gitlab-ci.yml
-> @@ -5,7 +5,7 @@ variables:
->    UPSTREAM_REPO: git://anongit.freedesktop.org/drm/drm
->    TARGET_BRANCH: drm-next
->  
-> -  IGT_VERSION: d2af13d9f5be5ce23d996e4afd3e45990f5ab977
-> +  IGT_VERSION: 0df7b9b97f9da0e364f5ee30fe331004b8c86b56
+Hello all,
 
-Let's land this, then I'll ask to uprev to
-dc2d7fb4f978048b87707ea9ec32da748b01b378, which fixes an issue with the
-writeback tests on MSM devices.
+This series adds PCIe endpoint mode support for the rockchip rk3588 and
+rk3568 SoCs.
 
->  
->    DEQP_RUNNER_GIT_URL: https://gitlab.freedesktop.org/anholt/deqp-runner.git
->    DEQP_RUNNER_GIT_TAG: v0.15.0
-> -- 
-> 2.40.1
-> 
+This series is based on: pci/next
+(git://git.kernel.org/pub/scm/linux/kernel/git/pci/pci.git)
 
+This series can also be found in git:
+https://github.com/floatious/linux/commits/rockchip-pcie-ep-v4
+
+Testing done:
+This series has been tested with two rock5b:s, one running in RC mode and
+one running in EP mode. This series has also been tested with an Intel x86
+host and rock5b running in EP mode.
+
+BAR4 exposes the ATU Port Logic Structure and the DMA Port Logic Structure
+to the host. The EPC controller driver thus disables this BAR as init time,
+because if it doesn't, when the host writes the test pattern to this BAR,
+all the iATU settings will get wiped, resulting in all further BAR accesses
+being non-functional.
+
+Running pcitest.sh (modified to also perform the READ and WRITE tests with
+the -d option, i.e. with DMA enabled) results in the following:
+
+$ /usr/bin/pcitest.sh
+BAR tests
+
+BAR0:           OKAY
+BAR1:           OKAY
+BAR2:           OKAY
+BAR3:           OKAY
+BAR4:           NOT OKAY
+BAR5:           OKAY
+
+Interrupt tests
+
+SET IRQ TYPE TO LEGACY:         OKAY
+LEGACY IRQ:     NOT OKAY
+SET IRQ TYPE TO MSI:            OKAY
+MSI1:           OKAY
+MSI2:           OKAY
+MSI3:           OKAY
+MSI4:           OKAY
+MSI5:           OKAY
+MSI6:           OKAY
+MSI7:           OKAY
+MSI8:           OKAY
+MSI9:           OKAY
+MSI10:          OKAY
+MSI11:          OKAY
+MSI12:          OKAY
+MSI13:          OKAY
+MSI14:          OKAY
+MSI15:          OKAY
+MSI16:          OKAY
+MSI17:          OKAY
+MSI18:          OKAY
+MSI19:          OKAY
+MSI20:          OKAY
+MSI21:          OKAY
+MSI22:          OKAY
+MSI23:          OKAY
+MSI24:          OKAY
+MSI25:          OKAY
+MSI26:          OKAY
+MSI27:          OKAY
+MSI28:          OKAY
+MSI29:          OKAY
+MSI30:          OKAY
+MSI31:          OKAY
+MSI32:          OKAY
+
+SET IRQ TYPE TO MSI-X:          OKAY
+MSI-X1:         OKAY
+MSI-X2:         OKAY
+MSI-X3:         OKAY
+MSI-X4:         OKAY
+MSI-X5:         OKAY
+MSI-X6:         OKAY
+MSI-X7:         OKAY
+MSI-X8:         OKAY
+MSI-X9:         OKAY
+MSI-X10:                OKAY
+MSI-X11:                OKAY
+MSI-X12:                OKAY
+MSI-X13:                OKAY
+MSI-X14:                OKAY
+MSI-X15:                OKAY
+MSI-X16:                OKAY
+MSI-X17:                OKAY
+MSI-X18:                OKAY
+MSI-X19:                OKAY
+MSI-X20:                OKAY
+MSI-X21:                OKAY
+MSI-X22:                OKAY
+MSI-X23:                OKAY
+MSI-X24:                OKAY
+MSI-X25:                OKAY
+MSI-X26:                OKAY
+MSI-X27:                OKAY
+MSI-X28:                OKAY
+MSI-X29:                OKAY
+MSI-X30:                OKAY
+MSI-X31:                OKAY
+MSI-X32:                OKAY
+
+Read Tests
+
+SET IRQ TYPE TO MSI:            OKAY
+READ (      1 bytes):           OKAY
+READ (   1024 bytes):           OKAY
+READ (   1025 bytes):           OKAY
+READ (1024000 bytes):           OKAY
+READ (1024001 bytes):           OKAY
+
+Write Tests
+
+WRITE (      1 bytes):          OKAY
+WRITE (   1024 bytes):          OKAY
+WRITE (   1025 bytes):          OKAY
+WRITE (1024000 bytes):          OKAY
+WRITE (1024001 bytes):          OKAY
+
+Copy Tests
+
+COPY (      1 bytes):           OKAY
+COPY (   1024 bytes):           OKAY
+COPY (   1025 bytes):           OKAY
+COPY (1024000 bytes):           OKAY
+COPY (1024001 bytes):           OKAY
+
+Read Tests DMA
+
+READ (      1 bytes):           OKAY
+READ (   1024 bytes):           OKAY
+READ (   1025 bytes):           OKAY
+READ (1024000 bytes):           OKAY
+READ (1024001 bytes):           OKAY
+
+Write Tests DMA
+
+WRITE (      1 bytes):          OKAY
+WRITE (   1024 bytes):          OKAY
+WRITE (   1025 bytes):          OKAY
+WRITE (1024000 bytes):          OKAY
+WRITE (1024001 bytes):          OKAY
+
+Corresponding output on the EP side:
+rockchip-dw-pcie a40000000.pcie-ep: EP cannot raise INTX IRQs
+pci_epf_test pci_epf_test.0: WRITE => Size: 1 B, DMA: NO, Time: 0.000000292 s, Rate: 3424 KB/s
+pci_epf_test pci_epf_test.0: WRITE => Size: 1024 B, DMA: NO, Time: 0.000007583 s, Rate: 135038 KB/s
+pci_epf_test pci_epf_test.0: WRITE => Size: 1025 B, DMA: NO, Time: 0.000007584 s, Rate: 135152 KB/s
+pci_epf_test pci_epf_test.0: WRITE => Size: 1024000 B, DMA: NO, Time: 0.009164167 s, Rate: 111739 KB/s
+pci_epf_test pci_epf_test.0: WRITE => Size: 1024001 B, DMA: NO, Time: 0.009164458 s, Rate: 111736 KB/s
+pci_epf_test pci_epf_test.0: READ => Size: 1 B, DMA: NO, Time: 0.000001750 s, Rate: 571 KB/s
+pci_epf_test pci_epf_test.0: READ => Size: 1024 B, DMA: NO, Time: 0.000147875 s, Rate: 6924 KB/s
+pci_epf_test pci_epf_test.0: READ => Size: 1025 B, DMA: NO, Time: 0.000149041 s, Rate: 6877 KB/s
+pci_epf_test pci_epf_test.0: READ => Size: 1024000 B, DMA: NO, Time: 0.147537833 s, Rate: 6940 KB/s
+pci_epf_test pci_epf_test.0: READ => Size: 1024001 B, DMA: NO, Time: 0.147533750 s, Rate: 6940 KB/s
+pci_epf_test pci_epf_test.0: COPY => Size: 1 B, DMA: NO, Time: 0.000003208 s, Rate: 311 KB/s
+pci_epf_test pci_epf_test.0: COPY => Size: 1024 B, DMA: NO, Time: 0.000156625 s, Rate: 6537 KB/s
+pci_epf_test pci_epf_test.0: COPY => Size: 1025 B, DMA: NO, Time: 0.000158375 s, Rate: 6471 KB/s
+pci_epf_test pci_epf_test.0: COPY => Size: 1024000 B, DMA: NO, Time: 0.156902666 s, Rate: 6526 KB/s
+pci_epf_test pci_epf_test.0: COPY => Size: 1024001 B, DMA: NO, Time: 0.156847833 s, Rate: 6528 KB/s
+pci_epf_test pci_epf_test.0: WRITE => Size: 1 B, DMA: YES, Time: 0.000185500 s, Rate: 5 KB/s
+pci_epf_test pci_epf_test.0: WRITE => Size: 1024 B, DMA: YES, Time: 0.000177334 s, Rate: 5774 KB/s
+pci_epf_test pci_epf_test.0: WRITE => Size: 1025 B, DMA: YES, Time: 0.000178792 s, Rate: 5732 KB/s
+pci_epf_test pci_epf_test.0: WRITE => Size: 1024000 B, DMA: YES, Time: 0.000486209 s, Rate: 2106090 KB/s
+pci_epf_test pci_epf_test.0: WRITE => Size: 1024001 B, DMA: YES, Time: 0.000486791 s, Rate: 2103574 KB/s
+pci_epf_test pci_epf_test.0: READ => Size: 1 B, DMA: YES, Time: 0.000177333 s, Rate: 5 KB/s
+pci_epf_test pci_epf_test.0: READ => Size: 1024 B, DMA: YES, Time: 0.000177625 s, Rate: 5764 KB/s
+pci_epf_test pci_epf_test.0: READ => Size: 1025 B, DMA: YES, Time: 0.000171208 s, Rate: 5986 KB/s
+pci_epf_test pci_epf_test.0: READ => Size: 1024000 B, DMA: YES, Time: 0.000701167 s, Rate: 1460422 KB/s
+pci_epf_test pci_epf_test.0: READ => Size: 1024001 B, DMA: YES, Time: 0.000702625 s, Rate: 1457393 KB/s
+
+Kind regards,
+Niklas
+
+---
+Changes in v4:
+- Rebased on pci/next
+- Link to v3: https://lore.kernel.org/r/20240508-rockchip-pcie-ep-v1-v3-0-1748e202b084@kernel.org
+
+Changes in v3:
+- Renamed rockchip_pcie_ltssm() to rockchip_pcie_get_ltssm()
+- Reworded some commit messages to avoid the term "patches".
+- Dropped patch that added explicit rockchip,rk3588-pcie compatible
+- Moved !IS_ENABLED(CONFIG_PCIE_ROCKCHIP_DW_HOST) check to proper patch.
+- Added comment in front of rk3588 epc_features describing why BAR4 is
+  reserved.
+- Added another struct epc_features for rk3568 as it does not have the
+  ATU regs mapped to BAR4 (like rk3588 does).
+- Picked up tags from Rob and Mani. Thank you!
+- Link to v2: https://lore.kernel.org/r/20240430-rockchip-pcie-ep-v1-v2-0-a0f5ee2a77b6@kernel.org
+
+Changes in v2:
+- Rebased on v4 of the pci-epf-rework series that we depend on.
+- Picked up tags from Rob.
+- Split dw-rockchip DT binding in to common, RC and EP parts.
+- Added support for rk3568 in DT binding and driver.
+- Added a new patch that fixed "combined legacy IRQ description".
+- Link to v1: https://lore.kernel.org/r/20240424-rockchip-pcie-ep-v1-v1-0-b1a02ddad650@kernel.org
+
+---
+Niklas Cassel (13):
+      dt-bindings: PCI: snps,dw-pcie-ep: Add vendor specific reg-name
+      dt-bindings: PCI: snps,dw-pcie-ep: Add vendor specific interrupt-names
+      dt-bindings: PCI: snps,dw-pcie-ep: Add tx_int{a,b,c,d} legacy irqs
+      dt-bindings: PCI: rockchip-dw-pcie: Prepare for Endpoint mode support
+      dt-bindings: PCI: rockchip-dw-pcie: Fix description of legacy irq
+      dt-bindings: rockchip: Add DesignWare based PCIe Endpoint controller
+      PCI: dw-rockchip: Fix weird indentation
+      PCI: dw-rockchip: Add rockchip_pcie_get_ltssm() helper
+      PCI: dw-rockchip: Refactor the driver to prepare for EP mode
+      PCI: dw-rockchip: Add endpoint mode support
+      misc: pci_endpoint_test: Add support for rockchip rk3588
+      arm64: dts: rockchip: Add PCIe endpoint mode support
+      arm64: dts: rockchip: Add rock5b overlays for PCIe endpoint mode
+
+ .../bindings/pci/rockchip-dw-pcie-common.yaml      | 126 +++++++++
+ .../bindings/pci/rockchip-dw-pcie-ep.yaml          |  95 +++++++
+ .../devicetree/bindings/pci/rockchip-dw-pcie.yaml  |  93 +------
+ .../devicetree/bindings/pci/snps,dw-pcie-ep.yaml   |  13 +-
+ arch/arm64/boot/dts/rockchip/Makefile              |   5 +
+ .../boot/dts/rockchip/rk3588-rock-5b-pcie-ep.dtso  |  25 ++
+ .../dts/rockchip/rk3588-rock-5b-pcie-srns.dtso     |  16 ++
+ arch/arm64/boot/dts/rockchip/rk3588.dtsi           |  35 +++
+ drivers/misc/pci_endpoint_test.c                   |  11 +
+ drivers/pci/controller/dwc/Kconfig                 |  17 +-
+ drivers/pci/controller/dwc/pcie-dw-rockchip.c      | 308 +++++++++++++++++++--
+ 11 files changed, 620 insertions(+), 124 deletions(-)
+---
+base-commit: e3fca37312892122d73f8c5293c0d1cc8c34500b
+change-id: 20240424-rockchip-pcie-ep-v1-87c78b16d53c
+
+Best regards,
 -- 
-With best wishes
-Dmitry
+Niklas Cassel <cassel@kernel.org>
+
 
 _______________________________________________
 Linux-rockchip mailing list
