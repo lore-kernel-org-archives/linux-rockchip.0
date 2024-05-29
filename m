@@ -4,50 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 07788C27C44
-	for <linux-rockchip@archiver.kernel.org>; Wed, 29 May 2024 08:30:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C5264C25B75
+	for <linux-rockchip@archiver.kernel.org>; Wed, 29 May 2024 08:30:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=70lZLIuXrCqy5wJxtMmvAEEKVjg0oNAMJGBPBfregxY=; b=nQuHYE5fx4MOVp
-	4q0/w5Lt3YUNU6gVs9X6QxtieZ2xVrLTGbshEJW3mLfIGFsUff7i7+uzE0Zp7gSbQ5sW24jt47O32
-	z8g1w77IbsiiJskcHNZFpQSwAexk8cSueU1XQOcCn2iboZAHNNJthryqTllzOOM3vIANB3zz6STnA
-	piH/y64wAdnUWVwOwvEljO2FfYOOASRnAJxrKSOZFSAWz5MpNNEMeQiKfdJvuq/Yc/uYmFTYyBO5P
-	ybBCEszxNuTstuIyyIEcPhp2hexgBKP388o1rfwFySHlJBsVDjNh3FbhGIt5Fof5LZitTSEfn6WDY
-	MTwNgvnBKSHVZIbY+ZKQ==;
+	List-Owner; bh=jlyw8ZHYCBd33cc1QQmast/aOU1JS5GwFT1JU7o6dw4=; b=m8qR1qvj6/wt08
+	HoDxAyJCkSan86kQ3S65ebxuBZm3xeVoVmeQnWopJNRoB9uq/BTA+h2HminqnOHmQw9D34+eQP427
+	PAnsLkV3NkMWSIJC59QZFFAgp3lnTh6FTjwAfHplnrEVB4sm9boy10tdmBLvr4zBVxL4b3JqTBmca
+	sslZn1IDVoNohr94o0yzGkjSJ5yjkgc2bWIzXu2BHxzAAIKiK+NpiohV2w5mc6lIe9Z6iDRzj9WZp
+	yUFdbe3GBikIIvo6qSloZeAjUeds8W02j29u7HW3KyrI7iS7cvBdDIENNdn2Qi3pEZclhqzgxwI8x
+	ey4OTmzJiiYi9O6iZWOQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sCEhF-00000003OvI-1JrV;
-	Wed, 29 May 2024 08:30:09 +0000
-Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
+	id 1sCEhJ-00000003Oxo-1SBQ;
+	Wed, 29 May 2024 08:30:13 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sCEhC-00000003Osi-06Be
+	id 1sCEhF-00000003Ov1-1L2n
 	for linux-rockchip@lists.infradead.org;
-	Wed, 29 May 2024 08:30:07 +0000
+	Wed, 29 May 2024 08:30:12 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 5BE58CE1665;
-	Wed, 29 May 2024 08:30:04 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id EC6DDC4AF09;
-	Wed, 29 May 2024 08:29:59 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 1A711626FC;
+	Wed, 29 May 2024 08:30:08 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1AF23C2BD10;
+	Wed, 29 May 2024 08:30:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1716971403;
-	bh=9PVV++LUhN+71aXrADyChLLN+FW6M4sy+ZWci6a3+vk=;
+	s=k20201202; t=1716971407;
+	bh=LO909Qkb49dF2RDbiXWZUtB58HFe23RYE1wbMe1vcLI=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=bNx+o4ngwrpQscr0j16gHsKRF0kZA+V2Z/5bGgKOn0qmxCbFgU5oQRcc7OGu7Eswt
-	 pnASF1StmmsuFySSK8QeFH5EVQLHWdNM37hUb/GuaYo8AOirg98LlgN6enXn3t7QSz
-	 hF6rNLKQHA8IyFcsVuB90rI5DlaXZEhkMVwk9JNQgyJqM/tM8eDe6ZTS7+Wj3fW/1e
-	 jbv3vWRLJCD6j+3bp1hVEjGuZx1iHFiyCWUII8/97efsy+0HxO6J6LWAsb8VZcx6nW
-	 RNSWKgOSB+rFJ8kBPgblgAFbVJHw5/+T5iOLgXIvpgE7IzC8rQO5b601DJ++9rouB5
-	 cJ7hE2E4r468w==
+	b=cBw9VvBcV1o5536nQZc+jpLoTRiQB5iWrsAWafOAX/+iRPbfpmCEevODeAijFiVFH
+	 is94eFUQkngtapUPj33iBBOa5dG2GDrM1ZYUZhfwcQNC1iNlypwGCDSfba9zyf6v/f
+	 VflaC03AdPaIXD5guCFfFF6r4R/lS4SmKBR5K7gDmlAbbFXI0faWNyOlCk5hLjK0ts
+	 2Sz1W2GoYhQ5tDvG7HiV5gNSY+eatigFxHD0dymvuXdWxVR5i15ATFCW2GEGJGxYQH
+	 bd+jUUuHvqzy997jyv8GBc5ua68u8vZItG87JMaSd76wVBg5lTeY1HqWmj98LFDaeY
+	 JtcVMqaAeAirw==
 From: Niklas Cassel <cassel@kernel.org>
-Date: Wed, 29 May 2024 10:29:06 +0200
-Subject: [PATCH v4 12/13] arm64: dts: rockchip: Add PCIe endpoint mode
- support
+Date: Wed, 29 May 2024 10:29:07 +0200
+Subject: [PATCH v4 13/13] arm64: dts: rockchip: Add rock5b overlays for
+ PCIe endpoint mode
 MIME-Version: 1.0
-Message-Id: <20240529-rockchip-pcie-ep-v1-v4-12-3dc00fe21a78@kernel.org>
+Message-Id: <20240529-rockchip-pcie-ep-v1-v4-13-3dc00fe21a78@kernel.org>
 References: <20240529-rockchip-pcie-ep-v1-v4-0-3dc00fe21a78@kernel.org>
 In-Reply-To: <20240529-rockchip-pcie-ep-v1-v4-0-3dc00fe21a78@kernel.org>
 To: Jingoo Han <jingoohan1@gmail.com>, 
@@ -64,17 +64,17 @@ To: Jingoo Han <jingoohan1@gmail.com>,
 Cc: linux-pci@vger.kernel.org, devicetree@vger.kernel.org, 
  linux-rockchip@lists.infradead.org
 X-Mailer: b4 0.13.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2324; i=cassel@kernel.org;
- h=from:subject:message-id; bh=9PVV++LUhN+71aXrADyChLLN+FW6M4sy+ZWci6a3+vk=;
- b=owGbwMvMwCV2MsVw8cxjvkWMp9WSGNLCnofurVS6PnltS12B0pmfRSrTiko78nYoPArS9noi4
- 2fbdftlRykLgxgXg6yYIovvD5f9xd3uU44r3rGBmcPKBDKEgYtTACZisZCRYXLE0fXaRcG38+dr
- nf/00WHXV4OUtJNvBQ2efuJv6fTbw8TwP/FL+4p4oafuJxO102PDPKpElOvl7my81Bi90nVG3Dk
- xLgA=
+X-Developer-Signature: v=1; a=openpgp-sha256; l=3452; i=cassel@kernel.org;
+ h=from:subject:message-id; bh=LO909Qkb49dF2RDbiXWZUtB58HFe23RYE1wbMe1vcLI=;
+ b=owGbwMvMwCV2MsVw8cxjvkWMp9WSGNLCnoc2R3GI9XocrK5x5whJLLWw3H6w5YDYHdaFQpxun
+ 56EfJvWUcrCIMbFICumyOL7w2V/cbf7lOOKd2xg5rAygQxh4OIUgIm4ljEybMjbMmMnU1Hikoyu
+ dfqWC2K+fnv3mn8uVwKTp4Og13cZc0aGX7pr+0xiU+/LxKzf6pSs/m/RX28+Dln7dr+yfw6L+K7
+ zAgA=
 X-Developer-Key: i=cassel@kernel.org; a=openpgp;
  fpr=5ADE635C0E631CBBD5BE065A352FE6582ED9B5DA
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240529_013006_539375_C222A157 
-X-CRM114-Status: GOOD (  10.73  )
+X-CRM114-CacheID: sfid-20240529_013009_799357_40D3386B 
+X-CRM114-Status: GOOD (  16.02  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,65 +91,95 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add a device tree node representing PCIe endpoint mode.
+Add rock5b overlays for PCIe endpoint mode support.
 
-The controller can either be configured to run in Root Complex or Endpoint
-node.
+If using the rock5b as an endpoint against a normal PC, only the
+rk3588-rock-5b-pcie-ep.dtbo needs to be applied.
 
-If a user wants to run the controller in endpoint mode, the user has to
-disable the pcie3x4 node and enable the pcie3x4_ep node.
+If using two rock5b:s, with one board as EP and the other board as RC,
+rk3588-rock-5b-pcie-ep.dtbo and rk3588-rock-5b-pcie-srns.dtbo has to
+be applied to the respective boards.
 
 Signed-off-by: Niklas Cassel <cassel@kernel.org>
 ---
- arch/arm64/boot/dts/rockchip/rk3588.dtsi | 35 ++++++++++++++++++++++++++++++++
- 1 file changed, 35 insertions(+)
+ arch/arm64/boot/dts/rockchip/Makefile              |  5 +++++
+ .../boot/dts/rockchip/rk3588-rock-5b-pcie-ep.dtso  | 25 ++++++++++++++++++++++
+ .../dts/rockchip/rk3588-rock-5b-pcie-srns.dtso     | 16 ++++++++++++++
+ 3 files changed, 46 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588.dtsi b/arch/arm64/boot/dts/rockchip/rk3588.dtsi
-index 5984016b5f96..6b5bf1055143 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3588.dtsi
-@@ -186,6 +186,41 @@ pcie3x4_intc: legacy-interrupt-controller {
- 		};
- 	};
- 
-+	pcie3x4_ep: pcie-ep@fe150000 {
-+		compatible = "rockchip,rk3588-pcie-ep";
-+		clocks = <&cru ACLK_PCIE_4L_MSTR>, <&cru ACLK_PCIE_4L_SLV>,
-+			 <&cru ACLK_PCIE_4L_DBI>, <&cru PCLK_PCIE_4L>,
-+			 <&cru CLK_PCIE_AUX0>, <&cru CLK_PCIE4L_PIPE>;
-+		clock-names = "aclk_mst", "aclk_slv",
-+			      "aclk_dbi", "pclk",
-+			      "aux", "pipe";
-+		interrupts = <GIC_SPI 263 IRQ_TYPE_LEVEL_HIGH 0>,
-+			     <GIC_SPI 262 IRQ_TYPE_LEVEL_HIGH 0>,
-+			     <GIC_SPI 261 IRQ_TYPE_LEVEL_HIGH 0>,
-+			     <GIC_SPI 260 IRQ_TYPE_LEVEL_HIGH 0>,
-+			     <GIC_SPI 259 IRQ_TYPE_LEVEL_HIGH 0>,
-+			     <GIC_SPI 271 IRQ_TYPE_LEVEL_HIGH 0>,
-+			     <GIC_SPI 272 IRQ_TYPE_LEVEL_HIGH 0>,
-+			     <GIC_SPI 269 IRQ_TYPE_LEVEL_HIGH 0>,
-+			     <GIC_SPI 270 IRQ_TYPE_LEVEL_HIGH 0>;
-+		interrupt-names = "sys", "pmc", "msg", "legacy", "err",
-+				  "dma0", "dma1", "dma2", "dma3";
-+		max-link-speed = <3>;
-+		num-lanes = <4>;
-+		phys = <&pcie30phy>;
-+		phy-names = "pcie-phy";
-+		power-domains = <&power RK3588_PD_PCIE>;
-+		reg = <0xa 0x40000000 0x0 0x00100000>,
-+		      <0xa 0x40100000 0x0 0x00100000>,
-+		      <0x0 0xfe150000 0x0 0x00010000>,
-+		      <0x9 0x00000000 0x0 0x40000000>,
-+		      <0xa 0x40300000 0x0 0x00100000>;
-+		reg-names = "dbi", "dbi2", "apb", "addr_space", "atu";
-+		resets = <&cru SRST_PCIE0_POWER_UP>, <&cru SRST_P_PCIE0>;
-+		reset-names = "pwr", "pipe";
-+		status = "disabled";
-+	};
+diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
+index f42fa62b4064..df7f5103b018 100644
+--- a/arch/arm64/boot/dts/rockchip/Makefile
++++ b/arch/arm64/boot/dts/rockchip/Makefile
+@@ -124,6 +124,8 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-ok3588-c.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-orangepi-5-plus.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-quartzpro64.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-rock-5b.dtb
++dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-rock-5b-pcie-ep.dtbo
++dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-rock-5b-pcie-srns.dtbo
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-tiger-haikou.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-toybrick-x0.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-turing-rk1.dtb
+@@ -134,3 +136,6 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588s-nanopi-r6s.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588s-nanopi-r6c.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588s-rock-5a.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588s-orangepi-5.dtb
 +
- 	pcie3x2: pcie@fe160000 {
- 		compatible = "rockchip,rk3588-pcie", "rockchip,rk3568-pcie";
- 		#address-cells = <3>;
++# Enable support for device-tree overlays
++DTC_FLAGS_rk3588-rock-5b += -@
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b-pcie-ep.dtso b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b-pcie-ep.dtso
+new file mode 100644
+index 000000000000..672d748fcc67
+--- /dev/null
++++ b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b-pcie-ep.dtso
+@@ -0,0 +1,25 @@
++// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
++/*
++ * DT-overlay to run the PCIe3_4L Dual Mode controller in Endpoint mode
++ * in the SRNS (Separate Reference Clock No Spread) configuration.
++ *
++ * NOTE: If using a setup with two ROCK 5B:s, with one board running in
++ * RC mode and the other board running in EP mode, see also the device
++ * tree overlay: rk3588-rock-5b-pcie-srns.dtso.
++ */
++
++/dts-v1/;
++/plugin/;
++
++&pcie30phy {
++	rockchip,rx-common-refclk-mode = <0 0 0 0>;
++};
++
++&pcie3x4 {
++	status = "disabled";
++};
++
++&pcie3x4_ep {
++	vpcie3v3-supply = <&vcc3v3_pcie30>;
++	status = "okay";
++};
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b-pcie-srns.dtso b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b-pcie-srns.dtso
+new file mode 100644
+index 000000000000..1a0f1af65c43
+--- /dev/null
++++ b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b-pcie-srns.dtso
+@@ -0,0 +1,16 @@
++// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
++/*
++ * DT-overlay to run the PCIe3_4L Dual Mode controller in Root Complex
++ * mode in the SRNS (Separate Reference Clock No Spread) configuration.
++ *
++ * This device tree overlay is only needed (on the RC side) when running
++ * a setup with two ROCK 5B:s, with one board running in RC mode and the
++ * other board running in EP mode.
++ */
++
++/dts-v1/;
++/plugin/;
++
++&pcie30phy {
++	rockchip,rx-common-refclk-mode = <0 0 0 0>;
++};
 
 -- 
 2.45.1
