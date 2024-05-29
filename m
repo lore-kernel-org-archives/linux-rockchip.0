@@ -4,50 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 84DD0C25B75
-	for <linux-rockchip@archiver.kernel.org>; Wed, 29 May 2024 08:29:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 80BD9C25B7C
+	for <linux-rockchip@archiver.kernel.org>; Wed, 29 May 2024 08:29:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=BqCx92IivwBuDhEwBQqdsROLUM91nJOSNNySii6rKT8=; b=4xoRnuXhLD4X3D
-	HmxPUGlpwKDvkGqbm6/IBIv5nMuQi5LEMpkGYsXuVP76E+0yQgq9IEQGbbs2LTbCz7NCuItnDDCFd
-	ZxbX3Xxu/v5YubBdvTBvv9+gwmXDAilQp8x6e6Nz1m2w8KWbCiSH9nxXDPO1FFHiIxHDMp9a9wiOh
-	g2OJaRFCs2VGGvTO8IQVR2SCP9lSOneJntMDYMRAvLDLt0I5e4fY0srUF0zMMRyTYVT+kmvaUoIq5
-	0cCspjrdGtGINgnCau17jnNOIERZNCodh0A/YBRF0HL/tD+p5FnMxIDH575alOI/EZmlyn5HCoCmx
-	662y0yXcY80wzAoiw5iQ==;
+	List-Owner; bh=UZ2Iqi++eWj5AvBQyNuiSc7g7IQHWsryC37c0yeQLhc=; b=PhxAq7dy4FhY8c
+	ZKziPwDxOhVisEqXQZW0cIdpoCybx9P1gxThk1qZ8zkFrl/akpXuDg2rEvo1KGB5GS0kgF9q2gS/N
+	o9/gDulMgMl0PlA2fs6aIIPfj5qMGgeRYmIK1yv5/TAT1PEsZ3b28zMMTqlLZk4/isLaPLf3sNjLU
+	5oA9FtfapMtWo8SSVPh9IGmfLCLrZ2+3qxaqMJb71UWY9WXbCdS0iBKOjH+hU7/b/nKrhb+CRz3N7
+	XMs9Ag6CGWdK6epPrpRa+aKs1iLL1OwLD3tEpmiJwRUgvr5nmn8+bqAyk+l3PUw9tY1ebxyXnzRst
+	PjTwciu+8nHHds3w1GJQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sCEgZ-00000003OPx-01RT;
-	Wed, 29 May 2024 08:29:27 +0000
-Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
+	id 1sCEgb-00000003OS4-3n27;
+	Wed, 29 May 2024 08:29:29 +0000
+Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sCEgU-00000003OLw-0fyj
+	id 1sCEgX-00000003ONC-3INY
 	for linux-rockchip@lists.infradead.org;
-	Wed, 29 May 2024 08:29:25 +0000
+	Wed, 29 May 2024 08:29:28 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id BEA6ECE16DE;
+	by sin.source.kernel.org (Postfix) with ESMTP id E2CE3CE1185;
+	Wed, 29 May 2024 08:29:22 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7E687C32781;
 	Wed, 29 May 2024 08:29:18 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5A3ACC4AF0D;
-	Wed, 29 May 2024 08:29:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1716971358;
-	bh=YQdBNL3lsBxDipD/xKxlprycaEEuRK+D1X2/LL0v9pk=;
+	s=k20201202; t=1716971362;
+	bh=0AsOf44k0peZ3qs9praxDDjjEV3cTdstHX1bWf4Vatw=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=tNdZg47PkI8DdddprTyeIZEIsV6JOQTZDDXhrcGGQVcIrp1B5ECK0HmrzIKdrQUQ7
-	 9pcvvKhs8TX8iLJgdedT68V1l3QAkpQZdAui3ViMh94wV/VJa+jbKNi/bKfG9DuljD
-	 vwjrJETLDA8EIikBKWkM6vYIAt5Gwl1GvYE/aRFoP23KJsDjZwHMWyr8NQb2ONueaz
-	 HEVEqcaRX/S2rj8HoGTv0NLCySh9wgtYAsaofmhAfGC9Qdj9reIlz/l+M9U/cR3ctW
-	 fbK32RgZn8hK/9F3PsWMV+nvL1AmQO4/jPEaIeK2Olt05+bavyvLeymjSubpm8VXpe
-	 orx/hd3l87Z4Q==
+	b=kltBVmHcR8ymdXTWZ2dryzYB1qMuJLqY5l7F/rKZzrcc49uLpWiNeZnn/O+3p011Q
+	 z+CnE/RYmVyaKluH1XxnguoEnf1C4u+2/DNFs5cfOcpzJ6hKNFgUtuPgfmlSwfwA+v
+	 6PkKl9+ya2ozGuDHGx1dIlGM4AL0lzXH8lH1XhobmfgeG88aQXvc+qtGIwrOxwAVCx
+	 NpwrEAV9g1TY5ij07VPUV/ijv/BPz1NElU3NjXmHphhib9av/GXS5ccAdjxWP2Pqm8
+	 k8RgQkI31CdPyg1uCKQC1UCmNTPWdXcOvfQlh7nM3cRXcbEtaRv1fQM/9Li8PDZQ28
+	 40SudWbejOQRA==
 From: Niklas Cassel <cassel@kernel.org>
-Date: Wed, 29 May 2024 10:28:55 +0200
-Subject: [PATCH v4 01/13] dt-bindings: PCI: snps,dw-pcie-ep: Add vendor
- specific reg-name
+Date: Wed, 29 May 2024 10:28:56 +0200
+Subject: [PATCH v4 02/13] dt-bindings: PCI: snps,dw-pcie-ep: Add vendor
+ specific interrupt-names
 MIME-Version: 1.0
-Message-Id: <20240529-rockchip-pcie-ep-v1-v4-1-3dc00fe21a78@kernel.org>
+Message-Id: <20240529-rockchip-pcie-ep-v1-v4-2-3dc00fe21a78@kernel.org>
 References: <20240529-rockchip-pcie-ep-v1-v4-0-3dc00fe21a78@kernel.org>
 In-Reply-To: <20240529-rockchip-pcie-ep-v1-v4-0-3dc00fe21a78@kernel.org>
 To: Jingoo Han <jingoohan1@gmail.com>, 
@@ -64,17 +64,17 @@ To: Jingoo Han <jingoohan1@gmail.com>,
 Cc: linux-pci@vger.kernel.org, devicetree@vger.kernel.org, 
  linux-rockchip@lists.infradead.org
 X-Mailer: b4 0.13.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1296; i=cassel@kernel.org;
- h=from:subject:message-id; bh=YQdBNL3lsBxDipD/xKxlprycaEEuRK+D1X2/LL0v9pk=;
- b=owGbwMvMwCV2MsVw8cxjvkWMp9WSGNLCnocaCq7Jst/wOOJeK4PSzflpL85tqVjoYCEjEcW67
- 9rtWE2LjlIWBjEuBlkxRRbfHy77i7vdpxxXvGMDM4eVCWQIAxenAEykxIjhfyZvXInhLQfrgP6D
- ga8+pT1lCphp2LZmy06zuVdD5J99amdk2BIePc1O/5n4hqwNNsFHjrIbL5D46LyP96espqkpjwY
- 3JwA=
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1267; i=cassel@kernel.org;
+ h=from:subject:message-id; bh=0AsOf44k0peZ3qs9praxDDjjEV3cTdstHX1bWf4Vatw=;
+ b=owGbwMvMwCV2MsVw8cxjvkWMp9WSGNLCnodaZ+asi51/JWVBrUmPrPzpOs8HP//tvHJ/4mV5R
+ sbsrFaOjlIWBjEuBlkxRRbfHy77i7vdpxxXvGMDM4eVCWQIAxenAEwkcQrDX3mNvwyn188MWKdo
+ zJUc/avFxfPAGakfS0IvyynvfskupMrIsFfgz6MvLz/Ma39iLrCk8FvttR91jld/e8QIBE+d8qk
+ yiRkA
 X-Developer-Key: i=cassel@kernel.org; a=openpgp;
  fpr=5ADE635C0E631CBBD5BE065A352FE6582ED9B5DA
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240529_012922_725333_68ADE397 
-X-CRM114-Status: GOOD (  11.55  )
+X-CRM114-CacheID: sfid-20240529_012926_052763_BAF6A26E 
+X-CRM114-Status: GOOD (  11.09  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,12 +92,13 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 Considering that some drivers (e.g. pcie-dw-rockchip.c) already use the
-reg-name "apb" for the device tree binding in Root Complex mode
-(snps,dw-pcie.yaml), it doesn't make sense that those drivers should use a
-different reg-name when running in Endpoint mode (snps,dw-pcie-ep.yaml).
+interrupt-names "sys", "pmc", "msg", "err" for the device tree binding in
+Root Complex mode (snps,dw-pcie.yaml), it doesn't make sense that those
+drivers should use different interrupt-names when running in Endpoint mode
+(snps,dw-pcie-ep.yaml).
 
-Therefore, since "apb" is already defined in snps,dw-pcie.yaml, add it
-also for snps,dw-pcie-ep.yaml.
+Therefore, since "sys", "pmc", "msg", "err" are already defined in
+snps,dw-pcie.yaml, add them also for snps,dw-pcie-ep.yaml.
 
 Signed-off-by: Niklas Cassel <cassel@kernel.org>
 Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
@@ -106,18 +107,18 @@ Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/Documentation/devicetree/bindings/pci/snps,dw-pcie-ep.yaml b/Documentation/devicetree/bindings/pci/snps,dw-pcie-ep.yaml
-index bbdb01d22848..00dec01f1f73 100644
+index 00dec01f1f73..f5f12cbc2cb3 100644
 --- a/Documentation/devicetree/bindings/pci/snps,dw-pcie-ep.yaml
 +++ b/Documentation/devicetree/bindings/pci/snps,dw-pcie-ep.yaml
-@@ -100,7 +100,7 @@ properties:
+@@ -156,7 +156,7 @@ properties:
              for new bindings.
            oneOf:
-             - description: See native 'elbi/app' CSR region for details.
--              enum: [ link, appl ]
-+              enum: [ apb, link, appl ]
-             - description: See native 'atu' CSR region for details.
-               enum: [ atu_dma ]
-     allOf:
+             - description: See native "app" IRQ for details
+-              enum: [ intr ]
++              enum: [ intr, sys, pmc, msg, err ]
+ 
+   max-functions:
+     maximum: 32
 
 -- 
 2.45.1
