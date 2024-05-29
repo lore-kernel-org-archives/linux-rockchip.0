@@ -4,82 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 53C67C25B75
-	for <linux-rockchip@archiver.kernel.org>; Wed, 29 May 2024 15:54:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 08C18C25B75
+	for <linux-rockchip@archiver.kernel.org>; Wed, 29 May 2024 15:55:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=SmQW0BFZ+jlfSNJmkaeizhhdHZPu6BsjlCa5R2FomHo=; b=IYG1gHQ/MAMtTx
-	cL4gbXBsTmImUxKDZGSvppQE2T4+iIvZLQ51yNu9OgsP6YAkd2wqYO5r7gW2PBrlOSrix/HdDr0Mp
-	MQKHRaTSTFNlKiE5AcIQ8Nja+FVp/0vDRUZChVnavaN7iXi1WwollR1nMFrBp3QZi7eJvDm99CB2F
-	FBdVHUZZOPrMsr7ti2qReWP7zhIa4ZwLemql64DwLvcFu1UQL9vQrYI6jGEEu3bEZ18bpyfSRNPyJ
-	++EhoCyv9pZxzLaMxxp4rgmIeqo//1td3yfTz2ebbCQIbzhD4au2+5OOnfpv9rHdpAAdpIPsYBEk6
-	ZhdgWD2CCoc7t+fJKyig==;
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=o8x6lKuJ3N+XUhjba/Gqf6E8c/Bk2HWjw0eaDGWsXco=; b=WR3bTV2+YEB5xoouNNWWUun0ba
+	Vj3lYQ/rLkxhOqOMup7Y5rfwmRVE6wo1rZ3dKkP3Wt1XpTuvGKJEUhaexURR8MRTaB94/SwDo4ykG
+	q8+jj0dm9/K5wwgCZyK5eod+vC1xN0ogqn67L2H3F4l5q0mBOSbJa/NOdOnk0Vraa2Uly/MZsWeeB
+	UtZ7W6qtu4ukhxbWYppXn9bqcji80/nW2msSzHzuynZ9Yata+dJnuEflpLkE3f+1vRzf269CzATuW
+	ygsHHBVtNrgEH+ed1oVle6sU6fyNn+XTD0m8czdS++3rXLKzM5srchd6DM0U+vzOi76RhXtLLzpV9
+	QWYrd0TQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sCLco-00000004mJc-2Z2j;
-	Wed, 29 May 2024 15:54:02 +0000
-Received: from mout.web.de ([212.227.15.4])
+	id 1sCLeZ-00000004mjz-3UUq;
+	Wed, 29 May 2024 15:55:51 +0000
+Received: from out-172.mta1.migadu.com ([2001:41d0:203:375::ac])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sCLck-00000004mG5-4BMH;
-	Wed, 29 May 2024 15:54:01 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=web.de;
-	s=s29768273; t=1716998026; x=1717602826; i=seb-dev@web.de;
-	bh=NdpXoN7gd6gckT3kE2kPt3f4pPV+FQNiHt6ex8F98aM=;
-	h=X-UI-Sender-Class:Message-ID:Date:MIME-Version:Subject:To:Cc:
-	 References:From:In-Reply-To:Content-Type:
-	 Content-Transfer-Encoding:cc:content-transfer-encoding:
-	 content-type:date:from:message-id:mime-version:reply-to:subject:
-	 to;
-	b=sujywOMX+mDCs2u8SNIGcI4oqWbUoH6AbosQw93PF/O8Su4hULl0jNcsKdkW+CKK
-	 7Tl4poWXi+o5wI7D7bGDwGoW6n/1VKncGZLyG1Iu8a9NQKz8pDyTkQbpNdlPDYDCR
-	 GfL3S+oRyg/wfFuXcRWSrk1JG/2fHzaUhfHWmWcOF9T84U15LUa0jqemGpoUCXcrB
-	 Cpm+CSd3bxv66DMQ+8iRwBl2cEkzYb22aswq57sAoI8UdEC7VzEg6+BtFIVd2rqBl
-	 XVIkrSVJDhf3r2q0HRoDHK3Ykw6qMGtKS0qetLPn2cbg0amm4FD/vAFX+uw2u/9ok
-	 9aSAfHMxT8owxfi4lg==
-X-UI-Sender-Class: 814a7b36-bfc1-4dae-8640-3722d8ec6cd6
-Received: from [192.168.178.24] ([84.155.184.248]) by smtp.web.de (mrweb006
- [213.165.67.108]) with ESMTPSA (Nemesis) id 1MeUbo-1skZuY312S-00aKOb; Wed, 29
- May 2024 17:53:46 +0200
-Message-ID: <806767aa-8fa5-4ece-9d6d-5976d6da2624@web.de>
-Date: Wed, 29 May 2024 17:53:45 +0200
+	id 1sCLeV-00000004mi5-0tHD
+	for linux-rockchip@lists.infradead.org;
+	Wed, 29 May 2024 15:55:49 +0000
+X-Envelope-To: andyshrk@163.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow.org; s=key1;
+	t=1716998143;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=4v4JxLcVLd8gWkKTMWCIwey80lFqT9gw7qVAp737Dzg=;
+	b=eM4NCV4dS8iSwN/mOl5uzlsEI1LjYgeCgfecjsWoyo3XXG8yFFz3DVfV7jdPbn17iu7gSi
+	OdUK3Gcy58sPhOhc274/8+ybpTz9LTNiBSFy7DxkRogyT5zvsAbpx00b2EgfIyM5Lmlabj
+	tJFQALmxUD2R/VvbaX2jGYyyqo0bijRCJfjqCawV2B+khyJFolrhDVt7yE5LOAI8JXtvXI
+	eiRGXgW6DB3CPwynNORtxQPH+2PujPvtJ6Z91puigUlg9ZormsIIiRAf9xEabIqnp1Cmr1
+	l9pLLuredi+4cWZzDPKINY+nV6Qa6dPfMaAcDmXm0+wh2B4rZ9tXBNPQ7sPy7g==
+X-Envelope-To: linux-rockchip@lists.infradead.org
+X-Envelope-To: heiko@sntech.de
+X-Envelope-To: mripard@kernel.org
+X-Envelope-To: linux-arm-kernel@lists.infradead.org
+X-Envelope-To: linux-kernel@vger.kernel.org
+X-Envelope-To: linux-rockchip@lists.infradead.org
+X-Envelope-To: hjc@rock-chips.com
+X-Envelope-To: tzimmermann@suse.de
+X-Envelope-To: dri-devel@lists.freedesktop.org
+X-Envelope-To: s.hauer@pengutronix.de
+X-Envelope-To: andy.yan@rock-chips.com
+X-Envelope-To: heiko@sntech.de
+X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
+From: Diederik de Haas <didi.debian@cknow.org>
+To: Andy Yan <andyshrk@163.com>, linux-rockchip@lists.infradead.org
+Cc: Heiko Stuebner <heiko@sntech.de>, mripard@kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, hjc@rock-chips.com, tzimmermann@suse.de,
+ dri-devel@lists.freedesktop.org, s.hauer@pengutronix.de,
+ Andy Yan <andy.yan@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH 0/1] Fix the port mux of VP2
+Date: Wed, 29 May 2024 17:55:25 +0200
+Message-ID: <2397969.FhQbyb98Gs@bagend>
+Organization: Connecting Knowledge
+In-Reply-To: <171405838036.2897712.4067984796758491640.b4-ty@sntech.de>
+References: <20240422101905.32703-1-andyshrk@163.com>
+ <171405838036.2897712.4067984796758491640.b4-ty@sntech.de>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 2/2] arm64: dts: rockchip: Add CM3588 NAS board
-To: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>,
- Jonas Karlman <jonas@kwiboo.se>
-Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>,
- Sebastian Reichel <sebastian.reichel@collabora.com>,
- linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-References: <20240526214340.8459-1-seb-dev@web.de> <3609340.LM0AJKV5NW@diego>
- <ac376b42-a52f-4fef-8543-b961becd5f4d@web.de> <2693701.q0ZmV6gNhb@diego>
-From: Sebastian Kropatsch <seb-dev@web.de>
-In-Reply-To: <2693701.q0ZmV6gNhb@diego>
-X-Provags-ID: V03:K1:VGFwx3IBU2Xxk9L1STIyxZTGGpMljm5iE3oDEp8Rhb86OcNr9zw
- K5NvlB3JOaOByqaILevJuFpkB+Z7OjRY4yxUI0i3Uf3jN+sFhOtGcvd1aphShSUjw4S4G2S
- DDGcwnK1AAvEDlCmS79XqLhEKn7DL7g7tH7J7GQHHMGCEbJvnVlW+xC2LWv63JhoAGtuzzV
- 9hns2WEZ0vMcBaCzLK+Gw==
-UI-OutboundReport: notjunk:1;M01:P0:/Jlz+TETw+8=;t7PnjlXPTRAA24lAiPrMp2Iwo8o
- N+q5sSTuv1GuNKIVGDbsuGk2YFS1xgr2T76GQ+1ZB173DklTiWiI4+Jj5jNTrGoA2vz+eOzEj
- 9ES+xyJtU0ObuMHwmxOjCki4D/31hB7CnHM58kY711oLo1ixWcKjx/Zs4Q3CVlHwm3jJUjUhr
- 1T70TJ8tzH3aXRaRUON7Y+rleMrOLC3CCQiZpBoS5CH/WsPG3hqKkVdDoem0QCbwG1pJmULRL
- 0MvjYTQ9cBSzXo0oqZqgQvz3bsD+3/ZIZ3vN+ipMmSf9sLOyCL35zPLTZw/FTieLYxnkg9DR/
- V9Ht0xzo4kwSbIKgSjslpq3zMo6d0QvCb0phdLZLsIfyzLeCH90CNuasVcU4tV32nUgSF0Fc8
- aaD067c+MGF253d24KZCRmQUsib2+SBud+jo2Li3o0qb0IyaFZD0P1yVT11GITTA7Qaimbg1P
- lSI068wyXgAT77HAgZ6YnHsjjIfZJUtC20niRLBPVk4lT0zhxonfkwlwJK5nugDi2liUh8tgi
- UTQ5869HvJUmQWETBuvsZXevn1q49MPsoPpWHDKLOaRPuO4kWZArkB7nnOhDj8pDaLErBkyy6
- ltlvRfD8auPQm4HObd2dGk24LvPoAfGe9fM0oGlJiTpgnVfsecdaoo0THXHGZ74FP1oLQwrj/
- jpblUMtrjtm67DDRytFByUrhJxSIzwWMUMdhMblKkudI5QgNsiuajzEJCoe/49XR8PtDZraCd
- wjDgVagEIDUUk13XUs1vMicg3eDVz/eFXAa++q7gm/68WiQ/aczSYXKxIKqkGlr+D3YnUmXKJ
- O5ArMWrZTfFBSLdniZHH/QfrkRFG33c7zESHB5jnLcvis=
+X-Migadu-Flow: FLOW_OUT
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240529_085359_453941_2F91279C 
-X-CRM114-Status: GOOD (  17.90  )
+X-CRM114-CacheID: sfid-20240529_085548_474622_98D90C49 
+X-CRM114-Status: GOOD (  13.82  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,91 +82,74 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: multipart/mixed; boundary="===============1983243786327530057=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGVsbG8gSGVpa28sCgpBbSAyOS4wNS4yMDI0IHVtIDA5OjU3IHNjaHJpZWIgSGVpa28gU3TDvGJu
-ZXI6Cj4gSGkgU2ViYXN0aWFuLAo+Cj4gQW0gRGllbnN0YWcsIDI4LiBNYWkgMjAyNCwgMTc6NTU6
-NTUgQ0VTVCBzY2hyaWViIFNlYmFzdGlhbiBLcm9wYXRzY2g6Cj4+IEFtIDI3LjA1LjIwMjQgdW0g
-MjI6NTQgc2NocmllYiBIZWlrbyBTdMO8Ym5lcjoKPj4+IEFtIE1vbnRhZywgMjcuIE1haSAyMDI0
-LCAyMTowMjowMiBDRVNUIHNjaHJpZWIgSm9uYXMgS2FybG1hbjoKPj4+PiBPbiAyMDI0LTA1LTI2
-IDIzOjQ4LCBTZWJhc3RpYW4gS3JvcGF0c2NoIHdyb3RlOgo+Pj4+PiBUaGUgQ00zNTg4IE5BUyBi
-eSBGcmllbmRseUVsZWMgcGFpcnMgdGhlIENNMzU4OCBjb21wdXRlIG1vZHVsZSwgYmFzZWQgb24K
-Pj4+Pj4gdGhlIFJvY2tjaGlwIFJLMzU4OCBTb0MsIHdpdGggdGhlIENNMzU4OCBOQVMgS2l0IGNh
-cnJpZXIgYm9hcmQuCj4+Pj4+Cj4+Pj4+IEhhcmR3YXJlIGZlYXR1cmVzOgo+Pj4+PiAgICAgICAt
-IFJvY2tjaGlwIFJLMzU4OCBTb0MKPj4+Pj4gICAgICAgLSA0R0IvOEdCLzE2R0IgTFBERFI0eCBS
-QU0KPj4+Pj4gICAgICAgLSA2NEdCIGVNTUMKPj4+Pj4gICAgICAgLSBNaWNyb1NEIGNhcmQgc2xv
-dAo+Pj4+PiAgICAgICAtIDF4IFJUTDgxMjVCIDIuNUcgRXRoZXJuZXQKPj4+Pj4gICAgICAgLSA0
-eCBNLjIgTS1LZXkgd2l0aCBQQ0llIDMuMCB4MSAodmlhIGJpZnVyY2F0aW9uKSBmb3IgTlZNZSBT
-U0RzCj4+Pj4+ICAgICAgIC0gMnggVVNCIDMuMCAoVVNCIDMuMSBHZW4xKSBUeXBlLUEsIDF4IFVT
-QiAyLjAgVHlwZS1BCj4+Pj4+ICAgICAgIC0gMXggVVNCIDMuMCBUeXBlLUMgd2l0aCBEUCBBbHRN
-b2RlIHN1cHBvcnQKPj4+Pj4gICAgICAgLSAyeCBIRE1JIDIuMSBvdXQsIDF4IEhETUkgaW4KPj4+
-Pj4gICAgICAgLSBNSVBJLUNTSSBDb25uZWN0b3IsIE1JUEktRFNJIENvbm5lY3Rvcgo+Pj4+PiAg
-ICAgICAtIDQwLXBpbiBHUElPIGhlYWRlcgo+Pj4+PiAgICAgICAtIDQgYnV0dG9uczogcG93ZXIs
-IHJlc2V0LCByZWNvdmVyeSwgTUFTSywgdXNlciBidXR0b24KPj4+Pj4gICAgICAgLSAzLjVtbSBI
-ZWFkcGhvbmUgb3V0LCAyLjBtbSBQSC0yQSBNaWMgaW4KPj4+Pj4gICAgICAgLSA1ViBGYW4gY29u
-bmVjdG9yLCBQV00gYnV6emVyLCBJUiByZWNlaXZlciwgUlRDIGJhdHRlcnkgY29ubmVjdG9yCj4+
-Pj4+Cj4+Pj4+IFBDSWUgYmlmdXJjYXRpb24gaXMgdXNlZCB0byBoYW5kbGUgYWxsIGZvdXIgTS4y
-IHNvY2tldHMgYXQgUENJZSAzLjAgeDEKPj4+Pj4gc3BlZWQuIERhdGEgbGFuZSBtYXBwaW5nIGlu
-IHRoZSBEVCBpcyBkb25lIGxpa2UgZGVzY3JpYmVkIGluIGNvbW1pdAo+Pj4+PiBmODAyMGRmYjMx
-MWQgKCJwaHk6IHJvY2tjaGlwLXNucHMtcGNpZTM6IGZpeCBiaWZ1cmNhdGlvbiBvbiByazM1ODgi
-KS4KPj4+Pj4KPj4+Pj4gVGhpcyBkZXZpY2UgdHJlZSBpbmNsdWRlcyBzdXBwb3J0IGZvciBlTU1D
-LCBTRCBjYXJkLCBldGhlcm5ldCwgYWxsIFVTQjIKPj4+Pj4gYW5kIFVTQjMgcG9ydHMsIGFsbCBm
-b3VyIE0uMiBzbG90cywgR1BVLCBSVEMsIGJ1enplciwgVUFSVCBkZWJ1Z2dpbmcgYXMKPj4+Pj4g
-d2VsbCBhcyB0aGUgYnV0dG9ucyBhbmQgTEVEcy4KPj4+Pj4gVGhlIEdQSU9zIGFyZSBsYWJlbGVk
-IGFjY29yZGluZyB0byB0aGUgc2NoZW1hdGljcy4KPj4+Pj4KPj4+Pj4gU2lnbmVkLW9mZi1ieTog
-U2ViYXN0aWFuIEtyb3BhdHNjaCA8c2ViLWRldkB3ZWIuZGU+Cj4+Pj4+IC0tLQo+Pj4+PiAgICBh
-cmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL01ha2VmaWxlICAgICAgICAgfCAgICAxICsKPj4+
-Pj4gICAgLi4uL2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzU4OC1jbTM1ODgtbmFzLmR0cyAgIHwgMTI2
-OSArKysrKysrKysrKysrKysrKwo+Pj4+PiAgICAyIGZpbGVzIGNoYW5nZWQsIDEyNzAgaW5zZXJ0
-aW9ucygrKQo+Pj4+PiAgICBjcmVhdGUgbW9kZSAxMDA2NDQgYXJjaC9hcm02NC9ib290L2R0cy9y
-b2NrY2hpcC9yazM1ODgtY20zNTg4LW5hcy5kdHMKPj4+Pgo+Pj4+IEJlY2F1c2UgdGhlIENNMzU4
-OCBpcyBhIFNvTSBhbmQgdGhlIE5BUyBpcyBhIGNhcnJpZXIgYm9hcmQgdGhpcyBzaG91bGQKPj4+
-PiBwcm9iYWJseSBiZSBzcGxpdCBpbiB0d28sIGNtMzU4OC5kdHNpIGFuZCBjbTM1ODgtbmFzLmR0
-cy4KPj4+Cj4+PiBhbHNvLCBiZWNhdXNlIG9mIHRoYXQgd2F5IHRvbyBnZW5lcmljIG5hbWUgImNt
-IiwgcGxlYXNlIGluY29ycG9yYXRlIHRoZQo+Pj4gY29tcGFueSBuYW1lIGluIHRoZSBmaWxlbmFt
-ZSBhcyB3ZWxsLiBGb3IgdGhlIHNhbWUgcmVhc29uIHdlIG5hbWVkCj4+PiB0aGUgcmszNTY4LXdv
-bGZ2aXNpb24tcGY1LmR0cyB0aGF0IHdheSA7LSkgW1dvbGZ2aXNpb24gYmVpbmcgdGhlIGNvbXBh
-bnldCj4+Pgo+Pj4gU28gbWF5YmU6Cj4+PiByazM1ODgtZnJpZW5kbHllbGVjLWNtMzU4OC5kdHNp
-IGFuZCByazM1ODgtZnJpZW5kbHllbGVjLWNtMzU4OC1uYXMuZHRzCj4+Pgo+Pgo+PiBZZXMsIEkg
-YWdyZWUgdGhhdCB0aGUgbmFtZSBpcyB2ZXJ5IGdlbmVyaWMuIEkgc3RydWdnbGVkIHdpdGggdGhp
-cyBhcwo+PiB3ZWxsLCBidXQgeW91ciBzdWdnZXN0aW9uIHNvdW5kcyBnb29kIQo+Pgo+PiBJbiB0
-aGlzIGNhc2UsIGlzIGl0IGFsc28gcHJlZmVycmVkIHRvIGNoYW5nZSB0aGUgY29tbWl0IG1lc3Nh
-Z2UgdG8KPj4gaW5jbHVkZSB0aGUgY29tcGFueSBuYW1lIGV2ZW50IHRob3VnaCB0aGUgY29tbWl0
-IG1lc3NhZ2Ugc3ViamVjdCBleGNlZWRzCj4+IDUwIGNoYXJhY3RlcnMgdGhpcyB3YXk/Cj4+ICgi
-YXJtNjQ6IGR0czogcm9ja2NoaXA6IEFkZCBGcmllbmRseUVsZWMgQ00zNTg4IE5BUyBib2FyZCIp
-Cj4KPiBXZXJlIGRvZXMgYSA1MCBjaGFyYWN0ZXIgbGltaXQgZXZlbiBjb21lIGZyb20/Cj4gSW4g
-b3RoZXIgd29yZHMsIHRoZSBzdWJqZWN0IHNob3VsZCBiZSBtZWFuaW5nZnVsIGFuZCB3aXRoIHRo
-ZSBuZWVkZWQKPiBwcmVmaXhlcyBhZGhlcmluZyB0byBhIDUwIGNoYXJzIG1heGxlbiB3b3VsZCBj
-YXVzZSBwcmV0dHkgdW5yZWFkYWJsZQo+IHN1YmplY3QgaW4gYSBsb3Qgb2YgY2FzZXMuCj4KPiBT
-byB0aGUgcHJvcG9zZWQgc3ViamVjdCBpcyBhYnNvbHV0ZWx5IGZpbmUgOi0pIC4KPgpUaGUgNTAg
-Y2hhcmFjdGVyIGxpbWl0IGlzIGFjdHVhbGx5IHJlY29tbWVuZGVkIGluIHRoZSBHaXQgZG9jczoK
-ICAgIlRob3VnaCBub3QgcmVxdWlyZWQsIGl04oCZcyBhIGdvb2QgaWRlYSB0byBiZWdpbiB0aGUg
-Y29tbWl0IG1lc3NhZ2UKICAgd2l0aCBhIHNpbmdsZSBzaG9ydCAobm8gbW9yZSB0aGFuIDUwIGNo
-YXJhY3RlcnMpIGxpbmUgc3VtbWFyaXppbmcKICAgdGhlIGNoYW5nZSwgZm9sbG93ZWQgYnkgYSBi
-bGFuayBsaW5lIGFuZCB0aGVuIGEgbW9yZSB0aG9yb3VnaAogICBkZXNjcmlwdGlvbi4iIFsxXQoK
-VlMgQ29kZSBhbHNvIGhhcyB2ZXJ0aWNhbCBsaW5lcyBpbiB0aGUgY29tbWl0IGVkaXRvciBpbmRp
-Y2F0aW5nIGlmIHlvdXIKbGluZSBoYXMgbW9yZSB0aGFuIDUwIChmaXJzdCBsaW5lKSBvciA3MiAo
-b3RoZXIgbGluZXMpIGNoYXJzLgpBbmQgb3RoZXIgb3V0bGV0cyBoYXZlIG1lbnRpb25lZCB0aGUg
-IjUwLzcyIHJ1bGUiIFsyLDNdIGFzIHdlbGwuIFRoZQpydWxlIG9mIHdvcmQtd3JhcHBpbmcgYXQg
-NzIgY2hhcmFjdGVycyB3YXMgZXZlbiBtZW50aW9uZWQgYnkgTGludXMsCmFsYmVpdCBpbiAyMDEy
-OgogICAiWy4uLl0gdGhlIHJ1bGUgaXMgc2ltcGxlOiB3ZSB1c2UgNzItY2hhcmFjdGVyIGNvbHVt
-bnMgZm9yIHdvcmQKICAgd3JhcHBpbmcsIGV4Y2VwdCBmb3IgcXVvdGVkIG1hdGVyaWFsIHRoYXQg
-aGFzIGEgc3BlY2lmaWMgbGluZQogICBmb3JtYXQuIiBbNF0KCkJ1dCB5ZWFoIGFzIHlvdSdyZSBz
-YXlpbmcsIHdoaWxlIGEgc3ViamVjdCBzaG91bGQgYmUgc2hvcnQgYnV0Cm1lYW5pbmdmdWwsIHN1
-Y2ggYSBsaW1pdCBwcm9iYmFseSBkb2Vzbid0IG1ha2UgYSBsb3Qgb2Ygc2Vuc2UgaW4gdGhpcwpj
-dXJyZW50IGFnZS4KSSBsaWtlbHkgcmVhZCB0b28gbXVjaCBpbnRvIHRob3NlIHJ1bGVzIHRyeWlu
-ZyB0byBsZWFybiBhYm91dCBhbGwgdGhlCnRoaW5ncyBvbiBob3cgdG8gbWFrZSBhIGdvb2QgY29u
-dHJpYnV0aW9uIHRvIHRoZSBrZXJuZWwsIHdpdGggbWFpbGluZwpsaXN0cywgZm9ybWF0dGluZyBh
-bmQgc28gb24uCkkgd29uJ3QgdHJ5IHRvIHN0YXkgb24gNTAgY2hhcnMgdG9vIHJpZ29yb3VzbHkg
-aW4gdGhlIGZ1dHVyZSA6KQoKVGhhbmtzLApTZWJhc3RpYW4KClsxXSBodHRwczovL2dpdC1zY20u
-Y29tL2RvY3MvZ2l0LWNvbW1pdCNfZGlzY3Vzc2lvbgpbMl0gaHR0cHM6Ly93d3cuYmFlbGR1bmcu
-Y29tL29wcy9naXQtY29tbWl0LW1lc3NhZ2VzIzMtdGhlLTUwNzItcnVsZQpbM10gaHR0cHM6Ly9w
-cmVzbGF2Lm1lLzIwMTUvMDIvMjEvd2hhdC1zLXdpdGgtdGhlLTUwLTcyLXJ1bGUvCls0XSBodHRw
-czovL2dpdGh1Yi5jb20vdG9ydmFsZHMvbGludXgvcHVsbC8xNyNpc3N1ZWNvbW1lbnQtNTY2MTE4
-NQoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4
-LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3Jn
-Cmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2No
-aXAK
+--===============1983243786327530057==
+Content-Type: multipart/signed; boundary="nextPart7320409.ZChHLWW2r3";
+ micalg="pgp-sha256"; protocol="application/pgp-signature"
+
+--nextPart7320409.ZChHLWW2r3
+Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain; charset="us-ascii"; protected-headers="v1"
+From: Diederik de Haas <didi.debian@cknow.org>
+To: Andy Yan <andyshrk@163.com>, linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH 0/1] Fix the port mux of VP2
+Date: Wed, 29 May 2024 17:55:25 +0200
+Message-ID: <2397969.FhQbyb98Gs@bagend>
+Organization: Connecting Knowledge
+MIME-Version: 1.0
+
+On Thursday, 25 April 2024 17:19:58 CEST Heiko Stuebner wrote:
+> On Mon, 22 Apr 2024 18:19:04 +0800, Andy Yan wrote:
+> > From: Andy Yan <andy.yan@rock-chips.com>
+> > 
+> > The port mux bits of VP2 should be defined by
+> > RK3568_OVL_PORT_SET__PORT2_MUX, this maybe a copy and paste error when
+> > this driver first introduced.> 
+> > Hi Heiko:
+> >    Maybe thi is the problem you met when you porting the dsi2 driver.
+> > 
+> 
+> Applied, thanks!
+> 
+> [1/1] drm/rockchip: vop2: Fix the port mux of VP2
+>       commit: 2bdb481bf7a93c22b9fea8daefa2834aab23a70f
+
+Wasn't this patch supposed to be part of 6.10-rc1?
+--nextPart7320409.ZChHLWW2r3
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: This is a digitally signed message part.
+Content-Transfer-Encoding: 7Bit
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYIAB0WIQT1sUPBYsyGmi4usy/XblvOeH7bbgUCZldP7QAKCRDXblvOeH7b
+btUeAQC4sSMaBwRDiexmeDgGbIxjwMuMYE0XHbgLjJI+tvfh9QD/R83eqtzCIjKM
+dqgg+qGOUYmVLyE8XIDN42D5ZijcDQY=
+=uCK0
+-----END PGP SIGNATURE-----
+
+--nextPart7320409.ZChHLWW2r3--
+
+
+
+
+
+--===============1983243786327530057==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============1983243786327530057==--
+
+
+
+
