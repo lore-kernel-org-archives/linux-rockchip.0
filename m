@@ -4,77 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8A260C25B75
-	for <linux-rockchip@archiver.kernel.org>; Wed, 29 May 2024 11:10:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3F4A5C25B75
+	for <linux-rockchip@archiver.kernel.org>; Wed, 29 May 2024 11:33:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=u4CPixxzKECvhhb8UfegnD5uulsFvkrKex2lOrOagTU=; b=WaoMhKwqZfPt9sqMjVYaJJjH5Y
-	R24ZUhWy3R7AXQ/uAubpMFg0QKnWne85VJHxT7w/H/4E0CpqSJ7HhA09ZFUIHODlp0AM/DPESMW1l
-	K/TeG5BkfBxdZyVpqGlp4v9UcmgPOEqw8gjE/qABUCH94lnrw7+ajW/ZLaQxCaR6bGSNAZI8hON4J
-	Ac2rwmd8WtMzlzrECc+oCtrh8M36IEBD/0YPsfNxNghKqSUr5m6yUtBMDvCrA+uRvVIj6T1eZfShU
-	bgEO+gUjcOFBggooKUwv3Mx5boZeuBpsNIC1MpoNFwMx0D1jC66dEAmYfihARC6L4LwHzI+4Ej7tq
-	XPDsqGTA==;
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
+	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Jm7CTimLjArMjro8nxdmBn/gf8LfOBhaQ5BTaoKylFw=; b=eQEfgRLic+CAPlAOxaKSPOcZpo
+	oQW0w3cntM/65dZjDbHR0RM2Oy9amPs/QwOnH3jF1e7wWuaOYTIAmWKNFEYHqqcf5VVa9numB0LlC
+	J4Z+kk1S8btsonCyGtfUTorJ0TwwypneBL5ONwqTUtmP+FNFuJiG58Qrd+WxecDe/tUgemyK/Bgpz
+	21xywxcb0tWykPOcTV3S7F7qvY4VkxQKk0rBpczlR5EQaJBJ/HCDaumRXMMsq3vODW2V9wB4q3Xe4
+	jKU/WWZBTqBrQ90XM3gyJweLB8Nj15jfzzXLqtjxZIL66o2/ZduFznJJnUOYLaH2jBnIgWKynux7L
+	MqZew22w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sCHC9-00000003u42-02w9;
-	Wed, 29 May 2024 11:10:13 +0000
-Received: from out-170.mta0.migadu.com ([2001:41d0:1004:224b::aa])
+	id 1sCHYK-00000003xlO-1fv3;
+	Wed, 29 May 2024 11:33:08 +0000
+Received: from mail.manjaro.org ([2a01:4f8:c0c:51f3::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sCHC6-00000003u2q-01oQ
-	for linux-rockchip@lists.infradead.org;
-	Wed, 29 May 2024 11:10:11 +0000
-X-Envelope-To: dsimic@manjaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow.org; s=key1;
-	t=1716981003;
+	id 1sCHYF-00000003xkL-38OL;
+	Wed, 29 May 2024 11:33:05 +0000
+MIME-Version: 1.0
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
+	t=1716982380;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=X3K8AAihjo5jehCWYCuxmJ8F87mjFG1Pk15yaC7Oslk=;
-	b=eEj8yEUL/kZ04N94F2Lxv+qcPhuIeQjqXc9M1gpAU7gJkjZONeiRZAr7gf+sUm1okG0O4n
-	3VCQI3W/7RvSxcGZ45fzNi+wpeyYZnWeU5g3lgxkMIZ88kp/SYnx229DqSSCsK16W/nHDn
-	V82dnEnl0ugY7yX9Oy2aKCNddTvf16s1xyvDCzUZKmTKCH/PMGa9MZl38YiEulVbqPszSU
-	P5+7Yy10L9famzqAWQdfAo4PezWKKYOGDIQb+Bt988IZMyhGSseumJFO2Ts1Bt+Ds1LgIp
-	KVMEi0G3ks4sxPQLVbTN/nozYeKkpAMXQlprSPl1E7gm0E1I8OgB75l+qrVb5w==
-X-Envelope-To: alchark@gmail.com
-X-Envelope-To: linux-rockchip@lists.infradead.org
-X-Envelope-To: heiko@sntech.de
-X-Envelope-To: linux-arm-kernel@lists.infradead.org
-X-Envelope-To: devicetree@vger.kernel.org
-X-Envelope-To: robh+dt@kernel.org
-X-Envelope-To: krzk+dt@kernel.org
-X-Envelope-To: conor+dt@kernel.org
-X-Envelope-To: linux-kernel@vger.kernel.org
-X-Envelope-To: quentin.schulz@cherry.de
-X-Envelope-To: wens@kernel.org
-X-Envelope-To: daniel.lezcano@linaro.org
-X-Envelope-To: krzysztof.kozlowski+dt@linaro.org
-X-Envelope-To: viresh.kumar@linaro.org
-X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
-From: Diederik de Haas <didi.debian@cknow.org>
-To: Dragan Simic <dsimic@manjaro.org>, Alexey Charkov <alchark@gmail.com>
-Cc: linux-rockchip@lists.infradead.org, heiko@sntech.de,
- linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org,
- robh+dt@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
- linux-kernel@vger.kernel.org, quentin.schulz@cherry.de, wens@kernel.org,
- daniel.lezcano@linaro.org, krzysztof.kozlowski+dt@linaro.org,
- viresh.kumar@linaro.org
+	bh=XD6qFBUR2LMAzuud7DLI1RG/etW0Y6sDMxEesleKjgM=;
+	b=jX0GXW6xG4OGQpfXVaa2sVekk2pzKX9V22lDNuH2xkO1eEhPzR+XCEwcjbqDnRQJoBmhgH
+	gDxGB6fMJCDAJIGqeUlhzf8nN0IjDv37RkhOsD3lAcW4DN6nieWj3KU2ZM+MCZeRzvSXI+
+	iHtTKvtT6xta9SjbVxY+Kmm2enP2DEQBqQXDo9gCuWgS6VnskSNBFRa35qkMLiOlINYNzp
+	fIy+yCV3KAGaoscZeZ3W5mbl3b6KhnI4H2TaeOhsdIbWi325MkOOXACXYo0am9TZYPqXI0
+	nOg5MZRRI6FV8wiGAUOL3cZZUnYpkX0arGlObQex2DenoNH/tDHdOz5RdtOWGQ==
+Date: Wed, 29 May 2024 13:33:00 +0200
+From: Dragan Simic <dsimic@manjaro.org>
+To: Diederik de Haas <didi.debian@cknow.org>
+Cc: Alexey Charkov <alchark@gmail.com>, linux-rockchip@lists.infradead.org,
+ heiko@sntech.de, linux-arm-kernel@lists.infradead.org,
+ devicetree@vger.kernel.org, robh+dt@kernel.org, krzk+dt@kernel.org,
+ conor+dt@kernel.org, linux-kernel@vger.kernel.org, quentin.schulz@cherry.de,
+ wens@kernel.org, daniel.lezcano@linaro.org,
+ krzysztof.kozlowski+dt@linaro.org, viresh.kumar@linaro.org
 Subject: Re: [RFC PATCH] arm64: dts: rockchip: Make preparations for
  per-RK3588-variant OPPs
-Date: Wed, 29 May 2024 13:09:50 +0200
-Message-ID: <9996796.SDjBYy7pSV@bagend>
-Organization: Connecting Knowledge
-In-Reply-To: <CABjd4YxD41DEkBCZfkznLboEY9ZVOfTCLcj4S_kkcsVswbANyQ@mail.gmail.com>
+In-Reply-To: <9996796.SDjBYy7pSV@bagend>
 References: <673dcf47596e7bc8ba065034e339bb1bbf9cdcb0.1716948159.git.dsimic@manjaro.org>
  <CABjd4YxD41DEkBCZfkznLboEY9ZVOfTCLcj4S_kkcsVswbANyQ@mail.gmail.com>
-MIME-Version: 1.0
-X-Migadu-Flow: FLOW_OUT
+ <9996796.SDjBYy7pSV@bagend>
+Message-ID: <511137f077495007f467d5927f42f85d@manjaro.org>
+X-Sender: dsimic@manjaro.org
+Authentication-Results: ORIGINATING;
+	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240529_041010_214320_263DF088 
-X-CRM114-Status: GOOD (  29.54  )
+X-CRM114-CacheID: sfid-20240529_043304_169364_B993BB22 
+X-CRM114-Status: GOOD (  44.60  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,161 +72,107 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============2098162672235126645=="
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
---===============2098162672235126645==
-Content-Type: multipart/signed; boundary="nextPart4603407.K66ItMQtme";
- micalg="pgp-sha256"; protocol="application/pgp-signature"
-
---nextPart4603407.K66ItMQtme
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain; charset="UTF-8"; protected-headers="v1"
-From: Diederik de Haas <didi.debian@cknow.org>
-Date: Wed, 29 May 2024 13:09:50 +0200
-Message-ID: <9996796.SDjBYy7pSV@bagend>
-Organization: Connecting Knowledge
-MIME-Version: 1.0
-
-Hi Dragan,
-
-I think the idea is very good.
-I do have some remarks about its implementation though.
-
-title: s/Make preparations/Prepare/
-
-On Wednesday, 29 May 2024 11:57:45 CEST Alexey Charkov wrote:
-> On Wed, May 29, 2024 at 6:14=E2=80=AFAM Dragan Simic <dsimic@manjaro.org>=
- wrote:
-> > Rename and modify the RK3588 dtsi files a bit, to make preparations for
-> > the ability to specify different CPU and GPU OPPs for each of the
-> > supported RK3588 SoC variants, including the RK3588J.
-
-"Rename the RK3588 dtsi files in preparation of the ability to specify diff=
-erent=20
-CPU and GPU OPPs combinations for all the supported RK3588 SoC variants."?
-
-There's no partial renaming of things. That you then also change the includ=
-e=20
-files to match, is implied.
-The "modify ... a bit" implies you'll do something else (too), which should=
- be=20
-in its own separate patch (if that were actually the case).
-
-If you mention one variant but not (any) others, makes people like me wonde=
-r:
-why is RK3588J treated differently then f.e. RK3588M?
-In this case I don't see a reason to single out one variant.
-
-> > As already discussed, [1][2][3] some of the different RK3588 SoC varian=
-ts
-> > require different OPPs, and it makes more sense to have the OPPs already
-> > defined when a board dts includes one of the SoC dtsi files (rk3588.dts=
-i,
-> > rk3588j.dtsi or rk3588s.dtsi), rather than requiring the board dts file=
- to
-> > also include a separate rk3588*-opp.dtsi file.
->=20
-> Indeed, including just one .dtsi for the correct SoC variant and not
-> having to bother about what other bits and pieces are required to use
-> the full SoC functionality sounds great! Thanks for putting this
-> together so promptly!
-
-Indeed :)
-
-> > No intended functional changes are introduced.
-
-=2E..
-
-> >  ...inctrl.dtsi =3D> rk3588-common-pinctrl.dtsi} |    0
->=20
-> Renaming the pinctrl includes seems superfluous - maybe keep them as
-> they were to minimize churn?
-
-The reason for that wasn't clear to me either. If there is a good reason fo=
-r=20
-it, then a (git commit) message specify *why* is appreciated.
-
-> >  .../{rk3588s.dtsi =3D> rk3588-common.dtsi}      |    2 +-
-> >  ...nctrl.dtsi =3D> rk3588-fullfat-pinctrl.dtsi} |    0
-> >  .../{rk3588.dtsi =3D> rk3588-fullfat.dtsi}      |    4 +-
->=20
-> To me, "fullfat" doesn't look super descriptive, albeit fun :)
-
-Agreed with the non-descriptive part. Please choose a different name.
-
-And document in the git commit message why it was renamed and what is expec=
-ted=20
-to be in the new dtsi file, but would be incorrect for the old dtsi file.
-
-That you went from rk3588s.dtsi to rk3588-common.dtsi (I miss the 's') shou=
-ld=20
-be described (assuming that was intentional and not a typo).
-
-IOW: let this commit (message) describe what should and should not go in th=
-e=20
-respective dtsi files, which can then be used as reference for future rk358=
-8=20
-board additions.
-
-> How about we rename the existing rk3588.dtsi and rk3588s.dtsi to
-> something like rk3588-devices.dtsi and rk3588s-devices.dtsi
-
-Whether it's '-devices' or '-common', I think it's impossible for a (short)=
-=20
-name to be fully self-descriptive.
-Thus document what you mean by it in the commit message.
-
-Then we can use those 'rules' to consistently apply them.
-
-> >  arch/arm64/boot/dts/rockchip/rk3588.dtsi      |  414 +--
-> >  arch/arm64/boot/dts/rockchip/rk3588j.dtsi     |    6 +-
-> >  arch/arm64/boot/dts/rockchip/rk3588s.dtsi     | 2671 +----------------
->=20
-> Rename detection didn't do a particularly great job here - wonder if
-> we can do anything about it to minimize the patch size and ensure that
-> the change history is preserved for git blame...
-
-+1
-The diff does look awfully big for a rename operation, which was supposed t=
-o=20
-(also only) "modify ... a bit".
-
-Cheers,
-  Diederik
---nextPart4603407.K66ItMQtme
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: This is a digitally signed message part.
-Content-Transfer-Encoding: 7Bit
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYIAB0WIQT1sUPBYsyGmi4usy/XblvOeH7bbgUCZlcM/gAKCRDXblvOeH7b
-boXFAQCgLAgi+jdfrwcmNIdE+b3uLByJRWSeiM+fn8Il8DjzDAEAqe1l050CNF9Z
-Zwn/WxpqmanDODRRGRh7CrMypeZ4Vwg=
-=79tX
------END PGP SIGNATURE-----
-
---nextPart4603407.K66ItMQtme--
-
-
-
-
-
---===============2098162672235126645==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============2098162672235126645==--
-
-
-
-
+SGVsbG8gRGllZGVyaWssCgpPbiAyMDI0LTA1LTI5IDEzOjA5LCBEaWVkZXJpayBkZSBIYWFzIHdy
+b3RlOgo+IEhpIERyYWdhbiwKPiAKPiBJIHRoaW5rIHRoZSBpZGVhIGlzIHZlcnkgZ29vZC4KPiBJ
+IGRvIGhhdmUgc29tZSByZW1hcmtzIGFib3V0IGl0cyBpbXBsZW1lbnRhdGlvbiB0aG91Z2guCgpU
+aGFua3MgZm9yIHlvdXIgZmVlZGJhY2shCgo+IHRpdGxlOiBzL01ha2UgcHJlcGFyYXRpb25zL1By
+ZXBhcmUvCgpPciBldmVuIGJldHRlcjogIlByZXBhcmUgUkszNTg4IFNvQyBkdHNpIGZpbGVzIGZv
+ciBwZXItdmFyaWFudCBPUFBzIgoKPiBPbiBXZWRuZXNkYXksIDI5IE1heSAyMDI0IDExOjU3OjQ1
+IENFU1QgQWxleGV5IENoYXJrb3Ygd3JvdGU6Cj4+IE9uIFdlZCwgTWF5IDI5LCAyMDI0IGF0IDY6
+MTTigK9BTSBEcmFnYW4gU2ltaWMgPGRzaW1pY0BtYW5qYXJvLm9yZz4gCj4+IHdyb3RlOgo+PiA+
+IFJlbmFtZSBhbmQgbW9kaWZ5IHRoZSBSSzM1ODggZHRzaSBmaWxlcyBhIGJpdCwgdG8gbWFrZSBw
+cmVwYXJhdGlvbnMgZm9yCj4+ID4gdGhlIGFiaWxpdHkgdG8gc3BlY2lmeSBkaWZmZXJlbnQgQ1BV
+IGFuZCBHUFUgT1BQcyBmb3IgZWFjaCBvZiB0aGUKPj4gPiBzdXBwb3J0ZWQgUkszNTg4IFNvQyB2
+YXJpYW50cywgaW5jbHVkaW5nIHRoZSBSSzM1ODhKLgo+IAo+ICJSZW5hbWUgdGhlIFJLMzU4OCBk
+dHNpIGZpbGVzIGluIHByZXBhcmF0aW9uIG9mIHRoZSBhYmlsaXR5IHRvIHNwZWNpZnkKPiBkaWZm
+ZXJlbnQKPiBDUFUgYW5kIEdQVSBPUFBzIGNvbWJpbmF0aW9ucyBmb3IgYWxsIHRoZSBzdXBwb3J0
+ZWQgUkszNTg4IFNvQyAKPiB2YXJpYW50cy4iPwo+IAo+IFRoZXJlJ3Mgbm8gcGFydGlhbCByZW5h
+bWluZyBvZiB0aGluZ3MuIFRoYXQgeW91IHRoZW4gYWxzbyBjaGFuZ2UgdGhlIAo+IGluY2x1ZGUK
+PiBmaWxlcyB0byBtYXRjaCwgaXMgaW1wbGllZC4KPiBUaGUgIm1vZGlmeSAuLi4gYSBiaXQiIGlt
+cGxpZXMgeW91J2xsIGRvIHNvbWV0aGluZyBlbHNlICh0b28pLCB3aGljaCAKPiBzaG91bGQgYmUK
+PiBpbiBpdHMgb3duIHNlcGFyYXRlIHBhdGNoIChpZiB0aGF0IHdlcmUgYWN0dWFsbHkgdGhlIGNh
+c2UpLgoKT2gsIHRoZSBlbnRpcmUgZGVzY3JpcHRpb24gb2YgdGhlIHBhdGNoIHdhcyBjb2JibGVk
+IHRvZ2V0aGVyIGluIGEgcmF0aGVyCiJyZWxheGVkIiB3YXksIGJlY2F1c2UgaXQgd2FzIHBhc3Qg
+MiBBTSBvdmVyIGhlcmUsIDopIGFuZCBiZWNhdXNlIGl0J3MgCmp1c3QKYW4gUkZDIHBhdGNoLiAg
+Rm9yIHRoZSBmaW5hbCB2ZXJzaW9uIG9mIHRoZSBwYXRjaCwgaWYgd2UgYWdyZWUgdXBvbiAKbW92
+aW5nCml0IGZvcndhcmQgZnJvbSB0aGUgUkZDIHN0YXR1cywgSSdsbCBwcmVwYXJlIGEgbW9yZSAi
+Zm9ybWFsIiBkZXNjcmlwdGlvbgp0aGF0IHdpbGwgYmUgbXVjaCBtb3JlIGRldGFpbGVkIGFuZCBt
+b3JlIGFjY3VyYXRlLgoKPiBJZiB5b3UgbWVudGlvbiBvbmUgdmFyaWFudCBidXQgbm90IChhbnkp
+IG90aGVycywgbWFrZXMgcGVvcGxlIGxpa2UgbWUgCj4gd29uZGVyOgo+IHdoeSBpcyBSSzM1ODhK
+IHRyZWF0ZWQgZGlmZmVyZW50bHkgdGhlbiBmLmUuIFJLMzU4OE0/Cj4gSW4gdGhpcyBjYXNlIEkg
+ZG9uJ3Qgc2VlIGEgcmVhc29uIHRvIHNpbmdsZSBvdXQgb25lIHZhcmlhbnQuCgpHb29kIHJlbWFy
+ay4gIFdpbGwgYmUgZGVzY3JpYmVkIGluIHRoZSBmaW5hbCBwYXRjaCBkZXNjcmlwdGlvbi4KCj4+
+ID4gQXMgYWxyZWFkeSBkaXNjdXNzZWQsIFsxXVsyXVszXSBzb21lIG9mIHRoZSBkaWZmZXJlbnQg
+UkszNTg4IFNvQyB2YXJpYW50cwo+PiA+IHJlcXVpcmUgZGlmZmVyZW50IE9QUHMsIGFuZCBpdCBt
+YWtlcyBtb3JlIHNlbnNlIHRvIGhhdmUgdGhlIE9QUHMgYWxyZWFkeQo+PiA+IGRlZmluZWQgd2hl
+biBhIGJvYXJkIGR0cyBpbmNsdWRlcyBvbmUgb2YgdGhlIFNvQyBkdHNpIGZpbGVzIChyazM1ODgu
+ZHRzaSwKPj4gPiByazM1ODhqLmR0c2kgb3IgcmszNTg4cy5kdHNpKSwgcmF0aGVyIHRoYW4gcmVx
+dWlyaW5nIHRoZSBib2FyZCBkdHMgZmlsZSB0bwo+PiA+IGFsc28gaW5jbHVkZSBhIHNlcGFyYXRl
+IHJrMzU4OCotb3BwLmR0c2kgZmlsZS4KPj4gCj4+IEluZGVlZCwgaW5jbHVkaW5nIGp1c3Qgb25l
+IC5kdHNpIGZvciB0aGUgY29ycmVjdCBTb0MgdmFyaWFudCBhbmQgbm90Cj4+IGhhdmluZyB0byBi
+b3RoZXIgYWJvdXQgd2hhdCBvdGhlciBiaXRzIGFuZCBwaWVjZXMgYXJlIHJlcXVpcmVkIHRvIHVz
+ZQo+PiB0aGUgZnVsbCBTb0MgZnVuY3Rpb25hbGl0eSBzb3VuZHMgZ3JlYXQhIFRoYW5rcyBmb3Ig
+cHV0dGluZyB0aGlzCj4+IHRvZ2V0aGVyIHNvIHByb21wdGx5IQo+IAo+IEluZGVlZCA6KQoKVGhh
+bmtzLiA6KQoKPj4gPiBObyBpbnRlbmRlZCBmdW5jdGlvbmFsIGNoYW5nZXMgYXJlIGludHJvZHVj
+ZWQuCj4gCj4gLi4uCj4gCj4+ID4gIC4uLmluY3RybC5kdHNpID0+IHJrMzU4OC1jb21tb24tcGlu
+Y3RybC5kdHNpfSB8ICAgIDAKPj4gCj4+IFJlbmFtaW5nIHRoZSBwaW5jdHJsIGluY2x1ZGVzIHNl
+ZW1zIHN1cGVyZmx1b3VzIC0gbWF5YmUga2VlcCB0aGVtIGFzCj4+IHRoZXkgd2VyZSB0byBtaW5p
+bWl6ZSBjaHVybj8KPiAKPiBUaGUgcmVhc29uIGZvciB0aGF0IHdhc24ndCBjbGVhciB0byBtZSBl
+aXRoZXIuIElmIHRoZXJlIGlzIGEgZ29vZCAKPiByZWFzb24gZm9yCj4gaXQsIHRoZW4gYSAoZ2l0
+IGNvbW1pdCkgbWVzc2FnZSBzcGVjaWZ5ICp3aHkqIGlzIGFwcHJlY2lhdGVkLgoKQW5vdGhlciBn
+b29kIHJlbWFyay4gIFdpbGwgYmUgYWRkcmVzc2VkIGluIHRoZSBmaW5hbCBwYXRjaCBkZXNjcmlw
+dGlvbi4KCj4+ID4gIC4uLi97cmszNTg4cy5kdHNpID0+IHJrMzU4OC1jb21tb24uZHRzaX0gICAg
+ICB8ICAgIDIgKy0KPj4gPiAgLi4ubmN0cmwuZHRzaSA9PiByazM1ODgtZnVsbGZhdC1waW5jdHJs
+LmR0c2l9IHwgICAgMAo+PiA+ICAuLi4ve3JrMzU4OC5kdHNpID0+IHJrMzU4OC1mdWxsZmF0LmR0
+c2l9ICAgICAgfCAgICA0ICstCj4+IAo+PiBUbyBtZSwgImZ1bGxmYXQiIGRvZXNuJ3QgbG9vayBz
+dXBlciBkZXNjcmlwdGl2ZSwgYWxiZWl0IGZ1biA6KQo+IAo+IEFncmVlZCB3aXRoIHRoZSBub24t
+ZGVzY3JpcHRpdmUgcGFydC4gUGxlYXNlIGNob29zZSBhIGRpZmZlcmVudCBuYW1lLgoKSSdsbCB0
+aGluayBhYm91dCBpdC4gIEknbSBub3QgY3JhenkgYWJvdXQgImZ1bGxmYXQiIGVpdGhlci4KCj4g
+QW5kIGRvY3VtZW50IGluIHRoZSBnaXQgY29tbWl0IG1lc3NhZ2Ugd2h5IGl0IHdhcyByZW5hbWVk
+IGFuZCB3aGF0IGlzIAo+IGV4cGVjdGVkCj4gdG8gYmUgaW4gdGhlIG5ldyBkdHNpIGZpbGUsIGJ1
+dCB3b3VsZCBiZSBpbmNvcnJlY3QgZm9yIHRoZSBvbGQgZHRzaSAKPiBmaWxlLgo+IAo+IFRoYXQg
+eW91IHdlbnQgZnJvbSByazM1ODhzLmR0c2kgdG8gcmszNTg4LWNvbW1vbi5kdHNpIChJIG1pc3Mg
+dGhlICdzJykgCj4gc2hvdWxkCj4gYmUgZGVzY3JpYmVkIChhc3N1bWluZyB0aGF0IHdhcyBpbnRl
+bnRpb25hbCBhbmQgbm90IGEgdHlwbykuCgpPbWl0dGluZyB0aGUgInMiIHdhc24ndCBhIHR5cG8u
+ICBJdCdzIGp1c3QgdGhhdCByazM1ODhzLmR0c2kgc2VydmVkIGFzCnRoZSBiYXNlIGZvciBvdGhl
+ciAuZHRzaSBmaWxlcyBiZWZvcmUsIGJ1dCBpdCdzIG5vdyBjYWxsZWQgCnJrMzU4OC1jb21tb24u
+ZHRzaSwKd2hpY2ggbWFrZXMgaXRzIHB1cnBvc2UgYSBiaXQgbW9yZSBzZWxmLWRlc2NyaXB0aXZl
+LCBhbmQgc2VwYXJhdGVzIGl0CmZyb20gdGhlIGFjdHVhbCBTb0MgdmFyaWFudHMgKFMsIEosIE0p
+LCB3aGljaCBzaG91bGQgYWxzbyBoZWxwIGEgYml0CndpdGggaXRzIHNlbGYtZGVzY3JpcHRpdmVu
+ZXNzLgoKTm90ZSB0aGF0ICJjb21tb24iIGlzIGFscmVhZHkgdXNlZCBpbiB0aGUgLmR0c2kgZmls
+ZW5hbWVzIGZvciBzb21lIG90aGVyClNvQyBmYW1pbGllcywgd2hpY2ggSSBhY3R1YWxseSB0b29r
+IGluc3BpcmF0aW9uIGZyb20uCgo+IElPVzogbGV0IHRoaXMgY29tbWl0IChtZXNzYWdlKSBkZXNj
+cmliZSB3aGF0IHNob3VsZCBhbmQgc2hvdWxkIG5vdCBnbyAKPiBpbiB0aGUKPiByZXNwZWN0aXZl
+IGR0c2kgZmlsZXMsIHdoaWNoIGNhbiB0aGVuIGJlIHVzZWQgYXMgcmVmZXJlbmNlIGZvciBmdXR1
+cmUgCj4gcmszNTg4Cj4gYm9hcmQgYWRkaXRpb25zLgoKT2YgY291cnNlLiAgQWdhaW4sIG1vcmUg
+bWF0ZXJpYWwgZm9yIHRoZSBmaW5hbCBwYXRjaCBkZXNjcmlwdGlvbi4KCj4+IEhvdyBhYm91dCB3
+ZSByZW5hbWUgdGhlIGV4aXN0aW5nIHJrMzU4OC5kdHNpIGFuZCByazM1ODhzLmR0c2kgdG8KPj4g
+c29tZXRoaW5nIGxpa2UgcmszNTg4LWRldmljZXMuZHRzaSBhbmQgcmszNTg4cy1kZXZpY2VzLmR0
+c2kKPiAKPiBXaGV0aGVyIGl0J3MgJy1kZXZpY2VzJyBvciAnLWNvbW1vbicsIEkgdGhpbmsgaXQn
+cyBpbXBvc3NpYmxlIGZvciBhIAo+IChzaG9ydCkKPiBuYW1lIHRvIGJlIGZ1bGx5IHNlbGYtZGVz
+Y3JpcHRpdmUuCj4gVGh1cyBkb2N1bWVudCB3aGF0IHlvdSBtZWFuIGJ5IGl0IGluIHRoZSBjb21t
+aXQgbWVzc2FnZS4KCkFncmVlZC4gIE9uY2UgYWdhaW4sIG1vcmUgbWF0ZXJpYWwgZm9yIHRoZSBm
+aW5hbCBwYXRjaCBkZXNjcmlwdGlvbi4KCj4gVGhlbiB3ZSBjYW4gdXNlIHRob3NlICdydWxlcycg
+dG8gY29uc2lzdGVudGx5IGFwcGx5IHRoZW0uCj4gCj4+ID4gIGFyY2gvYXJtNjQvYm9vdC9kdHMv
+cm9ja2NoaXAvcmszNTg4LmR0c2kgICAgICB8ICA0MTQgKy0tCj4+ID4gIGFyY2gvYXJtNjQvYm9v
+dC9kdHMvcm9ja2NoaXAvcmszNTg4ai5kdHNpICAgICB8ICAgIDYgKy0KPj4gPiAgYXJjaC9hcm02
+NC9ib290L2R0cy9yb2NrY2hpcC9yazM1ODhzLmR0c2kgICAgIHwgMjY3MSArLS0tLS0tLS0tLS0t
+LS0tLQo+PiAKPj4gUmVuYW1lIGRldGVjdGlvbiBkaWRuJ3QgZG8gYSBwYXJ0aWN1bGFybHkgZ3Jl
+YXQgam9iIGhlcmUgLSB3b25kZXIgaWYKPj4gd2UgY2FuIGRvIGFueXRoaW5nIGFib3V0IGl0IHRv
+IG1pbmltaXplIHRoZSBwYXRjaCBzaXplIGFuZCBlbnN1cmUgdGhhdAo+PiB0aGUgY2hhbmdlIGhp
+c3RvcnkgaXMgcHJlc2VydmVkIGZvciBnaXQgYmxhbWUuLi4KPiAKPiArMQo+IFRoZSBkaWZmIGRv
+ZXMgbG9vayBhd2Z1bGx5IGJpZyBmb3IgYSByZW5hbWUgb3BlcmF0aW9uLCB3aGljaCB3YXMgCj4g
+c3VwcG9zZWQgdG8KPiAoYWxzbyBvbmx5KSAibW9kaWZ5IC4uLiBhIGJpdCIuCgpJIGFsc28gZG9u
+J3QgbGlrZSB0aGUgc2l6ZSBvZiB0aGUgcGF0Y2guICBJIGp1c3QgdHJpZWQgcGxheWluZyB3aXRo
+CnNwZWNpZnlpbmcgZGlmZmVyZW50IHZhbHVlcyBmb3IgdGhlIC0tZmluZC1yZW5hbWVzIGFuZCAt
+LWZpbmQtY29waWVzCm9wdGlvbnMsIGJ1dCB3aXRoIG5vIGdvb2QgcmVzdWx0cy4gIEknbGwgaGF2
+ZSBhIGxvb2sgaW50byB0aGUgR2l0CnNvdXJjZSBsYXRlciwgdG8gc2VlIHdoYXQncyBhY3R1YWxs
+eSBnb2luZyBvbiB3aXRoIHRob3NlIG9wdGlvbnMuCgpfX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgt
+cm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9t
+YWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
