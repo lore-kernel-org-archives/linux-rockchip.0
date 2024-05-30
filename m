@@ -4,38 +4,37 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 599D5C25B74
-	for <linux-rockchip@archiver.kernel.org>; Thu, 30 May 2024 09:02:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1FA3CC27C43
+	for <linux-rockchip@archiver.kernel.org>; Thu, 30 May 2024 09:04:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=pB7BzFh2DZT53QlNjEXFZnAfc561uVmZfdQOdTP6bow=; b=sqgNIKlfW3KW/C
-	Y1p0JrRT/MLNFgu0n2uy7hnffrFyaVsdEj0U2SA2kRXO+lHwJysQrMWIgPFAmQ8hQ7etFEjPi7f0S
-	bVxgxEQW0mBQ9vNXvf5ODVeNSyYdEXWT2R/KzSE0x354IX9algGob+W03ejs3GwBY4ruYes/yCf3k
-	uhbERI4BSlLxfnRIqQCuLOR9zBZvIML/DGhx+oKw/ozk7FpD71ZGagUBkHPOVIpp33/HlODdin3dv
-	AYC+4ZV3t2JN0k7sBlqkvKsuRINgInA8ORGCfHJY6i8yd1vuyccK/57WM3//ehcmqYs5D5GfBABCq
-	xE3OCE86X0j8WlUC3CzA==;
+	List-Owner; bh=ylF/nQFRyUqwn1JlxgMxk4W4bGA/l/QMt8lh+yUUH4M=; b=0L5jImXaCmo8lG
+	AILciZk3CQbw2R1WSMKhoN7vPUtc/0bbMugibtD19LXSxXXQPjjlCF28VUv/Aywtxk4TbbJB4MaTb
+	hj3fgHW1Ca+Z5YLaZgb+7E/crztLf59iy+6hmO4vBcn3YHFmS+gzP/MwcCUjKND8fIQ8/il35crse
+	K615gjMi4/Ss+HWcnRIki2fG9HCa5q/JUQzcIIU3nFjl/9oQ0jNXxpfAbMdzcLOx2NvFBmB+G0MQl
+	4/90EOjsFWZGk2ZvZU33sSq2blHIVvhlCsh4Iu6/llG07XpAVYMMajPv/6bCA04DdXpsEzo7hDN9o
+	P6Bm9Cj6V4vUAAle03mw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sCbg4-00000006kZi-3Eyw;
-	Thu, 30 May 2024 09:02:28 +0000
+	id 1sCbiE-00000006lDa-02wM;
+	Thu, 30 May 2024 09:04:42 +0000
 Received: from fgw21-7.mail.saunalahti.fi ([62.142.5.82])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sCbg0-00000006kXY-0mnt
+	id 1sCbi9-00000006lBF-32KY
 	for linux-rockchip@lists.infradead.org;
-	Thu, 30 May 2024 09:02:26 +0000
+	Thu, 30 May 2024 09:04:40 +0000
 Received: from localhost (88-113-26-230.elisa-laajakaista.fi [88.113.26.230])
-	by fgw23.mail.saunalahti.fi (Halon) with ESMTP
-	id 51e6d162-1e63-11ef-80c8-005056bdfda7;
-	Thu, 30 May 2024 12:02:22 +0300 (EEST)
+	by fgw21.mail.saunalahti.fi (Halon) with ESMTP
+	id a254b3f7-1e63-11ef-aaf9-005056bdd08f;
+	Thu, 30 May 2024 12:04:35 +0300 (EEST)
 From: Andy Shevchenko <andy.shevchenko@gmail.com>
-Date: Thu, 30 May 2024 12:02:19 +0300
-To: Geert Uytterhoeven <geert@linux-m68k.org>
-Cc: "Peng Fan (OSS)" <peng.fan@oss.nxp.com>,
-	Linus Walleij <linus.walleij@linaro.org>,
+Date: Thu, 30 May 2024 12:04:34 +0300
+To: "Peng Fan (OSS)" <peng.fan@oss.nxp.com>
+Cc: Linus Walleij <linus.walleij@linaro.org>,
 	Thierry Reding <thierry.reding@gmail.com>,
 	Jonathan Hunter <jonathanh@nvidia.com>,
 	Dvorkin Dmitry <dvorkin@tibbo.com>, Wells Lu <wellslutw@gmail.com>,
@@ -85,18 +84,17 @@ Cc: "Peng Fan (OSS)" <peng.fan@oss.nxp.com>,
 	linux-mediatek@lists.infradead.org, imx@lists.linux.dev,
 	linux-aspeed@lists.ozlabs.org, openbmc@lists.ozlabs.org,
 	Peng Fan <peng.fan@nxp.com>
-Subject: Re: [PATCH v2 07/20] pinctrl: renesas: Use scope based of_node_put()
+Subject: Re: [PATCH v2 08/20] pinctrl: st: Use scope based of_node_put()
  cleanups
-Message-ID: <ZlhAm-giX6jNaUKr@surfacebook.localdomain>
+Message-ID: <ZlhBImaUrnddkm-r@surfacebook.localdomain>
 References: <20240504-pinctrl-cleanup-v2-0-26c5f2dc1181@nxp.com>
- <20240504-pinctrl-cleanup-v2-7-26c5f2dc1181@nxp.com>
- <CAMuHMdUD=1rpns_mLF2rMM-x5EnOK7TExaJxoJVkbXjVz1H8uQ@mail.gmail.com>
+ <20240504-pinctrl-cleanup-v2-8-26c5f2dc1181@nxp.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <CAMuHMdUD=1rpns_mLF2rMM-x5EnOK7TExaJxoJVkbXjVz1H8uQ@mail.gmail.com>
+In-Reply-To: <20240504-pinctrl-cleanup-v2-8-26c5f2dc1181@nxp.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240530_020224_441565_D3752936 
-X-CRM114-Status: GOOD (  10.17  )
+X-CRM114-CacheID: sfid-20240530_020438_021205_F9BB9D96 
+X-CRM114-Status: GOOD (  10.18  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,24 +106,39 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-TW9uLCBNYXkgMTMsIDIwMjQgYXQgMDE6NTk6MDNQTSArMDIwMCwgR2VlcnQgVXl0dGVyaG9ldmVu
-IGtpcmpvaXR0aToKPiBPbiBTYXQsIE1heSA0LCAyMDI0IGF0IDM6MTTigK9QTSBQZW5nIEZhbiAo
-T1NTKSA8cGVuZy5mYW5Ab3NzLm54cC5jb20+IHdyb3RlOgoKLi4uCgo+IFlvdSBtaXNzZWQgb25l
-IHRyaXZpYWwgY29udmVyc2lvbiwgcHJlc3VtYWJseSBiZWNhdXNlIG5vIGVycm9yIGhhbmRsaW5n
-Cj4gYW5kIHRodXMgbm8gb2Zfbm9kZV9wdXQoKSBpcyBpbnZvbHZlZD8KCk5vdGhpbmcgaXMgbWlz
-c2VkLiBUaGUgYmVsb3cgaXMgYSByZWR1bmRhbnQgY2hhbmdlLgoKLi4uCgo+IC0gICAgICAgZm9y
-X2VhY2hfY2hpbGRfb2Zfbm9kZShucCwgY2hpbGQpIHsKPiArICAgICAgIGZvcl9lYWNoX2NoaWxk
-X29mX25vZGVfc2NvcGVkKG5wLCBjaGlsZCkgewo+ICAgICAgICAgICAgICAgICBpZiAob2ZfcHJv
-cGVydHlfY291bnRfdTMyX2VsZW1zKGNoaWxkLCBSWk4xX1BJTlNfUFJPUCkgPiAwKQo+ICAgICAg
-ICAgICAgICAgICAgICAgICAgIGNvdW50Kys7Cj4gICAgICAgICB9Cj4gCj4gSWYgeW91IHByZWZl
-ciBub3QgdG8gaW5jbHVkZSB0aGlzCgpJIHByZWZlciB0aGlzIG5vdCB0byBiZSBpbmNsdWRlZCBh
-cyBpdCB3aWxsIGdpdmUgYSBtaXNsZWFkaW5nIHNpZ25hbHMgdG8gdGhlCnVzZSBvZiB0aGUgb3Jp
-Z2luYWwgQVBJKHMpLgoKLS0gCldpdGggQmVzdCBSZWdhcmRzLApBbmR5IFNoZXZjaGVua28KCgoK
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9j
-a2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0
-cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+Sat, May 04, 2024 at 09:20:06PM +0800, Peng Fan (OSS) kirjoitti:
+> From: Peng Fan <peng.fan@nxp.com>
+> 
+> Use scope based of_node_put() cleanup to simplify code.
+
+...
+
+>  	struct property *pp;
+>  	struct device *dev = info->dev;
+>  	struct st_pinconf *conf;
+> -	struct device_node *pins;
+> +	struct device_node *pins __free(device_node) = NULL;
+
+It's better to move it upper to follow reversed xmas tree order (okay, to some
+extent in this case).
+
+>  	phandle bank;
+>  	unsigned int offset;
+> -	int i = 0, npins = 0, nr_props, ret = 0;
+> +	int i = 0, npins = 0, nr_props;
+
+-- 
+With Best Regards,
+Andy Shevchenko
+
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
