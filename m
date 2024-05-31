@@ -4,76 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7E04EC25B75
-	for <linux-rockchip@archiver.kernel.org>; Fri, 31 May 2024 17:11:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 35654C25B7E
+	for <linux-rockchip@archiver.kernel.org>; Fri, 31 May 2024 17:30:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=llIx2grIJU6bKpFCpWoLC5eoyjKx8MrmlzmsHoSTWSo=; b=XTm2H3+lwNhZUZ
-	sPJNKJKkRWbf1+cmnzA0Zs+oSERZcosWVGN8aqlHOKZDbhk1yhz8ByI1GuM/3NmH0p7R9dwk2ZO+D
-	okbqGfOkU1oGvOnRDubMQ/+0JueJEOBpN9z6kO3/UqoDNuurNevSQQg63p8Z/i4FK0LNhV7+jw1xh
-	opYFUCXBGkCfB6hpKCh4y00UdkYmfV5pgrPv67ohPr0LDf83NgWWmHA+pThuDOYMJAXmI7FstMGu3
-	SK9Hbc8JINlpK9+DGIiyGoDJ2Q38Y9fhRlyNgBc7gRGM1c1mxTWT0ydkwW4GdiWuA7MaE8RTKpGIZ
-	HS88ZbzoDdTDU/dqRBIw==;
+	List-Owner; bh=UhZfn61QHkyUMwh9hhufmJlAJBFSXnbKZf+JdzVVYEg=; b=ZmUyrNLBFcTh6U
+	GsqCgKeAa4FfWyfZTEI0c1PguoUF2paa3Q/pw76tWbQHvAFv4s9hz2re4cfzSdmWE5xUeJiuEaCrj
+	NZ1JT/kmY8XezWvv1GIBdvQPYGXzJ5WQMJJ3YhKjIl95upqSu9CrEEKvb1BPfAmWOFAXwJljfHNzk
+	zUtJ9vTrvA6mpXSN1y8JGWN0SkGaU6+oxvQJlEJukELafUAwvzHmpacLrNmumxbc5c4yz7p6ASZi9
+	0l0Y+D7tkVX5gpFTacNl8i6/wUcN3oRwqYgqYbF95wQVyxdw0AtOEAm0m6FkF8nyEP5ze+vYsqqtc
+	5TLMpniNjQXD27SeXW1Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sD5me-0000000AyAC-0Kfm;
-	Fri, 31 May 2024 17:11:16 +0000
-Received: from fllv0015.ext.ti.com ([198.47.19.141])
+	id 1sD64v-0000000B0n9-08ug;
+	Fri, 31 May 2024 17:30:09 +0000
+Received: from mail-qk1-x733.google.com ([2607:f8b0:4864:20::733])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sD5ma-0000000Ay8Y-2o6q
+	id 1sD64j-0000000B0k3-1XP3
 	for linux-rockchip@lists.infradead.org;
-	Fri, 31 May 2024 17:11:14 +0000
-Received: from lelv0265.itg.ti.com ([10.180.67.224])
-	by fllv0015.ext.ti.com (8.15.2/8.15.2) with ESMTP id 44VHB4Lb055609;
-	Fri, 31 May 2024 12:11:04 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ti.com;
-	s=ti-com-17Q1; t=1717175464;
-	bh=C/gS8PcW18WiTFdp+AvzAMjJftH6gZ+FtjqwmJi1+/w=;
-	h=From:To:CC:Subject:Date:In-Reply-To:References;
-	b=Mf/W5Md7i8EUdgqg6vvqe9j1d55H0Kk9kXyx7xKFnQxMd6iCYBc7CHYWokeGoFVD9
-	 BYCCXcvy7I3k9AFzWZZGunCAilOeAutv8uVew8Zx26om1LEliD7igIN2sDnCdsDnqq
-	 REMIX9i7ipeC9doVB5dW14QhNEXteKQJVyf1AnXs=
-Received: from DLEE114.ent.ti.com (dlee114.ent.ti.com [157.170.170.25])
-	by lelv0265.itg.ti.com (8.15.2/8.15.2) with ESMTPS id 44VHB4DO022655
-	(version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=FAIL);
-	Fri, 31 May 2024 12:11:04 -0500
-Received: from DLEE101.ent.ti.com (157.170.170.31) by DLEE114.ent.ti.com
- (157.170.170.25) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.2507.23; Fri, 31
- May 2024 12:11:04 -0500
-Received: from lelvsmtp5.itg.ti.com (10.180.75.250) by DLEE101.ent.ti.com
- (157.170.170.31) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.2507.23 via
- Frontend Transport; Fri, 31 May 2024 12:11:03 -0500
-Received: from localhost (ti.dhcp.ti.com [172.24.227.95] (may be forged))
-	by lelvsmtp5.itg.ti.com (8.15.2/8.15.2) with ESMTP id 44VHB3OI071358;
-	Fri, 31 May 2024 12:11:03 -0500
-From: Devarsh Thakkar <devarsht@ti.com>
-To: <mchehab@kernel.org>, <hverkuil-cisco@xs4all.nl>,
-        <linux-media@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-        <benjamin.gaignard@collabora.com>, <sebastian.fricke@collabora.com>,
-        <ezequiel@vanguardiasur.com.ar>, <p.zabel@pengutronix.de>,
-        <linux-rockchip@lists.infradead.org>
-CC: <laurent.pinchart@ideasonboard.com>, <praneeth@ti.com>, <nm@ti.com>,
-        <vigneshr@ti.com>, <a-bhatia1@ti.com>, <j-luthra@ti.com>,
-        <b-brnich@ti.com>, <detheridge@ti.com>, <p-mantena@ti.com>,
-        <vijayp@ti.com>, <devarsht@ti.com>, <andrzej.p@collabora.com>,
-        <nicolas@ndufresne.ca>
-Subject: [PATCH v11 05/11] media: verisilicon : Use exported tables from v4l2-jpeg for hantro codec
-Date: Fri, 31 May 2024 22:41:02 +0530
-Message-ID: <20240531171102.1292423-1-devarsht@ti.com>
-X-Mailer: git-send-email 2.39.1
-In-Reply-To: <20240531170229.1270828-1-devarsht@ti.com>
-References: <20240531170229.1270828-1-devarsht@ti.com>
+	Fri, 31 May 2024 17:30:07 +0000
+Received: by mail-qk1-x733.google.com with SMTP id af79cd13be357-794ab20699cso80185685a.2
+        for <linux-rockchip@lists.infradead.org>; Fri, 31 May 2024 10:29:55 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1717176592; x=1717781392; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=dm7zqDMgip+WJ2XM2t5p8Qmnl2zluKwd7L3ZaHXLQCo=;
+        b=mUjHfYbqbdFfk/mgmwztE816mHUvrN1yGeMWH2oaUw7Kvet+M5qBBBYws/nQemG3oV
+         9uBgfaPz0QbVZCGBkSIe3fz2BnlqiubCU58WH3PU0bxwcmNp9WQghgmabhOu6j7rivBz
+         vp48Q6TZK9tJ9IfarO3N83lRFir07LXCdR22I=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1717176592; x=1717781392;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=dm7zqDMgip+WJ2XM2t5p8Qmnl2zluKwd7L3ZaHXLQCo=;
+        b=wZiu9fXcVB2W45CH4fwrGvIL8ScdX+McfCFDZ4aaPW6wjBYODK9VfRuCgRt8eKsP6g
+         ov4iHj+V82sccmXk5cCik6thwHOo+GkGUjW4a6XnefpHcmHeRFpT7RpVLfbuK3tZHdpu
+         WDyf1bMNdACjKX+b93WwpXRk219IaRqGmgnzNQStSb/QFb0uLRzOh6lqJ1bgUZSzojvZ
+         ptL4hG02U2oXoJ8SqYrO/ElELKxmDhIdLTpqnnSJMA5nSZ3gnb5Np9oXedmPElFIABmu
+         dK73W1xZJEYBauHmSGTNb8CypU6k4XV0nQhsiZGaa0z4IyuNd/cpuO7a0Yz0mgvn0cI+
+         i02w==
+X-Forwarded-Encrypted: i=1; AJvYcCUxqKLqN8m96F2w4HdVnrGl2K4MrMLEbTRQ170NhRwlewuOJ/yN+Y5KjyOhieRtxSA0eRZ2xIks9F1y9B+tf1fxCy5RJLn6K1ay/UGMg4K5edlz
+X-Gm-Message-State: AOJu0YzCuEeWnBIqFV7pWfPDK/FLZ6eBPJzlYRaQrcMnxfA/0ViO3W2O
+	O+AAmb0FPBW24nxjUbXUCqCfsWaD0rfRZ7pbo/dwZuBKU3hfk0UnAoouBLaSYsS1pzsINCRpGSu
+	Cd6L4
+X-Google-Smtp-Source: AGHT+IFRWfP92x/CKW3sDC/+haXFxKuhO1bPgYmuRIJuqrewREViK3CR9ycx9DUqNqRFx7babRz5ng==
+X-Received: by 2002:a05:620a:45ab:b0:792:c35d:9372 with SMTP id af79cd13be357-794f5c6484bmr326725285a.5.1717176591775;
+        Fri, 31 May 2024 10:29:51 -0700 (PDT)
+Received: from mail-qt1-f179.google.com (mail-qt1-f179.google.com. [209.85.160.179])
+        by smtp.gmail.com with ESMTPSA id af79cd13be357-794f2f11fa5sm73874785a.38.2024.05.31.10.29.49
+        for <linux-rockchip@lists.infradead.org>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 31 May 2024 10:29:50 -0700 (PDT)
+Received: by mail-qt1-f179.google.com with SMTP id d75a77b69052e-43fe3289fc5so15781cf.1
+        for <linux-rockchip@lists.infradead.org>; Fri, 31 May 2024 10:29:49 -0700 (PDT)
+X-Forwarded-Encrypted: i=1; AJvYcCXrwELY60AyBsvXcmXNdw1pPVQvJRUAZ/lEifM0gacgkyssGLhlNuszYmCFvkVRKH5syYhUMhc9HuTWew0zg8RLHYAcwefQZ0IjqEa/vtPYYVDZ
+X-Received: by 2002:a05:622a:4ac9:b0:43e:33f7:600c with SMTP id
+ d75a77b69052e-43ff4f8dc64mr3254021cf.19.1717176589297; Fri, 31 May 2024
+ 10:29:49 -0700 (PDT)
 MIME-Version: 1.0
-X-EXCLAIMER-MD-CONFIG: e1e8a2fd-e40a-4ac6-ac9b-f7e9cc9ee180
+References: <20240531-edp-panel-drop-v3-0-4c98b2b95e3a@linaro.org>
+ <7428a2f7-befc-6db8-76f4-3ca8dc12d31c@quicinc.com> <CAD=FV=Xcq-p5OxSnDJVF-Wp88ZfXOaOKJmh941ymy-f0wkhdhw@mail.gmail.com>
+ <197777e0-e6e1-7004-be27-edb98f8a235e@quicinc.com>
+In-Reply-To: <197777e0-e6e1-7004-be27-edb98f8a235e@quicinc.com>
+From: Doug Anderson <dianders@chromium.org>
+Date: Fri, 31 May 2024 10:29:33 -0700
+X-Gmail-Original-Message-ID: <CAD=FV=UUmnKuBCwLLjrg69kCi7MTjMDYAVtdWEb3yqeZc=-5iQ@mail.gmail.com>
+Message-ID: <CAD=FV=UUmnKuBCwLLjrg69kCi7MTjMDYAVtdWEb3yqeZc=-5iQ@mail.gmail.com>
+Subject: Re: [PATCH v3 0/3] drm/panel-edp: remove several legacy compatibles
+ used by the driver
+To: Jeffrey Hugo <quic_jhugo@quicinc.com>
+Cc: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>, Neil Armstrong <neil.armstrong@linaro.org>, 
+	Jessica Zhang <quic_jesszhan@quicinc.com>, Sam Ravnborg <sam@ravnborg.org>, 
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, 
+	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>, 
+	dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
+	linux-arm-msm@vger.kernel.org, linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240531_101112_820730_16FC6755 
-X-CRM114-Status: GOOD (  13.42  )
+X-CRM114-CacheID: sfid-20240531_103004_713834_9290F4DB 
+X-CRM114-Status: GOOD (  34.66  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,227 +100,60 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Use v4l2-jpeg core API to import reference quantization and huffman tables
-used for JPEG Encoding.
-
-Signed-off-by: Devarsh Thakkar <devarsht@ti.com>
-Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
-Acked-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
----
-V11: No change
-V10: Fix typo in commit message title
-V9: No change
-V8: Add Reviewed-by and Acked-by tags
-V1->V6 (No change, patch introduced in V7)
----
- .../media/platform/verisilicon/hantro_jpeg.c  | 128 ++----------------
- 1 file changed, 14 insertions(+), 114 deletions(-)
-
-diff --git a/drivers/media/platform/verisilicon/hantro_jpeg.c b/drivers/media/platform/verisilicon/hantro_jpeg.c
-index d07b1b449b61..fa4e8ee92c05 100644
---- a/drivers/media/platform/verisilicon/hantro_jpeg.c
-+++ b/drivers/media/platform/verisilicon/hantro_jpeg.c
-@@ -11,6 +11,7 @@
- #include <linux/build_bug.h>
- #include <linux/kernel.h>
- #include <linux/string.h>
-+#include <media/v4l2-jpeg.h>
- #include "hantro_jpeg.h"
- #include "hantro.h"
- 
-@@ -24,42 +25,6 @@
- #define HUFF_CHROMA_DC_OFF	394
- #define HUFF_CHROMA_AC_OFF	427
- 
--/* Default tables from JPEG ITU-T.81
-- * (ISO/IEC 10918-1) Annex K, tables K.1 and K.2
-- */
--static const unsigned char luma_q_table[] = {
--	0x10, 0x0b, 0x0a, 0x10, 0x18, 0x28, 0x33, 0x3d,
--	0x0c, 0x0c, 0x0e, 0x13, 0x1a, 0x3a, 0x3c, 0x37,
--	0x0e, 0x0d, 0x10, 0x18, 0x28, 0x39, 0x45, 0x38,
--	0x0e, 0x11, 0x16, 0x1d, 0x33, 0x57, 0x50, 0x3e,
--	0x12, 0x16, 0x25, 0x38, 0x44, 0x6d, 0x67, 0x4d,
--	0x18, 0x23, 0x37, 0x40, 0x51, 0x68, 0x71, 0x5c,
--	0x31, 0x40, 0x4e, 0x57, 0x67, 0x79, 0x78, 0x65,
--	0x48, 0x5c, 0x5f, 0x62, 0x70, 0x64, 0x67, 0x63
--};
--
--static const unsigned char chroma_q_table[] = {
--	0x11, 0x12, 0x18, 0x2f, 0x63, 0x63, 0x63, 0x63,
--	0x12, 0x15, 0x1a, 0x42, 0x63, 0x63, 0x63, 0x63,
--	0x18, 0x1a, 0x38, 0x63, 0x63, 0x63, 0x63, 0x63,
--	0x2f, 0x42, 0x63, 0x63, 0x63, 0x63, 0x63, 0x63,
--	0x63, 0x63, 0x63, 0x63, 0x63, 0x63, 0x63, 0x63,
--	0x63, 0x63, 0x63, 0x63, 0x63, 0x63, 0x63, 0x63,
--	0x63, 0x63, 0x63, 0x63, 0x63, 0x63, 0x63, 0x63,
--	0x63, 0x63, 0x63, 0x63, 0x63, 0x63, 0x63, 0x63
--};
--
--static const unsigned char zigzag[] = {
--	 0,  1,  8, 16,  9,  2,  3, 10,
--	17, 24, 32, 25, 18, 11,  4,  5,
--	12, 19, 26, 33, 40, 48, 41, 34,
--	27, 20, 13,  6,  7, 14, 21, 28,
--	35, 42, 49, 56, 57, 50, 43, 36,
--	29, 22, 15, 23, 30, 37, 44, 51,
--	58, 59, 52, 45, 38, 31, 39, 46,
--	53, 60, 61, 54, 47, 55, 62, 63
--};
--
- static const u32 hw_reorder[] = {
- 	 0,  8, 16, 24,  1,  9, 17, 25,
- 	32, 40, 48, 56, 33, 41, 49, 57,
-@@ -71,73 +36,6 @@ static const u32 hw_reorder[] = {
- 	38, 46, 54, 62, 39, 47, 55, 63
- };
- 
--/* Huffman tables are shared with CODA */
--static const unsigned char luma_dc_table[] = {
--	0x00, 0x01, 0x05, 0x01, 0x01, 0x01, 0x01, 0x01,
--	0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
--	0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07,
--	0x08, 0x09, 0x0a, 0x0b,
--};
--
--static const unsigned char chroma_dc_table[] = {
--	0x00, 0x03, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01,
--	0x01, 0x01, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00,
--	0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07,
--	0x08, 0x09, 0x0a, 0x0b,
--};
--
--static const unsigned char luma_ac_table[] = {
--	0x00, 0x02, 0x01, 0x03, 0x03, 0x02, 0x04, 0x03,
--	0x05, 0x05, 0x04, 0x04, 0x00, 0x00, 0x01, 0x7d,
--	0x01, 0x02, 0x03, 0x00, 0x04, 0x11, 0x05, 0x12,
--	0x21, 0x31, 0x41, 0x06, 0x13, 0x51, 0x61, 0x07,
--	0x22, 0x71, 0x14, 0x32, 0x81, 0x91, 0xa1, 0x08,
--	0x23, 0x42, 0xb1, 0xc1, 0x15, 0x52, 0xd1, 0xf0,
--	0x24, 0x33, 0x62, 0x72, 0x82, 0x09, 0x0a, 0x16,
--	0x17, 0x18, 0x19, 0x1a, 0x25, 0x26, 0x27, 0x28,
--	0x29, 0x2a, 0x34, 0x35, 0x36, 0x37, 0x38, 0x39,
--	0x3a, 0x43, 0x44, 0x45, 0x46, 0x47, 0x48, 0x49,
--	0x4a, 0x53, 0x54, 0x55, 0x56, 0x57, 0x58, 0x59,
--	0x5a, 0x63, 0x64, 0x65, 0x66, 0x67, 0x68, 0x69,
--	0x6a, 0x73, 0x74, 0x75, 0x76, 0x77, 0x78, 0x79,
--	0x7a, 0x83, 0x84, 0x85, 0x86, 0x87, 0x88, 0x89,
--	0x8a, 0x92, 0x93, 0x94, 0x95, 0x96, 0x97, 0x98,
--	0x99, 0x9a, 0xa2, 0xa3, 0xa4, 0xa5, 0xa6, 0xa7,
--	0xa8, 0xa9, 0xaa, 0xb2, 0xb3, 0xb4, 0xb5, 0xb6,
--	0xb7, 0xb8, 0xb9, 0xba, 0xc2, 0xc3, 0xc4, 0xc5,
--	0xc6, 0xc7, 0xc8, 0xc9, 0xca, 0xd2, 0xd3, 0xd4,
--	0xd5, 0xd6, 0xd7, 0xd8, 0xd9, 0xda, 0xe1, 0xe2,
--	0xe3, 0xe4, 0xe5, 0xe6, 0xe7, 0xe8, 0xe9, 0xea,
--	0xf1, 0xf2, 0xf3, 0xf4, 0xf5, 0xf6, 0xf7, 0xf8,
--	0xf9, 0xfa,
--};
--
--static const unsigned char chroma_ac_table[] = {
--	0x00, 0x02, 0x01, 0x02, 0x04, 0x04, 0x03, 0x04,
--	0x07, 0x05, 0x04, 0x04, 0x00, 0x01, 0x02, 0x77,
--	0x00, 0x01, 0x02, 0x03, 0x11, 0x04, 0x05, 0x21,
--	0x31, 0x06, 0x12, 0x41, 0x51, 0x07, 0x61, 0x71,
--	0x13, 0x22, 0x32, 0x81, 0x08, 0x14, 0x42, 0x91,
--	0xa1, 0xb1, 0xc1, 0x09, 0x23, 0x33, 0x52, 0xf0,
--	0x15, 0x62, 0x72, 0xd1, 0x0a, 0x16, 0x24, 0x34,
--	0xe1, 0x25, 0xf1, 0x17, 0x18, 0x19, 0x1a, 0x26,
--	0x27, 0x28, 0x29, 0x2a, 0x35, 0x36, 0x37, 0x38,
--	0x39, 0x3a, 0x43, 0x44, 0x45, 0x46, 0x47, 0x48,
--	0x49, 0x4a, 0x53, 0x54, 0x55, 0x56, 0x57, 0x58,
--	0x59, 0x5a, 0x63, 0x64, 0x65, 0x66, 0x67, 0x68,
--	0x69, 0x6a, 0x73, 0x74, 0x75, 0x76, 0x77, 0x78,
--	0x79, 0x7a, 0x82, 0x83, 0x84, 0x85, 0x86, 0x87,
--	0x88, 0x89, 0x8a, 0x92, 0x93, 0x94, 0x95, 0x96,
--	0x97, 0x98, 0x99, 0x9a, 0xa2, 0xa3, 0xa4, 0xa5,
--	0xa6, 0xa7, 0xa8, 0xa9, 0xaa, 0xb2, 0xb3, 0xb4,
--	0xb5, 0xb6, 0xb7, 0xb8, 0xb9, 0xba, 0xc2, 0xc3,
--	0xc4, 0xc5, 0xc6, 0xc7, 0xc8, 0xc9, 0xca, 0xd2,
--	0xd3, 0xd4, 0xd5, 0xd6, 0xd7, 0xd8, 0xd9, 0xda,
--	0xe2, 0xe3, 0xe4, 0xe5, 0xe6, 0xe7, 0xe8, 0xe9,
--	0xea, 0xf2, 0xf3, 0xf4, 0xf5, 0xf6, 0xf7, 0xf8,
--	0xf9, 0xfa,
--};
--
- /* For simplicity, we keep a pre-formatted JPEG header,
-  * and we'll use fixed offsets to change the width, height
-  * quantization tables, etc.
-@@ -291,10 +189,11 @@ jpeg_scale_quant_table(unsigned char *file_q_tab,
- 		       const unsigned char *tab, int scale)
- {
- 	int i;
-+	const u8 *zigzag;
- 
--	BUILD_BUG_ON(ARRAY_SIZE(zigzag) != JPEG_QUANT_SIZE);
- 	BUILD_BUG_ON(ARRAY_SIZE(hw_reorder) != JPEG_QUANT_SIZE);
- 
-+	v4l2_jpeg_get_zig_zag_scan(&zigzag);
- 	for (i = 0; i < JPEG_QUANT_SIZE; i++) {
- 		file_q_tab[i] = jpeg_scale_qp(tab[zigzag[i]], scale);
- 		reordered_q_tab[i] = jpeg_scale_qp(tab[hw_reorder[i]], scale);
-@@ -304,6 +203,7 @@ jpeg_scale_quant_table(unsigned char *file_q_tab,
- static void jpeg_set_quality(struct hantro_jpeg_ctx *ctx)
- {
- 	int scale;
-+	const u8 *luma_q_table, *chroma_q_table;
- 
- 	/*
- 	 * Non-linear scaling factor:
-@@ -314,21 +214,23 @@ static void jpeg_set_quality(struct hantro_jpeg_ctx *ctx)
- 	else
- 		scale = 200 - 2 * ctx->quality;
- 
--	BUILD_BUG_ON(ARRAY_SIZE(luma_q_table) != JPEG_QUANT_SIZE);
--	BUILD_BUG_ON(ARRAY_SIZE(chroma_q_table) != JPEG_QUANT_SIZE);
- 	BUILD_BUG_ON(ARRAY_SIZE(ctx->hw_luma_qtable) != JPEG_QUANT_SIZE);
- 	BUILD_BUG_ON(ARRAY_SIZE(ctx->hw_chroma_qtable) != JPEG_QUANT_SIZE);
- 
-+	v4l2_jpeg_get_reference_quantization_tables(&luma_q_table, &chroma_q_table);
- 	jpeg_scale_quant_table(ctx->buffer + LUMA_QUANT_OFF,
--			       ctx->hw_luma_qtable, luma_q_table, scale);
-+			       ctx->hw_luma_qtable, (const unsigned char *)luma_q_table, scale);
- 	jpeg_scale_quant_table(ctx->buffer + CHROMA_QUANT_OFF,
--			       ctx->hw_chroma_qtable, chroma_q_table, scale);
-+			       ctx->hw_chroma_qtable, (const unsigned char *)chroma_q_table, scale);
- }
- 
- void hantro_jpeg_header_assemble(struct hantro_jpeg_ctx *ctx)
- {
- 	char *buf = ctx->buffer;
-+	const u8 *luma_dc_table, *chroma_dc_table, *luma_ac_table, *chroma_ac_table;
- 
-+	v4l2_jpeg_get_reference_huffman_tables(&luma_dc_table,  &luma_ac_table, &chroma_dc_table,
-+					       &chroma_ac_table);
- 	memcpy(buf, hantro_jpeg_header,
- 	       sizeof(hantro_jpeg_header));
- 
-@@ -337,12 +239,10 @@ void hantro_jpeg_header_assemble(struct hantro_jpeg_ctx *ctx)
- 	buf[WIDTH_OFF + 0] = ctx->width >> 8;
- 	buf[WIDTH_OFF + 1] = ctx->width;
- 
--	memcpy(buf + HUFF_LUMA_DC_OFF, luma_dc_table, sizeof(luma_dc_table));
--	memcpy(buf + HUFF_LUMA_AC_OFF, luma_ac_table, sizeof(luma_ac_table));
--	memcpy(buf + HUFF_CHROMA_DC_OFF, chroma_dc_table,
--	       sizeof(chroma_dc_table));
--	memcpy(buf + HUFF_CHROMA_AC_OFF, chroma_ac_table,
--	       sizeof(chroma_ac_table));
-+	memcpy(buf + HUFF_LUMA_DC_OFF, luma_dc_table, V4L2_JPEG_REF_HT_DC_LEN);
-+	memcpy(buf + HUFF_LUMA_AC_OFF, luma_ac_table, V4L2_JPEG_REF_HT_AC_LEN);
-+	memcpy(buf + HUFF_CHROMA_DC_OFF, chroma_dc_table, V4L2_JPEG_REF_HT_DC_LEN);
-+	memcpy(buf + HUFF_CHROMA_AC_OFF, chroma_ac_table, V4L2_JPEG_REF_HT_AC_LEN);
- 
- 	jpeg_set_quality(ctx);
- }
--- 
-2.39.1
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGksCgpPbiBGcmksIE1heSAzMSwgMjAyNCBhdCA5OjUx4oCvQU0gSmVmZnJleSBIdWdvIDxxdWlj
+X2podWdvQHF1aWNpbmMuY29tPiB3cm90ZToKPgo+IE9uIDUvMzEvMjAyNCAxMDoyMCBBTSwgRG91
+ZyBBbmRlcnNvbiB3cm90ZToKPiA+IEhpLAo+ID4KPiA+IE9uIEZyaSwgTWF5IDMxLCAyMDI0IGF0
+IDk6MTjigK9BTSBKZWZmcmV5IEh1Z28gPHF1aWNfamh1Z29AcXVpY2luYy5jb20+IHdyb3RlOgo+
+ID4+Cj4gPj4gT24gNS8zMC8yMDI0IDU6MTIgUE0sIERtaXRyeSBCYXJ5c2hrb3Ygd3JvdGU6Cj4g
+Pj4+IFRoZXJlIGFyZSB0d28gd2F5cyB0byBkZXNjcmliZSBhbiBlRFAgcGFuZWwgaW4gZGV2aWNl
+IHRyZWUuIFRoZQo+ID4+PiByZWNvbW1lbmRlZCB3YXkgaXMgdG8gYWRkIGEgZGV2aWNlIG9uIHRo
+ZSBBVVggYnVzLCBpZGVhbGx5IHVzaW5nIHRoZQo+ID4+PiBlZHAtcGFuZWwgY29tcGF0aWJsZS4g
+VGhlIGxlZ2FjeSB3YXkgaXMgdG8gZGVmaW5lIGEgdG9wLWxldmVsIHBsYXRmb3JtCj4gPj4+IGRl
+dmljZSBmb3IgdGhlIHBhbmVsLgo+ID4+Pgo+ID4+PiBEb2N1bWVudCB0aGF0IGFkZGluZyBzdXBw
+b3J0IGZvciBlRFAgcGFuZWxzIGluIGEgbGVnYWN5IHdheSBpcyBzdHJvbmdseQo+ID4+PiBkaXNj
+b3VyYWdlZCAoaWYgbm90IGZvcmJpZGRlbiBhdCBhbGwpLgo+ID4+Pgo+ID4+PiBXaGlsZSB3ZSBh
+cmUgYXQgaXQsIGFsc28gZHJvcCBsZWdhY3kgY29tcGF0aWJsZSBzdHJpbmdzIGFuZCBiaW5kaW5n
+cyBmb3IKPiA+Pj4gZml2ZSBwYW5lbHMuIFRoZXNlIGNvbXBhdGlibGUgc3RyaW5ncyB3ZXJlIG5l
+dmVyIHVzZWQgYnkgYSBEVCBmaWxlCj4gPj4+IHByZXNlbnQgaW4gTGludXgga2VybmVsIGFuZCBt
+b3N0IGxpa2VseSB3ZXJlIG5ldmVyIHVzZWQgd2l0aCB0aGUKPiA+Pj4gdXBzdHJlYW0gTGludXgg
+a2VybmVsLgo+ID4+Pgo+ID4+PiBUaGUgZm9sbG93aW5nIGNvbXBhdGlibGVzIHdlcmUgbmV2ZXIg
+dXNlZCBieSB0aGUgZGV2aWNlcyBzdXBwb3J0ZWQgYnkKPiA+Pj4gdGhlIHVwc3RyZWFtIGtlcm5l
+bCBhbmQgYXJlIGEgc3ViamVjdCB0byBwb3NzaWJsZSByZW1vdmFsOgo+ID4+Pgo+ID4+PiAtIGxn
+LGxwMDk3cXgxLXNwYTEKPiA+Pj4gLSBzYW1zdW5nLGxzbjEyMmRsMDEtYzAxCj4gPj4+IC0gc2hh
+cnAsbGQtZDUxMTZ6MDFiCj4gPj4KPiA+PiBPayB0byBkcm9wIHRoZSBzaGFycCBvbmUgSSBhZGRl
+ZC4gIEl0IHNob3VsZCBiZSBhYmxlIHRvIGJlIGhhbmRsZWQgYnkKPiA+PiB0aGUgKG5ld2lzaCkg
+ZWRwLXBhbmVsLCBidXQgSSB0aGluayB0aGUgVEkgYnJpZGdlIGRyaXZlciBuZWVkcyBzb21lIHdv
+cmsKPiA+PiBmb3IgdGhlIHNwZWNpZmljIHBsYXRmb3JtIChubyBJMkMgY29ubmVjdGlvbikgdG8g
+dmVyaWZ5Lgo+ID4KPiA+IElzIHRoZSBwbGF0Zm9ybSBzdXBwb3J0ZWQgdXBzdHJlYW0/IElmIHNv
+LCB3aGljaCBwbGF0Zm9ybSBpcyBpdD8gSXMKPiA+IHRoZSBUSSBicmlkZ2UgY2hpcCB0aGUgdGkt
+c242NWRzaTg2PyBJZiBzbywgSSdtIGNvbmZ1c2VkIGhvdyB5b3UgY291bGQKPiA+IHVzZSB0aGF0
+IGJyaWRnZSBjaGlwIHdpdGhvdXQgYW4gaTJjIGNvbm5lY3Rpb24sIGJ1dCBwZXJoYXBzIEknbQo+
+ID4gbWlzdW5kZXJzdGFuZGluZy4gOi1QCj4KPiBZZXMsIHRoZSBwbGF0Zm9ybSBpcyB1cHN0cmVh
+bS4gIFRoZSA4OTk4IGxhcHRvcHMgKGNsYW1zaGVsbCkuICBJdCBpcyB0aGUKPiB0aS1zbjY1c2k4
+Ni4gIEkgc3VzcGVjdCB0aGUgSTJDIGNvbm5lY3Rpb24gd2FzIG5vdCBwb3B1bGF0ZWQgZm9yIGNv
+c3QKPiByZWFzb25zLCB0aGVuIGRldGVybWluZWQgaXRzIG11Y2ggbW9yZSBjb252ZW5pZW50IHRv
+IGhhdmUgaXQgYXMgZXZlcnkKPiBnZW5lcmF0aW9uIGFmdGVyIHRoYXQgSSd2ZSBzZWVuIGhhcyB0
+aGUgSTJDLgo+Cj4gSWYgeW91IGNoZWNrIHRoZSBkYXRhc2hlZXQgY2xvc2VseSwgdGhlIEkyQyBj
+b25uZWN0aW9uIGlzIG9wdGlvbmFsLiAgWW91Cj4gY2FuIGFsc28gY29uZmlndXJlIHRoZSBicmlk
+Z2UgaW5iYW5kIHVzaW5nIERTSSBjb21tYW5kcy4gIFRoaXMgaXMgd2hhdAo+IHRoZSBGVyBhbmQg
+V2luZG93cyBkb2VzLgo+Cj4gU28sIHRoZSBEVCBiaW5kaW5nIG5lZWRzIHRvIG1ha2UgdGhlIEky
+QyBwcm9wZXJ0eSBvcHRpb25hbCAodGhpcyBzaG91bGQKPiBiZSBiYWNrd2FyZHMgY29tcGF0aWJs
+ZSkuICBUaGUgZHJpdmVyIG5lZWRzIHRvIGRldGVjdCB0aGF0IHRoZSBJMkMKPiBjb25uZWN0aW9u
+IGlzIG5vdCBwcm92aWRlZCwgYW5kIGZhbGwgYmFjayB0byBEU0kgY29tbWFuZHMuICBSZWdtYXAg
+d291bGQKPiBiZSBuaWNlIGZvciB0aGlzLCBidXQgSSBnb3QgcHVzaGJhY2sgb24gdGhlIHByb3Bv
+c2FsLiAgVGhlbiBJIGdvdAo+IHNpZGV0cmFja2VkIGxvb2tpbmcgYXQgb3RoZXIgaXNzdWVzLgoK
+Q3JhenkhIEknbSBzdXJlIEkndmUgc2tpbW1lZCBvdmVyIHRoYXQgcGFydCBvZiB0aGUgdGktc242
+NWRzaTg2CmRhdGFzaGVldCBiZWZvcmUgYnV0IEkgZG9uJ3QgdGhpbmsgSSBpbnRlcm5hbGl6ZWQg
+aXQuIEkgZ3Vlc3MgaWYgeW91CmRpZCBpdCB0aGlzIHdheSB0aGVuIHlvdSdkIGluc3RhbnRpYXRl
+IGl0IGFzIGEgcGxhdGZvcm0gZGV2aWNlIGluc3RlYWQKb2YgYW4gaTJjIGRldmljZSBhbmQgdGhh
+dCB3b3VsZCBiZSBob3cgeW91J2QgZGV0ZWN0IHRoZSBkaWZmZXJlbmNlLiBJCmNvdWxkIGltYWdp
+bmUgdGhpcyBiZWluZyBhIGJpdCBvZiBhIGNoYWxsZW5nZSB0byBnZXQgd29ya2luZyBpbiB0aGUK
+ZHJpdmVyLgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18K
+TGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVh
+ZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1y
+b2NrY2hpcAo=
