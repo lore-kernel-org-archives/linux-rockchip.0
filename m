@@ -4,110 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C9695C27C44
-	for <linux-rockchip@archiver.kernel.org>; Fri, 31 May 2024 07:07:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CB0B2C25B7C
+	for <linux-rockchip@archiver.kernel.org>; Fri, 31 May 2024 11:28:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=kyde/reZnwd4xLVhXaut6uD8Ut9JlPAZ7bvYO+x2dFw=; b=TPZxOihMmVFZ0z
-	OwJBg20sGBOkoC7Cbb3e3j22L56KtdfF4puF69jE8IQ9njmzXfbx2Q4mhNr5GUHaVXwKzpvtetH50
-	ZEIwFfMB4JJyHZkzNspZeHqHyYk7Bas1ZBH/qmXNvXlmH1e0vouZtSDAnQmJD+nFrrJQPGdWoFArL
-	dNkWM6HC/E6Jq9ETJO3IaFs6z07yTO0WvDNcscQldyl6PwREAaVlLCKV+X6BrrvNBva8Ox2fFMAFn
-	NITDQ8FtN0NRz/1/iXnYS60XlzGbaLcSWC3Mc2zsgowfBj+go3SPe3mvTfNAmb2SkUy71bnmmsrZG
-	sOwh72OuFpjeDV/weIEw==;
+	List-Owner; bh=aP/050Y93ISR11sdjyU8DpIcNUYMQjBQnkIBr4yKCYI=; b=ewqQvHqHceQt6Q
+	aWHkedyuiZFDBuiX5djqcUhY23QC6JdZnu5/r4Zl5NLiVgfeYKxqYGgv1Z7kNOCKCuUohH/wIPNPl
+	sVcCVnGKTdgofbosCbY00iTqF7GV3xKFTeFHrRUg4eBhtH+5f71m1o75d4hsaiHb1eed4yC8v13FW
+	HUfEgoU4iZMv0iRo3eZIXqqkLHNAdKtWSOitupLJhEPTLXJDN2UUV2BGg7VUCWgLoVGe6yWPpsAVB
+	l5QpE+LFeF+X7BnAe1NVBk/DVcqkFZ+8wOgntyIyS/VH83YgNXSIZu+rP0cpgZkweaJ4rCTH9mIXy
+	0gg6Sawri0F+BYMAumXg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sCwM3-00000009TGi-1pP6;
-	Fri, 31 May 2024 07:07:11 +0000
-Received: from mail-oo1-f47.google.com ([209.85.161.47])
+	id 1sD0Qh-0000000A4sz-1B7f;
+	Fri, 31 May 2024 11:28:15 +0000
+Received: from smtp.forwardemail.net ([149.28.215.223])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sCwLz-00000009TFJ-0x8T;
-	Fri, 31 May 2024 07:07:08 +0000
-Received: by mail-oo1-f47.google.com with SMTP id 006d021491bc7-5b970a97e8eso993849eaf.1;
-        Fri, 31 May 2024 00:07:04 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1717139224; x=1717744024;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=ayp9OTJcx8xBTEOWGr76ffez+fesdX+4XqGBVIDxEaQ=;
-        b=gFSNU3Qixvx7abSpL8M39QguIemtRokJEMiTfRVFVckaeiSBWm/4Dve60D6Mk6/Ukx
-         Ij2iidFdu+AZR+lOCLfjvxee9MgqjHOAqqgo9aKblZxoFDVbhfp17umdsjOgaESFF8yq
-         thI4wx17Z82FG8FdT/lK1iM5opWOvhBP3Ma8RvjoElQThMpK2xyL8fMxrmFZc3ZLNaak
-         8WwXQ+FYwqKbcankjC8ePnKI0C6rjanwzlW9KnPgp5up3TF88/Pv+lgmby2ICSyWH/Cf
-         2fQeNWLZz779bny+8pcFIl0eZzUlqcanDXFpCPKQBOPOpx+DBAnMTAdLh+Nf7sr7fz2a
-         OMjg==
-X-Forwarded-Encrypted: i=1; AJvYcCWoCdIN7nOEO6FIGCnKSn5Eu0bij36ktPv4PXyTOMp+VCZ6eIS1yTX6Odf4TBMknX2TTQux8GuqbBFSXY2b1c6p1I1+WCfdVHfQr5psiFulU6VwozTpLj1mYIdzVM4w9HQDAN5kz0ffVTn/eCj534Qr7i7/8PQL1tcegi6+fm8BrG+m6k4nvz3XcudiWY+BoDRVPw+Yhg+H3vRW5uEgIlwmLkOB8xCDnIs6hr0BeK3OiF6XroPefqUMXYOe9Z4=
-X-Gm-Message-State: AOJu0YyeTtjEnbV6ckF7bdL1J70FWTzlF34R+uwILbJmedWxD1g8BkVV
-	0QEcZFg9RKakcIPqI0/AZfxf70pvpMYX0gLJ5K1kyTHYjMiD6ER1DLiSxzUL
-X-Google-Smtp-Source: AGHT+IEvw8EaNVAIsUueI9lry6ganIkRRYHroy3+qisIhM7iH7/OZBwJi/3uyOMzOOwDcp76t/gcmA==
-X-Received: by 2002:a05:6820:1aca:b0:5b2:bc0:f387 with SMTP id 006d021491bc7-5ba05d3212amr1200272eaf.5.1717139223694;
-        Fri, 31 May 2024 00:07:03 -0700 (PDT)
-Received: from mail-oo1-f50.google.com (mail-oo1-f50.google.com. [209.85.161.50])
-        by smtp.gmail.com with ESMTPSA id 006d021491bc7-5ba004f25a0sm268240eaf.42.2024.05.31.00.07.03
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 31 May 2024 00:07:03 -0700 (PDT)
-Received: by mail-oo1-f50.google.com with SMTP id 006d021491bc7-5b5254f9c32so990361eaf.0;
-        Fri, 31 May 2024 00:07:03 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AJvYcCWuwsdsFjOi6htPU2WkKHYpnN62jm/vCtQOe8+ONLKSj/4ZDWEfKIe9HD4sp2/2m+HcVg6C8YM2H9vnry2Mr4J/l9LEaTi/F5DZUuZ+7zPyxkR4CDeJWj/iVYTdV+PsyUDnSL6pRihy8A9FM9Cbt3y0FkX9IXZ3MRjhlXjPc9ZkMFB4X7uHvkXnC/UP2hiMvUyOT20mBfrg6LqVYyD++QooWPSJW5s1hfHVfjY1DDUkL4w8Zhk6wm9d3kXnNO4=
-X-Received: by 2002:a25:5f46:0:b0:df4:f149:1fc7 with SMTP id
- 3f1490d57ef6-dfa73dc4a2dmr974775276.58.1717139203004; Fri, 31 May 2024
- 00:06:43 -0700 (PDT)
+	id 1sD0Qd-0000000A4ph-2SBV
+	for linux-rockchip@lists.infradead.org;
+	Fri, 31 May 2024 11:28:13 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
+ h=Content-Transfer-Encoding: Content-Type: In-Reply-To: From: References:
+ Cc: To: Subject: MIME-Version: Date: Message-ID; q=dns/txt;
+ s=fe-e1b5cab7be; t=1717154860;
+ bh=N2xogLUhalbqd5Rj5JxRpBYbX5aMNbX37zbmgE6qPbM=;
+ b=SvhJgXXEbHksx2zo7oz/sG9pvBBV2H5lstqyss23vfvbStqYXWBeuGiE81nb7g5TAzdJ5bI7V
+ CDJWuwszcTQO7FFPGxM0J1P9QOML2y9bRsSYl+Kkx7sYHF2w53zj71m7qIFu+jVr+g0YdrRPAnd
+ sQXxnGT21VHRXPBzjIKewSZgmCtwHoHCvfDOUi20nFxecImYuzhPL1JrGECa0bCvAiQs7P81ozS
+ CuJwucilMKfXkhnPKlqHqU6bIVojFZPp6Iuiba5I15uNlFXTt0apRVYoynqErEn3/M77XghR/dC
+ hQYs0nQ1fXeC1K21B0J8T0ixL7h6CKwJWAiEFjgT7Qlw==
+Message-ID: <607f4da8-99b2-4379-9567-4bfd2744eab3@kwiboo.se>
+Date: Fri, 31 May 2024 13:27:31 +0200
 MIME-Version: 1.0
-References: <20240504-pinctrl-cleanup-v2-0-26c5f2dc1181@nxp.com>
- <CAMuHMdVprgpjDP6PDn7appofJv8Tv30nRA4+7n4sR8n6n4qy+g@mail.gmail.com> <DU0PR04MB9417FF2632A278BF6605AE1F88FC2@DU0PR04MB9417.eurprd04.prod.outlook.com>
-In-Reply-To: <DU0PR04MB9417FF2632A278BF6605AE1F88FC2@DU0PR04MB9417.eurprd04.prod.outlook.com>
-From: Geert Uytterhoeven <geert@linux-m68k.org>
-Date: Fri, 31 May 2024 09:06:30 +0200
-X-Gmail-Original-Message-ID: <CAMuHMdW01HtY7d+L=44czH_dqV6bresLeF=SRqyn9p=jk3MTAw@mail.gmail.com>
-Message-ID: <CAMuHMdW01HtY7d+L=44czH_dqV6bresLeF=SRqyn9p=jk3MTAw@mail.gmail.com>
-Subject: Re: [PATCH v2 00/20] pinctrl: Use scope based of_node_put() cleanups
-To: Peng Fan <peng.fan@nxp.com>
-Cc: "Peng Fan (OSS)" <peng.fan@oss.nxp.com>, Linus Walleij <linus.walleij@linaro.org>, 
-	Thierry Reding <thierry.reding@gmail.com>, Jonathan Hunter <jonathanh@nvidia.com>, 
-	Dvorkin Dmitry <dvorkin@tibbo.com>, Wells Lu <wellslutw@gmail.com>, 
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>, Alexandre Torgue <alexandre.torgue@foss.st.com>, 
-	Emil Renner Berthing <kernel@esmil.dk>, Jianlong Huang <jianlong.huang@starfivetech.com>, 
-	Hal Feng <hal.feng@starfivetech.com>, Orson Zhai <orsonzhai@gmail.com>, 
-	Baolin Wang <baolin.wang@linux.alibaba.com>, Chunyan Zhang <zhang.lyra@gmail.com>, 
-	Viresh Kumar <vireshk@kernel.org>, Shiraz Hashim <shiraz.linux.kernel@gmail.com>, 
-	"soc@kernel.org" <soc@kernel.org>, Krzysztof Kozlowski <krzk@kernel.org>, 
-	Sylwester Nawrocki <s.nawrocki@samsung.com>, Alim Akhtar <alim.akhtar@samsung.com>, 
-	Geert Uytterhoeven <geert+renesas@glider.be>, Patrice Chotard <patrice.chotard@foss.st.com>, 
-	Heiko Stuebner <heiko@sntech.de>, Damien Le Moal <dlemoal@kernel.org>, 
-	Ludovic Desroches <ludovic.desroches@microchip.com>, 
-	Nicolas Ferre <nicolas.ferre@microchip.com>, 
-	Alexandre Belloni <alexandre.belloni@bootlin.com>, Claudiu Beznea <claudiu.beznea@tuxon.dev>, 
-	Aisheng Dong <aisheng.dong@nxp.com>, Fabio Estevam <festevam@gmail.com>, 
-	Shawn Guo <shawnguo@kernel.org>, Jacky Bai <ping.bai@nxp.com>, 
-	Pengutronix Kernel Team <kernel@pengutronix.de>, Chester Lin <chester62515@gmail.com>, 
-	Matthias Brugger <mbrugger@suse.com>, 
-	"Ghennadi Procopciuc (OSS)" <ghennadi.procopciuc@oss.nxp.com>, Sean Wang <sean.wang@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Sascha Hauer <s.hauer@pengutronix.de>, Andrew Jeffery <andrew@codeconstruct.com.au>, 
-	Joel Stanley <joel@jms.id.au>, Dan Carpenter <dan.carpenter@linaro.org>, 
-	Tony Lindgren <tony@atomide.com>, Stephen Warren <swarren@wwwdotorg.org>, 
-	"linux-gpio@vger.kernel.org" <linux-gpio@vger.kernel.org>, 
-	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, 
-	"linux-tegra@vger.kernel.org" <linux-tegra@vger.kernel.org>, 
-	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, 
-	"linux-stm32@st-md-mailman.stormreply.com" <linux-stm32@st-md-mailman.stormreply.com>, 
-	"linux-samsung-soc@vger.kernel.org" <linux-samsung-soc@vger.kernel.org>, 
-	"linux-renesas-soc@vger.kernel.org" <linux-renesas-soc@vger.kernel.org>, 
-	"linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, 
-	"linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>, 
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, 
-	"imx@lists.linux.dev" <imx@lists.linux.dev>, 
-	"linux-aspeed@lists.ozlabs.org" <linux-aspeed@lists.ozlabs.org>, 
-	"openbmc@lists.ozlabs.org" <openbmc@lists.ozlabs.org>, 
-	Emil Renner Berthing <emil.renner.berthing@canonical.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [RFC PATCH] arm64: dts: rockchip: Make preparations for
+ per-RK3588-variant OPPs
+To: Dragan Simic <dsimic@manjaro.org>, Alexey Charkov <alchark@gmail.com>
+Cc: linux-rockchip@lists.infradead.org, heiko@sntech.de,
+ linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org,
+ robh+dt@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
+ linux-kernel@vger.kernel.org, quentin.schulz@cherry.de, wens@kernel.org,
+ daniel.lezcano@linaro.org, didi.debian@cknow.org,
+ krzysztof.kozlowski+dt@linaro.org, viresh.kumar@linaro.org
+References: <673dcf47596e7bc8ba065034e339bb1bbf9cdcb0.1716948159.git.dsimic@manjaro.org>
+ <CABjd4YxD41DEkBCZfkznLboEY9ZVOfTCLcj4S_kkcsVswbANyQ@mail.gmail.com>
+ <8f8623e29a479c4108141302e708dc3b@manjaro.org>
+ <CABjd4Yy4RMg+6-4ygV0MSwJj5LReY-ymbctq4PPfVZ6L+c1tsw@mail.gmail.com>
+ <166cc4e46f31644a50306625b2ab18a6@manjaro.org>
+ <CABjd4YzDNQa45=KC_t0xnTDrH+g-oUrcpgP55oOj7JcAuu7uFw@mail.gmail.com>
+ <82db817a908b761d8c3d73ea04714314@manjaro.org>
+Content-Language: en-US
+From: Jonas Karlman <jonas@kwiboo.se>
+In-Reply-To: <82db817a908b761d8c3d73ea04714314@manjaro.org>
+X-Report-Abuse-To: abuse@forwardemail.net
+X-Report-Abuse: abuse@forwardemail.net
+X-Complaints-To: abuse@forwardemail.net
+X-ForwardEmail-Version: 0.4.40
+X-ForwardEmail-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
+ 149.28.215.223
+X-ForwardEmail-ID: 6659b429f6613cab14c70b44
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240531_000707_294561_C19E00CD 
-X-CRM114-Status: GOOD (  30.35  )
+X-CRM114-CacheID: sfid-20240531_042811_693753_5BD3A181 
+X-CRM114-Status: GOOD (  16.02  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -119,43 +81,90 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGkgUGVuZywKCk9uIEZyaSwgTWF5IDMxLCAyMDI0IGF0IDU6MDfigK9BTSBQZW5nIEZhbiA8cGVu
-Zy5mYW5AbnhwLmNvbT4gd3JvdGU6Cj4gPiBTdWJqZWN0OiBSZTogW1BBVENIIHYyIDAwLzIwXSBw
-aW5jdHJsOiBVc2Ugc2NvcGUgYmFzZWQgb2Zfbm9kZV9wdXQoKQo+ID4gY2xlYW51cHMKPiA+IE9u
-IFNhdCwgTWF5IDQsIDIwMjQgYXQgMzoxMuKAr1BNIFBlbmcgRmFuIChPU1MpIDxwZW5nLmZhbkBv
-c3MubnhwLmNvbT4KPiA+IHdyb3RlOgo+ID4gPiBVc2Ugc2NvcGUgYmFzZWQgb2Zfbm9kZV9wdXQo
-KSB0byBzaW1wbGlmeSBjb2RlLiBJdCByZWR1Y2VzIHRoZSBjaGFuY2UKPiA+ID4gb2YgZm9yZ2V0
-dGluZyBvZl9ub2RlX3B1dCgpLCBhbmQgYWxzbyBzaW1wbGlmaWVzIGVycm9yIGhhbmRsaW5nIHBh
-dGguCj4gPiA+IEkgbm90IGFibGUgdG8gdGVzdCB0aGUgY2hhbmdlcyBvbiBhbGwgdGhlIGhhcmR3
-YXJlcywgc28gZHJpdmVyIG93bmVycywKPiA+ID4gcGxlYXNlIGhlbHAgcmV2aWV3IHdoZW4geW91
-IGhhdmUgdGltZS4KPiA+ID4KPiA+ID4gVGhpcyBwYXRjaHNldCB3YXMgaW5zcGlyZWQgZnJvbSBE
-YW4ncyBjb21tZW50cyBvbiBwaW5jdHJsLXNjbWktaW14LmMsCj4gPiA+IHRoYW5rcy4KPiA+ID4K
-PiA+ID4gU2lnbmVkLW9mZi1ieTogUGVuZyBGYW4gPHBlbmcuZmFuQG54cC5jb20+Cj4gPgo+ID4g
-QW5keSdzIHF1ZXN0aW9uIGFib3V0IGNvZGUgZ2VuZXJhdGlvbiBvbiBhIHJlbGF0ZWQgcGF0Y2gg
-bWFkZSBtZSB3b25kZXIsCj4gPiB0b28uCj4gPgo+ID4gT24gYXJtMzIsIGEgY29udmVyc2lvbiB0
-byBmb3JfZWFjaF9jaGlsZF9vZl9ub2RlX3Njb3BlZCgpIHNlZW1zIHRvIGNvc3QgY2EuCj4gPiA0
-OCBieXRlcyBvZiBhZGRpdGlvbmFsIGNvZGUsIHJlZ2FyZGxlc3Mgb2Ygd2hldGhlciB0aGVyZSB3
-ZXJlIGV4cGxpY2l0Cj4gPiBjbGVhbnVwcyBiZWZvcmUgb3Igbm90Lgo+ID4KPiA+IEkgY2hlY2tl
-ZCAicGluY3RybDogcmVuZXNhczogVXNlIHNjb3BlIGJhc2VkIG9mX25vZGVfcHV0KCkgY2xlYW51
-cHMiLCBhbmQgYWxsCj4gPiBidXQgdGhlIGNvbnZlcnNpb25zIGluICpfZHRfbm9kZV90b19tYXAo
-KSBjb3N0IDQ4IGJ5dGVzIGVhY2guCj4KPiBJIGFtIG5vdCBzdXJlIHRoaXMgaXMgYW4gaXNzdWUg
-b3IgZWxzZS4gV2hhdCB3b3VsZCB5b3Ugc3VnZ2VzdCBtZSB0byBkbz8KPiBJZiB5b3UgdGhpbmsg
-ZXh0cmEgNDhieXRlcyBjb25zdW1wdGlvbiBpcyBub3QgZ29vZCBoZXJlLCBmZWVsIGZyZWUgdG8g
-ZHJvcCB0aGUKPiBwYXRjaC4KCkkgc3VnZ2VzdCBkb2luZyBub3RoaW5nIGFib3V0IHRoaXMuICBJ
-IGp1c3Qgd2FudGVkIHBlb3BsZSB0byBiZSBhd2FyZQpvZiB0aGUgaW1wYWN0LiAgSSBndWVzcyBp
-dCdzIGp1c3QgcGFydCBvZiB0aGUgc2xvdyBidXQgc3RlYWR5IGluY3JlYXNlCm9mIGtlcm5lbCBz
-aXplIChjYS4gMjAtMzAgS2lCL3JlbGVhc2UpLi4uIDstKQoKR3J7b2V0amUsZWV0aW5nfXMsCgog
-ICAgICAgICAgICAgICAgICAgICAgICBHZWVydAoKLS0gCkdlZXJ0IFV5dHRlcmhvZXZlbiAtLSBU
-aGVyZSdzIGxvdHMgb2YgTGludXggYmV5b25kIGlhMzIgLS0gZ2VlcnRAbGludXgtbTY4ay5vcmcK
-CkluIHBlcnNvbmFsIGNvbnZlcnNhdGlvbnMgd2l0aCB0ZWNobmljYWwgcGVvcGxlLCBJIGNhbGwg
-bXlzZWxmIGEgaGFja2VyLiBCdXQKd2hlbiBJJ20gdGFsa2luZyB0byBqb3VybmFsaXN0cyBJIGp1
-c3Qgc2F5ICJwcm9ncmFtbWVyIiBvciBzb21ldGhpbmcgbGlrZSB0aGF0LgogICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgIC0tIExpbnVzIFRvcnZhbGRzCgpfX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QK
-TGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFk
-Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+Hi Alexey and Dragan,
+
+On 2024-05-30 21:31, Dragan Simic wrote:
+> Hello Alexey,
+> 
+
+[snip]
+
+>>>>> That way we'll have no roadblocks if, at some point, we end up with
+>>>>> having
+>>>>> different OPPs defined for the RK3588 and the RK3588S variants.  Or
+>>>>> maybe
+>>>>> even for the RK3582, which we don't know much about yet.
+>>>>
+>>>> Guess we'll deal with that one once we stumble upon an actual RK3582
+>>>> board out in the wild and heading to the mainline kernel tree :)
+>>>
+>>> Of course, that was just an example for the future use.
+>>
+>> In fact, I've just discovered that Radxa has recently released Rock 5C
+>> Lite which is based on RK3582, and starts at just $29 for the 1GB
+>> version, making it interesting for tinkering. Especially given that
+>> its GPU, one of the big-core clusters and one of the VPU cores seem to
+>> be disabled in software (u-boot) rather than in hardware, which means
+>> there is some chance that a particular SoC specimen would actually
+>> have them in a working condition and possible to re-enable at no cost.
+>> Ordered myself one to investigate :)
+> 
+> Yes, I also saw the RK3582-based ROCK 5C Lite a couple of days ago. :)
+> It seems that the disabled IP blocks are detected as defective during
+> the manufacturing, which means that they might work correctly, or might
+> actually misbehave.  It seems similar to the way old three-core AMD
+> Phenom II CPUs could sometimes be made quad-core.
+> 
+
+I can confirm that the RK3582 include ip-state in OTP indicating
+unusable cores, any unusable cpu core cannot be taken online and stalls
+Linux kernel a few extra seconds during boot.
+
+Started working on a patch for U-Boot to remove any broken cpu core
+and/or cluster nodes, similar to what vendor U-Boot does, adopted to
+work with a mainline DT for RK3588.
+
+On one of my ROCK 5C Lite board one of the cpu cores is unusable, U-Boot
+removes the related cpu cluster nodes. On another ROCK 5C Lite board one
+rkvdec core is only marked unusable and all cpu cores can be taken
+online, U-Boot does nothing in this case. Guessing we should apply
+similar policy as vendor U-Boot and disable cores anyway.
+
+Following commit contains early work-in-progress and some debug output.
+
+https://github.com/Kwiboo/u-boot-rockchip/commit/8cdf606e616baa36751f3b4adcfaefc781126c8c
+
+Booting ROCK 5C Lite boards using U-Boot generic-rk3588_defconfig:
+
+ROCK 5C Lite v1.1 (RK3582 with 1 bad cpu core):
+
+  cpu-code: 3582
+  cpu-version: 08 10
+  data: fe 21
+  package: 11
+  specification: 01
+  ip-state: 10 00 00
+  bad-state: cpu core 4
+
+ROCK 5C Lite v1.1 (RK3582 with 1 bad rkvdec core):
+
+  cpu-code: 3582
+  cpu-version: 08 00
+  data: fe 21
+  package: 11
+  specification: 01
+  ip-state: 00 80 00
+  bad-state: rkvdec core 1
+
+Regards,
+Jonas
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
