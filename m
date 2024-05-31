@@ -4,62 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1A97AC27C4F
-	for <linux-rockchip@archiver.kernel.org>; Fri, 31 May 2024 22:41:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 87B2EC25B75
+	for <linux-rockchip@archiver.kernel.org>; Fri, 31 May 2024 23:15:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
-	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=9ElwhVauET+JF5A30omJpqFVAC5QP5IBzdBuiA9+W7w=; b=2ETUsv7mkxUxRtCz8iVlggyBes
-	5QZfAsWelRXEsqB3eXzzwUM3ECrgSP6Io/dw+eYbKGZOHZMCLR3SayAeI5mo/Z4+ukL9tVmPaMuCT
-	2Hz9z8hB4Z2FmJMauuHaAurkAC35FmvoSeSEACwpUNtVW70DxVuwTwVuZW8QTgyWO4/jX159qYgvL
-	5k2ZD4FpDLORqKj6Gt5ESkfSQEuveJRI+VosCw6kvkTkNDjvPi0+reivlDNYPDg2xccqRaef1NEHF
-	j1WeXAQyYmYy6t+CH/alR85yugQ2LJZvbnl3JHz2SU1iTua8Yy37Valja8og/joIUUAc3qk1LTfri
-	ikiLIyOw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=ZRm0Ie9PabcMpi++NC7yjpMW2h8rzvvr3yso5ekRVt8=; b=Ov7fcZbwoGmWjt
+	guVryMl8h2ipBhuFc1wweuLIiAj4vTcVHqlVaT+ldoxsDqXgqjuSlONlpAd3K68KsI7zWdVWx16xJ
+	Q7k7MXc8FQFiF6LkJaU+D3B4crLCgSTqHBBAxXhfLXd5dVP/ZLhQRW6+lzVesLkddrfI5mkPa2Vlf
+	Cnot51gbBMY19ZSiPYKpFMWHDOT5cfyG48ITY7prXfoSIugoGHYuY593IbprLY01+Jpdg/VIqq5i5
+	MM7NImcOqXf2S44TERSUmM96PZCqLuK0S4Dpu4Snz42T/ygrISfgF6Dibp/JuyWGf5JSpnTr3K0v/
+	pcIzf+AWZMfjdY5DTeIg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sDAwN-0000000Bc9i-2zGe;
-	Fri, 31 May 2024 22:41:39 +0000
-Received: from mail.manjaro.org ([2a01:4f8:c0c:51f3::1])
+	id 1sDBT8-0000000Beq6-46nb;
+	Fri, 31 May 2024 23:15:30 +0000
+Received: from smtp.forwardemail.net ([149.28.215.223])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sDAwJ-0000000Bc9F-2UQg;
-	Fri, 31 May 2024 22:41:37 +0000
+	id 1sDBT5-0000000BeoO-3Kjf
+	for linux-rockchip@lists.infradead.org;
+	Fri, 31 May 2024 23:15:29 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
+ h=Content-Transfer-Encoding: Content-Type: In-Reply-To: From: References:
+ Cc: To: Subject: MIME-Version: Date: Message-ID; q=dns/txt;
+ s=fe-e1b5cab7be; t=1717197310;
+ bh=NT5VlfpAzQy5RqRKCg0k7PinYB0pq9c+JH44HfHvY7g=;
+ b=eluFq7dWDBPkW+exCejdkAN4T+k2Y9LF/M8JHAC2ell/udmPgto3k/ewXzaafSlaa5EGEGY4+
+ QZe1o426QDPplYp3Hw1+4UTC1zuLAKb4s06xn7ke5zNoprAk8wogymAERT/AhwrIzJkdijiD/Y6
+ m43Z0asJr2R1xJKf4R35tjNUgTdF+znt4+U6ic/8rtOpCe5B0y9YzW68gsVzMpBod84zzMFep+n
+ etLENzhCsIgcLWXnS4Mo5Ug/PYrXFJ2DHjo+MsbY/zt4owuMqmjgkIyRRPEcpZWXoY/rmuBabWS
+ oibkrfBV+Yd7gsA1QNHdm2wXX5KEUXZORKWbp8PtkmOw==
+Message-ID: <33ee8446-aa01-47df-8e20-5ae2d384ed0e@kwiboo.se>
+Date: Sat, 1 Jun 2024 01:15:03 +0200
 MIME-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
-	t=1717195293;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=aNBMrZICb0wQxUkjNFmtIiPriop70XcjlnulR8nloS8=;
-	b=JVHMu99RoO1MT9X1bxJXfce1oVrxoIfGboFsOiNNYsbGJSC35fCmip/RkAkBd1wAfh8nzX
-	0XM1lzo9Ir/lFiD4vvDPG7Q19ymMTPLkbKtpmjwZG6aQE1XXAppO00Hwy9HdZh4MD99WKF
-	M3QM9VI58HHixZSfF91wFxXfSJ3joJ1R92puaoKSmppWd7fnhzduQb4YvdwKvPPCSR8rZj
-	dMFfx9M1N3+Y9ZWW/M/PSPdh7kYxWNCEUc1sGpF9qvuTrxEOcXrnOg/B4ESwQNuhKSjKYp
-	kjGAsBghKDDvM+CM2BQBJra4YmZjSsBjgnQS5RxdSIw2DNV9Rot2flicBCm/7w==
-Date: Sat, 01 Jun 2024 00:41:32 +0200
-From: Dragan Simic <dsimic@manjaro.org>
-To: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>
-Cc: wens@kernel.org, linux-rockchip@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org,
- robh+dt@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
- linux-kernel@vger.kernel.org, stable@vger.kernel.org, Diederik de Haas
- <didi.debian@cknow.org>
-Subject: Re: [PATCH] arm64: dts: rockchip: Fix the DCDC_REG2 minimum voltage
- on Quartz64 Model B
-In-Reply-To: <1994616.CrzyxZ31qj@diego>
-References: <e70742ea2df432bf57b3f7de542d81ca22b0da2f.1716225483.git.dsimic@manjaro.org>
- <CAGb2v66DPvvRcq+98vF2mCF8URW_qys1+B_FM9kcm6ppuPvyeg@mail.gmail.com>
- <20cf041dcd6f752174bf29d2a53c61b3@manjaro.org> <1994616.CrzyxZ31qj@diego>
-Message-ID: <99ea0e0053d3ada3325bdfaec7a937f0@manjaro.org>
-X-Sender: dsimic@manjaro.org
-Authentication-Results: ORIGINATING;
-	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
+User-Agent: Mozilla Thunderbird
+Subject: Re: [RFC PATCH] arm64: dts: rockchip: Make preparations for
+ per-RK3588-variant OPPs
+To: Dragan Simic <dsimic@manjaro.org>
+Cc: Alexey Charkov <alchark@gmail.com>, linux-rockchip@lists.infradead.org,
+ heiko@sntech.de, linux-arm-kernel@lists.infradead.org,
+ devicetree@vger.kernel.org, robh+dt@kernel.org, krzk+dt@kernel.org,
+ conor+dt@kernel.org, linux-kernel@vger.kernel.org,
+ quentin.schulz@cherry.de, wens@kernel.org, daniel.lezcano@linaro.org,
+ didi.debian@cknow.org, krzysztof.kozlowski+dt@linaro.org,
+ viresh.kumar@linaro.org
+References: <673dcf47596e7bc8ba065034e339bb1bbf9cdcb0.1716948159.git.dsimic@manjaro.org>
+ <CABjd4YxD41DEkBCZfkznLboEY9ZVOfTCLcj4S_kkcsVswbANyQ@mail.gmail.com>
+ <8f8623e29a479c4108141302e708dc3b@manjaro.org>
+ <CABjd4Yy4RMg+6-4ygV0MSwJj5LReY-ymbctq4PPfVZ6L+c1tsw@mail.gmail.com>
+ <166cc4e46f31644a50306625b2ab18a6@manjaro.org>
+ <CABjd4YzDNQa45=KC_t0xnTDrH+g-oUrcpgP55oOj7JcAuu7uFw@mail.gmail.com>
+ <82db817a908b761d8c3d73ea04714314@manjaro.org>
+ <607f4da8-99b2-4379-9567-4bfd2744eab3@kwiboo.se>
+ <66677077acf4e970444cea829436fd0a@manjaro.org>
+Content-Language: en-US
+From: Jonas Karlman <jonas@kwiboo.se>
+In-Reply-To: <66677077acf4e970444cea829436fd0a@manjaro.org>
+X-Report-Abuse-To: abuse@forwardemail.net
+X-Report-Abuse: abuse@forwardemail.net
+X-Complaints-To: abuse@forwardemail.net
+X-ForwardEmail-Version: 0.4.40
+X-ForwardEmail-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
+ 149.28.215.223
+X-ForwardEmail-ID: 665a59fe0b82eeef13908f0a
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240531_154136_259999_1C25FF83 
-X-CRM114-Status: GOOD (  41.69  )
+X-CRM114-CacheID: sfid-20240531_161528_303193_331F5981 
+X-CRM114-Status: GOOD (  19.61  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,124 +84,125 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGVsbG8gSGVpa28sCgpPbiAyMDI0LTA1LTMxIDIwOjQwLCBIZWlrbyBTdMO8Ym5lciB3cm90ZToK
-PiBBbSBGcmVpdGFnLCAzMS4gTWFpIDIwMjQsIDAwOjQ4OjQ1IENFU1Qgc2NocmllYiBEcmFnYW4g
-U2ltaWM6Cj4+IE9uIDIwMjQtMDUtMjkgMTg6MjcsIENoZW4tWXUgVHNhaSB3cm90ZToKPj4gPiBP
-biBUdWUsIE1heSAyMSwgMjAyNCBhdCAxOjIw4oCvQU0gRHJhZ2FuIFNpbWljIDxkc2ltaWNAbWFu
-amFyby5vcmc+Cj4+ID4gd3JvdGU6Cj4+ID4+Cj4+ID4+IENvcnJlY3QgdGhlIHNwZWNpZmllZCBy
-ZWd1bGF0b3ItbWluLW1pY3Jvdm9sdCB2YWx1ZSBmb3IgdGhlIGJ1Y2sKPj4gPj4gRENEQ19SRUcy
-Cj4+ID4+IHJlZ3VsYXRvciwgd2hpY2ggaXMgcGFydCBvZiB0aGUgUm9ja2NoaXAgUks4MDkgUE1J
-QywgaW4gdGhlIFBpbmU2NAo+PiA+PiBRdWFydHo2NAo+PiA+PiBNb2RlbCBCIGJvYXJkIGR0cy4g
-IEFjY29yZGluZyB0byB0aGUgUks4MDkgZGF0YXNoZWV0LCB2ZXJzaW9uIDEuMDEsCj4+ID4+IHRo
-aXMKPj4gPj4gcmVndWxhdG9yIGlzIGNhcGFibGUgb2YgcHJvZHVjaW5nIHZvbHRhZ2VzIGFzIGxv
-dyBhcyAwLjUgViBvbiBpdHMKPj4gPj4gb3V0cHV0LAo+PiA+PiBpbnN0ZWFkIG9mIGdvaW5nIGRv
-d24gdG8gMC45IFYgb25seSwgd2hpY2ggaXMgYWRkaXRpb25hbGx5IGNvbmZpcm1lZAo+PiA+PiBi
-eSB0aGUKPj4gPj4gcmVndWxhdG9yLW1pbi1taWNyb3ZvbHQgdmFsdWVzIGZvdW5kIGluIHRoZSBi
-b2FyZCBkdHMgZmlsZXMgZm9yIHRoZQo+PiA+PiBvdGhlcgo+PiA+PiBzdXBwb3J0ZWQgYm9hcmRz
-IHRoYXQgdXNlIHRoZSBzYW1lIFJLODA5IFBNSUMuCj4+ID4+Cj4+ID4+IFRoaXMgYWxsb3dzIHRo
-ZSBEVkZTIHRvIGNsb2NrIHRoZSBHUFUgb24gdGhlIFF1YXJ0ejY0IE1vZGVsIEIgYmVsb3cKPj4g
-Pj4gNzAwIE1IeiwKPj4gPj4gYWxsIHRoZSB3YXkgZG93biB0byAyMDAgTUh6LCB3aGljaCBzYXZl
-cyBzb21lIHBvd2VyIGFuZCByZWR1Y2VzIHRoZQo+PiA+PiBhbW91bnQgb2YKPj4gPj4gZ2VuZXJh
-dGVkIGhlYXQgYSBiaXQsIGltcHJvdmluZyB0aGUgdGhlcm1hbCBoZWFkcm9vbSBhbmQgcG9zc2li
-bHkKPj4gPj4gaW1wcm92aW5nCj4+ID4+IHRoZSBidXJzdHkgQ1BVIGFuZCBHUFUgcGVyZm9ybWFu
-Y2Ugb24gdGhpcyBib2FyZC4KPj4gPj4KPj4gPj4gVGhpcyBhbHNvIGVsaW1pbmF0ZXMgdGhlIGZv
-bGxvd2luZyB3YXJuaW5ncyBpbiB0aGUga2VybmVsIGxvZzoKPj4gPj4KPj4gPj4gICBjb3JlOiBf
-b3BwX3N1cHBvcnRlZF9ieV9yZWd1bGF0b3JzOiBPUFAgbWludVY6IDgyNTAwMCBtYXh1VjogODI1
-MDAwLAo+PiA+PiBub3Qgc3VwcG9ydGVkIGJ5IHJlZ3VsYXRvcgo+PiA+PiAgIHBhbmZyb3N0IGZk
-ZTYwMDAwLmdwdTogX29wcF9hZGQ6IE9QUCBub3Qgc3VwcG9ydGVkIGJ5IHJlZ3VsYXRvcnMKPj4g
-Pj4gKDIwMDAwMDAwMCkKPj4gPj4gICBjb3JlOiBfb3BwX3N1cHBvcnRlZF9ieV9yZWd1bGF0b3Jz
-OiBPUFAgbWludVY6IDgyNTAwMCBtYXh1VjogODI1MDAwLAo+PiA+PiBub3Qgc3VwcG9ydGVkIGJ5
-IHJlZ3VsYXRvcgo+PiA+PiAgIHBhbmZyb3N0IGZkZTYwMDAwLmdwdTogX29wcF9hZGQ6IE9QUCBu
-b3Qgc3VwcG9ydGVkIGJ5IHJlZ3VsYXRvcnMKPj4gPj4gKDMwMDAwMDAwMCkKPj4gPj4gICBjb3Jl
-OiBfb3BwX3N1cHBvcnRlZF9ieV9yZWd1bGF0b3JzOiBPUFAgbWludVY6IDgyNTAwMCBtYXh1Vjog
-ODI1MDAwLAo+PiA+PiBub3Qgc3VwcG9ydGVkIGJ5IHJlZ3VsYXRvcgo+PiA+PiAgIHBhbmZyb3N0
-IGZkZTYwMDAwLmdwdTogX29wcF9hZGQ6IE9QUCBub3Qgc3VwcG9ydGVkIGJ5IHJlZ3VsYXRvcnMK
-Pj4gPj4gKDQwMDAwMDAwMCkKPj4gPj4gICBjb3JlOiBfb3BwX3N1cHBvcnRlZF9ieV9yZWd1bGF0
-b3JzOiBPUFAgbWludVY6IDgyNTAwMCBtYXh1VjogODI1MDAwLAo+PiA+PiBub3Qgc3VwcG9ydGVk
-IGJ5IHJlZ3VsYXRvcgo+PiA+PiAgIHBhbmZyb3N0IGZkZTYwMDAwLmdwdTogX29wcF9hZGQ6IE9Q
-UCBub3Qgc3VwcG9ydGVkIGJ5IHJlZ3VsYXRvcnMKPj4gPj4gKDYwMDAwMDAwMCkKPj4gPj4KPj4g
-Pj4gRml4ZXM6IGRjYzhjNjZiZWY3OSAoImFybTY0OiBkdHM6IHJvY2tjaGlwOiBhZGQgUGluZTY0
-IFF1YXJ0ejY0LUIKPj4gPj4gZGV2aWNlIHRyZWUiKQo+PiA+PiBDYzogc3RhYmxlQHZnZXIua2Vy
-bmVsLm9yZwo+PiA+PiBSZXBvcnRlZC1CeTogRGllZGVyaWsgZGUgSGFhcyA8ZGlkaS5kZWJpYW5A
-Y2tub3cub3JnPgo+PiA+PiBTaWduZWQtb2ZmLWJ5OiBEcmFnYW4gU2ltaWMgPGRzaW1pY0BtYW5q
-YXJvLm9yZz4KPj4gPj4gLS0tCj4+ID4+ICBhcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3Jr
-MzU2Ni1xdWFydHo2NC1iLmR0cyB8IDIgKy0KPj4gPj4gIDEgZmlsZSBjaGFuZ2VkLCAxIGluc2Vy
-dGlvbigrKSwgMSBkZWxldGlvbigtKQo+PiA+Pgo+PiA+PiBkaWZmIC0tZ2l0IGEvYXJjaC9hcm02
-NC9ib290L2R0cy9yb2NrY2hpcC9yazM1NjYtcXVhcnR6NjQtYi5kdHMKPj4gPj4gYi9hcmNoL2Fy
-bTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzU2Ni1xdWFydHo2NC1iLmR0cwo+PiA+PiBpbmRleCAy
-NjMyMmEzNThkOTEuLmI5MDhjZTAwNmMyNiAxMDA2NDQKPj4gPj4gLS0tIGEvYXJjaC9hcm02NC9i
-b290L2R0cy9yb2NrY2hpcC9yazM1NjYtcXVhcnR6NjQtYi5kdHMKPj4gPj4gKysrIGIvYXJjaC9h
-cm02NC9ib290L2R0cy9yb2NrY2hpcC9yazM1NjYtcXVhcnR6NjQtYi5kdHMKPj4gPj4gQEAgLTI4
-OSw3ICsyODksNyBAQCB2ZGRfZ3B1OiBEQ0RDX1JFRzIgewo+PiA+PiAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgIHJlZ3VsYXRvci1uYW1lID0gInZkZF9ncHUiOwo+PiA+PiAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgIHJlZ3VsYXRvci1hbHdheXMtb247Cj4+ID4+ICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgcmVndWxhdG9yLWJvb3Qtb247Cj4+ID4+IC0gICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgcmVndWxhdG9yLW1pbi1taWNyb3ZvbHQgPSA8OTAw
-MDAwPjsKPj4gPj4gKyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICByZWd1bGF0b3ItbWlu
-LW1pY3Jvdm9sdCA9IDw1MDAwMDA+Owo+PiA+Cj4+ID4gVGhlIGNvbnN0cmFpbnRzIGhlcmUgYXJl
-IHN1cHBvc2VkIHRvIGJlIHRoZSBjb25zdHJhaW50cyBvZiB0aGUKPj4gPiBjb25zdW1lciwKPj4g
-PiBub3QgdGhlIHByb3ZpZGVyLiBUaGUgbGF0dGVyIGlzIGFscmVhZHkga25vd24gYnkgdGhlIGlt
-cGxlbWVudGF0aW9uLgo+PiA+Cj4+ID4gU28gaWYgdGhlIEdQVSBjYW4gZ28gZG93biB0byAwLjgy
-NVYgb3IgMC44MVYgZXZlbiAoYmFzZWQgb24gdGhlCj4+ID4gZGF0YXNoZWV0KSwKPj4gPiB0aGlz
-IHNob3VsZCBzYXkgdGhlIGNvcnJlc3BvbmRpbmcgdmFsdWUuIFN1cmVseSB0aGUgR1BVIGNhbid0
-IGdvIGRvd24KPj4gPiB0bwo+PiA+IDAuNVY/Cj4+ID4KPj4gPiBDYW4geW91IHNlbmQgYW5vdGhl
-ciBmaXggZm9yIGl0Pwo+PiAKPj4gSSBjYW4gY29uZmlybSB0aGF0IHRoZSB2b2x0YWdlIG9mIHRo
-ZSBwb3dlciBzdXBwbHkgb2YgR1BVIGZvdW5kIGluc2lkZQo+PiB0aGUgUkszNTY2IGNhbiBiZSBh
-cyBsb3cgYXMgMC44MSBWLCBhY2NvcmRpbmcgdG8gdGhlIGRhdGFzaGVldCwgb3IgYXMKPj4gbG93
-IGFzIDAuODI1IFYsIGFjY29yZGluZyB0byB0aGUgR1BVIE9QUHMgZm91bmQgaW4gcmszNTZ4LmR0
-c2kuCj4+IAo+PiBJZiB3ZSB3YW50IHRoZSByZWd1bGF0b3ItbWluLW1pY3Jvdm9sdCBwYXJhbWV0
-ZXIgdG8gcmVmbGVjdCB0aGUKPj4gY29udHJhaW50Cj4+IG9mIHRoZSBHUFUgYXMgdGhlIGNvbnN1
-bWVyLCB3aGljaCBJIGFncmVlIHdpdGgsIHdlIHNob3VsZCBkbyB0aGF0IGZvcgo+PiBvdGhlcgo+
-PiBSSzM1NjYtYmFzZWQgYm9hcmRzIGFzIHdlbGwsIGFuZCBhbG1vc3Qgc3VyZWx5IGZvciB0aGUg
-Ym9hcmRzIGJhc2VkIG9uCj4+IHRoZQo+PiBSSzM1NjgsIHRvby4KPiAKPiBIbW0sIEknbSBub3Qg
-c28gc3VyZSBhYm91dCB0aGF0Lgo+IAo+IFRoZSBiaW5kaW5nIGRvZXMgZGVmaW5lOgo+IAlyZWd1
-bGF0b3ItbWluLW1pY3Jvdm9sdDoKPiAJICAgIGRlc2NyaXB0aW9uOiBzbWFsbGVzdCB2b2x0YWdl
-IGNvbnN1bWVycyBtYXkgc2V0Cj4gCj4gVGhpcyBkb2VzIG5vdCBzZWVtIHRvIGRlc2NyaWJlIGl0
-IGFzIGEgY29uc3RyYWludCBzb2xlbHkgb2YgdGhlIAo+IGNvbnN1bWVyLgo+IEF0IGxlYXN0IHRo
-ZSB3b3JkaW5nIHNvdW5kcyB3YXkgbW9yZSBmbGV4aWJsZSB0aGVyZS4KPiAKPiBBbHNvIGFueSBy
-ZWd1bGF0b3IgX2NvdWxkXyBoYXZlIG11bHRpcGxlIGNvbnN1bWVycywgd2hvc2UgdmFsdWUgd291
-bGQKPiBpdCBuZWVkIHRoZW4uCgpUaGUgd2F5IEkgc2VlIGl0LCB0aGUgcmVndWxhdG9yLW1pbi1t
-aWNyb3ZvbHQgYW5kIApyZWd1bGF0b3ItbWF4LW1pY3Jvdm9sdApwYXJhbWV0ZXJzIHNob3VsZCBi
-ZSBjb25maWd1cmVkIGluIGEgd2F5IHRoYXQgcHJvdGVjdHMgdGhlIGNvbnN1bWVyKHMpCm9mIHRo
-ZSBwYXJ0aWN1bGFyIHZvbHRhZ2UgcmVndWxhdG9yIGFnYWluc3QgdW5kZXJ2b2x0YWdlIGFuZCBv
-dmVydm9sdGFnZQpjb25kaXRpb25zLCB3aGljaCBtYXkgYmUgdXNlZnVsIGluIHNvbWUgY29ybmVy
-IGNhc2VzLgoKSWYgdGhlcmUgYXJlIG11bHRpcGxlIGNvbnN1bWVycywgd2hpY2ggaW4gdGhpcyBj
-YXNlIG1heSBhY3R1YWxseSBoYXBwZW4KKElJUkMsIHNvbWUgYm9hcmRzIHVzZSB0aGUgc2FtZSBy
-ZWd1bGF0b3IgZm9yIHRoZSBHUFUgYW5kIE5QVSBwb3J0aW9ucwpvZiB0aGUgU29DKSwgdGhlIHNp
-dHVhdGlvbiBiZWNvbWVzIGZhciBmcm9tIGlkZWFsLCBiZWNhdXNlIHRoZSBjb25zdW1lcnMKbWln
-aHQgaGF2ZSBkaWZmZXJlbnQgdm9sdGFnZSByZXF1aXJlbWVudHMsIGJ1dCB0aGF0J3MgcHJldHR5
-IG11Y2ggYW4KdW5hdm9pZGFibGUgY29tcHJvbWlzZS4KCj4gV2hpbGUgdHJ1ZSwgc2V0dGluZyBp
-dCB0byB0aGUgbG93ZXN0IHRoZSByZWd1bGF0b3IgY2FuIGRvIGluIHRoZSAKPiBvcmlnaW5hbAo+
-IGZpeCBwYXRjaCwgbWlnaHQndmUgYmVlbiBhIGJpdCBtdWNoIGFuZCBhIHNhbmVyIHZhbHVlIG1p
-Z2h0IGJlIGJldHRlci4KCkFncmVlZCwgYnV0IHRoZSB2YWx1ZSB3YXMgc2VsZWN0ZWQgYWNjb3Jk
-aW5nIHRvIHdoYXQgdGhlIG90aGVyIApSSzM1NjYtYmFzZWQKYm9hcmRzIHVzZSwgdG8gZXN0YWJs
-aXNoIHNvbWUga2luZCBvZiBjb25zaXN0ZW5jeS4gIE5vdywgdGhlcmUncyBhIGdvb2QKY2hhbmNl
-IGZvciB0aGUgc2Vjb25kIHBhc3MsIHNvIHRvIHNwZWFrLCB3aGljaCBzaG91bGQgZXN0YWJsaXNo
-IGFub3RoZXIKZGlmZmVyZW50IHN0YXRlLCBidXQgYWxzbyBjb25zaXN0ZW50LiA6KQoKPj4gVGhp
-cyB3b3VsZCBlbnN1cmUgY29uc2lzdGVuY3ksIGJ1dCBJJ2QgbGlrZSB0byBrbm93IGFyZSBhbGwg
-dGhvc2UKPj4gcmVzdWx0aW5nCj4+IHBhdGNoZXMgZ29pbmcgdG8gYmUgYWNjZXB0ZWQgYmVmb3Jl
-IHN0YXJ0aW5nIHRvIHByZXBhcmUgdGhlbT8gIFRoZXJlCj4+IHdpbGwKPj4gYmUgYSB3aG9sZSBi
-dW5jaCBvZiBzbWFsbCBwYXRjaGVzLgo+IAo+IEhtbSwgdGhvdWdoIEknZCBzYXkgdGhhdCB3b3Vs
-ZCBiZSBvbmUgcGF0Y2ggcGVyIHNvYz8KPiAKPiBJLmUuIHlvdSdyZSBzZXR0aW5nIHRoZSBtaW4t
-dm9sdGFnZSBvZiBfb25lXyByZWd1bGF0b3IgdXNlZAo+IG9uIGVhY2ggYm9hcmQgdG8gYSB2YWx1
-ZSB0byBzdXBwb3J0IHRoZSBkZWZpbmVkIE9QUHMuCj4gCj4gSS5lLiBpbiBteSBtaW5kIHlvdSdk
-IGVuZCB1cCB3aXRoOgo+IAlhcm02NDogZHRzOiByb2NrY2hpcDogc2V0IGJldHRlciBtaW4gdm9s
-dGFnZSBmb3IgdmRkX2dwdSBvbiByazM1NnggCj4gYm9hcmRzCj4gCj4gQW5kIHNldHRpbmcgdGhl
-IGxvd2VyIHZvbHRhZ2UgdG8gcmVhY2ggdGhhdCBsb3dlciBPUFAgb24gYWxsIGFmZmVjdGVkCj4g
-cmszNTZ4IGJvYXJkcy4KClllcywgdGhlIHNhbWUgdGhvdWdodHMgaGF2ZSBhbHJlYWR5IGNyb3Nz
-ZWQgbXkgbWluZCwgYnV0IEkgdGhvdWdodCB3ZSdkCmxpa2UgdGhvc2UgcGF0Y2hlcyB0byBhbHNv
-IGluY2x1ZGUgRml4ZXMgdGFncywgc28gdGhleSBhbHNvIGdldCAKcHJvcGFnYXRlZAppbnRvIHRo
-ZSBsb25nLXRlcm0ga2VybmVsIHZlcnNpb25zPyAgSW4gdGhhdCBjYXNlLCB3ZSdkIG5lZWQgb25l
-IHBhdGNoIApwZXIKYm9hcmQsIHRvIGhhdmUgYSBjbGVhciByZWxhdGlvbiB0byB0aGUgY29tbWl0
-cyByZWZlcmVuY2VkIGluIHRoZSBGaXhlcyAKdGFncy4KCk9UT0gsIGlmIHdlIGRvbid0IHdhbnQg
-dGhlIHBhdGNoZXMgdG8gYmUgcHJvcGFnYXRlZCBpbnRvIHRoZSBsb25nLXRlcm0gCmtlcm5lbAp2
-ZXJzaW9ucywgdGhlbiBoYXZpbmcgb25lIHBhdGNoIHBlciBTb0Mgd291bGQgYmUgcGVyZmVjdGx5
-IGZpbmUuCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpM
-aW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFk
-Lm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJv
-Y2tjaGlwCg==
+Hello Dragan,
+
+On 2024-05-31 23:24, Dragan Simic wrote:
+> Hello Jonas,
+> 
+> On 2024-05-31 13:27, Jonas Karlman wrote:
+>> On 2024-05-30 21:31, Dragan Simic wrote:
+>> [snip]
+>>
+>>>>>>> That way we'll have no roadblocks if, at some point, we end up 
+>>>>>>> with
+>>>>>>> having
+>>>>>>> different OPPs defined for the RK3588 and the RK3588S variants.  
+>>>>>>> Or
+>>>>>>> maybe
+>>>>>>> even for the RK3582, which we don't know much about yet.
+>>>>>>
+>>>>>> Guess we'll deal with that one once we stumble upon an actual 
+>>>>>> RK3582
+>>>>>> board out in the wild and heading to the mainline kernel tree :)
+>>>>>
+>>>>> Of course, that was just an example for the future use.
+>>>>
+>>>> In fact, I've just discovered that Radxa has recently released Rock 
+>>>> 5C
+>>>> Lite which is based on RK3582, and starts at just $29 for the 1GB
+>>>> version, making it interesting for tinkering. Especially given that
+>>>> its GPU, one of the big-core clusters and one of the VPU cores seem 
+>>>> to
+>>>> be disabled in software (u-boot) rather than in hardware, which means
+>>>> there is some chance that a particular SoC specimen would actually
+>>>> have them in a working condition and possible to re-enable at no 
+>>>> cost.
+>>>> Ordered myself one to investigate :)
+>>>
+>>> Yes, I also saw the RK3582-based ROCK 5C Lite a couple of days ago. :)
+>>> It seems that the disabled IP blocks are detected as defective during
+>>> the manufacturing, which means that they might work correctly, or 
+>>> might
+>>> actually misbehave.  It seems similar to the way old three-core AMD
+>>> Phenom II CPUs could sometimes be made quad-core.
+>>
+>> I can confirm that the RK3582 include ip-state in OTP indicating
+>> unusable cores, any unusable cpu core cannot be taken online and stalls
+>> Linux kernel a few extra seconds during boot.
+> 
+> Thanks for this confirmation!
+> 
+>> Started working on a patch for U-Boot to remove any broken cpu core
+>> and/or cluster nodes, similar to what vendor U-Boot does, adopted to
+>> work with a mainline DT for RK3588.
+> 
+> Nice, thanks for working on that. :)
+> 
+>> On one of my ROCK 5C Lite board one of the cpu cores is unusable, 
+>> U-Boot
+>> removes the related cpu cluster nodes. On another ROCK 5C Lite board 
+>> one
+>> rkvdec core is only marked unusable and all cpu cores can be taken
+>> online, U-Boot does nothing in this case. Guessing we should apply
+>> similar policy as vendor U-Boot and disable cores anyway.
+> 
+> Just checking, you're referring to disabling the rkvdec core only,
+> for the latter case?
+
+No, the vendor U-Boot will remove cluster2 if no cpu core is bad.
+
+RK3582 policy:
+- always remove gpu node
+- always remove both rkvdec nodes
+- remove bad rkvenc node, if both are normal, remove rkvenc1 anyway
+
+RK3583 policy:
+- remove bad rkvdec node, if both are normal, remove rkvdec1 anyway
+- remove bad rkvenc node, if both are normal, remove rkvenc1 anyway
+
+CPU core policy:
+- remove both cores within a cluster having a bad core
+- if core4~7 are all normal, remove core6 and core7 anyway
+
+Regards,
+Jonas
+
+> 
+>> Following commit contains early work-in-progress and some debug output.
+>>
+>> https://github.com/Kwiboo/u-boot-rockchip/commit/8cdf606e616baa36751f3b4adcfaefc781126c8c
+>>
+>> Booting ROCK 5C Lite boards using U-Boot generic-rk3588_defconfig:
+>>
+>> ROCK 5C Lite v1.1 (RK3582 with 1 bad cpu core):
+>>
+>>   cpu-code: 3582
+>>   cpu-version: 08 10
+>>   data: fe 21
+>>   package: 11
+>>   specification: 01
+>>   ip-state: 10 00 00
+>>   bad-state: cpu core 4
+>>
+>> ROCK 5C Lite v1.1 (RK3582 with 1 bad rkvdec core):
+>>
+>>   cpu-code: 3582
+>>   cpu-version: 08 00
+>>   data: fe 21
+>>   package: 11
+>>   specification: 01
+>>   ip-state: 00 80 00
+>>   bad-state: rkvdec core 1
+> 
+> Thanks again for these nice details!
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
