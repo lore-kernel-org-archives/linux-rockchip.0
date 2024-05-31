@@ -4,57 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2FB32C25B75
-	for <linux-rockchip@archiver.kernel.org>; Fri, 31 May 2024 15:31:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4BE09C25B75
+	for <linux-rockchip@archiver.kernel.org>; Fri, 31 May 2024 15:31:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=ue1/CI+6GUnYQtLGBdGGpJt9ISLKb5r2bw1ndjfQA1M=; b=WcXx0WnjW7lT54
-	J7imhVXrnypcJ7aScRGu9a5L2ZwU6XRj6a2oXWKM3Os5077W8iIJcVTtiIFDp19zfotv9BB4hHBXP
-	ZCN5fCmgbseVW5+QIbxmFkPtFjVBDiy8F2uxJtXn2YLkq5BJirPqui/XephjS0t1j/gNwzw5RDTOs
-	xYEEfQzmqurcEtKVx9M2wBG/Kdd8D+D8LytZAYu2qCADy/qBea6B0VzXRq+64CFk5O5rBSVAQTUf3
-	DrBUmUfKtwgiG7mMHOuzxqN4EQ0IZ7gxgPa/E/StQmX2ymPgVEHIqsQZSuFinMdkfBC+EowUb0lt4
-	Rk+Il5dGcLAo0dF1S2dg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=wC5SePIyGMSNimI9ZPZ1SijuBFD1V70819XZEg/vFO8=; b=0wqHVEs2vsGUGr
+	DRzkejIr9E8eI/vy4foWf5Y4fjGM9StaCQ4f9q+CHE0uQae+fsCVlwEaytjSXRL4Cu62TtbMh0NYj
+	3/V0Z+RQILZ5J6Rddxk8NV8NGNsuNUGMhwa5YngsZAcfyMpjDCQ6rKnzObT+C0SOE31TFXcdzPEAI
+	KGCCjFpuJB4bBnzmc7JlOSh1/BZRXQIMMoUyvkis6G5nvlrurKVgwadm5mV295LcYwHk6I5vrIf1r
+	GX2PiW4FzE6Qdju1NCU+W3kfOPV5RzDxiK9eNrIyP+JOpReyVqr/VsOpciMGzacXfKfFwgtnPPF85
+	M2/Rs786u1ywSUB5Uqgw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sD4Dt-0000000Agki-38ei;
-	Fri, 31 May 2024 15:31:18 +0000
-Received: from mgamail.intel.com ([198.175.65.17])
+	id 1sD4E6-0000000Agte-2MPW;
+	Fri, 31 May 2024 15:31:30 +0000
+Received: from mgamail.intel.com ([192.198.163.11])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sD4DX-0000000AgXX-4ATf;
-	Fri, 31 May 2024 15:30:58 +0000
+	id 1sD4DZ-0000000AgVC-3R6H;
+	Fri, 31 May 2024 15:31:00 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1717169456; x=1748705456;
-  h=from:to:cc:subject:date:message-id:mime-version:
-   content-transfer-encoding;
-  bh=hsjA0x6Srt7WNltFPQm36M1XEQClgGGCUWLHMkEXdTw=;
-  b=QHT7QGUPUHg45su05/bCND+rdi6xknHxnUZewMOEZlR0XJIdzZoiojsy
-   OuDkAMp+HmFEvEdeHrVE3cmgKf+nt1H73mWf+usBR0l8hguy9NCqNJ5eT
-   SAK+gx6W8ah+Cl2qT+KJiupyUu4MHPGXecLrQ51aT9dW8UOaNK2GrDHgl
-   aezLdNi/C21om1Ab6sYXXt3lnCH/04SQcarT2PGVGS/+TDI2PimYl8Ltl
-   IU/KRF9otlP3jiIjbsqUYNY3Yy3Gl8daWEy0sBZpQ9v8VAzFjYp89FOaH
-   jHH0XE8Bfc2QjZpZeog6a6CIowNdY3z0gWV0xZ8i+x1cQ7ban+wbxJGAb
-   g==;
-X-CSE-ConnectionGUID: hiXf1Hu0TYqzpIxaf0GisQ==
-X-CSE-MsgGUID: dw7aMpSWSq+4FXhYA6JsIw==
-X-IronPort-AV: E=McAfee;i="6600,9927,11088"; a="13839567"
+  t=1717169457; x=1748705457;
+  h=from:to:cc:subject:date:message-id:in-reply-to:
+   references:mime-version:content-transfer-encoding;
+  bh=SGwfez3lrOf2K/YTWirwKNhphy+WK2Ug6UhveRqerj0=;
+  b=j/f7YWimoLjiMqdaC5XY8cstSdPJedBIqBYUZ/DnKAPvgN0IDL+SvKeL
+   +7qLiOs8ughKATjaneOWwsvNmvYb6/O2j9JgDjuE1kCyta0U9S9vBN9sc
+   61k1Imqdd5DbWJNH4N3J5TcMQh1/1XJejYeHpXDq9IWtELnHvbnvybrP3
+   QPX0PZVy3OfoInbQC6owALHCAcDNEjdeQaf1KjP9pV1ZT9gp4HxvnX5ab
+   KsjOb2aN0bQSIk+k5lGoUMUg0ukr0eHQV9vLdCJdjHuIoUCd8qC2Ie+Up
+   ulwqQYBVTfTfnhRsIO/kdapo5/5qxuj0cUBMG1oDFMiOusUnFweHU2PRb
+   Q==;
+X-CSE-ConnectionGUID: eoSzWBHuR6OfjL/jMC6dlw==
+X-CSE-MsgGUID: IZGxwW7xQzetwbe8bqcZbQ==
+X-IronPort-AV: E=McAfee;i="6600,9927,11088"; a="24348169"
 X-IronPort-AV: E=Sophos;i="6.08,204,1712646000"; 
-   d="scan'208";a="13839567"
-Received: from fmviesa003.fm.intel.com ([10.60.135.143])
-  by orvoesa109.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 31 May 2024 08:30:50 -0700
-X-CSE-ConnectionGUID: rj6obq2ERMO5QDiPGyKZ2g==
-X-CSE-MsgGUID: q2N5xO0fShaiM6SvMI6SaQ==
+   d="scan'208";a="24348169"
+Received: from orviesa001.jf.intel.com ([10.64.159.141])
+  by fmvoesa105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 31 May 2024 08:30:57 -0700
+X-CSE-ConnectionGUID: R+7+mf/zRxCcV6DbRi4D6A==
+X-CSE-MsgGUID: +8jCcKrWQP6iKzrYNSNOUw==
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="6.08,204,1712646000"; 
-   d="scan'208";a="40627259"
+   d="scan'208";a="73678789"
 Received: from black.fi.intel.com ([10.237.72.28])
-  by fmviesa003.fm.intel.com with ESMTP; 31 May 2024 08:30:40 -0700
+  by orviesa001.jf.intel.com with ESMTP; 31 May 2024 08:30:49 -0700
 Received: by black.fi.intel.com (Postfix, from userid 1003)
-	id 8ED9F228; Fri, 31 May 2024 18:30:39 +0300 (EEST)
+	id EA704679; Fri, 31 May 2024 18:30:39 +0300 (EEST)
 From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 To: Charles Keepax <ckeepax@opensource.cirrus.com>,
 	Rob Herring <robh@kernel.org>,
@@ -93,15 +93,16 @@ Cc: Liam Girdwood <lgirdwood@gmail.com>,
 	Pengutronix Kernel Team <kernel@pengutronix.de>,
 	Heiko Stuebner <heiko@sntech.de>,
 	Sylwester Nawrocki <s.nawrocki@samsung.com>
-Subject: [PATCH v2 0/6] ASoC: Drop or replace of_gpio.h
-Date: Fri, 31 May 2024 18:29:27 +0300
-Message-ID: <20240531153038.1590171-1-andriy.shevchenko@linux.intel.com>
+Subject: [PATCH v2 5/6] ASoC: generic: Replace of_gpio.h by proper one
+Date: Fri, 31 May 2024 18:29:32 +0300
+Message-ID: <20240531153038.1590171-6-andriy.shevchenko@linux.intel.com>
 X-Mailer: git-send-email 2.43.0.rc1.1336.g36b5255a03ac
+In-Reply-To: <20240531153038.1590171-1-andriy.shevchenko@linux.intel.com>
+References: <20240531153038.1590171-1-andriy.shevchenko@linux.intel.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240531_083056_171770_D29F3523 
-X-CRM114-Status: UNSURE (   8.59  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240531_083058_020914_01304EBC 
+X-CRM114-Status: GOOD (  11.10  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -118,47 +119,31 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Replace or drop the legacy header that is subject to remove.
-Not all of them were compile-tested, the series might have
-hidden compilation errors.
+of_gpio.h is deprecated and subject to remove.
+The driver doesn't use it directly, replace it
+with what is really being used.
 
-In v2:
-- added tags (Kuninori, Charles)
-- ripped out TAS2781 (it's a mess from GPIO handling perspective)
-
-Andy Shevchenko (6):
-  ASoC: codecs: Remove unused of_gpio.h
-  ASoC: fsl: Remove unused of_gpio.h
-  ASoC: rockchip: Remove unused of_gpio.h
-  ASoC: codecs: Replace of_gpio.h by proper one
-  ASoC: generic: Replace of_gpio.h by proper one
-  ASoC: samsung: Replace of_gpio.h by proper one
-
- sound/soc/codecs/ak4118.c                           | 1 -
- sound/soc/codecs/ak4458.c                           | 1 -
- sound/soc/codecs/aw88395/aw88395.c                  | 2 +-
- sound/soc/codecs/aw88399.c                          | 1 -
- sound/soc/codecs/cs53l30.c                          | 1 -
- sound/soc/codecs/max98390.c                         | 1 -
- sound/soc/codecs/pcm3168a.c                         | 1 -
- sound/soc/codecs/rk817_codec.c                      | 1 -
- sound/soc/codecs/tas2552.c                          | 1 -
- sound/soc/codecs/tas2764.c                          | 1 -
- sound/soc/codecs/tas2770.c                          | 1 -
- sound/soc/codecs/tas2780.c                          | 1 -
- sound/soc/codecs/tlv320adc3xxx.c                    | 1 -
- sound/soc/codecs/tlv320adcx140.c                    | 1 -
- sound/soc/codecs/tlv320aic31xx.c                    | 1 -
- sound/soc/codecs/ts3a227e.c                         | 1 -
- sound/soc/codecs/wsa883x.c                          | 1 -
- sound/soc/fsl/imx-es8328.c                          | 1 -
- sound/soc/fsl/imx-rpmsg.c                           | 2 --
+Acked-by: Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>
+Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+---
  sound/soc/generic/audio-graph-card2-custom-sample.c | 3 ++-
- sound/soc/rockchip/rockchip_i2s.c                   | 1 -
- sound/soc/rockchip/rockchip_spdif.c                 | 1 -
- sound/soc/samsung/aries_wm8994.c                    | 2 +-
- 23 files changed, 4 insertions(+), 24 deletions(-)
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
+diff --git a/sound/soc/generic/audio-graph-card2-custom-sample.c b/sound/soc/generic/audio-graph-card2-custom-sample.c
+index 1b6ccd2de964..8e5a51098490 100644
+--- a/sound/soc/generic/audio-graph-card2-custom-sample.c
++++ b/sound/soc/generic/audio-graph-card2-custom-sample.c
+@@ -5,8 +5,9 @@
+ // Copyright (C) 2020 Renesas Electronics Corp.
+ // Copyright (C) 2020 Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>
+ //
++#include <linux/device.h>
++#include <linux/mod_devicetable.h>
+ #include <linux/module.h>
+-#include <linux/of_gpio.h>
+ #include <linux/platform_device.h>
+ #include <sound/graph_card.h>
+ 
 -- 
 2.43.0.rc1.1336.g36b5255a03ac
 
