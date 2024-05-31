@@ -4,201 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E6C2AC27C4F
-	for <linux-rockchip@archiver.kernel.org>; Fri, 31 May 2024 03:07:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EDAECC27C44
+	for <linux-rockchip@archiver.kernel.org>; Fri, 31 May 2024 06:44:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=MI8hBO2IX8j4cxXE487QmbtctnzHwwTNSRTcxI7W8w8=; b=sl7CjxqZMsT3Lr
-	nIPL1UxfKRFxxB6x/c11IsZMBdv8xZAAxH/C3jArDYJl09HQXFsjPvMyanWINSxgWfKNwdqTVvltc
-	MqgFUi+OX+gEeEWK2jOlzvGq6YEBQiKKLO79zZfT9sHs6GfL89FEhaaLojL6DYoPCYIQY3jQcr55t
-	tAQ54UWKIj7xrYncFfPkbQrerRZHhHX1Z9TQFi248iY05Dvpt3GbF3CoC52bZzxJ9L7QJQ9qVdzHR
-	6pfCN9iV58QsKFO53C6vOaT2eOAg9pdxt+B5DtRZC3eEQLJjIWEXa0H5zbKXupudnd8aXflUl9R3k
-	M9I6q2UyuKDI2zl3+S8Q==;
+	List-Owner; bh=6UwEZUiWxvOMEgj9pOxtFwIbPTiSJGrIHyT1btkJ5qo=; b=Wel+DBgeRtR/6X
+	BbpygKXPrzytdFMasOsrhM6ih4azFLIY0T6N9Bu3atBvzKCgEBL36Z3XlY44+ree745oRX3kuwyuH
+	QYbYGY+HGoTTFqIT0+Og9yiROAgE0MWeCmzlDZZHjoKERGrM/XK2AyKOyjwOt3UW1ZjpItY9g4LKU
+	8Yk6BoWVD+K6fMP2RnmZhUyYiWrjtjvVdsWNAL8nhUz1lcu9BXO2uyLRQSxlwlVtWlz5GdElKJdSo
+	Jjkiy2KxQQQjlqJupoEWg4OgCgxYVoiDPd27/aXBg7bjKFNWtkadPTsJhorSmsHVMgGWYtxAcP/tD
+	MqHnE1V60MqRykjELP1A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sCscI-000000095gZ-1eYz;
-	Fri, 31 May 2024 03:07:42 +0000
-Received: from mail-am6eur05on20601.outbound.protection.outlook.com ([2a01:111:f403:2612::601] helo=EUR05-AM6-obe.outbound.protection.outlook.com)
+	id 1sCvzo-00000009PzZ-0a1k;
+	Fri, 31 May 2024 06:44:12 +0000
+Received: from mgamail.intel.com ([198.175.65.14])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sCscD-000000095fs-2w7p;
-	Fri, 31 May 2024 03:07:39 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=TYyRCv5Df+ri2805+V8UXE9kK/r7faQcpH2OvHFIxmGctuFc7q8R4dQI8v1SIiXVs6IxaErz5cwIXtmTqqsl5zAN4F88DTgj+txwasXIYDAvNt0UNl7AhKloMz4yqF2hNH8tKHATQyQX1oeccyLniCiabHcdT7qqfVneKsP08sL2MH57RmCLTJD08upikEMAF2Ft/XR3Cy8f+5Qv26q5vig6WFETb+u6maHV64QZD3StKbg1KZHiW6HCWnaRWH50/P+kRDGD8fDvAdj7hGLjSBZV4w2n1IfMHYEZaf5ZQcciMu0WVq31gn8MGiwiiTPRl4CX1xEBWw+EAP74LeinJA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=vImCUN9tf1bdcFM4/Fc7jN1GDT1kccBTz3ppSdRIRZI=;
- b=bdibCwsHH5i6cmpF/EHuCRJd1TzMVmpj7YfgpMiSjewvamgezUzNXFUFb21OWQ3YcteYVd+S0YY0++Igb0znbkfbtHCEw8ZJwi0nHcvAMDlCCwPDThyn8Ejy1wt4qEeARn/qOVkS6pKkI+vpFZWKA78RF1jBexJoHJDe1M1/fJ2k1g/ChrPRFW902Vrc/X1z3n/5+ILGd1Q6G+dklp2vz1bvajqpYpUNvP57MYnc0NTsx28apUl9zRvXQkhw3Bqz/7IW65ui/YE66yaHmBFM2r2TVggx5Ayzpip9aflffnCH6Wd/4i1sJop6dC819pW8kUz0uPVi8XrLIeECEPxmVA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nxp.com; dmarc=pass action=none header.from=nxp.com; dkim=pass
- header.d=nxp.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nxp.com; s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=vImCUN9tf1bdcFM4/Fc7jN1GDT1kccBTz3ppSdRIRZI=;
- b=Q59/ouzqaiT+feG1GlqMigKAQeGI2MUMS03GFhW+L03l3StrUEjCkz+OPczTDb3i1yVxj3f+AJJLfSD6fzm/Ha9oqQmK9myzVh4jxuKi4j298/NeEAEnqAx9TCBYcUsQ8NRoGG2dbKG+lh5/LotoE+zc20JNEcJWvLwEHM9jntA=
-Received: from DU0PR04MB9417.eurprd04.prod.outlook.com (2603:10a6:10:358::11)
- by AM8PR04MB7761.eurprd04.prod.outlook.com (2603:10a6:20b:248::15) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7633.21; Fri, 31 May
- 2024 03:07:25 +0000
-Received: from DU0PR04MB9417.eurprd04.prod.outlook.com
- ([fe80::557f:6fcf:a5a7:981c]) by DU0PR04MB9417.eurprd04.prod.outlook.com
- ([fe80::557f:6fcf:a5a7:981c%7]) with mapi id 15.20.7633.018; Fri, 31 May 2024
- 03:07:25 +0000
-From: Peng Fan <peng.fan@nxp.com>
-To: Geert Uytterhoeven <geert@linux-m68k.org>, "Peng Fan (OSS)"
-	<peng.fan@oss.nxp.com>
-CC: Linus Walleij <linus.walleij@linaro.org>, Thierry Reding
-	<thierry.reding@gmail.com>, Jonathan Hunter <jonathanh@nvidia.com>, Dvorkin
- Dmitry <dvorkin@tibbo.com>, Wells Lu <wellslutw@gmail.com>, Maxime Coquelin
-	<mcoquelin.stm32@gmail.com>, Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Emil Renner Berthing <kernel@esmil.dk>, Jianlong Huang
-	<jianlong.huang@starfivetech.com>, Hal Feng <hal.feng@starfivetech.com>,
-	Orson Zhai <orsonzhai@gmail.com>, Baolin Wang
-	<baolin.wang@linux.alibaba.com>, Chunyan Zhang <zhang.lyra@gmail.com>, Viresh
- Kumar <vireshk@kernel.org>, Shiraz Hashim <shiraz.linux.kernel@gmail.com>,
-	"soc@kernel.org" <soc@kernel.org>, Krzysztof Kozlowski <krzk@kernel.org>,
-	Sylwester Nawrocki <s.nawrocki@samsung.com>, Alim Akhtar
-	<alim.akhtar@samsung.com>, Geert Uytterhoeven <geert+renesas@glider.be>,
-	Patrice Chotard <patrice.chotard@foss.st.com>, Heiko Stuebner
-	<heiko@sntech.de>, Damien Le Moal <dlemoal@kernel.org>, Ludovic Desroches
-	<ludovic.desroches@microchip.com>, Nicolas Ferre
-	<nicolas.ferre@microchip.com>, Alexandre Belloni
-	<alexandre.belloni@bootlin.com>, Claudiu Beznea <claudiu.beznea@tuxon.dev>,
-	Aisheng Dong <aisheng.dong@nxp.com>, Fabio Estevam <festevam@gmail.com>,
-	Shawn Guo <shawnguo@kernel.org>, Jacky Bai <ping.bai@nxp.com>, Pengutronix
- Kernel Team <kernel@pengutronix.de>, Chester Lin <chester62515@gmail.com>,
-	Matthias Brugger <mbrugger@suse.com>, "Ghennadi Procopciuc (OSS)"
-	<ghennadi.procopciuc@oss.nxp.com>, Sean Wang <sean.wang@kernel.org>, Matthias
- Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Sascha Hauer
-	<s.hauer@pengutronix.de>, Andrew Jeffery <andrew@codeconstruct.com.au>, Joel
- Stanley <joel@jms.id.au>, Dan Carpenter <dan.carpenter@linaro.org>, Tony
- Lindgren <tony@atomide.com>, Stephen Warren <swarren@wwwdotorg.org>,
-	"linux-gpio@vger.kernel.org" <linux-gpio@vger.kernel.org>,
-	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-	"linux-tegra@vger.kernel.org" <linux-tegra@vger.kernel.org>,
-	"linux-arm-kernel@lists.infradead.org"
-	<linux-arm-kernel@lists.infradead.org>,
-	"linux-stm32@st-md-mailman.stormreply.com"
-	<linux-stm32@st-md-mailman.stormreply.com>,
-	"linux-samsung-soc@vger.kernel.org" <linux-samsung-soc@vger.kernel.org>,
-	"linux-renesas-soc@vger.kernel.org" <linux-renesas-soc@vger.kernel.org>,
-	"linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>,
-	"linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>,
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
-	"imx@lists.linux.dev" <imx@lists.linux.dev>, "linux-aspeed@lists.ozlabs.org"
-	<linux-aspeed@lists.ozlabs.org>, "openbmc@lists.ozlabs.org"
-	<openbmc@lists.ozlabs.org>, Emil Renner Berthing
-	<emil.renner.berthing@canonical.com>
-Subject: RE: [PATCH v2 00/20] pinctrl: Use scope based of_node_put() cleanups
-Thread-Topic: [PATCH v2 00/20] pinctrl: Use scope based of_node_put() cleanups
-Thread-Index: AQHaniSxdGSRMxSwNUygtutwA8lIt7Gv1KQAgAD9rtA=
-Date: Fri, 31 May 2024 03:07:25 +0000
-Message-ID: <DU0PR04MB9417FF2632A278BF6605AE1F88FC2@DU0PR04MB9417.eurprd04.prod.outlook.com>
-References: <20240504-pinctrl-cleanup-v2-0-26c5f2dc1181@nxp.com>
- <CAMuHMdVprgpjDP6PDn7appofJv8Tv30nRA4+7n4sR8n6n4qy+g@mail.gmail.com>
-In-Reply-To: <CAMuHMdVprgpjDP6PDn7appofJv8Tv30nRA4+7n4sR8n6n4qy+g@mail.gmail.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nxp.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: DU0PR04MB9417:EE_|AM8PR04MB7761:EE_
-x-ms-office365-filtering-correlation-id: 8c710791-4815-4578-6f3e-08dc811ecc56
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;ARA:13230031|376005|366007|1800799015|7416005|38070700009;
-x-microsoft-antispam-message-info: =?utf-8?B?MjNUWWFtWi9vTDA3L2Zlem9TaTVSSGZyc0RYQUZKOTBqNWhxVklBOEJjODlw?=
- =?utf-8?B?WlpRaUhtVm5jRXE4aWZYUVFXazhCODNMVHV3YUIvLzVPOXV1OFkwMHlUV3N5?=
- =?utf-8?B?SFB4U3k3RE0yb2ZhYU1zOXUzZVR4Q3prU2RTTDNsUkJhQkxBbGpOQmVKYk9m?=
- =?utf-8?B?SEhtVUszODZwT2J0ZVNFVUVCekZXVWRIRVNRcDhNMWhub0xFTzluSTdISERQ?=
- =?utf-8?B?My9QaldHd1doY3Yra0xlUko5dmR6MFc2U0QwTUduN1NCUzBrMEthQVBVVHhy?=
- =?utf-8?B?K2VkZ1lsbHFvTUJmaFN2VjJjY1QrV3U4enlaYWEvaEdkL0owTUhsWFlSbCs3?=
- =?utf-8?B?amxWOXZ4Q1ZlSzE2TDA4VEVBU3kvQm0yRm9SWloyeEZZdHBZYnEzK0VQeTV3?=
- =?utf-8?B?aVJFamFtb0Z0bFFJbE0yMyt3bUlrMmpSQzlRK0hsM3gwNGkwcStDTGFHSnkx?=
- =?utf-8?B?cHB4cm9UTS9BUWQwRVQ2VGFwdHdCQXh0b1JhWDFuZEJOM1VlN1RTbzNnUVpL?=
- =?utf-8?B?czZoQ0lNaVJMM0NadWo5NkZUNmZTVkI2cTVEZlhQbUxjcHVEWWVXSWJ2OUJj?=
- =?utf-8?B?b3Bhb3Y5bWtLS0FHM05LRHF1aDMzNG1pOWxVQm13RGtoUnZSUVptN3IyOFhz?=
- =?utf-8?B?dmhhWjE3b2wwSjAwakNDVjBLMForUlhwSDMxVTNvV2o0ZkVkRTNycWFGVXBJ?=
- =?utf-8?B?a2YzZDRDc1JjTXNFa3RjcXdjeENrOWsreHRWenlIdUV4Snc4OGRNUWxiZlJG?=
- =?utf-8?B?U3c2RWwrWG8vSlJHV0t6UTZTWE0vaGZFNFYvTUdMNTI1UVgyY3R4VW9rbnlR?=
- =?utf-8?B?NXI5N29XeUJjMUp4eHV4VW9sL2wzQ1dsc0FPTmpuS3BvM0lzYWJQQk1kMDcy?=
- =?utf-8?B?Vi9STVBCS1VjQ3V4S3V5QkVTb2dQNXBGK0I1MmxOQ3pzVTJlMDBHWTlIdytC?=
- =?utf-8?B?UWpZeHo1eExFbFNkSXZBNDErdWNGbDE5OTZCNCtCcUYxWkNvWkN2WWxBUFlX?=
- =?utf-8?B?aW0xUmg5WUYvWGpvbkpRdTdTVHZ2MkZtMXR2MHJrWlRvRjRvc0cvdHR5Vktp?=
- =?utf-8?B?YkFXVWo0bmFlZjBNU2NLUXE0SkNGaGdzZEM1V2YvMVdTK3JITk5LbTJwQkxl?=
- =?utf-8?B?YUppVExsTzJzNHpSemF2YW1MM25kbzN3Sld2V1Q0OVgwS1FjaUxJOUNROEtR?=
- =?utf-8?B?MjlaTTdZUnZTdHBnKzNRMmlUQWFqUXFuWGZrZXJsaDk5R0orUDBvQXlxYkM5?=
- =?utf-8?B?VGt6T2kyWlFmRGdwek5keitrSGxFYjIyRFQ2QjMwKzk0SkhXMTJLQkZNK1lV?=
- =?utf-8?B?enBYZXNyUURBUFZVQ1hLU0MzaHNpNk5ySnRKdDg3TXA4b29yUzhRTm5sdFR4?=
- =?utf-8?B?NmR6bG9jNkpZdHFPamlnNVhPMVBBZngyVWJRRVFwSmc0ZlN6N1VMa0Y2WWhY?=
- =?utf-8?B?aFBva0NtZmlOMEpscklxZGtMS0tOenBvMlFtajZQSEhsdnFtMHkwWG93RGVU?=
- =?utf-8?B?bnNBQUVJZDRxSnkyR2RXNmhtNmJ1a3N2NnhRVUJQaVdVczZBV3U4MTd2ak0v?=
- =?utf-8?B?R3lpbEQwQ2dEYm1iWndJVWlRUnJjMFhpc1FWOHRvM21kVHpCMERwNW9qSkxU?=
- =?utf-8?B?S1krWm1xMVcvU1c4T24wZzRUN0xmQmE4TCt2NlhNRFA2eXVnT0VHUGR4bzFs?=
- =?utf-8?B?SjdFNnpDSEUyWC9VS2dvTWRxdlk5eXZYNjJUenpOamdVVUxwTEVCcVd0UG1K?=
- =?utf-8?B?aXRjMnVlYTg3ZDdNL0lxLzcvR1E4cWZ0MWRGRy8vVDBmM0VnMGJPcmtHYnJ2?=
- =?utf-8?B?OFM3WG5nNmp1SXVuQ09oQT09?=
-x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:DU0PR04MB9417.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230031)(376005)(366007)(1800799015)(7416005)(38070700009);DIR:OUT;SFP:1101;
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?YW5HUkRPemNBQlM0cStROWQzd3FBMTU4Z0lqcEJZVFg2MnprU1ZQRGlKWnBj?=
- =?utf-8?B?QUhSR1ZhWGFONHRHa3BuYzVCampEb0xVMVZOdEJqOWx3S2JOQVF4UGplWnA5?=
- =?utf-8?B?NkV0VEROSnVOeEcvZTZVeTRLMGJGMWJZZEhic1A3d1pvMkFOOUJLai9WS1Vu?=
- =?utf-8?B?YlMzcFFsUUF5SWxLNkhJTm1nYnNHV2ZYU2U1R2ZsMWFqY0tPb21EOHVIdmN3?=
- =?utf-8?B?UTFja29QeDQzS0V4R3NDNHRBMDNET2dJZXVEZ01Ia1JlSVR0MU1vTk5EVEtO?=
- =?utf-8?B?ZGdUc1E1VGtrekEwSkplZFJtVEE2WnBqaEhVK1N4b1g1aGV3TC9wa01mNWg0?=
- =?utf-8?B?ZDdvYmpuV3MwVkZKSGFqS2ZvMnkyb04wQ0FJalB4eVJ4aCt0UG02M1FicU1F?=
- =?utf-8?B?ZE1laFpjN2ZzREpNWUZzT2phZW5lN1RJSTZtaG9QRVVsOElMK0paUUlaS1ZI?=
- =?utf-8?B?VE5BRGJKajcyajdKRTBXcUoraXlNMEtid1ZJRnl6QzNSMjBlZXdrdCtXN3My?=
- =?utf-8?B?czZiZDlnRTNxdjRSOW9yRnZnK3ZnUjBSL0Z2cDFDdkpsK0pvVXV1WGJ0MXF1?=
- =?utf-8?B?Rzc0T3g1YjRKZWI1M3l2TFgrQVU5STFMaTVXUnRSZmlhS2RXUWdTWjVUTTNt?=
- =?utf-8?B?OTlhQXRpR014cXlQMk9XVC84MmFTMmlrcW1wZTlNb2dYOW5SN3BTZVFvckdn?=
- =?utf-8?B?VCtVbm81V0V3QVNYNmVWQTBQdUIrWmRDN2hNOEhyb21CUy8vdy85cDZXNXVX?=
- =?utf-8?B?a0gzN0NnQTBYa1poc1hIZW45b1hiZVJZTkJ5T09idk5FNGthWHo2QXdlNldD?=
- =?utf-8?B?eXJ1TFJPZlN4NzdPODBZNVhYVGFkaVFHT0VaMEwwSVhGcTczRkg1QnNudkpQ?=
- =?utf-8?B?TGM0OGtpUThBby9KaDhtR25yeitEZHpkTGpoOUo5N09PWDdJY3VTTEUrakR3?=
- =?utf-8?B?N3NVdGNRdHljMFhteGpuRFI3ZGtWaGxuejVpUVZyNU5PNW1uK1hUQ0ZrbzNB?=
- =?utf-8?B?bkNjWkE1VDc5SXRPZWk2YnZzLzhvL3IwZWRSTTdFM3R0QmM2Q1JPUEIva0tm?=
- =?utf-8?B?cEF0RGZnRGwwNGJDSWM4VW5PbVZUb0w3UXM3UHdyWXF0aU93ekR1dzduemJl?=
- =?utf-8?B?R0lOUWU5dWpVK3ZrRnVLR0JFZS9HYndGajNUTWpRVGpWVHNieUJ3Um1wN1A5?=
- =?utf-8?B?bjl3NFRGdWVoZkVLMCtaNzNnMXljUkY0c2ZySU0remJHaGlzMEtabnhmTlI0?=
- =?utf-8?B?WTJ5TStVbk5jL05JUEhoTFZpRnlCSGhWVTBVY2UvSFVzYVJDdnlMN1U0NGdK?=
- =?utf-8?B?dURqWnJZQUxNRVN3UkdKbHVNOUJCd0NPc1ZrVVVRZ2Z2eXQ1aDhKRU5TS3pw?=
- =?utf-8?B?VjZxSXI4WXo5SFp4Wk1aUkpEcCt3cjhTSUdUaGFGNEZlY3UzZ3dsUEtkejk2?=
- =?utf-8?B?eE9Fd3FEYnNtMEVjdmZoSm15dFIrcURqTG9ncnY5dzd6ZnRpVW1vQWpzNE5s?=
- =?utf-8?B?bFRpeHhCMUp0anp0cW1senpHUEhKR0JBZVg0QVlmNERRZUFGS21IMlBCSGxV?=
- =?utf-8?B?aXZMM0V1NmZEYWhPaUFGZURtdU9sWURXVDdlRUJhMmpBNVFXRW9VcWpsLzlp?=
- =?utf-8?B?SVlSeU52QWsxOTRjK1dnV1Y0RG9xQXlpVTVMUnJIMnZ6cERrTDFUVy9SN0dl?=
- =?utf-8?B?M3ZRdVoxMURvcy8yb2NsNjI4L0NkVFVuWUlJNHpSTWJucm1VY3MxTFpLVys1?=
- =?utf-8?B?WWxKbE5KQXVjZkRLbzdxbUw0Y3hHN1JDWGRGL2U3VXRGRlNqTGluaXVXQktH?=
- =?utf-8?B?emQ1WUZSTlQ2MFdRNWtLNlFHb0s4OUpaK0VwUTMxaXBGZDFIRnRpWHZVR01G?=
- =?utf-8?B?VjlQMTkwUzBVVmVubE43SWE1NGNtVU5LeGVpeVloRHVOSzBkaXgwdy93WVFV?=
- =?utf-8?B?S3lYS0s0L0pneEhad2lseHNWNDFaTXNUOTlVd1RDOXQ2Uk9CUzUyZ0FsaXdI?=
- =?utf-8?B?a3pMcllQV0x0RUNNc3BSUmMvQ29ZZm5hNGl6NWJxbGpQdFNVMEVEZjkxbzNz?=
- =?utf-8?B?dVdnL21oYm00TlEyTTVXbTBlSEZvaitRNll6MW55WUZmcU9ZY3FhRTg5K1ZD?=
- =?utf-8?Q?1gJc=3D?=
+	id 1sCvzj-00000009PwZ-3sR1;
+	Fri, 31 May 2024 06:44:10 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1717137848; x=1748673848;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=UG2VPXJmnotgQCGbUJuzOG/RmR6KlipUd0UjDzTFmOc=;
+  b=PV1t1ekG5KfB3eg9htATM0N/WNKSgYsLY7Hy9AMWs1Am+WxM/sbVrYMf
+   TM/8q/CCPUdtP+K3DUU720mN970DZDytMmHWInrgQqcCiYATgPVKNw6Rk
+   /aUNfXkpV+tQH4DDGnK0hoBbFqDRmHaQC57OsjWlSbfyka+/X6UvL6nw8
+   s4Ppy0ijOjdeoa9kgwxZ9N1ZcVcqxKIu6hXzf5krdOPStjNVp9Ku6XGa9
+   J4fxqNkEg1lILjntryPpQPcNogev35v73nlXuPf3dv3dMEdDc37tE1F/K
+   /XIuvJtssyRZDLsogemz2ydGXipGAD5+9DQ+r/A3D87wcPyP9cpJRGJ4h
+   w==;
+X-CSE-ConnectionGUID: PUffV8mpQUm/bvkSPj9TLg==
+X-CSE-MsgGUID: OKLTNZZ5TF+ARdkRe8II8w==
+X-IronPort-AV: E=McAfee;i="6600,9927,11088"; a="17497239"
+X-IronPort-AV: E=Sophos;i="6.08,203,1712646000"; 
+   d="scan'208";a="17497239"
+Received: from orviesa007.jf.intel.com ([10.64.159.147])
+  by orvoesa106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 30 May 2024 23:44:06 -0700
+X-CSE-ConnectionGUID: 3FNSixCJRzeU6SpSydb64Q==
+X-CSE-MsgGUID: MIPAgyHVT2ebsdue2tL+gg==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.08,203,1712646000"; 
+   d="scan'208";a="36689755"
+Received: from unknown (HELO 0610945e7d16) ([10.239.97.151])
+  by orviesa007.jf.intel.com with ESMTP; 30 May 2024 23:43:58 -0700
+Received: from kbuild by 0610945e7d16 with local (Exim 4.96)
+	(envelope-from <lkp@intel.com>)
+	id 1sCvzO-000Gd3-2Y;
+	Fri, 31 May 2024 06:43:49 +0000
+Date: Fri, 31 May 2024 14:42:33 +0800
+From: kernel test robot <lkp@intel.com>
+To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+	Rob Herring <robh@kernel.org>,
+	Weidong Wang <wangweidong.a@awinic.com>,
+	Mark Brown <broonie@kernel.org>,
+	Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig@pengutronix.de>,
+	Shenghao Ding <shenghao-ding@ti.com>,
+	Marco Felsch <m.felsch@pengutronix.de>,
+	Alper Nebi Yasak <alpernebiyasak@gmail.com>,
+	Chancel Liu <chancel.liu@nxp.com>,
+	Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>,
+	linux-sound@vger.kernel.org, linux-kernel@vger.kernel.org,
+	alsa-devel@alsa-project.org, patches@opensource.cirrus.com,
+	linuxppc-dev@lists.ozlabs.org, imx@lists.linux.dev,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org
+Cc: llvm@lists.linux.dev, oe-kbuild-all@lists.linux.dev,
+	Liam Girdwood <lgirdwood@gmail.com>,
+	Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
+	James Schulman <james.schulman@cirrus.com>,
+	David Rhodes <david.rhodes@cirrus.com>,
+	Richard Fitzgerald <rf@opensource.cirrus.com>,
+	Kevin Lu <kevin-lu@ti.com>, Baojun Xu <baojun.xu@ti.com>,
+	Srinivas Kandagatla <srinivas.kandagatla@linaro.org>,
+	Banajit Goswami <bgoswami@quicinc.com>,
+	Shengjiu Wang <shengjiu.wang@gmail.com>,
+	Xiubo Li <Xiubo.Lee@gmail.com>
+Subject: Re: [PATCH v1 1/6] ASoC: codecs: Remove unused of_gpio.h
+Message-ID: <202405311428.tzsBMIPs-lkp@intel.com>
+References: <20240530230037.1156253-2-andriy.shevchenko@linux.intel.com>
 MIME-Version: 1.0
-X-OriginatorOrg: nxp.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: DU0PR04MB9417.eurprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 8c710791-4815-4578-6f3e-08dc811ecc56
-X-MS-Exchange-CrossTenant-originalarrivaltime: 31 May 2024 03:07:25.6586
- (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: 92xh82Slv39xsQw+LZS1GW4o02a9/W/7DaFtp+6efPXGwLZ5qo5bBZA2wQCK2jLR1RicrUOacSdEvxYaOvnDpA==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: AM8PR04MB7761
+Content-Disposition: inline
+In-Reply-To: <20240530230037.1156253-2-andriy.shevchenko@linux.intel.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240530_200737_795864_A19480EC 
-X-CRM114-Status: GOOD (  28.67  )
+X-CRM114-CacheID: sfid-20240530_234408_162860_CF1729C1 
+X-CRM114-Status: GOOD (  12.43  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -210,40 +105,96 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGkgR2VlcnQNCg0KPiBTdWJqZWN0OiBSZTogW1BBVENIIHYyIDAwLzIwXSBwaW5jdHJsOiBVc2Ug
-c2NvcGUgYmFzZWQgb2Zfbm9kZV9wdXQoKQ0KPiBjbGVhbnVwcw0KPiANCj4gSGkgUGVuZywNCj4g
-DQo+IE9uIFNhdCwgTWF5IDQsIDIwMjQgYXQgMzoxMuKAr1BNIFBlbmcgRmFuIChPU1MpIDxwZW5n
-LmZhbkBvc3MubnhwLmNvbT4NCj4gd3JvdGU6DQo+ID4gVXNlIHNjb3BlIGJhc2VkIG9mX25vZGVf
-cHV0KCkgdG8gc2ltcGxpZnkgY29kZS4gSXQgcmVkdWNlcyB0aGUgY2hhbmNlDQo+ID4gb2YgZm9y
-Z2V0dGluZyBvZl9ub2RlX3B1dCgpLCBhbmQgYWxzbyBzaW1wbGlmaWVzIGVycm9yIGhhbmRsaW5n
-IHBhdGguDQo+ID4gSSBub3QgYWJsZSB0byB0ZXN0IHRoZSBjaGFuZ2VzIG9uIGFsbCB0aGUgaGFy
-ZHdhcmVzLCBzbyBkcml2ZXIgb3duZXJzLA0KPiA+IHBsZWFzZSBoZWxwIHJldmlldyB3aGVuIHlv
-dSBoYXZlIHRpbWUuDQo+ID4NCj4gPiBUaGlzIHBhdGNoc2V0IHdhcyBpbnNwaXJlZCBmcm9tIERh
-bidzIGNvbW1lbnRzIG9uIHBpbmN0cmwtc2NtaS1pbXguYywNCj4gPiB0aGFua3MuDQo+ID4NCj4g
-PiBTaWduZWQtb2ZmLWJ5OiBQZW5nIEZhbiA8cGVuZy5mYW5AbnhwLmNvbT4NCj4gDQo+IEFuZHkn
-cyBxdWVzdGlvbiBhYm91dCBjb2RlIGdlbmVyYXRpb24gb24gYSByZWxhdGVkIHBhdGNoIG1hZGUg
-bWUgd29uZGVyLA0KPiB0b28uDQo+IA0KPiBPbiBhcm0zMiwgYSBjb252ZXJzaW9uIHRvIGZvcl9l
-YWNoX2NoaWxkX29mX25vZGVfc2NvcGVkKCkgc2VlbXMgdG8gY29zdCBjYS4NCj4gNDggYnl0ZXMg
-b2YgYWRkaXRpb25hbCBjb2RlLCByZWdhcmRsZXNzIG9mIHdoZXRoZXIgdGhlcmUgd2VyZSBleHBs
-aWNpdA0KPiBjbGVhbnVwcyBiZWZvcmUgb3Igbm90Lg0KPiANCj4gSSBjaGVja2VkICJwaW5jdHJs
-OiByZW5lc2FzOiBVc2Ugc2NvcGUgYmFzZWQgb2Zfbm9kZV9wdXQoKSBjbGVhbnVwcyIsIGFuZCBh
-bGwNCj4gYnV0IHRoZSBjb252ZXJzaW9ucyBpbiAqX2R0X25vZGVfdG9fbWFwKCkgY29zdCA0OCBi
-eXRlcyBlYWNoLg0KPiANCg0KSSBhbSBub3Qgc3VyZSB0aGlzIGlzIGFuIGlzc3VlIG9yIGVsc2Uu
-IFdoYXQgd291bGQgeW91IHN1Z2dlc3QgbWUgdG8gZG8/DQpJZiB5b3UgdGhpbmsgZXh0cmEgNDhi
-eXRlcyBjb25zdW1wdGlvbiBpcyBub3QgZ29vZCBoZXJlLCBmZWVsIGZyZWUgdG8gZHJvcCB0aGUN
-CnBhdGNoLg0KDQpUaGFua3MsDQpQZW5nLg0KDQo+IEdye29ldGplLGVldGluZ31zLA0KPiANCj4g
-ICAgICAgICAgICAgICAgICAgICAgICAgR2VlcnQNCj4gDQo+IC0tDQo+IEdlZXJ0IFV5dHRlcmhv
-ZXZlbiAtLSBUaGVyZSdzIGxvdHMgb2YgTGludXggYmV5b25kIGlhMzIgLS0gZ2VlcnRAbGludXgt
-DQo+IG02OGsub3JnDQo+IA0KPiBJbiBwZXJzb25hbCBjb252ZXJzYXRpb25zIHdpdGggdGVjaG5p
-Y2FsIHBlb3BsZSwgSSBjYWxsIG15c2VsZiBhIGhhY2tlci4gQnV0DQo+IHdoZW4gSSdtIHRhbGtp
-bmcgdG8gam91cm5hbGlzdHMgSSBqdXN0IHNheSAicHJvZ3JhbW1lciIgb3Igc29tZXRoaW5nIGxp
-a2UgdGhhdC4NCj4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAtLSBMaW51cyBUb3J2
-YWxkcw0KDQpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpM
-aW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFk
-Lm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJv
-Y2tjaGlwCg==
+Hi Andy,
+
+kernel test robot noticed the following build errors:
+
+[auto build test ERROR on broonie-sound/for-next]
+[also build test ERROR on shawnguo/for-next rockchip/for-next linus/master v6.10-rc1 next-20240529]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch#_base_tree_information]
+
+url:    https://github.com/intel-lab-lkp/linux/commits/Andy-Shevchenko/ASoC-codecs-Remove-unused-of_gpio-h/20240531-070350
+base:   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
+patch link:    https://lore.kernel.org/r/20240530230037.1156253-2-andriy.shevchenko%40linux.intel.com
+patch subject: [PATCH v1 1/6] ASoC: codecs: Remove unused of_gpio.h
+config: i386-buildonly-randconfig-006-20240531 (https://download.01.org/0day-ci/archive/20240531/202405311428.tzsBMIPs-lkp@intel.com/config)
+compiler: clang version 18.1.5 (https://github.com/llvm/llvm-project 617a15a9eac96088ae5e9134248d8236e34b91b1)
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20240531/202405311428.tzsBMIPs-lkp@intel.com/reproduce)
+
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202405311428.tzsBMIPs-lkp@intel.com/
+
+All errors (new ones prefixed by >>):
+
+>> sound/soc/codecs/tas2781-comlib.c:408:6: error: call to undeclared function 'gpio_is_valid'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+     408 |         if (gpio_is_valid(tas_priv->irq_info.irq_gpio))
+         |             ^
+   sound/soc/codecs/tas2781-comlib.c:408:6: note: did you mean 'uuid_is_valid'?
+   include/linux/uuid.h:102:19: note: 'uuid_is_valid' declared here
+     102 | bool __must_check uuid_is_valid(const char *uuid);
+         |                   ^
+>> sound/soc/codecs/tas2781-comlib.c:409:3: error: call to undeclared function 'gpio_free'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+     409 |                 gpio_free(tas_priv->irq_info.irq_gpio);
+         |                 ^
+   sound/soc/codecs/tas2781-comlib.c:409:3: note: did you mean 'pmd_free'?
+   include/asm-generic/pgtable-nopmd.h:63:20: note: 'pmd_free' declared here
+      63 | static inline void pmd_free(struct mm_struct *mm, pmd_t *pmd)
+         |                    ^
+   2 errors generated.
+--
+>> sound/soc/codecs/tas2781-i2c.c:664:6: error: call to undeclared function 'gpio_is_valid'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+     664 |         if (gpio_is_valid(tas_priv->irq_info.irq_gpio)) {
+         |             ^
+   sound/soc/codecs/tas2781-i2c.c:664:6: note: did you mean 'uuid_is_valid'?
+   include/linux/uuid.h:102:19: note: 'uuid_is_valid' declared here
+     102 | bool __must_check uuid_is_valid(const char *uuid);
+         |                   ^
+>> sound/soc/codecs/tas2781-i2c.c:665:8: error: call to undeclared function 'gpio_request'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+     665 |                 rc = gpio_request(tas_priv->irq_info.irq_gpio,
+         |                      ^
+>> sound/soc/codecs/tas2781-i2c.c:668:4: error: call to undeclared function 'gpio_direction_input'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+     668 |                         gpio_direction_input(
+         |                         ^
+   sound/soc/codecs/tas2781-i2c.c:668:4: note: did you mean 'gpiod_direction_input'?
+   include/linux/gpio/consumer.h:110:5: note: 'gpiod_direction_input' declared here
+     110 | int gpiod_direction_input(struct gpio_desc *desc);
+         |     ^
+>> sound/soc/codecs/tas2781-i2c.c:672:5: error: call to undeclared function 'gpio_to_irq'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+     672 |                                 gpio_to_irq(tas_priv->irq_info.irq_gpio);
+         |                                 ^
+   sound/soc/codecs/tas2781-i2c.c:672:5: note: did you mean 'gpiod_to_irq'?
+   include/linux/gpio/consumer.h:167:5: note: 'gpiod_to_irq' declared here
+     167 | int gpiod_to_irq(const struct gpio_desc *desc);
+         |     ^
+   4 errors generated.
+
+
+vim +/gpio_is_valid +408 sound/soc/codecs/tas2781-comlib.c
+
+ef3bcde75d06d6 Shenghao Ding 2023-06-18  405  
+ef3bcde75d06d6 Shenghao Ding 2023-06-18  406  void tasdevice_remove(struct tasdevice_priv *tas_priv)
+ef3bcde75d06d6 Shenghao Ding 2023-06-18  407  {
+ef3bcde75d06d6 Shenghao Ding 2023-06-18 @408  	if (gpio_is_valid(tas_priv->irq_info.irq_gpio))
+ef3bcde75d06d6 Shenghao Ding 2023-06-18 @409  		gpio_free(tas_priv->irq_info.irq_gpio);
+ef3bcde75d06d6 Shenghao Ding 2023-06-18  410  	mutex_destroy(&tas_priv->codec_lock);
+ef3bcde75d06d6 Shenghao Ding 2023-06-18  411  }
+ef3bcde75d06d6 Shenghao Ding 2023-06-18  412  EXPORT_SYMBOL_GPL(tasdevice_remove);
+ef3bcde75d06d6 Shenghao Ding 2023-06-18  413  
+
+-- 
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
