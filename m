@@ -4,57 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0818EC27C4F
-	for <linux-rockchip@archiver.kernel.org>; Fri, 31 May 2024 15:31:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0604CC27C50
+	for <linux-rockchip@archiver.kernel.org>; Fri, 31 May 2024 15:32:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=1/SPhJXz48rN/UhZX05480sgsW3GqfY7aTK3F6ZFtFc=; b=jQ1szGbQc52jVN
-	hz4+k7+FRgf5Mhtf8yxacAT1L+XbfkpHbrCRrpf+u5g4CksJOGWdnXpIT/1sPUj/zG8wS+Ec3Ucf8
-	t+AQIKevOYPHxQL/WKmP5eJe2MbTClIiPqL/dYevqvY7xE/JXBFSGBhsUIySw7ucm/ZSmJA6ckFO1
-	hol7rK4v4neIrtd0iSa7dX8g2vsK5/2vuDfYIISFfAIrBakxW9vk9cRySmmcUHo+LFsZTOwJHr/cS
-	SYfIxhz4i0RajqpKrRtN4vUghTW/c2isgNjUQ2PACREVN7Gw4AtthOPfb3rT9V5ci4OgYAQijm2ul
-	b8IeJqK9je5pK39ljt9w==;
+	List-Owner; bh=UhS78d8Dbtpm05PGy96yBwlDJj2eECyJSyv2l0YY6tc=; b=gf/X+x1wt9PZy0
+	hLHtoW/DbqptUQZeuPVGl5LRRIUSDtRDgBw6o4g/KKZ41T9Qi+RwXc8RlJ9p8b1yF4xsdBmvCKLmS
+	haRcoHalgYW1Ao69MCbkil4hAkdv1oxK2LptWOlb5gLDDafUtPrFMXPdY130xpPFVxXgJgdaj9cKG
+	h4zjh+P6gA6NjWD2uFqXj+wvoAWJCbj+cs1Hkx2Yd2kOy/p0qZlk955hDGBMqzVcONbBVPaNfWQd1
+	1saUVbJR50PyTqEMSZVYLoozKv7jcfNfaiEdJ0VPyuLu7EHuTednQAtRPr0iPDd3UEXdYj1izHkQ6
+	EnO0akcpBank41X9owhA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sD4EI-0000000Ah0F-1nhy;
-	Fri, 31 May 2024 15:31:42 +0000
+	id 1sD4ES-0000000Ah87-31V8;
+	Fri, 31 May 2024 15:31:52 +0000
 Received: from mgamail.intel.com ([198.175.65.17])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sD4Db-0000000Aga7-0h26;
-	Fri, 31 May 2024 15:31:02 +0000
+	id 1sD4Di-0000000AgeE-37RQ;
+	Fri, 31 May 2024 15:31:09 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1717169459; x=1748705459;
+  t=1717169466; x=1748705466;
   h=from:to:cc:subject:date:message-id:in-reply-to:
    references:mime-version:content-transfer-encoding;
-  bh=j//q7PxjjHf16S9qzs6ZEZBUjOL4lL+BxQBw8TkTaeo=;
-  b=c0pGNEyOGZuFvWJnyCwpBjB55P7P5fxhH0Bet2Ehj+ruXmJzLAtKe1HW
-   +HCuPbMbNdxkwGGB+HOwYTJMClSChnB48AAk2QcrDJy7ZWDxH+vf75RrV
-   hfpD+6IWlMzshoKRCieiw+xGGgmkzOd5XKRxMbvlhIk9Pyg1NPEml2Qhz
-   be85kVmitzNkaMnQ4S4NzeUJSYUeaub2Z4IwmGgI4SRear9PJ4nMzzBAm
-   /HgndoSMZU0EPTMWAKC8C3h6K6MpWjYPaLSKGfjG+MYH8RqV58cRnyKtP
-   DaBqKc9QplzbXfsbzzU5Qe9d3HpIOdIDU/HBND0uHVLaU2To/p1sfEJ2P
+  bh=sA6qI//FTL7pgyGldUMsd1jU+l556RY52OWXWgjHnto=;
+  b=eSF45pq1QjAZ3zPZDNQXqcHDSX9NpgUjnTq8VClVx0Wid/ml9emR9Dhr
+   I2MOa3as0O/Zn7ndrbUc5OeMlBTH5T0duXVLns4JhLpsYF1K9kdflc8qx
+   hBe4UdscvxNIG52K63EEaEJIRE/jUaCoGSajII6WiPVPurD+ETq+VANF9
+   8hDTBIvsaNAIR1Hu3s62Z3/p6Ig0r5afZYjthKuR4K4UDagHDzWhCwQ54
+   A02sFtzXWqm45EDls1u0wtAHYWrGdXlMywDxyKJDvfDPq8LCmy6BSMNbp
+   ubGLsPWrqpaW8wUFggNClQjMGJDzetP5Y1XFKrIZvVkP0PNGkZqPMk6sU
    w==;
-X-CSE-ConnectionGUID: Q5I2EZKdQ9CEJejvNIdOHA==
-X-CSE-MsgGUID: LSNNj8t1RZqmp1R6H811sQ==
-X-IronPort-AV: E=McAfee;i="6600,9927,11088"; a="13839615"
+X-CSE-ConnectionGUID: JcW9B8BOTYGaKxKvRwNLrg==
+X-CSE-MsgGUID: NKsfbGB3RduiaZ3CV4h+zw==
+X-IronPort-AV: E=McAfee;i="6600,9927,11088"; a="13839681"
 X-IronPort-AV: E=Sophos;i="6.08,204,1712646000"; 
-   d="scan'208";a="13839615"
+   d="scan'208";a="13839681"
 Received: from fmviesa003.fm.intel.com ([10.60.135.143])
-  by orvoesa109.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 31 May 2024 08:30:50 -0700
-X-CSE-ConnectionGUID: nwDwpn1fQ2SNJPRQUUQn3A==
-X-CSE-MsgGUID: OEXIKaNATXuTal65ZUfdtw==
+  by orvoesa109.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 31 May 2024 08:30:57 -0700
+X-CSE-ConnectionGUID: hHqXtMjBQrmkR3of3UKpuQ==
+X-CSE-MsgGUID: 7H/Fjvj9SyuUz1KNLZXrwg==
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="6.08,204,1712646000"; 
-   d="scan'208";a="40627258"
+   d="scan'208";a="40627351"
 Received: from black.fi.intel.com ([10.237.72.28])
-  by fmviesa003.fm.intel.com with ESMTP; 31 May 2024 08:30:40 -0700
+  by fmviesa003.fm.intel.com with ESMTP; 31 May 2024 08:30:49 -0700
 Received: by black.fi.intel.com (Postfix, from userid 1003)
-	id B16433B3; Fri, 31 May 2024 18:30:39 +0300 (EEST)
+	id 04665692; Fri, 31 May 2024 18:30:39 +0300 (EEST)
 From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 To: Charles Keepax <ckeepax@opensource.cirrus.com>,
 	Rob Herring <robh@kernel.org>,
@@ -93,17 +93,16 @@ Cc: Liam Girdwood <lgirdwood@gmail.com>,
 	Pengutronix Kernel Team <kernel@pengutronix.de>,
 	Heiko Stuebner <heiko@sntech.de>,
 	Sylwester Nawrocki <s.nawrocki@samsung.com>
-Subject: [PATCH v2 2/6] ASoC: fsl: Remove unused of_gpio.h
-Date: Fri, 31 May 2024 18:29:29 +0300
-Message-ID: <20240531153038.1590171-3-andriy.shevchenko@linux.intel.com>
+Subject: [PATCH v2 6/6] ASoC: samsung: Replace of_gpio.h by proper one
+Date: Fri, 31 May 2024 18:29:33 +0300
+Message-ID: <20240531153038.1590171-7-andriy.shevchenko@linux.intel.com>
 X-Mailer: git-send-email 2.43.0.rc1.1336.g36b5255a03ac
 In-Reply-To: <20240531153038.1590171-1-andriy.shevchenko@linux.intel.com>
 References: <20240531153038.1590171-1-andriy.shevchenko@linux.intel.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240531_083059_291909_9ADB14F9 
-X-CRM114-Status: UNSURE (   9.41  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240531_083106_886893_A78D343E 
+X-CRM114-Status: GOOD (  12.30  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -120,41 +119,32 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-of_gpio.h is deprecated and subject to remove. The drivers in question
-don't use it, simply remove the unused header.
+of_gpio.h is deprecated and subject to remove.
+The driver doesn't use it directly, replace it
+with what is really being used.
 
 Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 ---
- sound/soc/fsl/imx-es8328.c | 1 -
- sound/soc/fsl/imx-rpmsg.c  | 2 --
- 2 files changed, 3 deletions(-)
+ sound/soc/samsung/aries_wm8994.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/sound/soc/fsl/imx-es8328.c b/sound/soc/fsl/imx-es8328.c
-index 5b9648f3b087..3ef92f6dfc6b 100644
---- a/sound/soc/fsl/imx-es8328.c
-+++ b/sound/soc/fsl/imx-es8328.c
-@@ -8,7 +8,6 @@
+diff --git a/sound/soc/samsung/aries_wm8994.c b/sound/soc/samsung/aries_wm8994.c
+index a548ac33dd94..01716df0c842 100644
+--- a/sound/soc/samsung/aries_wm8994.c
++++ b/sound/soc/samsung/aries_wm8994.c
+@@ -1,11 +1,11 @@
+ // SPDX-License-Identifier: GPL-2.0+
+ #include <linux/extcon.h>
++#include <linux/gpio/consumer.h>
+ #include <linux/iio/consumer.h>
+ #include <linux/input-event-codes.h>
+ #include <linux/mfd/wm8994/registers.h>
+ #include <linux/module.h>
  #include <linux/of.h>
- #include <linux/of_platform.h>
- #include <linux/i2c.h>
 -#include <linux/of_gpio.h>
- #include <sound/soc.h>
+ #include <linux/regulator/consumer.h>
  #include <sound/jack.h>
- 
-diff --git a/sound/soc/fsl/imx-rpmsg.c b/sound/soc/fsl/imx-rpmsg.c
-index 0f1ad7ad7d27..ce98d2288193 100644
---- a/sound/soc/fsl/imx-rpmsg.c
-+++ b/sound/soc/fsl/imx-rpmsg.c
-@@ -5,9 +5,7 @@
- #include <linux/of_platform.h>
- #include <linux/of_reserved_mem.h>
- #include <linux/i2c.h>
--#include <linux/of_gpio.h>
- #include <linux/slab.h>
--#include <linux/gpio.h>
- #include <linux/clk.h>
- #include <sound/soc.h>
- #include <sound/jack.h>
+ #include <sound/pcm_params.h>
 -- 
 2.43.0.rc1.1336.g36b5255a03ac
 
