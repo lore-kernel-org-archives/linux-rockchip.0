@@ -4,95 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B3BDAC25B75
-	for <linux-rockchip@archiver.kernel.org>; Fri, 31 May 2024 21:53:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1A97AC27C4F
+	for <linux-rockchip@archiver.kernel.org>; Fri, 31 May 2024 22:41:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=HmdBqtCy5ziuhXNQUeuTrpUYklngAuMELlLnaCjkIcY=; b=lse1hAbCUocRHj
-	72wVU5UmXrXEwr631n18DNue2tShEiBIyIRkBKVARTCmqJx3v9/5uVft3o40tlPMOHJ2GLf/AyZgA
-	HrrNxok5r7qa1nJaas/V2BowKjX5meEx5tmM62Hx3fiq+NzWIgVD93/04MJ+0SDRiaf2gToSZqFau
-	nHDxi3XgNSIV7QdjYHt/wG437e495WZjQAcZ1UJZIv0id2VdWbUyxj2hM22BWYSPAjyfHV2e3bOUx
-	MOp+cmCkOSqy/h5tdRkD7Ftmnikvd0gGn5P9SLAEchvAnTG4rz+CQoUrrqje9z+annIpycK6zg5ij
-	YRHGeHPclEBXl6PXx7tg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
+	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=9ElwhVauET+JF5A30omJpqFVAC5QP5IBzdBuiA9+W7w=; b=2ETUsv7mkxUxRtCz8iVlggyBes
+	5QZfAsWelRXEsqB3eXzzwUM3ECrgSP6Io/dw+eYbKGZOHZMCLR3SayAeI5mo/Z4+ukL9tVmPaMuCT
+	2Hz9z8hB4Z2FmJMauuHaAurkAC35FmvoSeSEACwpUNtVW70DxVuwTwVuZW8QTgyWO4/jX159qYgvL
+	5k2ZD4FpDLORqKj6Gt5ESkfSQEuveJRI+VosCw6kvkTkNDjvPi0+reivlDNYPDg2xccqRaef1NEHF
+	j1WeXAQyYmYy6t+CH/alR85yugQ2LJZvbnl3JHz2SU1iTua8Yy37Valja8og/joIUUAc3qk1LTfri
+	ikiLIyOw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sDABj-0000000BYG7-0o88;
-	Fri, 31 May 2024 21:53:27 +0000
-Received: from mgamail.intel.com ([192.198.163.12])
+	id 1sDAwN-0000000Bc9i-2zGe;
+	Fri, 31 May 2024 22:41:39 +0000
+Received: from mail.manjaro.org ([2a01:4f8:c0c:51f3::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sDABe-0000000BYFA-3Zh2;
-	Fri, 31 May 2024 21:53:25 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1717192402; x=1748728402;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=CPHoggbhzNf5ibw9VbBbdMg/tioqAhC9EB19f97+qc8=;
-  b=eIVSwn/3D7WSa3/Kz2+aim3OUwOHBM+niTUbRImu6v/EhG6F/w2QkPP7
-   +4AD/G3yzJ4hCrgH/VyZ/fIO6wavwRgQbHtvvubtsBdlHrkyXxT0YbAp6
-   lJFN1YcC0bF5Px3I0LUQTDGWegML+fsywSKB1P9q6W7oQcppJFWZg1b/j
-   +QfJ1bz8LKaniQVP4Fe9V44qavE8MP2A2YmGiZTFUgDKJBY1iob/SWNrL
-   fFqkV9+h2gpz31F9b04zV9xk2/jhFEnRFTNDyUTqwnQTTRRWQEgHG2M5f
-   QLTIFoh5n3qddTADmpFK5z/HL7KoIV4E/YKHzF3bEz6ohbrxP6EPaRw3Q
-   A==;
-X-CSE-ConnectionGUID: JOwiI0FNQCibpD+13oghVA==
-X-CSE-MsgGUID: y41meaD7SvanEPRBkMyV9g==
-X-IronPort-AV: E=McAfee;i="6600,9927,11089"; a="17600232"
-X-IronPort-AV: E=Sophos;i="6.08,205,1712646000"; 
-   d="scan'208";a="17600232"
-Received: from fmviesa007.fm.intel.com ([10.60.135.147])
-  by fmvoesa106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 31 May 2024 14:53:21 -0700
-X-CSE-ConnectionGUID: c9OWndSkQPeEQpneVeUCbA==
-X-CSE-MsgGUID: BhUsEDPER0eHdbxJaGJzaQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.08,205,1712646000"; 
-   d="scan'208";a="36205908"
-Received: from unknown (HELO 0610945e7d16) ([10.239.97.151])
-  by fmviesa007.fm.intel.com with ESMTP; 31 May 2024 14:53:14 -0700
-Received: from kbuild by 0610945e7d16 with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1sDABU-000Hsc-0O;
-	Fri, 31 May 2024 21:53:12 +0000
-Date: Sat, 1 Jun 2024 05:52:28 +0800
-From: kernel test robot <lkp@intel.com>
-To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
-	Charles Keepax <ckeepax@opensource.cirrus.com>,
-	Rob Herring <robh@kernel.org>,
-	Weidong Wang <wangweidong.a@awinic.com>,
-	Mark Brown <broonie@kernel.org>,
-	Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig@pengutronix.de>,
-	Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>,
-	Shenghao Ding <shenghao-ding@ti.com>,
-	Marco Felsch <m.felsch@pengutronix.de>,
-	Alper Nebi Yasak <alpernebiyasak@gmail.com>,
-	Chancel Liu <chancel.liu@nxp.com>, linux-sound@vger.kernel.org,
-	linux-kernel@vger.kernel.org, alsa-devel@alsa-project.org,
-	patches@opensource.cirrus.com, linuxppc-dev@lists.ozlabs.org,
-	imx@lists.linux.dev, linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org
-Cc: llvm@lists.linux.dev, oe-kbuild-all@lists.linux.dev,
-	Nicolin Chen <nicoleotsuka@gmail.com>,
-	Fabio Estevam <festevam@gmail.com>,
-	Pengutronix Kernel Team <kernel@pengutronix.de>,
-	Liam Girdwood <lgirdwood@gmail.com>,
-	Shengjiu Wang <shengjiu.wang@gmail.com>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Xiubo Li <Xiubo.Lee@gmail.com>, Takashi Iwai <tiwai@suse.com>,
-	David Rhodes <david.rhodes@cirrus.com>, Kevin Lu <kevin-lu@ti.com>,
-	Richard Fitzgerald <rf@opensource.cirrus.com>
-Subject: Re: [PATCH v2 1/6] ASoC: codecs: Remove unused of_gpio.h
-Message-ID: <202406010556.2MUAFCcz-lkp@intel.com>
-References: <20240531153038.1590171-2-andriy.shevchenko@linux.intel.com>
+	id 1sDAwJ-0000000Bc9F-2UQg;
+	Fri, 31 May 2024 22:41:37 +0000
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20240531153038.1590171-2-andriy.shevchenko@linux.intel.com>
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
+	t=1717195293;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=aNBMrZICb0wQxUkjNFmtIiPriop70XcjlnulR8nloS8=;
+	b=JVHMu99RoO1MT9X1bxJXfce1oVrxoIfGboFsOiNNYsbGJSC35fCmip/RkAkBd1wAfh8nzX
+	0XM1lzo9Ir/lFiD4vvDPG7Q19ymMTPLkbKtpmjwZG6aQE1XXAppO00Hwy9HdZh4MD99WKF
+	M3QM9VI58HHixZSfF91wFxXfSJ3joJ1R92puaoKSmppWd7fnhzduQb4YvdwKvPPCSR8rZj
+	dMFfx9M1N3+Y9ZWW/M/PSPdh7kYxWNCEUc1sGpF9qvuTrxEOcXrnOg/B4ESwQNuhKSjKYp
+	kjGAsBghKDDvM+CM2BQBJra4YmZjSsBjgnQS5RxdSIw2DNV9Rot2flicBCm/7w==
+Date: Sat, 01 Jun 2024 00:41:32 +0200
+From: Dragan Simic <dsimic@manjaro.org>
+To: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>
+Cc: wens@kernel.org, linux-rockchip@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org,
+ robh+dt@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
+ linux-kernel@vger.kernel.org, stable@vger.kernel.org, Diederik de Haas
+ <didi.debian@cknow.org>
+Subject: Re: [PATCH] arm64: dts: rockchip: Fix the DCDC_REG2 minimum voltage
+ on Quartz64 Model B
+In-Reply-To: <1994616.CrzyxZ31qj@diego>
+References: <e70742ea2df432bf57b3f7de542d81ca22b0da2f.1716225483.git.dsimic@manjaro.org>
+ <CAGb2v66DPvvRcq+98vF2mCF8URW_qys1+B_FM9kcm6ppuPvyeg@mail.gmail.com>
+ <20cf041dcd6f752174bf29d2a53c61b3@manjaro.org> <1994616.CrzyxZ31qj@diego>
+Message-ID: <99ea0e0053d3ada3325bdfaec7a937f0@manjaro.org>
+X-Sender: dsimic@manjaro.org
+Authentication-Results: ORIGINATING;
+	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240531_145323_398578_F513BC74 
-X-CRM114-Status: GOOD (  13.52  )
+X-CRM114-CacheID: sfid-20240531_154136_259999_1C25FF83 
+X-CRM114-Status: GOOD (  41.69  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,166 +71,124 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Andy,
-
-kernel test robot noticed the following build errors:
-
-[auto build test ERROR on broonie-sound/for-next]
-[also build test ERROR on shawnguo/for-next rockchip/for-next linus/master v6.10-rc1 next-20240531]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
-
-url:    https://github.com/intel-lab-lkp/linux/commits/Andy-Shevchenko/ASoC-codecs-Remove-unused-of_gpio-h/20240531-233513
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
-patch link:    https://lore.kernel.org/r/20240531153038.1590171-2-andriy.shevchenko%40linux.intel.com
-patch subject: [PATCH v2 1/6] ASoC: codecs: Remove unused of_gpio.h
-config: i386-buildonly-randconfig-006-20240601 (https://download.01.org/0day-ci/archive/20240601/202406010556.2MUAFCcz-lkp@intel.com/config)
-compiler: clang version 18.1.5 (https://github.com/llvm/llvm-project 617a15a9eac96088ae5e9134248d8236e34b91b1)
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20240601/202406010556.2MUAFCcz-lkp@intel.com/reproduce)
-
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202406010556.2MUAFCcz-lkp@intel.com/
-
-All errors (new ones prefixed by >>):
-
->> sound/soc/codecs/aw88399.c:1791:3: error: call to undeclared function 'gpiod_set_value_cansleep'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
-    1791 |                 gpiod_set_value_cansleep(aw88399->reset_gpio, 1);
-         |                 ^
->> sound/soc/codecs/aw88399.c:1868:24: error: call to undeclared function 'devm_gpiod_get_optional'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
-    1868 |         aw88399->reset_gpio = devm_gpiod_get_optional(&i2c->dev, "reset", GPIOD_OUT_LOW);
-         |                               ^
-   sound/soc/codecs/aw88399.c:1868:24: note: did you mean 'devm_regulator_get_optional'?
-   include/linux/regulator/consumer.h:347:1: note: 'devm_regulator_get_optional' declared here
-     347 | devm_regulator_get_optional(struct device *dev, const char *id)
-         | ^
->> sound/soc/codecs/aw88399.c:1868:68: error: use of undeclared identifier 'GPIOD_OUT_LOW'
-    1868 |         aw88399->reset_gpio = devm_gpiod_get_optional(&i2c->dev, "reset", GPIOD_OUT_LOW);
-         |                                                                           ^
-   3 errors generated.
-
-
-vim +/gpiod_set_value_cansleep +1791 sound/soc/codecs/aw88399.c
-
-8ade6cc7e26175 Weidong Wang 2023-10-25  1787  
-8ade6cc7e26175 Weidong Wang 2023-10-25  1788  static void aw88399_hw_reset(struct aw88399 *aw88399)
-8ade6cc7e26175 Weidong Wang 2023-10-25  1789  {
-8ade6cc7e26175 Weidong Wang 2023-10-25  1790  	if (aw88399->reset_gpio) {
-8ade6cc7e26175 Weidong Wang 2023-10-25 @1791  		gpiod_set_value_cansleep(aw88399->reset_gpio, 1);
-8ade6cc7e26175 Weidong Wang 2023-10-25  1792  		usleep_range(AW88399_1000_US, AW88399_1000_US + 10);
-8ade6cc7e26175 Weidong Wang 2023-10-25  1793  		gpiod_set_value_cansleep(aw88399->reset_gpio, 0);
-8ade6cc7e26175 Weidong Wang 2023-10-25  1794  		usleep_range(AW88399_1000_US, AW88399_1000_US + 10);
-8ade6cc7e26175 Weidong Wang 2023-10-25  1795  		gpiod_set_value_cansleep(aw88399->reset_gpio, 1);
-8ade6cc7e26175 Weidong Wang 2023-10-25  1796  		usleep_range(AW88399_1000_US, AW88399_1000_US + 10);
-8ade6cc7e26175 Weidong Wang 2023-10-25  1797  	}
-8ade6cc7e26175 Weidong Wang 2023-10-25  1798  }
-8ade6cc7e26175 Weidong Wang 2023-10-25  1799  
-8ade6cc7e26175 Weidong Wang 2023-10-25  1800  static void aw88399_parse_channel_dt(struct aw_device *aw_dev)
-8ade6cc7e26175 Weidong Wang 2023-10-25  1801  {
-8ade6cc7e26175 Weidong Wang 2023-10-25  1802  	struct device_node *np = aw_dev->dev->of_node;
-8ade6cc7e26175 Weidong Wang 2023-10-25  1803  	u32 channel_value;
-8ade6cc7e26175 Weidong Wang 2023-10-25  1804  
-8ade6cc7e26175 Weidong Wang 2023-10-25  1805  	of_property_read_u32(np, "awinic,audio-channel", &channel_value);
-8ade6cc7e26175 Weidong Wang 2023-10-25  1806  	aw_dev->channel = channel_value;
-8ade6cc7e26175 Weidong Wang 2023-10-25  1807  }
-8ade6cc7e26175 Weidong Wang 2023-10-25  1808  
-8ade6cc7e26175 Weidong Wang 2023-10-25  1809  static int aw88399_init(struct aw88399 *aw88399, struct i2c_client *i2c, struct regmap *regmap)
-8ade6cc7e26175 Weidong Wang 2023-10-25  1810  {
-8ade6cc7e26175 Weidong Wang 2023-10-25  1811  	struct aw_device *aw_dev;
-8ade6cc7e26175 Weidong Wang 2023-10-25  1812  	unsigned int chip_id;
-8ade6cc7e26175 Weidong Wang 2023-10-25  1813  	int ret;
-8ade6cc7e26175 Weidong Wang 2023-10-25  1814  
-8ade6cc7e26175 Weidong Wang 2023-10-25  1815  	ret = regmap_read(regmap, AW88399_ID_REG, &chip_id);
-8ade6cc7e26175 Weidong Wang 2023-10-25  1816  	if (ret) {
-8ade6cc7e26175 Weidong Wang 2023-10-25  1817  		dev_err(&i2c->dev, "%s read chipid error. ret = %d", __func__, ret);
-8ade6cc7e26175 Weidong Wang 2023-10-25  1818  		return ret;
-8ade6cc7e26175 Weidong Wang 2023-10-25  1819  	}
-8ade6cc7e26175 Weidong Wang 2023-10-25  1820  	if (chip_id != AW88399_CHIP_ID) {
-8ade6cc7e26175 Weidong Wang 2023-10-25  1821  		dev_err(&i2c->dev, "unsupported device");
-8ade6cc7e26175 Weidong Wang 2023-10-25  1822  		return -ENXIO;
-8ade6cc7e26175 Weidong Wang 2023-10-25  1823  	}
-8ade6cc7e26175 Weidong Wang 2023-10-25  1824  	dev_dbg(&i2c->dev, "chip id = %x\n", chip_id);
-8ade6cc7e26175 Weidong Wang 2023-10-25  1825  
-8ade6cc7e26175 Weidong Wang 2023-10-25  1826  	aw_dev = devm_kzalloc(&i2c->dev, sizeof(*aw_dev), GFP_KERNEL);
-8ade6cc7e26175 Weidong Wang 2023-10-25  1827  	if (!aw_dev)
-8ade6cc7e26175 Weidong Wang 2023-10-25  1828  		return -ENOMEM;
-8ade6cc7e26175 Weidong Wang 2023-10-25  1829  	aw88399->aw_pa = aw_dev;
-8ade6cc7e26175 Weidong Wang 2023-10-25  1830  
-8ade6cc7e26175 Weidong Wang 2023-10-25  1831  	aw_dev->i2c = i2c;
-8ade6cc7e26175 Weidong Wang 2023-10-25  1832  	aw_dev->dev = &i2c->dev;
-8ade6cc7e26175 Weidong Wang 2023-10-25  1833  	aw_dev->regmap = regmap;
-8ade6cc7e26175 Weidong Wang 2023-10-25  1834  	mutex_init(&aw_dev->dsp_lock);
-8ade6cc7e26175 Weidong Wang 2023-10-25  1835  
-8ade6cc7e26175 Weidong Wang 2023-10-25  1836  	aw_dev->chip_id = chip_id;
-8ade6cc7e26175 Weidong Wang 2023-10-25  1837  	aw_dev->acf = NULL;
-8ade6cc7e26175 Weidong Wang 2023-10-25  1838  	aw_dev->prof_info.prof_desc = NULL;
-8ade6cc7e26175 Weidong Wang 2023-10-25  1839  	aw_dev->prof_info.count = 0;
-8ade6cc7e26175 Weidong Wang 2023-10-25  1840  	aw_dev->prof_info.prof_type = AW88395_DEV_NONE_TYPE_ID;
-8ade6cc7e26175 Weidong Wang 2023-10-25  1841  	aw_dev->channel = AW88399_DEV_DEFAULT_CH;
-8ade6cc7e26175 Weidong Wang 2023-10-25  1842  	aw_dev->fw_status = AW88399_DEV_FW_FAILED;
-8ade6cc7e26175 Weidong Wang 2023-10-25  1843  
-8ade6cc7e26175 Weidong Wang 2023-10-25  1844  	aw_dev->fade_step = AW88399_VOLUME_STEP_DB;
-8ade6cc7e26175 Weidong Wang 2023-10-25  1845  	aw_dev->volume_desc.ctl_volume = AW88399_VOL_DEFAULT_VALUE;
-8ade6cc7e26175 Weidong Wang 2023-10-25  1846  
-8ade6cc7e26175 Weidong Wang 2023-10-25  1847  	aw88399_parse_channel_dt(aw_dev);
-8ade6cc7e26175 Weidong Wang 2023-10-25  1848  
-8ade6cc7e26175 Weidong Wang 2023-10-25  1849  	return 0;
-8ade6cc7e26175 Weidong Wang 2023-10-25  1850  }
-8ade6cc7e26175 Weidong Wang 2023-10-25  1851  
-8ade6cc7e26175 Weidong Wang 2023-10-25  1852  static int aw88399_i2c_probe(struct i2c_client *i2c)
-8ade6cc7e26175 Weidong Wang 2023-10-25  1853  {
-8ade6cc7e26175 Weidong Wang 2023-10-25  1854  	struct aw88399 *aw88399;
-8ade6cc7e26175 Weidong Wang 2023-10-25  1855  	int ret;
-8ade6cc7e26175 Weidong Wang 2023-10-25  1856  
-8ade6cc7e26175 Weidong Wang 2023-10-25  1857  	if (!i2c_check_functionality(i2c->adapter, I2C_FUNC_I2C))
-8ade6cc7e26175 Weidong Wang 2023-10-25  1858  		return dev_err_probe(&i2c->dev, -ENXIO, "check_functionality failed");
-8ade6cc7e26175 Weidong Wang 2023-10-25  1859  
-8ade6cc7e26175 Weidong Wang 2023-10-25  1860  	aw88399 = devm_kzalloc(&i2c->dev, sizeof(*aw88399), GFP_KERNEL);
-8ade6cc7e26175 Weidong Wang 2023-10-25  1861  	if (!aw88399)
-8ade6cc7e26175 Weidong Wang 2023-10-25  1862  		return -ENOMEM;
-8ade6cc7e26175 Weidong Wang 2023-10-25  1863  
-8ade6cc7e26175 Weidong Wang 2023-10-25  1864  	mutex_init(&aw88399->lock);
-8ade6cc7e26175 Weidong Wang 2023-10-25  1865  
-8ade6cc7e26175 Weidong Wang 2023-10-25  1866  	i2c_set_clientdata(i2c, aw88399);
-8ade6cc7e26175 Weidong Wang 2023-10-25  1867  
-8ade6cc7e26175 Weidong Wang 2023-10-25 @1868  	aw88399->reset_gpio = devm_gpiod_get_optional(&i2c->dev, "reset", GPIOD_OUT_LOW);
-8ade6cc7e26175 Weidong Wang 2023-10-25  1869  	if (IS_ERR(aw88399->reset_gpio))
-8ade6cc7e26175 Weidong Wang 2023-10-25  1870  		return dev_err_probe(&i2c->dev, PTR_ERR(aw88399->reset_gpio),
-8ade6cc7e26175 Weidong Wang 2023-10-25  1871  							"reset gpio not defined\n");
-8ade6cc7e26175 Weidong Wang 2023-10-25  1872  	aw88399_hw_reset(aw88399);
-8ade6cc7e26175 Weidong Wang 2023-10-25  1873  
-8ade6cc7e26175 Weidong Wang 2023-10-25  1874  	aw88399->regmap = devm_regmap_init_i2c(i2c, &aw88399_remap_config);
-8ade6cc7e26175 Weidong Wang 2023-10-25  1875  	if (IS_ERR(aw88399->regmap))
-8ade6cc7e26175 Weidong Wang 2023-10-25  1876  		return dev_err_probe(&i2c->dev, PTR_ERR(aw88399->regmap),
-8ade6cc7e26175 Weidong Wang 2023-10-25  1877  							"failed to init regmap\n");
-8ade6cc7e26175 Weidong Wang 2023-10-25  1878  
-8ade6cc7e26175 Weidong Wang 2023-10-25  1879  	/* aw pa init */
-8ade6cc7e26175 Weidong Wang 2023-10-25  1880  	ret = aw88399_init(aw88399, i2c, aw88399->regmap);
-8ade6cc7e26175 Weidong Wang 2023-10-25  1881  	if (ret)
-8ade6cc7e26175 Weidong Wang 2023-10-25  1882  		return ret;
-8ade6cc7e26175 Weidong Wang 2023-10-25  1883  
-8ade6cc7e26175 Weidong Wang 2023-10-25  1884  	ret = devm_snd_soc_register_component(&i2c->dev,
-8ade6cc7e26175 Weidong Wang 2023-10-25  1885  			&soc_codec_dev_aw88399,
-8ade6cc7e26175 Weidong Wang 2023-10-25  1886  			aw88399_dai, ARRAY_SIZE(aw88399_dai));
-8ade6cc7e26175 Weidong Wang 2023-10-25  1887  	if (ret)
-8ade6cc7e26175 Weidong Wang 2023-10-25  1888  		dev_err(&i2c->dev, "failed to register aw88399: %d", ret);
-8ade6cc7e26175 Weidong Wang 2023-10-25  1889  
-8ade6cc7e26175 Weidong Wang 2023-10-25  1890  	return ret;
-8ade6cc7e26175 Weidong Wang 2023-10-25  1891  }
-8ade6cc7e26175 Weidong Wang 2023-10-25  1892  
-
--- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGVsbG8gSGVpa28sCgpPbiAyMDI0LTA1LTMxIDIwOjQwLCBIZWlrbyBTdMO8Ym5lciB3cm90ZToK
+PiBBbSBGcmVpdGFnLCAzMS4gTWFpIDIwMjQsIDAwOjQ4OjQ1IENFU1Qgc2NocmllYiBEcmFnYW4g
+U2ltaWM6Cj4+IE9uIDIwMjQtMDUtMjkgMTg6MjcsIENoZW4tWXUgVHNhaSB3cm90ZToKPj4gPiBP
+biBUdWUsIE1heSAyMSwgMjAyNCBhdCAxOjIw4oCvQU0gRHJhZ2FuIFNpbWljIDxkc2ltaWNAbWFu
+amFyby5vcmc+Cj4+ID4gd3JvdGU6Cj4+ID4+Cj4+ID4+IENvcnJlY3QgdGhlIHNwZWNpZmllZCBy
+ZWd1bGF0b3ItbWluLW1pY3Jvdm9sdCB2YWx1ZSBmb3IgdGhlIGJ1Y2sKPj4gPj4gRENEQ19SRUcy
+Cj4+ID4+IHJlZ3VsYXRvciwgd2hpY2ggaXMgcGFydCBvZiB0aGUgUm9ja2NoaXAgUks4MDkgUE1J
+QywgaW4gdGhlIFBpbmU2NAo+PiA+PiBRdWFydHo2NAo+PiA+PiBNb2RlbCBCIGJvYXJkIGR0cy4g
+IEFjY29yZGluZyB0byB0aGUgUks4MDkgZGF0YXNoZWV0LCB2ZXJzaW9uIDEuMDEsCj4+ID4+IHRo
+aXMKPj4gPj4gcmVndWxhdG9yIGlzIGNhcGFibGUgb2YgcHJvZHVjaW5nIHZvbHRhZ2VzIGFzIGxv
+dyBhcyAwLjUgViBvbiBpdHMKPj4gPj4gb3V0cHV0LAo+PiA+PiBpbnN0ZWFkIG9mIGdvaW5nIGRv
+d24gdG8gMC45IFYgb25seSwgd2hpY2ggaXMgYWRkaXRpb25hbGx5IGNvbmZpcm1lZAo+PiA+PiBi
+eSB0aGUKPj4gPj4gcmVndWxhdG9yLW1pbi1taWNyb3ZvbHQgdmFsdWVzIGZvdW5kIGluIHRoZSBi
+b2FyZCBkdHMgZmlsZXMgZm9yIHRoZQo+PiA+PiBvdGhlcgo+PiA+PiBzdXBwb3J0ZWQgYm9hcmRz
+IHRoYXQgdXNlIHRoZSBzYW1lIFJLODA5IFBNSUMuCj4+ID4+Cj4+ID4+IFRoaXMgYWxsb3dzIHRo
+ZSBEVkZTIHRvIGNsb2NrIHRoZSBHUFUgb24gdGhlIFF1YXJ0ejY0IE1vZGVsIEIgYmVsb3cKPj4g
+Pj4gNzAwIE1IeiwKPj4gPj4gYWxsIHRoZSB3YXkgZG93biB0byAyMDAgTUh6LCB3aGljaCBzYXZl
+cyBzb21lIHBvd2VyIGFuZCByZWR1Y2VzIHRoZQo+PiA+PiBhbW91bnQgb2YKPj4gPj4gZ2VuZXJh
+dGVkIGhlYXQgYSBiaXQsIGltcHJvdmluZyB0aGUgdGhlcm1hbCBoZWFkcm9vbSBhbmQgcG9zc2li
+bHkKPj4gPj4gaW1wcm92aW5nCj4+ID4+IHRoZSBidXJzdHkgQ1BVIGFuZCBHUFUgcGVyZm9ybWFu
+Y2Ugb24gdGhpcyBib2FyZC4KPj4gPj4KPj4gPj4gVGhpcyBhbHNvIGVsaW1pbmF0ZXMgdGhlIGZv
+bGxvd2luZyB3YXJuaW5ncyBpbiB0aGUga2VybmVsIGxvZzoKPj4gPj4KPj4gPj4gICBjb3JlOiBf
+b3BwX3N1cHBvcnRlZF9ieV9yZWd1bGF0b3JzOiBPUFAgbWludVY6IDgyNTAwMCBtYXh1VjogODI1
+MDAwLAo+PiA+PiBub3Qgc3VwcG9ydGVkIGJ5IHJlZ3VsYXRvcgo+PiA+PiAgIHBhbmZyb3N0IGZk
+ZTYwMDAwLmdwdTogX29wcF9hZGQ6IE9QUCBub3Qgc3VwcG9ydGVkIGJ5IHJlZ3VsYXRvcnMKPj4g
+Pj4gKDIwMDAwMDAwMCkKPj4gPj4gICBjb3JlOiBfb3BwX3N1cHBvcnRlZF9ieV9yZWd1bGF0b3Jz
+OiBPUFAgbWludVY6IDgyNTAwMCBtYXh1VjogODI1MDAwLAo+PiA+PiBub3Qgc3VwcG9ydGVkIGJ5
+IHJlZ3VsYXRvcgo+PiA+PiAgIHBhbmZyb3N0IGZkZTYwMDAwLmdwdTogX29wcF9hZGQ6IE9QUCBu
+b3Qgc3VwcG9ydGVkIGJ5IHJlZ3VsYXRvcnMKPj4gPj4gKDMwMDAwMDAwMCkKPj4gPj4gICBjb3Jl
+OiBfb3BwX3N1cHBvcnRlZF9ieV9yZWd1bGF0b3JzOiBPUFAgbWludVY6IDgyNTAwMCBtYXh1Vjog
+ODI1MDAwLAo+PiA+PiBub3Qgc3VwcG9ydGVkIGJ5IHJlZ3VsYXRvcgo+PiA+PiAgIHBhbmZyb3N0
+IGZkZTYwMDAwLmdwdTogX29wcF9hZGQ6IE9QUCBub3Qgc3VwcG9ydGVkIGJ5IHJlZ3VsYXRvcnMK
+Pj4gPj4gKDQwMDAwMDAwMCkKPj4gPj4gICBjb3JlOiBfb3BwX3N1cHBvcnRlZF9ieV9yZWd1bGF0
+b3JzOiBPUFAgbWludVY6IDgyNTAwMCBtYXh1VjogODI1MDAwLAo+PiA+PiBub3Qgc3VwcG9ydGVk
+IGJ5IHJlZ3VsYXRvcgo+PiA+PiAgIHBhbmZyb3N0IGZkZTYwMDAwLmdwdTogX29wcF9hZGQ6IE9Q
+UCBub3Qgc3VwcG9ydGVkIGJ5IHJlZ3VsYXRvcnMKPj4gPj4gKDYwMDAwMDAwMCkKPj4gPj4KPj4g
+Pj4gRml4ZXM6IGRjYzhjNjZiZWY3OSAoImFybTY0OiBkdHM6IHJvY2tjaGlwOiBhZGQgUGluZTY0
+IFF1YXJ0ejY0LUIKPj4gPj4gZGV2aWNlIHRyZWUiKQo+PiA+PiBDYzogc3RhYmxlQHZnZXIua2Vy
+bmVsLm9yZwo+PiA+PiBSZXBvcnRlZC1CeTogRGllZGVyaWsgZGUgSGFhcyA8ZGlkaS5kZWJpYW5A
+Y2tub3cub3JnPgo+PiA+PiBTaWduZWQtb2ZmLWJ5OiBEcmFnYW4gU2ltaWMgPGRzaW1pY0BtYW5q
+YXJvLm9yZz4KPj4gPj4gLS0tCj4+ID4+ICBhcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3Jr
+MzU2Ni1xdWFydHo2NC1iLmR0cyB8IDIgKy0KPj4gPj4gIDEgZmlsZSBjaGFuZ2VkLCAxIGluc2Vy
+dGlvbigrKSwgMSBkZWxldGlvbigtKQo+PiA+Pgo+PiA+PiBkaWZmIC0tZ2l0IGEvYXJjaC9hcm02
+NC9ib290L2R0cy9yb2NrY2hpcC9yazM1NjYtcXVhcnR6NjQtYi5kdHMKPj4gPj4gYi9hcmNoL2Fy
+bTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzU2Ni1xdWFydHo2NC1iLmR0cwo+PiA+PiBpbmRleCAy
+NjMyMmEzNThkOTEuLmI5MDhjZTAwNmMyNiAxMDA2NDQKPj4gPj4gLS0tIGEvYXJjaC9hcm02NC9i
+b290L2R0cy9yb2NrY2hpcC9yazM1NjYtcXVhcnR6NjQtYi5kdHMKPj4gPj4gKysrIGIvYXJjaC9h
+cm02NC9ib290L2R0cy9yb2NrY2hpcC9yazM1NjYtcXVhcnR6NjQtYi5kdHMKPj4gPj4gQEAgLTI4
+OSw3ICsyODksNyBAQCB2ZGRfZ3B1OiBEQ0RDX1JFRzIgewo+PiA+PiAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgIHJlZ3VsYXRvci1uYW1lID0gInZkZF9ncHUiOwo+PiA+PiAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgIHJlZ3VsYXRvci1hbHdheXMtb247Cj4+ID4+ICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgcmVndWxhdG9yLWJvb3Qtb247Cj4+ID4+IC0gICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgcmVndWxhdG9yLW1pbi1taWNyb3ZvbHQgPSA8OTAw
+MDAwPjsKPj4gPj4gKyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICByZWd1bGF0b3ItbWlu
+LW1pY3Jvdm9sdCA9IDw1MDAwMDA+Owo+PiA+Cj4+ID4gVGhlIGNvbnN0cmFpbnRzIGhlcmUgYXJl
+IHN1cHBvc2VkIHRvIGJlIHRoZSBjb25zdHJhaW50cyBvZiB0aGUKPj4gPiBjb25zdW1lciwKPj4g
+PiBub3QgdGhlIHByb3ZpZGVyLiBUaGUgbGF0dGVyIGlzIGFscmVhZHkga25vd24gYnkgdGhlIGlt
+cGxlbWVudGF0aW9uLgo+PiA+Cj4+ID4gU28gaWYgdGhlIEdQVSBjYW4gZ28gZG93biB0byAwLjgy
+NVYgb3IgMC44MVYgZXZlbiAoYmFzZWQgb24gdGhlCj4+ID4gZGF0YXNoZWV0KSwKPj4gPiB0aGlz
+IHNob3VsZCBzYXkgdGhlIGNvcnJlc3BvbmRpbmcgdmFsdWUuIFN1cmVseSB0aGUgR1BVIGNhbid0
+IGdvIGRvd24KPj4gPiB0bwo+PiA+IDAuNVY/Cj4+ID4KPj4gPiBDYW4geW91IHNlbmQgYW5vdGhl
+ciBmaXggZm9yIGl0Pwo+PiAKPj4gSSBjYW4gY29uZmlybSB0aGF0IHRoZSB2b2x0YWdlIG9mIHRo
+ZSBwb3dlciBzdXBwbHkgb2YgR1BVIGZvdW5kIGluc2lkZQo+PiB0aGUgUkszNTY2IGNhbiBiZSBh
+cyBsb3cgYXMgMC44MSBWLCBhY2NvcmRpbmcgdG8gdGhlIGRhdGFzaGVldCwgb3IgYXMKPj4gbG93
+IGFzIDAuODI1IFYsIGFjY29yZGluZyB0byB0aGUgR1BVIE9QUHMgZm91bmQgaW4gcmszNTZ4LmR0
+c2kuCj4+IAo+PiBJZiB3ZSB3YW50IHRoZSByZWd1bGF0b3ItbWluLW1pY3Jvdm9sdCBwYXJhbWV0
+ZXIgdG8gcmVmbGVjdCB0aGUKPj4gY29udHJhaW50Cj4+IG9mIHRoZSBHUFUgYXMgdGhlIGNvbnN1
+bWVyLCB3aGljaCBJIGFncmVlIHdpdGgsIHdlIHNob3VsZCBkbyB0aGF0IGZvcgo+PiBvdGhlcgo+
+PiBSSzM1NjYtYmFzZWQgYm9hcmRzIGFzIHdlbGwsIGFuZCBhbG1vc3Qgc3VyZWx5IGZvciB0aGUg
+Ym9hcmRzIGJhc2VkIG9uCj4+IHRoZQo+PiBSSzM1NjgsIHRvby4KPiAKPiBIbW0sIEknbSBub3Qg
+c28gc3VyZSBhYm91dCB0aGF0Lgo+IAo+IFRoZSBiaW5kaW5nIGRvZXMgZGVmaW5lOgo+IAlyZWd1
+bGF0b3ItbWluLW1pY3Jvdm9sdDoKPiAJICAgIGRlc2NyaXB0aW9uOiBzbWFsbGVzdCB2b2x0YWdl
+IGNvbnN1bWVycyBtYXkgc2V0Cj4gCj4gVGhpcyBkb2VzIG5vdCBzZWVtIHRvIGRlc2NyaWJlIGl0
+IGFzIGEgY29uc3RyYWludCBzb2xlbHkgb2YgdGhlIAo+IGNvbnN1bWVyLgo+IEF0IGxlYXN0IHRo
+ZSB3b3JkaW5nIHNvdW5kcyB3YXkgbW9yZSBmbGV4aWJsZSB0aGVyZS4KPiAKPiBBbHNvIGFueSBy
+ZWd1bGF0b3IgX2NvdWxkXyBoYXZlIG11bHRpcGxlIGNvbnN1bWVycywgd2hvc2UgdmFsdWUgd291
+bGQKPiBpdCBuZWVkIHRoZW4uCgpUaGUgd2F5IEkgc2VlIGl0LCB0aGUgcmVndWxhdG9yLW1pbi1t
+aWNyb3ZvbHQgYW5kIApyZWd1bGF0b3ItbWF4LW1pY3Jvdm9sdApwYXJhbWV0ZXJzIHNob3VsZCBi
+ZSBjb25maWd1cmVkIGluIGEgd2F5IHRoYXQgcHJvdGVjdHMgdGhlIGNvbnN1bWVyKHMpCm9mIHRo
+ZSBwYXJ0aWN1bGFyIHZvbHRhZ2UgcmVndWxhdG9yIGFnYWluc3QgdW5kZXJ2b2x0YWdlIGFuZCBv
+dmVydm9sdGFnZQpjb25kaXRpb25zLCB3aGljaCBtYXkgYmUgdXNlZnVsIGluIHNvbWUgY29ybmVy
+IGNhc2VzLgoKSWYgdGhlcmUgYXJlIG11bHRpcGxlIGNvbnN1bWVycywgd2hpY2ggaW4gdGhpcyBj
+YXNlIG1heSBhY3R1YWxseSBoYXBwZW4KKElJUkMsIHNvbWUgYm9hcmRzIHVzZSB0aGUgc2FtZSBy
+ZWd1bGF0b3IgZm9yIHRoZSBHUFUgYW5kIE5QVSBwb3J0aW9ucwpvZiB0aGUgU29DKSwgdGhlIHNp
+dHVhdGlvbiBiZWNvbWVzIGZhciBmcm9tIGlkZWFsLCBiZWNhdXNlIHRoZSBjb25zdW1lcnMKbWln
+aHQgaGF2ZSBkaWZmZXJlbnQgdm9sdGFnZSByZXF1aXJlbWVudHMsIGJ1dCB0aGF0J3MgcHJldHR5
+IG11Y2ggYW4KdW5hdm9pZGFibGUgY29tcHJvbWlzZS4KCj4gV2hpbGUgdHJ1ZSwgc2V0dGluZyBp
+dCB0byB0aGUgbG93ZXN0IHRoZSByZWd1bGF0b3IgY2FuIGRvIGluIHRoZSAKPiBvcmlnaW5hbAo+
+IGZpeCBwYXRjaCwgbWlnaHQndmUgYmVlbiBhIGJpdCBtdWNoIGFuZCBhIHNhbmVyIHZhbHVlIG1p
+Z2h0IGJlIGJldHRlci4KCkFncmVlZCwgYnV0IHRoZSB2YWx1ZSB3YXMgc2VsZWN0ZWQgYWNjb3Jk
+aW5nIHRvIHdoYXQgdGhlIG90aGVyIApSSzM1NjYtYmFzZWQKYm9hcmRzIHVzZSwgdG8gZXN0YWJs
+aXNoIHNvbWUga2luZCBvZiBjb25zaXN0ZW5jeS4gIE5vdywgdGhlcmUncyBhIGdvb2QKY2hhbmNl
+IGZvciB0aGUgc2Vjb25kIHBhc3MsIHNvIHRvIHNwZWFrLCB3aGljaCBzaG91bGQgZXN0YWJsaXNo
+IGFub3RoZXIKZGlmZmVyZW50IHN0YXRlLCBidXQgYWxzbyBjb25zaXN0ZW50LiA6KQoKPj4gVGhp
+cyB3b3VsZCBlbnN1cmUgY29uc2lzdGVuY3ksIGJ1dCBJJ2QgbGlrZSB0byBrbm93IGFyZSBhbGwg
+dGhvc2UKPj4gcmVzdWx0aW5nCj4+IHBhdGNoZXMgZ29pbmcgdG8gYmUgYWNjZXB0ZWQgYmVmb3Jl
+IHN0YXJ0aW5nIHRvIHByZXBhcmUgdGhlbT8gIFRoZXJlCj4+IHdpbGwKPj4gYmUgYSB3aG9sZSBi
+dW5jaCBvZiBzbWFsbCBwYXRjaGVzLgo+IAo+IEhtbSwgdGhvdWdoIEknZCBzYXkgdGhhdCB3b3Vs
+ZCBiZSBvbmUgcGF0Y2ggcGVyIHNvYz8KPiAKPiBJLmUuIHlvdSdyZSBzZXR0aW5nIHRoZSBtaW4t
+dm9sdGFnZSBvZiBfb25lXyByZWd1bGF0b3IgdXNlZAo+IG9uIGVhY2ggYm9hcmQgdG8gYSB2YWx1
+ZSB0byBzdXBwb3J0IHRoZSBkZWZpbmVkIE9QUHMuCj4gCj4gSS5lLiBpbiBteSBtaW5kIHlvdSdk
+IGVuZCB1cCB3aXRoOgo+IAlhcm02NDogZHRzOiByb2NrY2hpcDogc2V0IGJldHRlciBtaW4gdm9s
+dGFnZSBmb3IgdmRkX2dwdSBvbiByazM1NnggCj4gYm9hcmRzCj4gCj4gQW5kIHNldHRpbmcgdGhl
+IGxvd2VyIHZvbHRhZ2UgdG8gcmVhY2ggdGhhdCBsb3dlciBPUFAgb24gYWxsIGFmZmVjdGVkCj4g
+cmszNTZ4IGJvYXJkcy4KClllcywgdGhlIHNhbWUgdGhvdWdodHMgaGF2ZSBhbHJlYWR5IGNyb3Nz
+ZWQgbXkgbWluZCwgYnV0IEkgdGhvdWdodCB3ZSdkCmxpa2UgdGhvc2UgcGF0Y2hlcyB0byBhbHNv
+IGluY2x1ZGUgRml4ZXMgdGFncywgc28gdGhleSBhbHNvIGdldCAKcHJvcGFnYXRlZAppbnRvIHRo
+ZSBsb25nLXRlcm0ga2VybmVsIHZlcnNpb25zPyAgSW4gdGhhdCBjYXNlLCB3ZSdkIG5lZWQgb25l
+IHBhdGNoIApwZXIKYm9hcmQsIHRvIGhhdmUgYSBjbGVhciByZWxhdGlvbiB0byB0aGUgY29tbWl0
+cyByZWZlcmVuY2VkIGluIHRoZSBGaXhlcyAKdGFncy4KCk9UT0gsIGlmIHdlIGRvbid0IHdhbnQg
+dGhlIHBhdGNoZXMgdG8gYmUgcHJvcGFnYXRlZCBpbnRvIHRoZSBsb25nLXRlcm0gCmtlcm5lbAp2
+ZXJzaW9ucywgdGhlbiBoYXZpbmcgb25lIHBhdGNoIHBlciBTb0Mgd291bGQgYmUgcGVyZmVjdGx5
+IGZpbmUuCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpM
+aW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFk
+Lm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJv
+Y2tjaGlwCg==
