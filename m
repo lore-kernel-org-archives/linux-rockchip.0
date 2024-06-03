@@ -4,80 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C4001C25B76
-	for <linux-rockchip@archiver.kernel.org>; Mon,  3 Jun 2024 15:50:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 052DDC25B75
+	for <linux-rockchip@archiver.kernel.org>; Mon,  3 Jun 2024 16:22:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
 	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
 	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=qrkeQQK/5MxtYztWUx7grxBwBwahD3++ND9pZuOmfLY=; b=ALdwjnN3f3usvgqLW4/uU09TIX
-	y6bY7jyzLTJl8ghAMwGmPoOm9BkY6D9Q4MPUKa4SZgEua6fZZkCYVDUwd1TS/mzApxhqKSMcHh07E
-	g9oxX/YIG81i6u686i25JwBQw98Qaiw5yCS/Pu2sljH3H4m+e6q10DDb2EHF34LzgtwTJNgWagf++
-	RM3wqA8tuGPSNy/ZZjYSaDl1a8YDGqjepsmxpZvd1axP4YvmcnLqmeVO1BoUYPD3i/cRpe54V9mV+
-	Bsaz4vn3qCjLRI6N3ANxaelfnKMyIoeoXZL1BDfkQj1BBvxmUEqsDJerQBHWFoRUdR+KgmXLE+f8O
-	9ovmTdUw==;
+	bh=NlZ/dmtndWSThCM9+ussbKEJoUfb9QRCfGcJzQS1Sxo=; b=IS/iJdSrWEL/42HEAgrcJRhHLZ
+	Eht4ckIgW00Y41afBH1bVC1jyN0HuzNroICP5UAM0c41HxsTJa1ezp9htwl2/WxJ61M8/JV2wiB5U
+	x+jDe3NM6OF41ztPSQErIawtuN/PdkKyGAGbRCTRQ/MYKNIOBd3fyUb7cm3I9a/vYPRJkGRO+gjfq
+	dkMFA5wrr7fxNptwYsg47CjvenZ9bmIxF+zbjtQKL8gZqqKleI0y+d0ckYeljrOSj7slXSeJguIn0
+	18zLJyV5G3oEUCG1+CLOpF1/9PEc1iZzDg1qy/So0kOpYpjeaWvgwQoE1qsSqffCjGYY/sYNGpUuf
+	lZrpqtcA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sE9xO-0000000HHcj-0AAK;
-	Mon, 03 Jun 2024 15:50:46 +0000
-Received: from out-174.mta1.migadu.com ([95.215.58.174])
+	id 1sEARp-0000000HMUh-09fT;
+	Mon, 03 Jun 2024 16:22:13 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sE9xK-0000000HHZp-0iw3
-	for linux-rockchip@lists.infradead.org;
-	Mon, 03 Jun 2024 15:50:44 +0000
-X-Envelope-To: liujianfeng1994@gmail.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow.org; s=key1;
-	t=1717429836;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=aTmnFmkb8bF4TERqRFMbzfPb+Pc3fo4b54LXUjoLOuo=;
-	b=D+zEcert3hN9qGsK+AcXWlJsjl3Db9gKXd9jdOfgBXOdhBF/Rj6hfCYf6UV8El6Mo8Zw85
-	se61lByt+dUN8+uOWuYBrqOpYFr7cMX/ObegFYCrTB88zL4S5AzP3bDeILhxxNCKraqs5f
-	zOLbHrxfKRpT69dPS7dw4jJ4R3uE6jTbo0YRtvXitxRLuWSHpdEzyx8WZszT6tu0wzRJJG
-	36ck3nAPg+HtfwzYeR1WHvFpI2D7QVdqGA9x1kL0Wj/QiGDGs/vcKGTnWWNQQYX+Odwmhv
-	I8OMDl/mgsZ56PH+SZUmrFY3jCGEhdyY4JC7uus2qf81hf3p3/yg5d+olUH4jg==
-X-Envelope-To: linux-rockchip@lists.infradead.org
-X-Envelope-To: conor+dt@kernel.org
-X-Envelope-To: devicetree@vger.kernel.org
-X-Envelope-To: ezequiel@vanguardiasur.com.ar
-X-Envelope-To: heiko@sntech.de
-X-Envelope-To: jacob-chen@iotwrt.com
-X-Envelope-To: krzysztof.kozlowski+dt@linaro.org
-X-Envelope-To: linux-arm-kernel@lists.infradead.org
-X-Envelope-To: linux-kernel@vger.kernel.org
-X-Envelope-To: linux-media@vger.kernel.org
-X-Envelope-To: linux-rockchip@lists.infradead.org
-X-Envelope-To: mchehab@kernel.org
-X-Envelope-To: robh@kernel.org
-X-Envelope-To: sfr@canb.auug.org.au
-X-Envelope-To: liujianfeng1994@gmail.com
-X-Envelope-To: nicolas@ndufresne.ca
-X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
-From: Diederik de Haas <didi.debian@cknow.org>
-To: liujianfeng1994@gmail.com, linux-rockchip@lists.infradead.org
-Cc: conor+dt@kernel.org, devicetree@vger.kernel.org,
- ezequiel@vanguardiasur.com.ar, heiko@sntech.de, jacob-chen@iotwrt.com,
- krzysztof.kozlowski+dt@linaro.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-media@vger.kernel.org,
- linux-rockchip@lists.infradead.org, mchehab@kernel.org, robh@kernel.org,
- sfr@canb.auug.org.au, Jianfeng Liu <liujianfeng1994@gmail.com>,
- Nicolas Dufresne <nicolas@ndufresne.ca>
-Subject: Re: [PATCH v1 2/2] arm64: dts: rockchip: Add RGA2 support to rk3588
-Date: Mon, 03 Jun 2024 17:50:23 +0200
-Message-ID: <1952296.0IMdUL435T@bagend>
-Organization: Connecting Knowledge
-In-Reply-To: <20240322064734.3509132-1-liujianfeng1994@gmail.com>
-References: <20240322052915.3507937-3-liujianfeng1994@gmail.com>
- <20240322064734.3509132-1-liujianfeng1994@gmail.com>
+	id 1sEARl-0000000HMSi-13IW;
+	Mon, 03 Jun 2024 16:22:10 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 45E7B60ED6;
+	Mon,  3 Jun 2024 16:22:08 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 75055C32786;
+	Mon,  3 Jun 2024 16:22:07 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1717431728;
+	bh=J9BtwLiH5m/8yi2TzzknIpSb4dbESwBD7BOkieFUAmo=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=Bu+lz/1XWvQlr8sMasYuBapx64iWXKhYYuE32EKqwkwTOey+HseXz0BB7MFLlI85O
+	 kPe8OuoeQLtatj+0dQnBSE11+aHY/uHissu22mA7QPGEup2Hllay2U8y+LkCtZp4DG
+	 3aefv6kQfoqF4xAaZe7pVlIWmWF9Y+GsLK2MFHFI5c7JgUKtJ0WrFs/K8XnjqwOkkr
+	 QQUfznd4Do66OiqXK5PtilHsFIryvPsWf1JLlvAjJh9pUXy6R4D1bjcz5BAa/bb2oq
+	 5pJ2MF5f1AcMYkEi5sQdEjOy3hr3+xaolC+z5Rg7kItsSw7297BoxsKLfJ0vkFmy3K
+	 V+pk2YU6AvVRw==
+Date: Mon, 3 Jun 2024 18:22:05 +0200
+From: Maxime Ripard <mripard@kernel.org>
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: neil.armstrong@linaro.org, 
+	Cristian Ciocaltea <cristian.ciocaltea@collabora.com>, Andrzej Hajda <andrzej.hajda@intel.com>, 
+	Robert Foss <rfoss@kernel.org>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
+	Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Thomas Zimmermann <tzimmermann@suse.de>, 
+	David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>, 
+	Sandy Huang <hjc@rock-chips.com>, Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Mark Yao <markyao0591@gmail.com>, Andy Yan <andy.yan@rock-chips.com>, 
+	dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, 
+	kernel@collabora.com, Alexandre ARNOUD <aarnoud@me.com>, 
+	Luis de Arquer <ldearquer@gmail.com>, Algea Cao <algea.cao@rock-chips.com>
+Subject: Re: [PATCH 00/14] Add initial support for the Rockchip RK3588 HDMI
+ TX Controller
+Message-ID: <20240603-noisy-convivial-boa-d3d862@houat>
+References: <20240601-b4-rk3588-bridge-upstream-v1-0-f6203753232b@collabora.com>
+ <a4b22708-e85d-448a-8145-244b49bca053@linaro.org>
+ <ab0a6372-091b-4293-8907-a4b3ff4845c0@rock-chips.com>
+ <11359776.NyiUUSuA9g@phil>
 MIME-Version: 1.0
-X-Migadu-Flow: FLOW_OUT
+In-Reply-To: <11359776.NyiUUSuA9g@phil>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240603_085042_454595_3F6D67ED 
-X-CRM114-Status: UNSURE (   9.49  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240603_092209_413400_4250BB38 
+X-CRM114-Status: GOOD (  23.52  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,57 +80,91 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============7774741886208784062=="
+Content-Type: multipart/mixed; boundary="===============6869872305067147722=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
---===============7774741886208784062==
-Content-Type: multipart/signed; boundary="nextPart4429252.AOvsMelbiZ";
- micalg="pgp-sha256"; protocol="application/pgp-signature"
 
---nextPart4429252.AOvsMelbiZ
-Content-Transfer-Encoding: 7Bit
-Content-Type: text/plain; charset="us-ascii"; protected-headers="v1"
-From: Diederik de Haas <didi.debian@cknow.org>
-To: liujianfeng1994@gmail.com, linux-rockchip@lists.infradead.org
-Date: Mon, 03 Jun 2024 17:50:23 +0200
-Message-ID: <1952296.0IMdUL435T@bagend>
-Organization: Connecting Knowledge
-In-Reply-To: <20240322064734.3509132-1-liujianfeng1994@gmail.com>
-MIME-Version: 1.0
+--===============6869872305067147722==
+Content-Type: multipart/signed; micalg=pgp-sha384;
+	protocol="application/pgp-signature"; boundary="hjyaj4zwc26gvppm"
+Content-Disposition: inline
 
-Hi Jianfeng,
 
-On Friday, 22 March 2024 07:47:34 CEST Jianfeng Liu wrote:
-> This node is not sorted by bus-address, and anthoer patch adding hantro g1
-> with addreess fdb50000 is not merged. I will send v2 after that patch is
-> merged.
+--hjyaj4zwc26gvppm
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-AFAICT the hantro g1 patch set is waiting on an answer to several questions 
-Nicolas raised, so maybe sent v2 of this patch set first?
+On Mon, Jun 03, 2024 at 03:03:12PM GMT, Heiko Stuebner wrote:
+> Am Montag, 3. Juni 2024, 14:14:17 CEST schrieb Andy Yan:
+> > Hi Neil:
+> >=20
+> > On 6/3/24 16:55, Neil Armstrong wrote:
+> > > Hi Christian,
+> > >=20
+> > > On 01/06/2024 15:12, Cristian Ciocaltea wrote:
+> > >> The RK3588 SoC family integrates a Quad-Pixel (QP) variant of the
+> > >> Synopsys DesignWare HDMI TX controller used in the previous SoCs.
+> > >>
+> > >> It is HDMI 2.1 compliant and supports the following features, among
+> > >> others:
+> > >>
+> > > .
+> > >=20
+> > > ..
+> > >=20
+> > >> * SCDC I2C DDC access
+> > >> * TMDS Scrambler enabling 2160p@60Hz with RGB/YCbCr4:4:4
+> > >> * YCbCr4:2:0 enabling 2160p@60Hz at lower HDMI link speeds
+> > >> * Multi-stream audio
+> > >> * Enhanced Audio Return Channel (EARC)
+> > > -> Those features were already supported by the HDMI 2.0a compliant H=
+W, just
+> > > list the _new_ features for HDMI 2.1
+> > >=20
+> > > I did a quick review of your patchset and I don't understand why you =
+need
+> > > to add a separate dw-hdmi-qp.c since you only need simple variants of=
+ the I2C
+> > > bus, infoframe and bridge setup.
+> > >=20
+> > > Can you elaborate further ? isn't this Quad-Pixel (QP) TX controller =
+version
+> > > detectable at runtime ?
+> > >=20
+> > > I would prefer to keep a single dw-hdmi driver if possible.
+> >
+> > The QP HDMI controller is a completely different variant with totally d=
+ifferent
+> > registers layout, see PATCH 13/14.
+> > I think make it a separate driver will be easier for development and ma=
+intenance.
+>=20
+> I'm with Andy here. Trying to navigate a driver for two IP blocks really
+> sounds taxing especially when both are so different.
 
-Cheers,
-  Diederik
---nextPart4429252.AOvsMelbiZ
+If it's a completely new controller, I agree that it needs a new driver,
+but then why do we need to share code between the two?
+
+Maxime
+
+--hjyaj4zwc26gvppm
 Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: This is a digitally signed message part.
-Content-Transfer-Encoding: 7Bit
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABYIAB0WIQT1sUPBYsyGmi4usy/XblvOeH7bbgUCZl3mPwAKCRDXblvOeH7b
-bsnfAQC/cE8BH/2LVsh7rUJAf/rE0KjB2ckiPPsnjj2I3lHepAEA0VQJxXLkXPKS
-B+Be5H5BThEaVFp5ODi5Cz5zKSu8qAY=
-=XRA5
+iJUEABMJAB0WIQTkHFbLp4ejekA/qfgnX84Zoj2+dgUCZl3tqAAKCRAnX84Zoj2+
+dtR8AYCrl/MU0AvHJWAGUIyy2KX4WDHpvmSlO0r/dHofLBLuPbECLxs/Y4Xrv9aj
+dKaN4FEBgKcHcNQQuLzVnSmBEdP8BYecOgEiTEgRvexLG3nvcO9BpScGHjOp+i9W
+SoX1pl9lAQ==
+=Yfg6
 -----END PGP SIGNATURE-----
 
---nextPart4429252.AOvsMelbiZ--
+--hjyaj4zwc26gvppm--
 
 
-
-
-
---===============7774741886208784062==
+--===============6869872305067147722==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -150,8 +175,5 @@ Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
---===============7774741886208784062==--
-
-
-
+--===============6869872305067147722==--
 
