@@ -4,158 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A47A7C25B7E
-	for <linux-rockchip@archiver.kernel.org>; Tue,  4 Jun 2024 08:45:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2D3A8C25B78
+	for <linux-rockchip@archiver.kernel.org>; Tue,  4 Jun 2024 10:40:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:From:References:Cc:To:
-	Subject:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=GxKD+0T+Bk1QB/MI9pcSDyrUmd5jdLdhoFErwzdAhLc=; b=aCqdMF9m7Qp/Tfo/7/4yYAoY2l
-	4Xt2wOh10u8J7oke7uu9C72xjdlQ0ko0r3sXeTkrpWdOBJyJeGvNxRy0UwmrloI4Vjc/QXBs0J5Zw
-	QNOXj8d6yfbksQwI6M4jTYew5Zwa3V4O6wZ4eFhX4zGCKpfEm3U9B3CWOTM7yOyV3HhwC+yGN6WNI
-	Q5+SxoWDv7/wLjHZt120NDjJEstaAf6Y+qXU8ORlxGOctJfMm3iZBU97iDqwdRqcVyD0kZ3IHsRzR
-	ppeSPCT5Vl46eN3Ice72v7BquYjkHxCx0fXd9O98skx8mqRnmWVx8/aYmc0/VQMJ50Ew3mDMDIHwu
-	imceAlpA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=08j83VpQUcpLr7S14cfk0EN4sgr2cHnzk9p84G/GsF0=; b=G/5Vc86T9LT9NR
+	eogd0ftKO2TMKS9mDkb+U2whp5ffsDVarX7iO5Qdhu/lFOD0RlTfbDRy5Ua0P9ZFXGm4oCTVjskNK
+	i/17hDO6foOwaoNG0M+0eFWYuk60ltwx+xNClx3R8dALkD/l8dn38V2kKQxG2apQIiVRP47K1i6qE
+	MF1ywIJZ0btFqChj40VerNHovRnzuUE14T3EP9Y+zz4Qvys84mwaEhA1NCuAnlpoyqX+zuAreic9F
+	VdpavYahVV5xADaI5IzriCGKVMFPn35sJe+LTRRm3N4cMDC7Ce8B3mgKf9+SkGp7vSMBFaC3WZpvZ
+	ZT6oU8P4pU7WAqA3kXZw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sEPnU-00000001iHD-2II8;
-	Tue, 04 Jun 2024 08:45:36 +0000
-Received: from mail-db3eur04on0712.outbound.protection.outlook.com ([2a01:111:f400:fe0c::712] helo=EUR04-DB3-obe.outbound.protection.outlook.com)
+	id 1sERae-000000020iU-21Yw;
+	Tue, 04 Jun 2024 10:40:28 +0000
+Received: from fllv0016.ext.ti.com ([198.47.19.142])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sEPnQ-00000001iFj-3Wzn;
-	Tue, 04 Jun 2024 08:45:34 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=eqIphBIXsMIuNfcq1TjkU168hgp9z0z2qrzX7M1YgvCGAZ4wY/mxXcLp8NPTs5vwbGMOxNDoH6FAJwoSMVN8CO0Z+zouA/dv8J4crcjVagfX7d7o0YOaqIEQw9ziDKzcj4CorcV7Vh1ibRElcF1iYTw4EHGd5MZVx01FHSoIgrtTz8SbxLAsrsna3GB4eqHfyxc0dKWH4KOcC9263QhcKcWbsGDQKHjZh+4RJpyHUtQ2bVjTwlBhkSuh3Hf74UxajZUfgmmjwQHpMD3oLiF95QitJC+vtqiq/HI4IiK/z/q8pnyZcV5ItjdtSuCTa0mnt/XixZMrce4wP68QRex74g==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=tJoA4O0njHe14ZeAmaC7iAAWxHhHJm+25C/HHmpxnR0=;
- b=PU2FWx2wRU1+7Upzz/VIfinpGzUQ7XNNI8kjuSFXx86UglIA2nTahEo5oqR72/dgIhvfU/UiX22CerjaHSp1OzNe6iAjZLazbLB9BKI59DikKIQRyqkQvKww+1ZdXtgLD9oZ9UzxHr3BxXhwVtuGxm67xLpV3WdYr8MN+wRvc8Ou5mMhFORUrN4FrXitsyqfrL0u3vvDyBYB09gJ6Omzr/EW1xJDq9ilZ2SYk6Noy1zC7I3ZzbmnovOhWKPTZZuzF7REAOIiy7b09LruYr4jqYyHiTwQE8aYRcxGLLeLxzcw0bA93ljYgK1B8eJm0g1XOw3PA2TH3bQYuimx/1dFbw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=cherry.de; dmarc=pass action=none header.from=cherry.de;
- dkim=pass header.d=cherry.de; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cherry.de;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=tJoA4O0njHe14ZeAmaC7iAAWxHhHJm+25C/HHmpxnR0=;
- b=hdLgd9ik9Ry69DAQdcJjMYyQ463lkq50S+/CPbdSc0pWWsdA3PJeGQf2LHsPDn29VyZbtN33XkRf+Z4lfr3oH9hCejGSe1WyfavSecHkkxp+LrRwX1Sr0kvQW8NUW6iWoTGeyd4lX5jCbDVciw5hOlAbybCpwUqMVvf5WH0iZbM=
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=cherry.de;
-Received: from PA4PR04MB7982.eurprd04.prod.outlook.com (2603:10a6:102:c4::9)
- by AS8PR04MB8660.eurprd04.prod.outlook.com (2603:10a6:20b:42b::14) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7633.27; Tue, 4 Jun
- 2024 08:45:21 +0000
-Received: from PA4PR04MB7982.eurprd04.prod.outlook.com
- ([fe80::3c4:afd5:49ac:77af]) by PA4PR04MB7982.eurprd04.prod.outlook.com
- ([fe80::3c4:afd5:49ac:77af%4]) with mapi id 15.20.7633.021; Tue, 4 Jun 2024
- 08:45:21 +0000
-Message-ID: <408bc022-62c5-4cb5-9bdc-cd222883975e@cherry.de>
-Date: Tue, 4 Jun 2024 10:45:19 +0200
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] arm64: dts: rockchip: set correct pwm0 pinctrl on
- rk3588-tiger
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- Heiko Stuebner <heiko.stuebner@cherry.de>
-References: <20240603192254.2441025-1-heiko@sntech.de>
-Content-Language: en-US
-From: Quentin Schulz <quentin.schulz@cherry.de>
-In-Reply-To: <20240603192254.2441025-1-heiko@sntech.de>
-X-ClientProxiedBy: WA2P291CA0041.POLP291.PROD.OUTLOOK.COM
- (2603:10a6:1d0:1f::27) To PA4PR04MB7982.eurprd04.prod.outlook.com
- (2603:10a6:102:c4::9)
+	id 1sERab-000000020gh-38OO
+	for linux-rockchip@lists.infradead.org;
+	Tue, 04 Jun 2024 10:40:27 +0000
+Received: from fllv0034.itg.ti.com ([10.64.40.246])
+	by fllv0016.ext.ti.com (8.15.2/8.15.2) with ESMTP id 454Ae4lY083800;
+	Tue, 4 Jun 2024 05:40:04 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ti.com;
+	s=ti-com-17Q1; t=1717497604;
+	bh=hddo9HAPifqq5cXPPE/SjcpNlikR3rcZT61M3YzRnTI=;
+	h=From:To:CC:Subject:Date;
+	b=paIYfbTtZTKLGhkqBIiQRd7XpIrwSwW3UI45nQKx8bGbNJg5H2P/wPFwNwuMoORTR
+	 2dK0Hjmz3ZhEA70QW+B24fkWiThgdmIKhAPPbiqRSY4t0EazdkoJs55O45GBArk4FJ
+	 1xyeOfQhhv0cGdLADZk3EhSFZrRay872s90wDH0c=
+Received: from DFLE102.ent.ti.com (dfle102.ent.ti.com [10.64.6.23])
+	by fllv0034.itg.ti.com (8.15.2/8.15.2) with ESMTPS id 454Ae3IK025616
+	(version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=FAIL);
+	Tue, 4 Jun 2024 05:40:03 -0500
+Received: from DFLE113.ent.ti.com (10.64.6.34) by DFLE102.ent.ti.com
+ (10.64.6.23) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.2507.23; Tue, 4
+ Jun 2024 05:40:03 -0500
+Received: from lelvsmtp5.itg.ti.com (10.180.75.250) by DFLE113.ent.ti.com
+ (10.64.6.34) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.2507.23 via
+ Frontend Transport; Tue, 4 Jun 2024 05:40:03 -0500
+Received: from localhost (ti.dhcp.ti.com [172.24.227.95] (may be forged))
+	by lelvsmtp5.itg.ti.com (8.15.2/8.15.2) with ESMTP id 454Ae2XA056550;
+	Tue, 4 Jun 2024 05:40:02 -0500
+From: Devarsh Thakkar <devarsht@ti.com>
+To: <mchehab@kernel.org>, <robh@kernel.org>,
+        <krzysztof.kozlowski+dt@linaro.org>, <conor+dt@kernel.org>,
+        <hverkuil-cisco@xs4all.nl>, <linux-media@vger.kernel.org>,
+        <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+        <benjamin.gaignard@collabora.com>, <sebastian.fricke@collabora.com>,
+        <p.zabel@pengutronix.de>
+CC: <laurent.pinchart@ideasonboard.com>, <praneeth@ti.com>, <nm@ti.com>,
+        <vigneshr@ti.com>, <a-bhatia1@ti.com>, <j-luthra@ti.com>,
+        <b-brnich@ti.com>, <detheridge@ti.com>, <p-mantena@ti.com>,
+        <vijayp@ti.com>, <devarsht@ti.com>, <andrzej.p@collabora.com>,
+        <nicolas@ndufresne.ca>, <akpm@linux-foundation.org>,
+        <gregkh@linuxfoundation.org>, <andriy.shevchenko@linux.intel.com>,
+        <adobriyan@gmail.com>, <andi.shyti@linux.intel.com>,
+        <airlied@gmail.com>, <daniel@ffwll.ch>, <jani.nikula@intel.com>,
+        <dri-devel@lists.freedesktop.org>,
+        <linux-rockchip@lists.infradead.org>, <davidgow@google.com>,
+        <dlatypov@google.com>
+Subject: [PATCH v12 00/13] Add V4L2 M2M Driver for E5010 JPEG Encoder
+Date: Tue, 4 Jun 2024 16:10:01 +0530
+Message-ID: <20240604104001.2235082-1-devarsht@ti.com>
+X-Mailer: git-send-email 2.39.1
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: PA4PR04MB7982:EE_|AS8PR04MB8660:EE_
-X-MS-Office365-Filtering-Correlation-Id: 6cc0bf77-4d85-47f9-309a-08dc8472ab0c
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230031|1800799015|366007|376005;
-X-Microsoft-Antispam-Message-Info: =?utf-8?B?emg5Z0F6T0MwRXI5WE1vMXl4L0l1VzVZTi9iVGpoRUFIV29reFhGSVZ5Q2Vs?=
- =?utf-8?B?Um4yYVd5bUlYaWpCSUVMSk9CVEU3SG02WkRRU1RYRnNhRjZaQjdYUkJoUG8w?=
- =?utf-8?B?U3paQUQyVUNHUkZ2WE12b1lyUWVnYnpKL2dWVTQvTTlzWmRtQmEweTdIWEhk?=
- =?utf-8?B?QWZjd28xMWNDVllRM0hVOG5iUE9UOE1BRU1YK1JJcWVmRW5lOG9Xcy9uNytP?=
- =?utf-8?B?aW83OHM1cDN5Ym5jWllyOTgzY2U3QzFxVll6bmxCaVdxWG5nU2htVUk3Rlpk?=
- =?utf-8?B?V2UyWjZzeUkwZWZRbVQ2N2Z0bzdZSFhpYjcwam82K2Vub3RCclJPMWxDdi9j?=
- =?utf-8?B?T0VDRlNiRlFyTnRzdXJOM1daRWthVjMwcmpzeDQyOXphMnNnYmk1cG95c2ht?=
- =?utf-8?B?T2FlaDRhWXc3eUVTRjB0dExuMXE4cUFSeTFucGhJK0VDQWd0SVhEb0NHQ0lW?=
- =?utf-8?B?QnlQS2RLMjd1QWN2VE5UR2RwQU5zM2l3akI5T042RkVncTdvbmxKOVRJT014?=
- =?utf-8?B?ZmNPdy9HTi9aY0l5bjVFRzVCakhDSitubDdoT3U0cm1OMDZYR3o2UDF1M08x?=
- =?utf-8?B?b05jSGxWbm1RdVNhS0F4TnNxb0RJZnZlRHYvMGNpMkplM2xETXo3b0N5dERs?=
- =?utf-8?B?NTJuSXRSYTVwZG5LaUR2M0p1MkhwQjV2cWxldWlieXVUWkh4VWJ3WVFxSngz?=
- =?utf-8?B?OXNoWTRUUEZYZlZ4UnRDWEhRZVgzTTVKRkx4MGgzdlJZOE5vbTkrTi9Vcllj?=
- =?utf-8?B?Rml0Q2lhZ2pTcXdwRnNOVlY0NjFqTU5JbDhGaWppUGdLSi9WZ3hBY1l5ZmxO?=
- =?utf-8?B?Y0hMMms5a3NxVmdydithNThTOWVrYW5lVFVEaFVzMFRiUElBR3JEL2xnODV0?=
- =?utf-8?B?cTZHSlNmVVY3czROVnJIUE91clhGRmtLYWQrQ1NNanNEL2hWMzFNbGhSOWxv?=
- =?utf-8?B?cjd4c3ZvcFQ2TWJVSzZPbnB4OTA5c1p0dW4rbmxIalJ3c1Bsd0VrZlZwV3Jj?=
- =?utf-8?B?VVRCQzhaeUJtTzNqLytIL3cweE9kVzNhMk9tb24yUjV2Q2JmWnJhWTNlSVFx?=
- =?utf-8?B?ZGVmUTYxNGJFNXRIdDlBWVJpbWRLZktaYzJwK1h6bzRwMTg5RGxCUzQzNFdB?=
- =?utf-8?B?UjgydnpKSjZzUkUyQjJ1OWlldXorMjlpUjlNbitqTno1SXoyRnlHREJ1V0la?=
- =?utf-8?B?QS92eDRIRWU1dTEwNjQ1SXpPVFViYVRpc1FtVDd0ekxwYVkwVVpjRzJ6SlQ5?=
- =?utf-8?B?ZnozcGpkSExnQm10OXp2ZnJHNFkwZUhxTmhDWEJqZXg0bExLaWQ3cXloaGVQ?=
- =?utf-8?B?bHozeDVNYWQ0UlRCczJoM3VCNG9scjI3aTNpSWtiSDlZengvRVc2aVRZZldS?=
- =?utf-8?B?bDVuZTdtOFZRdnpGeUxYeFFhcm5wakhxRE5ld1NaVXhrMjMxUFhLWlUwbFNH?=
- =?utf-8?B?QjZEcHJIL1EwWURFNFBKcnM4bnFDbWJGbmd5MkJOK1cyQVBObk9ZVllraHVl?=
- =?utf-8?B?bTZ6c1Mrb3RYaEtkNHJyMWFzUGlGaUJrL3ByV1o0ZmlpY3NzMHhpbnkxMHZJ?=
- =?utf-8?B?YjVZVE1JVGNQR052bklwY05FTVZyVHNLVXFHREdWcHYvUnJmNEFUQzZCbldN?=
- =?utf-8?B?aVh6a3NqQ2FaeWtiOEtrNWhCNU05MUVwM1FveU0weU9BdncxcUpqZmRWcldT?=
- =?utf-8?B?cFN6TytFcE4rRWQ4ZzRrWUpwb3VYUVcrTU9JZjRYczJxamp5bFdZdDZBPT0=?=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:PA4PR04MB7982.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230031)(1800799015)(366007)(376005);DIR:OUT;SFP:1102;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?OHRlcXpvbUJQSVhzdm1HZnN5clQrUDhDWGtNT2p3aTJkV2lUV0lzcyt2bWF2?=
- =?utf-8?B?dUUwM0R5MldFMWdzazEzMHZ6enUzaVY0MXRuTGpURXVNOTRCbHZvN2dxbktI?=
- =?utf-8?B?anRxeVZiSUVqemg0TFF2MWNaSVFrRjAzbmdkRWtaV3VzQmFtTUF6RUkzVlVW?=
- =?utf-8?B?Y01OZkxCZXA1NnNkYTV6VVV4L3FWN0pHY0tVWHpudjFQVzI3SWpnUXIzOG0x?=
- =?utf-8?B?L0ZtWEdZL0ZwS1N3MkhlQUxEK1EwTEs3RElwYSt0d29wSFhaeWF2U1BsYlZM?=
- =?utf-8?B?Mk50RlZ6WHlHUU4rcTE3RTMrQU5Vb0M5bURNc3lnbDlPOXhRYk1jN1BlK2dY?=
- =?utf-8?B?dXQxam8rTGtaNitOcXk0azFJLzNROHRBNm1vd0dzOUg5YWdVL2s2azg4V0E4?=
- =?utf-8?B?dEJFaStoYmFJcXVlc2RaYmVBSXhlV3dLVVNpQmFiVW82RHEySnd3dkZiRE1t?=
- =?utf-8?B?cFRYRHpZN0puYUpwYU9iakVlZ3BTVGJKbW5DTTJUNG9XRUJmUm5PTVpIc3FP?=
- =?utf-8?B?KzJVOGpvZHdaMk5YSlQ5bkZkSUppV3g5VWpqTk83MVpFWXNtV29UUk5JRTF3?=
- =?utf-8?B?TVV5RFBhLytQdk91Mk5lQ0VyQ0h5S29iTzhpQzZJN3JWM3dlb3UwZUdwZzRG?=
- =?utf-8?B?NVRiSURYYnFmNGlEYkcvUlFUZkxOZWdoOVptdXFreWFCbXM2ZWY2MWVGUWRR?=
- =?utf-8?B?cWJCd1RUZzExODN1VEdHbXZacWFwd1FubGxKQThEeno4VTZvNEpYa3RPMDVH?=
- =?utf-8?B?eUpxaUc3bVpPaWhPT0h4T3BlMmx0U0w5aWpCK01UNTFBNm9CcVl1OWRaYUpv?=
- =?utf-8?B?M3kyZkRmZ044WWdEWWFucFRUSlFESXQrRFRIUnhOTHdpZnpiVmwvdmczOWhY?=
- =?utf-8?B?ZFkxemN0VnlMcmFMb1F6Q0lZS1JxRHRPK2FQYit1VVN5d0FHbW42SmJBWGtx?=
- =?utf-8?B?R0dxd2tqSTFRNFhSUmdGS29DaVZxTzhWYTJXb0ZqNjRDT0RDRW91d21Hcjht?=
- =?utf-8?B?OFdsSnNtS1IxaDNTNHk1VmVxWkIraGVVWHZmZVloNExHR0RoVmVNRGpSb25L?=
- =?utf-8?B?MnpSY1prWGJiTXZhV0pJVDFoVFMyRlFNWi9laVVmWjJmdHZFaE9Wc3paUmdI?=
- =?utf-8?B?NmtkZ3htSFRCa2dtN09VYUtnZXB1LzF4TE9wZDVDVWd4a21FZXhvajdYSFRD?=
- =?utf-8?B?NWd6cjNBQ1JoQTdNVjNnVFh4NjNqN0xSSTlIc05XY3RlczFmQWZLOVFBeXFa?=
- =?utf-8?B?bUtFT1BWb0x5WU5GRVJwUVJHUWxueXIwZ3ZUZTloVHJMcHdZRzMzdE9Ed3Zq?=
- =?utf-8?B?M01PQzdQMFViY1hyZFBqbkVHUlc1b3JyaW5IVW95cW03bEVta1Nmajlzemgv?=
- =?utf-8?B?QXhTdG9QZTUrVDN0V1JhZUFGcllmU3ZUeDg4WGlINjhqaHdVMU9LUnJUazdx?=
- =?utf-8?B?Zi9GU1g4cHdNSm9FSURBMWRBRjRLdEh0OXY4eGYwTHR0YVBpWnBmNldhMEhk?=
- =?utf-8?B?SVFoRjNEdVNiR2h6MHRqRUxkTjdyamNOOC9zNnhNSVRtZFBoeDYxbkQ2Z084?=
- =?utf-8?B?aldIRCtKM1Z4ZmgrN3lnY3o5b21vWkhGSW9vdTlGWWVqdEU0dmF0Q21uZjMr?=
- =?utf-8?B?M0VHbWx1ZjhGL05odHJKRTJMRnBBSzg2cCtCeUQzMDRGY2RqQmh4M3BCbEJs?=
- =?utf-8?B?ZlJ2Q2VpMUlPb3R6NnVrUGRieUxtYzA2c1dTL1hZNnRGL21sNDZkV3VCdzJC?=
- =?utf-8?B?SUVRcUJYZG1peEZrcUkxd1l3a2VMakQ4b3lXUEJqMTd5ckpLbG5sSmpJYURt?=
- =?utf-8?B?NEt2bUFSemkraDBjR2lsdm54S1g3RFp1ZkVidE9XVUJpaUxaSmxObzcvbzIz?=
- =?utf-8?B?MXZZMjNIZElvTlBoeXcvcmNqTmI2T2N5alh5WElRQ3ZSWVBnb043cVdnUmo2?=
- =?utf-8?B?b2p2bnoweU1aQkp2OW1JejUzaml6a2RPZkFjb3h0VERSV1haQnd2MFg1SUUr?=
- =?utf-8?B?ajhpOUFNZldCNi9HelI3TytKbW5OR1VCcGdTbUZKS2xPNDN4YjIrYlljVUht?=
- =?utf-8?B?WlVWUFBUUHNJQXI4eGJFWk9FS3o0eGVjeU9hYTg2bkttbmtpSTZ5QmZBY21U?=
- =?utf-8?B?TzVrRS9xVXVRb3dSeFFDSWgzRUlKaS9VM2F4MXBqWkVDVHNqMnNtd2dsT3BV?=
- =?utf-8?B?alE9PQ==?=
-X-OriginatorOrg: cherry.de
-X-MS-Exchange-CrossTenant-Network-Message-Id: 6cc0bf77-4d85-47f9-309a-08dc8472ab0c
-X-MS-Exchange-CrossTenant-AuthSource: PA4PR04MB7982.eurprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 04 Jun 2024 08:45:21.2525
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 5e0e1b52-21b5-4e7b-83bb-514ec460677e
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: 3WUEuZpY08g2YZqOjUZqWaPmaLsEGqD0MwM2uNldlV5T1LIQtvy67WaVWUagG7k09nt8b6C6FbXmUyReutHBkl1ze8xTMKAL8ojlx1M7rEU=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: AS8PR04MB8660
+X-EXCLAIMER-MD-CONFIG: e1e8a2fd-e40a-4ac6-ac9b-f7e9cc9ee180
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240604_014532_942648_70DDF122 
-X-CRM114-Status: GOOD (  11.14  )
+X-CRM114-CacheID: sfid-20240604_034025_936070_0727F789 
+X-CRM114-Status: GOOD (  16.85  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -167,35 +90,232 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Heiko,
+This adds support for V4L2 M2M based driver for E5010 JPEG Encoder
+which is a stateful JPEG encoder from Imagination technologies
+and is present in TI AM62A SoC.
 
-On 6/3/24 9:22 PM, Heiko Stuebner wrote:
-> From: Heiko Stuebner <heiko.stuebner@cherry.de>
-> 
-> PWM0 on rk3588-tiger is connected to the BLT_CTRL pin of the Q7 connector
-> meant as the name implies to control a backlight device.
-> 
+While adding support for it, following additional framework changes were
+made:
+ - Moved reference quantization and huffman tables provided in
+   ITU-T-REC-T.81 to v4l2-jpeg.c as suggested in mailing list [1].
+ - Add macros to round to closest integer (either higher or lower) while
+   rounding in order of 2.
+ - Add KUnit tests for math functions.
 
-If not used for backlight, it can be used as a General Purpose PWM 
-Output according to the Qseven standard as well.
+v4l2-compliance test :
+Link: https://gist.github.com/devarsht/1f039c631ca953a57f405cfce1b69e49
 
-> Therefore set the correct M1 pinctrl variant for it. The M0 variant
-> cannot ever be used because that pin is routed to a connector pin on the
-> Q7 connector that is reserved for CAN use and the pin reachable by the M2
-> variant is reserved for the embedded MCU on the SoM.
-> 
-> Fixes: 6173ef24b35b ("arm64: dts: rockchip: add RK3588-Q7 (Tiger) SoM")
-> Signed-off-by: Heiko Stuebner <heiko.stuebner@cherry.de>
+E5010 JPEG Encoder Manual tests :
 
-Reviewed-by: Quentin Schulz <quentin.schulz@cherry.de>
+Performance:
+Link: https://gist.github.com/devarsht/c40672944fd71c9a53ab55adbfd9e28b
 
-Thanks!
-Quentin
+Functionality:
+Link: https://gist.github.com/devarsht/8e88fcaabff016bb2bac83d89c9d23ce
+
+Compression Quality:
+Link: https://gist.github.com/devarsht/cbcc7cd97e8c48ba1486caa2b7884655
+
+Multi Instance:
+Link: https://gist.github.com/devarsht/22c2fca08cd3441fb40f2c7a4cebc95a
+
+Crop support:
+Link: https://gist.github.com/devarsht/de6f5142f678bb1a5338abfd9f814abd
+
+Runtime PM:
+Link: https://gist.github.com/devarsht/70cd95d4440ddc678489d93885ddd4dd
+
+Math lib KUnit tests:
+Link: https://gist.github.com/devarsht/3f9042825be3da4e133b8f4eda067876
+
+[1]: 
+https://lore.kernel.org/all/de46aefe-36da-4e1a-b4fa-b375b2749181@xs4all.nl/
+
+Changelog:
+V12:
+ - Fix documentation and enable kernel-doc rendering for math.h and jpeg helpers
+ - Add Reviewed-by and Acked-by tags
+  
+V10->V11:
+ - Fix commenting for math.h, include headers per IWYU principle in
+   math_kunit, update title for math.h kernel-doc
+
+V9->V10:
+ - Update commenting style in math.h and add notes for new jpeg header
+   macros
+ - Add KUnit dependency for math_kunit
+
+V8->V9:
+ - Remove kernel.h header file
+ - Remove stale filler data on jpeg header in E5010 jpeg driver
+
+V7->V8:
+ - Add KUnit tests for math functions
+ - Add roundclosest() for supporting rounding for non-multiple of 2
+ - Update commit message as suggested
+ - Add Reviewed-by and Acked-by tags to patches as received
+
+V6->V7:
+ - Fix cropping support
+ - Move reference huffman and quantization tables to v4l2-jpeg.c
+ - Fix suspend/resume use-case
+ - Add Reviewed-by
+
+V5->V6:
+ - Fix sparse warnings
+
+V4->V5:
+ - Sort the #includes in driver file alphabetically
+ - Rename huffman and quantization tables to not use '_'
+ - Add Reviewed-by tag
+
+V3->V4:
+- Use ti-specific compatible ti,am62a-jpeg-enc as secondary one in
+  dt-binding
+- Remove clock-names as only single clock in dt-binding
+- Fix issue with default params setting
+- Correct v4l2 error prints
+- Simplify register write functions with single statement return values
+- Remove unrequired error checks from get_queue()
+- Drop explicit device_caps setting as it is already taken care by v4l2
+  core
+- Remove unrequired multiplanar checks and memset from s_fmt, g_fmt
+  callback functions
+- Fix try_fmt callback to not update the queues
+- Remove unrequired contiguous format attribute from queue_init
+- Use dynamic allocation for video_device and remove unrequired
+  assignments in probe()
+- Remove unrequired checks from queue_setup function
+- Return queued buffers back if start_streaming fails
+- Use ARRAY_SIZE in place of hard-coding
+- Use huffman and quantization tables from reference header file
+
+V2->V3:
+- Add DONOTMERGE patches for dts and defconfig
+- Update driver with below changes :
+  - Correct license headers
+  - Use more generic name core instead of jasper for base registers
+  - Add Comment for forward declarations
+  - Simplify quantization table calculations
+  - Use v4l2_apply_frmsize_constraints for updating framesize and remove
+    unrequired functions
+  - Place TODO at top of file and in commit message too
+  - Use dev_err_probe helper in probe function
+  - Fix return value checking for failure scenarios in probe function
+  - Use v4l2_err/info/warn helpers instead of dev_err/info/warn helpers
+  - Fix unexpected indentation
+  - Correct commit message
+- Update dt-bindings with below changes :
+  - Add vendor specific compatible 
+  - Fix commit title and message
+  - Update reg names
+  - Update clocks to 1
+  - Fix dts example with proper naming
+
+V1->V2:
+ - Send dt-bindings and driver together
+
+Patch-Diff between the series :
+V11->V12 Range diff :
+https://gist.github.com/devarsht/18455f1744b6b6b8f33dd505a4ca2651
+
+V10->V11 Range diff :
+https://gist.github.com/devarsht/cd76372bff7c125f75d06ba009264b75
+
+V9->V10 Range diff :
+https://gist.github.com/devarsht/b446acee460b8c65fb577d06b7bbc1da
+
+V8->V9 Range diff :
+https://gist.github.com/devarsht/3fd6c4e8031ab114248f93d01c8dfc74
+
+V6->V7 Range diff :
+https://gist.github.com/devarsht/1db185b1e187eaf397e9e4c37066777e
+
+V5->V6 Range diff :
+https://gist.github.com/devarsht/c89180ac2b0d2814614f2b59d0705c19
+
+V4->V5 Range diff :
+https://gist.github.com/devarsht/298790af819f299a0a05fec89371097b
+
+V3->V4 Range diff :
+https://gist.github.com/devarsht/22a744d999080de6e813bcfb5a596272
+
+Previous patch series:
+V11: https://lore.kernel.org/all/20240531170229.1270828-1-devarsht@ti.com/
+V10: https://lore.kernel.org/all/20240530165925.2715837-1-devarsht@ti.com/
+V9: https://lore.kernel.org/all/20240526175655.1093707-1-devarsht@ti.com/
+V8: https://lore.kernel.org/all/20240517171532.748684-1-devarsht@ti.com/
+V7: https://lore.kernel.org/all/20240510082603.1263256-1-devarsht@ti.com/
+V6: https://lore.kernel.org/all/20240228141140.3530612-1-devarsht@ti.com/
+V5: https://lore.kernel.org/all/20240215134641.3381478-1-devarsht@ti.com/
+V4: https://lore.kernel.org/all/20240205114239.924697-1-devarsht@ti.com/
+V3: https://lore.kernel.org/all/20230816152210.4080779-1-devarsht@ti.com/
+V2: https://lore.kernel.org/all/20230727112546.2201995-1-devarsht@ti.com/
+
+
+Daniel Latypov (1):
+  lib: add basic KUnit test for lib/math
+
+Devarsh Thakkar (12):
+  media: dt-bindings: Add Imagination E5010 JPEG Encoder
+  media: imagination: Add E5010 JPEG Encoder driver
+  media: v4l2-jpeg: Export reference quantization and huffman tables
+  media: Documentation: Document v4l2-jpeg helper macros
+  media: imagination: Use exported tables from v4l2-jpeg core
+  media: verisilicon : Use exported tables from v4l2-jpeg for hantro
+    codec
+  math.h: Add macros for rounding to closest value
+  math.h: Use kernel-doc syntax for divison functions
+  Documentation: core-api: Add math.h macros and functions
+  lib: math_kunit: Add tests for new macros related to rounding to
+    nearest value
+  media: imagination: Round to closest multiple for cropping region
+  gpu: ipu-v3: Use generic macro for rounding closest to specified value
+
+ Documentation/core-api/kernel-api.rst         |    6 +
+ .../bindings/media/img,e5010-jpeg-enc.yaml    |   75 +
+ Documentation/driver-api/media/v4l2-core.rst  |    1 +
+ Documentation/driver-api/media/v4l2-jpeg.rst  |   10 +
+ MAINTAINERS                                   |    7 +
+ drivers/gpu/ipu-v3/ipu-image-convert.c        |    4 +-
+ drivers/media/platform/Kconfig                |    1 +
+ drivers/media/platform/Makefile               |    1 +
+ drivers/media/platform/imagination/Kconfig    |   12 +
+ drivers/media/platform/imagination/Makefile   |    3 +
+ .../platform/imagination/e5010-core-regs.h    |  585 ++++++
+ .../platform/imagination/e5010-jpeg-enc-hw.c  |  267 +++
+ .../platform/imagination/e5010-jpeg-enc-hw.h  |   42 +
+ .../platform/imagination/e5010-jpeg-enc.c     | 1644 +++++++++++++++++
+ .../platform/imagination/e5010-jpeg-enc.h     |  168 ++
+ .../platform/imagination/e5010-mmu-regs.h     |  311 ++++
+ .../media/platform/verisilicon/hantro_jpeg.c  |  128 +-
+ drivers/media/v4l2-core/v4l2-jpeg.c           |  162 +-
+ include/linux/math.h                          |   86 +-
+ include/media/v4l2-jpeg.h                     |   28 +
+ lib/math/Kconfig                              |   14 +
+ lib/math/Makefile                             |    1 +
+ lib/math/math_kunit.c                         |  329 ++++
+ 23 files changed, 3761 insertions(+), 124 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/media/img,e5010-jpeg-enc.yaml
+ create mode 100644 Documentation/driver-api/media/v4l2-jpeg.rst
+ create mode 100644 drivers/media/platform/imagination/Kconfig
+ create mode 100644 drivers/media/platform/imagination/Makefile
+ create mode 100644 drivers/media/platform/imagination/e5010-core-regs.h
+ create mode 100644 drivers/media/platform/imagination/e5010-jpeg-enc-hw.c
+ create mode 100644 drivers/media/platform/imagination/e5010-jpeg-enc-hw.h
+ create mode 100644 drivers/media/platform/imagination/e5010-jpeg-enc.c
+ create mode 100644 drivers/media/platform/imagination/e5010-jpeg-enc.h
+ create mode 100644 drivers/media/platform/imagination/e5010-mmu-regs.h
+ create mode 100644 lib/math/math_kunit.c
+
+-- 
+2.39.1
+
 
 _______________________________________________
 Linux-rockchip mailing list
