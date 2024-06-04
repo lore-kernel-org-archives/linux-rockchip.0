@@ -4,84 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 689D3C25B78
-	for <linux-rockchip@archiver.kernel.org>; Tue,  4 Jun 2024 18:48:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5F6DEC27C52
+	for <linux-rockchip@archiver.kernel.org>; Tue,  4 Jun 2024 19:32:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=GNkm+6sIePdD9+8bkS4M18noDlt3PkS7fS9Wii51tbY=; b=YnXSGz9yjXFpKB
-	YD0a721zbrIil3IyDkOO6NMksCiDhWCCFJsfFug1qilAY3CdgmuC3AQJqWvTaABrZAbRpiCXNRDOp
-	3mM7lWukgvNfAwBlX/uVKqKIutAjKTzXvU6uAj8aca/+8kn6c/keDMYrLlbHIumQGXiz1V21OI1PG
-	3ZsODAXmQ6FgANM6MeXs1CGY8WADcdjS6F+wYW3+oNULNkC9aQLFaxRUVolmgfTN0TkCorMlRfZ/W
-	V1NHLvsp/A6MY1DkEbSi6pEouUxv67JVfARfzxQlOHCS+GMJOY05s9F6MdxvWI6nvB6Fhj5Y148by
-	vaCHsiQkQo3hl6/eoUmg==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=TtPwbArsTWSstNPW7bS/4xzc+EluR/DwhEr2Cx4OsCI=; b=lYmT9QQdx+bdzi
+	Bh/Oif6H9Wxz81gFXEC+wixYlbwIAYiVSHnESXf6eNKoFQHfvF3fcIl8e44tjl/y8jfqCbcASkO6D
+	RbAtGAIi1rhvgZXs2v6AWcgdbNbu7tHSwyEYY5394xs5UGI0UTpruUHuAgE0q4jOu7QVFxykNzXHi
+	jY78Bufj8omtCYLjxAxjThlkSYtIf75sJK3LXpXJ4ejzU/XuJMeSuEEJzvKmd2T2kOlRNbJWUmpBV
+	TZ6rmmvA/LRsPbq2A4em9IKJ1w3DjqNEyPnPZQkzqB+zTfbKj6cEGS7vq/LsJEPbAklT7fPkmUPJ+
+	k/kdllp7VBhsqsLr4zcg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sEZDC-00000003ULN-0MT5;
-	Tue, 04 Jun 2024 18:48:46 +0000
-Received: from mail-lf1-x129.google.com ([2a00:1450:4864:20::129])
+	id 1sEZtI-00000003bu2-2HAF;
+	Tue, 04 Jun 2024 19:32:16 +0000
+Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sEZD8-00000003UJh-3yWm;
-	Tue, 04 Jun 2024 18:48:44 +0000
-Received: by mail-lf1-x129.google.com with SMTP id 2adb3069b0e04-52b8b638437so1609281e87.3;
-        Tue, 04 Jun 2024 11:48:41 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1717526920; x=1718131720; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=YhU1SbvM7znKVct1eWXWAILOVj0SRCPHV7V811HpayA=;
-        b=FEnCWWcgH+ChuZljTjmOiL/FZuUKu2nPAMRS0gJwU2saq2wRYCfhe6yPPqPfelUEEI
-         k6MHqgSZwncAMJAqvDaGivOanKVbbn8ue+mZadulaKjjSOvW6IKWJGaYwOykUY4nbQSr
-         dPRN+7QvYjnB6VCJm3TtDoGlKyEh8+Eehc8Emz+d1LYHaQgkFzJ+alYJiijhtw2WK2h1
-         1quhutzE8lrSjOvSsZwyfTnn5xBvIqXnf1NHymxO7Jt9gqjZyFtRtGgt7G+ElEb8o/4x
-         N93AsaFgO2I/zKIgmV+0ZmHMJlPCXkunw6E5G6qEngyQc+jZU4C0BzS6wfCCSo5HCeHq
-         qPqQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1717526920; x=1718131720;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=YhU1SbvM7znKVct1eWXWAILOVj0SRCPHV7V811HpayA=;
-        b=gOSbgKtIUF/53VWvVz7YlSBQ2AmhtTU6oLLvKpFfObqLud/28lcLKijafFmArI1kWU
-         xkPPL9AIMoe8EdH8qKDzACSzfQrMn3hSLCyiYtm88hUsyeFNGlBraxnnTByW7we/eZMy
-         zoNXeJXUXZ1M52niYim84ROGcPRuK6f4/UizLQD8oHRge6JFBv7hS9tRjdUIent4g9UL
-         OgcTTVcQKX3yiSq4HBAXTelaaSy70Zx9zmjCfp73VIC5xxxBni/17gdU1DmWwkt/9wVg
-         5JpU8JIp/kUhtfBs/nBt0H8ugoe8ufpCx5SJoXWrtWjmLMBZh8zKy4f7IaHuWQqrKF/M
-         t9xA==
-X-Forwarded-Encrypted: i=1; AJvYcCXcLN1rYofMW2c0rWzpAg78VOqHvfKOH7BTKJ5VYa+wbZJVxQnYrlS6nLsSIwhdq+O01Gp9PKT5WMXKFEtJ5NPcPzOttmZ3g33tFMnnq5dOWg3cxyDVQU/4fuHqEPaJjqqfu2Yl0js8QK3Vn84+EouXNp76ghbIIBI=
-X-Gm-Message-State: AOJu0Yy9VZaAB5PxNU0Q5TcKfCaEwmvkSzf4703LdihKNKNccjDAR9qE
-	l1Jmr9X6M1OPznU0mfgzv5EpF+H1lPqYoFlItiyiY4YLmMOgOCtlJy3mAajIXjw=
-X-Google-Smtp-Source: AGHT+IFEJ8hqG5xCrTQKvzSoryOtPIc1PkC8aaNWtW7orx0ghMl5wbgtdEJ/5xVPTPWB8vdw9HCNQw==
-X-Received: by 2002:ac2:4e89:0:b0:52a:fbcc:b358 with SMTP id 2adb3069b0e04-52bab4cbd6amr226548e87.13.1717526919443;
-        Tue, 04 Jun 2024 11:48:39 -0700 (PDT)
-Received: from U19.ag.local (static.187.76.181.135.clients.your-server.de. [135.181.76.187])
-        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-52b9ea5271fsm452903e87.252.2024.06.04.11.48.38
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 04 Jun 2024 11:48:38 -0700 (PDT)
-From: Alibek Omarov <a1ba.omarov@gmail.com>
-To: luca.ceresoli@bootlin.com,
-	Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
-	Liam Girdwood <lgirdwood@gmail.com>,
-	Mark Brown <broonie@kernel.org>,
-	Jaroslav Kysela <perex@perex.cz>,
-	Takashi Iwai <tiwai@suse.com>,
-	Heiko Stuebner <heiko@sntech.de>
-Cc: Alibek Omarov <a1ba.omarov@gmail.com>,
-	linux-rockchip@lists.infradead.org,
-	linux-sound@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH] ASoC: rockchip: i2s-tdm: Fix trcm mode by setting clock on right mclk
-Date: Tue,  4 Jun 2024 21:47:52 +0300
-Message-Id: <20240604184752.697313-1-a1ba.omarov@gmail.com>
-X-Mailer: git-send-email 2.34.1
+	id 1sEZtE-00000003btM-3N7S;
+	Tue, 04 Jun 2024 19:32:14 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1717529528;
+	bh=M1Gdn4asSpZpMWSj1SJTHfA7FUsIrefzLkYIEaSuPWc=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=TD10HMw/KC+Zeelk+t0a2mjwUXPzb3Hczj8F6WJBiKw0COfBZeFkF6EjH/qUi48qL
+	 Oz9zz7uaYcFmKTLwBXh3XcgXxt1v4yBKJUYlHnXUWCjFRzo7dw+5/ivuKYGENSwMLJ
+	 LvmenoFOnasGe9G3cgE4XwgWopGAd8Md2SRq71K7ijBmpjow3omaEht4KKbarw28ED
+	 7H9raw9xn5TOhFMBmU/sLHCDNzg2KVLlll+mZxajs0X372UDLle9lEnVM2sQFZgwhG
+	 5l7Olu+lbU/ZioZKr9kHyJk90sbdSWmxRprtzSCEwqySgumM/wxv/5/lO4SzBiDufs
+	 eYIBVVVhmwMOA==
+Received: from [100.115.223.179] (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: cristicc)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 989343782172;
+	Tue,  4 Jun 2024 19:32:06 +0000 (UTC)
+Message-ID: <59519381-2729-4839-9882-65a981a0c551@collabora.com>
+Date: Tue, 4 Jun 2024 22:32:04 +0300
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 13/14] drm/bridge: synopsys: Add DW HDMI QP TX controller
+ driver
+To: Sam Ravnborg <sam@ravnborg.org>
+Cc: Andrzej Hajda <andrzej.hajda@intel.com>,
+ Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>,
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+ Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>,
+ Sandy Huang <hjc@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?=
+ <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Mark Yao <markyao0591@gmail.com>,
+ dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ devicetree@vger.kernel.org, kernel@collabora.com,
+ Alexandre ARNOUD <aarnoud@me.com>, Luis de Arquer <ldearquer@gmail.com>,
+ Algea Cao <algea.cao@rock-chips.com>
+References: <20240601-b4-rk3588-bridge-upstream-v1-0-f6203753232b@collabora.com>
+ <20240601-b4-rk3588-bridge-upstream-v1-13-f6203753232b@collabora.com>
+ <20240601143226.GA2003970@ravnborg.org>
+From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+Content-Language: en-US
+In-Reply-To: <20240601143226.GA2003970@ravnborg.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240604_114843_012665_E1663A4C 
-X-CRM114-Status: GOOD (  13.13  )
+X-CRM114-CacheID: sfid-20240604_123213_044481_C51C7598 
+X-CRM114-Status: GOOD (  14.29  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,49 +91,51 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-When TRCM mode is enabled, I2S RX and TX clocks are synchronized through
-selected clock source. Without this fix BCLK and LRCK might get parented
-to an uninitialized MCLK and the DAI will receive data at wrong pace.
+Hi Sam,
 
-However, unlike in original i2s-tdm driver, there is no need to manually
-synchronize mclk_rx and mclk_tx, as only one gets used anyway.
+On 6/1/24 5:32 PM, Sam Ravnborg wrote:
+> Hi Cristian,
+> 
+> a few drive-by comments below.
+> 
+> 	Sam
+> 
+> 
+>> +
+>> +static const struct drm_connector_funcs dw_hdmi_qp_connector_funcs = {
+>> +	.fill_modes = drm_helper_probe_single_connector_modes,
+>> +	.detect = dw_hdmi_connector_detect,
+>> +	.destroy = drm_connector_cleanup,
+>> +	.force = dw_hdmi_qp_connector_force,
+>> +	.reset = drm_atomic_helper_connector_reset,
+>> +	.atomic_duplicate_state = drm_atomic_helper_connector_duplicate_state,
+>> +	.atomic_destroy_state = drm_atomic_helper_connector_destroy_state,
+>> +};
+>> +
+>> +static int dw_hdmi_qp_bridge_attach(struct drm_bridge *bridge,
+>> +				    enum drm_bridge_attach_flags flags)
+>> +{
+>> +	struct dw_hdmi *hdmi = bridge->driver_private;
+>> +
+>> +	if (flags & DRM_BRIDGE_ATTACH_NO_CONNECTOR)
+>> +		return drm_bridge_attach(bridge->encoder, hdmi->next_bridge,
+>> +					 bridge, flags);
+>> +
+>> +	return dw_hdmi_connector_create(hdmi, &dw_hdmi_qp_connector_funcs);
+>> +}
+> 
+> Are there any users left that requires the display driver to create the
+> connector?
+> In other words - could this driver fail if DRM_BRIDGE_ATTACH_NO_CONNECTOR
+> is not passed and drop dw_hdmi_connector_create()?
+> 
+> I did not try to verify this - just a naive question.
 
-Tested on a board with RK3568 SoC and Silergy SY24145S codec with enabled and
-disabled TRCM mode.
+I've just tested this and it doesn't work - dw_hdmi_connector_create()
+is still needed.
 
-Fixes: 9e2ab4b18ebd ("ASoC: rockchip: i2s-tdm: Fix inaccurate sampling rates")
-Signed-off-by: Alibek Omarov <a1ba.omarov@gmail.com>
----
- sound/soc/rockchip/rockchip_i2s_tdm.c | 13 +++++++++++--
- 1 file changed, 11 insertions(+), 2 deletions(-)
-
-diff --git a/sound/soc/rockchip/rockchip_i2s_tdm.c b/sound/soc/rockchip/rockchip_i2s_tdm.c
-index 9fa020ef7eab..ee517d7b5b7b 100644
---- a/sound/soc/rockchip/rockchip_i2s_tdm.c
-+++ b/sound/soc/rockchip/rockchip_i2s_tdm.c
-@@ -655,8 +655,17 @@ static int rockchip_i2s_tdm_hw_params(struct snd_pcm_substream *substream,
- 	int err;
- 
- 	if (i2s_tdm->is_master_mode) {
--		struct clk *mclk = (substream->stream == SNDRV_PCM_STREAM_PLAYBACK) ?
--			i2s_tdm->mclk_tx : i2s_tdm->mclk_rx;
-+		struct clk *mclk;
-+
-+		if (i2s_tdm->clk_trcm == TRCM_TX) {
-+			mclk = i2s_tdm->mclk_tx;
-+		} else if (i2s_tdm->clk_trcm == TRCM_RX) {
-+			mclk = i2s_tdm->mclk_rx;
-+		} else if (substream->stream == SNDRV_PCM_STREAM_PLAYBACK) {
-+			mclk = i2s_tdm->mclk_tx;
-+		} else {
-+			mclk = i2s_tdm->mclk_rx;
-+		}
- 
- 		err = clk_set_rate(mclk, DEFAULT_MCLK_FS * params_rate(params));
- 		if (err)
--- 
-2.34.1
-
+Regards,
+Cristian
 
 _______________________________________________
 Linux-rockchip mailing list
