@@ -4,77 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 632AFC25B78
-	for <linux-rockchip@archiver.kernel.org>; Tue,  4 Jun 2024 20:34:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 94DDDC25B78
+	for <linux-rockchip@archiver.kernel.org>; Tue,  4 Jun 2024 20:41:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=UonhFgy/bMM3huAjxXVKlsvpe7w9KMx7MtZDkn9glNw=; b=fkfgBG/+bdgXDl
-	Z4caUhSTT2xl0Hjhz3/J6lQsksJV6HYGs/2anSj+WSiDJdtUiUhg3VpqAA0haxrUIOj+XCLL8d6s9
-	bXL4P8QwWtk6xgsOx03sWUahqd6uSUDNdg16sswZned3188Z3xGuuHX8KZI6Mr5GTuREAhQcbBdUI
-	n2trlra47zOLcRLcVuoZ3BMqXfV6ttaFJ8FvTkacMWWouJVWDSP7ydntNhLwRSp7VXfENWyBuQNqQ
-	4Eq3KdgrCfq2J0F6C3RHeyCjhiSNSUzHo/vqP5Ky9GuKSMC7FF/1EyL9JiEoPtkrYwNtsJDzfT5xF
-	6GDZhWJofp5F2JA+Cu9g==;
+	List-Owner; bh=HDug0CubHb3KgdMVoKXcpze3IFqgjpwnrM6KCCktRGs=; b=FTWUZP7vI3dnrB
+	pMPcf5zgkf2OWhL8iwzQzEUC4s9RgC/CakW6kVldcsOgAQjK/DrZG7o6fXoU+oy2uwDLGXsc10UJC
+	2HHA/WGsmfywJa1Jjs739AVpR/m3pYKgVCYLYLJpsWLbtABFwOOJfgCr0mU5GaCO8ezXwG1SPbJYb
+	bx1Ixxip6wE1fcg/mYdi+MKuH+dIQKOWBM0DYoi36Mzq9qzUioEbn2KFO+svD8Itaji2qVqNt2gPp
+	Or2FvStSbwZliAAAoME5lp/mDJTcvfiizoZq492ySTdXk0DmABSxSAPZUxzPPs85a+GJRPms/cEMi
+	uQRrZ4QGOBxZNH6gyw4w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sEar8-00000003j9r-0zgv;
-	Tue, 04 Jun 2024 20:34:06 +0000
-Received: from madrid.collaboradmins.com ([46.235.227.194])
+	id 1sEayE-00000003jwa-0sLH;
+	Tue, 04 Jun 2024 20:41:26 +0000
+Received: from mailrelay1-1.pub.mailoutpod3-cph3.one.com ([2a02:2350:5:420::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sEar4-00000003j9J-2mvE;
-	Tue, 04 Jun 2024 20:34:04 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1717533240;
-	bh=DGRk2KL67t9VkY5knJeHJz8Kj6zzYl0wNDrodX+q0bg=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=M+lO5r/EfrOkUovxHuy+9LLJ5CysdDrARL/KEkpsogK8HV7b4F3dW4qZBRoOR5DEq
-	 Pba31mMaRxAa/jPV9+4egk3wLjl1qRja1NK1WQNGq1UDEoFX/d3YheqpRTOaEPQyk2
-	 NlUvvG1q8TsiuX4dMPu1L9vQd+O8CT5rPQwqqmX5jmL0gorfE5LI/YE9jtC1p9wH80
-	 KxWItm9eC5FbPULoffmMIerqkjTetvrj1SjP9n0SXCoPNc7fF6BoaL3R77glpftNvs
-	 0Q9B8sMNPSfC/+dk5PemJC73abdr6X/n/Y2U4XssuKHgaSDn5/5TZg0ImFfA3BZ6vq
-	 WetVJydhHKV9g==
-Received: from [100.115.223.179] (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: cristicc)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 976803782137;
-	Tue,  4 Jun 2024 20:33:58 +0000 (UTC)
-Message-ID: <b8066150-c147-4eb6-9f7a-2bd0268c274e@collabora.com>
-Date: Tue, 4 Jun 2024 23:33:57 +0300
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 00/14] Add initial support for the Rockchip RK3588 HDMI TX
- Controller
-To: neil.armstrong@linaro.org, Heiko Stuebner <heiko@sntech.de>,
- Andrzej Hajda <andrzej.hajda@intel.com>, Robert Foss <rfoss@kernel.org>,
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
- Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>,
- Sandy Huang <hjc@rock-chips.com>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Mark Yao <markyao0591@gmail.com>,
- Andy Yan <andy.yan@rock-chips.com>
-Cc: dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- devicetree@vger.kernel.org, kernel@collabora.com,
- Alexandre ARNOUD <aarnoud@me.com>, Luis de Arquer <ldearquer@gmail.com>,
- Algea Cao <algea.cao@rock-chips.com>
+	id 1sEay8-00000003juW-2NI9
+	for linux-rockchip@lists.infradead.org;
+	Tue, 04 Jun 2024 20:41:24 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=ravnborg.org; s=rsa1;
+	h=in-reply-to:content-type:mime-version:references:message-id:subject:cc:to:
+	 from:date:from;
+	bh=Dk4sfgI36ZWaPJ+eBS/GI/TZ8w55X9bgUEDY5cQtdtU=;
+	b=N61vra7CHLZfKe5uIUlYx3GQv9YGIc7bLyEhl3+9zNcLfrg/064TgGMDdyq/ZA10mlYXb06vgNF0h
+	 qwxtSmeWRmsmmd3wrCCBBvUY+SFythORAs9pyE4otLatq0n/0MIHh8STbOiAKmU9DUOex9d1E4YSfX
+	 x8KwPBxjY/1bPXa3W4ZVzNJZE8vyRU4ysM0VrCOe55RkF7hCRcl+V9ySXs0kbLERYnt8ZjSy6kIePK
+	 853Zbg7dZnTvyDX2GrBxleUad6prFsi1lEZKiKL68eW9CCm5QisalqofZTtORQWuI1bSEXtwK7zLcI
+	 Xu0tUkNa02dSjD3QS04pgnpBnbZ1OSQ==
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed;
+	d=ravnborg.org; s=ed1;
+	h=in-reply-to:content-type:mime-version:references:message-id:subject:cc:to:
+	 from:date:from;
+	bh=Dk4sfgI36ZWaPJ+eBS/GI/TZ8w55X9bgUEDY5cQtdtU=;
+	b=r4JvKN3MaF/e09yO6vz7gW/+Vs/xVKV1CvUIVwJnko5Bqds84IFN0/PUeYg4Zdo1itqPMmJMDSrRa
+	 fTI/wgXCg==
+X-HalOne-ID: c619a21d-22b2-11ef-9886-bf3d7f4c9d3b
+Received: from ravnborg.org (2-105-16-150-cable.dk.customer.tdc.net [2.105.16.150])
+	by mailrelay1.pub.mailoutpod3-cph3.one.com (Halon) with ESMTPSA
+	id c619a21d-22b2-11ef-9886-bf3d7f4c9d3b;
+	Tue, 04 Jun 2024 20:41:12 +0000 (UTC)
+Date: Tue, 4 Jun 2024 22:41:10 +0200
+From: Sam Ravnborg <sam@ravnborg.org>
+To: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+Cc: Andrzej Hajda <andrzej.hajda@intel.com>,
+	Neil Armstrong <neil.armstrong@linaro.org>,
+	Robert Foss <rfoss@kernel.org>,
+	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+	Jonas Karlman <jonas@kwiboo.se>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Maxime Ripard <mripard@kernel.org>,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>,
+	Sandy Huang <hjc@rock-chips.com>,
+	Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>,
+	Andy Yan <andy.yan@rock-chips.com>, Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Mark Yao <markyao0591@gmail.com>, dri-devel@lists.freedesktop.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
+	kernel@collabora.com, Alexandre ARNOUD <aarnoud@me.com>,
+	Luis de Arquer <ldearquer@gmail.com>,
+	Algea Cao <algea.cao@rock-chips.com>
+Subject: Re: [PATCH 13/14] drm/bridge: synopsys: Add DW HDMI QP TX controller
+ driver
+Message-ID: <20240604204110.GA84949@ravnborg.org>
 References: <20240601-b4-rk3588-bridge-upstream-v1-0-f6203753232b@collabora.com>
- <a4b22708-e85d-448a-8145-244b49bca053@linaro.org>
- <ab0a6372-091b-4293-8907-a4b3ff4845c0@rock-chips.com>
- <11359776.NyiUUSuA9g@phil> <ef60403f-078f-411a-867b-9b551e863f56@linaro.org>
-Content-Language: en-US
-From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-In-Reply-To: <ef60403f-078f-411a-867b-9b551e863f56@linaro.org>
+ <20240601-b4-rk3588-bridge-upstream-v1-13-f6203753232b@collabora.com>
+ <20240601143226.GA2003970@ravnborg.org>
+ <59519381-2729-4839-9882-65a981a0c551@collabora.com>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <59519381-2729-4839-9882-65a981a0c551@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240604_133402_964513_7A733CC4 
-X-CRM114-Status: GOOD (  24.69  )
+X-CRM114-CacheID: sfid-20240604_134121_237582_2893161C 
+X-CRM114-Status: GOOD (  21.26  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,103 +102,60 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 6/3/24 4:08 PM, neil.armstrong@linaro.org wrote:
-> Hi,
+Hi Cristian.
+
+On Tue, Jun 04, 2024 at 10:32:04PM +0300, Cristian Ciocaltea wrote:
+> Hi Sam,
 > 
-> On 03/06/2024 15:03, Heiko Stuebner wrote:
->> Am Montag, 3. Juni 2024, 14:14:17 CEST schrieb Andy Yan:
->>> Hi Neil:
->>>
->>> On 6/3/24 16:55, Neil Armstrong wrote:
->>>> Hi Christian,
->>>>
->>>> On 01/06/2024 15:12, Cristian Ciocaltea wrote:
->>>>> The RK3588 SoC family integrates a Quad-Pixel (QP) variant of the
->>>>> Synopsys DesignWare HDMI TX controller used in the previous SoCs.
->>>>>
->>>>> It is HDMI 2.1 compliant and supports the following features, among
->>>>> others:
->>>>>
->>>> .
->>>>
->>>> ..
->>>>
->>>>> * SCDC I2C DDC access
->>>>> * TMDS Scrambler enabling 2160p@60Hz with RGB/YCbCr4:4:4
->>>>> * YCbCr4:2:0 enabling 2160p@60Hz at lower HDMI link speeds
->>>>> * Multi-stream audio
->>>>> * Enhanced Audio Return Channel (EARC)
->>>> -> Those features were already supported by the HDMI 2.0a compliant
->>>> HW, just
->>>> list the _new_ features for HDMI 2.1
->>>>
->>>> I did a quick review of your patchset and I don't understand why you
->>>> need
->>>> to add a separate dw-hdmi-qp.c since you only need simple variants
->>>> of the I2C
->>>> bus, infoframe and bridge setup.
->>>>
->>>> Can you elaborate further ? isn't this Quad-Pixel (QP) TX controller
->>>> version
->>>> detectable at runtime ?
->>>>
->>>> I would prefer to keep a single dw-hdmi driver if possible.
->>>
->>>
->>>
->>> The QP HDMI controller is a completely different variant with totally
->>> different
->>> registers layout, see PATCH 13/14.
->>> I think make it a separate driver will be easier for development and
->>> maintenance.
->>
->> I'm with Andy here. Trying to navigate a driver for two IP blocks really
->> sounds taxing especially when both are so different.
-
-Thank you all for the valuable feedback!
-
-> I agree, I just wanted more details than "variant of the
-> Synopsys DesignWare HDMI TX controller", if the register mapping is 100%
-> different, and does not match at all with the old IP, then it's indeed time
-> to make a brand new driver, but instead of doing a mix up, it's time to
-> extract
-> the dw-hdmi code that could be common helpers into a dw-hdmi-common module
-> and use them.
-
-Sounds good, will handle this in v2.
-
-> As I see, no "driver" code can be shared, only DRM plumbings, so perhaps
-> those
-> plumbing code should go into the DRM core ?
+> On 6/1/24 5:32 PM, Sam Ravnborg wrote:
+> > Hi Cristian,
+> > 
+> > a few drive-by comments below.
+> > 
+> > 	Sam
+> > 
+> > 
+> >> +
+> >> +static const struct drm_connector_funcs dw_hdmi_qp_connector_funcs = {
+> >> +	.fill_modes = drm_helper_probe_single_connector_modes,
+> >> +	.detect = dw_hdmi_connector_detect,
+> >> +	.destroy = drm_connector_cleanup,
+> >> +	.force = dw_hdmi_qp_connector_force,
+> >> +	.reset = drm_atomic_helper_connector_reset,
+> >> +	.atomic_duplicate_state = drm_atomic_helper_connector_duplicate_state,
+> >> +	.atomic_destroy_state = drm_atomic_helper_connector_destroy_state,
+> >> +};
+> >> +
+> >> +static int dw_hdmi_qp_bridge_attach(struct drm_bridge *bridge,
+> >> +				    enum drm_bridge_attach_flags flags)
+> >> +{
+> >> +	struct dw_hdmi *hdmi = bridge->driver_private;
+> >> +
+> >> +	if (flags & DRM_BRIDGE_ATTACH_NO_CONNECTOR)
+> >> +		return drm_bridge_attach(bridge->encoder, hdmi->next_bridge,
+> >> +					 bridge, flags);
+> >> +
+> >> +	return dw_hdmi_connector_create(hdmi, &dw_hdmi_qp_connector_funcs);
+> >> +}
+> > 
+> > Are there any users left that requires the display driver to create the
+> > connector?
+> > In other words - could this driver fail if DRM_BRIDGE_ATTACH_NO_CONNECTOR
+> > is not passed and drop dw_hdmi_connector_create()?
+> > 
+> > I did not try to verify this - just a naive question.
 > 
-> In any case, please add more details on the cover letter, including the
-> detailed
-> HW differrence and the design you chose so support this new IP.
+> I've just tested this and it doesn't work - dw_hdmi_connector_create()
+> is still needed.
 
-Andy, could you please help with a summary of the HW changes?
-The information I could provide is rather limited, since I don't have
-access to any DW IP datasheets and I'm also not familiar enough with the
-old variant.
+Hmm, seems the display driver or some other bridge driver fails to
+support "DRM_BRIDGE_ATTACH_NO_CONNECTOR".
+what other drivers are involved?
 
-> Neil
-> 
->>
->> Synopsis also created a new dsi controller for the DSI2 standard, with
->> a vastly different registers layout.
->>
->> I guess at some point there is time to say this really is a new IP ;-) .
->>
->>
->> Though while on that thought, I don't fully understand why both a
->> compiled
->> under the dw_hdmi kconfig symbol. People going for a minimal kernel might
->> want one or the other, but not both for their specific board.
+Note that my comments here should be seen as potential future
+improvements, and do not block the patch from being used.
 
-Indeed, it makes sense to have a dedicated Kconfig option. This is
-mostly a leftover from downstream implementation, will fix in v2.
-
-Thanks again,
-Cristian
+	Sam
 
 _______________________________________________
 Linux-rockchip mailing list
