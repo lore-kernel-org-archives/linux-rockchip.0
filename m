@@ -4,64 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 76F0FC27C55
-	for <linux-rockchip@archiver.kernel.org>; Wed,  5 Jun 2024 21:01:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 46C54C27C52
+	for <linux-rockchip@archiver.kernel.org>; Wed,  5 Jun 2024 21:01:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=GiGqOZAmcWMmBUk6R1hFYLQpXpQIVmj7zPsQaqWts78=; b=mNdhDvZerweMR6
-	CqY0oLQyTBC51pGu3wTpDDECxUjS87dOqyuWw3PZ2cqoMNCqA2/q4oD415YOQnGYDd0S8A55e2ZKp
-	3+pckM8sSWXAJ0hqNJxETJQs/pAr4TajqnC53Rp1DMxepU9+2djrKYb9sdiin5C6VJPAgFxyrqhss
-	SPj0Dt+7s9c5BQlJk7B+zf0b1L77kPOKRqWTBFcFx4wO9NjtZuKaI3X+4qPHXUJ266e2BKpxYiJmI
-	4KG5xzgVh+tv2d+RSPUnr3+79YlY+vzfntn+4XohgQeWCt+E6plvfRmqvRmZsovHKnHDYrfKMRl8q
-	3SPgwJ6QIfy9KjMHn6rw==;
+	List-Owner; bh=iwNTRJy+OlaPpJD9ZGTCrOXL7m6vKDyy+/GnuklV54w=; b=sR/KPUdBTmFrPZ
+	B4AqBe7MSBrgwvkxrebGkx1ETE01/aTJSrSbVPyHcCEhk/BWzrZlMJxQdWa52lWS/f7bXcbDFiTfe
+	OaGM1o8bMqreOIwIwR4odeQ4kuTEFfOYAjLg81xVI4MnJb4/pHF6jVi1GmuD6PQ1vT5sGdwjpKBpr
+	TTJCRsbb9GlBIpEQzhfwGNWv8royJNOus8PjaOu29F2EI9B+PJBhzL4EvN6QYjTg3kjuGd5J7lNAX
+	3LQZxVZwXjTRr+KQTD2xKP6rY8B2pg/QE3SQW+d8IYFrAeVro436rf5gfjjzl4hDTXYEgR7WH39ON
+	N7p/MKrPi8T0MZsCuRvA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sExkn-00000007XTf-2XWP;
-	Wed, 05 Jun 2024 21:01:05 +0000
-Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
+	id 1sExkp-00000007XUo-04n4;
+	Wed, 05 Jun 2024 21:01:07 +0000
+Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sExkc-00000007XMq-1zNf;
+	id 1sExkd-00000007XNa-0WGe;
 	Wed, 05 Jun 2024 21:00:56 +0000
-Received: by mail-wm1-x336.google.com with SMTP id 5b1f17b1804b1-42108856c33so8215005e9.1;
-        Wed, 05 Jun 2024 14:00:53 -0700 (PDT)
+Received: by mail-wr1-x42e.google.com with SMTP id ffacd0b85a97d-35dc36b107fso241334f8f.1;
+        Wed, 05 Jun 2024 14:00:55 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1717621252; x=1718226052; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1717621254; x=1718226054; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=XuZhauiIXe/dPit2+IYYIDdw8J65X44pe+rX+iqZzH0=;
-        b=GooW8W7CQ+5DaCtLKiA6FUrVsCQE+v17HHVapGc2/egsEXKjQdKSzUA56Ehf2jQiNw
-         hjRg7Q/V+ZRehlIDzGFpFWo3YtKeLWROSt+0SEp3EeMJ/xOQcqUyoyzLlaQEDqE4B/S8
-         E6CE03bn8XdLGyJ3B9rEqr56EDeuIHRVndMBFjBkFFvIyBy9VeGTxLFCw61PdWKoOezH
-         Xig3gg5g95x7brOsmzTi/aZvoUOI2it8wp0dfRLqx8mbRKVngG2dCQWkr2L1mYDrOYpC
-         KAZlwJBthIX/9ceMdgiQ0nwOytTmpJbfvWKHVkTnGC2Ji3LoMRKAwc4X/UlGduPfXjc3
-         f9qw==
+        bh=fk9rPd7/DZbkWMr4RLdz9e3yLOVFGIh3KC1NJKidnyE=;
+        b=bZYKfj6Y4RrQskdoVLfHBUiA5YpCG5dhaso4Rx37Mtl3VMXiNRGUgH0HLp+diuy5/k
+         LU6caD8jNaMeOeSCo+aCew/Lglfjg8zrs61lzZ0DPp+K/Nmy08z0dXoXgroHhDZ51fTR
+         3fvyToWYrEQPd2ceGM0dxtbYXOpZUZQt6OzSfnOp4lwB6uCQHcmtDfZo39LPLbTGvk1J
+         8vIco61KpPGVOronMZZ3WihqBhnu3Z7Ahf14o0hR+5BMdIAvdfCbVTNM/agjEtI6qOus
+         Fuxm7ZQ2a+AmQABhXTJDnQkW/m2IfFyeExeD+HTgUBGP4Z0ZO+uJt7EPi2mty0hlKi6L
+         HD/g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1717621252; x=1718226052;
+        d=1e100.net; s=20230601; t=1717621254; x=1718226054;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=XuZhauiIXe/dPit2+IYYIDdw8J65X44pe+rX+iqZzH0=;
-        b=syoISTKjj1VolH/B7efDEbe2MTrspFN/TNk724r0xrbFrN1dx0m6VEburaNOIFObbv
-         mBM2uPGv+RS5OUU6mWoXyNz5XpjoNyuUjZJf6lTSqJ2jzD9iMAnBmJ+27XF8sOp+TV/q
-         wkBrNeQ+q/tc1CD/syiBCi+0IvMp4J06ncU3KwqwWzbGx/6RFHHfyy9dk2t8wmavhqun
-         Ee/bEXAlqXxGt6VVXmrAMasLRAkmMWpdJMwW6Xl+qYJ70yuf0aBfrAlpASuD72MzyP8D
-         KMT0OqLSpI4s0E1uWPlNjQBIk51xAOYHGWdQzOiqpFcTviYMAffmLdAwwmvoEvjQsJOz
-         +vMQ==
-X-Forwarded-Encrypted: i=1; AJvYcCUqeVFafYhiYtk5b19iALbm7MZ6KC5O1RapZJMQf+NibFrnX2tuheEIVP8NFJqyIDgwZ/MY6YMBoXlrnDdipFi67yOfjEO26KbfdV4uuZynJ0lVGj9YtG5nzr2MVVeHN0ip4Y4iI16JOemxI5Sr9XotsK66nAZT0MU=
-X-Gm-Message-State: AOJu0YzfG4k+RP2t747vKxzRa0h7qSV4cHAkgFtKyiUqCzGdxBZ/apG6
-	vSKCNgJQSsaex38W8GwyjwZoglaEoEvuXZz1fY6pmtAa8Tn6TnI=
-X-Google-Smtp-Source: AGHT+IE07M3Ayc5UVGzWAK6FK9JW9Ttxd18yCpMX1vjpRHWw1Ldtf8cyezEw5LAY1mfB5VzssLahGA==
-X-Received: by 2002:a5d:6d8f:0:b0:34c:7ed4:55a with SMTP id ffacd0b85a97d-35ef0ddb092mr806043f8f.33.1717621252274;
-        Wed, 05 Jun 2024 14:00:52 -0700 (PDT)
+        bh=fk9rPd7/DZbkWMr4RLdz9e3yLOVFGIh3KC1NJKidnyE=;
+        b=n/ZMFZkeRnzfvfmAxAxEmvrdvRCXdh2hK1Ms9lwyeO4sU6aZSMKBEl0rmXDoyPOwlb
+         qeV95od9n+pg4cgvczbcKhKclW+YA2+WAs3T22JJWYkG9yCf6JBddMF/lSZKdNGp7+nk
+         Nwf0YjUoru5n8me8UpUcSNywhE57MrussJ5CdX3ovPPgBizGja2rkGhezTC8IJsXVnMe
+         nMV9adRYNSpDBDhuCmIHJOFY1vFW4h+Z2l5KOTPS/ff/1Y6llqnLPv41C9xg0Dd2EY/g
+         GHfSM7MlGg5Y0Yzdu9TuW0+1OPKz9Cm+lbWMa1uB4L0MOq4o6T7eTk7dvt5PZV3mDTHf
+         dntA==
+X-Forwarded-Encrypted: i=1; AJvYcCUbcLLGRJeJSNxZr+El88PgPIYdLFbuPM/pBWCL+0Dz6cScog4de+l7ZXxtGSEY/qV7PNAacFbv52Be/jpciT2FJKfeCwi71oCU+/qIdM/BK9H3CQDAmXX38b2y2N+NusiOGK3oiOH/yKY5Y0Q1ZBpfaxnewTDVxPo=
+X-Gm-Message-State: AOJu0YzIKgfNMcVKCTo6Rm/HpWPayO4wInSsaUxRHvATISMYiHIc+4TH
+	mtLv8Evckibax2R052pSP/UlBXvSAtg5TYTaijS7En0gTRZ66gY=
+X-Google-Smtp-Source: AGHT+IEzFnF+ZiqUZD6IAFUBc9JkLG0/nVhzj+suO7W+KygvluwYQcTuVTP0MA1/SlsiCkafZG+2rQ==
+X-Received: by 2002:adf:e847:0:b0:35e:f3d0:e10b with SMTP id ffacd0b85a97d-35ef3d0e34emr92878f8f.23.1717621253590;
+        Wed, 05 Jun 2024 14:00:53 -0700 (PDT)
 Received: from U4.lan ([2a02:810b:f40:4600:5211:58fe:dfef:c48c])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-35dd04c0d77sm15955721f8f.5.2024.06.05.14.00.51
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-35dd04c0d77sm15955721f8f.5.2024.06.05.14.00.52
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 05 Jun 2024 14:00:52 -0700 (PDT)
+        Wed, 05 Jun 2024 14:00:53 -0700 (PDT)
 From: Alex Bee <knaerzche@gmail.com>
 To: Rob Herring <robh@kernel.org>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
@@ -75,16 +75,17 @@ Cc: Michael Turquette <mturquette@baylibre.com>,
 	linux-kernel@vger.kernel.org,
 	linux-clk@vger.kernel.org,
 	Alex Bee <knaerzche@gmail.com>
-Subject: [PATCH v2 2/5 RESEND] dt-bindings: clock: rk3128: Drop CLK_NR_CLKS
-Date: Wed,  5 Jun 2024 23:00:46 +0200
-Message-ID: <20240605210049.232284-3-knaerzche@gmail.com>
+Subject: [PATCH v2 4/5 RESEND] clk: rockchip: Add HCLK_SFC for RK3128
+Date: Wed,  5 Jun 2024 23:00:48 +0200
+Message-ID: <20240605210049.232284-5-knaerzche@gmail.com>
 X-Mailer: git-send-email 2.45.2
 In-Reply-To: <20240605210049.232284-1-knaerzche@gmail.com>
 References: <20240605210049.232284-1-knaerzche@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240605_140054_523859_CB44A1AE 
-X-CRM114-Status: GOOD (  10.69  )
+X-CRM114-CacheID: sfid-20240605_140055_200732_AC412F4F 
+X-CRM114-Status: UNSURE (   9.87  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,29 +102,29 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-CLK_NR_CLKS should not be part of the binding. Let's drop it, since
-the kernel code no longer uses it either.
+The SFC IP exists only in RK3128 version of the SoC, thus the clock gets
+added to rk3128_clk_branches.
 
 Signed-off-by: Alex Bee <knaerzche@gmail.com>
 ---
 changes since v1:
- - new patch
+ - none
 
- include/dt-bindings/clock/rk3128-cru.h | 1 -
- 1 file changed, 1 deletion(-)
+ drivers/clk/rockchip/clk-rk3128.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/include/dt-bindings/clock/rk3128-cru.h b/include/dt-bindings/clock/rk3128-cru.h
-index 1be455ba4985..420984fc2285 100644
---- a/include/dt-bindings/clock/rk3128-cru.h
-+++ b/include/dt-bindings/clock/rk3128-cru.h
-@@ -145,7 +145,6 @@
- #define HCLK_CRYPTO		476
- #define HCLK_PERI		478
+diff --git a/drivers/clk/rockchip/clk-rk3128.c b/drivers/clk/rockchip/clk-rk3128.c
+index 40e0e4556d59..7c3d92af12df 100644
+--- a/drivers/clk/rockchip/clk-rk3128.c
++++ b/drivers/clk/rockchip/clk-rk3128.c
+@@ -553,6 +553,7 @@ static struct rockchip_clk_branch rk3128_clk_branches[] __initdata = {
+ 			RK2928_CLKSEL_CON(11), 14, 2, MFLAGS, 8, 5, DFLAGS,
+ 			RK2928_CLKGATE_CON(3), 15, GFLAGS),
  
--#define CLK_NR_CLKS		(HCLK_PERI + 1)
- 
- /* soft-reset indices */
- #define SRST_CORE0_PO		0
++	GATE(HCLK_SFC, "hclk_sfc", "hclk_peri", 0, RK2928_CLKGATE_CON(7), 1, GFLAGS),
+ 	GATE(HCLK_GPS, "hclk_gps", "aclk_peri", 0, RK2928_CLKGATE_CON(3), 14, GFLAGS),
+ 	GATE(PCLK_HDMI, "pclk_hdmi", "pclk_cpu", 0, RK2928_CLKGATE_CON(3), 8, GFLAGS),
+ };
 -- 
 2.45.2
 
