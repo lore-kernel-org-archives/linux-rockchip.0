@@ -4,65 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7046EC25B76
-	for <linux-rockchip@archiver.kernel.org>; Wed,  5 Jun 2024 07:09:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 04D4FC25B76
+	for <linux-rockchip@archiver.kernel.org>; Wed,  5 Jun 2024 07:23:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=gUV5ssY+bYsqMma2DLstG/cQKYBcHitHnwfEPGHHyXM=; b=lMYlZNWrL4LbsV
-	6ObjXibExnk2xY5TISvWTKOySrGDUQwlWtXh9050u6T1c/pS6wZ0Gku6ablGSRRjKGF5y9BOJGWPK
-	bWT5VUqosgwRA91lBFD8t47INRuX0+foKFaxxIs92qFSI8h45lReI90glILaNnKo843yAELdJ650S
-	lSo7Hoa2h4wlfrV7teDLY2996S9qi5L/h0fE+3A8P5nTZd1igeEIX69GAIFBXI3b42KWAfMkkTgrh
-	HcTqyTSoTcrFWB7I8QW5ppavfk388NxFNeRdl8DoPdTy22F0o1tkyehrIQAGfMjeZWyoe7eobWt8F
-	4MeCpjQgMNj08Xvil7Ag==;
+	List-Owner; bh=quqIdgBjM15j/T4ccKj1cjBuH2AGeZc5vcvow5vuPJQ=; b=aBNxfYhwPpVNnW
+	GxbmoxLrQIeshLK5/4HCTTFBWxg6sjFyht0Oc/u6vyPQF2JCsy/ihdMfeecTVgV6RXJRNmOQbKQ9z
+	SE3R1wiygV29nS/hxYy3A0OTL+5nsl1ryTtO5Wkyx3O6YpL4xPy3C3o5zNidDtvjFuw3Tf0jdMTa+
+	aKi8ctn2BnuP8LA6aOCwHXyeJzKWbUFK8xKHfF8voLBXbX0/Ph6zKh4bIefbzUDwjOcIYXQbplENJ
+	oC19uyYEfSp/2UCAYlbL48YRki87Ki9N9L+U9wTerXnrxvl2UOmWfA3+bYvY0P1aORlb1P6CzcJJh
+	H+ShD4tJ7cXUpuKNHpqg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sEkm1-00000004vus-0avn;
-	Wed, 05 Jun 2024 07:09:29 +0000
-Received: from mail-ed1-x52a.google.com ([2a00:1450:4864:20::52a])
+	id 1sEkz7-00000004zGj-2jYf;
+	Wed, 05 Jun 2024 07:23:01 +0000
+Received: from mail-lf1-x136.google.com ([2a00:1450:4864:20::136])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sEklw-00000004vrN-1GrW
+	id 1sEkz4-00000004zFU-2VHB
 	for linux-rockchip@lists.infradead.org;
-	Wed, 05 Jun 2024 07:09:27 +0000
-Received: by mail-ed1-x52a.google.com with SMTP id 4fb4d7f45d1cf-57a32b0211aso2234116a12.2
-        for <linux-rockchip@lists.infradead.org>; Wed, 05 Jun 2024 00:09:21 -0700 (PDT)
+	Wed, 05 Jun 2024 07:23:00 +0000
+Received: by mail-lf1-x136.google.com with SMTP id 2adb3069b0e04-52961b77655so2043750e87.2
+        for <linux-rockchip@lists.infradead.org>; Wed, 05 Jun 2024 00:22:55 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1717571360; x=1718176160; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1717572174; x=1718176974; darn=lists.infradead.org;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=sQSephwmytgo/YLLaqWzVbfXRJtJuGRKYodF45aiwbI=;
-        b=kIs1CCq++9r0dAUbcEmdOTMzzHdQ+xmbeKX0k+6auVS9osevZxjiCeUg/o3CB9KkYF
-         y16RWt9E81vB5uHdJwILNHtivbaMuuptTBsOOFiOG/c8yVgJCvOJAJtwGRaNo2SK6FKQ
-         xEH3IG2l/1U9cgAfNchBNaCZXqBjK9VHHOwqyrA6xNN6tSKJawiEKVQmvVsfQPz032PQ
-         32ixN4WFvaJBs1UE/uq9fSCKItBVMJFAFneQrLW+D9KIhFf6l+S4GoIK8T1ySpj82rdX
-         yBODS6C5zcq8KmDw0zSK/TEOxlfCkrX2Xn3wDgGOuLcEgSAKq04CO0VdzmdZ66j8Zkzw
-         igxQ==
+        bh=RqnZdFgvboe7tX2UKgOGW0Pa1N7zuJuJPg9c9wyxQMg=;
+        b=an6+OtvgKaL1fV/BO3OdaNJBjOIoMkAGcyoDGs+OXXyhhmBDjGiwr6QU4XCUeLTJqU
+         5mZMklCA3npY0zQFGvZF5VeG/hBYz0RjbTrQWKBOc1kgopMj8OfaH40ath2jm0BU7Ku5
+         S83b8MGfkBw6uE5M0h8jL3bwLJhn8H2AJgljhDY4Uj82v5sC5y0+8KTnqMNZqfUXe2pT
+         1a9zOgIilybhA9v9JxUEJsCx+ak7IeEXBIHl1T1HuSNpmN0hSYPXYV5FKYhOG0KbfzGx
+         egHDsJWiVsUU9V/KwLFxkO3TTLvxMEg1Qm6nsp2deO2Xj/IwT0AOnWr6kMKDhahSZWJA
+         BdGg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1717571360; x=1718176160;
+        d=1e100.net; s=20230601; t=1717572174; x=1718176974;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=sQSephwmytgo/YLLaqWzVbfXRJtJuGRKYodF45aiwbI=;
-        b=CCiRP/bVw7+YxvyiLNUFfQB5+Lg2uluTuKZ7QMI1qe5oI04pkXuP/XP24s4ZYmRCON
-         XSPG5rreqiNQxBj2ovdKF+g5inmTOsEz23Hta4n5sbzBAKhJ0Kcury8WsZfV1Dn+QLad
-         OQXu7f2sqEqUG3iUksU0HZrBu+VlSC9TEMEMQVgpZZnw39deklVhy1gPpt2b2O5IxOLe
-         t64/mfLWBezwCZ+ucH/nQTNRSFoXZCM1pqSGKlN+m/OkzaHGfcEwNOiOYd+F623IcmKP
-         8EPNGtrTbWoZdGaJ2yWXEZdWZunZ20g4v9DPElJ9RQr8aNFMZBZiXv5uCQGD3de1e21L
-         2Yyw==
-X-Forwarded-Encrypted: i=1; AJvYcCU7pRQannnG7sJHmAGeWO8VLC6iJ+k5810VxVXQDDwnt6DuJnrOSAXNdvKeZru6dumMN6+Gt3EWPB8yiz/3ma6V2NTTSjcL5ThKM70N4GmRs93c
-X-Gm-Message-State: AOJu0YwO5g93FPgp2EZwFwN8d3EQrbHe4OzppHRMS9pAE11SipifHCx0
-	xG8NzvGnzQTGe7y5TAh0/Yfg+f6m302krEdvJ5u6KGZ5tejMAHctciDdcB6bR+U=
-X-Google-Smtp-Source: AGHT+IE7k9799F3Xk82hR/6XkZaITtGSnHgKLu6xSA11pSPaaMg0gh4dvJQRX0RwV80Q9FtYUJBK3Q==
-X-Received: by 2002:a50:9e62:0:b0:579:cf9d:d6a with SMTP id 4fb4d7f45d1cf-57a8b6b88c5mr1085082a12.20.1717571359412;
-        Wed, 05 Jun 2024 00:09:19 -0700 (PDT)
+        bh=RqnZdFgvboe7tX2UKgOGW0Pa1N7zuJuJPg9c9wyxQMg=;
+        b=skXi4p5cU3cVMsU4P70oLNQoGDj8G/UDMILMZ2/QXtVOs+P218XBmVMNJaM6/d4lN4
+         gOptgJvW/Rq2KklYeKV5g2oNAdLnA+c6/Jly05eyQn5hH6yQsFqDQ2JJl1t+XUj/36IC
+         o/XpcUXyDFzUCNETwfSYs7Qeq8y2Tazk4Wzc6j9CgwwTue8tT5WfFy2Nv9ucEcLV/BXn
+         3DsxBExWgyGLeCPDWR9IrplDmuaOiRLU+UK14xY00Zv84eCIOpYTgliVQtw1ugnfQM5d
+         iaiUUmdGJQI4skIl44RnmO9fCI6R4dfvh7Ikvsl7e8Ao6/zshIzPeKuQBdnoVXxEa1QT
+         LaWw==
+X-Forwarded-Encrypted: i=1; AJvYcCWz7i6wqBRzox8TjaewaAmqC/8fC0GJrFIpSCAU3ghjn65AEZL66fGWRmvFvqwDXPk8JHAtu2umMMA6tdJXx95VwLvfFM+o50vXZ3c3Hkhv5NyE
+X-Gm-Message-State: AOJu0Yxw9F3o81nfNmYWMR36W/WIKtzVaEA/CByLMyt388MuW366BapW
+	sAbRjOhjNkonnIk1LnRj0WL0yHtlXql1LEueFOgCLjgqPPE5HOqW+YmgpgfOu/8=
+X-Google-Smtp-Source: AGHT+IGrEUTIRlHebCjYcSxaWnRyULJcyEIEq/vcwbc8wOASvTCW7s5vwhOA3Z/T5Q0VVe7HxptVtw==
+X-Received: by 2002:a05:6512:2308:b0:52b:83d5:34 with SMTP id 2adb3069b0e04-52bab2843eemr1239519e87.0.1717572173579;
+        Wed, 05 Jun 2024 00:22:53 -0700 (PDT)
 Received: from localhost ([102.222.70.76])
-        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-57a35e86c36sm8560156a12.54.2024.06.05.00.09.18
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a68519892c8sm695071366b.65.2024.06.05.00.22.52
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 05 Jun 2024 00:09:18 -0700 (PDT)
-Date: Wed, 5 Jun 2024 10:09:14 +0300
+        Wed, 05 Jun 2024 00:22:53 -0700 (PDT)
+Date: Wed, 5 Jun 2024 10:22:49 +0300
 From: Dan Carpenter <dan.carpenter@linaro.org>
 To: Dmitry Yashin <dmt.yashin@gmail.com>
 Cc: Linus Walleij <linus.walleij@linaro.org>,
@@ -72,17 +72,16 @@ Cc: Linus Walleij <linus.walleij@linaro.org>,
 	devicetree@vger.kernel.org, linux-gpio@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v3 1/2] pinctrl: rockchip: delay recalced_mask and
- route_mask init
-Message-ID: <094fbb0c-099c-4839-b2c5-162775e35710@moroto.mountain>
+Subject: Re: [PATCH v3 2/2] pinctrl: rockchip: add rk3308b SoC support
+Message-ID: <b5d2d914-0c2b-4cd1-b894-f894a93a54f9@moroto.mountain>
 References: <20240604141020.21725-1-dmt.yashin@gmail.com>
- <20240604141020.21725-2-dmt.yashin@gmail.com>
+ <20240604141020.21725-3-dmt.yashin@gmail.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20240604141020.21725-2-dmt.yashin@gmail.com>
+In-Reply-To: <20240604141020.21725-3-dmt.yashin@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240605_000924_381996_03945FE7 
-X-CRM114-Status: GOOD (  12.49  )
+X-CRM114-CacheID: sfid-20240605_002258_683875_E95427CA 
+X-CRM114-Status: GOOD (  13.58  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,27 +98,24 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, Jun 04, 2024 at 07:10:19PM +0500, Dmitry Yashin wrote:
-> For some SoC's like rk3308 additional runtime setup needed, so delay
-> recalced_mask and route_mask init.
+On Tue, Jun 04, 2024 at 07:10:20PM +0500, Dmitry Yashin wrote:
+> Add pinctrl support for rk3308b. This pin controller much the same as
+> rk3308's, but with additional iomux routes and 3bit iomuxes selected
+> via gpio##_sel_src_ctrl registers. Set them up in the function
+> rk3308b_soc_sel_src_init to use new 3bit iomuxes over some 2bit old
+> ones and update iomux_recalced and iomux_routes for the new SoC's.
 > 
-> Signed-off-by: Dmitry Yashin <dmt.yashin@gmail.com>
+> Fixes: 1f3e25a06883 ("pinctrl: rockchip: fix RK3308 pinmux bits")
 
-This sounds like it needs a Fixes tag.  Should it be backported to
-stable?
-
-I understand that you only know that rk3308 is affected, and probably
-you worry that other devices are as well?  Just do your best on trying
-to figure out which is the first commit where this bug started to
-matter.  Any information is better than no information.
-
-The commit message should say what the bug looks like to the user.  Why
-would a user want this patch?  I can probably figure it out from reading
-the code, but I shouldn't have to.
+Why does this one have a Fixes tag?  Isn't this new hardware support?
+Possibly patch 1/2 was not actually a fix but just preparation for this
+patch?
 
 regards,
 dan carpenter
 
+> Signed-off-by: Dmitry Yashin <dmt.yashin@gmail.com>
+> Reviewed-by: Luca Ceresoli <luca.ceresoli@bootlin.com>
 
 
 _______________________________________________
