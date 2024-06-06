@@ -4,38 +4,39 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 38C05C27C55
-	for <linux-rockchip@archiver.kernel.org>; Thu,  6 Jun 2024 12:58:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CA9B2C25B75
+	for <linux-rockchip@archiver.kernel.org>; Thu,  6 Jun 2024 12:58:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=H4B6gk7qJ5QLZ2AZs2WryNuRPO57x7PV3OPKnycbn2E=; b=bdVmmzfF097qqb
-	pEceNoC7cmoBrqQkO7IL/QmfkTDl7t21jGZDYwyPvQ6eMuyRDvYLxveGqw/HLfnm8JuzAB5W75NLt
-	WzIN0zb266vr7yXp9CFkzJHnR9bMWN6RQQ1DnLR/SbNFqYax7A/dIviZ+QbhtSDSgB8YgGv+t3s/v
-	S9hNKl+xe6sXj/5PC7xkN3qUdEEbLJUdSQFBCWNAqqIjI8xAbftQX+ykqiYZU3gUpsEj3alKeQ4aQ
-	nT057roQssYBvTMEvYk2tDemT0zKRzIA0DSjag8kt6pNCs0F0oVK5rYNWUi+OhYp3J/GRZK5Fn6Jt
-	+HlEI/tGaqbtmnVDQNaA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=fgQ67DUjSohSJSK8Qyxf21nEWQI2FKFYj7H++GKoqEY=; b=WNQulDljlFomQg
+	rg2Cw6arjHPiYbW5RPGdMp1jbEHU5AwfPelB6IL6Zzp65noRK9ZnqaUHuLFN00YHB201hfqzImotg
+	9AbDAIonGFVkGuxHQ3xHZJRHzSwFM/XYR+7v36wZovBSGIiBN3LpDOozJyfYVF2vmZoi07Mhdezvr
+	GVwcYC7la/EGjQabcH2i454rd44TJuQ4BqpgtBqGpirCGp5mF8gXDRIBlThSXEtAoXkj7POv1VGDm
+	hfZIoYNAfF7bc5BrJmjBQgcH8B14um/nKatmReSgH+RZ13JkbZEHBxmeQEhN6S4prhVVxgKFeksKV
+	vaZ72CxFj7l7faci12DQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sFCh5-00000009lVU-2tEZ;
-	Thu, 06 Jun 2024 12:58:15 +0000
-Received: from mail.eh5.me ([45.76.111.223])
+	id 1sFCh7-00000009lWg-2F4J;
+	Thu, 06 Jun 2024 12:58:17 +0000
+Received: from mail.eh5.me ([2001:19f0:7001:3edf:5400:4ff:fe32:f2e0])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sFCgy-00000009lRI-0Ai6;
-	Thu, 06 Jun 2024 12:58:10 +0000
+	id 1sFCgz-00000009lS1-3YBW;
+	Thu, 06 Jun 2024 12:58:11 +0000
 From: Huang-Huang Bao <i@eh5.me>
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=eh5.me; s=dkim;
-	t=1717678681;
+	t=1717678688;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding;
-	bh=Melp/AwKYwWBq+3w6XX7+3avHSKYtUya/gkYeN1dljg=;
-	b=CUaeKEjDvimojDiRC7Q3Dyn7DZBWaGvlZu9dEGLvePnXyl+LQTapvxPzvBg8kJ9dNprKG4
-	jdkbBJhQ9ArXCnG7HxD16rlLVknW6At+eprU0tfigg5jE0PsTxfRVT2SE6PEkXtWaLJ8EC
-	Oyy0vHMixbo6zhV9ytejZasn/KWlNcU=
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=cm1zLLD1IROmIjzUh2BRQWDXRgYGVGkaOuwh/RAhEW0=;
+	b=JueeEJFoMz+PsZHsFTWzGzuRK8H7prwNEdYjoGe+6bajQPC+Hq+ACE0bEOkBV05EJmtcdE
+	5KRQF03Z3DpsdxPjn0CQM9Atv+7y7bPOrDm4GEEgCh6jgJMtWsHtBS/O7/lWJdLTFCP4Xz
+	00Rxqeu5q8SDzkCm58J79CugqQJ2XGA=
 To: Heiko Stuebner <heiko@sntech.de>,
 	Linus Walleij <linus.walleij@linaro.org>
 Cc: linux-gpio@vger.kernel.org,
@@ -43,14 +44,15 @@ Cc: linux-gpio@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	Huang-Huang Bao <i@eh5.me>
-Subject: [PATCH v2 0/4] pinctrl: rockchip: fix RK3328 pinmux bits
-Date: Thu,  6 Jun 2024 20:57:51 +0800
-Message-ID: <20240606125755.53778-1-i@eh5.me>
+Subject: [PATCH v2 3/4] pinctrl: rockchip: use dedicated pinctrl type for RK3328
+Date: Thu,  6 Jun 2024 20:57:54 +0800
+Message-ID: <20240606125755.53778-4-i@eh5.me>
+In-Reply-To: <20240606125755.53778-1-i@eh5.me>
+References: <20240606125755.53778-1-i@eh5.me>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240606_055808_224440_C48A4D56 
-X-CRM114-Status: UNSURE (   7.24  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240606_055810_022556_C96D3BEA 
+X-CRM114-Status: GOOD (  11.34  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,39 +69,71 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The pinmux settings for RK3328 is incomplete, correct the pin bank
-settings and recalced mux data according to RK3328 TRM[1].
+rk3328_pin_ctrl uses type of RK3288 which has a hack in
+rockchip_pinctrl_suspend and rockchip_pinctrl_resume to restore GPIO6-C6
+at assume, the hack is not applicable to RK3328 as GPIO6 is not even
+exist in it. So use a dedicated pinctrl type to skip this hack.
 
-There was a patch[2] in rockchip-linux kernel repo that cover part of
-missing mux settings, unfortunatly it never got into upstream kernel
-source.
+Fixes: 3818e4a7678e ("pinctrl: rockchip: Add rk3328 pinctrl support")
+Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+Signed-off-by: Huang-Huang Bao <i@eh5.me>
+---
+ drivers/pinctrl/pinctrl-rockchip.c | 5 ++++-
+ drivers/pinctrl/pinctrl-rockchip.h | 1 +
+ 2 files changed, 5 insertions(+), 1 deletion(-)
 
-The last patch fixes an issue in rockchip_pmx_set which is general for
-all rockchip platforms that might cause unexpected pinmux to be set to
-0.
-
-[1]: https://opensource.rock-chips.com/images/9/97/Rockchip_RK3328TRM_V1.1-Part1-20170321.pdf
-[2]: https://github.com/rockchip-linux/kernel/commit/d69af8ab6534bb28c1556076f08d2a5ab4935d95
-
-v2:
-  - split commits for GPIO2-B pins and GPIO3-B pins each
-  - add a missing Fixes as suggested by Heiko
-  - add Reviewed-by to last 2 patches
-
-Huang-Huang Bao (4):
-  pinctrl: rockchip: fix pinmux bits for RK3328 GPIO2-B pins
-  pinctrl: rockchip: fix pinmux bits for RK3328 GPIO3-B pins
-  pinctrl: rockchip: use dedicated pinctrl type for RK3328
-  pinctrl: rockchip: fix pinmux reset in rockchip_pmx_set
-
- drivers/pinctrl/pinctrl-rockchip.c | 68 ++++++++++++++++++++++++++----
- drivers/pinctrl/pinctrl-rockchip.h |  1 +
- 2 files changed, 60 insertions(+), 9 deletions(-)
-
-
-base-commit: 2df0193e62cf887f373995fb8a91068562784adc
---
+diff --git a/drivers/pinctrl/pinctrl-rockchip.c b/drivers/pinctrl/pinctrl-rockchip.c
+index 23531ea0d088..24ee88863ce3 100644
+--- a/drivers/pinctrl/pinctrl-rockchip.c
++++ b/drivers/pinctrl/pinctrl-rockchip.c
+@@ -2478,6 +2478,7 @@ static int rockchip_get_pull(struct rockchip_pin_bank *bank, int pin_num)
+ 	case RK3188:
+ 	case RK3288:
+ 	case RK3308:
++	case RK3328:
+ 	case RK3368:
+ 	case RK3399:
+ 	case RK3568:
+@@ -2536,6 +2537,7 @@ static int rockchip_set_pull(struct rockchip_pin_bank *bank,
+ 	case RK3188:
+ 	case RK3288:
+ 	case RK3308:
++	case RK3328:
+ 	case RK3368:
+ 	case RK3399:
+ 	case RK3568:
+@@ -2798,6 +2800,7 @@ static bool rockchip_pinconf_pull_valid(struct rockchip_pin_ctrl *ctrl,
+ 	case RK3188:
+ 	case RK3288:
+ 	case RK3308:
++	case RK3328:
+ 	case RK3368:
+ 	case RK3399:
+ 	case RK3568:
+@@ -3822,7 +3825,7 @@ static struct rockchip_pin_ctrl rk3328_pin_ctrl = {
+ 		.pin_banks		= rk3328_pin_banks,
+ 		.nr_banks		= ARRAY_SIZE(rk3328_pin_banks),
+ 		.label			= "RK3328-GPIO",
+-		.type			= RK3288,
++		.type			= RK3328,
+ 		.grf_mux_offset		= 0x0,
+ 		.iomux_recalced		= rk3328_mux_recalced_data,
+ 		.niomux_recalced	= ARRAY_SIZE(rk3328_mux_recalced_data),
+diff --git a/drivers/pinctrl/pinctrl-rockchip.h b/drivers/pinctrl/pinctrl-rockchip.h
+index 4759f336941e..849266f8b191 100644
+--- a/drivers/pinctrl/pinctrl-rockchip.h
++++ b/drivers/pinctrl/pinctrl-rockchip.h
+@@ -193,6 +193,7 @@ enum rockchip_pinctrl_type {
+ 	RK3188,
+ 	RK3288,
+ 	RK3308,
++	RK3328,
+ 	RK3368,
+ 	RK3399,
+ 	RK3568,
+-- 
 2.45.2
+
 
 _______________________________________________
 Linux-rockchip mailing list
