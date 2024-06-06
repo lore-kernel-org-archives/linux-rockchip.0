@@ -4,48 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 85FE3C25B75
-	for <linux-rockchip@archiver.kernel.org>; Thu,  6 Jun 2024 06:40:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 26841C25B75
+	for <linux-rockchip@archiver.kernel.org>; Thu,  6 Jun 2024 06:43:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Xh4iHJ9+8VPBAC6iwWe/eNf8eDdWoWWAhR062g6X5X8=; b=Rm3cx7XC0ijwBD
-	8ArnJxugz7poLJ7k2MvQOj/lVa7+4OWUcEVePtorMnllOwfbXHao8z6FEcFc2n3lhpMZI6SGcKWGJ
-	qcQnw6Q4eiU4mYk1sO0ZO/ck14aRjUDJU5PKUBXwuLisObqyPp6sJFIbWcdTE5Fo0lk9f0X50C2iK
-	tYCLpqPf3XasbWsvYF9m09hW/HhSHv9qRf50ysGsgtExCCf4Ypxi02X8y917BWRhJLIABBGLt4rfO
-	DAb7ZpsBcdBdysWC6UGnPNHQfhiypClPwL7kdJpTnLII4zBjqvrtccQNAkIUlD/1we/gqhjdEotao
-	r/fAL0UcyKUMoeh/fhpA==;
+	List-Owner; bh=Y4GtcDafCqZ2XCBY0+Hj9qI8aUD/WlaCljgRWEmu3LQ=; b=mraxZw6ReDG2Ax
+	J6cIcd9C0UjN2CcKyT6i8/ZjpBsDR9+NpAACkSfjDD4gr0tqJboTafAl0t18hJSHNO32IVOeaY6UQ
+	7g4YXc5vqoM1rKlOpST2HVILka4UYvGav9FY+/XaaeJ8w8z/PS3v/jZ0VJBbukKnPKT/ia0XDhc0u
+	Cw6wFRQGxHttyH3GNeCjxaMGC/cck6IY3sVsKZr7/G3qTVAiTx4qsBfitnUJRfARMjOuQH66Jx7J4
+	nW0Kr5XFt68LpvtP+n4K8PQ7TaocAEaK6ONoj1AvttENs/0WKa60nMuv7EHWjUI3tfCLbLG1FCUll
+	7Egl0eWUnVbrgm19X41w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sF6nZ-00000008Yee-2ZW8;
-	Thu, 06 Jun 2024 06:40:33 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1sF6ql-00000008ZDz-3aaB;
+	Thu, 06 Jun 2024 06:43:51 +0000
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sF6nU-00000008YbB-1FSC;
-	Thu, 06 Jun 2024 06:40:29 +0000
+	id 1sF6qg-00000008ZBG-1uC2;
+	Thu, 06 Jun 2024 06:43:48 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 982F661BCE;
-	Thu,  6 Jun 2024 06:40:25 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 34A30C4AF08;
-	Thu,  6 Jun 2024 06:40:21 +0000 (UTC)
+	by sin.source.kernel.org (Postfix) with ESMTP id 5FE96CE1A5E;
+	Thu,  6 Jun 2024 06:43:09 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 17A1EC2BD10;
+	Thu,  6 Jun 2024 06:41:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1717656025;
-	bh=BQUTtUE0GlUdPhQO0ro2WyOZ35L4blkmwQj67XovYDs=;
+	s=k20201202; t=1717656085;
+	bh=u1Ua0OCeUX5MT5pyXeBzHix33dU1A3JIMQ8y9wVfqdU=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=XSCvo6kxZ4Uw6qHkNNey13WUa48GM3oDWy56ZG4bv5Ki4uJHnAgZP3YfS/G6Am/8b
-	 8KEQU2dChJYd7QbryuXmzXtMSLSkw+92B/mbndiaGOR+a9filNCbguD5P57T9NhzCc
-	 9VHQBgeu4X+1F6nn8CrKHIJ9Omv4g4esHBdOsOLkxGn19G1upJ79oB+jPcvKbLuvL5
-	 ThshJM2BAVcKfd9Jm8TqncJfL6rNU1/D8x6awuGyjCrpDO429U0f728nPRbu2kfP7m
-	 SuMO/R/h+MyPVeyHSeJNT9sVxWLBKF+Hm+vkpw0H5vBSQeNysmgiht7DsEDHUhOMSN
-	 asG/UETxRUBlw==
-Message-ID: <745f15b4-279b-4a6a-a6cb-58ac726f68b9@kernel.org>
-Date: Thu, 6 Jun 2024 08:40:21 +0200
+	b=WUitNi1MxjVRHcBSCq7PFZcxaUgvlGQiCymu/UlrXWgQDQDYHfyvAIthSpG2x9TqG
+	 Sd2x1al+fpQOM5fpj+ciYtVDP7qbLeLWerRP0cFbTWSONeHZr5wLiYwuIXHumjwRjj
+	 KjDAhae0fIZQFgnMA9KjdsIODh1ILV3VA2LnKzKb81OzgqpSqas3tggHDyembJSx3C
+	 BuKvUpJk+vBHQ2icB/c5igJC4Um/WJqwmbmueszIyQ/IzBsBRLeqpToY6fCx3kHG4X
+	 fCwcii6ogJ6eN+/dXg76NYXKRgQhrJbPSjBqN+B//IG3qrkeHSOeV37oL4zcMHS6L8
+	 6luC0r/DvlELw==
+Message-ID: <fcff0181-b6de-4e47-b7ff-47baac061b3e@kernel.org>
+Date: Thu, 6 Jun 2024 08:41:19 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 3/5] dt-bindings: clock: rk3128: Add HCLK_SFC
+Subject: Re: [PATCH v2 0/5] Add SFC support for RK3128
 To: Alex Bee <knaerzche@gmail.com>, Rob Herring <robh@kernel.org>,
  Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
  <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
@@ -54,9 +54,9 @@ Cc: Michael Turquette <mturquette@baylibre.com>,
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
  linux-kernel@vger.kernel.org, linux-clk@vger.kernel.org
 References: <20240605205209.232005-1-knaerzche@gmail.com>
- <20240605205209.232005-3-knaerzche@gmail.com>
-Content-Language: en-US
+ <20240605205209.232005-6-knaerzche@gmail.com>
 From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
 Autocrypt: addr=krzk@kernel.org; keydata=
  xsFNBFVDQq4BEAC6KeLOfFsAvFMBsrCrJ2bCalhPv5+KQF2PS2+iwZI8BpRZoV+Bd5kWvN79
  cFgcqTTuNHjAvxtUG8pQgGTHAObYs6xeYJtjUH0ZX6ndJ33FJYf5V3yXqqjcZ30FgHzJCFUu
@@ -100,11 +100,10 @@ Autocrypt: addr=krzk@kernel.org; keydata=
  uZwJCLykjad45hsWcOGk3OcaAGQS6NDlfhM6O9aYNwGL6tGt/6BkRikNOs7VDEa4/HlbaSJo
  7FgndGw1kWmkeL6oQh7wBvYll2buKod4qYntmNKEicoHGU+x91Gcan8mCoqhJkbqrL7+nXG2
  5Q/GS5M9RFWS+nYyJh+c3OcfKqVcZQNANItt7+ULzdNJuhvTRRdC3g9hmCEuNSr+CLMdnRBY fv0=
-In-Reply-To: <20240605205209.232005-3-knaerzche@gmail.com>
+In-Reply-To: <20240605205209.232005-6-knaerzche@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240605_234028_502935_F6FA6BA5 
-X-CRM114-Status: UNSURE (   6.06  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240605_234346_856684_442AE637 
+X-CRM114-Status: GOOD (  10.55  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -122,13 +121,23 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 On 05/06/2024 22:52, Alex Bee wrote:
-> Add a clock id for SFC's AHB clock.
+> This series adds support for the Serial Flash Controller (SFC) found in
+> RK3128 SoCs.
 > 
-> Signed-off-by: Alex Bee <knaerzche@gmail.com>
-> ---
->  include/dt-bindings/clock/rk3128-cru.h | 1 +
+> As without using some "id holes" we would run out clock ids in the binding
+> and would have to touch the ABI, I added patches which removes the
+> CLK_NR_CLKS macro and uses the recently introduced
+> rockchip_clk_find_max_clk_id helper instead to find the highest clock id.
+> 
+> changes since v1:
+>  - added patches to remove CLK_NR_CLKS (Connor)
+> 
 
-Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Do not attach (thread) your patchsets to some other threads (unrelated
+or older versions). This buries them deep in the mailbox and might
+interfere with applying entire sets.
+
+You sent now v2 immediately after. Confused.
 
 Best regards,
 Krzysztof
