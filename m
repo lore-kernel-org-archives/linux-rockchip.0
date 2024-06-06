@@ -4,39 +4,39 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8F957C27C55
-	for <linux-rockchip@archiver.kernel.org>; Thu,  6 Jun 2024 06:05:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EEB37C27C52
+	for <linux-rockchip@archiver.kernel.org>; Thu,  6 Jun 2024 06:05:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=cg3eDvg6DF7/11WJYU5nkrlrDKU3BG0tSvIdHq1OCpw=; b=JBZPuVrWT1JFxV
-	fvUv7fPimuYBJtzQ41Oo5FeFoIacMEN0VFNJJ2trDn+JSMFMYByoCCa9KL/SHRdQjiewfmoEVppk3
-	k73ndJfkGfohETT0F0hhSrmRCHQK/7O0BpTHPVVAqEtqvj7hWOnAQOSgLo7SVIlt33h9usY9MxPQd
-	NP++NM0YwvgKFdeC/xE92eSCMlJCyJq9oGp7QHs9+B0dLVENkiXatHH8O/s/vUCDO8O7D51tQicIc
-	DgKmWtfD0wkzXZXAMtBqQCIe/9cf8mR7Y1pjNTsOavS5w5IQhmVYVUxmEM81gI5PVZWUyIYNPqcDO
-	KUY6woeK1o8dpR/8njXw==;
+	List-Owner; bh=u7R78jmMKVs30EDi/Co9NBBPj5+oBeSh4I+SWuG7Lcg=; b=kwgTNMW19X4bPP
+	Fw03mVO4LZt27tDsoTtNpMmdjMGitaxmkYQYnniZnVtr9SvxjFbqsqV4VNA3gPQXO7zwPakkVHl1o
+	/c3CzJnF04cxheufSyk4XLyejixl+33Q5OaFaJasLO9s3B1Yo+6HF2ejsXcrygkdUAYA9tPx9mZX3
+	bYo91cT4/Q04YYaGMcFdljVinZZqi9Tr5V8lyS96fBPHlftrWm3PhsLyu94zZvzMlMvmYjQdouSl8
+	uH9UhPVOIqTsH/cy3zeiCXDyK53Q82qKwjUPAI/45d4jDIZiCaIrRGoFTLQ1Ubbu5WXXzMiq9MMQr
+	jUVdocjC0ISjPdJWWQ4Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sF6FE-00000008TCk-2Q0f;
-	Thu, 06 Jun 2024 06:05:04 +0000
-Received: from mail.eh5.me ([45.76.111.223])
+	id 1sF6FK-00000008TG9-3qlf;
+	Thu, 06 Jun 2024 06:05:10 +0000
+Received: from mail.eh5.me ([2001:19f0:7001:3edf:5400:4ff:fe32:f2e0])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sF6FA-00000008TAf-06qa;
-	Thu, 06 Jun 2024 06:05:01 +0000
+	id 1sF6FA-00000008TAa-0COo;
+	Thu, 06 Jun 2024 06:05:02 +0000
 From: Huang-Huang Bao <i@eh5.me>
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=eh5.me; s=dkim;
-	t=1717653895;
+	t=1717653885;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=zzFshImQcnkQaOjfbtCDV/5BL1a1t8gOqnWdgJ2CXJI=;
-	b=N0OHZzx7klyLzoJpE6VsKhaSkWRTjimHDHLLqjdY+5zHf4EppQoK2GFyIC31o3a7LsV7I5
-	SN1aoJH9l37P2YBEV6iBEDTMykibsYsvpt2EtgCLhB5c6wxDRSsbL7flOjxPH8ZCEsc7SO
-	GcpLjlGiQHeIetHlWD+QvfIr1MwPkk0=
+	bh=SJyrvJEgIUfczl/GlGYofH0Vf0eBCOnBoq6FdTDHbXo=;
+	b=sQyl9k2s0D2SH6FdsfLkix0QKLdkdaz/12yR2F0BtoD3a0vC2Bsq9F/lXmo77blf507v5V
+	W4dU28yVFLH59Xp+stzowAfar160U97QNsqZjBtC0fb5aQ+sGjjYc0a+KgLXGZduWhZrOc
+	Zq7hKtNo61+NEEiR1XgsbxDg9h6U2P8=
 To: Linus Walleij <linus.walleij@linaro.org>,
 	Heiko Stuebner <heiko@sntech.de>
 Cc: linux-gpio@vger.kernel.org,
@@ -44,16 +44,15 @@ Cc: linux-gpio@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	Huang-Huang Bao <i@eh5.me>
-Subject: [PATCH 3/3] pinctrl: rockchip: fix pinmux reset in rockchip_pmx_set
-Date: Thu,  6 Jun 2024 14:04:35 +0800
-Message-ID: <20240606060435.765716-4-i@mail.eh5.me>
+Subject: [PATCH 1/3] pinctrl: rockchip: fix RK3328 pinmux bits
+Date: Thu,  6 Jun 2024 14:04:33 +0800
+Message-ID: <20240606060435.765716-2-i@mail.eh5.me>
 In-Reply-To: <20240606060435.765716-1-i@eh5.me>
 References: <20240606060435.765716-1-i@eh5.me>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240605_230500_211523_3C5DD620 
-X-CRM114-Status: UNSURE (   9.95  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240605_230500_223341_CD8F36CC 
+X-CRM114-Status: GOOD (  11.96  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,32 +69,115 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-rockchip_pmx_set reset all pinmuxs in group to 0 in the case of error,
-add missing bank data retrieval in that code to avoid setting mux on
-unexpected pins.
+The pinmux bits for GPIO2-B0 to GPIO2-B6 actually have 2 bits width,
+correct the bank flag for GPIO2-B. The pinmux bits for GPIO2-B7 is
+recalculated so it remain unchanged.
 
-Fixes: 14797189b35e ("pinctrl: rockchip: add return value to rockchip_set_mux")
+The pinmux bits for GPIO3-B1 to GPIO3-B6 have different register offset
+than common rockhip pinmux, set the correct value for those pins in
+rk3328_mux_recalced_data.
+
+The pinmux bits for those pins are not explicitly specified in RK3328
+TRM, however we can get hint from pad name and its correspinding IOMUX
+setting for pins in interface descriptions, e.g.
+IO_SPIclkm0_GPIO2B0vccio5 with GRF_GPIO2B_IOMUX[1:0]=2'b01 setting.
+
+This fix has been tested on NanoPi R2S for fixing confliting pinmux bits
+between GPIO2-15 with GPIO2-13.
+
 Signed-off-by: Huang-Huang Bao <i@eh5.me>
 ---
- drivers/pinctrl/pinctrl-rockchip.c | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
+ drivers/pinctrl/pinctrl-rockchip.c | 59 ++++++++++++++++++++++++++----
+ 1 file changed, 52 insertions(+), 7 deletions(-)
 
 diff --git a/drivers/pinctrl/pinctrl-rockchip.c b/drivers/pinctrl/pinctrl-rockchip.c
-index 24ee88863ce3..3f56991f5b89 100644
+index 3bedf36a0019..23531ea0d088 100644
 --- a/drivers/pinctrl/pinctrl-rockchip.c
 +++ b/drivers/pinctrl/pinctrl-rockchip.c
-@@ -2751,8 +2751,10 @@ static int rockchip_pmx_set(struct pinctrl_dev *pctldev, unsigned selector,
+@@ -634,23 +634,68 @@ static struct rockchip_mux_recalced_data rk3308_mux_recalced_data[] = {
  
- 	if (ret) {
- 		/* revert the already done pin settings */
--		for (cnt--; cnt >= 0; cnt--)
-+		for (cnt--; cnt >= 0; cnt--) {
-+			bank = pin_to_bank(info, pins[cnt]);
- 			rockchip_set_mux(bank, pins[cnt] - bank->pin_base, 0);
-+		}
+ static struct rockchip_mux_recalced_data rk3328_mux_recalced_data[] = {
+ 	{
+-		.num = 2,
+-		.pin = 12,
+-		.reg = 0x24,
+-		.bit = 8,
+-		.mask = 0x3
+-	}, {
++		/* gpio2_b7_sel */
+ 		.num = 2,
+ 		.pin = 15,
+ 		.reg = 0x28,
+ 		.bit = 0,
+ 		.mask = 0x7
+ 	}, {
++		/* gpio2_c7_sel */
+ 		.num = 2,
+ 		.pin = 23,
+ 		.reg = 0x30,
+ 		.bit = 14,
+ 		.mask = 0x3
++	}, {
++		/* gpio3_b1_sel */
++		.num = 3,
++		.pin = 9,
++		.reg = 0x44,
++		.bit = 2,
++		.mask = 0x3
++	}, {
++		/* gpio3_b2_sel */
++		.num = 3,
++		.pin = 10,
++		.reg = 0x44,
++		.bit = 4,
++		.mask = 0x3
++	}, {
++		/* gpio3_b3_sel */
++		.num = 3,
++		.pin = 11,
++		.reg = 0x44,
++		.bit = 6,
++		.mask = 0x3
++	}, {
++		/* gpio3_b4_sel */
++		.num = 3,
++		.pin = 12,
++		.reg = 0x44,
++		.bit = 8,
++		.mask = 0x3
++	}, {
++		/* gpio3_b5_sel */
++		.num = 3,
++		.pin = 13,
++		.reg = 0x44,
++		.bit = 10,
++		.mask = 0x3
++	}, {
++		/* gpio3_b6_sel */
++		.num = 3,
++		.pin = 14,
++		.reg = 0x44,
++		.bit = 12,
++		.mask = 0x3
++	}, {
++		/* gpio3_b7_sel */
++		.num = 3,
++		.pin = 15,
++		.reg = 0x44,
++		.bit = 14,
++		.mask = 0x3
+ 	},
+ };
  
- 		return ret;
- 	}
+@@ -3763,7 +3808,7 @@ static struct rockchip_pin_bank rk3328_pin_banks[] = {
+ 	PIN_BANK_IOMUX_FLAGS(0, 32, "gpio0", 0, 0, 0, 0),
+ 	PIN_BANK_IOMUX_FLAGS(1, 32, "gpio1", 0, 0, 0, 0),
+ 	PIN_BANK_IOMUX_FLAGS(2, 32, "gpio2", 0,
+-			     IOMUX_WIDTH_3BIT,
++			     0,
+ 			     IOMUX_WIDTH_3BIT,
+ 			     0),
+ 	PIN_BANK_IOMUX_FLAGS(3, 32, "gpio3",
 -- 
 2.45.2
 
