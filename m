@@ -4,87 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DAFC7C27C5F
-	for <linux-rockchip@archiver.kernel.org>; Thu,  6 Jun 2024 14:37:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 11918C25B75
+	for <linux-rockchip@archiver.kernel.org>; Thu,  6 Jun 2024 14:48:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=5yQBBZwNakIuYUK1mxbgAs+I2UYrhqXEKfhxAw9St10=; b=az3SKLNf+s7WGn
-	gkhlaRy9BU+IlKlY9df/7bg7u3NEhQhmo41lbxhnaUGleNfsUaJz70nHcJiTFdjpaJlEHCGaS+2Nx
-	V9RL5OASuxyUbi0D1QOw5yV9QpYydqsmJZGzYqXouByUyP9LDTiVJiHQpJcjQ7q2HW95RvtrHPsK0
-	Lvb8eqZVQWZfpvDBAYj3Yhq3Yjy3Gh9Rw9cmmW/kMhef1ro2AMJIJd/58gPIQhMcOU7L6BfAjwvO4
-	1o2UsEYjOpZ+2VikXNNKqzdbZAbdAfT1tKulL+/N+3BWs0xB9SDoLZxH7w5HxYb2BVtmK/oV7QZWR
-	vvP3IBjdn2Z+iVPT6gAA==;
+	List-Owner; bh=od2B13Ssp6MB+AfE/EbVurcffifFwR3SPS9kmKr+nfc=; b=wNJQF7p9Efd+sl
+	n620rxxGwg6R2pTGL8XnN4u3ShG5mv+5GLqkLWBCgPG+n235Fttsi4TIcuRSfrFUdCKXl1jp2k17K
+	NizD37zOY8ooumYPUr5TzxOBDaYCRZSFHuRyMvGSnSsrOp3QrdnckO0RpIJYil4LF8npUBYz5/rs3
+	ynvPlLpmI2zZ/h5dRnp+pKFOJLKy3BpZ78uZT3jlI112cArPP4LqArLe3jOVnY6mK6Y0GH6OXei+n
+	dgFMqexxXSxx58YMwL75tD731zOzPpJLgUCaxRzmCK5k+ufIbAPECCfyfDPlEdCOVyKQ7dgzsZn5l
+	rylhcpYhSP6FqtLjVWPQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sFEFY-0000000A6zq-0yRx;
-	Thu, 06 Jun 2024 14:37:56 +0000
-Received: from mail-ed1-x52e.google.com ([2a00:1450:4864:20::52e])
+	id 1sFEPU-0000000A8WY-3Dwc;
+	Thu, 06 Jun 2024 14:48:12 +0000
+Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sFEF9-0000000A6fZ-4AsM;
-	Thu, 06 Jun 2024 14:37:35 +0000
-Received: by mail-ed1-x52e.google.com with SMTP id 4fb4d7f45d1cf-572c65cea55so458760a12.0;
-        Thu, 06 Jun 2024 07:37:31 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1717684650; x=1718289450; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=6e1IO8wa8L/zyDqKfvDJQSO9H57/3PySfWDoeUhjP78=;
-        b=VOYqdrdL5vKuiMjhx7Pd8MmRzLCIsCAiMkMqzbbUcCpuvnwDGvIHHFZaLmpnWKQp1f
-         +5OKJAwxxVOs3lncxfNSQ+Oq0rD4IZ8vb4Ml23o2x9F1VDREY+0r+CAXDjsowSBQubyX
-         9WT0UKEqmW44Z8R48xIInGS9YAZmOSe9YHHdbdAL/wB3yu7CrWZzjloSp7q1Amnhna7K
-         TvDcVqOXrxCemhjZmTbWe3zotnULYmT2c9k9E8hBbLPbWQSn010/0G8QVT89OrE7Ybe8
-         jbqZmaIZ82eI+WKB6e8sSbNwPL/KM2KgNheORSOLjuMESYk/uSG+BFkOuRpT7Jq8iN/5
-         hw8Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1717684650; x=1718289450;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=6e1IO8wa8L/zyDqKfvDJQSO9H57/3PySfWDoeUhjP78=;
-        b=t4NfwwnhtC1zGKU+njp6lGptgdT11t0dRzbkSDCmiM+qTT7L/q27v/IB9nkN/yg0Oa
-         slEeBRi9faQtou9QJ7tIR31cXfmhnIAvV0TSi07RkeWKK7lG6Csh/C5c7KKvFxcGZNGZ
-         I1xUpa1PfXwuoHZ9aRu6Q8X0XouL040jYbR9Dkgzh1REBX2h1t7XDcq/XZA5Pysi7c3C
-         XVyPwo/kbL0KYDwmVhqdwdVSLoxoVT4qcy1htNWBifLnBemQeBHvTvduTNS2PMBHvEp0
-         LlqaytWtubnid0ive/it68z5Zm+rsdBEEoJYwjEoeVa3HfFPjEu0UtHRVNxp3VFiXZKr
-         BLWg==
-X-Forwarded-Encrypted: i=1; AJvYcCW5v2zgm2IW4vkSWTR7hdtVYuQvjTR4nNO7psSwPA8mLfU1FMPRcwtuHo7jD/7D+xcPGKNsc+b5CicOLJurrTnIrmWPA8dbLVjHahZEx7wZbGCBMJ0pl3PLKoHYDoyOu+8p34OeHGqpwgJy8GAO2NIwjypSjAkOJo8=
-X-Gm-Message-State: AOJu0YzjyLSzo2BMsOmRo01Pch3m5q4KcB5DLxC8F7IUEN1wZLesezrb
-	q3mxKDDBDGJzWVe7psX9DwK2wUmVYVxXNWzPubvOcNCUh5qfFyk=
-X-Google-Smtp-Source: AGHT+IGTguIsiQuctF52YO2KaIAv/wxplXc7Xf93KtnhaWBBwggvhPDzJlNlzZ3hmNeOjD5ieyF3QQ==
-X-Received: by 2002:a50:d7db:0:b0:578:69be:6e7a with SMTP id 4fb4d7f45d1cf-57aa53e0569mr2595265a12.1.1717684649733;
-        Thu, 06 Jun 2024 07:37:29 -0700 (PDT)
-Received: from U4.lan ([2a02:810b:f40:4600:ed9f:91b7:21f2:3109])
-        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-57aae1008adsm1190925a12.38.2024.06.06.07.37.29
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 06 Jun 2024 07:37:29 -0700 (PDT)
-From: Alex Bee <knaerzche@gmail.com>
-To: Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>
-Cc: Michael Turquette <mturquette@baylibre.com>,
-	Stephen Boyd <sboyd@kernel.org>,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-clk@vger.kernel.org,
-	Alex Bee <knaerzche@gmail.com>
-Subject: [PATCH v3 5/5] ARM: dts: rockchip: Add SFC for RK3128
-Date: Thu,  6 Jun 2024 16:34:02 +0200
-Message-ID: <20240606143401.32454-7-knaerzche@gmail.com>
-X-Mailer: git-send-email 2.45.2
-In-Reply-To: <20240606143401.32454-2-knaerzche@gmail.com>
-References: <20240606143401.32454-2-knaerzche@gmail.com>
+	id 1sFEPQ-0000000A8Va-3UMd;
+	Thu, 06 Jun 2024 14:48:10 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1717685287;
+	bh=dQuMVnPcFvL2rm7IsOiVG0+PEE/oKkyHvTcPJNmZa+0=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=YtRrkQHKb+X7xskObtg8FVCsFdwW8ShtHfCWtk4KRWoyx36T/q0AyGDwcPLitgXD0
+	 juSSzZ3cVZnQbEDdzMDSSm8xGeGxl3vLT/L53APO2Uo9mJm74o3YO7FrEl2BM+EyDS
+	 RHflhbHlPHGWQ7EThEjdeN/fGUeVCYOlIKGO8DrwcAr/iYf/5sLnc4QHnStmIq0v0h
+	 xLL7JMpSpaAnGsWurIR2SiEcuC0uSUEfaXkzCyK0B0+QnKCJRPycr/Fv0n4gXpkoOX
+	 CpotkDssPI/ghb/8UWFmzZvE0qBspVDQY2C+F0VYLb5GEI9kUvXljorsWjykBsbJu8
+	 LAPtwkBjkdYrA==
+Received: from [100.95.196.25] (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: koike)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 233DF37821F4;
+	Thu,  6 Jun 2024 14:48:01 +0000 (UTC)
+Message-ID: <da1366fa-4d48-4227-ae4b-4b39a6607973@collabora.com>
+Date: Thu, 6 Jun 2024 11:47:59 -0300
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 0/6] drm/ci: uprev mesa/IGT and generate testlist
+To: Vignesh Raman <vignesh.raman@collabora.com>,
+ dri-devel@lists.freedesktop.org
+Cc: daniels@collabora.com, airlied@gmail.com, daniel@ffwll.ch,
+ robdclark@gmail.com, david.heidelberg@collabora.com,
+ guilherme.gallo@collabora.com, sergi.blanch.torne@collabora.com,
+ dmitry.baryshkov@linaro.org, mcanal@igalia.com,
+ linux-mediatek@lists.infradead.org, linux-amlogic@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, amd-gfx@lists.freedesktop.org,
+ linux-arm-msm@vger.kernel.org, intel-gfx@lists.freedesktop.org,
+ virtualization@lists.linux-foundation.org, linux-kernel@vger.kernel.org
+References: <20240529024049.356327-1-vignesh.raman@collabora.com>
+Content-Language: en-US
+From: Helen Koike <helen.koike@collabora.com>
+In-Reply-To: <20240529024049.356327-1-vignesh.raman@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240606_073732_127412_71D3B5C0 
-X-CRM114-Status: GOOD (  11.80  )
+X-CRM114-CacheID: sfid-20240606_074809_040529_5284FA22 
+X-CRM114-Status: GOOD (  11.92  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,85 +76,114 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add the Serial Flash Controller and it's pincontrols.
-
-Signed-off-by: Alex Bee <knaerzche@gmail.com>
----
-changes since v2:
-Fixed pinux settings for the chipselect pincontrols which originated from
-contradictory documentation: Datasheet [0] (page 29/31) says it is func4
-(when start counting with func1), while TRM [1] (page 185) says func3
-(register value 0x2). It turned out TRM is correct as with setting cs
-pincontrols to func4 the spi chip is not detected, while func3 is fine.
-
-[0] https://www.armdesigner.com/download/Rockchip_RK3128_datasheet_V1.2.pdf, 
-[1] https://www.t-firefly.com/download/fireprime/docs/rk3128_trm/chapter-5-general-register-file(grf).pdf
 
 
- arch/arm/boot/dts/rockchip/rk3128.dtsi | 35 ++++++++++++++++++++++++++
- 1 file changed, 35 insertions(+)
+On 28/05/2024 23:40, Vignesh Raman wrote:
+> Uprev mesa and IGT to the latest version and stop vendoring the
+> testlist into the kernel. Instead, use the testlist from the
+> IGT build to ensure we do not miss renamed or newly added tests.
+> Update the xfails with the latest testlist run.
+> 
+> Add farm variable and update device type variable.
+> 
+> https://gitlab.freedesktop.org/vigneshraman/linux/-/pipelines/1187556
+> 
+> Vignesh Raman (6):
+>    drm/ci: uprev mesa version
+>    drm/ci: add farm variable
+>    drm/ci: generate testlist from build
+>    drm/ci: uprev IGT
+>    drm/ci: skip driver specific tests
+>    drm/ci: update xfails for the new testlist
+> 
+>   drivers/gpu/drm/ci/build-igt.sh               |   41 +-
+>   drivers/gpu/drm/ci/build.sh                   |    6 +-
+>   drivers/gpu/drm/ci/container.yml              |   12 +-
+>   drivers/gpu/drm/ci/gitlab-ci.yml              |   46 +-
+>   drivers/gpu/drm/ci/igt_runner.sh              |    9 +-
+>   drivers/gpu/drm/ci/image-tags.yml             |    2 +-
+>   drivers/gpu/drm/ci/lava-submit.sh             |    4 +-
+>   drivers/gpu/drm/ci/test.yml                   |   17 +-
+>   drivers/gpu/drm/ci/testlist.txt               | 2761 -----------------
+>   .../gpu/drm/ci/xfails/amdgpu-stoney-fails.txt |   41 +-
+>   .../drm/ci/xfails/amdgpu-stoney-flakes.txt    |    7 +
+>   .../gpu/drm/ci/xfails/amdgpu-stoney-skips.txt |   33 +-
+>   drivers/gpu/drm/ci/xfails/i915-amly-fails.txt |   31 +
+>   .../gpu/drm/ci/xfails/i915-amly-flakes.txt    |    9 +
+>   drivers/gpu/drm/ci/xfails/i915-amly-skips.txt |   22 +-
+>   drivers/gpu/drm/ci/xfails/i915-apl-fails.txt  |   46 +-
+>   drivers/gpu/drm/ci/xfails/i915-apl-flakes.txt |    6 +
+>   drivers/gpu/drm/ci/xfails/i915-apl-skips.txt  |   26 +-
+>   drivers/gpu/drm/ci/xfails/i915-cml-fails.txt  |   38 +
+>   drivers/gpu/drm/ci/xfails/i915-cml-flakes.txt |    6 +
+>   drivers/gpu/drm/ci/xfails/i915-cml-skips.txt  |   23 +
+>   drivers/gpu/drm/ci/xfails/i915-glk-fails.txt  |   41 +-
+>   drivers/gpu/drm/ci/xfails/i915-glk-flakes.txt |    7 +
+>   drivers/gpu/drm/ci/xfails/i915-glk-skips.txt  |   26 +-
+>   drivers/gpu/drm/ci/xfails/i915-kbl-fails.txt  |   42 +-
+>   drivers/gpu/drm/ci/xfails/i915-kbl-flakes.txt |    7 +-
+>   drivers/gpu/drm/ci/xfails/i915-kbl-skips.txt  |   36 +-
+>   drivers/gpu/drm/ci/xfails/i915-tgl-fails.txt  |   77 +-
+>   drivers/gpu/drm/ci/xfails/i915-tgl-skips.txt  |   28 +-
+>   drivers/gpu/drm/ci/xfails/i915-whl-fails.txt  |   63 +-
+>   drivers/gpu/drm/ci/xfails/i915-whl-flakes.txt |    6 +
+>   drivers/gpu/drm/ci/xfails/i915-whl-skips.txt  |   22 +-
+>   .../drm/ci/xfails/mediatek-mt8173-fails.txt   |   30 +-
+>   .../drm/ci/xfails/mediatek-mt8173-flakes.txt  |   11 +
+>   .../drm/ci/xfails/mediatek-mt8173-skips.txt   |   16 +
+>   .../drm/ci/xfails/mediatek-mt8183-fails.txt   |   21 +-
+>   .../drm/ci/xfails/mediatek-mt8183-skips.txt   |   18 +
+>   .../gpu/drm/ci/xfails/meson-g12b-fails.txt    |   24 +-
+>   .../gpu/drm/ci/xfails/meson-g12b-skips.txt    |   18 +
+>   .../gpu/drm/ci/xfails/msm-apq8016-fails.txt   |   12 +-
+>   .../gpu/drm/ci/xfails/msm-apq8016-skips.txt   |   15 +
+>   .../gpu/drm/ci/xfails/msm-apq8096-fails.txt   |    7 +
+>   .../gpu/drm/ci/xfails/msm-apq8096-flakes.txt  |    6 +
+>   .../gpu/drm/ci/xfails/msm-apq8096-skips.txt   |   26 +-
+>   .../msm-sc7180-trogdor-kingoftown-fails.txt   |  175 +-
+>   .../msm-sc7180-trogdor-kingoftown-flakes.txt  |    8 +
+>   .../msm-sc7180-trogdor-kingoftown-skips.txt   |   19 +
+>   ...sm-sc7180-trogdor-lazor-limozeen-fails.txt |  175 +-
+>   ...m-sc7180-trogdor-lazor-limozeen-flakes.txt |    6 +
+>   ...sm-sc7180-trogdor-lazor-limozeen-skips.txt |   16 +
+>   .../gpu/drm/ci/xfails/msm-sdm845-fails.txt    |   38 +-
+>   .../gpu/drm/ci/xfails/msm-sdm845-flakes.txt   |   25 +-
+>   .../gpu/drm/ci/xfails/msm-sdm845-skips.txt    |   19 +
+>   .../drm/ci/xfails/rockchip-rk3288-fails.txt   |   62 +-
+>   .../drm/ci/xfails/rockchip-rk3288-skips.txt   |   21 +-
+>   .../drm/ci/xfails/rockchip-rk3399-fails.txt   |   83 +-
+>   .../drm/ci/xfails/rockchip-rk3399-flakes.txt  |   13 +-
+>   .../drm/ci/xfails/rockchip-rk3399-skips.txt   |   19 +
+>   drivers/gpu/drm/ci/xfails/update-xfails.py    |    4 +-
+>   .../drm/ci/xfails/virtio_gpu-none-fails.txt   |   94 +-
+>   .../drm/ci/xfails/virtio_gpu-none-skips.txt   |   20 +-
+>   61 files changed, 1348 insertions(+), 3194 deletions(-)
+>   delete mode 100644 drivers/gpu/drm/ci/testlist.txt
+>   create mode 100644 drivers/gpu/drm/ci/xfails/i915-amly-flakes.txt
+>   create mode 100644 drivers/gpu/drm/ci/xfails/i915-apl-flakes.txt
+>   create mode 100644 drivers/gpu/drm/ci/xfails/i915-cml-flakes.txt
+>   create mode 100644 drivers/gpu/drm/ci/xfails/i915-glk-flakes.txt
+>   create mode 100644 drivers/gpu/drm/ci/xfails/i915-whl-flakes.txt
+>   create mode 100644 drivers/gpu/drm/ci/xfails/mediatek-mt8173-flakes.txt
+>   create mode 100644 drivers/gpu/drm/ci/xfails/mediatek-mt8173-skips.txt
+>   create mode 100644 drivers/gpu/drm/ci/xfails/mediatek-mt8183-skips.txt
+>   create mode 100644 drivers/gpu/drm/ci/xfails/meson-g12b-skips.txt
+>   create mode 100644 drivers/gpu/drm/ci/xfails/msm-apq8016-skips.txt
+>   create mode 100644 drivers/gpu/drm/ci/xfails/msm-apq8096-flakes.txt
+>   create mode 100644 drivers/gpu/drm/ci/xfails/msm-sc7180-trogdor-kingoftown-flakes.txt
+>   create mode 100644 drivers/gpu/drm/ci/xfails/msm-sc7180-trogdor-lazor-limozeen-flakes.txt
+> 
 
-diff --git a/arch/arm/boot/dts/rockchip/rk3128.dtsi b/arch/arm/boot/dts/rockchip/rk3128.dtsi
-index a7ab0904564f..c37aed28bd10 100644
---- a/arch/arm/boot/dts/rockchip/rk3128.dtsi
-+++ b/arch/arm/boot/dts/rockchip/rk3128.dtsi
-@@ -399,6 +399,15 @@ usb_host_ohci: usb@101e0000 {
- 		status = "disabled";
- 	};
- 
-+	sfc: spi@1020c000 {
-+		compatible = "rockchip,sfc";
-+		reg = <0x1020c000 0x8000>;
-+		interrupts = <GIC_SPI 50 IRQ_TYPE_LEVEL_HIGH>;
-+		clocks = <&cru SCLK_SFC>, <&cru HCLK_SFC>;
-+		clock-names = "clk_sfc", "hclk_sfc";
-+		status = "disabled";
-+	};
-+
- 	sdmmc: mmc@10214000 {
- 		compatible = "rockchip,rk3128-dw-mshc", "rockchip,rk3288-dw-mshc";
- 		reg = <0x10214000 0x4000>;
-@@ -1155,6 +1164,32 @@ sdmmc_bus4: sdmmc-bus4 {
- 			};
- 		};
- 
-+		sfc {
-+			sfc_bus2: sfc-bus2 {
-+				rockchip,pins = <1 RK_PD0 3 &pcfg_pull_default>,
-+						<1 RK_PD1 3 &pcfg_pull_default>;
-+			};
-+
-+			sfc_bus4: sfc-bus4 {
-+				rockchip,pins = <1 RK_PD0 3 &pcfg_pull_default>,
-+						<1 RK_PD1 3 &pcfg_pull_default>,
-+						<1 RK_PD2 3 &pcfg_pull_default>,
-+						<1 RK_PD3 3 &pcfg_pull_default>;
-+			};
-+
-+			sfc_clk: sfc-clk {
-+				rockchip,pins = <2 RK_PA4 3 &pcfg_pull_none>;
-+			};
-+
-+			sfc_cs0: sfc-cs0 {
-+				rockchip,pins = <2 RK_PA2 2 &pcfg_pull_default>;
-+			};
-+
-+			sfc_cs1: sfc-cs1 {
-+				rockchip,pins = <2 RK_PA3 2 &pcfg_pull_default>;
-+			};
-+		};
-+
- 		spdif {
- 			spdif_tx: spdif-tx {
- 				rockchip,pins = <3 RK_PD3 1 &pcfg_pull_none>;
--- 
-2.45.2
 
+Applied to drm-misc-next
+
+Thanks
+Helen
 
 _______________________________________________
 Linux-rockchip mailing list
