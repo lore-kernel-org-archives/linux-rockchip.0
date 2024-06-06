@@ -4,48 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F1657C27C52
-	for <linux-rockchip@archiver.kernel.org>; Thu,  6 Jun 2024 06:40:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 85FE3C25B75
+	for <linux-rockchip@archiver.kernel.org>; Thu,  6 Jun 2024 06:40:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=liiYnSBlbyTkHaSiot1/EVnT0Jo6Qkghyp9uUA3nzPk=; b=k7Ff04eESq/oWC
-	z/lWWtg/oC95XoaZi6tqkh4TIO9lCZkf5dx0GIjUvVPEOkGdOPE3Azk1NfNHaPugy+eEpqQb2MpBC
-	FFDaMYMuSqRwU98o4SCicrW66gIQbu6GojnmKdoUuJzHRz/5cdsEra86MtjVZ4PKuZa8M1fZWjbrC
-	fhzsqj9pSftH5R3QtuC8TOVkZaFjZ55IGo1i+wppbGrke3/bpPRiF5yuop0rydSH0ai7Sv2bU5/BT
-	37NqrOlrm4PW6qSpCmvV1I1WX1WryBGlEJDSXS1X5+k8+UvyM6hadphMv5/1JmtLrdxQ9dlfgzm2j
-	RDD4wHtAVgMMZFZbKYyg==;
+	List-Owner; bh=Xh4iHJ9+8VPBAC6iwWe/eNf8eDdWoWWAhR062g6X5X8=; b=Rm3cx7XC0ijwBD
+	8ArnJxugz7poLJ7k2MvQOj/lVa7+4OWUcEVePtorMnllOwfbXHao8z6FEcFc2n3lhpMZI6SGcKWGJ
+	qcQnw6Q4eiU4mYk1sO0ZO/ck14aRjUDJU5PKUBXwuLisObqyPp6sJFIbWcdTE5Fo0lk9f0X50C2iK
+	tYCLpqPf3XasbWsvYF9m09hW/HhSHv9qRf50ysGsgtExCCf4Ypxi02X8y917BWRhJLIABBGLt4rfO
+	DAb7ZpsBcdBdysWC6UGnPNHQfhiypClPwL7kdJpTnLII4zBjqvrtccQNAkIUlD/1we/gqhjdEotao
+	r/fAL0UcyKUMoeh/fhpA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sF6nP-00000008YZS-0TQW;
-	Thu, 06 Jun 2024 06:40:23 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1sF6nZ-00000008Yee-2ZW8;
+	Thu, 06 Jun 2024 06:40:33 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sF6nK-00000008YXU-3uuF;
-	Thu, 06 Jun 2024 06:40:20 +0000
+	id 1sF6nU-00000008YbB-1FSC;
+	Thu, 06 Jun 2024 06:40:29 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 6A52361C11;
-	Thu,  6 Jun 2024 06:40:18 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1F0F4C4AF08;
-	Thu,  6 Jun 2024 06:40:14 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 982F661BCE;
+	Thu,  6 Jun 2024 06:40:25 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 34A30C4AF08;
+	Thu,  6 Jun 2024 06:40:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1717656018;
-	bh=hzA/hKBsU0KdMdQ6fXpEPMi7fRtCRLCQhAThRmevwW0=;
+	s=k20201202; t=1717656025;
+	bh=BQUTtUE0GlUdPhQO0ro2WyOZ35L4blkmwQj67XovYDs=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=iNcNVQ/Y3Ew8VouXRFOzwzIcujjjV65vfP/2L+0u67goxMxAnVdjbtKj0iG9Skonf
-	 qiENj3Nfi/6LNtWVU/ZcSfFudrWcqs2y29yHv8JpR/8W/i43O+p/f01mpNPgpBtabD
-	 HxKrmwrvZjgWnMet7MilY0bBnV3QYD7jnHvhHSMBzyHDnGFQbDpmeggnkwB1CGhDxB
-	 KaqDAH0MRh4IHbA7YPRjaLXh0aKCW8/DSxf2H4n9/wH5kQt4qtrJrotylnJ3LeA1+s
-	 JgLCLcqrQ45Xjg3o+zQnM80wYp2QDlEk+l1vdI3A30HUR+CRNITfdLYLLJsXeaPNJn
-	 LMVeZbPF/VRLQ==
-Message-ID: <8921976e-a0c2-48f2-bf63-9c0bc58af63f@kernel.org>
-Date: Thu, 6 Jun 2024 08:40:13 +0200
+	b=XSCvo6kxZ4Uw6qHkNNey13WUa48GM3oDWy56ZG4bv5Ki4uJHnAgZP3YfS/G6Am/8b
+	 8KEQU2dChJYd7QbryuXmzXtMSLSkw+92B/mbndiaGOR+a9filNCbguD5P57T9NhzCc
+	 9VHQBgeu4X+1F6nn8CrKHIJ9Omv4g4esHBdOsOLkxGn19G1upJ79oB+jPcvKbLuvL5
+	 ThshJM2BAVcKfd9Jm8TqncJfL6rNU1/D8x6awuGyjCrpDO429U0f728nPRbu2kfP7m
+	 SuMO/R/h+MyPVeyHSeJNT9sVxWLBKF+Hm+vkpw0H5vBSQeNysmgiht7DsEDHUhOMSN
+	 asG/UETxRUBlw==
+Message-ID: <745f15b4-279b-4a6a-a6cb-58ac726f68b9@kernel.org>
+Date: Thu, 6 Jun 2024 08:40:21 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 2/5] dt-bindings: clock: rk3128: Drop CLK_NR_CLKS
+Subject: Re: [PATCH 3/5] dt-bindings: clock: rk3128: Add HCLK_SFC
 To: Alex Bee <knaerzche@gmail.com>, Rob Herring <robh@kernel.org>,
  Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
  <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
@@ -54,9 +54,9 @@ Cc: Michael Turquette <mturquette@baylibre.com>,
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
  linux-kernel@vger.kernel.org, linux-clk@vger.kernel.org
 References: <20240605205209.232005-1-knaerzche@gmail.com>
- <20240605205209.232005-2-knaerzche@gmail.com>
-From: Krzysztof Kozlowski <krzk@kernel.org>
+ <20240605205209.232005-3-knaerzche@gmail.com>
 Content-Language: en-US
+From: Krzysztof Kozlowski <krzk@kernel.org>
 Autocrypt: addr=krzk@kernel.org; keydata=
  xsFNBFVDQq4BEAC6KeLOfFsAvFMBsrCrJ2bCalhPv5+KQF2PS2+iwZI8BpRZoV+Bd5kWvN79
  cFgcqTTuNHjAvxtUG8pQgGTHAObYs6xeYJtjUH0ZX6ndJ33FJYf5V3yXqqjcZ30FgHzJCFUu
@@ -100,10 +100,10 @@ Autocrypt: addr=krzk@kernel.org; keydata=
  uZwJCLykjad45hsWcOGk3OcaAGQS6NDlfhM6O9aYNwGL6tGt/6BkRikNOs7VDEa4/HlbaSJo
  7FgndGw1kWmkeL6oQh7wBvYll2buKod4qYntmNKEicoHGU+x91Gcan8mCoqhJkbqrL7+nXG2
  5Q/GS5M9RFWS+nYyJh+c3OcfKqVcZQNANItt7+ULzdNJuhvTRRdC3g9hmCEuNSr+CLMdnRBY fv0=
-In-Reply-To: <20240605205209.232005-2-knaerzche@gmail.com>
+In-Reply-To: <20240605205209.232005-3-knaerzche@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240605_234019_109245_8DDBFA39 
-X-CRM114-Status: UNSURE (   7.00  )
+X-CRM114-CacheID: sfid-20240605_234028_502935_F6FA6BA5 
+X-CRM114-Status: UNSURE (   6.06  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -122,11 +122,11 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 On 05/06/2024 22:52, Alex Bee wrote:
-> CLK_NR_CLKS should not be part of the binding. Let's drop it, since
-> the kernel code no longer uses it either.
+> Add a clock id for SFC's AHB clock.
 > 
 > Signed-off-by: Alex Bee <knaerzche@gmail.com>
 > ---
+>  include/dt-bindings/clock/rk3128-cru.h | 1 +
 
 Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
