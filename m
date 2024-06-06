@@ -4,76 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 929CFC25B75
-	for <linux-rockchip@archiver.kernel.org>; Thu,  6 Jun 2024 11:51:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 072B6C25B75
+	for <linux-rockchip@archiver.kernel.org>; Thu,  6 Jun 2024 12:58:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=3+hthHV/4qDgdz3LwRSI3jtfzjd7Sj2nVm/26Sz77Yk=; b=LvQbb5qUq+7PB6
-	Lb5oBZRqo8cWGde1sPs9Nx9bk1XFzHC79SNryGwvhpg5hLz5bNjiT8iK+yvQ45LW//RKhPUVuq8tD
-	LQsGiusUbaG+aKVytESCONNCcajYYOpKPtGmJ2qYox44P3vZuHL7szBZofttN9b5OLVvsB1WgD+5i
-	FXs3yNyRbee0H0JwdYQXirt+LtJ2MtDoNECyKTcFSCMxFIYbgDwXafAVBWQPp/5M9/pSFDimN/N/c
-	jVgTbVJS15L+vTmbisrg8VnBJqFrDOomZYBC26ahaasMGbaeD51vEi8hESZcWc5fmQa4MllplfXYV
-	0MrHSbbf3ITegcl2hzOQ==;
+	List-Owner; bh=lArsqljekqLkHyM1SxxIgl1vBaiSJxBifwBa0cGkkko=; b=Mzwq39jo+4lG5h
+	ir3S0qv8yUCc/H9ZUgii3wdYWvl8Y4ZANzuvzW7zg47KV66FoUvpjqKmmt0SMoLXwewefn/fM6fxR
+	m1L7qjhrmKx8E+EaUDHsMrRSxxPAjzPSE5vwEUsIC2xhbaup0eFlliARg9XyQaE3S+HhIDUAUJt/h
+	nEhr6HQvAdMxFX0YmIB9bfyQiPByZnRDcRldDIXrgBRo0sjTSxQMOV/7dnw27NLABx6pWnBVS3seX
+	gmKCeNYM8P/MiB+pVdclcbIWItNjJrX9Y5afKXCjlDFKvHW0jS/2Tzxt82gcRpwVJBfANnDD5+S+0
+	rOn3dRnC2IiEtBkm4JIA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sFBen-00000009akV-37Cx;
-	Thu, 06 Jun 2024 11:51:49 +0000
-Received: from madrid.collaboradmins.com ([46.235.227.194])
+	id 1sFCh2-00000009lTy-0A1H;
+	Thu, 06 Jun 2024 12:58:12 +0000
+Received: from mail.eh5.me ([2001:19f0:7001:3edf:5400:4ff:fe32:f2e0])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sFBei-00000009aig-22xR;
-	Thu, 06 Jun 2024 11:51:46 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1717674700;
-	bh=SFUVvxNAzAySqmVBXZpEMqURPC5o1K2Msw7qVhlZD7w=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=PZ/YEOyRAoxBUkfN+li+iJ1/+ZkdV/w7JLlLacBCUDLDV9OANKU6QDSE6wokKnPtD
-	 qwp2ftm8oXkHucZwZHZ+WGygAmw9YaS+Qf5LD7/sFrWXJYJ6BSIXgsIp3D1RaVhlpK
-	 Yv1I5RaN6tA/eJH9RoC3YrJqb0kzFdxNt0NwJLFhsPUZ90kCxRLGU7Zr/YOgjYGLAg
-	 nLO01RDhp37BawcBVwqjb0/9zx6W66O2aiwnAq6sJ2CqftiiKydfG4mRZm652iKz5c
-	 sDW6OJ7E2LTpFDMoyNAqQGcPve/jTspha6AxhF8PReN8chRmLIiUcTiSAn8JZCff37
-	 GHKLT36npbhSA==
-Received: from [100.115.223.179] (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: cristicc)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 7AECB37821D4;
-	Thu,  6 Jun 2024 11:51:38 +0000 (UTC)
-Message-ID: <260aa607-099a-4f65-ae59-c4b6ea2256f1@collabora.com>
-Date: Thu, 6 Jun 2024 14:51:37 +0300
+	id 1sFCgy-00000009lRJ-0GtR;
+	Thu, 06 Jun 2024 12:58:09 +0000
+From: Huang-Huang Bao <i@eh5.me>
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=eh5.me; s=dkim;
+	t=1717678683;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=9aGbCJYC5tQIh+V38eaRg/TEw5yXNqXj9kU8kT92Cps=;
+	b=JzPFRzXlwauoFclfUckhLzsumIZFUHKZTz3F69hs/aFkkPnv9lsJWxZHzxunf6gpRYqSYg
+	i5sHtPROQDiqXANTLzVLz5cFSCDpFXLP2kR9qBsdAnAf6Mcn+TWfnLq+w37aIJVDPrbKKD
+	qtVzbUzb7Q/MaW/Z/uPKof6+UmsGH50=
+To: Heiko Stuebner <heiko@sntech.de>,
+	Linus Walleij <linus.walleij@linaro.org>
+Cc: linux-gpio@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Huang-Huang Bao <i@eh5.me>
+Subject: [PATCH v2 1/4] pinctrl: rockchip: fix pinmux bits for RK3328 GPIO2-B pins
+Date: Thu,  6 Jun 2024 20:57:52 +0800
+Message-ID: <20240606125755.53778-2-i@eh5.me>
+In-Reply-To: <20240606125755.53778-1-i@eh5.me>
+References: <20240606125755.53778-1-i@eh5.me>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 12/14] dt-bindings: display: rockchip,dw-hdmi: Add
- compatible for RK3588
-To: Rob Herring <robh@kernel.org>
-Cc: Andrzej Hajda <andrzej.hajda@intel.com>,
- Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>,
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
- Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>,
- Sandy Huang <hjc@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?=
- <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Mark Yao <markyao0591@gmail.com>,
- dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- devicetree@vger.kernel.org, kernel@collabora.com,
- Alexandre ARNOUD <aarnoud@me.com>, Luis de Arquer <ldearquer@gmail.com>
-References: <20240601-b4-rk3588-bridge-upstream-v1-0-f6203753232b@collabora.com>
- <20240601-b4-rk3588-bridge-upstream-v1-12-f6203753232b@collabora.com>
- <20240605232206.GA3345910-robh@kernel.org>
-From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20240605232206.GA3345910-robh@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240606_045144_833136_6D86B60C 
-X-CRM114-Status: GOOD (  20.68  )
+X-CRM114-CacheID: sfid-20240606_055808_236628_2ADB1DA9 
+X-CRM114-Status: GOOD (  11.00  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,174 +69,61 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 6/6/24 2:22 AM, Rob Herring wrote:
-> On Sat, Jun 01, 2024 at 04:12:34PM +0300, Cristian Ciocaltea wrote:
->> Document the Synopsys DesignWare HDMI 2.1 Quad-Pixel (QP) TX controller
->> found on Rockchip RK3588 SoC family.
->>
->> Since RK3588 uses different clocks than previous Rockchip SoCs and also
->> requires a couple of reset lines and some additional properties, provide
->> the required changes in the binding to accommodate all variants.
->>
->> Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
->> ---
->>  .../display/rockchip/rockchip,dw-hdmi.yaml         | 127 +++++++++++++++------
->>  1 file changed, 90 insertions(+), 37 deletions(-)
->>
->> diff --git a/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-hdmi.yaml b/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-hdmi.yaml
->> index 2aac62219ff6..60d6b815227f 100644
->> --- a/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-hdmi.yaml
->> +++ b/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-hdmi.yaml
->> @@ -10,12 +10,10 @@ maintainers:
->>    - Mark Yao <markyao0591@gmail.com>
->>  
->>  description: |
->> -  The HDMI transmitter is a Synopsys DesignWare HDMI 1.4 TX controller IP
->> -  with a companion PHY IP.
->> -
->> -allOf:
->> -  - $ref: ../bridge/synopsys,dw-hdmi.yaml#
->> -  - $ref: /schemas/sound/dai-common.yaml#
->> +  For SoCs up to RK3568, the HDMI transmitter is a Synopsys DesignWare
->> +  HDMI 1.4 TX controller IP with a companion PHY IP.
->> +  The RK3588 SoC integrates the Synopsys DesignWare HDMI 2.1 Quad-Pixel (QP)
->> +  TX controller IP and a HDMI/eDP TX Combo PHY based on a Samsung IP block.
->>  
->>  properties:
->>    compatible:
->> @@ -25,6 +23,7 @@ properties:
->>        - rockchip,rk3328-dw-hdmi
->>        - rockchip,rk3399-dw-hdmi
->>        - rockchip,rk3568-dw-hdmi
->> +      - rockchip,rk3588-dw-hdmi
->>  
->>    reg-io-width:
->>      const: 4
->> @@ -40,36 +39,6 @@ properties:
->>        A 1.8V supply that powers up the SoC internal circuitry. The pin name on the
->>        SoC usually is HDMI_TX_AVDD_1V8.
->>  
->> -  clocks:
->> -    minItems: 2
->> -    items:
->> -      - {}
->> -      - {}
->> -      # The next three clocks are all optional, but shall be specified in this
->> -      # order when present.
->> -      - description: The HDMI CEC controller main clock
->> -      - description: Power for GRF IO
->> -      - description: External clock for some HDMI PHY (old clock name, deprecated)
->> -      - description: External clock for some HDMI PHY (new name)
->> -
->> -  clock-names:
->> -    minItems: 2
->> -    items:
->> -      - {}
->> -      - {}
->> -      - enum:
->> -          - cec
->> -          - grf
->> -          - vpll
->> -          - ref
->> -      - enum:
->> -          - grf
->> -          - vpll
->> -          - ref
->> -      - enum:
->> -          - vpll
->> -          - ref
->> -
->>    ddc-i2c-bus:
->>      $ref: /schemas/types.yaml#/definitions/phandle
->>      description:
->> @@ -131,13 +100,97 @@ properties:
->>  required:
->>    - compatible
->>    - reg
->> -  - reg-io-width
->>    - clocks
->>    - clock-names
->>    - interrupts
->>    - ports
->>    - rockchip,grf
->>  
->> +allOf:
->> +  - $ref: /schemas/sound/dai-common.yaml#
->> +  - if:
->> +      properties:
->> +        compatible:
->> +          contains:
->> +            enum:
->> +              - rockchip,rk3588-dw-hdmi
->> +    then:
->> +      properties:
->> +        reg:
->> +          maxItems: 1
->> +
->> +        clocks:
->> +          minItems: 1
->> +          items:
->> +            - description: APB system interface clock
->> +            # The next clocks are optional, but shall be specified in this
->> +            # order when present.
->> +            - description: TMDS/FRL link clock
->> +            - description: EARC RX biphase clock
->> +            - description: Reference clock
->> +            - description: Audio interface clock
->> +            - description: Video datapath clock
->> +
->> +        clock-names:
->> +          minItems: 1
->> +          items:
->> +            - const: pclk
->> +            - enum: [hdp, earc, ref, aud, hclk_vo1]
->> +            - enum: [earc, ref, aud, hclk_vo1]
->> +            - enum: [ref, aud, hclk_vo1]
->> +            - enum: [aud, hclk_vo1]
->> +            - const: hclk_vo1
->> +
->> +        resets:
->> +          minItems: 2
->> +          maxItems: 2
->> +
->> +        reset-names:
->> +          items:
->> +            - const: ref
->> +            - const: hdp
->> +
->> +        interrupts:
->> +          minItems: 1
->> +          maxItems: 5
->> +
->> +        rockchip,vo1_grf:
->> +          $ref: /schemas/types.yaml#/definitions/phandle
->> +          description: Some QP related data is accessed through VO1 GRF regs
->> +
->> +      required:
->> +        - resets
->> +        - reset-names
->> +        - rockchip,vo1_grf
->> +
->> +    else:
->> +      $ref: ../bridge/synopsys,dw-hdmi.yaml#
-> 
-> This is odd... With this plus the amount of conditional schema, I think 
-> this should be a new schema doc. Doesn't have to have a common 
-> schema. You can let the 2nd user of this IP block do that. 
+The pinmux bits for GPIO2-B0 to GPIO2-B6 actually have 2 bits width,
+correct the bank flag for GPIO2-B. The pinmux bits for GPIO2-B7 is
+recalculated so it remain unchanged.
 
-Yes, v2 is going to be a completely separated driver implementation.
+The pinmux bits for those pins are not explicitly specified in RK3328
+TRM, however we can get hint from pad name and its correspinding IOMUX
+setting for pins in interface descriptions. The correspinding IOMIX
+settings for GPIO2-B0 to GPIO2-B6 can be found in the same row next to
+occurrences of following pad names in RK3328 TRM.
 
-> Though if you 
-> have the Synopsys spec, then it would be good to use it and be sure the 
-> binding corresponds to it.
+GPIO2-B0: IO_SPIclkm0_GPIO2B0vccio5
+GPIO2-B1: IO_SPItxdm0_GPIO2B1vccio5
+GPIO2-B2: IO_SPIrxdm0_GPIO2B2vccio5
+GPIO2-B3: IO_SPIcsn0m0_GPIO2B3vccio5
+GPIO2-B4: IO_SPIcsn1m0_FLASHvol_sel_GPIO2B4vccio5
+GPIO2-B5: IO_ I2C2sda_TSADCshut_GPIO2B5vccio5
+GPIO2-B6: IO_ I2C2scl_GPIO2B6vccio5
 
-Unfortunately I don't have it.
+This fix has been tested on NanoPi R2S for fixing confliting pinmux bits
+between GPIO2-B7 with GPIO2-B5.
 
-@Andy: Could you please help identifying the properties which should
-belong to a common synopsys,dw-hdmi-qp schema?
+Signed-off-by: Huang-Huang Bao <i@eh5.me>
+---
+ drivers/pinctrl/pinctrl-rockchip.c | 8 +-------
+ 1 file changed, 1 insertion(+), 7 deletions(-)
 
-Thanks,
-Cristian
+diff --git a/drivers/pinctrl/pinctrl-rockchip.c b/drivers/pinctrl/pinctrl-rockchip.c
+index 3bedf36a0019..78dcf4daccde 100644
+--- a/drivers/pinctrl/pinctrl-rockchip.c
++++ b/drivers/pinctrl/pinctrl-rockchip.c
+@@ -634,12 +634,6 @@ static struct rockchip_mux_recalced_data rk3308_mux_recalced_data[] = {
+ 
+ static struct rockchip_mux_recalced_data rk3328_mux_recalced_data[] = {
+ 	{
+-		.num = 2,
+-		.pin = 12,
+-		.reg = 0x24,
+-		.bit = 8,
+-		.mask = 0x3
+-	}, {
+ 		.num = 2,
+ 		.pin = 15,
+ 		.reg = 0x28,
+@@ -3763,7 +3757,7 @@ static struct rockchip_pin_bank rk3328_pin_banks[] = {
+ 	PIN_BANK_IOMUX_FLAGS(0, 32, "gpio0", 0, 0, 0, 0),
+ 	PIN_BANK_IOMUX_FLAGS(1, 32, "gpio1", 0, 0, 0, 0),
+ 	PIN_BANK_IOMUX_FLAGS(2, 32, "gpio2", 0,
+-			     IOMUX_WIDTH_3BIT,
++			     0,
+ 			     IOMUX_WIDTH_3BIT,
+ 			     0),
+ 	PIN_BANK_IOMUX_FLAGS(3, 32, "gpio3",
+-- 
+2.45.2
+
 
 _______________________________________________
 Linux-rockchip mailing list
