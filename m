@@ -4,64 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 18209C27C53
-	for <linux-rockchip@archiver.kernel.org>; Wed, 12 Jun 2024 17:26:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3000AC27C77
+	for <linux-rockchip@archiver.kernel.org>; Wed, 12 Jun 2024 17:32:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:References:
-	In-Reply-To:Cc:To:From:MIME-Version:Date:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=BG4GL+z3ZPmLqGMASwVu3fzquqZ9SV9NS6YSPboh/CQ=; b=r9SHw/8O2fhyQxBVNexqq0r0Et
-	mspM7/Ko6recsqhPGx7vFd/1JnGwTBQCbH1HKRbeBY5izeWi6Yr71/uz4RD88L4Nu2V2ZI/Dw31cv
-	yrd/zK+1lxlPakgZ9pMyaq9NYMK2jwMc+U7fcsiW1jN8pMg/+JQjsEim0M2JCO8sZhLfD3TTrCtg1
-	I1RRWVgS0Kaa0ghLJcTXEk0z8rYwimv8ICrEw7D+3PhqarigXEW+AQEkz09RRmyXw5qX5XeB/2ELi
-	5skXIO7/HIFK8aNQEkELxj84sGMkRsZuvKLS0G33xv/Cdh9SiN2VB3E0yRv6fG95l/Lp1Uycq8zI5
-	iBJ2ccHw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=fPThGAz12MeH9PjQlTm02EbSkiyt0hpEqNctSArKrZw=; b=SKDx5tQ4MI5Q3K
+	+m7L+9C3GddZ5w7e5M4LvTxTuW/AeHvLX6j4Z89LgCqpF2g516H0rVa+EDHa2j5ZiXZIoG7UTzRz4
+	UQ1MVdefhBtuemIFMRwZvEpveZpCCYabwdGdSyQ5Iahz+vad+BEEPuxuFYb0I2VjH0gVyccB74y/M
+	b9WMqqHLmwnefwoc8UFxUi3mrRnbCCKZaLjzJ/pCNYHYmruwzKlk/DopvGKJljmogr4Qa1skBDYU9
+	cqxnyUpKHHE8slXuNAhTVWyfczfDJ/lyOfvoXl3LCUp7KMIrPySif942sX8cU3dz3nFEigwZ3GxHx
+	xN6l6qphXprlpaPQWJ5w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sHRjv-0000000DZ3d-4Bho;
-	Wed, 12 Jun 2024 17:26:28 +0000
-Received: from sin.source.kernel.org ([145.40.73.55])
+	id 1sHRpl-0000000DaP4-2H5d;
+	Wed, 12 Jun 2024 17:32:29 +0000
+Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sHRjq-0000000DZ27-0OSW;
-	Wed, 12 Jun 2024 17:26:24 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 5B396CE21FE;
-	Wed, 12 Jun 2024 17:26:20 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 58848C116B1;
-	Wed, 12 Jun 2024 17:26:19 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1718213179;
-	bh=8mAINEWgGiadV1kEJND+F9WvJE3WuJIALswoL9FapSI=;
-	h=Date:From:To:Cc:In-Reply-To:References:Subject:From;
-	b=LypDdc56kiZi2JjvRRlVxTTMRS9WLepzejGCDmQSSqGvE8U5TsAtu5H7PCR7GWD2R
-	 +V0vb9dzRZdgXA/g8wDH85Ykf4fzHukdkp1eeNKP+zPvnocP0m15T1hyy8vIZjm+sI
-	 hZWYo5G91IrrSKFHkF6uATS6vQeP8wnNmRkjmDh1QI4l330XPyLK7vX1UUO4xEOzSd
-	 lSz0C1gpZyZLJ6XEs/TI3I55reyrrvf5ZZS+SB5ArmB+yErQn/fGulgKkQAYUGc0g4
-	 RXvFduL9Y9KlCeTYEfQZC/uvOb5lB2e3ERkH+SJHxK8V78Xu8YwttIPlA334EtlbOe
-	 AzBB30DTa/aiA==
-Date: Wed, 12 Jun 2024 11:26:18 -0600
+	id 1sHRph-0000000DaLd-1e6Q
+	for linux-rockchip@lists.infradead.org;
+	Wed, 12 Jun 2024 17:32:27 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1718213541;
+	bh=qT3T7wi3nE+eFhkZ2bUnCRb/SyRrxFgNwM5t87xUarI=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=f7WvOn48Zarlf+9C1J/sh6Z/Qf3l8ugftHR2RXi05xjXmPAVPn3HjySLkto+GtntX
+	 IOcxZwleqeeZ1J1OnqV5vDMMTvxM11ChjP/M0zv9VzWVZuJo3kv0ubKb8vix9N5BGt
+	 u8gV9bXASfQhuLm9mq3Mzr54L8lgRXRhkoCI5ZtOxH6wimSzF+2+Trmp5iE5cq3vmq
+	 d4Ie6pjUHsnHQHA3ZlfJjNRu/o2P8IepqEcJFqg75Jor1FUiwKYLR+a/i1X74HsLby
+	 H8Cs/5K9cnxsB00lS6tGXP2d2rMWz8mSONzemrQVQnrDySR3dPHW0iO4wDtdMWlHbH
+	 sTN6WPobSMLJQ==
+Received: from jupiter.universe (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: sre)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id B4D8937821A0;
+	Wed, 12 Jun 2024 17:32:21 +0000 (UTC)
+Received: by jupiter.universe (Postfix, from userid 1000)
+	id 5CAC14800CD; Wed, 12 Jun 2024 19:32:21 +0200 (CEST)
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+To: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
+	Heiko Stuebner <heiko@sntech.de>
+Cc: Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Jianfeng Liu <liujianfeng1994@gmail.com>,
+	Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>,
+	Nicolas Dufresne <nicolas.dufresne@collabora.com>,
+	linux-media@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	kernel@collabora.com,
+	Conor Dooley <conor.dooley@microchip.com>,
+	Sebastian Reichel <sebastian.reichel@collabora.com>
+Subject: [PATCH v5 2/5] media: dt-bindings: rockchip-vpu: Add RK3588 VPU121
+Date: Wed, 12 Jun 2024 19:15:42 +0200
+Message-ID: <20240612173213.42827-3-sebastian.reichel@collabora.com>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20240612173213.42827-1-sebastian.reichel@collabora.com>
+References: <20240612173213.42827-1-sebastian.reichel@collabora.com>
 MIME-Version: 1.0
-From: "Rob Herring (Arm)" <robh@kernel.org>
-To: Shresth Prasad <shresthprasad7@gmail.com>
-Cc: skhan@linuxfoundation.org, linux-phy@lists.infradead.org, 
- linux-kernel@vger.kernel.org, cristian.ciocaltea@collabora.com, 
- javier.carrasco.cruz@gmail.com, krzk+dt@kernel.org, 
- sebastian.reichel@collabora.com, heiko@sntech.de, 
- devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org, 
- conor+dt@kernel.org, linux-arm-kernel@lists.infradead.org, 
- s.hauer@pengutronix.de, vkoul@kernel.org, andy.yan@rock-chips.com, 
- kishon@kernel.org
-In-Reply-To: <20240612160336.5132-2-shresthprasad7@gmail.com>
-References: <20240612160336.5132-2-shresthprasad7@gmail.com>
-Message-Id: <171821317822.3213383.11527359300023322395.robh@kernel.org>
-Subject: Re: [PATCH v2] dt-bindings: phy: rockchip-emmc-phy: Convert to
- dtschema
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240612_102622_406063_A5A98FBB 
-X-CRM114-Status: GOOD (  10.86  )
+X-CRM114-CacheID: sfid-20240612_103225_634292_89C2A5D9 
+X-CRM114-Status: UNSURE (   9.61  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,54 +91,37 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+From: Jianfeng Liu <liujianfeng1994@gmail.com>
 
-On Wed, 12 Jun 2024 21:33:37 +0530, Shresth Prasad wrote:
-> Convert txt bindings of Rockchip EMMC PHY to dtschema to allow
-> for validation.
-> 
-> Signed-off-by: Shresth Prasad <shresthprasad7@gmail.com>
-> ---
-> Changes in v2:
->     - Fixed example
->     - Changed file referenced in grf.yaml
-> 
-> Tested against `rockchip/rk3399-firefly.dtb`, `rockchip/rk3399-orangepi.dtb`
-> and `rockchip/rk3399-pinebook-pro.dtb`.
-> 
->  .../bindings/phy/rockchip,emmc-phy.yaml       | 79 +++++++++++++++++++
->  .../bindings/phy/rockchip-emmc-phy.txt        | 43 ----------
->  .../devicetree/bindings/soc/rockchip/grf.yaml |  2 +-
->  3 files changed, 80 insertions(+), 44 deletions(-)
->  create mode 100644 Documentation/devicetree/bindings/phy/rockchip,emmc-phy.yaml
->  delete mode 100644 Documentation/devicetree/bindings/phy/rockchip-emmc-phy.txt
-> 
+RK3588 has four Hantro H1 VEPUs (encoder-only) modules and one combined
+Hantro H1/G1 VPU (decoder and encoder). These are not described as
+separate IP, since they are sharing an internal cache. This adds the
+RK3588 specific compatible string for the combined VPU, which seems to
+be identical to the version found in the RK3568.
 
-My bot found errors running 'make dt_binding_check' on your patch:
+Signed-off-by: Jianfeng Liu <liujianfeng1994@gmail.com>
+Acked-by: Conor Dooley <conor.dooley@microchip.com>
+Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+---
+ Documentation/devicetree/bindings/media/rockchip-vpu.yaml | 3 +++
+ 1 file changed, 3 insertions(+)
 
-yamllint warnings/errors:
-
-dtschema/dtc warnings/errors:
-/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/phy/rockchip,emmc-phy.example.dtb: syscon@ff770000: reg: [[0, 4285988864], [0, 65536]] is too long
-	from schema $id: http://devicetree.org/schemas/soc/rockchip/grf.yaml#
-/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/phy/rockchip,emmc-phy.example.dtb: syscon@ff770000: reg: [[0, 4285988864], [0, 65536]] is too long
-	from schema $id: http://devicetree.org/schemas/mfd/syscon.yaml#
-
-doc reference errors (make refcheckdocs):
-
-See https://patchwork.ozlabs.org/project/devicetree-bindings/patch/20240612160336.5132-2-shresthprasad7@gmail.com
-
-The base for the series is generally the latest rc1. A different dependency
-should be noted in *this* patch.
-
-If you already ran 'make dt_binding_check' and didn't see the above
-error(s), then make sure 'yamllint' is installed and dt-schema is up to
-date:
-
-pip3 install dtschema --upgrade
-
-Please check and re-submit after running the above command yourself. Note
-that DT_SCHEMA_FILES can be set to your schema file to speed up checking
-your schema. However, it must be unset to test all examples with your schema.
+diff --git a/Documentation/devicetree/bindings/media/rockchip-vpu.yaml b/Documentation/devicetree/bindings/media/rockchip-vpu.yaml
+index c57e1f488895..2710bb2fb0d1 100644
+--- a/Documentation/devicetree/bindings/media/rockchip-vpu.yaml
++++ b/Documentation/devicetree/bindings/media/rockchip-vpu.yaml
+@@ -31,6 +31,9 @@ properties:
+       - items:
+           - const: rockchip,rk3228-vpu
+           - const: rockchip,rk3399-vpu
++      - items:
++          - const: rockchip,rk3588-vpu121
++          - const: rockchip,rk3568-vpu
+ 
+   reg:
+     maxItems: 1
+-- 
+2.43.0
 
 
 _______________________________________________
