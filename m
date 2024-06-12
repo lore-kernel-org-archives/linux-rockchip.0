@@ -4,77 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 48716C27C53
-	for <linux-rockchip@archiver.kernel.org>; Wed, 12 Jun 2024 17:32:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7C8B0C27C75
+	for <linux-rockchip@archiver.kernel.org>; Wed, 12 Jun 2024 18:09:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Lcm+KgjAvj2a3OrkJZJhGjQFxNtSc++uHwFXKBCREoQ=; b=YLcwaYPV616X1T
-	58O4mKowEpDw479UMRbnHSBmdYYKmpJhrHFPpODR527X9AdkmMKMQBeM2FloJyF8evFeIpmRdh9Hf
-	I3/VrowYHhfVETJRQTM9MJvDVATxt9o6XRkMbpL5yhQe7N29Q8nMgg+lH65IWjgs/2KhZElFcEmt8
-	3I7BQ6EmMqwiobddwpjMzE0DHh6lp5pcLeJygPdcc/LAR1kwyIzOmtnqiCeq9LefJh5iDR/ryN2OH
-	D9QST2S8CetHBEabXjqTZ3BBOg4BgxQh8kKMKOO+0ybuOVURRrvLXUcrr0+bOWwuwd7d+xNz9gym1
-	tUGVyVAP7qYqI88pcKtA==;
+	List-Owner; bh=VnHIpguEqkGEF5XZlecxCCTP1FL2jto6zPFhZkPg9Ts=; b=O2AbwM6OrsaxWi
+	ZIibnwWIzcXCZeodj49QqA2EHyq9GeWSAMhtHZuZXmouYxXnUT+zULRHK48EerAi5rgXyWTpX/bRl
+	RM3flF9VOaRypJ57U9E4MVJgaKv9HBNPrelOcFkd0Zot+ffqmPzyx1uyEfOtgVpFbY2tqlMmx6iCK
+	c4ERJn9OfV4y4GOHpWte5sihrJW1clTwxvP5IvPtXjUfmSm1rrOwhO9eT+e2ngJnOxo+bdFt0DEn2
+	Ic7+efL383D+ZX44qx2lLgqgIcEzZT7zH9CEeKJKw7xhFJl/coexsp8VQcaNwhOeOWd0QODrGMQq7
+	EznrmkTEHqH/GxtSi5wQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sHRpq-0000000DaTo-2w9t;
-	Wed, 12 Jun 2024 17:32:34 +0000
-Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
+	id 1sHSP8-0000000DfA1-2y4L;
+	Wed, 12 Jun 2024 18:09:02 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sHRpk-0000000DaOM-1YyS
+	id 1sHSP5-0000000Df99-3Nbj
 	for linux-rockchip@lists.infradead.org;
-	Wed, 12 Jun 2024 17:32:30 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1718213542;
-	bh=09CuY792gYzujtrKgRSq5WilLJwPVg6zDs+yUzN6Tus=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=ChRObb4cGRQZCu7ko5Pmmb3VO70BNnD1QJBg+PJckCN1aDpi+ABBzjsl+VfAIPrwx
-	 miEp470WoHAj1pEiLwbGAbZTta0smRqyjwEZOXkazG55sUZctz+17lKJQ3qQqxsUlU
-	 n7ogL6s/897T+61wHIKarYCgKscaPcw1tC7ENA4UMR8Lz5XwbxoNTrehhmMJvaEkfs
-	 mrA47oip4cdMHnNF+Nf1prOzycQIpC5fSAYnCOHBPrXTUw7HLC1GA53ZAiR3IqSALq
-	 uOF3fGKByuDD9q88p93qgoL51GRmjqHR1mMs7MCcskL3Vnh662CmRnr5+vXjodEk8B
-	 m/AgKX1gDZW1A==
-Received: from jupiter.universe (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: sre)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 3260037821A3;
-	Wed, 12 Jun 2024 17:32:22 +0000 (UTC)
-Received: by jupiter.universe (Postfix, from userid 1000)
-	id 624CA4800D0; Wed, 12 Jun 2024 19:32:21 +0200 (CEST)
-From: Sebastian Reichel <sebastian.reichel@collabora.com>
+	Wed, 12 Jun 2024 18:09:01 +0000
+Received: from i53875be5.versanet.de ([83.135.91.229] helo=diego.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1sHSOy-00025Y-8s; Wed, 12 Jun 2024 20:08:52 +0200
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
 To: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
-	Heiko Stuebner <heiko@sntech.de>
-Cc: Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Jianfeng Liu <liujianfeng1994@gmail.com>,
-	Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>,
-	Nicolas Dufresne <nicolas.dufresne@collabora.com>,
-	linux-media@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	kernel@collabora.com,
-	Hugh Cole-Baker <sigmaris@gmail.com>,
-	Sebastian Reichel <sebastian.reichel@collabora.com>
-Subject: [PATCH v5 5/5] arm64: dts: rockchip: Add VPU121 support for RK3588
-Date: Wed, 12 Jun 2024 19:15:45 +0200
-Message-ID: <20240612173213.42827-6-sebastian.reichel@collabora.com>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20240612173213.42827-1-sebastian.reichel@collabora.com>
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
+ Sebastian Reichel <sebastian.reichel@collabora.com>
+Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Jianfeng Liu <liujianfeng1994@gmail.com>,
+ Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>,
+ Nicolas Dufresne <nicolas.dufresne@collabora.com>,
+ linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ Sebastian Reichel <sebastian.reichel@collabora.com>, kernel@collabora.com
+Subject: Re: [PATCH v5 3/5] media: hantro: Add RK3588 VEPU121 support
+Date: Wed, 12 Jun 2024 20:08:51 +0200
+Message-ID: <1739853.izSxrag8PF@diego>
+In-Reply-To: <20240612173213.42827-4-sebastian.reichel@collabora.com>
 References: <20240612173213.42827-1-sebastian.reichel@collabora.com>
+ <20240612173213.42827-4-sebastian.reichel@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240612_103228_748366_2A5A7570 
-X-CRM114-Status: UNSURE (   9.16  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240612_110859_886123_1465B8B2 
+X-CRM114-Status: GOOD (  27.16  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,56 +70,88 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Jianfeng Liu <liujianfeng1994@gmail.com>
+Am Mittwoch, 12. Juni 2024, 19:15:43 CEST schrieb Sebastian Reichel:
+> Avoid exposing each of the 4 Hantro H1 cores separately to userspace.
+> For now just expose the first one.
+> 
+> Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+> ---
+>  .../media/platform/verisilicon/hantro_drv.c   | 38 +++++++++++++++++++
+>  1 file changed, 38 insertions(+)
+> 
+> diff --git a/drivers/media/platform/verisilicon/hantro_drv.c b/drivers/media/platform/verisilicon/hantro_drv.c
+> index 34b123dafd89..b722a20c5fe3 100644
+> --- a/drivers/media/platform/verisilicon/hantro_drv.c
+> +++ b/drivers/media/platform/verisilicon/hantro_drv.c
+> @@ -722,6 +722,7 @@ static const struct of_device_id of_hantro_match[] = {
+>  	{ .compatible = "rockchip,rk3399-vpu", .data = &rk3399_vpu_variant, },
+>  	{ .compatible = "rockchip,rk3568-vepu", .data = &rk3568_vepu_variant, },
+>  	{ .compatible = "rockchip,rk3568-vpu", .data = &rk3568_vpu_variant, },
+> +	{ .compatible = "rockchip,rk3588-vepu121", .data = &rk3568_vpu_variant, },
+>  	{ .compatible = "rockchip,rk3588-av1-vpu", .data = &rk3588_vpu981_variant, },
+>  #endif
+>  #ifdef CONFIG_VIDEO_HANTRO_IMX8M
+> @@ -992,6 +993,39 @@ static const struct media_device_ops hantro_m2m_media_ops = {
+>  	.req_queue = v4l2_m2m_request_queue,
+>  };
+>  
+> +/*
+> + * Some SoCs, like RK3588 have multiple identical Hantro cores, but the
+> + * kernel is currently missing support for multi-core handling. Exposing
+> + * separate devices for each core to userspace is bad, since that does
+> + * not allow scheduling tasks properly (and creates ABI). With this workaround
+> + * the driver will only probe for the first core and early exit for the other
+> + * cores. Once the driver gains multi-core support, the same technique
+> + * for detecting the main core can be used to cluster all cores together.
+> + */
+> +static int hantro_disable_multicore(struct hantro_dev *vpu)
+> +{
+> +	const char *compatible;
+> +	struct device_node *node;
+> +	int ret;
+> +
+> +	/* Intentionally ignores the fallback strings */
+> +	ret = of_property_read_string(vpu->dev->of_node, "compatible", &compatible);
+> +	if (ret)
+> +		return ret;
+> +
+> +	/* first compatible node found from the root node is considered the main core */
+> +	node = of_find_compatible_node(NULL, NULL, compatible);
+> +	if (!node)
+> +		return -EINVAL; /* broken DT? */
+> +
+> +	if (vpu->dev->of_node != node) {
+> +		dev_info(vpu->dev, "missing multi-core support, ignoring this instance\n");
+> +		return -ENODEV;
+> +	}
+> +
+> +	return 0;
+> +}
+> +
+>  static int hantro_probe(struct platform_device *pdev)
+>  {
+>  	const struct of_device_id *match;
+> @@ -1011,6 +1045,10 @@ static int hantro_probe(struct platform_device *pdev)
+>  	match = of_match_node(of_hantro_match, pdev->dev.of_node);
+>  	vpu->variant = match->data;
+>  
+> +	ret = hantro_disable_multicore(vpu);
+> +	if (ret)
+> +		return ret;
+> +
 
-Enable Hantro G1 video decoder in RK3588's devicetree.
+I think this might be better as two patches?
 
-Tested with FFmpeg v4l2_request code taken from [1]
-with MPEG2, H.264 and VP8 samples.
+As this patch stands, the disable-multicore handling is done for _all_
+hantro variants, so part of me wants this to be labeled as such.
 
-[1] https://github.com/LibreELEC/LibreELEC.tv/blob/master/packages/multimedia/ffmpeg/patches/v4l2-request/ffmpeg-001-v4l2-request.patch
+The whole reasoning is completely ok, but somehow having this under
+the "add rk3588" umbrella feels strange ;-)
 
-Signed-off-by: Jianfeng Liu <liujianfeng1994@gmail.com>
-Tested-by: Hugh Cole-Baker <sigmaris@gmail.com>
-Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
----
- arch/arm64/boot/dts/rockchip/rk3588s.dtsi | 21 +++++++++++++++++++++
- 1 file changed, 21 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588s.dtsi b/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
-index 9edbcfe778ca..e7e1b456b9b9 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
-@@ -1239,6 +1239,27 @@ jpeg_enc3_mmu: iommu@fdbac800 {
- 		#iommu-cells = <0>;
- 	};
- 
-+	vpu: video-codec@fdb50000 {
-+		compatible = "rockchip,rk3588-vpu121", "rockchip,rk3568-vpu";
-+		reg = <0x0 0xfdb50000 0x0 0x800>;
-+		interrupts = <GIC_SPI 119 IRQ_TYPE_LEVEL_HIGH 0>;
-+		interrupt-names = "vdpu";
-+		clocks = <&cru ACLK_VPU>, <&cru HCLK_VPU>;
-+		clock-names = "aclk", "hclk";
-+		iommus = <&vpu_mmu>;
-+		power-domains = <&power RK3588_PD_VDPU>;
-+	};
-+
-+	vpu_mmu: iommu@fdb50800 {
-+		compatible = "rockchip,rk3588-iommu", "rockchip,rk3568-iommu";
-+		reg = <0x0 0xfdb50800 0x0 0x40>;
-+		interrupts = <GIC_SPI 118 IRQ_TYPE_LEVEL_HIGH 0>;
-+		clock-names = "aclk", "iface";
-+		clocks = <&cru ACLK_VPU>, <&cru HCLK_VPU>;
-+		power-domains = <&power RK3588_PD_VDPU>;
-+		#iommu-cells = <0>;
-+	};
-+
- 	av1d: video-codec@fdc70000 {
- 		compatible = "rockchip,rk3588-av1-vpu";
- 		reg = <0x0 0xfdc70000 0x0 0x800>;
--- 
-2.43.0
+Heiko
+
+
 
 
 _______________________________________________
