@@ -4,57 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 00D89C27C78
-	for <linux-rockchip@archiver.kernel.org>; Wed, 12 Jun 2024 01:14:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A1BB1C27C78
+	for <linux-rockchip@archiver.kernel.org>; Wed, 12 Jun 2024 03:01:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=+O/Sxaqs/coNsP86eMGkylVbGZtBV2dRdk3epVXiUKk=; b=FB48ktMQhMrWgo
-	wL1idISeHBkS+KH6NsUG/ZCSOGXTRLsK7o/PzXjOt50Yb1j719LWNGrVxk+rWHMlxNDa5Hv7JnBkR
-	TNFDEBlUtbjCIq2ELQk8mPv4QxWnpl2BP7sioBc+Vh2CSJEGa0vHpDanjNXbDajOLxukBJymlNgUw
-	oc3unQNwEBModltKUOOEVrcbZ9qHHtRP8xKwtQ5JDNE8fqT7z5AHkfvahSKvA2MQtdYxxdl2jVNs0
-	ehu2Z36xMB78SWmc488rHTK793CWwDmrBRjKe111kE5oFbHOjrd1E/YGCB/IVVvwI1YvBNxo3McZe
-	dyXKemtvscbR10o4dXcA==;
+	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
+	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=YNU1k0rdZDBiTgZXHwF4PXCJOn4XTPrBEZJtAwVS58I=; b=t/DFRcJCp9kRPGahcgboIg6KpC
+	dQdQ1/SXrEoQWzlkLmpD3zPilpsa23A1yWK9+ZIa5JcYcwAim0FenBdrYwP2ZRlgobrTI/9NbrWow
+	YZp3ah5vEnpUPt397Jo132L7LB3k8K/axItNIn8UaNhvT7Gbh7908JfysAhuVN7kF6AIJNJG54v2W
+	K+IPNhVMxQsFN+HUbeGQ3rk5HwH7Rr+VGgE7ZtkkM2JSaLoZMk59KdCIH5dQQgXPyWCvqLDhxxixS
+	RXCb4KvleeiNr31MWiQ7MDlxDaAPNkds0ksf9UhA6AUPr/I6NfeSUfnL/GXCoFDf1OTfCMhOmPmvR
+	i6evLb4A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sHCZT-0000000AeIS-1cbo;
-	Wed, 12 Jun 2024 01:14:39 +0000
-Received: from smtpbguseast1.qq.com ([54.204.34.129])
+	id 1sHEF8-0000000ArZ0-0m19;
+	Wed, 12 Jun 2024 03:01:46 +0000
+Received: from mail.manjaro.org ([116.203.91.91])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sHCZQ-0000000AeF2-0tnW
+	id 1sHEF4-0000000ArX8-3Yjq
 	for linux-rockchip@lists.infradead.org;
-	Wed, 12 Jun 2024 01:14:38 +0000
-X-QQ-mid: bizesmtp77t1718154838tmm3c9ui
-X-QQ-Originating-IP: hzFwlcaF6A3ehe/ZfSkHF2KUdnPUxqRl4fZFJNOFJDo=
-Received: from [192.168.159.131] ( [106.150.157.243])
-	by bizesmtp.qq.com (ESMTP) with 
-	id ; Wed, 12 Jun 2024 09:13:55 +0800 (CST)
-X-QQ-SSF: 0000000000000000000000000000000
-X-QQ-GoodBg: 0
-X-BIZMAIL-ID: 17490978406212277040
-Message-ID: <3BA71BD12E90A400+a882cc79-85c5-48c7-acb0-bb31f45c7b9a@radxa.com>
-Date: Wed, 12 Jun 2024 10:13:54 +0900
+	Wed, 12 Jun 2024 03:01:45 +0000
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] arm64: dts: rockchip: make "poweroff" work on rock-5a
-To: Dragan Simic <dsimic@manjaro.org>
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
+	t=1718161299;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=HIrwMckBwVtYf7EpF2NcoeEcwDRVGbJiqslvQ/yvl80=;
+	b=k5/s+Q2i9ZyhgktmkSwXThY89m1Ddxunv5uOw0ZXKyLGB4qtsS5UF0H9IWG/2+DKQrLcEH
+	xXvEIWBwMJokOPachpZs6gcvdnqShT6ry4DRY60byNDbSVSui5OYf+5Fo0jkwK0Czz41NU
+	BnXVVY4OmPnEjFYEyKrUciiFDuJueW+mfrzTxMFuaRghqaOkjANj58iBP+AFcTzOn2Bt0U
+	EMlu0w13JoxnsOLy5BZE+9GVqHT6v94kuwJRrkuxM2Pwluv/t9Vz9Nxw+vbIhfRcYAd6d9
+	gqwV5JTu3c7z14ABENBshMwsjQXB1q/He7ZQAspvSvFOMJoA1a9apbh0KA8R8A==
+Date: Wed, 12 Jun 2024 05:01:39 +0200
+From: Dragan Simic <dsimic@manjaro.org>
+To: FUKAUMI Naoki <naoki@radxa.com>
 Cc: heiko@sntech.de, robh@kernel.org, krzk+dt@kernel.org,
  conor+dt@kernel.org, devicetree@vger.kernel.org,
  linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH v2] arm64: dts: rockchip: make poweroff(8) work on Radxa
+ ROCK 5A
+In-Reply-To: <20240612011221.822-1-naoki@radxa.com>
 References: <20240611122746.751-1-naoki@radxa.com>
- <f623e316c7f94a318c78da9c48f66dc7@manjaro.org>
- <bf202a47cc6453d5aaacf09a29009380@manjaro.org>
-Content-Language: en-US
-From: FUKAUMI Naoki <naoki@radxa.com>
-In-Reply-To: <bf202a47cc6453d5aaacf09a29009380@manjaro.org>
-X-QQ-SENDSIZE: 520
-Feedback-ID: bizesmtp:radxa.com:qybglogicsvrgz:qybglogicsvrgz6a-0
+ <20240612011221.822-1-naoki@radxa.com>
+Message-ID: <c47a034c48193745692b20d0e36ba7e7@manjaro.org>
+X-Sender: dsimic@manjaro.org
+Authentication-Results: ORIGINATING;
+	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240611_181436_826066_271FB34C 
-X-CRM114-Status: GOOD (  15.60  )
+X-CRM114-CacheID: sfid-20240611_200143_379271_42347D0E 
+X-CRM114-Status: GOOD (  11.75  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -66,49 +69,52 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGVsbG8gRHJhZ2FuLAoKVGhhbmsgeW91IHNvIG11Y2ggZm9yIHlvdXIgcmVwbHkhCgpCZXN0IHJl
-Z2FyZHMsCgotLQpGVUtBVU1JIE5hb2tpClJhZHhhIENvbXB1dGVyIChTaGVuemhlbikgQ28uLCBM
-dGQuCgpPbiA2LzExLzI0IDIyOjQ1LCBEcmFnYW4gU2ltaWMgd3JvdGU6Cj4gT24gMjAyNC0wNi0x
-MSAxNTozNywgRHJhZ2FuIFNpbWljIHdyb3RlOgo+PiBIZWxsbyBGdWthbWksCj4+Cj4+IE9uIDIw
-MjQtMDYtMTEgMTQ6MjcsIEZVS0FVTUkgTmFva2kgd3JvdGU6Cj4+PiB0byBtYWtlICJwb3dlcm9m
-ZiIgY29tbWFuZCB3b3JrLCBhZGQgInN5c3RlbS1wb3dlci1jb250cm9sbGVyOyIgaW50bwo+Pj4g
-cG1pY0AwLiB3aXRob3V0IHRoaXMsICJwb3dlcm9mZiIgd29ya3MgYXMgc2FtZSBhcyAicmVib290
-Ii4KPiAKPiBTb3JyeSwgSSBmb3Jnb3QgdG8gYWRkIHRoYXQgdGhlIGRlc2NyaXB0aW9uIGFib3Zl
-IGNvdWxkIGJlIHJld29yZGVkCj4gYSBiaXQsIGUuZy4gbm90IHRvIHJlcGVhdCB3aGF0J3MgYWxy
-ZWFkeSB2aXNpYmxlIGluIHRoZSBwYXRjaCBpdHNlbGYuCj4gCj4gRm9yIGV4YW1wbGU6Cj4gCj4g
-IMKgwqDCoCBEZXNpZ25hdGUgdGhlIFJLODA2IFBNSUMgb24gdGhlIFJhZHhhIFJPQ0sgNUEgYXMg
-dGhlIHN5c3RlbSBwb3dlcgo+ICDCoMKgwqAgY29udHJvbGxlciwgc28gdGhlIGJvYXJkIHNodXRz
-IGRvd24gcHJvcGVybHkgb24gcG93ZXJvZmYoOCkuCj4gCj4gVGhlIHBhdGNoIHN1YmplY3QgY291
-bGQgYWxzbyBiZSB0d2Vha2VkIGEgYml0LCBlLmcuIHRvIHJlZmVyIHRvIHRoZQo+IGJvYXJkIGFz
-ICJSYWR4YSBST0NLIDVBIi4KPiAKPj4+IEZpeGVzOiA3NWZkY2JjOGY0YzEgKCJhcm02NDogZHRz
-OiByb2NrY2hpcDogYWRkIFBNSUMgdG8gcm9jay01YSIpCj4+PiBTaWduZWQtb2ZmLWJ5OiBGVUtB
-VU1JIE5hb2tpIDxuYW9raUByYWR4YS5jb20+Cj4+Cj4+IExvb2tpbmcgZ29vZCB0byBtZSwgd2l0
-aCBhIHNtYWxsIHJlbWFyayBiZWxvdy4KPj4KPj4gUmV2aWV3ZWQtYnk6IERyYWdhbiBTaW1pYyA8
-ZHNpbWljQG1hbmphcm8ub3JnPgo+Pgo+Pj4gLS0tCj4+PiDCoGFyY2gvYXJtNjQvYm9vdC9kdHMv
-cm9ja2NoaXAvcmszNTg4cy1yb2NrLTVhLmR0cyB8IDIgKysKPj4+IMKgMSBmaWxlIGNoYW5nZWQs
-IDIgaW5zZXJ0aW9ucygrKQo+Pj4KPj4+IGRpZmYgLS1naXQgYS9hcmNoL2FybTY0L2Jvb3QvZHRz
-L3JvY2tjaGlwL3JrMzU4OHMtcm9jay01YS5kdHMKPj4+IGIvYXJjaC9hcm02NC9ib290L2R0cy9y
-b2NrY2hpcC9yazM1ODhzLXJvY2stNWEuZHRzCj4+PiBpbmRleCBiMDcwOTU1NjI3YmUuLmNmN2I4
-NzhhM2ViMiAxMDA2NDQKPj4+IC0tLSBhL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmsz
-NTg4cy1yb2NrLTVhLmR0cwo+Pj4gKysrIGIvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9y
-azM1ODhzLXJvY2stNWEuZHRzCj4+PiBAQCAtMzk1LDYgKzM5NSw4IEBAIHBtaWNAMCB7Cj4+PiDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCA8JnJrODA2X2R2czJfbnVsbD4sIDwmcms4
-MDZfZHZzM19udWxsPjsKPj4+IMKgwqDCoMKgwqDCoMKgwqAgc3BpLW1heC1mcmVxdWVuY3kgPSA8
-MTAwMDAwMD47Cj4+Pgo+Pgo+PiBJIGRvbid0IHRoaW5rIHRoZXJlJ3MgbmVlZCBmb3IgdGhlIGVt
-cHR5IGxpbmUgcmlnaHQgYWJvdmUsIGkuZS4KPj4gYmV0d2VlbiB0aGUgInNwaS1tYXgtZnJlcXVl
-bmN5IiBhbmQgInN5c3RlbS1wb3dlci1jb250cm9sbGVyIiBsaW5lcy4KPj4KPj4+ICvCoMKgwqDC
-oMKgwqDCoCBzeXN0ZW0tcG93ZXItY29udHJvbGxlcjsKPj4+ICsKPj4+IMKgwqDCoMKgwqDCoMKg
-wqAgdmNjMS1zdXBwbHkgPSA8JnZjYzV2MF9zeXM+Owo+Pj4gwqDCoMKgwqDCoMKgwqDCoCB2Y2My
-LXN1cHBseSA9IDwmdmNjNXYwX3N5cz47Cj4+PiDCoMKgwqDCoMKgwqDCoMKgIHZjYzMtc3VwcGx5
-ID0gPCZ2Y2M1djBfc3lzPjsKPj4KPj4gX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX18KPj4gTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0Cj4+IExpbnV4LXJv
-Y2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKPj4gaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcv
-bWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo+IAoKX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0Ckxp
-bnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5v
-cmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+Hello Fukami,
+
+On 2024-06-12 03:12, FUKAUMI Naoki wrote:
+> Designate the RK806 PMIC on the Radxa ROCK 5A as the system power
+> controller, so the board shuts down properly on poweroff(8).
+> 
+> Fixes: 75fdcbc8f4c1 ("arm64: dts: rockchip: add PMIC to rock-5a")
+> 
+> Signed-off-by: FUKAUMI Naoki <naoki@radxa.com>
+> Reviewed-by: Dragan Simic <dsimic@manjaro.org>
+
+Thanks for the v2.  Just another small suggestion, the tags above
+should go like this, with no empty lines between them:
+
+   Fixes: ...
+   Reviewed-by: ...
+   Signed-off-by: ...
+
+> Changes in v2:
+> - remove an empty line above "system-power-controller;"
+> - reword commit message
+> - add R-b tag
+> ---
+>  arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts | 1 +
+>  1 file changed, 1 insertion(+)
+> 
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts
+> b/arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts
+> index b070955627be..3b9a349362db 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts
+> +++ b/arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts
+> @@ -394,6 +394,7 @@ pmic@0 {
+>  		pinctrl-0 = <&pmic_pins>, <&rk806_dvs1_null>,
+>  			    <&rk806_dvs2_null>, <&rk806_dvs3_null>;
+>  		spi-max-frequency = <1000000>;
+> +		system-power-controller;
+> 
+>  		vcc1-supply = <&vcc5v0_sys>;
+>  		vcc2-supply = <&vcc5v0_sys>;
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
