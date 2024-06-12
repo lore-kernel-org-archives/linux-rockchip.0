@@ -4,57 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5FA41C27C7B
-	for <linux-rockchip@archiver.kernel.org>; Wed, 12 Jun 2024 13:53:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C20DDC27C53
+	for <linux-rockchip@archiver.kernel.org>; Wed, 12 Jun 2024 13:53:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=XNMSJ8lJzPXleIqM1A05YvI9dfxGWO2gtYoHYPDQxYs=; b=bOIyTYlWsE9qeD
-	Q99kWzPCBQp0q18z0tLiJDUvU5TUIaZjHrzNTFjQborScBR8xxVA1nV+KyhpIxHfzziRDkqmHLa42
-	n+nM6t+QQ0VdANF8NuDIRtsG+Omlz29ZP3TGJ0v7Y1Wh772/Cle5Z4qin8ekGA25dwSz2EUm0iZuN
-	G9fJKKCAOb3C0f9PUKHoPEIEZ0bI9dyPN2OcvGn5sN4YQ/JWlij761dhPQ9+JWW3rMrSQmyIRzr61
-	4p3kpyry72CAU7SQ8a2ia6Ul5//XaBXJxnicAOGXL954U7IepYeBexRBbMxbc3ry9PRwxFw1qKKGj
-	+MCM6XbATJCbkaznqUbw==;
+	List-Owner; bh=DtJJzfFH6VXjDgtUBHtBQzI1KLE8RSufTppjn8vHpws=; b=XWoiVtvO+bxiGv
+	6JTBpG+8Gos42n1KSDhF/ywe2STrR0sjXPUvdXgbFfvj4zKP8TYEgF+Vy/RZprDF9d4S91s3UmPWb
+	9nohA6CW0J5/KLWcT/oRKPT+OZ0QbwOkxmJPO2XZhGKxeK3s6AKnHzAlDIPcBKe8JzaczeaJhYdmY
+	dh689kDM7VAUGKNoOj+mG6Aos8SVLdZjXR11qi6xV3FqXbBfmNFOqXOCqebjR45IFFCshJG2516Wc
+	eWXtRE45RlL9pFGRw2e9YMcT5hT8z+A9zz+qwUil8gfHwuoG3raptz57kSU/xAyzCD88j8GwsepGz
+	E9VbfMZN0LbMbctzL4NA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sHOPo-0000000Cok1-0u2L;
-	Wed, 12 Jun 2024 13:53:28 +0000
-Received: from mail-wm1-f52.google.com ([209.85.128.52])
+	id 1sHOQ1-0000000CouJ-1g0w;
+	Wed, 12 Jun 2024 13:53:41 +0000
+Received: from mail-wr1-f52.google.com ([209.85.221.52])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sHOPU-0000000CoUO-3wV4;
-	Wed, 12 Jun 2024 13:53:10 +0000
-Received: by mail-wm1-f52.google.com with SMTP id 5b1f17b1804b1-4217990f8baso40673065e9.2;
-        Wed, 12 Jun 2024 06:53:08 -0700 (PDT)
+	id 1sHOPX-0000000CoVb-0S3Y;
+	Wed, 12 Jun 2024 13:53:12 +0000
+Received: by mail-wr1-f52.google.com with SMTP id ffacd0b85a97d-35f223e7691so624841f8f.1;
+        Wed, 12 Jun 2024 06:53:10 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1718200387; x=1718805187;
+        d=1e100.net; s=20230601; t=1718200389; x=1718805189;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=1sOWf4s16bdbdC+Bd/5xe8ghxhHHN8/mdSsDewIxn9I=;
-        b=rGGco0SSsAL78pDTngFOMFm9F787bDCyfx/hXw0HJy9ILiGpAPtjnGETaCDLUa/9ah
-         x/1gScnrAnozAdHhEu9fy8ncqjPF5m68XRcRKfzQL8K7oexQY8u2gpFnFmb/P65QQ+7r
-         Q58iQ8QiNbWk7HZYOBj7zMMonbAbFi7ACo7n6coCDLiLRk/gtFseM0TOMhfxIxgxLgBp
-         Eki5rLmVUSOT6Gh2PGO2GWlv1WZRPLezsq5ESWvo9OpnXHqDP+bJkiLnVY8OC5SoX+xY
-         m7SenNMVYoXaR17Y9aokufItwad+Auw5d/yRfFNsNd4FuB5JDxRgHi5wZHb15qBroxqi
-         n7nw==
-X-Forwarded-Encrypted: i=1; AJvYcCXT4a+hIqg+BtAbx3SGq4CqxM3tVDZuCDJYi7bzafDaWrCpLiNFukR9Dwo6c56lO3uWE7ygGdTTNi+8exsLlMw639zAyqV+lbLxmdxx8NqUmI7n/ok2Z+L5ewqpR2sHkQIGXcxSfHF9QWiNwEi0SqDU330QXhhq5Fc=
-X-Gm-Message-State: AOJu0Yw6zyKNZmJa1pSpOhomNnI5We8NESCps8EC5Eejkg2OWq9erOfL
-	vD0cAWFGAMXjfy5QH6CKJ1HE/OdUEJSKiCY5eeOrySF2k3E67ARO
-X-Google-Smtp-Source: AGHT+IFWJyf2ltiawIwb7HZCUIMjcxzq4Ddbb+KqUPIZFB1bs1VWyRFUFZqI4ItOvEpiR5FgBSrKxQ==
-X-Received: by 2002:a7b:cc84:0:b0:421:80e3:dc8d with SMTP id 5b1f17b1804b1-422863ae805mr14188595e9.24.1718200387215;
-        Wed, 12 Jun 2024 06:53:07 -0700 (PDT)
+        bh=cz9Php77CN5sqNTwFGYv2UDE+c/YCm+M4vWABkPbT/c=;
+        b=mZsN4jRYnkP9FLkHLraSIcqoFVXJODNA4LyT01HZYuMixJfRcPbpPXqavYUTYC98xP
+         OLncjP2ZfkGmC9E03/9deSeB2w1XmV+lfKOHTOzC/cezWQiFGjRvwGAUSDtcn/RNwQWp
+         G3RN66fe8wBBnnhv8Qbi2AHTb61lBLD8k0qGD2Z+dXYCUpk/js+WWsdZaFEKSa+K6WOH
+         pDAEnFLJicEKubpdXuAEiDM7H4hhLlnWXtHm8Z5xvZg2A+R+Zjs/w8V6n0XXzoRGmhRS
+         op/MfK5SlTiw5MqC4yUIhfGZMrubBNSfYVkus0OJQIhkUzyofhDs5aH4S4zkFtMvvRF1
+         Nilg==
+X-Forwarded-Encrypted: i=1; AJvYcCWkjVkik+9UBTuVaMlvua06nAjFfkly2v/atgqlyN4p0HoKYPxKN3Os2ZNcXQwPcxSN9H1ut7bIFR+rrR1lSBrVq7+pA8xi0DRJzVaAxO2vkL0ygUA5+2Jc624UE5TeUSBG+rhClCZ+XjUp/ud3YvNT+T8D+7bP664=
+X-Gm-Message-State: AOJu0YzjcKGX+bv1MKWcDMgZVAZJ1af9V7HDnuzQMDdlGcY5dvPHmu7C
+	+qsiK4jZG8s4QqADdLM8rQGK1SroS1VYCo3DImTvZc/BMGDeEg7y
+X-Google-Smtp-Source: AGHT+IEqb5Q+XEHVzZbym8NFLwOC3wy9t9R6o2Sd4pfu6UKsad2cWupip8wZTpYH3xU98HUt7kmz6A==
+X-Received: by 2002:a05:6000:1250:b0:35f:2551:b967 with SMTP id ffacd0b85a97d-35f2b28a77amr5039442f8f.16.1718200389052;
+        Wed, 12 Jun 2024 06:53:09 -0700 (PDT)
 Received: from ramallet.home (cst-prg-45-36.cust.vodafone.cz. [46.135.45.36])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-422871ec9e6sm28201695e9.38.2024.06.12.06.53.04
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-422871ec9e6sm28201695e9.38.2024.06.12.06.53.07
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 12 Jun 2024 06:53:06 -0700 (PDT)
+        Wed, 12 Jun 2024 06:53:08 -0700 (PDT)
 From: Tomeu Vizoso <tomeu@tomeuvizoso.net>
-Date: Wed, 12 Jun 2024 15:52:55 +0200
-Subject: [PATCH 2/9] iommu/rockchip: Attach multiple power domains
+Date: Wed, 12 Jun 2024 15:52:56 +0200
+Subject: [PATCH 3/9] dt-bindings: mailbox: rockchip,rknn: Add bindings
 MIME-Version: 1.0
-Message-Id: <20240612-6-10-rocket-v1-2-060e48eea250@tomeuvizoso.net>
+Message-Id: <20240612-6-10-rocket-v1-3-060e48eea250@tomeuvizoso.net>
 References: <20240612-6-10-rocket-v1-0-060e48eea250@tomeuvizoso.net>
 In-Reply-To: <20240612-6-10-rocket-v1-0-060e48eea250@tomeuvizoso.net>
 To: Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>, 
@@ -75,8 +75,8 @@ Cc: iommu@lists.linux.dev, linux-arm-kernel@lists.infradead.org,
  Tomeu Vizoso <tomeu@tomeuvizoso.net>
 X-Mailer: b4 0.13.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240612_065309_012976_FEBB0C4D 
-X-CRM114-Status: GOOD (  20.09  )
+X-CRM114-CacheID: sfid-20240612_065311_228694_23836672 
+X-CRM114-Status: GOOD (  11.69  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,105 +93,142 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-IOMMUs with multiple base addresses can also have multiple power
-domains.
-
-The base framework only takes care of a single power domain, as some
-devices will need for these power domains to be powered on in a specific
-order.
-
-Use a helper function to stablish links in the order in which they are
-in the DT.
-
-This is needed by the IOMMU used by the NPU in the RK3588.
+Add the bindings for the Neural Processing Unit IP from Rockchip.
 
 Signed-off-by: Tomeu Vizoso <tomeu@tomeuvizoso.net>
 ---
- drivers/iommu/rockchip-iommu.c | 36 ++++++++++++++++++++++++++++++++++++
- 1 file changed, 36 insertions(+)
+ .../devicetree/bindings/npu/rockchip,rknn.yaml     | 123 +++++++++++++++++++++
+ 1 file changed, 123 insertions(+)
 
-diff --git a/drivers/iommu/rockchip-iommu.c b/drivers/iommu/rockchip-iommu.c
-index f5629515bd78..673b0ebb6262 100644
---- a/drivers/iommu/rockchip-iommu.c
-+++ b/drivers/iommu/rockchip-iommu.c
-@@ -6,6 +6,8 @@
-  *			Daniel Kurtz <djkurtz@chromium.org>
-  */
- 
-+#include "linux/err.h"
-+#include "linux/pm_domain.h"
- #include <linux/clk.h>
- #include <linux/compiler.h>
- #include <linux/delay.h>
-@@ -115,6 +117,7 @@ struct rk_iommu {
- 	struct iommu_device iommu;
- 	struct list_head node; /* entry in rk_iommu_domain.iommus */
- 	struct iommu_domain *domain; /* domain to which iommu is attached */
-+	struct dev_pm_domain_list *pmdomains;
- };
- 
- struct rk_iommudata {
-@@ -1186,6 +1189,7 @@ static int rk_iommu_probe(struct platform_device *pdev)
- 	struct resource *res;
- 	const struct rk_iommu_ops *ops;
- 	int num_res = pdev->num_resources;
-+	int pm_domain_count;
- 	int err, i;
- 
- 	iommu = devm_kzalloc(dev, sizeof(*iommu), GFP_KERNEL);
-@@ -1271,6 +1275,35 @@ static int rk_iommu_probe(struct platform_device *pdev)
- 	if (!dma_dev)
- 		dma_dev = &pdev->dev;
- 
-+	pm_domain_count = of_property_count_strings(iommu->dev->of_node, "power-domain-names");
-+	if (pm_domain_count > 0) {
-+		const char **pm_domains = kvmalloc_array(pm_domain_count, sizeof(*pm_domains), GFP_KERNEL);
-+		struct dev_pm_domain_attach_data pm_domain_data = {
-+			.pd_names = pm_domains,
-+			.num_pd_names = pm_domain_count,
-+			.pd_flags = PD_FLAG_DEV_LINK_ON,
-+		};
-+		int i;
+diff --git a/Documentation/devicetree/bindings/npu/rockchip,rknn.yaml b/Documentation/devicetree/bindings/npu/rockchip,rknn.yaml
+new file mode 100644
+index 000000000000..570a4889c11c
+--- /dev/null
++++ b/Documentation/devicetree/bindings/npu/rockchip,rknn.yaml
+@@ -0,0 +1,123 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/npu/rockchip,rknn.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
 +
-+		if (!pm_domain_data.pd_names) {
-+			err = -ENOMEM;
-+			goto err_remove_sysfs;
-+		}
++title: Neural Processing Unit IP from Rockchip, based on NVIDIA's NVDLA
 +
-+		for (i = 0; i < pm_domain_count; i++) {
-+			err = of_property_read_string_index(iommu->dev->of_node, "power-domain-names", i, &pm_domains[i]);
-+			if (err) {
-+				kfree(pm_domains);
-+				goto err_remove_sysfs;
-+			}
-+		}
++maintainers:
++  - Tomeu Vizoso <tomeu@tomeuvizoso.net>
 +
-+		err = dev_pm_domain_attach_list(iommu->dev, &pm_domain_data, &iommu->pmdomains);
-+		kfree(pm_domains);
-+		if (err < 0)
-+			goto err_remove_sysfs;
-+	}
++description: |+
++  Rockchip IP for accelerating inference of neural networks, based on NVIDIA's open source NVDLA IP.
 +
- 	pm_runtime_enable(dev);
- 
- 	for (i = 0; i < iommu->num_irq; i++) {
-@@ -1292,6 +1325,7 @@ static int rk_iommu_probe(struct platform_device *pdev)
- 	return 0;
- err_pm_disable:
- 	pm_runtime_disable(dev);
-+	dev_pm_domain_detach_list(iommu->pmdomains);
- err_remove_sysfs:
- 	iommu_device_sysfs_remove(&iommu->iommu);
- err_unprepare_clocks:
-@@ -1310,6 +1344,8 @@ static void rk_iommu_shutdown(struct platform_device *pdev)
- 		devm_free_irq(iommu->dev, irq, iommu);
- 	}
- 
-+	dev_pm_domain_detach_list(iommu->pmdomains);
++properties:
++  compatible:
++    items:
++      - enum:
++          - rockchip,rk3588-rknn
++      - const: rockchip,rknn
 +
- 	pm_runtime_force_suspend(&pdev->dev);
- }
- 
++  reg:
++    description: Base registers for NPU cores
++    minItems: 1
++    maxItems: 20
++
++  interrupts:
++    minItems: 1
++    maxItems: 20
++
++  interrupt-names:
++    minItems: 1
++    maxItems: 20
++
++  clocks:
++    minItems: 1
++    maxItems: 20
++
++  clock-names:
++    minItems: 1
++    maxItems: 20
++
++  assigned-clocks:
++    maxItems: 1
++
++  assigned-clock-rates:
++    maxItems: 1
++
++  resets:
++    minItems: 1
++    maxItems: 20
++
++  reset-names:
++    minItems: 1
++    maxItems: 20
++
++  power-domains:
++    minItems: 1
++    maxItems: 20
++
++  power-domain-names:
++    minItems: 1
++    maxItems: 20
++
++  iommus:
++    items:
++      - description: IOMMU for all cores
++
++required:
++  - compatible
++  - reg
++  - interrupts
++  - interrupt-names
++  - clocks
++  - clock-names
++  - assigned-clocks
++  - assigned-clock-rates
++  - resets
++  - reset-names
++  - power-domains
++  - power-domain-names
++  - iommus
++
++additionalProperties: false
++
++examples:
++  - |
++    #include <dt-bindings/interrupt-controller/arm-gic.h>
++
++    bus {
++        #address-cells = <2>;
++        #size-cells = <2>;
++
++        rknn: npu@fdab0000 {
++          compatible = "rockchip,rk3588-rknn", "rockchip,rknn";
++          reg = <0x0 0xfdab0000 0x0 0x9000>,
++                <0x0 0xfdac0000 0x0 0x9000>,
++                <0x0 0xfdad0000 0x0 0x9000>;
++          interrupts = <GIC_SPI 110 IRQ_TYPE_LEVEL_HIGH 0>,
++                       <GIC_SPI 111 IRQ_TYPE_LEVEL_HIGH 0>,
++                       <GIC_SPI 112 IRQ_TYPE_LEVEL_HIGH 0>;
++          interrupt-names = "npu0_irq", "npu1_irq", "npu2_irq";
++          clocks = <&scmi_clk 0>, <&cru 1>,
++                   <&cru 2>, <&cru 3>,
++                   <&cru 4>, <&cru 5>,
++                   <&cru 6>, <&cru 7>;
++          clock-names = "clk_npu",
++                  "aclk0", "aclk1", "aclk2",
++                  "hclk0", "hclk1", "hclk2",
++                  "pclk";
++          assigned-clocks = <&scmi_clk 0>;
++          assigned-clock-rates = <200000000>;
++          resets = <&cru 0>, <&cru 1>, <&cru 2>,
++                   <&cru 3>, <&cru 4>, <&cru 5>;
++          reset-names = "srst_a0", "srst_a1", "srst_a2",
++                        "srst_h0", "srst_h1", "srst_h2";
++          power-domains = <&power 0>, <&power 1>, <&power 2>;
++          power-domain-names = "npu0", "npu1", "npu2";
++          iommus = <&rknpu_mmu>;
++          status = "disabled";
++        };
++    };
++...
 
 -- 
 2.45.2
