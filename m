@@ -4,48 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 99081C27C53
-	for <linux-rockchip@archiver.kernel.org>; Wed, 12 Jun 2024 17:32:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B30C4C41513
+	for <linux-rockchip@archiver.kernel.org>; Wed, 12 Jun 2024 17:32:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=XCbBpzz58dx1ZM+SgMVY230bLOko16wRBcLbT3+hVgc=; b=KiazD/rQdGPBK7
-	DxThEsmtc9zmJ1RCrL9m7VjX1PL0m98CrqvlC3WDb/WVfjeP0jlr41H641GLZ67K2vCBE1HajMhQh
-	wxSHuIYsj0T+pyyS4hLTlgeiK+Mx/7oNa264fRPgoSJvnMA/JrzdFd2WCW1TgzlmwhDRHKyg3AHAX
-	GhFh2TMpKPQV+DO9lbdBRdyjCgxPT+Vp86y9tH4KMdjNO5Q8iptNx+G0gUG1iQQwotlZMlXRWpTvo
-	3FF7U7CjGC0ZvDMU6dJOfquhxAYndHc9ahOcbTgFMQMPnoOqMrOPR3GG3pkfzoWJfhCy6gOJYbKE9
-	zBBJVooUm7pmEY6aP+2Q==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=WYUVXCBd3r3DNiFGcNdykaW26QgIn+n4e34jhavxnXI=; b=2DcVHQjkUUYtqm
+	7HViRV7S09qK+x9oD3eVWwqa/8G+VqS4HWoWTP+ednVxi6Wg65CX/feerM712A0PosOKPeQ2Gvlgu
+	SpEq3H/CoWevABZ18Spc749mXQ3HkVBlm/0UpC3Kl1Snb/jRjSzW/jyMcT2IofWpYyobvQp6cEiNh
+	fke8KuPeTWOM0NftFVfaGy/dZij2ljQLT5XCCtG/3Qm+BCQwUS6/6322CAbrRblaOrkCnjuMHO5Rz
+	D9R5l0oGd4ZnVvX/gw4uupBIkmWutAaJ5maMRC7HdAi0dr4kpjBx9lA07Go+7AISNQfCaKxO+jiXz
+	ysiDVvfgU3FMnNciieHg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sHRpm-0000000DaPo-1jxK;
+	id 1sHRpm-0000000DaQL-3tN9;
 	Wed, 12 Jun 2024 17:32:30 +0000
-Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
+Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sHRph-0000000DaLc-1bo3
+	id 1sHRph-0000000DaLf-20ll
 	for linux-rockchip@lists.infradead.org;
 	Wed, 12 Jun 2024 17:32:27 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
 	s=mail; t=1718213541;
-	bh=H+1Gh32TLe9//W5DEjtFjRYrLhHpR4ykiLSiVsQC96s=;
-	h=From:To:Cc:Subject:Date:From;
-	b=rLiCeW0iJDT+jJlR3bYdUqudRoD6iXy2Z5kB2zdmWqiPWgu2smHSHKdln9Y7OUUDC
-	 F4/TYcdQ29dmUBoYPgbCNxbTI+gJpTpsel0GjhdLCV7P+NV+bv7RYG3Ir24KJz9opu
-	 PKAxif+1wQMOKokJ4iWkgPLex2dfZDzNot/+gktQKHeovfImt8MX0t1bk7UhT+Ylji
-	 MED8xsU2AKugrDLgfTJ09SAIWdHV4y7OLRHhAICKDhwGvG5hEuwKxDoTXZVsRsiPyS
-	 Ty7J0xcTQWfEGQISIQqjgZ9SDzMg8nT1O3iTklXwE+1bW4dcRrT30ClicWA8t64poL
-	 /1HJcfS3le7DQ==
+	bh=KKnehwnapMDXEYhFKS5XsfL67lPPoRVBA2nN+Yi9Q24=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=L00ouhxpqR5XhuMSWrJNBvj0w+0dSXrylM2KwH60f5E1Nean4momD3IEMV5YxXwi4
+	 KhokKYcNRRvzpKckrZcWxWMRO7Fao9nD+Z/YNAq/vY8R3NQ2uY0wBUeHjQ6P6W2/+I
+	 ZBrik0KeuZJ764dk5+1g1Fsjv0wqXTLBXbvX+RgAC2DfBheHvBjpHUSMYSi6EIyrNe
+	 a/rGvJAFXu+fMhQInJ0axuxw9+hkBUwAVm6GvW9wH7YJO2llTZrCIRsmYWHbhnPOdE
+	 ddOAX1Ke72O+u0U6vHoQ7Lynf9B1bCciqQ4JgGUeEw00I9ZVzwrfer4uN5JOkK+DOE
+	 VpGZP+JrB9ZrA==
 Received: from jupiter.universe (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: sre)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id A8DE03782191;
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id C2916378219B;
 	Wed, 12 Jun 2024 17:32:21 +0000 (UTC)
 Received: by jupiter.universe (Postfix, from userid 1000)
-	id 5958C4800C9; Wed, 12 Jun 2024 19:32:21 +0200 (CEST)
+	id 5E8E44800CE; Wed, 12 Jun 2024 19:32:21 +0200 (CEST)
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
 To: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
 	Philipp Zabel <p.zabel@pengutronix.de>,
@@ -63,14 +63,16 @@ Cc: Rob Herring <robh@kernel.org>,
 	linux-kernel@vger.kernel.org,
 	Sebastian Reichel <sebastian.reichel@collabora.com>,
 	kernel@collabora.com
-Subject: [PATCH v5 0/5] RK3588 VEPU121/VPU121 support
-Date: Wed, 12 Jun 2024 19:15:40 +0200
-Message-ID: <20240612173213.42827-1-sebastian.reichel@collabora.com>
+Subject: [PATCH v5 3/5] media: hantro: Add RK3588 VEPU121 support
+Date: Wed, 12 Jun 2024 19:15:43 +0200
+Message-ID: <20240612173213.42827-4-sebastian.reichel@collabora.com>
 X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20240612173213.42827-1-sebastian.reichel@collabora.com>
+References: <20240612173213.42827-1-sebastian.reichel@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240612_103225_628761_D90875FE 
-X-CRM114-Status: GOOD (  18.95  )
+X-CRM114-CacheID: sfid-20240612_103225_719233_ACD986CB 
+X-CRM114-Status: GOOD (  17.21  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,65 +89,77 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi,
+Avoid exposing each of the 4 Hantro H1 cores separately to userspace.
+For now just expose the first one.
 
-This series enables Hantro support for RK3588. It is based on these two
-previous series from Emmanuel Gil Peyrot and Jianfeng Liu, which looked
-stall to me. Considering the full driver is already upstream, I think
-this low hanging fruit should be enabled in 6.11:
+Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+---
+ .../media/platform/verisilicon/hantro_drv.c   | 38 +++++++++++++++++++
+ 1 file changed, 38 insertions(+)
 
- * https://lore.kernel.org/all/20240316071100.2419369-1-liujianfeng1994@gmail.com/
- * https://lore.kernel.org/linux-rockchip/20240412151515.837824-1-linkmauve@linkmauve.fr/
-
-Their series got some feedback from Nicolas Dufresne, that there should be a
-plan how multi-core processing will be handled once it is supported in the
-kernel. I had a look (and internal discussion with Nicolas) and came up with a
-patch, which allows describing all the Hantro IP in DT. The driver will only
-probe for the first instance. This involves dropping the RK3568 compatible
-for the VEPU121, so that only kernels with the driver change will try to
-handle these IP. Once the kernel is capable of multi-core support, the same
-technique to disable cores 1-3 can be used to combine them all into one
-cluster.
-
-We also discussed, if they should be described as a cluster (e.g. by creating
-some kind of virtual bus for the 4 encoders in DT). Apparently the VSI doc
-describes the grouping of up to 4 instances. But there is no obvious reason
-why only these groups can be used as a cluster. It seems that even the 5th
-encoder from the combo VPU121 could be used together with the other clustered
-cores in theory. In practice this is probably a bad idea because of the shared
-cache of that encoder. Since that is handled with a different compatible, this
-can be thought about at a later point of time and handled in the kernel. Thus
-no special cluster description is needed in DT.
-
-The series is based on Heiko's for-next branch.
-
-Changes since PATCHv3 (VEPU121) / PATCHv4 (VPU121)
- * combine both patchsets, since there is some overleap
- * add patch to disable multi-core handling in the hantro driver
- * drop the RK3568 fallback compatible for VEPU (see above for the reason)
- * describe all RK3588 VEPU cores (possible because of driver change)
-
-Greetings,
-
--- Sebastian
-
-Emmanuel Gil Peyrot (2):
-  media: dt-bindings: rk3568-vepu: Add RK3588 VEPU121
-  arm64: dts: rockchip: Add VEPU121 to RK3588
-
-Jianfeng Liu (2):
-  media: dt-bindings: rockchip-vpu: Add RK3588 VPU121
-  arm64: dts: rockchip: Add VPU121 support for RK3588
-
-Sebastian Reichel (1):
-  media: hantro: Add RK3588 VEPU121 support
-
- .../bindings/media/rockchip,rk3568-vepu.yaml  |   5 +-
- .../bindings/media/rockchip-vpu.yaml          |   3 +
- arch/arm64/boot/dts/rockchip/rk3588s.dtsi     | 101 ++++++++++++++++++
- .../media/platform/verisilicon/hantro_drv.c   |  38 +++++++
- 4 files changed, 145 insertions(+), 2 deletions(-)
-
+diff --git a/drivers/media/platform/verisilicon/hantro_drv.c b/drivers/media/platform/verisilicon/hantro_drv.c
+index 34b123dafd89..b722a20c5fe3 100644
+--- a/drivers/media/platform/verisilicon/hantro_drv.c
++++ b/drivers/media/platform/verisilicon/hantro_drv.c
+@@ -722,6 +722,7 @@ static const struct of_device_id of_hantro_match[] = {
+ 	{ .compatible = "rockchip,rk3399-vpu", .data = &rk3399_vpu_variant, },
+ 	{ .compatible = "rockchip,rk3568-vepu", .data = &rk3568_vepu_variant, },
+ 	{ .compatible = "rockchip,rk3568-vpu", .data = &rk3568_vpu_variant, },
++	{ .compatible = "rockchip,rk3588-vepu121", .data = &rk3568_vpu_variant, },
+ 	{ .compatible = "rockchip,rk3588-av1-vpu", .data = &rk3588_vpu981_variant, },
+ #endif
+ #ifdef CONFIG_VIDEO_HANTRO_IMX8M
+@@ -992,6 +993,39 @@ static const struct media_device_ops hantro_m2m_media_ops = {
+ 	.req_queue = v4l2_m2m_request_queue,
+ };
+ 
++/*
++ * Some SoCs, like RK3588 have multiple identical Hantro cores, but the
++ * kernel is currently missing support for multi-core handling. Exposing
++ * separate devices for each core to userspace is bad, since that does
++ * not allow scheduling tasks properly (and creates ABI). With this workaround
++ * the driver will only probe for the first core and early exit for the other
++ * cores. Once the driver gains multi-core support, the same technique
++ * for detecting the main core can be used to cluster all cores together.
++ */
++static int hantro_disable_multicore(struct hantro_dev *vpu)
++{
++	const char *compatible;
++	struct device_node *node;
++	int ret;
++
++	/* Intentionally ignores the fallback strings */
++	ret = of_property_read_string(vpu->dev->of_node, "compatible", &compatible);
++	if (ret)
++		return ret;
++
++	/* first compatible node found from the root node is considered the main core */
++	node = of_find_compatible_node(NULL, NULL, compatible);
++	if (!node)
++		return -EINVAL; /* broken DT? */
++
++	if (vpu->dev->of_node != node) {
++		dev_info(vpu->dev, "missing multi-core support, ignoring this instance\n");
++		return -ENODEV;
++	}
++
++	return 0;
++}
++
+ static int hantro_probe(struct platform_device *pdev)
+ {
+ 	const struct of_device_id *match;
+@@ -1011,6 +1045,10 @@ static int hantro_probe(struct platform_device *pdev)
+ 	match = of_match_node(of_hantro_match, pdev->dev.of_node);
+ 	vpu->variant = match->data;
+ 
++	ret = hantro_disable_multicore(vpu);
++	if (ret)
++		return ret;
++
+ 	/*
+ 	 * Support for nxp,imx8mq-vpu is kept for backwards compatibility
+ 	 * but it's deprecated. Please update your DTS file to use
 -- 
 2.43.0
 
