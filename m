@@ -4,51 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DF69DC27C4F
-	for <linux-rockchip@archiver.kernel.org>; Thu, 13 Jun 2024 10:30:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E8CD1C27C75
+	for <linux-rockchip@archiver.kernel.org>; Thu, 13 Jun 2024 10:34:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=XwCjxrUygzMqtZtJQXk6asy6INw5iFLA+q8Oq3NszZU=; b=ZRwQ4s64UOrCGo
-	TxA3bawOz2KWtnlcApFI2oSfjoD/Fq0RqMtLcUcP24whYXJZT1LQ7kMuLjFhL8I0JY34IpaaIAAIM
-	RXiRXHRqxSjZ5SBaTMrK94IvM5PtGa4ICd3X3xRsGRq2QTHbBHW5BPmV4UTLDUSc8LuMDzyxaI/dP
-	jfVRMjmoSCpdxPWruqoZarA+uzY+6yf9K7rnMfpPRhJZeWyetzxS5lBushSxqfrY52hqb2gC3Oxrl
-	fGzM1PF/dTk6MEw/0+mBljazDkucjIm7AeJzVyqvOVtYXHThfR45KXDLqV3bvgSGcI01qNe4os1Qu
-	F9o7fAhaKKYKNabHeM5w==;
+	List-Owner; bh=2UHhL1fAYQxw3qRVeklZvvKFIsN1PmTYgv8gNcw9Aa0=; b=MlTAz5505LkXBY
+	IVxd4n8jTljbtk/1bTuEPPjK75ZtWnu0h48zKx9iqhnu4q/rJ8z2pfDYI1SR1FXJkfiLwrhlH+7FR
+	anUEzjqRARWWCcW4H1NlWPd6oz5sj3wCr6CEPuZbIPudTRxmpmhPshpPjfYkPiEGsjfs7LikG3lv4
+	zjVgFTHQcsRSf+518aJTxjUk1rWncY7qLyg4y40KSkZiUYrhYfMM2lu8QbWKq3RIT6WVUyPf3+xvh
+	VDtE/mSTz++6+lQNkMRgtuccjZU7uyvmTFLZTQAwmuySVz/dmXBugqdnD4zQLkJmEJKbPhDeUPTob
+	hpT0BUYUH//iQB7GwZ8g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sHhiz-0000000G9SE-1cDS;
-	Thu, 13 Jun 2024 10:30:33 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1sHhmQ-0000000GA6l-3tuG;
+	Thu, 13 Jun 2024 10:34:06 +0000
+Received: from forward502b.mail.yandex.net ([178.154.239.146])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sHhiu-0000000G9Qy-4BYr;
-	Thu, 13 Jun 2024 10:30:30 +0000
-Received: from i53875be5.versanet.de ([83.135.91.229] helo=diego.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1sHhim-0000ZZ-PL; Thu, 13 Jun 2024 12:30:20 +0200
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Hsin-Te Yuan <yuanhsinte@chromium.org>
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-rockchip@lists.infradead.org, Hsin-Te Yuan <yuanhsinte@chromium.org>
-Subject: Re: [PATCH] arm64: dts: Fix the value of `dlg,jack-det-rate` mismatch
-Date: Thu, 13 Jun 2024 12:30:19 +0200
-Message-ID: <13119127.ZYm5mLc6kN@diego>
-In-Reply-To: <20240613-jack-rate-v1-1-62ee0259e204@chromium.org>
-References: <20240613-jack-rate-v1-1-62ee0259e204@chromium.org>
+	id 1sHhmL-0000000GA3O-10cw;
+	Thu, 13 Jun 2024 10:34:03 +0000
+Received: from mail-nwsmtp-smtp-production-main-44.sas.yp-c.yandex.net (mail-nwsmtp-smtp-production-main-44.sas.yp-c.yandex.net [IPv6:2a02:6b8:c24:a33:0:640:d837:0])
+	by forward502b.mail.yandex.net (Yandex) with ESMTPS id 9FC675EF21;
+	Thu, 13 Jun 2024 13:33:56 +0300 (MSK)
+Received: by mail-nwsmtp-smtp-production-main-44.sas.yp-c.yandex.net (smtp/Yandex) with ESMTPSA id qXdo9x30J0U0-d6heW2Be;
+	Thu, 13 Jun 2024 13:33:55 +0300
+X-Yandex-Fwd: 1
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yandex.com; s=mail;
+	t=1718274835; bh=EQQoH5X23jTA0B4DCR21/ZfmNUL5R4vDKFEbtMz2jjE=;
+	h=From:In-Reply-To:Cc:Date:References:To:Subject:Message-ID;
+	b=uyLS1+TXRkc3ujEdmjdXeJG76Em9/saX2bpREIfYTjtGKBuxNZTvBhY0V4clc60wC
+	 tXFfDZy4DlqPgowBw7uImpFuPyrLpKN05Cn6d0/TgRiq5mvPIfpGbR/u2DdFjMGqPB
+	 e82nXzdoG+FSyEu09/NOTJrxMoy+YK0Qc3KEabcg=
+Authentication-Results: mail-nwsmtp-smtp-production-main-44.sas.yp-c.yandex.net; dkim=pass header.i=@yandex.com
+Message-ID: <495e50aa-6819-457d-8503-00440abc97e3@yandex.com>
+Date: Thu, 13 Jun 2024 12:33:52 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3] dt-bindings: phy: rockchip-emmc-phy: Convert to
+ dtschema
+To: Krzysztof Kozlowski <krzk@kernel.org>,
+ Shresth Prasad <shresthprasad7@gmail.com>, vkoul@kernel.org,
+ kishon@kernel.org, robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
+ heiko@sntech.de, sebastian.reichel@collabora.com, s.hauer@pengutronix.de,
+ cristian.ciocaltea@collabora.com, andy.yan@rock-chips.com
+Cc: linux-phy@lists.infradead.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org, skhan@linuxfoundation.org,
+ javier.carrasco.cruz@gmail.com
+References: <20240613085812.4020-2-shresthprasad7@gmail.com>
+ <cc66cca1-33db-4f30-afcf-d256a959896b@yandex.com>
+ <9ce15b81-a8bd-4833-b15e-3e6f240dcf03@kernel.org>
+Content-Language: en-US
+From: Johan Jonker <jbx6244@yandex.com>
+In-Reply-To: <9ce15b81-a8bd-4833-b15e-3e6f240dcf03@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240613_033029_084597_6D1600F9 
-X-CRM114-Status: GOOD (  19.75  )
+X-CRM114-CacheID: sfid-20240613_033401_495741_31F86DAD 
+X-CRM114-Status: GOOD (  14.69  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -65,70 +79,66 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi,
 
-Am Donnerstag, 13. Juni 2024, 12:19:58 CEST schrieb Hsin-Te Yuan:
-> According to Documentation/devicetree/bindings/sound/dialog,da7219.yaml,
-> the value of `dlg,jack-det-rate` property should be '32_64' instead of
-> '32ms_64ms'.
+
+On 6/13/24 12:12, Krzysztof Kozlowski wrote:
+> On 13/06/2024 11:44, Johan Jonker wrote:
+>>> ---
+>>
+>> Add ack request from phy maintainer here.
 > 
-> Signed-off-by: Hsin-Te Yuan <yuanhsinte@chromium.org>
-> ---
->  arch/arm64/boot/dts/mediatek/mt8183-kukui-audio-da7219.dtsi | 2 +-
->  arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi                | 2 +-
 
-sub architectures (Mediatek, Rockchip) are mostly handled by different
-people. So it's good to split patches along those lines in the future.
+> Why? What do you mean for that? Why phy maintainer needs to ack patches
+> he is going to take?
 
-For this change in particular I'm not that concerned in that regard and
-am also fine with the Rockchip part going through the Mediatek tree.
+See my text below:
+From my past converting phy documents experience asking was needed to smooths things up ...
+Let me know if things have improved.
 
-I've checked the binding and for the rk3399-gru change:
-Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+grf.yaml can be busy at times. Let Heiko take care of the merge order.
+Ask for an ack from the phy maintainers in your commit message below a "---"
 
-
-Thanks
-Heiko
-
->  2 files changed, 2 insertions(+), 2 deletions(-)
 > 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-audio-da7219.dtsi b/arch/arm64/boot/dts/mediatek/mt8183-kukui-audio-da7219.dtsi
-> index 8b57706ac814..586eee79c73c 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8183-kukui-audio-da7219.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-audio-da7219.dtsi
-> @@ -27,7 +27,7 @@ da7219_aad {
->  			dlg,btn-cfg = <50>;
->  			dlg,mic-det-thr = <500>;
->  			dlg,jack-ins-deb = <20>;
-> -			dlg,jack-det-rate = "32ms_64ms";
-> +			dlg,jack-det-rate = "32_64";
->  			dlg,jack-rem-deb = <1>;
->  
->  			dlg,a-d-btn-thr = <0xa>;
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi
-> index 789fd0dcc88b..3cd63d1e8f15 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi
-> @@ -450,7 +450,7 @@ da7219_aad {
->  			dlg,btn-cfg = <50>;
->  			dlg,mic-det-thr = <500>;
->  			dlg,jack-ins-deb = <20>;
-> -			dlg,jack-det-rate = "32ms_64ms";
-> +			dlg,jack-det-rate = "32_64";
->  			dlg,jack-rem-deb = <1>;
->  
->  			dlg,a-d-btn-thr = <0xa>;
+>>
+>>> Changes in v3:
+>>>     - fix `reg` in example being too long
+>>>
+>>> Tested against `rockchip/rk3399-firefly.dtb`, `rockchip/rk3399-orangepi.dtb`
+>>> and `rockchip/rk3399-pinebook-pro.dtb`.
+>>>
+>>>  .../bindings/phy/rockchip,emmc-phy.yaml       | 79 +++++++++++++++++++
+>>>  .../bindings/phy/rockchip-emmc-phy.txt        | 43 ----------
+>>>  .../devicetree/bindings/soc/rockchip/grf.yaml |  2 +-
+>>>  3 files changed, 80 insertions(+), 44 deletions(-)
+>>>  create mode 100644 Documentation/devicetree/bindings/phy/rockchip,emmc-phy.yaml
+>>>  delete mode 100644 Documentation/devicetree/bindings/phy/rockchip-emmc-phy.txt
+>>>
+>>> diff --git a/Documentation/devicetree/bindings/phy/rockchip,emmc-phy.yaml b/Documentation/devicetree/bindings/phy/rockchip,emmc-phy.yaml
+>>> new file mode 100644
+>>> index 000000000000..85d74b343991
+>>> --- /dev/null
+>>> +++ b/Documentation/devicetree/bindings/phy/rockchip,emmc-phy.yaml
+>>> @@ -0,0 +1,79 @@
+>>
+>>> +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
+>>
+>> You are converting an existing document, so GPL 2 only.
 > 
-> ---
-> base-commit: cea2a26553ace13ee36b56dc09ad548b5e6907df
-> change-id: 20240613-jack-rate-c478fa76ce19
+
+> Which copyrightable part was copied? This comment is not correct in
+> general, because conversions are dual-licensed (there are exceptions,
+> but that's the generic rule).
+
+Was told to do so in the past by the maintainers(Rob??) for text documents conversions.(Can't find exactly were in lore, must be in one my first conversion patches)
+If someone was submitting as GPL2 long time ago then the derived/converted work still hold the same license.
+Let me know if the consensus has changed.
+
+Johan
+
 > 
 > Best regards,
+> Krzysztof
 > 
-
-
-
-
 
 _______________________________________________
 Linux-rockchip mailing list
