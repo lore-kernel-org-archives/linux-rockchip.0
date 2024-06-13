@@ -4,68 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D759FC27C4F
-	for <linux-rockchip@archiver.kernel.org>; Thu, 13 Jun 2024 17:21:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7E3CCC27C4F
+	for <linux-rockchip@archiver.kernel.org>; Thu, 13 Jun 2024 17:27:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:Cc:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=3uLnKT7Vwnvt100vFy5IGP3MQnXnTNNcjA1EyBYxnK4=; b=m6PnkCccaYiS4J
-	e7QE22z3DpWSKV21IFI1GpgXHJYWZIJVsWUXyy+oLu/i/nf3fzKVv3zD31EjdZL3AxbbN8t3ZdZ/f
-	z6S01cKzIuKEowdpQxGiYXlb/hxJXax/nzElQZyG6OMCYJdEcqgoQu2NmOOD52qitoL9vxjiA7NbC
-	HSBJdhWqASqhgNMMbavk9QpXBIo2ybU/dRrh8wKE9GTnvA/YrWywTT3RG5y8rwqn0Q+ppryL7QHgY
-	RQHEwnKNTnWihdMNjZRDXG95VbDN0uZdr7CyuRQIO6wbYRgwj0azAj50zE9yMXlR/V7IDNz3EsXEk
-	/aaZfejFtmssKipJDvPQ==;
+	List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:References:
+	In-Reply-To:Cc:To:From:MIME-Version:Date:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=3leXf7JedrqFz46zf+/fe3zwcB/rHUprm8YLq6/3Bx0=; b=3Tk/elcHYroXMOcZwAPrZy0Wt1
+	PsFXboP+2bht2hK7wmGYU7NvknjAp8AxGKNRTFpQoC9nhHZjHgUxX8TT2Szdwq4G/kvpsWaJ5egvR
+	qFHiwi97ucMRXY64jt6o7PXKmkow+vSSPgdWYtYnn8uzvLCVMze4eSFzvY9g5dINk/bCSNO+I7VmY
+	XO+seqz24paEEkpON6MvXKQFbHWdvh5/5pPvHhLBI2IY1pUKRHypjdaLDI2JI68zxFYHTXwaYRqqg
+	vhUwz023RQyI9pZ7p4RohW2HBhcAMR4TeW56NnfMMTYg0Sk+MKsKmKrKq2Zx2mTd23WjVxUmnkTSI
+	9XfSR+1g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sHo8h-0000000HVf5-3rUL;
-	Thu, 13 Jun 2024 17:21:31 +0000
-Received: from madrid.collaboradmins.com ([46.235.227.194])
+	id 1sHoEK-0000000HWdF-1ZS4;
+	Thu, 13 Jun 2024 17:27:20 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sHo8e-0000000HVeE-2C7i
-	for linux-rockchip@lists.infradead.org;
-	Thu, 13 Jun 2024 17:21:30 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1718299284;
-	bh=oQpR3WqnngfQNJeUbEy88r36UtSxS3u5kZrjD+GeDi0=;
-	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
-	b=llsDK23YX1btoiKV3FQ9dsccXLlI05kxWEIs0kEr0eIOhxZ/T5Yjxd12/qEsK61ds
-	 yvLDsaU542aYUx60VvJPvGIdPerlpY9+QfijAuOlUHs4l9mQDe6QGku80UXhPfQoXu
-	 N3vA8ZZI1uYDM3Vaidr4MmfJJcKFmmhd0RwqHsrtfiodk7tekw5hiuMdN0cwhKu0c/
-	 9fnwXbRY1tPP1vRb3I9VDqginw4NghLU7IpLZC8xrXJnMG0vncSfQ531ygQoqFortR
-	 3jkkwvUHTeAKJap9MgyzmUfRnCjG2iLuxJIS92V1OwWzrzfnpcGE8Xccu+fz7Yj4n1
-	 UkQ9CNAEnV82Q==
-Received: from nicolas-tpx395.localdomain (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nicolas)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id BCA943781139;
-	Thu, 13 Jun 2024 17:21:18 +0000 (UTC)
-Message-ID: <c9d1704ee28d1dc3d187308b03cb5278c1bf723b.camel@collabora.com>
-Subject: Re: [PATCH v6 5/6] arm64: dts: rockchip: Add VEPU121 to RK3588
-From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-To: Sebastian Reichel <sebastian.reichel@collabora.com>, Ezequiel Garcia
- <ezequiel@vanguardiasur.com.ar>, Philipp Zabel <p.zabel@pengutronix.de>, 
- Nicolas Frattaroli <frattaroli.nicolas@gmail.com>, Heiko Stuebner
- <heiko@sntech.de>
-Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
-  Conor Dooley <conor+dt@kernel.org>, Jianfeng Liu
- <liujianfeng1994@gmail.com>, Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>,
- linux-media@vger.kernel.org,  linux-rockchip@lists.infradead.org,
- devicetree@vger.kernel.org,  linux-kernel@vger.kernel.org,
- kernel@collabora.com
-Date: Thu, 13 Jun 2024 13:21:04 -0400
-In-Reply-To: <20240613135034.31684-6-sebastian.reichel@collabora.com>
-References: <20240613135034.31684-1-sebastian.reichel@collabora.com>
-	 <20240613135034.31684-6-sebastian.reichel@collabora.com>
-User-Agent: Evolution 3.52.2 (3.52.2-1.fc40) 
+	id 1sHoEG-0000000HWbP-2va0;
+	Thu, 13 Jun 2024 17:27:18 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id D7D7A61BC4;
+	Thu, 13 Jun 2024 17:27:15 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 537E7C2BBFC;
+	Thu, 13 Jun 2024 17:27:15 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1718299635;
+	bh=QmGHUd+e/PjYuv8/57wzZ877J2mB2nvVZfL6iFjG7tM=;
+	h=Date:From:To:Cc:In-Reply-To:References:Subject:From;
+	b=BiGYcrq4OSaFZAawU5+kEhyxy5h9CTqza9TtHfxn3ERWJgkMm1uufUVzzRyJeWQKN
+	 mMioEzlk1qcVFL6eZfhz19bNI0MTTChoFv716sLJH34QBE0BmkyDRv2s4EAPhxeUWq
+	 d0mGe/ptW83ZDRpc4bnZzH+9D+6a8SSHzHG9czpVmDl2tgTwYXQQ6AFaOLOL4o4jPA
+	 r0869V14us0L+/UtZ/SoWWiZMvJMetGEPXIWTX4WYR5zKlg3uIQJAuNEUdE5Decbly
+	 /FZK2DrIe2JU8KAw1R7RGuYzLkG9VSHyVXVGYGdNUfm5E0dRkRkYbqv4aDv5i6YSHX
+	 Ji+9V66juyIRA==
+Date: Thu, 13 Jun 2024 11:27:14 -0600
 MIME-Version: 1.0
+From: "Rob Herring (Arm)" <robh@kernel.org>
+To: Sebastian Kropatsch <seb-dev@mail.de>
+Cc: Krzysztof Kozlowski <krzk+dt@kernel.org>, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+ devicetree@vger.kernel.org
+In-Reply-To: <20240612205056.397204-1-seb-dev@mail.de>
+References: <20240612205056.397204-1-seb-dev@mail.de>
+Message-Id: <171829929814.2050024.4291220614091376028.robh@kernel.org>
+Subject: Re: [PATCH 0/5] Refactor, fix and improve NanoPi R6 series
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240613_102128_888984_48A66219 
-X-CRM114-Status: GOOD (  12.72  )
+X-CRM114-CacheID: sfid-20240613_102716_886246_BFF9677D 
+X-CRM114-Status: GOOD (  19.75  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,88 +68,122 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-TGUgamV1ZGkgMTMganVpbiAyMDI0IMOgIDE1OjQ4ICswMjAwLCBTZWJhc3RpYW4gUmVpY2hlbCBh
-IMOpY3JpdMKgOgo+IEZyb206IEVtbWFudWVsIEdpbCBQZXlyb3QgPGxpbmttYXV2ZUBsaW5rbWF1
-dmUuZnI+Cj4gCj4gUkszNTg4IGhhcyA0IEhhbnRybyBHMSBlbmNvZGVyLW9ubHkgY29yZXMuIFRo
-ZXkgYXJlIGFsbCBpbmRlcGVuZGVudCBJUCwKICAgICAgICAgICAgICAgSGFudHJvIEgxCgpIMSBp
-cyB0aGUgZW5jb2RlciBjb3JlLCBHMSBpcyB0aGUgZGVjb2RlciBjb3JlLCBhbmQgdGhpcyBleGlz
-dHMgYXMgYSBjb21ibyBvbgp0aGlzIHBsYXRmb3JtICh2cHUxMjEpLgoKPiBidXQgY2FuIGJlIHVz
-ZWQgYXMgYSBjbHVzdGVyIChpLmUuIHNoYXJpbmcgd29yayBiZXR3ZWVuIHRoZSBjb3JlcykuCj4g
-VGhlc2UgY29yZXMgYXJlIGNhbGxlZCBWRVBVMTIxIGluIHRoZSBUUk0uIFRoZSBUUk0gZGVzY3Jp
-YmVzIG9uZSBtb3JlCj4gVkVQVTEyMSwgYnV0IHRoYXQgaXMgY29tYmluZWQgd2l0aCBhIEhhbnRy
-byBIMS4gVGhhdCBvbmUgd2lsbCBiZSBoYW5kbGVkCj4gdXNpbmcgdGhlIFZQVSBiaW5kaW5nIGlu
-c3RlYWQuCj4gCj4gU2lnbmVkLW9mZi1ieTogRW1tYW51ZWwgR2lsIFBleXJvdCA8bGlua21hdXZl
-QGxpbmttYXV2ZS5mcj4KPiBTaWduZWQtb2ZmLWJ5OiBTZWJhc3RpYW4gUmVpY2hlbCA8c2ViYXN0
-aWFuLnJlaWNoZWxAY29sbGFib3JhLmNvbT4KCkFja2VkLWJ5OiBOaWNvbGFzIER1ZnJlc25lIDxu
-aWNvbGFzLmR1ZnJlc25lQGNvbGxhYm9yYS5jb20+Cgo+IC0tLQo+ICBhcmNoL2FybTY0L2Jvb3Qv
-ZHRzL3JvY2tjaGlwL3JrMzU4OHMuZHRzaSB8IDgwICsrKysrKysrKysrKysrKysrKysrKysrCj4g
-IDEgZmlsZSBjaGFuZ2VkLCA4MCBpbnNlcnRpb25zKCspCj4gCj4gZGlmZiAtLWdpdCBhL2FyY2gv
-YXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszNTg4cy5kdHNpIGIvYXJjaC9hcm02NC9ib290L2R0
-cy9yb2NrY2hpcC9yazM1ODhzLmR0c2kKPiBpbmRleCA2YWM1YWM4YjQ4YWIuLmRkODVkNGU1NTky
-MiAxMDA2NDQKPiAtLS0gYS9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzU4OHMuZHRz
-aQo+ICsrKyBiL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszNTg4cy5kdHNpCj4gQEAg
-LTExNTksNiArMTE1OSw4NiBAQCBwb3dlci1kb21haW5AUkszNTg4X1BEX1NETU1DIHsKPiAgCQl9
-Owo+ICAJfTsKPiAgCj4gKwl2ZXB1MTIxXzA6IHZpZGVvLWNvZGVjQGZkYmEwMDAwIHsKPiArCQlj
-b21wYXRpYmxlID0gInJvY2tjaGlwLHJrMzU4OC12ZXB1MTIxIjsKPiArCQlyZWcgPSA8MHgwIDB4
-ZmRiYTAwMDAgMHgwIDB4ODAwPjsKPiArCQlpbnRlcnJ1cHRzID0gPEdJQ19TUEkgMTIyIElSUV9U
-WVBFX0xFVkVMX0hJR0ggMD47Cj4gKwkJY2xvY2tzID0gPCZjcnUgQUNMS19KUEVHX0VOQ09ERVIw
-PiwgPCZjcnUgSENMS19KUEVHX0VOQ09ERVIwPjsKPiArCQljbG9jay1uYW1lcyA9ICJhY2xrIiwg
-ImhjbGsiOwo+ICsJCWlvbW11cyA9IDwmdmVwdTEyMV8wX21tdT47Cj4gKwkJcG93ZXItZG9tYWlu
-cyA9IDwmcG93ZXIgUkszNTg4X1BEX1ZEUFU+Owo+ICsJfTsKPiArCj4gKwl2ZXB1MTIxXzBfbW11
-OiBpb21tdUBmZGJhMDgwMCB7Cj4gKwkJY29tcGF0aWJsZSA9ICJyb2NrY2hpcCxyazM1ODgtaW9t
-bXUiLCAicm9ja2NoaXAscmszNTY4LWlvbW11IjsKPiArCQlyZWcgPSA8MHgwIDB4ZmRiYTA4MDAg
-MHgwIDB4NDA+Owo+ICsJCWludGVycnVwdHMgPSA8R0lDX1NQSSAxMjEgSVJRX1RZUEVfTEVWRUxf
-SElHSCAwPjsKPiArCQljbG9ja3MgPSA8JmNydSBBQ0xLX0pQRUdfRU5DT0RFUjA+LCA8JmNydSBI
-Q0xLX0pQRUdfRU5DT0RFUjA+Owo+ICsJCWNsb2NrLW5hbWVzID0gImFjbGsiLCAiaWZhY2UiOwo+
-ICsJCXBvd2VyLWRvbWFpbnMgPSA8JnBvd2VyIFJLMzU4OF9QRF9WRFBVPjsKPiArCQkjaW9tbXUt
-Y2VsbHMgPSA8MD47Cj4gKwl9Owo+ICsKPiArCXZlcHUxMjFfMTogdmlkZW8tY29kZWNAZmRiYTQw
-MDAgewo+ICsJCWNvbXBhdGlibGUgPSAicm9ja2NoaXAscmszNTg4LXZlcHUxMjEiOwo+ICsJCXJl
-ZyA9IDwweDAgMHhmZGJhNDAwMCAweDAgMHg4MDA+Owo+ICsJCWludGVycnVwdHMgPSA8R0lDX1NQ
-SSAxMjQgSVJRX1RZUEVfTEVWRUxfSElHSCAwPjsKPiArCQljbG9ja3MgPSA8JmNydSBBQ0xLX0pQ
-RUdfRU5DT0RFUjE+LCA8JmNydSBIQ0xLX0pQRUdfRU5DT0RFUjE+Owo+ICsJCWNsb2NrLW5hbWVz
-ID0gImFjbGsiLCAiaGNsayI7Cj4gKwkJaW9tbXVzID0gPCZ2ZXB1MTIxXzFfbW11PjsKPiArCQlw
-b3dlci1kb21haW5zID0gPCZwb3dlciBSSzM1ODhfUERfVkRQVT47Cj4gKwl9Owo+ICsKPiArCXZl
-cHUxMjFfMV9tbXU6IGlvbW11QGZkYmE0ODAwIHsKPiArCQljb21wYXRpYmxlID0gInJvY2tjaGlw
-LHJrMzU4OC1pb21tdSIsICJyb2NrY2hpcCxyazM1NjgtaW9tbXUiOwo+ICsJCXJlZyA9IDwweDAg
-MHhmZGJhNDgwMCAweDAgMHg0MD47Cj4gKwkJaW50ZXJydXB0cyA9IDxHSUNfU1BJIDEyMyBJUlFf
-VFlQRV9MRVZFTF9ISUdIIDA+Owo+ICsJCWNsb2NrcyA9IDwmY3J1IEFDTEtfSlBFR19FTkNPREVS
-MT4sIDwmY3J1IEhDTEtfSlBFR19FTkNPREVSMT47Cj4gKwkJY2xvY2stbmFtZXMgPSAiYWNsayIs
-ICJpZmFjZSI7Cj4gKwkJcG93ZXItZG9tYWlucyA9IDwmcG93ZXIgUkszNTg4X1BEX1ZEUFU+Owo+
-ICsJCSNpb21tdS1jZWxscyA9IDwwPjsKPiArCX07Cj4gKwo+ICsJdmVwdTEyMV8yOiB2aWRlby1j
-b2RlY0BmZGJhODAwMCB7Cj4gKwkJY29tcGF0aWJsZSA9ICJyb2NrY2hpcCxyazM1ODgtdmVwdTEy
-MSI7Cj4gKwkJcmVnID0gPDB4MCAweGZkYmE4MDAwIDB4MCAweDgwMD47Cj4gKwkJaW50ZXJydXB0
-cyA9IDxHSUNfU1BJIDEyNiBJUlFfVFlQRV9MRVZFTF9ISUdIIDA+Owo+ICsJCWNsb2NrcyA9IDwm
-Y3J1IEFDTEtfSlBFR19FTkNPREVSMj4sIDwmY3J1IEhDTEtfSlBFR19FTkNPREVSMj47Cj4gKwkJ
-Y2xvY2stbmFtZXMgPSAiYWNsayIsICJoY2xrIjsKPiArCQlpb21tdXMgPSA8JnZlcHUxMjFfMl9t
-bXU+Owo+ICsJCXBvd2VyLWRvbWFpbnMgPSA8JnBvd2VyIFJLMzU4OF9QRF9WRFBVPjsKPiArCX07
-Cj4gKwo+ICsJdmVwdTEyMV8yX21tdTogaW9tbXVAZmRiYTg4MDAgewo+ICsJCWNvbXBhdGlibGUg
-PSAicm9ja2NoaXAscmszNTg4LWlvbW11IiwgInJvY2tjaGlwLHJrMzU2OC1pb21tdSI7Cj4gKwkJ
-cmVnID0gPDB4MCAweGZkYmE4ODAwIDB4MCAweDQwPjsKPiArCQlpbnRlcnJ1cHRzID0gPEdJQ19T
-UEkgMTI1IElSUV9UWVBFX0xFVkVMX0hJR0ggMD47Cj4gKwkJY2xvY2tzID0gPCZjcnUgQUNMS19K
-UEVHX0VOQ09ERVIyPiwgPCZjcnUgSENMS19KUEVHX0VOQ09ERVIyPjsKPiArCQljbG9jay1uYW1l
-cyA9ICJhY2xrIiwgImlmYWNlIjsKPiArCQlwb3dlci1kb21haW5zID0gPCZwb3dlciBSSzM1ODhf
-UERfVkRQVT47Cj4gKwkJI2lvbW11LWNlbGxzID0gPDA+Owo+ICsJfTsKPiArCj4gKwl2ZXB1MTIx
-XzM6IHZpZGVvLWNvZGVjQGZkYmFjMDAwIHsKPiArCQljb21wYXRpYmxlID0gInJvY2tjaGlwLHJr
-MzU4OC12ZXB1MTIxIjsKPiArCQlyZWcgPSA8MHgwIDB4ZmRiYWMwMDAgMHgwIDB4ODAwPjsKPiAr
-CQlpbnRlcnJ1cHRzID0gPEdJQ19TUEkgMTI4IElSUV9UWVBFX0xFVkVMX0hJR0ggMD47Cj4gKwkJ
-Y2xvY2tzID0gPCZjcnUgQUNMS19KUEVHX0VOQ09ERVIzPiwgPCZjcnUgSENMS19KUEVHX0VOQ09E
-RVIzPjsKPiArCQljbG9jay1uYW1lcyA9ICJhY2xrIiwgImhjbGsiOwo+ICsJCWlvbW11cyA9IDwm
-dmVwdTEyMV8zX21tdT47Cj4gKwkJcG93ZXItZG9tYWlucyA9IDwmcG93ZXIgUkszNTg4X1BEX1ZE
-UFU+Owo+ICsJfTsKPiArCj4gKwl2ZXB1MTIxXzNfbW11OiBpb21tdUBmZGJhYzgwMCB7Cj4gKwkJ
-Y29tcGF0aWJsZSA9ICJyb2NrY2hpcCxyazM1ODgtaW9tbXUiLCAicm9ja2NoaXAscmszNTY4LWlv
-bW11IjsKPiArCQlyZWcgPSA8MHgwIDB4ZmRiYWM4MDAgMHgwIDB4NDA+Owo+ICsJCWludGVycnVw
-dHMgPSA8R0lDX1NQSSAxMjcgSVJRX1RZUEVfTEVWRUxfSElHSCAwPjsKPiArCQljbG9ja3MgPSA8
-JmNydSBBQ0xLX0pQRUdfRU5DT0RFUjM+LCA8JmNydSBIQ0xLX0pQRUdfRU5DT0RFUjM+Owo+ICsJ
-CWNsb2NrLW5hbWVzID0gImFjbGsiLCAiaWZhY2UiOwo+ICsJCXBvd2VyLWRvbWFpbnMgPSA8JnBv
-d2VyIFJLMzU4OF9QRF9WRFBVPjsKPiArCQkjaW9tbXUtY2VsbHMgPSA8MD47Cj4gKwl9Owo+ICsK
-PiAgCWF2MWQ6IHZpZGVvLWNvZGVjQGZkYzcwMDAwIHsKPiAgCQljb21wYXRpYmxlID0gInJvY2tj
-aGlwLHJrMzU4OC1hdjEtdnB1IjsKPiAgCQlyZWcgPSA8MHgwIDB4ZmRjNzAwMDAgMHgwIDB4ODAw
-PjsKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51
-eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9y
-ZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tj
-aGlwCg==
+
+On Wed, 12 Jun 2024 22:48:09 +0200, Sebastian Kropatsch wrote:
+> Hello,
+> 
+> This patch series fixes a lot of minor issues in the current devicetree
+> for the FriendlyElec NanoPi R6 series (R6C and R6S), as well as adding
+> support for the GPU and one USB3 port which was previously disabled.
+> 
+> To aid with these patches, I have refactored the devicetrees in such a
+> way that they will now share a common dtsi source file in a similar
+> fashion than what the NanoPi R5C and R5S are already doing.
+> This makes changes which only affect one of the boards easier, less
+> error-prone and more maintainable. Also we don't need to work with
+> /delete-node/ and /delete-property/ this way :)
+> 
+> Cheers,
+> Sebastian
+> 
+> PS: Additional comments in patch 2 and 3.
+> 
+> ---
+> 
+> Sebastian Kropatsch (5):
+>   arm64: dts: rockchip: Add common definitions for NanoPi R6C and R6S
+>   arm64: dts: rockchip: Fix regulators, gmac and naming on NanoPi
+>     R6C/R6S
+>   arm64: dts: rockchip: Improve LEDs on NanoPi R6C/R6S
+>   arm64: dts: rockchip: Enable lower USB3 port on NanoPi R6C/R6S
+>   arm64: dts: rockchip: Enable GPU on NanoPi R6C/R6S
+> 
+>  ...-nanopi-r6s.dts => rk3588s-nanopi-r6.dtsi} | 242 +++---
+>  .../boot/dts/rockchip/rk3588s-nanopi-r6c.dts  |  48 +-
+>  .../boot/dts/rockchip/rk3588s-nanopi-r6s.dts  | 743 +-----------------
+>  3 files changed, 193 insertions(+), 840 deletions(-)
+>  copy arch/arm64/boot/dts/rockchip/{rk3588s-nanopi-r6s.dts => rk3588s-nanopi-r6.dtsi} (81%)
+> 
+> --
+> 2.43.0
+> 
+> 
+> 
+
+
+My bot found new DTB warnings on the .dts files added or changed in this
+series.
+
+Some warnings may be from an existing SoC .dtsi. Or perhaps the warnings
+are fixed by another series. Ultimately, it is up to the platform
+maintainer whether these warnings are acceptable or not. No need to reply
+unless the platform maintainer has comments.
+
+If you already ran DT checks and didn't see these error(s), then
+make sure dt-schema is up to date:
+
+  pip3 install dtschema --upgrade
+
+
+New warnings running 'make CHECK_DTBS=y rockchip/rk3588s-nanopi-r6c.dtb rockchip/rk3588s-nanopi-r6s.dtb' for 20240612205056.397204-1-seb-dev@mail.de:
+
+arch/arm64/boot/dts/rockchip/rk3588s-nanopi-r6c.dtb: leds: led-1:linux,default-trigger: 'oneOf' conditional failed, one must be fixed:
+	'stmmac-0:01:link' is not one of ['backlight', 'default-on', 'heartbeat', 'disk-activity', 'disk-read', 'disk-write', 'timer', 'pattern', 'audio-micmute', 'audio-mute', 'bluetooth-power', 'flash', 'kbd-capslock', 'mtd', 'nand-disk', 'none', 'torch', 'usb-gadget', 'usb-host', 'usbport']
+	'stmmac-0:01:link' does not match '^cpu[0-9]*$'
+	'stmmac-0:01:link' does not match '^hci[0-9]+-power$'
+	'stmmac-0:01:link' does not match '^mmc[0-9]+$'
+	'stmmac-0:01:link' does not match '^phy[0-9]+tx$'
+	from schema $id: http://devicetree.org/schemas/leds/leds-gpio.yaml#
+arch/arm64/boot/dts/rockchip/rk3588s-nanopi-r6c.dtb: leds: led-1: Unevaluated properties are not allowed ('linux,default-trigger' was unexpected)
+	from schema $id: http://devicetree.org/schemas/leds/leds-gpio.yaml#
+arch/arm64/boot/dts/rockchip/rk3588s-nanopi-r6c.dtb: leds: led-2:linux,default-trigger: 'oneOf' conditional failed, one must be fixed:
+	'r8169-3-3100:00:link' is not one of ['backlight', 'default-on', 'heartbeat', 'disk-activity', 'disk-read', 'disk-write', 'timer', 'pattern', 'audio-micmute', 'audio-mute', 'bluetooth-power', 'flash', 'kbd-capslock', 'mtd', 'nand-disk', 'none', 'torch', 'usb-gadget', 'usb-host', 'usbport']
+	'r8169-3-3100:00:link' does not match '^cpu[0-9]*$'
+	'r8169-3-3100:00:link' does not match '^hci[0-9]+-power$'
+	'r8169-3-3100:00:link' does not match '^mmc[0-9]+$'
+	'r8169-3-3100:00:link' does not match '^phy[0-9]+tx$'
+	from schema $id: http://devicetree.org/schemas/leds/leds-gpio.yaml#
+arch/arm64/boot/dts/rockchip/rk3588s-nanopi-r6c.dtb: leds: led-2: Unevaluated properties are not allowed ('linux,default-trigger' was unexpected)
+	from schema $id: http://devicetree.org/schemas/leds/leds-gpio.yaml#
+arch/arm64/boot/dts/rockchip/rk3588s-nanopi-r6s.dtb: leds: led-1:linux,default-trigger: 'oneOf' conditional failed, one must be fixed:
+	'stmmac-0:01:link' is not one of ['backlight', 'default-on', 'heartbeat', 'disk-activity', 'disk-read', 'disk-write', 'timer', 'pattern', 'audio-micmute', 'audio-mute', 'bluetooth-power', 'flash', 'kbd-capslock', 'mtd', 'nand-disk', 'none', 'torch', 'usb-gadget', 'usb-host', 'usbport']
+	'stmmac-0:01:link' does not match '^cpu[0-9]*$'
+	'stmmac-0:01:link' does not match '^hci[0-9]+-power$'
+	'stmmac-0:01:link' does not match '^mmc[0-9]+$'
+	'stmmac-0:01:link' does not match '^phy[0-9]+tx$'
+	from schema $id: http://devicetree.org/schemas/leds/leds-gpio.yaml#
+arch/arm64/boot/dts/rockchip/rk3588s-nanopi-r6s.dtb: leds: led-1: Unevaluated properties are not allowed ('linux,default-trigger' was unexpected)
+	from schema $id: http://devicetree.org/schemas/leds/leds-gpio.yaml#
+arch/arm64/boot/dts/rockchip/rk3588s-nanopi-r6s.dtb: leds: led-2:linux,default-trigger: 'oneOf' conditional failed, one must be fixed:
+	'r8169-3-3100:00:link' is not one of ['backlight', 'default-on', 'heartbeat', 'disk-activity', 'disk-read', 'disk-write', 'timer', 'pattern', 'audio-micmute', 'audio-mute', 'bluetooth-power', 'flash', 'kbd-capslock', 'mtd', 'nand-disk', 'none', 'torch', 'usb-gadget', 'usb-host', 'usbport']
+	'r8169-3-3100:00:link' does not match '^cpu[0-9]*$'
+	'r8169-3-3100:00:link' does not match '^hci[0-9]+-power$'
+	'r8169-3-3100:00:link' does not match '^mmc[0-9]+$'
+	'r8169-3-3100:00:link' does not match '^phy[0-9]+tx$'
+	from schema $id: http://devicetree.org/schemas/leds/leds-gpio.yaml#
+arch/arm64/boot/dts/rockchip/rk3588s-nanopi-r6s.dtb: leds: led-2: Unevaluated properties are not allowed ('linux,default-trigger' was unexpected)
+	from schema $id: http://devicetree.org/schemas/leds/leds-gpio.yaml#
+arch/arm64/boot/dts/rockchip/rk3588s-nanopi-r6s.dtb: leds: led-3:linux,default-trigger: 'oneOf' conditional failed, one must be fixed:
+	'r8169-4-4100:00:link' is not one of ['backlight', 'default-on', 'heartbeat', 'disk-activity', 'disk-read', 'disk-write', 'timer', 'pattern', 'audio-micmute', 'audio-mute', 'bluetooth-power', 'flash', 'kbd-capslock', 'mtd', 'nand-disk', 'none', 'torch', 'usb-gadget', 'usb-host', 'usbport']
+	'r8169-4-4100:00:link' does not match '^cpu[0-9]*$'
+	'r8169-4-4100:00:link' does not match '^hci[0-9]+-power$'
+	'r8169-4-4100:00:link' does not match '^mmc[0-9]+$'
+	'r8169-4-4100:00:link' does not match '^phy[0-9]+tx$'
+	from schema $id: http://devicetree.org/schemas/leds/leds-gpio.yaml#
+arch/arm64/boot/dts/rockchip/rk3588s-nanopi-r6s.dtb: leds: led-3: Unevaluated properties are not allowed ('linux,default-trigger' was unexpected)
+	from schema $id: http://devicetree.org/schemas/leds/leds-gpio.yaml#
+
+
+
+
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
