@@ -4,51 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B20C1C27C4F
-	for <linux-rockchip@archiver.kernel.org>; Thu, 13 Jun 2024 10:12:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0F69AC27C75
+	for <linux-rockchip@archiver.kernel.org>; Thu, 13 Jun 2024 10:15:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=09B+RkxvkqHcnrzmcmQxfI1hHlIL8YM35c17meH+B0U=; b=aEgprDyraYIXQ8
-	lQJYmH5wOFkKO1vFyzgej0dMT+BOLNNrfqL7sODxIh1qlYwIR/ZX/C9QO2YNkJm33NQVP3us/lhey
-	HFvPy3uKFhUVXPUvBUsTTry6npyt1vpHMNiWmcS3PSJZKz0deXbvrh3XkGFSD5r/k81qacm2mLFgV
-	6CdFE1SfzdsfV+mWq/yqQAM3rvaW+nfy4R3JcAkUCTla3UKmmAo2QH10ONvowWLK5SNQTgu5RHMHx
-	nUDcGhfxvHvBx6i+o+z0y9ifaO72YF8Ya40k4OH8qvFeqeGLgCAyN0C+oY6JAruSel4m9djmqQvx1
-	AeKQC07THm1Y0AyJ0WSQ==;
+	List-Owner; bh=H39laPqO7v4e3HjlbYl2FCiU8yDf+UXqXzoPYmQ2b54=; b=YgaeEX3h3QiuOS
+	B86sW8QQJJKtLnHYcTQ/we00oLCgr4RV2AkyqH4Qi3Eba6UoxzLQ862p0Uk0wsojlhKN2i0RbePPz
+	C5B/t01nuRLSlQfqd3OY6N8rBODJPzkQJTkOOaOoETRLVxZHfMdKqnWjDzFVbipob/AHUBGj+PxNe
+	7THFcNOq9RSYshxyX1A1+Xrlh0DH26GGpbxcpZUDg5mwX3bm5d1dQSCO0Ye/p/64BSNKQKvmVdTyf
+	zltAY7tjMvwVqgFAjua90Er2q1roAGbKq2J042187nCazTK4zUAlzkcHTfuzuWfC4YK9Ox5tI2SK1
+	b1gNu72YL23pE5UO3Urg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sHhRj-0000000G63L-36gT;
-	Thu, 13 Jun 2024 10:12:43 +0000
-Received: from sin.source.kernel.org ([145.40.73.55])
+	id 1sHhUG-0000000G6cM-2JkP;
+	Thu, 13 Jun 2024 10:15:20 +0000
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sHhRf-0000000G61z-1DiF;
-	Thu, 13 Jun 2024 10:12:40 +0000
+	id 1sHhUB-0000000G6aO-3J4M;
+	Thu, 13 Jun 2024 10:15:17 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 2B3FBCE24B3;
-	Thu, 13 Jun 2024 10:12:37 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id F1125C2BBFC;
-	Thu, 13 Jun 2024 10:12:29 +0000 (UTC)
+	by sin.source.kernel.org (Postfix) with ESMTP id E88FDCE249C;
+	Thu, 13 Jun 2024 10:15:13 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5708EC4AF1A;
+	Thu, 13 Jun 2024 10:15:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1718273556;
-	bh=+turtCQ3s8M5Is1ZaVsfEKBqCGPhFRe1pZK3idMaWrQ=;
+	s=k20201202; t=1718273713;
+	bh=r2cm43AgLQ2yKiamt7FvGWb3+PXn+YHNEap/3gysXyg=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=qqRx4qBZp1eh8tqvpIRMJ/x/d/5/hr2a1Gi9q8hqpurCIkh5CyTPJ9GFP17VsPT/9
-	 5bN9eYER/76mZ2JFuDbID2UxYg6DoCO88BPm0aehTLf5N6UkGAeAxl2N1ddGzDU651
-	 gcqjVreA34nqM8vzZpwrLiq5ATwyr7svIKVRKKrqQbYphfz4Ljg+Nmg/DpckuVh0x3
-	 ustALwnXamVP/yiASXl+WzHU9RhVD6StiAi4NCw5T98nRmoLfTZHYugl6Lap28HF56
-	 acU3RpGnUgc1kzn19pFgnwehZhxi6gMmW7etynNso+wkZRfN5XOxuNvO1eikq48+Jg
-	 Z4jWSsR5nxSpA==
-Message-ID: <9ce15b81-a8bd-4833-b15e-3e6f240dcf03@kernel.org>
-Date: Thu, 13 Jun 2024 12:12:27 +0200
+	b=JEEc3b4ROFtvvtkrHsp9EDLXYzpCnbIPqPuV8ftYU8F8h2QUNorwMTSb7NjRp5NAl
+	 aJu+FWPejgLrKx4cR28QqcNUgNAPinXNlXi7GnIJf13KhDoJuvf7oLddGTVxp6JZVM
+	 azxag9RwVMSFocDeOLuRLV12SoEBUNOpiZNAfOVzww34HiITjc/rJ5UUgzYYt33TjG
+	 4rlOyeHkA+kg5VHFuGyGW2u3g/08snUf171mrAr0grkSD6mLrbRo7XU8KYCiDK+7BH
+	 69PgLZAbtzy4OzC1KWRXDb6z6m3ZRBr/nhAVFlea678l4FipkNQU9opgcpfDTOgyOk
+	 FDjtUvxpT3x8g==
+Message-ID: <e62a723c-30dc-4667-bbd5-85cb8c583432@kernel.org>
+Date: Thu, 13 Jun 2024 12:15:05 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH v3] dt-bindings: phy: rockchip-emmc-phy: Convert to
  dtschema
-To: Johan Jonker <jbx6244@yandex.com>,
- Shresth Prasad <shresthprasad7@gmail.com>, vkoul@kernel.org,
+To: Shresth Prasad <shresthprasad7@gmail.com>, vkoul@kernel.org,
  kishon@kernel.org, robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
  heiko@sntech.de, sebastian.reichel@collabora.com, s.hauer@pengutronix.de,
  cristian.ciocaltea@collabora.com, andy.yan@rock-chips.com
@@ -57,7 +56,6 @@ Cc: linux-phy@lists.infradead.org, devicetree@vger.kernel.org,
  linux-kernel@vger.kernel.org, skhan@linuxfoundation.org,
  javier.carrasco.cruz@gmail.com
 References: <20240613085812.4020-2-shresthprasad7@gmail.com>
- <cc66cca1-33db-4f30-afcf-d256a959896b@yandex.com>
 From: Krzysztof Kozlowski <krzk@kernel.org>
 Content-Language: en-US
 Autocrypt: addr=krzk@kernel.org; keydata=
@@ -103,10 +101,10 @@ Autocrypt: addr=krzk@kernel.org; keydata=
  uZwJCLykjad45hsWcOGk3OcaAGQS6NDlfhM6O9aYNwGL6tGt/6BkRikNOs7VDEa4/HlbaSJo
  7FgndGw1kWmkeL6oQh7wBvYll2buKod4qYntmNKEicoHGU+x91Gcan8mCoqhJkbqrL7+nXG2
  5Q/GS5M9RFWS+nYyJh+c3OcfKqVcZQNANItt7+ULzdNJuhvTRRdC3g9hmCEuNSr+CLMdnRBY fv0=
-In-Reply-To: <cc66cca1-33db-4f30-afcf-d256a959896b@yandex.com>
+In-Reply-To: <20240613085812.4020-2-shresthprasad7@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240613_031239_728353_7DBBDCBC 
-X-CRM114-Status: GOOD (  10.78  )
+X-CRM114-CacheID: sfid-20240613_031516_219645_7B352A09 
+X-CRM114-Status: GOOD (  10.84  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -123,42 +121,47 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 13/06/2024 11:44, Johan Jonker wrote:
->> ---
+On 13/06/2024 10:58, Shresth Prasad wrote:
+> Convert txt bindings of Rockchip EMMC PHY to dtschema to allow
+> for validation.
 > 
-> Add ack request from phy maintainer here.
+> Signed-off-by: Shresth Prasad <shresthprasad7@gmail.com>
+> ---
+> Changes in v3:
+>     - fix `reg` in example being too long
+> 
+> Tested against `rockchip/rk3399-firefly.dtb`, `rockchip/rk3399-orangepi.dtb`
+> and `rockchip/rk3399-pinebook-pro.dtb`.
 
-Why? What do you mean for that? Why phy maintainer needs to ack patches
-he is going to take?
+
 
 > 
->> Changes in v3:
->>     - fix `reg` in example being too long
->>
->> Tested against `rockchip/rk3399-firefly.dtb`, `rockchip/rk3399-orangepi.dtb`
->> and `rockchip/rk3399-pinebook-pro.dtb`.
->>
->>  .../bindings/phy/rockchip,emmc-phy.yaml       | 79 +++++++++++++++++++
->>  .../bindings/phy/rockchip-emmc-phy.txt        | 43 ----------
->>  .../devicetree/bindings/soc/rockchip/grf.yaml |  2 +-
->>  3 files changed, 80 insertions(+), 44 deletions(-)
->>  create mode 100644 Documentation/devicetree/bindings/phy/rockchip,emmc-phy.yaml
->>  delete mode 100644 Documentation/devicetree/bindings/phy/rockchip-emmc-phy.txt
->>
->> diff --git a/Documentation/devicetree/bindings/phy/rockchip,emmc-phy.yaml b/Documentation/devicetree/bindings/phy/rockchip,emmc-phy.yaml
->> new file mode 100644
->> index 000000000000..85d74b343991
->> --- /dev/null
->> +++ b/Documentation/devicetree/bindings/phy/rockchip,emmc-phy.yaml
->> @@ -0,0 +1,79 @@
-> 
->> +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-> 
-> You are converting an existing document, so GPL 2 only.
+>  .../bindings/phy/rockchip,emmc-phy.yaml       | 79 +++++++++++++++++++
+>  .../bindings/phy/rockchip-emmc-phy.txt        | 43 ----------
+>  .../devicetree/bindings/soc/rockchip/grf.yaml |  2 +-
+>  3 files changed, 80 insertions(+), 44 deletions(-)
+>  create mode 100644 Documentation/devicetree/bindings/phy/rockchip,emmc-phy.yaml
 
-Which copyrightable part was copied? This comment is not correct in
-general, because conversions are dual-licensed (there are exceptions,
-but that's the generic rule).
+Filename matching compatible.
+
+...
+
+Please look at other bindings how the conversion works and get it
+reviewed/acked through your mentors before you post.
+
+> -};
+> diff --git a/Documentation/devicetree/bindings/soc/rockchip/grf.yaml b/Documentation/devicetree/bindings/soc/rockchip/grf.yaml
+> index 79798c747476..1f88416657cc 100644
+> --- a/Documentation/devicetree/bindings/soc/rockchip/grf.yaml
+> +++ b/Documentation/devicetree/bindings/soc/rockchip/grf.yaml
+> @@ -178,7 +178,7 @@ allOf:
+>        patternProperties:
+>          "phy@[0-9a-f]+$":
+>            description:
+> -            Documentation/devicetree/bindings/phy/rockchip-emmc-phy.txt
+> +            Documentation/devicetree/bindings/phy/rockchip,emmc-phy.yaml
+
+Nope, look at the rest of the file and do not implement things differently.
 
 Best regards,
 Krzysztof
