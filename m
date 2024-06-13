@@ -4,89 +4,115 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B3A15C27C53
-	for <linux-rockchip@archiver.kernel.org>; Thu, 13 Jun 2024 02:27:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 29632C27C4F
+	for <linux-rockchip@archiver.kernel.org>; Thu, 13 Jun 2024 06:23:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=piq8v+Mjq5Fdlpe89a36LoaGB5OOjsHc4xHJEFNBGew=; b=4oGctzvua3sqDX
-	fC9g9PQgEIV1J3SmIo5lF3f+Mdqe0QHxwMxjHXI1sdL+f4LPbrew1hocS4sdPP24+zcTW2wgUvgF/
-	BK0HqdZ+BOP0YQNv5feItdhCa+3U+t9R4TfbpIYKJXBs9tTC5r7tqUb5x6stYDB6ZvYXqRz3Avk2y
-	xNwa2TLxqY7OV/2NybVriaAn7W8Emk24ssmnExXOxxPOe0636lRlhObyhfZqqbx3A7eeKSk5V552+
-	F7HPnpkPV1H4hP6h8TqPyfawnDOCVAwCbArKpd93hmeFXJC1y6LeGeyiDlLSumq+gKFmIcynOuIiw
-	hmd16C8SKlwfQydO/tjQ==;
+	List-Owner; bh=HZY5eIiqHhM+ZFeyDjZ3vBOZmtYnQCLV8AplqcXfHLc=; b=YphtGbeNJ5UHyo
+	hZA1nNaPAULLfNCkh8q2htMsssEsydLtGpRELO2HdZ/RDE9Snz643CUJ9X3Qs4Wb7KLkdn+jjFfAP
+	kSbYFDX/YP7WWEvNJO4sIWMFMT9lRZG4JAuYL79dBHBEGcuUedl4YebyPesxOAIyJEnJI26LPpgaQ
+	dVuIA9BfOgBVTLGrC7IOyxeYbaxP3OvIRL4PIjy/4WWofZkMBVEIAvUISvBtXqQbWgcOdd4K+/g73
+	t+D0xCUoZe+a0LI6Oo4ExKJ2fqnIqnwxyNHR4z6H2BCWw5HhdSbhvfcJZSHkn/K0+IqnqXfGVCFlx
+	1yziMPSpafC2aVz+QgSQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sHaBd-0000000Eqtx-16CB;
-	Thu, 13 Jun 2024 02:27:37 +0000
-Received: from mgamail.intel.com ([192.198.163.18])
+	id 1sHdsD-0000000FIjg-3rco;
+	Thu, 13 Jun 2024 06:23:49 +0000
+Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sHaBY-0000000EqtD-45q4;
-	Thu, 13 Jun 2024 02:27:35 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1718245653; x=1749781653;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=Nh2RzwaSTxJgbNfHmt3JRc0uEjv3nRlrnUDcdTPlwq8=;
-  b=YnK28U4Cw3uhqf8JLvbF92bP6Zz/3LABlznK919RQ59eueSYQtV/+uET
-   qdDGSx6LYd3kdH+r56sw1CJ8GunMCconXlJ01zh5lD9M8A8YwfEDTbv7e
-   zeRh/1IIWfFmkQucSEPG7fKE0rQFWx1ZOY8akzhl6Ex/pFyTJloP5DEGF
-   qB2TYB+igli9JAHBOI9RDsy14zWpaFNU3YVvquTcpZ9SeCiboYN8tO+mQ
-   64X71lGaUq3GQ74/QM0AbKNzg6EI0vvJSVgXXzsk8zSefaGOUONxlhElU
-   0mCKcYqh0AhUscRogDIKhD44nLc0P1fgl2nSfxmHRVzjnYpmwdTrGIRo3
-   w==;
-X-CSE-ConnectionGUID: gZV7Wtu0SdqMJ8i7GRWMTg==
-X-CSE-MsgGUID: m4gs+ijdR7aTEGiPbm0Qeg==
-X-IronPort-AV: E=McAfee;i="6700,10204,11101"; a="14762600"
-X-IronPort-AV: E=Sophos;i="6.08,234,1712646000"; 
-   d="scan'208";a="14762600"
-Received: from fmviesa003.fm.intel.com ([10.60.135.143])
-  by fmvoesa112.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 12 Jun 2024 19:27:32 -0700
-X-CSE-ConnectionGUID: Hfsi00ypS3ujyFebs+qM4w==
-X-CSE-MsgGUID: ZXcO7e85TC+r/0EEzcI5Aw==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.08,234,1712646000"; 
-   d="scan'208";a="44371511"
-Received: from lkp-server01.sh.intel.com (HELO 628d7d8b9fc6) ([10.239.97.150])
-  by fmviesa003.fm.intel.com with ESMTP; 12 Jun 2024 19:27:26 -0700
-Received: from kbuild by 628d7d8b9fc6 with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1sHaBP-00027m-2g;
-	Thu, 13 Jun 2024 02:27:23 +0000
-Date: Thu, 13 Jun 2024 10:27:17 +0800
-From: kernel test robot <lkp@intel.com>
-To: Tomeu Vizoso <tomeu@tomeuvizoso.net>, Joerg Roedel <joro@8bytes.org>,
-	Will Deacon <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>,
-	Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Oded Gabbay <ogabbay@kernel.org>,
-	Tomeu Vizoso <tomeu.vizoso@tomeuvizoso.net>,
-	David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>,
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	Sumit Semwal <sumit.semwal@linaro.org>,
-	Christian =?iso-8859-1?Q?K=F6nig?= <christian.koenig@amd.com>
-Cc: oe-kbuild-all@lists.linux.dev, iommu@lists.linux.dev,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
-	devicetree@vger.kernel.org, dri-devel@lists.freedesktop.org,
-	linux-media@vger.kernel.org, linaro-mm-sig@lists.linaro.org
-Subject: Re: [PATCH 6/9] accel/rocket: Add a new driver for Rockchip's NPU
-Message-ID: <202406131022.1JKNS7me-lkp@intel.com>
-References: <20240612-6-10-rocket-v1-6-060e48eea250@tomeuvizoso.net>
+	id 1sHdsA-0000000FIia-0EmR
+	for linux-rockchip@lists.infradead.org;
+	Thu, 13 Jun 2024 06:23:48 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sin.source.kernel.org (Postfix) with ESMTP id 3D5C9CE240C;
+	Thu, 13 Jun 2024 06:23:43 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1F894C2BBFC;
+	Thu, 13 Jun 2024 06:23:36 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1718259822;
+	bh=26I/IHveqqAHAsqcwe1W7jBQ0Cszpg6G1JOITnnQpjc=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=QR7/j50+mYWkvtxnF6rH2kkur8xbaE9biOThPGrAnGO01uTM7L7v68qReZzftceUs
+	 MzzirLXR7AhVa8feQ6OYtzhScXj6m07/41XIp5UTmkI854YujXp4nCl8DcuHxP88L9
+	 T/8x5dEMbOc4m7xvwLBesuH2k5GXGHZ2JQudFNTFzib1LLEoEmK/8+eWsBUwtKJg2X
+	 geBSVkel3kF+blvrmGYAvJobLX4dlJuv6z8El5olCla7MHdBzCLezW7vQevKoSayWp
+	 qMMmeHqXTdMIotylZcWwbefkWlwSkFC5lR8SQ+DZyhKNHvpmJEKukOuBWjWwrnlCUU
+	 F03IR/LHA8aYg==
+Message-ID: <e85c4437-ef9d-4b00-8f77-b9cdb8282571@kernel.org>
+Date: Thu, 13 Jun 2024 08:23:34 +0200
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20240612-6-10-rocket-v1-6-060e48eea250@tomeuvizoso.net>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v5 1/5] media: dt-bindings: rk3568-vepu: Add RK3588
+ VEPU121
+To: Sebastian Reichel <sebastian.reichel@collabora.com>,
+ "Rob Herring (Arm)" <robh@kernel.org>
+Cc: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+ devicetree@vger.kernel.org, Nicolas Dufresne
+ <nicolas.dufresne@collabora.com>, Jianfeng Liu <liujianfeng1994@gmail.com>,
+ linux-rockchip@lists.infradead.org,
+ Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
+ Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>, kernel@collabora.com,
+ Heiko Stuebner <heiko@sntech.de>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
+ Philipp Zabel <p.zabel@pengutronix.de>, Conor Dooley <conor+dt@kernel.org>
+References: <20240612173213.42827-1-sebastian.reichel@collabora.com>
+ <20240612173213.42827-2-sebastian.reichel@collabora.com>
+ <171821679246.3419351.9732124883795406633.robh@kernel.org>
+ <t5yyanxuweou6edj3subsbtndow6nwwexcgkhctfx3mdkoi7dl@zjtqmvklwzz4>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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 fv0=
+In-Reply-To: <t5yyanxuweou6edj3subsbtndow6nwwexcgkhctfx3mdkoi7dl@zjtqmvklwzz4>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240612_192733_057001_F662C485 
-X-CRM114-Status: GOOD (  13.67  )
+X-CRM114-CacheID: sfid-20240612_232346_611789_58746905 
+X-CRM114-Status: UNSURE (   5.90  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,58 +129,22 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Tomeu,
+On 13/06/2024 00:20, Sebastian Reichel wrote:
+> oops. That's on me for not doing another test and doing something
+> stupid. I obviously wanted this and didn't recheck the bindings
+> after dropping the fallback compatible.
+> 
+> enum:
+>   - rockchip,rk3568-vepu
+>   - rockchip,rk3588-vepu121
+> 
+> I will change it in v6 if people are fine with this solution.
 
-kernel test robot noticed the following build errors:
+Ack
 
-[auto build test ERROR on 83a7eefedc9b56fe7bfeff13b6c7356688ffa670]
+Best regards,
+Krzysztof
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Tomeu-Vizoso/iommu-rockchip-Add-compatible-for-rockchip-rk3588-iommu/20240612-215814
-base:   83a7eefedc9b56fe7bfeff13b6c7356688ffa670
-patch link:    https://lore.kernel.org/r/20240612-6-10-rocket-v1-6-060e48eea250%40tomeuvizoso.net
-patch subject: [PATCH 6/9] accel/rocket: Add a new driver for Rockchip's NPU
-config: s390-allyesconfig (https://download.01.org/0day-ci/archive/20240613/202406131022.1JKNS7me-lkp@intel.com/config)
-compiler: s390-linux-gcc (GCC) 13.2.0
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20240613/202406131022.1JKNS7me-lkp@intel.com/reproduce)
-
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202406131022.1JKNS7me-lkp@intel.com/
-
-All errors (new ones prefixed by >>):
-
-   In file included from include/linux/clk.h:13,
-                    from drivers/accel/rocket/rocket_drv.c:4:
->> drivers/accel/rocket/rocket_drv.c:213:31: error: 'rocket_pm_ops' undeclared here (not in a function); did you mean 'rocket_probe'?
-     213 |                 .pm = pm_ptr(&rocket_pm_ops),
-         |                               ^~~~~~~~~~~~~
-   include/linux/kernel.h:48:44: note: in definition of macro 'PTR_IF'
-      48 | #define PTR_IF(cond, ptr)       ((cond) ? (ptr) : NULL)
-         |                                            ^~~
-   drivers/accel/rocket/rocket_drv.c:213:23: note: in expansion of macro 'pm_ptr'
-     213 |                 .pm = pm_ptr(&rocket_pm_ops),
-         |                       ^~~~~~
-
-
-vim +213 drivers/accel/rocket/rocket_drv.c
-
-   207	
-   208	static struct platform_driver rocket_driver = {
-   209		.probe = rocket_probe,
-   210		.remove_new = rocket_remove,
-   211		.driver	 = {
-   212			.name = "rocket",
- > 213			.pm = pm_ptr(&rocket_pm_ops),
-   214			.of_match_table = dt_match,
-   215		},
-   216	};
-   217	module_platform_driver(rocket_driver);
-   218	
-
--- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
 
 _______________________________________________
 Linux-rockchip mailing list
