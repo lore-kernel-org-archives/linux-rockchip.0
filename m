@@ -4,89 +4,135 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D8ACAC27C75
-	for <linux-rockchip@archiver.kernel.org>; Thu, 13 Jun 2024 09:09:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8DD10C27C4F
+	for <linux-rockchip@archiver.kernel.org>; Thu, 13 Jun 2024 09:14:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=lediDi0D/YbOHR9ezcJvVCV0Whwxl1mMp97YfTzTi6E=; b=jiJvsUUt2Ry6y3
-	DeQ4EVM+vecoPUvGWIG7z5fymFTm/Ql2YMVJhtzAsKpTK7vmTfUoLkVyymI30oXH9yNTbGoxVu7kU
-	WGRDfJ8UxkcpijsFid0b/cu7MJ2JbjNkcaXkuuGqNe36KZHx6k6/nEa+qPXNt2MGdq1+o33PdyGIV
-	+nABo5HswDs9a5jJ4FMS2mCW2CLdXBTaYf27EK+9WuWO4u+U3Ruoo7u7BVaUoORSmah00Vw8JLDz0
-	9O+u6c3xBMZGtwKiPNqh6PVVaLqfUdGWLVOGF36cIX2iU7Ne3wQhDEs/ME2tBO3YRfEUNb6i3lW6h
-	qFqppzon02x60iA2znVA==;
+	List-Owner; bh=f9lmL+mWa9N0rzGGz+QfgmDcQqrZVRZrEEwMKJvugqU=; b=dUypxV5LX2X7CK
+	VvIaDGItl5RBgCPhVFU8PD1uzuDqVjd+2t5LQ0gkm7kZtAz4JtLM8Bt5dClEk9umOILdB+rRPBysF
+	SxXLxEYaK6GMuaGDvj7Z51dwMVvnVM5fppInzeJRMN8U6f/r036sdE1Fzxx8mUFuLRsf/rLwG5ivI
+	0EfZAAD2mX0sgjslkwtxhVHnt6Qhb9ncXhlrTRfExaZy3ZwEZm0VICG5zyroPT3ppa+Qaxe6uAAX7
+	U2dHFib7Na7NcRxOeCnH4br0RMHYILq2NWc2KQv4b7QK8rw6Rc1m0FF2HVDZVROwiBfSZw1xOXo3X
+	BEBGxzKZ7hOyL20RT2rg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sHgS5-0000000FtHa-0ZdA;
-	Thu, 13 Jun 2024 09:09:01 +0000
-Received: from mgamail.intel.com ([198.175.65.12])
+	id 1sHgXK-0000000FuWO-20Lp;
+	Thu, 13 Jun 2024 09:14:26 +0000
+Received: from mail-ed1-x529.google.com ([2a00:1450:4864:20::529])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sHgRz-0000000FtFg-1YDh;
-	Thu, 13 Jun 2024 09:08:58 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1718269735; x=1749805735;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=Nz4bq/RV/DLL86umhKgYai6V/Hg+Fl/30aSJdOT7Jbg=;
-  b=QQASjc/4RRM09Uau/GdpMrjfTJsYFayIF7RtHj/9vq7y9L6jVaSMojym
-   7EJYSLnD4OH9xpGYNAENo4dRARNNcC/+YB867hpFI9mSHeSrkV637h4Q0
-   9Da9j7noYeBpDCROoi7Ltn+xabdrm0c9Nf6sLejlVqnYcPSXAFiLfQ6zb
-   UiEJ85l6FnNo4Sjhq9kQgVSmMVs62D9jUkHnXJ1VDyplhHS/JEx7iZxjq
-   HrjP4Bh143Colk/84p7nPYmCItqMbJsxAFnTt5eKM++5aJLQSq00dDpq6
-   hPueK387CfY4TyuQutS/qoDL1TguZu90W27OZ54xsjwfyg3VwWW22L9UI
-   Q==;
-X-CSE-ConnectionGUID: Bnv10yGhRW2oy6tu+Sl+Jw==
-X-CSE-MsgGUID: +AL7+4qMTfKzHeQK1NQ1dQ==
-X-IronPort-AV: E=McAfee;i="6700,10204,11101"; a="26498690"
-X-IronPort-AV: E=Sophos;i="6.08,234,1712646000"; 
-   d="scan'208";a="26498690"
-Received: from orviesa004.jf.intel.com ([10.64.159.144])
-  by orvoesa104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 13 Jun 2024 02:08:54 -0700
-X-CSE-ConnectionGUID: GLT45S0sQR2HOiedp1pbaw==
-X-CSE-MsgGUID: EwMmexHPQzGx+7U88srY9A==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.08,234,1712646000"; 
-   d="scan'208";a="45201966"
-Received: from lkp-server01.sh.intel.com (HELO 628d7d8b9fc6) ([10.239.97.150])
-  by orviesa004.jf.intel.com with ESMTP; 13 Jun 2024 02:08:48 -0700
-Received: from kbuild by 628d7d8b9fc6 with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1sHgRp-0002Qs-1L;
-	Thu, 13 Jun 2024 09:08:45 +0000
-Date: Thu, 13 Jun 2024 17:08:09 +0800
-From: kernel test robot <lkp@intel.com>
-To: Tomeu Vizoso <tomeu@tomeuvizoso.net>, Joerg Roedel <joro@8bytes.org>,
-	Will Deacon <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>,
-	Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Oded Gabbay <ogabbay@kernel.org>,
-	Tomeu Vizoso <tomeu.vizoso@tomeuvizoso.net>,
-	David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>,
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	Sumit Semwal <sumit.semwal@linaro.org>,
-	Christian =?iso-8859-1?Q?K=F6nig?= <christian.koenig@amd.com>
-Cc: llvm@lists.linux.dev, oe-kbuild-all@lists.linux.dev,
-	iommu@lists.linux.dev, linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
-	devicetree@vger.kernel.org, dri-devel@lists.freedesktop.org,
-	linux-media@vger.kernel.org, linaro-mm-sig@lists.linaro.org
-Subject: Re: [PATCH 8/9] accel/rocket: Add job submission IOCTL
-Message-ID: <202406131640.WbBaRMbr-lkp@intel.com>
-References: <20240612-6-10-rocket-v1-8-060e48eea250@tomeuvizoso.net>
+	id 1sHgXH-0000000FuTz-0rYv
+	for linux-rockchip@lists.infradead.org;
+	Thu, 13 Jun 2024 09:14:25 +0000
+Received: by mail-ed1-x529.google.com with SMTP id 4fb4d7f45d1cf-57ca578ce8dso713052a12.2
+        for <linux-rockchip@lists.infradead.org>; Thu, 13 Jun 2024 02:14:18 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1718270057; x=1718874857; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:autocrypt:content-language
+         :from:references:cc:to:subject:user-agent:mime-version:date
+         :message-id:from:to:cc:subject:date:message-id:reply-to;
+        bh=qkh12gu8Y41kP9toxt391VtpQoWW2LdgXSMredIy/TA=;
+        b=YztG7yHTZknEXsSsAvirQGbh/xCWOFuewWfA+6X+3rxg28ncCK2SL38dnTMo0F+cB6
+         v7HRjUjtczmQBuej517tLqUqIPNeMvjTn4BZdOr6G5gcWitVvNUbT0TDJBj6udU95i2H
+         +4y7B15+KJYaVzLz60WKBP3lGgbbUbnj7eTFiehcXGFiWYtXZY7MXIkzF9xDI8I0lWb0
+         rwmWYLogGXmCPcEJIBYZbWx9IV/5KiK9z73ci5r4tLzREtZUw4SuCeTPJYPyHnVY272C
+         xnT0f5MWlA6JV0kF4PVTz0e76kdm90VTI5lEe3vNouGefmt7bCWIJg/gYuYgw+jomLDg
+         dLGw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1718270057; x=1718874857;
+        h=content-transfer-encoding:in-reply-to:autocrypt:content-language
+         :from:references:cc:to:subject:user-agent:mime-version:date
+         :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=qkh12gu8Y41kP9toxt391VtpQoWW2LdgXSMredIy/TA=;
+        b=BWYDRz8WmzYlYlrITzMQFIdomKRRRer62r7b/2UnOP3qgqMJqeIm4cE2lyv9JnRBMA
+         +yS8ujjEgrqzki9jHBDguCMsRmIr7zGEj/XXGy7oo0dsxFq1IH9OkKlhljgNNediEBYa
+         EKvI0suhrN+R92rguUgg8QStm2g/N9GewEWCGayYgosDItryGeOWo5xYkTrVPDkh+6dh
+         Pdo7LnHAlb37yT7Y/MSc141ft/e2A+tFJWzKX9f0Wne+TnbVRN7+QE3e5LwBIQ0x9zLf
+         WiaWg6u3EBR5QEBr40+NybPfzY4iZjSGgIPX42KT+gE+6cuigcVTXZ4/91jsar3j088T
+         7caA==
+X-Forwarded-Encrypted: i=1; AJvYcCVQcosk60UYsadfIF4QtjGz1BOdNmq+AXc/WR51rWaPwDGregE/VaRsL9IcmfpOjmvskWD+5TAd1RzU4D5k5hHkTgDLP9BtGOjDX2+3SE9WnJIB
+X-Gm-Message-State: AOJu0Yzo/NWY4cK9RXor6Hs1T1rZE3lur/lShsOQ4Nc80vaseDEZlYfC
+	VdWvV5ZRDQc/a5D9fnuDJjdGGXFh8EaBkZLepgq0oJKJIWht97zpH6fK8yNRnWc=
+X-Google-Smtp-Source: AGHT+IFU4RKXHaCaUsH4qcj2Nq9fJm9LJpMfzoBg0DJvhu+sP6wByh+Y9Ndy4HkFr6HZO/9Hm8liKA==
+X-Received: by 2002:a50:cd09:0:b0:56e:99e:1fac with SMTP id 4fb4d7f45d1cf-57caaae5221mr3184039a12.39.1718270057321;
+        Thu, 13 Jun 2024 02:14:17 -0700 (PDT)
+Received: from [192.168.1.20] ([178.197.219.137])
+        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-57cb72e9c12sm662908a12.58.2024.06.13.02.14.15
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 13 Jun 2024 02:14:16 -0700 (PDT)
+Message-ID: <7c458bb1-d49f-4795-ae9a-54a8c47e5e23@linaro.org>
+Date: Thu, 13 Jun 2024 11:14:14 +0200
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20240612-6-10-rocket-v1-8-060e48eea250@tomeuvizoso.net>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 2/7] dt-bindings: i2c: mux: mule: add dt-bindings for
+ mule i2c multiplexer
+To: Farouk Bouabid <farouk.bouabid@cherry.de>,
+ Wolfram Sang <wsa+renesas@sang-engineering.com>,
+ Peter Rosin <peda@axentia.se>, Andi Shyti <andi.shyti@kernel.org>,
+ Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Conor Dooley <conor+dt@kernel.org>, Quentin Schulz
+ <quentin.schulz@cherry.de>, Heiko Stuebner <heiko@sntech.de>
+Cc: linux-i2c@vger.kernel.org, linux-kernel@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org
+References: <20240611-dev-mule-i2c-mux-v3-0-08d26a28e001@cherry.de>
+ <20240611-dev-mule-i2c-mux-v3-2-08d26a28e001@cherry.de>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Content-Language: en-US
+Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
+ 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
+ D2GYIS41Kv4Isx2dEFh+/Q==
+In-Reply-To: <20240611-dev-mule-i2c-mux-v3-2-08d26a28e001@cherry.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240613_020855_489009_FFDBEEB9 
-X-CRM114-Status: GOOD (  12.80  )
+X-CRM114-CacheID: sfid-20240613_021423_422655_BF4D9DF9 
+X-CRM114-Status: UNSURE (   7.56  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,119 +149,33 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Tomeu,
+On 11/06/2024 13:43, Farouk Bouabid wrote:
+> Mule is an MCU that emulates a set of I2C devices which are reachable
+> through an I2C-mux.
+> 
+A nit, subject: drop second/last, redundant "dt-bindings for". The
+"dt-bindings" prefix is already stating that these are bindings.
+See also:
+https://elixir.bootlin.com/linux/v6.7-rc8/source/Documentation/devicetree/bindings/submitting-patches.rst#L18
 
-kernel test robot noticed the following build warnings:
+...
 
-[auto build test WARNING on 83a7eefedc9b56fe7bfeff13b6c7356688ffa670]
+> +
+> +            i2c@0 {
+> +                reg = <0x0>;
+> +                #address-cells = <1>;
+> +                #size-cells = <0>;
+> +
+> +                fan: fan@18 {
+> +                  compatible = "ti,amc6821";
+> +                  reg = <0x18>;
+> +                  #cooling-cells = <2>;
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Tomeu-Vizoso/iommu-rockchip-Add-compatible-for-rockchip-rk3588-iommu/20240612-215814
-base:   83a7eefedc9b56fe7bfeff13b6c7356688ffa670
-patch link:    https://lore.kernel.org/r/20240612-6-10-rocket-v1-8-060e48eea250%40tomeuvizoso.net
-patch subject: [PATCH 8/9] accel/rocket: Add job submission IOCTL
-config: hexagon-allmodconfig (https://download.01.org/0day-ci/archive/20240613/202406131640.WbBaRMbr-lkp@intel.com/config)
-compiler: clang version 19.0.0git (https://github.com/llvm/llvm-project 4403cdbaf01379de96f8d0d6ea4f51a085e37766)
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20240613/202406131640.WbBaRMbr-lkp@intel.com/reproduce)
+Please keep consistent indentation.
 
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202406131640.WbBaRMbr-lkp@intel.com/
+Best regards,
+Krzysztof
 
-All warnings (new ones prefixed by >>):
-
-   In file included from drivers/accel/rocket/rocket_job.c:6:
-   In file included from include/drm/drm_file.h:39:
-   In file included from include/drm/drm_prime.h:37:
-   In file included from include/linux/scatterlist.h:8:
-   In file included from include/linux/mm.h:2253:
-   include/linux/vmstat.h:514:36: warning: arithmetic between different enumeration types ('enum node_stat_item' and 'enum lru_list') [-Wenum-enum-conversion]
-     514 |         return node_stat_name(NR_LRU_BASE + lru) + 3; // skip "nr_"
-         |                               ~~~~~~~~~~~ ^ ~~~
-   In file included from drivers/accel/rocket/rocket_job.c:6:
-   In file included from include/drm/drm_file.h:39:
-   In file included from include/drm/drm_prime.h:37:
-   In file included from include/linux/scatterlist.h:9:
-   In file included from arch/hexagon/include/asm/io.h:328:
-   include/asm-generic/io.h:548:31: warning: performing pointer arithmetic on a null pointer has undefined behavior [-Wnull-pointer-arithmetic]
-     548 |         val = __raw_readb(PCI_IOBASE + addr);
-         |                           ~~~~~~~~~~ ^
-   include/asm-generic/io.h:561:61: warning: performing pointer arithmetic on a null pointer has undefined behavior [-Wnull-pointer-arithmetic]
-     561 |         val = __le16_to_cpu((__le16 __force)__raw_readw(PCI_IOBASE + addr));
-         |                                                         ~~~~~~~~~~ ^
-   include/uapi/linux/byteorder/little_endian.h:37:51: note: expanded from macro '__le16_to_cpu'
-      37 | #define __le16_to_cpu(x) ((__force __u16)(__le16)(x))
-         |                                                   ^
-   In file included from drivers/accel/rocket/rocket_job.c:6:
-   In file included from include/drm/drm_file.h:39:
-   In file included from include/drm/drm_prime.h:37:
-   In file included from include/linux/scatterlist.h:9:
-   In file included from arch/hexagon/include/asm/io.h:328:
-   include/asm-generic/io.h:574:61: warning: performing pointer arithmetic on a null pointer has undefined behavior [-Wnull-pointer-arithmetic]
-     574 |         val = __le32_to_cpu((__le32 __force)__raw_readl(PCI_IOBASE + addr));
-         |                                                         ~~~~~~~~~~ ^
-   include/uapi/linux/byteorder/little_endian.h:35:51: note: expanded from macro '__le32_to_cpu'
-      35 | #define __le32_to_cpu(x) ((__force __u32)(__le32)(x))
-         |                                                   ^
-   In file included from drivers/accel/rocket/rocket_job.c:6:
-   In file included from include/drm/drm_file.h:39:
-   In file included from include/drm/drm_prime.h:37:
-   In file included from include/linux/scatterlist.h:9:
-   In file included from arch/hexagon/include/asm/io.h:328:
-   include/asm-generic/io.h:585:33: warning: performing pointer arithmetic on a null pointer has undefined behavior [-Wnull-pointer-arithmetic]
-     585 |         __raw_writeb(value, PCI_IOBASE + addr);
-         |                             ~~~~~~~~~~ ^
-   include/asm-generic/io.h:595:59: warning: performing pointer arithmetic on a null pointer has undefined behavior [-Wnull-pointer-arithmetic]
-     595 |         __raw_writew((u16 __force)cpu_to_le16(value), PCI_IOBASE + addr);
-         |                                                       ~~~~~~~~~~ ^
-   include/asm-generic/io.h:605:59: warning: performing pointer arithmetic on a null pointer has undefined behavior [-Wnull-pointer-arithmetic]
-     605 |         __raw_writel((u32 __force)cpu_to_le32(value), PCI_IOBASE + addr);
-         |                                                       ~~~~~~~~~~ ^
->> drivers/accel/rocket/rocket_job.c:353:11: warning: variable 'status' set but not used [-Wunused-but-set-variable]
-     353 |         uint32_t status, raw_status;
-         |                  ^
->> drivers/accel/rocket/rocket_job.c:353:19: warning: variable 'raw_status' set but not used [-Wunused-but-set-variable]
-     353 |         uint32_t status, raw_status;
-         |                          ^
-   drivers/accel/rocket/rocket_job.c:40:1: warning: unused function 'to_rocket_fence' [-Wunused-function]
-      40 | to_rocket_fence(struct dma_fence *fence)
-         | ^~~~~~~~~~~~~~~
-   10 warnings generated.
-
-Kconfig warnings: (for reference only)
-   WARNING: unmet direct dependencies detected for IOMMU_IO_PGTABLE_LPAE
-   Depends on [n]: IOMMU_SUPPORT [=y] && (ARM || ARM64 || COMPILE_TEST [=y]) && !GENERIC_ATOMIC64 [=y]
-   Selected by [m]:
-   - DRM_ACCEL_ROCKET [=m] && DRM [=m] && (ARM64 || COMPILE_TEST [=y]) && MMU [=y]
-
-
-vim +/status +353 drivers/accel/rocket/rocket_job.c
-
-   350	
-   351	static void rocket_job_handle_irq(struct rocket_core *core)
-   352	{
- > 353		uint32_t status, raw_status;
-   354	
-   355		pm_runtime_mark_last_busy(core->dev->dev);
-   356	
-   357		status = rocket_read(core, REG_PC_INTERRUPT_STATUS);
-   358		raw_status = rocket_read(core, REG_PC_INTERRUPT_RAW_STATUS);
-   359	
-   360		rocket_write(core, REG_PC_OPERATION_ENABLE, 0x0);
-   361		rocket_write(core, REG_PC_INTERRUPT_CLEAR, 0x1ffff);
-   362	
-   363		spin_lock(&core->job_lock);
-   364	
-   365		if (core->in_flight_job)
-   366			rocket_job_handle_done(core, core->in_flight_job);
-   367	
-   368		spin_unlock(&core->job_lock);
-   369	}
-   370	
-
--- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
 
 _______________________________________________
 Linux-rockchip mailing list
