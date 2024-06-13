@@ -4,70 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D7489C27C77
-	for <linux-rockchip@archiver.kernel.org>; Thu, 13 Jun 2024 00:05:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CCBA7C27C53
+	for <linux-rockchip@archiver.kernel.org>; Thu, 13 Jun 2024 00:23:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=YoPnhgcuZ2DcvZeoaLgjPxXzXFGMluyGqrTgTrpXHaI=; b=GEpFgwMXkMDou4RVaZGAUDp43s
-	IYygJMu9qYX1+mRR9+zEDvAc30wS71PO9IL8cRI/vlGnA+s5zZMRCh1BYL3iEn+XC9iRHSCw4e1UN
-	sSJg+G9mcP4P8R7+H3bN8ENeZJT1R/IFvvwcBDWUQ97wG9LJWohJxMi2SvhSy0qx6zeOVOFkXmkZR
-	oxFVIAEyNurV5Ylbl+GN8DdVrudkevbRdznLIGVXCj9cSB4RssXivLwUg9QqOOn24GMCCe3LSAEFj
-	eI4Ez/FluTDegvWMMjAV7RiJRvqhNQDh4aO4oDv1gwV4EPCwpAfKE4kp95B+dVlIF/BqA2D4tQWdT
-	oE8Kv7Hg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=Xxlp487LlIjW6cYpRNxvRMzmFVceIleW/ugN6H/22fE=; b=gSvpURnU3YFPOY
+	bqNF2diCWBlltufEZ7kuxKP4dXJrTNq4TAcDJdZx36eC2iGSP7xKEAVrZqvmEzMEungmcJyrWqufu
+	wuPQfxlFC5O/6D3iQZ3DLQRvN+Q0C/nDYC80O65AgvzGZmNlbbwX9E/RsFVM1j5uNhUrEWAw2Ssx0
+	lxxqb/wEXbQMObDvaDKzuwuXZMRpesOdw+zStNDtTekCcRSymmrr2BP9SL4+eXHBfdzkH3mT/uLdb
+	6ZxtDtv1Q2jWr86WHrf54E7G2cN3F1UzIZgSonctSfE3bMKph3VWsldzKOnisFmNXy0oFj7Oh7hob
+	+UMUKK/vXF6JpZjrpzdw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sHXxl-0000000EYfU-2cEB;
-	Thu, 13 Jun 2024 00:05:09 +0000
-Received: from madrid.collaboradmins.com ([46.235.227.194])
+	id 1sHYFX-0000000EapY-0rj6;
+	Thu, 13 Jun 2024 00:23:31 +0000
+Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sHXxh-0000000EYem-2L7S;
-	Thu, 13 Jun 2024 00:05:07 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1718237103;
-	bh=EgNRkgtKSQMKcbGvUe+V6oqG4AaVX1eRRYE+mhCHvzc=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=VGWO3s68lz90z2VBw1rqhyNBsljHnWPPD4vU+WhwzTWyTxa+7Vg6Q6Wp1t/FtYZlw
-	 4g7qz3BIkNmGZ0GGWTo2U9U1ukx6L1bp60KaPD++3hbjnJyOUQgiDTkx0JFsmvm79q
-	 nWuCe/X7rOXxkwnfprLajkmBn+5YrG5jQ/PZccuPgf2XzIp4fyALbJ+FjcwrpSLjTg
-	 bwvARlbxf2ouUdMzLvASzTh7IM5cR6GcjQPgNI9vU2L/K0YRsFYGsSE6dAeNcEwGrk
-	 gtpWxmnztR7mK2uSjufE0qtb9Qtipyaqn+gMlj7XHdz1ndQhje3pPcYzVT8N0dU9et
-	 sM9g7S/FP4AJA==
-Received: from mercury (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: sre)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 1B7FA3782172;
-	Thu, 13 Jun 2024 00:05:03 +0000 (UTC)
-Received: by mercury (Postfix, from userid 1000)
-	id 8B55A10608F7; Thu, 13 Jun 2024 02:05:02 +0200 (CEST)
-Date: Thu, 13 Jun 2024 02:05:02 +0200
-From: Sebastian Reichel <sebastian.reichel@collabora.com>
-To: Tomeu Vizoso <tomeu@tomeuvizoso.net>
-Cc: Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>, 
-	Robin Murphy <robin.murphy@arm.com>, Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Oded Gabbay <ogabbay@kernel.org>, Tomeu Vizoso <tomeu.vizoso@tomeuvizoso.net>, 
-	David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>, 
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, 
-	Thomas Zimmermann <tzimmermann@suse.de>, Philipp Zabel <p.zabel@pengutronix.de>, 
-	Sumit Semwal <sumit.semwal@linaro.org>, Christian =?utf-8?B?S8O2bmln?= <christian.koenig@amd.com>, 
-	iommu@lists.linux.dev, linux-arm-kernel@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, 
-	dri-devel@lists.freedesktop.org, linux-media@vger.kernel.org, linaro-mm-sig@lists.linaro.org
-Subject: Re: [PATCH 2/9] iommu/rockchip: Attach multiple power domains
-Message-ID: <ffviz6ak6qsn2reg5y35aerzy7wxfx6fzix6xjyminbhfcguus@clszdjakdcjd>
-References: <20240612-6-10-rocket-v1-0-060e48eea250@tomeuvizoso.net>
- <20240612-6-10-rocket-v1-2-060e48eea250@tomeuvizoso.net>
+	id 1sHYFV-0000000EaoS-2dX3
+	for linux-rockchip@bombadil.infradead.org;
+	Thu, 13 Jun 2024 00:23:29 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=casper.20170209; h=Content-Transfer-Encoding:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-Type:Content-ID:Content-Description;
+	bh=Vd+0/90vqrwVgbkdvqAB090/xUCT+RjlTEONQZtrsao=; b=E+qPT6CUrfvg35Zm4f/Jn1/Da9
+	kDVCs6P68S8bS8kLqTjEpOuAZDY5ljAqUoTQLlg9V6TtnJgpkbL8MsDjVBgws/JDaLWbgvu/UxHWJ
+	ozAfc6MIzTkKQ5D9quSqQfY9KZ9TnNu6HFBBhVb5p/brlNDW0/aHoZNRNh8qz8dzh8ly/vmpIUWkg
+	WHEO5c5cZ/00v5V7MuIcL3bO8AeJMQDS0au687015JK69BsB70z5DFBZXIyi+ITm4zAQ2ldFeZFnR
+	GYKgYtWJFryV/lroqeA53tsoUPhSD+fE7zQZS7Eekln7s06ohsdoIT/W1Sqb+Ou3PxLVG1jPxOtUK
+	Yu5yx81w==;
+Received: from sakura.naobsd.org ([160.16.200.221] helo=mail.naobsd.org)
+	by casper.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
+	id 1sHYFO-0000000FCMu-2lTs
+	for linux-rockchip@lists.infradead.org;
+	Thu, 13 Jun 2024 00:23:28 +0000
+Received: from secure.fukaumi.org ([10.0.0.2])
+	by mail.naobsd.org (8.14.4/8.14.4/Debian-4.1ubuntu1.1) with ESMTP id 45D0I7kB000643;
+	Thu, 13 Jun 2024 09:18:08 +0900
+From: FUKAUMI Naoki <naoki@radxa.com>
+To: heiko@sntech.de
+Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
+        devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org,
+        FUKAUMI Naoki <naoki@radxa.com>
+Subject: [PATCH v2] Revert "arm64: dts: rockchip: remove redundant cd-gpios from rk3588 sdmmc nodes"
+Date: Thu, 13 Jun 2024 09:17:57 +0900
+Message-ID: <20240613001757.1350-1-naoki@radxa.com>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20240611120645.457-1-naoki@radxa.com>
+References: <20240611120645.457-1-naoki@radxa.com>
 MIME-Version: 1.0
-In-Reply-To: <20240612-6-10-rocket-v1-2-060e48eea250@tomeuvizoso.net>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240612_170505_766362_CF183C18 
-X-CRM114-Status: GOOD (  34.39  )
+X-CRM114-CacheID: sfid-20240613_012323_193413_6DC980FC 
+X-CRM114-Status: UNSURE (   7.53  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,205 +72,89 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============8976599586950263132=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+This reverts commit d859ad305ed19d9a77d8c8ecd22459b73da36ba6.
 
---===============8976599586950263132==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="klltttveuxmaguyk"
-Content-Disposition: inline
+Inserting and removing microSD card is not detected since above commit.
+Reverting it fixes this problem.
 
+This is probably the same thing as 5 years ago on rk3399
+https://lore.kernel.org/all/0608599d485117a9d99f5fb274fbb1b55f6ba9f7.1547466003.git.robin.murphy@arm.com/
 
---klltttveuxmaguyk
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+So we'll go back to cd-gpios for now.
 
-Hi,
+this patch is tested on Radxa ROCK 5A and 5B.
 
-On Wed, Jun 12, 2024 at 03:52:55PM GMT, Tomeu Vizoso wrote:
-> IOMMUs with multiple base addresses can also have multiple power
-> domains.
->=20
-> The base framework only takes care of a single power domain, as some
-> devices will need for these power domains to be powered on in a specific
-> order.
->=20
-> Use a helper function to stablish links in the order in which they are
-> in the DT.
->=20
-> This is needed by the IOMMU used by the NPU in the RK3588.
->=20
-> Signed-off-by: Tomeu Vizoso <tomeu@tomeuvizoso.net>
-> ---
+Fixes: d859ad305ed1 ("arm64: dts: rockchip: remove redundant cd-gpios from rk3588 sdmmc nodes")
+Signed-off-by: FUKAUMI Naoki <naoki@radxa.com>
 
-To me it looks like this is multiple IOMMUs, which should each get
-their own node. I don't see a good reason for merging these
-together.
+Changes in v2:
+- reword commit message
+- remove empty line
+---
+ arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-plus.dts | 1 +
+ arch/arm64/boot/dts/rockchip/rk3588-quartzpro64.dts     | 1 +
+ arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts         | 1 +
+ arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts        | 1 +
+ 4 files changed, 4 insertions(+)
 
-I will still review this assuming there is one. That would require
-to first of all update the DT binding:
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-plus.dts b/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-plus.dts
+index 1a604429fb26..e74871491ef5 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-plus.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-plus.dts
+@@ -444,6 +444,7 @@ &sdhci {
+ &sdmmc {
+ 	bus-width = <4>;
+ 	cap-sd-highspeed;
++	cd-gpios = <&gpio0 RK_PA4 GPIO_ACTIVE_LOW>;
+ 	disable-wp;
+ 	max-frequency = <150000000>;
+ 	no-sdio;
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588-quartzpro64.dts b/arch/arm64/boot/dts/rockchip/rk3588-quartzpro64.dts
+index b4f22d95ac0e..e80caa36f8e4 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588-quartzpro64.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3588-quartzpro64.dts
+@@ -435,6 +435,7 @@ &sdhci {
+ &sdmmc {
+ 	bus-width = <4>;
+ 	cap-sd-highspeed;
++	cd-gpios = <&gpio0 RK_PA4 GPIO_ACTIVE_LOW>;
+ 	disable-wp;
+ 	max-frequency = <150000000>;
+ 	no-sdio;
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
+index 4e2bf4eaef2b..df845929b084 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
+@@ -390,6 +390,7 @@ &sdmmc {
+ 	bus-width = <4>;
+ 	cap-mmc-highspeed;
+ 	cap-sd-highspeed;
++	cd-gpios = <&gpio0 RK_PA4 GPIO_ACTIVE_LOW>;
+ 	disable-wp;
+ 	sd-uhs-sdr104;
+ 	vmmc-supply = <&vcc_3v3_s3>;
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts b/arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts
+index 8e2a07612d17..b070955627be 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts
+@@ -366,6 +366,7 @@ &sdmmc {
+ 	bus-width = <4>;
+ 	cap-mmc-highspeed;
+ 	cap-sd-highspeed;
++	cd-gpios = <&gpio0 RK_PA4 GPIO_ACTIVE_LOW>;
+ 	disable-wp;
+ 	max-frequency = <150000000>;
+ 	no-sdio;
+-- 
+2.43.0
 
-Documentation/devicetree/bindings/iommu/rockchip,iommu.yaml
-
-1. It does not allow using "power-domain-names" property
-2. It limits the number of allowed power-domains to 1
-3. It limits the number of allowed base addresses to 2
-
-Looking at the DT patch you also add more interrupts and clocks,
-which are also limited by the binding. You should see a bunch of
-warnings when you check the DTBS via 'make dtbs_check'
-
->  drivers/iommu/rockchip-iommu.c | 36 ++++++++++++++++++++++++++++++++++++
->  1 file changed, 36 insertions(+)
->=20
-> diff --git a/drivers/iommu/rockchip-iommu.c b/drivers/iommu/rockchip-iomm=
-u.c
-> index f5629515bd78..673b0ebb6262 100644
-> --- a/drivers/iommu/rockchip-iommu.c
-> +++ b/drivers/iommu/rockchip-iommu.c
-> @@ -6,6 +6,8 @@
->   *			Daniel Kurtz <djkurtz@chromium.org>
->   */
-> =20
-> +#include "linux/err.h"
-> +#include "linux/pm_domain.h"
->  #include <linux/clk.h>
->  #include <linux/compiler.h>
->  #include <linux/delay.h>
-> @@ -115,6 +117,7 @@ struct rk_iommu {
->  	struct iommu_device iommu;
->  	struct list_head node; /* entry in rk_iommu_domain.iommus */
->  	struct iommu_domain *domain; /* domain to which iommu is attached */
-> +	struct dev_pm_domain_list *pmdomains;
->  };
-> =20
->  struct rk_iommudata {
-> @@ -1186,6 +1189,7 @@ static int rk_iommu_probe(struct platform_device *p=
-dev)
->  	struct resource *res;
->  	const struct rk_iommu_ops *ops;
->  	int num_res =3D pdev->num_resources;
-> +	int pm_domain_count;
->  	int err, i;
-> =20
->  	iommu =3D devm_kzalloc(dev, sizeof(*iommu), GFP_KERNEL);
-> @@ -1271,6 +1275,35 @@ static int rk_iommu_probe(struct platform_device *=
-pdev)
->  	if (!dma_dev)
->  		dma_dev =3D &pdev->dev;
-> =20
-> +	pm_domain_count =3D of_property_count_strings(iommu->dev->of_node, "pow=
-er-domain-names");
-
-pm_domain_count =3D device_property_string_array_count(iommu->dev, "power-d=
-omain-names");
-
-When possible using device_property_ is prefered, since it allows
-reusing code for systems not using DT.
-
-> +	if (pm_domain_count > 0) {
-> +		const char **pm_domains =3D kvmalloc_array(pm_domain_count, sizeof(*pm=
-_domains), GFP_KERNEL);
-> +		struct dev_pm_domain_attach_data pm_domain_data =3D {
-> +			.pd_names =3D pm_domains,
-> +			.num_pd_names =3D pm_domain_count,
-> +			.pd_flags =3D PD_FLAG_DEV_LINK_ON,
-> +		};
-> +		int i;
-> +
-> +		if (!pm_domain_data.pd_names) {
-> +			err =3D -ENOMEM;
-> +			goto err_remove_sysfs;
-> +		}
-> +
-> +		for (i =3D 0; i < pm_domain_count; i++) {
-> +			err =3D of_property_read_string_index(iommu->dev->of_node, "power-dom=
-ain-names", i, &pm_domains[i]);
-> +			if (err) {
-> +				kfree(pm_domains);
-> +				goto err_remove_sysfs;
-> +			}
-> +		}
-
-There is a helper to read a string array:
-
-err =3D device_property_read_string_array(iommu->dev, "power-domain-names",=
- pm_domains, pm_domain_count);
-
--- Sebastian
-
-> +
-> +		err =3D dev_pm_domain_attach_list(iommu->dev, &pm_domain_data, &iommu-=
->pmdomains);
-> +		kfree(pm_domains);
-> +		if (err < 0)
-> +			goto err_remove_sysfs;
-> +	}
-> +
->  	pm_runtime_enable(dev);
-> =20
->  	for (i =3D 0; i < iommu->num_irq; i++) {
-> @@ -1292,6 +1325,7 @@ static int rk_iommu_probe(struct platform_device *p=
-dev)
->  	return 0;
->  err_pm_disable:
->  	pm_runtime_disable(dev);
-> +	dev_pm_domain_detach_list(iommu->pmdomains);
->  err_remove_sysfs:
->  	iommu_device_sysfs_remove(&iommu->iommu);
->  err_unprepare_clocks:
-> @@ -1310,6 +1344,8 @@ static void rk_iommu_shutdown(struct platform_devic=
-e *pdev)
->  		devm_free_irq(iommu->dev, irq, iommu);
->  	}
-> =20
-> +	dev_pm_domain_detach_list(iommu->pmdomains);
-> +
->  	pm_runtime_force_suspend(&pdev->dev);
->  }
-> =20
->=20
-> --=20
-> 2.45.2
->=20
->=20
-
---klltttveuxmaguyk
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmZqN6sACgkQ2O7X88g7
-+pqVmxAAg7JgRVo1N7aZb+AgIqo70yZ1n7UTJR7CiUdmCaLG0E03/qnaFUfttJqQ
-CGGew5eHLIg83Frbx3+Ksg+G01emakM5YoT0lGHe/sL80Iz+VZAMldIsWxBJ9U6y
-bArvV1dFuXik6ZqYfTQ05KhtY1SfCisXl2BuzxPFSFyMJBPiZS/n2QFFAu3KoNTa
-EKA0I73nytEMoBsk/RmcJdU1wRMI7YgJlkjjIRH/YhzjHJfccyfBP53UemiEo4mV
-ybb+/IqXhUqW3HQk4BYrovTMw2HaLknvR/C7Lz1PdVvOFWX9cStytD9JHZM3XGcn
-PGcDHALBksgsIhgZaos55MgWPPdxwRA6VR0pQTaOzg52vuHShZKjgzQbKzlYLMfb
-UzkEpRbJycI212XVJdwVGH+JhvIr+fd13yjd0RQbdEVUqnIzTBmUTW/CO3kX36Go
-AMmGEg8UEHtZtJqzdtIXNJ9/Ef6iLVXxCNQ4pz6EzSOdKbotE2pUS+jOshcNJlFk
-c3ePBJQ3DtKEWsFh3yGtH5Kg/m/LddhUeVoIMTmSlrz73vDecD2IASEE+of8Mho8
-7y3+c/PqBfzyfPYVaqEFlO+//llf5xDeRLHXOW8Mm1BtIrMgyD/401KD4wj/63By
-bLyO2NRg/FXI4kXtQFjBLq7wLmPxujL+S89RolLYMPbbbkxSlsQ=
-=6VfK
------END PGP SIGNATURE-----
-
---klltttveuxmaguyk--
-
-
---===============8976599586950263132==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============8976599586950263132==--
-
