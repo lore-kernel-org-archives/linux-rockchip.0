@@ -4,77 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7711DC27C6E
-	for <linux-rockchip@archiver.kernel.org>; Fri, 14 Jun 2024 18:34:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AF1C8C27C6E
+	for <linux-rockchip@archiver.kernel.org>; Fri, 14 Jun 2024 20:30:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:To:From:Cc:
-	Subject:Message-Id:Date:Mime-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:Cc:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=+BfsrF5hgQo0aNAEBydV8mYYd9F52V2kecL/VMCxCo8=; b=f9pP43rDYDrsyr
-	0VjqFSJWMZT8Y7PQ2J7n6uDftqGcajUOng1ntxQM3bbkfzredEQnbGdkRU5kAulVm8FxnzllX8B5b
-	21VrFWr6UagxBJmc6NW7Tj95gZfIcxWvi/fdA7/S2QbJ8SjVxdTCGqvKQXUKtReHPMMS52hs8y4LD
-	6jcmwW3HVI88DGCv1CueCSzmi3mQHqE/ITFBOYIf4Y3HBJNKt2fajdez+vs4NBFRZWgvOjvbz2id0
-	j3ekvLgz6fpkkZ+Gp8KCntSTpd3Ac+Aqj/z9gU4DsP1FLsflpp2SAXDvFZm2GqF4qqK1fTNXY22DJ
-	tBlq1Zw0lEbBZV34bH0Q==;
+	List-Owner; bh=hfryrB7vffjccfhcOYDka/KZFHdEPZDzZbzjEXKKzQU=; b=N0P7ha0xy8mHc4
+	UNclRyyi6JLciUvxnYHiJOK3XIQOD2P+BtfFiydL+14zYTCe6slx+l+fENK0O5UxgOyzVXhurSta6
+	dsDaEGGvde4zMO42qkQAXW1jnbvGXQNe3QpT2kcFmogc/eDOE0ysp6AFxKjVoHtJ2+hvwWf6hh3Bb
+	VczPVZ78EJY4JeopZqWhZIB4+/luiAU6LpJuDHBro9VT8reZivqYKlxxk+C+uXEa05XD3f02u22nX
+	SBA7tpPuln912wT6BtA+bUI7eyHnAXYxalSgHvOuQXe/iZlLt39WNrbD0gPJlJrsnbtcX94AMKL+O
+	uISJcuLDtvj/tc+XbTPw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sIBkw-00000003lzs-1RLT;
-	Fri, 14 Jun 2024 18:34:34 +0000
-Received: from www522.your-server.de ([195.201.215.122])
+	id 1sIDYs-00000003zrh-0Lrl;
+	Fri, 14 Jun 2024 20:30:14 +0000
+Received: from mail-oo1-xc32.google.com ([2607:f8b0:4864:20::c32])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sIBks-00000003lzJ-2S1Q;
-	Fri, 14 Jun 2024 18:34:32 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=folker-schwesinger.de; s=default2212; h=In-Reply-To:References:To:From:Cc:
-	Subject:Message-Id:Date:Content-Type:Content-Transfer-Encoding:Mime-Version:
-	Sender:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID;
-	bh=QENhb9HFgTzguovvznEeWYIHmMFEH/ZbGTpLCqvvbY0=; b=D1SQpY5Q3iU5y6hS8x3yCA2fCw
-	Xefzm8C0+45Bsx/hdgDkRNbsSx/QEswS5UQ34JGXS6GhfYViD98oyeBpeza3esE6hVmq+sMfSpn8T
-	MJJI+G8UJ9YF3ttwRvN2GliXh7gTihyr1Teipx7qAcKSLC9+xmPwqQ3M4P902G7Q4kAbEikSprWDp
-	e8SrOyC+SUT00xqTD9EEtEC3l5gsMjEhnROTiPfNaL+m4kFPdK9Qw69K0E4pVp5Kbca6f05ZV1gNU
-	Yp3CcMz1SO/a4C5cqCgerfhV3SGCbSYwDnIxP5DmaKdXcDjCMjkPzH9zKrlNe0dUYFb8725cOivwN
-	3AkQUWVQ==;
-Received: from sslproxy06.your-server.de ([78.46.172.3])
-	by www522.your-server.de with esmtpsa  (TLS1.3) tls TLS_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <dev@folker-schwesinger.de>)
-	id 1sIBkj-000LiY-5F; Fri, 14 Jun 2024 20:34:21 +0200
-Received: from [185.213.155.213] (helo=localhost)
-	by sslproxy06.your-server.de with esmtpsa  (TLS1.3) tls TLS_AES_256_GCM_SHA384
-	(Exim 4.96)
-	(envelope-from <dev@folker-schwesinger.de>)
-	id 1sIBkh-000GCY-3A;
-	Fri, 14 Jun 2024 20:34:20 +0200
-Mime-Version: 1.0
-Date: Fri, 14 Jun 2024 18:34:19 +0000
-Message-Id: <D1ZYFRA8S0KC.3GG78DB9BA5AG@folker-schwesinger.de>
-Subject: Re: [PATCH 1/3] phy: rockchip: emmc: Enable pulldown for strobe
- line
-Cc: "Vinod Koul" <vkoul@kernel.org>, "Kishon Vijay Abraham I"
- <kishon@kernel.org>, "Chris Ruehl" <chris.ruehl@gtsys.com.hk>, "Rob
- Herring" <robh@kernel.org>, "Krzysztof Kozlowski"
- <krzysztof.kozlowski+dt@linaro.org>, "Conor Dooley" <conor+dt@kernel.org>,
- "Christopher Obbard" <chris.obbard@collabora.com>, "Doug Anderson"
- <dianders@chromium.org>, "Brian Norris" <briannorris@chromium.org>, "Jensen
- Huang" <jensenhuang@friendlyarm.com>, <linux-phy@lists.infradead.org>,
- <linux-arm-kernel@lists.infradead.org>,
- <linux-rockchip@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
- <devicetree@vger.kernel.org>
-From: "Folker Schwesinger" <dev@folker-schwesinger.de>
-To: "Alban Browaeys" <alban.browaeys@gmail.com>,
- =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, "Conor Dooley"
- <conor@kernel.org>
-X-Mailer: aerc 0.17.0-152-g73bcb4661460
-References: <20240326-rk-default-enable-strobe-pulldown-v1-0-f410c71605c0@folker-schwesinger.de> <313d5a24b6cffa1a9160e624bb6855aa7f66589e.camel@gmail.com> <20240411-mushily-pucker-732583c1d340@spud> <2192003.Icojqenx9y@diego> <2427291970ac0962bf56b2455e5cb26e49d42c51.camel@gmail.com>
-In-Reply-To: <2427291970ac0962bf56b2455e5cb26e49d42c51.camel@gmail.com>
-X-Authenticated-Sender: dev@folker-schwesinger.de
-X-Virus-Scanned: Clear (ClamAV 0.103.10/27306/Fri Jun 14 10:28:44 2024)
+	id 1sIDYo-00000003zqV-0ZF0
+	for linux-rockchip@lists.infradead.org;
+	Fri, 14 Jun 2024 20:30:11 +0000
+Received: by mail-oo1-xc32.google.com with SMTP id 006d021491bc7-5bacd59e562so1269548eaf.2
+        for <linux-rockchip@lists.infradead.org>; Fri, 14 Jun 2024 13:30:07 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=ndufresne-ca.20230601.gappssmtp.com; s=20230601; t=1718397007; x=1719001807; darn=lists.infradead.org;
+        h=mime-version:user-agent:content-transfer-encoding:references
+         :in-reply-to:date:cc:to:from:subject:message-id:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=xJhJt3J2nxJAuqKZHd0QwEciJsDRhZULynwju7SQhhA=;
+        b=vv9XoinbAdgbZCP7GpT7cuCiIx6yR/dqluy+YELK2692p/FGePuUcPVYZSik/r1LGc
+         Snx/vPaQjCr2rKXnGesQm2rGX/neRABtSPpL+hzA+CKFx+mzWtYCWlh21qX3BFI2cKD6
+         lJ2MZyjIKXVxn0fYox6ckAm+S4noeshyo0A87OlL0Q2PPHp4VyClWAQf6N8jhno1HJ0D
+         k104Uah/ZD6v795A9NFYKwccRR97epVMK2idOPQ+YM8QXALRbWA16ARbKpsSkCQv2LjM
+         7OEi974U3CKgdyCTDJrTUEFSBDZee1XpKLTNo62rHP0UhZ0FXBnGyVNf2eqiTO9WY/1R
+         2wow==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1718397007; x=1719001807;
+        h=mime-version:user-agent:content-transfer-encoding:references
+         :in-reply-to:date:cc:to:from:subject:message-id:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=xJhJt3J2nxJAuqKZHd0QwEciJsDRhZULynwju7SQhhA=;
+        b=LpqSi73ntZ2Kxufov77ExT9zPYG8qusto1tyJfK7bo7BBEC48RE98XPZtXaQyTFMje
+         sYw5qxAcLfz3LkArNyqI7KRqvXPi/xg9IvMxd/LyuKaek9hYte6PjMLViCBOmmZmNgOv
+         h40SElV6fv88e/V3O8+ZiVNtjfx/V7BzjajrdSTDja9xZljjvUZ4suiQTSibn3Xxru89
+         JXLB0kzWKAxIKIoIzbtg8gVCTDS0JTeIKglCKj1M8erz58ZLK+pQd0ovgweCdZmAN35D
+         i74LAxSyHCCkGWfASmq0FjVRbZnmrp0dKQv3PJHz//MQemzAs21pnXYfA3LH9ihtqKem
+         Af4w==
+X-Forwarded-Encrypted: i=1; AJvYcCWLyMK6W4qEkhgNIlQeyh10XpmwzPZ7hHdJpDpSTx3AeqlLj6wUb/JjgnFT5x8O24HLSUd7QpmNCs/rEFcTFLBY2kh+2bT0anVbbOYnF719v42v
+X-Gm-Message-State: AOJu0Yw3jVfKVZZLlA+NSJcAfJCs8CLO8riqKe1QrdTkqelHIyFXFRtH
+	BtpOqk+nT8ZkK2PKn6djdDuOY4T37JRHOihmGAYOv7J09E+S2UAP+WZWm8Jw5dg=
+X-Google-Smtp-Source: AGHT+IF4C0ydFkr3IsNAr6Blq5SSboC1En/cdpILPHYan7A2ZMTQYSAcMnFNnwq4qkuN3PHcllTO7w==
+X-Received: by 2002:a05:6358:9103:b0:19f:5317:49a1 with SMTP id e5c5f4694b2df-19fb51658f7mr465229255d.28.1718397007051;
+        Fri, 14 Jun 2024 13:30:07 -0700 (PDT)
+Received: from nicolas-tpx395.mtl.collabora.ca (mtl.collabora.ca. [66.171.169.34])
+        by smtp.gmail.com with ESMTPSA id 6a1803df08f44-6b2a5efc23asm22245446d6.126.2024.06.14.13.30.05
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 14 Jun 2024 13:30:06 -0700 (PDT)
+Message-ID: <0faecb255d7e1e67153321d9009f9fc8c0810cd7.camel@ndufresne.ca>
+Subject: Re: [PATCH 6/9] accel/rocket: Add a new driver for Rockchip's NPU
+From: Nicolas Dufresne <nicolas@ndufresne.ca>
+To: Jeffrey Hugo <quic_jhugo@quicinc.com>, Tomeu Vizoso
+ <tomeu@tomeuvizoso.net>,  Joerg Roedel <joro@8bytes.org>, Will Deacon
+ <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>, Heiko Stuebner
+ <heiko@sntech.de>, Rob Herring <robh@kernel.org>, Krzysztof Kozlowski
+ <krzk+dt@kernel.org>,  Conor Dooley <conor+dt@kernel.org>, Oded Gabbay
+ <ogabbay@kernel.org>, Tomeu Vizoso <tomeu.vizoso@tomeuvizoso.net>, David
+ Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>, Maarten
+ Lankhorst <maarten.lankhorst@linux.intel.com>,  Maxime Ripard
+ <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, Philipp
+ Zabel <p.zabel@pengutronix.de>, Sumit Semwal <sumit.semwal@linaro.org>,
+ Christian =?ISO-8859-1?Q?K=F6nig?= <christian.koenig@amd.com>
+Cc: iommu@lists.linux.dev, linux-arm-kernel@lists.infradead.org, 
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	devicetree@vger.kernel.org, dri-devel@lists.freedesktop.org, 
+	linux-media@vger.kernel.org, linaro-mm-sig@lists.linaro.org
+Date: Fri, 14 Jun 2024 16:30:04 -0400
+In-Reply-To: <8f93c724-3c86-c0f4-3a84-8a72817e684c@quicinc.com>
+References: <20240612-6-10-rocket-v1-0-060e48eea250@tomeuvizoso.net>
+	 <20240612-6-10-rocket-v1-6-060e48eea250@tomeuvizoso.net>
+	 <8f93c724-3c86-c0f4-3a84-8a72817e684c@quicinc.com>
+User-Agent: Evolution 3.52.2 (3.52.2-1.fc40) 
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240614_113431_036258_88500F97 
-X-CRM114-Status: GOOD (  22.12  )
+X-CRM114-CacheID: sfid-20240614_133010_412209_746BF56C 
+X-CRM114-Status: UNSURE (   6.63  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,84 +103,19 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Alban,
-
-thanks for aggregating all the background information about the issue.
-
-On Tue Jun 11, 2024 at 9:38 PM CEST, Alban Browaeys wrote:
->
-> Could you test the enable-strobe property on all the dts that  disabled
-> hs400es due to this new default (I lack the hardware to test the
-> patches).
-> At least arch/arm64/boot/dts/rockchip/rk3399-khadas-edge.dtsi
-> arch/arm64/boot/dts/rockchip/rk3399-rock-4c-plus.dts
-> arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dtsi
-> and ping the board tester for other boards to test if they require
-> "rockchip,enable-strobe-pulldown" for EMMC HS400 write support (read is
-> fine even with the new default).
->
-
-I tested some of the boards that include rk3399-rock-pi-4.dtsi (see
-below).
-
-> On Tue, 2024-02-27 at 10:11 +0000, Folker Schwesinger wrote:
-> > with the following applied, the EMMC related errors are gone. dmesg
-> > only
-> > shows "Purging ... bytes" during my tests:
-> > 
-> > diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dtsi
-> > b/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dtsi
-> > index f2279aa6ca9e..ae0fb87e1a8b 100644
-> > --- a/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dtsi
-> > +++ b/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dtsi
-> > @@ -647,8 +647,10 @@ &saradc {
-> >  &sdhci {
-> >         max-frequency = <150000000>;
-> >         bus-width = <8>;
-> > -       mmc-hs200-1_8v;
-> > +       mmc-hs400-1_8v;
-> > +       mmc-hs400-enhanced-strobe;
-> >         non-removable;
-> > +       rockchip,enable-strobe-pulldown;
-> >         status = "okay";
-> >  };
-> > 
-> > For testing I ran dd three times in a row:
-> > 
-> > dd if=/dev/zero of=./zero.bin bs=1M count=5000
-> > 
-> > I tested this on both a Rock 4SE board and a Rock Pi 4B+ board with
-> > the
-> > same results.
->
-> Folker, are you confident "Rock 4SE board and Rock Pi 4B+" were fixed
-> with above patch?
-> Ie the "rockchip,enable-strobe-pulldown;" should be under an
-> "rockchip,rk3399-emmc-phy" compaible node, that is &emmc_phy in
-> arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dtsi, not sdhci.
->
-
-The above diff was just a quick shot at testing the
-"rockchip,enable-strobe-pulldown" property when I first learned about
-it. I later realized that the property belongs under the &emmc_phy node
-as you suggested. That's what I did in the other patchset I sent a bit
-later, which was accepted and applied:
-
-https://lists.infradead.org/pipermail/linux-rockchip/2024-March/045723.html
-f720dd9b8b6d8b2160beda789429d5489ce8a099
-c1b1f340dd7db11f273e426e110697551c9f501f
-
-So yes, the Rock 4SE, Rock Pi 4B and Rock Pi 4B+ boards all were fixed
-with the patch. I regularly have the Rock 4SE and Rock 4B running from
-EMMC, always with the patch applied since I sent it.
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGksCgpMZSB2ZW5kcmVkaSAxNCBqdWluIDIwMjQgw6AgMTA6MTYgLTA2MDAsIEplZmZyZXkgSHVn
+byBhIMOpY3JpdMKgOgo+ID4gKwl2ZXJzaW9uID0gcm9ja2V0X3JlYWQoY29yZSwgUkVHX1BDX1ZF
+UlNJT04pICsgKHJvY2tldF9yZWFkKGNvcmUsIFJFR19QQ19WRVJTSU9OX05VTSkgJiAweGZmZmYp
+Owo+ID4gKwlkZXZfaW5mbyhyZGV2LT5kZXYsICJSb2NrY2hpcCBOUFUgY29yZSAlZCB2ZXJzaW9u
+OiAlZFxuIiwgY29yZS0+aW5kZXgsIHZlcnNpb24pOwo+IAo+IEEgcHJvcGVybHkgd29ya2luZyBk
+cml2ZXIgc2hvdWxkIGJlIHNpbGVudCBieSBkZWZhdWx0LgoKVGhpcyBpcyBub3QgdW5pdmVyc2Fs
+bHkgYWNjZXB0ZWQgc3RhdGVtZW50LiBNb3N0IGRyaXZlcnMgZG8gaGF2ZSBhIG9uZSBsaW5lCiJw
+cm9iZWQvZGV0ZWN0ZWQiIGtpbmQgb2YgcmVwb3J0LgoKTmljb2xhcwoKX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBs
+aXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJh
+ZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
