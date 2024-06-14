@@ -4,71 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4E625C27C79
-	for <linux-rockchip@archiver.kernel.org>; Fri, 14 Jun 2024 09:49:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C7CF1C27C75
+	for <linux-rockchip@archiver.kernel.org>; Fri, 14 Jun 2024 09:49:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=VF2gb3InQd+tsTSz0fEFkZtaC1ZNieAaAFpDXPavLAM=; b=AgwMcwuYVv5bDg
-	kNcTEOo+fyv8BfyUoxLas5wbyVGVMn2710qLEGG7YqQ3KMGU4Gc2zzznStoA9P+KHiVU3WJiwHJ1J
-	jszvTbWtesedui1iOjnQ6nykuVQLSKXYSzdIRgRDzSSuXqczn//tlgbgvBIDK14Dd2kvj0PRI68iq
-	lPYZkhexuQR/xCHBiLS5vAHaMI/LLm9yO7mQHTj3U4UdyuiTn2bTtHn5EPGktAVV4aCBhdnKoomLe
-	km/K6nGAustGpU5yt/Js9T6X0DoUrL84za8VXKyI/Z22ghyu733CixXmNGTvFCydfEvzH7c3BBftx
-	EaR13Xp4vhBJ+kINX7ow==;
+	List-Owner; bh=K0k1ZKiqp6e2abFbEbVM3jvFHensqyHRwEQSvc0VhFs=; b=jV2JI41VnzJ/Q4
+	3VJr+pcDwUyJID2fsSACH5l0EntyU5U0HYuEbpsEGpTlg9rnTYEoC4XJDlGgtFBRSodPG/BUddgoM
+	LNdeClhQM42+oE13Q/BHh9/iKlIoA52Bhn8lwAi7ShyNQxYC75EWIXwk4shhlrC1G6dG5osBqhJsi
+	fVrr5qIQPrYmRyUcBWesDBrPdLTlXPHgvJe7oTSQwLE5DPLVmA1ffxfggXP5GXhT/LTW08i7312OW
+	RN4EUM8YcH+LBX3rLUgYqyE/+yuYI22wcBqOSQzUCh+0plGqv4eavMCfP+2MJxJvLFw0xegqHp5QI
+	d9jbAgbiG+7aG+giKq4A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sI3YK-00000002Gue-3Y00;
-	Fri, 14 Jun 2024 09:49:01 +0000
-Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534])
+	id 1sI3YN-00000002Gwt-3fbK;
+	Fri, 14 Jun 2024 09:49:03 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sI3Wf-00000002Fcx-2akD
+	id 1sI3Wj-00000002Fge-2pyz
+	for linux-rockchip@bombadil.infradead.org;
+	Fri, 14 Jun 2024 09:47:21 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
+	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	From:Sender:Reply-To:Content-ID:Content-Description;
+	bh=0ruyCgMrPfekzht/5WAzVWTMLmXSUd2VwxGSvpZZrV0=; b=NTay+D2nVbutSXgiwDnh3RWAJG
+	7bR1ehiYLsfzdNDKbBXXsOnVT4e1KjTI9cdWzzQvOoFZOEZxOKIlqhl51LYqtKz1B6h+YajKgNa9b
+	n2SxyvdNVt53eKdZVSPmi2CRQPazESmBR2Gvtrxv8+5zZrMvmPCQBfDPUtHggxrAFwJqRQVFp8wEF
+	orCWwTpU+dSF+6tykccSxsnkvoYysmRLKnxWAHfphsX+ay01sig+Wrz8RW++VSOWNwGO0NZ3Tao4y
+	XMSgPV6OltWmEebP/rq3+MYo2LDgm3Ll2RCQ9/etD7cVh3dLCpCCMXbT2H1Fsz1xrX+nQktTVo3/2
+	BmEhCEog==;
+Received: from mail-ej1-x630.google.com ([2a00:1450:4864:20::630])
+	by desiato.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
+	id 1sI3Wa-00000004FEV-0D9s
 	for linux-rockchip@lists.infradead.org;
-	Fri, 14 Jun 2024 09:47:19 +0000
-Received: by mail-ed1-x534.google.com with SMTP id 4fb4d7f45d1cf-57c83100bd6so2379276a12.3
-        for <linux-rockchip@lists.infradead.org>; Fri, 14 Jun 2024 02:47:17 -0700 (PDT)
+	Fri, 14 Jun 2024 09:47:20 +0000
+Received: by mail-ej1-x630.google.com with SMTP id a640c23a62f3a-a6f3efa1cc7so522602866b.0
+        for <linux-rockchip@lists.infradead.org>; Fri, 14 Jun 2024 02:47:10 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1718358436; x=1718963236; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1718358429; x=1718963229; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=HHopPI0nIM3Jed8hUXyS5ig9GDwCMsqicv3UZ9klXRA=;
-        b=lriyV2qI3guRv8SHEcU+yi1VlXtLVL/oR/viZOaxb4o72sDOMp7B9/LMjT5ifmy7hB
-         NfZmLqHewRIZ6zyfem/vklyz/svW6z7QfxdVS0+IC19l4I4lDpfnforLg8DN2s7+P3yo
-         mtprMc5EQhUTkC4jUUTRZJYYrE6GLt+yY0z5ZvA8Z4+LY5TRiTyjUrx7s1iWpTQLKLwn
-         3I7oUvHYV0x0FcyGw7+T0quL57IK9l4Ep25XH8w6OJGD4V3QI0NSDytGVhne3rmXfzw+
-         8hJmxwTXJs3PaWR6SsajoNPIEU2SbUdN1thHRxcbZEksjow7RvRJdWmzkxOdluGFN8UA
-         E1Iw==
+        bh=0ruyCgMrPfekzht/5WAzVWTMLmXSUd2VwxGSvpZZrV0=;
+        b=VltmbdAhrk81uY1XxaEfv1IgPirU89u2yWtQRyPaaa5vYekLfglmvi5/yFIuxThbH3
+         dXYLP1BtpL6UYT0bjNRAYs4TK9jwnQ3amOaMFEBAUmcAOgxglywDPkdBuPxyZcbnZ281
+         7CvqTHQOTmjjuYApBuiTHigO2NUbrsGjfCHTektLIvOmHsXGCbpvOW/IWIs6TOxKFZCA
+         LCkmAdChFJX6c5paIlvjxIg4ynaiCiMfH9oX9h5nZLoMhhJKJuBI4iVN/Lgr7R28K/mv
+         H1gd0MxwAEJsrkviCPvHHlfaklIcH2zCMlgCsieb7eVKte6kxy1QwDMGzno/zQHWebl8
+         XFAA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1718358436; x=1718963236;
+        d=1e100.net; s=20230601; t=1718358429; x=1718963229;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=HHopPI0nIM3Jed8hUXyS5ig9GDwCMsqicv3UZ9klXRA=;
-        b=cWcaCbh6wwSrsbxWASRavWWOwHSY8gDkQs21g99nYLN93I71tSFPfKADGXyerwQZRk
-         sIpRiEv5WJdIlbpCbJKcMf0LsjEabmmRQwGmiwinsrLXycuSIQg6JxRDoW6x+ieBXFpR
-         r7pb/WGQb+ClsJ7WpcxjyOlK9Wqqf85nEO3BS5RXgbswBmM52gFOg0oV5HyO2DUb0Mvp
-         RQBA+3zyJKg7x3cd0iNbzILhW36D6SMxLinPmVWUOpi99vBAJ1mjb09ho9U+GTgez3yQ
-         yJx0Ecr42i4Gre8hvXPlaxHkgQGF83AJ041HoTRFLprr8JlekNoQ7g06GfWLtAJMI2Mi
-         QhDQ==
-X-Forwarded-Encrypted: i=1; AJvYcCWXtMAUboLKRuM+LpmtfYdyJEo2hdhWrW60jM5Yzp8y7aIeEY01kgAHH5b0YdmSimie+NCVansgWwu+jjL8NOEouRXetY0N3BeS3piurqTQiYrU
-X-Gm-Message-State: AOJu0Yxvggiueh7fnnHTh03p1PWJzffKb60BG0v8atvzFJTm5D1QWw2T
-	oh+O1NtUswif+EXo/bDHL8M5NQX8tRDOqYWSAA3FXjgWStwEl5EoIxIgE90dzNI=
-X-Google-Smtp-Source: AGHT+IFYhCUuIW/shPa24Bm16cB64oTNa3LMl0BHr5SyTcIcKZ2BVmCvxjUSzjAK1w5nMGYHiOtHug==
-X-Received: by 2002:a17:906:35da:b0:a6e:f6bd:edd9 with SMTP id a640c23a62f3a-a6f60dc51ddmr140028766b.59.1718358436151;
-        Fri, 14 Jun 2024 02:47:16 -0700 (PDT)
+        bh=0ruyCgMrPfekzht/5WAzVWTMLmXSUd2VwxGSvpZZrV0=;
+        b=iN08Gz72B78bBnoOX8Oo/urygC66FmNC/o03vDqz/oBRy6fn6fi2PX/G69VfslHOuN
+         CUDz97FDBsGlMJOrsqdeADIaYqdtl2SXpv1jSqRUcpUmuq/I3KkK+gjLY74JHfJrdLGL
+         XOP+xr1URPG81m2Lg376iZ1NP+SCo7rhQF8Jl+swMqpbn3njmZvyipJomlX3b6mQAEcR
+         O77zsGslmEFRowPB8SAY/2epfKraX8v0Y3XZ3Cvc7j5Kisk3e2yFsz+4m6fshNyrSde+
+         oLcT7zhTu5mA6iwX2EiyB9F17On/cqcNZ+T/1WYi0qDg//fw8GfX8LGoSukfdNChOXB5
+         pgew==
+X-Forwarded-Encrypted: i=1; AJvYcCVggsvhwaIEmnGr1+PsjhEO4M9jYj9EQ0UbiOYpdEgZe+Y8XpnICiUTBUy2JJEHSZnxzLSNRrF+x2zvVD2WcTkPkaoXrUpAS7wQKrpagoFBcU6g
+X-Gm-Message-State: AOJu0YzLo+qcVfMZsas2H9sAx9q70FfR1F42LPCt83qGkt+GrnVsz7o5
+	0Oo4+1/u+efMDvZx7eQ+62cweIW1eAyWhSYauQ9CcCf3e5BAX/8M/1b/yDL0cII=
+X-Google-Smtp-Source: AGHT+IGIKghrlULYLHsfLKde8CcadgZJW0YzgNbewj72+XW0ql1TiGTPFflVpMsUJxAghmYfIehKqg==
+X-Received: by 2002:a17:907:9406:b0:a6f:1727:cf4b with SMTP id a640c23a62f3a-a6f608a7945mr189043266b.23.1718358428993;
+        Fri, 14 Jun 2024 02:47:08 -0700 (PDT)
 Received: from [127.0.1.1] ([78.10.206.163])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a6f56f9c84csm164966366b.222.2024.06.14.02.47.13
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a6f56f9c84csm164966366b.222.2024.06.14.02.47.06
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 14 Jun 2024 02:47:15 -0700 (PDT)
+        Fri, 14 Jun 2024 02:47:08 -0700 (PDT)
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Date: Fri, 14 Jun 2024 11:46:18 +0200
-Subject: [PATCH 19/22] dt-bindings: thermal: ti,am654: reference
+Date: Fri, 14 Jun 2024 11:46:15 +0200
+Subject: [PATCH 16/22] dt-bindings: thermal: socionext,uniphier: reference
  thermal-sensor schema
 MIME-Version: 1.0
-Message-Id: <20240614-dt-bindings-thermal-allof-v1-19-30b25a6ae24e@linaro.org>
+Message-Id: <20240614-dt-bindings-thermal-allof-v1-16-30b25a6ae24e@linaro.org>
 References: <20240614-dt-bindings-thermal-allof-v1-0-30b25a6ae24e@linaro.org>
 In-Reply-To: <20240614-dt-bindings-thermal-allof-v1-0-30b25a6ae24e@linaro.org>
 To: Daniel Lezcano <daniel.lezcano@linaro.org>, 
@@ -113,26 +128,26 @@ Cc: linux-pm@vger.kernel.org, linux-samsung-soc@vger.kernel.org,
  linux-rpi-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
  Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 X-Mailer: b4 0.13.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1128;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1159;
  i=krzysztof.kozlowski@linaro.org; h=from:subject:message-id;
- bh=K3V6Xak3YOQEHnMj7SlQYHGX0YMx6fkXwr1FCTF4hC8=;
- b=owEBbQKS/ZANAwAKAcE3ZuaGi4PXAcsmYgBmbBFwqmuRGwyBRQ3wR18ecSX6kfmBdIXE+Ent6
- hAKRj/Sko2JAjMEAAEKAB0WIQTd0mIoPREbIztuuKjBN2bmhouD1wUCZmwRcAAKCRDBN2bmhouD
- 17hkD/9OxjeCJICdurLShHs5yp7HzuR740CrmJrC7McgPnyp8ztY0sSwbQvwGeRuMsaxGidE0J7
- xqY0L6Ioab0oY31XiF1QnateecuxDA9T1PBUpytt4fbqwY10Qo5yKBPBX4OBCNAvwl6BVE2Me5N
- 4t7i4RblHCch1dz5REf2XLI28pklsg0B8zZIVH4GGYVP8w3Zb3cg2gpT8O2XBsi5teF4w2pPjYW
- E+yohdnJv/uikgyAzHZ7gYKicgkaA48sLZKA9i+UyrTEYxz3xdC+qIpl0SHa7U54fKUpvIuL5tA
- 1ozQi0DgXwHEMJo7Zxpkx823UnjbRynt7urLGgk2Zr+mNj1itWuyxVMw9uku7tJrSwBAIPgSXnC
- 1GWhPTu8jS10dmPcl8LxdQMZzbOSiV1hdWeDFvFxEXkY3DHy7EaGTkRMsSqo9jJzOpLq/OxqFSa
- 1Bd+lZllAcbV4piQt3dFG2rqt2/HHqyRzp58F8D/YSexdS8VQ2cU9D+Ibljv/xuvluLhIfuoVzb
- T7/0Whyrz0JrF36X67nkYcnekOy+Htkzl3/sFJ1rj2eXxrAEZeGoootoY8/rwk/+eAUHpRhd1YM
- STNX8eI0cUshXtTfkxs52lVyh6zDP4i0jhk1mN87RJ2/sQgDita8xLImSYHC7tTKXeb/34qVmbe
- OF5UQMHSan3bk9w==
+ bh=mIeSyvnLon2ygamBuRDffzz4itb60m44w9O1qvVSAt8=;
+ b=owEBbQKS/ZANAwAKAcE3ZuaGi4PXAcsmYgBmbBFuGs5Jr4iu4ztVMLTV5UrKA/VmvClhsc3Nu
+ /DgeeOEc3WJAjMEAAEKAB0WIQTd0mIoPREbIztuuKjBN2bmhouD1wUCZmwRbgAKCRDBN2bmhouD
+ 10rZD/9/pL5MAXa4cu08LXfwwna/wMuGScuABTPKkAA5rLndGvqQlFBBRMSephHRwgqXqp3Ifsy
+ 5/CCaVDAhKCkQSZ7NO0c7N/nnrmVH6VumgINouVuooUF/4kkzOqHy0Ps7bPuuX9QpkT3RY9wRLE
+ 46OwqjthHWuZc//DYekmQaF/L0qSJEk3SSJKGFVansCiaRvv0vLvluIIputqAPE+5A70K37ZVNR
+ /Frtg4VKlW2yjKKwAjwvEmnU/KSO1gx5pg4fCsJwfJKoMqJbVrjPQgjH/08LIcfE4HCFesRhr01
+ 753qIZ+Zsp8tvJJ0I5W4fBh2Ycur+VCwGfHZNQN/D58/eRl64Rdlfriw2/Uns8Tt6gsabgnorj+
+ mkIBO0w9/zygKNIJWRaL4AJTgYVLViyH5x9axMJvhcl4pNb5zE/ddX0PGivIvwblBrQcWTgdG4A
+ FSTY2l4LvCmP1li68LdkKwt/pFW+2nj5LqhjXkXWLfUU8MAK+fO6ZuRILsYXJQX+5H6+Me5YoZH
+ JMvprdk7NXkgNJa2Xcbrfq6/eTGzZypopRcxFn4T2nWjQ0SzNVZj4tetdcp8HOVXRUjb/j+JNW3
+ 42jZg3DaQZdvo7oUunA54ox/aRO7TB0R4xS7pxtdbMgf/pgqWTbfWEFsWnhgItUJjpazn9rqRnQ
+ e9qS9o8tU4rOHag==
 X-Developer-Key: i=krzysztof.kozlowski@linaro.org; a=openpgp;
  fpr=9BD07E0E0C51F8D59677B7541B93437D3B41629B
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240614_024717_860458_801D836B 
-X-CRM114-Status: GOOD (  10.40  )
+X-CRM114-CacheID: sfid-20240614_104716_749476_1A34F236 
+X-CRM114-Status: GOOD (  10.42  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -155,26 +170,26 @@ common definition of '#thermal-sensor-cells' property.
 
 Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 ---
- Documentation/devicetree/bindings/thermal/ti,am654-thermal.yaml | 5 +++--
+ .../devicetree/bindings/thermal/socionext,uniphier-thermal.yaml      | 5 +++--
  1 file changed, 3 insertions(+), 2 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/thermal/ti,am654-thermal.yaml b/Documentation/devicetree/bindings/thermal/ti,am654-thermal.yaml
-index 7ed0abe9290f..16801aa78bc2 100644
---- a/Documentation/devicetree/bindings/thermal/ti,am654-thermal.yaml
-+++ b/Documentation/devicetree/bindings/thermal/ti,am654-thermal.yaml
-@@ -9,6 +9,8 @@ title: Texas Instruments AM654 VTM (DTS)
+diff --git a/Documentation/devicetree/bindings/thermal/socionext,uniphier-thermal.yaml b/Documentation/devicetree/bindings/thermal/socionext,uniphier-thermal.yaml
+index 6f975821fa5e..8210b7079721 100644
+--- a/Documentation/devicetree/bindings/thermal/socionext,uniphier-thermal.yaml
++++ b/Documentation/devicetree/bindings/thermal/socionext,uniphier-thermal.yaml
+@@ -14,6 +14,8 @@ description: |
  maintainers:
-   - Keerthy <j-keerthy@ti.com>
+   - Kunihiko Hayashi <hayashi.kunihiko@socionext.com>
  
 +$ref: thermal-sensor.yaml#
 +
  properties:
    compatible:
-     const: ti,am654-vtm
-@@ -26,9 +28,8 @@ required:
+     enum:
+@@ -38,9 +40,8 @@ properties:
+ required:
    - compatible
-   - reg
-   - power-domains
+   - interrupts
 -  - "#thermal-sensor-cells"
  
 -additionalProperties: false
