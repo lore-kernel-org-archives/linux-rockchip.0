@@ -4,74 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B18DDC27C7B
-	for <linux-rockchip@archiver.kernel.org>; Fri, 14 Jun 2024 00:02:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E581BC2BA15
+	for <linux-rockchip@archiver.kernel.org>; Fri, 14 Jun 2024 00:02:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
-	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=Ve9LmrOBJ2M/GQoNQvrIiqMNaIgP5shdbQ+PgihZR9o=; b=PKbXyKPvT1SHOG
-	MG9pzrmWILxvW7E+/LRT8pLItuqfGTUfEOIQL0Ts8Xu+LYj1w+fJIqix0AO/ZFKiwikefnW+Zt0Yg
-	E2w1igC77oEIjb3/CWKqarV9MdrpCyLwIa0WanzF6jOrEx7/jDMGKiwM2nqyRy7i0usFE947i7T0t
-	IEOEZNs2ZkC4p2dpuCQ43/7Hzqm9LDfF+WdgSUqW4RS5mDk+3obfnnKsrduyntmyPFISks9nNrVnT
-	ZOEkMWpAWPHgch7JQ3GRqwEM0re5sayJP222ToF3nrlu1s+uw0vE2xaPRLhiwWkydG2x/BM3GlRDQ
-	ceUYMxne8PDLQhVYlFUg==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
+	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=2EC9pwAz3B2327Wwdf8JqGAegyAcNKfywCJDP6g3L9w=; b=1s6w4S6l01zXYs
+	0N2hqnQItVSFQx7ysNY7TjwIqLeX19fgsU7vDVqYNPQZ6jSxpV5n1z0jRV77ywnFBI/YeYUJJCBfh
+	kXEBiSS52q08wKZi4we4mASI65+0NMgekGDyq2rgkp5VGsLHnkBfDNouGH2vPh/X95N2LCEYg7GH7
+	w0Z+PyUzualX51sQ6OYbG1Ooj3G+bfUgqWTv7FZFQR8XVOmuo1JnGEulDri1elJDjgAaEc/N72nZC
+	5ZxOjzpu00BgkYtgu9wdA6nl9MxAJfky/kF4SenUoJdoBJ175gaGJDctnjRt6dEV6Y4lj9pd8wajb
+	BWVUjxPssi1o/q2lxymg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sHuOo-00000000qbg-154g;
-	Fri, 14 Jun 2024 00:02:34 +0000
-Received: from mail-lf1-x12e.google.com ([2a00:1450:4864:20::12e])
+	id 1sHuOr-00000000qcf-43dj;
+	Fri, 14 Jun 2024 00:02:37 +0000
+Received: from mail-lf1-x134.google.com ([2a00:1450:4864:20::134])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sHuOj-00000000qa5-3ReR
+	id 1sHuOm-00000000qak-1MXd
 	for linux-rockchip@lists.infradead.org;
-	Fri, 14 Jun 2024 00:02:32 +0000
-Received: by mail-lf1-x12e.google.com with SMTP id 2adb3069b0e04-52bd48cf36bso1979851e87.3
-        for <linux-rockchip@lists.infradead.org>; Thu, 13 Jun 2024 17:02:29 -0700 (PDT)
+	Fri, 14 Jun 2024 00:02:35 +0000
+Received: by mail-lf1-x134.google.com with SMTP id 2adb3069b0e04-52bc274f438so2013482e87.0
+        for <linux-rockchip@lists.infradead.org>; Thu, 13 Jun 2024 17:02:32 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1718323348; x=1718928148; darn=lists.infradead.org;
-        h=cc:to:content-transfer-encoding:mime-version:message-id:date
-         :subject:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=QW5kIhlLtmN+LhKlOvCDBjLYeT1B6YXu1fF/8F3k3UE=;
-        b=DHKLEAjSI8eeqSem10jLHb0KG9foVvqU65c6L5QTcWqDY9D1NR6w4uS1txDYYefPM3
-         Mfu8FMbUcH7/LXbJvJHIJvaIOlW/iVZb4bDQhlcFbN7/PNvSKO6qzMY057hJE1tJ5ARV
-         VFosVNzSX/gbB/N6fy+GMcrUr6L3PJrzlMMPrCLSUAjFsx/IkyCBHDZvUOMfVj8PZwqX
-         Yai5fhAJu4CRRn7Z9yIzrwCEC0+pDzJsSyqgShLnsO4yBS0e9IpTL1EcDOFbwMbzqXPv
-         kve6QbqVnR7+TOE+3ONyVo4n0bEcgHnV7BG8cE36WxcqH6baINIMCYsQkAuVc0lBa6l6
-         6gdA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1718323348; x=1718928148;
-        h=cc:to:content-transfer-encoding:mime-version:message-id:date
-         :subject:from:x-gm-message-state:from:to:cc:subject:date:message-id
+        d=linaro.org; s=google; t=1718323350; x=1718928150; darn=lists.infradead.org;
+        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=QW5kIhlLtmN+LhKlOvCDBjLYeT1B6YXu1fF/8F3k3UE=;
-        b=vrAh8+P6xrAv/9OITCxq7aO3ezracCLU+iyF8NwUwGWkyH0GYNAe8nZ+dUqNxEkf11
-         L0qepBh7RbQ3cUe7bJlMWECuDFfLOAtRYO3u2f1hdETo2Pg7zaHsTW+85Dqg1dK9reg9
-         r6oUnFbA85lD4LztpFxVtFhgWDcOdVDKA6sCFTDzsN5/9c3hDoPtVNP87m6krTEpjfqM
-         n7M/fk65vZqf3j4M17myM4KT+nwlvpKuiUXBb+FuIizdfdAbyFsm4hYtRsZ6hiT8tMMO
-         PBC+E30T0K4poB2FAo8gaTwZ5HuEY6BjvgyjQjsLMaU6feUtWcfMfcWNMxZ4Jyf2c+x4
-         UXrw==
-X-Forwarded-Encrypted: i=1; AJvYcCUCrV+DNxWZzldrYFEwn7bs1ICeBs5LY6Y99KxWB0Hs0oY3WDcGTQdoKWa3pL8gK7z0w1TdMbPBF2vMu9Aoe9CogF2MlNPut9pVF/bW3YyNNYKr
-X-Gm-Message-State: AOJu0Yy6ygY226OONXYg0o6zWmwK2Ffk2iVmx8Mdt1wfBxPMFPI5YnGI
-	3K295nX6m5hW+/axfFqZSAMHwAwlcAeVimBwXEPVPmgDWON87yjRLicNBIWr9Xs=
-X-Google-Smtp-Source: AGHT+IGQH4BW4y0WPnlc1Nl7pxTM2sMPBBUkuGMWSdcd4CZu8tjjNu987+DcRlYaZvTaev4pZRs+dQ==
-X-Received: by 2002:ac2:5a4b:0:b0:52c:884f:5a31 with SMTP id 2adb3069b0e04-52ca6e6dc0fmr757866e87.30.1718323347843;
-        Thu, 13 Jun 2024 17:02:27 -0700 (PDT)
+        bh=O6Pigrl3YMiYV0L2puz2MCBrwA4BsCn0v5eH3hYPj3M=;
+        b=OuzQhJPOZus4ZksAi1xPmiHDoMmPx66P8qWz7uSybf/XfBBnjdm7fh8dgPuwCmUicB
+         NUZgQ1cz91jCgGzUITqXcO460bVv2pipnUqpbDUvxUbLoOoOgEEui/mgj8nr0zNcUZU7
+         ezHzizQJU1ZAsG6iWIBeJDdrg2VQTVZbSaw4rx9cPRVmcgk6GGnrUIPKLaIABqZYNdFP
+         8YSK6aLxS7mYCwxN1avWbSgtD5lIzdySsstVBlTSt4svXEITKaqSUVhtN+SYsNkK5JGs
+         3lT7mkbu/zaB0J+IQQKV4cs12IQ38BFYnxjni7LZWOTOkXQEQ8jL+poyTrpbFoNe3YzN
+         EP1A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1718323350; x=1718928150;
+        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+         :mime-version:subject:date:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=O6Pigrl3YMiYV0L2puz2MCBrwA4BsCn0v5eH3hYPj3M=;
+        b=PHVmcFY+FBXT/DMlAuRf+kdnGEELQ57aSz53DqQ1Xbnqwep6n9qs7VkkhupE593/L7
+         xyn+HFls+9mupfpTIG+z+D35SZ2k1Rx8qssJTT6aUL2pGY0V5V1hC0Uu1Finzv1BPVuU
+         aV9ZtRAE01hjC1noWMTVxZCAv0g8/D+rrQE4qQ1Q6uIOQxAvMgp4xf2uLDiPULBwQuCP
+         S4VhtMpJRPd/JVfOs8UVMF04yJLwE6kFr2rdp5TFkaB2PecwriwXcJ0vBpGkeOIXFVTo
+         EstGTUb7W6krGb5yHRAVNTSXlAjH4AEPrMSEiEPVhlQyNzhR83Qr+qycdpkaNrCQ+u0A
+         whyQ==
+X-Forwarded-Encrypted: i=1; AJvYcCWAUCm3MPF5qE+BomnsZWEtmUjAkLzKeVo12xw1jNiTRLwsD5o68GKOHMGm5GPSeupV79ZrFNvRog5lcL7qW9B7BcTvqzjyiQnEx1NZCUXT1z6J
+X-Gm-Message-State: AOJu0YwC/bf/PkbN1KRGCrU4tn5L8R+FMV60wnmNxeOLiq8RsQj3ZUXl
+	K76ioBzrrxv/1BT4gfTe9VvenaamZC5j1uFtKBHSnVnUdC20qc7m5h82n+VVY60=
+X-Google-Smtp-Source: AGHT+IH5UIwXjKfdAlrtgtsP/gSAJqsbdrJZUJutPq0mL+YKqAKX7hdu9dO+j3gNoMNN5f3Ra3X8wg==
+X-Received: by 2002:a05:6512:2204:b0:52c:8a3a:fe2c with SMTP id 2adb3069b0e04-52ca6e9418bmr803193e87.45.1718323350643;
+        Thu, 13 Jun 2024 17:02:30 -0700 (PDT)
 Received: from umbar.lan ([192.130.178.91])
-        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-52ca288804dsm374797e87.262.2024.06.13.17.02.26
+        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-52ca288804dsm374797e87.262.2024.06.13.17.02.29
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 13 Jun 2024 17:02:26 -0700 (PDT)
+        Thu, 13 Jun 2024 17:02:29 -0700 (PDT)
 From: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
-Subject: [PATCH v4 0/3] drm/panel-edp: remove several legacy compatibles
- used by the driver
-Date: Fri, 14 Jun 2024 03:02:19 +0300
-Message-Id: <20240614-edp-panel-drop-v4-0-4e0a112eec46@linaro.org>
+Date: Fri, 14 Jun 2024 03:02:21 +0300
+Subject: [PATCH v4 2/3] dt-bindings: display: panel-edp-legacy: drop
+ several eDP panels
 MIME-Version: 1.0
-X-B4-Tracking: v=1; b=H4sIAIuIa2YC/3XMSwrCMBSF4a2UjL2SZzWO3Ic4yLMNlKSkEpTSv
- Zt2VCkOz4Hvn9HkcnATujUzyq6EKaRYBz81yPQqdg6CrRtRTDkWlIGzI4wqugFsTiNgrBRlUjP
- TalTRmJ0P7y34eNbdh+mV8mfrF7K+f1OFAAHMhW2pIMRieR9CVDmdU+7Q2ip07+XBU8DgjTdcX
- Ly5WnvwbOcZOXhWPTfyqqmWwjH145dl+QKrLBKBLQEAAA==
+Message-Id: <20240614-edp-panel-drop-v4-2-4e0a112eec46@linaro.org>
+References: <20240614-edp-panel-drop-v4-0-4e0a112eec46@linaro.org>
+In-Reply-To: <20240614-edp-panel-drop-v4-0-4e0a112eec46@linaro.org>
 To: Douglas Anderson <dianders@chromium.org>, 
  Neil Armstrong <neil.armstrong@linaro.org>, 
  Jessica Zhang <quic_jesszhan@quicinc.com>, Sam Ravnborg <sam@ravnborg.org>, 
@@ -84,21 +83,22 @@ Cc: dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
  linux-arm-msm@vger.kernel.org, linux-rockchip@lists.infradead.org, 
  Jeffrey Hugo <quic_jhugo@quicinc.com>, devicetree@vger.kernel.org
 X-Mailer: b4 0.13.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2848;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=2369;
  i=dmitry.baryshkov@linaro.org; h=from:subject:message-id;
- bh=exeXDKeS5xI4dB9WYztmnec8kaBCqKApV9iGGnDjUeE=;
- b=owEBbQGS/pANAwAKAYs8ij4CKSjVAcsmYgBma4iR8cQ2xeXd5K2/fhbfYL/Xxzbh7W+evYq1e
- 9/805a2cw2JATMEAAEKAB0WIQRMcISVXLJjVvC4lX+LPIo+Aiko1QUCZmuIkQAKCRCLPIo+Aiko
- 1WJECACy1Ogxdb/xLNEZk8RuzOmtxuBRF0sxevXZGZRGVis66bQoD2iWRfrVXrkWVh1lcLv5x4q
- uluGvNZ9O59OlSxWI8gvA6rUXbhT4v3ED+qH34ZrCdqWL1gWUWP95Slzh1ZxczjJao1jYHhLzjh
- c7VDu3zsm4u/R2R17xvdkzMUCDCt/u+/eGQiRoFJdFw5ZvvZdbQoIupCEYec2awpR3JrtqAq5pA
- eQnMH27+zXQXwzLyr+QdSZz9xXyz3q1OJJYLiorjcvghtKNITwo2yFbAiVQK+C7WD4GqCfsiDTX
- 9gqk8AmBFWr0Ke/UPEK6MyA7mQNWoonPtOknG8IMFzIM+nlH
+ bh=bwFTYS1LXMHaETrXdK5thhWhFT5+sEKZ6Z1fZtNY+wI=;
+ b=owEBbQGS/pANAwAKAYs8ij4CKSjVAcsmYgBma4iSZsRNQHJbZ2W+MlzIjjpWcJvGuGGSRSBPl
+ oP3J++Uqg6JATMEAAEKAB0WIQRMcISVXLJjVvC4lX+LPIo+Aiko1QUCZmuIkgAKCRCLPIo+Aiko
+ 1c4ICACTV5xKxTeR4arRjMWq6WVUa4a11qDoeZstp6WyrpASyxBgyXbvip2HW1SwbJxXFOhuUlq
+ E9kJZMdQp1ENLl3oO482umdp3DMsEXlqlivUDazOSuVXt9NffF6tL5L15vxLd+eWSg/7USAY3zU
+ xRlO66Y02jrnuYV6WJ4/xBXZl57y0rKQeFcQqSbQ0eYq7XFgq5TCN6iHB2o6k8/gUagTxdUEk+b
+ BkhTxoZ1lYwwqdZJV9FHijzdRFqpRbZcyvfh5eUVs0BTlyZrjVBw25iEpaVLtjPNO6E6FXlt2Dw
+ sGW1cCncmCkFnU6RVYWKZjaqIKIcLifZev9xXLuGGabDlJUb
 X-Developer-Key: i=dmitry.baryshkov@linaro.org; a=openpgp;
  fpr=8F88381DD5C873E4AE487DA5199BF1243632046A
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240613_170230_069670_6A2F4A79 
-X-CRM114-Status: GOOD (  13.76  )
+X-CRM114-CacheID: sfid-20240613_170232_405513_C97D24C8 
+X-CRM114-Status: UNSURE (   8.52  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -115,78 +115,59 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-There are two ways to describe an eDP panel in device tree. The
-recommended way is to add a device on the AUX bus, ideally using the
-edp-panel compatible. The legacy way is to define a top-level platform
-device for the panel.
+The panel-edp-legacy.yaml includes legacy bindings for several eDP
+panels which were never used in DT files present in Linux tree and most
+likely have never been used with the upstream kernel. Drop compatibles
+for these panels in favour of using a generic "edp-panel" device on the
+AUX bus.
 
-Document that adding support for eDP panels in a legacy way is strongly
-discouraged (if not forbidden at all).
-
-While we are at it, also drop legacy compatible strings and bindings for
-five panels. These compatible strings were never used by a DT file
-present in Linux kernel and most likely were never used with the
-upstream Linux kernel.
-
-The following compatibles were never used by the devices supported by
-the upstream kernel and are a subject to possible removal:
-
-- lg,lp097qx1-spa1
-- samsung,lsn122dl01-c01
-- sharp,ld-d5116z01b
-
-I'm considering dropping them later, unless there is a good reason not
-to do so.
-
-To: Douglas Anderson <dianders@chromium.org>
-To: Neil Armstrong <neil.armstrong@linaro.org>
-To: Jessica Zhang <quic_jesszhan@quicinc.com>
-To: Sam Ravnborg <sam@ravnborg.org>
-To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>
-To: Maxime Ripard <mripard@kernel.org>
-To: Thomas Zimmermann <tzimmermann@suse.de>
-To: David Airlie <airlied@gmail.com>
-To: Daniel Vetter <daniel@ffwll.ch>
-To: Rob Herring <robh@kernel.org>
-To: Krzysztof Kozlowski <krzk+dt@kernel.org>
-To: Conor Dooley <conor+dt@kernel.org>
-Cc: dri-devel@lists.freedesktop.org
-Cc: linux-kernel@vger.kernel.org
-Cc: linux-arm-msm@vger.kernel.org
-Cc: linux-rockchip@lists.infradead.org
-Cc: Jeffrey Hugo <quic_jhugo@quicinc.com>
-Cc: devicetree@vger.kernel.org
+Reviewed-by: Douglas Anderson <dianders@chromium.org>
 Signed-off-by: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
-
-Changes in v4:
-- Rebased on top of drm-misc-next
-- Added devicetree maintainers to cc list, missed them for v2/v3
-- Link to v3: https://lore.kernel.org/r/20240531-edp-panel-drop-v3-0-4c98b2b95e3a@linaro.org
-
-Changes in v3:
-- Rephrased the warning comment, following some of Doug's suggestions.
-- Link to v2: https://lore.kernel.org/r/20240529-edp-panel-drop-v2-0-fcfc457fc8dd@linaro.org
-
-Changes in v2:
-- Actually drop support for five panels acked by Doug Andersson
-- Link to v1: https://lore.kernel.org/r/20240523-edp-panel-drop-v1-1-045d62511d09@linaro.org
-
 ---
-Dmitry Baryshkov (3):
-      drm/panel-edp: add fat warning against adding new panel compatibles
-      dt-bindings: display: panel-edp-legacy: drop several eDP panels
-      drm/panel-edp: drop several legacy panels
+ .../devicetree/bindings/display/panel/panel-edp-legacy.yaml    | 10 ----------
+ 1 file changed, 10 deletions(-)
 
- .../bindings/display/panel/panel-edp-legacy.yaml   |  10 --
- drivers/gpu/drm/panel/panel-edp.c                  | 192 +++------------------
- 2 files changed, 25 insertions(+), 177 deletions(-)
----
-base-commit: 9324410846e13595d453b7f34508b1f6b15fb1a7
-change-id: 20240523-edp-panel-drop-00aa239b3c6b
+diff --git a/Documentation/devicetree/bindings/display/panel/panel-edp-legacy.yaml b/Documentation/devicetree/bindings/display/panel/panel-edp-legacy.yaml
+index 9e5864de49e7..b308047c1edf 100644
+--- a/Documentation/devicetree/bindings/display/panel/panel-edp-legacy.yaml
++++ b/Documentation/devicetree/bindings/display/panel/panel-edp-legacy.yaml
+@@ -31,13 +31,9 @@ properties:
+         # AUO B116XAK01 eDP TFT LCD panel
+       - auo,b116xa01
+         # AU Optronics Corporation 13.3" FHD (1920x1080) color TFT-LCD panel
+-      - auo,b133han05
+-        # AU Optronics Corporation 13.3" FHD (1920x1080) color TFT-LCD panel
+       - auo,b133htn01
+         # AU Optronics Corporation 13.3" WXGA (1366x768) TFT LCD panel
+       - auo,b133xtn01
+-        # AU Optronics Corporation 14.0" FHD (1920x1080) color TFT-LCD panel
+-      - auo,b140han06
+         # BOE OPTOELECTRONICS TECHNOLOGY 10.1" WXGA TFT LCD panel
+       - boe,nv101wxmn51
+         # BOE NV133FHM-N61 13.3" FHD (1920x1080) TFT LCD Panel
+@@ -56,8 +52,6 @@ properties:
+       - innolux,n125hce-gn1
+         # Innolux P120ZDG-BF1 12.02 inch eDP 2K display panel
+       - innolux,p120zdg-bf1
+-        # InfoVision Optoelectronics M133NWF4 R0 13.3" FHD (1920x1080) TFT LCD panel
+-      - ivo,m133nwf4-r0
+         # King & Display KD116N21-30NV-A010 eDP TFT LCD panel
+       - kingdisplay,kd116n21-30nv-a010
+         # LG LP079QX1-SP0V 7.9" (1536x2048 pixels) TFT LCD panel
+@@ -78,10 +72,6 @@ properties:
+       - sharp,ld-d5116z01b
+         # Sharp 12.3" (2400x1600 pixels) TFT LCD panel
+       - sharp,lq123p1jx31
+-        # Sharp 14" (1920x1080 pixels) TFT LCD panel
+-      - sharp,lq140m1jw46
+-        # Starry 12.2" (1920x1200 pixels) TFT LCD panel
+-      - starry,kr122ea0sra
+ 
+   backlight: true
+   ddc-i2c-bus: true
 
-Best regards,
 -- 
-Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
+2.39.2
 
 
 _______________________________________________
