@@ -4,88 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A72CBC27C4F
-	for <linux-rockchip@archiver.kernel.org>; Sat, 15 Jun 2024 13:55:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0874BC27C4F
+	for <linux-rockchip@archiver.kernel.org>; Sat, 15 Jun 2024 16:46:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:Subject:References:Cc:To:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=3bPsYlbgsgIxxZnMWvxMaJbM9oJyE5KS5IOHrmRbJb4=; b=u7dijEB3uPefwJ
-	fo0DKOiGbUtzsKYlRn9HSajHhlEgOS7Qzm/wAlgVOp1DPURBqcY36rLWxJ3xMWdYGsj1lEVFjAhBP
-	1EZxP8OpD2e8gHIoBb+IxgNR1aofmjF9db2Dco/lvYbVL84pXubq2bqsvbY2+N1A7qy83lzwAPESb
-	nifTaofhYHXzv07bldfKObXA19t6EcaOL+aTGM1xjTzuvTugbHUIGUFaWMnQVg+DGFNVPnxF4/uHN
-	wegEndQpITcax/vcY8aHoEtfDsXUL8pjggC1JhXbvIJPg1jqHR6AqeR10b73s7Uu4mBHavCZnxq0G
-	i4xGJmStVPVgk7wFZHcQ==;
+	List-Owner; bh=YtJnnk6FqjKBvSOCBJGSrbCkQCMdF0w4dQVmXWpSyNo=; b=xbtX0ZYL1104Dz
+	fy8gb4UWza73ebKwYHuf3HN7SWbo38FM/p15Q7R9sN2Lfwkx8rzun9pEzUIYkd3yEg1hWQq27f2f7
+	ytqCNI4kgpYaumE4BVe0yw7x7ZeltaKO74OvmdOsXgTbq79nuoBj6w22JDA4BOPzXEsF45CkyBj8P
+	vVqQ3GO8WGRoMeZyXCc0tEL5jUBd0HBL9T2CnPhjTjxlv54v2MumXEtxIdDoX4mQvYB6QOYij8CKS
+	yvuCg8UN/VHP53a6eCQ++GHMFkL3aJTq/DDoYt9ltTLaP/Z5lKlS+EjjL50CJGWALyYB3lYNUMBdF
+	kyngDENhT5e0xiAhFtUQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sITsQ-00000005V6O-3GcN;
-	Sat, 15 Jun 2024 13:55:30 +0000
-Received: from mgamail.intel.com ([192.198.163.7])
+	id 1sIWXm-00000005kbu-0waj;
+	Sat, 15 Jun 2024 16:46:22 +0000
+Received: from mout-p-202.mailbox.org ([2001:67c:2050:0:465::202])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sITsL-00000005V4h-0zSf;
-	Sat, 15 Jun 2024 13:55:27 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1718459725; x=1749995725;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=o2zni6lmU6brxTe62oPbpr/wNnVyUniYuEMKpQZnOmQ=;
-  b=iclYPZ7YhqXuaVPaha4qEF/Rel0/TOxQNHWRoGGO/Xx8CR4xMHYoerJ1
-   OSEGO1aQ6rPZXcuahzKHPLgC3ongd+PcEJ1RY5yGh+3gX7pEWjFf3s3+0
-   ADves2Q6K8BxQZD2cBlthiV7Gxr/5fAaasY7/qTgFokG6TY+t2nVqBkdn
-   4skqoPPZjVLokz2J98fPkns8pEvlR34qdyYQ3VmHXIMAHvZrNMXV5hDhd
-   oaleyY9ukXzZGn+FYKYInIGwI42qdg5szmwJlrEqGVcQRqSrS7yS1+Xhy
-   gW6cCHoHf0EUq6bD8lIwYQj20yVR8qhnccskHQBGwpWO+X/VP1XfTlrzI
-   w==;
-X-CSE-ConnectionGUID: C9xyB9ZcR0CRFbSAWHBUpA==
-X-CSE-MsgGUID: LPK4iF2lTlG4uoWhhF8R/w==
-X-IronPort-AV: E=McAfee;i="6700,10204,11104"; a="40760316"
-X-IronPort-AV: E=Sophos;i="6.08,240,1712646000"; 
-   d="scan'208";a="40760316"
-Received: from fmviesa007.fm.intel.com ([10.60.135.147])
-  by fmvoesa101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 15 Jun 2024 06:55:22 -0700
-X-CSE-ConnectionGUID: Z1nASWauRT2SWTLC7u9Yow==
-X-CSE-MsgGUID: AAqhFvwAQbO9qsOphaSZhg==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.08,240,1712646000"; 
-   d="scan'208";a="40630041"
-Received: from lkp-server01.sh.intel.com (HELO 68891e0c336b) ([10.239.97.150])
-  by fmviesa007.fm.intel.com with ESMTP; 15 Jun 2024 06:55:19 -0700
-Received: from kbuild by 68891e0c336b with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1sITsC-00005N-21;
-	Sat, 15 Jun 2024 13:55:16 +0000
-Date: Sat, 15 Jun 2024 21:55:03 +0800
-From: kernel test robot <lkp@intel.com>
-To: Detlev Casanova <detlev.casanova@collabora.com>,
-	linux-kernel@vger.kernel.org
-Cc: oe-kbuild-all@lists.linux.dev,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	linux-media@vger.kernel.org, Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Sebastian Reichel <sebastian.reichel@collabora.com>,
-	Dragan Simic <dsimic@manjaro.org>,
-	Alexey Charkov <alchark@gmail.com>,
-	Cristian Ciocaltea <cristian.ciocaltea@collabora.com>,
-	Diederik de Haas <didi.debian@cknow.org>,
-	Andy Yan <andy.yan@rock-chips.com>, devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-staging@lists.linux.dev,
-	Detlev Casanova <detlev.casanova@collabora.com>
-Subject: Re: [PATCH 1/3] media: rockchip: Introduce the rkvdec2 driver
-Message-ID: <202406152129.dV4K8R5k-lkp@intel.com>
-References: <20240615015734.1612108-2-detlev.casanova@collabora.com>
+	id 1sIWXi-00000005kb3-1P9q;
+	Sat, 15 Jun 2024 16:46:20 +0000
+Received: from smtp102.mailbox.org (smtp102.mailbox.org [IPv6:2001:67c:2050:b231:465::102])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	by mout-p-202.mailbox.org (Postfix) with ESMTPS id 4W1hqP2LM9z9sbt;
+	Sat, 15 Jun 2024 18:46:09 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=timsurber.de;
+	s=MBO0001; t=1718469969;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=HNGZN4oEpKT+sBOXNLogARwwcW1owg1uGbSyFj4/14A=;
+	b=FJIKtU6sHScvKyvoHM8eWZqmD1W51co08238jGAPT4/Adfh1P1Nqqu1U7A70GJzkBvayYq
+	Fgu+eLd3RxGd1SWd9a36NHPk3o5nAo5KHARQg7QVm0s0PD3N+KAk1wgPadjkAMSpK00Pna
+	uVr5PgbHMEYTrXBYJGEoDUJpz4KKVB2Fj1NuC15WJhFEC1oEjxYjze1SQZjz528AG8ynzw
+	kh/LmU/sKAs3T/PaO2pV094YDElwm55Jl7Ft+4+3ikxs67amVVVkUvxnurqN6kDYREpUEs
+	NgfGaYW05mRppFx5DaFaarzcHx//7FIZHcZ0sht7JCYtnNR0s/mf4xLEsl0dCA==
+Message-ID: <ecc86cc9-f5b6-4fb5-88c0-27a1cef59f5c@timsurber.de>
+Date: Sat, 15 Jun 2024 18:46:06 +0200
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20240615015734.1612108-2-detlev.casanova@collabora.com>
+To: seb-dev@mail.de
+Cc: conor+dt@kernel.org, devicetree@vger.kernel.org, heiko@sntech.de,
+ jonas@kwiboo.se, krzk+dt@kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ me@the-space.agency, me@timsurber.de, robh@kernel.org,
+ sebastian.reichel@collabora.com
+References: <1c702815-3f55-4f62-a743-2463f3141650@mail.de>
+Subject: Re: [PATCH v3 2/2] arm64: dts: rockchip: Add FriendlyElec CM3588 NAS
+ board
+Content-Language: en-US
+From: Tim Surber <me@timsurber.de>
+In-Reply-To: <1c702815-3f55-4f62-a743-2463f3141650@mail.de>
+X-Rspamd-Queue-Id: 4W1hqP2LM9z9sbt
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240615_065525_349045_366D61C1 
-X-CRM114-Status: GOOD (  13.41  )
+X-CRM114-CacheID: sfid-20240615_094618_842875_3A35D960 
+X-CRM114-Status: UNSURE (   5.35  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,74 +75,24 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Detlev,
+Hi Sebastian,
 
-kernel test robot noticed the following build errors:
+using the vendor kernel I had success with "sudo ir-keytable -t -p all".
+You have to have all the required protocols under CONFIG_RC_DECODERS 
+enabled (the easiest is to enable them all for testing).
 
-[auto build test ERROR on rockchip/for-next]
-[also build test ERROR on robh/for-next linus/master v6.10-rc3 next-20240613]
-[cannot apply to media-tree/master]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
+Using the above command I can see output when using a normal Sony TV 
+remote. I have not tested using the mainline kernel.
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Detlev-Casanova/media-rockchip-Introduce-the-rkvdec2-driver/20240615-100124
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git for-next
-patch link:    https://lore.kernel.org/r/20240615015734.1612108-2-detlev.casanova%40collabora.com
-patch subject: [PATCH 1/3] media: rockchip: Introduce the rkvdec2 driver
-config: i386-allmodconfig (https://download.01.org/0day-ci/archive/20240615/202406152129.dV4K8R5k-lkp@intel.com/config)
-compiler: gcc-13 (Ubuntu 13.2.0-4ubuntu3) 13.2.0
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20240615/202406152129.dV4K8R5k-lkp@intel.com/reproduce)
+Best regards,
 
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202406152129.dV4K8R5k-lkp@intel.com/
+Tim
 
-All errors (new ones prefixed by >>):
-
-   drivers/staging/media/rkvdec2/rkvdec2-h264.c: In function 'rkvdec2_write_regs':
->> drivers/staging/media/rkvdec2/rkvdec2-h264.c:563:9: error: implicit declaration of function '__iowrite32_copy_full'; did you mean '__iowrite32_copy'? [-Werror=implicit-function-declaration]
-     563 |         __iowrite32_copy_full(rkvdec->regs + OFFSET_COMMON_REGS,
-         |         ^~~~~~~~~~~~~~~~~~~~~
-         |         __iowrite32_copy
-   cc1: some warnings being treated as errors
-
-
-vim +563 drivers/staging/media/rkvdec2/rkvdec2-h264.c
-
-   557	
-   558	static void rkvdec2_write_regs(struct rkvdec2_ctx *ctx)
-   559	{
-   560		struct rkvdec2_dev *rkvdec = ctx->dev;
-   561		struct rkvdec2_h264_ctx *h264_ctx = ctx->priv;
-   562	
- > 563		__iowrite32_copy_full(rkvdec->regs + OFFSET_COMMON_REGS,
-   564				      &h264_ctx->regs.common,
-   565				      sizeof(h264_ctx->regs.common));
-   566		__iowrite32_copy_full(rkvdec->regs + OFFSET_CODEC_PARAMS_REGS,
-   567				      &h264_ctx->regs.h264_param,
-   568				      sizeof(h264_ctx->regs.h264_param));
-   569		__iowrite32_copy_full(rkvdec->regs + OFFSET_COMMON_ADDR_REGS,
-   570				      &h264_ctx->regs.common_addr,
-   571				      sizeof(h264_ctx->regs.common_addr));
-   572		__iowrite32_copy_full(rkvdec->regs + OFFSET_CODEC_ADDR_REGS,
-   573				      &h264_ctx->regs.h264_addr,
-   574				      sizeof(h264_ctx->regs.h264_addr));
-   575		__iowrite32_copy_full(rkvdec->regs + OFFSET_POC_HIGHBIT_REGS,
-   576				      &h264_ctx->regs.h264_highpoc,
-   577				      sizeof(h264_ctx->regs.h264_highpoc));
-   578	}
-   579	
-
--- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
 
 _______________________________________________
 Linux-rockchip mailing list
