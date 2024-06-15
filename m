@@ -4,38 +4,38 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D3747C27C7B
-	for <linux-rockchip@archiver.kernel.org>; Sat, 15 Jun 2024 17:06:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 26834C27C4F
+	for <linux-rockchip@archiver.kernel.org>; Sat, 15 Jun 2024 17:06:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ckuadN0EAjcOSaE5lcUJWvusytwMmkZ7i2hZ9Sq6T+M=; b=aDicig2zmwDzsv
-	9whM3s+BjJQIYrt5MVlqwccIm5NHvPUqtYrEnxJSxgU+w76b75BEsgHr205iOCB1XcnFn+j39TECn
-	A+sDu8xuHZH8JU0rguZUA3g0oFC/8A1In6ZkzNsid6qKsbSh0Rs7ke3KcTB44NDf2sCnR1hzEIJGh
-	g1zGosicoahj/oCsZXdW80JPo6a7ngFHOHw33YaMhjy3O1LTF+Sq/06lEVHjO0nxGbM1Yyr9Wsuv6
-	1KqevqBeKEFOKVxQcgwZZjMfQdQhzmQ/J9fLqXLzaP5QocqmKGNFjE+d18RiI7GT79v+u46MlRAmk
-	Ocub60OMRB1RhxUeC7PQ==;
+	List-Owner; bh=pFAsKTCnNX5X6f8knG/WIqgw/o2J943kRFpZW+PwrJM=; b=U+FD5JM98bE9IQ
+	nlUyrRTDYJq3Bif6LKCV35WfR1dSFuahxDFedWkNZ9jHgAtHlwDMdsXJiRCxgTFO0wCQk6Ym70GZI
+	bW4WTU4j3lDToK7ZnrF1tgd5qrTVH/jgHzGzSri48U1n0yvkj/mNzINu2TrBpEKh1ttQcvthX9F1R
+	EpHuO969WgOcWNaLKC8KdSq7HE9Uk/q4o3eu+6XaAGWgRMj0PSrgZ2MVcaiDqZitTkR8vJehZBGwQ
+	0CAEuC75alRtzItIpgQHY9kCMzCQIz9nW2Pl/7tXZQMXatclgstvl2eKXY03BTWkPfklQMc0fpzdy
+	RNzS+MFZXgG5DEuzEMyQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sIWrc-00000005nL3-0YlO;
-	Sat, 15 Jun 2024 17:06:52 +0000
+	id 1sIWrf-00000005nNW-3COt;
+	Sat, 15 Jun 2024 17:06:55 +0000
 Received: from smtp.forwardemail.net ([167.172.40.54])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sIWqq-00000005mkd-2VMB
+	id 1sIWqx-00000005mqe-3EeH
 	for linux-rockchip@lists.infradead.org;
-	Sat, 15 Jun 2024 17:06:08 +0000
+	Sat, 15 Jun 2024 17:06:13 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
  h=Content-Transfer-Encoding: MIME-Version: References: In-Reply-To:
  Message-ID: Date: Subject: Cc: To: From; q=dns/txt; s=fe-e1b5cab7be;
- t=1718471125; bh=oBgtjth5/yflr6ntPsYuZ+MVQpYpZchrByL3dEYZAxA=;
- b=KSzzbqLZDYXyMEIMCHItVvD8iJWM/iEpDjZdWDhMvr4saTi0blstbTcM8liBum4xVw5aQyxWB
- hiAfooaqmiOBMjewaaKfz5ehZGBkFeZTMXYsv4jIIs5ymW55CT8XS/no7CfgxdRzUTg3KJ49RaE
- dbVYnBQq6ZQBDR83iTgHRu9slIEWu1RpvbXzyEh26Ep4ArEUfibDZzJLbDY0m8mJOmiZcqMG+XB
- bH/NuXxAfGlHyNCRbUJM2b7n+kW8LayieeUoKjb0RCNBwgRyVUbuMYl6Y1mplLIfjda9JmpBcpN
- /xehR3UYnY1z4Ig0MneUK3y7CNAHmAAwcjpvCh8lj85w==
+ t=1718471132; bh=FiHAdD/4nULeLzfayWHOZuJzCk9s4sL6Pdbfulf5fI0=;
+ b=NjhRFKrEMl9zC2rzupvfY6t99XoPXqQ1GD6FVUWVCd+5VSANEHJ8WBJYFeBMbeanIuJtm7jx+
+ ayai/hvSnJRVDBgWyOhKArTaZTmaKSxBXqHM+XjkyOT46xFLFVdcH7URFo0VIb4M9YDBh3DNwO9
+ AsWS9YDYj3nglZ/7VHrizinPa1XO+QevQAd6W3Pde5ykY5G3b81SwDSz1DhJPwgb8yeXU4a16pt
+ PxPltbVjJqc+6a1jRsQXLtIrwIokxoFMqYISn41JU03bfc+9QVTfMk6iqbRuTiz7xseSliAEZgB
+ nTIiayMpsvPztzb4ccd/TYRRmoVgt+XyYA+87mXnD8nQ==
 From: Jonas Karlman <jonas@kwiboo.se>
 To: dri-devel@lists.freedesktop.org, Sandy Huang <hjc@rock-chips.com>,
  "=?UTF-8?q?Heiko=20St=C3=BCbner?=" <heiko@sntech.de>, Andy Yan
@@ -46,9 +46,9 @@ To: dri-devel@lists.freedesktop.org, Sandy Huang <hjc@rock-chips.com>,
 Cc: linux-arm-kernel@lists.infradead.org,
  linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Jonas
  Karlman <jonas@kwiboo.se>
-Subject: [PATCH 12/13] drm/rockchip: dw_hdmi: Enable 4K@60Hz mode on RK3399 and RK356x
-Date: Sat, 15 Jun 2024 17:04:03 +0000
-Message-ID: <20240615170417.3134517-13-jonas@kwiboo.se>
+Subject: [PATCH 13/13] drm/rockchip: Load crtc devices in preferred order
+Date: Sat, 15 Jun 2024 17:04:04 +0000
+Message-ID: <20240615170417.3134517-14-jonas@kwiboo.se>
 X-Mailer: git-send-email 2.45.2
 In-Reply-To: <20240615170417.3134517-1-jonas@kwiboo.se>
 References: <20240615170417.3134517-1-jonas@kwiboo.se>
@@ -59,10 +59,10 @@ X-Complaints-To: abuse@forwardemail.net
 X-ForwardEmail-Version: 0.4.40
 X-ForwardEmail-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
  167.172.40.54
-X-ForwardEmail-ID: 666dc9cf24e0254b398040ab
+X-ForwardEmail-ID: 666dc9d424e0254b398040bd
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240615_100605_123334_878469DE 
-X-CRM114-Status: GOOD (  10.08  )
+X-CRM114-CacheID: sfid-20240615_100612_170798_FC4C62B9 
+X-CRM114-Status: GOOD (  12.93  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,36 +79,60 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Use a maximum TMDS clock rate limit of 594MHz to enable use of HDMI2.0
-modes, e.g. 4K@60Hz, on RK3399 and RK3568.
+On RK3399 the VOPL loaded before VOPB and gets registered as crtc-0.
+However, on RK3288 and PX30 VOPB is gets registered as crtc-0 instead of
+VOPL.
+
+With VOPL registered as crtc-0 the kernel kms client is not able to
+enable 4K display modes for console use on RK3399.
+
+Load VOPB before VOPL to help kernel kms client make use of 4K display
+modes for console use on RK3399.
 
 Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
 ---
- drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ drivers/gpu/drm/rockchip/rockchip_drm_drv.c | 23 +++++++++++++++++++++
+ 1 file changed, 23 insertions(+)
 
-diff --git a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
-index d9886b1c299c..b255b8ceedb7 100644
---- a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
-+++ b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
-@@ -493,7 +493,7 @@ static struct rockchip_hdmi_chip_data rk3399_chip_data = {
- 	.lcdsel_grf_reg = RK3399_GRF_SOC_CON20,
- 	.lcdsel_big = HIWORD_UPDATE(0, RK3399_HDMI_LCDC_SEL),
- 	.lcdsel_lit = HIWORD_UPDATE(RK3399_HDMI_LCDC_SEL, RK3399_HDMI_LCDC_SEL),
--	.max_tmds_clock = 340000,
-+	.max_tmds_clock = 594000,
- };
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_drv.c b/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
+index ab55d7132550..6492f3caf017 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
+@@ -354,11 +354,34 @@ static void rockchip_drm_match_remove(struct device *dev)
+ 		device_link_del(link);
+ }
  
- static const struct dw_hdmi_plat_data rk3399_hdmi_drv_data = {
-@@ -507,7 +507,7 @@ static const struct dw_hdmi_plat_data rk3399_hdmi_drv_data = {
++/* list of preferred vop devices */
++static const char *const rockchip_drm_match_preferred[] = {
++	"rockchip,rk3399-vop-big",
++	NULL,
++};
++
+ static struct component_match *rockchip_drm_match_add(struct device *dev)
+ {
+ 	struct component_match *match = NULL;
++	struct device_node *port;
+ 	int i;
  
- static struct rockchip_hdmi_chip_data rk3568_chip_data = {
- 	.lcdsel_grf_reg = -1,
--	.max_tmds_clock = 340000,
-+	.max_tmds_clock = 594000,
- };
- 
- static const struct dw_hdmi_plat_data rk3568_hdmi_drv_data = {
++	/* add preferred vop device match before adding driver device matches */
++	for (i = 0; ; i++) {
++		port = of_parse_phandle(dev->of_node, "ports", i);
++		if (!port)
++			break;
++
++		if (of_device_is_available(port->parent) &&
++		    of_device_compatible_match(port->parent,
++					       rockchip_drm_match_preferred))
++			drm_of_component_match_add(dev, &match,
++						   component_compare_of,
++						   port->parent);
++
++		of_node_put(port);
++	}
++
+ 	for (i = 0; i < num_rockchip_sub_drivers; i++) {
+ 		struct platform_driver *drv = rockchip_sub_drivers[i];
+ 		struct device *p = NULL, *d;
 -- 
 2.45.2
 
