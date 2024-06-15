@@ -4,59 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BD132C2BA15
-	for <linux-rockchip@archiver.kernel.org>; Sat, 15 Jun 2024 17:14:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 14DD0C27C4F
+	for <linux-rockchip@archiver.kernel.org>; Sat, 15 Jun 2024 17:21:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=r9qM7agLGcD5LxJKGYxThfKtUKvjeg9U37nD0ShnRhE=; b=omoPkVLkw/10bB
-	n0N8SD3vhS5200BbcaF+ka2vttvD9sVW7FyteqwGMfFy/4k7jmACYRBkT3ZmnJ2EJpc4XgE4fSzIm
-	w2o2NMW/VxiO0cOM84MfRyfFnmKWK5HxoeeuL0kAEqraqQgQVgWW8r93ifwjzZscaJYYRI97fyxN4
-	4yGejlNcfM5IfvNq1xJzjW1AGwPuouDDwqj7C/MDaEozzHyGC0XUjaEId/8LHMy0HkIZhBvkf8tja
-	LJ4+/CO4q4aAH9/VjJ0iSAMJXEi1dsxBNq0dVo7g52K1xoF3AN/9NNo/jWVoseblWyI76PUGKpuoq
-	MONlqgyz76Hl2dpqQN+Q==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=5fnftl0PbmD0aRA+JVGpXx+7JbUUWvhhhp4ABzPNOtE=; b=k6+TkdSP6vLP3+
+	agV6xb8UL3Ph0GbVPOUY/cxmZj/QNALRAmRS7bYAhIySim9PL7+0AbTZ1rODk/xcDGWiyXzYp2c9l
+	cgvI0GDiL6SRcY9hnyx2ah5ZQMWmSxQNJbON1P1g1JW29q1ClKvL+YUE0+9zjOWFHh27pzgT58MI+
+	7/g5Gh77UTD6tuzu9wK3xmc4HaX7BuEFSVKlqFEFFf8hw3YFETHaoJlLvESlTx8Ig22XOjMRwPNhv
+	rwmIL0kxIZQmXtvZaK/0oV71LSvqpo7pOaEOdkI5FLEdKogKwi8kcxpyVaVT4zsbq9Gn4B5bm2HEl
+	qSeDbBRayZ92KozTuu9g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sIWzJ-00000005ohr-3RXj;
-	Sat, 15 Jun 2024 17:14:49 +0000
-Received: from smtp.forwardemail.net ([149.28.215.223])
+	id 1sIX5y-00000005peW-0HIt;
+	Sat, 15 Jun 2024 17:21:42 +0000
+Received: from mgamail.intel.com ([192.198.163.17])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sIWzG-00000005ogd-227o
-	for linux-rockchip@lists.infradead.org;
-	Sat, 15 Jun 2024 17:14:48 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
- h=Content-Transfer-Encoding: MIME-Version: Message-ID: Date: Subject: Cc:
- To: From; q=dns/txt; s=fe-e1b5cab7be; t=1718471683;
- bh=dLn2LLOIv7jBQg/04IBwQjzhef+lWuqMlW02SALqD2s=;
- b=z3ghITGUjKvYMox/h/1fTuc8dR8E07q21xq7oObMgp3XN1LJof2l2u1KaPS2LThjh2HA8dpu6
- sSPDAJTa1wkLpzyqbo2drwuw4I9sIhM9Qi0ICC9lTQawTwMMiMKXt+pL253tJpFEmMM1nPu4eE5
- arMU6HIrftF6NOygwu+fwgZr5bIaCgpOEdhfc7BnCIio5PFpEZSU11h9LLhwUCAwsavMPdTpw9l
- 1eAYzCD/hhEdlqLVRRJPB49QcEaxR3oJ7DGUedqzFuHmVJ/MMyUUsvIdIv4WZIFPJr5yn9QL1ir
- KaPQKk2i878OixYuLUO/obAgPetMLNXTKf5CvQ7j/Cng==
-From: Jonas Karlman <jonas@kwiboo.se>
-To: dri-devel@lists.freedesktop.org
-Cc: linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Jonas
- Karlman <jonas@kwiboo.se>
-Subject: [PATCH 00/13] rockchip: Enable 4K@60Hz mode on RK3228, RK3328, RK3399 and RK356x
-Date: Sat, 15 Jun 2024 17:03:51 +0000
-Message-ID: <20240615170417.3134517-1-jonas@kwiboo.se>
-X-Mailer: git-send-email 2.45.2
+	id 1sIX5u-00000005pdP-1U3V;
+	Sat, 15 Jun 2024 17:21:40 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1718472098; x=1750008098;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=ExyEuM3dwfd/4v0BFya7kw8n6mZ0l1HV91Gq8fQkkYk=;
+  b=MdYhLzWfAJS99Svj8+0CAXQPI2488FbEmTJavEjkHYqrz9Oz33tKEHr2
+   py1d1jIq/qcXb5eJHufIMcz1GexSfdMlRKez+CkIK5ZuaGktZfu8Yd4VQ
+   A5+I90j1md+SnoZd/8s48rInPhslA8nJo9sVCRfltBq4NyZRGnvW/wHe/
+   swzhbXFFvc0K6JoYXo1yDsSAp9wePDFOUNYzm6E0BMppNl2U0l552w3CN
+   UnjW8+IOEQtRSpiqSNOqKbyXpgmfr70OzNpph/g7EaeATW5YZQDEGh46P
+   Hv5YbuFs0W6KNg3i22wqFDRSoCJuOg+5v9+LMsQsx/cBNSKohSAmI0sp7
+   g==;
+X-CSE-ConnectionGUID: JJCPEWhwTRi0eW6Z2MZZQA==
+X-CSE-MsgGUID: fMrvORZ2QIW0KaBHJLwHsA==
+X-IronPort-AV: E=McAfee;i="6700,10204,11104"; a="15226127"
+X-IronPort-AV: E=Sophos;i="6.08,241,1712646000"; 
+   d="scan'208";a="15226127"
+Received: from fmviesa010.fm.intel.com ([10.60.135.150])
+  by fmvoesa111.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 15 Jun 2024 10:21:35 -0700
+X-CSE-ConnectionGUID: 2tPOAhzQQn2CxG3CPyIHbg==
+X-CSE-MsgGUID: 0gtVHwRvRZq5d1wSu4LYug==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.08,241,1712646000"; 
+   d="scan'208";a="40900515"
+Received: from lkp-server01.sh.intel.com (HELO 68891e0c336b) ([10.239.97.150])
+  by fmviesa010.fm.intel.com with ESMTP; 15 Jun 2024 10:21:30 -0700
+Received: from kbuild by 68891e0c336b with local (Exim 4.96)
+	(envelope-from <lkp@intel.com>)
+	id 1sIX5k-0000KA-19;
+	Sat, 15 Jun 2024 17:21:28 +0000
+Date: Sun, 16 Jun 2024 01:21:06 +0800
+From: kernel test robot <lkp@intel.com>
+To: Detlev Casanova <detlev.casanova@collabora.com>,
+	linux-kernel@vger.kernel.org
+Cc: llvm@lists.linux.dev, oe-kbuild-all@lists.linux.dev,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	linux-media@vger.kernel.org, Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Sebastian Reichel <sebastian.reichel@collabora.com>,
+	Dragan Simic <dsimic@manjaro.org>,
+	Alexey Charkov <alchark@gmail.com>,
+	Cristian Ciocaltea <cristian.ciocaltea@collabora.com>,
+	Diederik de Haas <didi.debian@cknow.org>,
+	Andy Yan <andy.yan@rock-chips.com>, devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-staging@lists.linux.dev,
+	Detlev Casanova <detlev.casanova@collabora.com>
+Subject: Re: [PATCH 1/3] media: rockchip: Introduce the rkvdec2 driver
+Message-ID: <202406160145.9n6HU9uQ-lkp@intel.com>
+References: <20240615015734.1612108-2-detlev.casanova@collabora.com>
 MIME-Version: 1.0
-X-Report-Abuse-To: abuse@forwardemail.net
-X-Report-Abuse: abuse@forwardemail.net
-X-Complaints-To: abuse@forwardemail.net
-X-ForwardEmail-Version: 0.4.40
-X-ForwardEmail-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
- 149.28.215.223
-X-ForwardEmail-ID: 666dc99724e0254b39803fcf
+Content-Disposition: inline
+In-Reply-To: <20240615015734.1612108-2-detlev.casanova@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240615_101446_639082_E4C6FE14 
-X-CRM114-Status: UNSURE (   9.19  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240615_102138_475757_7841D07A 
+X-CRM114-Status: GOOD (  17.28  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,73 +102,222 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This prepares and enable use of HDMI2.0 modes, e.g. 4K@60Hz, on RK3228,
-RK3328, RK3399 and RK356x.
+Hi Detlev,
 
-Patch 1-3 fixes some issues to help support use of high-resolution modes.
+kernel test robot noticed the following build errors:
 
-Patch 4 fixes reading of EDID on RK3328 when using a forced mode.
+[auto build test ERROR on rockchip/for-next]
+[also build test ERROR on robh/for-next linus/master v6.10-rc3 next-20240613]
+[cannot apply to media-tree/master]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch#_base_tree_information]
 
-Patch 5-7 adds hdmiphy rate validation in mode_valid so that HDMI2.0
-modes can be enabled on RK3228 and RK3328.
+url:    https://github.com/intel-lab-lkp/linux/commits/Detlev-Casanova/media-rockchip-Introduce-the-rkvdec2-driver/20240615-100124
+base:   https://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git for-next
+patch link:    https://lore.kernel.org/r/20240615015734.1612108-2-detlev.casanova%40collabora.com
+patch subject: [PATCH 1/3] media: rockchip: Introduce the rkvdec2 driver
+config: x86_64-allyesconfig (https://download.01.org/0day-ci/archive/20240616/202406160145.9n6HU9uQ-lkp@intel.com/config)
+compiler: clang version 18.1.5 (https://github.com/llvm/llvm-project 617a15a9eac96088ae5e9134248d8236e34b91b1)
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20240616/202406160145.9n6HU9uQ-lkp@intel.com/reproduce)
 
-Patch 8-11 modify phy, current and mpll tables to match what ChromeOS
-and vendor kernel use. These patches originate from old ChromeOS and
-vendor kernels and have successfully been used in LibreELEC distro for
-the past few years.
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202406160145.9n6HU9uQ-lkp@intel.com/
 
-Patch 12 enables use of HDMI2.0 modes on RK3399 and RK356x.
+All error/warnings (new ones prefixed by >>):
 
-Patch 13 help fix use of console at 4K resolution on RK3399.
+>> drivers/staging/media/rkvdec2/rkvdec2-h264.c:563:2: error: call to undeclared function '__iowrite32_copy_full'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+     563 |         __iowrite32_copy_full(rkvdec->regs + OFFSET_COMMON_REGS,
+         |         ^
+   drivers/staging/media/rkvdec2/rkvdec2-h264.c:563:2: note: did you mean '__iowrite32_copy'?
+   arch/x86/include/asm/io.h:219:20: note: '__iowrite32_copy' declared here
+     219 | static inline void __iowrite32_copy(void __iomem *to, const void *from,
+         |                    ^
+>> drivers/staging/media/rkvdec2/rkvdec2-h264.c:598:6: warning: variable 'yuv_virstride' set but not used [-Wunused-but-set-variable]
+     598 |         u32 yuv_virstride = 0;
+         |             ^
+   1 warning and 1 error generated.
 
-This series may not fully depend on but was only tested together with
-the series "drm: bridge: dw_hdmi: Misc enable/disable, CEC and EDID
-cleanup" at [1].
 
-I have tested 4K modes on following devices:
-- Asus TinkerBoard (RK3288)
-- Pine64 Rock64 (RK3328)
-- Radxa ROCK Pi 4 (RK3399)
-- Radxa ROCK 3A (RK3568)
+vim +/__iowrite32_copy_full +563 drivers/staging/media/rkvdec2/rkvdec2-h264.c
 
-A copy of this series can also be found at [2].
-
-[1] https://patchwork.freedesktop.org/series/134727/
-[2] https://github.com/Kwiboo/linux-rockchip/commits/next-20240531-rk-dw-hdmi-v1/
-
-Alex Bee (1):
-  drm/rockchip: vop: Allow 4096px width scaling
-
-Douglas Anderson (2):
-  drm/rockchip: dw_hdmi: Set cur_ctr to 0 always
-  drm/rockchip: dw_hdmi: Use auto-generated tables
-
-Jonas Karlman (8):
-  arm64: dts: rockchip: Increase VOP clk rate on RK3328
-  clk: rockchip: Set parent rate for DCLK_VOP clock on RK3228
-  drm/rockchip: dw_hdmi: Fix reading EDID when using a forced mode
-  drm/rockchip: dw_hdmi: Allow High TMDS Bit Rates
-  drm/rockchip: dw_hdmi: Add max_tmds_clock validation
-  drm/rockchip: dw_hdmi: Filter modes based on hdmiphy_clk
-  drm/rockchip: dw_hdmi: Enable 4K@60Hz mode on RK3399 and RK356x
-  drm/rockchip: Load crtc devices in preferred order
-
-Nickey Yang (1):
-  drm/rockchip: dw_hdmi: Add phy_config for 594Mhz pixel clock
-
-Yakir Yang (1):
-  drm/rockchip: dw_hdmi: Adjust cklvl & txlvl for RF/EMI
-
- arch/arm64/boot/dts/rockchip/rk3328.dtsi    |   4 +-
- drivers/clk/rockchip/clk-rk3228.c           |   2 +-
- drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c | 173 ++++++++++----------
- drivers/gpu/drm/rockchip/rockchip_drm_drv.c |  23 +++
- drivers/gpu/drm/rockchip/rockchip_drm_vop.c |   4 +-
- 5 files changed, 116 insertions(+), 90 deletions(-)
+   557	
+   558	static void rkvdec2_write_regs(struct rkvdec2_ctx *ctx)
+   559	{
+   560		struct rkvdec2_dev *rkvdec = ctx->dev;
+   561		struct rkvdec2_h264_ctx *h264_ctx = ctx->priv;
+   562	
+ > 563		__iowrite32_copy_full(rkvdec->regs + OFFSET_COMMON_REGS,
+   564				      &h264_ctx->regs.common,
+   565				      sizeof(h264_ctx->regs.common));
+   566		__iowrite32_copy_full(rkvdec->regs + OFFSET_CODEC_PARAMS_REGS,
+   567				      &h264_ctx->regs.h264_param,
+   568				      sizeof(h264_ctx->regs.h264_param));
+   569		__iowrite32_copy_full(rkvdec->regs + OFFSET_COMMON_ADDR_REGS,
+   570				      &h264_ctx->regs.common_addr,
+   571				      sizeof(h264_ctx->regs.common_addr));
+   572		__iowrite32_copy_full(rkvdec->regs + OFFSET_CODEC_ADDR_REGS,
+   573				      &h264_ctx->regs.h264_addr,
+   574				      sizeof(h264_ctx->regs.h264_addr));
+   575		__iowrite32_copy_full(rkvdec->regs + OFFSET_POC_HIGHBIT_REGS,
+   576				      &h264_ctx->regs.h264_highpoc,
+   577				      sizeof(h264_ctx->regs.h264_highpoc));
+   578	}
+   579	
+   580	static void config_registers(struct rkvdec2_ctx *ctx,
+   581				     struct rkvdec2_h264_run *run)
+   582	{
+   583		const struct v4l2_ctrl_h264_decode_params *dec_params = run->decode_params;
+   584		const struct v4l2_ctrl_h264_sps *sps = run->sps;
+   585		const struct v4l2_h264_dpb_entry *dpb = dec_params->dpb;
+   586		struct rkvdec2_h264_ctx *h264_ctx = ctx->priv;
+   587		dma_addr_t priv_start_addr = h264_ctx->priv_tbl.dma;
+   588		const struct v4l2_pix_format_mplane *dst_fmt;
+   589		struct vb2_v4l2_buffer *src_buf = run->base.bufs.src;
+   590		struct vb2_v4l2_buffer *dst_buf = run->base.bufs.dst;
+   591		struct rkvdec2_regs_h264 *regs = &h264_ctx->regs;
+   592		const struct v4l2_format *f;
+   593		dma_addr_t rlc_addr;
+   594		dma_addr_t dst_addr;
+   595		u32 hor_virstride = 0;
+   596		u32 ver_virstride = 0;
+   597		u32 y_virstride = 0;
+ > 598		u32 yuv_virstride = 0;
+   599		u32 offset;
+   600		u32 pixels;
+   601		u32 i;
+   602	
+   603		memset(regs, 0, sizeof(*regs));
+   604	
+   605		/* Set H264 mode */
+   606		regs->common.reg009.dec_mode = RKVDEC2_MODE_H264;
+   607	
+   608		/* Set config */
+   609		regs->common.reg011.buf_empty_en = 1;
+   610		regs->common.reg011.dec_clkgate_e = 1;
+   611		regs->common.reg011.dec_timeout_e = 1;
+   612		regs->common.reg011.pix_range_detection_e = 1;
+   613	
+   614		/* Set IDR flag */
+   615		regs->common.reg013.cur_pic_is_idr =
+   616			!!(dec_params->flags & V4L2_H264_DECODE_PARAM_FLAG_IDR_PIC);
+   617	
+   618		/* Set input stream length */
+   619		regs->common.reg016_str_len = vb2_get_plane_payload(&src_buf->vb2_buf, 0);
+   620	
+   621		/* Set max slice number */
+   622		regs->common.reg017.slice_num = MAX_SLICE_NUMBER;
+   623	
+   624		/* Set strides */
+   625		f = &ctx->decoded_fmt;
+   626		dst_fmt = &f->fmt.pix_mp;
+   627		hor_virstride = (sps->bit_depth_luma_minus8 + 8) * dst_fmt->width / 8;
+   628		ver_virstride = round_up(dst_fmt->height, 16);
+   629		y_virstride = hor_virstride * ver_virstride;
+   630		pixels = dst_fmt->height * dst_fmt->width;
+   631	
+   632		if (sps->chroma_format_idc == 0)
+   633			yuv_virstride = y_virstride;
+   634		else if (sps->chroma_format_idc == 1)
+   635			yuv_virstride += y_virstride + y_virstride / 2;
+   636		else if (sps->chroma_format_idc == 2)
+   637			yuv_virstride += 2 * y_virstride;
+   638	
+   639		regs->common.reg018.y_hor_virstride = hor_virstride / 16;
+   640		regs->common.reg019.uv_hor_virstride = hor_virstride / 16;
+   641		regs->common.reg020_y_virstride.y_virstride = y_virstride / 16;
+   642	
+   643		/* Activate block gating */
+   644		regs->common.reg026.swreg_block_gating_e = 0xfffef;
+   645		regs->common.reg026.reg_cfg_gating_en = 1;
+   646	
+   647		/* Set timeout threshold */
+   648		if (pixels < RKVDEC2_1080P_PIXELS)
+   649			regs->common.reg032_timeout_threshold = RKVDEC2_TIMEOUT_1080p;
+   650		else if (pixels < RKVDEC2_4K_PIXELS)
+   651			regs->common.reg032_timeout_threshold = RKVDEC2_TIMEOUT_4K;
+   652		else if (pixels < RKVDEC2_8K_PIXELS)
+   653			regs->common.reg032_timeout_threshold = RKVDEC2_TIMEOUT_8K;
+   654	
+   655		/* Set TOP and BOTTOM POCs */
+   656		regs->h264_param.cur_top_poc = dec_params->top_field_order_cnt;
+   657		regs->h264_param.cur_bot_poc = dec_params->bottom_field_order_cnt;
+   658	
+   659		/* Set ref pic address & poc */
+   660		for (i = 0; i < ARRAY_SIZE(dec_params->dpb); i++) {
+   661			struct vb2_buffer *vb_buf = run->ref_buf[i];
+   662			dma_addr_t buf_dma;
+   663	
+   664			/*
+   665			 * If a DPB entry is unused or invalid, address of current destination
+   666			 * buffer is returned.
+   667			 */
+   668			if (!vb_buf)
+   669				vb_buf = &dst_buf->vb2_buf;
+   670	
+   671			buf_dma = vb2_dma_contig_plane_dma_addr(vb_buf, 0);
+   672	
+   673			/* Set reference addresses */
+   674			regs->h264_addr.ref_base[i] = buf_dma;
+   675	
+   676			/* Set COLMV addresses */
+   677			regs->h264_addr.colmv_base[i] = buf_dma + ctx->colmv_offset;
+   678	
+   679			struct rkvdec2_h264_ref_info *ref_info =
+   680				&regs->h264_param.reg99_102_ref_info[i / 4].ref_info[i % 4];
+   681	
+   682			ref_info->ref_field =
+   683				!!(dpb[i].flags & V4L2_H264_DPB_ENTRY_FLAG_FIELD);
+   684			ref_info->ref_colmv_use_flag =
+   685				!!(dpb[i].flags & V4L2_H264_DPB_ENTRY_FLAG_ACTIVE);
+   686			ref_info->ref_topfield_used =
+   687				!!(dpb[i].fields & V4L2_H264_TOP_FIELD_REF);
+   688			ref_info->ref_botfield_used =
+   689				!!(dpb[i].fields & V4L2_H264_BOTTOM_FIELD_REF);
+   690	
+   691			regs->h264_param.reg67_98_ref_poc[i * 2] =
+   692				dpb[i].top_field_order_cnt;
+   693			regs->h264_param.reg67_98_ref_poc[i * 2 + 1] =
+   694				dpb[i].bottom_field_order_cnt;
+   695		}
+   696	
+   697		/* Set rlc base address (input stream) */
+   698		rlc_addr = vb2_dma_contig_plane_dma_addr(&src_buf->vb2_buf, 0);
+   699		regs->common_addr.reg128_rlc_base = rlc_addr;
+   700		regs->common_addr.reg129_rlcwrite_base = rlc_addr;
+   701	
+   702		/* Set output base address */
+   703		dst_addr = vb2_dma_contig_plane_dma_addr(&dst_buf->vb2_buf, 0);
+   704		regs->common_addr.reg130_decout_base = dst_addr;
+   705	
+   706		/* Set colmv address */
+   707		regs->common_addr.reg131_colmv_cur_base = dst_addr + ctx->colmv_offset;
+   708	
+   709		/* Set RCB addresses */
+   710		for (i = 0; i < RKVDEC2_RCB_COUNT; i++)
+   711			regs->common_addr.reg133_142_rcb_base[i] = ctx->rcb_bufs[i].dma;
+   712	
+   713		/* Set hw pps address */
+   714		offset = offsetof(struct rkvdec2_h264_priv_tbl, param_set);
+   715		regs->h264_addr.pps_base = priv_start_addr + offset;
+   716	
+   717		/* Set hw rps address */
+   718		offset = offsetof(struct rkvdec2_h264_priv_tbl, rps);
+   719		regs->h264_addr.rps_base = priv_start_addr + offset;
+   720	
+   721		/* Set cabac table */
+   722		offset = offsetof(struct rkvdec2_h264_priv_tbl, cabac_table);
+   723		regs->h264_addr.cabactbl_base = priv_start_addr + offset;
+   724	
+   725		rkvdec2_write_regs(ctx);
+   726	}
+   727	
 
 -- 
-2.45.2
-
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
 
 _______________________________________________
 Linux-rockchip mailing list
