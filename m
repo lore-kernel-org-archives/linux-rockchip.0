@@ -4,88 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 14DD0C27C4F
-	for <linux-rockchip@archiver.kernel.org>; Sat, 15 Jun 2024 17:21:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0F64CC27C4F
+	for <linux-rockchip@archiver.kernel.org>; Sat, 15 Jun 2024 19:45:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=5fnftl0PbmD0aRA+JVGpXx+7JbUUWvhhhp4ABzPNOtE=; b=k6+TkdSP6vLP3+
-	agV6xb8UL3Ph0GbVPOUY/cxmZj/QNALRAmRS7bYAhIySim9PL7+0AbTZ1rODk/xcDGWiyXzYp2c9l
-	cgvI0GDiL6SRcY9hnyx2ah5ZQMWmSxQNJbON1P1g1JW29q1ClKvL+YUE0+9zjOWFHh27pzgT58MI+
-	7/g5Gh77UTD6tuzu9wK3xmc4HaX7BuEFSVKlqFEFFf8hw3YFETHaoJlLvESlTx8Ig22XOjMRwPNhv
-	rwmIL0kxIZQmXtvZaK/0oV71LSvqpo7pOaEOdkI5FLEdKogKwi8kcxpyVaVT4zsbq9Gn4B5bm2HEl
-	qSeDbBRayZ92KozTuu9g==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=9VYNVLmtAgNbm2uSd6pH0ZlXMdv0fkFun3VhAtbcIIg=; b=NdsrdSPSoI0aP+uN7PZGLPmhaX
+	ja8JA7aiSwjwz8TvtTiOzyiG+ggCNKasohBETwAZcneofxXIthaF3MyJxz8KboA/EcWePpIi+9H9H
+	uFxnq9mT7BR2HXoFACRoMnVjyXlaKEpLc9YKDaH7a+TNXXzdxHR2xzQdHY2e1HkG5+d+pQ/K1UaD5
+	bzU+kyXuda/2aE77yX9IKF33E/ZgKIm0LuPmMJbHEUNUlwaS93bxgumzivCvjDJRgjo7EmEv7cSiN
+	iPeQNB1sAJUfFjmOq+F0FGbBivv3rShFkKfr6d8WjcjesF9P5pdHXqS5j2OBD935ydz76YvtLJvst
+	232yEITA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sIX5y-00000005peW-0HIt;
-	Sat, 15 Jun 2024 17:21:42 +0000
-Received: from mgamail.intel.com ([192.198.163.17])
+	id 1sIZKo-000000060w2-2Jkq;
+	Sat, 15 Jun 2024 19:45:10 +0000
+Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sIX5u-00000005pdP-1U3V;
-	Sat, 15 Jun 2024 17:21:40 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1718472098; x=1750008098;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=ExyEuM3dwfd/4v0BFya7kw8n6mZ0l1HV91Gq8fQkkYk=;
-  b=MdYhLzWfAJS99Svj8+0CAXQPI2488FbEmTJavEjkHYqrz9Oz33tKEHr2
-   py1d1jIq/qcXb5eJHufIMcz1GexSfdMlRKez+CkIK5ZuaGktZfu8Yd4VQ
-   A5+I90j1md+SnoZd/8s48rInPhslA8nJo9sVCRfltBq4NyZRGnvW/wHe/
-   swzhbXFFvc0K6JoYXo1yDsSAp9wePDFOUNYzm6E0BMppNl2U0l552w3CN
-   UnjW8+IOEQtRSpiqSNOqKbyXpgmfr70OzNpph/g7EaeATW5YZQDEGh46P
-   Hv5YbuFs0W6KNg3i22wqFDRSoCJuOg+5v9+LMsQsx/cBNSKohSAmI0sp7
-   g==;
-X-CSE-ConnectionGUID: JJCPEWhwTRi0eW6Z2MZZQA==
-X-CSE-MsgGUID: fMrvORZ2QIW0KaBHJLwHsA==
-X-IronPort-AV: E=McAfee;i="6700,10204,11104"; a="15226127"
-X-IronPort-AV: E=Sophos;i="6.08,241,1712646000"; 
-   d="scan'208";a="15226127"
-Received: from fmviesa010.fm.intel.com ([10.60.135.150])
-  by fmvoesa111.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 15 Jun 2024 10:21:35 -0700
-X-CSE-ConnectionGUID: 2tPOAhzQQn2CxG3CPyIHbg==
-X-CSE-MsgGUID: 0gtVHwRvRZq5d1wSu4LYug==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.08,241,1712646000"; 
-   d="scan'208";a="40900515"
-Received: from lkp-server01.sh.intel.com (HELO 68891e0c336b) ([10.239.97.150])
-  by fmviesa010.fm.intel.com with ESMTP; 15 Jun 2024 10:21:30 -0700
-Received: from kbuild by 68891e0c336b with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1sIX5k-0000KA-19;
-	Sat, 15 Jun 2024 17:21:28 +0000
-Date: Sun, 16 Jun 2024 01:21:06 +0800
-From: kernel test robot <lkp@intel.com>
-To: Detlev Casanova <detlev.casanova@collabora.com>,
-	linux-kernel@vger.kernel.org
-Cc: llvm@lists.linux.dev, oe-kbuild-all@lists.linux.dev,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	linux-media@vger.kernel.org, Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Sebastian Reichel <sebastian.reichel@collabora.com>,
-	Dragan Simic <dsimic@manjaro.org>,
-	Alexey Charkov <alchark@gmail.com>,
-	Cristian Ciocaltea <cristian.ciocaltea@collabora.com>,
-	Diederik de Haas <didi.debian@cknow.org>,
-	Andy Yan <andy.yan@rock-chips.com>, devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-staging@lists.linux.dev,
-	Detlev Casanova <detlev.casanova@collabora.com>
+	id 1sIZKk-000000060vK-3QSD;
+	Sat, 15 Jun 2024 19:45:08 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1718480703;
+	bh=6ge6kBsic43LaRUhVK+Qy4wNotbyA3ATob2zdjA5ig8=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=KfWBE8JVWsokMFf3Z1wBEBl5fcvstJv2kwTH5NXXs/VQPIhETDPP5CO9EAZEdlhxc
+	 01GUoQLqmGxViP8okrGnqbw4QK5kU5wJSCqh5sF4u1v0K7voXT9LaglTV7SyoO4E5q
+	 6Afkz23M03w5zo3r6/rxkJvBTx67/fWLEPhK5fkLUrjwWT8UZOvdnvEfWU9RwONxkg
+	 QEg2QhZhOq/AawrBvYkVgoXKcBbzm3CRN/AhvuXvl+q6fYwvjTkaRKi+QhRiLf5hNy
+	 hIghj3RJ3JrdZzrje+ygyHv7gycxjTrDE2ZMiGp3dTpSHGmiWquZiw0r4QSnBsSNUv
+	 pQ8Fmt8BV5Mjg==
+Received: from arisu.localnet (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: detlev)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 46F4837806BA;
+	Sat, 15 Jun 2024 19:45:00 +0000 (UTC)
+From: Detlev Casanova <detlev.casanova@collabora.com>
+To: linux-kernel@vger.kernel.org, Diederik de Haas <didi.debian@cknow.org>
+Cc: Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
+ Heiko Stuebner <heiko@sntech.de>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Sebastian Reichel <sebastian.reichel@collabora.com>,
+ Dragan Simic <dsimic@manjaro.org>, Alexey Charkov <alchark@gmail.com>,
+ Cristian Ciocaltea <cristian.ciocaltea@collabora.com>,
+ Andy Yan <andy.yan@rock-chips.com>, linux-media@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-staging@lists.linux.dev
 Subject: Re: [PATCH 1/3] media: rockchip: Introduce the rkvdec2 driver
-Message-ID: <202406160145.9n6HU9uQ-lkp@intel.com>
-References: <20240615015734.1612108-2-detlev.casanova@collabora.com>
+Date: Sat, 15 Jun 2024 15:44:32 -0400
+Message-ID: <5969581.LvFx2qVVIh@arisu>
+Organization: Collabora
+In-Reply-To: <3333233.eAoTOS8U2s@bagend>
+References: <20240615015734.1612108-1-detlev.casanova@collabora.com>
+ <20240615015734.1612108-2-detlev.casanova@collabora.com>
+ <3333233.eAoTOS8U2s@bagend>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20240615015734.1612108-2-detlev.casanova@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240615_102138_475757_7841D07A 
-X-CRM114-Status: GOOD (  17.28  )
+X-CRM114-CacheID: sfid-20240615_124507_135268_28009334 
+X-CRM114-Status: GOOD (  21.25  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,229 +78,92 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============1650712310131656947=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Detlev,
+--===============1650712310131656947==
+Content-Type: multipart/signed; boundary="nextPart3724567.ElGaqSPkdT";
+ micalg="pgp-sha256"; protocol="application/pgp-signature"
 
-kernel test robot noticed the following build errors:
+--nextPart3724567.ElGaqSPkdT
+Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain; charset="us-ascii"; protected-headers="v1"
+From: Detlev Casanova <detlev.casanova@collabora.com>
+Subject: Re: [PATCH 1/3] media: rockchip: Introduce the rkvdec2 driver
+Date: Sat, 15 Jun 2024 15:44:32 -0400
+Message-ID: <5969581.LvFx2qVVIh@arisu>
+Organization: Collabora
+In-Reply-To: <3333233.eAoTOS8U2s@bagend>
+MIME-Version: 1.0
 
-[auto build test ERROR on rockchip/for-next]
-[also build test ERROR on robh/for-next linus/master v6.10-rc3 next-20240613]
-[cannot apply to media-tree/master]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
+On Saturday, June 15, 2024 4:51:38 A.M. EDT Diederik de Haas wrote:
+> On Saturday, 15 June 2024 03:56:27 CEST Detlev Casanova wrote:
+> > This driver supports the second generation of the Rockchip Video
+> > decoder, also known as vdpu34x.
+> > It is currently only used on the RK3588(s) SoC.
+> > ...
+> > The core supports H264, HEVC, VP9 and AVS2 decoding but this driver
+> > currently only supports H264.
+> > ...
+> > The decision to make a different driver is mainly because rkvdec2 has
+> > more features and can work with multiple cores.
+> 
+> https://wiki.pine64.org/wiki/Quartz64_Development#Upstreaming_Status uses
+> both the rkvdec2 and vdpu346 words and I *assumed* that meant that the
+> Quartz64 Model A and B would use rkvdec2. The Q64-A and -B are rk3566
+> devices though.
+> 
+> So is this just an (unfortunate) use of the same words or is that wiki page
+> just wrong ... or better yet: does rkvdec2 support RK356x too?
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Detlev-Casanova/media-rockchip-Introduce-the-rkvdec2-driver/20240615-100124
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git for-next
-patch link:    https://lore.kernel.org/r/20240615015734.1612108-2-detlev.casanova%40collabora.com
-patch subject: [PATCH 1/3] media: rockchip: Introduce the rkvdec2 driver
-config: x86_64-allyesconfig (https://download.01.org/0day-ci/archive/20240616/202406160145.9n6HU9uQ-lkp@intel.com/config)
-compiler: clang version 18.1.5 (https://github.com/llvm/llvm-project 617a15a9eac96088ae5e9134248d8236e34b91b1)
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20240616/202406160145.9n6HU9uQ-lkp@intel.com/reproduce)
+Yes, the vdpu34x decoder on rk356x socs should be supported by this driver but 
+I don't have boards to test that unfortunately.
 
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202406160145.9n6HU9uQ-lkp@intel.com/
+This might also be used on future rockchip releases like the rk3576. But they 
+all have their own adaptations. If you can test it on rk3568 based hardware, 
+I'll happily add a compatible for it.
 
-All error/warnings (new ones prefixed by >>):
-
->> drivers/staging/media/rkvdec2/rkvdec2-h264.c:563:2: error: call to undeclared function '__iowrite32_copy_full'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
-     563 |         __iowrite32_copy_full(rkvdec->regs + OFFSET_COMMON_REGS,
-         |         ^
-   drivers/staging/media/rkvdec2/rkvdec2-h264.c:563:2: note: did you mean '__iowrite32_copy'?
-   arch/x86/include/asm/io.h:219:20: note: '__iowrite32_copy' declared here
-     219 | static inline void __iowrite32_copy(void __iomem *to, const void *from,
-         |                    ^
->> drivers/staging/media/rkvdec2/rkvdec2-h264.c:598:6: warning: variable 'yuv_virstride' set but not used [-Wunused-but-set-variable]
-     598 |         u32 yuv_virstride = 0;
-         |             ^
-   1 warning and 1 error generated.
+> Cheers,
+>   Diederik
 
 
-vim +/__iowrite32_copy_full +563 drivers/staging/media/rkvdec2/rkvdec2-h264.c
+--nextPart3724567.ElGaqSPkdT
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: This is a digitally signed message part.
+Content-Transfer-Encoding: 7Bit
 
-   557	
-   558	static void rkvdec2_write_regs(struct rkvdec2_ctx *ctx)
-   559	{
-   560		struct rkvdec2_dev *rkvdec = ctx->dev;
-   561		struct rkvdec2_h264_ctx *h264_ctx = ctx->priv;
-   562	
- > 563		__iowrite32_copy_full(rkvdec->regs + OFFSET_COMMON_REGS,
-   564				      &h264_ctx->regs.common,
-   565				      sizeof(h264_ctx->regs.common));
-   566		__iowrite32_copy_full(rkvdec->regs + OFFSET_CODEC_PARAMS_REGS,
-   567				      &h264_ctx->regs.h264_param,
-   568				      sizeof(h264_ctx->regs.h264_param));
-   569		__iowrite32_copy_full(rkvdec->regs + OFFSET_COMMON_ADDR_REGS,
-   570				      &h264_ctx->regs.common_addr,
-   571				      sizeof(h264_ctx->regs.common_addr));
-   572		__iowrite32_copy_full(rkvdec->regs + OFFSET_CODEC_ADDR_REGS,
-   573				      &h264_ctx->regs.h264_addr,
-   574				      sizeof(h264_ctx->regs.h264_addr));
-   575		__iowrite32_copy_full(rkvdec->regs + OFFSET_POC_HIGHBIT_REGS,
-   576				      &h264_ctx->regs.h264_highpoc,
-   577				      sizeof(h264_ctx->regs.h264_highpoc));
-   578	}
-   579	
-   580	static void config_registers(struct rkvdec2_ctx *ctx,
-   581				     struct rkvdec2_h264_run *run)
-   582	{
-   583		const struct v4l2_ctrl_h264_decode_params *dec_params = run->decode_params;
-   584		const struct v4l2_ctrl_h264_sps *sps = run->sps;
-   585		const struct v4l2_h264_dpb_entry *dpb = dec_params->dpb;
-   586		struct rkvdec2_h264_ctx *h264_ctx = ctx->priv;
-   587		dma_addr_t priv_start_addr = h264_ctx->priv_tbl.dma;
-   588		const struct v4l2_pix_format_mplane *dst_fmt;
-   589		struct vb2_v4l2_buffer *src_buf = run->base.bufs.src;
-   590		struct vb2_v4l2_buffer *dst_buf = run->base.bufs.dst;
-   591		struct rkvdec2_regs_h264 *regs = &h264_ctx->regs;
-   592		const struct v4l2_format *f;
-   593		dma_addr_t rlc_addr;
-   594		dma_addr_t dst_addr;
-   595		u32 hor_virstride = 0;
-   596		u32 ver_virstride = 0;
-   597		u32 y_virstride = 0;
- > 598		u32 yuv_virstride = 0;
-   599		u32 offset;
-   600		u32 pixels;
-   601		u32 i;
-   602	
-   603		memset(regs, 0, sizeof(*regs));
-   604	
-   605		/* Set H264 mode */
-   606		regs->common.reg009.dec_mode = RKVDEC2_MODE_H264;
-   607	
-   608		/* Set config */
-   609		regs->common.reg011.buf_empty_en = 1;
-   610		regs->common.reg011.dec_clkgate_e = 1;
-   611		regs->common.reg011.dec_timeout_e = 1;
-   612		regs->common.reg011.pix_range_detection_e = 1;
-   613	
-   614		/* Set IDR flag */
-   615		regs->common.reg013.cur_pic_is_idr =
-   616			!!(dec_params->flags & V4L2_H264_DECODE_PARAM_FLAG_IDR_PIC);
-   617	
-   618		/* Set input stream length */
-   619		regs->common.reg016_str_len = vb2_get_plane_payload(&src_buf->vb2_buf, 0);
-   620	
-   621		/* Set max slice number */
-   622		regs->common.reg017.slice_num = MAX_SLICE_NUMBER;
-   623	
-   624		/* Set strides */
-   625		f = &ctx->decoded_fmt;
-   626		dst_fmt = &f->fmt.pix_mp;
-   627		hor_virstride = (sps->bit_depth_luma_minus8 + 8) * dst_fmt->width / 8;
-   628		ver_virstride = round_up(dst_fmt->height, 16);
-   629		y_virstride = hor_virstride * ver_virstride;
-   630		pixels = dst_fmt->height * dst_fmt->width;
-   631	
-   632		if (sps->chroma_format_idc == 0)
-   633			yuv_virstride = y_virstride;
-   634		else if (sps->chroma_format_idc == 1)
-   635			yuv_virstride += y_virstride + y_virstride / 2;
-   636		else if (sps->chroma_format_idc == 2)
-   637			yuv_virstride += 2 * y_virstride;
-   638	
-   639		regs->common.reg018.y_hor_virstride = hor_virstride / 16;
-   640		regs->common.reg019.uv_hor_virstride = hor_virstride / 16;
-   641		regs->common.reg020_y_virstride.y_virstride = y_virstride / 16;
-   642	
-   643		/* Activate block gating */
-   644		regs->common.reg026.swreg_block_gating_e = 0xfffef;
-   645		regs->common.reg026.reg_cfg_gating_en = 1;
-   646	
-   647		/* Set timeout threshold */
-   648		if (pixels < RKVDEC2_1080P_PIXELS)
-   649			regs->common.reg032_timeout_threshold = RKVDEC2_TIMEOUT_1080p;
-   650		else if (pixels < RKVDEC2_4K_PIXELS)
-   651			regs->common.reg032_timeout_threshold = RKVDEC2_TIMEOUT_4K;
-   652		else if (pixels < RKVDEC2_8K_PIXELS)
-   653			regs->common.reg032_timeout_threshold = RKVDEC2_TIMEOUT_8K;
-   654	
-   655		/* Set TOP and BOTTOM POCs */
-   656		regs->h264_param.cur_top_poc = dec_params->top_field_order_cnt;
-   657		regs->h264_param.cur_bot_poc = dec_params->bottom_field_order_cnt;
-   658	
-   659		/* Set ref pic address & poc */
-   660		for (i = 0; i < ARRAY_SIZE(dec_params->dpb); i++) {
-   661			struct vb2_buffer *vb_buf = run->ref_buf[i];
-   662			dma_addr_t buf_dma;
-   663	
-   664			/*
-   665			 * If a DPB entry is unused or invalid, address of current destination
-   666			 * buffer is returned.
-   667			 */
-   668			if (!vb_buf)
-   669				vb_buf = &dst_buf->vb2_buf;
-   670	
-   671			buf_dma = vb2_dma_contig_plane_dma_addr(vb_buf, 0);
-   672	
-   673			/* Set reference addresses */
-   674			regs->h264_addr.ref_base[i] = buf_dma;
-   675	
-   676			/* Set COLMV addresses */
-   677			regs->h264_addr.colmv_base[i] = buf_dma + ctx->colmv_offset;
-   678	
-   679			struct rkvdec2_h264_ref_info *ref_info =
-   680				&regs->h264_param.reg99_102_ref_info[i / 4].ref_info[i % 4];
-   681	
-   682			ref_info->ref_field =
-   683				!!(dpb[i].flags & V4L2_H264_DPB_ENTRY_FLAG_FIELD);
-   684			ref_info->ref_colmv_use_flag =
-   685				!!(dpb[i].flags & V4L2_H264_DPB_ENTRY_FLAG_ACTIVE);
-   686			ref_info->ref_topfield_used =
-   687				!!(dpb[i].fields & V4L2_H264_TOP_FIELD_REF);
-   688			ref_info->ref_botfield_used =
-   689				!!(dpb[i].fields & V4L2_H264_BOTTOM_FIELD_REF);
-   690	
-   691			regs->h264_param.reg67_98_ref_poc[i * 2] =
-   692				dpb[i].top_field_order_cnt;
-   693			regs->h264_param.reg67_98_ref_poc[i * 2 + 1] =
-   694				dpb[i].bottom_field_order_cnt;
-   695		}
-   696	
-   697		/* Set rlc base address (input stream) */
-   698		rlc_addr = vb2_dma_contig_plane_dma_addr(&src_buf->vb2_buf, 0);
-   699		regs->common_addr.reg128_rlc_base = rlc_addr;
-   700		regs->common_addr.reg129_rlcwrite_base = rlc_addr;
-   701	
-   702		/* Set output base address */
-   703		dst_addr = vb2_dma_contig_plane_dma_addr(&dst_buf->vb2_buf, 0);
-   704		regs->common_addr.reg130_decout_base = dst_addr;
-   705	
-   706		/* Set colmv address */
-   707		regs->common_addr.reg131_colmv_cur_base = dst_addr + ctx->colmv_offset;
-   708	
-   709		/* Set RCB addresses */
-   710		for (i = 0; i < RKVDEC2_RCB_COUNT; i++)
-   711			regs->common_addr.reg133_142_rcb_base[i] = ctx->rcb_bufs[i].dma;
-   712	
-   713		/* Set hw pps address */
-   714		offset = offsetof(struct rkvdec2_h264_priv_tbl, param_set);
-   715		regs->h264_addr.pps_base = priv_start_addr + offset;
-   716	
-   717		/* Set hw rps address */
-   718		offset = offsetof(struct rkvdec2_h264_priv_tbl, rps);
-   719		regs->h264_addr.rps_base = priv_start_addr + offset;
-   720	
-   721		/* Set cabac table */
-   722		offset = offsetof(struct rkvdec2_h264_priv_tbl, cabac_table);
-   723		regs->h264_addr.cabactbl_base = priv_start_addr + offset;
-   724	
-   725		rkvdec2_write_regs(ctx);
-   726	}
-   727	
+-----BEGIN PGP SIGNATURE-----
 
--- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+iQEzBAABCAAdFiEEonF9IvGrXNkDg+CX5EFKUk4x7bYFAmZt7yAACgkQ5EFKUk4x
+7baMaQf/U5qjYueP/x3wLHQ5Cn6NXoSud1b5T+//Ia5e+4Y1qtap8KKbIRPb2UOf
+xqKdIdkqQNXHRtXUmqW17n/cdJZY4EiX7FCsbJzhhKz1E68T4xYBKDOOlaq65GsT
+tGOBacH4GqjYM21sSiWxcJN8lqzub3QH5gr3oKgXwoPr0W3yRM118BduS2NEX6W8
+HAweihViOTdo8jZONG/YuQzQP6xo6Ld6uOb76/f3r0Z2c1zV8ZKAAPzu/xH+qZPu
+Y4Ky6v/8r3u8wPSXv/qqwCyniD/QXTKc9HuIm+/W/W0Y2k5E/VkNo25wC0xt9o+7
+4F7bLWZNM/XGFOGE00jLG0x7hZH8Jg==
+=Vv2R
+-----END PGP SIGNATURE-----
+
+--nextPart3724567.ElGaqSPkdT--
+
+
+
+
+
+--===============1650712310131656947==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============1650712310131656947==--
+
+
+
+
