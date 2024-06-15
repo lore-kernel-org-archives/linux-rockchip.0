@@ -4,138 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9C1DAC27C4F
-	for <linux-rockchip@archiver.kernel.org>; Sat, 15 Jun 2024 06:38:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 80420C41513
+	for <linux-rockchip@archiver.kernel.org>; Sat, 15 Jun 2024 07:13:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:References:MIME-Version:Message-ID:Date
-	:Subject:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=tEdCiMdCBgqZwovh2weM3qxe1XOj3KwFiN0pj6ikaf8=; b=sodeQv3UP99Rbb
-	BYlypWIdyNjbNpEet1nWFnre1/IJRax5tkb8StK8w2HVRkPJ92kZVxZB+F4rpiOr1tXehxyzoJy5r
-	CtOm4uH+YSgBZWkJpE5PHe9G5TguS4VWiJYHnjyB9E9UFMoEMmDv0WSdXxNBc0d8v6Z3LOOB4H5mB
-	3YosZ5K/rGuVbQrowyWbzJZe0IdRwJ/RBMK81l9Eg2ZgkNoMauXD9qQR4Zw6piwhHJgt3JO4ouF7Q
-	QP/U7C6XP8XPU+GxD/qB1ZchQsqqEiOSiTy2NFN2TWlDYa058UvUEoFgSvNDZ0tB5DXL7ZcA5V69g
-	q1brGXG5cjq3GUgKYI2g==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=7s6mTCDGypBgYRW4M2Rireu+J2qeb5yugnw57SVR1hQ=; b=0huOZJbvEfCKkx
+	CIo7Gf8u6xRfmahhOoGQ1nycpLo50hZt29W6fSynpGB3tc+cyiI8hCb2bxLDT7IGeQevHXg7TNxfa
+	/8k6JtyJuSc1MnuAKRGjzBWh6Im7tOgL8Q3T8ToddCvxiM1RpJCgubY93MSCDE/i1sPbV4h+e3Y1L
+	adLP3KRLXSZ38j+eKrZ2bmwD0AtdIaf0P/DvzVJ/8JjqmwStUwTjDVP29HOwJOlcX/sBEOsmJnxEu
+	Iji6pcSFkvViI9uyttcULhziUXNH/mQ1GFfKs29l9IYqoiPFU4o3e0hktvcNN+lBVcx4xoJcRd0Bm
+	9DfnFD2fGGWmu00CREwQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sIN3J-00000004odV-2JrK;
-	Sat, 15 Jun 2024 06:38:17 +0000
-Received: from mailout3.samsung.com ([203.254.224.33])
+	id 1sINb6-00000004s27-0iRo;
+	Sat, 15 Jun 2024 07:13:12 +0000
+Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sIN3D-00000004ocS-2rqb;
-	Sat, 15 Jun 2024 06:38:14 +0000
-Received: from epcas5p4.samsung.com (unknown [182.195.41.42])
-	by mailout3.samsung.com (KnoxPortal) with ESMTP id 20240615063802epoutp03937665879767c7bb38a494fd9922b629~ZGiW7zCER1672516725epoutp03U;
-	Sat, 15 Jun 2024 06:38:02 +0000 (GMT)
-DKIM-Filter: OpenDKIM Filter v2.11.0 mailout3.samsung.com 20240615063802epoutp03937665879767c7bb38a494fd9922b629~ZGiW7zCER1672516725epoutp03U
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=samsung.com;
-	s=mail20170921; t=1718433482;
-	bh=vIwSYtTFXPS3sO38FNNQ6oJ71Y0bLvlrMHrlSuad46E=;
-	h=From:To:Cc:In-Reply-To:Subject:Date:References:From;
-	b=ZqRx9WEWTrFB0xPY+AKKfrl5bDsclQ3TWzUHUdAxvTY441omquggL+KXasoOMm0vb
-	 TT+Pz6KIgcBpV+kxr0393uI0VDMBX9ZwbarTNJXaWh2vxCh9xsvWvGFQaMHx8xlyGI
-	 iz4oghNbkk5GDaB2b8OoCpIX7Wn+XVPM7Cal+B2Q=
-Received: from epsnrtp4.localdomain (unknown [182.195.42.165]) by
-	epcas5p1.samsung.com (KnoxPortal) with ESMTP id
-	20240615063801epcas5p14a1910659716b444f56195a7b2ec983b~ZGiWWyQ_Y0633306333epcas5p1F;
-	Sat, 15 Jun 2024 06:38:01 +0000 (GMT)
-Received: from epcpadp4 (unknown [182.195.40.18]) by epsnrtp4.localdomain
-	(Postfix) with ESMTP id 4W1RKj3gpKz4x9Px; Sat, 15 Jun 2024 06:38:01 +0000
-	(GMT)
-Received: from epsmtrp2.samsung.com (unknown [182.195.40.14]) by
-	epcas5p1.samsung.com (KnoxPortal) with ESMTPA id
-	20240614142920epcas5p15f5887136072ebf6c2e23275dd872861~Y5Uk66YwW0344703447epcas5p15;
-	Fri, 14 Jun 2024 14:29:20 +0000 (GMT)
-Received: from epsmgms1p2new.samsung.com (unknown [182.195.42.42]) by
-	epsmtrp2.samsung.com (KnoxPortal) with ESMTP id
-	20240614142920epsmtrp2e40951f54cedb283a63bd26a75890a5d~Y5Uk39wd62550925509epsmtrp2Y;
-	Fri, 14 Jun 2024 14:29:20 +0000 (GMT)
-X-AuditID: b6c32a2a-73fff70000004a71-de-666c53c04e95
-Received: from epsmtip1.samsung.com ( [182.195.34.30]) by
-	epsmgms1p2new.samsung.com (Symantec Messaging Gateway) with SMTP id
-	FD.07.19057.0C35C666; Fri, 14 Jun 2024 23:29:20 +0900 (KST)
-Received: from INBRO002756 (unknown [107.122.12.5]) by epsmtip1.samsung.com
-	(KnoxPortal) with ESMTPA id
-	20240614142913epsmtip17b1c18bda36c53de5d30099c1e4afd13~Y5UeC7Xu-3016230162epsmtip1U;
-	Fri, 14 Jun 2024 14:29:13 +0000 (GMT)
-From: "Alim Akhtar" <alim.akhtar@samsung.com>
-To: "'Krzysztof Kozlowski'" <krzysztof.kozlowski@linaro.org>, "'Daniel
- Lezcano'" <daniel.lezcano@linaro.org>, "'Zhang Rui'" <rui.zhang@intel.com>,
-	"'Lukasz Luba'" <lukasz.luba@arm.com>, "'Rob Herring'" <robh@kernel.org>,
-	"'Conor Dooley'" <conor+dt@kernel.org>, "'Guillaume La Roque'"
-	<glaroque@baylibre.com>, "'Krzysztof Kozlowski'" <krzk+dt@kernel.org>,
-	"'Vasily Khoruzhick'" <anarsoul@gmail.com>, "'Chen-Yu Tsai'"
-	<wens@csie.org>, "'Jernej Skrabec'" <jernej.skrabec@gmail.com>, "'Samuel
- Holland'" <samuel@sholland.org>, "'Shawn Guo'" <shawnguo@kernel.org>,
-	"'Sascha Hauer'" <s.hauer@pengutronix.de>, "'Pengutronix	Kernel Team'"
-	<kernel@pengutronix.de>, "'Fabio Estevam'" <festevam@gmail.com>, "'Anson
- Huang'" <Anson.Huang@nxp.com>, "'Thierry Reding'"
-	<thierry.reding@gmail.com>, "'Jonathan Hunter'" <jonathanh@nvidia.com>,
-	"'Dmitry	Baryshkov'" <dmitry.baryshkov@linaro.org>, "'Amit Kucheria'"
-	<amitk@kernel.org>, =?utf-8?Q?'Niklas_S=C3=B6derlund'?=
-	<niklas.soderlund@ragnatech.se>, "'Heiko	Stuebner'" <heiko@sntech.de>,
-	"'Biju Das'" <biju.das.jz@bp.renesas.com>, "'Orson	Zhai'"
-	<orsonzhai@gmail.com>, "'Baolin Wang'" <baolin.wang@linux.alibaba.com>,
-	"'Chunyan Zhang'" <zhang.lyra@gmail.com>, "'Alexandre Torgue'"
-	<alexandre.torgue@foss.st.com>, "'Pascal Paillet'" <p.paillet@foss.st.com>,
-	"'Keerthy'" <j-keerthy@ti.com>, "'Broadcom internal kernel review list'"
-	<bcm-kernel-feedback-list@broadcom.com>, "'Florian Fainelli'"
-	<florian.fainelli@broadcom.com>, "'Scott Branden'" <sbranden@broadcom.com>,
-	"'zhanghongchen'" <zhanghongchen@loongson.cn>, "'Matthias Brugger'"
-	<matthias.bgg@gmail.com>, "'AngeloGioacchino Del Regno'"
-	<angelogioacchino.delregno@collabora.com>, "'Bjorn Andersson'"
-	<andersson@kernel.org>, "'Geert Uytterhoeven'" <geert+renesas@glider.be>
-Cc: <linux-pm@vger.kernel.org>, <linux-samsung-soc@vger.kernel.org>,
-	<devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-kernel@vger.kernel.org>, <linux-amlogic@lists.infradead.org>,
-	<linux-sunxi@lists.linux.dev>, <imx@lists.linux.dev>,
-	<linux-tegra@vger.kernel.org>, <linux-arm-msm@vger.kernel.org>,
-	<linux-renesas-soc@vger.kernel.org>, <linux-rockchip@lists.infradead.org>,
-	<linux-stm32@st-md-mailman.stormreply.com>, "'Florian Fainelli'"
-	<f.fainelli@gmail.com>, <linux-rpi-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>, <cpgs@samsung.com>
-In-Reply-To: <20240614-dt-bindings-thermal-allof-v1-1-30b25a6ae24e@linaro.org>
-Subject: RE: [PATCH 01/22] dt-bindings: thermal: samsung,exynos: specify
- cells
-Date: Fri, 14 Jun 2024 19:59:11 +0530
-Message-ID: <1891546521.01718433481489.JavaMail.epsvc@epcpadp4>
+	id 1sINb4-00000004s19-27O3
+	for linux-rockchip@bombadil.infradead.org;
+	Sat, 15 Jun 2024 07:13:10 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=casper.20170209; h=Content-Transfer-Encoding:MIME-Version:
+	Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
+	Content-Description:In-Reply-To:References;
+	bh=i38hq4Wv2z78Y7+TXFqBDzHQ6RolSOZB4VbnU4hK7c4=; b=R2VWIPl9Kjovc0tHwTvLmSU3o9
+	dJt39kq1o6f5h7aXMN9261cIN2KvKDai0jxU0TxWOpk2y0U6R2gn05M8PfPvdVCb4CzV4C2tSdxIj
+	ae5WMcmPvQHiNUt3NO8KcIL7Nxn5ytuSTvI7hisxcqgwOi2cZPoVo+8OiQe+BIHsF8QrxupSl5djH
+	LeRKzu1cEMNYljSmE/rg/7nMhSpQaht1JTPKD91OypcnQOHGbeFDZHRvIZ3cH/lNlPDa2ZvKPJXUS
+	13NQEPyoVMFsodqbEAf9BG/cExS3ABZ96UmoGosBCD3IR5pw6Oc1NPa+03w0xQRremA45xDWWAM9u
+	biMeeC1w==;
+Received: from sakura.naobsd.org ([160.16.200.221] helo=mail.naobsd.org)
+	by casper.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
+	id 1sINaw-0000000059w-3nKs
+	for linux-rockchip@lists.infradead.org;
+	Sat, 15 Jun 2024 07:13:08 +0000
+Received: from secure.fukaumi.org ([10.0.0.2])
+	by mail.naobsd.org (8.14.4/8.14.4/Debian-4.1ubuntu1.1) with ESMTP id 45F7985i009715;
+	Sat, 15 Jun 2024 16:09:08 +0900
+From: FUKAUMI Naoki <naoki@radxa.com>
+To: heiko@sntech.de
+Cc: sebastian.reichel@collabora.com, linux-rockchip@lists.infradead.org,
+        FUKAUMI Naoki <naoki@radxa.com>
+Subject: [RFC 1/2] arm64: dts: rockchip: disable USB3 host port on ROCK 5B
+Date: Sat, 15 Jun 2024 16:09:03 +0900
+Message-ID: <20240615070904.625-1-naoki@radxa.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-X-Mailer: Microsoft Outlook 16.0
-Thread-Index: AQGhCdcVAXQc0tvKk5x9QOKQ/J0WewGh/L0BAiWHCW6yHH4lsA==
-Content-Language: en-us
-X-Brightmail-Tracker: H4sIAAAAAAAAA02SbUxTdxTG97+9vbfQ1ZSXyQUFTaPZgJXBNtlxGLLgy+6mEYxzyUwUGriC
-	jJbaikPjMuhaMmA4wAn2dhRQxgoUcDBoQd5Sist0QMTZzTgQkAJdE/BtaN2gA7otfPudc57n
-	OefD4XF89UQQ77jsJKOQSTJEhDfe3i8KEfcdzDgWWdPnAy5HGYL+ymzQXJtG0P7FDhipo8Ck
-	TQZ39zUEjUUDOOjNCxgYu4cwcFhCQf84GCqtQ1woGXYR8HzOSsLE7Xhoah/jQIWuFEH1+QoC
-	3JNOLmjHNARcN6kwmKlsQqBmL+FQf6EDBwc7RkC3s42EKh0fWu7bltN6B0m41fkNAbc+v4ng
-	cZEVQZtjDoNH424OlNy9QsLF4R4MCmxTXPi6p5OA/CcsAdUqNQkq9RvwY9k5LpQ/0CHos5/H
-	wd1lJmFq4hwBi6YWHGYm8wmYa5hCMPtDALg69Ti4LMMYfDfeScKCzcR55y3aqDciev43DUnX
-	zepImr03SNDm0RpEX5ls4NL2r9pIumRQTHewoyR9ucuB0S31+QT9u62LoDsmttOtNZ/Rs61a
-	ROeqLmEJQYe9d6QwGcdPMYrXYpO80yomj8ivCrK1PY2cHKTmFyAvHiV8kypW9RMr7Cu8iqie
-	waOe/gbq1++LSQ/7UXVLM8vsvayZRlRtccmqgRCKKfPlPGJl4C80rqOeOn9eLTjCP3Cqdc7A
-	9VgmEPW3NhdfsXgJ91P6R2pshf1WuHBqtY8Lt1JLzabVfQLhdupGo/Zf9qF+0no0HGE4Zb9j
-	/59rq50cz32bKZe9dnkZb/mMOCq3GfNIAijHgJUsRn7smiR2TRK7JoldY6lCeD0KZORKaapU
-	GSV/XcZ8EqGUSJVZstSI5ExpC1p94bAwM+qqfxBhQRgPWRDF44j8BWx1+jFfQYrk9BlGkZmo
-	yMpglBa0gYeLAgQLzqIUX2Gq5CTzMcPIGcV/U4znFZSDiQsTbvzlGnCM2y9aXnSx3dh6d7D6
-	thR921tqijm4N6r29FhDsnSbIeTILxttWXuHN/Gt9HO+7NShkS7/P63vvvrpfLugPjXOp9v8
-	5QvwbGuVMyx8PPSjs+u8AqufGD7Aoj8M7Y8/Ec8e2FnObrHmtRXMzHTwRfO2QEfMdHJ4+qH7
-	0YbBhUneotEwlLfNELm060xp2tMmjbJVoyPfbiu7uSt9T8zRVyLxu2HiskJL9Nl7vUEJUnq9
-	vfA6P1E8nXnBbizdnb14J5jYJHsWm4UnvfRQRJa35ry/f+dS/3ujMXHNcjIEP6yPzdVAxImR
-	Lfucs/LNOvW+AxUPX87anZS4MUOEK9MkUWEchVLyD7bfoqExBAAA
-X-CMS-MailID: 20240614142920epcas5p15f5887136072ebf6c2e23275dd872861
-X-Msg-Generator: CA
-CMS-TYPE: 105P
-X-CPGSPASS: Y
-X-Hop-Count: 3
-X-CMS-RootMailID: 20240614094638epcas5p115d52130f45e130652b6f1d946358d19
-References: <20240614-dt-bindings-thermal-allof-v1-0-30b25a6ae24e@linaro.org>
-	<CGME20240614094638epcas5p115d52130f45e130652b6f1d946358d19@epcas5p1.samsung.com>
-	<20240614-dt-bindings-thermal-allof-v1-1-30b25a6ae24e@linaro.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240614_233812_414878_1317714C 
-X-CRM114-Status: GOOD (  17.31  )
+X-CRM114-CacheID: sfid-20240615_081303_462202_648B2F61 
+X-CRM114-Status: UNSURE (   5.64  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -152,54 +74,46 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Krzysztof,
+USB3 host (upper) port on ROCK 5B is not working with USB3 devices.
 
-> -----Original Message-----
-> From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-> Sent: Friday, June 14, 2024 3:16 PM
-> To: Daniel Lezcano <daniel.lezcano@linaro.org
-.stormreply.com;
-> Subject: [PATCH 01/22] dt-bindings: thermal: samsung,exynos: specify cells
-> 
-> All Samsung Exynos SoCs Thermal Management Units have only one sensor, so
-> make '#thermal-sensor-cells' fixed at 0.
-> 
-This is not entirely true, there are SoCs which have multiple temp sensors.
-It is true that currently only one sensor support is added though.
+error message:
+ usb usb6-port1: Cannot enable. Maybe the USB cable is bad?
+ usb usb6-port1: Cannot enable. Maybe the USB cable is bad?
+ usb usb6-port1: Cannot enable. Maybe the USB cable is bad?
+   :
 
-So we can leave this as is or you suggest to make it to support only one sensor
-(to match the current DT support), and later (in near future) change it again to
-match what HW actually support?
+$ lsusb -t
+/:  Bus 001.Port 001: Dev 001, Class=root_hub, Driver=ehci-platform/1p, 480M
+    |__ Port 001: Dev 002, If 0, Class=Hub, Driver=hub/4p, 480M
+        |__ Port 001: Dev 003, If 0, Class=Mass Storage, Driver=usb-storage, 480M
+/:  Bus 002.Port 001: Dev 001, Class=root_hub, Driver=ohci-platform/1p, 12M
+/:  Bus 003.Port 001: Dev 001, Class=root_hub, Driver=ehci-platform/1p, 480M
+/:  Bus 004.Port 001: Dev 001, Class=root_hub, Driver=ohci-platform/1p, 12M
+/:  Bus 005.Port 001: Dev 001, Class=root_hub, Driver=xhci-hcd/1p, 480M
+/:  Bus 006.Port 001: Dev 001, Class=root_hub, Driver=xhci-hcd/1p, 5000M
+/:  Bus 007.Port 001: Dev 001, Class=root_hub, Driver=xhci-hcd/1p, 480M
+/:  Bus 008.Port 001: Dev 001, Class=root_hub, Driver=xhci-hcd/1p, 5000M
 
-> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-> ---
->  Documentation/devicetree/bindings/thermal/samsung,exynos-thermal.yaml | 3
-> ++-
->  1 file changed, 2 insertions(+), 1 deletion(-)
-> 
-> diff --git a/Documentation/devicetree/bindings/thermal/samsung,exynos-
-> thermal.yaml b/Documentation/devicetree/bindings/thermal/samsung,exynos-
-> thermal.yaml
-> index 1344df708e2d..29a08b0729ee 100644
-> --- a/Documentation/devicetree/bindings/thermal/samsung,exynos-
-> thermal.yaml
-> +++ b/Documentation/devicetree/bindings/thermal/samsung,exynos-thermal.y
-> +++ aml
-> @@ -61,7 +61,8 @@ properties:
->            TRIMINFO at 0x10068000 contains data for TMU channel 2
->      minItems: 1
-> 
-> -  '#thermal-sensor-cells': true
-> +  '#thermal-sensor-cells':
-> +    const: 0
-> 
->    vtmu-supply:
->      description: The regulator node supplying voltage to TMU.
-> 
-> --
-> 2.43.0
+Fixes: f97d78b9f6cf ("arm64: dts: rockchip: add USB3 host to rock-5b")
+Signed-off-by: FUKAUMI Naoki <naoki@radxa.com>
+---
+ arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts | 4 ----
+ 1 file changed, 4 deletions(-)
 
-
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
+index 4e2bf4eaef2b..61c7046435cc 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
+@@ -805,7 +805,3 @@ &usb_host1_xhci {
+ 	dr_mode = "host";
+ 	status = "okay";
+ };
+-
+-&usb_host2_xhci {
+-	status = "okay";
+-};
+-- 
+2.43.0
 
 
 _______________________________________________
