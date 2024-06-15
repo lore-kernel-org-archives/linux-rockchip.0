@@ -4,145 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5A541C27C4F
-	for <linux-rockchip@archiver.kernel.org>; Sat, 15 Jun 2024 09:39:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A72CBC27C4F
+	for <linux-rockchip@archiver.kernel.org>; Sat, 15 Jun 2024 13:55:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=isc2jY7tVOKRu7+r0UQNxpSCY7WD51GlvQyW0bcMXFU=; b=kimeW0Oj6PNvbH
-	FF995UoJbPVCR8r5xdY/FC3YphWcPYVweIIcQraPCvcqasby4YJb3+aBgJ63rkUuS5fflw4O0ph1C
-	rkjKQmIecQYwKnkz9zIMeMOtPA2oNKTICUBZltmxtYin/GzyybBOxpcBuhL9v8CX/+JPPMntZy+JB
-	iIXLkiJT/SgcbjaAt7KbNhdd3aHaTYvG8eQxuUhev4Up1XIssHd05MRWbe9VP0RHP9hJHKMTf9N/2
-	poQ86fF98ms1UZ/uZinLj1d91poblxwb9hjEd5aTJU+4HdMZx9CU/+2y2iQomD3ZBb5T1tZnrSHxS
-	R/XezZFlZNTRakRD8ZlA==;
+	List-Owner; bh=3bPsYlbgsgIxxZnMWvxMaJbM9oJyE5KS5IOHrmRbJb4=; b=u7dijEB3uPefwJ
+	fo0DKOiGbUtzsKYlRn9HSajHhlEgOS7Qzm/wAlgVOp1DPURBqcY36rLWxJ3xMWdYGsj1lEVFjAhBP
+	1EZxP8OpD2e8gHIoBb+IxgNR1aofmjF9db2Dco/lvYbVL84pXubq2bqsvbY2+N1A7qy83lzwAPESb
+	nifTaofhYHXzv07bldfKObXA19t6EcaOL+aTGM1xjTzuvTugbHUIGUFaWMnQVg+DGFNVPnxF4/uHN
+	wegEndQpITcax/vcY8aHoEtfDsXUL8pjggC1JhXbvIJPg1jqHR6AqeR10b73s7Uu4mBHavCZnxq0G
+	i4xGJmStVPVgk7wFZHcQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sIPsj-000000058uU-06gC;
-	Sat, 15 Jun 2024 09:39:33 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1sITsQ-00000005V6O-3GcN;
+	Sat, 15 Jun 2024 13:55:30 +0000
+Received: from mgamail.intel.com ([192.198.163.7])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sIPsd-000000058td-2Lds;
-	Sat, 15 Jun 2024 09:39:28 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id B779460B6E;
-	Sat, 15 Jun 2024 09:39:26 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id DD748C116B1;
-	Sat, 15 Jun 2024 09:39:13 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1718444366;
-	bh=VnEJAKlueI1gVsR28BDxfyG4IIsWQe276Q/5t4EIwiI=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=adP+eWpDAo3ogc3xH8HvRct3q4nGLVjHAQ+9XYoAyKbLksW+2M3hkGFxC97c9ABf1
-	 YmMoJtp2km315ipyKHOLATXYYZsYNXv0LBpLXx0CCbQp2pD2sNmjKGiOClSvLMlQxm
-	 3iHgUUw0llAYnMR09VjsZszMwB7dRh/oUrQgKtwqoB7JlvTdozUe8OqvlrJbzdzGpr
-	 jEbeTI+55alP5cIoJnqAMMMR4ZVknYcX9Vab0xQBRtKdksziTmG2fKYQ9cr9Nm0MHb
-	 EBscKmOnnmeNQe0XTINhhBy/c0EvSg205h7v4vgr62ka0KBIIJMbso2EvfR47SJHCb
-	 tidPZob6oHU1Q==
-Message-ID: <003b73f2-3b5d-40b7-a87c-2fc937e81bcd@kernel.org>
-Date: Sat, 15 Jun 2024 11:39:12 +0200
+	id 1sITsL-00000005V4h-0zSf;
+	Sat, 15 Jun 2024 13:55:27 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1718459725; x=1749995725;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=o2zni6lmU6brxTe62oPbpr/wNnVyUniYuEMKpQZnOmQ=;
+  b=iclYPZ7YhqXuaVPaha4qEF/Rel0/TOxQNHWRoGGO/Xx8CR4xMHYoerJ1
+   OSEGO1aQ6rPZXcuahzKHPLgC3ongd+PcEJ1RY5yGh+3gX7pEWjFf3s3+0
+   ADves2Q6K8BxQZD2cBlthiV7Gxr/5fAaasY7/qTgFokG6TY+t2nVqBkdn
+   4skqoPPZjVLokz2J98fPkns8pEvlR34qdyYQ3VmHXIMAHvZrNMXV5hDhd
+   oaleyY9ukXzZGn+FYKYInIGwI42qdg5szmwJlrEqGVcQRqSrS7yS1+Xhy
+   gW6cCHoHf0EUq6bD8lIwYQj20yVR8qhnccskHQBGwpWO+X/VP1XfTlrzI
+   w==;
+X-CSE-ConnectionGUID: C9xyB9ZcR0CRFbSAWHBUpA==
+X-CSE-MsgGUID: LPK4iF2lTlG4uoWhhF8R/w==
+X-IronPort-AV: E=McAfee;i="6700,10204,11104"; a="40760316"
+X-IronPort-AV: E=Sophos;i="6.08,240,1712646000"; 
+   d="scan'208";a="40760316"
+Received: from fmviesa007.fm.intel.com ([10.60.135.147])
+  by fmvoesa101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 15 Jun 2024 06:55:22 -0700
+X-CSE-ConnectionGUID: Z1nASWauRT2SWTLC7u9Yow==
+X-CSE-MsgGUID: AAqhFvwAQbO9qsOphaSZhg==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.08,240,1712646000"; 
+   d="scan'208";a="40630041"
+Received: from lkp-server01.sh.intel.com (HELO 68891e0c336b) ([10.239.97.150])
+  by fmviesa007.fm.intel.com with ESMTP; 15 Jun 2024 06:55:19 -0700
+Received: from kbuild by 68891e0c336b with local (Exim 4.96)
+	(envelope-from <lkp@intel.com>)
+	id 1sITsC-00005N-21;
+	Sat, 15 Jun 2024 13:55:16 +0000
+Date: Sat, 15 Jun 2024 21:55:03 +0800
+From: kernel test robot <lkp@intel.com>
+To: Detlev Casanova <detlev.casanova@collabora.com>,
+	linux-kernel@vger.kernel.org
+Cc: oe-kbuild-all@lists.linux.dev,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	linux-media@vger.kernel.org, Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Sebastian Reichel <sebastian.reichel@collabora.com>,
+	Dragan Simic <dsimic@manjaro.org>,
+	Alexey Charkov <alchark@gmail.com>,
+	Cristian Ciocaltea <cristian.ciocaltea@collabora.com>,
+	Diederik de Haas <didi.debian@cknow.org>,
+	Andy Yan <andy.yan@rock-chips.com>, devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-staging@lists.linux.dev,
+	Detlev Casanova <detlev.casanova@collabora.com>
+Subject: Re: [PATCH 1/3] media: rockchip: Introduce the rkvdec2 driver
+Message-ID: <202406152129.dV4K8R5k-lkp@intel.com>
+References: <20240615015734.1612108-2-detlev.casanova@collabora.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 01/22] dt-bindings: thermal: samsung,exynos: specify cells
-To: Alim Akhtar <alim.akhtar@samsung.com>,
- 'Krzysztof Kozlowski' <krzysztof.kozlowski@linaro.org>,
- 'Daniel Lezcano' <daniel.lezcano@linaro.org>,
- 'Zhang Rui' <rui.zhang@intel.com>, 'Lukasz Luba' <lukasz.luba@arm.com>,
- 'Rob Herring' <robh@kernel.org>, 'Conor Dooley' <conor+dt@kernel.org>,
- 'Guillaume La Roque' <glaroque@baylibre.com>,
- 'Krzysztof Kozlowski' <krzk+dt@kernel.org>,
- 'Vasily Khoruzhick' <anarsoul@gmail.com>, 'Chen-Yu Tsai' <wens@csie.org>,
- 'Jernej Skrabec' <jernej.skrabec@gmail.com>,
- 'Samuel Holland' <samuel@sholland.org>, 'Shawn Guo' <shawnguo@kernel.org>,
- 'Sascha Hauer' <s.hauer@pengutronix.de>,
- 'Pengutronix Kernel Team' <kernel@pengutronix.de>,
- 'Fabio Estevam' <festevam@gmail.com>, 'Anson Huang' <Anson.Huang@nxp.com>,
- 'Thierry Reding' <thierry.reding@gmail.com>,
- 'Jonathan Hunter' <jonathanh@nvidia.com>,
- 'Dmitry Baryshkov' <dmitry.baryshkov@linaro.org>,
- 'Amit Kucheria' <amitk@kernel.org>,
- =?UTF-8?Q?=27Niklas_S=C3=B6derlund=27?= <niklas.soderlund@ragnatech.se>,
- 'Heiko Stuebner' <heiko@sntech.de>, 'Biju Das' <biju.das.jz@bp.renesas.com>,
- 'Orson Zhai' <orsonzhai@gmail.com>,
- 'Baolin Wang' <baolin.wang@linux.alibaba.com>,
- 'Chunyan Zhang' <zhang.lyra@gmail.com>,
- 'Alexandre Torgue' <alexandre.torgue@foss.st.com>,
- 'Pascal Paillet' <p.paillet@foss.st.com>, 'Keerthy' <j-keerthy@ti.com>,
- 'Broadcom internal kernel review list'
- <bcm-kernel-feedback-list@broadcom.com>,
- 'Florian Fainelli' <florian.fainelli@broadcom.com>,
- 'Scott Branden' <sbranden@broadcom.com>,
- 'zhanghongchen' <zhanghongchen@loongson.cn>,
- 'Matthias Brugger' <matthias.bgg@gmail.com>,
- 'AngeloGioacchino Del Regno' <angelogioacchino.delregno@collabora.com>,
- 'Bjorn Andersson' <andersson@kernel.org>,
- 'Geert Uytterhoeven' <geert+renesas@glider.be>
-Cc: linux-pm@vger.kernel.org, linux-samsung-soc@vger.kernel.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-amlogic@lists.infradead.org,
- linux-sunxi@lists.linux.dev, imx@lists.linux.dev,
- linux-tegra@vger.kernel.org, linux-arm-msm@vger.kernel.org,
- linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-stm32@st-md-mailman.stormreply.com,
- 'Florian Fainelli' <f.fainelli@gmail.com>,
- linux-rpi-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- cpgs@samsung.com
-References: <20240614-dt-bindings-thermal-allof-v1-0-30b25a6ae24e@linaro.org>
- <CGME20240614094638epcas5p115d52130f45e130652b6f1d946358d19@epcas5p1.samsung.com>
- <20240614-dt-bindings-thermal-allof-v1-1-30b25a6ae24e@linaro.org>
- <1891546521.01718433481489.JavaMail.epsvc@epcpadp4>
-From: Krzysztof Kozlowski <krzk@kernel.org>
-Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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 fv0=
-In-Reply-To: <1891546521.01718433481489.JavaMail.epsvc@epcpadp4>
+Content-Disposition: inline
+In-Reply-To: <20240615015734.1612108-2-detlev.casanova@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240615_023927_844034_ED447123 
-X-CRM114-Status: UNSURE (   9.78  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240615_065525_349045_366D61C1 
+X-CRM114-Status: GOOD (  13.41  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -159,33 +102,69 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 14/06/2024 16:29, Alim Akhtar wrote:
-> Hi Krzysztof,
-> 
->> -----Original Message-----
->> From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
->> Sent: Friday, June 14, 2024 3:16 PM
->> To: Daniel Lezcano <daniel.lezcano@linaro.org
-> .stormreply.com;
->> Subject: [PATCH 01/22] dt-bindings: thermal: samsung,exynos: specify cells
->>
->> All Samsung Exynos SoCs Thermal Management Units have only one sensor, so
->> make '#thermal-sensor-cells' fixed at 0.
->>
-> This is not entirely true, there are SoCs which have multiple temp sensors.
-> It is true that currently only one sensor support is added though.
+Hi Detlev,
 
-All supported by mainline. Others do not exist now :)
+kernel test robot noticed the following build errors:
 
-> 
-> So we can leave this as is or you suggest to make it to support only one sensor
-> (to match the current DT support), and later (in near future) change it again to
-> match what HW actually support?
+[auto build test ERROR on rockchip/for-next]
+[also build test ERROR on robh/for-next linus/master v6.10-rc3 next-20240613]
+[cannot apply to media-tree/master]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch#_base_tree_information]
 
-Yes, different devices can have different value (and bindings).
-Best regards,
-Krzysztof
+url:    https://github.com/intel-lab-lkp/linux/commits/Detlev-Casanova/media-rockchip-Introduce-the-rkvdec2-driver/20240615-100124
+base:   https://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git for-next
+patch link:    https://lore.kernel.org/r/20240615015734.1612108-2-detlev.casanova%40collabora.com
+patch subject: [PATCH 1/3] media: rockchip: Introduce the rkvdec2 driver
+config: i386-allmodconfig (https://download.01.org/0day-ci/archive/20240615/202406152129.dV4K8R5k-lkp@intel.com/config)
+compiler: gcc-13 (Ubuntu 13.2.0-4ubuntu3) 13.2.0
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20240615/202406152129.dV4K8R5k-lkp@intel.com/reproduce)
 
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202406152129.dV4K8R5k-lkp@intel.com/
+
+All errors (new ones prefixed by >>):
+
+   drivers/staging/media/rkvdec2/rkvdec2-h264.c: In function 'rkvdec2_write_regs':
+>> drivers/staging/media/rkvdec2/rkvdec2-h264.c:563:9: error: implicit declaration of function '__iowrite32_copy_full'; did you mean '__iowrite32_copy'? [-Werror=implicit-function-declaration]
+     563 |         __iowrite32_copy_full(rkvdec->regs + OFFSET_COMMON_REGS,
+         |         ^~~~~~~~~~~~~~~~~~~~~
+         |         __iowrite32_copy
+   cc1: some warnings being treated as errors
+
+
+vim +563 drivers/staging/media/rkvdec2/rkvdec2-h264.c
+
+   557	
+   558	static void rkvdec2_write_regs(struct rkvdec2_ctx *ctx)
+   559	{
+   560		struct rkvdec2_dev *rkvdec = ctx->dev;
+   561		struct rkvdec2_h264_ctx *h264_ctx = ctx->priv;
+   562	
+ > 563		__iowrite32_copy_full(rkvdec->regs + OFFSET_COMMON_REGS,
+   564				      &h264_ctx->regs.common,
+   565				      sizeof(h264_ctx->regs.common));
+   566		__iowrite32_copy_full(rkvdec->regs + OFFSET_CODEC_PARAMS_REGS,
+   567				      &h264_ctx->regs.h264_param,
+   568				      sizeof(h264_ctx->regs.h264_param));
+   569		__iowrite32_copy_full(rkvdec->regs + OFFSET_COMMON_ADDR_REGS,
+   570				      &h264_ctx->regs.common_addr,
+   571				      sizeof(h264_ctx->regs.common_addr));
+   572		__iowrite32_copy_full(rkvdec->regs + OFFSET_CODEC_ADDR_REGS,
+   573				      &h264_ctx->regs.h264_addr,
+   574				      sizeof(h264_ctx->regs.h264_addr));
+   575		__iowrite32_copy_full(rkvdec->regs + OFFSET_POC_HIGHBIT_REGS,
+   576				      &h264_ctx->regs.h264_highpoc,
+   577				      sizeof(h264_ctx->regs.h264_highpoc));
+   578	}
+   579	
+
+-- 
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
 
 _______________________________________________
 Linux-rockchip mailing list
