@@ -4,65 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 26834C27C4F
-	for <linux-rockchip@archiver.kernel.org>; Sat, 15 Jun 2024 17:06:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BD132C2BA15
+	for <linux-rockchip@archiver.kernel.org>; Sat, 15 Jun 2024 17:14:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=pFAsKTCnNX5X6f8knG/WIqgw/o2J943kRFpZW+PwrJM=; b=U+FD5JM98bE9IQ
-	nlUyrRTDYJq3Bif6LKCV35WfR1dSFuahxDFedWkNZ9jHgAtHlwDMdsXJiRCxgTFO0wCQk6Ym70GZI
-	bW4WTU4j3lDToK7ZnrF1tgd5qrTVH/jgHzGzSri48U1n0yvkj/mNzINu2TrBpEKh1ttQcvthX9F1R
-	EpHuO969WgOcWNaLKC8KdSq7HE9Uk/q4o3eu+6XaAGWgRMj0PSrgZ2MVcaiDqZitTkR8vJehZBGwQ
-	0CAEuC75alRtzItIpgQHY9kCMzCQIz9nW2Pl/7tXZQMXatclgstvl2eKXY03BTWkPfklQMc0fpzdy
-	RNzS+MFZXgG5DEuzEMyQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=r9qM7agLGcD5LxJKGYxThfKtUKvjeg9U37nD0ShnRhE=; b=omoPkVLkw/10bB
+	n0N8SD3vhS5200BbcaF+ka2vttvD9sVW7FyteqwGMfFy/4k7jmACYRBkT3ZmnJ2EJpc4XgE4fSzIm
+	w2o2NMW/VxiO0cOM84MfRyfFnmKWK5HxoeeuL0kAEqraqQgQVgWW8r93ifwjzZscaJYYRI97fyxN4
+	4yGejlNcfM5IfvNq1xJzjW1AGwPuouDDwqj7C/MDaEozzHyGC0XUjaEId/8LHMy0HkIZhBvkf8tja
+	LJ4+/CO4q4aAH9/VjJ0iSAMJXEi1dsxBNq0dVo7g52K1xoF3AN/9NNo/jWVoseblWyI76PUGKpuoq
+	MONlqgyz76Hl2dpqQN+Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sIWrf-00000005nNW-3COt;
-	Sat, 15 Jun 2024 17:06:55 +0000
-Received: from smtp.forwardemail.net ([167.172.40.54])
+	id 1sIWzJ-00000005ohr-3RXj;
+	Sat, 15 Jun 2024 17:14:49 +0000
+Received: from smtp.forwardemail.net ([149.28.215.223])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sIWqx-00000005mqe-3EeH
+	id 1sIWzG-00000005ogd-227o
 	for linux-rockchip@lists.infradead.org;
-	Sat, 15 Jun 2024 17:06:13 +0000
+	Sat, 15 Jun 2024 17:14:48 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
- h=Content-Transfer-Encoding: MIME-Version: References: In-Reply-To:
- Message-ID: Date: Subject: Cc: To: From; q=dns/txt; s=fe-e1b5cab7be;
- t=1718471132; bh=FiHAdD/4nULeLzfayWHOZuJzCk9s4sL6Pdbfulf5fI0=;
- b=NjhRFKrEMl9zC2rzupvfY6t99XoPXqQ1GD6FVUWVCd+5VSANEHJ8WBJYFeBMbeanIuJtm7jx+
- ayai/hvSnJRVDBgWyOhKArTaZTmaKSxBXqHM+XjkyOT46xFLFVdcH7URFo0VIb4M9YDBh3DNwO9
- AsWS9YDYj3nglZ/7VHrizinPa1XO+QevQAd6W3Pde5ykY5G3b81SwDSz1DhJPwgb8yeXU4a16pt
- PxPltbVjJqc+6a1jRsQXLtIrwIokxoFMqYISn41JU03bfc+9QVTfMk6iqbRuTiz7xseSliAEZgB
- nTIiayMpsvPztzb4ccd/TYRRmoVgt+XyYA+87mXnD8nQ==
+ h=Content-Transfer-Encoding: MIME-Version: Message-ID: Date: Subject: Cc:
+ To: From; q=dns/txt; s=fe-e1b5cab7be; t=1718471683;
+ bh=dLn2LLOIv7jBQg/04IBwQjzhef+lWuqMlW02SALqD2s=;
+ b=z3ghITGUjKvYMox/h/1fTuc8dR8E07q21xq7oObMgp3XN1LJof2l2u1KaPS2LThjh2HA8dpu6
+ sSPDAJTa1wkLpzyqbo2drwuw4I9sIhM9Qi0ICC9lTQawTwMMiMKXt+pL253tJpFEmMM1nPu4eE5
+ arMU6HIrftF6NOygwu+fwgZr5bIaCgpOEdhfc7BnCIio5PFpEZSU11h9LLhwUCAwsavMPdTpw9l
+ 1eAYzCD/hhEdlqLVRRJPB49QcEaxR3oJ7DGUedqzFuHmVJ/MMyUUsvIdIv4WZIFPJr5yn9QL1ir
+ KaPQKk2i878OixYuLUO/obAgPetMLNXTKf5CvQ7j/Cng==
 From: Jonas Karlman <jonas@kwiboo.se>
-To: dri-devel@lists.freedesktop.org, Sandy Huang <hjc@rock-chips.com>,
- "=?UTF-8?q?Heiko=20St=C3=BCbner?=" <heiko@sntech.de>, Andy Yan
- <andy.yan@rock-chips.com>, Maarten Lankhorst
- <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>,
- Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>,
- Daniel Vetter <daniel@ffwll.ch>
+To: dri-devel@lists.freedesktop.org
 Cc: linux-arm-kernel@lists.infradead.org,
  linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Jonas
  Karlman <jonas@kwiboo.se>
-Subject: [PATCH 13/13] drm/rockchip: Load crtc devices in preferred order
-Date: Sat, 15 Jun 2024 17:04:04 +0000
-Message-ID: <20240615170417.3134517-14-jonas@kwiboo.se>
+Subject: [PATCH 00/13] rockchip: Enable 4K@60Hz mode on RK3228, RK3328, RK3399 and RK356x
+Date: Sat, 15 Jun 2024 17:03:51 +0000
+Message-ID: <20240615170417.3134517-1-jonas@kwiboo.se>
 X-Mailer: git-send-email 2.45.2
-In-Reply-To: <20240615170417.3134517-1-jonas@kwiboo.se>
-References: <20240615170417.3134517-1-jonas@kwiboo.se>
 MIME-Version: 1.0
 X-Report-Abuse-To: abuse@forwardemail.net
 X-Report-Abuse: abuse@forwardemail.net
 X-Complaints-To: abuse@forwardemail.net
 X-ForwardEmail-Version: 0.4.40
 X-ForwardEmail-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
- 167.172.40.54
-X-ForwardEmail-ID: 666dc9d424e0254b398040bd
+ 149.28.215.223
+X-ForwardEmail-ID: 666dc99724e0254b39803fcf
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240615_100612_170798_FC4C62B9 
-X-CRM114-Status: GOOD (  12.93  )
+X-CRM114-CacheID: sfid-20240615_101446_639082_E4C6FE14 
+X-CRM114-Status: UNSURE (   9.19  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,60 +73,70 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On RK3399 the VOPL loaded before VOPB and gets registered as crtc-0.
-However, on RK3288 and PX30 VOPB is gets registered as crtc-0 instead of
-VOPL.
+This prepares and enable use of HDMI2.0 modes, e.g. 4K@60Hz, on RK3228,
+RK3328, RK3399 and RK356x.
 
-With VOPL registered as crtc-0 the kernel kms client is not able to
-enable 4K display modes for console use on RK3399.
+Patch 1-3 fixes some issues to help support use of high-resolution modes.
 
-Load VOPB before VOPL to help kernel kms client make use of 4K display
-modes for console use on RK3399.
+Patch 4 fixes reading of EDID on RK3328 when using a forced mode.
 
-Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
----
- drivers/gpu/drm/rockchip/rockchip_drm_drv.c | 23 +++++++++++++++++++++
- 1 file changed, 23 insertions(+)
+Patch 5-7 adds hdmiphy rate validation in mode_valid so that HDMI2.0
+modes can be enabled on RK3228 and RK3328.
 
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_drv.c b/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
-index ab55d7132550..6492f3caf017 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
-@@ -354,11 +354,34 @@ static void rockchip_drm_match_remove(struct device *dev)
- 		device_link_del(link);
- }
- 
-+/* list of preferred vop devices */
-+static const char *const rockchip_drm_match_preferred[] = {
-+	"rockchip,rk3399-vop-big",
-+	NULL,
-+};
-+
- static struct component_match *rockchip_drm_match_add(struct device *dev)
- {
- 	struct component_match *match = NULL;
-+	struct device_node *port;
- 	int i;
- 
-+	/* add preferred vop device match before adding driver device matches */
-+	for (i = 0; ; i++) {
-+		port = of_parse_phandle(dev->of_node, "ports", i);
-+		if (!port)
-+			break;
-+
-+		if (of_device_is_available(port->parent) &&
-+		    of_device_compatible_match(port->parent,
-+					       rockchip_drm_match_preferred))
-+			drm_of_component_match_add(dev, &match,
-+						   component_compare_of,
-+						   port->parent);
-+
-+		of_node_put(port);
-+	}
-+
- 	for (i = 0; i < num_rockchip_sub_drivers; i++) {
- 		struct platform_driver *drv = rockchip_sub_drivers[i];
- 		struct device *p = NULL, *d;
+Patch 8-11 modify phy, current and mpll tables to match what ChromeOS
+and vendor kernel use. These patches originate from old ChromeOS and
+vendor kernels and have successfully been used in LibreELEC distro for
+the past few years.
+
+Patch 12 enables use of HDMI2.0 modes on RK3399 and RK356x.
+
+Patch 13 help fix use of console at 4K resolution on RK3399.
+
+This series may not fully depend on but was only tested together with
+the series "drm: bridge: dw_hdmi: Misc enable/disable, CEC and EDID
+cleanup" at [1].
+
+I have tested 4K modes on following devices:
+- Asus TinkerBoard (RK3288)
+- Pine64 Rock64 (RK3328)
+- Radxa ROCK Pi 4 (RK3399)
+- Radxa ROCK 3A (RK3568)
+
+A copy of this series can also be found at [2].
+
+[1] https://patchwork.freedesktop.org/series/134727/
+[2] https://github.com/Kwiboo/linux-rockchip/commits/next-20240531-rk-dw-hdmi-v1/
+
+Alex Bee (1):
+  drm/rockchip: vop: Allow 4096px width scaling
+
+Douglas Anderson (2):
+  drm/rockchip: dw_hdmi: Set cur_ctr to 0 always
+  drm/rockchip: dw_hdmi: Use auto-generated tables
+
+Jonas Karlman (8):
+  arm64: dts: rockchip: Increase VOP clk rate on RK3328
+  clk: rockchip: Set parent rate for DCLK_VOP clock on RK3228
+  drm/rockchip: dw_hdmi: Fix reading EDID when using a forced mode
+  drm/rockchip: dw_hdmi: Allow High TMDS Bit Rates
+  drm/rockchip: dw_hdmi: Add max_tmds_clock validation
+  drm/rockchip: dw_hdmi: Filter modes based on hdmiphy_clk
+  drm/rockchip: dw_hdmi: Enable 4K@60Hz mode on RK3399 and RK356x
+  drm/rockchip: Load crtc devices in preferred order
+
+Nickey Yang (1):
+  drm/rockchip: dw_hdmi: Add phy_config for 594Mhz pixel clock
+
+Yakir Yang (1):
+  drm/rockchip: dw_hdmi: Adjust cklvl & txlvl for RF/EMI
+
+ arch/arm64/boot/dts/rockchip/rk3328.dtsi    |   4 +-
+ drivers/clk/rockchip/clk-rk3228.c           |   2 +-
+ drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c | 173 ++++++++++----------
+ drivers/gpu/drm/rockchip/rockchip_drm_drv.c |  23 +++
+ drivers/gpu/drm/rockchip/rockchip_drm_vop.c |   4 +-
+ 5 files changed, 116 insertions(+), 90 deletions(-)
+
 -- 
 2.45.2
 
