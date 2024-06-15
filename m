@@ -4,38 +4,38 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DB7EBC27C7B
-	for <linux-rockchip@archiver.kernel.org>; Sat, 15 Jun 2024 17:05:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6C651C2BA12
+	for <linux-rockchip@archiver.kernel.org>; Sat, 15 Jun 2024 17:05:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=QDdP6XitnddxkUwpX+uKvq4xBvvXcdp1HoY1ZXCyNMo=; b=bRtf11ujBGlGEd
-	X17n7bbMsm9GITmK77sZZGtekXGUpbEqegHXRatSvp02+sRPPGqu1pAEZUFVvpw+l31QQCsF5yNJd
-	ph/qVHTU5Nwd4JRW5nd9017oMsLFdjYAn33O6fwM76eN6KK63725TnMak92sZR7Znv32Z501oMmrA
-	7VRBQAigtfPqHFRDn3RStXf4I/zlqWrk0U67NOAT/kjxqjB8EKagW5jpf4zGJlwQZUhHl2tKbJb1Q
-	YSy4B7/H3N8TqrWv0wKEXYz/qb/HQNZgr6z9K5VCfoZLfFlMbYovyter1sfMtn8IKPFXGGEvj4Mwy
-	STfCFFZLShMiVYPHs4pg==;
+	List-Owner; bh=xmltZ+izQI2VGMVFqNzZ5u7D6MgzHj3TsdfgYeA6HOI=; b=kvwGajjUk9paqx
+	XJ9JQD+btb8EQhkbuUXJ6ugId+ZCB2Fnc45ZXzW3YFqtA7e46TvFjdrg1ZuK+ZzrNjRIxedAxyHbl
+	Q6JaharH4U/6MqJbeJZmqiIQ+gfDG66qvoLdNQ0nqBgJqrJWGLBan9t5VmwrjrnoMfkxICSpI1djS
+	hlsqn7TOecczTIeaBEYTCxBS9nTx0R80XWjNLHuJbT2mcqhKv+jY6+eeZq2cab4sJGc+hM4usRSP2
+	3nZiwOauZ0/lYC8lz+34r3WilMBCBK7QLu2nUC8fjRzpGU6rIFZe+6BkBrssqhm5gt+St+LzP9+vk
+	5MYqsTKJF2kLOpES4iCw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sIWqe-00000005meZ-2XuO;
-	Sat, 15 Jun 2024 17:05:52 +0000
+	id 1sIWqf-00000005mfg-3VT3;
+	Sat, 15 Jun 2024 17:05:53 +0000
 Received: from smtp.forwardemail.net ([149.28.215.223])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sIWq3-00000005mAl-0q7S
+	id 1sIWq8-00000005mEx-38HL
 	for linux-rockchip@lists.infradead.org;
-	Sat, 15 Jun 2024 17:05:16 +0000
+	Sat, 15 Jun 2024 17:05:22 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
  h=Content-Transfer-Encoding: MIME-Version: References: In-Reply-To:
  Message-ID: Date: Subject: Cc: To: From; q=dns/txt; s=fe-e1b5cab7be;
- t=1718471099; bh=GI0v1s8ba9SK2ZoNJqavRuohwLSEeWbP8DGokxC9tW4=;
- b=RYMWVOAZ5kB+dNdeVN9+EVw4xWPsjtu8LvSzkDFR4POoYVfeoqNw2mgQKa7Ywefjcib06gxbv
- zs/VpXvp7qYu1XiOPwfcYLm+KH6cC0qJ+z93m+g7EvPW5LG/VBoVr8J+7O+sM6iryN0rgvwvxxt
- PyU5etW9Pb+Fbs48XXrKflpRmcL9WW5BxnYrISEHhuZTCXfDiMqxKzPQ4T3pcAMMSqx0F31shJ0
- v8eEQfKN24WkalSiJQiui3G0F5PL1n+wJrJXQOphHRvxUx+ohxcDGOdEdG3AzkOMIrY1wQyJdCP
- nnM/rLk3oCdOD9s1bD/OP3ncsKcI3/LUFSmtoUWfaccg==
+ t=1718471104; bh=edw+pFynRH27QoyX9zOhxiRHTMZh2GXeD3zDbH9aM0s=;
+ b=kgwOB6T9ULzOyWUr9ARhoa84VHR8MpP83DdZtBKx7BfN70hCPCQoh6eKUUhtLaDgxmSiWxrNS
+ mYMQeiPPyuYUlA9Gx9Bu+TYqJCNO60ThAs6sSNkbp/bL3/c3VQm6QCnNmcWHYGc0LKxzVDesT+l
+ jaekM0HuQ0zlKSmOqsDobkxiUkz2GkIlRngHoQy7HNmUdMt69Mgc9lMLRinQwbaIZS4ecpnTfTO
+ e+H4/8XTXH6R6BF3jAqaWsH99x1/DfxzZALnFqL07VOtZepSfkp27prRW6EnnWtgMj4h00yr1/k
+ Q6xtONoLwuF3fVdChuopAvi+jGBGkM5ekYoE2ZNwTu+w==
 From: Jonas Karlman <jonas@kwiboo.se>
 To: dri-devel@lists.freedesktop.org, Sandy Huang <hjc@rock-chips.com>,
  "=?UTF-8?q?Heiko=20St=C3=BCbner?=" <heiko@sntech.de>, Andy Yan
@@ -45,10 +45,10 @@ To: dri-devel@lists.freedesktop.org, Sandy Huang <hjc@rock-chips.com>,
  Daniel Vetter <daniel@ffwll.ch>
 Cc: linux-arm-kernel@lists.infradead.org,
  linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Jonas
- Karlman <jonas@kwiboo.se>
-Subject: [PATCH 07/13] drm/rockchip: dw_hdmi: Filter modes based on hdmiphy_clk
-Date: Sat, 15 Jun 2024 17:03:58 +0000
-Message-ID: <20240615170417.3134517-8-jonas@kwiboo.se>
+ Karlman <jonas@kwiboo.se>, Yakir Yang <ykk@rock-chips.com>
+Subject: [PATCH 08/13] drm/rockchip: dw_hdmi: Adjust cklvl & txlvl for RF/EMI
+Date: Sat, 15 Jun 2024 17:03:59 +0000
+Message-ID: <20240615170417.3134517-9-jonas@kwiboo.se>
 X-Mailer: git-send-email 2.45.2
 In-Reply-To: <20240615170417.3134517-1-jonas@kwiboo.se>
 References: <20240615170417.3134517-1-jonas@kwiboo.se>
@@ -59,10 +59,10 @@ X-Complaints-To: abuse@forwardemail.net
 X-ForwardEmail-Version: 0.4.40
 X-ForwardEmail-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
  149.28.215.223
-X-ForwardEmail-ID: 666dc9b824e0254b39804051
+X-ForwardEmail-ID: 666dc9bc24e0254b39804063
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240615_100515_319570_B2E62F21 
-X-CRM114-Status: GOOD (  16.55  )
+X-CRM114-CacheID: sfid-20240615_100520_909647_FCFC05CE 
+X-CRM114-Status: GOOD (  12.79  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,92 +79,56 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-RK3228 and RK3328 clock rate is being validated against a mpll config
-table intended for Synopsys phy, and not the inno-hdmi-phy used.
+From: Yakir Yang <ykk@rock-chips.com>
 
-Instead get a reference to the hdmiphy clk and validate rates against
-it to enable use of HDMI2.0 modes, e.g. 4K@60Hz, on RK3228 and RK3328.
+Dut to the high HDMI signal voltage driver, Mickey have meet
+a serious RF/EMI problem, so we decided to reduce HDMI signal
+voltage to a proper value.
 
-For Synopsis phy the max_tmds_clock validation is sufficient.
+The default params for phy is cklvl = 20 & txlvl = 13 (RF/EMI failed)
+  ck: lvl = 13, term=100, vlo = 2.71, vhi=3.14, vswing = 0.43
+  tx: lvl = 20, term=100, vlo = 2.81, vhi=3.16, vswing = 0.35
 
+1. We decided to reduce voltage value to lower, but VSwing still
+keep high, RF/EMI have been improved but still failed.
+   ck: lvl =  6, term=100, vlo = 2.61, vhi=3.11, vswing = 0.50
+   tx: lvl =  6, term=100, vlo = 2.61, vhi=3.11, vswing = 0.50
+
+2. We try to keep voltage value and vswing both lower, then RF/EMI
+test all passed  ;)
+   ck: lvl = 11, term= 66, vlo = 2.68, vhi=3.09, vswing = 0.40
+   tx: lvl = 11, term= 66, vlo = 2.68, vhi=3.09, vswing = 0.40
+When we back to run HDMI different test and single-end test, we see
+different test passed, but signle-end test failed. The oscilloscope
+show that simgle-end clock's VL value is 1.78v (which remind LowLimit
+should not lower then 2.6v).
+
+3. That's to say there are some different between PHY document and
+measure value. And according to experiment 2 results, we need to
+higher clock voltage and lower data voltage, then we can keep RF/EMI
+satisfied and single-end & differen test passed.
+  ck: lvl =  9, term=100, vlo = 2.65, vhi=3.12, vswing = 0.47
+  tx: lvl = 16, term=100, vlo = 2.75, vhi=3.15, vswing = 0.39
+
+Signed-off-by: Yakir Yang <ykk@rock-chips.com>
 Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
 ---
- drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c | 35 ++++++++++-----------
- 1 file changed, 17 insertions(+), 18 deletions(-)
+ drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
-index 75b5d63ec570..4acf73b5692a 100644
+index 4acf73b5692a..205cfe02079f 100644
 --- a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
 +++ b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
-@@ -76,6 +76,7 @@ struct rockchip_hdmi {
- 	struct rockchip_encoder encoder;
- 	const struct rockchip_hdmi_chip_data *chip_data;
- 	const struct dw_hdmi_plat_data *plat_data;
-+	struct clk *hdmiphy_clk;
- 	struct clk *ref_clk;
- 	struct clk *grf_clk;
- 	struct dw_hdmi *hdmi;
-@@ -256,10 +257,7 @@ dw_hdmi_rockchip_mode_valid(struct dw_hdmi *dw_hdmi, void *data,
- 			    const struct drm_display_mode *mode)
- {
- 	struct rockchip_hdmi *hdmi = data;
--	const struct dw_hdmi_mpll_config *mpll_cfg = rockchip_mpll_cfg;
- 	int pclk = mode->clock * 1000;
--	bool exact_match = hdmi->plat_data->phy_force_vendor;
--	int i;
- 
- 	if (hdmi->chip_data->max_tmds_clock &&
- 	    mode->clock > hdmi->chip_data->max_tmds_clock)
-@@ -268,26 +266,18 @@ dw_hdmi_rockchip_mode_valid(struct dw_hdmi *dw_hdmi, void *data,
- 	if (hdmi->ref_clk) {
- 		int rpclk = clk_round_rate(hdmi->ref_clk, pclk);
- 
--		if (abs(rpclk - pclk) > pclk / 1000)
-+		if (rpclk < 0 || abs(rpclk - pclk) > pclk / 1000)
- 			return MODE_NOCLOCK;
- 	}
- 
--	for (i = 0; mpll_cfg[i].mpixelclock != (~0UL); i++) {
--		/*
--		 * For vendor specific phys force an exact match of the pixelclock
--		 * to preserve the original behaviour of the driver.
--		 */
--		if (exact_match && pclk == mpll_cfg[i].mpixelclock)
--			return MODE_OK;
--		/*
--		 * The Synopsys phy can work with pixelclocks up to the value given
--		 * in the corresponding mpll_cfg entry.
--		 */
--		if (!exact_match && pclk <= mpll_cfg[i].mpixelclock)
--			return MODE_OK;
-+	if (hdmi->hdmiphy_clk) {
-+		int rpclk = clk_round_rate(hdmi->hdmiphy_clk, pclk);
-+
-+		if (rpclk < 0 || abs(rpclk - pclk) > pclk / 1000)
-+			return MODE_NOCLOCK;
- 	}
- 
--	return MODE_BAD;
-+	return MODE_OK;
- }
- 
- static void dw_hdmi_rockchip_encoder_disable(struct drm_encoder *encoder)
-@@ -638,6 +628,15 @@ static int dw_hdmi_rockchip_bind(struct device *dev, struct device *master,
- 		goto err_clk;
- 	}
- 
-+	if (hdmi->phy) {
-+		struct of_phandle_args clkspec;
-+
-+		clkspec.np = hdmi->phy->dev.of_node;
-+		hdmi->hdmiphy_clk = of_clk_get_from_provider(&clkspec);
-+		if (IS_ERR(hdmi->hdmiphy_clk))
-+			hdmi->hdmiphy_clk = NULL;
-+	}
-+
- 	if (hdmi->chip_data == &rk3568_chip_data) {
- 		regmap_write(hdmi->regmap, RK3568_GRF_VO_CON1,
- 			     HIWORD_UPDATE(RK3568_HDMI_SDAIN_MSK |
+@@ -204,7 +204,7 @@ static const struct dw_hdmi_curr_ctrl rockchip_cur_ctr[] = {
+ static const struct dw_hdmi_phy_config rockchip_phy_config[] = {
+ 	/*pixelclk   symbol   term   vlev*/
+ 	{ 74250000,  0x8009, 0x0004, 0x0272},
+-	{ 148500000, 0x802b, 0x0004, 0x028d},
++	{ 165000000, 0x802b, 0x0004, 0x0209},
+ 	{ 297000000, 0x8039, 0x0005, 0x028d},
+ 	{ ~0UL,	     0x0000, 0x0000, 0x0000}
+ };
 -- 
 2.45.2
 
