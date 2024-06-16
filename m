@@ -4,73 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BBF24C27C77
-	for <linux-rockchip@archiver.kernel.org>; Sun, 16 Jun 2024 09:18:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D93DDC27C6E
+	for <linux-rockchip@archiver.kernel.org>; Sun, 16 Jun 2024 09:48:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=taYqcP321r1FOBoYlJij8ScGeK0eUasBFscOJ/RG6cw=; b=xYyAENq+yC7QPG
-	AfvLCPLbH0HocFYIA172YSaLtDwNse2m+IXVitVrcH7JKCJOKg1ASqp22d0YGi6vZwBsVJI2d/qFQ
-	fZlQg4QAk90W7tH3b1nEQ2tT+jKZL6zrVvlK0+PQTXQStQ9YxiEY6X4ZiXU8oVolQPCsYwd0t5QEG
-	XBSsSlrtVCwke1jexD+25+0YOAqMdQwBnzssSrT79W6yTDIK/F8gcGv8E4Fp5uPDNR++3TOR+h6uI
-	SXrf2VEkwGRY3jlEwNU3YX+YQm6KDILHUeW1GxCYEHUpdcJXGbchJg1tLteCNcpU+CMEv6PHoqjb9
-	IKAoLGqZ3fpOjezSwe/A==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=hcJuXWEsz2D1HyDcQeK+oOjj1L0NByCHU4fNxdiwO54=; b=gRz5GaNKYmoA6CQNmeBKDVs2O0
+	chGEu1nYINQD/VXzh0S5GWB/vOpQ8Tkx688sacj6QC0UOxGuorJES9EzTw9npspER/nX6C1FlY7Wl
+	w+/puEHABA5pigihd7DrZbv60FaHjNYaW5kQce25h16uAuEXryXxrWMd2xuSwgvvyy+FI5MHUtX9z
+	9saMu3dDap7JMATENUa8vFcklEh2NWTSTLF01tHS/Sv+6t4sbYc8eI13XnhLOqh8q6HiHn/EpEucN
+	MomypzJqOnJ+MujGqa7A8dOcCv4DBTcx/LiZDw0nPFiMpd6+xg4qJZ+BHfY0v3di5WQJ4QdEMqfiw
+	t7orEcYw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sIm27-00000007E4P-2zkm;
-	Sun, 16 Jun 2024 09:18:43 +0000
-Received: from smtp.forwardemail.net ([167.172.40.54])
+	id 1sImUV-00000007Gdy-3ZK0;
+	Sun, 16 Jun 2024 09:48:03 +0000
+Received: from out-181.mta0.migadu.com ([2001:41d0:1004:224b::b5])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sIm23-00000007E2f-36qk
+	id 1sImUS-00000007Gcx-2AXC
 	for linux-rockchip@lists.infradead.org;
-	Sun, 16 Jun 2024 09:18:42 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
- h=Content-Transfer-Encoding: Content-Type: In-Reply-To: From: References:
- Cc: To: Subject: MIME-Version: Date: Message-ID; q=dns/txt;
- s=fe-e1b5cab7be; t=1718529464;
- bh=quuud/7bt9D8sRiX3GKp+NZMy2JyHR57uIHev3qjeFs=;
- b=Ltf3uKcDhpLdLINdUS93ApD3HN3oob/51s/ZiX/u/dVjy5WTI9cCiwS8+OFbKZkopaRX/IBXJ
- 1lq3I1Z3kt4aLFg4NwUXDDLdNVhw8TXtYNtAQiTSElKV5uv565YcJoHEuf4RuSH53VbK5n0Vkov
- nD6vJXQW7KdJ6BhHDtCf2+DCjyN/x9yUH/2Xkr1RiXB6g81hs+4aOGVLjjdgSSBFDirxgCQzH1r
- ULoE1g8DQUFbLmGmttQbtsxsoVsEB/eCT4+HotfxIk4eTfG2qgASjEynF+Xeg9V0zuLVKa8TeOW
- jgiuzmCDClcKLm+QCVxNq39N/2ZWmBhOG5F5iNOsXCJw==
-Message-ID: <f4c140a3-2b11-405c-bfd4-32e50180f6b7@kwiboo.se>
-Date: Sun, 16 Jun 2024 11:17:31 +0200
+	Sun, 16 Jun 2024 09:48:02 +0000
+X-Envelope-To: ezequiel@vanguardiasur.com.ar
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow.org; s=key1;
+	t=1718531276;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=YsGDxw7euO03Xurgk7SCoMe6i8m3qHGwgfyQyq8DqHE=;
+	b=yDLjLqOV0BEutjvYcq1hJfA3ZHO0eUrH9kF7nNO3il/VF/h/bMWxWPZkG2RcqEFqPV76Uz
+	qI2qJa18CdVdYxsM6pVcVIAbep4Wly2Wmz7lkgyKuls0/EiRtvJe8AnvF38iprjQoK5Y5H
+	r8sMBQncCQYuLCRVlqW8C4o8qeh2VReRFOnBZqvAZskeZLEnS874LfH1YaO1gNS6kadDYp
+	B4XWXB1Q6VmyGZ8E0i9yDzAyzt6JWEU2/JMnM5tQM2mVJN5Bb8W4Hqjnfi5YRPWsgCOJtg
+	hGCpMuLl/tL0aa34HYB7BRA43KtSFNaqQsbi4AdWJImIha9r/WAPK0RyGTHLag==
+X-Envelope-To: mchehab@kernel.org
+X-Envelope-To: hverkuil-cisco@xs4all.nl
+X-Envelope-To: linux-rockchip@lists.infradead.org
+X-Envelope-To: jonas@kwiboo.se
+X-Envelope-To: andyshrk@163.com
+X-Envelope-To: knaerzche@gmail.com
+X-Envelope-To: nicolas.dufresne@collabora.com
+X-Envelope-To: benjamin.gaignard@collabora.com
+X-Envelope-To: sebastian.fricke@collabora.com
+X-Envelope-To: chris.obbard@collabora.com
+X-Envelope-To: linux-media@vger.kernel.org
+X-Envelope-To: linux-rockchip@lists.infradead.org
+X-Envelope-To: linux-staging@lists.linux.dev
+X-Envelope-To: linux-kernel@vger.kernel.org
+X-Envelope-To: jonas@kwiboo.se
+X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
+From: Diederik de Haas <didi.debian@cknow.org>
+To: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>, linux-rockchip@lists.infradead.org,
+ Jonas Karlman <jonas@kwiboo.se>, Andy Yan <andyshrk@163.com>
+Cc: Alex Bee <knaerzche@gmail.com>,
+ Nicolas Dufresne <nicolas.dufresne@collabora.com>,
+ Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+ Sebastian Fricke <sebastian.fricke@collabora.com>,
+ Christopher Obbard <chris.obbard@collabora.com>, linux-media@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, linux-staging@lists.linux.dev,
+ linux-kernel@vger.kernel.org, Jonas Karlman <jonas@kwiboo.se>
+Subject: Re: [PATCH v4 00/11] media: rkvdec: Add H.264 High 10 and 4:2:2 profile
+ support
+Date: Sun, 16 Jun 2024 11:47:43 +0200
+Message-ID: <122755518.lCnTqr06ca@bagend>
+Organization: Connecting Knowledge
+In-Reply-To: <20231105165521.3592037-1-jonas@kwiboo.se>
+References: <20231105165521.3592037-1-jonas@kwiboo.se>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 3/3] arm64: dts: rockchip: Add rkvdec2 Video Decoder on
- rk3588(s)
-To: Detlev Casanova <detlev.casanova@collabora.com>
-Cc: linux-kernel@vger.kernel.org, Mauro Carvalho Chehab
- <mchehab@kernel.org>, Rob Herring <robh@kernel.org>, Krzysztof Kozlowski
- <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner
- <heiko@sntech.de>, "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>,
- Sebastian Reichel <sebastian.reichel@collabora.com>, Dragan Simic
- <dsimic@manjaro.org>, Alexey Charkov <alchark@gmail.com>, Cristian
- Ciocaltea <cristian.ciocaltea@collabora.com>, Diederik de Haas
- <didi.debian@cknow.org>, Andy Yan <andy.yan@rock-chips.com>,
- linux-media@vger.kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-staging@lists.linux.dev
-References: <20240615015734.1612108-1-detlev.casanova@collabora.com>
- <20240615015734.1612108-4-detlev.casanova@collabora.com>
- <944c4296-8dd2-4ffd-b430-1839ff3a3ed2@kwiboo.se> <3666279.iZASKD2KPV@arisu>
-Content-Language: en-US
-From: Jonas Karlman <jonas@kwiboo.se>
-In-Reply-To: <3666279.iZASKD2KPV@arisu>
-X-Report-Abuse-To: abuse@forwardemail.net
-X-Report-Abuse: abuse@forwardemail.net
-X-Complaints-To: abuse@forwardemail.net
-X-ForwardEmail-Version: 0.4.40
-X-ForwardEmail-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
- 167.172.40.54
-X-ForwardEmail-ID: 666eadb2b23880544d1fe7f5
+X-Migadu-Flow: FLOW_OUT
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240616_021840_076815_BFDCAC85 
-X-CRM114-Status: GOOD (  26.74  )
+X-CRM114-CacheID: sfid-20240616_024800_934925_3C54951E 
+X-CRM114-Status: GOOD (  25.06  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,197 +90,149 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============1467647148901217525=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Detlev,
+--===============1467647148901217525==
+Content-Type: multipart/signed; boundary="nextPart2306946.yOONvtlcC0";
+ micalg="pgp-sha256"; protocol="application/pgp-signature"
 
-On 2024-06-15 21:55, Detlev Casanova wrote:
-> On Saturday, June 15, 2024 4:25:27 A.M. EDT Jonas Karlman wrote:
->> Hi Detlev,
->>
->> On 2024-06-15 03:56, Detlev Casanova wrote:
->>> Add the rkvdec2 Video Decoder to the RK3588s devicetree.
->>>
->>> Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
->>> ---
->>>
->>>  .../boot/dts/rockchip/rk3588-rock-5b.dts      |  4 ++++
->>>  .../boot/dts/rockchip/rk3588s-orangepi-5.dts  |  4 ++++
->>>  arch/arm64/boot/dts/rockchip/rk3588s.dtsi     | 19 +++++++++++++++++++
->>>  3 files changed, 27 insertions(+)
->>>
->>> diff --git a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
->>> b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts index
->>> c551b676860c..965322c24a65 100644
->>> --- a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
->>> +++ b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
->>> @@ -503,6 +503,10 @@ &pwm1 {
->>>
->>>  	status = "okay";
->>>  
->>>  };
->>>
->>> +&rkvdec0 {
->>> +	status = "okay";
->>> +};
->>
->> Enable of rkvdec0 should probably be split out from the patch that adds
->> the rkvdec0 node to soc dtsi.
+--nextPart2306946.yOONvtlcC0
+Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain; charset="us-ascii"; protected-headers="v1"
+From: Diederik de Haas <didi.debian@cknow.org>
+Date: Sun, 16 Jun 2024 11:47:43 +0200
+Message-ID: <122755518.lCnTqr06ca@bagend>
+Organization: Connecting Knowledge
+In-Reply-To: <20231105165521.3592037-1-jonas@kwiboo.se>
+References: <20231105165521.3592037-1-jonas@kwiboo.se>
+MIME-Version: 1.0
+
+On Sunday, 5 November 2023 17:54:59 CEST Jonas Karlman wrote:
+> This is a revival of a 3 year old series [1] now that NV15/NV20/NV30 support
+> for display driver have landed in mainline tree.
 > 
-> Ack
+> This series adds H.264 High 10 and 4:2:2 profile support to the Rockchip
+> Video Decoder driver.
 > 
->> Also why is rkvdec0 only enabled on rock-5b and orangepi-5?
+> Patch 1 adds helpers for calculating plane bytesperline and sizeimage.
+> Patch 2 adds two new pixelformats for semi-planer 10-bit 4:2:0/4:2:2 YUV.
 > 
-> I only could test on those two but I can enable it on all rk3588 devices.
-
-Because the decoder is an integrated part of the SoC the default should
-probably be that the IP is enabled, i.e. no status prop required for the
-vdec and related mmu nodes in rk3588s.dtsi.
-
+> Patch 3 change to use bytesperline and buffer height to configure strides.
+> Patch 4 change to use values from SPS/PPS control to configure the HW.
+> Patch 5 remove an unnecessary call to validate sps at streaming start.
 > 
->>> +
->>>
->>>  &saradc {
->>>  
->>>  	vref-supply = <&avcc_1v8_s0>;
->>>  	status = "okay";
->>>
->>> diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5.dts
->>> b/arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5.dts index
->>> feea6b20a6bf..2828fb4c182a 100644
->>> --- a/arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5.dts
->>> +++ b/arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5.dts
->>> @@ -321,6 +321,10 @@ typec5v_pwren: typec5v-pwren {
->>>
->>>  	};
->>>  
->>>  };
->>>
->>> +&rkvdec0 {
->>> +	status = "okay";
->>> +};
->>> +
->>>
->>>  &saradc {
->>>  
->>>  	vref-supply = <&avcc_1v8_s0>;
->>>  	status = "okay";
->>>
->>> diff --git a/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
->>> b/arch/arm64/boot/dts/rockchip/rk3588s.dtsi index
->>> 0fecbf46e127..09672636dcea 100644
->>> --- a/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
->>> +++ b/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
->>> @@ -3034,6 +3034,9 @@ system_sram2: sram@ff001000 {
->>>
->>>  		ranges = <0x0 0x0 0xff001000 0xef000>;
->>>  		#address-cells = <1>;
->>>  		#size-cells = <1>;
->>
->> Blank line is missing.
->>
->>> +		rkvdec0_sram: rkvdec-sram@0 {
->>> +			reg = <0x0 0x78000>;
->>> +		};
->>>
->>>  	};
->>>  	
->>>  	pinctrl: pinctrl {
->>>
->>> @@ -3103,6 +3106,22 @@ gpio4: gpio@fec50000 {
->>>
->>>  			#interrupt-cells = <2>;
->>>  		
->>>  		};
->>>  	
->>>  	};
->>>
->>> +
->>> +	rkvdec0: video-decoder@fdc38100 {
-
-To match prior generations the symbol should probably be called vdec0.
-
->>> +		compatible = "rockchip,rk3588-vdec2";
->>> +		reg = <0x0 0xfdc38100 0x0 0x500>;
->>> +		interrupts = <GIC_SPI 95 IRQ_TYPE_LEVEL_HIGH 0>;
->>> +		clocks = <&cru ACLK_RKVDEC0>, <&cru HCLK_RKVDEC0>, 
-> <&cru
->>> CLK_RKVDEC0_CORE>, +			 <&cru 
-> CLK_RKVDEC0_CA>, <&cru
->>> CLK_RKVDEC0_HEVC_CA>;
->>> +		clock-names = "axi", "ahb", "core",
->>> +			      "cabac", "hevc_cabac";
->>> +		assigned-clocks = <&cru ACLK_RKVDEC0>, <&cru 
-> CLK_RKVDEC0_CORE>,
->>> +				  <&cru CLK_RKVDEC0_CA>, <&cru 
-> CLK_RKVDEC0_HEVC_CA>;
->>> +		assigned-clock-rates = <800000000>, <600000000>,
->>> +				       <600000000>, <1000000000>;
->>> +		power-domains = <&power RK3588_PD_RKVDEC0>;
->>
->> iommus and resets should probably be added.
->>
->>> +		status = "disabled";
->>> +	};
->>
->> The iommu node for rkvdec0_mmu seem to be missing, is it not required to
->> be able to use memory >4GiB as decoding buffers?
+> Patch 6-10 refactor code to support filtering of CAPUTRE formats based
+> on the image format returned from a get_image_fmt ops.
 > 
-> I need to check if the current rockchip iommu driver will work for this 
-> decoder. I remember that the iommu code for AV1 was a bit different, not sure 
-> about this rkvdec.
-
-The device tree should describe the HW not what drivers are capable of.
-
-If there are substantial differences in iommu IP a new compatible should
-probably be added for that iommu.
-
+> Patch 11 adds final bits to support H.264 High 10 and 4:2:2 profiles.
 > 
->> I would also consider adding the rkvdec1 node(s), if I am understanding
->> correctly they can both be used in a cluster or completely independent.
+> Tested on a ROCK Pi 4 (RK3399) and Rock64 (RK3328):
 > 
-> They can be used independently, yes. I'll add rkvdec1 for rk3588 devices 
-> (rk3588s only has  1 core)
-
-I do not think that is true, the rk3588s variant should also include two
-decoder and two encoder cores.
-
-However, the rk3582/rk3583 variants (rk3588s with one or more bad cores)
-may have 0-2 cores working for the decoder and/or encoder.
-
-E.g on my rk3582 boards I have following different ip-state in otp:
-- 1 bad cpu core (ip-state: 10 00 00)
-- 1 bad decoder core (ip-state: 00 80 00)
-- 1 bad encoder core (ip-state: 00 00 04)
-
-The general idea is that bootloader will disable or delete the offending
-nodes in the device tree to correctly describe the HW for the OS.
-
-Regards,
-Jonas
-
+>   v4l2-compliance 1.24.1, 64 bits, 64-bit time_t
+>   ...
+>   Total for rkvdec device /dev/video1: 46, Succeeded: 46, Failed: 0,
+> Warnings: 0
 > 
-> Regards,
-> Detlev.
+>   Running test suite JVT-FR-EXT with decoder FFmpeg-H.264-V4L2-request
+>   ...
+>   Ran 65/69 tests successfully
 > 
->> Also on RK3582/RK3583 one (or both) of the decoder cores may be marked
->> as bad, yet the remaining one can still be used independently. The idea
->> will be that bootloader fixup the DT and disabled/delete-node the bad
->> core(s).
->>
->> Regards,
->> Jonas
->>
->>>  };
->>>  
->>>  #include "rk3588s-pinctrl.dtsi"
+>   Running test suite JVT-AVC_V1 with decoder FFmpeg-H.264-V4L2-request
+>   ...
+>   Ran 127/135 tests successfully
 > 
+> Before this series:
+> 
+>   Running test suite JVT-FR-EXT with decoder FFmpeg-H.264-V4L2-request
+>   ...
+>   Ran 44/69 tests successfully
+> 
+> ...
+> 
+> Following commits adds support for NV15/NV20/NV30 to VOP driver:
+> 728c15b4b5f3 ("drm/fourcc: Add NV20 and NV30 YUV formats")
+> d4b384228562 ("drm/rockchip: vop: Add NV15, NV20 and NV30 support")
+> 
+> To fully runtime test this series you may need above drm commits and ffmpeg
+> patches from [2], this series and drm patches is also available at [3].
+> 
+> [1]
+> https://lore.kernel.org/linux-media/20200706215430.22859-1-jonas@kwiboo.se/
+> [2] https://github.com/Kwiboo/FFmpeg/commits/v4l2-request-n6.1-dev/ [3]
+> https://github.com/Kwiboo/linux-rockchip/commits/linuxtv-rkvdec-high-10-v4/
+> [4] https://gist.github.com/Kwiboo/f4ac15576b2c72887ae2bc5d58b5c865 [5]
+> https://gist.github.com/Kwiboo/459a1c8f1dcb56e45dc7a7a29cc28adf
 
+Reviving this old thread now that rkvdec2 'stuff' emerged.
+I have (actually) done quite some tests with this (and "media: rkvdec: Add 
+HEVC backend" patch set) and they have been part of my kernel builds ever 
+since.
+I _think_, but don't know, that is relevant for Andy's question:
+
+On zondag 16 juni 2024 08:58:20 CEST Andy Yan <andyshrk@163.com> wrote:
+> How can I test these patches? Do they require any additional userspace
+> patches?
+
+I have the same question and I think you'd need this and the HEVC patch set 
+and then also patch FFmpeg and then it should enable HW acceleration.
+So my question boils down to: with the rkvdec2 patch set, should V4L2-requests 
+now also work with rkvdec, so not just Hantro anymore?
+
+BTW: the libdrm commits have been merged upstream quite some time ago, so if 
+you have a recent version of that, you don't need to patch that.
+If you use FFmpeg 7.0, then Jonas has a branch for that too (haven't tried it 
+yet though).
+
+FWIW: my test results were a bit mixed. I didn't post them before as I don't 
+fully/really understand this 'video stuff', and I didn't want you all to suffer 
+from what was likely a PEBKAC issue.
+
+On my PineTab2 (rk3566) I had some h.264 videos HW accelerated, but not all. 
+My guess is that it's related to the resolution. 1920x1080 worked, while it 
+didn't work with a 1280x640 video. The video still played, just not HW 
+accelerated. IOW: improvements in some and otherwise it was just rendered by 
+the CPU (I think), just like before.
+
+On my Rock64 I got a pink tint with all videos, like described here:
+https://github.com/mpv-player/mpv/issues/12968
+IIUC, that's actually a problem in the lima driver?
+
+Cheers,
+  Diederik
+--nextPart2306946.yOONvtlcC0
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: This is a digitally signed message part.
+Content-Transfer-Encoding: 7Bit
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYIAB0WIQT1sUPBYsyGmi4usy/XblvOeH7bbgUCZm60vwAKCRDXblvOeH7b
+bunzAQDtoUoO69YOCfIwQy1BpyubGMFwwb7YvB1mYGizpNzaAwD8Cw1NbPvKRJrd
+AlNeNCuUbZbkJRIj5vHMteqOVa7VhwU=
+=6pBz
+-----END PGP SIGNATURE-----
+
+--nextPart2306946.yOONvtlcC0--
+
+
+
+
+
+--===============1467647148901217525==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============1467647148901217525==--
+
+
+
+
