@@ -4,74 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DD6FAC27C79
-	for <linux-rockchip@archiver.kernel.org>; Mon, 17 Jun 2024 18:29:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 55AA3C2BA1A
+	for <linux-rockchip@archiver.kernel.org>; Mon, 17 Jun 2024 18:29:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
-	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=orMfe54UZHfQ/oTIsbFrSFCmFAhnAllBUkyDaSythMM=; b=1oNqWuXy35sHXD
-	YqXSZ0HYjtE5yEqlcgQCrK4HCELIi0DfO/0GovtIPHTXmvq0g78R9gie+ONAEFVkkNdz9wtQq3P5p
-	sj6M68qSlqhCc7d6kL1zF45Zy6VNZ1zdeQBC7qV6fleItQY9p3L4R1bdD/jULCquR2bKvK4Hprqm5
-	Ux5Yy6XpaPra/geqhW2DllE6UxmcyQtq1YALhhExbXTGIy2plaZ1dT2sqHAFo+iMH4IA48J7ImNDK
-	C+xo1sFYPacqSD42BFlD3VuMrCzCtoFbRHt2eTC+x2Tnad7JeLZ6Yw8cn2vaCc6fwcFbeHVzoih/X
-	mz9uGl5U64oppbP8ZRAw==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
+	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=V2D0sfXo14WBHkyJgg6lemvLW7XlmDwtnd9Z0WSUCfQ=; b=4NTAYAJPMAjS74
+	ozQbcBOSuuSFIhBvoPbmQP5RIBv9chHhc4kWMLHUxCO4Mpzu42uWzbnwbYUOKdEfqnsg95rttD+nq
+	N/gH2xDXoPJnKpK9p1XK+ZrohLxSaBPcyaYmjrbeVu9ccR559uCYwsFs5JCateCrWBOBnb5MPeLFC
+	hSZSCO17fN4WKyfAJabIZ6ZyOk44ZNuBJqDGNDSDLQGZhrSkS/DmoDXHuloJUiPvWRzTCmYfeNG3r
+	YgYueiVxs7I9y4rF7Lkb5ajYRQjzBUf61FPBml5uASPv9OAkpfF5NDM3+easN5rsWC/XTfxn4hpSj
+	hiLe/ZbIyREjoANdXqYg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sJH6k-0000000CAtc-220V;
-	Mon, 17 Jun 2024 18:29:34 +0000
-Received: from mail-ej1-x62a.google.com ([2a00:1450:4864:20::62a])
+	id 1sJH6q-0000000CAwJ-22Na;
+	Mon, 17 Jun 2024 18:29:40 +0000
+Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sJH6c-0000000CArj-0nk2;
-	Mon, 17 Jun 2024 18:29:31 +0000
-Received: by mail-ej1-x62a.google.com with SMTP id a640c23a62f3a-a6f1da33826so640951266b.0;
-        Mon, 17 Jun 2024 11:29:25 -0700 (PDT)
+	id 1sJH6f-0000000CAsA-2c6N;
+	Mon, 17 Jun 2024 18:29:34 +0000
+Received: by mail-ed1-x534.google.com with SMTP id 4fb4d7f45d1cf-57c714a1e24so5259908a12.2;
+        Mon, 17 Jun 2024 11:29:29 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1718648964; x=1719253764; darn=lists.infradead.org;
-        h=cc:to:content-transfer-encoding:mime-version:message-id:date
-         :subject:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=8q3oJJYJeDsZ6fkX48D57T9FGaelorV2PIDQFy/zp9s=;
-        b=Pg7/uKc3hg9uicE8QiC+4rpyJJyi/NBEn2A/m+pnJMIYdS6VDl94ahk+XIqwo+7LVz
-         2Nb6C18XyrrEgWlZEnD7t06t4uLZdFE1xl/EKg40R5vwxCO2L9B+xa9RN+67dnGhkuv5
-         5B75h0eNnqVS4UsZ0pxh2jMmK9d2mQyoOzaTcnbhhpLBhzynotETjRIKreWc/Gd+f22N
-         vywbt7hhzgxxr9WUdzkjsrW8qoo+squKNy4OBi2kdrLSKDK76Zi7+yC33V4HTK1JKRGx
-         2SJUlGFVWMHYUDauzR8/qBXcgEOX/1+z2tgAXnEwTmsXI8PvuGoUxWW2dOyNqlRI6Dkv
-         Aixw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1718648964; x=1719253764;
-        h=cc:to:content-transfer-encoding:mime-version:message-id:date
-         :subject:from:x-gm-message-state:from:to:cc:subject:date:message-id
+        d=gmail.com; s=20230601; t=1718648968; x=1719253768; darn=lists.infradead.org;
+        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=8q3oJJYJeDsZ6fkX48D57T9FGaelorV2PIDQFy/zp9s=;
-        b=EEQhHoU+XMv/jXYS5sBACBnQfmkF5tnc+2AefgTrWCwl8EEfOPnA3efw9sNuuKJYQQ
-         4eeEzfbnzMokgyOcLYB4zRwag4v79PLRKM8nGToyAQ3FH0AsDUyrsAzEV3k01CpIoTKt
-         bqUHXXrzHIpAa5rd2DjcIojSNQ7jwZpEFrOZGzatUYwijyYD9zeIBSWnJk7uMiOUlza2
-         aIOysN9Zrc85dO90MZ06M6HtlOum6QdpOc9beKS6vOgrdeAn3uEBso8bVCmeJwehEjzR
-         RZQukgMyH/qXbmHIa//GGVAf0IIijbNnJLbwGEgh/WZ9Kn4uBQQOKUFFXSqVkQLjXxpu
-         k39Q==
-X-Forwarded-Encrypted: i=1; AJvYcCW+FzRhVefVOLXNAb8J+PbOzeSn/ob1ycEp97LsbVPjvKH0s8/o2WBnywk0x6esoPGiMWgK4YmhrzQPJTciMYJDi86zNv1R+t7/q+gzHB2ZneuZjt6JEqy5osGZUKNR1P3OM5ySQ9jfn/URgJDSHdjD+6n2LQNLduc=
-X-Gm-Message-State: AOJu0Ywwn9c1sc+y3AJoyazGGv466CeoEHjVPjmZDCr6/0dr+cCSoOlU
-	4MqJOabcZsTQJ9LkpcqlNAlLKb9D/RWufVEovY49xsP9DPPa+mF/B/kUp9XifOLy2g==
-X-Google-Smtp-Source: AGHT+IGZZrE2bW+5FrRCYR2ZqxaY6uc5IUZIpBu8pTxwSJg1wXzvYHdXgbwlKLrIdXEj94HJFUt5AQ==
-X-Received: by 2002:a17:906:3912:b0:a6f:4b2a:2877 with SMTP id a640c23a62f3a-a6f60d377d1mr917724166b.22.1718648964053;
-        Mon, 17 Jun 2024 11:29:24 -0700 (PDT)
+        bh=2X2WIsak2atiEiHDdvF6RWJsXkV1zq+NhgYFvPOjT68=;
+        b=I4F9oO1BEfh4YnKL/Vk2q1MQ854NPXXxXYUuh81z7qzM6jv4Hj9nxlHV6Ua8i40AcN
+         RCUIjYQ9uYhvfCXAh2vEKHGtJhvftE5bvaLZ+BtVqTyIlD4ozFtqbBWTk6CL82imJMxl
+         HX08KRu/r2bvil5xOeZnR6Qafjth/Q6VIzQO5QSAsJp5jEX4udS+62BtvVO8WrXBD8zi
+         6WdIWU9nMB9+dLfDI66efScT12onuCbx1mxXT7yTYGqH96oEYAgcMwxgCrIrkmB5mkaZ
+         ezfwUIgoiEMNKGZCz1c0ff9NrDxUzPM9+iBYBNoMIZvLC1kfvhB9okWznZqc/SzPCIel
+         4kWw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1718648968; x=1719253768;
+        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+         :mime-version:subject:date:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=2X2WIsak2atiEiHDdvF6RWJsXkV1zq+NhgYFvPOjT68=;
+        b=id+sXu8o4bQ0+T8d84WFB3q8FoWQbH+d+eoq5ybWNF/jT24l/Jid1Xa1gqwqpcrbN+
+         oeDLROAEu00oljUJ6qx791iHVY28re8HXbWyVHL/iKnlmOr46dGzP48BhAUPhenyjzx2
+         /LNud+ps6OZL8BH2bHltv4HrnmLbl+oO9IZZryaLNL2wtPsoSbMEpcfVfIXFIpbG3Cg5
+         b/0cEgtmpddmX3hJ5wtjPew46oG2EupVtvIN4K6bXFD8sh/BGoKaKxSrTlZhvCC0l7Hh
+         kJh0QXUWwDTppTIHTDjvxL2F5UHXJv9gFPiH+lhFZWp7F9991ArrO75rlP8U6Nedx0L2
+         kUrQ==
+X-Forwarded-Encrypted: i=1; AJvYcCUQHggwFPheKCePUq9PPDSBbK5WI8DXOY2tI4csaoJih8ocj3/O2q8xJ3GkZMi57fOlzAZ0LaegGc1GDzH7pS24Oa/NSW41L0JaKFvIjOS2KuN60lpTWJzqwDq8CJZKZRlsoYwAOgp22dpSUgkeiW7/Zuu/jfU45Uo=
+X-Gm-Message-State: AOJu0YyTmul+VKL4/QzbCjgWHH/plWq5y3qxS7bvxiC50pwlfg9O0jrJ
+	CiX7j19+e+QALalj/6fp36Mg5Zp2HwKz6zQ8Irm+oVZGzjpPdJVt
+X-Google-Smtp-Source: AGHT+IEcKf9ojnPn5YIlp3N2ikFO56e3roYuTKmZx16sk9mDhWUzy5UpZZ7PtHOykON1A5MyEIXOeQ==
+X-Received: by 2002:a17:906:6889:b0:a6c:8b01:3f78 with SMTP id a640c23a62f3a-a6f60cf3871mr665133566b.9.1718648967677;
+        Mon, 17 Jun 2024 11:29:27 -0700 (PDT)
 Received: from latitude-fedora.lan ([2001:8f8:183b:6864::d35])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a6f8a6e58bdsm115397666b.187.2024.06.17.11.29.20
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a6f8a6e58bdsm115397666b.187.2024.06.17.11.29.24
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 17 Jun 2024 11:29:23 -0700 (PDT)
+        Mon, 17 Jun 2024 11:29:27 -0700 (PDT)
 From: Alexey Charkov <alchark@gmail.com>
-Subject: [PATCH v5 0/8] RK3588 and Rock 5B dts additions: thermal, OPP and
- fan
-Date: Mon, 17 Jun 2024 22:28:50 +0400
-Message-Id: <20240617-rk-dts-additions-v5-0-c1f5f3267f1e@gmail.com>
+Date: Mon, 17 Jun 2024 22:28:51 +0400
+Subject: [PATCH v5 1/8] arm64: dts: rockchip: add thermal zones information
+ on RK3588
 MIME-Version: 1.0
-X-B4-Tracking: v=1; b=H4sIAGKAcGYC/23NTQrCMBAF4KtI1kaSyV/rynuIizSTalBbSUpRp
- Hd3FETR7uYNb765sxJzioWtF3eW45hK6jsKZrlg4eC7feQJKTMQoIUEzfOR41C4R0wDdWmy6Bo
- DrnJNzejskmObri9yu6N8SGXo8+31YZTP7Rsz/9goueCmcjU4g42y7WZ/9um0Cv2ZPbERvgAlZ
- gAgIFgACDq4Cv8A9QEA6hlAEWB9GyvtlLdK/gL6AxhhZwBNADgpQCG2qMU3ME3TA4j7KNtzAQA
- A
+Message-Id: <20240617-rk-dts-additions-v5-1-c1f5f3267f1e@gmail.com>
+References: <20240617-rk-dts-additions-v5-0-c1f5f3267f1e@gmail.com>
+In-Reply-To: <20240617-rk-dts-additions-v5-0-c1f5f3267f1e@gmail.com>
 To: Rob Herring <robh+dt@kernel.org>, 
  Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
  Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
@@ -82,16 +80,16 @@ Cc: Daniel Lezcano <daniel.lezcano@linaro.org>,
  linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
  Alexey Charkov <alchark@gmail.com>
 X-Mailer: b4 0.13.0
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1718648960; l=6562;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1718648960; l=4812;
  i=alchark@gmail.com; s=20240125; h=from:subject:message-id;
- bh=WMbige49UsQOmc4Mz5m2i0vvhik3vgzfKYhW/ajYTP8=;
- b=bhB+rM748aIfI2h+5Lw1aQRCpp3YKwof7eIKnQgzq/eMJIC3xRlmxAWgQTbMuZFfWenszV626
- unYHXPNIvQ1DN/MUjiC3AywITeCI8RbXuzbKA6psctGcx6Ze5ChCaya
+ bh=RcpwIjmnR3ZB6lo2LEJCkEMEywnrfAp8940slGy+YX8=;
+ b=t0aimbVHoYZS+Tv6Rzg+QZCtIdY2IvOFNcU16ePc3fJvrwMLGRHzh65G5oZ7/UWW3XGtZhs6q
+ xzrMfFXQdCeD94mc8Moc+eLIfTzcOBvkx1I4S7yuqqK37c19baZKRg/
 X-Developer-Key: i=alchark@gmail.com; a=ed25519;
  pk=xRO8VeD3J5jhwe0za0aHt2LDumQr8cm0Ls7Jz3YGimk=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240617_112926_288165_6BFC0AE5 
-X-CRM114-Status: GOOD (  22.73  )
+X-CRM114-CacheID: sfid-20240617_112929_718910_53C7B789 
+X-CRM114-Status: GOOD (  12.44  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,124 +106,191 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This enables thermal monitoring and CPU DVFS on RK3588(s), as well as
-active cooling on Radxa Rock 5B via the provided PWM fan.
+This includes the necessary device tree data to allow thermal
+monitoring on RK3588(s) using the on-chip TSADC device, along with
+trip points for automatic thermal management.
 
-Some RK3588 boards use separate regulators to supply CPUs and their
-respective memory interfaces, so this is handled by coupling those
-regulators in affected boards' device trees to ensure that their
-voltage is adjusted in step.
+Each of the CPU clusters (one for the little cores and two for
+the big cores) get a passive cooling trip point at 85C, which
+will trigger DVFS throttling of the respective cluster upon
+reaching a high temperature condition.
 
-This also enables the built-in thermal sensor (TSADC) for all boards
-that don't currently have it enabled, using the default CRU based
-emergency thermal reset. This default configuration only uses on-SoC
-devices and doesn't rely on any external wiring, thus it should work
-for all devices (tested only on Rock 5B though).
-
-The boards that have TSADC_SHUT signal wired to the PMIC reset line
-can choose to override the default reset logic in favour of GPIO
-driven (PMIC assisted) reset, but in my testing it didn't work on
-Radxa Rock 5B - maybe I'm reading the schematic wrong and it doesn't
-support PMIC assisted reset after all.
-
-Fan control on Rock 5B has been split into two intervals: let it spin
-at the minimum cooling state between 55C and 65C, and then accelerate
-if the system crosses the 65C mark - thanks to Dragan for suggesting.
-This lets some cooling setups with beefier heatsinks and/or larger
-fan fins to stay in the quietest non-zero fan state while still
-gaining potential benefits from the airflow it generates, and
-possibly avoiding noisy speeds altogether for some workloads.
-
-OPPs help actually scale CPU frequencies up and down for both cooling
-and performance - tested on Rock 5B under varied loads. I've dropped
-those OPPs that cause frequency reductions without accompanying decrease
-in CPU voltage, as they don't seem to be adding much benefit in day to
-day use, while the kernel log gets a number of "OPP is inefficient" lines.
-
-Note that this submission doesn't touch the SRAM read margin updates or
-the OPP calibration based on silicon quality which the downstream driver
-does and which were mentioned in [1]. It works as it is (also confirmed by
-Sebastian in his follow-up message [2]), and it is stable in my testing on
-Rock 5B, so it sounds better to merge a simple version first and then
-extend when/if required.
-
-This patch series has been rebased on top of Heiko's recent for-next branch
-with Dragan's patch [3] which rearranges the .dtsi files for per-variant OPPs.
-As a result, it now includes separate CPU OPP tables for RK3588(s) and RK3588j.
-
-GPU OPPs have also been split out to accommodate for the difference in RK3588j.
-
-[1] https://lore.kernel.org/linux-rockchip/CABjd4YzTL=5S7cS8ACNAYVa730WA3iGd5L_wP1Vn9=f83RCORA@mail.gmail.com/
-[2] https://lore.kernel.org/linux-rockchip/pkyne4g2cln27dcdu3jm7bqdqpmd2kwkbguiolmozntjuiajrb@gvq4nupzna4o/
-[3] https://lore.kernel.org/linux-rockchip/9ffedc0e2ca7f167d9d795b2a8f43cb9f56a653b.1717923308.git.dsimic@manjaro.org/
+All zones also have a critical trip point at 115C, which will
+trigger a reset.
 
 Signed-off-by: Alexey Charkov <alchark@gmail.com>
 ---
-Changes in v5:
-- Rebased against linux-rockchip/for-next with Dragan's .dtsi reshuffling on top
-- Added separate OPP values for RK3588j (these also apply to RK3588m)
-- Separated GPU OPP values for RK3588j (RK3588m ones differ slightly, not included here)
-- Dragan's patch: https://lore.kernel.org/linux-rockchip/9ffedc0e2ca7f167d9d795b2a8f43cb9f56a653b.1717923308.git.dsimic@manjaro.org/
-- Link to v4: https://lore.kernel.org/r/20240506-rk-dts-additions-v4-0-271023ddfd40@gmail.com
+ arch/arm64/boot/dts/rockchip/rk3588-base.dtsi | 147 ++++++++++++++++++++++++++
+ 1 file changed, 147 insertions(+)
 
-Changes in v4:
-- Rebased against linux-rockchip/for-next
-- Reordered DT nodes alphabetically as pointed out by Diederik
-- Moved the TSADC enablement to per-board .dts/.dtsi files
-- Dropped extra "inefficient" OPPs (same voltage - lower frequencies)
-- Dropped second passive cooling trips altogether to keep things simple
-- Added a cooling map for passive GPU cooling (in a separate patch)
-- Link to v3: https://lore.kernel.org/r/20240229-rk-dts-additions-v3-0-6afe8473a631@gmail.com
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
+index 629049f3dc16..574359279867 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
+@@ -10,6 +10,7 @@
+ #include <dt-bindings/reset/rockchip,rk3588-cru.h>
+ #include <dt-bindings/phy/phy.h>
+ #include <dt-bindings/ata/ahci.h>
++#include <dt-bindings/thermal/thermal.h>
+ 
+ / {
+ 	compatible = "rockchip,rk3588";
+@@ -2368,6 +2369,152 @@ pwm15: pwm@febf0030 {
+ 		status = "disabled";
+ 	};
+ 
++	thermal_zones: thermal-zones {
++		/* sensor near the center of the SoC */
++		package_thermal: package-thermal {
++			polling-delay-passive = <0>;
++			polling-delay = <0>;
++			thermal-sensors = <&tsadc 0>;
++
++			trips {
++				package_crit: package-crit {
++					temperature = <115000>;
++					hysteresis = <0>;
++					type = "critical";
++				};
++			};
++		};
++
++		/* sensor between A76 cores 0 and 1 */
++		bigcore0_thermal: bigcore0-thermal {
++			polling-delay-passive = <100>;
++			polling-delay = <0>;
++			thermal-sensors = <&tsadc 1>;
++
++			trips {
++				bigcore0_alert: bigcore0-alert {
++					temperature = <85000>;
++					hysteresis = <2000>;
++					type = "passive";
++				};
++				bigcore0_crit: bigcore0-crit {
++					temperature = <115000>;
++					hysteresis = <0>;
++					type = "critical";
++				};
++			};
++			cooling-maps {
++				map0 {
++					trip = <&bigcore0_alert>;
++					cooling-device =
++						<&cpu_b0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
++						<&cpu_b1 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
++				};
++			};
++		};
++
++		/* sensor between A76 cores 2 and 3 */
++		bigcore2_thermal: bigcore2-thermal {
++			polling-delay-passive = <100>;
++			polling-delay = <0>;
++			thermal-sensors = <&tsadc 2>;
++
++			trips {
++				bigcore2_alert: bigcore2-alert {
++					temperature = <85000>;
++					hysteresis = <2000>;
++					type = "passive";
++				};
++				bigcore2_crit: bigcore2-crit {
++					temperature = <115000>;
++					hysteresis = <0>;
++					type = "critical";
++				};
++			};
++			cooling-maps {
++				map0 {
++					trip = <&bigcore2_alert>;
++					cooling-device =
++						<&cpu_b2 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
++						<&cpu_b3 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
++				};
++			};
++		};
++
++		/* sensor between the four A55 cores */
++		little_core_thermal: littlecore-thermal {
++			polling-delay-passive = <100>;
++			polling-delay = <0>;
++			thermal-sensors = <&tsadc 3>;
++
++			trips {
++				littlecore_alert: littlecore-alert {
++					temperature = <85000>;
++					hysteresis = <2000>;
++					type = "passive";
++				};
++				littlecore_crit: littlecore-crit {
++					temperature = <115000>;
++					hysteresis = <0>;
++					type = "critical";
++				};
++			};
++			cooling-maps {
++				map0 {
++					trip = <&littlecore_alert>;
++					cooling-device =
++						<&cpu_l0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
++						<&cpu_l1 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
++						<&cpu_l2 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
++						<&cpu_l3 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
++				};
++			};
++		};
++
++		/* sensor near the PD_CENTER power domain */
++		center_thermal: center-thermal {
++			polling-delay-passive = <0>;
++			polling-delay = <0>;
++			thermal-sensors = <&tsadc 4>;
++
++			trips {
++				center_crit: center-crit {
++					temperature = <115000>;
++					hysteresis = <0>;
++					type = "critical";
++				};
++			};
++		};
++
++		gpu_thermal: gpu-thermal {
++			polling-delay-passive = <0>;
++			polling-delay = <0>;
++			thermal-sensors = <&tsadc 5>;
++
++			trips {
++				gpu_crit: gpu-crit {
++					temperature = <115000>;
++					hysteresis = <0>;
++					type = "critical";
++				};
++			};
++		};
++
++		npu_thermal: npu-thermal {
++			polling-delay-passive = <0>;
++			polling-delay = <0>;
++			thermal-sensors = <&tsadc 6>;
++
++			trips {
++				npu_crit: npu-crit {
++					temperature = <115000>;
++					hysteresis = <0>;
++					type = "critical";
++				};
++			};
++		};
++	};
++
+ 	tsadc: tsadc@fec00000 {
+ 		compatible = "rockchip,rk3588-tsadc";
+ 		reg = <0x0 0xfec00000 0x0 0x400>;
 
-Changes in v3:
-- Added regulator coupling for EVB1 and QuartzPro64
-- Enabled the TSADC for all boards in .dtsi, not just Rock 5B (thanks ChenYu)
-- Added comments regarding two passive cooling trips in each zone (thanks Dragan)
-- Fixed active cooling map numbering for Radxa Rock 5B (thanks Dragan)
-- Dropped Daniel's Acked-by tag from the Rock 5B fan patch, as there's been quite some
-  churn there since the version he acknowledged
-- Link to v2: https://lore.kernel.org/r/20240130-rk-dts-additions-v2-0-c6222c4c78df@gmail.com
-
-Changes in v2:
-- Dropped the rfkill patch which Heiko has already applied
-- Set higher 'polling-delay-passive' (100 instead of 20)
-- Name all cooling maps starting from map0 in each respective zone
-- Drop 'contribution' properties from passive cooling maps
-- Link to v1: https://lore.kernel.org/r/20240125-rk-dts-additions-v1-0-5879275db36f@gmail.com
-
----
-Alexey Charkov (8):
-      arm64: dts: rockchip: add thermal zones information on RK3588
-      arm64: dts: rockchip: enable thermal management on all RK3588 boards
-      arm64: dts: rockchip: add passive GPU cooling on RK3588
-      arm64: dts: rockchip: enable automatic fan control on Rock 5B
-      arm64: dts: rockchip: Add CPU/memory regulator coupling for RK3588
-      arm64: dts: rockchip: Add OPP data for CPU cores on RK3588
-      arm64: dts: rockchip: Add OPP data for CPU cores on RK3588j
-      arm64: dts: rockchip: Split GPU OPPs of RK3588 and RK3588j
-
- .../boot/dts/rockchip/rk3588-armsom-sige7.dts      |   4 +
- arch/arm64/boot/dts/rockchip/rk3588-base.dtsi      | 197 +++++++++++++++++----
- .../dts/rockchip/rk3588-edgeble-neu6a-common.dtsi  |   4 +
- arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dts   |  16 ++
- arch/arm64/boot/dts/rockchip/rk3588-ok3588-c.dts   |   4 +
- arch/arm64/boot/dts/rockchip/rk3588-opp.dtsi       | 190 ++++++++++++++++++++
- .../arm64/boot/dts/rockchip/rk3588-quartzpro64.dts |  12 ++
- arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts    |  34 +++-
- .../arm64/boot/dts/rockchip/rk3588-toybrick-x0.dts |   4 +
- .../arm64/boot/dts/rockchip/rk3588-turing-rk1.dtsi |   4 +
- arch/arm64/boot/dts/rockchip/rk3588.dtsi           |   1 +
- arch/arm64/boot/dts/rockchip/rk3588j.dtsi          | 141 +++++++++++++++
- arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts   |   4 +
- arch/arm64/boot/dts/rockchip/rk3588s.dtsi          |   1 +
- 14 files changed, 577 insertions(+), 39 deletions(-)
----
-base-commit: 5cc74606bf40a2bbaccd3e3bb2781f637baebde5
-change-id: 20240124-rk-dts-additions-a6d7b52787b9
-
-Best regards,
 -- 
-Alexey Charkov <alchark@gmail.com>
+2.45.2
 
 
 _______________________________________________
