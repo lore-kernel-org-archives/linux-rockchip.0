@@ -4,98 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0B27FC27C79
-	for <linux-rockchip@archiver.kernel.org>; Mon, 17 Jun 2024 11:13:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 14D57C27C79
+	for <linux-rockchip@archiver.kernel.org>; Mon, 17 Jun 2024 11:18:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=oDJlDNZgLcdV1XOREWBABOGBvP/L9ouPyKWiMYQ8do8=; b=d3w3ZD81HvjOxk
-	JG7GHlO/8FASXMZAlRGXJxJoGb9n4wVUqNRml2a/mg/R4p4tRYDrCOo+nGZu3zv1eMdASIi2iXIgO
-	jIkT1+D3f92/9BEwKubmdCo0YosBizv3cxhJIMRDkIkiQGH0zM9bNxClfYsuvpDqhPXdTMXG3AYdX
-	H8UTxmNlccfj34czKd/KTYyLGp7H1GaeqcJ7jCBArPAJ11jDpqAjaPCPeQTy6FSon/G5/7EwQ+KI8
-	LKN4MhYdOGK3POtHL82Kzm0iJFLCG5f3zea/m5RyvYVZh+j9zwjVb3yp0d4br4Rr5QFmOPUUiV7sz
-	G7btUCibUbkC1cC4clDg==;
+	List-Owner; bh=+Hd9dA2WXckH0x8RIVphvfdHI0zm/XI2kinK8gt7Udc=; b=ImAQww9GihSEIB
+	he45wYie1xiS91GHDk2BagdVOneSGyysw+iBkrNfo5CYf2i2n0wTYfYw0bsdDAHB7N8e39WLhookc
+	94X08qgAS88Hm8gCovb/+gONZedFbAAyhGz22X0GgfIu57Bslxx3YAU6O38IK3BtBXsXtJGiNKZI6
+	s+tJyz42Y7irrQkzCD48YJnk6wxFJzF29rGPin435t87wU58NTB62gWIZuAN+nwa9AQ+XwNWTv5f6
+	CFGluozYC1URf0HcS31auorsd5nDLtUzQYimabj4sCC5VzdTQmo8itEr94LNnOu/reuHr68ogMGGg
+	l/X5YH/pDPDr4uDWxyuw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sJAIP-0000000AQbi-0vmv;
-	Mon, 17 Jun 2024 11:13:09 +0000
-Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
+	id 1sJANC-0000000AR9G-3wYu;
+	Mon, 17 Jun 2024 11:18:06 +0000
+Received: from mail-qt1-x836.google.com ([2607:f8b0:4864:20::836])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sJAIJ-0000000AQZj-2Ur0;
-	Mon, 17 Jun 2024 11:13:05 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1718622778;
-	bh=/L6WYMxSMfjTIoWr9t9k/aRtdxtiTotpKJC0bwZmths=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=TWun6Tz0mrFyu0Doh3GSFs5086lVufoWIuFjkxiKsPZHUQOo5/kxB2MOvTdkHoK4M
-	 l4YUhTOvHS6iKdIwIxJr+SYFYE4R3tSubri3gpAKeg6QauwUwxk8RGrhWTgKsJRkga
-	 WmuEAq1gxUD4FXTikNClu2mpX/GqqqZR9v0VNhWXWVooGlwaZSnITzWYVtrWMAdY/Q
-	 Gc1Sy3KP5c8iVAVzEodL3ey7mM4zKdz2E7c0MAl9n4oWfGTO9aciNFSPuXhlGTSJ4A
-	 mnRmhAVp0wQ90eRATO9s4OC6Pw0gg5PJ3Gn/yeXaoaNP+Ktue2EHgnAsiuTtPDUH6E
-	 goMQ1PX6AMUzA==
-Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 42DB93780480;
-	Mon, 17 Jun 2024 11:12:55 +0000 (UTC)
-Message-ID: <33aac6a0-7bdf-48d3-bf79-0f3bf60394f2@collabora.com>
-Date: Mon, 17 Jun 2024 13:12:54 +0200
+	id 1sJAN8-0000000AR7i-04cS;
+	Mon, 17 Jun 2024 11:18:03 +0000
+Received: by mail-qt1-x836.google.com with SMTP id d75a77b69052e-43fecdecd32so20972241cf.1;
+        Mon, 17 Jun 2024 04:18:01 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1718623081; x=1719227881; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=1R/gFx9Klqha3kU9BqkNKnQ9gJqwp56eACgbNepYfSU=;
+        b=RwB06Z5GVeyPs9FCT1lLjH+ghDI+Sc/FwBygoQS1f48pcdhdnmsE2XvVvRVWDQIOwv
+         HH1NoRn2CLraoBiFa8sxOPu8kzlKg3FoBjMxxaEiJz3sEkee8d+SOJVp84DiEZrHQ09r
+         TMll0rKo3xH3Ny07QmnoaIFGrCsB/C/Kqhf0j/KiOmIrMQxgqczpMwWLjI64/Azn0zzl
+         gapUa33rJDJFrLQ7VIYPhUu5nU/meKqCjBtq1ENzk+r/myytm31hcgWmoBC2MRFInj96
+         dxlt0dHtgD3dXUvt/4pDgliA4z+tdInc9VOFlJGpw188MCwjwtToDKtS5ZBMj9YoW4Sh
+         7SeA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1718623081; x=1719227881;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=1R/gFx9Klqha3kU9BqkNKnQ9gJqwp56eACgbNepYfSU=;
+        b=p2o5OOWbHBVFgif08qIIGiBKiOAYXRkWRDHeC7hGdmwZHghysAfUZ0/hqvMbLR2AEg
+         yzvca+MuC6tXRfaMuPRLC8aqOCtgRtoBPHTRpihNnZqRSYIUlwZVpZ4Egbic+AqlMrbA
+         MjoEYmxwZwiwVeRtl/ym330vWiH1ztXsgDsE9koz8CdRJxj7KJgXXFxciX19oR9sBf1t
+         Jf+e5j2DoHtba0VzQUb9j/BL81DV2VJgJ5VmJ9A0+Hqnk1iyL+OR24HMK87ryvk7OB4i
+         Kaw6P0nbqKljo9iMP81hGlQuUSEgT360Ya5s0fpGbe5rDHBYcoOFOiUyoLMfEA08qL3A
+         ft4Q==
+X-Forwarded-Encrypted: i=1; AJvYcCWLFY2TwMWguGe+Rm6TNYLzqGN8w/8Aknqq1RuJQE+M5dLAuumFuTkuFdbDqPnf8lkh+7s20eEmHqQPEzVpQPxmonyd5P4elTE/VxbAS82U/MPxZDgmm2zCGcN7bkjFfZe2E9i8uSmO1rtcEwFQcarmk4FYqmH/EPs=
+X-Gm-Message-State: AOJu0YxCEKd7TCPil963qrVNxl3IvpzRJJ6jafRAU2xYQ3izmPTM5AkP
+	9IBP1WMdHTmEsCLMUM55enNP7RlwhvugNO+uvkDWwxECmAUDE7aEKk/5msS93oaOp5Wh7A3xGl0
+	3C8Rn2yc4C/PYe/QnTEkNgHKjZRg=
+X-Google-Smtp-Source: AGHT+IEyItUZz65B+zlSMBk6nl6Jg+t2tO7sCrLH5kOIrqFG6mZo+hISsRlvGiuQURieKYYrFVyjFrnVdE8+V+gytkY=
+X-Received: by 2002:ac8:5a8c:0:b0:441:560e:4172 with SMTP id
+ d75a77b69052e-4421687b4f3mr86953841cf.15.1718623080712; Mon, 17 Jun 2024
+ 04:18:00 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 21/22] dt-bindings: thermal: simplify few bindings
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
- Daniel Lezcano <daniel.lezcano@linaro.org>, Zhang Rui <rui.zhang@intel.com>,
- Lukasz Luba <lukasz.luba@arm.com>, Rob Herring <robh@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Alim Akhtar <alim.akhtar@samsung.com>,
- Guillaume La Roque <glaroque@baylibre.com>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Vasily Khoruzhick <anarsoul@gmail.com>, Chen-Yu Tsai <wens@csie.org>,
- Jernej Skrabec <jernej.skrabec@gmail.com>,
- Samuel Holland <samuel@sholland.org>, Shawn Guo <shawnguo@kernel.org>,
- Sascha Hauer <s.hauer@pengutronix.de>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Fabio Estevam <festevam@gmail.com>, Anson Huang <Anson.Huang@nxp.com>,
- Thierry Reding <thierry.reding@gmail.com>,
- Jonathan Hunter <jonathanh@nvidia.com>,
- Dmitry Baryshkov <dmitry.baryshkov@linaro.org>,
- Amit Kucheria <amitk@kernel.org>,
- =?UTF-8?Q?Niklas_S=C3=B6derlund?= <niklas.soderlund@ragnatech.se>,
- Heiko Stuebner <heiko@sntech.de>, Biju Das <biju.das.jz@bp.renesas.com>,
- Orson Zhai <orsonzhai@gmail.com>, Baolin Wang
- <baolin.wang@linux.alibaba.com>, Chunyan Zhang <zhang.lyra@gmail.com>,
- Alexandre Torgue <alexandre.torgue@foss.st.com>,
- Pascal Paillet <p.paillet@foss.st.com>, Keerthy <j-keerthy@ti.com>,
- Broadcom internal kernel review list
- <bcm-kernel-feedback-list@broadcom.com>,
- Florian Fainelli <florian.fainelli@broadcom.com>,
- Scott Branden <sbranden@broadcom.com>,
- zhanghongchen <zhanghongchen@loongson.cn>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Bjorn Andersson <andersson@kernel.org>,
- Geert Uytterhoeven <geert+renesas@glider.be>
-Cc: linux-pm@vger.kernel.org, linux-samsung-soc@vger.kernel.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-amlogic@lists.infradead.org,
- linux-sunxi@lists.linux.dev, imx@lists.linux.dev,
- linux-tegra@vger.kernel.org, linux-arm-msm@vger.kernel.org,
- linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-stm32@st-md-mailman.stormreply.com,
- Florian Fainelli <f.fainelli@gmail.com>,
- linux-rpi-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <20240614-dt-bindings-thermal-allof-v1-0-30b25a6ae24e@linaro.org>
- <20240614-dt-bindings-thermal-allof-v1-21-30b25a6ae24e@linaro.org>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20240614-dt-bindings-thermal-allof-v1-21-30b25a6ae24e@linaro.org>
+References: <20240617071112.3133101-1-jacobe.zang@wesion.com>
+ <20240617071112.3133101-5-jacobe.zang@wesion.com> <feeb8dcd-661f-415e-be08-afe175d0102e@gmail.com>
+ <TYZPR03MB70012C66B789B09195FCD92580CD2@TYZPR03MB7001.apcprd03.prod.outlook.com>
+In-Reply-To: <TYZPR03MB70012C66B789B09195FCD92580CD2@TYZPR03MB7001.apcprd03.prod.outlook.com>
+From: Alexey Charkov <alchark@gmail.com>
+Date: Mon, 17 Jun 2024 15:17:50 +0400
+Message-ID: <CABjd4YyHUzm4EBPPzia5VRXGvJiXDObDHQYNCjpCMJDs=BqALg@mail.gmail.com>
+Subject: Re: [PATCH v2 4/5] arm64: dts: rockchip: Add AP6275P wireless support
+ to Khadas Edge 2
+To: Jacobe Zang <jacobe.zang@wesion.com>
+Cc: "robh@kernel.org" <robh@kernel.org>, "krzk+dt@kernel.org" <krzk+dt@kernel.org>, 
+	"conor+dt@kernel.org" <conor+dt@kernel.org>, "heiko@sntech.de" <heiko@sntech.de>, Nick Xie <nick@khadas.com>, 
+	"efectn@protonmail.com" <efectn@protonmail.com>, "jagan@edgeble.ai" <jagan@edgeble.ai>, 
+	"dsimic@manjaro.org" <dsimic@manjaro.org>, 
+	"devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, 
+	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, 
+	"linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, 
+	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240617_041304_229053_7626E746 
-X-CRM114-Status: UNSURE (   5.76  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240617_041802_080752_44EEC431 
+X-CRM114-Status: GOOD (  13.29  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,24 +93,35 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Il 14/06/24 11:46, Krzysztof Kozlowski ha scritto:
-> Simplify few bindings which already reference thermal-sensor.yaml schema
-> by dropping unneeded requiring of '#thermal-sensor-cells' and dropping
-> assigned-clocks properties (core schema allows it if 'clocks' are
-> there).
-> 
-> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gTW9uLCBKdW4gMTcsIDIwMjQgYXQgMjo1OOKAr1BNIEphY29iZSBaYW5nIDxqYWNvYmUuemFu
+Z0B3ZXNpb24uY29tPiB3cm90ZToKPgo+ID5JJ20gYWxzbyB3b25kZXJpbmcgd2h5IHdvdWxkIGFk
+ZGluZyBhIERUIG5vZGUgZm9yIGEgUENJIGRldmljZSBiZSBuZWVkZWQKPiA+aW4gdGhlIGZpcnN0
+IHBsYWNlLCBnaXZlbiB0aGF0IFBDSSBzdXBwb3J0cyBkZXZpY2UgZGlzY292ZXJ5Pwo+Cj4gSW4g
+ZmFjdCwgSSBsZWFybiB0aGF0IFBDSWUgYnVzIGRldmljZXMgZG8gbm90IG5lZWQgY29tcGF0aWJs
+ZSB0byBwcm9iZSBqdXN0IG5vdy4uLiBCZWZvcmUgc2VuZGluZyB0aGlzIHBhdGNoLCBJIGNvbW1p
+dHRlZCB0aGUgY29kZSB0aGF0IGFkZGVkICJwY2kxNGU0LDQ0OWQiIHRvIHZlbmRvci1wcmVmaXgu
+eWFtbCBhbmQgbmV0L3dpcmVsZXNzL2JyY20sYnJjbTQzMjktZm1hYy55YW1sLiBOb3cgSSBrbm93
+IHRoZSByZWFzb24gd2h5IG15IGFkZGl0aW9uIHdhcyByZWplY3RlZC4gQnkgdGhlIHdheSwgZXhj
+ZXB0IGZvciB0aGUgY29tcGF0aWJsZSBiaW5kaW5nLCBpcyB0aGVyZSBhbnkgb3RoZXIgYmluZGlu
+ZyB0aGF0IEkgc2hvdWxkIHJlbW92ZT8/CgpJZiB5b3VyIFBDSSBicmlkZ2UgaXMgZnVuY3Rpb25p
+bmcgcHJvcGVybHkgYW5kIGlmIHlvdXIgV2lGaSBhZGFwdGVyIGlzCmNvbm5lY3RlZCBhbmQgcGh5
+c2ljYWxseSBlbmFibGVkIChpbiB0ZXJtcyBvZiBwb3dlciBhbmQgUkZLSUxMKSBJCmJlbGlldmUg
+aXQgc2hvdWxkIGJlIGF1dG9tYXRpY2FsbHkgZGlzY292ZXJlZCBhbmQgeW91IHNob3VsZCBzZWUg
+aXQgaW4KbHNwY2kuIE5vIGFkZGl0aW9uYWwgRFQgbm9kZXMgbmVlZGVkIC0gYnV0IGNoZWNrIGlm
+IHlvdSBuZWVkIGFueQphZGRpdGlvbmFsIERUIHByb3BlcnR5IHNvbWV3aGVyZSB0byBrZWVwIHRo
+ZSBIWU04NTYzIGNsb2NrIGVuYWJsZWQuCkknbSBub3Qgc3VyZSB5b3VyIHBjaWVAMCwwIG5vZGUg
+aXMgbmVlZGVkIGVpdGhlci4KClRoZW4gaXQncyB1cCB0byB0aGUgZHJpdmVyIHRvIHJlY29nbml6
+ZSB5b3VyIGFkYXB0ZXIgYnkgaXRzIFBDSSBJRCBhbmQKYXR0YWNoLiBJIGd1ZXNzIHlvdSdkIG5l
+ZWQgdG8gZXh0ZW5kIHRoZSBoYXJkd2FyZSBJRHMgdGFibGUgaW4gdGhlCmJyY21mbWFjIGRyaXZl
+ciBmb3IgaXQgdG8gYXR0YWNoIC0gc2ltaWxhciB0byBbMV0KClsxXSBodHRwczovL2dpdGh1Yi5j
+b20vYXJtYmlhbi9idWlsZC9ibG9iL21haW4vcGF0Y2gva2VybmVsL2FyY2hpdmUvcm9ja2NoaXAt
+cmszNTg4LTYuMTAvMDgwMS13aXJlbGVzcy1hZGQtYmNtNDM3NTIucGF0Y2gKCkJlc3QgcmVnYXJk
+cywKQWxleGV5CgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+XwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFk
+ZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4
+LXJvY2tjaGlwCg==
