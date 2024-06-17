@@ -4,70 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3377AC27C79
-	for <linux-rockchip@archiver.kernel.org>; Mon, 17 Jun 2024 18:30:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E7A6BC27C79
+	for <linux-rockchip@archiver.kernel.org>; Mon, 17 Jun 2024 18:30:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=sqUgBwzEkmr0NZLL51Yp/mlfSPIzHZiS7s5BvGNKT5c=; b=4Y7CBfMFJKTUgE
-	bVkCqE+/WXG+GU696kw5Wk9Enu2hHLHHtIPRPWfY0nDV1Rk0uGH8mPBaHbv+Ri32VZIqoT4DoE8JZ
-	PlqLEKsOMoTrcNeNOeDau4OyWAjwDl1maGuOj/zaSq7CzVg5S5S9L2gCnWrZqvWLBLITKs7BahxZ0
-	AfNXsoMPZwRcLuXoXfj+dy4Olz36zSESH1Ho+gFcoFhvoiptwv6v+Spoh03rc9lS+sJy0vY7GmmVv
-	J2GLeajdQSYqQ917SazTSXbMzqpMI7kif8aSLDW/45IXnzeN/ThXb9vMtajvbr9XZKwmH5N+mQNC7
-	hZRPtoQS2bQ1OEDoj8Ag==;
+	List-Owner; bh=1jCb45XWKc6hbPaSiycS6kHiCZJcs4IPBh+fty2t2cI=; b=m8HBB1UCDA7DZ1
+	Yri7qpHbP1QmwAL+NI826HaNDo9lAqlM3T5AsU1e7TNBwTorVUj5XRoet0o58xwLUTcJAnCfK95Fg
+	rLiwj0B+0QRQrISB0TqEhT7a9rmeLdveJjqfci8pY4mHH46AIdspYqHim9uWqFnrihF5UWFP2X8ZO
+	lerv8WV/4ixIeut1866DDSnPYSnEogFWt+1jLUG6HegLF4gMF73MokblgXFJl+PY3ME4NHStMX9G9
+	/KnbgXW1u+CFDgY57CbebSP44rwsA8IJBu0qXsBj2dRIoS4QyHmqzC0+m5lVgAXtlzOaY7INvxuM9
+	WeNRxbHM51IvkhDQASRw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sJH7p-0000000CBcA-0jYo;
-	Mon, 17 Jun 2024 18:30:41 +0000
+	id 1sJH7w-0000000CBiw-3Tz4;
+	Mon, 17 Jun 2024 18:30:48 +0000
 Received: from mail-ej1-x630.google.com ([2a00:1450:4864:20::630])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sJH73-0000000CB45-0lBk;
-	Mon, 17 Jun 2024 18:30:01 +0000
-Received: by mail-ej1-x630.google.com with SMTP id a640c23a62f3a-a6f13dddf7eso565780966b.0;
-        Mon, 17 Jun 2024 11:29:52 -0700 (PDT)
+	id 1sJH75-0000000CB6p-3hqm;
+	Mon, 17 Jun 2024 18:30:03 +0000
+Received: by mail-ej1-x630.google.com with SMTP id a640c23a62f3a-a6f8ebbd268so127632566b.0;
+        Mon, 17 Jun 2024 11:29:55 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1718648991; x=1719253791; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1718648994; x=1719253794; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=/gIdEIvbMDrmnrZNpEG2mYTheifxVrjfELjOF2EAXlQ=;
-        b=I6URnQzxRQhHjmDxH1SfZT5D9f6HsVySt6v9EYNM4MrNvgHvOFiZbYJuBfuWbhIxCm
-         uj6mcLXX/tiT33IjhV9dAF8LmPVpWS5pzJttnKQ5QXY7Tui9suxshhaMcAP7o3TqN0LG
-         QqxfertL5P/KrEOsi+fQTfYMWkUGxhRNetUWo+Dph6DMQtSZ2Z64mGV3TLqnEOekL/if
-         qkt/e6Pj/BfxoeytF+wkw2HCO+DIjX0kmscIxnkj4a6pYjhoQvTz506Wb3k2Zn7rpnTP
-         dgVAEb3h2gaUi3ZSjPJKNpOwdi3WyB5U+SpuzN3oqgKmD3TD6+RGL+8ALRWhpd7J9fjo
-         b7cw==
+        bh=mi6aVHL3QaHHJ3tI7hDY8xFdrO8LAbtMSLI9IrukgKs=;
+        b=DllaKyQEAWmyRVaflt/kfSYg/WFPQoqI7s6IgUfp2qaj4kBtHE2tO2rcfV80bMoGK1
+         y8dmQleQ/daxnsTVhZH2Arld27wMP1M07iftsEjm0xdprN5YUhE3MDxVv27In0kbmNbF
+         WPPDssWkF2nzjY8SdB9p4Z52Wbpni/eO1NzSwVaU6YeDqQ1XSwWfzyb/8wPAln7s/kO3
+         9LRsng/y9epeTLoUtrIo8LzFLP2AhMhWAdbtZqYEiOi0Gjg23WNXPnZtrMYH1VbmvnVG
+         ppSyz1nIx098Bk/0hC8J4xZqdB8XNR6QUeGqRQNcR1HlXVqyfD47+RASBDw2PEjpw1Yk
+         N8og==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1718648991; x=1719253791;
+        d=1e100.net; s=20230601; t=1718648994; x=1719253794;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=/gIdEIvbMDrmnrZNpEG2mYTheifxVrjfELjOF2EAXlQ=;
-        b=Oc9w4YByDPE7+f/Y31urkjY6f0dvgyV8DQsyDJjlduP4+vip6AiaOflPtJWu8GdaOS
-         J2cjXixCbVVDgN4bk+iY1xPCcgiwpH2WzFoDON8RaYsYU1G4pjRm1Fe4uMyNZ0h5JF6I
-         AUWPmljIKjU32DDp0KeQLEr2ttiPJyP7Kx1LFP3C6zJcnziyz0RTUgZZWOfURSuye0e8
-         wWVT/0vVmkhi1TEPFPliDztTukl5FW3V4WOBVZUIL0Yzr4Sesc+8xWX/PDiIezmL/Ean
-         UbLsnDReqipiRT/SFnb0Q3A/FkgeKrx8bVQklVoWiEDMF5p+cblLeIUoZCozIsWod371
-         vBhw==
-X-Forwarded-Encrypted: i=1; AJvYcCV1SWItKNlZJl0b787xL/8mcSIn2Sv8sq07uAyjDFaxYSytvItovlkTqjBO5CB+f0woaxd2eU/DXtruTlVdysLMwtyoBAM7VMhL7mA+NAMKbgtbI8aVlUmmJvweubWNXgZBhd+y8bZMvo3pWkMB+QurJzPsrchiRyk=
-X-Gm-Message-State: AOJu0YzuVLbSp44m5SSlEXkfTO5T4vR7dag/EL59V1096cD2L4Tm1TXE
-	yqT+qinfGPj/Em2o4YELMs9Y3gz20FW8iiA2vKTgouASCHerSmTX
-X-Google-Smtp-Source: AGHT+IGxtlWZi7OlzUSA5/V0aa2jJMNFKKU21CTRD337ilM22mWB124cbV/KHSY2+Nr88qWjg9DCVQ==
-X-Received: by 2002:a17:906:3b46:b0:a6f:277c:d890 with SMTP id a640c23a62f3a-a6f60dc362amr688721966b.56.1718648990713;
-        Mon, 17 Jun 2024 11:29:50 -0700 (PDT)
+        bh=mi6aVHL3QaHHJ3tI7hDY8xFdrO8LAbtMSLI9IrukgKs=;
+        b=YhhxZWaGE4rlhLnlnRj5/zBpixdxU/DAaeeKvB3vBZqfIVM6O9IbArsoFjKOJSuTGq
+         erlymWx+Avy+LvKy2JFMkNsPmBq9m7vz0J0+cTx4Cn11iB62oc6tbH//iikgXLX0CB1Y
+         /bPLixMvlzcNCl+4gxQ+BF1M/LGyfie6jw7ic4XqrJZdSGSB6leNhtFfF5TK/+xsZWx5
+         ar4jnD5t28cWtRDhCIBSeudRVztqkAKhYNR7IqUuAPfN977fCVz7IZVSxljMIqGsLtg9
+         Uy6Z+2hSVOdVKf2in9SOcxnFB2PxLKiVf6B6XqdxUzT3rE7jlpUHoK7aB5cNeWz3CqnC
+         mxww==
+X-Forwarded-Encrypted: i=1; AJvYcCXb+EchkRiu9A5lwRfy18xVgELPsBHUu/TEcOs6DiX0rmgCRTAJU56mu/XelNjXYpt7Zh0HcT6T7CxBSsb4YErY5KMGHz+y2dQeGVjJctHDp5BEiSAkec1JN0CcSGioAyttfLw+V73/NhDw5KPUIp0MrN1fU2fyMGE=
+X-Gm-Message-State: AOJu0YzTnke10T9fG3/shYuG2L+Te1LjBJwcAGS6NaWGIH/RDKYCyFIi
+	AXEH5jSS0+WAAz1qjiMGL5q3q+3BmUKHyFJFv7fMZ5DdPyYtUlZS
+X-Google-Smtp-Source: AGHT+IFSSaODbqGau5beLtfxdks8DVDSeWiXWQ1UwtzXba87HIcD1jrRNMLASa7svvdJxgKgZlzToQ==
+X-Received: by 2002:a17:906:1d0f:b0:a6f:1e1b:f9ea with SMTP id a640c23a62f3a-a6f95054920mr23742566b.31.1718648994301;
+        Mon, 17 Jun 2024 11:29:54 -0700 (PDT)
 Received: from latitude-fedora.lan ([2001:8f8:183b:6864::d35])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a6f8a6e58bdsm115397666b.187.2024.06.17.11.29.47
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a6f8a6e58bdsm115397666b.187.2024.06.17.11.29.50
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 17 Jun 2024 11:29:50 -0700 (PDT)
+        Mon, 17 Jun 2024 11:29:53 -0700 (PDT)
 From: Alexey Charkov <alchark@gmail.com>
-Date: Mon, 17 Jun 2024 22:28:57 +0400
-Subject: [PATCH v5 7/8] arm64: dts: rockchip: Add OPP data for CPU cores on
+Date: Mon, 17 Jun 2024 22:28:58 +0400
+Subject: [PATCH v5 8/8] arm64: dts: rockchip: Split GPU OPPs of RK3588 and
  RK3588j
 MIME-Version: 1.0
-Message-Id: <20240617-rk-dts-additions-v5-7-c1f5f3267f1e@gmail.com>
+Message-Id: <20240617-rk-dts-additions-v5-8-c1f5f3267f1e@gmail.com>
 References: <20240617-rk-dts-additions-v5-0-c1f5f3267f1e@gmail.com>
 In-Reply-To: <20240617-rk-dts-additions-v5-0-c1f5f3267f1e@gmail.com>
 To: Rob Herring <robh+dt@kernel.org>, 
@@ -80,17 +80,16 @@ Cc: Daniel Lezcano <daniel.lezcano@linaro.org>,
  linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
  Alexey Charkov <alchark@gmail.com>
 X-Mailer: b4 0.13.0
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1718648960; l=3675;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1718648960; l=5293;
  i=alchark@gmail.com; s=20240125; h=from:subject:message-id;
- bh=9usg1860HeLN2D86kwAGVsch0yxyMQiUOvKvhiX96F0=;
- b=7qkTQpuDo2mnr2AksYS5eW7EJtXMddKluUT3j2BIeU1VziywewZDKtSMHT8+bGsuRwNzNZAFz
- b/X7C7+JSK/DwNleZDa/3++SYYeZ4QAj5dZ6D+I/8RWiDgsuLhaJa81
+ bh=cu+UhDK5oOLgPtUwnbvA8VAbLQ3CEl/qKKmthR966F0=;
+ b=Iq78YcGu6PRbj8M7jUOSV+GJvF6MJXQR89ZqGUZvfYky+6DBrijA5RY/wW0J84sIVnfWYtxCZ
+ //IhTsdQgWkBA3n9buJjiMSdZhSv/EG5BXyaHQOAdqrE8yf/6UsUwqT
 X-Developer-Key: i=alchark@gmail.com; a=ed25519;
  pk=xRO8VeD3J5jhwe0za0aHt2LDumQr8cm0Ls7Jz3YGimk=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240617_112953_656831_3AAE6B59 
-X-CRM114-Status: UNSURE (   9.97  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240617_112956_085328_EDD27F77 
+X-CRM114-Status: GOOD (  12.47  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,140 +106,181 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-RK3588j is the 'industrial' variant of RK3588, and it uses a different
-set of OPPs both in terms of allowed frequencies and in terms of
-applicable voltages at each frequency setpoint.
+RK3588j uses a different set of OPPs for its GPU, both in terms of
+allowed frequencies and in terms of voltages.
 
-Add the OPPs that apply to RK3588j (and apparently RK3588m too) to
-enable dynamic CPU frequency scaling.
+Move the GPU OPPs table into per-variant .dtsi files to accommodate
+for this difference.
 
-OPP values are derived from Rockchip downstream sources [1] by taking
-only those OPPs which have the highest frequency for a given voltage
-level and dropping the rest (if they are included, the kernel complains
-at boot time about them being inefficient)
+The table for RK3588j is adapted from Rockchip downstream sources [1],
+while RK3588 one is moved verbatim into the per-variant .dtsi file.
+The values provided for RK3588 in the downstream sources match those
+in the original commit.
 
 [1] https://github.com/rockchip-linux/kernel/blob/604cec4004abe5a96c734f2fab7b74809d2d742f/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
 
+Fixes: 6fca4edb93d3 ("arm64: dts: rockchip: Add rk3588 GPU node")
 Signed-off-by: Alexey Charkov <alchark@gmail.com>
 ---
- arch/arm64/boot/dts/rockchip/rk3588j.dtsi | 108 ++++++++++++++++++++++++++++++
- 1 file changed, 108 insertions(+)
+ arch/arm64/boot/dts/rockchip/rk3588-base.dtsi | 38 -------------------------
+ arch/arm64/boot/dts/rockchip/rk3588-opp.dtsi  | 41 +++++++++++++++++++++++++++
+ arch/arm64/boot/dts/rockchip/rk3588j.dtsi     | 33 +++++++++++++++++++++
+ 3 files changed, 74 insertions(+), 38 deletions(-)
 
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
+index 758aff5e040b..3d918874aa02 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
+@@ -451,46 +451,8 @@ gpu: gpu@fb000000 {
+ 			     <GIC_SPI 93 IRQ_TYPE_LEVEL_HIGH 0>,
+ 			     <GIC_SPI 94 IRQ_TYPE_LEVEL_HIGH 0>;
+ 		interrupt-names = "job", "mmu", "gpu";
+-		operating-points-v2 = <&gpu_opp_table>;
+ 		power-domains = <&power RK3588_PD_GPU>;
+ 		status = "disabled";
+-
+-		gpu_opp_table: opp-table {
+-			compatible = "operating-points-v2";
+-
+-			opp-300000000 {
+-				opp-hz = /bits/ 64 <300000000>;
+-				opp-microvolt = <675000 675000 850000>;
+-			};
+-			opp-400000000 {
+-				opp-hz = /bits/ 64 <400000000>;
+-				opp-microvolt = <675000 675000 850000>;
+-			};
+-			opp-500000000 {
+-				opp-hz = /bits/ 64 <500000000>;
+-				opp-microvolt = <675000 675000 850000>;
+-			};
+-			opp-600000000 {
+-				opp-hz = /bits/ 64 <600000000>;
+-				opp-microvolt = <675000 675000 850000>;
+-			};
+-			opp-700000000 {
+-				opp-hz = /bits/ 64 <700000000>;
+-				opp-microvolt = <700000 700000 850000>;
+-			};
+-			opp-800000000 {
+-				opp-hz = /bits/ 64 <800000000>;
+-				opp-microvolt = <750000 750000 850000>;
+-			};
+-			opp-900000000 {
+-				opp-hz = /bits/ 64 <900000000>;
+-				opp-microvolt = <800000 800000 850000>;
+-			};
+-			opp-1000000000 {
+-				opp-hz = /bits/ 64 <1000000000>;
+-				opp-microvolt = <850000 850000 850000>;
+-			};
+-		};
+ 	};
+ 
+ 	usb_host0_xhci: usb@fc000000 {
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588-opp.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-opp.dtsi
+index 35bbc3c2134f..0f1a77697351 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588-opp.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3588-opp.dtsi
+@@ -114,6 +114,43 @@ opp-2400000000 {
+ 			clock-latency-ns = <40000>;
+ 		};
+ 	};
++
++	gpu_opp_table: opp-table {
++		compatible = "operating-points-v2";
++
++		opp-300000000 {
++			opp-hz = /bits/ 64 <300000000>;
++			opp-microvolt = <675000 675000 850000>;
++		};
++		opp-400000000 {
++			opp-hz = /bits/ 64 <400000000>;
++			opp-microvolt = <675000 675000 850000>;
++		};
++		opp-500000000 {
++			opp-hz = /bits/ 64 <500000000>;
++			opp-microvolt = <675000 675000 850000>;
++		};
++		opp-600000000 {
++			opp-hz = /bits/ 64 <600000000>;
++			opp-microvolt = <675000 675000 850000>;
++		};
++		opp-700000000 {
++			opp-hz = /bits/ 64 <700000000>;
++			opp-microvolt = <700000 700000 850000>;
++		};
++		opp-800000000 {
++			opp-hz = /bits/ 64 <800000000>;
++			opp-microvolt = <750000 750000 850000>;
++		};
++		opp-900000000 {
++			opp-hz = /bits/ 64 <900000000>;
++			opp-microvolt = <800000 800000 850000>;
++		};
++		opp-1000000000 {
++			opp-hz = /bits/ 64 <1000000000>;
++			opp-microvolt = <850000 850000 850000>;
++		};
++	};
+ };
+ 
+ &cpu_b0 {
+@@ -147,3 +184,7 @@ &cpu_l2 {
+ &cpu_l3 {
+ 	operating-points-v2 = <&cluster0_opp_table>;
+ };
++
++&gpu {
++	operating-points-v2 = <&gpu_opp_table>;
++};
 diff --git a/arch/arm64/boot/dts/rockchip/rk3588j.dtsi b/arch/arm64/boot/dts/rockchip/rk3588j.dtsi
-index 0bbeee399a63..b7e69553857b 100644
+index b7e69553857b..bce72bac4503 100644
 --- a/arch/arm64/boot/dts/rockchip/rk3588j.dtsi
 +++ b/arch/arm64/boot/dts/rockchip/rk3588j.dtsi
-@@ -5,3 +5,111 @@
-  */
+@@ -80,6 +80,35 @@ opp-2016000000 {
+ 			clock-latency-ns = <40000>;
+ 		};
+ 	};
++
++	gpu_opp_table: opp-table {
++		compatible = "operating-points-v2";
++
++		opp-300000000 {
++			opp-hz = /bits/ 64 <300000000>;
++			opp-microvolt = <750000 750000 850000>;
++		};
++		opp-400000000 {
++			opp-hz = /bits/ 64 <400000000>;
++			opp-microvolt = <750000 750000 850000>;
++		};
++		opp-500000000 {
++			opp-hz = /bits/ 64 <500000000>;
++			opp-microvolt = <750000 750000 850000>;
++		};
++		opp-600000000 {
++			opp-hz = /bits/ 64 <600000000>;
++			opp-microvolt = <750000 750000 850000>;
++		};
++		opp-700000000 {
++			opp-hz = /bits/ 64 <700000000>;
++			opp-microvolt = <750000 750000 850000>;
++		};
++		opp-850000000 {
++			opp-hz = /bits/ 64 <800000000>;
++			opp-microvolt = <787500 787500 850000>;
++		};
++	};
+ };
  
- #include "rk3588-extra.dtsi"
+ &cpu_b0 {
+@@ -113,3 +142,7 @@ &cpu_l2 {
+ &cpu_l3 {
+ 	operating-points-v2 = <&cluster0_opp_table>;
+ };
 +
-+/ {
-+	cluster0_opp_table: opp-table-cluster0 {
-+		compatible = "operating-points-v2";
-+		opp-shared;
-+
-+		opp-1416000000 {
-+			opp-hz = /bits/ 64 <1416000000>;
-+			opp-microvolt = <750000 750000 950000>;
-+			clock-latency-ns = <40000>;
-+			opp-suspend;
-+		};
-+		opp-1608000000 {
-+			opp-hz = /bits/ 64 <1608000000>;
-+			opp-microvolt = <887500 887500 950000>;
-+			clock-latency-ns = <40000>;
-+		};
-+		opp-1704000000 {
-+			opp-hz = /bits/ 64 <1704000000>;
-+			opp-microvolt = <937500 937500 950000>;
-+			clock-latency-ns = <40000>;
-+		};
-+	};
-+
-+	cluster1_opp_table: opp-table-cluster1 {
-+		compatible = "operating-points-v2";
-+		opp-shared;
-+
-+		opp-1416000000 {
-+			opp-hz = /bits/ 64 <1416000000>;
-+			opp-microvolt = <750000 750000 950000>;
-+			clock-latency-ns = <40000>;
-+		};
-+		opp-1608000000 {
-+			opp-hz = /bits/ 64 <1608000000>;
-+			opp-microvolt = <787500 787500 950000>;
-+			clock-latency-ns = <40000>;
-+		};
-+		opp-1800000000 {
-+			opp-hz = /bits/ 64 <1800000000>;
-+			opp-microvolt = <875000 875000 950000>;
-+			clock-latency-ns = <40000>;
-+		};
-+		opp-2016000000 {
-+			opp-hz = /bits/ 64 <2016000000>;
-+			opp-microvolt = <950000 950000 950000>;
-+			clock-latency-ns = <40000>;
-+		};
-+	};
-+
-+	cluster2_opp_table: opp-table-cluster2 {
-+		compatible = "operating-points-v2";
-+		opp-shared;
-+
-+		opp-1416000000 {
-+			opp-hz = /bits/ 64 <1416000000>;
-+			opp-microvolt = <750000 750000 950000>;
-+			clock-latency-ns = <40000>;
-+		};
-+		opp-1608000000 {
-+			opp-hz = /bits/ 64 <1608000000>;
-+			opp-microvolt = <787500 787500 950000>;
-+			clock-latency-ns = <40000>;
-+		};
-+		opp-1800000000 {
-+			opp-hz = /bits/ 64 <1800000000>;
-+			opp-microvolt = <875000 875000 950000>;
-+			clock-latency-ns = <40000>;
-+		};
-+		opp-2016000000 {
-+			opp-hz = /bits/ 64 <2016000000>;
-+			opp-microvolt = <950000 950000 950000>;
-+			clock-latency-ns = <40000>;
-+		};
-+	};
-+};
-+
-+&cpu_b0 {
-+	operating-points-v2 = <&cluster1_opp_table>;
-+};
-+
-+&cpu_b1 {
-+	operating-points-v2 = <&cluster1_opp_table>;
-+};
-+
-+&cpu_b2 {
-+	operating-points-v2 = <&cluster2_opp_table>;
-+};
-+
-+&cpu_b3 {
-+	operating-points-v2 = <&cluster2_opp_table>;
-+};
-+
-+&cpu_l0 {
-+	operating-points-v2 = <&cluster0_opp_table>;
-+};
-+
-+&cpu_l1 {
-+	operating-points-v2 = <&cluster0_opp_table>;
-+};
-+
-+&cpu_l2 {
-+	operating-points-v2 = <&cluster0_opp_table>;
-+};
-+
-+&cpu_l3 {
-+	operating-points-v2 = <&cluster0_opp_table>;
++&gpu {
++	operating-points-v2 = <&gpu_opp_table>;
 +};
 
 -- 
