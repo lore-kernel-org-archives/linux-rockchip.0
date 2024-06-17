@@ -4,148 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 70DA3C27C53
-	for <linux-rockchip@archiver.kernel.org>; Mon, 17 Jun 2024 03:06:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 36580C27C77
+	for <linux-rockchip@archiver.kernel.org>; Mon, 17 Jun 2024 04:50:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Rmlebbv95BpMc85w2eJj3imDDBNkkt9QOKIDDkQU/Bk=; b=DMrKlcKWJidX+o
-	ustAgAOUR4Sc3lKYmQ8Ydfnyp8UO+V7H2dG0NYxkXxfg2jMmrnsBEk490eBBIWTIaafmJJddB89Ij
-	KyMVqMrV5oZewxY6eYYqIuWYWH+j9r3VlVZkpI8m6txnOITRJOwbvkBFlDbm+M4t4klo1mjoyZlEw
-	E+wifISJP3LR92fU8LMVcK0ifzTnilS2iMFWJ5q5ovKgfySolLYeZ/p9DLc2GA6Rp0KjOgUgeyKJz
-	rXtkEqGxoQvWkF4UdsRXBM3cLq8UuztAtwnA1llj6B9IIE4eMUXKS+4XuR16oLSdpPjBVYOhOsvwh
-	X6zvUx9/4cqidzuwAkqA==;
+	List-Owner; bh=clcklHWvYxjoLZEFUoTBVSSp+9ylBdYy0+4ZxxyPjJk=; b=KGqoDl4iNlVeZ2
+	zlWtAyWO6WN51vSuXe/jUcF+KVyNDzXD/6Aqyd+gsfJMW+XYCsD3lPaTZ7o6YJ2hrc5QmSna5S6Rb
+	SJrCZyvGP3hd+zCDpJRGyn0/2U+Z12Gs5CkPjP/gjmjc1WuBqLHCH5pxpN5dCaZkFpKNiogKhx0wC
+	r71WoZKG/HMdwU1jcE2HiobTJi9eplKENpfk0P1Db3ZzA/14fWPXMkQTcaDcjJTPI+e/bol7c2QOM
+	Iw/OJpdYX60cAHh9Dn+t6Xr3UDIlO7GYto6JZQ1XAPEhdXLvNRLCfB3M0MwxNMdrS5TsW+Pt6wtZK
+	4vLzkw2j1CWbFtpHH5jw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sJ2hn-00000008xcz-3CSI;
-	Mon, 17 Jun 2024 03:06:51 +0000
-Received: from mail-sgaapc01on20703.outbound.protection.outlook.com ([2a01:111:f400:feab::703] helo=APC01-SG2-obe.outbound.protection.outlook.com)
+	id 1sJ4JU-000000099R1-1z3P;
+	Mon, 17 Jun 2024 04:49:52 +0000
+Received: from mail-lj1-x230.google.com ([2a00:1450:4864:20::230])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sJ2hW-00000008xKg-3L2g;
-	Mon, 17 Jun 2024 03:06:36 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=YWoiiIalKEimLDA5VjUuoyeG5QV+1aYt3OQoF6K10Vd9y1jZWG8aSDAURIlVzoADENtBuCiEq9bvyKUg/1TWQOn6v8bO5kmtLTYGkgDKepowKhTnp+F4un9hN/3NB4pRFyrvYauf/P2g84hrrc7yybYeE1bgR/FWqoj5EVI4+21XqLuyWQlvbiekFcPIqnl4WAuf/xFpbAujro07lO2jXAGwLhVz6dIE2iiukrofhacpt2K40MIzPnT7yWmMC7xyscn+s2kbw7Z9yTM3g1URNmpXk2ZPtlFitvYWaL3aAn1TiCcWH1e4nEauxJTYQcbfIWxygnmLqi6zVwLK2MrIqA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=qPkpeSh/EdH3GIoVfq3PVuAd+950f8uiuR/32KMh2J0=;
- b=bdlhV2VlgcNyNPjM7rvsX8NexnXDubNUUooHLkrqqeI931r4mygcRHI62OVEN6W3JfKF4ZN2e2izLd+nE1CST4L+SsvoaMznCoPZUxPS8EB/Cvql8yLSt2pUOlQSNBG6lTG9uqMKxwM448hx2GLZ5jj34uw3xNLnixVskkoGZFV4pUBmx6JyP/tSNZek5hkE8hkDKTbuxInwvViZBcmePx7YGjZbqyKiwAdsqnQ8nC97PZ7HM/rSlrcr0AXF7YYrNbwNqs2S3IqCbowdvGK3nCve/kyoYCGKQa1rb1lc0bp1Dv3WGSxfXLi95UMsahHBbLDWTYBhakuzBRUqAH+9BA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=wesion.com; dmarc=pass action=none header.from=wesion.com;
- dkim=pass header.d=wesion.com; arc=none
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=wesion.com;
-Received: from TYZPR03MB7001.apcprd03.prod.outlook.com (2603:1096:400:26a::14)
- by KL1PR03MB8001.apcprd03.prod.outlook.com (2603:1096:820:fc::5) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7677.30; Mon, 17 Jun
- 2024 03:06:33 +0000
-Received: from TYZPR03MB7001.apcprd03.prod.outlook.com
- ([fe80::78dd:5e68:1a9c:36c0]) by TYZPR03MB7001.apcprd03.prod.outlook.com
- ([fe80::78dd:5e68:1a9c:36c0%6]) with mapi id 15.20.7677.029; Mon, 17 Jun 2024
- 03:06:33 +0000
-From: Jacobe Zang <jacobe.zang@wesion.com>
-To: robh@kernel.org,
-	krzk+dt@kernel.org,
-	conor+dt@kernel.org,
-	heiko@sntech.de
-Cc: nick@khadas.com,
-	efectn@protonmail.com,
-	jagan@edgeble.ai,
-	dsimic@manjaro.org,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Jacobe Zang <jacobe.zang@wesion.com>
-Subject: [PATCH v1 5/5] arm64: dts: rockchip: Add cpufreq support to Khadas Edge2
-Date: Mon, 17 Jun 2024 11:05:37 +0800
-Message-Id: <20240617030537.3112356-6-jacobe.zang@wesion.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20240617030537.3112356-1-jacobe.zang@wesion.com>
-References: <20240617030537.3112356-1-jacobe.zang@wesion.com>
-X-ClientProxiedBy: SG2PR02CA0038.apcprd02.prod.outlook.com
- (2603:1096:3:18::26) To TYZPR03MB7001.apcprd03.prod.outlook.com
- (2603:1096:400:26a::14)
+	id 1sJ4JQ-000000099Pj-07Rf;
+	Mon, 17 Jun 2024 04:49:49 +0000
+Received: by mail-lj1-x230.google.com with SMTP id 38308e7fff4ca-2ec10324791so37905391fa.1;
+        Sun, 16 Jun 2024 21:49:44 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1718599783; x=1719204583; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=sTcsLapfziraqL5I7y7PQaoUCT+4YQyvUORriwoh2W0=;
+        b=XvPHVVoJ0I+pU4+yIChO5B8Y+Lt8JbpZzY30Y8pQvMks33F3Ag3CcDgwoHbsQCZb/o
+         aThO2YvboiSs/4OEbXp0/2GPSZVXiGEr7oVX9k/hwmD+u/0s7hTFXGEjw8bGjCAQSrjH
+         nbCOKJTon2C/Fw4GxAE7Cr4Lp6h8W39PbtqzPNCtGTcVD/nePaL0xqHSs/KGlaPGvTcR
+         IRIgejQlxSEqS6hJ0dEMNy6BbdmGMSMOrXSXIR1eM4FXwKjMl4ncluW/TNCD8DOaHyWj
+         aqNoGZteZs39YVhWfo0Nunqkmbwj+alB9psx5zLk7yGSom5QcQkeoNBhQ2wPrIq5zHQZ
+         fdcg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1718599783; x=1719204583;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=sTcsLapfziraqL5I7y7PQaoUCT+4YQyvUORriwoh2W0=;
+        b=kz9frsjVLdOQCuC6eBEvQTfc5RGEWSz3k0ju8x1C3AtSVzN/1662Esvo6hFtwePVNY
+         rGbab89Wa+NcYqJNCpNV7IJnDBJmMWcZ54PSFx8sMkifYIP+RQ+gJs3YAJfDh5aj5t1K
+         o9Gob/ctiBF/wwy8nWiiAWQNgTf2zOgmUOEzqczyXr8olPA1Kt64h3hTD5w5rmGIN71u
+         i6CZVj5UigCaCiCvyidNcLwmK+g86MQQ11ewMh3THdkT5wIf5H4edQDn2avl9GPTEHSO
+         oY7m7zQOfeLAUC6yAZr+x1VE72UsxG+Lj8t4KQjxen9gnk0r0aTEIyWiRf+t/o9tZ7Fn
+         12qg==
+X-Forwarded-Encrypted: i=1; AJvYcCUfEPxWNaqGmEwvn+G4QW19DJ66rCoDYMGchksgGCv0gg99Gnv7A7GoOoF8hwUoRjwCh/rZvGyGl7vQIJO7A8KzZ69E8ALS4SbK7SMz7YKXXaFplPVg7L9bYpYBll9rE3UcM+3vtAyuNmG2oA4nIzHcE19rAynQ6sc=
+X-Gm-Message-State: AOJu0YxWgYKurbwTDqCa3AYpW5TwfZtfKFnLX6uKmsnLWCWggCV8sX7e
+	0Vj3R66vjaH5yqzpXugu+2Dio6zxQdoWnJ4ETsqxpX++PqkAXx4=
+X-Google-Smtp-Source: AGHT+IHGaOaU56C78kAWcjDSFV+4797wLmD5A0nFcP8YP4jkKkl3iGiS3Jy9e2GOVc06uqObHJshcw==
+X-Received: by 2002:a2e:9cc7:0:b0:2ec:3206:57e4 with SMTP id 38308e7fff4ca-2ec32065811mr978091fa.15.1718599782869;
+        Sun, 16 Jun 2024 21:49:42 -0700 (PDT)
+Received: from ?IPV6:2a02:810b:f40:4600:5ac5:53ec:b8ec:323? ([2a02:810b:f40:4600:5ac5:53ec:b8ec:323])
+        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-57cb743ada1sm5861056a12.96.2024.06.16.21.49.41
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sun, 16 Jun 2024 21:49:42 -0700 (PDT)
+Message-ID: <f301fb0b-bf87-49ef-847c-dbfae00f3a11@gmail.com>
+Date: Mon, 17 Jun 2024 06:49:41 +0200
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: TYZPR03MB7001:EE_|KL1PR03MB8001:EE_
-X-MS-Office365-Filtering-Correlation-Id: e2080625-729b-41da-6c7c-08dc8e7a7ddd
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230037|366013|7416011|376011|52116011|1800799021|38350700011;
-X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?UTBTw3DLA9FpSjSmIWIV3aC/mp+WBqv3xriuiWe5+G2RAEMRH//HdjFiaW4c?=
- =?us-ascii?Q?uJjoZ1Tj4bnmqe/IPQvMdG2dFyE8tOyqw134ByG3HyNnekkbm3H9rxtyqeqd?=
- =?us-ascii?Q?RbZmc9AgBJh9O0qRLPtXrnbf/tiAUs9YII5oHUa93fQdcQUhGbt1ehUROdZe?=
- =?us-ascii?Q?tIOGEqL42NWDRoQ0SixlzVW+8u74dZJ/PecPXIS8SIg10A1XpIj5TS/Q0LCm?=
- =?us-ascii?Q?QnbBvWgtXyE9tO1WV6MalwmwCciVqQoUgV0ljdmbrqUWSTCuNg7td5ejygt8?=
- =?us-ascii?Q?Oh5ERLwKcHUmp2LdtlsdtQAZoTIE6eQaoRah80zljKyj8FyZhcwWqUUzqlxQ?=
- =?us-ascii?Q?Wub/LoPimPYk+Cjl6SDRrFIlyES9QF9PvRlJEukN/UUZbbgiZbsq2I2HI0zJ?=
- =?us-ascii?Q?wQhYy92sUIjnlvevCVR10yxuqQRWlPFkZynWfw2zOowlL55YdQXSbJiFQLO9?=
- =?us-ascii?Q?qJFExt/VgMveCb2ooJwPgcxxnRZvUPhTNCE/Vh9lTmBf+gJ3yAmQrcgVv7qW?=
- =?us-ascii?Q?PXNRVoXwgIWItIqhwv4z8j8XiYMGdT9uWEIi4Af+//tIbtkxq/jXs6/m0xZ4?=
- =?us-ascii?Q?XuMJ6dEAkqMHmdKEmj/W1FbMo/K+lZYl4tJj4ctR0/qAL/iwqcuAxMWO/HD3?=
- =?us-ascii?Q?ZkfCFcQeYjV2GlOAsTGu7sgawoWQQ7RKOW0yJcahBA3wiZ/ONOKd1j+Y5wgL?=
- =?us-ascii?Q?v7cFvjl+TCOOftgvfdqrdObrsQUyvowJy3d4Ttii4EV5CoDHdi3QbKpx590z?=
- =?us-ascii?Q?jP98h9GkZTNWHwRE1V1S1Wizg+w/feRWNPyQ7COCaZND1Z9t0hlNt4s/AlGh?=
- =?us-ascii?Q?VeGlzJ6ZmluUjT0PB3HpkY38QbNK8MIY066I22eZ+c4z9PC4HLH2czDgRuta?=
- =?us-ascii?Q?3nKhojHGSv5aydgTAK+nX2yY/5wkfR3zd7rDjLXWtOlFcKH8/5GL2dXiEamF?=
- =?us-ascii?Q?/Vhc/41KpoM/LqRzB1hEFG09EvoDGmrnuoLdkiO243Jf+S4yGJgpCngdSatl?=
- =?us-ascii?Q?4RAt9AM/rLGKoHLWRrqtKJwqaAITAHNnKRsIRhszEmIH4AcV8YDJY6H9nzfm?=
- =?us-ascii?Q?jPMJq14HgrG9+zRMKhCBq8dKNdUoPLN/thBPItDXIt3XOemlbSv6glezBZGu?=
- =?us-ascii?Q?vVA1uPHwkf3tnQxvJXPqtiOKym1hdRwRntds58ntrBHfNZT1vkih4R3s3bgV?=
- =?us-ascii?Q?0c1FzVR1w9ZUXxgxPOGk0OF1K1w+/CvmLki1PhPIl1+0HWSbQXoyWoY6G3z2?=
- =?us-ascii?Q?5c6/Vz3c+JNKEar6UTpCAsRK1k5v+A4gbOoiaGK6apR+leHATUxydcRePEe2?=
- =?us-ascii?Q?wVtxaeEQ2CVKCNkEDb5kUDHvKtZNla3wDenuppq6XQbiGVLUYaAP9nh2iMNC?=
- =?us-ascii?Q?BF8swOc=3D?=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:TYZPR03MB7001.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230037)(366013)(7416011)(376011)(52116011)(1800799021)(38350700011);DIR:OUT;SFP:1102;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?XUpksFkEZI0lnaivtwRlCOsRXYCS5cquNDzGa3GP3lfF/1beCID2qLXq2iWm?=
- =?us-ascii?Q?u7T78w+Q30ZSmH7sOZYdPjFjOsPzVEo5tvd+2VdqUbAEcAAuO2AhmOi5QBXN?=
- =?us-ascii?Q?kFKC9ZMYNJ0MiLESEIcvElIKYxy/Yr0fzppd80941UKUpre9Cygl+2nx0LZa?=
- =?us-ascii?Q?+jk+H16vJnbqzNg5PDAUGWKDICqMrH4ogQDsDY+tOlwtI3c39Q/vnZLF0epE?=
- =?us-ascii?Q?MRq7mspBuvoVoRqf+0inUitYO+gdssAM/T8z6r23jVhm3dmhBo5+3/EnhS7u?=
- =?us-ascii?Q?tmaetD3d7ydFi8bGhuE/4/+cLuk366LgzkDFpNSYpMkoEnW/6zTwmLTsXbod?=
- =?us-ascii?Q?5QE5RRqFTEU1bJFm+fLtaNapXsokNqUqr/1RL+JoXIyFp56cNfsA1CaUj9/E?=
- =?us-ascii?Q?xLqQGUqVHN08ikwQEpMROISMwo7VGqKS7nSuSlAj9hf1BGFi/GHeazkcQ5Gu?=
- =?us-ascii?Q?8zclMmKEERMcG3mtuFTU+P5GCdBhKipqfnw0Ugw6nDFQbg/tPE90TYSc+8U0?=
- =?us-ascii?Q?NLW5ZACWLBEyBth+s4Ygl7I9TxFUvAEobeAOqi7wXKYbW5IGAMi47RD9uyWr?=
- =?us-ascii?Q?XAkGY+oFf8c+9riAEondV4LmfffH4BK191DmPQ7VgQVtprQlf8Ug8WTaQQZM?=
- =?us-ascii?Q?88/D9kgKNNOLsEdvKi8dBamxCi9RGrHKjtQX7Z2ETiiaBAahl9NEjHhY00L+?=
- =?us-ascii?Q?7C4+XbTCVz1/nX5dAuKrFruEQVO3bJF/zQ1WTG0HM4YE6HeuKUhcwSfnKozv?=
- =?us-ascii?Q?jMPS2IvMvzLCFkq/Uvl4iOPVL2Oscr/6Rod3gMlyrWdpEPLOge75JTKEREj6?=
- =?us-ascii?Q?5+zuLEzj3UCmW5OpOKukzc06mXF03U3FCAS/9ovbL5MgBNUWTxfXWAuUMnc7?=
- =?us-ascii?Q?exBRgpRwYwkRifoc7hd0B8VObrEOCekPoPhk9/wbqE9MrjP34S1THonPKOy0?=
- =?us-ascii?Q?MdeY7JmypXjQoL79mjyILx8uDJGV9Au/dYgy70rmOd7a6j/Y9iVcs29UsDSG?=
- =?us-ascii?Q?OzTZHIMG6OFiP7U+1HwetFzkIl54PDqsdSzg1W7aNwrXPsPK6OGJ5LozjpKX?=
- =?us-ascii?Q?VPKCkHT+XZo33nIEvl4SuOGhjjQrejlTaeLs1W2CibA6dNJClFaAPx1NZ42n?=
- =?us-ascii?Q?/XuYMWAUBSHTx2you46p2zkS3hvD2qZ5cRPiiyAMdP3AJ420tXe5l0mD3pTX?=
- =?us-ascii?Q?FTh9rHR/5iPZfq0SH+ubpPRkC4ym0XsJ5S8QZAlxrLy8rqF0N+nMljS1Q2tj?=
- =?us-ascii?Q?VJqIxuwsYcTzov3K0fmPymK2o8AZNgJi/BjUKngJI2ZGsAnLLr4w9agyaI+Y?=
- =?us-ascii?Q?mfnWjGiWSgujff1iRNcfG032SNgC18Gnf8EFlMDOs5jeqLka+qNMDYufPuKS?=
- =?us-ascii?Q?spdIEbcP4AkxSe80w7sgfG7qTYr6f/4008jYtwT2S22wigZNh6SFElCvkN20?=
- =?us-ascii?Q?UQYnidJ+1YY6QEBiclXISZke4Mu/pDD4ZRK/4+zCZbaXLhuM+FJOv4btd9MH?=
- =?us-ascii?Q?VWF+xSV0GjxeSUUo3vTmBqHRBPT/pAJ/nlA6F6Qoqs0pxrJ870oXSTl9WzrC?=
- =?us-ascii?Q?PtwvTCD94gDU1vflhNniAF4Lpq0n4xvTYRvgkoA/Wjx3PlGTPaKzEHY5GiYg?=
- =?us-ascii?Q?9A=3D=3D?=
-X-OriginatorOrg: wesion.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: e2080625-729b-41da-6c7c-08dc8e7a7ddd
-X-MS-Exchange-CrossTenant-AuthSource: TYZPR03MB7001.apcprd03.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 17 Jun 2024 03:06:33.0018
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 2dc3bd76-7ac2-4780-a5b7-6c6cc6b5af9b
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: g2GSoVlfs7oTdmRFwhBda4qD+iibGiFuM33hE7gVwHbsfBZMMk9mNQaQbhhl0wygC3lCkW10/sB5VcUAlfW+Dw==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: KL1PR03MB8001
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 1/3] media: rockchip: Introduce the rkvdec2 driver
+To: Detlev Casanova <detlev.casanova@collabora.com>,
+ linux-kernel@vger.kernel.org
+Cc: Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring
+ <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Sebastian Reichel <sebastian.reichel@collabora.com>,
+ Dragan Simic <dsimic@manjaro.org>, Alexey Charkov <alchark@gmail.com>,
+ Cristian Ciocaltea <cristian.ciocaltea@collabora.com>,
+ Diederik de Haas <didi.debian@cknow.org>, Andy Yan
+ <andy.yan@rock-chips.com>, linux-media@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-staging@lists.linux.dev
+References: <20240615015734.1612108-1-detlev.casanova@collabora.com>
+ <20240615015734.1612108-2-detlev.casanova@collabora.com>
+Content-Language: en-US
+From: Alex Bee <knaerzche@gmail.com>
+In-Reply-To: <20240615015734.1612108-2-detlev.casanova@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240616_200634_902197_10F24308 
-X-CRM114-Status: UNSURE (   8.37  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240616_214948_114080_BCD02CE2 
+X-CRM114-Status: GOOD (  28.16  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -157,85 +99,252 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This adjust CPU nodes on Khadas Edge2.
+Hi,
+Am 15.06.24 um 03:56 schrieb Detlev Casanova:
+> This driver supports the second generation of the Rockchip Video
+> decoder, also known as vdpu34x.
+> It is currently only used on the RK3588(s) SoC.
+> 
+> There are 2 decoders on the RK3588 SoC that can work in pair to decode
+> 8K video at 30 FPS but currently, only using one core at a time is
+> supported.
+> 
+> Scheduling requests between the two cores will be implemented later.
 
-Signed-off-by: Jacobe Zang <jacobe.zang@wesion.com>
----
- .../arm64/boot/dts/rockchip/rk3588s-khadas-edge2.dts | 12 ++++++++++--
- 1 file changed, 10 insertions(+), 2 deletions(-)
+Regarding the cores:
+Did anyone of you ever check the CCU (which I tink stands for central
+control unit). This feature doesn't seem to be implemented by the BSP
+(neither kernel nor mpp), but the configuration workflow is described
+pretty well in RK3588's TRM v 1.0 ("5.6.5 VDPU381 CCU configuration flow",
+page 676): It "sounds" a lot like with this enabled you do not even haven
+to care about scheduling/concurrency ... whatever for the cores - you're
+just saying how much cores you want to use and the rest is done by this HW
+block. I'm mentioning this early in the iterarration of this series as is
+it might / would infect DT modeling. The same is true, btw., for the 4
+hantro H1 encoder cores: They can also be controled by a (own) CCU.
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-khadas-edge2.dts b/arch/arm64/boot/dts/rockchip/rk3588s-khadas-edge2.dts
-index cdd5f124e3069..04796265f4b7e 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588s-khadas-edge2.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588s-khadas-edge2.dts
-@@ -160,34 +160,42 @@ vdd_3v3_sd: vdd-3v3-sd-regulator {
- 
- &cpu_b0 {
- 	cpu-supply = <&vdd_cpu_big0_s0>;
-+	mem-supply = <&vdd_cpu_big0_mem_s0>;
- };
- 
- &cpu_b1 {
- 	cpu-supply = <&vdd_cpu_big0_s0>;
-+	mem-supply = <&vdd_cpu_big0_mem_s0>;
- };
- 
- &cpu_b2 {
- 	cpu-supply = <&vdd_cpu_big1_s0>;
-+	mem-supply = <&vdd_cpu_big1_mem_s0>;
- };
- 
- &cpu_b3 {
- 	cpu-supply = <&vdd_cpu_big1_s0>;
-+	mem-supply = <&vdd_cpu_big1_mem_s0>;
- };
- 
- &cpu_l0 {
- 	cpu-supply = <&vdd_cpu_lit_s0>;
-+	mem-supply = <&vdd_cpu_lit_mem_s0>;
- };
- 
- &cpu_l1 {
- 	cpu-supply = <&vdd_cpu_lit_s0>;
-+	mem-supply = <&vdd_cpu_lit_mem_s0>;
- };
- 
- &cpu_l2 {
- 	cpu-supply = <&vdd_cpu_lit_s0>;
-+	mem-supply = <&vdd_cpu_lit_mem_s0>;
- };
- 
- &cpu_l3 {
- 	cpu-supply = <&vdd_cpu_lit_s0>;
-+	mem-supply = <&vdd_cpu_lit_mem_s0>;
- };
- 
- &combphy0_ps {
-@@ -208,7 +216,7 @@ &i2c0 {
- 	pinctrl-0 = <&i2c0m2_xfer>;
- 	status = "okay";
- 
--	vdd_cpu_big0_s0: regulator@42 {
-+	vdd_cpu_big0_s0: vdd_cpu_big0_mem_s0: regulator@42 {
- 		compatible = "rockchip,rk8602";
- 		reg = <0x42>;
- 		fcs,suspend-voltage-selector = <1>;
-@@ -225,7 +233,7 @@ regulator-state-mem {
- 		};
- 	};
- 
--	vdd_cpu_big1_s0: regulator@43 {
-+	vdd_cpu_big1_s0: vdd_cpu_big1_mem_s0: regulator@43 {
- 		compatible = "rockchip,rk8603", "rockchip,rk8602";
- 		reg = <0x43>;
- 		fcs,suspend-voltage-selector = <1>;
--- 
-2.34.1
+> The core supports H264, HEVC, VP9 and AVS2 decoding but this driver
+> currently only supports H264.
+> 
+> The driver is based on rkvdec and they may share some code in the
+> future.
+> The decision to make a different driver is mainly because rkvdec2 has
+> more features and can work with multiple cores.
+> 
+> The registers are mapped in a struct in RAM using bitfields. It is IO
+> copied to the HW when all values are configured.
+> The decision to use such a struct instead of writing buffers one by one
+> is based on the following reasons:
+>   - Rockchip cores are known to misbehave when registers are not written
+>     in address order,
+
+Could you please outline what makes you come to that conclusion?
+
+>   - Those cores also need the software to write all registers, even if
+>     they are written their default values or are not related to the task
+>     (this core will not start decoding some H264 frames if some VP9
+>     registers are not written to 0)
+>   - In the future, to support multiple cores, the scheduler could be
+>     optimized by storing the precomputed registers values and copy them
+>     to the HW as soos as a core becomes available.
+> 
+....
+
+> +/*
+> + * Constant CABAC table.
+> + */
+> +static const u32 rkvdec2_h264_cabac_table[928] = {
+> +	0x3602f114, 0xf1144a03, 0x4a033602, 0x68e97fe4, 0x36ff35fa, 0x21173307,
+> +	0x00150217, 0x31000901, 0x390576db, 0x41f54ef3, 0x310c3e01, 0x321149fc,
+> +	0x2b094012, 0x431a001d, 0x68095a10, 0x68ec7fd2, 0x4ef34301, 0x3e0141f5,
+> +	0x5fef56fa, 0x2d093dfa, 0x51fa45fd, 0x370660f5, 0x56fb4307, 0x3a005802,
+> +	0x5ef64cfd, 0x45043605, 0x580051fd, 0x4afb43f9, 0x50fb4afc, 0x3a0148f9,
+> +	0x3f002900, 0x3f003f00, 0x560453f7, 0x48f96100, 0x3e03290d, 0x4efc2d00,
+> +	0x7ee560fd, 0x65e762e4, 0x52e443e9, 0x53f05eec, 0x5beb6eea, 0x5df366ee,
+> +	0x5cf97fe3, 0x60f959fb, 0x2efd6cf3, 0x39ff41ff, 0x4afd5df7, 0x57f85cf7,
+> +	0x36057ee9, 0x3b063c06, 0x30ff4506, 0x45fc4400, 0x55fe58f8, 0x4bff4efa,
+> +	0x36024df9, 0x44fd3205, 0x2a063201, 0x3f0151fc, 0x430046fc, 0x4cfe3902,
+> +	0x4004230b, 0x230b3d01, 0x180c1912, 0x240d1d0d, 0x49f95df6, 0x2e0d49fe,
+> +	0x64f93109, 0x35023509, 0x3dfe3505, 0x38003800, 0x3cfb3ff3, 0x39043eff,
+> +	0x390445fa, 0x3304270e, 0x4003440d, 0x3f093d01, 0x27103207, 0x34042c05,
+> +	0x3cfb300b, 0x3b003bff, 0x2c052116, 0x4eff2b0e, 0x45093c00, 0x28021c0b,
+> +	0x31002c03, 0x2c022e00, 0x2f003302, 0x3e022704, 0x36002e06, 0x3a023603,
+> +	0x33063f04, 0x35073906, 0x37063406, 0x240e2d0b, 0x52ff3508, 0x4efd3707,
+> +	0x1f162e0f, 0x071954ff, 0x031cf91e, 0x0020041c, 0x061eff22, 0x0920061e,
+> +	0x1b1a131f, 0x14251e1a, 0x4611221c, 0x3b054301, 0x1e104309, 0x23122012,
+> +	0x1f181d16, 0x2b122617, 0x3f0b2914, 0x40093b09, 0x59fe5eff, 0x4cfa6cf7,
+> +	0x2d002cfe, 0x40fd3400, 0x46fc3bfe, 0x52f84bfc, 0x4df766ef, 0x2a001803,
+> +	0x37003000, 0x47f93bfa, 0x57f553f4, 0x3a0177e2, 0x24ff1dfd, 0x2b022601,
+> +	0x3a0037fa, 0x4afd4000, 0x46005af6, 0x1f051dfc, 0x3b012a07, 0x48fd3afe,
+> +	0x61f551fd, 0x05083a00, 0x120e0e0a, 0x28021b0d, 0x46fd3a00, 0x55f84ffa,
+> +	0x6af30000, 0x57f66af0, 0x6eee72eb, 0x6eea62f2, 0x67ee6aeb, 0x6ce96beb,
+> +	0x60f670e6, 0x5bfb5ff4, 0x5eea5df7, 0x430956fb, 0x55f650fc, 0x3c0746ff,
+> +	0x3d053a09, 0x320f320c, 0x36113112, 0x2e07290a, 0x310733ff, 0x29093408,
+> +	0x37022f06, 0x2c0a290d, 0x35053206, 0x3f04310d, 0x45fe4006, 0x46063bfe,
+> +	0x1f092c0a, 0x35032b0c, 0x260a220e, 0x280d34fd, 0x2c072011, 0x320d2607,
+> +	0x2b1a390a, 0x0e0b0b0e, 0x0b120b09, 0xfe170915, 0xf120f120, 0xe927eb22,
+> +	0xe129df2a, 0xf426e42e, 0xe82d1d15, 0xe630d335, 0xed2bd541, 0x091ef627,
+> +	0x1b141a12, 0x52f23900, 0x61ed4bfb, 0x001b7ddd, 0xfc1f001c, 0x0822061b,
+> +	0x16180a1e, 0x20161321, 0x29151f1a, 0x2f172c1a, 0x470e4110, 0x3f063c08,
+> +	0x18154111, 0x171a1417, 0x171c201b, 0x2817181c, 0x1d1c2018, 0x39132a17,
+> +	0x3d163516, 0x280c560b, 0x3b0e330b, 0x47f94ffc, 0x46f745fb, 0x44f642f8,
+> +	0x45f449ed, 0x43f146f0, 0x46ed3eec, 0x41ea42f0, 0xfe093fec, 0xf721f71a,
+> +	0xfe29f927, 0x0931032d, 0x3b241b2d, 0x23f942fa, 0x2df82af9, 0x38f430fb,
+> +	0x3efb3cfa, 0x4cf842f8, 0x51fa55fb, 0x51f94df6, 0x49ee50ef, 0x53f64afc,
+> +	0x43f747f7, 0x42f83dff, 0x3b0042f2, 0xf3153b02, 0xf927f221, 0x0233fe2e,
+> +	0x113d063c, 0x3e2a2237, 0x00000000, 0x00000000, 0x3602f114, 0xf1144a03,
+> +	0x4a033602, 0x68e97fe4, 0x36ff35fa, 0x19163307, 0x00100022, 0x290409fe,
+> +	0x410276e3, 0x4ff347fa, 0x32093405, 0x360a46fd, 0x1613221a, 0x02390028,
+> +	0x451a2429, 0x65f17fd3, 0x47fa4cfc, 0x34054ff3, 0x5af34506, 0x2b083400,
+> +	0x52fb45fe, 0x3b0260f6, 0x57fd4b02, 0x380164fd, 0x55fa4afd, 0x51fd3b00,
+> +	0x5ffb56f9, 0x4dff42ff, 0x56fe4601, 0x3d0048fb, 0x3f002900, 0x3f003f00,
+> +	0x560453f7, 0x48f96100, 0x3e03290d, 0x33070f0d, 0x7fd95002, 0x60ef5bee,
+> +	0x62dd51e6, 0x61e966e8, 0x63e877e5, 0x66ee6eeb, 0x50007fdc, 0x5ef959fb,
+> +	0x27005cfc, 0x54f14100, 0x49fe7fdd, 0x5bf768f4, 0x37037fe1, 0x37073807,
+> +	0x35fd3d08, 0x4af94400, 0x67f358f7, 0x59f75bf3, 0x4cf85cf2, 0x6ee957f4,
+> +	0x4ef669e8, 0x63ef70ec, 0x7fba7fb2, 0x7fd27fce, 0x4efb42fc, 0x48f847fc,
+> +	0x37ff3b02, 0x4bfa46f9, 0x77de59f8, 0x14204bfd, 0x7fd4161e, 0x3dfb3600,
+> +	0x3cff3a00, 0x43f83dfd, 0x4af254e7, 0x340541fb, 0x3d003902, 0x46f545f7,
+> +	0x47fc3712, 0x3d073a00, 0x19122909, 0x2b052009, 0x2c002f09, 0x2e023300,
+> +	0x42fc2613, 0x2a0c260f, 0x59002209, 0x1c0a2d04, 0xf5211f0a, 0x0f12d534,
+> +	0xea23001c, 0x0022e726, 0xf420ee27, 0x0000a266, 0xfc21f138, 0xfb250a1d,
+> +	0xf727e333, 0xc645de34, 0xfb2cc143, 0xe3370720, 0x00000120, 0xe721241b,
+> +	0xe424e222, 0xe526e426, 0xf023ee22, 0xf820f222, 0x0023fa25, 0x121c0a1e,
+> +	0x291d191a, 0x48024b00, 0x230e4d08, 0x23111f12, 0x2d111e15, 0x2d122a14,
+> +	0x36101a1b, 0x38104207, 0x430a490b, 0x70e974f6, 0x3df947f1, 0x42fb3500,
+> +	0x50f74df5, 0x57f654f7, 0x65eb7fde, 0x35fb27fd, 0x4bf53df9, 0x5bef4df1,
+> +	0x6fe76be7, 0x4cf57ae4, 0x34f62cf6, 0x3af739f6, 0x45f948f0, 0x4afb45fc,
+> +	0x420256f7, 0x200122f7, 0x34051f0b, 0x43fe37fe, 0x59f84900, 0x04073403,
+> +	0x0811080a, 0x25031310, 0x49fb3dff, 0x4efc46ff, 0x7eeb0000, 0x6eec7ce9,
+> +	0x7ce77ee6, 0x79e569ef, 0x66ef75e5, 0x74e575e6, 0x5ff67adf, 0x5ff864f2,
+> +	0x72e46fef, 0x50fe59fa, 0x55f752fc, 0x48ff51f8, 0x43014005, 0x45003809,
+> +	0x45074501, 0x43fa45f9, 0x40fe4df0, 0x43fa3d02, 0x390240fd, 0x42fd41fd,
+> +	0x33093e00, 0x47fe42ff, 0x46ff4bfe, 0x3c0e48f7, 0x2f002510, 0x250b2312,
+> +	0x290a290c, 0x290c3002, 0x3b00290d, 0x28133203, 0x32124203, 0xfa12fa13,
+> +	0xf41a000e, 0xe721f01f, 0xe425ea21, 0xe22ae227, 0xdc2dd62f, 0xef29de31,
+> +	0xb9450920, 0xc042c13f, 0xd936b64d, 0xf629dd34, 0xff280024, 0x1a1c0e1e,
+> +	0x370c2517, 0xdf25410b, 0xdb28dc27, 0xdf2ee226, 0xe828e22a, 0xf426e331,
+> +	0xfd26f628, 0x141ffb2e, 0x2c191e1d, 0x310b300c, 0x16162d1a, 0x151b1617,
+> +	0x1c1a1421, 0x221b181e, 0x27192a12, 0x460c3212, 0x470e3615, 0x2019530b,
+> +	0x36153115, 0x51fa55fb, 0x51f94df6, 0x49ee50ef, 0x53f64afc, 0x43f747f7,
+> +	0x42f83dff, 0x3b0042f2, 0xf6113b02, 0xf72af320, 0x0035fb31, 0x0a440340,
+> +	0x392f1b42, 0x180047fb, 0x2afe24ff, 0x39f734fe, 0x41fc3ffa, 0x52f943fc,
+> +	0x4cfd51fd, 0x4efa48f9, 0x44f248f4, 0x4cfa46fd, 0x3efb42fb, 0x3dfc3900,
+> +	0x36013cf7, 0xf6113a02, 0xf72af320, 0x0035fb31, 0x0a440340, 0x392f1b42,
+> +	0x00000000, 0x00000000, 0x3602f114, 0xf1144a03, 0x4a033602, 0x68e97fe4,
+> +	0x36ff35fa, 0x101d3307, 0x000e0019, 0x3efd33f6, 0x101a63e5, 0x66e855fc,
+> +	0x39063905, 0x390e49ef, 0x0a142814, 0x0036001d, 0x610c2a25, 0x75ea7fe0,
+> +	0x55fc4afe, 0x390566e8, 0x58f25dfa, 0x37042cfa, 0x67f159f5, 0x391374eb,
+> +	0x54043a14, 0x3f016006, 0x6af355fb, 0x4b063f05, 0x65ff5afd, 0x4ffc3703,
+> +	0x61f44bfe, 0x3c0132f9, 0x3f002900, 0x3f003f00, 0x560453f7, 0x48f96100,
+> +	0x3e03290d, 0x58f72207, 0x7fdc7fec, 0x5ff25bef, 0x56e754e7, 0x5bef59f4,
+> +	0x4cf27fe1, 0x5af367ee, 0x500b7fdb, 0x54024c05, 0x37fa4e05, 0x53f23d04,
+> +	0x4ffb7fdb, 0x5bf568f5, 0x41007fe2, 0x48004ffe, 0x38fa5cfc, 0x47f84403,
+> +	0x56fc62f3, 0x52fb58f4, 0x43fc48fd, 0x59f048f8, 0x3bff45f7, 0x39044205,
+> +	0x47fe47fc, 0x4aff3a02, 0x45ff2cfc, 0x33f93e00, 0x2afa2ffc, 0x35fa29fd,
+> +	0x4ef74c08, 0x340953f5, 0x5afb4300, 0x48f14301, 0x50f84bfb, 0x40eb53eb,
+> +	0x40e71ff3, 0x4b095ee3, 0x4af83f11, 0x1bfe23fb, 0x41035b0d, 0x4d0845f9,
+> +	0x3e0342f6, 0x51ec44fd, 0x07011e00, 0x4aeb17fd, 0x7ce94210, 0xee2c2511,
+> +	0x7feade32, 0x2a002704, 0x1d0b2207, 0x25061f08, 0x28032a07, 0x2b0d2108,
+> +	0x2f04240d, 0x3a023703, 0x2c083c06, 0x2a0e2c0b, 0x38043007, 0x250d3404,
+> +	0x3a133109, 0x2d0c300a, 0x21144500, 0xee233f08, 0xfd1ce721, 0x001b0a18,
+> +	0xd434f222, 0x1113e827, 0x1d24191f, 0x0f222118, 0x4916141e, 0x1f132214,
+> +	0x10132c1b, 0x240f240f, 0x15191c15, 0x0c1f141e, 0x2a18101b, 0x380e5d00,
+> +	0x261a390f, 0x73e87fe8, 0x3ef752ea, 0x3b003500, 0x59f355f2, 0x5cf55ef3,
+> +	0x64eb7fe3, 0x43f439f2, 0x4df647f5, 0x58f055eb, 0x62f168e9, 0x52f67fdb,
+> +	0x3df830f8, 0x46f942f8, 0x4ff64bf2, 0x5cf453f7, 0x4ffc6cee, 0x4bf045ea,
+> +	0x3a013afe, 0x53f74ef3, 0x63f351fc, 0x26fa51f3, 0x3afa3ef3, 0x49f03bfe,
+> +	0x56f34cf6, 0x57f653f7, 0x7fea0000, 0x78e77fe7, 0x72ed7fe5, 0x76e775e9,
+> +	0x71e875e6, 0x78e176e4, 0x5ef67cdb, 0x63f666f1, 0x7fce6af3, 0x39115cfb,
+> +	0x5ef356fb, 0x4dfe5bf4, 0x49ff4700, 0x51f94004, 0x390f4005, 0x44004301,
+> +	0x440143f6, 0x40024d00, 0x4efb4400, 0x3b053707, 0x360e4102, 0x3c052c0f,
+> +	0x4cfe4602, 0x460c56ee, 0x46f44005, 0x3805370b, 0x41024500, 0x36054afa,
+> +	0x4cfa3607, 0x4dfe52f5, 0x2a194dfe, 0xf710f311, 0xeb1bf411, 0xd829e225,
+> +	0xd130d72a, 0xd82ee027, 0xd72ecd34, 0xed2bd934, 0xc93d0b20, 0xce3ed238,
+> +	0xec2dbd51, 0x0f1cfe23, 0x01270122, 0x2614111e, 0x360f2d12, 0xf0244f00,
+> +	0xef25f225, 0x0f220120, 0x19180f1d, 0x101f1622, 0x1c1f1223, 0x1c242921,
+> +	0x3e152f1b, 0x1a131f12, 0x17181824, 0x1e18101b, 0x29161d1f, 0x3c102a16,
+> +	0x3c0e340f, 0x7bf04e03, 0x38163515, 0x21153d19, 0x3d113213, 0x4af84efd,
+> +	0x48f648f7, 0x47f44bee, 0x46fb3ff5, 0x48f24bef, 0x35f843f0, 0x34f73bf2,
+> +	0xfe0944f5, 0xfc1ff61e, 0x0721ff21, 0x17250c1f, 0x4014261f, 0x25f947f7,
+> +	0x31f52cf8, 0x3bf438f6, 0x43f73ff8, 0x4ff644fa, 0x4af84efd, 0x48f648f7,
+> +	0x47f44bee, 0x46fb3ff5, 0x48f24bef, 0x35f843f0, 0x34f73bf2, 0xfe0944f5,
+> +	0xfc1ff61e, 0x0721ff21, 0x17250c1f, 0x4014261f, 0x00000000, 0x00000000,
+> +	0x3602f114, 0xf1144a03, 0x4a033602, 0x68e97fe4, 0x36ff35fa, 0x00003307,
+> +	0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000,
+> +	0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000,
+> +	0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000,
+> +	0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000,
+> +	0x3f002900, 0x3f003f00, 0x560453f7, 0x48f96100, 0x3e03290d, 0x37010b00,
+> +	0x7fef4500, 0x520066f3, 0x6beb4af9, 0x7fe17fe5, 0x5fee7fe8, 0x72eb7fe5,
+> +	0x7bef7fe2, 0x7af073f4, 0x3ff473f5, 0x54f144fe, 0x46fd68f3, 0x5af65df8,
+> +	0x4aff7fe2, 0x5bf961fa, 0x38fc7fec, 0x4cf952fb, 0x5df97dea, 0x4dfd57f5,
+> +	0x3ffc47fb, 0x54f444fc, 0x41f93ef9, 0x38053d08, 0x400142fe, 0x4efe3d00,
+> +	0x34073201, 0x2c00230a, 0x2d01260b, 0x2c052e00, 0x3301111f, 0x131c3207,
+> +	0x3e0e2110, 0x64f16cf3, 0x5bf365f3, 0x58f65ef4, 0x56f654f0, 0x57f353f9,
+> +	0x46015eed, 0x4afb4800, 0x66f83b12, 0x5f0064f1, 0x48024bfc, 0x47fd4bf5,
+> +	0x45f32e0f, 0x41003e00, 0x48f12515, 0x36103909, 0x480c3e00, 0x090f0018,
+> +	0x120d1908, 0x130d090f, 0x120c250a, 0x21141d06, 0x2d041e0f, 0x3e003a01,
+> +	0x260c3d07, 0x270f2d0b, 0x2c0d2a0b, 0x290c2d10, 0x221e310a, 0x370a2a12,
+> +	0x2e113311, 0xed1a5900, 0xef1aef16, 0xec1ce71e, 0xe525e921, 0xe428e921,
+> +	0xf521ef26, 0xfa29f128, 0x11290126, 0x031bfa1e, 0xf025161a, 0xf826fc23,
+> +	0x0325fd26, 0x002a0526, 0x16271023, 0x251b300e, 0x440c3c15, 0x47fd6102,
+> +	0x32fb2afa, 0x3efe36fd, 0x3f013a00, 0x4aff48fe, 0x43fb5bf7, 0x27fd1bfb,
+> +	0x2e002cfe, 0x44f840f0, 0x4dfa4ef6, 0x5cf456f6, 0x3cf637f1, 0x41fc3efa,
+> +	0x4cf849f4, 0x58f750f9, 0x61f56eef, 0x4ff554ec, 0x4afc49fa, 0x60f356f3,
+> +	0x75ed61f5, 0x21fb4ef8, 0x35fe30fc, 0x47f33efd, 0x56f44ff6, 0x61f25af3,
+> +	0x5dfa0000, 0x4ff854fa, 0x47ff4200, 0x3cfe3e00, 0x4bfb3bfe, 0x3afc3efd,
+> +	0x4fff42f7, 0x44034700, 0x3ef92c0a, 0x280e240f, 0x1d0c1b10, 0x24142c01,
+> +	0x2a052012, 0x3e0a3001, 0x40092e11, 0x61f568f4, 0x58f960f0, 0x55f955f8,
+> +	0x58f355f7, 0x4dfd4204, 0x4cfa4cfd, 0x4cff3a0a, 0x63f953ff, 0x5f025ff2,
+> +	0x4afb4c00, 0x4bf54600, 0x41004401, 0x3e0349f2, 0x44ff3e04, 0x370b4bf3,
+> +	0x460c4005, 0x1306060f, 0x0e0c1007, 0x0b0d0d12, 0x100f0f0d, 0x170d170c,
+> +	0x1a0e140f, 0x28112c0e, 0x11182f11, 0x16191515, 0x1d161b1f, 0x320e2313,
+> +	0x3f07390a, 0x52fc4dfe, 0x45095efd, 0xdd246df4, 0xe620de24, 0xe02ce225,
+> +	0xf122ee22, 0xf921f128, 0x0021fb23, 0x0d210226, 0x3a0d2317, 0x001afd1d,
+> +	0xf91f1e16, 0xfd22f123, 0xff240322, 0x0b200522, 0x0c220523, 0x1d1e0b27,
+> +	0x271d1a22, 0x151f4213, 0x32191f1f, 0x70ec78ef, 0x55f572ee, 0x59f25cf1,
+> +	0x51f147e6, 0x440050f2, 0x38e846f2, 0x32e844e9, 0xf3174af5, 0xf128f31a,
+> +	0x032cf231, 0x222c062d, 0x52133621, 0x17ff4bfd, 0x2b012201, 0x37fe3600,
+> +	0x40013d00, 0x5cf74400, 0x61f36af2, 0x5af45af1, 0x49f658ee, 0x56f24ff7,
+> +	0x46f649f6, 0x42fb45f6, 0x3afb40f7, 0xf6153b02, 0xf81cf518, 0x031dff1c,
+> +	0x1423091d, 0x430e241d, 0x00000000, 0x00000000
+> +};
+
+If I'm seeing it correctly the H.264 CABAC table it the same like for the
+old rkvdec version. Boris did such a great job with constructing it based
+on the standard. Please reuse it instead of pasting blobs.
+
+> +
+> +static void assemble_hw_pps(struct rkvdec2_ctx *ctx,
+> +			    struct rkvdec2_h264_run *run)
+> +{
+> +	struct rkvdec2_h264_ctx *h264_ctx = ctx->priv;
+> +	const struct v4l2_ctrl_h264_sps *sps = run->sps;
+> +	const struct v4l2_ctrl_h264_pps *pps = run->pps;
+> +	const struct v4l2_ctrl_h264_decode_params *dec_params = run->decode_params;
+> +	const struct v4l2_h264_dpb_entry *dpb = dec_params->dpb;
+> +	struct rkvdec2_h264_priv_tbl *priv_tbl = h264_ctx->priv_tbl.cpu;
+> +	struct rkvdec2_sps_pps *hw_ps;
+> +	dma_addr_t scaling_list_address;
+> +	u32 scaling_distance;
+> +	u32 i;
+
+....
+
+> +	__iowrite32_copy_full(rkvdec->regs + OFFSET_COMMON_REGS,
+> +			      &h264_ctx->regs.common,
+> +			      sizeof(h264_ctx->regs.common));
+This will limit the driver to arm64 which is not great. Rockchip is still
+inventing (vision) SoCs based on arm which might want to use this driver as
+well. So there should be at least an alternative.
+
+Alex
 
 
 _______________________________________________
