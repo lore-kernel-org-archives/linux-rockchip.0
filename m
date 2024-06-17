@@ -4,66 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 97002C2BA18
-	for <linux-rockchip@archiver.kernel.org>; Mon, 17 Jun 2024 11:31:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DDFE7C27C79
+	for <linux-rockchip@archiver.kernel.org>; Mon, 17 Jun 2024 12:03:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=rQF2YWTm6NyY61Fe562YizZLtQguCS0dTG/U4OtuLY8=; b=AF6oU5rU27HfR6uhxl1EmTkDXG
-	ZQYoPj2BJI/qDwvwZ8lSERx4DmiGog8Ub578bb5f50tz9F8r1gs1Az9MyUiBdmaYw5QuqIJPDlkfS
-	DAXNfxUvG43uS3vtDaau06D67Nxp2FA/wqjX1eBiAXXzygFoPsEo6YDmaChak3kmAVdDzSoHh80n+
-	wI4rj+kSZy0SkfMiXJSvkeCPlz4K4Ml6lPVDKqFq/B2LY1QdOcPQLbZuXME8VjF35cpBYyoteiYDa
-	/osK18Ge3rev6H4u+8HowfKJMnhtrHeoPnzqxk9lrmXF5Mti2cU1TM8/ittNPBIfCPMOwVS7qci4H
-	/kB4tBdA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=9ddJDWgWEzNzRu6HrJwehsKdl7TH0gzs+NojajSY5Mw=; b=4WjseCkBp/w31D
+	raFq29O01Rfk4rgyeWMNvp0MqA4G5eR7CFP+SSiCArFzCO7qgelzfX5Y2VQ13gt7FRW2qUBJ17LpS
+	SGi3R8lLyl0c+H8xuRlawuy+oFCykLtSYlV6LnQWJnhPdsN+aOvfPq8wjnQFyDymk867fegEL2Fhd
+	C6BM6/hqPHHZ1PIXNEbts7gIExlQpuu2wK6wX4JGMBMnlrZ9ECqwYPKOkKmq/jCHMJAFmdT8X5+K4
+	9mfDhaMkWkT9VrLwRe5AU2ca/pkmmlhx3uOtNmmplU7ARHYENSteNOq94Wb6ViYmaG/Ke5GirieSc
+	HWyBCXqD9yzHoxq884qg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sJAZf-0000000AUfu-0c70;
-	Mon, 17 Jun 2024 11:30:59 +0000
-Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
+	id 1sJB4n-0000000Aaai-1NQK;
+	Mon, 17 Jun 2024 12:03:09 +0000
+Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sJAZc-0000000AUfC-0VQW
+	id 1sJB4k-0000000AaYS-2FfB
 	for linux-rockchip@lists.infradead.org;
-	Mon, 17 Jun 2024 11:30:57 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1718623852;
-	bh=HzBwIhrvBDEM5gpG4WaMTS01iW2I1HhXUnZuP86SIlY=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=hnqAzZCiyk1aGB6H02eNX0ndmijhYXmeo8UhmiPnvoqkJ/Z8oNxbyDYrr7gqz+U/8
-	 FQaragdjVfcnexMovURVKJPysXA0KgPY4ysd/8kLXIdGkj/RIyTDh2Uu6ig6XEKQp0
-	 YkjZx9CViut6Mp5jAbyw7+1j7dhozmCO9qJOlbb5h0fM7c1HZSZzbE2UnsEQw6aG7n
-	 4BvNkU8cvT+9ACjNXIZPTgeUMHl9FlIFm5ngHbkec9vBYroVE4eIYBhFFHJYwxjsew
-	 rGZEQ+auVWYN3Mdx9M5HoN523vzdbtKAuTMX3nMG03mH6OxTrenBH/fWtAVoqJKKyN
-	 7QB1p2bjBYN6w==
-Received: from mercury (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: sre)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id D73A137804C8;
-	Mon, 17 Jun 2024 11:30:52 +0000 (UTC)
-Received: by mercury (Postfix, from userid 1000)
-	id 72F681060734; Mon, 17 Jun 2024 13:30:52 +0200 (CEST)
-Date: Mon, 17 Jun 2024 13:30:52 +0200
-From: Sebastian Reichel <sebastian.reichel@collabora.com>
-To: Jianfeng Liu <liujianfeng1994@gmail.com>
-Cc: conor+dt@kernel.org, devicetree@vger.kernel.org, 
-	ezequiel@vanguardiasur.com.ar, frattaroli.nicolas@gmail.com, heiko@sntech.de, 
-	kernel@collabora.com, krzk+dt@kernel.org, linkmauve@linkmauve.fr, 
-	linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
-	nicolas.dufresne@collabora.com, p.zabel@pengutronix.de, robh@kernel.org
-Subject: Re: [PATCH v6 4/6] media: hantro: Add RK3588 VEPU121
-Message-ID: <o6iccgurpi7sraq7plxaccz37i44te4jaqicnp2nqbke2qtskh@4kboulg3zywx>
-References: <20240613135034.31684-5-sebastian.reichel@collabora.com>
- <20240617025022.25122-1-liujianfeng1994@gmail.com>
+	Mon, 17 Jun 2024 12:03:08 +0000
+Received: by mail-wm1-x336.google.com with SMTP id 5b1f17b1804b1-4217d808034so37326305e9.3
+        for <linux-rockchip@lists.infradead.org>; Mon, 17 Jun 2024 05:03:03 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1718625781; x=1719230581; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=d8Fhf4JOX+eQHmfKJgo0VL59I075x6PJI/pMFa803UQ=;
+        b=uPneFReEYPVx+SvQOC4GSNmidil2euKuzRsafDRYJlPHyDRrMVWql9Cx8e5CD0wW9d
+         KuGNDUGS8RCkPUQHx83nqg1jPXbQStvliY+tKbIAidlGa76Jg5BSflEcTHNDeVitN4BK
+         lhxGAfn7tcTuhLmVVl1kpnSakbQC3J4BEo45S28ir31xdV7HPOMGGBQh7NQGqeyGz9x1
+         u6Br8o75PthO5BbsYzd3kkGgrAhSbj8NUsReZwTYSCz+KTPmih1s3K3awM1IZZsgm8Ks
+         v3QfpXwXJ0sevSXdZS6JoyB0V9zbus2uHV4w/yWgYUHMYkhJrpvIUYqzRPBXCNq2E9YG
+         S5yw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1718625781; x=1719230581;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=d8Fhf4JOX+eQHmfKJgo0VL59I075x6PJI/pMFa803UQ=;
+        b=sH/aM/ySqUKSKas4NvoTzV5+cq3CIOFdXN5ck1DtyTWleyjRIRSa4IifjjpskqltlS
+         pGjJ3eur6IQouqJPMD5+9KQa0R7E4+vw+znkTMm74DBiBay3Tn8jWLuYPjUYQEPC2cd1
+         PymczqmOPuEtQEX5f44+X1qXm7YWKXYI3JNVz7M5IbbtDwayh+15g+ePDVRlJpIHn8E1
+         XZsn0ijBgbRY0aLOw3Pqc2Pv2B0CU942yu45BmTjnvFDBm+ea9rx0Mn3WOP36e3/gET0
+         5tVqk2chwkRoKBrBkX9DLrfzieLsTMNuwJMIzK5GJyIBzvcdZon9Dnv6MRI1m8clvxm5
+         69pw==
+X-Forwarded-Encrypted: i=1; AJvYcCUcLuEBGWW9tumO8HT+I7qL352/uuA2S+4JUPThXieDR+V4fuW3mjDwVvZOWeq//wxn5weDWNJoR7bbs5WV14avG+fellSXczBwUQFffFZbHTmA
+X-Gm-Message-State: AOJu0YzMlxTcfRg/vuEpd+0XVQ/P8E2G+i4KPMp9KJAsR02VklwzJMSY
+	JTt9atOYndAPoyxS+DDIPLFOpC2U4e3KLttgm6/LvODUq2SKo/b1oBNA2qMqXyE=
+X-Google-Smtp-Source: AGHT+IETqjtVw4vm/BaAXb+7+BMz4Su+YcAJ5zJwSTOWHGTDcdm9ORyc65IHd9xEKGG8oTMrigZ+jg==
+X-Received: by 2002:a05:600c:1d0f:b0:423:4c2:7a43 with SMTP id 5b1f17b1804b1-42304c27b17mr80244375e9.0.1718625781238;
+        Mon, 17 Jun 2024 05:03:01 -0700 (PDT)
+Received: from localhost ([102.222.70.76])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-422f6127c1esm156486645e9.23.2024.06.17.05.03.00
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 17 Jun 2024 05:03:00 -0700 (PDT)
+Date: Mon, 17 Jun 2024 15:02:56 +0300
+From: Dan Carpenter <dan.carpenter@linaro.org>
+To: Detlev Casanova <detlev.casanova@collabora.com>
+Cc: linux-kernel@vger.kernel.org,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Sebastian Reichel <sebastian.reichel@collabora.com>,
+	Dragan Simic <dsimic@manjaro.org>,
+	Alexey Charkov <alchark@gmail.com>,
+	Cristian Ciocaltea <cristian.ciocaltea@collabora.com>,
+	Diederik de Haas <didi.debian@cknow.org>,
+	Andy Yan <andy.yan@rock-chips.com>, linux-media@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-staging@lists.linux.dev
+Subject: Re: [PATCH 1/3] media: rockchip: Introduce the rkvdec2 driver
+Message-ID: <94b9e0fd-2f4f-4d75-ae39-7d780a4e6374@moroto.mountain>
+References: <20240615015734.1612108-1-detlev.casanova@collabora.com>
+ <20240615015734.1612108-2-detlev.casanova@collabora.com>
 MIME-Version: 1.0
-In-Reply-To: <20240617025022.25122-1-liujianfeng1994@gmail.com>
+Content-Disposition: inline
+In-Reply-To: <20240615015734.1612108-2-detlev.casanova@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240617_043056_358954_5524A583 
-X-CRM114-Status: UNSURE (   8.71  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240617_050306_689482_98EB9161 
+X-CRM114-Status: GOOD (  15.27  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,70 +101,71 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============7395488962253535689=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+On Fri, Jun 14, 2024 at 09:56:27PM -0400, Detlev Casanova wrote:
+> +static int rkvdec2_start_streaming(struct vb2_queue *q, unsigned int count)
+> +{
+> +	struct rkvdec2_ctx *ctx = vb2_get_drv_priv(q);
+> +	const struct rkvdec2_coded_fmt_desc *desc;
+> +	int ret, i;
+> +	u32 width, height;
+> +
+> +	if (V4L2_TYPE_IS_CAPTURE(q->type))
+> +		return 0;
+> +
+> +	desc = ctx->coded_fmt_desc;
+> +	if (WARN_ON(!desc))
+> +		return -EINVAL;
+> +
+> +	width = ctx->decoded_fmt.fmt.pix_mp.width;
+> +	height = ctx->decoded_fmt.fmt.pix_mp.height;
+> +	for (i = 0; i < RKVDEC2_RCB_COUNT; i++) {
+> +		ctx->rcb_bufs[i].cpu =
+> +			dma_alloc_coherent(ctx->dev->dev,
+> +					   RCB_SIZE(i),
+> +					   &ctx->rcb_bufs[i].dma,
+> +					   GFP_KERNEL);
+> +		if (!ctx->rcb_bufs[i].cpu) {
+> +			ret = -ENOMEM;
+> +			goto err_rcb;
+> +		}
+> +	}
+> +
+> +	if (desc->ops->start) {
+> +		ret = desc->ops->start(ctx);
+> +		if (ret)
+> +			goto err_ops_start;
+> +	}
+> +
+> +	return 0;
+> +
+> +err_ops_start:
+> +err_rcb:
+> +	i--;
+> +	while (i) {
+> +		dma_free_coherent(ctx->dev->dev,
+> +				  RCB_SIZE(i),
+> +				  ctx->rcb_bufs[i].cpu,
+> +				  ctx->rcb_bufs[i].dma);
+> +		i--;
+> +	}
 
---===============7395488962253535689==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="4reipacbikci5md7"
-Content-Disposition: inline
+This will leak the first element of the ctx->rcb_bufs[i] array.  The
+traditional way to write this is either while (--i >= 0) or for unsigned
+int i iterators it would be while (i--).
 
+> +
+> +	return ret;
+> +}
 
---4reipacbikci5md7
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-Hi,
-
-On Mon, Jun 17, 2024 at 10:50:22AM GMT, Jianfeng Liu wrote:
-> Hi Sebastian,
->=20
-> Thu, 13 Jun 2024 15:48:45 +0200, Sebastian Reichel wrote:
-> >+	{ .compatible =3D "rockchip,rk3588-vepu121", .data =3D &rk3568_vpu_var=
-iant, },
->=20
-> rk3568_vpu_variant is decoder's data, typo?
-
-See first sentence of the commit message.
-
--- Sebastian.
-
---4reipacbikci5md7
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIyBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmZwHmgACgkQ2O7X88g7
-+poayg/4kaCjw30iGYWhUbN3lrFew1L0jfg9s4DrgwLa4Mni+dk0QDVauaYcZPGg
-BAEDHvhkwbFY8yBkzuQLu3UWBdXDwlj9BpOtVT25kHorgUe9ZKmUuiAeFkjWjYC6
-66dNjUPhVtMcbrVvdw4iRTfX2ADxjYfF92yPMQ9uOqkMWThV7lshwWTRgOCbSsm7
-zs8VH+RLwdYIAGm6GFVJsZsDG0sHnalPd3q/Jw6wwZvnaLP6d5rGsC3I56vOOH38
-9vS/EuJxrKIL6cbWTrNkY8V4JHH0e83zoLcR+XdwVaJ2Yilqi7EK50JI4UyfIJ2L
-/poeWNwHc57BigUlOjpCzNC8D9748NDMz+CqPnDXJlxGU3MK6ugq6e41nurC++DL
-9uLk+mlGxoH0A+SuakrzYms+xD0NsybpA42/R5n/pYHq1+PwTezb9j3U6/b+blj/
-GL5C7/dwV1MugPOfuWpzCaBWkfHZOZDU603CamBAAk/RmOgcvgvIlTOh9/JJBxVr
-2zfmfnrcd38hGeOPIqdT3P451zmqKVBMaDdgJYvWxMt9pwu4M9/wRYIvJ8vAppad
-LrBMtILqCCfj5zW4Lqmv72Fwn9DA+dJs8ca9OYZVt+G4b65RBbxQ/0gNKp2qWLXa
-HAnDmSyVBsrP3tJq4BDCn236mYV8m0crsPmSOpmWXZv5NLjAPA==
-=KuxJ
------END PGP SIGNATURE-----
-
---4reipacbikci5md7--
-
-
---===============7395488962253535689==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+regards,
+dan carpenter
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============7395488962253535689==--
-
