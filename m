@@ -4,77 +4,101 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0D513C27C53
-	for <linux-rockchip@archiver.kernel.org>; Sun, 16 Jun 2024 22:16:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B62B7C27C53
+	for <linux-rockchip@archiver.kernel.org>; Mon, 17 Jun 2024 02:36:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To:From:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=0jjN3/S/+mp9k3ORo26kvL30/eJfkzl/QBwR3n3hU30=; b=YnSFxwgiPkB+aD
-	K1iHErLizu8Ly1d+dQU/2yDj/Hg3ihycP1KDAkE1L6haZhFAju9mYpFR82TRGBdFqnaqkpwiVImk9
-	mxswaBs69lNAAB5iGsAAAVJZSB9rsoRxfAGZgJLGUhiUmINcncvghi2/koIzHGF+Et/3hITxRk7UE
-	VGgr14zLRlFL9IFEiGJF7j3ob9DLo1dA0Ley1u7iUKxEmPGSVUcgp+57EDEZGTu9BbOF7RSw+u5Jy
-	Q8KF4c6lpQN6UDuBndMrT7tt5dGHOYiNQLBMHv25OXBntwDxG+EPmAb/1sBtjZaaFvlpIg7HiIyjB
-	ZB1eUuZrll3KzwHupKLw==;
+	List-Owner; bh=DnF9BTrrXytx5xI/TnrBTZJ4oC/wkeukyDLqi55ojow=; b=SWUok3ycsYw19/
+	igXvZwq0ntBy2KXWn4WEhV19acN1KLKdqgmYBL9MlyeV5pMZGOFT/BHOAhyB1rWadW4C644/iNgTU
+	Wk3obhdEfkQOZ8PiDtCKzmrX9Xx+rjeG1atsyryfRL/C4BVL/rHGPsKl22Fgqpfa812j7d2UP2OL7
+	8vDH/rxKCAVyOWDf8HCd5sYYvf87LS1x7RvbmlQf5ckAHuVOEAGkf0EU5ga4ov/QzCX+2OoSCRdtg
+	46Rhi3i2WbYFyckH4fm6ZS2c16IKFS3WYeRXlumN4DAysAFHzNUj3/mtOvnRQUVElLm6DPGsCNfja
+	R9lR/lOsDpoFO//7k7fw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sIyAK-00000008Q6R-1vJ8;
-	Sun, 16 Jun 2024 22:16:00 +0000
-Received: from shout11.mail.de ([2001:868:100:600::f153])
+	id 1sJ2Ed-00000008sPs-2kF5;
+	Mon, 17 Jun 2024 02:36:43 +0000
+Received: from mail-oa1-x2e.google.com ([2001:4860:4864:20::2e])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sIyAH-00000008Q5e-0nNp;
-	Sun, 16 Jun 2024 22:15:58 +0000
-Received: from shout02.mail.de (unknown [10.0.120.222])
-	by shout11.mail.de (Postfix) with ESMTPS id 88A70240BD1;
-	Mon, 17 Jun 2024 00:15:55 +0200 (CEST)
-Received: from postfix01.mail.de (postfix01.bt.mail.de [10.0.121.125])
-	by shout02.mail.de (Postfix) with ESMTP id 6C679240BC7;
-	Mon, 17 Jun 2024 00:15:55 +0200 (CEST)
-Received: from smtp01.mail.de (smtp02.bt.mail.de [10.0.121.212])
-	by postfix01.mail.de (Postfix) with ESMTP id 4C924801B2;
-	Mon, 17 Jun 2024 00:15:55 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=mail.de;
-	s=mailde202009; t=1718576155;
-	bh=rPKyJRPNQHEri6DUYtwLA2PV9+52zslI4JC0bsjOPsQ=;
-	h=Message-ID:Date:Subject:From:To:Cc:From:To:CC:Subject:Reply-To;
-	b=7GQbT9Sk2GkiUaYehTt0B0nbQpIuKnRTk/ZgBTts8tH7l6aOTqWBidPwkY7z+TbV5
-	 fHq0eaRWpkBTOg6JGqRhQcC1DCWPxiPkM9oJ+1TEYALrKr60gUIH50MPhnVcD3fkgi
-	 TqhQ65SaVB3nCSazMkkQhlnUqVV0xIMxQkYqiinQDeSMuJkp3NWfNTmgO4CSSbooHS
-	 4kxwil1aboGibj79OnC1n/pnQpmRYCCd6NvG7hz066TlGQTiAkOj4pHnHgYAIzyfho
-	 7ZF5gILFkHXFd8TE6jhfDpTYr4kLXqtqbeLOxSEEp1tEXWXmyerzE2Q45Ssp1DAvP8
-	 LJJZR27jM/x6A==
-Received: from [127.0.0.1] (localhost [127.0.0.1])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	by smtp01.mail.de (Postfix) with ESMTPSA id B1C65240A21;
-	Mon, 17 Jun 2024 00:15:54 +0200 (CEST)
-Message-ID: <fd3652a6-d84e-4715-b114-c174fdde33c1@mail.de>
-Date: Mon, 17 Jun 2024 00:15:54 +0200
+	id 1sJ2EY-00000008sMu-3y8K;
+	Mon, 17 Jun 2024 02:36:40 +0000
+Received: by mail-oa1-x2e.google.com with SMTP id 586e51a60fabf-25075f3f472so544978fac.2;
+        Sun, 16 Jun 2024 19:36:35 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1718591794; x=1719196594; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=3S2YurUrl5MC+fkMuKFY0ClzSCLEfz1Oc40ER8vtAUk=;
+        b=FgNBqMeY5EbDHhsTnWmHDnzACdfagYkzAhQiDYkDt/AxnxsPGLd2tp5TgPI4/WBfOh
+         8prk0eOmTqJyuSc5UZHJ3nB6Y1oQU0B3hknzMfWJURy0Gd8tU5ExtyCfwPRtDjIlDjk7
+         ecSapJ0zJRRtoJNtfy5KMZ2SXlqJFYmQ+/uvzPIdJN73+zW+mJutc4s07v3bVRJmfIg3
+         DZW305TYSZy5Wm0n/hha0nO9AqoOGcIejU7Z+5ZicwrMch6iueYCvJPveDnrRbE/Ur+x
+         OaPqPE41TWe098XBsvjunOSc+pfCAXHbHdNJGWwq31lhMSEmNyInrvIhcn0OVScrvTHz
+         SC3g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1718591794; x=1719196594;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=3S2YurUrl5MC+fkMuKFY0ClzSCLEfz1Oc40ER8vtAUk=;
+        b=bN2Fj/2O9lki3NWa++iR9CzOSUqB0rLQ5nTOfM4DEUKY4BSRmF4hKAf3rL3069AlfP
+         Abc1MUCKfWRB/KlODHtyDhFwZCciWBntoOjhmCaj2W61o1cklRVxGcUCSr1Or1frGJN4
+         UrsNZyMs9qO4Em9OwViIwPQTSksuPjA5pPiZm3PMz3Uwyx5THxgDV8CsGunhLwkw1uhJ
+         LfRh2Pckzwbpe6wE+2v5IoctRunrwLvYKUAZup2lsQUSW3wM2mJ1WLUm0ZVuYinGqZgN
+         Mf7yIxnFU6bg0Zvm9ZSSs3Y4r3zaGRvCl9tyBg4pcMvk47WXGKmqARcjgsEr+hM0xfIz
+         0vHg==
+X-Forwarded-Encrypted: i=1; AJvYcCXbg5dv5iiyLpoQxbRcOPO86UwfuK11QnUrku/E0khjBRM+kbjbEd19WV2WOvMak525N0/KRwCEi8In5OfwgE2L+2Rzftyij9fJwgL05fcUDVBTTaqdBWmtwKjYnaG49Coi3lGD3/LCCUZGYMVUkX753L+wqxhN1jsdE+0+VOBNv0AUgA9GIMnwi0P+04FR5GuNbt0qaokrx7GusLqXw5q80fX1FSvuDbBmlxTWWzbBX5/dA4LcrbE7c8cmVxdA6rBQBXZPe/+QFfBlWptSa4pkGmZYXpA4p8suJ9HopaYQKHb+k/5H
+X-Gm-Message-State: AOJu0YyWYHPynoapw09nVosEEiy7hadkOO3lGF3Z0GsnSTllAZPBmWa/
+	th3CtaDrMLcjbr5bzofnBVC6bChITV811u5Dn5Q7x8qjkcj87zKAsgY5FEvoNBok3tcgAu20rsp
+	1G48uehICmFWprCBapBDsI4HN9GJbpRlu
+X-Google-Smtp-Source: AGHT+IGltFa0bQ5GCz9R8Qfp8q4AWMyO+O31iG05ayKCR1g5p5BB0jiP/wIlvjmzI8GEc+sBuDPZkWfe/0K++X8dom4=
+X-Received: by 2002:a05:6870:469f:b0:254:d417:351f with SMTP id
+ 586e51a60fabf-258429511admr9266807fac.1.1718591794255; Sun, 16 Jun 2024
+ 19:36:34 -0700 (PDT)
 MIME-Version: 1.0
-Subject: Re: [PATCH 0/2] RK3588: FriendlyElec CM3588 NAS board support
-From: Sebastian Kropatsch <seb-dev@mail.de>
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: linux-rockchip@lists.infradead.org, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Sebastian Reichel <sebastian.reichel@collabora.com>,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org
-References: <20240616215354.40999-1-seb-dev@mail.de>
-In-Reply-To: <20240616215354.40999-1-seb-dev@mail.de>
-X-purgate: clean
-X-purgate: This mail is considered clean (visit http://www.eleven.de for further information)
-X-purgate-type: clean
-X-purgate-Ad: Categorized by eleven eXpurgate (R) http://www.eleven.de
-X-purgate: This mail is considered clean (visit http://www.eleven.de for further information)
-X-purgate: clean
-X-purgate-size: 4287
-X-purgate-ID: 154282::1718576155-9252C878-2F03AADF/0/0
+References: <20240614-dt-bindings-thermal-allof-v1-0-30b25a6ae24e@linaro.org> <20240614-dt-bindings-thermal-allof-v1-3-30b25a6ae24e@linaro.org>
+In-Reply-To: <20240614-dt-bindings-thermal-allof-v1-3-30b25a6ae24e@linaro.org>
+From: Vasily Khoruzhick <anarsoul@gmail.com>
+Date: Sun, 16 Jun 2024 19:36:08 -0700
+Message-ID: <CA+E=qVdpw5dMSdZiBkX5i6y18vHzfG2JnBSmd2Rq=y4kkgZLQw@mail.gmail.com>
+Subject: Re: [PATCH 03/22] dt-bindings: thermal: allwinner,sun8i-a83t-ths:
+ reference thermal-sensor schema
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Cc: Daniel Lezcano <daniel.lezcano@linaro.org>, Zhang Rui <rui.zhang@intel.com>, 
+	Lukasz Luba <lukasz.luba@arm.com>, Rob Herring <robh@kernel.org>, 
+	Conor Dooley <conor+dt@kernel.org>, Alim Akhtar <alim.akhtar@samsung.com>, 
+	Guillaume La Roque <glaroque@baylibre.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Chen-Yu Tsai <wens@csie.org>, 
+	Jernej Skrabec <jernej.skrabec@gmail.com>, Samuel Holland <samuel@sholland.org>, 
+	Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, 
+	Pengutronix Kernel Team <kernel@pengutronix.de>, Fabio Estevam <festevam@gmail.com>, 
+	Anson Huang <Anson.Huang@nxp.com>, Thierry Reding <thierry.reding@gmail.com>, 
+	Jonathan Hunter <jonathanh@nvidia.com>, Dmitry Baryshkov <dmitry.baryshkov@linaro.org>, 
+	Amit Kucheria <amitk@kernel.org>, =?UTF-8?Q?Niklas_S=C3=B6derlund?= <niklas.soderlund@ragnatech.se>, 
+	Heiko Stuebner <heiko@sntech.de>, Biju Das <biju.das.jz@bp.renesas.com>, 
+	Orson Zhai <orsonzhai@gmail.com>, Baolin Wang <baolin.wang@linux.alibaba.com>, 
+	Chunyan Zhang <zhang.lyra@gmail.com>, Alexandre Torgue <alexandre.torgue@foss.st.com>, 
+	Pascal Paillet <p.paillet@foss.st.com>, Keerthy <j-keerthy@ti.com>, 
+	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, 
+	Florian Fainelli <florian.fainelli@broadcom.com>, Scott Branden <sbranden@broadcom.com>, 
+	zhanghongchen <zhanghongchen@loongson.cn>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Bjorn Andersson <andersson@kernel.org>, Geert Uytterhoeven <geert+renesas@glider.be>, linux-pm@vger.kernel.org, 
+	linux-samsung-soc@vger.kernel.org, devicetree@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	linux-amlogic@lists.infradead.org, linux-sunxi@lists.linux.dev, 
+	imx@lists.linux.dev, linux-tegra@vger.kernel.org, 
+	linux-arm-msm@vger.kernel.org, linux-renesas-soc@vger.kernel.org, 
+	linux-rockchip@lists.infradead.org, linux-stm32@st-md-mailman.stormreply.com, 
+	Florian Fainelli <f.fainelli@gmail.com>, linux-rpi-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240616_151557_417965_56589A6F 
-X-CRM114-Status: GOOD (  30.13  )
+X-CRM114-CacheID: sfid-20240616_193639_087492_F16938DC 
+X-CRM114-Status: GOOD (  15.11  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,112 +110,40 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Apologies for any confusions, this patch series is v4. The correct
-subject line is:
-[PATCH v4 0/2] RK3588: FriendlyElec CM3588 NAS board support
-Apparently "git send-email -v4" doesn't add the version tag if you
-haven't already added it with "git format-patch" :)
-
-Cheers,
-Sebastian
-
-Am 16.06.2024 um 23:48 schrieb Sebastian Kropatsch:
-> Hello!
-> 
-> This adds support for the FriendlyElec CM3588 NAS board.
-> The board's device tree makes use of the latest upstream advances on the
-> RK3588 like USB3 DRD and GPU support as well as the latest Rockchip PCIe
-> driver bifurcation fixes, but some features such as thermal management
-> and HDMI will have to be added later when SoC support for these features
-> is merged.
-> 
-> Issues:
-> 1) pcie3x4 BAR 1 fails to assign, see dmesg:
->     pci 0000:00:00.0: BAR 0 [mem 0x900000000-0x93fffffff]: assigned
->     pci 0000:00:00.0: BAR 1 [mem size 0x40000000]: can't assign; no space
->     pci 0000:00:00.0: BAR 1 [mem size 0x40000000]: failed to assign
-> 
-> 2) The device enumeration of NVMe SSDs plugged into the four PCIe M.2
-> slots does not follow the order of the slots on the board: The slots are
-> physically named from 1 to 4, top to bottom. However, they do not show
-> up in this same order in Linux when all slots are polulated:
->     - SSD in physical slot 1 shows up as nvme0
->     - SSD in physical slot 2 shows up as nvme2
->     - SSD in physical slot 3 shows up as nvme1
->     - SSD in physical slot 4 shows up as nvme3
-> This is the same order in which the data lanes are mapped for PCIe
-> bifurcation (dts property: data-lanes = <1 3 2 4>).
-> I could not solve this by using aliases for the PCIe nodes in the device
-> tree. Perhaps this is something that can only be solved at driver level?
-> I am not sure if this behaviour is even considered a bug or if this is
-> intended behaviour by design.
-> 
-> Devicetree validation:
-> `make CHECK_DTBS=y rockchip/rk3588-cm3588-nas.dtb` does not give any
-> warnings or errors, tested on Linux next-20240613.
-> 
-> Cheers,
-> Sebastian
-> 
-> ---
-> 
-> Changes v3 -> v4:
-> - add pwm-beeper node
-> - add ir-receiver node
-> - leds: remove deprecated label props
-> - usbdp_phy0: add mode-switch prop
-> - minor fixes/comments
-> - collect r-b tag for patch 2
-> - v3: https://lore.kernel.org/linux-rockchip/20240609222428.134977-1-seb-dev@mail.de/
-> 
-> Changes v2 -> v3:
-> - add vmmc-supply and vqmmc-supply to &sdhci
-> - remove duplicate combphys
-> - add 4 times the same regulator for PCIe to reflect the schematics
-> - fix USB vcc_5v0_host_30_p2 to use 5V as per schematics
-> - usb-c-connector: disable sink power delivery, enable only source mode
-> - &u2phy0_otg: add phy-supply
-> - rename some nodes
-> - minor fixes and some additional helpful comments (some sugg. by Space Mayer)
-> - collect a-b tag for patch 1
-> - v2: https://lore.kernel.org/linux-rockchip/20240602211901.237769-1-seb-dev@mail.de/
-> 
-> Changes v1 -> v2:
-> - split dts into two files (CM and carrier board)
-> - rename fixed regulators with preferred 'regulator-' prefix
-> - use preferred 'gpios' property instead of 'gpio'
-> - add 'pinctrl-names' property for every pinctrl
-> - add several pwm nodes
-> - drop HMDI PHY and VOP support
-> - drop unneeded &wdt node
-> - remove i2c4 since it's not availabe according to the schematics
-> - &sdhci: drop 'full-pwr-cycle-in-suspend' flag
-> - &sdmmc: drop 'cap-mmc-highspeed' flag because of no-mmc
-> - &sdmmc: drop 'cd-gpios' property, unneeded w/ using sdmmc_det pinctrl
-> - &usb_host0_xhci, &usb_host2_xhci: remove default 'dr_mode' property
-> 
-> ---
-> 
-> Sebastian Kropatsch (2):
->    dt-bindings: arm: rockchip: Add FriendlyElec CM3588 NAS
->    arm64: dts: rockchip: Add FriendlyElec CM3588 NAS board
-> 
->   .../devicetree/bindings/arm/rockchip.yaml     |   7 +
->   arch/arm64/boot/dts/rockchip/Makefile         |   1 +
->   .../rk3588-friendlyelec-cm3588-nas.dts        | 778 ++++++++++++++++++
->   .../rockchip/rk3588-friendlyelec-cm3588.dtsi  | 653 +++++++++++++++
->   4 files changed, 1439 insertions(+)
->   create mode 100644 arch/arm64/boot/dts/rockchip/rk3588-friendlyelec-cm3588-nas.dts
->   create mode 100644 arch/arm64/boot/dts/rockchip/rk3588-friendlyelec-cm3588.dtsi
-> 
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gRnJpLCBKdW4gMTQsIDIwMjQgYXQgMjo0NuKAr0FNIEtyenlzenRvZiBLb3psb3dza2kKPGty
+enlzenRvZi5rb3psb3dza2lAbGluYXJvLm9yZz4gd3JvdGU6Cj4KPiBEZXZpY2UgaXMgYSB0aGVy
+bWFsIHNlbnNvciBhbmQgaXQgcmVxdWlyZXMgJyN0aGVybWFsLXNlbnNvci1jZWxscycsIHNvCj4g
+cmVmZXJlbmNlIHRoZSB0aGVybWFsLXNlbnNvci55YW1sIHRvIHNpbXBsaWZ5IGl0IGFuZCBicmlu
+ZyB0aGUKPiBjb21tb24gZGVmaW5pdGlvbiBvZiAnI3RoZXJtYWwtc2Vuc29yLWNlbGxzJyBwcm9w
+ZXJ0eS4KPgo+IFNpZ25lZC1vZmYtYnk6IEtyenlzenRvZiBLb3psb3dza2kgPGtyenlzenRvZi5r
+b3psb3dza2lAbGluYXJvLm9yZz4KUmV2aWV3ZWQtYnk6IFZhc2lseSBLaG9ydXpoaWNrIDxhbmFy
+c291bEBnbWFpbC5jb20+Cgo+IC0tLQo+ICAuLi4vZGV2aWNldHJlZS9iaW5kaW5ncy90aGVybWFs
+L2FsbHdpbm5lcixzdW44aS1hODN0LXRocy55YW1sICAgICAgIHwgNiArKystLS0KPiAgMSBmaWxl
+IGNoYW5nZWQsIDMgaW5zZXJ0aW9ucygrKSwgMyBkZWxldGlvbnMoLSkKPgo+IGRpZmYgLS1naXQg
+YS9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvdGhlcm1hbC9hbGx3aW5uZXIsc3Vu
+OGktYTgzdC10aHMueWFtbCBiL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy90aGVy
+bWFsL2FsbHdpbm5lcixzdW44aS1hODN0LXRocy55YW1sCj4gaW5kZXggNmIzYWVhNmQ3M2IwLi5k
+YWQ4ZGU5MDA0OTUgMTAwNjQ0Cj4gLS0tIGEvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRp
+bmdzL3RoZXJtYWwvYWxsd2lubmVyLHN1bjhpLWE4M3QtdGhzLnlhbWwKPiArKysgYi9Eb2N1bWVu
+dGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvdGhlcm1hbC9hbGx3aW5uZXIsc3VuOGktYTgzdC10
+aHMueWFtbAo+IEBAIC0xMCw2ICsxMCw4IEBAIG1haW50YWluZXJzOgo+ICAgIC0gVmFzaWx5IEto
+b3J1emhpY2sgPGFuYXJzb3VsQGdtYWlsLmNvbT4KPiAgICAtIFlhbmd0YW8gTGkgPHRpbnkud2lu
+ZHp6QGdtYWlsLmNvbT4KPgo+ICskcmVmOiB0aGVybWFsLXNlbnNvci55YW1sIwo+ICsKPiAgcHJv
+cGVydGllczoKPiAgICBjb21wYXRpYmxlOgo+ICAgICAgZW51bToKPiBAQCAtNTUsNyArNTcsNiBA
+QCBwcm9wZXJ0aWVzOgo+ICAgICAgbWF4SXRlbXM6IDEKPiAgICAgIGRlc2NyaXB0aW9uOiBwaGFu
+ZGxlIHRvIGRldmljZSBjb250cm9sbGluZyB0ZW1wZXJhdGUgb2Zmc2V0IFNZU19DRkcgcmVnaXN0
+ZXIKPgo+IC0gICMgU2VlIERvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy90aGVybWFs
+L3RoZXJtYWwtc2Vuc29yLnlhbWwgZm9yIGRldGFpbHMKPiAgICAiI3RoZXJtYWwtc2Vuc29yLWNl
+bGxzIjoKPiAgICAgIGVudW06Cj4gICAgICAgIC0gMAo+IEBAIC0xMzUsOSArMTM2LDggQEAgcmVx
+dWlyZWQ6Cj4gICAgLSBjb21wYXRpYmxlCj4gICAgLSByZWcKPiAgICAtIGludGVycnVwdHMKPiAt
+ICAtICcjdGhlcm1hbC1zZW5zb3ItY2VsbHMnCj4KPiAtYWRkaXRpb25hbFByb3BlcnRpZXM6IGZh
+bHNlCj4gK3VuZXZhbHVhdGVkUHJvcGVydGllczogZmFsc2UKPgo+ICBleGFtcGxlczoKPiAgICAt
+IHwKPgo+IC0tCj4gMi40My4wCj4KCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBs
+aXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlz
+dGluZm8vbGludXgtcm9ja2NoaXAK
