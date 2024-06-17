@@ -4,151 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DDC32C27C79
-	for <linux-rockchip@archiver.kernel.org>; Mon, 17 Jun 2024 10:58:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0B27FC27C79
+	for <linux-rockchip@archiver.kernel.org>; Mon, 17 Jun 2024 11:13:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=XZQdS3tdFNVcqzo8FsrrCbuXsE+Rn5ucCm64rcAi41w=; b=3ehG+I1lead1Dl
-	A/z+L40Eg0gRaVXbyWaJwXAn0RniRN4nLpq25u391fa2Oh1pYWY2mv/rlKVD3cvZ+hnoBYCsLJXLg
-	vl+Muz78ZfJTJBQEVQe8CPZAvMy3c0hV1bHCvWrgNfkyTeEHg9UIGXmA00ObS1dpDWDg3qLPi8jSp
-	erUmbkycmEkin7VzGmIEg0goUdCvx7L/f/rnc7BPELNoCrOsZ1iyhfFm2mNalWkDV+Nu2la0UYvPD
-	N7JWQuuZQeZHtOFAH5n3onqhVr6VSWjmuCOzcoe6OuAIM4XWioJ6lqg6ULrhKThJ5i/wsgR+x1C9V
-	UnsU2l5/KJfkt6gwLvsg==;
+	List-Owner; bh=oDJlDNZgLcdV1XOREWBABOGBvP/L9ouPyKWiMYQ8do8=; b=d3w3ZD81HvjOxk
+	JG7GHlO/8FASXMZAlRGXJxJoGb9n4wVUqNRml2a/mg/R4p4tRYDrCOo+nGZu3zv1eMdASIi2iXIgO
+	jIkT1+D3f92/9BEwKubmdCo0YosBizv3cxhJIMRDkIkiQGH0zM9bNxClfYsuvpDqhPXdTMXG3AYdX
+	H8UTxmNlccfj34czKd/KTYyLGp7H1GaeqcJ7jCBArPAJ11jDpqAjaPCPeQTy6FSon/G5/7EwQ+KI8
+	LKN4MhYdOGK3POtHL82Kzm0iJFLCG5f3zea/m5RyvYVZh+j9zwjVb3yp0d4br4Rr5QFmOPUUiV7sz
+	G7btUCibUbkC1cC4clDg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sJA45-0000000AO2J-2mKF;
-	Mon, 17 Jun 2024 10:58:21 +0000
-Received: from mail-psaapc01on2072c.outbound.protection.outlook.com ([2a01:111:f400:feae::72c] helo=APC01-PSA-obe.outbound.protection.outlook.com)
+	id 1sJAIP-0000000AQbi-0vmv;
+	Mon, 17 Jun 2024 11:13:09 +0000
+Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sJA40-0000000ANzc-3M4t;
-	Mon, 17 Jun 2024 10:58:18 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=epbAqutzuWemJEtJ8qPn/MiIa3mkq1BxPvjVhI2uwbM4irC2mAr1doyEz1pmJ/3MkrST8K94jl1HrC542f4ghtl7ByQI69948QoQ5/M5tRurBwSZaorBvqZLhG6+BF34AwyVKKU4F6j2z3q6RrlvVfKpAAFRc1VCo6xPtMr936bv1443IiXboMS7QmN0fvOktrel/h8R9HdmzBXE/gpZZPDZP8V6PTdPRCO4JSjVQJb3DHP/jR7t/DQJ6mKHklL+4fypQt55nk6l2J32quztZaOQbFcntaZxlRLbjEA9dhoWRWzVl+WtmRdNU2pgwiM/q0YmSh05j2au3L1Fk3MOJg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=Ldju3zWUjKJIF8hfU1WmFwYsmessGQgTNVE4FpjVv8A=;
- b=gB1dRYFVweMW6GPzkopaU+a+9s+ZspyeZiQ0ZjtiwMZGpQ6RcI1/feTO7G14Z9fn6b76Hi72ZGVuYi8fBMMEc8Xij7Nrk2So3Jgf5x9RT5Bcwr0y5bdyBM3ucJ3P64o2d93azEdF5h0ItcIOu5c3Ew+no4TTDa4G0C6zEYZSFlgw7CpNQEoootOLfBPq5PjawXAdEboqAmbK6Fr8Ib9GwYPMy2B51dbd3Hr0jXCGDv41LeOpm1cLS9lJ2xv9gQe3V7MtITVuewvBa7TURiiroi9MByk7EODcEYvgDAnAtM/1Cf/mTazfaQoMaoY0nAi3z1R/OwhSrrLpUkn9mQuCkg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=wesion.com; dmarc=pass action=none header.from=wesion.com;
- dkim=pass header.d=wesion.com; arc=none
-Received: from TYZPR03MB7001.apcprd03.prod.outlook.com (2603:1096:400:26a::14)
- by SEZPR03MB8182.apcprd03.prod.outlook.com (2603:1096:101:192::13) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7677.30; Mon, 17 Jun
- 2024 10:57:57 +0000
-Received: from TYZPR03MB7001.apcprd03.prod.outlook.com
- ([fe80::78dd:5e68:1a9c:36c0]) by TYZPR03MB7001.apcprd03.prod.outlook.com
- ([fe80::78dd:5e68:1a9c:36c0%6]) with mapi id 15.20.7677.029; Mon, 17 Jun 2024
- 10:57:56 +0000
-From: Jacobe Zang <jacobe.zang@wesion.com>
-To: Alexey Charkov <alchark@gmail.com>, "robh@kernel.org" <robh@kernel.org>,
-	"krzk+dt@kernel.org" <krzk+dt@kernel.org>, "conor+dt@kernel.org"
-	<conor+dt@kernel.org>, "heiko@sntech.de" <heiko@sntech.de>
-CC: Nick Xie <nick@khadas.com>, "efectn@protonmail.com"
-	<efectn@protonmail.com>, "jagan@edgeble.ai" <jagan@edgeble.ai>,
-	"dsimic@manjaro.org" <dsimic@manjaro.org>, "devicetree@vger.kernel.org"
-	<devicetree@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org"
-	<linux-arm-kernel@lists.infradead.org>, "linux-rockchip@lists.infradead.org"
-	<linux-rockchip@lists.infradead.org>, "linux-kernel@vger.kernel.org"
-	<linux-kernel@vger.kernel.org>
-Subject: Re: [PATCH v2 4/5] arm64: dts: rockchip: Add AP6275P wireless support
- to Khadas Edge 2
-Thread-Topic: [PATCH v2 4/5] arm64: dts: rockchip: Add AP6275P wireless
- support to Khadas Edge 2
-Thread-Index: AQHawIWUKwv4UGj980e571PV7A8XzbHLtPgAgAAQ92E=
-Date: Mon, 17 Jun 2024 10:57:56 +0000
-Message-ID: <TYZPR03MB70012C66B789B09195FCD92580CD2@TYZPR03MB7001.apcprd03.prod.outlook.com>
-References: <20240617071112.3133101-1-jacobe.zang@wesion.com>
- <20240617071112.3133101-5-jacobe.zang@wesion.com>
- <feeb8dcd-661f-415e-be08-afe175d0102e@gmail.com>
-In-Reply-To: <feeb8dcd-661f-415e-be08-afe175d0102e@gmail.com>
-Accept-Language: en-US, zh-CN
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-msip_labels: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=wesion.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: TYZPR03MB7001:EE_|SEZPR03MB8182:EE_
-x-ms-office365-filtering-correlation-id: b7c216ad-792a-4bd3-a41d-08dc8ebc5864
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;ARA:13230037|376011|7416011|1800799021|366013|38070700015;
-x-microsoft-antispam-message-info: =?iso-8859-1?Q?ZtEZRl0iGBSZJjMQKWcL3xGQ0j5LGq+9Y2zeq8yNUrYr/m4liNV8gOBuHU?=
- =?iso-8859-1?Q?9gEDQKgI9nNwtOs5OvX+nizzu8iQK7xNYQBeL5sOOg3Y8X114bSpN4prVI?=
- =?iso-8859-1?Q?7ibCU3Q1GDuj3guJ1mzN9l8Y7U6K04m9knHZEkio3wOvgwb4u/NxnBUjve?=
- =?iso-8859-1?Q?C/x1YJ6GMfmXtmFKUiv3EWbGpMEg71Dup50ZmlzHiO1Uhvk3iIq0GZkyGO?=
- =?iso-8859-1?Q?bDbjgRNau5BGFgfFav2sHOWb9qMS4Zg+lFl/Ed1bAPDTJUsM8OFNX4EJsD?=
- =?iso-8859-1?Q?MrbXXVPzgII9m1f5cJ4ZC5y5fJPzoZQ5cn279Du/I7LXdeTVPtSsq/9nPL?=
- =?iso-8859-1?Q?q4OKR8m0ve3Ql1RIkjGlAAhuIbZXJaIYqdGf4j8KZ0mc0V1CfNeZtcLhqB?=
- =?iso-8859-1?Q?1zKZnEYbzZ7+6ZlZP92BlyEduf4QTYDiM6JCHvWeNnJhJdc+uH0qSp2rOo?=
- =?iso-8859-1?Q?G5lXwSBvXE4mJV2oWXCz0fHxxWhVMlEi6M0nXXKCxxhkuCGMpEh0j0CgvH?=
- =?iso-8859-1?Q?PfLZgM5Z6fonY/hXXFV982UlwaoZaYGzalJ0ddJZC9jLuxPiedX671H7Nu?=
- =?iso-8859-1?Q?WnDyFoIqlz8XW2WBLJKmqLUcObmRq5PLhHQe66cFkVxcLqNpbDS0vtOtFm?=
- =?iso-8859-1?Q?f87G4zRYbW8mQqgimV5/nuIdtmW89TZSbwsui8PeVLH3Cow/r9P/dR110j?=
- =?iso-8859-1?Q?sm9ZwhcRxlqPPlAYx2UgLjsvejoN8HzHQexm7dCgQBWJKxXYGZIPR3hMza?=
- =?iso-8859-1?Q?p/dKJeBKDzTog9ou2y8Ues8FfbfqtJ1tYD2SVw8T5085TsLbw9wUzXNmgN?=
- =?iso-8859-1?Q?a9bf7NJCrgpmSgEzpW668ygFGBss7xr1HYq4VyneQ9j31nDKOz+mhBP/Bi?=
- =?iso-8859-1?Q?6oO7h/23Ae/nf0FzpiF+yI5scQ6f415oojjDswEkNrPmFGp+g5sE3k7d8F?=
- =?iso-8859-1?Q?hon/yQYpuJS20E3hTpJ898/FcMqN2ZZEX2EQMcwcFjSN0PQMWQPH+ng+ic?=
- =?iso-8859-1?Q?u3YA1cQhPsiZXOhpkh/yy36psAveNUj7hE/BXsFVI1cPX/JflHL0/cy0yU?=
- =?iso-8859-1?Q?lqVL4POtWqIiMer9Jc5LNEtNaTmd2xpnULYk7qlKt33KXZTa2nBZ0ywREK?=
- =?iso-8859-1?Q?CL3VTUYgGdJD6ZkODpGYR1NmveIVVWzf+SoO+9IuDLBOWc4IYflNWUPGdy?=
- =?iso-8859-1?Q?Rjmqs6af7mpN3R841d2QLyov0Jhsdm/27zcjSVs382s9hBdNNdz6Ov2FWh?=
- =?iso-8859-1?Q?Yz9YgcFCXVrP2TWs/6JwED92FlAWMm3aOo2/SvUfbUVbXACDSAXSOi6068?=
- =?iso-8859-1?Q?quaMnE7UnbJtahVaMD+oxpLQ97FRTEv9NHAS6t+9vZ7z4GfSRqg62TFxuL?=
- =?iso-8859-1?Q?r2dyu/jQ7VtRhk1OU4ChujXFB7OWRxo4ZYc+zNG2bJa2mDuunkV1A=3D?=
-x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:TYZPR03MB7001.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230037)(376011)(7416011)(1800799021)(366013)(38070700015);DIR:OUT;SFP:1102;
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?iso-8859-1?Q?RVhU6ZxVafPZbBCubZdWtx7JmdLxjOfv7XZcleHg2bc1EVNzsPlqoAT6YC?=
- =?iso-8859-1?Q?MLqCwiiKeR2h2A+WK2kxykHRitkSlLOgzhv9RlpVI76aHdmxgb5aKndGb2?=
- =?iso-8859-1?Q?rbYwsGSNk2TRj6JhsIjqNb4CTTlxJ9A1TYKBCcWI1mEhi+4fzNzeb/sRCy?=
- =?iso-8859-1?Q?f7ok+F8yrcXCFS+yTXNs+H4ABubwRGoBhSKHpp8j8pVAFzDE9by/ggiJkw?=
- =?iso-8859-1?Q?BRQnyQhS+MLFnbq5AUrsae4O9I3UYqRv9V3xOCuGcE0FVbVxfRrJ0IlWwo?=
- =?iso-8859-1?Q?cd3sFUKy0lHC5exSfMp1h+rBOJWBBImPqQXmpuLSYWbngJeTzYzVpTyWla?=
- =?iso-8859-1?Q?bUk/QMnQqDmRUNnoVqjbeVmjCp3UhzFZF/vU1neDWvuPvLWh2Qg3g929Ch?=
- =?iso-8859-1?Q?yxgH4dgfzoG2+z+7oUKlu00aJ1g+JYo+4o11s+tWxZ2JAUt54L0UP+05aa?=
- =?iso-8859-1?Q?6zOmZEH7DxC2QEFVUb4rIzXPDap1WlErNpCOlaBxzO3JFIji0GcR3LZ6bD?=
- =?iso-8859-1?Q?soQ3WLp9+RygamnI7aQbzKmy/CBYJPNxm4S7vdAIUT1lsrsoeaj9OKyhly?=
- =?iso-8859-1?Q?Ke5HlSQTW19Pdpe+WtSJSKz3JZsOXE4bPGy9AV3j8NQHj3Jd/YnP1wFs9k?=
- =?iso-8859-1?Q?m05Xe2tL/SondJnbVaXl8WQ5SgF9ab1EWwqQQ4AIjOy2hKd1ojO1COKDrT?=
- =?iso-8859-1?Q?pByW7Rg62H8ZAyR8ILzgt670OaoQ/W+IbRdb4b/Ojly+e84+JFUJRXf+O4?=
- =?iso-8859-1?Q?jKYKe8IxvQcTxyvC2Hfwtlt4FLRzPmoFgGB+zglHggKSFDz7n08GUyzcP2?=
- =?iso-8859-1?Q?RSBbfhIXeZg7G7LYs5b56+Q1OuOaleDxs7OCIoLn8kwLbgn6GO/BnCtttq?=
- =?iso-8859-1?Q?650YRnRJm+vW88+TNei2emiULutd6UYKbT5wrek+mBAs9YFm75GxAMFuyG?=
- =?iso-8859-1?Q?Dd0GgUedlNEOB7LQhkIBT1YKH4+1p7+Fa9NGuXxmp+dPb+HJX55mHmkUuf?=
- =?iso-8859-1?Q?T2Fm0Z8SVVt1UvAtb1sYd4H/3cAHX0gYzFCPZtgmyJuf2jTuCplR7TvPdt?=
- =?iso-8859-1?Q?Fr+6MOanYHtosQiQGz2h45QIGuCWAdh8kiiyTmRwvkPxS0qcQsCQTYzh2N?=
- =?iso-8859-1?Q?uAQ/KReHcj7yZGx0gY512HdTqSz1JghYcVeRoJVDqs12nOD5204ZSsA3bE?=
- =?iso-8859-1?Q?JtBwwt7OVbPL5Hcoby3W5PQb1/4XZsEPHcF7N9g14seQ/ymHQgu9QW9eWz?=
- =?iso-8859-1?Q?1yIDBwbS4yNTlvJb6tc8oxBnm+FNKioJvD92PzHIe4t7GJyru+k6NF6EZD?=
- =?iso-8859-1?Q?kNf/0pNZwVaOqkL0nnSSnQdYWMadz0Amy3K9qtOo9VzgtFtgwXbOCJjl4G?=
- =?iso-8859-1?Q?QOZRT0GXP42O+rxosYAPmdWtXIdwLl3uK2fW4TofWhHfXzbTwRg7y3Qdvp?=
- =?iso-8859-1?Q?bl/ZnHe+Wc54cV2ZobGf2D+OE7K5aJLS5Ab7ZpJIKr5oM6zc3rGPH4fdRD?=
- =?iso-8859-1?Q?OY5QfCcrjhHsl+ne0ZB4M4us4OVVK6ETNkQpnRiYlf3qY4aQcJGQKBr/QZ?=
- =?iso-8859-1?Q?EkY8l1YxCZWV6kBCQXowGq5sw9qSzmrvVbJN4kxUExLWQzz8Ozyb74HA9X?=
- =?iso-8859-1?Q?nNrjJdh8effBqWpznlk8bjntBWyC+dvdGB?=
+	id 1sJAIJ-0000000AQZj-2Ur0;
+	Mon, 17 Jun 2024 11:13:05 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1718622778;
+	bh=/L6WYMxSMfjTIoWr9t9k/aRtdxtiTotpKJC0bwZmths=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=TWun6Tz0mrFyu0Doh3GSFs5086lVufoWIuFjkxiKsPZHUQOo5/kxB2MOvTdkHoK4M
+	 l4YUhTOvHS6iKdIwIxJr+SYFYE4R3tSubri3gpAKeg6QauwUwxk8RGrhWTgKsJRkga
+	 WmuEAq1gxUD4FXTikNClu2mpX/GqqqZR9v0VNhWXWVooGlwaZSnITzWYVtrWMAdY/Q
+	 Gc1Sy3KP5c8iVAVzEodL3ey7mM4zKdz2E7c0MAl9n4oWfGTO9aciNFSPuXhlGTSJ4A
+	 mnRmhAVp0wQ90eRATO9s4OC6Pw0gg5PJ3Gn/yeXaoaNP+Ktue2EHgnAsiuTtPDUH6E
+	 goMQ1PX6AMUzA==
+Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 42DB93780480;
+	Mon, 17 Jun 2024 11:12:55 +0000 (UTC)
+Message-ID: <33aac6a0-7bdf-48d3-bf79-0f3bf60394f2@collabora.com>
+Date: Mon, 17 Jun 2024 13:12:54 +0200
 MIME-Version: 1.0
-X-OriginatorOrg: wesion.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: TYZPR03MB7001.apcprd03.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: b7c216ad-792a-4bd3-a41d-08dc8ebc5864
-X-MS-Exchange-CrossTenant-originalarrivaltime: 17 Jun 2024 10:57:56.7512
- (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 2dc3bd76-7ac2-4780-a5b7-6c6cc6b5af9b
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: lOqyZDLKpD6XSEpHTFIy3f5KWhPOkw1ug0d6GoxsmjAr/ugjj7ZkxnteHyUVVFHSF931eD84TSiHlaxLMbLyJA==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SEZPR03MB8182
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 21/22] dt-bindings: thermal: simplify few bindings
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+ Daniel Lezcano <daniel.lezcano@linaro.org>, Zhang Rui <rui.zhang@intel.com>,
+ Lukasz Luba <lukasz.luba@arm.com>, Rob Herring <robh@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Alim Akhtar <alim.akhtar@samsung.com>,
+ Guillaume La Roque <glaroque@baylibre.com>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Vasily Khoruzhick <anarsoul@gmail.com>, Chen-Yu Tsai <wens@csie.org>,
+ Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Samuel Holland <samuel@sholland.org>, Shawn Guo <shawnguo@kernel.org>,
+ Sascha Hauer <s.hauer@pengutronix.de>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Fabio Estevam <festevam@gmail.com>, Anson Huang <Anson.Huang@nxp.com>,
+ Thierry Reding <thierry.reding@gmail.com>,
+ Jonathan Hunter <jonathanh@nvidia.com>,
+ Dmitry Baryshkov <dmitry.baryshkov@linaro.org>,
+ Amit Kucheria <amitk@kernel.org>,
+ =?UTF-8?Q?Niklas_S=C3=B6derlund?= <niklas.soderlund@ragnatech.se>,
+ Heiko Stuebner <heiko@sntech.de>, Biju Das <biju.das.jz@bp.renesas.com>,
+ Orson Zhai <orsonzhai@gmail.com>, Baolin Wang
+ <baolin.wang@linux.alibaba.com>, Chunyan Zhang <zhang.lyra@gmail.com>,
+ Alexandre Torgue <alexandre.torgue@foss.st.com>,
+ Pascal Paillet <p.paillet@foss.st.com>, Keerthy <j-keerthy@ti.com>,
+ Broadcom internal kernel review list
+ <bcm-kernel-feedback-list@broadcom.com>,
+ Florian Fainelli <florian.fainelli@broadcom.com>,
+ Scott Branden <sbranden@broadcom.com>,
+ zhanghongchen <zhanghongchen@loongson.cn>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Bjorn Andersson <andersson@kernel.org>,
+ Geert Uytterhoeven <geert+renesas@glider.be>
+Cc: linux-pm@vger.kernel.org, linux-samsung-soc@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-amlogic@lists.infradead.org,
+ linux-sunxi@lists.linux.dev, imx@lists.linux.dev,
+ linux-tegra@vger.kernel.org, linux-arm-msm@vger.kernel.org,
+ linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ linux-stm32@st-md-mailman.stormreply.com,
+ Florian Fainelli <f.fainelli@gmail.com>,
+ linux-rpi-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20240614-dt-bindings-thermal-allof-v1-0-30b25a6ae24e@linaro.org>
+ <20240614-dt-bindings-thermal-allof-v1-21-30b25a6ae24e@linaro.org>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <20240614-dt-bindings-thermal-allof-v1-21-30b25a6ae24e@linaro.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240617_035816_891904_A1F4439C 
-X-CRM114-Status: UNSURE (   5.86  )
+X-CRM114-CacheID: sfid-20240617_041304_229053_7626E746 
+X-CRM114-Status: UNSURE (   5.76  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -161,19 +107,22 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
->I'm also wondering why would adding a DT node for a PCI device be needed
->in the first place, given that PCI supports device discovery?
+Il 14/06/24 11:46, Krzysztof Kozlowski ha scritto:
+> Simplify few bindings which already reference thermal-sensor.yaml schema
+> by dropping unneeded requiring of '#thermal-sensor-cells' and dropping
+> assigned-clocks properties (core schema allows it if 'clocks' are
+> there).
+> 
+> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
-In fact, I learn that PCIe bus devices do not need compatible to probe just now... Before sending this patch, I committed the code that added "pci14e4,449d" to vendor-prefix.yaml and net/wireless/brcm,brcm4329-fmac.yaml. Now I know the reason why my addition was rejected. By the way, except for the compatible binding, is there any other binding that I should remove??
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
----
-Best Regards
-Jacobe
+
 
 _______________________________________________
 Linux-rockchip mailing list
