@@ -4,57 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0C5EFC2BA1A
-	for <linux-rockchip@archiver.kernel.org>; Mon, 17 Jun 2024 21:15:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B150BC27C79
+	for <linux-rockchip@archiver.kernel.org>; Mon, 17 Jun 2024 21:16:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=MLWnEFGTiQzfesanQotMyo4aMNaQFz5s/cY0Y20Hp64=; b=mezcnVUqqNKaPx
-	LcNi9lV10AE4JTyHVlIiToEDiPb4BtZMnJfSP65QDnIp0vt5m+2L+a7AJKPAoKlZZ727f5xua3b3C
-	Uun2B5QiGK4Px98Wo5QtP9PRGGMakgb8NjbY8ML0C1jV15PEQFm16vVpIwxkDMVLFLnGqXBDWv3tA
-	4/0o5YSbOyQ+7f6W8T+0dkFv18CPz2Rcd55BZ7Edpw+tK+h9+Cj/pUROFctqRORin/pAVV+mgde/h
-	TN0tIJgbygKxbkIy2lzn6PDIg0ZRloy7kawAbqg3nJXwPalZCOO/pcnTJCQ5wuvY+fctD2Xq5922O
-	X+3ykYTRXAtpz0rxBFmA==;
+	List-Owner; bh=sNZTuIYJ+q6pT9FDhD16bMxixrTjEoYZhBS6OV059PU=; b=EsrwO0uLajzISK
+	3VrZPCti/9C3/pDklKUDyf2NooN7XoaoNdseBuY2aRdqyrBzzuTgRw9z8677ZI/tRUbEiyD5/VU5W
+	wss/YVgdnc0wHFqmct3BsoUtybzhg+BTi0kZ6oU+rce/lKWD+xXM0wancM+R14jT5CRSNVzDM2V0m
+	qIVp9w04lSKM73mKuEiaOvn2DOLzFXbyw7LzIyARuV30Hsy3av+7pdBAegXsCWDdtERv0bvcE1Two
+	XZfUTtTQuLEjlEr1FdfOlS/sl0r1NUx4T69oqGDFDP5fW9PuXezy5OLtrPJkUZI29HJC/M5yDks0H
+	tfQ/ham8P/QL9MOeGrrg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sJJgx-0000000CeUD-0Eef;
-	Mon, 17 Jun 2024 21:15:07 +0000
+	id 1sJJic-0000000Cf6Y-3mYX;
+	Mon, 17 Jun 2024 21:16:50 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sJJgr-0000000CeRm-2O5e;
-	Mon, 17 Jun 2024 21:15:02 +0000
-Received: from i5e8616c2.versanet.de ([94.134.22.194] helo=phil.lan)
+	id 1sJJiY-0000000Cf4j-25fZ
+	for linux-rockchip@lists.infradead.org;
+	Mon, 17 Jun 2024 21:16:49 +0000
+Received: from i5e8616c2.versanet.de ([94.134.22.194] helo=diego.localnet)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1sJJgj-0004LG-FU; Mon, 17 Jun 2024 23:14:53 +0200
-From: Heiko Stuebner <heiko@sntech.de>
-To: Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Rob Herring <robh@kernel.org>,
-	Hsin-Te Yuan <yuanhsinte@chromium.org>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Heiko Stuebner <heiko@sntech.de>,
-	linux-arm-kernel@lists.infradead.org,
-	devicetree@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: (subset) [PATCH v2 0/2] arm64: dts: Fix the value of `dlg,jack-det-rate` mismatch
-Date: Mon, 17 Jun 2024 23:14:51 +0200
-Message-Id: <171865888527.3904644.1008571862368310887.b4-ty@sntech.de>
-X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20240613-jack-rate-v2-0-ebc5f9f37931@chromium.org>
-References: <20240613-jack-rate-v2-0-ebc5f9f37931@chromium.org>
+	id 1sJJiS-0004O2-O6; Mon, 17 Jun 2024 23:16:40 +0200
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+To: FUKAUMI Naoki <naoki@radxa.com>
+Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
+ devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ FUKAUMI Naoki <naoki@radxa.com>
+Subject: Re: [PATCH v2] Revert "arm64: dts: rockchip: remove redundant cd-gpios from
+ rk3588 sdmmc nodes"
+Date: Mon, 17 Jun 2024 23:16:39 +0200
+Message-ID: <42969001.doPnVEEUbh@diego>
+In-Reply-To: <20240613001757.1350-1-naoki@radxa.com>
+References: <20240611120645.457-1-naoki@radxa.com>
+ <20240613001757.1350-1-naoki@radxa.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240617_141501_655674_347F4118 
-X-CRM114-Status: UNSURE (   9.17  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240617_141646_593103_48E13028 
+X-CRM114-Status: GOOD (  11.59  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,21 +64,32 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, 13 Jun 2024 11:58:53 +0000, Hsin-Te Yuan wrote:
-> According to Documentation/devicetree/bindings/sound/dialog,da7219.yaml,
-> the value of `dlg,jack-det-rate` property should be like "32_64" instead
-> of "32ms_64ms".
+Am Donnerstag, 13. Juni 2024, 02:17:57 CEST schrieb FUKAUMI Naoki:
+> This reverts commit d859ad305ed19d9a77d8c8ecd22459b73da36ba6.
 > 
+> Inserting and removing microSD card is not detected since above commit.
+> Reverting it fixes this problem.
 > 
+> This is probably the same thing as 5 years ago on rk3399
+> https://lore.kernel.org/all/0608599d485117a9d99f5fb274fbb1b55f6ba9f7.1547466003.git.robin.murphy@arm.com/
+> 
+> So we'll go back to cd-gpios for now.
+> 
+> this patch is tested on Radxa ROCK 5A and 5B.
+> 
+> Fixes: d859ad305ed1 ("arm64: dts: rockchip: remove redundant cd-gpios from rk3588 sdmmc nodes")
+> Signed-off-by: FUKAUMI Naoki <naoki@radxa.com>
 
-Applied, thanks!
+applied as fix for 6.10
 
-[2/2] arm64: dts: rockchip: rk3399-gru: Fix the value of `dlg,jack-det-rate` mismatch
-      commit: a500c0b4b589ae6fb79140c9d96bd5cd31393d41
+sidenote: please don't send v2 patches as replies to v1 but instead
+start a new mail thread. Tooling like b4 does not cope that well with
+multiple patch versions in the same thread.
 
-Best regards,
--- 
-Heiko Stuebner <heiko@sntech.de>
+Thanks
+Heiko
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
