@@ -4,38 +4,38 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7D2DFC2BA15
-	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Jun 2024 19:47:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D16E1C27C4F
+	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Jun 2024 19:47:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=C9N2s+zB50i1J+aPEY9ZO1R2EmolAo+Rlkic8RzFmx0=; b=vEn3M0zqJFr8ng
-	bO0a5alOoA6HmiPNtAqvu2h2MGZDGIp/4eoGDL05OmsIPuwou90klTnOKHb1tLtoQoulKU4eRYvuB
-	LuQKoy8rcsmFU/SQuaueR2CFdQNGuMyjclc8iR1HExLQ3iewxIHBE217PtruLvM22hImhs2Hsz1fY
-	M9ZayblQkF4ZJlNmN1XuAfelO0eXIJcsA31VVxIG0FiYtgbWbVaL5GLk9K6b/xZfKm0hvPdFQm0TG
-	9dQ8TdU9erd8jgHprH+fy8g8FDZZF8XbQW0/N4CNq0gDQzTTZTGNklFiIGjbUwmlKqEppNSEOYw1q
-	V2kd9iiJOXnVC+i6LqWA==;
+	List-Owner; bh=kb1mgYq4E42E1WFYCnX/B4Wnl1YAdnVn+DiTAL33ZPg=; b=U6YwxwwYcoYILD
+	OljXFSgWELhI3kTPPd+huM0t+khwCSRJbzwiyqsSzf/lNuKlK7Ulb4Ye9FlYgGoHPLEaMCrS84p81
+	cGanc7Bvp3zcEYHaEyDnZwSoo42PUiKIMyUoa+R+4IKdLNS9Kb4JlQ+6iLJub01b6U/KtQXlihiB9
+	aL2HJBlbMtHnNIQjX5WTgO7bw9L5KpS7YKHX1KWyJxzRzYxSapVTbL7RIcPi267Nvf+32GPcQqrOH
+	D5nKAKZEgGL+DLJnt6bgLng6eNaclBgcF7rwSXvWO1mL+fWx43Ig3VN6dqcplJaA3HD0Z0WbA5JAt
+	ONREydf4b9H1DuxIRnhA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sJeo0-0000000GP5r-1FvQ;
-	Tue, 18 Jun 2024 19:47:48 +0000
+	id 1sJeo5-0000000GPAg-3vOP;
+	Tue, 18 Jun 2024 19:47:53 +0000
 Received: from smtp.forwardemail.net ([149.28.215.223])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sJenw-0000000GP1t-0iRk
+	id 1sJeo1-0000000GP6Q-03Zb
 	for linux-rockchip@lists.infradead.org;
-	Tue, 18 Jun 2024 19:47:45 +0000
+	Tue, 18 Jun 2024 19:47:51 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
  h=Content-Transfer-Encoding: MIME-Version: References: In-Reply-To:
  Message-ID: Date: Subject: Cc: To: From; q=dns/txt; s=fe-e1b5cab7be;
- t=1718740042; bh=Tg1B3ozbkcBZvc/wGkgqOfGFH2yx6qrOxxdxObcl1+4=;
- b=mJczLc35fIyKm5OtpqRMlAXPaIMWncJVvBf90CSXW9Fx6rbNJqlIvF68p/vdo63dMXFDcbmpI
- pUbgEuW3fKWpfIoeGyCR7dSDIV5IyuDLwSu5QpSy5ouPwlCTt4Cu65wI++M2jCvsqjDqrn4TIM+
- +HsXA+GY+xAhUXYZVP9HduZR9M/j91DPNGx867HnW2hrvVchhvFTLQfVOowO8H1yOSamYQOQk40
- T1hiuDa8x036XZs00+TdRgRV+0FTTDJyI2DWFwBy7R9D1H2gsO1p7BtAkHB545q1avT6BJjEd6v
- 4+9HSpH2WTOH7oqxe7dzMLG8zbUFcrN+bFpr8cVvEgYA==
+ t=1718740047; bh=jH6RohZozfKa9VCBBYd0/7XL1yNeMYaa06+5jZ6rl28=;
+ b=voF/aOBp3bJsRLbYPrhtrQJZYHHbsohfhODZSVtprCBlaNGWf8wKb1dBw8tc3pmNGcceNOXXj
+ IvB86ECMmonTuhFTm3igVs3f3MtOz44gk9RCI5SL2VLWK1DMlSEkcdyImWDekigVxsm/Xu6n1Zn
+ Q0Cfe6cNryEe2Oiae3qeqIpXrchBeVktBNYLsda6coLxhXsAIKiczyS30bpZdEX/kndetyCfN5m
+ LB7hmE9PikXrioAa35K1yIqy7stJFqfpwXoQ3jZYBbp/1g4JXvEIANamBoclNwDiNetU6erqvuu
+ cwK2INRmOn2QrzgjoFDHPqm5u6Sj9Pfu0h29QkDDJzlg==
 From: Jonas Karlman <jonas@kwiboo.se>
 To: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>, Mauro Carvalho Chehab
  <mchehab@kernel.org>, Hans Verkuil <hverkuil-cisco@xs4all.nl>, "Greg
@@ -48,9 +48,9 @@ Cc: Alex Bee <knaerzche@gmail.com>, Nicolas Dufresne
  <detlev.casanova@collabora.com>, linux-media@vger.kernel.org,
  linux-rockchip@lists.infradead.org, linux-staging@lists.linux.dev,
  linux-kernel@vger.kernel.org, Jonas Karlman <jonas@kwiboo.se>
-Subject: [PATCH v5 06/10] media: rkvdec: Move rkvdec_reset_decoded_fmt helper
-Date: Tue, 18 Jun 2024 19:46:30 +0000
-Message-ID: <20240618194647.742037-7-jonas@kwiboo.se>
+Subject: [PATCH v5 07/10] media: rkvdec: Extract decoded format enumeration into helper
+Date: Tue, 18 Jun 2024 19:46:31 +0000
+Message-ID: <20240618194647.742037-8-jonas@kwiboo.se>
 X-Mailer: git-send-email 2.45.2
 In-Reply-To: <20240618194647.742037-1-jonas@kwiboo.se>
 References: <20240618194647.742037-1-jonas@kwiboo.se>
@@ -61,11 +61,10 @@ X-Complaints-To: abuse@forwardemail.net
 X-ForwardEmail-Version: 0.4.40
 X-ForwardEmail-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
  149.28.215.223
-X-ForwardEmail-ID: 6671e44864ade33c90059fdd
+X-ForwardEmail-ID: 6671e44c64ade33c90059fef
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240618_124744_577799_99DE7C11 
-X-CRM114-Status: UNSURE (   9.21  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240618_124749_214517_E1709A43 
+X-CRM114-Status: GOOD (  14.51  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,8 +81,12 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Move rkvdec_reset_decoded_fmt() and the called rkvdec_reset_fmt() helper
-functions in preparation for adding a new caller in an upcoming patch.
+Add a rkvdec_is_valid_fmt() helper that check if a fourcc is a supported
+CAPTURE format, and a rkvdec_enum_decoded_fmt() helper that enumerates
+valid formats.
+
+This moves current code into helper functions in preparation for adding
+CAPTURE format filtering and validation in next patch.
 
 Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
 Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
@@ -91,88 +94,111 @@ Tested-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
 Tested-by: Christopher Obbard <chris.obbard@collabora.com>
 ---
 v5:
+- Update commit message
 - Collect r-b and t-b tags
 
 v4:
-- No change
+- Rename rkvdec_decoded_fmts() to rkvdec_enum_decoded_fmt()
+- Rename rkvdec_valid_fmt() to rkvdec_is_valid_fmt()
 
 v3:
 - New patch
 
- drivers/staging/media/rkvdec/rkvdec.c | 46 +++++++++++++--------------
- 1 file changed, 23 insertions(+), 23 deletions(-)
+ drivers/staging/media/rkvdec/rkvdec.c | 49 +++++++++++++++++++--------
+ 1 file changed, 35 insertions(+), 14 deletions(-)
 
 diff --git a/drivers/staging/media/rkvdec/rkvdec.c b/drivers/staging/media/rkvdec/rkvdec.c
-index d1087519d218..7e59db3fc24d 100644
+index 7e59db3fc24d..efbf9aa578ae 100644
 --- a/drivers/staging/media/rkvdec/rkvdec.c
 +++ b/drivers/staging/media/rkvdec/rkvdec.c
-@@ -37,6 +37,29 @@ static void rkvdec_fill_decoded_pixfmt(struct rkvdec_ctx *ctx,
- 		DIV_ROUND_UP(pix_mp->height, 16);
- }
+@@ -27,6 +27,32 @@
+ #include "rkvdec.h"
+ #include "rkvdec-regs.h"
  
-+static void rkvdec_reset_fmt(struct rkvdec_ctx *ctx, struct v4l2_format *f,
-+			     u32 fourcc)
++static u32 rkvdec_enum_decoded_fmt(struct rkvdec_ctx *ctx, int index)
 +{
-+	memset(f, 0, sizeof(*f));
-+	f->fmt.pix_mp.pixelformat = fourcc;
-+	f->fmt.pix_mp.field = V4L2_FIELD_NONE;
-+	f->fmt.pix_mp.colorspace = V4L2_COLORSPACE_REC709;
-+	f->fmt.pix_mp.ycbcr_enc = V4L2_YCBCR_ENC_DEFAULT;
-+	f->fmt.pix_mp.quantization = V4L2_QUANTIZATION_DEFAULT;
-+	f->fmt.pix_mp.xfer_func = V4L2_XFER_FUNC_DEFAULT;
++	const struct rkvdec_coded_fmt_desc *desc = ctx->coded_fmt_desc;
++
++	if (WARN_ON(!desc))
++		return 0;
++
++	if (index >= desc->num_decoded_fmts)
++		return 0;
++
++	return desc->decoded_fmts[index];
 +}
 +
-+static void rkvdec_reset_decoded_fmt(struct rkvdec_ctx *ctx)
++static bool rkvdec_is_valid_fmt(struct rkvdec_ctx *ctx, u32 fourcc)
 +{
-+	struct v4l2_format *f = &ctx->decoded_fmt;
++	const struct rkvdec_coded_fmt_desc *desc = ctx->coded_fmt_desc;
++	unsigned int i;
 +
-+	rkvdec_reset_fmt(ctx, f, ctx->coded_fmt_desc->decoded_fmts[0]);
-+	f->type = V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE;
-+	f->fmt.pix_mp.width = ctx->coded_fmt.fmt.pix_mp.width;
-+	f->fmt.pix_mp.height = ctx->coded_fmt.fmt.pix_mp.height;
-+	rkvdec_fill_decoded_pixfmt(ctx, &f->fmt.pix_mp);
++	for (i = 0; i < desc->num_decoded_fmts; i++) {
++		if (desc->decoded_fmts[i] == fourcc)
++			return true;
++	}
++
++	return false;
 +}
 +
- static int rkvdec_try_ctrl(struct v4l2_ctrl *ctrl)
+ static void rkvdec_fill_decoded_pixfmt(struct rkvdec_ctx *ctx,
+ 				       struct v4l2_pix_format_mplane *pix_mp)
  {
- 	struct rkvdec_ctx *ctx = container_of(ctrl->handler, struct rkvdec_ctx, ctrl_hdl);
-@@ -169,18 +192,6 @@ rkvdec_find_coded_fmt_desc(u32 fourcc)
- 	return NULL;
- }
- 
--static void rkvdec_reset_fmt(struct rkvdec_ctx *ctx, struct v4l2_format *f,
--			     u32 fourcc)
--{
--	memset(f, 0, sizeof(*f));
--	f->fmt.pix_mp.pixelformat = fourcc;
--	f->fmt.pix_mp.field = V4L2_FIELD_NONE;
--	f->fmt.pix_mp.colorspace = V4L2_COLORSPACE_REC709;
--	f->fmt.pix_mp.ycbcr_enc = V4L2_YCBCR_ENC_DEFAULT;
--	f->fmt.pix_mp.quantization = V4L2_QUANTIZATION_DEFAULT;
--	f->fmt.pix_mp.xfer_func = V4L2_XFER_FUNC_DEFAULT;
--}
--
- static void rkvdec_reset_coded_fmt(struct rkvdec_ctx *ctx)
+@@ -52,8 +78,10 @@ static void rkvdec_reset_fmt(struct rkvdec_ctx *ctx, struct v4l2_format *f,
+ static void rkvdec_reset_decoded_fmt(struct rkvdec_ctx *ctx)
  {
- 	struct v4l2_format *f = &ctx->coded_fmt;
-@@ -196,17 +207,6 @@ static void rkvdec_reset_coded_fmt(struct rkvdec_ctx *ctx)
- 		ctx->coded_fmt_desc->ops->adjust_fmt(ctx, f);
- }
+ 	struct v4l2_format *f = &ctx->decoded_fmt;
++	u32 fourcc;
  
--static void rkvdec_reset_decoded_fmt(struct rkvdec_ctx *ctx)
--{
--	struct v4l2_format *f = &ctx->decoded_fmt;
--
 -	rkvdec_reset_fmt(ctx, f, ctx->coded_fmt_desc->decoded_fmts[0]);
--	f->type = V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE;
--	f->fmt.pix_mp.width = ctx->coded_fmt.fmt.pix_mp.width;
--	f->fmt.pix_mp.height = ctx->coded_fmt.fmt.pix_mp.height;
--	rkvdec_fill_decoded_pixfmt(ctx, &f->fmt.pix_mp);
--}
++	fourcc = rkvdec_enum_decoded_fmt(ctx, 0);
++	rkvdec_reset_fmt(ctx, f, fourcc);
+ 	f->type = V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE;
+ 	f->fmt.pix_mp.width = ctx->coded_fmt.fmt.pix_mp.width;
+ 	f->fmt.pix_mp.height = ctx->coded_fmt.fmt.pix_mp.height;
+@@ -244,7 +272,6 @@ static int rkvdec_try_capture_fmt(struct file *file, void *priv,
+ 	struct v4l2_pix_format_mplane *pix_mp = &f->fmt.pix_mp;
+ 	struct rkvdec_ctx *ctx = fh_to_rkvdec_ctx(priv);
+ 	const struct rkvdec_coded_fmt_desc *coded_desc;
+-	unsigned int i;
+ 
+ 	/*
+ 	 * The codec context should point to a coded format desc, if the format
+@@ -255,13 +282,8 @@ static int rkvdec_try_capture_fmt(struct file *file, void *priv,
+ 	if (WARN_ON(!coded_desc))
+ 		return -EINVAL;
+ 
+-	for (i = 0; i < coded_desc->num_decoded_fmts; i++) {
+-		if (coded_desc->decoded_fmts[i] == pix_mp->pixelformat)
+-			break;
+-	}
 -
- static int rkvdec_enum_framesizes(struct file *file, void *priv,
- 				  struct v4l2_frmsizeenum *fsize)
+-	if (i == coded_desc->num_decoded_fmts)
+-		pix_mp->pixelformat = coded_desc->decoded_fmts[0];
++	if (!rkvdec_is_valid_fmt(ctx, pix_mp->pixelformat))
++		pix_mp->pixelformat = rkvdec_enum_decoded_fmt(ctx, 0);
+ 
+ 	/* Always apply the frmsize constraint of the coded end. */
+ 	pix_mp->width = max(pix_mp->width, ctx->coded_fmt.fmt.pix_mp.width);
+@@ -425,14 +447,13 @@ static int rkvdec_enum_capture_fmt(struct file *file, void *priv,
+ 				   struct v4l2_fmtdesc *f)
  {
+ 	struct rkvdec_ctx *ctx = fh_to_rkvdec_ctx(priv);
++	u32 fourcc;
+ 
+-	if (WARN_ON(!ctx->coded_fmt_desc))
+-		return -EINVAL;
+-
+-	if (f->index >= ctx->coded_fmt_desc->num_decoded_fmts)
++	fourcc = rkvdec_enum_decoded_fmt(ctx, f->index);
++	if (!fourcc)
+ 		return -EINVAL;
+ 
+-	f->pixelformat = ctx->coded_fmt_desc->decoded_fmts[f->index];
++	f->pixelformat = fourcc;
+ 	return 0;
+ }
+ 
 -- 
 2.45.2
 
