@@ -4,155 +4,109 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2B570C2BA18
-	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Jun 2024 03:28:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AEF36C2BA18
+	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Jun 2024 06:20:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=z32QbWW54T6JDpifaurka2SmaPCYzQYX7InnU9Wce4o=; b=QWMBw8ozciRBB8
-	ixofn8EdG9M9fo4RcPHi5qsyrQ3WmyKKHGe/zZJnI3tITyQbCbOfunH04Yaau/M9+1CM6S+3YFLlK
-	yi7Tat+M38KFimZkwWHqdvt22iqO61atmDbMQVRWqQc2BU6PHW22M/zprqUoWAme06NhFviD7Wtgd
-	yRK9Q1kG3KZ7eIcZoKm3wnb53ttkpioqQLDR09j9l8CIaeT5+GLsnR8gBgJeXEBNaVdxZ2K3xB9Kw
-	TrwdOgjE4JaB/oOot+SsXpKDSgUR5OMmrO2M1iannpwBzRDCVU3qTpxDrXwcboy5AZlcXRpiq8wvh
-	VWicyddNFPfpT1RT81Dg==;
+	List-Owner; bh=I03WjkgafyTpvIgO3cvyU2kIBHOxS+YNh4TeGct1u7Q=; b=hodDa+lbLE7koM
+	5q355KK/2OVHrSdxZ6783P/bv7jwJvEn/gtcLpNPdnXd0OwXgASjkaY4IMPt3i+MDAz3dhebi2rdx
+	7MC7LPta2yotefcBTc1S62zJv8Lo2pv8JEKtkPHr9B3mAp67DWSbpFPQ7U1zxGnOA26GQJGmWHKDC
+	rihOlQQXoMuRjupxy4yyGgax2Ktk7qsrcXAyHrVWBLIVSJrk30XStrvvSFoqREBrHXcISVwM/dQD6
+	cer/XhUhPlzQUYkOtbXaP/Dr0VmOTqemdtszfqUh1vzeDH4d0+eiXKEEPqWok+eVQDY4o+KL2eMGo
+	yFIL/n11esVtl1lf6DnQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sJPW2-0000000DSdo-1sPF;
-	Tue, 18 Jun 2024 03:28:14 +0000
-Received: from mail-psaapc01on20715.outbound.protection.outlook.com ([2a01:111:f400:feae::715] helo=APC01-PSA-obe.outbound.protection.outlook.com)
+	id 1sJSD2-0000000DmS3-2k0b;
+	Tue, 18 Jun 2024 06:20:48 +0000
+Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sJPVx-0000000DSZA-49xG;
-	Tue, 18 Jun 2024 03:28:11 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=KORBMEwMsV0wgNA11XjUzU0GWykeGzB2fxjj4g82fAsVHQbQstiA91rYeL1X4hGUqZEWUEhQSXgej6iiGoVZdH/ot2jwINvvNVC5RIM9peGl2n/Yv6qfJIzMt5U4tSJkyHkIBBmet8765Jtj6OgvbsX5O67GPnmxHu7OI14EOTL5ryiNpo7vwnumHg0T9o2Tr+iBj55XTfNtVyAHjCsKIsO/yKfLvrO8bDnXyrVUgZzF6oP/8LOFQtlyuhurmMNQhv0pmH2rsFvVK9lzc4M7KPLeHPIJAOAb28fVFN8Ul+DpGGvXWHCb56VXJml47HhpPUtPWjX5TWkYr7peGNcljQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=GJZb0kpWWt1T1LF41c6JowVfME2KuIJYIOi9bWCpWcA=;
- b=PtN3v6HbSmyukC8HYUENl0BClp6ivkrjwq1hl+zMJyTFsDFOMQuEEJgwHYHKBHatW3RQ4gvIH4bBl+PdbChHmvDXkxnU0hiX6tiQU+IqMSDz5FMt34i/JnzQtoJokBWc0pJEKZ9RU7URRLXYPoKokdzew3dj0f9is6+Fk2yUzcO2fWdmF7daFGkdhjImUD/jGWmebXn9HddNzWFVcpBeIYMMP1YTzuE5Q0HaqIA/d6/YiXT2Kee96Tfo4g7IweFfhzfkfMzz39QjJ5OJTKRZzYTN7L+kP9Zs19H1XjKF2SCDH11oEMlbGTAVwBxL1hXWpVnmZb6UVhvyFNuk+Yi1QA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=wesion.com; dmarc=pass action=none header.from=wesion.com;
- dkim=pass header.d=wesion.com; arc=none
-Received: from TYZPR03MB7001.apcprd03.prod.outlook.com (2603:1096:400:26a::14)
- by SEZPR03MB7702.apcprd03.prod.outlook.com (2603:1096:101:10d::14) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7677.30; Tue, 18 Jun
- 2024 03:27:42 +0000
-Received: from TYZPR03MB7001.apcprd03.prod.outlook.com
- ([fe80::78dd:5e68:1a9c:36c0]) by TYZPR03MB7001.apcprd03.prod.outlook.com
- ([fe80::78dd:5e68:1a9c:36c0%6]) with mapi id 15.20.7677.029; Tue, 18 Jun 2024
- 03:27:42 +0000
-From: Jacobe Zang <jacobe.zang@wesion.com>
-To: Alexey Charkov <alchark@gmail.com>
-CC: "robh@kernel.org" <robh@kernel.org>, "krzk+dt@kernel.org"
-	<krzk+dt@kernel.org>, "conor+dt@kernel.org" <conor+dt@kernel.org>,
-	"heiko@sntech.de" <heiko@sntech.de>, Nick Xie <nick@khadas.com>,
-	"efectn@protonmail.com" <efectn@protonmail.com>, "jagan@edgeble.ai"
-	<jagan@edgeble.ai>, "dsimic@manjaro.org" <dsimic@manjaro.org>,
-	"devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
-	"linux-arm-kernel@lists.infradead.org"
-	<linux-arm-kernel@lists.infradead.org>, "linux-rockchip@lists.infradead.org"
-	<linux-rockchip@lists.infradead.org>, "linux-kernel@vger.kernel.org"
-	<linux-kernel@vger.kernel.org>
-Subject: Re: [PATCH v2 4/5] arm64: dts: rockchip: Add AP6275P wireless support
- to Khadas Edge 2
-Thread-Topic: [PATCH v2 4/5] arm64: dts: rockchip: Add AP6275P wireless
- support to Khadas Edge 2
-Thread-Index: AQHawIWUKwv4UGj980e571PV7A8XzbHLtPgAgAAQ92GAAAkAAIABCAP8
-Date: Tue, 18 Jun 2024 03:27:42 +0000
-Message-ID: <TYZPR03MB7001E8C455FBBEF50A49D13280CE2@TYZPR03MB7001.apcprd03.prod.outlook.com>
-References: <20240617071112.3133101-1-jacobe.zang@wesion.com>
- <20240617071112.3133101-5-jacobe.zang@wesion.com>
- <feeb8dcd-661f-415e-be08-afe175d0102e@gmail.com>
- <TYZPR03MB70012C66B789B09195FCD92580CD2@TYZPR03MB7001.apcprd03.prod.outlook.com>
- <CABjd4YyHUzm4EBPPzia5VRXGvJiXDObDHQYNCjpCMJDs=BqALg@mail.gmail.com>
-In-Reply-To: <CABjd4YyHUzm4EBPPzia5VRXGvJiXDObDHQYNCjpCMJDs=BqALg@mail.gmail.com>
-Accept-Language: en-US, zh-CN
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-msip_labels: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=wesion.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: TYZPR03MB7001:EE_|SEZPR03MB7702:EE_
-x-ms-office365-filtering-correlation-id: a13c1d3f-c7a8-445a-1198-08dc8f469d29
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;ARA:13230037|1800799021|366013|376011|7416011|38070700015;
-x-microsoft-antispam-message-info: =?iso-8859-1?Q?w9n/A7xpxq/ZCWIjI5FnrHLaL5t+Fo/IFxyeDPqoJ/Lyp19zAoWCZuHaMt?=
- =?iso-8859-1?Q?se/iVvD/tU/0ZnHRimatKttYggls2es5YxkQCWsFBLymVkFHTKj/iDZngI?=
- =?iso-8859-1?Q?fDDhMS+T1/xrSbcW/qSuOo0SlT4N8OtUwaAQRiMNXIKq4abFehKzSVDAKW?=
- =?iso-8859-1?Q?7LNAj8BVNFj4j6kFnRs9i4v9SBRCQE/koaP5Tw9NihQocS3mB0n+mJsbaS?=
- =?iso-8859-1?Q?V4uyQ8iEYTHkWRZO0CvHiPQv4OMa3Ss2tQO4kAW+so21+DiG8barzrfel5?=
- =?iso-8859-1?Q?+8+0L3qAR4FVcI70nnB40d/FIAnQDe10OatS94RhkL2PLqKp+VfmX3LlnY?=
- =?iso-8859-1?Q?QsB/qudeR9Qyfferz6CgFmFYHhAVrKD8V5TDS3ygFwkGpKrweGPEJSvs+c?=
- =?iso-8859-1?Q?J5OZJpevbpkj9ownphP9ujQN3U9QV1cJl8mudAk69mGrjIqKzKlkL9Zoeu?=
- =?iso-8859-1?Q?+cG4EBt7cdoA5C3NpYVjFcSgN6E7i44fNO45Exksk+Vk6gAyuXnORwVr6u?=
- =?iso-8859-1?Q?pyZEjGkh/1+e0XamSyplM36t+XdO2MSHb0BFlHZh2QKEW2o0PmM3cNYBkE?=
- =?iso-8859-1?Q?b5TiIAespabRmdSMGoiUsIzcW5a5O0h3+TilMGTb2AQo0sssAOicU/Ho9Z?=
- =?iso-8859-1?Q?nAh71s7EOBcBKFhS9qZCDnW2rXE0HrnmbsjXbrezpcWVbD3gMudEfHDjEk?=
- =?iso-8859-1?Q?frVh6HiF2OyZIPM8LEBxwxSh7W9jHdZa5+cKeaY7SPUCJ32qv/8p4uP1Im?=
- =?iso-8859-1?Q?QbC+hu3ddBXlpR2ZQOjDuo/SVjrtzvuZ7Li5iq3snkQCNARccl6Pnpc/3F?=
- =?iso-8859-1?Q?Uq3Br+VvttLEdkcEw2BnyKgHUZScfOnJj366+8AlIyNtezOgg3Uz0oELU+?=
- =?iso-8859-1?Q?5PawO+GyisUMKcqd8CVblkp3XwhifPXdgWH17IRAE1R5Jvrv7uIkxYYZgt?=
- =?iso-8859-1?Q?1+M6C6KRyGEFvSGOMz+TeRli8+KE1X3WT9JnIOu2UWurvwgZGgffnd89XI?=
- =?iso-8859-1?Q?bsk6ijTqPatASsHaxeRyrvq6C7hkOxsqwngjHrtcfaEp3GDm94RZ8EycG4?=
- =?iso-8859-1?Q?n6ZIiaGAkK3DzU+P/F0CrAOOiyI3rh4QVsXovXNGL6QsE39EnGUsbEPqNA?=
- =?iso-8859-1?Q?zOwAhxhNPtO5DX7QeeINteQreEY+ShVvCESzmpyUbCIShuKyOY4NkQQefS?=
- =?iso-8859-1?Q?lJeNZEFq/slu7PR1qgWU+2e8rcS/WqCgUipY4DZhcUXnuhZL8Mqg9GRzvy?=
- =?iso-8859-1?Q?RSo5t6MaTUdqhDzVLPjIyZd3xuSxhhiD4/JkkB0ox2AOJNJNMhz3urzu5h?=
- =?iso-8859-1?Q?iRRx9G78q0NQ+b0XrXMrWg4aHaZbUXRxWIboxOJ9ez8oe7KJIhum/D4HQK?=
- =?iso-8859-1?Q?BFJg+ek8oUaR5sqmfC8tAwpugoAV40rngLXVuMocwxh1yKcn0+4CQ=3D?=
-x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:TYZPR03MB7001.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230037)(1800799021)(366013)(376011)(7416011)(38070700015);DIR:OUT;SFP:1102;
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?iso-8859-1?Q?bfx4Z6EfINSX8zHo/B7iyTWXJee+0UkOoPQRr7viVs6P/Tbr6wmkzrBrV6?=
- =?iso-8859-1?Q?v6FBeSMBwCoc1Oit6HKRuCigUiBsnjB865YLSOjGqxg1KtiYPhvu3HKiYM?=
- =?iso-8859-1?Q?4jS7+NVLtD5lQN34slcOG4bN29OUck5wtNdRP/OYZOsxSw37TdVTZd8Z34?=
- =?iso-8859-1?Q?r+mQC/SG0K3naRMBuygv6OyWghhtnfVCVig0fRazR+tPK3SI7oESdniMVT?=
- =?iso-8859-1?Q?CJKd2o7qisyaRFDRtCtQQKKpd7Fk+AovB94FE8qkalrAtpld4t7tFmdcuU?=
- =?iso-8859-1?Q?j3ejZe4bj7/PjUKrbpZqfZcer9MGnLFbS/0y5ne3j/tpsOdLikCyJ1Jvaw?=
- =?iso-8859-1?Q?A80IHZe+quvknDIZjl2FzMH62ODQrFr0GTU99hineKZta64IiRe3fRGVP/?=
- =?iso-8859-1?Q?4uZ0TxCctKpR/oMnONGFRKQNqOmgw+Nh1ySVmGPBBVyGGW1wuQLFu1Sn7l?=
- =?iso-8859-1?Q?caxjU1dXpV7rq9He+iZObHzMBQPapuuAC6OoIEOfTtXqm4nzy9TxPx9sxf?=
- =?iso-8859-1?Q?o6Ha1tj638h5AjHvHa8TifImGjofnlVUDfB+9yWVvFvSeglWuoNKTHcGWP?=
- =?iso-8859-1?Q?HcZd7YjOAeN9Yuz0JGMq2L+y8jfn4MT6fWrmjDKw3LfWCzrpClvBtIK3NH?=
- =?iso-8859-1?Q?jjzBeZudr2A5/iXAIl688/+I9r63jYTeciH7Oy3E5Zvy0camnL2lLv2a8C?=
- =?iso-8859-1?Q?gvv1c/aozTF3+aN16PSxBBv5gROOTtK9UttqoeOBevEZqUDO4vbJFLRVUA?=
- =?iso-8859-1?Q?vV1B087w527bUSLFLP3D2zVgSzDAlwTV5VlD6NsWUECfyG1cv77bZZxXES?=
- =?iso-8859-1?Q?fo/NAH4LshOhuLrmXdUm2aYg7q5/TABFmvMIrWjmPB0phj3ze9TOq1ZwQ4?=
- =?iso-8859-1?Q?SumvPtbJQq3UeQbrQ/jVOZdEjvfIkcPEl/am4JdmudW1UN9Qd4e/Pg7nW8?=
- =?iso-8859-1?Q?ljoCBpzH2gmXQMBQBfsSHIQ58NVWrDXHg9MvldogohiJK2n07LjyCfVYge?=
- =?iso-8859-1?Q?Fvqm4lM68VCG88byoo9hOk2j8YyJ48uW5ergsiRoRvYJrRQl/C8ZmivgKz?=
- =?iso-8859-1?Q?LtIhsQCkWKQqaPKaIv4VTLReeRlrsAMXxMSPStgL05506Ld3XhUoLtXTW4?=
- =?iso-8859-1?Q?W9OIbM9mjQ061ZY5PNeJeWhy14MZSm6piomvWGINl+4SjDX0fLKAD3KeqX?=
- =?iso-8859-1?Q?Aql8nKZrohMlUtXr0Rdce8+i5D04+v0cDT0uh9HDCYGmrtlQF6QorYu+KR?=
- =?iso-8859-1?Q?jQQfWJpU1SuAkiYeqM3oa/FrtSmbcmewfLQZBzQhR24uCdCnrycA/KrV+u?=
- =?iso-8859-1?Q?P9Mt13qTK4bZgacWf+Xmz9v6ScPrNP6jvmNkNhoyaJDS3ocJanH+v6nwrq?=
- =?iso-8859-1?Q?nsNTxdA7Cs56P8r4l1jSHRFbkVy4KKMFGZX6qqe89yVS2oUJcvc2OCryHi?=
- =?iso-8859-1?Q?1xKV4Dk3HkEAgvs8Q3ng/UhqEKIGoBWlSkxPLlB7xpf40nU5Hr5a/7eUAM?=
- =?iso-8859-1?Q?4+WfucnGwzJraXyM/iv6y+XYyNV3knLojNGfzmpjr/0ssrFzdodIO4iIim?=
- =?iso-8859-1?Q?K6XYk+5oTGuojD2a4iJdsm2yHDkNp2bST37fUgE3uwENCcgvhENu60bn5J?=
- =?iso-8859-1?Q?cUPh9Rbpaih0VL/9X+mc676/lGfGV1fc3u?=
+	id 1sJSCx-0000000DmOX-1Z4E;
+	Tue, 18 Jun 2024 06:20:44 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sin.source.kernel.org (Postfix) with ESMTP id 27862CE140C;
+	Tue, 18 Jun 2024 06:20:40 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 849A9C4AF1C;
+	Tue, 18 Jun 2024 06:20:34 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1718691639;
+	bh=Pzw8C5Eyyd86/AVH89vHxaK0LKah+NcOcAwArlidsD0=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=or9ZDYXVN+K7FIVk2cCi23RdUsPSz/kNApo9erBlQgwJlxT7kOJlVr1BE8LSAzUoI
+	 j8zoEVIx3W1xzQqeAxxqik56POzTmkdeV3YTgXJMxMkL3iaH4R2yXNsXST3jIpxDgy
+	 A+O5CX333/lq02MPWkzPU/8bZZ7Fvsus0K3LsxjJaVVxb74rKcUIgJ2mBj1GGhZyIt
+	 lioiqoyBhstcnaA/TSx2tboFWgyz3mwOOTCmvZo/by/5PDYmrteoouTBqlogDZAscV
+	 emLKhexuB9O+Ky9rslM3S5+pW+9KUVenkDanjL2fX3Xo8O5WNZuWFZsS1lbj+y+Y8K
+	 dyjMNWSu5NnJg==
+Message-ID: <79f3ae72-e733-433c-a577-e0092e3ce20e@kernel.org>
+Date: Tue, 18 Jun 2024 08:20:32 +0200
 MIME-Version: 1.0
-X-OriginatorOrg: wesion.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: TYZPR03MB7001.apcprd03.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: a13c1d3f-c7a8-445a-1198-08dc8f469d29
-X-MS-Exchange-CrossTenant-originalarrivaltime: 18 Jun 2024 03:27:42.6414
- (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 2dc3bd76-7ac2-4780-a5b7-6c6cc6b5af9b
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: 6ZRDyWlP1GNzKj2hWcZdtSVJ6OHWAAan7LtRYA4Znb71mTIUmRSNZNh24SLHgZc/R4ZNwQD/jjKKP1K5fuu1uA==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SEZPR03MB7702
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v4] dt-bindings: phy: rockchip-emmc-phy: Convert to
+ dtschema
+To: Shresth Prasad <shresthprasad7@gmail.com>
+Cc: vkoul@kernel.org, kishon@kernel.org, robh@kernel.org, krzk+dt@kernel.org,
+ conor+dt@kernel.org, heiko@sntech.de, sebastian.reichel@collabora.com,
+ andy.yan@rock-chips.com, s.hauer@pengutronix.de, jbx6244@yandex.com,
+ linux-phy@lists.infradead.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org, javier.carrasco.cruz@gmail.com,
+ skhan@linuxfoundation.org
+References: <20240617085341.34332-2-shresthprasad7@gmail.com>
+ <f691c7f9-cd81-4bdf-a794-95118cb26686@kernel.org>
+ <CAE8VWiLqBUq=-PzT2XVKB_C9nvEERM0x-maWU5qt0+aK1Rd-kg@mail.gmail.com>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ xsFNBFVDQq4BEAC6KeLOfFsAvFMBsrCrJ2bCalhPv5+KQF2PS2+iwZI8BpRZoV+Bd5kWvN79
+ cFgcqTTuNHjAvxtUG8pQgGTHAObYs6xeYJtjUH0ZX6ndJ33FJYf5V3yXqqjcZ30FgHzJCFUu
+ JMp7PSyMPzpUXfU12yfcRYVEMQrmplNZssmYhiTeVicuOOypWugZKVLGNm0IweVCaZ/DJDIH
+ gNbpvVwjcKYrx85m9cBVEBUGaQP6AT7qlVCkrf50v8bofSIyVa2xmubbAwwFA1oxoOusjPIE
+ J3iadrwpFvsZjF5uHAKS+7wHLoW9hVzOnLbX6ajk5Hf8Pb1m+VH/E8bPBNNYKkfTtypTDUCj
+ NYcd27tjnXfG+SDs/EXNUAIRefCyvaRG7oRYF3Ec+2RgQDRnmmjCjoQNbFrJvJkFHlPeHaeS
+ BosGY+XWKydnmsfY7SSnjAzLUGAFhLd/XDVpb1Een2XucPpKvt9ORF+48gy12FA5GduRLhQU
+ vK4tU7ojoem/G23PcowM1CwPurC8sAVsQb9KmwTGh7rVz3ks3w/zfGBy3+WmLg++C2Wct6nM
+ Pd8/6CBVjEWqD06/RjI2AnjIq5fSEH/BIfXXfC68nMp9BZoy3So4ZsbOlBmtAPvMYX6U8VwD
+ TNeBxJu5Ex0Izf1NV9CzC3nNaFUYOY8KfN01X5SExAoVTr09ewARAQABzSVLcnp5c3p0b2Yg
+ S296bG93c2tpIDxrcnprQGtlcm5lbC5vcmc+wsGVBBMBCgA/AhsDBgsJCAcDAgYVCAIJCgsE
+ FgIDAQIeAQIXgBYhBJvQfg4MUfjVlne3VBuTQ307QWKbBQJgPO8PBQkUX63hAAoJEBuTQ307
+ QWKbBn8P+QFxwl7pDsAKR1InemMAmuykCHl+XgC0LDqrsWhAH5TYeTVXGSyDsuZjHvj+FRP+
+ gZaEIYSw2Yf0e91U9HXo3RYhEwSmxUQ4Fjhc9qAwGKVPQf6YuQ5yy6pzI8brcKmHHOGrB3tP
+ /MODPt81M1zpograAC2WTDzkICfHKj8LpXp45PylD99J9q0Y+gb04CG5/wXs+1hJy/dz0tYy
+ iua4nCuSRbxnSHKBS5vvjosWWjWQXsRKd+zzXp6kfRHHpzJkhRwF6ArXi4XnQ+REnoTfM5Fk
+ VmVmSQ3yFKKePEzoIriT1b2sXO0g5QXOAvFqB65LZjXG9jGJoVG6ZJrUV1MVK8vamKoVbUEe
+ 0NlLl/tX96HLowHHoKhxEsbFzGzKiFLh7hyboTpy2whdonkDxpnv/H8wE9M3VW/fPgnL2nPe
+ xaBLqyHxy9hA9JrZvxg3IQ61x7rtBWBUQPmEaK0azW+l3ysiNpBhISkZrsW3ZUdknWu87nh6
+ eTB7mR7xBcVxnomxWwJI4B0wuMwCPdgbV6YDUKCuSgRMUEiVry10xd9KLypR9Vfyn1AhROrq
+ AubRPVeJBf9zR5UW1trJNfwVt3XmbHX50HCcHdEdCKiT9O+FiEcahIaWh9lihvO0ci0TtVGZ
+ MCEtaCE80Q3Ma9RdHYB3uVF930jwquplFLNF+IBCn5JRzsFNBFVDXDQBEADNkrQYSREUL4D3
+ Gws46JEoZ9HEQOKtkrwjrzlw/tCmqVzERRPvz2Xg8n7+HRCrgqnodIYoUh5WsU84N03KlLue
+ MNsWLJBvBaubYN4JuJIdRr4dS4oyF1/fQAQPHh8Thpiz0SAZFx6iWKB7Qrz3OrGCjTPcW6ei
+ OMheesVS5hxietSmlin+SilmIAPZHx7n242u6kdHOh+/SyLImKn/dh9RzatVpUKbv34eP1wA
+ GldWsRxbf3WP9pFNObSzI/Bo3kA89Xx2rO2roC+Gq4LeHvo7ptzcLcrqaHUAcZ3CgFG88CnA
+ 6z6lBZn0WyewEcPOPdcUB2Q7D/NiUY+HDiV99rAYPJztjeTrBSTnHeSBPb+qn5ZZGQwIdUW9
+ YegxWKvXXHTwB5eMzo/RB6vffwqcnHDoe0q7VgzRRZJwpi6aMIXLfeWZ5Wrwaw2zldFuO4Dt
+ 91pFzBSOIpeMtfgb/Pfe/a1WJ/GgaIRIBE+NUqckM+3zJHGmVPqJP/h2Iwv6nw8U+7Yyl6gU
+ BLHFTg2hYnLFJI4Xjg+AX1hHFVKmvl3VBHIsBv0oDcsQWXqY+NaFahT0lRPjYtrTa1v3tem/
+ JoFzZ4B0p27K+qQCF2R96hVvuEyjzBmdq2esyE6zIqftdo4MOJho8uctOiWbwNNq2U9pPWmu
+ 4vXVFBYIGmpyNPYzRm0QPwARAQABwsF8BBgBCgAmAhsMFiEEm9B+DgxR+NWWd7dUG5NDfTtB
+ YpsFAmA872oFCRRflLYACgkQG5NDfTtBYpvScw/9GrqBrVLuJoJ52qBBKUBDo4E+5fU1bjt0
+ Gv0nh/hNJuecuRY6aemU6HOPNc2t8QHMSvwbSF+Vp9ZkOvrM36yUOufctoqON+wXrliEY0J4
+ ksR89ZILRRAold9Mh0YDqEJc1HmuxYLJ7lnbLYH1oui8bLbMBM8S2Uo9RKqV2GROLi44enVt
+ vdrDvo+CxKj2K+d4cleCNiz5qbTxPUW/cgkwG0lJc4I4sso7l4XMDKn95c7JtNsuzqKvhEVS
+ oic5by3fbUnuI0cemeizF4QdtX2uQxrP7RwHFBd+YUia7zCcz0//rv6FZmAxWZGy5arNl6Vm
+ lQqNo7/Poh8WWfRS+xegBxc6hBXahpyUKphAKYkah+m+I0QToCfnGKnPqyYIMDEHCS/RfqA5
+ t8F+O56+oyLBAeWX7XcmyM6TGeVfb+OZVMJnZzK0s2VYAuI0Rl87FBFYgULdgqKV7R7WHzwD
+ uZwJCLykjad45hsWcOGk3OcaAGQS6NDlfhM6O9aYNwGL6tGt/6BkRikNOs7VDEa4/HlbaSJo
+ 7FgndGw1kWmkeL6oQh7wBvYll2buKod4qYntmNKEicoHGU+x91Gcan8mCoqhJkbqrL7+nXG2
+ 5Q/GS5M9RFWS+nYyJh+c3OcfKqVcZQNANItt7+ULzdNJuhvTRRdC3g9hmCEuNSr+CLMdnRBY fv0=
+In-Reply-To: <CAE8VWiLqBUq=-PzT2XVKB_C9nvEERM0x-maWU5qt0+aK1Rd-kg@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240617_202810_067708_EA9B8AE5 
-X-CRM114-Status: UNSURE (   9.00  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240617_232043_817245_C5F798CE 
+X-CRM114-Status: GOOD (  18.64  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -169,20 +123,154 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-> If your PCI bridge is functioning properly and if your WiFi adapter is
-> connected and physically enabled (in terms of power and RFKILL) I
-> believe it should be automatically discovered and you should see it in
-> lspci.
+On 17/06/2024 20:14, Shresth Prasad wrote:
 
-I'm sure that wifi@0,0 node is not needed. 
+>>> +examples:
+>>> +  - |
+>>> +    grf: syscon@ff770000 {
+>>
+>> Drop label... actually entire node looks not needed.
+> 
+> From what I understand, this `phy` node should be a sub-node of a `grf`
+> node which is why it is part of the example.
+> 
+>>
+>>> +      compatible = "rockchip,rk3399-grf", "syscon", "simple-mfd";
+>>
+>> Drop
+>>
+>>> +      reg = <0xff770000 0x10000>;
+>>
+>> Drop
+> 
+> Removing `reg` causes the following warning:
+> Warning (unit_address_vs_reg): /example-0/syscon@ff770000: node has a
+> unit name, but no reg or ranges property
+> 
+> Please let me know what the prefered solution would be here.
 
-> I'm not sure your pcie@0,0 node is needed either.
+Obviously you need to drop entire node... You cannot just drop reg and
+leave unit address.
 
-I think pcie@0,0 node is useful. I have tried to comment it, after that Wi-Fi works properly but bluetooth can't work.
+> 
+>>
+>>
+>>> +      #address-cells = <1>;
+>>> +      #size-cells = <1>;
+>>> +
+>>> +      emmcphy: phy@f780 {
+>>
+>> Drop label
+>>
+>>> +        compatible = "rockchip,rk3399-emmc-phy";
+>>> +        reg = <0xf780 0x20>;
+>>> +        clocks = <&sdhci>;
+>>> +        clock-names = "emmcclk";
+>>> +        drive-impedance-ohm = <50>;
+>>> +        #phy-cells = <0>;
+>>> +      };
+>>> +    };
+>>> diff --git a/Documentation/devicetree/bindings/phy/rockchip-emmc-phy.txt b/Documentation/devicetree/bindings/phy/rockchip-emmc-phy.txt
+>>> deleted file mode 100644
+>>> index 57d28c0d5696..000000000000
+>>> --- a/Documentation/devicetree/bindings/phy/rockchip-emmc-phy.txt
+>>> +++ /dev/null
+>>> @@ -1,43 +0,0 @@
+>>> -Rockchip EMMC PHY
+>>> ------------------------
+>>> -
+>>> -Required properties:
+>>> - - compatible: rockchip,rk3399-emmc-phy
+>>> - - #phy-cells: must be 0
+>>> - - reg: PHY register address offset and length in "general
+>>> -   register files"
+>>> -
+>>> -Optional properties:
+>>> - - clock-names: Should contain "emmcclk".  Although this is listed as optional
+>>> -             (because most boards can get basic functionality without having
+>>> -             access to it), it is strongly suggested.
+>>> -             See ../clock/clock-bindings.txt for details.
+>>> - - clocks: Should have a phandle to the card clock exported by the SDHCI driver.
+>>> - - drive-impedance-ohm: Specifies the drive impedance in Ohm.
+>>> -                        Possible values are 33, 40, 50, 66 and 100.
+>>> -                        If not set, the default value of 50 will be applied.
+>>> - - rockchip,enable-strobe-pulldown: Enable internal pull-down for the strobe
+>>> -                                    line.  If not set, pull-down is not used.
+>>> - - rockchip,output-tapdelay-select: Specifies the phyctrl_otapdlysec register.
+>>> -                                    If not set, the register defaults to 0x4.
+>>> -                                    Maximum value 0xf.
+>>> -
+>>> -Example:
+>>> -
+>>> -
+>>> -grf: syscon@ff770000 {
+>>> -     compatible = "rockchip,rk3399-grf", "syscon", "simple-mfd";
+>>> -     #address-cells = <1>;
+>>> -     #size-cells = <1>;
+>>> -
+>>> -...
+>>> -
+>>> -     emmcphy: phy@f780 {
+>>> -             compatible = "rockchip,rk3399-emmc-phy";
+>>> -             reg = <0xf780 0x20>;
+>>> -             clocks = <&sdhci>;
+>>> -             clock-names = "emmcclk";
+>>> -             drive-impedance-ohm = <50>;
+>>> -             #phy-cells = <0>;
+>>> -     };
+>>> -};
+>>> diff --git a/Documentation/devicetree/bindings/soc/rockchip/grf.yaml b/Documentation/devicetree/bindings/soc/rockchip/grf.yaml
+>>> index 79798c747476..6e1b1cdea680 100644
+>>> --- a/Documentation/devicetree/bindings/soc/rockchip/grf.yaml
+>>> +++ b/Documentation/devicetree/bindings/soc/rockchip/grf.yaml
+>>> @@ -176,9 +176,12 @@ allOf:
+>>>              Documentation/devicetree/bindings/phy/rockchip-pcie-phy.txt
+>>>
+>>>        patternProperties:
+>>> -        "phy@[0-9a-f]+$":
+>>> -          description:
+>>> -            Documentation/devicetree/bindings/phy/rockchip-emmc-phy.txt
+>>> +        "^phy@[0-9a-f]+$":
+>>> +          type: object
+>>> +
+>>
+>> Drop blank line
+>>
+>>> +          $ref: /schemas/phy/rockchip,rk3399-emmc-phy.yaml#
+>>> +
+>>
+>> Drop blank line
+> 
+> The rest of the document also has these blank lines, which is why I've
+> also kept them here. Are you sure I should remove them?
 
----
-Best Regards
-Jacobe
+Yes
+
+> 
+>>
+>>> +          unevaluatedProperties: false
+>>>
+>>>    - if:
+>>>        properties:
+>>
+>> Nothing in example? Isn't the example for 3399?
+>>
+>> We want only one complete example of such multi-children devices, so the
+>> example can be moved and included in existing one here.
+> 
+> The example in this file is actually for `rockchip,rk3399-usb2phy` and
+> not `rockchip,rk3399-emmc-phy` which is why I haven't touched it.
+
+What? That's gref, not usb2phy.
+
+This patch and your explanations are very confusing.
+
+
+
+Best regards,
+Krzysztof
+
+
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
