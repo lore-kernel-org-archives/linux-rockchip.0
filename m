@@ -4,8 +4,8 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6A680C41513
-	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Jun 2024 16:11:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 36347C27C4F
+	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Jun 2024 16:11:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
@@ -13,51 +13,51 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	References:Message-Id:Subject:Date:From:Reply-To:Content-ID:
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:List-Owner;
-	bh=1Zu6XY/Yn3b/7aAvIDNI5sdaPIJgUPqjEAa8hyv+j3c=; b=PoBNtA5kU25dlrxeANVGGz78aM
-	mBDwXGZMBNgsb5cuIwnYWjmV/38eVSg/gitk/HTRvh+F1vX5xZNU98XzXyamIwkSHMu+8reMbIpKu
-	anEHtHwUCeK+KkJoBHqkqI+vR9kpe0zHuOImaPNZ3jd10yYyauQmFJX00kb4CnwE9z3jnwu7Z29xH
-	8WIHG9d83nSfilVBYznlaYr3S/7uPQuAcM+Np5LSe2kjLoIyfcvB8tMX3xQ/kO7zdL+hFjFyEizPL
-	3OMG9fWnSoYhqECaAbp//yh7XTNwMFpon/7Pt/kuqPdZZviYM+reGD+V5ixneSyiUM7r9CkziZyLL
-	FufRh8lw==;
+	bh=rNWtkTp6Rll1b2L/xhm7+it6Rc88kDkFEEULD37lzXo=; b=2I/037aaJ1XKcttmonF+eHxntf
+	ApJ7YlPBGvKi5nEdkvfMC9RFJF1hXQ3goqrSf/0I6eiyLB67nWzREFziBMNLJXFWsri1DTlgphuUL
+	K767+7Pdt2rS5ipJlz0NrypY9kUWL3xoLOhmZi38eNpcWwM0/4O3Fq+Vd1ReImnKq7NuEMYpVCILR
+	xuZzWs7rBgDogzO80t2lvw7rUFvcOU6gMwzuQcUSgdQr/BpniIaTLDw1sZqu7nuHHzCDdJk21T0kI
+	dA/cEyoVB/NYVmXDo7s5cP0FXnPdcthJkqkTCB6C8ozyXI3P/lbKB1bhuozdPdsZAUR2c67sbTu2h
+	Uy54KpVQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sJbQ9-0000000Fm0C-3pdJ;
-	Tue, 18 Jun 2024 16:10:57 +0000
+	id 1sJbQR-0000000FmF7-4BIQ;
+	Tue, 18 Jun 2024 16:11:16 +0000
 Received: from mail-am6eur05on20719.outbound.protection.outlook.com ([2a01:111:f403:2612::719] helo=EUR05-AM6-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sJbPL-0000000FlMl-1oQW;
-	Tue, 18 Jun 2024 16:10:09 +0000
+	id 1sJbPO-0000000FlMl-1iUQ;
+	Tue, 18 Jun 2024 16:10:13 +0000
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=JjLSlvE1CSB6oF6LbzoXYnaL78ccbTir5K+iXJhqmMOEUVQ78O4P6F6Vfgcu01NowazbKF/cYrMd1LWr/Nf39jBl/VrRoHC/bOVS/txSw0fmrvULXNY2WHetGlKDnru2AKClpioCADY1jWCaiwrLEvnOzgvernrTxWDDorgHpicLzyjhLR6IGBVA/amhj8NHBoCpSvsIyBduqHduvHFutfO9l3Vnw+T5C7KbQJCP2HWAUqzrvLKnT4FVNV8IXmFl7ctLSIrEGfOLn0YaYVzab7+cSHjr/HfPZsn49NgLvO6mbZP0BTAu1lH/F0n532aivHVfrw2t0kpG+XGrG/kOHA==
+ b=JwbykTKDFaD4yEo5YzFvnKHubUs/XkvK6LQ+l66Jvzv883KPP8tZy6Mis4WyaqYfvrYn4lCU+8q2E0xPGzpkW9zSrPVP9yIkyxFifCPtiT8hHQtIEC37v8PgKBwucW7Qv26ayTQCoTSlAM1x2+MMwvbBybttfXHULzLUCpcIlmlZzyqFiQW+Jjjosty3QTSLrPl9h3timx0AFALUcHBJ8dyO6VucrFB/OOIFUgP0CaH9+dUSGhc4Ds7q/Os8bw0B2YBlqEgrPCpVS2oQMdbYMoFju7n/FO+DS1j33aZ2lvu+MyS98cO+ZAiZT97YD+hOqg4zlF/L8q0au5Z5H1gZ8Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=JbH/oOXAHGDDIyZmStMPkQp0S13FGoi5kTrrdXpMzQc=;
- b=X73gm/q8tZKxt8JMGi56KOE9xYj6G86xmm/TjVnZZaXkNaCCnhT84Fl5M3eogW2Afq5q1niR9o7npfem3Ah/JWOMk40qPu6wbDNv1iP8oKqfp01XUEeyVJzi4rZdDtT6di7qKVAkhqLrwnpPv30txhqhttfRGltzediQ+/oHml4ayR6hbnqykGD6I+QT/q+wyK2dAxLxfmBm4id2WTAiscp6EPimcgkxMQ9xTkgGA9uiYDcxt3QsTkU+M1f7bOe62PZrZi6Otl/HFGp3SRIX3K4ClXKwyEmrRnk16vyBqgZhd8ZyCX+It4ZeAkJg4h1acRW574LXB0I8P+orV8UT3Q==
+ bh=IH9XbuZw25y545jskZu/aOPTcM93uZ6UG+Rls/bNY74=;
+ b=drcTPsu2OCXQYU/di9am+2/1JrfYeK0uG34StbQSB4C4DppE1SujNgzM80F5SyIcNzow1n+iy9hDVEssPqx9EU3qkKnkMesRZBhG3i9vvZeQ4RWQsAXDARAU5WDuYDHMMI95+l4x5HyGTyGR8jnAww9jVraGD3Ky1NAeMvNOnHVaZfdWlLRx4rqkbx2iia/tik4/6NU9uOxRorgBby5qXtUO94gFKfmfsKhuBpZlGTJxER/Djn2QbDzQ+GrnEmFi50b67q1KJWHtTKcRU7rLIfsl1x38DxmBOLvLgIPHB6LKhGvW5oCFv4A2AFsfJVBcjITQihjmEyKc8Mc5l+KdVQ==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=cherry.de; dmarc=pass action=none header.from=cherry.de;
  dkim=pass header.d=cherry.de; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cherry.de;
  s=selector1;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=JbH/oOXAHGDDIyZmStMPkQp0S13FGoi5kTrrdXpMzQc=;
- b=n8ZaK3ZTGGoAcjoDWNsLF2tileQPX+l/rJYw1vfcj8dp3fbPSJVBcKmpjmGwUVgUew3N+vqu6u2m8QWUTfqyqdQajc9MUgAV2+zasWbcWV4YGKaJmuTibEglS3/gjdllmThlB98oK65D8s8Pu82YFhOAUz8wAhZ3gjvl6MEhT48=
+ bh=IH9XbuZw25y545jskZu/aOPTcM93uZ6UG+Rls/bNY74=;
+ b=iEDxVhEs7mXDtcXUQthUZTH1af576QTrx5r1235Pa2mMOyQeD/O7w+XxEuTvNsEgfqhzShOY4YZXYxVzJL4a1/m0V1uUrFGMPr3tlgPOOQQR+G4Q7N+R5jAKJChU475/Kn2D4SS1NULFxFBpOseGzzqtAK+vSxffzAXxWFlFBew=
 Authentication-Results: dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=cherry.de;
 Received: from VE1PR04MB6382.eurprd04.prod.outlook.com (2603:10a6:803:122::31)
  by VI2PR04MB10642.eurprd04.prod.outlook.com (2603:10a6:800:27f::18) with
  Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7677.30; Tue, 18 Jun
- 2024 16:09:49 +0000
+ 2024 16:09:51 +0000
 Received: from VE1PR04MB6382.eurprd04.prod.outlook.com
  ([fe80::2a24:328:711:5cd6]) by VE1PR04MB6382.eurprd04.prod.outlook.com
  ([fe80::2a24:328:711:5cd6%5]) with mapi id 15.20.7677.030; Tue, 18 Jun 2024
- 16:09:49 +0000
+ 16:09:51 +0000
 From: Farouk Bouabid <farouk.bouabid@cherry.de>
-Date: Tue, 18 Jun 2024 18:06:44 +0200
-Subject: [PATCH v4 2/9] hwmon: (amc6821) dev_err using amc6821 device
- struct
-Message-Id: <20240618-dev-mule-i2c-mux-v4-2-5462d28354c8@cherry.de>
+Date: Tue, 18 Jun 2024 18:06:51 +0200
+Subject: [PATCH v4 9/9] arm64: dts: rockchip: add mule mfd (0x18) on
+ px30-ringneck
+Message-Id: <20240618-dev-mule-i2c-mux-v4-9-5462d28354c8@cherry.de>
 References: <20240618-dev-mule-i2c-mux-v4-0-5462d28354c8@cherry.de>
 In-Reply-To: <20240618-dev-mule-i2c-mux-v4-0-5462d28354c8@cherry.de>
 To: Jean Delvare <jdelvare@suse.com>, Guenter Roeck <linux@roeck-us.net>, 
@@ -77,95 +77,95 @@ X-ClientProxiedBy: VI1PR07CA0286.eurprd07.prod.outlook.com
 MIME-Version: 1.0
 X-MS-PublicTrafficType: Email
 X-MS-TrafficTypeDiagnostic: VE1PR04MB6382:EE_|VI2PR04MB10642:EE_
-X-MS-Office365-Filtering-Correlation-Id: 95f61f70-7e7a-43ba-9572-08dc8fb113cf
+X-MS-Office365-Filtering-Correlation-Id: 4a2af6d7-26d7-495d-7bbc-08dc8fb11573
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
 X-Microsoft-Antispam: BCL:0;ARA:13230037|52116011|7416011|376011|366013|1800799021|38350700011|921017;
-X-Microsoft-Antispam-Message-Info: =?utf-8?B?M1FqMklvb2h2c2hFcEdBeC9jaGE2NkRUWGI2V0JxY2FMdkl3S0xlbXlsRk5v?=
- =?utf-8?B?UkFnREY3RmhlOWFoMW1Cb3JEVEc0RWpUYTdjMHhjRldlVGtYcWtiSysvNmlq?=
- =?utf-8?B?Y0Rhd2pqL0NOUUNlSVVEN0NGV3lTWjgvc01la0M0MU9ocHNKZmozU0FLZWtL?=
- =?utf-8?B?ZG5laUk3YWNybEVmZVNVQkpmS0crcU80bjR1ZW4yVW5WK05jVHEyQ2RBcUxN?=
- =?utf-8?B?QUgvRFZLSjRiUDY5aGNlWHVjTWpEMHVHbXV5dTZVU2tjOXlILzljamg1NW5Q?=
- =?utf-8?B?VTJ0ellwZjB2NHBleWVrSVNOYVJ3dGhDdXVjMFl6djJYaEJXMnpvemp5Nklo?=
- =?utf-8?B?ZmsrQWdwZndzdnZQTjg3VU55WWc1Y2pjY01yelRwUm9zVmJSeVVUanozQ2Z6?=
- =?utf-8?B?Qmt3TjJNb2F2RXhYNi9LMmFiN292T3dkbmM5U3VRYk1LbGFCT1duN3dLVVZo?=
- =?utf-8?B?dGhVN2Vlb1p3cWNaeEd4ODVNd1U5QTZ1WS9uWXhlU01ha2w3Ynl4UThMajNh?=
- =?utf-8?B?QzE2NUxITmRKOTBDNTFmdGMyQ0ZoSkFHTStoSmswU01FelRvS1BzYk00N1ZN?=
- =?utf-8?B?amtGOUZUdU95azZrWEdadmJtSWkwNEdtSjlqQ0IxekY1Y2JzYmhWU3ZJdi83?=
- =?utf-8?B?c2o5TFhFaVhQTTA3eE5zOXNIc2xMSDJURUFicS8xRnFFY1Z4UTlBTklyZzJ5?=
- =?utf-8?B?YW1Cb3hGaExtN3FvamltYTFkLzZCSUcxMWtuQzBxOGFUZS91b29Ddm5saE9U?=
- =?utf-8?B?eXM4UzlwTUFwdjI5VjFWcS9kK1h2aURvcnhnWFI0UlRRR0J1cUsxZlhXMlZL?=
- =?utf-8?B?TWV6OUJ3dnhKcEdYOHRHR3FIem9xS00xOWQ0aGNJRzJXVXRMWkZNeGkrck9H?=
- =?utf-8?B?WFJwNGl4UHRCdFY3eTlrRi9rUWYycDBqVFlSVCtVN2JQN1dXZzA1TUVMeVRH?=
- =?utf-8?B?M3puYTlOV1YyZm4yZFEwNWZsWnhuL3Q1cjgvTmE4N25tUi9KMWZYNkRZOTc5?=
- =?utf-8?B?YkpOdW9sMHA4QWp6NWd6TklsRlBBdG8xOElGaHpwRlpkVXloZzQzeGd3NGZw?=
- =?utf-8?B?b0w2alVLb2dOS1VkSlhBQ2ROdisxTE50Y0hGNXNVcG9lV1lEYWRZcEVDUlV4?=
- =?utf-8?B?emlRZ3BwUnZUTUt6ZHQwTUZlQ2FSc2M5RkxZTnIyZS9hVjRsdVVZMUZPUGlQ?=
- =?utf-8?B?RjJTeGhoTkJmcGc1L0pocUdWSTh4clNHamxkTS9jajVnUHN4dCs3QjFzWWd4?=
- =?utf-8?B?NmJENUg3TEFkUTB2U0paeEhnZGdMKzZEM3lPd1VIcFZDSE1Gb0JaYXUzWndn?=
- =?utf-8?B?NmxpOGdnTVJPVWJZTnRhVmwxRTlZTERFU3hYd09wdlBCRWhldllLRHQvNDdR?=
- =?utf-8?B?djN5RlZvKzhOeTc5ZUNyODJ5dkZyQ2tBcVh1Q3A5Slpjcnh1d2xJaDkwczJ6?=
- =?utf-8?B?cXM1WkZDZjBRR2g2dnArTXlPK0YxR1lNeDN5R2lINXFKaUU5TFRwNnk4ck5Q?=
- =?utf-8?B?Znc1Q0YreG1ac3dCVzZJMjgxSlFXM2k0bG1wSHd3WmNZMnhFcm91dVVmL2Uy?=
- =?utf-8?B?N1ZOT01jNnZteXhlb1FPajVEUEhMS21qNWJ4ZWZhQXNQQzdzQkdmYW4wbzIy?=
- =?utf-8?B?SG1VYkRoQjkvMklMTWpNNEhuVGJmQWx0R2tna0EvNXBxbVI1RlZxU3VicEJm?=
- =?utf-8?B?OStwR3pLR2h5bytaZXNqUEpCQzhaS3F2dWJTR1VMc1l3SFVUZGcvTmhyNkhL?=
- =?utf-8?B?Rk1ackdyWWRtSWt2aHJBM2pyLzN2UlVZMUE2UFNFTzZqNjM3VmtNOWJwaXJJ?=
- =?utf-8?B?SFRFaDNBNHozTGNreWV5QndRWmlIcGdtNlJFOEV3TC85bFdPc2VTZU15Ykov?=
- =?utf-8?Q?sJ543PmLReRLe?=
+X-Microsoft-Antispam-Message-Info: =?utf-8?B?Rm90MVhOa2VWVHpRYnhTWDQ0UjRpcDdmemtpZXFHK3ZSWnZRU1FkeFVqNS9n?=
+ =?utf-8?B?dXlMS0oyYWlPODhrNTN6SFMzbkZnK1IzTSthOUh4N2tKdStVQ1FnQmRpeEZC?=
+ =?utf-8?B?SGtFN1pwUFhhS1pYbEhWWnJSMHdSVWZoV3Y5WjFMTlFya0E0bjRBL3BvTDgw?=
+ =?utf-8?B?OGYrRXhDRmRNb3hIY0JJZ3NxM09CRmx6VjUxY09ocVpZdUpxUGk1R0s1bGVt?=
+ =?utf-8?B?aHB1c0NjVGFZcjhtT2pnZ0d5T1BxWFpzZndrR0MrbG5SR0IxTFh6bGt5MG1K?=
+ =?utf-8?B?SE9uMWx0S1JPNWcrSmxUVWtLbU0vMmtpNlpSYWFSYzdYVHZLNU5zSDl2SjVT?=
+ =?utf-8?B?RmFWOXlGaDhXUkYzSk14QnRZZ041MnpPRi92eXljR0c0MTN3MlhSTWVnWU03?=
+ =?utf-8?B?VG5BTUpQeE5IeGhqYS8xc1VaZXZSdzZ3blhTa0ZlTjFnSWxMZElDQzhGNWpw?=
+ =?utf-8?B?SnUxOW1ncEFxUVFhdnRGaG9WOHQza1Y3UkVEaWlvbzl1d2VXSVFtWWhnWlM1?=
+ =?utf-8?B?WHhWREpKYWhjelZUTTJNWXBpY1FETFd5anZBMUczb2tsbGViY01lMElyejMr?=
+ =?utf-8?B?NGVtZFRUMmVxVTVrZ3J1dXdMVjgzb1VGSEROb3RBWVE1UHdmbGMyanpZSkho?=
+ =?utf-8?B?RGJYSEtjZnE4alF4NDh1ZXJmUVRMOVd0bUd4Tk9vcjlnNnp2dkJxNnMwc1JP?=
+ =?utf-8?B?em1DYmNEeUxJSDRRTjh4R08waW9Ta3NpVnArMTExejZxbXVKNTFJR3NVcTZq?=
+ =?utf-8?B?TWl2b2ZRRHplREdDSlFQVUhMdXp1T0NWQ1RwSjlJVkVwcCtGem8vWnZIM0Vx?=
+ =?utf-8?B?dVQ2N0pDTDVuZzBQdXBrRGZyNUNxVWJ6WS83SVBQdU0razNLNWt4L2ViMnBT?=
+ =?utf-8?B?b0hsKzBUVlJ5ZStyUWFzUnNaN0FKeGh4cnp0UDQwZmhaeEpIY3VqUmZTZzdG?=
+ =?utf-8?B?M1RTaDYxdnAxeXdxQlNCRUZ1SDhMOUlFMEZpdjhWNENBSXFsWWhHTlN3TXI3?=
+ =?utf-8?B?aFBHRmN2VStpYXZhaUNYdkdDamRwSlU2d1Y2cTZKaHl1VWw0TmlhV0xISVF0?=
+ =?utf-8?B?aWJGNlBENFB2cW0rOEE1aVR5YXJVU3NaWUQwM3A2anJ1TTVyV1NLNHpxUzRX?=
+ =?utf-8?B?M2xWdzZsZGlPd3ZIV0RaWFVNSUs1dHlMMGxLOUd0WUxNUkdqakxxbjdrb2Jr?=
+ =?utf-8?B?QzJHZjJuZFZob2ZvVEJkMHlWODA4d3VUenNzdGJlaXNEc3V6L2pMVkdiclNL?=
+ =?utf-8?B?ZzBIWUNPZG5EZkZyaFg0Z0RGZmMzTU9sWmpDc25vZktKS2ZQQ3cvWkk3RFFC?=
+ =?utf-8?B?TlpLUzNrTVFEUlRPYUI3TUE4VTY2dVk2cjduNVdNRHBNcmYrbTFudmtBb2tz?=
+ =?utf-8?B?ekU3U1VjdEVVdGF4TE1xWVBRMWxuT0VLb3A1YmgxN3U4WEVTcFUzMTJNdVFF?=
+ =?utf-8?B?TkpwcmZaejRJWlBLSXJKR2ZxRFo4N29rVTFtQmJrTmduTm9VdlU2bWUybTB4?=
+ =?utf-8?B?TXlGUFB6akV5LzhaSWo1OHVPYUEza21hWllsYWRmU3NIdnlBY0FxNTE2L0Yr?=
+ =?utf-8?B?VVZOVFpvclZiQXR2T3I2WFcrY1I2V0I1QUF1anRZVjBnMlFCOGJ0UTlzR3Q2?=
+ =?utf-8?B?c2hIVHBFenRzRWpJWTNRTjNnanJ2VGFmTjFPeDFrTFVHQlYzWU4raXBPWHQx?=
+ =?utf-8?B?TmpleEtpLytscDJXbXlZTDBVTUtrMS9uZlI1QmJOenlpbVBSdzNNbGIyaTdV?=
+ =?utf-8?B?V01IUHRGZGROa1lLMGdUR2ZXOGlHRXF3c0lYMWx6VWtzeVpVTGdSMElqVVV1?=
+ =?utf-8?B?VnByRk56YW1USEc4OU84RE5YVmZDSUkzMkx1SWFud0orc3Q0bkxnTWd0QzhM?=
+ =?utf-8?Q?eJoPSzr7dwSz6?=
 X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:VE1PR04MB6382.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230037)(52116011)(7416011)(376011)(366013)(1800799021)(38350700011)(921017);DIR:OUT;SFP:1102;
 X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?cXJYWnl2NUQ3b2o2SDNseGhhZFlRUzd0dnBmQUhJZ0tTZVFMbTE0NUlGZ3dH?=
- =?utf-8?B?eTRCWkl3eXFmZDJQRzdNWkgxbkt5UEdSYTNDMWExbHBUamdSRXhFNlQ5Z2RL?=
- =?utf-8?B?RC9JcE1zeW96SWVuRml5L1hOME9qR0RILyt3VTViRmx2dWxJWTFUWERwVVZ3?=
- =?utf-8?B?K3RZdGhzMFhUSmRjbC9VaDVjdllQTHJWaTl4L0hCeXFhT2UwVHFMczg1bmRV?=
- =?utf-8?B?b0pwV0Njd0lmbXlLVlFJM3Zvdkl2dVArVEowOUlCSzdPR0dHVUI4aWVPVEd2?=
- =?utf-8?B?Z0l0cWVUMGFUK0lPTUNaVnh1UUVIWEdLc01FNzBVejhYdnppejNZZ3VyaUZh?=
- =?utf-8?B?K0I3eVNjdzBFcHpZMVRTMzRJbTJLZjlpQlBQb0l0NDVVY0xTZk9Yc0w4a3k4?=
- =?utf-8?B?LzY5MGNQOTZhdWNzUVJ6MEZnc2JVdjdZTzJwV205Ly91eXNXRGl3bUhyU1RU?=
- =?utf-8?B?TlBEUUpENXEvMDIrS1AxZXVZMVNBSU9VaW5QRDZXODAzSStKR21JK1hXUm1B?=
- =?utf-8?B?LysyMGlLT0RMdStXZHZ6NlBvZk45SlI1UDhwQ3ZVSkRUNE5WMkx3TjVIY0FN?=
- =?utf-8?B?N0dXRzdYYmdVNzBOUDhrN1lINDdhWTJGL3c3UjV2WFI0blBNdDFlMThoYWhK?=
- =?utf-8?B?VTRscmNGNEhFREdkWnNYQ1RVMHJnVEpXaVdWWXYwa2pERVB0ZGlKSk14aExB?=
- =?utf-8?B?YjZOWG5welBxWkNrRTBLd1QvK2ZKb3praUROUUtnNWNjU0haZDk3RnNNQTRP?=
- =?utf-8?B?ZVBzUFF2WlVWSDI3bDh3V04ya2RsRFNsRDI3eHRYNGRlZ05vK1JDSng4NmR1?=
- =?utf-8?B?bEd0VndVRHNXV2kxM05GZllMOTMvME5BU3hFZVltR1pYSk1sQWZrQkVKZDRC?=
- =?utf-8?B?REhmaUU1YWQwMThuV1VJSmlFcDF0VnNuMVV6clFvTnh3Q3RsNzZIdi9FNUgz?=
- =?utf-8?B?dUZJZkhSbU5mZENVSXRFTUgxVm5UcUpTaHNaNjNwK2dXYjBmVGlSWEl3VnVZ?=
- =?utf-8?B?cVlNR0J0ejR5NmJZN1p6ekZUVWFpUjZuNkh0ZGI3NHhCTGFoS1FzN24yaGxp?=
- =?utf-8?B?VjFuaEZkNTdqaDkvaG9PTlJONmNnRThqSGdmVjVwNkQrRWtzTkJjS24vVHF2?=
- =?utf-8?B?RHkyS2IxT3o4UEdZRUJOR0tvUmF3RnFzNW1nTDArNytJYmVDRHBQL2pHblkw?=
- =?utf-8?B?dUZLaUQybkpETi9CaHJscTcvWVdzZHJSd0toc1ZaODNQUGM5Y1h5QlVSSzNE?=
- =?utf-8?B?QXJtUFh6SzJDK0I3MCtId1FUOEFzckREOTAvdEFRMGdWLzFoeE1Ya0h1MHE2?=
- =?utf-8?B?OG1TWFdRdHpOU2Z1Rnpwd3EyR3BCNGw3QW0wU0QwdThlOW1hWFpYY1NMMEVT?=
- =?utf-8?B?U3kwUVZhUFY3YURWVEFwODlJNm9KdXJPMXdqL2lZL0E4UmMycXFid3JPNWkv?=
- =?utf-8?B?bWJCN2NxV00zUGlJckJtQ1ByVG9SVWUwcjVXNHpZQjJpSG13NWxUNFI3dGJC?=
- =?utf-8?B?b1JTQ2RWMHRmdTQwa2l4ZFFKSzN5Ui81Q2R2U2kvVUxzMFBTN052c045Vmt3?=
- =?utf-8?B?NU1kWjN4TEorcUh4ckVwemM1V0FObDI1VTgyZVJ5dFRxOTI2bjFmUzhqNjY3?=
- =?utf-8?B?a0hnTlhzWnRMOWlPWkhNTmgzYUZEQnBGa3g3c0xHcUJBcGdSVFc3UVBXRkFh?=
- =?utf-8?B?R0Y4L0s2clBhd0pBbEliOXlDczEvWFRVN21OS0dkZHpMbHV2d2hNOW9GUDhy?=
- =?utf-8?B?MVQvcS9MdW1lM240UFN0Y1F0MlNQY1JUYXA5RW12T1hpZFlLdHlPZ2wxRkFS?=
- =?utf-8?B?U0o5bXhDWFJBMHZCbTZYWnVOc1ljY1ZYRFZaVnJYbmZVRjNZNnFaalc4R0lS?=
- =?utf-8?B?bS85WEVOMDJ6dEcxQ01yNzYvMlhHamJwMzZMSEg0VVBIUnNOYU9pK0dQMGVr?=
- =?utf-8?B?ZklFelFlVmN6bXcxSjJKUnB5MUNXVHJqblFXSktnaDBjTGMydUdIMHBqQ3JI?=
- =?utf-8?B?UjIzOGszaWJhU1phRGJ5NWpxTHh5OGtHRjFsenFiVWxNdnVBYTE0Q1h2a0tV?=
- =?utf-8?B?WmFRTWd3VEFSUk9vZmFFOElaWEhKL3FJKzg5ZGRPKzRIcjJFd2xDWm5kdGxK?=
- =?utf-8?B?R0E3RGxraXhpRklidFVJSU4wclZnWHZycU5oOFU1UC82WEs3dFhDTTlJY2ZC?=
- =?utf-8?B?YUE9PQ==?=
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?NXRMSTRGb2hDUmQxWFlSM25BWitrSWFQMDlLN0hBQWtrV3pCVHRmNnZYOCs3?=
+ =?utf-8?B?NThpSGk4YmhxOUdjdEJDeXF4UXVYWVZodnVMenBwSWZkWERQSlEwQnVvY3cv?=
+ =?utf-8?B?S3AyUDRtKzg2bEJVOFJZa0FQekEwcXVFdElWZ1Z0N0c1T0FrNCtaaTZBWXhP?=
+ =?utf-8?B?N1FxLzRwSm5QdWNLaXZBZTh2RDlxM0JGQXJpZzlNaVJGUGVhRjFNSmRTOVhl?=
+ =?utf-8?B?OHpLYVZ4ZytuUWxRais1S1BVNnJQek0ybXQ4V3kxNDRIZ2xRcTAyS2wzSzZ1?=
+ =?utf-8?B?ZGJDS1NLNVNHTDF3Z1MrSUVYNkJWTXBjdzBHOThFeUZ5bTU1UittVzd5Uk9p?=
+ =?utf-8?B?RnErU0x1TnVJNDBLNGJZOEVITlB4MEJSM0xSbmlKNkovY3I0R1NFRzAxUXBV?=
+ =?utf-8?B?V01TcTFEblMyVG1rd2JYL1B3aFdSYkNnLy8vMEpveGtxc1FWajRXK1ZJT2tV?=
+ =?utf-8?B?elFGOXBVaUk2alpLMGNrZ2cwQUVsZ0FNRU8vUWl4WTFWdllVNGZObFVlT0Iz?=
+ =?utf-8?B?REFCejlDNkMxbzAxS1puNlZXOGd5dzNUVml0eHhSWW1rYVNodllTOEZEanZH?=
+ =?utf-8?B?VldyYjFITGpMSWhPYUkvZ3ozaGJqcW1Ta09uaVEwTTQyd016YWloSk8yV3lE?=
+ =?utf-8?B?TURnV0VVb3BpRGo1TEtTWDk3bnJsdGtra1VvQ242NEFBSWMzZjRHQXpHN09B?=
+ =?utf-8?B?NFJCRE5uZytDMWgwaURCbUs0Z3RmM0dJaEt6eE54MXQ5a2NvUlU2V2Faaitx?=
+ =?utf-8?B?OHZveFRCOVVuYkVtL1FMclFxVmRaWWJTYnNmRTZweVRkcXdVZzdPdS90b1Jo?=
+ =?utf-8?B?QmwzdGU1dnRyOW8vMTN6dzlOK1QySFVvSWhQNjR0RVFidm5WYS9kWWFIRXk3?=
+ =?utf-8?B?aHFsSjU1a25nUmU2YXRVbjlEQzZlZGdITHhJd3dyT2toempPVVprU2VDTHJT?=
+ =?utf-8?B?U2xHOGFXM3cxWmZ2ZnlQQ2tIYXBLRVE2NXpwdE1jMldUL1A0ZW5CWTk0bFdl?=
+ =?utf-8?B?RGF5cFFDUjMxTWt4R0JueWQwZUJINlZ3Ly9yK3Voang1OHlNRWJmb1VGQ1RS?=
+ =?utf-8?B?Ulc0TnRmdDlDRlpCMEMxNmFQTU5HMElNZlExNHBpMTZ4Syt2T2lvc3Jac1Fo?=
+ =?utf-8?B?VVAxK3VYc0p0VnJsc0UzbW95cHZIVk1YeE9uejZUNDN4R1JGVmVDeER6L0Zp?=
+ =?utf-8?B?N3FFU244N2NUZitXMjFSNnkzRVRzTXZLbHZ5Ylk0V1pnK3NZZFUzbWpQL0t5?=
+ =?utf-8?B?WUQ4VVBmWFZCdmNoK2dVelp0WS9nM1hScXlMb25MTVJPbnpTUk5oclpTL1dh?=
+ =?utf-8?B?Q1Fsd1U3YXpvMWdVajJ2NkdKam1qRHFiWWtjSkJoMmYvTHhWUndSVnB4Z3ph?=
+ =?utf-8?B?TFc3KzJsMnV1eGVQcHZZdUxSNzI3cHlpckJXK3M3Mnl5MkxUd0RuY21TK2dS?=
+ =?utf-8?B?WHBqdDY5d0ZidmRMOXJQMnBEaFIzajY3ZDZtWVU5QS8xNzQ0cm1mcmhQNlF2?=
+ =?utf-8?B?c3A0QkIxVmk5TTE5YVpRNjRuWlpkS2ZsNkNiNHFBYm56ZjRsZUo1QXNjdnNn?=
+ =?utf-8?B?YmJJUmpmbnFnY2Z2eWtKcWtoMkZaK0hjc0wzdGM5WG5DdXBRWittcEtwdVly?=
+ =?utf-8?B?OG1YSTd4WlZ3c0Z2dVFjM2RNTjRSQWcvNFN0NzdiTGw2WHBOdkorVTBvd2V5?=
+ =?utf-8?B?OTFDWWd6SFFRRmtXZmhkb1VGYjNhTDUzUlgzS2dhUUxuL0NHSG9PNkF4VHNB?=
+ =?utf-8?B?RnJIWGFQU2F2QUhUZEFMRHFzSklseU1vNXFva09zMFpaSm55ODZpQTJCNS9h?=
+ =?utf-8?B?ZFlDNk9veFNPOWZUTHE1TG5IWjlYdHlJMlRjazUrY2dORGFXNGh6WmdxSEho?=
+ =?utf-8?B?cjhGcm5yVVFZSTU4UUNwaXNJdzV3eHRmWkhuVEROQVdtaTdoUE93dE5BK3V5?=
+ =?utf-8?B?anYraTF4L2hEbUV0eks3MWJuQjFyTlNIZlFLK29Dd3IrWjF3TllVOXVtT1hk?=
+ =?utf-8?B?TUI1b0d2NStLcDA3WGRpaUxTUFVSZkt2RkJsRE5mTmFBS1lZRUVKdFBtSkp2?=
+ =?utf-8?B?SWtDVEdnb0RMTThtbmR3UExxR0hEL2hVR1ZVTFcyMDZxTVJ5MkMxVlhlaHRq?=
+ =?utf-8?B?YnBnSmU3TE1UOC9zdkVIU0FjV2tvS0ZWbTNJNWYzcHNKU3dVL1orZUlFNUFJ?=
+ =?utf-8?B?dHc9PQ==?=
 X-OriginatorOrg: cherry.de
-X-MS-Exchange-CrossTenant-Network-Message-Id: 95f61f70-7e7a-43ba-9572-08dc8fb113cf
+X-MS-Exchange-CrossTenant-Network-Message-Id: 4a2af6d7-26d7-495d-7bbc-08dc8fb11573
 X-MS-Exchange-CrossTenant-AuthSource: VE1PR04MB6382.eurprd04.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 18 Jun 2024 16:09:48.5399
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 18 Jun 2024 16:09:51.4973
  (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
 X-MS-Exchange-CrossTenant-Id: 5e0e1b52-21b5-4e7b-83bb-514ec460677e
 X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: KLBJof5A25VOZb534V4uYZkYRKYHr/cExC3MaYtzC2tj69/bYoJm/PPUxb+92GjrkCYQivIQmkNDjOAnDNhO9H9OSfOuhFRYgZEWexUk82g=
+X-MS-Exchange-CrossTenant-UserPrincipalName: 4OQnwMSj4S837q2UyAyogROOIqTC0478rrDBJhVRsfav5/e2R90uDD6JuulUvmjhzfowUMaz5tLCqxI5gFopHZrrqiz6RY3cr+6hC54Dy/g=
 X-MS-Exchange-Transport-CrossTenantHeadersStamped: VI2PR04MB10642
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240618_091007_796187_2839DF3F 
-X-CRM114-Status: GOOD (  12.57  )
+X-CRM114-CacheID: sfid-20240618_091011_181609_2823258D 
+X-CRM114-Status: GOOD (  10.30  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -182,247 +182,68 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-If probed as platform device, the i2c_client.dev is the parent device
-(eg. MFD) and not the actual amc6821 device. Use the latter to log errors
-instead.
+Mule emulates amc6821 and an I2C mux (mfd:0x18). The isl1208 is exposed
+behind this mux.
+
+Add the mux node and isl1208 as a default device.
 
 Signed-off-by: Farouk Bouabid <farouk.bouabid@cherry.de>
 ---
- drivers/hwmon/amc6821.c | 62 +++++++++++++++++++++++++------------------------
- 1 file changed, 32 insertions(+), 30 deletions(-)
+ arch/arm64/boot/dts/rockchip/px30-ringneck.dtsi | 33 +++++++++++++++++++------
+ 1 file changed, 26 insertions(+), 7 deletions(-)
 
-diff --git a/drivers/hwmon/amc6821.c b/drivers/hwmon/amc6821.c
-index 464991fd7fc9..17456d7c7cfe 100644
---- a/drivers/hwmon/amc6821.c
-+++ b/drivers/hwmon/amc6821.c
-@@ -290,7 +290,7 @@ static ssize_t temp_store(struct device *dev, struct device_attribute *attr,
- 	mutex_lock(&data->update_lock);
- 	data->temp[ix] = val;
- 	if (i2c_smbus_write_byte_data(client, temp_reg[ix], data->temp[ix])) {
--		dev_err(&client->dev, "Register write error, aborting.\n");
-+		dev_err(dev, "Register write error, aborting.\n");
- 		count = -EIO;
- 	}
- 	mutex_unlock(&data->update_lock);
-@@ -389,10 +389,10 @@ static ssize_t pwm1_enable_store(struct device *dev,
- 	mutex_lock(&data->update_lock);
- 	config = i2c_smbus_read_byte_data(client, AMC6821_REG_CONF1);
- 	if (config < 0) {
--			dev_err(&client->dev,
-+		dev_err(dev,
- 			"Error reading configuration register, aborting.\n");
--			count = config;
--			goto unlock;
-+		count = config;
-+		goto unlock;
- 	}
+diff --git a/arch/arm64/boot/dts/rockchip/px30-ringneck.dtsi b/arch/arm64/boot/dts/rockchip/px30-ringneck.dtsi
+index bb1aea82e666..cb84295f118d 100644
+--- a/arch/arm64/boot/dts/rockchip/px30-ringneck.dtsi
++++ b/arch/arm64/boot/dts/rockchip/px30-ringneck.dtsi
+@@ -9,6 +9,7 @@
  
- 	switch (val) {
-@@ -413,9 +413,9 @@ static ssize_t pwm1_enable_store(struct device *dev,
- 		goto unlock;
- 	}
- 	if (i2c_smbus_write_byte_data(client, AMC6821_REG_CONF1, config)) {
--			dev_err(&client->dev,
-+		dev_err(dev,
- 			"Configuration register write error, aborting.\n");
--			count = -EIO;
-+		count = -EIO;
- 	}
- unlock:
- 	mutex_unlock(&data->update_lock);
-@@ -459,11 +459,13 @@ static ssize_t pwm1_auto_point_pwm_show(struct device *dev,
- 	return sprintf(buf, "%d\n", data->pwm1_auto_point_pwm[ix]);
- }
+ / {
+ 	aliases {
++		i2c10 = &i2c10;
+ 		mmc0 = &emmc;
+ 		mmc1 = &sdio;
+ 		rtc0 = &rtc_twi;
+@@ -291,15 +292,33 @@ &i2c1 {
+ 	/* SE05x is limited to Fast Mode */
+ 	clock-frequency = <400000>;
  
--static inline ssize_t set_slope_register(struct i2c_client *client,
-+static inline ssize_t set_slope_register(struct device *dev,
- 		u8 reg,
- 		u8 dpwm,
- 		u8 *ptemp)
- {
-+	struct amc6821_data *data = dev_get_drvdata(dev);
-+	struct i2c_client *client = data->client;
- 	int dt;
- 	u8 tmp;
+-	fan: fan@18 {
+-		compatible = "ti,amc6821";
++	mule@18 {
++		compatible = "tsd,mule";
+ 		reg = <0x18>;
+-		#cooling-cells = <2>;
+-	};
++		#address-cells = <1>;
++		#size-cells = <0>;
++
++		fan: fan@18 {
++			compatible = "ti,amc6821";
++			reg = <0x18>;
++		};
++
++		i2c-mux {
++			compatible = "tsd,mule-i2c-mux";
++			#address-cells = <1>;
++			#size-cells = <0>;
  
-@@ -475,7 +477,7 @@ static inline ssize_t set_slope_register(struct i2c_client *client,
- 	tmp |= (ptemp[1] & 0x7C) << 1;
- 	if (i2c_smbus_write_byte_data(client,
- 			reg, tmp)) {
--		dev_err(&client->dev, "Register write error, aborting.\n");
-+		dev_err(dev, "Register write error, aborting.\n");
- 		return -EIO;
- 	}
- 	return 0;
-@@ -525,7 +527,7 @@ static ssize_t temp_auto_point_temp_store(struct device *dev,
- 					client,
- 					AMC6821_REG_PSV_TEMP,
- 					ptemp[0])) {
--				dev_err(&client->dev,
-+				dev_err(dev,
- 					"Register write error, aborting.\n");
- 				count = -EIO;
- 		}
-@@ -544,7 +546,7 @@ static ssize_t temp_auto_point_temp_store(struct device *dev,
- 		goto EXIT;
- 	}
- 	dpwm = data->pwm1_auto_point_pwm[2] - data->pwm1_auto_point_pwm[1];
--	if (set_slope_register(client, reg, dpwm, ptemp))
-+	if (set_slope_register(dev, reg, dpwm, ptemp))
- 		count = -EIO;
- 
- EXIT:
-@@ -568,17 +570,17 @@ static ssize_t pwm1_auto_point_pwm_store(struct device *dev,
- 	data->pwm1_auto_point_pwm[1] = clamp_val(val, 0, 254);
- 	if (i2c_smbus_write_byte_data(client, AMC6821_REG_DCY_LOW_TEMP,
- 			data->pwm1_auto_point_pwm[1])) {
--		dev_err(&client->dev, "Register write error, aborting.\n");
-+		dev_err(dev, "Register write error, aborting.\n");
- 		count = -EIO;
- 		goto EXIT;
- 	}
- 	dpwm = data->pwm1_auto_point_pwm[2] - data->pwm1_auto_point_pwm[1];
--	if (set_slope_register(client, AMC6821_REG_LTEMP_FAN_CTRL, dpwm,
-+	if (set_slope_register(dev, AMC6821_REG_LTEMP_FAN_CTRL, dpwm,
- 			data->temp1_auto_point_temp)) {
- 		count = -EIO;
- 		goto EXIT;
- 	}
--	if (set_slope_register(client, AMC6821_REG_RTEMP_FAN_CTRL, dpwm,
-+	if (set_slope_register(dev, AMC6821_REG_RTEMP_FAN_CTRL, dpwm,
- 			data->temp2_auto_point_temp)) {
- 		count = -EIO;
- 		goto EXIT;
-@@ -626,13 +628,13 @@ static ssize_t fan_store(struct device *dev, struct device_attribute *attr,
- 	data->fan[ix] = (u16) clamp_val(val, 1, 0xFFFF);
- 	if (i2c_smbus_write_byte_data(client, fan_reg_low[ix],
- 			data->fan[ix] & 0xFF)) {
--		dev_err(&client->dev, "Register write error, aborting.\n");
-+		dev_err(dev, "Register write error, aborting.\n");
- 		count = -EIO;
- 		goto EXIT;
- 	}
- 	if (i2c_smbus_write_byte_data(client,
- 			fan_reg_hi[ix], data->fan[ix] >> 8)) {
--		dev_err(&client->dev, "Register write error, aborting.\n");
-+		dev_err(dev, "Register write error, aborting.\n");
- 		count = -EIO;
- 	}
- EXIT:
-@@ -661,7 +663,7 @@ static ssize_t fan1_div_store(struct device *dev,
- 	mutex_lock(&data->update_lock);
- 	config = i2c_smbus_read_byte_data(client, AMC6821_REG_CONF4);
- 	if (config < 0) {
--		dev_err(&client->dev,
-+		dev_err(dev,
- 			"Error reading configuration register, aborting.\n");
- 		count = config;
- 		goto EXIT;
-@@ -680,7 +682,7 @@ static ssize_t fan1_div_store(struct device *dev,
- 		goto EXIT;
- 	}
- 	if (i2c_smbus_write_byte_data(client, AMC6821_REG_CONF4, config)) {
--		dev_err(&client->dev,
-+		dev_err(dev,
- 			"Configuration register write error, aborting.\n");
- 		count = -EIO;
- 	}
-@@ -815,7 +817,7 @@ static int amc6821_detect(
- 	return 0;
- }
- 
--static int amc6821_init_client(struct i2c_client *client)
-+static int amc6821_init_client(struct device *dev, struct i2c_client *client)
- {
- 	int config;
- 	int err = -EIO;
-@@ -824,16 +826,16 @@ static int amc6821_init_client(struct i2c_client *client)
- 		config = i2c_smbus_read_byte_data(client, AMC6821_REG_CONF4);
- 
- 		if (config < 0) {
--				dev_err(&client->dev,
--			"Error reading configuration register, aborting.\n");
--				return err;
-+			dev_err(dev,
-+				"Error reading configuration register, aborting.\n");
-+			return err;
- 		}
- 
- 		config |= AMC6821_CONF4_MODE;
- 
- 		if (i2c_smbus_write_byte_data(client, AMC6821_REG_CONF4,
- 				config)) {
--			dev_err(&client->dev,
-+			dev_err(dev,
- 			"Configuration register write error, aborting.\n");
- 			return err;
- 		}
-@@ -841,18 +843,18 @@ static int amc6821_init_client(struct i2c_client *client)
- 		config = i2c_smbus_read_byte_data(client, AMC6821_REG_CONF3);
- 
- 		if (config < 0) {
--			dev_err(&client->dev,
-+			dev_err(dev,
- 			"Error reading configuration register, aborting.\n");
- 			return err;
- 		}
- 
--		dev_info(&client->dev, "Revision %d\n", config & 0x0f);
-+		dev_info(dev, "Revision %d\n", config & 0x0f);
- 
- 		config &= ~AMC6821_CONF3_THERM_FAN_EN;
- 
- 		if (i2c_smbus_write_byte_data(client, AMC6821_REG_CONF3,
- 				config)) {
--			dev_err(&client->dev,
-+			dev_err(dev,
- 			"Configuration register write error, aborting.\n");
- 			return err;
- 		}
-@@ -860,7 +862,7 @@ static int amc6821_init_client(struct i2c_client *client)
- 		config = i2c_smbus_read_byte_data(client, AMC6821_REG_CONF2);
- 
- 		if (config < 0) {
--			dev_err(&client->dev,
-+			dev_err(dev,
- 			"Error reading configuration register, aborting.\n");
- 			return err;
- 		}
-@@ -870,7 +872,7 @@ static int amc6821_init_client(struct i2c_client *client)
- 		config &= ~AMC6821_CONF2_RTOIE;
- 		if (i2c_smbus_write_byte_data(client,
- 				AMC6821_REG_CONF2, config)) {
--			dev_err(&client->dev,
-+			dev_err(dev,
- 			"Configuration register write error, aborting.\n");
- 			return err;
- 		}
-@@ -878,7 +880,7 @@ static int amc6821_init_client(struct i2c_client *client)
- 		config = i2c_smbus_read_byte_data(client, AMC6821_REG_CONF1);
- 
- 		if (config < 0) {
--			dev_err(&client->dev,
-+			dev_err(dev,
- 			"Error reading configuration register, aborting.\n");
- 			return err;
- 		}
-@@ -893,7 +895,7 @@ static int amc6821_init_client(struct i2c_client *client)
- 
- 		if (i2c_smbus_write_byte_data(
- 				client, AMC6821_REG_CONF1, config)) {
--			dev_err(&client->dev,
-+			dev_err(dev,
- 			"Configuration register write error, aborting.\n");
- 			return err;
- 		}
-@@ -917,7 +919,7 @@ static int probe(struct device *dev, struct i2c_client *client)
- 	/*
- 	 * Initialize the amc6821 chip
- 	 */
--	err = amc6821_init_client(client);
-+	err = amc6821_init_client(dev, client);
- 	if (err)
- 		return err;
+-	rtc_twi: rtc@6f {
+-		compatible = "isil,isl1208";
+-		reg = <0x6f>;
++			i2c10: i2c@0 {
++				reg = <0x0>;
++				#address-cells = <1>;
++				#size-cells = <0>;
++
++				rtc_twi: rtc@6f {
++					compatible = "isil,isl1208";
++					reg = <0x6f>;
++				};
++			};
++		};
+ 	};
+ };
  
 
 -- 
