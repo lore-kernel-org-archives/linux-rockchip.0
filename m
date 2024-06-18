@@ -4,70 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AFE84C27C79
-	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Jun 2024 00:10:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0E25DC2BA18
+	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Jun 2024 00:13:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
 	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
 	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ggQem0pVPykaSwLMK+pMAM3wn1y9DkQBGSLtss+ScQQ=; b=GIPYoR4Ko5sHtjUcmQAFwKi7MM
-	lwRup5jwOHePLzoRdfqBVDGg98I1cTYfj6zH79eI6us8ZA0o8xx3FiKKmb707htcg+JUeys8RJoad
-	5bFVhnQkDvDkuAipinkHfAjunpCR/J0zG57STevj7nYhWKUVpQED9mtRzujoeIV95LTrUSf01KTuU
-	DnA7C4i1C8QQCNeTeE3coW0mw9CcwEntB2k49wuHFutT2HEnjSQ+Edw/Py3CEokbmjf/mYqTtHcUf
-	JQSOvTdKs2RpZbNvc/OGem+9ybVKPbMESMjX7xEEFgmuG2jNQuBP/Hdyy/RXUJHiT3TX8T+xLe8eT
-	ROCMGp7w==;
+	bh=cONWOBMU1awk6uat6Y2kwzCI+0ObT96KMSSkDFlJ5Zk=; b=kgBjFCtRe7Q1uDwUH1FIrn9NUG
+	R6hRHuYuLBxA29O1fHjv2O53LeSmqLo0TopKTVw1HMUI81y1LV24ioSmhmzbAi5kSJrAflRole7TP
+	f+gTTs5p9t8JKC2Wm2YoPT9Tlbsxrfdf2I5GZEgI2bKul5CMymNcqmiJwvO0RX4qY7O5YypDVxunp
+	QTSomq5+LmHoPkCSvGq2oZKBT0OdTgBVqkpjnLzkOWXn5WrbxzxTGVyRaiTBWccE1YQvqGP/W0VgC
+	QWNpufg8i4NWJbMZ09426rhmneu5BMwlrdo5vpdl69/kRNjzGPPluDPA9mLUts7BDxEcTICGQz6Sa
+	I7MA82DA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sJMQO-0000000D0ZV-1FC5;
-	Tue, 18 Jun 2024 00:10:12 +0000
-Received: from madrid.collaboradmins.com ([46.235.227.194])
+	id 1sJMTf-0000000D1iE-2WVU;
+	Tue, 18 Jun 2024 00:13:35 +0000
+Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sJMQK-0000000D0YT-0qg3;
-	Tue, 18 Jun 2024 00:10:10 +0000
+	id 1sJMTc-0000000D1fp-14by;
+	Tue, 18 Jun 2024 00:13:33 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1718669404;
-	bh=JV+ze2DhYby8M3srxTuMb/mFtvtSNrjhrOipVD4W4m4=;
+	s=mail; t=1718669610;
+	bh=5aDeHQ6ntKhePhG4Ww9qIOWCKi/Au3oReh9It8GCLrY=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=cd3Jq+AoMBgSWRqEb2AmeQXtUgz5YyUy/7qn7j/VJ+G7dhFvy3VPd9kJsBwqxgcHv
-	 RqmrloEor8MoTbkome2eEaOq9bLSctOjyrZmzfjBNDV1KclgYyO6sMzgYX3OontAHm
-	 4h4ZE55u9xO3nXcqdU1GEXWfmd6gCb3rWFmqQGJ8nvX3LDuO5FU52wGHdu/vhJRSGR
-	 7RkPhS0wN8e3bN6YebosXYQDsO8ecJdoRoJNa9d4P0S7HcHshuk79ZxNEYmeM5S2r1
-	 5z0CiFDsuUhZQJ9ws1HiAzATTdzDkYxfIA+jSnRqcmjqWo/T4jcZmvJEWTCepqX9iq
-	 +37t6MNWbsbeg==
+	b=MYxg0hj/1Z+b76/CI3qOU7QKV0sqPoWRAr2OPJv1hKmjA/e62dWWuwWcBdeckeg0d
+	 VZQHbf9hX3kwonQFh9J5/KNhT9BS+JViHxtpvJ/clwfrTIOa17npcEKmP7Mlj0Bj+G
+	 CBtGcC5i22IdtlBEQhDzrZLJI9C5BjDBEEBnC4mWm9/YvZDOdYStB0ndQXUhmoE9Vl
+	 iKZVtw+eSlCScLQSnBBaoPUEE9jO+2NBh562HFs7rua23I7yA1DBlPe6b+F4M6van+
+	 XUp2tcIXpeKPf2/SZpoP5fW4lD+7B7+DGAHLhPVo8aax3caZF58PTMTiOoA3ESiePb
+	 6qXxLdrkgd/0w==
 Received: from mercury (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: sre)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 9462C378042B;
-	Tue, 18 Jun 2024 00:10:04 +0000 (UTC)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 39FAE378216B;
+	Tue, 18 Jun 2024 00:13:30 +0000 (UTC)
 Received: by mercury (Postfix, from userid 1000)
-	id 23BA71060734; Tue, 18 Jun 2024 02:10:04 +0200 (CEST)
-Date: Tue, 18 Jun 2024 02:10:04 +0200
+	id B34271060734; Tue, 18 Jun 2024 02:13:29 +0200 (CEST)
+Date: Tue, 18 Jun 2024 02:13:29 +0200
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
-To: Alexey Charkov <alchark@gmail.com>
-Cc: Jacobe Zang <jacobe.zang@wesion.com>, 
+To: Jacobe Zang <jacobe.zang@wesion.com>
+Cc: Alexey Charkov <alchark@gmail.com>, 
 	"robh@kernel.org" <robh@kernel.org>, "krzk+dt@kernel.org" <krzk+dt@kernel.org>, 
 	"conor+dt@kernel.org" <conor+dt@kernel.org>, "heiko@sntech.de" <heiko@sntech.de>, Nick Xie <nick@khadas.com>, 
 	"efectn@protonmail.com" <efectn@protonmail.com>, "jagan@edgeble.ai" <jagan@edgeble.ai>, 
 	"dsimic@manjaro.org" <dsimic@manjaro.org>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, 
 	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, 
 	"linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
-Subject: Re: [PATCH v2 4/5] arm64: dts: rockchip: Add AP6275P wireless
- support to Khadas Edge 2
-Message-ID: <o5iyg5ha7k3goy65damt3apnyeyfxedbm7mzmu4v2zur32jsyj@x3ge4n52lkfs>
+Subject: Re: [PATCH v2 2/5] arm64: dts: rockchip: Add bluetooth rfkill to
+ Khadas Edge2
+Message-ID: <hk7rrm3ljqmrgvdgf23ymhpzwcnq6otwezratoj5k5zt3d6pc2@vjmeh74xjkck>
 References: <20240617071112.3133101-1-jacobe.zang@wesion.com>
- <20240617071112.3133101-5-jacobe.zang@wesion.com>
- <feeb8dcd-661f-415e-be08-afe175d0102e@gmail.com>
- <TYZPR03MB70012C66B789B09195FCD92580CD2@TYZPR03MB7001.apcprd03.prod.outlook.com>
- <CABjd4YyHUzm4EBPPzia5VRXGvJiXDObDHQYNCjpCMJDs=BqALg@mail.gmail.com>
+ <20240617071112.3133101-3-jacobe.zang@wesion.com>
+ <f147be11-fc35-44c2-88e8-7421fee47ace@letovo.ru>
+ <TYZPR03MB70017A6280F060A6F4A1DD9880CD2@TYZPR03MB7001.apcprd03.prod.outlook.com>
+ <a25472f5-3e88-408c-a033-5e338dce6340@gmail.com>
+ <TYZPR03MB7001732D8E2F0921BA82B7BC80CD2@TYZPR03MB7001.apcprd03.prod.outlook.com>
 MIME-Version: 1.0
-In-Reply-To: <CABjd4YyHUzm4EBPPzia5VRXGvJiXDObDHQYNCjpCMJDs=BqALg@mail.gmail.com>
+In-Reply-To: <TYZPR03MB7001732D8E2F0921BA82B7BC80CD2@TYZPR03MB7001.apcprd03.prod.outlook.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240617_171008_540405_C52D8278 
-X-CRM114-Status: GOOD (  24.14  )
+X-CRM114-CacheID: sfid-20240617_171332_507993_DB0863F3 
+X-CRM114-Status: GOOD (  14.41  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,96 +80,64 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============6160451658206661726=="
+Content-Type: multipart/mixed; boundary="===============7143592606038322606=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
---===============6160451658206661726==
+--===============7143592606038322606==
 Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="uhnckguykm42725v"
+	protocol="application/pgp-signature"; boundary="cuonu76bp3mxpast"
 Content-Disposition: inline
 
 
---uhnckguykm42725v
-Content-Type: text/plain; charset=utf-8
+--cuonu76bp3mxpast
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
 Hi,
 
-On Mon, Jun 17, 2024 at 03:17:50PM GMT, Alexey Charkov wrote:
-> On Mon, Jun 17, 2024 at 2:58=E2=80=AFPM Jacobe Zang <jacobe.zang@wesion.c=
-om> wrote:
-> >
-> > >I'm also wondering why would adding a DT node for a PCI device be need=
-ed
-> > >in the first place, given that PCI supports device discovery?
-> >
-> > In fact, I learn that PCIe bus devices do not need compatible to probe =
-just now... Before sending this patch, I committed the code that added "pci=
-14e4,449d" to vendor-prefix.yaml and net/wireless/brcm,brcm4329-fmac.yaml. =
-Now I know the reason why my addition was rejected. By the way, except for =
-the compatible binding, is there any other binding that I should remove??
+On Mon, Jun 17, 2024 at 11:22:57AM GMT, Jacobe Zang wrote:
+> > If you already control this GPIO from elsewhere (such as from the
+> > bluetooth driver), then perhaps you don't need to define a separate
+> > rfkill device at all.
 >=20
-> If your PCI bridge is functioning properly and if your WiFi adapter is
-> connected and physically enabled (in terms of power and RFKILL) I
-> believe it should be automatically discovered and you should see it in
-> lspci. No additional DT nodes needed - but check if you need any
-> additional DT property somewhere to keep the HYM8563 clock enabled.
-> I'm not sure your pcie@0,0 node is needed either.
->=20
-> Then it's up to the driver to recognize your adapter by its PCI ID and
-> attach. I guess you'd need to extend the hardware IDs table in the
-> brcmfmac driver for it to attach - similar to [1]
->=20
-> [1] https://github.com/armbian/build/blob/main/patch/kernel/archive/rockc=
-hip-rk3588-6.10/0801-wireless-add-bcm43752.patch
+> Yes, I missed the error log before. The rfkill driver didn't probe
+> successfully. I will remove this rfkill node and reserve bluetooth
+> node next time.
 
-RK3588 EVB1 has the same WLAN/BT module and I started looking
-into adding support at a low priority. I think this is very
-similar to the Qualcomm chip Bartosz Golaszewski worked on and
-thus should get a pwrseq driver, which handles the enable GPIOs,
-regulators and clocks. If any of them are missing the PCIe device
-is not discovered. Note, that this will actually require describing
-the PCIe device in DT to reference the pwrseq device.
-
-Additionally the brcmfmac need to be extended to actually have
-working wlan.
-
-I put some links and notes about this here:
-
-https://gitlab.collabora.com/hardware-enablement/rockchip-3588/linux/-/issu=
-es/1
+Does it work with the RTC clock disabled? Otherwise this also needs
+the pwrseq work I mentioned in the WLAN patch.
 
 Greetings,
 
 -- Sebastian
 
---uhnckguykm42725v
+--cuonu76bp3mxpast
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmZw0FUACgkQ2O7X88g7
-+prrpw//UYYL9Rg1H9dHWyJgdcc/4LeH3dB3tQX3tEs0eUL5NthX28Uunb+LpqC/
-9CsIQqGCYjptZP1dzJ4HUeFIPYOnGw63Y7WZaeWqqd/Wob1PsADOPlNFtXQ5th5U
-9Z87Uji/Wfm7h0oG/+1YVGK4TKuUqkkzSoSuvmb0VqtZjVdV4MS90nwtHGxD/jhI
-UTSwuAXa+E7nJg/p0USVW5vIegrJQyFOaTTXpmagiOiOFm2TR59LWURsw3n8+Xmb
-wYR88jc64on4zLqqtVkiqY624Q2f3lLHVAgswx7juZG+obFUputTZshah0bHTRE5
-jiiG8KcAHCNflRZGtS6pDHZmJ+/shcPvE8aoYbiMfMO1+5HDLhjKkM61HeLH1XJc
-JR1u0bH9azquf8LurJd4qEpVcg40drVq7FDvHbSyM5BTvhCIBNGRVNKxIb5klGEb
-WMbEtJKfS/XDtm6zSR4pxcFcvHH9ukRGxogYgKuHuS33QMQ7f0Wa80aIskcPZovT
-m8Nbn4EcleD6c0PVXXyX2s0vy094TohtoDBwHyMI9GWLqdU2LiNsc0bpjkaxdChN
-8mu9ajXgt3+fSpCvvQ8HJ5EAEyba59rhsdE7/cUJXQT8B4rD7KzoU94Rc1YJ6v+j
-0/Y+vb5mk/TkL+zaXT5wvopW0gPhXEpxfdhPMM8PiMqu3Y+gz1k=
-=6zaE
+iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmZw0SkACgkQ2O7X88g7
++pr7tRAAnvJzZGEyZhPOc6+tjZHrt5Y/HO4Sifx9FsBeynxBXodpcPQevKqnzMBf
+24l1XnbasuC9vvwWAlSDr3iomv5TZjw8zdQZKYrzeyeEEnmhmLr1B3Zde2XT73JN
+ElZUojtZIqILKpQJLETSkWknYfemsTmO7VY4l7OR5rW/aingKFtb5DwBG8kx+MGd
+A0bmUEFBTxT7tR2Q7lBK9cuKXomz84bIwx7ip/4c7iP9YjHEICO7m8IGdFT3XznX
+g2Ehjpwm97Qsm4C10fqVnMSXW/C4h1z+K0wln8f1cHdd9EjVZN7Y/Ce3G+dvL5XT
+6YGukt8ybsGdVVSWk9DW3Pkwxf3CNOGkVBO6xua5EdUW78so72Kmj2Z4yevF0nZC
+tTobcxuNrMCHtVqSFP22p/PFEuNJxvO6Ss7XR3LkAVvgQsXg6yRu1bJRjMahl9tt
+JBmQluBmbiD2Ag4QiPhUVglfAC3c28o1RtFiI7rd9ZCReSDcqu/f77BUg9NTWEHS
+23Al34wMMynMiemktx+zXgqMHmHEDPrcqsJhPwgWkauzLO97CGqqFTe+18K+8gvX
+cqAa0dySwtZ9WkvznBODfI2XxgsVxGsX/4WyQgP6JKto+SxAyuy3sgw/ljo/9B6x
+FCVl6+84Mw/3ilWZTfE1vCuku84oJYmyKCOJ/P4d8NaehDl6Ih4=
+=YcBW
 -----END PGP SIGNATURE-----
 
---uhnckguykm42725v--
+--cuonu76bp3mxpast--
 
 
---===============6160451658206661726==
+--===============7143592606038322606==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -179,5 +148,5 @@ Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
---===============6160451658206661726==--
+--===============7143592606038322606==--
 
