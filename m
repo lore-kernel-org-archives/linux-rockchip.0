@@ -4,71 +4,157 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0E25DC2BA18
-	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Jun 2024 00:13:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DD25BC27C79
+	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Jun 2024 02:35:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=cONWOBMU1awk6uat6Y2kwzCI+0ObT96KMSSkDFlJ5Zk=; b=kgBjFCtRe7Q1uDwUH1FIrn9NUG
-	R6hRHuYuLBxA29O1fHjv2O53LeSmqLo0TopKTVw1HMUI81y1LV24ioSmhmzbAi5kSJrAflRole7TP
-	f+gTTs5p9t8JKC2Wm2YoPT9Tlbsxrfdf2I5GZEgI2bKul5CMymNcqmiJwvO0RX4qY7O5YypDVxunp
-	QTSomq5+LmHoPkCSvGq2oZKBT0OdTgBVqkpjnLzkOWXn5WrbxzxTGVyRaiTBWccE1YQvqGP/W0VgC
-	QWNpufg8i4NWJbMZ09426rhmneu5BMwlrdo5vpdl69/kRNjzGPPluDPA9mLUts7BDxEcTICGQz6Sa
-	I7MA82DA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=ibbQxosRM3LD2aqKQSIDFIj+z8feMp9QlW/641JFWQM=; b=lu+/gsIe2Ul1Rs
+	J/T7WXkocw/ASIWx/7+IHZiToN6GM5OlUr1LDKHUBgYSTul0BCTTi/LivJy52FM+BiJLgg874A/Qn
+	jr7rqD5b7luOYPZ2w6rqX7urw0YtWKxKMatuGRvUayEskpv+DttM5mr7VnEIN22viAMuHnKmZxiGR
+	Qe2KuRZ6dsxWrsUWIJSRysLyElo0BfiPXUqFowGN0ypoPc1fLrlJEajXGRRfUtNg84l0Z+ZjjAh/2
+	UoLc/s4FbonLeVtcIOISDZo8/5XwlmrOFlrGmXYhyCYCOtjK7vqogpz3lFyOSE2wzdgNNXzbgttgc
+	utXzxdyGsA67aQlYcPeg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sJMTf-0000000D1iE-2WVU;
-	Tue, 18 Jun 2024 00:13:35 +0000
-Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
+	id 1sJOge-0000000DJuH-0k9s;
+	Tue, 18 Jun 2024 02:35:08 +0000
+Received: from mail-sgaapc01on20726.outbound.protection.outlook.com ([2a01:111:f400:feab::726] helo=APC01-SG2-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sJMTc-0000000D1fp-14by;
-	Tue, 18 Jun 2024 00:13:33 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1718669610;
-	bh=5aDeHQ6ntKhePhG4Ww9qIOWCKi/Au3oReh9It8GCLrY=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=MYxg0hj/1Z+b76/CI3qOU7QKV0sqPoWRAr2OPJv1hKmjA/e62dWWuwWcBdeckeg0d
-	 VZQHbf9hX3kwonQFh9J5/KNhT9BS+JViHxtpvJ/clwfrTIOa17npcEKmP7Mlj0Bj+G
-	 CBtGcC5i22IdtlBEQhDzrZLJI9C5BjDBEEBnC4mWm9/YvZDOdYStB0ndQXUhmoE9Vl
-	 iKZVtw+eSlCScLQSnBBaoPUEE9jO+2NBh562HFs7rua23I7yA1DBlPe6b+F4M6van+
-	 XUp2tcIXpeKPf2/SZpoP5fW4lD+7B7+DGAHLhPVo8aax3caZF58PTMTiOoA3ESiePb
-	 6qXxLdrkgd/0w==
-Received: from mercury (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: sre)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 39FAE378216B;
-	Tue, 18 Jun 2024 00:13:30 +0000 (UTC)
-Received: by mercury (Postfix, from userid 1000)
-	id B34271060734; Tue, 18 Jun 2024 02:13:29 +0200 (CEST)
-Date: Tue, 18 Jun 2024 02:13:29 +0200
-From: Sebastian Reichel <sebastian.reichel@collabora.com>
-To: Jacobe Zang <jacobe.zang@wesion.com>
-Cc: Alexey Charkov <alchark@gmail.com>, 
-	"robh@kernel.org" <robh@kernel.org>, "krzk+dt@kernel.org" <krzk+dt@kernel.org>, 
-	"conor+dt@kernel.org" <conor+dt@kernel.org>, "heiko@sntech.de" <heiko@sntech.de>, Nick Xie <nick@khadas.com>, 
-	"efectn@protonmail.com" <efectn@protonmail.com>, "jagan@edgeble.ai" <jagan@edgeble.ai>, 
-	"dsimic@manjaro.org" <dsimic@manjaro.org>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, 
-	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, 
-	"linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+	id 1sJOgZ-0000000DJrR-3uzn;
+	Tue, 18 Jun 2024 02:35:05 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=JRQOb4lqE0qNy4mocBa4h3ndjySTb3PF6JIUZ8qN+Vgwvt9A0258LCFrNd9Dv09J/s3xyE0DjsRqv/Zc19bLfQzg0/7YCSl7rgvp8Vdz3wwYfw6jSQvluoIzpFdTnN3PyxNPyfe9EEXAU/5V2XNOKndiDEvlhn/xSlcGWV3SHdBOAQFbb6GZreLJJxyTIzCFgmAGU/Y9XMrMBk/+5WPmJPtkvjjN5Y2sELS5fmTedYbpXXUXKUOm2fuCwk0fWV9u3wuVrs8lQschA/xbYWVDc+JD0dw/aX2Ksy6PTtngXbJnM4Apn5iA6XGg5R24/Ov5/SmxwmZ0Dt11q552W9wc1g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=WAvRAmDauAmNHrs57o1zKsGenN7DzXUHHpYEgMHyX7w=;
+ b=Iu+TywkbFnHUHx0lH6+w3M4hN1YzqoxExLoPgi2JCe5N7sBlOdyFVqjR4twPBLOnBjQVfnplpko0f3VxS79x3VUkBDNPrWHbuyeZIT/31X2SBrUCLGasuVyVz+L9WLqeqO/3z6uEgwXv2HgE86g63KYRP/oljwM5TbHWDJm+NjRMdStlOF2E7ypZThCcYqaojK+SqpFxST9DT3VdOiAWu0HwEf387yasFSW27MTWVDfywETduaa7RMrQlLtlQv1i5zfUtLPqJQmKuMxEODdo4NCrd9zkoHtsQdaokBxdUx04J8Y92JopP6NhSnu+7ORfh6oOyMkZn1urXypwParC+Q==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=wesion.com; dmarc=pass action=none header.from=wesion.com;
+ dkim=pass header.d=wesion.com; arc=none
+Received: from TYZPR03MB7001.apcprd03.prod.outlook.com (2603:1096:400:26a::14)
+ by JH0PR03MB7509.apcprd03.prod.outlook.com (2603:1096:990:15::11) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7677.30; Tue, 18 Jun
+ 2024 02:34:42 +0000
+Received: from TYZPR03MB7001.apcprd03.prod.outlook.com
+ ([fe80::78dd:5e68:1a9c:36c0]) by TYZPR03MB7001.apcprd03.prod.outlook.com
+ ([fe80::78dd:5e68:1a9c:36c0%6]) with mapi id 15.20.7677.029; Tue, 18 Jun 2024
+ 02:34:42 +0000
+From: Jacobe Zang <jacobe.zang@wesion.com>
+To: Sebastian Reichel <sebastian.reichel@collabora.com>
+CC: Alexey Charkov <alchark@gmail.com>, "robh@kernel.org" <robh@kernel.org>,
+	"krzk+dt@kernel.org" <krzk+dt@kernel.org>, "conor+dt@kernel.org"
+	<conor+dt@kernel.org>, "heiko@sntech.de" <heiko@sntech.de>, Nick Xie
+	<nick@khadas.com>, "efectn@protonmail.com" <efectn@protonmail.com>,
+	"jagan@edgeble.ai" <jagan@edgeble.ai>, "dsimic@manjaro.org"
+	<dsimic@manjaro.org>, "devicetree@vger.kernel.org"
+	<devicetree@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org"
+	<linux-arm-kernel@lists.infradead.org>, "linux-rockchip@lists.infradead.org"
+	<linux-rockchip@lists.infradead.org>, "linux-kernel@vger.kernel.org"
+	<linux-kernel@vger.kernel.org>
 Subject: Re: [PATCH v2 2/5] arm64: dts: rockchip: Add bluetooth rfkill to
  Khadas Edge2
-Message-ID: <hk7rrm3ljqmrgvdgf23ymhpzwcnq6otwezratoj5k5zt3d6pc2@vjmeh74xjkck>
+Thread-Topic: [PATCH v2 2/5] arm64: dts: rockchip: Add bluetooth rfkill to
+ Khadas Edge2
+Thread-Index: AQHawIWSGno1qGDO5k+YxfPMD0x/C7HLrc+AgAAGRQWAAArwAIAACnfWgADeKoCAACIxkw==
+Date: Tue, 18 Jun 2024 02:34:42 +0000
+Message-ID: <TYZPR03MB7001309EF52B5EEBA567D24080CE2@TYZPR03MB7001.apcprd03.prod.outlook.com>
 References: <20240617071112.3133101-1-jacobe.zang@wesion.com>
  <20240617071112.3133101-3-jacobe.zang@wesion.com>
  <f147be11-fc35-44c2-88e8-7421fee47ace@letovo.ru>
  <TYZPR03MB70017A6280F060A6F4A1DD9880CD2@TYZPR03MB7001.apcprd03.prod.outlook.com>
  <a25472f5-3e88-408c-a033-5e338dce6340@gmail.com>
  <TYZPR03MB7001732D8E2F0921BA82B7BC80CD2@TYZPR03MB7001.apcprd03.prod.outlook.com>
+ <hk7rrm3ljqmrgvdgf23ymhpzwcnq6otwezratoj5k5zt3d6pc2@vjmeh74xjkck>
+In-Reply-To: <hk7rrm3ljqmrgvdgf23ymhpzwcnq6otwezratoj5k5zt3d6pc2@vjmeh74xjkck>
+Accept-Language: en-US, zh-CN
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+msip_labels: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=wesion.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: TYZPR03MB7001:EE_|JH0PR03MB7509:EE_
+x-ms-office365-filtering-correlation-id: 379f7088-a3ea-4f00-3501-08dc8f3f3584
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;ARA:13230037|7416011|376011|366013|1800799021|38070700015;
+x-microsoft-antispam-message-info: =?iso-8859-1?Q?ORpNjLt1kH5UCLCb2r10wOLHQVEMB3PdGi7csVja0PzGI5ZZL/hh6ehaGS?=
+ =?iso-8859-1?Q?ace6tvx1h15gf1CImQeOQjjODIqC+bX5KoxgZPC2pX1FRKxlSuU/if33YD?=
+ =?iso-8859-1?Q?OG5Pizc5kwO7trfKMMmMQOsTPjyWJTMWWvCociUT4B9TNOZLrYiNvCmucb?=
+ =?iso-8859-1?Q?diTgoDsAI3rSUKyq7OSGbd3OTEJ3otlHXOHKmxdPyHMhqzlO8YjkMY5GIq?=
+ =?iso-8859-1?Q?S1hlYaI08HWnjrIvE6E2FcjybXxsFsH8ZanorbQOSCIPkcOwRVkmxJZpDr?=
+ =?iso-8859-1?Q?MW1FvVi9S42APktjzEIIulJ4TD6xoPUI+2QG9T0CSf57kSCFCiyGo7kVZZ?=
+ =?iso-8859-1?Q?j8Gid6efteULhnaS23GD6S+cJxZYlp9tnlAd9E2eBLIOW1grm4NXuyT6ns?=
+ =?iso-8859-1?Q?nYer5hNX15rqtRvPHv27IofmO2CupitbEgUIkmmZS7O+MtALifTdrY6QaX?=
+ =?iso-8859-1?Q?hBQCZrQHy6n2IykK6saPFpNZMJMH54syka2atnklbslT5iR3v/BJU3+EKy?=
+ =?iso-8859-1?Q?uUlJotcxC11BLCYR+zVsVttfaOp7GYCITQwdAHTiOx7maR++D9FicUtJjZ?=
+ =?iso-8859-1?Q?w5EFC1U/82iiX58Qs9dpm7uqHsqe+5IcgJX8xlYxbwIhtUfGMDVAcyobw3?=
+ =?iso-8859-1?Q?djHtQa1M4enqTIiG5Y2qxFVrW1HvXqUNKPbo7xflaUqhVT1GnNzSK4cAMq?=
+ =?iso-8859-1?Q?PPlvMPAfgMn46WYlds/pRGKW55kTBVDS9vUtbkuuLqwHsTcX4D5f9bAD7N?=
+ =?iso-8859-1?Q?aGTbGbPtwDlS6XE0EEetKNuPE7lPOpj8rFVmlJvPdRFYxKUAmJlCvj/Ote?=
+ =?iso-8859-1?Q?thknflU9U31CHANdRm9RNR1KEq0DQsnspSQ6NjFB0UhZSxcgPbpVOhHC/V?=
+ =?iso-8859-1?Q?ukMb/8DkLrLZOHWDXCscvYMgXprqY3JrZl3Hb9kqAA0rwqhiWnscrE/F6H?=
+ =?iso-8859-1?Q?XwC/e2gF35QdPrXBJRQL4TsW9MunrZCoDdB4eP5qWwubM78wUxXFFHsxVq?=
+ =?iso-8859-1?Q?i6M+dJD5y6gVxROdghHEHgCr41FedqT5H83egIsWD5c/RehHXrPfG3WIuG?=
+ =?iso-8859-1?Q?dy0k4BcL+JrMJWoO+HS6bDqhDmJ9IvFa8njm4KUWltcHbGA/3QeQbZFxVv?=
+ =?iso-8859-1?Q?4ABK5k3po6EpVT4F9N0IRmKfEgfkmFbXV7YE9Kh3vBA9Y52hn0pBM/wac5?=
+ =?iso-8859-1?Q?XdB3AUGAR5JbvERgitDaiVCeBUQrDILJDU8yf/CeW+ZMzAWLUq5uTz6iGi?=
+ =?iso-8859-1?Q?bG8PQ5/cnwQeROEzPrDuKzB3Ld91xb9s+qQyKl0RSzbWXYQjiwkoiXoawP?=
+ =?iso-8859-1?Q?gqX7Y2ndc+TL6AMwiOmPJ6q1MuP1GHYZMddNf+IWUZQ/XS9kYYeL7bH3a7?=
+ =?iso-8859-1?Q?9CS6w90fycgd716If7kuZS1B4xTmgFuKyga63FXVSZEwkGO9uDYK8=3D?=
+x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:TYZPR03MB7001.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230037)(7416011)(376011)(366013)(1800799021)(38070700015);DIR:OUT;SFP:1102;
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?iso-8859-1?Q?0Tb+YFoK4syLM5nKlXmXXJRM2qd24owKWbtoLE6DG0OwbyAQN8NiWGpe+m?=
+ =?iso-8859-1?Q?jEstCjzbo72MR/nvtG3QAO+j6niXcB/q5kf3OCZt6o0qBl1jVUwPVl+YDi?=
+ =?iso-8859-1?Q?jbR8IUznzfCZH+ivs6k3+0cgMWTW88xX6oTB+34f8ANykf3eX3PfHrDvm9?=
+ =?iso-8859-1?Q?GeMObNmlIfOSburRi48dLiF1DEsgREZs/hKmsLkhi/TomuRwcHooxrWjAS?=
+ =?iso-8859-1?Q?Eec90NiWTzQWxeRtrAbCbJkrY64qcsXCwi5enK3ddhKg+F++Aju7PA//1m?=
+ =?iso-8859-1?Q?KaDQeNWpJXkR70muojb2xDQTWfzAvQX8kV3bwxW7dWvIUVDdJlQgNyakNE?=
+ =?iso-8859-1?Q?rITA4Qi7k2yfyGrDdWASiIor7aCEFwKRr2fvF9ZOFBfUeE3jo564dWUIb7?=
+ =?iso-8859-1?Q?TmBr5Gkbjb0vbQKUX+Ldu9wrIrhEEF8yDrZyCZ8AZfrGTJq5Fln0fPaAtS?=
+ =?iso-8859-1?Q?uz8EthoOyAAja2P5npVlTzAhvY4QeunAxQsUjGz2ywVcMNnZFMzI+sL/Vq?=
+ =?iso-8859-1?Q?gl5qJbKQ8MjXt7TGapz+l6PLdVQ5v343G/VlIQwKqj5VfG2Gikzwj1HGaV?=
+ =?iso-8859-1?Q?DenViN02qT9S10+d5/AhfyHmK7zmHcO7h/qXq4pjepldX6olHElTT9egeU?=
+ =?iso-8859-1?Q?asnExni3XcnxLEaKGYLxNEzB6xDcRahiX6WRNutrX0zxvvTfXdqsczBrXK?=
+ =?iso-8859-1?Q?LaB1OQ0yi9m4iXzcwNUaMYOkZ6HEOJzS6hnxbb2clcDljFfsqZIvLkTALq?=
+ =?iso-8859-1?Q?3ufFxLtDox3Zi9u+J7pOZAenq0jqxGCEsgI6Htg9Dy7tykpN7bVl2II+Uc?=
+ =?iso-8859-1?Q?0c1B85NBydal4phaFuv/z7MbZafrmFsuOZ6XdBUuS1bbFqnmoNcT5WNopa?=
+ =?iso-8859-1?Q?tVSKLFsoWAGbXeHnNmohqQ4N2t3AY7HzDZqfgLhGQepdswqY3UhCOSsAmD?=
+ =?iso-8859-1?Q?xxVW6Y6Y227+S+6hyHg5tAKtJt9vY7PRQHH5Yh0u+tBmM9J1v7CH0k6wAT?=
+ =?iso-8859-1?Q?XSafqZswE/WWclsI2SCWSvLRLBXit4ITx8pAcr+6QCTfqVDz3u3Gk1hAau?=
+ =?iso-8859-1?Q?yA4sIbw9hQDRSbo/mu+idGGHRTLiigrYrCdieKkqp3tCE3QjjvTRkeRun+?=
+ =?iso-8859-1?Q?Shw+p9Ru/U4PDqojM3zIHnVNxwVqK5PJIKzyo88T7HXDDq69J9fSUxPWGa?=
+ =?iso-8859-1?Q?jxyc+y0pExkZvRWENHfHLnVo11pXJ7xCJMZY/8EI/X2jqvHGxyebtyTzug?=
+ =?iso-8859-1?Q?cbMIU9dVwRTIHBx2cbVsTr3rAW/C0LfEm5QBMzgF+U8gz5iavtUJ/Jiuvm?=
+ =?iso-8859-1?Q?vqO0te4xO1lElEYTwnNsOHYejFFqYIYme4M0a6Uiec31tKK4APm35hjAwZ?=
+ =?iso-8859-1?Q?P96EeSf3DetDPudIA9tZLq5fjFg562ZYt/At6P989B7aORGDWF2ZIVSzM+?=
+ =?iso-8859-1?Q?9rSOtYOkolodWtZ51Jm6Pxc9rr4By6f0zTmFEjxRsl3FBcUC0rZAslWR99?=
+ =?iso-8859-1?Q?gw86zphwJKSFmV62Ds2Z1CN9FrCvjXT7PzS3EotctwSLrWJ09v2yC1FZsJ?=
+ =?iso-8859-1?Q?0vO1Bk8sAALSrrethjzdOU31SVKx+kUnn666k6/sRqYMld0v9PJrE8Mbsj?=
+ =?iso-8859-1?Q?Ymi8PFSubdeFQB2Co02x2Qvh+5pkn+pcYE?=
 MIME-Version: 1.0
-In-Reply-To: <TYZPR03MB7001732D8E2F0921BA82B7BC80CD2@TYZPR03MB7001.apcprd03.prod.outlook.com>
+X-OriginatorOrg: wesion.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: TYZPR03MB7001.apcprd03.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 379f7088-a3ea-4f00-3501-08dc8f3f3584
+X-MS-Exchange-CrossTenant-originalarrivaltime: 18 Jun 2024 02:34:42.2905
+ (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 2dc3bd76-7ac2-4780-a5b7-6c6cc6b5af9b
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: 76Q4r1l+qVTAfm14emUPm7lxdvSRdo8dwOgMWBYTEaHsasT2zc9BxBjqJeMWY/A8/tlyp4o9syGrY84Q9fgnuA==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: JH0PR03MB7509
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240617_171332_507993_DB0863F3 
-X-CRM114-Status: GOOD (  14.41  )
+X-CRM114-CacheID: sfid-20240617_193504_001495_DBA54728 
+X-CRM114-Status: UNSURE (   6.59  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,73 +166,22 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============7143592606038322606=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Hi Sebastian,
 
---===============7143592606038322606==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="cuonu76bp3mxpast"
-Content-Disposition: inline
+> Does it work with the RTC clock disabled? Otherwise this also needs
+> the pwrseq work I mentioned in the WLAN patch.
 
+After I disabled the RTC clock, bluetooth stopped working. I also check the Amlogic chip, some SOCs have the pwrseq defined in DT, maybe rk3588 need to add it as well.
 
---cuonu76bp3mxpast
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-Hi,
-
-On Mon, Jun 17, 2024 at 11:22:57AM GMT, Jacobe Zang wrote:
-> > If you already control this GPIO from elsewhere (such as from the
-> > bluetooth driver), then perhaps you don't need to define a separate
-> > rfkill device at all.
->=20
-> Yes, I missed the error log before. The rfkill driver didn't probe
-> successfully. I will remove this rfkill node and reserve bluetooth
-> node next time.
-
-Does it work with the RTC clock disabled? Otherwise this also needs
-the pwrseq work I mentioned in the WLAN patch.
-
-Greetings,
-
--- Sebastian
-
---cuonu76bp3mxpast
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmZw0SkACgkQ2O7X88g7
-+pr7tRAAnvJzZGEyZhPOc6+tjZHrt5Y/HO4Sifx9FsBeynxBXodpcPQevKqnzMBf
-24l1XnbasuC9vvwWAlSDr3iomv5TZjw8zdQZKYrzeyeEEnmhmLr1B3Zde2XT73JN
-ElZUojtZIqILKpQJLETSkWknYfemsTmO7VY4l7OR5rW/aingKFtb5DwBG8kx+MGd
-A0bmUEFBTxT7tR2Q7lBK9cuKXomz84bIwx7ip/4c7iP9YjHEICO7m8IGdFT3XznX
-g2Ehjpwm97Qsm4C10fqVnMSXW/C4h1z+K0wln8f1cHdd9EjVZN7Y/Ce3G+dvL5XT
-6YGukt8ybsGdVVSWk9DW3Pkwxf3CNOGkVBO6xua5EdUW78so72Kmj2Z4yevF0nZC
-tTobcxuNrMCHtVqSFP22p/PFEuNJxvO6Ss7XR3LkAVvgQsXg6yRu1bJRjMahl9tt
-JBmQluBmbiD2Ag4QiPhUVglfAC3c28o1RtFiI7rd9ZCReSDcqu/f77BUg9NTWEHS
-23Al34wMMynMiemktx+zXgqMHmHEDPrcqsJhPwgWkauzLO97CGqqFTe+18K+8gvX
-cqAa0dySwtZ9WkvznBODfI2XxgsVxGsX/4WyQgP6JKto+SxAyuy3sgw/ljo/9B6x
-FCVl6+84Mw/3ilWZTfE1vCuku84oJYmyKCOJ/P4d8NaehDl6Ih4=
-=YcBW
------END PGP SIGNATURE-----
-
---cuonu76bp3mxpast--
-
-
---===============7143592606038322606==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
+---
+Best Regards
+Jacobe
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============7143592606038322606==--
-
