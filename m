@@ -4,56 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BB95DC27C53
-	for <linux-rockchip@archiver.kernel.org>; Wed, 19 Jun 2024 20:08:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 53E8DC27C53
+	for <linux-rockchip@archiver.kernel.org>; Wed, 19 Jun 2024 21:25:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=bgGP5OfkK6QIGEa1nkR/Ucuy0TvLNPVPEozSLFz7SnM=; b=Qiv7Wz7cPsaxQ6
-	QbJH040QxyITcY1Fs1k7YgCARaUoUgrs7pEEPGGjlZ8spp8u4Srg3ef+pIgJv5DPw9Li0svHKqkXF
-	wFmzK6ATsMrHqjnUGJ2Uy50C7NLrpBr9J9u7tI92J1I4wyG104aJkIj+XLG8FP75jsFIfMciEpoK2
-	B6OfchDND6eB/Ky54A3Iw1eHi88DFj4SMMXeu7pOUE3yuL6Nipx+3qvckoWYoWSLzKv8DkQDg972f
-	M6IwXMRFVMntaitP4uqup6obWhv4NVZoT+oCusbja9oqNCygXTEHGocTlIkm09xHFpZEl5ZbH/fsW
-	DHdOZIvMQ0l3mF/JEVRA==;
+	List-Owner; bh=FRLmFSHZCcsjxbVx+4YLnP49/VnqIPdNzYjClPao3Yc=; b=nZnYw2KEsB6zSY
+	8oHLpaCxspYj1BfPjN9YWtlQGEcpwjuv3jnMha7WhYyjUPb749DHIJnnmRiqtcb5zk2b95x3tABrR
+	/WPKtSZP4HOayIiBArD5W4qWcHBkYmtF5sR+4IpgTfy8sVk7+9goYmzgF/nA7HMJ6Cdhuhm+f4A6L
+	aRyXddN2XPMvb9F5GfZ5ceXVpkbLqc2xs9PNw5J+fKRc5KlQI8y0Q5LismuEHbFsq99itg7mLrXHa
+	XCA4x3hihzdTQV8U2y5h2o+w53TADAGi0QXb3Ze2R4f6idBxXYes9AweFwdQFTZ2kFYv24hWUtOlX
+	bYTHshMvd0AsxPR6OILw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sK1b2-00000002bK6-1u2V;
-	Wed, 19 Jun 2024 20:07:56 +0000
-Received: from smtpbgbr1.qq.com ([54.207.19.206])
+	id 1sK2oN-00000002lz2-3kb8;
+	Wed, 19 Jun 2024 21:25:47 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sK1ax-00000002bGW-3a4Z
+	id 1sK2oM-00000002lyP-0CRy
 	for linux-rockchip@lists.infradead.org;
-	Wed, 19 Jun 2024 20:07:55 +0000
-X-QQ-mid: bizesmtp90t1718827648t29alr3u
-X-QQ-Originating-IP: jw7JnoawfYHHbSslnwUqf/bSFS+/9CI8+eX4tr78MCc=
-Received: from [192.168.159.131] ( [106.150.157.243])
-	by bizesmtp.qq.com (ESMTP) with 
-	id ; Thu, 20 Jun 2024 04:07:26 +0800 (CST)
-X-QQ-SSF: 0000000000000000000000000000000
-X-QQ-GoodBg: 0
-X-BIZMAIL-ID: 964551825667608247
-Message-ID: <793B93C3DF509ADC+f2b62f2b-bc05-4573-b783-ac0a6083a21e@radxa.com>
-Date: Thu, 20 Jun 2024 05:07:25 +0900
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: (subset) [PATCH 1/2] arm64: dts: rockchip: fix PMIC interrupt pin
- on ROCK Pi E
-To: Heiko Stuebner <heiko@sntech.de>
+	Wed, 19 Jun 2024 21:25:47 +0000
+Received: from i5e8616dc.versanet.de ([94.134.22.220] helo=diego.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1sK2oD-0001sS-CL; Wed, 19 Jun 2024 23:25:37 +0200
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+To: FUKAUMI Naoki <naoki@radxa.com>
 Cc: linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org
+Subject: Re: (subset) [PATCH 1/2] arm64: dts: rockchip: fix PMIC interrupt pin on ROCK
+ Pi E
+Date: Wed, 19 Jun 2024 23:25:27 +0200
+Message-ID: <1938148.VZ3vTMCxA0@diego>
+In-Reply-To: <793B93C3DF509ADC+f2b62f2b-bc05-4573-b783-ac0a6083a21e@radxa.com>
 References: <20240619050047.1217-1-naoki@radxa.com>
  <171882539855.4191977.2793236782363724538.b4-ty@sntech.de>
-Content-Language: en-US
-From: FUKAUMI Naoki <naoki@radxa.com>
-In-Reply-To: <171882539855.4191977.2793236782363724538.b4-ty@sntech.de>
-X-QQ-SENDSIZE: 520
-Feedback-ID: bizesmtp:radxa.com:qybglogicsvrgz:qybglogicsvrgz6a-0
+ <793B93C3DF509ADC+f2b62f2b-bc05-4573-b783-ac0a6083a21e@radxa.com>
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240619_130753_818618_8BFAD833 
-X-CRM114-Status: UNSURE (   9.18  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240619_142546_231126_5D59410B 
+X-CRM114-Status: GOOD (  16.82  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -65,40 +58,53 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello,
+Am Mittwoch, 19. Juni 2024, 22:07:25 CEST schrieb FUKAUMI Naoki:
+> Hello,
+> 
+> On 6/20/24 04:31, Heiko Stuebner wrote:
+> > On Wed, 19 Jun 2024 14:00:46 +0900, FUKAUMI Naoki wrote:
+> >> use GPIO0_A2 as interrupt pin for PMIC. GPIO2_A6 was used for
+> >> pre-production board.
+> >>
+> >>
+> > 
+> > Applied, thanks!
+> > 
+> > [1/2] arm64: dts: rockchip: fix PMIC interrupt pin on ROCK Pi E
+> >        commit: 02afd3d5b9fa4ffed284c0f7e7bec609097804fc
+> > 
+> > 
+> > Patch 2 is not appropriate, sorry.
+> > 
+> > The aliases are sorted this way since 2021 and the order is userspace-
+> > facing. So for the last 3 years people have boards with the sdmmc as
+> > mmc0 and changing this now would possibly break a number of boards.
+> 
+> this is the reason I didn't add Fixes tag. I think this change in next 
+> major release is acceptable... but it's wrong?
 
-On 6/20/24 04:31, Heiko Stuebner wrote:
-> On Wed, 19 Jun 2024 14:00:46 +0900, FUKAUMI Naoki wrote:
->> use GPIO0_A2 as interrupt pin for PMIC. GPIO2_A6 was used for
->> pre-production board.
->>
->>
-> 
-> Applied, thanks!
-> 
-> [1/2] arm64: dts: rockchip: fix PMIC interrupt pin on ROCK Pi E
->        commit: 02afd3d5b9fa4ffed284c0f7e7bec609097804fc
-> 
-> 
-> Patch 2 is not appropriate, sorry.
-> 
-> The aliases are sorted this way since 2021 and the order is userspace-
-> facing. So for the last 3 years people have boards with the sdmmc as
-> mmc0 and changing this now would possibly break a number of boards.
+Correct.
 
-this is the reason I didn't add Fixes tag. I think this change in next 
-major release is acceptable... but it's wrong?
+Because with that change, all people mounting /dev/mmcblk0p1 or
+whatever in their system would break their userspace after a simple
+kernel update.
 
-Best regards,
+And that falls under the "we don't break userspace" mantra.
 
---
-FUKAUMI Naoki
-Radxa Computer (Shenzhen) Co., Ltd.
+People should be able to expect their system to keep booting with kernel
+updates, without neededing to meticulously validate each kernel release.
+
+Hence that mmc order needs to stay that way.
+
+
+Heiko
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
