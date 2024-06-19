@@ -4,89 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DEE27C27C53
-	for <linux-rockchip@archiver.kernel.org>; Wed, 19 Jun 2024 07:22:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D6956C27C53
+	for <linux-rockchip@archiver.kernel.org>; Wed, 19 Jun 2024 07:42:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ZEOAE5fixRqAnTHXPSQwn0GXmvqmZDGYnzMZBjYZlTQ=; b=V7fhxxav1rTimY
-	MOVkuQT6u6D81EJguKn/4SJzWIsOkCEO0YtZ2vz0heGL3E9ZmRsH6lxZI+OI9reba17aosA9k3RE8
-	I23bhAGhsLoEsaLf6BQcpvEcz4gQLzDg2vz0PDA3P7+vgH9S0TFcIDHZDvY7FIwrW7eKK348rLj/Z
-	0n6TDiR+JPwVyhxsF9e+e2sjp+NvSYjMlCxoW50FC7xzvQ8T3dj91G0yuIUkHB+WxpSYLdP0TbkS/
-	+hBx7iBwWxDyZioXkC8XSdeRtiH5a/T0nOIqUj4fcidqdQ1ciGDUun2DmjqRNO0VPqqd+Sy7zmSKc
-	F7AXuCV7ll+cUBtyXL2A==;
+	List-Owner; bh=XbtRseP+7Fhi+NGugjCNd49ClJ+Oagm4wx/vAo/dnsU=; b=XRb0HxdyOsA+sb
+	+5tTS2Zibl4Q7sayN+TONk0qzyAzZSYDzCJalk7njC/kWT2YBxhLtpAPpFoFYkqrfs5CuimqtFMGG
+	y9f1arr0yrBFoXbZYPHyTYOlzaAwmp6CMmz/pH46FFdmsf1i5NfEtPEfS3TfK6g+doRQpfEMg/vGB
+	JFqcOfCBte0EtFYDlauJMJDcADPMDNmtlH2GZkhWBlSI0+KMU1ppol5grtjspKAf/Qd+tP91mh63f
+	yBtEfHSbyaOAel7ZgBNy94Dz7mtw9cPBAg0Retez6xmrH55GOntYEyFiS+rr2j1lh5AxgDUlWPw75
+	0Tf0bDcT3puh4sLcxWPg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sJpdm-00000000AjR-1RPP;
-	Wed, 19 Jun 2024 07:21:58 +0000
-Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
+	id 1sJpxC-00000000F3z-3wKP;
+	Wed, 19 Jun 2024 07:42:02 +0000
+Received: from mail-pf1-x42b.google.com ([2607:f8b0:4864:20::42b])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sJpdh-00000000Agh-0Tlc
-	for linux-rockchip@lists.infradead.org;
-	Wed, 19 Jun 2024 07:21:56 +0000
-Received: by mail-wr1-x42d.google.com with SMTP id ffacd0b85a97d-36226e98370so848793f8f.3
-        for <linux-rockchip@lists.infradead.org>; Wed, 19 Jun 2024 00:21:51 -0700 (PDT)
+	id 1sJpx9-00000000F39-0Fh7;
+	Wed, 19 Jun 2024 07:42:00 +0000
+Received: by mail-pf1-x42b.google.com with SMTP id d2e1a72fcca58-70633f0812dso267560b3a.0;
+        Wed, 19 Jun 2024 00:41:58 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1718781710; x=1719386510; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=5FlCuYx89OMN7s2VzglpB6pm+N8b7rvZjLOnkOOQ78c=;
-        b=mN6wS9KmR8vRpkxhj628/jirNTXDI/YnXdIanYzQJqLUGncQkhqdpxtSDW9MTA+1vq
-         rS4VEPeU4UmhyRXwyVcMde82v3GrL+7xhROGP3m5evplMM/gY5pcSDAhcOO/2JBgiOHV
-         9zDaUZxhW70ylH3WciYdJ0Fw3/G3LF6tfF7pMBwYmuNP/LEG0Jb8j/XE/XGVV78TVKA6
-         OeOlYeSb1EQNKyoD51OQsIw2V7lxcD1960I46MEyJPkmiX6us6JYQ3ly3fgA9xAfri8W
-         R5pfG5bedH96niF3ORLehdFO8TEyjFtP9IeLdNmfPEFW/ZD5IecmZoJzZWb+hNlvM0Vq
-         ksFg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1718781710; x=1719386510;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+        d=gmail.com; s=20230601; t=1718782918; x=1719387718; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=5FlCuYx89OMN7s2VzglpB6pm+N8b7rvZjLOnkOOQ78c=;
-        b=fnaAXUfsEl+Mk181nNo28+7I1WuFcL4lmteEKr11GD9SQYTT8yXapNkc7L1IOjQ3xU
-         9srywEn1cFJhMyX0lfc5BJJYu/9ngcNhB2AiQnI9H+LYe573hx4Tl2gJUkCGWC+w5Ecz
-         OIgfN/HSdfsMSIzYhjxnFOiR9mjG71bdkjyggIEbnUHzaeHKWoMezr3kZPPOgJch3IF8
-         kiQEPPmEMBoSJF8zArN7GAMSPXsexXaxrK5p8suik5Ujn9pFmSV/iYlZqh2uuZkpZhqW
-         aVqLioep3RRwlxUpaal5fz1roTTpouYOWWXlsVp1rv9y9b2HgKYtX7VT62woQHOaT0sC
-         5ZuA==
-X-Forwarded-Encrypted: i=1; AJvYcCWikeTlKA6EASxdThzj5l7HHQbkAerAQ29DMpOElvkwaB3tF610c7KdVkQgZaJkzfvnuE9aVBu53bCQFDwgQUSzSRsejJ5FeqESA4pt0N43D8bT
-X-Gm-Message-State: AOJu0Yz/XbD6o3PfMoC3XlgV7Pk4OwpvkLBi4GlLAnDq9rwVap5ysi+y
-	xs5MbvmZ0UpeqinRO+YCEwkTO6cDCKTvmBhJ56wqmaayT1R/aFkwEem+KFh5DyU=
-X-Google-Smtp-Source: AGHT+IF2UOLV+qz3Kk3N1LJ8/j7ro1aIbV92WwNj2KhCxSSnTu3IwZUZX9P1RLZZrBmMGynzY0ETcg==
-X-Received: by 2002:a5d:5402:0:b0:35f:1f91:c23 with SMTP id ffacd0b85a97d-36319990751mr1278337f8f.65.1718781710339;
-        Wed, 19 Jun 2024 00:21:50 -0700 (PDT)
-Received: from localhost ([102.222.70.76])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-363bd4668aasm534412f8f.48.2024.06.19.00.21.49
+        bh=EYf14K0o/GtP+Ak9bfKmmPfeyfY6du+2C660F2DlOvU=;
+        b=msiNhHQdOB9z2J/F7hKSTPqEvix3LQ+FTeyGf5JeHverbkA6hLDb6pMz4LlVoDji2Q
+         T4QsWyyDCqBCPnhAc07d1Bk8stYrEHRTT09TmxzRNPX0TuFSeBTtcJIu1YvX/rHLbJc1
+         RdggE1KiFgCWkJ01SQKjJESljYeiWm94HXX0JWzyI0RudNBB0/jm03RVSHcA/6xA9xu4
+         2oDGh0m9FQMisrJIAKONylkpn/bQIwSTvneuNy1TM0zlyVdsWuoq/YYJeGeHsNS17whW
+         G78KKVESJK0lXjtlwspzxQTXaWR9hwB5NbnNYEw3Rc175Nu+saqWj4ewIhpmzx+/3WWQ
+         brYg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1718782918; x=1719387718;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=EYf14K0o/GtP+Ak9bfKmmPfeyfY6du+2C660F2DlOvU=;
+        b=oLEfyMg6wLL7ke3dUj4qUCzgo0RGd84P1dqe+EcFMZTorjNCeXYo0f4akfSdhgu8Oq
+         /hTa090pCVrE/9wscD21UgasWrszAlMy/VYScuxe+6j3kVb8BLm2IPA0Kj49qJ7vj2Po
+         td86/8Rv7zw0wMeabfOFo07+6ngLIRXwwLJV8ldn06SBiKHnV/RZRkkJliHcXy9knY1i
+         bbBxI0L6IY74SpUNk8JF/697aqzZusB2QFXVCrDNqxQdRWhu//q3+n3qa8eW8kg3qXZH
+         eRGuRe/GnZCmIT67Uod7EBt8ZF+yv8JxnI8X90V1HFhrWPuxOA2i2oiHOvJKcJuaeOx9
+         Pgyw==
+X-Forwarded-Encrypted: i=1; AJvYcCWD2yQO+a9LswS6zMEsc7z3qDnHvXZ8dF2SQ8BY0vp5SwdnV5UPpyn/Wbtyb4a0GoZoNLOjeeT5wRGunZhLISzoSpMUoUg9VhF1ZJ3EGjOKsVv9Gj0KW77+1H1PqSKYJr8z/qd42QVcgaR/pPiR3GGd9WhqqEfLaTg=
+X-Gm-Message-State: AOJu0YyJxsr74r+VQ59PI4SFVI+PlNkR5p7/h8Eok65GhA/6pyx4TWQW
+	TJWk4gqBvI4Yb8CHjr1yt6TWfZczXwQ1rbwFuYeuU8gWJ9evein9
+X-Google-Smtp-Source: AGHT+IH+9mFlVOWUGxjHQVXw4qG3V8AeXjQgSMD+qpxAz0/Fx43VORUI8LtUbjV7U3DwdOEy2ZllCQ==
+X-Received: by 2002:a05:6a21:610:b0:1b0:58e:1b93 with SMTP id adf61e73a8af0-1bcbb3826camr1797590637.1.1718782917869;
+        Wed, 19 Jun 2024 00:41:57 -0700 (PDT)
+Received: from localhost.localdomain ([221.220.133.99])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-1f855effc9fsm109835865ad.189.2024.06.19.00.41.53
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 19 Jun 2024 00:21:49 -0700 (PDT)
-Date: Wed, 19 Jun 2024 10:21:45 +0300
-From: Dan Carpenter <dan.carpenter@linaro.org>
-To: Jonas Karlman <jonas@kwiboo.se>
-Cc: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Hans Verkuil <hverkuil-cisco@xs4all.nl>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Alex Bee <knaerzche@gmail.com>,
-	Nicolas Dufresne <nicolas.dufresne@collabora.com>,
-	Benjamin Gaignard <benjamin.gaignard@collabora.com>,
-	Sebastian Fricke <sebastian.fricke@collabora.com>,
-	Christopher Obbard <chris.obbard@collabora.com>,
-	Detlev Casanova <detlev.casanova@collabora.com>,
-	linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
-	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v5 08/10] media: rkvdec: Add image format concept
-Message-ID: <f7e4b0be-fe09-4db8-b081-21c46c0d836f@moroto.mountain>
-References: <20240618194647.742037-1-jonas@kwiboo.se>
- <20240618194647.742037-9-jonas@kwiboo.se>
+        Wed, 19 Jun 2024 00:41:57 -0700 (PDT)
+From: Jianfeng Liu <liujianfeng1994@gmail.com>
+To: nicolas@ndufresne.ca
+Cc: alchark@gmail.com,
+	andy.yan@rock-chips.com,
+	conor+dt@kernel.org,
+	cristian.ciocaltea@collabora.com,
+	detlev.casanova@collabora.com,
+	devicetree@vger.kernel.org,
+	didi.debian@cknow.org,
+	dsimic@manjaro.org,
+	gregkh@linuxfoundation.org,
+	heiko@sntech.de,
+	krzk+dt@kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-media@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	linux-staging@lists.linux.dev,
+	liujianfeng1994@gmail.com,
+	mchehab@kernel.org,
+	robh@kernel.org,
+	sebastian.reichel@collabora.com
+Subject: Re: [PATCH 1/3] media: rockchip: Introduce the rkvdec2 driver
+Date: Wed, 19 Jun 2024 15:41:50 +0800
+Message-Id: <20240619074150.103770-1-liujianfeng1994@gmail.com>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <0e8561108c4fc99291ad7cdc0c6af2dbb8e58f02.camel@ndufresne.ca>
+References: <0e8561108c4fc99291ad7cdc0c6af2dbb8e58f02.camel@ndufresne.ca>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20240618194647.742037-9-jonas@kwiboo.se>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240619_002153_295020_F5ACDCF4 
-X-CRM114-Status: GOOD (  14.22  )
+X-CRM114-CacheID: sfid-20240619_004159_122823_D6782C77 
+X-CRM114-Status: GOOD (  16.96  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,52 +110,57 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, Jun 18, 2024 at 07:46:32PM +0000, Jonas Karlman wrote:
-> +static u32 rkvdec_enum_decoded_fmt(struct rkvdec_ctx *ctx, int index,
-> +				   enum rkvdec_image_fmt image_fmt)
->  {
->  	const struct rkvdec_coded_fmt_desc *desc = ctx->coded_fmt_desc;
-> +	unsigned int i, j;
->  
->  	if (WARN_ON(!desc))
->  		return 0;
->  
-> -	if (index >= desc->num_decoded_fmts)
-> -		return 0;
-> +	for (i = 0, j = 0; i < desc->num_decoded_fmts; i++) {
-> +		if (rkvdec_image_fmt_match(desc->decoded_fmts[i].image_fmt,
-> +					   image_fmt) &&
-> +		    index == j++)
+Hi,
 
-I really don't care for this j++ which is tucked inside a condition.
+On Tue, 18 Jun 2024 08:39:07 -0400, Detlev Casanova wrote:
+>> I think the min/max width/height are incorrect. From rockchip's TRM V1.0
+>> Part1 page 374, supported image size is 64x64 to 65472x65472.
+>
+>Page 374 shows the sizes for h265. h264 is the next table, where 16x16 and 
+>65520x65520 is documented.
+>
+>> And my
+>> chromium can't use rkvdec2 because min width/height are set to 16, which
+>> 
+>> will cause error at here in rkvdec2_h264_validate_sps:
+>> >+	if (width > ctx->coded_fmt.fmt.pix_mp.width ||
+>> >+	    height > ctx->coded_fmt.fmt.pix_mp.height)
+>> >+		return -EINVAL;
+>> 
+>> width is 16, height is 32 while ctx->coded_fmt.fmt.pix_mp.width and
+>> ctx->coded_fmt.fmt.pix_mp.height are both 16.
+>
+>Maybe
+>
+>if (!(sps->flags & V4L2_H264_SPS_FLAG_FRAME_MBS_ONLY))
+>	height *= 2;
+>
+>is causing issues in this case, I can check.
 
-> +			return desc->decoded_fmts[i].fourcc;
-> +	}
+You are right. H264 decoder should support 16x16 to 65520x65520. After 
+removeing the "height *= 2" code chromium can also decode video now.
+Checking with V4L2_H264_SPS_FLAG_FRAME_MBS_ONLY is copied from rkvdec and
+rkvdec has min width/height 48x48 so there is no issue with chromium.
+Chromium will call VIDIOC_STREAMON with size 16x16 and without sps flag
+V4L2_H264_SPS_FLAG_FRAME_MBS_ONLY at the beginning of the video play.
+Gstreamer doesn't has this issue because it will call VIDIOC_STREAMON
+with the actual video size like 1920x1080.
 
-	int fmt_idx = -1;
-	unsigned int i;
+On Tue, 18 Jun 2024 12:34:07 -0400, Nicolas Dufresne worte:
+>Just a theory, but 64x64 looks like Mali GPU requirement to me. Can you give
+>more details how it fails exactly ?
 
-	for (i = 0, i < desc->num_decoded_fmts; i++) {
-		if (!rkvdec_image_fmt_match(desc->decoded_fmts[i].image_fmt,
-					    image_fmt))
-			continue;
-		fmt_idx++;
-		if (index == fmt_idx)
-			return desc->decoded_fmts[i].fourcc;
-	}
+Chromium failed when calling v4l2 uapi VIDIOC_STREAMON with size 16x16 and
+V4L2_H264_SPS_FLAG_FRAME_MBS_ONLY disabled. It has not come to render step
+which will use gpu. Other decoders I have tested with chromium like
+hantro g1 and rkvdec both don't have this 16x16 min width/height.
 
-	return 0;
+I also tried gstreamer with a 16x16 video and it works fine. So there
+should be something wrong in chromium's code. But I have not find where
+chromium set sps flags in its v4l2 decoder.
 
->  
-> -	return desc->decoded_fmts[index];
-> +	return 0;
->  }
-
-Don't resend if this is the only issue, but if you do resend could you
-get rid of the j++?
-
-regards,
-dan carpenter
+Best regards,
+Jianfeng
 
 _______________________________________________
 Linux-rockchip mailing list
