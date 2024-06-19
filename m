@@ -4,72 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 26718C27C53
-	for <linux-rockchip@archiver.kernel.org>; Wed, 19 Jun 2024 15:06:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5E1A0C27C79
+	for <linux-rockchip@archiver.kernel.org>; Wed, 19 Jun 2024 15:29:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=t+cFgEbCB4z0obQpDUg0IOY4538pR6rO8o/H25+J6ms=; b=422lskN51+3+Wd
-	QedveTEP0sIK1FTSmgIdZFDoibqmoru7TXUM6qO8W9jyTKJtx855f9akfKYiEgV8aiya/BBZNS7Ay
-	/GFH6TqCu1Gke6BnYz9TnfbT7XzApzSTDnREZsl6TS8TzUs2Q6WULodnTZA+d/ETEo2+wSoFEILxk
-	q6vPefTY1eOjD0M6w26NcQYt3G5GrKUaA9JfDWSTXRNxNP7HUe1lAGBsZb3o+fOswyY0E8rA23Wg+
-	+wdyZ0MTsNwoWniyA/UqyJQ8BfwKgU0cQlZjYpSEPtmPLkCfT19IpUfrfwWfBSpEnZWlgolKIRnDV
-	Co9MJld1NjWEW/8MJMjw==;
+	List-Owner; bh=dgnYsSOuZ+j8SteJvM+t2QO03CHJCbuPo/IQ4wqb1Cc=; b=cWVG7sKQL3GtfV
+	gyA8Q8iXSsNOEzsXPgIQRLoNJMtSXGT7YToIonN8u2YMnUzKkAwhr6iFiW6Z1RxinBExOZ95Rh/Fj
+	wfDOAXybF/VIFL9Wp5RvSTOEPxnIqMi6mLJSucUSdngtJUcIwn6A6bKuyzSjdgHQBMiV39cygwfHd
+	cnVhSkyWAXk1V5iiXNELO/YXrk0w2JHlerok8uWogd3IPM+A+4TSYwK3HcNM7W9CDBXq6aCyQkiyo
+	Es6ZLBD3xA5u4kRUvapihCDSk47sIr/6L6gQoEvOTUFkrVy8n2eeloHiJDM7qfhuRZZp40TWwnokI
+	G3l5GE18psI/nB16lDDA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sJwtA-00000001jMK-2Eh8;
-	Wed, 19 Jun 2024 15:06:20 +0000
+	id 1sJxFx-00000001oIh-1Jfp;
+	Wed, 19 Jun 2024 15:29:53 +0000
 Received: from smtp.forwardemail.net ([149.28.215.223])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sJwt6-00000001jJn-2tbD
+	id 1sJxFs-00000001oH2-3yAP
 	for linux-rockchip@lists.infradead.org;
-	Wed, 19 Jun 2024 15:06:18 +0000
+	Wed, 19 Jun 2024 15:29:50 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
  h=Content-Transfer-Encoding: Content-Type: In-Reply-To: From: References:
  Cc: To: Subject: MIME-Version: Date: Message-ID; q=dns/txt;
- s=fe-e1b5cab7be; t=1718809557;
- bh=2clTSyAeM3L9zwU4eZsW15p5bMx3zomkzOUGqycGyaw=;
- b=IisJwlKzLXPiTRMyYPZh9jbK4Udwr5v697uajmsxhwn2cH+2dKLhaIWQSEGaEt+n0hqbwnDlR
- zid4e6LTg1s6wIUePAMrX+mpbhYH5GrsEO7erEprCPHjRBi1xNP7eH2Gl0bIKoT0wdtgUtcRdfD
- 93mZWZJu+8WnqS8WQAz4kEuiVmGyuQgrqBCoMVKfwbBvmpJmzzIDMm+819ZWioqeTkgNTIC9wZ/
- zXAgTHI8lr9Z0KUQVxOksNTp8ywSdrd2g57EGVct4yhfOc4XjVUf8u+C4+DG43iM3qcj4jsvn0O
- w/uftwqLmE7vG+hWfg/uoIFE+GaCJXE0Pc01Ii3SL8Jg==
-Message-ID: <95b10d88-be5b-4fcb-a30b-414dc90d18fe@kwiboo.se>
-Date: Wed, 19 Jun 2024 17:05:49 +0200
+ s=fe-e1b5cab7be; t=1718810947;
+ bh=3g8jW5fl7Zb/rz0sp50oVlg57OmKTGVmhH6/Ni0PVpE=;
+ b=FnRnQHlOu32EysE34JWg9sDiTktz0BnHzXRvtD0FDduz09GmJZBN0c3ekKpzfUuPNETvI9pi0
+ IetRJ/hZwWCrBMoGAYqjUUZxWkNcU5ojgHpO2snBsF5IFjIg6QJXHGrLZyf3rtL9a9zqIzEIBK5
+ xNB5tAsZ2lbSoGSGfHkxtyYiGk2Tep/nAQ+rqiYSdPuF2tvXMWyn2vfgs3Kqw9yD6oPE89NNMpy
+ /UEVjLKruZJjOqhRlR4rl/F+DjiIK6ajC1zZyGx/1N7AOVwaM7eTjIpB59aGecnG3+KTEmjuN62
+ l8H3vYI9Zri+y9jdiR6B4UZp57a70BGUkj8Gnf9ibnFQ==
+Message-ID: <6e5ddd5c-340d-4474-a490-427a82db4a97@kwiboo.se>
+Date: Wed, 19 Jun 2024 17:28:53 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 2/5] dt-bindings: mfd: rk809: Add missing audio codec
- properties
-To: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>, Lee Jones
- <lee@kernel.org>, Rob Herring <robh@kernel.org>, Krzysztof Kozlowski
+Subject: Re: [PATCH v2 4/4] arm64: dts: rockchip: Add rkvdec2 Video Decoder on
+ rk3588(s)
+To: Detlev Casanova <detlev.casanova@collabora.com>
+Cc: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>, Mauro Carvalho Chehab
+ <mchehab@kernel.org>, Rob Herring <robh@kernel.org>, Krzysztof Kozlowski
  <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner
- <heiko@sntech.de>, Chris Zhong <zyw@rock-chips.com>, Zhang Qing
- <zhangqing@rock-chips.com>, Chris Morgan <macromorgan@hotmail.com>, Furkan
- Kardame <f.kardame@manjaro.org>, Michael Riesch
- <michael.riesch@wolfvision.net>
-Cc: kernel@collabora.com, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org
-References: <20240619-rk809-fixes-v1-0-fa93bc5313f4@collabora.com>
- <20240619-rk809-fixes-v1-2-fa93bc5313f4@collabora.com>
- <dc71686e-a3fa-48f7-83a9-34d0f365ff07@kwiboo.se>
- <f6fcbca9-a5cd-42a6-a911-9515d131d992@collabora.com>
+ <heiko@sntech.de>, "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>,
+ Sebastian Reichel <sebastian.reichel@collabora.com>, Dragan Simic
+ <dsimic@manjaro.org>, Diederik de Haas <didi.debian@cknow.org>, Andy Yan
+ <andy.yan@rock-chips.com>, Boris Brezillon
+ <boris.brezillon@collabora.com>, Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+ Daniel Almeida <daniel.almeida@collabora.com>, Paul Kocialkowski
+ <paul.kocialkowski@bootlin.com>, Nicolas Dufresne
+ <nicolas.dufresne@collabora.com>, Benjamin Gaignard
+ <benjamin.gaignard@collabora.com>, Alex Bee <knaerzche@gmail.com>,
+ linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org
+References: <20240619150029.59730-1-detlev.casanova@collabora.com>
+ <20240619150029.59730-5-detlev.casanova@collabora.com>
 Content-Language: en-US
 From: Jonas Karlman <jonas@kwiboo.se>
-In-Reply-To: <f6fcbca9-a5cd-42a6-a911-9515d131d992@collabora.com>
+In-Reply-To: <20240619150029.59730-5-detlev.casanova@collabora.com>
 X-Report-Abuse-To: abuse@forwardemail.net
 X-Report-Abuse: abuse@forwardemail.net
 X-Complaints-To: abuse@forwardemail.net
 X-ForwardEmail-Version: 0.4.40
 X-ForwardEmail-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
  149.28.215.223
-X-ForwardEmail-ID: 6672f3d3051772142ba2b9d3
+X-ForwardEmail-ID: 6672f93b4c60bf9a671bfbb1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240619_080617_152666_2A0A2C9E 
-X-CRM114-Status: GOOD (  17.15  )
+X-CRM114-CacheID: sfid-20240619_082949_049431_09CF86E2 
+X-CRM114-Status: GOOD (  13.01  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,68 +90,99 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Cristian,
+Hi Detlev,
 
-On 2024-06-19 14:53, Cristian Ciocaltea wrote:
-> Hi Jonas,
+On 2024-06-19 16:57, Detlev Casanova wrote:
+> Add the rkvdec2 Video Decoder to the RK3588s devicetree.
 > 
-> On 6/19/24 3:20 PM, Jonas Karlman wrote:
->> Hi Cristian,
->>
->> On 2024-06-19 13:23, Cristian Ciocaltea wrote:
->>> The RK809 MFD provides a RK817 compatible audio codec, supported by the
->>> rk817_codec driver.
->>>
->>> This has been already in use by several boards: rk3566-quartz64-b,
->>> k3566-roc-pc, rk3568-evb1-v10, rk3568-lubancat-2, rk3568-odroid-m1,
->>> rk3568-rock-3a.  However, dtbs_check fails for all of them:
->>>
->>>   DTC_CHK arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dtb
->>>   rk3568-rock-3a.dtb: pmic@20: '#sound-dai-cells', 'assigned-clock-parents', 'assigned-clocks', 'clock-names', 'clocks', 'codec' do not match any of the regexes: 'pinctrl-[0-9]+'
->>>     from schema $id: http://devicetree.org/schemas/mfd/rockchip,rk809.yaml#
->>>
->>> Document the missing audio codec properties as found on the
->>> rockchip,rk817 schema.
->>
->> This is duplicate of "dt-bindings: mfd: rk809: Add audio codec properties"
->> part of "arm64: dts: rockchip: Add Radxa ROCK 3B" series.
->>
->> https://lore.kernel.org/all/20240505134120.2828885-3-jonas@kwiboo.se/
->>
->> A v2 of that series with fixes for reported issues is imminent.
->> How do you want me to preceded with such v2 series?
+> Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
+> ---
+>  arch/arm64/boot/dts/rockchip/rk3588s.dtsi | 50 +++++++++++++++++++++++
+>  1 file changed, 50 insertions(+)
 > 
-> Oh, it seems both of us made the same mistake and wrongly assumed the
-> rockchip,rk817 schema is good enough to be used as a reference. :-)
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3588s.dtsi b/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
+> index 6ac5ac8b48ab..7690632f57f1 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
+> +++ b/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
+> @@ -2596,6 +2596,16 @@ system_sram2: sram@ff001000 {
+>  		ranges = <0x0 0x0 0xff001000 0xef000>;
+>  		#address-cells = <1>;
+>  		#size-cells = <1>;
+> +
+> +		vdec0_sram: rkvdec-sram@0 {
+> +			reg = <0x0 0x78000>;
+> +			pool;
+> +		};
+> +
+> +		vdec1_sram: rkvdec-sram@1 {
+> +			reg = <0x78000 0x77000>;
+> +			pool;
+> +		};
+>  	};
+>  
+>  	pinctrl: pinctrl {
+> @@ -2665,6 +2675,46 @@ gpio4: gpio@fec50000 {
+>  			#interrupt-cells = <2>;
+>  		};
+>  	};
+> +
+> +	vdec0: video-decoder@fdc38100 {
+> +		compatible = "rockchip,rk3588-vdec";
+> +		reg = <0x0 0xfdc38100 0x0 0x500>;
+> +		interrupts = <GIC_SPI 95 IRQ_TYPE_LEVEL_HIGH 0>;
+> +		clocks = <&cru ACLK_RKVDEC0>, <&cru HCLK_RKVDEC0>, <&cru CLK_RKVDEC0_CA>,
+> +			 <&cru CLK_RKVDEC0_CORE>, <&cru CLK_RKVDEC0_HEVC_CA>;
+> +		clock-names = "axi", "ahb", "cabac", "core", "hevc_cabac";
+> +		assigned-clocks = <&cru ACLK_RKVDEC0>, <&cru CLK_RKVDEC0_CORE>,
+> +				  <&cru CLK_RKVDEC0_CA>, <&cru CLK_RKVDEC0_HEVC_CA>;
+> +		assigned-clock-rates = <800000000>, <600000000>,
+> +				       <600000000>, <1000000000>;
+> +		resets = <&cru SRST_A_RKVDEC0>, <&cru SRST_H_RKVDEC0>, <&cru SRST_RKVDEC0_CA>,
+> +			 <&cru SRST_RKVDEC0_CORE>, <&cru SRST_RKVDEC0_HEVC_CA>;
+> +		reset-names = "rst_axi", "rst_ahb", "rst_cabac",
+> +			      "rst_core", "rst_hevc_cabac";
+> +		power-domains = <&power RK3588_PD_RKVDEC0>;
+> +		sram = <&vdec0_sram>;
+> +		status = "okay";
+> +	};
+> +
+> +	vdec1: video-decoder@fdc40100 {
+> +		compatible = "rockchip,rk3588-vdec";
+> +		reg = <0x0 0xfdc40100 0x0 0x500>;
+> +		interrupts = <GIC_SPI 97 IRQ_TYPE_LEVEL_HIGH 0>;
+> +		clocks = <&cru ACLK_RKVDEC1>, <&cru HCLK_RKVDEC1>, <&cru CLK_RKVDEC1_CA>,
+> +			 <&cru CLK_RKVDEC1_CORE>, <&cru CLK_RKVDEC1_HEVC_CA>;
+> +		clock-names = "axi", "ahb", "cabac", "core", "hevc_cabac";
+> +		assigned-clocks = <&cru ACLK_RKVDEC1>, <&cru CLK_RKVDEC1_CORE>,
+> +				  <&cru CLK_RKVDEC1_CA>, <&cru CLK_RKVDEC1_HEVC_CA>;
+> +		assigned-clock-rates = <800000000>, <600000000>,
+> +				       <600000000>, <1000000000>;
+> +		resets = <&cru SRST_A_RKVDEC1>, <&cru SRST_H_RKVDEC1>, <&cru SRST_RKVDEC1_CA>,
+> +			 <&cru SRST_RKVDEC1_CORE>, <&cru SRST_RKVDEC1_HEVC_CA>;
+> +		reset-names = "rst_axi", "rst_ahb", "rst_cabac",
+> +			      "rst_core", "rst_hevc_cabac";
+> +		power-domains = <&power RK3588_PD_RKVDEC1>;
+> +		sram = <&vdec1_sram>;
+> +		status = "okay";
+> +	};
 
-Hehe, yeah :-)
+This is still missing the iommus, please add the iommus, they should be
+supported/same as the one used for e.g. VOP2:
 
-> 
-> Since both rockchip,rk817 and rockchip,rk809 files share most of the
-> content, I also think this might be a good opportunity to get them
-> merged into a single schema.
-> 
-> I can do this in v2, unless you prefer to handle it as part of your series.
+  compatible = "rockchip,rk3588-iommu", "rockchip,rk3568-iommu";
 
-I was planning on sending the following, merging the schemas may also be
-an option.
+The VOP2 MMUs does have one extra mmu_cfg_mode flag in AUTO_GATING,
+compared to the VDPU381 MMUs, however only the AV1D MMU should be
+special on RK3588.
 
-https://github.com/Kwiboo/linux-rockchip/compare/619509e6c853...next-20240618-rock-3b-orangepi-3b/
-
-Main purpose of my series was to add ROCK 3B and also Orange Pi 3B,
-fixing rockchip,rk809 binding is just a prerequisite.
-
-If you want to merge the bindings, please do :-), I can wait a few more
-days to send out a ROCK 3B + Orange Pi 3B v2 series.
-
-Please also include the vcc8/9 fix if you send a v2.
+Please add the iommus :-)
 
 Regards,
 Jonas
 
-> 
-> Thanks,
-> Cristian
+>  };
+>  
+>  #include "rk3588s-pinctrl.dtsi"
 
 
 _______________________________________________
