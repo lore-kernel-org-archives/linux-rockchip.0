@@ -4,60 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E0FC5C27C53
-	for <linux-rockchip@archiver.kernel.org>; Wed, 19 Jun 2024 05:01:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DEE27C27C53
+	for <linux-rockchip@archiver.kernel.org>; Wed, 19 Jun 2024 07:22:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=c3L/Z1qATLI3T+G64aebxyBseVRwpdk19B6Li0Rs94I=; b=X3OOhfxLk6hweL
-	GesTqwxC3enSffBVWwyFQTppHMr6amdycLM40RClITs5woHpmZPKdschYJz6iq9kMLbYHA9mVwpsT
-	9RibV2cRarZP6++gfM9N4NgtQCwL+f3CWwYop4zRXyy3YZGHWMCCQFeIU7ulvl9lwhCLxupralVXL
-	z+AY3v6vRt3d95S3n5o9D5TDC5rojDxI5NPLQcsRvOEsb/4l3CakRaHyUDYqV21DLssWM7NSTPKXS
-	8kSqkM/ylaoENSVzdn0Eyzj8LnYo4HDy1RdbOCSJJO/6xSk5ba7q5r6vIEkOUBmhQEOcTYbeHezt4
-	lFbSEZPVkmBhXytFZAtw==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=ZEOAE5fixRqAnTHXPSQwn0GXmvqmZDGYnzMZBjYZlTQ=; b=V7fhxxav1rTimY
+	MOVkuQT6u6D81EJguKn/4SJzWIsOkCEO0YtZ2vz0heGL3E9ZmRsH6lxZI+OI9reba17aosA9k3RE8
+	I23bhAGhsLoEsaLf6BQcpvEcz4gQLzDg2vz0PDA3P7+vgH9S0TFcIDHZDvY7FIwrW7eKK348rLj/Z
+	0n6TDiR+JPwVyhxsF9e+e2sjp+NvSYjMlCxoW50FC7xzvQ8T3dj91G0yuIUkHB+WxpSYLdP0TbkS/
+	+hBx7iBwWxDyZioXkC8XSdeRtiH5a/T0nOIqUj4fcidqdQ1ciGDUun2DmjqRNO0VPqqd+Sy7zmSKc
+	F7AXuCV7ll+cUBtyXL2A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sJnSA-0000000HSnz-2OC0;
-	Wed, 19 Jun 2024 05:01:50 +0000
-Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
+	id 1sJpdm-00000000AjR-1RPP;
+	Wed, 19 Jun 2024 07:21:58 +0000
+Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sJnS9-0000000HSnJ-1R9L
-	for linux-rockchip@bombadil.infradead.org;
-	Wed, 19 Jun 2024 05:01:49 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=casper.20170209; h=Content-Transfer-Encoding:MIME-Version:
-	Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
-	Content-Description:In-Reply-To:References;
-	bh=X5L45GBC+/cYuHC4yL5181ue6yTYJz4kOLp6ZFkn6A8=; b=XFBTp03oGqyVcJdf2vOTi3KU6K
-	giIL92a/+Swww4TMoY+vfArfvbLMEFJz2/5LEZcoBiKqNK0n45Fyxqd09341UfQ2hetnF2geWig/e
-	3IaDgepYkFugklXOIv0GxgOf0X4pDqhg0S95s6XzeIo9HWsp89igxJnZQ9d5y6BKvext0Dc9gEy7j
-	b6ok85t5GyxhQn/jBvjdgY96IQF0oiAyDje1h6D+gWK864WG32jA6JUhjvM/KFb6+i3l3uYE8AydR
-	7dtMd070dFstTEgujQ6KglhYxw2x+sUW1V386kxq0PivfwvN87evSynl6tyDfUbClweLT3MMunMIZ
-	UupiHd/Q==;
-Received: from sakura.naobsd.org ([160.16.200.221] helo=mail.naobsd.org)
-	by casper.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sJnS3-00000004CNy-3bOE
+	id 1sJpdh-00000000Agh-0Tlc
 	for linux-rockchip@lists.infradead.org;
-	Wed, 19 Jun 2024 05:01:48 +0000
-Received: from secure.fukaumi.org ([10.0.0.2])
-	by mail.naobsd.org (8.14.4/8.14.4/Debian-4.1ubuntu1.1) with ESMTP id 45J50qs7023651;
-	Wed, 19 Jun 2024 14:00:52 +0900
-From: FUKAUMI Naoki <naoki@radxa.com>
-To: heiko@sntech.de
-Cc: devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org,
-        FUKAUMI Naoki <naoki@radxa.com>
-Subject: [PATCH 1/2] arm64: dts: rockchip: fix PMIC interrupt pin on ROCK Pi E
-Date: Wed, 19 Jun 2024 14:00:46 +0900
-Message-ID: <20240619050047.1217-1-naoki@radxa.com>
-X-Mailer: git-send-email 2.43.0
+	Wed, 19 Jun 2024 07:21:56 +0000
+Received: by mail-wr1-x42d.google.com with SMTP id ffacd0b85a97d-36226e98370so848793f8f.3
+        for <linux-rockchip@lists.infradead.org>; Wed, 19 Jun 2024 00:21:51 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1718781710; x=1719386510; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=5FlCuYx89OMN7s2VzglpB6pm+N8b7rvZjLOnkOOQ78c=;
+        b=mN6wS9KmR8vRpkxhj628/jirNTXDI/YnXdIanYzQJqLUGncQkhqdpxtSDW9MTA+1vq
+         rS4VEPeU4UmhyRXwyVcMde82v3GrL+7xhROGP3m5evplMM/gY5pcSDAhcOO/2JBgiOHV
+         9zDaUZxhW70ylH3WciYdJ0Fw3/G3LF6tfF7pMBwYmuNP/LEG0Jb8j/XE/XGVV78TVKA6
+         OeOlYeSb1EQNKyoD51OQsIw2V7lxcD1960I46MEyJPkmiX6us6JYQ3ly3fgA9xAfri8W
+         R5pfG5bedH96niF3ORLehdFO8TEyjFtP9IeLdNmfPEFW/ZD5IecmZoJzZWb+hNlvM0Vq
+         ksFg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1718781710; x=1719386510;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=5FlCuYx89OMN7s2VzglpB6pm+N8b7rvZjLOnkOOQ78c=;
+        b=fnaAXUfsEl+Mk181nNo28+7I1WuFcL4lmteEKr11GD9SQYTT8yXapNkc7L1IOjQ3xU
+         9srywEn1cFJhMyX0lfc5BJJYu/9ngcNhB2AiQnI9H+LYe573hx4Tl2gJUkCGWC+w5Ecz
+         OIgfN/HSdfsMSIzYhjxnFOiR9mjG71bdkjyggIEbnUHzaeHKWoMezr3kZPPOgJch3IF8
+         kiQEPPmEMBoSJF8zArN7GAMSPXsexXaxrK5p8suik5Ujn9pFmSV/iYlZqh2uuZkpZhqW
+         aVqLioep3RRwlxUpaal5fz1roTTpouYOWWXlsVp1rv9y9b2HgKYtX7VT62woQHOaT0sC
+         5ZuA==
+X-Forwarded-Encrypted: i=1; AJvYcCWikeTlKA6EASxdThzj5l7HHQbkAerAQ29DMpOElvkwaB3tF610c7KdVkQgZaJkzfvnuE9aVBu53bCQFDwgQUSzSRsejJ5FeqESA4pt0N43D8bT
+X-Gm-Message-State: AOJu0Yz/XbD6o3PfMoC3XlgV7Pk4OwpvkLBi4GlLAnDq9rwVap5ysi+y
+	xs5MbvmZ0UpeqinRO+YCEwkTO6cDCKTvmBhJ56wqmaayT1R/aFkwEem+KFh5DyU=
+X-Google-Smtp-Source: AGHT+IF2UOLV+qz3Kk3N1LJ8/j7ro1aIbV92WwNj2KhCxSSnTu3IwZUZX9P1RLZZrBmMGynzY0ETcg==
+X-Received: by 2002:a5d:5402:0:b0:35f:1f91:c23 with SMTP id ffacd0b85a97d-36319990751mr1278337f8f.65.1718781710339;
+        Wed, 19 Jun 2024 00:21:50 -0700 (PDT)
+Received: from localhost ([102.222.70.76])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-363bd4668aasm534412f8f.48.2024.06.19.00.21.49
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 19 Jun 2024 00:21:49 -0700 (PDT)
+Date: Wed, 19 Jun 2024 10:21:45 +0300
+From: Dan Carpenter <dan.carpenter@linaro.org>
+To: Jonas Karlman <jonas@kwiboo.se>
+Cc: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Alex Bee <knaerzche@gmail.com>,
+	Nicolas Dufresne <nicolas.dufresne@collabora.com>,
+	Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+	Sebastian Fricke <sebastian.fricke@collabora.com>,
+	Christopher Obbard <chris.obbard@collabora.com>,
+	Detlev Casanova <detlev.casanova@collabora.com>,
+	linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
+	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v5 08/10] media: rkvdec: Add image format concept
+Message-ID: <f7e4b0be-fe09-4db8-b081-21c46c0d836f@moroto.mountain>
+References: <20240618194647.742037-1-jonas@kwiboo.se>
+ <20240618194647.742037-9-jonas@kwiboo.se>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20240618194647.742037-9-jonas@kwiboo.se>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240619_060144_401314_0BE98C04 
-X-CRM114-Status: UNSURE (   8.14  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240619_002153_295020_F5ACDCF4 
+X-CRM114-Status: GOOD (  14.22  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,33 +103,52 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-use GPIO0_A2 as interrupt pin for PMIC. GPIO2_A6 was used for
-pre-production board.
+On Tue, Jun 18, 2024 at 07:46:32PM +0000, Jonas Karlman wrote:
+> +static u32 rkvdec_enum_decoded_fmt(struct rkvdec_ctx *ctx, int index,
+> +				   enum rkvdec_image_fmt image_fmt)
+>  {
+>  	const struct rkvdec_coded_fmt_desc *desc = ctx->coded_fmt_desc;
+> +	unsigned int i, j;
+>  
+>  	if (WARN_ON(!desc))
+>  		return 0;
+>  
+> -	if (index >= desc->num_decoded_fmts)
+> -		return 0;
+> +	for (i = 0, j = 0; i < desc->num_decoded_fmts; i++) {
+> +		if (rkvdec_image_fmt_match(desc->decoded_fmts[i].image_fmt,
+> +					   image_fmt) &&
+> +		    index == j++)
 
-Fixes: b918e81f2145 ("arm64: dts: rockchip: rk3328: Add Radxa ROCK Pi E")
-Signed-off-by: FUKAUMI Naoki <naoki@radxa.com>
----
- arch/arm64/boot/dts/rockchip/rk3328-rock-pi-e.dts | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+I really don't care for this j++ which is tucked inside a condition.
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3328-rock-pi-e.dts b/arch/arm64/boot/dts/rockchip/rk3328-rock-pi-e.dts
-index f09d60bbe6c4..a608a219543e 100644
---- a/arch/arm64/boot/dts/rockchip/rk3328-rock-pi-e.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3328-rock-pi-e.dts
-@@ -241,8 +241,8 @@ &i2c1 {
- 	rk805: pmic@18 {
- 		compatible = "rockchip,rk805";
- 		reg = <0x18>;
--		interrupt-parent = <&gpio2>;
--		interrupts = <6 IRQ_TYPE_LEVEL_LOW>;
-+		interrupt-parent = <&gpio0>;
-+		interrupts = <2 IRQ_TYPE_LEVEL_LOW>;
- 		#clock-cells = <1>;
- 		clock-output-names = "xin32k", "rk805-clkout2";
- 		gpio-controller;
--- 
-2.43.0
+> +			return desc->decoded_fmts[i].fourcc;
+> +	}
 
+	int fmt_idx = -1;
+	unsigned int i;
+
+	for (i = 0, i < desc->num_decoded_fmts; i++) {
+		if (!rkvdec_image_fmt_match(desc->decoded_fmts[i].image_fmt,
+					    image_fmt))
+			continue;
+		fmt_idx++;
+		if (index == fmt_idx)
+			return desc->decoded_fmts[i].fourcc;
+	}
+
+	return 0;
+
+>  
+> -	return desc->decoded_fmts[index];
+> +	return 0;
+>  }
+
+Don't resend if this is the only issue, but if you do resend could you
+get rid of the j++?
+
+regards,
+dan carpenter
 
 _______________________________________________
 Linux-rockchip mailing list
