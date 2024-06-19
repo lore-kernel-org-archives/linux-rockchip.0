@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E4314C2BA15
-	for <linux-rockchip@archiver.kernel.org>; Wed, 19 Jun 2024 11:24:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EE95DC27C53
+	for <linux-rockchip@archiver.kernel.org>; Wed, 19 Jun 2024 11:24:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
-	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=amxAfOvXwOU9nLJ8siMfKOGeUgweNzJn75b84rAAixQ=; b=tBTlmLxDZO0Phy
-	Geea04PZNBDVnIa38/t2dbGEX3KZa3Qq9YRrJW1yNUgfvGU1/Co3JVWFuNpLVrq4i58gPIgJ6fGAn
-	qn2gAPB7x1dDHFUDRx+1Ie+NQ4Bs+/EOddkn9bgfNbvTLZpzAxheZ/RtiXYUiz4AJJOeRS0S5bqwL
-	sK+VgptGh1HJ033GJGVkcU5K33iT7fg/d2FCCTiHcGTk3+8HkrcCMiKYtsBsZP0dpY6BKM50D2jgL
-	ItoQ3LcWTRw4j1PTS4QZ7kENE0YtyV/JNsAQ9Q6OudA8ZbNXRIGknfZdi1qTyF7K6tRNNobIRlVLj
-	uqcoeCrjnSbbH286G8mQ==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
+	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=HjLhW4+kHM8Ko0m0N987jd8KRw46VIg6awiIqAhxsmY=; b=L04UdMO6NHnJLR
+	VGTAuRhGJNZ9HEzaP/98XdOvei9D2dPSx6a8mELxnxY4naEkm+7dn0Aj3ULUFp4AxFUdGZG1h8Jyv
+	QgnQat1J0Fo0MWifwJA1wYwHy058A9/QcRCC62KjZmw/62riAiIx8kYiVOLOer1iLrTYoLNLRzZYY
+	s6LMEnN0KJeKDR6fywB5ROrAax9fPyDNaFixsRJq/S4tSD/WebzsOuDU1GYPmiHhSOBDBDZ8XCHtW
+	0Fptq2Gf+Y0y0rmShDWFIVuJBWbr+x4SbC8p0YPb7+qevMnL3iKnqUVkLzupHEf4rUNZaj3Gu7uCN
+	D5u6KS/s1oAH7hi9nFIQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sJtQ9-00000000wva-10XR;
-	Wed, 19 Jun 2024 11:24:09 +0000
-Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
+	id 1sJtQN-00000000x2i-0kcM;
+	Wed, 19 Jun 2024 11:24:23 +0000
+Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sJtQ5-00000000wsk-1C9r;
-	Wed, 19 Jun 2024 11:24:07 +0000
+	id 1sJtQ6-00000000wte-00VO;
+	Wed, 19 Jun 2024 11:24:08 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1718796242;
-	bh=NZn1OaraKPjXpPU/coZrv5VL2+1jqKHdG89pWwhTaAM=;
-	h=From:Subject:Date:To:Cc:From;
-	b=hVACol4fYBAhiMS4dQgvIk00SBbH93pwx/FeHOeOWx1K0ufTjjZDBF3Q4dX/xLjYT
-	 6s5Z0g8/G0Z37jU2Lu9YnfZptdbNXiKBo+59XuFAxWbPmiJRcP6+goND9qgSOJCjCv
-	 +AHo6EGF9EkvWQy2hSpilYOIlRT7enUZzaMwO7xMOBojFjEPzO06XJ9BJaqR1qCRE8
-	 Fa39nieT/86STTrDDCFMXKHyf//HLkJgtM31h24PD05NfEU0ktmaMLF+TeSatBT/Vs
-	 V7U54GM2ir1d9Ry1Dc4S4eiJiLJNRXpTlZYIrl7dm+lyRbluXXcoOgOt2Q9NtFj9uL
-	 1aZd2lG4+aHLQ==
+	s=mail; t=1718796244;
+	bh=AV5LSZIG/WMszq3J8MtYG9PvEEq/aTIOyQDB0X109wc=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
+	b=FwP8avy5dAwvwdOlLtou8tozI2k5wcyByghYeut1TKw0+e5ZZAt+gbJDqqk8YN2hD
+	 wZQRxjTntX6go2AyfSNmTVGLhj2Mj7+Ye/FUWrVDsEuB0am7qT6d07dO0mP3tyo7YW
+	 yC6uMXEigm2DfpxrS5HR6hW9dsPp5+yZqIrCCYNvKBb1RrJQ4Lxqtl0RvyEe9+MAYD
+	 OngLHbDw0JM71JZ6NxEG/YeH6HDKq3uciUWVe8dkKkBCryZIiVBkekCkOhJ76/G0uT
+	 Amy0JLRfO5syXKBIPbOBnIKA3KR5OkiY3zqNb6zear39Xyc7xdluyzS4qEAWUDtS7g
+	 obiqi15KXDp3g==
 Received: from localhost (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: cristicc)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 20D8137804CF;
-	Wed, 19 Jun 2024 11:24:02 +0000 (UTC)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 8C4C237821D1;
+	Wed, 19 Jun 2024 11:24:04 +0000 (UTC)
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Subject: [PATCH 0/5] DT fixes for Rockchip RK809 audio codec support
-Date: Wed, 19 Jun 2024 14:23:29 +0300
-Message-Id: <20240619-rk809-fixes-v1-0-fa93bc5313f4@collabora.com>
+Date: Wed, 19 Jun 2024 14:23:31 +0300
+Subject: [PATCH 2/5] dt-bindings: mfd: rk809: Add missing audio codec
+ properties
 MIME-Version: 1.0
-X-B4-Tracking: v=1; b=H4sIALG/cmYC/6tWKk4tykwtVrJSqFYqSi3LLM7MzwNyDHUUlJIzE
- vPSU3UzU4B8JSMDIxMDM0NL3aJsCwNL3bTMitRiXcNUY2MDc1OLVMO0NCWgjoKiVLAEUEN0bG0
- tABjxT91dAAAA
+Message-Id: <20240619-rk809-fixes-v1-2-fa93bc5313f4@collabora.com>
+References: <20240619-rk809-fixes-v1-0-fa93bc5313f4@collabora.com>
+In-Reply-To: <20240619-rk809-fixes-v1-0-fa93bc5313f4@collabora.com>
 To: Lee Jones <lee@kernel.org>, Rob Herring <robh@kernel.org>, 
  Krzysztof Kozlowski <krzk+dt@kernel.org>, 
  Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
@@ -63,9 +63,8 @@ Cc: kernel@collabora.com, devicetree@vger.kernel.org,
  linux-kernel@vger.kernel.org
 X-Mailer: b4 0.14.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240619_042405_666422_13339805 
-X-CRM114-Status: UNSURE (   8.87  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240619_042406_207195_325294F6 
+X-CRM114-Status: GOOD (  13.20  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,30 +81,77 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Rockchip RK809 MFD provides a RK817 compatible audio codec, supported by
-the rk817_codec driver.
+The RK809 MFD provides a RK817 compatible audio codec, supported by the
+rk817_codec driver.
 
-This patch series fixes a few issues identified by dtbs_check for the
-boards making use of the codec: rk3566-quartz64-b, k3566-roc-pc,
-rk3568-evb1-v10, rk3568-lubancat-2, rk3568-odroid-m1, rk3568-rock-3a.
+This has been already in use by several boards: rk3566-quartz64-b,
+k3566-roc-pc, rk3568-evb1-v10, rk3568-lubancat-2, rk3568-odroid-m1,
+rk3568-rock-3a.  However, dtbs_check fails for all of them:
 
+  DTC_CHK arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dtb
+  rk3568-rock-3a.dtb: pmic@20: '#sound-dai-cells', 'assigned-clock-parents', 'assigned-clocks', 'clock-names', 'clocks', 'codec' do not match any of the regexes: 'pinctrl-[0-9]+'
+    from schema $id: http://devicetree.org/schemas/mfd/rockchip,rk809.yaml#
+
+Document the missing audio codec properties as found on the
+rockchip,rk817 schema.
+
+Fixes: 6c38ca03406e ("dt-bindings: mfd: rk808: Convert bindings to yaml")
 Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 ---
-Cristian Ciocaltea (5):
-      dt-bindings: mfd: rk809: Use correct compatible in the example
-      dt-bindings: mfd: rk809: Add missing audio codec properties
-      arm64: dts: rockchip: Fix mic-in-differential usage on rk3568-rock-3a
-      arm64: dts: rockchip: Fix mic-in-differential usage on rk3566-roc-pc
-      arm64: dts: rockchip: Fix mic-in-differential usage on rk3568-evb1-v10
+ .../devicetree/bindings/mfd/rockchip,rk809.yaml    | 30 +++++++++++++++++++++-
+ 1 file changed, 29 insertions(+), 1 deletion(-)
 
- .../devicetree/bindings/mfd/rockchip,rk809.yaml    | 38 ++++++++++++++++++----
- arch/arm64/boot/dts/rockchip/rk3566-roc-pc.dts     |  2 +-
- arch/arm64/boot/dts/rockchip/rk3568-evb1-v10.dts   |  2 +-
- arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts    |  2 +-
- 4 files changed, 34 insertions(+), 10 deletions(-)
----
-base-commit: 6906a84c482f098d31486df8dc98cead21cce2d0
-change-id: 20240619-rk809-fixes-1e330758e1ff
+diff --git a/Documentation/devicetree/bindings/mfd/rockchip,rk809.yaml b/Documentation/devicetree/bindings/mfd/rockchip,rk809.yaml
+index a327d73f3c43..cadfb5f1c631 100644
+--- a/Documentation/devicetree/bindings/mfd/rockchip,rk809.yaml
++++ b/Documentation/devicetree/bindings/mfd/rockchip,rk809.yaml
+@@ -12,7 +12,7 @@ maintainers:
+ 
+ description: |
+   Rockchip RK809 series PMIC. This device consists of an i2c controlled MFD
+-  that includes regulators, an RTC, and power button.
++  that includes regulators, an RTC, a power button and an audio codec.
+ 
+ properties:
+   compatible:
+@@ -93,6 +93,34 @@ properties:
+         unevaluatedProperties: false
+     unevaluatedProperties: false
+ 
++  clocks:
++    description:
++      The input clock for the audio codec.
++
++  clock-names:
++    description:
++      The clock name for the codec clock.
++    items:
++      - const: mclk
++
++  '#sound-dai-cells':
++    description:
++      Needed for the interpretation of sound dais.
++    const: 0
++
++  codec:
++    description: |
++      The child node for the codec to hold additional properties. If no
++      additional properties are required for the codec, this node can be
++      omitted.
++    type: object
++    additionalProperties: false
++    properties:
++      rockchip,mic-in-differential:
++        type: boolean
++        description:
++          Describes if the microphone uses differential mode.
++
+ allOf:
+   - if:
+       properties:
+
+-- 
+2.45.2
 
 
 _______________________________________________
