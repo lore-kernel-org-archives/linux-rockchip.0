@@ -4,79 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 28D36C27C53
-	for <linux-rockchip@archiver.kernel.org>; Wed, 19 Jun 2024 18:07:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9F1BDC27C79
+	for <linux-rockchip@archiver.kernel.org>; Wed, 19 Jun 2024 18:22:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=bua8b50/phXUANLvn2qY1jhaWfXJ0/sggCrqbyG36G8=; b=tgu1wkQLSPgapA
-	/ZO2ldshKuO1m0qtyey3P1AwF41kyscG+0dKHrbCSjn19yiJkT7dLu2fD9PcMRmpadOJJVyule3CC
-	W/jJFVMx0eSTJo9PpJ+6DVIW5n9rvB3CDbKOpYgmgN0kdv916iLeArPm6jDpo0YaW6SErbEi16491
-	hR2Y1FZNTvj19hqU8hYSxKDjcAFKZZmgwt7vbcIoxlIIUP2/2LKv/hD1bGdimBcDvfv8Jma8t0N3X
-	mnE3GCeKY11JzKXO+3KG0Zqy0gJna9PMI0rur2X0h1eYIIrH3KjU2TkYM1X6tlVvtOu1j3ZYFypuh
-	Og1mKi/YfIq/MuxugJTg==;
+	List-Owner; bh=aZObyo80LEtv3XmZZ+/iUO0L+dhv61u+uI4R4RCD3/A=; b=XrEybYP1z41vYA
+	wG2We0yYLfXS3ES2WV+l9b4AuDXSF6+nfTjPrhoR6aJCHsRke8UL2Ajf342k1a3qNkIntvuAvwW60
+	jmVfC23T0+v5h4JiIV6BkkQTol+9r4/aI6Ohy1qVk+/bGs0jfS/Xo8rg/RdONydhRCuJIFs42caWA
+	x4nmYkWQ1CbAgRkPzBdv44KBSj6KrzeIrv3lZfj6aDLMztQxEOrk+qXIz1iFf8CIMECVkLKjLtLBY
+	zJ+gx/3e5GZfcZLFrCV8F8zS63LZZc5BKYtBvIlNqpk4GGrbaSyykqz6rL4mE92l/GgHqH6apnKTn
+	/Tl2IdHSExtiNJRA84SA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sJziL-00000002Jbn-2hNH;
-	Wed, 19 Jun 2024 18:07:21 +0000
-Received: from smtp.forwardemail.net ([149.28.215.223])
+	id 1sJzxM-00000002Lxf-37jP;
+	Wed, 19 Jun 2024 18:22:52 +0000
+Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sJziI-00000002Ja3-3lWY
+	id 1sJzwm-00000002LhE-41cZ
 	for linux-rockchip@lists.infradead.org;
-	Wed, 19 Jun 2024 18:07:20 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
- h=Content-Transfer-Encoding: Content-Type: In-Reply-To: From: References:
- Cc: To: Subject: MIME-Version: Date: Message-ID; q=dns/txt;
- s=fe-e1b5cab7be; t=1718820410;
- bh=XavrKDSs1iLysu/VoOW1lzmFXR6F1ISw3mOM/563aBs=;
- b=XPlySN/P0LWLFvOWOMQW2wRzXOYsLDAVjkBWJIDcdMEoI4bXhIaVR0Dv3Lc1thrBr0E8uDoCm
- 9IPbtSRfGhOhLb0gx8p3eH0GNZ2VffBLZhHSvg76EsmEk0L2IC7cTs0mbolKd6GT22seXTiX5JA
- vBsLkkv1aBuwlQPYl3vxtCILM9baa05Agln+9IiF6ns1GAAFvdM5c08XcI6SC/QozgZBVDyr+Wq
- /8a8z4AKJeT5Fm2JMhNKRPDPS7YKsq8Ldr9AUrRFsf4C7VZzHy5ZEj9Hl7/dXRK1NtsGgzlDrRD
- LCDhz0pUWaHQ5GBcKASZAgE83/8VZY6TKDUvwgFrwNgA==
-Message-ID: <e6e2e0f1-0b16-4a3d-ae7b-be5a04d7902b@kwiboo.se>
-Date: Wed, 19 Jun 2024 20:06:40 +0200
+	Wed, 19 Jun 2024 18:22:20 +0000
+Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
+	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+	(Exim 4.92)
+	(envelope-from <l.stach@pengutronix.de>)
+	id 1sJzwX-00049c-K4; Wed, 19 Jun 2024 20:22:01 +0200
+Received: from [2a0a:edc0:0:1101:1d::28] (helo=dude02.red.stw.pengutronix.de)
+	by drehscheibe.grey.stw.pengutronix.de with esmtp (Exim 4.94.2)
+	(envelope-from <l.stach@pengutronix.de>)
+	id 1sJzwW-003WTo-Jj; Wed, 19 Jun 2024 20:22:00 +0200
+From: Lucas Stach <l.stach@pengutronix.de>
+To: Robert Foss <rfoss@kernel.org>
+Cc: Neil Armstrong <neil.armstrong@linaro.org>,
+	Andrzej Hajda <andrzej.hajda@intel.com>,
+	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+	Jonas Karlman <jonas@kwiboo.se>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	dri-devel@lists.freedesktop.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-samsung-soc@vger.kernel.org,
+	patchwork-lst@pengutronix.de,
+	kernel@pengutronix.de
+Subject: [PATCH v2 05/14] drm/bridge: analogix_dp: remove unused analogix_dp_remove
+Date: Wed, 19 Jun 2024 20:21:51 +0200
+Message-Id: <20240619182200.3752465-5-l.stach@pengutronix.de>
+X-Mailer: git-send-email 2.39.2
+In-Reply-To: <20240619182200.3752465-1-l.stach@pengutronix.de>
+References: <20240619182200.3752465-1-l.stach@pengutronix.de>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 4/4] arm64: dts: rockchip: Add rkvdec2 Video Decoder on
- rk3588(s)
-To: Alex Bee <knaerzche@gmail.com>, Detlev Casanova
- <detlev.casanova@collabora.com>
-Cc: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>, Mauro Carvalho Chehab
- <mchehab@kernel.org>, Rob Herring <robh@kernel.org>, Krzysztof Kozlowski
- <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner
- <heiko@sntech.de>, "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>,
- Sebastian Reichel <sebastian.reichel@collabora.com>, Dragan Simic
- <dsimic@manjaro.org>, Diederik de Haas <didi.debian@cknow.org>, Andy Yan
- <andy.yan@rock-chips.com>, Boris Brezillon
- <boris.brezillon@collabora.com>, Hans Verkuil <hverkuil-cisco@xs4all.nl>,
- Daniel Almeida <daniel.almeida@collabora.com>, Paul Kocialkowski
- <paul.kocialkowski@bootlin.com>, Nicolas Dufresne
- <nicolas.dufresne@collabora.com>, Benjamin Gaignard
- <benjamin.gaignard@collabora.com>, linux-media@vger.kernel.org,
- linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-staging@lists.linux.dev,
- linux-kernel@vger.kernel.org
-References: <20240619150029.59730-1-detlev.casanova@collabora.com>
- <20240619150029.59730-5-detlev.casanova@collabora.com>
- <6e5ddd5c-340d-4474-a490-427a82db4a97@kwiboo.se>
- <052f2ea7-2ded-4d39-a513-3a47fee1bf02@gmail.com>
-Content-Language: en-US
-From: Jonas Karlman <jonas@kwiboo.se>
-In-Reply-To: <052f2ea7-2ded-4d39-a513-3a47fee1bf02@gmail.com>
-X-Report-Abuse-To: abuse@forwardemail.net
-X-Report-Abuse: abuse@forwardemail.net
-X-Complaints-To: abuse@forwardemail.net
-X-ForwardEmail-Version: 0.4.40
-X-ForwardEmail-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
- 149.28.215.223
-X-ForwardEmail-ID: 66731e37e29fa10c39ba9bb6
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240619_110718_986145_96F6FE41 
-X-CRM114-Status: GOOD (  19.78  )
+X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
+X-SA-Exim-Mail-From: l.stach@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,126 +76,92 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Alex,
+Now that the clock is handled dynamically through
+analogix_dp_resume/suspend and it isn't statically enabled in the
+driver probe routine, there is no need for the remove function anymore.
 
-On 2024-06-19 19:19, Alex Bee wrote:
-> 
-> Am 19.06.24 um 17:28 schrieb Jonas Karlman:
->> Hi Detlev,
->>
->> On 2024-06-19 16:57, Detlev Casanova wrote:
->>> Add the rkvdec2 Video Decoder to the RK3588s devicetree.
->>>
->>> Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
->>> ---
->>>   arch/arm64/boot/dts/rockchip/rk3588s.dtsi | 50 +++++++++++++++++++++++
->>>   1 file changed, 50 insertions(+)
->>>
->>> diff --git a/arch/arm64/boot/dts/rockchip/rk3588s.dtsi b/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
->>> index 6ac5ac8b48ab..7690632f57f1 100644
->>> --- a/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
->>> +++ b/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
->>> @@ -2596,6 +2596,16 @@ system_sram2: sram@ff001000 {
->>>   		ranges = <0x0 0x0 0xff001000 0xef000>;
->>>   		#address-cells = <1>;
->>>   		#size-cells = <1>;
->>> +
->>> +		vdec0_sram: rkvdec-sram@0 {
->>> +			reg = <0x0 0x78000>;
->>> +			pool;
->>> +		};
->>> +
->>> +		vdec1_sram: rkvdec-sram@1 {
->>> +			reg = <0x78000 0x77000>;
->>> +			pool;
->>> +		};
->>>   	};
->>>   
->>>   	pinctrl: pinctrl {
->>> @@ -2665,6 +2675,46 @@ gpio4: gpio@fec50000 {
->>>   			#interrupt-cells = <2>;
->>>   		};
->>>   	};
->>> +
->>> +	vdec0: video-decoder@fdc38100 {
->>> +		compatible = "rockchip,rk3588-vdec";
->>> +		reg = <0x0 0xfdc38100 0x0 0x500>;
->>> +		interrupts = <GIC_SPI 95 IRQ_TYPE_LEVEL_HIGH 0>;
->>> +		clocks = <&cru ACLK_RKVDEC0>, <&cru HCLK_RKVDEC0>, <&cru CLK_RKVDEC0_CA>,
->>> +			 <&cru CLK_RKVDEC0_CORE>, <&cru CLK_RKVDEC0_HEVC_CA>;
->>> +		clock-names = "axi", "ahb", "cabac", "core", "hevc_cabac";
->>> +		assigned-clocks = <&cru ACLK_RKVDEC0>, <&cru CLK_RKVDEC0_CORE>,
->>> +				  <&cru CLK_RKVDEC0_CA>, <&cru CLK_RKVDEC0_HEVC_CA>;
->>> +		assigned-clock-rates = <800000000>, <600000000>,
->>> +				       <600000000>, <1000000000>;
->>> +		resets = <&cru SRST_A_RKVDEC0>, <&cru SRST_H_RKVDEC0>, <&cru SRST_RKVDEC0_CA>,
->>> +			 <&cru SRST_RKVDEC0_CORE>, <&cru SRST_RKVDEC0_HEVC_CA>;
->>> +		reset-names = "rst_axi", "rst_ahb", "rst_cabac",
->>> +			      "rst_core", "rst_hevc_cabac";
->>> +		power-domains = <&power RK3588_PD_RKVDEC0>;
->>> +		sram = <&vdec0_sram>;
->>> +		status = "okay";
->>> +	};
->>> +
->>> +	vdec1: video-decoder@fdc40100 {
->>> +		compatible = "rockchip,rk3588-vdec";
->>> +		reg = <0x0 0xfdc40100 0x0 0x500>;
->>> +		interrupts = <GIC_SPI 97 IRQ_TYPE_LEVEL_HIGH 0>;
->>> +		clocks = <&cru ACLK_RKVDEC1>, <&cru HCLK_RKVDEC1>, <&cru CLK_RKVDEC1_CA>,
->>> +			 <&cru CLK_RKVDEC1_CORE>, <&cru CLK_RKVDEC1_HEVC_CA>;
->>> +		clock-names = "axi", "ahb", "cabac", "core", "hevc_cabac";
->>> +		assigned-clocks = <&cru ACLK_RKVDEC1>, <&cru CLK_RKVDEC1_CORE>,
->>> +				  <&cru CLK_RKVDEC1_CA>, <&cru CLK_RKVDEC1_HEVC_CA>;
->>> +		assigned-clock-rates = <800000000>, <600000000>,
->>> +				       <600000000>, <1000000000>;
->>> +		resets = <&cru SRST_A_RKVDEC1>, <&cru SRST_H_RKVDEC1>, <&cru SRST_RKVDEC1_CA>,
->>> +			 <&cru SRST_RKVDEC1_CORE>, <&cru SRST_RKVDEC1_HEVC_CA>;
->>> +		reset-names = "rst_axi", "rst_ahb", "rst_cabac",
->>> +			      "rst_core", "rst_hevc_cabac";
->>> +		power-domains = <&power RK3588_PD_RKVDEC1>;
->>> +		sram = <&vdec1_sram>;
->>> +		status = "okay";
->>> +	};
->> This is still missing the iommus, please add the iommus, they should be
->> supported/same as the one used for e.g. VOP2:
->>
->>    compatible = "rockchip,rk3588-iommu", "rockchip,rk3568-iommu";
->>
->> The VOP2 MMUs does have one extra mmu_cfg_mode flag in AUTO_GATING,
->> compared to the VDPU381 MMUs, however only the AV1D MMU should be
->> special on RK3588.
->>
->> Please add the iommus :-)
-> When looking add the vendor DT/iommu driver I'm seeing serval quirks
-> applied for vdec's iommus. Since it's rightly frowned upon adding such
-> boolean-quirk-properties to upstream devicetrees, we'd at least need
-> additional (fallback-) compatibles, even if it works with the iommu driver
-> as is (what I doubt, but haven't tested). We need to be able to apply those
-> quirks later without changing the devicetree (as usual) and I'm sure RK
-> devs haven't added these quirks for the personal amusement.
+Signed-off-by: Lucas Stach <l.stach@pengutronix.de>
+Reviewed-by: Robert Foss <rfoss@kernel.org>
+Tested-by: Heiko Stuebner <heiko@sntech.de> (rk3288-veyron and rk3399-gru)
+---
+ drivers/gpu/drm/bridge/analogix/analogix_dp_core.c | 5 -----
+ drivers/gpu/drm/exynos/exynos_dp.c                 | 3 ---
+ drivers/gpu/drm/rockchip/analogix_dp-rockchip.c    | 9 +--------
+ include/drm/bridge/analogix_dp.h                   | 1 -
+ 4 files changed, 1 insertion(+), 17 deletions(-)
 
-Based on what I investigated the hw should work similar, and the quirks
-mostly seem related to optimizations and sw quirks, like do not zap each
-line, keep it alive even when pm runtime say it is not in use and other
-quirks that seem to be more of sw nature on how to best utilize the hw.
-
-> If Detlev says
-> iommu is out of scope for this series (which is valid), I'd say it's fine
-> to leave them out for now (as no binding exists) and the HW works
-> (obviously) fine without them.
-
-Sure, use of MMU can be added later.
-
-Regards,
-Jonas
-
-> 
->> Regards,
->> Jonas
->>
->>>   };
->>>   
->>>   #include "rk3588s-pinctrl.dtsi"
+diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
+index 4453d1672686..7a5e25b6aa3a 100644
+--- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
++++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
+@@ -1805,11 +1805,6 @@ void analogix_dp_unbind(struct analogix_dp_device *dp)
+ }
+ EXPORT_SYMBOL_GPL(analogix_dp_unbind);
+ 
+-void analogix_dp_remove(struct analogix_dp_device *dp)
+-{
+-}
+-EXPORT_SYMBOL_GPL(analogix_dp_remove);
+-
+ int analogix_dp_start_crc(struct drm_connector *connector)
+ {
+ 	struct analogix_dp_device *dp = to_dp(connector);
+diff --git a/drivers/gpu/drm/exynos/exynos_dp.c b/drivers/gpu/drm/exynos/exynos_dp.c
+index 8ad2ec5c6455..22142b293279 100644
+--- a/drivers/gpu/drm/exynos/exynos_dp.c
++++ b/drivers/gpu/drm/exynos/exynos_dp.c
+@@ -251,10 +251,7 @@ static int exynos_dp_probe(struct platform_device *pdev)
+ 
+ static void exynos_dp_remove(struct platform_device *pdev)
+ {
+-	struct exynos_dp_device *dp = platform_get_drvdata(pdev);
+-
+ 	component_del(&pdev->dev, &exynos_dp_ops);
+-	analogix_dp_remove(dp->adp);
+ }
+ 
+ static int exynos_dp_suspend(struct device *dev)
+diff --git a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
+index 8214265f1497..362c7951ca4a 100644
+--- a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
++++ b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
+@@ -414,21 +414,14 @@ static int rockchip_dp_probe(struct platform_device *pdev)
+ 
+ 	ret = component_add(dev, &rockchip_dp_component_ops);
+ 	if (ret)
+-		goto err_dp_remove;
++		return ret;
+ 
+ 	return 0;
+-
+-err_dp_remove:
+-	analogix_dp_remove(dp->adp);
+-	return ret;
+ }
+ 
+ static void rockchip_dp_remove(struct platform_device *pdev)
+ {
+-	struct rockchip_dp_device *dp = platform_get_drvdata(pdev);
+-
+ 	component_del(&pdev->dev, &rockchip_dp_component_ops);
+-	analogix_dp_remove(dp->adp);
+ }
+ 
+ static int rockchip_dp_suspend(struct device *dev)
+diff --git a/include/drm/bridge/analogix_dp.h b/include/drm/bridge/analogix_dp.h
+index 8709b6a74c0f..6002c5666031 100644
+--- a/include/drm/bridge/analogix_dp.h
++++ b/include/drm/bridge/analogix_dp.h
+@@ -44,7 +44,6 @@ struct analogix_dp_device *
+ analogix_dp_probe(struct device *dev, struct analogix_dp_plat_data *plat_data);
+ int analogix_dp_bind(struct analogix_dp_device *dp, struct drm_device *drm_dev);
+ void analogix_dp_unbind(struct analogix_dp_device *dp);
+-void analogix_dp_remove(struct analogix_dp_device *dp);
+ 
+ int analogix_dp_start_crc(struct drm_connector *connector);
+ int analogix_dp_stop_crc(struct drm_connector *connector);
+-- 
+2.39.2
 
 
 _______________________________________________
