@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EE95DC27C53
-	for <linux-rockchip@archiver.kernel.org>; Wed, 19 Jun 2024 11:24:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D0682C2BA1A
+	for <linux-rockchip@archiver.kernel.org>; Wed, 19 Jun 2024 11:24:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=HjLhW4+kHM8Ko0m0N987jd8KRw46VIg6awiIqAhxsmY=; b=L04UdMO6NHnJLR
-	VGTAuRhGJNZ9HEzaP/98XdOvei9D2dPSx6a8mELxnxY4naEkm+7dn0Aj3ULUFp4AxFUdGZG1h8Jyv
-	QgnQat1J0Fo0MWifwJA1wYwHy058A9/QcRCC62KjZmw/62riAiIx8kYiVOLOer1iLrTYoLNLRzZYY
-	s6LMEnN0KJeKDR6fywB5ROrAax9fPyDNaFixsRJq/S4tSD/WebzsOuDU1GYPmiHhSOBDBDZ8XCHtW
-	0Fptq2Gf+Y0y0rmShDWFIVuJBWbr+x4SbC8p0YPb7+qevMnL3iKnqUVkLzupHEf4rUNZaj3Gu7uCN
-	D5u6KS/s1oAH7hi9nFIQ==;
+	List-Owner; bh=W76B44BHbbiUwKefxLCzNtHCTVA8TcaROTQiDOP/YaA=; b=sesYuFwu+WkaeH
+	5JKPcJF/Fh4xJzbWqvNtJmMYi//8Y1uVS7vxf5aN517FZcwpaulR9T3Vu6mgTSWWAl2MP9Su+UG9a
+	1xnNHcwqZxLmc57/o/XqTvnuKLh00Z2afjiyEoEUJ4crNyaE5AvcjCTbxPL5W0DqbesUC0ZeqOkhH
+	6s7BHId8Xtrv5nvEOWCtGH2a9Lq8rKqwRK6YRtJmpDwuLvilrdKbEAm+Bt9Rv9GJaAiNhZtZeJTGa
+	Q15naM3fCu1lhcxMPcKkGsLnpe5WPIDyQkrIY76k6NdVzDIazGYPFx+deHSRBr9t9+eWKLrlTJPkz
+	MNcO8uUZ7avOiWInAOFQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sJtQN-00000000x2i-0kcM;
-	Wed, 19 Jun 2024 11:24:23 +0000
+	id 1sJtQO-00000000x40-2VTd;
+	Wed, 19 Jun 2024 11:24:24 +0000
 Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sJtQ6-00000000wte-00VO;
+	id 1sJtQ6-00000000wtC-1YDr;
 	Wed, 19 Jun 2024 11:24:08 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1718796244;
-	bh=AV5LSZIG/WMszq3J8MtYG9PvEEq/aTIOyQDB0X109wc=;
+	s=mail; t=1718796243;
+	bh=usplT3anrO8gUnCYhFFAGJCvwDOsIVmI2af1ckkghmY=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=FwP8avy5dAwvwdOlLtou8tozI2k5wcyByghYeut1TKw0+e5ZZAt+gbJDqqk8YN2hD
-	 wZQRxjTntX6go2AyfSNmTVGLhj2Mj7+Ye/FUWrVDsEuB0am7qT6d07dO0mP3tyo7YW
-	 yC6uMXEigm2DfpxrS5HR6hW9dsPp5+yZqIrCCYNvKBb1RrJQ4Lxqtl0RvyEe9+MAYD
-	 OngLHbDw0JM71JZ6NxEG/YeH6HDKq3uciUWVe8dkKkBCryZIiVBkekCkOhJ76/G0uT
-	 Amy0JLRfO5syXKBIPbOBnIKA3KR5OkiY3zqNb6zear39Xyc7xdluyzS4qEAWUDtS7g
-	 obiqi15KXDp3g==
+	b=g3y6PpqO7mV9YAqLbbBVE8VRMUz7/uqhgzAeNq0L9Ht/L4iQg8pLe5TKBaPbZFg9r
+	 fX1dBAFJ54l4dTUBKL8Amn1dBBWh3KE5KTWpkj5gJMT2qdRvrtiT8oppOkOl3/uQdx
+	 Gl0Qawv70ePGOKZxtnJ/IpYCGz4jiRKlgurHuhl6DUuHo5D+geMyPfu3PXHXd2PER1
+	 p840e6Vq0aoqbwk3OOucy8KNvY6+QDsDJCMimGGCaYjwuBUSw+DqteO3en5P0hLD4s
+	 wNh8paAZFElAUXoWT82H+woE4/Mtbb6XgcRWs5vr71wKxepFaG28FRxhcpVC4BxiGP
+	 MJBcB32l9T6bw==
 Received: from localhost (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: cristicc)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 8C4C237821D1;
-	Wed, 19 Jun 2024 11:24:04 +0000 (UTC)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 539B537821C7;
+	Wed, 19 Jun 2024 11:24:03 +0000 (UTC)
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Date: Wed, 19 Jun 2024 14:23:31 +0300
-Subject: [PATCH 2/5] dt-bindings: mfd: rk809: Add missing audio codec
- properties
+Date: Wed, 19 Jun 2024 14:23:30 +0300
+Subject: [PATCH 1/5] dt-bindings: mfd: rk809: Use correct compatible in the
+ example
 MIME-Version: 1.0
-Message-Id: <20240619-rk809-fixes-v1-2-fa93bc5313f4@collabora.com>
+Message-Id: <20240619-rk809-fixes-v1-1-fa93bc5313f4@collabora.com>
 References: <20240619-rk809-fixes-v1-0-fa93bc5313f4@collabora.com>
 In-Reply-To: <20240619-rk809-fixes-v1-0-fa93bc5313f4@collabora.com>
 To: Lee Jones <lee@kernel.org>, Rob Herring <robh@kernel.org>, 
@@ -63,8 +63,8 @@ Cc: kernel@collabora.com, devicetree@vger.kernel.org,
  linux-kernel@vger.kernel.org
 X-Mailer: b4 0.14.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240619_042406_207195_325294F6 
-X-CRM114-Status: GOOD (  13.20  )
+X-CRM114-CacheID: sfid-20240619_042406_608839_BF4D1734 
+X-CRM114-Status: GOOD (  11.73  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,74 +81,46 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The RK809 MFD provides a RK817 compatible audio codec, supported by the
-rk817_codec driver.
+The example is not able to actually test the schema since it uses a
+wrong compatible 'rockchip,rk808' instead of 'rockchip,rk809'.
 
-This has been already in use by several boards: rk3566-quartz64-b,
-k3566-roc-pc, rk3568-evb1-v10, rk3568-lubancat-2, rk3568-odroid-m1,
-rk3568-rock-3a.  However, dtbs_check fails for all of them:
-
-  DTC_CHK arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dtb
-  rk3568-rock-3a.dtb: pmic@20: '#sound-dai-cells', 'assigned-clock-parents', 'assigned-clocks', 'clock-names', 'clocks', 'codec' do not match any of the regexes: 'pinctrl-[0-9]+'
-    from schema $id: http://devicetree.org/schemas/mfd/rockchip,rk809.yaml#
-
-Document the missing audio codec properties as found on the
-rockchip,rk817 schema.
+Use the correct compatible and drop the wrong properties in the
+example section so that dt_binding_check passes.
 
 Fixes: 6c38ca03406e ("dt-bindings: mfd: rk808: Convert bindings to yaml")
 Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 ---
- .../devicetree/bindings/mfd/rockchip,rk809.yaml    | 30 +++++++++++++++++++++-
- 1 file changed, 29 insertions(+), 1 deletion(-)
+ Documentation/devicetree/bindings/mfd/rockchip,rk809.yaml | 8 ++------
+ 1 file changed, 2 insertions(+), 6 deletions(-)
 
 diff --git a/Documentation/devicetree/bindings/mfd/rockchip,rk809.yaml b/Documentation/devicetree/bindings/mfd/rockchip,rk809.yaml
-index a327d73f3c43..cadfb5f1c631 100644
+index 839c0521f1e5..a327d73f3c43 100644
 --- a/Documentation/devicetree/bindings/mfd/rockchip,rk809.yaml
 +++ b/Documentation/devicetree/bindings/mfd/rockchip,rk809.yaml
-@@ -12,7 +12,7 @@ maintainers:
+@@ -126,11 +126,10 @@ examples:
+         #address-cells = <1>;
+         #size-cells = <0>;
  
- description: |
-   Rockchip RK809 series PMIC. This device consists of an i2c controlled MFD
--  that includes regulators, an RTC, and power button.
-+  that includes regulators, an RTC, a power button and an audio codec.
+-        rk808: pmic@1b {
+-            compatible = "rockchip,rk808";
++        pmic@1b {
++            compatible = "rockchip,rk809";
+             reg = <0x1b>;
+             #clock-cells = <1>;
+-            clock-output-names = "xin32k", "rk808-clkout2";
+             interrupt-parent = <&gpio3>;
+             interrupts = <10 IRQ_TYPE_LEVEL_LOW>;
+             pinctrl-names = "default";
+@@ -146,9 +145,6 @@ examples:
+             vcc7-supply = <&vcc_sysin>;
+             vcc8-supply = <&vcc3v3_sys>;
+             vcc9-supply = <&vcc_sysin>;
+-            vcc10-supply = <&vcc_sysin>;
+-            vcc11-supply = <&vcc_sysin>;
+-            vcc12-supply = <&vcc3v3_sys>;
  
- properties:
-   compatible:
-@@ -93,6 +93,34 @@ properties:
-         unevaluatedProperties: false
-     unevaluatedProperties: false
- 
-+  clocks:
-+    description:
-+      The input clock for the audio codec.
-+
-+  clock-names:
-+    description:
-+      The clock name for the codec clock.
-+    items:
-+      - const: mclk
-+
-+  '#sound-dai-cells':
-+    description:
-+      Needed for the interpretation of sound dais.
-+    const: 0
-+
-+  codec:
-+    description: |
-+      The child node for the codec to hold additional properties. If no
-+      additional properties are required for the codec, this node can be
-+      omitted.
-+    type: object
-+    additionalProperties: false
-+    properties:
-+      rockchip,mic-in-differential:
-+        type: boolean
-+        description:
-+          Describes if the microphone uses differential mode.
-+
- allOf:
-   - if:
-       properties:
+             regulators {
+                 vdd_center: DCDC_REG1 {
 
 -- 
 2.45.2
