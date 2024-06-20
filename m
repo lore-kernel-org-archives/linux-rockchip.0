@@ -4,76 +4,109 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AB1B7C2BA18
-	for <linux-rockchip@archiver.kernel.org>; Thu, 20 Jun 2024 06:33:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8B3A1C27C79
+	for <linux-rockchip@archiver.kernel.org>; Thu, 20 Jun 2024 06:54:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=doPYTIsIH5mk76CUAnYeoJgb6GmLUc8PeReZuaQyCn4=; b=ceYc/LQ/HBd9Ay
-	1x9U5n1H5odAZ3dH18Pp9JgV7assYMQVjPMqwZtdaTMMbMGYHzCmW/KZeuaUZu0211KUTF9xeXQ/r
-	XxMZtAT/s7XEAL8HRsXQbDDAei/M0Y4qPXHbof9K8SZA4HGDhNGW2LFiAw06k2M+fTLVzFv+QNYHl
-	MjnSji5wnLOBgQ6LxyS/1Pa+z+2pS2xOOGqFfRBXoQ+x4caKDBXe9RV06GTXry/4mHL+QycP7sua5
-	Kcvvc9Z9KsWwPLUfI0H/g2p8KYVgIcYXmL1O6JQfaJLwXma4SRXtyvGOKpvkzwRJ+7vK17Q9D2wmz
-	A/iI8Y8FNXWKJsCiTa9w==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=Dby+voXVCM9PgOgHWubL+XNmkv8m+2giO5GQSZC8VqM=; b=Tn7bk007DJRasN
+	zAOwt3YRzRdSj4JCsofLJAgkrFjiJVnTUqPwMqQndGX8C1JfKrvepVle42AT8m8GDRR8l87ns4Xqe
+	PvwJBwT7f20qybAUURQcHo6fngBCwPkjaItaqk9shXtTjGNEkrbDA0mvOiI5lyQSJ6roaQRF/7plo
+	PadPj6+xTE7+ixkaRVQN6PR0qGGxb8fymnIlarYJSxGIRk7usj0YoqMb+7pluvdzaURNkDE3knRpc
+	LVqKkNNgIwFGu+7Teq/UP1qJroR+isrRDVk2UPtmkm48Yi3pNXj7JX3mDFmAhm7+lhMnUbJfYmh59
+	1o9dhiPDP9QiMaGxQ0LQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sKBMQ-00000003oX0-1SDm;
-	Thu, 20 Jun 2024 06:33:30 +0000
-Received: from mx1.tq-group.com ([93.104.207.81])
+	id 1sKBgk-00000003sES-2DYF;
+	Thu, 20 Jun 2024 06:54:30 +0000
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sKBMN-00000003oUw-0w37
-	for linux-rockchip@lists.infradead.org;
-	Thu, 20 Jun 2024 06:33:29 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-  d=tq-group.com; i=@tq-group.com; q=dns/txt; s=key1;
-  t=1718865207; x=1750401207;
-  h=from:to:cc:subject:date:message-id:mime-version:
-   content-transfer-encoding;
-  bh=l6H8FP2mpqCvryZ//MA7LA1mh1+A8ayGdScvIrjtFiM=;
-  b=fqO3Djv11Bxlsi/wQr2EWjeqN3NLJsruU7AJmrpNmnTLCoHVLSq28mK4
-   3StlZKqepmhFvx+RnzwiVy9ODXSwacBTwQqY9Zx/2JCJez8Nd2OKWaHoZ
-   VECqKFplisPb2pIPsr8Ely6W1wGCx+QaIQFbY7p+IpA07i1hvgPqyoNvM
-   ICPOUtxr5OagJdhrwNjx+sFBoNmwzzre5f5C/al16Srq0WsLPUyiojlGW
-   OWfni7flNUj8RjYeka9EeupUQv7ldbMVV6caxPzcJlNANdBDBXlDr+ja7
-   DBlVf2b0tcj0yVyPvOGs6xKQNQKA1Ks1I+8MS3fRgP/HU1SkKt3PXvrH0
-   w==;
-X-CSE-ConnectionGUID: dAG106jpTombTYn7mPadyw==
-X-CSE-MsgGUID: dcILZs0LSwamU1xqybPwPw==
-X-IronPort-AV: E=Sophos;i="6.08,251,1712613600"; 
-   d="scan'208";a="37488758"
-Received: from vmailcow01.tq-net.de ([10.150.86.48])
-  by mx1.tq-group.com with ESMTP; 20 Jun 2024 08:33:23 +0200
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id CF8CE1668EE;
-	Thu, 20 Jun 2024 08:33:17 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ew.tq-group.com;
-	s=dkim; t=1718865199; h=from:subject:date:message-id:to:cc:mime-version:
-	 content-transfer-encoding; bh=l6H8FP2mpqCvryZ//MA7LA1mh1+A8ayGdScvIrjtFiM=;
-	b=YCnYn+NbBgTowwUkiNqIgjt9GDRqWovZyuWTNKRVPlJCienrXqB2B6eD2WGZ9Yma2j4OXz
-	ajT7UfgCst7aFoZ7xMo/U4c8vPGf2NO3PTobZs5We2nebFeVbIOHBaGyiUBRYNQ49XhI0N
-	3geVpD+Z8qsY2OdFCo76JaQUIon8fC1UK5WD9ODfddKQXDYYKnH587RcZpH9ifLH0mOCBS
-	/5gk2anX8cdOwWB58AIxFJIpf2Jw7brFu9SKMCerShCvOLF1SyY7qPCJVQLWVf1MuxX7Dz
-	j4jG5TsA9qqQdPJUN9h0gRORhILf074CyBYPpglQPRD941TLkCACKp36f2xaqA==
-From: Alexander Stein <alexander.stein@ew.tq-group.com>
-To: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>
-Cc: Alexander Stein <alexander.stein@ew.tq-group.com>,
-	linux-media@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH 1/1] media: verisilicon: Move rockchip hardware drivers to the corresponding option
-Date: Thu, 20 Jun 2024 08:33:13 +0200
-Message-Id: <20240620063313.2309767-1-alexander.stein@ew.tq-group.com>
-X-Mailer: git-send-email 2.34.1
+	id 1sKBge-00000003sBw-29j8;
+	Thu, 20 Jun 2024 06:54:28 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sin.source.kernel.org (Postfix) with ESMTP id 2A9C8CE23AE;
+	Thu, 20 Jun 2024 06:54:22 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 55A5CC2BD10;
+	Thu, 20 Jun 2024 06:54:14 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1718866461;
+	bh=b2G7dmQlry0grvELyUtudXqRY6yeQ761cKOld8xr0Zo=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=UThE7hC31k6cj8kVv/CXcqrOUr6mFVSlqkb1Rml9iXtSN9At9zh+UD3k/1U9c1TJI
+	 M4fjzI3ZBW+aSnScpJJkUTK+ZjPROfR6oSHXsfPptDnHOTxBbotc1Hly+x/8eXF3Nm
+	 D7O2jLAcEr0q+z7dOcDSxNkDC4p98T/O7TmnF5DsnbXe0MVYzB2oGGtC9cBhoDRpD9
+	 qGgU4kmWYd7UtuErZtbCRqyHQVOHAOMXkM/aDoHiEFyGq6A/RujxjsGy2x91ceiFME
+	 9qBask59AMb7CcPGspVyFVtFnO7m1h6TTE5/sxB7jU0kNUxXDvqYJL5aE0UZPC4E96
+	 DSffSp/gbujsg==
+Message-ID: <b8b89ef7-2e92-4e1a-9609-6b0fd6d64d7e@kernel.org>
+Date: Thu, 20 Jun 2024 08:54:11 +0200
 MIME-Version: 1.0
-X-Last-TLS-Session-Version: TLSv1.3
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v1 2/3] net: wireless: brcmfmac: Add optional 32k clock
+ enable support
+To: Jacobe Zang <jacobe.zang@wesion.com>, arend.vanspriel@broadcom.com
+Cc: kvalo@kernel.org, duoming@zju.edu.cn, bhelgaas@google.com,
+ minipli@grsecurity.net, linux-wireless@vger.kernel.org,
+ brcm80211@lists.linux.dev, brcm80211-dev-list.pdl@broadcom.com, megi@xff.cz,
+ robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org, heiko@sntech.de,
+ nick@khadas.com, efectn@protonmail.com, jagan@edgeble.ai,
+ dsimic@manjaro.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+References: <20240620020015.4021696-1-jacobe.zang@wesion.com>
+ <20240620020015.4021696-3-jacobe.zang@wesion.com>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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 fv0=
+In-Reply-To: <20240620020015.4021696-3-jacobe.zang@wesion.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240619_233327_735388_259DFDA0 
-X-CRM114-Status: UNSURE (   8.02  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240619_235425_026275_DD65D1EC 
+X-CRM114-Status: GOOD (  13.22  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,50 +123,54 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-There is no need to compile the rockchip specific drivers if
-CONFIG_VIDEO_HANTRO_ROCKCHIP is not set.
-All driver functions are only referenced by rockchip_vpu_hw.c which is
-already under this option.
+On 20/06/2024 04:00, Jacobe Zang wrote:
+> WiFi modules often require 32kHz clock to function. Add support to
+> enable the clock to PCIe driver.
+> 
+> Signed-off-by: Jacobe Zang <jacobe.zang@wesion.com>
+> ---
+>  .../net/wireless/broadcom/brcm80211/brcmfmac/pcie.c    | 10 ++++++++++
+>  1 file changed, 10 insertions(+)
+> 
+> diff --git a/drivers/net/wireless/broadcom/brcm80211/brcmfmac/pcie.c b/drivers/net/wireless/broadcom/brcm80211/brcmfmac/pcie.c
+> index 06698a714b523..f241e1757d7e3 100644
+> --- a/drivers/net/wireless/broadcom/brcm80211/brcmfmac/pcie.c
+> +++ b/drivers/net/wireless/broadcom/brcm80211/brcmfmac/pcie.c
+> @@ -3,6 +3,7 @@
+>   * Copyright (c) 2014 Broadcom Corporation
+>   */
+>  
+> +#include <linux/clk.h>
+>  #include <linux/kernel.h>
+>  #include <linux/module.h>
+>  #include <linux/firmware.h>
+> @@ -2411,6 +2412,7 @@ brcmf_pcie_probe(struct pci_dev *pdev, const struct pci_device_id *id)
+>  	struct brcmf_pciedev *pcie_bus_dev;
+>  	struct brcmf_core *core;
+>  	struct brcmf_bus *bus;
+> +	struct clk *clk;
+>  
+>  	if (!id) {
+>  		id = pci_match_id(brcmf_pcie_devid_table, pdev);
+> @@ -2422,6 +2424,14 @@ brcmf_pcie_probe(struct pci_dev *pdev, const struct pci_device_id *id)
+>  
+>  	brcmf_dbg(PCIE, "Enter %x:%x\n", pdev->vendor, pdev->device);
+>  
+> +	clk = devm_clk_get_optional_enabled(&pdev->dev, "32k");
 
-Signed-off-by: Alexander Stein <alexander.stein@ew.tq-group.com>
----
- drivers/media/platform/verisilicon/Makefile | 14 +++++++-------
- 1 file changed, 7 insertions(+), 7 deletions(-)
+Where is the binding for this?
 
-diff --git a/drivers/media/platform/verisilicon/Makefile b/drivers/media/platform/verisilicon/Makefile
-index eb38a1833b02..f6f019d04ff0 100644
---- a/drivers/media/platform/verisilicon/Makefile
-+++ b/drivers/media/platform/verisilicon/Makefile
-@@ -14,13 +14,6 @@ hantro-vpu-y += \
- 		hantro_g2.o \
- 		hantro_g2_hevc_dec.o \
- 		hantro_g2_vp9_dec.o \
--		rockchip_vpu2_hw_jpeg_enc.o \
--		rockchip_vpu2_hw_h264_dec.o \
--		rockchip_vpu2_hw_mpeg2_dec.o \
--		rockchip_vpu2_hw_vp8_dec.o \
--		rockchip_vpu981_hw_av1_dec.o \
--		rockchip_av1_filmgrain.o \
--		rockchip_av1_entropymode.o \
- 		hantro_jpeg.o \
- 		hantro_h264.o \
- 		hantro_hevc.o \
-@@ -35,6 +28,13 @@ hantro-vpu-$(CONFIG_VIDEO_HANTRO_SAMA5D4) += \
- 		sama5d4_vdec_hw.o
- 
- hantro-vpu-$(CONFIG_VIDEO_HANTRO_ROCKCHIP) += \
-+		rockchip_vpu2_hw_jpeg_enc.o \
-+		rockchip_vpu2_hw_h264_dec.o \
-+		rockchip_vpu2_hw_mpeg2_dec.o \
-+		rockchip_vpu2_hw_vp8_dec.o \
-+		rockchip_vpu981_hw_av1_dec.o \
-+		rockchip_av1_filmgrain.o \
-+		rockchip_av1_entropymode.o \
- 		rockchip_vpu_hw.o
- 
- hantro-vpu-$(CONFIG_VIDEO_HANTRO_SUNXI) += \
--- 
-2.34.1
+> +	if (IS_ERR(clk))
+> +		return PTR_ERR(clk);
+> +	if (clk) {
+> +		dev_info(&pdev->dev, "enabling 32kHz clock\n");
+
+Drop
+
+
+
+Best regards,
+Krzysztof
 
 
 _______________________________________________
