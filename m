@@ -4,80 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 15B1DC27C53
-	for <linux-rockchip@archiver.kernel.org>; Thu, 20 Jun 2024 00:55:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7CD2FC2BA1A
+	for <linux-rockchip@archiver.kernel.org>; Thu, 20 Jun 2024 01:33:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=FvXE+kdIAkh5nguzoAiEDhq5mrYGuDLVfXOGNE3tW8c=; b=gMlF2GqM1+OsN+
-	p+RSRaBFN4AhXiQM8SrsZcq2S+ZXsH8DpN7QB+cGXSirCC6ewcD/6gVHphjWzzRYi3puUiZ6AOMNN
-	flgoXWF3rVcT4IW/dhATCNABp3k+nEBSTczUHFRHhwY/m/wE3qsuFnWf9n0kD6fwPqs8mdEakoSU0
-	2Uw0g2ceZfW/363FYMZayWdPqvJTEmJMJr3V8PY30P4Q1Kvn2XLHHyfIX5rVeWEEwrpFDCL1ruzTm
-	4c2X7wB3go5bCsYoyHVf3ePbvzCgwD09UkWHJ2Pgj0MCkLyKDjm9KTNSP9eXZ9np+5RS/Ip7FQReD
-	k1TT7oCoJDzDfGrI14qw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To
+	:From:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=npFCNqwY68QUBLCNb6wsb/k12qJ4NsARvfGuvaKlAws=; b=sej84qALCQgDYs
+	qoNG3MqCc+Cm0qTlt6jkwCXPzMUlAc2c/kkJ1cIYOkzBc5gJfGJWT3QWhMpleCWFTT+1uDF1LPy5O
+	1gcNPvhd9rbyUXbrOhm71Wfh4xO4/aPKZDl9YxyKxBJSEDOOQGYkBQ0wlEUlQeWc9X3yrfCsR1zZn
+	ioRuiK+uNJ+l8TaqzoDreoluhZ3i9T2IwE8WwEjZLLKxWq8FVD25yCmJf+U5I1tbVMehj/dQYSfNw
+	xWeLrYJlQDbhfgjKrbNhe4I9jXqn18hhuAEKrplCeKf8q+xdqrxV8kdEIpcVPHVlOJYib8PCsgGFN
+	6agE5B9oWe6pOyZuqw9Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sK651-00000003Bs2-1Jt1;
-	Thu, 20 Jun 2024 00:55:11 +0000
-Received: from mgamail.intel.com ([192.198.163.18])
+	id 1sK6gT-00000003GWD-1LPu;
+	Thu, 20 Jun 2024 01:33:53 +0000
+Received: from mail-qt1-x833.google.com ([2607:f8b0:4864:20::833])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sK64x-00000003Bq7-24j8;
-	Thu, 20 Jun 2024 00:55:10 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1718844908; x=1750380908;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=n1QL+U4fIPrZYaKvpV4ICwIHrMT2ebrPVzqIB4RJsnY=;
-  b=B5H8Pfj7zlEbA/ygag3cPfdSMbc19fB3QWMS/+kNXO5Wsye51zfk8nUm
-   pvRjJKIeorsVKSjxrX1eMmGBR83Y24Zyn4k9URuIQt3jUitFfQ8atxHhV
-   DbpKgeiTQ9TiL9YfnQQFP7mjyYY/OUdjasY/e/lSs/f72aZgHPg7ro4pb
-   WbIXAMfL3OYMir2K+y8EdSMJIySZBkGD/jpy3i2MK0GsAXULOTGzUTV8V
-   33uQyPF2ueYs6IHrzLP+8o12xI1E083jnKWGAwAXU3LvI7S4jAvLrMkwB
-   ywocXBH9iJBrZc25WUgUSWj+zl4u5LK0h0jhYTcVgt9p2YDM2FtkwwUzA
-   A==;
-X-CSE-ConnectionGUID: RUoNgXdcRFOa1zV7FG2mAA==
-X-CSE-MsgGUID: IubFTdK0SlCrrKUMzwEUMw==
-X-IronPort-AV: E=McAfee;i="6700,10204,11108"; a="15514235"
-X-IronPort-AV: E=Sophos;i="6.08,251,1712646000"; 
-   d="scan'208";a="15514235"
-Received: from fmviesa001.fm.intel.com ([10.60.135.141])
-  by fmvoesa112.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 19 Jun 2024 17:55:05 -0700
-X-CSE-ConnectionGUID: bgKIzhe/QEqEMRzkBBOe4w==
-X-CSE-MsgGUID: HhCXmOfMS9+Uk2hXQFvTwg==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.08,251,1712646000"; 
-   d="scan'208";a="73267832"
-Received: from lkp-server01.sh.intel.com (HELO 68891e0c336b) ([10.239.97.150])
-  by fmviesa001.fm.intel.com with ESMTP; 19 Jun 2024 17:55:02 -0700
-Received: from kbuild by 68891e0c336b with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1sK64p-00079O-1x;
-	Thu, 20 Jun 2024 00:54:59 +0000
-Date: Thu, 20 Jun 2024 08:54:30 +0800
-From: kernel test robot <lkp@intel.com>
-To: Anand Moon <linux.amoon@gmail.com>,
-	Shawn Lin <shawn.lin@rock-chips.com>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
-	Rob Herring <robh@kernel.org>, Bjorn Helgaas <helgaas@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>
-Cc: oe-kbuild-all@lists.linux.dev, Anand Moon <linux.amoon@gmail.com>,
-	linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v1 1/3] PCI: rockchip: Simplify clock handling by using
- clk_bulk*() function
-Message-ID: <202406200818.CQ7DXNSZ-lkp@intel.com>
-References: <20240618164133.223194-2-linux.amoon@gmail.com>
+	id 1sK6gP-00000003GVZ-0uOT;
+	Thu, 20 Jun 2024 01:33:50 +0000
+Received: by mail-qt1-x833.google.com with SMTP id d75a77b69052e-4415e623653so11121771cf.1;
+        Wed, 19 Jun 2024 18:33:48 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1718847227; x=1719452027; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:to
+         :from:from:to:cc:subject:date:message-id:reply-to;
+        bh=Q5HikRv6kiIPMm4QeUn8QwCXDOdRpGxbqfkwLthijeI=;
+        b=RXI4QOcbVoE8KSVbFA2JOSKfvxhtkKtyTbzvlT8KnwLYAHjyGjgvPHt1gqOsri6vQH
+         Pfn0vxYBmJqy0Jt02xhdqzMMUpCsVI2Mk9UN2WnecRuQm/E3JmSdED3WDIxC1K5JjfKJ
+         lk9VuP+oniD7300ctC1uV2kZ8HhbZrXo3qg6OvHiXAWS/HF54lWHAaGdV/E2gg2ZZm9C
+         9MFCJCxlP8naHjfWvbzkoxyLnK7ifF4Ksd4xt/l6+UHSyINN/dmPshl6lbKN2MwwUKY6
+         tVbcrRvX/WiMTKH76UjaZj2AUa5Alf8NEDz0iBR+PrrXIx4XGQ715X0YIBWZ12/32mgV
+         KqdA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1718847227; x=1719452027;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:to
+         :from:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=Q5HikRv6kiIPMm4QeUn8QwCXDOdRpGxbqfkwLthijeI=;
+        b=ZYnHSq9kjYVUzdWXww93V5Ak53dVX4MIj2cWdlGuuABb7QTItqodw4VWhNdjkcNtqB
+         titRqbne5+ibT9ROhp9fmjZlBwr6HHsR/hvQYfJo+t41met7P+9grn+YV0Z0HXgv22nd
+         NOBC+LTlDKSMcqdwJFBoSsRrCuBtKnmNLNTh751t7xX58A5qrjg5I5uWFRvVgNxi6E1C
+         zTf1Au9qchQXgnDAsTlUdv50spncRCXJMlKxXvloO2tN5eQ7xnIQNUMM3H1AHwDgroTg
+         e7klvRC2m7c55oaIxDMjNpil7sLAXlHznZErvtnJcfcD0v9XHdXWo1UZC7OSuK5JYqcW
+         kLSg==
+X-Forwarded-Encrypted: i=1; AJvYcCX3xm5Tog2Uo62rZaALKA+Gm9gBNeB6MxWNPJ6Sfq7HkOietZLm97w+c4zdkvQXxFUm7R8NcArMtf1fpCuJR5KT4FeLkDpi0MR4Pngd+rz/KU3Ue3cmwAVb6I03zqHEvhkhw0hqP52uJxhyJ+fIHHUJlNNZgIBaUAA=
+X-Gm-Message-State: AOJu0YwlgR2PKxaDPeIfVWvxqTzd953G6Ke0Ri5gZj5KRZT87hQPPfxZ
+	ywfTbzJG/pPCDePymbtTQKhxzIFMQlF7cvtfYDWTxbyWdD1Cbnts
+X-Google-Smtp-Source: AGHT+IEN53ttccCe1IOgM4GHOIP/75gthbOYHPruIhVGqJeLAJFFAeSgQqBm0F4DE7g+E2ACCcWemw==
+X-Received: by 2002:a0c:eace:0:b0:6af:7b2e:1868 with SMTP id 6a1803df08f44-6b501a07c22mr84110066d6.18.1718847226902;
+        Wed, 19 Jun 2024 18:33:46 -0700 (PDT)
+Received: from localhost.localdomain (pppoe-209-91-167-254.vianet.ca. [209.91.167.254])
+        by smtp.gmail.com with ESMTPSA id 6a1803df08f44-6b2a5bf2546sm83012256d6.14.2024.06.19.18.33.45
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 19 Jun 2024 18:33:46 -0700 (PDT)
+From: Trevor Woerner <twoerner@gmail.com>
+To: linux-kernel@vger.kernel.org,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Jonas Karlman <jonas@kwiboo.se>,
+	devicetree@vger.kernel.org (open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS),
+	linux-arm-kernel@lists.infradead.org (moderated list:ARM/Rockchip SoC support),
+	linux-rockchip@lists.infradead.org (open list:ARM/Rockchip SoC support)
+Subject: [PATCH] arm64: dts: rockchip: add gpio-line-names to radxa-zero-3
+Date: Wed, 19 Jun 2024 21:32:49 -0400
+Message-ID: <20240620013301.33653-1-twoerner@gmail.com>
+X-Mailer: git-send-email 2.44.0.501.g19981daefd7c
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20240618164133.223194-2-linux.amoon@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240619_175508_616493_2AECEF5C 
-X-CRM114-Status: GOOD (  12.28  )
+X-CRM114-CacheID: sfid-20240619_183349_320414_4D8B4114 
+X-CRM114-Status: UNSURE (   9.91  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,74 +95,105 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Anand,
+Add names to the pins of the general-purpose expansion header as given
+in the Radxa documentation[1] following the conventions in the kernel[2]
+to make it easier for users to correlate pins with functions when using
+utilities such as 'gpioinfo'.
 
-kernel test robot noticed the following build errors:
+[1] https://docs.radxa.com/en/zero/zero3/hardware-design/hardware-interface
+[2] https://www.kernel.org/doc/Documentation/devicetree/bindings/gpio/gpio.txt
 
-[auto build test ERROR on pci/next]
-[also build test ERROR on pci/for-linus linus/master v6.10-rc4 next-20240619]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
+Signed-off-by: Trevor Woerner <twoerner@gmail.com>
+---
+ .../dts/rockchip/rk3566-radxa-zero-3.dtsi     | 72 +++++++++++++++++++
+ 1 file changed, 72 insertions(+)
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Anand-Moon/PCI-rockchip-Simplify-reset-control-handling-by-using-reset_control_bulk-function/20240619-014145
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/pci/pci.git next
-patch link:    https://lore.kernel.org/r/20240618164133.223194-2-linux.amoon%40gmail.com
-patch subject: [PATCH v1 1/3] PCI: rockchip: Simplify clock handling by using clk_bulk*() function
-config: arc-randconfig-001-20240620 (https://download.01.org/0day-ci/archive/20240620/202406200818.CQ7DXNSZ-lkp@intel.com/config)
-compiler: arceb-elf-gcc (GCC) 13.2.0
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20240620/202406200818.CQ7DXNSZ-lkp@intel.com/reproduce)
-
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202406200818.CQ7DXNSZ-lkp@intel.com/
-
-All errors (new ones prefixed by >>):
-
-   In file included from drivers/pci/controller/pcie-rockchip-ep.c:20:
->> drivers/pci/controller/pcie-rockchip.h:311:31: error: array type has incomplete element type 'struct clk_bulk_data'
-     311 |         struct  clk_bulk_data clks[ROCKCHIP_NUM_CLKS];
-         |                               ^~~~
-
-
-vim +311 drivers/pci/controller/pcie-rockchip.h
-
-   298	
-   299	struct rockchip_pcie {
-   300		void	__iomem *reg_base;		/* DT axi-base */
-   301		void	__iomem *apb_base;		/* DT apb-base */
-   302		bool    legacy_phy;
-   303		struct  phy *phys[MAX_LANE_NUM];
-   304		struct	reset_control *core_rst;
-   305		struct	reset_control *mgmt_rst;
-   306		struct	reset_control *mgmt_sticky_rst;
-   307		struct	reset_control *pipe_rst;
-   308		struct	reset_control *pm_rst;
-   309		struct	reset_control *aclk_rst;
-   310		struct	reset_control *pclk_rst;
- > 311		struct  clk_bulk_data clks[ROCKCHIP_NUM_CLKS];
-   312		struct	regulator *vpcie12v; /* 12V power supply */
-   313		struct	regulator *vpcie3v3; /* 3.3V power supply */
-   314		struct	regulator *vpcie1v8; /* 1.8V power supply */
-   315		struct	regulator *vpcie0v9; /* 0.9V power supply */
-   316		struct	gpio_desc *ep_gpio;
-   317		u32	lanes;
-   318		u8      lanes_map;
-   319		int	link_gen;
-   320		struct	device *dev;
-   321		struct	irq_domain *irq_domain;
-   322		int     offset;
-   323		void    __iomem *msg_region;
-   324		phys_addr_t msg_bus_addr;
-   325		bool is_rc;
-   326		struct resource *mem_res;
-   327	};
-   328	
-
+diff --git a/arch/arm64/boot/dts/rockchip/rk3566-radxa-zero-3.dtsi b/arch/arm64/boot/dts/rockchip/rk3566-radxa-zero-3.dtsi
+index 623d5939d194..b72d75b908a2 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3566-radxa-zero-3.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3566-radxa-zero-3.dtsi
+@@ -109,6 +109,78 @@ &cpu3 {
+ 	cpu-supply = <&vdd_cpu>;
+ };
+ 
++&gpio0 {
++	gpio-line-names =
++		/* GPIO0_A0 - A7 */
++		"", "", "", "", "", "", "", "",
++		/* GPIO0_B0 - B7 */
++		"", "", "", "", "", "", "", "",
++		/* GPIO0_C0 - C7 */
++		"", "", "", "", "", "", "", "",
++		/* GPIO0_D0 - D7 */
++		"pin-10 [GPIO0_D0]", "pin-08 [GPIO0_D1]", "",
++		"", "", "", "", "";
++};
++
++&gpio1 {
++	gpio-line-names =
++		/* GPIO1_A0 - A7 */
++		"pin-03 [GPIO1_A0]", "pin-05 [GPIO1_A1]", "",
++		"",                  "pin-37 [GPIO1_A4]", "",
++		"",                  "",
++		/* GPIO1_B0 - B7 */
++		"", "", "", "", "", "", "", "",
++		/* GPIO1_C0 - C7 */
++		"", "", "", "", "", "", "", "",
++		/* GPIO1_D0 - D7 */
++		"", "", "", "", "", "", "", "";
++};
++
++&gpio2 {
++	gpio-line-names =
++		/* GPIO2_A0 - A7 */
++		"", "", "", "", "", "", "", "",
++		/* GPIO2_B0 - B7 */
++		"", "", "", "", "", "", "", "",
++		/* GPIO2_C0 - C7 */
++		"", "", "", "", "", "", "", "",
++		/* GPIO2_D0 - D7 */
++		"", "", "", "", "", "", "", "";
++};
++
++&gpio3 {
++	gpio-line-names =
++		/* GPIO3_A0 - A7 */
++		"",                  "pin-11 [GPIO3_A1]", "pin-13 [GPIO3_A2]",
++		"pin-12 [GPIO3_A3]", "pin-35 [GPIO3_A4]", "pin-40 [GPIO3_A5]",
++		"pin-38 [GPIO3_A6]", "pin-36 [GPIO3_A7]",
++		/* GPIO3_B0 - B7 */
++		"pin-15 [GPIO3_B0]", "pin-16 [GPIO3_B1]", "pin-18 [GPIO3_B2]",
++		"pin-29 [GPIO3_B3]", "pin-31 [GPIO3_B4]", "",
++		"", "",
++		/* GPIO3_C0 - C7 */
++		"",                  "pin-22 [GPIO3_C1]", "pin-32 [GPIO3_C2]",
++		"pin-33 [GPIO3_C3]", "pin-07 [GPIO3_C4]", "",
++		"", "",
++		/* GPIO3_D0 - D7 */
++		"", "", "", "", "", "", "", "";
++};
++
++&gpio4 {
++	gpio-line-names =
++		/* GPIO4_A0 - A7 */
++		"", "", "", "", "", "", "", "",
++		/* GPIO4_B0 - B7 */
++		"",                  "",                  "pin-27 [GPIO4_B2]",
++		"pin-28 [GPIO4_B3]", "", "", "", "",
++		/* GPIO4_C0 - C7 */
++		"",                  "",                  "pin-23 [GPIO4_C2]",
++		"pin-19 [GPIO4_C3]", "",                  "pin-21 [GPIO4_C5]",
++		"pin-24 [GPIO4_C6]", "",
++		/* GPIO4_D0 - D7 */
++		"", "", "", "", "", "", "", "";
++};
++
+ &gpu {
+ 	mali-supply = <&vdd_gpu_npu>;
+ 	status = "okay";
 -- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+2.44.0.501.g19981daefd7c
+
 
 _______________________________________________
 Linux-rockchip mailing list
