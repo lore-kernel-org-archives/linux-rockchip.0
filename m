@@ -4,57 +4,101 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C7DA0C2BA18
-	for <linux-rockchip@archiver.kernel.org>; Thu, 20 Jun 2024 06:58:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A7E86C27C79
+	for <linux-rockchip@archiver.kernel.org>; Thu, 20 Jun 2024 07:23:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=2x5e0qzolZp3hGkLkxngorejReeYz6qRUx4rUR7SywQ=; b=MY3ienZPmQMUP4
-	LKpz1H0AmONS7h6cX1P7ZScxYEztmuEjYFBVNw9d1CTLbFbYOnMRdnxmsxnUF8WWRuHAhzOSqTW8b
-	nuOcVf/XxHn7L6gmb+Qn2QNvZRBiK3ldtUcF8gKEKKh+yWuiM/pgosgx+DsDqAJ9CF74dPukhvS0u
-	Z8HFtVFgXsAmsX14Z1NQZ90S5ZO1foLTulqJNTtCNkhi8KAGz4yo1VgQNBPKhaKp4LnDcY5xz9Iud
-	ojwAV5wR7hpRIS/ssChKGuh0rqcbY/ptEAAPT3pTlquHu5jWwGvX33q8KcX53QMTxYNoQsp5lBjmo
-	5c8t2geWFfG5nBQsi/nQ==;
+	List-Owner; bh=wTbiSKcljv/AwDUW/yqWH7/497pHK8PzSYzJDhcCZV4=; b=b2ppsCK30U6jL/
+	SPsSi7O4EIEIJBm9WJCA/GRfmV3a2zqnThEliLnXOpuzCEnBpPOp4o2gFWzA23zjVb/bU9X8J8/wM
+	jbvuJrmSyqXFjCNCwalgn0lHXbrnIMIW4QfNOs15jZ4S0QAXS42Vr8UHVUdvLXbovxyEzIV5BCXXy
+	GCskFiMDzbe52Z4CXxx8z4oj97RuTCqMPPaYPw5ONyEGqpJfF+F6xUHrX3zYWBl+HF4z60ViCy80x
+	nSy3LsCmazEPbBhx0PEyz5d1Ac//pjg9Hn5bvtuf6H50QfX6SNSZ5Ww47lv/umuNsNTADaggNjVHZ
+	AgFMx2CDw0Ouw5SsMRwA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sKBkI-00000003t0o-3pLI;
-	Thu, 20 Jun 2024 06:58:11 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1sKC8Y-00000003xji-25Zd;
+	Thu, 20 Jun 2024 07:23:14 +0000
+Received: from mout.web.de ([212.227.17.11])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sKBkF-00000003szy-2VYa
+	id 1sKC8U-00000003xj1-49DU
 	for linux-rockchip@lists.infradead.org;
-	Thu, 20 Jun 2024 06:58:09 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id BC9D661087;
-	Thu, 20 Jun 2024 06:58:06 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C89A3C2BD10;
-	Thu, 20 Jun 2024 06:58:01 +0000 (UTC)
-Message-ID: <e95213ae-dc22-4280-88f2-09333e12b56e@xs4all.nl>
-Date: Thu, 20 Jun 2024 08:58:00 +0200
+	Thu, 20 Jun 2024 07:23:12 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=web.de;
+	s=s29768273; t=1718868182; x=1719472982; i=markus.elfring@web.de;
+	bh=eDz2R6JnnSpAZQdGs1gL+410Vp3uQBbaPn1UmTzECBQ=;
+	h=X-UI-Sender-Class:Message-ID:Date:MIME-Version:Subject:To:Cc:
+	 References:From:In-Reply-To:Content-Type:
+	 Content-Transfer-Encoding:cc:content-transfer-encoding:
+	 content-type:date:from:message-id:mime-version:reply-to:subject:
+	 to;
+	b=SgYx1qdcn6qZMHIwNwBkOIh827yC3Xm8B2vc/qI61lvzrVoQAXv/PN/CR9egxUJo
+	 vI2fPLFXFwxQzP5hWaBBIvRB9M27hg5kTaWSxYISf30qXrmuQ3yQ6eIrD+CBG6T36
+	 na7vSpxRVkWtNUAtmmepfZeGpb4sCSvBNr9UbB+5pbL4V8kiNxbdl6IT0WdhVdgC6
+	 wgb3RpjY0RX19Nbq++cio0V/W7RDIpUPhoig8rqvTp5107kxMu0dZba0u/mBA7rCU
+	 ADbpyAVVxEN+bpEl23BOFaj3apIKXbei6Y81fLzHa1413Ana7SXYFfnmvrCF4hVP8
+	 ARx+rrHtgdU2mAO6Lg==
+X-UI-Sender-Class: 814a7b36-bfc1-4dae-8640-3722d8ec6cd6
+Received: from [192.168.178.21] ([94.31.83.95]) by smtp.web.de (mrweb105
+ [213.165.67.124]) with ESMTPSA (Nemesis) id 1MsaW1-1scxLC3tCV-014uP1; Thu, 20
+ Jun 2024 09:23:02 +0200
+Message-ID: <c1bb7c1c-3d17-4346-9246-55dff63f1727@web.de>
+Date: Thu, 20 Jun 2024 09:22:59 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v14 3/6] media: v4l2-jpeg: Export reference quantization
- and huffman tables
-To: Devarsh Thakkar <devarsht@ti.com>, mchehab@kernel.org, robh@kernel.org,
- krzk+dt@kernel.org, conor+dt@kernel.org, linux-media@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-rockchip@lists.infradead.org, benjamin.gaignard@collabora.com,
- sebastian.fricke@collabora.com
-Cc: laurent.pinchart@ideasonboard.com, praneeth@ti.com, nm@ti.com,
- vigneshr@ti.com, a-bhatia1@ti.com, j-luthra@ti.com, b-brnich@ti.com,
- detheridge@ti.com, p-mantena@ti.com, vijayp@ti.com, andrzej.p@collabora.com,
- nicolas@ndufresne.ca, afd@ti.com
-References: <20240618193651.2771478-1-devarsht@ti.com>
- <20240618193651.2771478-4-devarsht@ti.com>
-Content-Language: en-US, nl
-From: Hans Verkuil <hverkuil-cisco@xs4all.nl>
-In-Reply-To: <20240618193651.2771478-4-devarsht@ti.com>
+Subject: Re: [v13 03/13] media: v4l2-jpeg: Export reference quantization and
+ huffman tables
+To: Hans Verkuil <hverkuil-cisco@xs4all.nl>, Devarsh Thakkar
+ <devarsht@ti.com>, David Huang <d-huang@ti.com>,
+ linux-media@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-rockchip@lists.infradead.org,
+ Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+ Conor Dooley <conor+dt@kernel.org>, Krzysztof Kozlowski
+ <krzk+dt@kernel.org>, Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Rob Herring <robh@kernel.org>,
+ Sebastian Fricke <sebastian.fricke@collabora.com>
+Cc: LKML <linux-kernel@vger.kernel.org>, Andrew Davis <afd@ti.com>,
+ Andrzej Pietrasiewicz <andrzej.p@collabora.com>,
+ Aradhya Bhatia <a-bhatia1@ti.com>, Brandon Brnich <b-brnich@ti.com>,
+ Darren Etheridge <detheridge@ti.com>, Jai Luthra <j-luthra@ti.com>,
+ Julia Lawall <julia.lawall@inria.fr>,
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+ Lee Jones <lee@kernel.org>, Nicolas Dufresne <nicolas@ndufresne.ca>,
+ Nishanth Menon <nm@ti.com>, Praneeth Bajjuri <praneeth@ti.com>,
+ Prasanth Mantena <p-mantena@ti.com>, Vignesh Raghavendra <vigneshr@ti.com>,
+ Vijay Pothukuchi <vijayp@ti.com>
+References: <20240607131900.3535250-1-devarsht@ti.com>
+ <20240607132831.3551333-1-devarsht@ti.com>
+ <59866428-342b-4ba4-a7c7-2df1477aa7e6@xs4all.nl>
+ <e948cea7-d5c7-a7e6-d921-ad7c2f93cd5a@ti.com>
+ <904289bb-96a0-4a0d-9046-96acd8843b98@xs4all.nl>
+Content-Language: en-GB
+From: Markus Elfring <Markus.Elfring@web.de>
+In-Reply-To: <904289bb-96a0-4a0d-9046-96acd8843b98@xs4all.nl>
+X-Provags-ID: V03:K1:1u31HE0L81eGxzVfQmVMyNYyC/sb14RZsY9LEjfMLnxrp7TM92/
+ gJN3L/RFXO6if7Y3qPzpkLHupi1Yp+oQMNsy8AWauY0SUjrcWyK4UIxJOOk5D6D5qVaDuKs
+ ZIYRDJ8JW9m+XJ/+dXGLI3LwSGhcz5wpgk+FpLKPFjx23Fp9Kxfr5/EIwraa9xho+rG4pcm
+ OIzsCOTHGJrtDttl71TQg==
+UI-OutboundReport: notjunk:1;M01:P0:mA2WF1ENtl8=;pyvaK1XsIr33lRtvIl/7E6zfWMu
+ mdKnyWj8TWqxwVyYXYkKFm1Onj3Te5Pl/2bL4kNfNphEuE6FIeWJHul0OxFApZwLDxna3acCW
+ P5JzUPgVwasebE0gY4T4vIY4mTi/+JHiNKiazYKSQvk27WbQs7x4N7wRnzdPgauBY8T3jnulk
+ 2cV7+emROfjcI8VDOU50B22pKMeMA5ceuD3XKQAe+MRZJaoXjhgW2zcNtCSYdvIoAmNVvc5FO
+ Ai8MsOCgPqvB3ZWYHZTvJQrkQa16Uz5bVjHZ3zE0APy7Ny9QutX2/4tESTihtcYhRRJ6RhBA+
+ Qc8fFzTeigVxHaoP7xjEqlO08cOOZFstUI5DO1lalbHNmtE/CSqwYCIGAFscxt1KZ35dLbsad
+ Jaf37eRLvI70ZR8NRydoID43SJ32SBdOafKSl3wnOmt6R05lfsxeGRQXc6RjJVDWSTYNKhHAE
+ z9hp6+RcKFpHCNQ6R5lJb3+SLXlRTophB7rVKDgAb7zZtIFzAcnifojRx1kEgSstOyJERBKN/
+ ZHhx1RE5DHDENbs5++DdisYmIEi6F57EG094aP0B3VPCOyUDvCeohIlNb4zRNMTfISncNE5L4
+ MNY+6Bri8CRA4ojupyACj1AfJCU4EhnoN/VVr3q8jV7/JWSk1MZtc74Kqzxb4F+aA9/PYzuHm
+ yxjICsHrXrTWHf0Z4Fta/vpg9beo40RcujxI+HrwhjXBgYVNP99ltwJSWQA/fP44SxJDLB9QP
+ pgMVckHpNi4PfwQnZn//YxXJx+r1TkisillVj8ICQh41Ugd/8VAPJ3rVz+e3QoUd+97CjjMCV
+ 1JutU8RCqVyu/+WK5PE6komZr53qtN3z8UjTcU3Up41zplhJVRWoOCzo5Jzo9uyOTN
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240619_235808_076179_10022ADB 
-X-CRM114-Status: GOOD (  20.22  )
+X-CRM114-CacheID: sfid-20240620_002311_557955_294D47E0 
+X-CRM114-Status: UNSURE (   3.42  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,235 +115,17 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 18/06/2024 21:36, Devarsh Thakkar wrote:
-> Export reference quantization and huffman tables as provided in ITU-T.81 so
-> that they can be re-used by other JPEG drivers.
-> 
-> These are example tables provided in ITU-T.81 as reference tables and the
-> JPEG encoders are free to use either these or their own proprietary tables.
-> 
-> Also add necessary prefixes to be used for huffman tables in global header
-> file.
-> 
-> Signed-off-by: Devarsh Thakkar <devarsht@ti.com>
+> Ignore any reviews by Markus Elfring,
 
-Much nicer!
+There are some communication difficulties involved.
 
-Reviewed-by: Hans Verkuil <hverkuil-cisco@xs4all.nl>
+
+> he's a troll.
+
+Some contributors occasionally got an other impression, didn't they?
 
 Regards,
-
-	Hans
-
-> ---
-> V14:
-> - Directly export jpeg tables and declare them as extern variables
->   instead of using helper functions.
-> 
-> V13: 
-> - Fix smatch/sparse related below warning by using static global
-> variable for arrays:
-> Logs:
-> +drivers/media/v4l2-core/v4l2-jpeg.c: warning: symbol 'luma_qt' was not
-> declared. Should it be static?
-> +drivers/media/v4l2-core/v4l2-jpeg.c: warning: symbol 'chroma_qt' was
-> not declared. Should it be static?
-> +drivers/media/v4l2-core/v4l2-jpeg.c: warning: symbol 'zigzag' was not
-> declared. Should it be static?
-> +drivers/media/v4l2-core/v4l2-jpeg.c: warning: symbol 'luma_dc_ht' was
-> not declared. Should it be static?
-> +drivers/media/v4l2-core/v4l2-jpeg.c: warning: symbol 'luma_ac_ht' was
-> not declared. Should it be static?
-> +drivers/media/v4l2-core/v4l2-jpeg.c: warning: symbol 'chroma_dc_ht' was
-> not declared. Should it be static?
-> +drivers/media/v4l2-core/v4l2-jpeg.c: warning: symbol 'chroma_ac_ht' was
-> not declared. Should it be static?"
-> 
-> V12: Fix html-doc warnings by removing * from args
-> V11: No change
-> V10: Add description for new macros introduced in this patchset
-> V1->V9: No change (Patch introduced in V7)
-> 
->  drivers/media/v4l2-core/v4l2-jpeg.c | 116 ++++++++++++++++++++++++++++
->  include/media/v4l2-jpeg.h           |  32 ++++++++
->  2 files changed, 148 insertions(+)
-> 
-> diff --git a/drivers/media/v4l2-core/v4l2-jpeg.c b/drivers/media/v4l2-core/v4l2-jpeg.c
-> index 94435a7b6816..b8bece739d07 100644
-> --- a/drivers/media/v4l2-core/v4l2-jpeg.c
-> +++ b/drivers/media/v4l2-core/v4l2-jpeg.c
-> @@ -52,6 +52,122 @@ MODULE_LICENSE("GPL");
->  #define COM	0xfffe	/* comment */
->  #define TEM	0xff01	/* temporary */
->  
-> +/* Luma and chroma qp tables to achieve 50% compression quality
-> + * This is as per example in Annex K.1 of ITU-T.81
-> + */
-> +const u8 v4l2_jpeg_ref_table_luma_qt[V4L2_JPEG_PIXELS_IN_BLOCK] = {
-> +	16, 11, 10, 16, 24, 40, 51, 61,
-> +	12, 12, 14, 19, 26, 58, 60, 55,
-> +	14, 13, 16, 24, 40, 57, 69, 56,
-> +	14, 17, 22, 29, 51, 87, 80, 62,
-> +	18, 22, 37, 56, 68, 109, 103, 77,
-> +	24, 35, 55, 64, 81, 104, 113, 92,
-> +	49, 64, 78, 87, 103, 121, 120, 101,
-> +	72, 92, 95, 98, 112, 100, 103, 99
-> +};
-> +EXPORT_SYMBOL_GPL(v4l2_jpeg_ref_table_luma_qt);
-> +
-> +const u8 v4l2_jpeg_ref_table_chroma_qt[V4L2_JPEG_PIXELS_IN_BLOCK] = {
-> +	17, 18, 24, 47, 99, 99, 99, 99,
-> +	18, 21, 26, 66, 99, 99, 99, 99,
-> +	24, 26, 56, 99, 99, 99, 99, 99,
-> +	47, 66, 99, 99, 99, 99, 99, 99,
-> +	99, 99, 99, 99, 99, 99, 99, 99,
-> +	99, 99, 99, 99, 99, 99, 99, 99,
-> +	99, 99, 99, 99, 99, 99, 99, 99,
-> +	99, 99, 99, 99, 99, 99, 99, 99
-> +};
-> +EXPORT_SYMBOL_GPL(v4l2_jpeg_ref_table_chroma_qt);
-> +
-> +/* Zigzag scan pattern indexes */
-> +const u8 v4l2_jpeg_zigzag_scan_index[V4L2_JPEG_PIXELS_IN_BLOCK] = {
-> +	0,   1,  8, 16,  9,  2,  3, 10,
-> +	17, 24, 32, 25, 18, 11,  4,  5,
-> +	12, 19, 26, 33, 40, 48, 41, 34,
-> +	27, 20, 13,  6,  7, 14, 21, 28,
-> +	35, 42, 49, 56, 57, 50, 43, 36,
-> +	29, 22, 15, 23, 30, 37, 44, 51,
-> +	58, 59, 52, 45, 38, 31, 39, 46,
-> +	53, 60, 61, 54, 47, 55, 62, 63
-> +};
-> +EXPORT_SYMBOL_GPL(v4l2_jpeg_zigzag_scan_index);
-> +
-> +/*
-> + * Contains the data that needs to be sent in the marker segment of an
-> + * interchange format JPEG stream or an abbreviated format table specification
-> + * data stream. Specifies the huffman table used for encoding the luminance DC
-> + * coefficient differences. The table represents Table K.3 of ITU-T.81
-> + */
-> +const u8 v4l2_jpeg_ref_table_luma_dc_ht[V4L2_JPEG_REF_HT_DC_LEN] = {
-> +	0x00, 0x01, 0x05, 0x01, 0x01, 0x01, 0x01, 0x01,
-> +	0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-> +	0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0A, 0x0B
-> +};
-> +EXPORT_SYMBOL_GPL(v4l2_jpeg_ref_table_luma_dc_ht);
-> +
-> +/*
-> + * Contains the data that needs to be sent in the marker segment of an
-> + * interchange format JPEG stream or an abbreviated format table specification
-> + * data stream. Specifies the huffman table used for encoding the luminance AC
-> + * coefficients. The table represents Table K.5 of ITU-T.81
-> + */
-> +const u8 v4l2_jpeg_ref_table_luma_ac_ht[V4L2_JPEG_REF_HT_AC_LEN] = {
-> +	0x00, 0x02, 0x01, 0x03, 0x03, 0x02, 0x04, 0x03, 0x05, 0x05, 0x04, 0x04,
-> +	0x00, 0x00, 0x01, 0x7D, 0x01, 0x02, 0x03, 0x00, 0x04, 0x11, 0x05, 0x12,
-> +	0x21, 0x31, 0x41, 0x06, 0x13, 0x51, 0x61, 0x07, 0x22, 0x71, 0x14, 0x32,
-> +	0x81, 0x91, 0xA1, 0x08, 0x23, 0x42, 0xB1, 0xC1, 0x15, 0x52, 0xD1, 0xF0,
-> +	0x24, 0x33, 0x62, 0x72, 0x82, 0x09, 0x0A, 0x16, 0x17, 0x18, 0x19, 0x1A,
-> +	0x25, 0x26, 0x27, 0x28, 0x29, 0x2A, 0x34, 0x35, 0x36, 0x37, 0x38, 0x39,
-> +	0x3A, 0x43, 0x44, 0x45, 0x46, 0x47, 0x48, 0x49, 0x4A, 0x53, 0x54, 0x55,
-> +	0x56, 0x57, 0x58, 0x59, 0x5A, 0x63, 0x64, 0x65, 0x66, 0x67, 0x68, 0x69,
-> +	0x6A, 0x73, 0x74, 0x75, 0x76, 0x77, 0x78, 0x79, 0x7A, 0x83, 0x84, 0x85,
-> +	0x86, 0x87, 0x88, 0x89, 0x8A, 0x92, 0x93, 0x94, 0x95, 0x96, 0x97, 0x98,
-> +	0x99, 0x9A, 0xA2, 0xA3, 0xA4, 0xA5, 0xA6, 0xA7, 0xA8, 0xA9, 0xAA, 0xB2,
-> +	0xB3, 0xB4, 0xB5, 0xB6, 0xB7, 0xB8, 0xB9, 0xBA, 0xC2, 0xC3, 0xC4, 0xC5,
-> +	0xC6, 0xC7, 0xC8, 0xC9, 0xCA, 0xD2, 0xD3, 0xD4, 0xD5, 0xD6, 0xD7, 0xD8,
-> +	0xD9, 0xDA, 0xE1, 0xE2, 0xE3, 0xE4, 0xE5, 0xE6, 0xE7, 0xE8, 0xE9, 0xEA,
-> +	0xF1, 0xF2, 0xF3, 0xF4, 0xF5, 0xF6, 0xF7, 0xF8, 0xF9, 0xFA
-> +};
-> +EXPORT_SYMBOL_GPL(v4l2_jpeg_ref_table_luma_ac_ht);
-> +
-> +/*
-> + * Contains the data that needs to be sent in the marker segment of an interchange format JPEG
-> + * stream or an abbreviated format table specification data stream.
-> + * Specifies the huffman table used for encoding the chrominance DC coefficient differences.
-> + * The table represents Table K.4 of ITU-T.81
-> + */
-> +const u8 v4l2_jpeg_ref_table_chroma_dc_ht[V4L2_JPEG_REF_HT_DC_LEN] = {
-> +	0x00, 0x03, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01,
-> +	0x01, 0x01, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00,
-> +	0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0A, 0x0B
-> +};
-> +EXPORT_SYMBOL_GPL(v4l2_jpeg_ref_table_chroma_dc_ht);
-> +
-> +/*
-> + * Contains the data that needs to be sent in the marker segment of an
-> + * interchange format JPEG stream or an abbreviated format table specification
-> + * data stream. Specifies the huffman table used for encoding the chrominance
-> + * AC coefficients. The table represents Table K.6 of ITU-T.81
-> + */
-> +const u8 v4l2_jpeg_ref_table_chroma_ac_ht[V4L2_JPEG_REF_HT_AC_LEN] = {
-> +	0x00, 0x02, 0x01, 0x02, 0x04, 0x04, 0x03, 0x04, 0x07, 0x05, 0x04, 0x04,
-> +	0x00, 0x01, 0x02, 0x77, 0x00, 0x01, 0x02, 0x03, 0x11, 0x04, 0x05, 0x21,
-> +	0x31, 0x06, 0x12, 0x41, 0x51, 0x07, 0x61, 0x71, 0x13, 0x22, 0x32, 0x81,
-> +	0x08, 0x14, 0x42, 0x91, 0xA1, 0xB1, 0xC1, 0x09, 0x23, 0x33, 0x52, 0xF0,
-> +	0x15, 0x62, 0x72, 0xD1, 0x0A, 0x16, 0x24, 0x34, 0xE1, 0x25, 0xF1, 0x17,
-> +	0x18, 0x19, 0x1A, 0x26, 0x27, 0x28, 0x29, 0x2A, 0x35, 0x36, 0x37, 0x38,
-> +	0x39, 0x3A, 0x43, 0x44, 0x45, 0x46, 0x47, 0x48, 0x49, 0x4A, 0x53, 0x54,
-> +	0x55, 0x56, 0x57, 0x58, 0x59, 0x5A, 0x63, 0x64, 0x65, 0x66, 0x67, 0x68,
-> +	0x69, 0x6A, 0x73, 0x74, 0x75, 0x76, 0x77, 0x78, 0x79, 0x7A, 0x82, 0x83,
-> +	0x84, 0x85, 0x86, 0x87, 0x88, 0x89, 0x8A, 0x92, 0x93, 0x94, 0x95, 0x96,
-> +	0x97, 0x98, 0x99, 0x9A, 0xA2, 0xA3, 0xA4, 0xA5, 0xA6, 0xA7, 0xA8, 0xA9,
-> +	0xAA, 0xB2, 0xB3, 0xB4, 0xB5, 0xB6, 0xB7, 0xB8, 0xB9, 0xBA, 0xC2, 0xC3,
-> +	0xC4, 0xC5, 0xC6, 0xC7, 0xC8, 0xC9, 0xCA, 0xD2, 0xD3, 0xD4, 0xD5, 0xD6,
-> +	0xD7, 0xD8, 0xD9, 0xDA, 0xE2, 0xE3, 0xE4, 0xE5, 0xE6, 0xE7, 0xE8, 0xE9,
-> +	0xEA, 0xF2, 0xF3, 0xF4, 0xF5, 0xF6, 0xF7, 0xF8, 0xF9, 0xFA
-> +};
-> +EXPORT_SYMBOL_GPL(v4l2_jpeg_ref_table_chroma_ac_ht);
-> +
->  /**
->   * struct jpeg_stream - JPEG byte stream
->   * @curr: current position in stream
-> diff --git a/include/media/v4l2-jpeg.h b/include/media/v4l2-jpeg.h
-> index 2dba843ce3bd..b65658a02e3c 100644
-> --- a/include/media/v4l2-jpeg.h
-> +++ b/include/media/v4l2-jpeg.h
-> @@ -14,6 +14,30 @@
->  
->  #define V4L2_JPEG_MAX_COMPONENTS	4
->  #define V4L2_JPEG_MAX_TABLES		4
-> +/*
-> + * Prefixes used to generate huffman table class and destination identifiers as
-> + * described below:
-> + *
-> + * V4L2_JPEG_LUM_HT | V4L2_JPEG_DC_HT : Prefix for Luma DC coefficients
-> + *					huffman table
-> + * V4L2_JPEG_LUM_HT | V4L2_JPEG_AC_HT : Prefix for Luma AC coefficients
-> + *					huffman table
-> + * V4L2_JPEG_CHR_HT | V4L2_JPEG_DC_HT : Prefix for Chroma DC coefficients
-> + *					huffman table
-> + * V4L2_JPEG_CHR_HT | V4L2_JPEG_AC_HT : Prefix for Chroma AC coefficients
-> + *					huffman table
-> + */
-> +#define V4L2_JPEG_LUM_HT		0x00
-> +#define V4L2_JPEG_CHR_HT		0x01
-> +#define V4L2_JPEG_DC_HT			0x00
-> +#define V4L2_JPEG_AC_HT			0x10
-> +
-> +/* Length of reference huffman tables as provided in Table K.3 of ITU-T.81 */
-> +#define V4L2_JPEG_REF_HT_AC_LEN		178
-> +#define V4L2_JPEG_REF_HT_DC_LEN		28
-> +
-> +/* Array size for 8x8 block of samples or DCT coefficient */
-> +#define V4L2_JPEG_PIXELS_IN_BLOCK	64
->  
->  /**
->   * struct v4l2_jpeg_reference - reference into the JPEG buffer
-> @@ -154,4 +178,12 @@ int v4l2_jpeg_parse_quantization_tables(void *buf, size_t len, u8 precision,
->  int v4l2_jpeg_parse_huffman_tables(void *buf, size_t len,
->  				   struct v4l2_jpeg_reference *huffman_tables);
->  
-> +extern const u8 v4l2_jpeg_zigzag_scan_index[V4L2_JPEG_PIXELS_IN_BLOCK];
-> +extern const u8 v4l2_jpeg_ref_table_luma_qt[V4L2_JPEG_PIXELS_IN_BLOCK];
-> +extern const u8 v4l2_jpeg_ref_table_chroma_qt[V4L2_JPEG_PIXELS_IN_BLOCK];
-> +extern const u8 v4l2_jpeg_ref_table_luma_dc_ht[V4L2_JPEG_REF_HT_DC_LEN];
-> +extern const u8 v4l2_jpeg_ref_table_luma_ac_ht[V4L2_JPEG_REF_HT_AC_LEN];
-> +extern const u8 v4l2_jpeg_ref_table_chroma_dc_ht[V4L2_JPEG_REF_HT_DC_LEN];
-> +extern const u8 v4l2_jpeg_ref_table_chroma_ac_ht[V4L2_JPEG_REF_HT_AC_LEN];
-> +
->  #endif
-
+Markus
 
 _______________________________________________
 Linux-rockchip mailing list
