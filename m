@@ -4,59 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B7503C27C53
-	for <linux-rockchip@archiver.kernel.org>; Wed, 19 Jun 2024 23:28:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5C878C27C53
+	for <linux-rockchip@archiver.kernel.org>; Thu, 20 Jun 2024 00:38:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=GQdmaHtekbPDXbWRckJyFkhLiBI6GVO328RvhR0Jvqw=; b=mqCctNsprBEYEd
-	c6hM6HRQU4AcWmtQvvg4SbVC98NtztFi0nX2u7lQ0nkBjT3I+2d25CGbkQSgjiTD1TxZ5uttGE1vz
-	d5FFXvqvaKBrd6ek+PFjazVI4D8NKQmsYgMit0u7AKf+3p1wTS1Xu4Tj4XAMATMy9bs+U+SiMU8BE
-	b8ff7t38/qJLu10C5GughDCoUTICrCXCVHfcbz2eBbh3/vELTIJwYc99kPFEghIfAmklQsAE8LIiH
-	Hautpo6ZIL/mtNXgnQdUew/TZ0SJDI659qVncdNBuN54H4vWdOm28yjCMiyYtuTdz99pmWvf0tJDO
-	ZaWP42Q02C4Cw5peUNAA==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
+	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=1894Yu4/sLCGIEwg8sTvkTpjfJmi6+hAuLecgurIVYU=; b=oAad9gAU1sbaq8
+	FQoJYnWHKvZ94UgDPjvSRKUfVhJ9+YS8PBU0t8SOb1rnMYva8lOaLLdmy8gKsLrrGMzFyR80lek98
+	2iOyOyHMiW4cLOTdyuES9vAMoFz/YxG4I7810mT0eiuww4hLycWP0mmuUak9QdtYNyMQE/UQY79Fc
+	S0oCvoPal5HRFCu8N+wLu36++1QXsvuCDIMLSg978HR6E5AmcRmAwzABvBATjNTiaUJSVgvsYBofA
+	ZxlF9nnA8bEHPaKJA5Z6W/1qym+kUuP+UV6et0oKBrcTsyI3YAqBOLn14k2ERmHiXAbaYpEZpgcfR
+	++O8bNnri9lt2xpaH2sw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sK4j7-000000031Or-1hXK;
-	Wed, 19 Jun 2024 23:28:29 +0000
-Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
+	id 1sK5ow-000000039ca-2e79;
+	Thu, 20 Jun 2024 00:38:34 +0000
+Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sK4j5-000000031Oh-3lVl
-	for linux-rockchip@bombadil.infradead.org;
-	Wed, 19 Jun 2024 23:28:27 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=casper.20170209; h=Content-Transfer-Encoding:MIME-Version:
-	Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
-	Content-Description:In-Reply-To:References;
-	bh=4jzmMEOAmQ025hlZkzhGkRe6PcVxO5BnDiCtdinkfNg=; b=QjfVAfdHXjyzyfPTmbakCYgO+X
-	vUTmPaQ9pnab/dP2h7lYhuImVgRD74DeO2pP3Nvb0Hvxk1RR0GtAlJNtVxGdY7R7uJwYD4WE1eTAY
-	2zISJOwyDF7nzXwFOKDw8XbYtQjvyTDz2R0Sd4tuEKI7FO8gxVdFB/Mw6prxP7bIy4CuCK5TQn1Ka
-	MQdxnUDfoNhjMbib5gvl03CBQiMd/O+h9lmXUz9fgMVia+imHWWf3F1dXtZvjiX278cO9nR98gWAc
-	huxCDKk0GHhxUV2vh/erK5vwPRYWH+KE2o/0YoeJUTzpzhrO7RTBIqw94xQoqYlyjKRZueU+0jR53
-	rkeMdMTQ==;
-Received: from sakura.naobsd.org ([160.16.200.221] helo=mail.naobsd.org)
-	by casper.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sK4j0-00000005IpJ-0fuK
-	for linux-rockchip@lists.infradead.org;
-	Wed, 19 Jun 2024 23:28:26 +0000
-Received: from secure.fukaumi.org ([10.0.0.2])
-	by mail.naobsd.org (8.14.4/8.14.4/Debian-4.1ubuntu1.1) with ESMTP id 45JNRgmD026016;
-	Thu, 20 Jun 2024 08:27:43 +0900
-From: FUKAUMI Naoki <naoki@radxa.com>
-To: heiko@sntech.de
-Cc: jonas@kwiboo.se, devicetree@vger.kernel.org,
-        linux-rockchip@lists.infradead.org, FUKAUMI Naoki <naoki@radxa.com>
-Subject: [PATCH] arm64: dts: rockchip: fix mmc aliases for Radxa ZERO 3E/3W
-Date: Thu, 20 Jun 2024 08:27:34 +0900
-Message-ID: <20240619232734.1126-1-naoki@radxa.com>
-X-Mailer: git-send-email 2.43.0
+	id 1sK5or-000000039Zl-2BzX;
+	Thu, 20 Jun 2024 00:38:31 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1718843906;
+	bh=nH8hDgwrgvwMrmw5KJxAlXFHpeaiw/NSzLl5T+P+KN8=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
+	b=mOFf1mybJae9J2R1t/gwEZuTbbh0Vk1+OX1xvomk8PW/LisTxR+tsVbglQoG41obx
+	 zVkShSAQ3mZJS19g39gnNH+Jvk6kkY2B9bYWTVuYGgEtaUr9R4Exk1q9HQe0myIY08
+	 SwFzUBifltbFgVGsWA84HN1N9MWEtmi0oitc+szafT8QmKDGTwGrplcArUt/7CkxG5
+	 2m7ztoXTVFJ2TXwvu3Qypi1gg/Z1GrF1vGu+TOE/Lxd8wUZDXwzHZZtGisCXR5tuRg
+	 hFX9M07JjRFfEE35Ai7i+S11iWXVewgkvImQGbu2KWg5TpKdA1155dvvsAIGr0F3mt
+	 ETdNEn+0RHiyA==
+Received: from localhost (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: cristicc)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 37FE037821A5;
+	Thu, 20 Jun 2024 00:38:26 +0000 (UTC)
+From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+Date: Thu, 20 Jun 2024 03:36:22 +0300
+Subject: [PATCH v2 1/4] phy: phy-rockchip-samsung-hdptx: Explicitly include
+ pm_runtime.h
 MIME-Version: 1.0
+Message-Id: <20240620-rk3588-hdmiphy-clkprov-v2-1-6a2d2164e508@collabora.com>
+References: <20240620-rk3588-hdmiphy-clkprov-v2-0-6a2d2164e508@collabora.com>
+In-Reply-To: <20240620-rk3588-hdmiphy-clkprov-v2-0-6a2d2164e508@collabora.com>
+To: Vinod Koul <vkoul@kernel.org>, 
+ Kishon Vijay Abraham I <kishon@kernel.org>, 
+ Heiko Stuebner <heiko@sntech.de>, Algea Cao <algea.cao@rock-chips.com>, 
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>
+Cc: kernel@collabora.com, linux-phy@lists.infradead.org, 
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+ linux-kernel@vger.kernel.org, devicetree@vger.kernel.org
+X-Mailer: b4 0.14.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240620_002822_738571_16545CF3 
-X-CRM114-Status: UNSURE (   8.53  )
+X-CRM114-CacheID: sfid-20240619_173829_820646_C53BF123 
+X-CRM114-Status: UNSURE (   8.35  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -74,46 +80,34 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-align with other Radxa products.
+Driver makes use of helpers from pm_runtime.h, but relies on the header
+file being implicitly included.
 
-- mmc0 is eMMC
-- mmc1 is microSD
+Explicitly pull the header in to avoid potential build failures in some
+configurations.
 
-Fixes: 1a5c8d307c83 ("arm64: dts: rockchip: Add Radxa ZERO 3W/3E")
-Signed-off-by: FUKAUMI Naoki <naoki@radxa.com>
+Fixes: 553be2830c5f ("phy: rockchip: Add Samsung HDMI/eDP Combo PHY driver")
+Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 ---
- arch/arm64/boot/dts/rockchip/rk3566-radxa-zero-3.dtsi | 2 +-
- arch/arm64/boot/dts/rockchip/rk3566-radxa-zero-3w.dts | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
+ drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3566-radxa-zero-3.dtsi b/arch/arm64/boot/dts/rockchip/rk3566-radxa-zero-3.dtsi
-index 623d5939d194..85d76d535338 100644
---- a/arch/arm64/boot/dts/rockchip/rk3566-radxa-zero-3.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3566-radxa-zero-3.dtsi
-@@ -7,7 +7,7 @@
- 
- / {
- 	aliases {
--		mmc0 = &sdmmc0;
-+		mmc1 = &sdmmc0;
- 	};
- 
- 	chosen {
-diff --git a/arch/arm64/boot/dts/rockchip/rk3566-radxa-zero-3w.dts b/arch/arm64/boot/dts/rockchip/rk3566-radxa-zero-3w.dts
-index 9bf4f464915f..188147c4b78b 100644
---- a/arch/arm64/boot/dts/rockchip/rk3566-radxa-zero-3w.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3566-radxa-zero-3w.dts
-@@ -9,7 +9,7 @@ / {
- 	compatible = "radxa,zero-3w", "rockchip,rk3566";
- 
- 	aliases {
--		mmc1 = &sdhci;
-+		mmc0 = &sdhci;
- 		mmc2 = &sdmmc1;
- 	};
- 
+diff --git a/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c b/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
+index 946c01210ac8..3bd9b62b23dc 100644
+--- a/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
++++ b/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
+@@ -15,6 +15,7 @@
+ #include <linux/of_platform.h>
+ #include <linux/phy/phy.h>
+ #include <linux/platform_device.h>
++#include <linux/pm_runtime.h>
+ #include <linux/rational.h>
+ #include <linux/regmap.h>
+ #include <linux/reset.h>
+
 -- 
-2.43.0
+2.45.2
 
 
 _______________________________________________
