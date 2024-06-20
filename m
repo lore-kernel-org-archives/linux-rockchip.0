@@ -4,64 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B0790C27C79
-	for <linux-rockchip@archiver.kernel.org>; Thu, 20 Jun 2024 06:23:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AB1B7C2BA18
+	for <linux-rockchip@archiver.kernel.org>; Thu, 20 Jun 2024 06:33:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=5DUSRom18fKorNfM7nhPIx2utYM+omn4Bh4sCKUMt94=; b=lu2NOmpQwbFNLk
-	WQU49am7VD1KHLg5Ue5gvWui3Z25U3V8EebnD7lDo30ZMPPT3IMV8YmRC9z/+qes97kWiPOT3SVgl
-	nhyZ11WTa6rx2zAO8+l3e2Mo7q0aKJeTcKFpbWnSZmy6WxCsOigAAd+Uv6uSGAusXyd+evaC1Yd65
-	y2/OCf8kJwpXr5dhUugpiwJ08eo9d7HYbmXsrBg9ppDkcLoYbyepHOaHGnwhVBWmOiHJtEMA0D3kM
-	y987iZM8y2FeuBMrVgFLPR1Og/PBK+k5U1UKyyHczXqhp15XBIKMGdw4/VGc1nWzcSgvcITjb6kEV
-	V0BIdFmk/TdsQDer0MxA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=doPYTIsIH5mk76CUAnYeoJgb6GmLUc8PeReZuaQyCn4=; b=ceYc/LQ/HBd9Ay
+	1x9U5n1H5odAZ3dH18Pp9JgV7assYMQVjPMqwZtdaTMMbMGYHzCmW/KZeuaUZu0211KUTF9xeXQ/r
+	XxMZtAT/s7XEAL8HRsXQbDDAei/M0Y4qPXHbof9K8SZA4HGDhNGW2LFiAw06k2M+fTLVzFv+QNYHl
+	MjnSji5wnLOBgQ6LxyS/1Pa+z+2pS2xOOGqFfRBXoQ+x4caKDBXe9RV06GTXry/4mHL+QycP7sua5
+	Kcvvc9Z9KsWwPLUfI0H/g2p8KYVgIcYXmL1O6JQfaJLwXma4SRXtyvGOKpvkzwRJ+7vK17Q9D2wmz
+	A/iI8Y8FNXWKJsCiTa9w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sKBCP-00000003mNg-0zeN;
-	Thu, 20 Jun 2024 06:23:09 +0000
-Received: from vps.xff.cz ([195.181.215.36])
+	id 1sKBMQ-00000003oX0-1SDm;
+	Thu, 20 Jun 2024 06:33:30 +0000
+Received: from mx1.tq-group.com ([93.104.207.81])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sKBCJ-00000003mMa-2hUW;
-	Thu, 20 Jun 2024 06:23:06 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=xff.cz; s=mail;
-	t=1718864576; bh=DM47QfH0OnPYYsBaUwpgRf2+2jamsLzfAMfcSGpafHw=;
-	h=Date:From:To:Cc:Subject:X-My-GPG-KeyId:References:From;
-	b=dE+amQ/jE6lb3989A+35c/U3LqF132QheJhXd10NoItHaxRBfUhoeGHT0lblb9E2T
-	 pA5e9M1yj19xOBnJ3b0OjVfVBRqNsfy6BPeKzCB0jQ3gxHnWIqmBV/n4hCsrfuGVrv
-	 miTwGm2CzbESi2Rbz/zySAaZbccXaiQedMnHUqf0=
-Date: Thu, 20 Jun 2024 08:22:54 +0200
-From: =?utf-8?Q?Ond=C5=99ej?= Jirman <megi@xff.cz>
-To: Jacobe Zang <jacobe.zang@wesion.com>
-Cc: arend.vanspriel@broadcom.com, kvalo@kernel.org, duoming@zju.edu.cn, 
-	bhelgaas@google.com, minipli@grsecurity.net, linux-wireless@vger.kernel.org, 
-	brcm80211@lists.linux.dev, brcm80211-dev-list.pdl@broadcom.com, robh@kernel.org, 
-	krzk+dt@kernel.org, conor+dt@kernel.org, heiko@sntech.de, nick@khadas.com, 
-	efectn@protonmail.com, jagan@edgeble.ai, dsimic@manjaro.org, devicetree@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v1 2/3] net: wireless: brcmfmac: Add optional 32k clock
- enable support
-Message-ID: <4ynke3hcrkzowv63u43b55zidr55gzlnca6vvwrndvvpb5r57y@iberusehts5q>
-Mail-Followup-To: =?utf-8?Q?Ond=C5=99ej?= Jirman <megi@xff.cz>, 
-	Jacobe Zang <jacobe.zang@wesion.com>, arend.vanspriel@broadcom.com, kvalo@kernel.org, 
-	duoming@zju.edu.cn, bhelgaas@google.com, minipli@grsecurity.net, 
-	linux-wireless@vger.kernel.org, brcm80211@lists.linux.dev, brcm80211-dev-list.pdl@broadcom.com, 
-	robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org, heiko@sntech.de, 
-	nick@khadas.com, efectn@protonmail.com, jagan@edgeble.ai, dsimic@manjaro.org, 
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-X-My-GPG-KeyId: EBFBDDE11FB918D44D1F56C1F9F0A873BE9777ED
- <https://xff.cz/key.txt>
-References: <20240620020015.4021696-1-jacobe.zang@wesion.com>
- <20240620020015.4021696-3-jacobe.zang@wesion.com>
+	id 1sKBMN-00000003oUw-0w37
+	for linux-rockchip@lists.infradead.org;
+	Thu, 20 Jun 2024 06:33:29 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+  d=tq-group.com; i=@tq-group.com; q=dns/txt; s=key1;
+  t=1718865207; x=1750401207;
+  h=from:to:cc:subject:date:message-id:mime-version:
+   content-transfer-encoding;
+  bh=l6H8FP2mpqCvryZ//MA7LA1mh1+A8ayGdScvIrjtFiM=;
+  b=fqO3Djv11Bxlsi/wQr2EWjeqN3NLJsruU7AJmrpNmnTLCoHVLSq28mK4
+   3StlZKqepmhFvx+RnzwiVy9ODXSwacBTwQqY9Zx/2JCJez8Nd2OKWaHoZ
+   VECqKFplisPb2pIPsr8Ely6W1wGCx+QaIQFbY7p+IpA07i1hvgPqyoNvM
+   ICPOUtxr5OagJdhrwNjx+sFBoNmwzzre5f5C/al16Srq0WsLPUyiojlGW
+   OWfni7flNUj8RjYeka9EeupUQv7ldbMVV6caxPzcJlNANdBDBXlDr+ja7
+   DBlVf2b0tcj0yVyPvOGs6xKQNQKA1Ks1I+8MS3fRgP/HU1SkKt3PXvrH0
+   w==;
+X-CSE-ConnectionGUID: dAG106jpTombTYn7mPadyw==
+X-CSE-MsgGUID: dcILZs0LSwamU1xqybPwPw==
+X-IronPort-AV: E=Sophos;i="6.08,251,1712613600"; 
+   d="scan'208";a="37488758"
+Received: from vmailcow01.tq-net.de ([10.150.86.48])
+  by mx1.tq-group.com with ESMTP; 20 Jun 2024 08:33:23 +0200
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id CF8CE1668EE;
+	Thu, 20 Jun 2024 08:33:17 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ew.tq-group.com;
+	s=dkim; t=1718865199; h=from:subject:date:message-id:to:cc:mime-version:
+	 content-transfer-encoding; bh=l6H8FP2mpqCvryZ//MA7LA1mh1+A8ayGdScvIrjtFiM=;
+	b=YCnYn+NbBgTowwUkiNqIgjt9GDRqWovZyuWTNKRVPlJCienrXqB2B6eD2WGZ9Yma2j4OXz
+	ajT7UfgCst7aFoZ7xMo/U4c8vPGf2NO3PTobZs5We2nebFeVbIOHBaGyiUBRYNQ49XhI0N
+	3geVpD+Z8qsY2OdFCo76JaQUIon8fC1UK5WD9ODfddKQXDYYKnH587RcZpH9ifLH0mOCBS
+	/5gk2anX8cdOwWB58AIxFJIpf2Jw7brFu9SKMCerShCvOLF1SyY7qPCJVQLWVf1MuxX7Dz
+	j4jG5TsA9qqQdPJUN9h0gRORhILf074CyBYPpglQPRD941TLkCACKp36f2xaqA==
+From: Alexander Stein <alexander.stein@ew.tq-group.com>
+To: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>
+Cc: Alexander Stein <alexander.stein@ew.tq-group.com>,
+	linux-media@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH 1/1] media: verisilicon: Move rockchip hardware drivers to the corresponding option
+Date: Thu, 20 Jun 2024 08:33:13 +0200
+Message-Id: <20240620063313.2309767-1-alexander.stein@ew.tq-group.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20240620020015.4021696-3-jacobe.zang@wesion.com>
+X-Last-TLS-Session-Version: TLSv1.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240619_232304_288929_04C52891 
-X-CRM114-Status: GOOD (  15.28  )
+X-CRM114-CacheID: sfid-20240619_233327_735388_259DFDA0 
+X-CRM114-Status: UNSURE (   8.02  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,67 +90,51 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi,
+There is no need to compile the rockchip specific drivers if
+CONFIG_VIDEO_HANTRO_ROCKCHIP is not set.
+All driver functions are only referenced by rockchip_vpu_hw.c which is
+already under this option.
 
-On Thu, Jun 20, 2024 at 10:00:14AM GMT, Jacobe Zang wrote:
-> WiFi modules often require 32kHz clock to function. Add support to
-> enable the clock to PCIe driver.
+Signed-off-by: Alexander Stein <alexander.stein@ew.tq-group.com>
+---
+ drivers/media/platform/verisilicon/Makefile | 14 +++++++-------
+ 1 file changed, 7 insertions(+), 7 deletions(-)
 
-There's also this approach https://lore.kernel.org/lkml/20240117160748.37682-1-brgl@bgdev.pl/
+diff --git a/drivers/media/platform/verisilicon/Makefile b/drivers/media/platform/verisilicon/Makefile
+index eb38a1833b02..f6f019d04ff0 100644
+--- a/drivers/media/platform/verisilicon/Makefile
++++ b/drivers/media/platform/verisilicon/Makefile
+@@ -14,13 +14,6 @@ hantro-vpu-y += \
+ 		hantro_g2.o \
+ 		hantro_g2_hevc_dec.o \
+ 		hantro_g2_vp9_dec.o \
+-		rockchip_vpu2_hw_jpeg_enc.o \
+-		rockchip_vpu2_hw_h264_dec.o \
+-		rockchip_vpu2_hw_mpeg2_dec.o \
+-		rockchip_vpu2_hw_vp8_dec.o \
+-		rockchip_vpu981_hw_av1_dec.o \
+-		rockchip_av1_filmgrain.o \
+-		rockchip_av1_entropymode.o \
+ 		hantro_jpeg.o \
+ 		hantro_h264.o \
+ 		hantro_hevc.o \
+@@ -35,6 +28,13 @@ hantro-vpu-$(CONFIG_VIDEO_HANTRO_SAMA5D4) += \
+ 		sama5d4_vdec_hw.o
+ 
+ hantro-vpu-$(CONFIG_VIDEO_HANTRO_ROCKCHIP) += \
++		rockchip_vpu2_hw_jpeg_enc.o \
++		rockchip_vpu2_hw_h264_dec.o \
++		rockchip_vpu2_hw_mpeg2_dec.o \
++		rockchip_vpu2_hw_vp8_dec.o \
++		rockchip_vpu981_hw_av1_dec.o \
++		rockchip_av1_filmgrain.o \
++		rockchip_av1_entropymode.o \
+ 		rockchip_vpu_hw.o
+ 
+ hantro-vpu-$(CONFIG_VIDEO_HANTRO_SUNXI) += \
+-- 
+2.34.1
 
-> Signed-off-by: Jacobe Zang <jacobe.zang@wesion.com>
-> ---
->  .../net/wireless/broadcom/brcm80211/brcmfmac/pcie.c    | 10 ++++++++++
->  1 file changed, 10 insertions(+)
-> 
-> diff --git a/drivers/net/wireless/broadcom/brcm80211/brcmfmac/pcie.c b/drivers/net/wireless/broadcom/brcm80211/brcmfmac/pcie.c
-> index 06698a714b523..f241e1757d7e3 100644
-> --- a/drivers/net/wireless/broadcom/brcm80211/brcmfmac/pcie.c
-> +++ b/drivers/net/wireless/broadcom/brcm80211/brcmfmac/pcie.c
-> @@ -3,6 +3,7 @@
->   * Copyright (c) 2014 Broadcom Corporation
->   */
->  
-> +#include <linux/clk.h>
->  #include <linux/kernel.h>
->  #include <linux/module.h>
->  #include <linux/firmware.h>
-> @@ -2411,6 +2412,7 @@ brcmf_pcie_probe(struct pci_dev *pdev, const struct pci_device_id *id)
->  	struct brcmf_pciedev *pcie_bus_dev;
->  	struct brcmf_core *core;
->  	struct brcmf_bus *bus;
-> +	struct clk *clk;
->  
->  	if (!id) {
->  		id = pci_match_id(brcmf_pcie_devid_table, pdev);
-> @@ -2422,6 +2424,14 @@ brcmf_pcie_probe(struct pci_dev *pdev, const struct pci_device_id *id)
->  
->  	brcmf_dbg(PCIE, "Enter %x:%x\n", pdev->vendor, pdev->device);
->  
-> +	clk = devm_clk_get_optional_enabled(&pdev->dev, "32k");
-
-If you do this, you need to update the DT bindings. Current ones don't have 32k
-clock.
-
-> +	if (IS_ERR(clk))
-> +		return PTR_ERR(clk);
-> +	if (clk) {
-> +		dev_info(&pdev->dev, "enabling 32kHz clock\n");
-
-The driver has its own debug logging infrastructure (brcmf_dbg).
-
-Kind regards,
-	o.
-
-> +		clk_set_rate(clk, 32768);
-> +	}
-> +
->  	ret = -ENOMEM;
->  	devinfo = kzalloc(sizeof(*devinfo), GFP_KERNEL);
->  	if (devinfo == NULL)
-> -- 
-> 2.34.1
-> 
 
 _______________________________________________
 Linux-rockchip mailing list
