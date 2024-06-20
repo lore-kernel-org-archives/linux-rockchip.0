@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5C878C27C53
-	for <linux-rockchip@archiver.kernel.org>; Thu, 20 Jun 2024 00:38:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8CD9DC27C53
+	for <linux-rockchip@archiver.kernel.org>; Thu, 20 Jun 2024 00:38:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=1894Yu4/sLCGIEwg8sTvkTpjfJmi6+hAuLecgurIVYU=; b=oAad9gAU1sbaq8
-	FQoJYnWHKvZ94UgDPjvSRKUfVhJ9+YS8PBU0t8SOb1rnMYva8lOaLLdmy8gKsLrrGMzFyR80lek98
-	2iOyOyHMiW4cLOTdyuES9vAMoFz/YxG4I7810mT0eiuww4hLycWP0mmuUak9QdtYNyMQE/UQY79Fc
-	S0oCvoPal5HRFCu8N+wLu36++1QXsvuCDIMLSg978HR6E5AmcRmAwzABvBATjNTiaUJSVgvsYBofA
-	ZxlF9nnA8bEHPaKJA5Z6W/1qym+kUuP+UV6et0oKBrcTsyI3YAqBOLn14k2ERmHiXAbaYpEZpgcfR
-	++O8bNnri9lt2xpaH2sw==;
+	List-Owner; bh=GHBw2yvsaIuuXBTQuD6ys24jgPFP5nXv3Bq8vGFzAqo=; b=MKnc8f1O8BSoPH
+	w34QMBPvwiEayH4Me8IOGxoyx4Y3rNKxecygyRZgUWChgYdNUI3w/FVK1BX3PWnQusg5QtsLNKTGv
+	Ntp4yFG5mDbRSzKj1Y55NkxRdEMVp3LXiUqYPsM0S12GuuC/LZp4MhJwtjLvJODwKaGW94sHsMd6f
+	yt5GnStNarlvCgoRWe05co+RRn1UQ8zzoYud1x3C05vIkNFkyygpubMow9acCkOXy5CDsLUawGz1c
+	yBSvWyVaFFfeWKZgaH4foIIrBcMpBnISSRqsnNLggD02yshY1Cw9+okSt2w5ln9163cX2q2tv4QxX
+	m9RxNP2iksdfeN0tfBbQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sK5ow-000000039ca-2e79;
-	Thu, 20 Jun 2024 00:38:34 +0000
-Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
+	id 1sK5p9-000000039k8-1OAl;
+	Thu, 20 Jun 2024 00:38:47 +0000
+Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sK5or-000000039Zl-2BzX;
-	Thu, 20 Jun 2024 00:38:31 +0000
+	id 1sK5ou-000000039Zz-16qb;
+	Thu, 20 Jun 2024 00:38:33 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1718843906;
-	bh=nH8hDgwrgvwMrmw5KJxAlXFHpeaiw/NSzLl5T+P+KN8=;
+	s=mail; t=1718843909;
+	bh=DUumqL7rzqsTDAUT3dMeqFEijCCpD7CQ16OMA3dYjVs=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=mOFf1mybJae9J2R1t/gwEZuTbbh0Vk1+OX1xvomk8PW/LisTxR+tsVbglQoG41obx
-	 zVkShSAQ3mZJS19g39gnNH+Jvk6kkY2B9bYWTVuYGgEtaUr9R4Exk1q9HQe0myIY08
-	 SwFzUBifltbFgVGsWA84HN1N9MWEtmi0oitc+szafT8QmKDGTwGrplcArUt/7CkxG5
-	 2m7ztoXTVFJ2TXwvu3Qypi1gg/Z1GrF1vGu+TOE/Lxd8wUZDXwzHZZtGisCXR5tuRg
-	 hFX9M07JjRFfEE35Ai7i+S11iWXVewgkvImQGbu2KWg5TpKdA1155dvvsAIGr0F3mt
-	 ETdNEn+0RHiyA==
+	b=XSsDeqRunlR93PFTbpTPXm/iozbO4yoGjEuufg/HJyQOjNp27pQOp9uM0wdaDCfG2
+	 xWOpP0SvDfwaVRqDFuqh9wG8kW+M7XGK/DVDGRYrkMZ2iJPkiSKvCMLoOSlBLrlyrq
+	 GKVfkZv/cqoN2PprrygWT8yRfcBBUzdDxGtK2jate1UvC98Tzf1kgDlpLzHGlUHYih
+	 cAwwFDj6n8L5RLjfOTJPhW1iD7R4oHde5CCGSjJnyDZK9whRDF+e9gZd9S6LxVkc0Y
+	 8xibo3/2u3tXtURYBnpQN2IBGI88+q2mwtQroipm/sP9thM9vg9QWM37eqEbrWd86x
+	 KqtnUA+j1TJbA==
 Received: from localhost (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: cristicc)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 37FE037821A5;
-	Thu, 20 Jun 2024 00:38:26 +0000 (UTC)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id B912037821B2;
+	Thu, 20 Jun 2024 00:38:28 +0000 (UTC)
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Date: Thu, 20 Jun 2024 03:36:22 +0300
-Subject: [PATCH v2 1/4] phy: phy-rockchip-samsung-hdptx: Explicitly include
- pm_runtime.h
+Date: Thu, 20 Jun 2024 03:36:24 +0300
+Subject: [PATCH v2 3/4] dt-bindings: phy: rockchip,rk3588-hdptx-phy: Add
+ #clock-cells
 MIME-Version: 1.0
-Message-Id: <20240620-rk3588-hdmiphy-clkprov-v2-1-6a2d2164e508@collabora.com>
+Message-Id: <20240620-rk3588-hdmiphy-clkprov-v2-3-6a2d2164e508@collabora.com>
 References: <20240620-rk3588-hdmiphy-clkprov-v2-0-6a2d2164e508@collabora.com>
 In-Reply-To: <20240620-rk3588-hdmiphy-clkprov-v2-0-6a2d2164e508@collabora.com>
 To: Vinod Koul <vkoul@kernel.org>, 
@@ -58,11 +58,12 @@ To: Vinod Koul <vkoul@kernel.org>,
  Conor Dooley <conor+dt@kernel.org>
 Cc: kernel@collabora.com, linux-phy@lists.infradead.org, 
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
- linux-kernel@vger.kernel.org, devicetree@vger.kernel.org
+ linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, 
+ Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 X-Mailer: b4 0.14.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240619_173829_820646_C53BF123 
-X-CRM114-Status: UNSURE (   8.35  )
+X-CRM114-CacheID: sfid-20240619_173832_616331_A1F7EFC2 
+X-CRM114-Status: UNSURE (   7.23  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -80,31 +81,29 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Driver makes use of helpers from pm_runtime.h, but relies on the header
-file being implicitly included.
+The HDMI PHY can be used as a clock provider on RK3588 SoC, hence add
+the necessary '#clock-cells' property.
 
-Explicitly pull the header in to avoid potential build failures in some
-configurations.
-
-Fixes: 553be2830c5f ("phy: rockchip: Add Samsung HDMI/eDP Combo PHY driver")
-Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 ---
- drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c | 1 +
- 1 file changed, 1 insertion(+)
+ Documentation/devicetree/bindings/phy/rockchip,rk3588-hdptx-phy.yaml | 3 +++
+ 1 file changed, 3 insertions(+)
 
-diff --git a/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c b/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
-index 946c01210ac8..3bd9b62b23dc 100644
---- a/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
-+++ b/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
-@@ -15,6 +15,7 @@
- #include <linux/of_platform.h>
- #include <linux/phy/phy.h>
- #include <linux/platform_device.h>
-+#include <linux/pm_runtime.h>
- #include <linux/rational.h>
- #include <linux/regmap.h>
- #include <linux/reset.h>
+diff --git a/Documentation/devicetree/bindings/phy/rockchip,rk3588-hdptx-phy.yaml b/Documentation/devicetree/bindings/phy/rockchip,rk3588-hdptx-phy.yaml
+index 54e822c715f3..84fe59dbcf48 100644
+--- a/Documentation/devicetree/bindings/phy/rockchip,rk3588-hdptx-phy.yaml
++++ b/Documentation/devicetree/bindings/phy/rockchip,rk3588-hdptx-phy.yaml
+@@ -27,6 +27,9 @@ properties:
+       - const: ref
+       - const: apb
+ 
++  "#clock-cells":
++    const: 0
++
+   "#phy-cells":
+     const: 0
+ 
 
 -- 
 2.45.2
