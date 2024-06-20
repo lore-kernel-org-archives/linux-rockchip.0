@@ -4,81 +4,146 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7CD2FC2BA1A
-	for <linux-rockchip@archiver.kernel.org>; Thu, 20 Jun 2024 01:33:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 67601C27C53
+	for <linux-rockchip@archiver.kernel.org>; Thu, 20 Jun 2024 01:57:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To
-	:From:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=npFCNqwY68QUBLCNb6wsb/k12qJ4NsARvfGuvaKlAws=; b=sej84qALCQgDYs
-	qoNG3MqCc+Cm0qTlt6jkwCXPzMUlAc2c/kkJ1cIYOkzBc5gJfGJWT3QWhMpleCWFTT+1uDF1LPy5O
-	1gcNPvhd9rbyUXbrOhm71Wfh4xO4/aPKZDl9YxyKxBJSEDOOQGYkBQ0wlEUlQeWc9X3yrfCsR1zZn
-	ioRuiK+uNJ+l8TaqzoDreoluhZ3i9T2IwE8WwEjZLLKxWq8FVD25yCmJf+U5I1tbVMehj/dQYSfNw
-	xWeLrYJlQDbhfgjKrbNhe4I9jXqn18hhuAEKrplCeKf8q+xdqrxV8kdEIpcVPHVlOJYib8PCsgGFN
-	6agE5B9oWe6pOyZuqw9Q==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=ykdtNN2eSvV+gaTOhcd4ymFWl78qglOCJ5oqhAO9qoE=; b=rAdGdTk3DBVZdo
+	4muP+kAt6E7Ve64EkszRNrByTlJ2xpLHOnr82kwj1kbT7RzipPBrXiy5avXwAME9q23nwPCkbNye7
+	GJNs+FFEie5KnmHBf/mmhC3TrCt87LTotjA/348hev5DfXcs3XK22HEyflt44g/y++nJUp7oiFay0
+	6cHWegDlmVEFSknJTttRFTcTg4j5D7UStfoxYhOy7N2wCK9Am7fE3EXVhCU2LOgQaRQHKXFrLiT5u
+	ae1qx1ajXssiKgU4Vf3Qdc3g8X3Q/QxhIZRgKUCLLSt+fUwBgZI+zSGtPt44hsdrRFE40igg3GBWh
+	ip2S3GWAKM/T8+RamWhA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sK6gT-00000003GWD-1LPu;
-	Thu, 20 Jun 2024 01:33:53 +0000
-Received: from mail-qt1-x833.google.com ([2607:f8b0:4864:20::833])
+	id 1sK73d-00000003ImL-1cap;
+	Thu, 20 Jun 2024 01:57:49 +0000
+Received: from mail-tyzapc01on20700.outbound.protection.outlook.com ([2a01:111:f403:2011::700] helo=APC01-TYZ-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sK6gP-00000003GVZ-0uOT;
-	Thu, 20 Jun 2024 01:33:50 +0000
-Received: by mail-qt1-x833.google.com with SMTP id d75a77b69052e-4415e623653so11121771cf.1;
-        Wed, 19 Jun 2024 18:33:48 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1718847227; x=1719452027; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:to
-         :from:from:to:cc:subject:date:message-id:reply-to;
-        bh=Q5HikRv6kiIPMm4QeUn8QwCXDOdRpGxbqfkwLthijeI=;
-        b=RXI4QOcbVoE8KSVbFA2JOSKfvxhtkKtyTbzvlT8KnwLYAHjyGjgvPHt1gqOsri6vQH
-         Pfn0vxYBmJqy0Jt02xhdqzMMUpCsVI2Mk9UN2WnecRuQm/E3JmSdED3WDIxC1K5JjfKJ
-         lk9VuP+oniD7300ctC1uV2kZ8HhbZrXo3qg6OvHiXAWS/HF54lWHAaGdV/E2gg2ZZm9C
-         9MFCJCxlP8naHjfWvbzkoxyLnK7ifF4Ksd4xt/l6+UHSyINN/dmPshl6lbKN2MwwUKY6
-         tVbcrRvX/WiMTKH76UjaZj2AUa5Alf8NEDz0iBR+PrrXIx4XGQ715X0YIBWZ12/32mgV
-         KqdA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1718847227; x=1719452027;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:to
-         :from:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=Q5HikRv6kiIPMm4QeUn8QwCXDOdRpGxbqfkwLthijeI=;
-        b=ZYnHSq9kjYVUzdWXww93V5Ak53dVX4MIj2cWdlGuuABb7QTItqodw4VWhNdjkcNtqB
-         titRqbne5+ibT9ROhp9fmjZlBwr6HHsR/hvQYfJo+t41met7P+9grn+YV0Z0HXgv22nd
-         NOBC+LTlDKSMcqdwJFBoSsRrCuBtKnmNLNTh751t7xX58A5qrjg5I5uWFRvVgNxi6E1C
-         zTf1Au9qchQXgnDAsTlUdv50spncRCXJMlKxXvloO2tN5eQ7xnIQNUMM3H1AHwDgroTg
-         e7klvRC2m7c55oaIxDMjNpil7sLAXlHznZErvtnJcfcD0v9XHdXWo1UZC7OSuK5JYqcW
-         kLSg==
-X-Forwarded-Encrypted: i=1; AJvYcCX3xm5Tog2Uo62rZaALKA+Gm9gBNeB6MxWNPJ6Sfq7HkOietZLm97w+c4zdkvQXxFUm7R8NcArMtf1fpCuJR5KT4FeLkDpi0MR4Pngd+rz/KU3Ue3cmwAVb6I03zqHEvhkhw0hqP52uJxhyJ+fIHHUJlNNZgIBaUAA=
-X-Gm-Message-State: AOJu0YwlgR2PKxaDPeIfVWvxqTzd953G6Ke0Ri5gZj5KRZT87hQPPfxZ
-	ywfTbzJG/pPCDePymbtTQKhxzIFMQlF7cvtfYDWTxbyWdD1Cbnts
-X-Google-Smtp-Source: AGHT+IEN53ttccCe1IOgM4GHOIP/75gthbOYHPruIhVGqJeLAJFFAeSgQqBm0F4DE7g+E2ACCcWemw==
-X-Received: by 2002:a0c:eace:0:b0:6af:7b2e:1868 with SMTP id 6a1803df08f44-6b501a07c22mr84110066d6.18.1718847226902;
-        Wed, 19 Jun 2024 18:33:46 -0700 (PDT)
-Received: from localhost.localdomain (pppoe-209-91-167-254.vianet.ca. [209.91.167.254])
-        by smtp.gmail.com with ESMTPSA id 6a1803df08f44-6b2a5bf2546sm83012256d6.14.2024.06.19.18.33.45
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 19 Jun 2024 18:33:46 -0700 (PDT)
-From: Trevor Woerner <twoerner@gmail.com>
-To: linux-kernel@vger.kernel.org,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Jonas Karlman <jonas@kwiboo.se>,
-	devicetree@vger.kernel.org (open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS),
-	linux-arm-kernel@lists.infradead.org (moderated list:ARM/Rockchip SoC support),
-	linux-rockchip@lists.infradead.org (open list:ARM/Rockchip SoC support)
-Subject: [PATCH] arm64: dts: rockchip: add gpio-line-names to radxa-zero-3
-Date: Wed, 19 Jun 2024 21:32:49 -0400
-Message-ID: <20240620013301.33653-1-twoerner@gmail.com>
-X-Mailer: git-send-email 2.44.0.501.g19981daefd7c
+	id 1sK73X-00000003Ik0-13EN;
+	Thu, 20 Jun 2024 01:57:44 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=mtyUvSH+KGXuGHxhUxbrgXTRVa+irRwQXuDxjccQvefeXEstIb2f/Jd87P6tEouqSOExuXUttJQumK1/IwPyjPYRuAhxncxxqDR7MlqZxoO3dUa23j/D+9F48K/d7u+Z0agQmLj9qCwtarkv2Ya94vqvuI4Dea51wE5LAc1DhFAY/NkV8TaAA1zAqjYKs+UJSfUusuVVSah7wZCJdbUB3ZzkhokUDzCHzchSKDova+vpCJlk8WMYrsCbDuarMUzaUojrSJG//yklvfE7TQcjirwfUD+CCYHtAqy0e7mcvHXGm/2GAykYPZea9DwQrbj5DK6Rrr/ilW8s7Fd4HAb49w==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=oZ0PjwTt+XVTAG30Lrlbaz2psNI9OBOx0/bFuNlSJpY=;
+ b=hgdrRxxWHFkB1BnDF2bzt7DiGS45m1KC8bzXHkq3xXOxhaW+RxJDDJ0F2Cwv/fQYjZd7h2xrtY3GwKFrxBzu2wVtvW8VJefrJWj42MD5s1o8hJDNcwzrYwgV3/DsZrZeTPhRvw4KEnEhpKDljDW25p6uL0FxQJGlqtloNDWQoFdBHTYJSR/oe7u6f/qfGAvNe2qUWHj3f1tlmgx1Lh9xyB2udv0SLXzpM0wzQfJIQoLvvfX05cO/ZXmM9NXuenQ+44eoH9Cdlw6rARtQ+JlroNHnXtmHcpq2bj7pKSjjXH/gM/7XGkSHOmyDhfKbOKpOBOui98zEHoVB4fNH40Wq5g==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=wesion.com; dmarc=pass action=none header.from=wesion.com;
+ dkim=pass header.d=wesion.com; arc=none
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=wesion.com;
+Received: from TYZPR03MB7001.apcprd03.prod.outlook.com (2603:1096:400:26a::14)
+ by SEYPR03MB8078.apcprd03.prod.outlook.com (2603:1096:101:16b::14) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7677.31; Thu, 20 Jun
+ 2024 01:57:28 +0000
+Received: from TYZPR03MB7001.apcprd03.prod.outlook.com
+ ([fe80::78dd:5e68:1a9c:36c0]) by TYZPR03MB7001.apcprd03.prod.outlook.com
+ ([fe80::78dd:5e68:1a9c:36c0%6]) with mapi id 15.20.7677.029; Thu, 20 Jun 2024
+ 01:57:28 +0000
+From: Jacobe Zang <jacobe.zang@wesion.com>
+To: robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
+	heiko@sntech.de
+Cc: nick@khadas.com,
+	efectn@protonmail.com,
+	jagan@edgeble.ai,
+	dsimic@manjaro.org,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Jacobe Zang <jacobe.zang@wesion.com>
+Subject: [PATCH v3 1/2] arm64: dts: rockchip: Add USB-C to Khadas Edge 2
+Date: Thu, 20 Jun 2024 09:45:35 +0800
+Message-Id: <20240620014536.4019524-2-jacobe.zang@wesion.com>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20240620014536.4019524-1-jacobe.zang@wesion.com>
+References: <20240620014536.4019524-1-jacobe.zang@wesion.com>
+X-ClientProxiedBy: SI1PR02CA0052.apcprd02.prod.outlook.com
+ (2603:1096:4:1f5::20) To TYZPR03MB7001.apcprd03.prod.outlook.com
+ (2603:1096:400:26a::14)
 MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: TYZPR03MB7001:EE_|SEYPR03MB8078:EE_
+X-MS-Office365-Filtering-Correlation-Id: 665cc770-1ec7-40df-7cff-08dc90cc56ba
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230037|1800799021|366013|52116011|376011|7416011|38350700011;
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?OcgOSc/f05R5CYEtwCF9nqmRTL/LT+SmZBUCUnuXzrDTQFDY0f9ZvhgNtkkd?=
+ =?us-ascii?Q?ckI4kad4LzI+bY066MXAiC/RqOezisgThGNbTdzzbDYZYkmhultwF0hA1eit?=
+ =?us-ascii?Q?BWLSQw0e4dWJJZa3OhaBn3s/02Ag3w9+CQGSRygrRbbiAF6WYPukEpYpCHE3?=
+ =?us-ascii?Q?7RZMEZyNMZ1YGMMFLQdq2N+UWRcI4hphvXG9lkuikEEUtk6Q9PTrUvT39OdU?=
+ =?us-ascii?Q?bsWfZ/lJlk6zPLJPnY0L/8hfJ6fctaNuuaPdE/rSWTIikk9aGirem+0aIrPo?=
+ =?us-ascii?Q?Kbycu7Wb++ntzJ29qrywse3KoNr+0OkAidGRr1H16J1htv80JEFiKIskalxX?=
+ =?us-ascii?Q?B22elGMCut6FQohcGzv1yoDw29+7oqfHq56J85/sGiPYqgra3esrjeR+uTgq?=
+ =?us-ascii?Q?QcdO/eUPY3v8ZPt/kwslstLffwnjLCvJ1UxFzuwnfdTQs0/JIj531gdBzteI?=
+ =?us-ascii?Q?DTKOg0BlOpeac227VjpgzK8gxbeZ9ZnkS+quUS4rnn11prY/q/jYPZcAbM/2?=
+ =?us-ascii?Q?1bNln/4Lv4KghvZ1x7nn6ARLGv9PkAjgxslLzLAGZMJ9Lh/4YmPJJhHyy3wS?=
+ =?us-ascii?Q?pwZRB2aJw5uSVCcgyKgylnOvvz/bUxhMbOsTGcR6lez9nWW9cGMHsZCWuyA5?=
+ =?us-ascii?Q?6WdnhedOoq8Dk0RcEP7uJ7EHyyA8t9pTBZK/qK7rjDyg9v/CL59mF0lOFbOS?=
+ =?us-ascii?Q?jw/6NUDHLn5OKROXjIpyBDqUpqduIHPp1h+Z1yY3U2fr/biVOw20hSOJ11By?=
+ =?us-ascii?Q?1VnmVg7YNL2LLjusanokH+2gMqcuhSn9DYwNbtP1mtnp44yUtym01nsLSz9y?=
+ =?us-ascii?Q?z6TnSidDoryicGhCIusrV02ZUl15CuSgmjBkO97Z/LKi3SF7ZRJCvt5yFXdP?=
+ =?us-ascii?Q?/qxuUPULYIYpzM9szBSmx/XWlz62jw0kEItJX7a6/NK+VDuhUR/nGfUVWUHP?=
+ =?us-ascii?Q?OpZXMOky3nQkr3ayBhtGyA/FFDPZRJmoEeSss2fRRaQmSAoT0sZq6TTOkr8f?=
+ =?us-ascii?Q?lnWLWsXFVLiAVZFLyxoqUotr8GliCyrNtbvw7idJTBa7RHL7UzQSvq27ph2t?=
+ =?us-ascii?Q?JmIWns0YcpyClfbuE5aJ/eF3xTFBpVQnZvYfLIcoZ5MlpZ8QV4BW6d72feXK?=
+ =?us-ascii?Q?KO96JrMDhrctoA8uvNfdhoBsQHKwPKyJ6lIa7MqoDvBGGSlgqJTCcimKBysT?=
+ =?us-ascii?Q?ytnzbdABAo4zsAkPQg2frNH+6C07A9JUn8/H6fKMnvJP8N9ycpH+NsnsBvis?=
+ =?us-ascii?Q?mt4emxWawPSZDVH6/URcMWNPX0TRdUrs3VxhToBqYAwJ8n/kAGikpIMUBGkf?=
+ =?us-ascii?Q?Ogmrm2rB0anFavdLwHy4kEq2l6a/sLZ1EkA49Wka5UIKMGA2NyVX9f6Jt1NZ?=
+ =?us-ascii?Q?FKQpf+o=3D?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:TYZPR03MB7001.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230037)(1800799021)(366013)(52116011)(376011)(7416011)(38350700011);DIR:OUT;SFP:1102;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?LX5TRXiQ/R5VwDSAxyn/OtDfHGg71eL4dbMcGRSTrF7cZjUrm5+m87P4PY0/?=
+ =?us-ascii?Q?qUSxLGBCtYMdAfjw4ZGLGBf3EZ8aSCtc8g6SkPTML3k9E8JPZhMbPBmgZskD?=
+ =?us-ascii?Q?0AbKw8lIUPBd+xQwEK+RzaOKEkxtkrS3+8xlIlV1wxSvQKTD06XPuLhKMa1U?=
+ =?us-ascii?Q?4GiV6fSG56BOJoPJZAryhFAWK5y9QSzDxSuYg3+lL6++vRoW7yrk52Xblkqx?=
+ =?us-ascii?Q?IinvjVarghupbahGxGyO9M2+VQlwpYah8WFS0ZU3zTxtlFU/LakDgrmzucta?=
+ =?us-ascii?Q?dxsEHL9Za4rkQgKH6d1bWQQRYKA9VQTkWCMhtHnUBByBHueaw4zrQqwwIegZ?=
+ =?us-ascii?Q?L5kYVqU3X865+eLX3/UzLUG+b3AqBMP5K3MTBNk7n/WG+wR8pOOguEwIZyZF?=
+ =?us-ascii?Q?F0yDy10HgRC4Ci2h7zSrGUcYE3d6vlMTx5/q/s2WGKZ6oDHmQw/UadBJtp8D?=
+ =?us-ascii?Q?tDz6UCFc4WJLQU2lyxAOtCI0nZIcwUAcHQCPJF6Qi5Eyw1i2LmA6DVWf9Dsg?=
+ =?us-ascii?Q?D6IZqnFwvlK7utHF2cTQ6BlfNNe+SoH1njum/BQgmHd2eAmpDf8xVK5rDiDk?=
+ =?us-ascii?Q?ml0yHghSKJ4cAGKz4ZBbi3LV8uPfnMz8dGnTd3TWfsHDLlzFhDvpkYde0axk?=
+ =?us-ascii?Q?6ivBmTouPrxGMmjexx/zMsjml0DE6xi98Bd0UAekeYaJD/HTxeFEJAKfATW7?=
+ =?us-ascii?Q?9B3Hm4JAM4C+xsiTuTYu0dnuFsvr3zwvLKK4ZkMYYfrgdiwhkdQdSiqat0at?=
+ =?us-ascii?Q?JDKo4vi+UJdKV1UbfZAsuzEG7AYK6AEC2AMWcxYx4MBNxwNKyjxjFyk56tnW?=
+ =?us-ascii?Q?vE/mRcZuRkChoSH7F5dkO6wMaezRKYT9dL9L0IhaGHRJ/fq/eKe5QfaKvFOX?=
+ =?us-ascii?Q?WL4LmhnXQXDtXAdWBEl/Au3LT0BcYazEyKn4qGkptK004rX3Tqt1pGHZ6jSk?=
+ =?us-ascii?Q?dHZ162iRyynX4Pxo+PkapM59vKVDhtD5x80uSRKqnHqoAwVcrKT+lXWuYu35?=
+ =?us-ascii?Q?OevLINIOwc3uwHuLtIc1jFHboz9QSCLZaRM6Ody+ONC3h7pTFXd2+aYK2LDF?=
+ =?us-ascii?Q?SNKsh2x4zb8oSGwOJannS8f6XXYJnD+O+Gtrdzuvfue1z5D60jcLxxgKgYQj?=
+ =?us-ascii?Q?kfGWdq7A57MSMozypHIvLiExXu2XV8gmxnzrGfVl75Gqya8CYx1r+x5x3Bco?=
+ =?us-ascii?Q?TmF98uA02WWxrPVKXjG9B15liSd7a7g/I60EYJppCU/l6z63SA2vKdFnfwDz?=
+ =?us-ascii?Q?IebMUNrLRtQ7dB3yU7csEyMlRB7canKXy55uCjQNeBuIXLXA4Q2QSiS1d42P?=
+ =?us-ascii?Q?N1KXty0pX1h5rxm7WpFeCBiTI7VmWbjPqsQWS2bheH4/F6aAEt4ArjV9yAcu?=
+ =?us-ascii?Q?ikWPQXWLpb65RSpD3TAZvtjLiyz/ZL3Lp2oZ9+z6GZWBnWs7RPMZC9QUoCvd?=
+ =?us-ascii?Q?Lv5KPlhA1j6nE4YJIbqaCuClGbrbnZWViPcX8ompt11frvzUzjfnS86c+oyn?=
+ =?us-ascii?Q?mg4T83KMKVeHsGBk6LPW1rXR5nNqvF88Wx0O53+8NJDtr8ny6kyRy1Xv4ux/?=
+ =?us-ascii?Q?9jKtpV8LxkIMsJBSuiOCJpIDgEOCne9WfmA/g3ga?=
+X-OriginatorOrg: wesion.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 665cc770-1ec7-40df-7cff-08dc90cc56ba
+X-MS-Exchange-CrossTenant-AuthSource: TYZPR03MB7001.apcprd03.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 20 Jun 2024 01:57:28.4058
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 2dc3bd76-7ac2-4780-a5b7-6c6cc6b5af9b
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: CJoCHa2kpA+rwMNhW0t7bBy8MZYJSDk2a+4zxYcaFdQFpOzVSYX66Ptt44tJgCj7CcqSlZ05qF1APuZp83ZknQ==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SEYPR03MB8078
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240619_183349_320414_4D8B4114 
-X-CRM114-Status: UNSURE (   9.91  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240619_185743_303329_5B50E827 
+X-CRM114-Status: GOOD (  10.12  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,104 +160,181 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add names to the pins of the general-purpose expansion header as given
-in the Radxa documentation[1] following the conventions in the kernel[2]
-to make it easier for users to correlate pins with functions when using
-utilities such as 'gpioinfo'.
+Khadas Edge 2 has 2x Type-C port. One just supports PD and
+controlled by MCU. The other one supports PD, DP Alt mode and DRD. This
+commit adds support for DRD.
 
-[1] https://docs.radxa.com/en/zero/zero3/hardware-design/hardware-interface
-[2] https://www.kernel.org/doc/Documentation/devicetree/bindings/gpio/gpio.txt
-
-Signed-off-by: Trevor Woerner <twoerner@gmail.com>
+Signed-off-by: Jacobe Zang <jacobe.zang@wesion.com>
 ---
- .../dts/rockchip/rk3566-radxa-zero-3.dtsi     | 72 +++++++++++++++++++
- 1 file changed, 72 insertions(+)
+ .../dts/rockchip/rk3588s-khadas-edge2.dts     | 118 ++++++++++++++++++
+ 1 file changed, 118 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3566-radxa-zero-3.dtsi b/arch/arm64/boot/dts/rockchip/rk3566-radxa-zero-3.dtsi
-index 623d5939d194..b72d75b908a2 100644
---- a/arch/arm64/boot/dts/rockchip/rk3566-radxa-zero-3.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3566-radxa-zero-3.dtsi
-@@ -109,6 +109,78 @@ &cpu3 {
- 	cpu-supply = <&vdd_cpu>;
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-khadas-edge2.dts b/arch/arm64/boot/dts/rockchip/rk3588s-khadas-edge2.dts
+index dbddfc3bb4641..8c0bc675690dd 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588s-khadas-edge2.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3588s-khadas-edge2.dts
+@@ -6,6 +6,7 @@
+ #include <dt-bindings/input/input.h>
+ #include <dt-bindings/pinctrl/rockchip.h>
+ #include <dt-bindings/leds/common.h>
++#include <dt-bindings/usb/pd.h>
+ #include "rk3588s.dtsi"
+ 
+ / {
+@@ -112,6 +113,18 @@ vcc5v0_sys: vcc5v0-sys-regulator {
+ 		regulator-max-microvolt = <5000000>;
+ 	};
+ 
++	vbus5v0_typec: vbus5v0-typec-regulator {
++		compatible = "regulator-fixed";
++		regulator-name = "vbus5v0_typec";
++		regulator-min-microvolt = <5000000>;
++		regulator-max-microvolt = <5000000>;
++		enable-active-high;
++		gpio = <&gpio3 RK_PA4 GPIO_ACTIVE_HIGH>;
++		vin-supply = <&vcc5v0_sys>;
++		pinctrl-names = "default";
++		pinctrl-0 = <&typec5v_pwren>;
++	};
++
+ 	vcc_1v1_nldo_s3: vcc-1v1-nldo-s3-regulator {
+ 		compatible = "regulator-fixed";
+ 		regulator-name = "vcc_1v1_nldo_s3";
+@@ -224,6 +237,56 @@ regulator-state-mem {
+ &i2c2 {
+ 	status = "okay";
+ 
++	usbc0: usb-typec@22 {
++		compatible = "fcs,fusb302";
++		reg = <0x22>;
++		interrupt-parent = <&gpio1>;
++		interrupts = <RK_PB5 IRQ_TYPE_LEVEL_LOW>;
++		pinctrl-names = "default";
++		pinctrl-0 = <&usbc0_int>;
++		vbus-supply = <&vbus5v0_typec>;
++		status = "okay";
++
++		usb_con: connector {
++			compatible = "usb-c-connector";
++			label = "USB-C";
++			data-role = "dual";
++			power-role = "dual";
++			try-power-role = "source";
++			op-sink-microwatt = <1000000>;
++			sink-pdos = <PDO_FIXED(5000, 3000, PDO_FIXED_USB_COMM)
++			PDO_FIXED(9000, 3000, PDO_FIXED_USB_COMM)
++			PDO_FIXED(12000, 3000, PDO_FIXED_USB_COMM)>;
++			source-pdos = <PDO_FIXED(5000, 3000, PDO_FIXED_USB_COMM)>;
++
++			ports {
++				#address-cells = <1>;
++				#size-cells = <0>;
++
++				port@0 {
++						reg = <0>;
++						usbc0_orien_sw: endpoint {
++						remote-endpoint = <&usbdp_phy0_orientation_switch>;
++					};
++				};
++
++				port@1 {
++						reg = <1>;
++						usbc0_role_sw: endpoint {
++						remote-endpoint = <&dwc3_0_role_switch>;
++					};
++				};
++
++				port@2 {
++						reg = <2>;
++						dp_altmode_mux: endpoint {
++						remote-endpoint = <&usbdp_phy0_dp_altmode_mux>;
++					};
++				};
++			};
++		};
++	};
++
+ 	hym8563: rtc@51 {
+ 		compatible = "haoyu,hym8563";
+ 		reg = <0x51>;
+@@ -256,6 +319,16 @@ vcc5v0_host_en: vcc5v0-host-en {
+ 		};
+ 	};
+ 
++	usb-typec {
++		usbc0_int: usbc0-int {
++			rockchip,pins = <1 RK_PB5 RK_FUNC_GPIO &pcfg_pull_up>;
++		};
++
++		typec5v_pwren: typec5v-pwren {
++			rockchip,pins = <3 RK_PA4 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++	};
++
+ 	ir-receiver {
+ 		ir_receiver_pin: ir-receiver-pin {
+ 			rockchip,pins = <1  RK_PA7  RK_FUNC_GPIO  &pcfg_pull_none>;
+@@ -681,6 +754,14 @@ &uart9 {
+ 	status = "okay";
  };
  
-+&gpio0 {
-+	gpio-line-names =
-+		/* GPIO0_A0 - A7 */
-+		"", "", "", "", "", "", "", "",
-+		/* GPIO0_B0 - B7 */
-+		"", "", "", "", "", "", "", "",
-+		/* GPIO0_C0 - C7 */
-+		"", "", "", "", "", "", "", "",
-+		/* GPIO0_D0 - D7 */
-+		"pin-10 [GPIO0_D0]", "pin-08 [GPIO0_D1]", "",
-+		"", "", "", "", "";
++&u2phy0 {
++	status = "okay";
 +};
 +
-+&gpio1 {
-+	gpio-line-names =
-+		/* GPIO1_A0 - A7 */
-+		"pin-03 [GPIO1_A0]", "pin-05 [GPIO1_A1]", "",
-+		"",                  "pin-37 [GPIO1_A4]", "",
-+		"",                  "",
-+		/* GPIO1_B0 - B7 */
-+		"", "", "", "", "", "", "", "",
-+		/* GPIO1_C0 - C7 */
-+		"", "", "", "", "", "", "", "",
-+		/* GPIO1_D0 - D7 */
-+		"", "", "", "", "", "", "", "";
++&u2phy0_otg {
++	status = "okay";
 +};
 +
-+&gpio2 {
-+	gpio-line-names =
-+		/* GPIO2_A0 - A7 */
-+		"", "", "", "", "", "", "", "",
-+		/* GPIO2_B0 - B7 */
-+		"", "", "", "", "", "", "", "",
-+		/* GPIO2_C0 - C7 */
-+		"", "", "", "", "", "", "", "",
-+		/* GPIO2_D0 - D7 */
-+		"", "", "", "", "", "", "", "";
-+};
-+
-+&gpio3 {
-+	gpio-line-names =
-+		/* GPIO3_A0 - A7 */
-+		"",                  "pin-11 [GPIO3_A1]", "pin-13 [GPIO3_A2]",
-+		"pin-12 [GPIO3_A3]", "pin-35 [GPIO3_A4]", "pin-40 [GPIO3_A5]",
-+		"pin-38 [GPIO3_A6]", "pin-36 [GPIO3_A7]",
-+		/* GPIO3_B0 - B7 */
-+		"pin-15 [GPIO3_B0]", "pin-16 [GPIO3_B1]", "pin-18 [GPIO3_B2]",
-+		"pin-29 [GPIO3_B3]", "pin-31 [GPIO3_B4]", "",
-+		"", "",
-+		/* GPIO3_C0 - C7 */
-+		"",                  "pin-22 [GPIO3_C1]", "pin-32 [GPIO3_C2]",
-+		"pin-33 [GPIO3_C3]", "pin-07 [GPIO3_C4]", "",
-+		"", "",
-+		/* GPIO3_D0 - D7 */
-+		"", "", "", "", "", "", "", "";
-+};
-+
-+&gpio4 {
-+	gpio-line-names =
-+		/* GPIO4_A0 - A7 */
-+		"", "", "", "", "", "", "", "",
-+		/* GPIO4_B0 - B7 */
-+		"",                  "",                  "pin-27 [GPIO4_B2]",
-+		"pin-28 [GPIO4_B3]", "", "", "", "",
-+		/* GPIO4_C0 - C7 */
-+		"",                  "",                  "pin-23 [GPIO4_C2]",
-+		"pin-19 [GPIO4_C3]", "",                  "pin-21 [GPIO4_C5]",
-+		"pin-24 [GPIO4_C6]", "",
-+		/* GPIO4_D0 - D7 */
-+		"", "", "", "", "", "", "", "";
-+};
-+
- &gpu {
- 	mali-supply = <&vdd_gpu_npu>;
+ &u2phy2 {
  	status = "okay";
+ };
+@@ -707,6 +788,43 @@ &usb_host0_ohci {
+ 	status = "okay";
+ };
+ 
++&usbdp_phy0 {
++	orientation-switch;
++	mode-switch;
++	sbu1-dc-gpios = <&gpio4 RK_PA0 GPIO_ACTIVE_HIGH>;
++	sbu2-dc-gpios = <&gpio4 RK_PA1 GPIO_ACTIVE_HIGH>;
++	status = "okay";
++
++	port {
++		#address-cells = <1>;
++		#size-cells = <0>;
++
++		usbdp_phy0_orientation_switch: endpoint@0 {
++			reg = <0>;
++			remote-endpoint = <&usbc0_orien_sw>;
++		};
++
++		usbdp_phy0_dp_altmode_mux: endpoint@1 {
++			reg = <1>;
++			remote-endpoint = <&dp_altmode_mux>;
++		};
++	};
++};
++
++&usb_host0_xhci {
++	usb-role-switch;
++	status = "okay";
++
++	port {
++		#address-cells = <1>;
++		#size-cells = <0>;
++		dwc3_0_role_switch: endpoint@0 {
++			reg = <0>;
++			remote-endpoint = <&usbc0_role_sw>;
++		};
++	};
++};
++
+ &usb_host1_ehci {
+ 	status = "okay";
+ };
 -- 
-2.44.0.501.g19981daefd7c
+2.34.1
 
 
 _______________________________________________
