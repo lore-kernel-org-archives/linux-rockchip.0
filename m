@@ -4,69 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 06840C27C79
-	for <linux-rockchip@archiver.kernel.org>; Thu, 20 Jun 2024 14:08:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7CAE4C27C79
+	for <linux-rockchip@archiver.kernel.org>; Thu, 20 Jun 2024 14:11:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=t7WYVC4ttbedpJFAD+ieDVVcuKailc5EJL4SuPjbpnM=; b=gKuLzW9ptsBZeER6vaa+EMptEd
-	Diu9n0V5vlcTPHvPDzPoXPfyqUwYiPPWO3m/7thtHs84k6J1iLqvq3Y0oIOjqyu3mFrkY7FSYsOmV
-	dO10tZ7MQzMj8X0X2QzoB9z5hy3oy2mNFxhJQe2turWRrbEW/3Qy+U4fq+On+xEUcJS3FQe/SbwVT
-	mcNiGvz564KvaBXM+IfC/AgEkgVccc27jibYe5k+O7hhMXMIwhZTow1iUKDpqxjqEotGxUZ4Hylct
-	8/FCgxbXFCrFCAqZ9JvqKe02aZqvFsAeUrSRmIaMnmDD1Umb6/D7k7nSizqOsDk8hXe9NZ7uAD1OP
-	VU+/oHOg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:From:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=hjs0EjI/koid5wiH4kO6AHU+RaUWREAm3mb0AB9Cuu0=; b=r37l2GC7sa9jXr
+	WOc5qKxW/bFZbOR8o2PyU6zJ04JLMq3HpV5D/rcLS2GtVVyZaXKRy1cIBtjceT63z7ZtrOWZvAV14
+	B6mJ6UuwTQoFSXYK0T9TuUJG+QKVch88bVCHzcdJTVlmFXDwCwd3XhK2i3WeDeUskKdk06iurtaD0
+	be2/CyxQWRc+dTh4hMx7uxK6WRm0vTbkDlQlz8uuBTqrEq+bLviq3ayeRPogsXNdHPvGyUZ/5XZRE
+	d+Gj9tCiT8Dm9FA+IWQyGNemHuZww42sKPfnwKzS6B7prLhnv+uAsoQLprFZfsCggIK+2t0zmPFSQ
+	agyKexbPjYGdrbkijmrA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sKISZ-00000005MPp-1pns;
-	Thu, 20 Jun 2024 14:08:19 +0000
-Received: from madrid.collaboradmins.com ([46.235.227.194])
+	id 1sKIVv-00000005NK2-3epe;
+	Thu, 20 Jun 2024 14:11:47 +0000
+Received: from mail-ed1-x52b.google.com ([2a00:1450:4864:20::52b])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sKISW-00000005MP6-1B2k;
-	Thu, 20 Jun 2024 14:08:17 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1718892494;
-	bh=Obh1l7ctkuteMg1GKDKq263sZnU4xN5tzaYs6CgQKHg=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=RsiO9sOVDN2eJ/YtpjsnzPKkWk4fizsnrP5t/sQf/8gyHJW3uWq66biHXkTCKAze0
-	 WR20iJ5rkAYZvv4ibNL+s5sGWvlzGBX/jVuLDeyEY828zUfg7kEagtD4JEdX/oIRDm
-	 E3b79qQBjd4GTdhcdGAh32u5ngJe8Q5LUUUuC7/m1Eri/wlUs1nUfh9SOP0HleBPLI
-	 R8L2xmpQ7+SxdOKryWI6RyIhZE2ZK5GvQ11pVcVzoxJhBJBYXEXchdNfPdUlLcbZAn
-	 JRtBLyBrnOVPw0JNp8OhPTu3loixPRB/9veXLSRpxhXShbEU5nurV9jfTQMirryWbv
-	 3kQO1zTY9c+Fg==
-Received: from arisu.localnet (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: detlev)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 835D037821C0;
-	Thu, 20 Jun 2024 14:08:10 +0000 (UTC)
-From: Detlev Casanova <detlev.casanova@collabora.com>
-To: Jianfeng Liu <liujianfeng1994@gmail.com>
-Cc: andy.yan@rock-chips.com, benjamin.gaignard@collabora.com,
- boris.brezillon@collabora.com, conor+dt@kernel.org,
- daniel.almeida@collabora.com, devicetree@vger.kernel.org,
- didi.debian@cknow.org, dsimic@manjaro.org, ezequiel@vanguardiasur.com.ar,
- gregkh@linuxfoundation.org, heiko@sntech.de, hverkuil-cisco@xs4all.nl,
- jonas@kwiboo.se, knaerzche@gmail.com, krzk+dt@kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-staging@lists.linux.dev, mchehab@kernel.org,
- nicolas.dufresne@collabora.com, paul.kocialkowski@bootlin.com,
- robh@kernel.org, sebastian.reichel@collabora.com
-Subject: Re: [PATCH v2 2/4] media: rockchip: Introduce the rkvdec2 driver
-Date: Thu, 20 Jun 2024 10:07:41 -0400
-Message-ID: <2187039.irdbgypaU6@arisu>
-Organization: Collabora
-In-Reply-To: <20240619174623.270706-1-liujianfeng1994@gmail.com>
-References: <20240619150029.59730-3-detlev.casanova@collabora.com>
- <20240619174623.270706-1-liujianfeng1994@gmail.com>
+	id 1sKIVr-00000005NIh-1YtY;
+	Thu, 20 Jun 2024 14:11:44 +0000
+Received: by mail-ed1-x52b.google.com with SMTP id 4fb4d7f45d1cf-57cf8880f95so1065217a12.3;
+        Thu, 20 Jun 2024 07:11:42 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1718892701; x=1719497501; darn=lists.infradead.org;
+        h=content-transfer-encoding:content-language:cc:to:subject:from
+         :user-agent:mime-version:date:message-id:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=bLF9zl+L8Mm7lU4AoqgefyMRhZ+wS9MBIn1Wjck2JRM=;
+        b=iET0y/lmnfrT8f4i4c4iNGwzPCOtqGIWAVVAWc4GNkfbJwLIHRsGchf8G9tDqtPgt+
+         ygq+Bt+T5vrbD/thMou+yNQiEMqQELxwA8C6IKZyUt1TQDo5ccBK48m6SNvZ+h1TbO1m
+         qr39/zGIvLSrLfK7dS0gqQmHv1LFUOK7yBcO39NY3AvF1dUgKfCkL3Vym6Tll8W80TGw
+         8IOKheYLH5l+J4GQy7EdLTAYX0/U426DAEyBJZgkN7Qo03NsFGl4kqpMMD31WQsfNgAJ
+         H6ra1BwbP5RPBxUs2B2/4Os3svl0v5RlOKXylWa513CNIDe6FiYJ7Fk29dSRaIeuEs8t
+         PXjQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1718892701; x=1719497501;
+        h=content-transfer-encoding:content-language:cc:to:subject:from
+         :user-agent:mime-version:date:message-id:x-gm-message-state:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=bLF9zl+L8Mm7lU4AoqgefyMRhZ+wS9MBIn1Wjck2JRM=;
+        b=MQasg5sB0As4GlQ94XqsTB9hLWw05q31GwssMM9KxdebPQGdiMQKFPxYo9jW2Lu0Ig
+         IFSj8d2mkgujc+slDz9VM7PLi7qp/GoNt3nZy2IIdGVvxs6jtNYz3LBr2VSjB8RiIiR+
+         OUR52zScD6u8m++K0EZ4A3TADrHZhy16BGHE9KKUVHNsyLFDYeTynECpZ4YHa9SbejUc
+         vse4fXLr7oBj6rlmepDUwuGp6lDukaM7YXijLOKmoLsbZBpcxZJ1ZHtOIOvQ+OjFSNIx
+         db3XoxeWc4/TRlqWsUqHn9jNhIHrT5h+lwCOkVkU6lcGhlncETlGJPGaEAuyHkXImWry
+         oYlw==
+X-Forwarded-Encrypted: i=1; AJvYcCVZGgl/5zw0+do7fxbjjp5lpUHsLC0CLdvGTWp+MeO6p+1ZmztkdakWMy5z8qeUQjQH4yCC1oCvM00q2WTyF5Oc9Sqok1K2Attv7fFrJ6DaK4GVcLJsOW9Obi7VsgeMqI0jKwNaMENNqZutz5b6OT/k7GLWrND7Vxw=
+X-Gm-Message-State: AOJu0YzGrr89Mez44yzMTRZVGZNgcMOeFvu1CUSUZLHKKQM8Q2lBn3Tu
+	qT6x4VrlXUN2sYzfyeKLf3aGVZM55gaeOF4ABKT7QN7SmsbK8HNmuS7wOg==
+X-Google-Smtp-Source: AGHT+IErRFRQRmLH+rlW+KU/hVUJABPZ3okIiiRohJA06n+XOlP+9KDc1vb5BXSzerQN3sk+791O5Q==
+X-Received: by 2002:a17:906:16ce:b0:a6f:cb3:55cc with SMTP id a640c23a62f3a-a6fab7d6d8emr320883866b.73.1718892701054;
+        Thu, 20 Jun 2024 07:11:41 -0700 (PDT)
+Received: from ?IPV6:2a02:a449:4071:1:32d0:42ff:fe10:6983? (2a02-a449-4071-1-32d0-42ff-fe10-6983.fixed6.kpn.net. [2a02:a449:4071:1:32d0:42ff:fe10:6983])
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a6f56db62e5sm767879266b.84.2024.06.20.07.11.40
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 20 Jun 2024 07:11:40 -0700 (PDT)
+Message-ID: <aa79ff87-ea94-4f6d-a81b-5110724243f4@gmail.com>
+Date: Thu, 20 Jun 2024 16:11:38 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+From: Johan Jonker <jbx6244@gmail.com>
+Subject: [PATCH v1] ARM: dts: rockchip: enable hdmi_sound and i2s0 for mk808
+ hdmi
+To: heiko@sntech.de
+Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240620_070816_476025_D1C268BB 
-X-CRM114-Status: GOOD (  22.37  )
+X-CRM114-CacheID: sfid-20240620_071143_443218_E1AA5D1E 
+X-CRM114-Status: UNSURE (   7.97  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,120 +89,43 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============7775373353891541303=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
---===============7775373353891541303==
-Content-Type: multipart/signed; boundary="nextPart13537518.uLZWGnKmhe";
- micalg="pgp-sha256"; protocol="application/pgp-signature"
+Enable the hdmi_sound node and add i2s0 as sound source
+for mk808 hdmi.
 
---nextPart13537518.uLZWGnKmhe
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain; charset="UTF-8"; protected-headers="v1"
-From: Detlev Casanova <detlev.casanova@collabora.com>
-To: Jianfeng Liu <liujianfeng1994@gmail.com>
-Date: Thu, 20 Jun 2024 10:07:41 -0400
-Message-ID: <2187039.irdbgypaU6@arisu>
-Organization: Collabora
-In-Reply-To: <20240619174623.270706-1-liujianfeng1994@gmail.com>
-MIME-Version: 1.0
+Signed-off-by: Johan Jonker <jbx6244@gmail.com>
+---
+ arch/arm/boot/dts/rockchip/rk3066a-mk808.dts | 8 ++++++++
+ 1 file changed, 8 insertions(+)
 
-Hi Jianfeng,
+diff --git a/arch/arm/boot/dts/rockchip/rk3066a-mk808.dts b/arch/arm/boot/dts/rockchip/rk3066a-mk808.dts
+index 06790f05b395..4de9a45c4883 100644
+--- a/arch/arm/boot/dts/rockchip/rk3066a-mk808.dts
++++ b/arch/arm/boot/dts/rockchip/rk3066a-mk808.dts
+@@ -143,6 +143,14 @@ hdmi_out_con: endpoint {
+ 	};
+ };
 
-On Wednesday, June 19, 2024 1:46:23 P.M. EDT Jianfeng Liu wrote:
-> Hi Detlev,
->=20
-> On Wed, 19 Jun 2024 10:57:19 -0400, Detlev Casanova wrote:
-> >+	if (!(sps->flags & V4L2_H264_SPS_FLAG_FRAME_MBS_ONLY))
-> >+		height *=3D 2;
-> >+
-> >+	if (width > ctx->coded_fmt.fmt.pix_mp.width ||
-> >+	    height > ctx->coded_fmt.fmt.pix_mp.height)
-> >+		return -EINVAL;
->=20
-> I did further invesatigation on chromium. I find that before real video
-> is decoded, chromium will call VIDIOC_STREAMON twice with value of
-> sps->flags 0:
->=20
-> At the first time width and height are 16; ctx->coded_fmt.fmt.pix_mp.width
-> and coded_fmt.fmt.pix_mp.height are 16, which are the min size of decoder;
-> At the second time width and height are still 16; while
-> coded_fmt.fmt.pix_mp.width is 1920 and coded_fmt.fmt.pix_mp.height is
-> 1088, which are the real size of video.
->=20
-> So VIDIOC_STREAMON will fall at the first time call because sps->flags is
-> 0 so V4L2_H264_SPS_FLAG_FRAME_MBS_ONLY is not set, and then height is
-> doubled to 32 which is larger than 16.
->=20
-> What do you think if we skip doubling height if sps->flags is 0 and at the
-> same time V4L2_H264_SPS_FLAG_FRAME_MBS_ONLY is not set? The following hack
-> did fix my chromium:
->=20
-> --- a/drivers/staging/media/rkvdec2/rkvdec2-h264.c
-> +++ b/drivers/staging/media/rkvdec2/rkvdec2-h264.c
-> @@ -767,7 +767,7 @@ static int rkvdec2_h264_validate_sps(struct rkvdec2_c=
-tx
-> *ctx, * which is half the final height (see (7-18) in the
->          * specification)
->          */
-> -       if (!(sps->flags & V4L2_H264_SPS_FLAG_FRAME_MBS_ONLY))
-> +       if (!(sps->flags & V4L2_H264_SPS_FLAG_FRAME_MBS_ONLY) && sps->fla=
-gs)
-> height *=3D 2;
->=20
->         if (width > ctx->coded_fmt.fmt.pix_mp.width ||
++&hdmi_sound {
++	status = "okay";
++};
++
++&i2s0 {
++	status = "okay";
++};
++
+ &mmc0 {
+ 	bus-width = <4>;
+ 	cap-mmc-highspeed;
+--
+2.39.2
 
-I'm not sure what Chromium is trying to do here. But the spec is clear that=
-=20
-height should be multiplied by 2 (That's actually 7-8, not 7-18):
-
-  FrameHeightInMbs =3D ( 2 =E2=80=93 frame_mbs_only_flag ) * PicHeightInMap=
-Units
-
-This feels like hacking the driver to please a specific userspace applicati=
-on,=20
-so I'd like to understand better what chromium is doing.
-
-Regards,
-Detlev.
-
---nextPart13537518.uLZWGnKmhe
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: This is a digitally signed message part.
-Content-Transfer-Encoding: 7Bit
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCAAdFiEEonF9IvGrXNkDg+CX5EFKUk4x7bYFAmZ0N60ACgkQ5EFKUk4x
-7bbkywgAtKkDH6nMcaU7/h9CiC9sAFMgb3R0h3425HDWWYCWzlR6H3SNvlNc1AOu
-8QBuQnqf/Q5FR8iYNfuTXiEDoCGfOVpxpKmUyh1gURZD5Ea5skFm0a7U6+HfmCr1
-CWzNfTOoqqxNbkJSGwesshEB9bRS/r+fjLulIPhBiItnVOnnDMrWmdgpwcJya5RH
-H6kOw/B3ENImQtlsbLhawoaULowVN832okdMrqC+/cRTenn+zOiRKlFYgBmJDm27
-3jNAQNSfj65NBKZWr8Bwsv74dOcntvjLDEUeAExEPhyDcnu0KKhiNceKqQohei5b
-E0Cylo58qmCvUjiEz2JjlAdG2CizfQ==
-=S3/z
------END PGP SIGNATURE-----
-
---nextPart13537518.uLZWGnKmhe--
-
-
-
-
-
---===============7775373353891541303==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============7775373353891541303==--
-
-
-
-
