@@ -4,63 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C41BFC2BBCA
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B04A0C27C4F
 	for <linux-rockchip@archiver.kernel.org>; Fri, 21 Jun 2024 13:40:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=zMZjwsBzYpHRn+jW89x1fmpV3B66uVoywMTyTZIy3Bo=; b=XdnPLGup90XtiH
-	DpK9tmMuZZyXNaieznC2BBX0QNKwaRAxcxI+Pf61bWlJllKM8Z9pQueZ0jcebDs5HjP29+SV3jbY+
-	SJQrFSd9IuuC8v0R4EBxmrZsUjkguLbzZRnyPRLatWAUXiYIx70dLJ4bsaSFR5efcbkeQGsiWz2d8
-	hL6j0mFy5EoerC8g793uETjAB8qT8iNggsmz5VvJeOLCDVDXJUFcTe/FLqIHmMPGwlBJCB5sPVovw
-	98mx0d2MVy2NoEaBuWqA44jNtdM6yMdiijJK77eU5NNEagPEbQFirWlOF+fH2nilHu3fuRpGJ9PJX
-	MyCiYs+gxLq4EeP5o07g==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=UjGXWzsgG3j2CFrkwO67dGUFmRfnMb8ACHy7FX6fufQ=; b=HULuE6xBOuGwtZ
+	mEG2JqzJMBKGGH7rSjbN+m9yKj1fMDHZSHdjR/6DK7KxIlNHfYX+QbZWvkowdEpCMTo6UD4u3JzCE
+	okPmu955YJmTgC9AFc74yTMTTPokWwhJmFhaSkiVjMdNFnuc6jsIE1KY0W7L2Edey4PbFvIJ3L9y2
+	IHgt7JOeMapTWFf/xoRijTy5tT/zK/WnJShhj62DdDVmOw5tDt3Waa9iue5tMo6GW/Yzw3KhQIbkj
+	EmV2NxIoDY8mypBJ8z7qFsSizKFrd4hyfGJ5/iWfMDBY8Pq+f3RCFYNkO9YVz6Kdvm+xrjueVOTxE
+	cK33A3FwraVr+yndTOtQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sKeVP-00000009Mdu-2lDT;
-	Fri, 21 Jun 2024 13:40:43 +0000
+	id 1sKeVQ-00000009Me4-0mWu;
+	Fri, 21 Jun 2024 13:40:44 +0000
 Received: from mail-ed1-x52f.google.com ([2a00:1450:4864:20::52f])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sKeVI-00000009MZZ-18tg;
+	id 1sKeVI-00000009MZe-11d5;
 	Fri, 21 Jun 2024 13:40:38 +0000
-Received: by mail-ed1-x52f.google.com with SMTP id 4fb4d7f45d1cf-57d106e69a2so243256a12.0;
-        Fri, 21 Jun 2024 06:40:34 -0700 (PDT)
+Received: by mail-ed1-x52f.google.com with SMTP id 4fb4d7f45d1cf-57d2fc03740so705069a12.0;
+        Fri, 21 Jun 2024 06:40:35 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1718977233; x=1719582033; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=HO8YbNgusDOc+w+m1b18tvlpjQ6nHTLOVFIcczCcZXE=;
-        b=dFsOU6sLUr/94gRzoxGyEmlmEPL4tvxnWfFmB/usdrAuK6BO4Cf4UbQ8dKk7X4UInY
-         XAfxUV46ACU02mts1Z557RXJj1cMv+XKWF6f5QcS8uFXEv5kxPGj4/Mcf/sWVRCx+bv4
-         Y+STwaERqP13WEYHeo6rimvnw+rGXlSf2g+kt2YvAkFvz+W1zcX60k0hzWNEQxOKz00g
-         QpupG3BwDxJc6KLOKTk9S+BjI9mE6rdBCGxeiUQpRAFl+xhkIKUgsqNMLFWiUWGwXjEQ
-         j5E+FKwHmLNadnkwNs2e9Adq7Ciheoytzganm0SC7s4L8p/MYCHmBDqY/tC6HsNhZait
-         KiGw==
+        d=gmail.com; s=20230601; t=1718977234; x=1719582034; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=99hmU1TBHiI3BIDRHYs/T4GfZVTtEzomHKojpOx+X/A=;
+        b=IjFzlmj6JAHnxcBx9DVhteVUlmjkTcpr47parAYhvIw4lpCwV1JY5J5KItcSq/EUe/
+         GntFfm76Rxbi+sWQc599d6ZzOm73IMHHg/7vEwobsqvyshzRqUJWVScZXv8w/g2/epYu
+         mzb52caDgmlyrbUhLoyf090JjiZStK2XMJB6X7A2Gd215JZQfrxoUXg218MSyN6zFCdI
+         zrKfzyaOu2GOxAnkC7CSu4UKGxnYMuBAh18ycaH0m6LMNKaB6irl0O8ta/u/Bjfw0hiY
+         8XtcyQUJdjgqf+qpIocKPAbzT4vB3zmLDMWabUdlpNFfj8pBd0EcSc7LUSZcAI8B3eCH
+         l0vA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1718977233; x=1719582033;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=HO8YbNgusDOc+w+m1b18tvlpjQ6nHTLOVFIcczCcZXE=;
-        b=egs+Ni7G0Qa9SD+3LZ5kNG7ovRtA4w2yFtO5i7bDjcaDonhQ4w6q4sLjeQzbEwKdR2
-         VlsktNP9mfPl73xc6AvgAnH+dKYctxHS+m+863mpdkqaNAy7e3QpwHM9gsjaqjUkcAcz
-         lCgJRsIlnPBRHKR8Eugl0daHUc7hj95teEGkw02WmpYhj4V8v7H/uh3bTnqxJEtKn4hP
-         hqATJKe4hZuzPdx9wgsR1EwYyG62oop8h03x0Z1o/2z4nSyZShfKpGwqc3HvN+Fww4c6
-         vhYn3o8SWGppngX8nAGvRIDPPu09RaXtHfDrIOdgDLOpS4hEuT5bVrBQh588YTe0/ETC
-         e5mg==
-X-Forwarded-Encrypted: i=1; AJvYcCWDOx3os3knn+mSFY1QT2aJGAPiRdmQF94Rsho56i4/MrCOzlF5XX9k/jkg58GnNE4H7ncdvpzP2ak+YTtnyU3QiBB8zBJKVRWnk1OJwxhNldc/UUo0UrPnyk6SkAKA8/3HDIzNByCOttroK7SrN2k9CugVaAs0fJU=
-X-Gm-Message-State: AOJu0Yw5viwUWfgxBED5g4BSzNf4tKL9F8XdeQQQ7Q8p0yjenGSqDt+c
-	M679h043G9jBP6pQNoNqMoFmQQyD+uMmM4jrWZ6P6LOFpINm03k=
-X-Google-Smtp-Source: AGHT+IF80rrq09Pob3DPsGOTdKXgb+35KYXWIJaGBuqcU9+0ap2q4ps0fkqx4Pp0KMSYOl1t91xmdA==
-X-Received: by 2002:a50:9359:0:b0:57c:c41c:c0cd with SMTP id 4fb4d7f45d1cf-57d069af610mr5811498a12.4.1718977233052;
-        Fri, 21 Jun 2024 06:40:33 -0700 (PDT)
+        d=1e100.net; s=20230601; t=1718977234; x=1719582034;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=99hmU1TBHiI3BIDRHYs/T4GfZVTtEzomHKojpOx+X/A=;
+        b=vQIgymZqxmx1SIRCVbwjZRXDZoiVm/aPMizBXLD7yTewhY7AMghtrjaR3T9sh1vvHu
+         jnJVR2JBPAwYK8yJ1tNERBU9eRMrweqpeNdSq+jWfvz4j6KxmJB2dF8kYbI6DA2TPXzR
+         XYFS00422WihV643eTEIHFElVZQPBH5V+ioczvCPAsOHfgg5+PxqCKNg7ESS2am9U2tY
+         lWTO5hW5iBMEdI1QlaC1yhkAZ4z4lxllLhfGkdR0cZu02HF/UV1M5X33fQ2dQse9EMI7
+         ssfEDjDUkOpunmbWf0ZbTrXMTugGDkLAUWAHkmOe25yzCQ9vR/Z0aGQMCoVkmJs7KcHa
+         sbaw==
+X-Forwarded-Encrypted: i=1; AJvYcCWFxgCPf0qqH02J59chXGalLOCNwFoZb4GhgbBmM+bDfss09noGU0Glmo1bUSpVZsWqaEy7qBrpUuJFYA8FFfVsFAEMuy26HQDJaWaMzeoAVtH6sfZQKCY8i4ml1IDWj2IOgDMJ6WD9Xwgbby9i0FMxXqC/kZHKdfU=
+X-Gm-Message-State: AOJu0YybA5RWUGtFLeI2sQ45+DsKj7PCaq0aWeiWd2SIM057+N9l/Xhg
+	uAM7sEapgibpslI8USd66SXr1wceq3LPHR1dUE/9Ygwn9e2UO2w=
+X-Google-Smtp-Source: AGHT+IGfTBh9ByRy0rKyLhNz7zC2uRU9ragOUbs6RwOFonz8+hz7N60ZZROooF3sFovnZw72JqMlQw==
+X-Received: by 2002:a50:8ac8:0:b0:57c:8bdc:fddf with SMTP id 4fb4d7f45d1cf-57d07e8337amr4899211a12.20.1718977234191;
+        Fri, 21 Jun 2024 06:40:34 -0700 (PDT)
 Received: from U4.lan ([2a02:810b:f40:4600:1b6a:5399:9a4f:7217])
-        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-57d30562cb6sm962059a12.83.2024.06.21.06.40.32
+        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-57d30562cb6sm962059a12.83.2024.06.21.06.40.33
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 21 Jun 2024 06:40:32 -0700 (PDT)
+        Fri, 21 Jun 2024 06:40:33 -0700 (PDT)
 From: Alex Bee <knaerzche@gmail.com>
 To: Rob Herring <robh@kernel.org>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
@@ -71,14 +72,17 @@ Cc: devicetree@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	Alex Bee <knaerzche@gmail.com>
-Subject: [PATCH 0/4] Add LBA3368 board
-Date: Fri, 21 Jun 2024 15:40:26 +0200
-Message-ID: <20240621134030.243646-1-knaerzche@gmail.com>
+Subject: [PATCH 2/4] dt-bindings: arm: rockchip: Add Neardi LBA3368
+Date: Fri, 21 Jun 2024 15:40:28 +0200
+Message-ID: <20240621134030.243646-3-knaerzche@gmail.com>
 X-Mailer: git-send-email 2.45.2
+In-Reply-To: <20240621134030.243646-1-knaerzche@gmail.com>
+References: <20240621134030.243646-1-knaerzche@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240621_064036_353421_6C0C170F 
-X-CRM114-Status: GOOD (  12.60  )
+X-CRM114-CacheID: sfid-20240621_064036_329909_1713FD90 
+X-CRM114-Status: UNSURE (   9.25  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,28 +99,29 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This series aims to add support for RK3368 based LBA3368 industrial board
-form Neardi. The device tree currently only contains entries for which both
-bindings and linux driver exists and is expected to be exended in future.
+Add Neardi LBA3368, a RK3368 based industrial board.
 
-NB: checkpatch throws me a warning that no venddor-prefix for "usb5e3"
-exists - which is true - but "usb5e3,610" has a valid binding.
+Signed-off-by: Alex Bee <knaerzche@gmail.com>
+---
+ Documentation/devicetree/bindings/arm/rockchip.yaml | 5 +++++
+ 1 file changed, 5 insertions(+)
 
-
-Alex Bee (4):
-  dt-bindings: vendor-prefixes: Add Neardi Technology
-  dt-bindings: arm: rockchip: Add Neardi LBA3368
-  arm64: dts: rockchip: Add sound-dai-cells for RK3368
-  arm64: dts: rockchip: Add Neardi LBA3368 board
-
- .../devicetree/bindings/arm/rockchip.yaml     |   5 +
- .../devicetree/bindings/vendor-prefixes.yaml  |   2 +
- arch/arm64/boot/dts/rockchip/Makefile         |   1 +
- .../boot/dts/rockchip/rk3368-lba3368.dts      | 666 ++++++++++++++++++
- arch/arm64/boot/dts/rockchip/rk3368.dtsi      |   3 +
- 5 files changed, 677 insertions(+)
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3368-lba3368.dts
-
+diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
+index eca0a42eb384..d2e887415d5d 100644
+--- a/Documentation/devicetree/bindings/arm/rockchip.yaml
++++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
+@@ -634,6 +634,11 @@ properties:
+           - const: mqmaker,miqi
+           - const: rockchip,rk3288
+ 
++      - description: Neardi LBA3368
++        items:
++          - const: neardi,lba3368
++          - const: rockchip,rk3368
++
+       - description: Netxeon R89 board
+         items:
+           - const: netxeon,r89
 -- 
 2.45.2
 
