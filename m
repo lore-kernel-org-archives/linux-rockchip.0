@@ -4,49 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CB417C27C4F
-	for <linux-rockchip@archiver.kernel.org>; Fri, 21 Jun 2024 10:14:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 29896C27C4F
+	for <linux-rockchip@archiver.kernel.org>; Fri, 21 Jun 2024 10:16:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=22czx+rjvHg8aOBP6KhhDJ147TbVCTZWPB2SMLvxz2M=; b=n3Wxv8iVCkGBx1
-	eVexh7Tvg4z9KwivgHA3w9fViIrLv50ayQe7n5rxT9geoeXyuujPcurjJ6J5fZc3uyeeiQ/9Chs0J
-	AmzKh+nTS/awkkBPTF4feMIeLdDdB02OpbMBZ9iV4ax50owBqZjWuMLFp/+s1YAUlI926K817+2rV
-	TUeKzJgYNPc7FmuZR0k/ml1pyYL27f4FOowfDrkeYKmqfKanWfrGpHXW8hUvnhNwSGadx0cCh7pO9
-	nI2UNV3jKpYNch9VkFW4oB2a5VMEGNhYWRWP0dCJ4BQfDjUUoMV6nvaIKUyfP/xl4sIlnu7olhUvh
-	R7Ee+KjE0NNC5uivi2qw==;
+	List-Owner; bh=KQP6dpSvPrE2HLGZxo2eSs41Jch2oKqWz1r62gwKfyo=; b=IwIg/QJNBuiGRx
+	UJVHi7Fb8QTnB3aTg1Lou3L/DOy+oBisjPiAUJ9RDgZlb7aJxW7wHkvvCHE6d5wx1DeazyIlQ+5By
+	3kJNUvwwV4UImYlY6INWGC+Z74J686VCfglYEFgd5uqHLjOJFD1Pe61KUpB/KgEKYS/YxcGRObnUU
+	OF1n7dzRv04F3167B879x3HjdfIihakI4le3Pj5HSIszHzncv9Enf8nb+FJSUFriVGo8dkrfy67rq
+	d1EsLqxMQLz2bH+N1sUBAV/pA+me978+eQ1RLgJ2cpPNCItIR7gkgneOTIasGfJGyKtLxEO28f8Fb
+	IkR0HkuarLryP2BIM8ZQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sKbHv-00000008i2f-39zg;
-	Fri, 21 Jun 2024 10:14:35 +0000
-Received: from sin.source.kernel.org ([145.40.73.55])
+	id 1sKbJd-00000008iXe-1k81;
+	Fri, 21 Jun 2024 10:16:21 +0000
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sKbHq-00000008i15-3OxV;
-	Fri, 21 Jun 2024 10:14:32 +0000
+	id 1sKbJY-00000008iVY-2TYs;
+	Fri, 21 Jun 2024 10:16:18 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 0A393CE2BB7;
-	Fri, 21 Jun 2024 10:14:29 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id CD993C2BBFC;
-	Fri, 21 Jun 2024 10:14:22 +0000 (UTC)
+	by sin.source.kernel.org (Postfix) with ESMTP id E00BACE2BB7;
+	Fri, 21 Jun 2024 10:16:14 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E01F6C2BBFC;
+	Fri, 21 Jun 2024 10:16:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1718964868;
-	bh=mkYEDP/YXO6DS57YMdoORyJiiNR4AuIuioT8DgJSFsM=;
+	s=k20201202; t=1718964974;
+	bh=Rc6oFQfBw9lEgCWZSSl8FCKlopyKaW/ibzbQ+QbjQsA=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=NLdrdDzY3KwJZ3O+RO79Uo6g0BP7dPf5JXbWH/kohkfToNyoPTQXy+ZhbctcNMI7D
-	 N7dPusUjDUGNRo36JAf/xbwnE1v6R/qFEeLqmI1+1cHAnMaUU9BI6fU0BGIkmg5vwA
-	 2f+1dqf627X0zfSZ72olfIYdc8PBuoQaLnQRLhzn+c+cGpvjBxktUGQ5JGQ+tM7nLG
-	 W6MhCXYeX3T5ouNAmHp0V0iCSlnK1urLKa9r4bR35ybQFuHuW1J8iaCT5YhiC9OJdi
-	 sf8jXOxI+xdTzKYLvUCapqV+4JUrD8WY8pzjOCtKpbVH/qrLsvcyq3bT0BI6Us/UO0
-	 W+uNyMLoBkHMg==
-Message-ID: <269b5d3e-bf25-4b32-8e39-479057221c6b@kernel.org>
-Date: Fri, 21 Jun 2024 12:14:20 +0200
+	b=YHgaVrg1erHGicqd5/JAKQ8pwtzdbGI6bltoWXEeZgKetccp1k1YJtFldPwWmZ8hy
+	 J85LhjEFTLHO06HeFE02brayHDj/Zwlz5U8yylUN/UWr1CbLoeLLegDo8wKPCgNsD8
+	 Mg+ZqLXj/orsr5nsSnuM7z1xmko8r5jhlRT746biWgTuSWbNtfQpnihVabglEmxc+E
+	 FnOowjoWAIECoPw36eOtCGWxW90d8mvzT7zEWwsR9tHyY20/7lEzQP7I9YeRwEVnOH
+	 ejUbA4nkpxK74kmBGNiZcmW3QnNnQ3ALAoU3co7Cw/EkJXjzvAQRDC0DBCywo1rhrs
+	 ymw9ikKnIG4Fg==
+Message-ID: <fdf4da20-93a8-45c3-84cf-fd3fdc500f2b@kernel.org>
+Date: Fri, 21 Jun 2024 12:16:06 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/5] dt-bindings: mfd: rk809: Use correct compatible in
- the example
+Subject: Re: [PATCH 2/5] dt-bindings: mfd: rk809: Add missing audio codec
+ properties
 To: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>,
  Lee Jones <lee@kernel.org>, Rob Herring <robh@kernel.org>,
  Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
@@ -59,7 +59,7 @@ Cc: kernel@collabora.com, devicetree@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
  linux-kernel@vger.kernel.org
 References: <20240619-rk809-fixes-v1-0-fa93bc5313f4@collabora.com>
- <20240619-rk809-fixes-v1-1-fa93bc5313f4@collabora.com>
+ <20240619-rk809-fixes-v1-2-fa93bc5313f4@collabora.com>
 From: Krzysztof Kozlowski <krzk@kernel.org>
 Content-Language: en-US
 Autocrypt: addr=krzk@kernel.org; keydata=
@@ -105,11 +105,10 @@ Autocrypt: addr=krzk@kernel.org; keydata=
  uZwJCLykjad45hsWcOGk3OcaAGQS6NDlfhM6O9aYNwGL6tGt/6BkRikNOs7VDEa4/HlbaSJo
  7FgndGw1kWmkeL6oQh7wBvYll2buKod4qYntmNKEicoHGU+x91Gcan8mCoqhJkbqrL7+nXG2
  5Q/GS5M9RFWS+nYyJh+c3OcfKqVcZQNANItt7+ULzdNJuhvTRRdC3g9hmCEuNSr+CLMdnRBY fv0=
-In-Reply-To: <20240619-rk809-fixes-v1-1-fa93bc5313f4@collabora.com>
+In-Reply-To: <20240619-rk809-fixes-v1-2-fa93bc5313f4@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240621_031431_236699_7220D707 
-X-CRM114-Status: UNSURE (   9.48  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240621_031617_049364_4DCAC025 
+X-CRM114-Status: GOOD (  20.90  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -127,16 +126,96 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 On 19/06/2024 13:23, Cristian Ciocaltea wrote:
-> The example is not able to actually test the schema since it uses a
-> wrong compatible 'rockchip,rk808' instead of 'rockchip,rk809'.
+> The RK809 MFD provides a RK817 compatible audio codec, supported by the
+> rk817_codec driver.
 > 
-> Use the correct compatible and drop the wrong properties in the
-> example section so that dt_binding_check passes.
+> This has been already in use by several boards: rk3566-quartz64-b,
+> k3566-roc-pc, rk3568-evb1-v10, rk3568-lubancat-2, rk3568-odroid-m1,
+> rk3568-rock-3a.  However, dtbs_check fails for all of them:
+> 
+>   DTC_CHK arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dtb
+>   rk3568-rock-3a.dtb: pmic@20: '#sound-dai-cells', 'assigned-clock-parents', 'assigned-clocks', 'clock-names', 'clocks', 'codec' do not match any of the regexes: 'pinctrl-[0-9]+'
+>     from schema $id: http://devicetree.org/schemas/mfd/rockchip,rk809.yaml#
+> 
+> Document the missing audio codec properties as found on the
+> rockchip,rk817 schema.
 > 
 > Fixes: 6c38ca03406e ("dt-bindings: mfd: rk808: Convert bindings to yaml")
 > Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+> ---
+>  .../devicetree/bindings/mfd/rockchip,rk809.yaml    | 30 +++++++++++++++++++++-
+>  1 file changed, 29 insertions(+), 1 deletion(-)
+> 
+> diff --git a/Documentation/devicetree/bindings/mfd/rockchip,rk809.yaml b/Documentation/devicetree/bindings/mfd/rockchip,rk809.yaml
+> index a327d73f3c43..cadfb5f1c631 100644
+> --- a/Documentation/devicetree/bindings/mfd/rockchip,rk809.yaml
+> +++ b/Documentation/devicetree/bindings/mfd/rockchip,rk809.yaml
+> @@ -12,7 +12,7 @@ maintainers:
+>  
+>  description: |
+>    Rockchip RK809 series PMIC. This device consists of an i2c controlled MFD
+> -  that includes regulators, an RTC, and power button.
+> +  that includes regulators, an RTC, a power button and an audio codec.
+>  
+>  properties:
+>    compatible:
+> @@ -93,6 +93,34 @@ properties:
+>          unevaluatedProperties: false
+>      unevaluatedProperties: false
+>  
+> +  clocks:
+> +    description:
+> +      The input clock for the audio codec.
 
-Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Instead, maxItems. Or items with description.
+
+> +
+> +  clock-names:
+> +    description:
+> +      The clock name for the codec clock.
+
+Drop description.
+
+> +    items:
+> +      - const: mclk
+> +
+> +  '#sound-dai-cells':
+> +    description:
+> +      Needed for the interpretation of sound dais.
+
+Description looks redundant, drop.
+
+> +    const: 0
+> +
+> +  codec:
+> +    description: |
+
+Do not need '|' unless you need to preserve formatting.
+
+> +      The child node for the codec to hold additional properties. If no
+> +      additional properties are required for the codec, this node can be
+> +      omitted.
+
+Useless description. Say something hardware relevant, not about DTS syntax.
+
+> +    type: object
+> +    additionalProperties: false
+> +    properties:
+> +      rockchip,mic-in-differential:
+> +        type: boolean
+> +        description:
+> +          Describes if the microphone uses differential mode.
+
+No resources? Then it goes to parent.
+
+> +
+>  allOf:
+
+Add $ref to dai-common.yaml.
+
+>    - if:
+>        properties:
+> 
 
 Best regards,
 Krzysztof
