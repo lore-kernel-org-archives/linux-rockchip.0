@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8DDD9C27C78
-	for <linux-rockchip@archiver.kernel.org>; Fri, 21 Jun 2024 21:58:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6C4C4C27C78
+	for <linux-rockchip@archiver.kernel.org>; Fri, 21 Jun 2024 21:58:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=+MOsktcbswj7b4PYJYIsomQZnQp0poQQutxCiXXuRG0=; b=ZQv87l1lV7aQ+6
-	FoNVGUrtVUioNZwr5Fm0vEvk5ssZQaW6G41zPxgpQfX5+gzi4q62Eg/vJaCnKSFjj4iQCUCxuVmE7
-	op0yauU9zi2RiUK9TVa43GnJ8UCfhK5/AolLRc5jcwcOGdE0rEiQJ7/FENDX0GiFBvBwOg6xWxNoj
-	pZNzJ2ULsuXgAcyUTA1TQwe+1WV8BheKNGA8BkNIRlFqxUOfDEWghwqcACL1A3uE7CBjB1fGYLQHB
-	//bLr1N6Y4R/e3/gAiewj1cWTPN2zA/FUDpYSW+NZxP9X7W+Zc8Pkm2SZ+c6P78bqsrYV6udN4j12
-	jxlck2y1YFwtmDq5m7cQ==;
+	List-Owner; bh=7we6SlOimN20o64wOhAXKwFH3ty+mDwBk1FK8dUBhXI=; b=bLkjXjcaJTclkU
+	XLxs+LLYps1yHDOivQvAOP6BD0nEg5hUSkGhbcCkAqj6/iOUojE5p1rc7bDCILf9JeTs3HgSiGy3B
+	u0hkJN+jBWBRYbnXYZTbJTlMSNYCb/Qn+8pBUZOpaks7PRTEqTLigPvwGh48fufeEI3Jde9H38iZP
+	mFH+9tR//CR7rjcajmYjEpVR9+JMwsR/vyh5fMhB11xquhO66L9mqEF7YNsyjDbE7fvmiYs3Vm5KP
+	QXNkSuCRSoX3aP7PhfohkV4S8xv/Ln21rXxYiqUm6RSlPbd7beU3DWSNUkOBFfXuBO1LZqgLh0P7F
+	eX28nkSljdzNNukHASTA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sKmHF-0000000Afj5-1Ytk;
-	Fri, 21 Jun 2024 21:58:37 +0000
+	id 1sKmHR-0000000AfsL-2ZfU;
+	Fri, 21 Jun 2024 21:58:49 +0000
 Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sKmGx-0000000AfcF-21uN;
-	Fri, 21 Jun 2024 21:58:22 +0000
+	id 1sKmGx-0000000AfcQ-3jVX;
+	Fri, 21 Jun 2024 21:58:23 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1719007094;
-	bh=1WIyV8ksTIHhhQ2eCcN+ywnSOJBkt4yK0goDj6avryI=;
+	s=mail; t=1719007097;
+	bh=Bnakr+xsYVt2dVEvRUkd/iAxPi1ydgRoDjlbtuDkEg4=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=sUZlvApwjrOTmFwpqqRI/Zn5eOFa1BRtMxAhxobit3m/gzQNS1ZWExKZlpSDakZUZ
-	 qXhf6Rx5N76nLYpy4AIovrVTlixsnVPurfi4LZMKdSeh/j0k2/PAgfFKsH94vibwJQ
-	 +TNRxCF89B62aZFDcnCC5SHzAz/LfnR/zitlSVfqN52nE2n0p5WtYTNbqUZ0jXl10l
-	 U6/Eu5XRvBU3Q08UMFBeiA462bd1cL+DhrcjcfyhT71LakkWJWMSUVYdvH8V1s3nlT
-	 cfSPZdsqhe9R09R0dBZwLrNDDwkYoAhr6gU96H3XOVPfNuPDq7X8OMAnnp0sQFy6F1
-	 rECHgOS1+3s/g==
+	b=C5Jjm4yj8+riKaj2jNVf1rS5Q5ggPfKxFEYnkhXi1WYqwqV518Ddgdzq1+7GBTgp6
+	 DOiDI+XXaaEmw5Id83w84PnMpMRYq7fvlbXK0vNoZOtuWSZrsaQ1jxtY0WyvKHMCaO
+	 j9bbO1Ab0HtFN8bzc2aplmUf5QBPCps7jxopivH8SQvoupfuDQ7ovE1+dz11RuN8MZ
+	 mkywGw4JZcFaVTuTM4CHdAgWPmCisyRgnxKQk83fG5R6f5wycovIkZqQuBSScnbl9A
+	 UaAlsDbTNsM66ZKmxCLmhKSh9KjJVyG18fm+qD2SEQ5MEmUeaGSosW3pEXtjSlHQCO
+	 KnCv4N5Z1NCrg==
 Received: from localhost (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: cristicc)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 88AF937821DC;
-	Fri, 21 Jun 2024 21:58:14 +0000 (UTC)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id F22A037821E5;
+	Fri, 21 Jun 2024 21:58:16 +0000 (UTC)
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Date: Sat, 22 Jun 2024 00:57:18 +0300
-Subject: [PATCH v2 1/5] dt-bindings: mfd: rk817: Fixup clocks and reference
- dai-common
+Date: Sat, 22 Jun 2024 00:57:20 +0300
+Subject: [PATCH v2 3/5] arm64: dts: rockchip: Drop invalid
+ mic-in-differential on rk3568-rock-3a
 MIME-Version: 1.0
-Message-Id: <20240622-rk809-fixes-v2-1-c0db420d3639@collabora.com>
+Message-Id: <20240622-rk809-fixes-v2-3-c0db420d3639@collabora.com>
 References: <20240622-rk809-fixes-v2-0-c0db420d3639@collabora.com>
 In-Reply-To: <20240622-rk809-fixes-v2-0-c0db420d3639@collabora.com>
 To: Lee Jones <lee@kernel.org>, Rob Herring <robh@kernel.org>, 
@@ -60,11 +60,12 @@ To: Lee Jones <lee@kernel.org>, Rob Herring <robh@kernel.org>,
  Michael Riesch <michael.riesch@wolfvision.net>
 Cc: kernel@collabora.com, devicetree@vger.kernel.org, 
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
- linux-kernel@vger.kernel.org
+ linux-kernel@vger.kernel.org, Jonas Karlman <jonas@kwiboo.se>
 X-Mailer: b4 0.14.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240621_145819_920588_4E530438 
-X-CRM114-Status: GOOD (  12.51  )
+X-CRM114-CacheID: sfid-20240621_145820_130536_A62C1527 
+X-CRM114-Status: UNSURE (   9.63  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,93 +82,38 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Ensure 'clocks' property does not allow more than one item and add the
-missing reference to dai-common schema.
+The 'mic-in-differential' DT property supported by the RK809/RK817 audio
+codec driver is actually valid if prefixed with 'rockchip,':
 
-While at it, move 'clocks*' and '#sound-dai-cells' properties to keep
-the list ordered alphabetically.
+  DTC_CHK arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dtb
+  rk3568-rock-3a.dtb: pmic@20: codec: 'mic-in-differential' does not match any of the regexes: 'pinctrl-[0-9]+'
+	from schema $id: http://devicetree.org/schemas/mfd/rockchip,rk809.yaml#
 
-Additionally, drop all useless/redundant descriptions.
+However, the board doesn't make use of differential signaling, hence
+drop the incorrect property and the now unnecessary 'codec' node.
 
-Fixes: 6c38ca03406e ("dt-bindings: mfd: rk808: Convert bindings to yaml")
+Fixes: 22a442e6586c ("arm64: dts: rockchip: add basic dts for the radxa rock3 model a")
+Reported-by: Jonas Karlman <jonas@kwiboo.se>
 Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 ---
- .../devicetree/bindings/mfd/rockchip,rk817.yaml    | 33 ++++++++--------------
- 1 file changed, 11 insertions(+), 22 deletions(-)
+ arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts | 4 ----
+ 1 file changed, 4 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/mfd/rockchip,rk817.yaml b/Documentation/devicetree/bindings/mfd/rockchip,rk817.yaml
-index 8c2fd0fabb92..d70b4307ac77 100644
---- a/Documentation/devicetree/bindings/mfd/rockchip,rk817.yaml
-+++ b/Documentation/devicetree/bindings/mfd/rockchip,rk817.yaml
-@@ -32,6 +32,13 @@ properties:
-     minimum: 0
-     maximum: 1
- 
-+  clocks:
-+    maxItems: 1
-+
-+  clock-names:
-+    items:
-+      - const: mclk
-+
-   clock-output-names:
-     description:
-       From common clock binding to override the default output clock name.
-@@ -42,6 +49,9 @@ properties:
-     description:
-       Telling whether or not this PMIC is controlling the system power.
- 
-+  '#sound-dai-cells':
-+    const: 0
-+
-   system-power-controller: true
- 
-   wakeup-source:
-@@ -94,26 +104,7 @@ properties:
-         $ref: /schemas/regulator/regulator.yaml#
-     unevaluatedProperties: false
- 
--  clocks:
--    description:
--      The input clock for the audio codec.
+diff --git a/arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts b/arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts
+index ebdedea15ad1..59f1403b4fa5 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts
+@@ -531,10 +531,6 @@ regulator-state-mem {
+ 				};
+ 			};
+ 		};
 -
--  clock-names:
--    description:
--      The clock name for the codec clock.
--    items:
--      - const: mclk
--
--  '#sound-dai-cells':
--    description:
--      Needed for the interpretation of sound dais.
--    const: 0
--
-   codec:
--    description: |
--      The child node for the codec to hold additional properties. If no
--      additional properties are required for the codec, this node can be
--      omitted.
-     type: object
-     additionalProperties: false
-     properties:
-@@ -123,9 +114,6 @@ properties:
-           Describes if the microphone uses differential mode.
+-		codec {
+-			mic-in-differential;
+-		};
+ 	};
+ };
  
-   charger:
--    description: |
--      The child node for the charger to hold additional properties. If a
--      battery is not in use, this node can be omitted.
-     type: object
-     $ref: /schemas/power/supply/power-supply.yaml
- 
-@@ -168,6 +156,7 @@ properties:
-     additionalProperties: false
- 
- allOf:
-+  - $ref: /schemas/sound/dai-common.yaml#
-   - if:
-       properties:
-         '#clock-cells':
 
 -- 
 2.45.2
