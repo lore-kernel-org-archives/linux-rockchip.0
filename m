@@ -4,90 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 75D73C27C4F
-	for <linux-rockchip@archiver.kernel.org>; Fri, 21 Jun 2024 09:13:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B7F7FC2BA1A
+	for <linux-rockchip@archiver.kernel.org>; Fri, 21 Jun 2024 09:22:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Tkhj8r3VCs9WBaOD0JWPctN/ETOxLrMHTuA4ouKcQuI=; b=CbExQUUHyaQw45+YuXGL81Z2SP
-	NCfW0HK2WHwZqKqCrvY9pFAGF6qr4dfYCAgA2GqaQshNBAeR+tU5FPFZQ/0LhWs8LxGZwoYXuiV0h
-	cncSvQseQLqDzbFVCfxERe17VbCNU0txYNzEbGMUAqxJ7YYsQXNBBNiFAG+hSFleSLuCCvtSMiDa2
-	rQWj2S+zhWu+Xml4yUmSRr0M5xU+R35/9MR6M6owqAWKwSkwilQ8vuJRNYPdvl3cnwRhl7P99bcoC
-	1wVpXT9/BXBC9e005Ygpehr4rkU4hjA8ulMUnE42S4LlxBKvMe/7H6aW12RNl3z2nu6bmbSXyHlNP
-	7aXVCxzA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=ZY+54WVGpnWkoSmoFyDTpqX3aLYjbp1z07Zyi/DlELI=; b=W/y/71X4KQocA9
+	oTzAXSdphdPHJOgJbB3+3Tlfr7dRs8pIynIZ5TYDHwZgJwEGsghle1g9oDQ6yNqPM0kimX90IC80C
+	eD5BwVV4UJKurpiX7lvbpKq+B90qVXfm3M3pc6Wojb6Ec/NSDkN1Zip1iKYpk/ZtmxMBayKcLmRC8
+	4cpI63BytKBB2tA53/fT0ALOYTh1L6Gt5r+iSF31ED2xfxp1Wj7xWiNpUtQV7IyjZf/O5oYBy8F9i
+	9G6jvQOKcDADiv+nBjtqV4G2tMKTcyb6pVQ/mbhpHs/V/Mx4F0ogrKWXfeEON8EpKKamd1X7uSXIP
+	xgXpHozp2kHvFkXCtwqQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sKaKJ-00000008V77-48oc;
-	Fri, 21 Jun 2024 09:12:59 +0000
-Received: from out-186.mta1.migadu.com ([95.215.58.186])
+	id 1sKaTl-00000008Wfn-42Ua;
+	Fri, 21 Jun 2024 09:22:45 +0000
+Received: from mail-pl1-x634.google.com ([2607:f8b0:4864:20::634])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sKaKG-00000008V6B-3Ehg
+	id 1sKaTi-00000008WeJ-3wGo
 	for linux-rockchip@lists.infradead.org;
-	Fri, 21 Jun 2024 09:12:58 +0000
-X-Envelope-To: daniel@makrotopia.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow.org; s=key1;
-	t=1718961171;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=HoU+w5hbf95oI+65NF7m7axx7dLHxuPKJDtqnUpn1Y4=;
-	b=cAUoZfSnDjSevbeJKZhULk5jqgXfbwffQyhxmKz2AGwKmw8Owmhnbge9dU3PvjSRj8z3Vr
-	KCiWaEjz7D1mRt2SgPcTjqKWZrqRwg/5O4OxdZVmk5Wjb0zssWviaTs4YUemA/XHxNVrL8
-	NULITiv0p/F8S/YV0Qtn4vTu7FnfpM//2+3pz9E+XojIDEj5DwIqKZjVMiwqS9ZtjY31Fp
-	au0iPLd6lJ1htHHbHQGc88M7x27ugivW9tRNS/sFXjqGsa7qeflmVX/jtzoDROqar2raio
-	AOfPJ4gPbIcCeJU3ogTjag7Zh2+friJmFGBaoJS9T1P7N0+Sg8UTTRw0+MpofA==
-X-Envelope-To: aurelien@aurel32.net
-X-Envelope-To: olivia@selenic.com
-X-Envelope-To: herbert@gondor.apana.org.au
-X-Envelope-To: robh@kernel.org
-X-Envelope-To: krzk+dt@kernel.org
-X-Envelope-To: conor+dt@kernel.org
-X-Envelope-To: heiko@sntech.de
-X-Envelope-To: p.zabel@pengutronix.de
-X-Envelope-To: ukleinek@debian.org
-X-Envelope-To: sebastian.reichel@collabora.com
-X-Envelope-To: linux.amoon@gmail.com
-X-Envelope-To: dsimic@manjaro.org
-X-Envelope-To: s.hauer@pengutronix.de
-X-Envelope-To: martin@kaiser.cx
-X-Envelope-To: ardb@kernel.org
-X-Envelope-To: linux-crypto@vger.kernel.org
-X-Envelope-To: devicetree@vger.kernel.org
-X-Envelope-To: linux-arm-kernel@lists.infradead.org
-X-Envelope-To: linux-rockchip@lists.infradead.org
-X-Envelope-To: linux-kernel@vger.kernel.org
-X-Envelope-To: daniel@makrotopia.org
-X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
-From: Diederik de Haas <didi.debian@cknow.org>
-To: Daniel Golle <daniel@makrotopia.org>,
- Aurelien Jarno <aurelien@aurel32.net>, Olivia Mackall <olivia@selenic.com>,
- Herbert Xu <herbert@gondor.apana.org.au>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
- Heikomemcpy_fromio Stuebner <heiko@sntech.de>,
- Philipp Zabel <p.zabel@pengutronix.de>,
- Uwe =?ISO-8859-1?Q?Kleine=2DK=F6nig?= <ukleinek@debian.org>,
- Sebastian Reichel <sebastian.reichel@collabora.com>,
- Anand Moon <linux.amoon@gmail.com>, Dragan Simic <dsimic@manjaro.org>,
- Sascha Hauer <s.hauer@pengutronix.de>, Martin Kaiser <martin@kaiser.cx>,
- Ard Biesheuvel <ardb@kernel.org>, linux-crypto@vger.kernel.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Cc: Daniel Golle <daniel@makrotopia.org>
-Subject: Re: [PATCH v3 1/3] dt-bindings: RNG: Add Rockchip RNG bindings
-Date: Fri, 21 Jun 2024 11:12:35 +0200
-Message-ID: <68762122.lzCB0yxN2V@bagend>
-Organization: Connecting Knowledge
-In-Reply-To: <10f621d0711c80137afd93f62a03b1b10009715c.1718921174.git.daniel@makrotopia.org>
-References: <cover.1718921174.git.daniel@makrotopia.org>
- <10f621d0711c80137afd93f62a03b1b10009715c.1718921174.git.daniel@makrotopia.org>
+	Fri, 21 Jun 2024 09:22:44 +0000
+Received: by mail-pl1-x634.google.com with SMTP id d9443c01a7336-1f47f07aceaso14347655ad.0
+        for <linux-rockchip@lists.infradead.org>; Fri, 21 Jun 2024 02:22:42 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1718961762; x=1719566562; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=0DChm4oZFs0LJKI90R8W/14zMUVHY5Ac9kAsA7OIYR4=;
+        b=k4Lspzb1hrtW/awZeCNZhjvLFcKZZ9xn9H2fKlU7nVsQuCEPVAago4nNU/litkv5nB
+         oabV49MInSYXkPv8szdb7wZ0PK5BPx2hA8LjdwYb7z1BZ9fTlQQcxEf0GXYEWrHBGLbS
+         F7CUvjR0XWQ0Dr995WRd3D5/BO5i/wsa0KnNq15a/GCM7jxExZ396mb2PzMHwKy19YId
+         BUJbT/SdfTDuvtLxYJOPdjPqm/zq5+GTLOsBJBvdQvyUnWVqxu6xbGd6ddgwVU/GvNYK
+         p+Bl/eSwSo439FBnSOk1Qkq3+QOg/brJ0M/w2aklN7KzWg++fvHk8B/y4i37ilfpNnK6
+         u8Gw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1718961762; x=1719566562;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=0DChm4oZFs0LJKI90R8W/14zMUVHY5Ac9kAsA7OIYR4=;
+        b=T+D7cArOLjoPjUV4GC2SjEWpiRX4CQ8hdnILss0MgDlYErGQpL0bNscCQWPkea+O7Y
+         fMx6g95NTwut0lN16Os3Y8XvKCgUol2qsR3rmcYetGOZtRXzqK3JIWG4+lGYED7BP9k4
+         xzgr8S6AnaGFwky3RGuK9gPPa6vnzndeZXIZ+8r7YMxiTgzD2CWJyh6O9UB8J+B09ynw
+         xH3TsuLKnxcGiY28rO/KFNX1vENb7WMbC821NSbPO4htTdQMUkxWYnUhfGYs3RxzYu3m
+         WeS8NvsRQH/10sF3PiF5BjYfY1ie6R46NdKK3exQU5tstJb/1UUS+ULbJPQCFXMOk3dE
+         xRbg==
+X-Forwarded-Encrypted: i=1; AJvYcCXTRMuIdU/8BhRXZezkdasTTh4+dNtQnV4HJeqZCGbR+BngG82vDoJD2KqVGgr9+WNOCZE/CFbG9KCtgw3Vjie4flKp78XsjCGfXrAAlHba1MiG
+X-Gm-Message-State: AOJu0YyZMYjMc/uiYKhy8YxB2yBknQ+hVweuzuyfnzB5H20kzKRRPtbT
+	sZCQ+Ntix3btGCA8EYjmfTzumAORUxAWcFjIUmiNfBiCTqJkej6OTXjzp2K0zzo=
+X-Google-Smtp-Source: AGHT+IEapwoXM3TE/uZjttS5wEj6FJq1+Ictg80vAM9P5mq/tKCuoOcx6e+5kChf/aTCKpsl/dBlgg==
+X-Received: by 2002:a17:902:e808:b0:1f7:1a9:bf09 with SMTP id d9443c01a7336-1f9aa458609mr89974475ad.51.1718961761807;
+        Fri, 21 Jun 2024 02:22:41 -0700 (PDT)
+Received: from localhost.localdomain ([221.220.128.96])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-1f9eb3c5bf9sm9761485ad.122.2024.06.21.02.22.37
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 21 Jun 2024 02:22:41 -0700 (PDT)
+From: Jianfeng Liu <liujianfeng1994@gmail.com>
+To: sebastian.reichel@collabora.com
+Cc: conor+dt@kernel.org,
+	devicetree@vger.kernel.org,
+	ezequiel@vanguardiasur.com.ar,
+	frattaroli.nicolas@gmail.com,
+	heiko@sntech.de,
+	kernel@collabora.com,
+	krzk+dt@kernel.org,
+	linkmauve@linkmauve.fr,
+	linux-kernel@vger.kernel.org,
+	linux-media@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	liujianfeng1994@gmail.com,
+	nicolas.dufresne@collabora.com,
+	p.zabel@pengutronix.de,
+	robh@kernel.org,
+	sigmaris@gmail.com,
+	detlev.casanova@collabora.com
+Subject: Re: [PATCH v7 6/6] arm64: dts: rockchip: Add VPU121 support for RK3588
+Date: Fri, 21 Jun 2024 17:22:34 +0800
+Message-Id: <20240621092234.280171-1-liujianfeng1994@gmail.com>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20240618183816.77597-7-sebastian.reichel@collabora.com>
+References: <20240618183816.77597-7-sebastian.reichel@collabora.com>
 MIME-Version: 1.0
-X-Migadu-Flow: FLOW_OUT
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240621_021257_424482_05DBEF00 
-X-CRM114-Status: GOOD (  15.23  )
+X-CRM114-CacheID: sfid-20240621_022243_000295_1FC06B6A 
+X-CRM114-Status: UNSURE (   7.34  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,103 +104,24 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============7860078083130472248=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
---===============7860078083130472248==
-Content-Type: multipart/signed; boundary="nextPart3910405.qtKquTYnKW";
- micalg="pgp-sha256"; protocol="application/pgp-signature"
+Hi Sebastian,
 
---nextPart3910405.qtKquTYnKW
-Content-Transfer-Encoding: 7Bit
-Content-Type: text/plain; charset="us-ascii"; protected-headers="v1"
-From: Diederik de Haas <didi.debian@cknow.org>
-Cc: Daniel Golle <daniel@makrotopia.org>
-Date: Fri, 21 Jun 2024 11:12:35 +0200
-Message-ID: <68762122.lzCB0yxN2V@bagend>
-Organization: Connecting Knowledge
-MIME-Version: 1.0
+Detlev is working on rkvdec2 and gstreamer can't deal with two h264
+stateless decoders. So it's better to disable h264 decoding feature of
+this vpu121, just like what we have done for rk3399. If your multicore
+patch can handle the jpeg enc node at fdb50000 with other VEPU121 nodes
+properly, we can just use compatible string "rockchip,rk3399-vpu" instead
+of "rockchip,rk3568-vpu".
 
-Hi,
-
-https://lore.kernel.org/all/89b16ec5-f9a5-f836-f51a-8325448e4775@linaro.org/ 
-also mentions some remarks about the subject, so if I interpreted those 
-remarks correctly, it should be:
-
-dt-bindings: rng: rockchip: Add rk3568 TRNG
-
-On Friday, 21 June 2024 03:25:01 CEST Daniel Golle wrote:
-> From: Aurelien Jarno <aurelien@aurel32.net>
-> 
-> Add the RNG bindings for the RK3568 SoC from Rockchip
-> 
-> Signed-off-by: Aurelien Jarno <aurelien@aurel32.net>
-> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
-> ---
->  .../bindings/rng/rockchip,rk3568-rng.yaml     | 60 +++++++++++++++++++
->  MAINTAINERS                                   |  6 ++
->  2 files changed, 66 insertions(+)
->  create mode 100644
-> Documentation/devicetree/bindings/rng/rockchip,rk3568-rng.yaml
-> 
-> diff --git a/Documentation/devicetree/bindings/rng/rockchip,rk3568-rng.yaml
-> b/Documentation/devicetree/bindings/rng/rockchip,rk3568-rng.yaml new file
-> mode 100644
-> index 000000000000..d45f03683fbe
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/rng/rockchip,rk3568-rng.yaml
-> @@ -0,0 +1,61 @@
-> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/rng/rockchip,rk3568-rng.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: Rockchip TRNG
-> +
-> +description: True Random Number Generator on Rokchip RK3568 SoC
-
-I *think* that the TRNG for rk3588 is different, so shouldn't the title be:
-
-Rockchip TRNG for rk356x SoCs
-
-Cheers,
-  Diederik
-
-PS: Heiko's name is without `memcpy_fromio` ;-P
---nextPart3910405.qtKquTYnKW
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: This is a digitally signed message part.
-Content-Transfer-Encoding: 7Bit
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYIAB0WIQT1sUPBYsyGmi4usy/XblvOeH7bbgUCZnVEAwAKCRDXblvOeH7b
-bvYLAQD5phdvtSaGx5MmYC50JLDUbw5C48bFzb/suRy7BfZaNgD/TyjMUTJNnFPk
-fy6xGLowx9j4pjU1c+McDZwWhadqpAM=
-=qx6y
------END PGP SIGNATURE-----
-
---nextPart3910405.qtKquTYnKW--
-
-
-
-
-
---===============7860078083130472248==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+Best regards,
+Jianfeng
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============7860078083130472248==--
-
-
-
-
