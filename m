@@ -4,74 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 28CEBC27C4F
-	for <linux-rockchip@archiver.kernel.org>; Fri, 21 Jun 2024 06:03:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 558D8C27C4F
+	for <linux-rockchip@archiver.kernel.org>; Fri, 21 Jun 2024 06:10:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=A5LwLvco20jqu/12sN3mE4Bo0JQIUE3GHnA7MqWJ+oI=; b=x4VfPaupsndCYB
-	BfsHKCEkBuhUh6zoQYsPoh4oLGdHZ0RsqwOHNZ6lBB2Ce89A9Jr27+f7VdF8k61AXHr6/FoJRIK20
-	MUaXMEio7CREJT4CTkWuUhaZuDXToKQ37vGIbxwenX7CC7XuXlrZEkI3kRjLunqWaubq518axv8+3
-	WnMUYrNhhwiGbGcgOQGmkrCZobi2DgqqU8QIkbvqb0nN4UmIaK9fP+gcyDyjBJJaUgSzdNqNKVjNy
-	ZICEjMGjozs6bMAV7c7Q6SbQ8HhDmeyNsYlldeRzxzV06wB9Zs4h5Z3XYd8B9Hk8EkWvYFT/3FZ8z
-	+o+AtpjGgmuy24WAwcrQ==;
+	List-Owner; bh=g/jJxj3CZfcDQvEy7T5kwFDoOzgiFm5A7m7vB3AN+8Y=; b=GmZnMP7e+5cgcs
+	cCEYgL704fdpGZNqeni0i/PX+Lxl07GyCyAaIJmQLu3hErQPv/JFcD+on2rKWTxaffbE3CU08UiOM
+	Eekz0GxsOvZYMondgYAZF4oS9VELdCSElUHSliSsl5GjNLi1N7mVTrVM+GLuHDMkVpmvQnE2Csde6
+	RmiTAw1VmtYv8lRo/4Hk9jz7f4A6/b8zbN4TkZ+wBa4Yvpp8zL0TERGhDA9xKCnoYVOEnO9TvniXg
+	VUIDML3/RvAtlSLyqeyA+PTWYqVD1yY5JzYLeCTaSnYhDIXdbaQrClG7u+MyM0klWYhlIa4MNR0ol
+	TmnpHcOMa4JYeCIat4Xg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sKXND-00000007rhF-41cs;
-	Fri, 21 Jun 2024 06:03:47 +0000
-Received: from sin.source.kernel.org ([145.40.73.55])
+	id 1sKXTu-00000007sbv-2QqN;
+	Fri, 21 Jun 2024 06:10:42 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sKXN8-00000007rfN-399T;
-	Fri, 21 Jun 2024 06:03:44 +0000
+	id 1sKXTq-00000007sZ2-1LmK;
+	Fri, 21 Jun 2024 06:10:40 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id D1699CE2391;
-	Fri, 21 Jun 2024 06:03:39 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 55039C2BBFC;
-	Fri, 21 Jun 2024 06:03:33 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 7E8B2623DE;
+	Fri, 21 Jun 2024 06:10:37 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E7C4CC2BBFC;
+	Fri, 21 Jun 2024 06:10:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1718949819;
-	bh=3HxjbrgVB9KXbMOlbGzr9Z5tVUPV8KpfS6W+akCYdZo=;
+	s=k20201202; t=1718950237;
+	bh=vanRCVs7Il0N1bVX0/dHBOpckIxMz3F6/5aZRbOXc3M=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=QHuPW/l7LVgedeyzPWjy7KryxLel9deWa+Zg+1o+NE2iR8Xq/T07MZeOdiQapTqNa
-	 6LOM28+9NOwTkfK0Sa9p66zZj9ir5jMv3ltMQf4kU9cVhoFMkDN29HKYp6gMTYN04t
-	 i/4C3bi4YfFcwk4pfaUnibp60Q6DssugXk7Lyr2hHoiEMZeWP+mVDPs6CbWShA0iva
-	 pZpCnjfbDc1H+6sTVzNBu6WOLl+7e9WagfrhOmd8Z91HRk4b0qZ/h0gGmVKP5iEkzi
-	 JRYXjgz70fsRDvoCN9OhFUn7dCRhid+LXOXRVxGCIhEC52R18X4g5uTOkiUckSUCRM
-	 12FykE/e1/r9A==
-Message-ID: <4533403d-11b1-4f73-b57d-3079be1e300f@kernel.org>
-Date: Fri, 21 Jun 2024 08:03:30 +0200
+	b=SgHVQocoCiIw1OHhZ5VnmaFBHjno76cQpn3hOUw3agt9k/yNyFP4X20lAMb/XwW+r
+	 PsNJ3RRtPQHqHTvq+AnyiIoL6sByOVlWJjEECnAvn8h/skjp4fmp5rpvxXmasyXR5p
+	 M3y1GUkH4gZl9esHKaTyI6x8RL2rIzUuKPMns1GfxHUcE1JEwDpKQQnBUzQjiFmznV
+	 DgsmS8eM76NSSRZC046k0iLRArOqBJ3u12icEapzxoaE21/nPncY7XAW0EtDLlq9om
+	 3B8yUQ2w48nD/WWOjS7QdOPDHrDixtUfV5qGeSebzGUYwkALUXJL4DyImgOpaCrpoO
+	 4lWJR1dUvEW/A==
+Message-ID: <3acc5a0a-260a-4958-aab2-1d473c835a1b@kernel.org>
+Date: Fri, 21 Jun 2024 08:10:26 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1 2/3] net: wireless: brcmfmac: Add optional 32k clock
- enable support
-To: Jacobe Zang <jacobe.zang@wesion.com>,
- "arend.vanspriel@broadcom.com" <arend.vanspriel@broadcom.com>
-Cc: "kvalo@kernel.org" <kvalo@kernel.org>,
- "duoming@zju.edu.cn" <duoming@zju.edu.cn>,
- "bhelgaas@google.com" <bhelgaas@google.com>,
- "minipli@grsecurity.net" <minipli@grsecurity.net>,
- "linux-wireless@vger.kernel.org" <linux-wireless@vger.kernel.org>,
- "brcm80211@lists.linux.dev" <brcm80211@lists.linux.dev>,
- "brcm80211-dev-list.pdl@broadcom.com" <brcm80211-dev-list.pdl@broadcom.com>,
- "megi@xff.cz" <megi@xff.cz>, "robh@kernel.org" <robh@kernel.org>,
- "krzk+dt@kernel.org" <krzk+dt@kernel.org>,
- "conor+dt@kernel.org" <conor+dt@kernel.org>,
- "heiko@sntech.de" <heiko@sntech.de>, Nick Xie <nick@khadas.com>,
- "efectn@protonmail.com" <efectn@protonmail.com>,
- "jagan@edgeble.ai" <jagan@edgeble.ai>,
- "dsimic@manjaro.org" <dsimic@manjaro.org>,
- "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
- "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>,
- "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
-References: <20240620020015.4021696-1-jacobe.zang@wesion.com>
- <20240620020015.4021696-3-jacobe.zang@wesion.com>
- <b8b89ef7-2e92-4e1a-9609-6b0fd6d64d7e@kernel.org>
- <TYZPR03MB700143E13635364FF5A316D080C92@TYZPR03MB7001.apcprd03.prod.outlook.com>
+Subject: Re: [PATCH v2 2/4] media: rockchip: Introduce the rkvdec2 driver
+To: Sebastian Reichel <sebastian.reichel@collabora.com>
+Cc: Detlev Casanova <detlev.casanova@collabora.com>,
+ linux-kernel@vger.kernel.org, Ezequiel Garcia
+ <ezequiel@vanguardiasur.com.ar>, Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Dragan Simic <dsimic@manjaro.org>, Diederik de Haas <didi.debian@cknow.org>,
+ Andy Yan <andy.yan@rock-chips.com>,
+ Boris Brezillon <boris.brezillon@collabora.com>,
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+ Daniel Almeida <daniel.almeida@collabora.com>,
+ Paul Kocialkowski <paul.kocialkowski@bootlin.com>,
+ Nicolas Dufresne <nicolas.dufresne@collabora.com>,
+ Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+ Jonas Karlman <jonas@kwiboo.se>, Alex Bee <knaerzche@gmail.com>,
+ linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-staging@lists.linux.dev
+References: <20240619150029.59730-1-detlev.casanova@collabora.com>
+ <20240619150029.59730-3-detlev.casanova@collabora.com>
+ <dc232a01-1495-42ff-ad2a-5a0aa780b60c@kernel.org>
+ <klzru2ak3yxccywqr57bslyctqtmrl2d3eghgv5letp7jkel6s@rlupljmxfijg>
 From: Krzysztof Kozlowski <krzk@kernel.org>
 Content-Language: en-US
 Autocrypt: addr=krzk@kernel.org; keydata=
@@ -117,11 +114,10 @@ Autocrypt: addr=krzk@kernel.org; keydata=
  uZwJCLykjad45hsWcOGk3OcaAGQS6NDlfhM6O9aYNwGL6tGt/6BkRikNOs7VDEa4/HlbaSJo
  7FgndGw1kWmkeL6oQh7wBvYll2buKod4qYntmNKEicoHGU+x91Gcan8mCoqhJkbqrL7+nXG2
  5Q/GS5M9RFWS+nYyJh+c3OcfKqVcZQNANItt7+ULzdNJuhvTRRdC3g9hmCEuNSr+CLMdnRBY fv0=
-In-Reply-To: <TYZPR03MB700143E13635364FF5A316D080C92@TYZPR03MB7001.apcprd03.prod.outlook.com>
+In-Reply-To: <klzru2ak3yxccywqr57bslyctqtmrl2d3eghgv5letp7jkel6s@rlupljmxfijg>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240620_230343_196164_FC899586 
-X-CRM114-Status: UNSURE (   8.61  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240620_231038_566872_A6B207E8 
+X-CRM114-Status: GOOD (  20.43  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -138,17 +134,55 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 21/06/2024 03:45, Jacobe Zang wrote:
-> Hello,
+On 20/06/2024 15:41, Sebastian Reichel wrote:
+> Hi,
 > 
->> Where is the binding for this?
-> I seperate the binding in this patch " [PATCH v1 1/3] arm64: dts: rockchip: Add AP6275P wireless support to Khadas Edge 2 ", the specific code is 
-> +                       clocks = <&hym8563>;
-> +                       clock-names = "32k";
+> On Thu, Jun 20, 2024 at 12:30:00PM GMT, Krzysztof Kozlowski wrote:
+>> On 19/06/2024 16:57, Detlev Casanova wrote:
+>>> +static const char * const rkvdec2_clk_names[] = {
+>>> +	"axi",
+>>> +	"ahb",
+>>> +	"core",
+>>> +	"cabac",
+>>> +	"hevc_cabac",
+>>> +};
+>>> +
+>>> +/*
+>>> + * Some SoCs, like RK3588 have multiple identical vdpu34x cores, but the
+>>> + * kernel is currently missing support for multi-core handling. Exposing
+>>> + * separate devices for each core to userspace is bad, since that does
+>>> + * not allow scheduling tasks properly (and creates ABI). With this workaround
+>>> + * the driver will only probe for the first core and early exit for the other
+>>> + * cores. Once the driver gains multi-core support, the same technique
+>>> + * for detecting the main core can be used to cluster all cores together.
+>>> + */
+>>> +static int rkvdec2_disable_multicore(struct rkvdec2_dev *rkvdec)
+>>> +{
+>>> +	const char *compatible;
+>>> +	struct device_node *node;
+>>> +	int ret;
+>>> +
+>>> +	/* Intentionally ignores the fallback strings */
+>>> +	ret = of_property_read_string(rkvdec->dev->of_node, "compatible", &compatible);
+>>> +	if (ret)
+>>> +		return ret;
+>>> +
+>>> +	/* first compatible node found from the root node is considered the main core */
+>>
+>> So you rely on order of nodes? Before you claim "identical cores", but
+>> now "main core" suggests one is different than others.
 > 
-> Should I combine these two patch to one?
+> Heh, I wrote that comment for Hantro. By main core I was referencing
+> the software side of things. With a number of equal cores and no DT
+> node describing a cluster (from HW point of view it's just equal
+> cores), they somehow need to be combined into a single entity to allow
+> scheduling work between them. This solves the issue by making one of
+> the devices the "main" device. From the HW point it's exactly the same
+> as the others. The function could also use the last core or the second
+> one. It does not matter as long as there is only one "main" core.
 
-That's DTS, not binding. I ask about Devicetree binding.
+Sounds good. Maybe comment could be a bit extended with this
+explanation, so the term "main" is clarified.
 
 Best regards,
 Krzysztof
