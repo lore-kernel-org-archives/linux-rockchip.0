@@ -4,86 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 64A6EC27C4F
-	for <linux-rockchip@archiver.kernel.org>; Fri, 21 Jun 2024 06:45:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0D1E5C27C4F
+	for <linux-rockchip@archiver.kernel.org>; Fri, 21 Jun 2024 06:58:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=BvPTt/wu+rrUOW33osTVsS7J5LG6sJELQNz81euSU9c=; b=Sm+yZ0jyvPNKUH
-	vdN3ka9CSRCYbMP/CWCh536IzhBnNv5Eng3Fj4egKTwrsvLLC94O7SBDbih7s/60xvLhpOlA0sbo+
-	oeZCbQo0OyNyRCYPGHIUbEug7M+LD96Kc2tbDFPnVXiNy+uodNXXiVXcyOLgCCkb0udKy/AYJtfuh
-	8FIl0RxaZNfh8if4eXo2o4szuzn9/Zl9lHUBAvgY99Dvzh5uu5LrK1koINN33ZN4osgHEbD67npvg
-	zfYrhBjkFUCYtdjNVQ+tzNNRmSY2mGSVUdH02w/TudWNrvMPFZ+M55h82ZC6OZazlGNUBHUUGL/IX
-	gbN09z6m7Pep0ErnnkgA==;
+	List-Owner; bh=e5007Qhv/kiFApVTEmY/xas5PgqZCtth8oNCBZ4g9Gg=; b=hmx0kGBBy//gKH
+	fuhSXMKL4awNkrYKWM+NjADukbDDM3+kIuZGQh5xTzN2jfe3RZ5Wk9Npyc1t/UjvHsJxqKRGiJNeX
+	gXmCO3p2X27vRfbJZ4Ii8zYeriznSnfbRGygvWI0b9w7giH6RB/vYGuJDLeMof1xR0b6HD54t2Jgr
+	xlRrIWlHdfkuE95IuAM+phUGfxZ2+O06M703+yyno3DTIxQixJbM0SwYHpeDizPhtMjnFALW2TxJr
+	mX3u/uFsmttXOGblnJqPJ/r+VNbVBPeG8UG0x5B6rD76YhpVqdzRRJSrkAjZMxx+sCwCwxmF3/TTm
+	eG37y8KeWW287tL5lRPg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sKY1P-0000000823p-2Koz;
-	Fri, 21 Jun 2024 06:45:19 +0000
-Received: from mail-oi1-x233.google.com ([2607:f8b0:4864:20::233])
+	id 1sKYES-0000000846a-45Nd;
+	Fri, 21 Jun 2024 06:58:48 +0000
+Received: from smtp.forwardemail.net ([149.28.215.223])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sKY1J-000000081yk-06KF;
-	Fri, 21 Jun 2024 06:45:15 +0000
-Received: by mail-oi1-x233.google.com with SMTP id 5614622812f47-3d23a0a32afso822148b6e.3;
-        Thu, 20 Jun 2024 23:45:12 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1718952312; x=1719557112; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=7c3IUUghQlxYHrHfw3/LC7ZyAugPVzJNu5s/S2BsRTI=;
-        b=QVJsBfw/6EM9HQ1HOsuG+oAM0yum6IMC0SpsYougG/h/+YYBqgfIXkJt6emdeHF+41
-         b8bFRMMNG9+L5wSHAnLLBEYqqH+RpimoRYCYzmbXF4xlYZNhJlSPU4VcHHxQXlhnmlen
-         GxAqdhti1vkscGjsDN2C1rt4nEsX1qWU/mxUOHlCN/uk4+GfFMmqBTLi2w1gcKekYD2i
-         luBpHQZJu90POAeqgW2mYhSuNYitD4ToK43ur5CB1LVgShy2kRPRaGA05FRbBZn85T2B
-         cf2ppUPTpGEaawsZ0XrzhHRZtgRavUQrK0qKo/yz2taNk+NVFFB7vrEpco2mpjfIhuYM
-         7vcw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1718952312; x=1719557112;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=7c3IUUghQlxYHrHfw3/LC7ZyAugPVzJNu5s/S2BsRTI=;
-        b=M/022OPat7bOYr7iYrr8hmAvDUG5uJLL2ep1nVU6G2RxtR76cQ95Z1RAGknFSeuPAz
-         xw71mWUqKPD0wTFP9meTiN8a0jSQt+uUbzUXBJIlZC5kNx0ILw3Hm7LaJN/6ukcxCepO
-         q0omLT9FV6vLdNeY0hlwx3bKDMTemm7e1tcgojA2ZI0/Q3PgZ9877zudle7mh7DJpto2
-         qF+dslA+pI8Wktpq29CefdIgqhpjjCr9ByEhoE9myRJ/BLhYFLCgn3JKf4Wf1tyWZ0TR
-         o3/XUVEjOm3UHy/uil+z0DHmzjq3B8j2uqr7O46xhCP+YZ3DxXP6/2VXc+HJSomZLl8c
-         Qhyg==
-X-Forwarded-Encrypted: i=1; AJvYcCUECbvL2/G5MzBKyu2xKl7IHR86EpY/ltDmNz89BBKjjWfrB20l209mjpPP8f/DOwU5uRUcI+mYB7kcerIWVtr8taWhTIpU8A3NjGDdpPiuHDsgQRWS8I4/GlpROV9b33i6OQmnagRcDGgp+OIb/AN+h4xsJtHqnlw=
-X-Gm-Message-State: AOJu0YyTmdmUJqw/TdYqPqRfK1tSTqL/A/Bw1wa5qoUVlZMv8xlASvRu
-	Biq84Igdp+c85xplCnHoIYja7KiSJRizS0n7nUwbam/8BgrvPLfP
-X-Google-Smtp-Source: AGHT+IHfpgCmiN4yKZxh9cbTOz2of+YIvMIYN9KZ2/R2f4ckpehIvdm8HVeXkx9Mi7blW/ux8nM4Ow==
-X-Received: by 2002:a05:6808:1784:b0:3d2:2512:5a5c with SMTP id 5614622812f47-3d51bb0f078mr8378774b6e.53.1718952311934;
-        Thu, 20 Jun 2024 23:45:11 -0700 (PDT)
-Received: from localhost.localdomain ([113.30.217.222])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-70651194776sm683117b3a.67.2024.06.20.23.45.08
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 20 Jun 2024 23:45:11 -0700 (PDT)
-From: Anand Moon <linux.amoon@gmail.com>
-To: Shawn Lin <shawn.lin@rock-chips.com>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	=?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kw@linux.com>,
-	Rob Herring <robh@kernel.org>,
-	Bjorn Helgaas <bhelgaas@google.com>,
-	Heiko Stuebner <heiko@sntech.de>
-Cc: Anand Moon <linux.amoon@gmail.com>,
-	linux-pci@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH v2 3/3] PCI: rockchip: Refactor rockchip_pcie_disable_clocks function signature
-Date: Fri, 21 Jun 2024 12:14:22 +0530
-Message-ID: <20240621064426.282048-3-linux.amoon@gmail.com>
-X-Mailer: git-send-email 2.44.0
-In-Reply-To: <20240621064426.282048-1-linux.amoon@gmail.com>
-References: <20240621064426.282048-1-linux.amoon@gmail.com>
+	id 1sKYEO-00000008447-2V5i
+	for linux-rockchip@lists.infradead.org;
+	Fri, 21 Jun 2024 06:58:46 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
+ h=Content-Transfer-Encoding: Content-Type: In-Reply-To: From: References:
+ Cc: To: Subject: MIME-Version: Date: Message-ID; q=dns/txt;
+ s=fe-e1b5cab7be; t=1718953096;
+ bh=wuLrixmm9mNItymNAgLNb/E3azKTDfSKGMXK8se96Fg=;
+ b=fCQgsxBNHkuFS1z62RU/VUZaXp3TsQ9b5GHwAzHFImPMWn/gWKBocMV2QIzE6YS7Aj5/zWpXt
+ 4bklNla1MfdslTLQZmQLnTdeYgaIa8k2mPn5FSyn1IwDtUiF87trVsJE/h3b5AEjt8lWaMTX5vN
+ sBV9z8Hp0bhGNoEtr0vXrsQTiBfH24BD96l5etYOnv8xQHHFcZg6+3xASN1NpaV2hYpRmBiwb+F
+ J43Xok0sVtX6irfEJQaRkJ3i/tOB0bfak/AiAtFvBDWCjPRc/26P6G+gsVeqttuKWEm9a5apsrw
+ iG7mBOCNT5qsqPHtFDpQ8F1G8FLEGW/IcueQ/2Dpwmlw==
+Message-ID: <dbf9d54e-1197-4731-80f2-91ff7c9954e4@kwiboo.se>
+Date: Fri, 21 Jun 2024 08:58:07 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 3/5] arm64: dts: rockchip: Fix mic-in-differential usage
+ on rk3568-rock-3a
+To: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+Cc: Lee Jones <lee@kernel.org>, Rob Herring <robh@kernel.org>, Krzysztof
+ Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Heiko
+ Stuebner <heiko@sntech.de>, Chris Zhong <zyw@rock-chips.com>, Zhang Qing
+ <zhangqing@rock-chips.com>, Chris Morgan <macromorgan@hotmail.com>, Furkan
+ Kardame <f.kardame@manjaro.org>, Michael Riesch
+ <michael.riesch@wolfvision.net>, kernel@collabora.com,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+References: <20240619-rk809-fixes-v1-0-fa93bc5313f4@collabora.com>
+ <20240619-rk809-fixes-v1-3-fa93bc5313f4@collabora.com>
+ <c35b3e80-7889-473d-8365-88436c3cb9a9@kwiboo.se>
+ <4015ded1-5ec4-4374-982e-9c7f23b43884@collabora.com>
+ <1fce65a2-b752-4bab-84e5-314b60d682f0@collabora.com>
+Content-Language: en-US
+From: Jonas Karlman <jonas@kwiboo.se>
+In-Reply-To: <1fce65a2-b752-4bab-84e5-314b60d682f0@collabora.com>
+X-Report-Abuse-To: abuse@forwardemail.net
+X-Report-Abuse: abuse@forwardemail.net
+X-Complaints-To: abuse@forwardemail.net
+X-ForwardEmail-Version: 0.4.40
+X-ForwardEmail-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
+ 149.28.215.223
+X-ForwardEmail-ID: 667524847560ce51b8f26441
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240620_234513_588525_EF944AE3 
-X-CRM114-Status: GOOD (  12.64  )
+X-CRM114-CacheID: sfid-20240620_235844_837253_7C87F208 
+X-CRM114-Status: GOOD (  19.12  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,46 +86,74 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Updated rockchip_pcie_disable_clocks function to accept
-a struct rockchip pointer instead of a void pointer.
+Hi Cristian,
 
-Signed-off-by: Anand Moon <linux.amoon@gmail.com>
----
- drivers/pci/controller/pcie-rockchip.c | 4 +---
- drivers/pci/controller/pcie-rockchip.h | 2 +-
- 2 files changed, 2 insertions(+), 4 deletions(-)
+On 2024-06-21 03:23, Cristian Ciocaltea wrote:
+> On 6/19/24 3:56 PM, Cristian Ciocaltea wrote:
+>> Hi Jonas,
+>>
+>> On 6/19/24 3:22 PM, Jonas Karlman wrote:
+>>> Hi Cristian,
+>>>
+>>> On 2024-06-19 13:23, Cristian Ciocaltea wrote:
+>>>> The 'mic-in-differential' DT property supported by the RK809/RK817 audio
+>>>> codec driver is actually valid if prefixed with 'rockchip,':
+>>>>
+>>>>   DTC_CHK arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dtb
+>>>>   rk3568-rock-3a.dtb: pmic@20: codec: 'mic-in-differential' does not match any of the regexes: 'pinctrl-[0-9]+'
+>>>> 	from schema $id: http://devicetree.org/schemas/mfd/rockchip,rk809.yaml#
+>>>>
+>>>> Make use of the correct property name.
+>>>>
+>>>> Fixes: a84ffd2ef1ff ("arm64: dts: rockchip: Fix mic-in-differential usage on rock-3a")
+>>>> Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+>>>> ---
+>>>>  arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts | 2 +-
+>>>>  1 file changed, 1 insertion(+), 1 deletion(-)
+>>>>
+>>>> diff --git a/arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts b/arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts
+>>>> index ebdedea15ad1..0b54dfe92d6e 100644
+>>>> --- a/arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts
+>>>> +++ b/arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts
+>>>> @@ -533,7 +533,7 @@ regulator-state-mem {
+>>>>  		};
+>>>>  
+>>>>  		codec {
+>>>> -			mic-in-differential;
+>>>> +			rockchip,mic-in-differential;
+>>>
+>>> If I understand the schematics correctly, only one wire is connected so
+>>> this board cannot really use differential signaling, and this should
+>>> probably instead be dropped.
+>>
+>> Thanks for pointing this out, I will drop it in v2.
+> 
+> I've also checked the schematics which indicate the PMIC RK809 CODEC
+> receives both MIC1_INN and MIC1_INP signals; the former comes from the
+> Jack input, while the latter is generated by the SLM42Q3AT MEMS Microphone.
+> 
+> However, I'm not sure the Mic presence on the board is dependent on the
+> HW revision - on REV V1.3 the "NC_" prefix under U24 component label
+> suggests it is not connected.  So maybe we should keep the property?!
 
-diff --git a/drivers/pci/controller/pcie-rockchip.c b/drivers/pci/controller/pcie-rockchip.c
-index f79e2b0a965b..da210cd96d98 100644
---- a/drivers/pci/controller/pcie-rockchip.c
-+++ b/drivers/pci/controller/pcie-rockchip.c
-@@ -284,10 +284,8 @@ int rockchip_pcie_enable_clocks(struct rockchip_pcie *rockchip)
- }
- EXPORT_SYMBOL_GPL(rockchip_pcie_enable_clocks);
- 
--void rockchip_pcie_disable_clocks(void *data)
-+void rockchip_pcie_disable_clocks(struct rockchip_pcie *rockchip)
- {
--	struct rockchip_pcie *rockchip = data;
--
- 	clk_bulk_disable_unprepare(ROCKCHIP_NUM_CLKS, rockchip->clks);
- }
- EXPORT_SYMBOL_GPL(rockchip_pcie_disable_clocks);
-diff --git a/drivers/pci/controller/pcie-rockchip.h b/drivers/pci/controller/pcie-rockchip.h
-index 27e951b41b80..3330b1e55dcd 100644
---- a/drivers/pci/controller/pcie-rockchip.h
-+++ b/drivers/pci/controller/pcie-rockchip.h
-@@ -354,7 +354,7 @@ int rockchip_pcie_init_port(struct rockchip_pcie *rockchip);
- int rockchip_pcie_get_phys(struct rockchip_pcie *rockchip);
- void rockchip_pcie_deinit_phys(struct rockchip_pcie *rockchip);
- int rockchip_pcie_enable_clocks(struct rockchip_pcie *rockchip);
--void rockchip_pcie_disable_clocks(void *data);
-+void rockchip_pcie_disable_clocks(struct rockchip_pcie *rockchip);
- void rockchip_pcie_cfg_configuration_accesses(
- 		struct rockchip_pcie *rockchip, u32 type);
- 
--- 
-2.44.0
+There is no such mic on the board, at least on the rev 1.3 that I have.
+
+This prop should be used to indicate that the attached microphone uses
+differential signaling, e.g. should have its two output signals
+connected to both INP(+) and INN(-).
+
+The SLM42Q3AT or the single wire from headphone jack indicate that a
+single-ended microphone is/can be used/wired on this board.
+
+The current use of non-working mic-in-differential was wrong, adding
+the rockchip,mic-in-differential would change behavior and wrongly
+describe hw of this board.
+
+Regards,
+Jonas
+
+> 
+> Cristian
 
 
 _______________________________________________
