@@ -4,71 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 70872C2BA18
-	for <linux-rockchip@archiver.kernel.org>; Fri, 21 Jun 2024 01:23:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B9FDDC2BD05
+	for <linux-rockchip@archiver.kernel.org>; Fri, 21 Jun 2024 01:25:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To:From:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=hHqJrmMwRA3NZgwaYDhId+ZGY8pEgMFs5ACglPft0VE=; b=tyUCthRd1d8Nzs
-	QKXak7MyQ++unvhT+x2/UnOduaBHqEsTGg7T1POl0Rki9F5yOuVry0XCaU8pSiHg7HmnO7/NrqpNE
-	MuwId6vnG86kKFfGMyHhule9r33YflpUK4y30HJybtUZDcOa1b4ZVisxC7MSdYHFH2vfqaM28/fAw
-	kdx3QEKBCdMn/GFiQveCTijsNiptFdf4Fd1KI1kyGlqRFNmEfLthZTVwEy09hriK07Te6eTmsOXcM
-	N4C8TGQg40m0v/wne4ZcqgFQceJJFOmQxAOI8JnvWBFkYLXs0R7FDSAIILbQzryIZ7fZx2tAUtkdY
-	M/Yg5COqjGZdiqdiMB0A==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Subject:To:From
+	:Date:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=hbbFxmzyO1Y+vAb5maVuAFsqFgW9aMDacUoYLY99/pk=; b=BTHiDdHC6+C13e
+	FIznnOsmpttQ11dOlSZaaUUmf2bNuJwWp9V+MTwpRvC8clewMp1ENCzEvGJ5Wm6zUM1ZSEQutVJdG
+	xkFfmfEoOXNFeW6osGzirEoIZD0AuhM3giewfhPt5fQcgzvHtuwFIJzd/vOuh35TEa5i+eSIbP9cJ
+	rMhVHI8AOO+e5nQlbShN/IEkvcmqEGpQyUgwMoi1QDSnp1pDVsdnbhUlqImKpAr3z3Q8rMRGZXDyH
+	KgUv4wWYBfZzLPRoC9Zuhr3E7xKk89sbs0UtDXiMqcbLn85jBpJemgH45YwWQYd0jJ3H0sPUecwM0
+	o1ymIQHLwfPDqpLlWNtw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sKT0H-00000007JsT-0jz9;
-	Fri, 21 Jun 2024 01:23:49 +0000
-Received: from madrid.collaboradmins.com ([46.235.227.194])
+	id 1sKT1V-00000007K6b-3XRb;
+	Fri, 21 Jun 2024 01:25:06 +0000
+Received: from pidgin.makrotopia.org ([2a07:2ec0:3002::65])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sKT0C-00000007Jrc-381V;
-	Fri, 21 Jun 2024 01:23:46 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1718933022;
-	bh=S/Y+XD9EEnIR15Y7mRl6RrqRYyY+K+WmygZUm5wATzo=;
-	h=Date:Subject:From:To:Cc:References:In-Reply-To:From;
-	b=L2dz/yDSW0PG56ChLFne9pA3VPa3SAhhoxfa6nEqxFvc+g92GCayvWkpfw3N9lckd
-	 PUdCvjFlmNg2Q+A4yNwfa627epfMxTufbR5lm8s9Ypck4O3wuANihNFOEOSfAMHwu+
-	 2eCysVofl9oyYQzfjbNOmFp2A6R5n601anu6SyQzNCCXqRgls5EwFtcs0KbRQ6JBC2
-	 pC0xPHkWOmbIlw8H5wvU91IXsQnBytxR/OCNlEIYF0pger3soEk89cb9rL6KF8fEt4
-	 G37KYh7o3d/s9JsCaNxhTVXxbg/cKSjmMFhMM14BCurmPsoUYQ1EBuYUgq2+/k5O6O
-	 4fjoFBQn0OLfA==
-Received: from [100.115.223.179] (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: cristicc)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id B1D5A3780FF1;
-	Fri, 21 Jun 2024 01:23:41 +0000 (UTC)
-Message-ID: <1fce65a2-b752-4bab-84e5-314b60d682f0@collabora.com>
-Date: Fri, 21 Jun 2024 04:23:41 +0300
+	id 1sKT1Q-00000007K49-0LIa;
+	Fri, 21 Jun 2024 01:25:01 +0000
+Received: from local
+	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
+	 (Exim 4.97.1)
+	(envelope-from <daniel@makrotopia.org>)
+	id 1sKT0r-000000004db-0C1t;
+	Fri, 21 Jun 2024 01:24:25 +0000
+Date: Fri, 21 Jun 2024 02:24:17 +0100
+From: Daniel Golle <daniel@makrotopia.org>
+To: Daniel Golle <daniel@makrotopia.org>,
+	Aurelien Jarno <aurelien@aurel32.net>,
+	Olivia Mackall <olivia@selenic.com>,
+	Herbert Xu <herbert@gondor.apana.org.au>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <ukleinek@debian.org>,
+	Sebastian Reichel <sebastian.reichel@collabora.com>,
+	Anand Moon <linux.amoon@gmail.com>,
+	Dragan Simic <dsimic@manjaro.org>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	Martin Kaiser <martin@kaiser.cx>, Ard Biesheuvel <ardb@kernel.org>,
+	linux-crypto@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: [PATCH v3 0/3] hwrng: add hwrng support for Rockchip RK3568
+Message-ID: <cover.1718921174.git.daniel@makrotopia.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 3/5] arm64: dts: rockchip: Fix mic-in-differential usage
- on rk3568-rock-3a
-From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-To: Jonas Karlman <jonas@kwiboo.se>, Lee Jones <lee@kernel.org>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- Chris Zhong <zyw@rock-chips.com>, Zhang Qing <zhangqing@rock-chips.com>,
- Chris Morgan <macromorgan@hotmail.com>,
- Furkan Kardame <f.kardame@manjaro.org>,
- Michael Riesch <michael.riesch@wolfvision.net>
-Cc: kernel@collabora.com, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org
-References: <20240619-rk809-fixes-v1-0-fa93bc5313f4@collabora.com>
- <20240619-rk809-fixes-v1-3-fa93bc5313f4@collabora.com>
- <c35b3e80-7889-473d-8365-88436c3cb9a9@kwiboo.se>
- <4015ded1-5ec4-4374-982e-9c7f23b43884@collabora.com>
-Content-Language: en-US
-In-Reply-To: <4015ded1-5ec4-4374-982e-9c7f23b43884@collabora.com>
+Content-Disposition: inline
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240620_182345_006160_E738E630 
-X-CRM114-Status: GOOD (  17.78  )
+X-CRM114-CacheID: sfid-20240620_182500_147185_90D53E80 
+X-CRM114-Status: GOOD (  18.17  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,54 +75,75 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 6/19/24 3:56 PM, Cristian Ciocaltea wrote:
-> Hi Jonas,
-> 
-> On 6/19/24 3:22 PM, Jonas Karlman wrote:
->> Hi Cristian,
->>
->> On 2024-06-19 13:23, Cristian Ciocaltea wrote:
->>> The 'mic-in-differential' DT property supported by the RK809/RK817 audio
->>> codec driver is actually valid if prefixed with 'rockchip,':
->>>
->>>   DTC_CHK arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dtb
->>>   rk3568-rock-3a.dtb: pmic@20: codec: 'mic-in-differential' does not match any of the regexes: 'pinctrl-[0-9]+'
->>> 	from schema $id: http://devicetree.org/schemas/mfd/rockchip,rk809.yaml#
->>>
->>> Make use of the correct property name.
->>>
->>> Fixes: a84ffd2ef1ff ("arm64: dts: rockchip: Fix mic-in-differential usage on rock-3a")
->>> Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
->>> ---
->>>  arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts | 2 +-
->>>  1 file changed, 1 insertion(+), 1 deletion(-)
->>>
->>> diff --git a/arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts b/arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts
->>> index ebdedea15ad1..0b54dfe92d6e 100644
->>> --- a/arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts
->>> +++ b/arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts
->>> @@ -533,7 +533,7 @@ regulator-state-mem {
->>>  		};
->>>  
->>>  		codec {
->>> -			mic-in-differential;
->>> +			rockchip,mic-in-differential;
->>
->> If I understand the schematics correctly, only one wire is connected so
->> this board cannot really use differential signaling, and this should
->> probably instead be dropped.
-> 
-> Thanks for pointing this out, I will drop it in v2.
+Rockchip SoCs used to have a random number generator as part of their
+crypto device, and support for it has to be added to the corresponding
+driver.
 
-I've also checked the schematics which indicate the PMIC RK809 CODEC
-receives both MIC1_INN and MIC1_INP signals; the former comes from the
-Jack input, while the latter is generated by the SLM42Q3AT MEMS Microphone.
+However newer Rockchip SoCs like the RK3568 have an independent True
+Random Number Generator device. This patchset adds a driver for it and
+enable it in the device tree.
 
-However, I'm not sure the Mic presence on the board is dependent on the
-HW revision - on REV V1.3 the "NC_" prefix under U24 component label
-suggests it is not connected.  So maybe we should keep the property?!
+v2 of this patchset has been submitted by Aurelien Jarno in November
+2022. A follow-up submission addressing the comments received for v2
+never happened.
 
-Cristian
+As I believe that using the TRNG is generally desireable as it reduces
+the time needed to boot significantly as userspace no longer waits due
+blocking read of /dev/random while still lacking entropy I have picked
+up Aurelien's previous work and completed it.
+
+Link to v2: https://patchwork.kernel.org/project/linux-arm-kernel/cover/20221128184718.1963353-1-aurelien@aurel32.net/
+
+v2 -> v3:
+ * Patch 1: address comments of Krzysztof Kozlowski, add MAINTAINERS
+   - improved description
+   - meaningful clock-names
+   - add entry in MAINTAINERS files
+
+ * Patch 2: numerous code-style improvements
+   - drop misleading rk_rng_write_ctl(), simplify I/O writes
+   - drop unused TRNG_RNG_DOUT_[1-7] macros
+   - handle error handling for pm_runtime_get_sync()
+   - use memcpy_fromio() instead of open coding for-loop
+   - some minor white-spaces fixes
+
+ * Patch 3:
+   - use clock-names as defined in dt-bindings
+
+v1 -> v2:
+ * Patch 1: fix issues reported by Rob Herring and Krzysztof Kozlowski:
+   - Rename rockchip-rng.yaml into rockchip,rk3568-rng.yaml
+   - Fix binding title and description
+   - Fix compatible property
+   - Rename clocks and add the corresponding descriptions
+   - Drop reset-names
+   - Add a bus definition with #address-cells and #size-cells to the
+     example.
+
+ * Patch 2: fix issue reported by kernel test robot <lkp@intel.com>
+   - Do not read the random registers as big endian, looking at the
+     RK3568 TRM this is actually not needed. This fixes a sparse
+     warning.
+
+ * Patch 3: unchanged
+
+Aurelien Jarno (3):
+  dt-bindings: RNG: Add Rockchip RNG bindings
+  hwrng: add Rockchip SoC hwrng driver
+  arm64: dts: rockchip: add DT entry for RNG to RK356x
+
+ .../bindings/rng/rockchip,rk3568-rng.yaml     |  60 +++++
+ MAINTAINERS                                   |   7 +
+ arch/arm64/boot/dts/rockchip/rk356x.dtsi      |   9 +
+ drivers/char/hw_random/Kconfig                |  14 ++
+ drivers/char/hw_random/Makefile               |   1 +
+ drivers/char/hw_random/rockchip-rng.c         | 229 ++++++++++++++++++
+ 6 files changed, 320 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/rng/rockchip,rk3568-rng.yaml
+ create mode 100644 drivers/char/hw_random/rockchip-rng.c
+
+-- 
+2.45.2
 
 _______________________________________________
 Linux-rockchip mailing list
