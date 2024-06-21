@@ -4,59 +4,155 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1E238C27C79
-	for <linux-rockchip@archiver.kernel.org>; Thu, 20 Jun 2024 22:46:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9615CC2BA18
+	for <linux-rockchip@archiver.kernel.org>; Fri, 21 Jun 2024 00:18:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=M2H/RSIYTFSYSn/vNvv3+zQLJzXNUuQdWHQC+OYnny0=; b=YToSrWDRKirqU1
-	xOVNPFSmpd1rhtnHltyxvNAmPrfosObWwZi3aErsUT7JmOrHJ1bhbEHE7NSjLoLQ+JtuEHmmDmmYK
-	R91U6YN5fXzSyCuDGqCja5o7iYNtPWVDDRYnnJDJE7rhRpH3fwZ8ZMOyrJFv5NZ9dzuvWfKqziL4o
-	Jsbmp69TLQy55NaCWZdLhU6p7EqELguTI68bUtCFGrjynZh9YlHpIcAx6NJELAH1OvurCn2Gqs+TL
-	7afjmJE3CMjeVFdZ03Glfk4u9C3ZLiCDNYOiJMp7/b+eukE+1KTIx3RK4K2mwcizdji24gq1Rut4M
-	ADNusAjQTVUuYm9H8m7Q==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=sMay0koZEMT/hKPSDZbvUQEbwFjw/rJmkqhhSZnttxU=; b=RMxtSG91ExrKyC
+	xN8YcTupYbgizyc3Jn12s7LO+Gq7iyaFBu3rWkUQwUy2513cr9LmhskJ67cpJWlMwu4oza6qlscif
+	TYsZBPeAkVWdmpw8LvVaTDyPfDJtNDgew3qhrx2x7WiAhoNQw/9LF2wEdMIYPsemYo2PpJKUq3no5
+	2qGigw8Tj4v6GdvsESYIK2EbKwN1TMWBiQ4HCW1hJVDZn8zmR7VayNLPbL9xX0U3PpDTMrHVpnGQf
+	LSB5bKFjm6OTtrScNKOwbmDzAH8bq/oVCyu4rFahyDNWkV3DZLA+yHZFPo096/1sGDOonRgxEfvvh
+	UAh9e5DX9C4IWSu6LGXA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sKQXR-00000006z3t-2Gi1;
-	Thu, 20 Jun 2024 22:45:53 +0000
-Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
+	id 1sKRzL-00000007CR9-1Y6n;
+	Fri, 21 Jun 2024 00:18:47 +0000
+Received: from mail-sgaapc01on2071a.outbound.protection.outlook.com ([2a01:111:f400:feab::71a] helo=APC01-SG2-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sKQXQ-00000006z3j-49Hw
-	for linux-rockchip@bombadil.infradead.org;
-	Thu, 20 Jun 2024 22:45:52 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=casper.20170209; h=Content-Transfer-Encoding:MIME-Version:
-	Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
-	Content-Description:In-Reply-To:References;
-	bh=rqGqhpgPkwWN5Ckf2+6TVB7vCzejMjvaTLHX5mhStoA=; b=diWsawHLaElKXBNxaeBoknMA4L
-	JssglkpTeY86BAc76wDL6eSzqte1tz1kOKAHPMiQ2me1LqX2JFkcjQ8jCyH9YfX6tqAWmjYTWpVzs
-	Jg2nZI8Hags0ixRfj6M/1A2/7sg4teOKjI5y77aAm4nyEd+G8GtDLCkbuvOfnhaNP5pa/sy5OSssr
-	95uzLAkSktHDcQKMfEC9Wwh4kp0kjcKZBg8zcSRPB6Xjmgxgpz4ZLwd+1JoDYwdFx5uw6W8/pUhKw
-	PVy/dnjgLN9TxGOmoJJ5QtNdevvoarHiJ6zpi3EaoFdDGvsXP2A4FIgbxLn3DpGfL3/yOQRcdX+nO
-	sP89BgkQ==;
-Received: from sakura.naobsd.org ([160.16.200.221] helo=mail.naobsd.org)
-	by casper.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sKQXL-00000006XjW-0YSj
-	for linux-rockchip@lists.infradead.org;
-	Thu, 20 Jun 2024 22:45:51 +0000
-Received: from secure.fukaumi.org ([10.0.0.2])
-	by mail.naobsd.org (8.14.4/8.14.4/Debian-4.1ubuntu1.1) with ESMTP id 45KMigCN029151;
-	Fri, 21 Jun 2024 07:44:42 +0900
-From: FUKAUMI Naoki <naoki@radxa.com>
-To: heiko@sntech.de
-Cc: jonas@kwiboo.se, devicetree@vger.kernel.org,
-        linux-rockchip@lists.infradead.org, FUKAUMI Naoki <naoki@radxa.com>
-Subject: [PATCH v3] arm64: dts: rockchip: fix mmc aliases for Radxa ZERO 3E/3W
-Date: Fri, 21 Jun 2024 07:44:35 +0900
-Message-ID: <20240620224435.2752-1-naoki@radxa.com>
-X-Mailer: git-send-email 2.43.0
+	id 1sKRzH-00000007CQJ-2UNJ;
+	Fri, 21 Jun 2024 00:18:45 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=kiTlHUvhNc7SKOTdJnofVsoF5gXek4kY7jUpHsT8rze+snPo26XX0GfiEJMzbPaGkizZZJE+BNl3FiQ4XCpnQXis0tFSQ262Xbdnq4nCrf3r3Hm2j69HfE5ux2ZZN1zuMMZlMldW5/yLoM0YYWTUsONiF3IpKuss1lAQiGJHiEM2B5kXjYrpx/x1KptZ9iEfXj2o7sZEPozSemaO/CP1m2OTzurhR108Pkrc1rGQQ4lSc7lHUipiWELrg4HjDx8/zFlsfd85xStBFCdvQ46t1zfLioMRT4ruU9ii/T3zCscT/3MJR2CxbjR+4Bcqxc/efxg2NyyW/Ke0M5b+Jl/HBQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=NZU+re/DcuA+YydxxSfhJMgpu3a9MjAa9Wfph7eNBPU=;
+ b=SF1n00oao6V6SpINmM0/walXrVZWYlIbrl/3r4jSLZCUtF+HjPe3LLhakMWJUk5w9dGmXofN9fr7+H9QnnWW5S1h+BYtn6xChvI++21tsRq9tLBIWw9wkDuXKuRnoZ7/j/vfPn/obudG45DXC2E5jPGTFNFidPfbkwLn9x6RlTtKv+VvGIySCSdKm2irTRfh4hyEH9rwwjo3sp9WRZIYuCU9u0/oYow8DtxLKg/vXnqcdgPDH2x9dnFJcERmVhWYS8r/GaHLroZFNKBKdrHTqqd9Q/fEmj3jvFE2IWrlZLjiT79r78/QAGHeJShScFVAB4W4TZCJM5NScFkKpZgNXw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=wesion.com; dmarc=pass action=none header.from=wesion.com;
+ dkim=pass header.d=wesion.com; arc=none
+Received: from TYZPR03MB7001.apcprd03.prod.outlook.com (2603:1096:400:26a::14)
+ by TYZPR03MB8133.apcprd03.prod.outlook.com (2603:1096:400:45a::12) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7677.31; Fri, 21 Jun
+ 2024 00:18:29 +0000
+Received: from TYZPR03MB7001.apcprd03.prod.outlook.com
+ ([fe80::78dd:5e68:1a9c:36c0]) by TYZPR03MB7001.apcprd03.prod.outlook.com
+ ([fe80::78dd:5e68:1a9c:36c0%6]) with mapi id 15.20.7677.029; Fri, 21 Jun 2024
+ 00:18:29 +0000
+From: Jacobe Zang <jacobe.zang@wesion.com>
+To: Arend Van Spriel <arend.vanspriel@broadcom.com>
+CC: "kvalo@kernel.org" <kvalo@kernel.org>, "duoming@zju.edu.cn"
+	<duoming@zju.edu.cn>, "bhelgaas@google.com" <bhelgaas@google.com>,
+	"minipli@grsecurity.net" <minipli@grsecurity.net>,
+	"linux-wireless@vger.kernel.org" <linux-wireless@vger.kernel.org>,
+	"brcm80211@lists.linux.dev" <brcm80211@lists.linux.dev>,
+	"brcm80211-dev-list.pdl@broadcom.com" <brcm80211-dev-list.pdl@broadcom.com>,
+	"megi@xff.cz" <megi@xff.cz>, "robh@kernel.org" <robh@kernel.org>,
+	"krzk+dt@kernel.org" <krzk+dt@kernel.org>, "conor+dt@kernel.org"
+	<conor+dt@kernel.org>, "heiko@sntech.de" <heiko@sntech.de>, Nick Xie
+	<nick@khadas.com>, "efectn@protonmail.com" <efectn@protonmail.com>,
+	"jagan@edgeble.ai" <jagan@edgeble.ai>, "dsimic@manjaro.org"
+	<dsimic@manjaro.org>, "devicetree@vger.kernel.org"
+	<devicetree@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org"
+	<linux-arm-kernel@lists.infradead.org>, "linux-rockchip@lists.infradead.org"
+	<linux-rockchip@lists.infradead.org>, "linux-kernel@vger.kernel.org"
+	<linux-kernel@vger.kernel.org>
+Subject: Re: [PATCH v1 0/3] Add AP6275P wireless support
+Thread-Topic: [PATCH v1 0/3] Add AP6275P wireless support
+Thread-Index: AQHawrWe8szxUUEiVU6ofxAnEJGD6bHQ6nUAgABxMlo=
+Date: Fri, 21 Jun 2024 00:18:29 +0000
+Message-ID: <TYZPR03MB700158175919906A22D06AB180C92@TYZPR03MB7001.apcprd03.prod.outlook.com>
+References: <20240620020015.4021696-1-jacobe.zang@wesion.com>
+ <19036b5bb30.279b.9b12b7fc0a3841636cfb5e919b41b954@broadcom.com>
+In-Reply-To: <19036b5bb30.279b.9b12b7fc0a3841636cfb5e919b41b954@broadcom.com>
+Accept-Language: en-US, zh-CN
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+msip_labels: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=wesion.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: TYZPR03MB7001:EE_|TYZPR03MB8133:EE_
+x-ms-office365-filtering-correlation-id: 5934fcf0-0674-4e3e-7731-08dc9187ad23
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;ARA:13230037|376011|7416011|1800799021|366013|38070700015;
+x-microsoft-antispam-message-info: =?iso-8859-1?Q?/voxlk1O2stQkdSK5P6530VN41sigQmunxYaOes4nATrtSNd5Pc03lPkU8?=
+ =?iso-8859-1?Q?dmknNDABoD5jC1+RwoOV3h1uWPib8BZaQx6EiGs7DB2wUea3sn33C8bDMH?=
+ =?iso-8859-1?Q?49F+o8FUIJokzY9gjwOPSlUBNhHj/ykLTXvc83TyjN+gIXDnbbku7yClyO?=
+ =?iso-8859-1?Q?bRp4d35LcE7FAkNjkIGHfTohktoa7MkOzMeNAnOgBXV+U6nFhXSHh6s2Pg?=
+ =?iso-8859-1?Q?u+tf+pXifUminUDHYggiqdP8ewjK+XKkTeRwz+k3Zes7S4atnx2hJIcjyl?=
+ =?iso-8859-1?Q?B5Cj8ByPdzjRII8VkF/LIzoCbuZpNcf9HajyRHpp8uPJy8AuwxRTAnKAvI?=
+ =?iso-8859-1?Q?+sDj5/t/AenOBnfzIEgRbf2abc8hjrLOZMonno4WEo5IHBnEK9d9ddNtMd?=
+ =?iso-8859-1?Q?bzzv0muMbyLKxm03StPgPchxGjdGHLVNIsib9RLiLjUwNHhmn9rM4E0vzP?=
+ =?iso-8859-1?Q?NKvtMjk94TmA/pCxt5CJerm/x43r7QWtj1TvNJroFYHoHnZKYsqxQKoqN1?=
+ =?iso-8859-1?Q?T4RdLNsN524T5RxCK6iqsplOJohtDNjwI9gAu5FihtMwv8Q61VJPwmxf+I?=
+ =?iso-8859-1?Q?FEviHRaVyJ6IJDDnT6TrXnyRBLoqzrEwaMpTO/Kgh90w3Ai9O0kufIWYvW?=
+ =?iso-8859-1?Q?WpGPCTGVfMudsPwg2BqZu49vNtAk0aoGl5ZrkzGYDRumSkW458XUX02KZK?=
+ =?iso-8859-1?Q?oL1gZ2DOWpQ6qqv0DtTIHEiO51iKoyh7FF9iEesFcAlCYWn/t6YjPspdsb?=
+ =?iso-8859-1?Q?Ot+EDSuNCelotZK5FEcYXr1AHOmRFuuQAlNuWikhVqWlEFl7w8G7KfDsa0?=
+ =?iso-8859-1?Q?XzGe/46zEDN+YuS49IFIaGqCSsZcsd9sgc8TpwbYtoEWcEchcqU5RtkPkF?=
+ =?iso-8859-1?Q?R+OeQO7+4co6dOVrDaih7eaom640oicC43jntNBh8szKxNYNBNjuER16VV?=
+ =?iso-8859-1?Q?3ISKMrwywhgbuonYatYGfyE1cGGyAgBwC5t72eqTMfuDgTP6G/PeGrfwMy?=
+ =?iso-8859-1?Q?pzjuDFcxI2THRyjt1x8OT0lGO110+3qAUrdGc7cx+ktxpYxhP2DtUyUljA?=
+ =?iso-8859-1?Q?Y0HYEbH/7qSyLOLj8heJanJ/wI5tyB22w9DdegNqekPF93G+fno/lduY1I?=
+ =?iso-8859-1?Q?s6zWLEQjHXKn/QrbuuxdjJX7Mw3MaLmPqXc0a039RwjKF/yALZ7tkuK2gO?=
+ =?iso-8859-1?Q?TqX5guVuBcTDP+sUytBD3PnhaVeg7uBzBzNN4WciZDMyu17mOnaoUULOQk?=
+ =?iso-8859-1?Q?ZRossRx/UrUD9PHQieLQtMQo1ysh0OTUPqKg9+KLVRtyg907TlGAUnxgDv?=
+ =?iso-8859-1?Q?VlvuzvnK8DdSkDWW9FKHr9ncWqaRB+VCq9CGAEm7nI1r1yuO7wEOH86KMJ?=
+ =?iso-8859-1?Q?xuhwFgimXJkiDe68KMRKtMnWh81nYL5bgB7cPLHYTui0ZDywC2fzs=3D?=
+x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:TYZPR03MB7001.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230037)(376011)(7416011)(1800799021)(366013)(38070700015);DIR:OUT;SFP:1102;
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?iso-8859-1?Q?nyjGFCoCjUBLZCK0Og4j21ho81eZP/0cwR5l2chOwFwctjOk59bORdI6Cx?=
+ =?iso-8859-1?Q?AO07wS7uYC4uvpKrJHx9qMCtnVQGyVqRGQWoOJjiGcFtvkqMtIhhv0KZZJ?=
+ =?iso-8859-1?Q?Uubms1MhDZ4/HTyULgO2obePHks15rakszoJmhT2Hn6P2l1ZbUH1v77Fah?=
+ =?iso-8859-1?Q?wrVuWvxG7zlFJirWg0tvH/Zy2XxbrbABt1D5MNhHnYsAulkTrTeLEmz6oP?=
+ =?iso-8859-1?Q?3cong6pCjcSLIEtC7g5eDjkS7NNPEU6kIVQDg3V44B/njHK9zzaRs1AnY8?=
+ =?iso-8859-1?Q?iZFgugAplecaVLK5sfLmVhyELMVkU5JJwRKnButLpu75w44FqAPGPDwVjc?=
+ =?iso-8859-1?Q?JAf+eqUjEwTrtNJbEx3te08KT538pC5gB8wz/xlwqoKnTImbA8Q9vSqHBR?=
+ =?iso-8859-1?Q?KvsqxSWliwOCA421gUGQlJM66ebna1ByaQ7LcXQrMIUn96c7063+QyeoIw?=
+ =?iso-8859-1?Q?yiCvRhgevl3ycv4ICHCD/fE00bpTjWJ5PuFEVIpeNgbVxww9+uXf6R1E8J?=
+ =?iso-8859-1?Q?VNCsf4n0xzgAediimwD1VRZ6/voHgRkE+sTxRpjUsgVKhBk9ehgRj7m+BJ?=
+ =?iso-8859-1?Q?4qwcK9uQNuDlwQNdXh4aUgJ2+n2n4JGxqhbft0t2g04ebyX5ePMzeRVdlz?=
+ =?iso-8859-1?Q?dD9nuc8v+5IIWHAKaUxU2DVWJBfevuurhgzJKNr+KVkyo5O557HWIvwT3P?=
+ =?iso-8859-1?Q?DeE3BT97E/sZGnP+30eBc4J77Dbo3N0omZU80iZXD2hp27f3sayj9YrJmy?=
+ =?iso-8859-1?Q?0NktLkIImL4vaqHfEkbae2I0o9lvo4Dgc4pzrekZf48bZnYKcScPeHjo/j?=
+ =?iso-8859-1?Q?FMANohf4WmcSNANshw9P+h65BCrUM2BwrNI00wAzgTfcajQ0IOa8CIRWhV?=
+ =?iso-8859-1?Q?gCeYWqh99LoUk3ULJAi4tzA+UrCTznwhsNbpdaaBNnFcAP85vEdbdDTred?=
+ =?iso-8859-1?Q?Pt7tSQHe4fg6Gw8lDx1aEH6d94GVVN4hA3++c66ixiD9ZeHNoVmpazVvhB?=
+ =?iso-8859-1?Q?y8xSr39+V0ALjGNcHfXZVJaGj/gWTiFBEI0RfbhmJEUk23ly1mwmnzRtEg?=
+ =?iso-8859-1?Q?H5t8ni3+zMpHDWWGuZHG3fA2Hn6NXrpnNkrdhi3V3uXqDL3HnMeRPbQQpy?=
+ =?iso-8859-1?Q?Ntp1CYGhBe+8uxXl5Xc3eXzsSGSUhsGtuyNm+C6z+W13CYvXtbuWkBKqAy?=
+ =?iso-8859-1?Q?n+SxFGmMzBOMbSDaK8c4ZPxLjJAmoYgBb+fTFgOtKqeIFW3AhOMupJLQG1?=
+ =?iso-8859-1?Q?D5w4Y3a2SmWmewxa3wTliHZNiGj/FxoLpI5TenqESIABxUUrsTxlDSNhcN?=
+ =?iso-8859-1?Q?48mGKJcqc6ezYU9LomtepTXexT+P1zrTHORL6gvMMzLI8PENOST/QK+V3d?=
+ =?iso-8859-1?Q?3+YEOUmq2tz6VYq83PJqNoaeGyxwHc3tWf2Mcg2UG3m6yHy5Ux9FRFyqIc?=
+ =?iso-8859-1?Q?Vo5VcsPsbCfXJzqQyOot/94l0bcmFELqMOMyXBR+3aKUNR6vnJDI7SkNOC?=
+ =?iso-8859-1?Q?/kQYNSYoQ1lDHmon4neKdgzZ1rHPpmH+TtbNMWCExSRYIhk3FSrj4kTfzb?=
+ =?iso-8859-1?Q?Z6xNQ4td6qHu+LeFQ6Aa4rplx0TMOzTmhLpjEjQMtR9SkDLsDkxGbEoyk1?=
+ =?iso-8859-1?Q?+Kmk1qgsLBL4TYtVIuCrxL0kighMQ50Go3?=
 MIME-Version: 1.0
+X-OriginatorOrg: wesion.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: TYZPR03MB7001.apcprd03.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 5934fcf0-0674-4e3e-7731-08dc9187ad23
+X-MS-Exchange-CrossTenant-originalarrivaltime: 21 Jun 2024 00:18:29.0971
+ (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 2dc3bd76-7ac2-4780-a5b7-6c6cc6b5af9b
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: 2i7M3iuPzKyRp3HmAI8patz7Vlc5TX5Ir+Bq+aB7Rsh1MTnzJmrOxtTxeObSR70X7euGL1kGICejxGCjXfRTdw==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: TYZPR03MB8133
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240620_234547_820740_425B850D 
-X-CRM114-Status: UNSURE (   9.42  )
+X-CRM114-CacheID: sfid-20240620_171843_744802_AD93C63A 
+X-CRM114-Status: UNSURE (   6.10  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -74,72 +170,14 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-align with other Radxa products.
+> Focus on getting agreement on that before
+> throwing in DTS and driver details.
 
-- mmc0 is eMMC
-- mmc1 is microSD
+Got it. I will focus on pushing the patch of defination first.
 
-for ZERO 3E, there is no eMMC, but aliases should start at 0, so mmc0
-is microSD as exception.
-
-Fixes: 1a5c8d307c83 ("arm64: dts: rockchip: Add Radxa ZERO 3W/3E")
-Signed-off-by: FUKAUMI Naoki <naoki@radxa.com>
-
-Changes in v3:
-- fix syntax error in rk3566-radxa-zero-3e.dts
-Changes in v2:
-- microSD is mmc0 instead of mmc1 for ZERO 3E
 ---
- arch/arm64/boot/dts/rockchip/rk3566-radxa-zero-3.dtsi | 4 ----
- arch/arm64/boot/dts/rockchip/rk3566-radxa-zero-3e.dts | 1 +
- arch/arm64/boot/dts/rockchip/rk3566-radxa-zero-3w.dts | 3 ++-
- 3 files changed, 3 insertions(+), 5 deletions(-)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3566-radxa-zero-3.dtsi b/arch/arm64/boot/dts/rockchip/rk3566-radxa-zero-3.dtsi
-index 623d5939d194..081be841b286 100644
---- a/arch/arm64/boot/dts/rockchip/rk3566-radxa-zero-3.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3566-radxa-zero-3.dtsi
-@@ -6,10 +6,6 @@
- #include "rk3566.dtsi"
- 
- / {
--	aliases {
--		mmc0 = &sdmmc0;
--	};
--
- 	chosen {
- 		stdout-path = "serial2:1500000n8";
- 	};
-diff --git a/arch/arm64/boot/dts/rockchip/rk3566-radxa-zero-3e.dts b/arch/arm64/boot/dts/rockchip/rk3566-radxa-zero-3e.dts
-index e166d66990b9..4a830eb09f0b 100644
---- a/arch/arm64/boot/dts/rockchip/rk3566-radxa-zero-3e.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3566-radxa-zero-3e.dts
-@@ -10,6 +10,7 @@ / {
- 
- 	aliases {
- 		ethernet0 = &gmac1;
-+		mmc0 = &sdmmc0;
- 	};
- };
- 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3566-radxa-zero-3w.dts b/arch/arm64/boot/dts/rockchip/rk3566-radxa-zero-3w.dts
-index 9bf4f464915f..f92475c59deb 100644
---- a/arch/arm64/boot/dts/rockchip/rk3566-radxa-zero-3w.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3566-radxa-zero-3w.dts
-@@ -9,7 +9,8 @@ / {
- 	compatible = "radxa,zero-3w", "rockchip,rk3566";
- 
- 	aliases {
--		mmc1 = &sdhci;
-+		mmc0 = &sdhci;
-+		mmc1 = &sdmmc0;
- 		mmc2 = &sdmmc1;
- 	};
- 
--- 
-2.43.0
-
-
+Best Regards
+Jacobe
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
