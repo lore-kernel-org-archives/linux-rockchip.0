@@ -4,60 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 39D31C27C4F
-	for <linux-rockchip@archiver.kernel.org>; Fri, 21 Jun 2024 15:37:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 35768C2BB85
+	for <linux-rockchip@archiver.kernel.org>; Fri, 21 Jun 2024 18:13:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=5iHkv+SMsX4AFPybRTwOxKvwZsUZNY4WnyTSZlMaNng=; b=cehmtygdXRCXUk
-	FVLMyPNLnafsI2VsWVU6GGs3uAxGXiwDdmfx1QWflTFUu2lOa46MnTULeoRzFhsfmo0hIz877One+
-	SLyjF/JAV5YHuiuN3kI9X0zPQISMceYP0xGw3x8uu8yClbFXJ/dYIwrMxm7PCDpxBpOGXjcNsdd4c
-	X19XcKoDiBs0puXEpxrZJH+o6WlviJF8pGQudXSRNejTZi/2dTaAVB95E3tgrEs6Bb9sdDv9pN9WE
-	NqylfMXlIb3qdCBxHylaqgQsTKEUFUWJ3REGIxORStKHxvDxTGBMf+aIzwZiFjjkt216fZK5Ef61O
-	RFhuIf1D4kKyjdtQClJA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
+	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=g3M3V214mVN/6YtBxCKRgj2eUKkkJ5qy1CYZc4ziREU=; b=Id3Q7kuigMMgV4AZbSuCEj48c7
+	E+Znw4mr8l9M92u/suXcdHp5ekOP8ht/o3L4viGQjc4yuKRYlZA8Jy171pUNKcW1Vel5uRoVav8HK
+	sMkU1MfJd/BLJUFiEVFO5YSjaJj5HknEQF687QUCz6KTKvPR4L/pmnv+uom/XzCO6G/JV5hhKg3d5
+	UvmZZeYJiTUHJ3Z1XWbvbx70/bRM6kdJlUMd6eBazBJsBCgOWsoyZsA3gkrWs0qcrzxvjqNm1NGqI
+	KXM3ypyg6yNFqXFKBnYULCC2C2Ve6RcdwImxTIdNsvU4CuvIsHcFIbb843qUerzk2oGFNASpcCuJm
+	7ObqtH/w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sKgK3-00000009luu-0Vh6;
-	Fri, 21 Jun 2024 15:37:07 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1sKilH-0000000ACVO-0keh;
+	Fri, 21 Jun 2024 18:13:23 +0000
+Received: from mail.manjaro.org ([2a01:4f8:c0c:51f3::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sKgJy-00000009lu3-47yk;
-	Fri, 21 Jun 2024 15:37:04 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id B3F4762508;
-	Fri, 21 Jun 2024 15:37:01 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E7796C2BBFC;
-	Fri, 21 Jun 2024 15:37:00 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1718984221;
-	bh=atpQZY8aOiTofjKL69fhtdxjNndjMkw9O1BEs9zt1pY=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=Q6zz2WhdwH7/OdlhSG29KjrnN2W6FKS1z8+FSjGm77tisG2nX9MESqEwnOVRKJ9kX
-	 GrLtD84WaApIfsif2wKzcUZQELo4/13RnWt82T06Lx7wNfjS2cMafehpKm6MeRrSfU
-	 dd2FO9vMdmKIJdd+v8xLYTS/KLYxazaDGf8lMlA14LajbRcvefaVN6GreDiyMVBPpg
-	 4XvH1NX7g7ufBfOee23HiSDOEOaU/UkWCQMUjId250BS9fhuksnPMofEKFmdwUfewJ
-	 sczFITfpKq0deS3RjkX1PadlFAlcw5XTJqFcIu7aix7sCUp0KaN/vSBJGZmJ6PgHa1
-	 i8E8/jJtv8gSA==
-Date: Fri, 21 Jun 2024 08:37:00 -0700
-From: Jakub Kicinski <kuba@kernel.org>
-To: netdev@vger.kernel.org
-Cc: Johan Jonker <jbx6244@gmail.com>, heiko@sntech.de, davem@davemloft.net,
- edumazet@google.com, pabeni@redhat.com, robh@kernel.org,
- krzk+dt@kernel.org, conor+dt@kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v1 0/3] cleanup arc emac
-Message-ID: <20240621083700.4d3981b7@kernel.org>
-In-Reply-To: <171896102978.12983.298145904993537431.git-patchwork-notify@kernel.org>
-References: <0b889b87-5442-4fd4-b26f-8d5d67695c77@gmail.com>
-	<171896102978.12983.298145904993537431.git-patchwork-notify@kernel.org>
+	id 1sKilB-0000000ACRr-2gCy;
+	Fri, 21 Jun 2024 18:13:19 +0000
 MIME-Version: 1.0
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
+	t=1718993593;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=oF3mZo1VFDTjJ8h7Wuq2E3h4BU0kvs78+Dm/ptq/cD8=;
+	b=fbAaTOmnqaoD3oG8vocepB00x8sRNHPWzj9Hw6y3RORWi8aRrtkyfaolBJgaWalyo/t17b
+	svKXjQA6eljRoko99JasfzdGExxQ9eIRlJYCsTlj6da6yje2DoQosKeJoUZupHWlGIxaaQ
+	P3LPhMfHfW4kitBEe4zBl+Z1ul/Yb/lBGow8uwLFWh/O8+78WIIrJKAqD9d8xdZZMyxPm8
+	4umP5ug3QHoa95y6rcJZxDsZyeaOsZGD+tJppn2sUJMm0Jlx1vLW3/aUVnF6Bvy5PTaacF
+	6ODlLFtAjGXQAEtYgzWMUNvFPmoVmBwdehacUaab1/EBQhAJ4NnNnXRkaYWuyQ==
+Date: Fri, 21 Jun 2024 20:13:08 +0200
+From: Dragan Simic <dsimic@manjaro.org>
+To: Krzysztof Kozlowski <krzk@kernel.org>
+Cc: Daniel Golle <daniel@makrotopia.org>, Aurelien Jarno
+ <aurelien@aurel32.net>, Olivia Mackall <olivia@selenic.com>, Herbert Xu
+ <herbert@gondor.apana.org.au>, Rob Herring <robh@kernel.org>, Krzysztof
+ Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Heiko
+ Stuebner <heiko@sntech.de>, Philipp Zabel <p.zabel@pengutronix.de>,
+ =?UTF-8?Q?Uwe_Kleine-K=C3=B6nig?= <ukleinek@debian.org>, Sebastian Reichel
+ <sebastian.reichel@collabora.com>, Anand Moon <linux.amoon@gmail.com>,
+ Sascha Hauer <s.hauer@pengutronix.de>, Martin Kaiser <martin@kaiser.cx>, Ard
+ Biesheuvel <ardb@kernel.org>, linux-crypto@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v3 2/3] hwrng: add Rockchip SoC hwrng driver
+In-Reply-To: <f8e6b1b9-f8ff-42df-b1ef-bcc439c2e913@kernel.org>
+References: <cover.1718921174.git.daniel@makrotopia.org>
+ <57a7fb13451f066ddc8d1d9339d8f6c1e1946bf1.1718921174.git.daniel@makrotopia.org>
+ <f8e6b1b9-f8ff-42df-b1ef-bcc439c2e913@kernel.org>
+Message-ID: <173ce1663186ab8282356748abcac3f4@manjaro.org>
+X-Sender: dsimic@manjaro.org
+Authentication-Results: ORIGINATING;
+	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240621_083703_104197_6CBC5DA1 
-X-CRM114-Status: UNSURE (   6.56  )
+X-CRM114-CacheID: sfid-20240621_111318_168126_6DBDA5F8 
+X-CRM114-Status: UNSURE (   8.48  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -70,21 +77,37 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, 21 Jun 2024 09:10:29 +0000 patchwork-bot+netdevbpf@kernel.org
-wrote:
->   - [v1,1/3] ARM: dts: rockchip: rk3xxx: fix emac node
->     (no matching commit)
->   - [v1,2/3] net: ethernet: arc: remove emac_arc driver
->     (no matching commit)
->   - [v1,3/3] dt-bindings: net: remove arc_emac.txt
->     https://git.kernel.org/netdev/net-next/c/8a3913c8e05b
+Hello Krzysztof,
 
-FTR - all of the patches were applied.
+On 2024-06-21 11:57, Krzysztof Kozlowski wrote:
+> On 21/06/2024 03:25, Daniel Golle wrote:
+>> From: Aurelien Jarno <aurelien@aurel32.net>
+
+[snip]
+
+>> +	pm_runtime_set_autosuspend_delay(dev, RK_RNG_AUTOSUSPEND_DELAY);
+>> +	pm_runtime_use_autosuspend(dev);
+>> +	pm_runtime_enable(dev);
+>> +
+>> +	ret = devm_hwrng_register(dev, &rk_rng->rng);
+>> +	if (ret)
+>> +		return dev_err_probe(&pdev->dev, ret, "Failed to register Rockchip 
+>> hwrng\n");
+>> +
+>> +	dev_info(&pdev->dev, "Registered Rockchip hwrng\n");
+> 
+> Drop, driver should be silent on success.
+
+I respectfully disagree.  Many drivers print a single line upon
+successful probing, which I find very useful.  In this particular
+case, it's even more useful, because some people may be concerned
+about the use of hardware TRNGs, so we should actually make sure
+to announce it.
 
 _______________________________________________
 Linux-rockchip mailing list
