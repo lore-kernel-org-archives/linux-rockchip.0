@@ -4,62 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 27B9BC27C4F
-	for <linux-rockchip@archiver.kernel.org>; Fri, 21 Jun 2024 21:21:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9D196C27C4F
+	for <linux-rockchip@archiver.kernel.org>; Fri, 21 Jun 2024 21:58:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
-	List-Owner; bh=OdFKJ2E7wBHvOVMn6kU9LyoUjnFuHrfKX9RiiT5t84s=; b=z/XWikhRxO/ofz
-	nSGJRdLZh6DYjKO4hqMHrm9AEpEF6vUBL1V/H1P9ZYfjaXMKWLrBHHH580GHfhhzfaIOop59BcThA
-	Bd2bDeMaGSwIsM9LcQhy+bditpOf57xm+FNFlO0Ph/dlWqo6cLn2hoVvHve4yWbgul7FD9FODVI1P
-	8LjIwgH0628nzxACxcXgUhs3IubptYUxddQcGql2ZPULwIyoq3nlLVZnzATX4iUjME0MqxKO0hrmo
-	pD+iBWffB85NB8nR4Ck74yH7wUKocnQHIERORB6IoQWRHCvDGNwBb6e1X6MqoVwNMOvnjFueOLC43
-	8mHZzGueeuoUMHbJ93aA==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
+	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=9qAz5i0KnpuiWUZUMzZHm3WjLYqFEN9uBcU3dQ1HQjE=; b=UKTRlEOW5NgQQT
+	SZYZxUP2bOws27cs4uVWFfbO38IVslww9Eu2NdX43bV9ATzH2vZfxBUgWwlei4rWaDKAZiH7H2xpt
+	cAzZohYCYSBrjJvFk8OEPiqypr0ozhGir7/BDnanROdRykG7dOxfBhJJioZjr1LAYGPWGL26bnP5L
+	sK7yHVECwuexGfcnkCS8Hpq9gidMjqGYMipOiEnlDJ4Q+GF7iJoR/Ph0ss7Grt/RHKXT/gFjWC4nO
+	hULj8X3GNoXbcZWxMoSsAUmDHRi/km9qfzOLl8IQomyw+sMSK1RooYgJytSZwJMUkrZhidAtBYetK
+	9KPfwm+7blv62clAwcsA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sKlhP-0000000AbQz-3yhH;
-	Fri, 21 Jun 2024 21:21:36 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1sKmH4-0000000AffC-0qfo;
+	Fri, 21 Jun 2024 21:58:26 +0000
+Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sKlhL-0000000AbQM-12H3;
-	Fri, 21 Jun 2024 21:21:32 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 1729762F68;
-	Fri, 21 Jun 2024 21:21:30 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8BCD8C2BBFC;
-	Fri, 21 Jun 2024 21:21:29 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1719004889;
-	bh=3Yl0WPJPIj05IofoVrZnhvJaFAT511jGI04C/99sCP0=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:From;
-	b=ujtG17W2bPpVngw8mYMS2vhlNoGV8bG4R+mqWWGDgLWqO3IsCag1r67m2HjqlK6D+
-	 rAeRlLvw+Xf1kPKuIWInOhKw0k2Um2vDQ4I/s4W2eWTqCAdPFMXvc3G2uOmisdfl2/
-	 CYQ7nfhiTWbkLdwWAYWI2wPEdX0L2ht0bwQ/31bpbwLeSK+gUn5qQfSJUdT2Lj/q7t
-	 V1f7FvZBRanU1zZC2GHwa9nrv9OmZe2w6ZnOR2Q0weBNulhcRdJEeNqoOzzdUMnQgP
-	 35avdcfL+q3TMS+YuICIx5zEQ1Nx1zBSuh/qxuyqxncOiUI5n/geDAzn1yeuZMFbJH
-	 crKTzcrcp0NKg==
-Date: Fri, 21 Jun 2024 16:21:25 -0500
-From: Bjorn Helgaas <helgaas@kernel.org>
-To: Anand Moon <linux.amoon@gmail.com>
-Cc: Shawn Lin <shawn.lin@rock-chips.com>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
-	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
-	Heiko Stuebner <heiko@sntech.de>, kernel test robot <lkp@intel.com>,
-	linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v2 1/3] PCI: rockchip: Simplify clock handling by using
- clk_bulk*() function
-Message-ID: <20240621212125.GA1406213@bhelgaas>
+	id 1sKmGx-0000000AfcV-2fvr;
+	Fri, 21 Jun 2024 21:58:21 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1719007098;
+	bh=GzRDLnuFoZMdH1hQlF6ojeOZvsWqIJBgLcgKRUN0xBw=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
+	b=I3FJIGQz0/eVwL3XqHal+xKSuyjIOKIrSuR2P/EMbws789fnsn/J55wtJsJEnCUCw
+	 YfCjbR90ROUiUmb/bXsHYXfyCRfh+HxlJpvjVDHo/cGTUsA9MYHDUVwvTYVg8TNLX0
+	 JAQLznq6XjlAyKlXG7tU2eP+CXX38COpXFscufpPU506ScPDAzh5v86EA+k2DGW8po
+	 0k3V3qUperSSnCxNT8m63wEnlSYPMhYTrZIJK5wohkJkOKCwu72kTJM0g6NQ3kMWlF
+	 e9R0TzyEZSx8MwJZ28NSSMAUNBOTF5EyhvhnHXMNhzpcRtibRRCy7yCDIE8ajrDyeN
+	 Ul5kp5BwuYvkg==
+Received: from localhost (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: cristicc)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 2ED1F37821E4;
+	Fri, 21 Jun 2024 21:58:18 +0000 (UTC)
+From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+Date: Sat, 22 Jun 2024 00:57:21 +0300
+Subject: [PATCH v2 4/5] arm64: dts: rockchip: Fix mic-in-differential usage
+ on rk3566-roc-pc
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20240621064426.282048-1-linux.amoon@gmail.com>
+Message-Id: <20240622-rk809-fixes-v2-4-c0db420d3639@collabora.com>
+References: <20240622-rk809-fixes-v2-0-c0db420d3639@collabora.com>
+In-Reply-To: <20240622-rk809-fixes-v2-0-c0db420d3639@collabora.com>
+To: Lee Jones <lee@kernel.org>, Rob Herring <robh@kernel.org>, 
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+ Chris Zhong <zyw@rock-chips.com>, Zhang Qing <zhangqing@rock-chips.com>, 
+ Chris Morgan <macromorgan@hotmail.com>, 
+ Furkan Kardame <f.kardame@manjaro.org>, 
+ Michael Riesch <michael.riesch@wolfvision.net>
+Cc: kernel@collabora.com, devicetree@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+ linux-kernel@vger.kernel.org
+X-Mailer: b4 0.14.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240621_142131_375241_1353725D 
-X-CRM114-Status: GOOD (  12.22  )
+X-CRM114-CacheID: sfid-20240621_145819_878085_20C1F85B 
+X-CRM114-Status: GOOD (  11.19  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,36 +81,38 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, Jun 21, 2024 at 12:14:20PM +0530, Anand Moon wrote:
-> Refactors the clock handling in the Rockchip PCIe driver,
-> introducing a more robust and efficient method for enabling and
-> disabling clocks using clk_bulk*() API. Using the clk_bulk APIs,
-> the clock handling for the core clocks becomes much simpler.
-> 
-> Reported-by: kernel test robot <lkp@intel.com>
-> Closes: https://lore.kernel.org/oe-kbuild-all/202406200818.CQ7DXNSZ-lkp@intel.com/
+The 'mic-in-differential' DT property supported by the RK809/RK817 audio
+codec driver is actually valid if prefixed with 'rockchip,':
 
-Drop these two lines, as suggested in the test robot report:
+  DTC_CHK arch/arm64/boot/dts/rockchip/rk3566-roc-pc.dtb
+  rk3566-roc-pc.dtb: pmic@20: codec: 'mic-in-differential' does not match any of the regexes: 'pinctrl-[0-9]+'
+	from schema $id: http://devicetree.org/schemas/mfd/rockchip,rk809.yaml#
 
-  If you fix the issue in a separate patch/commit (i.e. not just a new
-  version of the same patch/commit), kindly add following tags ...
+Make use of the correct property name.
 
-This is a new version of the same patch, so it doesn't need those
-tags.
+Fixes: a8e35c4bebe4 ("arm64: dts: rockchip: add audio nodes to rk3566-roc-pc")
+Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+---
+ arch/arm64/boot/dts/rockchip/rk3566-roc-pc.dts | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-The problem you're solving with this patch is that the clock handling
-is too complicated.  The test robot didn't report *that* problem.
+diff --git a/arch/arm64/boot/dts/rockchip/rk3566-roc-pc.dts b/arch/arm64/boot/dts/rockchip/rk3566-roc-pc.dts
+index 63eea27293fe..67e7801bd489 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3566-roc-pc.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3566-roc-pc.dts
+@@ -269,7 +269,7 @@ rk809: pmic@20 {
+ 		vcc9-supply = <&vcc3v3_sys>;
+ 
+ 		codec {
+-			mic-in-differential;
++			rockchip,mic-in-differential;
+ 		};
+ 
+ 		regulators {
 
-Since you'll repost for this, also s/Refactors/Refactor/ in the commit
-log so this is in imperative mood:
-https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/Documentation/process/submitting-patches.rst?id=v6.9#n94
-https://chris.beams.io/posts/git-commit/
+-- 
+2.45.2
 
->  drivers/pci/controller/pcie-rockchip.c | 64 ++++----------------------
->  drivers/pci/controller/pcie-rockchip.h | 15 ++++--
->  2 files changed, 21 insertions(+), 58 deletions(-)
-
-Nice reduction in lines!
 
 _______________________________________________
 Linux-rockchip mailing list
