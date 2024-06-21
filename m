@@ -4,64 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B04A0C27C4F
-	for <linux-rockchip@archiver.kernel.org>; Fri, 21 Jun 2024 13:40:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 87460C27C4F
+	for <linux-rockchip@archiver.kernel.org>; Fri, 21 Jun 2024 13:40:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=UjGXWzsgG3j2CFrkwO67dGUFmRfnMb8ACHy7FX6fufQ=; b=HULuE6xBOuGwtZ
-	mEG2JqzJMBKGGH7rSjbN+m9yKj1fMDHZSHdjR/6DK7KxIlNHfYX+QbZWvkowdEpCMTo6UD4u3JzCE
-	okPmu955YJmTgC9AFc74yTMTTPokWwhJmFhaSkiVjMdNFnuc6jsIE1KY0W7L2Edey4PbFvIJ3L9y2
-	IHgt7JOeMapTWFf/xoRijTy5tT/zK/WnJShhj62DdDVmOw5tDt3Waa9iue5tMo6GW/Yzw3KhQIbkj
-	EmV2NxIoDY8mypBJ8z7qFsSizKFrd4hyfGJ5/iWfMDBY8Pq+f3RCFYNkO9YVz6Kdvm+xrjueVOTxE
-	cK33A3FwraVr+yndTOtQ==;
+	List-Owner; bh=LWnQqN6Iov95fBSGVNxoGTvK5O//ek+4k2s9CNqfS1w=; b=i4d6y4VVOuxBo5
+	vSnx8fnuiyKeXzTEQtFJ5zkxJlfnBOwmDlzMkUzfM/AQMi/PbjTm9YzqKTS8y60FZDRbvA+cjBJuc
+	gn2pNA2JDLCFrwEsy8aVSuiE5gVFj4qwOo64s3XQLqLvIjAwxPXiRDXvzhxhIiROamUSYthwMHp/q
+	vjoXfSouCToYIGB2gB9EpPHRVHypuoclnKiww74CZzIDyhvH078Rj1MC/syvYbgj8V+7cfxIwMAl/
+	7mD8DDbCwR3LnhwN8X2AK9PELgw2wu6xkrYb4nDwfVI2qHLV8lElW1nQPUijy7qrzWBliTXj37faF
+	/5SICBPsgJR6f+RnQNRQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sKeVQ-00000009Me4-0mWu;
-	Fri, 21 Jun 2024 13:40:44 +0000
-Received: from mail-ed1-x52f.google.com ([2a00:1450:4864:20::52f])
+	id 1sKeVZ-00000009MjX-307A;
+	Fri, 21 Jun 2024 13:40:53 +0000
+Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sKeVI-00000009MZe-11d5;
-	Fri, 21 Jun 2024 13:40:38 +0000
-Received: by mail-ed1-x52f.google.com with SMTP id 4fb4d7f45d1cf-57d2fc03740so705069a12.0;
-        Fri, 21 Jun 2024 06:40:35 -0700 (PDT)
+	id 1sKeVI-00000009MZf-3ViF;
+	Fri, 21 Jun 2024 13:40:39 +0000
+Received: by mail-ed1-x52c.google.com with SMTP id 4fb4d7f45d1cf-57d05e0017aso2522261a12.1;
+        Fri, 21 Jun 2024 06:40:36 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1718977234; x=1719582034; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1718977235; x=1719582035; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=99hmU1TBHiI3BIDRHYs/T4GfZVTtEzomHKojpOx+X/A=;
-        b=IjFzlmj6JAHnxcBx9DVhteVUlmjkTcpr47parAYhvIw4lpCwV1JY5J5KItcSq/EUe/
-         GntFfm76Rxbi+sWQc599d6ZzOm73IMHHg/7vEwobsqvyshzRqUJWVScZXv8w/g2/epYu
-         mzb52caDgmlyrbUhLoyf090JjiZStK2XMJB6X7A2Gd215JZQfrxoUXg218MSyN6zFCdI
-         zrKfzyaOu2GOxAnkC7CSu4UKGxnYMuBAh18ycaH0m6LMNKaB6irl0O8ta/u/Bjfw0hiY
-         8XtcyQUJdjgqf+qpIocKPAbzT4vB3zmLDMWabUdlpNFfj8pBd0EcSc7LUSZcAI8B3eCH
-         l0vA==
+        bh=eFkUozk7tb7flvFcyJ5JsIPbVaD8NWPVa3/c5jb4Wl0=;
+        b=Pw0hsNXYg9IvUAi4Hk9VOxkafhGCtrNcgbTPX7nPsb2Ez5/FKqLLgEYOMKFRIdt2xd
+         sRMzlxExuz5y8V+DEtASsrIm2iU2bopDRbOXxtPn/wnanaBuLxyx2Dz2z3hSfjt7hRKq
+         cdrae/cr7pHlY4SYSbpYcZuWa+rKlb0XhGzHzrYFKJKZBxDM37MMY11amzZV0N6VuO/m
+         RFzwNl3/kW5cfJv17OQJFFRwyeglgIwgcS0nyb/wa8pQ4QzPeiCpkZGbmkVwmyIqKHdk
+         0GqRdZakMncT9CWfluXnMk4XOkvnQu+w+9/E5LuS6mQvQVFsyVbr+F5cePaVQRY/eG5E
+         meuA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1718977234; x=1719582034;
+        d=1e100.net; s=20230601; t=1718977235; x=1719582035;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=99hmU1TBHiI3BIDRHYs/T4GfZVTtEzomHKojpOx+X/A=;
-        b=vQIgymZqxmx1SIRCVbwjZRXDZoiVm/aPMizBXLD7yTewhY7AMghtrjaR3T9sh1vvHu
-         jnJVR2JBPAwYK8yJ1tNERBU9eRMrweqpeNdSq+jWfvz4j6KxmJB2dF8kYbI6DA2TPXzR
-         XYFS00422WihV643eTEIHFElVZQPBH5V+ioczvCPAsOHfgg5+PxqCKNg7ESS2am9U2tY
-         lWTO5hW5iBMEdI1QlaC1yhkAZ4z4lxllLhfGkdR0cZu02HF/UV1M5X33fQ2dQse9EMI7
-         ssfEDjDUkOpunmbWf0ZbTrXMTugGDkLAUWAHkmOe25yzCQ9vR/Z0aGQMCoVkmJs7KcHa
-         sbaw==
-X-Forwarded-Encrypted: i=1; AJvYcCWFxgCPf0qqH02J59chXGalLOCNwFoZb4GhgbBmM+bDfss09noGU0Glmo1bUSpVZsWqaEy7qBrpUuJFYA8FFfVsFAEMuy26HQDJaWaMzeoAVtH6sfZQKCY8i4ml1IDWj2IOgDMJ6WD9Xwgbby9i0FMxXqC/kZHKdfU=
-X-Gm-Message-State: AOJu0YybA5RWUGtFLeI2sQ45+DsKj7PCaq0aWeiWd2SIM057+N9l/Xhg
-	uAM7sEapgibpslI8USd66SXr1wceq3LPHR1dUE/9Ygwn9e2UO2w=
-X-Google-Smtp-Source: AGHT+IGfTBh9ByRy0rKyLhNz7zC2uRU9ragOUbs6RwOFonz8+hz7N60ZZROooF3sFovnZw72JqMlQw==
-X-Received: by 2002:a50:8ac8:0:b0:57c:8bdc:fddf with SMTP id 4fb4d7f45d1cf-57d07e8337amr4899211a12.20.1718977234191;
+        bh=eFkUozk7tb7flvFcyJ5JsIPbVaD8NWPVa3/c5jb4Wl0=;
+        b=HCf15LKWEykakLpQqXgN3jTqkThDNe9kkdgjyuoAk5x2RT9SE5QUC2+VzbBDHcwc7y
+         Oqt89AEPZqu1VN6vHdViYQxUsYnn4hB8xGlUa1gtPx+v1PuBlr253IjXzXAXIfGgTjy4
+         QqbQroxbpqk8fV7dQywk+uF8H4ColzlhC0t9AE4xmPJdETEnRI8YDTP3pmdKBWY0fJ8o
+         xQYdfSOu8lFD6tmKTdoroxKIVoreajxFRDPFoqWOAqHFVH8x3rxhwMPY4hoBoUhhQHg7
+         6y0PdluogvHyv6XIpGObGHsY1ny7ULeHX5Uk3Ezk62yNRWHIyKyj0UrY2+LTtGkGCbOM
+         +AMw==
+X-Forwarded-Encrypted: i=1; AJvYcCU2cOUWIPxhutThlYvieB3gAai/DvHOot9v9zrmtj7Gi+XIZ9qkg6gOq1jDBau1C1T3xTuUua6/aWbrqVs2utfDyZ8CLAOezx2Kpk5uKlejB1vg3ryNrgLC4+u9By39d8whE9lgsnTeJG2GdsZ8aYiAhG+tu7L2pZk=
+X-Gm-Message-State: AOJu0YyBQl+znJJ21k67oZLQz09+sdF/Bdv9JiQ9rsdLkciflhdrgvgG
+	09TEv67bcaoCKJ9FBiTRxN0MXQN9bZNTn2A5KB7SDhb+fpw7ZbGkUcYq
+X-Google-Smtp-Source: AGHT+IH+aNN8muxQBOlF2geszNuOMMwlp1muSzceOddFFHXJA2gZbdkBNxw9WjwtratXSkeYf0JVZg==
+X-Received: by 2002:a05:6402:14cf:b0:57c:d4e9:4a03 with SMTP id 4fb4d7f45d1cf-57d07edd5f8mr4634436a12.41.1718977234727;
         Fri, 21 Jun 2024 06:40:34 -0700 (PDT)
 Received: from U4.lan ([2a02:810b:f40:4600:1b6a:5399:9a4f:7217])
-        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-57d30562cb6sm962059a12.83.2024.06.21.06.40.33
+        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-57d30562cb6sm962059a12.83.2024.06.21.06.40.34
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 21 Jun 2024 06:40:33 -0700 (PDT)
+        Fri, 21 Jun 2024 06:40:34 -0700 (PDT)
 From: Alex Bee <knaerzche@gmail.com>
 To: Rob Herring <robh@kernel.org>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
@@ -72,17 +72,16 @@ Cc: devicetree@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	Alex Bee <knaerzche@gmail.com>
-Subject: [PATCH 2/4] dt-bindings: arm: rockchip: Add Neardi LBA3368
-Date: Fri, 21 Jun 2024 15:40:28 +0200
-Message-ID: <20240621134030.243646-3-knaerzche@gmail.com>
+Subject: [PATCH 3/4] arm64: dts: rockchip: Add sound-dai-cells for RK3368
+Date: Fri, 21 Jun 2024 15:40:29 +0200
+Message-ID: <20240621134030.243646-4-knaerzche@gmail.com>
 X-Mailer: git-send-email 2.45.2
 In-Reply-To: <20240621134030.243646-1-knaerzche@gmail.com>
 References: <20240621134030.243646-1-knaerzche@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240621_064036_329909_1713FD90 
-X-CRM114-Status: UNSURE (   9.25  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240621_064036_907897_42F36A7C 
+X-CRM114-Status: GOOD (  10.71  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,29 +98,43 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add Neardi LBA3368, a RK3368 based industrial board.
+Add the missing #sound-dai-cells for RK3368's I2S and S/PDIF controllers.
 
+Fixes: f7d89dfe1e31 ("arm64: dts: rockchip: add i2s nodes support for RK3368 SoCs")
+Fixes: 0328d68ea76d ("arm64: dts: rockchip: add rk3368 spdif node")
 Signed-off-by: Alex Bee <knaerzche@gmail.com>
 ---
- Documentation/devicetree/bindings/arm/rockchip.yaml | 5 +++++
- 1 file changed, 5 insertions(+)
+ arch/arm64/boot/dts/rockchip/rk3368.dtsi | 3 +++
+ 1 file changed, 3 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
-index eca0a42eb384..d2e887415d5d 100644
---- a/Documentation/devicetree/bindings/arm/rockchip.yaml
-+++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
-@@ -634,6 +634,11 @@ properties:
-           - const: mqmaker,miqi
-           - const: rockchip,rk3288
+diff --git a/arch/arm64/boot/dts/rockchip/rk3368.dtsi b/arch/arm64/boot/dts/rockchip/rk3368.dtsi
+index 734f87db4d11..73618df7a889 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3368.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3368.dtsi
+@@ -793,6 +793,7 @@ spdif: spdif@ff880000 {
+ 		dma-names = "tx";
+ 		pinctrl-names = "default";
+ 		pinctrl-0 = <&spdif_tx>;
++		#sound-dai-cells = <0>;
+ 		status = "disabled";
+ 	};
  
-+      - description: Neardi LBA3368
-+        items:
-+          - const: neardi,lba3368
-+          - const: rockchip,rk3368
-+
-       - description: Netxeon R89 board
-         items:
-           - const: netxeon,r89
+@@ -804,6 +805,7 @@ i2s_2ch: i2s-2ch@ff890000 {
+ 		clocks = <&cru SCLK_I2S_2CH>, <&cru HCLK_I2S_2CH>;
+ 		dmas = <&dmac_bus 6>, <&dmac_bus 7>;
+ 		dma-names = "tx", "rx";
++		#sound-dai-cells = <0>;
+ 		status = "disabled";
+ 	};
+ 
+@@ -817,6 +819,7 @@ i2s_8ch: i2s-8ch@ff898000 {
+ 		dma-names = "tx", "rx";
+ 		pinctrl-names = "default";
+ 		pinctrl-0 = <&i2s_8ch_bus>;
++		#sound-dai-cells = <0>;
+ 		status = "disabled";
+ 	};
+ 
 -- 
 2.45.2
 
