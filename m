@@ -4,73 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4D14DC27C4F
-	for <linux-rockchip@archiver.kernel.org>; Fri, 21 Jun 2024 22:06:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 874C7C27C4F
+	for <linux-rockchip@archiver.kernel.org>; Fri, 21 Jun 2024 22:17:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=GCn+lOcFXk5/Ch0cbPkgZ95L+kumAstYX11SEotSauQ=; b=5DYZ4LFzlmG7zq
-	TVEo5fpIwZxpPmB3s/b8wH53d78fl6SBo9parmRQRLw4MMFktaGBrRZQkydPaj5HRG4XYSX+AaKhl
-	ZZUSV6R2OZyOiwp2eW3a7W82OthcN1M3YQl/pa+PWCDy0mfos4UVEJLy53rpnd7YYMqG/xrAAoIb/
-	DbsAoMn6LZijyAFGBO9/k+C0Iiit4S9+uzv+FhO7R9k6wAVjCLNIA+3jcRNXDdq0/NnX7YtPxY90b
-	pvJigfgd32JkUmBJbLz0kmBSSM4t76uLFrKfxMG/Msz077r8oHpU3YUEURA5gVQnmFRZ+HzrkxWln
-	vJErMZogh9qIHzVt8nbg==;
+	List-Owner; bh=8jGY36YqMcCZ1C9MJkVuvEnC+aSC+2WBvPkyKgGELQ8=; b=sWHa67AtSkmdFY
+	1gNSqAQDOlmMsIkfZqr84JvoRVTu+zMqeOUPrnZFKW64LJak3y3GR/brO/WnIvIdtcDfA/Z0VGF7v
+	icUKAPdL6qqPZ6PdbShOsdcNR6t89/z+Z+HUVYOt/htloQRLimA0bwaX6+s2/AVlfJOYFvdWDh7Jc
+	+XRg1D8AHlmRf8brD4PSIwBTNGau70pqgvwKEl8yLYL7i6xFBTT5EYHy9+M5QU5RJx86MR5qh5QI7
+	dhwCJmkVOtuT7XMCA/nAKOJcjRzQlGH7ssyJJhUv7THICiP9uX/2dfzBdNXG9TKIPEyKZdsg5+AUf
+	cXC9rgnVzBpTsRPmDWdg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sKmOV-0000000AhH1-3YPo;
-	Fri, 21 Jun 2024 22:06:07 +0000
-Received: from madrid.collaboradmins.com ([46.235.227.194])
+	id 1sKmZc-0000000AjUH-3TWD;
+	Fri, 21 Jun 2024 22:17:36 +0000
+Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sKmOR-0000000AhFN-1nLB;
-	Fri, 21 Jun 2024 22:06:05 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1719007562;
-	bh=MJaLeVkFyERVtHBT2g/r5XD6cXEUKTBZEHce/z3g82s=;
+	id 1sKmZX-0000000AjT4-43HV;
+	Fri, 21 Jun 2024 22:17:33 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sin.source.kernel.org (Postfix) with ESMTP id ACA18CE3D30;
+	Fri, 21 Jun 2024 22:17:25 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D0FBAC2BBFC;
+	Fri, 21 Jun 2024 22:17:19 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1719008244;
+	bh=XIgP3gnjd7LTC0cYexQhnrJXzTEPBFd9t0ht0ox/1jo=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=qBegDUoDurKTVdNcHFcw5VkH9LSZLcyHToC7OzpzJ3koi3sUHicl1vfsdHP0SVf0E
-	 syh3VRXPfN4A0/eJ8oMDyE3ohYJdgaT8GPAiVyBKOZgGk9kfixHejNbATa2QuGTASs
-	 YEMmusdDwUvYk1dw8guHwHllLMQL8hcOZSTXU5FslI2R886nYAvmCsyK1ATsnWqvMm
-	 1QDf8w6ZWadHGgH1E1xT6qzI7x/u8ndVEMfCAu38T6e3k8JcPwk3GF6+me057Sl1SZ
-	 y4Y4g/CUjFLHtxGqmcvplVDkxwi4u3u9Cy3sbAxsGHCe3JCz6e1/mlfLZBr81zwQFF
-	 wUrPWW1gEJStQ==
-Received: from [100.115.223.179] (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: cristicc)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 04920378203F;
-	Fri, 21 Jun 2024 22:06:00 +0000 (UTC)
-Message-ID: <55dbc2a8-4e4a-405a-a9ae-e62b18aaeb1d@collabora.com>
-Date: Sat, 22 Jun 2024 01:06:00 +0300
+	b=FNLs4VxLGgEYEzsY52miCNNujSfXwPo8nvN02pkUceS4AGd/t9R0YBoGuSz0iSBC5
+	 1P24T8SfRPpNKmYsJD3FQf44uMwvChSF0oWtp9SwcqssBupu93Dg7mQNvgDm9G60Uv
+	 U2FFjo9EmbwgtSJ5EizcIuV+n3ybPB4bOryBaXpCd92LGyHoja7v/Y+S7s8WBBfq9C
+	 XvOamhRIhWggfPWdi28OLfKdK+MZBdU6E++x8qWpRn2D5+Wu3w0XzST89l7AeJewfc
+	 Y6jKnIVav4PDjOgs66bE1oBclTu97rV0yQDXG1sDtBRGWuesPPneNSCW+t+RoGwt3N
+	 CuVYcjsbcJRYA==
+Message-ID: <ead26406-dd3b-491c-b6ab-11002a2db11a@kernel.org>
+Date: Sat, 22 Jun 2024 00:16:56 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 3/5] arm64: dts: rockchip: Fix mic-in-differential usage
- on rk3568-rock-3a
-To: Jonas Karlman <jonas@kwiboo.se>
-Cc: Lee Jones <lee@kernel.org>, Rob Herring <robh@kernel.org>,
+Subject: Re: [PATCH v3 2/3] hwrng: add Rockchip SoC hwrng driver
+To: Dragan Simic <dsimic@manjaro.org>, Krzysztof Kozlowski <krzk@kernel.org>
+Cc: Daniel Golle <daniel@makrotopia.org>,
+ Aurelien Jarno <aurelien@aurel32.net>, Olivia Mackall <olivia@selenic.com>,
+ Herbert Xu <herbert@gondor.apana.org.au>, Rob Herring <robh@kernel.org>,
  Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
  <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- Chris Zhong <zyw@rock-chips.com>, Zhang Qing <zhangqing@rock-chips.com>,
- Chris Morgan <macromorgan@hotmail.com>,
- Furkan Kardame <f.kardame@manjaro.org>,
- Michael Riesch <michael.riesch@wolfvision.net>, kernel@collabora.com,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-References: <20240619-rk809-fixes-v1-0-fa93bc5313f4@collabora.com>
- <20240619-rk809-fixes-v1-3-fa93bc5313f4@collabora.com>
- <c35b3e80-7889-473d-8365-88436c3cb9a9@kwiboo.se>
- <4015ded1-5ec4-4374-982e-9c7f23b43884@collabora.com>
- <1fce65a2-b752-4bab-84e5-314b60d682f0@collabora.com>
- <dbf9d54e-1197-4731-80f2-91ff7c9954e4@kwiboo.se>
-From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Content-Language: en-US
-In-Reply-To: <dbf9d54e-1197-4731-80f2-91ff7c9954e4@kwiboo.se>
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Sebastian Reichel <sebastian.reichel@collabora.com>,
+ Anand Moon <linux.amoon@gmail.com>, Sascha Hauer <s.hauer@pengutronix.de>,
+ Martin Kaiser <martin@kaiser.cx>, Ard Biesheuvel <ardb@kernel.org>,
+ linux-crypto@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+References: <cover.1718921174.git.daniel@makrotopia.org>
+ <57a7fb13451f066ddc8d1d9339d8f6c1e1946bf1.1718921174.git.daniel@makrotopia.org>
+ <f8e6b1b9-f8ff-42df-b1ef-bcc439c2e913@kernel.org>
+ <173ce1663186ab8282356748abcac3f4@manjaro.org>
+Content-Language: en-US, de-DE
+From: =?UTF-8?Q?Uwe_Kleine-K=C3=B6nig?= <ukleinek@kernel.org>
+In-Reply-To: <173ce1663186ab8282356748abcac3f4@manjaro.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240621_150603_635772_F6AE9082 
-X-CRM114-Status: GOOD (  23.96  )
+X-CRM114-CacheID: sfid-20240621_151732_382435_758775FA 
+X-CRM114-Status: GOOD (  14.77  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,81 +80,45 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 6/21/24 9:58 AM, Jonas Karlman wrote:
-> Hi Cristian,
-> 
-> On 2024-06-21 03:23, Cristian Ciocaltea wrote:
->> On 6/19/24 3:56 PM, Cristian Ciocaltea wrote:
->>> Hi Jonas,
->>>
->>> On 6/19/24 3:22 PM, Jonas Karlman wrote:
->>>> Hi Cristian,
->>>>
->>>> On 2024-06-19 13:23, Cristian Ciocaltea wrote:
->>>>> The 'mic-in-differential' DT property supported by the RK809/RK817 audio
->>>>> codec driver is actually valid if prefixed with 'rockchip,':
->>>>>
->>>>>   DTC_CHK arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dtb
->>>>>   rk3568-rock-3a.dtb: pmic@20: codec: 'mic-in-differential' does not match any of the regexes: 'pinctrl-[0-9]+'
->>>>> 	from schema $id: http://devicetree.org/schemas/mfd/rockchip,rk809.yaml#
->>>>>
->>>>> Make use of the correct property name.
->>>>>
->>>>> Fixes: a84ffd2ef1ff ("arm64: dts: rockchip: Fix mic-in-differential usage on rock-3a")
->>>>> Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
->>>>> ---
->>>>>  arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts | 2 +-
->>>>>  1 file changed, 1 insertion(+), 1 deletion(-)
->>>>>
->>>>> diff --git a/arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts b/arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts
->>>>> index ebdedea15ad1..0b54dfe92d6e 100644
->>>>> --- a/arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts
->>>>> +++ b/arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts
->>>>> @@ -533,7 +533,7 @@ regulator-state-mem {
->>>>>  		};
->>>>>  
->>>>>  		codec {
->>>>> -			mic-in-differential;
->>>>> +			rockchip,mic-in-differential;
->>>>
->>>> If I understand the schematics correctly, only one wire is connected so
->>>> this board cannot really use differential signaling, and this should
->>>> probably instead be dropped.
->>>
->>> Thanks for pointing this out, I will drop it in v2.
->>
->> I've also checked the schematics which indicate the PMIC RK809 CODEC
->> receives both MIC1_INN and MIC1_INP signals; the former comes from the
->> Jack input, while the latter is generated by the SLM42Q3AT MEMS Microphone.
->>
->> However, I'm not sure the Mic presence on the board is dependent on the
->> HW revision - on REV V1.3 the "NC_" prefix under U24 component label
->> suggests it is not connected.  So maybe we should keep the property?!
-> 
-> There is no such mic on the board, at least on the rev 1.3 that I have.
-> 
-> This prop should be used to indicate that the attached microphone uses
-> differential signaling, e.g. should have its two output signals
-> connected to both INP(+) and INN(-).
-> 
-> The SLM42Q3AT or the single wire from headphone jack indicate that a
-> single-ended microphone is/can be used/wired on this board.
-> 
-> The current use of non-working mic-in-differential was wrong, adding
-> the rockchip,mic-in-differential would change behavior and wrongly
-> describe hw of this board.
-
-Thanks a lot for the clarifications! I dropped this in v2.
-
-Regards,
-Cristian
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGVsbG8gRHJhZ2FuLAoKT24gNi8yMS8yNCAyMDoxMywgRHJhZ2FuIFNpbWljIHdyb3RlOgo+IE9u
+IDIwMjQtMDYtMjEgMTE6NTcsIEtyenlzenRvZiBLb3psb3dza2kgd3JvdGU6Cj4+IE9uIDIxLzA2
+LzIwMjQgMDM6MjUsIERhbmllbCBHb2xsZSB3cm90ZToKPj4+IEZyb206IEF1cmVsaWVuIEphcm5v
+IDxhdXJlbGllbkBhdXJlbDMyLm5ldD4KPiAKPiBbc25pcF0KPiAKPj4+ICvCoMKgwqAgcG1fcnVu
+dGltZV9zZXRfYXV0b3N1c3BlbmRfZGVsYXkoZGV2LCBSS19STkdfQVVUT1NVU1BFTkRfREVMQVkp
+Owo+Pj4gK8KgwqDCoCBwbV9ydW50aW1lX3VzZV9hdXRvc3VzcGVuZChkZXYpOwo+Pj4gK8KgwqDC
+oCBwbV9ydW50aW1lX2VuYWJsZShkZXYpOwo+Pj4gKwo+Pj4gK8KgwqDCoCByZXQgPSBkZXZtX2h3
+cm5nX3JlZ2lzdGVyKGRldiwgJnJrX3JuZy0+cm5nKTsKPj4+ICvCoMKgwqAgaWYgKHJldCkKPj4+
+ICvCoMKgwqDCoMKgwqDCoCByZXR1cm4gZGV2X2Vycl9wcm9iZSgmcGRldi0+ZGV2LCByZXQsICJG
+YWlsZWQgdG8gcmVnaXN0ZXIgCj4+PiBSb2NrY2hpcCBod3JuZ1xuIik7Cj4+PiArCj4+PiArwqDC
+oMKgIGRldl9pbmZvKCZwZGV2LT5kZXYsICJSZWdpc3RlcmVkIFJvY2tjaGlwIGh3cm5nXG4iKTsK
+Pj4KPj4gRHJvcCwgZHJpdmVyIHNob3VsZCBiZSBzaWxlbnQgb24gc3VjY2Vzcy4KPiAKPiBJIHJl
+c3BlY3RmdWxseSBkaXNhZ3JlZS7CoCBNYW55IGRyaXZlcnMgcHJpbnQgYSBzaW5nbGUgbGluZSB1
+cG9uCj4gc3VjY2Vzc2Z1bCBwcm9iaW5nLCB3aGljaCBJIGZpbmQgdmVyeSB1c2VmdWwuwqAgSW4g
+dGhpcyBwYXJ0aWN1bGFyCj4gY2FzZSwgaXQncyBldmVuIG1vcmUgdXNlZnVsLCBiZWNhdXNlIHNv
+bWUgcGVvcGxlIG1heSBiZSBjb25jZXJuZWQKPiBhYm91dCB0aGUgdXNlIG9mIGhhcmR3YXJlIFRS
+TkdzLCBzbyB3ZSBzaG91bGQgYWN0dWFsbHkgbWFrZSBzdXJlCj4gdG8gYW5ub3VuY2UgaXQuCgpJ
+IGFncmVlIHRvIEtyenlzenRvZiBoZXJlLiBGcm9tIHRoZSBQT1Ygb2YgYSBkcml2ZXIgYXV0aG9y
+LCB5b3VyIG93bgpkcml2ZXIgaXMgdmVyeSBpbXBvcnRhbnQgYW5kIHdoaWxlIHlvdSB3cml0ZSBp
+dCwgaXQgcmVhbGx5IGludGVyZXN0cwoqeW91KiBpZiB0aGUgZHJpdmVyIGlzIHN1Y2Nlc3NmdWxs
+eSBwcm9iZWQuIEhvd2V2ZXIgZnJvbSBhIHN5c3RlbQpwZXJzcGVjdGl2ZSB0aGVzZSBhcmUgYW5u
+b3lpbmc6IFRoZXJlIGFyZSBlYXNpbHkgPjUwIGRldmljZXNbMV0gb24gYQpzeXN0ZW0sIGlmIGFs
+bCBvZiB0aGVzZSBwcmludCBhIG1lc3NhZ2UgaW4gcHJvYmUsIHlvdSBoYXZlIGxpdHRsZSBjaGFu
+Y2UKdG8gc2VlIHRoZSByZWxldmFudCBtZXNzYWdlcy4gRXZlbiBpZiBldmVyeSBkcml2ZXIgYXV0
+aG9yIHRoaW5rcyB0aGVpcgp3b3JrIGlzIGEgc3BlY2lhbCBzbm93IGZsYWtlIHRoYXQgaXMgd29y
+dGggYW5ub3VuY2luZywgaW4gcHJhY3RpY2UgdXNlcnMKb25seSBjYXJlIGFib3V0IHlvdXIgZHJp
+dmVyIGlmIHRoZXJlIGlzIGEgcHJvYmxlbS4gQWRkaXRpb25hbGx5IGVhY2gKbWVzc2FnZSB0YWtl
+cyB0aW1lIGFuZCBzbyBkZWxheXMgdGhlIGJvb3QgcHJvY2Vzcy4gQWRkaXRpb25hbGx5IGVhY2gg
+Cm1lc3NhZ2UgdGFrZXMgcGxhY2UgaW4gdGhlIHByaW50ayByaW5nIGJ1ZmZlciBhbmQgc28gZWRn
+ZXMgb3V0IGVhcmxpZXIgCm1lc3NhZ2VzIHRoYXQgbWlnaHQgYmUgbW9yZSBpbXBvcnRhbnQuCgpT
+byArMSBmb3IgZHJvcHBpbmcgdGhlIGRldl9pbmZvKCkgb3IgYXQgbGVhc3QgdXNpbmcgZGV2X2Rl
+YnVnKCkgZm9yIGl0LgoKQmVzdCByZWdhcmRzClV3ZQoKWzFdIE9uIG15IGxhcHRvcCBpZiBoYXZl
+OgoKCSQgZmluZCAvc3lzL2RldmljZXMgLW5hbWUgZHJpdmVyIHwgd2MgLWwKCTg3CgogICAgIE9u
+IGEgUmFzcGJlcnJ5cGkgaXQgeWllbGRzIDY2LgoKX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJv
+Y2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFp
+bG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
