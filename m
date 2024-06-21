@@ -4,76 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 615E6C27C4F
-	for <linux-rockchip@archiver.kernel.org>; Fri, 21 Jun 2024 10:06:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CB417C27C4F
+	for <linux-rockchip@archiver.kernel.org>; Fri, 21 Jun 2024 10:14:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=0KTGwK03xeVi+IBSX9I3XjDHutRpp+VjpnGOJFmyc1M=; b=cPynWUC+xR6vT3
-	yc94gYZ7Eb8SmKRDHcVc7dO/kIUhRHRXsWXBll6DjeXYtXXvr6MOmcSSfap8jOyOEja2ay+TWwc8p
-	tQexxpGN/lxTRMWyeqWVP+rDDqSDzjhdEHzByafLAel0PK3KxJpnJLxB8LCODl/5w/S8NsDLjgZfj
-	ZKj/sE1To4h9CR5phK5wUKr1dxqD9nM/EUIyo+x9+wxRgml9rbly4pAoXlwMxDk11YfVbIe1lAtbJ
-	+/VF4DzIcOpmivKvMflXPW2OT5wdYP2pN7W3wMu9EaV/9StiouipH1MdZGyzgJQQEFKOloJYWfo57
-	N6vw/y4Ll3WKtGS1s70Q==;
+	List-Owner; bh=22czx+rjvHg8aOBP6KhhDJ147TbVCTZWPB2SMLvxz2M=; b=n3Wxv8iVCkGBx1
+	eVexh7Tvg4z9KwivgHA3w9fViIrLv50ayQe7n5rxT9geoeXyuujPcurjJ6J5fZc3uyeeiQ/9Chs0J
+	AmzKh+nTS/awkkBPTF4feMIeLdDdB02OpbMBZ9iV4ax50owBqZjWuMLFp/+s1YAUlI926K817+2rV
+	TUeKzJgYNPc7FmuZR0k/ml1pyYL27f4FOowfDrkeYKmqfKanWfrGpHXW8hUvnhNwSGadx0cCh7pO9
+	nI2UNV3jKpYNch9VkFW4oB2a5VMEGNhYWRWP0dCJ4BQfDjUUoMV6nvaIKUyfP/xl4sIlnu7olhUvh
+	R7Ee+KjE0NNC5uivi2qw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sKb9t-00000008fZR-2O60;
-	Fri, 21 Jun 2024 10:06:17 +0000
-Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
+	id 1sKbHv-00000008i2f-39zg;
+	Fri, 21 Jun 2024 10:14:35 +0000
+Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sKb9o-00000008fYU-3Rxx;
-	Fri, 21 Jun 2024 10:06:14 +0000
+	id 1sKbHq-00000008i15-3OxV;
+	Fri, 21 Jun 2024 10:14:32 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 1AC39CE2C30;
-	Fri, 21 Jun 2024 10:06:11 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C756BC2BBFC;
-	Fri, 21 Jun 2024 10:06:03 +0000 (UTC)
+	by sin.source.kernel.org (Postfix) with ESMTP id 0A393CE2BB7;
+	Fri, 21 Jun 2024 10:14:29 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id CD993C2BBFC;
+	Fri, 21 Jun 2024 10:14:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1718964370;
-	bh=eIrkj/gF11mCVv5C/FFPHFinu8rryuV0kc+GwM2eeE4=;
+	s=k20201202; t=1718964868;
+	bh=mkYEDP/YXO6DS57YMdoORyJiiNR4AuIuioT8DgJSFsM=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=kAdMqyV+Bm54/U80yaJFieUDXUu5iENt7Oga/D+z04++JZfqq56C6/Am28wY+na8f
-	 twWx/luB6gR/FNCn0Bi5gVHXrrZRXKKvqppeYoLhjyZXM1vIhXLzVMx3MDlUb6Idwt
-	 6J8mCn5JkYxKCQe7kZ6+iLe3E08N8Io2eYhnpbrknIxwoFtEfqKIzH78cD8Yrj2Nl1
-	 Xausbquup+SUfGZ4cTOfmkuKwr7zTWGswAkycDD5H5U3jPBZp/5yWnjJyPtyfhHgaS
-	 PI4AqFZ3f0uT6ssMzfjZJzwBbFkXuDOHrYnpoMzSj5XDiz3cjEsAAA96sP/mwW+W8t
-	 6rYRsZfO7FCGg==
-Message-ID: <6ad2a9ab-41a7-4560-8031-d5fa9f2cd558@kernel.org>
-Date: Fri, 21 Jun 2024 12:06:01 +0200
+	b=NLdrdDzY3KwJZ3O+RO79Uo6g0BP7dPf5JXbWH/kohkfToNyoPTQXy+ZhbctcNMI7D
+	 N7dPusUjDUGNRo36JAf/xbwnE1v6R/qFEeLqmI1+1cHAnMaUU9BI6fU0BGIkmg5vwA
+	 2f+1dqf627X0zfSZ72olfIYdc8PBuoQaLnQRLhzn+c+cGpvjBxktUGQ5JGQ+tM7nLG
+	 W6MhCXYeX3T5ouNAmHp0V0iCSlnK1urLKa9r4bR35ybQFuHuW1J8iaCT5YhiC9OJdi
+	 sf8jXOxI+xdTzKYLvUCapqV+4JUrD8WY8pzjOCtKpbVH/qrLsvcyq3bT0BI6Us/UO0
+	 W+uNyMLoBkHMg==
+Message-ID: <269b5d3e-bf25-4b32-8e39-479057221c6b@kernel.org>
+Date: Fri, 21 Jun 2024 12:14:20 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1 2/3] net: wireless: brcmfmac: Add optional 32k clock
- enable support
-To: Jacobe Zang <jacobe.zang@wesion.com>,
- "arend.vanspriel@broadcom.com" <arend.vanspriel@broadcom.com>
-Cc: "kvalo@kernel.org" <kvalo@kernel.org>,
- "duoming@zju.edu.cn" <duoming@zju.edu.cn>,
- "bhelgaas@google.com" <bhelgaas@google.com>,
- "minipli@grsecurity.net" <minipli@grsecurity.net>,
- "linux-wireless@vger.kernel.org" <linux-wireless@vger.kernel.org>,
- "brcm80211@lists.linux.dev" <brcm80211@lists.linux.dev>,
- "brcm80211-dev-list.pdl@broadcom.com" <brcm80211-dev-list.pdl@broadcom.com>,
- "megi@xff.cz" <megi@xff.cz>, "robh@kernel.org" <robh@kernel.org>,
- "krzk+dt@kernel.org" <krzk+dt@kernel.org>,
- "conor+dt@kernel.org" <conor+dt@kernel.org>,
- "heiko@sntech.de" <heiko@sntech.de>, Nick Xie <nick@khadas.com>,
- "efectn@protonmail.com" <efectn@protonmail.com>,
- "jagan@edgeble.ai" <jagan@edgeble.ai>,
- "dsimic@manjaro.org" <dsimic@manjaro.org>,
- "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
- "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>,
- "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
-References: <20240620020015.4021696-1-jacobe.zang@wesion.com>
- <20240620020015.4021696-3-jacobe.zang@wesion.com>
- <b8b89ef7-2e92-4e1a-9609-6b0fd6d64d7e@kernel.org>
- <TYZPR03MB700143E13635364FF5A316D080C92@TYZPR03MB7001.apcprd03.prod.outlook.com>
- <4533403d-11b1-4f73-b57d-3079be1e300f@kernel.org>
- <TYZPR03MB7001C517C5BDC8967DECECD880C92@TYZPR03MB7001.apcprd03.prod.outlook.com>
+Subject: Re: [PATCH 1/5] dt-bindings: mfd: rk809: Use correct compatible in
+ the example
+To: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>,
+ Lee Jones <lee@kernel.org>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ Chris Zhong <zyw@rock-chips.com>, Zhang Qing <zhangqing@rock-chips.com>,
+ Chris Morgan <macromorgan@hotmail.com>,
+ Furkan Kardame <f.kardame@manjaro.org>,
+ Michael Riesch <michael.riesch@wolfvision.net>
+Cc: kernel@collabora.com, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+References: <20240619-rk809-fixes-v1-0-fa93bc5313f4@collabora.com>
+ <20240619-rk809-fixes-v1-1-fa93bc5313f4@collabora.com>
 From: Krzysztof Kozlowski <krzk@kernel.org>
 Content-Language: en-US
 Autocrypt: addr=krzk@kernel.org; keydata=
@@ -119,10 +105,10 @@ Autocrypt: addr=krzk@kernel.org; keydata=
  uZwJCLykjad45hsWcOGk3OcaAGQS6NDlfhM6O9aYNwGL6tGt/6BkRikNOs7VDEa4/HlbaSJo
  7FgndGw1kWmkeL6oQh7wBvYll2buKod4qYntmNKEicoHGU+x91Gcan8mCoqhJkbqrL7+nXG2
  5Q/GS5M9RFWS+nYyJh+c3OcfKqVcZQNANItt7+ULzdNJuhvTRRdC3g9hmCEuNSr+CLMdnRBY fv0=
-In-Reply-To: <TYZPR03MB7001C517C5BDC8967DECECD880C92@TYZPR03MB7001.apcprd03.prod.outlook.com>
+In-Reply-To: <20240619-rk809-fixes-v1-1-fa93bc5313f4@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240621_030613_246445_7B5AC3F1 
-X-CRM114-Status: UNSURE (   6.59  )
+X-CRM114-CacheID: sfid-20240621_031431_236699_7220D707 
+X-CRM114-Status: UNSURE (   9.48  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -140,14 +126,17 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 21/06/2024 09:45, Jacobe Zang wrote:
->> That's DTS, not binding. I ask about Devicetree binding.
+On 19/06/2024 13:23, Cristian Ciocaltea wrote:
+> The example is not able to actually test the schema since it uses a
+> wrong compatible 'rockchip,rk808' instead of 'rockchip,rk809'.
 > 
-> Ok... I have grep in all dts files and can't find wifi node which is under pcie node has clock. So should I add an example in the yaml file? 
+> Use the correct compatible and drop the wrong properties in the
+> example section so that dt_binding_check passes.
+> 
+> Fixes: 6c38ca03406e ("dt-bindings: mfd: rk808: Convert bindings to yaml")
+> Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 
-No, that's example, not binding.
-
-Validate your DTS with dtbs_check.
+Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
 Best regards,
 Krzysztof
