@@ -4,70 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 263E6C27C4F
-	for <linux-rockchip@archiver.kernel.org>; Fri, 21 Jun 2024 13:27:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C41BFC2BBCA
+	for <linux-rockchip@archiver.kernel.org>; Fri, 21 Jun 2024 13:40:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=aFlmDHwqX0+OWz0eFtnhrtzk+D6onj9Avq4TdzjNULs=; b=ZmtADMgaCc6V+X/HnlXq/zyoCk
-	o5ISjJLC2jbiZe276FqwJxKHLA8dDxHtrdvbTYDVBZQtPzMnAzlg1NcWjP/mRYiGZPsUaHViBtFoD
-	YAPovgn8k3OenV9P/r+LXPqpAJJQZxAmCajedFnmOs82/7rO6ztwcp7vjiM4czuGbHrAlgitwtMDz
-	G2dalF2vakkFc5b6z+pUH29KwrL9Osdfkx6gnq/htJ4saOYKgrU5qDn4aW2ArjTY3R9r0qzMO52DR
-	pSd3OrFGQeQEIqemJepLoPQjiYZZrqHYqth4imnYtIHsb9isYt2Qm3iUDnkN6OGJPOQj/VfN7NuaL
-	QAmfsAMg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=zMZjwsBzYpHRn+jW89x1fmpV3B66uVoywMTyTZIy3Bo=; b=XdnPLGup90XtiH
+	DpK9tmMuZZyXNaieznC2BBX0QNKwaRAxcxI+Pf61bWlJllKM8Z9pQueZ0jcebDs5HjP29+SV3jbY+
+	SJQrFSd9IuuC8v0R4EBxmrZsUjkguLbzZRnyPRLatWAUXiYIx70dLJ4bsaSFR5efcbkeQGsiWz2d8
+	hL6j0mFy5EoerC8g793uETjAB8qT8iNggsmz5VvJeOLCDVDXJUFcTe/FLqIHmMPGwlBJCB5sPVovw
+	98mx0d2MVy2NoEaBuWqA44jNtdM6yMdiijJK77eU5NNEagPEbQFirWlOF+fH2nilHu3fuRpGJ9PJX
+	MyCiYs+gxLq4EeP5o07g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sKeIC-00000009Ks1-3RJk;
-	Fri, 21 Jun 2024 13:27:04 +0000
-Received: from madrid.collaboradmins.com ([46.235.227.194])
+	id 1sKeVP-00000009Mdu-2lDT;
+	Fri, 21 Jun 2024 13:40:43 +0000
+Received: from mail-ed1-x52f.google.com ([2a00:1450:4864:20::52f])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sKeIA-00000009KrO-0qtN
-	for linux-rockchip@lists.infradead.org;
-	Fri, 21 Jun 2024 13:27:03 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1718976420;
-	bh=osld6dK3jXn9QfIFzrfdCXJj+wgJTV1og7IU+S2Vsr8=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=JxgGvYQxSjR6XDCF8N//FsUZaEWtBizAcw48r40ry1BYk+990Kb6YJ85wmYo2nqr7
-	 XF1NicpZRH6FuchNagMoT2k54vpdFpfckwDYiUD07aou4vNrdv2leQwRSnJg113pm9
-	 gU7xf+G1xjTLCxCWx9bID2HO4YRyVkvS63HVyR90Cm6WJLZoLqiY1Kjh1dP3KRdLNK
-	 5EZqsFzioieJ8sa+PWFlga/c3SIEi3ZTom+GtbxkFrsXc39p6hrjM2HhDvWVNto1rv
-	 g0RGEu1zEAc9ZpgAtb/f7mfZ8GA1nvoYKUaAUIK889Xa3sGL8qV/96lijrlOqQ3ET7
-	 jDRNPHfHu0q/w==
-Received: from localhost (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: sebastianfricke)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id E9C4837821DD;
-	Fri, 21 Jun 2024 13:26:59 +0000 (UTC)
-Date: Fri, 21 Jun 2024 15:26:58 +0200
-From: Sebastian Fricke <sebastian.fricke@collabora.com>
-To: Devarsh Thakkar <devarsht@ti.com>
-Cc: mchehab@kernel.org, robh@kernel.org, krzk+dt@kernel.org,
-	conor+dt@kernel.org, hverkuil-cisco@xs4all.nl,
-	linux-media@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
-	benjamin.gaignard@collabora.com, laurent.pinchart@ideasonboard.com,
-	praneeth@ti.com, nm@ti.com, vigneshr@ti.com, a-bhatia1@ti.com,
-	j-luthra@ti.com, b-brnich@ti.com, detheridge@ti.com,
-	p-mantena@ti.com, vijayp@ti.com, andrzej.p@collabora.com,
-	nicolas@ndufresne.ca, afd@ti.com
-Subject: Re: [PATCH v14 2/6] media: imagination: Add E5010 JPEG Encoder driver
-Message-ID: <20240621132658.m2utqnvwaicgiwqr@basti-XPS-13-9310>
-References: <20240618193651.2771478-1-devarsht@ti.com>
- <20240618193651.2771478-3-devarsht@ti.com>
- <20240621123715.enqtdqxskdkod5ze@basti-XPS-13-9310>
- <8dda9d0c-3154-a7fd-1233-ca5be59639de@ti.com>
+	id 1sKeVI-00000009MZZ-18tg;
+	Fri, 21 Jun 2024 13:40:38 +0000
+Received: by mail-ed1-x52f.google.com with SMTP id 4fb4d7f45d1cf-57d106e69a2so243256a12.0;
+        Fri, 21 Jun 2024 06:40:34 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1718977233; x=1719582033; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=HO8YbNgusDOc+w+m1b18tvlpjQ6nHTLOVFIcczCcZXE=;
+        b=dFsOU6sLUr/94gRzoxGyEmlmEPL4tvxnWfFmB/usdrAuK6BO4Cf4UbQ8dKk7X4UInY
+         XAfxUV46ACU02mts1Z557RXJj1cMv+XKWF6f5QcS8uFXEv5kxPGj4/Mcf/sWVRCx+bv4
+         Y+STwaERqP13WEYHeo6rimvnw+rGXlSf2g+kt2YvAkFvz+W1zcX60k0hzWNEQxOKz00g
+         QpupG3BwDxJc6KLOKTk9S+BjI9mE6rdBCGxeiUQpRAFl+xhkIKUgsqNMLFWiUWGwXjEQ
+         j5E+FKwHmLNadnkwNs2e9Adq7Ciheoytzganm0SC7s4L8p/MYCHmBDqY/tC6HsNhZait
+         KiGw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1718977233; x=1719582033;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=HO8YbNgusDOc+w+m1b18tvlpjQ6nHTLOVFIcczCcZXE=;
+        b=egs+Ni7G0Qa9SD+3LZ5kNG7ovRtA4w2yFtO5i7bDjcaDonhQ4w6q4sLjeQzbEwKdR2
+         VlsktNP9mfPl73xc6AvgAnH+dKYctxHS+m+863mpdkqaNAy7e3QpwHM9gsjaqjUkcAcz
+         lCgJRsIlnPBRHKR8Eugl0daHUc7hj95teEGkw02WmpYhj4V8v7H/uh3bTnqxJEtKn4hP
+         hqATJKe4hZuzPdx9wgsR1EwYyG62oop8h03x0Z1o/2z4nSyZShfKpGwqc3HvN+Fww4c6
+         vhYn3o8SWGppngX8nAGvRIDPPu09RaXtHfDrIOdgDLOpS4hEuT5bVrBQh588YTe0/ETC
+         e5mg==
+X-Forwarded-Encrypted: i=1; AJvYcCWDOx3os3knn+mSFY1QT2aJGAPiRdmQF94Rsho56i4/MrCOzlF5XX9k/jkg58GnNE4H7ncdvpzP2ak+YTtnyU3QiBB8zBJKVRWnk1OJwxhNldc/UUo0UrPnyk6SkAKA8/3HDIzNByCOttroK7SrN2k9CugVaAs0fJU=
+X-Gm-Message-State: AOJu0Yw5viwUWfgxBED5g4BSzNf4tKL9F8XdeQQQ7Q8p0yjenGSqDt+c
+	M679h043G9jBP6pQNoNqMoFmQQyD+uMmM4jrWZ6P6LOFpINm03k=
+X-Google-Smtp-Source: AGHT+IF80rrq09Pob3DPsGOTdKXgb+35KYXWIJaGBuqcU9+0ap2q4ps0fkqx4Pp0KMSYOl1t91xmdA==
+X-Received: by 2002:a50:9359:0:b0:57c:c41c:c0cd with SMTP id 4fb4d7f45d1cf-57d069af610mr5811498a12.4.1718977233052;
+        Fri, 21 Jun 2024 06:40:33 -0700 (PDT)
+Received: from U4.lan ([2a02:810b:f40:4600:1b6a:5399:9a4f:7217])
+        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-57d30562cb6sm962059a12.83.2024.06.21.06.40.32
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 21 Jun 2024 06:40:32 -0700 (PDT)
+From: Alex Bee <knaerzche@gmail.com>
+To: Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>
+Cc: devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Alex Bee <knaerzche@gmail.com>
+Subject: [PATCH 0/4] Add LBA3368 board
+Date: Fri, 21 Jun 2024 15:40:26 +0200
+Message-ID: <20240621134030.243646-1-knaerzche@gmail.com>
+X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <8dda9d0c-3154-a7fd-1233-ca5be59639de@ti.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240621_062702_564164_6A54E9CD 
-X-CRM114-Status: GOOD (  15.74  )
+X-CRM114-CacheID: sfid-20240621_064036_353421_6C0C170F 
+X-CRM114-Status: GOOD (  12.60  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,50 +90,38 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGV5IERldmFyc2gsCgpPbiAyMS4wNi4yMDI0IDE4OjE0LCBEZXZhcnNoIFRoYWtrYXIgd3JvdGU6
-Cj5IaSBTZWJhc3RpYW4KPgo+T24gMjEvMDYvMjQgMTg6MDcsIFNlYmFzdGlhbiBGcmlja2Ugd3Jv
-dGU6Cj4+IEhleSBEZXZhcnNoLAo+Pgo+PiBUaGlzIGRvZXNuJ3QgY29tcGlsZSB3aXRob3V0IGVy
-cm9ycyBmb3IgbWUsIGN1cmlvdXMsIGl0IHByb2JhYmx5IGRpZAo+PiBjb21waWxlIHdpdGhvdXQg
-cHJvYmxlbXMgZm9yIHlvdSByaWdodD8KPj4KPj4gZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS9pbWFn
-aW5hdGlvbi9lNTAxMC1qcGVnLWVuYy5jOjE2MjI6MTk6IGVycm9yOgo+PiBpbml0aWFsaXphdGlv
-biBvZiDigJhpbnQgKCopKHN0cnVjdCBwbGF0Zm9ybV9kZXZpY2UgKinigJkgZnJvbSBpbmNvbXBh
-dGlibGUKPj4gcG9pbnRlciB0eXBlIOKAmHZvaWQgKCopKHN0cnVjdCBwbGF0Zm9ybV9kZXZpY2Ug
-KinigJkKPj4gWy1XZXJyb3I9aW5jb21wYXRpYmxlLXBvaW50ZXItdHlwZXNdCj4+IMKgMTYyMiB8
-wqDCoMKgwqDCoMKgwqDCoCAucmVtb3ZlID0gZTUwMTBfcmVtb3ZlLAo+PiDCoMKgwqDCoMKgIHzC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgXn5+fn5+fn5+fn5+Cj4+IGRyaXZl
-cnMvbWVkaWEvcGxhdGZvcm0vaW1hZ2luYXRpb24vZTUwMTAtanBlZy1lbmMuYzoxNjIyOjE5OiBu
-b3RlOiAobmVhcgo+PiBpbml0aWFsaXphdGlvbiBmb3Ig4oCYZTUwMTBfZHJpdmVyLnJlbW92ZeKA
-mSkKPj4gY2MxOiBzb21lIHdhcm5pbmdzIGJlaW5nIHRyZWF0ZWQgYXMgZXJyb3JzCj4+Cj4KPlll
-cyBJIHRoaW5rIGl0IGRpZCBjb21waWxlIGZpbmUgZm9yIG1lLgo+RGlkIHlvdSB0cnkgdGhpcyBv
-biB0aXAgb2YgbGludXgtbmV4dCA/CgpOb3BlIHRoZSBtZWRpYSBzdWJzeXN0ZW0gaXMgbm90IGJh
-c2VkIG9uIGxpbnV4LW5leHQsIGJ1dCBpbnN0ZWFkIG9uOgpodHRwczovL2dpdC5saW51eHR2Lm9y
-Zy9tZWRpYV9zdGFnZS5naXQvbG9nLwpQbGVhc2UgbWFrZSBzdXJlIHRoYXQgeW91ciBwYXRjaGVz
-IGNvbXBpbGUgb24gdG9wIG9mIHRoYXQuCgo+Cj5BcyBtZW50aW9uZWQgaW4gY2hhbmdlbG9nLCB0
-aGVyZSB3YXMgdXBkYXRlIGluIHBsYXRmb3JtIGRyaXZlciBmb3IgcmV0dXJuIHR5cGUKPm9mIHJl
-bW92ZSBmdW5jdGlvbiB3aGljaCBnb3QgY2hhbmdlZCB0byB2b2lkIHJldHVybiB0eXBlLiBQbGVh
-c2UgY2hlY2sgaWYgeW91Cj5oYXZlIHRoaXMgcGF0Y2ggWzFdIGluIHlvdXIgdHJlZSB3aGljaCBn
-b3QgcmVjZW50bHkgbWVyZ2VkLgoKTm8gdGhhdCBwYXRjaCBpcyBub3QgcGFydCBvZiB0aGUgdHJl
-ZSB5ZXQuCgpQbGVhc2Ugbm90ZSBhbHNvIHRoZSBmb2xsb3dpbmcgc2VjdGlvbiBpbiB0aGF0IHBh
-dGNoOgoKICAJLyoKCSAqIFRyYWRpdGlvbmFsbHkgdGhlIHJlbW92ZSBjYWxsYmFjayByZXR1cm5l
-ZCBhbiBpbnQgd2hpY2ggaG93ZXZlciBpcwoJICogaWdub3JlZCBieSB0aGUgZHJpdmVyIGNvcmUu
-IFRoaXMgbGVkIHRvIHdyb25nIGV4cGVjdGF0aW9ucyBieSBkcml2ZXIKCSAqIGF1dGhvcnMgd2hv
-IHRob3VnaHQgcmV0dXJuaW5nIGFuIGVycm9yIGNvZGUgd2FzIGEgdmFsaWQgZXJyb3IKCSAqIGhh
-bmRsaW5nIHN0cmF0ZWd5LiBUbyBjb252ZXJ0IHRvIGEgY2FsbGJhY2sgcmV0dXJuaW5nIHZvaWQs
-IG5ldwoJICogZHJpdmVycyBzaG91bGQgaW1wbGVtZW50IC5yZW1vdmVfbmV3KCkgdW50aWwgdGhl
-IGNvbnZlcnNpb24gaXQgZG9uZQoJICogdGhhdCBldmVudHVhbGx5IG1ha2VzIC5yZW1vdmUoKSBy
-ZXR1cm4gdm9pZC4KClNvIHlvdXIgZHJpdmVyIGlzIGV4cGVjdGVkIHRvIGltcGxlbWVudCByZW1v
-dmVfbmV3KCkuCgpJIHdpbGwgdGFrZSBjYXJlIG9mIHRoaXMgZm9yIHRoZSBQUiwgYnV0IHBsZWFz
-ZSBub3RlIGZvciB0aGUgZnV0dXJlOgpJdCBoYXMgdG8gd29yayB3aXRoIG1lZGlhX3N0YWdlLCB1
-bmxlc3MgeW91IGhhdmUgYSB2ZXJ5IGdvb2QgcmVhc29uIGZvcgpzb21ldGhpbmcgZGlmZmVyZW50
-LgoKPgo+S2luZGx5IGxldCBtZSBrbm93IGlmIHlvdSBzdGlsbCBmYWNlIGFueSBpc3N1ZXMuCj4K
-PlsxXToKPmh0dHBzOi8vbG9yZS5rZXJuZWwub3JnL2FsbC8yMDI0MDUyNzA4MzQxNi4xMTc3MTA2
-LTItdS5rbGVpbmUta29lbmlnQHBlbmd1dHJvbml4LmRlLwo+Cj5SZWdhcmRzCj5EZXZhcnNoCgpS
-ZWdhcmRzLApTZWJhc3RpYW4KCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0
-cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGlu
-Zm8vbGludXgtcm9ja2NoaXAK
+This series aims to add support for RK3368 based LBA3368 industrial board
+form Neardi. The device tree currently only contains entries for which both
+bindings and linux driver exists and is expected to be exended in future.
+
+NB: checkpatch throws me a warning that no venddor-prefix for "usb5e3"
+exists - which is true - but "usb5e3,610" has a valid binding.
+
+
+Alex Bee (4):
+  dt-bindings: vendor-prefixes: Add Neardi Technology
+  dt-bindings: arm: rockchip: Add Neardi LBA3368
+  arm64: dts: rockchip: Add sound-dai-cells for RK3368
+  arm64: dts: rockchip: Add Neardi LBA3368 board
+
+ .../devicetree/bindings/arm/rockchip.yaml     |   5 +
+ .../devicetree/bindings/vendor-prefixes.yaml  |   2 +
+ arch/arm64/boot/dts/rockchip/Makefile         |   1 +
+ .../boot/dts/rockchip/rk3368-lba3368.dts      | 666 ++++++++++++++++++
+ arch/arm64/boot/dts/rockchip/rk3368.dtsi      |   3 +
+ 5 files changed, 677 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3368-lba3368.dts
+
+-- 
+2.45.2
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
