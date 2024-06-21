@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7E3C1C27C4F
-	for <linux-rockchip@archiver.kernel.org>; Fri, 21 Jun 2024 09:53:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 33669C27C4F
+	for <linux-rockchip@archiver.kernel.org>; Fri, 21 Jun 2024 09:58:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:
 	MIME-Version:Date:Message-ID:Reply-To:Cc:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=AKD7L2otdWozcRYQFbVz6AaWJGCpWF2XX5CTqAVSpGQ=; b=tOHl8dqhnbi7vo
-	jYQQGBmL3P2yhR0cDVGIQD2Yx3N1Sd3IaMOTA6o6ES0VriVP1xG4Vb/7p5EyzNQFzGMUr60bv/FDG
-	ZqM3ei2oUOhoj85tPdNxvaiENMD86TgnbQeA5k6bE24o+Z4VFCqNLhNkOSLyhIaWrxQUr7PryRvOw
-	Aks4uNTGfRapkP+40ROKMz0HSz1C22tDMz70FVKraGmPq8spDMUruTgyfS7lGDTm0HFuEFvHIczc5
-	XJ+a5F4Owu0d5Zk0pLAXAeoobIbNR00Yb2PjvxwjU/cnZMZ5Cu7rSgIayUOlZ20iCzvjQysE59lJF
-	vxM1NAlM446FF6qmiO1Q==;
+	List-Owner; bh=lWgcTcefCCZCiNO+2Il8uQDs3WAlOXeYByCLuta+Dko=; b=OZIyKcmjqBUHWT
+	ZQcar/irprTnt8VoH6jJ2WEt+OowpkxN2GO9dA6kIJgQ8o0KsKx3ldw/Tp+ckTijh980Afe7n26CN
+	TB7uowJYk5bxia+NulEMoqcrdYzzQZuei0E/iT0mPrKyqJdc0VVfjrn2YsgGMcsWDLyhONWRaTXVx
+	0QEk64Ri5UCi7bE0Mz5QV8Ft8TrydiFX/7jd/fw0gybLVrXvvmcvzpk07r9kyDaAbsdXhbLG8pLXR
+	daJYzidRLEIIb2JBZRHkl7IfRZO0tBhOMlWdBtg4uRYRHUTBIxxXYTYcXVueGuaUWdWYsG6RgB1Zv
+	vPpDkIhNrOXf3n+HWE5Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sKax5-00000008dW8-1Xgc;
-	Fri, 21 Jun 2024 09:53:03 +0000
-Received: from sin.source.kernel.org ([145.40.73.55])
+	id 1sKb25-00000008eWR-0VuU;
+	Fri, 21 Jun 2024 09:58:13 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sKax0-00000008dTS-3QnT;
-	Fri, 21 Jun 2024 09:53:00 +0000
+	id 1sKb20-00000008eVZ-2mmu;
+	Fri, 21 Jun 2024 09:58:10 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 6B7A7CE2B4C;
-	Fri, 21 Jun 2024 09:52:56 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2DCA7C4AF0B;
-	Fri, 21 Jun 2024 09:52:48 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 1FE6C62102;
+	Fri, 21 Jun 2024 09:58:08 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1AF1EC32781;
+	Fri, 21 Jun 2024 09:58:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1718963575;
-	bh=0NHzm6VNlu4nLnPyUAj59dHeuyvRJkkEV1Tubkf8NUI=;
+	s=k20201202; t=1718963887;
+	bh=UnxwRbCuBhggYeSXiYfvMZrlDoEB2JpNNPUtYoo6gpw=;
 	h=Date:Subject:To:References:From:In-Reply-To:From;
-	b=uYhYpWgIQeY7mY1FBbAI1EhEtu5m/4WOaksEyoXZ/HWzIE5suPZ9tqAcw4glJ111q
-	 gEI7mhpAnyZLXsFPoYHWLbv0Av4Q9vAO2vYxCfa9aeuE2rMaPk2RKxER9oO7p7Xr/Z
-	 AJjuE7fIIdHdH1uqPUpk8iCzstVy3rwkncH8ZpAyAanYGxmr/RchocGX85NOQhfrUy
-	 ElvPWKKXpCrAeRn31JqZfYnu182IOYhNMCz0X+C9JbtgIFLbhOexbCrjeirn8wN4Xv
-	 qx9ldNM67OB6oLCnNo5iRRPVuYS3qCzUYY56aZ3GaB6QOhoUjawd8Tb1TEQx6A5Iut
-	 equBFtDv5aqcw==
-Message-ID: <75ca3bed-f57b-4c89-bafd-7cd170dcdf94@kernel.org>
-Date: Fri, 21 Jun 2024 11:52:46 +0200
+	b=II8XZYHa0nSXcmJ4Au8CDk6LzP05gOlsjmoGueyBEacxmAA6OFXrlZ4blwktjqUj4
+	 tNsmd7fHdZ5ruNO+L8LPcTUiXtxyuXIkbkHs7MKZdaT3WsQdfZAlYhc5w3H1Wj0fZZ
+	 kvIr/aNYGwMJe+mW8PcyWtF0pGzKbjE3rHoic+eTAsA10gXGz8d/D0d2qSv5yt7v5X
+	 qTNDQ7g/TuK7YBOKevFzx1hTAqj9f4jDps+MC31GizdyADRaY2gYd+3hYbkWbB1fKK
+	 P6fhf86Oy1QUruF8upRVvWLEQRz/r56El1RWD1vLaLXwLNUh2INkDWI6CeWTFzIFTU
+	 WmtzdZGz3LiMQ==
+Message-ID: <f8e6b1b9-f8ff-42df-b1ef-bcc439c2e913@kernel.org>
+Date: Fri, 21 Jun 2024 11:57:58 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 1/3] dt-bindings: RNG: Add Rockchip RNG bindings
+Subject: Re: [PATCH v3 2/3] hwrng: add Rockchip SoC hwrng driver
 To: Daniel Golle <daniel@makrotopia.org>,
  Aurelien Jarno <aurelien@aurel32.net>, Olivia Mackall <olivia@selenic.com>,
  Herbert Xu <herbert@gondor.apana.org.au>, Rob Herring <robh@kernel.org>,
  Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Heikomemcpy_fromio Stuebner <heiko@sntech.de>,
+ <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
  Philipp Zabel <p.zabel@pengutronix.de>,
  =?UTF-8?Q?Uwe_Kleine-K=C3=B6nig?= <ukleinek@debian.org>,
  Sebastian Reichel <sebastian.reichel@collabora.com>,
@@ -60,7 +60,7 @@ To: Daniel Golle <daniel@makrotopia.org>,
  devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 References: <cover.1718921174.git.daniel@makrotopia.org>
- <10f621d0711c80137afd93f62a03b1b10009715c.1718921174.git.daniel@makrotopia.org>
+ <57a7fb13451f066ddc8d1d9339d8f6c1e1946bf1.1718921174.git.daniel@makrotopia.org>
 From: Krzysztof Kozlowski <krzk@kernel.org>
 Content-Language: en-US
 Autocrypt: addr=krzk@kernel.org; keydata=
@@ -106,11 +106,10 @@ Autocrypt: addr=krzk@kernel.org; keydata=
  uZwJCLykjad45hsWcOGk3OcaAGQS6NDlfhM6O9aYNwGL6tGt/6BkRikNOs7VDEa4/HlbaSJo
  7FgndGw1kWmkeL6oQh7wBvYll2buKod4qYntmNKEicoHGU+x91Gcan8mCoqhJkbqrL7+nXG2
  5Q/GS5M9RFWS+nYyJh+c3OcfKqVcZQNANItt7+ULzdNJuhvTRRdC3g9hmCEuNSr+CLMdnRBY fv0=
-In-Reply-To: <10f621d0711c80137afd93f62a03b1b10009715c.1718921174.git.daniel@makrotopia.org>
+In-Reply-To: <57a7fb13451f066ddc8d1d9339d8f6c1e1946bf1.1718921174.git.daniel@makrotopia.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240621_025259_299074_3D0E3EC4 
-X-CRM114-Status: UNSURE (   9.66  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240621_025808_845277_09650828 
+X-CRM114-Status: GOOD (  17.84  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -130,21 +129,137 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 On 21/06/2024 03:25, Daniel Golle wrote:
 > From: Aurelien Jarno <aurelien@aurel32.net>
 > 
-> Add the RNG bindings for the RK3568 SoC from Rockchip
-> 
-> Signed-off-by: Aurelien Jarno <aurelien@aurel32.net>
-> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
 
-<form letter>
-This is a friendly reminder during the review process.
+> +
+> +static int rk_rng_init(struct hwrng *rng)
+> +{
+> +	struct rk_rng *rk_rng = container_of(rng, struct rk_rng, rng);
+> +	int ret;
+> +
+> +	/* start clocks */
+> +	ret = clk_bulk_prepare_enable(rk_rng->clk_num, rk_rng->clk_bulks);
+> +	if (ret < 0) {
+> +		dev_err((struct device *) rk_rng->rng.priv,
+> +			"Failed to enable clks %d\n", ret);
+> +		return ret;
+> +	}
+> +
+> +	/* set the sample period */
+> +	writel(RK_RNG_SAMPLE_CNT, rk_rng->base + TRNG_RNG_SAMPLE_CNT);
+> +
+> +	/* set osc ring speed and enable it */
+> +	writel_relaxed(TRNG_RNG_CTL_LEN_256_BIT |
+> +		       TRNG_RNG_CTL_OSC_RING_SPEED_0 |
+> +		       TRNG_RNG_CTL_ENABLE,
+> +		       rk_rng->base + TRNG_RNG_CTL);
 
-It seems my or other reviewer's previous comments were not fully
-addressed. Maybe the feedback got lost between the quotes, maybe you
-just forgot to apply it. Please go back to the previous discussion and
-either implement all requested changes or keep discussing them.
+I doubt relaxed write is here intentional. Enabling should be last
+instruction, so this should be ordered write.
 
-Thank you.
-</form letter>
+> +
+> +	return 0;
+> +}
+> +
+> +static void rk_rng_cleanup(struct hwrng *rng)
+> +{
+> +	struct rk_rng *rk_rng = container_of(rng, struct rk_rng, rng);
+> +
+> +	/* stop TRNG */
+> +	writel_relaxed(0, rk_rng->base + TRNG_RNG_CTL);
+
+This should not be relaxed. This might lead to very tricky to debug issues.
+
+> +
+> +	/* stop clocks */
+> +	clk_bulk_disable_unprepare(rk_rng->clk_num, rk_rng->clk_bulks);
+> +}
+> +
+> +static int rk_rng_read(struct hwrng *rng, void *buf, size_t max, bool wait)
+> +{
+> +	struct rk_rng *rk_rng = container_of(rng, struct rk_rng, rng);
+> +	size_t to_read = min_t(size_t, max, RK_RNG_MAX_BYTE);
+> +	u32 reg;
+> +	int ret = 0;
+> +
+> +	ret = pm_runtime_get_sync((struct device *) rk_rng->rng.priv);
+
+Why this cannot be just simpler pm_runtime_resume_and_get()?
+
+> +	if (ret < 0)
+> +		goto out;
+
+This does not look like correct error path. Device was not busy here.
+
+> +
+> +	/* Start collecting random data */
+> +	writel_relaxed(TRNG_RNG_CTL_START, rk_rng->base + TRNG_RNG_CTL);
+> +
+> +	ret = readl_poll_timeout(rk_rng->base + TRNG_RNG_CTL, reg,
+> +				 !(reg & TRNG_RNG_CTL_START),
+> +				 RK_RNG_POLL_PERIOD_US,
+> +				 RK_RNG_POLL_TIMEOUT_US);
+> +	if (ret < 0)
+> +		goto out;
+> +
+> +	/* Read random data stored in the registers */
+> +	memcpy_fromio(buf, rk_rng->base + TRNG_RNG_DOUT, to_read);
+> +out:
+> +	pm_runtime_mark_last_busy((struct device *) rk_rng->rng.priv);
+> +	pm_runtime_put_sync_autosuspend((struct device *) rk_rng->rng.priv);
+> +
+> +	return to_read;
+> +}
+> +
+> +static int rk_rng_probe(struct platform_device *pdev)
+> +{
+> +	struct device *dev = &pdev->dev;
+> +	struct rk_rng *rk_rng;
+> +	int ret;
+> +
+> +	rk_rng = devm_kzalloc(dev, sizeof(*rk_rng), GFP_KERNEL);
+> +	if (!rk_rng)
+> +		return -ENOMEM;
+> +
+> +	rk_rng->base = devm_platform_ioremap_resource(pdev, 0);
+> +	if (IS_ERR(rk_rng->base))
+> +		return PTR_ERR(rk_rng->base);
+> +
+> +	rk_rng->clk_num = devm_clk_bulk_get_all(dev, &rk_rng->clk_bulks);
+> +	if (rk_rng->clk_num < 0)
+> +		return dev_err_probe(dev, rk_rng->clk_num,
+> +				     "Failed to get clks property\n");
+> +
+> +	rk_rng->rst = devm_reset_control_array_get(&pdev->dev, false, false);
+> +	if (IS_ERR(rk_rng->rst))
+> +		return dev_err_probe(dev, PTR_ERR(rk_rng->rst),
+> +				     "Failed to get reset property\n");
+> +
+> +	reset_control_assert(rk_rng->rst);
+> +	udelay(2);
+> +	reset_control_deassert(rk_rng->rst);
+> +
+> +	platform_set_drvdata(pdev, rk_rng);
+> +
+> +	rk_rng->rng.name = dev_driver_string(dev);
+> +#ifndef CONFIG_PM
+> +	rk_rng->rng.init = rk_rng_init;
+> +	rk_rng->rng.cleanup = rk_rng_cleanup;
+> +#endif
+> +	rk_rng->rng.read = rk_rng_read;
+> +	rk_rng->rng.priv = (unsigned long) dev;
+> +	rk_rng->rng.quality = 900;
+> +
+> +	pm_runtime_set_autosuspend_delay(dev, RK_RNG_AUTOSUSPEND_DELAY);
+> +	pm_runtime_use_autosuspend(dev);
+> +	pm_runtime_enable(dev);
+> +
+> +	ret = devm_hwrng_register(dev, &rk_rng->rng);
+> +	if (ret)
+> +		return dev_err_probe(&pdev->dev, ret, "Failed to register Rockchip hwrng\n");
+> +
+> +	dev_info(&pdev->dev, "Registered Rockchip hwrng\n");
+
+Drop, driver should be silent on success.
 
 
 Best regards,
