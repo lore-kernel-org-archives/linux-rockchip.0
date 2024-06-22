@@ -4,115 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 48423C27C53
-	for <linux-rockchip@archiver.kernel.org>; Sat, 22 Jun 2024 18:05:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 241A7C27C53
+	for <linux-rockchip@archiver.kernel.org>; Sat, 22 Jun 2024 19:11:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=8feg5z5O6UG2DcshcZeTe58WAFMQnx7PXGML1m8jenk=; b=KCHz5/JF0Vqh4p
-	h38D8DHd/lVxHpSOpm5qHLtqB7JCaXstJCKGpEb7e+UA8Pq6Vku9X7bdHcykkZRjnCTvNBUjh/Woq
-	zCbefqEAgdSjKEW5G4syyOnzsSgAy9+SnkdrzXNLZs/YzVbXbT9XEKDPLb/zW8AMirfE63GFbVNIs
-	dH6WI/re+irW3bT1bZPiv5IXBsWJ2OiZiq9GPe0RmSVsj6pprpiN1F+N9DaL+lVgM8XgKabqJZjb5
-	3Mxiv9GZNS/5Lxr3nrou8gadA7ZjXDgpu08bjdDopNW4C7Ut9L62spZnfwy6GNL06/2B5ppJc/amb
-	bf6gcRrbZMehx217sZEQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
+	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Vcqwgnc0ZL9BYBu+J8ogL5xrk6S2uohucTws3br9fjQ=; b=laewjHo2PyhJmPxXjZf15Oqzsa
+	n5mMpJeJnuyg6IacrGI++KH9vmvwNEPbLYhtGHAm9RIZZwTjY9wcf/FWjDrx56t8AZv7CmgY+uuWo
+	/8QZcUUJUjYdOpmcNv+pEWFEwM0jMtnrM++VhRqa59oza/v0a+0UzLH+cA3Fr71MzTRjPhKGBfXAf
+	l2MAID50DOmWHODGYkrM/x++fMNFiHGUmcQH3aEjM0n8pq6JktbhvT914SJvTa7YyjnyJ85vX/Qv5
+	h1DbYcoX7LS81SzBEd+/AkyxPVKqoVxYbhaa/QJ3O0T4JeofI3evM6oghgd2eN2b6oyGDe0dWz8K3
+	G1B4rS4w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sL576-0000000CZKQ-2jQK;
-	Sat, 22 Jun 2024 18:05:24 +0000
-Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
+	id 1sL68k-0000000Ceg4-2kc4;
+	Sat, 22 Jun 2024 19:11:10 +0000
+Received: from mail.manjaro.org ([116.203.91.91])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sL570-0000000CZJP-1QZt;
-	Sat, 22 Jun 2024 18:05:19 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id EAEB7CE0B05;
-	Sat, 22 Jun 2024 18:05:15 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6BC8EC32786;
-	Sat, 22 Jun 2024 18:05:06 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1719079515;
-	bh=iyK99zPeByjWCIY3e/7A9JMYZk1aGCnYk4YbiH21Jc8=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=QJBqLmR5SLGOD5qyZyj5wf4r1YcEE5W6sCkRUbaVJJn2sJX3DEJuN55lLuG+rEv4V
-	 MjqZe9ZNkgSSLdA2sLXnejdK4mcDgLC0WG1jb0gV6Jzxt0gUqFs6Z9qAXLVrGNSX8p
-	 J2JL+OtsaaPL+i0UCnvB/E74u6BlGVDzZ5H/bxrfhqottqjD+InM4zMLI5RIjfCD2b
-	 GjHuE6HtA5hb3M6ED5yZ8rVMCFDGyKxzCSILXTAMtKxO+IJ1XsRaGmlOLKB8x2uxI8
-	 wd8V/zHX/Ig7gHXmj6C/Bra/rCSrY+qtSoZ7HksfpLpTVDP0Tq+k+rbm+WJrABll1b
-	 rj9cAJut9SAiQ==
-Message-ID: <303bc9df-c887-41d0-8613-0fa2898ab48e@kernel.org>
-Date: Sat, 22 Jun 2024 20:05:03 +0200
+	id 1sL68e-0000000CefF-2zua;
+	Sat, 22 Jun 2024 19:11:06 +0000
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
+	t=1719083460;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=tsjjMssJVG+oE9sGmhyMnAuMsLYA+R/eJrkwoODbgVM=;
+	b=idOUMRHgDMpzEsj+i3s89C5EXijlVePhRa+bpbkscQNve3CaiAVRAquR5LhFjvWmhGX+6z
+	irhFMpwC7zk58vCbGxXZMKq4Fvj0g55tJK2ejOgGHS5NlNN0ChmgsYhhjV3wbFq6Ne7bR2
+	UL7h+0z7qTcaQJNwG8ndMIYCnJjanxHwaWmfnvoiG8b/tcyzrOvJCveyR1osDmeR1Pf2jq
+	qcMWJfHwLXVHzJjhqIZUNeSAHXY6SHUeSOFAtXEQ1wkEFQp+8mBaj20wET9FHEq6PKmntC
+	XEr4C5IztY+yDK2mrLwkOw1EPaSKIN5T816EVmMuaO7lWsUmcYTrvGwgpezlSQ==
+Date: Sat, 22 Jun 2024 21:10:52 +0200
+From: Dragan Simic <dsimic@manjaro.org>
+To: Krzysztof Kozlowski <krzk@kernel.org>
+Cc: Daniel Golle <daniel@makrotopia.org>, Aurelien Jarno
+ <aurelien@aurel32.net>, Olivia Mackall <olivia@selenic.com>, Herbert Xu
+ <herbert@gondor.apana.org.au>, Rob Herring <robh@kernel.org>, Krzysztof
+ Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Heiko
+ Stuebner <heiko@sntech.de>, Philipp Zabel <p.zabel@pengutronix.de>,
+ =?UTF-8?Q?Uwe_Kleine-K=C3=B6nig?= <ukleinek@debian.org>, Sebastian Reichel
+ <sebastian.reichel@collabora.com>, Anand Moon <linux.amoon@gmail.com>,
+ Sascha Hauer <s.hauer@pengutronix.de>, Martin Kaiser <martin@kaiser.cx>, Ard
+ Biesheuvel <ardb@kernel.org>, linux-crypto@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 Subject: Re: [PATCH v3 2/3] hwrng: add Rockchip SoC hwrng driver
-To: Dragan Simic <dsimic@manjaro.org>
-Cc: Daniel Golle <daniel@makrotopia.org>,
- Aurelien Jarno <aurelien@aurel32.net>, Olivia Mackall <olivia@selenic.com>,
- Herbert Xu <herbert@gondor.apana.org.au>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- Philipp Zabel <p.zabel@pengutronix.de>,
- =?UTF-8?Q?Uwe_Kleine-K=C3=B6nig?= <ukleinek@debian.org>,
- Sebastian Reichel <sebastian.reichel@collabora.com>,
- Anand Moon <linux.amoon@gmail.com>, Sascha Hauer <s.hauer@pengutronix.de>,
- Martin Kaiser <martin@kaiser.cx>, Ard Biesheuvel <ardb@kernel.org>,
- linux-crypto@vger.kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org
+In-Reply-To: <303bc9df-c887-41d0-8613-0fa2898ab48e@kernel.org>
 References: <cover.1718921174.git.daniel@makrotopia.org>
  <57a7fb13451f066ddc8d1d9339d8f6c1e1946bf1.1718921174.git.daniel@makrotopia.org>
  <f8e6b1b9-f8ff-42df-b1ef-bcc439c2e913@kernel.org>
  <173ce1663186ab8282356748abcac3f4@manjaro.org>
-From: Krzysztof Kozlowski <krzk@kernel.org>
-Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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 fv0=
-In-Reply-To: <173ce1663186ab8282356748abcac3f4@manjaro.org>
+ <303bc9df-c887-41d0-8613-0fa2898ab48e@kernel.org>
+Message-ID: <b1adbe2604561e0958bd5084fe679eea@manjaro.org>
+X-Sender: dsimic@manjaro.org
+Authentication-Results: ORIGINATING;
+	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240622_110518_775396_DE14B4A8 
-X-CRM114-Status: GOOD (  10.54  )
+X-CRM114-CacheID: sfid-20240622_121105_248549_27A855C2 
+X-CRM114-Status: UNSURE (   8.39  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -124,46 +79,48 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 21/06/2024 20:13, Dragan Simic wrote:
-> Hello Krzysztof,
-> 
-> On 2024-06-21 11:57, Krzysztof Kozlowski wrote:
->> On 21/06/2024 03:25, Daniel Golle wrote:
->>> From: Aurelien Jarno <aurelien@aurel32.net>
-> 
-> [snip]
-> 
->>> +	pm_runtime_set_autosuspend_delay(dev, RK_RNG_AUTOSUSPEND_DELAY);
->>> +	pm_runtime_use_autosuspend(dev);
->>> +	pm_runtime_enable(dev);
->>> +
->>> +	ret = devm_hwrng_register(dev, &rk_rng->rng);
->>> +	if (ret)
->>> +		return dev_err_probe(&pdev->dev, ret, "Failed to register Rockchip 
->>> hwrng\n");
->>> +
->>> +	dev_info(&pdev->dev, "Registered Rockchip hwrng\n");
->>
->> Drop, driver should be silent on success.
-> 
-> I respectfully disagree.  Many drivers print a single line upon
-> successful probing, which I find very useful.  In this particular
+Hello Krzysztof,
 
-No, it's duplicating existing interfaces and polluting log unnecessarily
-without any useful information.
+On 2024-06-22 20:05, Krzysztof Kozlowski wrote:
+> On 21/06/2024 20:13, Dragan Simic wrote:
+>> On 2024-06-21 11:57, Krzysztof Kozlowski wrote:
+>>> On 21/06/2024 03:25, Daniel Golle wrote:
+>>>> From: Aurelien Jarno <aurelien@aurel32.net>
+>> 
+>> [snip]
+>> 
+>>>> +	pm_runtime_set_autosuspend_delay(dev, RK_RNG_AUTOSUSPEND_DELAY);
+>>>> +	pm_runtime_use_autosuspend(dev);
+>>>> +	pm_runtime_enable(dev);
+>>>> +
+>>>> +	ret = devm_hwrng_register(dev, &rk_rng->rng);
+>>>> +	if (ret)
+>>>> +		return dev_err_probe(&pdev->dev, ret, "Failed to register 
+>>>> Rockchip
+>>>> hwrng\n");
+>>>> +
+>>>> +	dev_info(&pdev->dev, "Registered Rockchip hwrng\n");
+>>> 
+>>> Drop, driver should be silent on success.
+>> 
+>> I respectfully disagree.  Many drivers print a single line upon
+>> successful probing, which I find very useful.  In this particular
+> 
+> No, it's duplicating existing interfaces and polluting log 
+> unnecessarily
+> without any useful information.
 
-> case, it's even more useful, because some people may be concerned
-> about the use of hardware TRNGs, so we should actually make sure
-> to announce it.
+Would you, please, clarify what existing interfaces are you
+referring to?
 
-Best regards,
-Krzysztof
-
+>> case, it's even more useful, because some people may be concerned
+>> about the use of hardware TRNGs, so we should actually make sure
+>> to announce it.
 
 _______________________________________________
 Linux-rockchip mailing list
