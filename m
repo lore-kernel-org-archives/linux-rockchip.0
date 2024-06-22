@@ -4,90 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1EC38C27C53
-	for <linux-rockchip@archiver.kernel.org>; Sat, 22 Jun 2024 09:59:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5EC6EC27C53
+	for <linux-rockchip@archiver.kernel.org>; Sat, 22 Jun 2024 10:29:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=4ohkl7V5JxhMscaxa1x3sDGfNpDz9QUCUVO26sVngDU=; b=Kb0untzsHLfmca
-	9q0iFHqPFXrPqjb8s8iEnDX90LlKUlWwXGAq4tnHeAASEbcgQchviNnHZMYR3CK3bLqWRpOKgfUWn
-	Gbsa/S+rAGamVnzZsQ6kcTcNdb3intvLMnc0i3Qt4lV2+xhOMI8TO3gQidYjaKIMD0jeEIZH2Rih2
-	wLxXAvxDnYn737+F+SPwKOfRrJmDHjFepmiGo4XLIFg38PrRkDEEGGRzvrU5XIZF4QkLxS66J/jVV
-	QN8vSxsx85EP+7+Gf3I5Co5mRVOCvmfyMk/nXB+etAPUudSSsEiZtK2ZXQQKr08MTu916uNHTw5gZ
-	sGcUWNB7fPVULX+c+A6A==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
+	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=oz6PL8iCK937qwKOzfcG+pomibQGKEHd01KrG1TiEpY=; b=t8wBIOxNvxpnCJBnlJ4eBmEC50
+	qqsi7H6pvuBcnZvF/TUuR6lOH+6qof91WiTh0DjeZQ4LwfwE0N2aoum4wTvZbqUWxSiSvW1cI1+sG
+	Ro4jnxKa2ioLP174ZSmchNsqjyqxjnCvC/84HH2e9KDhXAt6m+UikfEumooKQ5yhsVeqX134EcNYO
+	57NigTLlJyFt7MO12kFekv5z6MM+u08tvvhjrX9cKZsgrpUbOtw9P0P8fjF8tfWlQ0QVi7nHCZ4au
+	VbAIOYawFFsNmw5qZk/05iVMYOla7QrMBD8GiBD+vqWkRPo8KCZAgEUT1SyZCuvk0wii2uId/Edxt
+	tFGJMmJA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sKxWJ-0000000BpDB-2Iiy;
-	Sat, 22 Jun 2024 09:58:55 +0000
-Received: from hall.aurel32.net ([2001:bc8:30d7:100::1])
+	id 1sKy0F-0000000Brjn-0eKQ;
+	Sat, 22 Jun 2024 10:29:51 +0000
+Received: from mail.manjaro.org ([2a01:4f8:c0c:51f3::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sKxWD-0000000BpCK-2bmA;
-	Sat, 22 Jun 2024 09:58:51 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=aurel32.net
-	; s=202004.hall; h=In-Reply-To:Content-Type:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Content-Transfer-Encoding:From:Reply-To:
-	Subject:Content-ID:Content-Description:X-Debbugs-Cc;
-	bh=L7GES3nlJ/mbxpjgjMloPbQ6xU28njSFXetD3IW/C9k=; b=bTv1y0xUMPOFAGcp8NXNG5sAri
-	9Wuf4Hr94UiZ7MZR0BqUJALKC7GisIpFxsW4LjUzSTu1FQa6X6/y1SDljDg3i+o2SYsmilCnpGMmt
-	CbkRrHufQlZoVG/xB9JElfWnkZp8zN4O9JUqJfB+BjT42Xt+9oCe/VUU5TuPkmepcyVGseWADjq2b
-	cj2nad8/d1eEV2nuXGQo+5U/ebwR2rLenZBgHimL1u9n/wlKqDQcyCZZCZY+GI+SnPDQFkaePavUf
-	KzQEhPT/Mso/7rXN/RH21FOxsdKDOYvAKYTGT2lc97Jjyt56u0C1qbY7b2LoeI6bbTsFUMb5cK9mp
-	KNunQfcw==;
-Received: from [2a01:e34:ec5d:a741:1ee1:92ff:feb4:5ec0] (helo=ohm.rr44.fr)
-	by hall.aurel32.net with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.96)
-	(envelope-from <aurelien@aurel32.net>)
-	id 1sKxVY-003oby-0i;
-	Sat, 22 Jun 2024 11:58:08 +0200
-Date: Sat, 22 Jun 2024 11:58:06 +0200
-From: Aurelien Jarno <aurelien@aurel32.net>
-To: Daniel Golle <daniel@makrotopia.org>
-Cc: Olivia Mackall <olivia@selenic.com>,
-	Herbert Xu <herbert@gondor.apana.org.au>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <ukleinek@debian.org>,
-	Sebastian Reichel <sebastian.reichel@collabora.com>,
-	Anand Moon <linux.amoon@gmail.com>,
-	Dragan Simic <dsimic@manjaro.org>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Martin Kaiser <martin@kaiser.cx>, Ard Biesheuvel <ardb@kernel.org>,
-	linux-crypto@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v3 0/3] hwrng: add hwrng support for Rockchip RK3568
-Message-ID: <ZnagLpqZS4UjDR6T@aurel32.net>
-Mail-Followup-To: Daniel Golle <daniel@makrotopia.org>,
-	Olivia Mackall <olivia@selenic.com>,
-	Herbert Xu <herbert@gondor.apana.org.au>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <ukleinek@debian.org>,
-	Sebastian Reichel <sebastian.reichel@collabora.com>,
-	Anand Moon <linux.amoon@gmail.com>,
-	Dragan Simic <dsimic@manjaro.org>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Martin Kaiser <martin@kaiser.cx>, Ard Biesheuvel <ardb@kernel.org>,
-	linux-crypto@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-References: <cover.1718921174.git.daniel@makrotopia.org>
+	id 1sKy09-0000000Briz-1MgU;
+	Sat, 22 Jun 2024 10:29:47 +0000
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <cover.1718921174.git.daniel@makrotopia.org>
-User-Agent: Mutt/2.2.12 (2023-09-09)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
+	t=1719052181;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=gAs4OzU1Oz3fZkEyE0fXcGDcqifaH35w5B5v23oDbGw=;
+	b=nLBuVgLdi1Ma3AsC4BcduWrQtZljtVvLRLy8P++PL4vrCvYI8UjuY1RWa1GQEQUYAss95u
+	ZhOlYTGJL8HfYiXljF3nuWBQhZXfcw60f48BGapi1QZ1eZnQVwQ7Z7NG5tBGYdPdNEEMDi
+	vf45ho21uqRa1x6iiIU5HK0qfJKGsT+YzEjZUhSLXR7eeufJ6saJjzserH6ceUmcMOmi6R
+	heTdohQ4ujLYbMNd9ySFlM9XgOJgb9j8eaZow2P5XcKZ4XbABY2Qku9+KTFWgnBxsZn8bM
+	tlmA2OK7w48oxzYmXFfp1fzheQXxkSryBkQwf3IG2ms7svnYumxZQIfTJZMqdg==
+Date: Sat, 22 Jun 2024 12:29:33 +0200
+From: Dragan Simic <dsimic@manjaro.org>
+To: =?UTF-8?Q?Uwe_Kleine-K=C3=B6nig?= <ukleinek@kernel.org>
+Cc: Krzysztof Kozlowski <krzk@kernel.org>, Daniel Golle
+ <daniel@makrotopia.org>, Aurelien Jarno <aurelien@aurel32.net>, Olivia
+ Mackall <olivia@selenic.com>, Herbert Xu <herbert@gondor.apana.org.au>, Rob
+ Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor
+ Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, Philipp
+ Zabel <p.zabel@pengutronix.de>, Sebastian Reichel
+ <sebastian.reichel@collabora.com>, Anand Moon <linux.amoon@gmail.com>,
+ Sascha Hauer <s.hauer@pengutronix.de>, Martin Kaiser <martin@kaiser.cx>, Ard
+ Biesheuvel <ardb@kernel.org>, linux-crypto@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v3 2/3] hwrng: add Rockchip SoC hwrng driver
+In-Reply-To: <ead26406-dd3b-491c-b6ab-11002a2db11a@kernel.org>
+References: <cover.1718921174.git.daniel@makrotopia.org>
+ <57a7fb13451f066ddc8d1d9339d8f6c1e1946bf1.1718921174.git.daniel@makrotopia.org>
+ <f8e6b1b9-f8ff-42df-b1ef-bcc439c2e913@kernel.org>
+ <173ce1663186ab8282356748abcac3f4@manjaro.org>
+ <ead26406-dd3b-491c-b6ab-11002a2db11a@kernel.org>
+Message-ID: <07fba45d99e9eabf9bcca71b86651074@manjaro.org>
+X-Sender: dsimic@manjaro.org
+Authentication-Results: ORIGINATING;
+	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240622_025850_112004_C095C604 
-X-CRM114-Status: GOOD (  15.22  )
+X-CRM114-CacheID: sfid-20240622_032945_994556_FE06CFE8 
+X-CRM114-Status: GOOD (  21.50  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,37 +78,52 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Daniel,
-
-On 2024-06-21 02:24, Daniel Golle wrote:
-> Rockchip SoCs used to have a random number generator as part of their
-> crypto device, and support for it has to be added to the corresponding
-> driver.
-> 
-> However newer Rockchip SoCs like the RK3568 have an independent True
-> Random Number Generator device. This patchset adds a driver for it and
-> enable it in the device tree.
-> 
-> v2 of this patchset has been submitted by Aurelien Jarno in November
-> 2022. A follow-up submission addressing the comments received for v2
-> never happened.
-
-I didn't have the time or energy to continue working on this. Thanks for
-continuing the work, I'll give it a try at some point.
-
-Regards
-Aurelien
-
--- 
-Aurelien Jarno                          GPG: 4096R/1DDD8C9B
-aurelien@aurel32.net                     http://aurel32.net
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGVsbG8gVXdlLAoKT24gMjAyNC0wNi0yMiAwMDoxNiwgVXdlIEtsZWluZS1Lw7ZuaWcgd3JvdGU6
+Cj4gT24gNi8yMS8yNCAyMDoxMywgRHJhZ2FuIFNpbWljIHdyb3RlOgo+PiBPbiAyMDI0LTA2LTIx
+IDExOjU3LCBLcnp5c3p0b2YgS296bG93c2tpIHdyb3RlOgo+Pj4gT24gMjEvMDYvMjAyNCAwMzoy
+NSwgRGFuaWVsIEdvbGxlIHdyb3RlOgo+Pj4+IEZyb206IEF1cmVsaWVuIEphcm5vIDxhdXJlbGll
+bkBhdXJlbDMyLm5ldD4KPj4gCj4+IFtzbmlwXQo+PiAKPj4+PiArwqDCoMKgIHBtX3J1bnRpbWVf
+c2V0X2F1dG9zdXNwZW5kX2RlbGF5KGRldiwgCj4+Pj4gUktfUk5HX0FVVE9TVVNQRU5EX0RFTEFZ
+KTsKPj4+PiArwqDCoMKgIHBtX3J1bnRpbWVfdXNlX2F1dG9zdXNwZW5kKGRldik7Cj4+Pj4gK8Kg
+wqDCoCBwbV9ydW50aW1lX2VuYWJsZShkZXYpOwo+Pj4+ICsKPj4+PiArwqDCoMKgIHJldCA9IGRl
+dm1faHdybmdfcmVnaXN0ZXIoZGV2LCAmcmtfcm5nLT5ybmcpOwo+Pj4+ICvCoMKgwqAgaWYgKHJl
+dCkKPj4+PiArwqDCoMKgwqDCoMKgwqAgcmV0dXJuIGRldl9lcnJfcHJvYmUoJnBkZXYtPmRldiwg
+cmV0LCAiRmFpbGVkIHRvIHJlZ2lzdGVyIAo+Pj4+IFJvY2tjaGlwIGh3cm5nXG4iKTsKPj4+PiAr
+Cj4+Pj4gK8KgwqDCoCBkZXZfaW5mbygmcGRldi0+ZGV2LCAiUmVnaXN0ZXJlZCBSb2NrY2hpcCBo
+d3JuZ1xuIik7Cj4+PiAKPj4+IERyb3AsIGRyaXZlciBzaG91bGQgYmUgc2lsZW50IG9uIHN1Y2Nl
+c3MuCj4+IAo+PiBJIHJlc3BlY3RmdWxseSBkaXNhZ3JlZS7CoCBNYW55IGRyaXZlcnMgcHJpbnQg
+YSBzaW5nbGUgbGluZSB1cG9uCj4+IHN1Y2Nlc3NmdWwgcHJvYmluZywgd2hpY2ggSSBmaW5kIHZl
+cnkgdXNlZnVsLsKgIEluIHRoaXMgcGFydGljdWxhcgo+PiBjYXNlLCBpdCdzIGV2ZW4gbW9yZSB1
+c2VmdWwsIGJlY2F1c2Ugc29tZSBwZW9wbGUgbWF5IGJlIGNvbmNlcm5lZAo+PiBhYm91dCB0aGUg
+dXNlIG9mIGhhcmR3YXJlIFRSTkdzLCBzbyB3ZSBzaG91bGQgYWN0dWFsbHkgbWFrZSBzdXJlCj4+
+IHRvIGFubm91bmNlIGl0Lgo+IAo+IEkgYWdyZWUgdG8gS3J6eXN6dG9mIGhlcmUuIEZyb20gdGhl
+IFBPViBvZiBhIGRyaXZlciBhdXRob3IsIHlvdXIgb3duCj4gZHJpdmVyIGlzIHZlcnkgaW1wb3J0
+YW50IGFuZCB3aGlsZSB5b3Ugd3JpdGUgaXQsIGl0IHJlYWxseSBpbnRlcmVzdHMKPiAqeW91KiBp
+ZiB0aGUgZHJpdmVyIGlzIHN1Y2Nlc3NmdWxseSBwcm9iZWQuIEhvd2V2ZXIgZnJvbSBhIHN5c3Rl
+bQo+IHBlcnNwZWN0aXZlIHRoZXNlIGFyZSBhbm5veWluZzogVGhlcmUgYXJlIGVhc2lseSA+NTAg
+ZGV2aWNlc1sxXSBvbiBhCj4gc3lzdGVtLCBpZiBhbGwgb2YgdGhlc2UgcHJpbnQgYSBtZXNzYWdl
+IGluIHByb2JlLCB5b3UgaGF2ZSBsaXR0bGUgCj4gY2hhbmNlCj4gdG8gc2VlIHRoZSByZWxldmFu
+dCBtZXNzYWdlcy4gRXZlbiBpZiBldmVyeSBkcml2ZXIgYXV0aG9yIHRoaW5rcyB0aGVpcgo+IHdv
+cmsgaXMgYSBzcGVjaWFsIHNub3cgZmxha2UgdGhhdCBpcyB3b3J0aCBhbm5vdW5jaW5nLCBpbiBw
+cmFjdGljZSAKPiB1c2Vycwo+IG9ubHkgY2FyZSBhYm91dCB5b3VyIGRyaXZlciBpZiB0aGVyZSBp
+cyBhIHByb2JsZW0uIEFkZGl0aW9uYWxseSBlYWNoCj4gbWVzc2FnZSB0YWtlcyB0aW1lIGFuZCBz
+byBkZWxheXMgdGhlIGJvb3QgcHJvY2Vzcy4gQWRkaXRpb25hbGx5IGVhY2gKPiBtZXNzYWdlIHRh
+a2VzIHBsYWNlIGluIHRoZSBwcmludGsgcmluZyBidWZmZXIgYW5kIHNvIGVkZ2VzIG91dCBlYXJs
+aWVyCj4gbWVzc2FnZXMgdGhhdCBtaWdodCBiZSBtb3JlIGltcG9ydGFudC4KCldlbGwsIEkgZG9u
+J3QgZmluZCB0aG9zZSBtZXNzYWdlcyBhbm5veWluZywgZm9yIHRoZSBkcml2ZXJzIEkndmUgaGFk
+Cm5vdGhpbmcgdG8gZG8gd2l0aC4gIEFsc28sIGluIG15IGV4cGVyaWVuY2UsIDk5LjklIG9mIHVz
+ZXJzIGRvbid0IGNhcmUKYWJvdXQgdGhlIGtlcm5lbCBtZXNzYWdlcyBhdCBhbGwsIGJlIGl0IGV2
+ZXJ5dGhpbmcgaHVua3ktZG9yeSwgb3IgYmUKaXQgc29tZXRoaW5nIHJlYWxseSB3cm9uZyBzb21l
+d2hlcmUuCgo+IFNvICsxIGZvciBkcm9wcGluZyB0aGUgZGV2X2luZm8oKSBvciBhdCBsZWFzdCB1
+c2luZyBkZXZfZGVidWcoKSBmb3IgaXQuCj4gCj4gQmVzdCByZWdhcmRzCj4gVXdlCj4gCj4gWzFd
+IE9uIG15IGxhcHRvcCBpZiBoYXZlOgo+IAo+IAkkIGZpbmQgL3N5cy9kZXZpY2VzIC1uYW1lIGRy
+aXZlciB8IHdjIC1sCj4gCTg3Cj4gCj4gICAgIE9uIGEgUmFzcGJlcnJ5cGkgaXQgeWllbGRzIDY2
+LgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgt
+cm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcK
+aHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hp
+cAo=
