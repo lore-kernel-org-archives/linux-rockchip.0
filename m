@@ -4,73 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 37EE8C27C53
-	for <linux-rockchip@archiver.kernel.org>; Sat, 22 Jun 2024 12:10:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 020ECC27C53
+	for <linux-rockchip@archiver.kernel.org>; Sat, 22 Jun 2024 13:21:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=6Kl6saDdT/MV+XkbMfcqipv8PF5eQHmAFu9MDhu8S4M=; b=Ju57up6v4oGNnJ
-	04QSI/mYmkG+k2p6GINo/Qw2z6q3WOdxYchFSKHtriyHfHfbsmAneGJYF1o9x/4E7COU599nMSdvh
-	BoapvjYLUpRE3O1+j5DlYbe/y1KwtCSE4zJXrCocDXAA//AuRWplQBprfv76hLSLF/mK2Hg4hWZoR
-	Iu10giZI6lz9KYOI0ipPLhE6YU1pDUtLJBH8dy5aWT+AVUDhDafSR2uP9RDVPnSFCDttVz7nH8Msy
-	LCQ4ikjcr6fKQT2kdd8e3ZACPRt5Ggk4kB4ysgWhfT1UR9qMQ1aJcsOT9bu+EXwK2e6VCY0RFHKG8
-	iho1oUgYGDjdCmsuEP+A==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=yB5owQ7i5CXBBCTnFHL9vhEEXHtLdHDw+rPRHMCPY4k=; b=i3X6mPDRTgQJyz
+	fXx0KxqyxHvvBuUYz84OkW4xpgci98EuLhiC+7jVfaiebA7nrRMi82ba9e2S4VuvmYXeSB/fiCgjv
+	191OYKwRQR1AzFq+rM1nAxAm02y3e4jwL4XOj7RkqmCZqbp74WKBntL3PtW57bauUr498y0n3OFz2
+	lNdByEWCR4+nXCl3lzKrOJVyrtmseVY8hcx9zdwHxvjKMTQA8ikW1uyKpk2D0LoiqiBhgVlzYQP5S
+	gR7QhijkbwxbFzkWKyn2rTIsHSR6XXkzXZRlNv5UVm3Xe3q8JqUMNjTSffWPptoaho7K7Y5B5ejfd
+	rYHZQEmKkk5eizzNfRww==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sKzZS-0000000C2b5-3jgK;
-	Sat, 22 Jun 2024 12:10:18 +0000
-Received: from sin.source.kernel.org ([145.40.73.55])
+	id 1sL0fo-0000000C96K-0pGj;
+	Sat, 22 Jun 2024 13:20:56 +0000
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sKzZP-0000000C2Zy-2LMw
-	for linux-rockchip@lists.infradead.org;
-	Sat, 22 Jun 2024 12:10:16 +0000
+	id 1sL0fi-0000000C94w-1h8U;
+	Sat, 22 Jun 2024 13:20:52 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 8A6BFCE0916;
-	Sat, 22 Jun 2024 12:10:10 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 42790C3277B;
-	Sat, 22 Jun 2024 12:10:06 +0000 (UTC)
+	by sin.source.kernel.org (Postfix) with ESMTP id 39FDDCE09FA;
+	Sat, 22 Jun 2024 13:20:48 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5CC92C3277B;
+	Sat, 22 Jun 2024 13:20:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1719058209;
-	bh=9pGtoUuCwodrZfU6N9Ddfo5lBiKVtSDI4XnqlMUinMk=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=e6rJu8eT0se2RZjFQzKU40BXpOZAhCvngfS9n7eBMLmxEaO1D/gEhYSqgnDUci5/4
-	 Lp3WMYSriBWYJfNIAyZx5Z0AX2JvX7N+TsrVZASKSgJK8C3ughjpFdGphI1gC2QuHH
-	 5lo4KLkMjH+vmL5fVAmodFKNlJIKyH89J5YzA7ZjxlI06eFq+0qoKXVv7L87p10SpP
-	 4UwtKTu7sFnMXXUk7TApHhFln0lWtT3bOw7vYGTyIYvOR6KXL1amppLz+XnBintu3J
-	 B9HBbjf1QhMeO/9pRqh0+ty5vr2nOYMn3d4o82PhaFnmb61PwEhYcSwGxVOJTL8xaM
-	 +oh+rPOXe1KEg==
-Date: Sat, 22 Jun 2024 14:10:03 +0200
+	s=k20201202; t=1719062446;
+	bh=vimpA/8njPUgu92Mj2yrauXhwt2PHMqiXCQ/XhdBnBw=;
+	h=From:To:Cc:Subject:Date:From;
+	b=F/i3KwmMa7mrytFAuIbvmzFpOK8Mu+hFeFFSvoHRdAEzxoHzg681hvSMr4vyPaDYo
+	 xnLDNqo9VXl8TaxokNDQduv4druWpnrGC5oGYbCv1429ZVEMVhTBij1zbtWv046fKz
+	 ZPFCjoe3nT0udu7JTtq+2p5sLZdmYcBka/OovQa9iqcC/T/PCiK0lOzq/tF7d2Kp9y
+	 gVAi46g9IDvdE7nKBHsjKbnWQ+rQb32bSdQifIax3YwXb7iEug4wK0qy4Qc0tWSlFq
+	 mPk02ZhzAjnbxO6iPtrsDoGdu2jmDKeDx41qt2v6XFH6f4dZ0IRxzKxsKlCohFCLwT
+	 QKcwr1gwPyJbw==
 From: Niklas Cassel <cassel@kernel.org>
-To: Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
-	Heiko Stuebner <heiko@sntech.de>
-Cc: Jingoo Han <jingoohan1@gmail.com>,
-	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
-	Bjorn Helgaas <bhelgaas@google.com>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+To: Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	=?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kw@linux.com>,
 	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Kishon Vijay Abraham I <kishon@kernel.org>,
-	Arnd Bergmann <arnd@arndb.de>, Damien Le Moal <dlemoal@kernel.org>,
-	Jon Lin <jon.lin@rock-chips.com>,
-	Shawn Lin <shawn.lin@rock-chips.com>,
-	Simon Xue <xxm@rock-chips.com>, linux-pci@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH v5 00/13] PCI: dw-rockchip: Add endpoint mode support
-Message-ID: <Zna_G-z8GRZ9OyDG@ryzen.lan>
-References: <20240607-rockchip-pcie-ep-v1-v5-0-0a042d6b0049@kernel.org>
- <Zm_tGknJe5Ttj9mC@ryzen.lan>
- <20240621193937.GB3008482@rocinante>
+	Bjorn Helgaas <bhelgaas@google.com>,
+	Heiko Stuebner <heiko@sntech.de>
+Cc: Damien Le Moal <dlemoal@kernel.org>,
+	Niklas Cassel <cassel@kernel.org>,
+	linux-pci@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org
+Subject: [PATCH] PCI: dw-rockchip: Use pci_epc_init_notify() directly
+Date: Sat, 22 Jun 2024 15:20:25 +0200
+Message-ID: <20240622132024.2927799-2-cassel@kernel.org>
+X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20240621193937.GB3008482@rocinante>
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1304; i=cassel@kernel.org; h=from:subject; bh=vimpA/8njPUgu92Mj2yrauXhwt2PHMqiXCQ/XhdBnBw=; b=owGbwMvMwCV2MsVw8cxjvkWMp9WSGNLKzs/42POz3ree47z5GdY2O05uRl3nHS4cB1bNe7AtJ SD7LNuVjlIWBjEuBlkxRRbfHy77i7vdpxxXvGMDM4eVCWQIAxenAEykpozhv9/zh0fndj5q1L1f +VwsmL1+p+q6n1fO+ry/5h3Sq3brhSojw879KU/cxHb/331f0HjaPJkNu3r78nvEfsx80Svut8T tLwMA
+X-Developer-Key: i=cassel@kernel.org; a=openpgp; fpr=5ADE635C0E631CBBD5BE065A352FE6582ED9B5DA
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240622_051015_800971_048CD252 
-X-CRM114-Status: UNSURE (   6.26  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240622_062050_648470_763BFA52 
+X-CRM114-Status: GOOD (  11.95  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,17 +78,38 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Krzysztof,
-thank you very much for applying!
+Commit 9eba2f70362f ("PCI: dwc: ep: Remove dw_pcie_ep_init_notify()
+wrapper") removed the dw_pcie_ep_init_notify() wrapper, and changed
+the DWC glue drivers to instead use pci_epc_init_notify() directly.
 
-Heiko,
-now when the DT-binding and driver has been queued for 6.11,
-is there any chance of getting patches 12/13 and 13/13 applied
-to the linux-rockchip tree?
+The endpoint support for the dw-rockchip had not been merged at that
+point in time, so commit 9eba2f70362f ("PCI: dwc: ep: Remove
+dw_pcie_ep_init_notify() wrapper") did not update dw-rockchip.
 
+Do the same change for dw-rockchip, so that the driver will not try
+to use a function that has now been removed.
 
-Kind regards,
-Niklas
+Signed-off-by: Niklas Cassel <cassel@kernel.org>
+---
+ drivers/pci/controller/dwc/pcie-dw-rockchip.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+index 0a0fdfc66b91..1170e1107508 100644
+--- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
++++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+@@ -488,7 +488,7 @@ static int rockchip_pcie_configure_ep(struct platform_device *pdev,
+ 		return ret;
+ 	}
+ 
+-	dw_pcie_ep_init_notify(&rockchip->pci.ep);
++	pci_epc_init_notify(rockchip->pci.ep.epc);
+ 
+ 	/* unmask DLL up/down indicator and hot reset/link-down reset */
+ 	rockchip_pcie_writel_apb(rockchip, 0x60000, PCIE_CLIENT_INTR_MASK_MISC);
+-- 
+2.45.2
+
 
 _______________________________________________
 Linux-rockchip mailing list
