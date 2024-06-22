@@ -4,86 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 12DDCC2BB85
-	for <linux-rockchip@archiver.kernel.org>; Sat, 22 Jun 2024 06:19:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1EC38C27C53
+	for <linux-rockchip@archiver.kernel.org>; Sat, 22 Jun 2024 09:59:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=cJf7E87DOqTf+8ZJ3EPZNKR8NjDEgdtlXnzuiekE/+8=; b=jlgGyh+zFLOEFr
-	Lw/p5EeCQF/CF+4p/1AxwDjEW2SvZoQZDpVX/4jbcZ04GJ8wOfnpkJmnI4Li36P43+9LlanexxMkM
-	dPsDcYkj8NOXfs3YojlOOUijAbcJOOBn4gF2lsXRIIlKY+IUPQWPE8MLkUxWlzEh61p6LnrYabkZg
-	0qztsSz9ncQMZZJ5ywAt7w7vYONJBmjaylHql71yoBXgwBqn6Fdlowyz74wNfy0RZmhFK1IIoAwoN
-	qafPnRSOP0kvAdxCe3RvfG/EO2UkeG66Gn1uBSsFw+Np5rwFwjGemXioD4uo80iboLtHp+i228swE
-	npcqXrwe7p3XAcR2l2Pw==;
+	List-Owner; bh=4ohkl7V5JxhMscaxa1x3sDGfNpDz9QUCUVO26sVngDU=; b=Kb0untzsHLfmca
+	9q0iFHqPFXrPqjb8s8iEnDX90LlKUlWwXGAq4tnHeAASEbcgQchviNnHZMYR3CK3bLqWRpOKgfUWn
+	Gbsa/S+rAGamVnzZsQ6kcTcNdb3intvLMnc0i3Qt4lV2+xhOMI8TO3gQidYjaKIMD0jeEIZH2Rih2
+	wLxXAvxDnYn737+F+SPwKOfRrJmDHjFepmiGo4XLIFg38PrRkDEEGGRzvrU5XIZF4QkLxS66J/jVV
+	QN8vSxsx85EP+7+Gf3I5Co5mRVOCvmfyMk/nXB+etAPUudSSsEiZtK2ZXQQKr08MTu916uNHTw5gZ
+	sGcUWNB7fPVULX+c+A6A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sKu5t-0000000BW47-1MvQ;
-	Sat, 22 Jun 2024 06:19:25 +0000
-Received: from mail-pj1-x1033.google.com ([2607:f8b0:4864:20::1033])
+	id 1sKxWJ-0000000BpDB-2Iiy;
+	Sat, 22 Jun 2024 09:58:55 +0000
+Received: from hall.aurel32.net ([2001:bc8:30d7:100::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sKu5l-0000000BVyi-1T8u;
-	Sat, 22 Jun 2024 06:19:19 +0000
-Received: by mail-pj1-x1033.google.com with SMTP id 98e67ed59e1d1-2c7b3c513f9so2242680a91.3;
-        Fri, 21 Jun 2024 23:19:17 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1719037156; x=1719641956; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=Ntwi3HL2K5aymeEm1Qz35sLbHMAl5G1vzWWeac6e7E0=;
-        b=E2B0AFhhamdHGD1AWtwS/TqN13DixnQi5A1kdsKHGfoXF+eeAscBfb4I2V2+9ngvT4
-         yxMa51p6zfCLI5uuYL4EZ5T29HxtSPTpj6xABkSoN792HIPj+bX3pzFXNNQUXj08aqbd
-         AvvWJ12OZSDl6AI+gTa6fTNm4+lQ8MbFh3Ek3n36upWux/fmapQn8KdQwRaAoBzbpeoj
-         ZLfGdnuNnMOfZv5LzCjHdQpsoDFQK/MGUuA83eWWF9462ZcikS4AkpDh7oETBQNArFRd
-         o5wlZXXVn8BX/TesMzZG/ObQe37LmPoxfqLtK4qcoWjEM61dBipKYRIfstFfhyOHGE6H
-         cxNg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1719037156; x=1719641956;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=Ntwi3HL2K5aymeEm1Qz35sLbHMAl5G1vzWWeac6e7E0=;
-        b=AIU3lgaFZDGqsPj1LNJiVQXKwOd3hihSlGnhr/u75dcl8VW5BixrCNtgH81xQtsA71
-         DZkJ87LrcB6hLFxzyxTt+wFTmk1A+q7KSqzvUhLwsTU1jL6FRJuVodFb7OJrCbUMbPJn
-         ykRgfvXXTHcNLbK5FXYgCuf9en1JrbZc0Vk86JEpWBCIlt80HEl9O6mNTmlyp1cX2mTv
-         IW1DNePI753SLhc3JRi+sTI/4NjMBeKlXOE6ffJ7o5fynTlsgJzvPP2pRGDBrdQb2eba
-         Y5jSm1NS5Ns3NxwZst5GI0e7LH6H/sia1liIQmS5wAfDfSZW81ckI3Qs30mhA+KVPjX1
-         gcig==
-X-Forwarded-Encrypted: i=1; AJvYcCWQKfrsd54IneDSsRWyyHaY5+tsAJrL5ggaClg8R68Cr31H2mI6C574dIBOXbRANXUc7CeOTPhlGSn0P6gUFnmsjpviXr02Y7eSABpf9RgGidT3t2dFBnWKVLsHeMAsYKcB9D/dya3TnoyAEF3pWqyeFOBlRxRrJYo=
-X-Gm-Message-State: AOJu0YzD4X8WX/xUEr7pWGPsaFOETFA22ArPRqIJ0UXsfWcknP6lG0JE
-	tIzGBPk3U3mHM258hhElPZITDzYp2I2YOPZfSG5m3A6bV8nbmW4t
-X-Google-Smtp-Source: AGHT+IE078jZ03UdYebN/k5h4osUfnzBl8WDffYTEdCg2kBOJHT73FdNJJuuUWpAkRO1OggjBayIKQ==
-X-Received: by 2002:a17:90a:a017:b0:2c6:edb4:1c96 with SMTP id 98e67ed59e1d1-2c8505195f8mr161149a91.23.1719037156523;
-        Fri, 21 Jun 2024 23:19:16 -0700 (PDT)
-Received: from localhost.localdomain ([113.30.217.222])
-        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-2c7e53e7bf0sm4692240a91.19.2024.06.21.23.19.13
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 21 Jun 2024 23:19:16 -0700 (PDT)
-From: Anand Moon <linux.amoon@gmail.com>
-To: Shawn Lin <shawn.lin@rock-chips.com>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	=?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kw@linux.com>,
+	id 1sKxWD-0000000BpCK-2bmA;
+	Sat, 22 Jun 2024 09:58:51 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=aurel32.net
+	; s=202004.hall; h=In-Reply-To:Content-Type:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Content-Transfer-Encoding:From:Reply-To:
+	Subject:Content-ID:Content-Description:X-Debbugs-Cc;
+	bh=L7GES3nlJ/mbxpjgjMloPbQ6xU28njSFXetD3IW/C9k=; b=bTv1y0xUMPOFAGcp8NXNG5sAri
+	9Wuf4Hr94UiZ7MZR0BqUJALKC7GisIpFxsW4LjUzSTu1FQa6X6/y1SDljDg3i+o2SYsmilCnpGMmt
+	CbkRrHufQlZoVG/xB9JElfWnkZp8zN4O9JUqJfB+BjT42Xt+9oCe/VUU5TuPkmepcyVGseWADjq2b
+	cj2nad8/d1eEV2nuXGQo+5U/ebwR2rLenZBgHimL1u9n/wlKqDQcyCZZCZY+GI+SnPDQFkaePavUf
+	KzQEhPT/Mso/7rXN/RH21FOxsdKDOYvAKYTGT2lc97Jjyt56u0C1qbY7b2LoeI6bbTsFUMb5cK9mp
+	KNunQfcw==;
+Received: from [2a01:e34:ec5d:a741:1ee1:92ff:feb4:5ec0] (helo=ohm.rr44.fr)
+	by hall.aurel32.net with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.96)
+	(envelope-from <aurelien@aurel32.net>)
+	id 1sKxVY-003oby-0i;
+	Sat, 22 Jun 2024 11:58:08 +0200
+Date: Sat, 22 Jun 2024 11:58:06 +0200
+From: Aurelien Jarno <aurelien@aurel32.net>
+To: Daniel Golle <daniel@makrotopia.org>
+Cc: Olivia Mackall <olivia@selenic.com>,
+	Herbert Xu <herbert@gondor.apana.org.au>,
 	Rob Herring <robh@kernel.org>,
-	Bjorn Helgaas <bhelgaas@google.com>,
-	Heiko Stuebner <heiko@sntech.de>
-Cc: Anand Moon <linux.amoon@gmail.com>,
-	linux-pci@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <ukleinek@debian.org>,
+	Sebastian Reichel <sebastian.reichel@collabora.com>,
+	Anand Moon <linux.amoon@gmail.com>,
+	Dragan Simic <dsimic@manjaro.org>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	Martin Kaiser <martin@kaiser.cx>, Ard Biesheuvel <ardb@kernel.org>,
+	linux-crypto@vger.kernel.org, devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH v3 3/3] PCI: rockchip: Refactor rockchip_pcie_disable_clocks function signature
-Date: Sat, 22 Jun 2024 11:48:40 +0530
-Message-ID: <20240622061845.3678-3-linux.amoon@gmail.com>
-X-Mailer: git-send-email 2.44.0
-In-Reply-To: <20240622061845.3678-1-linux.amoon@gmail.com>
-References: <20240622061845.3678-1-linux.amoon@gmail.com>
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v3 0/3] hwrng: add hwrng support for Rockchip RK3568
+Message-ID: <ZnagLpqZS4UjDR6T@aurel32.net>
+Mail-Followup-To: Daniel Golle <daniel@makrotopia.org>,
+	Olivia Mackall <olivia@selenic.com>,
+	Herbert Xu <herbert@gondor.apana.org.au>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <ukleinek@debian.org>,
+	Sebastian Reichel <sebastian.reichel@collabora.com>,
+	Anand Moon <linux.amoon@gmail.com>,
+	Dragan Simic <dsimic@manjaro.org>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	Martin Kaiser <martin@kaiser.cx>, Ard Biesheuvel <ardb@kernel.org>,
+	linux-crypto@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+References: <cover.1718921174.git.daniel@makrotopia.org>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <cover.1718921174.git.daniel@makrotopia.org>
+User-Agent: Mutt/2.2.12 (2023-09-09)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240621_231917_502446_1A96E120 
-X-CRM114-Status: GOOD (  12.04  )
+X-CRM114-CacheID: sfid-20240622_025850_112004_C095C604 
+X-CRM114-Status: GOOD (  15.22  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,50 +104,30 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Updated rockchip_pcie_disable_clocks function to accept
-a struct rockchip pointer instead of a void pointer.
+Hi Daniel,
 
-Signed-off-by: Anand Moon <linux.amoon@gmail.com>
----
-v3: None
-v2: None
----
- drivers/pci/controller/pcie-rockchip.c | 4 +---
- drivers/pci/controller/pcie-rockchip.h | 2 +-
- 2 files changed, 2 insertions(+), 4 deletions(-)
+On 2024-06-21 02:24, Daniel Golle wrote:
+> Rockchip SoCs used to have a random number generator as part of their
+> crypto device, and support for it has to be added to the corresponding
+> driver.
+> 
+> However newer Rockchip SoCs like the RK3568 have an independent True
+> Random Number Generator device. This patchset adds a driver for it and
+> enable it in the device tree.
+> 
+> v2 of this patchset has been submitted by Aurelien Jarno in November
+> 2022. A follow-up submission addressing the comments received for v2
+> never happened.
 
-diff --git a/drivers/pci/controller/pcie-rockchip.c b/drivers/pci/controller/pcie-rockchip.c
-index f79e2b0a965b..da210cd96d98 100644
---- a/drivers/pci/controller/pcie-rockchip.c
-+++ b/drivers/pci/controller/pcie-rockchip.c
-@@ -284,10 +284,8 @@ int rockchip_pcie_enable_clocks(struct rockchip_pcie *rockchip)
- }
- EXPORT_SYMBOL_GPL(rockchip_pcie_enable_clocks);
- 
--void rockchip_pcie_disable_clocks(void *data)
-+void rockchip_pcie_disable_clocks(struct rockchip_pcie *rockchip)
- {
--	struct rockchip_pcie *rockchip = data;
--
- 	clk_bulk_disable_unprepare(ROCKCHIP_NUM_CLKS, rockchip->clks);
- }
- EXPORT_SYMBOL_GPL(rockchip_pcie_disable_clocks);
-diff --git a/drivers/pci/controller/pcie-rockchip.h b/drivers/pci/controller/pcie-rockchip.h
-index 27e951b41b80..3330b1e55dcd 100644
---- a/drivers/pci/controller/pcie-rockchip.h
-+++ b/drivers/pci/controller/pcie-rockchip.h
-@@ -354,7 +354,7 @@ int rockchip_pcie_init_port(struct rockchip_pcie *rockchip);
- int rockchip_pcie_get_phys(struct rockchip_pcie *rockchip);
- void rockchip_pcie_deinit_phys(struct rockchip_pcie *rockchip);
- int rockchip_pcie_enable_clocks(struct rockchip_pcie *rockchip);
--void rockchip_pcie_disable_clocks(void *data);
-+void rockchip_pcie_disable_clocks(struct rockchip_pcie *rockchip);
- void rockchip_pcie_cfg_configuration_accesses(
- 		struct rockchip_pcie *rockchip, u32 type);
- 
+I didn't have the time or energy to continue working on this. Thanks for
+continuing the work, I'll give it a try at some point.
+
+Regards
+Aurelien
+
 -- 
-2.44.0
-
+Aurelien Jarno                          GPG: 4096R/1DDD8C9B
+aurelien@aurel32.net                     http://aurel32.net
 
 _______________________________________________
 Linux-rockchip mailing list
