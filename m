@@ -4,79 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D547CC27C53
-	for <linux-rockchip@archiver.kernel.org>; Sat, 22 Jun 2024 04:30:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AB591C27C53
+	for <linux-rockchip@archiver.kernel.org>; Sat, 22 Jun 2024 06:19:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=qZdequHi4/ULKEyHdMskK5XYd3HsA8yS+xG2WRTMF7U=; b=QEwQSIusH2ukIB
-	4YKToSZPPqkYzCpxzTnIS4wPjuTMMeYaj/i4ZtsVMg9Q0VrEO4ufWJknU2ID6n0XFK5aFYPoM482F
-	GkGhzQOr379INZ3q95LIrtLP4RKXoJ4+puo/A8IRndOvhLiJjNigf89t78B7Ga2JbDCzHGrEv/5fE
-	WWIYPs+BoDNTWlhyT6MlsHGF1RNg2voUinNMD3MUjb6Cs3qqmB3GV2gvMeSXhEATVe+uQEQdbYk67
-	1AZcb11VrampA8ALM7BJvtN86qMQoozUyRhHyRk3KyDWwh6cGGFa+HVmbpGrzLGqc4MCbL/V0G59u
-	4ZVtehDDQF1gH7xb8bhQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=8ft5VGCSSYiKAsQnBL8AmtpqDgbLdJJYvjbZBxsyd8M=; b=XVY8aJjFkdwsfr
+	vYgmTw1NBFazMdzItR2yAVeGUK5ki26pMq4lShH8LxswU+eptQRyp67B1Fp4sgeWWmfxprSWb2BHb
+	e1E79mLvtLDN6vT/BQRHntxlbSM9ELMF2SuMQEg6+HixBU8xcxYxyUI9jzMLHKoiXF+6kJGrW3db7
+	LC8NtRtu2neJZ4CFJuXPtagbMT6X181iKiu6qqAydqPa8DXWzN3dOzvc/f2fTY1Cf2AJ9Z7S7BNgD
+	f2WT4B5BJmkd6bV3SxV7Ewh1IkSmv1wL07x6CRKbucwpEOAq2DPDm1bxAJM08/tkyMgs7heBEKxqg
+	AqKGfH5rYBhipERJlz2w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sKsNy-0000000BMoA-0XPj;
-	Sat, 22 Jun 2024 04:29:58 +0000
-Received: from mail-oa1-x2a.google.com ([2001:4860:4864:20::2a])
+	id 1sKu5d-0000000BVvX-3GCh;
+	Sat, 22 Jun 2024 06:19:09 +0000
+Received: from mail-pf1-x42a.google.com ([2607:f8b0:4864:20::42a])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sKsNu-0000000BMmn-1jI2;
-	Sat, 22 Jun 2024 04:29:56 +0000
-Received: by mail-oa1-x2a.google.com with SMTP id 586e51a60fabf-25cba5eea69so1238669fac.2;
-        Fri, 21 Jun 2024 21:29:53 -0700 (PDT)
+	id 1sKu5b-0000000BVuu-1aFl;
+	Sat, 22 Jun 2024 06:19:08 +0000
+Received: by mail-pf1-x42a.google.com with SMTP id d2e1a72fcca58-706264e1692so2186793b3a.1;
+        Fri, 21 Jun 2024 23:19:07 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1719030593; x=1719635393; darn=lists.infradead.org;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=F9KsD8yt6Ys8mXDglDi64CvjPaqmJRjrP6+6ZL6aKWI=;
-        b=d9rf3zbtMLa1xHcw0epm+WKukbMW8Lt91ENlf42huYu+IaOUFefyHUKXeGDDP+a0Un
-         L8rtcZrGzAdu620gNDxn9YhAWjgyi1xPYofmjdnqrgPLZlmfpdDFKNVnUFphkKKScM/1
-         riEc2EnzjjsNUijQJ5fqGsK+oUM/8+7IHlahXBnOgPhEXOIKZS9FtGaFsKM1pBEtIDGP
-         idX/WwxXB2EX1KNo1hMsrGiTPzEWlOoDPniNSQ3U5tzy84tGvaaCI2h7xQ4b8Ww/wxNV
-         YzCtafJRttdKsYqSLd2zILu06oKHOhshpRRuqPsemmrhFxGKLsts4Gz7f8Z1H026ZhoP
-         0jhw==
+        d=gmail.com; s=20230601; t=1719037147; x=1719641947; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=s+ykFI/fLlnufjJhkBdQ2mN3BsQ1fw3+dLBPgrHj63w=;
+        b=M6IGl5srfko5LJrxgdW4KJ/l28H24GVqWOCgMdLPfUIngsjX6ubAHJ52CUuTq/d4G8
+         qzfdrros8L94sqbl0TnKhJesyZiQSCNQXnxvSizukilK7BSw2dZFOzF+PwLokCqus7b3
+         Oh7P3KI5zgml4OWnvgU2sAnIFSf+XvkVc5/OVEf3DGBOFdFpgcVzDCG/FZlgB/gglF/M
+         Demea2Tr4ZYHWGDRQq+7aeO/WhAXTIVsOPZwT8JBGKhculvXp8xg4UzjN9PRR00P4PTQ
+         AVb8og/zQpmCmZteUXyxBt/JYkZowXq53M/M6kODU2u3Aqry2bNVQv1CKyWsXIBf0fdq
+         mOiA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1719030593; x=1719635393;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+        d=1e100.net; s=20230601; t=1719037147; x=1719641947;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=F9KsD8yt6Ys8mXDglDi64CvjPaqmJRjrP6+6ZL6aKWI=;
-        b=owSKjrwREoYnu1NQGcvmhap0jab52XK65O9ZiNRExHuKJn3hl0jRTd4dvOzvyM7LUg
-         cwRLEyRNsuTKYCFFEj2JSyp+S5CCQ5qQSzHu0q+TK0RJRliEkIyePqnzMyjsS7kIhyji
-         yPQqkaWKxa29oU8rJT7MQdO7xfVyISXTEot2cPtzlbeilDZVDN2mhLKCuRJuDeEYM6U1
-         lzQrK2Sb64T+QozO2QvabdV4mIPb8v8bTbqVzUBDQUp4h7HbPa/vSDqcwD45Fm/hkoI2
-         T7Q+Ax1w2Z4FlsncArIRCssK+25EIhqNj01FhvFeSAMZHxHupiPft/2aszHwf8mFd+FL
-         JO4g==
-X-Forwarded-Encrypted: i=1; AJvYcCV4Nfg+Q/ushiaDy8W57ThXM3l/2+J3PdUPbJSC2nYJPrFqWUovgIFe67C1z3OiZqJ9ipsu3d8JkdsV4x4GZXfZKCr3NEpbCroep66AKBrVqr2B1N38Uj6YW4a/inb/9EEzPuLuGCW9HldPY/7Z0ubm4jW0TRY1h0E=
-X-Gm-Message-State: AOJu0Yw6kB/GATO2aMSUN1ZdZeRGVZi4rVx9VubtD2h7ZNdzyC61PqPS
-	WwARz81U1iYB/0/XsO8AYcv4/dSRPRy9NOLSiXJdnZ4an090B0MeXp5otVzmJ3eKK7dSHCYIth9
-	VU5/foLl/2kse3YVmO3LY9JasDGE=
-X-Google-Smtp-Source: AGHT+IE1+yk8ZA9XkU/ojx39oXVgXLE6ORoPSVISfOrRYQzqC1BHglAPcab/AKI4UKiw3FAoN067oBVJ79pWX7QhtAI=
-X-Received: by 2002:a05:6870:d389:b0:254:c95f:cdb6 with SMTP id
- 586e51a60fabf-25c94d5c85fmr11605824fac.52.1719030592833; Fri, 21 Jun 2024
- 21:29:52 -0700 (PDT)
-MIME-Version: 1.0
-References: <20240621064426.282048-1-linux.amoon@gmail.com> <20240621212125.GA1406213@bhelgaas>
-In-Reply-To: <20240621212125.GA1406213@bhelgaas>
+        bh=s+ykFI/fLlnufjJhkBdQ2mN3BsQ1fw3+dLBPgrHj63w=;
+        b=hANJZF/5T0JhPZ23fTvJIAMNY3M1tHzU2KENda9x7Too/smS9l0470i8RdDO1o9pOy
+         zZ37PuwZswLrXLoRqTm+1pqpUhOYPOSSgPqM6hSs7oc3gR79O5f1O1IoJ2pMkNhXzzsU
+         ZktRaV06ucatE1YPDvTMZ/c6SNw9JuK3yB/T59jRin1+AiBQuN5bT9blcnonu+90k/LA
+         U3whcrRmfc/OF4qYlq+mIBcnyAtINFiB1a/+hxVOZlbS/ZWFQFXHZWO1sPDY3z+S4vqc
+         f6IcZX7tinV5bwr9/ajHUlqiOMwZ0kExrGInERH+EpVST+3bnet9zr1+yqIZQSWMf9Vc
+         1amg==
+X-Forwarded-Encrypted: i=1; AJvYcCUAEeacES35DN+SIPxueKR0jH4O+0B/vPVD4VvriZ3pzuItJB3yjYNKRDgDSOtLGOJeHaZmnoKyJ2f/fCSPTso06WXmt57ol5zPZyFptKexzf0yFhWNoNPhomPHBaJuGLbSlyhV7S+z6wcIwLCcyk1QouK/h42BRbc=
+X-Gm-Message-State: AOJu0Yw4M8xAhNwT8/C0DBa3nKUfOmThcY/qva9SzZ3VOBjPnb5fZ8i1
+	0FfhlzzYvsPu3qbRGi4CNgR+JlRJ2MSznOWKH4qTM3++m0YyOKZQ
+X-Google-Smtp-Source: AGHT+IG/CZQYEMJ4vvJWGJop7Yw3UjB0tj9j6iH8hLNyfyGHEMyHVogoppqTqb4Yl/gCDGpTPB2FEA==
+X-Received: by 2002:a05:6a20:6382:b0:1b7:f59d:fd1e with SMTP id adf61e73a8af0-1bcbb5f06a3mr10744793637.50.1719037146472;
+        Fri, 21 Jun 2024 23:19:06 -0700 (PDT)
+Received: from localhost.localdomain ([113.30.217.222])
+        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-2c7e53e7bf0sm4692240a91.19.2024.06.21.23.19.03
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 21 Jun 2024 23:19:06 -0700 (PDT)
 From: Anand Moon <linux.amoon@gmail.com>
-Date: Sat, 22 Jun 2024 09:59:38 +0530
-Message-ID: <CANAwSgRiOg4sXX5yEoTcogEAKUvO=r49sheSCjiCC7CF10kd1g@mail.gmail.com>
-Subject: Re: [PATCH v2 1/3] PCI: rockchip: Simplify clock handling by using
- clk_bulk*() function
-To: Bjorn Helgaas <helgaas@kernel.org>
-Cc: Shawn Lin <shawn.lin@rock-chips.com>, Lorenzo Pieralisi <lpieralisi@kernel.org>, 
-	=?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?= <kw@linux.com>, 
-	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>, Heiko Stuebner <heiko@sntech.de>, 
-	kernel test robot <lkp@intel.com>, linux-pci@vger.kernel.org, 
-	linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
+To: Shawn Lin <shawn.lin@rock-chips.com>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	=?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kw@linux.com>,
+	Rob Herring <robh@kernel.org>,
+	Bjorn Helgaas <bhelgaas@google.com>,
+	Heiko Stuebner <heiko@sntech.de>
+Cc: Anand Moon <linux.amoon@gmail.com>,
+	linux-pci@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org
+Subject: [PATCH v3 1/3] PCI: rockchip: Simplify clock handling by using clk_bulk*() function
+Date: Sat, 22 Jun 2024 11:48:38 +0530
+Message-ID: <20240622061845.3678-1-linux.amoon@gmail.com>
+X-Mailer: git-send-email 2.44.0
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240621_212954_475961_09A8EEE1 
-X-CRM114-Status: GOOD (  20.00  )
+X-CRM114-CacheID: sfid-20240621_231907_495639_8D099760 
+X-CRM114-Status: GOOD (  18.24  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,46 +97,167 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Bjorn
+Refactor the clock handling in the Rockchip PCIe driver,
+introducing a more robust and efficient method for enabling and
+disabling clocks using clk_bulk*() API. Using the clk_bulk APIs,
+the clock handling for the core clocks becomes much simpler.
 
-On Sat, 22 Jun 2024 at 02:51, Bjorn Helgaas <helgaas@kernel.org> wrote:
->
-> On Fri, Jun 21, 2024 at 12:14:20PM +0530, Anand Moon wrote:
-> > Refactors the clock handling in the Rockchip PCIe driver,
-> > introducing a more robust and efficient method for enabling and
-> > disabling clocks using clk_bulk*() API. Using the clk_bulk APIs,
-> > the clock handling for the core clocks becomes much simpler.
-> >
-> > Reported-by: kernel test robot <lkp@intel.com>
-> > Closes: https://lore.kernel.org/oe-kbuild-all/202406200818.CQ7DXNSZ-lkp@intel.com/
->
-> Drop these two lines, as suggested in the test robot report:
->
->   If you fix the issue in a separate patch/commit (i.e. not just a new
->   version of the same patch/commit), kindly add following tags ...
->
-> This is a new version of the same patch, so it doesn't need those
-> tags.
->
-Ok.
-> The problem you're solving with this patch is that the clock handling
-> is too complicated.  The test robot didn't report *that* problem.
->
-> Since you'll repost for this, also s/Refactors/Refactor/ in the commit
-> log so this is in imperative mood:
-> https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/Documentation/process/submitting-patches.rst?id=v6.9#n94
-> https://chris.beams.io/posts/git-commit/
->
-Ok, I will follow up on this process in the future.
+Signed-off-by: Anand Moon <linux.amoon@gmail.com>
+---
+v3: Fix typo in commit message, dropped reported by.
+v2: Fix compilation error reported by Intel test robot.
+---
+ drivers/pci/controller/pcie-rockchip.c | 64 ++++----------------------
+ drivers/pci/controller/pcie-rockchip.h | 15 ++++--
+ 2 files changed, 21 insertions(+), 58 deletions(-)
 
-> >  drivers/pci/controller/pcie-rockchip.c | 64 ++++----------------------
-> >  drivers/pci/controller/pcie-rockchip.h | 15 ++++--
-> >  2 files changed, 21 insertions(+), 58 deletions(-)
->
-> Nice reduction in lines!
+diff --git a/drivers/pci/controller/pcie-rockchip.c b/drivers/pci/controller/pcie-rockchip.c
+index 0ef2e622d36e..166dad666a35 100644
+--- a/drivers/pci/controller/pcie-rockchip.c
++++ b/drivers/pci/controller/pcie-rockchip.c
+@@ -30,7 +30,7 @@ int rockchip_pcie_parse_dt(struct rockchip_pcie *rockchip)
+ 	struct platform_device *pdev = to_platform_device(dev);
+ 	struct device_node *node = dev->of_node;
+ 	struct resource *regs;
+-	int err;
++	int err, i;
+ 
+ 	if (rockchip->is_rc) {
+ 		regs = platform_get_resource_byname(pdev,
+@@ -127,28 +127,13 @@ int rockchip_pcie_parse_dt(struct rockchip_pcie *rockchip)
+ 					     "failed to get ep GPIO\n");
+ 	}
+ 
+-	rockchip->aclk_pcie = devm_clk_get(dev, "aclk");
+-	if (IS_ERR(rockchip->aclk_pcie)) {
+-		dev_err(dev, "aclk clock not found\n");
+-		return PTR_ERR(rockchip->aclk_pcie);
+-	}
+-
+-	rockchip->aclk_perf_pcie = devm_clk_get(dev, "aclk-perf");
+-	if (IS_ERR(rockchip->aclk_perf_pcie)) {
+-		dev_err(dev, "aclk_perf clock not found\n");
+-		return PTR_ERR(rockchip->aclk_perf_pcie);
+-	}
+-
+-	rockchip->hclk_pcie = devm_clk_get(dev, "hclk");
+-	if (IS_ERR(rockchip->hclk_pcie)) {
+-		dev_err(dev, "hclk clock not found\n");
+-		return PTR_ERR(rockchip->hclk_pcie);
+-	}
++	for (i = 0; i < ROCKCHIP_NUM_CLKS; i++)
++		rockchip->clks[i].id = rockchip_pci_clks[i];
+ 
+-	rockchip->clk_pcie_pm = devm_clk_get(dev, "pm");
+-	if (IS_ERR(rockchip->clk_pcie_pm)) {
+-		dev_err(dev, "pm clock not found\n");
+-		return PTR_ERR(rockchip->clk_pcie_pm);
++	err = devm_clk_bulk_get(dev, ROCKCHIP_NUM_CLKS, rockchip->clks);
++	if (err) {
++		dev_err(dev, "rockchip clk bulk get failed\n");
++		return err;
+ 	}
+ 
+ 	return 0;
+@@ -372,39 +357,13 @@ int rockchip_pcie_enable_clocks(struct rockchip_pcie *rockchip)
+ 	struct device *dev = rockchip->dev;
+ 	int err;
+ 
+-	err = clk_prepare_enable(rockchip->aclk_pcie);
++	err = clk_bulk_prepare_enable(ROCKCHIP_NUM_CLKS, rockchip->clks);
+ 	if (err) {
+-		dev_err(dev, "unable to enable aclk_pcie clock\n");
++		dev_err(dev, "rockchip clk bulk prepare enable failed\n");
+ 		return err;
+ 	}
+ 
+-	err = clk_prepare_enable(rockchip->aclk_perf_pcie);
+-	if (err) {
+-		dev_err(dev, "unable to enable aclk_perf_pcie clock\n");
+-		goto err_aclk_perf_pcie;
+-	}
+-
+-	err = clk_prepare_enable(rockchip->hclk_pcie);
+-	if (err) {
+-		dev_err(dev, "unable to enable hclk_pcie clock\n");
+-		goto err_hclk_pcie;
+-	}
+-
+-	err = clk_prepare_enable(rockchip->clk_pcie_pm);
+-	if (err) {
+-		dev_err(dev, "unable to enable clk_pcie_pm clock\n");
+-		goto err_clk_pcie_pm;
+-	}
+-
+ 	return 0;
+-
+-err_clk_pcie_pm:
+-	clk_disable_unprepare(rockchip->hclk_pcie);
+-err_hclk_pcie:
+-	clk_disable_unprepare(rockchip->aclk_perf_pcie);
+-err_aclk_perf_pcie:
+-	clk_disable_unprepare(rockchip->aclk_pcie);
+-	return err;
+ }
+ EXPORT_SYMBOL_GPL(rockchip_pcie_enable_clocks);
+ 
+@@ -412,10 +371,7 @@ void rockchip_pcie_disable_clocks(void *data)
+ {
+ 	struct rockchip_pcie *rockchip = data;
+ 
+-	clk_disable_unprepare(rockchip->clk_pcie_pm);
+-	clk_disable_unprepare(rockchip->hclk_pcie);
+-	clk_disable_unprepare(rockchip->aclk_perf_pcie);
+-	clk_disable_unprepare(rockchip->aclk_pcie);
++	clk_bulk_disable_unprepare(ROCKCHIP_NUM_CLKS, rockchip->clks);
+ }
+ EXPORT_SYMBOL_GPL(rockchip_pcie_disable_clocks);
+ 
+diff --git a/drivers/pci/controller/pcie-rockchip.h b/drivers/pci/controller/pcie-rockchip.h
+index 6111de35f84c..72346e17e45e 100644
+--- a/drivers/pci/controller/pcie-rockchip.h
++++ b/drivers/pci/controller/pcie-rockchip.h
+@@ -11,6 +11,7 @@
+ #ifndef _PCIE_ROCKCHIP_H
+ #define _PCIE_ROCKCHIP_H
+ 
++#include <linux/clk.h>
+ #include <linux/kernel.h>
+ #include <linux/pci.h>
+ #include <linux/pci-ecam.h>
+@@ -287,6 +288,15 @@
+ 		(((c) << ((b) * 8 + 5)) & \
+ 		 ROCKCHIP_PCIE_CORE_EP_FUNC_BAR_CFG_BAR_CTRL_MASK(b))
+ 
++#define ROCKCHIP_NUM_CLKS	ARRAY_SIZE(rockchip_pci_clks)
++
++static const char * const rockchip_pci_clks[] = {
++	"aclk",
++	"aclk-perf",
++	"hclk",
++	"pm",
++};
++
+ struct rockchip_pcie {
+ 	void	__iomem *reg_base;		/* DT axi-base */
+ 	void	__iomem *apb_base;		/* DT apb-base */
+@@ -299,10 +309,7 @@ struct rockchip_pcie {
+ 	struct	reset_control *pm_rst;
+ 	struct	reset_control *aclk_rst;
+ 	struct	reset_control *pclk_rst;
+-	struct	clk *aclk_pcie;
+-	struct	clk *aclk_perf_pcie;
+-	struct	clk *hclk_pcie;
+-	struct	clk *clk_pcie_pm;
++	struct  clk_bulk_data clks[ROCKCHIP_NUM_CLKS];
+ 	struct	regulator *vpcie12v; /* 12V power supply */
+ 	struct	regulator *vpcie3v3; /* 3.3V power supply */
+ 	struct	regulator *vpcie1v8; /* 1.8V power supply */
 
-Thanks
--Anand
+base-commit: 35bb670d65fc0f80c62383ab4f2544cec85ac57a
+-- 
+2.44.0
+
 
 _______________________________________________
 Linux-rockchip mailing list
