@@ -4,83 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AB591C27C53
-	for <linux-rockchip@archiver.kernel.org>; Sat, 22 Jun 2024 06:19:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DB53BC27C53
+	for <linux-rockchip@archiver.kernel.org>; Sat, 22 Jun 2024 06:19:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=8ft5VGCSSYiKAsQnBL8AmtpqDgbLdJJYvjbZBxsyd8M=; b=XVY8aJjFkdwsfr
-	vYgmTw1NBFazMdzItR2yAVeGUK5ki26pMq4lShH8LxswU+eptQRyp67B1Fp4sgeWWmfxprSWb2BHb
-	e1E79mLvtLDN6vT/BQRHntxlbSM9ELMF2SuMQEg6+HixBU8xcxYxyUI9jzMLHKoiXF+6kJGrW3db7
-	LC8NtRtu2neJZ4CFJuXPtagbMT6X181iKiu6qqAydqPa8DXWzN3dOzvc/f2fTY1Cf2AJ9Z7S7BNgD
-	f2WT4B5BJmkd6bV3SxV7Ewh1IkSmv1wL07x6CRKbucwpEOAq2DPDm1bxAJM08/tkyMgs7heBEKxqg
-	AqKGfH5rYBhipERJlz2w==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=b1VwBlpB67Vjf/pjtedcL1Tl/uNZkqjYle7N9LwEvVU=; b=0HGjFBMQpMULYi
+	DdYdnJc1k7CWKcNE5PnhUkkuHroKGkodAVUwDsvQfeyIdEaRF2j1zgUBoasACkFQloM1g+vSCepP4
+	Bau9Zgf4mL8vlCNASkn8ijY/A96qnYFO0BICsYm+TrKEaWrECcoaASh+nlEhK+A/BDjsnVjkogBbi
+	+CVB2sHpPgQesJhbQ2g0Nk+JXZzVyUGxZ/1dHbob46PUrrlXP67Y3GqGK4yYfxtQpRyTqHnSvf0Pc
+	Q6T/I8p83yptBYfBJ/dpwqitx0sB4JdiVFIfKvbMDtgGDvtRF4Z0AYoibyKbpXfP3cvjO+D+lcLsk
+	Kk3wN2njR+CvihzlEtFw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sKu5d-0000000BVvX-3GCh;
-	Sat, 22 Jun 2024 06:19:09 +0000
-Received: from mail-pf1-x42a.google.com ([2607:f8b0:4864:20::42a])
+	id 1sKu5k-0000000BVyL-2nYI;
+	Sat, 22 Jun 2024 06:19:16 +0000
+Received: from mail-pg1-x536.google.com ([2607:f8b0:4864:20::536])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sKu5b-0000000BVuu-1aFl;
-	Sat, 22 Jun 2024 06:19:08 +0000
-Received: by mail-pf1-x42a.google.com with SMTP id d2e1a72fcca58-706264e1692so2186793b3a.1;
-        Fri, 21 Jun 2024 23:19:07 -0700 (PDT)
+	id 1sKu5g-0000000BVwK-3gWV;
+	Sat, 22 Jun 2024 06:19:15 +0000
+Received: by mail-pg1-x536.google.com with SMTP id 41be03b00d2f7-6e7e23b42c3so1685008a12.1;
+        Fri, 21 Jun 2024 23:19:12 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1719037147; x=1719641947; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=s+ykFI/fLlnufjJhkBdQ2mN3BsQ1fw3+dLBPgrHj63w=;
-        b=M6IGl5srfko5LJrxgdW4KJ/l28H24GVqWOCgMdLPfUIngsjX6ubAHJ52CUuTq/d4G8
-         qzfdrros8L94sqbl0TnKhJesyZiQSCNQXnxvSizukilK7BSw2dZFOzF+PwLokCqus7b3
-         Oh7P3KI5zgml4OWnvgU2sAnIFSf+XvkVc5/OVEf3DGBOFdFpgcVzDCG/FZlgB/gglF/M
-         Demea2Tr4ZYHWGDRQq+7aeO/WhAXTIVsOPZwT8JBGKhculvXp8xg4UzjN9PRR00P4PTQ
-         AVb8og/zQpmCmZteUXyxBt/JYkZowXq53M/M6kODU2u3Aqry2bNVQv1CKyWsXIBf0fdq
-         mOiA==
+        d=gmail.com; s=20230601; t=1719037152; x=1719641952; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=uxxJJ1Zq1TKyO6LKePArVEGh9zB2iohdz0TZ1bWdXnA=;
+        b=K8T+ajbA+RbI01SVgx7RVVb6qUAZ4BCSrn0I+sb9PzyzKXCN612w6nlF4iozGLKuxK
+         LOxQfuNL4EbV9Do5t5Qd4S5qRlUhPG8OmYwh0QrogC5DRIawSpGl0voBGyjo4BHve1+n
+         7xGTH6sBIoOm90yBadgDqeF+4BZy8q7smFAIaushCfzGFRseeYox/XKm/0LDCeMVrqs3
+         XjbXK2Nl8ukt+tADHZmStKjAFhnjRmzJ9XLhdLKfV3eBTT0G9QFnOhyvd4NZo6LHDGm/
+         LUHDFzDlXptUjHk6YBrb20T3Ff1EJpt0yRjjb8/iBPksy8/m9omheSYAEwq1Sx1eTFGt
+         VzUA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1719037147; x=1719641947;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=s+ykFI/fLlnufjJhkBdQ2mN3BsQ1fw3+dLBPgrHj63w=;
-        b=hANJZF/5T0JhPZ23fTvJIAMNY3M1tHzU2KENda9x7Too/smS9l0470i8RdDO1o9pOy
-         zZ37PuwZswLrXLoRqTm+1pqpUhOYPOSSgPqM6hSs7oc3gR79O5f1O1IoJ2pMkNhXzzsU
-         ZktRaV06ucatE1YPDvTMZ/c6SNw9JuK3yB/T59jRin1+AiBQuN5bT9blcnonu+90k/LA
-         U3whcrRmfc/OF4qYlq+mIBcnyAtINFiB1a/+hxVOZlbS/ZWFQFXHZWO1sPDY3z+S4vqc
-         f6IcZX7tinV5bwr9/ajHUlqiOMwZ0kExrGInERH+EpVST+3bnet9zr1+yqIZQSWMf9Vc
-         1amg==
-X-Forwarded-Encrypted: i=1; AJvYcCUAEeacES35DN+SIPxueKR0jH4O+0B/vPVD4VvriZ3pzuItJB3yjYNKRDgDSOtLGOJeHaZmnoKyJ2f/fCSPTso06WXmt57ol5zPZyFptKexzf0yFhWNoNPhomPHBaJuGLbSlyhV7S+z6wcIwLCcyk1QouK/h42BRbc=
-X-Gm-Message-State: AOJu0Yw4M8xAhNwT8/C0DBa3nKUfOmThcY/qva9SzZ3VOBjPnb5fZ8i1
-	0FfhlzzYvsPu3qbRGi4CNgR+JlRJ2MSznOWKH4qTM3++m0YyOKZQ
-X-Google-Smtp-Source: AGHT+IG/CZQYEMJ4vvJWGJop7Yw3UjB0tj9j6iH8hLNyfyGHEMyHVogoppqTqb4Yl/gCDGpTPB2FEA==
-X-Received: by 2002:a05:6a20:6382:b0:1b7:f59d:fd1e with SMTP id adf61e73a8af0-1bcbb5f06a3mr10744793637.50.1719037146472;
-        Fri, 21 Jun 2024 23:19:06 -0700 (PDT)
+        d=1e100.net; s=20230601; t=1719037152; x=1719641952;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=uxxJJ1Zq1TKyO6LKePArVEGh9zB2iohdz0TZ1bWdXnA=;
+        b=uDxLEheZhNzGdPeNTmLGisK3xl8PV72GpobQ/tmL/o3gEbUeM6XY4IJCmqwkU3oASU
+         0klia7uQLf/1c6UeA0uc1WbAOVu5DyCkGU9H75mFyy7hvOTi3pfwp+RxlmSYhp/Ec4dv
+         TmK/uAh8a688/qPbiJozLtwBNHYBrq8j49TG75coW2FIImUMn4S3n+R02f/TK6CdHjJC
+         HktFuDUiAqpMwNbgJ/qYWyazxxNkN6VmvAGjqUiGF0CPfcaSSmMLwGFAFigz1AD37u+J
+         Z7BHXlbfjY7271zqyOw7HqaUGwAiwfLgTtJ4264VlBAJrcV9ZL6RW6L+0eRJKFxnme/+
+         F8qw==
+X-Forwarded-Encrypted: i=1; AJvYcCXlyRrkBCbG9V74EI5AzNMim5iD56tPXwkyqadmqnh9ahCaw+xkqCBGQZVrXPAs7oSri6kLvnATnqEN6Svuaq/ZvgIPBe31UoBnxJJeMbFIzab3Dz8Hye8+nZwTmwy+bnAc68Mp7wQt3Kae/IkJpmCSxMmwh6WYzk4=
+X-Gm-Message-State: AOJu0YwiZ+bZ1OpGM8+aOxZa+s4KRwHUtCFxjkZjMDvpwL8ICeq4isAs
+	4fV8k4VQtghkm/Qh6jHd9Qk2VnjrHwErXzvvzbIj/Gvv9wSB7ZMd
+X-Google-Smtp-Source: AGHT+IFILJk27iCIxuseIM+02eNcHoN2UkUZo85T5F0tcMNZh2iQMmEr9H9i+zOytBt+aLZnP6rG5g==
+X-Received: by 2002:a05:6a20:2a2f:b0:1b7:edea:e3f with SMTP id adf61e73a8af0-1bcbb421cfamr9446767637.12.1719037151750;
+        Fri, 21 Jun 2024 23:19:11 -0700 (PDT)
 Received: from localhost.localdomain ([113.30.217.222])
-        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-2c7e53e7bf0sm4692240a91.19.2024.06.21.23.19.03
+        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-2c7e53e7bf0sm4692240a91.19.2024.06.21.23.19.08
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 21 Jun 2024 23:19:06 -0700 (PDT)
+        Fri, 21 Jun 2024 23:19:11 -0700 (PDT)
 From: Anand Moon <linux.amoon@gmail.com>
 To: Shawn Lin <shawn.lin@rock-chips.com>,
 	Lorenzo Pieralisi <lpieralisi@kernel.org>,
 	=?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kw@linux.com>,
 	Rob Herring <robh@kernel.org>,
 	Bjorn Helgaas <bhelgaas@google.com>,
-	Heiko Stuebner <heiko@sntech.de>
+	Heiko Stuebner <heiko@sntech.de>,
+	Philipp Zabel <p.zabel@pengutronix.de>
 Cc: Anand Moon <linux.amoon@gmail.com>,
 	linux-pci@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org
-Subject: [PATCH v3 1/3] PCI: rockchip: Simplify clock handling by using clk_bulk*() function
-Date: Sat, 22 Jun 2024 11:48:38 +0530
-Message-ID: <20240622061845.3678-1-linux.amoon@gmail.com>
+Subject: [PATCH v3 2/3] PCI: rockchip: Simplify reset control handling by using reset_control_bulk*() function
+Date: Sat, 22 Jun 2024 11:48:39 +0530
+Message-ID: <20240622061845.3678-2-linux.amoon@gmail.com>
 X-Mailer: git-send-email 2.44.0
+In-Reply-To: <20240622061845.3678-1-linux.amoon@gmail.com>
+References: <20240622061845.3678-1-linux.amoon@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240621_231907_495639_8D099760 
-X-CRM114-Status: GOOD (  18.24  )
+X-CRM114-CacheID: sfid-20240621_231913_364356_CF414164 
+X-CRM114-Status: GOOD (  19.12  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,164 +101,275 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Refactor the clock handling in the Rockchip PCIe driver,
-introducing a more robust and efficient method for enabling and
-disabling clocks using clk_bulk*() API. Using the clk_bulk APIs,
-the clock handling for the core clocks becomes much simpler.
+Refactor the reset control handling in the Rockchip PCIe driver,
+introducing a more robust and efficient method for assert and
+deassert reset controller using reset_control_bulk*() API. Using the
+reset_control_bulk APIs, the reset handling for the core clocks reset
+unit becomes much simpler.
+
+As per rockchip rk3399 TRM SOFTRST_CON8 soft reset controller
+have clock reset unit value set to 0x1 for example "pcie_pipe",
+"pcie_mgmt_sticky", "pcie_mgmt" and "pci_core", hence group then under
+one reset bulk controller.
+
+Where as "pcie_pm", "presetn_pcie", "aresetn_pcie" have reset value
+set to 0x0, hence group them under reset control bulk controller.
 
 Signed-off-by: Anand Moon <linux.amoon@gmail.com>
 ---
 v3: Fix typo in commit message, dropped reported by.
-v2: Fix compilation error reported by Intel test robot.
+v2: Fix compilation error reported by Intel test robot
+    fixed checkpatch warning
 ---
- drivers/pci/controller/pcie-rockchip.c | 64 ++++----------------------
- drivers/pci/controller/pcie-rockchip.h | 15 ++++--
- 2 files changed, 21 insertions(+), 58 deletions(-)
+ drivers/pci/controller/pcie-rockchip.c | 141 +++++--------------------
+ drivers/pci/controller/pcie-rockchip.h |  25 +++--
+ 2 files changed, 47 insertions(+), 119 deletions(-)
 
 diff --git a/drivers/pci/controller/pcie-rockchip.c b/drivers/pci/controller/pcie-rockchip.c
-index 0ef2e622d36e..166dad666a35 100644
+index 166dad666a35..f79e2b0a965b 100644
 --- a/drivers/pci/controller/pcie-rockchip.c
 +++ b/drivers/pci/controller/pcie-rockchip.c
-@@ -30,7 +30,7 @@ int rockchip_pcie_parse_dt(struct rockchip_pcie *rockchip)
- 	struct platform_device *pdev = to_platform_device(dev);
- 	struct device_node *node = dev->of_node;
- 	struct resource *regs;
--	int err;
-+	int err, i;
+@@ -69,54 +69,26 @@ int rockchip_pcie_parse_dt(struct rockchip_pcie *rockchip)
+ 	if (rockchip->link_gen < 0 || rockchip->link_gen > 2)
+ 		rockchip->link_gen = 2;
  
- 	if (rockchip->is_rc) {
- 		regs = platform_get_resource_byname(pdev,
-@@ -127,28 +127,13 @@ int rockchip_pcie_parse_dt(struct rockchip_pcie *rockchip)
- 					     "failed to get ep GPIO\n");
- 	}
- 
--	rockchip->aclk_pcie = devm_clk_get(dev, "aclk");
--	if (IS_ERR(rockchip->aclk_pcie)) {
--		dev_err(dev, "aclk clock not found\n");
--		return PTR_ERR(rockchip->aclk_pcie);
+-	rockchip->core_rst = devm_reset_control_get_exclusive(dev, "core");
+-	if (IS_ERR(rockchip->core_rst)) {
+-		if (PTR_ERR(rockchip->core_rst) != -EPROBE_DEFER)
+-			dev_err(dev, "missing core reset property in node\n");
+-		return PTR_ERR(rockchip->core_rst);
 -	}
 -
--	rockchip->aclk_perf_pcie = devm_clk_get(dev, "aclk-perf");
--	if (IS_ERR(rockchip->aclk_perf_pcie)) {
--		dev_err(dev, "aclk_perf clock not found\n");
--		return PTR_ERR(rockchip->aclk_perf_pcie);
+-	rockchip->mgmt_rst = devm_reset_control_get_exclusive(dev, "mgmt");
+-	if (IS_ERR(rockchip->mgmt_rst)) {
+-		if (PTR_ERR(rockchip->mgmt_rst) != -EPROBE_DEFER)
+-			dev_err(dev, "missing mgmt reset property in node\n");
+-		return PTR_ERR(rockchip->mgmt_rst);
 -	}
 -
--	rockchip->hclk_pcie = devm_clk_get(dev, "hclk");
--	if (IS_ERR(rockchip->hclk_pcie)) {
--		dev_err(dev, "hclk clock not found\n");
--		return PTR_ERR(rockchip->hclk_pcie);
+-	rockchip->mgmt_sticky_rst = devm_reset_control_get_exclusive(dev,
+-								"mgmt-sticky");
+-	if (IS_ERR(rockchip->mgmt_sticky_rst)) {
+-		if (PTR_ERR(rockchip->mgmt_sticky_rst) != -EPROBE_DEFER)
+-			dev_err(dev, "missing mgmt-sticky reset property in node\n");
+-		return PTR_ERR(rockchip->mgmt_sticky_rst);
 -	}
-+	for (i = 0; i < ROCKCHIP_NUM_CLKS; i++)
-+		rockchip->clks[i].id = rockchip_pci_clks[i];
+-
+-	rockchip->pipe_rst = devm_reset_control_get_exclusive(dev, "pipe");
+-	if (IS_ERR(rockchip->pipe_rst)) {
+-		if (PTR_ERR(rockchip->pipe_rst) != -EPROBE_DEFER)
+-			dev_err(dev, "missing pipe reset property in node\n");
+-		return PTR_ERR(rockchip->pipe_rst);
+-	}
++	for (i = 0; i < ROCKCHIP_NUM_PM_RSTS; i++)
++		rockchip->pm_rsts[i].id = rockchip_pci_pm_rsts[i];
  
--	rockchip->clk_pcie_pm = devm_clk_get(dev, "pm");
--	if (IS_ERR(rockchip->clk_pcie_pm)) {
--		dev_err(dev, "pm clock not found\n");
--		return PTR_ERR(rockchip->clk_pcie_pm);
-+	err = devm_clk_bulk_get(dev, ROCKCHIP_NUM_CLKS, rockchip->clks);
+-	rockchip->pm_rst = devm_reset_control_get_exclusive(dev, "pm");
+-	if (IS_ERR(rockchip->pm_rst)) {
+-		if (PTR_ERR(rockchip->pm_rst) != -EPROBE_DEFER)
+-			dev_err(dev, "missing pm reset property in node\n");
+-		return PTR_ERR(rockchip->pm_rst);
++	err = devm_reset_control_bulk_get_optional_exclusive(dev,
++							     ROCKCHIP_NUM_PM_RSTS,
++							     rockchip->pm_rsts);
 +	if (err) {
-+		dev_err(dev, "rockchip clk bulk get failed\n");
++		dev_err(dev, "cannot get the devm_reset_control err %d\n", err);
 +		return err;
  	}
  
- 	return 0;
-@@ -372,39 +357,13 @@ int rockchip_pcie_enable_clocks(struct rockchip_pcie *rockchip)
- 	struct device *dev = rockchip->dev;
- 	int err;
+-	rockchip->pclk_rst = devm_reset_control_get_exclusive(dev, "pclk");
+-	if (IS_ERR(rockchip->pclk_rst)) {
+-		if (PTR_ERR(rockchip->pclk_rst) != -EPROBE_DEFER)
+-			dev_err(dev, "missing pclk reset property in node\n");
+-		return PTR_ERR(rockchip->pclk_rst);
+-	}
++	for (i = 0; i < ROCKCHIP_NUM_CORE_RSTS; i++)
++		rockchip->core_rsts[i].id = rockchip_pci_core_rsts[i];
  
--	err = clk_prepare_enable(rockchip->aclk_pcie);
-+	err = clk_bulk_prepare_enable(ROCKCHIP_NUM_CLKS, rockchip->clks);
+-	rockchip->aclk_rst = devm_reset_control_get_exclusive(dev, "aclk");
+-	if (IS_ERR(rockchip->aclk_rst)) {
+-		if (PTR_ERR(rockchip->aclk_rst) != -EPROBE_DEFER)
+-			dev_err(dev, "missing aclk reset property in node\n");
+-		return PTR_ERR(rockchip->aclk_rst);
++	err = devm_reset_control_bulk_get_optional_exclusive(dev,
++							     ROCKCHIP_NUM_CORE_RSTS,
++							     rockchip->core_rsts);
++	if (err) {
++		dev_err(dev, "cannot get the devm_reset_control err %d\n", err);
++		return err;
+ 	}
+ 
+ 	if (rockchip->is_rc) {
+@@ -152,21 +124,10 @@ int rockchip_pcie_init_port(struct rockchip_pcie *rockchip)
+ 	int err, i;
+ 	u32 regs;
+ 
+-	err = reset_control_assert(rockchip->aclk_rst);
++	err = reset_control_bulk_assert(ROCKCHIP_NUM_PM_RSTS,
++					rockchip->pm_rsts);
  	if (err) {
--		dev_err(dev, "unable to enable aclk_pcie clock\n");
-+		dev_err(dev, "rockchip clk bulk prepare enable failed\n");
+-		dev_err(dev, "assert aclk_rst err %d\n", err);
+-		return err;
+-	}
+-
+-	err = reset_control_assert(rockchip->pclk_rst);
+-	if (err) {
+-		dev_err(dev, "assert pclk_rst err %d\n", err);
+-		return err;
+-	}
+-
+-	err = reset_control_assert(rockchip->pm_rst);
+-	if (err) {
+-		dev_err(dev, "assert pm_rst err %d\n", err);
++		dev_err(dev, "reset bulk assert pm_rsts err %d\n", err);
  		return err;
  	}
  
--	err = clk_prepare_enable(rockchip->aclk_perf_pcie);
--	if (err) {
--		dev_err(dev, "unable to enable aclk_perf_pcie clock\n");
--		goto err_aclk_perf_pcie;
+@@ -178,47 +139,19 @@ int rockchip_pcie_init_port(struct rockchip_pcie *rockchip)
+ 		}
+ 	}
+ 
+-	err = reset_control_assert(rockchip->core_rst);
++	err = reset_control_bulk_assert(ROCKCHIP_NUM_CORE_RSTS,
++					rockchip->core_rsts);
+ 	if (err) {
+-		dev_err(dev, "assert core_rst err %d\n", err);
+-		goto err_exit_phy;
 -	}
 -
--	err = clk_prepare_enable(rockchip->hclk_pcie);
+-	err = reset_control_assert(rockchip->mgmt_rst);
 -	if (err) {
--		dev_err(dev, "unable to enable hclk_pcie clock\n");
--		goto err_hclk_pcie;
+-		dev_err(dev, "assert mgmt_rst err %d\n", err);
+-		goto err_exit_phy;
 -	}
 -
--	err = clk_prepare_enable(rockchip->clk_pcie_pm);
+-	err = reset_control_assert(rockchip->mgmt_sticky_rst);
 -	if (err) {
--		dev_err(dev, "unable to enable clk_pcie_pm clock\n");
--		goto err_clk_pcie_pm;
+-		dev_err(dev, "assert mgmt_sticky_rst err %d\n", err);
+-		goto err_exit_phy;
 -	}
 -
+-	err = reset_control_assert(rockchip->pipe_rst);
+-	if (err) {
+-		dev_err(dev, "assert pipe_rst err %d\n", err);
++		dev_err(dev, "reset bulk assert core_rsts err %d\n", err);
+ 		goto err_exit_phy;
+ 	}
+ 
+ 	udelay(10);
+ 
+-	err = reset_control_deassert(rockchip->pm_rst);
+-	if (err) {
+-		dev_err(dev, "deassert pm_rst err %d\n", err);
+-		goto err_exit_phy;
+-	}
+-
+-	err = reset_control_deassert(rockchip->aclk_rst);
+-	if (err) {
+-		dev_err(dev, "deassert aclk_rst err %d\n", err);
+-		goto err_exit_phy;
+-	}
+-
+-	err = reset_control_deassert(rockchip->pclk_rst);
++	err = reset_control_bulk_deassert(ROCKCHIP_NUM_PM_RSTS,
++					  rockchip->pm_rsts);
+ 	if (err) {
+-		dev_err(dev, "deassert pclk_rst err %d\n", err);
++		dev_err(dev, "reset bulk deassert pm_rsts err %d\n", err);
+ 		goto err_exit_phy;
+ 	}
+ 
+@@ -261,31 +194,15 @@ int rockchip_pcie_init_port(struct rockchip_pcie *rockchip)
+ 	 * Please don't reorder the deassert sequence of the following
+ 	 * four reset pins.
+ 	 */
+-	err = reset_control_deassert(rockchip->mgmt_sticky_rst);
++	err = reset_control_bulk_deassert(ROCKCHIP_NUM_CORE_RSTS,
++					  rockchip->core_rsts);
+ 	if (err) {
+-		dev_err(dev, "deassert mgmt_sticky_rst err %d\n", err);
+-		goto err_power_off_phy;
+-	}
+-
+-	err = reset_control_deassert(rockchip->core_rst);
+-	if (err) {
+-		dev_err(dev, "deassert core_rst err %d\n", err);
+-		goto err_power_off_phy;
+-	}
+-
+-	err = reset_control_deassert(rockchip->mgmt_rst);
+-	if (err) {
+-		dev_err(dev, "deassert mgmt_rst err %d\n", err);
+-		goto err_power_off_phy;
+-	}
+-
+-	err = reset_control_deassert(rockchip->pipe_rst);
+-	if (err) {
+-		dev_err(dev, "deassert pipe_rst err %d\n", err);
++		dev_err(dev, "reset bulk deassert core_rsts err %d\n", err);
+ 		goto err_power_off_phy;
+ 	}
+ 
  	return 0;
--
--err_clk_pcie_pm:
--	clk_disable_unprepare(rockchip->hclk_pcie);
--err_hclk_pcie:
--	clk_disable_unprepare(rockchip->aclk_perf_pcie);
--err_aclk_perf_pcie:
--	clk_disable_unprepare(rockchip->aclk_pcie);
--	return err;
- }
- EXPORT_SYMBOL_GPL(rockchip_pcie_enable_clocks);
- 
-@@ -412,10 +371,7 @@ void rockchip_pcie_disable_clocks(void *data)
- {
- 	struct rockchip_pcie *rockchip = data;
- 
--	clk_disable_unprepare(rockchip->clk_pcie_pm);
--	clk_disable_unprepare(rockchip->hclk_pcie);
--	clk_disable_unprepare(rockchip->aclk_perf_pcie);
--	clk_disable_unprepare(rockchip->aclk_pcie);
-+	clk_bulk_disable_unprepare(ROCKCHIP_NUM_CLKS, rockchip->clks);
- }
- EXPORT_SYMBOL_GPL(rockchip_pcie_disable_clocks);
- 
++
+ err_power_off_phy:
+ 	while (i--)
+ 		phy_power_off(rockchip->phys[i]);
 diff --git a/drivers/pci/controller/pcie-rockchip.h b/drivers/pci/controller/pcie-rockchip.h
-index 6111de35f84c..72346e17e45e 100644
+index 72346e17e45e..27e951b41b80 100644
 --- a/drivers/pci/controller/pcie-rockchip.h
 +++ b/drivers/pci/controller/pcie-rockchip.h
-@@ -11,6 +11,7 @@
- #ifndef _PCIE_ROCKCHIP_H
- #define _PCIE_ROCKCHIP_H
- 
-+#include <linux/clk.h>
+@@ -15,6 +15,7 @@
  #include <linux/kernel.h>
  #include <linux/pci.h>
  #include <linux/pci-ecam.h>
-@@ -287,6 +288,15 @@
- 		(((c) << ((b) * 8 + 5)) & \
++#include <linux/reset.h>
+ 
+ /*
+  * The upper 16 bits of PCIE_CLIENT_CONFIG are a write mask for the lower 16
+@@ -289,6 +290,8 @@
  		 ROCKCHIP_PCIE_CORE_EP_FUNC_BAR_CFG_BAR_CTRL_MASK(b))
  
-+#define ROCKCHIP_NUM_CLKS	ARRAY_SIZE(rockchip_pci_clks)
-+
-+static const char * const rockchip_pci_clks[] = {
-+	"aclk",
-+	"aclk-perf",
-+	"hclk",
+ #define ROCKCHIP_NUM_CLKS	ARRAY_SIZE(rockchip_pci_clks)
++#define ROCKCHIP_NUM_PM_RSTS	ARRAY_SIZE(rockchip_pci_pm_rsts)
++#define ROCKCHIP_NUM_CORE_RSTS	ARRAY_SIZE(rockchip_pci_core_rsts)
+ 
+ static const char * const rockchip_pci_clks[] = {
+ 	"aclk",
+@@ -297,18 +300,26 @@ static const char * const rockchip_pci_clks[] = {
+ 	"pm",
+ };
+ 
++static const char * const rockchip_pci_pm_rsts[] = {
 +	"pm",
++	"pclk",
++	"aclk",
++};
++
++static const char * const rockchip_pci_core_rsts[] = {
++	"core",
++	"mgmt",
++	"mgmt-sticky",
++	"pipe",
 +};
 +
  struct rockchip_pcie {
  	void	__iomem *reg_base;		/* DT axi-base */
  	void	__iomem *apb_base;		/* DT apb-base */
-@@ -299,10 +309,7 @@ struct rockchip_pcie {
- 	struct	reset_control *pm_rst;
- 	struct	reset_control *aclk_rst;
- 	struct	reset_control *pclk_rst;
--	struct	clk *aclk_pcie;
--	struct	clk *aclk_perf_pcie;
--	struct	clk *hclk_pcie;
--	struct	clk *clk_pcie_pm;
-+	struct  clk_bulk_data clks[ROCKCHIP_NUM_CLKS];
+ 	bool    legacy_phy;
+ 	struct  phy *phys[MAX_LANE_NUM];
+-	struct	reset_control *core_rst;
+-	struct	reset_control *mgmt_rst;
+-	struct	reset_control *mgmt_sticky_rst;
+-	struct	reset_control *pipe_rst;
+-	struct	reset_control *pm_rst;
+-	struct	reset_control *aclk_rst;
+-	struct	reset_control *pclk_rst;
++	struct  reset_control_bulk_data pm_rsts[ROCKCHIP_NUM_PM_RSTS];
++	struct  reset_control_bulk_data core_rsts[ROCKCHIP_NUM_CORE_RSTS];
+ 	struct  clk_bulk_data clks[ROCKCHIP_NUM_CLKS];
  	struct	regulator *vpcie12v; /* 12V power supply */
  	struct	regulator *vpcie3v3; /* 3.3V power supply */
- 	struct	regulator *vpcie1v8; /* 1.8V power supply */
-
-base-commit: 35bb670d65fc0f80c62383ab4f2544cec85ac57a
 -- 
 2.44.0
 
