@@ -4,63 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C6F74C27C78
-	for <linux-rockchip@archiver.kernel.org>; Sat, 22 Jun 2024 00:22:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D547CC27C53
+	for <linux-rockchip@archiver.kernel.org>; Sat, 22 Jun 2024 04:30:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=KT/dEX6nvsQrEZEGXWmYgaRtvSyOcQtAvqWnwlQQNFE=; b=XP7A+w10W7a/3B
-	AFFljMz6poRXIchsLC2zmJGC69HLfgUyLDMxVEOdBh3leYy+OoKE5k6z+ICbKr5qBVKVCLx6Lki/r
-	hgGbL6tWbwGzOMWygoyRWGV1JkwHoMJPEmkEtQNSpq9g4EoK0vEeW1fXHY39jJrlzsJYyUHtUs82F
-	xMEC2yKFogBXfmGhEerU08zKuoM21gTjGorvIQ0KR0skfDOXX0VC/XHLKWykWrgPAlRkD22UuvaVp
-	7yrzg+NefmKPNSoIBZygsESmrzCkklxpPGKxObaptRlMhJ8BBafvTUZiFz9L19W3xVaF0Gjn8VLKN
-	OkthPbtXPatT8/6r7cGQ==;
+	List-Owner; bh=qZdequHi4/ULKEyHdMskK5XYd3HsA8yS+xG2WRTMF7U=; b=QEwQSIusH2ukIB
+	4YKToSZPPqkYzCpxzTnIS4wPjuTMMeYaj/i4ZtsVMg9Q0VrEO4ufWJknU2ID6n0XFK5aFYPoM482F
+	GkGhzQOr379INZ3q95LIrtLP4RKXoJ4+puo/A8IRndOvhLiJjNigf89t78B7Ga2JbDCzHGrEv/5fE
+	WWIYPs+BoDNTWlhyT6MlsHGF1RNg2voUinNMD3MUjb6Cs3qqmB3GV2gvMeSXhEATVe+uQEQdbYk67
+	1AZcb11VrampA8ALM7BJvtN86qMQoozUyRhHyRk3KyDWwh6cGGFa+HVmbpGrzLGqc4MCbL/V0G59u
+	4ZVtehDDQF1gH7xb8bhQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sKoWg-0000000B0Px-2fwu;
-	Sat, 22 Jun 2024 00:22:42 +0000
-Received: from vps.xff.cz ([195.181.215.36])
+	id 1sKsNy-0000000BMoA-0XPj;
+	Sat, 22 Jun 2024 04:29:58 +0000
+Received: from mail-oa1-x2a.google.com ([2001:4860:4864:20::2a])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sKoWa-0000000B0O2-2jw5;
-	Sat, 22 Jun 2024 00:22:38 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=xff.cz; s=mail;
-	t=1719015750; bh=En/fn5XzRu8qqC+N8HlyBSRi6I96WhnRYtmMy55Q0T4=;
-	h=Date:From:To:Cc:Subject:X-My-GPG-KeyId:References:From;
-	b=dh+pZiJO6J7C8WZbaASR9rKURRAU4kMsRx64Pqih9eBS3je8rfX9h5xQpntWM83l8
-	 vSt8w9EDKNDaTotaldRde6toHwH0uhmJ6Jw/VcmX1EuNHQ/ZNYrMGXPqYx6/CZo62P
-	 HQTynxBU87v7Rb3vOj+hBnFmQU2KaSQow7lj1bTU=
-Date: Sat, 22 Jun 2024 02:22:29 +0200
-From: =?utf-8?Q?Ond=C5=99ej?= Jirman <megi@xff.cz>
-To: Jacobe Zang <jacobe.zang@wesion.com>
-Cc: arend.vanspriel@broadcom.com, kvalo@kernel.org, duoming@zju.edu.cn, 
-	bhelgaas@google.com, minipli@grsecurity.net, linux-wireless@vger.kernel.org, 
-	brcm80211@lists.linux.dev, brcm80211-dev-list.pdl@broadcom.com, robh@kernel.org, 
-	krzk+dt@kernel.org, conor+dt@kernel.org, heiko@sntech.de, nick@khadas.com, 
-	efectn@protonmail.com, jagan@edgeble.ai, dsimic@manjaro.org, devicetree@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v1 3/3] net: wireless: brcmfmac: Add support for AP6275P
-Message-ID: <fro2xcwsnvbxmpszny6g2p36z4zwoq4kegmpvww4twxir5piez@a3c2nbwitmab>
-Mail-Followup-To: =?utf-8?Q?Ond=C5=99ej?= Jirman <megi@xff.cz>, 
-	Jacobe Zang <jacobe.zang@wesion.com>, arend.vanspriel@broadcom.com, kvalo@kernel.org, 
-	duoming@zju.edu.cn, bhelgaas@google.com, minipli@grsecurity.net, 
-	linux-wireless@vger.kernel.org, brcm80211@lists.linux.dev, brcm80211-dev-list.pdl@broadcom.com, 
-	robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org, heiko@sntech.de, 
-	nick@khadas.com, efectn@protonmail.com, jagan@edgeble.ai, dsimic@manjaro.org, 
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-X-My-GPG-KeyId: EBFBDDE11FB918D44D1F56C1F9F0A873BE9777ED
- <https://xff.cz/key.txt>
-References: <20240620020015.4021696-1-jacobe.zang@wesion.com>
- <20240620020015.4021696-4-jacobe.zang@wesion.com>
+	id 1sKsNu-0000000BMmn-1jI2;
+	Sat, 22 Jun 2024 04:29:56 +0000
+Received: by mail-oa1-x2a.google.com with SMTP id 586e51a60fabf-25cba5eea69so1238669fac.2;
+        Fri, 21 Jun 2024 21:29:53 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1719030593; x=1719635393; darn=lists.infradead.org;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=F9KsD8yt6Ys8mXDglDi64CvjPaqmJRjrP6+6ZL6aKWI=;
+        b=d9rf3zbtMLa1xHcw0epm+WKukbMW8Lt91ENlf42huYu+IaOUFefyHUKXeGDDP+a0Un
+         L8rtcZrGzAdu620gNDxn9YhAWjgyi1xPYofmjdnqrgPLZlmfpdDFKNVnUFphkKKScM/1
+         riEc2EnzjjsNUijQJ5fqGsK+oUM/8+7IHlahXBnOgPhEXOIKZS9FtGaFsKM1pBEtIDGP
+         idX/WwxXB2EX1KNo1hMsrGiTPzEWlOoDPniNSQ3U5tzy84tGvaaCI2h7xQ4b8Ww/wxNV
+         YzCtafJRttdKsYqSLd2zILu06oKHOhshpRRuqPsemmrhFxGKLsts4Gz7f8Z1H026ZhoP
+         0jhw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1719030593; x=1719635393;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=F9KsD8yt6Ys8mXDglDi64CvjPaqmJRjrP6+6ZL6aKWI=;
+        b=owSKjrwREoYnu1NQGcvmhap0jab52XK65O9ZiNRExHuKJn3hl0jRTd4dvOzvyM7LUg
+         cwRLEyRNsuTKYCFFEj2JSyp+S5CCQ5qQSzHu0q+TK0RJRliEkIyePqnzMyjsS7kIhyji
+         yPQqkaWKxa29oU8rJT7MQdO7xfVyISXTEot2cPtzlbeilDZVDN2mhLKCuRJuDeEYM6U1
+         lzQrK2Sb64T+QozO2QvabdV4mIPb8v8bTbqVzUBDQUp4h7HbPa/vSDqcwD45Fm/hkoI2
+         T7Q+Ax1w2Z4FlsncArIRCssK+25EIhqNj01FhvFeSAMZHxHupiPft/2aszHwf8mFd+FL
+         JO4g==
+X-Forwarded-Encrypted: i=1; AJvYcCV4Nfg+Q/ushiaDy8W57ThXM3l/2+J3PdUPbJSC2nYJPrFqWUovgIFe67C1z3OiZqJ9ipsu3d8JkdsV4x4GZXfZKCr3NEpbCroep66AKBrVqr2B1N38Uj6YW4a/inb/9EEzPuLuGCW9HldPY/7Z0ubm4jW0TRY1h0E=
+X-Gm-Message-State: AOJu0Yw6kB/GATO2aMSUN1ZdZeRGVZi4rVx9VubtD2h7ZNdzyC61PqPS
+	WwARz81U1iYB/0/XsO8AYcv4/dSRPRy9NOLSiXJdnZ4an090B0MeXp5otVzmJ3eKK7dSHCYIth9
+	VU5/foLl/2kse3YVmO3LY9JasDGE=
+X-Google-Smtp-Source: AGHT+IE1+yk8ZA9XkU/ojx39oXVgXLE6ORoPSVISfOrRYQzqC1BHglAPcab/AKI4UKiw3FAoN067oBVJ79pWX7QhtAI=
+X-Received: by 2002:a05:6870:d389:b0:254:c95f:cdb6 with SMTP id
+ 586e51a60fabf-25c94d5c85fmr11605824fac.52.1719030592833; Fri, 21 Jun 2024
+ 21:29:52 -0700 (PDT)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20240620020015.4021696-4-jacobe.zang@wesion.com>
+References: <20240621064426.282048-1-linux.amoon@gmail.com> <20240621212125.GA1406213@bhelgaas>
+In-Reply-To: <20240621212125.GA1406213@bhelgaas>
+From: Anand Moon <linux.amoon@gmail.com>
+Date: Sat, 22 Jun 2024 09:59:38 +0530
+Message-ID: <CANAwSgRiOg4sXX5yEoTcogEAKUvO=r49sheSCjiCC7CF10kd1g@mail.gmail.com>
+Subject: Re: [PATCH v2 1/3] PCI: rockchip: Simplify clock handling by using
+ clk_bulk*() function
+To: Bjorn Helgaas <helgaas@kernel.org>
+Cc: Shawn Lin <shawn.lin@rock-chips.com>, Lorenzo Pieralisi <lpieralisi@kernel.org>, 
+	=?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?= <kw@linux.com>, 
+	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>, Heiko Stuebner <heiko@sntech.de>, 
+	kernel test robot <lkp@intel.com>, linux-pci@vger.kernel.org, 
+	linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
+	linux-kernel@vger.kernel.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240621_172237_167693_CACEE077 
-X-CRM114-Status: GOOD (  16.15  )
+X-CRM114-CacheID: sfid-20240621_212954_475961_09A8EEE1 
+X-CRM114-Status: GOOD (  20.00  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,84 +93,46 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jun 20, 2024 at 10:00:15AM GMT, Jacobe Zang wrote:
-> This module features BCM43752A2 chipset. The firmware requires
-> randomness seeding, so enabled it.
+Hi Bjorn
 
-Any reason to strip info about origin of the patch, my SoB and
-present this work as your own?
+On Sat, 22 Jun 2024 at 02:51, Bjorn Helgaas <helgaas@kernel.org> wrote:
+>
+> On Fri, Jun 21, 2024 at 12:14:20PM +0530, Anand Moon wrote:
+> > Refactors the clock handling in the Rockchip PCIe driver,
+> > introducing a more robust and efficient method for enabling and
+> > disabling clocks using clk_bulk*() API. Using the clk_bulk APIs,
+> > the clock handling for the core clocks becomes much simpler.
+> >
+> > Reported-by: kernel test robot <lkp@intel.com>
+> > Closes: https://lore.kernel.org/oe-kbuild-all/202406200818.CQ7DXNSZ-lkp@intel.com/
+>
+> Drop these two lines, as suggested in the test robot report:
+>
+>   If you fix the issue in a separate patch/commit (i.e. not just a new
+>   version of the same patch/commit), kindly add following tags ...
+>
+> This is a new version of the same patch, so it doesn't need those
+> tags.
+>
+Ok.
+> The problem you're solving with this patch is that the clock handling
+> is too complicated.  The test robot didn't report *that* problem.
+>
+> Since you'll repost for this, also s/Refactors/Refactor/ in the commit
+> log so this is in imperative mood:
+> https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/Documentation/process/submitting-patches.rst?id=v6.9#n94
+> https://chris.beams.io/posts/git-commit/
+>
+Ok, I will follow up on this process in the future.
 
-Original patch here https://megous.com/git/linux/commit/?h=ap6275p-6.10&id=1a99573bc8ed412e60e1969c0b29d53a0e5782e0
+> >  drivers/pci/controller/pcie-rockchip.c | 64 ++++----------------------
+> >  drivers/pci/controller/pcie-rockchip.h | 15 ++++--
+> >  2 files changed, 21 insertions(+), 58 deletions(-)
+>
+> Nice reduction in lines!
 
-regards,
-	o.
-
-> Signed-off-by: Jacobe Zang <jacobe.zang@wesion.com>
-> ---
->  drivers/net/wireless/broadcom/brcm80211/brcmfmac/pcie.c      | 5 ++++-
->  .../net/wireless/broadcom/brcm80211/include/brcm_hw_ids.h    | 2 ++
->  2 files changed, 6 insertions(+), 1 deletion(-)
-> 
-> diff --git a/drivers/net/wireless/broadcom/brcm80211/brcmfmac/pcie.c b/drivers/net/wireless/broadcom/brcm80211/brcmfmac/pcie.c
-> index f241e1757d7e3..add317731126c 100644
-> --- a/drivers/net/wireless/broadcom/brcm80211/brcmfmac/pcie.c
-> +++ b/drivers/net/wireless/broadcom/brcm80211/brcmfmac/pcie.c
-> @@ -71,6 +71,7 @@ BRCMF_FW_CLM_DEF(4377B3, "brcmfmac4377b3-pcie");
->  BRCMF_FW_CLM_DEF(4378B1, "brcmfmac4378b1-pcie");
->  BRCMF_FW_CLM_DEF(4378B3, "brcmfmac4378b3-pcie");
->  BRCMF_FW_CLM_DEF(4387C2, "brcmfmac4387c2-pcie");
-> +BRCMF_FW_CLM_DEF(43752, "brcmfmac43752-pcie");
->  
->  /* firmware config files */
->  MODULE_FIRMWARE(BRCMF_FW_DEFAULT_PATH "brcmfmac*-pcie.txt");
-> @@ -105,6 +106,7 @@ static const struct brcmf_firmware_mapping brcmf_pcie_fwnames[] = {
->  	BRCMF_FW_ENTRY(BRCM_CC_43664_CHIP_ID, 0xFFFFFFF0, 4366C),
->  	BRCMF_FW_ENTRY(BRCM_CC_43666_CHIP_ID, 0xFFFFFFF0, 4366C),
->  	BRCMF_FW_ENTRY(BRCM_CC_4371_CHIP_ID, 0xFFFFFFFF, 4371),
-> +	BRCMF_FW_ENTRY(BRCM_CC_43752_CHIP_ID, 0xFFFFFFFF, 43752),
->  	BRCMF_FW_ENTRY(BRCM_CC_4377_CHIP_ID, 0xFFFFFFFF, 4377B3), /* revision ID 4 */
->  	BRCMF_FW_ENTRY(BRCM_CC_4378_CHIP_ID, 0x0000000F, 4378B1), /* revision ID 3 */
->  	BRCMF_FW_ENTRY(BRCM_CC_4378_CHIP_ID, 0xFFFFFFE0, 4378B3), /* revision ID 5 */
-> @@ -1721,7 +1723,7 @@ static int brcmf_pcie_download_fw_nvram(struct brcmf_pciedev_info *devinfo,
->  		memcpy_toio(devinfo->tcm + address, nvram, nvram_len);
->  		brcmf_fw_nvram_free(nvram);
->  
-> -		if (devinfo->otp.valid) {
-> +		if (devinfo->otp.valid || devinfo->ci->chip == BRCM_CC_43752_CHIP_ID) {
->  			size_t rand_len = BRCMF_RANDOM_SEED_LENGTH;
->  			struct brcmf_random_seed_footer footer = {
->  				.length = cpu_to_le32(rand_len),
-> @@ -2710,6 +2712,7 @@ static const struct pci_device_id brcmf_pcie_devid_table[] = {
->  	BRCMF_PCIE_DEVICE(BRCM_PCIE_4366_5G_DEVICE_ID, BCA),
->  	BRCMF_PCIE_DEVICE(BRCM_PCIE_4371_DEVICE_ID, WCC),
->  	BRCMF_PCIE_DEVICE(BRCM_PCIE_43596_DEVICE_ID, CYW),
-> +	BRCMF_PCIE_DEVICE(BRCM_PCIE_43752_DEVICE_ID, WCC),
->  	BRCMF_PCIE_DEVICE(BRCM_PCIE_4377_DEVICE_ID, WCC),
->  	BRCMF_PCIE_DEVICE(BRCM_PCIE_4378_DEVICE_ID, WCC),
->  	BRCMF_PCIE_DEVICE(BRCM_PCIE_4387_DEVICE_ID, WCC),
-> diff --git a/drivers/net/wireless/broadcom/brcm80211/include/brcm_hw_ids.h b/drivers/net/wireless/broadcom/brcm80211/include/brcm_hw_ids.h
-> index 44684bf1b9acc..c1e22c589d85e 100644
-> --- a/drivers/net/wireless/broadcom/brcm80211/include/brcm_hw_ids.h
-> +++ b/drivers/net/wireless/broadcom/brcm80211/include/brcm_hw_ids.h
-> @@ -52,6 +52,7 @@
->  #define BRCM_CC_43664_CHIP_ID		43664
->  #define BRCM_CC_43666_CHIP_ID		43666
->  #define BRCM_CC_4371_CHIP_ID		0x4371
-> +#define BRCM_CC_43752_CHIP_ID		43752
->  #define BRCM_CC_4377_CHIP_ID		0x4377
->  #define BRCM_CC_4378_CHIP_ID		0x4378
->  #define BRCM_CC_4387_CHIP_ID		0x4387
-> @@ -94,6 +95,7 @@
->  #define BRCM_PCIE_4366_5G_DEVICE_ID	0x43c5
->  #define BRCM_PCIE_4371_DEVICE_ID	0x440d
->  #define BRCM_PCIE_43596_DEVICE_ID	0x4415
-> +#define BRCM_PCIE_43752_DEVICE_ID	0x449d
->  #define BRCM_PCIE_4377_DEVICE_ID	0x4488
->  #define BRCM_PCIE_4378_DEVICE_ID	0x4425
->  #define BRCM_PCIE_4387_DEVICE_ID	0x4433
-> -- 
-> 2.34.1
-> 
+Thanks
+-Anand
 
 _______________________________________________
 Linux-rockchip mailing list
