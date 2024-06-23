@@ -4,48 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 01717C27C4F
-	for <linux-rockchip@archiver.kernel.org>; Sun, 23 Jun 2024 07:00:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6A0ACC27C4F
+	for <linux-rockchip@archiver.kernel.org>; Sun, 23 Jun 2024 07:03:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:
 	MIME-Version:Date:Message-ID:Reply-To:Cc:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=rI7WWCaKfnvARz13sUIzumXqI81rAFoMsQpyrkt2TNI=; b=KtKMiORo88E3LI
-	PQeu1YTCIwS2sbMkOR2aiKXG8xU+onyhlWYKGESQQ+vn/+52Z+KPUTbmmpMwy5fnQaz46I2S0YFM7
-	6m5EOjHadxBPBOjk7/N3u7xawszwbLEw0gdMWcDGldZ2IjoJpcv5oSWbdf/Bo7vZLipZWqQl1H7GW
-	bmVrhRWlTpkpZ6wxo8fqAyPtCMWuCowjztNh8PBr4oPCBV5JRQ0wEQstkTnwwNqwC286NhTB/FjXT
-	eP0mmN4eQitKrOVilPVo5qWd8F7jloiAVGDp1Ge8NBtZmgY3q4UCaR7+N5vD2vkKMw+TIWVrOIlZ2
-	Aagkdb/e593JDtUQ11sw==;
+	List-Owner; bh=RVLaLwRycIzz/fclJ88U593xwG/FGvxpxm3GygyNUng=; b=jcSddG+BoEvCYs
+	D8eewsSyFiqmvMScyDlFfdneEUkabVI79cjcNXZux/ZnwYbf2OncS9CWK6CNWauoy1VGg1yMPW07E
+	+NopU2mhf01t8/3FfQTowSbr1O37q0ekASms0xty752rvstumnvpqt7S+8PHG7vZJ72r6epFh7T//
+	S0PY12e+TpJUhW/38OvOEx+uBOn37qKTE1a+l2P4r4sdXOJDUxnzEscAbEJShwV+948ZBPSeIHKrb
+	CTr/VK7V6bc6xbo8JKlydK7r+enpnx5tx0ktiZm5SymYRUGJjOcEO7sXPftZcJCIT8BEzy5gikbmC
+	s27k5FTJcQ5jGoCKxFRg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sLHDP-0000000DUGt-1orb;
-	Sun, 23 Jun 2024 07:00:43 +0000
+	id 1sLHG6-0000000DUYF-03dL;
+	Sun, 23 Jun 2024 07:03:30 +0000
 Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sLHDK-0000000DUFj-1jQ1;
-	Sun, 23 Jun 2024 07:00:40 +0000
+	id 1sLHG1-0000000DUXE-1kfX;
+	Sun, 23 Jun 2024 07:03:26 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 59F59601D3;
-	Sun, 23 Jun 2024 07:00:35 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 95121C2BD10;
-	Sun, 23 Jun 2024 07:00:29 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id ACCDE60344;
+	Sun, 23 Jun 2024 07:03:24 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D6276C2BD10;
+	Sun, 23 Jun 2024 07:03:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1719126035;
-	bh=Zh3rGWiju+eKajioJDo3k+SKSAZQHHVkEqE+gI1cN5s=;
+	s=k20201202; t=1719126204;
+	bh=31tCZ1WF5nzqWiKtcHmHj56vy33PnluvT8cin4fs0Do=;
 	h=Date:Subject:To:References:From:In-Reply-To:From;
-	b=ky8X+fejbTaHSKNaiFtCirYzTTO0/A3J4zLzqLtVHEH3mJeKJWXCyEf9hoJXghGJE
-	 MMAH95us0fr56u3X6PERvMUQEZhwJLxE2f9e09WzrqFHT0JwWSNTwcsFGqdBaPWGFp
-	 a6IQdLo4qmYVcQVCyNREMIj95AZaneU+3vho6oRlqaghYIewxoO2m9+lNsLzgNGh/V
-	 u/HdmXGGSLnygS6ZMF1sH+hU+PoFApf0SiaQcTaFRMurw/YOeyZwoK4zm1t7BE1CDh
-	 EH5/zf+TdpTZ9YtFojDOXBOtwEnpi4l6EXhW/2POReT+LPNoE2JiEcaqwasolg7tCE
-	 Zo/nkpjpr2k+g==
-Message-ID: <612bd49c-c44a-41f2-89e9-c96e62e52a0a@kernel.org>
-Date: Sun, 23 Jun 2024 09:00:27 +0200
+	b=navFBi/QEk26NC3CZElXX+5BDPtENV3rKEjmv0zyApQRER2fwpCmKEvGsy04pgApp
+	 H/o/nXH6xCj/sAekB8hSZwCCdnOoTQJD2lIQgWcLh6nLdyAlQ2bt5/Arga6FhqKiBT
+	 c8tDhH6s7eXa0C2gIl/S1JTf/APNuKFdWFUiMbtNKnJnHNc1mViewJGx11cEKlenh3
+	 Geete8Ned8PittIvTFJXAp9sTS+1aeiNCL+Wb0NMI6lZB6h2RCymovVTfxzFZgGg0h
+	 Ko9djV3VGavCrqzDeYJU0bDt175757Y+TE8v3bgo56Ri0Yph6Cu9LW3PjESUjYqYEQ
+	 +as76DDHReOwQ==
+Message-ID: <a31bc0f2-4f82-4e15-95b8-c17dc46e7bf5@kernel.org>
+Date: Sun, 23 Jun 2024 09:03:15 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 2/3] hwrng: add Rockchip SoC hwrng driver
+Subject: Re: [PATCH v4 1/3] dt-bindings: rng: Add Rockchip RNG bindings
 To: Daniel Golle <daniel@makrotopia.org>,
  Aurelien Jarno <aurelien@aurel32.net>, Olivia Mackall <olivia@selenic.com>,
  Herbert Xu <herbert@gondor.apana.org.au>, Rob Herring <robh@kernel.org>,
@@ -60,7 +60,7 @@ To: Daniel Golle <daniel@makrotopia.org>,
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
  linux-kernel@vger.kernel.org
 References: <cover.1719106472.git.daniel@makrotopia.org>
- <240db6e0ab07e8e2a86da99b0fc085eabaf9f0cc.1719106472.git.daniel@makrotopia.org>
+ <b28ccedac0a51f8a437f7ceb5175e3b70696c8c2.1719106472.git.daniel@makrotopia.org>
 From: Krzysztof Kozlowski <krzk@kernel.org>
 Content-Language: en-US
 Autocrypt: addr=krzk@kernel.org; keydata=
@@ -106,10 +106,10 @@ Autocrypt: addr=krzk@kernel.org; keydata=
  uZwJCLykjad45hsWcOGk3OcaAGQS6NDlfhM6O9aYNwGL6tGt/6BkRikNOs7VDEa4/HlbaSJo
  7FgndGw1kWmkeL6oQh7wBvYll2buKod4qYntmNKEicoHGU+x91Gcan8mCoqhJkbqrL7+nXG2
  5Q/GS5M9RFWS+nYyJh+c3OcfKqVcZQNANItt7+ULzdNJuhvTRRdC3g9hmCEuNSr+CLMdnRBY fv0=
-In-Reply-To: <240db6e0ab07e8e2a86da99b0fc085eabaf9f0cc.1719106472.git.daniel@makrotopia.org>
+In-Reply-To: <b28ccedac0a51f8a437f7ceb5175e3b70696c8c2.1719106472.git.daniel@makrotopia.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240623_000038_682353_439A517D 
-X-CRM114-Status: UNSURE (   9.03  )
+X-CRM114-CacheID: sfid-20240623_000325_573998_8B09A087 
+X-CRM114-Status: UNSURE (   6.62  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -127,40 +127,18 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 23/06/2024 05:33, Daniel Golle wrote:
-> +
-> +	rk_rng->rng.name = dev_driver_string(dev);
-> +#ifndef CONFIG_PM
-> +	rk_rng->rng.init = rk_rng_init;
-> +	rk_rng->rng.cleanup = rk_rng_cleanup;
-> +#endif
-> +	rk_rng->rng.read = rk_rng_read;
-> +	rk_rng->rng.priv = (unsigned long) dev;
-> +	rk_rng->rng.quality = 900;
+On 23/06/2024 05:32, Daniel Golle wrote:
+> From: Aurelien Jarno <aurelien@aurel32.net>
+> 
+> Add the True Random Number Generator on the Rockchip RK3568 SoC.
+> 
+> Signed-off-by: Aurelien Jarno <aurelien@aurel32.net>
+> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
 
-I doubt in this value. Usually SoC vendors do not provide datasheet with
-any reliable and verifiable (so one which could be proven by 3rd party)
-information. Can you provide a source? (and vendor downstream tree does
-not really count)
+My comments from v2, which I reminded at v3, were not addressed.
 
-> +
-> +	pm_runtime_set_autosuspend_delay(dev, RK_RNG_AUTOSUSPEND_DELAY);
-> +	pm_runtime_use_autosuspend(dev);
-> +	devm_pm_runtime_enable(dev);
-> +
-> +	ret = devm_hwrng_register(dev, &rk_rng->rng);
-> +	if (ret)
-> +		return dev_err_probe(&pdev->dev, ret, "Failed to register Rockchip hwrng\n");
-> +
-> +	dev_dbg(&pdev->dev, "Registered Rockchip hwrng\n");
-
-Drop, it is not useful at all. Srsly, we had already long enough talk,
-which wasted time of three people. Why do you insist on wasting more?
-
-There is no single benefit of such debug statement. sysfs already
-provides you this information. Simple entry/exit  is provided by
-tracing. You duplicate existing interfaces without any benefit, because
-this prints nothing more.
+Respond to each of them and acknowledge that you are going to implement
+the change.
 
 Best regards,
 Krzysztof
