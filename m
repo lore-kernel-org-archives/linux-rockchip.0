@@ -4,67 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5700DC27C4F
-	for <linux-rockchip@archiver.kernel.org>; Sun, 23 Jun 2024 11:31:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7DA8DC27C4F
+	for <linux-rockchip@archiver.kernel.org>; Sun, 23 Jun 2024 11:48:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=445zl8sRvj+MD8wqjlA5YOeclUt7Czl+MwhbZdiYDrs=; b=LeIxvyU8ZC9nCGgZ7kn4WUjra5
-	jQrLsSpwyKC7XaPxG+jupLRVuzCQr2tdO7iVayVRSwfOq3mYoIHvqDQq6/AuOgGDgGtGupjvcHANo
-	M6g4aYMjCwjuPDfVBQ/OEGy2JHsMs8fd7K5CC/N6r2PsonLp+xyME77yngwbRun92Qp9x0i4z4TRV
-	0tukAhdD55QvvXNwYcxl17Te4hIFYTdsQzgtPkM+o8ey0lG+6+HV45ARG+EEUEVcKLClzEtssaykt
-	kxeNKylkJ/2kUbHWBBKWeChNyEjGXECYffCxk82KIYW96mdDiy2Ik+ERvc6ecBrODnVLHUwMNxxFq
-	Sce9dRoA==;
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
+	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=CyD1gesRgdQw6zMnTn9AAAAQVlhejnFKbu70160h7O0=; b=V05rDddfdaXJ73x1RdYOqBEJ5r
+	suZWuE121T/OTcIoPKBO77e3ZM6ouVpM2oJ7t+VjMrSMGfcFe+TBErQ4GsOEFalXZegR1HPU1e4oz
+	TjjkRrrsUeLEeti7AqHwh4XDswuAa71dFQhxoNItLqgcPkwpsqT5wE7QkDlL4bopdcbV0mpKO/81y
+	JnVyE6GmSBKVtJN9VCDe46UTcZNS461fXvSDhUEGH89EiA4WyWnMwePl9i2zmXK9HVGc8dIR8aolP
+	YAisPm60Pj9c5Z5Q1xGQwRKy+yCE6/Rgl/PKtRrHFICBqlZFo1eKNSMXIeVEGtdoITxdvwsE8114/
+	bfShp2pw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sLLRR-0000000DtWa-2Wq3;
-	Sun, 23 Jun 2024 11:31:29 +0000
-Received: from out-172.mta1.migadu.com ([95.215.58.172])
+	id 1sLLhU-0000000Ducp-0WFn;
+	Sun, 23 Jun 2024 11:48:04 +0000
+Received: from mail.manjaro.org ([2a01:4f8:c0c:51f3::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sLLRL-0000000DtVD-0W6l
-	for linux-rockchip@lists.infradead.org;
-	Sun, 23 Jun 2024 11:31:26 +0000
-X-Envelope-To: heiko@sntech.de
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow.org; s=key1;
-	t=1719142277;
+	id 1sLLhN-0000000DucA-3nQK;
+	Sun, 23 Jun 2024 11:48:00 +0000
+MIME-Version: 1.0
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
+	t=1719143275;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=5sGngLZBqkAE79iidbqyoVY0tRIQ64K5ocj/t6ME7os=;
-	b=Rw5BM7beOxfAOo/M/g9Y90xdI/WXTSgfKd8Vcc4N06yn0AbYNv+tyhjF5g/VKBygh3VFk7
-	5HGGA+ys9qIY/QpCe60KRNBmHBeu0+yWvbouknppNGdtdjOF6McYoQw+lr37zV7sMlSJmu
-	Dk7iGGJOo7gFSWl7O1hsqDOIWObEAqpzAVX0Wc8QAxXi3ja2jWyUBzVKpZxq2ja34Oym5J
-	MO/2rn6/MhuyZ7CH/dzqjGf9fFq/darjJ4bWPYBclob7uiCm5mD5FbFNc/sOOyRPfVMdIG
-	X0KIwqedDvCxcbBM2U8S73oLAbSLXqMIjPqf36lk8/fln+2QTs8MB2Ej5G6Teg==
-X-Envelope-To: linux-rockchip@lists.infradead.org
-X-Envelope-To: dsimic@manjaro.org
-X-Envelope-To: devicetree@vger.kernel.org
-X-Envelope-To: linux-arm-kernel@lists.infradead.org
-X-Envelope-To: linux-kernel@vger.kernel.org
-X-Envelope-To: linux-rockchip@lists.infradead.org
-X-Envelope-To: andyshrk@163.com
-X-Envelope-To: andyshrk@163.com
-X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
-From: Diederik de Haas <didi.debian@cknow.org>
-To: heiko@sntech.de, linux-rockchip@lists.infradead.org
-Cc: dsimic@manjaro.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-rockchip@lists.infradead.org, Andy Yan <andyshrk@163.com>,
- Andy Yan <andyshrk@163.com>
-Subject: Re: [PATCH] arm64: dts: rockchip: Fix the i2c address of es8316 on Cool Pi 4B
-Date: Sun, 23 Jun 2024 13:31:02 +0200
-Message-ID: <2771372.9AS07kTVam@bagend>
-Organization: Connecting Knowledge
-In-Reply-To: <20240623083413.2051412-1-andyshrk@163.com>
-References: <20240623083413.2051412-1-andyshrk@163.com>
-MIME-Version: 1.0
-X-Migadu-Flow: FLOW_OUT
+	bh=yZOaYUoA97Ep2akKiluJXo61048Ck0byvoUwJNmlD6g=;
+	b=hty961XIXoBvEtYoWvvtAB6zK7d8snxmtmqhs4AqVp2gw3TC30vm8HF6cI0u2mXj4TJxJO
+	qvNAGUeGfecMkrperYCtVjAVDDwcqMhiH6CopcAefHqTn1Ff+YFz9DqP9sn5QsD7VpQocR
+	jMfRLNJOsjghVOPvfwH9WbBKW3dtgRDzKK4NV9Da/CjszS2c7TGGy+HtIS3mr7UgP00Br9
+	e3qGF+JjNR4FZ/7YpUswgtKRk8nyCJTPQQh78PtjYEnPLd9MjC1eDGPzJ4k+u8JTFyqMWP
+	0LBYR/vgWbO9fqNnOBYLeAjgmBR4wKXEhmG0TV1JwG7wnwURsrgLvxqBbsiGQg==
+Date: Sun, 23 Jun 2024 13:47:47 +0200
+From: Dragan Simic <dsimic@manjaro.org>
+To: =?UTF-8?Q?Uwe_Kleine-K=C3=B6nig?= <ukleinek@debian.org>
+Cc: Krzysztof Kozlowski <krzk@kernel.org>, Daniel Golle
+ <daniel@makrotopia.org>, Aurelien Jarno <aurelien@aurel32.net>, Olivia
+ Mackall <olivia@selenic.com>, Herbert Xu <herbert@gondor.apana.org.au>, Rob
+ Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor
+ Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, Philipp
+ Zabel <p.zabel@pengutronix.de>, Sebastian Reichel
+ <sebastian.reichel@collabora.com>, Sascha Hauer <s.hauer@pengutronix.de>,
+ Martin Kaiser <martin@kaiser.cx>, Ard Biesheuvel <ardb@kernel.org>,
+ linux-crypto@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v4 2/3] hwrng: add Rockchip SoC hwrng driver
+In-Reply-To: <395f8ebe-1392-4d8f-b91f-c9a8f5f48afe@debian.org>
+References: <cover.1719106472.git.daniel@makrotopia.org>
+ <240db6e0ab07e8e2a86da99b0fc085eabaf9f0cc.1719106472.git.daniel@makrotopia.org>
+ <612bd49c-c44a-41f2-89e9-c96e62e52a0a@kernel.org>
+ <395f8ebe-1392-4d8f-b91f-c9a8f5f48afe@debian.org>
+Message-ID: <051d76a29de62b943b221cf0c7662ef1@manjaro.org>
+X-Sender: dsimic@manjaro.org
+Authentication-Results: ORIGINATING;
+	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240623_043123_907871_94ECEBD5 
-X-CRM114-Status: GOOD (  14.75  )
+X-CRM114-CacheID: sfid-20240623_044758_445417_D20E3EC7 
+X-CRM114-Status: GOOD (  15.35  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,87 +77,37 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============1501740862733881527=="
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
---===============1501740862733881527==
-Content-Type: multipart/signed; boundary="nextPart4155544.U3QUcyqSlJ";
- micalg="pgp-sha256"; protocol="application/pgp-signature"
-
---nextPart4155544.U3QUcyqSlJ
-Content-Transfer-Encoding: 7Bit
-Content-Type: text/plain; charset="us-ascii"; protected-headers="v1"
-From: Diederik de Haas <didi.debian@cknow.org>
-To: heiko@sntech.de, linux-rockchip@lists.infradead.org
-Date: Sun, 23 Jun 2024 13:31:02 +0200
-Message-ID: <2771372.9AS07kTVam@bagend>
-Organization: Connecting Knowledge
-In-Reply-To: <20240623083413.2051412-1-andyshrk@163.com>
-References: <20240623083413.2051412-1-andyshrk@163.com>
-MIME-Version: 1.0
-
-On Sunday, 23 June 2024 10:34:13 CEST Andy Yan wrote:
-> According to the hardware design, the i2c address of audio codec es8316
-> on Cool Pi 4B is 0x10.
-> 
-> ...
-> ---
-> 
->  arch/arm64/boot/dts/rockchip/rk3588s-coolpi-4b.dts | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-coolpi-4b.dts
-> b/arch/arm64/boot/dts/rockchip/rk3588s-coolpi-4b.dts index
-> 20a0a60acd16..091dee37d068 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3588s-coolpi-4b.dts
-> +++ b/arch/arm64/boot/dts/rockchip/rk3588s-coolpi-4b.dts
-> @@ -302,7 +302,7 @@ &i2c7 {
-> 
->  	es8316: audio-codec@11 {
-
-Shouldn't this be `@10` then too?
-
->  		compatible = "everest,es8316";
-> -		reg = <0x11>;
-> +		reg = <0x10>;
->  		assigned-clocks = <&cru I2S0_8CH_MCLKOUT>;
->  		assigned-clock-rates = <12288000>;
->  		clocks = <&cru I2S0_8CH_MCLKOUT>;
-
-
---nextPart4155544.U3QUcyqSlJ
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: This is a digitally signed message part.
-Content-Transfer-Encoding: 7Bit
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYIAB0WIQT1sUPBYsyGmi4usy/XblvOeH7bbgUCZngHdgAKCRDXblvOeH7b
-bt3oAQCII30iQ/sfgohv2r+DOosF7UhIE+8oOtI6S/ypnnR5ewD+JVcYqudfLmEs
-OWE4JSAnFwNwXgGsOr8QJFLcDpI25gc=
-=MCtm
------END PGP SIGNATURE-----
-
---nextPart4155544.U3QUcyqSlJ--
-
-
-
-
-
---===============1501740862733881527==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============1501740862733881527==--
-
-
-
-
+SGVsbG8gVXdlLAoKT24gMjAyNC0wNi0yMyAxMTo0NiwgVXdlIEtsZWluZS1Lw7ZuaWcgd3JvdGU6
+Cj4gT24gNi8yMy8yNCAwOTowMCwgS3J6eXN6dG9mIEtvemxvd3NraSB3cm90ZToKPj4gT24gMjMv
+MDYvMjAyNCAwNTozMywgRGFuaWVsIEdvbGxlIHdyb3RlOgo+Pj4gKwo+Pj4gKwlwbV9ydW50aW1l
+X3NldF9hdXRvc3VzcGVuZF9kZWxheShkZXYsIFJLX1JOR19BVVRPU1VTUEVORF9ERUxBWSk7Cj4+
+PiArCXBtX3J1bnRpbWVfdXNlX2F1dG9zdXNwZW5kKGRldik7Cj4+PiArCWRldm1fcG1fcnVudGlt
+ZV9lbmFibGUoZGV2KTsKPj4+ICsKPj4+ICsJcmV0ID0gZGV2bV9od3JuZ19yZWdpc3RlcihkZXYs
+ICZya19ybmctPnJuZyk7Cj4+PiArCWlmIChyZXQpCj4+PiArCQlyZXR1cm4gZGV2X2Vycl9wcm9i
+ZSgmcGRldi0+ZGV2LCByZXQsICJGYWlsZWQgdG8gcmVnaXN0ZXIgUm9ja2NoaXAgCj4+PiBod3Ju
+Z1xuIik7Cj4+PiArCj4+PiArCWRldl9kYmcoJnBkZXYtPmRldiwgIlJlZ2lzdGVyZWQgUm9ja2No
+aXAgaHdybmdcbiIpOwo+PiAKPj4gRHJvcCwgaXQgaXMgbm90IHVzZWZ1bCBhdCBhbGwuIFNyc2x5
+LCB3ZSBoYWQgYWxyZWFkeSBsb25nIGVub3VnaCB0YWxrLAo+PiBbLi4uXQo+IAo+IEFuZCBpbiB0
+aGlzIGxvbmcgdGFsayB1c2luZyBkZXZfZGJnKCkgd2FzIG9uZSBvZiB0aGUgc3VnZ2VzdGlvbnMg
+Zm9yIGEKPiBjb21wcm9taXNlLiBGb3IgbWUgdGhpcyBpcyBvay4KPiAKPj4gVGhlcmUgaXMgbm8g
+c2luZ2xlIGJlbmVmaXQgb2Ygc3VjaCBkZWJ1ZyBzdGF0ZW1lbnQuIHN5c2ZzIGFscmVhZHkKPj4g
+cHJvdmlkZXMgeW91IHRoaXMgaW5mb3JtYXRpb24uIFNpbXBsZSBlbnRyeS9leGl0ICBpcyBwcm92
+aWRlZCBieQo+PiB0cmFjaW5nLiBZb3UgZHVwbGljYXRlIGV4aXN0aW5nIGludGVyZmFjZXMgd2l0
+aG91dCBhbnkgYmVuZWZpdCwgCj4+IGJlY2F1c2UKPj4gdGhpcyBwcmludHMgbm90aGluZyBtb3Jl
+Lgo+IAo+IFRoZXJlIG1pZ2h0IGJlIGEgKHNtYWxsKSB2YWx1ZSBpZiB5b3Ugd2FudCB0byBrbm93
+IHdoZW4gZHVyaW5nIGJvb3QKPiB0aGUgZGV2aWNlIGJlY29tZXMgYXZhaWxhYmxlLiBTbyBoYXZp
+bmcgYSBkZXZfZGJnKCkgdGhhdCBjYW4gYmUKPiBlbmFibGVkIGR5bmFtaWNhbGx5IChhc3N1bWlu
+ZyBEWU5BTUlDX0RFQlVHPXkpIGFuZCBpc24ndCBpbiB0aGUgd2F5Cj4gb3RoZXJ3aXNlIG1pZ2h0
+IGJlIGp1c3RpZmllZC4gSU1ITyBhIGRldl9kYmcgaXMgbGlnaHR3ZWlnaHQgZW5vdWdoCj4gdGhh
+dCAqSSogd29uJ3QgY29udGludWUgdGhlIGRpc2N1c3Npb24uCgpGb3IgYW55b25lIGludGVyZXN0
+ZWQsIGJlbG93IGlzIGFuIGV4YW1wbGUgdGhhdCBzaG93cyB0aGUgdXNhYmlsaXR5Cm9mIGtub3dp
+bmcgd2hlbiBhIGRldmljZSBiZWNvbWVzIGF2YWlsYWJsZToKCmh0dHBzOi8vZ2l0bGFiLm1hbmph
+cm8ub3JnL21hbmphcm8tYXJtL3BhY2thZ2VzL2NvcmUvbGludXgvLS9pc3N1ZXMvMjEKCl9fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlw
+IG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9s
+aXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
