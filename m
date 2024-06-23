@@ -4,74 +4,103 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D6C3DC2BA18
-	for <linux-rockchip@archiver.kernel.org>; Sun, 23 Jun 2024 08:02:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 993DAC27C4F
+	for <linux-rockchip@archiver.kernel.org>; Sun, 23 Jun 2024 08:07:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=NKxPyjvAaLbMlY1LX4WlUg4AMT9/4jHDEDDUbnWGqps=; b=TmeaDiVfb5gh8d
-	+1ibIPRh2+0R68BfRLrHPtkdSRB96MwkYKRfsjxvB3BWkrJwdaxA8D+fIu0v8RzE7giIDb6FX3hDd
-	RZwvP1rqOjMk8/8mgkzujkCGQJ77Zx5ym8Ypjsm6PQ5OiNbfkV2x9I+uRaouQEz49Td8/LXa219nW
-	JrKcniULsYxn3afvkMFLImn9WTTCPaIP3KHaHWr3Tved6RXSXQn8az8YN/0y+13XyhJHHV+6WyAJ6
-	I3dTZrsTmnNe6hh/DNziFWEjLp6/PfbDWL5/MEhIUVmFHF/GQJIDKODx//qwC1QsStTPI1LxzpcAh
-	gcrnm7yRzQP95PKM+o5g==;
+	List-Owner; bh=bJ2fuIETG2upmS1YivqPDjWEC5e2/LYnAXZwhkO1oAc=; b=HO7ZAbLhPYQ8GW
+	ma1bcm/vfxxuppmR9PgASD50pGfEdKtqGlHg00SgFjX3YJrc2il29Fn2yX3j907URYxkAWezRt7cH
+	3EGXAILagxwCsu5TdP9u34LXnWu8KYqoAy2tY7sH2XJ/a3NCzNmW5SOA1/P7eSDxZZZ+BGYqq15vB
+	tp2jfxiTWBrkm+TApqKfkQFtiMZv8Lmg1OJK5hXlPEyqw0hY5nikJaZctORvsWDgNau+waNNuqH+i
+	6Pa0xyXZek8QGVLD1DImm1yglg6H0gauy6OSJQZXoQQhgyEZ8Px5axDbJd8bZUWeyy3N9tFXnlXSa
+	KaciV4Ku9Tpa4Ppb8Dtg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sLIAo-0000000DZzn-3o9N;
-	Sun, 23 Jun 2024 08:02:06 +0000
-Received: from vps.xff.cz ([195.181.215.36])
+	id 1sLIG2-0000000Dail-0yd4;
+	Sun, 23 Jun 2024 08:07:30 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sLIAi-0000000DZwI-0pkF;
-	Sun, 23 Jun 2024 08:02:02 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=xff.cz; s=mail;
-	t=1719129714; bh=hy2ki87r3CsdFd2uUj+s2wvNocOXNjMZAbPN3I53JH0=;
-	h=Date:From:To:Cc:Subject:X-My-GPG-KeyId:References:From;
-	b=Kuc4qm+RLkfMTLfmABd/NF5FdG4goJqKSizgr8Rh95Nv+/dZdA991kg8WfyO3gNc6
-	 +2ReQTYUQd0zLBsoIx2NnvRL+BYtOn83yOvQGtwEs+oThlrW18iyYiKwChHbrVGBv5
-	 3wT9N6tYQpJLkVOqIpvtliVhHaYF9QMqsSky42A0=
-Date: Sun, 23 Jun 2024 10:01:54 +0200
-From: =?utf-8?Q?Ond=C5=99ej?= Jirman <megi@xff.cz>
-To: Jacobe Zang <jacobe.zang@wesion.com>
-Cc: "arend.vanspriel@broadcom.com" <arend.vanspriel@broadcom.com>, 
-	"kvalo@kernel.org" <kvalo@kernel.org>, "duoming@zju.edu.cn" <duoming@zju.edu.cn>, 
-	"bhelgaas@google.com" <bhelgaas@google.com>, "minipli@grsecurity.net" <minipli@grsecurity.net>, 
-	"linux-wireless@vger.kernel.org" <linux-wireless@vger.kernel.org>, "brcm80211@lists.linux.dev" <brcm80211@lists.linux.dev>, 
-	"brcm80211-dev-list.pdl@broadcom.com" <brcm80211-dev-list.pdl@broadcom.com>, "robh@kernel.org" <robh@kernel.org>, 
-	"krzk+dt@kernel.org" <krzk+dt@kernel.org>, "conor+dt@kernel.org" <conor+dt@kernel.org>, 
-	"heiko@sntech.de" <heiko@sntech.de>, Nick Xie <nick@khadas.com>, 
-	"efectn@protonmail.com" <efectn@protonmail.com>, "jagan@edgeble.ai" <jagan@edgeble.ai>, 
-	"dsimic@manjaro.org" <dsimic@manjaro.org>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, 
-	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, 
-	"linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
-Subject: Re: [PATCH v1 3/3] net: wireless: brcmfmac: Add support for AP6275P
-Message-ID: <ksxio3vzlz4rqcwvmtthskv6lqt33ejzjes557rwnkzex2oihk@52ueay5cwuub>
-Mail-Followup-To: =?utf-8?Q?Ond=C5=99ej?= Jirman <megi@xff.cz>, 
-	Jacobe Zang <jacobe.zang@wesion.com>, "arend.vanspriel@broadcom.com" <arend.vanspriel@broadcom.com>, 
-	"kvalo@kernel.org" <kvalo@kernel.org>, "duoming@zju.edu.cn" <duoming@zju.edu.cn>, 
-	"bhelgaas@google.com" <bhelgaas@google.com>, "minipli@grsecurity.net" <minipli@grsecurity.net>, 
-	"linux-wireless@vger.kernel.org" <linux-wireless@vger.kernel.org>, "brcm80211@lists.linux.dev" <brcm80211@lists.linux.dev>, 
-	"brcm80211-dev-list.pdl@broadcom.com" <brcm80211-dev-list.pdl@broadcom.com>, "robh@kernel.org" <robh@kernel.org>, 
-	"krzk+dt@kernel.org" <krzk+dt@kernel.org>, "conor+dt@kernel.org" <conor+dt@kernel.org>, 
-	"heiko@sntech.de" <heiko@sntech.de>, Nick Xie <nick@khadas.com>, 
-	"efectn@protonmail.com" <efectn@protonmail.com>, "jagan@edgeble.ai" <jagan@edgeble.ai>, 
-	"dsimic@manjaro.org" <dsimic@manjaro.org>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, 
-	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, 
-	"linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
-X-My-GPG-KeyId: EBFBDDE11FB918D44D1F56C1F9F0A873BE9777ED
- <https://xff.cz/key.txt>
-References: <20240620020015.4021696-1-jacobe.zang@wesion.com>
- <20240620020015.4021696-4-jacobe.zang@wesion.com>
- <fro2xcwsnvbxmpszny6g2p36z4zwoq4kegmpvww4twxir5piez@a3c2nbwitmab>
- <TYZPR03MB700154AE39D44B8D166344BF80CB2@TYZPR03MB7001.apcprd03.prod.outlook.com>
+	id 1sLIFy-0000000DaiI-4A7Y
+	for linux-rockchip@lists.infradead.org;
+	Sun, 23 Jun 2024 08:07:28 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 9D6E860AC9;
+	Sun, 23 Jun 2024 08:07:25 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 79231C2BD10;
+	Sun, 23 Jun 2024 08:07:22 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1719130045;
+	bh=HL7gc5aNbPxOTUixvrZIwyvWjEMc/PzfdgXNeWwkdg8=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=MMQAli9YvSuEvOrjzTlj+MuHBvXUXBbO9toNBeQ0//U49QzFQIlk6GzY/heQKlbyU
+	 AHh/yZlk46Nx8qrcP8ODGZh0Mpz6ml8Gi1FqzOIoR9lHysUuS1Fxnlwdh5+MD+B5N0
+	 mnJaJ8f7ZDArMZ78dzOj9MhthLqNWBN5zmHbbW5xnjtx/GTCZi3+NssCHojIFbCkHK
+	 xKuwDZhzTUmCpcgJBz2m7egg95kQoGgjwdLC83VKcVpFY2nrioA4sojKB3vCA2nVn0
+	 8B5XPmgqcEYFNUo8U5WsmLexa1jLUmTItQM/Z0eBjNERoBpcsHowSGScl6u7YSBo95
+	 PAUAu2iAql/vQ==
+Message-ID: <8da8e56a-e24f-4b56-9861-df55369c984f@kernel.org>
+Date: Sun, 23 Jun 2024 10:07:19 +0200
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <TYZPR03MB700154AE39D44B8D166344BF80CB2@TYZPR03MB7001.apcprd03.prod.outlook.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] arm64: dts: rockchip: add dts for Radxa ROCK Pi E v3.0
+To: FUKAUMI Naoki <naoki@radxa.com>, heiko@sntech.de
+Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
+ devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org
+References: <20240623075318.80492-1-naoki@radxa.com>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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 fv0=
+In-Reply-To: <20240623075318.80492-1-naoki@radxa.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240623_010200_712990_534BC975 
-X-CRM114-Status: GOOD (  24.50  )
+X-CRM114-CacheID: sfid-20240623_010727_180484_5FDDD6C5 
+X-CRM114-Status: UNSURE (   9.41  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,53 +117,28 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Jacobe,
-
-On Sun, Jun 23, 2024 at 02:21:39AM GMT, Jacobe Zang wrote:
-> > Any reason to strip info about origin of the patch, my SoB and
-> > present this work as your own?
+On 23/06/2024 09:53, FUKAUMI Naoki wrote:
+> Radxa ROCK Pi E v3.0 has DDR4 SDRAM instead of DDR3 SDRAM.
 > 
-> Sincerely express my apology to Ondrej. It's really my mistake. After getting
-> your permission if I could submit the patches. I jsut think if the author and
-> submitter is not the same person is strange so I changed it. Next tiem I will
-> avoid this mistake. Apologize again.
+> for Linux, this change doesn't make any difference from a device tree
+> POV. but, for bootloader (U-Boot TPL), it makes a difference.
+
+What difference?
+
 > 
-> 
-> > I sincerely hope this is just a rookie mistake so please carefully read
-> the URL below:
-> 
-> > https://www.kernel.org/doc/html/latest/process/submitting-patches.html
-> 
-> Thanks for the guidance Arend. After reading the document I realized what a stupid mistake I made.
-> 
-> BTW I have another question, except the SoB of the real author, should I also post the original link in commit message?
+> bootloader needs a separeted dts for v3, so I add new dts for it.
+> dtb can be shared between v3 and prior, so I don't touch Makefile.
 
-I suggest keeping at least this part:
+I don't understand. If you have the same DTB then you do not need second
+DTS.
 
-> Partially copied from https://lore.kernel.org/all/c7b331edd65b66521a6605177d654e55051568a3.camel@toradex.com/
-> 
-> (No Signed-off-by provided in the email. The code looks like some
-> data copied probably from a vendor driver and adapted for the upstream
-> one.)
+This change really lacks proper explanation or is just unnecessary. If
+change is proven as necessary, then you also miss compatible and model.
 
-I'm not the complete author of the patch either. I just figured out why
-just adding device/chip IDs was not enough compared to what Marcel Ziswiler
-tried and expanded the patch from his email, to make it work.
 
-People using baords with AP6275P (eg. I did my debugging on QuartzPro64) will
-also be interested in how to get the firmware for AP6275P, and there are some
-hints for that in the above link, too. (FW filename that is in the patch for the
-driver doesn't match FW name as distributed by eg. SparkLAN, which makes it
-harder to find it just based on FW name from the code)
+Best regards,
+Krzysztof
 
-Although it would be nice to have the firmware available in linux-firmware.
-
-Kind regards,
-	o.
-
-> ---
-> Best Regards
-> Jacobe
 
 _______________________________________________
 Linux-rockchip mailing list
