@@ -4,62 +4,103 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 79D46C2BBCA
-	for <linux-rockchip@archiver.kernel.org>; Sun, 23 Jun 2024 12:06:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B6D27C27C4F
+	for <linux-rockchip@archiver.kernel.org>; Sun, 23 Jun 2024 12:09:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=C5GY/imRnpNbtdrPJVCJxLrnbn4kYQYEKQOsZFRhF5Y=; b=sXw05jVmxBYUzl
-	Qcd/Od5mQM5knZz+nOftbtZw3g/C0DijsaXU6c4KlWI5lFuCYAdUURxcx0G9EA0KKVK20+q5YfMdB
-	gGfqKTQIEbVfgtD4VEgW2F/0U71yclaizswtLnoCXcfjO7UTVMqCz2K7XQZhOYkNdfun5oAhEZqpr
-	1/yEwdzaIFFMMMkNL1HC74qD2qQDczq5Ab72lYOGBc+7dmujxcx9NPjDwL+zu3ApNHXxcmMDoh168
-	Eho6NIJ6lmLkF04qAt8XuQ0XG2qOdRnxdFYhcDZD0722WR9+IBJIGwh1RQWDF6/jwqlv7PiPhVJ6d
-	wEoxqwbGL0LtkPQFBqMg==;
+	List-Owner; bh=Gh6eWyz3Ub/xK/cRMalNHQRrcJEF5DzvMqKshKd6ntw=; b=kwLMuT1zPcxaMh
+	LS9f6bPh7F6tX/hH6nhZ4IXl2mjPVagp8yntCrimbJ/b1/vQUxkujWvlCTDe62CToDOKxpPBVrIuX
+	F/MphWVM+Yu+bzNYMWrVbQL7h0fO3birvccl84mhls7eZnY1ciRM5soeM9pWFBaFk0pAqeGCtiURM
+	Pfq4QLm0mDM5Ww1xZf6c2+D8/+JH/WRLHlgLqeB4H0nMA1jzUO3zWS+pQK4aajJW0Pfea2QSVBK3I
+	so+YGMbJojJPSQmjR4fAg66l9Uuv+7oNIzN807lzIbVKGJK3ZVGKv/woAGSdtE4nTr+2YuuDmRLJ+
+	wpqlxBa0xDCIlkz/5GgA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sLLz8-0000000DwRr-1ZpB;
-	Sun, 23 Jun 2024 12:06:18 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1sLM1u-0000000Dwmg-0krr;
+	Sun, 23 Jun 2024 12:09:10 +0000
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sLLz6-0000000DwRS-2OGv
-	for linux-rockchip@bombadil.infradead.org;
-	Sun, 23 Jun 2024 12:06:16 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
-	:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-Type:Content-ID:Content-Description;
-	bh=Q36v1l+rRx7GJt6wGCUZGWr637IC68BDH9m6YJULIbw=; b=K9ldsos6uyHQLixrZchzjF9DOt
-	9x316dl84131gHjc0ER6mWbOBVzo5r9/BoDRSE+wL81U9z9q0Sej3kpC4YzDlTirsxrFA8vWgKFvp
-	Zg23li7HRaAI0KJ6dzPsM8pbDnbh2CAlzv6HYxr+0PspPWILboQ+tZsZE9uvUFomxIg4+BwUjMFQ/
-	zBoeuio8w5YLGMHwosBNqX81KsuWa4SR/EM48UGG5Qo05LSlECqWCzYAcjVbIMxJzlMEONae2Hv23
-	gPmfzrQp12Iu3EHY+ZaGJOzBEVoFubvx81trjH9030kO0ulebGbItR+DLiQUL6Do91tKiMwVJIkNy
-	rXastW8g==;
-Received: from sakura.naobsd.org ([160.16.200.221] helo=mail.naobsd.org)
-	by desiato.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sLLu8-0000000828N-3S8W
+	id 1sLM1q-0000000DwlW-3BQU
 	for linux-rockchip@lists.infradead.org;
-	Sun, 23 Jun 2024 12:05:36 +0000
-Received: from secure.fukaumi.org ([10.0.0.2])
-	by mail.naobsd.org (8.14.4/8.14.4/Debian-4.1ubuntu1.1) with ESMTP id 45NC0fJC006059;
-	Sun, 23 Jun 2024 21:00:42 +0900
-From: FUKAUMI Naoki <naoki@radxa.com>
-To: heiko@sntech.de
-Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
-        devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org,
-        FUKAUMI Naoki <naoki@radxa.com>
-Subject: [PATCH 3/3] arm64: dts: rockchip: add support for Radxa ROCK Pi E v3.0
-Date: Sun, 23 Jun 2024 21:00:16 +0900
-Message-ID: <20240623120016.82990-3-naoki@radxa.com>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20240623120016.82990-1-naoki@radxa.com>
-References: <20240623120016.82990-1-naoki@radxa.com>
+	Sun, 23 Jun 2024 12:09:08 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sin.source.kernel.org (Postfix) with ESMTP id 5D19CCE0303;
+	Sun, 23 Jun 2024 12:09:04 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id ED837C2BD10;
+	Sun, 23 Jun 2024 12:09:00 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1719144543;
+	bh=xDK2bz2t8TTz4jxfmvxr8Cx/b+qTLUZJitzxLhU+5WM=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=A0nnzNyfrC0BYe020a7828oe+ziOLr2omiVQasLDIEqcQAC1ZmAzejHnvBjUCi9We
+	 L2jInFt2N0xdIOWXGbdmU4Lstmz6KgAgpaNe6yYstx6KMiiXO8G/QeR6qDXX+vujP0
+	 tlxA0hnswmunExvrT28enaVHWZ73VTisc5WlxtA1rpwGkqjqJiTFi6NU9tgyowVQHk
+	 ElEV+mX8Buwb0QMDp11+wEiEoAWERxEiE1N55SGdoMIgKF/aao4FZstrTBBGoFqp2Y
+	 5+DwCyjxSJaBi7Mv7xKn4fignsd5dKwZRq0HEL61QU+urq4rgudFq0YBvFei4C126Z
+	 1oprDimomj9Kg==
+Message-ID: <059eec26-b7ca-4bd0-9e63-cfceffc4a777@kernel.org>
+Date: Sun, 23 Jun 2024 14:08:58 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 1/3] dt-bindings: arm: rockchip: Add Radxa ROCK Pi E v3.0
+To: FUKAUMI Naoki <naoki@radxa.com>, heiko@sntech.de
+Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
+ devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org
+References: <20240623120016.82990-1-naoki@radxa.com>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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 fv0=
+In-Reply-To: <20240623120016.82990-1-naoki@radxa.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240623_130320_718049_5BD060AE 
-X-CRM114-Status: GOOD (  10.02  )
+X-CRM114-CacheID: sfid-20240623_050907_186294_FFCC9607 
+X-CRM114-Status: UNSURE (   4.62  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,54 +117,19 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-ROCK Pi E v3.0 is newer version of ROCK Pi E v1.2x. Changes are
+On 23/06/2024 14:00, FUKAUMI Naoki wrote:
+> Add devicetree binding for the Radxa ROCK Pi E v3.0 board.
+> 
+> Radxa ROCK Pi E v3.0 is a single-board computer based on the Rockchip
+> RK3328 SoC with a compact form factor.
+> 
+> Signed-off-by: FUKAUMI Naoki <naoki@radxa.com>
 
-- Upgrade DDR3 to DDR4
-- Elevate eMMC connector to onboard eMMC
-- Update silkscreen to ROCK PI E V3.0
+Isn't this v2 of something? What changed here? Provide detailed
+changelog per each patch (see submitting patches).
 
-Signed-off-by: FUKAUMI Naoki <naoki@radxa.com>
----
- arch/arm64/boot/dts/rockchip/rk3328-rock-pi-e-v3.dts | 10 ++++++++++
- arch/arm64/boot/dts/rockchip/rk3328-rock-pi-e.dts    | 10 ++++++++++
- 2 files changed, 20 insertions(+)
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3328-rock-pi-e-v3.dts
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3328-rock-pi-e.dts
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3328-rock-pi-e-v3.dts b/arch/arm64/boot/dts/rockchip/rk3328-rock-pi-e-v3.dts
-new file mode 100644
-index 000000000000..be369dace843
---- /dev/null
-+++ b/arch/arm64/boot/dts/rockchip/rk3328-rock-pi-e-v3.dts
-@@ -0,0 +1,10 @@
-+// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
-+
-+/dts-v1/;
-+
-+#include "rk3328-rock-pi-e-base.dtsi"
-+
-+/ {
-+	model = "Radxa ROCK Pi E v3.0";
-+	compatible = "radxa,rockpi-e-v3", "rockchip,rk3328";
-+};
-diff --git a/arch/arm64/boot/dts/rockchip/rk3328-rock-pi-e.dts b/arch/arm64/boot/dts/rockchip/rk3328-rock-pi-e.dts
-new file mode 100644
-index 000000000000..bdb2ca1a225f
---- /dev/null
-+++ b/arch/arm64/boot/dts/rockchip/rk3328-rock-pi-e.dts
-@@ -0,0 +1,10 @@
-+// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
-+
-+/dts-v1/;
-+
-+#include "rk3328-rock-pi-e-base.dtsi"
-+
-+/ {
-+	model = "Radxa ROCK Pi E";
-+	compatible = "radxa,rockpi-e", "rockchip,rk3328";
-+};
--- 
-2.43.0
+Best regards,
+Krzysztof
 
 
 _______________________________________________
