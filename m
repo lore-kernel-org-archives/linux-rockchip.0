@@ -4,50 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 25F0FC27C4F
-	for <linux-rockchip@archiver.kernel.org>; Sun, 23 Jun 2024 20:48:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 436FAC2BA18
+	for <linux-rockchip@archiver.kernel.org>; Sun, 23 Jun 2024 20:51:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=j4i5kCXl8cVrLNUWuKOTcGbqgj2MbHkPUaiwPLIem0A=; b=Lj8pHfScGPFjZA
-	eUA6XzQ6ryt0ogyYIUjg9adb+cXY0k730Q21aSqOyGJwmCfny7z5KPQh/euyYsybL1a6ldyu/6Yia
-	OMym7gbyHAndxnmxHiVZomGp2cwQKeLK/caNtUEE4Q1O4Pc33VfCu9mzQD7mNFAQwUs9dRXDtwB/s
-	twgyQT+vg371iEEw+wa5NKPIv/D0KhLD3dSP6XjKZid4ui94PQiI2QOb4hdrzRUwEm2C+0Tf9MBLF
-	u7bfPgaLMqydbIhobo+Z7bNrO1/vXZr6WSAXSOUyI0HdRpqvByU11NkfoQaBXX2oRAis4ES21ywlF
-	8yYkBWcpxwewSefDBl4Q==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
+	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=nfeLM22vHSYJu8Jf3bdNMuSWbg/2+5M56tVYtNko0Bk=; b=rNe2UVEFTvxeeh7ptblAjh6BQD
+	YEu7RuLCewkLGUmpjQK72I+HKEaKhg69KgMp6opeGOr+HchqTW9k9pTBKoDwnQbFjnEXY6MOys3yt
+	R8WWHwq7G6T6fobuGRo2zx/8hxnRP2oT/ZQ+JGNfTOPbtxRR7jBEVYycf9kxFBDpEVMsvQ+caK4xH
+	asQDVTkebSmI3JkykRQMIWLj4eRJ5gD94EIMvzsG0rnEnnohzd8QYIKXg1sRM5e1tmLDhtOXdsJ66
+	/1LLOeH6PFgeI914QWUTFK07WZanzKuI0w+XYJkk362EUueYwnmSlqBtXFNf1tWpuM+B/nuZDEm9q
+	6levKzbg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sLU7z-0000000EmRh-00Hl;
-	Sun, 23 Jun 2024 20:47:59 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1sLUBj-0000000EmpY-2xl1;
+	Sun, 23 Jun 2024 20:51:51 +0000
+Received: from mail.manjaro.org ([116.203.91.91])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sLU7u-0000000EmRA-2aAZ
+	id 1sLUBf-0000000EmoA-3RX7
 	for linux-rockchip@lists.infradead.org;
-	Sun, 23 Jun 2024 20:47:57 +0000
-Received: from i53875a87.versanet.de ([83.135.90.135] helo=diego.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1sLU7Y-0005Kg-Sa; Sun, 23 Jun 2024 22:47:32 +0200
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+	Sun, 23 Jun 2024 20:51:50 +0000
+MIME-Version: 1.0
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
+	t=1719175903;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=EI+oDOqAKfpOYsOsEP98Bk5zB0Ivjd0H+2NYofnulLc=;
+	b=O0GJ+Grdfx6ZtIJ2EO2ApzsdVMvfOjSExEbPXvds/lvGfm1Gpd771nEPG/JZuX1mNZrrrq
+	GiFLzj7f4oheejlXqoWrZG7B4e8F5uyk7q8W/tsqdpNBNpe1p54KfmJ9OFAJF6oyqmWmJL
+	WESiKJ54N+iQlC+wu08XFCgwe+CYYYcEP/d7BGLxxyOAYm6c1uKCAca0RpXi8LysZJz41X
+	1+6MB/UyKNm7lmLU07JO1mrTKwwAMjGyTnL/ng856aRbwd2rNO7sVg9PVxrBHkm6F131H6
+	6zvvfyMMGWpbCALP1qWdOViR7CvCxrGamJEo3Fh7tQhVCV2PxtG/H7chERDPeQ==
+Date: Sun, 23 Jun 2024 22:51:43 +0200
+From: Dragan Simic <dsimic@manjaro.org>
 To: FUKAUMI Naoki <naoki@radxa.com>
-Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
- devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org,
- FUKAUMI Naoki <naoki@radxa.com>
-Subject: Re: [PATCH v3 2/3] arm64: dts: rockchip: prepare common .dtsi for Radxa ROCK
- Pi E
-Date: Sun, 23 Jun 2024 22:47:32 +0200
-Message-ID: <3111343.xlVK0Xs8nM@diego>
+Cc: heiko@sntech.de, robh@kernel.org, krzk+dt@kernel.org,
+ conor+dt@kernel.org, devicetree@vger.kernel.org,
+ linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH v3 2/3] arm64: dts: rockchip: prepare common .dtsi for
+ Radxa ROCK Pi E
 In-Reply-To: <20240623201415.3205-2-naoki@radxa.com>
 References: <20240623201415.3205-1-naoki@radxa.com>
  <20240623201415.3205-2-naoki@radxa.com>
-MIME-Version: 1.0
+Message-ID: <9ee2043609711602c60b6d0ecbf3ab72@manjaro.org>
+X-Sender: dsimic@manjaro.org
+Authentication-Results: ORIGINATING;
+	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240623_134755_057943_9C95102B 
-X-CRM114-Status: GOOD (  24.44  )
+X-CRM114-CacheID: sfid-20240623_135148_215406_E2629FDD 
+X-CRM114-Status: GOOD (  17.29  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -59,24 +69,19 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi,
+Hello Fukuami,
 
-Am Sonntag, 23. Juni 2024, 22:14:14 CEST schrieb FUKAUMI Naoki:
+On 2024-06-23 22:14, FUKAUMI Naoki wrote:
 > Radxa ROCK Pi E v1.2x and ROCK Pi E v3.0 share most of their parts.
 > prepare rk3328-rock-pi-e-base.dtsi as a common dtsi for both boards.
 > 
 > Signed-off-by: FUKAUMI Naoki <naoki@radxa.com>
-
-generell comment, please don't send multiple revisions on the same day.
-People often look at patches in some form of queue, so please give
-people time to look at patches, before sending new revisions.
-
-
+> 
 > Changes in v3:
 > - move mmc aliases from base to board dts. no functional change
 > Changes in v2:
@@ -84,25 +89,19 @@ people time to look at patches, before sending new revisions.
 > ---
 >  .../dts/rockchip/rk3328-rock-pi-e-base.dtsi   | 440 ++++++++++++++++++
 >  .../boot/dts/rockchip/rk3328-rock-pi-e.dts    | 432 +----------------
-
-This worries me. As the new dtsi should be largely similar to the original
-board dts, this should have triggered the rename detection and produce
-a much shorter and much more readable diff instead of having the full
-content of removes and inserts.
-
-I.e. the diff should look somewhat similar to Dragans recent dts file move:
-https://lore.kernel.org/linux-rockchip/9ffedc0e2ca7f167d9d795b2a8f43cb9f56a653b.1717923308.git.dsimic@manjaro.org/
-
-So please check for non-standard patch-formatting options in your git
-config
-
-Thanks a lot
-Heiko
-
 >  2 files changed, 441 insertions(+), 431 deletions(-)
->  create mode 100644 arch/arm64/boot/dts/rockchip/rk3328-rock-pi-e-base.dtsi
-> 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3328-rock-pi-e-base.dtsi b/arch/arm64/boot/dts/rockchip/rk3328-rock-pi-e-base.dtsi
+>  create mode 100644 
+> arch/arm64/boot/dts/rockchip/rk3328-rock-pi-e-base.dtsi
+
+I wonder if this patch could be made much smaller and much more
+easier to be reviewed using --break-rewrites [1] as an option for
+git-diff(1) and git-format-patch(1)?
+
+[1] 
+https://git-scm.com/docs/diff-options#Documentation/diff-options.txt--Bltngtltmgt
+
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3328-rock-pi-e-base.dtsi
+> b/arch/arm64/boot/dts/rockchip/rk3328-rock-pi-e-base.dtsi
 > new file mode 100644
 > index 000000000000..1da518fd31fd
 > --- /dev/null
@@ -514,7 +513,8 @@ Heiko
 > +	cap-sd-highspeed;
 > +	disable-wp;
 > +	pinctrl-names = "default";
-> +	pinctrl-0 = <&sdmmc0_clk>, <&sdmmc0_cmd>, <&sdmmc0_dectn>, <&sdmmc0_bus4>;
+> +	pinctrl-0 = <&sdmmc0_clk>, <&sdmmc0_cmd>, <&sdmmc0_dectn>, 
+> <&sdmmc0_bus4>;
 > +	vmmc-supply = <&vcc_sd>;
 > +	status = "okay";
 > +};
@@ -548,7 +548,8 @@ Heiko
 > +&usb_host0_ehci {
 > +	status = "okay";
 > +};
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3328-rock-pi-e.dts b/arch/arm64/boot/dts/rockchip/rk3328-rock-pi-e.dts
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3328-rock-pi-e.dts
+> b/arch/arm64/boot/dts/rockchip/rk3328-rock-pi-e.dts
 > index a608a219543e..cbeb2e567bf9 100644
 > --- a/arch/arm64/boot/dts/rockchip/rk3328-rock-pi-e.dts
 > +++ b/arch/arm64/boot/dts/rockchip/rk3328-rock-pi-e.dts
@@ -561,9 +562,9 @@ Heiko
 > - *
 > - * Copyright (c) 2017 PINE64
 > - */
->  
+> 
 >  /dts-v1/;
->  
+> 
 > -#include <dt-bindings/gpio/gpio.h>
 > -#include <dt-bindings/input/input.h>
 > -#include <dt-bindings/leds/common.h>
@@ -571,11 +572,11 @@ Heiko
 > -
 > -#include "rk3328.dtsi"
 > +#include "rk3328-rock-pi-e-base.dtsi"
->  
+> 
 >  / {
 >  	model = "Radxa ROCK Pi E";
 >  	compatible = "radxa,rockpi-e", "rockchip,rk3328";
->  
+> 
 >  	aliases {
 > -		ethernet0 = &gmac2io;
 > -		ethernet1 = &gmac2phy;
@@ -965,7 +966,8 @@ Heiko
 > -	cap-sd-highspeed;
 > -	disable-wp;
 > -	pinctrl-names = "default";
-> -	pinctrl-0 = <&sdmmc0_clk>, <&sdmmc0_cmd>, <&sdmmc0_dectn>, <&sdmmc0_bus4>;
+> -	pinctrl-0 = <&sdmmc0_clk>, <&sdmmc0_cmd>, <&sdmmc0_dectn>, 
+> <&sdmmc0_bus4>;
 > -	vmmc-supply = <&vcc_sd>;
 > -	status = "okay";
 > -};
@@ -999,11 +1001,6 @@ Heiko
 > -&usb_host0_ehci {
 > -	status = "okay";
 >  };
-> 
-
-
-
-
 
 _______________________________________________
 Linux-rockchip mailing list
