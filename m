@@ -4,89 +4,158 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A1819C2BD09
-	for <linux-rockchip@archiver.kernel.org>; Sun, 23 Jun 2024 00:20:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 632D2C2BD09
+	for <linux-rockchip@archiver.kernel.org>; Sun, 23 Jun 2024 02:22:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=o1sXrxk5FtEEBrVcHDU9TcFkYmzNdTSZC7bqTGsqocI=; b=wz8U1TQFaP5clHdbvl4h24EbhH
-	B/A8fOvtKVVGivjEARnD3a429oAMy/V2c2whMqVxMomufWa0YBiLbi+kEff6pFy9UgwythhMtWrl3
-	oEro8tNBqPANrDypSb5qz/axUi1+KpkCBtHFsVMz1EstYMTYzoUoxqePwET/Y03G8YuvHTvueJdU4
-	eQK8cBgaGd3FWDMp6fJYolhqbi1HWSqKEpxgCXRgT+3VZKe9ArUlxWkXWVk1qt6fdJQabRpol5a9i
-	xBu4J6f1Txvdl7ZoAzhaz4iclOSmgIRBD2hZqP/EoMBsbu7Z/hFGJDFPPi0MyBFFtdS12peu7PV/7
-	mJEiyp2Q==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=l/eBpnI6Di0xAZpHN1JyibyK5c48W3VYUGuGdC6Pfv0=; b=ar41qdBqu0/Lcr
+	mQ5d6YCAak3r1P/MaO+MaccB3DM3BxPbK6Z++0UPK8I8eWv47MAdAhu2kj31nbDjqEJzu7C2fF8ST
+	x7C1Bak8hsQA/c6FzNA6IFu7K9e2I0mIy2m2FyNnovbsF6vU1IHC/KuewMC32JqtRNsU+Z4WF2z7T
+	HttZsUN6aEHeasgQYVmytcXcUuA4EV9cFAHVKIccmyJFpWCH5r9QWCiAwrU4gSceJa/vt5lwofPBz
+	E/xeGNC7z86y89LbzfPc1Kul4XYJT3CC9ETKw8DGEbyvePpIl2F797o51fjT7+xgjcVwuhFCh1eGh
+	hT0ziBO1ypTyxl2k/3mw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sLAy1-0000000D3H2-3MbM;
-	Sun, 23 Jun 2024 00:20:25 +0000
-Received: from mail-ej1-x62e.google.com ([2a00:1450:4864:20::62e])
+	id 1sLCrn-0000000DB7Y-0swa;
+	Sun, 23 Jun 2024 02:22:07 +0000
+Received: from mail-tyzapc01on20700.outbound.protection.outlook.com ([2a01:111:f403:2011::700] helo=APC01-TYZ-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sLAxu-0000000D3Fn-1pij
-	for linux-rockchip@lists.infradead.org;
-	Sun, 23 Jun 2024 00:20:21 +0000
-Received: by mail-ej1-x62e.google.com with SMTP id a640c23a62f3a-a72477a60fbso20485866b.2
-        for <linux-rockchip@lists.infradead.org>; Sat, 22 Jun 2024 17:20:17 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1719102016; x=1719706816; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=8ONa3iSOONrUQZrCElWDntgf1TBX/gIFjmLuMwiVxBc=;
-        b=rBeA+yTehQKoeL6Fas/81gRaxOkNRO0WZ1FxTEwsS9mha02q74cDpG/0WehFJE0ef0
-         XyLbuqkW3DtVBQhkvCeLjgu50+dZc2hPSlePt0G7IfETNmxoaX4JjIDZKd1VGYTsV84B
-         xurBuIZSjSuBSSA0wBFV9M/i9EKPbriuKkMeGfJXrTAwaeUDbTLLVxaAWkOQRK004uRB
-         S7Xcg198RlcxLzVPVWfwltLRHZPVoe05oRAlITq5Yx92n6k84oB0gZ6aYm1PJ4URmOg1
-         UNmKPkJYLWCX8y3fv+Y89+ZhdzhyVslLyZmiHuEdfahB0Lkfa/uogGvCH4mY1eGDLQ3E
-         ICIg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1719102016; x=1719706816;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=8ONa3iSOONrUQZrCElWDntgf1TBX/gIFjmLuMwiVxBc=;
-        b=jFAuwLIlYYKYQqAu9TtesBxbJMAOde7Qp5+19SA1c1REP9i3SAnyTRkvCm+an+pxUU
-         5eabKpyfCSj6H5dKu4uDgvkHa3HU47GPwphoiu7dvUdbkBayLdvdqoBKg2mhcfGbI+ES
-         MF8VbvDwW+ZRLHn8eU0wkrxguy5Fffpu8p3FFcR0c1reOMbRWrV4vgxKNMG9H8KUtnhb
-         QH+6WlGP9ZIB3b4/FAc73g4Ellfjsn8CcmSLY5C92HqzWRZgnMiTMXdudbsKgjkUOv09
-         4/ra9ntLi85rb8dJZHAeURzRrpZXDxi4PSE6zAbjNRES3rwvsboSMSn6ZJEjzgoffSGf
-         UsFQ==
-X-Forwarded-Encrypted: i=1; AJvYcCWoHJOJQrTrh0otp7zYIZ9v1zAsCzhWIZqFxTCZimnTkex1/1LKHR3J+jp7jwZc+lRjTv9vEIz8kBKp9ZSGumFH56r1/RHhYiG4vBNOSw8iIXar
-X-Gm-Message-State: AOJu0Yxu0415rkI7vgJBLy+vb/Y39Fefk0tHDNp0JGhKXgdPx0pNDv4I
-	Ho9QxLtlX5L5o0M6LgjPZ0A/zgME+5zhCa7H1dcB9QxrmnPvleQkO4xjArSrT1w=
-X-Google-Smtp-Source: AGHT+IFkQnTmyYgj3ga+Jr84O+VsTZAb6uFS3rOryfDJPiSyoNjG8TnrDmOAhk+I37PmyQzqrzBbWw==
-X-Received: by 2002:a17:906:1d42:b0:a6f:1f40:600a with SMTP id a640c23a62f3a-a7245b938c3mr45943466b.30.1719102016036;
-        Sat, 22 Jun 2024 17:20:16 -0700 (PDT)
-Received: from localhost ([2a02:8071:b783:6940:36f3:9aff:fec2:7e46])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a6fcf435941sm252779866b.18.2024.06.22.17.20.14
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 22 Jun 2024 17:20:15 -0700 (PDT)
-Date: Sun, 23 Jun 2024 02:20:13 +0200
-From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@baylibre.com>
-To: Dragan Simic <dsimic@manjaro.org>
-Cc: Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, 
-	Krzysztof Kozlowski <krzk@kernel.org>, Daniel Golle <daniel@makrotopia.org>, 
-	Aurelien Jarno <aurelien@aurel32.net>, Olivia Mackall <olivia@selenic.com>, 
-	Herbert Xu <herbert@gondor.apana.org.au>, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Philipp Zabel <p.zabel@pengutronix.de>, Sebastian Reichel <sebastian.reichel@collabora.com>, 
-	Anand Moon <linux.amoon@gmail.com>, Sascha Hauer <s.hauer@pengutronix.de>, 
-	Martin Kaiser <martin@kaiser.cx>, Ard Biesheuvel <ardb@kernel.org>, linux-crypto@vger.kernel.org, 
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v3 2/3] hwrng: add Rockchip SoC hwrng driver
-Message-ID: <6u4bgwemukkpjvregtvrhdarelvy4rf76n5dv5oiclbyh4q7gd@b776tut4a6ki>
-References: <cover.1718921174.git.daniel@makrotopia.org>
- <ead26406-dd3b-491c-b6ab-11002a2db11a@kernel.org>
- <07fba45d99e9eabf9bcca71b86651074@manjaro.org>
- <3660160.WbyNdk4fJJ@diego>
- <b0164e0d05d9e445a844ffdfca7a82d5@manjaro.org>
+	id 1sLCrh-0000000DB69-2Jot;
+	Sun, 23 Jun 2024 02:22:03 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=lUFzaB5/d2EmrMgXJOxwPVakQ7Xyzcy3oeFHQWpUmQTOgi++WYKZCuX/x+sV7bjOTwuBVfC4DM7aDk31C5SMCo+82xoq6uYbQJjMmPllz9zR9f4cQVhKh1uV2+Gs802sVdw6VbsGk5QmGCrhEb7ptLqVu5ZmtHdbtNvNfiVeju7+2S8+J+pUj7g7zjFYBlaybyJmDjLcxpPVgwisvSQBRde5e3TDhbQ2KkfJT3zdi9WkQg3UZ546Ub17lUHuzWGUNeqNKHny2V/S2rvXYlj39NHc1eWLNjhsHHJrnFnNmPRi66cNEzMrZlFuh1peedsjzaAvQK4kARtCNvM3kghBow==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=a5CXsmIt6J/B60XAPDbiGAWk+Sz4cw/QF4BaSm+sNaw=;
+ b=edFQDRVjmo/Lj4c6JtWb8UOblFyLvqYXSQv5Ynn7jz630e34OLfB/98egafl4I7vubHrk3TCy1nYDyxVP/w0wVn9ed9p/OTduPn1DlUDjpDBK+1cL+z//L9bM1oA0aInkxQ+uEjC3Cwz8cr8eti2YXPkos1LGjrBnoauHSC4zAhpV/jpJMoVOhrj83fPjJBlUZyVGqebbWAQoMprbtS9QjAWo0mztZHnzKFX5StIGhWfBPXhlEKRZIE42t54qLmc4x/9uKgLiVFzkdvwPuKd/z1KzgIGKMnQbhYGFoSxowG6H7uWz0kplMLIAR7NleOCA5I+7XMVhQNJ8k9RlMOVvw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=wesion.com; dmarc=pass action=none header.from=wesion.com;
+ dkim=pass header.d=wesion.com; arc=none
+Received: from TYZPR03MB7001.apcprd03.prod.outlook.com (2603:1096:400:26a::14)
+ by SEZPR03MB6959.apcprd03.prod.outlook.com (2603:1096:101:9e::5) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7677.38; Sun, 23 Jun
+ 2024 02:21:39 +0000
+Received: from TYZPR03MB7001.apcprd03.prod.outlook.com
+ ([fe80::78dd:5e68:1a9c:36c0]) by TYZPR03MB7001.apcprd03.prod.outlook.com
+ ([fe80::78dd:5e68:1a9c:36c0%6]) with mapi id 15.20.7698.024; Sun, 23 Jun 2024
+ 02:21:39 +0000
+From: Jacobe Zang <jacobe.zang@wesion.com>
+To: =?iso-8859-2?Q?Ond=F8ej_Jirman?= <megi@xff.cz>
+CC: "arend.vanspriel@broadcom.com" <arend.vanspriel@broadcom.com>,
+	"kvalo@kernel.org" <kvalo@kernel.org>, "duoming@zju.edu.cn"
+	<duoming@zju.edu.cn>, "bhelgaas@google.com" <bhelgaas@google.com>,
+	"minipli@grsecurity.net" <minipli@grsecurity.net>,
+	"linux-wireless@vger.kernel.org" <linux-wireless@vger.kernel.org>,
+	"brcm80211@lists.linux.dev" <brcm80211@lists.linux.dev>,
+	"brcm80211-dev-list.pdl@broadcom.com" <brcm80211-dev-list.pdl@broadcom.com>,
+	"robh@kernel.org" <robh@kernel.org>, "krzk+dt@kernel.org"
+	<krzk+dt@kernel.org>, "conor+dt@kernel.org" <conor+dt@kernel.org>,
+	"heiko@sntech.de" <heiko@sntech.de>, Nick Xie <nick@khadas.com>,
+	"efectn@protonmail.com" <efectn@protonmail.com>, "jagan@edgeble.ai"
+	<jagan@edgeble.ai>, "dsimic@manjaro.org" <dsimic@manjaro.org>,
+	"devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+	"linux-arm-kernel@lists.infradead.org"
+	<linux-arm-kernel@lists.infradead.org>, "linux-rockchip@lists.infradead.org"
+	<linux-rockchip@lists.infradead.org>, "linux-kernel@vger.kernel.org"
+	<linux-kernel@vger.kernel.org>
+Subject: Re: [PATCH v1 3/3] net: wireless: brcmfmac: Add support for AP6275P
+Thread-Topic: [PATCH v1 3/3] net: wireless: brcmfmac: Add support for AP6275P
+Thread-Index: AQHawrWkSZjILdfElUC6XOD5DUOw1rHS7xyAgAGnXp8=
+Date: Sun, 23 Jun 2024 02:21:39 +0000
+Message-ID: <TYZPR03MB700154AE39D44B8D166344BF80CB2@TYZPR03MB7001.apcprd03.prod.outlook.com>
+References: <20240620020015.4021696-1-jacobe.zang@wesion.com>
+ <20240620020015.4021696-4-jacobe.zang@wesion.com>
+ <fro2xcwsnvbxmpszny6g2p36z4zwoq4kegmpvww4twxir5piez@a3c2nbwitmab>
+In-Reply-To: <fro2xcwsnvbxmpszny6g2p36z4zwoq4kegmpvww4twxir5piez@a3c2nbwitmab>
+Accept-Language: en-US, zh-CN
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+msip_labels: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=wesion.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: TYZPR03MB7001:EE_|SEZPR03MB6959:EE_
+x-ms-office365-filtering-correlation-id: 65198ea4-1916-4e53-b573-08dc932b3713
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;ARA:13230037|366013|376011|7416011|1800799021|38070700015;
+x-microsoft-antispam-message-info: =?iso-8859-2?Q?+P9aQxqiB8YckZNSbz7yk9eq6BZVbzGA/9m16anB9DH8nWWo5fj9zMWuGQ?=
+ =?iso-8859-2?Q?Cnkz2/OkiGMXq2MKagNm7+F+Dwkq0uLKLnI/lTn2Sck+8MU8RZQTNN9EWn?=
+ =?iso-8859-2?Q?4AeWh2LfnBbFJ6NEMn2HW5T17jsakpTtvYh6mDWnK+X8/NW15X2Et0Jcs7?=
+ =?iso-8859-2?Q?FCHMDsSk4UynIUPzzjagQu60BmKdsr4uSJINuK9zHxr9SUQ+JQz7BxfXDp?=
+ =?iso-8859-2?Q?/WGY4kIPsYrZNKK0Xa3/WzQq9Lb1Or5C0GjIHONP29RsmBWL/QlDuiWhom?=
+ =?iso-8859-2?Q?2RBlhfVU0Hvw/6VeARQZ8XPqjaS93HU0A1FL+bxJukE0tDsuhEno6u6Sw9?=
+ =?iso-8859-2?Q?GXe06iSBIKlnTFFjos6+bZyVR96BJqFoxAD4qrd+EPoL6PmJmhYXHE/pQ+?=
+ =?iso-8859-2?Q?ZMVY+9bQnImBuFtQpb+CQ+R3hoPs6GR238V7xZhnpm35ZvHSFhmC/E8IZd?=
+ =?iso-8859-2?Q?Q4NJwvlmfTXcFpGgZV/mRbcvSZcD9oPhcfyx210DI4rFjWy/Yudr/b3aIN?=
+ =?iso-8859-2?Q?rD2PNdodMM7A3gv0IEjFKW7nLHYPROXkXY/SROEg2XDgOT7Lu5WP8Iv2lv?=
+ =?iso-8859-2?Q?ZF00Eqnf6H9kJle6fknICv7Z3oVkHFHcFBAgg4blrjlPXMXtW1zoX5s/IY?=
+ =?iso-8859-2?Q?ReGVM84VDM7FlXZzgocjtycQTdlxNYyuzSIyINcV2OCaodW76SlkPMXVky?=
+ =?iso-8859-2?Q?tcIVmUo3RS5bi7nMDHpZ4l7Dhy4+B31h55JpKJJvMjCYgGQCix/HPgxAsy?=
+ =?iso-8859-2?Q?E6Ul7iAjzrjxBNwp7gMqVYGMirwOB5m5FRpPs/upK2PSCqndgLM5zgkFAy?=
+ =?iso-8859-2?Q?YEpms98nPQP3ZNRW7GYw/N8W3/e7oKXmKY0IUugk4wTl52t2WXL832f6G1?=
+ =?iso-8859-2?Q?1iEqyhpjIaby0CLx729ZhS9AcCxf0rEeQxnO4zcmHejoVVKP9xxsMR4XbW?=
+ =?iso-8859-2?Q?foUw9iPrwO9BFJsKdMRAMwkkzY/kLEuyfFkZVTUVsiSq3yCmYcga08kRI8?=
+ =?iso-8859-2?Q?rwe9ip7FxFOOrLoBqQZbryVl9vpOA+/ChNKiya1u9mRXcA0u6FZQ2+prDk?=
+ =?iso-8859-2?Q?gq+jG6Xfm2zCWv1lVD5dh5uQeZ7YbxPRK8GxHKjfZd25R7mnzsUZLLXMbt?=
+ =?iso-8859-2?Q?Dpr76QQvDT14u9ICC5K8O22N6CEzrm/Nhyt40bIIf2GIJCzv8Z19jo+qMq?=
+ =?iso-8859-2?Q?oQxRX+JRKUv4ItDteMnspVgDApc4dwnnmSlzoA1girtwz5PlgpwZnD64ob?=
+ =?iso-8859-2?Q?yIUTKiKwWSWOb+vGM+RzPu/buO4pklZgO2gIi+89VammtYlWSgqpkUtyU4?=
+ =?iso-8859-2?Q?NcGCGiPIhSRBUlLpVxm9uLJJ/m8i2OqDGrul18+83g7mE36SGS99fcZ3W1?=
+ =?iso-8859-2?Q?XIGwdDdl4t?=
+x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:TYZPR03MB7001.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230037)(366013)(376011)(7416011)(1800799021)(38070700015);DIR:OUT;SFP:1102;
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?iso-8859-2?Q?2T0GhOv8LpeAV1n0UJzP71hgaIM0WGN7qnP0MJcaqKPcbAP44FOarCGgyi?=
+ =?iso-8859-2?Q?clHK1OHmNfQMFbs4UVv/+k05/1qcghDpOl6qNTgYdlxAkPGD4zQfuyeiTr?=
+ =?iso-8859-2?Q?GnrUq4lyAjwngC8IJAmcYcRKN3Dto/zT2eCX1kMBTtJH6kf5SIXDEZQ/kC?=
+ =?iso-8859-2?Q?wQdSL+j8a5MLvd+QvYPu/O1NRkdF2sZTHjuXtSc2lpxDLsHM1pWO61/E4w?=
+ =?iso-8859-2?Q?Gs/f0YsKmT0yfOc8RZkU5C+bs3Gm8u7k9pdGs5DUoXjzfsc8qqumTtKBlw?=
+ =?iso-8859-2?Q?nJKuFA58qSTws/jWMo2gi1Eb+0OKXfx0YIOgS9LIGMoG5chzgCjZHBkgt0?=
+ =?iso-8859-2?Q?kyrCNMtM5niTIQnQCdTqKRZ+1fSyFYt/trmbtsDXHQXQjN+BR61w/Ek2ep?=
+ =?iso-8859-2?Q?SV1ECEu5v66dzeolb34yq2xaqb/rjiF24Ny3INSH9UiAUlv4X2REHOeTEO?=
+ =?iso-8859-2?Q?wbWjH4qvJfAEtbX+cGBdOAoQoCdqRs6qA03xv5XdWpzW4sSUoFBOMTGlJw?=
+ =?iso-8859-2?Q?7MX40n7bD/1m6PabVmO50DkDHfkG+95/WQvdzp0lPg0Kk8DmIhQ9EcWNL/?=
+ =?iso-8859-2?Q?KF7/74rsdrHIJLoq1Z3CO3pkxWiLvSHbj6KYrZSshJkCBOXtk28qcB9R5t?=
+ =?iso-8859-2?Q?/p46BesAHUIPmecKXmREMKA+MhhPuqKpurKwH0Lr6KgLPhaB0ad0FuV0UE?=
+ =?iso-8859-2?Q?5XONoBqIthyckTPLCJToocvg3WbrSbsoUzRebne/WmsQA30h/sJQF4V0Xe?=
+ =?iso-8859-2?Q?Ig/ceIMCusq2fJueqXjLou0VDYqUAPO6qFyin8sACPdFZWnPi0kvR0fgZA?=
+ =?iso-8859-2?Q?+ORkIfCCQIbpx8m33o+3KZQ0cuQ4+if4M8ienuSWpPF39rPKkXqx1Ol2HA?=
+ =?iso-8859-2?Q?/LtN7OSNjds1fWFYUDvT8xYQUge+cSRU+7juxkuGj0tJmj6NIpurl29wkA?=
+ =?iso-8859-2?Q?PQsl6lajuadQyJE0fhmC0onLtCx+8Utb/pUvXfhEnhcGgN8vMTPec3otCc?=
+ =?iso-8859-2?Q?/ZIFY22EgPa07SP80EdBDWf0apbcE6ZElZ4pyZxtZ7uXB//YVDjmSIo32D?=
+ =?iso-8859-2?Q?59fiTNR3xB8Ay0jmkR8iZquv5lC1tikeQKpiqKZ8mfV7lp8u1GTEcrQfWY?=
+ =?iso-8859-2?Q?qk32pAG3rYFwJig7C9ynfBLGxtubVk/TM8qYvsiAJQCTFSJ0ryzoWHDRct?=
+ =?iso-8859-2?Q?fkFQZoKhWUsrlRD6XlNTiRBNE21RPPLNNUmiQIgoGXF8Yp1Y3vGNc01tPu?=
+ =?iso-8859-2?Q?lruo0JjRsKq7T5h3zjLh71zxwFoXJEQCdcULCk9/d023B8GkwgLzhnX3Ef?=
+ =?iso-8859-2?Q?vFcysyYm/m38ZTWjxsnT4N74EU5Th3AmiyqCBvNo9xDblZeDUmlmAuNu+a?=
+ =?iso-8859-2?Q?OyQ1IUzUnz+t+75De/RsjHruvdAecJNZ3pT4yPBI0yRioXpx4vyLattl/0?=
+ =?iso-8859-2?Q?lLE1VvHc1EPgzSo2D63SShct/acijgs+riVud6KRzPWbiiNkD8qjEwtGtL?=
+ =?iso-8859-2?Q?4LVzaCOi8M0bjlEwAjcW7hhziUveiR0zZXQPdEh1VjTg6qmoTM9gBzl6rV?=
+ =?iso-8859-2?Q?Z0CE47gzT3c5lAomEsIywPGy8S6kt4/ifLlKYibdml8Q+7JwLg7zjntVyl?=
+ =?iso-8859-2?Q?9GDcYjBsVFmHiK5gAVVDNUhWbQsZgFmH85?=
 MIME-Version: 1.0
-In-Reply-To: <b0164e0d05d9e445a844ffdfca7a82d5@manjaro.org>
+X-OriginatorOrg: wesion.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: TYZPR03MB7001.apcprd03.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 65198ea4-1916-4e53-b573-08dc932b3713
+X-MS-Exchange-CrossTenant-originalarrivaltime: 23 Jun 2024 02:21:39.6253
+ (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 2dc3bd76-7ac2-4780-a5b7-6c6cc6b5af9b
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: 6dtdgPWT4WDK7WKKX/zEaRa+tAtZflqoHSM2RqoTxbjwXs7pVfVctWmtOkxXM88zaPxFMI23oJS1yMbZzAzBUg==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SEZPR03MB6959
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240622_172018_648428_DD7C428D 
-X-CRM114-Status: GOOD (  23.88  )
+X-CRM114-CacheID: sfid-20240622_192201_613348_2F566888 
+X-CRM114-Status: UNSURE (   9.30  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,111 +167,30 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============2435293156484386147=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+> Any reason to strip info about origin of the patch, my SoB and
+> present this work as your own?
 
---===============2435293156484386147==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="dd3zswqm4oau246l"
-Content-Disposition: inline
-
-
---dd3zswqm4oau246l
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-Hello Dragan,
-
-On Sat, Jun 22, 2024 at 10:45:22PM +0200, Dragan Simic wrote:
-> On 2024-06-22 22:26, Heiko St=FCbner wrote:
-> > Am Samstag, 22. Juni 2024, 12:29:33 CEST schrieb Dragan Simic:
-> > > On 2024-06-22 00:16, Uwe Kleine-K=F6nig wrote:
-> > > > On 6/21/24 20:13, Dragan Simic wrote:
-> > > >> On 2024-06-21 11:57, Krzysztof Kozlowski wrote:
-> > > >>> On 21/06/2024 03:25, Daniel Golle wrote:
-> > > >>>> +    dev_info(&pdev->dev, "Registered Rockchip hwrng\n");
-> > > >>>
-> > > >>> Drop, driver should be silent on success.
-> > > >>
-> > [...]
-> > So really this message should be dropped or at least as Uwe suggests
-> > made a dev_dbg.
->=20
-> As a note, "dmesg --level=3Derr,warn", for example, is rather useful
-> when it comes to filtering the kernel messages to see only those that
-> are signs of a trouble.
-
-IMHO it's a bit sad, that there is such a long thread about something so
-trivial, but I want to make a few points:
-
- - not all dmesg implementations support this:
-
-	root@machine:~ dmesg --level=3Derr,warn
-	dmesg: unrecognized option '--level=3Derr,warn'
-	BusyBox v1.36.1 () multi-call binary.
-
-	Usage: dmesg [-cr] [-n LEVEL] [-s SIZE]
-
-	Print or control the kernel ring buffer
-
-		-c              Clear ring buffer after printing
-		-n LEVEL        Set console logging level
-		-s SIZE         Buffer size
-		-r              Print raw message buffer
-
- - Your argument that the output of this dev_info can easily be ignored
-   is a very weak reason to keep it.
-
- - I personally consider it hard sometimes to accept feedback if I think
-   it's wrong and there is a good reason to do it the way I want it.
-   But there are now three people opposing your position, who brought
-   forward (IMHO) good reasons and even a constructive alternative was
-   presented. Please stay open minded while weighting the options.
-   The questions to ask here include:
-
-    - How many people care for this message? During every boot? Is it
-      maybe enough for these people to check in /sys if the device
-      probed successfully? Or maybe even the absence of an error message
-      is enough?
-    - How many people get this message and don't care about the
-      presented information? How many people are even annoyed by it?
-    - Is the delay and memory usage introduced by this message justified
-      then, even if it's small?
-
-Best regards
-Uwe
-
---dd3zswqm4oau246l
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEP4GsaTp6HlmJrf7Tj4D7WH0S/k4FAmZ3ajoACgkQj4D7WH0S
-/k5WAAf+ITFdGqdN406tmIfhUkT/VVsswv7UZYQ19nee0y/e08Hckgmx/mEmS4ft
-tJsOL0GAgMDpyvbgz6smWIgOAzsdln+m73wuSjSe62fHLUgd68YA4ehtQ3EghbY4
-Ey7cYUhVnjJFpahWN+b4QS774FfeFRTtRUzdU9ENsV5pRenbmERcKnGOSQ15fwfE
-mpqgcAnKvcz43qhHjJpgaJ8p41IQQRWh3jAK3edrnLGjcAAIhynSWzwRdSOYR9QU
-aLL2hb1i8mFNkAr1q71hM+pqGrJZ6gQ0gAI/t1wP6/S0OG4WkYs4TpG0xjJq0TN+
-N8+bGnosWqTuh5Wt3I1924btUX+e4Q==
-=KN/a
------END PGP SIGNATURE-----
-
---dd3zswqm4oau246l--
+Sincerely express my apology to Ondrej. It's really my mistake. After getting your permission if I could submit the patches. I jsut think if the author and submitter is not the same person is strange so I changed it. Next tiem I will avoid this mistake. Apologize again.
 
 
---===============2435293156484386147==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+> I sincerely hope this is just a rookie mistake so please carefully read
+the URL below:
 
+> https://www.kernel.org/doc/html/latest/process/submitting-patches.html
+
+Thanks for the guidance Arend. After reading the document I realized what a stupid mistake I made.
+
+BTW I have another question, except the SoB of the real author, should I also post the original link in commit message?
+
+---
+Best Regards
+Jacobe
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============2435293156484386147==--
-
