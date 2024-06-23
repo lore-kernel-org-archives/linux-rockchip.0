@@ -4,53 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B6D27C27C4F
-	for <linux-rockchip@archiver.kernel.org>; Sun, 23 Jun 2024 12:09:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C9F86C2BBCA
+	for <linux-rockchip@archiver.kernel.org>; Sun, 23 Jun 2024 12:09:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Gh6eWyz3Ub/xK/cRMalNHQRrcJEF5DzvMqKshKd6ntw=; b=kwLMuT1zPcxaMh
-	LS9f6bPh7F6tX/hH6nhZ4IXl2mjPVagp8yntCrimbJ/b1/vQUxkujWvlCTDe62CToDOKxpPBVrIuX
-	F/MphWVM+Yu+bzNYMWrVbQL7h0fO3birvccl84mhls7eZnY1ciRM5soeM9pWFBaFk0pAqeGCtiURM
-	Pfq4QLm0mDM5Ww1xZf6c2+D8/+JH/WRLHlgLqeB4H0nMA1jzUO3zWS+pQK4aajJW0Pfea2QSVBK3I
-	so+YGMbJojJPSQmjR4fAg66l9Uuv+7oNIzN807lzIbVKGJK3ZVGKv/woAGSdtE4nTr+2YuuDmRLJ+
-	wpqlxBa0xDCIlkz/5GgA==;
+	List-Owner; bh=59SO2lKawCxUYnJaI/pCqTB3CAxdK8NlDCnceRSSqIc=; b=eC5pY1byMPXVHo
+	v+w+VKhfe4zBfBNpNij2utFL4yR3Gxr/PymD0hSJJTSNZ11mDh6s583tLZ3FT5HPTPJVauE5slTpt
+	jT9ypY+Ef7553h9lmlrgfhkoL5mLtaLrMRu0F1JNRgdMZeEGQZ7AUsRsLVKzzSti5YvvhT5GQ//vV
+	d3WbyasY4AzUHNCZAY4nfTNIY/4SKhbqW0dmo62rzs5pAujBySkXoPsD63bMVYkSeID6h5ZlL7RVZ
+	BcHIedEqIzJ4rO5VdNNWesLHJeAF3vCsigTkOgNTXcaCLjBus75qfVJN7O2qBLOO52jA2jau/jhD6
+	vugK+RI8Or9SHhXk7Mvg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sLM1u-0000000Dwmg-0krr;
-	Sun, 23 Jun 2024 12:09:10 +0000
-Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
+	id 1sLM28-0000000DwpT-3itU;
+	Sun, 23 Jun 2024 12:09:24 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sLM1q-0000000DwlW-3BQU
+	id 1sLM26-0000000Dwoy-2s2L
 	for linux-rockchip@lists.infradead.org;
-	Sun, 23 Jun 2024 12:09:08 +0000
+	Sun, 23 Jun 2024 12:09:23 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 5D19CCE0303;
-	Sun, 23 Jun 2024 12:09:04 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id ED837C2BD10;
-	Sun, 23 Jun 2024 12:09:00 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 6B15C611A6;
+	Sun, 23 Jun 2024 12:09:21 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id CFE94C2BD10;
+	Sun, 23 Jun 2024 12:09:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1719144543;
-	bh=xDK2bz2t8TTz4jxfmvxr8Cx/b+qTLUZJitzxLhU+5WM=;
+	s=k20201202; t=1719144561;
+	bh=opTbdMGRgaN2ww61+CV7ojIDXU7tC5vgTyZPdy9FQQE=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=A0nnzNyfrC0BYe020a7828oe+ziOLr2omiVQasLDIEqcQAC1ZmAzejHnvBjUCi9We
-	 L2jInFt2N0xdIOWXGbdmU4Lstmz6KgAgpaNe6yYstx6KMiiXO8G/QeR6qDXX+vujP0
-	 tlxA0hnswmunExvrT28enaVHWZ73VTisc5WlxtA1rpwGkqjqJiTFi6NU9tgyowVQHk
-	 ElEV+mX8Buwb0QMDp11+wEiEoAWERxEiE1N55SGdoMIgKF/aao4FZstrTBBGoFqp2Y
-	 5+DwCyjxSJaBi7Mv7xKn4fignsd5dKwZRq0HEL61QU+urq4rgudFq0YBvFei4C126Z
-	 1oprDimomj9Kg==
-Message-ID: <059eec26-b7ca-4bd0-9e63-cfceffc4a777@kernel.org>
-Date: Sun, 23 Jun 2024 14:08:58 +0200
+	b=eviJDkFL7xGwEPazySGMrdz/aVmHAQN1pydS4fjAsk2POvC6kkuUS6FZHsIi9Rl2B
+	 VWQPLGfM0SuExfZ61jY7bgEaeRxqJqz4xI1DGVcORIrfGY3BXwD1BmJAgjrt8LlthE
+	 WsGmMump0HhW6pDNQQPjP2ruLZEPpb0u6hkX7RDa0AJyn8zJPCfDAw1z+a6C8hdvWK
+	 Qi7Q7VF2cUU/dZJgLmbq9rnNX5L4rNxR7dTzyUtDB3PVS5zYcNnAavm1muf7RFTKhD
+	 BXB2vUtmY23QNc9BCG5533by9NX2CNBH885lbEAq4usJ/HbCbU9k36aAuVWBofKTIY
+	 BnlKFUfMnum9g==
+Message-ID: <094882f5-48e6-4c0d-b6c6-942cc21e14bd@kernel.org>
+Date: Sun, 23 Jun 2024 14:09:16 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/3] dt-bindings: arm: rockchip: Add Radxa ROCK Pi E v3.0
+Subject: Re: [PATCH 2/3] arm64: dts: rockchip: prepare common .dtsi for Radxa
+ ROCK Pi E
 To: FUKAUMI Naoki <naoki@radxa.com>, heiko@sntech.de
 Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
  devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org
 References: <20240623120016.82990-1-naoki@radxa.com>
+ <20240623120016.82990-2-naoki@radxa.com>
 From: Krzysztof Kozlowski <krzk@kernel.org>
 Content-Language: en-US
 Autocrypt: addr=krzk@kernel.org; keydata=
@@ -96,10 +98,10 @@ Autocrypt: addr=krzk@kernel.org; keydata=
  uZwJCLykjad45hsWcOGk3OcaAGQS6NDlfhM6O9aYNwGL6tGt/6BkRikNOs7VDEa4/HlbaSJo
  7FgndGw1kWmkeL6oQh7wBvYll2buKod4qYntmNKEicoHGU+x91Gcan8mCoqhJkbqrL7+nXG2
  5Q/GS5M9RFWS+nYyJh+c3OcfKqVcZQNANItt7+ULzdNJuhvTRRdC3g9hmCEuNSr+CLMdnRBY fv0=
-In-Reply-To: <20240623120016.82990-1-naoki@radxa.com>
+In-Reply-To: <20240623120016.82990-2-naoki@radxa.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240623_050907_186294_FFCC9607 
-X-CRM114-Status: UNSURE (   4.62  )
+X-CRM114-CacheID: sfid-20240623_050922_888826_74383B69 
+X-CRM114-Status: UNSURE (   6.13  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -118,15 +120,16 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 On 23/06/2024 14:00, FUKAUMI Naoki wrote:
-> Add devicetree binding for the Radxa ROCK Pi E v3.0 board.
-> 
-> Radxa ROCK Pi E v3.0 is a single-board computer based on the Rockchip
-> RK3328 SoC with a compact form factor.
+> Radxa ROCK Pi E v1.2x and ROCK Pi E v3.0 share most of their parts.
+> prepare rk3328-rock-pi-e-base.dtsi as a common dtsi for both boards.
 > 
 > Signed-off-by: FUKAUMI Naoki <naoki@radxa.com>
+> ---
+>  .../{rk3328-rock-pi-e.dts => rk3328-rock-pi-e-base.dtsi}       | 3 ---
+>  1 file changed, 3 deletions(-)
+>  rename arch/arm64/boot/dts/rockchip/{rk3328-rock-pi-e.dts => rk3328-rock-pi-e-base.dtsi} (99%)
 
-Isn't this v2 of something? What changed here? Provide detailed
-changelog per each patch (see submitting patches).
+This breaks users and is not bisectable.
 
 Best regards,
 Krzysztof
