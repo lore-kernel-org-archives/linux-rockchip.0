@@ -4,82 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 69082C27C4F
-	for <linux-rockchip@archiver.kernel.org>; Sun, 23 Jun 2024 14:11:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D77A4C27C4F
+	for <linux-rockchip@archiver.kernel.org>; Sun, 23 Jun 2024 16:53:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Cc:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=jLfPcH6Kw0a/OdAN5qIoZCDaEIHWCqPADBB3Yhawrq0=; b=HxDssMJP1hEfrMDoyhSZ4DRlqS
-	VnfeVjVdwjis0euziS0CIG3qrF5L3gcSu5MAFgD5K5mJkiEd9NwZqqrqLeWsDS4azREvtG3cwHQ6j
-	hbCrmCndd7+UZ/G2d+V9ULRDFM5f+snbhfyU0HxpxndvDvcUGsPIG7O5ggxeLsNm0vEqkwhHaSq0W
-	uAISCB7QmJr/i5WiKG2qdD/lg7YQLwNVmst4Mqh2lm34LV2QWCMJbfp5Lh2CN+YKW1pQ73ncGDt/w
-	De5CJfhUjcZgnGtG7fkS2YpxKB+EFgFAzTnjzvWnxNbyXdEgNSEHB66+p1ua/bt4miv1JHvbML+tk
-	zARXzuZw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=9W6blPASDJTv887dAMpj4PISZ3k+R0WJry0qcGTOKuw=; b=I+NWjXXEYhqFmx
+	K5ENgFf54pUdYr68ViLbyFWQcexrFvG9ABBsCUfY4CJk+X9ZU4Xcok/5cbltWQnfZYbjDeGT6Ur1u
+	i5MX5D6TX7bDJjHDl5iTb4LYiKslDRO7TawmB5sTIjLnldzSrm+X2txKbcBx1XVVWRiExcXCxa6o4
+	MdGg3JBgDL9Fm5P6rOcNEKfhRdK41qsT1TX+BJFk9AOMVaAWUbE3iRH5hwbdGEdTGsNIAuaDyzie8
+	Omcv44EaKh9723SzXD/9vA1ltvayk4ZJqHZunWpwUo1p+OjSyJQsRKxmWAyBQSbW0bUv+AbAuk+QP
+	UA8U+2bzSgpUlnbDFcuQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sLNwA-0000000EAF2-0hxs;
-	Sun, 23 Jun 2024 14:11:22 +0000
-Received: from mail-oa1-x34.google.com ([2001:4860:4864:20::34])
+	id 1sLQTD-0000000EQ1h-0gZF;
+	Sun, 23 Jun 2024 16:53:39 +0000
+Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sLNw2-0000000EADr-3b1r;
-	Sun, 23 Jun 2024 14:11:16 +0000
-Received: by mail-oa1-x34.google.com with SMTP id 586e51a60fabf-25d0d16e38eso194903fac.2;
-        Sun, 23 Jun 2024 07:11:14 -0700 (PDT)
+	id 1sLQT6-0000000EPzt-3b2v;
+	Sun, 23 Jun 2024 16:53:34 +0000
+Received: by mail-wm1-x329.google.com with SMTP id 5b1f17b1804b1-42172ed3487so26371625e9.0;
+        Sun, 23 Jun 2024 09:53:31 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1719151873; x=1719756673; darn=lists.infradead.org;
-        h=to:subject:message-id:date:from:in-reply-to:references:mime-version
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=mydsSOgs1yRkpysFjrBR5qnlOOLUTfBZ21Jz7PUY9KI=;
-        b=IhVbG1bNUBeq5li0QK7aVQqw9pqOYER/ZnDjSg+YaJa8tCv0GqF3q+4aqLc7BjS1Df
-         tuZmNR1e4F7l5PbIApFo7h2BxCvzHM4br4u8Lpowp46n+E2LSvnSzEJZK67c6j26uXhD
-         iCHKmef64vb+uiMFPakQ2pp4GC0+uR0W+TXyfHrh8JpystFT1tIOVTrdkLZIEMra8+tL
-         kd3IdRFBuy+N6AJ9E4dBDvVjGU+iaZ9lSjQM78JXJG2z1dNiXcWn+4YblPeAiQ2vPe52
-         4z3GL8WkId3xqcUAQ6eADWcXUkohDXlgDXxF2F407/Q2QifT6EsL8fcsc380JCcFS8F9
-         qRYg==
+        d=gmail.com; s=20230601; t=1719161610; x=1719766410; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=0dyZkCyrKd/4PD4Jvfjt6KqBEYL4dXW/zmdctqRuUTo=;
+        b=U9pxOXQmMNopVvWKLpJmjhJTjgKxuHmQ9YDQMTM3lWonNT9SnI4Ir8HnCns0/HCheL
+         w6nNlsS02ryuOJIQqXOnGGiyHwJ+5oWGYeKp155P06j0Waxfq0MXJEbiYdHLSxb1fhqq
+         jZxfCZZ1Uu2r3RiY6Est4Ngl5INzWoj4QmTZJaucCj1A2f8yHpVshJT4441hFqQSVXJB
+         2bjGZaSYVgJQp2r4AFozW+/ah9cXSCCvAKdr0RnM02SaDmSEpz8JISPC1FA6R890VsU6
+         jAaW/qstBI2fPiJTNCTsJYzEFvIif1wL90O9kMoWmypVsr0/+QkIL3aemwasTAD6OZOR
+         uVtQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1719151873; x=1719756673;
-        h=to:subject:message-id:date:from:in-reply-to:references:mime-version
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=mydsSOgs1yRkpysFjrBR5qnlOOLUTfBZ21Jz7PUY9KI=;
-        b=T85K1ivJWhN6clJoLsSwBp9xHgB92tFXzhdRqX8hcwguS8NnXpwfuflMU9XVF/Dfc4
-         Q4ql+GJmKXC6ABoSMhuq8uGNidETsBqPk+PhUjHnBsE/pdtbV4+gvpwqCz0r2j3G5WkY
-         C3ODFY2cTC9aK1Ae3ZHQcQkjbODDcl6WKmOwtyKPcNUy3codVwsqtyMfqgS6PZS+HxdO
-         G5wyVx/6djK/KxnVllXh/p1xqrk8jqC63eIQRfTdhAwXZ+8QAthQBfOqpM7Z72QMymGR
-         g3fXmBywgh9czuFsk2fSSTrE59BZc9EzlgrNpLuZwBv5ER+rNORg6Q882dMNp8sF9bsp
-         2gPQ==
-X-Forwarded-Encrypted: i=1; AJvYcCUgNXAZUh+pEIra7IG82OgM+9HHlDgJKBIj6A7k0CTQ4Nagq61wFSkrHzPrWQX8rUKOtgRoi4QTfp3M1NzRUsVWnfLO6Xg8hco5s1DgIP3fHSOqmXdx3LvuImdUWXqgb88ed81Z0l/dl9NPYP7lfTAgCeXbuS6beTc=
-X-Gm-Message-State: AOJu0YwUoZ1YYwEzpGLJsvUGK+av13O0DGQ7q77k1wJtkFhCrhQ/6eCV
-	WLtK2wmI4y88bcjvCs+uz0u35UdMC3JJwHYyQLVPXHaqdQVF8dKGJGwz4La0bY2MvFshQY67m34
-	+YA7Vr0RJ9vopf/KBfjEgMKJ8fiQ=
-X-Google-Smtp-Source: AGHT+IFu3aSUk0WZAqXIaA214WhWGBp4bx8gFFfbGd9/AyNmFvmqYuPGQ3DfZ2eD+IxbM3Ci6RQ5K2LGLu7tVyFPy18=
-X-Received: by 2002:a05:6870:a714:b0:254:d05e:4cd5 with SMTP id
- 586e51a60fabf-25d06e3790cmr2478953fac.38.1719151873186; Sun, 23 Jun 2024
- 07:11:13 -0700 (PDT)
+        d=1e100.net; s=20230601; t=1719161610; x=1719766410;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=0dyZkCyrKd/4PD4Jvfjt6KqBEYL4dXW/zmdctqRuUTo=;
+        b=uix1/UacwNlYAY5izi3V+RGHcbI4BcGfHVL1TIg0zCy5OIdBmeCtMauvzeLIaVBaBt
+         yUOyR10Yyt/Slj9hFpvhNVdI83jFq1279xXYZdSB/KTlRV2kxPX6+/nJA9fHVKs7jiZN
+         Iv3EpkVwQaBo1w9YDnQnl2pef6XugENtgihk91y42j27firwVTVIpqpy9KNTkazohIjb
+         9a+kIvg0kZvOGcfqOzzqOM3NMxzuAOhiTxBEWdoVByA6ddr1Xj7WOJRgg+pr5MoEKpPJ
+         fc4h7VDlnlrGB2BO8wSxOtnMmIOoGUmBSC/u8a7z9CMsl8wCZno0w8096lYMhpgn4VKa
+         RiPQ==
+X-Forwarded-Encrypted: i=1; AJvYcCXoFfbiOy6KWDXvxWuTIzpU/PFJKa+W988hhh26EcK2Y6fgdR0LcfMo+IYJGS10gxfnV4Uxtla0ebuUIhUCF9MgxugWqoEo5TSVhd6HWyQFpFhLh9gZLdwpQSbMC1obICOoAZjvi0LL5FnOnCNPuw6pO2wTG683e+E=
+X-Gm-Message-State: AOJu0YzC18gNlI0rCBXO9rdEm1zPXVBPzAUPVJQ29DT5PaNoSAPuEJmR
+	NameF3M53p7LmKtblzEU7YEVHsH8oqu+RbqbUPKsCuFox3TOkMLs
+X-Google-Smtp-Source: AGHT+IFgHhHsrKsxAy7dmmoxUFNVOL7xlboI1346xmn1iLjG/0qF876onfSoisezAZAB/qDCi0tDeA==
+X-Received: by 2002:a05:600c:4fc9:b0:424:8e5b:e71d with SMTP id 5b1f17b1804b1-4248e5be7d2mr11488085e9.28.1719161609998;
+        Sun, 23 Jun 2024 09:53:29 -0700 (PDT)
+Received: from morpheus.home.roving-it.com (8.c.1.0.0.0.0.0.0.0.0.0.0.0.0.0.1.8.6.2.1.1.b.f.0.b.8.0.1.0.0.2.ip6.arpa. [2001:8b0:fb11:2681::1c8])
+        by smtp.googlemail.com with ESMTPSA id 5b1f17b1804b1-4247d0bea05sm144835555e9.18.2024.06.23.09.53.29
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 23 Jun 2024 09:53:29 -0700 (PDT)
+From: Peter Robinson <pbrobinson@gmail.com>
+To: Heiko Stuebner <heiko@sntech.de>,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org
+Cc: Peter Robinson <pbrobinson@gmail.com>
+Subject: [PATCH 2/3] arm64: dts: rockchip: Enable PinePhone Pro IMU sensor
+Date: Sun, 23 Jun 2024 17:53:21 +0100
+Message-ID: <20240623165326.1273944-2-pbrobinson@gmail.com>
+X-Mailer: git-send-email 2.45.2
+In-Reply-To: <20240623165326.1273944-1-pbrobinson@gmail.com>
+References: <20240623165326.1273944-1-pbrobinson@gmail.com>
 MIME-Version: 1.0
-References: <cover.1719106472.git.daniel@makrotopia.org> <240db6e0ab07e8e2a86da99b0fc085eabaf9f0cc.1719106472.git.daniel@makrotopia.org>
- <612bd49c-c44a-41f2-89e9-c96e62e52a0a@kernel.org> <Znf8JeBA4mzVa0V1@aurel32.net>
-In-Reply-To: <Znf8JeBA4mzVa0V1@aurel32.net>
-From: Anand Moon <linux.amoon@gmail.com>
-Date: Sun, 23 Jun 2024 19:40:58 +0530
-Message-ID: <CANAwSgTt5MSRkpR9tiZuGRQjdisuKUzoeG6_+8MqLVqKp6pKQg@mail.gmail.com>
-Subject: Re: [PATCH v4 2/3] hwrng: add Rockchip SoC hwrng driver
-To: Krzysztof Kozlowski <krzk@kernel.org>, Daniel Golle <daniel@makrotopia.org>, 
-	Olivia Mackall <olivia@selenic.com>, Herbert Xu <herbert@gondor.apana.org.au>, 
-	Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Heiko Stuebner <heiko@sntech.de>, Philipp Zabel <p.zabel@pengutronix.de>, 
-	=?UTF-8?Q?Uwe_Kleine=2DK=C3=B6nig?= <ukleinek@debian.org>, 
-	Sebastian Reichel <sebastian.reichel@collabora.com>, Sascha Hauer <s.hauer@pengutronix.de>, 
-	Dragan Simic <dsimic@manjaro.org>, Martin Kaiser <martin@kaiser.cx>, Ard Biesheuvel <ardb@kernel.org>, 
-	linux-crypto@vger.kernel.org, devicetree@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
-	linux-kernel@vger.kernel.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240623_071114_938223_B02B405A 
-X-CRM114-Status: GOOD (  27.12  )
+X-CRM114-CacheID: sfid-20240623_095332_924706_F8C26AE2 
+X-CRM114-Status: UNSURE (   9.80  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,70 +95,43 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi,
+Enable the IMU sensor on the PinePhone Pro including
+the i2c4 bus that it's attached to.
 
-On Sun, 23 Jun 2024 at 16:13, Aurelien Jarno <aurelien@aurel32.net> wrote:
->
-> Hi,
->
-> On 2024-06-23 09:00, Krzysztof Kozlowski wrote:
-> > On 23/06/2024 05:33, Daniel Golle wrote:
-> > > +
-> > > +   rk_rng->rng.name = dev_driver_string(dev);
-> > > +#ifndef CONFIG_PM
-> > > +   rk_rng->rng.init = rk_rng_init;
-> > > +   rk_rng->rng.cleanup = rk_rng_cleanup;
-> > > +#endif
-> > > +   rk_rng->rng.read = rk_rng_read;
-> > > +   rk_rng->rng.priv = (unsigned long) dev;
-> > > +   rk_rng->rng.quality = 900;
-> >
-> > I doubt in this value. Usually SoC vendors do not provide datasheet with
-> > any reliable and verifiable (so one which could be proven by 3rd party)
-> > information. Can you provide a source? (and vendor downstream tree does
-> > not really count)
->
-> As the original author of the patch, I am the one who have chosen the
-> value. I did it as explained in the commit message:
->
-> | The TRNG device does not seem to have a signal conditionner and the FIPS
-> | 140-2 test returns a lot of failures. They can be reduced by increasing
-> | RK_RNG_SAMPLE_CNT, in a tradeoff between quality and speed. This value
-> | has been adjusted to get ~90% of successes and the quality value has
-> | been set accordingly.
->
-> It is also explained, admittedly more briefly, above the
-> RK_RNG_SAMPLE_CNT #define, as the commit messages are not really
-> relevant anymore once the patches are accepted:
->
-> | * TRNG collects osc ring output bit every RK_RNG_SAMPLE_CNT time. The value is
-> | * a tradeoff between speed and quality and has been adjusted to get a quality
-> | * of ~900 (~90% of FIPS 140-2 successes).
-> | */
->
-> The decision to adjust RK_RNG_SAMPLE_CNT to reach ~90% of FIPS 140-2
-> successes was based on the quality chosen by most hw_random drivers
-> currently in the kernel sources. The FIPS 140-2 tests were performed
-> using rngtest from the rng-tools project.
->
-> All that said, I am not an expert in that domain, so feel free to point
-> to the documentation or provide the correct method to determine the
-> quality.
->
-> Regards
-> Aurelien
->
-> [1] https://git.kernel.org/pub/scm/utils/kernel/rng-tools/rng-tools.git/
+Signed-off-by: Peter Robinson <pbrobinson@gmail.com>
+---
+ .../boot/dts/rockchip/rk3399-pinephone-pro.dts    | 15 +++++++++++++++
+ 1 file changed, 15 insertions(+)
 
-This is an old repository, the latest can be found below
-[1] https://github.com/nhorman/rng-tools
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts b/arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts
+index 5e46f682f0f0b..fbaf0202df632 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts
+@@ -436,6 +436,21 @@ touchscreen@14 {
+ 	};
+ };
+ 
++&i2c4 {
++	i2c-scl-rising-time-ns = <600>;
++	i2c-scl-falling-time-ns = <20>;
++	status = "okay";
++
++	/* Accelerometer/gyroscope */
++	mpu6500@68 {
++		compatible = "invensense,mpu6500";
++		reg = <0x68>;
++		interrupt-parent = <&gpio1>;
++		interrupts = <RK_PC6 IRQ_TYPE_LEVEL_LOW>;
++		vddio-supply = <&vcc_1v8>;
++	};
++};
++
+ &cluster0_opp {
+ 	opp04 {
+ 		status = "disabled";
+-- 
+2.45.2
 
-However, I could not find the support from ARM and ARM64 in the repository below
-because all the assembly is written for the X86 arch.
-
-Thanks
-
--Anand
 
 _______________________________________________
 Linux-rockchip mailing list
