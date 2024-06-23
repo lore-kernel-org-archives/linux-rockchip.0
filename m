@@ -4,55 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C9F86C2BBCA
-	for <linux-rockchip@archiver.kernel.org>; Sun, 23 Jun 2024 12:09:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0A736C27C4F
+	for <linux-rockchip@archiver.kernel.org>; Sun, 23 Jun 2024 12:10:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=59SO2lKawCxUYnJaI/pCqTB3CAxdK8NlDCnceRSSqIc=; b=eC5pY1byMPXVHo
-	v+w+VKhfe4zBfBNpNij2utFL4yR3Gxr/PymD0hSJJTSNZ11mDh6s583tLZ3FT5HPTPJVauE5slTpt
-	jT9ypY+Ef7553h9lmlrgfhkoL5mLtaLrMRu0F1JNRgdMZeEGQZ7AUsRsLVKzzSti5YvvhT5GQ//vV
-	d3WbyasY4AzUHNCZAY4nfTNIY/4SKhbqW0dmo62rzs5pAujBySkXoPsD63bMVYkSeID6h5ZlL7RVZ
-	BcHIedEqIzJ4rO5VdNNWesLHJeAF3vCsigTkOgNTXcaCLjBus75qfVJN7O2qBLOO52jA2jau/jhD6
-	vugK+RI8Or9SHhXk7Mvg==;
+	List-Owner; bh=8juxZ3ANn0k2tngwbnCiiwYz8luLiYGIr3UfzaHT5TM=; b=lBXPfUoBcNDT2a
+	0iZOyai+FSOBEr4rZYk8GNy4bPtO1zJZmO5+4rofaeDmnSvd1CLXD2n1l2oY8ItMYF3aTpS/GdQFs
+	+e6bhqRXOoVeLVZ4QF4V9yIyUeCF0G5rHH00Xg0t9+C9sYYm5SGvHwn+RXvrpejGNvKbIP5vlUrSv
+	I/hYmOYw7XLIEgd5Alrdew0QSrUCGBvgeVDBhFYworjWLhR4ZP1G3Ybp+0loIGeBKRvRKHMLEP5TB
+	1qpP1lz2ZE/UggCNsglKSoYdCn+DMHHV5MqBKBMUGvW5tFFt0CgYbPaSwATJ9tg5TGkKLKbxWmgFo
+	bmWzh97LMlUf1UjQDHkA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sLM28-0000000DwpT-3itU;
-	Sun, 23 Jun 2024 12:09:24 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1sLM2r-0000000DwtW-1zZQ;
+	Sun, 23 Jun 2024 12:10:09 +0000
+Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sLM26-0000000Dwoy-2s2L
+	id 1sLM2n-0000000Dwsf-3AQW
 	for linux-rockchip@lists.infradead.org;
-	Sun, 23 Jun 2024 12:09:23 +0000
+	Sun, 23 Jun 2024 12:10:07 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 6B15C611A6;
-	Sun, 23 Jun 2024 12:09:21 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id CFE94C2BD10;
-	Sun, 23 Jun 2024 12:09:18 +0000 (UTC)
+	by sin.source.kernel.org (Postfix) with ESMTP id A6257CE0303;
+	Sun, 23 Jun 2024 12:10:03 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 190DCC2BD10;
+	Sun, 23 Jun 2024 12:09:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1719144561;
-	bh=opTbdMGRgaN2ww61+CV7ojIDXU7tC5vgTyZPdy9FQQE=;
+	s=k20201202; t=1719144602;
+	bh=frYAetObG2QKsyb4KqNeDuVDQcjhJo+59JoamXcQt2w=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=eviJDkFL7xGwEPazySGMrdz/aVmHAQN1pydS4fjAsk2POvC6kkuUS6FZHsIi9Rl2B
-	 VWQPLGfM0SuExfZ61jY7bgEaeRxqJqz4xI1DGVcORIrfGY3BXwD1BmJAgjrt8LlthE
-	 WsGmMump0HhW6pDNQQPjP2ruLZEPpb0u6hkX7RDa0AJyn8zJPCfDAw1z+a6C8hdvWK
-	 Qi7Q7VF2cUU/dZJgLmbq9rnNX5L4rNxR7dTzyUtDB3PVS5zYcNnAavm1muf7RFTKhD
-	 BXB2vUtmY23QNc9BCG5533by9NX2CNBH885lbEAq4usJ/HbCbU9k36aAuVWBofKTIY
-	 BnlKFUfMnum9g==
-Message-ID: <094882f5-48e6-4c0d-b6c6-942cc21e14bd@kernel.org>
-Date: Sun, 23 Jun 2024 14:09:16 +0200
+	b=Ye/yxpy0ZcwVPESRw1PMlc0erVBTp+SWWgR2828hKsMJU3gk2tK7bRi7GtVx+GL2f
+	 Dz6CPmszB0YkpRRcKurbf2rE0G49bxmaZIvYAVi7GRB+xauWM59Xt63DH7Wy6Lpy9T
+	 +BD7edB9ni+Z5vcTmDf8chj1+A9Mqb5/hqw77FHrIWJKlk4FCZ1tqhYj90QTdLmKch
+	 Y1d3iMkFeyfnCSTJwvAZ0BySAWs2tas05MaJnCGhgZ/Gnha6dmMhHlt50Vk6xG5d5t
+	 uw2l1au18C2SAGXdRlPSxeaRyRaZVZ2meIH0l7jobvRCIeMWMYCVN+MsULMmHDHeDU
+	 hgUaa8BQIhEAA==
+Message-ID: <32f61b72-9346-4ac7-b225-c7fce45f0785@kernel.org>
+Date: Sun, 23 Jun 2024 14:09:57 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 2/3] arm64: dts: rockchip: prepare common .dtsi for Radxa
- ROCK Pi E
+Subject: Re: [PATCH 3/3] arm64: dts: rockchip: add support for Radxa ROCK Pi E
+ v3.0
 To: FUKAUMI Naoki <naoki@radxa.com>, heiko@sntech.de
 Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
  devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org
 References: <20240623120016.82990-1-naoki@radxa.com>
- <20240623120016.82990-2-naoki@radxa.com>
+ <20240623120016.82990-3-naoki@radxa.com>
 From: Krzysztof Kozlowski <krzk@kernel.org>
 Content-Language: en-US
 Autocrypt: addr=krzk@kernel.org; keydata=
@@ -98,10 +98,10 @@ Autocrypt: addr=krzk@kernel.org; keydata=
  uZwJCLykjad45hsWcOGk3OcaAGQS6NDlfhM6O9aYNwGL6tGt/6BkRikNOs7VDEa4/HlbaSJo
  7FgndGw1kWmkeL6oQh7wBvYll2buKod4qYntmNKEicoHGU+x91Gcan8mCoqhJkbqrL7+nXG2
  5Q/GS5M9RFWS+nYyJh+c3OcfKqVcZQNANItt7+ULzdNJuhvTRRdC3g9hmCEuNSr+CLMdnRBY fv0=
-In-Reply-To: <20240623120016.82990-2-naoki@radxa.com>
+In-Reply-To: <20240623120016.82990-3-naoki@radxa.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240623_050922_888826_74383B69 
-X-CRM114-Status: UNSURE (   6.13  )
+X-CRM114-CacheID: sfid-20240623_051006_186446_FD0F7FE8 
+X-CRM114-Status: UNSURE (   7.60  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -120,16 +120,21 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 On 23/06/2024 14:00, FUKAUMI Naoki wrote:
-> Radxa ROCK Pi E v1.2x and ROCK Pi E v3.0 share most of their parts.
-> prepare rk3328-rock-pi-e-base.dtsi as a common dtsi for both boards.
+> ROCK Pi E v3.0 is newer version of ROCK Pi E v1.2x. Changes are
+> 
+> - Upgrade DDR3 to DDR4
+> - Elevate eMMC connector to onboard eMMC
+> - Update silkscreen to ROCK PI E V3.0
 > 
 > Signed-off-by: FUKAUMI Naoki <naoki@radxa.com>
 > ---
->  .../{rk3328-rock-pi-e.dts => rk3328-rock-pi-e-base.dtsi}       | 3 ---
->  1 file changed, 3 deletions(-)
->  rename arch/arm64/boot/dts/rockchip/{rk3328-rock-pi-e.dts => rk3328-rock-pi-e-base.dtsi} (99%)
+>  arch/arm64/boot/dts/rockchip/rk3328-rock-pi-e-v3.dts | 10 ++++++++++
+>  arch/arm64/boot/dts/rockchip/rk3328-rock-pi-e.dts    | 10 ++++++++++
+>  2 files changed, 20 insertions(+)
+>  create mode 100644 arch/arm64/boot/dts/rockchip/rk3328-rock-pi-e-v3.dts
+>  create mode 100644 arch/arm64/boot/dts/rockchip/rk3328-rock-pi-e.dts
 
-This breaks users and is not bisectable.
+And how did you test it if you cannot build it?
 
 Best regards,
 Krzysztof
