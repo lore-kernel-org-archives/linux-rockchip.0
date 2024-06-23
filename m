@@ -4,90 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 009A7C27C4F
-	for <linux-rockchip@archiver.kernel.org>; Sun, 23 Jun 2024 10:43:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5700DC27C4F
+	for <linux-rockchip@archiver.kernel.org>; Sun, 23 Jun 2024 11:31:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=sDkEnSk0+uo+i71VgaxAmXL+Z/M+AB5/IyDAj631gJU=; b=LE4/g916LYIgIJ
-	2Wj6drHMSbw4BOnvdxQ2+Kci8/EVawNHO1senE1wYQQwDoRJGtrWyKaqKj8+RJuT3lv/JwUwVT2Af
-	kPAfXYqfOFdw/R73lPTaIFf4DhIqOT5q8Fj1Os8EQ+Y3WbVEo/VvglErs9HhVbFxeyo99hskLMlAM
-	oPg7Eo/8Y2zJxJhz1NYISNNQa8d03MlgNaj+ZGWMe2nZbBjvCPD+cCZyBMavwkYASvCUmK8MvDhOv
-	GRhZScwU5kRGN6rsYwBM3iPZot01JFB2Oz5bJGg6l65W8YYGN+q6LsTSCnQkbGVvdecAgrenJaSjX
-	RhNfMcPFXeAQnrLD+GTA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=445zl8sRvj+MD8wqjlA5YOeclUt7Czl+MwhbZdiYDrs=; b=LeIxvyU8ZC9nCGgZ7kn4WUjra5
+	jQrLsSpwyKC7XaPxG+jupLRVuzCQr2tdO7iVayVRSwfOq3mYoIHvqDQq6/AuOgGDgGtGupjvcHANo
+	M6g4aYMjCwjuPDfVBQ/OEGy2JHsMs8fd7K5CC/N6r2PsonLp+xyME77yngwbRun92Qp9x0i4z4TRV
+	0tukAhdD55QvvXNwYcxl17Te4hIFYTdsQzgtPkM+o8ey0lG+6+HV45ARG+EEUEVcKLClzEtssaykt
+	kxeNKylkJ/2kUbHWBBKWeChNyEjGXECYffCxk82KIYW96mdDiy2Ik+ERvc6ecBrODnVLHUwMNxxFq
+	Sce9dRoA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sLKh4-0000000DnTv-06I0;
-	Sun, 23 Jun 2024 10:43:34 +0000
-Received: from hall.aurel32.net ([2001:bc8:30d7:100::1])
+	id 1sLLRR-0000000DtWa-2Wq3;
+	Sun, 23 Jun 2024 11:31:29 +0000
+Received: from out-172.mta1.migadu.com ([95.215.58.172])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sLKgy-0000000DnRz-10V5;
-	Sun, 23 Jun 2024 10:43:30 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=aurel32.net
-	; s=202004.hall; h=In-Reply-To:Content-Type:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Content-Transfer-Encoding:From:Reply-To:
-	Subject:Content-ID:Content-Description:X-Debbugs-Cc;
-	bh=cOPGiZTRLTkSPLlPpnHXwm++QfEHnrjcKdztZiRkX3A=; b=tTGJofW/SnqoWjxA4acUKT5+gG
-	Mr4PhiFFC6KqT7c3h2SomxcHqkUoUNzKL6Gsj9JEPfqjc/P3H5AJ6MS7c7HDl8TxeJq1cB0HR1xLL
-	wVD2IK2vijGTCx26lZk/fWQan/cjSxrsFGFP8XZ7Hc1VWv8y8o++ro6tkJSdnJ+0gkXR4cukDpu3a
-	IYnEvXxLTwZMCzMMjHNhDNv5WufbbugCEWok5HM+VhzXveTHo26izRbQyeY2AUqqEeGyMZqXHTopl
-	OLM1pco+3K/9vsAX5rC3eSj8kLBWhC3V8DtmmcepeB4SD3RTgLw/JwmzaU9MhOT19P+9N1ZXvooG5
-	Rv2hpWTw==;
-Received: from ohm.aurel32.net ([2001:bc8:30d7:111::2] helo=ohm.rr44.fr)
-	by hall.aurel32.net with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.96)
-	(envelope-from <aurelien@aurel32.net>)
-	id 1sLKgI-0057EX-1S;
-	Sun, 23 Jun 2024 12:42:46 +0200
-Date: Sun, 23 Jun 2024 12:42:45 +0200
-From: Aurelien Jarno <aurelien@aurel32.net>
-To: Krzysztof Kozlowski <krzk@kernel.org>
-Cc: Daniel Golle <daniel@makrotopia.org>,
-	Olivia Mackall <olivia@selenic.com>,
-	Herbert Xu <herbert@gondor.apana.org.au>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <ukleinek@debian.org>,
-	Sebastian Reichel <sebastian.reichel@collabora.com>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Dragan Simic <dsimic@manjaro.org>, Martin Kaiser <martin@kaiser.cx>,
-	Ard Biesheuvel <ardb@kernel.org>, linux-crypto@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v4 2/3] hwrng: add Rockchip SoC hwrng driver
-Message-ID: <Znf8JeBA4mzVa0V1@aurel32.net>
-Mail-Followup-To: Krzysztof Kozlowski <krzk@kernel.org>,
-	Daniel Golle <daniel@makrotopia.org>,
-	Olivia Mackall <olivia@selenic.com>,
-	Herbert Xu <herbert@gondor.apana.org.au>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <ukleinek@debian.org>,
-	Sebastian Reichel <sebastian.reichel@collabora.com>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Dragan Simic <dsimic@manjaro.org>, Martin Kaiser <martin@kaiser.cx>,
-	Ard Biesheuvel <ardb@kernel.org>, linux-crypto@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-References: <cover.1719106472.git.daniel@makrotopia.org>
- <240db6e0ab07e8e2a86da99b0fc085eabaf9f0cc.1719106472.git.daniel@makrotopia.org>
- <612bd49c-c44a-41f2-89e9-c96e62e52a0a@kernel.org>
+	id 1sLLRL-0000000DtVD-0W6l
+	for linux-rockchip@lists.infradead.org;
+	Sun, 23 Jun 2024 11:31:26 +0000
+X-Envelope-To: heiko@sntech.de
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow.org; s=key1;
+	t=1719142277;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=5sGngLZBqkAE79iidbqyoVY0tRIQ64K5ocj/t6ME7os=;
+	b=Rw5BM7beOxfAOo/M/g9Y90xdI/WXTSgfKd8Vcc4N06yn0AbYNv+tyhjF5g/VKBygh3VFk7
+	5HGGA+ys9qIY/QpCe60KRNBmHBeu0+yWvbouknppNGdtdjOF6McYoQw+lr37zV7sMlSJmu
+	Dk7iGGJOo7gFSWl7O1hsqDOIWObEAqpzAVX0Wc8QAxXi3ja2jWyUBzVKpZxq2ja34Oym5J
+	MO/2rn6/MhuyZ7CH/dzqjGf9fFq/darjJ4bWPYBclob7uiCm5mD5FbFNc/sOOyRPfVMdIG
+	X0KIwqedDvCxcbBM2U8S73oLAbSLXqMIjPqf36lk8/fln+2QTs8MB2Ej5G6Teg==
+X-Envelope-To: linux-rockchip@lists.infradead.org
+X-Envelope-To: dsimic@manjaro.org
+X-Envelope-To: devicetree@vger.kernel.org
+X-Envelope-To: linux-arm-kernel@lists.infradead.org
+X-Envelope-To: linux-kernel@vger.kernel.org
+X-Envelope-To: linux-rockchip@lists.infradead.org
+X-Envelope-To: andyshrk@163.com
+X-Envelope-To: andyshrk@163.com
+X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
+From: Diederik de Haas <didi.debian@cknow.org>
+To: heiko@sntech.de, linux-rockchip@lists.infradead.org
+Cc: dsimic@manjaro.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, Andy Yan <andyshrk@163.com>,
+ Andy Yan <andyshrk@163.com>
+Subject: Re: [PATCH] arm64: dts: rockchip: Fix the i2c address of es8316 on Cool Pi 4B
+Date: Sun, 23 Jun 2024 13:31:02 +0200
+Message-ID: <2771372.9AS07kTVam@bagend>
+Organization: Connecting Knowledge
+In-Reply-To: <20240623083413.2051412-1-andyshrk@163.com>
+References: <20240623083413.2051412-1-andyshrk@163.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <612bd49c-c44a-41f2-89e9-c96e62e52a0a@kernel.org>
-User-Agent: Mutt/2.2.12 (2023-09-09)
+X-Migadu-Flow: FLOW_OUT
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240623_034328_581273_C86C79DE 
-X-CRM114-Status: GOOD (  15.55  )
+X-CRM114-CacheID: sfid-20240623_043123_907871_94ECEBD5 
+X-CRM114-Status: GOOD (  14.75  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,67 +76,87 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============1501740862733881527=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi,
+--===============1501740862733881527==
+Content-Type: multipart/signed; boundary="nextPart4155544.U3QUcyqSlJ";
+ micalg="pgp-sha256"; protocol="application/pgp-signature"
 
-On 2024-06-23 09:00, Krzysztof Kozlowski wrote:
-> On 23/06/2024 05:33, Daniel Golle wrote:
-> > +
-> > +	rk_rng->rng.name = dev_driver_string(dev);
-> > +#ifndef CONFIG_PM
-> > +	rk_rng->rng.init = rk_rng_init;
-> > +	rk_rng->rng.cleanup = rk_rng_cleanup;
-> > +#endif
-> > +	rk_rng->rng.read = rk_rng_read;
-> > +	rk_rng->rng.priv = (unsigned long) dev;
-> > +	rk_rng->rng.quality = 900;
+--nextPart4155544.U3QUcyqSlJ
+Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain; charset="us-ascii"; protected-headers="v1"
+From: Diederik de Haas <didi.debian@cknow.org>
+To: heiko@sntech.de, linux-rockchip@lists.infradead.org
+Date: Sun, 23 Jun 2024 13:31:02 +0200
+Message-ID: <2771372.9AS07kTVam@bagend>
+Organization: Connecting Knowledge
+In-Reply-To: <20240623083413.2051412-1-andyshrk@163.com>
+References: <20240623083413.2051412-1-andyshrk@163.com>
+MIME-Version: 1.0
+
+On Sunday, 23 June 2024 10:34:13 CEST Andy Yan wrote:
+> According to the hardware design, the i2c address of audio codec es8316
+> on Cool Pi 4B is 0x10.
 > 
-> I doubt in this value. Usually SoC vendors do not provide datasheet with
-> any reliable and verifiable (so one which could be proven by 3rd party)
-> information. Can you provide a source? (and vendor downstream tree does
-> not really count)
+> ...
+> ---
+> 
+>  arch/arm64/boot/dts/rockchip/rk3588s-coolpi-4b.dts | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-coolpi-4b.dts
+> b/arch/arm64/boot/dts/rockchip/rk3588s-coolpi-4b.dts index
+> 20a0a60acd16..091dee37d068 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3588s-coolpi-4b.dts
+> +++ b/arch/arm64/boot/dts/rockchip/rk3588s-coolpi-4b.dts
+> @@ -302,7 +302,7 @@ &i2c7 {
+> 
+>  	es8316: audio-codec@11 {
 
-As the original author of the patch, I am the one who have chosen the
-value. I did it as explained in the commit message:
+Shouldn't this be `@10` then too?
 
-| The TRNG device does not seem to have a signal conditionner and the FIPS
-| 140-2 test returns a lot of failures. They can be reduced by increasing
-| RK_RNG_SAMPLE_CNT, in a tradeoff between quality and speed. This value
-| has been adjusted to get ~90% of successes and the quality value has
-| been set accordingly.
+>  		compatible = "everest,es8316";
+> -		reg = <0x11>;
+> +		reg = <0x10>;
+>  		assigned-clocks = <&cru I2S0_8CH_MCLKOUT>;
+>  		assigned-clock-rates = <12288000>;
+>  		clocks = <&cru I2S0_8CH_MCLKOUT>;
 
-It is also explained, admittedly more briefly, above the
-RK_RNG_SAMPLE_CNT #define, as the commit messages are not really
-relevant anymore once the patches are accepted:
 
-| * TRNG collects osc ring output bit every RK_RNG_SAMPLE_CNT time. The value is
-| * a tradeoff between speed and quality and has been adjusted to get a quality
-| * of ~900 (~90% of FIPS 140-2 successes).
-| */
+--nextPart4155544.U3QUcyqSlJ
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: This is a digitally signed message part.
+Content-Transfer-Encoding: 7Bit
 
-The decision to adjust RK_RNG_SAMPLE_CNT to reach ~90% of FIPS 140-2
-successes was based on the quality chosen by most hw_random drivers
-currently in the kernel sources. The FIPS 140-2 tests were performed
-using rngtest from the rng-tools project.
+-----BEGIN PGP SIGNATURE-----
 
-All that said, I am not an expert in that domain, so feel free to point
-to the documentation or provide the correct method to determine the
-quality.
+iHUEABYIAB0WIQT1sUPBYsyGmi4usy/XblvOeH7bbgUCZngHdgAKCRDXblvOeH7b
+bt3oAQCII30iQ/sfgohv2r+DOosF7UhIE+8oOtI6S/ypnnR5ewD+JVcYqudfLmEs
+OWE4JSAnFwNwXgGsOr8QJFLcDpI25gc=
+=MCtm
+-----END PGP SIGNATURE-----
 
-Regards
-Aurelien
+--nextPart4155544.U3QUcyqSlJ--
 
-[1] https://git.kernel.org/pub/scm/utils/kernel/rng-tools/rng-tools.git/
 
--- 
-Aurelien Jarno                          GPG: 4096R/1DDD8C9B
-aurelien@aurel32.net                     http://aurel32.net
+
+
+
+--===============1501740862733881527==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============1501740862733881527==--
+
+
+
+
