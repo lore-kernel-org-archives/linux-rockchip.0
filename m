@@ -4,104 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0A736C27C4F
-	for <linux-rockchip@archiver.kernel.org>; Sun, 23 Jun 2024 12:10:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 20EFEC27C4F
+	for <linux-rockchip@archiver.kernel.org>; Sun, 23 Jun 2024 12:12:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=8juxZ3ANn0k2tngwbnCiiwYz8luLiYGIr3UfzaHT5TM=; b=lBXPfUoBcNDT2a
-	0iZOyai+FSOBEr4rZYk8GNy4bPtO1zJZmO5+4rofaeDmnSvd1CLXD2n1l2oY8ItMYF3aTpS/GdQFs
-	+e6bhqRXOoVeLVZ4QF4V9yIyUeCF0G5rHH00Xg0t9+C9sYYm5SGvHwn+RXvrpejGNvKbIP5vlUrSv
-	I/hYmOYw7XLIEgd5Alrdew0QSrUCGBvgeVDBhFYworjWLhR4ZP1G3Ybp+0loIGeBKRvRKHMLEP5TB
-	1qpP1lz2ZE/UggCNsglKSoYdCn+DMHHV5MqBKBMUGvW5tFFt0CgYbPaSwATJ9tg5TGkKLKbxWmgFo
-	bmWzh97LMlUf1UjQDHkA==;
+	List-Owner; bh=ZuiEXXngSKN9w4Nc+OERJ+caS7QBP6O+9GZBa0t/6uU=; b=hjfLhfxhQEqPnE
+	M6eutSWHGhPqQRtb3aEmLwQJRW71B5XF0XMLclD7DCF8vEdtzedMJ3hvM+vLFnYYmdPVFdZaQy/sh
+	VUbKcZhdcm4POt+IY/x8xkGHkhfP+wYLNpKJAIIR3dhHyu6rC4PF7yZxGUgjdtLkMnL8SAOuFJqSn
+	L96SG0s0V4ZsGEkXS0TIaGZScl8OgrAqOlbDKYRQVF7OL3DYOG8u33q5B2gs3BpBdeNknnpg+x0tC
+	rcet0JIQeC+id9IbysYr5EZEtt8MTinlVZ6Xmj4q83H2fWM7z+HEf4VcgfwstsUMOxSldpO/PAHpG
+	7oZGjjrSn4R9PtitJKLQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sLM2r-0000000DwtW-1zZQ;
-	Sun, 23 Jun 2024 12:10:09 +0000
-Received: from sin.source.kernel.org ([145.40.73.55])
+	id 1sLM5K-0000000DxCb-2DPU;
+	Sun, 23 Jun 2024 12:12:42 +0000
+Received: from smtpbguseast3.qq.com ([54.243.244.52])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sLM2n-0000000Dwsf-3AQW
+	id 1sLM5F-0000000DxAO-3m6z
 	for linux-rockchip@lists.infradead.org;
-	Sun, 23 Jun 2024 12:10:07 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id A6257CE0303;
-	Sun, 23 Jun 2024 12:10:03 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 190DCC2BD10;
-	Sun, 23 Jun 2024 12:09:59 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1719144602;
-	bh=frYAetObG2QKsyb4KqNeDuVDQcjhJo+59JoamXcQt2w=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=Ye/yxpy0ZcwVPESRw1PMlc0erVBTp+SWWgR2828hKsMJU3gk2tK7bRi7GtVx+GL2f
-	 Dz6CPmszB0YkpRRcKurbf2rE0G49bxmaZIvYAVi7GRB+xauWM59Xt63DH7Wy6Lpy9T
-	 +BD7edB9ni+Z5vcTmDf8chj1+A9Mqb5/hqw77FHrIWJKlk4FCZ1tqhYj90QTdLmKch
-	 Y1d3iMkFeyfnCSTJwvAZ0BySAWs2tas05MaJnCGhgZ/Gnha6dmMhHlt50Vk6xG5d5t
-	 uw2l1au18C2SAGXdRlPSxeaRyRaZVZ2meIH0l7jobvRCIeMWMYCVN+MsULMmHDHeDU
-	 hgUaa8BQIhEAA==
-Message-ID: <32f61b72-9346-4ac7-b225-c7fce45f0785@kernel.org>
-Date: Sun, 23 Jun 2024 14:09:57 +0200
+	Sun, 23 Jun 2024 12:12:40 +0000
+X-QQ-mid: bizesmtpsz6t1719144718tnr1oj4
+X-QQ-Originating-IP: lvSdtWzGw74y0pIOzFRPYLJbPCgAP1nJPyiEmIdlvOc=
+Received: from [192.168.159.131] ( [106.150.157.243])
+	by bizesmtp.qq.com (ESMTP) with 
+	id ; Sun, 23 Jun 2024 20:11:55 +0800 (CST)
+X-QQ-SSF: 0000000000000000000000000000000
+X-QQ-GoodBg: 0
+X-BIZMAIL-ID: 12654803974381824126
+Message-ID: <9A5C6ACA074B094A+171f5286-c19d-4a9f-ac27-b4506e468227@radxa.com>
+Date: Sun, 23 Jun 2024 21:11:55 +0900
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 3/3] arm64: dts: rockchip: add support for Radxa ROCK Pi E
- v3.0
-To: FUKAUMI Naoki <naoki@radxa.com>, heiko@sntech.de
+Subject: Re: [PATCH 1/3] dt-bindings: arm: rockchip: Add Radxa ROCK Pi E v3.0
+To: Krzysztof Kozlowski <krzk@kernel.org>, heiko@sntech.de
 Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
  devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org
 References: <20240623120016.82990-1-naoki@radxa.com>
- <20240623120016.82990-3-naoki@radxa.com>
-From: Krzysztof Kozlowski <krzk@kernel.org>
+ <059eec26-b7ca-4bd0-9e63-cfceffc4a777@kernel.org>
 Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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 fv0=
-In-Reply-To: <20240623120016.82990-3-naoki@radxa.com>
+From: FUKAUMI Naoki <naoki@radxa.com>
+In-Reply-To: <059eec26-b7ca-4bd0-9e63-cfceffc4a777@kernel.org>
+X-QQ-SENDSIZE: 520
+Feedback-ID: bizesmtpsz:radxa.com:qybglogicsvrgz:qybglogicsvrgz8a-1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240623_051006_186446_FD0F7FE8 
-X-CRM114-Status: UNSURE (   7.60  )
+X-CRM114-CacheID: sfid-20240623_051238_452699_00CC58B8 
+X-CRM114-Status: UNSURE (   6.27  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -114,30 +65,38 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 23/06/2024 14:00, FUKAUMI Naoki wrote:
-> ROCK Pi E v3.0 is newer version of ROCK Pi E v1.2x. Changes are
-> 
-> - Upgrade DDR3 to DDR4
-> - Elevate eMMC connector to onboard eMMC
-> - Update silkscreen to ROCK PI E V3.0
-> 
-> Signed-off-by: FUKAUMI Naoki <naoki@radxa.com>
-> ---
->  arch/arm64/boot/dts/rockchip/rk3328-rock-pi-e-v3.dts | 10 ++++++++++
->  arch/arm64/boot/dts/rockchip/rk3328-rock-pi-e.dts    | 10 ++++++++++
->  2 files changed, 20 insertions(+)
->  create mode 100644 arch/arm64/boot/dts/rockchip/rk3328-rock-pi-e-v3.dts
->  create mode 100644 arch/arm64/boot/dts/rockchip/rk3328-rock-pi-e.dts
+Hi
 
-And how did you test it if you cannot build it?
+On 6/23/24 21:08, Krzysztof Kozlowski wrote:
+> On 23/06/2024 14:00, FUKAUMI Naoki wrote:
+>> Add devicetree binding for the Radxa ROCK Pi E v3.0 board.
+>>
+>> Radxa ROCK Pi E v3.0 is a single-board computer based on the Rockchip
+>> RK3328 SoC with a compact form factor.
+>>
+>> Signed-off-by: FUKAUMI Naoki <naoki@radxa.com>
+> 
+> Isn't this v2 of something? What changed here? Provide detailed
+> changelog per each patch (see submitting patches).
+
+this patch set are for adding new board.
+please discard previous patch set.
 
 Best regards,
-Krzysztof
+
+--
+FUKAUMI Naoki
+Radxa Computer (Shenzhen) Co., Ltd.
+
+> Best regards,
+> Krzysztof
+> 
+> 
 
 
 _______________________________________________
