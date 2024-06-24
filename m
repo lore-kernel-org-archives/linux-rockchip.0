@@ -4,55 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 95E15C2BD09
-	for <linux-rockchip@archiver.kernel.org>; Mon, 24 Jun 2024 20:59:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E087CC30653
+	for <linux-rockchip@archiver.kernel.org>; Mon, 24 Jun 2024 21:31:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
 	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=qSfBKc3NBTII0WqkhBg2/84wq15PFzK6rH/FBPkCHQ8=; b=fMWQRvKo98MPWL
-	eHve8w3CTgkLqqZ0+AK9YOmBRBsAwxMZt7aJxilepSoBn5/P3CZIk19El2kIEJ9dxWDId8mAYvhC5
-	E70DQR+79qZ4JaaOtSepJsQRxfmERuwdpIWggwNdvK3Am0KLJ/4F5KlCE+TQj69GpIuip/7ayNGLR
-	ommeFzTR3/aTFbJYOWwL/yfLefkkXOG1I4inr9Uw9Z2wUJm2kTXSgaBhYwzEi3MEep4zUIPEuf/wb
-	hbUspoPcexxd9bO/ufzq1ceSb0LEEeotpJgN7Dxbe0aHG0QTH1IP9ZMp9aa3JrmJidUFxiGp0q3fA
-	A4aec2Sy8zeAfSmC6feQ==;
+	List-Owner; bh=tB3beFp8+uR4inXLM3n5Md3O3n8sPKEMvmc4vYf0ahE=; b=dm95UqeuuCcVFV
+	gi/o7nc/o9e+oEvnw4rO6RjnmTK1ZTm39iMJFci7CQ01po9nVC+ESrXYmNATFmvqHSDs54c4aA7Vh
+	CLv+yEuHjBQ+5t/np7awuAGky/oUm5/+ICa4CryAL8YsEGJBE1niEG3tRpwIYdal1k4tysKb/vOUz
+	lRmqueW2v27VqlXLvMxaSfakoqGOOM8j1U86jvy7A4EDS3y5+SYVY9LILiIxjrJOvwx/TXPAAL5Lk
+	xHZGdRi72weEyJ+lHTLEU7J9VzAh8ahIl4Tp1Pfujtf78ya356Fow7L1i4zuxayJXD60KryEbWd1s
+	eCe6lcVK8X7dy2NPWUYA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sLqmw-00000000eM4-1iHy;
-	Mon, 24 Jun 2024 20:59:46 +0000
-Received: from smtpbg153.qq.com ([13.245.218.24])
+	id 1sLrHh-00000000iHw-1hTE;
+	Mon, 24 Jun 2024 21:31:33 +0000
+Received: from smtpbg156.qq.com ([15.184.82.18])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sLqmt-00000000eKe-0lSs
+	id 1sLrHc-00000000iGt-2QJf
 	for linux-rockchip@lists.infradead.org;
-	Mon, 24 Jun 2024 20:59:45 +0000
-X-QQ-mid: bizesmtp84t1719262748tbi7i2id
-X-QQ-Originating-IP: +awYDE9pSAPTm9wZ+7UUEevq+ygT6nzyRZX8CRB7ni0=
+	Mon, 24 Jun 2024 21:31:31 +0000
+X-QQ-mid: bizesmtp85t1719264556togk5jli
+X-QQ-Originating-IP: KDGt2dWE5y+1Ic10dkzvyxau3BTmxqdwpetv6MftoXA=
 Received: from [192.168.159.131] ( [106.150.157.243])
 	by bizesmtp.qq.com (ESMTP) with 
-	id ; Tue, 25 Jun 2024 04:59:05 +0800 (CST)
+	id ; Tue, 25 Jun 2024 05:29:13 +0800 (CST)
 X-QQ-SSF: 0000000000000000000000000000000
 X-QQ-GoodBg: 0
-X-BIZMAIL-ID: 3610672459738816953
-Message-ID: <92475F697AAA5E9E+02e882f2-6ec7-417c-9210-229fd9a652b2@radxa.com>
-Date: Tue, 25 Jun 2024 05:59:05 +0900
+X-BIZMAIL-ID: 14516342982163703582
+Message-ID: <A160F02429E3991F+93c09bed-e66a-445b-a235-df6c6d6ea9db@radxa.com>
+Date: Tue, 25 Jun 2024 06:29:12 +0900
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 1/3] dt-bindings: arm: rockchip: Add Radxa ROCK Pi E
- v3.0
-To: heiko@sntech.de
-Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
- devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org
-References: <20240623201415.3205-1-naoki@radxa.com>
+Subject: Re: [PATCH 3/3] arm64: dts: rockchip: change spi-max-frequency for
+ Radxa ROCK 3C
+To: Chukun Pan <amadeus@jmu.edu.cn>
+Cc: chris.obbard@collabora.com, conor+dt@kernel.org,
+ devicetree@vger.kernel.org, heiko@sntech.de, krzk+dt@kernel.org,
+ linux-rockchip@lists.infradead.org, robh@kernel.org,
+ sebastian.reichel@collabora.com
+References: <DBE7B5A56069764A+b5680896-bc71-4af8-9d56-bd6828595e74@radxa.com>
+ <20240624100019.80529-1-amadeus@jmu.edu.cn>
 Content-Language: en-US
 From: FUKAUMI Naoki <naoki@radxa.com>
-In-Reply-To: <20240623201415.3205-1-naoki@radxa.com>
+In-Reply-To: <20240624100019.80529-1-amadeus@jmu.edu.cn>
 X-QQ-SENDSIZE: 520
 Feedback-ID: bizesmtp:radxa.com:qybglogicsvrgz:qybglogicsvrgz8a-1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240624_135944_069004_C2C4EC77 
-X-CRM114-Status: GOOD (  10.88  )
+X-CRM114-CacheID: sfid-20240624_143129_471896_02F49913 
+X-CRM114-Status: UNSURE (   7.65  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,16 +73,23 @@ Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello everyone who read/reply my patch series,
+Hi,
 
-I'm sorry. I wasted your precious time.
+On 6/24/24 19:00, Chukun Pan wrote:
+> Hi,
+>> I see, I'll remove fixes tag in v2.
+>> btw, is this change reasonable(acceptable)?
+> 
+> I think there's no problem and it's acceptable. It would be better
+> if you could give examples of flash chips that might be used.
 
-Jonas Karlman suggested simple way completed in u-boot
- 
-https://patchwork.ozlabs.org/project/uboot/patch/20240624204529.34742-1-naoki@radxa.com/
+here is a list of my board:
 
-any change in linux kernel side is not required anymore.
-please
+  ROCK 5A: MXIC (SPI flash module, no schematic)
+  ROCK 5B: MXIC (XTX in schematic)
+  ROCK 3A: MXIC (Winbond in schematic)
+  ROCK 3B: MXIC (Winbond in schematic)
+  ROCK 3C: GigaDevice (same as schematic)
 
 Best regards,
 
@@ -86,38 +97,9 @@ Best regards,
 FUKAUMI Naoki
 Radxa Computer (Shenzhen) Co., Ltd.
 
-On 6/24/24 05:14, FUKAUMI Naoki wrote:
-> Add devicetree binding for the Radxa ROCK Pi E v3.0 board.
+> Thanks,
+> Chukun
 > 
-> Radxa ROCK Pi E v3.0 is a single-board computer based on the Rockchip
-> RK3328 SoC with a compact form factor.
-> 
-> Signed-off-by: FUKAUMI Naoki <naoki@radxa.com>
-> 
-> Changes in v3:
-> - none
-> Changes in v2:
-> - none
-> ---
->   Documentation/devicetree/bindings/arm/rockchip.yaml | 5 +++++
->   1 file changed, 5 insertions(+)
-> 
-> diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
-> index eca0a42eb384..53ca61c47b76 100644
-> --- a/Documentation/devicetree/bindings/arm/rockchip.yaml
-> +++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
-> @@ -779,6 +779,11 @@ properties:
->             - const: radxa,rockpi-e
->             - const: rockchip,rk3328
->   
-> +      - description: Radxa ROCK Pi E v3.0
-> +        items:
-> +          - const: radxa,rockpi-e-v3
-> +          - const: rockchip,rk3328
-> +
->         - description: Radxa ROCK Pi N8
->           items:
->             - const: radxa,rockpi-n8
 
 _______________________________________________
 Linux-rockchip mailing list
