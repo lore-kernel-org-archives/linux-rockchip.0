@@ -4,60 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E824DC2BD05
-	for <linux-rockchip@archiver.kernel.org>; Mon, 24 Jun 2024 11:52:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DF3FFC2BD05
+	for <linux-rockchip@archiver.kernel.org>; Mon, 24 Jun 2024 11:53:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=kl7QZsPCFBCq63r11LNMuNyf+YLewxFqnsX0Z6l6FHI=; b=eHKmJJYpmuYkGV
-	g+jok+vOPqcT5iFVxxWBTtjiKrtYLp+frPMU8QsOKQ7J/QOxyyZlBzR3lETrFJTcSi/AkFEeswcdc
-	j9msW0eoEBCmn2ppOnOnmsufv50m60nXLIkmC/ClB7xBEfKLN1SEARMYv9EGG24cn0vYWxC5FqtwX
-	Ire9SVZfU3kqET3JQMTSWWJOmn3vmOKGh26F9vLE5c2hH+eKp+JuBPEJ/gIqfqB8OW1iBgAPrPCcd
-	PUqn4olLRXZWpsdhU9xGTiIfzGEVVpc5CWCz+f3r5HIeTrffhV1VNLZNgsu1BC4PrxqrXe3Dcggor
-	hMkdak+YyZ3ot10g04Ww==;
+	List-Owner; bh=j3ogowxVsKMBJKiARuz4tDKw19IOiVo0+l0L2ZSG0BE=; b=qEHZiVQTEwp4Cz
+	l2JyeFwqWiz+7VkI5XXpkcxGUUR5cZTUToe05Fd6pBozccI5zz2x3JfRVhjA4blpXOV/m2r6sFtc1
+	EJsH94bvgMgGFekY73zMJIK49QOAFhe9YbPXNsZKVKCigRmBKbEKQ4s+wJYbFnMpqsJU56oddFEkK
+	uvqyR3SZwxe5NjnbFciYQQcQnr7cwQExvxYWVbbGuI+hrL0R2ckOeaJ5p4rQ325fszPF8eO9eIwJO
+	CIIC3vasyHw1fWYpwQsC/FGvgiw7RfZF29YsYKTKJiEIv59/woNO6wO7zvhZSl1pdB0xWiNxK5gE9
+	QE+lrMQq4mpOD3BAZNew==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sLiFG-0000000GgPl-3wPY;
-	Mon, 24 Jun 2024 11:52:26 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1sLiGI-0000000GgiP-44qD;
+	Mon, 24 Jun 2024 11:53:30 +0000
+Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sLiFA-0000000GgOZ-1ref;
-	Mon, 24 Jun 2024 11:52:21 +0000
+	id 1sLiGC-0000000Ggfh-1jKy;
+	Mon, 24 Jun 2024 11:53:26 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 2A7FB60B98;
-	Mon, 24 Jun 2024 11:52:19 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 90E67C2BBFC;
-	Mon, 24 Jun 2024 11:52:12 +0000 (UTC)
+	by sin.source.kernel.org (Postfix) with ESMTP id 4108ECE10FE;
+	Mon, 24 Jun 2024 11:53:22 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8269BC2BBFC;
+	Mon, 24 Jun 2024 11:53:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1719229938;
-	bh=2OQksbAH8Q9SbTN0REsdjHjArfktyVjTfszbK5EBsSI=;
+	s=k20201202; t=1719230001;
+	bh=X3LUVF9n/Lh0ZRmeZ1J5tDM8TML65BM16E6Zc4Ii/d8=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=UFoybF2QmzHzDpSA9CXWVyjHiOQ9YPR8OMBi+sPMMP0ssnLVTzoF5t0KVDy3TpASr
-	 4nSE78WUBjzVO5qCAy7ja3PWc0XnLvY15/40j4rMNhbOG5/L49v+tgSMA3CbYqHcmG
-	 Xjwl88GYkGyXJ0vSiawGY+MBFTBP3fRNIihw3efjAmWyVpB+oZqM0Q40IZsFHtaUOP
-	 f9mIyZV8SafgNTw8c9xjpRpImXFhXXXvR/ixsQ+DI9Abw7G29M99T39tCNKNckGoH/
-	 gzPRpKVTDM1fUZE1gfYaI5e2gRT2y6Oj0+NGnrHqps6ggYhAJv15XLydLelLjWH/a9
-	 jiHgveVgULiFg==
-Message-ID: <258459b8-549b-4a63-8d33-76c9631483f1@kernel.org>
-Date: Mon, 24 Jun 2024 13:52:10 +0200
+	b=CLrmS8izec1PLujYjvTR4p9BjHHaiwHbZLiPzCs0rBbIGuJOIAp3/jdhaDeb/i3Ul
+	 vEYrNFWAzGqw7kANXB1/HdKZeFCRgcV2w8oFN8d0sqQJ2kYL2UPeT0S9A3tQ2iWGOF
+	 xwqhaXjY8Meu5nkhoK0jwtH38JX3ILLxpJwleQXAHmQN3DHlyif5AuLhiBFUqE6/X8
+	 orr3kYpuriduh5D8k92XWxb3wxBXFz5J81raJIW/yXqYDGihFEGWwlurwgiR/pqVNF
+	 xplT/OHEwWu9/MJTTkLyhWZYdz+BWaduzhXSOv4FyjpTZX5OnAfP8MKSyZP16zHyDb
+	 gPhNLUwPwnViw==
+Message-ID: <6d8f80a0-d67a-416e-b395-7a33b539682e@kernel.org>
+Date: Mon, 24 Jun 2024 13:53:15 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 1/5] arm64: dts: rockchip: Add AP6275P wireless support
- to Khadas Edge 2
-To: Jacobe Zang <jacobe.zang@wesion.com>, arend.vanspriel@broadcom.com
-Cc: kvalo@kernel.org, duoming@zju.edu.cn, bhelgaas@google.com,
- minipli@grsecurity.net, linux-wireless@vger.kernel.org,
- brcm80211@lists.linux.dev, brcm80211-dev-list.pdl@broadcom.com, megi@xff.cz,
- robh@kernel.org, efectn@protonmail.com, krzk+dt@kernel.org,
- conor+dt@kernel.org, heiko@sntech.de, nick@khadas.com, jagan@edgeble.ai,
+Subject: Re: [PATCH v4 1/2] arm64: dts: rockchip: Add USB-C to Khadas Edge 2
+To: Jacobe Zang <jacobe.zang@wesion.com>, robh@kernel.org,
+ krzk+dt@kernel.org, conor+dt@kernel.org, heiko@sntech.de
+Cc: nick@khadas.com, efectn@protonmail.com, jagan@edgeble.ai,
  dsimic@manjaro.org, devicetree@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
  linux-kernel@vger.kernel.org
-References: <20240624081906.1399447-1-jacobe.zang@wesion.com>
- <20240624081906.1399447-2-jacobe.zang@wesion.com>
+References: <20240624083236.1401673-1-jacobe.zang@wesion.com>
+ <20240624083236.1401673-2-jacobe.zang@wesion.com>
 From: Krzysztof Kozlowski <krzk@kernel.org>
 Content-Language: en-US
 Autocrypt: addr=krzk@kernel.org; keydata=
@@ -103,10 +99,10 @@ Autocrypt: addr=krzk@kernel.org; keydata=
  uZwJCLykjad45hsWcOGk3OcaAGQS6NDlfhM6O9aYNwGL6tGt/6BkRikNOs7VDEa4/HlbaSJo
  7FgndGw1kWmkeL6oQh7wBvYll2buKod4qYntmNKEicoHGU+x91Gcan8mCoqhJkbqrL7+nXG2
  5Q/GS5M9RFWS+nYyJh+c3OcfKqVcZQNANItt7+ULzdNJuhvTRRdC3g9hmCEuNSr+CLMdnRBY fv0=
-In-Reply-To: <20240624081906.1399447-2-jacobe.zang@wesion.com>
+In-Reply-To: <20240624083236.1401673-2-jacobe.zang@wesion.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240624_045220_665417_29BBA7FB 
-X-CRM114-Status: GOOD (  13.12  )
+X-CRM114-CacheID: sfid-20240624_045325_075022_88B9B758 
+X-CRM114-Status: GOOD (  12.63  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -123,59 +119,65 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 24/06/2024 10:19, Jacobe Zang wrote:
-> Khadas Edge2 uses the PCI-e Ampak AP6275P 2T2R Wi-Fi 6 module.
+On 24/06/2024 10:32, Jacobe Zang wrote:
+> Khadas Edge 2 has 2x Type-C port. One just supports PD and
+> controlled by MCU. The other one supports PD, DP Alt mode and DRD. This
+> commit adds support for DRD.
 > 
 > Co-developed-by: Muhammed Efe Cetin <efectn@protonmail.com>
 > Signed-off-by: Muhammed Efe Cetin <efectn@protonmail.com>
 > Signed-off-by: Jacobe Zang <jacobe.zang@wesion.com>
 > ---
->  .../boot/dts/rockchip/rk3588s-khadas-edge2.dts   | 16 ++++++++++++++++
->  1 file changed, 16 insertions(+)
+>  .../dts/rockchip/rk3588s-khadas-edge2.dts     | 118 ++++++++++++++++++
+>  1 file changed, 118 insertions(+)
 > 
 > diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-khadas-edge2.dts b/arch/arm64/boot/dts/rockchip/rk3588s-khadas-edge2.dts
-> index 3b6286461a746..f674deb6f7da8 100644
+> index dbddfc3bb4641..8c0bc675690dd 100644
 > --- a/arch/arm64/boot/dts/rockchip/rk3588s-khadas-edge2.dts
 > +++ b/arch/arm64/boot/dts/rockchip/rk3588s-khadas-edge2.dts
-> @@ -356,6 +356,22 @@ &pcie2x1l2 {
->  	reset-gpios = <&gpio3 RK_PD1 GPIO_ACTIVE_HIGH>;
->  	vpcie3v3-supply = <&vcc3v3_pcie_wl>;
->  	status = "okay";
-> +
-> +	pcie@0,0 {
-> +		reg = <0x400000 0 0 0 0>;
-> +		#address-cells = <3>;
-> +		#size-cells = <2>;
-> +		ranges;
-> +		device_type = "pci";
-> +		bus-range = <0x40 0x4f>;
-
-Isn't bus-range a property of PCI host bridge, so the parent? This is a
-PCI device, right?
-
-> +
-> +		wifi: wifi@0,0 {
-
-Binding does not say anything about this. Rockchip PCI controller is the
-PCI host bridge, isn't it? Then the pci@0,0 is the child, so what is this?
-
-> +			reg = <0x410000 0 0 0 0>;
-> +			clocks = <&hym8563>;
-> +			clock-names = "32k";
-
-1. Bindings are before the users.
-2. Where is the compatible? Are you sure this validates?
-
-
-> +		};
+> @@ -6,6 +6,7 @@
+>  #include <dt-bindings/input/input.h>
+>  #include <dt-bindings/pinctrl/rockchip.h>
+>  #include <dt-bindings/leds/common.h>
+> +#include <dt-bindings/usb/pd.h>
+>  #include "rk3588s.dtsi"
+>  
+>  / {
+> @@ -112,6 +113,18 @@ vcc5v0_sys: vcc5v0-sys-regulator {
+>  		regulator-max-microvolt = <5000000>;
+>  	};
+>  
+> +	vbus5v0_typec: vbus5v0-typec-regulator {
+> +		compatible = "regulator-fixed";
+> +		regulator-name = "vbus5v0_typec";
+> +		regulator-min-microvolt = <5000000>;
+> +		regulator-max-microvolt = <5000000>;
+> +		enable-active-high;
+> +		gpio = <&gpio3 RK_PA4 GPIO_ACTIVE_HIGH>;
+> +		vin-supply = <&vcc5v0_sys>;
+> +		pinctrl-names = "default";
+> +		pinctrl-0 = <&typec5v_pwren>;
 > +	};
 > +
-
-No need for this blank line.
-
->  };
+>  	vcc_1v1_nldo_s3: vcc-1v1-nldo-s3-regulator {
+>  		compatible = "regulator-fixed";
+>  		regulator-name = "vcc_1v1_nldo_s3";
+> @@ -224,6 +237,56 @@ regulator-state-mem {
+>  &i2c2 {
+>  	status = "okay";
 >  
->  &pwm11 {
+> +	usbc0: usb-typec@22 {
+> +		compatible = "fcs,fusb302";
+> +		reg = <0x22>;
+> +		interrupt-parent = <&gpio1>;
+> +		interrupts = <RK_PB5 IRQ_TYPE_LEVEL_LOW>;
+> +		pinctrl-names = "default";
+> +		pinctrl-0 = <&usbc0_int>;
+> +		vbus-supply = <&vbus5v0_typec>;
+> +		status = "okay";
+
+Was it disabled anywhere?
+
 
 Best regards,
 Krzysztof
