@@ -4,52 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E310EC3064D
-	for <linux-rockchip@archiver.kernel.org>; Mon, 24 Jun 2024 14:58:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 80CAFC2D0D1
+	for <linux-rockchip@archiver.kernel.org>; Mon, 24 Jun 2024 16:20:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=/1bqUKXG3xy53J5bETuUuO+Wuqzz4ortaGZ80IKZBU8=; b=us8CENGTr8lzno
-	sZreON0/iHda0eE8BqrM06ZLE7T+fVYFP5Bbt83liRxgn1o0rL0HgsylrDpGIKbxwgxTmskiPPP4r
-	XLLUuZMoIe9AufjK6GKqvGC6cv8PN20coJxtv6vRY+dZNkMvZOm5g56kR4+HK2PG0R2hbg/UzmdAG
-	XZdZ7K7rp1bkesrVLKBsqamI6qGPagKlamUNc9VN5ic8JPDfAmEchoxyrfkW/Y6FIFb5qdCARTygR
-	kAWVzBR3GqvAwBEKfpb8zwOH9tdhDu4m1NHGBj5fYClmhxWdKj+9/1kEowqWHIqL92dzI6/09OOnv
-	J4t4UPNYvUSkWfIG5uBw==;
+	List-Owner; bh=kgtuclXHzHLBXqAXIwtjn6/coAq7638brkrNy5hZKHI=; b=Sfh5tnYrPx5FsC
+	XDoSZD5kz1NrlyiGGBb9ssFjPE60RPNMk7mnuHBc7of8QGSL80rs/vG70yYI/jQ3Ww7iWZHMZuqiC
+	/dAj0UcJFeToMws6aCTDhLGV4QsGmQRdqhzOE7dUvoFZo52YV1eItnHZhW9U8772bdZVXY1ZTiWo6
+	6fXk6uSbyioRRmZ7N9hL9nQ4DbtIUH9eW3pzERpuUGKjcwv/0S2EG9ruYq6RQH3jcv6G1GPTazmyE
+	10MlTzNl2zqpn3WK66SQi4BUNp3+7uOIKvRQHIw9smmkaRjOHTLcHRoYPtbZE0dTObr1VXLRwOaxJ
+	fxKTagUy9S3KJ2Kq5qmw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sLl9Q-0000000HD1E-1zaE;
-	Mon, 24 Jun 2024 14:58:36 +0000
+	id 1sLmQk-0000000HScs-0vlm;
+	Mon, 24 Jun 2024 16:20:34 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sLl9N-0000000HD0O-2BCn
-	for linux-rockchip@lists.infradead.org;
-	Mon, 24 Jun 2024 14:58:35 +0000
-Received: from i53875b6a.versanet.de ([83.135.91.106] helo=diego.localnet)
+	id 1sLmQe-0000000HSZl-1mik;
+	Mon, 24 Jun 2024 16:20:29 +0000
+Received: from i53875b6a.versanet.de ([83.135.91.106] helo=phil.lan)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1sLl9C-00019N-TS; Mon, 24 Jun 2024 16:58:22 +0200
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: Chukun Pan <amadeus@jmu.edu.cn>, FUKAUMI Naoki <naoki@radxa.com>
-Cc: chris.obbard@collabora.com, conor+dt@kernel.org,
- devicetree@vger.kernel.org, krzk+dt@kernel.org,
- linux-rockchip@lists.infradead.org, robh@kernel.org,
- sebastian.reichel@collabora.com
-Subject: Re: [PATCH 3/3] arm64: dts: rockchip: change spi-max-frequency for Radxa ROCK
- 3C
-Date: Mon, 24 Jun 2024 16:58:21 +0200
-Message-ID: <2557120.Y4W8hZkJsM@diego>
-In-Reply-To: <DBE7B5A56069764A+b5680896-bc71-4af8-9d56-bd6828595e74@radxa.com>
-References: <20240623023329.1044-3-naoki@radxa.com>
- <20240623040409.1756986-1-amadeus@jmu.edu.cn>
- <DBE7B5A56069764A+b5680896-bc71-4af8-9d56-bd6828595e74@radxa.com>
+	id 1sLmQa-0001wn-5h; Mon, 24 Jun 2024 18:20:24 +0200
+From: Heiko Stuebner <heiko@sntech.de>
+To: dri-devel@lists.freedesktop.org,
+	Jonas Karlman <jonas@kwiboo.se>
+Cc: Heiko Stuebner <heiko@sntech.de>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-rockchip@lists.infradead.org
+Subject: Re: (subset) [PATCH 00/13] rockchip: Enable 4K@60Hz mode on RK3228, RK3328, RK3399 and RK356x
+Date: Mon, 24 Jun 2024 18:20:15 +0200
+Message-Id: <171924573800.612064.11395186343493727609.b4-ty@sntech.de>
+X-Mailer: git-send-email 2.39.2
+In-Reply-To: <20240615170417.3134517-1-jonas@kwiboo.se>
+References: <20240615170417.3134517-1-jonas@kwiboo.se>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240624_075833_669570_D8D66155 
-X-CRM114-Status: GOOD (  13.47  )
+X-CRM114-CacheID: sfid-20240624_092028_480820_D8C92B3B 
+X-CRM114-Status: UNSURE (   9.21  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -66,25 +65,24 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Am Sonntag, 23. Juni 2024, 06:24:56 CEST schrieb FUKAUMI Naoki:
-> Hi,
+On Sat, 15 Jun 2024 17:03:51 +0000, Jonas Karlman wrote:
+> This prepares and enable use of HDMI2.0 modes, e.g. 4K@60Hz, on RK3228,
+> RK3328, RK3399 and RK356x.
 > 
-> Thank you very much for your comment!
+> Patch 1-3 fixes some issues to help support use of high-resolution modes.
 > 
-> On 6/23/24 13:04, Chukun Pan wrote:
-> > Hi,
-> >> SPI NOR flash chip may vary, so use safe(lowest) spi-max-frequency.
-> > 
-> > I don't think a fixes tag is needed, because there is no documentation
-> > for this. See also (sfc part):
-> > https://lore.kernel.org/lkml/d7de2213-8dd2-42ec-9a30-a569ac71be3e@kwiboo.se/
+> Patch 4 fixes reading of EDID on RK3328 when using a forced mode.
 > 
-> I see, I'll remove fixes tag in v2.
-> btw, is this change reasonable(acceptable)?
+> [...]
 
-it is, also no need to resend, I just dropped the Fixes tag myself
+Applied, thanks!
 
+[01/13] arm64: dts: rockchip: Increase VOP clk rate on RK3328
+        commit: 0f2ddb128fa20f8441d903285632f2c69e90fae1
 
+Best regards,
+-- 
+Heiko Stuebner <heiko@sntech.de>
 
 _______________________________________________
 Linux-rockchip mailing list
