@@ -4,83 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 53CD4C30653
-	for <linux-rockchip@archiver.kernel.org>; Mon, 24 Jun 2024 20:41:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 95E15C2BD09
+	for <linux-rockchip@archiver.kernel.org>; Mon, 24 Jun 2024 20:59:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=zm5i1b6OlgCJgy74eApgJXVTqKMjo+Ucv6sFDHynt2A=; b=2GAbN0eZNSXOFv
-	ePe19CF+KAxE3jYin8D34+4wZHbPQMFVjgJkokVtnZl9mHpakCcRN8Vvw/LPw3Pz2b8ebcGUbqOdM
-	DNyJtWPMYintmYzSSUgnQZJtdohvtqO/8LP2XPJ+A817tmtJYPwd7xjacW1vLOnlbR7+/6ZtuJkeP
-	sJY7THIdummcpOA/goToLh+0bEl5rZmrB1JSnhNzHOKFTj2VHTDB7vxrlsKvGqpz98Me5pbtiMApC
-	cuT/p37nVHzzE5AiKUF7iTaa2Zx8271IsIfCHMeSS01AniyLhzqEqh6lbnNaclgR5RUsBbW2fI1AY
-	Idv0xJwS4WTGoHEUN8WA==;
+	List-Owner; bh=qSfBKc3NBTII0WqkhBg2/84wq15PFzK6rH/FBPkCHQ8=; b=fMWQRvKo98MPWL
+	eHve8w3CTgkLqqZ0+AK9YOmBRBsAwxMZt7aJxilepSoBn5/P3CZIk19El2kIEJ9dxWDId8mAYvhC5
+	E70DQR+79qZ4JaaOtSepJsQRxfmERuwdpIWggwNdvK3Am0KLJ/4F5KlCE+TQj69GpIuip/7ayNGLR
+	ommeFzTR3/aTFbJYOWwL/yfLefkkXOG1I4inr9Uw9Z2wUJm2kTXSgaBhYwzEi3MEep4zUIPEuf/wb
+	hbUspoPcexxd9bO/ufzq1ceSb0LEEeotpJgN7Dxbe0aHG0QTH1IP9ZMp9aa3JrmJidUFxiGp0q3fA
+	A4aec2Sy8zeAfSmC6feQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sLqVe-00000000bt6-2VUd;
-	Mon, 24 Jun 2024 20:41:54 +0000
-Received: from out-178.mta1.migadu.com ([95.215.58.178])
+	id 1sLqmw-00000000eM4-1iHy;
+	Mon, 24 Jun 2024 20:59:46 +0000
+Received: from smtpbg153.qq.com ([13.245.218.24])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sLqVW-00000000bna-3ppv
+	id 1sLqmt-00000000eKe-0lSs
 	for linux-rockchip@lists.infradead.org;
-	Mon, 24 Jun 2024 20:41:48 +0000
-X-Envelope-To: val@packett.cool
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=packett.cool;
-	s=key1; t=1719261704;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=Hjt3C9pL92UZVTHccpVfXiMxQ9kX8axxehFDYvZWg4M=;
-	b=WbQZOXCfxxNpDlQsKDmAnAnvprp35IDeWA1DfhJpU35jWsGnotyp4UU6PXcdibnptQ/O8M
-	sYXc2DjwqQUj+KiFjXUaRkQQFmPsznFNa4Y1U9p9nKqcAP6Z+QUmlX+kJ73XhFG3CLGso7
-	qjlDUa+pFaZ5Fs6ekeu3c8eT0hpJJxhwIYPjSf6SSTauB8Wj77J9tU+pwCT7bH4mgGj4Oy
-	3TL7HXfg64HWuCbgeRwtibn+YMhjG7S6rS4VoS1/qwfDYomP+mMjlhBB4AS7wK+3gPpW8h
-	5Cy0D6T9iVHQ+0UPYZdv05URWthuH6tDLxe7HgqfN6jdXNIe8f8n5QyyDRSCtQ==
-X-Envelope-To: stable@vger.kernel.org
-X-Envelope-To: hjc@rock-chips.com
-X-Envelope-To: heiko@sntech.de
-X-Envelope-To: andy.yan@rock-chips.com
-X-Envelope-To: maarten.lankhorst@linux.intel.com
-X-Envelope-To: mripard@kernel.org
-X-Envelope-To: tzimmermann@suse.de
-X-Envelope-To: airlied@gmail.com
-X-Envelope-To: daniel@ffwll.ch
-X-Envelope-To: dri-devel@lists.freedesktop.org
-X-Envelope-To: linux-arm-kernel@lists.infradead.org
-X-Envelope-To: linux-rockchip@lists.infradead.org
-X-Envelope-To: linux-kernel@vger.kernel.org
-X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
-From: Val Packett <val@packett.cool>
-To: 
-Cc: Val Packett <val@packett.cool>,
-	stable@vger.kernel.org,
-	Sandy Huang <hjc@rock-chips.com>,
-	=?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
-	Andy Yan <andy.yan@rock-chips.com>,
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	David Airlie <airlied@gmail.com>,
-	Daniel Vetter <daniel@ffwll.ch>,
-	dri-devel@lists.freedesktop.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH v4 2/2] drm/rockchip: vop: enable VOP_FEATURE_INTERNAL_RGB on RK3066
-Date: Mon, 24 Jun 2024 17:40:49 -0300
-Message-ID: <20240624204054.5524-3-val@packett.cool>
-In-Reply-To: <20240624204054.5524-1-val@packett.cool>
-References: <20240624204054.5524-1-val@packett.cool>
+	Mon, 24 Jun 2024 20:59:45 +0000
+X-QQ-mid: bizesmtp84t1719262748tbi7i2id
+X-QQ-Originating-IP: +awYDE9pSAPTm9wZ+7UUEevq+ygT6nzyRZX8CRB7ni0=
+Received: from [192.168.159.131] ( [106.150.157.243])
+	by bizesmtp.qq.com (ESMTP) with 
+	id ; Tue, 25 Jun 2024 04:59:05 +0800 (CST)
+X-QQ-SSF: 0000000000000000000000000000000
+X-QQ-GoodBg: 0
+X-BIZMAIL-ID: 3610672459738816953
+Message-ID: <92475F697AAA5E9E+02e882f2-6ec7-417c-9210-229fd9a652b2@radxa.com>
+Date: Tue, 25 Jun 2024 05:59:05 +0900
 MIME-Version: 1.0
-X-Migadu-Flow: FLOW_OUT
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 1/3] dt-bindings: arm: rockchip: Add Radxa ROCK Pi E
+ v3.0
+To: heiko@sntech.de
+Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
+ devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org
+References: <20240623201415.3205-1-naoki@radxa.com>
+Content-Language: en-US
+From: FUKAUMI Naoki <naoki@radxa.com>
+In-Reply-To: <20240623201415.3205-1-naoki@radxa.com>
+X-QQ-SENDSIZE: 520
+Feedback-ID: bizesmtp:radxa.com:qybglogicsvrgz:qybglogicsvrgz8a-1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240624_134147_226491_356002B3 
-X-CRM114-Status: UNSURE (   7.51  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240624_135944_069004_C2C4EC77 
+X-CRM114-Status: GOOD (  10.88  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,35 +64,60 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The RK3066 does have RGB display output, so it should be marked as such.
+Hello everyone who read/reply my patch series,
 
-Fixes: f4a6de8 ("drm: rockchip: vop: add rk3066 vop definitions")
-Cc: stable@vger.kernel.org
-Signed-off-by: Val Packett <val@packett.cool>
----
- drivers/gpu/drm/rockchip/rockchip_vop_reg.c | 1 +
- 1 file changed, 1 insertion(+)
+I'm sorry. I wasted your precious time.
 
-diff --git a/drivers/gpu/drm/rockchip/rockchip_vop_reg.c b/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
-index 9bcb40a64..e2c6ba26f 100644
---- a/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
-@@ -515,6 +515,7 @@ static const struct vop_data rk3066_vop = {
- 	.output = &rk3066_output,
- 	.win = rk3066_vop_win_data,
- 	.win_size = ARRAY_SIZE(rk3066_vop_win_data),
-+	.feature = VOP_FEATURE_INTERNAL_RGB,
- 	.max_output = { 1920, 1080 },
- };
+Jonas Karlman suggested simple way completed in u-boot
  
--- 
-2.45.2
+https://patchwork.ozlabs.org/project/uboot/patch/20240624204529.34742-1-naoki@radxa.com/
 
+any change in linux kernel side is not required anymore.
+please
+
+Best regards,
+
+--
+FUKAUMI Naoki
+Radxa Computer (Shenzhen) Co., Ltd.
+
+On 6/24/24 05:14, FUKAUMI Naoki wrote:
+> Add devicetree binding for the Radxa ROCK Pi E v3.0 board.
+> 
+> Radxa ROCK Pi E v3.0 is a single-board computer based on the Rockchip
+> RK3328 SoC with a compact form factor.
+> 
+> Signed-off-by: FUKAUMI Naoki <naoki@radxa.com>
+> 
+> Changes in v3:
+> - none
+> Changes in v2:
+> - none
+> ---
+>   Documentation/devicetree/bindings/arm/rockchip.yaml | 5 +++++
+>   1 file changed, 5 insertions(+)
+> 
+> diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
+> index eca0a42eb384..53ca61c47b76 100644
+> --- a/Documentation/devicetree/bindings/arm/rockchip.yaml
+> +++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
+> @@ -779,6 +779,11 @@ properties:
+>             - const: radxa,rockpi-e
+>             - const: rockchip,rk3328
+>   
+> +      - description: Radxa ROCK Pi E v3.0
+> +        items:
+> +          - const: radxa,rockpi-e-v3
+> +          - const: rockchip,rk3328
+> +
+>         - description: Radxa ROCK Pi N8
+>           items:
+>             - const: radxa,rockpi-n8
 
 _______________________________________________
 Linux-rockchip mailing list
