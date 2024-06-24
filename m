@@ -4,50 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 80CAFC2D0D1
-	for <linux-rockchip@archiver.kernel.org>; Mon, 24 Jun 2024 16:20:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D7343C2BD09
+	for <linux-rockchip@archiver.kernel.org>; Mon, 24 Jun 2024 16:20:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=kgtuclXHzHLBXqAXIwtjn6/coAq7638brkrNy5hZKHI=; b=Sfh5tnYrPx5FsC
-	XDoSZD5kz1NrlyiGGBb9ssFjPE60RPNMk7mnuHBc7of8QGSL80rs/vG70yYI/jQ3Ww7iWZHMZuqiC
-	/dAj0UcJFeToMws6aCTDhLGV4QsGmQRdqhzOE7dUvoFZo52YV1eItnHZhW9U8772bdZVXY1ZTiWo6
-	6fXk6uSbyioRRmZ7N9hL9nQ4DbtIUH9eW3pzERpuUGKjcwv/0S2EG9ruYq6RQH3jcv6G1GPTazmyE
-	10MlTzNl2zqpn3WK66SQi4BUNp3+7uOIKvRQHIw9smmkaRjOHTLcHRoYPtbZE0dTObr1VXLRwOaxJ
-	fxKTagUy9S3KJ2Kq5qmw==;
+	List-Owner; bh=ReyLv8aoevCPskN3+kUIjC4jQzEzWrD5RTXA/zSLs7I=; b=gOR2WazgZHwsYD
+	DYlAlAr6t/atSyKVSkv6fAaot0i+Smysur22igufwfkkZx0xGYfF4pr6BNL8q2poZLcXGA8JEPJ/d
+	z9z5mYN1g3R1hC8Ql79wpJNYpLClZO4B09Y5bQ2SrsJGFn68L2HpsDGanFrBUN4pXT79BZ0qme0tb
+	Gw1RZEtKnV1TVCKnCYUNXyQotkCCWEXYzZ0byEfHKp+gQxdmufB/e6+rAPqlOQ6ASIX+hdjnBOi5q
+	Pp5X8bgSwLfsuRqEoKW5WgEmvsIsR6eiYrtWYLLep/HK7suDJp2HkOu0Wnzuo/4h1HiTcXZRXA6yS
+	RO5Alve9Z2i8Rssswq1Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sLmQk-0000000HScs-0vlm;
+	id 1sLmQk-0000000HSd1-2hll;
 	Mon, 24 Jun 2024 16:20:34 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sLmQe-0000000HSZl-1mik;
-	Mon, 24 Jun 2024 16:20:29 +0000
+	id 1sLmQe-0000000HSa1-2GLP;
+	Mon, 24 Jun 2024 16:20:30 +0000
 Received: from i53875b6a.versanet.de ([83.135.91.106] helo=phil.lan)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1sLmQa-0001wn-5h; Mon, 24 Jun 2024 18:20:24 +0200
+	id 1sLmQZ-0001wn-Qq; Mon, 24 Jun 2024 18:20:23 +0200
 From: Heiko Stuebner <heiko@sntech.de>
-To: dri-devel@lists.freedesktop.org,
-	Jonas Karlman <jonas@kwiboo.se>
+To: Johan Jonker <jbx6244@gmail.com>
 Cc: Heiko Stuebner <heiko@sntech.de>,
-	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
-	linux-rockchip@lists.infradead.org
-Subject: Re: (subset) [PATCH 00/13] rockchip: Enable 4K@60Hz mode on RK3228, RK3328, RK3399 and RK356x
-Date: Mon, 24 Jun 2024 18:20:15 +0200
-Message-Id: <171924573800.612064.11395186343493727609.b4-ty@sntech.de>
+	devicetree@vger.kernel.org,
+	robh@kernel.org,
+	linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	conor+dt@kernel.org,
+	krzk+dt@kernel.org
+Subject: Re: [PATCH v1] ARM: dts: rockchip: enable hdmi_sound and i2s0 for mk808 hdmi
+Date: Mon, 24 Jun 2024 18:20:14 +0200
+Message-Id: <171924573800.612064.1539997666589623837.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20240615170417.3134517-1-jonas@kwiboo.se>
-References: <20240615170417.3134517-1-jonas@kwiboo.se>
+In-Reply-To: <aa79ff87-ea94-4f6d-a81b-5110724243f4@gmail.com>
+References: <aa79ff87-ea94-4f6d-a81b-5110724243f4@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240624_092028_480820_D8C92B3B 
-X-CRM114-Status: UNSURE (   9.21  )
+X-CRM114-CacheID: sfid-20240624_092028_604463_E431AB82 
+X-CRM114-Status: UNSURE (   8.24  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -65,20 +68,16 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Sat, 15 Jun 2024 17:03:51 +0000, Jonas Karlman wrote:
-> This prepares and enable use of HDMI2.0 modes, e.g. 4K@60Hz, on RK3228,
-> RK3328, RK3399 and RK356x.
+On Thu, 20 Jun 2024 16:11:38 +0200, Johan Jonker wrote:
+> Enable the hdmi_sound node and add i2s0 as sound source
+> for mk808 hdmi.
 > 
-> Patch 1-3 fixes some issues to help support use of high-resolution modes.
 > 
-> Patch 4 fixes reading of EDID on RK3328 when using a forced mode.
-> 
-> [...]
 
 Applied, thanks!
 
-[01/13] arm64: dts: rockchip: Increase VOP clk rate on RK3328
-        commit: 0f2ddb128fa20f8441d903285632f2c69e90fae1
+[1/1] ARM: dts: rockchip: enable hdmi_sound and i2s0 for mk808 hdmi
+      commit: 99a2b6d16b37258bcbdc2e07eb55e129362a182f
 
 Best regards,
 -- 
