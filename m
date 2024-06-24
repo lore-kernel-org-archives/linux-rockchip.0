@@ -4,54 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D7343C2BD09
-	for <linux-rockchip@archiver.kernel.org>; Mon, 24 Jun 2024 16:20:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 93C54C2BD09
+	for <linux-rockchip@archiver.kernel.org>; Mon, 24 Jun 2024 16:20:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ReyLv8aoevCPskN3+kUIjC4jQzEzWrD5RTXA/zSLs7I=; b=gOR2WazgZHwsYD
-	DYlAlAr6t/atSyKVSkv6fAaot0i+Smysur22igufwfkkZx0xGYfF4pr6BNL8q2poZLcXGA8JEPJ/d
-	z9z5mYN1g3R1hC8Ql79wpJNYpLClZO4B09Y5bQ2SrsJGFn68L2HpsDGanFrBUN4pXT79BZ0qme0tb
-	Gw1RZEtKnV1TVCKnCYUNXyQotkCCWEXYzZ0byEfHKp+gQxdmufB/e6+rAPqlOQ6ASIX+hdjnBOi5q
-	Pp5X8bgSwLfsuRqEoKW5WgEmvsIsR6eiYrtWYLLep/HK7suDJp2HkOu0Wnzuo/4h1HiTcXZRXA6yS
-	RO5Alve9Z2i8Rssswq1Q==;
+	List-Owner; bh=5R4wmwrv/RSYjS/qXt+JA6/xzPeRTHjtC9009Qn1wJE=; b=q0FnkEomc4bwlU
+	XdUAtuqYEXn7AHqix5erK6q+RatGCejHf5YW1QactGooHB6fuXyez1ZUshncfQ8mGKWU3bWyy4RBE
+	ndgsVj76WKOC/QYfBOeEOGUd0UCTgrFK5UvkhIGRloIPFF7DJTdF6JU6YyhnoCzoh3RPSq4ZBe3Bb
+	w30WINaiKSp4SbjT3vuKlHenvuQzoDXUixh5HW2C7vjTeJEfIzHxQQftm/oPy+eFX8BUpPSIS/Rvs
+	vVbycX5q9SOQaFKbEBc5vtWUjAxFBRHeOvCDDBqnMUHdfZFq4yNxDfY7purqfjVS5nf9QvVQ4kAKn
+	IkIpqUXFJsbrdEDzMg8Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sLmQk-0000000HSd1-2hll;
-	Mon, 24 Jun 2024 16:20:34 +0000
+	id 1sLmQr-0000000HShr-20WE;
+	Mon, 24 Jun 2024 16:20:41 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sLmQe-0000000HSa1-2GLP;
-	Mon, 24 Jun 2024 16:20:30 +0000
+	id 1sLmQg-0000000HSae-15gX;
+	Mon, 24 Jun 2024 16:20:31 +0000
 Received: from i53875b6a.versanet.de ([83.135.91.106] helo=phil.lan)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1sLmQZ-0001wn-Qq; Mon, 24 Jun 2024 18:20:23 +0200
+	id 1sLmQb-0001wn-PZ; Mon, 24 Jun 2024 18:20:25 +0200
 From: Heiko Stuebner <heiko@sntech.de>
-To: Johan Jonker <jbx6244@gmail.com>
-Cc: Heiko Stuebner <heiko@sntech.de>,
-	linux-kernel@vger.kernel.org,
+To: linux-arm-kernel@lists.infradead.org,
 	devicetree@vger.kernel.org,
-	robh@kernel.org,
-	linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	conor+dt@kernel.org,
-	krzk+dt@kernel.org
-Subject: Re: [PATCH v1] ARM: dts: rockchip: enable hdmi_sound and i2s0 for mk808 hdmi
-Date: Mon, 24 Jun 2024 18:20:14 +0200
-Message-Id: <171924573800.612064.1539997666589623837.b4-ty@sntech.de>
+	Peter Robinson <pbrobinson@gmail.com>,
+	linux-rockchip@lists.infradead.org
+Cc: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH 1/3] arm64: dts: rockchip: Add Pinephone Pro support for GPIO LEDs
+Date: Mon, 24 Jun 2024 18:20:19 +0200
+Message-Id: <171924573794.612064.864594906378094874.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.39.2
-In-Reply-To: <aa79ff87-ea94-4f6d-a81b-5110724243f4@gmail.com>
-References: <aa79ff87-ea94-4f6d-a81b-5110724243f4@gmail.com>
+In-Reply-To: <20240623165326.1273944-1-pbrobinson@gmail.com>
+References: <20240623165326.1273944-1-pbrobinson@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240624_092028_604463_E431AB82 
-X-CRM114-Status: UNSURE (   8.24  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240624_092030_334752_E4A9479A 
+X-CRM114-Status: GOOD (  11.26  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,16 +63,22 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, 20 Jun 2024 16:11:38 +0200, Johan Jonker wrote:
-> Enable the hdmi_sound node and add i2s0 as sound source
-> for mk808 hdmi.
+On Sun, 23 Jun 2024 17:53:20 +0100, Peter Robinson wrote:
+> The PinePhone Pro has a cluster of 3 single RGB GPIO LEDs.
+> Add the GPIO entries for the 3 red/green/blue LEDs and an
+> entry for the multi-color group to allow them to be used
+> as a combined RGB LED.
 > 
 > 
 
 Applied, thanks!
 
-[1/1] ARM: dts: rockchip: enable hdmi_sound and i2s0 for mk808 hdmi
-      commit: 99a2b6d16b37258bcbdc2e07eb55e129362a182f
+[1/3] arm64: dts: rockchip: Add Pinephone Pro support for GPIO LEDs
+      commit: ee9b6b6414790223e8315ef0e25df69b3b5e6e50
+[2/3] arm64: dts: rockchip: Enable PinePhone Pro IMU sensor
+      commit: c1d9ced35621bdc894321ad284a29922dd3e7251
+[3/3] arm64: dts: rockchip: Enable PinePhone Pro vibrator
+      commit: 3f9cfd4f5e453aa33ca4dc40959a1cc524501160
 
 Best regards,
 -- 
