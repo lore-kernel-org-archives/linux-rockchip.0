@@ -4,54 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DA363C2D0D1
-	for <linux-rockchip@archiver.kernel.org>; Mon, 24 Jun 2024 16:21:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8BBA8C3064D
+	for <linux-rockchip@archiver.kernel.org>; Mon, 24 Jun 2024 16:21:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=QNXlYZ1XqTItlyYsVD3pWaelfLvS/Dddm/rQItx5ok4=; b=kxCuqkEsLV2gux
-	HLnl19X6PZuxidCul2YgF8HN4Ohc5bbWyfV4L52UwkgsNjDYFqBOr1K4OVC2dUzLKg8mJP7yMudHR
-	VXWDtr9BtzMK0NV02gfGkrsG16KVuoXYX4LROIZRsMMRZMjo2ll52XI6ekgWCJ1Uewxa5bQ15u8S4
-	XQTSdNFci9xuspfLc/OphYus71vzL8mAyS8mrafzZIvWPuZXzpb+hnH/BC/IPZpINvGM/H0p+y942
-	ISV5LUfT+QsNZDFz2tH75G4jU7kTnvHd6rW9uStU96mT002l3XP81BAfvojXStHtedGUkeJgQ/iGW
-	0E6AIffzarqgNab0D6lw==;
+	List-Owner; bh=OshLd6TBWUKdhp5EN1Gok/oboU7/R/7iC6bTFqtFXdU=; b=4HonNiqlY8dFZZ
+	bqPk0QXB0MwoGqmhQODIRY4Qt3OgPiQNORlMPtLvbTvFqrvvV6JvTukz1pHnDpfY+9S9QUO76wAIp
+	J21LhxKWVXHQ+v5MoRw+AZM2ygVti+K2BzEftioiYZIWyGTintizp+XbO6sE4HI132nmZGLX2mdwf
+	RNDPzgT/sTi6KnEwdgqVmx0iSRVRw00eRVj3lT+DrTkECNuwex01ivXIpWNifszHijlzpaX0c/0bH
+	atlW+DG930nQtze/UULir6EwrZDaSOtprXMfLB+z56jtHnI7MQ0Fd7Ym/AL9naWb06M7kkmi+v2/8
+	+MLHc3VWCjd+g1S7/H7A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sLmRH-0000000HT15-2nHd;
-	Mon, 24 Jun 2024 16:21:07 +0000
+	id 1sLmRI-0000000HT2F-3V3S;
+	Mon, 24 Jun 2024 16:21:08 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sLmQi-0000000HSc0-3IwO;
-	Mon, 24 Jun 2024 16:20:34 +0000
+	id 1sLmQn-0000000HSeJ-31JV
+	for linux-rockchip@lists.infradead.org;
+	Mon, 24 Jun 2024 16:20:39 +0000
 Received: from i53875b6a.versanet.de ([83.135.91.106] helo=phil.lan)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1sLmQc-0001wn-KC; Mon, 24 Jun 2024 18:20:26 +0200
+	id 1sLmQb-0001wn-FW; Mon, 24 Jun 2024 18:20:25 +0200
 From: Heiko Stuebner <heiko@sntech.de>
-To: linux-kernel@vger.kernel.org,
-	Rob Herring <robh@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Jonas Karlman <jonas@kwiboo.se>,
-	"open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	"moderated list:ARM/Rockchip SoC support" <linux-arm-kernel@lists.infradead.org>,
-	"open list:ARM/Rockchip SoC support" <linux-rockchip@lists.infradead.org>,
-	Trevor Woerner <twoerner@gmail.com>
-Cc: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH] arm64: dts: rockchip: add gpio-line-names to radxa-zero-3
-Date: Mon, 24 Jun 2024 18:20:21 +0200
-Message-Id: <171924573799.612064.9218736887561595244.b4-ty@sntech.de>
+To: FUKAUMI Naoki <naoki@radxa.com>
+Cc: Heiko Stuebner <heiko@sntech.de>,
+	devicetree@vger.kernel.org,
+	jonas@kwiboo.se,
+	linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH v3] arm64: dts: rockchip: fix mmc aliases for Radxa ZERO 3E/3W
+Date: Mon, 24 Jun 2024 18:20:18 +0200
+Message-Id: <171924573797.612064.8311697388124103809.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20240620013301.33653-1-twoerner@gmail.com>
-References: <20240620013301.33653-1-twoerner@gmail.com>
+In-Reply-To: <20240620224435.2752-1-naoki@radxa.com>
+References: <20240620224435.2752-1-naoki@radxa.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240624_092032_847692_96ECA80A 
-X-CRM114-Status: GOOD (  10.72  )
+X-CRM114-CacheID: sfid-20240624_092037_927624_C84770DB 
+X-CRM114-Status: UNSURE (   9.21  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,21 +65,21 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, 19 Jun 2024 21:32:49 -0400, Trevor Woerner wrote:
-> Add names to the pins of the general-purpose expansion header as given
-> in the Radxa documentation[1] following the conventions in the kernel[2]
-> to make it easier for users to correlate pins with functions when using
-> utilities such as 'gpioinfo'.
+On Fri, 21 Jun 2024 07:44:35 +0900, FUKAUMI Naoki wrote:
+> align with other Radxa products.
 > 
-> [1] https://docs.radxa.com/en/zero/zero3/hardware-design/hardware-interface
-> [2] https://www.kernel.org/doc/Documentation/devicetree/bindings/gpio/gpio.txt
+> - mmc0 is eMMC
+> - mmc1 is microSD
+> 
+> for ZERO 3E, there is no eMMC, but aliases should start at 0, so mmc0
+> is microSD as exception.
 > 
 > [...]
 
 Applied, thanks!
 
-[1/1] arm64: dts: rockchip: add gpio-line-names to radxa-zero-3
-      commit: f7c742cbe664ebdedc075945e75443683d1175f7
+[1/1] arm64: dts: rockchip: fix mmc aliases for Radxa ZERO 3E/3W
+      commit: 060c1950037e4c54ca4d8186a8f46269e35db901
 
 Best regards,
 -- 
