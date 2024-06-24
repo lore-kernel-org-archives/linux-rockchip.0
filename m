@@ -4,49 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2FF35C2BD05
-	for <linux-rockchip@archiver.kernel.org>; Mon, 24 Jun 2024 11:45:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E824DC2BD05
+	for <linux-rockchip@archiver.kernel.org>; Mon, 24 Jun 2024 11:52:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=oc/Xn+HLOLwX7e/u/urwOqZqHF5YKRpkWgO7pVHtwQs=; b=1sbEPHMFxHss0K
-	pu9F5bSUhpP8uYbx9ZXyZCTuul1klhA2PNSmHdXUc42C+r2z8cr5VeK5qU85ATCCmh+5lpqHKmSYa
-	nKNOnIo/dDC31J9VMv6t2ABXdECST16QdE3FSiV9KysrCSr2yBMw0e0yIHOmOASs8UnYnZm3c2yTb
-	mNKwiOnJCgPerBknhn8GXPoFs3l3d8d6IQ1F4Bh94U6LGQnBzXFDk3Dpdu932f+KDGUVo3CBttG4J
-	9jYeFqJI8oSHFALLG3WdrPCzaOlFLO/OePqrzc6iBeHLdjeO4Y0Rvt/XrJm9R1Y4kbwXpmq/3EWOL
-	qF8FTOlyi2gQH3jXlKfg==;
+	List-Owner; bh=kl7QZsPCFBCq63r11LNMuNyf+YLewxFqnsX0Z6l6FHI=; b=eHKmJJYpmuYkGV
+	g+jok+vOPqcT5iFVxxWBTtjiKrtYLp+frPMU8QsOKQ7J/QOxyyZlBzR3lETrFJTcSi/AkFEeswcdc
+	j9msW0eoEBCmn2ppOnOnmsufv50m60nXLIkmC/ClB7xBEfKLN1SEARMYv9EGG24cn0vYWxC5FqtwX
+	Ire9SVZfU3kqET3JQMTSWWJOmn3vmOKGh26F9vLE5c2hH+eKp+JuBPEJ/gIqfqB8OW1iBgAPrPCcd
+	PUqn4olLRXZWpsdhU9xGTiIfzGEVVpc5CWCz+f3r5HIeTrffhV1VNLZNgsu1BC4PrxqrXe3Dcggor
+	hMkdak+YyZ3ot10g04Ww==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sLi8t-0000000Gf6s-1dFt;
-	Mon, 24 Jun 2024 11:45:51 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1sLiFG-0000000GgPl-3wPY;
+	Mon, 24 Jun 2024 11:52:26 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sLi8m-0000000Gf5c-3v9a;
-	Mon, 24 Jun 2024 11:45:46 +0000
+	id 1sLiFA-0000000GgOZ-1ref;
+	Mon, 24 Jun 2024 11:52:21 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 59DCA60BBC;
-	Mon, 24 Jun 2024 11:45:43 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id CB6F0C2BBFC;
-	Mon, 24 Jun 2024 11:45:36 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 2A7FB60B98;
+	Mon, 24 Jun 2024 11:52:19 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 90E67C2BBFC;
+	Mon, 24 Jun 2024 11:52:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1719229543;
-	bh=BsVFyM8P7Q9wi01V+K41RxfR0R5bZXohxwKnTM9eyMM=;
+	s=k20201202; t=1719229938;
+	bh=2OQksbAH8Q9SbTN0REsdjHjArfktyVjTfszbK5EBsSI=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=aOntQANw8KVLcFVfAi+Ahs7/LaOK1Tyj0Hy5VpurNllM5jo5tqMeElcSFLmPYw7E0
-	 ZVWDWVkjSqC0gejvdubgpb7XodwAUFhPSwQZiMEysPYpvOYKR2jIuBXyez/z1b5M+5
-	 QF6ex8qSQ1QcjOI52qnxzUTqOFXpFTTyEpSWF2d68XTI+PU5RX0FXZpL6PEiopYTF+
-	 rVh6GMIhSOL1SrCK980/y6xd/3KeZrZiiv7NL3M5Pt4KO/QwM+/EZc/e6fFOp94FCr
-	 VQPJ42WFaOgIBKi/Be5fk7p9ekxrc3AvOCQrh/V5be0Bn0ZDtbOhW/YkprYDRyeJaY
-	 fVMiDw954IPIA==
-Message-ID: <608b8673-a7d3-4a93-8719-841e451e7ddc@kernel.org>
-Date: Mon, 24 Jun 2024 13:45:34 +0200
+	b=UFoybF2QmzHzDpSA9CXWVyjHiOQ9YPR8OMBi+sPMMP0ssnLVTzoF5t0KVDy3TpASr
+	 4nSE78WUBjzVO5qCAy7ja3PWc0XnLvY15/40j4rMNhbOG5/L49v+tgSMA3CbYqHcmG
+	 Xjwl88GYkGyXJ0vSiawGY+MBFTBP3fRNIihw3efjAmWyVpB+oZqM0Q40IZsFHtaUOP
+	 f9mIyZV8SafgNTw8c9xjpRpImXFhXXXvR/ixsQ+DI9Abw7G29M99T39tCNKNckGoH/
+	 gzPRpKVTDM1fUZE1gfYaI5e2gRT2y6Oj0+NGnrHqps6ggYhAJv15XLydLelLjWH/a9
+	 jiHgveVgULiFg==
+Message-ID: <258459b8-549b-4a63-8d33-76c9631483f1@kernel.org>
+Date: Mon, 24 Jun 2024 13:52:10 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 4/5] dt-bindings: net: wireless: brcm4329-fmac: add
- clock description.
+Subject: Re: [PATCH v2 1/5] arm64: dts: rockchip: Add AP6275P wireless support
+ to Khadas Edge 2
 To: Jacobe Zang <jacobe.zang@wesion.com>, arend.vanspriel@broadcom.com
 Cc: kvalo@kernel.org, duoming@zju.edu.cn, bhelgaas@google.com,
  minipli@grsecurity.net, linux-wireless@vger.kernel.org,
@@ -57,7 +57,7 @@ Cc: kvalo@kernel.org, duoming@zju.edu.cn, bhelgaas@google.com,
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
  linux-kernel@vger.kernel.org
 References: <20240624081906.1399447-1-jacobe.zang@wesion.com>
- <20240624081906.1399447-5-jacobe.zang@wesion.com>
+ <20240624081906.1399447-2-jacobe.zang@wesion.com>
 From: Krzysztof Kozlowski <krzk@kernel.org>
 Content-Language: en-US
 Autocrypt: addr=krzk@kernel.org; keydata=
@@ -103,10 +103,10 @@ Autocrypt: addr=krzk@kernel.org; keydata=
  uZwJCLykjad45hsWcOGk3OcaAGQS6NDlfhM6O9aYNwGL6tGt/6BkRikNOs7VDEa4/HlbaSJo
  7FgndGw1kWmkeL6oQh7wBvYll2buKod4qYntmNKEicoHGU+x91Gcan8mCoqhJkbqrL7+nXG2
  5Q/GS5M9RFWS+nYyJh+c3OcfKqVcZQNANItt7+ULzdNJuhvTRRdC3g9hmCEuNSr+CLMdnRBY fv0=
-In-Reply-To: <20240624081906.1399447-5-jacobe.zang@wesion.com>
+In-Reply-To: <20240624081906.1399447-2-jacobe.zang@wesion.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240624_044545_113282_746E3C29 
-X-CRM114-Status: GOOD (  13.34  )
+X-CRM114-CacheID: sfid-20240624_045220_665417_29BBA7FB 
+X-CRM114-Status: GOOD (  13.12  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -124,49 +124,58 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 On 24/06/2024 10:19, Jacobe Zang wrote:
-> Add clocks and clock-names for brcm4329-fmac.
-
-Which devices have this clock? All? You now mention driver, but this is
-a binding so please describe hardware.
-
-Subject: drop full stops. In every patch.
-
+> Khadas Edge2 uses the PCI-e Ampak AP6275P 2T2R Wi-Fi 6 module.
 > 
+> Co-developed-by: Muhammed Efe Cetin <efectn@protonmail.com>
+> Signed-off-by: Muhammed Efe Cetin <efectn@protonmail.com>
 > Signed-off-by: Jacobe Zang <jacobe.zang@wesion.com>
 > ---
->  .../bindings/net/wireless/brcm,bcm4329-fmac.yaml         | 9 +++++++++
->  1 file changed, 9 insertions(+)
+>  .../boot/dts/rockchip/rk3588s-khadas-edge2.dts   | 16 ++++++++++++++++
+>  1 file changed, 16 insertions(+)
 > 
-> diff --git a/Documentation/devicetree/bindings/net/wireless/brcm,bcm4329-fmac.yaml b/Documentation/devicetree/bindings/net/wireless/brcm,bcm4329-fmac.yaml
-> index e564f20d8f415..b9e39a62c3b32 100644
-> --- a/Documentation/devicetree/bindings/net/wireless/brcm,bcm4329-fmac.yaml
-> +++ b/Documentation/devicetree/bindings/net/wireless/brcm,bcm4329-fmac.yaml
-> @@ -121,6 +121,15 @@ properties:
->        NVRAM. This would normally be filled in by the bootloader from platform
->        configuration data.
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-khadas-edge2.dts b/arch/arm64/boot/dts/rockchip/rk3588s-khadas-edge2.dts
+> index 3b6286461a746..f674deb6f7da8 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3588s-khadas-edge2.dts
+> +++ b/arch/arm64/boot/dts/rockchip/rk3588s-khadas-edge2.dts
+> @@ -356,6 +356,22 @@ &pcie2x1l2 {
+>  	reset-gpios = <&gpio3 RK_PD1 GPIO_ACTIVE_HIGH>;
+>  	vpcie3v3-supply = <&vcc3v3_pcie_wl>;
+>  	status = "okay";
+> +
+> +	pcie@0,0 {
+> +		reg = <0x400000 0 0 0 0>;
+> +		#address-cells = <3>;
+> +		#size-cells = <2>;
+> +		ranges;
+> +		device_type = "pci";
+> +		bus-range = <0x40 0x4f>;
+
+Isn't bus-range a property of PCI host bridge, so the parent? This is a
+PCI device, right?
+
+> +
+> +		wifi: wifi@0,0 {
+
+Binding does not say anything about this. Rockchip PCI controller is the
+PCI host bridge, isn't it? Then the pci@0,0 is the child, so what is this?
+
+> +			reg = <0x410000 0 0 0 0>;
+> +			clocks = <&hym8563>;
+> +			clock-names = "32k";
+
+1. Bindings are before the users.
+2. Where is the compatible? Are you sure this validates?
+
+
+> +		};
+> +	};
+> +
+
+No need for this blank line.
+
+>  };
 >  
-> +  clocks:
-> +    description: phandle to the clock connected on rtc clock line.
-
-Drop redundant parts, like "phandle to the".  Just use items with
-description instead of above and maxItems.
-
-> +    maxItems: 1
-> +
-> +  clock-names:
-> +    description: Names of the supplied clocks.
-
-Drop description, completely redundant.
-
-> +    items:
-> +      - const: 32k
-
-32k? That's the name of the clock? In the datasheet?
-
-> +
->  required:
->    - compatible
->    - reg
+>  &pwm11 {
 
 Best regards,
 Krzysztof
