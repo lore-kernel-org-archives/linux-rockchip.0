@@ -4,159 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9D4BEC30653
-	for <linux-rockchip@archiver.kernel.org>; Tue, 25 Jun 2024 08:05:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E010AC2BBCA
+	for <linux-rockchip@archiver.kernel.org>; Tue, 25 Jun 2024 08:25:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=5A7QAZ88+37/iBb4jST8A3flz2iQbqEahauHy4xtzG8=; b=fPK7ruM2RWEAW0
-	kuvFBKawBBJIGCddY+lxlnmFb3kRKc9qkZQ6atekJwZAOAot2xx1Zmqc+Qj5cGTUB7j2zikRtbPp5
-	L3fPoYDAixF+PM8ouMfrPukhwA8bVFbeS0N86p+GaUPOOIJHd/2fs4/AdB0hJTBQWtX4eAxosG7Te
-	3rRKwwKj3XFNiISAB4VhrQBSCrJhtccNUpWxDEvRxdgCYf7jtOhQyAVRQjYFyXBrjeMQZlUj7Rj6k
-	xxAu0WPci4cj2/GJCpRxZMjSQgxJuGF90djz29NeMoqXGN07pzc+QmJ/b25Fo7pS82iQMzqjXP6IA
-	QXiS8XO4512ijhKxqRvg==;
+	List-Owner; bh=WUdorP7QsQ86udgXKC2Yu6W60crtXknbJMNUKKnk7ig=; b=pc9R7SPKqPVz7i
+	pGfJyK0KwFQN5AxZoVLsZVk6I4fQAWqxvJF3+7qdIi72wWDeTmUHM+07qPmFMaGQ7yoLS3LAG3sXV
+	dqInXYY3BabV48TVrIaobbPDbvuuz7vCjLCuHoWvQJlSAVbMmDEAWq0+gV+DHY/jHj+yx/cyrZIwE
+	Aebs+ZuTRGlEwucFHRmvTwnkysfsTqHVsR6yZqNsQBVw85t34qxo8zjis+JoO8w3qk/vEyDYRLBkA
+	Un4hvi8By7Jw9Xj0KY7Y6V0I9y1dS6277ekUw0JNq2Re4iAeUECW4I9oqIepw47GzjD66HRhD3LWM
+	spAgI46mH/vtF+ejD3Dw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sM1Aq-000000023KZ-2sFJ;
-	Tue, 25 Jun 2024 08:05:08 +0000
-Received: from mail-sgaapc01on20706.outbound.protection.outlook.com ([2a01:111:f400:feab::706] helo=APC01-SG2-obe.outbound.protection.outlook.com)
+	id 1sM1UT-0000000268u-2ZJa;
+	Tue, 25 Jun 2024 08:25:25 +0000
+Received: from mail-m15592.qiye.163.com ([101.71.155.92])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sM1Ak-000000023Iu-2sRE;
-	Tue, 25 Jun 2024 08:05:04 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=oQSp2SEkCsIYs4LxnirynNRyukeu0+H4AnuTa8xdXlDscZ+EsSrhMLs9WU/lv2wxQ5n7oG+NTel1VezpmJKsXGGFOagda8iwQ2yqkalG4e7mU3S6ukhQoqbHcru39yE2hlHw9zZrv//wZ8VYhYqocRqMNCB8QqlyJDUpbYBIFew4Z/KmnKqL/i6kcf/bmremgYfUS78n2Qp1bV5O0b77qDwp2/i84ii6wyTVuu2EheiZa4Y7RgaHmrQkNiFOZbDUL+/Tntrhw3HWzUY6Ujpa41y8873KL+UR+ov4LJlxRs1bWrSdG4SiGi6FvXc7Dzt4CWXb5IwXZeK+oP48K7Zyug==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=9wbwainGNPXTd8qpx8tBhCor0IX1504EGhMzCqkYWME=;
- b=V13ZMEQkw0Ak2aTvP1slhyibh3TRupC+I+Izo4Nahg9ua49EJryjkPiICDBOaTRCG5fR2SDQ6olhO1mBb97T2ANOkeXbLa6A8tEJvNQnUxGkbIrvoPZWvkyI7/Yq+a01sXyc1VR4flfLH5vlBKfo/oXsWv2CVXeT3Hxy8Yv1XRnfTkCNp5Z9Jf4AbbDrjRbcl8+8rlbE54F08DzDmNuPCvR8BAMQN7fdmynBLgG3eOynMnCIgTQsB9WK02G4DWv6D42qXTTK4Wsw0m8WuPkpbGV75RXQ6bVVbUPNhUFgjgA1u7NpA2MygYpptzeBSAqhenAwycuS0h2PpKRU8BE08g==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=wesion.com; dmarc=pass action=none header.from=wesion.com;
- dkim=pass header.d=wesion.com; arc=none
-Received: from TYZPR03MB7001.apcprd03.prod.outlook.com (2603:1096:400:26a::14)
- by SEYPR03MB7480.apcprd03.prod.outlook.com (2603:1096:101:142::13) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7698.30; Tue, 25 Jun
- 2024 08:04:48 +0000
-Received: from TYZPR03MB7001.apcprd03.prod.outlook.com
- ([fe80::78dd:5e68:1a9c:36c0]) by TYZPR03MB7001.apcprd03.prod.outlook.com
- ([fe80::78dd:5e68:1a9c:36c0%6]) with mapi id 15.20.7698.025; Tue, 25 Jun 2024
- 08:04:47 +0000
-From: Jacobe Zang <jacobe.zang@wesion.com>
-To: Krzysztof Kozlowski <krzk@kernel.org>, "arend.vanspriel@broadcom.com"
-	<arend.vanspriel@broadcom.com>
-CC: "kvalo@kernel.org" <kvalo@kernel.org>, "duoming@zju.edu.cn"
-	<duoming@zju.edu.cn>, "bhelgaas@google.com" <bhelgaas@google.com>,
-	"minipli@grsecurity.net" <minipli@grsecurity.net>,
-	"linux-wireless@vger.kernel.org" <linux-wireless@vger.kernel.org>,
-	"brcm80211@lists.linux.dev" <brcm80211@lists.linux.dev>,
-	"brcm80211-dev-list.pdl@broadcom.com" <brcm80211-dev-list.pdl@broadcom.com>,
-	"megi@xff.cz" <megi@xff.cz>, "robh@kernel.org" <robh@kernel.org>,
-	"efectn@protonmail.com" <efectn@protonmail.com>, "krzk+dt@kernel.org"
-	<krzk+dt@kernel.org>, "conor+dt@kernel.org" <conor+dt@kernel.org>,
-	"heiko@sntech.de" <heiko@sntech.de>, Nick Xie <nick@khadas.com>,
-	"jagan@edgeble.ai" <jagan@edgeble.ai>, "dsimic@manjaro.org"
-	<dsimic@manjaro.org>, "devicetree@vger.kernel.org"
-	<devicetree@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org"
-	<linux-arm-kernel@lists.infradead.org>, "linux-rockchip@lists.infradead.org"
-	<linux-rockchip@lists.infradead.org>, "linux-kernel@vger.kernel.org"
-	<linux-kernel@vger.kernel.org>
-Subject: Re: [PATCH v2 1/5] arm64: dts: rockchip: Add AP6275P wireless support
- to Khadas Edge 2
-Thread-Topic: [PATCH v2 1/5] arm64: dts: rockchip: Add AP6275P wireless
- support to Khadas Edge 2
-Thread-Index: AQHaxg/hc6qZ2pXlVU2sUa/trZv6q7HWzcQAgAFPx8w=
-Date: Tue, 25 Jun 2024 08:04:47 +0000
-Message-ID: <TYZPR03MB7001D4DE507C919802B2F7F380D52@TYZPR03MB7001.apcprd03.prod.outlook.com>
-References: <20240624081906.1399447-1-jacobe.zang@wesion.com>
- <20240624081906.1399447-2-jacobe.zang@wesion.com>
- <258459b8-549b-4a63-8d33-76c9631483f1@kernel.org>
-In-Reply-To: <258459b8-549b-4a63-8d33-76c9631483f1@kernel.org>
-Accept-Language: en-US, zh-CN
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-msip_labels: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=wesion.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: TYZPR03MB7001:EE_|SEYPR03MB7480:EE_
-x-ms-office365-filtering-correlation-id: be169834-4924-4652-f1e1-08dc94ed7b76
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;ARA:13230037|366013|376011|7416011|1800799021|38070700015;
-x-microsoft-antispam-message-info: =?iso-8859-1?Q?RLj/LFIROvYZHN5H9lAZ1a0pif+p2Z+ujvjrIiguntrK4MPtQ9337UFmco?=
- =?iso-8859-1?Q?c12BiJc5Xrd/zbAK6UgSU0Qj5S8E79w+sFmwqIUeyZe6fEFmgWLXGqf6Ow?=
- =?iso-8859-1?Q?TgQtjKmzap/Oewwl+huV7Xet/03Vi1J6W4kpW+49MWmFmlzmrmnUmtKcSc?=
- =?iso-8859-1?Q?duDf9PyHzrs/wqzQpU6BsGEfjmE/zSvdrxrEtNFoZlBTi7kNKm6SXLnBCM?=
- =?iso-8859-1?Q?7vKau75CUysQHOSrMAwIJfDoCgBxCvAHge9aufwoURBt+jdF0eXpCih1jW?=
- =?iso-8859-1?Q?nvEVbbbf74LIrshNck2LtXAos9Z+CFMn9+Y9UhyGIaxsWtQq1NbRshwLnF?=
- =?iso-8859-1?Q?k2FhMfZuZNr+2NqSP1Q3qaVr8/oIm+r1Norl+fzY81tbysF3GyhkgGkD9b?=
- =?iso-8859-1?Q?gmgH3Igh/8QTI01YzM+usGijTR9xK6zCY/nSfsaSRCgRvl3MofJEEdGwpf?=
- =?iso-8859-1?Q?UVfr34lBfjy1LjQsaHkF5PY/2IzcrOUOMSfxf4LoFWpbPkTYRRe9nzRpsU?=
- =?iso-8859-1?Q?ghGTGrXf0s5Yvp70FWxXLZJ0AbQCKcffyB4D+NprpzFO1LsC0vAMGf3AO5?=
- =?iso-8859-1?Q?eSTuqI6w1t0gTMzkcABqH5Fw/GfIMecDbvg1fQm9r2E6YzIICFJNXPpNCC?=
- =?iso-8859-1?Q?WJVbGdGbO+3XFKEY/WvbNN640gXom/S5OEP0D7nj4cG5OYxs5VyUWoZ5rl?=
- =?iso-8859-1?Q?8rCa/OWkbTgf0IH3f6swHBrv3i/DnrDZbCf2QmLoEBKVI1mZa4eeK/iHhr?=
- =?iso-8859-1?Q?8JrQ8DOGJhzstZhPVxnlgyOvrF7lqJTGWx39k/LlvgqWj1RB0L1Tq6Gt8I?=
- =?iso-8859-1?Q?zgzMkVDUeC8J4JLPoG8fvww8EOzUg7TeFDD8/1LqUHemXSbQSla/nx9XWU?=
- =?iso-8859-1?Q?VByorQNDOKMrzCDaus93OJsX2DCFqLyEu6tv3elwLoo/TCjRAT2M1OBgMo?=
- =?iso-8859-1?Q?OlUQfU24Tx5IS5Cryp343mM/RNEOmTNuXJr43T4pdEkvMou0vB7SWx81fp?=
- =?iso-8859-1?Q?czQ9iPaNpZr54bWx9uVrTvZk5ylwbwe8gl8kkrljBUd84iBp2DvWIFth9f?=
- =?iso-8859-1?Q?rEX0baoNP75rQXBvLJgRFWU5vvDKdyz4vFyU8q7iLCSaCFae5NdEJw4FKv?=
- =?iso-8859-1?Q?7Ef3pc62kwoYThwmEC2wqSVuSaH3JjlTd2VNiUpLm6PPE3ZauCZ9GRhScn?=
- =?iso-8859-1?Q?O40wZxscbvaQf+LekvRiTHwfIeWeeb3pVJ6nxQaupW2u/F4TFWEmmqoAno?=
- =?iso-8859-1?Q?Qvs03PDu7cTzIsWLw+pyQm3xPfvVrLgKFXpiVIZBhcLz+yCNTxRrXV2Q6e?=
- =?iso-8859-1?Q?sn0YVyiduePlCgpGD6k7wl0LBgaHgUpF2q9lgGrq5wp9DRsAMipfcDAecM?=
- =?iso-8859-1?Q?ruk67esvWNW/BntTTQtYCbhf6B614yKf6j4hHtXfTrIohe9qyPWuE=3D?=
-x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:TYZPR03MB7001.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230037)(366013)(376011)(7416011)(1800799021)(38070700015);DIR:OUT;SFP:1102;
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?iso-8859-1?Q?Gh5czEkRlkkP/Fgk5cOyW3LXBmafQEApPvn3w6JBN2lXEp9Z22+hyanML2?=
- =?iso-8859-1?Q?nuuEro7jMUL/Bo+G7E5K5AZQPwHQ/TJgkQgJYujL41uwsEzFspO7TMckB7?=
- =?iso-8859-1?Q?rQbIdfQKIcrf1K929/rNuDVDAzZecEjm1phIvy4z5ZMbskIjqzBQNtNcKL?=
- =?iso-8859-1?Q?OpTTrl4Exhy6o8zT9ssME/EH89jC45GHcuQ/50Mn9I66Kj+qVZoiiT5pKl?=
- =?iso-8859-1?Q?UM59LUNh+C0rhBycPgEk3/aGDy2pscgFrKNXrcOMWBWxl/JzA0PevpbEmy?=
- =?iso-8859-1?Q?tPXkiZOlvI7/OHqKiU/RyrkLcw055Ly+/19rcVztrfhb9C9h/ZD4UDX/F0?=
- =?iso-8859-1?Q?O/geegZEoanylmxdtLN6LJxzZmJgCMRNzkNTKS1Ba27WOxyTiXnUM8dfEb?=
- =?iso-8859-1?Q?wLct5kBzF0ZX20wbyM/50Sn/NmKoTZJZ0OG35ythJq8QiO26XFLcPproIV?=
- =?iso-8859-1?Q?6KHQOtRfFnnAgFH4ZTtYIA9wlNuMnO0w0UEEOAYwa+F4dwpUNLZphBylWZ?=
- =?iso-8859-1?Q?IEzqckH3C49zCC2hG3HNvntyYyprPM6KqD34JTNIeLfiIQ96vofE9TZNeY?=
- =?iso-8859-1?Q?jig+6hlHLMt7OMzpnBhbtVUhM/6XuemLeWQT0LMcDsJtULpbtzKtRTzLsj?=
- =?iso-8859-1?Q?lN+GNWxnn+XwP/XrIOzV4/Ut5bkZ5QXIywYDIee/euYUA5a0dEbLx73OjY?=
- =?iso-8859-1?Q?vpIBsxI3x8cbEWIDiBcz96uyq/PxcZDziy5vmvoGPN/odTXMOGNsvhSeBn?=
- =?iso-8859-1?Q?Z+apbGcSWHcXH8XEfzzZiZF03aJ6qjJ/ixxWjM9bGdyC9nBusTvA1d4q1y?=
- =?iso-8859-1?Q?D4gMitEipyqtPmMvs/uIfaERslah8dcbuvhQ0PKdlKcyRRtlBK8HNaXHSv?=
- =?iso-8859-1?Q?PAZfwB3AwJJYYggtW6dZ6XAUkJly/aT3PWP6Im0maklEo3qAmVItD2fdaJ?=
- =?iso-8859-1?Q?oPgOrY8aSv9MxqVz3dklwCG6ZngqtjmO13qHMZHfBvJS8PwyQEqr14cEOX?=
- =?iso-8859-1?Q?XIm8dnfUCSvDJPMrVJ1c9+aAH2s7qYmTQhjVe/RUqylQY3IiVT+unI1bIW?=
- =?iso-8859-1?Q?bZ+1t4xch5VdOgzWMOCO8kVPGoyHG78N6vMIyaMPVhkdJJDktM1Vjw/ZMq?=
- =?iso-8859-1?Q?VeNJ8ufic/vuTJByPnvQPUhS+gAiU2wacO6ZycPqBSOxpcg1e3H2udhn7I?=
- =?iso-8859-1?Q?91cyRxvHRU2xq5tLw9bpz0Da1iYxhXHJEW2i+POBE2yvKs9HCewY3J5vGE?=
- =?iso-8859-1?Q?5VsUgKVWT8I29vrdrsaadSMD5TmeFytv7BgbuNsLcLQgnBXK97XU6FfKMr?=
- =?iso-8859-1?Q?zZlM9kb4kPUhzXolSewlxySAA17ASU+ulf7TkLM495qfTdwItILdCXoJSr?=
- =?iso-8859-1?Q?FJ/IeqJJgAjnubk3uH/H/w2f6JNE+K9bjb6w68y0dV8Om4XG2rD9r3DC4P?=
- =?iso-8859-1?Q?lRh+4whl388OWdSZ+ED+Clw57UsC+9SpumWIOf+jftKMcn/7ToQIfIEBbq?=
- =?iso-8859-1?Q?PnI8efIeqO2vY04+70XJvqWzS8RYyQG97+xOnjcBrD1na26qrCJKQhC09V?=
- =?iso-8859-1?Q?g30t9d0Ft6PBPqXMnn081af5sC8K+WqTW0t0O3HkDoaJhpy85WxBHXCbb1?=
- =?iso-8859-1?Q?ECe4Gv17XVWLlviSzjl3jOBdjALqJTDi9X?=
+	id 1sM1UP-0000000265O-13JQ
+	for linux-rockchip@lists.infradead.org;
+	Tue, 25 Jun 2024 08:25:24 +0000
+DKIM-Signature: a=rsa-sha256;
+	b=Kmy5xschk5yXJVLgeFwcvg103S7XPqqmok5x2LJYSD/g93F7vQCPiE/4RqPXn2HP/8VoPM2WGXdwt6Z7G6aA9NPuneR/Tfjtpb7Cntb32bEQIuB3c/BwQtArgvBVLvTdfywbeca33Zi1ZQr8bciOXPwzVC7w9SRNwb6wLxVVM0Y=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
+	bh=hG6Od9aiQ2pdvPcJ6FovDbwSaQp0tXwskc0osRppuoo=;
+	h=date:mime-version:subject:message-id:from;
+Received: from [172.16.12.141] (unknown [58.22.7.114])
+	by smtp.qiye.163.com (Hmail) with ESMTPA id 67B1D841025;
+	Tue, 25 Jun 2024 16:24:42 +0800 (CST)
+Message-ID: <d6b8b45b-b30b-4357-8d24-b23be32148f9@rock-chips.com>
+Date: Tue, 25 Jun 2024 16:24:31 +0800
 MIME-Version: 1.0
-X-OriginatorOrg: wesion.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: TYZPR03MB7001.apcprd03.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: be169834-4924-4652-f1e1-08dc94ed7b76
-X-MS-Exchange-CrossTenant-originalarrivaltime: 25 Jun 2024 08:04:47.8865
- (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 2dc3bd76-7ac2-4780-a5b7-6c6cc6b5af9b
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: aLzcv40eSWkx4a91zcHShIJkbozJjIC2cXPbeCQQ257BCFWXVFpXKJDank52aRf7uNMRz1nWYfZ3MULx/e1FNA==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SEYPR03MB7480
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v5 14/16] drm/rockchip: vop2: Add debugfs support
+To: Andy Yan <andyshrk@163.com>, heiko@sntech.de
+Cc: hjc@rock-chips.com, dri-devel@lists.freedesktop.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+ krzysztof.kozlowski+dt@linaro.org, robh+dt@kernel.org,
+ devicetree@vger.kernel.org, sebastian.reichel@collabora.com,
+ kever.yang@rock-chips.com, chris.obbard@collabora.com,
+ Sascha Hauer <s.hauer@pengutronix.de>
+References: <20231211115547.1784587-1-andyshrk@163.com>
+ <20231211115943.1785556-1-andyshrk@163.com>
+Content-Language: en-US
+From: Andy Yan <andy.yan@rock-chips.com>
+In-Reply-To: <20231211115943.1785556-1-andyshrk@163.com>
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGhpNQ1YYThkeHU5OTkgaShlWFRQJFh
+	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSUhCSE
+	NVSktLVUpCS0tZBg++
+X-HM-Tid: 0a904e7f497a03a4kunm67b1d841025
+X-HM-MType: 1
+X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6MyI6Chw4KzNOLzdLNhEJLjUz
+	ATwaCS9VSlVKTEpCSEtIQ0NIQ0NKVTMWGhIXVRoVHwJVAhoVOwkUGBBWGBMSCwhVGBQWRVlXWRIL
+	WUFZTkNVSUlVTFVKSk9ZV1kIAVlBSUpJS0k3Bg++
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240625_010502_960552_382625F7 
-X-CRM114-Status: GOOD (  10.80  )
+X-CRM114-CacheID: sfid-20240625_012522_115320_A8FC0290 
+X-CRM114-Status: GOOD (  28.03  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -168,71 +74,610 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
->> diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-khadas-edge2.dts b/arc=
-h/arm64/boot/dts/rockchip/rk3588s-khadas-edge2.dts
->> index 3b6286461a746..f674deb6f7da8 100644
->> --- a/arch/arm64/boot/dts/rockchip/rk3588s-khadas-edge2.dts
->> +++ b/arch/arm64/boot/dts/rockchip/rk3588s-khadas-edge2.dts
->> @@ -356,6 +356,22 @@ &pcie2x1l2 {
->>=A0=A0=A0=A0=A0=A0=A0 reset-gpios =3D <&gpio3 RK_PD1 GPIO_ACTIVE_HIGH>;
->>=A0=A0=A0=A0=A0=A0=A0 vpcie3v3-supply =3D <&vcc3v3_pcie_wl>;
->>=A0=A0=A0=A0=A0=A0=A0 status =3D "okay";
->> +
->> +=A0=A0=A0=A0 pcie@0,0 {
->> +=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 reg =3D <0x400000 0 0 0 0>;
->> +=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 #address-cells =3D <3>;
->> +=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 #size-cells =3D <2>;
->> +=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 ranges;
->> +=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 device_type =3D "pci";
->> +=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 bus-range =3D <0x40 0x4f>;
->
->Isn't bus-range a property of PCI host bridge, so the parent? This is a
->PCI device, right?
->
->> +
->> +=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 wifi: wifi@0,0 {
->
->Binding does not say anything about this. Rockchip PCI controller is the
->PCI host bridge, isn't it? Then the pci@0,0 is the child, so what is this?
+Hi Heiko,
+Gentle ping for this.
+Please let me know if something nees to improve to get this patch to be merged.
 
-The host bridge is the parent of pcie@0,0. And pcie@0,0 is Bridge1, so the
-wifi@0,0 as a device under the Bridge1.
+On 12/11/23 19:59, Andy Yan wrote:
+> From: Andy Yan <andy.yan@rock-chips.com>
+> 
+> /sys/kernel/debug/dri/vop2/summary:  dump vop display state
+> /sys/kernel/debug/dri/vop2/regs: dump whole vop registers
+> /sys/kernel/debug/dri/vop2/active_regs: only dump the registers of
+> activated modules
+> 
+> Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
+> Reviewed-by: Sascha Hauer <s.hauer@pengutronix.de>
+> 
+> ---
+> 
+> (no changes since v4)
+> 
+> Changes in v4:
+> - check NULL pointer at right place
+> - fix the index of fb->obj
+> - drop explicitly cast of void pointer
+> - make the register dump code as a common function.
+> 
+> Changes in v3:
+> - put regs dump info in vop2_data
+> 
+>   drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 256 +++++++++++++++++++
+>   drivers/gpu/drm/rockchip/rockchip_drm_vop2.h |  11 +
+>   drivers/gpu/drm/rockchip/rockchip_vop2_reg.c | 191 ++++++++++++++
+>   3 files changed, 458 insertions(+)
+> 
+> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+> index 2b996f1a25ad..1cd86b3bde7e 100644
+> --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+> @@ -27,6 +27,7 @@
+>   #include <drm/drm_debugfs.h>
+>   #include <drm/drm_flip_work.h>
+>   #include <drm/drm_framebuffer.h>
+> +#include <drm/drm_gem_framebuffer_helper.h>
+>   #include <drm/drm_probe_helper.h>
+>   #include <drm/drm_vblank.h>
+>   
+> @@ -187,6 +188,7 @@ struct vop2 {
+>   	 */
+>   	u32 registered_num_wins;
+>   
+> +	struct resource *res;
+>   	void __iomem *regs;
+>   	struct regmap *map;
+>   
+> @@ -238,6 +240,37 @@ struct vop2 {
+>   
+>   #define vop2_output_if_is_dpi(x)	((x) == ROCKCHIP_VOP2_EP_RGB0)
+>   
+> +
+> +/*
+> + * bus-format types.
+> + */
+> +struct drm_bus_format_enum_list {
+> +	int type;
+> +	const char *name;
+> +};
+> +
+> +static const struct drm_bus_format_enum_list drm_bus_format_enum_list[] = {
+> +	{ DRM_MODE_CONNECTOR_Unknown, "Unknown" },
+> +	{ MEDIA_BUS_FMT_RGB565_1X16, "RGB565_1X16" },
+> +	{ MEDIA_BUS_FMT_RGB666_1X18, "RGB666_1X18" },
+> +	{ MEDIA_BUS_FMT_RGB666_1X24_CPADHI, "RGB666_1X24_CPADHI" },
+> +	{ MEDIA_BUS_FMT_RGB666_1X7X3_SPWG, "RGB666_1X7X3_SPWG" },
+> +	{ MEDIA_BUS_FMT_YUV8_1X24, "YUV8_1X24" },
+> +	{ MEDIA_BUS_FMT_UYYVYY8_0_5X24, "UYYVYY8_0_5X24" },
+> +	{ MEDIA_BUS_FMT_YUV10_1X30, "YUV10_1X30" },
+> +	{ MEDIA_BUS_FMT_UYYVYY10_0_5X30, "UYYVYY10_0_5X30" },
+> +	{ MEDIA_BUS_FMT_RGB888_3X8, "RGB888_3X8" },
+> +	{ MEDIA_BUS_FMT_RGB888_1X24, "RGB888_1X24" },
+> +	{ MEDIA_BUS_FMT_RGB888_1X7X4_SPWG, "RGB888_1X7X4_SPWG" },
+> +	{ MEDIA_BUS_FMT_RGB888_1X7X4_JEIDA, "RGB888_1X7X4_JEIDA" },
+> +	{ MEDIA_BUS_FMT_UYVY8_2X8, "UYVY8_2X8" },
+> +	{ MEDIA_BUS_FMT_YUYV8_1X16, "YUYV8_1X16" },
+> +	{ MEDIA_BUS_FMT_UYVY8_1X16, "UYVY8_1X16" },
+> +	{ MEDIA_BUS_FMT_RGB101010_1X30, "RGB101010_1X30" },
+> +	{ MEDIA_BUS_FMT_YUYV10_1X20, "YUYV10_1X20" },
+> +};
+> +static DRM_ENUM_NAME_FN(drm_get_bus_format_name, drm_bus_format_enum_list)
+> +
+>   static const struct regmap_config vop2_regmap_config;
+>   
+>   static struct vop2_video_port *to_vop2_video_port(struct drm_crtc *crtc)
+> @@ -2516,6 +2549,227 @@ static const struct drm_crtc_helper_funcs vop2_crtc_helper_funcs = {
+>   	.atomic_disable = vop2_crtc_atomic_disable,
+>   };
+>   
+> +static void vop2_dump_connector_on_crtc(struct drm_crtc *crtc, struct seq_file *s)
+> +{
+> +	struct drm_connector_list_iter conn_iter;
+> +	struct drm_connector *connector;
+> +
+> +	drm_connector_list_iter_begin(crtc->dev, &conn_iter);
+> +	drm_for_each_connector_iter(connector, &conn_iter) {
+> +		if (crtc->state->connector_mask & drm_connector_mask(connector))
+> +			seq_printf(s, "    Connector: %s\n", connector->name);
+> +
+> +	}
+> +	drm_connector_list_iter_end(&conn_iter);
+> +}
+> +
+> +static int vop2_plane_state_dump(struct seq_file *s, struct drm_plane *plane)
+> +{
+> +	struct vop2_win *win = to_vop2_win(plane);
+> +	struct drm_plane_state *pstate = plane->state;
+> +	struct drm_rect *src, *dst;
+> +	struct drm_framebuffer *fb;
+> +	struct drm_gem_object *obj;
+> +	struct rockchip_gem_object *rk_obj;
+> +	bool xmirror;
+> +	bool ymirror;
+> +	bool rotate_270;
+> +	bool rotate_90;
+> +	dma_addr_t fb_addr;
+> +	int i;
+> +
+> +	seq_printf(s, "    %s: %s\n", win->data->name, !pstate ?
+> +		   "DISABLED" : pstate->crtc ? "ACTIVE" : "DISABLED");
+> +
+> +	if (!pstate || !pstate->fb)
+> +		return 0;
+> +
+> +	fb = pstate->fb;
+> +	src = &pstate->src;
+> +	dst = &pstate->dst;
+> +	xmirror = pstate->rotation & DRM_MODE_REFLECT_X ? true : false;
+> +	ymirror = pstate->rotation & DRM_MODE_REFLECT_Y ? true : false;
+> +	rotate_270 = pstate->rotation & DRM_MODE_ROTATE_270;
+> +	rotate_90 = pstate->rotation & DRM_MODE_ROTATE_90;
+> +
+> +	seq_printf(s, "\twin_id: %d\n", win->win_id);
+> +
+> +	seq_printf(s, "\tformat: %p4cc%s glb_alpha[0x%x]\n",
+> +		   &fb->format->format,
+> +		   drm_is_afbc(fb->modifier) ? "[AFBC]" : "",
+> +		   pstate->alpha >> 8);
+> +	seq_printf(s, "\trotate: xmirror: %d ymirror: %d rotate_90: %d rotate_270: %d\n",
+> +		   xmirror, ymirror, rotate_90, rotate_270);
+> +	seq_printf(s, "\tzpos: %d\n", pstate->normalized_zpos);
+> +	seq_printf(s, "\tsrc: pos[%d, %d] rect[%d x %d]\n", src->x1 >> 16,
+> +		   src->y1 >> 16, drm_rect_width(src) >> 16,
+> +		   drm_rect_height(src) >> 16);
+> +	seq_printf(s, "\tdst: pos[%d, %d] rect[%d x %d]\n", dst->x1, dst->y1,
+> +		   drm_rect_width(dst), drm_rect_height(dst));
+> +
+> +	for (i = 0; i < fb->format->num_planes; i++) {
+> +		obj = fb->obj[i];
+> +		rk_obj = to_rockchip_obj(obj);
+> +		fb_addr = rk_obj->dma_addr + fb->offsets[i];
+> +
+> +		seq_printf(s, "\tbuf[%d]: addr: %pad pitch: %d offset: %d\n",
+> +			   i, &fb_addr, fb->pitches[i], fb->offsets[i]);
+> +	}
+> +
+> +	return 0;
+> +}
+> +
+> +static int vop2_crtc_state_dump(struct drm_crtc *crtc, struct seq_file *s)
+> +{
+> +	struct vop2_video_port *vp = to_vop2_video_port(crtc);
+> +	struct drm_crtc_state *cstate = crtc->state;
+> +	struct rockchip_crtc_state *vcstate;
+> +	struct drm_display_mode *mode;
+> +	struct drm_plane *plane;
+> +	bool interlaced;
+> +
+> +	seq_printf(s, "Video Port%d: %s\n", vp->id, !cstate ?
+> +		   "DISABLED" : cstate->active ? "ACTIVE" : "DISABLED");
+> +
+> +	if (!cstate || !cstate->active)
+> +		return 0;
+> +
+> +	mode = &crtc->state->adjusted_mode;
+> +	vcstate = to_rockchip_crtc_state(cstate);
+> +	interlaced = !!(mode->flags & DRM_MODE_FLAG_INTERLACE);
+> +
+> +	vop2_dump_connector_on_crtc(crtc, s);
+> +	seq_printf(s, "\tbus_format[%x]: %s\n", vcstate->bus_format,
+> +		    drm_get_bus_format_name(vcstate->bus_format));
+> +	seq_printf(s, "\toutput_mode[%x]", vcstate->output_mode);
+> +	seq_printf(s, " color_space[%d]\n", vcstate->color_space);
+> +	seq_printf(s, "    Display mode: %dx%d%s%d\n",
+> +		    mode->hdisplay, mode->vdisplay, interlaced ? "i" : "p",
+> +		    drm_mode_vrefresh(mode));
+> +	seq_printf(s, "\tclk[%d] real_clk[%d] type[%x] flag[%x]\n",
+> +		    mode->clock, mode->crtc_clock, mode->type, mode->flags);
+> +	seq_printf(s, "\tH: %d %d %d %d\n", mode->hdisplay, mode->hsync_start,
+> +		    mode->hsync_end, mode->htotal);
+> +	seq_printf(s, "\tV: %d %d %d %d\n", mode->vdisplay, mode->vsync_start,
+> +		    mode->vsync_end, mode->vtotal);
+> +
+> +	drm_atomic_crtc_for_each_plane(plane, crtc) {
+> +		vop2_plane_state_dump(s, plane);
+> +	}
+> +
+> +	return 0;
+> +}
+> +
+> +static int vop2_summary_show(struct seq_file *s, void *data)
+> +{
+> +	struct drm_info_node *node = s->private;
+> +	struct drm_minor *minor = node->minor;
+> +	struct drm_device *drm_dev = minor->dev;
+> +	struct drm_crtc *crtc;
+> +
+> +	drm_modeset_lock_all(drm_dev);
+> +	drm_for_each_crtc(crtc, drm_dev) {
+> +		vop2_crtc_state_dump(crtc, s);
+> +	}
+> +	drm_modeset_unlock_all(drm_dev);
+> +
+> +	return 0;
+> +}
+> +
+> +static void vop2_regs_print(struct vop2 *vop2, struct seq_file *s,
+> +			    const struct vop2_regs_dump *dump, bool active_only)
+> +{
+> +	resource_size_t start;
+> +	u32 val;
+> +	int i;
+> +
+> +	if (dump->en_mask && active_only) {
+> +		val = vop2_readl(vop2, dump->base + dump->en_reg);
+> +		if ((val & dump->en_mask) != dump->en_val)
+> +			return;
+> +	}
+> +
+> +	seq_printf(s, "\n%s:\n", dump->name);
+> +
+> +	start = vop2->res->start + dump->base;
+> +	for (i = 0; i < dump->size >> 2; i += 4) {
+> +		seq_printf(s, "%08x:  %08x %08x %08x %08x\n", (u32)start + i * 4,
+> +			   vop2_readl(vop2, dump->base + (4 * i)),
+> +			   vop2_readl(vop2, dump->base + (4 * (i + 1))),
+> +			   vop2_readl(vop2, dump->base + (4 * (i + 2))),
+> +			   vop2_readl(vop2, dump->base + (4 * (i + 3))));
+> +	}
+> +}
+> +
+> +static void __vop2_regs_dump(struct seq_file *s, bool active_only)
+> +{
+> +	struct drm_info_node *node = s->private;
+> +	struct vop2 *vop2 = node->info_ent->data;
+> +	struct drm_minor *minor = node->minor;
+> +	struct drm_device *drm_dev = minor->dev;
+> +	const struct vop2_regs_dump *dump;
+> +	unsigned int i;
+> +
+> +	drm_modeset_lock_all(drm_dev);
+> +	if (vop2->enable_count) {
+> +		for (i = 0; i < vop2->data->regs_dump_size; i++) {
+> +			dump = &vop2->data->regs_dump[i];
+> +			vop2_regs_print(vop2, s, dump, active_only);
+> +		}
+> +	} else {
+> +		seq_printf(s, "VOP disabled\n");
+> +	}
+> +	drm_modeset_unlock_all(drm_dev);
+> +
+> +}
+> +
+> +static int vop2_regs_show(struct seq_file *s, void *arg)
+> +{
+> +	__vop2_regs_dump(s, false);
+> +
+> +	return 0;
+> +}
+> +
+> +static int vop2_active_regs_show(struct seq_file *s, void *data)
+> +{
+> +	__vop2_regs_dump(s, true);
+> +
+> +	return 0;
+> +}
+> +
+> +static struct drm_info_list vop2_debugfs_list[] = {
+> +	{ "summary", vop2_summary_show, 0, NULL },
+> +	{ "active_regs", vop2_active_regs_show,   0, NULL },
+> +	{ "regs", vop2_regs_show,   0, NULL },
+> +};
+> +
+> +static void vop2_debugfs_init(struct vop2 *vop2, struct drm_minor *minor)
+> +{
+> +	struct dentry *root;
+> +	unsigned int i;
+> +
+> +	root = debugfs_create_dir("vop2", minor->debugfs_root);
+> +	if (!IS_ERR(root)) {
+> +		for (i = 0; i < ARRAY_SIZE(vop2_debugfs_list); i++)
+> +			vop2_debugfs_list[i].data = vop2;
+> +
+> +		drm_debugfs_create_files(vop2_debugfs_list,
+> +					 ARRAY_SIZE(vop2_debugfs_list),
+> +					 root, minor);
+> +	}
+> +}
+> +
+> +static int vop2_crtc_late_register(struct drm_crtc *crtc)
+> +{
+> +	struct vop2_video_port *vp = to_vop2_video_port(crtc);
+> +	struct vop2 *vop2 = vp->vop2;
+> +
+> +	if (drm_crtc_index(crtc) == 0)
+> +		vop2_debugfs_init(vop2, crtc->dev->primary);
+> +
+> +	return 0;
+> +}
+> +
+>   static struct drm_crtc_state *vop2_crtc_duplicate_state(struct drm_crtc *crtc)
+>   {
+>   	struct rockchip_crtc_state *vcstate;
+> @@ -2565,6 +2819,7 @@ static const struct drm_crtc_funcs vop2_crtc_funcs = {
+>   	.atomic_destroy_state = vop2_crtc_destroy_state,
+>   	.enable_vblank = vop2_crtc_enable_vblank,
+>   	.disable_vblank = vop2_crtc_disable_vblank,
+> +	.late_register = vop2_crtc_late_register,
+>   };
+>   
+>   static irqreturn_t vop2_isr(int irq, void *data)
+> @@ -3109,6 +3364,7 @@ static int vop2_bind(struct device *dev, struct device *master, void *data)
+>   		return -EINVAL;
+>   	}
+>   
+> +	vop2->res = res;
+>   	vop2->regs = devm_ioremap_resource(dev, res);
+>   	if (IS_ERR(vop2->regs))
+>   		return PTR_ERR(vop2->regs);
+> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h
+> index 615a16196aff..59cd6b933bfb 100644
+> --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h
+> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h
+> @@ -122,6 +122,15 @@ enum vop2_win_regs {
+>   	VOP2_WIN_MAX_REG,
+>   };
+>   
+> +struct vop2_regs_dump {
+> +	const char *name;
+> +	u32 base;
+> +	u32 size;
+> +	u32 en_reg;
+> +	u32 en_val;
+> +	u32 en_mask;
+> +};
+> +
+>   struct vop2_win_data {
+>   	const char *name;
+>   	unsigned int phys_id;
+> @@ -160,10 +169,12 @@ struct vop2_data {
+>   	u64 feature;
+>   	const struct vop2_win_data *win;
+>   	const struct vop2_video_port_data *vp;
+> +	const struct vop2_regs_dump *regs_dump;
+>   	struct vop_rect max_input;
+>   	struct vop_rect max_output;
+>   
+>   	unsigned int win_size;
+> +	unsigned int regs_dump_size;
+>   	unsigned int soc_id;
+>   };
+>   
+> diff --git a/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c b/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
+> index 48170694ac6b..6fc119034a0e 100644
+> --- a/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
+> +++ b/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
+> @@ -260,6 +260,88 @@ static const struct vop2_win_data rk3568_vop_win_data[] = {
+>   	},
+>   };
+>   
+> +static const struct vop2_regs_dump rk3568_regs_dump[] = {
+> +	{
+> +		.name = "SYS",
+> +		.base = RK3568_REG_CFG_DONE,
+> +		.size = 0x100,
+> +		.en_reg  = 0,
+> +		.en_val = 0,
+> +		.en_mask = 0
+> +	}, {
+> +		.name = "OVL",
+> +		.base = RK3568_OVL_CTRL,
+> +		.size = 0x100,
+> +		.en_reg = 0,
+> +		.en_val = 0,
+> +		.en_mask = 0,
+> +	}, {
+> +		.name = "VP0",
+> +		.base = RK3568_VP0_CTRL_BASE,
+> +		.size = 0x100,
+> +		.en_reg = RK3568_VP_DSP_CTRL,
+> +		.en_val = 0,
+> +		.en_mask = RK3568_VP_DSP_CTRL__STANDBY,
+> +	}, {
+> +		.name = "VP1",
+> +		.base = RK3568_VP1_CTRL_BASE,
+> +		.size = 0x100,
+> +		.en_reg = RK3568_VP_DSP_CTRL,
+> +		.en_val = 0,
+> +		.en_mask = RK3568_VP_DSP_CTRL__STANDBY,
+> +	}, {
+> +		.name = "VP2",
+> +		.base = RK3568_VP2_CTRL_BASE,
+> +		.size = 0x100,
+> +		.en_reg = RK3568_VP_DSP_CTRL,
+> +		.en_val = 0,
+> +		.en_mask = RK3568_VP_DSP_CTRL__STANDBY,
+> +
+> +	}, {
+> +		.name = "Cluster0",
+> +		.base = RK3568_CLUSTER0_CTRL_BASE,
+> +		.size = 0x110,
+> +		.en_reg = RK3568_CLUSTER_WIN_CTRL0,
+> +		.en_val = RK3568_CLUSTER_WIN_CTRL0__WIN0_EN,
+> +		.en_mask = RK3568_CLUSTER_WIN_CTRL0__WIN0_EN,
+> +	}, {
+> +		.name = "Cluster1",
+> +		.base = RK3568_CLUSTER1_CTRL_BASE,
+> +		.size = 0x110,
+> +		.en_reg = RK3568_CLUSTER_WIN_CTRL0,
+> +		.en_val = RK3568_CLUSTER_WIN_CTRL0__WIN0_EN,
+> +		.en_mask = RK3568_CLUSTER_WIN_CTRL0__WIN0_EN,
+> +	}, {
+> +		.name = "Esmart0",
+> +		.base = RK3568_ESMART0_CTRL_BASE,
+> +		.size = 0xf0,
+> +		.en_reg = RK3568_SMART_REGION0_CTRL,
+> +		.en_val = RK3568_SMART_REGION0_CTRL__WIN0_EN,
+> +		.en_mask = RK3568_SMART_REGION0_CTRL__WIN0_EN,
+> +	}, {
+> +		.name = "Esmart1",
+> +		.base = RK3568_ESMART1_CTRL_BASE,
+> +		.size = 0xf0,
+> +		.en_reg = RK3568_SMART_REGION0_CTRL,
+> +		.en_val = RK3568_SMART_REGION0_CTRL__WIN0_EN,
+> +		.en_mask = RK3568_SMART_REGION0_CTRL__WIN0_EN,
+> +	}, {
+> +		.name = "Smart0",
+> +		.base = RK3568_SMART0_CTRL_BASE,
+> +		.size = 0xf0,
+> +		.en_reg = RK3568_SMART_REGION0_CTRL,
+> +		.en_val = RK3568_SMART_REGION0_CTRL__WIN0_EN,
+> +		.en_mask = RK3568_SMART_REGION0_CTRL__WIN0_EN,
+> +	}, {
+> +		.name = "Smart1",
+> +		.base = RK3568_SMART1_CTRL_BASE,
+> +		.size = 0xf0,
+> +		.en_reg = RK3568_SMART_REGION0_CTRL,
+> +		.en_val = RK3568_SMART_REGION0_CTRL__WIN0_EN,
+> +		.en_mask = RK3568_SMART_REGION0_CTRL__WIN0_EN,
+> +	},
+> +};
+> +
+>   static const struct vop2_video_port_data rk3588_vop_video_ports[] = {
+>   	{
+>   		.id = 0,
+> @@ -440,6 +522,109 @@ static const struct vop2_win_data rk3588_vop_win_data[] = {
+>   	},
+>   };
+>   
+> +static const struct vop2_regs_dump rk3588_regs_dump[] = {
+> +	{
+> +		.name = "SYS",
+> +		.base = RK3568_REG_CFG_DONE,
+> +		.size = 0x100,
+> +		.en_reg  = 0,
+> +		.en_val = 0,
+> +		.en_mask = 0
+> +	}, {
+> +		.name = "OVL",
+> +		.base = RK3568_OVL_CTRL,
+> +		.size = 0x100,
+> +		.en_reg = 0,
+> +		.en_val = 0,
+> +		.en_mask = 0,
+> +	}, {
+> +		.name = "VP0",
+> +		.base = RK3568_VP0_CTRL_BASE,
+> +		.size = 0x100,
+> +		.en_reg = RK3568_VP_DSP_CTRL,
+> +		.en_val = 0,
+> +		.en_mask = RK3568_VP_DSP_CTRL__STANDBY,
+> +	}, {
+> +		.name = "VP1",
+> +		.base = RK3568_VP1_CTRL_BASE,
+> +		.size = 0x100,
+> +		.en_reg = RK3568_VP_DSP_CTRL,
+> +		.en_val = 0,
+> +		.en_mask = RK3568_VP_DSP_CTRL__STANDBY,
+> +	}, {
+> +		.name = "VP2",
+> +		.base = RK3568_VP2_CTRL_BASE,
+> +		.size = 0x100,
+> +		.en_reg = RK3568_VP_DSP_CTRL,
+> +		.en_val = 0,
+> +		.en_mask = RK3568_VP_DSP_CTRL__STANDBY,
+> +
+> +	}, {
+> +		.name = "VP3",
+> +		.base = RK3588_VP3_CTRL_BASE,
+> +		.size = 0x100,
+> +		.en_reg = RK3568_VP_DSP_CTRL,
+> +		.en_val = 0,
+> +		.en_mask = RK3568_VP_DSP_CTRL__STANDBY,
+> +	}, {
+> +		.name = "Cluster0",
+> +		.base = RK3568_CLUSTER0_CTRL_BASE,
+> +		.size = 0x110,
+> +		.en_reg = RK3568_CLUSTER_WIN_CTRL0,
+> +		.en_val = RK3568_CLUSTER_WIN_CTRL0__WIN0_EN,
+> +		.en_mask = RK3568_CLUSTER_WIN_CTRL0__WIN0_EN,
+> +	}, {
+> +		.name = "Cluster1",
+> +		.base = RK3568_CLUSTER1_CTRL_BASE,
+> +		.size = 0x110,
+> +		.en_reg = RK3568_CLUSTER_WIN_CTRL0,
+> +		.en_val = RK3568_CLUSTER_WIN_CTRL0__WIN0_EN,
+> +		.en_mask = RK3568_CLUSTER_WIN_CTRL0__WIN0_EN,
+> +	}, {
+> +		.name = "Cluster2",
+> +		.base = RK3588_CLUSTER2_CTRL_BASE,
+> +		.size = 0x110,
+> +		.en_reg = RK3568_CLUSTER_WIN_CTRL0,
+> +		.en_val = RK3568_CLUSTER_WIN_CTRL0__WIN0_EN,
+> +		.en_mask = RK3568_CLUSTER_WIN_CTRL0__WIN0_EN,
+> +	}, {
+> +		.name = "Cluster3",
+> +		.base = RK3588_CLUSTER3_CTRL_BASE,
+> +		.size = 0x110,
+> +		.en_reg = RK3568_CLUSTER_WIN_CTRL0,
+> +		.en_val = RK3568_CLUSTER_WIN_CTRL0__WIN0_EN,
+> +		.en_mask = RK3568_CLUSTER_WIN_CTRL0__WIN0_EN,
+> +	}, {
+> +		.name = "Esmart0",
+> +		.base = RK3568_ESMART0_CTRL_BASE,
+> +		.size = 0xf0,
+> +		.en_reg = RK3568_SMART_REGION0_CTRL,
+> +		.en_val = RK3568_SMART_REGION0_CTRL__WIN0_EN,
+> +		.en_mask = RK3568_SMART_REGION0_CTRL__WIN0_EN,
+> +	}, {
+> +		.name = "Esmart1",
+> +		.base = RK3568_ESMART1_CTRL_BASE,
+> +		.size = 0xf0,
+> +		.en_reg = RK3568_SMART_REGION0_CTRL,
+> +		.en_val = RK3568_SMART_REGION0_CTRL__WIN0_EN,
+> +		.en_mask = RK3568_SMART_REGION0_CTRL__WIN0_EN,
+> +	}, {
+> +		.name = "Esmart2",
+> +		.base = RK3588_ESMART2_CTRL_BASE,
+> +		.size = 0xf0,
+> +		.en_reg = RK3568_SMART_REGION0_CTRL,
+> +		.en_val = RK3568_SMART_REGION0_CTRL__WIN0_EN,
+> +		.en_mask = RK3568_SMART_REGION0_CTRL__WIN0_EN,
+> +	}, {
+> +		.name = "Esmart3",
+> +		.base = RK3588_ESMART3_CTRL_BASE,
+> +		.size = 0xf0,
+> +		.en_reg = RK3568_SMART_REGION0_CTRL,
+> +		.en_val = RK3568_SMART_REGION0_CTRL__WIN0_EN,
+> +		.en_mask = RK3568_SMART_REGION0_CTRL__WIN0_EN,
+> +	},
+> +};
+> +
+>   static const struct vop2_data rk3566_vop = {
+>   	.feature = VOP2_FEATURE_HAS_SYS_GRF,
+>   	.nr_vps = 3,
+> @@ -448,6 +633,8 @@ static const struct vop2_data rk3566_vop = {
+>   	.vp = rk3568_vop_video_ports,
+>   	.win = rk3568_vop_win_data,
+>   	.win_size = ARRAY_SIZE(rk3568_vop_win_data),
+> +	.regs_dump = rk3568_regs_dump,
+> +	.regs_dump_size = ARRAY_SIZE(rk3568_regs_dump),
+>   	.soc_id = 3566,
+>   };
+>   
+> @@ -459,6 +646,8 @@ static const struct vop2_data rk3568_vop = {
+>   	.vp = rk3568_vop_video_ports,
+>   	.win = rk3568_vop_win_data,
+>   	.win_size = ARRAY_SIZE(rk3568_vop_win_data),
+> +	.regs_dump = rk3568_regs_dump,
+> +	.regs_dump_size = ARRAY_SIZE(rk3568_regs_dump),
+>   	.soc_id = 3568,
+>   };
+>   
+> @@ -471,6 +660,8 @@ static const struct vop2_data rk3588_vop = {
+>   	.vp = rk3588_vop_video_ports,
+>   	.win = rk3588_vop_win_data,
+>   	.win_size = ARRAY_SIZE(rk3588_vop_win_data),
+> +	.regs_dump = rk3588_regs_dump,
+> +	.regs_dump_size = ARRAY_SIZE(rk3588_regs_dump),
+>   	.soc_id = 3588,
+>   };
+>   
 
->
->> +=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 reg =3D <0=
-x410000 0 0 0 0>;
->> +=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 clocks =3D=
- <&hym8563>;
->> +=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 clock-name=
-s =3D "32k";
->
->1. Bindings are before the users.
->2. Where is the compatible? Are you sure this validates?
-
-Before, the compatible is "pci14e4,449d", but when I checkpatch the warning
-said that "pci14e4" was not documented, so I remove the compatible which =
-
-doesn't affect the Wi-Fi function. I have tried to add "pci14e4" to =
-
-vendor-prefixes.yaml but was refused. So whether should I add the compatibl=
-e =
-
-with warning? =
-
-
-References: =
-
-https://lore.kernel.org/all/20220629155956.1138955-15-nfraprado@collabora.c=
-om/
-
----
-Best Regards
-Jacobe
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
