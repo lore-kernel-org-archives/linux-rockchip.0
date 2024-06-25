@@ -4,65 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E010AC2BBCA
-	for <linux-rockchip@archiver.kernel.org>; Tue, 25 Jun 2024 08:25:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 613C3C2BBCA
+	for <linux-rockchip@archiver.kernel.org>; Tue, 25 Jun 2024 08:26:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=WUdorP7QsQ86udgXKC2Yu6W60crtXknbJMNUKKnk7ig=; b=pc9R7SPKqPVz7i
-	pGfJyK0KwFQN5AxZoVLsZVk6I4fQAWqxvJF3+7qdIi72wWDeTmUHM+07qPmFMaGQ7yoLS3LAG3sXV
-	dqInXYY3BabV48TVrIaobbPDbvuuz7vCjLCuHoWvQJlSAVbMmDEAWq0+gV+DHY/jHj+yx/cyrZIwE
-	Aebs+ZuTRGlEwucFHRmvTwnkysfsTqHVsR6yZqNsQBVw85t34qxo8zjis+JoO8w3qk/vEyDYRLBkA
-	Un4hvi8By7Jw9Xj0KY7Y6V0I9y1dS6277ekUw0JNq2Re4iAeUECW4I9oqIepw47GzjD66HRhD3LWM
-	spAgI46mH/vtF+ejD3Dw==;
+	List-Owner; bh=n+fGPaeTuTQ7rmBhplkIGoZlz5EUSEqo8weAgktyVo0=; b=XgWn//KBy3Wi3b
+	2s1GunFnxTLFFL/YPdO6A5gnLzal62wkwism85OtVpjx6V4O1Pm942R03y00CdsX00IlMX+tvP8lg
+	H3EGzaydJsjXujFOkvUpuiydXVE5DJZo1NHAbKKuPb4iJTyUraXEcQMg2yEIrJe1AD1rA9eojApCm
+	WCN4xBOgT80YbRjAgfNS27IGpRh6go2Dj6sUF+7OyvXnTAE4vX6EQnpH3o0XpsEBttWDssXfQUXK/
+	wKB/TC+qeoCOjS+Z7Tor2YRdKaWYfIxOuVIp6bODgIwYCYYgRqgtLiM93fB+6EPGUUbP93807wnNI
+	4P8nhuQQndNfc7vKdaiQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sM1UT-0000000268u-2ZJa;
-	Tue, 25 Jun 2024 08:25:25 +0000
-Received: from mail-m15592.qiye.163.com ([101.71.155.92])
+	id 1sM1V4-000000026LD-1ihM;
+	Tue, 25 Jun 2024 08:26:02 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sM1UP-0000000265O-13JQ
-	for linux-rockchip@lists.infradead.org;
-	Tue, 25 Jun 2024 08:25:24 +0000
-DKIM-Signature: a=rsa-sha256;
-	b=Kmy5xschk5yXJVLgeFwcvg103S7XPqqmok5x2LJYSD/g93F7vQCPiE/4RqPXn2HP/8VoPM2WGXdwt6Z7G6aA9NPuneR/Tfjtpb7Cntb32bEQIuB3c/BwQtArgvBVLvTdfywbeca33Zi1ZQr8bciOXPwzVC7w9SRNwb6wLxVVM0Y=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
-	bh=hG6Od9aiQ2pdvPcJ6FovDbwSaQp0tXwskc0osRppuoo=;
-	h=date:mime-version:subject:message-id:from;
-Received: from [172.16.12.141] (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTPA id 67B1D841025;
-	Tue, 25 Jun 2024 16:24:42 +0800 (CST)
-Message-ID: <d6b8b45b-b30b-4357-8d24-b23be32148f9@rock-chips.com>
-Date: Tue, 25 Jun 2024 16:24:31 +0800
+	id 1sM1Uy-000000026Jg-1uom;
+	Tue, 25 Jun 2024 08:25:57 +0000
+Received: from i53875b6a.versanet.de ([83.135.91.106] helo=diego.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1sM1Ug-0003AJ-5E; Tue, 25 Jun 2024 10:25:38 +0200
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+To: Krzysztof Kozlowski <krzk@kernel.org>,
+ "robh@kernel.org" <robh@kernel.org>,
+ "krzk+dt@kernel.org" <krzk+dt@kernel.org>,
+ "conor+dt@kernel.org" <conor+dt@kernel.org>,
+ Jacobe Zang <jacobe.zang@wesion.com>
+Cc: Nick Xie <nick@khadas.com>,
+ "efectn@protonmail.com" <efectn@protonmail.com>,
+ "jagan@edgeble.ai" <jagan@edgeble.ai>,
+ "dsimic@manjaro.org" <dsimic@manjaro.org>,
+ "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+ "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>,
+ "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+Subject: Re: [PATCH v4 1/2] arm64: dts: rockchip: Add USB-C to Khadas Edge 2
+Date: Tue, 25 Jun 2024 10:25:37 +0200
+Message-ID: <2403789.9XhxPE3A7Q@diego>
+In-Reply-To: <TYZPR03MB700141F5448D61A000D588AB80D52@TYZPR03MB7001.apcprd03.prod.outlook.com>
+References: <20240624083236.1401673-1-jacobe.zang@wesion.com>
+ <6d8f80a0-d67a-416e-b395-7a33b539682e@kernel.org>
+ <TYZPR03MB700141F5448D61A000D588AB80D52@TYZPR03MB7001.apcprd03.prod.outlook.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 14/16] drm/rockchip: vop2: Add debugfs support
-To: Andy Yan <andyshrk@163.com>, heiko@sntech.de
-Cc: hjc@rock-chips.com, dri-devel@lists.freedesktop.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
- krzysztof.kozlowski+dt@linaro.org, robh+dt@kernel.org,
- devicetree@vger.kernel.org, sebastian.reichel@collabora.com,
- kever.yang@rock-chips.com, chris.obbard@collabora.com,
- Sascha Hauer <s.hauer@pengutronix.de>
-References: <20231211115547.1784587-1-andyshrk@163.com>
- <20231211115943.1785556-1-andyshrk@163.com>
-Content-Language: en-US
-From: Andy Yan <andy.yan@rock-chips.com>
-In-Reply-To: <20231211115943.1785556-1-andyshrk@163.com>
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGhpNQ1YYThkeHU5OTkgaShlWFRQJFh
-	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSUhCSE
-	NVSktLVUpCS0tZBg++
-X-HM-Tid: 0a904e7f497a03a4kunm67b1d841025
-X-HM-MType: 1
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6MyI6Chw4KzNOLzdLNhEJLjUz
-	ATwaCS9VSlVKTEpCSEtIQ0NIQ0NKVTMWGhIXVRoVHwJVAhoVOwkUGBBWGBMSCwhVGBQWRVlXWRIL
-	WUFZTkNVSUlVTFVKSk9ZV1kIAVlBSUpJS0k3Bg++
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240625_012522_115320_A8FC0290 
-X-CRM114-Status: GOOD (  28.03  )
+X-CRM114-CacheID: sfid-20240625_012556_524998_73BD0350 
+X-CRM114-Status: GOOD (  12.07  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,609 +68,38 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Heiko,
-Gentle ping for this.
-Please let me know if something nees to improve to get this patch to be merged.
+Am Dienstag, 25. Juni 2024, 09:53:45 CEST schrieb Jacobe Zang:
+> > Was it disabled anywhere?
+> 
+> This patch aims to enable the DRD function of Type-C port. So need to enable in DTS.
 
-On 12/11/23 19:59, Andy Yan wrote:
-> From: Andy Yan <andy.yan@rock-chips.com>
-> 
-> /sys/kernel/debug/dri/vop2/summary:  dump vop display state
-> /sys/kernel/debug/dri/vop2/regs: dump whole vop registers
-> /sys/kernel/debug/dri/vop2/active_regs: only dump the registers of
-> activated modules
-> 
-> Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
-> Reviewed-by: Sascha Hauer <s.hauer@pengutronix.de>
-> 
-> ---
-> 
-> (no changes since v4)
-> 
-> Changes in v4:
-> - check NULL pointer at right place
-> - fix the index of fb->obj
-> - drop explicitly cast of void pointer
-> - make the register dump code as a common function.
-> 
-> Changes in v3:
-> - put regs dump info in vop2_data
-> 
->   drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 256 +++++++++++++++++++
->   drivers/gpu/drm/rockchip/rockchip_drm_vop2.h |  11 +
->   drivers/gpu/drm/rockchip/rockchip_vop2_reg.c | 191 ++++++++++++++
->   3 files changed, 458 insertions(+)
-> 
-> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-> index 2b996f1a25ad..1cd86b3bde7e 100644
-> --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-> @@ -27,6 +27,7 @@
->   #include <drm/drm_debugfs.h>
->   #include <drm/drm_flip_work.h>
->   #include <drm/drm_framebuffer.h>
-> +#include <drm/drm_gem_framebuffer_helper.h>
->   #include <drm/drm_probe_helper.h>
->   #include <drm/drm_vblank.h>
->   
-> @@ -187,6 +188,7 @@ struct vop2 {
->   	 */
->   	u32 registered_num_wins;
->   
-> +	struct resource *res;
->   	void __iomem *regs;
->   	struct regmap *map;
->   
-> @@ -238,6 +240,37 @@ struct vop2 {
->   
->   #define vop2_output_if_is_dpi(x)	((x) == ROCKCHIP_VOP2_EP_RGB0)
->   
-> +
-> +/*
-> + * bus-format types.
-> + */
-> +struct drm_bus_format_enum_list {
-> +	int type;
-> +	const char *name;
-> +};
-> +
-> +static const struct drm_bus_format_enum_list drm_bus_format_enum_list[] = {
-> +	{ DRM_MODE_CONNECTOR_Unknown, "Unknown" },
-> +	{ MEDIA_BUS_FMT_RGB565_1X16, "RGB565_1X16" },
-> +	{ MEDIA_BUS_FMT_RGB666_1X18, "RGB666_1X18" },
-> +	{ MEDIA_BUS_FMT_RGB666_1X24_CPADHI, "RGB666_1X24_CPADHI" },
-> +	{ MEDIA_BUS_FMT_RGB666_1X7X3_SPWG, "RGB666_1X7X3_SPWG" },
-> +	{ MEDIA_BUS_FMT_YUV8_1X24, "YUV8_1X24" },
-> +	{ MEDIA_BUS_FMT_UYYVYY8_0_5X24, "UYYVYY8_0_5X24" },
-> +	{ MEDIA_BUS_FMT_YUV10_1X30, "YUV10_1X30" },
-> +	{ MEDIA_BUS_FMT_UYYVYY10_0_5X30, "UYYVYY10_0_5X30" },
-> +	{ MEDIA_BUS_FMT_RGB888_3X8, "RGB888_3X8" },
-> +	{ MEDIA_BUS_FMT_RGB888_1X24, "RGB888_1X24" },
-> +	{ MEDIA_BUS_FMT_RGB888_1X7X4_SPWG, "RGB888_1X7X4_SPWG" },
-> +	{ MEDIA_BUS_FMT_RGB888_1X7X4_JEIDA, "RGB888_1X7X4_JEIDA" },
-> +	{ MEDIA_BUS_FMT_UYVY8_2X8, "UYVY8_2X8" },
-> +	{ MEDIA_BUS_FMT_YUYV8_1X16, "YUYV8_1X16" },
-> +	{ MEDIA_BUS_FMT_UYVY8_1X16, "UYVY8_1X16" },
-> +	{ MEDIA_BUS_FMT_RGB101010_1X30, "RGB101010_1X30" },
-> +	{ MEDIA_BUS_FMT_YUYV10_1X20, "YUYV10_1X20" },
-> +};
-> +static DRM_ENUM_NAME_FN(drm_get_bus_format_name, drm_bus_format_enum_list)
-> +
->   static const struct regmap_config vop2_regmap_config;
->   
->   static struct vop2_video_port *to_vop2_video_port(struct drm_crtc *crtc)
-> @@ -2516,6 +2549,227 @@ static const struct drm_crtc_helper_funcs vop2_crtc_helper_funcs = {
->   	.atomic_disable = vop2_crtc_atomic_disable,
->   };
->   
-> +static void vop2_dump_connector_on_crtc(struct drm_crtc *crtc, struct seq_file *s)
-> +{
-> +	struct drm_connector_list_iter conn_iter;
-> +	struct drm_connector *connector;
-> +
-> +	drm_connector_list_iter_begin(crtc->dev, &conn_iter);
-> +	drm_for_each_connector_iter(connector, &conn_iter) {
-> +		if (crtc->state->connector_mask & drm_connector_mask(connector))
-> +			seq_printf(s, "    Connector: %s\n", connector->name);
-> +
-> +	}
-> +	drm_connector_list_iter_end(&conn_iter);
-> +}
-> +
-> +static int vop2_plane_state_dump(struct seq_file *s, struct drm_plane *plane)
-> +{
-> +	struct vop2_win *win = to_vop2_win(plane);
-> +	struct drm_plane_state *pstate = plane->state;
-> +	struct drm_rect *src, *dst;
-> +	struct drm_framebuffer *fb;
-> +	struct drm_gem_object *obj;
-> +	struct rockchip_gem_object *rk_obj;
-> +	bool xmirror;
-> +	bool ymirror;
-> +	bool rotate_270;
-> +	bool rotate_90;
-> +	dma_addr_t fb_addr;
-> +	int i;
-> +
-> +	seq_printf(s, "    %s: %s\n", win->data->name, !pstate ?
-> +		   "DISABLED" : pstate->crtc ? "ACTIVE" : "DISABLED");
-> +
-> +	if (!pstate || !pstate->fb)
-> +		return 0;
-> +
-> +	fb = pstate->fb;
-> +	src = &pstate->src;
-> +	dst = &pstate->dst;
-> +	xmirror = pstate->rotation & DRM_MODE_REFLECT_X ? true : false;
-> +	ymirror = pstate->rotation & DRM_MODE_REFLECT_Y ? true : false;
-> +	rotate_270 = pstate->rotation & DRM_MODE_ROTATE_270;
-> +	rotate_90 = pstate->rotation & DRM_MODE_ROTATE_90;
-> +
-> +	seq_printf(s, "\twin_id: %d\n", win->win_id);
-> +
-> +	seq_printf(s, "\tformat: %p4cc%s glb_alpha[0x%x]\n",
-> +		   &fb->format->format,
-> +		   drm_is_afbc(fb->modifier) ? "[AFBC]" : "",
-> +		   pstate->alpha >> 8);
-> +	seq_printf(s, "\trotate: xmirror: %d ymirror: %d rotate_90: %d rotate_270: %d\n",
-> +		   xmirror, ymirror, rotate_90, rotate_270);
-> +	seq_printf(s, "\tzpos: %d\n", pstate->normalized_zpos);
-> +	seq_printf(s, "\tsrc: pos[%d, %d] rect[%d x %d]\n", src->x1 >> 16,
-> +		   src->y1 >> 16, drm_rect_width(src) >> 16,
-> +		   drm_rect_height(src) >> 16);
-> +	seq_printf(s, "\tdst: pos[%d, %d] rect[%d x %d]\n", dst->x1, dst->y1,
-> +		   drm_rect_width(dst), drm_rect_height(dst));
-> +
-> +	for (i = 0; i < fb->format->num_planes; i++) {
-> +		obj = fb->obj[i];
-> +		rk_obj = to_rockchip_obj(obj);
-> +		fb_addr = rk_obj->dma_addr + fb->offsets[i];
-> +
-> +		seq_printf(s, "\tbuf[%d]: addr: %pad pitch: %d offset: %d\n",
-> +			   i, &fb_addr, fb->pitches[i], fb->offsets[i]);
-> +	}
-> +
-> +	return 0;
-> +}
-> +
-> +static int vop2_crtc_state_dump(struct drm_crtc *crtc, struct seq_file *s)
-> +{
-> +	struct vop2_video_port *vp = to_vop2_video_port(crtc);
-> +	struct drm_crtc_state *cstate = crtc->state;
-> +	struct rockchip_crtc_state *vcstate;
-> +	struct drm_display_mode *mode;
-> +	struct drm_plane *plane;
-> +	bool interlaced;
-> +
-> +	seq_printf(s, "Video Port%d: %s\n", vp->id, !cstate ?
-> +		   "DISABLED" : cstate->active ? "ACTIVE" : "DISABLED");
-> +
-> +	if (!cstate || !cstate->active)
-> +		return 0;
-> +
-> +	mode = &crtc->state->adjusted_mode;
-> +	vcstate = to_rockchip_crtc_state(cstate);
-> +	interlaced = !!(mode->flags & DRM_MODE_FLAG_INTERLACE);
-> +
-> +	vop2_dump_connector_on_crtc(crtc, s);
-> +	seq_printf(s, "\tbus_format[%x]: %s\n", vcstate->bus_format,
-> +		    drm_get_bus_format_name(vcstate->bus_format));
-> +	seq_printf(s, "\toutput_mode[%x]", vcstate->output_mode);
-> +	seq_printf(s, " color_space[%d]\n", vcstate->color_space);
-> +	seq_printf(s, "    Display mode: %dx%d%s%d\n",
-> +		    mode->hdisplay, mode->vdisplay, interlaced ? "i" : "p",
-> +		    drm_mode_vrefresh(mode));
-> +	seq_printf(s, "\tclk[%d] real_clk[%d] type[%x] flag[%x]\n",
-> +		    mode->clock, mode->crtc_clock, mode->type, mode->flags);
-> +	seq_printf(s, "\tH: %d %d %d %d\n", mode->hdisplay, mode->hsync_start,
-> +		    mode->hsync_end, mode->htotal);
-> +	seq_printf(s, "\tV: %d %d %d %d\n", mode->vdisplay, mode->vsync_start,
-> +		    mode->vsync_end, mode->vtotal);
-> +
-> +	drm_atomic_crtc_for_each_plane(plane, crtc) {
-> +		vop2_plane_state_dump(s, plane);
-> +	}
-> +
-> +	return 0;
-> +}
-> +
-> +static int vop2_summary_show(struct seq_file *s, void *data)
-> +{
-> +	struct drm_info_node *node = s->private;
-> +	struct drm_minor *minor = node->minor;
-> +	struct drm_device *drm_dev = minor->dev;
-> +	struct drm_crtc *crtc;
-> +
-> +	drm_modeset_lock_all(drm_dev);
-> +	drm_for_each_crtc(crtc, drm_dev) {
-> +		vop2_crtc_state_dump(crtc, s);
-> +	}
-> +	drm_modeset_unlock_all(drm_dev);
-> +
-> +	return 0;
-> +}
-> +
-> +static void vop2_regs_print(struct vop2 *vop2, struct seq_file *s,
-> +			    const struct vop2_regs_dump *dump, bool active_only)
-> +{
-> +	resource_size_t start;
-> +	u32 val;
-> +	int i;
-> +
-> +	if (dump->en_mask && active_only) {
-> +		val = vop2_readl(vop2, dump->base + dump->en_reg);
-> +		if ((val & dump->en_mask) != dump->en_val)
-> +			return;
-> +	}
-> +
-> +	seq_printf(s, "\n%s:\n", dump->name);
-> +
-> +	start = vop2->res->start + dump->base;
-> +	for (i = 0; i < dump->size >> 2; i += 4) {
-> +		seq_printf(s, "%08x:  %08x %08x %08x %08x\n", (u32)start + i * 4,
-> +			   vop2_readl(vop2, dump->base + (4 * i)),
-> +			   vop2_readl(vop2, dump->base + (4 * (i + 1))),
-> +			   vop2_readl(vop2, dump->base + (4 * (i + 2))),
-> +			   vop2_readl(vop2, dump->base + (4 * (i + 3))));
-> +	}
-> +}
-> +
-> +static void __vop2_regs_dump(struct seq_file *s, bool active_only)
-> +{
-> +	struct drm_info_node *node = s->private;
-> +	struct vop2 *vop2 = node->info_ent->data;
-> +	struct drm_minor *minor = node->minor;
-> +	struct drm_device *drm_dev = minor->dev;
-> +	const struct vop2_regs_dump *dump;
-> +	unsigned int i;
-> +
-> +	drm_modeset_lock_all(drm_dev);
-> +	if (vop2->enable_count) {
-> +		for (i = 0; i < vop2->data->regs_dump_size; i++) {
-> +			dump = &vop2->data->regs_dump[i];
-> +			vop2_regs_print(vop2, s, dump, active_only);
-> +		}
-> +	} else {
-> +		seq_printf(s, "VOP disabled\n");
-> +	}
-> +	drm_modeset_unlock_all(drm_dev);
-> +
-> +}
-> +
-> +static int vop2_regs_show(struct seq_file *s, void *arg)
-> +{
-> +	__vop2_regs_dump(s, false);
-> +
-> +	return 0;
-> +}
-> +
-> +static int vop2_active_regs_show(struct seq_file *s, void *data)
-> +{
-> +	__vop2_regs_dump(s, true);
-> +
-> +	return 0;
-> +}
-> +
-> +static struct drm_info_list vop2_debugfs_list[] = {
-> +	{ "summary", vop2_summary_show, 0, NULL },
-> +	{ "active_regs", vop2_active_regs_show,   0, NULL },
-> +	{ "regs", vop2_regs_show,   0, NULL },
-> +};
-> +
-> +static void vop2_debugfs_init(struct vop2 *vop2, struct drm_minor *minor)
-> +{
-> +	struct dentry *root;
-> +	unsigned int i;
-> +
-> +	root = debugfs_create_dir("vop2", minor->debugfs_root);
-> +	if (!IS_ERR(root)) {
-> +		for (i = 0; i < ARRAY_SIZE(vop2_debugfs_list); i++)
-> +			vop2_debugfs_list[i].data = vop2;
-> +
-> +		drm_debugfs_create_files(vop2_debugfs_list,
-> +					 ARRAY_SIZE(vop2_debugfs_list),
-> +					 root, minor);
-> +	}
-> +}
-> +
-> +static int vop2_crtc_late_register(struct drm_crtc *crtc)
-> +{
-> +	struct vop2_video_port *vp = to_vop2_video_port(crtc);
-> +	struct vop2 *vop2 = vp->vop2;
-> +
-> +	if (drm_crtc_index(crtc) == 0)
-> +		vop2_debugfs_init(vop2, crtc->dev->primary);
-> +
-> +	return 0;
-> +}
-> +
->   static struct drm_crtc_state *vop2_crtc_duplicate_state(struct drm_crtc *crtc)
->   {
->   	struct rockchip_crtc_state *vcstate;
-> @@ -2565,6 +2819,7 @@ static const struct drm_crtc_funcs vop2_crtc_funcs = {
->   	.atomic_destroy_state = vop2_crtc_destroy_state,
->   	.enable_vblank = vop2_crtc_enable_vblank,
->   	.disable_vblank = vop2_crtc_disable_vblank,
-> +	.late_register = vop2_crtc_late_register,
->   };
->   
->   static irqreturn_t vop2_isr(int irq, void *data)
-> @@ -3109,6 +3364,7 @@ static int vop2_bind(struct device *dev, struct device *master, void *data)
->   		return -EINVAL;
->   	}
->   
-> +	vop2->res = res;
->   	vop2->regs = devm_ioremap_resource(dev, res);
->   	if (IS_ERR(vop2->regs))
->   		return PTR_ERR(vop2->regs);
-> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h
-> index 615a16196aff..59cd6b933bfb 100644
-> --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h
-> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h
-> @@ -122,6 +122,15 @@ enum vop2_win_regs {
->   	VOP2_WIN_MAX_REG,
->   };
->   
-> +struct vop2_regs_dump {
-> +	const char *name;
-> +	u32 base;
-> +	u32 size;
-> +	u32 en_reg;
-> +	u32 en_val;
-> +	u32 en_mask;
-> +};
-> +
->   struct vop2_win_data {
->   	const char *name;
->   	unsigned int phys_id;
-> @@ -160,10 +169,12 @@ struct vop2_data {
->   	u64 feature;
->   	const struct vop2_win_data *win;
->   	const struct vop2_video_port_data *vp;
-> +	const struct vop2_regs_dump *regs_dump;
->   	struct vop_rect max_input;
->   	struct vop_rect max_output;
->   
->   	unsigned int win_size;
-> +	unsigned int regs_dump_size;
->   	unsigned int soc_id;
->   };
->   
-> diff --git a/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c b/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
-> index 48170694ac6b..6fc119034a0e 100644
-> --- a/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
-> +++ b/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
-> @@ -260,6 +260,88 @@ static const struct vop2_win_data rk3568_vop_win_data[] = {
->   	},
->   };
->   
-> +static const struct vop2_regs_dump rk3568_regs_dump[] = {
-> +	{
-> +		.name = "SYS",
-> +		.base = RK3568_REG_CFG_DONE,
-> +		.size = 0x100,
-> +		.en_reg  = 0,
-> +		.en_val = 0,
-> +		.en_mask = 0
-> +	}, {
-> +		.name = "OVL",
-> +		.base = RK3568_OVL_CTRL,
-> +		.size = 0x100,
-> +		.en_reg = 0,
-> +		.en_val = 0,
-> +		.en_mask = 0,
-> +	}, {
-> +		.name = "VP0",
-> +		.base = RK3568_VP0_CTRL_BASE,
-> +		.size = 0x100,
-> +		.en_reg = RK3568_VP_DSP_CTRL,
-> +		.en_val = 0,
-> +		.en_mask = RK3568_VP_DSP_CTRL__STANDBY,
-> +	}, {
-> +		.name = "VP1",
-> +		.base = RK3568_VP1_CTRL_BASE,
-> +		.size = 0x100,
-> +		.en_reg = RK3568_VP_DSP_CTRL,
-> +		.en_val = 0,
-> +		.en_mask = RK3568_VP_DSP_CTRL__STANDBY,
-> +	}, {
-> +		.name = "VP2",
-> +		.base = RK3568_VP2_CTRL_BASE,
-> +		.size = 0x100,
-> +		.en_reg = RK3568_VP_DSP_CTRL,
-> +		.en_val = 0,
-> +		.en_mask = RK3568_VP_DSP_CTRL__STANDBY,
-> +
-> +	}, {
-> +		.name = "Cluster0",
-> +		.base = RK3568_CLUSTER0_CTRL_BASE,
-> +		.size = 0x110,
-> +		.en_reg = RK3568_CLUSTER_WIN_CTRL0,
-> +		.en_val = RK3568_CLUSTER_WIN_CTRL0__WIN0_EN,
-> +		.en_mask = RK3568_CLUSTER_WIN_CTRL0__WIN0_EN,
-> +	}, {
-> +		.name = "Cluster1",
-> +		.base = RK3568_CLUSTER1_CTRL_BASE,
-> +		.size = 0x110,
-> +		.en_reg = RK3568_CLUSTER_WIN_CTRL0,
-> +		.en_val = RK3568_CLUSTER_WIN_CTRL0__WIN0_EN,
-> +		.en_mask = RK3568_CLUSTER_WIN_CTRL0__WIN0_EN,
-> +	}, {
-> +		.name = "Esmart0",
-> +		.base = RK3568_ESMART0_CTRL_BASE,
-> +		.size = 0xf0,
-> +		.en_reg = RK3568_SMART_REGION0_CTRL,
-> +		.en_val = RK3568_SMART_REGION0_CTRL__WIN0_EN,
-> +		.en_mask = RK3568_SMART_REGION0_CTRL__WIN0_EN,
-> +	}, {
-> +		.name = "Esmart1",
-> +		.base = RK3568_ESMART1_CTRL_BASE,
-> +		.size = 0xf0,
-> +		.en_reg = RK3568_SMART_REGION0_CTRL,
-> +		.en_val = RK3568_SMART_REGION0_CTRL__WIN0_EN,
-> +		.en_mask = RK3568_SMART_REGION0_CTRL__WIN0_EN,
-> +	}, {
-> +		.name = "Smart0",
-> +		.base = RK3568_SMART0_CTRL_BASE,
-> +		.size = 0xf0,
-> +		.en_reg = RK3568_SMART_REGION0_CTRL,
-> +		.en_val = RK3568_SMART_REGION0_CTRL__WIN0_EN,
-> +		.en_mask = RK3568_SMART_REGION0_CTRL__WIN0_EN,
-> +	}, {
-> +		.name = "Smart1",
-> +		.base = RK3568_SMART1_CTRL_BASE,
-> +		.size = 0xf0,
-> +		.en_reg = RK3568_SMART_REGION0_CTRL,
-> +		.en_val = RK3568_SMART_REGION0_CTRL__WIN0_EN,
-> +		.en_mask = RK3568_SMART_REGION0_CTRL__WIN0_EN,
-> +	},
-> +};
-> +
->   static const struct vop2_video_port_data rk3588_vop_video_ports[] = {
->   	{
->   		.id = 0,
-> @@ -440,6 +522,109 @@ static const struct vop2_win_data rk3588_vop_win_data[] = {
->   	},
->   };
->   
-> +static const struct vop2_regs_dump rk3588_regs_dump[] = {
-> +	{
-> +		.name = "SYS",
-> +		.base = RK3568_REG_CFG_DONE,
-> +		.size = 0x100,
-> +		.en_reg  = 0,
-> +		.en_val = 0,
-> +		.en_mask = 0
-> +	}, {
-> +		.name = "OVL",
-> +		.base = RK3568_OVL_CTRL,
-> +		.size = 0x100,
-> +		.en_reg = 0,
-> +		.en_val = 0,
-> +		.en_mask = 0,
-> +	}, {
-> +		.name = "VP0",
-> +		.base = RK3568_VP0_CTRL_BASE,
-> +		.size = 0x100,
-> +		.en_reg = RK3568_VP_DSP_CTRL,
-> +		.en_val = 0,
-> +		.en_mask = RK3568_VP_DSP_CTRL__STANDBY,
-> +	}, {
-> +		.name = "VP1",
-> +		.base = RK3568_VP1_CTRL_BASE,
-> +		.size = 0x100,
-> +		.en_reg = RK3568_VP_DSP_CTRL,
-> +		.en_val = 0,
-> +		.en_mask = RK3568_VP_DSP_CTRL__STANDBY,
-> +	}, {
-> +		.name = "VP2",
-> +		.base = RK3568_VP2_CTRL_BASE,
-> +		.size = 0x100,
-> +		.en_reg = RK3568_VP_DSP_CTRL,
-> +		.en_val = 0,
-> +		.en_mask = RK3568_VP_DSP_CTRL__STANDBY,
-> +
-> +	}, {
-> +		.name = "VP3",
-> +		.base = RK3588_VP3_CTRL_BASE,
-> +		.size = 0x100,
-> +		.en_reg = RK3568_VP_DSP_CTRL,
-> +		.en_val = 0,
-> +		.en_mask = RK3568_VP_DSP_CTRL__STANDBY,
-> +	}, {
-> +		.name = "Cluster0",
-> +		.base = RK3568_CLUSTER0_CTRL_BASE,
-> +		.size = 0x110,
-> +		.en_reg = RK3568_CLUSTER_WIN_CTRL0,
-> +		.en_val = RK3568_CLUSTER_WIN_CTRL0__WIN0_EN,
-> +		.en_mask = RK3568_CLUSTER_WIN_CTRL0__WIN0_EN,
-> +	}, {
-> +		.name = "Cluster1",
-> +		.base = RK3568_CLUSTER1_CTRL_BASE,
-> +		.size = 0x110,
-> +		.en_reg = RK3568_CLUSTER_WIN_CTRL0,
-> +		.en_val = RK3568_CLUSTER_WIN_CTRL0__WIN0_EN,
-> +		.en_mask = RK3568_CLUSTER_WIN_CTRL0__WIN0_EN,
-> +	}, {
-> +		.name = "Cluster2",
-> +		.base = RK3588_CLUSTER2_CTRL_BASE,
-> +		.size = 0x110,
-> +		.en_reg = RK3568_CLUSTER_WIN_CTRL0,
-> +		.en_val = RK3568_CLUSTER_WIN_CTRL0__WIN0_EN,
-> +		.en_mask = RK3568_CLUSTER_WIN_CTRL0__WIN0_EN,
-> +	}, {
-> +		.name = "Cluster3",
-> +		.base = RK3588_CLUSTER3_CTRL_BASE,
-> +		.size = 0x110,
-> +		.en_reg = RK3568_CLUSTER_WIN_CTRL0,
-> +		.en_val = RK3568_CLUSTER_WIN_CTRL0__WIN0_EN,
-> +		.en_mask = RK3568_CLUSTER_WIN_CTRL0__WIN0_EN,
-> +	}, {
-> +		.name = "Esmart0",
-> +		.base = RK3568_ESMART0_CTRL_BASE,
-> +		.size = 0xf0,
-> +		.en_reg = RK3568_SMART_REGION0_CTRL,
-> +		.en_val = RK3568_SMART_REGION0_CTRL__WIN0_EN,
-> +		.en_mask = RK3568_SMART_REGION0_CTRL__WIN0_EN,
-> +	}, {
-> +		.name = "Esmart1",
-> +		.base = RK3568_ESMART1_CTRL_BASE,
-> +		.size = 0xf0,
-> +		.en_reg = RK3568_SMART_REGION0_CTRL,
-> +		.en_val = RK3568_SMART_REGION0_CTRL__WIN0_EN,
-> +		.en_mask = RK3568_SMART_REGION0_CTRL__WIN0_EN,
-> +	}, {
-> +		.name = "Esmart2",
-> +		.base = RK3588_ESMART2_CTRL_BASE,
-> +		.size = 0xf0,
-> +		.en_reg = RK3568_SMART_REGION0_CTRL,
-> +		.en_val = RK3568_SMART_REGION0_CTRL__WIN0_EN,
-> +		.en_mask = RK3568_SMART_REGION0_CTRL__WIN0_EN,
-> +	}, {
-> +		.name = "Esmart3",
-> +		.base = RK3588_ESMART3_CTRL_BASE,
-> +		.size = 0xf0,
-> +		.en_reg = RK3568_SMART_REGION0_CTRL,
-> +		.en_val = RK3568_SMART_REGION0_CTRL__WIN0_EN,
-> +		.en_mask = RK3568_SMART_REGION0_CTRL__WIN0_EN,
-> +	},
-> +};
-> +
->   static const struct vop2_data rk3566_vop = {
->   	.feature = VOP2_FEATURE_HAS_SYS_GRF,
->   	.nr_vps = 3,
-> @@ -448,6 +633,8 @@ static const struct vop2_data rk3566_vop = {
->   	.vp = rk3568_vop_video_ports,
->   	.win = rk3568_vop_win_data,
->   	.win_size = ARRAY_SIZE(rk3568_vop_win_data),
-> +	.regs_dump = rk3568_regs_dump,
-> +	.regs_dump_size = ARRAY_SIZE(rk3568_regs_dump),
->   	.soc_id = 3566,
->   };
->   
-> @@ -459,6 +646,8 @@ static const struct vop2_data rk3568_vop = {
->   	.vp = rk3568_vop_video_ports,
->   	.win = rk3568_vop_win_data,
->   	.win_size = ARRAY_SIZE(rk3568_vop_win_data),
-> +	.regs_dump = rk3568_regs_dump,
-> +	.regs_dump_size = ARRAY_SIZE(rk3568_regs_dump),
->   	.soc_id = 3568,
->   };
->   
-> @@ -471,6 +660,8 @@ static const struct vop2_data rk3588_vop = {
->   	.vp = rk3588_vop_video_ports,
->   	.win = rk3588_vop_win_data,
->   	.win_size = ARRAY_SIZE(rk3588_vop_win_data),
-> +	.regs_dump = rk3588_regs_dump,
-> +	.regs_dump_size = ARRAY_SIZE(rk3588_regs_dump),
->   	.soc_id = 3588,
->   };
->   
+> +       usbc0: usb-typec@22 {
+> +               compatible = "fcs,fusb302";
+> +               reg = <0x22>;
+> +               interrupt-parent = <&gpio1>;
+> +               interrupts = <RK_PB5 IRQ_TYPE_LEVEL_LOW>;
+> +               pinctrl-names = "default";
+> +               pinctrl-0 = <&usbc0_int>;
+> +               vbus-supply = <&vbus5v0_typec>;
+> +               status = "okay";
+
+what Krzysztof means, is that the default for status is "okay". So for a
+node you just added, you don't need a separate status="okay"
+
+This is only needed if the node is added in a base dtsi (like soc
+peripherals) which are then enabled on a per-board basis as needed.
+
+So please just drop the status property from you fusb302 node.
+
+
+Heiko
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
