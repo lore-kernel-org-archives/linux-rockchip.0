@@ -4,49 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 09862C27C4F
-	for <linux-rockchip@archiver.kernel.org>; Wed, 26 Jun 2024 14:29:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5BA53C27C4F
+	for <linux-rockchip@archiver.kernel.org>; Wed, 26 Jun 2024 15:33:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=jEKFUMeDL9OGQGkf8YyuZ4Uezeh8L3Isyq//ClHWxv4=; b=1dKX/TaVIThjMB
-	HcMGQqq2IimO01vqOMhauja1C0N8BMl4go/krb8cZ2SbOg1OTKmHzdq77SEIZmhHt31l34GIyfAd0
-	7BYshvldCBL6BDvTSZL0rbJE5hkYDw+SGBIM5IGU+cMqs1GmTr8aLZ82WY4i5OSRZNAgohvnqmL+k
-	gPA0IgPaF08BzwS/NI3f9ErMFCfBjl4xAABcu7hdX0uIjZGXfyqYJihzdz1qYMirIy2qQziTIkBDO
-	eWk+UZEhUNtON+TDntWHA0EL/ct9ZE2skiZvag6g8SGd52tmZKKSwXQlPdtu+8StbhnMaHnVHME98
-	bl3Jv5E7NC75OjjWESWg==;
+	List-Owner; bh=8GoppL29sIDrLGITcgl85PV8FHiTXXeAsQWrm0bG0Ho=; b=Wmgz6IX45L9xzT
+	VaJqpkgOxcLGrnAfMFNdJpl71PyHIfWXT7NXZ+JAq9mLPTfmZ1rM0EeyM+n3BcgxhpP/XgjytKYyj
+	oyDpQM36/MQdOVm1u5/b9yeDEJcEn9/e41otEJL7Z17iIbvW4LjszK5vcaIdhPiDc4SBlsPagWdw6
+	itUgIdd+G+OR1kIVW3/c04/f9hx1l2u8L1sIpaodNNPzLUJFhmo6DKFJS3SCMBCox/4sdNP7EV8mq
+	ZZ2/bTHzm3RkQPJ1Choaw/Lbjven/HW5gWTDzGqJhx6ESAI8Ih1T+Ai/zBVlrm0Nh9FyZzk5sq1vz
+	3P6Ln2sQ4uODEqs38/kg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sMTdu-00000007AaI-1DYC;
-	Wed, 26 Jun 2024 14:29:02 +0000
+	id 1sMUe6-00000007Pdw-1NO4;
+	Wed, 26 Jun 2024 15:33:18 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sMTdr-00000007AYB-0qvr;
-	Wed, 26 Jun 2024 14:29:00 +0000
-Received: from i53875b6a.versanet.de ([83.135.91.106] helo=diego.localnet)
+	id 1sMUdw-00000007Pam-35pW
+	for linux-rockchip@lists.infradead.org;
+	Wed, 26 Jun 2024 15:33:16 +0000
+Received: from i53875b6a.versanet.de ([83.135.91.106] helo=phil.lan)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1sMTdl-0004SS-Rs; Wed, 26 Jun 2024 16:28:53 +0200
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: Alex Bee <knaerzche@gmail.com>, "Rob Herring (Arm)" <robh@kernel.org>
-Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- devicetree@vger.kernel.org, Sugar Zhang <sugar.zhang@rock-chips.com>,
- Conor Dooley <conor+dt@kernel.org>, inux-kernel@vger.kernel.org,
- Krzysztof Kozlowski <krzk+dt@kernel.org>
-Subject: Re: [PATCH v2 0/4] Add LBA3368 board
-Date: Wed, 26 Jun 2024 16:28:52 +0200
-Message-ID: <1865378.ucjEoNaZvj@diego>
-In-Reply-To: <171940790685.2950756.7239158796460093682.robh@kernel.org>
-References: <20240623090116.670607-1-knaerzche@gmail.com>
- <171940790685.2950756.7239158796460093682.robh@kernel.org>
+	id 1sMUdf-00058K-69; Wed, 26 Jun 2024 17:32:51 +0200
+From: Heiko Stuebner <heiko@sntech.de>
+To: Simon Xue <xxm@rock-chips.com>,
+	Shawn Lin <shawn.lin@rock-chips.com>,
+	Arnd Bergmann <arnd@arndb.de>,
+	=?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kw@linux.com>,
+	Kishon Vijay Abraham I <kishon@kernel.org>,
+	Damien Le Moal <dlemoal@kernel.org>,
+	Jon Lin <jon.lin@rock-chips.com>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Jingoo Han <jingoohan1@gmail.com>,
+	Bjorn Helgaas <bhelgaas@google.com>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Niklas Cassel <cassel@kernel.org>,
+	Rob Herring <robh@kernel.org>
+Cc: Heiko Stuebner <heiko@sntech.de>,
+	linux-rockchip@lists.infradead.org,
+	linux-pci@vger.kernel.org,
+	devicetree@vger.kernel.org
+Subject: Re: (subset) [PATCH v5 00/13] PCI: dw-rockchip: Add endpoint mode support
+Date: Wed, 26 Jun 2024 17:32:49 +0200
+Message-Id: <171941553475.921128.9467465539299233735.b4-ty@sntech.de>
+X-Mailer: git-send-email 2.39.2
+In-Reply-To: <20240607-rockchip-pcie-ep-v1-v5-0-0a042d6b0049@kernel.org>
+References: <20240607-rockchip-pcie-ep-v1-v5-0-0a042d6b0049@kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240626_072859_282408_405D2262 
-X-CRM114-Status: GOOD (  26.13  )
+X-CRM114-CacheID: sfid-20240626_083315_307306_845CA563 
+X-CRM114-Status: GOOD (  13.22  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -63,66 +78,43 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Am Mittwoch, 26. Juni 2024, 15:25:12 CEST schrieb Rob Herring (Arm):
+On Fri, 07 Jun 2024 13:14:20 +0200, Niklas Cassel wrote:
+> This series adds PCIe endpoint mode support for the rockchip rk3588 and
+> rk3568 SoCs.
 > 
-> On Sun, 23 Jun 2024 11:01:12 +0200, Alex Bee wrote:
-> > This series aims to add support for RK3368 based LBA3368 industrial board
-> > form Neardi. The device tree currently only contains entries for which both
-> > bindings and linux driver exists and is expected to be exended in future.
-> > 
-> > NB: checkpatch throws me a warning that no venddor-prefix for "usb5e3"
-> > exists - which is true - but "usb5e3,610" has a valid binding.
-> > 
-> > Changes in v2:
-> >  - board DT property re-ordering / fixes
-> > 
-> > Link to v1:
-> >  https://lore.kernel.org/all/20240621134030.243646-1-knaerzche@gmail.com/
-> > 
-> > Alex Bee (4):
-> >   dt-bindings: vendor-prefixes: Add Neardi Technology
-> >   dt-bindings: arm: rockchip: Add Neardi LBA3368
-> >   arm64: dts: rockchip: Add sound-dai-cells for RK3368
-> >   arm64: dts: rockchip: Add Neardi LBA3368 board
-> > 
-> >  .../devicetree/bindings/arm/rockchip.yaml     |   5 +
-> >  .../devicetree/bindings/vendor-prefixes.yaml  |   2 +
-> >  arch/arm64/boot/dts/rockchip/Makefile         |   1 +
-> >  .../boot/dts/rockchip/rk3368-lba3368.dts      | 661 ++++++++++++++++++
-> >  arch/arm64/boot/dts/rockchip/rk3368.dtsi      |   3 +
-> >  5 files changed, 672 insertions(+)
-> >  create mode 100644 arch/arm64/boot/dts/rockchip/rk3368-lba3368.dts
-> > 
-> > --
-> > 2.45.2
-> > 
-> > 
-> > 
+> This series is based on: pci/next
+> (git://git.kernel.org/pub/scm/linux/kernel/git/pci/pci.git)
 > 
+> This series can also be found in git:
+> https://github.com/floatious/linux/commits/rockchip-pcie-ep-v5
 > 
-> My bot found new DTB warnings on the .dts files added or changed in this
-> series.
-> 
-> Some warnings may be from an existing SoC .dtsi. Or perhaps the warnings
-> are fixed by another series. Ultimately, it is up to the platform
-> maintainer whether these warnings are acceptable or not. No need to reply
-> unless the platform maintainer has comments.
-> 
-> If you already ran DT checks and didn't see these error(s), then
-> make sure dt-schema is up to date:
-> 
->   pip3 install dtschema --upgrade
-> 
-> 
-> New warnings running 'make CHECK_DTBS=y rockchip/rk3368-lba3368.dtb' for 20240623090116.670607-1-knaerzche@gmail.com:
-> 
-> arch/arm64/boot/dts/rockchip/rk3368-lba3368.dtb: /i2c@ff660000/codec@1c: failed to match any schema with compatible: ['realtek,rt5640']
-> arch/arm64/boot/dts/rockchip/rk3368-lba3368.dtb: /mbox@ff6b0000: failed to match any schema with compatible: ['rockchip,rk3368-mailbox']
+> [...]
 
-both of those are still in their .txt format, so not yet converted
-to yaml.
+Applied, thanks!
+
+[12/13] arm64: dts: rockchip: Add PCIe endpoint mode support
+        commit: 2fe9fe4e54f5763b8b681478dda9ac61fd42ecaf
+[13/13] arm64: dts: rockchip: Add rock5b overlays for PCIe endpoint mode
+        commit: 41367db58cbf51ecb89ca017b7473688345caa7b
+
+I've dropped the overlay-symbol-enablement for now.
+As this creates massive size increases there have actually
+been concerns of things like TF-A getting overwhelmed by
+the size if I remember correctly.
+
+In any case, right now we don't have an established way on
+how to handle overlay symbold for Rockchip boards.
+
+For example broadcom enables symbols for all DTs, Nvidia and TI do
+it for select boards only, while for example Mediatek and Freescale
+do not handle symbols at all right now.
+
+So I'll just postpone that decision for a bit.
 
 
+Best regards,
+-- 
+Heiko Stuebner <heiko@sntech.de>
 
 _______________________________________________
 Linux-rockchip mailing list
