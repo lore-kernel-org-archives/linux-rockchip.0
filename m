@@ -4,8 +4,8 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 23E23C27C4F
-	for <linux-rockchip@archiver.kernel.org>; Wed, 26 Jun 2024 13:25:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E0EA0C27C4F
+	for <linux-rockchip@archiver.kernel.org>; Wed, 26 Jun 2024 13:25:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
@@ -13,51 +13,50 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	In-Reply-To:Cc:To:From:MIME-Version:Date:Reply-To:Content-ID:
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:List-Owner;
-	bh=vzCSbLTPkAad8yScbmdljJ9iK0Sh9kPzQEtz2sKn8pI=; b=oIz28OU5qrL9Hww09b39hjHFm3
-	/CzbCTlSsiJmBhNsiCGqJXsGWCva5qEqH5iuLFKbntcDldR2WsJ/YqMXRiZV0GSLjQ599s9UNVJsf
-	a7v3TebXLyS+lPalUhqhiI7b7+UVNf3afXyRSk7fg+McVf8sL8auxlL7VzLGZAAZPC97ySxmAv0sb
-	DMWYDB74ZFKcCECMZD9F+5eTc14yc9Zcxu27jywM7y+WMORQZDuG8rOY+nzJ1pR3z9ZaQYYBvqzOI
-	dlH4AP943kqCx7G9Ku5va1vSSYXgXZuozVbBYFKptOHMifhLR4/a3mPItmrL/rMVtG+pBvA3ciBuO
-	86SxDP1w==;
+	bh=3/2fO/BJYPpDIxxRN3X4gGN4U7XRZ4QBms3L9xnj7cg=; b=Lnt1GaH1QOMV+IydZcjmwUDthP
+	oO7ITfQtHr+2Eu2OE3VJKS6MQcGuqQnqXkSE80+sTToofPJz+hRMqOlKAo6ysK/CkEf82u3qENtB/
+	Cas33i+S9y5OxONj5ulUUfuuObPDTmTP5hSte9fh/k/J2oSlQrWf9iPf8qRIwl1909ftmCN31zYVF
+	PKkMEebybEQPrtq+t0oe+q0n7W/oUDaoXgMFYV1q7XGuHxVcA6568u8z6wvmksUXWJJjr7v1ekEh2
+	oQhNSz0GaHDdXz4meIapFRjuvH04upl9oxJ0HS2zLNCP66J/MWcJyXdkkz2ueveAVkUQuQLgU8e0D
+	nXxxQK0w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sMSeJ-00000006wqK-1suP;
-	Wed, 26 Jun 2024 13:25:23 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1sMSec-00000006wxA-1OLu;
+	Wed, 26 Jun 2024 13:25:42 +0000
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sMSeA-00000006wl8-3rmp;
+	id 1sMSeB-00000006wl9-27Lg;
 	Wed, 26 Jun 2024 13:25:16 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 6672A61A05;
-	Wed, 26 Jun 2024 13:25:13 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0B31EC4AF07;
+	by sin.source.kernel.org (Postfix) with ESMTP id 73E1CCE21D5;
 	Wed, 26 Jun 2024 13:25:12 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 98D42C32789;
+	Wed, 26 Jun 2024 13:25:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1719408313;
-	bh=QmsuC8jN8Omew9b99dXKTzKG2pjGmCB6a1Jqa2GTJe0=;
+	s=k20201202; t=1719408311;
+	bh=Z37XRrmWvVILWMnkjGGDKcM3OK2JNge9DvmvgsYx/vs=;
 	h=Date:From:To:Cc:In-Reply-To:References:Subject:From;
-	b=I5AF3cWMOPhUZyFXdF4BfnaEEDWY6TtzoicM6K0AbGFCqahYl7SGGEysS5IIXTp/6
-	 bNhHRQgA15IMFugRaQF+Bq64tRfrBh/+l7ignallUkmtXHsYyqsyKIA1oa5JBc1Aj9
-	 rtqDaGo3g3MOaTUh/nnXs55HVOBOm6fMC/OMDn9HbUAEEqdcOi678pY4WjgZvCO6Kd
-	 rql0f90JKZMBvSrs105CHleiHeTGAYPpIp4E+5APkZseUzPVO/yiyTcMtfExTyQk5E
-	 LsZ7Rp07d6W5d1lxuM7uBIjEpyxSZWmSEZ2ccPy/EU4JKx6A0z7Lm6EkVqcWK4Y5T0
-	 fjzlnudtnZCpA==
-Date: Wed, 26 Jun 2024 07:25:12 -0600
+	b=WjcDgGmPDPxeGeVOYqx3XflypyDVyUQ8wwWqn4i5CK2w6bQod3AHMFd6BRvJxJg4P
+	 E2vdQuxkw9e7npfhsTClna0ER5pDDv7KGl/O6S0CexOQBEhwJFGdcDaXttsDmyJ+Sb
+	 9bDK5Y0k3hi9tY/l6nlF4EmcAEUAGqFRlafKkVk+ksStQYleLe20M1V4LsGrishE1u
+	 UvseVSo2ae9Zm5dsBI0hCJOVyIScEHwuKcAqBq4eU2doQSv/RRBUjH7f3k1gpeLqKH
+	 ui21FEnDnQb/jteeNC/6sWcHYL47PGqyTsbQUaVD1B45Sw+pKdxafb0KqoKTc779uv
+	 gzaTn5YdX3g2A==
+Date: Wed, 26 Jun 2024 07:25:10 -0600
 MIME-Version: 1.0
 From: "Rob Herring (Arm)" <robh@kernel.org>
-To: Alex Bee <knaerzche@gmail.com>
-Cc: linux-rockchip@lists.infradead.org, 
- linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org, 
- Heiko Stuebner <heiko@sntech.de>, Sugar Zhang <sugar.zhang@rock-chips.com>, 
- Conor Dooley <conor+dt@kernel.org>, inux-kernel@vger.kernel.org, 
- Krzysztof Kozlowski <krzk+dt@kernel.org>
-In-Reply-To: <20240623090116.670607-1-knaerzche@gmail.com>
-References: <20240623090116.670607-1-knaerzche@gmail.com>
-Message-Id: <171940790685.2950756.7239158796460093682.robh@kernel.org>
-Subject: Re: [PATCH v2 0/4] Add LBA3368 board
+To: Andy Yan <andyshrk@163.com>
+Cc: dsimic@manjaro.org, linux-kernel@vger.kernel.org, 
+ linux-rockchip@lists.infradead.org, heiko@sntech.de, 
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+In-Reply-To: <20240623083413.2051412-1-andyshrk@163.com>
+References: <20240623083413.2051412-1-andyshrk@163.com>
+Message-Id: <171940790600.2950728.17625531433842246632.robh@kernel.org>
+Subject: Re: [PATCH] arm64: dts: rockchip: Fix the i2c address of es8316 on
+ Cool Pi 4B
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240626_062515_055409_FC61E59C 
-X-CRM114-Status: GOOD (  16.87  )
+X-CRM114-CacheID: sfid-20240626_062515_756327_5AF41B39 
+X-CRM114-Status: GOOD (  14.44  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,38 +74,22 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
-On Sun, 23 Jun 2024 11:01:12 +0200, Alex Bee wrote:
-> This series aims to add support for RK3368 based LBA3368 industrial board
-> form Neardi. The device tree currently only contains entries for which both
-> bindings and linux driver exists and is expected to be exended in future.
+On Sun, 23 Jun 2024 16:34:13 +0800, Andy Yan wrote:
+> According to the hardware design, the i2c address of audio codec es8316
+> on Cool Pi 4B is 0x10.
 > 
-> NB: checkpatch throws me a warning that no venddor-prefix for "usb5e3"
-> exists - which is true - but "usb5e3,610" has a valid binding.
+> This fix the read/write error like bellow:
+> es8316 7-0011: ASoC: error at soc_component_write_no_lock on es8316.7-0011 for register: [0x0000000c] -6
+> es8316 7-0011: ASoC: error at soc_component_write_no_lock on es8316.7-0011 for register: [0x00000003] -6
+> es8316 7-0011: ASoC: error at soc_component_read_no_lock on es8316.7-0011 for register: [0x00000016] -6
+> es8316 7-0011: ASoC: error at soc_component_read_no_lock on es8316.7-0011 for register: [0x00000016] -6
 > 
-> Changes in v2:
->  - board DT property re-ordering / fixes
+> Fixes: 3f5d336d64d6 ("arm64: dts: rockchip: Add support for rk3588s based board Cool Pi 4B")
+> Signed-off-by: Andy Yan <andyshrk@163.com>
+> ---
 > 
-> Link to v1:
->  https://lore.kernel.org/all/20240621134030.243646-1-knaerzche@gmail.com/
-> 
-> Alex Bee (4):
->   dt-bindings: vendor-prefixes: Add Neardi Technology
->   dt-bindings: arm: rockchip: Add Neardi LBA3368
->   arm64: dts: rockchip: Add sound-dai-cells for RK3368
->   arm64: dts: rockchip: Add Neardi LBA3368 board
-> 
->  .../devicetree/bindings/arm/rockchip.yaml     |   5 +
->  .../devicetree/bindings/vendor-prefixes.yaml  |   2 +
->  arch/arm64/boot/dts/rockchip/Makefile         |   1 +
->  .../boot/dts/rockchip/rk3368-lba3368.dts      | 661 ++++++++++++++++++
->  arch/arm64/boot/dts/rockchip/rk3368.dtsi      |   3 +
->  5 files changed, 672 insertions(+)
->  create mode 100644 arch/arm64/boot/dts/rockchip/rk3368-lba3368.dts
-> 
-> --
-> 2.45.2
-> 
-> 
+>  arch/arm64/boot/dts/rockchip/rk3588s-coolpi-4b.dts | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 > 
 
 
@@ -124,10 +107,9 @@ make sure dt-schema is up to date:
   pip3 install dtschema --upgrade
 
 
-New warnings running 'make CHECK_DTBS=y rockchip/rk3368-lba3368.dtb' for 20240623090116.670607-1-knaerzche@gmail.com:
+New warnings running 'make CHECK_DTBS=y rockchip/rk3588s-coolpi-4b.dtb' for 20240623083413.2051412-1-andyshrk@163.com:
 
-arch/arm64/boot/dts/rockchip/rk3368-lba3368.dtb: /i2c@ff660000/codec@1c: failed to match any schema with compatible: ['realtek,rt5640']
-arch/arm64/boot/dts/rockchip/rk3368-lba3368.dtb: /mbox@ff6b0000: failed to match any schema with compatible: ['rockchip,rk3368-mailbox']
+arch/arm64/boot/dts/rockchip/rk3588s-coolpi-4b.dts:286.25-300.4: Warning (i2c_bus_reg): /i2c@fec90000/audio-codec@11: I2C bus unit address format error, expected "10"
 
 
 
