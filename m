@@ -4,48 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 08E9CC27C4F
-	for <linux-rockchip@archiver.kernel.org>; Wed, 26 Jun 2024 07:31:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C6532C27C4F
+	for <linux-rockchip@archiver.kernel.org>; Wed, 26 Jun 2024 07:32:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:
 	MIME-Version:Date:Message-ID:Reply-To:Cc:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=2DhLqZ3SNtialequNZT0AP7nMIQa+2nN5pHdg5SuhnE=; b=qncE6akoTUA08v
-	GyeW9F8ERPvnh742lWk0HY4L7DCwqOaIgTJU2070ZYp5onQiFBOKaxDJ4ZkfF8DsyyuN4Bvy76Qt+
-	xmF3Y/cgG/QHbtiOfcK1VHH8wJdectUPY6jNkSqwjOy33urI3Dm9Gat1U9GzML8Rci+AwNFwRT0uT
-	FVSp4lTLJ8ODvM5hZVEKzaOxoMqaKzg0SSMA/kvltove7M3UgVT+Gn0D/4wniMqZ+M92OyJpL3tpq
-	1sTItKjDMkFaeTfXC8DPx909CenSGE5/IDSxeftVE6c752WICexWc6uD2jFx230dn+6WP7jptFDHK
-	TSn0INpBOD8Ew21WCRjA==;
+	List-Owner; bh=pHd7zSv339AhZvj9p5NwiZ64pzR+Nyt/PB0zBxdHa9g=; b=HYY+5fW/Kud92B
+	UdR6hH1cXwuyWhqWd9okPhefDaDVo4Yej0t3dvU8c5KUeXhcDnpf0yMJWj/6NzGLC5rU2jrljxyYr
+	ynyfjhcacqJ9K0IEVxuFER7a38qhY2SnqFv9Dpe0DRwTQZYWxc66opjcNHvVM7WN0DhxGx2lDYq4Z
+	tVipRdh6+N3M7sWPBfWMBuKTRuGzbtUhGP0H0UQbGZQUZhx0+AMxE59h54rmL0wfqvmSt5iCeGDne
+	MaZhV15LxE8TLp9CoUi8/Z1emA6UUDwPcECTg84foXX/bb1x/x8RTkd6O/ud/ytOBFvhlxrFCx5U6
+	BIHIF8b84mgptTgou0qQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sMN8B-00000005kVw-2yEm;
-	Wed, 26 Jun 2024 07:31:51 +0000
-Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
+	id 1sMN8R-00000005kcS-3iiQ;
+	Wed, 26 Jun 2024 07:32:07 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sMN83-00000005kTk-36bz;
-	Wed, 26 Jun 2024 07:31:45 +0000
+	id 1sMN8I-00000005kYl-3zz4;
+	Wed, 26 Jun 2024 07:32:00 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id C721DCE20DF;
-	Wed, 26 Jun 2024 07:31:40 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5CD18C2BD10;
-	Wed, 26 Jun 2024 07:31:33 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 6DCB0618B9;
+	Wed, 26 Jun 2024 07:31:57 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 75021C2BD10;
+	Wed, 26 Jun 2024 07:31:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1719387100;
-	bh=QZBFe/JCMye3gzv7JM3x9d0jAKUSjXZunjWg+/IonaA=;
+	s=k20201202; t=1719387117;
+	bh=+L5YngHDp8qosRb3biMyCjOYaHN+17UPtFt+slcAkP4=;
 	h=Date:Subject:To:References:From:In-Reply-To:From;
-	b=ReiwIUAqDz3OZUo3CrTijdYiM4iQWGF2xdK0PmQk53bZ5dL8doZENYwgNJ1UjE81K
-	 hTDuLWUU19Cz1kVs085qhswxRc3oUTReEjNpzIW0e1p5+ZR4PffoLXvas9Yl4y092k
-	 s3QjyWJPWUI6F0xx7/RwuJfFYvPFE6LYJRAJMGbBGWfeyFEGxticMuSq5r8zDzP8uf
-	 La2ShGINA7StZktt4KzAd4ff7vFGNiHJBOantWni8Dw2IonvNxQ53ZQ3T5LkTlj5+O
-	 pP3WP+7BxkxkSzf/4YcFV/+odTk4463rjJWUVmuqCMqs6bLp1EeOXRb0yDsEdeHpww
-	 fqEueZxpdPhHg==
-Message-ID: <6bd1bedb-7360-4021-a79d-ba8751d9f02c@kernel.org>
-Date: Wed, 26 Jun 2024 09:31:30 +0200
+	b=i1hN/Khbyx1aHGNAAvofLcrU2vC0nz/L89nu/jftUZxI9swkSxGkECeGRtzZA5+Rr
+	 Fzpm/qpDPMICqkpuPs2xftgSlQmCBHC2LRZovcBPCgvv37Ej0bYP19RuiLUknP/x51
+	 R51dFkM5Wags3oqT/NskIETjS8tgCmfnkg3R7qNVcHfkrEHVvwNAyGsrZGn0dCTyRH
+	 UkIfmkLU1W8LbV/mjiwEkI6uM+tgS+J8uXv+dMd3GRavs8wJU1LE0M2Hln7IXHa8P0
+	 +vS1IXRx/Nlol/gubu9R3soyzz1x0bWnINOHWwkdmTTGcyo+z3SOhe/GA49wnfe7Kx
+	 wCGPMFEGZoKsA==
+Message-ID: <20901d00-0a7b-432f-a6f1-3efc9b5c8a53@kernel.org>
+Date: Wed, 26 Jun 2024 09:31:48 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 1/3] dt-bindings: rng: Add Rockchip RK3568 TRNG
+Subject: Re: [PATCH v5 2/3] hwrng: add hwrng driver for Rockchip RK3568 SoC
 To: Daniel Golle <daniel@makrotopia.org>,
  Aurelien Jarno <aurelien@aurel32.net>, Olivia Mackall <olivia@selenic.com>,
  Herbert Xu <herbert@gondor.apana.org.au>, Rob Herring <robh@kernel.org>,
@@ -59,7 +59,7 @@ To: Daniel Golle <daniel@makrotopia.org>,
  devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 References: <cover.1719365405.git.daniel@makrotopia.org>
- <edcbe260f9ebe71c901cf3788ccf572cb15b9728.1719365406.git.daniel@makrotopia.org>
+ <15b001360cffc0832e7e2748ad900b1336e0fa32.1719365406.git.daniel@makrotopia.org>
 From: Krzysztof Kozlowski <krzk@kernel.org>
 Content-Language: en-US
 Autocrypt: addr=krzk@kernel.org; keydata=
@@ -105,11 +105,10 @@ Autocrypt: addr=krzk@kernel.org; keydata=
  uZwJCLykjad45hsWcOGk3OcaAGQS6NDlfhM6O9aYNwGL6tGt/6BkRikNOs7VDEa4/HlbaSJo
  7FgndGw1kWmkeL6oQh7wBvYll2buKod4qYntmNKEicoHGU+x91Gcan8mCoqhJkbqrL7+nXG2
  5Q/GS5M9RFWS+nYyJh+c3OcfKqVcZQNANItt7+ULzdNJuhvTRRdC3g9hmCEuNSr+CLMdnRBY fv0=
-In-Reply-To: <edcbe260f9ebe71c901cf3788ccf572cb15b9728.1719365406.git.daniel@makrotopia.org>
+In-Reply-To: <15b001360cffc0832e7e2748ad900b1336e0fa32.1719365406.git.daniel@makrotopia.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240626_003144_280418_7FA925E0 
-X-CRM114-Status: UNSURE (   6.45  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240626_003159_289427_A767E097 
+X-CRM114-Status: GOOD (  14.87  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -126,15 +125,27 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 26/06/2024 03:36, Daniel Golle wrote:
+On 26/06/2024 03:37, Daniel Golle wrote:
 > From: Aurelien Jarno <aurelien@aurel32.net>
 > 
-> Add the True Random Number Generator on the Rockchip RK3568 SoC.
+> Rockchip SoCs used to have a random number generator as part of their
+> crypto device, and support for it has to be added to the corresponding
+> driver. However newer Rockchip SoCs like the RK3568 have an independent
+> True Random Number Generator device. This patch adds a driver for it,
+> greatly inspired from the downstream driver.
+> 
+> The TRNG device does not seem to have a signal conditionner and the FIPS
+> 140-2 test returns a lot of failures. They can be reduced by increasing
+> RK_RNG_SAMPLE_CNT, in a tradeoff between quality and speed. This value
+> has been adjusted to get ~90% of successes and the quality value has
+> been set accordingly.
 > 
 > Signed-off-by: Aurelien Jarno <aurelien@aurel32.net>
+> [daniel@makrotpia.org: code style fixes]
 > Signed-off-by: Daniel Golle <daniel@makrotopia.org>
 
-Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
 Best regards,
 Krzysztof
