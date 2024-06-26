@@ -4,61 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 484F7C2BBCA
-	for <linux-rockchip@archiver.kernel.org>; Wed, 26 Jun 2024 01:38:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C02F3C27C4F
+	for <linux-rockchip@archiver.kernel.org>; Wed, 26 Jun 2024 06:28:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Cc:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:In-Reply-To:
+	Date:References:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=r/u/BOBnrYVJXMagTvE77NgySQAUo4Ut078Wa/2KA/I=; b=2Lxw4aTnHkOdFs
-	lM+jhCP/BO4Mp3KGBEM878a0bL5H7warCyMfJUD6E7Dm9OXaT3TAkP/K6AmXt2oMo+UGpQDVnwcbB
-	8EMDDDE5bLmyhmE4/mc9U6lgxI38XmwnSk29/epsA1Wc7YmyMfl7UBLFHzO3JYQeIRpxZxG1dDd0m
-	BeynnMaGPvNZzzfAwXQHlX2MDyvsC3j3/Di0am3n3P+ptveaAX+PPyvJ0wzCzkS1dOdPNp8JIK2QU
-	54UTW3ktHBbCkUrRkMcHk4F0OIsNUcH4BIVrRc/kguZySiCxWws9GAEYSrSwaiuY4Ylb2AIGclwuZ
-	vv/JPfVOEGFkT14xZYCw==;
+	List-Owner; bh=/4Zg80CXENZjM117GEUrDKE1IzRbLD2wK0HK+lyuspE=; b=2m+e6finjh/uxh
+	xg50OtCnHB6KvFmuunMI2TtxPHKPSkTq1Fqi1xG4Q22yDpUc4agv+DAKruJTJQK+35na/lewu/vAc
+	vtFGrfcFnCl2qsCFJAKlQqJvtiZeODQ/fqqGcIUx7R7GHsLT6W/NruUX/KYPldQ2aHG5pYs7ekXiX
+	WeB56MZ1GzGq2CnwTfotktufJVtokiAnqZbH0YTztlN4gqKm6aWeRQUokJdLpJT0UGkXGQex0oq/L
+	c2Du4quPkCF0ddOo64/N2CL7YKAxXsUYBwsCQI9kfak1e5nzFEH38YWL1HFtEejx5yysdQATkTnu9
+	MzbD1DfxA2ypZUrh5f5Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sMHbh-000000051gQ-0yrP;
-	Wed, 26 Jun 2024 01:37:57 +0000
-Received: from pidgin.makrotopia.org ([2a07:2ec0:3002::65])
+	id 1sMM97-00000005av7-3rPd;
+	Wed, 26 Jun 2024 06:28:45 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sMHbL-000000051VZ-2FIc;
-	Wed, 26 Jun 2024 01:37:37 +0000
-Received: from local
-	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
-	 (Exim 4.97.1)
-	(envelope-from <daniel@makrotopia.org>)
-	id 1sMHb9-000000005cF-1yR4;
-	Wed, 26 Jun 2024 01:37:23 +0000
-Date: Wed, 26 Jun 2024 02:37:19 +0100
-From: Daniel Golle <daniel@makrotopia.org>
-To: Daniel Golle <daniel@makrotopia.org>,
-	Aurelien Jarno <aurelien@aurel32.net>,
-	Olivia Mackall <olivia@selenic.com>,
-	Herbert Xu <herbert@gondor.apana.org.au>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <ukleinek@debian.org>,
-	Dragan Simic <dsimic@manjaro.org>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Martin Kaiser <martin@kaiser.cx>, Tony Luck <tony.luck@intel.com>,
-	Ard Biesheuvel <ardb@kernel.org>, linux-crypto@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: [PATCH v5 3/3] arm64: dts: rockchip: add DT entry for RNG to RK356x
-Message-ID: <2181f2207391fb8fb8ae2cfda07d38f65da05ed9.1719365406.git.daniel@makrotopia.org>
-References: <cover.1719365405.git.daniel@makrotopia.org>
+	id 1sMM8z-00000005atO-0DXU;
+	Wed, 26 Jun 2024 06:28:39 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 8DA9C6177F;
+	Wed, 26 Jun 2024 06:28:34 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4BD4AC2BD10;
+	Wed, 26 Jun 2024 06:28:30 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1719383314;
+	bh=hSJglXZYv5KAZogk1GoXR1+rsFxvyZYlzU5jgV1gLYI=;
+	h=From:To:Cc:Subject:References:Date:In-Reply-To:From;
+	b=P3piVmjKn7J1QV5gzfNXeeO7wmxgfFsVN78j8VFq5jWrsV/vFQQygCKRTS1mMcrPf
+	 sVWeXtl164fnP3Dj+/XFs2w0aWTvWDlcjI8DQ4pPtZVbWcJmxcJZyNJK+2mnbQrOqB
+	 hBRsYxk2HBCum+obj2YF4ApHJ6/e0GwXmceBIUMNIZUXZLwBBLQ8to/R8trXoQX2ty
+	 kmfIri7NNZzqghuAdvBtqpIqqJmTD+/6iqxODNLz5klJISMJs6zU8oNqt2E2BI+RAi
+	 OK6itTDfwnDfo198T7sZX/j+i61lb1bnZbZUqjnZGgo0JJo52V9LWq5e/uzjTNqLaS
+	 UdKyGzchhP7rA==
+From: Kalle Valo <kvalo@kernel.org>
+To: Arend Van Spriel <aspriel@gmail.com>
+Cc: Jacobe Zang <jacobe.zang@wesion.com>,  arend.vanspriel@broadcom.com,
+  duoming@zju.edu.cn,  bhelgaas@google.com,  minipli@grsecurity.net,
+  linux-wireless@vger.kernel.org,  brcm80211@lists.linux.dev,
+  brcm80211-dev-list.pdl@broadcom.com,  megi@xff.cz,  robh@kernel.org,
+  efectn@protonmail.com,  krzk+dt@kernel.org,  conor+dt@kernel.org,
+  heiko@sntech.de,  nick@khadas.com,  jagan@edgeble.ai,
+  dsimic@manjaro.org,  devicetree@vger.kernel.org,
+  linux-arm-kernel@lists.infradead.org,
+  linux-rockchip@lists.infradead.org,  linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v2 5/5] dt-bindings: net: wireless: brcm4329-fmac: add
+ pci14e4,449d
+References: <20240624081906.1399447-1-jacobe.zang@wesion.com>
+	<20240624081906.1399447-6-jacobe.zang@wesion.com>
+	<89f2564f-788e-495d-97ce-f1fa8a921d50@gmail.com>
+Date: Wed, 26 Jun 2024 09:28:28 +0300
+In-Reply-To: <89f2564f-788e-495d-97ce-f1fa8a921d50@gmail.com> (Arend Van
+	Spriel's message of "Tue, 25 Jun 2024 20:23:09 +0200")
+Message-ID: <87pls4gqur.fsf@kernel.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/28.2 (gnu/linux)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <cover.1719365405.git.daniel@makrotopia.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240625_183735_685925_39DC3412 
-X-CRM114-Status: GOOD (  10.61  )
+X-CRM114-CacheID: sfid-20240625_232838_224263_3A9E55E1 
+X-CRM114-Status: GOOD (  11.21  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,38 +82,38 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Aurelien Jarno <aurelien@aurel32.net>
+Arend Van Spriel <aspriel@gmail.com> writes:
 
-Enable the just added Rockchip RNG driver for RK356x SoCs.
+> On 6/24/2024 10:19 AM, Jacobe Zang wrote:
+>> AP6275P Wi-Fi module connected via the PCIe interface.
+>
+> Repeating my remark from v1 series although I gained some knowledge
+> what chip it should be now ;-)
+>
+>> Signed-off-by: Jacobe Zang <jacobe.zang@wesion.com>
+>> ---
+>>   .../devicetree/bindings/net/wireless/brcm,bcm4329-fmac.yaml      | 1 +
+>>   1 file changed, 1 insertion(+)
+>> diff --git
+>> a/Documentation/devicetree/bindings/net/wireless/brcm,bcm4329-fmac.yaml
+>> b/Documentation/devicetree/bindings/net/wireless/brcm,bcm4329-fmac.yaml
+>> index b9e39a62c3b32..fd22ade92210c 100644
+>> --- a/Documentation/devicetree/bindings/net/wireless/brcm,bcm4329-fmac.yaml
+>> +++ b/Documentation/devicetree/bindings/net/wireless/brcm,bcm4329-fmac.yaml
+>> @@ -53,6 +53,7 @@ properties:
+>>             - pci14e4,4488  # BCM4377
+>>             - pci14e4,4425  # BCM4378
+>>             - pci14e4,4433  # BCM4387
+>> +          - pci14e4,449d  # BCM4329
+>
+> This should BCM43752 iso BCM4329.
 
-Signed-off-by: Aurelien Jarno <aurelien@aurel32.net>
-Signed-off-by: Daniel Golle <daniel@makrotopia.org>
----
- arch/arm64/boot/dts/rockchip/rk356x.dtsi | 9 +++++++++
- 1 file changed, 9 insertions(+)
+My simple english parser threw an exception here ;)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk356x.dtsi b/arch/arm64/boot/dts/rockchip/rk356x.dtsi
-index d8543b5557ee..d43d59b44ea5 100644
---- a/arch/arm64/boot/dts/rockchip/rk356x.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk356x.dtsi
-@@ -1112,6 +1112,15 @@ sdhci: mmc@fe310000 {
- 		status = "disabled";
- 	};
- 
-+	rng: rng@fe388000 {
-+		compatible = "rockchip,rk3568-rng";
-+		reg = <0x0 0xfe388000 0x0 0x4000>;
-+		clocks = <&cru CLK_TRNG_NS>, <&cru HCLK_TRNG_NS>;
-+		clock-names = "core", "ahb";
-+		resets = <&cru SRST_TRNG_NS>;
-+		reset-names = "reset";
-+	};
-+
- 	i2s0_8ch: i2s@fe400000 {
- 		compatible = "rockchip,rk3568-i2s-tdm";
- 		reg = <0x0 0xfe400000 0x0 0x1000>;
 -- 
-2.45.2
+https://patchwork.kernel.org/project/linux-wireless/list/
+
+https://wireless.wiki.kernel.org/en/developers/documentation/submittingpatches
 
 _______________________________________________
 Linux-rockchip mailing list
