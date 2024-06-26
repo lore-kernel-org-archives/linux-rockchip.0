@@ -4,8 +4,8 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E0EA0C27C4F
-	for <linux-rockchip@archiver.kernel.org>; Wed, 26 Jun 2024 13:25:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AA248C30653
+	for <linux-rockchip@archiver.kernel.org>; Wed, 26 Jun 2024 13:25:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
@@ -13,50 +13,50 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	In-Reply-To:Cc:To:From:MIME-Version:Date:Reply-To:Content-ID:
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:List-Owner;
-	bh=3/2fO/BJYPpDIxxRN3X4gGN4U7XRZ4QBms3L9xnj7cg=; b=Lnt1GaH1QOMV+IydZcjmwUDthP
-	oO7ITfQtHr+2Eu2OE3VJKS6MQcGuqQnqXkSE80+sTToofPJz+hRMqOlKAo6ysK/CkEf82u3qENtB/
-	Cas33i+S9y5OxONj5ulUUfuuObPDTmTP5hSte9fh/k/J2oSlQrWf9iPf8qRIwl1909ftmCN31zYVF
-	PKkMEebybEQPrtq+t0oe+q0n7W/oUDaoXgMFYV1q7XGuHxVcA6568u8z6wvmksUXWJJjr7v1ekEh2
-	oQhNSz0GaHDdXz4meIapFRjuvH04upl9oxJ0HS2zLNCP66J/MWcJyXdkkz2ueveAVkUQuQLgU8e0D
-	nXxxQK0w==;
+	bh=ltwaxHHcuSP++PmqVUU4x4ILpMB7w24bwvQgEAo2iyI=; b=LuchlFHhGiQEByGEghzOPRsIOq
+	jyhFvKfVMjXfgbYTrRAl+/7Zq5WZVLCO9SYyh+tsa1G9nTLeAfkgJw/h9yp2ihqWxhau+cG33ACOO
+	VZop9/HHQDMEoZZGvDMadHjQDQ1ZO6sUfL/EKDjBmfjXOXBmhy6cyIzo93+P4w8QgU6EfYkcnYChC
+	kpGhr/8XH82ELAvc5mK+TWO6hdxESv62FURxjEuLp+2074dHHHjOObtWasB3ewmSbVAqDNwtN10kJ
+	0t/wW4YQUOC/eZpibqARhnh2mR/YTsNMun0n1AmAsuNBUiPyOKYcpHNmGfbZyGDs2heoeN9SsgdHx
+	iSD24iTg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sMSec-00000006wxA-1OLu;
-	Wed, 26 Jun 2024 13:25:42 +0000
-Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
+	id 1sMSee-00000006wz9-0631;
+	Wed, 26 Jun 2024 13:25:44 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sMSeB-00000006wl9-27Lg;
-	Wed, 26 Jun 2024 13:25:16 +0000
+	id 1sMSeB-00000006wlp-3CMa
+	for linux-rockchip@lists.infradead.org;
+	Wed, 26 Jun 2024 13:25:17 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 73E1CCE21D5;
-	Wed, 26 Jun 2024 13:25:12 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 98D42C32789;
-	Wed, 26 Jun 2024 13:25:11 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 17785619E2;
+	Wed, 26 Jun 2024 13:25:15 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 811FFC2BD10;
+	Wed, 26 Jun 2024 13:25:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1719408311;
-	bh=Z37XRrmWvVILWMnkjGGDKcM3OK2JNge9DvmvgsYx/vs=;
+	s=k20201202; t=1719408314;
+	bh=cSDPpTMcDEC2j8uQwxtBCGBjo3Lk1dGBNRAzKOx07Xw=;
 	h=Date:From:To:Cc:In-Reply-To:References:Subject:From;
-	b=WjcDgGmPDPxeGeVOYqx3XflypyDVyUQ8wwWqn4i5CK2w6bQod3AHMFd6BRvJxJg4P
-	 E2vdQuxkw9e7npfhsTClna0ER5pDDv7KGl/O6S0CexOQBEhwJFGdcDaXttsDmyJ+Sb
-	 9bDK5Y0k3hi9tY/l6nlF4EmcAEUAGqFRlafKkVk+ksStQYleLe20M1V4LsGrishE1u
-	 UvseVSo2ae9Zm5dsBI0hCJOVyIScEHwuKcAqBq4eU2doQSv/RRBUjH7f3k1gpeLqKH
-	 ui21FEnDnQb/jteeNC/6sWcHYL47PGqyTsbQUaVD1B45Sw+pKdxafb0KqoKTc779uv
-	 gzaTn5YdX3g2A==
-Date: Wed, 26 Jun 2024 07:25:10 -0600
+	b=HryVjBQ9WTLc4ViiTTMguJigtEDUnEcofSwoss3Pz9nOYoOowz39fjk/f8AqgzhYi
+	 pyrLWo1Z6HDbpQRYs5ucLkobYtbJb6t6Zshxmy6vI6MIoJYmBoF3b1+zwXwjDzcLOF
+	 E/UpVaNCL/qp5OPPrX1uufQCfcer72i2cqHKuKgLQOcMsL5Lz4M88q1RVBT34ys651
+	 hZRIp0T0KEQSH0KZ5mVNQR/SWOHp9MtJ2kOTx/zm0j9BUM922//y3uOLH+wkU/N9ip
+	 Y048XXV7OajniVJK7pq17pX9RTuXioOLjEuqIDBAQzELsl8UHf4PUh9esLaHSG7Tan
+	 Aj5Sm4NanvJsQ==
+Date: Wed, 26 Jun 2024 07:25:13 -0600
 MIME-Version: 1.0
 From: "Rob Herring (Arm)" <robh@kernel.org>
-To: Andy Yan <andyshrk@163.com>
-Cc: dsimic@manjaro.org, linux-kernel@vger.kernel.org, 
- linux-rockchip@lists.infradead.org, heiko@sntech.de, 
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org
-In-Reply-To: <20240623083413.2051412-1-andyshrk@163.com>
-References: <20240623083413.2051412-1-andyshrk@163.com>
-Message-Id: <171940790600.2950728.17625531433842246632.robh@kernel.org>
-Subject: Re: [PATCH] arm64: dts: rockchip: Fix the i2c address of es8316 on
- Cool Pi 4B
+To: FUKAUMI Naoki <naoki@radxa.com>
+Cc: linux-rockchip@lists.infradead.org, krzk+dt@kernel.org, heiko@sntech.de, 
+ conor+dt@kernel.org, devicetree@vger.kernel.org
+In-Reply-To: <20240623201415.3205-1-naoki@radxa.com>
+References: <20240623201415.3205-1-naoki@radxa.com>
+Message-Id: <171940790949.2950908.11858258280996418792.robh@kernel.org>
+Subject: Re: [PATCH v3 1/3] dt-bindings: arm: rockchip: Add Radxa ROCK Pi E
+ v3.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240626_062515_756327_5AF41B39 
-X-CRM114-Status: GOOD (  14.44  )
+X-CRM114-CacheID: sfid-20240626_062515_905235_B11A76B1 
+X-CRM114-Status: GOOD (  10.62  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,22 +74,21 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
-On Sun, 23 Jun 2024 16:34:13 +0800, Andy Yan wrote:
-> According to the hardware design, the i2c address of audio codec es8316
-> on Cool Pi 4B is 0x10.
+On Mon, 24 Jun 2024 05:14:13 +0900, FUKAUMI Naoki wrote:
+> Add devicetree binding for the Radxa ROCK Pi E v3.0 board.
 > 
-> This fix the read/write error like bellow:
-> es8316 7-0011: ASoC: error at soc_component_write_no_lock on es8316.7-0011 for register: [0x0000000c] -6
-> es8316 7-0011: ASoC: error at soc_component_write_no_lock on es8316.7-0011 for register: [0x00000003] -6
-> es8316 7-0011: ASoC: error at soc_component_read_no_lock on es8316.7-0011 for register: [0x00000016] -6
-> es8316 7-0011: ASoC: error at soc_component_read_no_lock on es8316.7-0011 for register: [0x00000016] -6
+> Radxa ROCK Pi E v3.0 is a single-board computer based on the Rockchip
+> RK3328 SoC with a compact form factor.
 > 
-> Fixes: 3f5d336d64d6 ("arm64: dts: rockchip: Add support for rk3588s based board Cool Pi 4B")
-> Signed-off-by: Andy Yan <andyshrk@163.com>
+> Signed-off-by: FUKAUMI Naoki <naoki@radxa.com>
+> 
+> Changes in v3:
+> - none
+> Changes in v2:
+> - none
 > ---
-> 
->  arch/arm64/boot/dts/rockchip/rk3588s-coolpi-4b.dts | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+>  Documentation/devicetree/bindings/arm/rockchip.yaml | 5 +++++
+>  1 file changed, 5 insertions(+)
 > 
 
 
@@ -107,9 +106,17 @@ make sure dt-schema is up to date:
   pip3 install dtschema --upgrade
 
 
-New warnings running 'make CHECK_DTBS=y rockchip/rk3588s-coolpi-4b.dtb' for 20240623083413.2051412-1-andyshrk@163.com:
+New warnings running 'make CHECK_DTBS=y rockchip/rk3328-rock-pi-e-v3.dtb rockchip/rk3328-rock-pi-e.dtb' for 20240623201415.3205-1-naoki@radxa.com:
 
-arch/arm64/boot/dts/rockchip/rk3588s-coolpi-4b.dts:286.25-300.4: Warning (i2c_bus_reg): /i2c@fec90000/audio-codec@11: I2C bus unit address format error, expected "10"
+arch/arm64/boot/dts/rockchip/rk3328-rock-pi-e-v3.dtb: hdmi@ff3c0000: interrupts: [[0, 35, 4], [0, 71, 4]] is too long
+	from schema $id: http://devicetree.org/schemas/display/rockchip/rockchip,dw-hdmi.yaml#
+arch/arm64/boot/dts/rockchip/rk3328-rock-pi-e-v3.dtb: /phy@ff430000: failed to match any schema with compatible: ['rockchip,rk3328-hdmi-phy']
+arch/arm64/boot/dts/rockchip/rk3328-rock-pi-e-v3.dtb: /clock-controller@ff440000: failed to match any schema with compatible: ['rockchip,rk3328-cru', 'rockchip,cru', 'syscon']
+arch/arm64/boot/dts/rockchip/rk3328-rock-pi-e-v3.dtb: /clock-controller@ff440000: failed to match any schema with compatible: ['rockchip,rk3328-cru', 'rockchip,cru', 'syscon']
+arch/arm64/boot/dts/rockchip/rk3328-rock-pi-e-v3.dtb: ethernet@ff540000: Unevaluated properties are not allowed ('snps,rxpbl', 'snps,txpbl' were unexpected)
+	from schema $id: http://devicetree.org/schemas/net/rockchip-dwmac.yaml#
+arch/arm64/boot/dts/rockchip/rk3328-rock-pi-e-v3.dtb: ethernet@ff550000: Unevaluated properties are not allowed ('snps,txpbl' was unexpected)
+	from schema $id: http://devicetree.org/schemas/net/rockchip-dwmac.yaml#
 
 
 
