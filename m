@@ -4,79 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E418BC2BD09
-	for <linux-rockchip@archiver.kernel.org>; Thu, 27 Jun 2024 21:18:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F359AC3064D
+	for <linux-rockchip@archiver.kernel.org>; Thu, 27 Jun 2024 21:18:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:From:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=EXgcvSpc4x58nrysdBzmV8AVz9SVZ/qWi91+WWRG7cw=; b=LNgggSn9jNbJf7
-	9jZjjWnaKISJb2lgkGYEVFP479tBYZUggHv7YVxtSyZ7M4bUcMUVT6cjE30w/K667O+rHGcBh09tA
-	VgnKp4Gxk37aWtmmwC8T6J66FHGI80DBwN0e/XZsvnhEK8RK9ERf2mGrJ0MkTh2h8kHq2un6TjCfg
-	c2+wnRnnmjAqtDaRozjgFSJZqJilxqDvV1TwcFzMxE30BXLoOyHEyFwnmW2ZAhRFtfaNKMQY4stjP
-	LxDKqUTekPVIxTq+E0Yfm8rL4D6XIu50JHKdSOjofcUM90SKGfAFSx4hQPGlo19+7xv1X2Uh1CCjZ
-	YJKFMSyCLnnV5qHCeJOA==;
+	List-Owner; bh=i7qPJHwCN0s6ih7JZhW8uaUIlzI7XSRqU1OmHw00drw=; b=Hx2xm/uLe+CAVw
+	rqt9js2V5aLokTWFGj5rg3EE3Wu+OHLkPb/HI63A+zSxh/I7bxNfmvwuIaVOzey0zAf2rgbEVBW7H
+	LSpV2YEoikoUy7+Rzj9FHml3G5cH0yHGoW1CPqmlknCC/0Dn3oXNcK9DIFlO3f5eq8ad2dFJIiEX8
+	tQCrvIt/j9m7rO3pVawuPdC/f2vGIZ+xjMkNEXAsXSLrGVqx+aDzmJPCYcFrGGjhCTRTLQJmlsDkZ
+	+gD88RQ8YWsl2/I7rS4aHHu0wYz1CI4SCj37EaZHZa1YlQZ90B+lDu2QpocR3wTXvlcyd+C8I0VF6
+	LQaoFkt8+wjz39VT/B0w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sMwVD-0000000Bjq0-0PEv;
-	Thu, 27 Jun 2024 21:17:59 +0000
-Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c])
+	id 1sMwVL-0000000BjvD-0P6L;
+	Thu, 27 Jun 2024 21:18:07 +0000
+Received: from smtp.forwardemail.net ([149.28.215.223])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sMwV3-0000000BjnI-0e2o;
-	Thu, 27 Jun 2024 21:17:50 +0000
-Received: by mail-ed1-x52c.google.com with SMTP id 4fb4d7f45d1cf-57d07464aa9so2314096a12.2;
-        Thu, 27 Jun 2024 14:17:48 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1719523067; x=1720127867; darn=lists.infradead.org;
-        h=content-transfer-encoding:content-language:cc:to:subject:from
-         :user-agent:mime-version:date:message-id:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=Xnk9uIadAbA+bBaIfSx2BcakWTRFKYQJDJDqca2A88I=;
-        b=ZI07PDjdPypY0jnBw5RhRKNxVx+Fwm67SdOcduUjJEW/A5fSCgkwcKQrjfoFSV8FG4
-         iRLChwLG51KBxoDXfLRXlOl14VqGzivMLtDOYj26HcEA11J6izuDxR8wPxIWhGrhvHT4
-         co57rH//NIuISk3lktHGe/OaNj73anofRz2gcHphTudkJKQaq+YMToZlh3DWUQoWLVPh
-         3DnKsLIRGyE8ZMMrtVXXBtfS9OLOFHw07jxYhdDuz4jtiPDCfoXGTkBJWAGikWMRzUnu
-         zYepOQ9jyDXvEAxj5klBUIctNHnpddOiPR5AE+3p+QmT0zMpYifQt6Rbz0mv2tLSrx1+
-         kxsg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1719523067; x=1720127867;
-        h=content-transfer-encoding:content-language:cc:to:subject:from
-         :user-agent:mime-version:date:message-id:x-gm-message-state:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=Xnk9uIadAbA+bBaIfSx2BcakWTRFKYQJDJDqca2A88I=;
-        b=ZK6oKtmN8XSMZgGs36N0UY1yC35jcNElGNOmDTIjr469jZaHitu20rI3zDU7KElW58
-         prQ0JtA3cjeaDDf3l6xmzea/vNvejNhF/dGmq97F5ekuKcG3/r4Z1hf+A0I1xeH2TODD
-         yWe2FDoscn7b9KHnuUPf04uyMfSXOTBKvG4ZKhRfesDtzc3XURpgINzaV4J8qCA1NRaJ
-         kvUCootFMeAPro1SXKwwhPZfoCJRjnc7kGoBm7Pu7cpHd07Qnx7W1MRbQ830rJfkSrCH
-         4u3qiob1NRPvwM5SYSIEGMT1X1hUYEJm3hCUWerE5KuB9/QO3DcmsQDisocb2coLaXT3
-         +Z+Q==
-X-Forwarded-Encrypted: i=1; AJvYcCX76/UwpWieyqYnxrLHIfXeNvmvdibq5xxcDJx8pc46SaJA1jCzHM7g4CGKckbr/AFk5L25WdAV8LEjb/dkNi6iapwLyOWfrxmsromm0CfO+obUO1C/eChRijg+atfWmQTu73LfNsgBTxXMGaOqunf2++qIitjc1Qg=
-X-Gm-Message-State: AOJu0YxIa8fDHrc2kln727d5CDK4dLSCG5QZ6v4WsCtmRLvIJYHplX8n
-	5iTSHlUfB9OoUfU2Gp9SypwgaEvk07cMuiPEAfQdmLa0RmlibHNx
-X-Google-Smtp-Source: AGHT+IFbtDNlgX18BHhhHB676dlMxYpxY2uD0IhAomzWeFynNtXKV2BsDI/Li5O2s/tR5bnwCUFTRA==
-X-Received: by 2002:a17:906:c309:b0:a6f:64cc:ca2e with SMTP id a640c23a62f3a-a7245b88e46mr977230466b.44.1719523067016;
-        Thu, 27 Jun 2024 14:17:47 -0700 (PDT)
-Received: from ?IPV6:2a02:a449:4071:1:32d0:42ff:fe10:6983? (2a02-a449-4071-1-32d0-42ff-fe10-6983.fixed6.kpn.net. [2a02:a449:4071:1:32d0:42ff:fe10:6983])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a72aaf1843fsm12647866b.39.2024.06.27.14.17.46
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 27 Jun 2024 14:17:46 -0700 (PDT)
-Message-ID: <6f21c09b-e8d2-4749-aca6-572c79df775d@gmail.com>
-Date: Thu, 27 Jun 2024 23:17:45 +0200
+	id 1sMwVH-0000000BjrB-1YIM
+	for linux-rockchip@lists.infradead.org;
+	Thu, 27 Jun 2024 21:18:05 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
+ h=Content-Transfer-Encoding: MIME-Version: Message-ID: Date: Subject: Cc:
+ To: From; q=dns/txt; s=fe-e1b5cab7be; t=1719523064;
+ bh=rPE+9z//tyfsDsGC0Vy2GcWOo7+pR6Ob+6/gM+fr390=;
+ b=iBrZRhn6S1X72EfwpHyazeggUag0Simvv4eS1pVIMF1f1TeLZDe6HouYEF82rYa8cykQtmAKC
+ 9yx9KzGCrizFWsflyIlihZL+HI8ix3zixIziuNOTcdfSgKXJLUGPqUhivXM1Ri5JtfnLJkHLHlm
+ OlNrS5v56RrpickA+lco9kjT8SVJ55S1FvfFCXxHmC1FwJID9SP6xHcr6ZcsjSV5Uu3k4yNfOWr
+ rHvqy6kS8UpTqdjb/MH9vZDq3DMJ4isgv+GPLzqfpBNDIXE158n56Hqmn0Y8T2YMX6YSCjtQj1Y
+ ZkeLo2ESD5fJpgbEiirpv5AVVEnvYzNZ4QNwhpCBiwPA==
+From: Jonas Karlman <jonas@kwiboo.se>
+To: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>
+Cc: FUKAUMI Naoki <naoki@radxa.com>, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org, Jonas Karlman <jonas@kwiboo.se>
+Subject: [PATCH v3 0/2] arm64: dts: rockchip: Add Radxa ROCK 3B
+Date: Thu, 27 Jun 2024 21:17:29 +0000
+Message-ID: <20240627211737.1985549-1-jonas@kwiboo.se>
+X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-From: Johan Jonker <jbx6244@gmail.com>
-Subject: [PATCH v1] dt-bindings: clock: rk3188-cru-common: remove CLK_NR_CLKS
-To: heiko@sntech.de
-Cc: mturquette@baylibre.com, sboyd@kernel.org, robh@kernel.org,
- krzk+dt@kernel.org, conor+dt@kernel.org, linux-clk@vger.kernel.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Content-Language: en-US
+X-Report-Abuse-To: abuse@forwardemail.net
+X-Report-Abuse: abuse@forwardemail.net
+X-Complaints-To: abuse@forwardemail.net
+X-ForwardEmail-Version: 0.4.40
+X-ForwardEmail-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
+ 149.28.215.223
+X-ForwardEmail-ID: 667dd6f8392543b4ce9ac5db
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240627_141749_227562_7AFB3CB9 
-X-CRM114-Status: UNSURE (   7.78  )
+X-CRM114-CacheID: sfid-20240627_141803_790086_F006CA7E 
+X-CRM114-Status: UNSURE (   8.16  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -94,29 +75,43 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-CLK_NR_CLKS should not be part of the binding.
-Remove since the kernel code no longer uses it.
+This series adds initial support for the Radxa ROCK 3B board.
 
-Signed-off-by: Johan Jonker <jbx6244@gmail.com>
----
- include/dt-bindings/clock/rk3188-cru-common.h | 2 --
- 1 file changed, 2 deletions(-)
+The Radxa ROCK 3B is a single-board computer based on the Pico-ITX form
+factor (100mm x 75mm). Two versions of the ROCK 3B exists, a community
+version based on the RK3568 SoC and an industrial version based on the
+RK3568J SoC.
 
-diff --git a/include/dt-bindings/clock/rk3188-cru-common.h b/include/dt-bindings/clock/rk3188-cru-common.h
-index afad90680fce..01e14ab252a7 100644
---- a/include/dt-bindings/clock/rk3188-cru-common.h
-+++ b/include/dt-bindings/clock/rk3188-cru-common.h
-@@ -132,8 +132,6 @@
- #define HCLK_VDPU		472
- #define HCLK_HDMI		473
+Schematic for ROCK 3B can be found at:
+https://dl.radxa.com/rock3/docs/hw/3b/Radxa_ROCK_3B_V1.51_SCH.pdf
 
--#define CLK_NR_CLKS		(HCLK_HDMI + 1)
--
- /* soft-reset indices */
- #define SRST_MCORE		2
- #define SRST_CORE0		3
---
-2.39.2
+Changes in v3:
+- Rename led node and move led pinctrl
+- Add cap-mmc-highspeed to sdhci node
+
+Changes in v2:
+- Drop rk809 dt-bindings patches, replaced by series at [1]
+- Use regulator-.* nodename for fixed regulators
+- Drop rockchip,mic-in-differential prop
+- Shorten Ethernet phy reset-deassert-us to 50 ms
+- Fix pcie pinctrl
+- Add keep-power-in-suspend to sdmmc2
+- Collect a-b tag
+
+[1] https://lore.kernel.org/all/20240622-rk809-fixes-v2-0-c0db420d3639@collabora.com/
+
+Jonas Karlman (2):
+  dt-bindings: arm: rockchip: Add Radxa ROCK 3B
+  arm64: dts: rockchip: Add Radxa ROCK 3B
+
+ .../devicetree/bindings/arm/rockchip.yaml     |   5 +
+ arch/arm64/boot/dts/rockchip/Makefile         |   1 +
+ .../boot/dts/rockchip/rk3568-rock-3b.dts      | 781 ++++++++++++++++++
+ 3 files changed, 787 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3568-rock-3b.dts
+
+-- 
+2.45.2
 
 
 _______________________________________________
