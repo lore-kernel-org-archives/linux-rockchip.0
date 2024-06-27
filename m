@@ -4,66 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 41235C2BD09
-	for <linux-rockchip@archiver.kernel.org>; Thu, 27 Jun 2024 20:52:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D0DD3C2BD09
+	for <linux-rockchip@archiver.kernel.org>; Thu, 27 Jun 2024 20:57:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=6YM5+sFLb5rMwu9stF/mkf/ovLCG4qorUiFvldinpY8=; b=0UcOguArgOF7E/
-	5lpJefqOoaY2J9ucenzkq7ItzNVzGDdVIhhMitaDGFADBgP6w5aizLIakV/MCzDk5NxwCqTAq/HVt
-	bGz6Knle3Snyd7jtbtjy2bdH63nO1PZbbnTiVHXzOuKmAqsFb8svg9pJppda9go2jT6aY445zqs1H
-	S3XMUJKT2iEo8cUsKaBBkFjBGyVgQ4Qdjz4EZE9vP0vf0blrWg8J8ubo8JWZ+ftaKbOBF7CzNsyU5
-	0kHTNfRUExnFT6AIPWCgBHKuRSXGIbjae0vVGCFCZra9CUyN2NGmc1fvY0RXw4Tc56ZIuGSCPhDTi
-	9JX/X9tJdXwkpt0tm3Wg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=GpTIoCmfyLPtUu7Px7rZdmntNNzDGu4/h+xWnkq7Xak=; b=ItT4HcK69BCWh176YegjKchTpD
+	6jV3MWWR06pwhjxTm9vj62UUX1XrmxYEVXbbuyJFEm/rv5QyPQBuSZK1SQcy1JMmRvLwjtn3+ueax
+	jXJFHZhTiuRF/mHAKyxZRNhu7zn2utguw2F1GVOVEdiHQ2fmY1PQRyjOwXidiqhd8jGcSVlXA6fuK
+	ZljK4+hCE6RggzlUkHfZRxC72i6CntAxM4QjypwyfFXycn78hhmBgQ4yEKzRRF3hCtXwDQxoFDFuj
+	LyFNJJ8VFftjAzbCguk588pk9tHCFX9SlyEHEd6hNy+2w+rrKoxtS6DLESzGxWJoib51457jym6v4
+	KvmhUd2w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sMw6O-0000000BgsA-33RO;
-	Thu, 27 Jun 2024 20:52:20 +0000
-Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
+	id 1sMwBM-0000000BhpK-3Nyc;
+	Thu, 27 Jun 2024 20:57:28 +0000
+Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sMw6F-0000000BgoC-1FbU;
-	Thu, 27 Jun 2024 20:52:13 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id A4E17CE38F3;
-	Thu, 27 Jun 2024 20:52:09 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B40C0C2BBFC;
-	Thu, 27 Jun 2024 20:52:08 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1719521529;
-	bh=5Vyce4zAfgV6w1pp20rVTEDgRdD2Xvdyh3QIPHWLvM8=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=YB9+zb4fy/LqQzIgsBPmOperiqxnf1JPNL3XS8J+X33MBU2A3KTvIceo6iHMpM6R2
-	 S1xhgzD60JQ4+KL8CuXH+nBXMtBcpeMEo9MKFKXQqUN2v5vDgujfsySo8uXLYR5yJ9
-	 uiURiNm/+5u8zb3pnVzJ0kzVnIFNInqQSxwHJ4lsPso0+apkYmHLPnO7v5iDFHJxNY
-	 PAz5dvifK4510KQIJiAMw6Gpq34U2kYIUYbWowg8z4OMxOAusAmaWqen370jtEkFGo
-	 9eAIMPo+VbzAtozXMmee0Q52GoHV8WVb5jtUKwZeP+KuBEBZdSElZ3aSPesZwByGX8
-	 bcWBaqY7Oy8Qg==
-Date: Thu, 27 Jun 2024 14:52:07 -0600
-From: Rob Herring <robh@kernel.org>
-To: Farouk Bouabid <farouk.bouabid@cherry.de>
-Cc: Jean Delvare <jdelvare@suse.com>, Guenter Roeck <linux@roeck-us.net>,
-	Andi Shyti <andi.shyti@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>, Lee Jones <lee@kernel.org>,
-	Quentin Schulz <quentin.schulz@cherry.de>,
-	Peter Rosin <peda@axentia.se>, Heiko Stuebner <heiko@sntech.de>,
-	linux-hwmon@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-i2c@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH v4 3/9] dt-bindings: mfd: add support for mule
-Message-ID: <20240627205207.GA492473-robh@kernel.org>
-References: <20240618-dev-mule-i2c-mux-v4-0-5462d28354c8@cherry.de>
- <20240618-dev-mule-i2c-mux-v4-3-5462d28354c8@cherry.de>
+	id 1sMwBC-0000000BhmT-2lDV;
+	Thu, 27 Jun 2024 20:57:20 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1719521835;
+	bh=94U5cGjSgJ1hmDnRlX7E28/EM3+Vb46f9mlumivB4cA=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=t8zkxINhHkDzCSd9X9ePrVARE6/Y2F+GuQelkWVqy4xKnmOK4Kr8qx4WUT3M/Pk2/
+	 JE3Ah1GvnM8JKWYOhYEdvodc8afdh4KiZgeR+E9mzm4Bb0M8XjKxgAhYmawYvLewfi
+	 ElXtVCOavSOy51PJsjMaqyCfaFpqaekNgIyA4EMgFNvFwRjGRNsnDoBmTfQ3U65YVE
+	 iH3qfeerjb/nI8PPoZKTi0a0MePNnEiVDnhCTkWwZdoXpVF3THr8pq+t27iXB0AgS5
+	 J2hmfZAmLtHK4emxthcFcP46Id4N7K3hBBCAArQcOtzgT1xqHIh1teiga/hwqfYskT
+	 IRur3TRj/84gA==
+Received: from arisu.localnet (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: detlev)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id B802037821E5;
+	Thu, 27 Jun 2024 20:57:11 +0000 (UTC)
+From: Detlev Casanova <detlev.casanova@collabora.com>
+To: Alex Bee <knaerzche@gmail.com>, Jonas Karlman <jonas@kwiboo.se>
+Cc: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
+ Heiko Stuebner <heiko@sntech.de>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Sebastian Reichel <sebastian.reichel@collabora.com>,
+ Dragan Simic <dsimic@manjaro.org>, Diederik de Haas <didi.debian@cknow.org>,
+ Andy Yan <andy.yan@rock-chips.com>,
+ Boris Brezillon <boris.brezillon@collabora.com>,
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+ Daniel Almeida <daniel.almeida@collabora.com>,
+ Paul Kocialkowski <paul.kocialkowski@bootlin.com>,
+ Nicolas Dufresne <nicolas.dufresne@collabora.com>,
+ Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+ linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v2 4/4] arm64: dts: rockchip: Add rkvdec2 Video Decoder on
+ rk3588(s)
+Date: Thu, 27 Jun 2024 16:56:43 -0400
+Message-ID: <4356151.ejJDZkT8p0@arisu>
+Organization: Collabora
+In-Reply-To: <156b5aaf-8b9a-46b9-82c2-d7e32f4899f5@kwiboo.se>
+References: <20240619150029.59730-1-detlev.casanova@collabora.com>
+ <5790441.DvuYhMxLoT@arisu> <156b5aaf-8b9a-46b9-82c2-d7e32f4899f5@kwiboo.se>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20240618-dev-mule-i2c-mux-v4-3-5462d28354c8@cherry.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240627_135211_720667_67A622C3 
-X-CRM114-Status: GOOD (  23.21  )
+X-CRM114-CacheID: sfid-20240627_135719_058913_A8B85485 
+X-CRM114-Status: GOOD (  48.17  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,192 +85,304 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============6235513599363634425=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, Jun 18, 2024 at 06:06:45PM +0200, Farouk Bouabid wrote:
-> Mule is an MCU that emulates a set of I2C devices, among which an amc6821
-> device and an I2C mux that exposes more emulated devices. These two devices
-> share the same I2C address. Only the I2C mux uses register (0xff) as a
-> config register.
+--===============6235513599363634425==
+Content-Type: multipart/signed; boundary="nextPart2196199.Mh6RI2rZIc";
+ micalg="pgp-sha256"; protocol="application/pgp-signature"
 
-Everywhere (or the first place in any section (subject, commit msg, 
-title, description, etc.) you say 'mule' I think should be preceeded 
-with the vendor because 'mule' has no meaning on its own unless we are 
-talking animals.
+--nextPart2196199.Mh6RI2rZIc
+Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain; charset="us-ascii"; protected-headers="v1"
+From: Detlev Casanova <detlev.casanova@collabora.com>
+To: Alex Bee <knaerzche@gmail.com>, Jonas Karlman <jonas@kwiboo.se>
+Date: Thu, 27 Jun 2024 16:56:43 -0400
+Message-ID: <4356151.ejJDZkT8p0@arisu>
+Organization: Collabora
+In-Reply-To: <156b5aaf-8b9a-46b9-82c2-d7e32f4899f5@kwiboo.se>
+MIME-Version: 1.0
 
+Hi Jonas,
+
+On Monday, June 24, 2024 5:16:33 A.M. EDT Jonas Karlman wrote:
+> Hi Detlev and Alex,
 > 
-> Add dt-binding support for the Mule I2C multi-function device.
+> On 2024-06-20 15:31, Detlev Casanova wrote:
+> > Hi Jonas, Alex,
+> > 
+> > On Wednesday, June 19, 2024 2:06:40 P.M. EDT Jonas Karlman wrote:
+> >> Hi Alex,
+> >> 
+> >> On 2024-06-19 19:19, Alex Bee wrote:
+> >>> Am 19.06.24 um 17:28 schrieb Jonas Karlman:
+> >>>> Hi Detlev,
+> >>>> 
+> >>>> On 2024-06-19 16:57, Detlev Casanova wrote:
+> >>>>> Add the rkvdec2 Video Decoder to the RK3588s devicetree.
+> >>>>> 
+> >>>>> Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
+> >>>>> ---
+> >>>>> 
+> >>>>>   arch/arm64/boot/dts/rockchip/rk3588s.dtsi | 50
+> >>>>>   +++++++++++++++++++++++
+> >>>>>   1 file changed, 50 insertions(+)
+> >>>>> 
+> >>>>> diff --git a/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
+> >>>>> b/arch/arm64/boot/dts/rockchip/rk3588s.dtsi index
+> >>>>> 6ac5ac8b48ab..7690632f57f1 100644
+> >>>>> --- a/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
+> >>>>> +++ b/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
+> >>>>> @@ -2596,6 +2596,16 @@ system_sram2: sram@ff001000 {
+> >>>>> 
+> >>>>>   		ranges = <0x0 0x0 0xff001000 0xef000>;
+> >>>>>   		#address-cells = <1>;
+> >>>>>   		#size-cells = <1>;
+> >>>>> 
+> >>>>> +
+> >>>>> +		vdec0_sram: rkvdec-sram@0 {
+> >>>>> +			reg = <0x0 0x78000>;
+> >>>>> +			pool;
+> >>>>> +		};
+> >>>>> +
+> >>>>> +		vdec1_sram: rkvdec-sram@1 {
+> >>>>> +			reg = <0x78000 0x77000>;
+> >>>>> +			pool;
+> >>>>> +		};
+> >>>>> 
+> >>>>>   	};
+> >>>>>   	
+> >>>>>   	pinctrl: pinctrl {
+> >>>>> 
+> >>>>> @@ -2665,6 +2675,46 @@ gpio4: gpio@fec50000 {
+> >>>>> 
+> >>>>>   			#interrupt-cells = <2>;
+> >>>>>   		
+> >>>>>   		};
+> >>>>>   	
+> >>>>>   	};
+> >>>>> 
+> >>>>> +
+> >>>>> +	vdec0: video-decoder@fdc38100 {
+> >>>>> +		compatible = "rockchip,rk3588-vdec";
+> >>>>> +		reg = <0x0 0xfdc38100 0x0 0x500>;
+> >>>>> +		interrupts = <GIC_SPI 95 IRQ_TYPE_LEVEL_HIGH 0>;
+> >>>>> +		clocks = <&cru ACLK_RKVDEC0>, <&cru HCLK_RKVDEC0>,
+> > 
+> > <&cru
+> > 
+> >>>>> CLK_RKVDEC0_CA>, +			 <&cru
+> > 
+> > CLK_RKVDEC0_CORE>, <&cru
+> > 
+> >>>>> CLK_RKVDEC0_HEVC_CA>;
+> >>>>> +		clock-names = "axi", "ahb", "cabac", "core",
+> > 
+> > "hevc_cabac";
+> > 
+> >>>>> +		assigned-clocks = <&cru ACLK_RKVDEC0>, <&cru
+> > 
+> > CLK_RKVDEC0_CORE>,
+> > 
+> >>>>> +				  <&cru CLK_RKVDEC0_CA>, <&cru
+> > 
+> > CLK_RKVDEC0_HEVC_CA>;
+> > 
+> >>>>> +		assigned-clock-rates = <800000000>, <600000000>,
+> >>>>> +				       <600000000>, <1000000000>;
+> >>>>> +		resets = <&cru SRST_A_RKVDEC0>, <&cru SRST_H_RKVDEC0>,
+> > 
+> > <&cru
+> > 
+> >>>>> SRST_RKVDEC0_CA>, +			 <&cru
+> > 
+> > SRST_RKVDEC0_CORE>, <&cru
+> > 
+> >>>>> SRST_RKVDEC0_HEVC_CA>;
+> >>>>> +		reset-names = "rst_axi", "rst_ahb", "rst_cabac",
+> >>>>> +			      "rst_core", "rst_hevc_cabac";
+> >>>>> +		power-domains = <&power RK3588_PD_RKVDEC0>;
+> >>>>> +		sram = <&vdec0_sram>;
+> >>>>> +		status = "okay";
+> >>>>> +	};
+> >>>>> +
+> >>>>> +	vdec1: video-decoder@fdc40100 {
+> >>>>> +		compatible = "rockchip,rk3588-vdec";
+> >>>>> +		reg = <0x0 0xfdc40100 0x0 0x500>;
+> >>>>> +		interrupts = <GIC_SPI 97 IRQ_TYPE_LEVEL_HIGH 0>;
+> >>>>> +		clocks = <&cru ACLK_RKVDEC1>, <&cru HCLK_RKVDEC1>,
+> > 
+> > <&cru
+> > 
+> >>>>> CLK_RKVDEC1_CA>, +			 <&cru
+> > 
+> > CLK_RKVDEC1_CORE>, <&cru
+> > 
+> >>>>> CLK_RKVDEC1_HEVC_CA>;
+> >>>>> +		clock-names = "axi", "ahb", "cabac", "core",
+> > 
+> > "hevc_cabac";
+> > 
+> >>>>> +		assigned-clocks = <&cru ACLK_RKVDEC1>, <&cru
+> > 
+> > CLK_RKVDEC1_CORE>,
+> > 
+> >>>>> +				  <&cru CLK_RKVDEC1_CA>, <&cru
+> > 
+> > CLK_RKVDEC1_HEVC_CA>;
+> > 
+> >>>>> +		assigned-clock-rates = <800000000>, <600000000>,
+> >>>>> +				       <600000000>, <1000000000>;
+> >>>>> +		resets = <&cru SRST_A_RKVDEC1>, <&cru SRST_H_RKVDEC1>,
+> > 
+> > <&cru
+> > 
+> >>>>> SRST_RKVDEC1_CA>, +			 <&cru
+> > 
+> > SRST_RKVDEC1_CORE>, <&cru
+> > 
+> >>>>> SRST_RKVDEC1_HEVC_CA>;
+> >>>>> +		reset-names = "rst_axi", "rst_ahb", "rst_cabac",
+> >>>>> +			      "rst_core", "rst_hevc_cabac";
+> >>>>> +		power-domains = <&power RK3588_PD_RKVDEC1>;
+> >>>>> +		sram = <&vdec1_sram>;
+> >>>>> +		status = "okay";
+> >>>>> +	};
+> >>>> 
+> >>>> This is still missing the iommus, please add the iommus, they should be
+> >>>> 
+> >>>> supported/same as the one used for e.g. VOP2:
+> >>>>    compatible = "rockchip,rk3588-iommu", "rockchip,rk3568-iommu";
+> >>>> 
+> >>>> The VOP2 MMUs does have one extra mmu_cfg_mode flag in AUTO_GATING,
+> >>>> compared to the VDPU381 MMUs, however only the AV1D MMU should be
+> >>>> special on RK3588.
+> >>>> 
+> >>>> Please add the iommus :-)
+> >>> 
+> >>> When looking add the vendor DT/iommu driver I'm seeing serval quirks
+> >>> applied for vdec's iommus. Since it's rightly frowned upon adding such
+> >>> boolean-quirk-properties to upstream devicetrees, we'd at least need
+> >>> additional (fallback-) compatibles, even if it works with the iommu
+> >>> driver
+> >>> as is (what I doubt, but haven't tested). We need to be able to apply
+> >>> those
+> >>> quirks later without changing the devicetree (as usual) and I'm sure RK
+> >>> devs haven't added these quirks for the personal amusement.
+> >> 
+> >> Based on what I investigated the hw should work similar, and the quirks
+> >> mostly seem related to optimizations and sw quirks, like do not zap each
+> >> line, keep it alive even when pm runtime say it is not in use and other
+> >> quirks that seem to be more of sw nature on how to best utilize the hw.
+> > 
+> > I did some testing with the IOMMU but unfortunately, I'm only getting page
+> > fault errors. This may be something I'm doing wrong, but it clearly needs
+> > more investigation.
 > 
-> Signed-off-by: Farouk Bouabid <farouk.bouabid@cherry.de>
-> ---
->  .../devicetree/bindings/i2c/tsd,mule-i2c-mux.yaml  | 48 +++++++++++++
->  .../devicetree/bindings/mfd/tsd,mule.yaml          | 82 ++++++++++++++++++++++
->  2 files changed, 130 insertions(+)
+> I re-tested and the addition of sram seem to now cause page faults, the
+> sram also need to be mapped in the iommu.
 > 
-> diff --git a/Documentation/devicetree/bindings/i2c/tsd,mule-i2c-mux.yaml b/Documentation/devicetree/bindings/i2c/tsd,mule-i2c-mux.yaml
-> new file mode 100644
-> index 000000000000..ac9dfc936272
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/i2c/tsd,mule-i2c-mux.yaml
-> @@ -0,0 +1,48 @@
-> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/i2c/tsd,mule-i2c-mux.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: Mule I2C multiplexer
-> +
-> +maintainers:
-> +  - Farouk Bouabid <farouk.bouabid@cherry.de>
-> +  - Quentin Schulz <quentin.schulz@cherry.de>
-> +
-> +description: |
-> +  This module is part of the Mule I2C multi-function device. For more
-> +  details see ../mfd/tsd,mule.yaml.
-> +
-> +  Mule I2C-mux configures the active device that can be accessed on address
-> +  0x6f through the config register.
-> +
-> +      +--------------------------------------------------+
-> +      | Mule                                             |
-> +  0x18|    +---------------+                             |
-> +  -------->|Config register|----+                        |
-> +      |    +---------------+    |                        |
-> +      |                         V_                       |
-> +      |                        |  \          +--------+  |
-> +      |                        |   \-------->| dev #0 |  |
-> +      |                        |   |         +--------+  |
-> +  0x6f|                        | M |-------->| dev #1 |  |
-> +  ---------------------------->| U |         +--------+  |
-> +      |                        | X |-------->| dev #2 |  |
-> +      |                        |   |         +--------+  |
-> +      |                        |   /-------->| dev #3 |  |
-> +      |                        |__/          +--------+  |
-> +      +--------------------------------------------------+
-> +
-> +
-> +allOf:
-> +  - $ref: /schemas/i2c/i2c-mux.yaml#
-> +
-> +properties:
-> +  compatible:
-> +    const: tsd,mule-i2c-mux
-> +
-> +required:
-> +  - compatible
-> +
-> +unevaluatedProperties: false
-> diff --git a/Documentation/devicetree/bindings/mfd/tsd,mule.yaml b/Documentation/devicetree/bindings/mfd/tsd,mule.yaml
-> new file mode 100644
-> index 000000000000..ab532340a17c
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/mfd/tsd,mule.yaml
-> @@ -0,0 +1,82 @@
-> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/mfd/tsd,mule.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: Mule I2C multi function device
-> +
-> +maintainers:
-> +  - Farouk Bouabid <farouk.bouabid@cherry.de>
-> +  - Quentin Schulz <quentin.schulz@cherry.de>
-> +
-> +description:
-> +  Mule is an MCU that emulates a set of I2C devices, among which an amc6821
-> +  device and an I2C mux that exposes more emulated devices. These two devices
-> +  share the same I2C address. Only the I2C mux uses register (0xff) as a config
-> +  register.
-> +
-> +properties:
-> +  compatible:
-> +    const: tsd,mule
-> +
-> +  reg:
-> +    maxItems: 1
-> +
-> +  "#address-cells":
-> +    const: 1
-> +
-> +  "#size-cells":
-> +    const: 0
-> +
-> +patternProperties:
-> +  "^fan(@[0-9a-f]+)?$":
-> +    $ref: /schemas/trivial-devices.yaml
-
-That doesn't really define which device. You should do something like 
-this:
-
-additionalProperties: true
-properties:
-  compatible:
-    contains:
-      const: ti,amc6821
-
-If the compatible is correct, then the schema for it will be applied 
-separately.
-
-> +
-> +  "^i2c-mux(@[0-9a-f]+)?$":
-> +    $ref: /schemas/i2c/tsd,mule-i2c-mux.yaml
-> +
-> +required:
-> +  - "#address-cells"
-> +  - "#size-cells"
-> +  - compatible
-> +  - reg
-> +
-> +additionalProperties: false
-> +
-> +examples:
-> +  - |
-> +    i2c {
-> +        #address-cells = <1>;
-> +        #size-cells = <0>;
-> +
-> +        mule@18 {
-> +            compatible = "tsd,mule";
-> +            reg = <0x18>;
-> +            #address-cells = <1>;
-> +            #size-cells = <0>;
-> +
-> +            fan@18 {
-> +                compatible = "ti,amc6821";
-> +                reg = <0x18>;
-> +            };
-> +
-> +            i2c-mux {
-> +                compatible = "tsd,mule-i2c-mux";
-> +                #address-cells = <1>;
-> +                #size-cells = <0>;
-> +
-> +                i2c@0 {
-> +                    reg = <0x0>;
-> +                    #address-cells = <1>;
-> +                    #size-cells = <0>;
-> +
-> +                    rtc@6f {
-> +                        compatible = "isil,isl1208";
-> +                        reg = <0x6f>;
-> +                    };
-> +                };
-> +            };
-> +        };
-> +    };
-> +...
+> However, doing more testing revealed that use of iommu present the same
+> issue as seen with hevc on rk3399, after a fail fluster tests continue
+> to fail until a reset.
 > 
-> -- 
-> 2.34.1
+> Seeing how this issue was very similar I re-tested on rk3399 without
+> iommu and cma=1G and could observe that there was no longer any need to
+> reset after a failed test. Interestingly the score also went up from
+> 135 to 137/147.
 > 
+> Digging some more revealed that the iommu also is reset during the
+> internal rkvdec soft reset on error, leaving the iommu with dte_addr=0
+> and paging in disabled state.
+> 
+> Ensuring that the iommu was reconfigured after a failure fixed the issue
+> observed on rk3399 and I now also get 137/147 hevc fluster score using
+> the iommu.
+> 
+> Will send out a rkvdec hevc v2 series after some more testing.
+> 
+> Guessing there is a similar need to reconfigure iommu on rk3588, and my
+> initial tests also showed promising result, however more tests are
+> needed.
+
+I did some testing with the IOMMU. The good news is that it now works with the 
+SRAM.
+I am also able to hack the iommu driver to force a reset in case of an error 
+in the decoder. I'm not sure how to implement that with the IOMMU kernel API 
+though.
+
+Another issue is that resetting the iommu will drop all buffer addresses of 
+other decoding contexts that may be running in parallel.
+
+I *think* that the downstream mpp remaps the buffers in the iommu for each 
+frame, but I'm not sure about that either.
+
+So running fluster with `-j 1` gives me the expected 129/135 passed tests, but 
+`-j 8` will start failing all tests after the first fail (well, first fail 
+because of decoder error).
+
+> Regards,
+> Jonas
+> 
+> >>> If Detlev says
+> >>> iommu is out of scope for this series (which is valid), I'd say it's
+> >>> fine
+> >>> to leave them out for now (as no binding exists) and the HW works
+> >>> (obviously) fine without them.
+> >> 
+> >> Sure, use of MMU can be added later.
+> > 
+> > I'd rather go for that for now. I'll add that IMMU support is missing in
+> > the TODO file.
+> > 
+> >> Regards,
+> >> Jonas
+> >> 
+> >>>> Regards,
+> >>>> Jonas
+> >>>> 
+> >>>>>   };
+> >>>>>   
+> >>>>>   #include "rk3588s-pinctrl.dtsi"
+
+
+--nextPart2196199.Mh6RI2rZIc
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: This is a digitally signed message part.
+Content-Transfer-Encoding: 7Bit
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCAAdFiEEonF9IvGrXNkDg+CX5EFKUk4x7bYFAmZ90gsACgkQ5EFKUk4x
+7bYa6gf+MiaSK8Y5oLb5OSnCyDTkgoikfs0H7IRjhc9JfuVseIw/XGzQ5T8i83SE
+stQe2/brIQeUu5zchivSMvfmJg+ru2YMamAbT/mnMcpB3yeDrAqNBEvkssw4NHgg
+bu2QBJgjJHOyNshda9CX5tCs1qkZG2O90QF/UPl01LaLxQ9ELSlEAcbDhsl7bwHJ
+2jaPH9Jjx/aKF85ejNCG1/uprnRp0Lt6rSaPl7tmxBbod/kzU92WZmAoDOvoroRr
+d8VKGBINQ5pJKfBo4+tavqd7UR1OAH0cVR4E4b2kGjG57qOU32qizZoF3qr/nQBl
+A3ePYf8XuUKjf33eZ2SkF1kqF2fWOw==
+=JJQJ
+-----END PGP SIGNATURE-----
+
+--nextPart2196199.Mh6RI2rZIc--
+
+
+
+
+
+--===============6235513599363634425==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============6235513599363634425==--
+
+
+
+
