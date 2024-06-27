@@ -4,44 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 03FD6C2BD09
-	for <linux-rockchip@archiver.kernel.org>; Thu, 27 Jun 2024 21:36:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3E3ACC2BD09
+	for <linux-rockchip@archiver.kernel.org>; Thu, 27 Jun 2024 22:40:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=YH+RL0UTP36KSCePH3hWfUfrN2pMH8H7TgsgPQX/TVw=; b=3pGKZEWLqvYWz1
-	PjM4opQYrTbE9xLwrxDhAn9bQWEiAg6YBZeI4IYO/sN/xtlqdqh+vUwRQo1fhFjOCBuhvcI3pwSOM
-	ZgenrCf7OlFozky23fkCP+6YT4rLND6dnF4MaVlb3Iznid2cKsX/UK3C14j/Kt9nJU96HZ98ZHj7J
-	23KNrqUvWduIqZgLESgNVRtBoadmEY/1tRA0JaAhHrLlpahENrmyxLpoji0E08HD95iLLFfgPTAE2
-	DGkyFeKMvdlvVnOfD59kQDzvWZ0HngSULkWjHRiX3Z5rWg3CymBk7FYYS2RRCJ6pY1maKzTvcJXh5
-	exd//X5S/5Fxd9Z6kkfQ==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=KP8VIUgTVZkPfurD0NKQ4U6lJne4TXiet4QO47u++qc=; b=yyRCo0LCIY1vFZ
+	/72zPBDjwPI0WZV1uksShV9ECD8fzX4vyV8LELZMSi+rCVXPwj//kOLCCu7tN5bTxem7YONSyObZk
+	kKYbDYtQDJ6/6swvW/6G/HhC6/VPDMg1cesMg+Sg3NGADw7z4ULC/zsUiSEyYjuX77rDczMDxbFCf
+	FHdpZbKaf1jmR0Kp8W/lFcjm8vd9IhovoxLXnaGF1Axyus7v8H06c6cWqzGMezlC4xm4BoSaSmbSV
+	oxMP1rz3JpNK9e9AmFHOd69uieDr8WVUvSR4/5sukHORrnFtDP/4ZJNP5zDL7T3e2yzjN87yANyLU
+	wJmxgGsWpHrlkdnqV/1w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sMwmq-0000000Bmhs-0hyV;
-	Thu, 27 Jun 2024 21:36:12 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1sMxn3-0000000Bu1l-3QrD;
+	Thu, 27 Jun 2024 22:40:29 +0000
+Received: from smtp.forwardemail.net ([167.172.40.54])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sMwmj-0000000Bmf9-3JwC;
-	Thu, 27 Jun 2024 21:36:11 +0000
-Received: from i53875b6a.versanet.de ([83.135.91.106] helo=diego.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1sMwmh-0002b5-OG; Thu, 27 Jun 2024 23:36:03 +0200
-From: Heiko Stuebner <heiko@sntech.de>
-To: arm@kernel.org
-Cc: soc@kernel.org, linux-rockchip@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org
-Subject: [GIT PULL] Rockchip dts fixes for 6.10
-Date: Thu, 27 Jun 2024 23:36:02 +0200
-Message-ID: <10237789.nnTZe4vzsl@diego>
+	id 1sMxn0-0000000Bu0L-3b1s
+	for linux-rockchip@lists.infradead.org;
+	Thu, 27 Jun 2024 22:40:28 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
+ h=Content-Transfer-Encoding: Content-Type: In-Reply-To: From: References:
+ Cc: To: Subject: MIME-Version: Date: Message-ID; q=dns/txt;
+ s=fe-e1b5cab7be; t=1719527987;
+ bh=T+ODF2QQb3M9VxR/DcI5hc7RpVqGuO9QNHxroA50Or4=;
+ b=InEGDS5DEsQCJToL2dUUmKvmuteY89OrTvHK6XXxd0f6slVgmA/GqIsCxMB0XTb3jXrZ5/JDX
+ ZxvXWUVRKXB3If/ZDwLkjItmGkI/1dCtOz9w5gxW6jjN288t/Wz4GyLLOCvKH7JzNJ2vWw9HMY+
+ VnodSNXMUN3F0F+5OhlclcGZGtg0T6Tu4gr3S8e18sRBXRvdKwYHtRW38JrxNtx98RHwJpg0y4E
+ VTGwM22erKhxrT/mIuVfcqhD8/TIbZ0rb+DSoNOeJ4E+16+XWQbLJqztEluqVYy6ib9wH7TX+DI
+ +Td5LAgAEWECch9tgFp0icDb5ZMyiAniRS+s06UMpVTQ==
+Message-ID: <689aec72-f777-4122-a332-02009fbf0b3b@kwiboo.se>
+Date: Fri, 28 Jun 2024 00:39:36 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 4/4] arm64: dts: rockchip: Add rkvdec2 Video Decoder on
+ rk3588(s)
+To: Detlev Casanova <detlev.casanova@collabora.com>, Alex Bee
+ <knaerzche@gmail.com>
+Cc: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>, Mauro Carvalho Chehab
+ <mchehab@kernel.org>, Rob Herring <robh@kernel.org>, Krzysztof Kozlowski
+ <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner
+ <heiko@sntech.de>, "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>,
+ Sebastian Reichel <sebastian.reichel@collabora.com>, Dragan Simic
+ <dsimic@manjaro.org>, Diederik de Haas <didi.debian@cknow.org>, Andy Yan
+ <andy.yan@rock-chips.com>, Boris Brezillon
+ <boris.brezillon@collabora.com>, Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+ Daniel Almeida <daniel.almeida@collabora.com>, Paul Kocialkowski
+ <paul.kocialkowski@bootlin.com>, Nicolas Dufresne
+ <nicolas.dufresne@collabora.com>, Benjamin Gaignard
+ <benjamin.gaignard@collabora.com>, linux-media@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-staging@lists.linux.dev,
+ linux-kernel@vger.kernel.org
+References: <20240619150029.59730-1-detlev.casanova@collabora.com>
+ <5790441.DvuYhMxLoT@arisu> <156b5aaf-8b9a-46b9-82c2-d7e32f4899f5@kwiboo.se>
+ <4356151.ejJDZkT8p0@arisu>
+Content-Language: en-US
+From: Jonas Karlman <jonas@kwiboo.se>
+In-Reply-To: <4356151.ejJDZkT8p0@arisu>
+X-Report-Abuse-To: abuse@forwardemail.net
+X-Report-Abuse: abuse@forwardemail.net
+X-Complaints-To: abuse@forwardemail.net
+X-ForwardEmail-Version: 0.4.40
+X-ForwardEmail-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
+ 167.172.40.54
+X-ForwardEmail-ID: 667dea2e9c94b9ccb4f64bc2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240627_143605_865997_7E4296CE 
-X-CRM114-Status: GOOD (  13.71  )
+X-CRM114-CacheID: sfid-20240627_154027_070344_7E79ED7F 
+X-CRM114-Status: GOOD (  40.89  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -58,81 +92,289 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Arnd, Kevin, Olof,
+Hi Datlev,
 
-please find a below a collection of fixes for the current release 6.10
-cycle.
+On 2024-06-27 22:56, Detlev Casanova wrote:
+> Hi Jonas,
+> 
+> On Monday, June 24, 2024 5:16:33 A.M. EDT Jonas Karlman wrote:
+>> Hi Detlev and Alex,
+>>
+>> On 2024-06-20 15:31, Detlev Casanova wrote:
+>>> Hi Jonas, Alex,
+>>>
+>>> On Wednesday, June 19, 2024 2:06:40 P.M. EDT Jonas Karlman wrote:
+>>>> Hi Alex,
+>>>>
+>>>> On 2024-06-19 19:19, Alex Bee wrote:
+>>>>> Am 19.06.24 um 17:28 schrieb Jonas Karlman:
+>>>>>> Hi Detlev,
+>>>>>>
+>>>>>> On 2024-06-19 16:57, Detlev Casanova wrote:
+>>>>>>> Add the rkvdec2 Video Decoder to the RK3588s devicetree.
+>>>>>>>
+>>>>>>> Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
+>>>>>>> ---
+>>>>>>>
+>>>>>>>   arch/arm64/boot/dts/rockchip/rk3588s.dtsi | 50
+>>>>>>>   +++++++++++++++++++++++
+>>>>>>>   1 file changed, 50 insertions(+)
+>>>>>>>
+>>>>>>> diff --git a/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
+>>>>>>> b/arch/arm64/boot/dts/rockchip/rk3588s.dtsi index
+>>>>>>> 6ac5ac8b48ab..7690632f57f1 100644
+>>>>>>> --- a/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
+>>>>>>> +++ b/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
+>>>>>>> @@ -2596,6 +2596,16 @@ system_sram2: sram@ff001000 {
+>>>>>>>
+>>>>>>>   		ranges = <0x0 0x0 0xff001000 0xef000>;
+>>>>>>>   		#address-cells = <1>;
+>>>>>>>   		#size-cells = <1>;
+>>>>>>>
+>>>>>>> +
+>>>>>>> +		vdec0_sram: rkvdec-sram@0 {
+>>>>>>> +			reg = <0x0 0x78000>;
+>>>>>>> +			pool;
+>>>>>>> +		};
+>>>>>>> +
+>>>>>>> +		vdec1_sram: rkvdec-sram@1 {
+>>>>>>> +			reg = <0x78000 0x77000>;
+>>>>>>> +			pool;
+>>>>>>> +		};
+>>>>>>>
+>>>>>>>   	};
+>>>>>>>   	
+>>>>>>>   	pinctrl: pinctrl {
+>>>>>>>
+>>>>>>> @@ -2665,6 +2675,46 @@ gpio4: gpio@fec50000 {
+>>>>>>>
+>>>>>>>   			#interrupt-cells = <2>;
+>>>>>>>   		
+>>>>>>>   		};
+>>>>>>>   	
+>>>>>>>   	};
+>>>>>>>
+>>>>>>> +
+>>>>>>> +	vdec0: video-decoder@fdc38100 {
+>>>>>>> +		compatible = "rockchip,rk3588-vdec";
+>>>>>>> +		reg = <0x0 0xfdc38100 0x0 0x500>;
+>>>>>>> +		interrupts = <GIC_SPI 95 IRQ_TYPE_LEVEL_HIGH 0>;
+>>>>>>> +		clocks = <&cru ACLK_RKVDEC0>, <&cru HCLK_RKVDEC0>,
+>>>
+>>> <&cru
+>>>
+>>>>>>> CLK_RKVDEC0_CA>, +			 <&cru
+>>>
+>>> CLK_RKVDEC0_CORE>, <&cru
+>>>
+>>>>>>> CLK_RKVDEC0_HEVC_CA>;
+>>>>>>> +		clock-names = "axi", "ahb", "cabac", "core",
+>>>
+>>> "hevc_cabac";
+>>>
+>>>>>>> +		assigned-clocks = <&cru ACLK_RKVDEC0>, <&cru
+>>>
+>>> CLK_RKVDEC0_CORE>,
+>>>
+>>>>>>> +				  <&cru CLK_RKVDEC0_CA>, <&cru
+>>>
+>>> CLK_RKVDEC0_HEVC_CA>;
+>>>
+>>>>>>> +		assigned-clock-rates = <800000000>, <600000000>,
+>>>>>>> +				       <600000000>, <1000000000>;
+>>>>>>> +		resets = <&cru SRST_A_RKVDEC0>, <&cru SRST_H_RKVDEC0>,
+>>>
+>>> <&cru
+>>>
+>>>>>>> SRST_RKVDEC0_CA>, +			 <&cru
+>>>
+>>> SRST_RKVDEC0_CORE>, <&cru
+>>>
+>>>>>>> SRST_RKVDEC0_HEVC_CA>;
+>>>>>>> +		reset-names = "rst_axi", "rst_ahb", "rst_cabac",
+>>>>>>> +			      "rst_core", "rst_hevc_cabac";
+>>>>>>> +		power-domains = <&power RK3588_PD_RKVDEC0>;
+>>>>>>> +		sram = <&vdec0_sram>;
+>>>>>>> +		status = "okay";
+>>>>>>> +	};
+>>>>>>> +
+>>>>>>> +	vdec1: video-decoder@fdc40100 {
+>>>>>>> +		compatible = "rockchip,rk3588-vdec";
+>>>>>>> +		reg = <0x0 0xfdc40100 0x0 0x500>;
+>>>>>>> +		interrupts = <GIC_SPI 97 IRQ_TYPE_LEVEL_HIGH 0>;
+>>>>>>> +		clocks = <&cru ACLK_RKVDEC1>, <&cru HCLK_RKVDEC1>,
+>>>
+>>> <&cru
+>>>
+>>>>>>> CLK_RKVDEC1_CA>, +			 <&cru
+>>>
+>>> CLK_RKVDEC1_CORE>, <&cru
+>>>
+>>>>>>> CLK_RKVDEC1_HEVC_CA>;
+>>>>>>> +		clock-names = "axi", "ahb", "cabac", "core",
+>>>
+>>> "hevc_cabac";
+>>>
+>>>>>>> +		assigned-clocks = <&cru ACLK_RKVDEC1>, <&cru
+>>>
+>>> CLK_RKVDEC1_CORE>,
+>>>
+>>>>>>> +				  <&cru CLK_RKVDEC1_CA>, <&cru
+>>>
+>>> CLK_RKVDEC1_HEVC_CA>;
+>>>
+>>>>>>> +		assigned-clock-rates = <800000000>, <600000000>,
+>>>>>>> +				       <600000000>, <1000000000>;
+>>>>>>> +		resets = <&cru SRST_A_RKVDEC1>, <&cru SRST_H_RKVDEC1>,
+>>>
+>>> <&cru
+>>>
+>>>>>>> SRST_RKVDEC1_CA>, +			 <&cru
+>>>
+>>> SRST_RKVDEC1_CORE>, <&cru
+>>>
+>>>>>>> SRST_RKVDEC1_HEVC_CA>;
+>>>>>>> +		reset-names = "rst_axi", "rst_ahb", "rst_cabac",
+>>>>>>> +			      "rst_core", "rst_hevc_cabac";
+>>>>>>> +		power-domains = <&power RK3588_PD_RKVDEC1>;
+>>>>>>> +		sram = <&vdec1_sram>;
+>>>>>>> +		status = "okay";
+>>>>>>> +	};
+>>>>>>
+>>>>>> This is still missing the iommus, please add the iommus, they should be
+>>>>>>
+>>>>>> supported/same as the one used for e.g. VOP2:
+>>>>>>    compatible = "rockchip,rk3588-iommu", "rockchip,rk3568-iommu";
+>>>>>>
+>>>>>> The VOP2 MMUs does have one extra mmu_cfg_mode flag in AUTO_GATING,
+>>>>>> compared to the VDPU381 MMUs, however only the AV1D MMU should be
+>>>>>> special on RK3588.
+>>>>>>
+>>>>>> Please add the iommus :-)
+>>>>>
+>>>>> When looking add the vendor DT/iommu driver I'm seeing serval quirks
+>>>>> applied for vdec's iommus. Since it's rightly frowned upon adding such
+>>>>> boolean-quirk-properties to upstream devicetrees, we'd at least need
+>>>>> additional (fallback-) compatibles, even if it works with the iommu
+>>>>> driver
+>>>>> as is (what I doubt, but haven't tested). We need to be able to apply
+>>>>> those
+>>>>> quirks later without changing the devicetree (as usual) and I'm sure RK
+>>>>> devs haven't added these quirks for the personal amusement.
+>>>>
+>>>> Based on what I investigated the hw should work similar, and the quirks
+>>>> mostly seem related to optimizations and sw quirks, like do not zap each
+>>>> line, keep it alive even when pm runtime say it is not in use and other
+>>>> quirks that seem to be more of sw nature on how to best utilize the hw.
+>>>
+>>> I did some testing with the IOMMU but unfortunately, I'm only getting page
+>>> fault errors. This may be something I'm doing wrong, but it clearly needs
+>>> more investigation.
+>>
+>> I re-tested and the addition of sram seem to now cause page faults, the
+>> sram also need to be mapped in the iommu.
+>>
+>> However, doing more testing revealed that use of iommu present the same
+>> issue as seen with hevc on rk3399, after a fail fluster tests continue
+>> to fail until a reset.
+>>
+>> Seeing how this issue was very similar I re-tested on rk3399 without
+>> iommu and cma=1G and could observe that there was no longer any need to
+>> reset after a failed test. Interestingly the score also went up from
+>> 135 to 137/147.
+>>
+>> Digging some more revealed that the iommu also is reset during the
+>> internal rkvdec soft reset on error, leaving the iommu with dte_addr=0
+>> and paging in disabled state.
+>>
+>> Ensuring that the iommu was reconfigured after a failure fixed the issue
+>> observed on rk3399 and I now also get 137/147 hevc fluster score using
+>> the iommu.
+>>
+>> Will send out a rkvdec hevc v2 series after some more testing.
+>>
+>> Guessing there is a similar need to reconfigure iommu on rk3588, and my
+>> initial tests also showed promising result, however more tests are
+>> needed.
+> 
+> I did some testing with the IOMMU. The good news is that it now works with the 
+> SRAM.
 
-Please pull
+Great, I did not look into SRAM at all, just replaced sram prop with iommus for
+my tests, so great that you found a way to make it work with the iommu :-)
 
-Thanks
-Heiko
+> I am also able to hack the iommu driver to force a reset in case of an error 
+> in the decoder. I'm not sure how to implement that with the IOMMU kernel API 
+> though.
 
+I am planning on sending something along the way of this as an RFC:
 
-The following changes since commit 1613e604df0cd359cf2a7fbd9be7a0bcfacfabd0:
+https://github.com/Kwiboo/linux-rockchip/compare/6da640232631...bf332524d880
 
-  Linux 6.10-rc1 (2024-05-26 15:20:12 -0700)
+If we re-configure and re-enable the iommu just before next decoding run
+after a decoding has failed seem to resolve any issue I have seen, have
+mainly been tested with rkvdec and HEVC on RK3399/RK3328. On RK3588 this
+also seemed to work, at least when I tested earlier this week.
 
-are available in the Git repository at:
+> 
+> Another issue is that resetting the iommu will drop all buffer addresses of 
+> other decoding contexts that may be running in parallel.
 
-  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v6.10-rockchip-dtsfixes1
+I do not think we need/should reset the iommu, we just need to deal with
+the fact that the rkvdec will reset and disable use of the mmu when it
+reset itself.
 
-for you to fetch changes up to 8d7ec44aa5d1eb94a30319074762a1740440cdc8:
+> 
+> I *think* that the downstream mpp remaps the buffers in the iommu for each 
+> frame, but I'm not sure about that either.
 
-  arm64: dts: rockchip: Add sound-dai-cells for RK3368 (2024-06-24 17:05:23 +0200)
+As long as a frame can be decoded correctly, the mmu config seem to continue
+to be valid and next frame can be decoded.
 
-----------------------------------------------------------------
-Apart from the regular dts fixes for wrong addresses, missing
-or wrong properties, this reverts the previous move away from
-cd-gpios to the mmc-controller's internal card-detect.
-With this change applied, it was reported that boards could not
-detect card anymore, so this go reverted of course.
+> 
+> So running fluster with `-j 1` gives me the expected 129/135 passed tests, but 
+> `-j 8` will start failing all tests after the first fail (well, first fail 
+> because of decoder error).
 
-----------------------------------------------------------------
-Alex Bee (1):
-      arm64: dts: rockchip: Add sound-dai-cells for RK3368
+This was the main issue blocking rkvdec hevc, just re-confgure the mmu
+after a frame fails to decode seem to resolve this issue.
 
-Andy Yan (1):
-      arm64: dts: rockchip: Fix the i2c address of es8316 on Cool Pi 4B
+Biggest issue at the moment is how to properly signal iommu subsystem that
+it should re-configure, I may have abused the flush_iotlb_all ops, since
+that seemed closest existing hook.
 
-Dragan Simic (1):
-      arm64: dts: rockchip: Fix the DCDC_REG2 minimum voltage on Quartz64 Model B
+Will send an RFC to linux-iommu to collect input on how to best signal
+iommu subsystem that the mmu has been reset by an external event and now
+need to be re-configured.
 
-FUKAUMI Naoki (3):
-      Revert "arm64: dts: rockchip: remove redundant cd-gpios from rk3588 sdmmc nodes"
-      arm64: dts: rockchip: make poweroff(8) work on Radxa ROCK 5A
-      arm64: dts: rockchip: fix PMIC interrupt pin on ROCK Pi E
+Regards,
+Jonas
 
-Heiko Stuebner (1):
-      arm64: dts: rockchip: set correct pwm0 pinctrl on rk3588-tiger
-
-Hsin-Te Yuan (1):
-      arm64: dts: rockchip: Fix the value of `dlg,jack-det-rate` mismatch on rk3399-gru
-
-Johan Jonker (1):
-      ARM: dts: rockchip: rk3066a: add #sound-dai-cells to hdmi node
-
-Jonas Karlman (3):
-      arm64: dts: rockchip: Fix rk3308 codec@ff560000 reset-names
-      arm64: dts: rockchip: Fix SD NAND and eMMC init on rk3308-rock-pi-s
-      arm64: dts: rockchip: Rename LED related pinctrl nodes on rk3308-rock-pi-s
-
- arch/arm/boot/dts/rockchip/rk3066a.dtsi                |  1 +
- arch/arm64/boot/dts/rockchip/rk3308-rock-pi-s.dts      | 18 +++++++++++++-----
- arch/arm64/boot/dts/rockchip/rk3308.dtsi               |  2 +-
- arch/arm64/boot/dts/rockchip/rk3328-rock-pi-e.dts      |  4 ++--
- arch/arm64/boot/dts/rockchip/rk3368.dtsi               |  3 +++
- arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi           |  2 +-
- arch/arm64/boot/dts/rockchip/rk3566-quartz64-b.dts     |  2 +-
- .../arm64/boot/dts/rockchip/rk3588-orangepi-5-plus.dts |  1 +
- arch/arm64/boot/dts/rockchip/rk3588-quartzpro64.dts    |  1 +
- arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts        |  1 +
- arch/arm64/boot/dts/rockchip/rk3588-tiger.dtsi         |  5 +++++
- arch/arm64/boot/dts/rockchip/rk3588s-coolpi-4b.dts     |  4 ++--
- arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts       |  2 ++
- 13 files changed, 34 insertions(+), 12 deletions(-)
-
-
+> 
+>> Regards,
+>> Jonas
+>>
+>>>>> If Detlev says
+>>>>> iommu is out of scope for this series (which is valid), I'd say it's
+>>>>> fine
+>>>>> to leave them out for now (as no binding exists) and the HW works
+>>>>> (obviously) fine without them.
+>>>>
+>>>> Sure, use of MMU can be added later.
+>>>
+>>> I'd rather go for that for now. I'll add that IMMU support is missing in
+>>> the TODO file.
+>>>
+>>>> Regards,
+>>>> Jonas
+>>>>
+>>>>>> Regards,
+>>>>>> Jonas
+>>>>>>
+>>>>>>>   };
+>>>>>>>   
+>>>>>>>   #include "rk3588s-pinctrl.dtsi"
+> 
 
 
 _______________________________________________
