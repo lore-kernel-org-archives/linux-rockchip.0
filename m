@@ -4,78 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3E3ACC2BD09
-	for <linux-rockchip@archiver.kernel.org>; Thu, 27 Jun 2024 22:40:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4405DC2BD09
+	for <linux-rockchip@archiver.kernel.org>; Thu, 27 Jun 2024 23:28:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=KP8VIUgTVZkPfurD0NKQ4U6lJne4TXiet4QO47u++qc=; b=yyRCo0LCIY1vFZ
-	/72zPBDjwPI0WZV1uksShV9ECD8fzX4vyV8LELZMSi+rCVXPwj//kOLCCu7tN5bTxem7YONSyObZk
-	kKYbDYtQDJ6/6swvW/6G/HhC6/VPDMg1cesMg+Sg3NGADw7z4ULC/zsUiSEyYjuX77rDczMDxbFCf
-	FHdpZbKaf1jmR0Kp8W/lFcjm8vd9IhovoxLXnaGF1Axyus7v8H06c6cWqzGMezlC4xm4BoSaSmbSV
-	oxMP1rz3JpNK9e9AmFHOd69uieDr8WVUvSR4/5sukHORrnFtDP/4ZJNP5zDL7T3e2yzjN87yANyLU
-	wJmxgGsWpHrlkdnqV/1w==;
+	List-Owner; bh=C8Rbl1wGYfZzB0P0Tkv7lY5BlRTuYLdtCOl74+cDW6E=; b=XfJ9d5/i51y2b7
+	jhtEEVr65aouOkdm+xXSRd2mHoD4gqMXDzPskh/copNntSMoyKz5A6OHZrUNo2KfXPCnulIOJWXVj
+	ttg3v/V3soDZBJRgN32EnAjWowccEse4ofWHUYGZoc34aPBcoBZTTXAFMSdw/zZvs5DxPGOFS9UO3
+	JIPBxWrWSd4tvR29MC1fhpFEmZRzSxYwCcY4K4MYgKPJnUsTuw7ue4NKFRas/JKzra2KRmGA2E/r5
+	E8XLfp2cc//ZJa0W1Hj7TmNLIT4X67exBTMpIQ81IXfMa1F7ohBFrg/aLqJO1wEMMnObXXHKdNffl
+	sBgNb5asX54nTyvFFEyQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sMxn3-0000000Bu1l-3QrD;
-	Thu, 27 Jun 2024 22:40:29 +0000
-Received: from smtp.forwardemail.net ([167.172.40.54])
+	id 1sMyXu-0000000By9h-2iOm;
+	Thu, 27 Jun 2024 23:28:54 +0000
+Received: from mgamail.intel.com ([198.175.65.16])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sMxn0-0000000Bu0L-3b1s
+	id 1sMyXr-0000000By91-3n87
 	for linux-rockchip@lists.infradead.org;
-	Thu, 27 Jun 2024 22:40:28 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
- h=Content-Transfer-Encoding: Content-Type: In-Reply-To: From: References:
- Cc: To: Subject: MIME-Version: Date: Message-ID; q=dns/txt;
- s=fe-e1b5cab7be; t=1719527987;
- bh=T+ODF2QQb3M9VxR/DcI5hc7RpVqGuO9QNHxroA50Or4=;
- b=InEGDS5DEsQCJToL2dUUmKvmuteY89OrTvHK6XXxd0f6slVgmA/GqIsCxMB0XTb3jXrZ5/JDX
- ZxvXWUVRKXB3If/ZDwLkjItmGkI/1dCtOz9w5gxW6jjN288t/Wz4GyLLOCvKH7JzNJ2vWw9HMY+
- VnodSNXMUN3F0F+5OhlclcGZGtg0T6Tu4gr3S8e18sRBXRvdKwYHtRW38JrxNtx98RHwJpg0y4E
- VTGwM22erKhxrT/mIuVfcqhD8/TIbZ0rb+DSoNOeJ4E+16+XWQbLJqztEluqVYy6ib9wH7TX+DI
- +Td5LAgAEWECch9tgFp0icDb5ZMyiAniRS+s06UMpVTQ==
-Message-ID: <689aec72-f777-4122-a332-02009fbf0b3b@kwiboo.se>
-Date: Fri, 28 Jun 2024 00:39:36 +0200
+	Thu, 27 Jun 2024 23:28:53 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1719530932; x=1751066932;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=6EwIKOU1Dh5cgZC+rn6rFBOG6D4DD4V6YRDlIp+qNKg=;
+  b=M8V9MUp7/jClC8xLGd0jxIA3l4c2AjANEqCH/vC3cK7bvnxIHEebPlNK
+   lrw+tzA5lyHY8L4soJ8OZfSZGji6rR/P2wqTeonNCF/ooyC8+TuvEUyTk
+   JkjS2zgFSlc8rtoKY+7x1amrAli36GuTskHQC7+tGRh6dJ/wpfdHUgm2j
+   ldUl2S22wd/1xtv6ATswSy/4KcnhsUQd5ysTG0Xz58ybUKIBYAxfU+jTh
+   kftOShx9Y44CamI33XXXsbktGtwNwagSh6s3YrD/6NwOAznmB3iS+Zih9
+   FP7STwAtJPAbPfn0Hyg+SLvVWqqGQIIXqCaWX4cWB7gg/5D29AvkD5GkQ
+   Q==;
+X-CSE-ConnectionGUID: xkrX3BTLQoWfhkPzHVv84Q==
+X-CSE-MsgGUID: nMvPpwA+TEmIkQa1oISAQA==
+X-IronPort-AV: E=McAfee;i="6700,10204,11116"; a="16825804"
+X-IronPort-AV: E=Sophos;i="6.09,167,1716274800"; 
+   d="scan'208";a="16825804"
+Received: from orviesa002.jf.intel.com ([10.64.159.142])
+  by orvoesa108.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 27 Jun 2024 16:28:49 -0700
+X-CSE-ConnectionGUID: 3WzsxqeNT+SkXsm9y43Rhw==
+X-CSE-MsgGUID: wd47othBTGGPpHXIeWViYg==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.09,167,1716274800"; 
+   d="scan'208";a="75300930"
+Received: from lkp-server01.sh.intel.com (HELO 68891e0c336b) ([10.239.97.150])
+  by orviesa002.jf.intel.com with ESMTP; 27 Jun 2024 16:28:46 -0700
+Received: from kbuild by 68891e0c336b with local (Exim 4.96)
+	(envelope-from <lkp@intel.com>)
+	id 1sMyXk-000Gck-0X;
+	Thu, 27 Jun 2024 23:28:44 +0000
+Date: Fri, 28 Jun 2024 07:28:13 +0800
+From: kernel test robot <lkp@intel.com>
+To: FUKAUMI Naoki <naoki@radxa.com>, heiko@sntech.de
+Cc: oe-kbuild-all@lists.linux.dev, robh@kernel.org, krzk+dt@kernel.org,
+	conor+dt@kernel.org, devicetree@vger.kernel.org,
+	linux-rockchip@lists.infradead.org, FUKAUMI Naoki <naoki@radxa.com>
+Subject: Re: [PATCH v3 3/3] arm64: dts: rockchip: add support for Radxa ROCK
+ Pi E v3.0
+Message-ID: <202406280702.5pGvBTdS-lkp@intel.com>
+References: <20240623201415.3205-3-naoki@radxa.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 4/4] arm64: dts: rockchip: Add rkvdec2 Video Decoder on
- rk3588(s)
-To: Detlev Casanova <detlev.casanova@collabora.com>, Alex Bee
- <knaerzche@gmail.com>
-Cc: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>, Mauro Carvalho Chehab
- <mchehab@kernel.org>, Rob Herring <robh@kernel.org>, Krzysztof Kozlowski
- <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner
- <heiko@sntech.de>, "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>,
- Sebastian Reichel <sebastian.reichel@collabora.com>, Dragan Simic
- <dsimic@manjaro.org>, Diederik de Haas <didi.debian@cknow.org>, Andy Yan
- <andy.yan@rock-chips.com>, Boris Brezillon
- <boris.brezillon@collabora.com>, Hans Verkuil <hverkuil-cisco@xs4all.nl>,
- Daniel Almeida <daniel.almeida@collabora.com>, Paul Kocialkowski
- <paul.kocialkowski@bootlin.com>, Nicolas Dufresne
- <nicolas.dufresne@collabora.com>, Benjamin Gaignard
- <benjamin.gaignard@collabora.com>, linux-media@vger.kernel.org,
- linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-staging@lists.linux.dev,
- linux-kernel@vger.kernel.org
-References: <20240619150029.59730-1-detlev.casanova@collabora.com>
- <5790441.DvuYhMxLoT@arisu> <156b5aaf-8b9a-46b9-82c2-d7e32f4899f5@kwiboo.se>
- <4356151.ejJDZkT8p0@arisu>
-Content-Language: en-US
-From: Jonas Karlman <jonas@kwiboo.se>
-In-Reply-To: <4356151.ejJDZkT8p0@arisu>
-X-Report-Abuse-To: abuse@forwardemail.net
-X-Report-Abuse: abuse@forwardemail.net
-X-Complaints-To: abuse@forwardemail.net
-X-ForwardEmail-Version: 0.4.40
-X-ForwardEmail-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
- 167.172.40.54
-X-ForwardEmail-ID: 667dea2e9c94b9ccb4f64bc2
+Content-Disposition: inline
+In-Reply-To: <20240623201415.3205-3-naoki@radxa.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240627_154027_070344_7E79ED7F 
-X-CRM114-Status: GOOD (  40.89  )
+X-CRM114-CacheID: sfid-20240627_162852_015085_91FFF671 
+X-CRM114-Status: GOOD (  10.28  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,290 +90,46 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Datlev,
+Hi FUKAUMI,
 
-On 2024-06-27 22:56, Detlev Casanova wrote:
-> Hi Jonas,
-> 
-> On Monday, June 24, 2024 5:16:33 A.M. EDT Jonas Karlman wrote:
->> Hi Detlev and Alex,
->>
->> On 2024-06-20 15:31, Detlev Casanova wrote:
->>> Hi Jonas, Alex,
->>>
->>> On Wednesday, June 19, 2024 2:06:40 P.M. EDT Jonas Karlman wrote:
->>>> Hi Alex,
->>>>
->>>> On 2024-06-19 19:19, Alex Bee wrote:
->>>>> Am 19.06.24 um 17:28 schrieb Jonas Karlman:
->>>>>> Hi Detlev,
->>>>>>
->>>>>> On 2024-06-19 16:57, Detlev Casanova wrote:
->>>>>>> Add the rkvdec2 Video Decoder to the RK3588s devicetree.
->>>>>>>
->>>>>>> Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
->>>>>>> ---
->>>>>>>
->>>>>>>   arch/arm64/boot/dts/rockchip/rk3588s.dtsi | 50
->>>>>>>   +++++++++++++++++++++++
->>>>>>>   1 file changed, 50 insertions(+)
->>>>>>>
->>>>>>> diff --git a/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
->>>>>>> b/arch/arm64/boot/dts/rockchip/rk3588s.dtsi index
->>>>>>> 6ac5ac8b48ab..7690632f57f1 100644
->>>>>>> --- a/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
->>>>>>> +++ b/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
->>>>>>> @@ -2596,6 +2596,16 @@ system_sram2: sram@ff001000 {
->>>>>>>
->>>>>>>   		ranges = <0x0 0x0 0xff001000 0xef000>;
->>>>>>>   		#address-cells = <1>;
->>>>>>>   		#size-cells = <1>;
->>>>>>>
->>>>>>> +
->>>>>>> +		vdec0_sram: rkvdec-sram@0 {
->>>>>>> +			reg = <0x0 0x78000>;
->>>>>>> +			pool;
->>>>>>> +		};
->>>>>>> +
->>>>>>> +		vdec1_sram: rkvdec-sram@1 {
->>>>>>> +			reg = <0x78000 0x77000>;
->>>>>>> +			pool;
->>>>>>> +		};
->>>>>>>
->>>>>>>   	};
->>>>>>>   	
->>>>>>>   	pinctrl: pinctrl {
->>>>>>>
->>>>>>> @@ -2665,6 +2675,46 @@ gpio4: gpio@fec50000 {
->>>>>>>
->>>>>>>   			#interrupt-cells = <2>;
->>>>>>>   		
->>>>>>>   		};
->>>>>>>   	
->>>>>>>   	};
->>>>>>>
->>>>>>> +
->>>>>>> +	vdec0: video-decoder@fdc38100 {
->>>>>>> +		compatible = "rockchip,rk3588-vdec";
->>>>>>> +		reg = <0x0 0xfdc38100 0x0 0x500>;
->>>>>>> +		interrupts = <GIC_SPI 95 IRQ_TYPE_LEVEL_HIGH 0>;
->>>>>>> +		clocks = <&cru ACLK_RKVDEC0>, <&cru HCLK_RKVDEC0>,
->>>
->>> <&cru
->>>
->>>>>>> CLK_RKVDEC0_CA>, +			 <&cru
->>>
->>> CLK_RKVDEC0_CORE>, <&cru
->>>
->>>>>>> CLK_RKVDEC0_HEVC_CA>;
->>>>>>> +		clock-names = "axi", "ahb", "cabac", "core",
->>>
->>> "hevc_cabac";
->>>
->>>>>>> +		assigned-clocks = <&cru ACLK_RKVDEC0>, <&cru
->>>
->>> CLK_RKVDEC0_CORE>,
->>>
->>>>>>> +				  <&cru CLK_RKVDEC0_CA>, <&cru
->>>
->>> CLK_RKVDEC0_HEVC_CA>;
->>>
->>>>>>> +		assigned-clock-rates = <800000000>, <600000000>,
->>>>>>> +				       <600000000>, <1000000000>;
->>>>>>> +		resets = <&cru SRST_A_RKVDEC0>, <&cru SRST_H_RKVDEC0>,
->>>
->>> <&cru
->>>
->>>>>>> SRST_RKVDEC0_CA>, +			 <&cru
->>>
->>> SRST_RKVDEC0_CORE>, <&cru
->>>
->>>>>>> SRST_RKVDEC0_HEVC_CA>;
->>>>>>> +		reset-names = "rst_axi", "rst_ahb", "rst_cabac",
->>>>>>> +			      "rst_core", "rst_hevc_cabac";
->>>>>>> +		power-domains = <&power RK3588_PD_RKVDEC0>;
->>>>>>> +		sram = <&vdec0_sram>;
->>>>>>> +		status = "okay";
->>>>>>> +	};
->>>>>>> +
->>>>>>> +	vdec1: video-decoder@fdc40100 {
->>>>>>> +		compatible = "rockchip,rk3588-vdec";
->>>>>>> +		reg = <0x0 0xfdc40100 0x0 0x500>;
->>>>>>> +		interrupts = <GIC_SPI 97 IRQ_TYPE_LEVEL_HIGH 0>;
->>>>>>> +		clocks = <&cru ACLK_RKVDEC1>, <&cru HCLK_RKVDEC1>,
->>>
->>> <&cru
->>>
->>>>>>> CLK_RKVDEC1_CA>, +			 <&cru
->>>
->>> CLK_RKVDEC1_CORE>, <&cru
->>>
->>>>>>> CLK_RKVDEC1_HEVC_CA>;
->>>>>>> +		clock-names = "axi", "ahb", "cabac", "core",
->>>
->>> "hevc_cabac";
->>>
->>>>>>> +		assigned-clocks = <&cru ACLK_RKVDEC1>, <&cru
->>>
->>> CLK_RKVDEC1_CORE>,
->>>
->>>>>>> +				  <&cru CLK_RKVDEC1_CA>, <&cru
->>>
->>> CLK_RKVDEC1_HEVC_CA>;
->>>
->>>>>>> +		assigned-clock-rates = <800000000>, <600000000>,
->>>>>>> +				       <600000000>, <1000000000>;
->>>>>>> +		resets = <&cru SRST_A_RKVDEC1>, <&cru SRST_H_RKVDEC1>,
->>>
->>> <&cru
->>>
->>>>>>> SRST_RKVDEC1_CA>, +			 <&cru
->>>
->>> SRST_RKVDEC1_CORE>, <&cru
->>>
->>>>>>> SRST_RKVDEC1_HEVC_CA>;
->>>>>>> +		reset-names = "rst_axi", "rst_ahb", "rst_cabac",
->>>>>>> +			      "rst_core", "rst_hevc_cabac";
->>>>>>> +		power-domains = <&power RK3588_PD_RKVDEC1>;
->>>>>>> +		sram = <&vdec1_sram>;
->>>>>>> +		status = "okay";
->>>>>>> +	};
->>>>>>
->>>>>> This is still missing the iommus, please add the iommus, they should be
->>>>>>
->>>>>> supported/same as the one used for e.g. VOP2:
->>>>>>    compatible = "rockchip,rk3588-iommu", "rockchip,rk3568-iommu";
->>>>>>
->>>>>> The VOP2 MMUs does have one extra mmu_cfg_mode flag in AUTO_GATING,
->>>>>> compared to the VDPU381 MMUs, however only the AV1D MMU should be
->>>>>> special on RK3588.
->>>>>>
->>>>>> Please add the iommus :-)
->>>>>
->>>>> When looking add the vendor DT/iommu driver I'm seeing serval quirks
->>>>> applied for vdec's iommus. Since it's rightly frowned upon adding such
->>>>> boolean-quirk-properties to upstream devicetrees, we'd at least need
->>>>> additional (fallback-) compatibles, even if it works with the iommu
->>>>> driver
->>>>> as is (what I doubt, but haven't tested). We need to be able to apply
->>>>> those
->>>>> quirks later without changing the devicetree (as usual) and I'm sure RK
->>>>> devs haven't added these quirks for the personal amusement.
->>>>
->>>> Based on what I investigated the hw should work similar, and the quirks
->>>> mostly seem related to optimizations and sw quirks, like do not zap each
->>>> line, keep it alive even when pm runtime say it is not in use and other
->>>> quirks that seem to be more of sw nature on how to best utilize the hw.
->>>
->>> I did some testing with the IOMMU but unfortunately, I'm only getting page
->>> fault errors. This may be something I'm doing wrong, but it clearly needs
->>> more investigation.
->>
->> I re-tested and the addition of sram seem to now cause page faults, the
->> sram also need to be mapped in the iommu.
->>
->> However, doing more testing revealed that use of iommu present the same
->> issue as seen with hevc on rk3399, after a fail fluster tests continue
->> to fail until a reset.
->>
->> Seeing how this issue was very similar I re-tested on rk3399 without
->> iommu and cma=1G and could observe that there was no longer any need to
->> reset after a failed test. Interestingly the score also went up from
->> 135 to 137/147.
->>
->> Digging some more revealed that the iommu also is reset during the
->> internal rkvdec soft reset on error, leaving the iommu with dte_addr=0
->> and paging in disabled state.
->>
->> Ensuring that the iommu was reconfigured after a failure fixed the issue
->> observed on rk3399 and I now also get 137/147 hevc fluster score using
->> the iommu.
->>
->> Will send out a rkvdec hevc v2 series after some more testing.
->>
->> Guessing there is a similar need to reconfigure iommu on rk3588, and my
->> initial tests also showed promising result, however more tests are
->> needed.
-> 
-> I did some testing with the IOMMU. The good news is that it now works with the 
-> SRAM.
+kernel test robot noticed the following build warnings:
 
-Great, I did not look into SRAM at all, just replaced sram prop with iommus for
-my tests, so great that you found a way to make it work with the iommu :-)
+[auto build test WARNING on rockchip/for-next]
+[also build test WARNING on next-20240627]
+[cannot apply to robh/for-next linus/master v6.10-rc5]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch#_base_tree_information]
 
-> I am also able to hack the iommu driver to force a reset in case of an error 
-> in the decoder. I'm not sure how to implement that with the IOMMU kernel API 
-> though.
+url:    https://github.com/intel-lab-lkp/linux/commits/FUKAUMI-Naoki/arm64-dts-rockchip-prepare-common-dtsi-for-Radxa-ROCK-Pi-E/20240625-214723
+base:   https://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git for-next
+patch link:    https://lore.kernel.org/r/20240623201415.3205-3-naoki%40radxa.com
+patch subject: [PATCH v3 3/3] arm64: dts: rockchip: add support for Radxa ROCK Pi E v3.0
+config: arm64-randconfig-051-20240628 (https://download.01.org/0day-ci/archive/20240628/202406280702.5pGvBTdS-lkp@intel.com/config)
+compiler: aarch64-linux-gcc (GCC) 13.2.0
+dtschema version: 2024.6.dev2+g3b69bad
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20240628/202406280702.5pGvBTdS-lkp@intel.com/reproduce)
 
-I am planning on sending something along the way of this as an RFC:
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202406280702.5pGvBTdS-lkp@intel.com/
 
-https://github.com/Kwiboo/linux-rockchip/compare/6da640232631...bf332524d880
+dtcheck warnings: (new ones prefixed by >>)
+   arch/arm64/boot/dts/rockchip/rk3328.dtsi:732.17-740.5: Warning (graph_child_address): /vop@ff370000/port: graph node has single child node 'endpoint@0', #address-cells/#size-cells are not necessary
+>> arch/arm64/boot/dts/rockchip/rk3328-rock-pi-e-v3.dtb: hdmi@ff3c0000: interrupts: [[0, 35, 4], [0, 71, 4]] is too long
+   	from schema $id: http://devicetree.org/schemas/display/rockchip/rockchip,dw-hdmi.yaml#
+>> arch/arm64/boot/dts/rockchip/rk3328-rock-pi-e-v3.dtb: /phy@ff430000: failed to match any schema with compatible: ['rockchip,rk3328-hdmi-phy']
+>> arch/arm64/boot/dts/rockchip/rk3328-rock-pi-e-v3.dtb: /clock-controller@ff440000: failed to match any schema with compatible: ['rockchip,rk3328-cru', 'rockchip,cru', 'syscon']
+>> arch/arm64/boot/dts/rockchip/rk3328-rock-pi-e-v3.dtb: /clock-controller@ff440000: failed to match any schema with compatible: ['rockchip,rk3328-cru', 'rockchip,cru', 'syscon']
+>> arch/arm64/boot/dts/rockchip/rk3328-rock-pi-e-v3.dtb: ethernet@ff540000: Unevaluated properties are not allowed ('snps,rxpbl', 'snps,txpbl' were unexpected)
+   	from schema $id: http://devicetree.org/schemas/net/rockchip-dwmac.yaml#
+>> arch/arm64/boot/dts/rockchip/rk3328-rock-pi-e-v3.dtb: ethernet@ff550000: Unevaluated properties are not allowed ('snps,txpbl' was unexpected)
+   	from schema $id: http://devicetree.org/schemas/net/rockchip-dwmac.yaml#
 
-If we re-configure and re-enable the iommu just before next decoding run
-after a decoding has failed seem to resolve any issue I have seen, have
-mainly been tested with rkvdec and HEVC on RK3399/RK3328. On RK3588 this
-also seemed to work, at least when I tested earlier this week.
-
-> 
-> Another issue is that resetting the iommu will drop all buffer addresses of 
-> other decoding contexts that may be running in parallel.
-
-I do not think we need/should reset the iommu, we just need to deal with
-the fact that the rkvdec will reset and disable use of the mmu when it
-reset itself.
-
-> 
-> I *think* that the downstream mpp remaps the buffers in the iommu for each 
-> frame, but I'm not sure about that either.
-
-As long as a frame can be decoded correctly, the mmu config seem to continue
-to be valid and next frame can be decoded.
-
-> 
-> So running fluster with `-j 1` gives me the expected 129/135 passed tests, but 
-> `-j 8` will start failing all tests after the first fail (well, first fail 
-> because of decoder error).
-
-This was the main issue blocking rkvdec hevc, just re-confgure the mmu
-after a frame fails to decode seem to resolve this issue.
-
-Biggest issue at the moment is how to properly signal iommu subsystem that
-it should re-configure, I may have abused the flush_iotlb_all ops, since
-that seemed closest existing hook.
-
-Will send an RFC to linux-iommu to collect input on how to best signal
-iommu subsystem that the mmu has been reset by an external event and now
-need to be re-configured.
-
-Regards,
-Jonas
-
-> 
->> Regards,
->> Jonas
->>
->>>>> If Detlev says
->>>>> iommu is out of scope for this series (which is valid), I'd say it's
->>>>> fine
->>>>> to leave them out for now (as no binding exists) and the HW works
->>>>> (obviously) fine without them.
->>>>
->>>> Sure, use of MMU can be added later.
->>>
->>> I'd rather go for that for now. I'll add that IMMU support is missing in
->>> the TODO file.
->>>
->>>> Regards,
->>>> Jonas
->>>>
->>>>>> Regards,
->>>>>> Jonas
->>>>>>
->>>>>>>   };
->>>>>>>   
->>>>>>>   #include "rk3588s-pinctrl.dtsi"
-> 
-
+-- 
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
 
 _______________________________________________
 Linux-rockchip mailing list
