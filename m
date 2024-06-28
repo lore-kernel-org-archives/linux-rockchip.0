@@ -4,78 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 29D42C2BD09
-	for <linux-rockchip@archiver.kernel.org>; Fri, 28 Jun 2024 14:06:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4AD41C2BD09
+	for <linux-rockchip@archiver.kernel.org>; Fri, 28 Jun 2024 14:12:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=DNUTXeh9RqOlFTpO5Va0mWEp2f7XEKmmoMvEAKW4zz4=; b=0pCRijuoOAHOOW
-	Fd3Bv75FW1sO5AjFOrTxnFyl7A3hbc677eGQtLpbAFKhwEBN0PQqYVRHu3hE8xMHJkd/jc5p4fgPb
-	e4ec5Et2Mq6LdrLxV+D0TTQ1Vh36LH0+yY8YqOOq0gdGjfo8OdvL701dwiltaaMQFKjKJ3ap7HxLE
-	jFfW5P3RiodEvgrREdETUu4kJfHvw6jg3baacdZc6fCtRBWQffaNbsH4Svd+qnGKod7+BEKL31q/Q
-	ACzoog5tejjDZ/oGAn9rnOc0a7fa/l/igi9azsW49VhFhuWiIAKytm8fOTzxbtnwBLhCqdJKtHH5t
-	0OgXg9DV9E4E4Q/ROWsQ==;
+	List-Owner; bh=TU3SoPhxPgIHuFeAJc2DzDe6LIeW3t2jq2W5I/Ia76Y=; b=OOXSH5LJ++/hIQ
+	ECpjy6Ezhs9MrArbWjBH321oxpHX/2m1FigAi7Lr9guFQfRnY7M2auZZuDENJKODJWM2Pi0PoWv5U
+	m7HUni/ES4KrTs+iY6AlbBWaezMxahQz/JvIMYmr/hTlt3AB6wu1Iol+MopUUmTMD1lbyMqhFAxDZ
+	sUpCzjK7Gd6XOC+DT/i8VAIh/LZ+m3WPjxbuXFxV8HpNteFkkNO0L1Ns+BuWE6VXHgcjaJRoecdvo
+	LkW8vNIQ3yAsMD6MccYZBPPaW4iUTGXG9n04wR+BWKKjckOJWhy8ZBCNqiqQwKkJ78YLARRdkmM3E
+	7q3zbnh+jvydkqzue6Hw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sNCFR-0000000DwN0-1NTu;
-	Fri, 28 Jun 2024 14:06:45 +0000
-Received: from mgamail.intel.com ([198.175.65.16])
+	id 1sNCL5-0000000Dy4C-23Rz;
+	Fri, 28 Jun 2024 14:12:35 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sNCF9-0000000DwA1-1y3l;
-	Fri, 28 Jun 2024 14:06:29 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1719583587; x=1751119587;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=wOnST97FxgzdmpjvSNkj0KjQdFL4Sf4iYe7yyizGLtc=;
-  b=M3Q5f1d1MuOml6P8bLg5bTRpmbbwYsge3YygLuwEfqipgIWzqNzXTGBE
-   6YX/NXsGqBVk1pJEtd+3k4PX+nbU+IJm0iUznl6Edh6tyU7bXZTfLA5I2
-   4+yG3T+Nc5u43Dz8UEeCmBJOGO0O9vSOnVx+cYEAh66Z97f/rb7NvGP5R
-   uRBMEncEQjktkifJyPlBzU8MVstaknaf9agRHUcRZwlMn073sKqMb5DFW
-   WiFxsnw5MNajiO80lhVYfU6KxwAP5Vu00W5EjCC72GY8lAgnnwSEqwAuL
-   c2waOKpL390uVar/z6HDs7Q3TcH5Au5JtBYgVpxtT3CC815YWx5boFDQz
-   Q==;
-X-CSE-ConnectionGUID: GG++0pdaTsq67dDFEqEXXg==
-X-CSE-MsgGUID: pzQrah26SHumnV5SF7sPmw==
-X-IronPort-AV: E=McAfee;i="6700,10204,11117"; a="16898755"
-X-IronPort-AV: E=Sophos;i="6.09,169,1716274800"; 
-   d="scan'208";a="16898755"
-Received: from fmviesa006.fm.intel.com ([10.60.135.146])
-  by orvoesa108.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 28 Jun 2024 07:06:21 -0700
-X-CSE-ConnectionGUID: U9vuz4AVTXuk0xm15Y3jZA==
-X-CSE-MsgGUID: D+QA0ovYTwGTVNFI8IE75w==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.09,169,1716274800"; 
-   d="scan'208";a="44587532"
-Received: from lkp-server01.sh.intel.com (HELO 68891e0c336b) ([10.239.97.150])
-  by fmviesa006.fm.intel.com with ESMTP; 28 Jun 2024 07:06:18 -0700
-Received: from kbuild by 68891e0c336b with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1sNCEy-000HBt-21;
-	Fri, 28 Jun 2024 14:06:16 +0000
-Date: Fri, 28 Jun 2024 22:05:12 +0800
-From: kernel test robot <lkp@intel.com>
-To: Jonas Karlman <jonas@kwiboo.se>, Heiko Stuebner <heiko@sntech.de>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>
-Cc: oe-kbuild-all@lists.linux.dev, FUKAUMI Naoki <naoki@radxa.com>,
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
-	Jonas Karlman <jonas@kwiboo.se>
-Subject: Re: [PATCH v2 2/2] arm64: dts: rockchip: Add Radxa ROCK 3B
-Message-ID: <202406282157.SmRgaZOQ-lkp@intel.com>
-References: <20240626201502.1384123-3-jonas@kwiboo.se>
+	id 1sNCKo-0000000DxyW-1K76;
+	Fri, 28 Jun 2024 14:12:19 +0000
+Received: from i53875b6a.versanet.de ([83.135.91.106] helo=diego.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1sNCKg-0007ly-SZ; Fri, 28 Jun 2024 16:12:10 +0200
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+To: Chukun Pan <amadeus@jmu.edu.cn>
+Cc: Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Rob Herring <robh@kernel.org>,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
+ Chukun Pan <amadeus@jmu.edu.cn>
+Subject: Re: [PATCH 1/5] arm64: dts: rockchip: fix regulator and supply for Lunzn
+ Fastrhino R6xS
+Date: Fri, 28 Jun 2024 16:12:10 +0200
+Message-ID: <3302842.44csPzL39Z@diego>
+In-Reply-To: <20240628140104.551760-1-amadeus@jmu.edu.cn>
+References: <20240628140104.551760-1-amadeus@jmu.edu.cn>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20240626201502.1384123-3-jonas@kwiboo.se>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240628_070627_746258_438B6E70 
-X-CRM114-Status: GOOD (  12.17  )
+X-CRM114-CacheID: sfid-20240628_071218_395528_05194AC5 
+X-CRM114-Status: GOOD (  17.60  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,38 +64,141 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Jonas,
+Hi,
 
-kernel test robot noticed the following build warnings:
+Am Freitag, 28. Juni 2024, 16:01:00 CEST schrieb Chukun Pan:
+> Make the regulator name and supply the same as those marked by schematics.
+> 
+> Fixes: c79dab407afd ("arm64: dts: rockchip: Add Lunzn Fastrhino R66S")
+> Fixes: b9f8ca655d80 ("arm64: dts: rockchip: Add Lunzn Fastrhino R68S")
+> Signed-off-by: Chukun Pan <amadeus@jmu.edu.cn>
 
-[auto build test WARNING on rockchip/for-next]
-[also build test WARNING on krzk/for-next krzk-dt/for-next krzk-mem-ctrl/for-next linus/master v6.10-rc5 next-20240627]
-[cannot apply to robh/for-next]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
+this needs to be split more please. Separate commits with more verbose
+commit messages for:
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Jonas-Karlman/dt-bindings-arm-rockchip-Add-Radxa-ROCK-3B/20240627-160354
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git for-next
-patch link:    https://lore.kernel.org/r/20240626201502.1384123-3-jonas%40kwiboo.se
-patch subject: [PATCH v2 2/2] arm64: dts: rockchip: Add Radxa ROCK 3B
-config: arm64-randconfig-051-20240628 (https://download.01.org/0day-ci/archive/20240628/202406282157.SmRgaZOQ-lkp@intel.com/config)
-compiler: aarch64-linux-gcc (GCC) 13.2.0
-dtschema version: 2024.6.dev3+g650bf2d
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20240628/202406282157.SmRgaZOQ-lkp@intel.com/reproduce)
+- regulator renames
+- the pmu-io-domain changes - why is moving vccio3-supply moving to
+  the boards
+- fixing usb regulators - vcc5v0_usb_host probably because that regulator
+  does  not exist at all?
 
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202406282157.SmRgaZOQ-lkp@intel.com/
 
-dtcheck warnings: (new ones prefixed by >>)
->> arch/arm64/boot/dts/rockchip/rk3568-rock-3b.dtb: pmic@20: '#sound-dai-cells', 'assigned-clock-parents', 'assigned-clocks', 'clock-names', 'clocks' do not match any of the regexes: 'pinctrl-[0-9]+'
-   	from schema $id: http://devicetree.org/schemas/mfd/rockchip,rk809.yaml#
+> ---
+>  .../dts/rockchip/rk3568-fastrhino-r66s.dts    |  4 +++
+>  .../dts/rockchip/rk3568-fastrhino-r66s.dtsi   | 28 +++++++------------
+>  .../dts/rockchip/rk3568-fastrhino-r68s.dts    |  4 +++
+>  3 files changed, 18 insertions(+), 18 deletions(-)
+> 
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3568-fastrhino-r66s.dts b/arch/arm64/boot/dts/rockchip/rk3568-fastrhino-r66s.dts
+> index 58ab7e9971db..b5e67990dd0f 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3568-fastrhino-r66s.dts
+> +++ b/arch/arm64/boot/dts/rockchip/rk3568-fastrhino-r66s.dts
+> @@ -11,6 +11,10 @@ aliases {
+>  	};
+>  };
+>  
+> +&pmu_io_domains {
+> +	vccio3-supply = <&vccio_sd>;
+> +};
+> +
+>  &sdmmc0 {
+>  	bus-width = <4>;
+>  	cap-mmc-highspeed;
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3568-fastrhino-r66s.dtsi b/arch/arm64/boot/dts/rockchip/rk3568-fastrhino-r66s.dtsi
+> index 89e84e3a9262..82577eba31eb 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3568-fastrhino-r66s.dtsi
+> +++ b/arch/arm64/boot/dts/rockchip/rk3568-fastrhino-r66s.dtsi
+> @@ -39,9 +39,9 @@ status_led: led-status {
+>  		};
+>  	};
+>  
+> -	dc_12v: dc-12v-regulator {
+> +	vcc12v_dcin: vcc12v-dcin-regulator {
+>  		compatible = "regulator-fixed";
+> -		regulator-name = "dc_12v";
+> +		regulator-name = "vcc12v_dcin";
+>  		regulator-always-on;
+>  		regulator-boot-on;
+>  		regulator-min-microvolt = <12000000>;
+> @@ -65,7 +65,7 @@ vcc3v3_sys: vcc3v3-sys-regulator {
+>  		regulator-boot-on;
+>  		regulator-min-microvolt = <3300000>;
+>  		regulator-max-microvolt = <3300000>;
+> -		vin-supply = <&dc_12v>;
+> +		vin-supply = <&vcc12v_dcin>;
+>  	};
+>  
+>  	vcc5v0_sys: vcc5v0-sys-regulator {
+> @@ -75,16 +75,7 @@ vcc5v0_sys: vcc5v0-sys-regulator {
+>  		regulator-boot-on;
+>  		regulator-min-microvolt = <5000000>;
+>  		regulator-max-microvolt = <5000000>;
+> -		vin-supply = <&dc_12v>;
+> -	};
+> -
+> -	vcc5v0_usb_host: vcc5v0-usb-host-regulator {
+> -		compatible = "regulator-fixed";
+> -		regulator-name = "vcc5v0_usb_host";
+> -		regulator-always-on;
+> -		regulator-boot-on;
+> -		regulator-min-microvolt = <5000000>;
+> -		regulator-max-microvolt = <5000000>;
+> +		vin-supply = <&vcc12v_dcin>;
+>  	};
+>  
+>  	vcc5v0_usb_otg: vcc5v0-usb-otg-regulator {
+> @@ -94,8 +85,9 @@ vcc5v0_usb_otg: vcc5v0-usb-otg-regulator {
+>  		pinctrl-names = "default";
+>  		pinctrl-0 = <&vcc5v0_usb_otg_en>;
+>  		regulator-name = "vcc5v0_usb_otg";
+> -		regulator-always-on;
+> -		regulator-boot-on;
+> +		regulator-min-microvolt = <5000000>;
+> +		regulator-max-microvolt = <5000000>;
+> +		vin-supply = <&vcc5v0_sys>;
+>  	};
+>  };
+>  
+> @@ -405,8 +397,8 @@ vcc5v0_usb_otg_en: vcc5v0-usb-otg-en {
+>  &pmu_io_domains {
+>  	pmuio1-supply = <&vcc3v3_pmu>;
+>  	pmuio2-supply = <&vcc3v3_pmu>;
+> -	vccio1-supply = <&vccio_acodec>;
+> -	vccio3-supply = <&vccio_sd>;
+> +	vccio1-supply = <&vcc_3v3>;
+> +	vccio2-supply = <&vcc_1v8>;
+>  	vccio4-supply = <&vcc_1v8>;
+>  	vccio5-supply = <&vcc_3v3>;
+>  	vccio6-supply = <&vcc_1v8>;
+> @@ -460,7 +452,7 @@ &usb2phy0 {
+>  };
+>  
+>  &usb2phy0_host {
+> -	phy-supply = <&vcc5v0_usb_host>;
+> +	phy-supply = <&vcc5v0_sys>;
+>  	status = "okay";
+>  };
+>  
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3568-fastrhino-r68s.dts b/arch/arm64/boot/dts/rockchip/rk3568-fastrhino-r68s.dts
+> index e1fe5e442689..a3339186e89c 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3568-fastrhino-r68s.dts
+> +++ b/arch/arm64/boot/dts/rockchip/rk3568-fastrhino-r68s.dts
+> @@ -102,6 +102,10 @@ eth_phy1_reset_pin: eth-phy1-reset-pin {
+>  	};
+>  };
+>  
+> +&pmu_io_domains {
+> +	vccio3-supply = <&vcc_3v3>;
+> +};
+> +
+>  &sdhci {
+>  	bus-width = <8>;
+>  	max-frequency = <200000000>;
+> 
 
--- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
