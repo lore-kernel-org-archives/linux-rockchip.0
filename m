@@ -4,78 +4,104 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D43E1C30653
-	for <linux-rockchip@archiver.kernel.org>; Fri, 28 Jun 2024 02:13:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D0022C2BBCA
+	for <linux-rockchip@archiver.kernel.org>; Fri, 28 Jun 2024 07:27:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=IewQN7eL4dGmq4Ycs6Ki44nHYe3PT28sIIuwSePIoik=; b=AWW4KX09/JhYR0
-	AUg0w3DQTEik24hCwvwBgaD6892/8GDoQzcwl5ghqbb5LcoZWqvu/2hM4iTBHO+i6FH0AWi9ZstNr
-	wd9oY1qppl7jb48DUeFzYJsQ1556QaDOAPxqrqZdrcC7WRkA5CNXNA14dWiuGwkjDrxAkWS9mIeMW
-	0DxG+yqnKdqtlX/dgCQwCHNocO2LIq/T9pnrl6LL+62saRBZLG9kVFEw9PwtlDuDJ28v/9NTUFrnW
-	sEtyrzZ9317G0mqIrJ6Z6emlneSOkP3K/OB6Zfy4AHPchK8+67xmayFK7KCgI/xndEG9t39bsikHX
-	OfokbZKKB7gaFf6i/5cg==;
+	List-Owner; bh=lhDgpRi1V2YcM/lV/LEIIo6SSGRVDhspQpZcXK+k8To=; b=nsXdggspgQeQhe
+	hjFpJiGbLSvyHrZaPPvbordFKOPLNSFu3QltFva4BOFrRzCrdGgpjM+DvddxTwi3Ky+d78v5xypMG
+	OABlIf8+Fc15QGk8u/TYiJ5XCEeN7QOn6vjdHHOzl3ot3wJ9DdsAvFPlDrSq4M1kGS8kjQmMM8fDu
+	vIrHAy1hdWiBqMF5N+nxe6guEh5gUB/CSwa+ae7F7BiJmc1Xnfk0amyi+mKUeQ/C5oNddV4s30bmn
+	QO/jtpWh6cwqSkYnp/I7RsFgdPIUcPK39nAdf6rfucxkE8JTZZWZgBxdDMMWRua+EAYjKiG+JeIK7
+	eQSrU3jr/Bfcd0oHEC5A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sN17A-0000000CJ2P-2bRl;
-	Fri, 28 Jun 2024 02:13:28 +0000
-Received: from mgamail.intel.com ([198.175.65.20])
+	id 1sN615-0000000Ct8b-396i;
+	Fri, 28 Jun 2024 07:27:31 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sN170-0000000CIzM-2UFh;
-	Fri, 28 Jun 2024 02:13:20 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1719540799; x=1751076799;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=/Ub6zta+0SAXKh9uiet4CqS+rN7kBLSnTuCB14Q2Lo4=;
-  b=PUDg6MHqUcArfvoK4cMuSGJi+vKb19gwdyn6nmqsh8nIt7FdcI9fJPfW
-   X0mnB8sLeI6xBKsr+g7mpSfdfHEk5vYkXuxlNB+u+GeBiUbdvqwplIw+y
-   7EdHbClAwK+LoTdUH1PlywYljpT1WcN8GiQdk57v9z7Likn2gMNu3FjhT
-   ILugqLVWH2wv8KondVlWkmZGGVdLUACNvDdjzpHwsPT2iQUcWIBCnuZmM
-   uBDGAXoJ0vuD1K0hSKX4CngYDO2ljjpjBIfa1cxDhsi0X3F7bqb5jB1B2
-   PV7pTMUhGBX4MV3hjn4+3FDHHgaLlzbSkNfd//MPUc57KU2JMEkPerCpn
-   w==;
-X-CSE-ConnectionGUID: Bkagp7gETUmsl0fV4+460g==
-X-CSE-MsgGUID: kcSeWwYqRNy8d91LrTwLQw==
-X-IronPort-AV: E=McAfee;i="6700,10204,11116"; a="16528809"
-X-IronPort-AV: E=Sophos;i="6.09,167,1716274800"; 
-   d="scan'208";a="16528809"
-Received: from orviesa006.jf.intel.com ([10.64.159.146])
-  by orvoesa112.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 27 Jun 2024 19:13:15 -0700
-X-CSE-ConnectionGUID: RELGioelQiOx8PUEyU8xUQ==
-X-CSE-MsgGUID: w2oGwSiMSb6HzN3VDjLTeQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.09,167,1716274800"; 
-   d="scan'208";a="44993921"
-Received: from lkp-server01.sh.intel.com (HELO 68891e0c336b) ([10.239.97.150])
-  by orviesa006.jf.intel.com with ESMTP; 27 Jun 2024 19:13:12 -0700
-Received: from kbuild by 68891e0c336b with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1sN16r-000Gie-2N;
-	Fri, 28 Jun 2024 02:13:09 +0000
-Date: Fri, 28 Jun 2024 10:12:17 +0800
-From: kernel test robot <lkp@intel.com>
-To: Jonas Karlman <jonas@kwiboo.se>, Heiko Stuebner <heiko@sntech.de>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>
-Cc: oe-kbuild-all@lists.linux.dev, FUKAUMI Naoki <naoki@radxa.com>,
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
-	Jonas Karlman <jonas@kwiboo.se>
-Subject: Re: [PATCH v2 2/2] arm64: dts: rockchip: Add Radxa ROCK 3B
-Message-ID: <202406280948.sZf64ONz-lkp@intel.com>
-References: <20240626201502.1384123-3-jonas@kwiboo.se>
+	id 1sN60w-0000000Ct6V-0ivL;
+	Fri, 28 Jun 2024 07:27:23 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id B4AC26207D;
+	Fri, 28 Jun 2024 07:27:20 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id CFB27C116B1;
+	Fri, 28 Jun 2024 07:27:16 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1719559640;
+	bh=egkyfMszya5WTVA6DXG7jP6/5qLLtFmBuBhbT56FZ90=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=HxYfUthhJxiBTULc+iPKabR34IjTYKzUUqM/U5QFneIXO1eJArG5yRZ7hmkXZHODT
+	 ISVOLLv/abB7mB7jgTmi1abUdejTov//zRJ3OzqNR2rY1+7E45RMxZ74KpQ7njuyAQ
+	 7tBsfLOTzHhzDKG+K3GtrPgA9y6ewJN0yfp6NSpLA1uwrqNaDo5gw/+wocV7YXTyye
+	 Mk77xiMNpxq9MXA7QovLwDiTZVratlQNeP+i2VTZpctd4KDrO3lyjeEDgP15blz4ec
+	 MGxiSP2vQv6VK+xrBi904XTQSs6F7Sw5XPUWCx7jyfIjJJmfa823LWLRx/NGmBsy6L
+	 xQFII3ezgj+sg==
+Message-ID: <d8df3cd5-c602-4693-b78a-63a963aa6522@kernel.org>
+Date: Fri, 28 Jun 2024 09:27:14 +0200
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20240626201502.1384123-3-jonas@kwiboo.se>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v1] dt-bindings: clock: rk3188-cru-common: remove
+ CLK_NR_CLKS
+To: Johan Jonker <jbx6244@gmail.com>, heiko@sntech.de
+Cc: mturquette@baylibre.com, sboyd@kernel.org, robh@kernel.org,
+ krzk+dt@kernel.org, conor+dt@kernel.org, linux-clk@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+References: <6f21c09b-e8d2-4749-aca6-572c79df775d@gmail.com>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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 fv0=
+In-Reply-To: <6f21c09b-e8d2-4749-aca6-572c79df775d@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240627_191318_706462_395F1EFE 
-X-CRM114-Status: GOOD (  11.85  )
+X-CRM114-CacheID: sfid-20240628_002722_401188_ACD19DF3 
+X-CRM114-Status: GOOD (  12.71  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,38 +118,35 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Jonas,
+On 27/06/2024 23:17, Johan Jonker wrote:
+> CLK_NR_CLKS should not be part of the binding.
+> Remove since the kernel code no longer uses it.
 
-kernel test robot noticed the following build warnings:
+Please wrap neither too early nor over the limit. Not one sentence per line.
 
-[auto build test WARNING on rockchip/for-next]
-[also build test WARNING on krzk/for-next krzk-dt/for-next krzk-mem-ctrl/for-next linus/master v6.10-rc5 next-20240627]
-[cannot apply to robh/for-next]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Jonas-Karlman/dt-bindings-arm-rockchip-Add-Radxa-ROCK-3B/20240627-160354
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git for-next
-patch link:    https://lore.kernel.org/r/20240626201502.1384123-3-jonas%40kwiboo.se
-patch subject: [PATCH v2 2/2] arm64: dts: rockchip: Add Radxa ROCK 3B
-config: arm64-randconfig-051-20240628 (https://download.01.org/0day-ci/archive/20240628/202406280948.sZf64ONz-lkp@intel.com/config)
-compiler: aarch64-linux-gcc (GCC) 13.2.0
-dtschema version: 2024.6.dev2+g3b69bad
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20240628/202406280948.sZf64ONz-lkp@intel.com/reproduce)
 
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202406280948.sZf64ONz-lkp@intel.com/
+> 
+> Signed-off-by: Johan Jonker <jbx6244@gmail.com>
+> ---
+>  include/dt-bindings/clock/rk3188-cru-common.h | 2 --
+>  1 file changed, 2 deletions(-)
+> 
+> diff --git a/include/dt-bindings/clock/rk3188-cru-common.h b/include/dt-bindings/clock/rk3188-cru-common.h
+> index afad90680fce..01e14ab252a7 100644
+> --- a/include/dt-bindings/clock/rk3188-cru-common.h
+> +++ b/include/dt-bindings/clock/rk3188-cru-common.h
+> @@ -132,8 +132,6 @@
+>  #define HCLK_VDPU		472
+>  #define HCLK_HDMI		473
+> 
+> -#define CLK_NR_CLKS		(HCLK_HDMI + 1)
 
-dtcheck warnings: (new ones prefixed by >>)
->> arch/arm64/boot/dts/rockchip/rk3568-rock-3b.dtb: pmic@20: '#sound-dai-cells', 'assigned-clock-parents', 'assigned-clocks', 'clock-names', 'clocks' do not match any of the regexes: 'pinctrl-[0-9]+'
-   	from schema $id: http://devicetree.org/schemas/mfd/rockchip,rk809.yaml#
+I still see it as being used in linux-next. Some explanation is missing.
 
--- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+Best regards,
+Krzysztof
+
 
 _______________________________________________
 Linux-rockchip mailing list
