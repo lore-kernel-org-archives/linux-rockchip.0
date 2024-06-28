@@ -4,64 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 84AB4C3064D
-	for <linux-rockchip@archiver.kernel.org>; Fri, 28 Jun 2024 13:09:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 20071C3064D
+	for <linux-rockchip@archiver.kernel.org>; Fri, 28 Jun 2024 13:31:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Message-ID:MIME-Version:References:
-	In-Reply-To:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=j8/K5JUi44/5ML1JgfMvb22WSmURvNEjKRWu6gK/As4=; b=SbpRNZBrfgXqzG
-	yBPR5xA0yfHzb8k1tUvNQNj09q/eC9/WX+yWOBjsThRPT75YknzgXbrXHeIRkXtta1/zWaTrMQdrB
-	fEL1JuuCn2F/T2+S1/1R/5Pq7DSLJTLc0tU8DDghhvRHFRYv5VGTjPR1oyYYE9Td6O9lh+6+u8Anm
-	haf7OKjAAUV6MLLSJVqDRwIVHNTGi/hC2UaoH1Ya+LF3zX6QO2Y30pzfqqruzjsMLlbkIX++pPk2a
-	CL855Pa0w12HTe/v77yT7emRg7NfiXdJN1ILuh29jTBV509ZZUoaVUnviMLzqXfOfwGyZD8LRICXr
-	kavL9qXVbeVU3sctLtqw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=e5o/jXn/9GPwlwsPq/heJkeNvfgwKelBkQd76HumSlU=; b=sj6ONqg4HMROlPr+5U4RkkFH+X
+	xcwEzev1qJCWj611y88VAX4u6aMmGJ/tyH/B5QZZXUbbhLw5uBiaRqNU8TT00HNtAoRn+mnY+KqdH
+	uS6mEsDf3qjB9ngUyW9heMgZNn8TcFnOCspQS0phUzV2G1+W5ASzo+rNzP0DvhMfOrVwjLE+5gf/j
+	4aUjrAI/Ipk7n9ap2BeNLXSNIyFn9rZ36KkHFI1ZobaJf+g15FTA9ewVeLnOiOyE/Ouku20K1mR7/
+	yc5pz3pODR6gXIKPWs0Jyyr2yLYuvI934gQIEsphScZxuKQ5UQ4YIpoSbO+WbhnhL8ixwW8aj+hoa
+	15rg9FPg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sNBM4-0000000DmLy-0qgd;
-	Fri, 28 Jun 2024 13:09:32 +0000
-Received: from m15.mail.163.com ([45.254.50.220])
-	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sNBLt-0000000DmG7-1fUd;
-	Fri, 28 Jun 2024 13:09:23 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=Date:From:Subject:Content-Type:MIME-Version:
-	Message-ID; bh=cqf/4WMNeaRoU39IHS4d1NmMLfGYJz1MQmZrQrLR5Nw=; b=j
-	0Qz7eAZzQXvnsg5fw2KJxYznKHWn96/k16UCBCqmXH5YkPOs2yEQFgZLKSIy4ULC
-	zoMrokSPFz/cDojiTlG95OBFyzOQUW/HL4IyYfXugGcj/x2D41le55WdQzXWoQQP
-	7gkoyV/+g8EzQ824rSlNP5pEl9XKDZZa4B2GsZD4kc=
-Received: from andyshrk$163.com ( [58.22.7.114] ) by
- ajax-webmail-wmsvr-40-102 (Coremail) ; Fri, 28 Jun 2024 21:08:55 +0800
- (CST)
-X-Originating-IP: [58.22.7.114]
-Date: Fri, 28 Jun 2024 21:08:55 +0800 (CST)
-From: "Andy Yan" <andyshrk@163.com>
-To: "Johan Jonker" <jbx6244@gmail.com>
-Cc: heiko@sntech.de, hjc@rock-chips.com, andy.yan@rock-chips.com, 
-	maarten.lankhorst@linux.intel.com, mripard@kernel.org, 
-	tzimmermann@suse.de, airlied@gmail.com, daniel@ffwll.ch, 
-	lgirdwood@gmail.com, broonie@kernel.org, linux-sound@vger.kernel.org, 
-	dri-devel@lists.freedesktop.org, 
-	linux-arm-kernel@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re:[PATCH v7] drm/rockchip: rk3066_hdmi: add sound support
-X-Priority: 3
-X-Mailer: Coremail Webmail Server Version XT5.0.14 build 20230109(dcb5de15)
- Copyright (c) 2002-2024 www.mailtech.cn 163com
-In-Reply-To: <5c651b3f-fe30-4874-98ed-044f7c62dd97@gmail.com>
-References: <5c651b3f-fe30-4874-98ed-044f7c62dd97@gmail.com>
-X-NTES-SC: AL_Qu2aC/mTv0ko4yadY+kZnEobh+Y5UcK2s/ki2YFXN5k0tCTHxR8/Q1RdAkb0+uuMIA2XmzObawdD9sBlXpZ2XqvvOshJ1wZ3GH+oWtvPX5t/
+	id 1sNBhb-0000000Dp7x-0opL;
+	Fri, 28 Jun 2024 13:31:47 +0000
+Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
+	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
+	id 1sNBhQ-0000000Dp5W-3dqZ;
+	Fri, 28 Jun 2024 13:31:38 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1719581494;
+	bh=EBwHlR6nVxqKGWbd3LN/16tCHeMoecUhepxTPyqgOzo=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=yIp4QFM6wnFn/Xisf+g71XDABvCWuS9qaS3UIELrMqNKjYuGQBqfbw1Sg3mZRIHIy
+	 QOUaK9k7zc7UBbpdrUTkrUuZGYEb+auz9a5TgtjtA369P/REA+d/UHiy+SdHlHQcAu
+	 4bz2DEllc+tVy8W6gZ0+ThbCBKtVaePvB5g4Nybz9Nv3eetMxYZMFmT7ZffyFRNQum
+	 oTFmc2oXGF3+SAmx5JthCBJTX6XEdB5D48mgDBn+RhXsNZxGLZ8HvGn4fnGCDcF+kg
+	 K/CapPyd6J7b/zrsrZSqfvlrfAMI+XTUClMlnJWJrBJ4n7areyr8mjxRU7RJ2PbK/z
+	 Ht3Gh3dQ0gLOQ==
+Received: from arisu.localnet (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: detlev)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 9D514378219E;
+	Fri, 28 Jun 2024 13:31:30 +0000 (UTC)
+From: Detlev Casanova <detlev.casanova@collabora.com>
+To: Alex Bee <knaerzche@gmail.com>, Jonas Karlman <jonas@kwiboo.se>
+Cc: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
+ Heiko Stuebner <heiko@sntech.de>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Sebastian Reichel <sebastian.reichel@collabora.com>,
+ Dragan Simic <dsimic@manjaro.org>, Diederik de Haas <didi.debian@cknow.org>,
+ Andy Yan <andy.yan@rock-chips.com>,
+ Boris Brezillon <boris.brezillon@collabora.com>,
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+ Daniel Almeida <daniel.almeida@collabora.com>,
+ Paul Kocialkowski <paul.kocialkowski@bootlin.com>,
+ Nicolas Dufresne <nicolas.dufresne@collabora.com>,
+ Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+ linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v2 4/4] arm64: dts: rockchip: Add rkvdec2 Video Decoder on
+ rk3588(s)
+Date: Fri, 28 Jun 2024 09:31:02 -0400
+Message-ID: <114641696.nniJfEyVGO@arisu>
+Organization: Collabora
+In-Reply-To: <689aec72-f777-4122-a332-02009fbf0b3b@kwiboo.se>
+References: <20240619150029.59730-1-detlev.casanova@collabora.com>
+ <4356151.ejJDZkT8p0@arisu> <689aec72-f777-4122-a332-02009fbf0b3b@kwiboo.se>
 MIME-Version: 1.0
-Message-ID: <7c53f7d.bb08.1905ef690ef.Coremail.andyshrk@163.com>
-X-Coremail-Locale: zh_CN
-X-CM-TRANSID: _____wD3P6TntX5myNsRAA--.3669W
-X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/xtbB0hIMXmWXyqo7rgABsU
-X-Coremail-Antispam: 1U5529EdanIXcx71UUUUU7vcSsGvfC2KfnxnUU==
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240628_060921_883396_86D5BEB8 
-X-CRM114-Status: GOOD (  13.29  )
+X-CRM114-CacheID: sfid-20240628_063137_102254_E6856C3B 
+X-CRM114-Status: GOOD (  61.07  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,88 +85,220 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: multipart/mixed; boundary="===============3862737646691777096=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-CkhpIEpvaGFuLAoKQXQgMjAyNC0wNi0yOCAxNzoyMzozOSwgIkpvaGFuIEpvbmtlciIgPGpieDYy
-NDRAZ21haWwuY29tPiB3cm90ZToKPkFkZCBzb3VuZCBzdXBwb3J0IHRvIHRoZSBSSzMwNjYgSERN
-SSBkcml2ZXIuCj5UaGUgSERNSSBUWCBhdWRpbyBzb3VyY2UgaXMgY29ubmVjdGVkIHRvIEkyU184
-Q0guCj4KPlNpZ25lZC1vZmYtYnk6IFpoZW5nIFlhbmcgPHpoZW5neWFuZ0Byb2NrLWNoaXBzLmNv
-bT4KPlNpZ25lZC1vZmYtYnk6IEpvaGFuIEpvbmtlciA8amJ4NjI0NEBnbWFpbC5jb20+Cj4tLS0K
-Pgo+Q2hhbmdlZCBWNzoKPiAgcmViYXNlCj4tLS0KPiBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAv
-S2NvbmZpZyAgICAgICB8ICAgMiArCj4gZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JrMzA2Nl9o
-ZG1pLmMgfCAyNzQgKysrKysrKysrKysrKysrKysrKysrKysrLQo+IDIgZmlsZXMgY2hhbmdlZCwg
-Mjc1IGluc2VydGlvbnMoKyksIDEgZGVsZXRpb24oLSkKPgo+ZGlmZiAtLWdpdCBhL2RyaXZlcnMv
-Z3B1L2RybS9yb2NrY2hpcC9LY29uZmlnIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL0tjb25m
-aWcKPmluZGV4IDFiZjNlMjgyOWNkMC4uYTMyZWU1NTg0MDhjIDEwMDY0NAo+LS0tIGEvZHJpdmVy
-cy9ncHUvZHJtL3JvY2tjaGlwL0tjb25maWcKPisrKyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hp
-cC9LY29uZmlnCj5AQCAtMTAyLDYgKzEwMiw4IEBAIGNvbmZpZyBST0NLQ0hJUF9SR0IKPiBjb25m
-aWcgUk9DS0NISVBfUkszMDY2X0hETUkKPiAJYm9vbCAiUm9ja2NoaXAgc3BlY2lmaWMgZXh0ZW5z
-aW9ucyBmb3IgUkszMDY2IEhETUkiCj4gCWRlcGVuZHMgb24gRFJNX1JPQ0tDSElQCj4rCXNlbGVj
-dCBTTkRfU09DX0hETUlfQ09ERUMgaWYgU05EX1NPQwo+KwlzZWxlY3QgU05EX1NPQ19ST0NLQ0hJ
-UF9JMlMgaWYgU05EX1NPQwo+IAloZWxwCj4gCSAgVGhpcyBzZWxlY3RzIHN1cHBvcnQgZm9yIFJv
-Y2tjaGlwIFNvQyBzcGVjaWZpYyBleHRlbnNpb25zCj4gCSAgZm9yIHRoZSBSSzMwNjYgSERNSSBk
-cml2ZXIuIElmIHlvdSB3YW50IHRvIGVuYWJsZQo+ZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2Ry
-bS9yb2NrY2hpcC9yazMwNjZfaGRtaS5jIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JrMzA2
-Nl9oZG1pLmMKPmluZGV4IDc4NGRlOTkwZGExYi4uZDMxMjhiNzg3NjI5IDEwMDY0NAo+LS0tIGEv
-ZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JrMzA2Nl9oZG1pLmMKPisrKyBiL2RyaXZlcnMvZ3B1
-L2RybS9yb2NrY2hpcC9yazMwNjZfaGRtaS5jCj5AQCAtMTUsMTIgKzE1LDIwIEBACj4gI2luY2x1
-ZGUgPGxpbnV4L3BsYXRmb3JtX2RldmljZS5oPgo+ICNpbmNsdWRlIDxsaW51eC9yZWdtYXAuaD4K
-Pgo+KyNpbmNsdWRlIDxzb3VuZC9oZG1pLWNvZGVjLmg+Cj4rCj4gI2luY2x1ZGUgInJrMzA2Nl9o
-ZG1pLmgiCj4KPiAjaW5jbHVkZSAicm9ja2NoaXBfZHJtX2Rydi5oIgo+Cj4gI2RlZmluZSBERUZB
-VUxUX1BMTEFfUkFURSAzMDAwMDAwMAo+Cj4rc3RydWN0IGF1ZGlvX2luZm8gewo+KwlpbnQgY2hh
-bm5lbHM7Cj4rCWludCBzYW1wbGVfcmF0ZTsKPisJaW50IHNhbXBsZV93aWR0aDsKPit9Owo+Kwo+
-IHN0cnVjdCBoZG1pX2RhdGFfaW5mbyB7Cj4gCWludCB2aWM7IC8qIFRoZSBDRUEgVmlkZW8gSUQg
-KFZJQykgb2YgdGhlIGN1cnJlbnQgZHJtIGRpc3BsYXkgbW9kZS4gKi8KPiAJdW5zaWduZWQgaW50
-IGVuY19vdXRfZm9ybWF0Owo+QEAgLTU0LDkgKzYyLDE2IEBAIHN0cnVjdCByazMwNjZfaGRtaSB7
-Cj4KPiAJdW5zaWduZWQgaW50IHRtZHNjbGs7Cj4KPisJc3RydWN0IHBsYXRmb3JtX2RldmljZSAq
-YXVkaW9fcGRldjsKPisJc3RydQoKLi4uLi4uCgo+Kwo+KwlyZXR1cm4gcmV0Owo+K30KPisKPitz
-dGF0aWMgY29uc3Qgc3RydWN0IGhkbWlfY29kZWNfb3BzIGF1ZGlvX2NvZGVjX29wcyA9IHsKPisJ
-Lmh3X3BhcmFtcyA9IHJrMzA2Nl9oZG1pX2F1ZGlvX2h3X3BhcmFtcywKPisJLmF1ZGlvX3NodXRk
-b3duID0gcmszMDY2X2hkbWlfYXVkaW9fc2h1dGRvd24sCj4rCS5tdXRlX3N0cmVhbSA9IHJrMzA2
-Nl9oZG1pX2F1ZGlvX211dGVfc3RyZWFtLAo+KwkuZ2V0X2VsZCA9IHJrMzA2Nl9oZG1pX2F1ZGlv
-X2dldF9lbGQsCj4rCS5ub19jYXB0dXJlX211dGUgPSAxLAo+K307Cj4rCj4rc3RhdGljIGludCBy
-azMwNjZfaGRtaV9hdWRpb19jb2RlY19pbml0KHN0cnVjdCByazMwNjZfaGRtaSAqaGRtaSwKPisJ
-CQkJCXN0cnVjdCBkZXZpY2UgKmRldikKPit7Cj4rCXN0cnVjdCBoZG1pX2NvZGVjX3BkYXRhIGNv
-ZGVjX2RhdGEgPSB7Cj4rCQkuaTJzID0gMSwKPisJCS5vcHMgPSAmYXVkaW9fY29kZWNfb3BzLAo+
-KwkJLm1heF9pMnNfY2hhbm5lbHMgPSA4LAo+Kwl9Owo+Kwo+KwloZG1pLT5hdWRpby5jaGFubmVs
-cyA9IDI7Cj4rCWhkbWktPmF1ZGlvLnNhbXBsZV9yYXRlID0gNDgwMDA7Cj4rCWhkbWktPmF1ZGlv
-LnNhbXBsZV93aWR0aCA9IDE2Owo+KwloZG1pLT5hdWRpb19lbmFibGUgPSBmYWxzZTsKPisJaGRt
-aS0+YXVkaW9fcGRldiA9Cj4rCQlwbGF0Zm9ybV9kZXZpY2VfcmVnaXN0ZXJfZGF0YShkZXYsCj4r
-CQkJCQkgICAgICBIRE1JX0NPREVDX0RSVl9OQU1FLAo+KwkJCQkJICAgICAgUExBVEZPUk1fREVW
-SURfTk9ORSwKPisJCQkJCSAgICAgICZjb2RlY19kYXRhLAo+KwkJCQkJICAgICAgc2l6ZW9mKGNv
-ZGVjX2RhdGEpKTsKPisKPisJcmV0dXJuIFBUUl9FUlJfT1JfWkVSTyhoZG1pLT5hdWRpb19wZGV2
-KTsKPit9Cj4rCj4gc3RhdGljIGludAo+IHJrMzA2Nl9oZG1pX3JlZ2lzdGVyKHN0cnVjdCBkcm1f
-ZGV2aWNlICpkcm0sIHN0cnVjdCByazMwNjZfaGRtaSAqaGRtaSkKPiB7Cj5AQCAtNTY2LDYgKzgz
-NCw4IEBAIHJrMzA2Nl9oZG1pX3JlZ2lzdGVyKHN0cnVjdCBkcm1fZGV2aWNlICpkcm0sIHN0cnVj
-dCByazMwNjZfaGRtaSAqaGRtaSkKPgo+IAlkcm1fY29ubmVjdG9yX2F0dGFjaF9lbmNvZGVyKCZo
-ZG1pLT5jb25uZWN0b3IsIGVuY29kZXIpOwo+Cj4rCXJrMzA2Nl9oZG1pX2F1ZGlvX2NvZGVjX2lu
-aXQoaGRtaSwgZGV2KTsKCgpBY2NvcmRpbmcgdG8gRG9jdW1lbnRhdGlvbi9kcml2ZXItYXBpL2Ry
-aXZlci1tb2RlbC9kcml2ZXIucnN0LAoKSXQgaXMgYmVzdCBub3QgdG8gcmVnaXN0ZXIgYXQgdGhl
-IGJpbmQgY2FsbGJhY2vvvJoKCi4uIHdhcm5pbmc6OgogICAgICAtRVBST0JFX0RFRkVSIG11c3Qg
-bm90IGJlIHJldHVybmVkIGlmIHByb2JlKCkgaGFzIGFscmVhZHkgY3JlYXRlZAogICAgICBjaGls
-ZCBkZXZpY2VzLCBldmVuIGlmIHRob3NlIGNoaWxkIGRldmljZXMgYXJlIHJlbW92ZWQgYWdhaW4K
-ICAgICAgaW4gYSBjbGVhbnVwIHBhdGguIElmIC1FUFJPQkVfREVGRVIgaXMgcmV0dXJuZWQgYWZ0
-ZXIgYSBjaGlsZAogICAgICBkZXZpY2UgaGFzIGJlZW4gcmVnaXN0ZXJlZCwgaXQgbWF5IHJlc3Vs
-dCBpbiBhbiBpbmZpbml0ZSBsb29wIG9mCiAgICAgIC5wcm9iZSgpIGNhbGxzIHRvIHRoZSBzYW1l
-IGRyaXZlci4KCkZvciBleGFtcGxl77yaCnZvcF9wcm9iZSAtLeOAi2NvbXBvbmVudF9hZGQtLeOA
-i3JrMzA2Nl9oZG1pX2JpbmQtLeOAi3JrMzA2Nl9oZG1pX2F1ZGlvX2NvZGVjX2luaXQtLeOAi2hk
-bWlfY29kZWNfcHJvYmUtLeOAi3JvY2tjaGlwX3JnYl9pbml077yIREVGRVIgd2hlbiBwYW5lbCBu
-b3QgcmVhZHnvvIkKClRoaXMgIG1heSByZXN1bHQgaW4gYW4gaW5maW5pdGUgbG9vcCBvZiBwcm9i
-ZQoKCj4rCj4gCXJldHVybiAwOwo+IH0KPgo+QEAgLTgxMyw2ICsxMDgzLDcgQEAgc3RhdGljIGlu
-dCByazMwNjZfaGRtaV9iaW5kKHN0cnVjdCBkZXZpY2UgKmRldiwgc3RydWN0IGRldmljZSAqbWFz
-dGVyLAo+IAlyZXR1cm4gMDsKPgo+IGVycl9jbGVhbnVwX2hkbWk6Cj4rCXBsYXRmb3JtX2Rldmlj
-ZV91bnJlZ2lzdGVyKGhkbWktPmF1ZGlvX3BkZXYpOwo+IAloZG1pLT5jb25uZWN0b3IuZnVuY3Mt
-PmRlc3Ryb3koJmhkbWktPmNvbm5lY3Rvcik7Cj4gCWhkbWktPmVuY29kZXIuZW5jb2Rlci5mdW5j
-cy0+ZGVzdHJveSgmaGRtaS0+ZW5jb2Rlci5lbmNvZGVyKTsKPiBlcnJfZGlzYWJsZV9pMmM6Cj5A
-QCAtODI4LDYgKzEwOTksNyBAQCBzdGF0aWMgdm9pZCByazMwNjZfaGRtaV91bmJpbmQoc3RydWN0
-IGRldmljZSAqZGV2LCBzdHJ1Y3QgZGV2aWNlICptYXN0ZXIsCj4gewo+IAlzdHJ1Y3QgcmszMDY2
-X2hkbWkgKmhkbWkgPSBkZXZfZ2V0X2RydmRhdGEoZGV2KTsKPgo+KwlwbGF0Zm9ybV9kZXZpY2Vf
-dW5yZWdpc3RlcihoZG1pLT5hdWRpb19wZGV2KTsKPiAJaGRtaS0+Y29ubmVjdG9yLmZ1bmNzLT5k
-ZXN0cm95KCZoZG1pLT5jb25uZWN0b3IpOwo+IAloZG1pLT5lbmNvZGVyLmVuY29kZXIuZnVuY3Mt
-PmRlc3Ryb3koJmhkbWktPmVuY29kZXIuZW5jb2Rlcik7Cj4KPi0tCj4yLjM5LjIKPgpfX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBt
-YWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlz
-dHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+--===============3862737646691777096==
+Content-Type: multipart/signed; boundary="nextPart2466515.jE0xQCEvom";
+ micalg="pgp-sha256"; protocol="application/pgp-signature"
+
+--nextPart2466515.jE0xQCEvom
+Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain; charset="us-ascii"; protected-headers="v1"
+From: Detlev Casanova <detlev.casanova@collabora.com>
+To: Alex Bee <knaerzche@gmail.com>, Jonas Karlman <jonas@kwiboo.se>
+Date: Fri, 28 Jun 2024 09:31:02 -0400
+Message-ID: <114641696.nniJfEyVGO@arisu>
+Organization: Collabora
+In-Reply-To: <689aec72-f777-4122-a332-02009fbf0b3b@kwiboo.se>
+MIME-Version: 1.0
+
+Hi Jonas,
+
+On Thursday, June 27, 2024 6:39:36 P.M. EDT Jonas Karlman wrote:
+[snip]
+> >>>>>>> SRST_RKVDEC1_HEVC_CA>;
+> >>>>>>> +		reset-names = "rst_axi", "rst_ahb", "rst_cabac",
+> >>>>>>> +			      "rst_core", "rst_hevc_cabac";
+> >>>>>>> +		power-domains = <&power RK3588_PD_RKVDEC1>;
+> >>>>>>> +		sram = <&vdec1_sram>;
+> >>>>>>> +		status = "okay";
+> >>>>>>> +	};
+> >>>>>> 
+> >>>>>> This is still missing the iommus, please add the iommus, they should
+> >>>>>> be
+> >>>>>> 
+> >>>>>> supported/same as the one used for e.g. VOP2:
+> >>>>>>    compatible = "rockchip,rk3588-iommu", "rockchip,rk3568-iommu";
+> >>>>>> 
+> >>>>>> The VOP2 MMUs does have one extra mmu_cfg_mode flag in AUTO_GATING,
+> >>>>>> compared to the VDPU381 MMUs, however only the AV1D MMU should be
+> >>>>>> special on RK3588.
+> >>>>>> 
+> >>>>>> Please add the iommus :-)
+> >>>>> 
+> >>>>> When looking add the vendor DT/iommu driver I'm seeing serval quirks
+> >>>>> applied for vdec's iommus. Since it's rightly frowned upon adding such
+> >>>>> boolean-quirk-properties to upstream devicetrees, we'd at least need
+> >>>>> additional (fallback-) compatibles, even if it works with the iommu
+> >>>>> driver
+> >>>>> as is (what I doubt, but haven't tested). We need to be able to apply
+> >>>>> those
+> >>>>> quirks later without changing the devicetree (as usual) and I'm sure
+> >>>>> RK
+> >>>>> devs haven't added these quirks for the personal amusement.
+> >>>> 
+> >>>> Based on what I investigated the hw should work similar, and the quirks
+> >>>> mostly seem related to optimizations and sw quirks, like do not zap
+> >>>> each
+> >>>> line, keep it alive even when pm runtime say it is not in use and other
+> >>>> quirks that seem to be more of sw nature on how to best utilize the hw.
+> >>> 
+> >>> I did some testing with the IOMMU but unfortunately, I'm only getting
+> >>> page
+> >>> fault errors. This may be something I'm doing wrong, but it clearly
+> >>> needs
+> >>> more investigation.
+> >> 
+> >> I re-tested and the addition of sram seem to now cause page faults, the
+> >> sram also need to be mapped in the iommu.
+> >> 
+> >> However, doing more testing revealed that use of iommu present the same
+> >> issue as seen with hevc on rk3399, after a fail fluster tests continue
+> >> to fail until a reset.
+> >> 
+> >> Seeing how this issue was very similar I re-tested on rk3399 without
+> >> iommu and cma=1G and could observe that there was no longer any need to
+> >> reset after a failed test. Interestingly the score also went up from
+> >> 135 to 137/147.
+> >> 
+> >> Digging some more revealed that the iommu also is reset during the
+> >> internal rkvdec soft reset on error, leaving the iommu with dte_addr=0
+> >> and paging in disabled state.
+> >> 
+> >> Ensuring that the iommu was reconfigured after a failure fixed the issue
+> >> observed on rk3399 and I now also get 137/147 hevc fluster score using
+> >> the iommu.
+> >> 
+> >> Will send out a rkvdec hevc v2 series after some more testing.
+> >> 
+> >> Guessing there is a similar need to reconfigure iommu on rk3588, and my
+> >> initial tests also showed promising result, however more tests are
+> >> needed.
+> > 
+> > I did some testing with the IOMMU. The good news is that it now works with
+> > the SRAM.
+> 
+> Great, I did not look into SRAM at all, just replaced sram prop with iommus
+> for my tests, so great that you found a way to make it work with the iommu
+> :-)
+> > I am also able to hack the iommu driver to force a reset in case of an
+> > error in the decoder. I'm not sure how to implement that with the IOMMU
+> > kernel API though.
+> 
+> I am planning on sending something along the way of this as an RFC:
+> 
+> https://github.com/Kwiboo/linux-rockchip/compare/6da640232631...bf332524d880
+> 
+> If we re-configure and re-enable the iommu just before next decoding run
+> after a decoding has failed seem to resolve any issue I have seen, have
+> mainly been tested with rkvdec and HEVC on RK3399/RK3328. On RK3588 this
+> also seemed to work, at least when I tested earlier this week.
+>
+> > Another issue is that resetting the iommu will drop all buffer addresses
+> > of
+> > other decoding contexts that may be running in parallel.
+> 
+> I do not think we need/should reset the iommu, we just need to deal with
+> the fact that the rkvdec will reset and disable use of the mmu when it
+> reset itself.
+
+Oh I see, it just resets the iommu config in the core's registers, but the 
+hardware retains the mapped addresses. That makes things simpler indeed, just 
+reconfigure before the next frame in case of status error in the interrupt.
+
+> > I *think* that the downstream mpp remaps the buffers in the iommu for each
+> > frame, but I'm not sure about that either.
+> 
+> As long as a frame can be decoded correctly, the mmu config seem to continue
+> to be valid and next frame can be decoded.
+> 
+> > So running fluster with `-j 1` gives me the expected 129/135 passed tests,
+> > but `-j 8` will start failing all tests after the first fail (well, first
+> > fail because of decoder error).
+> 
+> This was the main issue blocking rkvdec hevc, just re-confgure the mmu
+> after a frame fails to decode seem to resolve this issue.
+> 
+> Biggest issue at the moment is how to properly signal iommu subsystem that
+> it should re-configure, I may have abused the flush_iotlb_all ops, since
+> that seemed closest existing hook.
+
+Oh I see, I was wondering what the flush_iotlb_all ops was doing exactly. So 
+does it flush a "cached" copy of the table from the driver back to the hardware 
+? As well as reconfigure the registers I guess.
+
+> Will send an RFC to linux-iommu to collect input on how to best signal
+> iommu subsystem that the mmu has been reset by an external event and now
+> need to be re-configured.
+
+Thank you ! Can you add me in cc so that I can keep track of this ?
+
+> Regards,
+> Jonas
+> 
+> >> Regards,
+> >> Jonas
+> >> 
+> >>>>> If Detlev says
+> >>>>> iommu is out of scope for this series (which is valid), I'd say it's
+> >>>>> fine
+> >>>>> to leave them out for now (as no binding exists) and the HW works
+> >>>>> (obviously) fine without them.
+> >>>> 
+> >>>> Sure, use of MMU can be added later.
+> >>> 
+> >>> I'd rather go for that for now. I'll add that IMMU support is missing in
+> >>> the TODO file.
+> >>> 
+> >>>> Regards,
+> >>>> Jonas
+> >>>> 
+> >>>>>> Regards,
+> >>>>>> Jonas
+> >>>>>> 
+> >>>>>>>   };
+> >>>>>>>   
+> >>>>>>>   #include "rk3588s-pinctrl.dtsi"
+
+
+--nextPart2466515.jE0xQCEvom
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: This is a digitally signed message part.
+Content-Transfer-Encoding: 7Bit
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCAAdFiEEonF9IvGrXNkDg+CX5EFKUk4x7bYFAmZ+uxYACgkQ5EFKUk4x
+7bYn+Af+I+2016/BEafa9Q8etcNHgO6QmsuzgSlknxe1OjZpDgpzilC/08fIkhZA
+7EsnQtt8NakzCuNjdpgVzEMSz7S8UzRvZTuBTlPlQftq0z4wXO6pGn6dZ95pOgIz
+27qU8qqvmWYpKNebo+tubXaYYPp28gLxZaw6COXejb6VwNgoIkPEn3Hq0zaPLG10
+CyEGqvDmrKAfXgnoE+YskuRXqBfv1VdcuRI17U0pQNE/26h3neV15LUVDOIp8+PI
+tPtbyl28HKtGf/+uBD+sP2YjkuJnZdoCNkbbFtYW9wNqlf37IlsO3cJ0mCY2efBq
+wMQ7rBLPNzYffMU8BQydtcGegmEthw==
+=dwA8
+-----END PGP SIGNATURE-----
+
+--nextPart2466515.jE0xQCEvom--
+
+
+
+
+
+--===============3862737646691777096==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============3862737646691777096==--
+
+
+
+
