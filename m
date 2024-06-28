@@ -4,78 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7D4FDC2BBCA
-	for <linux-rockchip@archiver.kernel.org>; Fri, 28 Jun 2024 10:50:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D88B9C2BD09
+	for <linux-rockchip@archiver.kernel.org>; Fri, 28 Jun 2024 12:02:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=FfrFiKIF3abnmxwDmn/hMLN/F/P58RJxh6AFjqFPQQw=; b=m/5p4F+UJpuIz3
-	m5e7mY1vv1tDDPdEQZUwiipwvjew/iHFyQjCbaNmwKbo/8d6a+woooPic6h7bnj/2+zoOydOjbH8/
-	J5yrnalI6+UiKxcKtbY0Ec09eXAZP7rhdONTONEuHK3Zlnj374V1QopShHFOS1o4XpW4l6Bi33WmJ
-	Cjkgv9ng072w+nIXkePqFdZZ9ff/ZLuR3LjFhoJxcam7DFvFPNE/L56x0rmC5zJrh5mf+CaTrJWT2
-	hhICqIqaSI/AdyGsHyeoCp+jyjCkcFa5T8b5DPv6+GFlvtsz8/2dQ9oOhOqNNi0mblhXpzuo2RcUx
-	Td3Lr5UKW8FoG1bsdT1A==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=0C+rhXwWjOsd/Sof9qM68OXBo8qd5bfWxriGSqgVZKE=; b=SdaqDvEiGPdw4P
+	LxAto/+EEXn0shZWonbcfTz0l1ca+oGEzQwfF2twtfpFRhrWvmSrnebwWL5NuDL7805hYoNbaWgGS
+	mJ2k1RuODkUmO17xtJC7GID9ilI2PEcE+6NIgWpEOlQ+3Ufy8pfDMW4e4CTSbSJh3EOxeax6grIkG
+	6totIsHr538SP0hPGNBybLusPn1LNC01UWisK4ZoqAV8A4AYKySW76iIt49YUzZ/0gmuN5ROGCQPf
+	IPMJHChtUhopqoWTebm7tVv/c1SuPOovLi8/wNl2c+RyiURkJs32MoJEehVMuEAaThAsNrAXDJelf
+	Yh9Svr5be0Wquo8vmwEQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sN9BF-0000000DSq6-1GNk;
-	Fri, 28 Jun 2024 10:50:13 +0000
-Received: from mgamail.intel.com ([198.175.65.19])
+	id 1sNAJ1-0000000Dcvi-3Lvp;
+	Fri, 28 Jun 2024 12:02:19 +0000
+Received: from out-180.mta0.migadu.com ([91.218.175.180])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sN9B5-0000000DSnD-1oRS;
-	Fri, 28 Jun 2024 10:50:05 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1719571804; x=1751107804;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=4yLS4SO15+GZgSV9YAquPD11MCf9dm2ee3l4KGzL7uk=;
-  b=Y5odPglM8zYYBeJ24DqVHTHZ3+bCxS4K9uj9NX/kObwZfClkBsm6qOPj
-   DW0ylyNI+FHBTWy+wyvRrcXCgFH0qFRq/BIAuyHsa8b89MX8VNt98NNCZ
-   AE3P4GOA90skFpLZVDI+bglL0e5MF5eRveNJCkEBOY0xanGAsoOMTRhCA
-   3jUpo28L9UB7tDAyifku+gcz7FX/wCiYeqI+yOiquE4SLinVzmu6qHtUl
-   diOVcIo4Hb9bzHp5eW07Cwsd1Plxh3dmEsxe6Toyp1fbSR3PrPAJhIFNB
-   eNBoYARA0B8Gfeu/gqr0jAEOpcnknC+4JQK7nhfwnQw3O2St90iXm9abF
-   Q==;
-X-CSE-ConnectionGUID: Zr1Y/lgkR6uOzmb5S7diSw==
-X-CSE-MsgGUID: /TfydC5WRfKhIyDrYc7gxA==
-X-IronPort-AV: E=McAfee;i="6700,10204,11116"; a="16583416"
-X-IronPort-AV: E=Sophos;i="6.09,168,1716274800"; 
-   d="scan'208";a="16583416"
-Received: from fmviesa009.fm.intel.com ([10.60.135.149])
-  by orvoesa111.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 28 Jun 2024 03:49:36 -0700
-X-CSE-ConnectionGUID: bnRvln6hT6a4BNTMtrWfNA==
-X-CSE-MsgGUID: B+Rix3d/R7OrlEn3C8UPfw==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.09,168,1716274800"; 
-   d="scan'208";a="44759393"
-Received: from lkp-server01.sh.intel.com (HELO 68891e0c336b) ([10.239.97.150])
-  by fmviesa009.fm.intel.com with ESMTP; 28 Jun 2024 03:49:34 -0700
-Received: from kbuild by 68891e0c336b with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1sN9AZ-000H1Z-1p;
-	Fri, 28 Jun 2024 10:49:31 +0000
-Date: Fri, 28 Jun 2024 18:49:10 +0800
-From: kernel test robot <lkp@intel.com>
-To: Jonas Karlman <jonas@kwiboo.se>, Heiko Stuebner <heiko@sntech.de>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>
-Cc: oe-kbuild-all@lists.linux.dev, devicetree@vger.kernel.org,
+	id 1sNAIy-0000000Dcrf-3Da5
+	for linux-rockchip@lists.infradead.org;
+	Fri, 28 Jun 2024 12:02:18 +0000
+X-Envelope-To: heiko@sntech.de
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow.org; s=key1;
+	t=1719576129;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=sfuZFBB5M5HzceMLfENqUVqIXCu7nq+4d20hGrJdaF0=;
+	b=lHdl2hyMNHhzITHZTrrKvZs6BqdIjLJ1EeebRI2kMoTaXbH1Ai41zCDEcFyzPAe6ciIQf1
+	Fu0MOS6RM05zY2Kbbs3J9UDQLNtSOMbzpzaanoMBNoW1+9YlzQ/Ns9r3sVqpRcdagPz0KB
+	4gZE8wD7CsHrJ8AAGJLwAZ5M2XOhIrRVwSGn0xYpchIHZIHySemtwvaPInSko7O6WXdDx8
+	Iyc0L8mU6YGhl7N0BqLaqNB69LOG1iwPWJ4HrX0+TkUJpwV8DbItjeuk6WloPQnD+tOiLy
+	1tLoHDDGudWPu2jNz9ycny1D+m070dru7LJdXar5XJBVPqkbLKIY/2EsDuCHmw==
+X-Envelope-To: didi.debian@cknow.org
+X-Envelope-To: jonas@kwiboo.se
+X-Envelope-To: dsimic@manjaro.org
+X-Envelope-To: ukleinek@debian.org
+X-Envelope-To: wens@kernel.org
+X-Envelope-To: linux-rockchip@lists.infradead.org
+X-Envelope-To: devicetree@vger.kernel.org
+X-Envelope-To: linux-arm-kernel@lists.infradead.org
+X-Envelope-To: linux-kernel@vger.kernel.org
+X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
+From: Diederik de Haas <didi.debian@cknow.org>
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: Diederik de Haas <didi.debian@cknow.org>,
+	Jonas Karlman <jonas@kwiboo.se>,
+	Dragan Simic <dsimic@manjaro.org>,
+	=?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <ukleinek@debian.org>,
+	Chen-Yu Tsai <wens@kernel.org>,
+	linux-rockchip@lists.infradead.org,
+	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
-	Jonas Karlman <jonas@kwiboo.se>
-Subject: Re: [PATCH v2 2/2] arm64: dts: rockchip: Add Xunlong Orange Pi 3B
-Message-ID: <202406281834.nNnojcHy-lkp@intel.com>
-References: <20240626230319.1425316-3-jonas@kwiboo.se>
+	linux-kernel@vger.kernel.org
+Subject: [PATCH] arm64: dts: rockchip: Add dma-names to uart1 on quartz64-b
+Date: Fri, 28 Jun 2024 14:00:43 +0200
+Message-ID: <20240628120130.24076-1-didi.debian@cknow.org>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20240626230319.1425316-3-jonas@kwiboo.se>
+X-Migadu-Flow: FLOW_OUT
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240628_035003_664530_DDDCDCAB 
-X-CRM114-Status: GOOD (  12.09  )
+X-CRM114-CacheID: sfid-20240628_050217_390544_92E3A6AE 
+X-CRM114-Status: GOOD (  11.44  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,40 +84,49 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Jonas,
+There have been several attempts to set the dma-names property on the
+SoC level (in rk356x.dtsi), but that appears to cause problems when set
+on channels without flow control.
 
-kernel test robot noticed the following build warnings:
+Quoting part of a previous attempt for clarification:
 
-[auto build test WARNING on rockchip/for-next]
-[also build test WARNING on robh/for-next krzk/for-next krzk-dt/for-next krzk-mem-ctrl/for-next linus/master v6.10-rc5 next-20240627]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
+> Nah, enabling it for bluetooth is fine because you have flow control.
+> My issues have been on channels without flow control. Without DMA it
+> simply drops messages or the channel hangs until you close and reopen
+> it. With DMA, when an overflow locks up the channel it is usually
+> unavailable until the board is rebooted.
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Jonas-Karlman/dt-bindings-arm-rockchip-Add-Xunlong-Orange-Pi-3B/20240627-175050
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git for-next
-patch link:    https://lore.kernel.org/r/20240626230319.1425316-3-jonas%40kwiboo.se
-patch subject: [PATCH v2 2/2] arm64: dts: rockchip: Add Xunlong Orange Pi 3B
-config: arm64-randconfig-051-20240628 (https://download.01.org/0day-ci/archive/20240628/202406281834.nNnojcHy-lkp@intel.com/config)
-compiler: aarch64-linux-gcc (GCC) 13.2.0
-dtschema version: 2024.6.dev3+g650bf2d
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20240628/202406281834.nNnojcHy-lkp@intel.com/reproduce)
+Setting it on the board level for the bluetooth connection was deemed
+safe, so do so for the Quartz64 Model B.
 
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202406281834.nNnojcHy-lkp@intel.com/
+This fixes the following error/warning:
 
-dtcheck warnings: (new ones prefixed by >>)
->> arch/arm64/boot/dts/rockchip/rk3566-orangepi-3b-v1.1.dtb: pmic@20: '#sound-dai-cells', 'assigned-clock-parents', 'assigned-clocks', 'clock-names', 'clocks' do not match any of the regexes: 'pinctrl-[0-9]+'
-   	from schema $id: http://devicetree.org/schemas/mfd/rockchip,rk809.yaml#
---
->> arch/arm64/boot/dts/rockchip/rk3566-orangepi-3b-v2.1.dtb: pmic@20: '#sound-dai-cells', 'assigned-clock-parents', 'assigned-clocks', 'clock-names', 'clocks' do not match any of the regexes: 'pinctrl-[0-9]+'
-   	from schema $id: http://devicetree.org/schemas/mfd/rockchip,rk809.yaml#
+  of_dma_request_slave_channel: dma-names property of node
+      '/serial@fe650000' missing or empty
+  dw-apb-uart fe650000.serial: failed to request DMA
 
+Signed-off-by: Diederik de Haas <didi.debian@cknow.org>
+Link: https://libera.irclog.whitequark.org/armlinux/2024-02-29
+Link: https://lore.kernel.org/linux-rockchip/18284546.sWSEgdgrri@diego/
+---
+ arch/arm64/boot/dts/rockchip/rk3566-quartz64-b.dts | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3566-quartz64-b.dts b/arch/arm64/boot/dts/rockchip/rk3566-quartz64-b.dts
+index b908ce006c26..13e599a85eb8 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3566-quartz64-b.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3566-quartz64-b.dts
+@@ -652,6 +652,7 @@ &tsadc {
+ };
+ 
+ &uart1 {
++	dma-names = "tx", "rx";
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&uart1m0_xfer &uart1m0_ctsn &uart1m0_rtsn>;
+ 	status = "okay";
 -- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+2.45.2
+
 
 _______________________________________________
 Linux-rockchip mailing list
