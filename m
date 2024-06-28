@@ -4,78 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9A3F9C3064D
-	for <linux-rockchip@archiver.kernel.org>; Fri, 28 Jun 2024 13:07:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 84AB4C3064D
+	for <linux-rockchip@archiver.kernel.org>; Fri, 28 Jun 2024 13:09:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Message-ID:MIME-Version:References:
+	In-Reply-To:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Jxo8qiEAHMuUbtz8hhCkag8Pv8avLMTFk8crIEuEPS0=; b=dfrE0nIJJpZ35i
-	9dPAbA+/5DgOhMr/gmI07f83QAttzJWtojpOb4AZ0ERtwS8G01MLSO/wjil/P8P+XHDLh0wP9lmgA
-	0hag++SqGXaEs3Pw5HYwYNgfckdfCnRsWo7Q1rj6Tu06GGwqhil0bFQWUg0OfbCNmKufXOTscq5ce
-	P2m89vYkcSnXuF0w7DXJ8NrMIqJJ4VVEipBKTZvbfiRfnXOmTWbmZ9qn+HOx/23fI+dB265607hE+
-	1dRyyr9O+pnkGuCGobIv+BZzcd2rbsLt8Yu42SA5aNauBQdmbQsJTpkIwXRhImSmpphZNDoMAML5B
-	1O2dO9Vh5R+HdhR350FA==;
+	List-Owner; bh=j8/K5JUi44/5ML1JgfMvb22WSmURvNEjKRWu6gK/As4=; b=SbpRNZBrfgXqzG
+	yBPR5xA0yfHzb8k1tUvNQNj09q/eC9/WX+yWOBjsThRPT75YknzgXbrXHeIRkXtta1/zWaTrMQdrB
+	fEL1JuuCn2F/T2+S1/1R/5Pq7DSLJTLc0tU8DDghhvRHFRYv5VGTjPR1oyYYE9Td6O9lh+6+u8Anm
+	haf7OKjAAUV6MLLSJVqDRwIVHNTGi/hC2UaoH1Ya+LF3zX6QO2Y30pzfqqruzjsMLlbkIX++pPk2a
+	CL855Pa0w12HTe/v77yT7emRg7NfiXdJN1ILuh29jTBV509ZZUoaVUnviMLzqXfOfwGyZD8LRICXr
+	kavL9qXVbeVU3sctLtqw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sNBJs-0000000Dlsc-40M6;
-	Fri, 28 Jun 2024 13:07:16 +0000
-Received: from mgamail.intel.com ([198.175.65.16])
-	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sNBJi-0000000Dlqu-1jXw;
-	Fri, 28 Jun 2024 13:07:08 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1719580026; x=1751116026;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=qWEehPSVEYKhPzyWJRgf6X298EwczVbvcUE/LXyT/GI=;
-  b=P/FGD1o3eUVK4ZfDcXD4DkGX4sMsQNUFVISXS8nfmrtuhYb++S6ciEib
-   sMyXy3nEJtB8+EeNntkyhZ8mh6NQwd/3v24PltDCC3GtTwgRy+5tN0ceT
-   OlbKKcwxPiYmIJbaCE93V93Aooh4PGUZPdT5bMb/khcdN6x7LVrN4sB5X
-   A8pNkuwG6Dq4BMT1tpBUd4U+2fYEp6qv+k02sUty++s5Z3+hqnYyKNXl2
-   +tPX032OI9WzifvBS+9YVWxC2kpmjNCzHIIQ+ZQoiKXxC3R5Hp2iP0W8Q
-   K4YhOgZBMrLpBW+ClXwDZKE4bUDii/ave/Ya4B1meSsDOPg6tw99lPRNn
-   g==;
-X-CSE-ConnectionGUID: uk7tF2qST++jDyALz971fA==
-X-CSE-MsgGUID: q3k+5jgsSZ2A7QhITVrk7A==
-X-IronPort-AV: E=McAfee;i="6700,10204,11116"; a="16892489"
-X-IronPort-AV: E=Sophos;i="6.09,169,1716274800"; 
-   d="scan'208";a="16892489"
-Received: from orviesa002.jf.intel.com ([10.64.159.142])
-  by orvoesa108.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 28 Jun 2024 06:07:04 -0700
-X-CSE-ConnectionGUID: jTneSz1ORgig3jYbLChAEg==
-X-CSE-MsgGUID: oJGYvT0HTLKjr8IzXshXMg==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.09,169,1716274800"; 
-   d="scan'208";a="75470390"
-Received: from lkp-server01.sh.intel.com (HELO 68891e0c336b) ([10.239.97.150])
-  by orviesa002.jf.intel.com with ESMTP; 28 Jun 2024 06:07:03 -0700
-Received: from kbuild by 68891e0c336b with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1sNBJb-000H7i-3D;
-	Fri, 28 Jun 2024 13:06:59 +0000
-Date: Fri, 28 Jun 2024 21:06:36 +0800
-From: kernel test robot <lkp@intel.com>
-To: Jonathan Liu <net147@gmail.com>, Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>
-Cc: oe-kbuild-all@lists.linux.dev, Jonathan Liu <net147@gmail.com>,
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	id 1sNBM4-0000000DmLy-0qgd;
+	Fri, 28 Jun 2024 13:09:32 +0000
+Received: from m15.mail.163.com ([45.254.50.220])
+	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
+	id 1sNBLt-0000000DmG7-1fUd;
+	Fri, 28 Jun 2024 13:09:23 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
+	s=s110527; h=Date:From:Subject:Content-Type:MIME-Version:
+	Message-ID; bh=cqf/4WMNeaRoU39IHS4d1NmMLfGYJz1MQmZrQrLR5Nw=; b=j
+	0Qz7eAZzQXvnsg5fw2KJxYznKHWn96/k16UCBCqmXH5YkPOs2yEQFgZLKSIy4ULC
+	zoMrokSPFz/cDojiTlG95OBFyzOQUW/HL4IyYfXugGcj/x2D41le55WdQzXWoQQP
+	7gkoyV/+g8EzQ824rSlNP5pEl9XKDZZa4B2GsZD4kc=
+Received: from andyshrk$163.com ( [58.22.7.114] ) by
+ ajax-webmail-wmsvr-40-102 (Coremail) ; Fri, 28 Jun 2024 21:08:55 +0800
+ (CST)
+X-Originating-IP: [58.22.7.114]
+Date: Fri, 28 Jun 2024 21:08:55 +0800 (CST)
+From: "Andy Yan" <andyshrk@163.com>
+To: "Johan Jonker" <jbx6244@gmail.com>
+Cc: heiko@sntech.de, hjc@rock-chips.com, andy.yan@rock-chips.com, 
+	maarten.lankhorst@linux.intel.com, mripard@kernel.org, 
+	tzimmermann@suse.de, airlied@gmail.com, daniel@ffwll.ch, 
+	lgirdwood@gmail.com, broonie@kernel.org, linux-sound@vger.kernel.org, 
+	dri-devel@lists.freedesktop.org, 
+	linux-arm-kernel@lists.infradead.org, 
 	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] arm64: dts: rockchip: Enable RK809 audio codec for Radxa
- ROCK 4C+
-Message-ID: <202406282049.ZRM6qCDn-lkp@intel.com>
-References: <20240621130903.2572986-1-net147@gmail.com>
+Subject: Re:[PATCH v7] drm/rockchip: rk3066_hdmi: add sound support
+X-Priority: 3
+X-Mailer: Coremail Webmail Server Version XT5.0.14 build 20230109(dcb5de15)
+ Copyright (c) 2002-2024 www.mailtech.cn 163com
+In-Reply-To: <5c651b3f-fe30-4874-98ed-044f7c62dd97@gmail.com>
+References: <5c651b3f-fe30-4874-98ed-044f7c62dd97@gmail.com>
+X-NTES-SC: AL_Qu2aC/mTv0ko4yadY+kZnEobh+Y5UcK2s/ki2YFXN5k0tCTHxR8/Q1RdAkb0+uuMIA2XmzObawdD9sBlXpZ2XqvvOshJ1wZ3GH+oWtvPX5t/
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20240621130903.2572986-1-net147@gmail.com>
+Message-ID: <7c53f7d.bb08.1905ef690ef.Coremail.andyshrk@163.com>
+X-Coremail-Locale: zh_CN
+X-CM-TRANSID: _____wD3P6TntX5myNsRAA--.3669W
+X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/xtbB0hIMXmWXyqo7rgABsU
+X-Coremail-Antispam: 1U5529EdanIXcx71UUUUU7vcSsGvfC2KfnxnUU==
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240628_060706_584932_166150CB 
-X-CRM114-Status: GOOD (  13.20  )
+X-CRM114-CacheID: sfid-20240628_060921_883396_86D5BEB8 
+X-CRM114-Status: GOOD (  13.29  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,61 +73,88 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Jonathan,
-
-kernel test robot noticed the following build warnings:
-
-[auto build test WARNING on rockchip/for-next]
-[also build test WARNING on krzk/for-next krzk-dt/for-next linus/master v6.10-rc5 next-20240627]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
-
-url:    https://github.com/intel-lab-lkp/linux/commits/Jonathan-Liu/arm64-dts-rockchip-Enable-RK809-audio-codec-for-Radxa-ROCK-4C/20240625-210156
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git for-next
-patch link:    https://lore.kernel.org/r/20240621130903.2572986-1-net147%40gmail.com
-patch subject: [PATCH] arm64: dts: rockchip: Enable RK809 audio codec for Radxa ROCK 4C+
-config: arm64-randconfig-051-20240628 (https://download.01.org/0day-ci/archive/20240628/202406282049.ZRM6qCDn-lkp@intel.com/config)
-compiler: aarch64-linux-gcc (GCC) 13.2.0
-dtschema version: 2024.6.dev3+g650bf2d
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20240628/202406282049.ZRM6qCDn-lkp@intel.com/reproduce)
-
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202406282049.ZRM6qCDn-lkp@intel.com/
-
-dtcheck warnings: (new ones prefixed by >>)
-   arch/arm64/boot/dts/rockchip/rk3399.dtsi:566.26-600.4: Warning (unit_address_vs_reg): /usb@fe900000: node has a unit name, but no reg or ranges property
-   arch/arm64/boot/dts/rockchip/rk3399.dtsi:2063.25-2102.4: Warning (avoid_unnecessary_addr_size): /dsi@ff960000: unnecessary #address-cells/#size-cells without "ranges" or child "reg" property
-   arch/arm64/boot/dts/rockchip/rk3399.dtsi:2104.26-2144.4: Warning (avoid_unnecessary_addr_size): /dsi@ff968000: unnecessary #address-cells/#size-cells without "ranges" or child "reg" property
-   arch/arm64/boot/dts/rockchip/rk3399-rock-4c-plus.dtb: ethernet@fe300000: Unevaluated properties are not allowed ('snps,txpbl' was unexpected)
-   	from schema $id: http://devicetree.org/schemas/net/rockchip-dwmac.yaml#
-   arch/arm64/boot/dts/rockchip/rk3399-rock-4c-plus.dtb: usb@fe800000: 'extcon' does not match any of the regexes: '^usb@', 'pinctrl-[0-9]+'
-   	from schema $id: http://devicetree.org/schemas/usb/rockchip,rk3399-dwc3.yaml#
-   arch/arm64/boot/dts/rockchip/rk3399-rock-4c-plus.dtb: /dp@fec00000: failed to match any schema with compatible: ['rockchip,rk3399-cdn-dp']
->> arch/arm64/boot/dts/rockchip/rk3399-rock-4c-plus.dtb: pmic@20: '#sound-dai-cells', 'clock-names', 'clocks' do not match any of the regexes: 'pinctrl-[0-9]+'
-   	from schema $id: http://devicetree.org/schemas/mfd/rockchip,rk809.yaml#
-   arch/arm64/boot/dts/rockchip/rk3399-rock-4c-plus.dtb: regulator@40: Unevaluated properties are not allowed ('regulator-compatible' was unexpected)
-   	from schema $id: http://devicetree.org/schemas/regulator/fcs,fan53555.yaml#
-   arch/arm64/boot/dts/rockchip/rk3399-rock-4c-plus.dtb: regulator@41: Unevaluated properties are not allowed ('regulator-compatible' was unexpected)
-   	from schema $id: http://devicetree.org/schemas/regulator/fcs,fan53555.yaml#
-   arch/arm64/boot/dts/rockchip/rk3399-rock-4c-plus.dtb: /syscon@ff770000/phy@f780: failed to match any schema with compatible: ['rockchip,rk3399-emmc-phy']
-   arch/arm64/boot/dts/rockchip/rk3399-rock-4c-plus.dtb: /syscon@ff770000/pcie-phy: failed to match any schema with compatible: ['rockchip,rk3399-pcie-phy']
-   arch/arm64/boot/dts/rockchip/rk3399-rock-4c-plus.dtb: /phy@ff7c0000: failed to match any schema with compatible: ['rockchip,rk3399-typec-phy']
-   arch/arm64/boot/dts/rockchip/rk3399-rock-4c-plus.dtb: /phy@ff800000: failed to match any schema with compatible: ['rockchip,rk3399-typec-phy']
-   arch/arm64/boot/dts/rockchip/rk3399-rock-4c-plus.dtb: pmic: vsel1-gpio: {'rockchip,pins': [[1, 17, 0, 194]], 'phandle': [[138]]} is not of type 'array'
-
--- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+CkhpIEpvaGFuLAoKQXQgMjAyNC0wNi0yOCAxNzoyMzozOSwgIkpvaGFuIEpvbmtlciIgPGpieDYy
+NDRAZ21haWwuY29tPiB3cm90ZToKPkFkZCBzb3VuZCBzdXBwb3J0IHRvIHRoZSBSSzMwNjYgSERN
+SSBkcml2ZXIuCj5UaGUgSERNSSBUWCBhdWRpbyBzb3VyY2UgaXMgY29ubmVjdGVkIHRvIEkyU184
+Q0guCj4KPlNpZ25lZC1vZmYtYnk6IFpoZW5nIFlhbmcgPHpoZW5neWFuZ0Byb2NrLWNoaXBzLmNv
+bT4KPlNpZ25lZC1vZmYtYnk6IEpvaGFuIEpvbmtlciA8amJ4NjI0NEBnbWFpbC5jb20+Cj4tLS0K
+Pgo+Q2hhbmdlZCBWNzoKPiAgcmViYXNlCj4tLS0KPiBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAv
+S2NvbmZpZyAgICAgICB8ICAgMiArCj4gZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JrMzA2Nl9o
+ZG1pLmMgfCAyNzQgKysrKysrKysrKysrKysrKysrKysrKysrLQo+IDIgZmlsZXMgY2hhbmdlZCwg
+Mjc1IGluc2VydGlvbnMoKyksIDEgZGVsZXRpb24oLSkKPgo+ZGlmZiAtLWdpdCBhL2RyaXZlcnMv
+Z3B1L2RybS9yb2NrY2hpcC9LY29uZmlnIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL0tjb25m
+aWcKPmluZGV4IDFiZjNlMjgyOWNkMC4uYTMyZWU1NTg0MDhjIDEwMDY0NAo+LS0tIGEvZHJpdmVy
+cy9ncHUvZHJtL3JvY2tjaGlwL0tjb25maWcKPisrKyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hp
+cC9LY29uZmlnCj5AQCAtMTAyLDYgKzEwMiw4IEBAIGNvbmZpZyBST0NLQ0hJUF9SR0IKPiBjb25m
+aWcgUk9DS0NISVBfUkszMDY2X0hETUkKPiAJYm9vbCAiUm9ja2NoaXAgc3BlY2lmaWMgZXh0ZW5z
+aW9ucyBmb3IgUkszMDY2IEhETUkiCj4gCWRlcGVuZHMgb24gRFJNX1JPQ0tDSElQCj4rCXNlbGVj
+dCBTTkRfU09DX0hETUlfQ09ERUMgaWYgU05EX1NPQwo+KwlzZWxlY3QgU05EX1NPQ19ST0NLQ0hJ
+UF9JMlMgaWYgU05EX1NPQwo+IAloZWxwCj4gCSAgVGhpcyBzZWxlY3RzIHN1cHBvcnQgZm9yIFJv
+Y2tjaGlwIFNvQyBzcGVjaWZpYyBleHRlbnNpb25zCj4gCSAgZm9yIHRoZSBSSzMwNjYgSERNSSBk
+cml2ZXIuIElmIHlvdSB3YW50IHRvIGVuYWJsZQo+ZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2Ry
+bS9yb2NrY2hpcC9yazMwNjZfaGRtaS5jIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JrMzA2
+Nl9oZG1pLmMKPmluZGV4IDc4NGRlOTkwZGExYi4uZDMxMjhiNzg3NjI5IDEwMDY0NAo+LS0tIGEv
+ZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JrMzA2Nl9oZG1pLmMKPisrKyBiL2RyaXZlcnMvZ3B1
+L2RybS9yb2NrY2hpcC9yazMwNjZfaGRtaS5jCj5AQCAtMTUsMTIgKzE1LDIwIEBACj4gI2luY2x1
+ZGUgPGxpbnV4L3BsYXRmb3JtX2RldmljZS5oPgo+ICNpbmNsdWRlIDxsaW51eC9yZWdtYXAuaD4K
+Pgo+KyNpbmNsdWRlIDxzb3VuZC9oZG1pLWNvZGVjLmg+Cj4rCj4gI2luY2x1ZGUgInJrMzA2Nl9o
+ZG1pLmgiCj4KPiAjaW5jbHVkZSAicm9ja2NoaXBfZHJtX2Rydi5oIgo+Cj4gI2RlZmluZSBERUZB
+VUxUX1BMTEFfUkFURSAzMDAwMDAwMAo+Cj4rc3RydWN0IGF1ZGlvX2luZm8gewo+KwlpbnQgY2hh
+bm5lbHM7Cj4rCWludCBzYW1wbGVfcmF0ZTsKPisJaW50IHNhbXBsZV93aWR0aDsKPit9Owo+Kwo+
+IHN0cnVjdCBoZG1pX2RhdGFfaW5mbyB7Cj4gCWludCB2aWM7IC8qIFRoZSBDRUEgVmlkZW8gSUQg
+KFZJQykgb2YgdGhlIGN1cnJlbnQgZHJtIGRpc3BsYXkgbW9kZS4gKi8KPiAJdW5zaWduZWQgaW50
+IGVuY19vdXRfZm9ybWF0Owo+QEAgLTU0LDkgKzYyLDE2IEBAIHN0cnVjdCByazMwNjZfaGRtaSB7
+Cj4KPiAJdW5zaWduZWQgaW50IHRtZHNjbGs7Cj4KPisJc3RydWN0IHBsYXRmb3JtX2RldmljZSAq
+YXVkaW9fcGRldjsKPisJc3RydQoKLi4uLi4uCgo+Kwo+KwlyZXR1cm4gcmV0Owo+K30KPisKPitz
+dGF0aWMgY29uc3Qgc3RydWN0IGhkbWlfY29kZWNfb3BzIGF1ZGlvX2NvZGVjX29wcyA9IHsKPisJ
+Lmh3X3BhcmFtcyA9IHJrMzA2Nl9oZG1pX2F1ZGlvX2h3X3BhcmFtcywKPisJLmF1ZGlvX3NodXRk
+b3duID0gcmszMDY2X2hkbWlfYXVkaW9fc2h1dGRvd24sCj4rCS5tdXRlX3N0cmVhbSA9IHJrMzA2
+Nl9oZG1pX2F1ZGlvX211dGVfc3RyZWFtLAo+KwkuZ2V0X2VsZCA9IHJrMzA2Nl9oZG1pX2F1ZGlv
+X2dldF9lbGQsCj4rCS5ub19jYXB0dXJlX211dGUgPSAxLAo+K307Cj4rCj4rc3RhdGljIGludCBy
+azMwNjZfaGRtaV9hdWRpb19jb2RlY19pbml0KHN0cnVjdCByazMwNjZfaGRtaSAqaGRtaSwKPisJ
+CQkJCXN0cnVjdCBkZXZpY2UgKmRldikKPit7Cj4rCXN0cnVjdCBoZG1pX2NvZGVjX3BkYXRhIGNv
+ZGVjX2RhdGEgPSB7Cj4rCQkuaTJzID0gMSwKPisJCS5vcHMgPSAmYXVkaW9fY29kZWNfb3BzLAo+
+KwkJLm1heF9pMnNfY2hhbm5lbHMgPSA4LAo+Kwl9Owo+Kwo+KwloZG1pLT5hdWRpby5jaGFubmVs
+cyA9IDI7Cj4rCWhkbWktPmF1ZGlvLnNhbXBsZV9yYXRlID0gNDgwMDA7Cj4rCWhkbWktPmF1ZGlv
+LnNhbXBsZV93aWR0aCA9IDE2Owo+KwloZG1pLT5hdWRpb19lbmFibGUgPSBmYWxzZTsKPisJaGRt
+aS0+YXVkaW9fcGRldiA9Cj4rCQlwbGF0Zm9ybV9kZXZpY2VfcmVnaXN0ZXJfZGF0YShkZXYsCj4r
+CQkJCQkgICAgICBIRE1JX0NPREVDX0RSVl9OQU1FLAo+KwkJCQkJICAgICAgUExBVEZPUk1fREVW
+SURfTk9ORSwKPisJCQkJCSAgICAgICZjb2RlY19kYXRhLAo+KwkJCQkJICAgICAgc2l6ZW9mKGNv
+ZGVjX2RhdGEpKTsKPisKPisJcmV0dXJuIFBUUl9FUlJfT1JfWkVSTyhoZG1pLT5hdWRpb19wZGV2
+KTsKPit9Cj4rCj4gc3RhdGljIGludAo+IHJrMzA2Nl9oZG1pX3JlZ2lzdGVyKHN0cnVjdCBkcm1f
+ZGV2aWNlICpkcm0sIHN0cnVjdCByazMwNjZfaGRtaSAqaGRtaSkKPiB7Cj5AQCAtNTY2LDYgKzgz
+NCw4IEBAIHJrMzA2Nl9oZG1pX3JlZ2lzdGVyKHN0cnVjdCBkcm1fZGV2aWNlICpkcm0sIHN0cnVj
+dCByazMwNjZfaGRtaSAqaGRtaSkKPgo+IAlkcm1fY29ubmVjdG9yX2F0dGFjaF9lbmNvZGVyKCZo
+ZG1pLT5jb25uZWN0b3IsIGVuY29kZXIpOwo+Cj4rCXJrMzA2Nl9oZG1pX2F1ZGlvX2NvZGVjX2lu
+aXQoaGRtaSwgZGV2KTsKCgpBY2NvcmRpbmcgdG8gRG9jdW1lbnRhdGlvbi9kcml2ZXItYXBpL2Ry
+aXZlci1tb2RlbC9kcml2ZXIucnN0LAoKSXQgaXMgYmVzdCBub3QgdG8gcmVnaXN0ZXIgYXQgdGhl
+IGJpbmQgY2FsbGJhY2vvvJoKCi4uIHdhcm5pbmc6OgogICAgICAtRVBST0JFX0RFRkVSIG11c3Qg
+bm90IGJlIHJldHVybmVkIGlmIHByb2JlKCkgaGFzIGFscmVhZHkgY3JlYXRlZAogICAgICBjaGls
+ZCBkZXZpY2VzLCBldmVuIGlmIHRob3NlIGNoaWxkIGRldmljZXMgYXJlIHJlbW92ZWQgYWdhaW4K
+ICAgICAgaW4gYSBjbGVhbnVwIHBhdGguIElmIC1FUFJPQkVfREVGRVIgaXMgcmV0dXJuZWQgYWZ0
+ZXIgYSBjaGlsZAogICAgICBkZXZpY2UgaGFzIGJlZW4gcmVnaXN0ZXJlZCwgaXQgbWF5IHJlc3Vs
+dCBpbiBhbiBpbmZpbml0ZSBsb29wIG9mCiAgICAgIC5wcm9iZSgpIGNhbGxzIHRvIHRoZSBzYW1l
+IGRyaXZlci4KCkZvciBleGFtcGxl77yaCnZvcF9wcm9iZSAtLeOAi2NvbXBvbmVudF9hZGQtLeOA
+i3JrMzA2Nl9oZG1pX2JpbmQtLeOAi3JrMzA2Nl9oZG1pX2F1ZGlvX2NvZGVjX2luaXQtLeOAi2hk
+bWlfY29kZWNfcHJvYmUtLeOAi3JvY2tjaGlwX3JnYl9pbml077yIREVGRVIgd2hlbiBwYW5lbCBu
+b3QgcmVhZHnvvIkKClRoaXMgIG1heSByZXN1bHQgaW4gYW4gaW5maW5pdGUgbG9vcCBvZiBwcm9i
+ZQoKCj4rCj4gCXJldHVybiAwOwo+IH0KPgo+QEAgLTgxMyw2ICsxMDgzLDcgQEAgc3RhdGljIGlu
+dCByazMwNjZfaGRtaV9iaW5kKHN0cnVjdCBkZXZpY2UgKmRldiwgc3RydWN0IGRldmljZSAqbWFz
+dGVyLAo+IAlyZXR1cm4gMDsKPgo+IGVycl9jbGVhbnVwX2hkbWk6Cj4rCXBsYXRmb3JtX2Rldmlj
+ZV91bnJlZ2lzdGVyKGhkbWktPmF1ZGlvX3BkZXYpOwo+IAloZG1pLT5jb25uZWN0b3IuZnVuY3Mt
+PmRlc3Ryb3koJmhkbWktPmNvbm5lY3Rvcik7Cj4gCWhkbWktPmVuY29kZXIuZW5jb2Rlci5mdW5j
+cy0+ZGVzdHJveSgmaGRtaS0+ZW5jb2Rlci5lbmNvZGVyKTsKPiBlcnJfZGlzYWJsZV9pMmM6Cj5A
+QCAtODI4LDYgKzEwOTksNyBAQCBzdGF0aWMgdm9pZCByazMwNjZfaGRtaV91bmJpbmQoc3RydWN0
+IGRldmljZSAqZGV2LCBzdHJ1Y3QgZGV2aWNlICptYXN0ZXIsCj4gewo+IAlzdHJ1Y3QgcmszMDY2
+X2hkbWkgKmhkbWkgPSBkZXZfZ2V0X2RydmRhdGEoZGV2KTsKPgo+KwlwbGF0Zm9ybV9kZXZpY2Vf
+dW5yZWdpc3RlcihoZG1pLT5hdWRpb19wZGV2KTsKPiAJaGRtaS0+Y29ubmVjdG9yLmZ1bmNzLT5k
+ZXN0cm95KCZoZG1pLT5jb25uZWN0b3IpOwo+IAloZG1pLT5lbmNvZGVyLmVuY29kZXIuZnVuY3Mt
+PmRlc3Ryb3koJmhkbWktPmVuY29kZXIuZW5jb2Rlcik7Cj4KPi0tCj4yLjM5LjIKPgpfX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBt
+YWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlz
+dHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
