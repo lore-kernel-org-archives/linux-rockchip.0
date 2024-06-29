@@ -4,51 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F12FBC27C4F
-	for <linux-rockchip@archiver.kernel.org>; Sat, 29 Jun 2024 16:18:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 85DCAC27C4F
+	for <linux-rockchip@archiver.kernel.org>; Sat, 29 Jun 2024 16:22:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=C2Nbd3bzsOpX4/7R5JIrb0fdopnmnL7dJ560lNXxqgE=; b=2w2i4pUQVj/yqB
-	MwwbVPCBrWcefef6KWh0uy5tUVHv+u43KNofX9v3wwhVazcbcGXtgC8AFQZ7yTJTf2gR++z2sJwOk
-	gAZQzD6rhPxHRAFotMZxuOBfnRFC81XOyM8REJqh1UDm0+z990/6dQlnTumysmCEjJbhePfFn97Ei
-	08V6tluJbAb/dhBIRm0pLDCubZecrr3PE5neK1eqUOHb/N9GNJc1JalNZ/YQqzSCOt3BD+rgdLLOu
-	gTq9bjp+5Uclqgt7knDXyMBDQTeH7Q6m4f4q9f4PTGEe0TxwAqwW5CFxeeCtqvzdabSDn/iVSX3y9
-	ycaJtKMPhwuwhRc8fycg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
+	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=UPt5VrL4LeXrP1AqKEQ0V1FTEXrsYLp1p/q23BbpT4Q=; b=Eb3XN8qZQ369yTx5d8fWXPozPr
+	RcGUHfKNGMKkVdgaoFxjrU917lIBupmQ4yJTTPfJAEEiO2KW0X3ZbYS0M+KgUGvSzLNtmCIQ7H8B8
+	7bRrg4v+r1EADyw2+0YhxM+GdN6iFWPsO5y+FVLSj0+jPVmXWa3R3etlfBUta6Wyo/ZvBjt5UPWNN
+	IfE5MovFR+7WyLlax3IDE2LQaDVD3oVoo3VoIWOsmmQbyzIuehd9R9KDHh2PkZQ8UQhcLJthgW/5l
+	vubxWvQ8Vjmphd8vV0/s/zDhEfCkM3s7I0DjjFiQQhQVpcdFAqyYiT2Jhn6r+BlK/tE9Xvi7yAahs
+	W47EFJqQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sNamT-0000000GdYh-2a41;
-	Sat, 29 Jun 2024 16:18:29 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1sNaqJ-0000000Gdtr-0NYM;
+	Sat, 29 Jun 2024 16:22:27 +0000
+Received: from mail.manjaro.org ([116.203.91.91])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sNamQ-0000000GdXb-0tKz;
-	Sat, 29 Jun 2024 16:18:27 +0000
-Received: from i53875b6a.versanet.de ([83.135.91.106] helo=diego.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1sNam7-000796-8Q; Sat, 29 Jun 2024 18:18:07 +0200
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: Dragan Simic <dsimic@manjaro.org>
-Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- devicetree@vger.kernel.org, robh@kernel.org, krzk+dt@kernel.org,
- conor+dt@kernel.org, linux-kernel@vger.kernel.org,
- Diederik de Haas <didi.debian@cknow.org>, Jonas Karlman <jonas@kwiboo.se>
-Subject: Re: [PATCH] arm64: dts: rockchip: Add optional GPU OPP voltage ranges to
- RK356x SoC dtsi
-Date: Sat, 29 Jun 2024 18:18:06 +0200
-Message-ID: <9297854.CDJkKcVGEf@diego>
-In-Reply-To: <36170f8485293b336106e92346478daa@manjaro.org>
+	id 1sNaq8-0000000Gdsh-43Ys;
+	Sat, 29 Jun 2024 16:22:18 +0000
+MIME-Version: 1.0
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
+	t=1719678135;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=TmaryQAjzocqFJcJHYAJO/SJgA2TIwOO9948WPpEdHc=;
+	b=HwN6sE32jvPYG7rQ4QHo7m9ULaSOYx/0hzY2zZA1SKUQOfRU+eR004fjq+qHMiZlE9+xdn
+	ivu6tuHroDFe+E+gr6Z6CRWe4JG7GabOb7HYj6mrmX5HA4pPM2toLv3JF6tJjrHneOl/up
+	ca7erP5jBUmGpWKuj+jVbMdzByP0Ze+ZpuUJFKVnHh9CK21Azo9prIho17Rb0mK1/RheXA
+	frM1NKbb4opoSgnylYpHINeeaK6X6Lt8JX7gFa526Tb44wY/rilcRAem/jXJLKGlKzbg9d
+	730b/VsTiM/Yqxs9KzUwrAXAJjyEGkAUThXGuqaIgtY9M2mvoHkMkcQK2eMucg==
+Date: Sat, 29 Jun 2024 18:22:14 +0200
+From: Dragan Simic <dsimic@manjaro.org>
+To: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>
+Cc: linux-rockchip@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org,
+ robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
+ linux-kernel@vger.kernel.org, Diederik de Haas <didi.debian@cknow.org>,
+ Jonas Karlman <jonas@kwiboo.se>
+Subject: Re: [PATCH] arm64: dts: rockchip: Add optional GPU OPP voltage ranges
+ to RK356x SoC dtsi
+In-Reply-To: <9297854.CDJkKcVGEf@diego>
 References: <446399362bd2dbeeaecd8351f68811165429749a.1719637113.git.dsimic@manjaro.org>
  <f10d5a3c425c2c4312512c20bd35073c@manjaro.org>
- <36170f8485293b336106e92346478daa@manjaro.org>
-MIME-Version: 1.0
+ <36170f8485293b336106e92346478daa@manjaro.org> <9297854.CDJkKcVGEf@diego>
+Message-ID: <54fc7e18a6498d15e008733864f26070@manjaro.org>
+X-Sender: dsimic@manjaro.org
+Authentication-Results: ORIGINATING;
+	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240629_091826_278160_48C13CF1 
-X-CRM114-Status: GOOD (  21.95  )
+X-CRM114-CacheID: sfid-20240629_092217_176010_B154B569 
+X-CRM114-Status: GOOD (  21.27  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -60,64 +71,48 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Am Samstag, 29. Juni 2024, 17:39:34 CEST schrieb Dragan Simic:
-> On 2024-06-29 17:25, Dragan Simic wrote:
-> > On 2024-06-29 17:10, Heiko St=FCbner wrote:
-> >> Am Samstag, 29. Juni 2024, 07:11:24 CEST schrieb Dragan Simic:
-> >> =
-
-> >>> +#ifndef RK356X_GPU_NPU_SHARED_REGULATOR
-> >> =
-
-> >> is there some reason for this duplicating of opps?
-> >> =
-
-> >> The regulator framework should pick the lowest supported voltage
-> >> anyway, so it seems you're just extending them upwards a bit.
-> >> =
-
-> >> So I really don't so why we'd need to sets here.
-> > =
-
-> > The reason is improved strictness.  Having the exact GPU OPP voltages
-> > required for the boards whose GPU regulators can provide those exact
-> > voltages makes it possible to detect misconfigurations much easier,
-> > just like it was the case with the board dts misconfiguration that
-> > resulted in the recent DCDC_REG2 patch. [1]
-> > =
-
-> > If we had GPU OPP voltage ranges in place instead, the aforementioned
-> > issue would probably remain undetected for some time.  It wouldn't be
-> > the end of the world, :) of course, but the resulting increased power
-> > consumption isn't one of the desired outcomes.
-> > =
-
-> > [1] =
-
-> > https://lore.kernel.org/linux-rockchip/e70742ea2df432bf57b3f7de542d81ca=
-22b0da2f.1716225483.git.dsimic@manjaro.org/
-> =
-
-> On second thought, after seeing that the RK3399 CPU and GPU OPPs
-> already specify voltage ranges, I think it would be better to drop
-> the distinction between the separate strict voltages and the voltage
-> ranges in this patch,
-
-yes, that was what I was trying to say :-)
-
-Also it makes the OPPs less cluttered. Also dt is firmware, I do expect
-people to be reasonably knowledgeable if they mess around with their
-boards OPPs ;-) .
-
-
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gMjAyNC0wNi0yOSAxODoxOCwgSGVpa28gU3TDvGJuZXIgd3JvdGU6Cj4gQW0gU2Ftc3RhZywg
+MjkuIEp1bmkgMjAyNCwgMTc6Mzk6MzQgQ0VTVCBzY2hyaWViIERyYWdhbiBTaW1pYzoKPj4gT24g
+MjAyNC0wNi0yOSAxNzoyNSwgRHJhZ2FuIFNpbWljIHdyb3RlOgo+PiA+IE9uIDIwMjQtMDYtMjkg
+MTc6MTAsIEhlaWtvIFN0w7xibmVyIHdyb3RlOgo+PiA+PiBBbSBTYW1zdGFnLCAyOS4gSnVuaSAy
+MDI0LCAwNzoxMToyNCBDRVNUIHNjaHJpZWIgRHJhZ2FuIFNpbWljOgo+PiA+Pgo+PiA+Pj4gKyNp
+Zm5kZWYgUkszNTZYX0dQVV9OUFVfU0hBUkVEX1JFR1VMQVRPUgo+PiA+Pgo+PiA+PiBpcyB0aGVy
+ZSBzb21lIHJlYXNvbiBmb3IgdGhpcyBkdXBsaWNhdGluZyBvZiBvcHBzPwo+PiA+Pgo+PiA+PiBU
+aGUgcmVndWxhdG9yIGZyYW1ld29yayBzaG91bGQgcGljayB0aGUgbG93ZXN0IHN1cHBvcnRlZCB2
+b2x0YWdlCj4+ID4+IGFueXdheSwgc28gaXQgc2VlbXMgeW91J3JlIGp1c3QgZXh0ZW5kaW5nIHRo
+ZW0gdXB3YXJkcyBhIGJpdC4KPj4gPj4KPj4gPj4gU28gSSByZWFsbHkgZG9uJ3Qgc28gd2h5IHdl
+J2QgbmVlZCB0byBzZXRzIGhlcmUuCj4+ID4KPj4gPiBUaGUgcmVhc29uIGlzIGltcHJvdmVkIHN0
+cmljdG5lc3MuICBIYXZpbmcgdGhlIGV4YWN0IEdQVSBPUFAgdm9sdGFnZXMKPj4gPiByZXF1aXJl
+ZCBmb3IgdGhlIGJvYXJkcyB3aG9zZSBHUFUgcmVndWxhdG9ycyBjYW4gcHJvdmlkZSB0aG9zZSBl
+eGFjdAo+PiA+IHZvbHRhZ2VzIG1ha2VzIGl0IHBvc3NpYmxlIHRvIGRldGVjdCBtaXNjb25maWd1
+cmF0aW9ucyBtdWNoIGVhc2llciwKPj4gPiBqdXN0IGxpa2UgaXQgd2FzIHRoZSBjYXNlIHdpdGgg
+dGhlIGJvYXJkIGR0cyBtaXNjb25maWd1cmF0aW9uIHRoYXQKPj4gPiByZXN1bHRlZCBpbiB0aGUg
+cmVjZW50IERDRENfUkVHMiBwYXRjaC4gWzFdCj4+ID4KPj4gPiBJZiB3ZSBoYWQgR1BVIE9QUCB2
+b2x0YWdlIHJhbmdlcyBpbiBwbGFjZSBpbnN0ZWFkLCB0aGUgYWZvcmVtZW50aW9uZWQKPj4gPiBp
+c3N1ZSB3b3VsZCBwcm9iYWJseSByZW1haW4gdW5kZXRlY3RlZCBmb3Igc29tZSB0aW1lLiAgSXQg
+d291bGRuJ3QgYmUKPj4gPiB0aGUgZW5kIG9mIHRoZSB3b3JsZCwgOikgb2YgY291cnNlLCBidXQg
+dGhlIHJlc3VsdGluZyBpbmNyZWFzZWQgcG93ZXIKPj4gPiBjb25zdW1wdGlvbiBpc24ndCBvbmUg
+b2YgdGhlIGRlc2lyZWQgb3V0Y29tZXMuCj4+ID4KPj4gPiBbMV0KPj4gPiBodHRwczovL2xvcmUu
+a2VybmVsLm9yZy9saW51eC1yb2NrY2hpcC9lNzA3NDJlYTJkZjQzMmJmNTdiM2Y3ZGU1NDJkODFj
+YTIyYjBkYTJmLjE3MTYyMjU0ODMuZ2l0LmRzaW1pY0BtYW5qYXJvLm9yZy8KPj4gCj4+IE9uIHNl
+Y29uZCB0aG91Z2h0LCBhZnRlciBzZWVpbmcgdGhhdCB0aGUgUkszMzk5IENQVSBhbmQgR1BVIE9Q
+UHMKPj4gYWxyZWFkeSBzcGVjaWZ5IHZvbHRhZ2UgcmFuZ2VzLCBJIHRoaW5rIGl0IHdvdWxkIGJl
+IGJldHRlciB0byBkcm9wCj4+IHRoZSBkaXN0aW5jdGlvbiBiZXR3ZWVuIHRoZSBzZXBhcmF0ZSBz
+dHJpY3Qgdm9sdGFnZXMgYW5kIHRoZSB2b2x0YWdlCj4+IHJhbmdlcyBpbiB0aGlzIHBhdGNoLAo+
+IAo+IHllcywgdGhhdCB3YXMgd2hhdCBJIHdhcyB0cnlpbmcgdG8gc2F5IDotKQo+IAo+IEFsc28g
+aXQgbWFrZXMgdGhlIE9QUHMgbGVzcyBjbHV0dGVyZWQuIEFsc28gZHQgaXMgZmlybXdhcmUsIEkg
+ZG8gZXhwZWN0Cj4gcGVvcGxlIHRvIGJlIHJlYXNvbmFibHkga25vd2xlZGdlYWJsZSBpZiB0aGV5
+IG1lc3MgYXJvdW5kIHdpdGggdGhlaXIKPiBib2FyZHMgT1BQcyA7LSkgLgoKWWVzLCBidXQgd2Ug
+c3RpbGwgbmVlZCBuZXcgcmVndWxhdG9yL09QUCBkZWJ1Z2dpbmcgZmFjaWxpdGllcwp0aGF0IHNo
+b3VsZCB0byBiZSB1c2VkIHdoaWxlIHdyaXRpbmcgRFRzIGZvciBuZXcgYm9hcmRzIGFuZCB3aGls
+ZQp2ZXJpZnlpbmcgYWxyZWFkeSBleGlzdGluZyBib2FyZCBEVHMuIDopCgpJJ2xsIHByZXBhcmUg
+YW5kIHNlbmQgdGhlIHYyIG9mIHRoaXMgcGF0Y2gsIGFuZCBJJ2xsIGFsc28gc3RhcnQKd29ya2lu
+ZyBvbiB0aGUgbmV3IHBhdGNoIGZvciB0aG9zZSBkZWJ1Z2dpbmcgZmFjaWxpdGllcy4KCl9fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlw
+IG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9s
+aXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
