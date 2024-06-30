@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 25837C27C4F
-	for <linux-rockchip@archiver.kernel.org>; Sun, 30 Jun 2024 03:49:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4BC0BC27C4F
+	for <linux-rockchip@archiver.kernel.org>; Sun, 30 Jun 2024 03:49:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=47jtKirt2h6qOZpBadmfgyDJMgvfkcTkYoaScKBtZZ0=; b=aWq+bZLBe5dxqD
-	ukNRiSjmy+48qnIIOT8hH8VkS+94b91zviPucM/sjgwu+44kRhMahXt9d3OizdmzinDFnbRk2FIaw
-	UjTazEe4pMJLGjIk19hz6kinN3kjTRA73AV9ZnBZwEhzkpTJhPktoznAFxOiaPP1X1AikmRxwuFpd
-	OmQCtU92Mgn5DzjCfdpjYvH35fI3aSCTHd7SC5ol/iBtRZZ6EMlhPeVR0IRYzzWRxOllagTwoLyDc
-	MbmLD6Gkgqu+sE2iPlIXOZJSWVBW6NGypsf5HHqammtFdS5RU0Y32j92cvA2ykmbLZnrV3karNf19
-	20xWkTzMbYfF4tfEauVg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=LSsyyRb0kpugLvadFG491UcWalrJ0N/L/aLC7kl8i4Y=; b=22DrNsbY1k0q/q
+	9tnjMW3wd5cKY6opGB60DhNK9IsOi0w4MskrwgPy4fC2NcjbPqH1WcmdqZvXPA6VNxsikWEXSOQpy
+	Cl8PTr7JcZnx9z9zZ2x08N8xDPIAgpEg770Gi4vUkotlin7n7UIACT5+P/CdHPCtM6F4+mtf2yzaw
+	mu4ggITkumMKHmWn67jEaNqTG1Dra1ALYZAHQNFfR5haQO0g8IDFc2/YbPGlSbJ22F2tsnFdGquym
+	5m6NDUo4AqK1gPioO5eS8syfkDJXEVUKJPJSylCV4c/vVDY4K2ICfazPgUldEcYMOVyWy8mbv2YFe
+	qyjWb5qWmFBbMkcqoQzA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sNlZJ-0000000HKuH-2yYN;
-	Sun, 30 Jun 2024 03:49:37 +0000
-Received: from phobos.denx.de ([2a01:238:438b:c500:173d:9f52:ddab:ee01])
+	id 1sNlZQ-0000000HKw5-3gGr;
+	Sun, 30 Jun 2024 03:49:44 +0000
+Received: from phobos.denx.de ([85.214.62.61])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sNlZ9-0000000HKsa-16iU;
-	Sun, 30 Jun 2024 03:49:28 +0000
+	id 1sNlZ9-0000000HKsb-3Irz;
+	Sun, 30 Jun 2024 03:49:30 +0000
 Received: from tr.lan (ip-86-49-120-218.bb.vodafone.cz [86.49.120.218])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits))
 	(No client certificate requested)
 	(Authenticated sender: marex@denx.de)
-	by phobos.denx.de (Postfix) with ESMTPSA id 0018688605;
-	Sun, 30 Jun 2024 05:49:24 +0200 (CEST)
+	by phobos.denx.de (Postfix) with ESMTPSA id 9D71288607;
+	Sun, 30 Jun 2024 05:49:25 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=denx.de;
-	s=phobos-20191101; t=1719719365;
-	bh=9ZFUecfJvnzkWEaRT2YFkSf/lrEu/HTQaebj0pMq5Xo=;
-	h=From:To:Cc:Subject:Date:From;
-	b=IQDVBWOOyxeH1wk4cTy0ZhsDpx7uvu5zAgTv7ZoBXrtvYBKDmcJg1KpZam2GBmILk
-	 ApTpUuJz4UOuDs3MuNMgq4euhzn4lljdfL2PdXjLklNSSbKaH8ZVmX1F/G5Y7KXJYH
-	 CPIPGB+qovoZSIDnf6fxTynxD/2MiPz2UIKKZ73hucg+0B/9uAeRbcuUtQpR9gU6w2
-	 Pba6qhGxtSU+Y9/Vmc14Y5PYuewV7PmB7EVjbR/m4/6UURJQs4uZBsvJG0pBDVcLgT
-	 sA0bf06e35rjBF6PPOv0F6A0aSK7LTgQMg95LbMbTQfqb4Ss7fsJupPCj4MP5Stent
-	 3MWTUu3OZt5Fw==
+	s=phobos-20191101; t=1719719366;
+	bh=sox0OS7FZioC4+n0SLeead3ox1zf2+QKbhfJa7552f4=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=Eo13JKLiGyOpSyQyQ1MOOJ6o0/0IkOjPkda0K+UkDs9VYJTljazHOV/dBKm0yP4jt
+	 gEOG3VAV/iUuWjo98110uona1VmljF4dlyf2pFD3uGJx/PiDlXB+PooSl+Z8Kl3z8j
+	 +tfStL6WJDIdixhSVTtOeiOFs6WDFsEjlWZ0JlVeVZprpW9ZutS2Sd40S5QX6ESrIQ
+	 xCsCy1dcmRFbAIifBrD4JPs61Vz17km6X8xiVCDdFoDA2L9/rLSmpG/hP/m5qS51+V
+	 Ib4+VhtW1t8E7CrJ/6cu+aKLAneqgvcCLatvYKSVfYVIB5uBnfhvYhqyLcK4fLsuBm
+	 +wzUAEgUAB2UQ==
 From: Marek Vasut <marex@denx.de>
 To: linux-arm-kernel@lists.infradead.org
 Cc: andrew@lunn.ch,
@@ -58,16 +58,18 @@ Cc: andrew@lunn.ch,
 	Sebastian Reichel <sebastian.reichel@collabora.com>,
 	devicetree@vger.kernel.org,
 	linux-rockchip@lists.infradead.org
-Subject: [PATCH 1/2] ARM: dts: rockchip: Drop ethernet-phy-ieee802.3-c22 from PHY compatible string on edgeble-neu2
-Date: Sun, 30 Jun 2024 05:48:41 +0200
-Message-ID: <20240630034910.173552-1-marex@denx.de>
+Subject: [PATCH 2/2] arm64: dts: rockchip: Drop ethernet-phy-ieee802.3-c22 from PHY compatible string on all RK3588 boards
+Date: Sun, 30 Jun 2024 05:48:42 +0200
+Message-ID: <20240630034910.173552-2-marex@denx.de>
 X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20240630034910.173552-1-marex@denx.de>
+References: <20240630034910.173552-1-marex@denx.de>
 MIME-Version: 1.0
 X-Virus-Scanned: clamav-milter 0.103.8 at phobos.denx.de
 X-Virus-Status: Clean
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240629_204927_471856_39A69B03 
-X-CRM114-Status: GOOD (  10.36  )
+X-CRM114-CacheID: sfid-20240629_204928_132528_8EE696E1 
+X-CRM114-Status: GOOD (  11.64  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -115,23 +117,48 @@ Cc: linux-rockchip@lists.infradead.org
 ---
 Note: this closes only part of the report
 ---
- arch/arm/boot/dts/rockchip/rv1126-edgeble-neu2-io.dts | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+ arch/arm64/boot/dts/rockchip/rk3588-ok3588-c.dts    | 6 ++----
+ arch/arm64/boot/dts/rockchip/rk3588-turing-rk1.dtsi | 3 +--
+ 2 files changed, 3 insertions(+), 6 deletions(-)
 
-diff --git a/arch/arm/boot/dts/rockchip/rv1126-edgeble-neu2-io.dts b/arch/arm/boot/dts/rockchip/rv1126-edgeble-neu2-io.dts
-index 0c2396b8f8db6..7707d1b01440b 100644
---- a/arch/arm/boot/dts/rockchip/rv1126-edgeble-neu2-io.dts
-+++ b/arch/arm/boot/dts/rockchip/rv1126-edgeble-neu2-io.dts
-@@ -69,8 +69,7 @@ &gmac {
- 
- &mdio {
- 	phy: ethernet-phy@0 {
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588-ok3588-c.dts b/arch/arm64/boot/dts/rockchip/rk3588-ok3588-c.dts
+index 230e630820b47..c2a08bdf09e83 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588-ok3588-c.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3588-ok3588-c.dts
+@@ -261,8 +261,7 @@ &i2s0_sdi0
+ &mdio0 {
+ 	rgmii_phy0: ethernet-phy@1 {
+ 		/* RTL8211F */
 -		compatible = "ethernet-phy-id001c.c916",
 -			     "ethernet-phy-ieee802.3-c22";
 +		compatible = "ethernet-phy-id001c.c916";
- 		reg = <0x0>;
+ 		reg = <0x1>;
  		pinctrl-names = "default";
- 		pinctrl-0 = <&eth_phy_rst>;
+ 		pinctrl-0 = <&rtl8211f_0_rst>;
+@@ -275,8 +274,7 @@ rgmii_phy0: ethernet-phy@1 {
+ &mdio1 {
+ 	rgmii_phy1: ethernet-phy@2 {
+ 		/* RTL8211F */
+-		compatible = "ethernet-phy-id001c.c916",
+-			     "ethernet-phy-ieee802.3-c22";
++		compatible = "ethernet-phy-id001c.c916";
+ 		reg = <0x2>;
+ 		pinctrl-names = "default";
+ 		pinctrl-0 = <&rtl8211f_1_rst>;
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588-turing-rk1.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-turing-rk1.dtsi
+index 77bcf0f6b028a..dbaa94ca69f47 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588-turing-rk1.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3588-turing-rk1.dtsi
+@@ -198,8 +198,7 @@ hym8563: rtc@51 {
+ &mdio1 {
+ 	rgmii_phy: ethernet-phy@1 {
+ 		/* RTL8211F */
+-		compatible = "ethernet-phy-id001c.c916",
+-			     "ethernet-phy-ieee802.3-c22";
++		compatible = "ethernet-phy-id001c.c916";
+ 		reg = <0x1>;
+ 		pinctrl-names = "default";
+ 		pinctrl-0 = <&rtl8211f_rst>;
 -- 
 2.43.0
 
