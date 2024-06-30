@@ -4,79 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9B54CC27C4F
-	for <linux-rockchip@archiver.kernel.org>; Sun, 30 Jun 2024 10:52:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7E2EDC27C4F
+	for <linux-rockchip@archiver.kernel.org>; Sun, 30 Jun 2024 11:01:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	MIME-Version:Subject:References:In-Reply-To:Message-ID:Date:CC:To:From:
 	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
 	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=6hyJq0t/XL68G2T3sFWpNCawbflj0TD73kfByJYqyVM=; b=sg4LvifEfQAk5rnZmr9mfo4hpL
-	OGAEa2pX9qvF1veRdDtzplSg7dnvU8L0/zsdFdp5VE59s3OlMlnJsP8fXNzR6Lj3Rj1QwdPhMQRr6
-	ZIBw+O88OHDdpQCwu0NQVbPlpIF/BIHjg9z4Jph/rR3d2N7VuflUpS/zsU+a8DxKnHA7/mrCPET75
-	ynXPrwHBsL0CPhRmlVftsAn4kBhuxfRY4mgYrsxcK23G70D68vQ5ODcLIw5Qyhq06y6Jn6Hw+/ujs
-	yy9Hw1L6Gxi55GbCXxbmMgECTQ7ppmuLrHwe6hV5O5H/xn5iAQdOVTMdXt6PCR7unPJuBNmUnorDo
-	vJeSzCwQ==;
+	bh=Y71wUZ+8tbhixlNp/h7PZtqWJIS6gv5BqGknKVANsVA=; b=v7KdUVpEkpd9HlAwFJlnTYAtU/
+	stJQz+4EeucR+BTrvMBY2pXAfeo+MSPG5oJL9aeyYzvn6JmwdHCXOFDDGpeVKJjLhbSuCwLEn245O
+	0GXISe7nLeMZlXii4Cumo567ELZnjauuCp9Ix1rGOtlRPxGory5OhK/jG03Pu5N9eBO+J9crpHILi
+	XqAF8TDiurmiB4vmWVDQnMZ4HUbpdkQjGKDzM4jwiDfqa4GU/Nh/UdT1lcxhmI9Wplr98jnM28+CE
+	2M0nLDX12oefc17opRt06olC2/WMBfS4bMZJqOUmZomXCuFiK6rU8/bbJG+C3Tv95VHjYuNNXnvyw
+	0nxZ3b/w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sNsA5-00000000GOs-0orO;
-	Sun, 30 Jun 2024 10:52:01 +0000
-Received: from mail-ej1-x635.google.com ([2a00:1450:4864:20::635])
+	id 1sNsJC-00000000HIi-1MiQ;
+	Sun, 30 Jun 2024 11:01:26 +0000
+Received: from mail-ed1-x529.google.com ([2a00:1450:4864:20::529])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sNs9t-00000000GN8-32s7
+	id 1sNsJ9-00000000HHt-0Gtq
 	for linux-rockchip@lists.infradead.org;
-	Sun, 30 Jun 2024 10:51:51 +0000
-Received: by mail-ej1-x635.google.com with SMTP id a640c23a62f3a-a6265d3ba8fso180099366b.0
-        for <linux-rockchip@lists.infradead.org>; Sun, 30 Jun 2024 03:51:48 -0700 (PDT)
+	Sun, 30 Jun 2024 11:01:24 +0000
+Received: by mail-ed1-x529.google.com with SMTP id 4fb4d7f45d1cf-57d106e69a2so1964781a12.0
+        for <linux-rockchip@lists.infradead.org>; Sun, 30 Jun 2024 04:01:21 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=broadcom.com; s=google; t=1719744707; x=1720349507; darn=lists.infradead.org;
+        d=broadcom.com; s=google; t=1719745280; x=1720350080; darn=lists.infradead.org;
         h=mime-version:subject:user-agent:references:in-reply-to:message-id
          :date:cc:to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=qArgH2UVS8NkCo85ejs5ZaziFJwD7TFCaJs6KnlaOmo=;
-        b=hhrGaqv3hxrKEMEqJDIV/h/CkGHlsunT4GFQqntot1LGnc+0/rG9tqPHFAur57bkWE
-         ia4oQkOOKuhLfHzJ9Cexy/BOryzEhA0ushiL8XBQSO6bCyMeDPGK18jjUZn/geFxidDL
-         bWwCVkc5pHgzutuwf/8IyfZ47ylO/mplGI8RI=
+        bh=1yG3vvaSWOr6RNdo1w0ev3TZJcktTWLEH4J6TWPKqIM=;
+        b=L2IgopEWxqMmtkcd9lXkA13lS599ciGpuwuglny/eEzel2ry8ujGPWsGcecSuh7SwU
+         YytNVLA9vm9UWyN1w+Ba0CsTaJY3brim6SzY9FlI/FAG9wyVHpP4YpHiqpWRV7oy9x+F
+         r1y76khWugIGO3wmcVwVMMEXK0sypweiRckoQ=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1719744707; x=1720349507;
+        d=1e100.net; s=20230601; t=1719745280; x=1720350080;
         h=mime-version:subject:user-agent:references:in-reply-to:message-id
          :date:cc:to:from:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=qArgH2UVS8NkCo85ejs5ZaziFJwD7TFCaJs6KnlaOmo=;
-        b=VLEtTVZQXvtx8woBLCeHahXpHvWTwsytwip6ePdVsfiI57UCMHadieEn3BtA263+KC
-         8+dwvb3ia5lCNVI3d2Lw/ZsjU6RlQ3fxdfKb7zKrx97IskuMZBNOInLMQs0IGchQDjYp
-         08tsQ9mooNLD0fb9EqU0f25Ar9QaQXqcFIvoZecGvVDqRv6CgHg1n/eqAnkLM+e4ePVu
-         nyGn3LwdHlZNGjIYQH6erh25IMbW5RmwEWn51zqDwcAmuM+aDtjZ4iBe4egmo49NIoLP
-         Bq2+71eZBHK/xrNUVqbHyT9C5VSjpmxCj3Jrbo+xZR2y8wfHkOMkCMkJzHJH0Cvk8w3r
-         oUjg==
-X-Forwarded-Encrypted: i=1; AJvYcCV2Q6KLa8Q1XYCRuXpftaC7MkMGr5eaZmJ+AbX/mn8sgxiJ5BYIEUybaB65DIlDMadi7zxrF7FqFPoA4EiieP1LsbQIlSTW/tyQ4nu71Oxz0QXQ
-X-Gm-Message-State: AOJu0YyVvQAn47e2ZAisAC8t/hoDM4DdAfnjMt7hltfVUeDYLoMTG3Jj
-	FM4cQmbwvC+/9pF5PqRnSxZy+mXhc3Lt49kcqzayYfIJMCtSv6jDj30YWGJIfQ==
-X-Google-Smtp-Source: AGHT+IHqXK4sB8oBb7KRPu5Nbgngk9XNwKyJTwWUPZT4CqqnLhwKZZbrMG4VU6Ars2hfH5hEuB1sXA==
-X-Received: by 2002:a17:906:6a24:b0:a6f:5192:6f4d with SMTP id a640c23a62f3a-a7514402304mr204151166b.8.1719744707156;
-        Sun, 30 Jun 2024 03:51:47 -0700 (PDT)
+        bh=1yG3vvaSWOr6RNdo1w0ev3TZJcktTWLEH4J6TWPKqIM=;
+        b=jaz4m5IV6RZkootyx74t6ip0b9992QNCYqpfJmWHjfOcitnCiOkAwnnTTS3t/eMvtY
+         mHZG/6BsSo3LspL2IsNB4VDG4PLjuIM988jH/7HqBwgqj3BcizT0zsEYRR5UpJ4AXrDZ
+         vRCXkKkjcdwuWyouAlEQwQvd9zUBiERyAHXkueUGnUTXn9TF//D0hxCMGgobFaGL1hnC
+         lfpdGrGNM9cD/g3CU9mP6Lzo9o+fhw/0ZYY9B6c32ZJqv4hHBFb1NAkAcrhdOnO+d23J
+         XDuGhJbblU7y6LSRxgy9slH+SoCNIf+qkVsNLm34GcUAkufwvGQZSfOcjZGBO8qqkBNW
+         HrMw==
+X-Forwarded-Encrypted: i=1; AJvYcCUbc6dRH8ls/cbxXdtl9js6BG8xAU/EWvLPqP/11FuaYwyltNYMMsB9oBPEA+zpbmJeLfsNCtIHIWBcKjVsn1B9xfnDa1qRRkbMP+kNfk9vXFI6
+X-Gm-Message-State: AOJu0YxLICkRyRKC4BHbwFTtOX4C3PuFb325sgZA/quIGDDRFSiricHZ
+	lyzkFb6jduG7oVBP7t1/xGPSHStHXcpWNJXSSumlMS7nncpkJ6PWI3c/WMoSmQ==
+X-Google-Smtp-Source: AGHT+IFlxP7dmCiy3Jjg7u0rZ7s16ZZenMubiWecvh12JJTS2BCCH1Rrq0kqI9Vm1pZ25zch5PlYzA==
+X-Received: by 2002:a05:6402:609:b0:57c:6b49:aef with SMTP id 4fb4d7f45d1cf-5865c1f6e20mr4327439a12.11.1719745280515;
+        Sun, 30 Jun 2024 04:01:20 -0700 (PDT)
 Received: from [192.168.178.38] (f215227.upc-f.chello.nl. [80.56.215.227])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a72ab0651dfsm237167266b.142.2024.06.30.03.51.45
+        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-58612c8358esm3199118a12.13.2024.06.30.04.01.19
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 30 Jun 2024 03:51:46 -0700 (PDT)
+        Sun, 30 Jun 2024 04:01:20 -0700 (PDT)
 From: Arend Van Spriel <arend.vanspriel@broadcom.com>
-To: Stefan Wahren <wahrenst@gmx.net>, <wens@kernel.org>, Jacobe Zang <jacobe.zang@wesion.com>
-CC: <robh@kernel.org>, <krzk+dt@kernel.org>, <heiko@sntech.de>, <kvalo@kernel.org>, <davem@davemloft.net>, <edumazet@google.com>, <kuba@kernel.org>, <pabeni@redhat.com>, <conor+dt@kernel.org>, <efectn@protonmail.com>, <dsimic@manjaro.org>, <jagan@edgeble.ai>, <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>, <linux-rockchip@lists.infradead.org>, <linux-kernel@vger.kernel.org>, <arend@broadcom.com>, <linux-wireless@vger.kernel.org>, <netdev@vger.kernel.org>, <megi@xff.cz>, <duoming@zju.edu.cn>, <bhelgaas@google.com>, <minipli@grsecurity.net>, <brcm80211@lists.linux.dev>, <brcm80211-dev-list.pdl@broadcom.com>, Nick Xie <nick@khadas.com>
-Date: Sun, 30 Jun 2024 12:51:44 +0200
-Message-ID: <19068c5ae00.279b.9b12b7fc0a3841636cfb5e919b41b954@broadcom.com>
-In-Reply-To: <8e44631c-955f-42de-bb2f-f3a32c79f1c1@gmx.net>
+To: Jacobe Zang <jacobe.zang@wesion.com>, <robh@kernel.org>, <krzk+dt@kernel.org>, <heiko@sntech.de>, <kvalo@kernel.org>, <davem@davemloft.net>, <edumazet@google.com>, <kuba@kernel.org>, <pabeni@redhat.com>, <conor+dt@kernel.org>
+CC: <efectn@protonmail.com>, <dsimic@manjaro.org>, <jagan@edgeble.ai>, <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>, <linux-rockchip@lists.infradead.org>, <linux-kernel@vger.kernel.org>, <arend@broadcom.com>, <linux-wireless@vger.kernel.org>, <netdev@vger.kernel.org>, <megi@xff.cz>, <duoming@zju.edu.cn>, <bhelgaas@google.com>, <minipli@grsecurity.net>, <brcm80211@lists.linux.dev>, <brcm80211-dev-list.pdl@broadcom.com>, <nick@khadas.com>
+Date: Sun, 30 Jun 2024 13:01:18 +0200
+Message-ID: <19068ce7030.279b.9b12b7fc0a3841636cfb5e919b41b954@broadcom.com>
+In-Reply-To: <20240630073605.2164346-5-jacobe.zang@wesion.com>
 References: <20240630073605.2164346-1-jacobe.zang@wesion.com>
  <20240630073605.2164346-5-jacobe.zang@wesion.com>
- <bd661690-1de8-4030-a209-ef26d3559221@gmx.net>
- <TYZPR03MB7001AC28827A86338BF2B77380D22@TYZPR03MB7001.apcprd03.prod.outlook.com>
- <CAGb2v66Vk8SMs1TOs+80Jy5fXumuYqCx59Tzd_N7wJAfyysQcw@mail.gmail.com>
- <8e44631c-955f-42de-bb2f-f3a32c79f1c1@gmx.net>
 User-Agent: AquaMail/1.51.5 (build: 105105504)
 Subject: Re: [PATCH v3 4/5] wifi: brcmfmac: Add optional lpo clock enable support
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240630_035149_901747_7D51E509 
-X-CRM114-Status: GOOD (  15.35  )
+X-CRM114-CacheID: sfid-20240630_040123_136976_DCC8C7C5 
+X-CRM114-Status: UNSURE (   7.55  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,60 +85,36 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============3765049608302736562=="
+Content-Type: multipart/mixed; boundary="===============3956094441479922717=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
---===============3765049608302736562==
+--===============3956094441479922717==
 Content-Type: multipart/signed; protocol="application/pkcs7-signature"; micalg=sha-256;
-	boundary="000000000000696f5d061c1944e9"
+	boundary="000000000000939991061c196632"
 
---000000000000696f5d061c1944e9
-Content-Type: text/plain; format=flowed; charset="UTF-8"
+--000000000000939991061c196632
+Content-Type: text/plain; format=flowed; charset="us-ascii"
 Content-Transfer-Encoding: 8bit
 
-On June 30, 2024 11:54:43 AM Stefan Wahren <wahrenst@gmx.net> wrote:
+On June 30, 2024 9:36:37 AM Jacobe Zang <jacobe.zang@wesion.com> wrote:
 
-> Am 30.06.24 um 11:15 schrieb Chen-Yu Tsai:
->> On Sun, Jun 30, 2024 at 5:10 PM Jacobe Zang <jacobe.zang@wesion.com> wrote:
->>> Hi Stefan,
->>>
->>>>> WiFi modules often require 32kHz clock to function. Add support to
->>>>> enable the clock to PCIe driver.
->>>> the low power clock is independent from the host interface like PCIe. So
->>>> the clock handling should move to the common code. Sorry, not i cannot
->>>> give a good suggestion, what's the best place for this.
->>> I think the clock is used by the PCIe device so enable it in this file. 
->>> Also I checked
->>> use of clock which in spi[0] or sdio[0] device was enabled similarly to this.
->>>
->>> [0] 
->>> https://lore.kernel.org/all/20210806081229.721731-4-claudiu.beznea@microchip.com/
->> You're looking at the wrong driver. For brcmfmac, the lpo clock is toggled
->> by the MMC pwrseq code. And for the Bluetooth side (where it really matters)
->> for UARTs, it is in drivers/bluetooth/hci_bcm.c. and documented in the
->> binding Documentation/devicetree/bindings/net/broadcom-bluetooth.yaml
-> Thanks for clarifying. So this change handles the PCIe case without
-> bluetooth. For USB the clock control doesn't make sense.
->
-> Sorry for the noise
+> WiFi modules often require 32kHz clock to function. Add support to
+> enable the clock to PCIe driver.
 
-So someone could end up with both wifi and bt LPO clock defined in DTS 
-file. Not sure if that can be expressed and validated in device tree, but 
-at the least there should be a fair warning in both binding files that 
-there can be only one!
+Another remark. This clock handling code should be done in of.c where we 
+handle all device tree stuff.
 
-The LPO clock matters to the chip. It is not specific to the BT part. The 
-clock is important for the power-up cycle. The timing difference WL_REG_ON 
-and BT_REG_ON is expressed in LPO clock cycles.
-
-Regards,
-Arend
+> Co-developed-by: Ondrej Jirman <megi@xff.cz>
+> Signed-off-by: Ondrej Jirman <megi@xff.cz>
+> Signed-off-by: Jacobe Zang <jacobe.zang@wesion.com>
+> ---
+> .../net/wireless/broadcom/brcm80211/brcmfmac/pcie.c    | 10 ++++++++++
+> 1 file changed, 10 insertions(+)
 
 
 
-
---000000000000696f5d061c1944e9
+--000000000000939991061c196632
 Content-Type: application/pkcs7-signature; name="smime.p7s"
 Content-Transfer-Encoding: base64
 Content-Disposition: attachment; filename="smime.p7s"
@@ -212,20 +185,20 @@ BtkeSGJx/8dy0h8YmRn+adOrxKXHxhSL8BNn8wsmIZyYWe6fRcBtO3Ks2DOLyHCdkoFlN8x9VUQF
 N2ulEgqCbRKkx+qNirW86eF138lr1gRxzclu/38ko//MmkAYR/+hP3WnBll7zbpIt0jc9wyFkSqH
 p8a1MYICbTCCAmkCAQEwazBbMQswCQYDVQQGEwJCRTEZMBcGA1UEChMQR2xvYmFsU2lnbiBudi1z
 YTExMC8GA1UEAxMoR2xvYmFsU2lnbiBHQ0MgUjMgUGVyc29uYWxTaWduIDIgQ0EgMjAyMAIMTv1t
-bpIzNUky46LXMA0GCWCGSAFlAwQCAQUAoIHUMC8GCSqGSIb3DQEJBDEiBCDa2AZi8L4XSq4RqH3T
-ZgHw2+DGNXcGvo3EmgIQ3SuywTAYBgkqhkiG9w0BCQMxCwYJKoZIhvcNAQcBMBwGCSqGSIb3DQEJ
-BTEPFw0yNDA2MzAxMDUxNDdaMGkGCSqGSIb3DQEJDzFcMFowCwYJYIZIAWUDBAEqMAsGCWCGSAFl
+bpIzNUky46LXMA0GCWCGSAFlAwQCAQUAoIHUMC8GCSqGSIb3DQEJBDEiBCAXzeWsRAE/Lig3uMJt
+cegu80fJ6z6TN9HJ0BFosUS/bjAYBgkqhkiG9w0BCQMxCwYJKoZIhvcNAQcBMBwGCSqGSIb3DQEJ
+BTEPFw0yNDA2MzAxMTAxMjBaMGkGCSqGSIb3DQEJDzFcMFowCwYJYIZIAWUDBAEqMAsGCWCGSAFl
 AwQBFjALBglghkgBZQMEAQIwCgYIKoZIhvcNAwcwCwYJKoZIhvcNAQEKMAsGCSqGSIb3DQEBBzAL
-BglghkgBZQMEAgEwDQYJKoZIhvcNAQEBBQAEggEAFg2B4wdCpp+Ji7jgMrS2vrSl03HVGEIZj4xu
-Og9J4Bei4dGFcpNMqYreRpeNQI70jSl54CuCLoPhGTtERkvM5eRnO0HQrKwGNNa4U58Tr7qQ3hu8
-zmAoujTyKs6Xn0/y3ileNOGJSqsVLFQQEsdXZb69mwAPRwkiB3ojgLwA+yFJZclMUxZLuLBlqMsh
-dHq3s6QbAS5bpW9KY6vI+JnfO8rIm7wO5h228KITkOGqgRljBgpiRTqddeCLfeooS6ws79pHHx6B
-Z8zNJw/EXVcRG0rM/o2BSFO9bs32tOjCFKz6/KC5gGJ/EV/7Pf1BEmEn2BPsi7EdkbuTEQZMK/fm
-8Q==
---000000000000696f5d061c1944e9--
+BglghkgBZQMEAgEwDQYJKoZIhvcNAQEBBQAEggEA4lmQAeI7WWyYVzo4TJWI4bzFCDc+CKFFIHXk
+EwaFCugrtfU3Crqg4GZP4CztwLOkDwrDxLzADTQuHULdqqdCO1YWRKZj6ZOXwCGlD2O+sufMBYAx
+qKKE2P/Sk5d9CMQtQOgpMhSBNkfM1cX2tfRtvfCljdVqGPz6koJy6480bLQQbvDppwZ0JWWCsox2
+wNYhQ2QxefyigEK+DC6BPleD2+EFeUp1cgzflYECLKkAY6QBkRmxqQ5OjXceDCl2M8AEF5IxiiHG
+saYjhjKYnj6dymte8hSUW+dQ/IogTKcNOZjNFkJS5rFwfV97cGv3HoK5lyy4C+BQk7mpoJxr1q9+
+DA==
+--000000000000939991061c196632--
 
 
---===============3765049608302736562==
+--===============3956094441479922717==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -236,5 +209,5 @@ Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
---===============3765049608302736562==--
+--===============3956094441479922717==--
 
