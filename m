@@ -4,61 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8B913C27C4F
-	for <linux-rockchip@archiver.kernel.org>; Sun, 30 Jun 2024 15:52:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B8577C27C4F
+	for <linux-rockchip@archiver.kernel.org>; Sun, 30 Jun 2024 16:01:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
-	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=fYwm7hA4PiFQ570x1eg0nJlgCBVUXeCupCFdrDkBzDk=; b=DpTEfvDhoAWDRSZS8gq7DtzSUa
-	s55bW3cONiwoDvGZVviJsNDUg3QpIpNPVm8CQ7I03tyMSHLrVeCbtos39SyM69dWFKjFc1DJpwL+L
-	iea8DBbihSWTiMvIdhh3YtHoMunAmSBpAGoHm39bOEYkV7hQ95loJV/ZGulqyZ5nroaLOxqkpVRLo
-	e1kZRxOrAJHEjgAejKz5VbIkVRN+NabVriwxRM8Geqq8xyLGT0kr8mC3ip6E9MQG9WfgssSn+slVw
-	Uv9UxzvI1HlBvTS/6LoUKZ0KEUj9hBSu/hOWJoqkBT2/wUIdXkD6I7hD9VWU/hlwGsaRhTqxk0k26
-	3Cyc1Aeg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=mP1M2LKUy4NKEy2Jvlunm2fWMefhkCCR+AxfXQJBHMc=; b=Q+olP4YUi77DH7
+	UA3YIlyemF5ANYBdA22XwbKcgpcbtP9vqGhvLZopKYcIkmcu0WoA4gXwZzZ8BeHcBxdpa936K+nel
+	Annl6UEhBb+RlYeHcFvhpvxQdMHhYgNC6NVSU26nLd/pJ3l+G+8f/EZKyqIn0/BG6urULFxOFcu2b
+	HMgSK/2Kptdy6gtDWM9fmxKxoOGld65kTRja5VUlJlZbW1z2MYlLn2LB36VJDGLS+QIOa7YRzLOCT
+	iOoiujmK2HfhOzQEZNhAq9IYu9KWp9r7Pwr8i7MzrcFdZ9h582B7pKqH/lJC+zJT6NwimA6LQp+xC
+	plfxO07gDp/OrZESqNdw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sNwqT-00000000eCN-03Vn;
-	Sun, 30 Jun 2024 15:52:05 +0000
-Received: from mail.manjaro.org ([2a01:4f8:c0c:51f3::1])
+	id 1sNwz4-00000000etX-1GEV;
+	Sun, 30 Jun 2024 16:00:58 +0000
+Received: from mail.manjaro.org ([116.203.91.91])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sNwqI-00000000eAq-17Z9;
-	Sun, 30 Jun 2024 15:51:56 +0000
-MIME-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
-	t=1719762710;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=6ZnQ5xnPEinCUn7M4ojlqf3tcHsfXH1JN3By76A2jvY=;
-	b=jJPCG4wFjOIjHlXPs4aBSQKuTyfHLdNU2TLhaJZukHWOhCIDuxlHBSyuVeiNZsktBaysCU
-	mlz7v64KJ2MDjdjbzapKlARNo0NtjuYboRHL1fqNJ5MfQeOi0s3FHF6p+fGtCX2z0IRwjZ
-	nirIdlOBW96RweHWBxy5yUKl8lOSE2IPBP5Gu47F6f+w1Ujex8SyZI3/vHU2USd3m7SFLv
-	+984QfSX0OKcusD2TUSIt2U52h3YdKpnvzsYrD0YXie2u+klWH/FAL2QAmw2eogHn6BwS+
-	nrTswuZ8mYoJsqmpodhCHBmmI9RsR/NyOqx6oo/vJn9M0dZpR/yHjfBi+kvzQg==
-Date: Sun, 30 Jun 2024 17:51:49 +0200
+	id 1sNwyt-00000000erh-1dC4;
+	Sun, 30 Jun 2024 16:00:49 +0000
 From: Dragan Simic <dsimic@manjaro.org>
-To: Diederik de Haas <didi.debian@cknow.org>
-Cc: linux-rockchip@lists.infradead.org, heiko@sntech.de,
- linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org,
- robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
- linux-kernel@vger.kernel.org, Jonas Karlman <jonas@kwiboo.se>
-Subject: Re: [PATCH v2] arm64: dts: rockchip: Add GPU OPP voltage ranges to
- RK356x SoC dtsi
-In-Reply-To: <2573506.7YG5XaKc65@bagend>
-References: <bdb60f1f793166cd65f58ab7aea025347076019c.1719679068.git.dsimic@manjaro.org>
- <2442162.AJoTavkB1d@bagend> <b8951ac4e29184fa35919c6ab85b8f87@manjaro.org>
- <2573506.7YG5XaKc65@bagend>
-Message-ID: <78a743a9828741e029f14d165ad8d3a6@manjaro.org>
-X-Sender: dsimic@manjaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
+	t=1719763244;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=XmJ18Mk+LYsc2OZrwmpPSoEt6hQuFiTRIdWg0LXy0aA=;
+	b=HYv2yLuW3JrrxIdYALONp9tkqcYqp13KBULY+SdpTVxnRG3fFgZanDJ/Ths6nlDH0ra1+8
+	yWVrOg9WhJlTde4CfFc4Wk797KDyspxto3i70C2LG4BgI9J1ybzoX5UNdl7Q4iczx3cn6N
+	hTO9gatbthmAzsu9Z25rB7yFCZBa0Eys5VFgF3/RQskT8QsYObM5boCpw0KZ/Y21xtRrB0
+	7PF+ynzgODtA2AVgyyscFerzf9g2cLYAD+ihhde8DkNiMlCtn7dWt56euqFxnsPCDkvqv8
+	4DEJKe/j7BwwHL+1lKrFV1A8xyaYb0X7cZyoJ3rUSO5rZbe+krDQLyC/9tZwvA==
+To: linux-rockchip@lists.infradead.org
+Cc: heiko@sntech.de,
+	linux-arm-kernel@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
+	linux-kernel@vger.kernel.org,
+	didi.debian@cknow.org,
+	jonas@kwiboo.se
+Subject: [PATCH v3 0/2] Add and update GPU OPP voltage ranges in the RK356x SoC dtsi
+Date: Sun, 30 Jun 2024 18:00:39 +0200
+Message-Id: <cover.1719763100.git.dsimic@manjaro.org>
+MIME-Version: 1.0
 Authentication-Results: ORIGINATING;
 	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240630_085154_813475_83D799E7 
-X-CRM114-Status: GOOD (  13.21  )
+X-CRM114-CacheID: sfid-20240630_090047_980133_6DFE3139 
+X-CRM114-Status: GOOD (  13.39  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,39 +68,48 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello Diederik,
+The first patch in this series adds support for voltage ranges to the GPU
+OPPs defined in the SoC dtsi for Rockchip RK356x, which is, for example,
+useful for RK356x-based boards designed to use the same power supply for
+the GPU and NPU portions of the SoC.
 
-On 2024-06-30 17:43, Diederik de Haas wrote:
-> On Sunday, 30 June 2024 14:04:50 CEST Dragan Simic wrote:
->> > I also expected that (for v1) there would be a similar construct as was
->> > recently added for rk3588. But I should interpret Heiko's comments as
->> > that strategy should not be applied to rk356x?
->> 
->> The trouble with applying the same strategy, ...
-> 
-> One of the reasons I like/hoped for it is that I'm a 'sucker' for
-> consistency.
+The second patch updates the values for the exact GPU OPP voltages and
+the lower limits for the GPU OPP voltage ranges, so they match the most
+conservative values (i.e. the highest per-OPP voltages) found in the
+vendor kernel source.  This is performed in a separate patch to allow
+easier regression tracking, in the unlikely case that some issues are
+discovered later, resulting from these voltage changes.
 
-I also like consistency, but doing it that way simply wasn't feasible
-in this case.  Maybe I'll rework the RK3399 SoC dtsi files a bit, so
-we'd end up with more overall consistency. :)
+Changes in v3:
+  - Turned into a patch series by adding a second patch that updates
+    the exact GPU OPP voltages and the lower limits for the GPU OPP
+    voltage ranges so they match the most conservative values found
+    in the vendor kernel source [1]
 
->> ... the need for voltage ranges depends on one of the board features,
->> i.e. the GPU and NPU voltage regulators.  As such, it still has to
->> affect the RK356x SoC dtsi, which may warrant separate
->> rk356x-gpu-range.dtsi, for example, but the troubles would arise ...
-> 
-> ... but it's probably better if I (generally) abstain from taking part
-> in the discussion about the correct/desired implementation as I don't
-> understand the material in enough detail to meaningfully contribute.
+Changes in v2:
+  - Dropped support for optional GPU OPP voltage ranges, which may
+    actually hide some misconfiguration issues in board dts files, [2]
+    but that will be covered by other debugging patches [3]
 
-I find your responses useful, so as far as I'm concerned, you're more
-than welcome to take part in the discussions.
+Link to v2: https://lore.kernel.org/linux-rockchip/bdb60f1f793166cd65f58ab7aea025347076019c.1719679068.git.dsimic@manjaro.org/T/#u
+Link to v1: https://lore.kernel.org/linux-rockchip/446399362bd2dbeeaecd8351f68811165429749a.1719637113.git.dsimic@manjaro.org/T/#u
+
+[1] https://lore.kernel.org/linux-rockchip/b8951ac4e29184fa35919c6ab85b8f87@manjaro.org/
+[2] https://lore.kernel.org/linux-rockchip/f10d5a3c425c2c4312512c20bd35073c@manjaro.org/
+[3] https://lore.kernel.org/linux-rockchip/36170f8485293b336106e92346478daa@manjaro.org/
+
+Dragan Simic (2):
+  arm64: dts: rockchip: Add GPU OPP voltage ranges to RK356x SoC dtsi
+  arm64: dts: rockchip: Update GPU OPP voltages in RK356x SoC dtsi
+
+ arch/arm64/boot/dts/rockchip/rk356x.dtsi | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
+
 
 _______________________________________________
 Linux-rockchip mailing list
