@@ -4,74 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8F0A7C2BD09
-	for <linux-rockchip@archiver.kernel.org>; Mon,  1 Jul 2024 08:41:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B4CADC30653
+	for <linux-rockchip@archiver.kernel.org>; Mon,  1 Jul 2024 08:47:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=09Js8nMz2a4KlTlzpKjH13nnxYZEY67ogSuNqANlCss=; b=CuXg4Vqrxlqls4
-	Nttn1vapX+fes91Um/zpfBDDlUBtd2CIj3wsgkmOEoATE+3F2n7nfJlBQNoAEvsCQQLggkiJ6tywd
-	0lnzprQCWWMY5Vkh1WAgKtngiMt1rUmAYaEXheNocL7GV7/XdQT5UU5gkYVt6FAS68BhKLc+iSbJf
-	1dMj6Xb3ptapzD9LbPRqrphzMbiBHC4RwtCgX8FeUZD6mMG3N824CxmMjupMLlpx/sGZ1ktfNHseV
-	9Yhoy5R7hOcb2N9wjACyXL7qARJz+Is7UR3w1fTz6wZ8rXiSI6E1mUwk0qrE/qOwMpILWRv8sHsDb
-	ENadd/whID16DdfFLdOA==;
+	List-Owner; bh=O4l4XsR/SbflnriHMmYnc3rBS8aHhHRk13jFBiVhlAI=; b=yGljKZUzAsPf4U
+	8pQQpgqaUs11eKIR+rb3Y0kXv+pc43GIgVSQ0oIxjVhEW27p4Cyqiq2rcP0HkDlqmg4xROr8pdhvo
+	vPxw+6JEWbLYqNSyXLuyC1FR78WXUsdYfufgCcci1jbZAyNPbFdRRLOfImBpIbCqukX4x/cEn+l86
+	VdtHBnLGwiZ8nEIdUZCI9SbfFEcHFx1QgJyQ0EFQvy+drpHCwqbzshBhu1skmVh6Cactxm+bqJ/pX
+	8KJ3oOrfx4U/+xmjsRfrJ+SRoStPmof7OFSH3/PjURenNrE3FScWhCDLd7U1HpEApuc3R/GomHjdc
+	nXtqOE8wQRSvzJvIau9g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sOCbh-00000002GqJ-3LIS;
-	Mon, 01 Jul 2024 08:41:53 +0000
-Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
+	id 1sOCgr-00000002IAU-40rO;
+	Mon, 01 Jul 2024 08:47:14 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sOCbW-00000002Glp-1L97;
-	Mon, 01 Jul 2024 08:41:43 +0000
+	id 1sOCgh-00000002I7F-0q1R;
+	Mon, 01 Jul 2024 08:47:04 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 6A259CE1077;
-	Mon,  1 Jul 2024 08:41:40 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E5590C116B1;
-	Mon,  1 Jul 2024 08:41:32 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 6957061181;
+	Mon,  1 Jul 2024 08:47:02 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 62705C32786;
+	Mon,  1 Jul 2024 08:46:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1719823299;
-	bh=hg+g7DiLnSzkTsvXjpWJRV2heN5XuuVLmYBc59TNCUg=;
+	s=k20201202; t=1719823622;
+	bh=eXt8DtOJVKFI5OlO3caEI0BK15ZG8stmVqrzhbjKqss=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=UkoFlXfJsZhhnKX24BRkCiNKND2UWpXS+xqQonjFz3XLkR2/9BMFdGS3e8wdZAWOo
-	 0XB+jbnH85jecYk9bhvMNOCFQ8C00l1fV6D3izX8vOCFvhnKR+vAmcelDVOd5q2Nu2
-	 ydZ5yqd0PiJ2PyzAA55nwTiKAs2uchDveGeBlhgDXptedtSsNJh7yMobx53X+/OD4G
-	 mUW4pM2OJzeHsSSq82mAdy5s+5Yw5c6KSz9dPrmsyi4Gg9k3ApexKHgO4OqTQOLzax
-	 RvUCc+ZNtc0K95iaRnksSBJ7fZ9E77n9OGKOAGIXuL35lHUvLHGvnaf6oSWUpeCe1r
-	 LQYq+T7Bzxs4A==
-Message-ID: <3fe026a2-a8d6-4688-863f-1237e71945ea@kernel.org>
-Date: Mon, 1 Jul 2024 10:41:30 +0200
+	b=Zf7TKwRc2X6XRQl0XWRgdmeDERAWtrlJq/KUFyHeYKkjJ56l8el4vKzxrESMehapS
+	 /s/V9WJh8betn6bi/8o7Q2bsSq15VtmKaZECAeCdjlQ7jxytCDCZhFftHMNzT91uj7
+	 /qkmlBpSNbQAfdgAy/PnemJNXauFo1dnKSKimqYCapmFPiz0kvXyecQBHxA4o4TR7U
+	 abg+XKrhdbGeZpfEA654A45qfkGVayK+Wn1OGZLLcv1Wn9wkhTkzOpj/ImcEymxerq
+	 8/noGzMCEjfSWAYSludiyM2hbAXrn9bkpiwluW3ZNvePjpAFHao8gOR6+jCl8OuxWf
+	 +6Zpp5kUG/wNw==
+Message-ID: <eeeb3f1f-5c77-4ca5-b996-17b968b7c2f0@kernel.org>
+Date: Mon, 1 Jul 2024 10:46:52 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 1/5] arm64: dts: rockchip: Add AP6275P wireless support
+Subject: Re: [PATCH v3 3/5] arm64: dts: rockchip: Add AP6275P wireless support
  to Khadas Edge 2
-To: Jacobe Zang <jacobe.zang@wesion.com>,
- "arend.vanspriel@broadcom.com" <arend.vanspriel@broadcom.com>
-Cc: "kvalo@kernel.org" <kvalo@kernel.org>,
- "duoming@zju.edu.cn" <duoming@zju.edu.cn>,
- "bhelgaas@google.com" <bhelgaas@google.com>,
- "minipli@grsecurity.net" <minipli@grsecurity.net>,
- "linux-wireless@vger.kernel.org" <linux-wireless@vger.kernel.org>,
- "brcm80211@lists.linux.dev" <brcm80211@lists.linux.dev>,
- "brcm80211-dev-list.pdl@broadcom.com" <brcm80211-dev-list.pdl@broadcom.com>,
- "megi@xff.cz" <megi@xff.cz>, "robh@kernel.org" <robh@kernel.org>,
- "efectn@protonmail.com" <efectn@protonmail.com>,
- "krzk+dt@kernel.org" <krzk+dt@kernel.org>,
- "conor+dt@kernel.org" <conor+dt@kernel.org>,
- "heiko@sntech.de" <heiko@sntech.de>, Nick Xie <nick@khadas.com>,
- "jagan@edgeble.ai" <jagan@edgeble.ai>,
- "dsimic@manjaro.org" <dsimic@manjaro.org>,
- "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
- "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>,
- "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
-References: <20240624081906.1399447-1-jacobe.zang@wesion.com>
- <20240624081906.1399447-2-jacobe.zang@wesion.com>
- <258459b8-549b-4a63-8d33-76c9631483f1@kernel.org>
- <TYZPR03MB7001D4DE507C919802B2F7F380D52@TYZPR03MB7001.apcprd03.prod.outlook.com>
+To: Jacobe Zang <jacobe.zang@wesion.com>, robh@kernel.org,
+ krzk+dt@kernel.org, heiko@sntech.de, kvalo@kernel.org, davem@davemloft.net,
+ edumazet@google.com, kuba@kernel.org, pabeni@redhat.com, conor+dt@kernel.org
+Cc: efectn@protonmail.com, dsimic@manjaro.org, jagan@edgeble.ai,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+ arend@broadcom.com, linux-wireless@vger.kernel.org, netdev@vger.kernel.org,
+ megi@xff.cz, duoming@zju.edu.cn, bhelgaas@google.com,
+ minipli@grsecurity.net, brcm80211@lists.linux.dev,
+ brcm80211-dev-list.pdl@broadcom.com, nick@khadas.com
+References: <20240630073605.2164346-1-jacobe.zang@wesion.com>
+ <20240630073605.2164346-4-jacobe.zang@wesion.com>
 From: Krzysztof Kozlowski <krzk@kernel.org>
 Content-Language: en-US
 Autocrypt: addr=krzk@kernel.org; keydata=
@@ -117,10 +104,10 @@ Autocrypt: addr=krzk@kernel.org; keydata=
  uZwJCLykjad45hsWcOGk3OcaAGQS6NDlfhM6O9aYNwGL6tGt/6BkRikNOs7VDEa4/HlbaSJo
  7FgndGw1kWmkeL6oQh7wBvYll2buKod4qYntmNKEicoHGU+x91Gcan8mCoqhJkbqrL7+nXG2
  5Q/GS5M9RFWS+nYyJh+c3OcfKqVcZQNANItt7+ULzdNJuhvTRRdC3g9hmCEuNSr+CLMdnRBY fv0=
-In-Reply-To: <TYZPR03MB7001D4DE507C919802B2F7F380D52@TYZPR03MB7001.apcprd03.prod.outlook.com>
+In-Reply-To: <20240630073605.2164346-4-jacobe.zang@wesion.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240701_014142_737625_56B935E0 
-X-CRM114-Status: GOOD (  16.43  )
+X-CRM114-CacheID: sfid-20240701_014703_409318_9CC3DFE1 
+X-CRM114-Status: GOOD (  14.70  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -132,49 +119,52 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gMjUvMDYvMjAyNCAxMDowNCwgSmFjb2JlIFphbmcgd3JvdGU6Cj4+PiBkaWZmIC0tZ2l0IGEv
-YXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazM1ODhzLWtoYWRhcy1lZGdlMi5kdHMgYi9h
-cmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzU4OHMta2hhZGFzLWVkZ2UyLmR0cwo+Pj4g
-aW5kZXggM2I2Mjg2NDYxYTc0Ni4uZjY3NGRlYjZmN2RhOCAxMDA2NDQKPj4+IC0tLSBhL2FyY2gv
-YXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszNTg4cy1raGFkYXMtZWRnZTIuZHRzCj4+PiArKysg
-Yi9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzU4OHMta2hhZGFzLWVkZ2UyLmR0cwo+
-Pj4gQEAgLTM1Niw2ICszNTYsMjIgQEAgJnBjaWUyeDFsMiB7Cj4+PiDCoMKgwqDCoMKgwqDCoCBy
-ZXNldC1ncGlvcyA9IDwmZ3BpbzMgUktfUEQxIEdQSU9fQUNUSVZFX0hJR0g+Owo+Pj4gwqDCoMKg
-wqDCoMKgwqAgdnBjaWUzdjMtc3VwcGx5ID0gPCZ2Y2MzdjNfcGNpZV93bD47Cj4+PiDCoMKgwqDC
-oMKgwqDCoCBzdGF0dXMgPSAib2theSI7Cj4+PiArCj4+PiArwqDCoMKgwqAgcGNpZUAwLDAgewo+
-Pj4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCByZWcgPSA8MHg0MDAwMDAgMCAwIDAgMD47Cj4+
-PiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgICNhZGRyZXNzLWNlbGxzID0gPDM+Owo+Pj4gK8Kg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoCAjc2l6ZS1jZWxscyA9IDwyPjsKPj4+ICvCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqAgcmFuZ2VzOwo+Pj4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBkZXZp
-Y2VfdHlwZSA9ICJwY2kiOwo+Pj4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBidXMtcmFuZ2Ug
-PSA8MHg0MCAweDRmPjsKPj4KPj4gSXNuJ3QgYnVzLXJhbmdlIGEgcHJvcGVydHkgb2YgUENJIGhv
-c3QgYnJpZGdlLCBzbyB0aGUgcGFyZW50PyBUaGlzIGlzIGEKPj4gUENJIGRldmljZSwgcmlnaHQ/
-Cj4+Cj4+PiArCj4+PiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIHdpZmk6IHdpZmlAMCwwIHsK
-Pj4KPj4gQmluZGluZyBkb2VzIG5vdCBzYXkgYW55dGhpbmcgYWJvdXQgdGhpcy4gUm9ja2NoaXAg
-UENJIGNvbnRyb2xsZXIgaXMgdGhlCj4+IFBDSSBob3N0IGJyaWRnZSwgaXNuJ3QgaXQ/IFRoZW4g
-dGhlIHBjaUAwLDAgaXMgdGhlIGNoaWxkLCBzbyB3aGF0IGlzIHRoaXM/Cj4gCj4gVGhlIGhvc3Qg
-YnJpZGdlIGlzIHRoZSBwYXJlbnQgb2YgcGNpZUAwLDAuIEFuZCBwY2llQDAsMCBpcyBCcmlkZ2Ux
-LCBzbyB0aGUKCkRvIHlvdSB3YW50IHRvIHNheSBSb2NrY2hpcCBQQ0kgaXMgUENJLVBDSSBicmlk
-Z2U/IEJpbmRpbmdzIGRvIG5vdCBhbGxvdyBpdC4KCj4gd2lmaUAwLDAgYXMgYSBkZXZpY2UgdW5k
-ZXIgdGhlIEJyaWRnZTEuCj4gCj4+Cj4+PiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoCByZWcgPSA8MHg0MTAwMDAgMCAwIDAgMD47Cj4+PiArwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBjbG9ja3MgPSA8Jmh5bTg1NjM+Owo+Pj4gK8KgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgY2xvY2stbmFtZXMgPSAiMzJrIjsK
-Pj4KPj4gMS4gQmluZGluZ3MgYXJlIGJlZm9yZSB0aGUgdXNlcnMuCj4+IDIuIFdoZXJlIGlzIHRo
-ZSBjb21wYXRpYmxlPyBBcmUgeW91IHN1cmUgdGhpcyB2YWxpZGF0ZXM/Cj4gCj4gQmVmb3JlLCB0
-aGUgY29tcGF0aWJsZSBpcyAicGNpMTRlNCw0NDlkIiwgYnV0IHdoZW4gSSBjaGVja3BhdGNoIHRo
-ZSB3YXJuaW5nCj4gc2FpZCB0aGF0ICJwY2kxNGU0IiB3YXMgbm90IGRvY3VtZW50ZWQsIHNvIEkg
-cmVtb3ZlIHRoZSBjb21wYXRpYmxlIHdoaWNoIAo+IGRvZXNuJ3QgYWZmZWN0IHRoZSBXaS1GaSBm
-dW5jdGlvbi4gSSBoYXZlIHRyaWVkIHRvIGFkZCAicGNpMTRlNCIgdG8gCj4gdmVuZG9yLXByZWZp
-eGVzLnlhbWwgYnV0IHdhcyByZWZ1c2VkLiBTbyB3aGV0aGVyIHNob3VsZCBJIGFkZCB0aGUgY29t
-cGF0aWJsZSAKPiB3aXRoIHdhcm5pbmc/IAoKSSB0YWxrIGFib3V0IGR0YnNfY2hlY2ssIG5vdCBj
-aGVja3BhdGNoLiBUaGF0IGNoZWNrcGF0Y2ggd2FybmluZyBkb2VzCm5vdCBtYXR0ZXIsIG9idmlv
-dXNseS4KCkJlc3QgcmVnYXJkcywKS3J6eXN6dG9mCgoKX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4
-LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcv
-bWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+On 30/06/2024 09:36, Jacobe Zang wrote:
+> Khadas Edge2 uses the PCI-e Ampak AP6275P 2T2R Wi-Fi 6 module. The
+> pcie@0 node can be used as Bridge1, so the wifi@0 node is used as a
+> device under the Bridge1. As a PCIe device the wifi@0 can be probed
+> without compatible.
+> 
+> Co-developed-by: Muhammed Efe Cetin <efectn@protonmail.com>
+> Signed-off-by: Muhammed Efe Cetin <efectn@protonmail.com>
+> Signed-off-by: Jacobe Zang <jacobe.zang@wesion.com>
+> ---
+>  .../boot/dts/rockchip/rk3588s-khadas-edge2.dts    | 15 +++++++++++++++
+>  1 file changed, 15 insertions(+)
+> 
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-khadas-edge2.dts b/arch/arm64/boot/dts/rockchip/rk3588s-khadas-edge2.dts
+> index dbddfc3bb4641..8c152d587aefc 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3588s-khadas-edge2.dts
+> +++ b/arch/arm64/boot/dts/rockchip/rk3588s-khadas-edge2.dts
+> @@ -283,6 +283,21 @@ &pcie2x1l2 {
+>  	reset-gpios = <&gpio3 RK_PD1 GPIO_ACTIVE_HIGH>;
+>  	vpcie3v3-supply = <&vcc3v3_pcie_wl>;
+>  	status = "okay";
+> +
+> +	pcie@0,0 {
+> +		reg = <0x400000 0 0 0 0>;
+> +		#address-cells = <3>;
+> +		#size-cells = <2>;
+> +		ranges;
+> +		device_type = "pci";
+> +		bus-range = <0x40 0x4f>;
+> +
+> +		wifi: wifi@0,0 {
+
+Where is the compatible (again!)? Test your code - you will see your
+binding is a no-op.
+
+
+Best regards,
+Krzysztof
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
