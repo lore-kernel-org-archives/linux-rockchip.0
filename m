@@ -4,49 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B4CADC30653
-	for <linux-rockchip@archiver.kernel.org>; Mon,  1 Jul 2024 08:47:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 68A43C2BD09
+	for <linux-rockchip@archiver.kernel.org>; Mon,  1 Jul 2024 08:58:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=O4l4XsR/SbflnriHMmYnc3rBS8aHhHRk13jFBiVhlAI=; b=yGljKZUzAsPf4U
-	8pQQpgqaUs11eKIR+rb3Y0kXv+pc43GIgVSQ0oIxjVhEW27p4Cyqiq2rcP0HkDlqmg4xROr8pdhvo
-	vPxw+6JEWbLYqNSyXLuyC1FR78WXUsdYfufgCcci1jbZAyNPbFdRRLOfImBpIbCqukX4x/cEn+l86
-	VdtHBnLGwiZ8nEIdUZCI9SbfFEcHFx1QgJyQ0EFQvy+drpHCwqbzshBhu1skmVh6Cactxm+bqJ/pX
-	8KJ3oOrfx4U/+xmjsRfrJ+SRoStPmof7OFSH3/PjURenNrE3FScWhCDLd7U1HpEApuc3R/GomHjdc
-	nXtqOE8wQRSvzJvIau9g==;
+	List-Owner; bh=So4wQ139wnu8ePYm2DyN2qqTJ6ejMJ0X9Nqt8W3zzI4=; b=J/ID749Jy6AvjM
+	/l03/mfDCmL9CBrHIRUtJUfkXeWifzTlrDr0ZxCs7V3CLhM5M039ZGTMY+VDwN2DAccBoOGYhO1uS
+	0Men+0utwbQ3uwFW5HEMQwcIBRxf8OdjH8ZjQ0jlxM22tFZIQIpmvyQdnD0UsDoDPZ+vf7kqmgjwv
+	ZQOM46vSivbeykgTuoe1s2qUr7POWOUEDxVUZQQTSzRfx76UxM6vfG1SoVD1ZpGwpo7YEB7tVAedv
+	BxxXdlmaT9hIOsH6EIR03Ie6ffPmX7rQoWzl44ZA+39xJDqGxuhuFayR9wzu/7Viy899wPVwoQcv3
+	EhRrsPsAjIoco3GX1ytQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sOCgr-00000002IAU-40rO;
-	Mon, 01 Jul 2024 08:47:14 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1sOCs3-00000002Lud-2Koz;
+	Mon, 01 Jul 2024 08:58:47 +0000
+Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sOCgh-00000002I7F-0q1R;
-	Mon, 01 Jul 2024 08:47:04 +0000
+	id 1sOCrr-00000002LpU-0dUy;
+	Mon, 01 Jul 2024 08:58:37 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 6957061181;
-	Mon,  1 Jul 2024 08:47:02 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 62705C32786;
-	Mon,  1 Jul 2024 08:46:54 +0000 (UTC)
+	by sin.source.kernel.org (Postfix) with ESMTP id E2B39CE106E;
+	Mon,  1 Jul 2024 08:58:32 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 85003C32786;
+	Mon,  1 Jul 2024 08:58:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1719823622;
-	bh=eXt8DtOJVKFI5OlO3caEI0BK15ZG8stmVqrzhbjKqss=;
+	s=k20201202; t=1719824312;
+	bh=Tj+Kiw/erBBOTHu3VioW1Kx/HROtsj5UNrho+CL1DmA=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=Zf7TKwRc2X6XRQl0XWRgdmeDERAWtrlJq/KUFyHeYKkjJ56l8el4vKzxrESMehapS
-	 /s/V9WJh8betn6bi/8o7Q2bsSq15VtmKaZECAeCdjlQ7jxytCDCZhFftHMNzT91uj7
-	 /qkmlBpSNbQAfdgAy/PnemJNXauFo1dnKSKimqYCapmFPiz0kvXyecQBHxA4o4TR7U
-	 abg+XKrhdbGeZpfEA654A45qfkGVayK+Wn1OGZLLcv1Wn9wkhTkzOpj/ImcEymxerq
-	 8/noGzMCEjfSWAYSludiyM2hbAXrn9bkpiwluW3ZNvePjpAFHao8gOR6+jCl8OuxWf
-	 +6Zpp5kUG/wNw==
-Message-ID: <eeeb3f1f-5c77-4ca5-b996-17b968b7c2f0@kernel.org>
-Date: Mon, 1 Jul 2024 10:46:52 +0200
+	b=omb5QVFkvjUbpmopRozSkLypZEyNyFX3O/LiA6mYI6mgEPpniSCro7wVJqVc+3zal
+	 bto82i4q6vOt/zIrF/X6DxCOmmi8Bct3H+MRgQ4bUzVRXUqtF3SnUYSIwB4Zln7xiD
+	 GksCYZ57h6XltJatW4O4ZKh/eq97/3dlS3mIyhG5RdEPXgHnv1eRi51jCKFvExSav8
+	 AAPgkPCI8W/wCdIrWBujWMkj5E7HwyDNsY+9EX5qV7jk+ivPAtK3tz7hHfLr0eAHue
+	 al4rO1L56NKQsdNkwoLYL6wJkuvHSazdmbmMO2hMxZt/bx857rQFHYL0zoZT5TsbRa
+	 woNNEjFR4A6Tg==
+Message-ID: <831bad74-5519-48a1-b13c-a358e634598c@kernel.org>
+Date: Mon, 1 Jul 2024 10:58:18 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 3/5] arm64: dts: rockchip: Add AP6275P wireless support
- to Khadas Edge 2
+Subject: Re: [PATCH v3 2/5] dt-bindings: net: wireless: brcm4329-fmac: add
+ clock description for AP6275P Wi-Fi device
 To: Jacobe Zang <jacobe.zang@wesion.com>, robh@kernel.org,
  krzk+dt@kernel.org, heiko@sntech.de, kvalo@kernel.org, davem@davemloft.net,
  edumazet@google.com, kuba@kernel.org, pabeni@redhat.com, conor+dt@kernel.org
@@ -58,7 +58,7 @@ Cc: efectn@protonmail.com, dsimic@manjaro.org, jagan@edgeble.ai,
  minipli@grsecurity.net, brcm80211@lists.linux.dev,
  brcm80211-dev-list.pdl@broadcom.com, nick@khadas.com
 References: <20240630073605.2164346-1-jacobe.zang@wesion.com>
- <20240630073605.2164346-4-jacobe.zang@wesion.com>
+ <20240630073605.2164346-3-jacobe.zang@wesion.com>
 From: Krzysztof Kozlowski <krzk@kernel.org>
 Content-Language: en-US
 Autocrypt: addr=krzk@kernel.org; keydata=
@@ -104,10 +104,10 @@ Autocrypt: addr=krzk@kernel.org; keydata=
  uZwJCLykjad45hsWcOGk3OcaAGQS6NDlfhM6O9aYNwGL6tGt/6BkRikNOs7VDEa4/HlbaSJo
  7FgndGw1kWmkeL6oQh7wBvYll2buKod4qYntmNKEicoHGU+x91Gcan8mCoqhJkbqrL7+nXG2
  5Q/GS5M9RFWS+nYyJh+c3OcfKqVcZQNANItt7+ULzdNJuhvTRRdC3g9hmCEuNSr+CLMdnRBY fv0=
-In-Reply-To: <20240630073605.2164346-4-jacobe.zang@wesion.com>
+In-Reply-To: <20240630073605.2164346-3-jacobe.zang@wesion.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240701_014703_409318_9CC3DFE1 
-X-CRM114-Status: GOOD (  14.70  )
+X-CRM114-CacheID: sfid-20240701_015835_962174_8BBC7C79 
+X-CRM114-Status: GOOD (  12.22  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -125,40 +125,31 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 On 30/06/2024 09:36, Jacobe Zang wrote:
-> Khadas Edge2 uses the PCI-e Ampak AP6275P 2T2R Wi-Fi 6 module. The
-> pcie@0 node can be used as Bridge1, so the wifi@0 node is used as a
-> device under the Bridge1. As a PCIe device the wifi@0 can be probed
-> without compatible.
+> Add clocks and clock-names for brcm4329-fmac.
 > 
-> Co-developed-by: Muhammed Efe Cetin <efectn@protonmail.com>
-> Signed-off-by: Muhammed Efe Cetin <efectn@protonmail.com>
 > Signed-off-by: Jacobe Zang <jacobe.zang@wesion.com>
 > ---
->  .../boot/dts/rockchip/rk3588s-khadas-edge2.dts    | 15 +++++++++++++++
->  1 file changed, 15 insertions(+)
+>  .../bindings/net/wireless/brcm,bcm4329-fmac.yaml          | 8 ++++++++
+>  1 file changed, 8 insertions(+)
 > 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-khadas-edge2.dts b/arch/arm64/boot/dts/rockchip/rk3588s-khadas-edge2.dts
-> index dbddfc3bb4641..8c152d587aefc 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3588s-khadas-edge2.dts
-> +++ b/arch/arm64/boot/dts/rockchip/rk3588s-khadas-edge2.dts
-> @@ -283,6 +283,21 @@ &pcie2x1l2 {
->  	reset-gpios = <&gpio3 RK_PD1 GPIO_ACTIVE_HIGH>;
->  	vpcie3v3-supply = <&vcc3v3_pcie_wl>;
->  	status = "okay";
+> diff --git a/Documentation/devicetree/bindings/net/wireless/brcm,bcm4329-fmac.yaml b/Documentation/devicetree/bindings/net/wireless/brcm,bcm4329-fmac.yaml
+> index 2c2093c77ec9a..f542b60e44dc4 100644
+> --- a/Documentation/devicetree/bindings/net/wireless/brcm,bcm4329-fmac.yaml
+> +++ b/Documentation/devicetree/bindings/net/wireless/brcm,bcm4329-fmac.yaml
+> @@ -122,6 +122,14 @@ properties:
+>        NVRAM. This would normally be filled in by the bootloader from platform
+>        configuration data.
+>  
+> +  clocks:
+> +    items:
+> +      - description: Wi-Fi RTC clock
 > +
-> +	pcie@0,0 {
-> +		reg = <0x400000 0 0 0 0>;
-> +		#address-cells = <3>;
-> +		#size-cells = <2>;
-> +		ranges;
-> +		device_type = "pci";
-> +		bus-range = <0x40 0x4f>;
-> +
-> +		wifi: wifi@0,0 {
+> +  clock-names:
+> +    items:
+> +      - const: lpo
 
-Where is the compatible (again!)? Test your code - you will see your
-binding is a no-op.
-
+This does not match your DTS. DTS is different, e.g. does not have
+compatible. There are required properties here, some of which are required.
 
 Best regards,
 Krzysztof
