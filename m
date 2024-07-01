@@ -4,67 +4,165 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B4574C30653
-	for <linux-rockchip@archiver.kernel.org>; Mon,  1 Jul 2024 09:45:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3CF70C2BD09
+	for <linux-rockchip@archiver.kernel.org>; Mon,  1 Jul 2024 10:39:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=28mSycIE6bFEJwqgxnu24UUiS0FcRWOHk3qmfXuntoE=; b=gdUQklVrO/2Uk+cVrpqbImMDDE
-	g8w1MFX7wZRM1OJzauSnE1op3mGp763+uSK3NdOV3cvp1RER1gliN4/dfHPp71FQl3FzWIxbjqMCI
-	Ghe+PCvcMW9bExx+Zx6YQZRpwrMnocnqpliD5FOvXaWF1X1ok/6dbGZXkNAaKyE6QH3UDvuoWOlFU
-	7Xi/53x6WlgSFCSC/LfBK3KN/Orbych5mReMHyQqKJxxpm65v/lo16o90rJYKmhriu0xs4adf80pu
-	8VH/U9PHku1ALDiLaEFUulcwrZLN1iSIdd9o9z/x/iG+lNhKYNW0E7+cFMPl9LlOubLh6JsjIjBlt
-	IDlVOObA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=tZLMf5oeCPLcQS9NauTQFh4xq0tYXGzI9dj/VkBv2sw=; b=0GOpWlNbJfeVs5
+	WYn/ytAkLKS3X/DeQQJ7w4tPHNkf6bMdFlrMG+vIy9DpYtVVTIk+Wtg9t34qUWDDG7QJHyc/nR0k4
+	aDgVEnvctrHRPQGM948FGeg022tDW/ZULqf+vi7Giobgr6beeFqnwnWUa1xCatdQDLToXaZp5lYPI
+	mtWmBHLOmlGjpegMCPvp5iJCmASZd+eJDkdhdsOI5ErdMSDHsHOLyjaXYqnZV4zSXXFIkMjBM8fiA
+	YelCCsdFvqN3ViKFslVf9oCHjYRKIRVCze/SddYVRy4nOe6yKTNFGSN3LJm5ISGLx9qermMwdQUC0
+	9E0i+5ks767Y0CpE0YXg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sODba-00000002UTD-2NGR;
-	Mon, 01 Jul 2024 09:45:50 +0000
-Received: from out-177.mta0.migadu.com ([2001:41d0:1004:224b::b1])
+	id 1sOEQz-00000002jK0-01bO;
+	Mon, 01 Jul 2024 10:38:57 +0000
+Received: from mail-tyzapc01on20701.outbound.protection.outlook.com ([2a01:111:f403:2011::701] helo=APC01-TYZ-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sODbO-00000002UPf-2WIt
-	for linux-rockchip@lists.infradead.org;
-	Mon, 01 Jul 2024 09:45:41 +0000
-X-Envelope-To: dri-devel@lists.freedesktop.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow.org; s=key1;
-	t=1719827135;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=/av4W2tCOJXydcbMH9LNQjQOsvgQ+rwVghFqvABN/IM=;
-	b=Eb/ei43ZybmEZBl9HYbboGX2gXc0SInXoqoGDB5uOxQSBB2KFFzNO8DjZL9+XWEnRsFI6K
-	IM2ie7+ckDT2PVQoYqQCAas6MKUDaxG6qwqJk8cWBiWvEK7aVvzy+VoFtwnztNXrgXH8WZ
-	tW6cj0/dl+O65jC6RUV5BuVHjNu3Hx4QKyNZQGnl5h561dBDGXxoMY7vN7yhfgsdOSssrY
-	OCIWyNv2IBHZikravyo6xHFpJQW4V2WbeVBY0Vt1tNPoFV/qrrvJPShFctVam5J/Q7+CXC
-	qhufNa3qPJVWT7atbpOvZG9S6s0Ugx6/uxsPGOr6TTh5totCFRCMmz7TN7sS/w==
-X-Envelope-To: linux-rockchip@lists.infradead.org
-X-Envelope-To: jonas@kwiboo.se
-X-Envelope-To: linux-arm-kernel@lists.infradead.org
-X-Envelope-To: linux-rockchip@lists.infradead.org
-X-Envelope-To: linux-kernel@vger.kernel.org
-X-Envelope-To: jonas@kwiboo.se
-X-Envelope-To: didi.debian@cknow.org
-X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
-From: Diederik de Haas <didi.debian@cknow.org>
-To: dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org,
- Jonas Karlman <jonas@kwiboo.se>
-Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org, Jonas Karlman <jonas@kwiboo.se>,
- Diederik de Haas <didi.debian@cknow.org>
-Subject: Re: [PATCH 00/13] rockchip: Enable 4K@60Hz mode on RK3228, RK3328,
- RK3399 and RK356x
-Date: Mon, 01 Jul 2024 11:45:21 +0200
-Message-ID: <2110934.yheWrVD7BS@bagend>
-Organization: Connecting Knowledge
-In-Reply-To: <2528743.FZeJfPzi8P@bagend>
-References: <20240615170417.3134517-1-jonas@kwiboo.se> <2528743.FZeJfPzi8P@bagend>
+	id 1sOEQn-00000002jEa-0BCu;
+	Mon, 01 Jul 2024 10:38:46 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=fRUYpG4vp9sQVPkqycls+5p/Yc8zXDweX1lYG0buEsvmVL0hctM5ZsoTctrWzpYWNZjuFjN2dEFwXI0Qx7s8RePH+FQuMjFkP4l9hr5NhOCNbuSbnAjrozVKeztID6+MpKA0jizu+qDxn4Kz9qMXHF6B7ghGSAODc8JZIt9wtrDdJUy3WpwmCifi05zFfOMRKcNuDveN77mPfRCpMvO+wcDHFS/CE25dZ+FjV2TsRoUZe4IUt5YGtLx8ZkzmecAU9HFfc8QXtGgszYYZK8rHqz/LiKt2ZVjrb4dsJT6BXEN8eiivMoWqj1Ekeqvz4Mwzs7oRKJ0irH4bjTZHhGxQOQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=4BDhsBkRn2fxeCopwNLyT3RBLEYgvAYyccoDsaD5l/c=;
+ b=aRyBM0oMQVOPzw+jPciNIU/M0JvYoO38+6WDjK571nbd8O9aOE25pNRZW7jzEkKYqrOMzeD8eAe3fSUD0/iCFORz5GV4NHe/zHgdPQdIgcnf0FQM/geMOtx3c/0Ce3VUZZf01d0QBDDgxsK+OIZgLjmnJzr6VDoG3F9MR6RBTogd4lRrDmSXPeyi/mWtADwBsC64r6tTIkt26LFoz4PdElrnTiD6xifaqWO5QozVy+C68N6IjJylxYHbg8sgOhfu7+5TjBCAdGS+S4XER+g1okDoXZXpx94FdVY2XUGG8ocs5WrJeUJsjyZlJQNjRCO6YCbWeF/LUKKlN6Cp198WZw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=wesion.com; dmarc=pass action=none header.from=wesion.com;
+ dkim=pass header.d=wesion.com; arc=none
+Received: from TYZPR03MB7001.apcprd03.prod.outlook.com (2603:1096:400:26a::14)
+ by TYZPR03MB8133.apcprd03.prod.outlook.com (2603:1096:400:45a::12) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7719.32; Mon, 1 Jul
+ 2024 10:38:28 +0000
+Received: from TYZPR03MB7001.apcprd03.prod.outlook.com
+ ([fe80::78dd:5e68:1a9c:36c0]) by TYZPR03MB7001.apcprd03.prod.outlook.com
+ ([fe80::78dd:5e68:1a9c:36c0%6]) with mapi id 15.20.7719.028; Mon, 1 Jul 2024
+ 10:38:28 +0000
+From: Jacobe Zang <jacobe.zang@wesion.com>
+To: Krzysztof Kozlowski <krzk@kernel.org>, "robh@kernel.org"
+	<robh@kernel.org>, "krzk+dt@kernel.org" <krzk+dt@kernel.org>,
+	"heiko@sntech.de" <heiko@sntech.de>, "kvalo@kernel.org" <kvalo@kernel.org>,
+	"davem@davemloft.net" <davem@davemloft.net>, "edumazet@google.com"
+	<edumazet@google.com>, "kuba@kernel.org" <kuba@kernel.org>,
+	"pabeni@redhat.com" <pabeni@redhat.com>, "conor+dt@kernel.org"
+	<conor+dt@kernel.org>
+CC: "efectn@protonmail.com" <efectn@protonmail.com>, "dsimic@manjaro.org"
+	<dsimic@manjaro.org>, "jagan@edgeble.ai" <jagan@edgeble.ai>,
+	"devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+	"linux-arm-kernel@lists.infradead.org"
+	<linux-arm-kernel@lists.infradead.org>, "linux-rockchip@lists.infradead.org"
+	<linux-rockchip@lists.infradead.org>, "linux-kernel@vger.kernel.org"
+	<linux-kernel@vger.kernel.org>, "arend@broadcom.com" <arend@broadcom.com>,
+	"linux-wireless@vger.kernel.org" <linux-wireless@vger.kernel.org>,
+	"netdev@vger.kernel.org" <netdev@vger.kernel.org>, "megi@xff.cz"
+	<megi@xff.cz>, "duoming@zju.edu.cn" <duoming@zju.edu.cn>,
+	"bhelgaas@google.com" <bhelgaas@google.com>, "minipli@grsecurity.net"
+	<minipli@grsecurity.net>, "brcm80211@lists.linux.dev"
+	<brcm80211@lists.linux.dev>, "brcm80211-dev-list.pdl@broadcom.com"
+	<brcm80211-dev-list.pdl@broadcom.com>, Nick Xie <nick@khadas.com>
+Subject: Re: [PATCH v3 3/5] arm64: dts: rockchip: Add AP6275P wireless support
+ to Khadas Edge 2
+Thread-Topic: [PATCH v3 3/5] arm64: dts: rockchip: Add AP6275P wireless
+ support to Khadas Edge 2
+Thread-Index: AQHaysA5gqQ7qqo00E6aPButxU3qdLHhkO8AgAAdHZc=
+Date: Mon, 1 Jul 2024 10:38:28 +0000
+Message-ID: <TYZPR03MB7001FFD5180C6248F14EE48E80D32@TYZPR03MB7001.apcprd03.prod.outlook.com>
+References: <20240630073605.2164346-1-jacobe.zang@wesion.com>
+ <20240630073605.2164346-4-jacobe.zang@wesion.com>
+ <eeeb3f1f-5c77-4ca5-b996-17b968b7c2f0@kernel.org>
+In-Reply-To: <eeeb3f1f-5c77-4ca5-b996-17b968b7c2f0@kernel.org>
+Accept-Language: en-US, zh-CN
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+msip_labels: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=wesion.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: TYZPR03MB7001:EE_|TYZPR03MB8133:EE_
+x-ms-office365-filtering-correlation-id: d59683a2-9bcf-4592-966d-08dc99b9f192
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;ARA:13230040|1800799024|376014|7416014|366016|921020|38070700018;
+x-microsoft-antispam-message-info: =?iso-8859-1?Q?6CLFQQbkcgxeajww+X76HgHVJ5XIzsmu8H09zic4PqK5OHnnn8/ewVvaG6?=
+ =?iso-8859-1?Q?PIbjRcUOf3gTyFWCQb2gls8x8UIwtpiogVBfMZl0xqcuRH669Q4tfiPrGp?=
+ =?iso-8859-1?Q?XlWtI1o4UgT7EsjJgZH03L0k/OdanAUQnny9VJN186e63qgyGDl1aH5tOc?=
+ =?iso-8859-1?Q?BkpML7XTdSKa63/0Hf7n8/36wNzgPUd+mItnzY6cAwJeATfS+Ydvy7w5XO?=
+ =?iso-8859-1?Q?SiARamR4WKnDoFTeAUKa3aSQuZk8DCYkpbCtN4XncEs6vhJiuXIbLLmXuB?=
+ =?iso-8859-1?Q?fE6ZR63tMwbUB+T9WDJpTNyQbukuytZIx2Kyt1CvdJJRhdAGqep7iSQ9V6?=
+ =?iso-8859-1?Q?mVO8J2knfrgbJ3eUfuqkSL4WI+kjriVsAm4XDFC2Ae/HMa45NiZXpAyZj5?=
+ =?iso-8859-1?Q?OotVKp+5SV+poQWgX77t5gTFZyP2NBZi2YQXRbZbNFcCFE2j2/k4FpllLR?=
+ =?iso-8859-1?Q?TIuyLR60zBaeATsOUs9FEmjwZikpxaqPYRCaAU+uXnDH5KGAV5JxXuSqC/?=
+ =?iso-8859-1?Q?7M+npjcNZ0oxFazHAKMdzuYPGE9AClWYukinx6EwNSNgQkZW5LDoGF9Bbi?=
+ =?iso-8859-1?Q?yPyr6R6E+DsznuPDFgxmQPnbN4Osq/zjJX4xv5IWcw1FOlk4hlhpyU91+P?=
+ =?iso-8859-1?Q?YMTlTwc+jkKjUQhBH2l6LeAm2w4pqhIm8aIdG+NZvgYmmNsHc+ifTx+1nw?=
+ =?iso-8859-1?Q?ZPIbtlSKAV4dREpxUU0uOSRPjIp76ERQAngR3uuigas73Wj/bAoUl/crx4?=
+ =?iso-8859-1?Q?wg2+5vwH9RhMqkrE9IOXHvbpnzWihDtT2ocKJNzfndLUk9F8mG0GYMgPDB?=
+ =?iso-8859-1?Q?W8Fo5ExPywB6QNzTkmVW0a1k54PgSy9mmAz2qkPqfqBPFXkSEBoHLW3EOV?=
+ =?iso-8859-1?Q?tZfdSj0uj5kbCRsTQ3XVk7W2vVGC0bPjI2oAHcRRdmyRWTcup4XyRn6Iff?=
+ =?iso-8859-1?Q?uIroJUkwQN55zanGZYvVVKyCZyStL5ljKwCJrqi7Wvh2ZDO3nFVOzj+P03?=
+ =?iso-8859-1?Q?kvEWs9hNrhF+RYRZ9PV9eqvnDdhQv/W2SeXTK+Zu4Bc2psbOfkpVcBEegk?=
+ =?iso-8859-1?Q?OGnua9/2Tc/oxZqDH3zE8Rd97Ve/hcxVtVnC803EkQk+DmaVqyV8WReDhB?=
+ =?iso-8859-1?Q?JlJqS/c50JQjwlymFPxFp6WzGcaICzsKYE6EMdZ07J8jQupKVdbU+Ris5v?=
+ =?iso-8859-1?Q?SqIlYl+vvQQtlghLA7p+nskQbHmQu6WtHbTWh36Hvp/zOtp7DDtp3WMuK0?=
+ =?iso-8859-1?Q?eYpbFlWYJ/VgHH6zvJbloXAQ6jtxd6vRbPT6H6Wuc7WLVdcYAlkNQTROQd?=
+ =?iso-8859-1?Q?mH59Ya8G9MWoQUKU/xZXihTHAs1NRtxbjbtI3I09tdNmDxXL5xfJzvLYjQ?=
+ =?iso-8859-1?Q?ChvjxZ8HZ9L9cE9GTPC+EVH3s8+H5huYIVz8OjsgKzdCNzOWgGtEcBcc/0?=
+ =?iso-8859-1?Q?wLNwf+JktHGmSDEe3kWcgG2eTZ8F7Oof5NG5ZPchrs0900+NrcA0TxJOQS?=
+ =?iso-8859-1?Q?4=3D?=
+x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:TYZPR03MB7001.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(1800799024)(376014)(7416014)(366016)(921020)(38070700018);DIR:OUT;SFP:1102;
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?iso-8859-1?Q?mZUrg0Oi63OGISCxcJ2JyDXmOyMilL/XQAnaMq+E+BZ688jOJ1lYKW/T23?=
+ =?iso-8859-1?Q?Az5D2bG7HiDqJ4+dFUB6YE3dyrvfX9NML/BFs2Wt55Gp+XIQU2Q5NACQTo?=
+ =?iso-8859-1?Q?hEDQYxoU2wJpw+vrGl69vPLJWn/P05kejzdnq3UEQ+cRSwgQJNVhacrVSv?=
+ =?iso-8859-1?Q?a9I/NpJZobOIix1DioZOasoiBmi6g8qp8rhvkieffCHDzLGK+ggPZHWjR2?=
+ =?iso-8859-1?Q?0K80QF9PysUyM1K6xH1li0nHkyul4VKVoLJqMVb00vyuWyE05tX33ganK2?=
+ =?iso-8859-1?Q?ssW2z1+o5kYV5XFDzmZHNChUVBsO/3I7paYW3oT/RxRoHoHVfIl5mGYT+B?=
+ =?iso-8859-1?Q?YspSOK3p/fvP6tbDglVlu7HgCmpbyNYjumn+i22ZNAsthH6pXRxscC2eOS?=
+ =?iso-8859-1?Q?UvoZpHJRrxtCBGTVimqvzNN6lt4F1sNVcKX9vkeJ5i0nwnytYhEzibaOl/?=
+ =?iso-8859-1?Q?18f1v4DRYa+SdeOgqmTKYo0ctBI7VSlKD4NyIuBiq/BoDsHk2cq71pO6Fy?=
+ =?iso-8859-1?Q?BfjEDcYUIh3E4u5W2FEBzbuPnL7Z8zOK1hPugftXEpQWCm6uYhYaKp7+Ql?=
+ =?iso-8859-1?Q?DDS8k37aEunY4zyxdA/QnRNPAW8R0yJPs3Q9x2WvQLPTXP0dvRnhCDpZo3?=
+ =?iso-8859-1?Q?5Oo9mKtwxee2RfIYDUNlBg1jARWD+1n1l913lb0HtXB3k7DYe8XrRfww59?=
+ =?iso-8859-1?Q?Eg/mvFrPkxwAYV+6LlkjCseOC6P6uixtgxPxKZ3qTcgKEJs4F10Avup4Si?=
+ =?iso-8859-1?Q?q2enMojecoGvjl3sej4+EFHt2Ipy1n2H4Aqp2kqlHdZ4M4G+/feZRn/54z?=
+ =?iso-8859-1?Q?HtYlQI/PB1B4isaqMCE3hPq83e4jUf4kOABDfCmrjQmvFzu65zBzFmLVK0?=
+ =?iso-8859-1?Q?7On0lpwwUeNQn9/krc653uJa9BKehlFokA8RUAdVSH5PyGCXr3EygndacR?=
+ =?iso-8859-1?Q?Ld4OdUmsr78w745B3xlrv+GJxUb44+RSR+o5xKj6owkIIp5EUc4poIKeME?=
+ =?iso-8859-1?Q?2tI1VDJOFeYqRe7bRviD2vYSiS15FjEneqTvyWaatr1cr4PDbaldElK8cJ?=
+ =?iso-8859-1?Q?NZq3nyaTb7l1ezDrJH07VxjkermVFR7R+TxfP1KZiRnPCKTGnh0vthksOF?=
+ =?iso-8859-1?Q?BSz7hIUrv1GhYNNAMVvYuWzkXLXchmKewzGxZbZv9QKLo4yNzo+wqQrJ79?=
+ =?iso-8859-1?Q?SjMieNNoKB2glt3ZTgrm5PVqvAzv9JNeSSd+/gLhnImSd/VtvMtyx+dVXQ?=
+ =?iso-8859-1?Q?TeK2jjQU6HDJfjMWCDKLK85abD7e5kVzuHDpUuneTx+e5bP+0OsFz9Qb92?=
+ =?iso-8859-1?Q?2PzxI5Qxm/28NjMA3yXqSA/3FAebbx0wz9vUeun/a0yV374HArzv576O1R?=
+ =?iso-8859-1?Q?nvrUmajq5eyednD0z/DlxvvYSlQBScC0p3l7+jOTaXxMxNzn87NEBKPR1v?=
+ =?iso-8859-1?Q?xwdgiX6H3U0M2Er84TIQyk5LEbqFsw6gjHVs7TA96O7Y1qVAyuikAfme8t?=
+ =?iso-8859-1?Q?J9TzKxFU7JoYfCWyogctS2pq1SkF/kp9kyJPty5J0K6dIdgqLsYMgSwzDB?=
+ =?iso-8859-1?Q?lJqw1FP1PG+magnrKvfqKylEb0/8lvjKakhAgfC27q2RRRhMBCoOMcuEj3?=
+ =?iso-8859-1?Q?o5HWBE93PKJ34Lr4WuZETzBOak/VpDBUEX?=
 MIME-Version: 1.0
-X-Migadu-Flow: FLOW_OUT
+X-OriginatorOrg: wesion.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: TYZPR03MB7001.apcprd03.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: d59683a2-9bcf-4592-966d-08dc99b9f192
+X-MS-Exchange-CrossTenant-originalarrivaltime: 01 Jul 2024 10:38:28.0505
+ (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 2dc3bd76-7ac2-4780-a5b7-6c6cc6b5af9b
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: ugiZQWXvhkAg4pnTunaYptMg15KI23SwrfCBPEqjsAdpuOHggtFT9KP51Jm56oI/gd0q4HAa2JYMTAZ+uhOVcQ==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: TYZPR03MB8133
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240701_024539_044301_7F6C1B7B 
-X-CRM114-Status: GOOD (  20.09  )
+X-CRM114-CacheID: sfid-20240701_033845_105081_F420781F 
+X-CRM114-Status: UNSURE (   7.63  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,105 +174,31 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============6147243577681569468=="
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
---===============6147243577681569468==
-Content-Type: multipart/signed; boundary="nextPart9944500.OYHocSe4MS";
- micalg="pgp-sha256"; protocol="application/pgp-signature"
+>> +=A0=A0=A0=A0 pcie@0,0 {
+>> +=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 reg =3D <0x400000 0 0 0 0>;
+>> +=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 #address-cells =3D <3>;
+>> +=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 #size-cells =3D <2>;
+>> +=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 ranges;
+>> +=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 device_type =3D "pci";
+>> +=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 bus-range =3D <0x40 0x4f>;
+>> +
+>> +=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 wifi: wifi@0,0 {
+> Where is the compatible (again!)? Test your code - you will see your
+> binding is a no-op.
 
---nextPart9944500.OYHocSe4MS
-Content-Transfer-Encoding: 7Bit
-Content-Type: text/plain; charset="us-ascii"; protected-headers="v1"
-From: Diederik de Haas <didi.debian@cknow.org>
-Date: Mon, 01 Jul 2024 11:45:21 +0200
-Message-ID: <2110934.yheWrVD7BS@bagend>
-Organization: Connecting Knowledge
-In-Reply-To: <2528743.FZeJfPzi8P@bagend>
-MIME-Version: 1.0
+I tried to build kernel with CHECK_DTBS=3D1. And didn't get any message
+like 'compatible' is a required property in wifi node. But when I check
+the bindings that do required the compatible... So I will add it next time.
 
-Hi Jonas,
-
-On Monday, 1 July 2024 11:07:50 CEST Diederik de Haas wrote:
-> On Saturday, 15 June 2024 19:03:51 CEST Jonas Karlman wrote:
-> > This prepares and enable use of HDMI2.0 modes, e.g. 4K@60Hz, on RK3228,
-> > RK3328, RK3399 and RK356x.
-> > ...
-> > This series may not fully depend on but was only tested together with
-> > the series "drm: bridge: dw_hdmi: Misc enable/disable, CEC and EDID
-> > cleanup" at [1].
-> > [1] https://patchwork.freedesktop.org/series/134727/
-> 
-> I only just now realized this part of your message and consequently
-> I had NOT applied the referenced patch set.
-> 
-> > I have tested 4K modes on following devices:
-> > - Asus TinkerBoard (RK3288)
-> > - Pine64 Rock64 (RK3328)
-> > - Radxa ROCK Pi 4 (RK3399)
-> > - Radxa ROCK 3A (RK3568)
-> 
-> And I can confirm that this patch set enables 4K(@60Hz) resolution when
-> connecting my Rock64 to my 4K TV with my self-build 6.10-rc5 kernel.
-> It selected the 3840x2160@60Hz resolution, but ``swaymsg -t get_outputs``
-> also reported a range of 4096x2160 resolutions.
-> 
-> In contrast, my 6.10-rc2 kernel which is quite similar, except for this
-> patch set, does not mention any 4K resolution at all.
-> 
-> So AFAIC you can already include:
-> Tested-by: Diederik de Haas <didi.debian@cknow.org>
-> 
-> Next up will be a test with my Quartz64 Model B (RK3566).
-
-The Q64-B test results were a bit different from Rock64's, but this patch set 
-enabled the 4K@60Hz resolution as well.
-
-1. The console output was at 1080p, whereas it also switched to 4K on the 
-Rock64. I actually prefer this behavior.
-2. After starting sway, it did switch to a 4K resolution, but this time it 
-selected 4096x2160@30Hz on an unpatched kernel (my 6.10-rc2 and Debian 6.9.7).
-With my 6.10-rc5 kernel *with* this patch, it selected 3840x2160@60Hz
-3. None of those 'other' issues I reported with Rock64 showed up on Q64-B :-D
-
-IOW: Also for the Pine64 Quartz64 Model B, you can add:
-Tested-by: Diederik de Haas <didi.debian@cknow.org>
-
-Cheers,
-  Diederik
---nextPart9944500.OYHocSe4MS
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: This is a digitally signed message part.
-Content-Transfer-Encoding: 7Bit
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYIAB0WIQT1sUPBYsyGmi4usy/XblvOeH7bbgUCZoJ6sQAKCRDXblvOeH7b
-bg7PAP43ud+WY6aEThMAVyAjvq6OsJBZCk51RNwaBBlKWvhBJwD+P6wkixnSYesh
-pjAUG98IhpJvAuq83kFJLgPOoOxb5wI=
-=xfwS
------END PGP SIGNATURE-----
-
---nextPart9944500.OYHocSe4MS--
-
-
-
-
-
---===============6147243577681569468==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
+---
+Best Regards
+Jacobe
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============6147243577681569468==--
-
-
-
-
