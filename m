@@ -4,54 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1B5B2C3065C
-	for <linux-rockchip@archiver.kernel.org>; Tue,  2 Jul 2024 14:26:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D6C4BC30658
+	for <linux-rockchip@archiver.kernel.org>; Tue,  2 Jul 2024 14:27:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ioCk7rt3PDTwPFi3Z7YGHZe8jtoFVjzEh8OWs8Mkwbg=; b=ypGLMh8DKZU/Ys
-	CKqkk4ReGG9TIxKPt7VgOsc0Y5tmXFlH9iAirCKow0/jOy1OTE6X7dMAJnZnghUuF4pBMEuTBKRkR
-	eXPwPUkv+yClMNjSzSUR0w3Xs3qSRi+9jTQUHdE3L8rIZlAZWhQW2MBbI45qV/XopSo8Vdj5YQxCx
-	+3vQ8T2n3HTcrHT0RYmeV1VpUjA2riHFcsa25iUJobCM7C1opIfe3x6zwrpLqAGCoaUu05L4uJG55
-	hm1/5r7BjjFe09vIMcuiLxgruPxCp+RqWqSSrw5ymGJzjC9KzCmY6wgyAXQNtBpK2A4PoBnEoO2KL
-	9NDHu8oYlLmWe9X9/8qA==;
+	List-Owner; bh=9+ALDDKJSwKBbK4k1Q208xhadJbBd6UMKpY0sgwdZUU=; b=Yf4/1YTxhdWkTt
+	qGj2aVzH7yMwq3yMNrK7tdOL1S9QHTrp3rf9dfjQ5TL0zjAqjEpKW1UNBhmknJATlvSS7RPaOyZ1p
+	SX1qpQ14rY9G1rURbVC9Ebz6DzEuWQdJ/DtYu4fNGLkga9uKVoXb2M0ySub5zjbIRuNVI00FpNohO
+	+Y0AZCbRotJ6GXB2azsihujctSP90tik1XDG+an1bXpXpjxaZRJ+JSpZO2tcy+e0jGPUJyfsn7aBc
+	EUJmpmGNeIxmxSG/nB9Kp5AN3KaM/QyDaRBXXDw7JI6ONSSoFnAQMeKdyfE4NvYkZkk9JHXPfTkGf
+	71GHZUyh+w8TGgneOGOQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sOeSw-000000071tC-3j7S;
-	Tue, 02 Jul 2024 14:26:42 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1sOeTm-000000072Av-3jzX;
+	Tue, 02 Jul 2024 14:27:35 +0000
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sOeSu-000000071sH-2dQD
+	id 1sOeTk-000000072AB-2hTl
 	for linux-rockchip@lists.infradead.org;
-	Tue, 02 Jul 2024 14:26:41 +0000
+	Tue, 02 Jul 2024 14:27:34 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 85E9161B7D;
-	Tue,  2 Jul 2024 14:26:39 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7904FC116B1;
-	Tue,  2 Jul 2024 14:26:37 +0000 (UTC)
+	by sin.source.kernel.org (Postfix) with ESMTP id 8155ECE1EA4;
+	Tue,  2 Jul 2024 14:27:30 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 87D23C116B1;
+	Tue,  2 Jul 2024 14:27:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1719930399;
-	bh=obTGdOmnhi/OqYRqmIheBHXSPt+oe6zCmrrd0Bh2P00=;
+	s=k20201202; t=1719930449;
+	bh=3RukxIGMXD2kt59a9xvGasAbRxiLnm1I3JR0FXS9ccE=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=jiZmDSj5fVgxBwn3XZ8LcTgLz1AWw9Q1C4bDyiZdLBQhOfDS4DvKEkv4Bszj5lbxa
-	 HoJGZPwHc0OID88spzpg/HQGWM1cpWyac2BKfFpl8dIrOi6+QgYEKadMtDw7hMTzh7
-	 i3nDUY4V2aqENv/TgXlMh8eK4EiW7u6EXZ0lr9u22bQhlBlYSSQVa1PWgca4yThB2y
-	 QrDwVdSSxanqnS4WdX6ia6pFvHEt9TKKoG2Kh4zXmmLXCcnn3k9WzLjq5Or1TC+flJ
-	 WjXJ5pDIBekNT0kgyV3w/tACDHvwVdvojYzG6Mnhzagb4MUeMHCCkizf91GZm229OE
-	 CoIAIasLkeVOA==
-Message-ID: <330ed799-0685-4793-bc5c-364e3778f134@kernel.org>
-Date: Tue, 2 Jul 2024 16:26:35 +0200
+	b=pqRiFWlEuBDVXT/SG0o3Q6U+fexBVFmkyuVwmdeHxDt5RyD35xJ/KMlX/Ry+5mjdd
+	 ofPFbxVVjIb1lSswjCn+xLGS8AkkTXd3S/zCNXyXy5bYExx5dyVnQYy1a2zZ+ggDZR
+	 sz9TEWDC0qVcgtAJ2mg+e7kJ4UaaQBsT12v25huIRAVlgT+fUx/AADrBlTf5WP0d5k
+	 fEA80jAP2JJwYUM2bwPAbXxTgiosN9Pn8hps7bpNH9le4oxEcifKPZxzNN8/FWGpN+
+	 Hkl382qzrVhjrL9QtDKbdF+rQ28tCPXkNmpypgeKaHMTaYzwZyhRhKoDPcnWNOkPPo
+	 6LCVB3I/5ilJg==
+Message-ID: <49656278-2750-4a8f-8ecf-9a31120eed0d@kernel.org>
+Date: Tue, 2 Jul 2024 16:27:25 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH] arm64: dts: rockchip: rk356x: add ethernet aliases
 To: Philipp Puschmann <p.puschmann@pironex.com>,
- linux-rockchip@lists.infradead.org
-Cc: robh@kernel.org, krzk+dt@kernel.org, heiko@sntech.de,
- devicetree@vger.kernel.org
+ Dragan Simic <dsimic@manjaro.org>
+Cc: linux-rockchip@lists.infradead.org, robh@kernel.org, krzk+dt@kernel.org,
+ heiko@sntech.de, devicetree@vger.kernel.org
 References: <20240702124626.116290-1-p.puschmann@pironex.com>
+ <6bb12ab4cd12357dfd69db35107d8b88@manjaro.org>
+ <f2c7cdb2-b27d-40cc-b103-68043714f13c@pironex.com>
 From: Krzysztof Kozlowski <krzk@kernel.org>
 Content-Language: en-US
 Autocrypt: addr=krzk@kernel.org; keydata=
@@ -97,10 +99,10 @@ Autocrypt: addr=krzk@kernel.org; keydata=
  uZwJCLykjad45hsWcOGk3OcaAGQS6NDlfhM6O9aYNwGL6tGt/6BkRikNOs7VDEa4/HlbaSJo
  7FgndGw1kWmkeL6oQh7wBvYll2buKod4qYntmNKEicoHGU+x91Gcan8mCoqhJkbqrL7+nXG2
  5Q/GS5M9RFWS+nYyJh+c3OcfKqVcZQNANItt7+ULzdNJuhvTRRdC3g9hmCEuNSr+CLMdnRBY fv0=
-In-Reply-To: <20240702124626.116290-1-p.puschmann@pironex.com>
+In-Reply-To: <f2c7cdb2-b27d-40cc-b103-68043714f13c@pironex.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240702_072640_840162_2647D2DD 
-X-CRM114-Status: GOOD (  14.52  )
+X-CRM114-CacheID: sfid-20240702_072733_061114_E08090B1 
+X-CRM114-Status: GOOD (  12.27  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -112,45 +114,42 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 02/07/2024 14:46, Philipp Puschmann wrote:
-> Providing ethernet aliases solves a subtle problem for the rk3568. The
-> bus_id used for the sysfs directory name of the mdio. Without ethernet
-> alias the bus_id is always 0 and so creating the sysfs directory for the
-> second mdio fails with a duplicate filename error and by this the setup
-> of the second ethernet port fails too.
-> 
-> Note: The alias numbering is inverted as gmac1 comes from more generic
-> rk356x.dtsi but gmac0 comes from specialised rk3568.
-> 
-> Signed-off-by: Philipp Puschmann <p.puschmann@pironex.com>
-> ---
->  arch/arm64/boot/dts/rockchip/rk3568.dtsi | 4 ++++
->  arch/arm64/boot/dts/rockchip/rk356x.dtsi | 1 +
->  2 files changed, 5 insertions(+)
-> 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3568.dtsi b/arch/arm64/boot/dts/rockchip/rk3568.dtsi
-> index f1be76a54ceb..42018c8666e0 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3568.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk3568.dtsi
-> @@ -8,6 +8,10 @@
->  / {
->  	compatible = "rockchip,rk3568";
->  
-> +	aliases {
-> +		ethernet1 = &gmac0;
-
-Nope, sorry. SoC does not have working Ethernet.
-
-Best regards,
-Krzysztof
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gMDIvMDcvMjAyNCAxNjoyNSwgUGhpbGlwcCBQdXNjaG1hbm4gd3JvdGU6Cj4gSGkgRHJhZ2Fu
+LAo+IAo+PiBIZWxsbyBQaGlsaXBwLAo+Pgo+PiBPbiAyMDI0LTA3LTAyIDE0OjQ2LCBQaGlsaXBw
+IFB1c2NobWFubiB3cm90ZToKPj4+IFByb3ZpZGluZyBldGhlcm5ldCBhbGlhc2VzIHNvbHZlcyBh
+IHN1YnRsZSBwcm9ibGVtIGZvciB0aGUgcmszNTY4LiBUaGUKPj4+IGJ1c19pZCB1c2VkIGZvciB0
+aGUgc3lzZnMgZGlyZWN0b3J5IG5hbWUgb2YgdGhlIG1kaW8uIFdpdGhvdXQgZXRoZXJuZXQKPj4+
+IGFsaWFzIHRoZSBidXNfaWQgaXMgYWx3YXlzIDAgYW5kIHNvIGNyZWF0aW5nIHRoZSBzeXNmcyBk
+aXJlY3RvcnkgZm9yIHRoZQo+Pj4gc2Vjb25kIG1kaW8gZmFpbHMgd2l0aCBhIGR1cGxpY2F0ZSBm
+aWxlbmFtZSBlcnJvciBhbmQgYnkgdGhpcyB0aGUgc2V0dXAKPj4+IG9mIHRoZSBzZWNvbmQgZXRo
+ZXJuZXQgcG9ydCBmYWlscyB0b28uCj4+Pgo+Pj4gTm90ZTogVGhlIGFsaWFzIG51bWJlcmluZyBp
+cyBpbnZlcnRlZCBhcyBnbWFjMSBjb21lcyBmcm9tIG1vcmUgZ2VuZXJpYwo+Pj4gcmszNTZ4LmR0
+c2kgYnV0IGdtYWMwIGNvbWVzIGZyb20gc3BlY2lhbGlzZWQgcmszNTY4Lgo+Pgo+PiBQbGVhc2Ug
+c2VlIHRoZSBmb2xsb3dpbmcgY29tbWl0cyBhbmQgdGhlIGRpc2N1c3Npb25zIG9uIHRoZSByb2Nr
+Y2hpcC1saW51eAo+PiBtYWlsaW5nIGxpc3QgdGhhdCBhcmUgbGlua2VkIGluIHRoZW06Cj4+Cj4+
+IC0gYjAxNDBhMWIzYjFkICgiYXJtNjQ6IGR0czogcm9ja2NoaXA6IEFkZCBldGhlcm5ldDAgYWxp
+YXMgdG8gdGhlIGR0cwo+PiDCoCBmb3IgUkszNTg4KFMpIGJvYXJkcyIpCj4+IC0gMzZkOWIzYWU3
+MDhlICgiYXJtNjQ6IGR0czogcm9ja2NoaXA6IEFkZCBldGhlcm5ldDAgYWxpYXMgdG8gdGhlIGR0
+cwo+PiDCoCBmb3IgUkszNTY2IGJvYXJkcyIpCj4+IC0gNWQ5MGNiMWVkY2Y3ICgiYXJtNjQ6IGR0
+czogcm9ja2NoaXA6IFJlbW92ZSBldGhlcm5ldDAgYWxpYXMgZnJvbSB0aGUKPj4gwqAgU29DIGR0
+c2kgZm9yIFJLMzM5OSIpCj4+IC0gYzkwMGZlZjVkZWZmICgiYXJtNjQ6IGR0czogcm9ja2NoaXA6
+IFJlbW92ZSBldGhlcm5ldDAgYWxpYXMgZnJvbSB0aGUKPj4gwqAgU29DIGR0c2kgZm9yIFJLMzM2
+OCIpCj4+PiBUbyBzdW0gaXQgdXAsIGV0aGVybmV0WCBhbGlhc2VzIGFyZSBjb25zaWRlcmVkIGJv
+YXJkLWxldmVsIGZlYXR1cmVzLAo+PiBiZWNhdXNlIG5vdCBhbGwgYm9hcmRzL2RldmljZXMgYWN0
+dWFsbHkgZXhwb3NlIHRoZSBFdGhlcm5ldCBpbnRlcmZhY2VzCj4+IGJ1aWx0IGludG8gdGhlIFNv
+Q3MuwqAgVGh1cywgYWRkaW5nIGV0aGVybmV0WCBhbGlhc2VzIHRvIHRoZSBTb0MgZHRzaQo+PiBm
+aWxlcywgdW5mb3J0dW5hdGVseSwgaXNuJ3QgYW4gYWNjZXB0YWJsZSBvcHRpb24uCj4gQXJlIGV0
+aGVybmV0IGFsaWFzZXMgYXJlIGhhbmRsZWQgZGlmZmVyZW50bHkgdGhhbiBpMmMsIHNlcmlhbCBh
+bmQgc3BpIGFsaWFzZXM/Cj4gVGhlcmUgYXJlIGFsaWFzZXMgZm9yIGVhY2ggb2YgdGhlbSwgd2l0
+aG91dCBkb2luZyBhbnkgaGFybS4gQW5kIGV2ZW4gaWYgdGhlIGdtYWMKPiBub2RlcyBhcmUgZGlz
+YWJsZWQgd2l0aCBzdGF0dXMgcHJvcGVydHk/CgpJIHRoaW5rIHRoaXMgd2FzIGV4cGxhaW5lZCBt
+YW55IHRpbWVzLiBEaWQgeW91IGxvb2sgYXQgYWJvdmUgZGlzY3Vzc2lvbnM/CgpCZXN0IHJlZ2Fy
+ZHMsCktyenlzenRvZgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5p
+bmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8v
+bGludXgtcm9ja2NoaXAK
