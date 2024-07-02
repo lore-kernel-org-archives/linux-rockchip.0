@@ -4,64 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2632CC2BD09
-	for <linux-rockchip@archiver.kernel.org>; Tue,  2 Jul 2024 01:13:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3B789C3064D
+	for <linux-rockchip@archiver.kernel.org>; Tue,  2 Jul 2024 12:52:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:MIME-Version:Subject:
-	Date:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=/Xb8PpwxWeq39W53FLGB5tcWqvFraiisnf+ZATP17RM=; b=qk6lVuG8apwPKt
-	OleDdKnsRq9nngCeTNbpWQ8YaWpqOR1pE3E2UZI8oBW6TJtoQ4g9UFSdAobqd69ZlOtVVKw5m2mc8
-	WTtu125i87oA4GM93dfr7G0kHaMwj1L1AMi+mLTjskZGRgQI2sbDE76DLiSiXeWjfIn3sDiIEiST7
-	271hC4zZxf3lM/sBlDoIHOHXbw/FrHdL5t3sG4I+Xl9Y9LquwXcxPcXoEnO4ReJhaLNeZqAvS2L0J
-	DdMsMpYLBiv3UBWkyo9GKA8F/9d1R734uHTJC0l4OkXv5p/d+j2V+1XXOydr7TMLLA2Ki8x8LfAhS
-	9gYakr1ldLYcp82IMO2w==;
+	List-Owner; bh=TcTg05noNnfVTDqkeNcHR9LYmg96QNb2zuKVrp6He2Y=; b=y5kiGUw0HuTUwv
+	xqrBmiWJitp+ylVs7E5h5ssFdH6FAXBbRye7xVk+TYAfhNoY/IhKIe50G9I4q1t4YX75xVCxXYN6T
+	RWC5abLqDHeGH815lCLIg5NkzFp7lG3vs4/EKbrPUJ/Hjqshcp87idqiCLSRSmpjcqZuBWkCs8Yin
+	1a1vDObcjhLokExkupfAuP8kawmYDg6yZ9OUXGWhddFUkNDTrvm1wejz7U3b/ZO/WE4+5yOwg1Nid
+	qpW0hOKtBYGPCHI+NNRkKSrTF3JFBAuQTHcg4j9a2iKNFnxEwahPK0NFUgGKDQVUG5xfF3R1W8YOt
+	I5oXyLxheb4VLVsxw2dQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sOS5C-00000005FV2-03qI;
-	Tue, 02 Jul 2024 01:13:22 +0000
-Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
+	id 1sOczj-00000006kT7-068C;
+	Tue, 02 Jul 2024 12:52:27 +0000
+Received: from dd48830.kasserver.com ([85.13.164.221])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sOS4z-00000005FSg-2KQB;
-	Tue, 02 Jul 2024 01:13:11 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1719882788;
-	bh=LEpS0prWNwTg637CGji58I1O4rLSQPuHkPWQ3gbelhg=;
-	h=From:Date:Subject:To:Cc:From;
-	b=hMWNKsGkfexOjlTg+YJbWEj460nsPq0oadciGY1Okr8c72pPUmivorKnU1x14Yvyj
-	 P92dvrCKUD8Lpy9gVtY8RqOTxj0HpjXIvoapuYawW4jAxP4iJTwIbvxjgCRtLwQU2E
-	 kQU8+M6TwuXAOku6XEj5wrhxKFff48cyLNx3Wva7Fh+kAlefWa0CM7i3oZwkf8b6Oc
-	 pihOrZen1Eme+X5NjdkRCskxe8yJKxEafCgCjYGvBeT2Ttfxp+7uxvj3Sot4m85ngK
-	 NKXz9nnlJIICw64Oq3iREMArmWBo+dAFHmw4FTCTH6/SklxkDl4JAqngvH4lUGJ1DO
-	 RFLj2x7YxG7kw==
-Received: from localhost (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: cristicc)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id E1FF537820DE;
-	Tue,  2 Jul 2024 01:13:07 +0000 (UTC)
-From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Date: Tue, 02 Jul 2024 04:12:52 +0300
-Subject: [PATCH] arm64: dts: rockchip: Add missing power-domains for rk356x
- vop_mmu
+	id 1sOczg-00000006kSi-0Ltb
+	for linux-rockchip@lists.infradead.org;
+	Tue, 02 Jul 2024 12:52:25 +0000
+Received: from ms7c95.fritz.box (p5098bff9.dip0.t-ipconnect.de [80.152.191.249])
+	by dd48830.kasserver.com (Postfix) with ESMTPSA id 151616EC047D;
+	Tue,  2 Jul 2024 14:46:29 +0200 (CEST)
+From: Philipp Puschmann <p.puschmann@pironex.com>
+To: linux-rockchip@lists.infradead.org
+Cc: robh@kernel.org,
+	krzk+dt@kernel.org,
+	heiko@sntech.de,
+	p.puschmann@pironex.com,
+	devicetree@vger.kernel.org
+Subject: [PATCH] arm64: dts: rockchip: rk356x: add ethernet aliases
+Date: Tue,  2 Jul 2024 14:46:26 +0200
+Message-ID: <20240702124626.116290-1-p.puschmann@pironex.com>
+X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
-Message-Id: <20240702-rk356x-fix-vop-mmu-v1-1-a66d1a0c45ea@collabora.com>
-X-B4-Tracking: v=1; b=H4sIABNUg2YC/x2MQQqAIBAAvxJ7bsE0NfpKdJDaaolSlCII/550H
- IaZFxJFpgR99UKkmxP7s0BTVzBt7lwJeS4MUshWWCEx7kqbBxd+8PYBj+NCJ5WeTeesah2UMEQ
- q+p8OY84fliuXp2QAAAA=
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
- Sascha Hauer <s.hauer@pengutronix.de>
-Cc: kernel@collabora.com, devicetree@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
- linux-kernel@vger.kernel.org
-X-Mailer: b4 0.14.0
+X-Spamd-Bar: ++
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240701_181310_220084_10F0F9C1 
-X-CRM114-Status: GOOD (  11.60  )
+X-CRM114-CacheID: sfid-20240702_055224_279125_24F7D861 
+X-CRM114-Status: UNSURE (   9.46  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,38 +63,50 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The iommu@fe043e00 on RK356x SoC shares the VOP power domain, but the
-power-domains property was not provided when the node has been added.
+Providing ethernet aliases solves a subtle problem for the rk3568. The
+bus_id used for the sysfs directory name of the mdio. Without ethernet
+alias the bus_id is always 0 and so creating the sysfs directory for the
+second mdio fails with a duplicate filename error and by this the setup
+of the second ethernet port fails too.
 
-The consequence is that an attempt to reload the rockchipdrm module will
-freeze the entire system.  That is because on probe time,
-pm_runtime_get_suppliers() gets called for vop@fe040000, which blocks
-when pm_runtime_get_sync() is being invoked for iommu@fe043e00.
+Note: The alias numbering is inverted as gmac1 comes from more generic
+rk356x.dtsi but gmac0 comes from specialised rk3568.
 
-Fix the issue by adding the missing property.
-
-Fixes: 9d6c6d978f97 ("arm64: dts: rockchip: rk356x: Add VOP2 nodes")
-Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+Signed-off-by: Philipp Puschmann <p.puschmann@pironex.com>
 ---
+ arch/arm64/boot/dts/rockchip/rk3568.dtsi | 4 ++++
  arch/arm64/boot/dts/rockchip/rk356x.dtsi | 1 +
- 1 file changed, 1 insertion(+)
+ 2 files changed, 5 insertions(+)
 
+diff --git a/arch/arm64/boot/dts/rockchip/rk3568.dtsi b/arch/arm64/boot/dts/rockchip/rk3568.dtsi
+index f1be76a54ceb..42018c8666e0 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3568.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3568.dtsi
+@@ -8,6 +8,10 @@
+ / {
+ 	compatible = "rockchip,rk3568";
+ 
++	aliases {
++		ethernet1 = &gmac0;
++	};
++
+ 	sata0: sata@fc000000 {
+ 		compatible = "rockchip,rk3568-dwc-ahci", "snps,dwc-ahci";
+ 		reg = <0 0xfc000000 0 0x1000>;
 diff --git a/arch/arm64/boot/dts/rockchip/rk356x.dtsi b/arch/arm64/boot/dts/rockchip/rk356x.dtsi
-index d8543b5557ee..3e2a8bfcafea 100644
+index d8543b5557ee..e13bd7b24752 100644
 --- a/arch/arm64/boot/dts/rockchip/rk356x.dtsi
 +++ b/arch/arm64/boot/dts/rockchip/rk356x.dtsi
-@@ -790,6 +790,7 @@ vop_mmu: iommu@fe043e00 {
- 		clocks = <&cru ACLK_VOP>, <&cru HCLK_VOP>;
- 		clock-names = "aclk", "iface";
- 		#iommu-cells = <0>;
-+		power-domains = <&power RK3568_PD_VO>;
- 		status = "disabled";
+@@ -43,6 +43,7 @@ aliases {
+ 		spi1 = &spi1;
+ 		spi2 = &spi2;
+ 		spi3 = &spi3;
++		ethernet0 = &gmac1;
  	};
  
-
----
-base-commit: 1eb586a9782cde8e5091b9de74603e0a8386b09e
-change-id: 20240702-rk356x-fix-vop-mmu-a235d68a734a
+ 	cpus {
+-- 
+2.45.2
 
 
 _______________________________________________
