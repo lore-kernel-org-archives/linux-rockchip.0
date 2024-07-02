@@ -4,68 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 59F81C30658
-	for <linux-rockchip@archiver.kernel.org>; Tue,  2 Jul 2024 19:06:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 89BBAC30658
+	for <linux-rockchip@archiver.kernel.org>; Tue,  2 Jul 2024 19:20:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:Message-ID:
 	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
 	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Jma50dG53AKcbWNDmHWiLhnQQ2qtkSbkqThmDWnGsPE=; b=2PeWD92eaBTQUnaxh6yzBMQuGA
-	UFC/pqB8wjOJeVbkcR8eCD3rqHwqQDeJpMgGFbmNAHsHZ49Fsdo20xmiqSPToZ9GPQ2L4Uv5clUBo
-	JwhMUuo+9F+nbhEgvyDC1QuMCZ50uuzPEDuFxfytWcLI+Ke3OzvRT4by9G48gYuMIaezcQPBzqTGk
-	O+MR/4mGkzWlKSCGWV9n6LuoJRtqR0DqNSk4JhAZszCn/uN6uD9lHyuy+R6N4pXwj/ICAAcNpUtqI
-	jiNpDMQqKXR72QIVyLxfqnARDvZX0e+3GAaO3iBELxNXg6cS5UQboq5BMOCKAB6jz1HiaPr9CNYUB
-	/Jay8+ZA==;
+	bh=5+w7n4BczwwX68Ho2L5GJkWv71jUo4X6B2T+Xw5yfXI=; b=A3sE4LycIOO8EL2FqqHf5/dY3x
+	b1j/hkzBHCLUQI2VwEPJvDBuWxzqFHgSbqpqA+wCFQ8GC7L9JR5Bf/chtxHxGuac4mCh/P5ARpWAR
+	lVfPmb4fmVPXJQgLskPfxCpYfhqGQYg3bfvFK3NerUdkYD6ganTPHZYiMm+xEMiHmSKtuH6ZIpUSJ
+	lLZzcEi1ILmdel+0dR7LhBhBg7TsTGJqcY6PYmdODA3yeZAIVMGyi+GO12jCXhWvAVTlx0lZlP7Nv
+	70ye+mOm+FR/N2EaHO+d/Pe5hdngZLGFaSt1j5E8Brtl7lLl9PoWXTqteO6jYi3WrQRM5qaie6sM8
+	5dqlTaiQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sOipJ-00000007ioX-47BX;
-	Tue, 02 Jul 2024 19:06:05 +0000
-Received: from mail-ej1-x62d.google.com ([2a00:1450:4864:20::62d])
+	id 1sOj3X-00000007koB-1czU;
+	Tue, 02 Jul 2024 19:20:47 +0000
+Received: from mail-yb1-xb35.google.com ([2607:f8b0:4864:20::b35])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sOipH-00000007inm-36lZ
+	id 1sOj3K-00000007klc-198m
 	for linux-rockchip@lists.infradead.org;
-	Tue, 02 Jul 2024 19:06:05 +0000
-Received: by mail-ej1-x62d.google.com with SMTP id a640c23a62f3a-a7527afa23cso307212166b.2
-        for <linux-rockchip@lists.infradead.org>; Tue, 02 Jul 2024 12:06:02 -0700 (PDT)
+	Tue, 02 Jul 2024 19:20:36 +0000
+Received: by mail-yb1-xb35.google.com with SMTP id 3f1490d57ef6-e02748b2402so5037677276.0
+        for <linux-rockchip@lists.infradead.org>; Tue, 02 Jul 2024 12:20:33 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=broadcom.com; s=google; t=1719947162; x=1720551962; darn=lists.infradead.org;
+        d=broadcom.com; s=google; t=1719948032; x=1720552832; darn=lists.infradead.org;
         h=in-reply-to:autocrypt:from:references:cc:to:subject:user-agent
          :mime-version:date:message-id:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=xdTQm7dLoyOgn+JwjHdTZKUhpSZvxglR7M5zgzB8KJ0=;
-        b=PFF85pEqm7OlbW/JJoIgQ3ojKbT5qnFVBwrlAvcvydw56bMyHlq04bqHS2T0EvWO7q
-         35qoke5h4UjiFpVESiV3Aa2gyO+oWm205W4NuZ8sfO1wxmUaH9wVs7Gj9acP2MXzDcwO
-         AATc9dfXlJ2j/VQi0i8iHpo/W5rLfi5pnhwsE=
+        bh=aMPEY9RXLSyMPbOe8zs2vtuxfhAng3iFA74gLjobs+Y=;
+        b=HRhH8QnI0G519EJA3pIHyKRZnHk10vkY70yLMPyXG4TASsVzw6vaAYrd+0tX6CeKhW
+         seLIPmm5bm/j0JXMHzS/+GzhupBBQMSjj/eieNqd5xbHeQVvYpxHoSadHtBysR1Cmb6d
+         PLD4TCmtWXhFtD/erzuv1SpunYO+P2hMSbO48=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1719947162; x=1720551962;
+        d=1e100.net; s=20230601; t=1719948032; x=1720552832;
         h=in-reply-to:autocrypt:from:references:cc:to:subject:user-agent
          :mime-version:date:message-id:x-gm-message-state:from:to:cc:subject
          :date:message-id:reply-to;
-        bh=xdTQm7dLoyOgn+JwjHdTZKUhpSZvxglR7M5zgzB8KJ0=;
-        b=aaPkMsbJ4E2el5tNloW6LyNQ2yd+/266hpMrYuwTZ4TMjc5HpA/gsNwhksHV4hNn/X
-         Cqi9HqcNB4xDI4gpQ5plEBRJhERxbbLec6kLYO63LECTsAtjscQFuFpeFs+JegOESJ4z
-         hYhRPPr9sbkieUvduVa6CCco9ytHeC7/0K84zyAUIKHPJ1pfr4RsjmpbxhfTnVniNp7Z
-         VNDc8xu8e4ji/Ugydy2sPUbCp9wCdE2IVd4d6RAz9KY4A7bxCyecF5AMvOpNMJg3Bcwm
-         ukvvCxJa4t6kMjzrn1R3dLTOVx7wXZ0a22mp+Y7WURtMg4rEcTZJiNlV6PcEjIfRKIYS
-         aqIQ==
-X-Forwarded-Encrypted: i=1; AJvYcCVkYxh0A04rI50hJvu7wcDKESNN+TJXjk0yHhMlbFxrNQ0ISqP4KlhJFlGwN83ioidgrMoRRF+Flq04HEO7Cj6xzrbN4iryN6d+ZO6swdpuR/Zo
-X-Gm-Message-State: AOJu0Yxvys6oxQBNPa3GNX0lO2iXbF06i+lspBxnHSy+JyXnXlmYdClm
-	2ShdJx5+B6A9qNf3pGTlyu9K48d7itXJMqJ+b1n+H66KrPkCx3yizr8k00J6vw==
-X-Google-Smtp-Source: AGHT+IH/LucmvJ3f8fHHg5hD1eTufc+gU2laYnHZQrj4QEBwS65ymOpWeNxHt/x7wFFfcuu5iEiUYQ==
-X-Received: by 2002:a17:906:dacc:b0:a72:455f:e8b with SMTP id a640c23a62f3a-a75142c653amr831102766b.0.1719947161563;
-        Tue, 02 Jul 2024 12:06:01 -0700 (PDT)
+        bh=aMPEY9RXLSyMPbOe8zs2vtuxfhAng3iFA74gLjobs+Y=;
+        b=eqbrlJ20Ok1kFnKV7HYsq272zgHXQ9y6Lj8ZJP+y2loT4zk6ft89iJZCFOudVbKKQ8
+         ErEbKElwsNdCxR/YKLsKpUNaOWyVJc/kwmUB5yPn1mi6WTHCvA+V9nN7m7QDeQNKQPRP
+         zMgegTyjthtFX4+G4hs+3MBxhs+GbN3w8kgoNC7kHS4RuWij7ndoOJJPd4z5q0WgYP1R
+         525Zz3miSQkETJyaXT4iYBjgJ4nhA3Bo6HEwvRINFdvp+K/r1b/qFfmJEGxDRL9KuV6h
+         OW7Z2QSv3Rjol50FZyYFbhenQim9raG3iZHIUzrq6LR6BU2cSmkf1zsxkkit2oRK24kY
+         +IPA==
+X-Forwarded-Encrypted: i=1; AJvYcCX2ZlY5/Tm/aWDz37jHSzVZcM8gQgcIy2Gruq2Gy599tY1LM/7UpFZzMukn0d6w9pDpIjc8EaJmmEZ/6lZrRpbX9hHFivYea2oyPrZ+3HLFvZBp
+X-Gm-Message-State: AOJu0YzCcPijPiUAyS254Hd7UvRY34wjhHGLMMYSbwsowcgbeg3bUktF
+	sGLulG2iZAE9lDzE2Si7c4HcEmWYG3TNvQG/omdt6/MIoVK03hm1AMZtZCINbA==
+X-Google-Smtp-Source: AGHT+IFS3jycrIjeuMHwLrHz8gi3/PYVYiiv4ErswOBy3xTVIB2ShOgd4sZ9sWJY3IuoWDR/EcSPfA==
+X-Received: by 2002:a25:ae12:0:b0:dfb:912:970f with SMTP id 3f1490d57ef6-e036ec79a6bmr7413991276.63.1719948032467;
+        Tue, 02 Jul 2024 12:20:32 -0700 (PDT)
 Received: from [192.168.178.137] (f215227.upc-f.chello.nl. [80.56.215.227])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a72ab0b7dcfsm446048966b.209.2024.07.02.12.06.00
+        by smtp.gmail.com with ESMTPSA id d75a77b69052e-4465143dd1csm44000511cf.53.2024.07.02.12.20.27
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 02 Jul 2024 12:06:01 -0700 (PDT)
-Message-ID: <0446de88-3b73-447f-96d2-4b8461defac2@broadcom.com>
-Date: Tue, 2 Jul 2024 21:05:58 +0200
+        Tue, 02 Jul 2024 12:20:32 -0700 (PDT)
+Message-ID: <612a25e6-745f-4d52-9143-18650cc71362@broadcom.com>
+Date: Tue, 2 Jul 2024 21:20:24 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 2/5] dt-bindings: net: wireless: brcm4329-fmac: add
- clock description for AP6275P Wi-Fi device
+Subject: Re: [PATCH v3 4/5] wifi: brcmfmac: Add optional lpo clock enable
+ support
 To: Jacobe Zang <jacobe.zang@wesion.com>, robh@kernel.org,
  krzk+dt@kernel.org, heiko@sntech.de, kvalo@kernel.org, davem@davemloft.net,
  edumazet@google.com, kuba@kernel.org, pabeni@redhat.com, conor+dt@kernel.org
@@ -77,7 +77,7 @@ Cc: efectn@protonmail.com, dsimic@manjaro.org, jagan@edgeble.ai,
  minipli@grsecurity.net, brcm80211@lists.linux.dev,
  brcm80211-dev-list.pdl@broadcom.com, nick@khadas.com
 References: <20240630073605.2164346-1-jacobe.zang@wesion.com>
- <20240630073605.2164346-3-jacobe.zang@wesion.com>
+ <20240630073605.2164346-5-jacobe.zang@wesion.com>
 From: Arend van Spriel <arend.vanspriel@broadcom.com>
 Autocrypt: addr=arend.vanspriel@broadcom.com; keydata=
  xsFNBGP96SABEACfErEjSRi7TA1ttHYaUM3GuirbgqrNvQ41UJs1ag1T0TeyINqG+s6aFuO8
@@ -122,10 +122,11 @@ Autocrypt: addr=arend.vanspriel@broadcom.com; keydata=
  NKowQLrlMBGXT4NnRNV0+yHmusXPOPIqQCKEtbWSx9s2slQxmXukPYvLnuRJqkPkvrTgjn5d
  eSE0Dkhni4292/Nn/TnZf5mxCNWH1p3dz/vrT6EIYk2GSJgCLoTkCcqaM6+5E4IwgYOq3UYu
  AAgeEbPV1QeTVAPrntrLb0t0U5vdwG7Xl40baV9OydTv7ghjYZU349w1d5mdxg==
-In-Reply-To: <20240630073605.2164346-3-jacobe.zang@wesion.com>
+In-Reply-To: <20240630073605.2164346-5-jacobe.zang@wesion.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240702_120603_849664_E9F6C773 
-X-CRM114-Status: GOOD (  13.59  )
+X-CRM114-CacheID: sfid-20240702_122034_583155_B772D598 
+X-CRM114-Status: UNSURE (   8.19  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -137,51 +138,39 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============2009681925199701674=="
+Content-Type: multipart/mixed; boundary="===============0027643499111493732=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
---===============2009681925199701674==
+--===============0027643499111493732==
 Content-Type: multipart/signed; protocol="application/pkcs7-signature"; micalg=sha-256;
-	boundary="000000000000a08a47061c4867c1"
+	boundary="00000000000087ddbe061c489b3b"
 
---000000000000a08a47061c4867c1
+--00000000000087ddbe061c489b3b
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 
+
+
 On 6/30/2024 9:36 AM, Jacobe Zang wrote:
-> Add clocks and clock-names for brcm4329-fmac.
+> WiFi modules often require 32kHz clock to function. Add support to
+> enable the clock to PCIe driver.
 
 you can add my....
 
 Reviewed-by: Arend van Spriel <arend.vanspriel@broadcom.com>
+> Co-developed-by: Ondrej Jirman <megi@xff.cz>
+> Signed-off-by: Ondrej Jirman <megi@xff.cz>
 > Signed-off-by: Jacobe Zang <jacobe.zang@wesion.com>
 > ---
->   .../bindings/net/wireless/brcm,bcm4329-fmac.yaml          | 8 ++++++++
->   1 file changed, 8 insertions(+)
-> 
-> diff --git a/Documentation/devicetree/bindings/net/wireless/brcm,bcm4329-fmac.yaml b/Documentation/devicetree/bindings/net/wireless/brcm,bcm4329-fmac.yaml
-> index 2c2093c77ec9a..f542b60e44dc4 100644
-> --- a/Documentation/devicetree/bindings/net/wireless/brcm,bcm4329-fmac.yaml
-> +++ b/Documentation/devicetree/bindings/net/wireless/brcm,bcm4329-fmac.yaml
-> @@ -122,6 +122,14 @@ properties:
->         NVRAM. This would normally be filled in by the bootloader from platform
->         configuration data.
->   
-> +  clocks:
-> +    items:
-> +      - description: Wi-Fi RTC clock
+>   .../net/wireless/broadcom/brcm80211/brcmfmac/pcie.c    | 10 ++++++++++
 
-Having a few problems with the description. There is only one LPO clock 
-input on the 43752 chipset. From the AMPAK AP6275P datasheet:
+These changes should really go into of.c.
 
-| 31 | LPO_IN | I | External Low Power Clock input (32.768KHz) |
+>   1 file changed, 10 insertions(+)
 
-I would suggest to use the description from the datasheet or something 
-similar.
-
---000000000000a08a47061c4867c1
+--00000000000087ddbe061c489b3b
 Content-Type: application/pkcs7-signature; name="smime.p7s"
 Content-Transfer-Encoding: base64
 Content-Disposition: attachment; filename="smime.p7s"
@@ -252,20 +241,20 @@ BtkeSGJx/8dy0h8YmRn+adOrxKXHxhSL8BNn8wsmIZyYWe6fRcBtO3Ks2DOLyHCdkoFlN8x9VUQF
 N2ulEgqCbRKkx+qNirW86eF138lr1gRxzclu/38ko//MmkAYR/+hP3WnBll7zbpIt0jc9wyFkSqH
 p8a1MYICbTCCAmkCAQEwazBbMQswCQYDVQQGEwJCRTEZMBcGA1UEChMQR2xvYmFsU2lnbiBudi1z
 YTExMC8GA1UEAxMoR2xvYmFsU2lnbiBHQ0MgUjMgUGVyc29uYWxTaWduIDIgQ0EgMjAyMAIMTv1t
-bpIzNUky46LXMA0GCWCGSAFlAwQCAQUAoIHUMC8GCSqGSIb3DQEJBDEiBCCoWqxrJTBED2/yhHGv
-sR8XzzS71vYUwiUDh8Ccj5vIVjAYBgkqhkiG9w0BCQMxCwYJKoZIhvcNAQcBMBwGCSqGSIb3DQEJ
-BTEPFw0yNDA3MDIxOTA2MDJaMGkGCSqGSIb3DQEJDzFcMFowCwYJYIZIAWUDBAEqMAsGCWCGSAFl
+bpIzNUky46LXMA0GCWCGSAFlAwQCAQUAoIHUMC8GCSqGSIb3DQEJBDEiBCCmFX3KlYYP2wpAINAq
++S0h+f4xsahW1mAJB+r/0YuY4jAYBgkqhkiG9w0BCQMxCwYJKoZIhvcNAQcBMBwGCSqGSIb3DQEJ
+BTEPFw0yNDA3MDIxOTIwMzJaMGkGCSqGSIb3DQEJDzFcMFowCwYJYIZIAWUDBAEqMAsGCWCGSAFl
 AwQBFjALBglghkgBZQMEAQIwCgYIKoZIhvcNAwcwCwYJKoZIhvcNAQEKMAsGCSqGSIb3DQEBBzAL
-BglghkgBZQMEAgEwDQYJKoZIhvcNAQEBBQAEggEASUOq1Ck1Oh8EB+upVNwuiIZ0S2zVSEEYVdVN
-IPOg8J7vjrciUGVNZpMnUaX6tF3/Z9auMG/vXo0NCUk0StegnYVXZL4am42eihOS41xl8p6u3RMq
-qb2lMldDAhePzr2hlMqD4a/C0AumwuxkzwMtuIN3eLY/z5MC+YSaIbNFIf8v9oCyiQp/FH0k1M9R
-us7HRs/zH93TqiufPjtO0uK+3DQTFmLculKMaDWv5eDCSQUNHE1JgUuoClZNNGgTFZi2FVw6c8LX
-s5i1y4+71bhqxMz9yWiVPT+JSEcsIIiI2QJmRwOCe431MbQDKlq3aRnh7xhTZ28cFKfpjl/EOxRE
-dQ==
---000000000000a08a47061c4867c1--
+BglghkgBZQMEAgEwDQYJKoZIhvcNAQEBBQAEggEAHG+ZPQgmjp6Mzgshb3jjs5/KF9XzylSeMv8d
+YStFQD96iqegoj/TUUXpqoeI1srCX/CdqDz+GltKQSEvxi/VQH27DddsyLhiE8uTbwgzaV3Ysy4p
+0Hn3X3rDNLnSaqkn//TtVAgArLvzhQtXiC8TkjaEEYoJacEBf8uPys5ug72CN76nxbT9/L0qf+56
+Lj7TraBlvd66EZnbWVrooz9pPoFyY0FgnUF1fRVNy8X7tb8z6ipRdTB499lzahgr1RTuZVllzYwg
+naq7p/T6ZiJamljKyBybfTgTp+QahR6C5mddEtARHIlGboKF2YsTUSdXB/WW+e+j9Ba8oITtbTkZ
+Gw==
+--00000000000087ddbe061c489b3b--
 
 
---===============2009681925199701674==
+--===============0027643499111493732==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -276,5 +265,5 @@ Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
---===============2009681925199701674==--
+--===============0027643499111493732==--
 
