@@ -4,68 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A0E96C30658
-	for <linux-rockchip@archiver.kernel.org>; Tue,  2 Jul 2024 18:56:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 59F81C30658
+	for <linux-rockchip@archiver.kernel.org>; Tue,  2 Jul 2024 19:06:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:Message-ID:
 	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
 	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=nTASoGX0LV2FwdSgZZrvqSBHyxF/KxHL0rZSJ89+buI=; b=nowqdbX5PAi4f8dMx4qz6Uogcx
-	ET/8UQzTw9aeSy7GXoUeo49+WwspsG07w/7kErf8YQNGZxwUAU+hi97MZ83KHFxjJbXC5Wr86WMCf
-	zJIBlv1qEzeWpBl4Oay2tTu83Xma7QgTLzBD8PcVKocKBQkWs8EuXS+y/QaA2yu+hltelmfkDm6gN
-	fNhRzfRLO2XAqRaMsqbZJ0BHvCLN1XQnS/iqhqzzqHshsZXIPuqS6nda9WmC/qhTQaf8t35m6Vx0J
-	9g7FvdmMVtGmPfuWfFkfnf4LZSAnojf6S3s4lfWd+E07eCVeA+npbIjJ0dmwKjpW2g4cDFHt8kADS
-	F097uxlQ==;
+	bh=Jma50dG53AKcbWNDmHWiLhnQQ2qtkSbkqThmDWnGsPE=; b=2PeWD92eaBTQUnaxh6yzBMQuGA
+	UFC/pqB8wjOJeVbkcR8eCD3rqHwqQDeJpMgGFbmNAHsHZ49Fsdo20xmiqSPToZ9GPQ2L4Uv5clUBo
+	JwhMUuo+9F+nbhEgvyDC1QuMCZ50uuzPEDuFxfytWcLI+Ke3OzvRT4by9G48gYuMIaezcQPBzqTGk
+	O+MR/4mGkzWlKSCGWV9n6LuoJRtqR0DqNSk4JhAZszCn/uN6uD9lHyuy+R6N4pXwj/ICAAcNpUtqI
+	jiNpDMQqKXR72QIVyLxfqnARDvZX0e+3GAaO3iBELxNXg6cS5UQboq5BMOCKAB6jz1HiaPr9CNYUB
+	/Jay8+ZA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sOig1-00000007h4u-1MI5;
-	Tue, 02 Jul 2024 18:56:29 +0000
-Received: from mail-ej1-x633.google.com ([2a00:1450:4864:20::633])
+	id 1sOipJ-00000007ioX-47BX;
+	Tue, 02 Jul 2024 19:06:05 +0000
+Received: from mail-ej1-x62d.google.com ([2a00:1450:4864:20::62d])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sOify-00000007h40-2p3L
+	id 1sOipH-00000007inm-36lZ
 	for linux-rockchip@lists.infradead.org;
-	Tue, 02 Jul 2024 18:56:28 +0000
-Received: by mail-ej1-x633.google.com with SMTP id a640c23a62f3a-a72517e6225so531627166b.0
-        for <linux-rockchip@lists.infradead.org>; Tue, 02 Jul 2024 11:56:25 -0700 (PDT)
+	Tue, 02 Jul 2024 19:06:05 +0000
+Received: by mail-ej1-x62d.google.com with SMTP id a640c23a62f3a-a7527afa23cso307212166b.2
+        for <linux-rockchip@lists.infradead.org>; Tue, 02 Jul 2024 12:06:02 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=broadcom.com; s=google; t=1719946584; x=1720551384; darn=lists.infradead.org;
+        d=broadcom.com; s=google; t=1719947162; x=1720551962; darn=lists.infradead.org;
         h=in-reply-to:autocrypt:from:references:cc:to:subject:user-agent
          :mime-version:date:message-id:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=qNdF2hrZUziC8J/v8TlBxXkod5nhwuSpox0yUD/+vjY=;
-        b=Ie4Zx2NcRkaFylmAlRfELhHhK4j/aoZCjDBUemiRibrMwzyZcLCjHjwNPG8cdCOQNL
-         1ftUxKfc4JT8I+337oyUgj2T+zoSNWidEphAPu/3isQq936BE5GL9Ku4TEKfRF7VfAWr
-         BM96ptpcSSTkStTxQRfuFYbmXyEU8fCojkyEs=
+        bh=xdTQm7dLoyOgn+JwjHdTZKUhpSZvxglR7M5zgzB8KJ0=;
+        b=PFF85pEqm7OlbW/JJoIgQ3ojKbT5qnFVBwrlAvcvydw56bMyHlq04bqHS2T0EvWO7q
+         35qoke5h4UjiFpVESiV3Aa2gyO+oWm205W4NuZ8sfO1wxmUaH9wVs7Gj9acP2MXzDcwO
+         AATc9dfXlJ2j/VQi0i8iHpo/W5rLfi5pnhwsE=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1719946584; x=1720551384;
+        d=1e100.net; s=20230601; t=1719947162; x=1720551962;
         h=in-reply-to:autocrypt:from:references:cc:to:subject:user-agent
          :mime-version:date:message-id:x-gm-message-state:from:to:cc:subject
          :date:message-id:reply-to;
-        bh=qNdF2hrZUziC8J/v8TlBxXkod5nhwuSpox0yUD/+vjY=;
-        b=b+PRkDsCqNHg91Q6gZV9OCbIjUo6VHDEjQ+/OdLD4DmhN8aG8NcgEENBHdM8g6U69r
-         SrVbuBmc7/0eMfy6XLodTHLDpmjvLfutKlMAthWPEhlfkoJ7zZAVuQ8lcsqbNa6L8fHP
-         acoGEjpfURnMu0QAtoy98nKPNFTIzDuwR5SQsWsYA3jOaE4UoMcrz5n+uNEpt/ZWC29c
-         949FarRbfo9uHyx9Fxn6EgtzeCqq/b8AajLd1oFRN2Umf0YQ2U01PMbb7mLlMxTsEdXM
-         HYZB5iLdq7QapDGrZBUTEndrYBEBfZb/i4oOSnMkHnVkwDQGuNcr8z1p7vSQ1zG9/Kf7
-         TVfA==
-X-Forwarded-Encrypted: i=1; AJvYcCU19ebDLcc1KXjPG+ScyZYKPhY9k7UlfzzWMk3uzWGJVOnjXpzVkrjIMCqyfPN9JWJ1AEANZn/csZPo7mSXyrQ1m5rG6BWn3FrkgqPmpLIzayUo
-X-Gm-Message-State: AOJu0Yxj65TTzwdMiHT1N+4Pcg8tZiteV9eFN0ftXHZd5uEjwABGmXcz
-	2q3WgQruXdBHLsBDwH4kZQpNEWKV5dT25+RmW1NVQL+p7dL2O3DELcuJK+zIFA==
-X-Google-Smtp-Source: AGHT+IEZRaZ1BVbdg7i2LbA6OYbJb7VhMvfdxJZ2B9p/HJCSyf4aXVEI4lvRQjGElNqeTccIAb9A6Q==
-X-Received: by 2002:a17:907:d15:b0:a70:c031:3359 with SMTP id a640c23a62f3a-a7514438b44mr781140066b.34.1719946584065;
-        Tue, 02 Jul 2024 11:56:24 -0700 (PDT)
+        bh=xdTQm7dLoyOgn+JwjHdTZKUhpSZvxglR7M5zgzB8KJ0=;
+        b=aaPkMsbJ4E2el5tNloW6LyNQ2yd+/266hpMrYuwTZ4TMjc5HpA/gsNwhksHV4hNn/X
+         Cqi9HqcNB4xDI4gpQ5plEBRJhERxbbLec6kLYO63LECTsAtjscQFuFpeFs+JegOESJ4z
+         hYhRPPr9sbkieUvduVa6CCco9ytHeC7/0K84zyAUIKHPJ1pfr4RsjmpbxhfTnVniNp7Z
+         VNDc8xu8e4ji/Ugydy2sPUbCp9wCdE2IVd4d6RAz9KY4A7bxCyecF5AMvOpNMJg3Bcwm
+         ukvvCxJa4t6kMjzrn1R3dLTOVx7wXZ0a22mp+Y7WURtMg4rEcTZJiNlV6PcEjIfRKIYS
+         aqIQ==
+X-Forwarded-Encrypted: i=1; AJvYcCVkYxh0A04rI50hJvu7wcDKESNN+TJXjk0yHhMlbFxrNQ0ISqP4KlhJFlGwN83ioidgrMoRRF+Flq04HEO7Cj6xzrbN4iryN6d+ZO6swdpuR/Zo
+X-Gm-Message-State: AOJu0Yxvys6oxQBNPa3GNX0lO2iXbF06i+lspBxnHSy+JyXnXlmYdClm
+	2ShdJx5+B6A9qNf3pGTlyu9K48d7itXJMqJ+b1n+H66KrPkCx3yizr8k00J6vw==
+X-Google-Smtp-Source: AGHT+IH/LucmvJ3f8fHHg5hD1eTufc+gU2laYnHZQrj4QEBwS65ymOpWeNxHt/x7wFFfcuu5iEiUYQ==
+X-Received: by 2002:a17:906:dacc:b0:a72:455f:e8b with SMTP id a640c23a62f3a-a75142c653amr831102766b.0.1719947161563;
+        Tue, 02 Jul 2024 12:06:01 -0700 (PDT)
 Received: from [192.168.178.137] (f215227.upc-f.chello.nl. [80.56.215.227])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a750fb362d4sm333643266b.49.2024.07.02.11.56.22
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a72ab0b7dcfsm446048966b.209.2024.07.02.12.06.00
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 02 Jul 2024 11:56:23 -0700 (PDT)
-Message-ID: <efd4272c-81fa-49ec-a3ff-0dfb9b5da7c1@broadcom.com>
-Date: Tue, 2 Jul 2024 20:56:20 +0200
+        Tue, 02 Jul 2024 12:06:01 -0700 (PDT)
+Message-ID: <0446de88-3b73-447f-96d2-4b8461defac2@broadcom.com>
+Date: Tue, 2 Jul 2024 21:05:58 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 1/5] dt-bindings: net: wireless: brcm4329-fmac: add
- pci14e4,449d
+Subject: Re: [PATCH v3 2/5] dt-bindings: net: wireless: brcm4329-fmac: add
+ clock description for AP6275P Wi-Fi device
 To: Jacobe Zang <jacobe.zang@wesion.com>, robh@kernel.org,
  krzk+dt@kernel.org, heiko@sntech.de, kvalo@kernel.org, davem@davemloft.net,
  edumazet@google.com, kuba@kernel.org, pabeni@redhat.com, conor+dt@kernel.org
@@ -77,7 +77,7 @@ Cc: efectn@protonmail.com, dsimic@manjaro.org, jagan@edgeble.ai,
  minipli@grsecurity.net, brcm80211@lists.linux.dev,
  brcm80211-dev-list.pdl@broadcom.com, nick@khadas.com
 References: <20240630073605.2164346-1-jacobe.zang@wesion.com>
- <20240630073605.2164346-2-jacobe.zang@wesion.com>
+ <20240630073605.2164346-3-jacobe.zang@wesion.com>
 From: Arend van Spriel <arend.vanspriel@broadcom.com>
 Autocrypt: addr=arend.vanspriel@broadcom.com; keydata=
  xsFNBGP96SABEACfErEjSRi7TA1ttHYaUM3GuirbgqrNvQ41UJs1ag1T0TeyINqG+s6aFuO8
@@ -122,10 +122,10 @@ Autocrypt: addr=arend.vanspriel@broadcom.com; keydata=
  NKowQLrlMBGXT4NnRNV0+yHmusXPOPIqQCKEtbWSx9s2slQxmXukPYvLnuRJqkPkvrTgjn5d
  eSE0Dkhni4292/Nn/TnZf5mxCNWH1p3dz/vrT6EIYk2GSJgCLoTkCcqaM6+5E4IwgYOq3UYu
  AAgeEbPV1QeTVAPrntrLb0t0U5vdwG7Xl40baV9OydTv7ghjYZU349w1d5mdxg==
-In-Reply-To: <20240630073605.2164346-2-jacobe.zang@wesion.com>
+In-Reply-To: <20240630073605.2164346-3-jacobe.zang@wesion.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240702_115626_753413_A14675E9 
-X-CRM114-Status: GOOD (  10.26  )
+X-CRM114-CacheID: sfid-20240702_120603_849664_E9F6C773 
+X-CRM114-Status: GOOD (  13.59  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -137,31 +137,51 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============7033438955262188560=="
+Content-Type: multipart/mixed; boundary="===============2009681925199701674=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
---===============7033438955262188560==
+--===============2009681925199701674==
 Content-Type: multipart/signed; protocol="application/pkcs7-signature"; micalg=sha-256;
-	boundary="00000000000033e2e6061c484546"
+	boundary="000000000000a08a47061c4867c1"
 
---00000000000033e2e6061c484546
+--000000000000a08a47061c4867c1
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 
 On 6/30/2024 9:36 AM, Jacobe Zang wrote:
-> It's the device id used by AP6275P which is the Wi-Fi module
-> used by Rockchip's RK3588 evaluation board and also used in
-> some other RK3588 boards.
+> Add clocks and clock-names for brcm4329-fmac.
 
-Acked-by: Arend van Spriel <arend.vanspriel@broadcom.com>
+you can add my....
+
+Reviewed-by: Arend van Spriel <arend.vanspriel@broadcom.com>
 > Signed-off-by: Jacobe Zang <jacobe.zang@wesion.com>
 > ---
->   .../devicetree/bindings/net/wireless/brcm,bcm4329-fmac.yaml      | 1 +
->   1 file changed, 1 insertion(+)
+>   .../bindings/net/wireless/brcm,bcm4329-fmac.yaml          | 8 ++++++++
+>   1 file changed, 8 insertions(+)
+> 
+> diff --git a/Documentation/devicetree/bindings/net/wireless/brcm,bcm4329-fmac.yaml b/Documentation/devicetree/bindings/net/wireless/brcm,bcm4329-fmac.yaml
+> index 2c2093c77ec9a..f542b60e44dc4 100644
+> --- a/Documentation/devicetree/bindings/net/wireless/brcm,bcm4329-fmac.yaml
+> +++ b/Documentation/devicetree/bindings/net/wireless/brcm,bcm4329-fmac.yaml
+> @@ -122,6 +122,14 @@ properties:
+>         NVRAM. This would normally be filled in by the bootloader from platform
+>         configuration data.
+>   
+> +  clocks:
+> +    items:
+> +      - description: Wi-Fi RTC clock
 
---00000000000033e2e6061c484546
+Having a few problems with the description. There is only one LPO clock 
+input on the 43752 chipset. From the AMPAK AP6275P datasheet:
+
+| 31 | LPO_IN | I | External Low Power Clock input (32.768KHz) |
+
+I would suggest to use the description from the datasheet or something 
+similar.
+
+--000000000000a08a47061c4867c1
 Content-Type: application/pkcs7-signature; name="smime.p7s"
 Content-Transfer-Encoding: base64
 Content-Disposition: attachment; filename="smime.p7s"
@@ -232,20 +252,20 @@ BtkeSGJx/8dy0h8YmRn+adOrxKXHxhSL8BNn8wsmIZyYWe6fRcBtO3Ks2DOLyHCdkoFlN8x9VUQF
 N2ulEgqCbRKkx+qNirW86eF138lr1gRxzclu/38ko//MmkAYR/+hP3WnBll7zbpIt0jc9wyFkSqH
 p8a1MYICbTCCAmkCAQEwazBbMQswCQYDVQQGEwJCRTEZMBcGA1UEChMQR2xvYmFsU2lnbiBudi1z
 YTExMC8GA1UEAxMoR2xvYmFsU2lnbiBHQ0MgUjMgUGVyc29uYWxTaWduIDIgQ0EgMjAyMAIMTv1t
-bpIzNUky46LXMA0GCWCGSAFlAwQCAQUAoIHUMC8GCSqGSIb3DQEJBDEiBCDGw93/OpyC9vFbUNI0
-KYsgXEqRqM8AJiA6k/pIPqhDODAYBgkqhkiG9w0BCQMxCwYJKoZIhvcNAQcBMBwGCSqGSIb3DQEJ
-BTEPFw0yNDA3MDIxODU2MjRaMGkGCSqGSIb3DQEJDzFcMFowCwYJYIZIAWUDBAEqMAsGCWCGSAFl
+bpIzNUky46LXMA0GCWCGSAFlAwQCAQUAoIHUMC8GCSqGSIb3DQEJBDEiBCCoWqxrJTBED2/yhHGv
+sR8XzzS71vYUwiUDh8Ccj5vIVjAYBgkqhkiG9w0BCQMxCwYJKoZIhvcNAQcBMBwGCSqGSIb3DQEJ
+BTEPFw0yNDA3MDIxOTA2MDJaMGkGCSqGSIb3DQEJDzFcMFowCwYJYIZIAWUDBAEqMAsGCWCGSAFl
 AwQBFjALBglghkgBZQMEAQIwCgYIKoZIhvcNAwcwCwYJKoZIhvcNAQEKMAsGCSqGSIb3DQEBBzAL
-BglghkgBZQMEAgEwDQYJKoZIhvcNAQEBBQAEggEAYvmEReR1wY5pDjTgWocib9dMwV5j74Lq47Q4
-UQmSwwB/CV95agjOCA9X+892vbeoZDmGvFVKgmd6zDwauhaLItb2rfRHKisXoGPPZusebEbM3Sta
-vYXevPCcOHsj1+5pDjxzCrvAqPnoF8g81GbUNWm0fSmQ7pyeREA4ME+1WZ0RIK+gXyTCpyNNvmbG
-uMVldM2GXPUzBulRWjQ/0xMUyxlKtlUGq0e533AuyoQCk0HTo4kIpD6vE6BEtLs7JKBgkRxGt51L
-WS/LWZxCTVmm6MEAk3h3QlI2qIa6De5qiISp/3FsOfi3Tt5flwHt2Em7WkaBoU0psC1cW+5j0o33
-0A==
---00000000000033e2e6061c484546--
+BglghkgBZQMEAgEwDQYJKoZIhvcNAQEBBQAEggEASUOq1Ck1Oh8EB+upVNwuiIZ0S2zVSEEYVdVN
+IPOg8J7vjrciUGVNZpMnUaX6tF3/Z9auMG/vXo0NCUk0StegnYVXZL4am42eihOS41xl8p6u3RMq
+qb2lMldDAhePzr2hlMqD4a/C0AumwuxkzwMtuIN3eLY/z5MC+YSaIbNFIf8v9oCyiQp/FH0k1M9R
+us7HRs/zH93TqiufPjtO0uK+3DQTFmLculKMaDWv5eDCSQUNHE1JgUuoClZNNGgTFZi2FVw6c8LX
+s5i1y4+71bhqxMz9yWiVPT+JSEcsIIiI2QJmRwOCe431MbQDKlq3aRnh7xhTZ28cFKfpjl/EOxRE
+dQ==
+--000000000000a08a47061c4867c1--
 
 
---===============7033438955262188560==
+--===============2009681925199701674==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -256,5 +276,5 @@ Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
---===============7033438955262188560==--
+--===============2009681925199701674==--
 
