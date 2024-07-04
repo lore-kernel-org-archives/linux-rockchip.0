@@ -4,54 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 05117C30653
-	for <linux-rockchip@archiver.kernel.org>; Thu,  4 Jul 2024 06:27:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 68349C30653
+	for <linux-rockchip@archiver.kernel.org>; Thu,  4 Jul 2024 06:28:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=I5kZy+Nw57D55crDYktBvObf11vGsXz0NIV8dKlPI64=; b=uTwkpqQJ7Tx4Gn
-	QPNZiyIz7TVePL+HP71PKdtj2b7UPxQ5XdAnDObECWxHjLE8bH6teTmyLeXnp+LyjnTvjnt84NGLh
-	eVDitq8aYNddYpgFWCreO0iwwa5wJi137CY9BKQPuhpMHdxaXmqeABQs5Re9RgICrfdzNCAHGzD6V
-	csJ/NPiaIQm883hRxY2PKawD2GE/87zva8L8OZA/UDp+iR6FzpCANc4oPFYg6fgxu0ttweVM4xRrD
-	pt4rVZqrIwpcte0Xt94QQQIWWf7YW8eLGkEYnIZJnOb4gFQ1aYxdadsEdfddRoM3rRSPzKKO3dyIY
-	St5UOBnlQTp7H6NtZsDQ==;
+	List-Owner; bh=fH3Wp+2gpQl72+JAqp8jD3UMIVz8M03o/07nGxNw7PU=; b=Pvw7/PBeXw5iuZ
+	pH4Nuu7vUx355X8idWpVWx8LXTWkPZjZaV4EqSRhBYVWQLffhSRnJ/y1v8kZ0/oFrFibZaiqx1ijz
+	r7dJmUnD4dXK3dwAlb0H74oAiur4axs2lKHPnhBfDD1XKFrQNHbbphpnFAUlXIRNosqj3j+uImMRI
+	UqCbOxMiAYKeOR9ix1WeH8XGUQVaor3fWaHm5IEPAX8Ta1gwAsSiMsOVEdhJWDDD6VnSND03613QD
+	3xqZ2KzHqiY6WkPd8l1pZqP/h3zMoM1FzliW3hTz6bnBpbELKwNKwTvu6hikiGQCVZ6DlktU/5G9S
+	ynPnDNi0vkNgUgDO3IeA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sPFvm-0000000CKEt-3r7j;
-	Thu, 04 Jul 2024 06:26:58 +0000
-Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
+	id 1sPFxZ-0000000CKff-00mx;
+	Thu, 04 Jul 2024 06:28:49 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sPFvX-0000000CKAb-3mHV;
-	Thu, 04 Jul 2024 06:26:45 +0000
+	id 1sPFxL-0000000CKaz-1rjj;
+	Thu, 04 Jul 2024 06:28:36 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 4EC9BCE3300;
-	Thu,  4 Jul 2024 06:26:42 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id AE1E8C32781;
-	Thu,  4 Jul 2024 06:26:38 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id B0FED61377;
+	Thu,  4 Jul 2024 06:28:34 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 89FC9C3277B;
+	Thu,  4 Jul 2024 06:28:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1720074401;
-	bh=jcM/fhAJp7dFCi0qsIbK+ywgCnEPK+G2cH6y/QUE3c8=;
+	s=k20201202; t=1720074514;
+	bh=mVcqR0CA/a5g7mOdibHsaIrHd9R02SuX6t2jM6J9Lo8=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=dUmz8AwCwde0hkvJLPnaIChpqwlhwZsctB42xOA5J7lavx4XrRLRYxjKEAhD6SiQ/
-	 0bARRYFZJS2Ojjsb3lIuC4UD5NrqjrTqp0CcpQAvF1CZJwOU7zxm9s8y+vUUPSFAFH
-	 w7Tz6qUsCnShJLbJ5Y60rXGM9v755nVNhgBrKwhVxwJMKJQD+J+ABLkXxR9uLh775u
-	 qopOBlV0GBho5riwQBa55+WfYOQ+svtmRa7vLBaYR3CitjfaJoX0qTCpbEyCCW6DmZ
-	 aWpZgOWdoZ3qhHFLmw23LJg7uTK1qGfCaYuFovw6bfxyJpDlCnYzDUv3uZswc9JzYj
-	 01PWLFYQezSLQ==
-Message-ID: <13e0a35a-729c-42e7-874b-f0d263ba6f35@kernel.org>
-Date: Thu, 4 Jul 2024 08:26:36 +0200
+	b=hUdZVRodpdTgzxZY5yyT+Hkoa1GkX20oZkl8eJVhghBLWEEdnoapxsPhuCQzBKIkG
+	 CnOnuAni5yhxdjJxUOpyHMfUWhb//eL+M10w4WVBC7ybtVemKibLhUoSAqemPzJTSA
+	 p1WvxCb7v5JETW9WKB0UlVovvMqzFeKnlBJn9VcaWTgN/N6jFXXkx7V2u+Nt9wu8lV
+	 MvY4wm+36qfunc599atxnDM17TRFV1j7xfabdKfteBDatSwMKSrkNaQZSjsGyd7buz
+	 CunqZ8dWcURbtVx2aqCjyy14HAj2CWxX7daYBhzo/e3i7EWz00z5rLa3tIIsQWaGeD
+	 z3ZAovSfOF+4Q==
+Message-ID: <a508cc82-5596-4771-af49-ff994ce59a57@kernel.org>
+Date: Thu, 4 Jul 2024 08:28:29 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/2] dt-bindings: arm: rockchip: Add Rock 5 ITX board
+Subject: Re: [PATCH 2/2] arm64: dts: rockchip: add rock5 itx board
 To: Heiko Stuebner <heiko@sntech.de>
 Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
  devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 References: <20240703210524.776455-1-heiko@sntech.de>
- <20240703210524.776455-2-heiko@sntech.de>
+ <20240703210524.776455-3-heiko@sntech.de>
 From: Krzysztof Kozlowski <krzk@kernel.org>
 Content-Language: en-US
 Autocrypt: addr=krzk@kernel.org; keydata=
@@ -97,10 +97,10 @@ Autocrypt: addr=krzk@kernel.org; keydata=
  uZwJCLykjad45hsWcOGk3OcaAGQS6NDlfhM6O9aYNwGL6tGt/6BkRikNOs7VDEa4/HlbaSJo
  7FgndGw1kWmkeL6oQh7wBvYll2buKod4qYntmNKEicoHGU+x91Gcan8mCoqhJkbqrL7+nXG2
  5Q/GS5M9RFWS+nYyJh+c3OcfKqVcZQNANItt7+ULzdNJuhvTRRdC3g9hmCEuNSr+CLMdnRBY fv0=
-In-Reply-To: <20240703210524.776455-2-heiko@sntech.de>
+In-Reply-To: <20240703210524.776455-3-heiko@sntech.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240703_232644_324822_20CBE0B5 
-X-CRM114-Status: UNSURE (   5.96  )
+X-CRM114-CacheID: sfid-20240703_232835_617209_5040184B 
+X-CRM114-Status: UNSURE (   6.81  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -119,12 +119,39 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 On 03/07/2024 23:05, Heiko Stuebner wrote:
-> Add devicetree binding for the Rock 5 ITX board, build around the rk3588.
-> 
-> Signed-off-by: Heiko Stuebner <heiko@sntech.de>
-> ---
 
-Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+> +/ {
+> +	model = "Radxa ROCK 5 ITX";
+> +	compatible = "radxa,rock-5itx", "rockchip,rk3588";
+> +
+> +	aliases {
+> +		mmc0 = &sdhci;
+> +		mmc1 = &sdmmc;
+> +		mmc2 = &sdio;
+> +	};
+> +
+> +	chosen {
+> +		stdout-path = "serial2:1500000n8";
+> +	};
+> +
+> +	adc_keys: adc-keys {
+> +		compatible = "adc-keys";
+> +		io-channels = <&saradc 0>;
+> +		io-channel-names = "buttons";
+> +		keyup-threshold-microvolt = <1800000>;
+> +		poll-interval = <100>;
+> +		status = "okay";
+
+Looks like status can be dropped.
+
+> +
+> +		button-maskrom {
+> +			label = "Mask Rom";
+> +			linux,code = <KEY_SETUP>;
+> +			press-threshold-microvolt = <1750>;
+> +		};
+> +	};
+
 
 Best regards,
 Krzysztof
