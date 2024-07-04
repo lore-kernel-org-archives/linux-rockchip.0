@@ -4,54 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C7113C30653
-	for <linux-rockchip@archiver.kernel.org>; Thu,  4 Jul 2024 19:11:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 15B5EC30653
+	for <linux-rockchip@archiver.kernel.org>; Thu,  4 Jul 2024 19:12:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=IA1AHD2oMVJlpT8aIDGQmQJ+Bu8m0xuoJvDm2TZKacA=; b=hwotuz3v99G9fo
-	F7QSwsYDn/dXe5r57BJGMEU7pfU8QppA0h9NDuNjXDxQW4rag09NmDtkORmwPjWqAVNzJrJo5orft
-	BARae2eekBugPWx5P8jRWS494XVZHU7CH5vNFC1v+ZhlPe0mThzHmp72dsIyjx/BTguKLqdbhWuh6
-	q1gJcQJalD/SuK4Eittq7CKqHByMdiHV8mxZRKh/OdhE8gpPhjU3ezvEukWHG69Js480fg7lPLFl2
-	JEowZBI8cv+V7f6ZUprB+ayIbE+tghTWv8ogMzSa00ouj1HLS7IewBF1uMJQxEpad7T2sDkSFFLIE
-	Owt+UMH41a94MJGP01WA==;
+	List-Owner; bh=1CzEPq+SRbd0CZejQKkPqJfxRP4Jwq9aAts/ifV4Duw=; b=igguQVOr2R6FTe
+	9m3ZxtGg36cN+vUnLqJWO/BQ+5kWFfR1oOiNoZpKIzsXzpJAko3V77TlnOVgBCxfT1UzUOEpvk1KE
+	C48eku9FgGGLhx0V+RHKandf9dqQPdAYkreEe/c5M9lbJSmh0C0ddWmZOrbqIq9znGLAH5aZ+apgT
+	C+6DXFxkcw+12zOKUXCoCF8vdoEQ5jkIepsOmgUyjYJxlUCb1SN6B3eLWaSR9b5SPGMCDPZjFVgw7
+	uqy+oUvNagf55+Kq+LQKzcooYDwx8HOl6Jrlf+1cVTnwf+AyHY/I6tbZILBrSMyeO5dTL6hoPLvUZ
+	mepVi9JfckZNFNWTlm5w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sPRrF-0000000EEko-2Tg0;
-	Thu, 04 Jul 2024 19:11:05 +0000
+	id 1sPRsZ-0000000EF4I-26ZI;
+	Thu, 04 Jul 2024 19:12:27 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sPRrD-0000000EEkN-1zPx;
-	Thu, 04 Jul 2024 19:11:04 +0000
-Received: from i53875ac2.versanet.de ([83.135.90.194] helo=phil.lan)
+	id 1sPRsK-0000000EEz3-3Ntr;
+	Thu, 04 Jul 2024 19:12:13 +0000
+Received: from i53875ac2.versanet.de ([83.135.90.194] helo=diego.localnet)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1sPRr5-0005yl-2S; Thu, 04 Jul 2024 21:10:55 +0200
-From: Heiko Stuebner <heiko@sntech.de>
+	id 1sPRsJ-0005zp-Ho; Thu, 04 Jul 2024 21:12:11 +0200
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
 To: Chukun Pan <amadeus@jmu.edu.cn>
-Cc: Heiko Stuebner <heiko@sntech.de>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	linux-rockchip@lists.infradead.org,
-	Conor Dooley <conor+dt@kernel.org>,
-	linux-kernel@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org
-Subject: Re: (subset) [PATCH v2 0/9] arm64: dts: rockchip: fixes support for Lunzn Fastrhino R6xS
-Date: Thu,  4 Jul 2024 21:10:53 +0200
-Message-Id: <172012023331.904079.9875958937623810307.b4-ty@sntech.de>
-X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20240630150010.55729-1-amadeus@jmu.edu.cn>
+Cc: Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Rob Herring <robh@kernel.org>,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
+ Chukun Pan <amadeus@jmu.edu.cn>
+Subject: Re: [PATCH v2 7/9] arm64: dts: rockchip: use generic Ethernet PHY reset
+ bindings for Lunzn Fastrhino R68S
+Date: Thu, 04 Jul 2024 21:12:10 +0200
+Message-ID: <2210411.C4sosBPzcN@diego>
+In-Reply-To: <20240630150010.55729-8-amadeus@jmu.edu.cn>
 References: <20240630150010.55729-1-amadeus@jmu.edu.cn>
+ <20240630150010.55729-8-amadeus@jmu.edu.cn>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240704_121103_537600_CA8CBD8C 
-X-CRM114-Status: UNSURE (   9.02  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240704_121212_880736_E98EB3A9 
+X-CRM114-Status: GOOD (  17.31  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,46 +65,80 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Sun, 30 Jun 2024 23:00:01 +0800, Chukun Pan wrote:
-> Changes in v2:
->   Separate commits for regulator and supply changes
->   Separate commits for R68S Ethernet PHY changes
+Hi,
+
+Am Sonntag, 30. Juni 2024, 17:00:08 CEST schrieb Chukun Pan:
+> Replace the deprecated snps,reset-xxx bindings to the generic Ethernet
+> PHY reset GPIO bindings. Also updates the delays based on the vendor
+> recommendations.
 > 
-> Chukun Pan (9):
->   arm64: dts: rockchip: fix regulator name for Lunzn Fastrhino R6xS
->   arm64: dts: rockchip: fix usb regulator for Lunzn Fastrhino R6xS
->   arm64: dts: rockchip: fix pmu_io supply for Lunzn Fastrhino R6xS
->   arm64: dts: rockchip: remove unused usb2 nodes for Lunzn Fastrhino
->     R6xS
->   arm64: dts: rockchip: disable display subsystem for Lunzn Fastrhino
->     R6xS
->   arm64: dts: rockchip: fixes PHY reset for Lunzn Fastrhino R68S
->   arm64: dts: rockchip: use generic Ethernet PHY reset bindings for
->     Lunzn Fastrhino R68S
->   arm64: dts: rockchip: remove useless tx/rx_delay for Lunzn Fastrhino
->     R68S
->   arm64: dts: rockchip: Enable UHS-I SDR-50 for Lunzn FastRhino R66S
+> Fixes: b9f8ca655d80 ("arm64: dts: rockchip: Add Lunzn Fastrhino R68S")
+> Signed-off-by: Chukun Pan <amadeus@jmu.edu.cn>
+> ---
+>  .../boot/dts/rockchip/rk3568-fastrhino-r68s.dts    | 14 ++++++--------
+>  1 file changed, 6 insertions(+), 8 deletions(-)
 > 
-> [...]
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3568-fastrhino-r68s.dts b/arch/arm64/boot/dts/rockchip/rk3568-fastrhino-r68s.dts
+> index ce2a5e1ccefc..02d966d218fd 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3568-fastrhino-r68s.dts
+> +++ b/arch/arm64/boot/dts/rockchip/rk3568-fastrhino-r68s.dts
+> @@ -39,10 +39,6 @@ &gmac0_tx_bus2
+>  		     &gmac0_rx_bus2
+>  		     &gmac0_rgmii_clk
+>  		     &gmac0_rgmii_bus>;
+> -	snps,reset-gpio = <&gpio1 RK_PB0 GPIO_ACTIVE_LOW>;
+> -	snps,reset-active-low;
+> -	/* Reset time is 15ms, 50ms for rtl8211f */
+> -	snps,reset-delays-us = <0 15000 50000>;
+>  	tx_delay = <0x3c>;
+>  	rx_delay = <0x2f>;
+>  	status = "okay";
+> @@ -61,10 +57,6 @@ &gmac1m1_tx_bus2
+>  		     &gmac1m1_rx_bus2
+>  		     &gmac1m1_rgmii_clk
+>  		     &gmac1m1_rgmii_bus>;
+> -	snps,reset-gpio = <&gpio1 RK_PB1 GPIO_ACTIVE_LOW>;
+> -	snps,reset-active-low;
+> -	/* Reset time is 15ms, 50ms for rtl8211f */
+> -	snps,reset-delays-us = <0 15000 50000>;
+>  	tx_delay = <0x4f>;
+>  	rx_delay = <0x26>;
+>  	status = "okay";
+> @@ -76,6 +68,9 @@ rgmii_phy0: ethernet-phy@1 {
+>  		reg = <0x1>;
+>  		pinctrl-0 = <&eth_phy0_reset_pin>;
+>  		pinctrl-names = "default";
+> +		reset-assert-us = <20000>;
+> +		reset-deassert-us = <100000>;
 
-Applied, thanks!
+what's the reason behind the changed timings?
 
-[1/9] arm64: dts: rockchip: fix regulator name for Lunzn Fastrhino R6xS
-      commit: 2dad31528de9ea8b05245ce6ac4f76ebf8dae947
-[2/9] arm64: dts: rockchip: fix usb regulator for Lunzn Fastrhino R6xS
-      commit: 9e823ba92118510c0d1c050b67bb000f9b9a73d7
-[3/9] arm64: dts: rockchip: fix pmu_io supply for Lunzn Fastrhino R6xS
-      commit: cfeac8e5d05815521f5c5568680735a92ee91fe4
-[4/9] arm64: dts: rockchip: remove unused usb2 nodes for Lunzn Fastrhino R6xS
-      commit: cd77139a307fbabe75e6b5cb8a3753e3c700f394
-[5/9] arm64: dts: rockchip: disable display subsystem for Lunzn Fastrhino R6xS
-      commit: 2bf5d445df2ec89689d15ea259a916260c936959
-[6/9] arm64: dts: rockchip: fixes PHY reset for Lunzn Fastrhino R68S
-      commit: e261bd74000ca80e5483ba8a8bda509de8cbe7fd
+The original comment stated,
+	/* Reset time is 15ms, 50ms for rtl8211f */
+so that timing change needs an explanation please :-)
 
-Best regards,
--- 
-Heiko Stuebner <heiko@sntech.de>
+Thanks
+Heiko
+
+> +		reset-gpios = <&gpio1 RK_PB0 GPIO_ACTIVE_LOW>;
+>  	};
+>  };
+>  
+> @@ -85,6 +80,9 @@ rgmii_phy1: ethernet-phy@1 {
+>  		reg = <0x1>;
+>  		pinctrl-0 = <&eth_phy1_reset_pin>;
+>  		pinctrl-names = "default";
+> +		reset-assert-us = <20000>;
+> +		reset-deassert-us = <100000>;
+> +		reset-gpios = <&gpio1 RK_PB1 GPIO_ACTIVE_LOW>;
+>  	};
+>  };
+>  
+> 
+
+
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
