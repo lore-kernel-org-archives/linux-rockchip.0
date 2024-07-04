@@ -4,51 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 15B5EC30653
-	for <linux-rockchip@archiver.kernel.org>; Thu,  4 Jul 2024 19:12:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EE486C30653
+	for <linux-rockchip@archiver.kernel.org>; Thu,  4 Jul 2024 19:18:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=1CzEPq+SRbd0CZejQKkPqJfxRP4Jwq9aAts/ifV4Duw=; b=igguQVOr2R6FTe
-	9m3ZxtGg36cN+vUnLqJWO/BQ+5kWFfR1oOiNoZpKIzsXzpJAko3V77TlnOVgBCxfT1UzUOEpvk1KE
-	C48eku9FgGGLhx0V+RHKandf9dqQPdAYkreEe/c5M9lbJSmh0C0ddWmZOrbqIq9znGLAH5aZ+apgT
-	C+6DXFxkcw+12zOKUXCoCF8vdoEQ5jkIepsOmgUyjYJxlUCb1SN6B3eLWaSR9b5SPGMCDPZjFVgw7
-	uqy+oUvNagf55+Kq+LQKzcooYDwx8HOl6Jrlf+1cVTnwf+AyHY/I6tbZILBrSMyeO5dTL6hoPLvUZ
-	mepVi9JfckZNFNWTlm5w==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=ekkZ03CwE1cwoYk1GyCrHpNR3EH8CMEGVIz72sxE80o=; b=G+xTu4oc4lr33E
+	Fq5oHIxNfL6O2IkUZCDTj5qiOS+cfhPwvFSxstW4I/S75flHholtxT/euOyND3q7ErwHdxH4swraV
+	57VYr4fzTKjZSXCpo2aCCfUi1z8XFa725DpfAsXnWjzEz3iNAXKpbOnYTW3MR+DpDHwW9RciOvedP
+	HsbJE8T60K8aDSrlfCaCMkJgNNnB/w6dpSIM6n4wQyVpnsTkly+OfHBELdSmdy05fkccoMTTB7FF0
+	aYoxbjYqrvJNlGIXev8adiTdHX0G1Jfvj6/makVmeUmDBFlop4JYYiWPnB6/L/8cDKna0fnT4WUj+
+	savO40AZpV76wkv8Ek6A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sPRsZ-0000000EF4I-26ZI;
-	Thu, 04 Jul 2024 19:12:27 +0000
+	id 1sPRy5-0000000EFky-1qVB;
+	Thu, 04 Jul 2024 19:18:09 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sPRsK-0000000EEz3-3Ntr;
-	Thu, 04 Jul 2024 19:12:13 +0000
+	id 1sPRy2-0000000EFkX-3uiS
+	for linux-rockchip@lists.infradead.org;
+	Thu, 04 Jul 2024 19:18:08 +0000
 Received: from i53875ac2.versanet.de ([83.135.90.194] helo=diego.localnet)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1sPRsJ-0005zp-Ho; Thu, 04 Jul 2024 21:12:11 +0200
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: Chukun Pan <amadeus@jmu.edu.cn>
-Cc: Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Rob Herring <robh@kernel.org>,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
- Chukun Pan <amadeus@jmu.edu.cn>
-Subject: Re: [PATCH v2 7/9] arm64: dts: rockchip: use generic Ethernet PHY reset
- bindings for Lunzn Fastrhino R68S
-Date: Thu, 04 Jul 2024 21:12:10 +0200
-Message-ID: <2210411.C4sosBPzcN@diego>
-In-Reply-To: <20240630150010.55729-8-amadeus@jmu.edu.cn>
-References: <20240630150010.55729-1-amadeus@jmu.edu.cn>
- <20240630150010.55729-8-amadeus@jmu.edu.cn>
+	id 1sPRxv-00062i-LP; Thu, 04 Jul 2024 21:17:59 +0200
+From: Heiko Stuebner <heiko@sntech.de>
+To: mturquette@baylibre.com, Stephen Boyd <sboyd@kernel.org>
+Cc: linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org
+Subject: [GIT PULL] Rockchip clock changes for 6.11 #1
+Date: Thu, 04 Jul 2024 21:17:58 +0200
+Message-ID: <8961259.VV5PYv0bhD@diego>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240704_121212_880736_E98EB3A9 
-X-CRM114-Status: GOOD (  17.31  )
+X-CRM114-CacheID: sfid-20240704_121807_005348_CE9A1AD8 
+X-CRM114-Status: UNSURE (   8.31  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -65,77 +59,62 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi,
+Hi Mike, Stephen,
 
-Am Sonntag, 30. Juni 2024, 17:00:08 CEST schrieb Chukun Pan:
-> Replace the deprecated snps,reset-xxx bindings to the generic Ethernet
-> PHY reset GPIO bindings. Also updates the delays based on the vendor
-> recommendations.
-> 
-> Fixes: b9f8ca655d80 ("arm64: dts: rockchip: Add Lunzn Fastrhino R68S")
-> Signed-off-by: Chukun Pan <amadeus@jmu.edu.cn>
-> ---
->  .../boot/dts/rockchip/rk3568-fastrhino-r68s.dts    | 14 ++++++--------
->  1 file changed, 6 insertions(+), 8 deletions(-)
-> 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3568-fastrhino-r68s.dts b/arch/arm64/boot/dts/rockchip/rk3568-fastrhino-r68s.dts
-> index ce2a5e1ccefc..02d966d218fd 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3568-fastrhino-r68s.dts
-> +++ b/arch/arm64/boot/dts/rockchip/rk3568-fastrhino-r68s.dts
-> @@ -39,10 +39,6 @@ &gmac0_tx_bus2
->  		     &gmac0_rx_bus2
->  		     &gmac0_rgmii_clk
->  		     &gmac0_rgmii_bus>;
-> -	snps,reset-gpio = <&gpio1 RK_PB0 GPIO_ACTIVE_LOW>;
-> -	snps,reset-active-low;
-> -	/* Reset time is 15ms, 50ms for rtl8211f */
-> -	snps,reset-delays-us = <0 15000 50000>;
->  	tx_delay = <0x3c>;
->  	rx_delay = <0x2f>;
->  	status = "okay";
-> @@ -61,10 +57,6 @@ &gmac1m1_tx_bus2
->  		     &gmac1m1_rx_bus2
->  		     &gmac1m1_rgmii_clk
->  		     &gmac1m1_rgmii_bus>;
-> -	snps,reset-gpio = <&gpio1 RK_PB1 GPIO_ACTIVE_LOW>;
-> -	snps,reset-active-low;
-> -	/* Reset time is 15ms, 50ms for rtl8211f */
-> -	snps,reset-delays-us = <0 15000 50000>;
->  	tx_delay = <0x4f>;
->  	rx_delay = <0x26>;
->  	status = "okay";
-> @@ -76,6 +68,9 @@ rgmii_phy0: ethernet-phy@1 {
->  		reg = <0x1>;
->  		pinctrl-0 = <&eth_phy0_reset_pin>;
->  		pinctrl-names = "default";
-> +		reset-assert-us = <20000>;
-> +		reset-deassert-us = <100000>;
+please find below a pull-request with some Rockchip clock changes for 6.11
 
-what's the reason behind the changed timings?
+Nothing really stands out, it's just some small changes.
 
-The original comment stated,
-	/* Reset time is 15ms, 50ms for rtl8211f */
-so that timing change needs an explanation please :-)
+Please pull.
 
 Thanks
 Heiko
 
-> +		reset-gpios = <&gpio1 RK_PB0 GPIO_ACTIVE_LOW>;
->  	};
->  };
->  
-> @@ -85,6 +80,9 @@ rgmii_phy1: ethernet-phy@1 {
->  		reg = <0x1>;
->  		pinctrl-0 = <&eth_phy1_reset_pin>;
->  		pinctrl-names = "default";
-> +		reset-assert-us = <20000>;
-> +		reset-deassert-us = <100000>;
-> +		reset-gpios = <&gpio1 RK_PB1 GPIO_ACTIVE_LOW>;
->  	};
->  };
->  
-> 
 
+The following changes since commit 1613e604df0cd359cf2a7fbd9be7a0bcfacfabd0:
+
+  Linux 6.10-rc1 (2024-05-26 15:20:12 -0700)
+
+are available in the Git repository at:
+
+  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v6.11-rockchip-clk1
+
+for you to fetch changes up to d89e8096957e35742c9922d3f6628f24de0d6163:
+
+  dt-bindings: clock: rk3188-cru-common: remove CLK_NR_CLKS (2024-07-04 19:48:31 +0200)
+
+----------------------------------------------------------------
+More exported clocks for rk3128 peripherals, conversion to kmemduo_array
+for clock controllers and both rk3128 and rk3188 drop the CLK_NR_CLKS
+from their dt-binding header, where it does not belong.
+
+----------------------------------------------------------------
+Alex Bee (7):
+      dt-bindings: clock: rk3128: Add PCLK_MIPIPHY
+      clk: rockchip: rk3128: Export PCLK_MIPIPHY
+      clk: rockchip: rk3128: Add hclk_vio_h2p to critical clocks
+      clk: rockchip: rk3128: Drop CLK_NR_CLKS usage
+      dt-bindings: clock: rk3128: Drop CLK_NR_CLKS
+      dt-bindings: clock: rk3128: Add HCLK_SFC
+      clk: rockchip: rk3128: Add HCLK_SFC
+
+Andy Shevchenko (1):
+      clk: rockchip: Switch to use kmemdup_array()
+
+Heiko Stuebner (1):
+      Merge branch 'v6.11-shared/clkids' into v6.11-clk/next
+
+Johan Jonker (2):
+      clk: rockchip: rk3188: Drop CLK_NR_CLKS usage
+      dt-bindings: clock: rk3188-cru-common: remove CLK_NR_CLKS
+
+ drivers/clk/rockchip/clk-cpu.c                |  5 ++---
+ drivers/clk/rockchip/clk-pll.c                |  8 ++++----
+ drivers/clk/rockchip/clk-rk3128.c             | 24 +++++++++++++++++++-----
+ drivers/clk/rockchip/clk-rk3188.c             | 18 ++++++++++++++----
+ include/dt-bindings/clock/rk3128-cru.h        |  4 ++--
+ include/dt-bindings/clock/rk3188-cru-common.h |  2 --
+ 6 files changed, 41 insertions(+), 20 deletions(-)
 
 
 
