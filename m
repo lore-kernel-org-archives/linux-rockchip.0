@@ -4,57 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 38E75C3271F
-	for <linux-rockchip@archiver.kernel.org>; Thu,  4 Jul 2024 09:01:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5BE16C3271F
+	for <linux-rockchip@archiver.kernel.org>; Thu,  4 Jul 2024 09:09:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=fqpSMOiX9QGZc/AmcHQ+3HFbmrZXE00ZTX+0ENP9R5Q=; b=upwEBh0zUuJcJo
-	nlzj/+27cg263WQw8EUF+W1aSNwVhJTu6Sg3lcMb9SbdoUuu/fFGoLUhGGPcAaXAU+e1K0CZBEgwC
-	oIXN0WXDX1BYxaJAkAmubpySWtyb9rQOkm+ZNplqouvKoeHr2XMFHH9Afpy1hHE+FSumXgS+qcZVE
-	2uR8EpDeJ5HNi3MUsFY5D323tLfXV2l1mTuY/yt8UniYYC8hCfYFLruOZImHg5Qju+ZUBALh8w4kg
-	LR4bvKajcRjMSbyLYkj6SYdN1ma/Nh7kkHIvqU/JXJQFDcVE5pOckKAflhA2WduYxR2DgUkxQ3XyV
-	tU7NVw3dALbequXAfl7Q==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ooyH+CMZoS2DC2VALK06W8ZikRVaZecM7lrQJz6KlO4=; b=S15EF0n8KqYwML2VByW3YFKWIH
+	3AJf5D7v4F5Fu7kw1TBifUWd+rsbqmLi1XPrNFSyTHH6Lz2It/8gZ5zX66XPxER6pfru3q6LtrwgW
+	tc1bLYhVEDhQLV6B+q6eOue86FR319pXiqe8Z46q/dBPSuFR7QBxHN5nweS2Q/z/e8m9I3zqPLhlK
+	jjkiVIy3imJekXmh5h8QvtOYfr7kvuOgl071b9MMBNdsUyGLV4AZGyYvVa2NFivbxjPamDFDtoo0b
+	Wkz9Ejxrt1cnaSx9oNkJMzwz7+0fPkrLRUkMQ+CKexxcX/UbvyNSPSa4ybTdfFSKd5V3aWIhIjOYl
+	PuHZgcYg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sPIKv-0000000Cgco-3haW;
-	Thu, 04 Jul 2024 09:01:05 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
+	id 1sPISu-0000000ChtS-2TqS;
+	Thu, 04 Jul 2024 09:09:20 +0000
+Received: from out-179.mta1.migadu.com ([95.215.58.179])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sPIKq-0000000Cgal-0qcz
+	id 1sPISr-0000000Chru-2Q3b
 	for linux-rockchip@lists.infradead.org;
-	Thu, 04 Jul 2024 09:01:05 +0000
-Received: from pendragon.ideasonboard.com (117.145-247-81.adsl-dyn.isp.belgacom.be [81.247.145.117])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 1C37183F;
-	Thu,  4 Jul 2024 11:00:30 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1720083630;
-	bh=YaUWUl8EnNZIC7qO0CR0iMMrU86ht284fMYDBUlc9ro=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=Cm7kns4mtnhsZ9f+9mugwAlC12HOLkgX7yHnWzhi6zYH8qT1fTTggZvbfcnPg/W59
-	 dBtXKVAJctih1Q+sa060opBtGPFQz2W/cexrSdhyA888XpxPNn3kH769vT5kE0rrMZ
-	 AlzaLRzvKBSg1asTVZlgOiVXX15kblJKyLcjC6ZM=
-Date: Thu, 4 Jul 2024 12:00:36 +0300
-From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-To: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
-Cc: linux-media@vger.kernel.org, Dafna Hirschfeld <dafna@fastmail.com>,
-	Paul Elder <paul.elder@ideasonboard.com>,
-	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH v1 4/5] media: rkisp1: Add feature flags for BLS and
- compand
-Message-ID: <20240704090036.GA10099@pendragon.ideasonboard.com>
-References: <20240703222533.1662-1-laurent.pinchart@ideasonboard.com>
- <20240703222533.1662-5-laurent.pinchart@ideasonboard.com>
- <aayd65reqbctgm37jirnbxrjpo3isi2jntsc3auiday2ww3b77@svw6xhnw627d>
+	Thu, 04 Jul 2024 09:09:19 +0000
+X-Envelope-To: dri-devel@lists.freedesktop.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow.org; s=key1;
+	t=1720084151;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=KC61pWdXwZrmIIucHf8/SOh6wlKbm/uUH0pdpGEOCRg=;
+	b=KpyxZLqOAG/5dsv1nUoc3OjUQ2JVIikIYzIoAH1VK6Lqw/gGTOFopP8F+FkJgxR47ogz+b
+	I2W3qQvXVMBpSWd2ivT4+6XiZ00aglhJg6UIPf3sg1TV1dNoavpm7BUHloQGQsHI2hC1Px
+	QUAbZlr31vlhMDjtPE/X227+/Q1vpdIPM+QjOubdPBCn2M9ocxnwwpP0wsW1xNbGt95mG5
+	ek8W7o5Z4HIK1zFJQUIT0WoohTPlRcwpOz1/aFS6xkvGMv0CsOm0+qseBe6SFySRQJXazm
+	p+g3WQhxeFuYo41+XcNv6aVX3yMjI5G6vDYRB/NQON97wqD4pqUiFCLfqEGxBg==
+X-Envelope-To: s.hauer@pengutronix.de
+X-Envelope-To: linux-arm-kernel@lists.infradead.org
+X-Envelope-To: linux-rockchip@lists.infradead.org
+X-Envelope-To: devicetree@vger.kernel.org
+X-Envelope-To: kernel@pengutronix.de
+X-Envelope-To: andy.yan@rock-chips.com
+X-Envelope-To: benjamin.gaignard@collabora.com
+X-Envelope-To: michael.riesch@wolfvision.net
+X-Envelope-To: hjc@rock-chips.com
+X-Envelope-To: heiko@sntech.de
+X-Envelope-To: pgwipeout@gmail.com
+X-Envelope-To: s.hauer@pengutronix.de
+X-Envelope-To: dmitry.osipenko@collabora.com
+X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
+From: Diederik de Haas <didi.debian@cknow.org>
+To: dri-devel@lists.freedesktop.org, Sascha Hauer <s.hauer@pengutronix.de>
+Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ devicetree@vger.kernel.org, kernel@pengutronix.de,
+ Andy Yan <andy.yan@rock-chips.com>,
+ Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+ Michael Riesch <michael.riesch@wolfvision.net>,
+ Sandy Huang <hjc@rock-chips.com>,
+ Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>,
+ Peter Geis <pgwipeout@gmail.com>, Sascha Hauer <s.hauer@pengutronix.de>,
+ Dmitry Osipenko <dmitry.osipenko@collabora.com>
+Subject: Re: [PATCH v11 09/24] drm/rockchip: dw_hdmi: add regulator support
+Date: Thu, 04 Jul 2024 11:09:00 +0200
+Message-ID: <16078476.GIfNKF0EQE@bagend>
+Organization: Connecting Knowledge
+In-Reply-To: <20220422072841.2206452-10-s.hauer@pengutronix.de>
+References: <20220422072841.2206452-1-s.hauer@pengutronix.de>
+ <20220422072841.2206452-10-s.hauer@pengutronix.de>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <aayd65reqbctgm37jirnbxrjpo3isi2jntsc3auiday2ww3b77@svw6xhnw627d>
+X-Migadu-Flow: FLOW_OUT
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240704_020100_407137_6709D4BD 
-X-CRM114-Status: GOOD (  31.57  )
+X-CRM114-CacheID: sfid-20240704_020917_783166_94A02E42 
+X-CRM114-Status: GOOD (  24.12  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -66,159 +87,184 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============4879834592265127960=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jul 04, 2024 at 10:34:20AM +0200, Jacopo Mondi wrote:
-> On Thu, Jul 04, 2024 at 01:25:32AM GMT, Laurent Pinchart wrote:
-> > From: Paul Elder <paul.elder@ideasonboard.com>
-> >
-> > Add feature flags for the dedicated black level subtraction hardware
-> > block and for the compand hardware block. The companding feature flag is
-> > added on its own (as opposed to "the absence of BLS") because we will
-> > need it later for when we add support for the companding block.
-> >
-> > Skip BLS configuration when the BLS feature flag is unset, as devices
-> > without the dedicated BLS block cannot configure a hardware block that
-> > doesn't exist.
-> >
-> > Signed-off-by: Paul Elder <paul.elder@ideasonboard.com>
-> > Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-> > ---
-> >  drivers/media/platform/rockchip/rkisp1/rkisp1-common.h | 4 ++++
-> >  drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c    | 9 ++++++---
-> >  drivers/media/platform/rockchip/rkisp1/rkisp1-params.c | 7 +++++++
-> >  3 files changed, 17 insertions(+), 3 deletions(-)
-> >
-> > diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
-> > index cdf2d30e2bb1..607e1a024d02 100644
-> > --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
-> > +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
-> > @@ -116,6 +116,8 @@ enum rkisp1_isp_pad {
-> >   * @RKISP1_FEATURE_SELF_PATH: The ISP has a self path
-> >   * @RKISP1_FEATURE_DUAL_CROP: The ISP has the dual crop block at the resizer input
-> >   * @RKISP1_FEATURE_DMA_34BIT: The ISP uses 34-bit DMA addresses
-> > + * @RKISP1_FEATURE_BLS: The ISP has a dedicated BLS block
-> > + * @RKISP1_FEATURE_COMPAND: The ISP has a companding block
-> >   *
-> >   * The ISP features are stored in a bitmask in &rkisp1_info.features and allow
-> >   * the driver to implement support for features present in some ISP versions
-> > @@ -127,6 +129,8 @@ enum rkisp1_feature {
-> >  	RKISP1_FEATURE_SELF_PATH = BIT(2),
-> >  	RKISP1_FEATURE_DUAL_CROP = BIT(3),
-> >  	RKISP1_FEATURE_DMA_34BIT = BIT(4),
-> > +	RKISP1_FEATURE_BLS = BIT(5),
-> > +	RKISP1_FEATURE_COMPAND = BIT(6),
-> >  };
-> >
-> >  #define rkisp1_has_feature(rkisp1, feature) \
-> > diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
-> > index 0535ce57e862..dd114ab77800 100644
-> > --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
-> > +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
-> > @@ -509,7 +509,8 @@ static const struct rkisp1_info px30_isp_info = {
-> >  	.isp_ver = RKISP1_V12,
-> >  	.features = RKISP1_FEATURE_MIPI_CSI2
-> >  		  | RKISP1_FEATURE_SELF_PATH
-> > -		  | RKISP1_FEATURE_DUAL_CROP,
-> > +		  | RKISP1_FEATURE_DUAL_CROP
-> > +		  | RKISP1_FEATURE_BLS,
-> 
-> Doesn't apply for me on top of [media-stage/master + my ext params
-> series]
-> 
-> In particular, in media-stage I don't see
-> >  	.max_width = 3264,
-> >  	.max_height = 2448,
-> 
-> these
+--===============4879834592265127960==
+Content-Type: multipart/signed; boundary="nextPart1778036.H1nxkmP1m4";
+ micalg="pgp-sha256"; protocol="application/pgp-signature"
 
-There are a few prerequisites. The cover letter lists the base commit
-ID. The fact that I haven't pushed a branch anywhere doesn't help
-obviously... I'll make it clearer in v2.
+--nextPart1778036.H1nxkmP1m4
+Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain; charset="us-ascii"; protected-headers="v1"
+From: Diederik de Haas <didi.debian@cknow.org>
+Date: Thu, 04 Jul 2024 11:09:00 +0200
+Message-ID: <16078476.GIfNKF0EQE@bagend>
+Organization: Connecting Knowledge
+In-Reply-To: <20220422072841.2206452-10-s.hauer@pengutronix.de>
+MIME-Version: 1.0
 
-> >  };
-> > @@ -532,7 +533,8 @@ static const struct rkisp1_info rk3399_isp_info = {
-> >  	.isp_ver = RKISP1_V10,
-> >  	.features = RKISP1_FEATURE_MIPI_CSI2
-> >  		  | RKISP1_FEATURE_SELF_PATH
-> > -		  | RKISP1_FEATURE_DUAL_CROP,
-> > +		  | RKISP1_FEATURE_DUAL_CROP
-> > +		  | RKISP1_FEATURE_BLS,
-> >  	.max_width = 4416,
-> >  	.max_height = 3312,
-> >  };
-> > @@ -554,7 +556,8 @@ static const struct rkisp1_info imx8mp_isp_info = {
-> >  	.isr_size = ARRAY_SIZE(imx8mp_isp_isrs),
-> >  	.isp_ver = RKISP1_V_IMX8MP,
-> >  	.features = RKISP1_FEATURE_MAIN_STRIDE
-> > -		  | RKISP1_FEATURE_DMA_34BIT,
-> > +		  | RKISP1_FEATURE_DMA_34BIT
-> > +		  | RKISP1_FEATURE_COMPAND,
-> >  	.max_width = 4096,
-> >  	.max_height = 3072,
-> >  };
-> > diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c
-> > index 92312b4dabf6..bac9d4972493 100644
-> > --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c
-> > +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c
-> > @@ -1268,6 +1268,12 @@ rkisp1_isp_isr_other_config(struct rkisp1_params *params,
-> >  	module_cfg_update = new_params->module_cfg_update;
-> >  	module_ens = new_params->module_ens;
-> >
-> > +	if (!rkisp1_has_feature(params->rkisp1, BLS)) {
-> > +		module_en_update &= ~RKISP1_CIF_ISP_MODULE_BLS;
-> > +		module_cfg_update &= ~RKISP1_CIF_ISP_MODULE_BLS;
-> > +		module_ens &= ~RKISP1_CIF_ISP_MODULE_BLS;
-> > +	}
-> > +
+On Friday, 22 April 2022 09:28:26 CEST Sascha Hauer wrote:
+> The RK3568 has HDMI_TX_AVDD0V9 and HDMI_TX_AVDD_1V8 supply inputs needed
+> for the HDMI port. add support for these to the driver for boards which
+> have them supplied by switchable regulators.
 > 
-> or is it easier to read if you
+> Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
+> Reviewed-by: Dmitry Osipenko <dmitry.osipenko@collabora.com>
+> ---
+>  drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c | 41 +++++++++++++++++++--
+>  1 file changed, 38 insertions(+), 3 deletions(-)
 > 
-> 	if (rkisp1_has_feature(params->rkisp1, BLS)) {
->                 /* update bls config */
->                 if (module_cfg_update & RKISP1_CIF_ISP_MODULE_BLS)
->                         rkisp1_bls_config(params,
->                                           &new_params->others.bls_config);
+> diff --git a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
+> b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c index
+> b64cc62c7b5af..fe4f9556239ac 100644
+> --- a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
+> +++ b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
+> @@ -9,6 +9,7 @@
+>  #include <linux/platform_device.h>
+>  #include <linux/phy/phy.h>
+>  #include <linux/regmap.h>
+> +#include <linux/regulator/consumer.h>
 > 
->                 if (module_en_update & RKISP1_CIF_ISP_MODULE_BLS) {
->                         if (module_ens & RKISP1_CIF_ISP_MODULE_BLS)
->                                 rkisp1_param_set_bits(params,
->                                                       RKISP1_CIF_ISP_BLS_CTRL,
->                                                       RKISP1_CIF_ISP_BLS_ENA);
->                         else
->                                 rkisp1_param_clear_bits(params,
->                                                         RKISP1_CIF_ISP_BLS_CTRL,
->                                                         RKISP1_CIF_ISP_BLS_ENA);
->                 }
->         }
+>  #include <drm/bridge/dw_hdmi.h>
+>  #include <drm/drm_edid.h>
+> @@ -76,6 +77,8 @@ struct rockchip_hdmi {
+>  	struct clk *ref_clk;
+>  	struct clk *grf_clk;
+>  	struct dw_hdmi *hdmi;
+> +	struct regulator *avdd_0v9;
+> +	struct regulator *avdd_1v8;
+>  	struct phy *phy;
+>  };
 > 
-> below ?
+> @@ -226,6 +229,14 @@ static int rockchip_hdmi_parse_dt(struct rockchip_hdmi
+> *hdmi) return PTR_ERR(hdmi->grf_clk);
+>  	}
+> 
+> +	hdmi->avdd_0v9 = devm_regulator_get(hdmi->dev, "avdd-0v9");
+> +	if (IS_ERR(hdmi->avdd_0v9))
+> +		return PTR_ERR(hdmi->avdd_0v9);
+> +
+> +	hdmi->avdd_1v8 = devm_regulator_get(hdmi->dev, "avdd-1v8");
+> +	if (IS_ERR(hdmi->avdd_1v8))
+> +		return PTR_ERR(hdmi->avdd_1v8);
+> +
+>  	return 0;
+>  }
+> 
+> @@ -566,11 +577,23 @@ static int dw_hdmi_rockchip_bind(struct device *dev,
+> struct device *master, return ret;
+>  	}
+> 
+> +	ret = regulator_enable(hdmi->avdd_0v9);
+> +	if (ret) {
+> +		DRM_DEV_ERROR(hdmi->dev, "failed to enable avdd0v9: 
+%d\n", ret);
+> +		goto err_avdd_0v9;
+> +	}
+> +
+> +	ret = regulator_enable(hdmi->avdd_1v8);
+> +	if (ret) {
+> +		DRM_DEV_ERROR(hdmi->dev, "failed to enable avdd1v8: 
+%d\n", ret);
+> +		goto err_avdd_1v8;
+> +	}
+> +
+>  	ret = clk_prepare_enable(hdmi->ref_clk);
+>  	if (ret) {
+>  		DRM_DEV_ERROR(hdmi->dev, "Failed to enable HDMI 
+reference clock: %d\n",
+>  			      ret);
+> -		return ret;
+> +		goto err_clk;
+>  	}
+> 
+>  	if (hdmi->chip_data == &rk3568_chip_data) {
+> @@ -594,10 +617,19 @@ static int dw_hdmi_rockchip_bind(struct device *dev,
+> struct device *master, */
+>  	if (IS_ERR(hdmi->hdmi)) {
+>  		ret = PTR_ERR(hdmi->hdmi);
+> -		drm_encoder_cleanup(encoder);
+> -		clk_disable_unprepare(hdmi->ref_clk);
+> +		goto err_bind;
+>  	}
+> 
+> +	return 0;
+> +
+> +err_bind:
+> +	clk_disable_unprepare(hdmi->ref_clk);
+> +	drm_encoder_cleanup(encoder);
+> +err_clk:
+> +	regulator_disable(hdmi->avdd_1v8);
+> +err_avdd_1v8:
+> +	regulator_disable(hdmi->avdd_0v9);
+> +err_avdd_0v9:
+>  	return ret;
+>  }
+> 
+> @@ -608,6 +640,9 @@ static void dw_hdmi_rockchip_unbind(struct device *dev,
+> struct device *master,
+> 
+>  	dw_hdmi_unbind(hdmi->hdmi);
+>  	clk_disable_unprepare(hdmi->ref_clk);
+> +
+> +	regulator_disable(hdmi->avdd_1v8);
+> +	regulator_disable(hdmi->avdd_0v9);
+>  }
+> 
+>  static const struct component_ops dw_hdmi_rockchip_ops = {
 
-I was considering it. Lower indentation is nice, and I thought that we
-could centralize all the feature checks in one place, but I don't mind
-much either way. If you have a stronger preference I can change this.
+Is it possible to probe for those avdd_0v9 and avdd_1v8 regulators only on 
+devices that should have them?
 
-> >  	/* update dpc config */
-> >  	if (module_cfg_update & RKISP1_CIF_ISP_MODULE_DPCC)
-> >  		rkisp1_dpcc_config(params,
-> > @@ -1851,6 +1857,7 @@ static const struct rkisp1_ext_params_handler {
-> >  		.size		= sizeof(struct rkisp1_ext_params_bls_config),
-> >  		.handler	= rkisp1_ext_params_bls,
-> >  		.group		= RKISP1_EXT_PARAMS_BLOCK_GROUP_OTHERS,
-> > +		.features	= RKISP1_FEATURE_BLS,
-> >  	},
-> >  	[RKISP1_EXT_PARAMS_BLOCK_TYPE_DPCC] = {
-> >  		.size		= sizeof(struct rkisp1_ext_params_dpcc_config),
+On a Rock64 (rk3328), but probably for all VOP1 devices, they're not present 
+and that results in the following warnings:
+dwhdmi-rockchip ff3c0000.hdmi: supply avdd-0v9 not found, using dummy regulator
+dwhdmi-rockchip ff3c0000.hdmi: supply avdd-1v8 not found, using dummy regulator
 
--- 
-Regards,
+And those get repeated a number of times. In my last 6.10-rc5 boot it was 5 
+each and in my last 6.10-rc6 boot it was 9 each. It seems the number varies 
+per boot and is not connected to the specific kernel version.
 
-Laurent Pinchart
+In [1] I got 36 "dummy regulator" warnings, but some were from others.
+
+[1] https://lore.kernel.org/linux-rockchip/2528743.FZeJfPzi8P@bagend/
+
+Cheers,
+  Diederik
+--nextPart1778036.H1nxkmP1m4
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: This is a digitally signed message part.
+Content-Transfer-Encoding: 7Bit
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYIAB0WIQT1sUPBYsyGmi4usy/XblvOeH7bbgUCZoZmrAAKCRDXblvOeH7b
+bpE6AP9JmF962eoq9QTZo9Unls/1Ob+XfH95r6BWNtb34b9xSgD/Yeq7kP4RyaXH
+HYDpxbMk7ZRrqIBWNLKRKU7cII3f0AU=
+=g+Dz
+-----END PGP SIGNATURE-----
+
+--nextPart1778036.H1nxkmP1m4--
+
+
+
+
+
+--===============4879834592265127960==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============4879834592265127960==--
+
+
+
+
