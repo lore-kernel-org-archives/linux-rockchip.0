@@ -4,44 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EE486C30653
-	for <linux-rockchip@archiver.kernel.org>; Thu,  4 Jul 2024 19:18:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9FEB7C30653
+	for <linux-rockchip@archiver.kernel.org>; Thu,  4 Jul 2024 19:20:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=ekkZ03CwE1cwoYk1GyCrHpNR3EH8CMEGVIz72sxE80o=; b=G+xTu4oc4lr33E
-	Fq5oHIxNfL6O2IkUZCDTj5qiOS+cfhPwvFSxstW4I/S75flHholtxT/euOyND3q7ErwHdxH4swraV
-	57VYr4fzTKjZSXCpo2aCCfUi1z8XFa725DpfAsXnWjzEz3iNAXKpbOnYTW3MR+DpDHwW9RciOvedP
-	HsbJE8T60K8aDSrlfCaCMkJgNNnB/w6dpSIM6n4wQyVpnsTkly+OfHBELdSmdy05fkccoMTTB7FF0
-	aYoxbjYqrvJNlGIXev8adiTdHX0G1Jfvj6/makVmeUmDBFlop4JYYiWPnB6/L/8cDKna0fnT4WUj+
-	savO40AZpV76wkv8Ek6A==;
+	List-Owner; bh=Lo27kE1jsf5JgQvmHZbpwGgsPkAsOu05KuSvFrMIL30=; b=XeVgyf0uciGITe
+	r06uT24bOM2G2Y1cmXJisqran/0iYyKJ25ty3RNa7j33YAQxHBSWfXLa6FskXLIYcVHPMhCJF9MQQ
+	ehr3PHfrlVWrdH6h4dZMEoZ7O6L/9zNOEUVgqAr6n6oM/NRBPXE9htTmioSK1d2h4coO7z/hWqPz/
+	j3vEuZYVb1qNowcYndzqIczTN+FDvhPof+UUMSYRUhx3I3LQ2Yf1Tn4VIKnW5jJTRHIPItI2FVWMD
+	cFhKdswJDrWpHsautn9cx4eab/0GCSlzQV1rKeinh6FHR7xeRc24JhVLrJkArNB8UaqaVstTmxR5m
+	+PEhNxkV64JVmXYFuVrw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sPRy5-0000000EFky-1qVB;
-	Thu, 04 Jul 2024 19:18:09 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1sPS04-0000000EG1L-0lhH;
+	Thu, 04 Jul 2024 19:20:12 +0000
+Received: from out-183.mta0.migadu.com ([91.218.175.183])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sPRy2-0000000EFkX-3uiS
-	for linux-rockchip@lists.infradead.org;
-	Thu, 04 Jul 2024 19:18:08 +0000
-Received: from i53875ac2.versanet.de ([83.135.90.194] helo=diego.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1sPRxv-00062i-LP; Thu, 04 Jul 2024 21:17:59 +0200
-From: Heiko Stuebner <heiko@sntech.de>
-To: mturquette@baylibre.com, Stephen Boyd <sboyd@kernel.org>
-Cc: linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org
-Subject: [GIT PULL] Rockchip clock changes for 6.11 #1
-Date: Thu, 04 Jul 2024 21:17:58 +0200
-Message-ID: <8961259.VV5PYv0bhD@diego>
+	id 1sPRzp-0000000EFyi-3EOj;
+	Thu, 04 Jul 2024 19:19:59 +0000
+X-Envelope-To: heiko@sntech.de
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow.org; s=key1;
+	t=1720120794;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=12kQGJpaxYXve/bNP2Rvzy67ptC3odJSOf9IDo8D060=;
+	b=e5yZkCE9Ici3nvB7wz3sGd0TYcyIk2C3zY2FsiTaZiC9RFqNZwenUU0Pi0C9dQCkiaQLVx
+	GthxTDvHEs0RrfGFiKJgkZwiwis9mQTzfH4h2QdHMKZAM+LW44xMIZN9Dl6Bs9nr1l0NN1
+	Aqv+tLEuQo0AtZpWbzfI+SqBL7Nb66MQTznoHVT+p3fUyMa3sA65aBn5x6VJHStbpQv5mh
+	niIEg3sAHNZQdI/rvMSO2sw04gpwjejRa/iNHmzpANDuSALc4qDbyDPi2QPB4Qlqt6lwKq
+	oEgwIVGIxzjV9Mz3qFrIcQczJ+MlRVi8Qx4NHx0JZL5ohtdJXj/PxTNrZtIq6w==
+X-Envelope-To: knaerzche@gmail.com
+X-Envelope-To: dsimic@manjaro.org
+X-Envelope-To: linux-rockchip@lists.infradead.org
+X-Envelope-To: devicetree@vger.kernel.org
+X-Envelope-To: linux-arm-kernel@lists.infradead.org
+X-Envelope-To: linux-kernel@vger.kernel.org
+X-Envelope-To: didi.debian@cknow.org
+X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
+From: Diederik de Haas <didi.debian@cknow.org>
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: Alex Bee <knaerzche@gmail.com>,
+	Dragan Simic <dsimic@manjaro.org>,
+	linux-rockchip@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Diederik de Haas <didi.debian@cknow.org>
+Subject: [PATCH] arm64: dts: rockchip: Add avdd supplies to hdmi on rock64
+Date: Thu,  4 Jul 2024 21:18:33 +0200
+Message-ID: <20240704191919.38856-1-didi.debian@cknow.org>
 MIME-Version: 1.0
+X-Migadu-Flow: FLOW_OUT
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240704_121807_005348_CE9A1AD8 
-X-CRM114-Status: UNSURE (   8.31  )
+X-CRM114-CacheID: sfid-20240704_121958_206654_7232B070 
+X-CRM114-Status: UNSURE (   9.93  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -59,64 +80,46 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Mike, Stephen,
+Pine64's Rock64 was missing the avdd supply properties on the hdmi node,
+causing the following warnings:
 
-please find below a pull-request with some Rockchip clock changes for 6.11
+  dwhdmi-rockchip ff3c0000.hdmi: supply avdd-0v9 not found, using dummy regulator
+  dwhdmi-rockchip ff3c0000.hdmi: supply avdd-1v8 not found, using dummy regulator
 
-Nothing really stands out, it's just some small changes.
+In the Rock64 Schematic document version 2.0 those supplies are marked
+as DVIDEO_AVDD_1V0 and DVIDEO_AVDD_1V8 respectively, but in version 3.0
+those are named HDMI_AVDD_1V0 and HDMI_AVDD_1V8, which is a bit clearer.
+In both versions those are connected to LDO3 and LDO1 respectively.
 
-Please pull.
+While the DeviceTree property is named 'avdd-0v9-supply' the
+'rockchip,dw-hdmi.yaml' binding document notes the following:
 
-Thanks
-Heiko
+  A 0.9V supply that powers up the SoC internal circuitry. The actual
+  pin name varies between the different SoCs and is usually
+  HDMI_TX_AVDD_0V9 or sometimes HDMI_AVDD_1V0.
 
+So the 'vdd_10' reference is not an error.
 
-The following changes since commit 1613e604df0cd359cf2a7fbd9be7a0bcfacfabd0:
+Signed-off-by: Diederik de Haas <didi.debian@cknow.org>
+---
+ arch/arm64/boot/dts/rockchip/rk3328-rock64.dts | 2 ++
+ 1 file changed, 2 insertions(+)
 
-  Linux 6.10-rc1 (2024-05-26 15:20:12 -0700)
-
-are available in the Git repository at:
-
-  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v6.11-rockchip-clk1
-
-for you to fetch changes up to d89e8096957e35742c9922d3f6628f24de0d6163:
-
-  dt-bindings: clock: rk3188-cru-common: remove CLK_NR_CLKS (2024-07-04 19:48:31 +0200)
-
-----------------------------------------------------------------
-More exported clocks for rk3128 peripherals, conversion to kmemduo_array
-for clock controllers and both rk3128 and rk3188 drop the CLK_NR_CLKS
-from their dt-binding header, where it does not belong.
-
-----------------------------------------------------------------
-Alex Bee (7):
-      dt-bindings: clock: rk3128: Add PCLK_MIPIPHY
-      clk: rockchip: rk3128: Export PCLK_MIPIPHY
-      clk: rockchip: rk3128: Add hclk_vio_h2p to critical clocks
-      clk: rockchip: rk3128: Drop CLK_NR_CLKS usage
-      dt-bindings: clock: rk3128: Drop CLK_NR_CLKS
-      dt-bindings: clock: rk3128: Add HCLK_SFC
-      clk: rockchip: rk3128: Add HCLK_SFC
-
-Andy Shevchenko (1):
-      clk: rockchip: Switch to use kmemdup_array()
-
-Heiko Stuebner (1):
-      Merge branch 'v6.11-shared/clkids' into v6.11-clk/next
-
-Johan Jonker (2):
-      clk: rockchip: rk3188: Drop CLK_NR_CLKS usage
-      dt-bindings: clock: rk3188-cru-common: remove CLK_NR_CLKS
-
- drivers/clk/rockchip/clk-cpu.c                |  5 ++---
- drivers/clk/rockchip/clk-pll.c                |  8 ++++----
- drivers/clk/rockchip/clk-rk3128.c             | 24 +++++++++++++++++++-----
- drivers/clk/rockchip/clk-rk3188.c             | 18 ++++++++++++++----
- include/dt-bindings/clock/rk3128-cru.h        |  4 ++--
- include/dt-bindings/clock/rk3188-cru-common.h |  2 --
- 6 files changed, 41 insertions(+), 20 deletions(-)
-
-
+diff --git a/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts b/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts
+index 229fe9da9c2d..90fef766f3ae 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts
+@@ -154,6 +154,8 @@ &gmac2io {
+ };
+ 
+ &hdmi {
++	avdd-0v9-supply = <&vdd_10>;
++	avdd-1v8-supply = <&vcc_18>;
+ 	status = "okay";
+ };
+ 
+-- 
+2.45.2
 
 
 _______________________________________________
