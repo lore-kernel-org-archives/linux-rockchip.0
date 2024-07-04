@@ -4,49 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EC93EC30653
-	for <linux-rockchip@archiver.kernel.org>; Thu,  4 Jul 2024 10:05:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C7937C3065C
+	for <linux-rockchip@archiver.kernel.org>; Thu,  4 Jul 2024 10:16:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=fHtpPjMcfsWOW9xQLmG2GwPVzCiKWs7sC3cBKp+YTOc=; b=nWu5BnuWhwM86b
-	V94MKlAKDn2hi2plTLNujoX7trP3it4GgVM3FIo9qR6wCDdcQ6H1OErtkucTSHCD2h1EhN8v2K7+2
-	igjYLCNBjzXlgmvCw8a3VaXT00w3EhprFL1isIAIE9Tcn+JJzsFMZ/O7Afk62AdiYXslvqLnFyASs
-	TyqgXB35vAYe2QJ29d4TH+KX1szNUE12NKc8lpSLCvmeEJDI9BbPuj1BhFJvGLrnh6J4T3WVWReq/
-	/jTsXxLMLgtTBonfvLuBvzChXlnWnN+nq7VbsxwcJxFYexm1f00k8jEKNsPi7hIHRcQ3GbmHzA6La
-	SvHMMaINVVE7tPPg3q8Q==;
+	List-Owner; bh=I3fxWj+ikhL5NXzAKZkhhwDwCjZjDQe0YULXTR+W7Dg=; b=cRBIvMt3UtruuD
+	SBkyxI8SSTxKgtyr6V+DstNNcJ1j8JPjmujrHoKaU/r6LgoGJczh31RYNoh0LareUZHlAyBYXD72k
+	89sf9MxfuBINU0oc826VuJqFHnA0PtY0AKOSZMIt0PbsslVkpcIzqLswdiu+J/HPvxFt0CGvAaf+5
+	UUDb6okrL0XEMyib2gbg7aDsZm+A+K/gnYLaIxuWZ6dMhQOaAv6SuBDhfWWkRCGoYEOOUrw8lUN2B
+	0s9LYGLJEZS7wGZHb7lSoIIhAp//1Djo85IxeulCNH6iXt+epl2mDQKMyLJGRvcONRHkHxZNhMR0Z
+	7bgSL3lS6hQedwyuUjew==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sPJL5-0000000CpDM-0FV1;
-	Thu, 04 Jul 2024 10:05:19 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1sPJVQ-0000000Cqd5-28Y7;
+	Thu, 04 Jul 2024 10:16:00 +0000
+Received: from mail-lj1-x22f.google.com ([2a00:1450:4864:20::22f])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sPJL2-0000000CpC5-1UhV;
-	Thu, 04 Jul 2024 10:05:17 +0000
-Received: from i53875ac2.versanet.de ([83.135.90.194] helo=diego.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1sPJKx-0007cl-E2; Thu, 04 Jul 2024 12:05:11 +0200
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: linux-rockchip@lists.infradead.org,
- Diederik de Haas <didi.debian@cknow.org>
-Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH 2/2] arm64: dts: rockchip: add rock5 itx board
-Date: Thu, 04 Jul 2024 12:05:10 +0200
-Message-ID: <4552794.8F6SAcFxjW@diego>
-In-Reply-To: <2278169.QnsP76Vvrg@bagend>
-References: <20240703210524.776455-1-heiko@sntech.de>
- <20240703210524.776455-3-heiko@sntech.de> <2278169.QnsP76Vvrg@bagend>
+	id 1sPJVM-0000000CqZa-2R1U
+	for linux-rockchip@lists.infradead.org;
+	Thu, 04 Jul 2024 10:15:58 +0000
+Received: by mail-lj1-x22f.google.com with SMTP id 38308e7fff4ca-2ec52fbb50cso4289941fa.2
+        for <linux-rockchip@lists.infradead.org>; Thu, 04 Jul 2024 03:15:55 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1720088154; x=1720692954; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=1nvqcTE+d+I6/PYlZYlUrN3ZSE7/0dbyWuREcOgf8aA=;
+        b=yssXao/9N/62IS2GE2PymOgwEmR+G5PRGX8P2WXhWRfG2yHxe+D7CPqwSHGs5cIc89
+         SvmWWSdeuJPK/xmIJ+AozrnO8lTIrbXYqpS3e1HhlRhz2HQ2RJXh79HbC/9lLxmxwb7s
+         deDldg0M3xDIOZ2iSWLfL9qU6GkNe2MipTWHZ3JEInC76bX2Mj7C1o+six+it4//IdmU
+         CUypFsAPwTGvDerwNlstU947VqaMiVa0bqyiI1/swl6XlH1otJxTg4w38L2nD/9cCD0N
+         Zg3d5VXjSsefxNV9AjCNSxqeuyMVv/xBzc7i/Ttx2ihL6eOuSoOhQSQ9UFEdB5ElOBXC
+         ZA8g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1720088154; x=1720692954;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=1nvqcTE+d+I6/PYlZYlUrN3ZSE7/0dbyWuREcOgf8aA=;
+        b=AQn8o7YPocYc3F7VQAPlZjilpBYmFs7ChQ9wVQuwNIP9lNRD+6ViEbLhKLYh+D2fDw
+         vwtC6OJXkdKtsANn55mCD6ehe33Ah9cK1+W0mf6YdPBDlzXTlu06yO23ooU1RGxjFbey
+         RpNp1ckqrWlKMqa8SolnIymQTwmhBQzfdjUIrhdS6+w9cSOR010v3MyPCdR862fbCbig
+         sv/YH74KRbWeMnIpb7qlfkLBTIqN4b+cjJnSSnsyS2AKzu+n58wVhfnQIm5VdD5LsMa4
+         laOcIEXd3WybIrpi7TSE8opl+Pf2lvhmf4LUb/Vxm+weMwrPb3aRX4W5XAG1rd/YJpAz
+         O+LQ==
+X-Forwarded-Encrypted: i=1; AJvYcCVaexG7llDnsGN0KE3Mv2K90o4lMcq6rtGKC1E8kgW4Lx72lo6NI3K1RX/b/gM5mgg3Bf0gK54uTbp9F5TTiCDpQpR1awAuJs+FELULVjGa3DZC
+X-Gm-Message-State: AOJu0YyUH9gE9/v6OA9ZwR4eOoD9kUpbEdGkNu+ELGnJawfUjD7wXbfo
+	nGbroDeArl0Ugx4G296PxaxDJs3x1GifHQNC7r+6Dq5IQKbMu51Iv1HMvTXhrcI=
+X-Google-Smtp-Source: AGHT+IFjFbE6dWkiueh16FP2N9UOEw13MN12/uduae8Rfkcs3JR/7QPB7Yfqddj+KjB9xdjW8KZcuw==
+X-Received: by 2002:a2e:98c3:0:b0:2ec:5200:a935 with SMTP id 38308e7fff4ca-2ee8edc2d45mr8049801fa.40.1720088154177;
+        Thu, 04 Jul 2024 03:15:54 -0700 (PDT)
+Received: from eriador.lumag.spb.ru (dzdbxzyyyyyyyyyyybrhy-3.rev.dnainternet.fi. [2001:14ba:a0c3:3a00::b8c])
+        by smtp.gmail.com with ESMTPSA id 38308e7fff4ca-2ee5168cf1fsm22523201fa.116.2024.07.04.03.15.53
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 04 Jul 2024 03:15:53 -0700 (PDT)
+Date: Thu, 4 Jul 2024 13:15:52 +0300
+From: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
+To: Vignesh Raman <vignesh.raman@collabora.com>
+Cc: dri-devel@lists.freedesktop.org, daniels@collabora.com, 
+	helen.koike@collabora.com, airlied@gmail.com, daniel@ffwll.ch, robdclark@gmail.com, 
+	guilherme.gallo@collabora.com, sergi.blanch.torne@collabora.com, mcanal@igalia.com, 
+	linux-mediatek@lists.infradead.org, linux-amlogic@lists.infradead.org, 
+	linux-rockchip@lists.infradead.org, amd-gfx@lists.freedesktop.org, linux-arm-msm@vger.kernel.org, 
+	intel-gfx@lists.freedesktop.org, virtualization@lists.linux-foundation.org, 
+	linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v1] drm/ci: uprev IGT
+Message-ID: <ojnz5hjfht6gwouphvmvizb2udlz2wvwnsj4vgosp3chrhsmcv@c7cxscdyxtsn>
+References: <20240704092202.75551-1-vignesh.raman@collabora.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20240704092202.75551-1-vignesh.raman@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240704_030516_556337_43A35B80 
-X-CRM114-Status: GOOD (  14.17  )
+X-CRM114-CacheID: sfid-20240704_031556_630552_9457AF0B 
+X-CRM114-Status: GOOD (  16.15  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -63,81 +97,97 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Diederik,
-
-Am Donnerstag, 4. Juli 2024, 11:38:51 CEST schrieb Diederik de Haas:
-> Thanks for submitting this. A quick scan indicates it should work with a 
-> (recent) Debian kernel OOTB :-)
+On Thu, Jul 04, 2024 at 02:52:02PM GMT, Vignesh Raman wrote:
+> Uprev IGT to the latest version, which includes a fix for the
+> writeback tests issue on MSM devices. Enable debugging for
+> igt-runner to log output such as 'Begin test' and 'End test'.
+> This will help identify which test causes system freeze or hangs.
+> Update xfails and add metadata header for each flake test.
 > 
-> On Wednesday, 3 July 2024 23:05:24 CEST Heiko Stuebner wrote:
-> > +&sdhci {
-> > +       bus-width = <8>;
-> > +       no-sdio;
-> > +       no-sd;
-> > +       non-removable;
-> > +       max-frequency = <200000000>;
-> > +       mmc-hs400-1_8v;
-> > +       mmc-hs400-enhanced-strobe;
-> > +       mmc-hs200-1_8v;
-> > +       status = "okay";
-> > +};
-> > +
-> > +&sdmmc {
-> > +       max-frequency = <200000000>;
-> > +       no-sdio;
-> > +       no-mmc;
-> > +       bus-width = <4>;
-> > +       cap-mmc-highspeed;
-> > +       cap-sd-highspeed;
-> > +       disable-wp;
-> > +       sd-uhs-sdr104;
-> > +       vmmc-supply = <&vcc_3v3_s3>;
-> > +       vqmmc-supply = <&vccio_sd_s0>;
-> > +       pinctrl-names = "default";
-> > +       pinctrl-0 = <&sdmmc_bus4 &sdmmc_clk &sdmmc_cmd &sdmmc_det>;
-> > +       status = "okay";
-> > +};
-> > +
-> > +/* M.2 E-KEY */
-> > +&sdio {
-> > +       broken-cd;
-> > +       bus-width = <4>;
-> > +       cap-sdio-irq;
-> > +       disable-wp;
-> > +       keep-power-in-suspend;
-> > +       max-frequency = <150000000>;
-> > +       mmc-pwrseq = <&sdio_pwrseq>;
-> > +       no-sd;
-> > +       no-mmc;
-> > +       non-removable;
-> > +       pinctrl-names = "default";
-> > +       pinctrl-0 = <&sdiom0_pins>;
-> > +       sd-uhs-sdr104;
-> > +       vmmc-supply = <&vcc3v3_ekey>;
-> > +       status = "okay";
-> > +};
-> > +
-> > +&sfc {
-> > +       pinctrl-names = "default";
-> > +       pinctrl-0 = <&fspim2_pins>;
-> > +       status = "okay";
+> Signed-off-by: Vignesh Raman <vignesh.raman@collabora.com>
+> ---
 > 
-> Shouldn't those properties be sorted alphabetically? Or at least consistently?
-> Note that the same issue is present on other places too, but I believe the 
-> above quoted part shows the issue enough.
+> v1:
+>   - https://gitlab.freedesktop.org/vigneshraman/linux/-/pipelines/1216850
+> 
+> ---
+>  drivers/gpu/drm/ci/gitlab-ci.yml              |   2 +-
+>  drivers/gpu/drm/ci/igt_runner.sh              |   1 +
+>  .../gpu/drm/ci/xfails/amdgpu-stoney-fails.txt |   1 +
+>  .../drm/ci/xfails/amdgpu-stoney-flakes.txt    |  14 +-
+>  .../gpu/drm/ci/xfails/amdgpu-stoney-skips.txt |   4 +-
+>  drivers/gpu/drm/ci/xfails/i915-amly-fails.txt |  12 +-
+>  .../gpu/drm/ci/xfails/i915-amly-flakes.txt    |  41 ++++-
+>  drivers/gpu/drm/ci/xfails/i915-amly-skips.txt |   5 +-
+>  drivers/gpu/drm/ci/xfails/i915-apl-flakes.txt |   2 +-
+>  drivers/gpu/drm/ci/xfails/i915-apl-skips.txt  |   4 +-
+>  drivers/gpu/drm/ci/xfails/i915-cml-fails.txt  |  14 +-
+>  drivers/gpu/drm/ci/xfails/i915-cml-flakes.txt |   9 +-
+>  drivers/gpu/drm/ci/xfails/i915-cml-skips.txt  |   5 +-
+>  drivers/gpu/drm/ci/xfails/i915-glk-fails.txt  |  24 +--
+>  drivers/gpu/drm/ci/xfails/i915-glk-flakes.txt |   8 +-
+>  drivers/gpu/drm/ci/xfails/i915-glk-skips.txt  |   4 +-
+>  drivers/gpu/drm/ci/xfails/i915-kbl-fails.txt  |   2 +
+>  drivers/gpu/drm/ci/xfails/i915-kbl-flakes.txt |   2 +-
+>  drivers/gpu/drm/ci/xfails/i915-kbl-skips.txt  |   4 +-
+>  drivers/gpu/drm/ci/xfails/i915-tgl-fails.txt  |  25 +--
+>  drivers/gpu/drm/ci/xfails/i915-tgl-skips.txt  |   4 +-
+>  drivers/gpu/drm/ci/xfails/i915-whl-fails.txt  |  17 +-
+>  drivers/gpu/drm/ci/xfails/i915-whl-flakes.txt |   2 +-
+>  drivers/gpu/drm/ci/xfails/i915-whl-skips.txt  |   5 +-
+>  .../drm/ci/xfails/mediatek-mt8173-fails.txt   |   9 +-
+>  .../drm/ci/xfails/mediatek-mt8173-flakes.txt  |  32 +++-
+>  .../drm/ci/xfails/mediatek-mt8173-skips.txt   |   4 +-
+>  .../drm/ci/xfails/mediatek-mt8183-fails.txt   |   2 +-
+>  .../drm/ci/xfails/mediatek-mt8183-skips.txt   |   2 +-
+>  .../gpu/drm/ci/xfails/meson-g12b-fails.txt    |   2 +-
+>  .../gpu/drm/ci/xfails/meson-g12b-skips.txt    |   2 +-
+>  .../gpu/drm/ci/xfails/msm-apq8016-fails.txt   |   5 +-
+>  .../gpu/drm/ci/xfails/msm-apq8016-skips.txt   |   2 +-
+>  .../gpu/drm/ci/xfails/msm-apq8096-flakes.txt  |   2 +-
+>  .../gpu/drm/ci/xfails/msm-apq8096-skips.txt   |   4 +-
 
-The main sorting is
-- compatible
-- reg
-[... alphabetically ...]
-- status
-
-But now that I look at it, you're right there are some non-alphabetical
-shenanigans going on there in the sdmmc and sdhci nodes ;-)
-
-Heiko
+Acked-by: Dmitry Baryshkov <dmitry.baryshkov@linaro.org> # msm tests
 
 
+>  .../msm-sc7180-trogdor-kingoftown-fails.txt   | 145 ------------------
+>  .../msm-sc7180-trogdor-kingoftown-flakes.txt  |  18 ++-
+>  .../msm-sc7180-trogdor-kingoftown-skips.txt   |   5 +-
+>  ...sm-sc7180-trogdor-lazor-limozeen-fails.txt | 145 ------------------
+>  ...m-sc7180-trogdor-lazor-limozeen-flakes.txt |  11 +-
+>  ...sm-sc7180-trogdor-lazor-limozeen-skips.txt |   2 +-
+>  .../gpu/drm/ci/xfails/msm-sdm845-flakes.txt   | 105 ++++++++++++-
+>  .../gpu/drm/ci/xfails/msm-sdm845-skips.txt    |   4 +-
+>  .../drm/ci/xfails/rockchip-rk3288-fails.txt   |   2 +-
+>  .../drm/ci/xfails/rockchip-rk3288-skips.txt   |   2 +-
+>  .../drm/ci/xfails/rockchip-rk3399-fails.txt   |   2 +-
+>  .../drm/ci/xfails/rockchip-rk3399-flakes.txt  |   4 +-
+>  .../drm/ci/xfails/rockchip-rk3399-skips.txt   |   2 +-
+>  .../drm/ci/xfails/virtio_gpu-none-fails.txt   |  64 ++++++++
+>  .../drm/ci/xfails/virtio_gpu-none-skips.txt   |   4 +-
+>  drivers/gpu/drm/ci/xfails/vkms-none-fails.txt |   4 -
+>  .../gpu/drm/ci/xfails/vkms-none-flakes.txt    |  21 +++
+>  drivers/gpu/drm/ci/xfails/vkms-none-skips.txt | 105 ++++++++++++-
+>  53 files changed, 527 insertions(+), 395 deletions(-)
+> 
+> diff --git a/drivers/gpu/drm/ci/gitlab-ci.yml b/drivers/gpu/drm/ci/gitlab-ci.yml
+> index 80fb0f57ae46..b09976c3d2c2 100644
+> --- a/drivers/gpu/drm/ci/gitlab-ci.yml
+> +++ b/drivers/gpu/drm/ci/gitlab-ci.yml
+> @@ -5,7 +5,7 @@ variables:
+>    UPSTREAM_REPO: git://anongit.freedesktop.org/drm/drm
+>    TARGET_BRANCH: drm-next
+>  
+> -  IGT_VERSION: 0df7b9b97f9da0e364f5ee30fe331004b8c86b56
+> +  IGT_VERSION: f13702b8e4e847c56da3ef6f0969065d686049c5
+>  
+>    DEQP_RUNNER_GIT_URL: https://gitlab.freedesktop.org/anholt/deqp-runner.git
+>    DEQP_RUNNER_GIT_TAG: v0.15.0
+
+
+-- 
+With best wishes
+Dmitry
 
 _______________________________________________
 Linux-rockchip mailing list
