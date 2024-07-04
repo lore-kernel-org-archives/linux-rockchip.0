@@ -4,60 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A334BC30653
-	for <linux-rockchip@archiver.kernel.org>; Thu,  4 Jul 2024 12:04:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A2C6AC30653
+	for <linux-rockchip@archiver.kernel.org>; Thu,  4 Jul 2024 12:05:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
-	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Wmv+IqfgJTNYKM2sghoWs6qZweKlROU4luGgf0DJJuc=; b=B7Ly2zb6a66pU2NtS0Sc2f/lTT
-	jdxqJfWw0A8UyRvZJ6jsoMCWrT3mp0p+HNp/0x7A5jW90InxjOoXEn3caUqZcPgvTvvUvGnLM86o9
-	C6fSi4kguOLIRDaIqMa9/UeZPl0pz2V7QgqQ0fJORxXlY4cO4YWbuPPd+dWjxFtgseXqNgTN/FGRY
-	W1sVsGGZJ451Rx7lgaOK6hMXt+noE2jFn+Zirl7/spyP8GjJDZ7G9LB0F3IbDVeFX4lTETfGRoLAE
-	5o8LFwLpXuAWQsSTrkeSkJ5ICKIg33fKyprhLuZtaPtS2eas0cBVXK7he8jf5ypieMOSr+pVCEET8
-	fhQYWi5g==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=Fku1TAAVMQUx5pHbZNU6gImbxTCqAlzPFgUihICYeOQ=; b=tcdyqp2kaiQAsG
+	gegqxsz2eoI3BOjV7yBEu5nJSWhED0O81yQ1f5/mMpW9XKUo+yG0kUZ3fCurZky9cfGKUWI2tkWH1
+	6v3DE6mAKicjzvydpXLo6Ltn8QzQma9ZBHi3nVWDjSvHea5WBd3Wi6IP0I9HiSfXDtqEZLbfIQZF/
+	t1MvZ5xLH7hrIJGEvOAF+jGdBdpKj8dnyi6UrBhlj96vwGOFG8QCNL5N1L+QS9MgKN0GjmpCN+zEN
+	IZ/f+mB7YEHUrNsQV6AaSJclcqaUlVXmwpemyN6pz30ZfHK6UL1t7uxrogavINPqMpLKTJNGnWRwd
+	7bRRcCtHYcF3+NsI2Xpw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sPLCV-0000000D5uF-28B8;
-	Thu, 04 Jul 2024 12:04:35 +0000
-Received: from mail.manjaro.org ([116.203.91.91])
+	id 1sPLDp-0000000D64K-06bU;
+	Thu, 04 Jul 2024 12:05:57 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sPLCH-0000000D5s8-15Zp;
-	Thu, 04 Jul 2024 12:04:23 +0000
-MIME-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
-	t=1720094658;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=NJUq1gL2n6O72FkagfIzF/3l8GxaCoyh+6xXf/fqDcI=;
-	b=gRBPlNW08B8tS5OnAMQ9KbKBi1bRqPjxjtrqXgm1ASF6PQDH92VNJkkDhsO00ovfrcdcJI
-	0u0t6QUKlKkw/tGLgfI274Ea6vx84+jMCmO7lLxunIOMFqubhCINssRMbG20qRcxUocKSB
-	lM0807HOaxgbUafC3UDKSOwxQs5D53ypO5h+iyc/DneuMEkFGSLmAvfP4Jmp8EHsd5SwII
-	lVFodHrBKgetcu/1SM0PdWI5FYYDE43K/BR9aBvFceU2htemLGaKirtvHohMpaSbUD2as0
-	UxYGWCY10fd0DpH2pdrUsdozBzqtInvALsyReoRSkYXCaI20jYTezqGlSfeeug==
-Date: Thu, 04 Jul 2024 14:04:18 +0200
-From: Dragan Simic <dsimic@manjaro.org>
-To: Alex Bee <knaerzche@gmail.com>
-Cc: Heiko Stuebner <heiko@sntech.de>, robh@kernel.org, krzk+dt@kernel.org,
- conor+dt@kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+	id 1sPLDl-0000000D63g-3imh;
+	Thu, 04 Jul 2024 12:05:55 +0000
+Received: from i53875ac2.versanet.de ([83.135.90.194] helo=diego.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1sPLDg-0000bm-60; Thu, 04 Jul 2024 14:05:48 +0200
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+To: linux-rockchip@lists.infradead.org,
+ Diederik de Haas <didi.debian@cknow.org>, Alex Bee <knaerzche@gmail.com>
+Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-kernel@vger.kernel.org
 Subject: Re: [PATCH 2/2] arm64: dts: rockchip: add rock5 itx board
-In-Reply-To: <faeb87de-b97e-4f95-bbb0-edd03a411f4c@gmail.com>
-References: <20240703210524.776455-1-heiko@sntech.de>
- <20240703210524.776455-3-heiko@sntech.de>
- <faeb87de-b97e-4f95-bbb0-edd03a411f4c@gmail.com>
-Message-ID: <06e69b64b25fbbff338aac9e84c68ce9@manjaro.org>
-X-Sender: dsimic@manjaro.org
-Authentication-Results: ORIGINATING;
-	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
+Date: Thu, 04 Jul 2024 14:05:47 +0200
+Message-ID: <2004736.8hb0ThOEGa@diego>
+In-Reply-To: <2c46dfb7-5ef3-494f-8cf1-413033e73412@gmail.com>
+References: <20240703210524.776455-1-heiko@sntech.de> <4552794.8F6SAcFxjW@diego>
+ <2c46dfb7-5ef3-494f-8cf1-413033e73412@gmail.com>
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240704_050421_739335_F42D8EC7 
-X-CRM114-Status: GOOD (  16.46  )
+X-CRM114-CacheID: sfid-20240704_050553_953618_BDAAF8FC 
+X-CRM114-Status: GOOD (  21.00  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,73 +58,110 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello Alex and Heiko,
+Am Donnerstag, 4. Juli 2024, 13:43:47 CEST schrieb Alex Bee:
+> Am 04.07.24 um 12:05 schrieb Heiko St=FCbner:
+> > Hi Diederik,
+> > =
 
-On 2024-07-04 12:52, Alex Bee wrote:
-> Am 03.07.24 um 23:05 schrieb Heiko Stuebner:
->> The Rock 5 ITX as the name suggests is made in the ITX form factor and
->> actually build in a form to be used in a regular case even providing
->> connectors for regular front-panel io.
->> 
->> It can be powered either bei 12V, ATX power-supply or PoE.
->> 
->> Notable peripherals are the 4 SATA ports, M.2 M-Key slot, M.2 E-key 
->> slot,
->> 2*2.5Gb pcie-connected ethernet nics.
->> 
->> As of yet unsupported display options consist of 2*hdmi, DP via 
->> type-c,
->> eDP + 2*DSI via pcb connectors.
->> 
->> USB ports are 4*USB3 + 2*USB2 on the back panel and 2-port front-panel
->> connector.
->> 
->> Signed-off-by: Heiko Stuebner <heiko@sntech.de>
->> ---
->>   arch/arm64/boot/dts/rockchip/Makefile         |    1 +
->>   .../boot/dts/rockchip/rk3588-rock-5itx.dts    | 1188 
->> +++++++++++++++++
->>   2 files changed, 1189 insertions(+)
->>   create mode 100644 arch/arm64/boot/dts/rockchip/rk3588-rock-5itx.dts
+> > Am Donnerstag, 4. Juli 2024, 11:38:51 CEST schrieb Diederik de Haas:
+> >> Thanks for submitting this. A quick scan indicates it should work with=
+ a
+> >> (recent) Debian kernel OOTB :-)
+> >>
+> >> On Wednesday, 3 July 2024 23:05:24 CEST Heiko Stuebner wrote:
+> >>> +&sdhci {
+> >>> +       bus-width =3D <8>;
+> >>> +       no-sdio;
+> >>> +       no-sd;
+> >>> +       non-removable;
+> >>> +       max-frequency =3D <200000000>;
+> >>> +       mmc-hs400-1_8v;
+> >>> +       mmc-hs400-enhanced-strobe;
+> >>> +       mmc-hs200-1_8v;
+> >>> +       status =3D "okay";
+> >>> +};
+> >>> +
+> >>> +&sdmmc {
+> >>> +       max-frequency =3D <200000000>;
+> >>> +       no-sdio;
+> >>> +       no-mmc;
+> >>> +       bus-width =3D <4>;
+> >>> +       cap-mmc-highspeed;
+> >>> +       cap-sd-highspeed;
+> >>> +       disable-wp;
+> >>> +       sd-uhs-sdr104;
+> >>> +       vmmc-supply =3D <&vcc_3v3_s3>;
+> >>> +       vqmmc-supply =3D <&vccio_sd_s0>;
+> >>> +       pinctrl-names =3D "default";
+> >>> +       pinctrl-0 =3D <&sdmmc_bus4 &sdmmc_clk &sdmmc_cmd &sdmmc_det>;
+> >>> +       status =3D "okay";
+> >>> +};
+> >>> +
+> >>> +/* M.2 E-KEY */
+> >>> +&sdio {
+> >>> +       broken-cd;
+> >>> +       bus-width =3D <4>;
+> >>> +       cap-sdio-irq;
+> >>> +       disable-wp;
+> >>> +       keep-power-in-suspend;
+> >>> +       max-frequency =3D <150000000>;
+> >>> +       mmc-pwrseq =3D <&sdio_pwrseq>;
+> >>> +       no-sd;
+> >>> +       no-mmc;
+> >>> +       non-removable;
+> >>> +       pinctrl-names =3D "default";
+> >>> +       pinctrl-0 =3D <&sdiom0_pins>;
+> >>> +       sd-uhs-sdr104;
+> >>> +       vmmc-supply =3D <&vcc3v3_ekey>;
+> >>> +       status =3D "okay";
+> >>> +};
+> >>> +
+> >>> +&sfc {
+> >>> +       pinctrl-names =3D "default";
+> >>> +       pinctrl-0 =3D <&fspim2_pins>;
+> >>> +       status =3D "okay";
+> >>
+> >> Shouldn't those properties be sorted alphabetically? Or at least consi=
+stently?
+> >> Note that the same issue is present on other places too, but I believe=
+ the
+> >> above quoted part shows the issue enough.
+> > =
 
-[snip]
+> > The main sorting is
+> > - compatible
+> > - reg
+> > [... alphabetically ...]
+> > - status
+> > =
 
->> +&usb_host1_xhci {
->> +	dr_mode = "host";
->> +	#address-cells = <1>;
->> +	#size-cells = <0>;
->> +	status = "okay";
->> +
->> +	/* 2.0 hub on port 1 */
->> +	hub_2_0: hub@1 {
->> +		compatible = "usb5e3,610";
->> +		reg = <1>;
->> +		peer-hub = <&hub_3_0>;
->> +		vdd-supply = <&vcc5v0_usb12>;
-> 
-> Are you sure about this one? I couldn't find any schematics for this 
-> board,
-> but both the bindings for usb5e3,610 and the datasheet[0] are saying 
-> this
-> is the supply for the hub's internal logic which is typically ~3.3V. 
-> It's
-> definitely not a supply for the vbus.
-> 
-> [0] http://www.sunnyqi.com/upLoad/product/month_1308/GL852G.pdf
+> Yeah ... that's always the question when adding new board files. Do it li=
+ke
+> "it's always been done" or re-sort the properties alphanumeric _everywher=
+e_
+> which looks quite strange at times. If I'm getting the newly added dt
+> coding style correctly common (subsystem?) properties should also be plac=
+ed
+> before vendor (driver?) specific ones. Yet I didn't see a board file which
+> places 'regulator-max-microvolt' before 'regulator-min-microvolt'. So I
+> guess it's fine if it's done consistently within the same file?
 
-FYI, here's the board schematic:
+I always see it as a best-effort thing. If all regulator-* stuff is grouped
+together it will be mostly fine. I'm not going to haggle over the sorting
+of the 10th character of property names ;-) .
 
-- https://dl.radxa.com/rock5/5itx/radxa_rock_5_itx_X1100_schematic.pdf
-- 
-https://dl.radxa.com/rock5/5itx/v1110/radxa_rock_5itx_v1110_schematic.pdf
+(and of course reading min before max, is sort of more intuitive)
 
-Perhaps it would be good to include these URLs in the v3 patch 
-description.
+And of course leaf-things (board dts) are less "important" than the core
+nodes in soc devicetrees.
+
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
