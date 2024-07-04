@@ -4,56 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4238BC30653
-	for <linux-rockchip@archiver.kernel.org>; Thu,  4 Jul 2024 08:56:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 38E75C3271F
+	for <linux-rockchip@archiver.kernel.org>; Thu,  4 Jul 2024 09:01:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=uPevmIAdeOJ2yVnok0+1SHljdnelH6uZGq4xTL+4jy4=; b=MWJeZ9KCyLDEtQ
-	UL3p/QQt/9Oz2DJlOnB82rBJjV+rQ+xK57KNrQFXNGzjmM06kkG1vNrqFIOLH9oq9Dw5mPV3EF9+H
-	VQ4ZEUjieP1cwU013e5HgxGellNBHb43nxtas0975RUHEEKhtaBaW4DjJS8ZKt0tS0/RPRA3nLYOz
-	BZrfX9hXTJNcnOVBXR4rMTgp+xMWRB1ykEaeybt0E2vlnOYZ0R+hkEca8DHo5C57BwjCRa71+G9Kx
-	/S2tinGB4WzAmlAhc6fVLD1Sw5kBtqFXDq7Gs/20xRJ5I4b3ViAV02r3lxlyCKTH0QUU+wfiZYnpW
-	0ZJkm/Sn4l6tZJL3wjpQ==;
+	List-Owner; bh=fqpSMOiX9QGZc/AmcHQ+3HFbmrZXE00ZTX+0ENP9R5Q=; b=upwEBh0zUuJcJo
+	nlzj/+27cg263WQw8EUF+W1aSNwVhJTu6Sg3lcMb9SbdoUuu/fFGoLUhGGPcAaXAU+e1K0CZBEgwC
+	oIXN0WXDX1BYxaJAkAmubpySWtyb9rQOkm+ZNplqouvKoeHr2XMFHH9Afpy1hHE+FSumXgS+qcZVE
+	2uR8EpDeJ5HNi3MUsFY5D323tLfXV2l1mTuY/yt8UniYYC8hCfYFLruOZImHg5Qju+ZUBALh8w4kg
+	LR4bvKajcRjMSbyLYkj6SYdN1ma/Nh7kkHIvqU/JXJQFDcVE5pOckKAflhA2WduYxR2DgUkxQ3XyV
+	tU7NVw3dALbequXAfl7Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sPIG8-0000000CfGu-3rB1;
-	Thu, 04 Jul 2024 08:56:08 +0000
+	id 1sPIKv-0000000Cgco-3haW;
+	Thu, 04 Jul 2024 09:01:05 +0000
 Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sPIG5-0000000CfF9-3DEb
+	id 1sPIKq-0000000Cgal-0qcz
 	for linux-rockchip@lists.infradead.org;
-	Thu, 04 Jul 2024 08:56:07 +0000
-Received: from ideasonboard.com (93-61-96-190.ip145.fastwebnet.it [93.61.96.190])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id B0151541;
-	Thu,  4 Jul 2024 10:55:35 +0200 (CEST)
+	Thu, 04 Jul 2024 09:01:05 +0000
+Received: from pendragon.ideasonboard.com (117.145-247-81.adsl-dyn.isp.belgacom.be [81.247.145.117])
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 1C37183F;
+	Thu,  4 Jul 2024 11:00:30 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1720083335;
-	bh=vrwaL7XAie9A3JobDeUAOKjvOjxR6tXoiBc/79/ClSc=;
+	s=mail; t=1720083630;
+	bh=YaUWUl8EnNZIC7qO0CR0iMMrU86ht284fMYDBUlc9ro=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=o278vWFW5E1S35YQfchcuqxhfxR6VsvqkblTkbtN2F5KuZXS/DRStH/rQt1kmIe/D
-	 RB6Fnlksb4F5oq3dn2XPvv1mKQLL6tAuTKjNBM5RWvqK7JGvO6AdhQO+ZFp9pO2/0D
-	 zc6DJW6RqtnmdI/1QQ9nR7LKs2QfenWHrAsGWQh8=
-Date: Thu, 4 Jul 2024 10:56:01 +0200
-From: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
-To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-Cc: linux-media@vger.kernel.org, Dafna Hirschfeld <dafna@fastmail.com>, 
-	Jacopo Mondi <jacopo.mondi@ideasonboard.com>, Paul Elder <paul.elder@ideasonboard.com>, 
+	b=Cm7kns4mtnhsZ9f+9mugwAlC12HOLkgX7yHnWzhi6zYH8qT1fTTggZvbfcnPg/W59
+	 dBtXKVAJctih1Q+sa060opBtGPFQz2W/cexrSdhyA888XpxPNn3kH769vT5kE0rrMZ
+	 AlzaLRzvKBSg1asTVZlgOiVXX15kblJKyLcjC6ZM=
+Date: Thu, 4 Jul 2024 12:00:36 +0300
+From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+To: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
+Cc: linux-media@vger.kernel.org, Dafna Hirschfeld <dafna@fastmail.com>,
+	Paul Elder <paul.elder@ideasonboard.com>,
 	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH v1 3/5] media: rkisp1: Add register definitions for the
- companding block
-Message-ID: <v5vuf7p6cbcwhdk5hwqpvnhafuz4arpqobg7euurnatjtx2fwn@qvazhzzwkmnj>
+Subject: Re: [PATCH v1 4/5] media: rkisp1: Add feature flags for BLS and
+ compand
+Message-ID: <20240704090036.GA10099@pendragon.ideasonboard.com>
 References: <20240703222533.1662-1-laurent.pinchart@ideasonboard.com>
- <20240703222533.1662-4-laurent.pinchart@ideasonboard.com>
+ <20240703222533.1662-5-laurent.pinchart@ideasonboard.com>
+ <aayd65reqbctgm37jirnbxrjpo3isi2jntsc3auiday2ww3b77@svw6xhnw627d>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20240703222533.1662-4-laurent.pinchart@ideasonboard.com>
+In-Reply-To: <aayd65reqbctgm37jirnbxrjpo3isi2jntsc3auiday2ww3b77@svw6xhnw627d>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240704_015605_971785_5C79CCB8 
-X-CRM114-Status: GOOD (  14.04  )
+X-CRM114-CacheID: sfid-20240704_020100_407137_6709D4BD 
+X-CRM114-Status: GOOD (  31.57  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,78 +71,152 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Laurent
+On Thu, Jul 04, 2024 at 10:34:20AM +0200, Jacopo Mondi wrote:
+> On Thu, Jul 04, 2024 at 01:25:32AM GMT, Laurent Pinchart wrote:
+> > From: Paul Elder <paul.elder@ideasonboard.com>
+> >
+> > Add feature flags for the dedicated black level subtraction hardware
+> > block and for the compand hardware block. The companding feature flag is
+> > added on its own (as opposed to "the absence of BLS") because we will
+> > need it later for when we add support for the companding block.
+> >
+> > Skip BLS configuration when the BLS feature flag is unset, as devices
+> > without the dedicated BLS block cannot configure a hardware block that
+> > doesn't exist.
+> >
+> > Signed-off-by: Paul Elder <paul.elder@ideasonboard.com>
+> > Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+> > ---
+> >  drivers/media/platform/rockchip/rkisp1/rkisp1-common.h | 4 ++++
+> >  drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c    | 9 ++++++---
+> >  drivers/media/platform/rockchip/rkisp1/rkisp1-params.c | 7 +++++++
+> >  3 files changed, 17 insertions(+), 3 deletions(-)
+> >
+> > diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
+> > index cdf2d30e2bb1..607e1a024d02 100644
+> > --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
+> > +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
+> > @@ -116,6 +116,8 @@ enum rkisp1_isp_pad {
+> >   * @RKISP1_FEATURE_SELF_PATH: The ISP has a self path
+> >   * @RKISP1_FEATURE_DUAL_CROP: The ISP has the dual crop block at the resizer input
+> >   * @RKISP1_FEATURE_DMA_34BIT: The ISP uses 34-bit DMA addresses
+> > + * @RKISP1_FEATURE_BLS: The ISP has a dedicated BLS block
+> > + * @RKISP1_FEATURE_COMPAND: The ISP has a companding block
+> >   *
+> >   * The ISP features are stored in a bitmask in &rkisp1_info.features and allow
+> >   * the driver to implement support for features present in some ISP versions
+> > @@ -127,6 +129,8 @@ enum rkisp1_feature {
+> >  	RKISP1_FEATURE_SELF_PATH = BIT(2),
+> >  	RKISP1_FEATURE_DUAL_CROP = BIT(3),
+> >  	RKISP1_FEATURE_DMA_34BIT = BIT(4),
+> > +	RKISP1_FEATURE_BLS = BIT(5),
+> > +	RKISP1_FEATURE_COMPAND = BIT(6),
+> >  };
+> >
+> >  #define rkisp1_has_feature(rkisp1, feature) \
+> > diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
+> > index 0535ce57e862..dd114ab77800 100644
+> > --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
+> > +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
+> > @@ -509,7 +509,8 @@ static const struct rkisp1_info px30_isp_info = {
+> >  	.isp_ver = RKISP1_V12,
+> >  	.features = RKISP1_FEATURE_MIPI_CSI2
+> >  		  | RKISP1_FEATURE_SELF_PATH
+> > -		  | RKISP1_FEATURE_DUAL_CROP,
+> > +		  | RKISP1_FEATURE_DUAL_CROP
+> > +		  | RKISP1_FEATURE_BLS,
+> 
+> Doesn't apply for me on top of [media-stage/master + my ext params
+> series]
+> 
+> In particular, in media-stage I don't see
+> >  	.max_width = 3264,
+> >  	.max_height = 2448,
+> 
+> these
 
-On Thu, Jul 04, 2024 at 01:25:31AM GMT, Laurent Pinchart wrote:
-> From: Paul Elder <paul.elder@ideasonboard.com>
->
-> To prepare for adding support for the companding block to the rkisp1
-> driver for the version of the ISP on the i.MX8MP, add the register
-> definitions for it, including relevant register field values.
->
-> Signed-off-by: Paul Elder <paul.elder@ideasonboard.com>
-> Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-> ---
->  .../platform/rockchip/rkisp1/rkisp1-regs.h    | 22 +++++++++++++++++++
->  1 file changed, 22 insertions(+)
->
-> diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-regs.h b/drivers/media/platform/rockchip/rkisp1/rkisp1-regs.h
-> index fccf4c17ee8d..f516c9c1b822 100644
-> --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-regs.h
-> +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-regs.h
-> @@ -704,6 +704,11 @@
->  #define RKISP1_CIF_ISP_DPF_SPATIAL_COEFF_MAX		0x1f
->  #define RKISP1_CIF_ISP_DPF_NLL_COEFF_N_MAX		0x3ff
->
+There are a few prerequisites. The cover letter lists the base commit
+ID. The fact that I haven't pushed a branch anywhere doesn't help
+obviously... I'll make it clearer in v2.
 
-The other blocks are preceded by a comment, should you add
+> >  };
+> > @@ -532,7 +533,8 @@ static const struct rkisp1_info rk3399_isp_info = {
+> >  	.isp_ver = RKISP1_V10,
+> >  	.features = RKISP1_FEATURE_MIPI_CSI2
+> >  		  | RKISP1_FEATURE_SELF_PATH
+> > -		  | RKISP1_FEATURE_DUAL_CROP,
+> > +		  | RKISP1_FEATURE_DUAL_CROP
+> > +		  | RKISP1_FEATURE_BLS,
+> >  	.max_width = 4416,
+> >  	.max_height = 3312,
+> >  };
+> > @@ -554,7 +556,8 @@ static const struct rkisp1_info imx8mp_isp_info = {
+> >  	.isr_size = ARRAY_SIZE(imx8mp_isp_isrs),
+> >  	.isp_ver = RKISP1_V_IMX8MP,
+> >  	.features = RKISP1_FEATURE_MAIN_STRIDE
+> > -		  | RKISP1_FEATURE_DMA_34BIT,
+> > +		  | RKISP1_FEATURE_DMA_34BIT
+> > +		  | RKISP1_FEATURE_COMPAND,
+> >  	.max_width = 4096,
+> >  	.max_height = 3072,
+> >  };
+> > diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c
+> > index 92312b4dabf6..bac9d4972493 100644
+> > --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c
+> > +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c
+> > @@ -1268,6 +1268,12 @@ rkisp1_isp_isr_other_config(struct rkisp1_params *params,
+> >  	module_cfg_update = new_params->module_cfg_update;
+> >  	module_ens = new_params->module_ens;
+> >
+> > +	if (!rkisp1_has_feature(params->rkisp1, BLS)) {
+> > +		module_en_update &= ~RKISP1_CIF_ISP_MODULE_BLS;
+> > +		module_cfg_update &= ~RKISP1_CIF_ISP_MODULE_BLS;
+> > +		module_ens &= ~RKISP1_CIF_ISP_MODULE_BLS;
+> > +	}
+> > +
+> 
+> or is it easier to read if you
+> 
+> 	if (rkisp1_has_feature(params->rkisp1, BLS)) {
+>                 /* update bls config */
+>                 if (module_cfg_update & RKISP1_CIF_ISP_MODULE_BLS)
+>                         rkisp1_bls_config(params,
+>                                           &new_params->others.bls_config);
+> 
+>                 if (module_en_update & RKISP1_CIF_ISP_MODULE_BLS) {
+>                         if (module_ens & RKISP1_CIF_ISP_MODULE_BLS)
+>                                 rkisp1_param_set_bits(params,
+>                                                       RKISP1_CIF_ISP_BLS_CTRL,
+>                                                       RKISP1_CIF_ISP_BLS_ENA);
+>                         else
+>                                 rkisp1_param_clear_bits(params,
+>                                                         RKISP1_CIF_ISP_BLS_CTRL,
+>                                                         RKISP1_CIF_ISP_BLS_ENA);
+>                 }
+>         }
+> 
+> below ?
 
-/* COMPAND */
+I was considering it. Lower indentation is nice, and I thought that we
+could centralize all the feature checks in one place, but I don't mind
+much either way. If you have a stronger preference I can change this.
 
-here ?
-> +#define RKISP1_CIF_ISP_COMPAND_CTRL_EXPAND_ENABLE	BIT(0)
-> +#define RKISP1_CIF_ISP_COMPAND_CTRL_COMPRESS_ENABLE	BIT(1)
-> +#define RKISP1_CIF_ISP_COMPAND_CTRL_SOFT_RESET_FLAG	BIT(2)
-> +#define RKISP1_CIF_ISP_COMPAND_CTRL_BLS_ENABLE		BIT(3)
-> +
->  /* =================================================================== */
->  /*                            CIF Registers                            */
->  /* =================================================================== */
-> @@ -1394,6 +1399,23 @@
->  #define RKISP1_CIF_ISP_VSM_DELTA_H		(RKISP1_CIF_ISP_VSM_BASE + 0x0000001c)
->  #define RKISP1_CIF_ISP_VSM_DELTA_V		(RKISP1_CIF_ISP_VSM_BASE + 0x00000020)
->
-> +#define RKISP1_CIF_ISP_COMPAND_BASE			0x00003200
-> +#define RKISP1_CIF_ISP_COMPAND_CTRL			(RKISP1_CIF_ISP_COMPAND_BASE + 0x00000000)
-> +#define RKISP1_CIF_ISP_COMPAND_BLS_A_FIXED		(RKISP1_CIF_ISP_COMPAND_BASE + 0x00000004)
-> +#define RKISP1_CIF_ISP_COMPAND_BLS_B_FIXED		(RKISP1_CIF_ISP_COMPAND_BASE + 0x00000008)
-> +#define RKISP1_CIF_ISP_COMPAND_BLS_C_FIXED		(RKISP1_CIF_ISP_COMPAND_BASE + 0x0000000c)
-> +#define RKISP1_CIF_ISP_COMPAND_BLS_D_FIXED		(RKISP1_CIF_ISP_COMPAND_BASE + 0x00000010)
-> +#define RKISP1_CIF_ISP_COMPAND_EXPAND_PX_N(n)		(RKISP1_CIF_ISP_COMPAND_BASE + 0x00000014 + (n) * 4)
-> +#define RKISP1_CIF_ISP_COMPAND_COMPRESS_PX_N(n)		(RKISP1_CIF_ISP_COMPAND_BASE + 0x00000040 + (n) * 4)
-> +#define RKISP1_CIF_ISP_COMPAND_EXPAND_Y_ADDR		(RKISP1_CIF_ISP_COMPAND_BASE + 0x0000006c)
-> +#define RKISP1_CIF_ISP_COMPAND_EXPAND_Y_WRITE_DATA	(RKISP1_CIF_ISP_COMPAND_BASE + 0x00000070)
-> +#define RKISP1_CIF_ISP_COMPAND_COMPRESS_Y_ADDR		(RKISP1_CIF_ISP_COMPAND_BASE + 0x00000074)
-> +#define RKISP1_CIF_ISP_COMPAND_COMPRESS_Y_WRITE_DATA	(RKISP1_CIF_ISP_COMPAND_BASE + 0x00000078)
-> +#define RKISP1_CIF_ISP_COMPAND_EXPAND_X_ADDR		(RKISP1_CIF_ISP_COMPAND_BASE + 0x0000007c)
-> +#define RKISP1_CIF_ISP_COMPAND_EXPAND_X_WRITE_DATA	(RKISP1_CIF_ISP_COMPAND_BASE + 0x00000080)
-> +#define RKISP1_CIF_ISP_COMPAND_COMPRESS_X_ADDR		(RKISP1_CIF_ISP_COMPAND_BASE + 0x00000084)
-> +#define RKISP1_CIF_ISP_COMPAND_COMPRESS_X_WRITE_DATA	(RKISP1_CIF_ISP_COMPAND_BASE + 0x00000088)
-> +
+> >  	/* update dpc config */
+> >  	if (module_cfg_update & RKISP1_CIF_ISP_MODULE_DPCC)
+> >  		rkisp1_dpcc_config(params,
+> > @@ -1851,6 +1857,7 @@ static const struct rkisp1_ext_params_handler {
+> >  		.size		= sizeof(struct rkisp1_ext_params_bls_config),
+> >  		.handler	= rkisp1_ext_params_bls,
+> >  		.group		= RKISP1_EXT_PARAMS_BLOCK_GROUP_OTHERS,
+> > +		.features	= RKISP1_FEATURE_BLS,
+> >  	},
+> >  	[RKISP1_EXT_PARAMS_BLOCK_TYPE_DPCC] = {
+> >  		.size		= sizeof(struct rkisp1_ext_params_dpcc_config),
 
-Reviewed-by: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
+-- 
+Regards,
 
-Thanks
-  j
-
->  #define RKISP1_CIF_ISP_CSI0_BASE		0x00007000
->  #define RKISP1_CIF_ISP_CSI0_CTRL0		(RKISP1_CIF_ISP_CSI0_BASE + 0x00000000)
->
-> --
-> Regards,
->
-> Laurent Pinchart
->
+Laurent Pinchart
 
 _______________________________________________
 Linux-rockchip mailing list
