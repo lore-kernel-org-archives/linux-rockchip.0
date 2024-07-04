@@ -4,57 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7B3C3C30653
-	for <linux-rockchip@archiver.kernel.org>; Thu,  4 Jul 2024 18:01:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5B581C30653
+	for <linux-rockchip@archiver.kernel.org>; Thu,  4 Jul 2024 18:02:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=GKKlS2V4Gz1P8eIaHtK0q8+6iYqgyeagsP+pWoG8hWE=; b=2/JdfJ/CbxmAUG
-	e0cR6QD9VPMY476sWnvVLAagJyhFPMg/fINj9M0N8RL2WZS3AkzTXo6rG7tumlUz6jIFBm5XI1x7Q
-	95bgFqoCtWn3OV9e9l+r6Hb0arwqyHOSwbzlQbzoE5WBme67VTmFxN6ODtbiNpc3yjH3hIYqYSczR
-	Fz8E9ad2Xx/oCgiOOyWZ5+02A/5WXwrG+Ztacg5uydHu0WaitMSlX+r3GQ5bGfA68WMYCSXIiCejb
-	pQbx2X9rc2ToCv5RaYAtcjDc7yUPwkx+2Ck80g7lb+Md2OhNxAE7cRlIuVJuaBjCqM7nO3zRAsIvt
-	Z7ZO3opVwiUBlGLG041A==;
+	List-Owner; bh=ij4D30FEiW3dm0W6PLopjzbrk1yAuJ5pQ+cczP9Lyxo=; b=2Kyw+dSICmgqFX
+	xNnR3TbeOVBA7c584/MFTLaTaGm/PSDPwbVy7Xxcl1gpOdY1+wqxsOXTv28N1xK9up1QX2HUH2hoj
+	amUkCvOuX7jzmbO3dw4C+DiQw64v2UDAIN2w3ils6wEHXvlzF6Z0kxrxYH80EBGXYbfce2o69tejs
+	uW1Eq9jmgxJ/oKb09iBHk8Mlq3X9nor+ZxIHw9EbSFEfkOreSVPSlhXX9fRW71zY7AKp8S7ycE4Tt
+	FZxNeExsheIFfC0TA/C/fvhhfTDBpn088RInV2Nir4B6S7hvHjUhk0ClECCr+bi8aT5JAACSMoA/b
+	BYRnkQbGF2+nZZ0jXt/A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sPQly-0000000E6R9-0mVG;
-	Thu, 04 Jul 2024 18:01:34 +0000
+	id 1sPQmL-0000000E6YR-3qWs;
+	Thu, 04 Jul 2024 18:01:57 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sPQlv-0000000E6PK-0Q89;
-	Thu, 04 Jul 2024 18:01:32 +0000
+	id 1sPQlv-0000000E6PE-0QEn;
+	Thu, 04 Jul 2024 18:01:33 +0000
 Received: from i53875ac2.versanet.de ([83.135.90.194] helo=phil.lan)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1sPQlt-00049m-Mp; Thu, 04 Jul 2024 20:01:29 +0200
+	id 1sPQls-00049m-Ll; Thu, 04 Jul 2024 20:01:28 +0200
 From: Heiko Stuebner <heiko@sntech.de>
-To: Johan Jonker <jbx6244@gmail.com>
+To: Diederik de Haas <didi.debian@cknow.org>
 Cc: Heiko Stuebner <heiko@sntech.de>,
 	linux-kernel@vger.kernel.org,
-	robh@kernel.org,
 	linux-rockchip@lists.infradead.org,
 	linux-arm-kernel@lists.infradead.org,
-	krzk+dt@kernel.org,
-	linux-clk@vger.kernel.org,
-	sboyd@kernel.org,
-	mturquette@baylibre.com,
-	devicetree@vger.kernel.org,
-	conor+dt@kernel.org
-Subject: Re: [PATCH v1] dt-bindings: clock: rk3188-cru-common: remove CLK_NR_CLKS
-Date: Thu,  4 Jul 2024 20:01:25 +0200
-Message-Id: <172011606371.897267.1165262107995336205.b4-ty@sntech.de>
+	=?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <ukleinek@debian.org>,
+	Dragan Simic <dsimic@manjaro.org>,
+	Jonas Karlman <jonas@kwiboo.se>,
+	Chen-Yu Tsai <wens@kernel.org>,
+	devicetree@vger.kernel.org
+Subject: Re: [PATCH] arm64: dts: rockchip: Add dma-names to uart1 on quartz64-b
+Date: Thu,  4 Jul 2024 20:01:23 +0200
+Message-Id: <172011606369.897267.6481211960386426581.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.39.2
-In-Reply-To: <6f21c09b-e8d2-4749-aca6-572c79df775d@gmail.com>
-References: <6f21c09b-e8d2-4749-aca6-572c79df775d@gmail.com>
+In-Reply-To: <20240628120130.24076-1-didi.debian@cknow.org>
+References: <20240628120130.24076-1-didi.debian@cknow.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240704_110131_166099_CDDB6F3D 
-X-CRM114-Status: UNSURE (   8.69  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240704_110131_165860_BBF08218 
+X-CRM114-Status: GOOD (  13.79  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,16 +68,25 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, 27 Jun 2024 23:17:45 +0200, Johan Jonker wrote:
-> CLK_NR_CLKS should not be part of the binding.
-> Remove since the kernel code no longer uses it.
+On Fri, 28 Jun 2024 14:00:43 +0200, Diederik de Haas wrote:
+> There have been several attempts to set the dma-names property on the
+> SoC level (in rk356x.dtsi), but that appears to cause problems when set
+> on channels without flow control.
 > 
+> Quoting part of a previous attempt for clarification:
 > 
+> > Nah, enabling it for bluetooth is fine because you have flow control.
+> > My issues have been on channels without flow control. Without DMA it
+> > simply drops messages or the channel hangs until you close and reopen
+> > it. With DMA, when an overflow locks up the channel it is usually
+> > unavailable until the board is rebooted.
+> 
+> [...]
 
 Applied, thanks!
 
-[1/1] dt-bindings: clock: rk3188-cru-common: remove CLK_NR_CLKS
-      commit: d89e8096957e35742c9922d3f6628f24de0d6163
+[1/1] arm64: dts: rockchip: Add dma-names to uart1 on quartz64-b
+      commit: bf6f26deb0e84089700c1b864f643442e262e16b
 
 Best regards,
 -- 
