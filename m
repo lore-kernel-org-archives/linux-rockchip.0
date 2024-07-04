@@ -4,58 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 11ECFC30653
-	for <linux-rockchip@archiver.kernel.org>; Thu,  4 Jul 2024 13:19:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 74697C3271E
+	for <linux-rockchip@archiver.kernel.org>; Thu,  4 Jul 2024 13:48:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=717D4hJi9t0g5LkMuWfJIFuL4I3sTGQw8o9Er2Exoxs=; b=eI6im8K167cR9V
-	ozHknMSXEw+2lMAH1YDv4pQWCtHV/PFDSet1OQio9B3cpzdETumqEXuJ5AL+Ni2lGLjpNzk/NdWqk
-	8hNVAjBKIi95QH0ILUh8ng9mPfIzfhp9dVQXKm5Hiw0Y0+6xb4TqRtBAZ9eHETkNhABx9NNL8OB4p
-	sICY2hKtYq7IEFNYg2mm9zLuBEC6eDbgR9z7OzmnWZxWhRO0YQrliP26DwngsccYPCJfsW2Zc5X0g
-	aLmP6FEYvHuncqZ98T5SoBFgB06/xqNmzdCOvcwgwKOlY/WWRHXPPA7g2fAexvS12Vs+fdpmY3X4P
-	JGl8IfFEH/hDGm1CGmEQ==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:From:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=ddBHYnw2Wc6+LGESCc1IRVDWjrhNWqQOCmRdySYyA20=; b=SPiNQViq0HFYwm
+	wQoO0CEjC0hkhVQ/1mpZrY0f1oujThoZa8vvGDLzq0+hlh4Hf0RJrSH6auALJMWQVYV7KxR/nGc01
+	sZfdYO7hnh5kbPDTbIjwOO96zOaaogYlPtV5AqmTkmtnBgV500fEdNHgjKp329WvS1BZ2M7v0vLTC
+	FYfW0bt1z/qTJqrYMMR3jO2zI+8BuuhtBJT+zOBrrhnnSJ1JySh3ptgQfyePTt4o4eJI3mYSishtg
+	zjpxtNqlMtYp+7iFsqcHlJ2RhDdC6VJrCNOYBzJh6mhGQNXKtzXzT550n5o2aOvHuGDMnrlwkJ7bV
+	xlIs/BV+Zst32QztLiOw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sPMMW-0000000DGBi-3bIz;
-	Thu, 04 Jul 2024 13:19:01 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
+	id 1sPMp6-0000000DKcK-0NOQ;
+	Thu, 04 Jul 2024 13:48:32 +0000
+Received: from mail-ej1-x62a.google.com ([2a00:1450:4864:20::62a])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sPMMT-0000000DG8p-2EXA
-	for linux-rockchip@lists.infradead.org;
-	Thu, 04 Jul 2024 13:18:59 +0000
-Received: from ideasonboard.com (93-61-96-190.ip145.fastwebnet.it [93.61.96.190])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 11919502;
-	Thu,  4 Jul 2024 15:18:27 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1720099107;
-	bh=LYGA4MoMQrDuJEyVLdMT3Z7BSTnBAqVmXb9CaHAlguc=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=Qp7QF8YJjkyPGPV7JJMI+02eW9X2IekTheZmtVFm2rejsN19UJ+38Ck9GelLhw773
-	 rhYRq2SmI+MnUSeRDywjPKuE2vFogk/VVYZnqo8ErPYIzXZsGEG115Qt4TMuvG5cwL
-	 D3fSsmPuoi+GySxMAaqc+3TEyHmjajy6ChZBk0+o=
-Date: Thu, 4 Jul 2024 15:18:52 +0200
-From: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
-To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-Cc: Jacopo Mondi <jacopo.mondi@ideasonboard.com>, 
-	linux-media@vger.kernel.org, Dafna Hirschfeld <dafna@fastmail.com>, 
-	Paul Elder <paul.elder@ideasonboard.com>, linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH v1 5/5] media: rkisp1: Add support for the companding
- block
-Message-ID: <4jfxok3vtyxyaxfzjlnd3yxntyagmmdvvsaso3zkmkzr2cmyun@rha67cmoys5s>
-References: <20240703222533.1662-1-laurent.pinchart@ideasonboard.com>
- <20240703222533.1662-6-laurent.pinchart@ideasonboard.com>
- <pqjankalgfcfxyiz57vkx3stgvjeiaxiqs4evkhmedzutkaosm@wpiub5jo3hv4>
- <20240704125329.GD10099@pendragon.ideasonboard.com>
+	id 1sPMor-0000000DKYz-1unr;
+	Thu, 04 Jul 2024 13:48:18 +0000
+Received: by mail-ej1-x62a.google.com with SMTP id a640c23a62f3a-a72988749f0so95573966b.0;
+        Thu, 04 Jul 2024 06:48:16 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1720100895; x=1720705695; darn=lists.infradead.org;
+        h=content-transfer-encoding:content-language:cc:to:subject:from
+         :user-agent:mime-version:date:message-id:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=iI+L0uJTfei+H4iOkc8eBSpcQ6o2OxpGILgPP/6lgdA=;
+        b=MlWAldUqWg/5xdN3tHI7wgn2zgOBLywjMLdNUcm8h2jF2CrJM3NuOShx+2K/pZKIVl
+         e9eX5J4ssaJqgzmW1spzU01LevSmYTnZWKSQquWyp+rD0yBItzZW7Itt8bosEpXbvOql
+         OpQx1kzc+ZivW9NfONnxAzIs14aZXw2Fv56UYKf1Pb2lAglFNbXIolZPqrk77JaPYypt
+         RwpS5sDtevlmkAB1c37NxNB30wDO1nwDZCTBUbJSL+tq3uv7wOGf7ascQ0ebU6getEd3
+         oBZlUMxbch3vkyUg2BqmhivqmShIS1E7d8ApPmZSWAoCgC5iHxBkOC3pXaQXAjdOKMfS
+         F1vA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1720100895; x=1720705695;
+        h=content-transfer-encoding:content-language:cc:to:subject:from
+         :user-agent:mime-version:date:message-id:x-gm-message-state:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=iI+L0uJTfei+H4iOkc8eBSpcQ6o2OxpGILgPP/6lgdA=;
+        b=cnKud1vwJIvw2eBCzOHJEgg+CoP1Hpb3njm5nirhDwEW5VpXGdRKeADxKVR7VgyaGj
+         M9Q9KyuRKx8uFo0i5whD5w7p3eTZUt6YJCLq1eFwTioQNaKWPrUCD04w7a+mSi5uiIzM
+         6h4wvgHsVeg14GsyRE4nVrXLXS2IWW3gdLgRQM9Of8UzZZ4kANrm9im522U+rqsATGeK
+         0ZNi3WQbeo7bbFvVbSLNvNKphN46zCJm8PfGpV+3bx0elaPVhd5bk1Ofqfj/95xC3teU
+         McZ8WNoVMg5LZpu+2cVCvoEuE5YHM3QDgRp9AQH2SAqL3rGjO09xVfDfhkmPxfq9AkRk
+         xFFA==
+X-Forwarded-Encrypted: i=1; AJvYcCVZV27ZKBZ+A0Q1yFGlh8TLBcoyIdC5+5T8uxyHTODmfUKrz7Hj4sg+SS45LVgE4ptJeVvUZoKYHRw9lAWZ3UEZG4VpC4bVrp9Qb/w7Eyt1iXl7bRD00NiVn5JuvLCMHBdraCwbcsLFnMBIwTdXqPSF5uaE5/8TmXo=
+X-Gm-Message-State: AOJu0YxN0IP0d6nHywoerG//TDSVIkHEGt6QV9Bc3EisSgYdwNK78rwy
+	cmZn39iqEUDhTny/b6/celwQjX/vBJYur1iNC/eVqUQJF7f/Zc3V
+X-Google-Smtp-Source: AGHT+IGYzrdYiH/Ow9cpga56hgcUYflT97C20uUsJxefko/mreRxTqvROdAf5Hix7M06ph6/Rpqu0Q==
+X-Received: by 2002:a17:906:2689:b0:a72:b1b1:eb3a with SMTP id a640c23a62f3a-a77ba46ce71mr103049466b.19.1720100894615;
+        Thu, 04 Jul 2024 06:48:14 -0700 (PDT)
+Received: from ?IPV6:2a02:a449:4071:1:32d0:42ff:fe10:6983? (2a02-a449-4071-1-32d0-42ff-fe10-6983.fixed6.kpn.net. [2a02:a449:4071:1:32d0:42ff:fe10:6983])
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a72b033f3a3sm572244266b.187.2024.07.04.06.48.13
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 04 Jul 2024 06:48:14 -0700 (PDT)
+Message-ID: <9f55fa12-51d9-4c85-a34f-0c42c61678e0@gmail.com>
+Date: Thu, 4 Jul 2024 15:48:13 +0200
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20240704125329.GD10099@pendragon.ideasonboard.com>
+User-Agent: Mozilla Thunderbird
+From: Johan Jonker <jbx6244@gmail.com>
+Subject: [PATCH v10] drm/rockchip: rk3066_hdmi: add sound support
+To: heiko@sntech.de
+Cc: hjc@rock-chips.com, andy.yan@rock-chips.com,
+ maarten.lankhorst@linux.intel.com, mripard@kernel.org, tzimmermann@suse.de,
+ airlied@gmail.com, daniel@ffwll.ch, dri-devel@lists.freedesktop.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240704_061857_914538_BD02EF31 
-X-CRM114-Status: GOOD (  58.05  )
+X-CRM114-CacheID: sfid-20240704_064817_548183_12287599 
+X-CRM114-Status: GOOD (  21.62  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,512 +94,483 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Laurent
+Add sound support to the RK3066 HDMI driver.
+The HDMI TX audio source is connected to I2S_8CH.
 
-On Thu, Jul 04, 2024 at 03:53:29PM GMT, Laurent Pinchart wrote:
-> On Thu, Jul 04, 2024 at 12:40:42PM +0200, Jacopo Mondi wrote:
-> > Hi Laurent
-> > On Thu, Jul 04, 2024 at 01:25:33AM GMT, Laurent Pinchart wrote:
-> > > From: Paul Elder <paul.elder@ideasonboard.com>
-> > >
-> > > Add support to the rkisp1 driver for the companding block that exists on
-> > > the i.MX8MP version of the ISP. This requires usage of the new
-> > > extensible parameters format, and showcases how the format allows for
-> > > extensions without breaking backward compatibility.
-> > >
-> > > Signed-off-by: Paul Elder <paul.elder@ideasonboard.com>
-> > > Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-> > > ---
-> > > Changes since v0:
-> > >
-> > > - Drop RKISP1_EXT_PARAM_BUFFER_V2
-> > > - Use common structure for compression and expansion curves
-> > > - Rename config fields in rkisp1_ext_params_*_config to just config
-> > > - Mention block type in structures documentation
-> > > - Constify arguments
-> > > - Replace __uxx types with uxx
-> > > - Use rkisp1_bls_swap_regs() helper in rkisp1_compand_bls_config()
-> > > - Use generic feature handling mechanism
-> > > ---
-> > >  .../platform/rockchip/rkisp1/rkisp1-params.c  | 166 ++++++++++++++++++
-> > >  include/uapi/linux/rkisp1-config.h            |  85 ++++++++-
-> > >  2 files changed, 250 insertions(+), 1 deletion(-)
-> > >
-> > > diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c
-> > > index bac9d4972493..5865d53be9c8 100644
-> > > --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c
-> > > +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c
-> > > @@ -57,6 +57,8 @@ union rkisp1_ext_params_config {
-> > >  	struct rkisp1_ext_params_hst_config hst;
-> > >  	struct rkisp1_ext_params_aec_config aec;
-> > >  	struct rkisp1_ext_params_afc_config afc;
-> > > +	struct rkisp1_ext_params_compand_bls_config compand_bls;
-> > > +	struct rkisp1_ext_params_compand_curve_config compand_curve;
-> > >  };
-> > >
-> > >  enum rkisp1_params_formats {
-> > > @@ -1258,6 +1260,92 @@ rkisp1_dpf_strength_config(struct rkisp1_params *params,
-> > >  	rkisp1_write(params->rkisp1, RKISP1_CIF_ISP_DPF_STRENGTH_R, arg->r);
-> > >  }
-> > >
-> > > +static void rkisp1_compand_write_px_curve(struct rkisp1_params *params,
-> > > +					  unsigned int addr, const u8 *px_curve)
-> > > +{
-> > > +	size_t i, j;
-> > > +	u32 val;
-> > > +
-> > > +	/*
-> > > +	 * The compand curve is specified as a piecewise linear function with
-> > > +	 * 64 points. X coordinates are stored as a log2 of the displacement
-> > > +	 * from the previous point, in 5 bits, with 6 values per register. The
-> > > +	 * last register stores 4 values.
-> > > +	 */
-> > > +	for (i = 0; i < 10; i++) {
-> > > +		val = 0;
-> > > +		for (j = 0; j < 6; j++)
-> >
-> > This loops up to (9 * 6 + 5 = 59) and writes registers up to PX9
-> > This should probably be i < 11 or <= 10 as the companding PX curve has
-> > 64 points and 10 registers.
-> >
-> > Also, to make sure, I would define the number of PX() registers
-> > entries instead of using the crude '10' and '6' values
-> >
-> > > +			val |= ((px_curve[i * 6 + j] & 0x1f) << (j * 5));
-> >
-> > Can't you just assign val without initializing it to 0 first and
-> > or-ing it later ?
->
-> I'm not sure to see what you mean here.
+Signed-off-by: Zheng Yang <zhengyang@rock-chips.com>
+Signed-off-by: Johan Jonker <jbx6244@gmail.com>
+---
 
-Nothing, I mis-read the code :)
+Changed V10:
+  s/audio_enable/audio_enabled
+  hook to encoder->funcs->late_register
+  move audio functions up to avoid adding a declaration
 
+Changed V9:
+  Use late_register and early_unregister hooks to
+  (un)register the "hdmi-audio-codec" driver.
+  restyle
 
->
-> > Also, once you make the external loop go up to 11, the last two
-> > iterations will out-of-bound access px[64] and px[65] (px is declared
-> > of size "RKISP1_CIF_ISP_COMPAND_MAX_SAMPLES 64").
-> >
-> > So this probably needs a check:
-> >
-> >                 if (i == 10 && j > 3)
-> >                         break;
-> >
-> > before accessing px_curve[], or maybe declare the for loop as
-> >
-> > 		for (j = 0; j < (i == 10 ? 4 : 6); j++)
-> >
-> > > +		rkisp1_write(params->rkisp1, addr + (i * 4), val);
-> >
-> > Then the parameteric macros
-> > RKISP1_CIF_ISP_COMPAND_EXPAND_PX_N(n)
-> > RKISP1_CIF_ISP_COMPAND_COMPRESS_PX_N(n)
-> >
-> > are unused if not for the base address. Should you remove them and
-> > only declare the base address value ?
->
-> I think it's useful to document what's available in terms of register
-> macros, even if not everything is used.
->
-> > > +	}
-> > > +
-> > > +	val = 0;
-> > > +	for (j = 0; j < 4; j++)
-> > > +		val |= ((px_curve[60 + j] & 0x1f) << (j * 5));
-> >
-> > ...
-> >
-> > ok, I should maybe read the whole function before commenting. I left
-> > the above comments there in case you want to unify the loop.
->
-> I'll try to rework the code.
->
-> > > +	rkisp1_write(params->rkisp1, addr + (i * 4), val);
-> > > +}
-> > > +
-> > > +static void
-> > > +rkisp1_compand_write_curve_mem(struct rkisp1_params *params,
-> > > +			       unsigned int reg_addr, unsigned int reg_data,
-> > > +			       size_t num_samples, const u32 *curve)
-> >
-> > isn't the number of samples fixed to
-> > RKISP1_CIF_ISP_COMPAND_MAX_SAMPLES ?
->
-> A previous version of the patch had two macros for the expand and
-> compress curves. Now that it's unified, I can drop the argument.
->
-> > > +{
-> > > +	size_t i;
-> >
-> > why a size and not an unsigned int ?
->
-> The patch is originally from Paul, I don't know. I'll switch to unsigned
-> int as size_t is 64-bit on 64-bit platforms, which is overkill.
->
-> > > +
-> > > +	for (i = 0; i < num_samples; i++) {
-> > > +		rkisp1_write(params->rkisp1, reg_addr, i);
-> > > +		rkisp1_write(params->rkisp1, reg_data, curve[i]);
-> > > +	}
-> > > +}
-> > > +
-> > > +static void
-> > > +rkisp1_compand_bls_config(struct rkisp1_params *params,
-> > > +			  const struct rkisp1_cif_isp_compand_bls_config *arg)
-> > > +{
-> > > +	static const u32 regs[] = {
-> > > +		RKISP1_CIF_ISP_COMPAND_BLS_A_FIXED,
-> > > +		RKISP1_CIF_ISP_COMPAND_BLS_B_FIXED,
-> > > +		RKISP1_CIF_ISP_COMPAND_BLS_C_FIXED,
-> > > +		RKISP1_CIF_ISP_COMPAND_BLS_D_FIXED,
-> > > +	};
-> > > +	u32 swapped[4];
-> > > +
-> > > +	rkisp1_bls_swap_regs(params->raw_type, regs, swapped);
-> > > +
-> > > +	rkisp1_write(params->rkisp1, swapped[0], arg->r);
-> > > +	rkisp1_write(params->rkisp1, swapped[1], arg->gr);
-> > > +	rkisp1_write(params->rkisp1, swapped[2], arg->gb);
-> > > +	rkisp1_write(params->rkisp1, swapped[3], arg->b);
-> > > +}
-> > > +
-> > > +static void
-> > > +rkisp1_compand_expand_config(struct rkisp1_params *params,
-> > > +			     const struct rkisp1_cif_isp_compand_curve_config *arg)
-> > > +{
-> > > +	rkisp1_compand_write_px_curve(params, RKISP1_CIF_ISP_COMPAND_EXPAND_PX_N(0),
-> > > +				      arg->px);
-> > > +	rkisp1_compand_write_curve_mem(params, RKISP1_CIF_ISP_COMPAND_EXPAND_Y_ADDR,
-> > > +				       RKISP1_CIF_ISP_COMPAND_EXPAND_Y_WRITE_DATA,
-> > > +				       ARRAY_SIZE(arg->y), arg->y);
-> > > +	rkisp1_compand_write_curve_mem(params, RKISP1_CIF_ISP_COMPAND_EXPAND_X_ADDR,
-> > > +				       RKISP1_CIF_ISP_COMPAND_EXPAND_X_WRITE_DATA,
-> > > +				       ARRAY_SIZE(arg->x), arg->x);
-> >
-> > As the header reports
-> >
-> >  * @x: Compand curve x-values. The functionality of these parameters are
-> >  *     unknown to do a lack of hardware documentation, but these are left here
-> >
-> >  is it safe to write them ?
->
-> Yes. They don't seem to have an effect, but they're written.
->
-> > > +}
-> > > +
-> > > +static void
-> > > +rkisp1_compand_compress_config(struct rkisp1_params *params,
-> > > +			       const struct rkisp1_cif_isp_compand_curve_config *arg)
-> > > +{
-> > > +	rkisp1_compand_write_px_curve(params, RKISP1_CIF_ISP_COMPAND_COMPRESS_PX_N(0),
-> > > +				      arg->px);
-> > > +	rkisp1_compand_write_curve_mem(params, RKISP1_CIF_ISP_COMPAND_COMPRESS_Y_ADDR,
-> > > +				       RKISP1_CIF_ISP_COMPAND_COMPRESS_Y_WRITE_DATA,
-> > > +				       ARRAY_SIZE(arg->y), arg->y);
-> > > +	rkisp1_compand_write_curve_mem(params, RKISP1_CIF_ISP_COMPAND_COMPRESS_X_ADDR,
-> > > +				       RKISP1_CIF_ISP_COMPAND_COMPRESS_X_WRITE_DATA,
-> > > +				       ARRAY_SIZE(arg->x), arg->x);
-> > > +}
-> > > +
-> > >  static void
-> > >  rkisp1_isp_isr_other_config(struct rkisp1_params *params,
-> > >  			    const struct rkisp1_params_cfg *new_params)
-> > > @@ -1844,6 +1932,66 @@ rkisp1_ext_params_afcm(struct rkisp1_params *params,
-> > >  				      RKISP1_CIF_ISP_AFM_ENA);
-> > >  }
-> > >
-> > > +static void rkisp1_ext_params_compand_bls(struct rkisp1_params *params,
-> > +					  const union rkisp1_ext_params_config *block)
-> >
-> > nit: I presume going over 80-cols here is intentional
->
-> I think so :-)
->
-> > > +{
-> > > +	const struct rkisp1_ext_params_compand_bls_config *bls =
-> > > +		&block->compand_bls;
-> > > +
-> > > +	if (bls->header.enable == RKISP1_EXT_PARAMS_BLOCK_DISABLE) {
-> > > +		rkisp1_param_clear_bits(params, RKISP1_CIF_ISP_COMPAND_CTRL,
-> > > +					RKISP1_CIF_ISP_COMPAND_CTRL_BLS_ENABLE);
-> > > +		return;
-> > > +	}
-> > > +
-> > > +	rkisp1_compand_bls_config(params, &bls->config);
-> > > +
-> > > +	if (!(params->enabled_blocks &
-> > > +	      BIT(RKISP1_EXT_PARAMS_BLOCK_TYPE_COMPAND_BLS)))
-> > > +		rkisp1_param_set_bits(params, RKISP1_CIF_ISP_COMPAND_CTRL,
-> > > +				      RKISP1_CIF_ISP_COMPAND_CTRL_BLS_ENABLE);
-> > > +}
-> > > +
-> > > +static void rkisp1_ext_params_compand_expand(struct rkisp1_params *params,
-> > > +					     const union rkisp1_ext_params_config *block)
-> > > +{
-> > > +	const struct rkisp1_ext_params_compand_curve_config *curve =
-> > > +		&block->compand_curve;
-> > > +
-> > > +	if (curve->header.enable == RKISP1_EXT_PARAMS_BLOCK_DISABLE) {
-> > > +		rkisp1_param_clear_bits(params, RKISP1_CIF_ISP_COMPAND_CTRL,
-> > > +					RKISP1_CIF_ISP_COMPAND_CTRL_EXPAND_ENABLE);
-> > > +		return;
-> > > +	}
-> > > +
-> > > +	rkisp1_compand_expand_config(params, &curve->config);
-> > > +
-> > > +	if (!(params->enabled_blocks &
-> > > +	      BIT(RKISP1_EXT_PARAMS_BLOCK_TYPE_COMPAND_EXPAND)))
-> > > +		rkisp1_param_set_bits(params, RKISP1_CIF_ISP_COMPAND_CTRL,
-> > > +				      RKISP1_CIF_ISP_COMPAND_CTRL_EXPAND_ENABLE);
-> > > +}
-> > > +
-> > > +static void rkisp1_ext_params_compand_compress(struct rkisp1_params *params,
-> > > +					       const union rkisp1_ext_params_config *block)
-> > > +{
-> > > +	const struct rkisp1_ext_params_compand_curve_config *curve =
-> > > +		&block->compand_curve;
-> > > +
-> > > +	if (curve->header.enable == RKISP1_EXT_PARAMS_BLOCK_DISABLE) {
-> > > +		rkisp1_param_clear_bits(params, RKISP1_CIF_ISP_COMPAND_CTRL,
-> > > +					RKISP1_CIF_ISP_COMPAND_CTRL_COMPRESS_ENABLE);
-> > > +		return;
-> > > +	}
-> > > +
-> > > +	rkisp1_compand_compress_config(params, &curve->config);
-> > > +
-> > > +	if (!(params->enabled_blocks &
-> > > +	      BIT(RKISP1_EXT_PARAMS_BLOCK_TYPE_COMPAND_COMPRESS)))
-> > > +		rkisp1_param_set_bits(params, RKISP1_CIF_ISP_COMPAND_CTRL,
-> > > +				      RKISP1_CIF_ISP_COMPAND_CTRL_COMPRESS_ENABLE);
-> > > +}
-> > > +
-> > >  typedef void (*rkisp1_block_handler)(struct rkisp1_params *params,
-> > >  			     const union rkisp1_ext_params_config *config);
-> > >
-> > > @@ -1939,6 +2087,24 @@ static const struct rkisp1_ext_params_handler {
-> > >  		.handler	= rkisp1_ext_params_afcm,
-> > >  		.group		= RKISP1_EXT_PARAMS_BLOCK_GROUP_OTHERS,
-> > >  	},
-> > > +	[RKISP1_EXT_PARAMS_BLOCK_TYPE_COMPAND_BLS] = {
-> > > +		.size		= sizeof(struct rkisp1_ext_params_compand_bls_config),
-> > > +		.handler	= rkisp1_ext_params_compand_bls,
-> > > +		.group		= RKISP1_EXT_PARAMS_BLOCK_GROUP_OTHERS,
-> > > +		.features	= RKISP1_FEATURE_COMPAND,
-> > > +	},
-> > > +	[RKISP1_EXT_PARAMS_BLOCK_TYPE_COMPAND_EXPAND] = {
-> > > +		.size		= sizeof(struct rkisp1_ext_params_compand_curve_config),
-> > > +		.handler	= rkisp1_ext_params_compand_expand,
-> > > +		.group		= RKISP1_EXT_PARAMS_BLOCK_GROUP_OTHERS,
-> > > +		.features	= RKISP1_FEATURE_COMPAND,
-> > > +	},
-> > > +	[RKISP1_EXT_PARAMS_BLOCK_TYPE_COMPAND_COMPRESS] = {
-> > > +		.size		= sizeof(struct rkisp1_ext_params_compand_curve_config),
-> > > +		.handler	= rkisp1_ext_params_compand_compress,
-> > > +		.group		= RKISP1_EXT_PARAMS_BLOCK_GROUP_OTHERS,
-> > > +		.features	= RKISP1_FEATURE_COMPAND,
-> > > +	},
-> > >  };
-> > >
-> > >  static void rkisp1_ext_params_config(struct rkisp1_params *params,
-> > > diff --git a/include/uapi/linux/rkisp1-config.h b/include/uapi/linux/rkisp1-config.h
-> > > index 00b09c92cca7..dd962df53af5 100644
-> > > --- a/include/uapi/linux/rkisp1-config.h
-> > > +++ b/include/uapi/linux/rkisp1-config.h
-> > > @@ -164,6 +164,11 @@
-> > >  #define RKISP1_CIF_ISP_DPF_MAX_NLF_COEFFS      17
-> > >  #define RKISP1_CIF_ISP_DPF_MAX_SPATIAL_COEFFS  6
-> > >
-> > > +/*
-> > > + * Compand
-> > > + */
-> > > +#define RKISP1_CIF_ISP_COMPAND_MAX_SAMPLES	64
-> > > +
-> > >  /*
-> > >   * Measurement types
-> > >   */
-> > > @@ -851,6 +856,39 @@ struct rkisp1_params_cfg {
-> > >  	struct rkisp1_cif_isp_isp_other_cfg others;
-> > >  };
-> > >
-> > > +/**
-> > > + * struct rkisp1_cif_isp_compand_bls_config - Rockchip ISP1 Companding parameters (BLS)
-> > > + * @r: Fixed subtraction value for Bayer pattern R
-> > > + * @gr: Fixed subtraction value for Bayer pattern Gr
-> > > + * @gb: Fixed subtraction value for Bayer pattern Gb
-> > > + * @b: Fixed subtraction value for Bayer pattern B
-> > > + *
-> > > + * The values will be subtracted from the sensor values. Note that unlike the
-> > > + * dedicated BLS block, the BLS values in the compander are 20-bit unsigned.
-> >
-> > I presume it's not worth mentioning this feature is only supported on
-> > specific platforms, right ?
->
-> We could, but we don't do so for the BLS block. I don't mind either way.
-> I think it's fairly clear from the driver code, and I would expect
-> people who want to use this driver to have to read the driver code
-> anyway.
->
+Changed V8:
+  return -EPROBE_DEFER as early as possible
+  move rk3066_hdmi_audio_codec_init() function after rk3066_hdmi_register()
+  restyle
 
-Yeah, and we should also mention what platforms all other blocks apply
-to. Don't bother.
+Changed V7:
+  rebase
+---
+ drivers/gpu/drm/rockchip/Kconfig       |   2 +
+ drivers/gpu/drm/rockchip/rk3066_hdmi.c | 330 +++++++++++++++++++++++--
+ 2 files changed, 306 insertions(+), 26 deletions(-)
 
-> > > + */
-> > > +struct rkisp1_cif_isp_compand_bls_config {
-> > > +	__u32 r;
-> > > +	__u32 gr;
-> > > +	__u32 gb;
-> > > +	__u32 b;
-> > > +};
-> > > +
-> > > +/**
-> > > + * struct rkisp1_cif_isp_compand_curve_config - Rockchip ISP1 Companding
-> > > + * parameters (expand and compression curves)
-> >
-> > Here and below: multi-line comments are aligned differently in the
-> > rest of the file
->
-> We have a mix of all kinds of alignment styles :-( If someone wants to
-> clean things up, I'll ack a patch.
->
-> > * struct rkisp1_cif_isp_compand_curve_config - Rockchip ISP1 Companding
-> > *                                              parameters (expand and compression curves)
->
-> It would need to be
->
->  * struct rkisp0_cif_isp_compand_curve_config - Rockchip ISP1 Companding
->  *                                              parameters (expand and
->  *                                              compression curves)
->
-> which starts looking ridiculous :-)
->
+diff --git a/drivers/gpu/drm/rockchip/Kconfig b/drivers/gpu/drm/rockchip/Kconfig
+index 1bf3e2829cd0..a32ee558408c 100644
+--- a/drivers/gpu/drm/rockchip/Kconfig
++++ b/drivers/gpu/drm/rockchip/Kconfig
+@@ -102,6 +102,8 @@ config ROCKCHIP_RGB
+ config ROCKCHIP_RK3066_HDMI
+ 	bool "Rockchip specific extensions for RK3066 HDMI"
+ 	depends on DRM_ROCKCHIP
++	select SND_SOC_HDMI_CODEC if SND_SOC
++	select SND_SOC_ROCKCHIP_I2S if SND_SOC
+ 	help
+ 	  This selects support for Rockchip SoC specific extensions
+ 	  for the RK3066 HDMI driver. If you want to enable
+diff --git a/drivers/gpu/drm/rockchip/rk3066_hdmi.c b/drivers/gpu/drm/rockchip/rk3066_hdmi.c
+index 784de990da1b..e3b8faf89ae2 100644
+--- a/drivers/gpu/drm/rockchip/rk3066_hdmi.c
++++ b/drivers/gpu/drm/rockchip/rk3066_hdmi.c
+@@ -15,12 +15,20 @@
+ #include <linux/platform_device.h>
+ #include <linux/regmap.h>
 
-I can't disagree
++#include <sound/hdmi-codec.h>
++
+ #include "rk3066_hdmi.h"
 
-> > > + * @px: Compand curve x-values. Each value stores the distance from the
-> > > + *      previous x-value, expressed as log2 of the distance on 5 bits.
-> > > + * @x: Compand curve x-values. The functionality of these parameters are
-> > > + *     unknown to do a lack of hardware documentation, but these are left here
-> >
-> > s/unknown to/unknown due to/
-> >
-> > > + *     for future compatibility purposes.
-> >
-> > Also, the documentation of struct members in the existing code doesn't
-> > use '.' at the end (not totally true, some do, so up to you)
->
-> I've added one because it's a multi-sentence comment.
->
-> > > + * @y: Compand curve y-values
-> > > + */
-> > > +struct rkisp1_cif_isp_compand_curve_config {
-> > > +	__u8 px[RKISP1_CIF_ISP_COMPAND_MAX_SAMPLES];
-> > > +	__u32 x[RKISP1_CIF_ISP_COMPAND_MAX_SAMPLES];
-> > > +	__u32 y[RKISP1_CIF_ISP_COMPAND_MAX_SAMPLES];
-> > > +};
-> > > +
-> > >  /*---------- PART2: Measurement Statistics ------------*/
-> > >
-> > >  /**
-> > > @@ -1018,6 +1056,9 @@ struct rkisp1_stat_buffer {
-> > >   * @RKISP1_EXT_PARAMS_BLOCK_TYPE_HST_MEAS: Histogram statistics
-> > >   * @RKISP1_EXT_PARAMS_BLOCK_TYPE_AEC_MEAS: Auto exposure statistics
-> > >   * @RKISP1_EXT_PARAMS_BLOCK_TYPE_AFC_MEAS: Auto-focus statistics
-> > > + * @RKISP1_EXT_PARAMS_BLOCK_TYPE_COMPAND_BLS: BLS in the compand block
-> > > + * @RKISP1_EXT_PARAMS_BLOCK_TYPE_COMPAND_EXPAND: Companding expand curve
-> > > + * @RKISP1_EXT_PARAMS_BLOCK_TYPE_COMPAND_COMPRESS: Compandding compress curve
-> >
-> > s/Compandding/Companding/
-> >
-> > >   */
-> > >  enum rkisp1_ext_params_block_type {
-> > >  	RKISP1_EXT_PARAMS_BLOCK_TYPE_BLS,
-> > > @@ -1037,6 +1078,9 @@ enum rkisp1_ext_params_block_type {
-> > >  	RKISP1_EXT_PARAMS_BLOCK_TYPE_HST_MEAS,
-> > >  	RKISP1_EXT_PARAMS_BLOCK_TYPE_AEC_MEAS,
-> > >  	RKISP1_EXT_PARAMS_BLOCK_TYPE_AFC_MEAS,
-> > > +	RKISP1_EXT_PARAMS_BLOCK_TYPE_COMPAND_BLS,
-> > > +	RKISP1_EXT_PARAMS_BLOCK_TYPE_COMPAND_EXPAND,
-> > > +	RKISP1_EXT_PARAMS_BLOCK_TYPE_COMPAND_COMPRESS,
-> > >  };
-> > >
-> > >  /**
-> > > @@ -1384,6 +1428,42 @@ struct rkisp1_ext_params_afc_config {
-> > >  	struct rkisp1_cif_isp_afc_config config;
-> > >  } __attribute__((aligned(8)));
-> > >
-> > > +/**
-> > > + * struct rkisp1_ext_params_compand_bls_config - RkISP1 extensible params
-> > > + * Compand BLS config
-> >
-> > Here and in other places 'Compand' is spelled with capital 'C'. Is it
-> > intentional ?
->
-> I think Paul matched the documentation of other blocks, that write e.g.
-> 'Histogram'.
->
-> > > + *
-> > > + * RkISP1 extensible parameters Companding configuration block (black level
-> > > + * subtraction). Identified by :c:type:`RKISP1_EXT_PARAMS_BLOCK_TYPE_COMPAND_BLS`.
-> > > + *
-> > > + * @header: The RkISP1 extensible parameters header, see
-> > > + *	    :c:type:`rkisp1_ext_params_block_header`
-> > > + * @config: Companding BLS configuration, see
-> > > + *	    :c:type:`rkisp1_cif_isp_compand_bls_config`
-> > > + */
-> > > +struct rkisp1_ext_params_compand_bls_config {
-> > > +	struct rkisp1_ext_params_block_header header;
-> > > +	struct rkisp1_cif_isp_compand_bls_config config;
-> > > +} __attribute__((aligned(8)));
-> > > +
-> > > +/**
-> > > + * struct rkisp1_ext_params_compand_curve_config - RkISP1 extensible params
-> > > + * Compand curve config
-> > > + *
-> > > + * RkISP1 extensible parameters Companding configuration block (expand and
-> > > + * compression curves). Identified by
-> > > + * :c:type:`RKISP1_EXT_PARAMS_BLOCK_TYPE_COMPAND_EXPAND`or
-> > > + * :c:type:`RKISP1_EXT_PARAMS_BLOCK_TYPE_COMPAND_COMPRESS`.
-> > > + *
-> > > + * @header: The RkISP1 extensible parameters header, see
-> > > + *	    :c:type:`rkisp1_ext_params_block_header`
-> > > + * @config: Companding curve configuration, see
-> > > + *	    :c:type:`rkisp1_cif_isp_compand_curve_config`
-> > > + */
-> > > +struct rkisp1_ext_params_compand_curve_config {
-> > > +	struct rkisp1_ext_params_block_header header;
-> > > +	struct rkisp1_cif_isp_compand_curve_config config;
-> > > +} __attribute__((aligned(8)));
-> > > +
-> > >  #define RKISP1_EXT_PARAMS_MAX_SIZE					\
-> > >  	(sizeof(struct rkisp1_ext_params_bls_config)			+\
-> > >  	sizeof(struct rkisp1_ext_params_dpcc_config)			+\
-> > > @@ -1401,7 +1481,10 @@ struct rkisp1_ext_params_afc_config {
-> > >  	sizeof(struct rkisp1_ext_params_awb_meas_config)		+\
-> > >  	sizeof(struct rkisp1_ext_params_hst_config)			+\
-> > >  	sizeof(struct rkisp1_ext_params_aec_config)			+\
-> > > -	sizeof(struct rkisp1_ext_params_afc_config))
-> > > +	sizeof(struct rkisp1_ext_params_afc_config)			+\
-> > > +	sizeof(struct rkisp1_ext_params_compand_bls_config)		+\
-> > > +	sizeof(struct rkisp1_ext_params_compand_curve_config)		+\
-> > > +	sizeof(struct rkisp1_ext_params_compand_curve_config))
-> >
-> > Do we need a comment to say why there are two entries of the same
-> > type or not ?
->
-> I'll add one.
->
+ #include "rockchip_drm_drv.h"
 
-Thanks
-  j
+ #define DEFAULT_PLLA_RATE 30000000
 
-> > >
-> > >  /**
-> > >   * enum rksip1_ext_param_buffer_version - RkISP1 extensible parameters version
->
-> --
-> Regards,
->
-> Laurent Pinchart
++struct rk3066_hdmi_audio_info {
++	int channels;
++	int sample_rate;
++	int sample_width;
++};
++
+ struct hdmi_data_info {
+ 	int vic; /* The CEA Video ID (VIC) of the current drm display mode. */
+ 	unsigned int enc_out_format;
+@@ -40,7 +48,6 @@ struct rk3066_hdmi_i2c {
+
+ struct rk3066_hdmi {
+ 	struct device *dev;
+-	struct drm_device *drm_dev;
+ 	struct regmap *grf_regmap;
+ 	int irq;
+ 	struct clk *hclk;
+@@ -54,6 +61,10 @@ struct rk3066_hdmi {
+
+ 	unsigned int tmdsclk;
+
++	struct platform_device *audio_pdev;
++	struct rk3066_hdmi_audio_info audio;
++	bool audio_enabled;
++
+ 	struct hdmi_data_info hdmi_data;
+ };
+
+@@ -214,6 +225,241 @@ static int rk3066_hdmi_config_avi(struct rk3066_hdmi *hdmi,
+ 					HDMI_INFOFRAME_AVI, 0, 0, 0);
+ }
+
++static int rk3066_hdmi_config_aai(struct rk3066_hdmi *hdmi)
++{
++	union hdmi_infoframe frame;
++	int rc;
++
++	rc = hdmi_audio_infoframe_init(&frame.audio);
++
++	frame.audio.coding_type = HDMI_AUDIO_CODING_TYPE_STREAM;
++	frame.audio.sample_frequency = HDMI_AUDIO_SAMPLE_FREQUENCY_STREAM;
++	frame.audio.sample_size = HDMI_AUDIO_SAMPLE_SIZE_STREAM;
++	frame.audio.channels = hdmi->audio.channels;
++
++	return rk3066_hdmi_upload_frame(hdmi, rc, &frame,
++					HDMI_INFOFRAME_AAI, 0, 0, 0);
++}
++
++static int rk3066_hdmi_audio_config(struct rk3066_hdmi *hdmi)
++{
++	u32 rate, channel, word_length, N, CTS;
++	struct rk3066_hdmi_audio_info *audio = &hdmi->audio;
++	u64 tmp;
++
++	if (audio->channels < 3)
++		channel = HDMI_AUDIO_I2S_CHANNEL_1_2;
++	else if (audio->channels < 5)
++		channel = HDMI_AUDIO_I2S_CHANNEL_3_4;
++	else if (audio->channels < 7)
++		channel = HDMI_AUDIO_I2S_CHANNEL_5_6;
++	else
++		channel = HDMI_AUDIO_I2S_CHANNEL_7_8;
++
++	switch (audio->sample_rate) {
++	case 32000:
++		rate = HDMI_AUDIO_SAMPLE_FRE_32000;
++		N = N_32K;
++		break;
++	case 44100:
++		rate = HDMI_AUDIO_SAMPLE_FRE_44100;
++		N = N_441K;
++		break;
++	case 48000:
++		rate = HDMI_AUDIO_SAMPLE_FRE_48000;
++		N = N_48K;
++		break;
++	case 88200:
++		rate = HDMI_AUDIO_SAMPLE_FRE_88200;
++		N = N_882K;
++		break;
++	case 96000:
++		rate = HDMI_AUDIO_SAMPLE_FRE_96000;
++		N = N_96K;
++		break;
++	case 176400:
++		rate = HDMI_AUDIO_SAMPLE_FRE_176400;
++		N = N_1764K;
++		break;
++	case 192000:
++		rate = HDMI_AUDIO_SAMPLE_FRE_192000;
++		N = N_192K;
++		break;
++	default:
++		DRM_DEV_ERROR(hdmi->dev, "no support for sample rate %d\n",
++			      audio->sample_rate);
++		return -ENOENT;
++	}
++
++	switch (audio->sample_width) {
++	case 16:
++		word_length = 0x02;
++		break;
++	case 20:
++		word_length = 0x0a;
++		break;
++	case 24:
++		word_length = 0x0b;
++		break;
++	default:
++		DRM_DEV_ERROR(hdmi->dev, "no support for word length %d\n",
++			      audio->sample_width);
++		return -ENOENT;
++	}
++
++	tmp = (u64)hdmi->tmdsclk * N;
++	do_div(tmp, 128 * audio->sample_rate);
++	CTS = tmp;
++
++	/* Set_audio source I2S. */
++	hdmi_writeb(hdmi, HDMI_AUDIO_CTRL1, 0x00);
++	hdmi_writeb(hdmi, HDMI_AUDIO_CTRL2, 0x40);
++	hdmi_writeb(hdmi, HDMI_I2S_AUDIO_CTRL,
++		    HDMI_AUDIO_I2S_FORMAT_STANDARD | channel);
++	hdmi_writeb(hdmi, HDMI_I2S_SWAP, 0x00);
++	hdmi_modb(hdmi, HDMI_AV_CTRL1, HDMI_AUDIO_SAMPLE_FRE_MASK, rate);
++	hdmi_writeb(hdmi, HDMI_AUDIO_SRC_NUM_AND_LENGTH, word_length);
++
++	/* Set N value. */
++	hdmi_modb(hdmi, HDMI_LR_SWAP_N3,
++		  HDMI_AUDIO_N_19_16_MASK, (N >> 16) & 0x0F);
++	hdmi_writeb(hdmi, HDMI_N2, (N >> 8) & 0xFF);
++	hdmi_writeb(hdmi, HDMI_N1, N & 0xFF);
++
++	/* Set CTS value. */
++	hdmi_writeb(hdmi, HDMI_CTS_EXT1, CTS & 0xff);
++	hdmi_writeb(hdmi, HDMI_CTS_EXT2, (CTS >> 8) & 0xff);
++	hdmi_writeb(hdmi, HDMI_CTS_EXT3, (CTS >> 16) & 0xff);
++
++	if (audio->channels > 2)
++		hdmi_modb(hdmi, HDMI_LR_SWAP_N3,
++			  HDMI_AUDIO_LR_SWAP_MASK,
++			  HDMI_AUDIO_LR_SWAP_SUBPACKET1);
++	rate = (~(rate >> 4)) & 0x0f;
++	hdmi_writeb(hdmi, HDMI_AUDIO_STA_BIT_CTRL1, rate);
++	hdmi_writeb(hdmi, HDMI_AUDIO_STA_BIT_CTRL2, 0);
++
++	return rk3066_hdmi_config_aai(hdmi);
++}
++
++static int rk3066_hdmi_audio_hw_params(struct device *dev, void *d,
++				       struct hdmi_codec_daifmt *daifmt,
++				       struct hdmi_codec_params *params)
++{
++	struct rk3066_hdmi *hdmi = dev_get_drvdata(dev);
++	struct drm_display_info *display = &hdmi->connector.display_info;
++
++	if (!display->has_audio) {
++		DRM_DEV_ERROR(hdmi->dev, "no audio support\n");
++		return -ENODEV;
++	}
++
++	if (!hdmi->encoder.encoder.crtc)
++		return -ENODEV;
++
++	switch (daifmt->fmt) {
++	case HDMI_I2S:
++		break;
++	default:
++		DRM_DEV_ERROR(dev, "invalid format %d\n", daifmt->fmt);
++		return -EINVAL;
++	}
++
++	hdmi->audio.channels = params->channels;
++	hdmi->audio.sample_rate = params->sample_rate;
++	hdmi->audio.sample_width = params->sample_width;
++
++	return rk3066_hdmi_audio_config(hdmi);
++}
++
++static void rk3066_hdmi_audio_shutdown(struct device *dev, void *d)
++{
++	/* Do nothing. */
++}
++
++static int rk3066_hdmi_audio_mute_stream(struct device *dev, void *d, bool mute, int direction)
++{
++	struct rk3066_hdmi *hdmi = dev_get_drvdata(dev);
++	struct drm_display_info *display = &hdmi->connector.display_info;
++
++	if (!display->has_audio) {
++		DRM_DEV_ERROR(hdmi->dev, "no audio support\n");
++		return -ENODEV;
++	}
++
++	hdmi->audio_enabled = !mute;
++
++	if (mute)
++		hdmi_modb(hdmi, HDMI_VIDEO_CTRL2,
++			  HDMI_AUDIO_DISABLE, HDMI_AUDIO_DISABLE);
++	else
++		hdmi_modb(hdmi, HDMI_VIDEO_CTRL2, HDMI_AUDIO_DISABLE, 0);
++
++	/*
++	 * Under power mode E we need to reset the audio capture logic to
++	 * make the audio setting update.
++	 */
++	if (rk3066_hdmi_get_power_mode(hdmi) == HDMI_SYS_POWER_MODE_E) {
++		hdmi_modb(hdmi, HDMI_VIDEO_CTRL2,
++			  HDMI_AUDIO_CP_LOGIC_RESET_MASK,
++			  HDMI_AUDIO_CP_LOGIC_RESET);
++		usleep_range(900, 1000);
++		hdmi_modb(hdmi, HDMI_VIDEO_CTRL2,
++			  HDMI_AUDIO_CP_LOGIC_RESET_MASK, 0);
++	}
++
++	return 0;
++}
++
++static int rk3066_hdmi_audio_get_eld(struct device *dev, void *d, u8 *buf, size_t len)
++{
++	struct rk3066_hdmi *hdmi = dev_get_drvdata(dev);
++	struct drm_mode_config *config = &hdmi->encoder.encoder.dev->mode_config;
++	struct drm_connector *connector;
++	int ret = -ENODEV;
++
++	mutex_lock(&config->mutex);
++	list_for_each_entry(connector, &config->connector_list, head) {
++		if (&hdmi->encoder.encoder == connector->encoder) {
++			memcpy(buf, connector->eld,
++			       min(sizeof(connector->eld), len));
++			ret = 0;
++		}
++	}
++	mutex_unlock(&config->mutex);
++
++	return ret;
++}
++
++static const struct hdmi_codec_ops rk3066_hdmi_audio_codec_ops = {
++	.hw_params       = rk3066_hdmi_audio_hw_params,
++	.audio_shutdown  = rk3066_hdmi_audio_shutdown,
++	.mute_stream     = rk3066_hdmi_audio_mute_stream,
++	.get_eld         = rk3066_hdmi_audio_get_eld,
++	.no_capture_mute = 1,
++};
++
++static int rk3066_hdmi_audio_codec_init(struct rk3066_hdmi *hdmi)
++{
++	struct hdmi_codec_pdata rk3066_hdmi_codec_data = {
++		.i2s = 1,
++		.ops = &rk3066_hdmi_audio_codec_ops,
++		.max_i2s_channels = 8,
++	};
++
++	hdmi->audio.channels = 2;
++	hdmi->audio.sample_rate = 48000;
++	hdmi->audio.sample_width = 16;
++	hdmi->audio_enabled = false;
++	hdmi->audio_pdev = platform_device_register_data(hdmi->dev,
++							 HDMI_CODEC_DRV_NAME,
++							 PLATFORM_DEVID_NONE,
++							 &rk3066_hdmi_codec_data,
++							 sizeof(rk3066_hdmi_codec_data));
++
++	return PTR_ERR_OR_ZERO(hdmi->audio_pdev);
++}
++
+ static int rk3066_hdmi_config_video_timing(struct rk3066_hdmi *hdmi,
+ 					   struct drm_display_mode *mode)
+ {
+@@ -364,6 +610,7 @@ static int rk3066_hdmi_setup(struct rk3066_hdmi *hdmi,
+ 		hdmi_modb(hdmi, HDMI_HDCP_CTRL, HDMI_VIDEO_MODE_MASK,
+ 			  HDMI_VIDEO_MODE_HDMI);
+ 		rk3066_hdmi_config_avi(hdmi, mode);
++		rk3066_hdmi_audio_config(hdmi);
+ 	} else {
+ 		hdmi_modb(hdmi, HDMI_HDCP_CTRL, HDMI_VIDEO_MODE_MASK, 0);
+ 	}
+@@ -380,9 +627,20 @@ static int rk3066_hdmi_setup(struct rk3066_hdmi *hdmi,
+ 	 */
+ 	rk3066_hdmi_i2c_init(hdmi);
+
+-	/* Unmute video output. */
++	/* Unmute video and audio output. */
+ 	hdmi_modb(hdmi, HDMI_VIDEO_CTRL2,
+ 		  HDMI_VIDEO_AUDIO_DISABLE_MASK, HDMI_AUDIO_DISABLE);
++	if (hdmi->audio_enabled) {
++		hdmi_modb(hdmi, HDMI_VIDEO_CTRL2, HDMI_AUDIO_DISABLE, 0);
++		/* Reset audio capture logic. */
++		hdmi_modb(hdmi, HDMI_VIDEO_CTRL2,
++			  HDMI_AUDIO_CP_LOGIC_RESET_MASK,
++			  HDMI_AUDIO_CP_LOGIC_RESET);
++		usleep_range(900, 1000);
++		hdmi_modb(hdmi, HDMI_VIDEO_CTRL2,
++			  HDMI_AUDIO_CP_LOGIC_RESET_MASK, 0);
++	}
++
+ 	return 0;
+ }
+
+@@ -431,6 +689,7 @@ static void rk3066_hdmi_encoder_disable(struct drm_encoder *encoder,
+ 			  HDMI_AUDIO_CP_LOGIC_RESET);
+ 		usleep_range(500, 510);
+ 	}
++
+ 	rk3066_hdmi_set_power_mode(hdmi, HDMI_SYS_POWER_MODE_A);
+ }
+
+@@ -447,6 +706,26 @@ rk3066_hdmi_encoder_atomic_check(struct drm_encoder *encoder,
+ 	return 0;
+ }
+
++static int rk3066_hdmi_encoder_late_register(struct drm_encoder *encoder)
++{
++	struct rk3066_hdmi *hdmi = encoder_to_rk3066_hdmi(encoder);
++
++	return rk3066_hdmi_audio_codec_init(hdmi);
++}
++
++static void rk3066_hdmi_encoder_early_unregister(struct drm_encoder *encoder)
++{
++	struct rk3066_hdmi *hdmi = encoder_to_rk3066_hdmi(encoder);
++
++	platform_device_unregister(hdmi->audio_pdev);
++}
++
++static const struct drm_encoder_funcs rk3066_hdmi_encoder_funcs = {
++	.destroy          = drm_encoder_cleanup,
++	.late_register    = rk3066_hdmi_encoder_late_register,
++	.early_unregister = rk3066_hdmi_encoder_early_unregister,
++};
++
+ static const
+ struct drm_encoder_helper_funcs rk3066_hdmi_encoder_helper_funcs = {
+ 	.atomic_check   = rk3066_hdmi_encoder_atomic_check,
+@@ -519,41 +798,28 @@ static void rk3066_hdmi_connector_destroy(struct drm_connector *connector)
+ }
+
+ static const struct drm_connector_funcs rk3066_hdmi_connector_funcs = {
+-	.fill_modes = rk3066_hdmi_probe_single_connector_modes,
+-	.detect = rk3066_hdmi_connector_detect,
+-	.destroy = rk3066_hdmi_connector_destroy,
+-	.reset = drm_atomic_helper_connector_reset,
++	.fill_modes             = rk3066_hdmi_probe_single_connector_modes,
++	.detect                 = rk3066_hdmi_connector_detect,
++	.destroy                = rk3066_hdmi_connector_destroy,
++	.reset                  = drm_atomic_helper_connector_reset,
+ 	.atomic_duplicate_state = drm_atomic_helper_connector_duplicate_state,
+-	.atomic_destroy_state = drm_atomic_helper_connector_destroy_state,
++	.atomic_destroy_state   = drm_atomic_helper_connector_destroy_state,
+ };
+
+ static const
+ struct drm_connector_helper_funcs rk3066_hdmi_connector_helper_funcs = {
+-	.get_modes = rk3066_hdmi_connector_get_modes,
+-	.mode_valid = rk3066_hdmi_connector_mode_valid,
++	.get_modes    = rk3066_hdmi_connector_get_modes,
++	.mode_valid   = rk3066_hdmi_connector_mode_valid,
+ 	.best_encoder = rk3066_hdmi_connector_best_encoder,
+ };
+
+-static int
+-rk3066_hdmi_register(struct drm_device *drm, struct rk3066_hdmi *hdmi)
++static int rk3066_hdmi_register(struct drm_device *drm, struct rk3066_hdmi *hdmi)
+ {
+ 	struct drm_encoder *encoder = &hdmi->encoder.encoder;
+-	struct device *dev = hdmi->dev;
+-
+-	encoder->possible_crtcs =
+-		drm_of_find_possible_crtcs(drm, dev->of_node);
+-
+-	/*
+-	 * If we failed to find the CRTC(s) which this encoder is
+-	 * supposed to be connected to, it's because the CRTC has
+-	 * not been registered yet.  Defer probing, and hope that
+-	 * the required CRTC is added later.
+-	 */
+-	if (encoder->possible_crtcs == 0)
+-		return -EPROBE_DEFER;
+
+ 	drm_encoder_helper_add(encoder, &rk3066_hdmi_encoder_helper_funcs);
+-	drm_simple_encoder_init(drm, encoder, DRM_MODE_ENCODER_TMDS);
++	drm_encoder_init(drm, encoder, &rk3066_hdmi_encoder_funcs,
++			 DRM_MODE_ENCODER_TMDS, NULL);
+
+ 	hdmi->connector.polled = DRM_CONNECTOR_POLL_HPD;
+
+@@ -740,6 +1006,7 @@ static int rk3066_hdmi_bind(struct device *dev, struct device *master,
+ {
+ 	struct platform_device *pdev = to_platform_device(dev);
+ 	struct drm_device *drm = data;
++	struct drm_encoder *encoder;
+ 	struct rk3066_hdmi *hdmi;
+ 	int irq;
+ 	int ret;
+@@ -748,8 +1015,19 @@ static int rk3066_hdmi_bind(struct device *dev, struct device *master,
+ 	if (!hdmi)
+ 		return -ENOMEM;
+
++	encoder = &hdmi->encoder.encoder;
++	encoder->possible_crtcs = drm_of_find_possible_crtcs(drm, dev->of_node);
++
++	/*
++	 * If we failed to find the CRTC(s) which this encoder is
++	 * supposed to be connected to, it's because the CRTC has
++	 * not been registered yet. Defer probing and hope that
++	 * the required CRTC is added later.
++	 */
++	if (encoder->possible_crtcs == 0)
++		return -EPROBE_DEFER;
++
+ 	hdmi->dev = dev;
+-	hdmi->drm_dev = drm;
+ 	hdmi->regs = devm_platform_ioremap_resource(pdev, 0);
+ 	if (IS_ERR(hdmi->regs))
+ 		return PTR_ERR(hdmi->regs);
+--
+2.39.2
+
 
 _______________________________________________
 Linux-rockchip mailing list
