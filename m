@@ -4,56 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EB19AC3065C
-	for <linux-rockchip@archiver.kernel.org>; Thu,  4 Jul 2024 07:53:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 71A53C3065C
+	for <linux-rockchip@archiver.kernel.org>; Thu,  4 Jul 2024 08:30:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To:From:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Z1LbpIKpVIa+0yMG7KXpYT+fqT44gZ3hiYBx+pxbYmw=; b=GxhFUJ7rc0GcLW
-	FnpWLG7pt7GyOw9gqvhiID9CukEoDspIHZyAQNsfBpu2s3P9qxTNPoG45uqoTORNG5QubpWsn3tZ3
-	kQwzi5XP7I//9TpkoM9WV/gLyDsp5tl8SrbYbTfuFwmSfVkSmYPBv/TufFDbprmk5vdmCNJieEUsZ
-	TcEzhFl1zKukGUAC2G3nmNDnMKGxkXAVDPysdRv3f5ThakbONMkoctxeVR/Tu1WEq7X7HoHtCTeAY
-	av8RMIrc4NwPGx0FBTYmtPeC/x4UJ4taZaspU7/VtOPtqPWCs42ViewnIRWDIxyXlN+tCDMVpByak
-	OZCxEwlLZKxO5MNoKoyg==;
+	List-Owner; bh=Q0M44HMrk7gCp/H/76+jbFu9xkikEzw8honJgvvHaXU=; b=Lrv2B31nKJqdW7
+	ZDcIXfa4zEjn4VwrJ9a7cb6QCZJ3RkDTqaIfXVHpvRW2LdRDIu97lVA0KWYqu1onwySSx4YeNv9Af
+	fJoSBo3pQfOg1uel8frMS75Tz8fvyL7725fz5lDScG4d0fOqHigaznUHAjjaSxZafq4navRNv7FNc
+	mvQmXAOtNEy72x2JYu05XuraxPS0Um8pVlQCHmuJKGMAZO4BZfkhggBqb4J12/V4NB4UCYmaXpbw+
+	dwC9Hj2UPYUxpFN2IRy852aeMfbR2WWkJ4gqeeuJ6MYPwZwHiMl7KzC9eD4JNIBD/xG5MbpLvt2lh
+	BF54eZ7EX/e2x5OSkOgA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sPHHG-0000000CVGg-1bs5;
-	Thu, 04 Jul 2024 07:53:14 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
+	id 1sPHqz-0000000Cb0b-1NzT;
+	Thu, 04 Jul 2024 08:30:09 +0000
+Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sPHHD-0000000CVDm-10DR
-	for linux-rockchip@lists.infradead.org;
-	Thu, 04 Jul 2024 07:53:12 +0000
-Received: from ideasonboard.com (93-61-96-190.ip145.fastwebnet.it [93.61.96.190])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 74A3E3D6;
-	Thu,  4 Jul 2024 09:52:37 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1720079557;
-	bh=Ps44IABWatl3Z9VzqvhSafQlE83IRzahL/FhxnH0NZ4=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=h7W6RVIGXZzz8/Vj3ZKetaZVngkKdhbGjTb3mXfTfTOCfZid/d7drphMtAvfmUDFR
-	 K7tD6jAvCII3Panf5O47IQd6scxhabNXMbtZEIenLWlp0UbKHmUV5VAXzD2ypfZqjF
-	 NJfjBmGRqzOVKi0QDlJ0asZI3AfKYK2Nuff1Hl7E=
-Date: Thu, 4 Jul 2024 09:53:02 +0200
-From: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
-To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-Cc: linux-media@vger.kernel.org, Dafna Hirschfeld <dafna@fastmail.com>, 
-	Jacopo Mondi <jacopo.mondi@ideasonboard.com>, Paul Elder <paul.elder@ideasonboard.com>, 
-	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH v1 1/5] media: rkisp1: Add helper function to swap colour
- channels
-Message-ID: <fx77b55a5wuung5yjeduuzjofwaweovcglvujjlc3l5xbgewsk@bmd5wrkoxsbr>
-References: <20240703222533.1662-1-laurent.pinchart@ideasonboard.com>
- <20240703222533.1662-2-laurent.pinchart@ideasonboard.com>
+	id 1sPHql-0000000Cavy-1uze;
+	Thu, 04 Jul 2024 08:29:57 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1720081793;
+	bh=+1mAHgPt3THuLbRBMxm88DU/XThtegA8e9GHYVcJVnk=;
+	h=Date:Subject:From:To:Cc:References:In-Reply-To:From;
+	b=RJ7VLSBu70E4JQRr8j/FTeeGrJ+6X7wJcoARYxTLPL8lZTnJ4MCuDJlZhdtbkkQCB
+	 6rCyD8yztQlLHrJ2bsPSHiYBveTKrY7WFM9fTSItwyinCLM4vx5UPP5uThlpLkQe+z
+	 phAvHnj9Ux6sWNYJJu5bEnDLblXi6KYDWbK/EWwy+55dERsxki7uPPemYkpHjvQKuM
+	 HbJxUTJUgX6xoXvKEYJMM0IPGbGLYsVPqGIg60xk4rsMNaUJCEL6dfb96BXWS3j60Y
+	 LFMQgwbQ8+d2HJhkBZe4lhnTCDnUMpXxz+eQa3pYgiJUQpgSiaxgfq9M1AhbH7OD4w
+	 L+CIbs+QkgSew==
+Received: from [100.115.223.179] (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: cristicc)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 2825637821A8;
+	Thu,  4 Jul 2024 08:29:52 +0000 (UTC)
+Message-ID: <4e7b019c-f685-4370-9f67-f45e0bcbc626@collabora.com>
+Date: Thu, 4 Jul 2024 11:29:51 +0300
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20240703222533.1662-2-laurent.pinchart@ideasonboard.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 0/4] Add clock provider support to Rockchip RK3588 HDMI
+ TX PHY
+From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+To: Vinod Koul <vkoul@kernel.org>, Kishon Vijay Abraham I
+ <kishon@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ Algea Cao <algea.cao@rock-chips.com>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>
+Cc: kernel@collabora.com, linux-phy@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
+ Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+References: <20240620-rk3588-hdmiphy-clkprov-v2-0-6a2d2164e508@collabora.com>
+Content-Language: en-US
+In-Reply-To: <20240620-rk3588-hdmiphy-clkprov-v2-0-6a2d2164e508@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240704_005311_446624_5750B655 
-X-CRM114-Status: GOOD (  24.18  )
+X-CRM114-CacheID: sfid-20240704_012955_663526_48FF6371 
+X-CRM114-Status: GOOD (  19.73  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,221 +80,64 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Laurent
+Hi Vinod,
 
-On Thu, Jul 04, 2024 at 01:25:29AM GMT, Laurent Pinchart wrote:
-> The BLS parameters passed by userspace are specified for named colour
-> channels (R, Gr, Gb and B), while the hardware registers reference
-> positions in the 2x2 CFA pattern (A, B, C and D).
->
-> The BLS values are swapped based on the CFA pattern when writing to or
-> reading from registers, using hand-roled switch statements. The logic is
-> duplicated already, and new code will require similar processing. Move
-> the swap logic to a shared function, using static data to control the
-> channels order.
->
-> Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+Please let me know if there are any additional items required for this
+series to be picked up.
+
+Thanks,
+Cristian
+
+On 6/20/24 3:36 AM, Cristian Ciocaltea wrote:
+> The HDMI PHY PLL can be used as an alternative clock source to RK3588
+> SoC CRU. Since it provides more accurate clock rates, it can be used by
+> VOP2 to improve display modes handling, such as supporting non-integer
+> refresh rates.
+> 
+> The first two patches in the series provide a couple of fixes and
+> improvements to the existing HDPTX PHY driver, while the next two add
+> the necessary changes to support the clock provider functionality.
+> 
+> To: Vinod Koul <vkoul@kernel.org>
+> To: Kishon Vijay Abraham I <kishon@kernel.org>
+> To: Heiko Stuebner <heiko@sntech.de>
+> To: Algea Cao <algea.cao@rock-chips.com>
+> To: Rob Herring <robh@kernel.org>
+> To: Krzysztof Kozlowski <krzk+dt@kernel.org>
+> To: Conor Dooley <conor+dt@kernel.org>
+> Cc: kernel@collabora.com
+> Cc: linux-phy@lists.infradead.org
+> Cc: linux-arm-kernel@lists.infradead.org
+> Cc: linux-rockchip@lists.infradead.org
+> Cc: linux-kernel@vger.kernel.org
+> Cc: devicetree@vger.kernel.org
+> Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+> 
+> --- Changes in v2:
+> - Collected Reviewed-by tag from Heiko on PATCH 1 & 2, and Acked-by from
+>   Krzysztof on PATCH 3
+> - Updated PATCH 4 to make use of a forced consumer put in
+>   rk_hdptx_phy_power_on() and rk_hdptx_phy_clk_unprepare()
+> - Link to v1: https://lore.kernel.org/r/20240618-rk3588-hdmiphy-clkprov-v1-0-80e4aa12177e@collabora.com
+> 
 > ---
->  .../platform/rockchip/rkisp1/rkisp1-common.c  | 15 +++++
->  .../platform/rockchip/rkisp1/rkisp1-common.h  |  3 +
->  .../platform/rockchip/rkisp1/rkisp1-params.c  | 58 ++++---------------
->  .../platform/rockchip/rkisp1/rkisp1-stats.c   | 51 +++++-----------
->  4 files changed, 44 insertions(+), 83 deletions(-)
->
-> diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.c
-> index f956b90a407a..90513d15e7a7 100644
-> --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.c
-> +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.c
-> @@ -178,3 +178,18 @@ void rkisp1_sd_adjust_crop(struct v4l2_rect *crop,
->
->  	rkisp1_sd_adjust_crop_rect(crop, &crop_bounds);
->  }
-> +
-> +void rkisp1_bls_swap_regs(enum rkisp1_fmt_raw_pat_type pattern,
-> +			  const u32 input[4], u32 output[4])
-> +{
-> +	static const unsigned int swap[][4] = {
-
-Should you declare this as a [4][4] array ?
-
-> +		[RKISP1_RAW_RGGB] = { 0, 1, 2, 3 },
-> +		[RKISP1_RAW_GRBG] = { 1, 0, 3, 2 },
-> +		[RKISP1_RAW_GBRG] = { 2, 3, 0, 1 },
-> +		[RKISP1_RAW_BGGR] = { 3, 2, 1, 0 },
-> +	};
-> +	unsigned int i;
-
-'i' can be declared inside the for() statement
-
-> +
-> +	for (i = 0; i < 4; ++i)
-> +		output[i] = input[swap[pattern][i]];
-> +}
-> diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
-> index c1689c0fa05a..cdf2d30e2bb1 100644
-> --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
-> +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
-> @@ -645,6 +645,9 @@ void rkisp1_params_post_configure(struct rkisp1_params *params);
->   */
->  void rkisp1_params_disable(struct rkisp1_params *params);
->
-> +void rkisp1_bls_swap_regs(enum rkisp1_fmt_raw_pat_type pattern,
-> +			  const u32 input[4], u32 output[4]);
-> +
-
-Should this be declared after rkisp1_sd_adjust_crop() to maintain the
-same definition ordering as in the C file ?
-
->  /* irq handlers */
->  irqreturn_t rkisp1_isp_isr(int irq, void *ctx);
->  irqreturn_t rkisp1_csi_isr(int irq, void *ctx);
-> diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c
-> index 39a32e98807f..b10cc2701244 100644
-> --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c
-> +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c
-> @@ -165,54 +165,20 @@ static void rkisp1_bls_config(struct rkisp1_params *params,
->  	new_control &= RKISP1_CIF_ISP_BLS_ENA;
->  	/* fixed subtraction values */
->  	if (!arg->enable_auto) {
-> -		const struct rkisp1_cif_isp_bls_fixed_val *pval =
-> -								&arg->fixed_val;
-> +		static const u32 regs[] = {
-> +			RKISP1_CIF_ISP_BLS_A_FIXED,
-> +			RKISP1_CIF_ISP_BLS_B_FIXED,
-> +			RKISP1_CIF_ISP_BLS_C_FIXED,
-> +			RKISP1_CIF_ISP_BLS_D_FIXED,
-> +		};
-> +		u32 swapped[4];
->
-> -		switch (params->raw_type) {
-> -		case RKISP1_RAW_BGGR:
-> -			rkisp1_write(params->rkisp1, RKISP1_CIF_ISP_BLS_D_FIXED,
-> -				     pval->r);
-> -			rkisp1_write(params->rkisp1, RKISP1_CIF_ISP_BLS_C_FIXED,
-> -				     pval->gr);
-> -			rkisp1_write(params->rkisp1, RKISP1_CIF_ISP_BLS_B_FIXED,
-> -				     pval->gb);
-> -			rkisp1_write(params->rkisp1, RKISP1_CIF_ISP_BLS_A_FIXED,
-> -				     pval->b);
-> -			break;
-> -		case RKISP1_RAW_GBRG:
-> -			rkisp1_write(params->rkisp1, RKISP1_CIF_ISP_BLS_C_FIXED,
-> -				     pval->r);
-> -			rkisp1_write(params->rkisp1, RKISP1_CIF_ISP_BLS_D_FIXED,
-> -				     pval->gr);
-> -			rkisp1_write(params->rkisp1, RKISP1_CIF_ISP_BLS_A_FIXED,
-> -				     pval->gb);
-> -			rkisp1_write(params->rkisp1, RKISP1_CIF_ISP_BLS_B_FIXED,
-> -				     pval->b);
-> -			break;
-> -		case RKISP1_RAW_GRBG:
-> -			rkisp1_write(params->rkisp1, RKISP1_CIF_ISP_BLS_B_FIXED,
-> -				     pval->r);
-> -			rkisp1_write(params->rkisp1, RKISP1_CIF_ISP_BLS_A_FIXED,
-> -				     pval->gr);
-> -			rkisp1_write(params->rkisp1, RKISP1_CIF_ISP_BLS_D_FIXED,
-> -				     pval->gb);
-> -			rkisp1_write(params->rkisp1, RKISP1_CIF_ISP_BLS_C_FIXED,
-> -				     pval->b);
-> -			break;
-> -		case RKISP1_RAW_RGGB:
-> -			rkisp1_write(params->rkisp1, RKISP1_CIF_ISP_BLS_A_FIXED,
-> -				     pval->r);
-> -			rkisp1_write(params->rkisp1, RKISP1_CIF_ISP_BLS_B_FIXED,
-> -				     pval->gr);
-> -			rkisp1_write(params->rkisp1, RKISP1_CIF_ISP_BLS_C_FIXED,
-> -				     pval->gb);
-> -			rkisp1_write(params->rkisp1, RKISP1_CIF_ISP_BLS_D_FIXED,
-> -				     pval->b);
-> -			break;
-> -		default:
-> -			break;
-> -		}
-> +		rkisp1_bls_swap_regs(params->raw_type, regs, swapped);
-
-Have you considered making rkisp1_bls_swap_regs() shuffle 'regs'
-in-place ? Not strictly necessary, just wondering
-
->
-> +		rkisp1_write(params->rkisp1, swapped[0], arg->fixed_val.r);
-> +		rkisp1_write(params->rkisp1, swapped[1], arg->fixed_val.gr);
-> +		rkisp1_write(params->rkisp1, swapped[2], arg->fixed_val.gb);
-> +		rkisp1_write(params->rkisp1, swapped[3], arg->fixed_val.b);
->  	} else {
->  		if (arg->en_windows & BIT(1)) {
->  			rkisp1_write(params->rkisp1, RKISP1_CIF_ISP_BLS_H2_START,
-> diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-stats.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-stats.c
-> index 2795eef91bdd..a502719e916a 100644
-> --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-stats.c
-> +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-stats.c
-> @@ -304,48 +304,25 @@ static void rkisp1_stats_get_hst_meas_v12(struct rkisp1_stats *stats,
->  static void rkisp1_stats_get_bls_meas(struct rkisp1_stats *stats,
->  				      struct rkisp1_stat_buffer *pbuf)
->  {
-> +	static const u32 regs[] = {
-> +		RKISP1_CIF_ISP_BLS_A_MEASURED,
-> +		RKISP1_CIF_ISP_BLS_B_MEASURED,
-> +		RKISP1_CIF_ISP_BLS_C_MEASURED,
-> +		RKISP1_CIF_ISP_BLS_D_MEASURED,
-> +	};
->  	struct rkisp1_device *rkisp1 = stats->rkisp1;
->  	const struct rkisp1_mbus_info *in_fmt = rkisp1->isp.sink_fmt;
->  	struct rkisp1_cif_isp_bls_meas_val *bls_val;
-> +	u32 swapped[4];
-> +
-> +	rkisp1_bls_swap_regs(in_fmt->bayer_pat, regs, swapped);
->
->  	bls_val = &pbuf->params.ae.bls_val;
-> -	if (in_fmt->bayer_pat == RKISP1_RAW_BGGR) {
-> -		bls_val->meas_b =
-> -			rkisp1_read(rkisp1, RKISP1_CIF_ISP_BLS_A_MEASURED);
-> -		bls_val->meas_gb =
-> -			rkisp1_read(rkisp1, RKISP1_CIF_ISP_BLS_B_MEASURED);
-> -		bls_val->meas_gr =
-> -			rkisp1_read(rkisp1, RKISP1_CIF_ISP_BLS_C_MEASURED);
-> -		bls_val->meas_r =
-> -			rkisp1_read(rkisp1, RKISP1_CIF_ISP_BLS_D_MEASURED);
-> -	} else if (in_fmt->bayer_pat == RKISP1_RAW_GBRG) {
-> -		bls_val->meas_gb =
-> -			rkisp1_read(rkisp1, RKISP1_CIF_ISP_BLS_A_MEASURED);
-> -		bls_val->meas_b =
-> -			rkisp1_read(rkisp1, RKISP1_CIF_ISP_BLS_B_MEASURED);
-> -		bls_val->meas_r =
-> -			rkisp1_read(rkisp1, RKISP1_CIF_ISP_BLS_C_MEASURED);
-> -		bls_val->meas_gr =
-> -			rkisp1_read(rkisp1, RKISP1_CIF_ISP_BLS_D_MEASURED);
-> -	} else if (in_fmt->bayer_pat == RKISP1_RAW_GRBG) {
-> -		bls_val->meas_gr =
-> -			rkisp1_read(rkisp1, RKISP1_CIF_ISP_BLS_A_MEASURED);
-> -		bls_val->meas_r =
-> -			rkisp1_read(rkisp1, RKISP1_CIF_ISP_BLS_B_MEASURED);
-> -		bls_val->meas_b =
-> -			rkisp1_read(rkisp1, RKISP1_CIF_ISP_BLS_C_MEASURED);
-> -		bls_val->meas_gb =
-> -			rkisp1_read(rkisp1, RKISP1_CIF_ISP_BLS_D_MEASURED);
-> -	} else if (in_fmt->bayer_pat == RKISP1_RAW_RGGB) {
-> -		bls_val->meas_r =
-> -			rkisp1_read(rkisp1, RKISP1_CIF_ISP_BLS_A_MEASURED);
-> -		bls_val->meas_gr =
-> -			rkisp1_read(rkisp1, RKISP1_CIF_ISP_BLS_B_MEASURED);
-> -		bls_val->meas_gb =
-> -			rkisp1_read(rkisp1, RKISP1_CIF_ISP_BLS_C_MEASURED);
-> -		bls_val->meas_b =
-> -			rkisp1_read(rkisp1, RKISP1_CIF_ISP_BLS_D_MEASURED);
-> -	}
-> +
-> +	bls_val->meas_r = rkisp1_read(rkisp1, swapped[0]);
-> +	bls_val->meas_gr = rkisp1_read(rkisp1, swapped[1]);
-> +	bls_val->meas_gb = rkisp1_read(rkisp1, swapped[2]);
-> +	bls_val->meas_b = rkisp1_read(rkisp1, swapped[3]);
->  }
->
->  static const struct rkisp1_stats_ops rkisp1_v10_stats_ops = {
-> --
-> Regards,
->
-> Laurent Pinchart
->
+> Cristian Ciocaltea (4):
+>       phy: phy-rockchip-samsung-hdptx: Explicitly include pm_runtime.h
+>       phy: phy-rockchip-samsung-hdptx: Enable runtime PM at PHY core level
+>       dt-bindings: phy: rockchip,rk3588-hdptx-phy: Add #clock-cells
+>       phy: phy-rockchip-samsung-hdptx: Add clock provider support
+> 
+>  .../bindings/phy/rockchip,rk3588-hdptx-phy.yaml    |   3 +
+>  drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c  | 206 +++++++++++++++++----
+>  2 files changed, 176 insertions(+), 33 deletions(-)
+> ---
+> base-commit: 6906a84c482f098d31486df8dc98cead21cce2d0
+> change-id: 20240617-rk3588-hdmiphy-clkprov-f05f165ac029
+> 
+> _______________________________________________
+> Kernel mailing list -- kernel@mailman.collabora.com
+> To unsubscribe send an email to kernel-leave@mailman.collabora.com
+> This list is managed by https://mailman.collabora.com
 
 _______________________________________________
 Linux-rockchip mailing list
