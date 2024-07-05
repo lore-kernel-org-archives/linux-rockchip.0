@@ -4,102 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 270AFC30658
-	for <linux-rockchip@archiver.kernel.org>; Fri,  5 Jul 2024 11:18:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 988A9C30658
+	for <linux-rockchip@archiver.kernel.org>; Fri,  5 Jul 2024 11:29:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=tDZ9RKg82mS8ETccj7RDE0VYSAAjzP9xB6HXG9/aUqU=; b=JlUMzKwh4+TjcE
-	4FP64wGky25bue5kCHI7ccgvyoJfTWXEiYiSMnx9DS/flZcd6wLx4iHQtyBOtGdj4rTJsLpBvS1mc
-	vf+9bRli13YUzdhQAQhoTxOcimyqYbM8HKAAzdaNbugd29gO9vQ5RgPiuC5plkx3HOlMIhgAlzYrw
-	cwN7wx4EUxGn5XQe/ecGOH4wqYkUroK/v0kt15/ZpofHBWlZ9CxCLehiRXLCzaAlZXPiSnCPxZ1Qd
-	hEdrzRRR46tiTysqkScBSwDQfaHnolB06QA9JZtE1aiV9W6BSa5OXQde3djN/m5d4ZiMNB7EIns14
-	qU3EcgukwVK6r4BL4Ydg==;
+	List-Owner; bh=6xWocI4X738cSv1ET6+TE3qyKGSVjuMegTzyFMwiL9c=; b=lFtAM1MWNoMNyu
+	xvzMoJasY2e2vs7M+c3vRisz134mmE71siyGZ0cNWej0EJH+sJdyxn2x5NiegR+Z5UmQn99KvNntE
+	3wDh24E9GxXInAZt3BP/YYWapdDernZJb9z6oHp1OlhiY1cmM4K7SiV5fnyou+A/YLohrVX00iesH
+	RUNdMCtfGZ8Gkoa0Rx+T3kJxeyJRhh5L76pzXFAkCUuGltatiTXzQi7DVPTEYr2l4htoufPUah/Fc
+	IOa63fK3m65t2sD5fZkwY+CdvyoKz5eU/xXoE/BOw1r55kcmiqYoYmuteMgx54/XjJP0vBVqwRdbt
+	+/CLU021sLzZ4H8ejycQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sPgxj-0000000FlZX-1zhE;
-	Fri, 05 Jul 2024 11:18:47 +0000
-Received: from mail-lj1-x232.google.com ([2a00:1450:4864:20::232])
+	id 1sPh7l-0000000FnZo-31QA;
+	Fri, 05 Jul 2024 11:29:09 +0000
+Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sPgxT-0000000FlTk-06fq
+	id 1sPh7j-0000000FnZ5-02mv
 	for linux-rockchip@lists.infradead.org;
-	Fri, 05 Jul 2024 11:18:33 +0000
-Received: by mail-lj1-x232.google.com with SMTP id 38308e7fff4ca-2ee910d6aaeso15095631fa.1
-        for <linux-rockchip@lists.infradead.org>; Fri, 05 Jul 2024 04:18:30 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1720178309; x=1720783109; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=OgGdrMJAOOlmaDA5n6UZ/NcHyTcSq/fRMMLBh3RpPPA=;
-        b=WE4RZ5iog5RJavJG7+crNEyXkR4wGWblrcdJS2pFf1eR7CsYZN/uUhCFPteiCdTK8P
-         W6XLgG+8j+5zuPUOt+mh3QhDxxc3H+2/yIPBEwSsDjLUUos7n/T09zna8o5z5gXA57EC
-         iUyK/qqudAfDcLxewYL/YcyG6dfU/Vng+M4XqoAlxapYQjf89s2ytZkptinVC1fv65ef
-         sVUOGeqiJFg49kS6nmMzuC8TPpIWjUCvZ83ouWV5t/HHCMdJnt3y6qx+fhsvGVIkW6Nw
-         zf/gXWJrzFWrvTPJ/pmViLo41lJ069dBFTYyNC4prY1rGDpuhnQ/WsxhvOQ1NwTWScyR
-         I2lA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1720178309; x=1720783109;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=OgGdrMJAOOlmaDA5n6UZ/NcHyTcSq/fRMMLBh3RpPPA=;
-        b=GE4fVAL0L4OIunwxvF7/XhQ2hcvrodapbKuU6pbCXammDvbAsQAyAgouak/4wLh7n7
-         YxH90I0ExBVnsljpXyprfiiq4IjL0bnab6tnh0RCjhZDzl3lf94XwqkuF4aG191LBKPD
-         MRsa16yGCDFJrBCFDFrUOhgki0/fNeGO9mlrnbVw21B54x2B+HjWjBskJEGREMUTHJQm
-         zlGbIqV9U3JRpabfyrNZicqBVpq1iAYNmYSI3a7xtQq2wkSuV78r10Dajv3vbGEkLHqv
-         2BeDd72TrAepmn6ExvzKk/2kRSKjJzVVAE5rm3JFn2e5Z4i7KpVxOkvA08kbx6vAu0Ac
-         R/+A==
-X-Forwarded-Encrypted: i=1; AJvYcCUVxG68hncbXykelwpdgmLoGG6n9XpwJgXrsYDxAAgDMxrRTajUNhqSdzSstmTblAfIFW8Pq/CNxOGbc7BoLnHN3b4tqvbuRvr9zGBWzAaN3F3H
-X-Gm-Message-State: AOJu0YxyvxVUR0IIP7lrfC1eC/Oz6ouGec0LiBePF1MA8jAV2W6AcMJV
-	iVJG5qJQ7EqThh6tpho5QmTAmCQFu9bfs4TJxn3tjkFdH9BSOsw7QsW3IiSORio=
-X-Google-Smtp-Source: AGHT+IHyMkgn3/gFNE4gv4OJO59bQCoHWgHlPXJAezaplNmRkJ1y1keb/pz2mmb4jwElkz5448BGKA==
-X-Received: by 2002:a2e:2e06:0:b0:2ee:8815:8b28 with SMTP id 38308e7fff4ca-2ee8edd3ec5mr24871001fa.33.1720178308668;
-        Fri, 05 Jul 2024 04:18:28 -0700 (PDT)
-Received: from ?IPV6:2a05:6e02:1041:c10:c49e:e1a5:3210:b8c0? ([2a05:6e02:1041:c10:c49e:e1a5:3210:b8c0])
-        by smtp.googlemail.com with ESMTPSA id ffacd0b85a97d-3678fe13ef4sm7369352f8f.117.2024.07.05.04.18.27
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 05 Jul 2024 04:18:28 -0700 (PDT)
-Message-ID: <2aa71d0f-6e4a-4056-9deb-a46526b423a9@linaro.org>
-Date: Fri, 5 Jul 2024 13:18:27 +0200
+	Fri, 05 Jul 2024 11:29:08 +0000
+Received: from pyrite.rasen.tech (h175-177-049-156.catv02.itscom.jp [175.177.49.156])
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 31235541;
+	Fri,  5 Jul 2024 13:28:31 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
+	s=mail; t=1720178913;
+	bh=rvJu0YPpOjGG4oYRrulYFmVbjRCG1xHH8upqpyVOac0=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=B/tLPQYpTwumtlTu9hfUrXD3eY1uNr4eDEb/pkS5nhWc1LDY4b/zlHSG/Jr9OZG6s
+	 jpSYyy20O7Wlf4bhK8o0ygMPxHJ0kucpC7NRcQ3DRoa25HatL570Arj5wVGokgXWsq
+	 u6RxT6PnT9tqoepcY3EeX7ikYquVNy39hCK2pcb4=
+Date: Fri, 5 Jul 2024 20:28:55 +0900
+From: Paul Elder <paul.elder@ideasonboard.com>
+To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+Cc: linux-media@vger.kernel.org, Dafna Hirschfeld <dafna@fastmail.com>,
+	Jacopo Mondi <jacopo.mondi@ideasonboard.com>,
+	linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH v2 1/5] media: rkisp1: Add helper function to swap colour
+ channels
+Message-ID: <ZofY9wVDgT0mYUIO@pyrite.rasen.tech>
+References: <20240704154932.6686-1-laurent.pinchart@ideasonboard.com>
+ <20240704154932.6686-2-laurent.pinchart@ideasonboard.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH RESEND 00/22] dt-bindings: thermal: few cleanups
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
- Zhang Rui <rui.zhang@intel.com>, Rob Herring <robh@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>,
- Guillaume La Roque <glaroque@baylibre.com>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Chen-Yu Tsai <wens@csie.org>,
- Fabio Estevam <festevam@gmail.com>
-Cc: linux-pm@vger.kernel.org, linux-samsung-soc@vger.kernel.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-amlogic@lists.infradead.org,
- linux-sunxi@lists.linux.dev, imx@lists.linux.dev,
- linux-tegra@vger.kernel.org, linux-arm-msm@vger.kernel.org,
- linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-stm32@st-md-mailman.stormreply.com,
- Florian Fainelli <f.fainelli@gmail.com>,
- linux-rpi-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- Conor Dooley <conor.dooley@microchip.com>,
- Neil Armstrong <neil.armstrong@linaro.org>,
- Vasily Khoruzhick <anarsoul@gmail.com>,
- Florian Fainelli <florian.fainelli@broadcom.com>,
- Dmitry Baryshkov <dmitry.baryshkov@linaro.org>,
- Amit Kucheria <amitk@kernel.org>,
- =?UTF-8?Q?Niklas_S=C3=B6derlund?= <niklas.soderlund+renesas@ragnatech.se>,
- Heiko Stuebner <heiko@sntech.de>, Biju Das <biju.das.jz@bp.renesas.com>,
- Baolin Wang <baolin.wang@linux.alibaba.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-References: <20240705-dt-bindings-thermal-allof-v1-0-554061b52fbc@linaro.org>
-Content-Language: en-US
-From: Daniel Lezcano <daniel.lezcano@linaro.org>
-In-Reply-To: <20240705-dt-bindings-thermal-allof-v1-0-554061b52fbc@linaro.org>
+Content-Disposition: inline
+In-Reply-To: <20240704154932.6686-2-laurent.pinchart@ideasonboard.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240705_041831_108811_DF7CDF07 
-X-CRM114-Status: GOOD (  10.74  )
+X-CRM114-CacheID: sfid-20240705_042907_218556_78D75F79 
+X-CRM114-Status: GOOD (  22.92  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -111,88 +65,220 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gMDUvMDcvMjAyNCAxMTo1MSwgS3J6eXN6dG9mIEtvemxvd3NraSB3cm90ZToKPiBIaSwKPiAK
-PiBSZXNlbmRpbmcgKHdpdGggYWRkZWQgdGFncykgYmVjYXVzZSBwYXRjaHNldCB3YXMgc3RpbGwg
-bm90IGFwcGxpZWQuCj4gRGFuaWVsLCBjYW4geW91IHBpY2sgaXQgdXA/CgpZZXMKCj4gRmV3IGNs
-ZWFudXBzIHdpdG91dCBwcmFjdGljYWwgaW1wYWN0LCBleGNlcHQgbWF5YmUgdGhlIEFtbG9naWMg
-c2NoZW1hCj4gKGJyaW5naW5nIHJlcXVpcmVkIGNlbGxzKS4KPiAKPiBMaW5rIHRvIHYxOiBodHRw
-czovL2xvcmUua2VybmVsLm9yZy9yLzIwMjQwNjE0LWR0LWJpbmRpbmdzLXRoZXJtYWwtYWxsb2Yt
-djEtMC0zMGIyNWE2YWUyNGVAbGluYXJvLm9yZwo+IAo+IEJlc3QgcmVnYXJkcywKPiBLcnp5c3p0
-b2YKPiAKPiAtLS0KPiBLcnp5c3p0b2YgS296bG93c2tpICgyMik6Cj4gICAgICAgIGR0LWJpbmRp
-bmdzOiB0aGVybWFsOiBzYW1zdW5nLGV4eW5vczogc3BlY2lmeSBjZWxscwo+ICAgICAgICBkdC1i
-aW5kaW5nczogdGhlcm1hbDogYW1sb2dpYzogcmVmZXJlbmNlIHRoZXJtYWwtc2Vuc29yIHNjaGVt
-YQo+ICAgICAgICBkdC1iaW5kaW5nczogdGhlcm1hbDogYWxsd2lubmVyLHN1bjhpLWE4M3QtdGhz
-OiByZWZlcmVuY2UgdGhlcm1hbC1zZW5zb3Igc2NoZW1hCj4gICAgICAgIGR0LWJpbmRpbmdzOiB0
-aGVybWFsOiBicmNtLGF2cy1ybzogcmVmZXJlbmNlIHRoZXJtYWwtc2Vuc29yIHNjaGVtYQo+ICAg
-ICAgICBkdC1iaW5kaW5nczogdGhlcm1hbDogZ2VuZXJpYy1hZGM6IHJlZmVyZW5jZSB0aGVybWFs
-LXNlbnNvciBzY2hlbWEKPiAgICAgICAgZHQtYmluZGluZ3M6IHRoZXJtYWw6IGlteDhtbTogcmVm
-ZXJlbmNlIHRoZXJtYWwtc2Vuc29yIHNjaGVtYQo+ICAgICAgICBkdC1iaW5kaW5nczogdGhlcm1h
-bDogbnZpZGlhLHRlZ3JhMTg2LWJwbXA6IHJlZmVyZW5jZSB0aGVybWFsLXNlbnNvciBzY2hlbWEK
-PiAgICAgICAgZHQtYmluZGluZ3M6IHRoZXJtYWw6IG52aWRpYSx0ZWdyYTMwLXRzZW5zb3I6IHJl
-ZmVyZW5jZSB0aGVybWFsLXNlbnNvciBzY2hlbWEKPiAgICAgICAgZHQtYmluZGluZ3M6IHRoZXJt
-YWw6IHFjb20tc3BtaS1hZGMtdG0taGM6IHJlZmVyZW5jZSB0aGVybWFsLXNlbnNvciBzY2hlbWEK
-PiAgICAgICAgZHQtYmluZGluZ3M6IHRoZXJtYWw6IHFjb20tc3BtaS1hZGMtdG01OiByZWZlcmVu
-Y2UgdGhlcm1hbC1zZW5zb3Igc2NoZW1hCj4gICAgICAgIGR0LWJpbmRpbmdzOiB0aGVybWFsOiBx
-Y29tLXRzZW5zOiByZWZlcmVuY2UgdGhlcm1hbC1zZW5zb3Igc2NoZW1hCj4gICAgICAgIGR0LWJp
-bmRpbmdzOiB0aGVybWFsOiBxb3JpcTogcmVmZXJlbmNlIHRoZXJtYWwtc2Vuc29yIHNjaGVtYQo+
-ICAgICAgICBkdC1iaW5kaW5nczogdGhlcm1hbDogcmNhci1nZW4zOiByZWZlcmVuY2UgdGhlcm1h
-bC1zZW5zb3Igc2NoZW1hCj4gICAgICAgIGR0LWJpbmRpbmdzOiB0aGVybWFsOiByb2NrY2hpcDog
-cmVmZXJlbmNlIHRoZXJtYWwtc2Vuc29yIHNjaGVtYQo+ICAgICAgICBkdC1iaW5kaW5nczogdGhl
-cm1hbDogcnpnMmw6IHJlZmVyZW5jZSB0aGVybWFsLXNlbnNvciBzY2hlbWEKPiAgICAgICAgZHQt
-YmluZGluZ3M6IHRoZXJtYWw6IHNvY2lvbmV4dCx1bmlwaGllcjogcmVmZXJlbmNlIHRoZXJtYWwt
-c2Vuc29yIHNjaGVtYQo+ICAgICAgICBkdC1iaW5kaW5nczogdGhlcm1hbDogc3ByZDogcmVmZXJl
-bmNlIHRoZXJtYWwtc2Vuc29yIHNjaGVtYQo+ICAgICAgICBkdC1iaW5kaW5nczogdGhlcm1hbDog
-c3Qsc3RtMzI6IHJlZmVyZW5jZSB0aGVybWFsLXNlbnNvciBzY2hlbWEKPiAgICAgICAgZHQtYmlu
-ZGluZ3M6IHRoZXJtYWw6IHRpLGFtNjU0OiByZWZlcmVuY2UgdGhlcm1hbC1zZW5zb3Igc2NoZW1h
-Cj4gICAgICAgIGR0LWJpbmRpbmdzOiB0aGVybWFsOiB0aSxqNzJ4eDogcmVmZXJlbmNlIHRoZXJt
-YWwtc2Vuc29yIHNjaGVtYQo+ICAgICAgICBkdC1iaW5kaW5nczogdGhlcm1hbDogc2ltcGxpZnkg
-ZmV3IGJpbmRpbmdzCj4gICAgICAgIGR0LWJpbmRpbmdzOiB0aGVybWFsOiBjbGVhbnVwIGV4YW1w
-bGVzIGluZGVudGF0aW9uCj4gCj4gICAuLi4vYmluZGluZ3MvdGhlcm1hbC9hbGx3aW5uZXIsc3Vu
-OGktYTgzdC10aHMueWFtbCB8ICA2ICstCj4gICAuLi4vYmluZGluZ3MvdGhlcm1hbC9hbWxvZ2lj
-LHRoZXJtYWwueWFtbCAgICAgICAgICB8IDIyICsrLS0tCj4gICAuLi4vYmluZGluZ3MvdGhlcm1h
-bC9icmNtLGF2cy1yby10aGVybWFsLnlhbWwgICAgICB8IDIyICsrLS0tCj4gICAuLi4vZGV2aWNl
-dHJlZS9iaW5kaW5ncy90aGVybWFsL2JyY20sYXZzLXRtb24ueWFtbCB8IDE3ICsrLS0KPiAgIC4u
-Li9iaW5kaW5ncy90aGVybWFsL2JyY20sYmNtMjgzNS10aGVybWFsLnlhbWwgICAgIHwgIDEgLQo+
-ICAgLi4uL2JpbmRpbmdzL3RoZXJtYWwvZnNsLHNjdS10aGVybWFsLnlhbWwgICAgICAgICAgfCAg
-MSAtCj4gICAuLi4vYmluZGluZ3MvdGhlcm1hbC9nZW5lcmljLWFkYy10aGVybWFsLnlhbWwgICAg
-ICB8ICA1ICstCj4gICAuLi4vYmluZGluZ3MvdGhlcm1hbC9pbXg4bW0tdGhlcm1hbC55YW1sICAg
-ICAgICAgICB8ICA1ICstCj4gICAuLi4vYmluZGluZ3MvdGhlcm1hbC9sb29uZ3NvbixsczJrLXRo
-ZXJtYWwueWFtbCAgICB8ICAxIC0KPiAgIC4uLi9iaW5kaW5ncy90aGVybWFsL21lZGlhdGVrLGx2
-dHMtdGhlcm1hbC55YW1sICAgIHwgIDEgLQo+ICAgLi4uL2JpbmRpbmdzL3RoZXJtYWwvbnZpZGlh
-LHRlZ3JhMTI0LXNvY3RoZXJtLnlhbWwgfCAgMSAtCj4gICAuLi4vdGhlcm1hbC9udmlkaWEsdGVn
-cmExODYtYnBtcC10aGVybWFsLnlhbWwgICAgICB8IDEyICstLQo+ICAgLi4uL2JpbmRpbmdzL3Ro
-ZXJtYWwvbnZpZGlhLHRlZ3JhMzAtdHNlbnNvci55YW1sICAgfCAgOSArLQo+ICAgLi4uL2JpbmRp
-bmdzL3RoZXJtYWwvcWNvbSxzcG1pLXRlbXAtYWxhcm0ueWFtbCAgICAgfCAgMSAtCj4gICAuLi4v
-YmluZGluZ3MvdGhlcm1hbC9xY29tLXNwbWktYWRjLXRtLWhjLnlhbWwgICAgICB8ICA4ICstCj4g
-ICAuLi4vYmluZGluZ3MvdGhlcm1hbC9xY29tLXNwbWktYWRjLXRtNS55YW1sICAgICAgICB8ICA4
-ICstCj4gICAuLi4vZGV2aWNldHJlZS9iaW5kaW5ncy90aGVybWFsL3Fjb20tdHNlbnMueWFtbCAg
-ICB8IDk2ICsrKysrKysrKystLS0tLS0tLS0tLS0KPiAgIC4uLi9kZXZpY2V0cmVlL2JpbmRpbmdz
-L3RoZXJtYWwvcW9yaXEtdGhlcm1hbC55YW1sIHwgIDUgKy0KPiAgIC4uLi9iaW5kaW5ncy90aGVy
-bWFsL3JjYXItZ2VuMy10aGVybWFsLnlhbWwgICAgICAgIHwgNjkgKysrKysrKystLS0tLS0tLQo+
-ICAgLi4uL2RldmljZXRyZWUvYmluZGluZ3MvdGhlcm1hbC9yY2FyLXRoZXJtYWwueWFtbCAgfCA2
-MCArKysrKysrLS0tLS0tLQo+ICAgLi4uL2JpbmRpbmdzL3RoZXJtYWwvcm9ja2NoaXAtdGhlcm1h
-bC55YW1sICAgICAgICAgfCAgNSArLQo+ICAgLi4uL2RldmljZXRyZWUvYmluZGluZ3MvdGhlcm1h
-bC9yemcybC10aGVybWFsLnlhbWwgfCA0MSArKysrLS0tLS0KPiAgIC4uLi9iaW5kaW5ncy90aGVy
-bWFsL3NhbXN1bmcsZXh5bm9zLXRoZXJtYWwueWFtbCAgIHwgIDMgKy0KPiAgIC4uLi90aGVybWFs
-L3NvY2lvbmV4dCx1bmlwaGllci10aGVybWFsLnlhbWwgICAgICAgIHwgIDUgKy0KPiAgIC4uLi9k
-ZXZpY2V0cmVlL2JpbmRpbmdzL3RoZXJtYWwvc3ByZC10aGVybWFsLnlhbWwgIHwgNDcgKysrKyst
-LS0tLS0KPiAgIC4uLi9iaW5kaW5ncy90aGVybWFsL3N0LHN0bTMyLXRoZXJtYWwueWFtbCAgICAg
-ICAgIHwgIDUgKy0KPiAgIC4uLi9iaW5kaW5ncy90aGVybWFsL3RpLGFtNjU0LXRoZXJtYWwueWFt
-bCAgICAgICAgIHwgMTUgKystLQo+ICAgLi4uL2JpbmRpbmdzL3RoZXJtYWwvdGksajcyeHgtdGhl
-cm1hbC55YW1sICAgICAgICAgfCAgNSArLQo+ICAgMjggZmlsZXMgY2hhbmdlZCwgMjMwIGluc2Vy
-dGlvbnMoKyksIDI0NiBkZWxldGlvbnMoLSkKPiAtLS0KPiBiYXNlLWNvbW1pdDogMGI1OGUxMDgw
-NDJiMGVkMjhhNzFjZDdlZGY1MTc1OTk5OTU1YjIzMwo+IGNoYW5nZS1pZDogMjAyNDA2MTQtZHQt
-YmluZGluZ3MtdGhlcm1hbC1hbGxvZi00MDFjNTBlNjFlZjIKPiAKPiBCZXN0IHJlZ2FyZHMsCgot
-LSAKPGh0dHA6Ly93d3cubGluYXJvLm9yZy8+IExpbmFyby5vcmcg4pSCIE9wZW4gc291cmNlIHNv
-ZnR3YXJlIGZvciBBUk0gU29DcwoKRm9sbG93IExpbmFybzogIDxodHRwOi8vd3d3LmZhY2Vib29r
-LmNvbS9wYWdlcy9MaW5hcm8+IEZhY2Vib29rIHwKPGh0dHA6Ly90d2l0dGVyLmNvbS8jIS9saW5h
-cm9vcmc+IFR3aXR0ZXIgfAo8aHR0cDovL3d3dy5saW5hcm8ub3JnL2xpbmFyby1ibG9nLz4gQmxv
-ZwoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4
-LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3Jn
-Cmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2No
-aXAK
+On Thu, Jul 04, 2024 at 06:49:28PM +0300, Laurent Pinchart wrote:
+> The BLS parameters passed by userspace are specified for named colour
+> channels (R, Gr, Gb and B), while the hardware registers reference
+> positions in the 2x2 CFA pattern (A, B, C and D).
+> 
+> The BLS values are swapped based on the CFA pattern when writing to or
+> reading from registers, using hand-roled switch statements. The logic is
+> duplicated already, and new code will require similar processing. Move
+> the swap logic to a shared function, using static data to control the
+> channels order.
+> 
+> Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+
+Reviewed-by: Paul Elder <paul.elder@ideasonboard.com>
+
+> ---
+> Changes since v1:
+> 
+> - Declare swap array with explicit dimensions
+> - Move i variable declaration to the loop
+> - Move rkisp1_bls_swap_regs() declaration
+> ---
+>  .../platform/rockchip/rkisp1/rkisp1-common.c  | 14 +++++
+>  .../platform/rockchip/rkisp1/rkisp1-common.h  |  3 +
+>  .../platform/rockchip/rkisp1/rkisp1-params.c  | 58 ++++---------------
+>  .../platform/rockchip/rkisp1/rkisp1-stats.c   | 51 +++++-----------
+>  4 files changed, 43 insertions(+), 83 deletions(-)
+> 
+> diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.c
+> index f956b90a407a..60c97bb7b18b 100644
+> --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.c
+> +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.c
+> @@ -178,3 +178,17 @@ void rkisp1_sd_adjust_crop(struct v4l2_rect *crop,
+>  
+>  	rkisp1_sd_adjust_crop_rect(crop, &crop_bounds);
+>  }
+> +
+> +void rkisp1_bls_swap_regs(enum rkisp1_fmt_raw_pat_type pattern,
+> +			  const u32 input[4], u32 output[4])
+> +{
+> +	static const unsigned int swap[4][4] = {
+> +		[RKISP1_RAW_RGGB] = { 0, 1, 2, 3 },
+> +		[RKISP1_RAW_GRBG] = { 1, 0, 3, 2 },
+> +		[RKISP1_RAW_GBRG] = { 2, 3, 0, 1 },
+> +		[RKISP1_RAW_BGGR] = { 3, 2, 1, 0 },
+> +	};
+> +
+> +	for (unsigned int i = 0; i < 4; ++i)
+> +		output[i] = input[swap[pattern][i]];
+> +}
+> diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
+> index c1689c0fa05a..a52079261579 100644
+> --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
+> +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
+> @@ -603,6 +603,9 @@ void rkisp1_sd_adjust_crop_rect(struct v4l2_rect *crop,
+>  void rkisp1_sd_adjust_crop(struct v4l2_rect *crop,
+>  			   const struct v4l2_mbus_framefmt *bounds);
+>  
+> +void rkisp1_bls_swap_regs(enum rkisp1_fmt_raw_pat_type pattern,
+> +			  const u32 input[4], u32 output[4]);
+> +
+>  /*
+>   * rkisp1_mbus_info_get_by_code - get the isp info of the media bus code
+>   *
+> diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c
+> index 25aede5e1af5..c56365c7c51f 100644
+> --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c
+> +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c
+> @@ -165,54 +165,20 @@ static void rkisp1_bls_config(struct rkisp1_params *params,
+>  	new_control &= RKISP1_CIF_ISP_BLS_ENA;
+>  	/* fixed subtraction values */
+>  	if (!arg->enable_auto) {
+> -		const struct rkisp1_cif_isp_bls_fixed_val *pval =
+> -								&arg->fixed_val;
+> +		static const u32 regs[] = {
+> +			RKISP1_CIF_ISP_BLS_A_FIXED,
+> +			RKISP1_CIF_ISP_BLS_B_FIXED,
+> +			RKISP1_CIF_ISP_BLS_C_FIXED,
+> +			RKISP1_CIF_ISP_BLS_D_FIXED,
+> +		};
+> +		u32 swapped[4];
+>  
+> -		switch (params->raw_type) {
+> -		case RKISP1_RAW_BGGR:
+> -			rkisp1_write(params->rkisp1, RKISP1_CIF_ISP_BLS_D_FIXED,
+> -				     pval->r);
+> -			rkisp1_write(params->rkisp1, RKISP1_CIF_ISP_BLS_C_FIXED,
+> -				     pval->gr);
+> -			rkisp1_write(params->rkisp1, RKISP1_CIF_ISP_BLS_B_FIXED,
+> -				     pval->gb);
+> -			rkisp1_write(params->rkisp1, RKISP1_CIF_ISP_BLS_A_FIXED,
+> -				     pval->b);
+> -			break;
+> -		case RKISP1_RAW_GBRG:
+> -			rkisp1_write(params->rkisp1, RKISP1_CIF_ISP_BLS_C_FIXED,
+> -				     pval->r);
+> -			rkisp1_write(params->rkisp1, RKISP1_CIF_ISP_BLS_D_FIXED,
+> -				     pval->gr);
+> -			rkisp1_write(params->rkisp1, RKISP1_CIF_ISP_BLS_A_FIXED,
+> -				     pval->gb);
+> -			rkisp1_write(params->rkisp1, RKISP1_CIF_ISP_BLS_B_FIXED,
+> -				     pval->b);
+> -			break;
+> -		case RKISP1_RAW_GRBG:
+> -			rkisp1_write(params->rkisp1, RKISP1_CIF_ISP_BLS_B_FIXED,
+> -				     pval->r);
+> -			rkisp1_write(params->rkisp1, RKISP1_CIF_ISP_BLS_A_FIXED,
+> -				     pval->gr);
+> -			rkisp1_write(params->rkisp1, RKISP1_CIF_ISP_BLS_D_FIXED,
+> -				     pval->gb);
+> -			rkisp1_write(params->rkisp1, RKISP1_CIF_ISP_BLS_C_FIXED,
+> -				     pval->b);
+> -			break;
+> -		case RKISP1_RAW_RGGB:
+> -			rkisp1_write(params->rkisp1, RKISP1_CIF_ISP_BLS_A_FIXED,
+> -				     pval->r);
+> -			rkisp1_write(params->rkisp1, RKISP1_CIF_ISP_BLS_B_FIXED,
+> -				     pval->gr);
+> -			rkisp1_write(params->rkisp1, RKISP1_CIF_ISP_BLS_C_FIXED,
+> -				     pval->gb);
+> -			rkisp1_write(params->rkisp1, RKISP1_CIF_ISP_BLS_D_FIXED,
+> -				     pval->b);
+> -			break;
+> -		default:
+> -			break;
+> -		}
+> +		rkisp1_bls_swap_regs(params->raw_type, regs, swapped);
+>  
+> +		rkisp1_write(params->rkisp1, swapped[0], arg->fixed_val.r);
+> +		rkisp1_write(params->rkisp1, swapped[1], arg->fixed_val.gr);
+> +		rkisp1_write(params->rkisp1, swapped[2], arg->fixed_val.gb);
+> +		rkisp1_write(params->rkisp1, swapped[3], arg->fixed_val.b);
+>  	} else {
+>  		if (arg->en_windows & BIT(1)) {
+>  			rkisp1_write(params->rkisp1, RKISP1_CIF_ISP_BLS_H2_START,
+> diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-stats.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-stats.c
+> index 2795eef91bdd..a502719e916a 100644
+> --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-stats.c
+> +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-stats.c
+> @@ -304,48 +304,25 @@ static void rkisp1_stats_get_hst_meas_v12(struct rkisp1_stats *stats,
+>  static void rkisp1_stats_get_bls_meas(struct rkisp1_stats *stats,
+>  				      struct rkisp1_stat_buffer *pbuf)
+>  {
+> +	static const u32 regs[] = {
+> +		RKISP1_CIF_ISP_BLS_A_MEASURED,
+> +		RKISP1_CIF_ISP_BLS_B_MEASURED,
+> +		RKISP1_CIF_ISP_BLS_C_MEASURED,
+> +		RKISP1_CIF_ISP_BLS_D_MEASURED,
+> +	};
+>  	struct rkisp1_device *rkisp1 = stats->rkisp1;
+>  	const struct rkisp1_mbus_info *in_fmt = rkisp1->isp.sink_fmt;
+>  	struct rkisp1_cif_isp_bls_meas_val *bls_val;
+> +	u32 swapped[4];
+> +
+> +	rkisp1_bls_swap_regs(in_fmt->bayer_pat, regs, swapped);
+>  
+>  	bls_val = &pbuf->params.ae.bls_val;
+> -	if (in_fmt->bayer_pat == RKISP1_RAW_BGGR) {
+> -		bls_val->meas_b =
+> -			rkisp1_read(rkisp1, RKISP1_CIF_ISP_BLS_A_MEASURED);
+> -		bls_val->meas_gb =
+> -			rkisp1_read(rkisp1, RKISP1_CIF_ISP_BLS_B_MEASURED);
+> -		bls_val->meas_gr =
+> -			rkisp1_read(rkisp1, RKISP1_CIF_ISP_BLS_C_MEASURED);
+> -		bls_val->meas_r =
+> -			rkisp1_read(rkisp1, RKISP1_CIF_ISP_BLS_D_MEASURED);
+> -	} else if (in_fmt->bayer_pat == RKISP1_RAW_GBRG) {
+> -		bls_val->meas_gb =
+> -			rkisp1_read(rkisp1, RKISP1_CIF_ISP_BLS_A_MEASURED);
+> -		bls_val->meas_b =
+> -			rkisp1_read(rkisp1, RKISP1_CIF_ISP_BLS_B_MEASURED);
+> -		bls_val->meas_r =
+> -			rkisp1_read(rkisp1, RKISP1_CIF_ISP_BLS_C_MEASURED);
+> -		bls_val->meas_gr =
+> -			rkisp1_read(rkisp1, RKISP1_CIF_ISP_BLS_D_MEASURED);
+> -	} else if (in_fmt->bayer_pat == RKISP1_RAW_GRBG) {
+> -		bls_val->meas_gr =
+> -			rkisp1_read(rkisp1, RKISP1_CIF_ISP_BLS_A_MEASURED);
+> -		bls_val->meas_r =
+> -			rkisp1_read(rkisp1, RKISP1_CIF_ISP_BLS_B_MEASURED);
+> -		bls_val->meas_b =
+> -			rkisp1_read(rkisp1, RKISP1_CIF_ISP_BLS_C_MEASURED);
+> -		bls_val->meas_gb =
+> -			rkisp1_read(rkisp1, RKISP1_CIF_ISP_BLS_D_MEASURED);
+> -	} else if (in_fmt->bayer_pat == RKISP1_RAW_RGGB) {
+> -		bls_val->meas_r =
+> -			rkisp1_read(rkisp1, RKISP1_CIF_ISP_BLS_A_MEASURED);
+> -		bls_val->meas_gr =
+> -			rkisp1_read(rkisp1, RKISP1_CIF_ISP_BLS_B_MEASURED);
+> -		bls_val->meas_gb =
+> -			rkisp1_read(rkisp1, RKISP1_CIF_ISP_BLS_C_MEASURED);
+> -		bls_val->meas_b =
+> -			rkisp1_read(rkisp1, RKISP1_CIF_ISP_BLS_D_MEASURED);
+> -	}
+> +
+> +	bls_val->meas_r = rkisp1_read(rkisp1, swapped[0]);
+> +	bls_val->meas_gr = rkisp1_read(rkisp1, swapped[1]);
+> +	bls_val->meas_gb = rkisp1_read(rkisp1, swapped[2]);
+> +	bls_val->meas_b = rkisp1_read(rkisp1, swapped[3]);
+>  }
+>  
+>  static const struct rkisp1_stats_ops rkisp1_v10_stats_ops = {
+> -- 
+> Regards,
+> 
+> Laurent Pinchart
+> 
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
