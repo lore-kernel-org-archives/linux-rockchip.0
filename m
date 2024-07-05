@@ -4,102 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E2E48C38150
-	for <linux-rockchip@archiver.kernel.org>; Fri,  5 Jul 2024 15:40:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BF070C3271E
+	for <linux-rockchip@archiver.kernel.org>; Fri,  5 Jul 2024 16:34:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=cpjiwHdA2B97E/bh/ed1cKPK0L+vyESWitsvL25jpys=; b=Jq19asDHXunGby
-	Ufxwlht+YRF3mwinIxAGKDL5f+H9tnMT8MqfwMi2gAj80BE0Pnc2DZ0KsNlMHiKdx4/cp6CuWw5e+
-	XroyACiQYytKz22Tqxmp82z23kgU8ydHNI/XgzWjK/8Gh4CeFqs7p0JLoNNb0S0qCyXoQ7y/aPejU
-	gJfCB0UdGZuSim7rgUHsycWm9EZR/l7x6XhqsXky0+x0vzw4K4PTG7BP8RfnB8oIIQ92NF/sh9M5t
-	xdhAT1jkyJybwZJMXDFf9L7hOh1HHcBEXWqBTY7IIuLFAw/QxI8n4EIekGiA7PPcp9EscGqvwo8jO
-	Ybp95H/+ljkNydLTCcOg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=wdEd+GKQdyJ8MQk4B9yWhsHXREQ61+PGlsmHsGAP4ds=; b=U5EhNtGqrdrzjU
+	bJnsMyRqvZ67YIwdhx17/SLEUy0GgE1L3Vu0sKOkEdQlr82WLOlPhUsoJeVJdNl13GeLhZjQM4OJu
+	ODTZFTear7OtomwnenGhpVpT4pfL95SNzk3whW0lITQiBLVgdXmfhRXtxxdDHkkyBk7rxNavSXmJu
+	x/XmDefbQclF2QDXSsq28jgUBtTYOqLOLnwE6/8U7aZe7+EDJCt2Xc/ViuuMESDtcnKpMb6n/MwJ+
+	Qvcxj15Cwbmqd2MOTtj/Z8kvcbCWWyOHQdkNJMCxYzC6v/v8+M/Llg2gGy5GE52XctMuld8u5VkGo
+	qI3wS19pXtbWCC2B3LiQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sPl2l-0000000GM7R-0SMs;
-	Fri, 05 Jul 2024 15:40:15 +0000
-Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
+	id 1sPlsp-0000000GQby-2Wka;
+	Fri, 05 Jul 2024 16:34:03 +0000
+Received: from out-180.mta0.migadu.com ([2001:41d0:1004:224b::b4])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sPl2h-0000000GM5m-45Ls
+	id 1sPlsZ-0000000GQY7-0KuE
 	for linux-rockchip@lists.infradead.org;
-	Fri, 05 Jul 2024 15:40:13 +0000
-Received: by mail-wr1-x433.google.com with SMTP id ffacd0b85a97d-367a2c2e41aso735354f8f.2
-        for <linux-rockchip@lists.infradead.org>; Fri, 05 Jul 2024 08:40:11 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1720194010; x=1720798810; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=rWJsmVbnxMDiuFLY+fOlqn//TXBBmUogobIIxAviZlc=;
-        b=aS8ABTULYwHTp4Mx/YdsUgJPrfACpf4eKInAyEaQO9kOQvObCXp6E4pfPIujrvORb1
-         axd6qrFj/BJx5mK766tGJuIy0urciIZHidMoVwrxZLlHfgM3YZCpwHxvq8WfeAROKPN3
-         h8Z+l1oti7U9cib8aq1n5q02ZvnIOvsTjvv3vtKw+F+ZeI2wSc4dUJk2Ib1NzUZp5OL6
-         Da20+FfNHkk0Ysdj3KEGG3CaklepnX5IYWBh/+2vHeqtlMeatY9xBoi7RX7HfDSo5QEm
-         2+pj0kx7978VOiYHhYpuUTZuH30CSC3mLH5u/Rgv3wxELpT8iClMwl16R2D0q+RhFT8l
-         8jVg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1720194010; x=1720798810;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=rWJsmVbnxMDiuFLY+fOlqn//TXBBmUogobIIxAviZlc=;
-        b=lo4ZCIo1uC6x/BZrXJH7iJghkDukogo9g3QVRqlCCGeWZomM07NsDlSQhdbYXDgou+
-         MOQt7gnOpnvXyFSkz0oO59n0d0kFXPp7vCKwg6bVE2ycPRYgEylH+yHXGBMhnHJ5tvPC
-         SiS1LxifGWpbSxBu/adKILEmoZqGuTNto6XR7Ow+0FXfxpGygagHQDDEcw9yocr/+qWg
-         ci/Ro4EKorP48u54SjiLLbG3igCYLsUMWb+0/zjzrX4u2zHpBBxsGt99EceCwYmFsyWF
-         dLAQze6dnC9YGeUWYk+ipy5gfc9bw1GWzgp6pVDYnRVTjxlllasjlaMVQtpxSSzvQW7+
-         BHFA==
-X-Forwarded-Encrypted: i=1; AJvYcCVgY7KI27IIBfJ6OfSBxyDYwNOne+ubl04LUazkDqtqbMYilono+NPuD2ZawLOCMi8s+YwMVhs3bm/nIyMTuMej6D4ZdBBzKK6Fr8kZvrf1LqC1
-X-Gm-Message-State: AOJu0Yxx958697sExG2kYi5/uNixFwEPffxLgJ+HSDi4kBREPBqZMZw3
-	abEuFJRz10Hy5XBdbUQiQHhg3cgmJMa1xIqaDjVjWuW2cbpns8aIuN/YjIVh2LQ=
-X-Google-Smtp-Source: AGHT+IFZ5tZcHjh9afQQV6N+UDpsdiCgwUbQuOPcHUbDQTq2FuqnU3hsZXAXDh/UpS3fDJuMgQV8qw==
-X-Received: by 2002:adf:a18f:0:b0:366:f469:a8d with SMTP id ffacd0b85a97d-3679dd35e71mr3543623f8f.35.1720194009828;
-        Fri, 05 Jul 2024 08:40:09 -0700 (PDT)
-Received: from ?IPV6:2a05:6e02:1041:c10:c49e:e1a5:3210:b8c0? ([2a05:6e02:1041:c10:c49e:e1a5:3210:b8c0])
-        by smtp.googlemail.com with ESMTPSA id ffacd0b85a97d-36795d1fc9csm6559538f8f.83.2024.07.05.08.40.08
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 05 Jul 2024 08:40:09 -0700 (PDT)
-Message-ID: <c7c78d7d-c920-415f-b97b-c3b7c61eb9fe@linaro.org>
-Date: Fri, 5 Jul 2024 17:40:08 +0200
+	Fri, 05 Jul 2024 16:33:49 +0000
+X-Envelope-To: heiko@sntech.de
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow.org; s=key1;
+	t=1720197221;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=FJ6n1XjUi/eyqCVrXLwkSveH/8hWoV86rGKiEPbK2Tc=;
+	b=yiIaq9w+BI8XdSfmrn/mw3BrhdTEssvFxmhBQIQUWxqojvVPi7/Mvkbmaj90RBDg69oH/2
+	N6eil8/4OaBOFrIlvkjZCvwhN2Z3EGNNp8+QaPNv10e11VwvQcZw47ultS2eOMcIxRJOp0
+	h7EPX1x1PfJayO6dwVutWH4A3NJqrmRL9gKIFVRhj9NWHEk7cVnxF/KS8LZ1u6xWRK/dgq
+	+yt/aT/RBI2y82DZ84bymyGHnoH5QxQZDYNbG4m5QPZ9yvCx+PO0Oz9YsXdhiEunb+jEB1
+	I5egCnLhAS9zpFoKYLCnfSbl01MTOv25H8uALblUnpdZfaqcgV+2CiJbD/ITzw==
+X-Envelope-To: mweigand@mweigand.net
+X-Envelope-To: dsimic@manjaro.org
+X-Envelope-To: didi.debian@cknow.org
+X-Envelope-To: linux-rockchip@lists.infradead.org
+X-Envelope-To: devicetree@vger.kernel.org
+X-Envelope-To: linux-arm-kernel@lists.infradead.org
+X-Envelope-To: linux-kernel@vger.kernel.org
+X-Envelope-To: macromorgan@hotmail.com
+X-Envelope-To: andyshrk@163.com
+X-Envelope-To: jagan@amarulasolutions.com
+X-Envelope-To: amadeus@jmu.edu.cn
+X-Envelope-To: f.kardame@manjaro.org
+X-Envelope-To: michael.riesch@wolfvision.net
+X-Envelope-To: wiagn233@outlook.com
+X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
+From: Diederik de Haas <didi.debian@cknow.org>
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: Maximilian Weigand <mweigand@mweigand.net>,
+	Dragan Simic <dsimic@manjaro.org>,
+	Diederik de Haas <didi.debian@cknow.org>,
+	linux-rockchip@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Chris Morgan <macromorgan@hotmail.com>,
+	Andy Yan <andyshrk@163.com>,
+	Jagan Teki <jagan@amarulasolutions.com>,
+	Chukun Pan <amadeus@jmu.edu.cn>,
+	Furkan Kardame <f.kardame@manjaro.org>,
+	Michael Riesch <michael.riesch@wolfvision.net>,
+	Shengyu Qu <wiagn233@outlook.com>
+Subject: arm64: dts: rockchip: Add dma-names to uart-bluetooth rk3566 devices
+Date: Fri,  5 Jul 2024 18:22:12 +0200
+Message-ID: <20240705163004.29678-2-didi.debian@cknow.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH RESEND 00/22] dt-bindings: thermal: few cleanups
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
- Zhang Rui <rui.zhang@intel.com>, Rob Herring <robh@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>,
- Guillaume La Roque <glaroque@baylibre.com>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Chen-Yu Tsai <wens@csie.org>,
- Fabio Estevam <festevam@gmail.com>
-Cc: linux-pm@vger.kernel.org, linux-samsung-soc@vger.kernel.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-amlogic@lists.infradead.org,
- linux-sunxi@lists.linux.dev, imx@lists.linux.dev,
- linux-tegra@vger.kernel.org, linux-arm-msm@vger.kernel.org,
- linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-stm32@st-md-mailman.stormreply.com,
- Florian Fainelli <f.fainelli@gmail.com>,
- linux-rpi-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- Conor Dooley <conor.dooley@microchip.com>,
- Neil Armstrong <neil.armstrong@linaro.org>,
- Vasily Khoruzhick <anarsoul@gmail.com>,
- Florian Fainelli <florian.fainelli@broadcom.com>,
- Dmitry Baryshkov <dmitry.baryshkov@linaro.org>,
- Amit Kucheria <amitk@kernel.org>,
- =?UTF-8?Q?Niklas_S=C3=B6derlund?= <niklas.soderlund+renesas@ragnatech.se>,
- Heiko Stuebner <heiko@sntech.de>, Biju Das <biju.das.jz@bp.renesas.com>,
- Baolin Wang <baolin.wang@linux.alibaba.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-References: <20240705-dt-bindings-thermal-allof-v1-0-554061b52fbc@linaro.org>
-Content-Language: en-US
-From: Daniel Lezcano <daniel.lezcano@linaro.org>
-In-Reply-To: <20240705-dt-bindings-thermal-allof-v1-0-554061b52fbc@linaro.org>
+X-Migadu-Flow: FLOW_OUT
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240705_084012_047980_791774DC 
-X-CRM114-Status: UNSURE (   6.06  )
+X-CRM114-CacheID: sfid-20240705_093348_072440_EDB4AE6D 
+X-CRM114-Status: UNSURE (   4.81  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -112,19 +90,29 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gMDUvMDcvMjAyNCAxMTo1MSwgS3J6eXN6dG9mIEtvemxvd3NraSB3cm90ZToKPiBIaSwKPiAK
-PiBSZXNlbmRpbmcgKHdpdGggYWRkZWQgdGFncykgYmVjYXVzZSBwYXRjaHNldCB3YXMgc3RpbGwg
-bm90IGFwcGxpZWQuCj4gRGFuaWVsLCBjYW4geW91IHBpY2sgaXQgdXA/CgpBcHBsaWVkLCB0aGFu
-a3MKCgotLSAKPGh0dHA6Ly93d3cubGluYXJvLm9yZy8+IExpbmFyby5vcmcg4pSCIE9wZW4gc291
-cmNlIHNvZnR3YXJlIGZvciBBUk0gU29DcwoKRm9sbG93IExpbmFybzogIDxodHRwOi8vd3d3LmZh
-Y2Vib29rLmNvbS9wYWdlcy9MaW5hcm8+IEZhY2Vib29rIHwKPGh0dHA6Ly90d2l0dGVyLmNvbS8j
-IS9saW5hcm9vcmc+IFR3aXR0ZXIgfAo8aHR0cDovL3d3dy5saW5hcm8ub3JnL2xpbmFyby1ibG9n
-Lz4gQmxvZwoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-CkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRl
-YWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgt
-cm9ja2NoaXAK
+This is a single patch which adds the dma-names property to the uart
+node with a bluetooth subnode on Pine64's rk356x devices.
+
+But that property can potentially be added to several other devices, but
+I have zero familiarity with them or their community, so I choose not to
+add it to those devices, but inform people via this cover letter.
+
+The dts/dtsi files I found as potential candidates are:
+- rk3566-anbernic-rgxx3.dtsi
+- rk3566-box-demo.dts
+- rk3566-powkiddy-rk2023.dtsi
+- rk3566-powkiddy-x55.dts
+- rk3566-radxa-cm3.dtsi
+- rk3566-rock-3c.dts
+- rk3566-roc-pc.dts
+- rk3568-rock-3a.dts
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
