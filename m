@@ -4,56 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A885AC30653
-	for <linux-rockchip@archiver.kernel.org>; Thu,  4 Jul 2024 20:03:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 81BAAC30658
+	for <linux-rockchip@archiver.kernel.org>; Fri,  5 Jul 2024 04:31:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ADXc9ycNeOPjPvxxxbCzy6AwGgOHi44iy8+UOEoCMh0=; b=Yps7eqvv3h3Br0
-	aKrdb7Isvb8ORMAjkelnuy+R2QeF55tzKl67FYTBPoM/mKmsktou4DSSnVfYL16p+YDwvUC1hrJkM
-	ZNOybgaUIqvQH/haY/P1P1CTsacFU1VPVd2vFpzpUBI0vUcF/Q1XqiJaZAkz08rN+Tg0/AcCUS7TC
-	5ZzxGlnGH/4PuJjdM5vBHbEgo0c+a6Tgg3F2aLBv4tqbQmYo6cwLrhdZZnB2QiEO7kY+3ucBNBAfu
-	FH3VcgpMBJ13E5joHQsFeVUhQV+hsqqJR5Lri0RhhJwImfBMFcukEfA3Ca7Osps5yH5X4jAChRqGV
-	wHIXsOX00BQkpu9ibKjg==;
+	List-Archive:List-Unsubscribe:List-Id:Subject:References:In-Reply-To:
+	Message-ID:To:From:MIME-Version:Date:Reply-To:Cc:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=bddAvR2LY+LHMPaplspMdDhThw0JlBTqo/SROr/RH/4=; b=kdeEDGi2r1fOACzPLqmSaN59UJ
+	Axuw070pJwJgXrDkvjfuIx5eVQdjMBMrDyrgUt73Qn4O2ONT6MnuqgjE+5Q95fIev/6r5jMYA0v/1
+	Y32cFH/5PGsvS8HhJtdNcA++LCWMFAvLTSquhj0N0YaobP+lPdhQA3FqY+dsw3oA9p0usp29ppm+B
+	yCfxg3BHUqr6I7pwk8un+R/QG9VIB0VnuNG2bxndmjKan9WiuFg/CAjTfCfTwoItu/hkonhJi41t7
+	hJOSSC3f/khVfaLXdRMQjWanTMANWSJfG7uC7yfQgH3DwOHGXSD+pfbz4Bu1JL9vQY0SikKZB79s5
+	q3zzE0wg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sPSgH-0000000EKuX-3hpD;
-	Thu, 04 Jul 2024 20:03:49 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
+	id 1sPaae-0000000EtHr-08xp;
+	Fri, 05 Jul 2024 04:30:32 +0000
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sPSgF-0000000EKu1-0cwP
-	for linux-rockchip@lists.infradead.org;
-	Thu, 04 Jul 2024 20:03:48 +0000
-Received: from ideasonboard.com (mob-5-90-52-146.net.vodafone.it [5.90.52.146])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 43C2D502;
-	Thu,  4 Jul 2024 22:03:15 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1720123396;
-	bh=573QHhK6H/aeda8M/b7k68o+eH26LQSp9+xVvL7DRGU=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=RgYBQU3hd2Tz+ZXsrRoUe1dIt50/4BvqHD+y7TFNPrZCuidq33Qqj7QR02lp/GYc6
-	 pMQ+SR4vrGETLl5E/npGUGAM0JX0zMZdFqbdJPyTI44vqJD9XfY+OexwH51dz04kab
-	 h/l2zSpvHvQPEM6SdzLN5zOofo1ityv5dDVUVllk=
-Date: Thu, 4 Jul 2024 22:03:41 +0200
-From: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
-To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-Cc: linux-media@vger.kernel.org, Dafna Hirschfeld <dafna@fastmail.com>, 
-	Jacopo Mondi <jacopo.mondi@ideasonboard.com>, Paul Elder <paul.elder@ideasonboard.com>, 
-	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH v2 5/5] media: rkisp1: Add support for the companding
- block
-Message-ID: <7fy5ax6ndarv55gkkhs7yy4ejs7fwopz3wej67lgersnr47d4q@m7ue6f2gucbq>
-References: <20240704154932.6686-1-laurent.pinchart@ideasonboard.com>
- <20240704154932.6686-6-laurent.pinchart@ideasonboard.com>
+	id 1sPaaQ-0000000EtHD-0YPR;
+	Fri, 05 Jul 2024 04:30:19 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sin.source.kernel.org (Postfix) with ESMTP id E6240CE3B44;
+	Fri,  5 Jul 2024 04:30:15 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 5FFBCC116B1;
+	Fri,  5 Jul 2024 04:30:14 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1720153814;
+	bh=YaiCw5CY4r8pXM3kxE0waLspkOpuDbbx9IcNWMWxYY8=;
+	h=Date:From:To:In-Reply-To:References:Subject:From;
+	b=YEvdoToF9z5R5UJeDfvRiowmNy2sZnRY9593f96PSduxoAx0JsuYAyMYhGvWDZftn
+	 o12a+N7h8gL8splK662P0HjRD1v1tV3B+CQoXRTRvkz5AK63XVH7gCmVN5KWMAXwn/
+	 PrcHBXPAFvFp1SedFcviLd7LvHtbkAPX+g6e9d78rDsC9MYrqTgBvLy2+WXueyfgqS
+	 cGkA9o9lrtCK97M6zNB3A2wjfKBk0wF6HQy0ou+0ttkn5YyDg6Frr6ssGtk4iEe++b
+	 nUL9MGHZUl4dnareHAjj+JSzdikK2vliziQVMQ1+C1snAC58ny3F+/OvMBLw7TgUp1
+	 3sn5DOp124y/g==
+Received: from aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (localhost.localdomain [127.0.0.1])
+	by aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (Postfix) with ESMTP id 436CEC43446;
+	Fri,  5 Jul 2024 04:30:14 +0000 (UTC)
+Date: Fri, 05 Jul 2024 04:30:24 +0000
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20240704154932.6686-6-laurent.pinchart@ideasonboard.com>
+From: "Kernel.org Bugbot" <bugbot@kernel.org>
+To: heiko@sntech.de, linux-arm-kernel@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org, bugs@lists.linux.dev
+Message-ID: <20240705-b217334c13-13d1a8cd7c07@bugzilla.kernel.org>
+In-Reply-To: <20230419-b217334c0-3101f9f4b426@bugzilla.kernel.org>
+References: <20230419-b217334c0-3101f9f4b426@bugzilla.kernel.org>
+Subject: Re: RK3328
+X-Bugzilla-Product: Linux
+X-Bugzilla-Component: Kernel
+X-Mailer: peebz 0.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240704_130347_507831_04723715 
-X-CRM114-Status: GOOD (  32.84  )
+X-CRM114-CacheID: sfid-20240704_213018_385084_579ABD68 
+X-CRM114-Status: UNSURE (   4.59  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,398 +77,28 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Laurent
+antwain.schneider writes via Kernel.org Bugzilla:
 
-On Thu, Jul 04, 2024 at 06:49:32PM GMT, Laurent Pinchart wrote:
-> From: Paul Elder <paul.elder@ideasonboard.com>
->
-> Add support to the rkisp1 driver for the companding block that exists on
-> the i.MX8MP version of the ISP. This requires usage of the new
-> extensible parameters format, and showcases how the format allows for
-> extensions without breaking backward compatibility.
->
-> Signed-off-by: Paul Elder <paul.elder@ideasonboard.com>
-> Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+thank you Huang-Huang Bao for addressing this problem better than i with commits
+commit e8448a6c817c2aa6c6af785b1d45678bd5977e8d
+commit 5ef6914e0bf578357b4c906ffe6b26e7eedb8ccf
+commit 01b4b1d1cec48ef4c26616c2fc4600b2c9fec05a
 
-Reviewed-by: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
+GRF_GPIO2BL_IOMUX: 00000600
+ 2b0 | 2b1 | 2b2 | 2b3 | 2b4 | 2b5 | 2b6 | res
+00 01|02 03|04 05|06 07|08 09|10 11|12 13|14 15
+ 0  0  0  0  0  0  0  0  0  1  1  0  0  0  0  0 
+GRF_GPIO2BH_IOMUX: 00000000
+   2b7  | reserved.............................
+00 01 02|03 04 05 06 07 08 09 10 11 12 13 14 15
+ 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
 
-Thanks
-   j
+View: https://bugzilla.kernel.org/show_bug.cgi?id=217334#c13
+You can reply to this message to join the discussion.
+-- 
+Deet-doot-dot, I am a bot.
+Kernel.org Bugzilla (peebz 0.1)
 
-> ---
-> Changes since v1:
->
-> - Refactor rkisp1_compand_write_px_curve()
-> - Use unsigned int instead of size_t for loop indices
-> - Hardcode RKISP1_CIF_ISP_COMPAND_NUM_POINTS points
-> - Rename RKISP1_CIF_ISP_COMPAND_MAX_SAMPLES to
->   RKISP1_CIF_ISP_COMPAND_NUM_POINTS
-> - Add comment to explain why rkisp1_ext_params_compand_curve_config is
->   counted twice in RKISP1_EXT_PARAMS_MAX_SIZE
-> - Fix typo
->
-> Changes since v0:
->
-> - Drop RKISP1_EXT_PARAM_BUFFER_V2
-> - Use common structure for compression and expansion curves
-> - Rename config fields in rkisp1_ext_params_*_config to just config
-> - Mention block type in structures documentation
-> - Constify arguments
-> - Replace __uxx types with uxx
-> - Use rkisp1_bls_swap_regs() helper in rkisp1_compand_bls_config()
-> - Use generic feature handling mechanism
-> ---
->  .../platform/rockchip/rkisp1/rkisp1-params.c  | 168 ++++++++++++++++++
->  include/uapi/linux/rkisp1-config.h            |  89 +++++++++-
->  2 files changed, 256 insertions(+), 1 deletion(-)
->
-> diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c
-> index 20bc6d582527..430d36aedd76 100644
-> --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c
-> +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c
-> @@ -5,6 +5,7 @@
->   * Copyright (C) 2017 Rockchip Electronics Co., Ltd.
->   */
->
-> +#include <linux/math.h>
->  #include <linux/string.h>
->
->  #include <media/v4l2-common.h>
-> @@ -57,6 +58,8 @@ union rkisp1_ext_params_config {
->  	struct rkisp1_ext_params_hst_config hst;
->  	struct rkisp1_ext_params_aec_config aec;
->  	struct rkisp1_ext_params_afc_config afc;
-> +	struct rkisp1_ext_params_compand_bls_config compand_bls;
-> +	struct rkisp1_ext_params_compand_curve_config compand_curve;
->  };
->
->  enum rkisp1_params_formats {
-> @@ -1258,6 +1261,93 @@ rkisp1_dpf_strength_config(struct rkisp1_params *params,
->  	rkisp1_write(params->rkisp1, RKISP1_CIF_ISP_DPF_STRENGTH_R, arg->r);
->  }
->
-> +static void rkisp1_compand_write_px_curve(struct rkisp1_params *params,
-> +					  unsigned int addr, const u8 *curve)
-> +{
-> +	const unsigned int points_per_reg = 6;
-> +	const unsigned int num_regs =
-> +		DIV_ROUND_UP(RKISP1_CIF_ISP_COMPAND_NUM_POINTS,
-> +			     points_per_reg);
-> +
-> +	/*
-> +	 * The compand curve is specified as a piecewise linear function with
-> +	 * 64 points. X coordinates are stored as a log2 of the displacement
-> +	 * from the previous point, in 5 bits, with 6 values per register. The
-> +	 * last register stores 4 values.
-> +	 */
-> +	for (unsigned int reg = 0; reg < num_regs; ++reg) {
-> +		unsigned int num_points =
-> +			min(RKISP1_CIF_ISP_COMPAND_NUM_POINTS -
-> +			    reg * points_per_reg, points_per_reg);
-> +		u32 val = 0;
-> +
-> +		for (unsigned int i = 0; i < num_points; i++)
-> +			val |= (*curve++ & 0x1f) << (i * 5);
-> +
-> +		rkisp1_write(params->rkisp1, addr, val);
-> +		addr += 4;
-> +	}
-> +}
-> +
-> +static void
-> +rkisp1_compand_write_curve_mem(struct rkisp1_params *params,
-> +			       unsigned int reg_addr, unsigned int reg_data,
-> +			       const u32 curve[RKISP1_CIF_ISP_COMPAND_NUM_POINTS])
-> +{
-> +	for (unsigned int i = 0; i < RKISP1_CIF_ISP_COMPAND_NUM_POINTS; i++) {
-> +		rkisp1_write(params->rkisp1, reg_addr, i);
-> +		rkisp1_write(params->rkisp1, reg_data, curve[i]);
-> +	}
-> +}
-> +
-> +static void
-> +rkisp1_compand_bls_config(struct rkisp1_params *params,
-> +			  const struct rkisp1_cif_isp_compand_bls_config *arg)
-> +{
-> +	static const u32 regs[] = {
-> +		RKISP1_CIF_ISP_COMPAND_BLS_A_FIXED,
-> +		RKISP1_CIF_ISP_COMPAND_BLS_B_FIXED,
-> +		RKISP1_CIF_ISP_COMPAND_BLS_C_FIXED,
-> +		RKISP1_CIF_ISP_COMPAND_BLS_D_FIXED,
-> +	};
-> +	u32 swapped[4];
-> +
-> +	rkisp1_bls_swap_regs(params->raw_type, regs, swapped);
-> +
-> +	rkisp1_write(params->rkisp1, swapped[0], arg->r);
-> +	rkisp1_write(params->rkisp1, swapped[1], arg->gr);
-> +	rkisp1_write(params->rkisp1, swapped[2], arg->gb);
-> +	rkisp1_write(params->rkisp1, swapped[3], arg->b);
-> +}
-> +
-> +static void
-> +rkisp1_compand_expand_config(struct rkisp1_params *params,
-> +			     const struct rkisp1_cif_isp_compand_curve_config *arg)
-> +{
-> +	rkisp1_compand_write_px_curve(params, RKISP1_CIF_ISP_COMPAND_EXPAND_PX_N(0),
-> +				      arg->px);
-> +	rkisp1_compand_write_curve_mem(params, RKISP1_CIF_ISP_COMPAND_EXPAND_Y_ADDR,
-> +				       RKISP1_CIF_ISP_COMPAND_EXPAND_Y_WRITE_DATA,
-> +				       arg->y);
-> +	rkisp1_compand_write_curve_mem(params, RKISP1_CIF_ISP_COMPAND_EXPAND_X_ADDR,
-> +				       RKISP1_CIF_ISP_COMPAND_EXPAND_X_WRITE_DATA,
-> +				       arg->x);
-> +}
-> +
-> +static void
-> +rkisp1_compand_compress_config(struct rkisp1_params *params,
-> +			       const struct rkisp1_cif_isp_compand_curve_config *arg)
-> +{
-> +	rkisp1_compand_write_px_curve(params, RKISP1_CIF_ISP_COMPAND_COMPRESS_PX_N(0),
-> +				      arg->px);
-> +	rkisp1_compand_write_curve_mem(params, RKISP1_CIF_ISP_COMPAND_COMPRESS_Y_ADDR,
-> +				       RKISP1_CIF_ISP_COMPAND_COMPRESS_Y_WRITE_DATA,
-> +				       arg->y);
-> +	rkisp1_compand_write_curve_mem(params, RKISP1_CIF_ISP_COMPAND_COMPRESS_X_ADDR,
-> +				       RKISP1_CIF_ISP_COMPAND_COMPRESS_X_WRITE_DATA,
-> +				       arg->x);
-> +}
-> +
->  static void
->  rkisp1_isp_isr_other_config(struct rkisp1_params *params,
->  			    const struct rkisp1_params_cfg *new_params)
-> @@ -1844,6 +1934,66 @@ rkisp1_ext_params_afcm(struct rkisp1_params *params,
->  				      RKISP1_CIF_ISP_AFM_ENA);
->  }
->
-> +static void rkisp1_ext_params_compand_bls(struct rkisp1_params *params,
-> +					  const union rkisp1_ext_params_config *block)
-> +{
-> +	const struct rkisp1_ext_params_compand_bls_config *bls =
-> +		&block->compand_bls;
-> +
-> +	if (bls->header.enable == RKISP1_EXT_PARAMS_BLOCK_DISABLE) {
-> +		rkisp1_param_clear_bits(params, RKISP1_CIF_ISP_COMPAND_CTRL,
-> +					RKISP1_CIF_ISP_COMPAND_CTRL_BLS_ENABLE);
-> +		return;
-> +	}
-> +
-> +	rkisp1_compand_bls_config(params, &bls->config);
-> +
-> +	if (!(params->enabled_blocks &
-> +	      BIT(RKISP1_EXT_PARAMS_BLOCK_TYPE_COMPAND_BLS)))
-> +		rkisp1_param_set_bits(params, RKISP1_CIF_ISP_COMPAND_CTRL,
-> +				      RKISP1_CIF_ISP_COMPAND_CTRL_BLS_ENABLE);
-> +}
-> +
-> +static void rkisp1_ext_params_compand_expand(struct rkisp1_params *params,
-> +					     const union rkisp1_ext_params_config *block)
-> +{
-> +	const struct rkisp1_ext_params_compand_curve_config *curve =
-> +		&block->compand_curve;
-> +
-> +	if (curve->header.enable == RKISP1_EXT_PARAMS_BLOCK_DISABLE) {
-> +		rkisp1_param_clear_bits(params, RKISP1_CIF_ISP_COMPAND_CTRL,
-> +					RKISP1_CIF_ISP_COMPAND_CTRL_EXPAND_ENABLE);
-> +		return;
-> +	}
-> +
-> +	rkisp1_compand_expand_config(params, &curve->config);
-> +
-> +	if (!(params->enabled_blocks &
-> +	      BIT(RKISP1_EXT_PARAMS_BLOCK_TYPE_COMPAND_EXPAND)))
-> +		rkisp1_param_set_bits(params, RKISP1_CIF_ISP_COMPAND_CTRL,
-> +				      RKISP1_CIF_ISP_COMPAND_CTRL_EXPAND_ENABLE);
-> +}
-> +
-> +static void rkisp1_ext_params_compand_compress(struct rkisp1_params *params,
-> +					       const union rkisp1_ext_params_config *block)
-> +{
-> +	const struct rkisp1_ext_params_compand_curve_config *curve =
-> +		&block->compand_curve;
-> +
-> +	if (curve->header.enable == RKISP1_EXT_PARAMS_BLOCK_DISABLE) {
-> +		rkisp1_param_clear_bits(params, RKISP1_CIF_ISP_COMPAND_CTRL,
-> +					RKISP1_CIF_ISP_COMPAND_CTRL_COMPRESS_ENABLE);
-> +		return;
-> +	}
-> +
-> +	rkisp1_compand_compress_config(params, &curve->config);
-> +
-> +	if (!(params->enabled_blocks &
-> +	      BIT(RKISP1_EXT_PARAMS_BLOCK_TYPE_COMPAND_COMPRESS)))
-> +		rkisp1_param_set_bits(params, RKISP1_CIF_ISP_COMPAND_CTRL,
-> +				      RKISP1_CIF_ISP_COMPAND_CTRL_COMPRESS_ENABLE);
-> +}
-> +
->  typedef void (*rkisp1_block_handler)(struct rkisp1_params *params,
->  			     const union rkisp1_ext_params_config *config);
->
-> @@ -1939,6 +2089,24 @@ static const struct rkisp1_ext_params_handler {
->  		.handler	= rkisp1_ext_params_afcm,
->  		.group		= RKISP1_EXT_PARAMS_BLOCK_GROUP_OTHERS,
->  	},
-> +	[RKISP1_EXT_PARAMS_BLOCK_TYPE_COMPAND_BLS] = {
-> +		.size		= sizeof(struct rkisp1_ext_params_compand_bls_config),
-> +		.handler	= rkisp1_ext_params_compand_bls,
-> +		.group		= RKISP1_EXT_PARAMS_BLOCK_GROUP_OTHERS,
-> +		.features	= RKISP1_FEATURE_COMPAND,
-> +	},
-> +	[RKISP1_EXT_PARAMS_BLOCK_TYPE_COMPAND_EXPAND] = {
-> +		.size		= sizeof(struct rkisp1_ext_params_compand_curve_config),
-> +		.handler	= rkisp1_ext_params_compand_expand,
-> +		.group		= RKISP1_EXT_PARAMS_BLOCK_GROUP_OTHERS,
-> +		.features	= RKISP1_FEATURE_COMPAND,
-> +	},
-> +	[RKISP1_EXT_PARAMS_BLOCK_TYPE_COMPAND_COMPRESS] = {
-> +		.size		= sizeof(struct rkisp1_ext_params_compand_curve_config),
-> +		.handler	= rkisp1_ext_params_compand_compress,
-> +		.group		= RKISP1_EXT_PARAMS_BLOCK_GROUP_OTHERS,
-> +		.features	= RKISP1_FEATURE_COMPAND,
-> +	},
->  };
->
->  static void rkisp1_ext_params_config(struct rkisp1_params *params,
-> diff --git a/include/uapi/linux/rkisp1-config.h b/include/uapi/linux/rkisp1-config.h
-> index 00b09c92cca7..c645db36f2f6 100644
-> --- a/include/uapi/linux/rkisp1-config.h
-> +++ b/include/uapi/linux/rkisp1-config.h
-> @@ -164,6 +164,11 @@
->  #define RKISP1_CIF_ISP_DPF_MAX_NLF_COEFFS      17
->  #define RKISP1_CIF_ISP_DPF_MAX_SPATIAL_COEFFS  6
->
-> +/*
-> + * Compand
-> + */
-> +#define RKISP1_CIF_ISP_COMPAND_NUM_POINTS	64
-> +
->  /*
->   * Measurement types
->   */
-> @@ -851,6 +856,39 @@ struct rkisp1_params_cfg {
->  	struct rkisp1_cif_isp_isp_other_cfg others;
->  };
->
-> +/**
-> + * struct rkisp1_cif_isp_compand_bls_config - Rockchip ISP1 Companding parameters (BLS)
-> + * @r: Fixed subtraction value for Bayer pattern R
-> + * @gr: Fixed subtraction value for Bayer pattern Gr
-> + * @gb: Fixed subtraction value for Bayer pattern Gb
-> + * @b: Fixed subtraction value for Bayer pattern B
-> + *
-> + * The values will be subtracted from the sensor values. Note that unlike the
-> + * dedicated BLS block, the BLS values in the compander are 20-bit unsigned.
-> + */
-> +struct rkisp1_cif_isp_compand_bls_config {
-> +	__u32 r;
-> +	__u32 gr;
-> +	__u32 gb;
-> +	__u32 b;
-> +};
-> +
-> +/**
-> + * struct rkisp1_cif_isp_compand_curve_config - Rockchip ISP1 Companding
-> + * parameters (expand and compression curves)
-> + * @px: Compand curve x-values. Each value stores the distance from the
-> + *      previous x-value, expressed as log2 of the distance on 5 bits.
-> + * @x: Compand curve x-values. The functionality of these parameters are
-> + *     unknown due to do a lack of hardware documentation, but these are left
-> + *     here for future compatibility purposes.
-> + * @y: Compand curve y-values
-> + */
-> +struct rkisp1_cif_isp_compand_curve_config {
-> +	__u8 px[RKISP1_CIF_ISP_COMPAND_NUM_POINTS];
-> +	__u32 x[RKISP1_CIF_ISP_COMPAND_NUM_POINTS];
-> +	__u32 y[RKISP1_CIF_ISP_COMPAND_NUM_POINTS];
-> +};
-> +
->  /*---------- PART2: Measurement Statistics ------------*/
->
->  /**
-> @@ -1018,6 +1056,9 @@ struct rkisp1_stat_buffer {
->   * @RKISP1_EXT_PARAMS_BLOCK_TYPE_HST_MEAS: Histogram statistics
->   * @RKISP1_EXT_PARAMS_BLOCK_TYPE_AEC_MEAS: Auto exposure statistics
->   * @RKISP1_EXT_PARAMS_BLOCK_TYPE_AFC_MEAS: Auto-focus statistics
-> + * @RKISP1_EXT_PARAMS_BLOCK_TYPE_COMPAND_BLS: BLS in the compand block
-> + * @RKISP1_EXT_PARAMS_BLOCK_TYPE_COMPAND_EXPAND: Companding expand curve
-> + * @RKISP1_EXT_PARAMS_BLOCK_TYPE_COMPAND_COMPRESS: Companding compress curve
->   */
->  enum rkisp1_ext_params_block_type {
->  	RKISP1_EXT_PARAMS_BLOCK_TYPE_BLS,
-> @@ -1037,6 +1078,9 @@ enum rkisp1_ext_params_block_type {
->  	RKISP1_EXT_PARAMS_BLOCK_TYPE_HST_MEAS,
->  	RKISP1_EXT_PARAMS_BLOCK_TYPE_AEC_MEAS,
->  	RKISP1_EXT_PARAMS_BLOCK_TYPE_AFC_MEAS,
-> +	RKISP1_EXT_PARAMS_BLOCK_TYPE_COMPAND_BLS,
-> +	RKISP1_EXT_PARAMS_BLOCK_TYPE_COMPAND_EXPAND,
-> +	RKISP1_EXT_PARAMS_BLOCK_TYPE_COMPAND_COMPRESS,
->  };
->
->  /**
-> @@ -1384,6 +1428,46 @@ struct rkisp1_ext_params_afc_config {
->  	struct rkisp1_cif_isp_afc_config config;
->  } __attribute__((aligned(8)));
->
-> +/**
-> + * struct rkisp1_ext_params_compand_bls_config - RkISP1 extensible params
-> + * Compand BLS config
-> + *
-> + * RkISP1 extensible parameters Companding configuration block (black level
-> + * subtraction). Identified by :c:type:`RKISP1_EXT_PARAMS_BLOCK_TYPE_COMPAND_BLS`.
-> + *
-> + * @header: The RkISP1 extensible parameters header, see
-> + *	    :c:type:`rkisp1_ext_params_block_header`
-> + * @config: Companding BLS configuration, see
-> + *	    :c:type:`rkisp1_cif_isp_compand_bls_config`
-> + */
-> +struct rkisp1_ext_params_compand_bls_config {
-> +	struct rkisp1_ext_params_block_header header;
-> +	struct rkisp1_cif_isp_compand_bls_config config;
-> +} __attribute__((aligned(8)));
-> +
-> +/**
-> + * struct rkisp1_ext_params_compand_curve_config - RkISP1 extensible params
-> + * Compand curve config
-> + *
-> + * RkISP1 extensible parameters Companding configuration block (expand and
-> + * compression curves). Identified by
-> + * :c:type:`RKISP1_EXT_PARAMS_BLOCK_TYPE_COMPAND_EXPAND`or
-> + * :c:type:`RKISP1_EXT_PARAMS_BLOCK_TYPE_COMPAND_COMPRESS`.
-> + *
-> + * @header: The RkISP1 extensible parameters header, see
-> + *	    :c:type:`rkisp1_ext_params_block_header`
-> + * @config: Companding curve configuration, see
-> + *	    :c:type:`rkisp1_cif_isp_compand_curve_config`
-> + */
-> +struct rkisp1_ext_params_compand_curve_config {
-> +	struct rkisp1_ext_params_block_header header;
-> +	struct rkisp1_cif_isp_compand_curve_config config;
-> +} __attribute__((aligned(8)));
-> +
-> +/*
-> + * The rkisp1_ext_params_compand_curve_config structure is counted twice as it
-> + * is used for both the COMPAND_EXPAND and COMPAND_COMPRESS block types.
-> + */
->  #define RKISP1_EXT_PARAMS_MAX_SIZE					\
->  	(sizeof(struct rkisp1_ext_params_bls_config)			+\
->  	sizeof(struct rkisp1_ext_params_dpcc_config)			+\
-> @@ -1401,7 +1485,10 @@ struct rkisp1_ext_params_afc_config {
->  	sizeof(struct rkisp1_ext_params_awb_meas_config)		+\
->  	sizeof(struct rkisp1_ext_params_hst_config)			+\
->  	sizeof(struct rkisp1_ext_params_aec_config)			+\
-> -	sizeof(struct rkisp1_ext_params_afc_config))
-> +	sizeof(struct rkisp1_ext_params_afc_config)			+\
-> +	sizeof(struct rkisp1_ext_params_compand_bls_config)		+\
-> +	sizeof(struct rkisp1_ext_params_compand_curve_config)		+\
-> +	sizeof(struct rkisp1_ext_params_compand_curve_config))
->
->  /**
->   * enum rksip1_ext_param_buffer_version - RkISP1 extensible parameters version
-> --
-> Regards,
->
-> Laurent Pinchart
->
 
 _______________________________________________
 Linux-rockchip mailing list
