@@ -4,54 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 739A2C3271E
-	for <linux-rockchip@archiver.kernel.org>; Mon,  8 Jul 2024 22:28:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C1A8FC3DA47
+	for <linux-rockchip@archiver.kernel.org>; Mon,  8 Jul 2024 22:45:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ob/roC0xdm7CJCYIBMi0CyhNKOKjxQsbUge5PwtGEhU=; b=MOdwcRnpme4JIi
-	QhNBQMPV7xluvIhgfzqmuZsFLUO64rHQsWGqORPUXn3R5rElTNmb5AZxk+eHrYcKPfvbq/TtZiVRM
-	RpkTmb3DdMQ9APQLIf9Pz7bvsHtTVh9D27NgcNBT5GcKuJN0loQAjw4kMpTkD353LIGM4YWuFScme
-	Qauw0cF/cB2En+R0XxxFjT4LUspu34l1heTJ2SxgCH0wmYrZq9DdbrXC19/pfcEvUgsr9tDeUcVO+
-	zQsM6Swl7NyJ+xUquGyw/f+KtfZzlbwatrpoA4f1+tLub6SMXlZmcNLkNachPJbeQ7WKl6eEsVFdg
-	Aam+/JZassr6XMwTKcXA==;
+	List-Owner; bh=XmVuL2GkbLZxDNc5cYgqZ/EdBqk0eCcyLvV5GOQ/KBc=; b=SSk2NoNs65fEMU
+	0MiBoN9kBOwgPBWNbOZ5EjU8WqmRfrCMMfEWRuoDe6RZhqojN9EQbM+1Jtj+c8avBzNCqs5pGydqx
+	5T1FdBf55zRvfasmduWyKErfcZIyshHcXUcizoCWjr3eN6RdGtztPolJ+gNnZfMt8fkqrTHFNkcdk
+	vRy5mk3J4tRJBgThSyAhvMBdq71+NPRVwNBiWUt1koqgUFMSzNDgQJZJCxMlThjGv0L/1dXP01maa
+	vAab9sH2no35VhbiozgkBRQUj9S/3Ld6sUcO6+bN7buH1UZdSNYx+W2wBbH6J3i6L00hY9rZ02ewQ
+	fJhWUAvjj4ZJqCqPry0w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sQwqI-00000005Dek-0Sdz;
-	Mon, 08 Jul 2024 22:28:18 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1sQx79-00000005FgT-3cPv;
+	Mon, 08 Jul 2024 22:45:43 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sQwpq-00000005DQn-2VXB;
-	Mon, 08 Jul 2024 22:27:51 +0000
-Received: from i5e8616d7.versanet.de ([94.134.22.215] helo=phil.lan)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1sQwpj-0006Hg-KE; Tue, 09 Jul 2024 00:27:43 +0200
-From: Heiko Stuebner <heiko@sntech.de>
-To: Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Jonas Karlman <jonas@kwiboo.se>,
-	Conor Dooley <conor+dt@kernel.org>
-Cc: Heiko Stuebner <heiko@sntech.de>,
-	linux-kernel@vger.kernel.org,
-	FUKAUMI Naoki <naoki@radxa.com>,
-	linux-arm-kernel@lists.infradead.org,
+	id 1sQx6s-00000005FcO-1Uqm;
+	Mon, 08 Jul 2024 22:45:27 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 8AC4E611C2;
+	Mon,  8 Jul 2024 22:45:25 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id F14FAC3277B;
+	Mon,  8 Jul 2024 22:45:24 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1720478725;
+	bh=7YHz7y+T/d/K9XBn3bDo+/LX40FSv7Jm/vdn58aKRkQ=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=BI0wlKY81Q579BFKw8zWMWC1SIwNd/gVSKkx7IsVlekVsv3X7cxz/TUVpSKqP9dxe
+	 5/c1ZyOvWy/q96QswErv4pQOumxSPIIxhTbehYXPi/bV9fY8BuhUHqkaMcEU94IgyI
+	 hPHVQwF7oo3gUOSCe5etKokUMLKT5tepIOBSmPCEmnUvCClWm1cPXnQme/B726qrAf
+	 KZnckvtI2EiIHhy9sB1QKfM5AychhQBbEmhEdXjZejk9ZnCoW0Ep40AiLTAaEJaAFX
+	 nnCkCaNxQa/zeY//19pq24YRvXay3/oM6zBeFsvWQC2HRA51Tt2JgI71FYd0iXy6G3
+	 F9eS93ChH2lJg==
+Date: Mon, 8 Jul 2024 16:45:22 -0600
+From: Rob Herring <robh@kernel.org>
+To: Farouk Bouabid <farouk.bouabid@cherry.de>
+Cc: linux-i2c@vger.kernel.org, devicetree@vger.kernel.org,
+	Conor Dooley <conor+dt@kernel.org>,
+	Andi Shyti <andi.shyti@kernel.org>,
+	Jean Delvare <jdelvare@suse.com>, linux-hwmon@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
-	devicetree@vger.kernel.org
-Subject: Re: [PATCH v3 0/2] arm64: dts: rockchip: Add Radxa ROCK 3B
-Date: Tue,  9 Jul 2024 00:27:41 +0200
-Message-Id: <172047765645.1423318.7033657572852954750.b4-ty@sntech.de>
-X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20240627211737.1985549-1-jonas@kwiboo.se>
-References: <20240627211737.1985549-1-jonas@kwiboo.se>
+	Quentin Schulz <quentin.schulz@cherry.de>,
+	Peter Rosin <peda@axentia.se>, Guenter Roeck <linux@roeck-us.net>,
+	linux-arm-kernel@lists.infradead.org,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v5 3/8] dt-bindings: i2c: add support for tsd,mule
+Message-ID: <20240708224522.GA4092671-robh@kernel.org>
+References: <20240708-dev-mule-i2c-mux-v5-0-71446d3f0b8d@cherry.de>
+ <20240708-dev-mule-i2c-mux-v5-3-71446d3f0b8d@cherry.de>
+ <172045906545.3469012.7420722768425918930.robh@kernel.org>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <172045906545.3469012.7420722768425918930.robh@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240708_152750_657362_3B8C200B 
-X-CRM114-Status: GOOD (  11.34  )
+X-CRM114-CacheID: sfid-20240708_154526_482156_35E31FC5 
+X-CRM114-Status: GOOD (  14.96  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,26 +81,32 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, 27 Jun 2024 21:17:29 +0000, Jonas Karlman wrote:
-> This series adds initial support for the Radxa ROCK 3B board.
+On Mon, Jul 08, 2024 at 11:17:45AM -0600, Rob Herring (Arm) wrote:
 > 
-> The Radxa ROCK 3B is a single-board computer based on the Pico-ITX form
-> factor (100mm x 75mm). Two versions of the ROCK 3B exists, a community
-> version based on the RK3568 SoC and an industrial version based on the
-> RK3568J SoC.
+> On Mon, 08 Jul 2024 18:12:14 +0200, Farouk Bouabid wrote:
+> > Theobroma Systems Mule is an MCU that emulates a set of I2C devices,
+> > among which is an amc6821 and other devices that are reachable through
+> > an I2C-mux. The devices on the mux can be selected by writing the
+> > appropriate device number to an I2C config register (amc6821: reg 0xff)
+> > 
+> > Signed-off-by: Farouk Bouabid <farouk.bouabid@cherry.de>
+> > ---
+> >  .../devicetree/bindings/i2c/tsd,mule.yaml          | 63 ++++++++++++++++++++++
+> >  1 file changed, 63 insertions(+)
+> > 
 > 
-> [...]
+> My bot found errors running 'make dt_binding_check' on your patch:
+> 
+> yamllint warnings/errors:
+> 
+> dtschema/dtc warnings/errors:
+> Documentation/devicetree/bindings/i2c/tsd,mule.example.dtb: /example-0/i2c/fan@18/i2c-mux: failed to match any schema with compatible: ['tsd,mule-i2c-mux']
 
-Applied, thanks!
+This can be ignored. Looks like things went sideways here because patch 
+1 subject is a substring of patch 3 and then it got marked as 
+Superseded.
 
-[1/2] dt-bindings: arm: rockchip: Add Radxa ROCK 3B
-      commit: 056abbd100ce9ce6dae3e5e64ffee92b56439c0c
-[2/2] arm64: dts: rockchip: Add Radxa ROCK 3B
-      commit: 846ef7748fa9124c8eea76e2d5e833fa69b3ef7c
-
-Best regards,
--- 
-Heiko Stuebner <heiko@sntech.de>
+Rob
 
 _______________________________________________
 Linux-rockchip mailing list
