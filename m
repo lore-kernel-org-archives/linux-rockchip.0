@@ -4,169 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3207EC3271E
-	for <linux-rockchip@archiver.kernel.org>; Mon,  8 Jul 2024 16:15:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0896EC3271E
+	for <linux-rockchip@archiver.kernel.org>; Mon,  8 Jul 2024 16:36:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Cc:To:In-Reply-To:
-	References:Message-Id:Subject:Date:From:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=sbv7GtyopNeSNmLi5IabajTxJphMXKR2nhoZxxceCWc=; b=tJ7FEi1PLzJ0v8oariTXO4A1+n
-	F1y3SCPff3nuVB18zZh0w5uPy0Y2S6D2hW3pJHv8E5gl62OIiVbeHlwh/hAInPqGNSOxdczlV56G2
-	HwPJWSnl/axeWlBchBfScyWaZIfwzaVSnPgl70qMHY2tVyFyKQvCguqCZxZzTo6ORdeWXXjdoatfr
-	NUeTtWxHD5GHA+oIWX6yY5UoSk/d6SyDXsGJ5e+zOrt00WiFPwf3mlyo+lyHoht3PdK1Pql9gcU7l
-	ddPLZDxZafs5mAXD43j+ii0qVZSRLnSEJaqrHsEU0AkDe9IWk+kz6e4VI/ev8zFIj/CiJGkW54sTj
-	j1gyy5Qg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=5RyX+7n7mbCmAHIL2j/i1cvvsgSZRerkMnHcj+6CdnM=; b=cW/nOfTM0vGtrcv3cj965dTAMT
+	ohbmvg4mhdpQIE0XHiGW0YnD43plJEUMLTXbwUIBR3/U6Q1ducMBzdsGcY6zzkCzPtzQYzsVFAMPM
+	djEgQDhMIrZe2GWeCuMpdSk/oTyjaVY16lEM8uODE1UI2rkboawnYUqzM49nTAlAwqftY9XP8Lcbj
+	7chKd5W1YKP2nzLtibXEQLqml0hAso44dkudIyXuC5ni9dVpnfAd2+9VcBHEpT3CUcNMBL+e7m+7O
+	vKCbYL/TNsU99EdjwsqPvy3JHqJ0kJOgm1uKArkwWRz+6V8f3fHFTRRYD+BP8hGzVaKMNWl1HkXOj
+	tBO+/WVQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sQr1V-00000004P23-3ckS;
-	Mon, 08 Jul 2024 16:15:29 +0000
-Received: from mail-db8eur05on20722.outbound.protection.outlook.com ([2a01:111:f400:7e1a::722] helo=EUR05-DB8-obe.outbound.protection.outlook.com)
+	id 1sQrLa-00000004SSI-2JDS;
+	Mon, 08 Jul 2024 16:36:14 +0000
+Received: from out-182.mta1.migadu.com ([2001:41d0:203:375::b6])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sQqzZ-00000004NyG-2u8c;
-	Mon, 08 Jul 2024 16:13:31 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=DILS2hHwavnDJM8fgxnwZaFdr9oyqK24Vt+TLYMiT9zeRk2PiDrWXKHijj1lTvVXF5ohCsio2I+HVVxWtkHIsUB3+AYdEWyS/Td6YU+fy/BBbCe4RQRstEFRA/UrlaaucV9W9cH4Wly8SY+czqI+yWr6n3qDw62H92iTCnAx3o2svoZPqxQ9z4prFeHrRt0IAe2JUmRB23oP1/OOJiPghA9CUcDZJdWYTfrZDloG4LDnxWdVGF2zIe1Qe/6QOJEU9RR2dGNajn9uj/T2XPJDvty4x+eTG2HNS5ihife/+RQio0yQN+b7QlGKOwMucuXkRIlVZnpzB2OVhFJw9kyAxg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=MpOnVJ2Fq9UBRXgKUtAdUe3ZeBAX+dIsb/Jnqh7FOQ0=;
- b=d2hrX1uJyXHDmE7Q1+qitwUOCZqUVy+vE1iQ2TBszbS2Y1nFSE8r8Y3G5P/n48CH0fh77mdlVuaHOsi6v9ZDElAkkN15aXrcBBJ5sJB1nc4a50Psw1LTRadzc41G0Omxa9jLQligj0PVdySx1ehpmWlsvrcZzlGM+bAZS4vQ6UzqqmpTLF56vcpCotQHhTRchXpxkv2t83UsYTfL4038sGNf5XDAfSSsrqWbV9gwyBzZ5Y/c0BOg/9pf6tbpzZe26Y6rQcXm3QEsRvIrboWgiNZYSbNzY8EqWBtDgQZLmGpLjDAmiPyqhUJRqtfyQh7s4B5xjH+FGoS1izbvSCec6Q==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=cherry.de; dmarc=pass action=none header.from=cherry.de;
- dkim=pass header.d=cherry.de; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cherry.de;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=MpOnVJ2Fq9UBRXgKUtAdUe3ZeBAX+dIsb/Jnqh7FOQ0=;
- b=dWzl2WoQxnyK5MCGzU1jtLefTeNQ2J/jMsgzlnI97iYHTslR9FHNGZ469MpFsWs7IsDax/8SdHkLjthlDF6mRbAPEOT3zZ/MHD1cjeaz/YPjOkm9f8KbpfL6aK5hNCmvpa5Y1n2yp3P3R8ZguvJrlvnwpxrO0KYjCuid1h7Vj8U=
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=cherry.de;
-Received: from DU0PR04MB9562.eurprd04.prod.outlook.com (2603:10a6:10:321::10)
- by GV1PR04MB9055.eurprd04.prod.outlook.com (2603:10a6:150:1e::22) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7741.35; Mon, 8 Jul
- 2024 16:13:17 +0000
-Received: from DU0PR04MB9562.eurprd04.prod.outlook.com
- ([fe80::ad4d:8d53:1663:d181]) by DU0PR04MB9562.eurprd04.prod.outlook.com
- ([fe80::ad4d:8d53:1663:d181%4]) with mapi id 15.20.7741.033; Mon, 8 Jul 2024
- 16:13:17 +0000
-From: Farouk Bouabid <farouk.bouabid@cherry.de>
-Date: Mon, 08 Jul 2024 18:12:19 +0200
-Subject: [PATCH v5 8/8] arm64: dts: rockchip: add tsd,mule-i2c-mux on
- px30-ringneck
-Message-Id: <20240708-dev-mule-i2c-mux-v5-8-71446d3f0b8d@cherry.de>
-References: <20240708-dev-mule-i2c-mux-v5-0-71446d3f0b8d@cherry.de>
-In-Reply-To: <20240708-dev-mule-i2c-mux-v5-0-71446d3f0b8d@cherry.de>
-To: Andi Shyti <andi.shyti@kernel.org>, Rob Herring <robh@kernel.org>, 
- Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Farouk Bouabid <farouk.bouabid@cherry.de>, 
- Quentin Schulz <quentin.schulz@cherry.de>, Peter Rosin <peda@axentia.se>, 
- Jean Delvare <jdelvare@suse.com>, Guenter Roeck <linux@roeck-us.net>, 
- Heiko Stuebner <heiko@sntech.de>
-Cc: linux-i2c@vger.kernel.org, devicetree@vger.kernel.org, 
- linux-kernel@vger.kernel.org, linux-hwmon@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
-X-Mailer: b4 0.14.0
-X-ClientProxiedBy: VE1PR03CA0057.eurprd03.prod.outlook.com
- (2603:10a6:803:118::46) To DU0PR04MB9562.eurprd04.prod.outlook.com
- (2603:10a6:10:321::10)
+	id 1sQrLK-00000004SNc-0JGc;
+	Mon, 08 Jul 2024 16:36:00 +0000
+X-Envelope-To: macromorgan@hotmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow.org; s=key1;
+	t=1720456552;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=Q1xLGY2jSIrtPqPZ9NbhDBkO1nnpCkyLaDO8znSKpp4=;
+	b=U44a0MWPWvNcZbVouFYU5A9SDhVDTDZA4UcB2WhGSUt87LnPir9tVEsOxbm1QjV3ITL2QN
+	ex3G2qsk5edc65UXRRd7GIPsSZYWd1STBVrSVXvCUHK2yi8M+MTzfagvmDfeSKjYJAbyVO
+	Yhk9Sc7tF6qQ2s3KW0QSNKj+Ve8uBAohc6pMZKRxMtj/F6EIXofU2MOkTLNrMIBWdqeRqJ
+	rOfVlZmvkD56mawtUvu9xHDg8lELcz/1wJJaHW/wPJ2cgqs7KQuNPGYETyzqIierkd1pII
+	14Yu7lWMSDhr1pkjwg/ME0Gd0boEj90C8AuAFyiu43dmpiGgio67mGBZubJ4wA==
+X-Envelope-To: heiko@sntech.de
+X-Envelope-To: mweigand@mweigand.net
+X-Envelope-To: dsimic@manjaro.org
+X-Envelope-To: linux-rockchip@lists.infradead.org
+X-Envelope-To: devicetree@vger.kernel.org
+X-Envelope-To: linux-arm-kernel@lists.infradead.org
+X-Envelope-To: linux-kernel@vger.kernel.org
+X-Envelope-To: andyshrk@163.com
+X-Envelope-To: jagan@amarulasolutions.com
+X-Envelope-To: amadeus@jmu.edu.cn
+X-Envelope-To: f.kardame@manjaro.org
+X-Envelope-To: michael.riesch@wolfvision.net
+X-Envelope-To: wiagn233@outlook.com
+X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
+From: Diederik de Haas <didi.debian@cknow.org>
+To: Chris Morgan <macromorgan@hotmail.com>
+Cc: Heiko Stuebner <heiko@sntech.de>,
+ Maximilian Weigand <mweigand@mweigand.net>,
+ Dragan Simic <dsimic@manjaro.org>, linux-rockchip@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, Andy Yan <andyshrk@163.com>,
+ Jagan Teki <jagan@amarulasolutions.com>, Chukun Pan <amadeus@jmu.edu.cn>,
+ Furkan Kardame <f.kardame@manjaro.org>,
+ Michael Riesch <michael.riesch@wolfvision.net>,
+ Shengyu Qu <wiagn233@outlook.com>
+Subject: Re: arm64: dts: rockchip: Add dma-names to uart-bluetooth rk3566 devices
+Date: Mon, 08 Jul 2024 18:35:39 +0200
+Message-ID: <18704154.NT27xa3IZQ@bagend>
+Organization: Connecting Knowledge
+In-Reply-To: <MN2PR16MB29416FE9165FB72824266667A5DA2@MN2PR16MB2941.namprd16.prod.outlook.com>
+References: <20240705163004.29678-2-didi.debian@cknow.org>
+ <MN2PR16MB29416FE9165FB72824266667A5DA2@MN2PR16MB2941.namprd16.prod.outlook.com>
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: DU0PR04MB9562:EE_|GV1PR04MB9055:EE_
-X-MS-Office365-Filtering-Correlation-Id: 4a3594ba-b66e-40f9-5138-08dc9f68e062
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|1800799024|366016|7416014|52116014|376014|921020|38350700014;
-X-Microsoft-Antispam-Message-Info: =?utf-8?B?bDZHNjAzeEJrbkZkUHFTeHY4ZWVsZWc0bERYc0RLSHJuci90YWVJUC9kMGRX?=
- =?utf-8?B?YW5JbkhtdWNZSDcyNXpzc2FJZTZUU3FRSGhpWXUzdTZQNmJHakh4UVlTQ1po?=
- =?utf-8?B?MnNib1lwWTZYMElKUGFYNnl0cWlJRGxoWjMyKzgyQTFnb2FYQjhBaE50KzVt?=
- =?utf-8?B?VFdHUUZkTENGK3RxMGVQYmVoSDZXa2kzeGtycFF4bE02T3pJaCtlcDVmamtk?=
- =?utf-8?B?T0Z4NDdZWHJaRUg5TWF0VjlHQnZkdGhTR0xqNFFUWWx4OWZCQUxCMHo5dzNJ?=
- =?utf-8?B?MlU5VW5veHFQRlVjTFg4bThnK1Y5eE9xY21GSEcwOTZLVjUyTlVYelI2bnZQ?=
- =?utf-8?B?UXpSTXhXVm1sSzVseHpUMW5sQlFBaWRvU2M1d2loQ3AxazdZVFpVZ0c3Tml5?=
- =?utf-8?B?T1BQeEw4V2RjREp4OEY4VTFtbWNXYVA4b3ZTNXZtWUlMVUVhendNZWMyL1Yv?=
- =?utf-8?B?U3J2dGlsbEloWTk1VjlyMm5DVnpwVG5UUFhxcXJPTFJKMUhrN2M3N0U5WSts?=
- =?utf-8?B?WXhUbmtsandDWHNnaEVkTGJ5bzc2UTJVcFp5T2QzcW5mYzJ3WGJ4NUJ6V2dL?=
- =?utf-8?B?MTJPQm5CWkNkbFd0NDVYRDBzcGhIcDZ3R0hqL05iRE5rZitObUovTlJ4WnY1?=
- =?utf-8?B?NVV3UGVwZlV2czdIeERiRGtUKzNwcXVNUXJuTjhTa2liVzd4aW5qVjF4Z2Vv?=
- =?utf-8?B?Zi9QcllPK3AvTUt0d2pMdklud3lONjYyWXBGdVJ2R25XQjJmTzNqK0diTmg5?=
- =?utf-8?B?SzBGRDNSZVVQRFV3TkVZS1FyMTZ0d1Iyb1JndlpXay9xNzRVVDYxYUlPSFhJ?=
- =?utf-8?B?dGUrQTNnbTlQeXk0eDBwZklNMnRUUGdNaWdxaXR6RlEwN2JJSHJnTUtFMDN0?=
- =?utf-8?B?SXluSktUNEFab0FnSEMxL2ovMlhDWndjbmtNK0RNQm5pa1JTVi9TakMwL1Ru?=
- =?utf-8?B?dmlkM0ZMY1NVVlU0YUpYMFdEdkZ0UEwycEl3NU5ISWZRTnBVL1U5QTFhOGlz?=
- =?utf-8?B?L2d1c3FOZ2k4blBjbUVNZVlJQnVVU095aUJVendGaTRtdVhYdnR0RXJKL0Vo?=
- =?utf-8?B?aWlHeDM1UmtTRmRaWFZ1ZjE5K3BRTkR5RnROSWxFbXZCVlllUUhkYVlPaXBv?=
- =?utf-8?B?dWZGSnBIeWVCbnRkSFcwV2tMbXZtbXRBbThyeENaWU8rdkRYT3ZlSnNISmlY?=
- =?utf-8?B?UnBicndObVk3ODFPSkFYNm5Jb2c2dS9vWGRxVGRIWXJuU3ZPVkFsejV6TThN?=
- =?utf-8?B?elhoM1ZPcjJZSHBVT2dETHRRVlZKYmtyeXBRYWw1em9ibHBldk91UXZzVEJp?=
- =?utf-8?B?akxjTUJuQVI3OHJqVmNveUlTVk9XVHdNTXRJS3J5UGJxVTdlNUF1bDZLbkpM?=
- =?utf-8?B?akxGdFhkWC9qSWtxeUh6UmRqVnRzaTd6dk9pbHdMM3VLVHNvL3FZeFBtZi9J?=
- =?utf-8?B?Q1dlTG10a3E2WjYrZ09OdFpUS3ZOelpTTHNTSjZqV0MwMlVVc3FoaWZCTEwr?=
- =?utf-8?B?czY4Z2YvOEZIdHREa3ROOFhBTkJOaGkxdlhrRGpLMnh3a0xibkhrdzhObWF3?=
- =?utf-8?B?cnk5clVrbWJ2MGt1U0lMcHF5M1V0UzA3TEJqZE03RVlDM2dQRWF5VUJlWFNv?=
- =?utf-8?B?dzFoN0dWV0svYjE1b05Nd3ZiZXhWVU94dWZPcU03LzZqaDh0N29HZGQ1Z1M3?=
- =?utf-8?B?aXdZc2hRV1R1S2FucWY3ZzB4c1dwc2RCdFp3U2xyQ0JINjZCeTBXd0xmampY?=
- =?utf-8?B?UWRxNVZqZkVDL2pmNFNWOGk5WDNtc0pacFNSSTk1eEVXRzRKUFM5NDgxK1Bl?=
- =?utf-8?B?ZlZIQ0FXRm9ZVFlIeGgvK3dKZ2ptYjhDdGlTVzdXR2ZWZEFvWnRlRkVRcUd4?=
- =?utf-8?B?Z29pTFB1YW91S05hRlhWVjFWYzQ3SGxMQkF6ekErRXZNWks3SVF5VnBzOUMv?=
- =?utf-8?Q?15DdR8qhT6U=3D?=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:DU0PR04MB9562.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(1800799024)(366016)(7416014)(52116014)(376014)(921020)(38350700014);DIR:OUT;SFP:1102;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?MUVwanh4a3MyTEk2VUF0L1ZRUy9xeGpjWWJ6amtIU3FDSE5pYkRXenVENUpX?=
- =?utf-8?B?eHZKUWhYNWthS1RLS1F3a1pmVlRwTjZ6RWlEUG81RG1ncTBrdkdwb25Oczds?=
- =?utf-8?B?S0RtN1pYdnJRc1RMSFFOTldSWWxxT01YYjFiaXRISlJiaC9ZdHd0a1JHQTJI?=
- =?utf-8?B?bHk0K1FXYUFteFhFTytWRFphMFF0RU4vWElsdzJWTEQ1T3pXVnVyb3Iydmw4?=
- =?utf-8?B?d05sZlc5UytickxSRHhyVWorWmROeTJWaFFIblFqeFhSZ0c5QmZKTDlQRVR6?=
- =?utf-8?B?YmxHZGxnYkpXVVlUUHozY3J4SHlGL0VmRGhxWTMvR2Z1RDd4Q0kxTlRQNjdH?=
- =?utf-8?B?LzBZTENjQk5GdVNteTRNdENnazgzSEpkR2JRaDBZeThYUTM0TzZmKzVCU2s2?=
- =?utf-8?B?WXFDajNmeGhud2RRQmZIQzFsNjVZQmRpaDNnWVZlay9icTZ1MFhISWNibEtJ?=
- =?utf-8?B?cHpubGI1Z1JtYklEQXNmVWwwMHo0ajJNMzJtMEJHcEo1dE9lZ09oT0ZkQkFp?=
- =?utf-8?B?OTRPMWlIbmVhL2krSjMvUWRLL0R5YTNCMVlJUlhYOHVvcDdwL1FKamtuYW1N?=
- =?utf-8?B?eklLQ3ZTZUhaZGdxTWcyTnlGY3IvT2tuVHphZkUwQ0piZXk0b1MzQUVSTzAw?=
- =?utf-8?B?V0xkMlBNTVN0SEY4WFcxcFJRSFh3ekNLZXFFblcrbVQvb2x6OWdwQW9vanBJ?=
- =?utf-8?B?U2k4bkZSZUE2L1ZySjBkRjRaajJaSTFtZm4xekVUUXZBTVNKUGNOZUwzVUM5?=
- =?utf-8?B?TENMTmF0V0FudEFEZzFUK292T3JObjBESlN3VExnQ0lucXFIeHhlQU54bzF1?=
- =?utf-8?B?c1V4bkFnZUk3ME5SN1J1SnFCTDhJZVNYdzdoOEVOaWpmUGtLQm02dWRaMkcz?=
- =?utf-8?B?UXV0ZFZuWGVybkF0cm93UUVMdEQwQ3ZNRTgwQnJZRENOaFlLc2VxQzVCeE1I?=
- =?utf-8?B?OG03OFk2RmE1S29OVC9pUG1JRmFSN0tVdGVqcmlCRFFvMERDYkEzQWxoQkkx?=
- =?utf-8?B?eVUycG5ZTFhKM1hzZXcyeitIUFJTNVcwR1ZqL05OMFRxeWZXSGVBanlDUjYv?=
- =?utf-8?B?cEZoWER3WHJ6RFB4MWhsQmV4RXR0M3psVTFLZTFsRGszaGVDWm4zMTJiUmNK?=
- =?utf-8?B?SW9kUFZ2dnFJeGJuWVIrUnlkcVBCWFBmUlIvNm1rdG02UlNSWFN0dnc5bndY?=
- =?utf-8?B?U3ZhQjJiQjc2YVhyQnNablc2TEJrYmpWZ1VSTjg3WDhpamJPUjlNeHpua0Y1?=
- =?utf-8?B?RHZNQ0FlUXdWRFVlaTNaUFd0dGpyd0ZrNnYxWWtFSDFLTTVpNXRBbWZjSlVh?=
- =?utf-8?B?T2ZIanFreUxyZ1YwZkJUdC91YXpXbFNMTmlkcUc2RGdnZytWcG1DUWFocEha?=
- =?utf-8?B?M2pWck1Fd3NPWWNjSDJXazVJZTB3ckhvbDlZUTJhQXE3MWRNN0IvemNIQkxN?=
- =?utf-8?B?UzRxTXZGVGZjeFpkTnowdUV6Y2Vnanl4L3RVMVpGTng0R3dIV0tRd25RSGhn?=
- =?utf-8?B?dFFhN0NOa3oxaWd0eGN1c09TN2FFT0VPT1dEZUE5OGJJSEgrbmliSTNEZ2xT?=
- =?utf-8?B?Y0lqcFIvTU1UVjdmc3g3Z04yREtDM0YvOWpzSElDMDNMR29WL09RZnRLSk1w?=
- =?utf-8?B?aE1ybzdkcDN3R1BJYTRsa0JwSEFzaUdzaGVHTjJ2OFZKZHRpNHNDY0liUktW?=
- =?utf-8?B?aWxyemhUTmgzV3B1SmNseHBOK0p2bzZKL2dTeUg0QlNoSThKNlM2bm1aV00v?=
- =?utf-8?B?VVJWMkl3bWd5N1Y0QUNJUHBEV1MyZzFTS1BQYlc4VVF1UjF6aDBRcEk5eDBr?=
- =?utf-8?B?R1ZMZFBPcHhyeEFqck1jcEdLcHpUQlY5ZjJ6K2FtOU9zSC9pWWc0MENHUSt5?=
- =?utf-8?B?aDBxeUlkMXVuTU9pRHR1RUtFeHRFZ3hBWG4rRjJFOGx3TEFIVVNpRHJlSU1l?=
- =?utf-8?B?MTdKdDVUekE2Vi9iS0dLYVlxSEZ6bEVvR3YzcWZCR09HOVNXRlR4VlpJMjZu?=
- =?utf-8?B?R3d5OW5tQi9xQVVBSmlGdlNaVmRlbVVYM29CVG85S1JHVUhxVWsySDAvazlW?=
- =?utf-8?B?YlpTdFJrNjB6N000a0JqSE5jN2Q5VXUwT1dVUUNkNmg2NVhiRDZtN1pUc0lF?=
- =?utf-8?B?dWRZdWJjT1R4VzJkOStGa25mUVJrejUzS0ttZ3R3RUdaWWxibG9pMHMxNXJ1?=
- =?utf-8?B?cVE9PQ==?=
-X-OriginatorOrg: cherry.de
-X-MS-Exchange-CrossTenant-Network-Message-Id: 4a3594ba-b66e-40f9-5138-08dc9f68e062
-X-MS-Exchange-CrossTenant-AuthSource: DU0PR04MB9562.eurprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 08 Jul 2024 16:13:17.0607
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 5e0e1b52-21b5-4e7b-83bb-514ec460677e
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: VAjHBOq8y2sZSz7ZjNAJNg6uKqNTRXZq6WYV0LL8wmEpPKp39xme/NLjpfEF5pxVf5DDdqS0qsdQQkkp3Ra3Fxzp8kfoHwboh6ZGL3BKEjY=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: GV1PR04MB9055
+X-Migadu-Flow: FLOW_OUT
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240708_091329_785102_21E15465 
-X-CRM114-Status: GOOD (  10.82  )
+X-CRM114-CacheID: sfid-20240708_093558_654465_2AB7AD36 
+X-CRM114-Status: GOOD (  18.25  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -178,69 +86,79 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============5716091915977432160=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add the tsd,mule-i2c-mux alongside with the amc6821 (tsd,mule) and isl1208
-as a default device on the mux.
+--===============5716091915977432160==
+Content-Type: multipart/signed; boundary="nextPart5757575.N3OQHAa34O";
+ micalg="pgp-sha256"; protocol="application/pgp-signature"
 
-Signed-off-by: Farouk Bouabid <farouk.bouabid@cherry.de>
----
- arch/arm64/boot/dts/rockchip/px30-ringneck.dtsi | 24 ++++++++++++++++++------
- 1 file changed, 18 insertions(+), 6 deletions(-)
+--nextPart5757575.N3OQHAa34O
+Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain; charset="us-ascii"; protected-headers="v1"
+From: Diederik de Haas <didi.debian@cknow.org>
+To: Chris Morgan <macromorgan@hotmail.com>
+Date: Mon, 08 Jul 2024 18:35:39 +0200
+Message-ID: <18704154.NT27xa3IZQ@bagend>
+Organization: Connecting Knowledge
+MIME-Version: 1.0
 
-diff --git a/arch/arm64/boot/dts/rockchip/px30-ringneck.dtsi b/arch/arm64/boot/dts/rockchip/px30-ringneck.dtsi
-index bb1aea82e666..a683ed3e2fce 100644
---- a/arch/arm64/boot/dts/rockchip/px30-ringneck.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/px30-ringneck.dtsi
-@@ -9,6 +9,7 @@
- 
- / {
- 	aliases {
-+		i2c10 = &i2c10;
- 		mmc0 = &emmc;
- 		mmc1 = &sdio;
- 		rtc0 = &rtc_twi;
-@@ -292,14 +293,25 @@ &i2c1 {
- 	clock-frequency = <400000>;
- 
- 	fan: fan@18 {
--		compatible = "ti,amc6821";
-+		compatible = "tsd,mule", "ti,amc6821";
- 		reg = <0x18>;
--		#cooling-cells = <2>;
--	};
- 
--	rtc_twi: rtc@6f {
--		compatible = "isil,isl1208";
--		reg = <0x6f>;
-+		i2c-mux {
-+			compatible = "tsd,mule-i2c-mux";
-+			#address-cells = <1>;
-+			#size-cells = <0>;
-+
-+			i2c10: i2c@0 {
-+				reg = <0x0>;
-+				#address-cells = <1>;
-+				#size-cells = <0>;
-+
-+				rtc_twi: rtc@6f {
-+					compatible = "isil,isl1208";
-+					reg = <0x6f>;
-+				};
-+			};
-+		};
- 	};
- };
- 
+On Monday, 8 July 2024 18:05:05 CEST Chris Morgan wrote:
+> > This is a single patch which adds the dma-names property to the uart
+> > node with a bluetooth subnode on Pine64's rk356x devices.
+> > 
+> > But that property can potentially be added to several other devices, but
+> > I have zero familiarity with them or their community, so I choose not to
+> > add it to those devices, but inform people via this cover letter.
+> 
+> Thank you, but based on past experience the bluetooth failed to work
+> when I had the DMA names present (which is why I removed them on my
+> devices). I will however test it again to confirm that is still the
+> case or not.
 
--- 
-2.34.1
+That is very well possible as I had specifically you in mind when I chose to 
+only apply it to Pine64 devices (as I could directly contact those people).
+I had a vague recollection that there was 'something' with bluetooth on 
+devices you added.
 
+Thus it seemed better to inform people of the possibility, but let the actual 
+implementation up to them.
+
+Cheers,
+  Diederik
+--nextPart5757575.N3OQHAa34O
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: This is a digitally signed message part.
+Content-Transfer-Encoding: 7Bit
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYIAB0WIQT1sUPBYsyGmi4usy/XblvOeH7bbgUCZowVWwAKCRDXblvOeH7b
+bvr8AQCR3UX8zsLmcd9BjCPsexTjAxcrLuEqZKdpAGwYqlz/8AEAijpXHym1iyGu
+wbw7/ntw95MClGyHkeh4XovtnqM37gc=
+=+Whf
+-----END PGP SIGNATURE-----
+
+--nextPart5757575.N3OQHAa34O--
+
+
+
+
+
+--===============5716091915977432160==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============5716091915977432160==--
+
+
+
+
