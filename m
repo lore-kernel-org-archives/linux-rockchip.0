@@ -4,65 +4,162 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BC7F6C3271E
-	for <linux-rockchip@archiver.kernel.org>; Mon,  8 Jul 2024 09:55:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 41C2BC3DA41
+	for <linux-rockchip@archiver.kernel.org>; Mon,  8 Jul 2024 10:09:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=FyJOnS4nppdhh0oSKiC4qaOMPxixE5EOoyY8ZsGG5Yk=; b=X099X6i5K6eBZwitNeVai0yyQL
-	a7PRecIXtUOiqLre59xdVl5aRoEPyMLMOSqUX5mKHfd/MECkfK8lFd4P6j40o8x5psKT2GxSR1SFp
-	SbP8xEFcOW9kwT8c2ptN03qq3/x0VA5TSKSEc15ShXQ38m5s8s6dlVc1VmAdhuF95eRqfV4PbFrbk
-	A8G0GR0E6Xyi+hst78E31YuPM5KqW4eUi3HttAKHJitoPzSuodfCDxxFhuhIxCcKaEC17FwdhChe5
-	iYy1Qngypg6+mdl0hEjPmrz7NYjBL8XjanlWjFrD6x58YEldIkbKSfnjv9UD3IC8Yo3A8KkSWKqxS
-	jgLr2WzA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=YTeaiW2uwaFOx3EDL68bH9jHbccmPGv6dc2LoH2mmko=; b=dJx6xV6VQx8m/z
+	k4xvcJQ7pjfyDnPa6VLGbD7QSXRTGSBlYD+pezS2VPLKz9m1sMT8wcWhJdvlldOsEdY3lJr/f2+Yy
+	ye8GbpjqXR60wqRegzY3yKcVPOF9xlEU4NtCVAN4KUT3M0gF6ts/Cwh0dInmAo+e3g4pzaADglQg8
+	3YDorJulUkzr1BeiCuKniaSle2sR7flA8+rnamA84yltOzFehSumHVDkWIxjHosPQkm2AvHKnqxuq
+	9qPufFfV43KRdNa/u8VoJLG61T90v2+283PGkM+UXPul2jevKeHyAIJzqGHs++SkcP17kKwd4Q/N0
+	f8k1SiKQ7RzrHWvLRUJA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sQl5j-00000003NZt-49vB;
-	Mon, 08 Jul 2024 09:55:27 +0000
-Received: from out-183.mta1.migadu.com ([95.215.58.183])
+	id 1sQlJf-00000003PgD-0nC4;
+	Mon, 08 Jul 2024 10:09:51 +0000
+Received: from mail-psaapc01on2072e.outbound.protection.outlook.com ([2a01:111:f400:feae::72e] helo=APC01-PSA-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sQl5g-00000003NYc-0Yfw
-	for linux-rockchip@lists.infradead.org;
-	Mon, 08 Jul 2024 09:55:26 +0000
-X-Envelope-To: dsimic@manjaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow.org; s=key1;
-	t=1720432519;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=cjnCm+A1AQKhSlebbiZ+51zEwllzLIagWOmtFkMnH/g=;
-	b=JVNBFJHq3Pbn2ER6JmV40+gJ9qa21faOvfzSHBT7DVBzORDpyCmXzZKgWsVu4tYoyHEo9j
-	Js2kxf/06JIXKTgaKAbDHjxZC1MiCWsF+pcFkVMzd1qtHZZEWY71chNKQC/SeKBNp0zPB7
-	7kW3i80yULEbZlFZgsmJsxTcOrp0D4mMucVL9RJ3wk2Cl9jIDByyZv+pVURu7TMl+I1Ede
-	fX+GEh/USyqlfCrkGjtl+9ZGckZublM5ottUQpijiBH8FHup2JgRNjwFTO59uh7k0Kzj1H
-	KxotnPfFqX9s0ScuJJv8bx1DIzinmMMznIQIkcoAA8mRT32P8FyGnBlwo0oW7Q==
-X-Envelope-To: heiko@sntech.de
-X-Envelope-To: knaerzche@gmail.com
-X-Envelope-To: linux-rockchip@lists.infradead.org
-X-Envelope-To: devicetree@vger.kernel.org
-X-Envelope-To: linux-arm-kernel@lists.infradead.org
-X-Envelope-To: linux-kernel@vger.kernel.org
-X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
-From: Diederik de Haas <didi.debian@cknow.org>
-To: Dragan Simic <dsimic@manjaro.org>
-Cc: Heiko Stuebner <heiko@sntech.de>, Alex Bee <knaerzche@gmail.com>,
- linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] arm64: dts: rockchip: Add avdd supplies to hdmi on rock64
-Date: Mon, 08 Jul 2024 11:55:07 +0200
-Message-ID: <6192146.IJkX0fH94T@bagend>
-Organization: Connecting Knowledge
-In-Reply-To: <31a86ec073e1de9e0241845f8783cd6b@manjaro.org>
-References: <20240704191919.38856-1-didi.debian@cknow.org>
- <31a86ec073e1de9e0241845f8783cd6b@manjaro.org>
+	id 1sQlJO-00000003PaO-2g4H;
+	Mon, 08 Jul 2024 10:09:36 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=A1HFxn7+z3lcFtA2U0dORtkmAiJ27ezIiMxCisAT57b4NNKB3FPZJzaPm19frGdorrdruYzgywyRSuBmNq8tB5cAp2tSpleeLyi4ic+hDYKPsG/bqzaH1DPb2ZXh54NmGUCrAugSmvtuBImo4lyFpbQ/bDGCo2scGYtZhJp9ANj0H3/3pjB2Dil4zphANNA9OddIUH1Z2YiEZ1Aaq1P/XQP479/wfi2P7HLm3Bd68vKEahWctGBID9GLF9nW8fTQ5bnoZ/Bg+wYuCfNqAn251YbBjss+o9NaP7iKwXfXGdcKnSQtc9w+RIj2cyI2CGmVjv9DI2xSx4O7i6VGcTfDvQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=m9QSs234pU25Ip8Aa8TnfzTO7w8UBgLuHadzugprI2w=;
+ b=YYY/FnGG1haSbZwznHFSnY7Fuvbn/vlk16QPB+Qa4PQq37hfXLjz8etmCmNbITDw9Cw8zX1p4L8PMfDQBMlsRvo7lftJZ4mbEx23SYiecBxVSQG253aCl56cA6Kdwe1rLj6N1cboCmdLak0r2H8QOotodLyNppuhMrOBkBPOGPHn0rzXCitjaLiqn1LFrrmCEkwO4Fn1N+fWVasbkUlf01pDbBYG0h93mU0DHeILElNvp/AdbtSjVGu29MXoouEIiTQW17irofHYavUaly14msU8RBmS43vfRRROGkmj2uN9sSAyHW3YihBFrznc+fDaY23IhT8Z9EfxSsLr3HT+aw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=wesion.com; dmarc=pass action=none header.from=wesion.com;
+ dkim=pass header.d=wesion.com; arc=none
+Received: from TYZPR03MB7001.apcprd03.prod.outlook.com (2603:1096:400:26a::14)
+ by SEZPR03MB7297.apcprd03.prod.outlook.com (2603:1096:101:12e::13) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7741.35; Mon, 8 Jul
+ 2024 10:09:12 +0000
+Received: from TYZPR03MB7001.apcprd03.prod.outlook.com
+ ([fe80::78dd:5e68:1a9c:36c0]) by TYZPR03MB7001.apcprd03.prod.outlook.com
+ ([fe80::78dd:5e68:1a9c:36c0%6]) with mapi id 15.20.7741.033; Mon, 8 Jul 2024
+ 10:09:11 +0000
+From: Jacobe Zang <jacobe.zang@wesion.com>
+To: Arend Van Spriel <arend.vanspriel@broadcom.com>, "robh@kernel.org"
+	<robh@kernel.org>, "krzk+dt@kernel.org" <krzk+dt@kernel.org>,
+	"heiko@sntech.de" <heiko@sntech.de>, "kvalo@kernel.org" <kvalo@kernel.org>,
+	"davem@davemloft.net" <davem@davemloft.net>, "edumazet@google.com"
+	<edumazet@google.com>, "kuba@kernel.org" <kuba@kernel.org>,
+	"pabeni@redhat.com" <pabeni@redhat.com>, "conor+dt@kernel.org"
+	<conor+dt@kernel.org>
+CC: "efectn@protonmail.com" <efectn@protonmail.com>, "dsimic@manjaro.org"
+	<dsimic@manjaro.org>, "jagan@edgeble.ai" <jagan@edgeble.ai>,
+	"devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+	"linux-arm-kernel@lists.infradead.org"
+	<linux-arm-kernel@lists.infradead.org>, "linux-rockchip@lists.infradead.org"
+	<linux-rockchip@lists.infradead.org>, "linux-kernel@vger.kernel.org"
+	<linux-kernel@vger.kernel.org>, "arend@broadcom.com" <arend@broadcom.com>,
+	"linux-wireless@vger.kernel.org" <linux-wireless@vger.kernel.org>,
+	"netdev@vger.kernel.org" <netdev@vger.kernel.org>, "megi@xff.cz"
+	<megi@xff.cz>, "duoming@zju.edu.cn" <duoming@zju.edu.cn>,
+	"bhelgaas@google.com" <bhelgaas@google.com>, "minipli@grsecurity.net"
+	<minipli@grsecurity.net>, "brcm80211@lists.linux.dev"
+	<brcm80211@lists.linux.dev>, "brcm80211-dev-list.pdl@broadcom.com"
+	<brcm80211-dev-list.pdl@broadcom.com>, Nick Xie <nick@khadas.com>
+Subject: Re: [PATCH v3 5/5] wifi: brcmfmac: Add support for AP6275P
+Thread-Topic: [PATCH v3 5/5] wifi: brcmfmac: Add support for AP6275P
+Thread-Index: AQHaysA+Rq9QbyhEyUKwID0Y3gYvO7HgKL2AgAx52Bw=
+Date: Mon, 8 Jul 2024 10:09:11 +0000
+Message-ID: <TYZPR03MB700128DD9D712A0A0B51516A80DA2@TYZPR03MB7001.apcprd03.prod.outlook.com>
+References: <20240630073605.2164346-1-jacobe.zang@wesion.com>
+ <20240630073605.2164346-6-jacobe.zang@wesion.com>
+ <19068dd7008.279b.9b12b7fc0a3841636cfb5e919b41b954@broadcom.com>
+In-Reply-To: <19068dd7008.279b.9b12b7fc0a3841636cfb5e919b41b954@broadcom.com>
+Accept-Language: en-US, zh-CN
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+msip_labels: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=wesion.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: TYZPR03MB7001:EE_|SEZPR03MB7297:EE_
+x-ms-office365-filtering-correlation-id: e76c3dfe-877d-456e-1471-08dc9f3603a8
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;ARA:13230040|1800799024|366016|376014|7416014|921020|38070700018;
+x-microsoft-antispam-message-info: =?iso-8859-1?Q?Hg217Ph3sI87P7Hl3IuGv1WTGHUxKZ2ydnJfTcOA9IoLzs6Z30KMK5p7dM?=
+ =?iso-8859-1?Q?Ia13sn0ra70gbCkyilQf9GEt5B/qwPRppfGCvnpHWwFKbNsQoYiXnduUsU?=
+ =?iso-8859-1?Q?OdCVXx/UFhj1KrUpZFKgq9XS7v8/mfVRa2MUTX+5ZM2uRjbkWO1icEsLuF?=
+ =?iso-8859-1?Q?KJDJO3Pt3weYtJnAOZEkFBbEL/HJZCdT65KNIrTtNt9zJGFQNQD7C6Dpjp?=
+ =?iso-8859-1?Q?nwdTuARPt32aFLBZF3QNfF6L5XnG6mYwt0Odqf4bLIOnJ22PZGE5O1VVCP?=
+ =?iso-8859-1?Q?CsdbFihcN4hkkKH+5ILnRQzXEYFl5c88Cxe0dDD85REYo6VWV3woWdcMpz?=
+ =?iso-8859-1?Q?bSsZQdT3+Y1p3rQ1yukFQpDWQ7wMFbU9kSo1KC92ZteTJyAOWDKp3oatf0?=
+ =?iso-8859-1?Q?rBweNihsjmheF9AgFhQTDpfU9i3uMu2d9jAvhAZJGuhFdVcBk2WO2ve0HC?=
+ =?iso-8859-1?Q?NpKvOLJorflKPMTTYzbyOn7JPFMvUlahq+X0Jp5Hn5DNPV228JyKiS94mC?=
+ =?iso-8859-1?Q?kasHPZuWQIH5m3HDN4HTHyp4R4xFw7zMDQtXubKdWm7LF4N0rT1nL5oWNn?=
+ =?iso-8859-1?Q?XtwEBa3u5HTWZy+UA+tJC1/8aORxZmQ8DT5cYqYsTwkrXbQsdj86ELnnQI?=
+ =?iso-8859-1?Q?sDwqI/fD67O4f4weTtLjvLBbZSRD5/4ddLU5O+OxVsXIG0FwhCq0hkNn3m?=
+ =?iso-8859-1?Q?buNy7Xv8uTj1tmYPxo3G56eBeXzCqKoyF9z75FBSwlUuytM1cMAf7lqaKk?=
+ =?iso-8859-1?Q?njYQYE+H3xAI8KAzOTsG33kcmqHFybIDwqg/4HDWhp9XnYczS7dPPBlAmE?=
+ =?iso-8859-1?Q?1mCxqqVWj7O3uzM2F+Tv2ZhZ40HHsxQ6XjpqG8U3NlycnmkokhZstQqx4I?=
+ =?iso-8859-1?Q?63LjgHyxT7pYrFbsyicPu431PjFoyRLLxzMPCHisB6SPuFhYKI5D+2hE3f?=
+ =?iso-8859-1?Q?KioPlIqgjSfYwNM6rNkz9tD4kEBhxIiOUfNy+7137y1f9xW0XSXIf2w9Bg?=
+ =?iso-8859-1?Q?mKzp9GVmyzj3+JqdUZgd/FSVx7zK68FBojI60W0ylj2R31rUWeIz31wB4d?=
+ =?iso-8859-1?Q?RhFa6Ei6IoI+jfk5jtwVU0e+9NFVpSYSE5iWBhqGYlMGcEmfkDEGrgx5P6?=
+ =?iso-8859-1?Q?zDz5dAVuPmIpfHU5mlTVoyZtPfdP0bGwIUUZimcIq+5vqTPh6lAMS9qeUc?=
+ =?iso-8859-1?Q?oTkGjWIBD9lh9Y/QF+EeOBXJaQON+IrDIq/oeTDteTqtp2sTtOfb8x5fvl?=
+ =?iso-8859-1?Q?9b5LmtgimotNgyYqyO8pJjmUSVqX7d6Bbh+Tv+NBIpRyxahbGjvCLoDAZz?=
+ =?iso-8859-1?Q?gRc8ZFMJXSTMldnVD2A89i0y55BnFjRPJ9pnJ82opw/o7YUzw31868Gz0R?=
+ =?iso-8859-1?Q?il23Wkzxj11THJq3eVP6+ZpiFfR9rrTSVFsUEerl89aKYJsk3D9Cw1PX5V?=
+ =?iso-8859-1?Q?wXllciohpExd3XSWPcvo+WOTKLSwJ/ikRSlMH5ntJEBuq4jcgu8ba7iamW?=
+ =?iso-8859-1?Q?w=3D?=
+x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:TYZPR03MB7001.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(1800799024)(366016)(376014)(7416014)(921020)(38070700018);DIR:OUT;SFP:1102;
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?iso-8859-1?Q?j3blhDTkMwVYm5dXg6lOvSSiBsHAdRvQUNVpBQ7EFLT1oO1Lh0DT5m8ANA?=
+ =?iso-8859-1?Q?04UU/AgxhDBmCEi6fMmYNnGeoy4rXTLyzEK+tJ6d7VjKXYl4vQ5hX/GlWD?=
+ =?iso-8859-1?Q?2xZu8xJeRSOmzjdqQySIykZ6zbrzCoY4J2aP/n2URjW2xbI1aL+NdwBIE3?=
+ =?iso-8859-1?Q?SMC6YnkF+Wi8AruUG0PS5Sq5kWjlccKMmq11rCMODiV+zoxC6ziTvKMECY?=
+ =?iso-8859-1?Q?KH1tFmdxSBEHwIez/+RTS6wurp/VrnonKHyFPKPh9R9fOfXK9dQp1vtUe7?=
+ =?iso-8859-1?Q?P+4KLg+go314EtdJi2g4d/w5n5nCz9SEY6TOGr2jfYAn76Qnf82tguPKhJ?=
+ =?iso-8859-1?Q?af1szGxNIut7OAEDE/iJLS4ZWy8p0xjK7039ML/1Cs55AS+AE5DjV/N/ND?=
+ =?iso-8859-1?Q?AP4yVL9RhH2Gq3jrfmZISFIsKFz+JiEGC2BKrsJujL14MbgLwLiJGzjDrp?=
+ =?iso-8859-1?Q?yfJzsPwZ3FlyohyCYo1Plz/1hrTLbbS359cRTCoos/FdFbUty3H1C+RwpY?=
+ =?iso-8859-1?Q?gXHww5p0uvW5gMXvtlyXp0JQQOKCOv2cQcyN6Whi6bAQR6pcp5l64rpJVM?=
+ =?iso-8859-1?Q?kl0tdEf6suApxAGw5e+rk4swi+Q4HwB+9Z2wR5Jh25qkE4EPLg8vOuLiWK?=
+ =?iso-8859-1?Q?ru64bLLoB6amk1DDcoi1jRdGtJ6W1/7S2sBD4tNhEJvdF4Nz3ZZjbZgrRU?=
+ =?iso-8859-1?Q?QHgX0NRMUHBXHCtn02Z7UiVyo6FEL7geUiLsF7U5ouj9+aggPgXgYVmkHQ?=
+ =?iso-8859-1?Q?zb3GoyjNStPNpkd7LfckWCsWPM3KmQjmBF5XxsBGBtsCjV+OiQLPSuupJj?=
+ =?iso-8859-1?Q?QvAi/qtXzQR0324PjmAM40y9x8rzJ4g5ynRjKjabonJILRFCwf8jCuZAOH?=
+ =?iso-8859-1?Q?7oCGKVOhWehTN+zb5mNAGme8ZJaKiAFUDLSvdQ0w8vRJLPu58ygm5ouN+B?=
+ =?iso-8859-1?Q?Dqn0oedzozeDwA8sPWpXud97P8RAhNv5jBM8ToIozRNwpFHM7AsHzCJuIF?=
+ =?iso-8859-1?Q?2Bk0Opg5e9CL7Anb7iRgjWhOYxPWu3dYJbFn02iJfcA1EiseP4yYF/qVhp?=
+ =?iso-8859-1?Q?B0jKykrSW6QtXjAE5WfwXOYZvYbO7Jg4To8eiNGBqOZnEqD+1Qu4yXJEGl?=
+ =?iso-8859-1?Q?eZQn7Ip9+mcIbdKO9WJI8sH7Osh4Nysdu/Kv9NCbI2mttz1n356gVVjWZ4?=
+ =?iso-8859-1?Q?JExOQRUGp5JHSxTZmOjnEWYP0+DUyK7PW0ycsGcq9Amics/T7EaSFibkaG?=
+ =?iso-8859-1?Q?Tpu7LjWaG0aA9JDn1xYduzxq9kNaMAZs6c3NfEIExXLClSOV0BWROxtneS?=
+ =?iso-8859-1?Q?fFZdQC9zB9dPrn0qxdW4KBvlpL+rHdFxRlP08QhQDpCFAiFXcNEq9bbSVV?=
+ =?iso-8859-1?Q?ke6bF3TrqdLAq+Cs0uiKqB9AwcNRCpYtAhSz9N0ZpdLBLhcMDZfSnm+p48?=
+ =?iso-8859-1?Q?pWfmnyfGaW3i8hjcbtn7X3MU/vrJZOl4Qr7DYeoELL1+20YwPW7kw9HqNV?=
+ =?iso-8859-1?Q?QlRML7R8a/rYsG/1X8L6yl7dV+hsDOz9Be/U5iSTmZkW2ok532IniMUalT?=
+ =?iso-8859-1?Q?/xKlQ6/HS8vO/ds3ZGN0tGBicm8j113ApzWBd1+W2Iw9qiadHp6Z9pT8PQ?=
+ =?iso-8859-1?Q?GWwF6qUk+wuVjtEJezwLlhV4omBT7HlDcX?=
 MIME-Version: 1.0
-X-Migadu-Flow: FLOW_OUT
+X-OriginatorOrg: wesion.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: TYZPR03MB7001.apcprd03.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: e76c3dfe-877d-456e-1471-08dc9f3603a8
+X-MS-Exchange-CrossTenant-originalarrivaltime: 08 Jul 2024 10:09:11.7906
+ (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 2dc3bd76-7ac2-4780-a5b7-6c6cc6b5af9b
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: T2h51inGWtR9dyq/nmMBQ2pHfzlXvadNump+1VTInkUvAcfWbRxlh5p9oSjfdf6jk8gJZZ2VKSR2+y4vK27Y5A==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SEZPR03MB7297
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240708_025524_825481_46529A3B 
-X-CRM114-Status: GOOD (  33.39  )
+X-CRM114-CacheID: sfid-20240708_030934_893048_21EB5C97 
+X-CRM114-Status: GOOD (  12.55  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,165 +171,55 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============8757811308568649534=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
---===============8757811308568649534==
-Content-Type: multipart/signed; boundary="nextPart1956357.2bgSXjE7Vb";
- micalg="pgp-sha256"; protocol="application/pgp-signature"
+>> @@ -1721,7 +1723,7 @@ static int brcmf_pcie_download_fw_nvram(struct
+>> brcmf_pciedev_info *devinfo,
+>>  memcpy_toio(devinfo->tcm + address, nvram, nvram_len);
+>>  brcmf_fw_nvram_free(nvram);
+>>
+>> - if (devinfo->otp.valid) {
+>> + if (devinfo->otp.valid || devinfo->ci->chip
+>
+> So the problem here is that otp validity is not unambiguous. The seed
+> requirement is mandated by firmware and was introduced for new WCC chips
+> moving forward.
+>
+> I would suggest to have a need_seed flag in the driver_data of the device
+> table (below). It currently is used only for vendor identification.
 
---nextPart1956357.2bgSXjE7Vb
-Content-Transfer-Encoding: 7Bit
-Content-Type: text/plain; charset="us-ascii"; protected-headers="v1"
-From: Diederik de Haas <didi.debian@cknow.org>
-To: Dragan Simic <dsimic@manjaro.org>
-Date: Mon, 08 Jul 2024 11:55:07 +0200
-Message-ID: <6192146.IJkX0fH94T@bagend>
-Organization: Connecting Knowledge
-In-Reply-To: <31a86ec073e1de9e0241845f8783cd6b@manjaro.org>
-MIME-Version: 1.0
+Because of brcmf_pcie_setup function also need the driver_data, so I tried to define
+a global variable named NEED_SEED_FLAG. But marco define didn't allow to modify
+value in it, do you think where is the best place to assign the flag? 
 
-Hi Dragan,
+Or you still think should add a new macro named BRCMF_PCIE_DEVICE_NEED_SEED?
+To be honest, I'm not quite sure which way is the best.
 
-On Sunday, 7 July 2024 23:23:30 CEST Dragan Simic wrote:
-> On 2024-07-04 21:18, Diederik de Haas wrote:
-> > Pine64's Rock64 was missing the avdd supply properties on the hdmi
-> > node,
-> > 
-> > causing the following warnings:
-> >   dwhdmi-rockchip ff3c0000.hdmi: supply avdd-0v9 not found, using
-> > dummy regulator
-> > 
-> >   dwhdmi-rockchip ff3c0000.hdmi: supply avdd-1v8 not found, using
-> > dummy regulator
-> > 
-> > In the Rock64 Schematic document version 2.0 those supplies are marked
-> > as DVIDEO_AVDD_1V0 and DVIDEO_AVDD_1V8 respectively, but in version 3.0
-> > those are named HDMI_AVDD_1V0 and HDMI_AVDD_1V8, which is a bit
-> > clearer.
-> > In both versions those are connected to LDO3 and LDO1 respectively.
-> > 
-> > While the DeviceTree property is named 'avdd-0v9-supply' the
-> > 
-> > 'rockchip,dw-hdmi.yaml' binding document notes the following:
-> >   A 0.9V supply that powers up the SoC internal circuitry. The actual
-> >   pin name varies between the different SoCs and is usually
-> >   HDMI_TX_AVDD_0V9 or sometimes HDMI_AVDD_1V0.
-> > 
-> > So the 'vdd_10' reference is not an error.
-> > 
-> > Signed-off-by: Diederik de Haas <didi.debian@cknow.org>
-> 
-> Already verified the above-quoted statement from the .yaml binding
-> in the RK3328 and RK3399 datasheets.  Thus, hoping that you agree
-> with the first line:
-> 
-> Helped-by: Dragan Simic <dsimic@manjaro.org>
-
-While you helped me in several areas (understanding 'things') and I think 
-proper attribution is very important, in this case it would be incorrect IMO.
-I was helped by Heiko's (big) hint in their counter-proposal (which does 
-deserve a Helped-by tag), from that point on, it was all my own work.
-
-After Heiko's counter-proposal I had found the regulator I needed to 
-reference. I then resolved the DVIDEO vs HDMI remark by looking at v2 and v3 
-of the Schematic document. Which left 1 thing to resolve ...
-
-On Thursday, 4 July 2024 12:34:18 CEST Diederik de Haas wrote:
-> I do wonder about 0.9V vs 1.0V, but I'll bug someone else about that ;-)
-
-I did mean you with that, but in the end I did resolve it myself.
-I found the 'note' in the binding document and when I then found "min: 0.9; 
-typical: 1.0; max: 1.1" in para 3.2 (page 36) of the RK3328 Datasheet, I felt 
-I had resolved that issue sufficiently as well and was confident enough to sent 
-the patch out (without sending you a RFC patch first).
-
-> Reviewed-by: Dragan Simic <dsimic@manjaro.org>
-
-Thanks :-)
-
-> I'd also suggest that a brief comment is added to rk3328-rock64.dts,
-> right above the "avdd-0v9-supply = <&vdd_10>;" line.  Perhaps something
-> 
-> like this:
-> > +	/*
-> > +	 * RK3328 requires 1.0 V on HDMI_AVDD_1V0, which is HDMI_AVDD_0V9
-> > +	 * and requires 0.9 V on other Rockchip SoCs
-> > +	 */
-
-The binding doc mention this: "The actual pin name varies between the different 
-SoCs and is *usually* HDMI_TX_AVDD_0V9" (emphasis mine)
-
-So that comment would make stronger claims then is present in the binding 
-document and also uses a different pin name. I also don't think it's useful to 
-mention what other SoCs (or boards) use in the rk3328-rock64.dts.
-
-While I fully agree that the apparent discrepancy should be documented, I 
-choose to do that in the commit message and I don't see a value to repeat that 
-in the dts file itself.
-When I see something which looks 'odd', I'd then use `git blame` to find the 
-commit which set that and then I'd see the commit message which explains it.
-
-Cheers,
-  Diederik
-
-> > ---
-> > 
-> >  arch/arm64/boot/dts/rockchip/rk3328-rock64.dts | 2 ++
-> >  1 file changed, 2 insertions(+)
-> > 
-> > diff --git a/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts
-> > b/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts
-> > index 229fe9da9c2d..90fef766f3ae 100644
-> > --- a/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts
-> > +++ b/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts
-> > @@ -154,6 +154,8 @@ &gmac2io {
-> > 
-> >  };
-> >  
-> >  &hdmi {
-> > 
-> > +	avdd-0v9-supply = <&vdd_10>;
-> > +	avdd-1v8-supply = <&vcc_18>;
-> > 
-> >  	status = "okay";
-> >  
-> >  };
+> Regards,
+> Arend
+>
+>> == BRCM_CC_43752_CHIP_ID) {
+>>  size_t rand_len = BRCMF_RANDOM_SEED_LENGTH;
+>>  struct brcmf_random_seed_footer footer = {
+>>  .length = cpu_to_le32(rand_len),
+>> @@ -2710,6 +2712,7 @@ static const struct pci_device_id
+>> brcmf_pcie_devid_table[] = {
+>>  BRCMF_PCIE_DEVICE(BRCM_PCIE_4366_5G_DEVICE_ID, BCA),
+>>  BRCMF_PCIE_DEVICE(BRCM_PCIE_4371_DEVICE_ID, WCC),
+>>  BRCMF_PCIE_DEVICE(BRCM_PCIE_43596_DEVICE_ID, CYW),
+>> + BRCMF_PCIE_DEVICE(BRCM_PCIE_43752_DEVICE_ID, WCC),
+>>  BRCMF_PCIE_DEVICE(BRCM_PCIE_4377_DEVICE_ID, WCC),
+>>  BRCMF_PCIE_DEVICE(BRCM_PCIE_4378_DEVICE_ID, WCC),
+>>  BRCMF_PCIE_DEVICE(BRCM_PCIE_4387_DEVICE_ID, WCC),
 
 
---nextPart1956357.2bgSXjE7Vb
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: This is a digitally signed message part.
-Content-Transfer-Encoding: 7Bit
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYIAB0WIQT1sUPBYsyGmi4usy/XblvOeH7bbgUCZou3ewAKCRDXblvOeH7b
-bu/3AP9TQM1mQsEoqJqSom8M1e3rf8ToWgUhxPpYuMl55Ln75wEArqjMHD7tyD7c
-pxrGaVKXX2ipEbZAKEdU6/IEucgV+wQ=
-=9qS7
------END PGP SIGNATURE-----
-
---nextPart1956357.2bgSXjE7Vb--
-
-
-
-
-
---===============8757811308568649534==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
+---
+Best Regards
+Jacobe
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============8757811308568649534==--
-
-
-
-
