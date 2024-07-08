@@ -4,67 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C1A8FC3DA47
-	for <linux-rockchip@archiver.kernel.org>; Mon,  8 Jul 2024 22:45:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0D13AC3DA42
+	for <linux-rockchip@archiver.kernel.org>; Mon,  8 Jul 2024 22:56:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=XmVuL2GkbLZxDNc5cYgqZ/EdBqk0eCcyLvV5GOQ/KBc=; b=SSk2NoNs65fEMU
-	0MiBoN9kBOwgPBWNbOZ5EjU8WqmRfrCMMfEWRuoDe6RZhqojN9EQbM+1Jtj+c8avBzNCqs5pGydqx
-	5T1FdBf55zRvfasmduWyKErfcZIyshHcXUcizoCWjr3eN6RdGtztPolJ+gNnZfMt8fkqrTHFNkcdk
-	vRy5mk3J4tRJBgThSyAhvMBdq71+NPRVwNBiWUt1koqgUFMSzNDgQJZJCxMlThjGv0L/1dXP01maa
-	vAab9sH2no35VhbiozgkBRQUj9S/3Ld6sUcO6+bN7buH1UZdSNYx+W2wBbH6J3i6L00hY9rZ02ewQ
-	fJhWUAvjj4ZJqCqPry0w==;
+	List-Owner; bh=wMtqFAPCMTnJGlkV7/SBpI4xAQNgvhNvaBerFAQvbSE=; b=qbvEi73QAHEjYd
+	B5GNTHokGpjkHXo7uch7hzDr86tGO+jOvsVWxlOs8LfJsDlL2ea7tbaF6GOqS432inAHU8Zj/OIq2
+	xrS1VjJlGJP2ZsnDWUhDm2Jy1KQGegWgeI6e70LSPF3abP5/vHqPzCJujWynCdBaqJnbxRoxRXZ1A
+	f/A3QNeHZ8TK242k9ZIbzyRSQOGYDlbst2q7HJ6SSs5UPHfpfESfcCdFgSSJOaENpX+/cHbr6is+3
+	gVMr3PjgNm9sIEfoi65WhMegzQE8geJoZch5sj680bdiKQ8T4YecA334g3PxLyC0CgK5L1nMIZK2M
+	+KXhM9CcIuvOk+TCrFjw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sQx79-00000005FgT-3cPv;
-	Mon, 08 Jul 2024 22:45:43 +0000
+	id 1sQxHq-00000005Gqk-3JWS;
+	Mon, 08 Jul 2024 22:56:46 +0000
 Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sQx6s-00000005FcO-1Uqm;
-	Mon, 08 Jul 2024 22:45:27 +0000
+	id 1sQxHa-00000005Gmq-1SIp;
+	Mon, 08 Jul 2024 22:56:31 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 8AC4E611C2;
-	Mon,  8 Jul 2024 22:45:25 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id F14FAC3277B;
-	Mon,  8 Jul 2024 22:45:24 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 7A88D60B21;
+	Mon,  8 Jul 2024 22:56:29 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id F199EC116B1;
+	Mon,  8 Jul 2024 22:56:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1720478725;
-	bh=7YHz7y+T/d/K9XBn3bDo+/LX40FSv7Jm/vdn58aKRkQ=;
+	s=k20201202; t=1720479389;
+	bh=rlZAk0kZAJiaCngMbVFik5uVJ1rapRR4BRamWVIq5gI=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=BI0wlKY81Q579BFKw8zWMWC1SIwNd/gVSKkx7IsVlekVsv3X7cxz/TUVpSKqP9dxe
-	 5/c1ZyOvWy/q96QswErv4pQOumxSPIIxhTbehYXPi/bV9fY8BuhUHqkaMcEU94IgyI
-	 hPHVQwF7oo3gUOSCe5etKokUMLKT5tepIOBSmPCEmnUvCClWm1cPXnQme/B726qrAf
-	 KZnckvtI2EiIHhy9sB1QKfM5AychhQBbEmhEdXjZejk9ZnCoW0Ep40AiLTAaEJaAFX
-	 nnCkCaNxQa/zeY//19pq24YRvXay3/oM6zBeFsvWQC2HRA51Tt2JgI71FYd0iXy6G3
-	 F9eS93ChH2lJg==
-Date: Mon, 8 Jul 2024 16:45:22 -0600
+	b=qHgp85fYv8pnhCLOvUenNezIYXWbyJzF0w8HGxxu4W3p0wAAhJS+O+RVpRfXF7ruy
+	 CuVt3V8M31ioa6R9EYHkNjnaemYzkOmOW41/s552jI0XYXp4BH4htWwl6iCkTpagPO
+	 XukmWEGj6Peq6rVGW9LOS2DOVRSwpSBePlLLBiCns2Kj1ZDzGNaOxbcGJOkgKU4GVp
+	 6xXBW6DcsMzK4ycHIay0yQnswhOo2cslyXS7dLcsjC5rC103aKwniqOMGLIFEASxgi
+	 kpax8lyBUyirtTeAiCqUp9nrBF2KXCHgSxB+Nv+gqogR8xWCvH7Qvf9rhSkPg6Xu06
+	 TJ59A7KdVeVcg==
+Date: Mon, 8 Jul 2024 16:56:27 -0600
 From: Rob Herring <robh@kernel.org>
 To: Farouk Bouabid <farouk.bouabid@cherry.de>
-Cc: linux-i2c@vger.kernel.org, devicetree@vger.kernel.org,
-	Conor Dooley <conor+dt@kernel.org>,
-	Andi Shyti <andi.shyti@kernel.org>,
-	Jean Delvare <jdelvare@suse.com>, linux-hwmon@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	Quentin Schulz <quentin.schulz@cherry.de>,
-	Peter Rosin <peda@axentia.se>, Guenter Roeck <linux@roeck-us.net>,
-	linux-arm-kernel@lists.infradead.org,
+Cc: Andi Shyti <andi.shyti@kernel.org>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v5 3/8] dt-bindings: i2c: add support for tsd,mule
-Message-ID: <20240708224522.GA4092671-robh@kernel.org>
+	Conor Dooley <conor+dt@kernel.org>,
+	Quentin Schulz <quentin.schulz@cherry.de>,
+	Peter Rosin <peda@axentia.se>, Jean Delvare <jdelvare@suse.com>,
+	Guenter Roeck <linux@roeck-us.net>,
+	Heiko Stuebner <heiko@sntech.de>, linux-i2c@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-hwmon@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH v5 1/8] dt-bindings: i2c: add support for tsd,mule-i2c-mux
+Message-ID: <20240708225627.GB4092671-robh@kernel.org>
 References: <20240708-dev-mule-i2c-mux-v5-0-71446d3f0b8d@cherry.de>
- <20240708-dev-mule-i2c-mux-v5-3-71446d3f0b8d@cherry.de>
- <172045906545.3469012.7420722768425918930.robh@kernel.org>
+ <20240708-dev-mule-i2c-mux-v5-1-71446d3f0b8d@cherry.de>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <172045906545.3469012.7420722768425918930.robh@kernel.org>
+In-Reply-To: <20240708-dev-mule-i2c-mux-v5-1-71446d3f0b8d@cherry.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240708_154526_482156_35E31FC5 
-X-CRM114-Status: GOOD (  14.96  )
+X-CRM114-CacheID: sfid-20240708_155630_618727_6CB844E4 
+X-CRM114-Status: GOOD (  10.76  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,32 +80,18 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jul 08, 2024 at 11:17:45AM -0600, Rob Herring (Arm) wrote:
+On Mon, Jul 08, 2024 at 06:12:12PM +0200, Farouk Bouabid wrote:
+> Theobroma Systems Mule is an MCU that emulates a set of I2C devices,
+> among which devices that are reachable through an I2C-mux. The devices
+> on the mux can be selected by writing the appropriate device number to
+> an I2C config register.
 > 
-> On Mon, 08 Jul 2024 18:12:14 +0200, Farouk Bouabid wrote:
-> > Theobroma Systems Mule is an MCU that emulates a set of I2C devices,
-> > among which is an amc6821 and other devices that are reachable through
-> > an I2C-mux. The devices on the mux can be selected by writing the
-> > appropriate device number to an I2C config register (amc6821: reg 0xff)
-> > 
-> > Signed-off-by: Farouk Bouabid <farouk.bouabid@cherry.de>
-> > ---
-> >  .../devicetree/bindings/i2c/tsd,mule.yaml          | 63 ++++++++++++++++++++++
-> >  1 file changed, 63 insertions(+)
-> > 
-> 
-> My bot found errors running 'make dt_binding_check' on your patch:
-> 
-> yamllint warnings/errors:
-> 
-> dtschema/dtc warnings/errors:
-> Documentation/devicetree/bindings/i2c/tsd,mule.example.dtb: /example-0/i2c/fan@18/i2c-mux: failed to match any schema with compatible: ['tsd,mule-i2c-mux']
+> Signed-off-by: Farouk Bouabid <farouk.bouabid@cherry.de>
+> ---
+>  .../devicetree/bindings/i2c/tsd,mule-i2c-mux.yaml  | 69 ++++++++++++++++++++++
+>  1 file changed, 69 insertions(+)
 
-This can be ignored. Looks like things went sideways here because patch 
-1 subject is a substring of patch 3 and then it got marked as 
-Superseded.
-
-Rob
+Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
 
 _______________________________________________
 Linux-rockchip mailing list
