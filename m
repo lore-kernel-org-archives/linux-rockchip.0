@@ -4,62 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8ACA2C3DA41
-	for <linux-rockchip@archiver.kernel.org>; Mon,  8 Jul 2024 02:38:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4487DC3DA42
+	for <linux-rockchip@archiver.kernel.org>; Mon,  8 Jul 2024 07:47:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Message-ID:MIME-Version:References:
 	In-Reply-To:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=NGWepbXPdvoiQH6zeRVtNbHLNmZZEkU7SYVONQwV0Qg=; b=d2yqrY/Bw2i5VR
-	q1rAbR2GhUjW1PGqp9O2EEcXPJnEbclwgHiQlhpam+1FQO/5inCYNsLg1PSK1MSWYCsz9a0zdU9VW
-	yp6z9Ae/A30wHdO2cEsUG6qKAFDVcczHsgp0UmYEcQwyJGBLD3lVbncpjEdlp1pqzWUtx+Tk+lwSP
-	8jZa+ChIZS8Ydaj1yz2lmyYSizvH9dg2/vciiRG/0nalz/XP/aq+f89Vtha0l9b3PUd8JzUrdJpn2
-	YTSdM/STQ8ETOw+odhCPsgg8YiClLrC06yj+IareOMqyOfGWVM7MQXmo4LGH2CogcaAoGRQnrYHQo
-	BNwUNWq8f71vuvS9RmbQ==;
+	List-Owner; bh=KZ4GgZO/hcBsrdf+1bwq4vk1zHmX0dDYAVEmV/HfKug=; b=smnJ0Ya54IMAsO
+	IcVWa8rckYm/ibZPcGz6eHHyyQlrc5m6xUR7BzD/7FFwe6vZwc3ttr5O4YBOEqYMxCDrUSwvu8F2u
+	KfDJFNkV6VelOoFMpkO4CAw+zoX/ZVCNiIR52bYs+/bWcVQKVowNOimD80ujzt4HnwJtwb0GqqZ+3
+	93oylBmhif5NGBM8R48aRdU8TP1B+24Ro+0DCBFcXKl2aWJqGU4ERWcQd6co/3ODlO2G5lvQXgf/f
+	2NjdBBmqogfdubeaxCgaEx40JncqdB7+X2oGYGSJvYR85QWZV+o6Qqw4gmm3T+Z6ZlDoRXk9J5kbB
+	8whvs6d8c5SZ3yhjG30A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sQeGP-00000002ca5-1dbn;
-	Mon, 08 Jul 2024 02:38:01 +0000
-Received: from m15.mail.163.com ([45.254.50.219])
+	id 1sQj5h-000000034fJ-3sEK;
+	Mon, 08 Jul 2024 07:47:17 +0000
+Received: from m16.mail.163.com ([117.135.210.2])
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sQeGA-00000002cYO-1C5L;
-	Mon, 08 Jul 2024 02:37:48 +0000
+	id 1sQj5e-000000034eT-2E2q;
+	Mon, 08 Jul 2024 07:47:16 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
 	s=s110527; h=Date:From:Subject:Content-Type:MIME-Version:
-	Message-ID; bh=htvZACadToEHfgFjXxbgPz4evgi+ninORl76Epm7o0c=; b=X
-	sB/UC8+sUEhp4+e4mJylOZgXXlv1nkPIfOIOeuvhb5yj5uPn4j0hwDdYWc7GvuWK
-	R0I47BSnzjYg/yi3eUgv/jcunYCNkEacuwX84iNa/djrBDIDTFuLQvqi5uLhVOKE
-	g+o7/tiyKGHs4DePlfR0UgITJQEaWw/b/SB4Dzwrhs=
+	Message-ID; bh=lwPz0lRMXLSQxxxMbI0Kjobk8iGkewqANPi/OxkSuSw=; b=m
+	XPv1G7e4dHaZhtV/kkHNIbVHq0ZK4f61KN3dSrWnfN+HGiPoot98JYdq6VyORUgy
+	BnzxrdQ5ox4MQ7kCT/stChGGWNOsGIH+j4D2wdQfLklpPTJJMjl/g40F1GjsBK3z
+	jmvs5ZOpS4gDvcBa9IdQyQFYLVjtz20RSJRXTZ0hoM=
 Received: from andyshrk$163.com ( [103.29.142.67] ) by
- ajax-webmail-wmsvr-40-113 (Coremail) ; Mon, 8 Jul 2024 10:36:47 +0800 (CST)
+ ajax-webmail-wmsvr-40-113 (Coremail) ; Mon, 8 Jul 2024 15:46:16 +0800 (CST)
 X-Originating-IP: [103.29.142.67]
-Date: Mon, 8 Jul 2024 10:36:47 +0800 (CST)
+Date: Mon, 8 Jul 2024 15:46:16 +0800 (CST)
 From: "Andy Yan" <andyshrk@163.com>
-To: "Johan Jonker" <jbx6244@gmail.com>
-Cc: heiko@sntech.de, hjc@rock-chips.com, andy.yan@rock-chips.com, 
+To: "Dragan Simic" <dsimic@manjaro.org>
+Cc: linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org, 
+	heiko@sntech.de, hjc@rock-chips.com, andy.yan@rock-chips.com, 
 	maarten.lankhorst@linux.intel.com, mripard@kernel.org, 
 	tzimmermann@suse.de, airlied@gmail.com, daniel@ffwll.ch, 
-	dri-devel@lists.freedesktop.org, 
-	linux-arm-kernel@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re:[PATCH v10] drm/rockchip: rk3066_hdmi: add sound support
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	javierm@redhat.com
+Subject: Re:Re: [PATCH] drm/rockchip: cdn-dp: Remove redundant workarounds
+ for firmware loading
 X-Priority: 3
 X-Mailer: Coremail Webmail Server Version XT5.0.14 build 20230109(dcb5de15)
  Copyright (c) 2002-2024 www.mailtech.cn 163com
-In-Reply-To: <9f55fa12-51d9-4c85-a34f-0c42c61678e0@gmail.com>
-References: <9f55fa12-51d9-4c85-a34f-0c42c61678e0@gmail.com>
-X-NTES-SC: AL_Qu2ZAvibuUor4SadZekZnEobh+Y5UcK2s/ki2YFXN5k0oiTA4REjQnF7Jmft4cKBGj2NvhaYYBlcxO9kcZdoUqH3LFPZm7kWrVH2tbVn2khB
+In-Reply-To: <0bf4701d98833609b917983718c610aa@manjaro.org>
+References: <9b7a9e9b88ad8c7489ee1b4c70b8751eeb5cf6f9.1720049413.git.dsimic@manjaro.org>
+ <109c6f19.2559.1907b817a99.Coremail.andyshrk@163.com>
+ <0bf4701d98833609b917983718c610aa@manjaro.org>
+X-NTES-SC: AL_Qu2ZAviZu08s4CCRbekZnEobh+Y5UcK2s/ki2YFXN5k0oiTA4REjQnF7Jmft4cKBGj2NvhaYYBlcxO9kcZdoUqEQhrQ4E92F4D3Sufz79Ghe
 MIME-Version: 1.0
-Message-ID: <45298488.2cd0.19090336cad.Coremail.andyshrk@163.com>
+Message-ID: <2fd3aabd.785b.190914ec1a6.Coremail.andyshrk@163.com>
 X-Coremail-Locale: zh_CN
-X-CM-TRANSID: _____wDnj5u_UItmT98oAA--.5838W
-X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/xtbB0gYWXmWXy2-UQAABsf
+X-CM-TRANSID: _____wD3f5JImYtmHPYsAA--.3738W
+X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/1tbiMwoWXmXAmVobswABs+
 X-Coremail-Antispam: 1U5529EdanIXcx71UUUUU7vcSsGvfC2KfnxnUU==
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240707_193746_825070_5AFA79F8 
-X-CRM114-Status: GOOD (  15.38  )
+X-CRM114-CacheID: sfid-20240708_004715_077569_C5E41B7B 
+X-CRM114-Status: GOOD (  21.24  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,499 +74,121 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-
-
-Hi Johan,
-    Thanks for your patch.
-
-At 2024-07-04 21:48:13, "Johan Jonker" <jbx6244@gmail.com> wrote:
->Add sound support to the RK3066 HDMI driver.
->The HDMI TX audio source is connected to I2S_8CH.
->
->Signed-off-by: Zheng Yang <zhengyang@rock-chips.com>
->Signed-off-by: Johan Jonker <jbx6244@gmail.com>
-
-   Reviewed-by: Andy Yan <andy.yan@rock-chips.com>
-
-
-
->---
->
->Changed V10:
->  s/audio_enable/audio_enabled
->  hook to encoder->funcs->late_register
->  move audio functions up to avoid adding a declaration
->
->Changed V9:
->  Use late_register and early_unregister hooks to
->  (un)register the "hdmi-audio-codec" driver.
->  restyle
->
->Changed V8:
->  return -EPROBE_DEFER as early as possible
->  move rk3066_hdmi_audio_codec_init() function after rk3066_hdmi_register()
->  restyle
->
->Changed V7:
->  rebase
->---
-> drivers/gpu/drm/rockchip/Kconfig       |   2 +
-> drivers/gpu/drm/rockchip/rk3066_hdmi.c | 330 +++++++++++++++++++++++--
-> 2 files changed, 306 insertions(+), 26 deletions(-)
->
->diff --git a/drivers/gpu/drm/rockchip/Kconfig b/drivers/gpu/drm/rockchip/Kconfig
->index 1bf3e2829cd0..a32ee558408c 100644
->--- a/drivers/gpu/drm/rockchip/Kconfig
->+++ b/drivers/gpu/drm/rockchip/Kconfig
->@@ -102,6 +102,8 @@ config ROCKCHIP_RGB
-> config ROCKCHIP_RK3066_HDMI
-> 	bool "Rockchip specific extensions for RK3066 HDMI"
-> 	depends on DRM_ROCKCHIP
->+	select SND_SOC_HDMI_CODEC if SND_SOC
->+	select SND_SOC_ROCKCHIP_I2S if SND_SOC
-> 	help
-> 	  This selects support for Rockchip SoC specific extensions
-> 	  for the RK3066 HDMI driver. If you want to enable
->diff --git a/drivers/gpu/drm/rockchip/rk3066_hdmi.c b/drivers/gpu/drm/rockchip/rk3066_hdmi.c
->index 784de990da1b..e3b8faf89ae2 100644
->--- a/drivers/gpu/drm/rockchip/rk3066_hdmi.c
->+++ b/drivers/gpu/drm/rockchip/rk3066_hdmi.c
->@@ -15,12 +15,20 @@
-> #include <linux/platform_device.h>
-> #include <linux/regmap.h>
->
->+#include <sound/hdmi-codec.h>
->+
-> #include "rk3066_hdmi.h"
->
-> #include "rockchip_drm_drv.h"
->
-> #define DEFAULT_PLLA_RATE 30000000
->
->+struct rk3066_hdmi_audio_info {
->+	int channels;
->+	int sample_rate;
->+	int sample_width;
->+};
->+
-> struct hdmi_data_info {
-> 	int vic; /* The CEA Video ID (VIC) of the current drm display mode. */
-> 	unsigned int enc_out_format;
->@@ -40,7 +48,6 @@ struct rk3066_hdmi_i2c {
->
-> struct rk3066_hdmi {
-> 	struct device *dev;
->-	struct drm_device *drm_dev;
-> 	struct regmap *grf_regmap;
-> 	int irq;
-> 	struct clk *hclk;
->@@ -54,6 +61,10 @@ struct rk3066_hdmi {
->
-> 	unsigned int tmdsclk;
->
->+	struct platform_device *audio_pdev;
->+	struct rk3066_hdmi_audio_info audio;
->+	bool audio_enabled;
->+
-> 	struct hdmi_data_info hdmi_data;
-> };
->
->@@ -214,6 +225,241 @@ static int rk3066_hdmi_config_avi(struct rk3066_hdmi *hdmi,
-> 					HDMI_INFOFRAME_AVI, 0, 0, 0);
-> }
->
->+static int rk3066_hdmi_config_aai(struct rk3066_hdmi *hdmi)
->+{
->+	union hdmi_infoframe frame;
->+	int rc;
->+
->+	rc = hdmi_audio_infoframe_init(&frame.audio);
->+
->+	frame.audio.coding_type = HDMI_AUDIO_CODING_TYPE_STREAM;
->+	frame.audio.sample_frequency = HDMI_AUDIO_SAMPLE_FREQUENCY_STREAM;
->+	frame.audio.sample_size = HDMI_AUDIO_SAMPLE_SIZE_STREAM;
->+	frame.audio.channels = hdmi->audio.channels;
->+
->+	return rk3066_hdmi_upload_frame(hdmi, rc, &frame,
->+					HDMI_INFOFRAME_AAI, 0, 0, 0);
->+}
->+
->+static int rk3066_hdmi_audio_config(struct rk3066_hdmi *hdmi)
->+{
->+	u32 rate, channel, word_length, N, CTS;
->+	struct rk3066_hdmi_audio_info *audio = &hdmi->audio;
->+	u64 tmp;
->+
->+	if (audio->channels < 3)
->+		channel = HDMI_AUDIO_I2S_CHANNEL_1_2;
->+	else if (audio->channels < 5)
->+		channel = HDMI_AUDIO_I2S_CHANNEL_3_4;
->+	else if (audio->channels < 7)
->+		channel = HDMI_AUDIO_I2S_CHANNEL_5_6;
->+	else
->+		channel = HDMI_AUDIO_I2S_CHANNEL_7_8;
->+
->+	switch (audio->sample_rate) {
->+	case 32000:
->+		rate = HDMI_AUDIO_SAMPLE_FRE_32000;
->+		N = N_32K;
->+		break;
->+	case 44100:
->+		rate = HDMI_AUDIO_SAMPLE_FRE_44100;
->+		N = N_441K;
->+		break;
->+	case 48000:
->+		rate = HDMI_AUDIO_SAMPLE_FRE_48000;
->+		N = N_48K;
->+		break;
->+	case 88200:
->+		rate = HDMI_AUDIO_SAMPLE_FRE_88200;
->+		N = N_882K;
->+		break;
->+	case 96000:
->+		rate = HDMI_AUDIO_SAMPLE_FRE_96000;
->+		N = N_96K;
->+		break;
->+	case 176400:
->+		rate = HDMI_AUDIO_SAMPLE_FRE_176400;
->+		N = N_1764K;
->+		break;
->+	case 192000:
->+		rate = HDMI_AUDIO_SAMPLE_FRE_192000;
->+		N = N_192K;
->+		break;
->+	default:
->+		DRM_DEV_ERROR(hdmi->dev, "no support for sample rate %d\n",
->+			      audio->sample_rate);
->+		return -ENOENT;
->+	}
->+
->+	switch (audio->sample_width) {
->+	case 16:
->+		word_length = 0x02;
->+		break;
->+	case 20:
->+		word_length = 0x0a;
->+		break;
->+	case 24:
->+		word_length = 0x0b;
->+		break;
->+	default:
->+		DRM_DEV_ERROR(hdmi->dev, "no support for word length %d\n",
->+			      audio->sample_width);
->+		return -ENOENT;
->+	}
->+
->+	tmp = (u64)hdmi->tmdsclk * N;
->+	do_div(tmp, 128 * audio->sample_rate);
->+	CTS = tmp;
->+
->+	/* Set_audio source I2S. */
->+	hdmi_writeb(hdmi, HDMI_AUDIO_CTRL1, 0x00);
->+	hdmi_writeb(hdmi, HDMI_AUDIO_CTRL2, 0x40);
->+	hdmi_writeb(hdmi, HDMI_I2S_AUDIO_CTRL,
->+		    HDMI_AUDIO_I2S_FORMAT_STANDARD | channel);
->+	hdmi_writeb(hdmi, HDMI_I2S_SWAP, 0x00);
->+	hdmi_modb(hdmi, HDMI_AV_CTRL1, HDMI_AUDIO_SAMPLE_FRE_MASK, rate);
->+	hdmi_writeb(hdmi, HDMI_AUDIO_SRC_NUM_AND_LENGTH, word_length);
->+
->+	/* Set N value. */
->+	hdmi_modb(hdmi, HDMI_LR_SWAP_N3,
->+		  HDMI_AUDIO_N_19_16_MASK, (N >> 16) & 0x0F);
->+	hdmi_writeb(hdmi, HDMI_N2, (N >> 8) & 0xFF);
->+	hdmi_writeb(hdmi, HDMI_N1, N & 0xFF);
->+
->+	/* Set CTS value. */
->+	hdmi_writeb(hdmi, HDMI_CTS_EXT1, CTS & 0xff);
->+	hdmi_writeb(hdmi, HDMI_CTS_EXT2, (CTS >> 8) & 0xff);
->+	hdmi_writeb(hdmi, HDMI_CTS_EXT3, (CTS >> 16) & 0xff);
->+
->+	if (audio->channels > 2)
->+		hdmi_modb(hdmi, HDMI_LR_SWAP_N3,
->+			  HDMI_AUDIO_LR_SWAP_MASK,
->+			  HDMI_AUDIO_LR_SWAP_SUBPACKET1);
->+	rate = (~(rate >> 4)) & 0x0f;
->+	hdmi_writeb(hdmi, HDMI_AUDIO_STA_BIT_CTRL1, rate);
->+	hdmi_writeb(hdmi, HDMI_AUDIO_STA_BIT_CTRL2, 0);
->+
->+	return rk3066_hdmi_config_aai(hdmi);
->+}
->+
->+static int rk3066_hdmi_audio_hw_params(struct device *dev, void *d,
->+				       struct hdmi_codec_daifmt *daifmt,
->+				       struct hdmi_codec_params *params)
->+{
->+	struct rk3066_hdmi *hdmi = dev_get_drvdata(dev);
->+	struct drm_display_info *display = &hdmi->connector.display_info;
->+
->+	if (!display->has_audio) {
->+		DRM_DEV_ERROR(hdmi->dev, "no audio support\n");
->+		return -ENODEV;
->+	}
->+
->+	if (!hdmi->encoder.encoder.crtc)
->+		return -ENODEV;
->+
->+	switch (daifmt->fmt) {
->+	case HDMI_I2S:
->+		break;
->+	default:
->+		DRM_DEV_ERROR(dev, "invalid format %d\n", daifmt->fmt);
->+		return -EINVAL;
->+	}
->+
->+	hdmi->audio.channels = params->channels;
->+	hdmi->audio.sample_rate = params->sample_rate;
->+	hdmi->audio.sample_width = params->sample_width;
->+
->+	return rk3066_hdmi_audio_config(hdmi);
->+}
->+
->+static void rk3066_hdmi_audio_shutdown(struct device *dev, void *d)
->+{
->+	/* Do nothing. */
->+}
->+
->+static int rk3066_hdmi_audio_mute_stream(struct device *dev, void *d, bool mute, int direction)
->+{
->+	struct rk3066_hdmi *hdmi = dev_get_drvdata(dev);
->+	struct drm_display_info *display = &hdmi->connector.display_info;
->+
->+	if (!display->has_audio) {
->+		DRM_DEV_ERROR(hdmi->dev, "no audio support\n");
->+		return -ENODEV;
->+	}
->+
->+	hdmi->audio_enabled = !mute;
->+
->+	if (mute)
->+		hdmi_modb(hdmi, HDMI_VIDEO_CTRL2,
->+			  HDMI_AUDIO_DISABLE, HDMI_AUDIO_DISABLE);
->+	else
->+		hdmi_modb(hdmi, HDMI_VIDEO_CTRL2, HDMI_AUDIO_DISABLE, 0);
->+
->+	/*
->+	 * Under power mode E we need to reset the audio capture logic to
->+	 * make the audio setting update.
->+	 */
->+	if (rk3066_hdmi_get_power_mode(hdmi) == HDMI_SYS_POWER_MODE_E) {
->+		hdmi_modb(hdmi, HDMI_VIDEO_CTRL2,
->+			  HDMI_AUDIO_CP_LOGIC_RESET_MASK,
->+			  HDMI_AUDIO_CP_LOGIC_RESET);
->+		usleep_range(900, 1000);
->+		hdmi_modb(hdmi, HDMI_VIDEO_CTRL2,
->+			  HDMI_AUDIO_CP_LOGIC_RESET_MASK, 0);
->+	}
->+
->+	return 0;
->+}
->+
->+static int rk3066_hdmi_audio_get_eld(struct device *dev, void *d, u8 *buf, size_t len)
->+{
->+	struct rk3066_hdmi *hdmi = dev_get_drvdata(dev);
->+	struct drm_mode_config *config = &hdmi->encoder.encoder.dev->mode_config;
->+	struct drm_connector *connector;
->+	int ret = -ENODEV;
->+
->+	mutex_lock(&config->mutex);
->+	list_for_each_entry(connector, &config->connector_list, head) {
->+		if (&hdmi->encoder.encoder == connector->encoder) {
->+			memcpy(buf, connector->eld,
->+			       min(sizeof(connector->eld), len));
->+			ret = 0;
->+		}
->+	}
->+	mutex_unlock(&config->mutex);
->+
->+	return ret;
->+}
->+
->+static const struct hdmi_codec_ops rk3066_hdmi_audio_codec_ops = {
->+	.hw_params       = rk3066_hdmi_audio_hw_params,
->+	.audio_shutdown  = rk3066_hdmi_audio_shutdown,
->+	.mute_stream     = rk3066_hdmi_audio_mute_stream,
->+	.get_eld         = rk3066_hdmi_audio_get_eld,
->+	.no_capture_mute = 1,
->+};
->+
->+static int rk3066_hdmi_audio_codec_init(struct rk3066_hdmi *hdmi)
->+{
->+	struct hdmi_codec_pdata rk3066_hdmi_codec_data = {
->+		.i2s = 1,
->+		.ops = &rk3066_hdmi_audio_codec_ops,
->+		.max_i2s_channels = 8,
->+	};
->+
->+	hdmi->audio.channels = 2;
->+	hdmi->audio.sample_rate = 48000;
->+	hdmi->audio.sample_width = 16;
->+	hdmi->audio_enabled = false;
->+	hdmi->audio_pdev = platform_device_register_data(hdmi->dev,
->+							 HDMI_CODEC_DRV_NAME,
->+							 PLATFORM_DEVID_NONE,
->+							 &rk3066_hdmi_codec_data,
->+							 sizeof(rk3066_hdmi_codec_data));
->+
->+	return PTR_ERR_OR_ZERO(hdmi->audio_pdev);
->+}
->+
-> static int rk3066_hdmi_config_video_timing(struct rk3066_hdmi *hdmi,
-> 					   struct drm_display_mode *mode)
-> {
->@@ -364,6 +610,7 @@ static int rk3066_hdmi_setup(struct rk3066_hdmi *hdmi,
-> 		hdmi_modb(hdmi, HDMI_HDCP_CTRL, HDMI_VIDEO_MODE_MASK,
-> 			  HDMI_VIDEO_MODE_HDMI);
-> 		rk3066_hdmi_config_avi(hdmi, mode);
->+		rk3066_hdmi_audio_config(hdmi);
-> 	} else {
-> 		hdmi_modb(hdmi, HDMI_HDCP_CTRL, HDMI_VIDEO_MODE_MASK, 0);
-> 	}
->@@ -380,9 +627,20 @@ static int rk3066_hdmi_setup(struct rk3066_hdmi *hdmi,
-> 	 */
-> 	rk3066_hdmi_i2c_init(hdmi);
->
->-	/* Unmute video output. */
->+	/* Unmute video and audio output. */
-> 	hdmi_modb(hdmi, HDMI_VIDEO_CTRL2,
-> 		  HDMI_VIDEO_AUDIO_DISABLE_MASK, HDMI_AUDIO_DISABLE);
->+	if (hdmi->audio_enabled) {
->+		hdmi_modb(hdmi, HDMI_VIDEO_CTRL2, HDMI_AUDIO_DISABLE, 0);
->+		/* Reset audio capture logic. */
->+		hdmi_modb(hdmi, HDMI_VIDEO_CTRL2,
->+			  HDMI_AUDIO_CP_LOGIC_RESET_MASK,
->+			  HDMI_AUDIO_CP_LOGIC_RESET);
->+		usleep_range(900, 1000);
->+		hdmi_modb(hdmi, HDMI_VIDEO_CTRL2,
->+			  HDMI_AUDIO_CP_LOGIC_RESET_MASK, 0);
->+	}
->+
-> 	return 0;
-> }
->
->@@ -431,6 +689,7 @@ static void rk3066_hdmi_encoder_disable(struct drm_encoder *encoder,
-> 			  HDMI_AUDIO_CP_LOGIC_RESET);
-> 		usleep_range(500, 510);
-> 	}
->+
-> 	rk3066_hdmi_set_power_mode(hdmi, HDMI_SYS_POWER_MODE_A);
-> }
->
->@@ -447,6 +706,26 @@ rk3066_hdmi_encoder_atomic_check(struct drm_encoder *encoder,
-> 	return 0;
-> }
->
->+static int rk3066_hdmi_encoder_late_register(struct drm_encoder *encoder)
->+{
->+	struct rk3066_hdmi *hdmi = encoder_to_rk3066_hdmi(encoder);
->+
->+	return rk3066_hdmi_audio_codec_init(hdmi);
->+}
->+
->+static void rk3066_hdmi_encoder_early_unregister(struct drm_encoder *encoder)
->+{
->+	struct rk3066_hdmi *hdmi = encoder_to_rk3066_hdmi(encoder);
->+
->+	platform_device_unregister(hdmi->audio_pdev);
->+}
->+
->+static const struct drm_encoder_funcs rk3066_hdmi_encoder_funcs = {
->+	.destroy          = drm_encoder_cleanup,
->+	.late_register    = rk3066_hdmi_encoder_late_register,
->+	.early_unregister = rk3066_hdmi_encoder_early_unregister,
->+};
->+
-> static const
-> struct drm_encoder_helper_funcs rk3066_hdmi_encoder_helper_funcs = {
-> 	.atomic_check   = rk3066_hdmi_encoder_atomic_check,
->@@ -519,41 +798,28 @@ static void rk3066_hdmi_connector_destroy(struct drm_connector *connector)
-> }
->
-> static const struct drm_connector_funcs rk3066_hdmi_connector_funcs = {
->-	.fill_modes = rk3066_hdmi_probe_single_connector_modes,
->-	.detect = rk3066_hdmi_connector_detect,
->-	.destroy = rk3066_hdmi_connector_destroy,
->-	.reset = drm_atomic_helper_connector_reset,
->+	.fill_modes             = rk3066_hdmi_probe_single_connector_modes,
->+	.detect                 = rk3066_hdmi_connector_detect,
->+	.destroy                = rk3066_hdmi_connector_destroy,
->+	.reset                  = drm_atomic_helper_connector_reset,
-> 	.atomic_duplicate_state = drm_atomic_helper_connector_duplicate_state,
->-	.atomic_destroy_state = drm_atomic_helper_connector_destroy_state,
->+	.atomic_destroy_state   = drm_atomic_helper_connector_destroy_state,
-> };
->
-> static const
-> struct drm_connector_helper_funcs rk3066_hdmi_connector_helper_funcs = {
->-	.get_modes = rk3066_hdmi_connector_get_modes,
->-	.mode_valid = rk3066_hdmi_connector_mode_valid,
->+	.get_modes    = rk3066_hdmi_connector_get_modes,
->+	.mode_valid   = rk3066_hdmi_connector_mode_valid,
-> 	.best_encoder = rk3066_hdmi_connector_best_encoder,
-> };
->
->-static int
->-rk3066_hdmi_register(struct drm_device *drm, struct rk3066_hdmi *hdmi)
->+static int rk3066_hdmi_register(struct drm_device *drm, struct rk3066_hdmi *hdmi)
-> {
-> 	struct drm_encoder *encoder = &hdmi->encoder.encoder;
->-	struct device *dev = hdmi->dev;
->-
->-	encoder->possible_crtcs =
->-		drm_of_find_possible_crtcs(drm, dev->of_node);
->-
->-	/*
->-	 * If we failed to find the CRTC(s) which this encoder is
->-	 * supposed to be connected to, it's because the CRTC has
->-	 * not been registered yet.  Defer probing, and hope that
->-	 * the required CRTC is added later.
->-	 */
->-	if (encoder->possible_crtcs == 0)
->-		return -EPROBE_DEFER;
->
-> 	drm_encoder_helper_add(encoder, &rk3066_hdmi_encoder_helper_funcs);
->-	drm_simple_encoder_init(drm, encoder, DRM_MODE_ENCODER_TMDS);
->+	drm_encoder_init(drm, encoder, &rk3066_hdmi_encoder_funcs,
->+			 DRM_MODE_ENCODER_TMDS, NULL);
->
-> 	hdmi->connector.polled = DRM_CONNECTOR_POLL_HPD;
->
->@@ -740,6 +1006,7 @@ static int rk3066_hdmi_bind(struct device *dev, struct device *master,
-> {
-> 	struct platform_device *pdev = to_platform_device(dev);
-> 	struct drm_device *drm = data;
->+	struct drm_encoder *encoder;
-> 	struct rk3066_hdmi *hdmi;
-> 	int irq;
-> 	int ret;
->@@ -748,8 +1015,19 @@ static int rk3066_hdmi_bind(struct device *dev, struct device *master,
-> 	if (!hdmi)
-> 		return -ENOMEM;
->
->+	encoder = &hdmi->encoder.encoder;
->+	encoder->possible_crtcs = drm_of_find_possible_crtcs(drm, dev->of_node);
->+
->+	/*
->+	 * If we failed to find the CRTC(s) which this encoder is
->+	 * supposed to be connected to, it's because the CRTC has
->+	 * not been registered yet. Defer probing and hope that
->+	 * the required CRTC is added later.
->+	 */
->+	if (encoder->possible_crtcs == 0)
->+		return -EPROBE_DEFER;
->+
-> 	hdmi->dev = dev;
->-	hdmi->drm_dev = drm;
-> 	hdmi->regs = devm_platform_ioremap_resource(pdev, 0);
-> 	if (IS_ERR(hdmi->regs))
-> 		return PTR_ERR(hdmi->regs);
->--
->2.39.2
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+CkhpIERyYWdhbu+8jApBdCAyMDI0LTA3LTA0IDE4OjM1OjQyLCAiRHJhZ2FuIFNpbWljIiA8ZHNp
+bWljQG1hbmphcm8ub3JnPiB3cm90ZToKPkhlbGxvIEFuZHksCj4KPk9uIDIwMjQtMDctMDQgMDQ6
+MTAsIEFuZHkgWWFuIHdyb3RlOgo+PiBBdCAyMDI0LTA3LTA0IDA3OjMyOjAyLCAiRHJhZ2FuIFNp
+bWljIiA8ZHNpbWljQG1hbmphcm8ub3JnPiB3cm90ZToKPj4+IEFmdGVyIHRoZSBhZGRpdGlvbmFs
+IGZpcm13YXJlLXJlbGF0ZWQgbW9kdWxlIGluZm9ybWF0aW9uIHdhcyAKPj4+IGludHJvZHVjZWQg
+YnkKPj4+IHRoZSBjb21taXQgYzA2NzdlNDFhNDdmICgiZHJtL3JvY2tjaGlwOiBjZG4tZHAtY29y
+ZTogYWRkIAo+Pj4gTU9EVUxFX0ZJUk1XQVJFCj4+PiBtYWNybyIpLCB0aGVyZSdzIG5vIGxvbmdl
+ciBuZWVkIGZvciB0aGUgZmlybXdhcmUtbG9hZGluZyB3b3JrYXJvdW5kcyAKPj4+IHdob3NlCj4+
+PiBzb2xlIHB1cnBvc2Ugd2FzIHRvIHByZXZlbnQgdGhlIG1pc3NpbmcgZmlybXdhcmUgYmxvYiBp
+biBhbiBpbml0aWFsIAo+Pj4gcmFtZGlzawo+Pj4gZnJvbSBjYXVzaW5nIGRyaXZlciBpbml0aWFs
+aXphdGlvbiB0byBmYWlsLiAgVGh1cywgZGVsZXRlIHRoZSAKPj4+IHdvcmthcm91bmRzLAo+Pj4g
+d2hpY2ggcmVtb3ZlcyBhIHNpemFibGUgY2h1bmsgb2YgcmVkdW5kYW50IGNvZGUuCj4+IAo+PiBX
+aGF0IHdvdWxkIGhhcHBlbiBpZiB0aGVyZSB3YXMgbm8gcmFtZGlzaz8gQW5kIHRoZSBmaXJtd2Fy
+ZSBpcyBpbiAKPj4gcm9vdGZzIO+8nwo+PiAKPj4gRm9yIGV4YW1wbGXvvJogQSBidWlsZHJvb3Qg
+YmFzZWQgdGlueSBlbWJlZGRlZCBzeXN0ZW3jgIIKPgo+R29vZCBwb2ludCwgbGV0IG1lIGV4cGxh
+aW4sIHBsZWFzZS4KPgo+SW4gZ2VuZXJhbCwgaWYgYSBkcml2ZXIgaXMgYnVpbHQgaW50byB0aGUg
+a2VybmVsLCB0aGVyZSBzaG91bGQgYWxzbyBiZQo+YW4gaW5pdGlhbCByYW1kaXNrIHRoYXQgY29u
+dGFpbnMgdGhlIHJlbGF0ZWQgZmlybXdhcmUgYmxvYnMsIGJlY2F1c2UgCj5pdCdzCj51bmtub3du
+IGlzIHRoZSByb290IGZpbGVzeXN0ZW0gYXZhaWxhYmxlIHdoZW4gdGhlIGRyaXZlciBpcyBwcm9i
+ZWQuICBJZgo+YSBkcml2ZXIgaXMgYnVpbHQgYXMgYSBtb2R1bGUgYW5kIHRoZXJlJ3Mgbm8gaW5p
+dGlhbCByYW1kaXNrLCBoYXZpbmcKPnRoZSByZWxhdGVkIGZpcm13YXJlIGJsb2JzIG9uIHRoZSBy
+b290IGZpbGVzeXN0ZW0gc2hvdWxkIGJlIGZpbmUsIAo+YmVjYXVzZQo+dGhlIGZpcm13YXJlIGJs
+b2JzIGFuZCB0aGUga2VybmVsIG1vZHVsZSBiZWNvbWUgYXZhaWxhYmxlIGF0IHRoZSBzYW1lCj50
+aW1lLCB0aHJvdWdoIHRoZSByb290IGZpbGVzeXN0ZW0uIFsxXQo+Cj5Bbm90aGVyIG9wdGlvbiBm
+b3IgYSBkcml2ZXIgYnVpbHQgc3RhdGljYWxseSBpbnRvIHRoZSBrZXJuZWwsIHdoZW4gCj50aGVy
+ZSdzCj5ubyBpbml0aWFsIHJhbWRpc2ssIGlzIHRvIGJ1aWxkIHRoZSByZXF1aXJlZCBmaXJtd2Fy
+ZSBibG9icyBpbnRvIHRoZSAKPmtlcm5lbAo+aW1hZ2UuIFsyXSAgT2YgY291cnNlLCB0aGF0J3Mg
+ZmVhc2libGUgb25seSB3aGVuIGEga2VybmVsIGltYWdlIGlzIGJ1aWx0Cj5zcGVjaWZpY2lhbGx5
+IGZvciBzb21lIGRldmljZSwgYmVjYXVzZSBvdGhlcndpc2UgaXQgd291bGQgYmVjb21lIHRvbyAK
+PmxhcmdlCj5iZWNhdXNlIG9mIHRvbyBtYW55IGRyaXZlcnMgYW5kIHRoZWlyIGZpcm13YXJlIGJs
+b2JzIGJlY29taW5nIGluY2x1ZGVkLAo+YnV0IHRoYXQgc2VlbXMgdG8gZml0IHRoZSBCdWlsZHJv
+b3QtYmFzZWQgZXhhbXBsZS4KPgo+VG8gc3VtIGl0IHVwLCBtZWNoYW5pc21zIGFscmVhZHkgZXhp
+c3QgaW4gdGhlIGtlcm5lbCBmb3IgdmFyaW91cyAKPnNjZW5hcmlvcwo+d2hlbiBpdCBjb21lcyB0
+byBsb2FkaW5nIGZpcm13YXJlIGJsb2JzLiAgRXZlbiBpZiB0aGUgZGVsZXRlZCB3b3JrYXJvdW5k
+Cj5hdHRlbXB0cyB0byBzb2x2ZSBzb21lIGlzc3VlIHNwZWNpZmljIHRvIHNvbWUgZW52aXJvbm1l
+bnQsIHRoYXQgaXNuJ3QgCj50aGUKPnJpZ2h0IHBsYWNlIG9yIHRoZSByaWdodCB3YXkgZm9yIHNv
+bHZpbmcgYW55IGlzc3VlcyBvZiB0aGF0IGtpbmQuCj4KPldoaWxlIHByZXBhcmluZyB0aGlzIHBh
+dGNoLCBJIGV2ZW4gdHJpZWQgdG8gZmluZCBhbm90aGVyIGtlcm5lbCBkcml2ZXIgCj50aGF0Cj5h
+bHNvIGltcGxlbWVudHMgc29tZSBzaW1pbGFyIHdvcmthcm91bmRzIGZvciBmaXJtd2FyZSBsb2Fk
+aW5nLCB0byAKPmp1c3RpZnkKPnRoZSBleGlzdGVuY2Ugb2Ygc3VjaCB3b3JrYXJvdW5kcyBhbmQg
+dG8gcG9zc2libHkgbW92ZSB0aGVtIGludG8gdGhlIAo+a2VybmVsJ3MKPmZpcm13YXJlLWxvYWRp
+bmcgaW50ZXJmYWNlLiAgQWxhcywgSSB3YXMgdW5hYmxlIHRvIGZpbmQgc3VjaCB3b3JrYXJvdW5k
+cyAKPmluCj5vdGhlciBkcml2ZXJzLCB3aGljaCBzb2xpZGlmaWVkIG15IHJlYXNvbmluZyBiZWhp
+bmQgY2xhc3NpZnlpbmcgdGhlIAo+cmVtb3ZlZAo+Y29kZSBhcyBvdXQtb2YtcGxhY2UgYW5kIHJl
+ZHVuZGFudC4KRm9yIHNvbWUgdGlueSBlbWJlZGRlZCBzeXN0ZW3vvIx0aGVyZSBpcyBubyBzdWNo
+IHJhbWRpc2vvvIxmb3IgZXhhbXBsZe+8mgphIGJ1aWxkcm9vdCBiYXNlZCByb290ZnPvvIx0aGUg
+YnVpbGRyb290IG9ubHkgZ2VuZXJhdGUgcm9vdGZz44CCCgpBbmQgRllJ77yMIHRoZXJlIGFyZSBt
+YWlubGluZSBkcml2ZXJzIHRyeSB0byBmaXggc3VjaCBpc3N1ZSBieSBkZWZlcl9wcm9iZe+8jGZv
+ciBleGFtcGxl77yaIApzbWNfYWJjWzBdClRoZXJlIGFyZSBhbHNvIHNvbWUgb3RoZXIgc2ltaWxh
+ciBzY2VuYXJpbyBpbiBncHUgZHJpdmVyezF9WzJdCgoKWzBdaHR0cHM6Ly9lbGl4aXIuYm9vdGxp
+bi5jb20vbGludXgvbGF0ZXN0L3NvdXJjZS9kcml2ZXJzL3RlZS9vcHRlZS9zbWNfYWJpLmMjTDE1
+MTgKWzFdaHR0cHM6Ly9wYXRjaHdvcmsua2VybmVsLm9yZy9wcm9qZWN0L2RyaS1kZXZlbC9wYXRj
+aC8yMDI0MDEwOTEyMDYwNC42MDM3MDAtMS1qYXZpZXJtQHJlZGhhdC5jb20vClsyXWh0dHBzOi8v
+bG9yZS5rZXJuZWwub3JnL2RyaS1kZXZlbC84N3kxOTE4cHNkLmZzZkBtaW5lcnZhLm1haWwtaG9z
+dC1hZGRyZXNzLWlzLW5vdC1zZXQvVC8KCgo+Cj5bMV0gCj5odHRwczovL3d3dy5rZXJuZWwub3Jn
+L2RvYy9Eb2N1bWVudGF0aW9uL2RyaXZlci1hcGkvZmlybXdhcmUvZGlyZWN0LWZzLWxvb2t1cC5y
+c3QKPlsyXSAKPmh0dHBzOi8vd3d3Lmtlcm5lbC5vcmcvZG9jL0RvY3VtZW50YXRpb24vZHJpdmVy
+LWFwaS9maXJtd2FyZS9idWlsdC1pbi1mdy5yc3QKPgo+Pj4gVmFyaW91cyB1dGlsaXRpZXMgdXNl
+ZCBieSBMaW51eCBkaXN0cmlidXRpb25zIHRvIGdlbmVyYXRlIGluaXRpYWwgCj4+PiByYW1kaXNr
+cwo+Pj4gbmVlZCB0byBvYmV5IHRoZSBmaXJtd2FyZS1yZWxhdGVkIG1vZHVsZSBpbmZvcm1hdGlv
+biwgc28gd2UgY2FuIHJlbHkgCj4+PiBvbiB0aGUKPj4+IGZpcm13YXJlIGJsb2IgYmVpbmcgcHJl
+c2VudCBpbiB0aGUgZ2VuZXJhdGVkIGluaXRpYWwgcmFtZGlza3MuCj4+PiAKPj4+IFNpZ25lZC1v
+ZmYtYnk6IERyYWdhbiBTaW1pYyA8ZHNpbWljQG1hbmphcm8ub3JnPgo+Pj4gLS0tCj4+PiBkcml2
+ZXJzL2dwdS9kcm0vcm9ja2NoaXAvY2RuLWRwLWNvcmUuYyB8IDUzICsrKysrLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tCj4+PiAxIGZpbGUgY2hhbmdlZCwgMTAgaW5zZXJ0aW9ucygrKSwgNDMgZGVsZXRp
+b25zKC0pCj4+PiAKPj4+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvY2Ru
+LWRwLWNvcmUuYyAKPj4+IGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2Nkbi1kcC1jb3JlLmMK
+Pj4+IGluZGV4IGJkN2FhODkxYjgzOS4uZTFhN2M2YTExNzJiIDEwMDY0NAo+Pj4gLS0tIGEvZHJp
+dmVycy9ncHUvZHJtL3JvY2tjaGlwL2Nkbi1kcC1jb3JlLmMKPj4+ICsrKyBiL2RyaXZlcnMvZ3B1
+L2RybS9yb2NrY2hpcC9jZG4tZHAtY29yZS5jCj4+PiBAQCAtNDQsOSArNDQsOSBAQCBzdGF0aWMg
+aW5saW5lIHN0cnVjdCBjZG5fZHBfZGV2aWNlIAo+Pj4gKmVuY29kZXJfdG9fZHAoc3RydWN0IGRy
+bV9lbmNvZGVyICplbmNvZGVyKQo+Pj4gI2RlZmluZSBEUFRYX0hQRF9ERUwJCSgyIDw8IDEyKQo+
+Pj4gI2RlZmluZSBEUFRYX0hQRF9TRUxfTUFTSwkoMyA8PCAyOCkKPj4+IAo+Pj4gLSNkZWZpbmUg
+Q0ROX0ZXX1RJTUVPVVRfTVMJKDY0ICogMTAwMCkKPj4+ICNkZWZpbmUgQ0ROX0RQQ0RfVElNRU9V
+VF9NUwk1MDAwCj4+PiAjZGVmaW5lIENETl9EUF9GSVJNV0FSRQkJInJvY2tjaGlwL2RwdHguYmlu
+Igo+Pj4gKwo+Pj4gTU9EVUxFX0ZJUk1XQVJFKENETl9EUF9GSVJNV0FSRSk7Cj4+PiAKPj4+IHN0
+cnVjdCBjZG5fZHBfZGF0YSB7Cj4+PiBAQCAtOTA5LDYxICs5MDksMjggQEAgc3RhdGljIGludCBj
+ZG5fZHBfYXVkaW9fY29kZWNfaW5pdChzdHJ1Y3QgCj4+PiBjZG5fZHBfZGV2aWNlICpkcCwKPj4+
+IAlyZXR1cm4gUFRSX0VSUl9PUl9aRVJPKGRwLT5hdWRpb19wZGV2KTsKPj4+IH0KPj4+IAo+Pj4g
+LXN0YXRpYyBpbnQgY2RuX2RwX3JlcXVlc3RfZmlybXdhcmUoc3RydWN0IGNkbl9kcF9kZXZpY2Ug
+KmRwKQo+Pj4gLXsKPj4+IC0JaW50IHJldDsKPj4+IC0JdW5zaWduZWQgbG9uZyB0aW1lb3V0ID0g
+amlmZmllcyArIAo+Pj4gbXNlY3NfdG9famlmZmllcyhDRE5fRldfVElNRU9VVF9NUyk7Cj4+PiAt
+CXVuc2lnbmVkIGxvbmcgc2xlZXAgPSAxMDAwOwo+Pj4gLQo+Pj4gLQlXQVJOX09OKCFtdXRleF9p
+c19sb2NrZWQoJmRwLT5sb2NrKSk7Cj4+PiAtCj4+PiAtCWlmIChkcC0+ZndfbG9hZGVkKQo+Pj4g
+LQkJcmV0dXJuIDA7Cj4+PiAtCj4+PiAtCS8qIERyb3AgdGhlIGxvY2sgYmVmb3JlIGdldHRpbmcg
+dGhlIGZpcm13YXJlIHRvIGF2b2lkIGJsb2NraW5nIGJvb3QgCj4+PiAqLwo+Pj4gLQltdXRleF91
+bmxvY2soJmRwLT5sb2NrKTsKPj4+IC0KPj4+IC0Jd2hpbGUgKHRpbWVfYmVmb3JlKGppZmZpZXMs
+IHRpbWVvdXQpKSB7Cj4+PiAtCQlyZXQgPSByZXF1ZXN0X2Zpcm13YXJlKCZkcC0+ZncsIENETl9E
+UF9GSVJNV0FSRSwgZHAtPmRldik7Cj4+PiAtCQlpZiAocmV0ID09IC1FTk9FTlQpIHsKPj4+IC0J
+CQltc2xlZXAoc2xlZXApOwo+Pj4gLQkJCXNsZWVwICo9IDI7Cj4+PiAtCQkJY29udGludWU7Cj4+
+PiAtCQl9IGVsc2UgaWYgKHJldCkgewo+Pj4gLQkJCURSTV9ERVZfRVJST1IoZHAtPmRldiwKPj4+
+IC0JCQkJICAgICAgImZhaWxlZCB0byByZXF1ZXN0IGZpcm13YXJlOiAlZFxuIiwgcmV0KTsKPj4+
+IC0JCQlnb3RvIG91dDsKPj4+IC0JCX0KPj4+IC0KPj4+IC0JCWRwLT5md19sb2FkZWQgPSB0cnVl
+Owo+Pj4gLQkJcmV0ID0gMDsKPj4+IC0JCWdvdG8gb3V0Owo+Pj4gLQl9Cj4+PiAtCj4+PiAtCURS
+TV9ERVZfRVJST1IoZHAtPmRldiwgIlRpbWVkIG91dCB0cnlpbmcgdG8gbG9hZCBmaXJtd2FyZVxu
+Iik7Cj4+PiAtCXJldCA9IC1FVElNRURPVVQ7Cj4+PiAtb3V0Ogo+Pj4gLQltdXRleF9sb2NrKCZk
+cC0+bG9jayk7Cj4+PiAtCXJldHVybiByZXQ7Cj4+PiAtfQo+Pj4gLQo+Pj4gc3RhdGljIHZvaWQg
+Y2RuX2RwX3BkX2V2ZW50X3dvcmsoc3RydWN0IHdvcmtfc3RydWN0ICp3b3JrKQo+Pj4gewo+Pj4g
+CXN0cnVjdCBjZG5fZHBfZGV2aWNlICpkcCA9IGNvbnRhaW5lcl9vZih3b3JrLCBzdHJ1Y3QgY2Ru
+X2RwX2RldmljZSwKPj4+IAkJCQkJCWV2ZW50X3dvcmspOwo+Pj4gCXN0cnVjdCBkcm1fY29ubmVj
+dG9yICpjb25uZWN0b3IgPSAmZHAtPmNvbm5lY3RvcjsKPj4+IAllbnVtIGRybV9jb25uZWN0b3Jf
+c3RhdHVzIG9sZF9zdGF0dXM7Cj4+PiAtCj4+PiAJaW50IHJldDsKPj4+IAo+Pj4gCW11dGV4X2xv
+Y2soJmRwLT5sb2NrKTsKPj4+IAo+Pj4gCWlmIChkcC0+c3VzcGVuZGVkKQo+Pj4gCQlnb3RvIG91
+dDsKPj4+IAo+Pj4gLQlyZXQgPSBjZG5fZHBfcmVxdWVzdF9maXJtd2FyZShkcCk7Cj4+PiAtCWlm
+IChyZXQpCj4+PiAtCQlnb3RvIG91dDsKPj4+ICsJaWYgKCFkcC0+ZndfbG9hZGVkKSB7Cj4+PiAr
+CQlyZXQgPSByZXF1ZXN0X2Zpcm13YXJlKCZkcC0+ZncsIENETl9EUF9GSVJNV0FSRSwgZHAtPmRl
+dik7Cj4+PiArCQlpZiAocmV0KSB7Cj4+PiArCQkJRFJNX0RFVl9FUlJPUihkcC0+ZGV2LCAiTG9h
+ZGluZyBmaXJtd2FyZSBmYWlsZWQ6ICVkXG4iLCByZXQpOwo+Pj4gKwkJCWdvdG8gb3V0Owo+Pj4g
+KwkJfQo+Pj4gKwo+Pj4gKwkJZHAtPmZ3X2xvYWRlZCA9IHRydWU7Cj4+PiArCX0KPj4+IAo+Pj4g
+CWRwLT5jb25uZWN0ZWQgPSB0cnVlOwo+Pj4gCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2Nr
+Y2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxt
+YW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
