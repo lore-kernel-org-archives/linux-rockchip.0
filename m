@@ -4,33 +4,33 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4DE27C2BD09
-	for <linux-rockchip@archiver.kernel.org>; Tue,  9 Jul 2024 12:33:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9376EC2BD09
+	for <linux-rockchip@archiver.kernel.org>; Tue,  9 Jul 2024 12:33:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=1Veqt5DjIe/5t/1jz1ptxxDJ2v/rdRrVyoLoz2679JU=; b=ii1JuaFXXqoRo3
-	toEj1FMd646ED7OJBy87qhy/ibTF7q1wxhns6G1AyMprHvfemywu02YBJn2C5nd+snCSqIucJxnFI
-	S2b/lCbx7/PQmdJZkclTebl2N/s3eP926PVjOP/xz27I7si7/OpF75m5dPyMqdX5d+ppWkFpUKzXa
-	ij7sGqSV3u8jzh0UikjeIEz+QTStfJXr2vGp/jpEPjbCrE7dlOVu4gTGMqoBijytv4JvgrkLJH2NF
-	0esIx1sH1+JVM/tWLYTyq4h0tw9cUIE8xFG0H0eVmUCJLHDVTBd5fvXkhLJE9nQCDW/XzJgNcmgDt
-	B1EePoyl98nLmxFE27Bw==;
+	List-Owner; bh=kplclFa9lF4HyegQeo2b4MB7l13WO/ZM0rLL2y8WpbE=; b=FisfV8Bj7qNq9q
+	jmBopj5BLgfdhRHqd7K7vZyP6Xm6N8+WlTS8tkxaPevE//fWyxu5A09Y+/SSOd5VCTa8Yvnn9BivI
+	Q0JMZJ4s8zJrQ0bnvLR9rHIyX+ieyKdert8n+jZ6YUvKX6goa+x+j/R84e4ZhvMIvXbKe8cnSo2wk
+	ycGMbxKXWiilCpsqA1zUQjRcYDvBSsBVuJwj982oANEBKdbXrmPEhFenBER3dxcNxDx5qLuSXXc+M
+	5hYxx1pQHG48axxrw/xvlsJpJB3/dmGar9rhqMXo3AE4yTUf4TvOoxZofKPzwdSkWlkN8vui3BWEn
+	HrBG+vZYXqakOitil2Zg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sRA1v-000000078zU-1guY;
-	Tue, 09 Jul 2024 12:33:11 +0000
+	id 1sRA2A-00000007981-1Ib6;
+	Tue, 09 Jul 2024 12:33:26 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sRA0b-000000078Le-2kua;
-	Tue, 09 Jul 2024 12:31:51 +0000
+	id 1sRA0a-000000078LE-44vq;
+	Tue, 09 Jul 2024 12:31:52 +0000
 Received: from i5e860d18.versanet.de ([94.134.13.24] helo=phil.lan)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1sRA0U-00074P-6m; Tue, 09 Jul 2024 14:31:42 +0200
+	id 1sRA0T-00074P-LW; Tue, 09 Jul 2024 14:31:41 +0200
 From: Heiko Stuebner <heiko@sntech.de>
 To: mturquette@baylibre.com,
 	sboyd@kernel.org
@@ -44,16 +44,16 @@ Cc: robh@kernel.org,
 	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org
-Subject: [PATCH 3/6] arm64: dts: rockchip: fix the pcie clock generator on Rock 5 ITX
-Date: Tue,  9 Jul 2024 14:31:18 +0200
-Message-Id: <20240709123121.1452394-4-heiko@sntech.de>
+Subject: [PATCH 2/6] clk: add driver for generic clock generators
+Date: Tue,  9 Jul 2024 14:31:17 +0200
+Message-Id: <20240709123121.1452394-3-heiko@sntech.de>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20240709123121.1452394-1-heiko@sntech.de>
 References: <20240709123121.1452394-1-heiko@sntech.de>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240709_053149_883593_FF28D66F 
-X-CRM114-Status: GOOD (  16.35  )
+X-CRM114-CacheID: sfid-20240709_053149_032326_86525399 
+X-CRM114-Status: GOOD (  24.87  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,95 +70,190 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The Rock 5 ITX uses two PCIe controllers to drive both a M.2 slot and its
-SATA controller with 2 lanes each. The supply for the clock generator is
-the same that supplies the M.2 slot, but the SATA controller port is
-supplied by a different rail.
+In contrast to fixed clocks that are described as ungateable, boards
+sometimes use additional clock generators for things like PCIe reference
+clocks, that need actual supplies to get enabled and enable-gpios to be
+toggled for them to work.
 
-This leads to the effect that if the PCIe30x4 controller for the M.2
-probes first, everything works normally. But if the PCIe30x2 controller
-that is connected to the SATA controller probes first, it will hang on
-the first DBI read as nothing will have enabled the refclock before.
-
-Fix this by describing the clock generator with its supplies so that
-both controllers can reference it as needed.
+This adds a driver for those generic unconfigurable clock generators.
 
 Signed-off-by: Heiko Stuebner <heiko@sntech.de>
 ---
- .../boot/dts/rockchip/rk3588-rock-5itx.dts    | 34 +++++++++++++++++--
- 1 file changed, 32 insertions(+), 2 deletions(-)
+ drivers/clk/Kconfig         |   7 ++
+ drivers/clk/Makefile        |   1 +
+ drivers/clk/clk-generator.c | 133 ++++++++++++++++++++++++++++++++++++
+ 3 files changed, 141 insertions(+)
+ create mode 100644 drivers/clk/clk-generator.c
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-rock-5itx.dts b/arch/arm64/boot/dts/rockchip/rk3588-rock-5itx.dts
-index 41d92ceeeb09c..21fb3d940b489 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-rock-5itx.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-rock-5itx.dts
-@@ -77,6 +77,15 @@ hdd-led2 {
- 		};
- 	};
+diff --git a/drivers/clk/Kconfig b/drivers/clk/Kconfig
+index 3e9099504fad4..76c53ddc472ce 100644
+--- a/drivers/clk/Kconfig
++++ b/drivers/clk/Kconfig
+@@ -247,6 +247,13 @@ config COMMON_CLK_GEMINI
+ 	  This driver supports the SoC clocks on the Cortina Systems Gemini
+ 	  platform, also known as SL3516 or CS3516.
  
-+	/* Unnamed clock generator: 100MHz,3.3V,3225 */
-+	pcie30_port0_refclk: pcie30_port1_refclk: pcie-clock-generator {
-+		compatible = "clock-generator";
-+		#clock-cells = <0>;
-+		clock-frequency = <100000000>;
-+		clock-output-names = "pcie30_refclk";
-+		vdd-supply = <&vcc3v3_pi6c_05>;
-+	};
++config COMMON_CLK_GENERATOR
++	tristate "Clock driver for generic clock generators"
++	depends on GPIOLIB && REGULATOR
++	help
++	  This driver supports generic clock generators that are not
++	  configurable but need supplies to be enabled to run.
 +
- 	fan0: pwm-fan {
- 		compatible = "pwm-fan";
- 		#cooling-cells = <2>;
-@@ -151,13 +160,14 @@ vcc3v3_lan: vcc3v3_lan_phy2: regulator-vcc3v3-lan {
- 		vin-supply = <&vcc_3v3_s3>;
- 	};
- 
--	vcc3v3_mkey: regulator-vcc3v3-mkey {
-+	/* The PCIE30x4_PWREN_H controls two regulators */
-+	vcc3v3_mkey: vcc3v3_pi6c_05: regulator-vcc3v3-pi6c-05 {
- 		compatible = "regulator-fixed";
- 		enable-active-high;
- 		gpios = <&gpio1 RK_PA4 GPIO_ACTIVE_HIGH>;
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&pcie30x4_pwren_h>;
--		regulator-name = "vcc3v3_mkey";
-+		regulator-name = "vcc3v3_pi6c_05";
- 		regulator-min-microvolt = <3300000>;
- 		regulator-max-microvolt = <3300000>;
- 		startup-delay-us = <5000>;
-@@ -519,6 +529,14 @@ &pcie30phy {
- 
- /* ASMedia ASM1164 Sata controller */
- &pcie3x2 {
-+	clocks = <&cru ACLK_PCIE_2L_MSTR>, <&cru ACLK_PCIE_2L_SLV>,
-+		 <&cru ACLK_PCIE_2L_DBI>, <&cru PCLK_PCIE_2L>,
-+		 <&cru CLK_PCIE_AUX1>, <&cru CLK_PCIE2L_PIPE>,
-+		 <&pcie30_port1_refclk>;
-+	clock-names = "aclk_mst", "aclk_slv",
-+		      "aclk_dbi", "pclk",
-+		      "aux", "pipe",
-+		      "ref";
- 	pinctrl-names = "default";
- 	pinctrl-0 = <&pcie30x2_perstn_m1_l>;
- 	reset-gpios = <&gpio4 RK_PB0 GPIO_ACTIVE_HIGH>;
-@@ -528,6 +546,18 @@ &pcie3x2 {
- 
- /* M.2 M.key */
- &pcie3x4 {
-+	/*
-+	 * The board has a gpio-controlled "pcie_refclk" generator,
-+	 * so add it to the list of clocks.
-+	 */
-+	clocks = <&cru ACLK_PCIE_4L_MSTR>, <&cru ACLK_PCIE_4L_SLV>,
-+		 <&cru ACLK_PCIE_4L_DBI>, <&cru PCLK_PCIE_4L>,
-+		 <&cru CLK_PCIE_AUX0>, <&cru CLK_PCIE4L_PIPE>,
-+		 <&pcie30_port0_refclk>;
-+	clock-names = "aclk_mst", "aclk_slv",
-+		      "aclk_dbi", "pclk",
-+		      "aux", "pipe",
-+		      "ref";
- 	num-lanes = <2>;
- 	pinctrl-names = "default";
- 	pinctrl-0 = <&pcie30x4_perstn_m1_l>;
+ config COMMON_CLK_LAN966X
+ 	tristate "Generic Clock Controller driver for LAN966X SoC"
+ 	depends on HAS_IOMEM
+diff --git a/drivers/clk/Makefile b/drivers/clk/Makefile
+index 4abe16c8ccdfe..9cb0801155771 100644
+--- a/drivers/clk/Makefile
++++ b/drivers/clk/Makefile
+@@ -36,6 +36,7 @@ obj-$(CONFIG_COMMON_CLK_FIXED_MMIO)	+= clk-fixed-mmio.o
+ obj-$(CONFIG_COMMON_CLK_FSL_FLEXSPI)	+= clk-fsl-flexspi.o
+ obj-$(CONFIG_COMMON_CLK_FSL_SAI)	+= clk-fsl-sai.o
+ obj-$(CONFIG_COMMON_CLK_GEMINI)		+= clk-gemini.o
++obj-$(CONFIG_COMMON_CLK_GENERATOR)	+= clk-generator.o
+ obj-$(CONFIG_COMMON_CLK_ASPEED)		+= clk-aspeed.o
+ obj-$(CONFIG_MACH_ASPEED_G6)		+= clk-ast2600.o
+ obj-$(CONFIG_ARCH_HIGHBANK)		+= clk-highbank.o
+diff --git a/drivers/clk/clk-generator.c b/drivers/clk/clk-generator.c
+new file mode 100644
+index 0000000000000..99737bab1f5ad
+--- /dev/null
++++ b/drivers/clk/clk-generator.c
+@@ -0,0 +1,133 @@
++// SPDX-License-Identifier: GPL-2.0
++/*
++ * Copyright (C) 2024 Heiko Stuebner <heiko@sntech.de>
++ *
++ * Generic unconfigurable clock generators
++ */
++
++#include <linux/clk-provider.h>
++#include <linux/err.h>
++#include <linux/gpio/consumer.h>
++#include <linux/module.h>
++#include <linux/platform_device.h>
++#include <linux/regulator/consumer.h>
++#include <linux/slab.h>
++
++struct clk_generator {
++	struct device *dev;
++	struct clk_hw hw;
++	u32 rate;
++	struct regulator *supply;
++	struct gpio_desc *enable_gpio;
++};
++
++#define to_clk_generator(_hw) container_of(_hw, struct clk_generator, hw)
++
++static int clk_generator_prepare(struct clk_hw *hw)
++{
++	return regulator_enable(to_clk_generator(hw)->supply);
++}
++
++static void clk_generator_unprepare(struct clk_hw *hw)
++{
++	regulator_disable(to_clk_generator(hw)->supply);
++}
++
++static int clk_generator_enable(struct clk_hw *hw)
++{
++	gpiod_set_value(to_clk_generator(hw)->enable_gpio, 1);
++	return 0;
++}
++
++static void clk_generator_disable(struct clk_hw *hw)
++{
++	gpiod_set_value(to_clk_generator(hw)->enable_gpio, 0);
++}
++
++static unsigned long clk_generator_recalc_rate(struct clk_hw *hw,
++					       unsigned long parent_rate)
++{
++	return to_clk_generator(hw)->rate;
++}
++
++const struct clk_ops clk_generator_ops = {
++	.prepare = clk_generator_prepare,
++	.unprepare = clk_generator_unprepare,
++	.enable = clk_generator_enable,
++	.disable = clk_generator_disable,
++	.recalc_rate = clk_generator_recalc_rate,
++};
++
++static int clk_generator_probe(struct platform_device *pdev)
++{
++	struct device *dev = &pdev->dev;
++	struct clk_generator *clkgen;
++	const char *clk_name;
++	int ret;
++
++	clkgen = devm_kzalloc(dev, sizeof(*clkgen), GFP_KERNEL);
++	if (!clkgen)
++		return -ENOMEM;
++
++	clkgen->dev = dev;
++
++	if (device_property_read_u32(dev, "clock-frequency", &clkgen->rate))
++		return -EIO;
++
++	ret = device_property_read_string(dev, "clock-output-names", &clk_name);
++	if (ret)
++		clk_name = fwnode_get_name(dev->fwnode);
++
++	clkgen->supply = devm_regulator_get_optional(dev, "vdd");
++	if (IS_ERR(clkgen->supply)) {
++		if (PTR_ERR(clkgen->supply) != -ENODEV)
++			return dev_err_probe(dev, PTR_ERR(clkgen->supply),
++					     "failed to get regulator\n");
++		clkgen->supply = NULL;
++	}
++
++	clkgen->enable_gpio = devm_gpiod_get_optional(dev, "enable",
++						      GPIOD_OUT_LOW);
++	if (IS_ERR(clkgen->enable_gpio))
++		return dev_err_probe(dev, PTR_ERR(clkgen->enable_gpio),
++				     "failed to get gpio\n");
++
++	ret = gpiod_direction_output(clkgen->enable_gpio, 0);
++	if (ret < 0)
++		return ret;
++
++	clkgen->hw.init = CLK_HW_INIT_NO_PARENT(clk_name, &clk_generator_ops, 0);
++
++	/* register the clock */
++	ret = devm_clk_hw_register(dev, &clkgen->hw);
++	if (ret)
++		return dev_err_probe(dev, ret,
++				     "failed to register clock\n");
++
++	ret = devm_of_clk_add_hw_provider(dev, of_clk_hw_simple_get,
++					  &clkgen->hw);
++	if (ret)
++		return dev_err_probe(dev, ret,
++				     "failed to register clock provider\n");
++
++	return 0;
++}
++
++static const struct of_device_id clk_generator_ids[] = {
++	{ .compatible = "clock-generator" },
++	{ }
++};
++MODULE_DEVICE_TABLE(of, clk_generator_ids);
++
++static struct platform_driver clk_generator_driver = {
++	.driver = {
++		.name = "clk_generator",
++		.of_match_table = clk_generator_ids,
++	},
++	.probe = clk_generator_probe,
++};
++module_platform_driver(clk_generator_driver);
++
++MODULE_AUTHOR("Heiko Stuebner <heiko@sntech.de>");
++MODULE_DESCRIPTION("Clock-generator driver");
++MODULE_LICENSE("GPL");
 -- 
 2.39.2
 
