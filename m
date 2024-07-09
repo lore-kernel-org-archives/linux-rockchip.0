@@ -4,71 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C853AC2BD09
-	for <linux-rockchip@archiver.kernel.org>; Tue,  9 Jul 2024 05:02:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B3181C3DA41
+	for <linux-rockchip@archiver.kernel.org>; Tue,  9 Jul 2024 07:30:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
-	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:CC:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=z1T+db7Wh4blBviZjGYAtys5BIeeTyu7F86/BZGa2fk=; b=iYQo007chJftN4XNda+ASsdfta
-	Z1L/FBGRZlV4smGKPtdX35wubickRB+4do3ngQ28R6qqL9bk678E4pnGOQ4O96ShYmeyaPBO3DRfn
-	Xixd6uH6utY8B/IpAUb+UCSozRqY5x3PS7KR4ig4B1oMpNl7pLrHyktieP3Pbv+yyzVPrl90wmwnJ
-	LTLBiCmyneugrN0YrYg0QLEmZBg+69JqA3CVrpSYSfd8estpYJRVEKtxx8RWy2zdAB3irhapyCIRh
-	aPQNHGrF/Iiwhaweo5Io7zip9dSnIpJgF5EvCTbOIeo2QnjjB+rNgmrEC1Xa9hTAYrAjroNVjipDB
-	r44YbOkg==;
+	bh=cYZIGyX4mZ5r8iYlK4/cuA5/4cUPpaxc+Uj8bnxT+cg=; b=o3+kb3mZlejtKbqGwnre3BDHD0
+	eHg3w64NCUG8pXfvgsRJ5PJ6GqPSMGa7Wge33hZsGzG3lgcktlZhws1Q8hOEmBBEubbo/QVei1Ge3
+	E6UKTnGCJ1ZmVVbL15IRJocOwT3536Alt31BIQb6w7Msin7Jdodj3BbTHdKSBeB0HmMhdurlD3SM7
+	4zWdzoSD13GTFHrAh9/UKOjtfN0Y9zbG9VJ71hDJvZwOtaQTBs81/T/4wKJtWu0GuBzMXfJEtpGVP
+	mmV62uMRvLWMeTnX8neaqDLOHDs/kykhTjFLxf9m8fxRTf33/Nd1Z1LIFuu6bKLdH3QNxdTg8OzeN
+	zwddCecw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sR2zH-00000005uED-46Tk;
-	Tue, 09 Jul 2024 05:02:00 +0000
-Received: from fw.sz-a.kwebs.cloud ([109.61.102.40])
+	id 1sR5Iq-00000006EU1-3YU9;
+	Tue, 09 Jul 2024 07:30:20 +0000
+Received: from szxga01-in.huawei.com ([45.249.212.187])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sR2zE-00000005uDa-1G7q
-	for linux-rockchip@lists.infradead.org;
-	Tue, 09 Jul 2024 05:01:57 +0000
-Received: from webmail.srv.kwebs.cloud (172-16-36-107.prometheus-node-exporter.monitoring.svc.cluster.local [172.16.36.107])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature ECDSA (secp384r1) server-digest SHA384)
-	(No client certificate requested)
-	(Authenticated sender: richard@kojedz.in)
-	by mx.kwebs.cloud (Postfix) with ESMTPSA id 81C6D8A2A;
-	Tue,  9 Jul 2024 05:01:51 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kojedz.in; s=s02;
-	t=1720501311; bh=8tR6jn7kwF6hW5yDul+MO94qtcn/sDOlpmI33qeYm8c=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References;
-	b=XC5pyvevToAraPyB6jUGz3MHYJVp7hIzXrZa/zwL2H7faZ9u7oYHik5gs1mrmnjAk
-	 LHCo5TzOB/QZO1s74zSNowB/Qqd6k1PouNYWQ9jv4xz49lhbB3uAx+PymXuniO0yyw
-	 iX0+nmiAROtqNxcz2hySpeq1420KGxEXzX6dISbFdJ9st1bTAjqpyFnONsvdEI28cZ
-	 ligsUZ9SJzOYDFRFwIhxJWZFnH/+WgkDxCjH2MN+WzwRZ13Xgkq0ihpiCJZjSTVXaI
-	 s6D/OWyJJ7vvZO1Exxm8S4nN9xKP13w5qZxlUt50dVdCul60LQ7X7M8FoRym4msGro
-	 eoL1ZqmeObLuw==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kojedz.in; s=s01;
-	t=1720501311; bh=8tR6jn7kwF6hW5yDul+MO94qtcn/sDOlpmI33qeYm8c=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References;
-	b=VKpSishY4fffet3ZwuLx7Q54iQBmZqSLRh9JLt7QR9BNpVS6v3w0dh0NuUtpp2rsu
-	 Grl/ZDwe2y/6zjCOoddIzbNNqyVh0w5/zeuJh3DboJzRc/WYTUBueWig2gGqMDK32V
-	 n/7v25bUzeuckW48OeX8nNSLS2KdZgmLbxx5bJ1ucs0pUS/CCxnN1ziXiggbQnssEy
-	 tK8sHNrklGo9FaPdhVUzHSWbedeQTDjj5V6ZEPBFBq4tGRRajyWFrqL16XWxuCcMVp
-	 k1lMqrEdPpIl9wQY0ma0tSyzMhg4kUCS1/NDauR6iTjvrF2JjjJrKY4/XKgu8ZE+JO
-	 fozrFXCjSFAhnOxAFibFu1J5LqnVnJqjYCEslkRDC1U4S56faEyfO7pjkTN8xwRU+K
-	 LQrB/Z3NZISKBFchPon5H4z2WwcshQu50Iiqc4K9KP4IdbkqU4oRLl3yQcl3FvRv43
-	 tIHBTNGrBIlxjJ43O1TCUXHGEFifWvQEd0lgId4TepXEW1qGfO5
+	id 1sR5IY-00000006ELp-47Ko;
+	Tue, 09 Jul 2024 07:30:05 +0000
+Received: from mail.maildlp.com (unknown [172.19.163.252])
+	by szxga01-in.huawei.com (SkyGuard) with ESMTP id 4WJCF73k6HzwWd4;
+	Tue,  9 Jul 2024 15:25:15 +0800 (CST)
+Received: from kwepemm600007.china.huawei.com (unknown [7.193.23.208])
+	by mail.maildlp.com (Postfix) with ESMTPS id B1012180AE5;
+	Tue,  9 Jul 2024 15:29:56 +0800 (CST)
+Received: from [10.174.185.179] (10.174.185.179) by
+ kwepemm600007.china.huawei.com (7.193.23.208) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.39; Tue, 9 Jul 2024 15:29:54 +0800
+Subject: Re: [PATCH 6/9] accel/rocket: Add a new driver for Rockchip's NPU
+To: Tomeu Vizoso <tomeu@tomeuvizoso.net>
+CC: Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>, Robin
+ Murphy <robin.murphy@arm.com>, Heiko Stuebner <heiko@sntech.de>, Rob Herring
+	<robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+	<conor+dt@kernel.org>, Oded Gabbay <ogabbay@kernel.org>, Tomeu Vizoso
+	<tomeu.vizoso@tomeuvizoso.net>, David Airlie <airlied@gmail.com>, Daniel
+ Vetter <daniel@ffwll.ch>, Maarten Lankhorst
+	<maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>,
+	Thomas Zimmermann <tzimmermann@suse.de>, Philipp Zabel
+	<p.zabel@pengutronix.de>, Sumit Semwal <sumit.semwal@linaro.org>,
+	=?UTF-8?Q?Christian_K=c3=b6nig?= <christian.koenig@amd.com>,
+	<iommu@lists.linux.dev>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-rockchip@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+	<devicetree@vger.kernel.org>, <dri-devel@lists.freedesktop.org>,
+	<linux-media@vger.kernel.org>, <linaro-mm-sig@lists.linaro.org>
+References: <20240612-6-10-rocket-v1-0-060e48eea250@tomeuvizoso.net>
+ <20240612-6-10-rocket-v1-6-060e48eea250@tomeuvizoso.net>
+From: Zenghui Yu <yuzenghui@huawei.com>
+Message-ID: <ad2628b2-aab2-2c7a-d4df-5356c55fae39@huawei.com>
+Date: Tue, 9 Jul 2024 15:29:53 +0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
+ Thunderbird/68.9.0
 MIME-Version: 1.0
-Date: Tue, 09 Jul 2024 07:01:51 +0200
-From: richard@kojedz.in
-To: Huang-Huang Bao <i@eh5.me>
-Cc: Heiko Stuebner <heiko@sntech.de>, Linus Walleij
- <linus.walleij@linaro.org>, linux-rockchip@lists.infradead.org
-Subject: Re: RK3328 / Rock64 eMMC regression
-In-Reply-To: <7a2641f7-c928-4554-a795-e14dd4f644fa@eh5.me>
-References: <c76c10dbb3e614b17a1879f3aa767b8b@kojedz.in>
- <7a2641f7-c928-4554-a795-e14dd4f644fa@eh5.me>
-Message-ID: <4f29b743202397d60edfb3c725537415@kojedz.in>
-X-Sender: richard@kojedz.in
+In-Reply-To: <20240612-6-10-rocket-v1-6-060e48eea250@tomeuvizoso.net>
+Content-Language: en-US
+X-Originating-IP: [10.174.185.179]
+X-ClientProxiedBy: dggems706-chm.china.huawei.com (10.3.19.183) To
+ kwepemm600007.china.huawei.com (7.193.23.208)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240708_220156_519465_E0C75339 
-X-CRM114-Status: GOOD (  16.49  )
+X-CRM114-CacheID: sfid-20240709_003003_371232_D59E8DF7 
+X-CRM114-Status: GOOD (  10.62  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,52 +79,44 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGkgQmFvLAoKVGhpcyBjaGFuZ2Ugc2VlbXMgdG8gYmUgd29ya2luZy4KCllvdXIgcXVpY2sgcmVz
-cG9uc2UgaXMgcmVhbGx5IHZhbHVhYmxlLiBUaGFua3MgYWdhaW4uCgpCZXN0IHJlZ2FyZHMsClJp
-Y2hhcmQKCjIwMjQtMDctMDkgMDU6MDYgaWTFkXBvbnRiYW4gSHVhbmctSHVhbmcgQmFvIGV6dCDD
-rXJ0YToKPiBIaSBSaWNoYXJkLAo+IAo+IEkgdGhpbmsgSSBoYXZlIGZpZ3VyZWQgb3V0IHdoZXJl
-IHRoZSBwcm9ibGVtIGlzLCB0aGUgd3JvbmcgSU9NVVhfV0lEVEhfCj4gZmxhZygwKSBjYXVzZWQg
-YWxsIHBpbm11eCBvZmZzZXRzIGFmdGVyIEdQSU8yLUIgdG8gYmUgY2FsY3VsYXRlZCB3cm9uZy4K
-PiBUaGUgcGF0Y2ggYmVsb3cgc2hvdWxkIGZpeGVzIHRoZSBpc3N1ZS4KPiAKPiBkaWZmIC0tZ2l0
-IGEvZHJpdmVycy9waW5jdHJsL3BpbmN0cmwtcm9ja2NoaXAuYyAKPiBiL2RyaXZlcnMvcGluY3Ry
-bC9waW5jdHJsLXJvY2tjaGlwLmMKPiBpbmRleCAzZjU2OTkxZjViODkuLmY2ZGE5MTk0MWZiZCAx
-MDA2NDQKPiAtLS0gYS9kcml2ZXJzL3BpbmN0cmwvcGluY3RybC1yb2NrY2hpcC5jCj4gKysrIGIv
-ZHJpdmVycy9waW5jdHJsL3BpbmN0cmwtcm9ja2NoaXAuYwo+IEBAIC0zODEzLDcgKzM4MTMsNyBA
-QCBzdGF0aWMgc3RydWN0IHJvY2tjaGlwX3Bpbl9iYW5rIAo+IHJrMzMyOF9waW5fYmFua3NbXSA9
-IHsKPiAgICAgICAgIFBJTl9CQU5LX0lPTVVYX0ZMQUdTKDAsIDMyLCAiZ3BpbzAiLCAwLCAwLCAw
-LCAwKSwKPiAgICAgICAgIFBJTl9CQU5LX0lPTVVYX0ZMQUdTKDEsIDMyLCAiZ3BpbzEiLCAwLCAw
-LCAwLCAwKSwKPiAgICAgICAgIFBJTl9CQU5LX0lPTVVYX0ZMQUdTKDIsIDMyLCAiZ3BpbzIiLCAw
-LAo+IC0gICAgICAgICAgICAgICAgICAgICAgICAgICAgMCwKPiArICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgIElPTVVYX1dJRFRIXzJCSVQsCj4gICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICBJT01VWF9XSURUSF8zQklULAo+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgMCksCj4g
-ICAgICAgICBQSU5fQkFOS19JT01VWF9GTEFHUygzLCAzMiwgImdwaW8zIiwKPiAKPiAKPiBQbGVh
-c2UgbGV0IG1lIGtub3cgaWYgdGhpcyB3b3Jrcy4gSSB3aWxsIHNlbmQgYSBmb3JtYWwgcGF0Y2gg
-bGF0ZXIuCj4gCj4gU29ycnkgZm9yIHRoZSBpbmNpZGVudCwKPiBCYW8KPiAKPiBPbiA3LzgvMjQg
-MDI6NDUsIHJpY2hhcmRAa29qZWR6LmluIHdyb3RlOgo+PiBEZWFyIGRldmVsb3BlcnMsCj4+IAo+
-PiBJIGFtIHVzaW5nIGEgUm9jazY0IGJvYXJkIHdpdGggYW4gZW1tYyBtb2R1bGUuIEkndmUgdXBn
-cmFkZWQga2VybmVsIAo+PiBmcm9tCj4+IDUuMTUuMTYxIHRvIC4xNjIsIGFuZCBzaW5jZSB0aGVu
-IHRoZSBib2FyZCB3b250IGJvb3QgdXAuIEtlcm5lbCAKPj4gbWVzc2FnZXMKPj4gc2hvdzoKPj4g
-Cj4+IFvCoMKgIDQ5LjExNzEzMV0gbW1jMTogc3dpdGNoIHRvIGJ1cyB3aWR0aCA4IGZhaWxlZAo+
-PiBbwqDCoCA0OS4xMjQ3MDldIG1tYzE6IG1tY19zZWxlY3RfaHMyMDAgZmFpbGVkLCBlcnJvciAt
-MTEwCj4+IFvCoMKgIDQ5LjEyNTE5MF0gbW1jMTogZXJyb3IgLTExMCB3aGlsc3QgaW5pdGlhbGlz
-aW5nIE1NQyBjYXJkCj4+IFvCoMKgIDQ5LjEzOTU2Nl0gbW1jX2hvc3QgbW1jMTogQnVzIHNwZWVk
-IChzbG90IDApID0gMzAwMDAwSHogKHNsb3QgcmVxCj4+IDMwMDAwMEh6LCBhY3R1YWwgMzAwMDAw
-SFogZGl2ID0gMCkKPj4gW8KgIDEwNS40MzcxMTFdIG1tYzE6IHN3aXRjaCB0byBidXMgd2lkdGgg
-OCBmYWlsZWQKPj4gW8KgIDEwNS40NDY3MzldIG1tYzE6IG1tY19zZWxlY3RfaHMyMDAgZmFpbGVk
-LCBlcnJvciAtMTEwCj4+IFvCoCAxMDUuNDQ3MjQ2XSBtbWMxOiBlcnJvciAtMTEwIHdoaWxzdCBp
-bml0aWFsaXNpbmcgTU1DIGNhcmQKPj4gW8KgIDEwNS40NjE2MzldIG1tY19ob3N0IG1tYzE6IEJ1
-cyBzcGVlZCAoc2xvdCAwKSA9IDIwMDAwMEh6IChzbG90IHJlcQo+PiAyMDAwMDBIeiwgYWN0dWFs
-IDIwMDAwMEhaIGRpdiA9IDApCj4+IAo+PiBJIGFtIHVzaW5nIHJrMzMyOC1yb2NrNjQuZHRzIGZy
-b20gdGhlIGtlcm5lbC4KPj4gCj4+IEJpc2VjdGluZyB0aGUga2VybmVsIHJldmVhbGVkIDk2OTAz
-ZWQwZTg0NiBhcyBmaXJzdCBiYWQgY29tbWl0Lgo+PiBSZXZlcnRpbmcgdGhpcyBjb21taXQgb24g
-dG9wIG9mIHY1LjE1LjE2MiBtYWtlcyBteSBib2FyZCBib290dXAgYWdhaW4uCj4+IAo+PiBDYW4g
-eW91IHBsZWFzZSB0YWtlIGEgbG9vaz8KPj4gCj4+IFRoYW5rcyBpbiBhZHZhbmNlLAo+PiBSaWNo
-YXJkCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51
-eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9y
-ZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tj
-aGlwCg==
+On 2024/6/12 21:52, Tomeu Vizoso wrote:
+> This initial version supports the NPU as shipped in the RK3588 SoC and
+> described in the first part of its TRM, in Chapter 36.
+> 
+> This NPU contains 3 independent cores that the driver can submit jobs
+> to.
+> 
+> This commit adds just hardware initialization and power management.
+> 
+> Signed-off-by: Tomeu Vizoso <tomeu@tomeuvizoso.net>
+
+[...]
+
+> +void rocket_core_reset(struct rocket_core *core)
+> +{
+> +	reset_control_assert(core->a_reset);
+> +	reset_control_assert(core->h_reset);
+> +
+> +	udelay(10);
+> +
+> +	reset_control_deassert(core->a_reset);
+> +	reset_control_deassert(core->h_reset);
+> +}
+
+Seems unused.
+
+> +void rocket_core_reset(struct rocket_core *core);
+
+> +void rocket_device_reset(struct rocket_device *rdev);
+
+Ditto.
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
