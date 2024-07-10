@@ -4,73 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 977AEC38150
-	for <linux-rockchip@archiver.kernel.org>; Wed, 10 Jul 2024 07:03:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 39362C38150
+	for <linux-rockchip@archiver.kernel.org>; Wed, 10 Jul 2024 07:10:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=0lRjfGRMqe6RWJlRxH/wgrrrWmGDpLy7+Rl2jpMLAmw=; b=InYbiDumlmI8GL
-	7osTA2P59gGd0r9IGLKGfuVlc2uAfrkNUGOoIShn1NTmCeNQK/hJsLbPQk+hEn7pFLsoJ7t4qUdQL
-	lv9TCutf337wXqeYPYRGHlYv4eZtt5CJXyMqZXBicZ8Id6p61HaBLVZ0Ll2P7bBq7lh2xm/xHiFus
-	K8fI+Gj5WNQfkF2NdCel37FzFaXCFxeyPVHNrR7wEP+Fo1TgngNhLsYHMJIovK2nYhmm7xqVZAg+V
-	cG6F/MPD0bJcZJKjH9Rg4aoEl9ZUBqn02bI+LzD9mxDNWLOVJp7teBexhp5fBoIqwIQgLoobKnd/V
-	M2DRiwke6y0dKY1sLq6w==;
+	List-Owner; bh=95BJ+I2QYZGVB5z3CDKnxpZYWv35ogV3rONjJmT6XSo=; b=FxqNkdKtANcgAO
+	evg0NVIJZHfwb55h87VChjvMXH+pgEtDVSvz5ZH0QVrYwAMfJrCpnVX4mz+B/MGMg+IZZhPVUFBMn
+	j6e2GzqxUnW6FcHevbHI+GFpm2k4zssQT91N69gExYLhv+xeoKvGH9YU1XnAzLgxzCUBGDz0yLawM
+	6eT8E/uzc1xoj8OCBsmPQCk3paGN8ykqw0/KxGNnh6TLoWqMzCPQ9KAzZngPUbRTLfyslMRkltvgA
+	nulC+7bKzXQ2ypWjofNYFVYiNHfElL9lP6Y6/ftGg+AFeY//M+BJ/NALwEPJNJXqspm/yXriYtXYf
+	o7Y9NtJNLoE5voAZkD6w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sRRLw-00000009gUO-2O4Y;
-	Wed, 10 Jul 2024 07:03:00 +0000
-Received: from mx1.tq-group.com ([93.104.207.81])
+	id 1sRRTN-00000009hPY-0cmx;
+	Wed, 10 Jul 2024 07:10:41 +0000
+Received: from mail-yb1-xb29.google.com ([2607:f8b0:4864:20::b29])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sRRLe-00000009gS8-1n7s;
-	Wed, 10 Jul 2024 07:02:44 +0000
+	id 1sRRT5-00000009hO4-2SQl;
+	Wed, 10 Jul 2024 07:10:25 +0000
+Received: by mail-yb1-xb29.google.com with SMTP id 3f1490d57ef6-e0354459844so6024375276.3;
+        Wed, 10 Jul 2024 00:10:22 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-  d=tq-group.com; i=@tq-group.com; q=dns/txt; s=key1;
-  t=1720594962; x=1752130962;
-  h=from:to:cc:subject:date:message-id:in-reply-to:
-   references:mime-version:content-transfer-encoding;
-  bh=w75KCVl1Td1dl0039xM1BsGqYrMvcTNH87jh0lAScys=;
-  b=a+pPPzrkryDZShBAERhpwH14V3l/EnLSRBTQAxKcZGdBx7NPygs0qaCR
-   T0+NUSzPntLYNC3lGRFjhRxqy9ABTFE4x01zbokgtyUzsZPGiMIgdIIBa
-   AAkZsPBByVL1Yvy5m0zuCtXUymBkVwhm7JP4xpAt2tkWRCqmYYTPV2GAw
-   hPJfreozmfMnt4YR9AR/WzM2skPz6nQurXhgfp0NwxvvDi//gu7eXKYfk
-   AAlUn8R0aCGtPW6Kdld9WfDSsCaR4pqeee4NIvEfXVDXfvRqXNLYPYbYJ
-   aIVDH4wzYWeI/UtXCVNqHa8HA7BqiW+UIIiKVvH2WMUu+wMjTO14pXDG/
-   Q==;
-X-CSE-ConnectionGUID: 2yIqFFj+QO6gEzYvhSB3Wg==
-X-CSE-MsgGUID: atSQGguxQDaJCRTyhvgKTw==
-X-IronPort-AV: E=Sophos;i="6.09,197,1716242400"; 
-   d="scan'208";a="37830570"
-Received: from vmailcow01.tq-net.de ([10.150.86.48])
-  by mx1.tq-group.com with ESMTP; 10 Jul 2024 09:02:37 +0200
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 97D90160B01;
-	Wed, 10 Jul 2024 09:02:28 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ew.tq-group.com;
-	s=dkim; t=1720594953;
-	h=from:subject:date:message-id:to:cc:mime-version:content-type:
-	 content-transfer-encoding:in-reply-to:references;
-	bh=w75KCVl1Td1dl0039xM1BsGqYrMvcTNH87jh0lAScys=;
-	b=baMM5hTKK9U7Kk5F66IsBtrSnvDEhXUiejxLGjkaw95uST9cvyVdd3IxVt090QStWpibyV
-	VJZcGODYCWb/Bx+Lh456quPMQSVTAf5XxJSeSVoGWjSlF+KJ629MalaZPPfEFct9L7NQb6
-	pNVqBRZ6Q2WEgrox/ZQF0CBgdrven+rhl6d5JwnAvBllYr7AfNWYcQxIqbFnCZwYCVuMEt
-	dWKJCxIng/pTW2Uv+Zn0abkCi/lvVqtLonOOY/16o+ZWGaIRXLEQIhC9+kkN/nqx0tHQdM
-	Ku2kz+RQhsyw6j3crdk2XhXf0WcXVINXstho9z3T+Gbg4v1/gbkKRLjyORU0lw==
-From: Alexander Stein <alexander.stein@ew.tq-group.com>
-To: mturquette@baylibre.com, sboyd@kernel.org, Heiko Stuebner <heiko@sntech.de>
-Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org, heiko@sntech.de, quentin.schulz@cherry.de, linux-clk@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH 1/6] dt-bindings: clocks: add binding for generic clock-generators
-Date: Wed, 10 Jul 2024 09:02:34 +0200
-Message-ID: <12478313.O9o76ZdvQC@steina-w>
-Organization: TQ-Systems GmbH
-In-Reply-To: <20240709123121.1452394-2-heiko@sntech.de>
-References: <20240709123121.1452394-1-heiko@sntech.de> <20240709123121.1452394-2-heiko@sntech.de>
+        d=gmail.com; s=20230601; t=1720595422; x=1721200222; darn=lists.infradead.org;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=lwSd14EKzWZrEezsD6RCBd3y9u3GAutFmNVuEWN9f2c=;
+        b=IhJ4saLizVG3UM0bFzQu/VWwvBP9BpkDMlkhgR5eLKgW9Qyhzd0pkk1lz0wfDa0RtD
+         zNsy79YhgUzkkWdZYFeIJqYvR2eGae0Dlsu3E1d6341YDCnM3ctpUs398xt0Ya/9wzls
+         LxO/roq152nyFw3p0pwdhl6UPnfJiLuUUBTp70YGVNSwQvbkmvDhhLOfxe/yc+hBtSGO
+         g0jXj88BSh2wZvMEmKg8nSQG8mlP3wDeDuJAn6sM5rSWUXMzBtd2SlJtjj1J7D1oTDai
+         ne0wJBRifu2ise33mz/agMcYBmuZjhP0GSFiar9USeNhrsFKUB6WCD6FR2mXG7Z3tk5e
+         ue1w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1720595422; x=1721200222;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=lwSd14EKzWZrEezsD6RCBd3y9u3GAutFmNVuEWN9f2c=;
+        b=Ks+4/dlwAlYubOsetVNrz91tHgBdwged8K0u5jrrERPSZp4wAySxPFFck8pe0ye4jX
+         M3CrFU4IbzeU/8eYxmpWYBFqvOxGLIEj4oQQiNK9+vElumJFRhNKw8aIOuy8oKPBp+n6
+         4xzRFtyzyu+iCvwYfgGSFHr5WFg7uzB9mFU2IBseMQaJgMSxs+xWdfedQJR4WE7Tnamp
+         XxOuJLW2U4xLC+0/web4z4sX/h3kjbeuVKoY36YpqSIaj75TsqPshJiCfX14nhMpcHXv
+         NgY1oGb558tMxXTTqa/zzDVqkDeVTN4btPzLIBcfGFW89+DSaF4Ehixo4+IKwg12IZtK
+         Q4eQ==
+X-Forwarded-Encrypted: i=1; AJvYcCVtNwzWcD3S0fEbRTFuiFZd2lf1zqQaAg1rFx3ygOEhXPHO5D/DAgoO3g5uBBI7vq6SjYywWcZXxDM+AtelprURVp8nXQKxwR/VwdVHDdywuDGN+EbaPZaAOeru+VW2WImuWGMLXvRNeolVnNzu1lJMOigG/8VVwTw=
+X-Gm-Message-State: AOJu0YzFskRRGknFiWLANLo0Lv5nPVraDwKZTw2ILwfBmjjWEd73llBJ
+	sR5bUX2rLyVpsDJ2WuzSKImKi1GJngmpnD0ySmE7dt872V4uLaILt3seo44KncGnNEg8uG/U9Un
+	QCaWtIqHdchjugftMdm/hE2AtWtA=
+X-Google-Smtp-Source: AGHT+IFpqTZz3rNBhmpl7GQGC6z5Z3Rgf9tkqhCYK6fmbKq8d0siw8jD6zhzFwjVcR09F8B+9L3we7L75jBfMf6zY/w=
+X-Received: by 2002:a25:d845:0:b0:e03:5237:79e3 with SMTP id
+ 3f1490d57ef6-e041b15802emr5392898276.54.1720595421761; Wed, 10 Jul 2024
+ 00:10:21 -0700 (PDT)
 MIME-Version: 1.0
-X-Last-TLS-Session-Version: TLSv1.3
+References: <CAOyTmd2GEOYQiiJjYFbb9tK1D4iAndYwvuFj82tKoTEvHRVB=Q@mail.gmail.com>
+ <3b23e8c9-b1d0-4cb0-bc75-f3b0f732fdc7@lunn.ch> <16423fcd-46db-4b8b-b38a-91c2cdc1196c@kwiboo.se>
+ <CAOyTmd2C7GvUXkxYB8j9E2y8eoiNfbLT0Pcw7LsSJ98a5k9TdA@mail.gmail.com>
+In-Reply-To: <CAOyTmd2C7GvUXkxYB8j9E2y8eoiNfbLT0Pcw7LsSJ98a5k9TdA@mail.gmail.com>
+From: Daniel Martin <dmanlfc@gmail.com>
+Date: Wed, 10 Jul 2024 17:10:10 +1000
+Message-ID: <CAOyTmd0Q9OVPmNJjwcuHQVc_tp_7BVb4OHXmeMkwB-XKEW5S5g@mail.gmail.com>
+Subject: Re: Hardkernel Odroid-M1S no USB 2.0 & Ethernet
+To: jonas@kwiboo.se
+Cc: Andrew Lunn <andrew@lunn.ch>, linux-arm-kernel@lists.infradead.org, 
+	linux-rockchip@lists.infradead.org, heiko@sntech.de
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240710_000242_984556_12244959 
-X-CRM114-Status: GOOD (  23.22  )
+X-CRM114-CacheID: sfid-20240710_001023_648556_301563F2 
+X-CRM114-Status: GOOD (  31.75  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,137 +85,112 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello Heiko,
+Jonas, unfortunately with the mainline u-boot, there is no change.
+I used the latest 2024.07 build and the odroid-m1-rk3568 defconfig file.
 
-Am Dienstag, 9. Juli 2024, 14:31:16 CEST schrieb Heiko Stuebner:
-> In contrast to fixed clocks that are described as ungateable, boards
-> sometimes use additional clock generators for things like PCIe reference
-> clocks, that need actual supplies to get enabled and enable-gpios to be
-> toggled for them to work.
-
-Fixed clocks are intended to be ungateable? Where does this come from?
-
-> This adds a binding for such clock generators that are not configurable
-> themself, but need to handle supplies for them to work.
-> =
-
-> While in a lot of cases the type of the IC used is described in board
-> schematics, in some cases just a generic type description like
-> "100MHz, 3.3V" might also be used. The binding therefore allows both
-> cases. Specifying the type is of course preferred.
-> =
-
-> The clock-frequency is set in devicetree, because while some clock
-> generators have pins to decide between multipls output rates, those
-> are generally set statically on the board-layout-level.
-> =
-
-> Signed-off-by: Heiko Stuebner <heiko@sntech.de>
-> ---
->  .../bindings/clock/clock-generator.yaml       | 62 +++++++++++++++++++
->  1 file changed, 62 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/clock/clock-generat=
-or.yaml
-> =
-
-> diff --git a/Documentation/devicetree/bindings/clock/clock-generator.yaml=
- b/Documentation/devicetree/bindings/clock/clock-generator.yaml
-> new file mode 100644
-> index 0000000000000..f44e61e414e89
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/clock/clock-generator.yaml
-> @@ -0,0 +1,62 @@
-> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/clock/clock-generator.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: Simple clock generators
-> +
-> +maintainers:
-> +  - Heiko Stuebner <heiko@sntech.de>
-> +
-> +properties:
-> +  $nodename:
-> +    anyOf:
-> +      - description:
-> +          Preferred name is 'clock-<freq>' with <freq> being the output
-> +          frequency as defined in the 'clock-frequency' property.
-> +        pattern: "^clock-([0-9]+|[a-z0-9-]+)$"
-> +      - description: Any name allowed
-> +        deprecated: true
-> +
-> +  compatible:
-> +    oneOf:
-> +      - const: clock-generator
-> +      - items:
-> +          - enum:
-> +              - diodes,pi6c557-03b
-> +              - diodes,pi6c557-05b
-> +          - const: clock-generator
-> +
-> +  "#clock-cells":
-> +    const: 0
-> +
-> +  clock-frequency: true
-> +
-> +  clock-output-names:
-> +    maxItems: 1
-> +
-> +  enable-gpios:
-> +    description:
-> +      Contains a single GPIO specifier for the GPIO that enables and dis=
-ables
-> +      the clock generator.
-> +    maxItems: 1
-> +
-> +  vdd-supply:
-> +    description: handle of the regulator that provides the supply voltage
-
-So essentially only enable-gpios and vdd-supply is added in comparison to
-fixed-clock. Does it make sense to add that to the fixed-clocks instead?
-Similar to fixed-regulator.
-
-> +
-> +required:
-> +  - compatible
-> +  - "#clock-cells"
-> +  - clock-frequency
-
-With this list it's essentially the same as fixed-clock.
-
-Best regards,
-Alexander
-
-> +
-> +additionalProperties: false
-> +
-> +examples:
-> +  - |
-> +    clock {
-> +      compatible =3D "clock-generator";
-> +      #clock-cells =3D <0>;
-> +      clock-frequency =3D <1000000000>;
-> +    };
-> +...
-> =
+On Wed, 10 Jul 2024 at 08:42, Daniel Martin <dmanlfc@gmail.com> wrote:
+>
+> Hi Jonas, yes this does seem related.
+> Interesting debate on where the PHY should be initialised.
+> I will try the mainline u-boot with this board & report back.
+> I assume using the latest 2024.07 release is recommended here.
+>
+> On Wed, 10 Jul 2024 at 08:23, Jonas Karlman <jonas@kwiboo.se> wrote:
+> >
+> > Hi,
+> >
+> > On 2024-07-09 17:13, Andrew Lunn wrote:
+> > > On Tue, Jul 09, 2024 at 02:22:12PM +1000, Daniel Martin wrote:
+> > >> Hi,
+> > >>
+> > >> Currently the Odroid M1S based on the RK3568 processor is not enabling
+> > >> Ethernet or the USB-A 2.0 port on the device.
+> > >>
+> > >> Here is the output of ethernet failing.
+> > >>
+> > >> [    0.351616] rk_gmac-dwmac fe2a0000.ethernet: IRQ eth_lpi not found
+> > >> [    0.351640] rk_gmac-dwmac fe2a0000.ethernet: IRQ sfty not found
+> > >> [    0.352311] rk_gmac-dwmac fe2a0000.ethernet: supply phy not found,
+> > >> using dummy regulator
+> > >> [    0.352467] rk_gmac-dwmac fe2a0000.ethernet: clock input or output? (output).
+> > >> [    0.352484] rk_gmac-dwmac fe2a0000.ethernet: TX delay(0x4f).
+> > >> [    0.352499] rk_gmac-dwmac fe2a0000.ethernet: RX delay(0x2d).
+> > >> [    0.352520] rk_gmac-dwmac fe2a0000.ethernet: integrated PHY? (no).
+> > >> [    0.357610] rk_gmac-dwmac fe2a0000.ethernet: init for RGMII
+> > >> [    0.358099] rk_gmac-dwmac fe2a0000.ethernet: Version ID not available
+> > >> [    0.358120] rk_gmac-dwmac fe2a0000.ethernet: DWMAC4/5
+> > >> [    0.358135] rk_gmac-dwmac fe2a0000.ethernet: DMA HW capability
+> > >> register supported
+> > >> [    0.358146] rk_gmac-dwmac fe2a0000.ethernet: Ring mode enabled
+> > >> [    0.358174] rk_gmac-dwmac fe2a0000.ethernet: device MAC address
+> > >> b6:bf:27:ec:65:d4
+> > >> [    0.358191] rk_gmac-dwmac fe2a0000.ethernet: Enabled RFS Flow TC (entries=10)
+> > >> [    0.358210] rk_gmac-dwmac fe2a0000.ethernet: Using 32/32 bits DMA
+> > >> host/device width
+> > >> [   16.932085] rk_gmac-dwmac fe2a0000.ethernet eth0: Register
+> > >> MEM_TYPE_PAGE_POOL RxQ-0
+> > >> [   16.932837] rk_gmac-dwmac fe2a0000.ethernet eth0: validation of
+> > >> with support 00,00000000,00000000,00006000 and advertisement
+> > >> 00,00000000,00000000,00000000 failed: -EINVAL
+> > >
+> > >         ret = phylink_validate_phy(pl, phy, supported, &config);
+> > >         if (ret) {
+> > >                 phylink_warn(pl, "validation of %s with support %*pb and advertisement %*pb failed: %pe\n",
+> > >                              phy_modes(config.interface),
+> > >                              __ETHTOOL_LINK_MODE_MASK_NBITS, phy->supported,
+> > >                              __ETHTOOL_LINK_MODE_MASK_NBITS, config.advertising,
+> > >                              ERR_PTR(ret));
+> > >
+> > > So between "of" and "with" there should be an interface mode. Looking
+> > > at
+> > > https://elixir.bootlin.com/linux/latest/source/include/linux/phy.h#L223
+> > > this suggests configure.interface is PHY_INTERFACE_MODE_NA, which is
+> > > 0. This could be correct, but it is a bit unlikely.
+> > >
+> > > Also, advertisement 00,00000000,00000000,00000000 looks wrong. It does
+> > > not what to advertise anything. The 6 in support means it can do pause
+> > > and asymmetric pause, but there are no speeds listed.
+> > >
+> > > So something is wrong with the connection between the MAC and
+> > > PHY. Please could you give a link to the .dts file.
+> >
+> > I am mostly speculating but this sounds like the typical issue with
+> > rtl8211f phy needed to be reset before it can be identified. Please
+> > see [1] for details on a chicken-or-egg problem previously identified.
+> >
+> > Possible solutions for such issue is to ensure a proper DT is used in
+> > mainline U-Boot to boot the board, or possible change the Ethernet phy
+> > compatible to ethernet-phy-id001c.c916 to help identify the phy.
+> >
+> > [1] https://lore.kernel.org/all/47d55aca-bee6-810f-379f-9431649fefa6@kwiboo.se/
+> >
+> > Regards,
+> > Jonas
+> >
+> > >
+> > >       Andrew
+> > >
+> >
+>
+>
+> --
+>
+> Kind Regards,
+>
+> Daniel
 
 
 
--- =
+-- 
 
-TQ-Systems GmbH | M=FChlstra=DFe 2, Gut Delling | 82229 Seefeld, Germany
-Amtsgericht M=FCnchen, HRB 105018
-Gesch=E4ftsf=FChrer: Detlef Schneider, R=FCdiger Stahl, Stefan Schneider
-http://www.tq-group.com/
+Kind Regards,
 
-
+Daniel
 
 _______________________________________________
 Linux-rockchip mailing list
