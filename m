@@ -4,70 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D178AC3DA42
-	for <linux-rockchip@archiver.kernel.org>; Wed, 10 Jul 2024 14:22:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7F557C3DA42
+	for <linux-rockchip@archiver.kernel.org>; Wed, 10 Jul 2024 14:31:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
-	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=PpP4b6b9QCeBLzQQa3bREbrtlDphwUQZ68rIjiOpskY=; b=ajFNWRThxATk0UGTvfil7EMzji
-	FlwDdzfwKuTU1x4F4vaXFIiI2Ps1dJV13WiOmDztPltZkS1r4ASwngUGESgl1hrvbHJ9SXRCwxDpW
-	/icx4H8ysBuPiqRNE7sxpQhm7clKCl8ivx1Xo1L6+PTSco9Phmt9hLGIf2G2L+0LbMB6TWWW8VCnW
-	BdPEtIe9daCYY/jT8qVOH1MOkCdaG7kLHYpXXGPhRoJHm1rAjeqPy5zNtNIw/WefuKcyVAHMfCbVi
-	BDhwLyhpZvLVzmcqVN+ZcrD5yRjm0yxQvm4TQ42kofa0vjxjpo2/6rKYjPBfkpMJzTEhZ7dmOEDA7
-	QPpkyskA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=1HKbHtfj/ohBSSdZ39X50eOtYHkTzksKoLzK/F31JB0=; b=aJ31AniD+GukTE
+	YVJ/n/wheQ8yx/i723vLBHHTxKDeSEDqxIcZiCv8yqicu1Xf3jL5gEXlf7kd/U9H2of1hv7ZUGZWl
+	GWIZSQkQUijkyL7qXgX4SMkCfRGEXEy5Bm7BWXKR+4wVhGmI11TgZCVIZEmVl4vKc/F+oqcOWx01s
+	Ti1XRLahxRWTTrzvo5kPmtKPOvvS2I+InIoA+SCVxOaxUzWx5IuUl4FV+N+b3Wy2xTfInlYofi0vz
+	v8JkUxlqeZTetgEa0ce2PlbuNJLhbuwbkf8E1v8WJSbGBwRI25AGAzEoScrW5FXvyhl56/Ciz4/fj
+	mPATJiVrpEoXk6fdib/g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sRYDL-0000000Ao3h-2jOC;
-	Wed, 10 Jul 2024 14:22:35 +0000
-Received: from mail.manjaro.org ([2a01:4f8:c0c:51f3::1])
+	id 1sRYLP-0000000Ap4P-0omT;
+	Wed, 10 Jul 2024 14:30:55 +0000
+Received: from mail-m49198.qiye.163.com ([45.254.49.198])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sRYD4-0000000Ao1S-08nA;
-	Wed, 10 Jul 2024 14:22:20 +0000
+	id 1sRYLM-0000000Ap38-0K3w;
+	Wed, 10 Jul 2024 14:30:54 +0000
+Received: from amadeus-Vostro-3710.lan (unknown [IPV6:240e:3b3:2c00:fb60:82c0:6879:f4d2:caf4])
+	by smtp.qiye.163.com (Hmail) with ESMTPA id EF9DC7E0116;
+	Wed, 10 Jul 2024 22:30:34 +0800 (CST)
+From: Chukun Pan <amadeus@jmu.edu.cn>
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Rob Herring <robh@kernel.org>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	Chukun Pan <amadeus@jmu.edu.cn>
+Subject: [PATCH v3 0/3] arm64: dts: rockchip: fixes support for Lunzn Fastrhino R6xS
+Date: Wed, 10 Jul 2024 22:30:14 +0800
+Message-Id: <20240710143017.685905-1-amadeus@jmu.edu.cn>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
-	t=1720621333;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=27V6jUOaNytzMrX8tcswA+zOR0z0lNMkdk4MlU12XKo=;
-	b=Pln59aDHanugpPxhabXhnNgy/f3kk/SoEB6XuIRPRD+u2Iny9Y+3kxYXie6bSsQPbxTVqO
-	+SUmN1TgAXAeZ+/jGDSwVcz0nyOzPCDx/CRAbvVY0A1QzLt97MSvw+PBcCPRbHJkAxKER7
-	Z1RwnzuVc2SOKxAXTx4PblsbUH++I437k3+bJjw3Q/dlni6TTEzGjGczn62KlDDaZyXkSf
-	LSYX0rLM6RHO4fgdUzoHQx0mlhHqpmqZ5v5mE76pxgUneoMxYPiW2l6aSsbTR1w3TnaOVW
-	7C0pkf5V2/c+FaHTgiOTo/BOp2DZYdd3cl98sLZJ8+r/WPbQBkCAAmuI0QjyIw==
-Date: Wed, 10 Jul 2024 16:22:12 +0200
-From: Dragan Simic <dsimic@manjaro.org>
-To: Maxime Ripard <mripard@kernel.org>
-Cc: Andy Yan <andyshrk@163.com>, linux-rockchip@lists.infradead.org,
- dri-devel@lists.freedesktop.org, heiko@sntech.de, hjc@rock-chips.com,
- andy.yan@rock-chips.com, maarten.lankhorst@linux.intel.com,
- tzimmermann@suse.de, airlied@gmail.com, daniel@ffwll.ch,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- javierm@redhat.com
-Subject: Re: [PATCH] drm/rockchip: cdn-dp: Remove redundant workarounds for
- firmware loading
-In-Reply-To: <20240710-smooth-hypnotic-raccoon-b91fba@houat>
-References: <9b7a9e9b88ad8c7489ee1b4c70b8751eeb5cf6f9.1720049413.git.dsimic@manjaro.org>
- <109c6f19.2559.1907b817a99.Coremail.andyshrk@163.com>
- <0bf4701d98833609b917983718c610aa@manjaro.org>
- <2fd3aabd.785b.190914ec1a6.Coremail.andyshrk@163.com>
- <f0fb9feed2d9262bb4d7c8ade836af62@manjaro.org>
- <909d072.9028.19096c2429a.Coremail.andyshrk@163.com>
- <31062b80d3f9e11c339c400a70464f43@manjaro.org>
- <20240709-exuberant-tentacled-oxpecker-bd1ea0@houat>
- <b6d630447e6c69e913b76650d910f895@manjaro.org>
- <20240710-smooth-hypnotic-raccoon-b91fba@houat>
-Message-ID: <a30067db11e586d8eb2c124abe32052a@manjaro.org>
-X-Sender: dsimic@manjaro.org
-Authentication-Results: ORIGINATING;
-	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFITzdXWS1ZQUlXWQ8JGhUIEh9ZQVlCGUtCVklMHU1OHR9PSRpLQ1YeHw5VEwETFhoSFy
+	QUDg9ZV1kYEgtZQVlJT0seQUgZSEFJGEtLQR0ZTUtBQ0kYS0FNQ0xCQR1PH0lBGBodT1lXWRYaDx
+	IVHRRZQVlPS0hVSktJT09PS1VKS0tVS1kG
+X-HM-Tid: 0a909d0da3bb03a2kunmef9dc7e0116
+X-HM-MType: 10
+X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6PzY6Kyo5SjI#FDAzPFY#PRdD
+	EkpPCytVSlVKTElLTUlKQ0hOTUhOVTMWGhIXVRoWGh8eDgg7ERYOVR4fDlUYFUVZV1kSC1lBWUlP
+	Sx5BSBlIQUkYS0tBHRlNS0FDSRhLQU1DTEJBHU8fSUEYGh1PWVdZCAFZQUpNTks3Bg++
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240710_072218_558714_50B6692A 
-X-CRM114-Status: GOOD (  18.55  )
+X-CRM114-CacheID: sfid-20240710_073052_333970_5102E2BA 
+X-CRM114-Status: UNSURE (   3.77  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,47 +68,29 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello Maxime,
+Changes in v3:
+  Remove merged patches
+  Further explanation of the PHY reset time changes
 
-On 2024-07-10 09:13, Maxime Ripard wrote:
-> On Tue, Jul 09, 2024 at 06:36:08PM GMT, Dragan Simic wrote:
->> > > > > As I already wrote earlier, and as the above-linked discussions
->> > > > > conclude, solving these issues doesn't belong to any specific driver.
->> > > > > It should be resolved within the kernel's firmware loading mechanism
->> > > > > instead, and no driver should be specific in that regard.
->> > > >
->> > > > IT would be good if it can be resolved within the kernel's  firmware
->> > > > loading mechanism.
->> > >
->> > > ... we'll need this as a systemic solution.
->> >
->> > The general policy has been to put drivers that need a firmware as a
->> > module, and just never build them statically.
->> 
->> I totally agree, but if Buildroot builds them statically and provides
->> no initial ramdisk, we need a better solution than having various 
->> drivers
->> attempt to implement their own workarounds.
-> 
-> Buildroot typically allows custom kernel configurations, so it's not
-> really "enforcing" anything like another distro does.
-> 
-> It is definitely targetted towards very stripped down systems, so I
-> guess building the drivers statically is a natural choice, but it works
-> fine with modules too.
+Changes in v2:
+  Separate commits for regulator and supply changes
+  Separate commits for R68S Ethernet PHY changes
 
-It all leads to a conclusion that we need better in-kernel support
-for delayed firmware loading, instead of drivers implementing various
-workarounds, for the layouts in which drivers are built statically
-into the kernel image, but the required firmware blobs reside on the
-root filesystem.
+Chukun Pan (3):
+  arm64: dts: rockchip: use generic Ethernet PHY reset bindings for
+    Lunzn Fastrhino R68S
+  arm64: dts: rockchip: remove useless tx/rx_delay for Lunzn Fastrhino
+    R68S
+  arm64: dts: rockchip: Enable UHS-I SDR-50 for Lunzn FastRhino R66S
 
-I'll start working on it, hopefully today. :)
+-- 
+2.25.1
+
 
 _______________________________________________
 Linux-rockchip mailing list
