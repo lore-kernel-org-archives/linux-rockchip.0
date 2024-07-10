@@ -4,41 +4,42 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C4433C3DA41
-	for <linux-rockchip@archiver.kernel.org>; Wed, 10 Jul 2024 13:30:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 391EEC3DA42
+	for <linux-rockchip@archiver.kernel.org>; Wed, 10 Jul 2024 13:30:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=QJGpS+CsZHYqYthmfgRZQ57lKDa6EHYpF69M/pVvzhk=; b=AmkjbjQpHsV9th
-	ybArTIKMWd+C2PIk0WpyaPf8a4FGP1DG+zgE6GtNoWoYSVkYDbdIJwpbtGPOsA24PLlwmataKsuxK
-	eO+wBZhZnzONi9+Fkp7t9bVSgrsos5NkoSAsyb+TQxqhQtKVfX9ZIPi/k5D9sUJMHo993tkTyMaBq
-	9MJ3KjyXe4PhjY6k6ITSFlfeT0k+YXv9Y9mHFWiUyOoJNce8voDoJARUcYUuCksh2pSuPq4duGvJj
-	hRQ9jZh3shfXtQXDdR/Kmnwr+L1YiNGKM4+buWeMVWoI+EiEcR1jduyRigivQjaNT0zYvVUkTf11A
-	KQM3W+VcPccSR2dfJ3gA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=685IYjeqJ9d32sQ3uc+ejcx5px5Ewgq8d0vv/poegqw=; b=c5FI70uMe7gG1B
+	67++w7tHwI/Nk4w0NicDVqbRMLc3EzKA1K1F0LBlzIl/k8ONu4luirC1ePXKI/lX8oppTNa9ENBO9
+	7nEBBfhoj+JrdBNBPLf0zkp8DqEVrfT/tZvis7uNRL8DCbjeVBhusdxKf/NduFqQ/M7xMFEcIZ1NP
+	TIbo/0QWsNL0nDnESIE1X1EL+h1JijYA9xH8pH83U17HEghKMuR4PdXF2A47ODbkjqIyuaqKdlgVU
+	IPQvsZNU9RkVFVzLMupjv0NR18lH/belzAye+WDu5TpqhYGTGD+R/8jUWedyEERH9Nkbou0Ils1lF
+	b5yhFs+c9NfbAPFeT8rw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sRXOY-0000000AeSs-0IBU;
-	Wed, 10 Jul 2024 13:30:06 +0000
-Received: from out-179.mta1.migadu.com ([95.215.58.179])
+	id 1sRXOo-0000000AecF-2QUy;
+	Wed, 10 Jul 2024 13:30:22 +0000
+Received: from out-188.mta1.migadu.com ([95.215.58.188])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sRXO2-0000000AeEX-2ZZW
+	id 1sRXOc-0000000AeU9-2zJ2
 	for linux-rockchip@lists.infradead.org;
-	Wed, 10 Jul 2024 13:29:37 +0000
+	Wed, 10 Jul 2024 13:30:12 +0000
 X-Envelope-To: heiko@sntech.de
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow.org; s=key1;
-	t=1720618171;
+	t=1720618208;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding;
-	bh=kQvGNQXCeiBTKU15PX+2I2Ocw+0QTKnwDGP4dLx/c7Y=;
-	b=EoPvlERgYzGZi+JJ7gFmd8Kk/71EDszDXteapmJLxVN5CFTXELY5xWm5lkLDQb5gD0KVzj
-	ywwPYDyJVHB8vpcj+AQxxo2UxPC6UyvxnRFEITfIwoOdZ50ZPUo/EKruLXjjYCEUbd0gwp
-	CHAxXiMc2MEZ5zA2y3TCxojSdDcCMw+nYqz+GibfzlRcisqwi2Fk/7Y1QDpUh+3ZW41C4i
-	dEQON0nQQs56t0Qzf/zOmdBaX/YXn6JDebwpRiH4DIJ77aCpVqYCNQWA+emRdpzhC5/nlk
-	466PzlUfhpkdkXgeJcy/jwWXADPxoptycDOjZN3eb6x+xdOJBajUZ0jK9/SdBw==
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=KLBHZjexyXVN2+OSBryAFtyXrp6LCvLeuz6pNTh3Nso=;
+	b=mZcZPQYXx9l2k3OZVdPk/KGs0KYa7tQ/c8R/OJQJYGOtW6Kw+/GLh4VbYWz4eCe5o8UoLm
+	X0pap6fdnLc3uK53eGHnkfCK0FSo2WYZWTia6cKpy4Diu2hpTVmtD/y4NQRRzfn8neeOiP
+	dD3oMxfpTosZV83P7AxFXCRd3nlYBEDpzXsz5J7IUEQn67GKs14c0paAAt4CfClBCExNX/
+	HFR2a6gbxq8NdNavtR+uz2c317tRRKwBsLH0W9cgcPgzdKPdVZLrIVHaIFs0GWjvtJBkvk
+	ETLarDme6M/byrHWPiIeUYJoJMa5HkX2S6XsJCwVO1ENZ3+B1Z+vtTF5EQ3K8g==
 X-Envelope-To: knaerzche@gmail.com
 X-Envelope-To: linux-rockchip@lists.infradead.org
 X-Envelope-To: devicetree@vger.kernel.org
@@ -58,14 +59,16 @@ Cc: Alex Bee <knaerzche@gmail.com>,
 	Johan Jonker <jbx6244@gmail.com>,
 	Chen-Yu Tsai <wens@csie.org>,
 	Diederik de Haas <didi.debian@cknow.org>
-Subject: [PATCH v3 0/2] sdmmc/sdio/emmc improvements for RK3328
-Date: Wed, 10 Jul 2024 15:28:10 +0200
-Message-ID: <20240710132830.14710-1-didi.debian@cknow.org>
+Subject: [PATCH v3 1/2] arm64: dts: rockchip: Add sdmmc_ext for RK3328
+Date: Wed, 10 Jul 2024 15:28:12 +0200
+Message-ID: <20240710132830.14710-3-didi.debian@cknow.org>
+In-Reply-To: <20240710132830.14710-1-didi.debian@cknow.org>
+References: <20240710132830.14710-1-didi.debian@cknow.org>
 MIME-Version: 1.0
 X-Migadu-Flow: FLOW_OUT
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240710_062934_954346_74DCA969 
-X-CRM114-Status: UNSURE (   8.33  )
+X-CRM114-CacheID: sfid-20240710_063010_909738_FA2F59E0 
+X-CRM114-Status: UNSURE (   8.82  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -83,24 +86,44 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This is a rebased resend of Alex Bee's prior patches which haven't been
-merged even though there doesn't seem to be anything wrong with it.
-These patches have been used in LibreELEC for years, which means I've
-been using it for years on my Rock64 and I've also added it to my
-latest 6.10-rc7 build and that worked fine too.
+From: Alex Bee <knaerzche@gmail.com>
 
-Link to v2:
-https://lore.kernel.org/linux-rockchip/20210623145918.187018-1-knaerzche@gmail.com/
+RK3328 SoC has a fourth mmc controller called SDMMC_EXT. Some
+boards have sdio wifi connected to it. In order to use it
+one would have to add the pinctrls from sdmmc0ext group which
+is done on board level.
 
-Alex Bee (2):
-  arm64: dts: rockchip: Add sdmmc_ext for RK3328
-  arm64: dts: rockchip: Add sdmmc/sdio/emmc reset controls for RK3328
+Signed-off-by: Alex Bee <knaerzche@gmail.com>
+Signed-off-by: Diederik de Haas <didi.debian@cknow.org>
+---
+ arch/arm64/boot/dts/rockchip/rk3328.dtsi | 14 ++++++++++++++
+ 1 file changed, 14 insertions(+)
 
- arch/arm64/boot/dts/rockchip/rk3328.dtsi | 20 ++++++++++++++++++++
- 1 file changed, 20 insertions(+)
-
-
-base-commit: d79d713d602e8b32cf935ddfdf61769cb74ba1dc
+diff --git a/arch/arm64/boot/dts/rockchip/rk3328.dtsi b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
+index b01efd6d042c..95c3f1303544 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3328.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
+@@ -1036,6 +1036,20 @@ usb_host0_ohci: usb@ff5d0000 {
+ 		status = "disabled";
+ 	};
+ 
++	sdmmc_ext: mmc@ff5f0000 {
++		compatible = "rockchip,rk3328-dw-mshc", "rockchip,rk3288-dw-mshc";
++		reg = <0x0 0xff5f0000 0x0 0x4000>;
++		interrupts = <GIC_SPI 4 IRQ_TYPE_LEVEL_HIGH>;
++		clocks = <&cru HCLK_SDMMC_EXT>, <&cru SCLK_SDMMC_EXT>,
++			 <&cru SCLK_SDMMC_EXT_DRV>, <&cru SCLK_SDMMC_EXT_SAMPLE>;
++		clock-names = "biu", "ciu", "ciu-drive", "ciu-sample";
++		fifo-depth = <0x100>;
++		max-frequency = <150000000>;
++		resets = <&cru SRST_SDMMCEXT>;
++		reset-names = "reset";
++		status = "disabled";
++	};
++
+ 	usbdrd3: usb@ff600000 {
+ 		compatible = "rockchip,rk3328-dwc3", "snps,dwc3";
+ 		reg = <0x0 0xff600000 0x0 0x100000>;
 -- 
 2.45.2
 
