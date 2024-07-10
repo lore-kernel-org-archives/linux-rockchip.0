@@ -4,75 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 484B1C2BD09
-	for <linux-rockchip@archiver.kernel.org>; Tue,  9 Jul 2024 22:43:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9B272C3DA41
+	for <linux-rockchip@archiver.kernel.org>; Wed, 10 Jul 2024 03:03:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=doQohASjgQlK/Acr4SJigLL3XYxaVl9+Syj7Fkavyf4=; b=kwaILQZU8FsOB4
-	u62m7CQ7YsW6z1d4UTIaguZHdXZvr3lg+Qv94JkgpFYHP5Kia5zqMNLCIFZFrnQXqysytQzO0C3ek
-	NbqPUzu/26j1TnQq3lI1OzeDs+j3Sf73BOdee7as9n58Xk0Vx7MC8F+XJTREBKzWE/ap2D9eOnOD5
-	4OYsET2ESol2CjBHb8+ZIbtRNwYFzetEYzCMVsR4SokEartjnjxB4dvx0Elw057EZ+j2yMgB5O3pX
-	O5v9dacLHopAqal5m4xNmdn5XObBeYP+j3ZPnbDmZM0o17I6H0DEYQtTo30l2VLnuK8n7Uvul/nKj
-	aK+p3hU2J3qsxQELWlHA==;
+	List-Owner; bh=L/S4petQCcdAzdqgosm2vC0woEryGsCMSU20MBI9vc0=; b=QBrhoxDKlWJ8Xw
+	M5LfVAuzeI+Bn+p5NtSNrvNRejs9w9fI70A13VmQGkIvfSMR1tU6F3EP1HIm6AfDL9acUMbXObYqi
+	NIjxF0No5Uz+GuY36KVRdLtTjs6KC2d4UTrJEi4EdzJKlXIVAxzISI1zps+Y3ewIhVSZpdWUJPdKt
+	eLyFnRJjT0scuC4yuCD1TmzYlNqL/4q9MVLPMCK/aJk5Tln7+9npdo8pu73znq67D8JwHFIK/tqPz
+	7ij5gCmwry9BTIGCbB4XOWgX5oB814GhNVufiVyLTH4GF80W9YwdRvyZcs+cnvN+YCRtUGlLAUGr3
+	7D+2Ero5hHTfUQRsev2A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sRJY2-00000008oX6-0krb;
-	Tue, 09 Jul 2024 22:42:58 +0000
-Received: from mail-yb1-xb30.google.com ([2607:f8b0:4864:20::b30])
+	id 1sRNcA-00000009Fax-0bkm;
+	Wed, 10 Jul 2024 03:03:30 +0000
+Received: from mail-oi1-x22f.google.com ([2607:f8b0:4864:20::22f])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sRJXj-00000008oUI-2v5i;
-	Tue, 09 Jul 2024 22:42:41 +0000
-Received: by mail-yb1-xb30.google.com with SMTP id 3f1490d57ef6-e036105251eso5668426276.0;
-        Tue, 09 Jul 2024 15:42:39 -0700 (PDT)
+	id 1sRNbs-00000009FTN-06Nh;
+	Wed, 10 Jul 2024 03:03:13 +0000
+Received: by mail-oi1-x22f.google.com with SMTP id 5614622812f47-3d9272287easo2088924b6e.2;
+        Tue, 09 Jul 2024 20:03:11 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1720564958; x=1721169758; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1720580590; x=1721185390; darn=lists.infradead.org;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=9pHHA5r5imddHPdmBiMRuOrV4I9H91Tc3FXo9fFvX5M=;
-        b=m2eDeenawlGKtO0pJ9Vbj+7R7/sRFOvchxkOSEGPCqYdVv5dcCe+LWv0mjagK9aUPn
-         NI6e1T1j9n7xTcMJ9XyB2oM/uMHTvu3qI6JZs1p4/HZoHCRzX7w+PEXbrfBXbVyPdKrw
-         cWCafR5QJfWbJD9JCbX1osw+RhmPnm/C9KhRGUqaUD0ZjOi+68tI8BUfkHJlIrPc0Z3C
-         HvSE8OrDKRfhHBcxPEw9Jvvf5B03xCw0nXh48lBA0IcASUthv1t5sMqAHjEaWY9nY6GC
-         wr1FFlxJO52LR2GFnlVd9qOgyuGT0DinEFhJ3LtaJILH+ZEoIb9qb6KQ5MJ15ht9ZG2k
-         d/ig==
+        bh=KKkEn8gtIME2o7SskHC2V7w9XB0tpg/NcovnDfSPb3k=;
+        b=Y4zibXVy/+2AGceME+7nEHpZdNhqcQptrZ/y0WxDs62eCbB6We4epGzRtwab62cbJZ
+         1HKlFOfYwXflgM5uK+23oDwvkQh9lm9vOEg2KFERat4ztHbAimMN9vGA3tmvLOHWFRdo
+         TGYCPuRnEe1qxCUq0sOsGZGcRqFZlHZ/m/V0XQaOLA5bG6EzFw93XACw310Lvu1zTxh8
+         jCV3xFdSp0NbtsIevr2/EFyeBtPiDPf/WhIyM2ury6ZJqKn0bYHSG1RDQiQnqZTgcijR
+         I4bSaRQBqL/Il90gJ7stnlBE8dei1E/bNil883MckX9xVy7SSmvUOT8aMFBWaHRhGGV2
+         faUg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1720564958; x=1721169758;
+        d=1e100.net; s=20230601; t=1720580590; x=1721185390;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=9pHHA5r5imddHPdmBiMRuOrV4I9H91Tc3FXo9fFvX5M=;
-        b=gUB5sWm7Z6IXCD/neVRZh7mfaz/OVB0QdnYak8IObUzjbDzXoo5JynNSAbUNYAZmlk
-         EvYwkbMbNpHAzn7CPanQ32uYAjUSgbuI3Y0uMawPdX++uTNPxpcRLZrkU/Plmha9P1w4
-         9xcEFIpk8EEoLOP4HeqBPmVD9rA3S5MYJP+TJ+FzC1sl2EiEso0DhhX9SLG/yH8lc8RF
-         ae9Vd1XoP6VpwMD5757zkN5aQxReMrxWLbg0rIDqKpq9HjxNdY8E/hpPMi1UqN53JFtE
-         uIU8fl7iFLPiMMB/zcHoMxmeI5NMxqof5fFc4ovGRspf+5GBmCQIJ643X9YCUTyuTGRF
-         udHg==
-X-Forwarded-Encrypted: i=1; AJvYcCX4HDHdzFUBNqkPt16kqE3fU8gmcmRNl0pxdYkzPbT0A6o2jPfW2iaTQwKU3vzQ0thbei4foC0iDyVXo1kHgwwqSKutk5qZPPebqBhAXUT/SoK9qjOh1B34beEjqYg2KyP970RXa4gj09bwY3eeoh/nRzb6p31P5eI=
-X-Gm-Message-State: AOJu0Yy42GFpMk327Kux/ZshYiebxe1UAqh4modVQmpTOLoKqCDDU2Bw
-	MsutJI+mQaaQQfSjsdH5r4agfvteIwEgI7qN3//KJ3RmOEwXjm6aEsWwNQnzdobEH5RcpFA4+VH
-	rGmxPEklmhUnPLApYwgALymwp8ic=
-X-Google-Smtp-Source: AGHT+IHpVYwb/XQe7CnYdBNXTSoSIfTW1pPYIqpvRpgOy6eiR3jBzXHkjFusYtb7yTha85NZt9RFxOpwaNGPEagVSKc=
-X-Received: by 2002:a5b:6c7:0:b0:e03:629d:b826 with SMTP id
- 3f1490d57ef6-e041b03bb4emr4943637276.7.1720564958351; Tue, 09 Jul 2024
- 15:42:38 -0700 (PDT)
+        bh=KKkEn8gtIME2o7SskHC2V7w9XB0tpg/NcovnDfSPb3k=;
+        b=X0VOgr+6Ke0IPeaah7JGQMOOlc55TWKItCYqjK9DHoX8jWHA85Fu4IJLSjQZ0sxBDb
+         4dvTSjfhl9rGqTl5OiJco9PQb9MMNbBwwvTG71aATSiIQRRbRNV6QsYQ+1bV95CKN0yp
+         PkMU2rDI91xQ+44krBeBVE+3AJdxftjBPNYqjQb8/btslrS35ulb824zUI4WbPMyzB7M
+         0+Sc2VXOsZLK0L3WhGUFm0Nw8rjkXCeO6IbW0ag2XZmUR6fBCnlQohc9vSzcraYM/h5g
+         ofxvReBOUf2FzICf+7jTgLfjCy1MCYT0QWAhAH/fMsVYz7uv1YgmrzGnD/EcacP2HNAD
+         TwkA==
+X-Forwarded-Encrypted: i=1; AJvYcCV2DZvcqxavQxMEQfkn0Su6uhbkwBwKxpjNPQCm4M2dWMRBBe0bBR8JhOI6HtSKncMZZDg9dyhlpL8k25TsNUuydXVwcauYDVMjpWeXuOHVDVBw3tDageqQ037jENm0yagtDOU5p71VQwftfRx8WBDFrmCoDeoFsZ4=
+X-Gm-Message-State: AOJu0Yx/fW80QyD1RfBrmK8xWwoZbKcaKnUcEZK/4SGKT/ye1/VIdtKB
+	6YWVhFXJmDRhQqWbqOCNUFeviIBa1iV0NN/ceh2u0yEJgF+aDrjJ8YdvBx3Mpr4Zd/G6hKrHLv5
+	Jtqh/NNoIEMOwit5j3z2mUx/7UHA=
+X-Google-Smtp-Source: AGHT+IFgagPufhfO3kVQfItv3SWrXC3htPT/1kAkqIC6JWUhjoj+56zpXjnNVV8XcysieMT0AiF5k6pFInYg5EvGmSk=
+X-Received: by 2002:a05:6808:bd4:b0:3d9:3649:908a with SMTP id
+ 5614622812f47-3d93c0b5c09mr4527199b6e.58.1720580590556; Tue, 09 Jul 2024
+ 20:03:10 -0700 (PDT)
 MIME-Version: 1.0
-References: <CAOyTmd2GEOYQiiJjYFbb9tK1D4iAndYwvuFj82tKoTEvHRVB=Q@mail.gmail.com>
- <3b23e8c9-b1d0-4cb0-bc75-f3b0f732fdc7@lunn.ch> <16423fcd-46db-4b8b-b38a-91c2cdc1196c@kwiboo.se>
-In-Reply-To: <16423fcd-46db-4b8b-b38a-91c2cdc1196c@kwiboo.se>
-From: Daniel Martin <dmanlfc@gmail.com>
-Date: Wed, 10 Jul 2024 08:42:27 +1000
-Message-ID: <CAOyTmd2C7GvUXkxYB8j9E2y8eoiNfbLT0Pcw7LsSJ98a5k9TdA@mail.gmail.com>
-Subject: Re: Hardkernel Odroid-M1S no USB 2.0 & Ethernet
-To: jonas@kwiboo.se
-Cc: Andrew Lunn <andrew@lunn.ch>, linux-arm-kernel@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org, heiko@sntech.de
+References: <20240709123121.1452394-1-heiko@sntech.de>
+In-Reply-To: <20240709123121.1452394-1-heiko@sntech.de>
+From: Anand Moon <linux.amoon@gmail.com>
+Date: Wed, 10 Jul 2024 08:32:57 +0530
+Message-ID: <CANAwSgQGoeyy3V9hBNcxFynRgR-rUanUzVN41uFxu0-_OqKKZg@mail.gmail.com>
+Subject: Re: [PATCH 0/6] Binding and driver for "dumb" clock generators
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: mturquette@baylibre.com, sboyd@kernel.org, robh@kernel.org, 
+	krzk+dt@kernel.org, conor+dt@kernel.org, quentin.schulz@cherry.de, 
+	linux-clk@vger.kernel.org, devicetree@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240709_154239_759747_70554409 
-X-CRM114-Status: GOOD (  27.25  )
+X-CRM114-CacheID: sfid-20240709_200312_088575_5C26E4DA 
+X-CRM114-Status: GOOD (  26.40  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,94 +91,81 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Jonas, yes this does seem related.
-Interesting debate on where the PHY should be initialised.
-I will try the mainline u-boot with this board & report back.
-I assume using the latest 2024.07 release is recommended here.
+Hi Heiko,
 
-On Wed, 10 Jul 2024 at 08:23, Jonas Karlman <jonas@kwiboo.se> wrote:
+On Tue, 9 Jul 2024 at 18:02, Heiko Stuebner <heiko@sntech.de> wrote:
 >
-> Hi,
+> Rockchip boards with PCIe3 controllers inside the soc (rk3568, rk3588) have
+> external clock generators on the board to generate the needed 100MHz
+> reference clock the PCIe3 controller needs.
 >
-> On 2024-07-09 17:13, Andrew Lunn wrote:
-> > On Tue, Jul 09, 2024 at 02:22:12PM +1000, Daniel Martin wrote:
-> >> Hi,
-> >>
-> >> Currently the Odroid M1S based on the RK3568 processor is not enabling
-> >> Ethernet or the USB-A 2.0 port on the device.
-> >>
-> >> Here is the output of ethernet failing.
-> >>
-> >> [    0.351616] rk_gmac-dwmac fe2a0000.ethernet: IRQ eth_lpi not found
-> >> [    0.351640] rk_gmac-dwmac fe2a0000.ethernet: IRQ sfty not found
-> >> [    0.352311] rk_gmac-dwmac fe2a0000.ethernet: supply phy not found,
-> >> using dummy regulator
-> >> [    0.352467] rk_gmac-dwmac fe2a0000.ethernet: clock input or output? (output).
-> >> [    0.352484] rk_gmac-dwmac fe2a0000.ethernet: TX delay(0x4f).
-> >> [    0.352499] rk_gmac-dwmac fe2a0000.ethernet: RX delay(0x2d).
-> >> [    0.352520] rk_gmac-dwmac fe2a0000.ethernet: integrated PHY? (no).
-> >> [    0.357610] rk_gmac-dwmac fe2a0000.ethernet: init for RGMII
-> >> [    0.358099] rk_gmac-dwmac fe2a0000.ethernet: Version ID not available
-> >> [    0.358120] rk_gmac-dwmac fe2a0000.ethernet: DWMAC4/5
-> >> [    0.358135] rk_gmac-dwmac fe2a0000.ethernet: DMA HW capability
-> >> register supported
-> >> [    0.358146] rk_gmac-dwmac fe2a0000.ethernet: Ring mode enabled
-> >> [    0.358174] rk_gmac-dwmac fe2a0000.ethernet: device MAC address
-> >> b6:bf:27:ec:65:d4
-> >> [    0.358191] rk_gmac-dwmac fe2a0000.ethernet: Enabled RFS Flow TC (entries=10)
-> >> [    0.358210] rk_gmac-dwmac fe2a0000.ethernet: Using 32/32 bits DMA
-> >> host/device width
-> >> [   16.932085] rk_gmac-dwmac fe2a0000.ethernet eth0: Register
-> >> MEM_TYPE_PAGE_POOL RxQ-0
-> >> [   16.932837] rk_gmac-dwmac fe2a0000.ethernet eth0: validation of
-> >> with support 00,00000000,00000000,00006000 and advertisement
-> >> 00,00000000,00000000,00000000 failed: -EINVAL
-> >
-> >         ret = phylink_validate_phy(pl, phy, supported, &config);
-> >         if (ret) {
-> >                 phylink_warn(pl, "validation of %s with support %*pb and advertisement %*pb failed: %pe\n",
-> >                              phy_modes(config.interface),
-> >                              __ETHTOOL_LINK_MODE_MASK_NBITS, phy->supported,
-> >                              __ETHTOOL_LINK_MODE_MASK_NBITS, config.advertising,
-> >                              ERR_PTR(ret));
-> >
-> > So between "of" and "with" there should be an interface mode. Looking
-> > at
-> > https://elixir.bootlin.com/linux/latest/source/include/linux/phy.h#L223
-> > this suggests configure.interface is PHY_INTERFACE_MODE_NA, which is
-> > 0. This could be correct, but it is a bit unlikely.
-> >
-> > Also, advertisement 00,00000000,00000000,00000000 looks wrong. It does
-> > not what to advertise anything. The 6 in support means it can do pause
-> > and asymmetric pause, but there are no speeds listed.
-> >
-> > So something is wrong with the connection between the MAC and
-> > PHY. Please could you give a link to the .dts file.
+> Often these clock generators need supplies to be enabled to run.
 >
-> I am mostly speculating but this sounds like the typical issue with
-> rtl8211f phy needed to be reset before it can be identified. Please
-> see [1] for details on a chicken-or-egg problem previously identified.
+> Modelling this clock has taken a number of shapes:
+> - The rk3568 Rock-3a modelled the generator-regulator as "phy-supply" [0]
+>   &pcie30phy {
+>         phy-supply = <&vcc3v3_pi6c_03>;
+>         status = "okay";
+>   };
+>   which is of course not part of the binding
 >
-> Possible solutions for such issue is to ensure a proper DT is used in
-> mainline U-Boot to boot the board, or possible change the Ethernet phy
-> compatible to ethernet-phy-id001c.c916 to help identify the phy.
+> - On the Rock-5-ITX the supply of the clock generator is controlled by
+>   the same gpio as the regulator supplying the the port connected to the
+>   pcie30x4 controller, so if this controller probes first, both
+>   controllers will just run. But if the pcie30x2 controller probes first
+>   (which has a different supply), the controller will stall at the first
+>   dbi read.
 >
-> [1] https://lore.kernel.org/all/47d55aca-bee6-810f-379f-9431649fefa6@kwiboo.se/
+> - Recent Theobroma-Systems boards (Jaguar and Tiger) modelled their
+>   generator as a combination of fixed clock and gpio-gate, which works
+>   because the generator's vdd-supply is always on and only the output-
+>   enable pin needs to be toggled.
 >
-> Regards,
-> Jonas
 >
-> >
-> >       Andrew
-> >
+> So this series attempts to improve the situation by allowing to model
+> these clock generators as actual entities in the devicetree, to not have
+> them just accidentially work or break bindings.
 >
 
+I was wondering if these changes apply to Radxa Rock 5b SbC, it does not have
+pi6c557 clock generator but the schematic supports GEN_CLK_100MHZ is
+input to CLKin0 which is generated via the VCC3V3_PI6C_05 (100MHz,3.3V,3225)
+regulator.
 
--- 
+[1] https://dl.radxa.com/rock5/5b/docs/hw/radxa_rock5b_v13_sch.pdf
 
-Kind Regards,
+Thanks
+-Anand
 
-Daniel
+>
+> [0] https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts#n605
+>
+> Heiko Stuebner (6):
+>   dt-bindings: clocks: add binding for generic clock-generators
+>   clk: add driver for generic clock generators
+>   arm64: dts: rockchip: fix the pcie clock generator on Rock 5 ITX
+>   arm64: dts: rockchip: use clock-generator for pcie-refclk on
+>     rk3588-jaguar
+>   arm64: dts: rockchip: use clock-generator for pcie-refclk on
+>     rk3588-tiger
+>   arm64: dts: rockchip: add pinctrl for clk-generator gpio on
+>     rk3588-tiger
+>
+>  .../bindings/clock/clock-generator.yaml       |  62 ++++++++
+>  .../arm64/boot/dts/rockchip/rk3588-jaguar.dts |  13 +-
+>  .../boot/dts/rockchip/rk3588-rock-5itx.dts    |  34 ++++-
+>  .../arm64/boot/dts/rockchip/rk3588-tiger.dtsi |  21 +--
+>  drivers/clk/Kconfig                           |   7 +
+>  drivers/clk/Makefile                          |   1 +
+>  drivers/clk/clk-generator.c                   | 133 ++++++++++++++++++
+>  7 files changed, 251 insertions(+), 20 deletions(-)
+>  create mode 100644 Documentation/devicetree/bindings/clock/clock-generator.yaml
+>  create mode 100644 drivers/clk/clk-generator.c
+>
+> --
+> 2.39.2
+>
+>
 
 _______________________________________________
 Linux-rockchip mailing list
