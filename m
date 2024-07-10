@@ -4,48 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 540D9C3DA45
-	for <linux-rockchip@archiver.kernel.org>; Wed, 10 Jul 2024 09:34:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4F943C3DA42
+	for <linux-rockchip@archiver.kernel.org>; Wed, 10 Jul 2024 10:02:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=AMtdvH3j8RswsBauq+S6wIPVTNh6C9r429kodayFEmA=; b=WWhryGgsiK41D0
-	i60qi3RZBUmcdx1Jfu6evhx+ddaOo4yLTEusPL5PUYlvuwCw4URO1dcNw+RxsQT54JH6EuXPBuZe2
-	+/zpuPDmR9R1bD0h1QYYTuK+SZ6jik6Q8ZoJK5uNLTYG6fC9G3QeIpH1zc6htW758WyX6oOhqk18V
-	kbdKobE28oXhQzNqbNBY/qeWIe5zXHFzkRzpEjQE2TMVZ3Bustu1MXNUa2juaoIFROc+iuaC3sqay
-	ZtT7BIh6zEvpc5rJQul0Mx3LHmapFMlmpcALQm5enBIVChgIGYaqi99u3pIV1Xk0uQct8/LM4A+HA
-	qkNlGbxESVJW4oyWl4dA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=p71clRO7seWw/4aSXMGvmGQMNUHwxQjcH2sePkKl1tk=; b=Z5X0kvF5FbnGiHgZUL6YNULXOE
+	utPymy6IPDQE3cI6UO0jtAjnAK1DIdQXRuVf+C97GHhOhte7otG5Gc9FYiR7sryxjqro4kNzqmeFV
+	oxOl3GD9MKqbc8RaOmsHUUbUrBwc7gwGn0a2FbMtN0kcKZFvV0HA++Wbappwt3xfTcHDi5O+jdOaQ
+	WfVg8V/q946Scj+B8heDxyj4YXBzPWfq+GzkLOFpPIFAvyHRHZrA3FYkyrygRpapwk4RWxBhotY5g
+	3f9b31hL7Y4jGeyMfkAa7kHOhL8KOu1Ma/aELGT9Fs/pt3Sq3rO3mxV8pZxnE2FlNeRUN4IPBUT/1
+	KwnMcdVA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sRTiL-0000000A4v6-1HKe;
-	Wed, 10 Jul 2024 09:34:17 +0000
-Received: from dd48830.kasserver.com ([85.13.164.221])
+	id 1sRU9h-0000000A9PS-2Rnn;
+	Wed, 10 Jul 2024 10:02:33 +0000
+Received: from out-181.mta1.migadu.com ([2001:41d0:203:375::b5])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sRTiH-0000000A4tZ-0FPX
+	id 1sRU9d-0000000A9OP-1XCf
 	for linux-rockchip@lists.infradead.org;
-	Wed, 10 Jul 2024 09:34:15 +0000
-Received: from ms7c95.fritz.box (p5098bff9.dip0.t-ipconnect.de [80.152.191.249])
-	by dd48830.kasserver.com (Postfix) with ESMTPSA id 2C11A6EC0E4B;
-	Wed, 10 Jul 2024 11:34:02 +0200 (CEST)
-From: Philipp Puschmann <p.puschmann@pironex.com>
-To: linux-rockchip@lists.infradead.org
-Cc: robh@kernel.org,
-	krzk+dt@kernel.org,
-	p.puschmann@pironex.com,
-	devicetree@vger.kernel.org
-Subject: [PATCH] arm64: dts: rockchip: Add uart dma names to the SoC dtsi for RK356x
-Date: Wed, 10 Jul 2024 11:33:56 +0200
-Message-ID: <20240710093356.3344056-1-p.puschmann@pironex.com>
-X-Mailer: git-send-email 2.45.2
+	Wed, 10 Jul 2024 10:02:31 +0000
+X-Envelope-To: linux-rockchip@lists.infradead.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow.org; s=key1;
+	t=1720605742;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=NJJ/PSTQTb3tpev2BiBmkCTWQ+ec4m22cqLbanWHxvA=;
+	b=uT3hvtKAgzY/2ioKZDXPhajbmNsXISurOLmNL5g2lU4xhAdAu5hukNSIOEXMJSrGNRRkeq
+	1bTPNKbDXbjsBBn6rnByRdvqZsP7qlRx8+1fol1sLcluA1FcqziBJJbn+riR9/mgMeATc5
+	8uspKRWTosYc965LyPcYNwOD4mrEqZJ6TX2z1tAwPV16oz+lqWLb84dYT/kBwESfOhNTNe
+	OtdgczFHK0h0qDPpg3IB1QhIwJW8F2qsB19+rWCzXIsOVYjlrTFKp6QTjGHNShJlUw1+pY
+	BMN6IvwIF67W3b/PSd+lrVFEEPEdj1YEykQn8O3imZJAkqvB2k7OfFC+arEAAQ==
+X-Envelope-To: p.puschmann@pironex.com
+X-Envelope-To: robh@kernel.org
+X-Envelope-To: krzk+dt@kernel.org
+X-Envelope-To: p.puschmann@pironex.com
+X-Envelope-To: devicetree@vger.kernel.org
+X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
+From: Diederik de Haas <didi.debian@cknow.org>
+To: linux-rockchip@lists.infradead.org,
+ Philipp Puschmann <p.puschmann@pironex.com>
+Cc: robh@kernel.org, krzk+dt@kernel.org, p.puschmann@pironex.com,
+ devicetree@vger.kernel.org
+Subject: Re: [PATCH] arm64: dts: rockchip: Add uart dma names to the SoC dtsi for
+ RK356x
+Date: Wed, 10 Jul 2024 12:02:07 +0200
+Message-ID: <5414331.Y6POrrGVKo@bagend>
+Organization: Connecting Knowledge
+In-Reply-To: <20240710093356.3344056-1-p.puschmann@pironex.com>
+References: <20240710093356.3344056-1-p.puschmann@pironex.com>
 MIME-Version: 1.0
-X-Spamd-Bar: /
+X-Migadu-Flow: FLOW_OUT
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240710_023413_723531_F5D8FAF9 
-X-CRM114-Status: UNSURE (   6.76  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240710_030229_773244_4DBB8ABE 
+X-CRM114-Status: GOOD (  12.09  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -57,109 +73,93 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============5246047654950942229=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-DMA names are required by of_dma_request_slave_channel function that is
-called during uart probe. So to enable DMA for uarts add the names as in
-the RK3568 TRM.
+--===============5246047654950942229==
+Content-Type: multipart/signed; boundary="nextPart2472209.eE7AJ3UNXe";
+ micalg="pgp-sha256"; protocol="application/pgp-signature"
 
-Signed-off-by: Philipp Puschmann <p.puschmann@pironex.com>
----
- arch/arm64/boot/dts/rockchip/rk356x.dtsi | 10 ++++++++++
- 1 file changed, 10 insertions(+)
+--nextPart2472209.eE7AJ3UNXe
+Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain; charset="us-ascii"; protected-headers="v1"
+From: Diederik de Haas <didi.debian@cknow.org>
+Date: Wed, 10 Jul 2024 12:02:07 +0200
+Message-ID: <5414331.Y6POrrGVKo@bagend>
+Organization: Connecting Knowledge
+In-Reply-To: <20240710093356.3344056-1-p.puschmann@pironex.com>
+References: <20240710093356.3344056-1-p.puschmann@pironex.com>
+MIME-Version: 1.0
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk356x.dtsi b/arch/arm64/boot/dts/rockchip/rk356x.dtsi
-index d8543b5557ee..4ae40661ca6a 100644
---- a/arch/arm64/boot/dts/rockchip/rk356x.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk356x.dtsi
-@@ -489,6 +489,7 @@ uart0: serial@fdd50000 {
- 		clocks = <&pmucru SCLK_UART0>, <&pmucru PCLK_UART0>;
- 		clock-names = "baudclk", "apb_pclk";
- 		dmas = <&dmac0 0>, <&dmac0 1>;
-+		dma-names = "tx", "rx";
- 		pinctrl-0 = <&uart0_xfer>;
- 		pinctrl-names = "default";
- 		reg-io-width = <4>;
-@@ -1389,6 +1390,7 @@ uart1: serial@fe650000 {
- 		clocks = <&cru SCLK_UART1>, <&cru PCLK_UART1>;
- 		clock-names = "baudclk", "apb_pclk";
- 		dmas = <&dmac0 2>, <&dmac0 3>;
-+		dma-names = "tx", "rx";
- 		pinctrl-0 = <&uart1m0_xfer>;
- 		pinctrl-names = "default";
- 		reg-io-width = <4>;
-@@ -1403,6 +1405,7 @@ uart2: serial@fe660000 {
- 		clocks = <&cru SCLK_UART2>, <&cru PCLK_UART2>;
- 		clock-names = "baudclk", "apb_pclk";
- 		dmas = <&dmac0 4>, <&dmac0 5>;
-+		dma-names = "tx", "rx";
- 		pinctrl-0 = <&uart2m0_xfer>;
- 		pinctrl-names = "default";
- 		reg-io-width = <4>;
-@@ -1417,6 +1420,7 @@ uart3: serial@fe670000 {
- 		clocks = <&cru SCLK_UART3>, <&cru PCLK_UART3>;
- 		clock-names = "baudclk", "apb_pclk";
- 		dmas = <&dmac0 6>, <&dmac0 7>;
-+		dma-names = "tx", "rx";
- 		pinctrl-0 = <&uart3m0_xfer>;
- 		pinctrl-names = "default";
- 		reg-io-width = <4>;
-@@ -1431,6 +1435,7 @@ uart4: serial@fe680000 {
- 		clocks = <&cru SCLK_UART4>, <&cru PCLK_UART4>;
- 		clock-names = "baudclk", "apb_pclk";
- 		dmas = <&dmac0 8>, <&dmac0 9>;
-+		dma-names = "tx", "rx";
- 		pinctrl-0 = <&uart4m0_xfer>;
- 		pinctrl-names = "default";
- 		reg-io-width = <4>;
-@@ -1445,6 +1450,7 @@ uart5: serial@fe690000 {
- 		clocks = <&cru SCLK_UART5>, <&cru PCLK_UART5>;
- 		clock-names = "baudclk", "apb_pclk";
- 		dmas = <&dmac0 10>, <&dmac0 11>;
-+		dma-names = "tx", "rx";
- 		pinctrl-0 = <&uart5m0_xfer>;
- 		pinctrl-names = "default";
- 		reg-io-width = <4>;
-@@ -1459,6 +1465,7 @@ uart6: serial@fe6a0000 {
- 		clocks = <&cru SCLK_UART6>, <&cru PCLK_UART6>;
- 		clock-names = "baudclk", "apb_pclk";
- 		dmas = <&dmac0 12>, <&dmac0 13>;
-+		dma-names = "tx", "rx";
- 		pinctrl-0 = <&uart6m0_xfer>;
- 		pinctrl-names = "default";
- 		reg-io-width = <4>;
-@@ -1473,6 +1480,7 @@ uart7: serial@fe6b0000 {
- 		clocks = <&cru SCLK_UART7>, <&cru PCLK_UART7>;
- 		clock-names = "baudclk", "apb_pclk";
- 		dmas = <&dmac0 14>, <&dmac0 15>;
-+		dma-names = "tx", "rx";
- 		pinctrl-0 = <&uart7m0_xfer>;
- 		pinctrl-names = "default";
- 		reg-io-width = <4>;
-@@ -1487,6 +1495,7 @@ uart8: serial@fe6c0000 {
- 		clocks = <&cru SCLK_UART8>, <&cru PCLK_UART8>;
- 		clock-names = "baudclk", "apb_pclk";
- 		dmas = <&dmac0 16>, <&dmac0 17>;
-+		dma-names = "tx", "rx";
- 		pinctrl-0 = <&uart8m0_xfer>;
- 		pinctrl-names = "default";
- 		reg-io-width = <4>;
-@@ -1501,6 +1510,7 @@ uart9: serial@fe6d0000 {
- 		clocks = <&cru SCLK_UART9>, <&cru PCLK_UART9>;
- 		clock-names = "baudclk", "apb_pclk";
- 		dmas = <&dmac0 18>, <&dmac0 19>;
-+		dma-names = "tx", "rx";
- 		pinctrl-0 = <&uart9m0_xfer>;
- 		pinctrl-names = "default";
- 		reg-io-width = <4>;
--- 
-2.45.2
+On Wednesday, 10 July 2024 11:33:56 CEST Philipp Puschmann wrote:
+> DMA names are required by of_dma_request_slave_channel function that is
+> called during uart probe. So to enable DMA for uarts add the names as in
+> the RK3568 TRM.
 
+Setting it on channels without flow control apparently causes issues. See
+
+https://lore.kernel.org/linux-rockchip/20240628120130.24076-1-didi.debian@cknow.org/
+
+> Signed-off-by: Philipp Puschmann <p.puschmann@pironex.com>
+> ---
+>  arch/arm64/boot/dts/rockchip/rk356x.dtsi | 10 ++++++++++
+>  1 file changed, 10 insertions(+)
+> 
+> diff --git a/arch/arm64/boot/dts/rockchip/rk356x.dtsi
+> b/arch/arm64/boot/dts/rockchip/rk356x.dtsi index d8543b5557ee..4ae40661ca6a
+> 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk356x.dtsi
+> +++ b/arch/arm64/boot/dts/rockchip/rk356x.dtsi
+> @@ -489,6 +489,7 @@ uart0: serial@fdd50000 {
+>  		clocks = <&pmucru SCLK_UART0>, <&pmucru PCLK_UART0>;
+>  		clock-names = "baudclk", "apb_pclk";
+>  		dmas = <&dmac0 0>, <&dmac0 1>;
+> +		dma-names = "tx", "rx";
+>  		pinctrl-0 = <&uart0_xfer>;
+>  		pinctrl-names = "default";
+>  		reg-io-width = <4>;
+> @@ -1389,6 +1390,7 @@ uart1: serial@fe650000 {
+>  		clocks = <&cru SCLK_UART1>, <&cru PCLK_UART1>;
+>  		clock-names = "baudclk", "apb_pclk";
+>  		dmas = <&dmac0 2>, <&dmac0 3>;
+> +		dma-names = "tx", "rx";
+>  		pinctrl-0 = <&uart1m0_xfer>;
+>  		pinctrl-names = "default";
+>  		reg-io-width = <4>;
+> ...
+--nextPart2472209.eE7AJ3UNXe
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: This is a digitally signed message part.
+Content-Transfer-Encoding: 7Bit
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYIAB0WIQT1sUPBYsyGmi4usy/XblvOeH7bbgUCZo5cHwAKCRDXblvOeH7b
+bouTAQDB9gDa4u0c0OxsnNTQjkvPClfMbVNKdre+EbNLhZVp3AD/daehVUuO5Yc0
+iI+Tdb5gNHR3VR2aBz+Sx97qu1gPVgA=
+=v8JT
+-----END PGP SIGNATURE-----
+
+--nextPart2472209.eE7AJ3UNXe--
+
+
+
+
+
+--===============5246047654950942229==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============5246047654950942229==--
+
+
+
+
