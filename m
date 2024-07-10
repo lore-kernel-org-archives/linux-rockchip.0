@@ -4,64 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4F943C3DA42
-	for <linux-rockchip@archiver.kernel.org>; Wed, 10 Jul 2024 10:02:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F356DC3DA42
+	for <linux-rockchip@archiver.kernel.org>; Wed, 10 Jul 2024 10:03:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=p71clRO7seWw/4aSXMGvmGQMNUHwxQjcH2sePkKl1tk=; b=Z5X0kvF5FbnGiHgZUL6YNULXOE
-	utPymy6IPDQE3cI6UO0jtAjnAK1DIdQXRuVf+C97GHhOhte7otG5Gc9FYiR7sryxjqro4kNzqmeFV
-	oxOl3GD9MKqbc8RaOmsHUUbUrBwc7gwGn0a2FbMtN0kcKZFvV0HA++Wbappwt3xfTcHDi5O+jdOaQ
-	WfVg8V/q946Scj+B8heDxyj4YXBzPWfq+GzkLOFpPIFAvyHRHZrA3FYkyrygRpapwk4RWxBhotY5g
-	3f9b31hL7Y4jGeyMfkAa7kHOhL8KOu1Ma/aELGT9Fs/pt3Sq3rO3mxV8pZxnE2FlNeRUN4IPBUT/1
-	KwnMcdVA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=hLcgrEEBRk3EIgi15o+RipJghhrApI6xOcg63q/trSg=; b=OPXHVuH/8pW3FA
+	PZblo+OqgzlmRAcgNYdKmPKW0Iat70/AM3vKk23aF9FWYVr5+jjC0nM1G7HlPG4c4Vs2s9xQJ2AlD
+	kKlilkI62T0Z1N2GTUwGxQXRQTdZpy8JtO6Jv8UL3kraktpL3hglQFNqvlVk66+Q1UKf1kCi0gIPW
+	9fkOkEc08IEwK9eNyiTMCP4lxk9be4p3BnXgbQeBDQ5hFt+/T8JVgfdfJNZSpKqU5nu+L5Lhj+2PX
+	ypO8DK5WqyyBhWUCxadC32+whF0T0G97DKAmsYo04rkypEHos6KXq0vwvSH+3YuhERHecH4pVvKiS
+	Zrv6n8akCB0VZt+7sweQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sRU9h-0000000A9PS-2Rnn;
-	Wed, 10 Jul 2024 10:02:33 +0000
-Received: from out-181.mta1.migadu.com ([2001:41d0:203:375::b5])
+	id 1sRUAL-0000000A9TS-2mtl;
+	Wed, 10 Jul 2024 10:03:13 +0000
+Received: from smtp.forwardemail.net ([167.172.40.54])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sRU9d-0000000A9OP-1XCf
+	id 1sRUA2-0000000A9Rh-2nZ6
 	for linux-rockchip@lists.infradead.org;
-	Wed, 10 Jul 2024 10:02:31 +0000
-X-Envelope-To: linux-rockchip@lists.infradead.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow.org; s=key1;
-	t=1720605742;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=NJJ/PSTQTb3tpev2BiBmkCTWQ+ec4m22cqLbanWHxvA=;
-	b=uT3hvtKAgzY/2ioKZDXPhajbmNsXISurOLmNL5g2lU4xhAdAu5hukNSIOEXMJSrGNRRkeq
-	1bTPNKbDXbjsBBn6rnByRdvqZsP7qlRx8+1fol1sLcluA1FcqziBJJbn+riR9/mgMeATc5
-	8uspKRWTosYc965LyPcYNwOD4mrEqZJ6TX2z1tAwPV16oz+lqWLb84dYT/kBwESfOhNTNe
-	OtdgczFHK0h0qDPpg3IB1QhIwJW8F2qsB19+rWCzXIsOVYjlrTFKp6QTjGHNShJlUw1+pY
-	BMN6IvwIF67W3b/PSd+lrVFEEPEdj1YEykQn8O3imZJAkqvB2k7OfFC+arEAAQ==
-X-Envelope-To: p.puschmann@pironex.com
-X-Envelope-To: robh@kernel.org
-X-Envelope-To: krzk+dt@kernel.org
-X-Envelope-To: p.puschmann@pironex.com
-X-Envelope-To: devicetree@vger.kernel.org
-X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
-From: Diederik de Haas <didi.debian@cknow.org>
-To: linux-rockchip@lists.infradead.org,
- Philipp Puschmann <p.puschmann@pironex.com>
-Cc: robh@kernel.org, krzk+dt@kernel.org, p.puschmann@pironex.com,
- devicetree@vger.kernel.org
-Subject: Re: [PATCH] arm64: dts: rockchip: Add uart dma names to the SoC dtsi for
- RK356x
-Date: Wed, 10 Jul 2024 12:02:07 +0200
-Message-ID: <5414331.Y6POrrGVKo@bagend>
-Organization: Connecting Knowledge
-In-Reply-To: <20240710093356.3344056-1-p.puschmann@pironex.com>
-References: <20240710093356.3344056-1-p.puschmann@pironex.com>
+	Wed, 10 Jul 2024 10:02:58 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
+ h=Content-Transfer-Encoding: Content-Type: In-Reply-To: From: References:
+ Cc: To: Subject: MIME-Version: Date: Message-ID; q=dns/txt;
+ s=fe-e1b5cab7be; t=1720605761;
+ bh=MYMeX9Q2jm/pg/2NPqKv0hJ6WAjn9dT8ujwMYGMFUbU=;
+ b=mHVPdZD7IFAeW0Z6uaD/91SgrmXALo+cTYQ9IJIAVgEc15tRV7CEYu/bQj9XfR54YlxCu6miA
+ pkKo+0m0VH9Kdj6IJajZKW8NwPOGifTJ1WVcqtZZArsUfUkOccym2IIiNCHfoqWIiE25oA4RlNP
+ 5e5B86TXPgE7vF4c+l23/nrt23xnkSwTMKVysn09fYpmYv3R53y7j9BgFOhZmZwK1blWgB3h4H2
+ z/IYkie+ke4EUcdTtFee/wlET8rjeD9RsDnXNShmU33vxPpdXAEohKWKNybK7ZjMbV8JLCyVSV5
+ VTo3nPG4kSiVrV0TnNMabYN4iyGeQZ6/bSjHRBFAs1iA==
+Message-ID: <a15a2454-3c17-4654-aa86-f5a8f21b8ca6@kwiboo.se>
+Date: Wed, 10 Jul 2024 12:02:32 +0200
 MIME-Version: 1.0
-X-Migadu-Flow: FLOW_OUT
+User-Agent: Mozilla Thunderbird
+Subject: Re: Hardkernel Odroid-M1S no USB 2.0 & Ethernet
+To: Daniel Martin <dmanlfc@gmail.com>
+Cc: Andrew Lunn <andrew@lunn.ch>, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, heiko@sntech.de
+References: <CAOyTmd2GEOYQiiJjYFbb9tK1D4iAndYwvuFj82tKoTEvHRVB=Q@mail.gmail.com>
+ <3b23e8c9-b1d0-4cb0-bc75-f3b0f732fdc7@lunn.ch>
+ <16423fcd-46db-4b8b-b38a-91c2cdc1196c@kwiboo.se>
+ <CAOyTmd2C7GvUXkxYB8j9E2y8eoiNfbLT0Pcw7LsSJ98a5k9TdA@mail.gmail.com>
+ <CAOyTmd0Q9OVPmNJjwcuHQVc_tp_7BVb4OHXmeMkwB-XKEW5S5g@mail.gmail.com>
+Content-Language: en-US
+From: Jonas Karlman <jonas@kwiboo.se>
+In-Reply-To: <CAOyTmd0Q9OVPmNJjwcuHQVc_tp_7BVb4OHXmeMkwB-XKEW5S5g@mail.gmail.com>
+X-Report-Abuse-To: abuse@forwardemail.net
+X-Report-Abuse: abuse@forwardemail.net
+X-Complaints-To: abuse@forwardemail.net
+X-ForwardEmail-Version: 0.4.40
+X-ForwardEmail-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
+ 167.172.40.54
+X-ForwardEmail-ID: 668e5c3da862f9d735121b69
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240710_030229_773244_4DBB8ABE 
-X-CRM114-Status: GOOD (  12.09  )
+X-CRM114-CacheID: sfid-20240710_030255_413844_914F280D 
+X-CRM114-Status: GOOD (  19.57  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,93 +74,132 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============5246047654950942229=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
---===============5246047654950942229==
-Content-Type: multipart/signed; boundary="nextPart2472209.eE7AJ3UNXe";
- micalg="pgp-sha256"; protocol="application/pgp-signature"
+Hi Daniel,
 
---nextPart2472209.eE7AJ3UNXe
-Content-Transfer-Encoding: 7Bit
-Content-Type: text/plain; charset="us-ascii"; protected-headers="v1"
-From: Diederik de Haas <didi.debian@cknow.org>
-Date: Wed, 10 Jul 2024 12:02:07 +0200
-Message-ID: <5414331.Y6POrrGVKo@bagend>
-Organization: Connecting Knowledge
-In-Reply-To: <20240710093356.3344056-1-p.puschmann@pironex.com>
-References: <20240710093356.3344056-1-p.puschmann@pironex.com>
-MIME-Version: 1.0
+On 2024-07-10 09:10, Daniel Martin wrote:
+> Jonas, unfortunately with the mainline u-boot, there is no change.
+> I used the latest 2024.07 build and the odroid-m1-rk3568 defconfig file.
 
-On Wednesday, 10 July 2024 11:33:56 CEST Philipp Puschmann wrote:
-> DMA names are required by of_dma_request_slave_channel function that is
-> called during uart probe. So to enable DMA for uarts add the names as in
-> the RK3568 TRM.
+The M1 and M1S uses different gmac interfaces and are not fully
+compatible, e.g. M1 (rk3568b2) uses gmac0 and M1S (rk3566) uses gmac1.
 
-Setting it on channels without flow control apparently causes issues. See
+You can try U-Boot from my rk3xxx-2024.07 branch [1], that branch should
+include a M1S target. From what I can remember I did limited test of
+Ethernet in U-Boot on a real M1S board. There was a prior attempt at
+upstreaming a M1S device tree [2], but a v2 do not seem to exist.
 
-https://lore.kernel.org/linux-rockchip/20240628120130.24076-1-didi.debian@cknow.org/
+[1] https://github.com/Kwiboo/u-boot-rockchip/commits/rk3xxx-2024.07/
+[2] https://lore.kernel.org/all/20240112135004.28907-1-lee@kyuhyuk.kr/
 
-> Signed-off-by: Philipp Puschmann <p.puschmann@pironex.com>
-> ---
->  arch/arm64/boot/dts/rockchip/rk356x.dtsi | 10 ++++++++++
->  1 file changed, 10 insertions(+)
+Please try using the odroid-m1s-rk3566_defconfig target in U-Boot.
+Also use a proper M1S device tree in case you are using one based on
+the M1 device tree.
+
+Regards,
+Jonas
+
 > 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk356x.dtsi
-> b/arch/arm64/boot/dts/rockchip/rk356x.dtsi index d8543b5557ee..4ae40661ca6a
-> 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk356x.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk356x.dtsi
-> @@ -489,6 +489,7 @@ uart0: serial@fdd50000 {
->  		clocks = <&pmucru SCLK_UART0>, <&pmucru PCLK_UART0>;
->  		clock-names = "baudclk", "apb_pclk";
->  		dmas = <&dmac0 0>, <&dmac0 1>;
-> +		dma-names = "tx", "rx";
->  		pinctrl-0 = <&uart0_xfer>;
->  		pinctrl-names = "default";
->  		reg-io-width = <4>;
-> @@ -1389,6 +1390,7 @@ uart1: serial@fe650000 {
->  		clocks = <&cru SCLK_UART1>, <&cru PCLK_UART1>;
->  		clock-names = "baudclk", "apb_pclk";
->  		dmas = <&dmac0 2>, <&dmac0 3>;
-> +		dma-names = "tx", "rx";
->  		pinctrl-0 = <&uart1m0_xfer>;
->  		pinctrl-names = "default";
->  		reg-io-width = <4>;
-> ...
---nextPart2472209.eE7AJ3UNXe
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: This is a digitally signed message part.
-Content-Transfer-Encoding: 7Bit
+> On Wed, 10 Jul 2024 at 08:42, Daniel Martin <dmanlfc@gmail.com> wrote:
+>>
+>> Hi Jonas, yes this does seem related.
+>> Interesting debate on where the PHY should be initialised.
+>> I will try the mainline u-boot with this board & report back.
+>> I assume using the latest 2024.07 release is recommended here.
+>>
+>> On Wed, 10 Jul 2024 at 08:23, Jonas Karlman <jonas@kwiboo.se> wrote:
+>>>
+>>> Hi,
+>>>
+>>> On 2024-07-09 17:13, Andrew Lunn wrote:
+>>>> On Tue, Jul 09, 2024 at 02:22:12PM +1000, Daniel Martin wrote:
+>>>>> Hi,
+>>>>>
+>>>>> Currently the Odroid M1S based on the RK3568 processor is not enabling
+>>>>> Ethernet or the USB-A 2.0 port on the device.
+>>>>>
+>>>>> Here is the output of ethernet failing.
+>>>>>
+>>>>> [    0.351616] rk_gmac-dwmac fe2a0000.ethernet: IRQ eth_lpi not found
+>>>>> [    0.351640] rk_gmac-dwmac fe2a0000.ethernet: IRQ sfty not found
+>>>>> [    0.352311] rk_gmac-dwmac fe2a0000.ethernet: supply phy not found,
+>>>>> using dummy regulator
+>>>>> [    0.352467] rk_gmac-dwmac fe2a0000.ethernet: clock input or output? (output).
+>>>>> [    0.352484] rk_gmac-dwmac fe2a0000.ethernet: TX delay(0x4f).
+>>>>> [    0.352499] rk_gmac-dwmac fe2a0000.ethernet: RX delay(0x2d).
+>>>>> [    0.352520] rk_gmac-dwmac fe2a0000.ethernet: integrated PHY? (no).
+>>>>> [    0.357610] rk_gmac-dwmac fe2a0000.ethernet: init for RGMII
+>>>>> [    0.358099] rk_gmac-dwmac fe2a0000.ethernet: Version ID not available
+>>>>> [    0.358120] rk_gmac-dwmac fe2a0000.ethernet: DWMAC4/5
+>>>>> [    0.358135] rk_gmac-dwmac fe2a0000.ethernet: DMA HW capability
+>>>>> register supported
+>>>>> [    0.358146] rk_gmac-dwmac fe2a0000.ethernet: Ring mode enabled
+>>>>> [    0.358174] rk_gmac-dwmac fe2a0000.ethernet: device MAC address
+>>>>> b6:bf:27:ec:65:d4
+>>>>> [    0.358191] rk_gmac-dwmac fe2a0000.ethernet: Enabled RFS Flow TC (entries=10)
+>>>>> [    0.358210] rk_gmac-dwmac fe2a0000.ethernet: Using 32/32 bits DMA
+>>>>> host/device width
+>>>>> [   16.932085] rk_gmac-dwmac fe2a0000.ethernet eth0: Register
+>>>>> MEM_TYPE_PAGE_POOL RxQ-0
+>>>>> [   16.932837] rk_gmac-dwmac fe2a0000.ethernet eth0: validation of
+>>>>> with support 00,00000000,00000000,00006000 and advertisement
+>>>>> 00,00000000,00000000,00000000 failed: -EINVAL
+>>>>
+>>>>         ret = phylink_validate_phy(pl, phy, supported, &config);
+>>>>         if (ret) {
+>>>>                 phylink_warn(pl, "validation of %s with support %*pb and advertisement %*pb failed: %pe\n",
+>>>>                              phy_modes(config.interface),
+>>>>                              __ETHTOOL_LINK_MODE_MASK_NBITS, phy->supported,
+>>>>                              __ETHTOOL_LINK_MODE_MASK_NBITS, config.advertising,
+>>>>                              ERR_PTR(ret));
+>>>>
+>>>> So between "of" and "with" there should be an interface mode. Looking
+>>>> at
+>>>> https://elixir.bootlin.com/linux/latest/source/include/linux/phy.h#L223
+>>>> this suggests configure.interface is PHY_INTERFACE_MODE_NA, which is
+>>>> 0. This could be correct, but it is a bit unlikely.
+>>>>
+>>>> Also, advertisement 00,00000000,00000000,00000000 looks wrong. It does
+>>>> not what to advertise anything. The 6 in support means it can do pause
+>>>> and asymmetric pause, but there are no speeds listed.
+>>>>
+>>>> So something is wrong with the connection between the MAC and
+>>>> PHY. Please could you give a link to the .dts file.
+>>>
+>>> I am mostly speculating but this sounds like the typical issue with
+>>> rtl8211f phy needed to be reset before it can be identified. Please
+>>> see [1] for details on a chicken-or-egg problem previously identified.
+>>>
+>>> Possible solutions for such issue is to ensure a proper DT is used in
+>>> mainline U-Boot to boot the board, or possible change the Ethernet phy
+>>> compatible to ethernet-phy-id001c.c916 to help identify the phy.
+>>>
+>>> [1] https://lore.kernel.org/all/47d55aca-bee6-810f-379f-9431649fefa6@kwiboo.se/
+>>>
+>>> Regards,
+>>> Jonas
+>>>
+>>>>
+>>>>       Andrew
+>>>>
+>>>
+>>
+>>
+>> --
+>>
+>> Kind Regards,
+>>
+>> Daniel
+> 
+> 
+> 
 
------BEGIN PGP SIGNATURE-----
-
-iHUEABYIAB0WIQT1sUPBYsyGmi4usy/XblvOeH7bbgUCZo5cHwAKCRDXblvOeH7b
-bouTAQDB9gDa4u0c0OxsnNTQjkvPClfMbVNKdre+EbNLhZVp3AD/daehVUuO5Yc0
-iI+Tdb5gNHR3VR2aBz+Sx97qu1gPVgA=
-=v8JT
------END PGP SIGNATURE-----
-
---nextPart2472209.eE7AJ3UNXe--
-
-
-
-
-
---===============5246047654950942229==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============5246047654950942229==--
-
-
-
-
