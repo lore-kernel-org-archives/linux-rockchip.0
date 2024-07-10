@@ -4,81 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E2520C3DA41
-	for <linux-rockchip@archiver.kernel.org>; Wed, 10 Jul 2024 14:21:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D178AC3DA42
+	for <linux-rockchip@archiver.kernel.org>; Wed, 10 Jul 2024 14:22:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=prA1l/tC/oyQShjFDl593/FzuXaJCoJbgN8qZkpobaM=; b=Y3X2xp8hrNB0rE
-	q74FynlAldmgwqLCtahyNT9tuGDO/AFcgW6VFQYaqyfeIqAEQofiXyAcM9V42TDYCQEJUaLgdqmqG
-	cSjP62VpKnRHVw6dYb2OhrTSsslVbJ+uWosntM048eoy1JuuoNyI/p8ize/BU24GXZYK60QoEwxKJ
-	PfPgh31MbN1362Q2UMqkKfXzTj5GvcNe565BqX2y4at+dpGOn3FvxtFFMIi/+s35sg1NAghhYsDZN
-	Y4HCd6jOVlocPiLiySU0xx2JVMK0850BfaeJ+7oMyqSS89noL1z3zwYrBCbgz5MMZJL2b+6ajJdQd
-	b9FBSVea8RDOqtiO5Zgw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
+	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=PpP4b6b9QCeBLzQQa3bREbrtlDphwUQZ68rIjiOpskY=; b=ajFNWRThxATk0UGTvfil7EMzji
+	FlwDdzfwKuTU1x4F4vaXFIiI2Ps1dJV13WiOmDztPltZkS1r4ASwngUGESgl1hrvbHJ9SXRCwxDpW
+	/icx4H8ysBuPiqRNE7sxpQhm7clKCl8ivx1Xo1L6+PTSco9Phmt9hLGIf2G2L+0LbMB6TWWW8VCnW
+	BdPEtIe9daCYY/jT8qVOH1MOkCdaG7kLHYpXXGPhRoJHm1rAjeqPy5zNtNIw/WefuKcyVAHMfCbVi
+	BDhwLyhpZvLVzmcqVN+ZcrD5yRjm0yxQvm4TQ42kofa0vjxjpo2/6rKYjPBfkpMJzTEhZ7dmOEDA7
+	QPpkyskA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sRYBr-0000000Anmo-2Av3;
-	Wed, 10 Jul 2024 14:21:03 +0000
-Received: from mail-pf1-x42a.google.com ([2607:f8b0:4864:20::42a])
+	id 1sRYDL-0000000Ao3h-2jOC;
+	Wed, 10 Jul 2024 14:22:35 +0000
+Received: from mail.manjaro.org ([2a01:4f8:c0c:51f3::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sRYBa-0000000Aniw-1xEA;
-	Wed, 10 Jul 2024 14:20:47 +0000
-Received: by mail-pf1-x42a.google.com with SMTP id d2e1a72fcca58-70af5fbf0d5so599264b3a.1;
-        Wed, 10 Jul 2024 07:20:45 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1720621245; x=1721226045; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=Yq8qmUxe7OsJ3HiUvrOPY7PKG0OHbBgQEkBnBrk1gZs=;
-        b=YDarDhKvrjZaPW8Z1pMn9HauFiPVx8P9gPIh+FraMzg5GyALy9603KihuytkRPwmp7
-         4VcLzMJVaOU8muyKNSVFH0iSA5Kf3gQ1lC/LwWMTPn75MMApsq5ODxyy0TyuKVTQR8of
-         tcIFEDZf4RpKFjEUBDcDX2rgEsCz26DJAe1bJgP5GDaFsE4Qxou2qf7SlvILhJYRgjUq
-         S6GOqurVaRiTSngJvVG3W6LpA707QxHqziGR/ax7DwZqC+rN7dY11k8fBinT4NIc7Bx6
-         Ip9I6BbhsvoZx5/tqDhntF0yLUXyMMJBX0dL7xO/2/q/zEWXjyLifpH8IJK/7j/JdUHi
-         ytwQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1720621245; x=1721226045;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=Yq8qmUxe7OsJ3HiUvrOPY7PKG0OHbBgQEkBnBrk1gZs=;
-        b=iljqa5VxOC8j0rVkMDIwrPSiELZHgwXE0uTlGACYy0dSmJ8i5ZcVaBSzCZwtewIwse
-         royucrYn36Nvx2HHZ+PGjANlii1KaLyrf8OOj7LppLenVjVI+U4SdSW19Ncb66bSzkC9
-         UcpCsVlUumaZcdyq6qsu7pb8D/fNBfDW4N8HPbZ6JYNE5IPEtEGftRIDtXzFNJDHqL9h
-         lLavH5xehlZhVYPpFKUgF5qHMGirWUF1SANVn4N6LL7B6NGpy/pZdsBTdwD3Y/vqUojY
-         zoBhnhzK5UuvyE7X+vFuWoDlQk3K5tkWH9uKnYCJl4Uk6cNbJSRdmGFvNPYBqkPrIYHr
-         gWIw==
-X-Forwarded-Encrypted: i=1; AJvYcCViTcagluBuRsa7o/85oX3bvvo0GDgVKl4iSBqt6AgSyM+GyUFZ82ARB7+NAf0aQU+IIImFQK50AaUkvCwNN5V8Hrtpc+/JcAhLR/xsM5Dx6eMypRyYE5Bp5lk+AcwZ8itmDDaUhQUOyTgZQuIxGfxs2r/suWq1f9I=
-X-Gm-Message-State: AOJu0YyHIS9ksGIszQdJhARcixMGcmkb4qmUze8vVdYSODUtJccxOiE2
-	XJ8BqGrLA9G2O+yZFIVFp3yBsD9BlwRBOCPsSLEGly85+1R+RZRx
-X-Google-Smtp-Source: AGHT+IEdyu26qqjrFh1xLle8XNfPPT+H9pNpc9dz7TvWDJQ33IbIaIpaJZR2a7bDRg86cri1br4WUQ==
-X-Received: by 2002:a05:6a20:9145:b0:1c2:8c0c:e60e with SMTP id adf61e73a8af0-1c298c46605mr8533514637.15.1720621244910;
-        Wed, 10 Jul 2024 07:20:44 -0700 (PDT)
-Received: from localhost.localdomain ([113.30.217.222])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-70b4398002bsm3943440b3a.148.2024.07.10.07.20.41
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 10 Jul 2024 07:20:44 -0700 (PDT)
-From: Anand Moon <linux.amoon@gmail.com>
-To: Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>
-Cc: Anand Moon <linux.amoon@gmail.com>,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH v1] arm64: dts: rockchip: Add missing pinctrl for PCIe30x4 node
-Date: Wed, 10 Jul 2024 19:49:56 +0530
-Message-ID: <20240710142001.7234-1-linux.amoon@gmail.com>
-X-Mailer: git-send-email 2.44.0
+	id 1sRYD4-0000000Ao1S-08nA;
+	Wed, 10 Jul 2024 14:22:20 +0000
 MIME-Version: 1.0
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
+	t=1720621333;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=27V6jUOaNytzMrX8tcswA+zOR0z0lNMkdk4MlU12XKo=;
+	b=Pln59aDHanugpPxhabXhnNgy/f3kk/SoEB6XuIRPRD+u2Iny9Y+3kxYXie6bSsQPbxTVqO
+	+SUmN1TgAXAeZ+/jGDSwVcz0nyOzPCDx/CRAbvVY0A1QzLt97MSvw+PBcCPRbHJkAxKER7
+	Z1RwnzuVc2SOKxAXTx4PblsbUH++I437k3+bJjw3Q/dlni6TTEzGjGczn62KlDDaZyXkSf
+	LSYX0rLM6RHO4fgdUzoHQx0mlhHqpmqZ5v5mE76pxgUneoMxYPiW2l6aSsbTR1w3TnaOVW
+	7C0pkf5V2/c+FaHTgiOTo/BOp2DZYdd3cl98sLZJ8+r/WPbQBkCAAmuI0QjyIw==
+Date: Wed, 10 Jul 2024 16:22:12 +0200
+From: Dragan Simic <dsimic@manjaro.org>
+To: Maxime Ripard <mripard@kernel.org>
+Cc: Andy Yan <andyshrk@163.com>, linux-rockchip@lists.infradead.org,
+ dri-devel@lists.freedesktop.org, heiko@sntech.de, hjc@rock-chips.com,
+ andy.yan@rock-chips.com, maarten.lankhorst@linux.intel.com,
+ tzimmermann@suse.de, airlied@gmail.com, daniel@ffwll.ch,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ javierm@redhat.com
+Subject: Re: [PATCH] drm/rockchip: cdn-dp: Remove redundant workarounds for
+ firmware loading
+In-Reply-To: <20240710-smooth-hypnotic-raccoon-b91fba@houat>
+References: <9b7a9e9b88ad8c7489ee1b4c70b8751eeb5cf6f9.1720049413.git.dsimic@manjaro.org>
+ <109c6f19.2559.1907b817a99.Coremail.andyshrk@163.com>
+ <0bf4701d98833609b917983718c610aa@manjaro.org>
+ <2fd3aabd.785b.190914ec1a6.Coremail.andyshrk@163.com>
+ <f0fb9feed2d9262bb4d7c8ade836af62@manjaro.org>
+ <909d072.9028.19096c2429a.Coremail.andyshrk@163.com>
+ <31062b80d3f9e11c339c400a70464f43@manjaro.org>
+ <20240709-exuberant-tentacled-oxpecker-bd1ea0@houat>
+ <b6d630447e6c69e913b76650d910f895@manjaro.org>
+ <20240710-smooth-hypnotic-raccoon-b91fba@houat>
+Message-ID: <a30067db11e586d8eb2c124abe32052a@manjaro.org>
+X-Sender: dsimic@manjaro.org
+Authentication-Results: ORIGINATING;
+	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240710_072046_525870_8ECB244E 
-X-CRM114-Status: GOOD (  12.75  )
+X-CRM114-CacheID: sfid-20240710_072218_558714_50B6692A 
+X-CRM114-Status: GOOD (  18.55  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,66 +79,47 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add missing pinctrl settings for PCIe 3.0 x4 clock request and wake
-signals. Rename node from 'pcie3' to 'pcie30x4' to align with schematic
-nomenclature.
+Hello Maxime,
 
-Signed-off-by: Anand Moon <linux.amoon@gmail.com>
----
- .../boot/dts/rockchip/rk3588-rock-5b.dts      | 20 +++++++++++++------
- 1 file changed, 14 insertions(+), 6 deletions(-)
+On 2024-07-10 09:13, Maxime Ripard wrote:
+> On Tue, Jul 09, 2024 at 06:36:08PM GMT, Dragan Simic wrote:
+>> > > > > As I already wrote earlier, and as the above-linked discussions
+>> > > > > conclude, solving these issues doesn't belong to any specific driver.
+>> > > > > It should be resolved within the kernel's firmware loading mechanism
+>> > > > > instead, and no driver should be specific in that regard.
+>> > > >
+>> > > > IT would be good if it can be resolved within the kernel's  firmware
+>> > > > loading mechanism.
+>> > >
+>> > > ... we'll need this as a systemic solution.
+>> >
+>> > The general policy has been to put drivers that need a firmware as a
+>> > module, and just never build them statically.
+>> 
+>> I totally agree, but if Buildroot builds them statically and provides
+>> no initial ramdisk, we need a better solution than having various 
+>> drivers
+>> attempt to implement their own workarounds.
+> 
+> Buildroot typically allows custom kernel configurations, so it's not
+> really "enforcing" anything like another distro does.
+> 
+> It is definitely targetted towards very stripped down systems, so I
+> guess building the drivers statically is a natural choice, but it works
+> fine with modules too.
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
-index 2e7512676b7e..a9b55b7996cf 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
-@@ -301,7 +301,7 @@ &pcie30phy {
- 
- &pcie3x4 {
- 	pinctrl-names = "default";
--	pinctrl-0 = <&pcie3_rst>;
-+	pinctrl-0 = <&pcie30x4_perstn_m1 &pcie30x4_clkreqn_m1 &pcie30x4_waken_m1>;
- 	reset-gpios = <&gpio4 RK_PB6 GPIO_ACTIVE_HIGH>;
- 	vpcie3v3-supply = <&vcc3v3_pcie30>;
- 	status = "okay";
-@@ -340,14 +340,22 @@ pcie2_2_rst: pcie2-2-rst {
- 		};
- 	};
- 
--	pcie3 {
--		pcie3_rst: pcie3-rst {
--			rockchip,pins = <4 RK_PB6 RK_FUNC_GPIO &pcfg_pull_none>;
--		};
--
-+	pcie30x4 {
- 		pcie3_vcc3v3_en: pcie3-vcc3v3-en {
- 			rockchip,pins = <1 RK_PA4 RK_FUNC_GPIO &pcfg_pull_none>;
- 		};
-+
-+		pcie30x4_clkreqn_m1: pcie30x4-clkreqn-m1 {
-+			rockchip,pins = <4 RK_PB4 RK_FUNC_GPIO &pcfg_pull_up>;
-+		};
-+
-+		pcie30x4_waken_m1: pcie30x4-waken-m1 {
-+			rockchip,pins = <4 RK_PB5 RK_FUNC_GPIO &pcfg_pull_down>;
-+		};
-+
-+		pcie30x4_perstn_m1: pcie30x4-perstn-m1 {
-+			rockchip,pins = <4 RK_PB6 RK_FUNC_GPIO &pcfg_pull_down>;
-+		};
- 	};
- 
- 	usb {
+It all leads to a conclusion that we need better in-kernel support
+for delayed firmware loading, instead of drivers implementing various
+workarounds, for the layouts in which drivers are built statically
+into the kernel image, but the required firmware blobs reside on the
+root filesystem.
 
-base-commit: 34afb82a3c67f869267a26f593b6f8fc6bf35905
--- 
-2.44.0
-
+I'll start working on it, hopefully today. :)
 
 _______________________________________________
 Linux-rockchip mailing list
