@@ -4,50 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 379B1C38150
-	for <linux-rockchip@archiver.kernel.org>; Wed, 10 Jul 2024 07:51:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 28028C38150
+	for <linux-rockchip@archiver.kernel.org>; Wed, 10 Jul 2024 07:59:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=LS02LPb09/yUcqmFOx1OyakM9//G92Dl262zDtv23Rk=; b=qFQw4lV5LNDgeM
-	LF0G+iLgJgfGmaKiNTvw6L5wklLIcwerx/mDhSRTpfTIIygkmUSAPe6cRh338cpU9GyCERTg/758+
-	F3zbfKY9Tzk7OnGISNpvGbo+Xk/QMYqL3ImxOSH5o0bkXjRfxynWxPGByfVSBn3KfVZwwJR8p2orJ
-	iGka1erf8NHV3na0SxOT+G5NX9GJFYr58ODcruACunuFBaOtppMExuebvKZg/T5Mkt5xFIBaZ760e
-	TnaaWSJGStJ3TjMchAQRyQYa5qyv0Ou1Sb2HMGNI/K1QN8EwbeHVH4idkV8alGQon3hAuez9wDCuw
-	GQ/YRDe5SlW2LQD9vIDw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Subject:To:From:Date:
+	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
+	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=MyWI+DKTtEnmfBtUYU4tVp4CXkzcsHPjqA1FQdJhywY=; b=aHZU4xhmA78yCG
+	V5gkaINZikzqcmkcP0DKUNhzIlzvN4zkNZPHKbbCAqfU9Zt9z6J5BV3wkXAdVvJ9Ih0+yeTAFa9OU
+	fOs3WXwmKfb/P+ZF5Ul8zsg0+H5y4Krp0qqlLDw9E2QLJ/39EumdkVP5KJ02jsTsUA++qqDJcNGzs
+	YD/YB/1opFpGyLqoCHgqw12ipfEfTdqYCdCbPRmaGTZqjud7fh3llKB4VrrjFNxGHl1O4PhWyUG0z
+	1tveCRnDbOU0ynSlEtoIH3ae8HUat3+08ksH2tVO4uV+NPjAWLB3vJKFXUUMX0liFgaZg6+NOxmfe
+	Fis5HmMYTyLdevTxgGxQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sRS6t-00000009mwC-19M7;
-	Wed, 10 Jul 2024 07:51:31 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1sRSEH-00000009oaW-2DG9;
+	Wed, 10 Jul 2024 07:59:09 +0000
+Received: from mail.quirkbyte.pl ([94.177.238.152])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sRS6c-00000009msc-0prT;
-	Wed, 10 Jul 2024 07:51:15 +0000
-Received: from i5e860d18.versanet.de ([94.134.13.24] helo=diego.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1sRS6O-0005Or-Ip; Wed, 10 Jul 2024 09:51:00 +0200
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: Anand Moon <linux.amoon@gmail.com>
-Cc: mturquette@baylibre.com, sboyd@kernel.org, robh@kernel.org,
- krzk+dt@kernel.org, conor+dt@kernel.org, quentin.schulz@cherry.de,
- linux-clk@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH 0/6] Binding and driver for "dumb" clock generators
-Date: Wed, 10 Jul 2024 09:50:59 +0200
-Message-ID: <4022386.ZaRXLXkqSa@diego>
-In-Reply-To: <CANAwSgQGoeyy3V9hBNcxFynRgR-rUanUzVN41uFxu0-_OqKKZg@mail.gmail.com>
-References: <20240709123121.1452394-1-heiko@sntech.de>
- <CANAwSgQGoeyy3V9hBNcxFynRgR-rUanUzVN41uFxu0-_OqKKZg@mail.gmail.com>
+	id 1sRSEE-00000009oYz-3Iic
+	for linux-rockchip@lists.infradead.org;
+	Wed, 10 Jul 2024 07:59:08 +0000
+Received: by mail.quirkbyte.pl (Postfix, from userid 1002)
+	id 097478A8AE; Wed, 10 Jul 2024 09:57:00 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=quirkbyte.pl; s=mail;
+	t=1720598243; bh=V4qwQGqC7KpJoyielzRpnopuINFIOvKXsSgJ3ZENIXU=;
+	h=Date:From:To:Subject:From;
+	b=qDY93Nw5jL7m5LYdSTVgPkAfJDnB46yxhiYu+uqyWx/pWnkPg7a4O4Wsq5jVDy3hD
+	 fUQSM3mSoko5yfH0o1/vFKsjWy+2dtllWr54opN+8H3NRJcEjTFIJGU6ldqVysQQ+E
+	 Wk62bY2C7xJ+9nE8z4cXU4vYapEIJ+8pTs9jT0hvhtOtMEjaP2TDFu1T7DSRPxR0gR
+	 P1cgduDKsPEUm5qpWq56/UJDpEavsmp/iT9b/rFN3hN6pxhGdTfjRO+QIxAu/i8VaC
+	 VehQZN9FZvAubah44vjJsQA2AySBHbWtUSKuJ/Z4YAo9kI4vQpM1/bYRyYpMD2CsFS
+	 ttXaNtEYl6Y5Q==
+Received: by mail.quirkbyte.pl for <linux-rockchip@lists.infradead.org>; Wed, 10 Jul 2024 07:56:25 GMT
+Message-ID: <20240710084500-0.1.43.2cjz8.0.59z7a2tpoo@quirkbyte.pl>
+Date: Wed, 10 Jul 2024 07:56:25 GMT
+From: "Norbert Karecki" <norbert.karecki@quirkbyte.pl>
+To: <linux-rockchip@lists.infradead.org>
+Subject: Fotowoltaika - propozycja instalacji
+X-Mailer: mail.quirkbyte.pl
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240710_005114_299791_7B47B46B 
-X-CRM114-Status: GOOD (  33.21  )
+X-CRM114-CacheID: sfid-20240710_005906_969355_0C2FA036 
+X-CRM114-Status: UNSURE (   1.00  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -59,103 +61,23 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Anand,
-
-Am Mittwoch, 10. Juli 2024, 05:02:57 CEST schrieb Anand Moon:
-> On Tue, 9 Jul 2024 at 18:02, Heiko Stuebner <heiko@sntech.de> wrote:
-> >
-> > Rockchip boards with PCIe3 controllers inside the soc (rk3568, rk3588) have
-> > external clock generators on the board to generate the needed 100MHz
-> > reference clock the PCIe3 controller needs.
-> >
-> > Often these clock generators need supplies to be enabled to run.
-> >
-> > Modelling this clock has taken a number of shapes:
-> > - The rk3568 Rock-3a modelled the generator-regulator as "phy-supply" [0]
-> >   &pcie30phy {
-> >         phy-supply = <&vcc3v3_pi6c_03>;
-> >         status = "okay";
-> >   };
-> >   which is of course not part of the binding
-> >
-> > - On the Rock-5-ITX the supply of the clock generator is controlled by
-> >   the same gpio as the regulator supplying the the port connected to the
-> >   pcie30x4 controller, so if this controller probes first, both
-> >   controllers will just run. But if the pcie30x2 controller probes first
-> >   (which has a different supply), the controller will stall at the first
-> >   dbi read.
-> >
-> > - Recent Theobroma-Systems boards (Jaguar and Tiger) modelled their
-> >   generator as a combination of fixed clock and gpio-gate, which works
-> >   because the generator's vdd-supply is always on and only the output-
-> >   enable pin needs to be toggled.
-> >
-> >
-> > So this series attempts to improve the situation by allowing to model
-> > these clock generators as actual entities in the devicetree, to not have
-> > them just accidentially work or break bindings.
-> >
-> 
-> I was wondering if these changes apply to Radxa Rock 5b SbC, it does not have
-> pi6c557 clock generator but the schematic supports GEN_CLK_100MHZ is
-> input to CLKin0 which is generated via the VCC3V3_PI6C_05 (100MHz,3.3V,3225)
-> regulator.
-
-yes, that is the same setup as on the Rock 5 ITX, see it's patch in
-this series.
-
-The difference being that for your Rock 5b it already works by accident,
-as the pcie30x4 port-supply and the supply for the clock-generator are
-controlled by the same gpio.
-
-So it does make sense to model this correctly for correctness sake, but
-there is no immediate need for action, as there is no fault happening
-like on the Rock 5 ITX with its two separate ports.
-
-
-Heiko
-
-
-> > [0] https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts#n605
-> >
-> > Heiko Stuebner (6):
-> >   dt-bindings: clocks: add binding for generic clock-generators
-> >   clk: add driver for generic clock generators
-> >   arm64: dts: rockchip: fix the pcie clock generator on Rock 5 ITX
-> >   arm64: dts: rockchip: use clock-generator for pcie-refclk on
-> >     rk3588-jaguar
-> >   arm64: dts: rockchip: use clock-generator for pcie-refclk on
-> >     rk3588-tiger
-> >   arm64: dts: rockchip: add pinctrl for clk-generator gpio on
-> >     rk3588-tiger
-> >
-> >  .../bindings/clock/clock-generator.yaml       |  62 ++++++++
-> >  .../arm64/boot/dts/rockchip/rk3588-jaguar.dts |  13 +-
-> >  .../boot/dts/rockchip/rk3588-rock-5itx.dts    |  34 ++++-
-> >  .../arm64/boot/dts/rockchip/rk3588-tiger.dtsi |  21 +--
-> >  drivers/clk/Kconfig                           |   7 +
-> >  drivers/clk/Makefile                          |   1 +
-> >  drivers/clk/clk-generator.c                   | 133 ++++++++++++++++++
-> >  7 files changed, 251 insertions(+), 20 deletions(-)
-> >  create mode 100644 Documentation/devicetree/bindings/clock/clock-generator.yaml
-> >  create mode 100644 drivers/clk/clk-generator.c
-> >
-> > --
-> > 2.39.2
-> >
-> >
-> 
-
-
-
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+RHppZcWEIGRvYnJ5LAogCkN6eSByb3p3YcW8YWxpIFBhxYRzdHdvIG1vbnRhxbwgc3lzdGVtdSBm
+b3Rvd29sdGFpY3puZWdvPwogCkluc3RhbGFjamEgZm90b3dvbHRhaWN6bmEgamVzdCBuYWpsZXBz
+enltIHNwb3NvYmVtIG5hIG9ibmnFvGVuaWUgd3lzb2tvxZtjaSByYWNodW5rw7N3IHphIHByxIVk
+IChwb3pvc3RhasSFIHR5bGtvIG9wxYJhdHkgc3RhxYJlKSBpIHphYmV6cGllY3plbmllIHNpxJkg
+cHJ6ZWQgcm9zbsSFY3ltaSBjZW5hbWkgZW5lcmdpaSBlbGVrdHJ5Y3puZWouIEplc3QgdG8gdyBw
+ZcWCbmkgb2RuYXdpYWxuZSBpIGJlemVtaXN5am5lIMW6csOzZMWCbyBlbmVyZ2lpLCBkemnEmWtp
+IGN6ZW11IHByenljenluaWFteSBzacSZIGRvIG9jaHJvbnkgxZtyb2Rvd2lza2EgbmF0dXJhbG5l
+Z28uCiAKRHppYcWCYW15IG9kIHdpZWx1IGxhdCBuYSByeW5rdSBlbmVyZ2V0eWN6bnltLiBQcnp5
+Z290dWplbXkgcHJvamVrdCwgd3ljZW7EmSBvcmF6IGtvbXBsZWtzb3dvIHd5a29uYW15IGkgemfF
+gm9zaW15IHJlYWxpemFjasSZIGRvIHpha8WCYWR1IGVuZXJnZXR5Y3puZWdvLiAKIApDenkgY2hj
+xIUgUGHFhHN0d28gcG96bmHEhyBuYXN6xIUgcHJvcG96eWNqxJk/ICAKCgpQb3pkcmF3aWFtCk5v
+cmJlcnQgS2FyZWNraQoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmlu
+ZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9s
+aW51eC1yb2NrY2hpcAo=
