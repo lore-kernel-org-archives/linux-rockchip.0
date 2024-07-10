@@ -4,77 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9B272C3DA41
-	for <linux-rockchip@archiver.kernel.org>; Wed, 10 Jul 2024 03:03:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BEF9BC38150
+	for <linux-rockchip@archiver.kernel.org>; Wed, 10 Jul 2024 07:01:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=L/S4petQCcdAzdqgosm2vC0woEryGsCMSU20MBI9vc0=; b=QBrhoxDKlWJ8Xw
-	M5LfVAuzeI+Bn+p5NtSNrvNRejs9w9fI70A13VmQGkIvfSMR1tU6F3EP1HIm6AfDL9acUMbXObYqi
-	NIjxF0No5Uz+GuY36KVRdLtTjs6KC2d4UTrJEi4EdzJKlXIVAxzISI1zps+Y3ewIhVSZpdWUJPdKt
-	eLyFnRJjT0scuC4yuCD1TmzYlNqL/4q9MVLPMCK/aJk5Tln7+9npdo8pu73znq67D8JwHFIK/tqPz
-	7ij5gCmwry9BTIGCbB4XOWgX5oB814GhNVufiVyLTH4GF80W9YwdRvyZcs+cnvN+YCRtUGlLAUGr3
-	7D+2Ero5hHTfUQRsev2A==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=VRAQeZqnxdNX4uCg+R3AecQzBJcRQbjWt3S2pereMtw=; b=WnmSCCE9dXUetA3rSqrXgBkDCX
+	pHsXwL84eKwVrEen8G3obB7Q76jomNwFeHcX/WeRp16ZSEM7bR1L2PWGBqFrUsm0f99vmzY/pMzZH
+	AOVHutlJPoEcw39ZtNH39bgEZmdgl9x3PLcjJbxM3pOcCrb8CdJVQudrFKIOUSqS0uYS2oUgN8Yzy
+	J/RfzUy3cYddUOuXfenH1ifPAHBHi4GHeWLarNVPYAfZ19I3o1c9K3JhqYargWwiQMn55s0RtE9di
+	k56HWcQ5dzaNoiKuBDbg1a61b+6cOVZpwSty3gCSasdRkYU/EHc8aZDljntoaojRZ2pXwtSppok+Q
+	vL02q9Pw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sRNcA-00000009Fax-0bkm;
-	Wed, 10 Jul 2024 03:03:30 +0000
-Received: from mail-oi1-x22f.google.com ([2607:f8b0:4864:20::22f])
+	id 1sRRK7-00000009gA1-24Vt;
+	Wed, 10 Jul 2024 07:01:07 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sRNbs-00000009FTN-06Nh;
-	Wed, 10 Jul 2024 03:03:13 +0000
-Received: by mail-oi1-x22f.google.com with SMTP id 5614622812f47-3d9272287easo2088924b6e.2;
-        Tue, 09 Jul 2024 20:03:11 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1720580590; x=1721185390; darn=lists.infradead.org;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=KKkEn8gtIME2o7SskHC2V7w9XB0tpg/NcovnDfSPb3k=;
-        b=Y4zibXVy/+2AGceME+7nEHpZdNhqcQptrZ/y0WxDs62eCbB6We4epGzRtwab62cbJZ
-         1HKlFOfYwXflgM5uK+23oDwvkQh9lm9vOEg2KFERat4ztHbAimMN9vGA3tmvLOHWFRdo
-         TGYCPuRnEe1qxCUq0sOsGZGcRqFZlHZ/m/V0XQaOLA5bG6EzFw93XACw310Lvu1zTxh8
-         jCV3xFdSp0NbtsIevr2/EFyeBtPiDPf/WhIyM2ury6ZJqKn0bYHSG1RDQiQnqZTgcijR
-         I4bSaRQBqL/Il90gJ7stnlBE8dei1E/bNil883MckX9xVy7SSmvUOT8aMFBWaHRhGGV2
-         faUg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1720580590; x=1721185390;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=KKkEn8gtIME2o7SskHC2V7w9XB0tpg/NcovnDfSPb3k=;
-        b=X0VOgr+6Ke0IPeaah7JGQMOOlc55TWKItCYqjK9DHoX8jWHA85Fu4IJLSjQZ0sxBDb
-         4dvTSjfhl9rGqTl5OiJco9PQb9MMNbBwwvTG71aATSiIQRRbRNV6QsYQ+1bV95CKN0yp
-         PkMU2rDI91xQ+44krBeBVE+3AJdxftjBPNYqjQb8/btslrS35ulb824zUI4WbPMyzB7M
-         0+Sc2VXOsZLK0L3WhGUFm0Nw8rjkXCeO6IbW0ag2XZmUR6fBCnlQohc9vSzcraYM/h5g
-         ofxvReBOUf2FzICf+7jTgLfjCy1MCYT0QWAhAH/fMsVYz7uv1YgmrzGnD/EcacP2HNAD
-         TwkA==
-X-Forwarded-Encrypted: i=1; AJvYcCV2DZvcqxavQxMEQfkn0Su6uhbkwBwKxpjNPQCm4M2dWMRBBe0bBR8JhOI6HtSKncMZZDg9dyhlpL8k25TsNUuydXVwcauYDVMjpWeXuOHVDVBw3tDageqQ037jENm0yagtDOU5p71VQwftfRx8WBDFrmCoDeoFsZ4=
-X-Gm-Message-State: AOJu0Yx/fW80QyD1RfBrmK8xWwoZbKcaKnUcEZK/4SGKT/ye1/VIdtKB
-	6YWVhFXJmDRhQqWbqOCNUFeviIBa1iV0NN/ceh2u0yEJgF+aDrjJ8YdvBx3Mpr4Zd/G6hKrHLv5
-	Jtqh/NNoIEMOwit5j3z2mUx/7UHA=
-X-Google-Smtp-Source: AGHT+IFgagPufhfO3kVQfItv3SWrXC3htPT/1kAkqIC6JWUhjoj+56zpXjnNVV8XcysieMT0AiF5k6pFInYg5EvGmSk=
-X-Received: by 2002:a05:6808:bd4:b0:3d9:3649:908a with SMTP id
- 5614622812f47-3d93c0b5c09mr4527199b6e.58.1720580590556; Tue, 09 Jul 2024
- 20:03:10 -0700 (PDT)
+	id 1sRRJi-00000009g2J-0E2J;
+	Wed, 10 Jul 2024 07:00:43 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 1CA7560659;
+	Wed, 10 Jul 2024 07:00:41 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 71010C32781;
+	Wed, 10 Jul 2024 07:00:40 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1720594840;
+	bh=x8GBngejj0m77ddusgbzZvxU8YJqB49Y9l+UOIB4xmg=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=UMbZNrInU+R3SFzHh1k6lwaOD7cMdHRtOLtPAfepFHCUCGV3m2QhuaxfZmACJ95Pu
+	 7EMjTYfHHKPtlm8Rm8+BbFK2VNR6rzK62fBB/qCq0KC2q4ZEgUqYAqnJCcjKgkD6zi
+	 W3AFN5eqkm+yZVVWcLuYiDTL4k2okPpT0a7dO0D55hfhWJ/9D4YD1LIA/wnHPaS7XM
+	 Pa/VLN1d37xlf53TITz02NTWdTf3qagr0Ng+6kCaHquQEtkgFQJslS7XJb807IqIMa
+	 2PTOdrxyjUKvjz5/OdOk3hTWn/p6IZl8BDyDD98WhrcPo4cdf2+aYCorC2TGcoqriV
+	 y4Bm3wZMTjiEQ==
+Date: Wed, 10 Jul 2024 09:00:37 +0200
+From: Maxime Ripard <mripard@kernel.org>
+To: Johan Jonker <jbx6244@gmail.com>
+Cc: Andy Yan <andy.yan@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, 
+	hjc@rock-chips.com, maarten.lankhorst@linux.intel.com, tzimmermann@suse.de, 
+	airlied@gmail.com, daniel@ffwll.ch, dri-devel@lists.freedesktop.org, 
+	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v1] drm/rockchip: rk3066_hdmi: change to bridge driver
+ mode
+Message-ID: <20240710-daft-brave-woodlouse-eb76b7@houat>
+References: <08fc2878-722e-4884-94f3-19ec4717cccd@gmail.com>
 MIME-Version: 1.0
-References: <20240709123121.1452394-1-heiko@sntech.de>
-In-Reply-To: <20240709123121.1452394-1-heiko@sntech.de>
-From: Anand Moon <linux.amoon@gmail.com>
-Date: Wed, 10 Jul 2024 08:32:57 +0530
-Message-ID: <CANAwSgQGoeyy3V9hBNcxFynRgR-rUanUzVN41uFxu0-_OqKKZg@mail.gmail.com>
-Subject: Re: [PATCH 0/6] Binding and driver for "dumb" clock generators
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: mturquette@baylibre.com, sboyd@kernel.org, robh@kernel.org, 
-	krzk+dt@kernel.org, conor+dt@kernel.org, quentin.schulz@cherry.de, 
-	linux-clk@vger.kernel.org, devicetree@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org
+In-Reply-To: <08fc2878-722e-4884-94f3-19ec4717cccd@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240709_200312_088575_5C26E4DA 
-X-CRM114-Status: GOOD (  26.40  )
+X-CRM114-CacheID: sfid-20240710_000042_161582_740096FE 
+X-CRM114-Status: UNSURE (   9.29  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,88 +69,59 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============6284729675327637477=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Heiko,
 
-On Tue, 9 Jul 2024 at 18:02, Heiko Stuebner <heiko@sntech.de> wrote:
->
-> Rockchip boards with PCIe3 controllers inside the soc (rk3568, rk3588) have
-> external clock generators on the board to generate the needed 100MHz
-> reference clock the PCIe3 controller needs.
->
-> Often these clock generators need supplies to be enabled to run.
->
-> Modelling this clock has taken a number of shapes:
-> - The rk3568 Rock-3a modelled the generator-regulator as "phy-supply" [0]
->   &pcie30phy {
->         phy-supply = <&vcc3v3_pi6c_03>;
->         status = "okay";
->   };
->   which is of course not part of the binding
->
-> - On the Rock-5-ITX the supply of the clock generator is controlled by
->   the same gpio as the regulator supplying the the port connected to the
->   pcie30x4 controller, so if this controller probes first, both
->   controllers will just run. But if the pcie30x2 controller probes first
->   (which has a different supply), the controller will stall at the first
->   dbi read.
->
-> - Recent Theobroma-Systems boards (Jaguar and Tiger) modelled their
->   generator as a combination of fixed clock and gpio-gate, which works
->   because the generator's vdd-supply is always on and only the output-
->   enable pin needs to be toggled.
->
->
-> So this series attempts to improve the situation by allowing to model
-> these clock generators as actual entities in the devicetree, to not have
-> them just accidentially work or break bindings.
->
+--===============6284729675327637477==
+Content-Type: multipart/signed; micalg=pgp-sha384;
+	protocol="application/pgp-signature"; boundary="55im7zqn4h44tcza"
+Content-Disposition: inline
 
-I was wondering if these changes apply to Radxa Rock 5b SbC, it does not have
-pi6c557 clock generator but the schematic supports GEN_CLK_100MHZ is
-input to CLKin0 which is generated via the VCC3V3_PI6C_05 (100MHz,3.3V,3225)
-regulator.
 
-[1] https://dl.radxa.com/rock5/5b/docs/hw/radxa_rock5b_v13_sch.pdf
+--55im7zqn4h44tcza
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Thanks
--Anand
+Hi,
 
->
-> [0] https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts#n605
->
-> Heiko Stuebner (6):
->   dt-bindings: clocks: add binding for generic clock-generators
->   clk: add driver for generic clock generators
->   arm64: dts: rockchip: fix the pcie clock generator on Rock 5 ITX
->   arm64: dts: rockchip: use clock-generator for pcie-refclk on
->     rk3588-jaguar
->   arm64: dts: rockchip: use clock-generator for pcie-refclk on
->     rk3588-tiger
->   arm64: dts: rockchip: add pinctrl for clk-generator gpio on
->     rk3588-tiger
->
->  .../bindings/clock/clock-generator.yaml       |  62 ++++++++
->  .../arm64/boot/dts/rockchip/rk3588-jaguar.dts |  13 +-
->  .../boot/dts/rockchip/rk3588-rock-5itx.dts    |  34 ++++-
->  .../arm64/boot/dts/rockchip/rk3588-tiger.dtsi |  21 +--
->  drivers/clk/Kconfig                           |   7 +
->  drivers/clk/Makefile                          |   1 +
->  drivers/clk/clk-generator.c                   | 133 ++++++++++++++++++
->  7 files changed, 251 insertions(+), 20 deletions(-)
->  create mode 100644 Documentation/devicetree/bindings/clock/clock-generator.yaml
->  create mode 100644 drivers/clk/clk-generator.c
->
-> --
-> 2.39.2
->
->
+On Tue, Jul 09, 2024 at 08:01:26PM GMT, Johan Jonker wrote:
+> Change rk3066_hdmi.c to bridge driver mode.
+>=20
+> Signed-off-by: Johan Jonker <jbx6244@gmail.com>
+
+Generally speaking, I think you should use the new HDMI bridge
+infrastructure that recently landed in drm-misc-next.
+
+Maxime
+
+--55im7zqn4h44tcza
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iJUEABMJAB0WIQTkHFbLp4ejekA/qfgnX84Zoj2+dgUCZo4xkAAKCRAnX84Zoj2+
+dryRAX9YiJOsTbpyWzR2aqSOG506OuP0LZ1kg1b+brmWtuQR3QWgW3B3LGcd5c0Q
+IzhZ+zEBfjJE9PFtVPe+zJqbdBk4Td9pLMrSbYo1e0i+pLwapXFH+E4Mo3k5i9M8
+ZiupE7/QtA==
+=elhX
+-----END PGP SIGNATURE-----
+
+--55im7zqn4h44tcza--
+
+
+--===============6284729675327637477==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============6284729675327637477==--
+
