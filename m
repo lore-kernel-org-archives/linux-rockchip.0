@@ -4,157 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9D124CA0EC0
-	for <linux-rockchip@archiver.kernel.org>; Wed,  6 Aug 2025 10:43:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EE3C1CA0EC2
+	for <linux-rockchip@archiver.kernel.org>; Wed,  6 Aug 2025 10:43:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=g5LNNCqtksoChR9qrDMsmdNrsLS1L0qngKk4/Rhd4Sg=; b=BM9LK/LbOKui+L
-	90aR7LoqBIaPndDKiUibfaJBfvQ5m0sP2piXPm1Nsg8JHW+mrBwRdz+EiUNEa8ME8C8h8aUvZyWyc
-	KfAyynjsQ9qcfRG1uAP0qwv9yEtb7O/W4PCVYooevJ6Zx1RdqZCSDa0zc2YY2D+J9hz1BvRHD1LC2
-	iRo42cVPkilBy4JDt8y/0z5jVZ0YbGSlIvUfZXtdrFiptSMMerwX0rf73h9B0NOdBvnYPZYKUOEAu
-	rKmPIfEXvDgAWoKbn45f8hTEUgoJ8AAIbM/WBnvknkXplxMxDnH6W+RH8BPEF0AiKVOsZez8/uxGS
-	TtECgxK/lu16CL9jUZyw==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=2nngCPrFoND7SKHXGVGfKVEt9XLzJ/nv7Kp9BePegug=; b=vYn7x/hv17X9j9
+	kQjx3AHyETedFx0jFjudwvEsVNJXzix+E1ZyZ2WXpx4R9MMTiyORX131FfaHtF4IoRnv+juL37GCW
+	H7bYZBC39EOSlwjH11iSNroeftztIxv25VM37W6ikOPde/ej7XN2Htne4BOBVHgr/9Ek0OtKJKP8f
+	iHj4pBaolT/3e2cihdzcnD0hoXrWkqT4Q04mFVNM0Tokl6r7d+h68k84gWTVPb0Msm1ZNmeMGx2Rv
+	s/nEUgUmQuhoVGvGYipKBzjs50wpmBz/4m7OIrBWS/lppH1miF0W7XNv8sttKuJmB5eNe82ZfsWLt
+	kufEpwMotEwgOePpsT9w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ujbbm-0000000EvMo-1GEW;
-	Wed, 06 Aug 2025 10:42:58 +0000
-Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
+	id 1ujbbs-0000000EvQF-0OjU;
+	Wed, 06 Aug 2025 10:43:04 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rrvee-0000000EkNi-2XAb;
-	Wed, 03 Apr 2024 08:07:40 +0000
+	id 1sRtfB-0000000E7RR-2JUr;
+	Thu, 11 Jul 2024 13:16:47 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id A376DCE210F;
-	Wed,  3 Apr 2024 08:07:29 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9555FC433C7;
-	Wed,  3 Apr 2024 08:07:08 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 9831761A8E;
+	Thu, 11 Jul 2024 13:16:44 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0DEA8C4AF07;
+	Thu, 11 Jul 2024 13:16:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1712131648;
-	bh=K2ePQOaggCQbp9MAuVhX6tyGJTkfITqYlV3FRyD1b2w=;
-	h=From:To:Cc:Subject:Date:From;
-	b=i9S2rWNSxBnVceX/PhEYHUL/8obuw7YBD3dJv3NpxgtqFmbZ6YmcytIk5F3iE5aJR
-	 I5RYRukVlaohxFlUlx3DoVo8ioTOKPq24ESuwErVo02d8QkqEyqWnOCLJPy3IIKQQU
-	 hPSJJJ28UFYnjJaOw9nBVZfRfW9z44J6zH3uuTF5it8w/Z071qPjEqTUM2WnMMrizN
-	 fO98GSAxPEoZV8r5mdONzcx9Bk+cWCKiyR3aI2XXY3Z1B5LcdC6almvWr6dDKTwDko
-	 dlyuak8JP+s7GrNn1iYACGO+Vywch0Qm7yXwZNXpNcwyBGG5wOlDd55NN/VlxGiFO6
-	 vEIx/q6HxkU2Q==
-From: Arnd Bergmann <arnd@kernel.org>
-To: linux-kernel@vger.kernel.org
-Cc: Arnd Bergmann <arnd@arndb.de>,
-	Michael Ellerman <mpe@ellerman.id.au>,
-	Christophe Leroy <christophe.leroy@csgroup.eu>,
-	Damien Le Moal <dlemoal@kernel.org>,
-	Jiri Kosina <jikos@kernel.org>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Corey Minyard <minyard@acm.org>,
-	Peter Huewe <peterhuewe@gmx.de>,
-	Jarkko Sakkinen <jarkko@kernel.org>,
-	Tero Kristo <kristo@kernel.org>,
-	Stephen Boyd <sboyd@kernel.org>,
-	Ian Abbott <abbotti@mev.co.uk>,
-	H Hartley Sweeten <hsweeten@visionengravers.com>,
-	Srinivas Pandruvada <srinivas.pandruvada@linux.intel.com>,
-	Len Brown <lenb@kernel.org>,
-	"Rafael J. Wysocki" <rafael@kernel.org>,
-	John Allen <john.allen@amd.com>,
-	Herbert Xu <herbert@gondor.apana.org.au>,
-	Vinod Koul <vkoul@kernel.org>,
-	Ard Biesheuvel <ardb@kernel.org>,
-	Bjorn Andersson <andersson@kernel.org>,
-	Moritz Fischer <mdf@kernel.org>,
-	Liviu Dudau <liviu.dudau@arm.com>,
-	Benjamin Tissoires <benjamin.tissoires@redhat.com>,
-	Andi Shyti <andi.shyti@kernel.org>,
-	Michael Hennerich <michael.hennerich@analog.com>,
-	Peter Rosin <peda@axentia.se>,
-	Lars-Peter Clausen <lars@metafoo.de>,
-	Jonathan Cameron <jic23@kernel.org>,
-	Dmitry Torokhov <dmitry.torokhov@gmail.com>,
-	Markuss Broks <markuss.broks@gmail.com>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Lee Jones <lee@kernel.org>,
-	Jakub Kicinski <kuba@kernel.org>,
-	Shyam Sundar S K <Shyam-sundar.S-k@amd.com>,
-	Iyappan Subramanian <iyappan@os.amperecomputing.com>,
-	Yisen Zhuang <yisen.zhuang@huawei.com>,
-	Stanislaw Gruszka <stf_xl@wp.pl>,
-	Kalle Valo <kvalo@kernel.org>,
-	Sebastian Reichel <sre@kernel.org>,
-	Tony Lindgren <tony@atomide.com>,
-	Mark Brown <broonie@kernel.org>,
-	Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	Xiang Chen <chenxiang66@hisilicon.com>,
-	"Martin K. Petersen" <martin.petersen@oracle.com>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
-	Vaibhav Hiremath <hvaibhav.linux@gmail.com>,
-	Alex Elder <elder@kernel.org>,
-	Jiri Slaby <jirislaby@kernel.org>,
-	Jacky Huang <ychuang3@nuvoton.com>,
-	Helge Deller <deller@gmx.de>,
-	Christoph Hellwig <hch@lst.de>,
-	Robin Murphy <robin.murphy@arm.com>,
-	Steven Rostedt <rostedt@goodmis.org>,
-	Masami Hiramatsu <mhiramat@kernel.org>,
-	Andrew Morton <akpm@linux-foundation.org>,
-	Kees Cook <keescook@chromium.org>,
-	Trond Myklebust <trond.myklebust@hammerspace.com>,
-	Anna Schumaker <anna@kernel.org>,
-	Masahiro Yamada <masahiroy@kernel.org>,
-	Nathan Chancellor <nathan@kernel.org>,
-	Takashi Iwai <tiwai@suse.com>,
-	linuxppc-dev@lists.ozlabs.org,
-	linux-ide@vger.kernel.org,
-	openipmi-developer@lists.sourceforge.net,
-	linux-integrity@vger.kernel.org,
-	linux-omap@vger.kernel.org,
-	linux-clk@vger.kernel.org,
-	linux-pm@vger.kernel.org,
-	linux-crypto@vger.kernel.org,
-	dmaengine@vger.kernel.org,
-	linux-efi@vger.kernel.org,
-	linux-arm-msm@vger.kernel.org,
-	linux-fpga@vger.kernel.org,
-	dri-devel@lists.freedesktop.org,
-	linux-input@vger.kernel.org,
-	linux-i2c@vger.kernel.org,
-	linux-iio@vger.kernel.org,
-	linux-stm32@st-md-mailman.stormreply.com,
-	linux-arm-kernel@lists.infradead.org,
-	netdev@vger.kernel.org,
-	linux-leds@vger.kernel.org,
-	linux-wireless@vger.kernel.org,
-	linux-rtc@vger.kernel.org,
-	linux-scsi@vger.kernel.org,
-	linux-spi@vger.kernel.org,
-	linux-amlogic@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-samsung-soc@vger.kernel.org,
-	greybus-dev@lists.linaro.org,
-	linux-staging@lists.linux.dev,
-	linux-serial@vger.kernel.org,
-	linux-usb@vger.kernel.org,
-	linux-fbdev@vger.kernel.org,
-	iommu@lists.linux.dev,
-	linux-trace-kernel@vger.kernel.org,
-	kasan-dev@googlegroups.com,
-	linux-hardening@vger.kernel.org,
-	linux-nfs@vger.kernel.org,
-	linux-kbuild@vger.kernel.org,
-	alsa-devel@alsa-project.org,
-	linux-sound@vger.kernel.org
-Subject: [PATCH 00/34] address all -Wunused-const warnings
-Date: Wed,  3 Apr 2024 10:06:18 +0200
-Message-Id: <20240403080702.3509288-1-arnd@kernel.org>
-X-Mailer: git-send-email 2.39.2
+	s=k20201202; t=1720703804;
+	bh=r4dU6vqYjav3VvaXX3Sjsxc+xsxGdgu1+j2zgdtBir0=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=p6+2Cwc3E4O2uSx+DH2Km80jUBJZO8J64ERrKxq9KkUeFczRflG9OflmEO510OaXv
+	 45jt2cHUGxBY/BUC0Z9hW6R8nyC6DamtRdsZkHJARIg7E3kp7GzysSngCujqlP3VWR
+	 TPqx6sTZQOFskGr1UzbUnP1+s/mtIHMsYSvjvwH86bewjS89AL3t0A4IeTK4ozMmE9
+	 VfQlqnSZYJdUae8LIwJEfllYADu4Q5SdM6BISkS88tS/ThyaimP+0SKo9mM2mVW7a1
+	 WrZ7yUkx93n0H/pTz8Qc0943VkrKQagoUfasatX2jprIFXJOAYW6pqWFKD3Q2FcVk5
+	 vMsq9BOw/f7RA==
+Date: Thu, 11 Jul 2024 15:16:40 +0200
+From: Andi Shyti <andi.shyti@kernel.org>
+To: Wolfram Sang <wsa+renesas@sang-engineering.com>
+Cc: linux-i2c@vger.kernel.org, Ajay Gupta <ajayg@nvidia.com>, 
+	Alain Volmat <alain.volmat@foss.st.com>, Alexandre Torgue <alexandre.torgue@foss.st.com>, 
+	Andreas =?utf-8?Q?F=C3=A4rber?= <afaerber@suse.de>, Andrew Lunn <andrew@lunn.ch>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, asahi@lists.linux.dev, 
+	Baolin Wang <baolin.wang@linux.alibaba.com>, Bartosz Golaszewski <brgl@bgdev.pl>, 
+	Baruch Siach <baruch@tkos.co.il>, Bence =?utf-8?B?Q3PDs2vDoXM=?= <bence98@sch.bme.hu>, 
+	Benson Leung <bleung@chromium.org>, Binbin Zhou <zhoubinbin@loongson.cn>, 
+	Chen-Yu Tsai <wens@csie.org>, Chris Brandt <chris.brandt@renesas.com>, 
+	Chris Packham <chris.packham@alliedtelesis.co.nz>, chrome-platform@lists.linux.dev, 
+	Chunyan Zhang <zhang.lyra@gmail.com>, Conghui Chen <conghui.chen@intel.com>, 
+	Eddie James <eajames@linux.ibm.com>, Fabrizio Castro <fabrizio.castro.jz@renesas.com>, 
+	Florian Fainelli <florian.fainelli@broadcom.com>, Gregory CLEMENT <gregory.clement@bootlin.com>, 
+	Guenter Roeck <linux@roeck-us.net>, Hans de Goede <hdegoede@redhat.com>, 
+	Hans Hu <hanshu@zhaoxin.com>, Hector Martin <marcan@marcan.st>, 
+	Heiko Stuebner <heiko@sntech.de>, Jean Delvare <jdelvare@suse.com>, 
+	Jernej Skrabec <jernej.skrabec@gmail.com>, Jochen Friedrich <jochen@scram.de>, 
+	Jonathan Hunter <jonathanh@nvidia.com>, Kamal Dasu <kamal.dasu@broadcom.com>, 
+	Kunihiko Hayashi <hayashi.kunihiko@socionext.com>, linux-actions@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	linux-mediatek@lists.infradead.org, linux-mips@vger.kernel.org, linuxppc-dev@lists.ozlabs.org, 
+	linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+	linux-rpi-kernel@lists.infradead.org, linux-stm32@st-md-mailman.stormreply.com, 
+	linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org, 
+	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, Masami Hiramatsu <mhiramat@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, 
+	Michael Ellerman <mpe@ellerman.id.au>, Michael Shych <michaelsh@nvidia.com>, openbmc@lists.ozlabs.org, 
+	Orson Zhai <orsonzhai@gmail.com>, Patrice Chotard <patrice.chotard@foss.st.com>, 
+	Paul Cercueil <paul@crapouillou.net>, Peter Korsgaard <peter@korsgaard.com>, 
+	Pierre-Yves MORDRET <pierre-yves.mordret@foss.st.com>, Ray Jui <rjui@broadcom.com>, Robert Richter <rric@kernel.org>, 
+	Samuel Holland <samuel@sholland.org>, Scott Branden <sbranden@broadcom.com>, Stefan Roese <sr@denx.de>, 
+	Sven Peter <sven@svenpeter.dev>, Thierry Reding <thierry.reding@gmail.com>, 
+	Thor Thayer <thor.thayer@linux.intel.com>, Till Harbaum <till@harbaum.org>, 
+	Vadim Pasternak <vadimp@nvidia.com>, Viresh Kumar <viresh.kumar@linaro.org>, 
+	virtualization@lists.linux.dev, Vladimir Zapolskiy <vz@mleia.com>, 
+	Yicong Yang <yangyicong@hisilicon.com>
+Subject: Re: [PATCH v2 00/60] i2c: reword first drivers according to newest
+ specification
+Message-ID: <nbi3fngfcipt35gzguk2mh4zzh3vy5a5gsk7dti5smm2iimytl@drm7p2iqsinp>
+References: <20240706112116.24543-1-wsa+renesas@sang-engineering.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20240706112116.24543-1-wsa+renesas@sang-engineering.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240403_010733_257544_84FFAEA6 
-X-CRM114-Status: GOOD (  26.49  )
+X-CRM114-CacheID: sfid-20240711_061645_731888_2E3B40D0 
+X-CRM114-Status: GOOD (  25.43  )
 X-Mailman-Approved-At: Wed, 06 Aug 2025 03:42:49 -0700
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -172,254 +105,188 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Arnd Bergmann <arnd@arndb.de>
+Hi Wolfram,
 
-Compilers traditionally warn for unused 'static' variables, but not
-if they are constant. The reason here is a custom for C++ programmers
-to define named constants as 'static const' variables in header files
-instead of using macros or enums.
+pushed in i2c/i2c-host.
 
-In W=1 builds, we get warnings only static const variables in C
-files, but not in headers, which is a good compromise, but this still
-produces warning output in at least 30 files. These warnings are
-almost all harmless, but also trivial to fix, and there is no
-good reason to warn only about the non-const variables being unused.
+Thanks for this big work, at the end it turned out quite nice and
+I'm happy of the outcome!
 
-I've gone through all the files that I found using randconfig and
-allmodconfig builds and created patches to avoid these warnings,
-with the goal of retaining a clean build once the option is enabled
-by default.
+Thanks
+Andi
 
-Unfortunately, there is one fairly large patch ("drivers: remove
-incorrect of_match_ptr/ACPI_PTR annotations") that touches
-34 individual drivers that all need the same one-line change.
-If necessary, I can split it up by driver or by subsystem,
-but at least for reviewing I would keep it as one piece for
-the moment.
-
-Please merge the individual patches through subsystem trees.
-I expect that some of these will have to go through multiple
-revisions before they are picked up, so anything that gets
-applied early saves me from resending.
-
-        Arnd
-
-Arnd Bergmann (31):
-  powerpc/fsl-soc: hide unused const variable
-  ubsan: fix unused variable warning in test module
-  platform: goldfish: remove ACPI_PTR() annotations
-  i2c: pxa: hide unused icr_bits[] variable
-  3c515: remove unused 'mtu' variable
-  tracing: hide unused ftrace_event_id_fops
-  Input: synaptics: hide unused smbus_pnp_ids[] array
-  power: rt9455: hide unused rt9455_boost_voltage_values
-  efi: sysfb: don't build when EFI is disabled
-  clk: ti: dpll: fix incorrect #ifdef checks
-  apm-emulation: hide an unused variable
-  sisfb: hide unused variables
-  dma/congiguous: avoid warning about unused size_bytes
-  leds: apu: remove duplicate DMI lookup data
-  iio: ad5755: hook up of_device_id lookup to platform driver
-  greybus: arche-ctrl: move device table to its right location
-  lib: checksum: hide unused expected_csum_ipv6_magic[]
-  sunrpc: suppress warnings for unused procfs functions
-  comedi: ni_atmio: avoid warning for unused device_ids[] table
-  iwlegacy: don't warn for unused variables with DEBUG_FS=n
-  drm/komeda: don't warn for unused debugfs files
-  firmware: qcom_scm: mark qcom_scm_qseecom_allowlist as __maybe_unused
-  crypto: ccp - drop platform ifdef checks
-  usb: gadget: omap_udc: remove unused variable
-  isdn: kcapi: don't build unused procfs code
-  cpufreq: intel_pstate: hide unused intel_pstate_cpu_oob_ids[]
-  net: xgbe: remove extraneous #ifdef checks
-  Input: imagis - remove incorrect ifdef checks
-  sata: mv: drop unnecessary #ifdef checks
-  ASoC: remove incorrect of_match_ptr/ACPI_PTR annotations
-  spi: remove incorrect of_match_ptr annotations
-  drivers: remove incorrect of_match_ptr/ACPI_PTR annotations
-  kbuild: always enable -Wunused-const-variable
-
-Krzysztof Kozlowski (1):
-  Input: stmpe-ts - mark OF related data as maybe unused
-
- arch/powerpc/sysdev/fsl_msi.c                 |  2 +
- drivers/ata/sata_mv.c                         | 64 +++++++++----------
- drivers/char/apm-emulation.c                  |  5 +-
- drivers/char/ipmi/ipmb_dev_int.c              |  2 +-
- drivers/char/tpm/tpm_ftpm_tee.c               |  2 +-
- drivers/clk/ti/dpll.c                         | 10 ++-
- drivers/comedi/drivers/ni_atmio.c             |  2 +-
- drivers/cpufreq/intel_pstate.c                |  2 +
- drivers/crypto/ccp/sp-platform.c              | 14 +---
- drivers/dma/img-mdc-dma.c                     |  2 +-
- drivers/firmware/efi/Makefile                 |  3 +-
- drivers/firmware/efi/sysfb_efi.c              |  2 -
- drivers/firmware/qcom/qcom_scm.c              |  2 +-
- drivers/fpga/versal-fpga.c                    |  2 +-
- .../gpu/drm/arm/display/komeda/komeda_dev.c   |  8 ---
- drivers/hid/hid-google-hammer.c               |  6 +-
- drivers/i2c/busses/i2c-pxa.c                  |  2 +-
- drivers/i2c/muxes/i2c-mux-ltc4306.c           |  2 +-
- drivers/i2c/muxes/i2c-mux-reg.c               |  2 +-
- drivers/iio/dac/ad5755.c                      |  1 +
- drivers/input/mouse/synaptics.c               |  2 +
- drivers/input/touchscreen/imagis.c            |  4 +-
- drivers/input/touchscreen/stmpe-ts.c          |  2 +-
- drivers/input/touchscreen/wdt87xx_i2c.c       |  2 +-
- drivers/isdn/capi/Makefile                    |  3 +-
- drivers/isdn/capi/kcapi.c                     |  7 +-
- drivers/leds/leds-apu.c                       |  3 +-
- drivers/mux/adg792a.c                         |  2 +-
- drivers/net/ethernet/3com/3c515.c             |  3 -
- drivers/net/ethernet/amd/xgbe/xgbe-platform.c |  8 ---
- drivers/net/ethernet/apm/xgene-v2/main.c      |  2 +-
- drivers/net/ethernet/hisilicon/hns_mdio.c     |  2 +-
- drivers/net/wireless/intel/iwlegacy/4965-rs.c | 15 +----
- drivers/net/wireless/intel/iwlegacy/common.h  |  2 -
- drivers/platform/goldfish/goldfish_pipe.c     |  2 +-
- drivers/power/supply/rt9455_charger.c         |  2 +
- drivers/regulator/pbias-regulator.c           |  2 +-
- drivers/regulator/twl-regulator.c             |  2 +-
- drivers/regulator/twl6030-regulator.c         |  2 +-
- drivers/rtc/rtc-fsl-ftm-alarm.c               |  2 +-
- drivers/scsi/hisi_sas/hisi_sas_v1_hw.c        |  2 +-
- drivers/scsi/hisi_sas/hisi_sas_v2_hw.c        |  2 +-
- drivers/spi/spi-armada-3700.c                 |  2 +-
- drivers/spi/spi-img-spfi.c                    |  2 +-
- drivers/spi/spi-meson-spicc.c                 |  2 +-
- drivers/spi/spi-meson-spifc.c                 |  2 +-
- drivers/spi/spi-orion.c                       |  2 +-
- drivers/spi/spi-pic32-sqi.c                   |  2 +-
- drivers/spi/spi-pic32.c                       |  2 +-
- drivers/spi/spi-rockchip.c                    |  2 +-
- drivers/spi/spi-s3c64xx.c                     |  2 +-
- drivers/spi/spi-st-ssc4.c                     |  2 +-
- drivers/staging/greybus/arche-apb-ctrl.c      |  1 +
- drivers/staging/greybus/arche-platform.c      |  9 +--
- drivers/staging/pi433/pi433_if.c              |  2 +-
- drivers/tty/serial/amba-pl011.c               |  6 +-
- drivers/tty/serial/ma35d1_serial.c            |  2 +-
- drivers/usb/gadget/udc/omap_udc.c             | 10 +--
- drivers/video/fbdev/sis/init301.c             |  3 +-
- kernel/dma/contiguous.c                       |  2 +-
- kernel/trace/trace_events.c                   |  4 ++
- lib/checksum_kunit.c                          |  2 +
- lib/test_ubsan.c                              |  2 +-
- net/sunrpc/cache.c                            | 10 +--
- scripts/Makefile.extrawarn                    |  1 -
- sound/soc/atmel/sam9x5_wm8731.c               |  2 +-
- sound/soc/codecs/rt5514-spi.c                 |  2 +-
- sound/soc/qcom/lpass-sc7280.c                 |  2 +-
- sound/soc/samsung/aries_wm8994.c              |  2 +-
- 69 files changed, 121 insertions(+), 169 deletions(-)
-
--- 
-2.39.2
-
-Cc: Michael Ellerman <mpe@ellerman.id.au>
-Cc: Christophe Leroy <christophe.leroy@csgroup.eu>
-Cc: Damien Le Moal <dlemoal@kernel.org>
-Cc: Jiri Kosina <jikos@kernel.org>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: Corey Minyard <minyard@acm.org>
-Cc: Peter Huewe <peterhuewe@gmx.de>
-Cc: Jarkko Sakkinen <jarkko@kernel.org>
-Cc: Tero Kristo <kristo@kernel.org>
-Cc: Stephen Boyd <sboyd@kernel.org>
-Cc: Ian Abbott <abbotti@mev.co.uk>
-Cc: H Hartley Sweeten <hsweeten@visionengravers.com>
-Cc: Srinivas Pandruvada <srinivas.pandruvada@linux.intel.com>
-Cc: Len Brown <lenb@kernel.org>
-Cc: "Rafael J. Wysocki" <rafael@kernel.org>
-Cc: John Allen <john.allen@amd.com>
-Cc: Herbert Xu <herbert@gondor.apana.org.au>
-Cc: Vinod Koul <vkoul@kernel.org>
-Cc: Ard Biesheuvel <ardb@kernel.org>
-Cc: Bjorn Andersson <andersson@kernel.org>
-Cc: Moritz Fischer <mdf@kernel.org>
-Cc: Liviu Dudau <liviu.dudau@arm.com>
-Cc: Benjamin Tissoires <benjamin.tissoires@redhat.com>
-Cc: Andi Shyti <andi.shyti@kernel.org>
-Cc: Michael Hennerich <michael.hennerich@analog.com>
-Cc: Peter Rosin <peda@axentia.se>
-Cc: Lars-Peter Clausen <lars@metafoo.de>
-Cc: Jonathan Cameron <jic23@kernel.org>
-Cc: Dmitry Torokhov <dmitry.torokhov@gmail.com>
-Cc: Markuss Broks <markuss.broks@gmail.com>
-Cc: Alexandre Torgue <alexandre.torgue@foss.st.com>
-Cc: Lee Jones <lee@kernel.org>
-Cc: Jakub Kicinski <kuba@kernel.org>
-Cc: Shyam Sundar S K <Shyam-sundar.S-k@amd.com>
-Cc: Iyappan Subramanian <iyappan@os.amperecomputing.com>
-Cc: Yisen Zhuang <yisen.zhuang@huawei.com>
-Cc: Stanislaw Gruszka <stf_xl@wp.pl>
-Cc: Kalle Valo <kvalo@kernel.org>
-Cc: Sebastian Reichel <sre@kernel.org>
-Cc: Tony Lindgren <tony@atomide.com>
-Cc: Mark Brown <broonie@kernel.org>
-Cc: Alexandre Belloni <alexandre.belloni@bootlin.com>
-Cc: Xiang Chen <chenxiang66@hisilicon.com>
-Cc: "Martin K. Petersen" <martin.petersen@oracle.com>
-Cc: Neil Armstrong <neil.armstrong@linaro.org>
-Cc: Heiko Stuebner <heiko@sntech.de>
-Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Cc: Vaibhav Hiremath <hvaibhav.linux@gmail.com>
-Cc: Alex Elder <elder@kernel.org>
-Cc: Jiri Slaby <jirislaby@kernel.org>
-Cc: Jacky Huang <ychuang3@nuvoton.com>
-Cc: Helge Deller <deller@gmx.de>
-Cc: Christoph Hellwig <hch@lst.de>
-Cc: Robin Murphy <robin.murphy@arm.com>
-Cc: Steven Rostedt <rostedt@goodmis.org>
-Cc: Masami Hiramatsu <mhiramat@kernel.org>
-Cc: Andrew Morton <akpm@linux-foundation.org>
-Cc: Kees Cook <keescook@chromium.org>
-Cc: Trond Myklebust <trond.myklebust@hammerspace.com>
-Cc: Anna Schumaker <anna@kernel.org>
-Cc: Masahiro Yamada <masahiroy@kernel.org>
-Cc: Nathan Chancellor <nathan@kernel.org>
-Cc: Takashi Iwai <tiwai@suse.com>
-Cc: linuxppc-dev@lists.ozlabs.org
-Cc: linux-kernel@vger.kernel.org
-Cc: linux-ide@vger.kernel.org
-Cc: openipmi-developer@lists.sourceforge.net
-Cc: linux-integrity@vger.kernel.org
-Cc: linux-omap@vger.kernel.org
-Cc: linux-clk@vger.kernel.org
-Cc: linux-pm@vger.kernel.org
-Cc: linux-crypto@vger.kernel.org
-Cc: dmaengine@vger.kernel.org
-Cc: linux-efi@vger.kernel.org
-Cc: linux-arm-msm@vger.kernel.org
-Cc: linux-fpga@vger.kernel.org
-Cc: dri-devel@lists.freedesktop.org
-Cc: linux-input@vger.kernel.org
-Cc: linux-i2c@vger.kernel.org
-Cc: linux-iio@vger.kernel.org
-Cc: linux-stm32@st-md-mailman.stormreply.com
-Cc: linux-arm-kernel@lists.infradead.org
-Cc: netdev@vger.kernel.org
-Cc: linux-leds@vger.kernel.org
-Cc: linux-wireless@vger.kernel.org
-Cc: linux-rtc@vger.kernel.org
-Cc: linux-scsi@vger.kernel.org
-Cc: linux-spi@vger.kernel.org
-Cc: linux-amlogic@lists.infradead.org
-Cc: linux-rockchip@lists.infradead.org
-Cc: linux-samsung-soc@vger.kernel.org
-Cc: greybus-dev@lists.linaro.org
-Cc: linux-staging@lists.linux.dev
-Cc: linux-serial@vger.kernel.org
-Cc: linux-usb@vger.kernel.org
-Cc: linux-fbdev@vger.kernel.org
-Cc: iommu@lists.linux.dev
-Cc: linux-trace-kernel@vger.kernel.org
-Cc: kasan-dev@googlegroups.com
-Cc: linux-hardening@vger.kernel.org
-Cc: linux-nfs@vger.kernel.org
-Cc: linux-kbuild@vger.kernel.org
-Cc: alsa-devel@alsa-project.org
-Cc: linux-sound@vger.kernel.org
+On Sat, Jul 06, 2024 at 01:20:00PM GMT, Wolfram Sang wrote:
+> Start changing the wording of the I2C main header wrt. the newest I2C
+> v7 and SMBus 3.2 specifications and replace "master/slave" with more
+> appropriate terms. This first step renames the members of struct
+> i2c_algorithm. Once all in-tree users are converted, the anonymous union
+> will go away again. All this work will also pave the way for finally
+> seperating the monolithic header into more fine-grained headers like
+> "i2c/clients.h" etc. So, this is not a simple renaming-excercise but
+> also a chance to update the I2C core to recent Linux standards.
+> 
+> Changes since v1:
+> 
+> * changed wording according to the terminology we agreed on and defined
+>   upstream. That means consistent use of "controller/target", and no
+>   more "host/client". I added "local/remote target" where necessary.
+> * added tags which I kept despite some changes in wording. The approach
+>   and code changes (if necessary) did not change.
+> * rebased to Andi's for-next branch
+> * this series only contains patches which convert the drivers fully. If
+>   all goes well, no more updates for them are needed. The previous
+>   series converted all users of "master_xfer". But to avoid tons of
+>   incremental patches to one driver, I will incrementally improve i2c.h
+>   and see which drivers can be fully converted step-by-step.
+> * do not mention I3C specs in commit messages, not really relevant here
+> 
+> Please note that I am not super strict with the 80 char limit. And, as
+> agreed, I did not convert occasions where old terminology is used in
+> register names or bits etc. or in function names outside of the I2C
+> realm.
+> 
+> The outcome is that before this series 115 drivers use old terminology,
+> after this only 54. Hooray.
+> 
+> And a comment to all janitors: Do not convert I2C drivers outside of
+> drivers/i2c yet. Let us first gain experience here and present the
+> well-tested results of what we figured out to other maintainers then.
+> This ensures they have to deal with way less patch revisions.
+> 
+> Thanks and happy hacking!
+> 
+> 
+> Wolfram Sang (60):
+>   i2c: reword i2c_algorithm according to newest specification
+>   i2c: ali15x3: reword according to newest specification
+>   i2c: altera: reword according to newest specification
+>   i2c: au1550: reword according to newest specification
+>   i2c: bcm-kona: reword according to newest specification
+>   i2c: bcm2835: reword according to newest specification
+>   i2c: brcmstb: reword according to newest specification
+>   i2c: cht-wc: reword according to newest specification
+>   i2c: cp2615: reword according to newest specification
+>   i2c: cros-ec-tunnel: reword according to newest specification
+>   i2c: davinci: reword according to newest specification
+>   i2c: digicolor: reword according to newest specification
+>   i2c: diolan-u2c: reword according to newest specification
+>   i2c: dln2: reword according to newest specification
+>   i2c: fsi: reword according to newest specification
+>   i2c: gpio: reword according to newest specification
+>   i2c: highlander: reword according to newest specification
+>   i2c: hisi: reword according to newest specification
+>   i2c: hix5hd2: reword according to newest specification
+>   i2c: i801: reword according to newest specification
+>   i2c: ibm_iic: reword according to newest specification
+>   i2c: iop3xx: reword according to newest specification
+>   i2c: isch: reword according to newest specification
+>   i2c: jz4780: reword according to newest specification
+>   i2c: kempld: reword according to newest specification
+>   i2c: ljca: reword according to newest specification
+>   i2c: lpc2k: reword according to newest specification
+>   i2c: ls2x: reword according to newest specification
+>   i2c: mlxcpld: reword according to newest specification
+>   i2c: mpc: reword according to newest specification
+>   i2c: mt7621: reword according to newest specification
+>   i2c: mv64xxx: reword according to newest specification
+>   i2c: ocores: reword according to newest specification
+>   i2c: octeon: reword according to newest specification
+>   i2c: opal: reword according to newest specification
+>   i2c: owl: reword according to newest specification
+>   i2c: pasemi: reword according to newest specification
+>   i2c: piix4: reword according to newest specification
+>   i2c: powermac: reword according to newest specification
+>   i2c: pxa-pci: reword according to newest specification
+>   i2c: riic: reword according to newest specification
+>   i2c: rk3x: reword according to newest specification
+>   i2c: robotfuzz-osif: reword according to newest specification
+>   i2c: rzv2m: reword according to newest specification
+>   i2c: sis5595: reword according to newest specification
+>   i2c: sprd: reword according to newest specification
+>   i2c: stm32f4: reword according to newest specification
+>   i2c: sun6i-p2wi: reword according to newest specification
+>   i2c: taos-evm: reword according to newest specification
+>   i2c: tegra-bpmp: reword according to newest specification
+>   i2c: thunderx-pcidrv: reword according to newest specification
+>   i2c: tiny-usb: reword according to newest specification
+>   i2c: uniphier-f: reword according to newest specification
+>   i2c: uniphier: reword according to newest specification
+>   i2c: viperboard: reword according to newest specification
+>   i2c: viai2c: reword according to newest specification
+>   i2c: nvidia-gpu: reword according to newest specification
+>   i2c: virtio: reword according to newest specification
+>   i2c: cpm: reword according to newest specification
+>   i2c: st: reword according to newest specification
+> 
+>  drivers/i2c/busses/i2c-ali15x3.c         |  2 +-
+>  drivers/i2c/busses/i2c-altera.c          |  4 +-
+>  drivers/i2c/busses/i2c-au1550.c          | 15 +++----
+>  drivers/i2c/busses/i2c-bcm-kona.c        | 13 +++---
+>  drivers/i2c/busses/i2c-bcm2835.c         | 10 ++---
+>  drivers/i2c/busses/i2c-brcmstb.c         | 11 +++--
+>  drivers/i2c/busses/i2c-cht-wc.c          |  8 ++--
+>  drivers/i2c/busses/i2c-cp2615.c          |  8 ++--
+>  drivers/i2c/busses/i2c-cpm.c             |  4 +-
+>  drivers/i2c/busses/i2c-cros-ec-tunnel.c  |  4 +-
+>  drivers/i2c/busses/i2c-davinci.c         | 17 ++++---
+>  drivers/i2c/busses/i2c-digicolor.c       |  6 +--
+>  drivers/i2c/busses/i2c-diolan-u2c.c      |  2 +-
+>  drivers/i2c/busses/i2c-dln2.c            |  4 +-
+>  drivers/i2c/busses/i2c-fsi.c             | 56 ++++++++++++------------
+>  drivers/i2c/busses/i2c-gpio.c            |  8 ++--
+>  drivers/i2c/busses/i2c-highlander.c      |  2 +-
+>  drivers/i2c/busses/i2c-hisi.c            |  8 ++--
+>  drivers/i2c/busses/i2c-hix5hd2.c         |  6 +--
+>  drivers/i2c/busses/i2c-i801.c            | 12 ++---
+>  drivers/i2c/busses/i2c-ibm_iic.c         | 27 +++++-------
+>  drivers/i2c/busses/i2c-iop3xx.c          | 15 +++----
+>  drivers/i2c/busses/i2c-isch.c            |  2 +-
+>  drivers/i2c/busses/i2c-jz4780.c          |  4 +-
+>  drivers/i2c/busses/i2c-kempld.c          |  4 +-
+>  drivers/i2c/busses/i2c-ljca.c            | 20 ++++-----
+>  drivers/i2c/busses/i2c-lpc2k.c           | 10 ++---
+>  drivers/i2c/busses/i2c-ls2x.c            | 11 +++--
+>  drivers/i2c/busses/i2c-mlxcpld.c         | 14 +++---
+>  drivers/i2c/busses/i2c-mpc.c             |  4 +-
+>  drivers/i2c/busses/i2c-mt7621.c          | 26 +++++------
+>  drivers/i2c/busses/i2c-mv64xxx.c         | 12 ++---
+>  drivers/i2c/busses/i2c-nvidia-gpu.c      |  7 ++-
+>  drivers/i2c/busses/i2c-ocores.c          |  8 ++--
+>  drivers/i2c/busses/i2c-octeon-core.c     |  6 +--
+>  drivers/i2c/busses/i2c-octeon-core.h     |  4 +-
+>  drivers/i2c/busses/i2c-octeon-platdrv.c  |  2 +-
+>  drivers/i2c/busses/i2c-opal.c            | 10 ++---
+>  drivers/i2c/busses/i2c-owl.c             | 12 ++---
+>  drivers/i2c/busses/i2c-pasemi-core.c     |  6 +--
+>  drivers/i2c/busses/i2c-piix4.c           |  2 +-
+>  drivers/i2c/busses/i2c-powermac.c        | 14 +++---
+>  drivers/i2c/busses/i2c-pxa-pci.c         |  2 +-
+>  drivers/i2c/busses/i2c-riic.c            |  8 ++--
+>  drivers/i2c/busses/i2c-rk3x.c            | 20 ++++-----
+>  drivers/i2c/busses/i2c-robotfuzz-osif.c  |  4 +-
+>  drivers/i2c/busses/i2c-rzv2m.c           | 12 ++---
+>  drivers/i2c/busses/i2c-sis5595.c         |  2 +-
+>  drivers/i2c/busses/i2c-sprd.c            | 16 +++----
+>  drivers/i2c/busses/i2c-st.c              |  8 ++--
+>  drivers/i2c/busses/i2c-stm32f4.c         |  8 ++--
+>  drivers/i2c/busses/i2c-sun6i-p2wi.c      | 20 ++++-----
+>  drivers/i2c/busses/i2c-taos-evm.c        |  2 +-
+>  drivers/i2c/busses/i2c-tegra-bpmp.c      |  4 +-
+>  drivers/i2c/busses/i2c-thunderx-pcidrv.c |  2 +-
+>  drivers/i2c/busses/i2c-tiny-usb.c        |  6 +--
+>  drivers/i2c/busses/i2c-uniphier-f.c      | 26 +++++------
+>  drivers/i2c/busses/i2c-uniphier.c        | 15 +++----
+>  drivers/i2c/busses/i2c-viai2c-common.c   |  2 +-
+>  drivers/i2c/busses/i2c-viai2c-wmt.c      |  8 ++--
+>  drivers/i2c/busses/i2c-viai2c-zhaoxin.c  | 12 ++---
+>  drivers/i2c/busses/i2c-viperboard.c      | 10 ++---
+>  drivers/i2c/busses/i2c-virtio.c          |  2 +-
+>  include/linux/i2c.h                      | 24 +++++++---
+>  64 files changed, 313 insertions(+), 320 deletions(-)
+> 
+> -- 
+> 2.43.0
+> 
 
 _______________________________________________
 Linux-rockchip mailing list
