@@ -4,77 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4E4A2C3271E
-	for <linux-rockchip@archiver.kernel.org>; Thu, 11 Jul 2024 04:40:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 99754C3DA49
+	for <linux-rockchip@archiver.kernel.org>; Thu, 11 Jul 2024 05:28:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Oh2YfI2wlrxnK0wDd0TZ68E3z4Jeu+br7J7KruC1W1A=; b=MKZQNjXxedVrke
-	e8LxmUPZIwsh8PE5jk9SduOsndzkckeqvZ4URdUTIBDvujDVTqj5nolHvuzWKDnrxuZM2cySPiU67
-	7AfIv3S34B7RBeBj2Eg12TvSdwvAnR6Vm967imbmu5+biyyOO0FCsClagat3PxXjAB5dTGxNgHJdf
-	2r3nHOwx8NklBMV9CNiTX1oq6IzYZEywsqFRy+PnzY0urQmC3d2YJCzltFnLuqGFfRxkkAvs1jsQ+
-	UqGlZ+mjjGkWDJigCi/QGrW16n6GlCQ5eUAIKRc2hyudoQXL8aXwqaTEO7vfZvnFVEmc3+Cre5bEh
-	eja8GPnf79qfYEfqmgZQ==;
+	List-Owner; bh=cGXwFuat7VQ5NxNtRuzDerlHEPR4NJIMQl4IRY9l6ns=; b=VoKmUYAjhu7/Ie
+	ldyovOwY5QGInZBeGfZC/Yb3Do02E3gCotpW/YH1KA3gIYiIPMcIAe+272sDrjDIvUiN6MMGLzAGH
+	u3wAv9XYlFZEXuGdK6LHuEBfn9aP9l3ganTFSdb+/Z/+zyMWMc52rROIcymVmyxvugy8G7dY58JvX
+	7aiqG253LttTEHRGvscpXJUXrbyQJAC5LyQ/Lm480+KF51qki/PkvNfnY7X10bnPPMFBL4qNVqf5E
+	x9jjvwpJIs2arUz8ci/9DWfTVBgokP5bS1GQX90RihvTbII58maVJnSUA+q59tVATMzMBQwUXHfLL
+	LZOA9FL3YAQy3MvmjZGA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sRlbX-0000000Cgpo-3ne1;
-	Thu, 11 Jul 2024 04:40:27 +0000
-Received: from mail-oo1-xc30.google.com ([2607:f8b0:4864:20::c30])
+	id 1sRmLZ-0000000CmG7-2beA;
+	Thu, 11 Jul 2024 05:28:01 +0000
+Received: from mx1.tq-group.com ([93.104.207.81])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sRlbF-0000000Cgll-1TOD;
-	Thu, 11 Jul 2024 04:40:11 +0000
-Received: by mail-oo1-xc30.google.com with SMTP id 006d021491bc7-5caad707f74so236493eaf.1;
-        Wed, 10 Jul 2024 21:40:08 -0700 (PDT)
+	id 1sRmLH-0000000CmC1-0sxq;
+	Thu, 11 Jul 2024 05:27:45 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1720672807; x=1721277607; darn=lists.infradead.org;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=1Od3R3bcGX+eiybg0jI2BEJpMtPiCU3KF2hR8eo1Z/4=;
-        b=J9ZGnU58+tNkpxPBTA7vBlVqNcAnVy837PQXE7oiW3p7GKfmv6a1o2vicyZHHThvU5
-         wKVghpxCUNWFUjTmoafXJy4h8HJSl3ntgf/K7YHTHk72BtvAeTk33CqpaZhWhFZeoR+9
-         3bX02KcxvYS2V/3fXyhW1n/7NF5pnmhY74FWIE9Hcsvvm6tmkcNgmN2Py3WobGJZhhz9
-         SXNqBw4qu6s0T/OTs6tpRsGNV5r2+upvxI4C+kdoatiq6Qv/eBQ5p63TBcSyDSe4Fwj5
-         N68qud8U2bA1WwheJ9I9WVos87YvN7DLxNlvYdS6Ns+Fi5a8DpIPfjOPcICYw4Iiylga
-         RTtQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1720672807; x=1721277607;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=1Od3R3bcGX+eiybg0jI2BEJpMtPiCU3KF2hR8eo1Z/4=;
-        b=dBEGosZRHn3H5GubJQkcFKyA+Mj65FwKFlsUdnVUQzJxUu562lLabd/hBB/7/HEmXM
-         5DavdWgaRtXfK0sdCbX8cZ6XpwmZgiY4kmRL26JvsnFiORhDkzTWw7NhaY9tqBD6HL7U
-         CVPUPIZAQQbRbE9WOEiO+rY/rj4V4xsgUlS5WZf9fBrOISskwMODXl/qTR4ppRXpbDuu
-         2MQ/VIeijylOuDApjyoEBFsTIZQT9Zil4rvU/c1kfAYBN64Dfmdq8UxJPUkdHvxPME4l
-         l5BbJuPuzwrkx+fcnYmBGOPQ72JxICbtdncqFmvbKOkd/IOw1LbC8jGFTgd/zEMcO+VO
-         nCTA==
-X-Forwarded-Encrypted: i=1; AJvYcCUQc5bxhHd2X2n1b+ys96uwkUFy99f3rZpo88AzmZIPsqXZjWJRnpH4LYlWwJfbEQA+ZteMzAaubTsDpe5gFqh2nckl6t4VbwDrNHAPJ2hIyq9iVha3DZM/ZC62hFTghBVgp7vpJ6ZWxMKw1dXh3y/1ij2Y3swLApM=
-X-Gm-Message-State: AOJu0Yz5VLQkV91ZtBKJl/9v6fQ+y+mN2fuspt+Bns5iZ2kudockk4sX
-	JJa0i6O1nNxMA1EZTJqHY8VZPXYGSfVl3EcdaBeHUqv3ninELy6bDbK0uT2ImKTPwH4YbW4L8nx
-	10A3PrpJgVAP/No0UcCf5Bg7btVQ=
-X-Google-Smtp-Source: AGHT+IEE8wlvduAXJFfisR7I1tclcoNEn8rpUAB5g3dGOkqwD99eNjtH/GaAJE6cXZhxzKTWgoPhyzZTKR73rm0u4fc=
-X-Received: by 2002:a05:6820:179a:b0:5c6:9320:4f1e with SMTP id
- 006d021491bc7-5c693204f51mr9884607eaf.6.1720672807275; Wed, 10 Jul 2024
- 21:40:07 -0700 (PDT)
+  d=tq-group.com; i=@tq-group.com; q=dns/txt; s=key1;
+  t=1720675663; x=1752211663;
+  h=from:to:cc:subject:date:message-id:in-reply-to:
+   references:mime-version:content-transfer-encoding;
+  bh=HSsX0RnRuDFdjgHKzOQtBjgv2nX0He6FmULrIZgV2do=;
+  b=fgy+Zd0iS0dXazc7wMR0vBWtjcYR/5nMl5HsdL5ptdKW2x/qW9FjyTpZ
+   WrDp7HYPLO1HrSmMeFdojSWXBXvHLBB2FqrisYnavWlxupysXj7d8CAG8
+   PBXq8SBtgOscVe7mSkziLxyPzJmMAdYGXYFfYADcd8rhNB+Atl72u6NJQ
+   51vb5+KED9LJ1751IZXJWkXP3oZWVmIJtgSNLOSOIt4fAD8v+Oiyl+e/d
+   ig41jz2+Lxq50s0deusgkc2kfHO9LjlPKc3qRTMKhkh3mGyrWe7Vp/mXK
+   liT5+8DxrGFCLvYsf49ISa/OUxT1wO9huV8vWYwOZHdrhyB0t633Pw6V6
+   g==;
+X-CSE-ConnectionGUID: 4R+YyxF4TvuAdyuF6HKwhg==
+X-CSE-MsgGUID: Fn3IlePpQkWP6bFs1b+N/A==
+X-IronPort-AV: E=Sophos;i="6.09,199,1716242400"; 
+   d="scan'208";a="37850448"
+Received: from vmailcow01.tq-net.de ([10.150.86.48])
+  by mx1.tq-group.com with ESMTP; 11 Jul 2024 07:27:40 +0200
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id A54FD16337A;
+	Thu, 11 Jul 2024 07:27:35 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ew.tq-group.com;
+	s=dkim; t=1720675656;
+	h=from:subject:date:message-id:to:cc:mime-version:content-type:
+	 content-transfer-encoding:in-reply-to:references;
+	bh=HSsX0RnRuDFdjgHKzOQtBjgv2nX0He6FmULrIZgV2do=;
+	b=CSwpWI6Lf4xrqzWYv5+Hmj2pkBU90Gz5eSk8N1mrQhjPh9iid9DEuc3WNe/CBO2vvRCExT
+	hjwwRzC+dNFp3HjXY1mfa1T4re9x2giweXhnmJhZTtfGmzLUZIRf7NdRIoxcLlIfRFGzE0
+	ejAQfvXWaP1AWJ5im+lmoYtF4QDEU3kuUJZdBcfY3L2gJPWXUgJh3qBIAI02iTxLQHL1mT
+	RBAQi/t5pPQONzWEOqokoAVFyiLLeCUIx3R0QESg0Z1SQ70S5oweDGm22Ibw6H/xQaVuIC
+	sztdr1U8B/GpEW3FoKO8JmKS146OS9hgGNJ2Udwkn35e9BV3xH+AqJ7iGjfaCw==
+From: Alexander Stein <alexander.stein@ew.tq-group.com>
+To: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>, mturquette@baylibre.com, Stephen Boyd <sboyd@kernel.org>
+Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org, quentin.schulz@cherry.de, linux-clk@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH 1/6] dt-bindings: clocks: add binding for generic clock-generators
+Date: Thu, 11 Jul 2024 07:27:40 +0200
+Message-ID: <1899010.tdWV9SEqCh@steina-w>
+Organization: TQ-Systems GmbH
+In-Reply-To: <68f6dc44a8202fd83792e58aea137632.sboyd@kernel.org>
+References: <20240709123121.1452394-1-heiko@sntech.de> <21244242.0c2gjJ1VT2@diego> <68f6dc44a8202fd83792e58aea137632.sboyd@kernel.org>
 MIME-Version: 1.0
-References: <20240710142001.7234-1-linux.amoon@gmail.com> <84dc40f4-1948-4eb7-b16e-8a79357c2622@kwiboo.se>
- <CANAwSgQr2J_MU1idf5xGt4Q=gSLxLHJSEJGwnnPxWLhRjrx=6Q@mail.gmail.com>
-In-Reply-To: <CANAwSgQr2J_MU1idf5xGt4Q=gSLxLHJSEJGwnnPxWLhRjrx=6Q@mail.gmail.com>
-From: Anand Moon <linux.amoon@gmail.com>
-Date: Thu, 11 Jul 2024 10:09:50 +0530
-Message-ID: <CANAwSgQqCtURhjLJSmiN_5sJQVurcaSsDmb6uqN9jyry=w3yXA@mail.gmail.com>
-Subject: Re: [PATCH v1] arm64: dts: rockchip: Add missing pinctrl for PCIe30x4 node
-To: Jonas Karlman <jonas@kwiboo.se>
-Cc: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
-	linux-kernel@vger.kernel.org
+X-Last-TLS-Session-Version: TLSv1.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240710_214009_436605_41254301 
-X-CRM114-Status: GOOD (  22.96  )
+X-CRM114-CacheID: sfid-20240710_222743_948039_71C62947 
+X-CRM114-Status: GOOD (  15.85  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,94 +82,52 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Jonas,
+Am Donnerstag, 11. Juli 2024, 01:21:15 CEST schrieb Stephen Boyd:
+> Quoting Heiko St=FCbner (2024-07-10 00:45:17)
+> > Am Mittwoch, 10. Juli 2024, 09:02:34 CEST schrieb Alexander Stein:
+> > > =
 
-On Wed, 10 Jul 2024 at 22:04, Anand Moon <linux.amoon@gmail.com> wrote:
->
-> Hi Jonas,
->
-> On Wed, 10 Jul 2024 at 20:11, Jonas Karlman <jonas@kwiboo.se> wrote:
-> >
-> > Hi Anand,
-> >
-> > On 2024-07-10 16:19, Anand Moon wrote:
-> > > Add missing pinctrl settings for PCIe 3.0 x4 clock request and wake
-> > > signals. Rename node from 'pcie3' to 'pcie30x4' to align with schematic
-> > > nomenclature.
-> > >
-> > > Signed-off-by: Anand Moon <linux.amoon@gmail.com>
-> > > ---
-> > >  .../boot/dts/rockchip/rk3588-rock-5b.dts      | 20 +++++++++++++------
-> > >  1 file changed, 14 insertions(+), 6 deletions(-)
-> > >
-> > > diff --git a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
-> > > index 2e7512676b7e..a9b55b7996cf 100644
-> > > --- a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
-> > > +++ b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
-> > > @@ -301,7 +301,7 @@ &pcie30phy {
-> > >
-> > >  &pcie3x4 {
-> > >       pinctrl-names = "default";
-> > > -     pinctrl-0 = <&pcie3_rst>;
-> > > +     pinctrl-0 = <&pcie30x4_perstn_m1 &pcie30x4_clkreqn_m1 &pcie30x4_waken_m1>;
-> > >       reset-gpios = <&gpio4 RK_PB6 GPIO_ACTIVE_HIGH>;
-> > >       vpcie3v3-supply = <&vcc3v3_pcie30>;
-> > >       status = "okay";
-> > > @@ -340,14 +340,22 @@ pcie2_2_rst: pcie2-2-rst {
-> > >               };
-> > >       };
-> > >
-> > > -     pcie3 {
-> > > -             pcie3_rst: pcie3-rst {
-> > > -                     rockchip,pins = <4 RK_PB6 RK_FUNC_GPIO &pcfg_pull_none>;
-> > > -             };
-> > > -
-> > > +     pcie30x4 {
-> > >               pcie3_vcc3v3_en: pcie3-vcc3v3-en {
-> > >                       rockchip,pins = <1 RK_PA4 RK_FUNC_GPIO &pcfg_pull_none>;
-> > >               };
-> > > +
-> > > +             pcie30x4_clkreqn_m1: pcie30x4-clkreqn-m1 {
-> > > +                     rockchip,pins = <4 RK_PB4 RK_FUNC_GPIO &pcfg_pull_up>;
-> > > +             };
-> > > +
-> > > +             pcie30x4_waken_m1: pcie30x4-waken-m1 {
-> > > +                     rockchip,pins = <4 RK_PB5 RK_FUNC_GPIO &pcfg_pull_down>;
-> > > +             };
-> >
-> > Should these not be routed to the clkreqn_m1 and waken_m1 function
-> > instead of gpio function?
-> >
-> > E.g. something like:
-> >
-> >                 pcie30x4m1_pins: pcie30x4m1-pins {
-> >                         rockchip,pins =
-> >                                 <4 RK_PB4 4 &pcfg_pull_none>,
-> >                                 <4 RK_PB6 RK_FUNC_GPIO &pcfg_pull_none>,
-> >                                 <4 RK_PB5 4 &pcfg_pull_none>;
-> >                 };
-> >
-> > There are other rk35xx boards where only the perstn pin is configured
-> > and could use a similar fix.
-> >
->
-> I understand this grouping for Gpio, but I am not very familiar with
-> this feature.
+> > > So essentially only enable-gpios and vdd-supply is added in compariso=
+n to
+> > > fixed-clock. Does it make sense to add that to the fixed-clocks inste=
+ad?
+> > > Similar to fixed-regulator.
+> > =
 
-Already we have a group of this pincrtl in the pinctrl.dtsi,
-I will use this in my patch.
+> > I wasn't that sure which way to go in the first place.
+> > The deciding point was reading that line about the fixed clock not
+> > being gateable, so I opted to not touch the fixed-clock.
+> > =
 
-[0] https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/arch/arm64/boot/dts/rockchip/rk3588s-pinctrl.dtsi?h=v6.10-rc7#n1775
+> > But you're definitly right, this _could_ live inside the fixed-clock
+> > as well, if we decide to get rid of the not-gateable thing above.
+> =
 
-Thanks for the tip.
+> It's probably more complicated to combine it with the fixed-clock
+> binding after making properties required like vdd-supply. I'd just make
+> a new binding and look at combining later.
 
-Thanks
--Anand
+Maybe I am missing something IMHO adding optional vdd-supply and
+enable-gpios doesn't seem a big deal.
+Anyway I don't have a hard opinion here. To me fixed-clocks still
+seems very appropriate for having a controlling GPIO and power supply.
+I just would get rid of the (comment only) hint they are ungatable.
+
+Best regards,
+Alexander
+-- =
+
+TQ-Systems GmbH | M=FChlstra=DFe 2, Gut Delling | 82229 Seefeld, Germany
+Amtsgericht M=FCnchen, HRB 105018
+Gesch=E4ftsf=FChrer: Detlef Schneider, R=FCdiger Stahl, Stefan Schneider
+http://www.tq-group.com/
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
