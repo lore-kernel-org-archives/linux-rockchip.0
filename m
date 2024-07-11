@@ -4,69 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AEF82C3DA41
-	for <linux-rockchip@archiver.kernel.org>; Thu, 11 Jul 2024 09:17:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ADC3DC3DA47
+	for <linux-rockchip@archiver.kernel.org>; Thu, 11 Jul 2024 09:45:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date
-	:From:In-Reply-To:References:MIME-Version:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=pQgc0gqFOFPYxO+EM+HDYod4jtAjUqc3vlAxPrcE9AQ=; b=mevAHNlU3q9Vs7
-	OkHHv+DLdTMIFPvBk1dQir/AHKwqS/B7dcSSDiaJuM/mm0dUNsulERbyHvyJL6U/RHmJ7JjG9CgMU
-	jfVg85ovtvVDKJJh+cXB7U7L83fMNYHEZ08PljZ5zRuvRFSFWiTUOxzNTs92VdkQWVdBd37VVouP8
-	wuoGYfT/pBVNnj7jSo8LCOhruzflbgOnAhSG5eq/B/xI37KUOn1zP9XoR8SYejPGZKkOUOIOz8J0/
-	RIxb4q5yDUVw67WIcF8LtOSptA829CnkSLcHko9CQxqBny2j9m7S620RqWtsoONsdfpWuAbJU3fjb
-	Wl83FuoBCTGHJLwOu1ig==;
+	List-Owner; bh=0KTtkzoDbf0bR29qSkNTh/E48U4CgOBCc5j9y9rloJg=; b=O1bVCFCtPswkPj
+	D3zQG2Qw4dRQUaXsjLWnTPkhGHR7qJCs9rnzdYIFAdX8eKwBS+9vHChLAj1A8+8o+vd02Sc1kbFOz
+	PNILDO9sJ1apG+vtgZVhC5IhvX+kzEA3fp1JL+XqxtBOgDMgTx7ylPJBPrHgYRhlFzNoRiStxDXkw
+	DBp+/LiDWIiJDFEOUZxzMru8O2VwXrc5175BK++bxSM7q0xCfMbdD/z82WjQGfZRRFm4h+15c5lYV
+	VuUNLLVRKmSIIXvTO2ELrNIi8mVYeu3NMlSiUDtywwj5FlzPmWtGYdUIqp80zf8Fe3TEHUjTMf8Bn
+	P4xJtwxetk/HWjRTw+BA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sRpvl-0000000DKJH-2kzn;
-	Thu, 11 Jul 2024 09:17:37 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1sRqMr-0000000DOd7-2CFF;
+	Thu, 11 Jul 2024 09:45:37 +0000
+Received: from smtp.forwardemail.net ([167.172.40.54])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sRpvT-0000000DKE7-1Djx;
-	Thu, 11 Jul 2024 09:17:20 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id B2A0361C22;
-	Thu, 11 Jul 2024 09:17:18 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 65ED3C4AF0C;
-	Thu, 11 Jul 2024 09:17:18 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1720689438;
-	bh=tECCGwY1OlgusfgCcr1+rEQ9zmP+52bDi0SwX5GW63M=;
-	h=References:In-Reply-To:Reply-To:From:Date:Subject:To:Cc:From;
-	b=kmq/9PBpQ8BJOQVUc1LTq9N5hu05r+SjaQ5IjQeqtpn4oKx9JlD0WFzXJOcA0BSbz
-	 cT0Aa5xzcsM5pT9zfnwRLaOsQ+923E7BliozltUWLTKe/6Y1WwBd382plU+LvKdrbW
-	 Bs2EMmBdmmB5UtaMFcvOwA/vS3uNJn6LwDf7ZL0y3vDYK593i72GCeosaTvZxPjyfg
-	 oQq+zOIZW3XEGuZbvwAsmXTLhyf7G9VrhKHBlgBb6B62RhJgI0UsXqfd9T6bpfk6gJ
-	 vkyP2r3xoS9GNlVpbiPXyo+rYLxNilWn9mB2c3QruN/vdzelPssUzsu8a55T0Mf3dz
-	 tKq/5FIBEsufA==
-Received: by mail-lj1-f178.google.com with SMTP id 38308e7fff4ca-2eeb1ba0481so7287231fa.2;
-        Thu, 11 Jul 2024 02:17:18 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AJvYcCUgbQi/nhwijox7BI3+QQPO+JvwqAmEyepswpqIxdWGhANo37qkU3iu2amKAS9LFXuPoP69D7i2tsZ9Q5catrPQ/tP7nKfwGfpopMxYQcu/Mqxr18VyhmIQ8VnN8qhxySv8XCIdvJ4P1u0KZwiLWA6a8pr1Gc0EfP8=
-X-Gm-Message-State: AOJu0Yy0h7e9PWEs7QmSLArc9QfDTXgcAMo+h9OKK4jKSpbo1ZeUKcu1
-	fsFQUv8NU+yMpMZFUfFzt7oxtQyszjZtjwd+qv1PV225E4f8jXsKon9NI2L96F+AJ+I+787dJXF
-	eCRtoHrtjshPLNjQlV/LdL/gQ1Go=
-X-Google-Smtp-Source: AGHT+IGfyS6XEu/kHP9VNipjsPb7FnGJXyJ4CUOh/ZKrY8VHjEHaEg8CWd8+NAhyz3x/GgZTCAkP6MA3bw4fTqw/TO4=
-X-Received: by 2002:a2e:9e54:0:b0:2ec:6608:a3af with SMTP id
- 38308e7fff4ca-2eeb3103d02mr48694601fa.31.1720689436392; Thu, 11 Jul 2024
- 02:17:16 -0700 (PDT)
+	id 1sRqMa-0000000DOYY-1E2I
+	for linux-rockchip@lists.infradead.org;
+	Thu, 11 Jul 2024 09:45:21 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
+ h=Content-Transfer-Encoding: Content-Type: In-Reply-To: From: References:
+ Cc: To: Subject: MIME-Version: Date: Message-ID; q=dns/txt;
+ s=fe-e1b5cab7be; t=1720691095;
+ bh=3VTjqdTB2Skdm6LlNLhdmYkYJnJbA0EzPLhUN0GVP+4=;
+ b=rF3Pg+X9lOhYwAMLGxuumuQvC1B3YyghSZm2SvKm0O7v3nMcKx5DL20CX7XzEVZOk0bxGi5Lu
+ 4V1DwIElHMP6bkYS/eQn+PIOXmD3KjzVy38PCHhUGKJJDAI5R18ed1kiQaNvdtf+mJ9+UsQZvoS
+ fhKpgaor7sz+HxysQE876AX3uyJUb7ADjNK8rfIIX4j36Y3qoiXz25T2uE+IWBmM39HmKx/wz7R
+ 44sMvhvu1h2fUZF4p2jdd1vhGJmu0K87iXfzmkm3aIa5xslML1OdFXoGXnnf88QkGoUL94lyel7
+ MzVL9JhC/gSPlkMdd4s1nymhmS0Kr9FcyQfoRClSXpZQ==
+Message-ID: <6250fa05-7a06-4fa1-a2be-9cb66a2d2822@kwiboo.se>
+Date: Thu, 11 Jul 2024 11:44:46 +0200
 MIME-Version: 1.0
-References: <20240711060939.1128-1-linux.amoon@gmail.com> <a8c1f49e-bf25-4fd3-a16f-13088f75767f@kwiboo.se>
-In-Reply-To: <a8c1f49e-bf25-4fd3-a16f-13088f75767f@kwiboo.se>
-From: Chen-Yu Tsai <wens@kernel.org>
-Date: Thu, 11 Jul 2024 17:17:04 +0800
-X-Gmail-Original-Message-ID: <CAGb2v65iR9BdAX43gfpBOeKF_B5PFm+RhPwu5FHUfRxCMeqh-w@mail.gmail.com>
-Message-ID: <CAGb2v65iR9BdAX43gfpBOeKF_B5PFm+RhPwu5FHUfRxCMeqh-w@mail.gmail.com>
-Subject: Re: [PATCH v2] arm64: dts: rockchip: Add missing pinctrl for PCIe30x4 node
-To: Jonas Karlman <jonas@kwiboo.se>, Heiko Stuebner <heiko@sntech.de>
-Cc: Anand Moon <linux.amoon@gmail.com>, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
-	linux-kernel@vger.kernel.org
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2] arm64: dts: rockchip: Add missing pinctrl for PCIe30x4
+ node
+To: Anand Moon <linux.amoon@gmail.com>
+Cc: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+References: <20240711060939.1128-1-linux.amoon@gmail.com>
+ <a8c1f49e-bf25-4fd3-a16f-13088f75767f@kwiboo.se>
+ <CANAwSgQCn3jgiruiLs0cu-C+DguLtnk=msboAh8jNSF4P28gjA@mail.gmail.com>
+Content-Language: en-US
+From: Jonas Karlman <jonas@kwiboo.se>
+In-Reply-To: <CANAwSgQCn3jgiruiLs0cu-C+DguLtnk=msboAh8jNSF4P28gjA@mail.gmail.com>
+X-Report-Abuse-To: abuse@forwardemail.net
+X-Report-Abuse: abuse@forwardemail.net
+X-Complaints-To: abuse@forwardemail.net
+X-ForwardEmail-Version: 0.4.40
+X-ForwardEmail-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
+ 167.172.40.54
+X-ForwardEmail-ID: 668fa9943d24780caa1a7dec
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240711_021719_452784_426F4AF2 
-X-CRM114-Status: GOOD (  27.30  )
+X-CRM114-CacheID: sfid-20240711_024520_623842_A9FAA5C7 
+X-CRM114-Status: GOOD (  28.31  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,69 +76,136 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Reply-To: wens@kernel.org
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gVGh1LCBKdWwgMTEsIDIwMjQgYXQgNDo0NOKAr1BNIEpvbmFzIEthcmxtYW4gPGpvbmFzQGt3
-aWJvby5zZT4gd3JvdGU6Cj4KPiBIaSBBbmFuZCwKPgo+IE9uIDIwMjQtMDctMTEgMDg6MDksIEFu
-YW5kIE1vb24gd3JvdGU6Cj4gPiBBZGQgbWlzc2luZyBwaW5jdHJsIHNldHRpbmdzIGZvciBQQ0ll
-IDMuMCB4NCBjbG9jayByZXF1ZXN0IGFuZCB3YWtlCj4gPiBzaWduYWxzLkVhY2ggY29tcG9uZW50
-IG9mIFBDSWUgY29tbXVuaWNhdGlvbiBoYXZlIHRoZSBmb2xsb3dpbmcgY29udHJvbAo+ID4gc2ln
-bmFsczogUEVSU1QsIFdBS0UsIENMS1JFUSwgYW5kIFJFRkNMSy4gVGhlc2Ugc2lnbmFscyB3b3Jr
-IHRvIGdlbmVyYXRlCj4gPiBoaWdoLXNwZWVkIHNpZ25hbHMgYW5kIGNvbW11bmljYXRlIHdpdGgg
-b3RoZXIgUENJZSBkZXZpY2VzLgo+ID4gVXNlZCBieSByb290IGNvbXBsZXggdG8gZW5kcG9pbnQg
-ZGVwZW5kaW5nIG9uIHRoZSBwb3dlciBzdGF0ZS4KPiA+Cj4gPiBQRVJTVCBpcyByZWZlcnJlZCB0
-byBhcyBhIGZ1bmRhbWVudGFsIHJlc2V0LiBQRVJTVCBzaG91bGQgYmUgaGVsZCBsb3cKPiA+IHVu
-dGlsIGFsbCB0aGUgcG93ZXIgcmFpbHMgaW4gdGhlIHN5c3RlbSBhbmQgdGhlIHJlZmVyZW5jZSBj
-bG9jayBhcmUgc3RhYmxlLgo+ID4gQSB0cmFuc2l0aW9uIGZyb20gbG93IHRvIGhpZ2ggaW4gdGhp
-cyBzaWduYWwgdXN1YWxseSBpbmRpY2F0ZXMgdGhlCj4gPiBiZWdpbm5pbmcgb2YgbGluayBpbml0
-aWFsaXphdGlvbi4KPiA+Cj4gPiBXQUtFIHNpZ25hbCBpcyBhbiBhY3RpdmUtbG93IHNpZ25hbCB0
-aGF0IGlzIHVzZWQgdG8gcmV0dXJuIHRoZSBQQ0llCj4gPiBpbnRlcmZhY2UgdG8gYW4gYWN0aXZl
-IHN0YXRlIHdoZW4gaW4gYSBsb3ctcG93ZXIgc3RhdGUuCj4gPgo+ID4gQ0xLUkVRIHNpZ25hbCBp
-cyBhbHNvIGFuIGFjdGl2ZS1sb3cgc2lnbmFsIGFuZCBpcyB1c2VkIHRvIHJlcXVlc3QgdGhlCj4g
-PiByZWZlcmVuY2UgY2xvY2suCj4gPgo+ID4gU2lnbmVkLW9mZi1ieTogQW5hbmQgTW9vbiA8bGlu
-dXguYW1vb25AZ21haWwuY29tPgo+ID4gLS0tCj4gPiBWMjogVXBkYXRlIHRoZSBjb21taXQgbWVz
-c2dlIHRvIGRlc2NyaWJlIHRoZSBjaGFuZ3MuCj4gPiAgICAgdXNlIHBpbmN0bCBncm91cCBhcyBp
-dHMgcHJlIGRlZmluZSBpbiBwaW5jdGwgZHRzaQo+ID4gLS0tCj4gPiAgYXJjaC9hcm02NC9ib290
-L2R0cy9yb2NrY2hpcC9yazM1ODgtcm9jay01Yi5kdHMgfCA2ICstLS0tLQo+ID4gIDEgZmlsZSBj
-aGFuZ2VkLCAxIGluc2VydGlvbigrKSwgNSBkZWxldGlvbnMoLSkKPiA+Cj4gPiBkaWZmIC0tZ2l0
-IGEvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazM1ODgtcm9jay01Yi5kdHMgYi9hcmNo
-L2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzU4OC1yb2NrLTViLmR0cwo+ID4gaW5kZXggMmU3
-NTEyNjc2YjdlLi5hYjNhMjA5ODZjNmEgMTAwNjQ0Cj4gPiAtLS0gYS9hcmNoL2FybTY0L2Jvb3Qv
-ZHRzL3JvY2tjaGlwL3JrMzU4OC1yb2NrLTViLmR0cwo+ID4gKysrIGIvYXJjaC9hcm02NC9ib290
-L2R0cy9yb2NrY2hpcC9yazM1ODgtcm9jay01Yi5kdHMKPiA+IEBAIC0zMDEsNyArMzAxLDcgQEAg
-JnBjaWUzMHBoeSB7Cj4gPgo+ID4gICZwY2llM3g0IHsKPiA+ICAgICAgIHBpbmN0cmwtbmFtZXMg
-PSAiZGVmYXVsdCI7Cj4gPiAtICAgICBwaW5jdHJsLTAgPSA8JnBjaWUzX3JzdD47Cj4gPiArICAg
-ICBwaW5jdHJsLTAgPSA8JnBjaWUzMHg0bTFfcGlucz47Cj4KPiBVc2Ugb2YgdGhlIGV4aXN0aW5n
-IHBjaWUzMHg0bTFfcGlucyBncm91cCBtYXkgbm90IGJlIGZ1bGx5IGFjY3VyYXRlIGZvcgo+IHRo
-ZSBQRVJTVCBwaW4uIFRoZSB1c2Ugb2YgcmVzZXQtZ3Bpb3MgaW5kaWNhdGUgdGhhdCB0aGUgUEVS
-U1QgcGluIGlzCj4gdXNlZCB3aXRoIEdQSU8gZnVuY3Rpb24gYW5kIHRoZSBkcml2ZXIgd2lsbCBp
-bXBsaWNpdGx5IGNoYW5nZSB0aGUKPiBmdW5jdGlvbiBmcm9tIHBlcnN0bl9tMSB0byBHUElPLiBT
-byB0aGlzIG1heSBub3QgYmUgYmVzdCByZXByZXNlbnRhdGlvbgo+IG9mIHRoZSBodywgaGVuY2Ug
-bXkgaW5pdGlhbCBzdWdnZXN0aW9uLCBzb21ldGhpbmcgbGlrZToKPgo+ICAgICAgICAgcGNpZTMw
-eDRfcGluczogcGNpZTMweDQtcGlucyB7Cj4gICAgICAgICAgICAgICAgIHJvY2tjaGlwLHBpbnMg
-PQo+ICAgICAgICAgICAgICAgICAgICAgICAgIDw0IFJLX1BCNCA0ICZwY2ZnX3B1bGxfbm9uZT4s
-Cj4gICAgICAgICAgICAgICAgICAgICAgICAgPDQgUktfUEI2IFJLX0ZVTkNfR1BJTyAmcGNmZ19w
-dWxsX25vbmU+LAo+ICAgICAgICAgICAgICAgICAgICAgICAgIDw0IFJLX1BCNSA0ICZwY2ZnX3B1
-bGxfbm9uZT47Cj4gICAgICAgICB9Owo+Cj4gU2ltaWxhciBjaGFuZ2Ugc2hvdWxkIHByb2JhYmx5
-IGFsc28gYmUgZG9uZSBmb3IgcGNpZTJ4MWwwIGFuZCBwY2llMngxbDIsCj4gbm90IGp1c3QgcGNp
-ZTN4NC4KCkNhbiB3ZSBjb25zaWRlciBpbXBsZW1lbnRpbmcgc3RyaWN0IG1vZGUgaW4gdGhlIHBp
-bmN0cmwgZHJpdmVyIHNvIHdlIGRvbid0CmhhdmUgdG8ga2VlcCBkb2luZyB0aGlzIEdQSU8gKyBw
-aW5tdXggZGFuY2U/CgpDaGVuWXUKCgo+IFJlZ2FyZHMsCj4gSm9uYXMKPgo+ID4gICAgICAgcmVz
-ZXQtZ3Bpb3MgPSA8JmdwaW80IFJLX1BCNiBHUElPX0FDVElWRV9ISUdIPjsKPiA+ICAgICAgIHZw
-Y2llM3YzLXN1cHBseSA9IDwmdmNjM3YzX3BjaWUzMD47Cj4gPiAgICAgICBzdGF0dXMgPSAib2th
-eSI7Cj4gPiBAQCAtMzQxLDEwICszNDEsNiBAQCBwY2llMl8yX3JzdDogcGNpZTItMi1yc3Qgewo+
-ID4gICAgICAgfTsKPiA+Cj4gPiAgICAgICBwY2llMyB7Cj4gPiAtICAgICAgICAgICAgIHBjaWUz
-X3JzdDogcGNpZTMtcnN0IHsKPiA+IC0gICAgICAgICAgICAgICAgICAgICByb2NrY2hpcCxwaW5z
-ID0gPDQgUktfUEI2IFJLX0ZVTkNfR1BJTyAmcGNmZ19wdWxsX25vbmU+Owo+ID4gLSAgICAgICAg
-ICAgICB9Owo+ID4gLQo+ID4gICAgICAgICAgICAgICBwY2llM192Y2MzdjNfZW46IHBjaWUzLXZj
-YzN2My1lbiB7Cj4gPiAgICAgICAgICAgICAgICAgICAgICAgcm9ja2NoaXAscGlucyA9IDwxIFJL
-X1BBNCBSS19GVU5DX0dQSU8gJnBjZmdfcHVsbF9ub25lPjsKPiA+ICAgICAgICAgICAgICAgfTsK
-PiA+Cj4gPiBiYXNlLWNvbW1pdDogMzRhZmI4MmEzYzY3Zjg2OTI2N2EyNmY1OTNiNmY4ZmM2YmYz
-NTkwNQo+Cj4KCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-CkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRl
-YWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgt
-cm9ja2NoaXAK
+Hi Anand,
+
+On 2024-07-11 11:09, Anand Moon wrote:
+> Hi Jonas,
+> 
+> Thanks for your review comments.
+> 
+> On Thu, 11 Jul 2024 at 14:13, Jonas Karlman <jonas@kwiboo.se> wrote:
+>>
+>> Hi Anand,
+>>
+>> On 2024-07-11 08:09, Anand Moon wrote:
+>>> Add missing pinctrl settings for PCIe 3.0 x4 clock request and wake
+>>> signals.Each component of PCIe communication have the following control
+>>> signals: PERST, WAKE, CLKREQ, and REFCLK. These signals work to generate
+>>> high-speed signals and communicate with other PCIe devices.
+>>> Used by root complex to endpoint depending on the power state.
+>>>
+>>> PERST is referred to as a fundamental reset. PERST should be held low
+>>> until all the power rails in the system and the reference clock are stable.
+>>> A transition from low to high in this signal usually indicates the
+>>> beginning of link initialization.
+>>>
+>>> WAKE signal is an active-low signal that is used to return the PCIe
+>>> interface to an active state when in a low-power state.
+>>>
+>>> CLKREQ signal is also an active-low signal and is used to request the
+>>> reference clock.
+>>>
+>>> Signed-off-by: Anand Moon <linux.amoon@gmail.com>
+>>> ---
+>>> V2: Update the commit messge to describe the changs.
+>>>     use pinctl group as its pre define in pinctl dtsi
+>>> ---
+>>>  arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts | 6 +-----
+>>>  1 file changed, 1 insertion(+), 5 deletions(-)
+>>>
+>>> diff --git a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
+>>> index 2e7512676b7e..ab3a20986c6a 100644
+>>> --- a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
+>>> +++ b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
+>>> @@ -301,7 +301,7 @@ &pcie30phy {
+>>>
+>>>  &pcie3x4 {
+>>>       pinctrl-names = "default";
+>>> -     pinctrl-0 = <&pcie3_rst>;
+>>> +     pinctrl-0 = <&pcie30x4m1_pins>;
+>>
+>> Use of the existing pcie30x4m1_pins group may not be fully accurate for
+>> the PERST pin. The use of reset-gpios indicate that the PERST pin is
+>> used with GPIO function and the driver will implicitly change the
+>> function from perstn_m1 to GPIO. So this may not be best representation
+>> of the hw, hence my initial suggestion, something like:
+>>
+>>         pcie30x4_pins: pcie30x4-pins {
+>>                 rockchip,pins =
+>>                         <4 RK_PB4 4 &pcfg_pull_none>,
+>>                         <4 RK_PB6 RK_FUNC_GPIO &pcfg_pull_none>,
+>>                         <4 RK_PB5 4 &pcfg_pull_none>;
+>>         };
+>>
+>> Similar change should probably also be done for pcie2x1l0 and pcie2x1l2,
+>> not just pcie3x4.
+>>
+> 
+> Ok but it is better to update this in rk3588s-pinctrl.dtsi otherwise
+> the pcie30x4m1_pins
+> will not be used at all on all the boards
+
+I agree that it is unfortunate that the PERST pin is included in the
+groups in pinctrl.dtsi, however, for pcie ep mode the pins should more
+than likely be using the perstn_m1 function and not GPIO, so there are
+uses for the existing pin groups for ep mode.
+
+In my opinion using pcie30x4m1_pins as-is and having implicitly changing
+to GPIO function when driver/usage in the software require it is an okay
+description of the hw.
+
+However, seeing how use of pcie ep is described using its own node in DT
+I can understand that for rc mode the pin should be changed to GPIO to
+properly describe the expected usage.
+
+When I tried to add similar implicit change to use GPIO function in
+U-Boot to fix system freeze when improper pinctrl was used, it resulted
+in some discussions, see [1] ;-)
+
+[1] https://lore.kernel.org/u-boot/20240511112821.1156519-1-jonas@kwiboo.se/t/#u
+
+> I will update the PERST pin to RK_FUNC_GPIO on all the pcie2x1l0,
+> pcie2x1l2 and  pcie30x4
+> is this ok for you?
+
+This should probably be reworked in pinctrl.dtsi together with all
+affected boards and/or use a group override in the board dts.
+
+Regards,
+Jonas
+
+> 
+>> Regards,
+>> Jonas
+> 
+> Thanks
+> -Anand
+>>
+>>>       reset-gpios = <&gpio4 RK_PB6 GPIO_ACTIVE_HIGH>;
+>>>       vpcie3v3-supply = <&vcc3v3_pcie30>;
+>>>       status = "okay";
+>>> @@ -341,10 +341,6 @@ pcie2_2_rst: pcie2-2-rst {
+>>>       };
+>>>
+>>>       pcie3 {
+>>> -             pcie3_rst: pcie3-rst {
+>>> -                     rockchip,pins = <4 RK_PB6 RK_FUNC_GPIO &pcfg_pull_none>;
+>>> -             };
+>>> -
+>>>               pcie3_vcc3v3_en: pcie3-vcc3v3-en {
+>>>                       rockchip,pins = <1 RK_PA4 RK_FUNC_GPIO &pcfg_pull_none>;
+>>>               };
+>>>
+>>> base-commit: 34afb82a3c67f869267a26f593b6f8fc6bf35905
+>>
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
