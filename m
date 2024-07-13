@@ -4,104 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4F095C3DA45
-	for <linux-rockchip@archiver.kernel.org>; Sat, 13 Jul 2024 09:58:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ABC1EC3DA45
+	for <linux-rockchip@archiver.kernel.org>; Sat, 13 Jul 2024 13:32:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=gChSMvLSSOIxLhWgmBrXvsm/Fi/6CtHGSzP0qRTh+hI=; b=qw4l8RmBBaEt6k
-	BKQcvFRSH4QRNhJEzkzw2ja2nwvWpfTm/sBq5iBQP5J2riB52F5juJrCLYcInYw1gII8oKSSO5ZTV
-	qULV2do7lHtGh04nOqizxtFLLfCzZ44OUqWOIjdyzyupOyA8YWk096Q5U1gYoUcqBN5p5ooJWCBRm
-	MEEaM9cLggi5fTa05/QbyLscdVsqASLME6E02WnH4pwUUAWKW/PRaaqclDbEPPoaNKQMTHr/vU2/a
-	GutGH2rZe3T1YODe4VushSmKrugkOYtxVl21eu3aGnwfeNigYPBQWV+womPoaUeLffT5RrQMZI647
-	DGCO3tcn0BW7fp8SyXJQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
+	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=XamD3y8Ft0rYvQzBqSrb2tk3IiReltuf7P0nqB245QM=; b=ni4GOQSgQCoc9cU6P1re5vYdF3
+	xYjalIgdqZhPIEPyWsqbz7QhbtOcePsj5L18nA42xkGGEYGq7GFpAbIqGliCvG0/wmlYsT9s0A8qO
+	0YqrF3s6UB91rD8TCs/HeXS/CWa7zZEot9oIKM3VmUaGxUdR4GZ0XCo9jM8QqEOxq+dfHS9nt91Ip
+	WP7LhaCSTnP7/4ZUqeKQAiP5r7w7giKzCqXWcYNBq+bKGqM0zeKzUHjjyP4kt3ftD5i6m9jFknWjt
+	AwROmpdWO7gJWgusx3yxL489YwmQL/df5rPhGgcNmxzqfEAprkiWxRUzjVA712rY0w1QNe3ShIl9d
+	DORJpYqQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sSZWS-00000002Ii2-34tQ;
-	Sat, 13 Jul 2024 09:58:32 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1sScra-00000002byT-1Gse;
+	Sat, 13 Jul 2024 13:32:34 +0000
+Received: from mail.manjaro.org ([2a01:4f8:c0c:51f3::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sSZWP-00000002IhR-4BZ0
-	for linux-rockchip@lists.infradead.org;
-	Sat, 13 Jul 2024 09:58:31 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 500C3602E2;
-	Sat, 13 Jul 2024 09:58:29 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 46367C32781;
-	Sat, 13 Jul 2024 09:58:25 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1720864709;
-	bh=8VLOh5pPHhZO3YGGqQX5E93AXjmIQsoDZvhSUD9PBUA=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=qJR+5kXyYgNEQ/j+IsdzHlwkKN9SvskSpoAbLV1mM+kaMaGIEYUOLUlyZso65SaK2
-	 ztC/wKSeRuEVKzgP+L6xsLFTaxubWi3EOBSieDTZD2ubuVgkFK/oVAnsKblL2WBZKj
-	 YoHMsSQCp93jCGv4dxBYJNSEwvapdOUgzHGErpqBBpyMW9b5sUcI+OFDNn9U1MBKXj
-	 UPGylLeVtuxneaM/eJrdgR3t0dlNKjblVH1RdPs2E32mv/4mTfAGRQro/+0o8jms+x
-	 bOUQneeblcsKlZbLbmHZHD849Vx8/ZrpDJjIhph9vH0FU0TND/nzjRFgCgt4LpetSE
-	 jwVEnDIuG8jFw==
-Message-ID: <23aa8e5b-dc25-4a69-80bf-18b67e2447a6@kernel.org>
-Date: Sat, 13 Jul 2024 11:58:24 +0200
+	id 1sScrF-00000002buh-37zz;
+	Sat, 13 Jul 2024 13:32:15 +0000
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 1/2] dt-bindings: arm: rockchip: add support for Radxa
- ROCK Pi E v3.0
-To: FUKAUMI Naoki <naoki@radxa.com>, heiko@sntech.de
-Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
- devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org
-References: <20240712215300.720113-1-naoki@radxa.com>
-From: Krzysztof Kozlowski <krzk@kernel.org>
-Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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 fv0=
-In-Reply-To: <20240712215300.720113-1-naoki@radxa.com>
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
+	t=1720877530;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=gdsA/FWKhdawJ5GjAEMw4Scb4231JfvIGWeKzVvBLl0=;
+	b=nPeMeDIAUE6dGEBgaCGnsMJooRVdoxUOL/1VdWuEZbO9L2D/GfinCwRWviD1f0wvImQ7JS
+	HbPMVY1OXjAc6fImCZtxrGuFAzRj50Y2ywAGI8ZOYEJychIpRe5vW3P2zO9t59i0dNsxmH
+	XZ978LBYKIHBQ9nWpE+R9DZHv4zPcjtHqD/OkMcGYTRw6Y+NucbB25PXFyXF4YdRtIE4au
+	IWDASFLoBtBluKis5+Bt8N7ph0mytNMWD5iClw7hferXXA3p1Biwvw8ZfZVGptT/KlNjJK
+	OYMGlUCP87MSnfT4x7JpTkzoU0wlcDxaXlnxuch/DuGDGVMHnYE/us0TdUVQQg==
+Date: Sat, 13 Jul 2024 15:32:09 +0200
+From: Dragan Simic <dsimic@manjaro.org>
+To: Diederik de Haas <didi.debian@cknow.org>
+Cc: Heiko Stuebner <heiko@sntech.de>, Alex Bee <knaerzche@gmail.com>,
+ linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Johan
+ Jonker <jbx6244@gmail.com>, Chen-Yu Tsai <wens@csie.org>
+Subject: Re: [PATCH v3 2/2] arm64: dts: rockchip: Add sdmmc/sdio/emmc reset
+ controls for RK3328
+In-Reply-To: <20240710132830.14710-4-didi.debian@cknow.org>
+References: <20240710132830.14710-1-didi.debian@cknow.org>
+ <20240710132830.14710-4-didi.debian@cknow.org>
+Message-ID: <2b8fc2a116900bae9b30fa3225235b3c@manjaro.org>
+X-Sender: dsimic@manjaro.org
+Authentication-Results: ORIGINATING;
+	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240713_025830_168697_A3A3B968 
-X-CRM114-Status: UNSURE (   3.77  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240713_063214_285117_E5754424 
+X-CRM114-Status: GOOD (  12.16  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -113,24 +69,63 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 12/07/2024 23:52, FUKAUMI Naoki wrote:
-> Radxa ROCK Pi E v3.0 is a compact networking SBC[1] using the Rockchip
-> RK3328 chip.
+Hello Diederik,
+
+On 2024-07-10 15:28, Diederik de Haas wrote:
+> From: Alex Bee <knaerzche@gmail.com>
 > 
-> [1] https://radxa.com/products/rockpi/pie
+> The DW MCI controller driver will use them to reset the IP block before
+> initialisation.
 > 
-> Signed-off-by: FUKAUMI Naoki <naoki@radxa.com>
+> Fixes: d717f7352ec6 ("arm64: dts: rockchip: add sdmmc/sdio/emmc nodes
+> for RK3328 SoCs")
+> Signed-off-by: Alex Bee <knaerzche@gmail.com>
+> Signed-off-by: Diederik de Haas <didi.debian@cknow.org>
 
-Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Looking good to me, cross-referencing the RK3328 TRM checks out.
 
-Best regards,
-Krzysztof
+Reviewed-by: Dragan Simic <dsimic@manjaro.org>
 
+> ---
+>  arch/arm64/boot/dts/rockchip/rk3328.dtsi | 6 ++++++
+>  1 file changed, 6 insertions(+)
+> 
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3328.dtsi
+> b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
+> index 95c3f1303544..16b4faa22e4f 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3328.dtsi
+> +++ b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
+> @@ -910,6 +910,8 @@ sdmmc: mmc@ff500000 {
+>  		clock-names = "biu", "ciu", "ciu-drive", "ciu-sample";
+>  		fifo-depth = <0x100>;
+>  		max-frequency = <150000000>;
+> +		resets = <&cru SRST_MMC0>;
+> +		reset-names = "reset";
+>  		status = "disabled";
+>  	};
+> 
+> @@ -922,6 +924,8 @@ sdio: mmc@ff510000 {
+>  		clock-names = "biu", "ciu", "ciu-drive", "ciu-sample";
+>  		fifo-depth = <0x100>;
+>  		max-frequency = <150000000>;
+> +		resets = <&cru SRST_SDIO>;
+> +		reset-names = "reset";
+>  		status = "disabled";
+>  	};
+> 
+> @@ -934,6 +938,8 @@ emmc: mmc@ff520000 {
+>  		clock-names = "biu", "ciu", "ciu-drive", "ciu-sample";
+>  		fifo-depth = <0x100>;
+>  		max-frequency = <150000000>;
+> +		resets = <&cru SRST_EMMC>;
+> +		reset-names = "reset";
+>  		status = "disabled";
+>  	};
 
 _______________________________________________
 Linux-rockchip mailing list
