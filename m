@@ -4,62 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1F197C3DA42
-	for <linux-rockchip@archiver.kernel.org>; Sat, 13 Jul 2024 14:59:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B8334C3DA45
+	for <linux-rockchip@archiver.kernel.org>; Sat, 13 Jul 2024 20:52:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
-	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=myPtA9DZ/ls+xPAzgoxqfek9dvnNuekZx+MwVoLWLbY=; b=nHPsxtOrX8WrO/Un6wgpQooEMu
-	SdQX3rVRhx4hwhoOOwfL44QlMOnu/37HNXPhxO0rEXQwBy/Rhuw4dfam8o8OXHTRt7rmNX5ccz0oj
-	2DuZNhI7xVXYk+OgTgukttyvwpm6WeEHe80RfmU3TX+/LhZqp/to99gtqcXhAYELqc2eqOFFBkUpQ
-	RuNrajS1cqZixwa4C/YrGVMNmpPrpZ70npcAw1P0wlgZFhnp9lD60HXSDx5rUl14yBd5GIQsep8gw
-	JgYdwMFSzeXcDXicY1xxhJtG50+wn9c33RIIQwhWGW4weZTScY2qnc4IX7g3ZCRR0uXgoNJPUwaRE
-	dbvEB4ZQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=NGNR2N81rI1VenQDKolI4FOcE8T9rMR5VJ5VL5mSY68=; b=A0mTW3/l+JLd/P
+	aG7yMSoUraowiTErD9+u9bXzsEAivKvyGZ+pqKCk2oqt2I4ZQnbjvxBuN+3KUkoUjbTsJA3ffUCW6
+	1rf6eBDOnv3fS8dxoldoZza2v7P+BwIG3pjbLkrMtbZgY58uVttemqXK3Z8arEsPoxotRlSsVPMJx
+	ucgx28jggsXz11EnhfkB6wgLfz9IgvqL9pxeqn+evcOUcXl0dTDhy9+c9D7XIa/9frCBMLRzwshpY
+	BlyoZidQakSD967brvXXXdnjCBo4NZ8/Zn+TvkVYvgJmRNe8OJkpdFBriHkZ5Ie46iDOtJS+7nlCr
+	njt99kZ1sz7xrY/9mPZA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sSeDM-00000002jbV-21iv;
-	Sat, 13 Jul 2024 14:59:08 +0000
-Received: from mail.manjaro.org ([116.203.91.91])
+	id 1sSjjI-00000003AgT-0iOP;
+	Sat, 13 Jul 2024 20:52:28 +0000
+Received: from smtp-71.smtpout.orange.fr ([80.12.242.71] helo=msa.smtpout.orange.fr)
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sSeD2-00000002jWv-3wJM;
-	Sat, 13 Jul 2024 14:58:50 +0000
+	id 1sSjjD-00000003AfN-3rH1;
+	Sat, 13 Jul 2024 20:52:26 +0000
+Received: from fedora.home ([90.11.132.44])
+	by smtp.orange.fr with ESMTPA
+	id Sjj0sHlkifWRDSjj0skR4R; Sat, 13 Jul 2024 22:52:14 +0200
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=wanadoo.fr;
+	s=t20230301; t=1720903935;
+	bh=36Mcqh3lrdshkqWXw2v9j64RRGuxk5wAxlhTZZIAi7E=;
+	h=From:To:Subject:Date:Message-ID:MIME-Version;
+	b=IyjD/S2oU8pPRrxH+yjP+hhUglsP21Gcv+wbpA++OzN7k/RsMVxtamHkyrwJ4JP5y
+	 KyvF8Kx0851tEa71BvgfSYCGrxjq2yOJ9lRGocURvqQdpr6LpI3ZWyZaEc3nm7c7WX
+	 7QvjgBbAnUhf4fVlGDXaNdPAHL4GQrz9Zd+XcifWQFnkBRtVPzOdXadI/XnfcitgZj
+	 M4JIytkd+NMG8LobPW2w++poSRHJB5nY4QC1mPuYR2zoRVX+EKQN01EFVnG+PXOzEn
+	 2eGd9qwtF3yQG0AzEpnP+rV/n5nbwK8jfGTyFHN43kxXOzrzYAa5+KXfRWyZ7DrvO5
+	 t6GJoTVJ/48gQ==
+X-ME-Helo: fedora.home
+X-ME-Auth: Y2hyaXN0b3BoZS5qYWlsbGV0QHdhbmFkb28uZnI=
+X-ME-Date: Sat, 13 Jul 2024 22:52:15 +0200
+X-ME-IP: 90.11.132.44
+From: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
+To: Sandy Huang <hjc@rock-chips.com>,
+	=?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
+	Andy Yan <andy.yan@rock-chips.com>,
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Maxime Ripard <mripard@kernel.org>,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	David Airlie <airlied@gmail.com>,
+	Daniel Vetter <daniel@ffwll.ch>
+Cc: linux-kernel@vger.kernel.org,
+	kernel-janitors@vger.kernel.org,
+	Christophe JAILLET <christophe.jaillet@wanadoo.fr>,
+	dri-devel@lists.freedesktop.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org
+Subject: [PATCH] drm/rockchip: Constify struct drm_encoder_helper_funcs
+Date: Sat, 13 Jul 2024 22:52:05 +0200
+Message-ID: <128f9941aab3b1367eb7abca4ac26e2e5dd6ad21.1720903899.git.christophe.jaillet@wanadoo.fr>
+X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
-	t=1720882725;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=G6LUtO9TwGFe+2ljcswYV7qxJzuvjypqub8o20MTOYw=;
-	b=Zc3fc11Y8a+YnyF186vXBF7XCWCGlJxWlKlGXUvZ9T9YWW72ioC9R3+NmSqX1Fq1BdPxl8
-	BK5icxTbqgTEGqeaisDoNO7nm+hDYJJ7bf9pLhCZvElnRjFjn/DT9RvJUxQfrVLtQbaStQ
-	vXAfWzxy+jd/rZW97SKug10FHDClfS1i4cuaGKUgxPi2njzp+QC1cC0ikZfQRcGG0+hUWL
-	ElNKsuUzkYSx2WNQ7FzBUrirM7kz3W67RHGCzJlgUKRLb2Z6ojJRlneBgpS8Nv5zb1uRrr
-	NAoa9HV5JF3McpQt55/JvzPhc2Joy46750TzSR136hLxeTaeyyGg5yCamiVndw==
-Date: Sat, 13 Jul 2024 16:58:45 +0200
-From: Dragan Simic <dsimic@manjaro.org>
-To: Alex Bee <knaerzche@gmail.com>
-Cc: Diederik de Haas <didi.debian@cknow.org>, Heiko Stuebner
- <heiko@sntech.de>, linux-rockchip@lists.infradead.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, Johan Jonker <jbx6244@gmail.com>, Chen-Yu Tsai
- <wens@csie.org>
-Subject: Re: [PATCH v3 1/2] arm64: dts: rockchip: Add sdmmc_ext for RK3328
-In-Reply-To: <969642dd-fe5f-4dfd-baac-21e75e30a271@gmail.com>
-References: <20240710132830.14710-1-didi.debian@cknow.org>
- <20240710132830.14710-3-didi.debian@cknow.org>
- <72718d8d02c25993c138567c96340792@manjaro.org> <2735059.JVtD0IzA6d@bagend>
- <969642dd-fe5f-4dfd-baac-21e75e30a271@gmail.com>
-Message-ID: <529bd79969ced12bbb5a3b1c3d5ba53c@manjaro.org>
-X-Sender: dsimic@manjaro.org
-Authentication-Results: ORIGINATING;
-	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240713_075849_408569_612A5197 
-X-CRM114-Status: UNSURE (   5.88  )
+X-CRM114-CacheID: sfid-20240713_135224_396474_989EAD05 
+X-CRM114-Status: UNSURE (   9.71  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -72,32 +78,64 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello Alex,
+'struct drm_encoder_helper_funcs' is not modified in these drivers.
 
-On 2024-07-13 16:56, Alex Bee wrote:
-> Am 13.07.24 um 16:35 schrieb Diederik de Haas:
->> Hi Dragan,
->> 
->> Thanks for the reviews!
->> 
->> On Saturday, 13 July 2024 15:45:12 CEST Dragan Simic wrote:
->>> Looking good to me, cross-referencing the RK3328 TRM and the
->>> downstream RK3328 SoC dtsi checks out.  Though, it will remain inert
->>> in our codebase, because no supported boards use it, but that's fine,
->>> we're still improving the correctness of the RK3328 SoC dtsi.
->> Indeed. But it's hard to argue with technically correct ;-)
-> 
-> FWIW: (upstream supported) ROC-RK3328-PC has sdio wifi connected to 
-> this
-> controller.
+Constifying this structure moves some data to a read-only section, so
+increase overall security.
 
-Oh, it does?  Good to hear, so the additions to the RK3328 SoC dtsi
-shouldn't remain inert. :)
+On a x86_64, with allmodconfig:
+Before:
+======
+   text	   data	    bss	    dec	    hex	filename
+   7458	    552	      0	   8010	   1f4a	drivers/gpu/drm/rockchip/analogix_dp-rockchip.o
+
+After:
+=====
+   text	   data	    bss	    dec	    hex	filename
+   7578	    424	      0	   8002	   1f42	drivers/gpu/drm/rockchip/analogix_dp-rockchip.o
+
+Signed-off-by: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
+---
+Compile tested-only.
+---
+ drivers/gpu/drm/rockchip/analogix_dp-rockchip.c | 2 +-
+ drivers/gpu/drm/rockchip/inno_hdmi.c            | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
+index 362c7951ca4a..d3341edfe4f4 100644
+--- a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
++++ b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
+@@ -262,7 +262,7 @@ rockchip_dp_drm_encoder_atomic_check(struct drm_encoder *encoder,
+ 	return 0;
+ }
+ 
+-static struct drm_encoder_helper_funcs rockchip_dp_encoder_helper_funcs = {
++static const struct drm_encoder_helper_funcs rockchip_dp_encoder_helper_funcs = {
+ 	.mode_fixup = rockchip_dp_drm_encoder_mode_fixup,
+ 	.mode_set = rockchip_dp_drm_encoder_mode_set,
+ 	.atomic_enable = rockchip_dp_drm_encoder_enable,
+diff --git a/drivers/gpu/drm/rockchip/inno_hdmi.c b/drivers/gpu/drm/rockchip/inno_hdmi.c
+index 2241e53a2946..44ce0f581062 100644
+--- a/drivers/gpu/drm/rockchip/inno_hdmi.c
++++ b/drivers/gpu/drm/rockchip/inno_hdmi.c
+@@ -545,7 +545,7 @@ inno_hdmi_encoder_atomic_check(struct drm_encoder *encoder,
+ 	return 0;
+ }
+ 
+-static struct drm_encoder_helper_funcs inno_hdmi_encoder_helper_funcs = {
++static const struct drm_encoder_helper_funcs inno_hdmi_encoder_helper_funcs = {
+ 	.atomic_check	= inno_hdmi_encoder_atomic_check,
+ 	.atomic_enable	= inno_hdmi_encoder_enable,
+ 	.atomic_disable	= inno_hdmi_encoder_disable,
+-- 
+2.45.2
+
 
 _______________________________________________
 Linux-rockchip mailing list
