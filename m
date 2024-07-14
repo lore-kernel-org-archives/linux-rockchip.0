@@ -4,73 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C338DC3DA42
-	for <linux-rockchip@archiver.kernel.org>; Sun, 14 Jul 2024 04:43:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0C55EC3DA42
+	for <linux-rockchip@archiver.kernel.org>; Sun, 14 Jul 2024 06:49:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:References
+	:In-Reply-To:Subject:To:From:Reply-To:Cc:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=k0Mh149CUJw3o/2Afce+riTxOl4BmUSV+oEFw7cemVg=; b=MYsUDpR0VtwzIR
-	UItA1sXK5GK0PNgyDz7Kpvt/j9lG7v1soowBeeiPmiSDNk1GjUuc2l7CWYv3QvDNHM3etwxQpk+x9
-	FOCcBoB39S4SCAlZiiTSI18xi56R+8KPiXfFoo5b4Y0++ACLY4vQHl+7BdLjF3iMWE/2xYuGzzavl
-	MfZKatLRUo8EfpehTpXt214G4mW/D/y+OzPLGtQwbdG+0kWk90jCGHI+1nvy75XxhjEcQjQ+ysbFF
-	6sFnXNmOmM/30pkzWjpvuZuYNdZZsrvF/YWbvchQrLO/jA7sFV9hGIylp2rELxqXqy4j6g8JFH4Tg
-	StQQdtLLg0RN8Xc5rt2g==;
+	List-Owner; bh=EBuH7XPCazAy6qMbXx+OLdwzDFNhTF3WuZaGBVCcvwg=; b=DXYNVX1J8RTwH6
+	2D6XhznURm/pTwWF4C3/rZGMV2K3n6NNFSZpK8tlNsugAEb4wRU7cBv5NZFntFiu9J1cTgxiNRD4Q
+	HLz3h2y00DxqbFvTEgVQGj4CJTpnEBpV3spltt0mApN1ih+dny5ahAwJ55FzXUdifMkN03Qc61NXl
+	As8uJ8LuTZ8hmIOccOQa/W6jcidVChStIul1fklOuY6N8M6ANhHYXVQ8dnVdd58aSYPrRSvcJqizO
+	wPHYPg/LEt0See/r9MKKNvdjTpNCk4lDeXKAIl1USMpKSLMxrNHuvfPR3yQBLnX6DM1qVuyFiJdfa
+	Nm+01VVhdilSGLeNUJuw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sSr5D-00000003jVe-2hCU;
-	Sun, 14 Jul 2024 04:43:35 +0000
-Received: from mail-lf1-x129.google.com ([2a00:1450:4864:20::129])
+	id 1sSt2W-00000003tN4-03yI;
+	Sun, 14 Jul 2024 06:48:56 +0000
+Received: from lelv0143.ext.ti.com ([198.47.23.248])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sSr4s-00000003jRI-1SOE;
-	Sun, 14 Jul 2024 04:43:16 +0000
-Received: by mail-lf1-x129.google.com with SMTP id 2adb3069b0e04-52e99060b0dso3488389e87.1;
-        Sat, 13 Jul 2024 21:43:13 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1720932192; x=1721536992; darn=lists.infradead.org;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=lJVLYi+pE04YOrrCFHXVXYXIWButASzCZnzKDh4ZGOU=;
-        b=cYjeh8XcQSI7tpX1nYVXwxQB58EiUxvg+OyfbfFBSjcsvISZlqC1UYqukCwVTspTh2
-         gCTob5Oc8f2bTsKZVYNVZ+unfSwtz4nGruztWoG1CjqxOjeYtWW/67Wsh0Wryaa2ooFX
-         GEYlgDP4oDKdsFFv0GN2SbS/+7ZBsaP5dk5/LmOgcLTnO87eIY9E7uTeq1dqooF2Lz+8
-         jxE5KOIs3zL0Bd3p4xjZZXWLL6ryxzCt3gqAUXz2wN3bcnGsMODObumnt8v8r7/CFz+w
-         96XEyS6NqVNEPtLvAy/Algb4Z2WZ5ifrwQh0XEoIsE8UKMOwTkoHCBIaMHnXU0EJKXbH
-         vl5Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1720932192; x=1721536992;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=lJVLYi+pE04YOrrCFHXVXYXIWButASzCZnzKDh4ZGOU=;
-        b=Kv+qiWQkwE3Sku2YHAHaGhtO++hvrNorpcf4Rfx7LiFp10TiE+GycwEzPsYzqrXPuN
-         qKCW081lwlDdBBuPgv3Dero9yZNSCb6Ux8HD6UZDnQB/qcI/OA8Hdq+IigOhOnXciU4x
-         +K1juSHz9ATt9DcZg2LhP5+LTc1qBitx1nbfaYt4Ab711pqydpTLiydGfxMcnNMuklk1
-         26ZJvMmCXmBGRRf3nXuxLZAk+RJ0yMWi/WX9usNDZlEMJKqhIJn6UGJJANNBSNhRGlJv
-         ICLkslARQfxo6bqIOhfEB0iGnGLV7PqZ576w7it2dLFxgAyr64wcYpbjyeJkTh0ZY8EU
-         A1XA==
-X-Forwarded-Encrypted: i=1; AJvYcCXT6fIXRMXVSbUhXDr0+MBQuSZCXqNMfcAzWCBqfi2WUQEN0ZjWsD+z7P9iTO4oaAnzAUcI/Z4588lysctKKdbXDKq/EZmfq6jmvC2vRmEh26J7ZnnaIAuZWI+jyK1W/O2t8duTp08KzEJszw0cFSBQ4449HlR/y30=
-X-Gm-Message-State: AOJu0YxywugMLAz55sW6o6yUnYeF8lDhvBqAw42OR3mvkJ3wW3u4j91D
-	5VYlb3p+dyNBftcXy3JvGB6r7YWE7p3VzVIB26Pj3LaglX00CeTk/QPfOZdI3Zlb51tX7Cz025s
-	uj5di9MT9UyWnENfuZnDE1tEppO4=
-X-Google-Smtp-Source: AGHT+IEveCVlfZLVXJBHR90dZnmVx2pwSADMUlIbtkIq79k5uJZENwwhysMVMYxHLsknIe9g0lDKWihmS5z1YbEu5Z4=
-X-Received: by 2002:a05:6512:2810:b0:52c:e326:f4cf with SMTP id
- 2adb3069b0e04-52eb999125amr12348016e87.3.1720932191396; Sat, 13 Jul 2024
- 21:43:11 -0700 (PDT)
+	id 1sSt2C-00000003tL5-04BV;
+	Sun, 14 Jul 2024 06:48:38 +0000
+Received: from lelv0265.itg.ti.com ([10.180.67.224])
+	by lelv0143.ext.ti.com (8.15.2/8.15.2) with ESMTP id 46E6lRAW024417;
+	Sun, 14 Jul 2024 01:47:27 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ti.com;
+	s=ti-com-17Q1; t=1720939647;
+	bh=gqZD3AlWNrNG3IaqY/F93h4cnT0J0I2HZpA75TQiyzY=;
+	h=From:To:Subject:In-Reply-To:References:Date;
+	b=tiT2LKNuBXwHix7KsUNgsDWtYg90NEJWcYW183vO78NLJ2exqsmYM9q5n0E8tHw4M
+	 BZZbgBc0Di0YpkdkmaRuplu+5rrkRiyfYRF+Yr0vALVlPDq5Gx/hIgA00YuwtGKgTj
+	 VsFFemujuugHTOFEwZLcdgFwnY5iLTclpfs9quYI=
+Received: from DLEE107.ent.ti.com (dlee107.ent.ti.com [157.170.170.37])
+	by lelv0265.itg.ti.com (8.15.2/8.15.2) with ESMTPS id 46E6lRft008510
+	(version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=FAIL);
+	Sun, 14 Jul 2024 01:47:27 -0500
+Received: from DLEE101.ent.ti.com (157.170.170.31) by DLEE107.ent.ti.com
+ (157.170.170.37) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.2507.23; Sun, 14
+ Jul 2024 01:47:26 -0500
+Received: from lelvsmtp5.itg.ti.com (10.180.75.250) by DLEE101.ent.ti.com
+ (157.170.170.31) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.2507.23 via
+ Frontend Transport; Sun, 14 Jul 2024 01:47:26 -0500
+Received: from localhost (kamlesh.dhcp.ti.com [172.24.227.123])
+	by lelvsmtp5.itg.ti.com (8.15.2/8.15.2) with ESMTP id 46E6lQYw061884;
+	Sun, 14 Jul 2024 01:47:26 -0500
+From: Kamlesh Gurudasani <kamlesh@ti.com>
+To: Daniel Golle <daniel@makrotopia.org>,
+        Daniel Golle
+	<daniel@makrotopia.org>,
+        Aurelien Jarno <aurelien@aurel32.net>,
+        "Olivia
+ Mackall" <olivia@selenic.com>,
+        Herbert Xu <herbert@gondor.apana.org.au>,
+        Rob
+ Herring <robh@kernel.org>,
+        "Krzysztof Kozlowski" <krzk+dt@kernel.org>,
+        Conor
+ Dooley <conor+dt@kernel.org>,
+        "Heiko Stuebner" <heiko@sntech.de>,
+        Philipp
+ Zabel <p.zabel@pengutronix.de>,
+        "Dragan Simic" <dsimic@manjaro.org>,
+        Uwe
+ =?iso-8859-1?Q?Kleine-K=F6nig?= <ukleinek@debian.org>,
+        "Sascha Hauer"
+	<s.hauer@pengutronix.de>,
+        "Cristian Ciocaltea"
+	<cristian.ciocaltea@collabora.com>,
+        Martin Kaiser <martin@kaiser.cx>, Ard
+ Biesheuvel <ardb@kernel.org>,
+        <linux-crypto@vger.kernel.org>, <devicetree@vger.kernel.org>,
+        <linux-arm-kernel@lists.infradead.org>,
+        <linux-rockchip@lists.infradead.org>, <linux-kernel@vger.kernel.org>
+Subject: Re: [PATCH v6 2/3] hwrng: add hwrng driver for Rockchip RK3568 SoC
+In-Reply-To: <b5036408088f2a448b303d6bc6f6f3cc52702dc5.1720830725.git.daniel@makrotopia.org>
+References: <cover.1720830725.git.daniel@makrotopia.org>
+ <b5036408088f2a448b303d6bc6f6f3cc52702dc5.1720830725.git.daniel@makrotopia.org>
+Date: Sun, 14 Jul 2024 12:17:25 +0530
+Message-ID: <87frsc5v2a.fsf@kamlesh.i-did-not-set--mail-host-address--so-tickle-me>
 MIME-Version: 1.0
-References: <20240621130903.2572986-1-net147@gmail.com> <202406282049.ZRM6qCDn-lkp@intel.com>
-In-Reply-To: <202406282049.ZRM6qCDn-lkp@intel.com>
-From: Jonathan Liu <net147@gmail.com>
-Date: Sun, 14 Jul 2024 14:43:00 +1000
-Message-ID: <CANwerB3oAuTcwmy4FdjmH-XRa5M3raHAt4DKLspThC-ryQmagw@mail.gmail.com>
-Subject: Re: [PATCH] arm64: dts: rockchip: Enable RK809 audio codec for Radxa
- ROCK 4C+
-To: kernel test robot <lkp@intel.com>
+X-EXCLAIMER-MD-CONFIG: e1e8a2fd-e40a-4ac6-ac9b-f7e9cc9ee180
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240713_214314_435436_C59A1BBA 
-X-CRM114-Status: GOOD (  17.86  )
+X-CRM114-CacheID: sfid-20240713_234836_283120_1CD96A28 
+X-CRM114-Status: GOOD (  43.98  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,70 +101,328 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh@kernel.org>, linux-kernel@vger.kernel.org, Krzysztof Kozlowski <krzk@kernel.org>, linux-rockchip@lists.infradead.org, Conor Dooley <conor.dooley@microchip.com>, FUKAUMI Naoki <naoki@radxa.com>, Jagan Teki <jagan@amarulasolutions.com>, oe-kbuild-all@lists.linux.dev, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi,
+Daniel Golle <daniel@makrotopia.org> writes:
 
-On Fri, 28 Jun 2024 at 23:07, kernel test robot <lkp@intel.com> wrote:
-> kernel test robot noticed the following build warnings:
+> This message was sent from outside of Texas Instruments. 
+> Do not click links or open attachments unless you recognize the source of this email and know the content is safe. If you wish
+> to report this message to IT Security, please forward the message as an attachment to phishing@list.ti.com 
+>  
+> From: Aurelien Jarno <aurelien@aurel32.net>
 >
-> [auto build test WARNING on rockchip/for-next]
-> [also build test WARNING on krzk/for-next krzk-dt/for-next linus/master v6.10-rc5 next-20240627]
-> [If your patch is applied to the wrong git tree, kindly drop us a note.
-> And when submitting patch, we suggest to use '--base' as documented in
-> https://git-scm.com/docs/git-format-patch#_base_tree_information]
+> Rockchip SoCs used to have a random number generator as part of their
+> crypto device, and support for it has to be added to the corresponding
+> driver. However newer Rockchip SoCs like the RK3568 have an independent
+> True Random Number Generator device. This patch adds a driver for it,
+> greatly inspired from the downstream driver.
 >
-> url:    https://github.com/intel-lab-lkp/linux/commits/Jonathan-Liu/arm64-dts-rockchip-Enable-RK809-audio-codec-for-Radxa-ROCK-4C/20240625-210156
-> base:   https://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git for-next
-> patch link:    https://lore.kernel.org/r/20240621130903.2572986-1-net147%40gmail.com
-> patch subject: [PATCH] arm64: dts: rockchip: Enable RK809 audio codec for Radxa ROCK 4C+
-> config: arm64-randconfig-051-20240628 (https://download.01.org/0day-ci/archive/20240628/202406282049.ZRM6qCDn-lkp@intel.com/config)
-> compiler: aarch64-linux-gcc (GCC) 13.2.0
-> dtschema version: 2024.6.dev3+g650bf2d
-> reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20240628/202406282049.ZRM6qCDn-lkp@intel.com/reproduce)
+> The TRNG device does not seem to have a signal conditionner and the FIPS
+> 140-2 test returns a lot of failures. They can be reduced by increasing
+> RK_RNG_SAMPLE_CNT, in a tradeoff between quality and speed. This value
+> has been adjusted to get ~90% of successes and the quality value has
+> been set accordingly.
 >
-> If you fix the issue in a separate patch/commit (i.e. not just a new version of
-> the same patch/commit), kindly add following tags
-> | Reported-by: kernel test robot <lkp@intel.com>
-> | Closes: https://lore.kernel.org/oe-kbuild-all/202406282049.ZRM6qCDn-lkp@intel.com/
+> Signed-off-by: Aurelien Jarno <aurelien@aurel32.net>
+> [daniel@makrotpia.org: code style fixes]
+> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+> Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+> ---
+>  MAINTAINERS                           |   1 +
+>  drivers/char/hw_random/Kconfig        |  14 ++
+>  drivers/char/hw_random/Makefile       |   1 +
+>  drivers/char/hw_random/rockchip-rng.c | 220 ++++++++++++++++++++++++++
+>  4 files changed, 236 insertions(+)
+>  create mode 100644 drivers/char/hw_random/rockchip-rng.c
 >
-> dtcheck warnings: (new ones prefixed by >>)
->    arch/arm64/boot/dts/rockchip/rk3399.dtsi:566.26-600.4: Warning (unit_address_vs_reg): /usb@fe900000: node has a unit name, but no reg or ranges property
->    arch/arm64/boot/dts/rockchip/rk3399.dtsi:2063.25-2102.4: Warning (avoid_unnecessary_addr_size): /dsi@ff960000: unnecessary #address-cells/#size-cells without "ranges" or child "reg" property
->    arch/arm64/boot/dts/rockchip/rk3399.dtsi:2104.26-2144.4: Warning (avoid_unnecessary_addr_size): /dsi@ff968000: unnecessary #address-cells/#size-cells without "ranges" or child "reg" property
->    arch/arm64/boot/dts/rockchip/rk3399-rock-4c-plus.dtb: ethernet@fe300000: Unevaluated properties are not allowed ('snps,txpbl' was unexpected)
->         from schema $id: http://devicetree.org/schemas/net/rockchip-dwmac.yaml#
->    arch/arm64/boot/dts/rockchip/rk3399-rock-4c-plus.dtb: usb@fe800000: 'extcon' does not match any of the regexes: '^usb@', 'pinctrl-[0-9]+'
->         from schema $id: http://devicetree.org/schemas/usb/rockchip,rk3399-dwc3.yaml#
->    arch/arm64/boot/dts/rockchip/rk3399-rock-4c-plus.dtb: /dp@fec00000: failed to match any schema with compatible: ['rockchip,rk3399-cdn-dp']
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index 7b2b8b1f526c..2745cfe56774 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -19698,6 +19698,7 @@ M:	Daniel Golle <daniel@makrotopia.org>
+>  M:	Aurelien Jarno <aurelien@aurel32.net>
+>  S:	Maintained
+>  F:	Documentation/devicetree/bindings/rng/rockchip,rk3568-rng.yaml
+> +F:	drivers/char/hw_random/rockchip-rng.c
+>  
+>  ROCKCHIP RASTER 2D GRAPHIC ACCELERATION UNIT DRIVER
+>  M:	Jacob Chen <jacob-chen@iotwrt.com>
+> diff --git a/drivers/char/hw_random/Kconfig b/drivers/char/hw_random/Kconfig
+> index 442c40efb200..2b62cd08f91a 100644
+> --- a/drivers/char/hw_random/Kconfig
+> +++ b/drivers/char/hw_random/Kconfig
+> @@ -573,6 +573,20 @@ config HW_RANDOM_JH7110
+>  	  To compile this driver as a module, choose M here.
+>  	  The module will be called jh7110-trng.
+>  
+> +config HW_RANDOM_ROCKCHIP
+> +	tristate "Rockchip True Random Number Generator"
+> +	depends on HW_RANDOM && (ARCH_ROCKCHIP || COMPILE_TEST)
+> +	depends on HAS_IOMEM
+> +	default HW_RANDOM
+> +	help
+> +	  This driver provides kernel-side support for the True Random Number
+> +	  Generator hardware found on some Rockchip SoC like RK3566 or RK3568.
+> +
+> +	  To compile this driver as a module, choose M here: the
+> +	  module will be called rockchip-rng.
+> +
+> +	  If unsure, say Y.
+> +
+>  endif # HW_RANDOM
+>  
+>  config UML_RANDOM
+> diff --git a/drivers/char/hw_random/Makefile b/drivers/char/hw_random/Makefile
+> index 32549a1186dc..01f012eab440 100644
+> --- a/drivers/char/hw_random/Makefile
+> +++ b/drivers/char/hw_random/Makefile
+> @@ -48,4 +48,5 @@ obj-$(CONFIG_HW_RANDOM_XIPHERA) += xiphera-trng.o
+>  obj-$(CONFIG_HW_RANDOM_ARM_SMCCC_TRNG) += arm_smccc_trng.o
+>  obj-$(CONFIG_HW_RANDOM_CN10K) += cn10k-rng.o
+>  obj-$(CONFIG_HW_RANDOM_POLARFIRE_SOC) += mpfs-rng.o
+> +obj-$(CONFIG_HW_RANDOM_ROCKCHIP) += rockchip-rng.o
+>  obj-$(CONFIG_HW_RANDOM_JH7110) += jh7110-trng.o
+> diff --git a/drivers/char/hw_random/rockchip-rng.c b/drivers/char/hw_random/rockchip-rng.c
+> new file mode 100644
+> index 000000000000..7e45e9880e3a
+> --- /dev/null
+> +++ b/drivers/char/hw_random/rockchip-rng.c
+> @@ -0,0 +1,220 @@
+> +// SPDX-License-Identifier: GPL-2.0
+> +/*
+> + * rockchip-rng.c True Random Number Generator driver for Rockchip RK3568 SoC
+> + *
+> + * Copyright (c) 2018, Fuzhou Rockchip Electronics Co., Ltd.
+> + * Copyright (c) 2022, Aurelien Jarno
+> + * Authors:
+> + *  Lin Jinhan <troy.lin@rock-chips.com>
+> + *  Aurelien Jarno <aurelien@aurel32.net>
+> + */
+> +#include <linux/clk.h>
+> +#include <linux/hw_random.h>
+> +#include <linux/io.h>
+> +#include <linux/iopoll.h>
+> +#include <linux/kernel.h>
+> +#include <linux/module.h>
+> +#include <linux/of.h>
+> +#include <linux/platform_device.h>
+> +#include <linux/pm_runtime.h>
+> +#include <linux/reset.h>
+> +#include <linux/slab.h>
+> +
+> +#define RK_RNG_AUTOSUSPEND_DELAY	100
+> +#define RK_RNG_MAX_BYTE			32
+> +#define RK_RNG_POLL_PERIOD_US		100
+> +#define RK_RNG_POLL_TIMEOUT_US		10000
+> +
+> +/*
+> + * TRNG collects osc ring output bit every RK_RNG_SAMPLE_CNT time. The value is
+> + * a tradeoff between speed and quality and has been adjusted to get a quality
+> + * of ~900 (~90% of FIPS 140-2 successes).
+> + */
+> +#define RK_RNG_SAMPLE_CNT		1000
+> +
+> +/* TRNG registers from RK3568 TRM-Part2, section 5.4.1 */
+> +#define TRNG_RST_CTL			0x0004
+> +#define TRNG_RNG_CTL			0x0400
+> +#define TRNG_RNG_CTL_LEN_64_BIT		(0x00 << 4)
+> +#define TRNG_RNG_CTL_LEN_128_BIT	(0x01 << 4)
+> +#define TRNG_RNG_CTL_LEN_192_BIT	(0x02 << 4)
+> +#define TRNG_RNG_CTL_LEN_256_BIT	(0x03 << 4)
+> +#define TRNG_RNG_CTL_OSC_RING_SPEED_0	(0x00 << 2)
+> +#define TRNG_RNG_CTL_OSC_RING_SPEED_1	(0x01 << 2)
+> +#define TRNG_RNG_CTL_OSC_RING_SPEED_2	(0x02 << 2)
+> +#define TRNG_RNG_CTL_OSC_RING_SPEED_3	(0x03 << 2)
+> +#define TRNG_RNG_CTL_ENABLE		BIT(1)
+> +#define TRNG_RNG_CTL_START		BIT(0)
+> +#define TRNG_RNG_SAMPLE_CNT		0x0404
+> +#define TRNG_RNG_DOUT			0x0410
+> +
+> +struct rk_rng {
+> +	struct hwrng rng;
+> +	void __iomem *base;
+> +	struct reset_control *rst;
+> +	int clk_num;
+> +	struct clk_bulk_data *clk_bulks;
+> +};
+> +
+> +static int rk_rng_init(struct hwrng *rng)
+> +{
+> +	struct rk_rng *rk_rng = container_of(rng, struct rk_rng, rng);
+> +	int ret;
+> +
+> +	/* start clocks */
+> +	ret = clk_bulk_prepare_enable(rk_rng->clk_num, rk_rng->clk_bulks);
+> +	if (ret < 0) {
+> +		dev_err((struct device *) rk_rng->rng.priv,
+> +			"Failed to enable clks %d\n", ret);
+> +		return ret;
+> +	}
+> +
+> +	/* set the sample period */
+> +	writel(RK_RNG_SAMPLE_CNT, rk_rng->base + TRNG_RNG_SAMPLE_CNT);
+> +
+> +	/* set osc ring speed and enable it */
+> +	writel(TRNG_RNG_CTL_LEN_256_BIT |
+> +	       TRNG_RNG_CTL_OSC_RING_SPEED_0 |
+> +	       TRNG_RNG_CTL_ENABLE,
+> +	       rk_rng->base + TRNG_RNG_CTL);
+> +
+> +	return 0;
+> +}
+> +
+> +static void rk_rng_cleanup(struct hwrng *rng)
+> +{
+> +	struct rk_rng *rk_rng = container_of(rng, struct rk_rng, rng);
+> +
+> +	/* stop TRNG */
+> +	writel(0, rk_rng->base + TRNG_RNG_CTL);
+> +
+> +	/* stop clocks */
+> +	clk_bulk_disable_unprepare(rk_rng->clk_num, rk_rng->clk_bulks);
+> +}
+> +
+> +static int rk_rng_read(struct hwrng *rng, void *buf, size_t max, bool wait)
+> +{
+> +	struct rk_rng *rk_rng = container_of(rng, struct rk_rng, rng);
+> +	size_t to_read = min_t(size_t, max, RK_RNG_MAX_BYTE);
+> +	u32 reg;
+> +	int ret = 0;
+> +
+> +	ret = pm_runtime_resume_and_get((struct device *) rk_rng->rng.priv);
+> +	if (ret < 0)
+> +		return ret;
+> +
+> +	/* Start collecting random data */
+> +	writel(TRNG_RNG_CTL_START, rk_rng->base + TRNG_RNG_CTL);
+> +
+> +	ret = readl_poll_timeout(rk_rng->base + TRNG_RNG_CTL, reg,
+> +				 !(reg & TRNG_RNG_CTL_START),
+> +				 RK_RNG_POLL_PERIOD_US,
+> +				 RK_RNG_POLL_TIMEOUT_US);
+> +	if (ret < 0)
+> +		goto out;
+> +
+> +	/* Read random data stored in the registers */
+> +	memcpy_fromio(buf, rk_rng->base + TRNG_RNG_DOUT, to_read);
+> +out:
+> +	pm_runtime_mark_last_busy((struct device *) rk_rng->rng.priv);
+> +	pm_runtime_put_sync_autosuspend((struct device *) rk_rng->rng.priv);
+> +
+> +	return (ret < 0) ? ret : to_read;
+Do we really need to check ret < 0 here?
+readl_poll_timeout returns either 0 or -ve.
 
-> >> arch/arm64/boot/dts/rockchip/rk3399-rock-4c-plus.dtb: pmic@20: '#sound-dai-cells', 'clock-names', 'clocks' do not match any of the regexes: 'pinctrl-[0-9]+'
+return ret ? ret : to_read;
+would work as well. we save extra evaluation of (ret<0).
 
-The new dtcheck warnings are resolved by "dt-bindings: mfd: rk817:
-Merge support for RK809" in linux-next so this patch should be applied
-after that commit.
+Let me know what you think.
 
->         from schema $id: http://devicetree.org/schemas/mfd/rockchip,rk809.yaml#
->    arch/arm64/boot/dts/rockchip/rk3399-rock-4c-plus.dtb: regulator@40: Unevaluated properties are not allowed ('regulator-compatible' was unexpected)
->         from schema $id: http://devicetree.org/schemas/regulator/fcs,fan53555.yaml#
->    arch/arm64/boot/dts/rockchip/rk3399-rock-4c-plus.dtb: regulator@41: Unevaluated properties are not allowed ('regulator-compatible' was unexpected)
->         from schema $id: http://devicetree.org/schemas/regulator/fcs,fan53555.yaml#
->    arch/arm64/boot/dts/rockchip/rk3399-rock-4c-plus.dtb: /syscon@ff770000/phy@f780: failed to match any schema with compatible: ['rockchip,rk3399-emmc-phy']
->    arch/arm64/boot/dts/rockchip/rk3399-rock-4c-plus.dtb: /syscon@ff770000/pcie-phy: failed to match any schema with compatible: ['rockchip,rk3399-pcie-phy']
->    arch/arm64/boot/dts/rockchip/rk3399-rock-4c-plus.dtb: /phy@ff7c0000: failed to match any schema with compatible: ['rockchip,rk3399-typec-phy']
->    arch/arm64/boot/dts/rockchip/rk3399-rock-4c-plus.dtb: /phy@ff800000: failed to match any schema with compatible: ['rockchip,rk3399-typec-phy']
->    arch/arm64/boot/dts/rockchip/rk3399-rock-4c-plus.dtb: pmic: vsel1-gpio: {'rockchip,pins': [[1, 17, 0, 194]], 'phandle': [[138]]} is not of type 'array'
->
-> --
-> 0-DAY CI Kernel Test Service
-> https://github.com/intel/lkp-tests/wiki
+Kamlesh
 
-Regards,
-Jonathan
+> +}
+> +
+> +static int rk_rng_probe(struct platform_device *pdev)
+> +{
+> +	struct device *dev = &pdev->dev;
+> +	struct rk_rng *rk_rng;
+> +	int ret;
+> +
+> +	rk_rng = devm_kzalloc(dev, sizeof(*rk_rng), GFP_KERNEL);
+> +	if (!rk_rng)
+> +		return -ENOMEM;
+> +
+> +	rk_rng->base = devm_platform_ioremap_resource(pdev, 0);
+> +	if (IS_ERR(rk_rng->base))
+> +		return PTR_ERR(rk_rng->base);
+> +
+> +	rk_rng->clk_num = devm_clk_bulk_get_all(dev, &rk_rng->clk_bulks);
+> +	if (rk_rng->clk_num < 0)
+> +		return dev_err_probe(dev, rk_rng->clk_num,
+> +				     "Failed to get clks property\n");
+> +
+> +	rk_rng->rst = devm_reset_control_array_get_exclusive(&pdev->dev);
+> +	if (IS_ERR(rk_rng->rst))
+> +		return dev_err_probe(dev, PTR_ERR(rk_rng->rst),
+> +				     "Failed to get reset property\n");
+> +
+> +	reset_control_assert(rk_rng->rst);
+> +	udelay(2);
+> +	reset_control_deassert(rk_rng->rst);
+> +
+> +	platform_set_drvdata(pdev, rk_rng);
+> +
+> +	rk_rng->rng.name = dev_driver_string(dev);
+> +	if (!IS_ENABLED(CONFIG_PM)) {
+> +		rk_rng->rng.init = rk_rng_init;
+> +		rk_rng->rng.cleanup = rk_rng_cleanup;
+> +	}
+> +	rk_rng->rng.read = rk_rng_read;
+> +	rk_rng->rng.priv = (unsigned long) dev;
+> +	rk_rng->rng.quality = 900;
+> +
+> +	pm_runtime_set_autosuspend_delay(dev, RK_RNG_AUTOSUSPEND_DELAY);
+> +	pm_runtime_use_autosuspend(dev);
+> +	devm_pm_runtime_enable(dev);
+> +
+> +	ret = devm_hwrng_register(dev, &rk_rng->rng);
+> +	if (ret)
+> +		return dev_err_probe(&pdev->dev, ret, "Failed to register Rockchip hwrng\n");
+> +
+> +	return 0;
+> +}
+> +
+> +static int __maybe_unused rk_rng_runtime_suspend(struct device *dev)
+> +{
+> +	struct rk_rng *rk_rng = dev_get_drvdata(dev);
+> +
+> +	rk_rng_cleanup(&rk_rng->rng);
+> +
+> +	return 0;
+> +}
+> +
+> +static int __maybe_unused rk_rng_runtime_resume(struct device *dev)
+> +{
+> +	struct rk_rng *rk_rng = dev_get_drvdata(dev);
+> +
+> +	return rk_rng_init(&rk_rng->rng);
+> +}
+> +
+> +static const struct dev_pm_ops rk_rng_pm_ops = {
+> +	SET_RUNTIME_PM_OPS(rk_rng_runtime_suspend,
+> +				rk_rng_runtime_resume, NULL)
+> +	SET_SYSTEM_SLEEP_PM_OPS(pm_runtime_force_suspend,
+> +				pm_runtime_force_resume)
+> +};
+> +
+> +static const struct of_device_id rk_rng_dt_match[] = {
+> +	{ .compatible = "rockchip,rk3568-rng", },
+> +	{ /* sentinel */ },
+> +};
+> +
+> +MODULE_DEVICE_TABLE(of, rk_rng_dt_match);
+> +
+> +static struct platform_driver rk_rng_driver = {
+> +	.driver	= {
+> +		.name	= "rockchip-rng",
+> +		.pm	= &rk_rng_pm_ops,
+> +		.of_match_table = rk_rng_dt_match,
+> +	},
+> +	.probe	= rk_rng_probe,
+> +};
+> +
+> +module_platform_driver(rk_rng_driver);
+> +
+> +MODULE_DESCRIPTION("Rockchip RK3568 True Random Number Generator driver");
+> +MODULE_AUTHOR("Lin Jinhan <troy.lin@rock-chips.com>");
+> +MODULE_AUTHOR("Aurelien Jarno <aurelien@aurel32.net>");
+> +MODULE_AUTHOR("Daniel Golle <daniel@makrotopia.org>");
+> +MODULE_LICENSE("GPL");
+> -- 
+> 2.45.2
 
 _______________________________________________
 Linux-rockchip mailing list
