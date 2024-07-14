@@ -4,35 +4,35 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6EF35C3DA49
-	for <linux-rockchip@archiver.kernel.org>; Sun, 14 Jul 2024 15:16:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0C83EC3DA49
+	for <linux-rockchip@archiver.kernel.org>; Sun, 14 Jul 2024 15:16:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Subject:To:From
-	:Date:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=aoPggcW90YBo/2w+t4a2mVkUDSV9kYPJ2NYArpRca90=; b=HuSHmz6y07otnS
-	mw97wpykylplKy0siCx1fkQWXb+A1TCIXPoNeQuM7kJw+vXrXVzzz7i7ekHg3DXyHXVF38oATeGmZ
-	6HEC6WMGKP0gbnl1+HL+HjPEze8tZ9UESetRIUk7Sgm1Kej33Mnr9wWq9N98q68fC4JzGGkzqH0rR
-	Qp+iD/MgstXiaEAZ8xVDpWjGQUN3viSYkxQbglkbTLvC4VaOAtySi6pIpUoP4sWmALISvqZvmP+89
-	D2uWldlVNcpvw+5/TQ8SVG+ih5E0DCgFs2R8Vj31cWhFI1+Ypuav6UcJI04qERjSMt4ylt5YCZzrl
-	dj8+dQ11fMhqWspOQ6Kg==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Cc:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=7WyWwjPJiRWhnKFVY/dvomwrCfzTl0EhlVnXluIe42k=; b=3UeOsRx/39GwlI
+	cDN4QlT9JfDIgIe7hy3o8D0Bi1PPDp22LPsvEePMLgO8pKellSFQV11ofiitZoJ2LWj2/niKFvZp8
+	Qt4TuQvM6Yn3z57S8xjPEi8X/zhCAWsFwDKMPPG7RNLkmMkRF09Cq0sFstER9Feo0ftqYo14i+j9S
+	cAa/IHWAbekkJx4TdsBpNT5e0s0qdYw+S4h7q4u82sf8a+nnidAYgikx9Og45evOBR6lg7kOr4lTL
+	xeWdhyk3cGPxGeJlhUbvyuCAH+uxnfeKzBYEEhhsfmn8pEc7iUZIFdtek8bcJxHjDlmvqs8zz7UEb
+	gn0VfmSpAYsWVPyuFo0w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sT0xj-00000004gEY-00F0;
-	Sun, 14 Jul 2024 15:16:31 +0000
+	id 1sT0xz-00000004gMF-3FQ9;
+	Sun, 14 Jul 2024 15:16:47 +0000
 Received: from pidgin.makrotopia.org ([2a07:2ec0:3002::65])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sT0xP-00000004gAY-0gp9;
-	Sun, 14 Jul 2024 15:16:12 +0000
+	id 1sT0xR-00000004gB0-3GKe;
+	Sun, 14 Jul 2024 15:16:15 +0000
 Received: from local
 	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
 	 (Exim 4.97.1)
 	(envelope-from <daniel@makrotopia.org>)
-	id 1sT0ww-0000000038q-1sEg;
-	Sun, 14 Jul 2024 15:15:42 +0000
-Date: Sun, 14 Jul 2024 16:15:35 +0100
+	id 1sT0xF-0000000038y-0trB;
+	Sun, 14 Jul 2024 15:16:01 +0000
+Date: Sun, 14 Jul 2024 16:15:57 +0100
 From: Daniel Golle <daniel@makrotopia.org>
 To: Chen-Yu Tsai <wens@kernel.org>, Aurelien Jarno <aurelien@aurel32.net>,
 	Olivia Mackall <olivia@selenic.com>,
@@ -51,13 +51,15 @@ To: Chen-Yu Tsai <wens@kernel.org>, Aurelien Jarno <aurelien@aurel32.net>,
 	linux-crypto@vger.kernel.org, devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: [PATCH v7 0/3] hwrng: add hwrng support for Rockchip RK3568
-Message-ID: <cover.1720969799.git.daniel@makrotopia.org>
+Subject: [PATCH v7 1/3] dt-bindings: rng: Add Rockchip RK3568 TRNG
+Message-ID: <0373ea61e6c765d282c70927030ecba97efcbbef.1720969799.git.daniel@makrotopia.org>
+References: <cover.1720969799.git.daniel@makrotopia.org>
 MIME-Version: 1.0
 Content-Disposition: inline
+In-Reply-To: <cover.1720969799.git.daniel@makrotopia.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240714_081611_230100_1B451BB3 
-X-CRM114-Status: GOOD (  17.44  )
+X-CRM114-CacheID: sfid-20240714_081613_823653_3A5CE04A 
+X-CRM114-Status: GOOD (  13.68  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,110 +76,103 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Rockchip SoCs used to have a random number generator as part of their
-crypto device.
+From: Aurelien Jarno <aurelien@aurel32.net>
 
-However newer Rockchip SoCs like the RK3568 have an independent True
-Random Number Generator device. This patchset adds a driver for it and
-enables it in the device tree.
+Add the True Random Number Generator on the Rockchip RK3568 SoC.
 
-Tested on FriendlyARM NanoPi R5C.
-
-v6 -> v7:
- * Patch 1: unchanged
-
- * Patch 2: bring back rk_rng_write_ctl()
-   - bring back rk_rng_write_ctl() with improved comment to describe
-     the hardware.
-
- * Patch 3: unchaned
-
-v5 -> v6:
- * Patch 1: unchanged
-
- * Patch 2: get rid of #ifdef
-   - use if (IS_ENABLED(...)) { ... }instead of #ifdef inside functions
-   - use __maybe_unused for functions previously enclosed by #ifdef'ery
-
- * Patch 3: unchanged
-
-v4 -> v5:
- * Patch 1: always use RK3568 name
-   - use full RK3568 name in patch description
-   - add RK3568 to title in binding
-
- * Patch 2: full name and cosmetics
-   - also always mention RK3568 as there may be other RNG in other
-     (future) Rockchip SoCs
-   - remove debug output on successful probe
-   - use MODULE_AUTHOR several times instead of single comma-separated
-
- * Patch 3: unchanged
-
-v3 -> v4:
- * Patch 1: minor corrections
-   - fix Rokchip -> Rockchip typo
-   - change commit title as requested
-
- * Patch 2: improved error handling and resource management
-   - Always use writel() instead of writel_relaxed()
-   - Use pm_runtime_resume_and_get
-   - Correctly return error code in rk_rng_read()
-   - Make use of devm_reset_control_array_get_exclusive
-   - Use devm_pm_runtime_enable and there by get rid of rk_rng_remove()
-
- * Patch 3:
-   - Move node to conform with ordering by address
-
-v2 -> v3: patch adopted by Daniel Golle
- * Patch 1: address comments of Krzysztof Kozlowski, add MAINTAINERS
-   - improved description
-   - meaningful clock-names
-   - add entry in MAINTAINERS files
-
- * Patch 2: numerous code-style improvements
-   - drop misleading rk_rng_write_ctl(), simplify I/O writes
-   - drop unused TRNG_RNG_DOUT_[1-7] macros
-   - handle error handling for pm_runtime_get_sync()
-   - use memcpy_fromio() instead of open coding for-loop
-   - some minor white-spaces fixes
-
- * Patch 3:
-   - use clock-names as defined in dt-bindings
-
-v1 -> v2:
- * Patch 1: fix issues reported by Rob Herring and Krzysztof Kozlowski:
-   - Rename rockchip-rng.yaml into rockchip,rk3568-rng.yaml
-   - Fix binding title and description
-   - Fix compatible property
-   - Rename clocks and add the corresponding descriptions
-   - Drop reset-names
-   - Add a bus definition with #address-cells and #size-cells to the
-     example.
-
- * Patch 2: fix issue reported by kernel test robot <lkp@intel.com>
-   - Do not read the random registers as big endian, looking at the
-     RK3568 TRM this is actually not needed. This fixes a sparse
-     warning.
-
- * Patch 3: unchanged
-
-
-Aurelien Jarno (3):
-  dt-bindings: rng: Add Rockchip RK3568 TRNG
-  hwrng: add hwrng driver for Rockchip RK3568 SoC
-  arm64: dts: rockchip: add DT entry for RNG to RK356x
-
- .../bindings/rng/rockchip,rk3568-rng.yaml     |  61 +++++
- MAINTAINERS                                   |   7 +
- arch/arm64/boot/dts/rockchip/rk356x.dtsi      |   9 +
- drivers/char/hw_random/Kconfig                |  14 ++
- drivers/char/hw_random/Makefile               |   1 +
- drivers/char/hw_random/rockchip-rng.c         | 227 ++++++++++++++++++
- 6 files changed, 319 insertions(+)
+Signed-off-by: Aurelien Jarno <aurelien@aurel32.net>
+Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+---
+ .../bindings/rng/rockchip,rk3568-rng.yaml     | 61 +++++++++++++++++++
+ MAINTAINERS                                   |  6 ++
+ 2 files changed, 67 insertions(+)
  create mode 100644 Documentation/devicetree/bindings/rng/rockchip,rk3568-rng.yaml
- create mode 100644 drivers/char/hw_random/rockchip-rng.c
 
+diff --git a/Documentation/devicetree/bindings/rng/rockchip,rk3568-rng.yaml b/Documentation/devicetree/bindings/rng/rockchip,rk3568-rng.yaml
+new file mode 100644
+index 000000000000..e0595814a6d9
+--- /dev/null
++++ b/Documentation/devicetree/bindings/rng/rockchip,rk3568-rng.yaml
+@@ -0,0 +1,61 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/rng/rockchip,rk3568-rng.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: Rockchip RK3568 TRNG
++
++description: True Random Number Generator on Rockchip RK3568 SoC
++
++maintainers:
++  - Aurelien Jarno <aurelien@aurel32.net>
++  - Daniel Golle <daniel@makrotopia.org>
++
++properties:
++  compatible:
++    enum:
++      - rockchip,rk3568-rng
++
++  reg:
++    maxItems: 1
++
++  clocks:
++    items:
++      - description: TRNG clock
++      - description: TRNG AHB clock
++
++  clock-names:
++    items:
++      - const: core
++      - const: ahb
++
++  resets:
++    maxItems: 1
++
++required:
++  - compatible
++  - reg
++  - clocks
++  - clock-names
++  - resets
++
++additionalProperties: false
++
++examples:
++  - |
++    #include <dt-bindings/clock/rk3568-cru.h>
++    bus {
++      #address-cells = <2>;
++      #size-cells = <2>;
++
++      rng@fe388000 {
++        compatible = "rockchip,rk3568-rng";
++        reg = <0x0 0xfe388000 0x0 0x4000>;
++        clocks = <&cru CLK_TRNG_NS>, <&cru HCLK_TRNG_NS>;
++        clock-names = "core", "ahb";
++        resets = <&cru SRST_TRNG_NS>;
++      };
++    };
++
++...
+diff --git a/MAINTAINERS b/MAINTAINERS
+index fb1df8c29f5a..7b2b8b1f526c 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -19693,6 +19693,12 @@ F:	Documentation/userspace-api/media/v4l/metafmt-rkisp1.rst
+ F:	drivers/media/platform/rockchip/rkisp1
+ F:	include/uapi/linux/rkisp1-config.h
+ 
++ROCKCHIP RK3568 RANDOM NUMBER GENERATOR SUPPORT
++M:	Daniel Golle <daniel@makrotopia.org>
++M:	Aurelien Jarno <aurelien@aurel32.net>
++S:	Maintained
++F:	Documentation/devicetree/bindings/rng/rockchip,rk3568-rng.yaml
++
+ ROCKCHIP RASTER 2D GRAPHIC ACCELERATION UNIT DRIVER
+ M:	Jacob Chen <jacob-chen@iotwrt.com>
+ M:	Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
 -- 
 2.45.2
 
