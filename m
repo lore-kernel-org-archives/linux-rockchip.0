@@ -4,64 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DE8E5C3DA49
-	for <linux-rockchip@archiver.kernel.org>; Sun, 14 Jul 2024 11:29:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6EF35C3DA49
+	for <linux-rockchip@archiver.kernel.org>; Sun, 14 Jul 2024 15:16:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=rHm6mXIQOkkmA0YZBjPljqoNHyPkWkW/MxemWXDu7MM=; b=1KDDSHCybTAM7x
-	1tU+uoSsS+Jw77lvd3pOeWhff1Ii05HPF5Hbpz9LaEojel1QqRCDuGmRIxi4ifdY3x9XLeC9aFgdT
-	F2fjawibfOiPOueAA6df106iq8rQViCCdcaD6N6DJJlU4MtcaetUU/2U/S3giK5exjnPQjD6OHg4e
-	4AVwMHYLcoEDEu964wIelsBlVgMAqfFfi0PEAzVP/6uQ1hOk9N0rggs60r01MYELDjc1OwilZftoC
-	oNnf/JX2U03jxVfSSDaznw6JwH8bTrCx5zmvd9rj8qDS6QjZMGZOtWMdObMNIAnrW/MIKiydCtMwZ
-	xgNmDxE5HlrpDN31hTJg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Subject:To:From
+	:Date:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=aoPggcW90YBo/2w+t4a2mVkUDSV9kYPJ2NYArpRca90=; b=HuSHmz6y07otnS
+	mw97wpykylplKy0siCx1fkQWXb+A1TCIXPoNeQuM7kJw+vXrXVzzz7i7ekHg3DXyHXVF38oATeGmZ
+	6HEC6WMGKP0gbnl1+HL+HjPEze8tZ9UESetRIUk7Sgm1Kej33Mnr9wWq9N98q68fC4JzGGkzqH0rR
+	Qp+iD/MgstXiaEAZ8xVDpWjGQUN3viSYkxQbglkbTLvC4VaOAtySi6pIpUoP4sWmALISvqZvmP+89
+	D2uWldlVNcpvw+5/TQ8SVG+ih5E0DCgFs2R8Vj31cWhFI1+Ypuav6UcJI04qERjSMt4ylt5YCZzrl
+	dj8+dQ11fMhqWspOQ6Kg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sSxQQ-00000004KT9-12r7;
-	Sun, 14 Jul 2024 11:29:54 +0000
-Received: from m16.mail.163.com ([220.197.31.2])
-	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sSxPq-00000004KLf-3f5t;
-	Sun, 14 Jul 2024 11:29:20 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=From:Subject:Date:Message-Id:MIME-Version; bh=d3J6S
-	vNXBsns1DTi/FIiA8oHfdDp4cxENdp93hHRPEY=; b=XEXtfazI+9Ht6UM0Rojb/
-	aMjJLyPuSMeA3cP4ylNYO9lAyZWhvgKQS6BUxunOH/5SUOGpAPybpmWd6gMfMBm/
-	feTKNF3AiFXB6vrmu7BfJNQQp9r67ErJO9Wn5LoOLFlsKkFbjfYUy5oT2zNOiFDT
-	eMeEDT88S3MXR1Kr19r1qs=
-Received: from ProDesk.. (unknown [58.22.7.114])
-	by gzga-smtp-mta-g3-0 (Coremail) with SMTP id _____wD3v711tpNm6c94CQ--.57334S3;
-	Sun, 14 Jul 2024 19:28:57 +0800 (CST)
-From: Andy Yan <andyshrk@163.com>
-To: heiko@sntech.de
-Cc: dsimic@manjaro.org,
-	krzk+dt@kernel.org,
-	robh@kernel.org,
-	devicetree@vger.kernel.org,
+	id 1sT0xj-00000004gEY-00F0;
+	Sun, 14 Jul 2024 15:16:31 +0000
+Received: from pidgin.makrotopia.org ([2a07:2ec0:3002::65])
+	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
+	id 1sT0xP-00000004gAY-0gp9;
+	Sun, 14 Jul 2024 15:16:12 +0000
+Received: from local
+	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
+	 (Exim 4.97.1)
+	(envelope-from <daniel@makrotopia.org>)
+	id 1sT0ww-0000000038q-1sEg;
+	Sun, 14 Jul 2024 15:15:42 +0000
+Date: Sun, 14 Jul 2024 16:15:35 +0100
+From: Daniel Golle <daniel@makrotopia.org>
+To: Chen-Yu Tsai <wens@kernel.org>, Aurelien Jarno <aurelien@aurel32.net>,
+	Olivia Mackall <olivia@selenic.com>,
+	Herbert Xu <herbert@gondor.apana.org.au>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	Dragan Simic <dsimic@manjaro.org>,
+	Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <ukleinek@debian.org>,
+	Sebastian Reichel <sebastian.reichel@collabora.com>,
+	Cristian Ciocaltea <cristian.ciocaltea@collabora.com>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	Martin Kaiser <martin@kaiser.cx>, Ard Biesheuvel <ardb@kernel.org>,
+	linux-crypto@vger.kernel.org, devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	Andy Yan <andyshrk@163.com>
-Subject: [PATCH 2/2] arm64: dts: rockchip: Add support for rk3588 GenBook
-Date: Sun, 14 Jul 2024 19:28:51 +0800
-Message-Id: <20240714112851.1048184-2-andyshrk@163.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20240714112851.1048184-1-andyshrk@163.com>
-References: <20240714112851.1048184-1-andyshrk@163.com>
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: [PATCH v7 0/3] hwrng: add hwrng support for Rockchip RK3568
+Message-ID: <cover.1720969799.git.daniel@makrotopia.org>
 MIME-Version: 1.0
-X-CM-TRANSID: _____wD3v711tpNm6c94CQ--.57334S3
-X-Coremail-Antispam: 1Uf129KBjvJXoWxKFyfZF15AF1xXr17CFW5GFg_yoW3Cw4fp3
-	ZxursxKrWkurWUJw4DZa4xKF1rKw4vka92kr93XF48KrWj93WDW3Z29rn3AF1kJrn7Jw43
-	AFy5Zry7tF42qw7anT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x0z_AwIUUUUUU=
-X-Originating-IP: [58.22.7.114]
-X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/xtbB0hwcXmWXy-0MeAAAs8
+Content-Disposition: inline
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240714_042919_330646_56117ADA 
-X-CRM114-Status: GOOD (  14.94  )
+X-CRM114-CacheID: sfid-20240714_081611_230100_1B451BB3 
+X-CRM114-Status: GOOD (  17.44  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,349 +74,112 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Cool Pi GenBook works as a mother board connect with CM5 [0].
+Rockchip SoCs used to have a random number generator as part of their
+crypto device.
 
-Specification:
-- Rockchip RK3588
-- LPDDR5X 8/32 GB
-- eMMC 64 GB
-- HDMI Type A out x 1
-- USB 3.0 Host x 1
-- USB-C 3.0 with DisplayPort AltMode
-- PCIE M.2 E Key for RTL8852BE Wireless connection
-- PCIE M.2 M Key for NVME connection
-- eDP panel with 1920x1080
+However newer Rockchip SoCs like the RK3568 have an independent True
+Random Number Generator device. This patchset adds a driver for it and
+enables it in the device tree.
 
-This patch add basic support to bringup eMMC/USB HOST/WiFi
-and can also drive a HDMI output with out of tree hdmi patches.
+Tested on FriendlyARM NanoPi R5C.
 
-[0] https://www.crowdsupply.com/shenzhen-tianmao-technology-co-ltd/genbook-rk3588
+v6 -> v7:
+ * Patch 1: unchanged
 
-Signed-off-by: Andy Yan <andyshrk@163.com>
----
+ * Patch 2: bring back rk_rng_write_ctl()
+   - bring back rk_rng_write_ctl() with improved comment to describe
+     the hardware.
 
- arch/arm64/boot/dts/rockchip/Makefile         |   1 +
- .../dts/rockchip/rk3588-coolpi-genbook.dts    | 296 ++++++++++++++++++
- 2 files changed, 297 insertions(+)
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3588-coolpi-genbook.dts
+ * Patch 3: unchaned
 
-diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
-index 8fa469db400c..0fad54939bbd 100644
---- a/arch/arm64/boot/dts/rockchip/Makefile
-+++ b/arch/arm64/boot/dts/rockchip/Makefile
-@@ -122,6 +122,7 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-wolfvision-pf5-display-vz.dtbo
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-wolfvision-pf5-io-expander.dtbo
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-armsom-sige7.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-coolpi-cm5-evb.dtb
-+dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-coolpi-genbook.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-edgeble-neu6a-io.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-edgeble-neu6a-wifi.dtbo
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-edgeble-neu6b-io.dtb
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-coolpi-genbook.dts b/arch/arm64/boot/dts/rockchip/rk3588-coolpi-genbook.dts
-new file mode 100644
-index 000000000000..28357c6f05fb
---- /dev/null
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-coolpi-genbook.dts
-@@ -0,0 +1,296 @@
-+// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
-+/*
-+ * Copyright (c) 2024 Rockchip Electronics Co., Ltd.
-+ *
-+ */
-+
-+/dts-v1/;
-+
-+#include <dt-bindings/leds/common.h>
-+#include "rk3588-coolpi-cm5.dtsi"
-+
-+/ {
-+	model = "RK3588 CoolPi GenBook";
-+	compatible = "coolpi,genbook", "coolpi,pi-cm5", "rockchip,rk3588";
-+
-+	backlight: backlight {
-+		compatible = "pwm-backlight";
-+		enable-gpios = <&gpio4 RK_PA3 GPIO_ACTIVE_HIGH>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&bl_en>;
-+		power-supply = <&vcc12v_dcin>;
-+		pwms = <&pwm6 0 25000 0>;
-+	};
-+
-+	leds: leds {
-+		compatible = "gpio-leds";
-+
-+		heartbeat_led: led-0 {
-+			color = <LED_COLOR_ID_GREEN>;
-+			function = LED_FUNCTION_STATUS;
-+			gpios = <&gpio1 RK_PB0 GPIO_ACTIVE_HIGH>;
-+			linux,default-trigger = "heartbeat";
-+		};
-+
-+		wlan_led: led-1 {
-+			color = <LED_COLOR_ID_GREEN>;
-+			function = LED_FUNCTION_WLAN;
-+			gpios = <&gpio0 RK_PC5 GPIO_ACTIVE_HIGH>;
-+		};
-+
-+		charging_red: led-2 {
-+			function = LED_FUNCTION_CHARGING;
-+			color = <LED_COLOR_ID_RED>;
-+			gpios = <&gpio3 RK_PD2 GPIO_ACTIVE_HIGH>;
-+		};
-+	};
-+
-+	vcc12v_dcin: vcc12v-dcin-regulator {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vcc12v_dcin";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-min-microvolt = <12000000>;
-+		regulator-max-microvolt = <12000000>;
-+	};
-+
-+	vcc_sys: vcc-sys-regulator {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vcc_sys";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-min-microvolt = <7000000>;
-+		regulator-max-microvolt = <7000000>;
-+		vin-supply = <&vcc12v_dcin>;
-+	};
-+
-+	vcc5v0_sys: vcc5v0-sys-regulator {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vcc5v0_sys";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-min-microvolt = <7000000>;
-+		regulator-max-microvolt = <7000000>;
-+		vin-supply = <&vcc_sys>;
-+	};
-+
-+	vcc3v3_sys: vcc3v3-sys-regulator {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vcc3v3_sys";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-min-microvolt = <3300000>;
-+		regulator-max-microvolt = <3300000>;
-+		vin-supply = <&vcc5v0_sys>;
-+	};
-+
-+	vcc3v3_lcd: vcc3v3-lcd-regulator {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vcc3v3_lcd";
-+		enable-active-high;
-+		gpio = <&gpio1 RK_PC4 GPIO_ACTIVE_HIGH>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&lcdpwr_en>;
-+		vin-supply = <&vcc3v3_sys>;
-+	};
-+
-+	vcc5v0_usb: vcc5v0-usb-regulator {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vcc5v0_usb";
-+		regulator-boot-on;
-+		regulator-always-on;
-+		enable-active-high;
-+		regulator-min-microvolt = <5000000>;
-+		regulator-max-microvolt = <5000000>;
-+		gpio = <&gpio1 RK_PD5 GPIO_ACTIVE_HIGH>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&usb_pwren>;
-+		vin-supply = <&vcc_sys>;
-+	};
-+
-+	vcc5v0_usb_host0: vcc5v0_usb30_host: vcc5v0-usb-host-regulator {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vcc5v0_host";
-+		regulator-boot-on;
-+		regulator-always-on;
-+		enable-active-high;
-+		regulator-min-microvolt = <5000000>;
-+		regulator-max-microvolt = <5000000>;
-+		gpio = <&gpio1 RK_PA7 GPIO_ACTIVE_HIGH>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&usb_host_pwren>;
-+		vin-supply = <&vcc5v0_usb>;
-+	};
-+};
-+
-+&gmac0 {
-+	status = "disabled";
-+};
-+
-+/* M.2 E-Key */
-+&pcie2x1l0 {
-+	reset-gpios = <&gpio4 RK_PA2 GPIO_ACTIVE_HIGH>;
-+	vpcie3v3-supply = <&vcc3v3_sys>;
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&pcie_clkreq &pcie_wake &pcie_rst &wifi_pwron &bt_pwron>;
-+	status = "okay";
-+};
-+
-+&pcie2x1l2 {
-+	status = "disabled";
-+};
-+
-+&pcie30phy {
-+	status = "okay";
-+};
-+
-+/* M.2 M-Key ssd */
-+&pcie3x4 {
-+	reset-gpios = <&gpio4 RK_PB6 GPIO_ACTIVE_HIGH>;
-+	vpcie3v3-supply = <&vcc3v3_sys>;
-+	status = "okay";
-+};
-+
-+&pinctrl {
-+	lcd {
-+		lcdpwr_en: lcdpwr-en {
-+			rockchip,pins = <1 RK_PC4 RK_FUNC_GPIO &pcfg_pull_down>;
-+		};
-+
-+		bl_en: bl-en {
-+			rockchip,pins = <4 RK_PA3 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
-+
-+	usb {
-+		usb_pwren: usb-pwren {
-+			rockchip,pins = <1 RK_PD5 RK_FUNC_GPIO &pcfg_pull_up>;
-+		};
-+
-+		usb_otg_pwren: usb-otg-pwren {
-+			rockchip,pins = <0 RK_PA0 RK_FUNC_GPIO &pcfg_pull_up>;
-+		};
-+
-+		usb_host_pwren: usb-host-pwren {
-+			rockchip,pins = <1 RK_PA7 RK_FUNC_GPIO &pcfg_pull_up>;
-+		};
-+	};
-+
-+	wifi {
-+		bt_pwron: bt-pwron {
-+			rockchip,pins = <3 RK_PA6 RK_FUNC_GPIO &pcfg_pull_up>;
-+		};
-+
-+		pcie_clkreq: pcie-clkreq {
-+			rockchip,pins = <4 RK_PA0 RK_FUNC_GPIO &pcfg_pull_up>;
-+		};
-+
-+		pcie_rst: pcie-rst {
-+			rockchip,pins = <4 RK_PA2 RK_FUNC_GPIO &pcfg_pull_up>;
-+		};
-+
-+		wifi_pwron: wifi-pwron {
-+			rockchip,pins = <3 RK_PB1 RK_FUNC_GPIO &pcfg_pull_up>;
-+		};
-+
-+		pcie_wake: pcie-wake {
-+			rockchip,pins = <4 RK_PA1 RK_FUNC_GPIO &pcfg_pull_up>;
-+		};
-+	};
-+};
-+
-+&pwm6 {
-+	pinctrl-0 = <&pwm6m1_pins>;
-+	status = "okay";
-+};
-+
-+&sdmmc {
-+	status = "disabled";
-+};
-+
-+&sfc {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&fspim2_pins>;
-+	status = "okay";
-+
-+	flash@0 {
-+		compatible = "jedec,spi-nor";
-+		reg = <0x0>;
-+		spi-max-frequency = <100000000>;
-+		spi-rx-bus-width = <4>;
-+		spi-tx-bus-width = <1>;
-+	};
-+};
-+
-+&u2phy0 {
-+	status = "okay";
-+};
-+
-+&u2phy0_otg {
-+	status = "okay";
-+};
-+
-+&usbdp_phy0 {
-+	status = "okay";
-+};
-+
-+&u2phy1 {
-+	status = "okay";
-+};
-+
-+&u2phy1_otg {
-+	status = "okay";
-+};
-+
-+&u2phy2 {
-+	status = "okay";
-+};
-+
-+&u2phy3 {
-+	status = "okay";
-+};
-+
-+&u2phy2_host {
-+	phy-supply = <&vcc5v0_usb_host0>;
-+	status = "okay";
-+};
-+
-+&u2phy3_host {
-+	phy-supply = <&vcc5v0_usb>;
-+	status = "okay";
-+};
-+
-+&usbdp_phy1 {
-+	status = "okay";
-+};
-+
-+/* For Keypad */
-+&usb_host0_ehci {
-+	status = "okay";
-+};
-+
-+&usb_host0_ohci {
-+	status = "okay";
-+};
-+
-+/* Type C port */
-+&usb_host0_xhci {
-+	dr_mode = "peripheral";
-+	maximum-speed = "high-speed";
-+	status = "okay";
-+};
-+
-+/* connected to a HUB for camera and BT */
-+&usb_host1_ehci {
-+	status = "okay";
-+};
-+
-+&usb_host1_ohci {
-+	status = "okay";
-+};
-+
-+/* USB A out */
-+&usb_host1_xhci {
-+	dr_mode = "host";
-+	status = "okay";
-+};
+v5 -> v6:
+ * Patch 1: unchanged
+
+ * Patch 2: get rid of #ifdef
+   - use if (IS_ENABLED(...)) { ... }instead of #ifdef inside functions
+   - use __maybe_unused for functions previously enclosed by #ifdef'ery
+
+ * Patch 3: unchanged
+
+v4 -> v5:
+ * Patch 1: always use RK3568 name
+   - use full RK3568 name in patch description
+   - add RK3568 to title in binding
+
+ * Patch 2: full name and cosmetics
+   - also always mention RK3568 as there may be other RNG in other
+     (future) Rockchip SoCs
+   - remove debug output on successful probe
+   - use MODULE_AUTHOR several times instead of single comma-separated
+
+ * Patch 3: unchanged
+
+v3 -> v4:
+ * Patch 1: minor corrections
+   - fix Rokchip -> Rockchip typo
+   - change commit title as requested
+
+ * Patch 2: improved error handling and resource management
+   - Always use writel() instead of writel_relaxed()
+   - Use pm_runtime_resume_and_get
+   - Correctly return error code in rk_rng_read()
+   - Make use of devm_reset_control_array_get_exclusive
+   - Use devm_pm_runtime_enable and there by get rid of rk_rng_remove()
+
+ * Patch 3:
+   - Move node to conform with ordering by address
+
+v2 -> v3: patch adopted by Daniel Golle
+ * Patch 1: address comments of Krzysztof Kozlowski, add MAINTAINERS
+   - improved description
+   - meaningful clock-names
+   - add entry in MAINTAINERS files
+
+ * Patch 2: numerous code-style improvements
+   - drop misleading rk_rng_write_ctl(), simplify I/O writes
+   - drop unused TRNG_RNG_DOUT_[1-7] macros
+   - handle error handling for pm_runtime_get_sync()
+   - use memcpy_fromio() instead of open coding for-loop
+   - some minor white-spaces fixes
+
+ * Patch 3:
+   - use clock-names as defined in dt-bindings
+
+v1 -> v2:
+ * Patch 1: fix issues reported by Rob Herring and Krzysztof Kozlowski:
+   - Rename rockchip-rng.yaml into rockchip,rk3568-rng.yaml
+   - Fix binding title and description
+   - Fix compatible property
+   - Rename clocks and add the corresponding descriptions
+   - Drop reset-names
+   - Add a bus definition with #address-cells and #size-cells to the
+     example.
+
+ * Patch 2: fix issue reported by kernel test robot <lkp@intel.com>
+   - Do not read the random registers as big endian, looking at the
+     RK3568 TRM this is actually not needed. This fixes a sparse
+     warning.
+
+ * Patch 3: unchanged
+
+
+Aurelien Jarno (3):
+  dt-bindings: rng: Add Rockchip RK3568 TRNG
+  hwrng: add hwrng driver for Rockchip RK3568 SoC
+  arm64: dts: rockchip: add DT entry for RNG to RK356x
+
+ .../bindings/rng/rockchip,rk3568-rng.yaml     |  61 +++++
+ MAINTAINERS                                   |   7 +
+ arch/arm64/boot/dts/rockchip/rk356x.dtsi      |   9 +
+ drivers/char/hw_random/Kconfig                |  14 ++
+ drivers/char/hw_random/Makefile               |   1 +
+ drivers/char/hw_random/rockchip-rng.c         | 227 ++++++++++++++++++
+ 6 files changed, 319 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/rng/rockchip,rk3568-rng.yaml
+ create mode 100644 drivers/char/hw_random/rockchip-rng.c
+
 -- 
-2.34.1
-
+2.45.2
 
 _______________________________________________
 Linux-rockchip mailing list
