@@ -4,60 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4DBDBC3DA4B
-	for <linux-rockchip@archiver.kernel.org>; Mon, 15 Jul 2024 14:47:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 031A0C3DA4B
+	for <linux-rockchip@archiver.kernel.org>; Mon, 15 Jul 2024 15:10:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
-	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=xjnaCTb/u83P6YvMLSxGhyYCHUm5vaHEeBf/Nw0UT8k=; b=M3tfffFc1vkqOTRUEzSgu55EDN
-	xvwck6oVSQoZJju7d6z5PWCwU8foW1bU/mPikAE+nim+OCahxVToHM5UB02PxcGaRG68OyPv0rXCc
-	6xo9l0TuagTH2MAjfAvaXjQPs7XeQywFv5cYUTuawhNmmHxb096EI7ufqRE6OvZMdGVR3fM0alyHf
-	09PcVbxHX7N+dwWB6WJ65A+PCOk4TBF1DjeLyOmUoy29+jASHTmx4Vvx36bMufbSohOUjHwDOdWTA
-	815eaGaeK+2iC/WBaV8j7Oy5WBY//CUGxpspf5wbjhGH6Dpzf21Uw0AErLSpskwzHZzq4o/DULwhI
-	/igc6N5A==;
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=t4ybqFuzbqpFtMvZrtY4CRkK9qgpMb9pCjRUmxyZuK4=; b=TWMeXr6mDOTQlns+3Q+ymySWuM
+	PARmAZZcwh1sXsTGxIOgfA6gEBit+XaCnBGVvqyLV8oZOyAkg7IaDgw2xgerBKWMa3FLmNraM9+xi
+	s39IP/k5pRDfUoaKmnfpPd9lbZwTWtG3gRE05xVnVb9738WMEBVGMybCgY4bUOkryVYlIPI9EqEOf
+	7PtD8mN9xQJFsIHU/XCQ7nHuJZ94kUsawbgk8P1Um03rC0SLGl6Ejt+567Y9QXM9z+/o2k9nD1P2g
+	VDLvpckeL/C+5KOru6CrQwR+rwKciktOG69wFIHxx6ZF0YA9K+tzArY/tK4TYS+E0BMwGWsQmrObk
+	9WtksQ0g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sTMzB-00000007R7W-3oco;
-	Mon, 15 Jul 2024 14:47:29 +0000
-Received: from mail.manjaro.org ([2a01:4f8:c0c:51f3::1])
+	id 1sTNLM-00000007Ukm-3OwK;
+	Mon, 15 Jul 2024 15:10:24 +0000
+Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sTMyq-00000007R2w-1Tkc;
-	Mon, 15 Jul 2024 14:47:10 +0000
+	id 1sTNL1-00000007UfX-1mOx
+	for linux-rockchip@lists.infradead.org;
+	Mon, 15 Jul 2024 15:10:05 +0000
+Received: by mail-ej1-x629.google.com with SMTP id a640c23a62f3a-a728f74c23dso560778666b.1
+        for <linux-rockchip@lists.infradead.org>; Mon, 15 Jul 2024 08:10:02 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1721056201; x=1721661001; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=4f3Cmwjo4+C8tOGQYXqfrgWl9Ct+rBShy7XPPD3iWCc=;
+        b=xstz4uIDtceOxLWBCQJ2BaoxbZz+fMugPMc7ITaDZcDuGiq0FvmER3cloqd3Jej9xS
+         SPJ4DVd/i8jzdQtWAFVx2j/2u62VjwajvKyCkPn7FPPyzU+0DSZHcNTbzIJiGRiDk1Fn
+         KUq6ZM52pDZtyCk8vLK5ck1j2fBUBbS7lP9Hp5EWCzFfjLfwR1psmn4sdHBbNqnxojai
+         Y8PJA1o6PlVnOghqkicLiz+yQMFj58dlJA+3vOAITUkTpULCmwzxbIN7uFqJyZ7FCsoP
+         gG4mnAn5TGIgI6c9oKmdeH4WX/Ap6bXAHxTHJ/wMhvHP9inkX2bNuZaR+1vAILxO0T21
+         OwkQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1721056201; x=1721661001;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=4f3Cmwjo4+C8tOGQYXqfrgWl9Ct+rBShy7XPPD3iWCc=;
+        b=lQnUk7J+MpoMJeRl18PepdjO0hqWAHERwGTSoiqb1OJ/bQMS4TFBg92pxhrUeaqIa0
+         DqIWB5lK1FTHIK2jYkzEvI4HLXeMqEd2nTDQPHUVmU/OWf5N5MnKo1CqZplVmk93ioGB
+         NIYc2RWnfrbdWq7NEuUeovBTCCNYyaqscgYSl6/8HqQBRrDh9tksICnzT0UHiOr+2WKe
+         OZnOmL8jCuQJncbC6J0kC6/H9RVmcBzBqvC0i5MTFPNuQfCqPJDRjAFvvq8pk3Ob7BAF
+         r57yUNT++euXaH16x+WEliAPNJqZEZec4BeoxFIxHevA+FFwZUsHJmwekUWZk609Rd0L
+         IAiA==
+X-Forwarded-Encrypted: i=1; AJvYcCW2KoAJhpy3UMq3zHEURf1Ak7oo86KLaRjIxsF5dY2Hy8J4R9TaK03E/LTuSTuaMapRNhjjkymWQLx7xblvSgpcNNTs8l2THo5nMXO+XOnRDPBD
+X-Gm-Message-State: AOJu0Ywd4+EcDkws/ugsP9JJqAwJ6p8OqX1LIHDvwO7HzobXbQia9ib4
+	1ClyD8G5iVC3Kxu9mE3HLI6Aeiz5EYWp9AkpiNB8SV605fDPdaYcMz0YLu12Z+K6Qqrj5+Z+nQp
+	w
+X-Google-Smtp-Source: AGHT+IEeZnfnZS7fhoaDyZlI+KobrOkLDMA4HhdGBKJDuPEj7OK4LoziT5drUXVzHyWTupraoQASsg==
+X-Received: by 2002:a17:906:1786:b0:a6f:51d8:1963 with SMTP id a640c23a62f3a-a79e6a5c54emr3682066b.43.1721056200603;
+        Mon, 15 Jul 2024 08:10:00 -0700 (PDT)
+Received: from localhost ([2a02:8071:b783:6940:36f3:9aff:fec2:7e46])
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a79bc5a3560sm218287366b.4.2024.07.15.08.09.59
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 15 Jul 2024 08:10:00 -0700 (PDT)
+Date: Mon, 15 Jul 2024 17:09:58 +0200
+From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@baylibre.com>
+To: Quentin Schulz <quentin.schulz@cherry.de>
+Cc: Farouk Bouabid <farouk.bouabid@cherry.de>, 
+	Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+	Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, linux-pwm@vger.kernel.org, 
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH 2/6] pwm: add mule pwm-over-i2c driver
+Message-ID: <e7b3bfpvtrvt5g637yy7qxsbvfiylyzrjvwsro4hzp5t6cmeux@eqafx3k7oaks>
+References: <20240529-buzzer_support-v1-0-fd3eb0a24442@cherry.de>
+ <20240529-buzzer_support-v1-2-fd3eb0a24442@cherry.de>
+ <5hd7fndgivgusx76wq6mbvgefngd3tllqsfsk6pppbphchczte@ujagkep4miet>
+ <25d71c19-6e94-477d-8d04-758015ca4b2c@cherry.de>
 MIME-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
-	t=1721054824;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=ikrtE+WPTjiFIF37ws5+rF+HDl17JuZgKsVcPfieaNk=;
-	b=eKyMUzUX02k4Hp1qD0L1O5tAcerW07AwdOX2Dj14eH/R/+RM1W0Zm4osFQuqB4Nde4Y8Ix
-	DbnU07H/+G4RH0q4b18qMBQdpBg4NcIz/4uLzotRhGp0MC3Rv+gv0BcxH6L4UTzdHArvfv
-	luiL+wi6hPv1YBMx0wMcldBUf1YKz41uk4db97muUSO3cJbPU+hTXsXFFDggE40pY0yB8W
-	PQBi2uKtLc5EpN663OiVr/dLkFsTLHkpus42FxBDmgk68NgasU23+4w9qxMC0Eb7pk2Wbl
-	CtIbjNR7/9GQ0LytvQNw107Y4zZOxR+tDxh1ghej0wCWRCfwMyeylH8hlQZNRw==
-Date: Mon, 15 Jul 2024 16:47:04 +0200
-From: Dragan Simic <dsimic@manjaro.org>
-To: Andy Yan <andyshrk@163.com>
-Cc: heiko@sntech.de, krzk+dt@kernel.org, robh@kernel.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH 2/2] arm64: dts: rockchip: Add support for rk3588 GenBook
-In-Reply-To: <32f2518d.a66c.190b5fe86a6.Coremail.andyshrk@163.com>
-References: <20240714112851.1048184-1-andyshrk@163.com>
- <20240714112851.1048184-2-andyshrk@163.com>
- <983cfe67f4d83ea96ffc37ec2dde00aa@manjaro.org>
- <32f2518d.a66c.190b5fe86a6.Coremail.andyshrk@163.com>
-Message-ID: <f16ab2d662a7bd35748cb19b3bb89135@manjaro.org>
-X-Sender: dsimic@manjaro.org
-Authentication-Results: ORIGINATING;
-	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
+In-Reply-To: <25d71c19-6e94-477d-8d04-758015ca4b2c@cherry.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240715_074709_028915_E01B047A 
-X-CRM114-Status: GOOD (  23.34  )
+X-CRM114-CacheID: sfid-20240715_081003_760584_56C6C83D 
+X-CRM114-Status: GOOD (  64.37  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,199 +93,287 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: multipart/mixed; boundary="===============9148379797253320465=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGVsbG8gQW5keSwKCk9uIDIwMjQtMDctMTUgMTI6NDQsIEFuZHkgWWFuIHdyb3RlOgo+IEF0IDIw
-MjQtMDctMTQgMjM6Mjc6NTQsICJEcmFnYW4gU2ltaWMiIDxkc2ltaWNAbWFuamFyby5vcmc+IHdy
-b3RlOgo+PiBQbGVhc2Ugc2VlIGEgZmV3IGNvbW1lbnRzIGJlbG93Lgo+PiAKPj4gT24gMjAyNC0w
-Ny0xNCAxMzoyOCwgQW5keSBZYW4gd3JvdGU6Cj4+PiBDb29sIFBpIEdlbkJvb2sgd29ya3MgYXMg
-YSBtb3RoZXIgYm9hcmQgY29ubmVjdCB3aXRoIENNNSBbMF0uCj4+IAo+PiBzL21vdGhlciBib2Fy
-ZC9jYXJyaWVyIGJvYXJkLwo+IAo+IFRoaXMgY2FuIGJlIGNoYW5nZWQgdG8gY2FycmllciBib2Fy
-ZCBpbiBuZXh0IHZlcnNpb27jgIIKPiAKPj4gcy9DTTUvR2VuTTUvCj4gCj4gSW4gZmFjdCwgdGhl
-IFNPTSAgaXMgY2FsbGVkICBDTTUgYWx3YXlzWzBd77yMIGV2ZW4gdGhpcyBsYXB0b3Agd2FzCj4g
-Y2FsbGVkIGNtNSBsYXB0b3AgZnJvbSB0aGUKPiB2ZXJ5IGJlZ2lubmluZyBvZiB0aGUgZGVzaWdu
-44CCCj4gVGhleSBqdXN0IGdhdmUgaXQgYSBuZXcgbmFtZSBHZW5Cb29rIHdoZW4gaXQgY29tZXMg
-dG8gY3Jvd2RzdXBwbHkuCj4gCj4gVGhlIGR0c2kgZm9yIENNNSBpcyBhcmVhZHkgbGFuZGluZyB1
-cHN0cmVhbe+8jEkgaW5jbHVsZGUgaXQgaW4gdGhlCj4gY3VycmVudCBnZW5ib29rIGR0c+OAggo+
-IAo+IFswXWh0dHBzOi8vZm9ydW0uY29vbC1waS5jb20vdG9waWMvOTgvY29vbC1waS01LWNvbXB1
-dGUtbW9kdWxlLW1pbmlwYy1jYXJyaWVyLWJvYXJkLXNwZWMKCkFoLCB0aGF0J3MgcXVpdGUgaW50
-ZXJlc3RpbmcsIGl0IHdhcyBwcm9iYWJseSByZW5hbWVkIGZvciBtYXJrZXRpbmcKcHVycG9zZXMu
-ICBUaGFua3MgZm9yIHRoZSBjbGFyaWZpY2F0aW9uLgoKVG8gYWRkIHRvIHRoZSBjb25mdXNpb24s
-IG5vbmUgb2YgIkdlbkJvb2siLCAiQ001IiBvciAiR2VuTTUiIGFwcGVhcgpvbiB0aGUgbGFiZWxz
-IGZvdW5kIG9uIHRoZSBhY3R1YWwgUENCcy4gWzFdICBJbnN0ZWFkLCB0aGVyZSBhcmUgb25seQpz
-b21lIHJhdGhlciBnZW5lcmljIHRlcm1zLgoKWzFdIApodHRwczovL3d3dy5jcm93ZHN1cHBseS5j
-b20vaW1nLzYxODUvNjBjMzU4NTItN2E1OC00YjZmLTgwZmMtYWYzYTBlM2Q2MTg1L2dlbmJvb2st
-cmszNTg4LW1haW4tYm9hcmQtY2xvc2UtdXBfanBnX2dhbGxlcnktbGcuanBnCgo+Pj4gU3BlY2lm
-aWNhdGlvbjoKPj4+IC0gUm9ja2NoaXAgUkszNTg4Cj4+PiAtIExQRERSNVggOC8zMiBHQgo+Pj4g
-LSBlTU1DIDY0IEdCCj4+PiAtIEhETUkgVHlwZSBBIG91dCB4IDEKPj4+IC0gVVNCIDMuMCBIb3N0
-IHggMQo+Pj4gLSBVU0ItQyAzLjAgd2l0aCBEaXNwbGF5UG9ydCBBbHRNb2RlCj4+PiAtIFBDSUUg
-TS4yIEUgS2V5IGZvciBSVEw4ODUyQkUgV2lyZWxlc3MgY29ubmVjdGlvbgo+Pj4gLSBQQ0lFIE0u
-MiBNIEtleSBmb3IgTlZNRSBjb25uZWN0aW9uCj4+PiAtIGVEUCBwYW5lbCB3aXRoIDE5MjB4MTA4
-MAo+Pj4gCj4+PiBUaGlzIHBhdGNoIGFkZCBiYXNpYyBzdXBwb3J0IHRvIGJyaW5ndXAgZU1NQy9V
-U0IgSE9TVC9XaUZpCj4+PiBhbmQgY2FuIGFsc28gZHJpdmUgYSBIRE1JIG91dHB1dCB3aXRoIG91
-dCBvZiB0cmVlIGhkbWkgcGF0Y2hlcy4KPj4+IAo+Pj4gWzBdCj4+PiBodHRwczovL3d3dy5jcm93
-ZHN1cHBseS5jb20vc2hlbnpoZW4tdGlhbm1hby10ZWNobm9sb2d5LWNvLWx0ZC9nZW5ib29rLXJr
-MzU4OAo+Pj4gCj4+PiBTaWduZWQtb2ZmLWJ5OiBBbmR5IFlhbiA8YW5keXNocmtAMTYzLmNvbT4K
-Pj4+IC0tLQo+Pj4gCj4+PiAgYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9NYWtlZmlsZSAg
-ICAgICAgIHwgICAxICsKPj4+ICAuLi4vZHRzL3JvY2tjaGlwL3JrMzU4OC1jb29scGktZ2VuYm9v
-ay5kdHMgICAgfCAyOTYgCj4+PiArKysrKysrKysrKysrKysrKysKPj4+ICAyIGZpbGVzIGNoYW5n
-ZWQsIDI5NyBpbnNlcnRpb25zKCspCj4+PiAgY3JlYXRlIG1vZGUgMTAwNjQ0Cj4+PiBhcmNoL2Fy
-bTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzU4OC1jb29scGktZ2VuYm9vay5kdHMKPj4gCj4+IEl0
-IHdvdWxkIGJlIGJldHRlciB0byBzcGxpdCB0aGlzIGludG8gdHdvIGZpbGVzOiBhIGR0c2kgZm9y
-IHRoZSBHZW5NNQo+PiBzeXN0ZW0KPj4gb24gbW9kdWxlLCBhbmQgYSBkdHMgZm9yIHRoZSBHZW5C
-b29rIGNhcnJpZXIgYm9hcmQuICBUaGF0IHdheSwgdGhlCj4+IGR0cyhpKSBmaWxlcwo+PiB3b3Vs
-ZCBkZXNjcmliZSB0aGUgYWN0dWFsIGhhcmR3YXJlIGJldHRlci4KPj4gCj4+PiBkaWZmIC0tZ2l0
-IGEvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9NYWtlZmlsZQo+Pj4gYi9hcmNoL2FybTY0
-L2Jvb3QvZHRzL3JvY2tjaGlwL01ha2VmaWxlCj4+PiBpbmRleCA4ZmE0NjlkYjQwMGMuLjBmYWQ1
-NDkzOWJiZCAxMDA2NDQKPj4+IC0tLSBhL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvTWFr
-ZWZpbGUKPj4+ICsrKyBiL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvTWFrZWZpbGUKPj4+
-IEBAIC0xMjIsNiArMTIyLDcgQEAgZHRiLSQoQ09ORklHX0FSQ0hfUk9DS0NISVApICs9Cj4+PiBy
-azM1Njgtd29sZnZpc2lvbi1wZjUtZGlzcGxheS12ei5kdGJvCj4+PiAgZHRiLSQoQ09ORklHX0FS
-Q0hfUk9DS0NISVApICs9IAo+Pj4gcmszNTY4LXdvbGZ2aXNpb24tcGY1LWlvLWV4cGFuZGVyLmR0
-Ym8KPj4+ICBkdGItJChDT05GSUdfQVJDSF9ST0NLQ0hJUCkgKz0gcmszNTg4LWFybXNvbS1zaWdl
-Ny5kdGIKPj4+ICBkdGItJChDT05GSUdfQVJDSF9ST0NLQ0hJUCkgKz0gcmszNTg4LWNvb2xwaS1j
-bTUtZXZiLmR0Ygo+Pj4gK2R0Yi0kKENPTkZJR19BUkNIX1JPQ0tDSElQKSArPSByazM1ODgtY29v
-bHBpLWdlbmJvb2suZHRiCj4+PiAgZHRiLSQoQ09ORklHX0FSQ0hfUk9DS0NISVApICs9IHJrMzU4
-OC1lZGdlYmxlLW5ldTZhLWlvLmR0Ygo+Pj4gIGR0Yi0kKENPTkZJR19BUkNIX1JPQ0tDSElQKSAr
-PSByazM1ODgtZWRnZWJsZS1uZXU2YS13aWZpLmR0Ym8KPj4+ICBkdGItJChDT05GSUdfQVJDSF9S
-T0NLQ0hJUCkgKz0gcmszNTg4LWVkZ2VibGUtbmV1NmItaW8uZHRiCj4+PiBkaWZmIC0tZ2l0IGEv
-YXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazM1ODgtY29vbHBpLWdlbmJvb2suZHRzCj4+
-PiBiL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszNTg4LWNvb2xwaS1nZW5ib29rLmR0
-cwo+Pj4gbmV3IGZpbGUgbW9kZSAxMDA2NDQKPj4+IGluZGV4IDAwMDAwMDAwMDAwMC4uMjgzNTdj
-NmYwNWZiCj4+PiAtLS0gL2Rldi9udWxsCj4+PiArKysgYi9hcmNoL2FybTY0L2Jvb3QvZHRzL3Jv
-Y2tjaGlwL3JrMzU4OC1jb29scGktZ2VuYm9vay5kdHMKPj4+IEBAIC0wLDAgKzEsMjk2IEBACj4+
-PiArLy8gU1BEWC1MaWNlbnNlLUlkZW50aWZpZXI6IChHUEwtMi4wKyBPUiBNSVQpCj4+PiArLyoK
-Pj4+ICsgKiBDb3B5cmlnaHQgKGMpIDIwMjQgUm9ja2NoaXAgRWxlY3Ryb25pY3MgQ28uLCBMdGQu
-Cj4+PiArICoKPj4+ICsgKi8KPj4+ICsKPj4+ICsvZHRzLXYxLzsKPj4+ICsKPj4+ICsjaW5jbHVk
-ZSA8ZHQtYmluZGluZ3MvbGVkcy9jb21tb24uaD4KPj4+ICsjaW5jbHVkZSAicmszNTg4LWNvb2xw
-aS1jbTUuZHRzaSIKPj4+ICsKPj4+ICsvIHsKPj4+ICsJbW9kZWwgPSAiUkszNTg4IENvb2xQaSBH
-ZW5Cb29rIjsKPj4+ICsJY29tcGF0aWJsZSA9ICJjb29scGksZ2VuYm9vayIsICJjb29scGkscGkt
-Y201IiwgInJvY2tjaGlwLHJrMzU4OCI7Cj4+PiArCj4+PiArCWJhY2tsaWdodDogYmFja2xpZ2h0
-IHsKPj4+ICsJCWNvbXBhdGlibGUgPSAicHdtLWJhY2tsaWdodCI7Cj4+PiArCQllbmFibGUtZ3Bp
-b3MgPSA8JmdwaW80IFJLX1BBMyBHUElPX0FDVElWRV9ISUdIPjsKPj4+ICsJCXBpbmN0cmwtbmFt
-ZXMgPSAiZGVmYXVsdCI7Cj4+PiArCQlwaW5jdHJsLTAgPSA8JmJsX2VuPjsKPj4+ICsJCXBvd2Vy
-LXN1cHBseSA9IDwmdmNjMTJ2X2RjaW4+Owo+Pj4gKwkJcHdtcyA9IDwmcHdtNiAwIDI1MDAwIDA+
-Owo+Pj4gKwl9Owo+Pj4gKwo+Pj4gKwlsZWRzOiBsZWRzIHsKPj4+ICsJCWNvbXBhdGlibGUgPSAi
-Z3Bpby1sZWRzIjsKPj4+ICsKPj4+ICsJCWhlYXJ0YmVhdF9sZWQ6IGxlZC0wIHsKPj4+ICsJCQlj
-b2xvciA9IDxMRURfQ09MT1JfSURfR1JFRU4+Owo+Pj4gKwkJCWZ1bmN0aW9uID0gTEVEX0ZVTkNU
-SU9OX1NUQVRVUzsKPj4+ICsJCQlncGlvcyA9IDwmZ3BpbzEgUktfUEIwIEdQSU9fQUNUSVZFX0hJ
-R0g+Owo+Pj4gKwkJCWxpbnV4LGRlZmF1bHQtdHJpZ2dlciA9ICJoZWFydGJlYXQiOwo+Pj4gKwkJ
-fTsKPj4+ICsKPj4+ICsJCXdsYW5fbGVkOiBsZWQtMSB7Cj4+PiArCQkJY29sb3IgPSA8TEVEX0NP
-TE9SX0lEX0dSRUVOPjsKPj4+ICsJCQlmdW5jdGlvbiA9IExFRF9GVU5DVElPTl9XTEFOOwo+Pj4g
-KwkJCWdwaW9zID0gPCZncGlvMCBSS19QQzUgR1BJT19BQ1RJVkVfSElHSD47Cj4+PiArCQl9Owo+
-Pj4gKwo+Pj4gKwkJY2hhcmdpbmdfcmVkOiBsZWQtMiB7Cj4+PiArCQkJZnVuY3Rpb24gPSBMRURf
-RlVOQ1RJT05fQ0hBUkdJTkc7Cj4+PiArCQkJY29sb3IgPSA8TEVEX0NPTE9SX0lEX1JFRD47Cj4+
-PiArCQkJZ3Bpb3MgPSA8JmdwaW8zIFJLX1BEMiBHUElPX0FDVElWRV9ISUdIPjsKPj4+ICsJCX07
-Cj4+PiArCX07Cj4+PiArCj4+PiArCXZjYzEydl9kY2luOiB2Y2MxMnYtZGNpbi1yZWd1bGF0b3Ig
-ewo+Pj4gKwkJY29tcGF0aWJsZSA9ICJyZWd1bGF0b3ItZml4ZWQiOwo+Pj4gKwkJcmVndWxhdG9y
-LW5hbWUgPSAidmNjMTJ2X2RjaW4iOwo+Pj4gKwkJcmVndWxhdG9yLWFsd2F5cy1vbjsKPj4+ICsJ
-CXJlZ3VsYXRvci1ib290LW9uOwo+Pj4gKwkJcmVndWxhdG9yLW1pbi1taWNyb3ZvbHQgPSA8MTIw
-MDAwMDA+Owo+Pj4gKwkJcmVndWxhdG9yLW1heC1taWNyb3ZvbHQgPSA8MTIwMDAwMDA+Owo+Pj4g
-Kwl9Owo+Pj4gKwo+Pj4gKwl2Y2Nfc3lzOiB2Y2Mtc3lzLXJlZ3VsYXRvciB7Cj4+PiArCQljb21w
-YXRpYmxlID0gInJlZ3VsYXRvci1maXhlZCI7Cj4+PiArCQlyZWd1bGF0b3ItbmFtZSA9ICJ2Y2Nf
-c3lzIjsKPj4+ICsJCXJlZ3VsYXRvci1hbHdheXMtb247Cj4+PiArCQlyZWd1bGF0b3ItYm9vdC1v
-bjsKPj4+ICsJCXJlZ3VsYXRvci1taW4tbWljcm92b2x0ID0gPDcwMDAwMDA+Owo+Pj4gKwkJcmVn
-dWxhdG9yLW1heC1taWNyb3ZvbHQgPSA8NzAwMDAwMD47Cj4+PiArCQl2aW4tc3VwcGx5ID0gPCZ2
-Y2MxMnZfZGNpbj47Cj4+PiArCX07Cj4+PiArCj4+PiArCXZjYzV2MF9zeXM6IHZjYzV2MC1zeXMt
-cmVndWxhdG9yIHsKPj4+ICsJCWNvbXBhdGlibGUgPSAicmVndWxhdG9yLWZpeGVkIjsKPj4+ICsJ
-CXJlZ3VsYXRvci1uYW1lID0gInZjYzV2MF9zeXMiOwo+Pj4gKwkJcmVndWxhdG9yLWFsd2F5cy1v
-bjsKPj4+ICsJCXJlZ3VsYXRvci1ib290LW9uOwo+Pj4gKwkJcmVndWxhdG9yLW1pbi1taWNyb3Zv
-bHQgPSA8NzAwMDAwMD47Cj4+PiArCQlyZWd1bGF0b3ItbWF4LW1pY3Jvdm9sdCA9IDw3MDAwMDAw
-PjsKPj4+ICsJCXZpbi1zdXBwbHkgPSA8JnZjY19zeXM+Owo+Pj4gKwl9Owo+Pj4gKwo+Pj4gKwl2
-Y2MzdjNfc3lzOiB2Y2MzdjMtc3lzLXJlZ3VsYXRvciB7Cj4+PiArCQljb21wYXRpYmxlID0gInJl
-Z3VsYXRvci1maXhlZCI7Cj4+PiArCQlyZWd1bGF0b3ItbmFtZSA9ICJ2Y2MzdjNfc3lzIjsKPj4+
-ICsJCXJlZ3VsYXRvci1hbHdheXMtb247Cj4+PiArCQlyZWd1bGF0b3ItYm9vdC1vbjsKPj4+ICsJ
-CXJlZ3VsYXRvci1taW4tbWljcm92b2x0ID0gPDMzMDAwMDA+Owo+Pj4gKwkJcmVndWxhdG9yLW1h
-eC1taWNyb3ZvbHQgPSA8MzMwMDAwMD47Cj4+PiArCQl2aW4tc3VwcGx5ID0gPCZ2Y2M1djBfc3lz
-PjsKPj4+ICsJfTsKPj4+ICsKPj4+ICsJdmNjM3YzX2xjZDogdmNjM3YzLWxjZC1yZWd1bGF0b3Ig
-ewo+Pj4gKwkJY29tcGF0aWJsZSA9ICJyZWd1bGF0b3ItZml4ZWQiOwo+Pj4gKwkJcmVndWxhdG9y
-LW5hbWUgPSAidmNjM3YzX2xjZCI7Cj4+PiArCQllbmFibGUtYWN0aXZlLWhpZ2g7Cj4+PiArCQln
-cGlvID0gPCZncGlvMSBSS19QQzQgR1BJT19BQ1RJVkVfSElHSD47Cj4+PiArCQlwaW5jdHJsLW5h
-bWVzID0gImRlZmF1bHQiOwo+Pj4gKwkJcGluY3RybC0wID0gPCZsY2Rwd3JfZW4+Owo+Pj4gKwkJ
-dmluLXN1cHBseSA9IDwmdmNjM3YzX3N5cz47Cj4+PiArCX07Cj4+PiArCj4+PiArCXZjYzV2MF91
-c2I6IHZjYzV2MC11c2ItcmVndWxhdG9yIHsKPj4+ICsJCWNvbXBhdGlibGUgPSAicmVndWxhdG9y
-LWZpeGVkIjsKPj4+ICsJCXJlZ3VsYXRvci1uYW1lID0gInZjYzV2MF91c2IiOwo+Pj4gKwkJcmVn
-dWxhdG9yLWJvb3Qtb247Cj4+PiArCQlyZWd1bGF0b3ItYWx3YXlzLW9uOwo+Pj4gKwkJZW5hYmxl
-LWFjdGl2ZS1oaWdoOwo+Pj4gKwkJcmVndWxhdG9yLW1pbi1taWNyb3ZvbHQgPSA8NTAwMDAwMD47
-Cj4+PiArCQlyZWd1bGF0b3ItbWF4LW1pY3Jvdm9sdCA9IDw1MDAwMDAwPjsKPj4+ICsJCWdwaW8g
-PSA8JmdwaW8xIFJLX1BENSBHUElPX0FDVElWRV9ISUdIPjsKPj4+ICsJCXBpbmN0cmwtbmFtZXMg
-PSAiZGVmYXVsdCI7Cj4+PiArCQlwaW5jdHJsLTAgPSA8JnVzYl9wd3Jlbj47Cj4+PiArCQl2aW4t
-c3VwcGx5ID0gPCZ2Y2Nfc3lzPjsKPj4+ICsJfTsKPj4+ICsKPj4+ICsJdmNjNXYwX3VzYl9ob3N0
-MDogdmNjNXYwX3VzYjMwX2hvc3Q6IHZjYzV2MC11c2ItaG9zdC1yZWd1bGF0b3Igewo+Pj4gKwkJ
-Y29tcGF0aWJsZSA9ICJyZWd1bGF0b3ItZml4ZWQiOwo+Pj4gKwkJcmVndWxhdG9yLW5hbWUgPSAi
-dmNjNXYwX2hvc3QiOwo+Pj4gKwkJcmVndWxhdG9yLWJvb3Qtb247Cj4+PiArCQlyZWd1bGF0b3It
-YWx3YXlzLW9uOwo+Pj4gKwkJZW5hYmxlLWFjdGl2ZS1oaWdoOwo+Pj4gKwkJcmVndWxhdG9yLW1p
-bi1taWNyb3ZvbHQgPSA8NTAwMDAwMD47Cj4+PiArCQlyZWd1bGF0b3ItbWF4LW1pY3Jvdm9sdCA9
-IDw1MDAwMDAwPjsKPj4+ICsJCWdwaW8gPSA8JmdwaW8xIFJLX1BBNyBHUElPX0FDVElWRV9ISUdI
-PjsKPj4+ICsJCXBpbmN0cmwtbmFtZXMgPSAiZGVmYXVsdCI7Cj4+PiArCQlwaW5jdHJsLTAgPSA8
-JnVzYl9ob3N0X3B3cmVuPjsKPj4+ICsJCXZpbi1zdXBwbHkgPSA8JnZjYzV2MF91c2I+Owo+Pj4g
-Kwl9Owo+Pj4gK307Cj4+PiArCj4+PiArJmdtYWMwIHsKPj4+ICsJc3RhdHVzID0gImRpc2FibGVk
-IjsKPj4+ICt9Owo+Pj4gKwo+Pj4gKy8qIE0uMiBFLUtleSAqLwo+Pj4gKyZwY2llMngxbDAgewo+
-Pj4gKwlyZXNldC1ncGlvcyA9IDwmZ3BpbzQgUktfUEEyIEdQSU9fQUNUSVZFX0hJR0g+Owo+Pj4g
-Kwl2cGNpZTN2My1zdXBwbHkgPSA8JnZjYzN2M19zeXM+Owo+Pj4gKwlwaW5jdHJsLW5hbWVzID0g
-ImRlZmF1bHQiOwo+Pj4gKwlwaW5jdHJsLTAgPSA8JnBjaWVfY2xrcmVxICZwY2llX3dha2UgJnBj
-aWVfcnN0ICZ3aWZpX3B3cm9uCj4+PiAmYnRfcHdyb24+Owo+Pj4gKwlzdGF0dXMgPSAib2theSI7
-Cj4+PiArfTsKPj4+ICsKPj4+ICsmcGNpZTJ4MWwyIHsKPj4+ICsJc3RhdHVzID0gImRpc2FibGVk
-IjsKPj4+ICt9Owo+Pj4gKwo+Pj4gKyZwY2llMzBwaHkgewo+Pj4gKwlzdGF0dXMgPSAib2theSI7
-Cj4+PiArfTsKPj4+ICsKPj4+ICsvKiBNLjIgTS1LZXkgc3NkICovCj4+PiArJnBjaWUzeDQgewo+
-Pj4gKwlyZXNldC1ncGlvcyA9IDwmZ3BpbzQgUktfUEI2IEdQSU9fQUNUSVZFX0hJR0g+Owo+Pj4g
-Kwl2cGNpZTN2My1zdXBwbHkgPSA8JnZjYzN2M19zeXM+Owo+Pj4gKwlzdGF0dXMgPSAib2theSI7
-Cj4+PiArfTsKPj4+ICsKPj4+ICsmcGluY3RybCB7Cj4+PiArCWxjZCB7Cj4+PiArCQlsY2Rwd3Jf
-ZW46IGxjZHB3ci1lbiB7Cj4+PiArCQkJcm9ja2NoaXAscGlucyA9IDwxIFJLX1BDNCBSS19GVU5D
-X0dQSU8gJnBjZmdfcHVsbF9kb3duPjsKPj4+ICsJCX07Cj4+PiArCj4+PiArCQlibF9lbjogYmwt
-ZW4gewo+Pj4gKwkJCXJvY2tjaGlwLHBpbnMgPSA8NCBSS19QQTMgUktfRlVOQ19HUElPICZwY2Zn
-X3B1bGxfbm9uZT47Cj4+PiArCQl9Owo+Pj4gKwl9Owo+Pj4gKwo+Pj4gKwl1c2Igewo+Pj4gKwkJ
-dXNiX3B3cmVuOiB1c2ItcHdyZW4gewo+Pj4gKwkJCXJvY2tjaGlwLHBpbnMgPSA8MSBSS19QRDUg
-UktfRlVOQ19HUElPICZwY2ZnX3B1bGxfdXA+Owo+Pj4gKwkJfTsKPj4+ICsKPj4+ICsJCXVzYl9v
-dGdfcHdyZW46IHVzYi1vdGctcHdyZW4gewo+Pj4gKwkJCXJvY2tjaGlwLHBpbnMgPSA8MCBSS19Q
-QTAgUktfRlVOQ19HUElPICZwY2ZnX3B1bGxfdXA+Owo+Pj4gKwkJfTsKPj4+ICsKPj4+ICsJCXVz
-Yl9ob3N0X3B3cmVuOiB1c2ItaG9zdC1wd3JlbiB7Cj4+PiArCQkJcm9ja2NoaXAscGlucyA9IDwx
-IFJLX1BBNyBSS19GVU5DX0dQSU8gJnBjZmdfcHVsbF91cD47Cj4+PiArCQl9Owo+Pj4gKwl9Owo+
-Pj4gKwo+Pj4gKwl3aWZpIHsKPj4+ICsJCWJ0X3B3cm9uOiBidC1wd3JvbiB7Cj4+PiArCQkJcm9j
-a2NoaXAscGlucyA9IDwzIFJLX1BBNiBSS19GVU5DX0dQSU8gJnBjZmdfcHVsbF91cD47Cj4+PiAr
-CQl9Owo+Pj4gKwo+Pj4gKwkJcGNpZV9jbGtyZXE6IHBjaWUtY2xrcmVxIHsKPj4+ICsJCQlyb2Nr
-Y2hpcCxwaW5zID0gPDQgUktfUEEwIFJLX0ZVTkNfR1BJTyAmcGNmZ19wdWxsX3VwPjsKPj4+ICsJ
-CX07Cj4+PiArCj4+PiArCQlwY2llX3JzdDogcGNpZS1yc3Qgewo+Pj4gKwkJCXJvY2tjaGlwLHBp
-bnMgPSA8NCBSS19QQTIgUktfRlVOQ19HUElPICZwY2ZnX3B1bGxfdXA+Owo+Pj4gKwkJfTsKPj4+
-ICsKPj4+ICsJCXdpZmlfcHdyb246IHdpZmktcHdyb24gewo+Pj4gKwkJCXJvY2tjaGlwLHBpbnMg
-PSA8MyBSS19QQjEgUktfRlVOQ19HUElPICZwY2ZnX3B1bGxfdXA+Owo+Pj4gKwkJfTsKPj4+ICsK
-Pj4+ICsJCXBjaWVfd2FrZTogcGNpZS13YWtlIHsKPj4+ICsJCQlyb2NrY2hpcCxwaW5zID0gPDQg
-UktfUEExIFJLX0ZVTkNfR1BJTyAmcGNmZ19wdWxsX3VwPjsKPj4+ICsJCX07Cj4+PiArCX07Cj4+
-PiArfTsKPj4+ICsKPj4+ICsmcHdtNiB7Cj4+PiArCXBpbmN0cmwtMCA9IDwmcHdtNm0xX3BpbnM+
-Owo+Pj4gKwlzdGF0dXMgPSAib2theSI7Cj4+PiArfTsKPj4+ICsKPj4+ICsmc2RtbWMgewo+Pj4g
-KwlzdGF0dXMgPSAiZGlzYWJsZWQiOwo+Pj4gK307Cj4+PiArCj4+PiArJnNmYyB7Cj4+PiArCXBp
-bmN0cmwtbmFtZXMgPSAiZGVmYXVsdCI7Cj4+PiArCXBpbmN0cmwtMCA9IDwmZnNwaW0yX3BpbnM+
-Owo+Pj4gKwlzdGF0dXMgPSAib2theSI7Cj4+PiArCj4+PiArCWZsYXNoQDAgewo+Pj4gKwkJY29t
-cGF0aWJsZSA9ICJqZWRlYyxzcGktbm9yIjsKPj4+ICsJCXJlZyA9IDwweDA+Owo+Pj4gKwkJc3Bp
-LW1heC1mcmVxdWVuY3kgPSA8MTAwMDAwMDAwPjsKPj4+ICsJCXNwaS1yeC1idXMtd2lkdGggPSA8
-ND47Cj4+PiArCQlzcGktdHgtYnVzLXdpZHRoID0gPDE+Owo+Pj4gKwl9Owo+Pj4gK307Cj4+PiAr
-Cj4+PiArJnUycGh5MCB7Cj4+PiArCXN0YXR1cyA9ICJva2F5IjsKPj4+ICt9Owo+Pj4gKwo+Pj4g
-KyZ1MnBoeTBfb3RnIHsKPj4+ICsJc3RhdHVzID0gIm9rYXkiOwo+Pj4gK307Cj4+PiArCj4+PiAr
-JnVzYmRwX3BoeTAgewo+Pj4gKwlzdGF0dXMgPSAib2theSI7Cj4+PiArfTsKPj4+ICsKPj4+ICsm
-dTJwaHkxIHsKPj4+ICsJc3RhdHVzID0gIm9rYXkiOwo+Pj4gK307Cj4+PiArCj4+PiArJnUycGh5
-MV9vdGcgewo+Pj4gKwlzdGF0dXMgPSAib2theSI7Cj4+PiArfTsKPj4+ICsKPj4+ICsmdTJwaHky
-IHsKPj4+ICsJc3RhdHVzID0gIm9rYXkiOwo+Pj4gK307Cj4+PiArCj4+PiArJnUycGh5MyB7Cj4+
-PiArCXN0YXR1cyA9ICJva2F5IjsKPj4+ICt9Owo+Pj4gKwo+Pj4gKyZ1MnBoeTJfaG9zdCB7Cj4+
-PiArCXBoeS1zdXBwbHkgPSA8JnZjYzV2MF91c2JfaG9zdDA+Owo+Pj4gKwlzdGF0dXMgPSAib2th
-eSI7Cj4+PiArfTsKPj4+ICsKPj4+ICsmdTJwaHkzX2hvc3Qgewo+Pj4gKwlwaHktc3VwcGx5ID0g
-PCZ2Y2M1djBfdXNiPjsKPj4+ICsJc3RhdHVzID0gIm9rYXkiOwo+Pj4gK307Cj4+PiArCj4+PiAr
-JnVzYmRwX3BoeTEgewo+Pj4gKwlzdGF0dXMgPSAib2theSI7Cj4+PiArfTsKPj4+ICsKPj4+ICsv
-KiBGb3IgS2V5cGFkICovCj4+PiArJnVzYl9ob3N0MF9laGNpIHsKPj4+ICsJc3RhdHVzID0gIm9r
-YXkiOwo+Pj4gK307Cj4+PiArCj4+PiArJnVzYl9ob3N0MF9vaGNpIHsKPj4+ICsJc3RhdHVzID0g
-Im9rYXkiOwo+Pj4gK307Cj4+PiArCj4+PiArLyogVHlwZSBDIHBvcnQgKi8KPj4+ICsmdXNiX2hv
-c3QwX3hoY2kgewo+Pj4gKwlkcl9tb2RlID0gInBlcmlwaGVyYWwiOwo+Pj4gKwltYXhpbXVtLXNw
-ZWVkID0gImhpZ2gtc3BlZWQiOwo+Pj4gKwlzdGF0dXMgPSAib2theSI7Cj4+PiArfTsKPj4+ICsK
-Pj4+ICsvKiBjb25uZWN0ZWQgdG8gYSBIVUIgZm9yIGNhbWVyYSBhbmQgQlQgKi8KPj4+ICsmdXNi
-X2hvc3QxX2VoY2kgewo+Pj4gKwlzdGF0dXMgPSAib2theSI7Cj4+PiArfTsKPj4+ICsKPj4+ICsm
-dXNiX2hvc3QxX29oY2kgewo+Pj4gKwlzdGF0dXMgPSAib2theSI7Cj4+PiArfTsKPj4+ICsKPj4+
-ICsvKiBVU0IgQSBvdXQgKi8KPj4+ICsmdXNiX2hvc3QxX3hoY2kgewo+Pj4gKwlkcl9tb2RlID0g
-Imhvc3QiOwo+Pj4gKwlzdGF0dXMgPSAib2theSI7Cj4+PiArfTsKPiBfX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwo+IExpbnV4LXJvY2tjaGlwIG1haWxpbmcg
-bGlzdAo+IExpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKPiBodHRwOi8vbGlzdHMu
-aW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCgpfX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWls
-aW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMu
-aW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+
+--===============9148379797253320465==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="nnnntzeiyupavwi4"
+Content-Disposition: inline
+
+
+--nnnntzeiyupavwi4
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+Hello Quentin,
+
+On Mon, Jul 15, 2024 at 02:16:15PM +0200, Quentin Schulz wrote:
+> > > --- a/drivers/pwm/Kconfig
+> > > +++ b/drivers/pwm/Kconfig
+> > > @@ -425,6 +425,16 @@ config PWM_MICROCHIP_CORE
+> > >   	  To compile this driver as a module, choose M here: the module
+> > >   	  will be called pwm-microchip-core.
+> > > +config PWM_MULE
+> > > +	tristate "Mule PWM-over-I2C support"
+> > > +	depends on I2C && OF
+> >=20
+> > It would be easy to drop the hard dependency on OF. Please do that.
+> >=20
+>=20
+> Just being curious here, what would be the benefit?
+
+Increasing easy compile coverage.
+
+> [...]
+>=20
+> > > diff --git a/drivers/pwm/pwm-mule.c b/drivers/pwm/pwm-mule.c
+> > > new file mode 100644
+> > > index 000000000000..e8593a48b16e
+> > > --- /dev/null
+> > > +++ b/drivers/pwm/pwm-mule.c
+> > > @@ -0,0 +1,115 @@
+> > > +// SPDX-License-Identifier: GPL-2.0
+> > > +/*
+> > > + * Mule PWM-over-I2C controller driver
+> > > + *
+> > > + * Copyright (C) 2024 Theobroma Systems Design und Consulting GmbH
+> >=20
+> > Is there a publicly available datasheet? I guess not. (I ask because
+> > adding a link there to such a document would be nice.)
+> >=20
+>=20
+> Unfortunately no. It's also only part of our product line and there's no
+> plan to start selling it standalone or selling the IP.
+>=20
+> > > + */
+> > > +
+> > > +#include <linux/i2c.h>
+> > > +#include <linux/module.h>
+> > > +#include <linux/of.h>
+> > > +#include <linux/pwm.h>
+> > > +#include <linux/regmap.h>
+> > > +
+> > > +struct mule_pwm {
+> > > +	struct mutex lock;
+> > > +	struct regmap *regmap;
+> > > +};
+> > > +
+> > > +static const struct regmap_config pwm_mule_config =3D {
+> > > +	.reg_bits =3D 8,
+> > > +	.val_bits =3D 8,
+> > > +};
+> > > +
+> > > +#define MULE_PWM_DCY_REG	0x0
+> > > +#define MULE_PWM_FREQ_L_REG	0x1	/* LSB register */
+> > > +#define MULE_PWM_FREQ_H_REG	0x2	/* MSB register */
+> > > +
+> > > +#define NANOSECONDS_TO_HZ(x) (1000000000UL/(x))
+> >=20
+> > Don't introduce such a macro if you only use it once. Having the
+> > division in the function results in code that is easier to read (IMHO).
+> >=20
+> > > +static int pwm_mule_apply(struct pwm_chip *chip, struct pwm_device *=
+pwm,
+> > > +			      const struct pwm_state *state)
+> > > +{
+> > > +	struct mule_pwm *priv =3D pwmchip_get_drvdata(chip);
+> > > +	u8 duty_cycle;
+> > > +	u64 freq;
+> > > +	int ret;
+> > > +
+> > > +	freq =3D NANOSECONDS_TO_HZ(state->period);
+> > > +
+> > > +	if (freq > U16_MAX) /* Frequency is 16-bit wide */ {
+> > > +		dev_err(chip->dev,
+> > > +			"Failed to set frequency: %llu Hz: out of 16-bit range\n", freq);
+> > > +		return -EINVAL;
+> > > +	}
+> >=20
+> > You're supposed to configure the biggest possible period not bigger than
+> > the requested period. So this should be:
+> >=20
+> > 	/*
+> > 	 * The period is configured using a 16 bit wide register holding
+> > 	 * the frequency in Hz.
+> > 	 */
+> > 	unsigned int period =3D min_t(u64, state->period, NSEC_PER_SEC);
+> > 	unsigned int freq =3D DIV_ROUND_UP(NSEC_PER_SEC, period);
+> >=20
+> > 	if (freq > U16_MAX)
+> > 		return -EINVAL;
+> >=20
+> > > +	if (state->enabled)
+> > > +		duty_cycle =3D pwm_get_relative_duty_cycle(state, 100);
+> >=20
+> > This is wrong for two reasons:
+> >=20
+> >   - It uses rounding to the nearest duty_cycle, however you're supposed
+> >     to round down.
+> >   - It uses the requested period instead of the real one.
+> >=20
+>=20
+> I assume you want:
+>=20
+> unsigned int real_period =3D ((u64) NSEC_PER_SEC * 100) / freq;
+>=20
+> which rounds down?
+
+Yes. And then to calculate the duty_cycle setting use real_period.
+
+> > I wonder why the hardware doesn't use the whole 8 bits here.
+> >=20
+>=20
+> It's even a 16b register that the HW uses. I guess we just went with the
+> most human-friendly API :) I believe it's something we should be able to
+> change in the FW before releasing if this is something that really makes
+> sense. FYI, the register stores the number of clock ticks for the signal =
+to
+> be high, once reached, put it low (or the opposite). So it's necessarily a
+> fraction of the clock frequency. 100% was easy because we know that every
+> clock frequency we support is a multiple of 100 so there's no issue around
+> rounding for example since we definitely do not want to do float maths in
+> MCUs :)
+
+Interesting perspective. I'd still go for using the register completely.
+
+> > > +	else
+> > > +		duty_cycle =3D 0;
+> > > +
+> > > +	mutex_lock(&priv->lock);
+> >=20
+> > If you use the guard helper, you don't need to resort to goto for error
+> > handling.
+> >=20
+>=20
+> I would have liked a link or more precise hint at what this "guard helper"
+> was, but found something myself so here it is for anyone wondering:
+>=20
+> https://lwn.net/Articles/934679/
+>=20
+> Had never heard of that one before, neat!
+
+Right. A conversion example is available at
+https://lore.kernel.org/linux-pwm/2102fe8189bdf1f02ff3785b551a69be27a65af4.=
+1719520143.git.u.kleine-koenig@baylibre.com/
+
+> > > +	ret =3D regmap_bulk_write(priv->regmap, MULE_PWM_FREQ_L_REG, &freq,=
+ 2);
+> > > +	if (ret) {
+> > > +		dev_err(chip->dev,
+> > > +			"Failed to set frequency: %llu Hz: %d\n", freq, ret);
+> > > +		goto out;
+> > > +	}
+> > > +
+> > > +	ret =3D regmap_write(priv->regmap, MULE_PWM_DCY_REG, duty_cycle);
+> > > +	if (ret)
+> > > +		dev_err(chip->dev,
+> > > +			"Failed to set duty cycle: %u: %d\n", duty_cycle, ret);
+> >=20
+> > Please document how the hardware behaves here in a "Limitations" section
+> > as several other drivers do. Questions to answer include: Does it
+> > complete a period when the parameters are updated? Can it happen that a
+> > glitch is emitted while MULE_PWM_FREQ_[LH]_REG is updated but
+> > MULE_PWM_DCY_REG isn't yet? Maybe updating MULE_PWM_FREQ_[LH]_REG isn't
+> > even atomic? "Doesn't support disabling, configures duty_cycle=3D0 when
+> > disabled is requested."
+> >=20
+>=20
+> Updating MULE_PWM_FREQ_[LH]_REG is atomic (L is stored in SRAM until H reg
+> is written, when LH are then written to the hardware IP).
+>=20
+> We use double-buffering (supported by the HW directly) for the period and
+> comparator registers. I believe we still have a possible glitch during a
+> small time-frame in the current version of the FW. Basically, trying to
+> change the period AND duty cycle at the same time, the following could
+> happen:
+>=20
+> - period A + duty-cycle AA
+> - period B + duty-cycle AA
+> - period B + duty-cycle BB
+>=20
+> Depending on what we consider a glitch, the second element in the list co=
+uld
+> be one. Even if we do a multibyte write to the actual HW, I'm not sure if
+> this window can be eliminated.
+
+I'd call that a glitch, yes.
+
+> To give a bit more info on this, there are two possible flavors of the MC=
+U,
+> ATtiny 816 (datasheet: https://ww1.microchip.com/downloads/en/DeviceDoc/A=
+Ttiny416-816-DataSheet-DS40001913B.pdf)
+> and STM32F072CB (datasheet: https://www.st.com/content/ccc/resource/techn=
+ical/document/reference_manual/c2/f8/8a/f2/18/e6/43/96/DM00031936.pdf/files=
+/DM00031936.pdf/jcr:content/translations/en.DM00031936.pdf).
+>=20
+> FYI, on ATtiny, we use TCA in single-slope PWM generation mode and PERBUF
+> and CMP2BUF as period and duty-cycle registers. On STM32, we use TIM15 in
+> PWM mode and ARR and CCR1 as period and duty-cycle registers.
+
+Wouldn't it be more natural with these to have duty in a base-2 register
+for duty, in the assumption that your MCUs habe this, too?
+
+> Re-reading both datasheets, and if I understand correctly, we could have
+> glitch-free transitions by controlling the ARPE bit on STM32 and LUPD bit=
+ on
+> ATtiny816.
+>=20
+> @Farouk, please confirm but the above makes sense to me and I guess we co=
+uld
+> implement something in the FW. The question is how to detect if we want to
+> change both the duty-cycle and period at the same time (we could decide to
+> document this as a requirement for the API user though: "changes to
+> MULE_PWM_FREQ_[LH]_REG are only applied when MULE_PWM_DCY_REG is written
+> to").
+>=20
+> > Maybe write all three registers in a bulk write, then you might even be
+> > able to drop the lock.
+> >=20
+>=20
+> The bulk write wouldn't help with the glitch, but it's a good idea for
+> getting rid of the lock.
+>=20
+> > Also please fail silently.
+>=20
+> Would dev_dbg() be fine here or would you rather see them gone entirely?
+
+dev_dbg is silent by default, so that's fine for me.
+
+Best regards
+Uwe
+
+--nnnntzeiyupavwi4
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEP4GsaTp6HlmJrf7Tj4D7WH0S/k4FAmaVO8EACgkQj4D7WH0S
+/k5G8QgAo9i4tMthmPzEzcLp1iYlQD9EhlmLY3NS3iaEndMQdjs6Yn5g/X28jixs
+S5EwD0OzoP2LziqgyOcsMqoQUZgtlZXcx7DyhzERsSPSAiGNUxRqTX4dIp4eqhaI
+a5nL/kAEbSdl6cirkq97TUA6YSTjZlcFjYte9UkaARk6ZbWJpyAEcEg+4pjjs6OZ
+cWrATM34nHeICcRxizIz6CakISP+g7H7fm1sUyoILDOlxS3mjbsrLOm4cbERuoKI
+I+PvVIVwSJJ8ulWXXCeXJc6ilOYTH5NPJTkZG81AZT6PO4vs+6mMQMPX3Y+0d4cZ
+E4TZB++66HrjjDhuL5mlJcammYkJng==
+=wgn2
+-----END PGP SIGNATURE-----
+
+--nnnntzeiyupavwi4--
+
+
+--===============9148379797253320465==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============9148379797253320465==--
+
