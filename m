@@ -4,59 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 522C0C3DA59
-	for <linux-rockchip@archiver.kernel.org>; Tue, 16 Jul 2024 21:13:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 15396C3DA49
+	for <linux-rockchip@archiver.kernel.org>; Wed, 17 Jul 2024 02:25:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:References:
-	In-Reply-To:Cc:To:From:MIME-Version:Date:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=v1eZpNoK0INbY1pMCRdnjuH84kGx8kkHsFeUSrPICoM=; b=GuU8CTa6h+IO7DScGtzIkwhgur
-	esu1Hx+bqKvY+At+XlYRFxoXFv5qJVyphkPuI4jmvvM1EFS/viG/+AVT+YB2rrpB059Uoc5kQ0Xfz
-	yc1bwMSEkWTrXWHtkNesSoZdYOJxti3HO2DAigkDtUI0iezlc765luuUgG5umK71UwVgwxIwLEvLm
-	Pv5mvXZLczvjcySUAfK60RLJtHjeKqAJpSS0iLcw8s9+P+WMFHqK/EmbuIfdjNNzuSLL1p5BLTWuK
-	ZA5OhgQYhUjXgDFHPT1sBvcRFmst1QT9NHVvCvT1IElxtiVjmLjRd7R60+BaoDR/nwH+WBW/OtDTW
-	33JoT/Eg==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=QrAHo4ike6uMACUT8dVJU9RnecodSTePhc6UqlJ1Tmw=; b=AA1r/erew3NThA
+	AzPgW5pUF3QyZD9kkdpJMT5mJckCu0WUQ8/hr0tf0WXhPBCf7/3lcIBgzKL96EXihMhjqghVIKOnK
+	HLzQiC7ZXdop8rNNggBPkJd/Hs4PI7JLjTMQrQAnBd0o7PtCRYWiu5vLSn4uYOKYTpxh9KBus39uH
+	1ZlXxFfFGxg/tZfcQIG2yj8mR8mtQv/E5Ge+KJyppKOI+aWE90KxS3qIcJBSLG/4TLGdJlxweZk2D
+	8HJqzFFk1+hbM29/uBLj9WtZazRgbyG2Mdv8FntPCPrGq9k3xf1VjMlgGP3dDBsGBWyJZ+bN9yvCl
+	stik5kSINlzzU3PU1x9A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sTpUL-0000000BmW1-0n0l;
-	Tue, 16 Jul 2024 21:13:33 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1sTuM1-0000000CLt6-01bT;
+	Wed, 17 Jul 2024 02:25:17 +0000
+Received: from pidgin.makrotopia.org ([2a07:2ec0:3002::65])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sTpTU-0000000BmFe-07dz;
-	Tue, 16 Jul 2024 21:12:41 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 90F4661447;
-	Tue, 16 Jul 2024 21:12:39 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 287C9C4AF0C;
-	Tue, 16 Jul 2024 21:12:39 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1721164359;
-	bh=pWFMDcCWc4JALdENxjGdvjOkgU/ZmXdU2cvvVS1rfFc=;
-	h=Date:From:To:Cc:In-Reply-To:References:Subject:From;
-	b=OaOJSXamy5NMWjbjfBO4xslat/mENqg7iYoo4Hg3+zlD9t5ISds9Iji1Z6HyZQRXj
-	 hBZRlt5/Eepx2iNKInWXvVn6QmvABOnR1qy1hEQC5BkY4maitGY+qS1Qt/M48dn0pv
-	 mxvPrzAt8fi1by5y8tJ+40i+cTJch5IJmP9HJG8666NWyjEjAB0XI/fKHfAHnQ8VL3
-	 laHLuGSkQ45mcc8pNK3IhvExeJcvFgYJkT4l5ltgsBHGsROLpBpL9SQdg44vCpe8IN
-	 6NqaW4ip+w2+deSrhUVUaMQQaM2+YGSZbCd93rAprlY5lIvLC6xBb0Bmp5vYheLH4D
-	 DiHjIC2hWtUFw==
-Date: Tue, 16 Jul 2024 15:12:37 -0600
+	id 1sTuLx-0000000CLsa-1dsK;
+	Wed, 17 Jul 2024 02:25:15 +0000
+Received: from local
+	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
+	 (Exim 4.97.1)
+	(envelope-from <daniel@makrotopia.org>)
+	id 1sTuLk-000000006Cr-1FJG;
+	Wed, 17 Jul 2024 02:25:00 +0000
+Date: Wed, 17 Jul 2024 03:24:55 +0100
+From: Daniel Golle <daniel@makrotopia.org>
+To: Diederik de Haas <didi.debian@cknow.org>
+Cc: Chen-Yu Tsai <wens@kernel.org>, linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, Rob Herring <robh@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>, linux-kernel@vger.kernel.org,
+	Herbert Xu <herbert@gondor.apana.org.au>,
+	Martin Kaiser <martin@kaiser.cx>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	Sebastian Reichel <sebastian.reichel@collabora.com>,
+	Ard Biesheuvel <ardb@kernel.org>,
+	Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <ukleinek@debian.org>,
+	devicetree@vger.kernel.org, linux-crypto@vger.kernel.org,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	Olivia Mackall <olivia@selenic.com>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Dragan Simic <dsimic@manjaro.org>,
+	Aurelien Jarno <aurelien@aurel32.net>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Anand Moon <linux.amoon@gmail.com>
+Subject: Re: [PATCH v7 0/3] hwrng: add hwrng support for Rockchip RK3568
+Message-ID: <ZpcrdwZBNFu-YlZt@makrotopia.org>
+References: <cover.1720969799.git.daniel@makrotopia.org>
+ <CAGb2v67zxs03xScN8OfWXR1gf8tddJciXrjw3FQZcL7pR3ocxA@mail.gmail.com>
+ <3190961.CRkYR5qTbq@bagend>
+ <3220752.Q7WYUMVHaa@bagend>
 MIME-Version: 1.0
-From: "Rob Herring (Arm)" <robh@kernel.org>
-To: Christopher Obbard <chris.obbard@collabora.com>
-Cc: Conor Dooley <conor+dt@kernel.org>, linux-rockchip@lists.infradead.org, 
- Krzysztof Kozlowski <krzk+dt@kernel.org>, devicetree@vger.kernel.org, 
- Kever Yang <kever.yang@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, 
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-In-Reply-To: <20240716-rockchip-px30-firefly-v1-0-60cdad3023a3@collabora.com>
-References: <20240716-rockchip-px30-firefly-v1-0-60cdad3023a3@collabora.com>
-Message-Id: <172116301355.347311.14376396477445638438.robh@kernel.org>
-Subject: Re: [PATCH 0/2] Add support for Firefly CORE PX30 JD4
+Content-Disposition: inline
+In-Reply-To: <3220752.Q7WYUMVHaa@bagend>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240716_141240_134599_5C3B0965 
-X-CRM114-Status: GOOD (  14.79  )
+X-CRM114-CacheID: sfid-20240716_192513_476788_9E79AB47 
+X-CRM114-Status: GOOD (  12.70  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,55 +80,46 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-
-On Tue, 16 Jul 2024 16:51:03 +0100, Christopher Obbard wrote:
-> The Firefly CORE PX30 JD4 board is a SOM and motherboard bundle from
-> Firefly containing the Rockchip PX30 SOC. This series adds support for it.
+On Tue, Jul 16, 2024 at 07:19:35PM +0200, Diederik de Haas wrote:
+> On Tuesday, 16 July 2024 18:53:43 CEST Diederik de Haas wrote:
+> > rngtest: FIPS 140-2(2001-10-10) Long run: 0
 > 
+> I don't know if it means something, but I noticed that I have
+> ``Long run: 0`` with all my poor results,
+> while Chen-Yu had ``Long run: 1``.
 > 
-> ---
-> Christopher Obbard (2):
->       dt-bindings: arm: rockchip: add Firefly CORE PX30 JD4
->       arm64: dts: rockchip: add Firefly CORE PX30 JD4
-> 
->  .../devicetree/bindings/arm/rockchip.yaml          |   5 +
->  arch/arm64/boot/dts/rockchip/Makefile              |   1 +
->  .../dts/rockchip/px30-firefly-core-px30-jd4.dts    | 562 +++++++++++++++++++++
->  3 files changed, 568 insertions(+)
-> ---
-> base-commit: d67978318827d06f1c0fa4c31343a279e9df6fde
-> change-id: 20240716-rockchip-px30-firefly-59efc93d6784
-> 
-> Best regards,
-> --
-> Christopher Obbard <chris.obbard@collabora.com>
-> 
-> 
-> 
+> Different SoC (RK3399), but Anand had ``Long run: 0`` too on their
+> very poor result (100% failure):
+> https://lore.kernel.org/linux-rockchip/CANAwSgTTzZOwBaR9zjJ5VMpxm5BydtW6rB2S7jg+dnoX8hAoWg@mail.gmail.com/
 
+The conclusions I draw from that rather ugly situation are:
+ - The hwrng should not be enabled by default, but it should by done
+   for each board on which it is known to work well.
+ - RK_RNG_SAMPLE_CNT as well as the assumed rng quality should be
+   defined in DT for each board:
+   * introduce new 'rochchip,rng-sample-count' property
+   * read 'quality' property already used for timeriomem_rng
 
-My bot found new DTB warnings on the .dts files added or changed in this
-series.
+I will prepare a follow-up patch taking those conclusions into account.
 
-Some warnings may be from an existing SoC .dtsi. Or perhaps the warnings
-are fixed by another series. Ultimately, it is up to the platform
-maintainer whether these warnings are acceptable or not. No need to reply
-unless the platform maintainer has comments.
+Just for completeness, here my test result on the NanoPi R5C:
+root@OpenWrt:~# cat /dev/hwrng | rngtest -c 1000
+rngtest 6.15
+Copyright (c) 2004 by Henrique de Moraes Holschuh
+This is free software; see the source for copying conditions.  There is NO warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
-If you already ran DT checks and didn't see these error(s), then
-make sure dt-schema is up to date:
-
-  pip3 install dtschema --upgrade
-
-
-New warnings running 'make CHECK_DTBS=y rockchip/px30-firefly-core-px30-jd4.dtb' for 20240716-rockchip-px30-firefly-v1-0-60cdad3023a3@collabora.com:
-
-arch/arm64/boot/dts/rockchip/px30-firefly-core-px30-jd4.dtb: /dsi@ff450000/panel@0: failed to match any schema with compatible: ['sitronix,st7703']
-
-
-
-
-
+rngtest: starting FIPS tests...
+rngtest: bits received from input: 20000032
+rngtest: FIPS 140-2 successes: 875
+rngtest: FIPS 140-2 failures: 125
+rngtest: FIPS 140-2(2001-10-10) Monobit: 123
+rngtest: FIPS 140-2(2001-10-10) Poker: 5
+rngtest: FIPS 140-2(2001-10-10) Runs: 4
+rngtest: FIPS 140-2(2001-10-10) Long run: 0
+rngtest: FIPS 140-2(2001-10-10) Continuous run: 0
+rngtest: input channel speed: (min=85.171; avg=141.102; max=4882812.500)Kibits/s
+rngtest: FIPS tests speed: (min=17.809; avg=19.494; max=60.169)Mibits/s
+rngtest: Program run time: 139628605 microseconds
 
 _______________________________________________
 Linux-rockchip mailing list
