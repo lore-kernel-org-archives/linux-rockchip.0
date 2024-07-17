@@ -4,111 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B9907C3DA4B
-	for <linux-rockchip@archiver.kernel.org>; Wed, 17 Jul 2024 09:41:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CAB46C3DA42
+	for <linux-rockchip@archiver.kernel.org>; Wed, 17 Jul 2024 10:18:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=NARP14Ga7b/iDwaq4tfmGEt/dNNUAuWwgAcGtrv/yUk=; b=kaNsRB/RB6nAK/
-	q3vgBXGN2bs0vL+l2yVwTaOZMlXRe23bm/eFJG5K5yiRsy52s8F9mdB+JfRQkaikqraKbq4I+nMA1
-	+DblC5I7fIT8sM2FHTboJN/Z27q2jvZrsVPsJK+UTg3slZR5OcXLhGiW9mUMnsskrXPfulBN76QSf
-	8FWJDYhv81J1QcfSWhx/utbvLc2mXBofQbCmyG4axfaCjvsD23NppLXPLs7aN/sR6zxy5OQsA1L3f
-	cl/Q8Y7JvlQM5e3lk0l8Xrf8shgw1zoRiBkfkJkYRsLYuS/6+QfUTkMB4rZGMijDqH/wKc3dKqfL4
-	A0erSTRPiVZDOr3Znpbg==;
+	List-Owner; bh=qci3ny18AbWhqgAFCvUT2qV5mKHa+9l70L3Dhj3/e+k=; b=kZ1l/reVeBT6mf
+	Lp/18B+OwqnLkZTJGnNxQkkgBMMWxtIS73QzOD5gaDo2LvXbOqab0S7kr2NS7YiyVjHYltj+ABMo6
+	5bPRAxSBGg4m1R1kz6m5MzskjwS88K/fImemJVqWAR47LDNin1ICs3EHnylDaHasFMROyoM75LuIr
+	4GiwX0LTUBL7atnT28Feykolei1yyACFPVOV1amUyhlqKpHuR2K8h6cXA76oWTI1P+pQ5X5x72uvb
+	MUuUPg1i3uv/C4U+T9FjzMYputPof9a59UlytqYAC4Ty2s53DiiHfC7sLR2Rr0e9RKunBMakfu/yj
+	ntjgR11DZcUC2IAyesqw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sU19m-0000000DMnb-2HDC;
-	Wed, 17 Jul 2024 09:41:06 +0000
-Received: from sin.source.kernel.org ([145.40.73.55])
+	id 1sU1kJ-0000000DT0M-1aQj;
+	Wed, 17 Jul 2024 10:18:51 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sU18M-0000000DM9B-2hG7;
-	Wed, 17 Jul 2024 09:39:41 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 0C66CCE16E9;
-	Wed, 17 Jul 2024 09:39:37 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4A3A0C4AF09;
-	Wed, 17 Jul 2024 09:39:30 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1721209176;
-	bh=d9O95bzVbKkcxfhQls1Vk/glISShfsvYzhZ9V8sNQB8=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=eQ15Gko1TkOhgvEGXhGzyZPsHH2m+yS7gglLBzqTgOOG1f+1i046JIb4kjh0qIumv
-	 cc5iz+XAC2+ItnnKwPYxmsoyB0bpYe6oy9nByWYdUXFN9bofNq0XwfrCn0a7uU/x4f
-	 lkTO3vdJGjwLRRvaPx1ZIz/ho2Z/gkOzW0dt8Hxk+XxazVAPRNDZkQTgLVio/8Na/E
-	 kY0GH+t5qJZyl59A182MxH6yFoOJlK5owy3RvvHBi3gU9P1BG1h3IkE1mEd1JXHOxZ
-	 OeUAaPir6grNhqkqWPs/pW8T46JcbONy9EPh296Y0FEqE86mnTRk3TKSCt37dDWGGU
-	 PlrtdQ9m5L2+Q==
-Message-ID: <6ff32295-f614-458b-9174-f86fa86f3764@kernel.org>
-Date: Wed, 17 Jul 2024 11:39:29 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1 4/4] ARM: dts: socfpga: remove non-existent DAC from
- CycloneV devkit
-To: Conor Dooley <conor@kernel.org>, linux-kernel@vger.kernel.org
-Cc: Conor Dooley <conor.dooley@microchip.com>,
+	id 1sU1jw-0000000DSuk-2w1S;
+	Wed, 17 Jul 2024 10:18:30 +0000
+Received: from i5e860d09.versanet.de ([94.134.13.9] helo=diego.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1sU1je-0006py-5K; Wed, 17 Jul 2024 12:18:10 +0200
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+To: linux-kernel@vger.kernel.org, Conor Dooley <conor@kernel.org>,
+ Otavio Salvador <otavio@ossystems.com.br>
+Cc: conor@kernel.org, Conor Dooley <conor.dooley@microchip.com>,
  Dinh Nguyen <dinguyen@kernel.org>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
  Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>,
  Pengutronix Kernel Team <kernel@pengutronix.de>,
  Fabio Estevam <festevam@gmail.com>, Huacai Chen <chenhuacai@kernel.org>,
  WANG Xuerui <kernel@xen0n.name>, devicetree@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
  imx@lists.linux.dev, loongarch@lists.linux.dev
+Subject: Re: [PATCH v1 2/4] ARM: dts: rockchip: remove unlikly-to-exist DAC from
+ elgin-r1
+Date: Wed, 17 Jul 2024 12:18:08 +0200
+Message-ID: <3870188.FjKLVJYuhi@diego>
+In-Reply-To: <20240717-parrot-malt-83cc04bf6b36@spud>
 References: <20240717-anvil-ashy-544e80a1317c@spud>
- <20240717-partake-antivirus-3347e415fb7d@spud>
-From: Krzysztof Kozlowski <krzk@kernel.org>
-Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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 fv0=
-In-Reply-To: <20240717-partake-antivirus-3347e415fb7d@spud>
+ <20240717-parrot-malt-83cc04bf6b36@spud>
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240717_023939_082824_6ADCB477 
-X-CRM114-Status: GOOD (  10.87  )
+X-CRM114-CacheID: sfid-20240717_031828_781139_5A65C3D1 
+X-CRM114-Status: GOOD (  23.68  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -125,21 +70,66 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 17/07/2024 11:37, Conor Dooley wrote:
+adding Otavio,
+
+Am Mittwoch, 17. Juli 2024, 11:37:54 CEST schrieb Conor Dooley:
 > From: Conor Dooley <conor.dooley@microchip.com>
 > 
-> There is no Rohm DAC on the CycloneV devkit according to the online
-> documentation for it that I could find, and it definitely does not have
-> a dh2228fv as this device does not actually exist! Remove the DAC node
-> from the devicetree as it is not acceptable to pretend to have a device
-> on a board in order to bind the spidev driver in Linux.
-> 
+> The Rohm dh2228fv (really the bh2228fv, the compatible in the kernel has
+> a typo) does not support frequencies above 10 MHz, nor per the
+> datasheet appear to use either CPOL or CPHA. I suspect that this
+> devicetree is abusing the compatible in order to bind the spidev driver
+> in Linux. Pretending to have devices on a board for this purpose is not
+> acceptable, so remove it.
+
+Reasoning is sound, so I'll pick this up after the merge window.
+
+
 > Signed-off-by: Conor Dooley <conor.dooley@microchip.com>
+> ---
+> I could not find any documentation for this board online, and it does
+> not blatantly say that the device is a "spidev" like other [ab]users, so
+> it is possible there's actually a DAC here - but I doubt it is a
+> bh2228fv given the other incompatibilities.
 
-Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Otavio, as the original submitter of the Elgin R1 [0], do you happen
+to know what type of device this is? Especially as there really do not
+seem to be any schematics around for that board.
 
-Best regards,
-Krzysztof
+
+Heiko
+
+
+
+[0] https://patchwork.kernel.org/project/linux-rockchip/patch/20190104014023.17973-4-otavio@ossystems.com.br/
+
+> ---
+>  arch/arm/boot/dts/rockchip/rv1108-elgin-r1.dts | 8 --------
+>  1 file changed, 8 deletions(-)
+> 
+> diff --git a/arch/arm/boot/dts/rockchip/rv1108-elgin-r1.dts b/arch/arm/boot/dts/rockchip/rv1108-elgin-r1.dts
+> index 2d9994379eb2..9df1cef406c5 100644
+> --- a/arch/arm/boot/dts/rockchip/rv1108-elgin-r1.dts
+> +++ b/arch/arm/boot/dts/rockchip/rv1108-elgin-r1.dts
+> @@ -167,14 +167,6 @@ &spi {
+>  	pinctrl-names = "default";
+>  	pinctrl-0 = <&spim1_clk &spim1_cs0 &spim1_tx &spim1_rx>;
+>  	status = "okay";
+> -
+> -	dh2228fv: dac@0 {
+> -		compatible = "rohm,dh2228fv";
+> -		reg = <0>;
+> -		spi-max-frequency = <24000000>;
+> -		spi-cpha;
+> -		spi-cpol;
+> -	};
+>  };
+>  
+>  &u2phy {
+> 
+
+
+
 
 
 _______________________________________________
