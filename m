@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 81EAFC3DA4B
-	for <linux-rockchip@archiver.kernel.org>; Wed, 17 Jul 2024 09:39:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 57DE9C3DA4B
+	for <linux-rockchip@archiver.kernel.org>; Wed, 17 Jul 2024 09:39:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=uuIq5YZrVUy3mX1R75rJJPMZTwd9mLLzcPTpTT9M0io=; b=LBngjvbMFm3PnL
-	JuPKYfDrDvuag05pr2Wd9NM0W6Hb8gwXhXXQ8SIBFGtjvzJNBtxBHotw107bySfpmg+c5uqGBRE/H
-	OZc5ukw9BavAx31a7ivGuj11xRUGH0+mJa/S/f4QYDk5BBok2f/AOZpBJMCiifKgHx01pzkTpenLa
-	4HUw2BbLK5WVmP9A5YDkeexSd3rQ5zkqQvailk+5/+tJabQl+e6777yrKrprIWbYNNRcWv3NNbjzL
-	y9niE+Sc2FDai/0e6hNTrBLY89bVQ0e8CvTGo1n1O0DcClN51dtmD9BdVvndNW4igjuME4oYPWv2e
-	slw+VOslggbGFf6RvMPQ==;
+	List-Owner; bh=Y5ihFOGAz19uZ8fppiKlIXS9Z/2NC/WNf57Kckuehg0=; b=OSGSCXgK0PL3Mq
+	lCJb+4ktop0qWnwkavJtqWfM0hvFuIvnVNs2PWstw+gP/Bff6sTW/rt1O5JGlosyYaRcAqHV2cvqX
+	pq2qsFlpDs6lEuZGabCUMW22xCFsSELEo00GWXcvj/hfZYiTc3RNDJVdDgU8iNKnLhiDBlaH/Plpd
+	RY+l/1f7FufOWjx2MbziA76zplS2UM0fXxYqsS3law9NrWquEOcAXabMaLla9fpOW4hBWQI+FRtNw
+	rUFEbyEwtjwBT5GcSEp6/Oas91C8/3nQgpHp15MkO1g3L5QrEIEgOsh8CiyKiStGOiQVJbKkvNqjv
+	ZVplmdBmWtx+rAOONfvw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sU18C-0000000DM2r-1CIN;
-	Wed, 17 Jul 2024 09:39:28 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1sU18X-0000000DMFU-1YlX;
+	Wed, 17 Jul 2024 09:39:49 +0000
+Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sU179-0000000DLWs-2YBs;
-	Wed, 17 Jul 2024 09:38:24 +0000
+	id 1sU17F-0000000DLZM-46Kq;
+	Wed, 17 Jul 2024 09:38:31 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id E87D461435;
-	Wed, 17 Jul 2024 09:38:22 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0460BC4AF09;
-	Wed, 17 Jul 2024 09:38:18 +0000 (UTC)
+	by sin.source.kernel.org (Postfix) with ESMTP id 32384CE16EF;
+	Wed, 17 Jul 2024 09:38:28 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id DA53BC4AF0F;
+	Wed, 17 Jul 2024 09:38:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1721209102;
-	bh=kvAvf3K13By68WYYkU8J/NSbxi+QzftdA8TmLyuxtq0=;
+	s=k20201202; t=1721209107;
+	bh=zR+H4DU723yvn4u1sKhvZiiUDXT8gBtuFekq4R3cabQ=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=dT7QjkcLSQyTYW+upkHxZPkqByBL2o8ELkc8voWPr2JPTBJVqWgrjKDUy0zA7f1M5
-	 LpmBztk1tru1WTy6CVfQGaBkZQVzjTQ17LwFXYhoKWGKFcDbXAjMCQjx6hpGTfCTUj
-	 hHecFyKnDZup/UZ8X5qXvrGrdP2hQLRJNP30XMzpuvpJfbZF55q9axNy1k9xeNcFGc
-	 yuZ6XPb3mQyHZW4KNzsW4RDRx6XB4J9FuP9LotQgiCP7asnQhiBF3oLKYbKTy21Vhw
-	 0DDU3dG7m+2f/sSAYQsF3vfghyLn3jScF379FhG5+D4PhifvoYUK2k3Yl5P0liblNy
-	 Kb4rypoeHK6ig==
+	b=SPVej2gA8JptVbJk2M/36dnUy22qkdvXsA6vuh/xH3HzmBBMtZxlZKp51zFG5x2Y0
+	 aDfRVSe4UzoEqlj52fpCnYycaOtfU+Lfl51Xe20duHWD7NpkEq2ik2cFhGBFWJYx0A
+	 kUYss1al5DLi3Ydn76ByDOGJIBA7ZrsequKKfyE35YEmKY99hGRF+yEkRAT+r1P1LS
+	 yCVp70VCBsh15Jx3246fAvfenmhuIrthje3UjrDXOMPjBz1A1+KaiDG5nSCHbx/k0y
+	 V5FYSNeVi8sUId1EATJcTaFH89cMEZsLBuNcXUe3EA3qXd7TdgrpHhrji+YMeDSuoG
+	 pKHTPUjpGvTww==
 From: Conor Dooley <conor@kernel.org>
 To: linux-kernel@vger.kernel.org
 Cc: conor@kernel.org,
@@ -61,18 +61,18 @@ Cc: conor@kernel.org,
 	linux-rockchip@lists.infradead.org,
 	imx@lists.linux.dev,
 	loongarch@lists.linux.dev
-Subject: [PATCH v1 3/4] loongarch: dts: remove non-existent DAC from 2k1000-ref
-Date: Wed, 17 Jul 2024 10:37:55 +0100
-Message-ID: <20240717-preacher-sandal-2aeffa322b9f@spud>
+Subject: [PATCH v1 4/4] ARM: dts: socfpga: remove non-existent DAC from CycloneV devkit
+Date: Wed, 17 Jul 2024 10:37:56 +0100
+Message-ID: <20240717-partake-antivirus-3347e415fb7d@spud>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20240717-anvil-ashy-544e80a1317c@spud>
 References: <20240717-anvil-ashy-544e80a1317c@spud>
 MIME-Version: 1.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=958; i=conor.dooley@microchip.com; h=from:subject:message-id; bh=jfLYO8PFemfCqGXNrh1eFKx07e6y8OVxxug9hg0F1C0=; b=owGbwMvMwCFWscWwfUFT0iXG02pJDGnTJ3wU+s7fvKRHVGz+tenHhQ6u+vrlkYLe4hNn2rVXF HV2LHmf1FHKwiDGwSArpsiSeLuvRWr9H5cdzj1vYeawMoEMYeDiFICJJJcx/PdJF2lX6+VKeudx xv6ec7hVzOGt+8qki78ErNwe8JdfKZyRYVF6v9Uj3+6GPcdYu8PPVBh1pk+61dXt/W3ajAMVs9I 0GAA=
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1040; i=conor.dooley@microchip.com; h=from:subject:message-id; bh=fbDVTS66SQLTObr7U5FvofO+Awu0zrlwHhlO6xFXdHE=; b=owGbwMvMwCFWscWwfUFT0iXG02pJDGnTJ3z6FXZpg0Oi/2bJTNefzN9T18Za57ZcOSb8pn0B6 +rnW902dpSyMIhxMMiKKbIk3u5rkVr/x2WHc89bmDmsTCBDGLg4BWAiar8YGd7+3yv0spAt9bSr UPKhx2sbT+WHqFZrnYpfevbvbd+ZX7sY/hkIeviLS6bwMIQqLbT93vanaG7ikSUhTguvHZIwun7 vIisA
 X-Developer-Key: i=conor.dooley@microchip.com; a=openpgp; fpr=F9ECA03CF54F12CD01F1655722E2C55B37CF380C
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240717_023823_769781_68F65274 
-X-CRM114-Status: GOOD (  11.00  )
+X-CRM114-CacheID: sfid-20240717_023830_269183_49D9BBA6 
+X-CRM114-Status: GOOD (  11.25  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,33 +91,34 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Conor Dooley <conor.dooley@microchip.com>
 
-The 2k1000 reference boards do not have a Rohm DAC on them as far as I
-can tell, and they certainly do not have a dh2228fv, as this device does
-not actually exist! Remove the dac nodes from the devicetrees as it is
-not acceptable to pretend to have a device on a board in order to bind
-the spidev driver in Linux.
+There is no Rohm DAC on the CycloneV devkit according to the online
+documentation for it that I could find, and it definitely does not have
+a dh2228fv as this device does not actually exist! Remove the DAC node
+from the devicetree as it is not acceptable to pretend to have a device
+on a board in order to bind the spidev driver in Linux.
 
 Signed-off-by: Conor Dooley <conor.dooley@microchip.com>
 ---
- arch/loongarch/boot/dts/loongson-2k1000-ref.dts | 5 -----
- 1 file changed, 5 deletions(-)
+ arch/arm/boot/dts/intel/socfpga/socfpga_cyclone5_socdk.dts | 6 ------
+ 1 file changed, 6 deletions(-)
 
-diff --git a/arch/loongarch/boot/dts/loongson-2k1000-ref.dts b/arch/loongarch/boot/dts/loongson-2k1000-ref.dts
-index 23cf26cc3e5f..3514ea78f525 100644
---- a/arch/loongarch/boot/dts/loongson-2k1000-ref.dts
-+++ b/arch/loongarch/boot/dts/loongson-2k1000-ref.dts
-@@ -90,11 +90,6 @@ &spi0 {
+diff --git a/arch/arm/boot/dts/intel/socfpga/socfpga_cyclone5_socdk.dts b/arch/arm/boot/dts/intel/socfpga/socfpga_cyclone5_socdk.dts
+index d37a982e8571..97622febc44e 100644
+--- a/arch/arm/boot/dts/intel/socfpga/socfpga_cyclone5_socdk.dts
++++ b/arch/arm/boot/dts/intel/socfpga/socfpga_cyclone5_socdk.dts
+@@ -151,12 +151,6 @@ partition@qspi-rootfs {
  
- 	#address-cells = <1>;
- 	#size-cells = <0>;
+ &spi0 {
+ 	status = "okay";
+-
 -	spidev@0 {
 -		compatible = "rohm,dh2228fv";
--		spi-max-frequency = <100000000>;
 -		reg = <0>;
+-		spi-max-frequency = <1000000>;
 -	};
  };
  
- &ehci0 {
+ &usb1 {
 -- 
 2.43.0
 
