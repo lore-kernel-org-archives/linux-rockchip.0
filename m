@@ -4,48 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 132B9C3DA4B
-	for <linux-rockchip@archiver.kernel.org>; Wed, 17 Jul 2024 09:40:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3AEA5C3DA42
+	for <linux-rockchip@archiver.kernel.org>; Wed, 17 Jul 2024 09:40:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=k/19lbVEJB8cpgulsTNyUlo5/tlymQsusUfjZLmZ7WM=; b=5FROCrbOXk7bSP
-	pAU0LZ2blFohNNakF2nq4oT0HjuzjWKRXXG3TCpDXrb98w4LMmJN+gQ05uwenb3VN/cKFcGwc98Hb
-	f5IxhIrseTcE4YesI53u4CnYAp/DpYELf0iJQSyT0176aCQhDx9HPxrxvwIFSdbtO069yOgwJxFtk
-	9q5GyqoEGxngia/xnJLyBSVPCoOA1irTxECbJtb1R9EYc2Yb4haHnrbXnfsZ8y//R5bef8P4OAXup
-	CeogBn8pnj1b6+01h/X3jo+VNhJY38B4Tf8RrR2+Z2v22aLK37V8Usxj78xkcVuE4JHKf35LQubPo
-	CSphYltHlflLPh/9I4JQ==;
+	List-Owner; bh=XnhTJiqLoPqiFmz57oZQCcH35vlflftqjP6FHnObSsk=; b=jZ73RP1HAgbp4d
+	07Uq2ANUeiZ12mg5XeTAaeah+6W05NTX7ccAU/VNghtw3DYsekNoXoyqqw4dOWOymOVBOqfOLMXes
+	nVpk/P1h30sUasRS+TacGJGazxxp2KT2v5k5m2FCApiZaFKPEBD4luQLR54X9q2HQfl54CNsL4kst
+	rdbrA3CfYsLHBpsbisEGzOsOBayqxfNH30nqksiKGGFLjkIbK1pqiqTd0fltGnT/UjIgujADwYHId
+	x1+bU6ZVJQiZIqWDuuSSXX89cJZXNnA4Lxpdl1I9jf5Vrg81wOyAidVreESFJWYqMpfoLqLv3VjWu
+	qs02ccUlcsEP8o2OsM/w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sU18r-0000000DMOW-2FUJ;
-	Wed, 17 Jul 2024 09:40:09 +0000
-Received: from sin.source.kernel.org ([145.40.73.55])
+	id 1sU19A-0000000DMWn-1f7c;
+	Wed, 17 Jul 2024 09:40:28 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sU17j-0000000DLo0-3BM8;
-	Wed, 17 Jul 2024 09:39:01 +0000
+	id 1sU181-0000000DLwY-3Bjl;
+	Wed, 17 Jul 2024 09:39:19 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id EC03BCE16E9;
-	Wed, 17 Jul 2024 09:38:57 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 887C7C32782;
-	Wed, 17 Jul 2024 09:38:51 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 84D6F614E1;
+	Wed, 17 Jul 2024 09:39:16 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id AB865C32782;
+	Wed, 17 Jul 2024 09:39:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1721209137;
-	bh=myU73vj/QOo7543SNC4aX3Z4GndmbEpmQ9OaodjPMDc=;
+	s=k20201202; t=1721209156;
+	bh=bQmiL04uei3wZr6LpWjoMYZBMy7Ujc3v3PupBMdFZNs=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=G3NOKU1cJuq0rXxEkiwSc9fr/5LICU52iutPG6PbVVaXyWoTIBlCmhH4EqHtXViy6
-	 FbOdTHOXHGy9VhZMUP5Lw80yyN4um5LSF518hzm54uDeQj4Crbka5uTAbqhjhB1XJW
-	 GQX+hrd87OGJAfvLJ74DqegslMjpq2ssKFhPhJaFmyOiPxMuEgEEwKpJpgTBmdby4N
-	 O2nQuj1pjJuRKXTE97D9aTJ79VNSF8zZBhgt451d6pgG3RYvSn3ExcBzhmosKpYSoO
-	 88/tSY2cMjffICTdD/Mpe+CQtSeCmXuc6uzomVCT0O//Z8olGO6fl7aAKAuHiGtmor
-	 Fk7my/9z6OHng==
-Message-ID: <5afbb80d-2325-42c9-b153-d220acdd321d@kernel.org>
-Date: Wed, 17 Jul 2024 11:38:49 +0200
+	b=R3nHDrOD4BH+FrNfytFa2wNHK8U5yM5krpSDx+phY74rT3kqT8GbCvpmlHoMZr70x
+	 oukSUdP8IipAmQPb8TjbTZ8XQSa2flty6eQOfBDrUWO1ICSmfPIW/zNe/u7Z17fIcC
+	 x2SfrFQYMZ+SlQfioIj+U5ZjbEBqwOYn2+QVqagTY6/PkWfYg207rpvl0I3E04ez3T
+	 o1GV5lEm//UfpLhw5PsRBJAR9zcf+p032BC/PmcpQveUqRoj7bJ7E3rMrVI4KXGVKt
+	 R2DpFidpxmqkqvZ8P4xSBfcMpNUmS5WfzUzk3Cwb1B5/7eypSpmOezGzV5Qs5UbIHR
+	 js8B9NoIGyDCA==
+Message-ID: <8f9c3428-c5fa-462b-af9b-0224976a1165@kernel.org>
+Date: Wed, 17 Jul 2024 11:39:08 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1 1/4] arm64: dts: imx8: remove non-existent DACs
+Subject: Re: [PATCH v1 2/4] ARM: dts: rockchip: remove unlikly-to-exist DAC
+ from elgin-r1
 To: Conor Dooley <conor@kernel.org>, linux-kernel@vger.kernel.org
 Cc: Conor Dooley <conor.dooley@microchip.com>,
  Dinh Nguyen <dinguyen@kernel.org>, Rob Herring <robh@kernel.org>,
@@ -58,7 +59,7 @@ Cc: Conor Dooley <conor.dooley@microchip.com>,
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
  imx@lists.linux.dev, loongarch@lists.linux.dev
 References: <20240717-anvil-ashy-544e80a1317c@spud>
- <20240717-alkalize-bouncy-83e748284bc7@spud>
+ <20240717-parrot-malt-83cc04bf6b36@spud>
 From: Krzysztof Kozlowski <krzk@kernel.org>
 Content-Language: en-US
 Autocrypt: addr=krzk@kernel.org; keydata=
@@ -104,10 +105,10 @@ Autocrypt: addr=krzk@kernel.org; keydata=
  uZwJCLykjad45hsWcOGk3OcaAGQS6NDlfhM6O9aYNwGL6tGt/6BkRikNOs7VDEa4/HlbaSJo
  7FgndGw1kWmkeL6oQh7wBvYll2buKod4qYntmNKEicoHGU+x91Gcan8mCoqhJkbqrL7+nXG2
  5Q/GS5M9RFWS+nYyJh+c3OcfKqVcZQNANItt7+ULzdNJuhvTRRdC3g9hmCEuNSr+CLMdnRBY fv0=
-In-Reply-To: <20240717-alkalize-bouncy-83e748284bc7@spud>
+In-Reply-To: <20240717-parrot-malt-83cc04bf6b36@spud>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240717_023900_200625_E4F5C515 
-X-CRM114-Status: GOOD (  10.07  )
+X-CRM114-CacheID: sfid-20240717_023917_923461_A89F5FF7 
+X-CRM114-Status: GOOD (  14.06  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -127,14 +128,19 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 On 17/07/2024 11:37, Conor Dooley wrote:
 > From: Conor Dooley <conor.dooley@microchip.com>
 > 
-> Neither the imx8dxl-evk or imx8qm-mek have a Rohm DAC on them as far as
-> I can tell from online documentation, and they certainly do not have a
-> dh2228fv, as this device does not actually exist! Remove the DAC nodes
-> from the devicetrees as it is not acceptable to pretend to have a device
-> on a board in order to bind the spidev driver in Linux.
+> The Rohm dh2228fv (really the bh2228fv, the compatible in the kernel has
+> a typo) does not support frequencies above 10 MHz, nor per the
+> datasheet appear to use either CPOL or CPHA. I suspect that this
+> devicetree is abusing the compatible in order to bind the spidev driver
+> in Linux. Pretending to have devices on a board for this purpose is not
+> acceptable, so remove it.
 > 
 > Signed-off-by: Conor Dooley <conor.dooley@microchip.com>
 > ---
+> I could not find any documentation for this board online, and it does
+> not blatantly say that the device is a "spidev" like other [ab]users, so
+> it is possible there's actually a DAC here - but I doubt it is a
+> bh2228fv given the other incompatibilities.
 
 Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
