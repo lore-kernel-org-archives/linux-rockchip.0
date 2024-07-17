@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4AA86C3DA42
-	for <linux-rockchip@archiver.kernel.org>; Wed, 17 Jul 2024 09:39:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 81EAFC3DA4B
+	for <linux-rockchip@archiver.kernel.org>; Wed, 17 Jul 2024 09:39:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=1fl9g3OyznwA+alfgT4714so5VETE/flsZQd55jbHHg=; b=CcHEkavNfmdo92
-	uJ+rh3iGndnAzBXIjWQFrA0JKaR6Q8YJq9trj44En4xL29GqetLToKb+pk1JNNoBusLoF0EcxvQA5
-	ZP83HD4RayPInfH9LxnTEYzoEd2NKUT8tqCPWmgnsce2snPGB/UD4QGHJftoxUEBiuZ3fQWxxrYly
-	jcpkgZGtfIHgLRZuLDVP1Jl7xQdfAbZS0HcoXYdPLohGlaSEYWOyXsPpaFmQwV07sJpzo8EZUd9vo
-	38AyU5GpBD6b95DukKbqKncWDdb+uqwB/ENhS7m5KOOcK80uagcfOofMzXx0Mr7ZI7sWSUCdW+AwH
-	vZ+GCpO/iD3fPwQ7wT6w==;
+	List-Owner; bh=uuIq5YZrVUy3mX1R75rJJPMZTwd9mLLzcPTpTT9M0io=; b=LBngjvbMFm3PnL
+	JuPKYfDrDvuag05pr2Wd9NM0W6Hb8gwXhXXQ8SIBFGtjvzJNBtxBHotw107bySfpmg+c5uqGBRE/H
+	OZc5ukw9BavAx31a7ivGuj11xRUGH0+mJa/S/f4QYDk5BBok2f/AOZpBJMCiifKgHx01pzkTpenLa
+	4HUw2BbLK5WVmP9A5YDkeexSd3rQ5zkqQvailk+5/+tJabQl+e6777yrKrprIWbYNNRcWv3NNbjzL
+	y9niE+Sc2FDai/0e6hNTrBLY89bVQ0e8CvTGo1n1O0DcClN51dtmD9BdVvndNW4igjuME4oYPWv2e
+	slw+VOslggbGFf6RvMPQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sU17s-0000000DLsg-0oJ9;
-	Wed, 17 Jul 2024 09:39:08 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1sU18C-0000000DM2r-1CIN;
+	Wed, 17 Jul 2024 09:39:28 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sU174-0000000DLVg-0Kot;
-	Wed, 17 Jul 2024 09:38:20 +0000
+	id 1sU179-0000000DLWs-2YBs;
+	Wed, 17 Jul 2024 09:38:24 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 52BE261435;
-	Wed, 17 Jul 2024 09:38:17 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5F781C4AF0F;
-	Wed, 17 Jul 2024 09:38:13 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id E87D461435;
+	Wed, 17 Jul 2024 09:38:22 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0460BC4AF09;
+	Wed, 17 Jul 2024 09:38:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1721209097;
-	bh=msJRc4jOmo8X3ZitZ0CBdwvlEyzT87CXS+Smk6niWEc=;
+	s=k20201202; t=1721209102;
+	bh=kvAvf3K13By68WYYkU8J/NSbxi+QzftdA8TmLyuxtq0=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=DGMPjDAhwadBEbuN1mY54jiFyNyTGNOKIcIsivKjlt5jKe9SA6a1p0+7Zk2/uVumK
-	 EVVgvo28/usYXekHiR9vBjMe/75Il6heV/pmpGmqHd5dndy/739v0+6NoISlhHufjm
-	 gORW0nn4LF6T/VUMvKT8KCbCyxf5BIxqKNDRKWMLl3sHdZB9letDBFzFYLJ8hCePCY
-	 gnVBbY1B9SP0cia3yE4fmyXr7JuAsmW4KxconnvDoeVtmQRigkK+og+kqiGdJEkjD9
-	 hMWaDBsbIZJQ7OheKC6LMA84FCigkBXGaqiKl4zAzmoBlhUfXKvFpg2D7FiYJT/nDk
-	 h3Sk7FSID22KA==
+	b=dT7QjkcLSQyTYW+upkHxZPkqByBL2o8ELkc8voWPr2JPTBJVqWgrjKDUy0zA7f1M5
+	 LpmBztk1tru1WTy6CVfQGaBkZQVzjTQ17LwFXYhoKWGKFcDbXAjMCQjx6hpGTfCTUj
+	 hHecFyKnDZup/UZ8X5qXvrGrdP2hQLRJNP30XMzpuvpJfbZF55q9axNy1k9xeNcFGc
+	 yuZ6XPb3mQyHZW4KNzsW4RDRx6XB4J9FuP9LotQgiCP7asnQhiBF3oLKYbKTy21Vhw
+	 0DDU3dG7m+2f/sSAYQsF3vfghyLn3jScF379FhG5+D4PhifvoYUK2k3Yl5P0liblNy
+	 Kb4rypoeHK6ig==
 From: Conor Dooley <conor@kernel.org>
 To: linux-kernel@vger.kernel.org
 Cc: conor@kernel.org,
@@ -61,18 +61,18 @@ Cc: conor@kernel.org,
 	linux-rockchip@lists.infradead.org,
 	imx@lists.linux.dev,
 	loongarch@lists.linux.dev
-Subject: [PATCH v1 2/4] ARM: dts: rockchip: remove unlikly-to-exist DAC from elgin-r1
-Date: Wed, 17 Jul 2024 10:37:54 +0100
-Message-ID: <20240717-parrot-malt-83cc04bf6b36@spud>
+Subject: [PATCH v1 3/4] loongarch: dts: remove non-existent DAC from 2k1000-ref
+Date: Wed, 17 Jul 2024 10:37:55 +0100
+Message-ID: <20240717-preacher-sandal-2aeffa322b9f@spud>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20240717-anvil-ashy-544e80a1317c@spud>
 References: <20240717-anvil-ashy-544e80a1317c@spud>
 MIME-Version: 1.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1373; i=conor.dooley@microchip.com; h=from:subject:message-id; bh=MSCoCs+nCZ6kB0uJ7jdevDa476eowpEIcz88i8dEKdE=; b=owGbwMvMwCFWscWwfUFT0iXG02pJDGnTJ3ys8n7Utfzn6f1/W+KE5jBkd/BffrFwSfWlrIkLJ 1k8WvmpsaOUhUGMg0FWTJEl8XZfi9T6Py47nHvewsxhZQIZwsDFKQATWSXL8JvVfIPtJKdH0j+r 7Y3ZZmcYrG9kfm1hdPNH/2qL10cnrK5n+F/dwZipV8nuu6Zpppjo6/3fdh4z7etMy41sMco9cdB GnQUA
+X-Developer-Signature: v=1; a=openpgp-sha256; l=958; i=conor.dooley@microchip.com; h=from:subject:message-id; bh=jfLYO8PFemfCqGXNrh1eFKx07e6y8OVxxug9hg0F1C0=; b=owGbwMvMwCFWscWwfUFT0iXG02pJDGnTJ3wU+s7fvKRHVGz+tenHhQ6u+vrlkYLe4hNn2rVXF HV2LHmf1FHKwiDGwSArpsiSeLuvRWr9H5cdzj1vYeawMoEMYeDiFICJJJcx/PdJF2lX6+VKeudx xv6ec7hVzOGt+8qki78ErNwe8JdfKZyRYVF6v9Uj3+6GPcdYu8PPVBh1pk+61dXt/W3ajAMVs9I 0GAA=
 X-Developer-Key: i=conor.dooley@microchip.com; a=openpgp; fpr=F9ECA03CF54F12CD01F1655722E2C55B37CF380C
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240717_023818_271425_9DCFB22C 
-X-CRM114-Status: GOOD (  13.56  )
+X-CRM114-CacheID: sfid-20240717_023823_769781_68F65274 
+X-CRM114-Status: GOOD (  11.00  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,42 +91,33 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Conor Dooley <conor.dooley@microchip.com>
 
-The Rohm dh2228fv (really the bh2228fv, the compatible in the kernel has
-a typo) does not support frequencies above 10 MHz, nor per the
-datasheet appear to use either CPOL or CPHA. I suspect that this
-devicetree is abusing the compatible in order to bind the spidev driver
-in Linux. Pretending to have devices on a board for this purpose is not
-acceptable, so remove it.
+The 2k1000 reference boards do not have a Rohm DAC on them as far as I
+can tell, and they certainly do not have a dh2228fv, as this device does
+not actually exist! Remove the dac nodes from the devicetrees as it is
+not acceptable to pretend to have a device on a board in order to bind
+the spidev driver in Linux.
 
 Signed-off-by: Conor Dooley <conor.dooley@microchip.com>
 ---
-I could not find any documentation for this board online, and it does
-not blatantly say that the device is a "spidev" like other [ab]users, so
-it is possible there's actually a DAC here - but I doubt it is a
-bh2228fv given the other incompatibilities.
----
- arch/arm/boot/dts/rockchip/rv1108-elgin-r1.dts | 8 --------
- 1 file changed, 8 deletions(-)
+ arch/loongarch/boot/dts/loongson-2k1000-ref.dts | 5 -----
+ 1 file changed, 5 deletions(-)
 
-diff --git a/arch/arm/boot/dts/rockchip/rv1108-elgin-r1.dts b/arch/arm/boot/dts/rockchip/rv1108-elgin-r1.dts
-index 2d9994379eb2..9df1cef406c5 100644
---- a/arch/arm/boot/dts/rockchip/rv1108-elgin-r1.dts
-+++ b/arch/arm/boot/dts/rockchip/rv1108-elgin-r1.dts
-@@ -167,14 +167,6 @@ &spi {
- 	pinctrl-names = "default";
- 	pinctrl-0 = <&spim1_clk &spim1_cs0 &spim1_tx &spim1_rx>;
- 	status = "okay";
--
--	dh2228fv: dac@0 {
+diff --git a/arch/loongarch/boot/dts/loongson-2k1000-ref.dts b/arch/loongarch/boot/dts/loongson-2k1000-ref.dts
+index 23cf26cc3e5f..3514ea78f525 100644
+--- a/arch/loongarch/boot/dts/loongson-2k1000-ref.dts
++++ b/arch/loongarch/boot/dts/loongson-2k1000-ref.dts
+@@ -90,11 +90,6 @@ &spi0 {
+ 
+ 	#address-cells = <1>;
+ 	#size-cells = <0>;
+-	spidev@0 {
 -		compatible = "rohm,dh2228fv";
+-		spi-max-frequency = <100000000>;
 -		reg = <0>;
--		spi-max-frequency = <24000000>;
--		spi-cpha;
--		spi-cpol;
 -	};
  };
  
- &u2phy {
+ &ehci0 {
 -- 
 2.43.0
 
