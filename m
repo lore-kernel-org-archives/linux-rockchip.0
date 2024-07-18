@@ -4,70 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 385ECC3DA49
-	for <linux-rockchip@archiver.kernel.org>; Thu, 18 Jul 2024 07:04:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F1134C3DA60
+	for <linux-rockchip@archiver.kernel.org>; Thu, 18 Jul 2024 07:27:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=pv5nw/7MUZriHbr7Hg795HW3WVQd707ScljXa9ECPOQ=; b=sObtiKc88a8c9d
-	gyU7Ho6r/ggC6NiM0kexmL2wC3gjsVPndQfmcwpWeilUkkw5vT9Q4ZxN6eSQuPvPFwwO+J2CsOLD2
-	DFRf60VV8C5bh7UzHvsa20ovLC1qhW/IZBk7mJxzLcGvgqC8ZznVaVamRfQ6+N/zEgVEnB7n1iG9E
-	wDOJuJLc7qWV+f2BfB/H7nAvate4aUVim7BR52IAd6RT4wRmEcN2+f7fv+pHPBl/vxYTlCfih5VmH
-	0rttTlAx0s+7rUTCbcqB848NG4sk0gtxXQ5KPfY0Vilvct4OrkHGLS9jk1w+kk2FxXXCnBF6N5x/I
-	UhbZzie/7wW4kCMqqKzQ==;
+	List-Owner; bh=s+9gpfMrhxNQTDq2oFW4bzTgX6X1ON9y53B1lAaoi2Y=; b=xV6ptejLDvhHCz
+	tO6UHVDdN97YBRr5ejSlcsAFhRNTVWJqKm6slnuZUdLqELRAfjVJfHXzGVu+ZVvsQpNwC/AuZeF0+
+	sDBkavsuZc66L5aCHR4qgAw5NxyKtK62mKet+XLGjyWjhN9K+8HsLY1xlkyCqR3x6k5cFYol5Mif7
+	NgkgxwBIdmu/47ZBmq/K0pnEvgPt0+OYytKvHuM7AONLBExS8SoM777UkZcJYK//Q4FrATkakbBgS
+	ezWVrWFyNEfZg58HlQ6/zL1fdWZZVKZHC46qqF7fZgl5ABhuWa1qP6BOfP8a33NEqvcbV/vOcBI1B
+	h20E5nMcMrt6Ge6tNypQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sULBo-0000000G5TN-15LE;
-	Thu, 18 Jul 2024 07:04:32 +0000
-Received: from madrid.collaboradmins.com ([46.235.227.194])
+	id 1sULXv-0000000GBAq-3V0c;
+	Thu, 18 Jul 2024 07:27:23 +0000
+Received: from mail-oo1-xc30.google.com ([2607:f8b0:4864:20::c30])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sULBk-0000000G5QT-2rxR
-	for linux-rockchip@lists.infradead.org;
-	Thu, 18 Jul 2024 07:04:30 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1721286265;
-	bh=sUGKjIci3teBAOaK1yJmIBrfDhBZxW9N+JYe8udLreU=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=Pq/iYYoM7oXKSLFNuIGI5jQ3aF8HiaJzjOBmSaHGlEBnjkIP+PNbyLKyLmCbyJhTy
-	 0n+3uni8fKZ/RBUIbyzq/qKtWGthSeIKz/4KgTYbMrmnKstnFaMGu9+O+qRcTngVty
-	 ppSm2CXuYkf9KopO5NIeEyDj5nOZ1JU2yAKiZfezkOxTCaruYR/GTOI712rLld2go1
-	 Hu8vUqs1IiQnRFTxNJ24Q/KKrJzYdFcuTCFZ7NyxM9gBQTznGwuVtFLumJSZATh5Qk
-	 q92xRsCqlF9Z5hmFk/pe+8BCJaAFRblR8XICZMdJkxKmUsshmWOf08LUr+J3iZdw1y
-	 bQehemjm0vVeA==
-Received: from [100.93.89.217] (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: benjamin.gaignard)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id B3FAF37813C0;
-	Thu, 18 Jul 2024 07:04:24 +0000 (UTC)
-Message-ID: <1faa7098-b108-480e-ae4b-ed25e0020e51@collabora.com>
-Date: Thu, 18 Jul 2024 09:04:24 +0200
+	id 1sULXZ-0000000GB6g-3EV3;
+	Thu, 18 Jul 2024 07:27:03 +0000
+Received: by mail-oo1-xc30.google.com with SMTP id 006d021491bc7-5c44ec4f2dbso224272eaf.2;
+        Thu, 18 Jul 2024 00:27:01 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1721287620; x=1721892420; darn=lists.infradead.org;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=WSvSUpNQZRp2YKhgVtO8QG42U2eOtSDdmhMTp/cDq/E=;
+        b=jIfULOgaQRNMeUCG96rmwyt/T/I8HEK771+5vo+a3hKoAMdckWQ5hzi3iuGVbLxygn
+         eI6uD9yBdWhQI3an8RLl/Mt97ibm99f9dtaF+sw6w3xZpG0roajOtyVXD8eazDECdolC
+         wIb4d96YDdkuOz1s6dhlhIkYcYenbtV49/wHX01YusOzaRtkC871+uNRhWAQe0Iuz3eb
+         +4jooE4hXN+9kLJJFlv6v5N46Pp0glPNUrXhpPHJ/26WZhRi/GlM55/pykaXJt5jLEjK
+         rhGEM9hNDngxYU7wbWQHgCJgQnB7j9gjgHr1ndff21GAri4D3L12dvm2GVY16bM49bxv
+         MSpg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1721287620; x=1721892420;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=WSvSUpNQZRp2YKhgVtO8QG42U2eOtSDdmhMTp/cDq/E=;
+        b=Qc/68QXXXSnTpwAX8Sr0Jk5eOX8/bSekzTUlg9OHWnvESmjIFYwtfvV6G4BvtTQVJt
+         PMfyKtarL4g/lffHXVkyQ/d3ESV1Lti6hfUGuWLkNi5nuL0dStTRKroTVvUYZ8C8AOog
+         kIHg6D5kDYL2tzGLRfvgMtUcngvhdsye5XoRgkJr0LK/g8mCwHFKaZSN9bb13mhZcKPl
+         rmdnt6YJ4xJmDkXCH9a+yCSoXThtKJgr6/OdrLdG6KEfpnPrJPEkDfVBnWuJCppCV+um
+         durhcQegFtEvrIeo+aAos/MwMdAQSWlZLU1FGToZhuMcWQuU8atSP9sAtnAzyUA8KNKK
+         725w==
+X-Forwarded-Encrypted: i=1; AJvYcCXmKRjRd0yXtn7xSjmS0xrXf0tfRN0R9xJwldHY3FqaSn9cR5y4rFOsLnW7ZxRQgvCmsvdX5JVIjMRG0GA7MuzlmWIUJAPED6gQF0XraVXAWcVfpLzr+hS0zd5zjs9t/ncgYHOz86JQgkP9ZndLf8aw1tdba/TO9HY=
+X-Gm-Message-State: AOJu0YzKHDWurq72ai/a/nDcZK6GAv5nzh8MPZsJyOzDd6Qwuw60Cw3Z
+	poAQ5D6onf29+AMcozQp1BXdQ6COrtGV9oIi95QM26e+4OLTY+c/14BBQXUOTSQl6zAdjKMxNjK
+	p3nbuvxWRr/7/mZxkLbsQkb3MQLch4O1y
+X-Google-Smtp-Source: AGHT+IHAWI3Xg3mDtfREDUCxHyoF4gTS2b1DQd8tHuhgBypbHELjTsim3tbP/m0LxVCn39FYamneM1MkEQiw2eIcPmQ=
+X-Received: by 2002:a05:6820:2017:b0:5c6:4807:2d1f with SMTP id
+ 006d021491bc7-5d41d3b833dmr5554884eaf.8.1721287620137; Thu, 18 Jul 2024
+ 00:27:00 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 1/2] media: videodev2: Add flags to unconditionnaly
- enumerate pixels formats
-To: Nicolas Dufresne <nicolas@ndufresne.ca>,
- Jacopo Mondi <jacopo.mondi@ideasonboard.com>
-Cc: mchehab@kernel.org, ezequiel@vanguardiasur.com.ar,
- hverkuil-cisco@xs4all.nl, linux-media@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
- kernel@collabora.com
-References: <20240717131430.159727-1-benjamin.gaignard@collabora.com>
- <20240717131430.159727-2-benjamin.gaignard@collabora.com>
- <2kbxr3hkjbcnaqescxmlcerziixg72icqpug6wa25eeggy2pnj@vqmxe4ojcwml>
- <dfc292f8-0014-4bf4-9429-31f729a176cd@collabora.com>
- <ok2a4ubzka6rhzyj2c5op73ij7pw35g6e75whc2jjget62fatx@zka2ewyt3kfv>
- <c8358d79bd51a9bfa5116b33ae5e7766b95d344d.camel@ndufresne.ca>
-Content-Language: en-US
-From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-In-Reply-To: <c8358d79bd51a9bfa5116b33ae5e7766b95d344d.camel@ndufresne.ca>
+References: <20240715110251.261844-1-heiko@sntech.de> <20240715110251.261844-4-heiko@sntech.de>
+In-Reply-To: <20240715110251.261844-4-heiko@sntech.de>
+From: Anand Moon <linux.amoon@gmail.com>
+Date: Thu, 18 Jul 2024 12:56:43 +0530
+Message-ID: <CANAwSgS_ZaEkt5-kKud9OwdN4za+xvW5SoBr34EmOdU2OQJWnw@mail.gmail.com>
+Subject: Re: [PATCH v2 3/3] arm64: dts: rockchip: fix the pcie refclock
+ oscillator on Rock 5 ITX
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: mturquette@baylibre.com, sboyd@kernel.org, robh@kernel.org, 
+	krzk+dt@kernel.org, conor+dt@kernel.org, linux-clk@vger.kernel.org, 
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240718_000428_903252_3BF03B6E 
-X-CRM114-Status: GOOD (  27.19  )
+X-CRM114-CacheID: sfid-20240718_002701_836965_A8027CAA 
+X-CRM114-Status: GOOD (  27.23  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,151 +86,126 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-CkxlIDE3LzA3LzIwMjQgw6AgMTk6NTAsIE5pY29sYXMgRHVmcmVzbmUgYSDDqWNyaXTCoDoKPiBI
-aQo+Cj4gTGUgbWVyY3JlZGkgMTcganVpbGxldCAyMDI0IMOgIDE2OjA0ICswMjAwLCBKYWNvcG8g
-TW9uZGkgYSDDqWNyaXTCoDoKPj4gSGkgQmVuamFtaW4KPj4KPj4gT24gV2VkLCBKdWwgMTcsIDIw
-MjQgYXQgMDM6NDQ6MjRQTSBHTVQsIEJlbmphbWluIEdhaWduYXJkIHdyb3RlOgo+Pj4gTGUgMTcv
-MDcvMjAyNCDDoCAxNToyMCwgSmFjb3BvIE1vbmRpIGEgw6ljcml0wqA6Cj4+Pj4gSGkgQmVuamFt
-aW4KPj4+Pgo+Pj4+IE9uIFdlZCwgSnVsIDE3LCAyMDI0IGF0IDAzOjE0OjI5UE0gR01ULCBCZW5q
-YW1pbiBHYWlnbmFyZCB3cm90ZToKPj4+Pj4gQWRkIG5ldyBmbGFncyB0byBlbnVtZXJhdGUgYWxs
-IHBpeGVscyBmb3JtYXRzIHdoZW4gY2FsbGluZyBWSURJT0NfRU5VTV9GTVQgaW9jdGwuCj4+Pj4+
-IFdoZW4gdGhpcyBWNEwyX0ZNVF9GTEFHX0VOVU1fQUxMX0ZPUk1BVFMgZmxhZyBpcyBzZXQgZHJp
-dmVycyBtdXN0Cj4+Pj4+IGlnbm9yZSB0aGUgY29uZmlndXJhdGlvbiBhbmQgcmV0dXJuIHRoZSBo
-YXJkd2FyZSBzdXBwb3J0ZWQgcGl4ZWwKPj4+Pj4gZm9ybWF0cyBmb3IgdGhlIHNwZWNpZmllZCBx
-dWV1ZS4KPj4+Pj4gVG8gZGlzdGluZ3Vpc2ggdGhpcyBwYXJ0aWN1bGFyIGVudW1lcmF0aW9uIGNh
-c2UgVjRMMl9GTVRfRkxBR19BTExfRk9STUFUUwo+Pj4+PiBmbGFnIG11c3QgYmUgc2V0IGJ5IHRo
-ZSBkcml2ZXJzIHRvIGhpZ2hsaWdodCBzdXBwb3J0IG9mIHRoaXMgZmVhdHVyZQo+Pj4+PiB0byB1
-c2VyIHNwYWNlIGFwcGxpY2F0aW9ucy4KPj4+Pj4gVGhpcyB3aWxsIHBlcm1pdCB0byBkaXNjb3Zl
-ciB3aGljaCBwaXhlbCBmb3JtYXRzIGFyZSBzdXBwb3J0ZWQKPj4+Pj4gd2l0aG91dCBzZXR0aW5n
-IGNvZGVjLXNwZWNpZmljIGluZm9ybWF0aW9uIHNvIHVzZXJsYW5kIGNhbiBtb3JlIGVhc2lseQo+
-Pj4+PiBrbm93IGlmIHRoZSBkcml2ZXIgc3VpdHMgaXRzIG5lZWRzIHdlbGwuCj4+Pj4+IFRoZSBt
-YWluIHRhcmdldCBhcmUgc3RhdGVsZXNzIGRlY29kZXJzIHNvIHVwZGF0ZSB0aGUgZG9jdW1lbnRh
-dGlvbgo+Pj4+PiBhYm91dCBob3cgdG8gdXNlIHRoaXMgZmxhZy4KPj4+Pj4KPj4+Pj4gU2lnbmVk
-LW9mZi1ieTogQmVuamFtaW4gR2FpZ25hcmQgPGJlbmphbWluLmdhaWduYXJkQGNvbGxhYm9yYS5j
-b20+Cj4+Pj4+IC0tLQo+Pj4+PiBjaGFuZ2VzIGluIHZlcnNpb24gNDoKPj4+Pj4gLSBFeHBsaWNp
-dGx5IGRvY3VtZW50IHRoYXQgdGhlIG5ldyBmbGFncyBhcmUgdGFyZ2V0aW5nIG1lbTJtZW0gZGV2
-aWNlcy4KPj4+Pj4KPj4+Pj4gICAgLi4uL3VzZXJzcGFjZS1hcGkvbWVkaWEvdjRsL2Rldi1zdGF0
-ZWxlc3MtZGVjb2Rlci5yc3QgfCAgNiArKysrKysKPj4+Pj4gICAgLi4uL3VzZXJzcGFjZS1hcGkv
-bWVkaWEvdjRsL3ZpZGlvYy1lbnVtLWZtdC5yc3QgICAgICAgfCAxMSArKysrKysrKysrKwo+Pj4+
-PiAgICAuLi4vdXNlcnNwYWNlLWFwaS9tZWRpYS92aWRlb2RldjIuaC5yc3QuZXhjZXB0aW9ucyAg
-ICB8ICAyICsrCj4+Pj4+ICAgIGRyaXZlcnMvbWVkaWEvdjRsMi1jb3JlL3Y0bDItaW9jdGwuYyAg
-ICAgICAgICAgICAgICAgIHwgIDMgKysrCj4+Pj4+ICAgIGluY2x1ZGUvdWFwaS9saW51eC92aWRl
-b2RldjIuaCAgICAgICAgICAgICAgICAgICAgICAgIHwgIDIgKysKPj4+Pj4gICAgNSBmaWxlcyBj
-aGFuZ2VkLCAyNCBpbnNlcnRpb25zKCspCj4+Pj4+Cj4+Pj4+IGRpZmYgLS1naXQgYS9Eb2N1bWVu
-dGF0aW9uL3VzZXJzcGFjZS1hcGkvbWVkaWEvdjRsL2Rldi1zdGF0ZWxlc3MtZGVjb2Rlci5yc3Qg
-Yi9Eb2N1bWVudGF0aW9uL3VzZXJzcGFjZS1hcGkvbWVkaWEvdjRsL2Rldi1zdGF0ZWxlc3MtZGVj
-b2Rlci5yc3QKPj4+Pj4gaW5kZXggMzVlZDA1ZjI2OTVlLi5iMGI2NTdkZTkxMGQgMTAwNjQ0Cj4+
-Pj4+IC0tLSBhL0RvY3VtZW50YXRpb24vdXNlcnNwYWNlLWFwaS9tZWRpYS92NGwvZGV2LXN0YXRl
-bGVzcy1kZWNvZGVyLnJzdAo+Pj4+PiArKysgYi9Eb2N1bWVudGF0aW9uL3VzZXJzcGFjZS1hcGkv
-bWVkaWEvdjRsL2Rldi1zdGF0ZWxlc3MtZGVjb2Rlci5yc3QKPj4+Pj4gQEAgLTU4LDYgKzU4LDEy
-IEBAIFF1ZXJ5aW5nIGNhcGFiaWxpdGllcwo+Pj4+PiAgICAgICAgIGRlZmF1bHQgdmFsdWVzIGZv
-ciB0aGVzZSBjb250cm9scyBiZWluZyB1c2VkLCBhbmQgYSByZXR1cm5lZCBzZXQgb2YgZm9ybWF0
-cwo+Pj4+PiAgICAgICAgIHRoYXQgbWF5IG5vdCBiZSB1c2FibGUgZm9yIHRoZSBtZWRpYSB0aGUg
-Y2xpZW50IGlzIHRyeWluZyB0byBkZWNvZGUuCj4+Pj4+Cj4+Pj4+ICsgICAqIElmIHRoZSBgYFY0
-TDJfRk1UX0ZMQUdfRU5VTV9BTExfRk9STUFUU2BgIGZsYWcgaXMgc2V0IHRoZSBkcml2ZXIgbXVz
-dCBlbnVtZXJhdGUKPj4+Pj4gKyAgICAgYWxsIHRoZSBzdXBwb3J0ZWQgZm9ybWF0cyB3aXRob3V0
-IHRha2luZyBjYXJlIG9mIGNvZGVjLWRlcGVuZGVudCBjb250cm9scwo+Pj4+PiArICAgICBzZXQg
-b24gdGhlIGBgT1VUUFVUYGAgcXVldWUuIFRvIGluZGljYXRlIHRoYXQgdGhlIGRyaXZlciBoYXMg
-dGFrZSBjYXJlIG9mIHRoaXMKPj4+Pj4gKyAgICAgZmxhZyBpdCBtdXN0IHNldCBgYFY0TDJfRk1U
-X0ZMQUdfQUxMX0ZPUk1BVFNgYCBmbGFnIGZvciBlYWNoIGZvcm1hdCB3aGlsZQo+Pj4+PiArICAg
-ICBlbnVtZXJhdGluZy4KPj4+Pj4gKwo+Pj4+PiAgICAzLiBUaGUgY2xpZW50IG1heSB1c2UgOmM6
-ZnVuYzpgVklESU9DX0VOVU1fRlJBTUVTSVpFU2AgdG8gZGV0ZWN0IHN1cHBvcnRlZAo+Pj4+PiAg
-ICAgICByZXNvbHV0aW9ucyBmb3IgYSBnaXZlbiBmb3JtYXQsIHBhc3NpbmcgZGVzaXJlZCBwaXhl
-bCBmb3JtYXQgaW4KPj4+Pj4gICAgICAgOmM6dHlwZTpgdjRsMl9mcm1zaXplZW51bWAncyBgYHBp
-eGVsX2Zvcm1hdGBgLgo+Pj4+PiBkaWZmIC0tZ2l0IGEvRG9jdW1lbnRhdGlvbi91c2Vyc3BhY2Ut
-YXBpL21lZGlhL3Y0bC92aWRpb2MtZW51bS1mbXQucnN0IGIvRG9jdW1lbnRhdGlvbi91c2Vyc3Bh
-Y2UtYXBpL21lZGlhL3Y0bC92aWRpb2MtZW51bS1mbXQucnN0Cj4+Pj4+IGluZGV4IDNhZGIzZDIw
-NTUzMS4uMTViYzJmNTljMDVhIDEwMDY0NAo+Pj4+PiAtLS0gYS9Eb2N1bWVudGF0aW9uL3VzZXJz
-cGFjZS1hcGkvbWVkaWEvdjRsL3ZpZGlvYy1lbnVtLWZtdC5yc3QKPj4+Pj4gKysrIGIvRG9jdW1l
-bnRhdGlvbi91c2Vyc3BhY2UtYXBpL21lZGlhL3Y0bC92aWRpb2MtZW51bS1mbXQucnN0Cj4+Pj4+
-IEBAIC0yMzQsNiArMjM0LDE3IEBAIHRoZSBgYG1idXNfY29kZWBgIGZpZWxkIGlzIGhhbmRsZWQg
-ZGlmZmVyZW50bHk6Cj4+Pj4+ICAgIAl2YWxpZC4gVGhlIGJ1ZmZlciBjb25zaXN0cyBvZiBgYGhl
-aWdodGBgIGxpbmVzLCBlYWNoIGhhdmluZyBgYHdpZHRoYGAKPj4+Pj4gICAgCURhdGEgVW5pdHMg
-b2YgZGF0YSBhbmQgdGhlIG9mZnNldCAoaW4gYnl0ZXMpIGJldHdlZW4gdGhlIGJlZ2lubmluZyBv
-Zgo+Pj4+PiAgICAJZWFjaCB0d28gY29uc2VjdXRpdmUgbGluZXMgaXMgYGBieXRlc3BlcmxpbmVg
-YC4KPj4+Pj4gKyAgICAqIC0gYGBWNEwyX0ZNVF9GTEFHX0VOVU1fQUxMX0ZPUk1BVFNgYAo+Pj4+
-PiArICAgICAgLSAweDA0MDAKPj4+Pj4gKyAgICAgIC0gU2V0IGJ5IHVzZXJsYW5kIGFwcGxpY2F0
-aW9ucyB0byBlbnVtZXJhdGUgYWxsIHBvc3NpYmxlIHBpeGVsIGZvcm1hdHMKPj4+Pj4gKyAgICAg
-ICAgd2l0aG91dCB0YWtpbmcgY2FyZSBvZiBhbnkgT1VUUFVUIG9yIENBUFRVUkUgcXVldWUgY29u
-ZmlndXJhdGlvbi4KPj4+Pj4gKyAgICAgICAgVGhpcyBmbGFnIGlzIHJlbGV2YW50IG9ubHkgZm9y
-IG1lbTJtZW0gZGV2aWNlcy4KPj4+Pj4gKyAgICAqIC0gYGBWNEwyX0ZNVF9GTEFHX0FMTF9GT1JN
-QVRTYGAKPj4+Pj4gKyAgICAgIC0gMHgwODAwCj4+Pj4+ICsgICAgICAtIFNldCBieSB0aGUgZHJp
-dmVyIHRvIGluZGljYXRlZCB0aGF0IGZvcm1hdCBoYXZlIGJlZW4gZW51bWVyYXRlZCBiZWNhdXNl
-Cj4+Pj4+ICsgICAgICAgIDpyZWY6YFY0TDJfRk1UX0ZMQUdfRU5VTV9BTExfRk9STUFUUyA8djRs
-Mi1waXgtZm10LWZsYWctc2V0LWNzYz5gIGhhcwo+Pj4+PiArICAgICAgICBiZWVuIHNldCBieSB0
-aGUgdXNlcmxhbmQgYXBwbGljYXRpb24uCj4+Pj4+ICsgICAgICAgIFRoaXMgZmxhZyBpcyByZWxl
-dmFudCBvbmx5IGZvciBtZW0ybWVtIGRldmljZXMuCj4+Pj4gVGhhbmtzLCBob3dldmVyIEkgdGhp
-bmsgdGhpcyBjYW4gYmUgd3JhcHBlciBvbiB0aGUgcHJldmlvdXMgbGluZQo+Pj4gb2sKPj4+Cj4+
-Pj4+ICAgIFJldHVybiBWYWx1ZQo+Pj4+PiAgICA9PT09PT09PT09PT0KPj4+Pj4gZGlmZiAtLWdp
-dCBhL0RvY3VtZW50YXRpb24vdXNlcnNwYWNlLWFwaS9tZWRpYS92aWRlb2RldjIuaC5yc3QuZXhj
-ZXB0aW9ucyBiL0RvY3VtZW50YXRpb24vdXNlcnNwYWNlLWFwaS9tZWRpYS92aWRlb2RldjIuaC5y
-c3QuZXhjZXB0aW9ucwo+Pj4+PiBpbmRleCBiZGM2MjhlOGMxZDYuLjdhM2ExZTlkYzA1NSAxMDA2
-NDQKPj4+Pj4gLS0tIGEvRG9jdW1lbnRhdGlvbi91c2Vyc3BhY2UtYXBpL21lZGlhL3ZpZGVvZGV2
-Mi5oLnJzdC5leGNlcHRpb25zCj4+Pj4+ICsrKyBiL0RvY3VtZW50YXRpb24vdXNlcnNwYWNlLWFw
-aS9tZWRpYS92aWRlb2RldjIuaC5yc3QuZXhjZXB0aW9ucwo+Pj4+PiBAQCAtMjE2LDYgKzIxNiw4
-IEBAIHJlcGxhY2UgZGVmaW5lIFY0TDJfRk1UX0ZMQUdfQ1NDX1lDQkNSX0VOQyBmbXRkZXNjLWZs
-YWdzCj4+Pj4+ICAgIHJlcGxhY2UgZGVmaW5lIFY0TDJfRk1UX0ZMQUdfQ1NDX0hTVl9FTkMgZm10
-ZGVzYy1mbGFncwo+Pj4+PiAgICByZXBsYWNlIGRlZmluZSBWNEwyX0ZNVF9GTEFHX0NTQ19RVUFO
-VElaQVRJT04gZm10ZGVzYy1mbGFncwo+Pj4+PiAgICByZXBsYWNlIGRlZmluZSBWNEwyX0ZNVF9G
-TEFHX01FVEFfTElORV9CQVNFRCBmbXRkZXNjLWZsYWdzCj4+Pj4+ICtyZXBsYWNlIGRlZmluZSBW
-NEwyX0ZNVF9GTEFHX0VOVU1fQUxMX0ZPUk1BVFMgZm10ZGVzYy1mbGFncwo+Pj4+PiArcmVwbGFj
-ZSBkZWZpbmUgVjRMMl9GTVRfRkxBR19BTExfRk9STUFUUyBmbXRkZXNjLWZsYWdzCj4+Pj4+Cj4+
-Pj4+ICAgICMgVjRMMiB0aW1lY29kZSB0eXBlcwo+Pj4+PiAgICByZXBsYWNlIGRlZmluZSBWNEwy
-X1RDX1RZUEVfMjRGUFMgdGltZWNvZGUtdHlwZQo+Pj4+PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9t
-ZWRpYS92NGwyLWNvcmUvdjRsMi1pb2N0bC5jIGIvZHJpdmVycy9tZWRpYS92NGwyLWNvcmUvdjRs
-Mi1pb2N0bC5jCj4+Pj4+IGluZGV4IDRjNzZkMTdiNDYyOS4uNTc4NWE5OGI2YmEyIDEwMDY0NAo+
-Pj4+PiAtLS0gYS9kcml2ZXJzL21lZGlhL3Y0bDItY29yZS92NGwyLWlvY3RsLmMKPj4+Pj4gKysr
-IGIvZHJpdmVycy9tZWRpYS92NGwyLWNvcmUvdjRsMi1pb2N0bC5jCj4+Pj4+IEBAIC0xNTY5LDYg
-KzE1NjksNyBAQCBzdGF0aWMgaW50IHY0bF9lbnVtX2ZtdChjb25zdCBzdHJ1Y3QgdjRsMl9pb2N0
-bF9vcHMgKm9wcywKPj4+Pj4gICAgCWludCByZXQgPSBjaGVja19mbXQoZmlsZSwgcC0+dHlwZSk7
-Cj4+Pj4+ICAgIAl1MzIgbWJ1c19jb2RlOwo+Pj4+PiAgICAJdTMyIGNhcF9tYXNrOwo+Pj4+PiAr
-CXUzMiBmbGFnczsKPj4+Pj4KPj4+Pj4gICAgCWlmIChyZXQpCj4+Pj4+ICAgIAkJcmV0dXJuIHJl
-dDsKPj4+Pj4gQEAgLTE1NzgsOCArMTU3OSwxMCBAQCBzdGF0aWMgaW50IHY0bF9lbnVtX2ZtdChj
-b25zdCBzdHJ1Y3QgdjRsMl9pb2N0bF9vcHMgKm9wcywKPj4+Pj4gICAgCQlwLT5tYnVzX2NvZGUg
-PSAwOwo+Pj4+Pgo+Pj4+PiAgICAJbWJ1c19jb2RlID0gcC0+bWJ1c19jb2RlOwo+Pj4+PiArCWZs
-YWdzID0gcC0+ZmxhZ3MgJiBWNEwyX0ZNVF9GTEFHX0VOVU1fQUxMX0ZPUk1BVFM7Cj4+Pj4+ICAg
-IAltZW1zZXRfYWZ0ZXIocCwgMCwgdHlwZSk7Cj4+Pj4+ICAgIAlwLT5tYnVzX2NvZGUgPSBtYnVz
-X2NvZGU7Cj4+Pj4+ICsJcC0+ZmxhZ3MgPSBmbGFnczsKPj4+PiBXb24ndCB0aGlzIHNldCBWNEwy
-X0ZNVF9GTEFHX0VOVU1fQUxMX0ZPUk1BVFMgKGlmIHByZXNlbnQpIGluIHRoZQo+Pj4+IGZsYWdz
-IHJldHVybmVkIHRvIHVzZXJzcGFjZSA/IFNob3VsZG4ndCBiZSBkcml2ZXJzIHRvIHNldAo+Pj4+
-IFY0TDJfRk1UX0ZMQUdfQUxMX0ZPUk1BVFMgaW5zdGVhZCA/Cj4+PiBtZW1zZXRfYWZ0ZXIgemVy
-b2VkIGZsYWdzIGZpZWxkIHNvIHdlIG5lZWQgdGhpcyB0byBzZW5kIFY0TDJfRk1UX0ZMQUdfRU5V
-TV9BTExfRk9STUFUUwo+Pj4gZmxhZyB0byBkcml2ZXJzLiBSZXR1cm4gaXQgdG8gdXNlcnNwYWNl
-IGlzIGEgc2lkZSBlZmZlY3QgYnV0IEkgZG9uJ3QgdGhhdCBpcyBwcm9ibGVtCj4+PiBzaW5jZSBp
-dCBzZXQgaXQgYW55d2F5Lgo+Pj4KPj4gT2ssIGlmIHRoZSBleHBlY3RhdGlvbiBpcyB0aGF0IHRo
-ZSBmbGFnIGlzIHByZXNlcnZlZCB0aHJvdWdoIHRoZSBpb2N0bAo+PiBjYWxsLCB0aGlzIGlzIGZp
-bmUgd2l0aCBtZQo+IEkgbWlnaHQgYmUgbWlzc2luZyBzb21ldGhpbmcgb3RoZXIgc2ltaWxhciBm
-ZWF0dXJlcyBhcmUgZXhwbGljaXRseSBhZHZlcnRpc2VkIGJ5Cj4gZHJpdmVycy4gVGhpcyB3YXks
-IHRoZSBnZW5lcmljIGxheWVyIGNhbiBrZWVwIG9yIGNsZWFyIHRoZSBmbGFnIGJhc2VkIG9mIGlm
-IGl0cwo+IHN1cHBvcnRlZC4gVGhlIGZhY3QgdGhlIGZsYWcgcGVyc2lzdCB0aGUgaW9jdGwoKSBv
-ciBub3QgZW5kdXAgaGF2aW5nIGEgdXNlZnVsCj4gc2VtYW50aWMuCj4KPiBDb3VsZCB3ZSBkbyB0
-aGUgc2FtZT8KCkl0IGlzIHRoZSBvbmx5IGZsYWcgc2V0IGJ5IHVzZXJzcGFjZSB3aGVuIGNhbGxp
-bmcgdGhlIGlvY3RsKCksIGFsbCBvdGhlcnMKYXJlIHNldCBieSB0aGUgZHJpdmVycy4KSSBjYW4g
-Y2xlYW4gaXQgZnJvbSB0aGUgaW9jdGwoKSBzdHJ1Y3R1cmUgYWZ0ZXIgZHJpdmVyIGNhbGwgYnV0
-IHRoYXQgd29uJ3QgY2hhbmdlIGFueXRoaW5nLgoKPgo+PiBSZXZpZXdlZC1ieTogSmFjb3BvIE1v
-bmRpIDxqYWNvcG8ubW9uZGlAaWRlYXNvbmJvYXJkLmNvbT4KPj4KPj4+Pj4gICAgCXN3aXRjaCAo
-cC0+dHlwZSkgewo+Pj4+PiAgICAJY2FzZSBWNEwyX0JVRl9UWVBFX1ZJREVPX0NBUFRVUkU6Cj4+
-Pj4+IGRpZmYgLS1naXQgYS9pbmNsdWRlL3VhcGkvbGludXgvdmlkZW9kZXYyLmggYi9pbmNsdWRl
-L3VhcGkvbGludXgvdmlkZW9kZXYyLmgKPj4+Pj4gaW5kZXggZmU2YjY3ZTgzNzUxLi5iNmE1ZGE3
-OWJhMjEgMTAwNjQ0Cj4+Pj4+IC0tLSBhL2luY2x1ZGUvdWFwaS9saW51eC92aWRlb2RldjIuaAo+
-Pj4+PiArKysgYi9pbmNsdWRlL3VhcGkvbGludXgvdmlkZW9kZXYyLmgKPj4+Pj4gQEAgLTg4Niw2
-ICs4ODYsOCBAQCBzdHJ1Y3QgdjRsMl9mbXRkZXNjIHsKPj4+Pj4gICAgI2RlZmluZSBWNEwyX0ZN
-VF9GTEFHX0NTQ19IU1ZfRU5DCQlWNEwyX0ZNVF9GTEFHX0NTQ19ZQ0JDUl9FTkMKPj4+Pj4gICAg
-I2RlZmluZSBWNEwyX0ZNVF9GTEFHX0NTQ19RVUFOVElaQVRJT04JCTB4MDEwMAo+Pj4+PiAgICAj
-ZGVmaW5lIFY0TDJfRk1UX0ZMQUdfTUVUQV9MSU5FX0JBU0VECQkweDAyMDAKPj4+Pj4gKyNkZWZp
-bmUgVjRMMl9GTVRfRkxBR19FTlVNX0FMTF9GT1JNQVRTCQkweDA0MDAKPj4+Pj4gKyNkZWZpbmUg
-VjRMMl9GTVRfRkxBR19BTExfRk9STUFUUwkJMHgwODAwCj4+Pj4+Cj4+Pj4+ICAgIAkvKiBGcmFt
-ZSBTaXplIGFuZCBmcmFtZSByYXRlIGVudW1lcmF0aW9uICovCj4+Pj4+ICAgIC8qCj4+Pj4+IC0t
-Cj4+Pj4+IDIuNDMuMAo+Pj4+Pgo+Pj4+Pgo+Pj4+IF9fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fCj4+Pj4gS2VybmVsIG1haWxpbmcgbGlzdCAtLSBrZXJuZWxA
-bWFpbG1hbi5jb2xsYWJvcmEuY29tCj4+Pj4gVG8gdW5zdWJzY3JpYmUgc2VuZCBhbiBlbWFpbCB0
-byBrZXJuZWwtbGVhdmVAbWFpbG1hbi5jb2xsYWJvcmEuY29tCj4+Pj4gVGhpcyBsaXN0IGlzIG1h
-bmFnZWQgYnkgaHR0cHM6Ly9tYWlsbWFuLmNvbGxhYm9yYS5jb20KPgoKX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBs
-aXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJh
-ZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+Hi Heiko,
+
+On Mon, 15 Jul 2024 at 16:35, Heiko Stuebner <heiko@sntech.de> wrote:
+>
+> The Rock 5 ITX uses two PCIe controllers to drive both a M.2 slot and its
+> SATA controller with 2 lanes each. The supply for the refclk oscillator is
+> the same that supplies the M.2 slot, but the SATA controller port is
+> supplied by a different rail.
+>
+> This leads to the effect that if the PCIe30x4 controller for the M.2
+> probes first, everything works normally. But if the PCIe30x2 controller
+> that is connected to the SATA controller probes first, it will hang on
+> the first DBI read as nothing will have enabled the refclock before.
+>
+
+I just checked the rk3588-rock-5-itx.dts in the linux-next.
+You have not enabled sata0 and sata2, which might be the problem
+for the SATA controller not getting initialized.
+
+Thanks
+-Anand
+
+> Fix this by describing the clock generator with its supplies so that
+> both controllers can reference it as needed.
+>
+> Signed-off-by: Heiko Stuebner <heiko@sntech.de>
+> ---
+>  .../boot/dts/rockchip/rk3588-rock-5-itx.dts   | 38 ++++++++++++++++++-
+>  1 file changed, 36 insertions(+), 2 deletions(-)
+>
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3588-rock-5-itx.dts b/arch/arm64/boot/dts/rockchip/rk3588-rock-5-itx.dts
+> index d0b922b8d67e8..37bc53f2796fc 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3588-rock-5-itx.dts
+> +++ b/arch/arm64/boot/dts/rockchip/rk3588-rock-5-itx.dts
+> @@ -72,6 +72,15 @@ hdd-led2 {
+>                 };
+>         };
+>
+> +       /* Unnamed voltage oscillator: 100MHz,3.3V,3225 */
+> +       pcie30_port0_refclk: pcie30_port1_refclk: pcie-voltage-oscillator {
+> +               compatible = "voltage-oscillator";
+> +               #clock-cells = <0>;
+> +               clock-frequency = <100000000>;
+> +               clock-output-names = "pcie30_refclk";
+> +               vdd-supply = <&vcc3v3_pi6c_05>;
+> +       };
+> +
+>         fan0: pwm-fan {
+>                 compatible = "pwm-fan";
+>                 #cooling-cells = <2>;
+> @@ -146,13 +155,14 @@ vcc3v3_lan: vcc3v3_lan_phy2: regulator-vcc3v3-lan {
+>                 vin-supply = <&vcc_3v3_s3>;
+>         };
+>
+> -       vcc3v3_mkey: regulator-vcc3v3-mkey {
+> +       /* The PCIE30x4_PWREN_H controls two regulators */
+> +       vcc3v3_mkey: vcc3v3_pi6c_05: regulator-vcc3v3-pi6c-05 {
+>                 compatible = "regulator-fixed";
+>                 enable-active-high;
+>                 gpios = <&gpio1 RK_PA4 GPIO_ACTIVE_HIGH>;
+>                 pinctrl-names = "default";
+>                 pinctrl-0 = <&pcie30x4_pwren_h>;
+> -               regulator-name = "vcc3v3_mkey";
+> +               regulator-name = "vcc3v3_pi6c_05";
+>                 regulator-min-microvolt = <3300000>;
+>                 regulator-max-microvolt = <3300000>;
+>                 startup-delay-us = <5000>;
+> @@ -513,6 +523,18 @@ &pcie30phy {
+>
+>  /* ASMedia ASM1164 Sata controller */
+>  &pcie3x2 {
+> +       /*
+> +        * The board has a "pcie_refclk" oscillator that needs enabling,
+> +        * so add it to the list of clocks.
+> +        */
+> +       clocks = <&cru ACLK_PCIE_2L_MSTR>, <&cru ACLK_PCIE_2L_SLV>,
+> +                <&cru ACLK_PCIE_2L_DBI>, <&cru PCLK_PCIE_2L>,
+> +                <&cru CLK_PCIE_AUX1>, <&cru CLK_PCIE2L_PIPE>,
+> +                <&pcie30_port1_refclk>;
+> +       clock-names = "aclk_mst", "aclk_slv",
+> +                     "aclk_dbi", "pclk",
+> +                     "aux", "pipe",
+> +                     "ref";
+>         pinctrl-names = "default";
+>         pinctrl-0 = <&pcie30x2_perstn_m1_l>;
+>         reset-gpios = <&gpio4 RK_PB0 GPIO_ACTIVE_HIGH>;
+> @@ -522,6 +544,18 @@ &pcie3x2 {
+>
+>  /* M.2 M.key */
+>  &pcie3x4 {
+> +       /*
+> +        * The board has a "pcie_refclk" oscillator that needs enabling,
+> +        * so add it to the list of clocks.
+> +        */
+> +       clocks = <&cru ACLK_PCIE_4L_MSTR>, <&cru ACLK_PCIE_4L_SLV>,
+> +                <&cru ACLK_PCIE_4L_DBI>, <&cru PCLK_PCIE_4L>,
+> +                <&cru CLK_PCIE_AUX0>, <&cru CLK_PCIE4L_PIPE>,
+> +                <&pcie30_port0_refclk>;
+> +       clock-names = "aclk_mst", "aclk_slv",
+> +                     "aclk_dbi", "pclk",
+> +                     "aux", "pipe",
+> +                     "ref";
+>         num-lanes = <2>;
+>         pinctrl-names = "default";
+>         pinctrl-0 = <&pcie30x4_perstn_m1_l>;
+> --
+> 2.39.2
+>
+>
+> _______________________________________________
+> Linux-rockchip mailing list
+> Linux-rockchip@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
