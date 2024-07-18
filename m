@@ -4,44 +4,35 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C87A4C3DA60
-	for <linux-rockchip@archiver.kernel.org>; Thu, 18 Jul 2024 10:53:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BA832C3DA60
+	for <linux-rockchip@archiver.kernel.org>; Thu, 18 Jul 2024 11:31:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
-	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=h9VzpP+v5uofY9iZEvwaaRO98WiI+G/TTc6MEaSTOgY=; b=iSuteYi+9ieR0qrr03ToN0Bhc2
-	gmCiZqRmRTKhj5vlplq9L+l70MQcpEUzpVhp4iNX8TRK6HWPzPiJbBBZK9jLBd/O+h4o7hzcAivwo
-	bysQxVXdV+KAQibCHDilMsvfqX+Q+BdNLaJ+JQGwC0QGoQUjtVCmx0Dnd0oe7Xyp92ObfNOVli72w
-	YZ44gc9qOtwxHli4nFEGiybyyUDD4h+NtWj31c0jJPRKP0QHd+dFKTwP9c4oiMDcazL1gi4YYP55x
-	oaPTYDtSefrgJHZi0xGjuxiopb0rWwBJlmyRr3pxLMdT8vDvPYoJ6HuFDDPiNDJKpV1oFAy6a0+j3
-	CC3cOfTQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=vPK+Ei5FsPkUoM1JJ/8G/oqhb8wTgEldtJrXPmQhY3U=; b=uGto0SFCFhnVSs
+	4r2v18TcnBEbJ5UIxNYZuJfOBgOmVEwz09oU84pVSkGHYDj5QiYG2jqp+rYu/DCq4VfkLKFY/KRhA
+	0iLSpVcpoDXxhedOqHJFFejVKfeI+ifRIa6zNO1EHqjP8DEkfcVRq6KyZ7SImcT04bEM1pMEeepwY
+	aa9hk7EsTzstMWrrgWwxmbGnqcBUyRKEFWdE1DbkzyTpjzZQ/KqPa/5AdTWwbF3BEqoQB5NDmSYf0
+	gcKYSdgXGTN90IrvNl1V7xlbVI67lNTec6NKWTLh4foOESBAy34JUw05Mev0Na0SXgcXygE1Qurvs
+	LDOh25LMeFC40/RLJVvQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sUOlS-0000000Gk2N-48oD;
-	Thu, 18 Jul 2024 10:53:34 +0000
-Received: from mail.manjaro.org ([116.203.91.91])
+	id 1sUPMC-0000000Gqyz-0RmE;
+	Thu, 18 Jul 2024 11:31:32 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sUOl5-0000000Gjwr-1Ygc;
-	Thu, 18 Jul 2024 10:53:13 +0000
-MIME-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
-	t=1721299988;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=V+1QsAqW2xA+qMzjOir7Wv2Xl2gPA1X/BCk3htAg/Zw=;
-	b=hCMeiDPf1AmYQ4xI0ADfFBumTuV040UQDaZAuulhj39mAB4IVvS2/lypW/EBQUQgITjIBN
-	olUGkYXNGmxCQFuAwPJ+b9D0A9eSslBWmH+ya8dYXXmR6ex4z3XCGcAqfUwmg783kDldYZ
-	VnIXTFCdy2tJOYO93VFI10nsXEBNacGz1bJwiWuv2t5bTG8skPAbj5cq3HQUbv3EJo3+md
-	vG7RAle5txFznmw0ez+c2rrn6LnXAHeSlpxXdcxGmm0Yt7alxasATIzZi93/3WZQOFKWVh
-	QLvxBfyRbP7aBIfPscqJQd56Th1YAp6IjUucmf+iTKAKWC8kVcNdUlZHYCYCQA==
-Date: Thu, 18 Jul 2024 12:53:07 +0200
-From: Dragan Simic <dsimic@manjaro.org>
-To: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>
+	id 1sUPLn-0000000GqtF-13Cz;
+	Thu, 18 Jul 2024 11:31:09 +0000
+Received: from i5e860d09.versanet.de ([94.134.13.9] helo=diego.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1sUPLe-0004Fb-Er; Thu, 18 Jul 2024 13:30:58 +0200
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+To: Dragan Simic <dsimic@manjaro.org>
 Cc: Conor Dooley <conor@kernel.org>, mturquette@baylibre.com,
  sboyd@kernel.org, robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
  linux-clk@vger.kernel.org, devicetree@vger.kernel.org,
@@ -49,17 +40,15 @@ Cc: Conor Dooley <conor@kernel.org>, mturquette@baylibre.com,
  linux-rockchip@lists.infradead.org
 Subject: Re: [PATCH v2 1/3] dt-bindings: clocks: add binding for
  voltage-controlled-oscillators
-In-Reply-To: <3178118.zE8UqtGg2D@diego>
-References: <20240715110251.261844-1-heiko@sntech.de>
- <20240715110251.261844-2-heiko@sntech.de>
- <20240716-deceiving-saucy-851fb2303c1f@spud> <3178118.zE8UqtGg2D@diego>
-Message-ID: <c60c8c462c6df23c1f1625bce5516525@manjaro.org>
-X-Sender: dsimic@manjaro.org
-Authentication-Results: ORIGINATING;
-	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
+Date: Thu, 18 Jul 2024 13:30:57 +0200
+Message-ID: <30200583.43St1lv6Oq@diego>
+In-Reply-To: <c60c8c462c6df23c1f1625bce5516525@manjaro.org>
+References: <20240715110251.261844-1-heiko@sntech.de> <3178118.zE8UqtGg2D@diego>
+ <c60c8c462c6df23c1f1625bce5516525@manjaro.org>
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240718_035312_036561_D7E8186A 
-X-CRM114-Status: GOOD (  38.38  )
+X-CRM114-CacheID: sfid-20240718_043107_460434_2EAB482B 
+X-CRM114-Status: GOOD (  53.74  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,125 +60,276 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGVsbG8gYWxsLAoKT24gMjAyNC0wNy0xOCAxMToyNSwgSGVpa28gU3TDvGJuZXIgd3JvdGU6Cj4g
-QW0gRGllbnN0YWcsIDE2LiBKdWxpIDIwMjQsIDE4OjE1OjA4IENFU1Qgc2NocmllYiBDb25vciBE
-b29sZXk6Cj4+IE9uIE1vbiwgSnVsIDE1LCAyMDI0IGF0IDAxOjAyOjQ5UE0gKzAyMDAsIEhlaWtv
-IFN0dWVibmVyIHdyb3RlOgo+PiA+IEluIGNvbnRyYXN0IHRvIGZpeGVkIGNsb2NrcyB0aGF0IGFy
-ZSBkZXNjcmliZWQgYXMgdW5nYXRlYWJsZSwgYm9hcmRzCj4+ID4gc29tZXRpbWVzIHVzZSBhZGRp
-dGlvbmFsIG9zY2lsbGF0b3JzIGZvciB0aGluZ3MgbGlrZSBQQ0llIHJlZmVyZW5jZQo+PiA+IGNs
-b2NrcywgdGhhdCBuZWVkIGFjdHVhbCBzdXBwbGllcyB0byBnZXQgZW5hYmxlZCBhbmQgZW5hYmxl
-LWdwaW9zIHRvIGJlCj4+ID4gdG9nZ2xlZCBmb3IgdGhlbSB0byB3b3JrLgo+PiA+Cj4+ID4gVGhp
-cyBhZGRzIGEgYmluZGluZyBmb3Igc3VjaCBvc2NpbGxhdG9ycyB0aGF0IGFyZSBub3QgY29uZmln
-dXJhYmxlCj4+ID4gdGhlbXNlbGYsIGJ1dCBuZWVkIHRvIGhhbmRsZSBzdXBwbGllcyBmb3IgdGhl
-bSB0byB3b3JrLgo+PiA+Cj4+ID4gSW4gc2NoZW1hdGljcyB0aGV5IG9mdGVuIGNhbiBiZSBzZWVu
-IGFzCj4+ID4KPj4gPiAgICAgICAgICAtLS0tLS0tLS0tLS0tLS0tCj4+ID4gRW5hYmxlIC0gfCAx
-MDBNSHosMy4zViwgfCAtIFZERAo+PiA+ICAgICAgICAgIHwgICAgMzIyNSAgICAgIHwKPj4gPiAg
-ICBHTkQgLSB8ICAgICAgICAgICAgICB8IC0gT1VUCj4+ID4gICAgICAgICAgLS0tLS0tLS0tLS0t
-LS0tLQo+PiA+Cj4+ID4gb3Igc2ltaWxhci4gVGhlIGVuYWJsZSBwaW4gbWlnaHQgYmUgc2VwYXJh
-dGUgYnV0IGNhbiBhbHNvIGp1c3QgYmUgdGllZAo+PiA+IHRvIHRoZSB2ZGQgc3VwcGx5LCBoZW5j
-ZSBpdCBpcyBvcHRpb25hbCBpbiB0aGUgYmluZGluZy4KPj4gPgo+PiA+IFNpZ25lZC1vZmYtYnk6
-IEhlaWtvIFN0dWVibmVyIDxoZWlrb0BzbnRlY2guZGU+Cj4+ID4gLS0tCj4+ID4gIC4uLi9iaW5k
-aW5ncy9jbG9jay92b2x0YWdlLW9zY2lsbGF0b3IueWFtbCAgICB8IDQ5ICsrKysrKysrKysrKysr
-KysrKysKPj4gPiAgMSBmaWxlIGNoYW5nZWQsIDQ5IGluc2VydGlvbnMoKykKPj4gPiAgY3JlYXRl
-IG1vZGUgMTAwNjQ0IERvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9jbG9jay92b2x0
-YWdlLW9zY2lsbGF0b3IueWFtbAo+PiA+Cj4+ID4gZGlmZiAtLWdpdCBhL0RvY3VtZW50YXRpb24v
-ZGV2aWNldHJlZS9iaW5kaW5ncy9jbG9jay92b2x0YWdlLW9zY2lsbGF0b3IueWFtbCBiL0RvY3Vt
-ZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9jbG9jay92b2x0YWdlLW9zY2lsbGF0b3IueWFt
-bAo+PiA+IG5ldyBmaWxlIG1vZGUgMTAwNjQ0Cj4+ID4gaW5kZXggMDAwMDAwMDAwMDAwMC4uOGJm
-ZjZiMGZkNTgyZQo+PiA+IC0tLSAvZGV2L251bGwKPj4gPiArKysgYi9Eb2N1bWVudGF0aW9uL2Rl
-dmljZXRyZWUvYmluZGluZ3MvY2xvY2svdm9sdGFnZS1vc2NpbGxhdG9yLnlhbWwKPj4gPiBAQCAt
-MCwwICsxLDQ5IEBACj4+ID4gKyMgU1BEWC1MaWNlbnNlLUlkZW50aWZpZXI6IChHUEwtMi4wLW9u
-bHkgT1IgQlNELTItQ2xhdXNlKQo+PiA+ICslWUFNTCAxLjIKPj4gPiArLS0tCj4+ID4gKyRpZDog
-aHR0cDovL2RldmljZXRyZWUub3JnL3NjaGVtYXMvY2xvY2svdm9sdGFnZS1vc2NpbGxhdG9yLnlh
-bWwjCj4+ID4gKyRzY2hlbWE6IGh0dHA6Ly9kZXZpY2V0cmVlLm9yZy9tZXRhLXNjaGVtYXMvY29y
-ZS55YW1sIwo+PiA+ICsKPj4gPiArdGl0bGU6IFZvbHRhZ2UgY29udHJvbGxlZCBvc2NpbGxhdG9y
-Cj4+IAo+PiBWb2x0YWdlIGNvbnRyb2xsZWQgb3NjaWxsYXRvcj8gUmVhbGx5PyBUaGF0IHNvdW5k
-cyBmYXIgdG9vIHNpbWlsYXIgdG8gCj4+IGEKPj4gVkNPIHRvIG1lLCBhbmQgdGhlIGlucHV0IHZv
-bHRhZ2UgaGVyZSAoYWNjb3JkaW5nIHRvIHRoZSBkZXNjcmlwdGlvbiBhdAo+PiBsZWFzdCkgZG9l
-cyBub3QgYWZmZWN0IHRoZSBmcmVxdWVuY3kgb2Ygb3NjaWxsYXRpb24uCj4gCj4gVGhhdCBuYW1p
-bmcgd2FzIHN1Z2dlc3RlZCBieSBTdGVwaGVuIGluIHYxIFswXSAuCj4gCj4gT2YgY291cnNlIHRo
-ZSBzY2hlbWF0aWNzIGZvciB0aGUgYm9hcmQgSSBoYXZlIG9ubHkgZGVzY3JpYmUgaXQgYXMKPiAi
-MTAwTUh6LDMuM1YsMzIyNSIgLCB0aHVtYmluZyB0aHJvdWdoIHNvbWUgbW91c2VyIHBhcnRzIG1h
-dGNoaW5nIHRoYXQKPiBvbmx5IG1lbnRpb25zICJzdXBwbHkgdm9sdGFnZSIgaW4gdGhlaXIgZGF0
-YXNoZWV0cyBidXQgbm90IGEgZGVwZW5kZW5jeQo+IGJldHdlZW4gcmF0ZSBhbmQgdm9sdGFnZS4K
-PiAKPiBbMF0gCj4gaHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcvbGludXgtYXJtLWtlcm5lbC9iM2M0
-NTBhOTRiY2I0YWQwYmM1YjNjN2VlODcxMmNiOC5zYm95ZEBrZXJuZWwub3JnLwo+IAo+PiBXaHkg
-dGhlIGRlZGljYXRlZCBiaW5kaW5nLCByYXRoZXIgdGhhbiBhZGRpbmcgYSBzdXBwbHkgYW5kIGVu
-YWJsZS1ncGlvCj4+IHRvIHRoZSBleGlzdGluZyAiZml4ZWQtY2xvY2siIGJpbmRpbmc/IEkgc3Vz
-cGVjdCB0aGF0IGEgbGFyZ2UgcG9ydGlvbiAKPj4gb2YKPj4gImZpeGVkLWNsb2NrInMgYWN0dWFs
-bHkgcmVxdWlyZSBhIHN1cHBseSB0aGF0IGlzIChlZmZlY3RpdmVseSkKPj4gYWx3YXlzLW9uLgo+
-IAo+IEkgZ3Vlc3MgdGhlcmUgYXJlIHRocmVlIGFzcGVjdHM6Cj4gLSBJIGRvIHJlbWVtYmVyIGRp
-c2N1c3Npb25zIGluIHRoZSBwYXN0IGFib3V0IG5vdCBleHRlbmRpbmcgZ2VuZXJpYwo+ICAgYmlu
-ZGluZ3Mgd2l0aCBkZXZpY2Utc3BlY2lmaWMgc3R1ZmYuIEkgdGhpbmsgZ2VuZXJpYyBwb3dlci1z
-ZXF1ZW5jZXMKPiAgIHdlcmUgdGhlIHRvcGljIGJhY2sgdGhlbiwgdGhvdWdoIHRoYXQgbWlnaHQg
-aGF2ZSBjaGFuZ2VkIG92ZXIgdGltZT8KPiAtIFRoZXJlIGFyZSBwbGFjZXMgdGhhdCBkZXNjcmli
-ZSAiZml4ZWQtY2xvY2siIGFzCj4gICAiYmFzaWMgZml4ZWQtcmF0ZSBjbG9jayB0aGF0IGNhbm5v
-dCBnYXRlIiBbMV0KPiAtIFN0ZXBoZW4gYWxzbyBzdWdnZXN0ZWQgYSBzZXBhcmF0ZSBiaW5kaW5n
-IFsyXQo+IAo+IFdpdGggdGhlIGZpeGVkLWNsb2NrIGJlaW5nIHNvcnQgb2YgdGhlIHJvb3QgZm9y
-IGV2ZXJ5dGhpbmcgZWxzZSBvbiBtb3N0Cj4gc3lzdGVtcywgSSBvcHRlZCB0byBsZWF2ZSBpdCBh
-bG9uZS4gSSBndWVzcyBpZiB0aGUgY29uc2VudXMgcmVhbGx5IGlzIAo+IHRoYXQKPiB0aGlzIHNo
-b3VsZCBnbyB0aGVyZSwgSSBjYW4gbW92ZSBpdCwgYnV0IGRpc2N1c3Npb24gaW4gdjEKPiAKPiBJ
-bnRlcmVzdGluZ2x5IHRoZSBmaXhlZCBjbG9jayBoYWQgYSBncGlvcyBwcm9wZXJ0eSAxMCB5ZWFy
-cyBhZ28gWzNdIDotKSAKPiAuCj4gCj4gWzFdIAo+IGh0dHBzOi8vZ2l0Lmtlcm5lbC5vcmcvcHVi
-L3NjbS9saW51eC9rZXJuZWwvZ2l0L3RvcnZhbGRzL2xpbnV4LmdpdC90cmVlL2RyaXZlcnMvY2xr
-L2Nsay1maXhlZC1yYXRlLmMjbjE4Cj4gWzJdIAo+IGh0dHBzOi8vbG9yZS5rZXJuZWwub3JnL2xp
-bnV4LWFybS1rZXJuZWwvNjhmNmRjNDRhODIwMmZkODM3OTJlNThhZWExMzc2MzIuc2JveWRAa2Vy
-bmVsLm9yZy8KPiBbM10gCj4gaHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcvbGludXgta2VybmVsLy8y
-MDE0MDUxNTA2NDQyMC45NTIxLjQ3MzgzQHF1YW50dW0vVC8jdAoKQWZ0ZXIgZmluYWxseSBnb2lu
-ZyB0aHJvdWdoIHRoZSB2MSBkaXNjdXNzaW9uIFs0XSBpbiBkZXRhaWwsCmhlcmUgYXJlIG15IGZ1
-cnRoZXIgdGhvdWdodHM6CgotIEkgYWdyZWUgd2l0aCBkcm9wcGluZyB0aGUgRGlvZGVzIHN0dWZm
-LCBbNV0gYmVjYXVzZSBJIHNlZQogICBubyBuZWVkIGZvciB0aGF0IGF0IHRoaXMgcG9pbnQ7ICB0
-aG91Z2gsIGFtIEkgbWlzc2luZwogICBzb21ldGhpbmcsIHdoZXJlIGFyZSB0aGV5IGFjdHVhbGx5
-IHVzZWQ/CgotIEkgYWdyZWUgdGhhdCAiZW5hYmxlLWdwaW9zIiBhbmQgInZkZC1zdXBwbHkiIHNo
-b3VsZCBiZQogICByZXF1aXJlZCBpbiB0aGUgYmluZGluZywgWzVdIGJlY2F1c2UgdGhhdCdzIHRo
-ZSBiYXNpcyBmb3IKICAgc29tZXRoaW5nIHRvIGJlIGFjdHVhbGx5IHJlcHJlc2VudGVkIHRoaXMg
-d2F5CgotIEkgYWdyZWUgdGhhdCBpdCBzaG91bGQgYmUgYmV0dGVyIG5vdCB0byB0b3VjaCBmaXhl
-ZC1jbG9jawogICBhdCB0aGlzIHBvaW50LCBzaW1wbHkgYmVjYXVzZSBpdCdzIHVzZWQgaW4gdmVy
-eSBtYW55IHBsYWNlcywKICAgYW5kIGJlY2F1c2UgaW4gdGhpcyBjYXNlIHdlIG5lZWQgbW9yZSB0
-aGFuIGl0IHJlcXVpcmVzIChzZWUKICAgdGhlIGJ1bGxldCBwb2ludCBhYm92ZSkKCi0gQXMgSSB3
-cm90ZSBhbHJlYWR5LCBbNl0gSSBoaWdobHkgZGlzYWdyZWUgd2l0aCB0aGlzIGJlaW5nCiAgIGNh
-bGxlZCB2b2x0YWdlLWNvbnRyb2xsZWQgb3NjaWxsYXRvciAoVkNPKSwgWzddIHNpbXBseQogICBi
-ZWNhdXNlIGl0IGlzbid0IGEgVkNPLCBidXQgYSBjbG9jayB0aGF0IGNhbiBiZSBnYXRlZDsKICAg
-dGhvdWdoLCBsb29raW5nIGZvcndhcmQgdG8gd2hhdCB0aGUgbGFzdCBidWxsZXQgcG9pbnQKICAg
-YXNrcyB0byBiZSBjbGFyaWZpZWQgZnVydGhlcgoKLSBJIHN0aWxsIHRoaW5rIHRoYXQgZ2F0ZWQt
-Y2xvY2sgaXMgdGhlIGJlc3QgY2hvaWNlIGZvciB0aGUKICAgbmFtZSwgYmVjYXVzZSBpdCB1c2Vz
-ICJjbG9jayIgdGhhdCdzIHVzZWQgdGhyb3VnaG91dCB0aGUKICAgZW50aXJlIGNvZGViYXNlLCBh
-bmQgdXNlcyAiZ2F0ZWQiIHRvIHJlZmxlY3QgdGhlIG5hdHVyZQogICBvZiB0aGUgY2xvY2sgZ2Vu
-ZXJhdG9yCgotIE1heWJlIHdlIGNvdWxkIGFjdHVhbGx5IHVzZSBmaXhlZC1nYXRlZC1jbG9jayBh
-cyB0aGUgbmFtZSwKICAgd2hpY2ggd291bGQgbWFrZSBtb3JlIHNlbnNlIGZyb20gdGhlIHN0YW5w
-b2ludCBvZiBwb3NzaWJseQogICBtZXJnaW5nIGl0IGludG8gZml4ZWQtY2xvY2sgYXQgc29tZSBw
-b2ludCwgYnV0IEknZCBsaWtlCiAgIHRvIGhlYXIgZmlyc3Qgd2hhdCdzIGFjdHVhbGx5IGdvaW5n
-IG9uIHdpdGggdGhlIERpb2RlcwogICBzdHVmZiB0aGF0IHdhcyBkZWxldGVkIGluIHYyLCB3aGlj
-aCBJIGFscmVhZHkgYXNrZWQgYWJvdXQKICAgaW4gdGhlIGZpcnN0IGJ1bGxldCBwb2ludAoKWzRd
-IApodHRwczovL2xvcmUua2VybmVsLm9yZy9saW51eC1yb2NrY2hpcC8yMDI0MDcwOTEyMzEyMS4x
-NDUyMzk0LTEtaGVpa29Ac250ZWNoLmRlL1QvI3UKWzVdIApodHRwczovL2xvcmUua2VybmVsLm9y
-Zy9saW51eC1yb2NrY2hpcC8yZTU4NTJiOWU5NGI5YThkMDI2MWNlN2FkNzlmNDMyOS5zYm95ZEBr
-ZXJuZWwub3JnLwpbNl0gCmh0dHBzOi8vbG9yZS5rZXJuZWwub3JnL2xpbnV4LXJvY2tjaGlwL2Vj
-ODRkYzM3ZTJjNDIxZWU2ZDMxMjk0ZTA4MzkyZDU3QG1hbmphcm8ub3JnLwpbN10gCmh0dHBzOi8v
-bG9yZS5rZXJuZWwub3JnL2xpbnV4LXJvY2tjaGlwL2IzYzQ1MGE5NGJjYjRhZDBiYzViM2M3ZWU4
-NzEyY2I4LnNib3lkQGtlcm5lbC5vcmcvCgo+PiA+ICsKPj4gPiArbWFpbnRhaW5lcnM6Cj4+ID4g
-KyAgLSBIZWlrbyBTdHVlYm5lciA8aGVpa29Ac250ZWNoLmRlPgo+PiA+ICsKPj4gPiArcHJvcGVy
-dGllczoKPj4gPiArICBjb21wYXRpYmxlOgo+PiA+ICsgICAgY29uc3Q6IHZvbHRhZ2Utb3NjaWxs
-YXRvcgo+PiA+ICsKPj4gPiArICAiI2Nsb2NrLWNlbGxzIjoKPj4gPiArICAgIGNvbnN0OiAwCj4+
-ID4gKwo+PiA+ICsgIGNsb2NrLWZyZXF1ZW5jeTogdHJ1ZQo+PiA+ICsKPj4gPiArICBjbG9jay1v
-dXRwdXQtbmFtZXM6Cj4+ID4gKyAgICBtYXhJdGVtczogMQo+PiA+ICsKPj4gPiArICBlbmFibGUt
-Z3Bpb3M6Cj4+ID4gKyAgICBkZXNjcmlwdGlvbjoKPj4gPiArICAgICAgQ29udGFpbnMgYSBzaW5n
-bGUgR1BJTyBzcGVjaWZpZXIgZm9yIHRoZSBHUElPIHRoYXQgZW5hYmxlcyBhbmQgZGlzYWJsZXMK
-Pj4gPiArICAgICAgdGhlIG9zY2lsbGF0b3IuCj4+ID4gKyAgICBtYXhJdGVtczogMQo+PiA+ICsK
-Pj4gPiArICB2ZGQtc3VwcGx5Ogo+PiA+ICsgICAgZGVzY3JpcHRpb246IGhhbmRsZSBvZiB0aGUg
-cmVndWxhdG9yIHRoYXQgcHJvdmlkZXMgdGhlIHN1cHBseSB2b2x0YWdlCj4+ID4gKwo+PiA+ICty
-ZXF1aXJlZDoKPj4gPiArICAtIGNvbXBhdGlibGUKPj4gPiArICAtICIjY2xvY2stY2VsbHMiCj4+
-ID4gKyAgLSBjbG9jay1mcmVxdWVuY3kKPj4gPiArICAtIHZkZC1zdXBwbHkKPj4gPiArCj4+ID4g
-K2FkZGl0aW9uYWxQcm9wZXJ0aWVzOiBmYWxzZQo+PiA+ICsKPj4gPiArZXhhbXBsZXM6Cj4+ID4g
-KyAgLSB8Cj4+ID4gKyAgICB2b2x0YWdlLW9zY2lsbGF0b3Igewo+PiA+ICsgICAgICBjb21wYXRp
-YmxlID0gInZvbHRhZ2Utb3NjaWxsYXRvciI7Cj4+ID4gKyAgICAgICNjbG9jay1jZWxscyA9IDww
-PjsKPj4gPiArICAgICAgY2xvY2stZnJlcXVlbmN5ID0gPDEwMDAwMDAwMDA+Owo+PiA+ICsgICAg
-ICB2ZGQtc3VwcGx5ID0gPCZyZWdfdmRkPjsKPj4gPiArICAgIH07Cj4+ID4gKy4uLgoKX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAg
-bWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xp
-c3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+Hi Dragan,
+
+Am Donnerstag, 18. Juli 2024, 12:53:07 CEST schrieb Dragan Simic:
+> On 2024-07-18 11:25, Heiko St=FCbner wrote:
+> > Am Dienstag, 16. Juli 2024, 18:15:08 CEST schrieb Conor Dooley:
+> >> On Mon, Jul 15, 2024 at 01:02:49PM +0200, Heiko Stuebner wrote:
+> >> > In contrast to fixed clocks that are described as ungateable, boards
+> >> > sometimes use additional oscillators for things like PCIe reference
+> >> > clocks, that need actual supplies to get enabled and enable-gpios to=
+ be
+> >> > toggled for them to work.
+> >> >
+> >> > This adds a binding for such oscillators that are not configurable
+> >> > themself, but need to handle supplies for them to work.
+> >> >
+> >> > In schematics they often can be seen as
+> >> >
+> >> >          ----------------
+> >> > Enable - | 100MHz,3.3V, | - VDD
+> >> >          |    3225      |
+> >> >    GND - |              | - OUT
+> >> >          ----------------
+> >> >
+> >> > or similar. The enable pin might be separate but can also just be ti=
+ed
+> >> > to the vdd supply, hence it is optional in the binding.
+> >> >
+> >> > Signed-off-by: Heiko Stuebner <heiko@sntech.de>
+> >> > ---
+> >> >  .../bindings/clock/voltage-oscillator.yaml    | 49 ++++++++++++++++=
++++
+> >> >  1 file changed, 49 insertions(+)
+> >> >  create mode 100644 Documentation/devicetree/bindings/clock/voltage-=
+oscillator.yaml
+> >> >
+> >> > diff --git a/Documentation/devicetree/bindings/clock/voltage-oscilla=
+tor.yaml b/Documentation/devicetree/bindings/clock/voltage-oscillator.yaml
+> >> > new file mode 100644
+> >> > index 0000000000000..8bff6b0fd582e
+> >> > --- /dev/null
+> >> > +++ b/Documentation/devicetree/bindings/clock/voltage-oscillator.yaml
+> >> > @@ -0,0 +1,49 @@
+> >> > +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> >> > +%YAML 1.2
+> >> > +---
+> >> > +$id: http://devicetree.org/schemas/clock/voltage-oscillator.yaml#
+> >> > +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> >> > +
+> >> > +title: Voltage controlled oscillator
+> >> =
+
+> >> Voltage controlled oscillator? Really? That sounds far too similar to =
+
+> >> a
+> >> VCO to me, and the input voltage here (according to the description at
+> >> least) does not affect the frequency of oscillation.
+> > =
+
+> > That naming was suggested by Stephen in v1 [0] .
+> > =
+
+> > Of course the schematics for the board I have only describe it as
+> > "100MHz,3.3V,3225" , thumbing through some mouser parts matching that
+> > only mentions "supply voltage" in their datasheets but not a dependency
+> > between rate and voltage.
+> > =
+
+> > [0] =
+
+> > https://lore.kernel.org/linux-arm-kernel/b3c450a94bcb4ad0bc5b3c7ee8712c=
+b8.sboyd@kernel.org/
+> > =
+
+> >> Why the dedicated binding, rather than adding a supply and enable-gpio
+> >> to the existing "fixed-clock" binding? I suspect that a large portion =
+
+> >> of
+> >> "fixed-clock"s actually require a supply that is (effectively)
+> >> always-on.
+> > =
+
+> > I guess there are three aspects:
+> > - I do remember discussions in the past about not extending generic
+> >   bindings with device-specific stuff. I think generic power-sequences
+> >   were the topic back then, though that might have changed over time?
+> > - There are places that describe "fixed-clock" as
+> >   "basic fixed-rate clock that cannot gate" [1]
+> > - Stephen also suggested a separate binding [2]
+> > =
+
+> > With the fixed-clock being sort of the root for everything else on most
+> > systems, I opted to leave it alone. I guess if the consenus really is =
+
+> > that
+> > this should go there, I can move it, but discussion in v1
+> > =
+
+> > Interestingly the fixed clock had a gpios property 10 years ago [3] :-) =
+
+> > .
+> > =
+
+> > [1] =
+
+> > https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree=
+/drivers/clk/clk-fixed-rate.c#n18
+> > [2] =
+
+> > https://lore.kernel.org/linux-arm-kernel/68f6dc44a8202fd83792e58aea1376=
+32.sboyd@kernel.org/
+> > [3] =
+
+> > https://lore.kernel.org/linux-kernel//20140515064420.9521.47383@quantum=
+/T/#t
+> =
+
+> After finally going through the v1 discussion [4] in detail,
+> here are my further thoughts:
+> =
+
+> - I agree with dropping the Diodes stuff, [5] because I see
+>    no need for that at this point;  though, am I missing
+>    something, where are they actually used?
+
+On the Rock5 ITX that 100MHz clock comes the one single oscillator thing.
+
+The Diodes parts are not root sources for their clocks but instead sort
+PLLs or something, though their manual describes them as
+"clock generator supporting PCI Express and Ethernet requirements" [8]
+
+So they generate the 100MHz (frequency actually is
+selected by input pins of the chip) from a separate 25MHz source clock.
+
+One example are the Theobroma/Cherry embedded boards changed in v1 where
+they currently are described via existing generic things (no schematics).
+
+Another user is the rk3568-rock3b for example, where the diodes part
+is enabled by the same rail as the port itself, so in contrast to the
+Rock 5 ITX, it works "by accident" on the rock 3b [9]
+
+
+The interesting part of the Diodes ICs is that they actually allow
+configuration of the generated frequency via their S0 + S1 pins,
+though they might be statically set in the board layout without
+being user configurable. (Rock3b does it this way for example)
+
+
+> - I agree that "enable-gpios" and "vdd-supply" should be
+>    required in the binding, [5] because that's the basis for
+>    something to be actually represented this way
+
+I would only require the vdd supply though.
+
+On the Rock 5 ITX, the chip does have an enable-gpio input, but that is
+tied directly to the voltage rail and is not user controllable.
+
+
+> - I agree that it should be better not to touch fixed-clock
+>    at this point, simply because it's used in very many places,
+>    and because in this case we need more than it requires (see
+>    the bullet point above)
+> =
+
+> - As I wrote already, [6] I highly disagree with this being
+>    called voltage-controlled oscillator (VCO), [7] simply
+>    because it isn't a VCO, but a clock that can be gated;
+>    though, looking forward to what the last bullet point
+>    asks to be clarified further
+> =
+
+> - I still think that gated-clock is the best choice for the
+>    name, because it uses "clock" that's used throughout the
+>    entire codebase, and uses "gated" to reflect the nature
+>    of the clock generator
+
+"gated-oscillator" perhaps? =
+
+
+This would make it more explicit that we're talking about a root
+for clock signals. "gated-clock" can be anything, in the middle
+of a clock tree. Having a very generic name, also invites misuse.
+
+
+> - Maybe we could actually use fixed-gated-clock as the name,
+>    which would make more sense from the stanpoint of possibly
+>    merging it into fixed-clock at some point, but I'd like
+>    to hear first what's actually going on with the Diodes
+>    stuff that was deleted in v2, which I already asked about
+>    in the first bullet point
+> =
+
+> [4] =
+
+> https://lore.kernel.org/linux-rockchip/20240709123121.1452394-1-heiko@snt=
+ech.de/T/#u
+> [5] =
+
+> https://lore.kernel.org/linux-rockchip/2e5852b9e94b9a8d0261ce7ad79f4329.s=
+boyd@kernel.org/
+> [6] =
+
+> https://lore.kernel.org/linux-rockchip/ec84dc37e2c421ee6d31294e08392d57@m=
+anjaro.org/
+> [7] =
+
+> https://lore.kernel.org/linux-rockchip/b3c450a94bcb4ad0bc5b3c7ee8712cb8.s=
+boyd@kernel.org/
+
+[8] https://www.diodes.com/assets/Datasheets/PI6C557-03.pdf
+[9] https://dl.radxa.com/rock3/docs/hw/3b/Radxa_ROCK_3B_V1.51_SCH.pdf
+    page 31, bottom left of the page
+
+
+> >> > +
+> >> > +maintainers:
+> >> > +  - Heiko Stuebner <heiko@sntech.de>
+> >> > +
+> >> > +properties:
+> >> > +  compatible:
+> >> > +    const: voltage-oscillator
+> >> > +
+> >> > +  "#clock-cells":
+> >> > +    const: 0
+> >> > +
+> >> > +  clock-frequency: true
+> >> > +
+> >> > +  clock-output-names:
+> >> > +    maxItems: 1
+> >> > +
+> >> > +  enable-gpios:
+> >> > +    description:
+> >> > +      Contains a single GPIO specifier for the GPIO that enables an=
+d disables
+> >> > +      the oscillator.
+> >> > +    maxItems: 1
+> >> > +
+> >> > +  vdd-supply:
+> >> > +    description: handle of the regulator that provides the supply v=
+oltage
+> >> > +
+> >> > +required:
+> >> > +  - compatible
+> >> > +  - "#clock-cells"
+> >> > +  - clock-frequency
+> >> > +  - vdd-supply
+> >> > +
+> >> > +additionalProperties: false
+> >> > +
+> >> > +examples:
+> >> > +  - |
+> >> > +    voltage-oscillator {
+> >> > +      compatible =3D "voltage-oscillator";
+> >> > +      #clock-cells =3D <0>;
+> >> > +      clock-frequency =3D <1000000000>;
+> >> > +      vdd-supply =3D <&reg_vdd>;
+> >> > +    };
+> >> > +...
+> =
+
+
+
+
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
