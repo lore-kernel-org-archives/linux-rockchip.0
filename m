@@ -4,42 +4,42 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 65389C3DA49
-	for <linux-rockchip@archiver.kernel.org>; Thu, 18 Jul 2024 04:33:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D831AC3DA60
+	for <linux-rockchip@archiver.kernel.org>; Thu, 18 Jul 2024 04:36:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
 	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=tGr8BDLTtJr754FlhOdzqC/ULTuh9iep5QEIgl37dEc=; b=qjmhPrpBMuQv4fpYVbE56z+YaW
-	AIsRboqG8aeNuHB9CIwgNrM8AJVfgt/TgW/WRDW+jUXjG0Nc6DgL5pX46HiFtwVI21ndYJTylZDIY
-	zBSAQU5PmSB7PTsswDhRMosvGqlh5K24ifLg/DUi3tWVESBPPraZryjquVy3E0d63l+tqKJ3ND9ck
-	RHVYm+e7vQW8xYKFZMrUE1sDBR5PcJkOM2UQa8pWUUBqJedE9bGruW0WDY9VZyOtGVuRTTWnmiKLP
-	oX94ttwseKPKWQknbibTmKk4eCXcQhVT3O9och9y/wMKUr52h5b8ExkhRue5d8QxKECEkWFsloe4u
-	HUbdWwAA==;
+	bh=9F06l+AXGhdAve6fXyPVtryTsJqm2XMzmx+4OIYzmQw=; b=ge1fCenzCgncUNgucdayBwZsZy
+	+ZZczajatYlbhm9x44dMyczSn+Ip3KIC2VNEcw/e/ORN32NFsEG1+7akI7rCd3t7JJB2P+EFvHEMT
+	hUIpeSiW6zQi+8k1jCl8zLdhXj0ev2ld5xEOazqJEkEkR4e3Z+QBLAQGMZFXFFg/Ec54UVxnDKQt1
+	d7XJmh1f0XEbLGQpxV8uEjaT+9NFK/XTxrCKbE48mqdFBWJU/uMtkVfq0ikic88exob8Ux26gG/T2
+	AN/jQDScJZ4Ou1vGxHM3hf/1oHcrEZAni3KB9bYei49XXEoKXVmboI9bZqqcBD/4SApiaA7uSmZa9
+	PWdDpYuQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sUIpe-0000000Fk1M-2Yu9;
-	Thu, 18 Jul 2024 04:33:30 +0000
-Received: from mail.manjaro.org ([2a01:4f8:c0c:51f3::1])
+	id 1sUIsi-0000000FkKr-2ks0;
+	Thu, 18 Jul 2024 04:36:40 +0000
+Received: from mail.manjaro.org ([116.203.91.91])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sUIpH-0000000Fjwe-32nC;
-	Thu, 18 Jul 2024 04:33:09 +0000
+	id 1sUIsM-0000000FkGj-2OT2;
+	Thu, 18 Jul 2024 04:36:20 +0000
 MIME-Version: 1.0
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
-	t=1721277184;
+	t=1721277377;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=LtwV/4WIDbK+8ZAf8F7AmoboBuDaoArPtGFAuXsacys=;
-	b=ibWb1zOpKy9ZI5nXD1vhDusuMQ4PARctoV12KdFb8hR5WPuN4uPLFz2wfzrkCVgseE9FkK
-	wxr+n+jy7ImDib+jkJ8dY+BQykkD0OnOwX9DtGuHtRTx7izrooNAWEnBz1UeIoA3xfaRH8
-	KCt0YoqpQQRYN8eaeB6fFRn9V8h4I1ighz62TmxdZZz7d9gG92XNJEVEzvAtUfxVUy3kbJ
-	D6guebULiUMWkVarXc7WtMrYBEIWU9+QJznprFnkTcxPJF+zYIZ1Ugk/TB+RK1m0cgNNGE
-	EDM+9AbT8tgs2nyQ5Q0J1QSCPrSqeO9bwgk8b4ZZP9sJNvKrs+aFhh83pW8QgA==
-Date: Thu, 18 Jul 2024 06:33:04 +0200
+	bh=tOqNb1H2eOYhzV9Qd6Dsedv66pK9VwGnewTuikI5a20=;
+	b=IWBaG5kh85WTR4/3uiiIoGv3jOMvzJVWWgErMsjsg9/FqzDS8zGFp6VYN0mVmCV7+i7JO1
+	lnC7i6SW/++7ZISec/iGNU8yYlBfkDCYGxBj9/UcR9gS565ELKGWjEbgobyGPDLBf7czcd
+	yHIs3w75OqHN3iqMSH+hNvqE11oJw8I5huoJwKZm5FxwdpzzHYY+fjWEnV5tqftXEIwlD9
+	+w1NCO1nmIW38pmDcFxGYuN6VJ0S2lAJwGPBiFGsSX5FAZLmLzENLo5r/EkWxuHKMmkNPK
+	HK0rOjWoj0gRjMem88+CC6MUNQ5i27WZd/np4LbF5OivH4nxb/cssi3E5E6zhQ==
+Date: Thu, 18 Jul 2024 06:36:16 +0200
 From: Dragan Simic <dsimic@manjaro.org>
 To: Christopher Obbard <chris.obbard@collabora.com>
 Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
@@ -48,17 +48,18 @@ Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
  linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Kever Yang
  <kever.yang@rock-chips.com>, Collabora Kernel Mailing List
  <kernel@collabora.com>
-Subject: Re: [PATCH v2 0/3] Add support for Firefly Core-PX30-JD4 SoM &
- baseboard
-In-Reply-To: <20240717-rockchip-px30-firefly-v2-0-06541a5a5946@collabora.com>
+Subject: Re: [PATCH v2 1/3] dt-bindings: arm: rockchip: Add Firefly
+ Core-PX30-JD4 with baseboard
+In-Reply-To: <20240717-rockchip-px30-firefly-v2-1-06541a5a5946@collabora.com>
 References: <20240717-rockchip-px30-firefly-v2-0-06541a5a5946@collabora.com>
-Message-ID: <38d7b7e9ab71bf1b0817e666f4233b9e@manjaro.org>
+ <20240717-rockchip-px30-firefly-v2-1-06541a5a5946@collabora.com>
+Message-ID: <0c804e9a0227904b16bfb779f2009af1@manjaro.org>
 X-Sender: dsimic@manjaro.org
 Authentication-Results: ORIGINATING;
 	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240717_213307_951604_CF45BB4F 
-X-CRM114-Status: GOOD (  15.12  )
+X-CRM114-CacheID: sfid-20240717_213618_793923_9EBED3AA 
+X-CRM114-Status: GOOD (  12.03  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,59 +79,44 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 Hello Christopher,
 
 On 2024-07-17 18:46, Christopher Obbard wrote:
-> This adds support for the PX30-based Core-PX30-JD4 system-on-module 
-> from
-> Firefly and includes support for the SoM in combination with the
-> Firefly MB-JD4-PX30 baseboard.
+> Add binding for the Firefly Core-PX30-JD4 SoM when used in conjunction
+> with the MB-JD4-RK3328 & PX30 baseboard.
 > 
+> Signed-off-by: Christopher Obbard <chris.obbard@collabora.com>
 > ---
-> Changes in v2:
-> - Split into two separate files: dtsi for the SoM and dts for the 
-> carrier.
-> - Change devicetree compatible to match SoM/carrier split.
-> - Change device names to better match vendor's name.
-> - Properly model baseboard & SoM regulators.
-> - Properly model baseboard recovery key.
-> - Remove DSI panel (& related nodes) since "sitronix,st7703" compatible
->   is undocumented & hardware is unavailable.
-> - Remove unused audio-related nodes.
-> - Remove unused UART nodes.
-> - Remove unused PMIC pinctrl nodes.
-> - Add node for baseboard LEDs.
-> - Link to v1:
-> https://lore.kernel.org/r/20240716-rockchip-px30-firefly-v1-0-60cdad3023a3@collabora.com
-
-Thanks for the v2.
-
-> ---
-> Christopher Obbard (3):
->       dt-bindings: arm: rockchip: Add Firefly Core-PX30-JD4 with 
-> baseboard
->       arm64: dts: rockchip: add Firefly Core-PX30-JD4 SoM
->       arm64: dts: rockchip: add Firefly JD4 baseboard with 
-> Core-PX30-JD4 SoM
+>  Documentation/devicetree/bindings/arm/rockchip.yaml | 6 ++++++
+>  1 file changed, 6 insertions(+)
 > 
->  .../devicetree/bindings/arm/rockchip.yaml          |   6 +
->  arch/arm64/boot/dts/rockchip/Makefile              |   1 +
->  .../boot/dts/rockchip/px30-firefly-jd4-core.dtsi   | 322 
-> +++++++++++++++++++++
->  arch/arm64/boot/dts/rockchip/px30-firefly-jd4.dts  | 178 ++++++++++++
->  4 files changed, 507 insertions(+)
-
-It would be better to name the new dts(i) files like this:
-
-- px30-firefly-jd4-core.dtsi
-- px30-firefly-jd4-core-mb.dts
-
-This would follow the <SoC>-<brand>-<SoM>-<carrier>.dts pattern, which
-is somewhat common and sorts nicely in directory listings when there's
-more than one carrier board for the same SoM.
-
-> ---
-> base-commit: 51835949dda3783d4639cfa74ce13a3c9829de00
-> change-id: 20240716-rockchip-px30-firefly-59efc93d6784
+> diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml
+> b/Documentation/devicetree/bindings/arm/rockchip.yaml
+> index 1ef09fbfdfaf5..33ca8028bc151 100644
+> --- a/Documentation/devicetree/bindings/arm/rockchip.yaml
+> +++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
+> @@ -148,6 +148,12 @@ properties:
+>            - const: engicam,px30-core
+>            - const: rockchip,px30
 > 
-> Best regards,
+> +      - description: Firefly Core-PX30-JD4 with MB-JD4-PX30 baseboard
+> +        items:
+> +          - const: firefly,px30-mb-jd4
+> +          - const: firefly,px30-core-jd4
+
+Similarly to how I suggested the new dts(i) files to be named, [1]
+the model names should be named like this:
+
+           - const: firefly,px30-jd4-core
+           - const: firefly,px30-jd4-core-mb
+
+This would also follow the "inheritance graph" pattern, so to speak.
+
+[1] 
+https://lore.kernel.org/linux-rockchip/38d7b7e9ab71bf1b0817e666f4233b9e@manjaro.org/
+
+> +          - const: rockchip,px30
+> +
+>        - description: Firefly Firefly-RK3288
+>          items:
+>            - enum:
 
 _______________________________________________
 Linux-rockchip mailing list
