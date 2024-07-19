@@ -4,92 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BBA09C3DA63
-	for <linux-rockchip@archiver.kernel.org>; Thu, 18 Jul 2024 16:46:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D8D91C3DA5D
+	for <linux-rockchip@archiver.kernel.org>; Fri, 19 Jul 2024 12:41:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:Cc:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=L1G7Zy7gLdSy0aYwplDL0H3YRaejtxyOMEGTDczekpg=; b=M0XsSbacX9vha0
-	FZBsuKbIL+9OMHFuE9ulufn+Z0D1c7OJ3Xmsi4WfOTJNdX4rJROZi6M4iVC/VSM8sr97fi5iZXOay
-	mGMb1+5HQ9gtbZ+O3Zk5mVXIEtKJZV/Tc36QfIvmnGn9St9TtYKvK1axroEIxksOZAE4CBDdOzXlr
-	lGIQrQ+lGEjWa+PsuLiNFyS8sryQdyw499skHJU5FkdZoXEWMlTDNn+/R/sEcHvA7j99Zo2PyQOEY
-	amQzEhB9wVmbvaY14vQDUdB+4DTDS9MnDpyOQPDpo3hOODmlME+ZcxIBw/LlMFmhYAL3zGOXcwDqn
-	vH4m9hXSaxoOGHrNngOQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=sfrseAbX56yEf7YAWTg8mPVTQ8ww66Tj9TDOtxa7AGM=; b=SBVTfqW1xnh8gp
+	XYPzmDH3P5+MjxUEVJKxMT5eaHiAAqFEpREO/MGDxwOtBCb2tZKMTGlsFuk7q/u+Q6ht5Pk1Pj3a7
+	0pYedHhJsjt+GFFKNoUg11ZxDkAxSXbBx5XpN5PG3OKK9p/HGQf/1A2vPUgaLUeCNgmOIwyvmhxu3
+	QryfFL//ltRGXXb3uYHLGOKT7/ns4beh3GwHNJBioyuzXynbS5P30QHjzY27WXEyBnVBaDxOCyc78
+	/5cJTy/eti64Sefppmiq9UtGncLjFsLiO94h/X9vq6ncAhLB1O3PDymEGZmwrV5FkRvtFSXvDtlHS
+	orAqCFA9M0B4bvbwLurA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sUUHC-0000000018r-0FpS;
-	Thu, 18 Jul 2024 16:46:42 +0000
-Received: from mail-qk1-x72b.google.com ([2607:f8b0:4864:20::72b])
+	id 1sUmvZ-00000002fsY-05ef;
+	Fri, 19 Jul 2024 12:41:37 +0000
+Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sUUH8-0000000018K-4AvD
-	for linux-rockchip@lists.infradead.org;
-	Thu, 18 Jul 2024 16:46:40 +0000
-Received: by mail-qk1-x72b.google.com with SMTP id af79cd13be357-79ef8e0c294so37763285a.1
-        for <linux-rockchip@lists.infradead.org>; Thu, 18 Jul 2024 09:46:38 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=ndufresne-ca.20230601.gappssmtp.com; s=20230601; t=1721321197; x=1721925997; darn=lists.infradead.org;
-        h=mime-version:user-agent:content-transfer-encoding:references
-         :in-reply-to:date:cc:to:from:subject:message-id:from:to:cc:subject
-         :date:message-id:reply-to;
-        bh=UCJzuich5vcNF0XDpn0++KWksAKuSuGZiqpZTSOzP6g=;
-        b=bGxkppbkMShY2H7dL0k+y3VrqnwX/HqtnCd67qxOtUjclHqTBBNHJ7QIZ/E1BguCaW
-         7Oj4LnRnbZu2B7GOV9DUKZJX79/VJeLVlOR0eqAU3mokznOaVHDUAdD5K0hRsXEKm4ry
-         /yZouS66HfbXesszMOfo1lLz+pWFYRPKF41fi75Apntiea+UYodA7B1l9MTpGue4WVb3
-         HUw/0IXSWBtVK4ybBsDdVihlQdznUq+BttSAXwnF2YdiJtBZRkobVtnz0MTNBN7yG2qp
-         RslFekLxpgwtKiG6CXZjMpVm5n6CSniTxdeERgzwtKj1t97oZqfcATlWpoNrNb9P/2nb
-         6K3A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1721321197; x=1721925997;
-        h=mime-version:user-agent:content-transfer-encoding:references
-         :in-reply-to:date:cc:to:from:subject:message-id:x-gm-message-state
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=UCJzuich5vcNF0XDpn0++KWksAKuSuGZiqpZTSOzP6g=;
-        b=kHAFz4N6Pq/WR8enRadag3+DZLrAejGktlIzaX4pZp3O0EtZt5QtV53PQFJ+H1P+Kh
-         A9kRKgyNcgSLhTZ3QVfwT3/7r1bWwNlgMkjclugvv0XtmsjhwyXeo0T9fjcZQIdywkGX
-         5xT1/fTv+ft3Fo5IihfTPYN8uUi76fpX80GW8yasiXdQRMv5IWaIxlOEmBor5DWm/1gZ
-         Sel1YXiMTbWI5XkC+e3IzTKzUl5aprwsw1eNCP3rASgsaagiCjX+FoMN2s4l07aXRczp
-         nPq47hILJcaQHL8NEmOX9DvM8APQlrx1XXrdIrlaYIm7bxu3lV3sJY+06LhJq7N6jOB5
-         Lx0Q==
-X-Forwarded-Encrypted: i=1; AJvYcCUjilJaCkmzsWR1YQxjbT23aHfrNq0bsN6SpwYxYWwE7JkKknpXCRqxQQaiTaWOvUiNMjSSKmR+yOaFDh3m28B0Mwc9TWoSddkFKONFHeIaivK0
-X-Gm-Message-State: AOJu0YwjEqPYOk7bu9gx9+3i0uxCiF5xuxIPQgfTDIbxCs4BE5MZhk4n
-	ibBRWfGH+kjYj/0XZxbQ4qo4tYWR8HuWahLFEJXgN/2rl/9jx+ti/TEYoWXzvVk=
-X-Google-Smtp-Source: AGHT+IHJwrUl/hDdqC/9tlGT2hk67IHXHUg+9Nt8C0hnwHeNLUcBO/UNKF5hNdOJ0fKvP8V96Myt1g==
-X-Received: by 2002:a05:620a:4014:b0:79f:7c0:ebfd with SMTP id af79cd13be357-7a193929281mr215018785a.16.1721321197324;
-        Thu, 18 Jul 2024 09:46:37 -0700 (PDT)
-Received: from nicolas-tpx395.lan ([2606:6d00:15:6720::7a9])
-        by smtp.gmail.com with ESMTPSA id af79cd13be357-7a19396e2b6sm41538085a.109.2024.07.18.09.46.36
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 18 Jul 2024 09:46:36 -0700 (PDT)
-Message-ID: <7a5167163f1df60899c9e2bfef1e42e0c67567f7.camel@ndufresne.ca>
-Subject: Re: [PATCH v4 1/2] media: videodev2: Add flags to unconditionnaly
- enumerate pixels formats
-From: Nicolas Dufresne <nicolas@ndufresne.ca>
-To: Benjamin Gaignard <benjamin.gaignard@collabora.com>, Jacopo Mondi
-	 <jacopo.mondi@ideasonboard.com>
-Cc: mchehab@kernel.org, ezequiel@vanguardiasur.com.ar,
- hverkuil-cisco@xs4all.nl,  linux-media@vger.kernel.org,
- linux-kernel@vger.kernel.org,  linux-rockchip@lists.infradead.org,
- kernel@collabora.com
-Date: Thu, 18 Jul 2024 12:46:35 -0400
-In-Reply-To: <069a9e2b-f0bc-46a7-aaec-f30157e9be2d@collabora.com>
-References: <20240717131430.159727-1-benjamin.gaignard@collabora.com>
-	 <20240717131430.159727-2-benjamin.gaignard@collabora.com>
-	 <2kbxr3hkjbcnaqescxmlcerziixg72icqpug6wa25eeggy2pnj@vqmxe4ojcwml>
-	 <dfc292f8-0014-4bf4-9429-31f729a176cd@collabora.com>
-	 <ok2a4ubzka6rhzyj2c5op73ij7pw35g6e75whc2jjget62fatx@zka2ewyt3kfv>
-	 <c8358d79bd51a9bfa5116b33ae5e7766b95d344d.camel@ndufresne.ca>
-	 <1faa7098-b108-480e-ae4b-ed25e0020e51@collabora.com>
-	 <7113029e2e192d43523a1ea5dae041fb53ae5948.camel@ndufresne.ca>
-	 <b454d93d607047c63663b3f003b3d3c23f07bac7.camel@ndufresne.ca>
-	 <069a9e2b-f0bc-46a7-aaec-f30157e9be2d@collabora.com>
-User-Agent: Evolution 3.52.2 (3.52.2-1.fc40) 
+	id 1sUmvA-00000002fiq-2SGc;
+	Fri, 19 Jul 2024 12:41:14 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1721392867;
+	bh=jpW8O/L/herCuHQaX8hjINcDbnq8S2jCguUnnrp6+ws=;
+	h=From:To:Cc:Subject:Date:From;
+	b=m5xIESBTOe/XpkqaQkzBc8srw76momAYMLAceG9wGMT9Ywiq6B+Uv078PpX03v1Db
+	 g8BJglXBq9L71Yfg2YUSwJqz2FkDiLLiiQrrKOXH2vtwJJdvL9pBC4vg1oC91WIJg1
+	 rRD68s3WlQnBd/7g1enl7QyN1KXNw6iw21c+MBR9zhF51hHwtWgt4aUYMdsgnI1c6M
+	 aou1tR8ByJKFp1rJVMvlef0QvwLafM9PqAEfMWfSZineSLEcjWNGrQvrR/CUgTAUu4
+	 10JX1Yl4CUCyp5SE8AWPh/FEDA9a0R2bjb2m9usJPnvD35gxlnAKHhsmbrFliNCbXo
+	 +9afQp8YYp9KA==
+Received: from shreeya.shreeya (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: shreeya)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id AA74C378215E;
+	Fri, 19 Jul 2024 12:41:02 +0000 (UTC)
+From: Shreeya Patel <shreeya.patel@collabora.com>
+To: heiko@sntech.de,
+	mchehab@kernel.org,
+	robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
+	mturquette@baylibre.com,
+	sboyd@kernel.org,
+	p.zabel@pengutronix.de,
+	jose.abreu@synopsys.com,
+	nelson.costa@synopsys.com,
+	shawn.wen@rock-chips.com,
+	nicolas.dufresne@collabora.com,
+	hverkuil@xs4all.nl,
+	hverkuil-cisco@xs4all.nl
+Cc: kernel@collabora.com,
+	linux-kernel@vger.kernel.org,
+	linux-media@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	Shreeya Patel <shreeya.patel@collabora.com>
+Subject: [PATCH v4 0/4] Add Synopsys DesignWare HDMI RX Controller
+Date: Fri, 19 Jul 2024 18:10:28 +0530
+Message-Id: <20240719124032.26852-1-shreeya.patel@collabora.com>
+X-Mailer: git-send-email 2.39.2
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240718_094639_323358_B48C907D 
-X-CRM114-Status: GOOD (  36.96  )
+X-CRM114-CacheID: sfid-20240719_054112_943663_351D39B3 
+X-CRM114-Status: GOOD (  22.89  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,104 +84,224 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-TGUgamV1ZGkgMTgganVpbGxldCAyMDI0IMOgIDE2OjQzICswMjAwLCBCZW5qYW1pbiBHYWlnbmFy
-ZCBhIMOpY3JpdMKgOgo+IExlIDE4LzA3LzIwMjQgw6AgMTY6MDIsIE5pY29sYXMgRHVmcmVzbmUg
-YSDDqWNyaXTCoDoKPiA+IExlIGpldWRpIDE4IGp1aWxsZXQgMjAyNCDDoCAwOTo1NiAtMDQwMCwg
-Tmljb2xhcyBEdWZyZXNuZSBhIMOpY3JpdMKgOgo+ID4gPiBIaSwKPiA+ID4gCj4gPiA+IExlIGpl
-dWRpIDE4IGp1aWxsZXQgMjAyNCDDoCAwOTowNCArMDIwMCwgQmVuamFtaW4gR2FpZ25hcmQgYSDD
-qWNyaXTCoDoKPiA+ID4gPiBMZSAxNy8wNy8yMDI0IMOgIDE5OjUwLCBOaWNvbGFzIER1ZnJlc25l
-IGEgw6ljcml0wqA6Cj4gPiA+IFsuLi5dCj4gPiA+IAo+ID4gPiA+ID4gPiA+ID4gPiBAQCAtMTU2
-OSw2ICsxNTY5LDcgQEAgc3RhdGljIGludCB2NGxfZW51bV9mbXQoY29uc3Qgc3RydWN0IHY0bDJf
-aW9jdGxfb3BzICpvcHMsCj4gPiA+ID4gPiA+ID4gPiA+ICAgICAJaW50IHJldCA9IGNoZWNrX2Zt
-dChmaWxlLCBwLT50eXBlKTsKPiA+ID4gPiA+ID4gPiA+ID4gICAgIAl1MzIgbWJ1c19jb2RlOwo+
-ID4gPiA+ID4gPiA+ID4gPiAgICAgCXUzMiBjYXBfbWFzazsKPiA+ID4gPiA+ID4gPiA+ID4gKwl1
-MzIgZmxhZ3M7Cj4gPiA+ID4gPiA+ID4gPiA+IAo+ID4gPiA+ID4gPiA+ID4gPiAgICAgCWlmIChy
-ZXQpCj4gPiA+ID4gPiA+ID4gPiA+ICAgICAJCXJldHVybiByZXQ7Cj4gPiA+ID4gPiA+ID4gPiA+
-IEBAIC0xNTc4LDggKzE1NzksMTAgQEAgc3RhdGljIGludCB2NGxfZW51bV9mbXQoY29uc3Qgc3Ry
-dWN0IHY0bDJfaW9jdGxfb3BzICpvcHMsCj4gPiA+ID4gPiA+ID4gPiA+ICAgICAJCXAtPm1idXNf
-Y29kZSA9IDA7Cj4gPiA+ID4gPiA+ID4gPiA+IAo+ID4gPiA+ID4gPiA+ID4gPiAgICAgCW1idXNf
-Y29kZSA9IHAtPm1idXNfY29kZTsKPiA+ID4gPiA+ID4gPiA+ID4gKwlmbGFncyA9IHAtPmZsYWdz
-ICYgVjRMMl9GTVRfRkxBR19FTlVNX0FMTF9GT1JNQVRTOwo+ID4gPiA+ID4gPiA+ID4gPiAgICAg
-CW1lbXNldF9hZnRlcihwLCAwLCB0eXBlKTsKPiA+ID4gPiA+ID4gPiA+ID4gICAgIAlwLT5tYnVz
-X2NvZGUgPSBtYnVzX2NvZGU7Cj4gPiA+ID4gPiA+ID4gPiA+ICsJcC0+ZmxhZ3MgPSBmbGFnczsK
-PiA+ID4gPiA+ID4gPiA+IFdvbid0IHRoaXMgc2V0IFY0TDJfRk1UX0ZMQUdfRU5VTV9BTExfRk9S
-TUFUUyAoaWYgcHJlc2VudCkgaW4gdGhlCj4gPiA+ID4gPiA+ID4gPiBmbGFncyByZXR1cm5lZCB0
-byB1c2Vyc3BhY2UgPyBTaG91bGRuJ3QgYmUgZHJpdmVycyB0byBzZXQKPiA+ID4gPiA+ID4gPiA+
-IFY0TDJfRk1UX0ZMQUdfQUxMX0ZPUk1BVFMgaW5zdGVhZCA/Cj4gPiA+ID4gPiA+ID4gbWVtc2V0
-X2FmdGVyIHplcm9lZCBmbGFncyBmaWVsZCBzbyB3ZSBuZWVkIHRoaXMgdG8gc2VuZCBWNEwyX0ZN
-VF9GTEFHX0VOVU1fQUxMX0ZPUk1BVFMKPiA+ID4gPiA+ID4gPiBmbGFnIHRvIGRyaXZlcnMuIFJl
-dHVybiBpdCB0byB1c2Vyc3BhY2UgaXMgYSBzaWRlIGVmZmVjdCBidXQgSSBkb24ndCB0aGF0IGlz
-IHByb2JsZW0KPiA+ID4gPiA+ID4gPiBzaW5jZSBpdCBzZXQgaXQgYW55d2F5Lgo+ID4gPiA+ID4g
-PiA+IAo+ID4gPiA+ID4gPiBPaywgaWYgdGhlIGV4cGVjdGF0aW9uIGlzIHRoYXQgdGhlIGZsYWcg
-aXMgcHJlc2VydmVkIHRocm91Z2ggdGhlIGlvY3RsCj4gPiA+ID4gPiA+IGNhbGwsIHRoaXMgaXMg
-ZmluZSB3aXRoIG1lCj4gPiA+ID4gPiBJIG1pZ2h0IGJlIG1pc3Npbmcgc29tZXRoaW5nIG90aGVy
-IHNpbWlsYXIgZmVhdHVyZXMgYXJlIGV4cGxpY2l0bHkgYWR2ZXJ0aXNlZCBieQo+ID4gPiA+ID4g
-ZHJpdmVycy4gVGhpcyB3YXksIHRoZSBnZW5lcmljIGxheWVyIGNhbiBrZWVwIG9yIGNsZWFyIHRo
-ZSBmbGFnIGJhc2VkIG9mIGlmIGl0cwo+ID4gPiA+ID4gc3VwcG9ydGVkLiBUaGUgZmFjdCB0aGUg
-ZmxhZyBwZXJzaXN0IHRoZSBpb2N0bCgpIG9yIG5vdCBlbmR1cCBoYXZpbmcgYSB1c2VmdWwKPiA+
-ID4gPiA+IHNlbWFudGljLgo+ID4gPiA+ID4gCj4gPiA+ID4gPiBDb3VsZCB3ZSBkbyB0aGUgc2Ft
-ZT8KPiA+ID4gPiBJdCBpcyB0aGUgb25seSBmbGFnIHNldCBieSB1c2Vyc3BhY2Ugd2hlbiBjYWxs
-aW5nIHRoZSBpb2N0bCgpLCBhbGwgb3RoZXJzCj4gPiA+ID4gYXJlIHNldCBieSB0aGUgZHJpdmVy
-cy4KPiA+ID4gPiBJIGNhbiBjbGVhbiBpdCBmcm9tIHRoZSBpb2N0bCgpIHN0cnVjdHVyZSBhZnRl
-ciBkcml2ZXIgY2FsbCBidXQgdGhhdCB3b24ndCBjaGFuZ2UgYW55dGhpbmcuCj4gPiA+IFRoaXMg
-ZG9lcyBub3QgYW5zd2VyIG15IHF1ZXN0aW9uLiBJbiBvdGhlciBzaW1pbGFyIGZlYXR1cmUsIHdl
-IGhhdmUgYW4KPiA+ID4gKippbnRlcm5hbCoqIGZsYWcgc2V0IGJ5IGRyaXZlcnMgdG8gdGVsbCB0
-aGUgZnJhbWV3b3JrIHRoYXQgc3VjaCBmZWF0dXJlIGlzCj4gPiA+IGFibGVkLiBVc2luZyB0aGF0
-LCB0aGUgZnJhbWV3b3JrIGNhbiBrZWVwIG9yIHJlbW92ZSB0aGF0IGZsYWcgYmFzZWQgb24gaWYg
-aXRzCj4gPiA+IHN1cHBvcnRlZCBvciBub3QuIFRoaXMgd2F5LCB1c2Vyc3BhY2UgaGF2ZSBhIGNs
-dWUgaWYgdGhlIGRyaXZlciBkbyBoYXZlIHRoaXMKPiA+ID4gc3VwcG9ydCBvciBpZiB0aGUgcmV0
-dXJuZWQgcmVzdWx0IChpbiB0aGF0IGNhc2UpIGlzIGp1c3QgYSBzdWJzZXQgbWF0Y2hpbmcgdGhl
-Cj4gPiA+IGNvbmZpZ3VyYXRpb24uIFdlIGRvbid0IHNlZW0gdG8gaGF2ZSBkb25lIHRoZSBzYW1l
-IGxldmVsIG9mIGVmZm9ydCBoZXJlLgo+ID4gRm9yIHRoZSByZWZlcmVuY2UsIHlvdSBhY3R1YWxs
-eSB1c2UgdGhhdCBzZW1hbnRpYyBpbiBHU3RyZWFtZXIgaW1wbGVtZW50YXRpb24sCj4gPiBidXQg
-dGhlIGtlcm5lbCBjb2RlIHNlZW1zIGJyb2tlbi4KPiA+IAo+ID4gaHR0cHM6Ly9naXRsYWIuZnJl
-ZWRlc2t0b3Aub3JnL2dzdHJlYW1lci9nc3RyZWFtZXIvLS9tZXJnZV9yZXF1ZXN0cy83MDc4L2Rp
-ZmZzI2ViOTBkNTQ5NWRmMmYwODVmMTYzOTk2MDE0Yzc0OGEzNmYxNDNmNzZfNTE2XzUyNwo+IAo+
-IGRldmljZV9jYXBzIHUzMiBmaWVsZCBpcyBhbHJlYWR5IGFsbW9zdCBmdWxseSB1c2VkLCBvbmx5
-IG9uZSAxIGJpdCBpcyBmcmVlLgo+IEkgY291bGQgdXNlIGl0IGJ1dCwgZm9yIG1lLCB0aGUgY2Fw
-YWJpbGl0eSB0byBlbnVtZXJhdGUgYWxsIHRoZSBmb3JtYXRzCj4gZG9lc24ndCBmaXQgd2VsbCBp
-biB0aGUgZXhpc3RpbmcgbGlzdC4KClNvcnJ5LCBidXQgSSB3aWxsIHJlLWl0ZXJhdGUgdGhhdCBJ
-IGRvbid0IG1lYW4gdG8gYWRkIGEgdUFQSSBidXQgYW4gKippbnRlcm5hbCoqCmZsYWcgYmV0d2Vl
-biBkcml2ZXIgYW5kIGZyYW1ld29yay4gVGhpcyB3YXkgdGhlIGZyYW1ld29yayBrbm93cyBhdCBs
-ZWFzdC4KCj4gCj4gQmVuamFtaW4KPiAKPiA+IAo+ID4gPiBOaWNvbGFzCj4gPiA+IAo+ID4gPiA+
-ID4gPiBSZXZpZXdlZC1ieTogSmFjb3BvIE1vbmRpIDxqYWNvcG8ubW9uZGlAaWRlYXNvbmJvYXJk
-LmNvbT4KPiA+ID4gPiA+ID4gCj4gPiA+ID4gPiA+ID4gPiA+ICAgICAJc3dpdGNoIChwLT50eXBl
-KSB7Cj4gPiA+ID4gPiA+ID4gPiA+ICAgICAJY2FzZSBWNEwyX0JVRl9UWVBFX1ZJREVPX0NBUFRV
-UkU6Cj4gPiA+ID4gPiA+ID4gPiA+IGRpZmYgLS1naXQgYS9pbmNsdWRlL3VhcGkvbGludXgvdmlk
-ZW9kZXYyLmggYi9pbmNsdWRlL3VhcGkvbGludXgvdmlkZW9kZXYyLmgKPiA+ID4gPiA+ID4gPiA+
-ID4gaW5kZXggZmU2YjY3ZTgzNzUxLi5iNmE1ZGE3OWJhMjEgMTAwNjQ0Cj4gPiA+ID4gPiA+ID4g
-PiA+IC0tLSBhL2luY2x1ZGUvdWFwaS9saW51eC92aWRlb2RldjIuaAo+ID4gPiA+ID4gPiA+ID4g
-PiArKysgYi9pbmNsdWRlL3VhcGkvbGludXgvdmlkZW9kZXYyLmgKPiA+ID4gPiA+ID4gPiA+ID4g
-QEAgLTg4Niw2ICs4ODYsOCBAQCBzdHJ1Y3QgdjRsMl9mbXRkZXNjIHsKPiA+ID4gPiA+ID4gPiA+
-ID4gICAgICNkZWZpbmUgVjRMMl9GTVRfRkxBR19DU0NfSFNWX0VOQwkJVjRMMl9GTVRfRkxBR19D
-U0NfWUNCQ1JfRU5DCj4gPiA+ID4gPiA+ID4gPiA+ICAgICAjZGVmaW5lIFY0TDJfRk1UX0ZMQUdf
-Q1NDX1FVQU5USVpBVElPTgkJMHgwMTAwCj4gPiA+ID4gPiA+ID4gPiA+ICAgICAjZGVmaW5lIFY0
-TDJfRk1UX0ZMQUdfTUVUQV9MSU5FX0JBU0VECQkweDAyMDAKPiA+ID4gPiA+ID4gPiA+ID4gKyNk
-ZWZpbmUgVjRMMl9GTVRfRkxBR19FTlVNX0FMTF9GT1JNQVRTCQkweDA0MDAKPiA+ID4gPiA+ID4g
-PiA+ID4gKyNkZWZpbmUgVjRMMl9GTVRfRkxBR19BTExfRk9STUFUUwkJMHgwODAwCj4gPiA+ID4g
-PiA+ID4gPiA+IAo+ID4gPiA+ID4gPiA+ID4gPiAgICAgCS8qIEZyYW1lIFNpemUgYW5kIGZyYW1l
-IHJhdGUgZW51bWVyYXRpb24gKi8KPiA+ID4gPiA+ID4gPiA+ID4gICAgIC8qCj4gPiA+ID4gPiA+
-ID4gPiA+IC0tCj4gPiA+ID4gPiA+ID4gPiA+IDIuNDMuMAo+ID4gPiA+ID4gPiA+ID4gPiAKPiA+
-ID4gPiA+ID4gPiA+ID4gCj4gPiA+ID4gPiA+ID4gPiBfX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fXwo+ID4gPiA+ID4gPiA+ID4gS2VybmVsIG1haWxpbmcgbGlz
-dCAtLSBrZXJuZWxAbWFpbG1hbi5jb2xsYWJvcmEuY29tCj4gPiA+ID4gPiA+ID4gPiBUbyB1bnN1
-YnNjcmliZSBzZW5kIGFuIGVtYWlsIHRvIGtlcm5lbC1sZWF2ZUBtYWlsbWFuLmNvbGxhYm9yYS5j
-b20KPiA+ID4gPiA+ID4gPiA+IFRoaXMgbGlzdCBpcyBtYW5hZ2VkIGJ5IGh0dHBzOi8vbWFpbG1h
-bi5jb2xsYWJvcmEuY29tCj4gPiA+ID4gX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX18KPiA+ID4gPiBLZXJuZWwgbWFpbGluZyBsaXN0IC0tIGtlcm5lbEBtYWls
-bWFuLmNvbGxhYm9yYS5jb20KPiA+ID4gPiBUbyB1bnN1YnNjcmliZSBzZW5kIGFuIGVtYWlsIHRv
-IGtlcm5lbC1sZWF2ZUBtYWlsbWFuLmNvbGxhYm9yYS5jb20KPiA+ID4gPiBUaGlzIGxpc3QgaXMg
-bWFuYWdlZCBieSBodHRwczovL21haWxtYW4uY29sbGFib3JhLmNvbQo+ID4gPiBfX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwo+ID4gPiBLZXJuZWwgbWFpbGlu
-ZyBsaXN0IC0tIGtlcm5lbEBtYWlsbWFuLmNvbGxhYm9yYS5jb20KPiA+ID4gVG8gdW5zdWJzY3Jp
-YmUgc2VuZCBhbiBlbWFpbCB0byBrZXJuZWwtbGVhdmVAbWFpbG1hbi5jb2xsYWJvcmEuY29tCj4g
-PiA+IFRoaXMgbGlzdCBpcyBtYW5hZ2VkIGJ5IGh0dHBzOi8vbWFpbG1hbi5jb2xsYWJvcmEuY29t
-CgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgt
-cm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcK
-aHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hp
-cAo=
+This series implements support for the Synopsys DesignWare
+HDMI RX Controller, being compliant with standard HDMI 1.4b
+and HDMI 2.0.
+
+Features that are currently supported by the HDMI RX driver
+have been tested on rock5b board using a HDMI to micro-HDMI cable.
+It is recommended to use a good quality cable as there were
+multiple issues seen during testing the driver.
+
+Please note the below information :-
+* While testing the driver on rock5b we noticed that the binary BL31
+from Rockchip contains some unknown code to get the HDMI-RX PHY
+access working without any errors.
+With TF-A BL31, the HDMI-RX PHY also works fine but there were no
+interrupts seen for rk_hdmirx-hdmi leading to some errors when
+loading the driver [0]. It doesn't affect the functionality of the
+driver though.
+* We have tested the working of OBS studio with HDMIRX driver and
+there were no issues seen.
+* We also tested and verified the support for interlaced video.
+
+[0] https://gitlab.collabora.com/hardware-enablement/rockchip-3588/trusted-firmware-a/-/issues/1
+
+To test the HDMI RX Controller driver, following example commands can be used :-
+
+root@debian-rockchip-rock5b-rk3588:~# v4l2-ctl --verbose -d /dev/video0 \
+--set-fmt-video=width=1920,height=1080,pixelformat='BGR3' --stream-mmap=4 \
+--stream-skip=3 --stream-count=100 --stream-to=/home/hdmiin4k.raw --stream-poll
+
+root@debian-rockchip-rock5b-rk3588:~# ffmpeg -f rawvideo -vcodec rawvideo \
+-s 1920x1080 -r 60 -pix_fmt bgr24 -i /home/hdmiin4k.raw output.mkv
+
+CEC compliance test results :-
+
+* https://gitlab.collabora.com/-/snippets/381
+* https://gitlab.collabora.com/-/snippets/380
+
+Following is the v4l2-compliance test result :-
+
+root@debian-rockchip-rock5b-rk3588:~# v4l2-compliance -d /dev/video0
+v4l2-compliance 1.27.0-5220, 64 bits, 64-bit time_t
+v4l2-compliance SHA: 8387e3673837 2024-07-01 11:09:32
+
+Compliance test for snps_hdmirx device /dev/video0:
+
+Driver Info:
+	Driver name      : snps_hdmirx
+	Card type        : snps_hdmirx
+	Bus info         : platform:fdee0000.hdmi-receiver
+	Driver version   : 6.10.0
+	Capabilities     : 0x84201000
+		Video Capture Multiplanar
+		Streaming
+		Extended Pix Format
+		Device Capabilities
+	Device Caps      : 0x04201000
+		Video Capture Multiplanar
+		Streaming
+		Extended Pix Format
+
+Required ioctls:
+	test VIDIOC_QUERYCAP: OK
+	test invalid ioctls: OK
+
+Allow for multiple opens:
+	test second /dev/video0 open: OK
+	test VIDIOC_QUERYCAP: OK
+	test VIDIOC_G/S_PRIORITY: OK
+	test for unlimited opens: OK
+
+Debug ioctls:
+	test VIDIOC_DBG_G/S_REGISTER: OK (Not Supported)
+	test VIDIOC_LOG_STATUS: OK
+
+Input ioctls:
+	test VIDIOC_G/S_TUNER/ENUM_FREQ_BANDS: OK (Not Supported)
+	test VIDIOC_G/S_FREQUENCY: OK (Not Supported)
+	test VIDIOC_S_HW_FREQ_SEEK: OK (Not Supported)
+	test VIDIOC_ENUMAUDIO: OK (Not Supported)
+	test VIDIOC_G/S/ENUMINPUT: OK
+	test VIDIOC_G/S_AUDIO: OK (Not Supported)
+	Inputs: 1 Audio Inputs: 0 Tuners: 0
+
+Output ioctls:
+	test VIDIOC_G/S_MODULATOR: OK (Not Supported)
+	test VIDIOC_G/S_FREQUENCY: OK (Not Supported)
+	test VIDIOC_ENUMAUDOUT: OK (Not Supported)
+	test VIDIOC_G/S/ENUMOUTPUT: OK (Not Supported)
+	test VIDIOC_G/S_AUDOUT: OK (Not Supported)
+	Outputs: 0 Audio Outputs: 0 Modulators: 0
+
+Input/Output configuration ioctls:
+	test VIDIOC_ENUM/G/S/QUERY_STD: OK (Not Supported)
+	test VIDIOC_ENUM/G/S/QUERY_DV_TIMINGS: OK
+	test VIDIOC_DV_TIMINGS_CAP: OK
+	test VIDIOC_G/S_EDID: OK
+
+Control ioctls (Input 0):
+	test VIDIOC_QUERY_EXT_CTRL/QUERYMENU: OK
+	test VIDIOC_QUERYCTRL: OK
+	test VIDIOC_G/S_CTRL: OK
+	test VIDIOC_G/S/TRY_EXT_CTRLS: OK
+	test VIDIOC_(UN)SUBSCRIBE_EVENT/DQEVENT: OK
+	test VIDIOC_G/S_JPEGCOMP: OK (Not Supported)
+	Standard Controls: 3 Private Controls: 0
+
+Format ioctls (Input 0):
+	test VIDIOC_ENUM_FMT/FRAMESIZES/FRAMEINTERVALS: OK
+	test VIDIOC_G/S_PARM: OK
+	test VIDIOC_G_FBUF: OK (Not Supported)
+	test VIDIOC_G_FMT: OK
+	test VIDIOC_TRY_FMT: OK
+	test VIDIOC_S_FMT: OK
+	test VIDIOC_G_SLICED_VBI_CAP: OK (Not Supported)
+	test Cropping: OK (Not Supported)
+	test Composing: OK (Not Supported)
+	test Scaling: OK (Not Supported)
+
+Codec ioctls (Input 0):
+	test VIDIOC_(TRY_)ENCODER_CMD: OK (Not Supported)
+	test VIDIOC_G_ENC_INDEX: OK (Not Supported)
+	test VIDIOC_(TRY_)DECODER_CMD: OK (Not Supported)
+
+Buffer ioctls (Input 0):
+	test VIDIOC_REQBUFS/CREATE_BUFS/QUERYBUF: OK
+	test CREATE_BUFS maximum buffers: OK
+	test VIDIOC_REMOVE_BUFS: OK
+	test VIDIOC_EXPBUF: OK
+	test Requests: OK (Not Supported)
+
+Total for snps_hdmirx device /dev/video0: 47, Succeeded: 47, Failed: 0, Warnings: 0
+
+Changes in v4 :-
+  - Remove DTS changes included in the device tree patch
+  - Remove the hdmi rx pin info as it's already present
+    in the rk3588-base-pinctrl.dtsi
+  - Create a separate config option for selecting the EDID
+    and enable it by default
+  - Improve the comment related to DV timings and move it
+    to the side of hdmirx_get_detected_timings
+  - Add 100ms delay before pulling the HPD high
+  - Do not return the detected timings from VIDIOC_G_DV_TIMINGS
+  - Drop the bus info from hdmirx_querycap
+  - If *num_planes != 0 then return 0 in hdmirx_queue_setup
+  - Set queue->min_queued_buffers to 1
+  - Drop q->allow_cache_hints = 0; as it's always 0 by default
+  - Add a comment for q->dma_attrs = DMA_ATTR_FORCE_CONTIGUOUS;
+  - Drop .read = vb2_fop_read as it's not supported by driver
+  - Remove redundant edid_init_data_600M
+  - Make HPD low when driver is loaded
+  - Add support for reading AVI Infoframe
+  - Remove msg_len checks from hdmirx_cec_transmit
+  - Add info about the CEC compliance test in the cover letter
+  - Add arbitration lost status
+  - Validate the physical address inside the EDID
+
+Changes in v3 :-
+  - Use v4l2-common helpers in the HDMIRX driver
+  - Rename cma node and phandle names
+  - Elaborate the comment to explain 160MiB calculation
+  - Move &hdmi_receiver_cma to the rock5b dts file
+  - Add information about interlaced video testing in the
+    cover-letter
+
+Changes in v2 :-
+  - Fix checkpatch --strict warnings
+  - Move the dt-binding include file changes in a separate patch
+  - Add a description for the hardware in the dt-bindings file
+  - Rename resets, vo1 grf and HPD properties
+  - Add a proper description for grf and vo1-grf phandles in the
+    bindings
+  - Rename the HDMI RX node name to hdmi-receiver
+  - Include gpio header file in binding example to fix the
+    dt_binding_check failure
+  - Move hdmirx_cma node to the rk3588.dtsi file
+  - Add an entry to MAINTAINERS file for the HDMIRX driver
+
+Shreeya Patel (4):
+  MAINTAINERS: Add entry for Synopsys DesignWare HDMI RX Driver
+  dt-bindings: media: Document bindings for HDMI RX Controller
+  arm64: dts: rockchip: Add device tree support for HDMI RX Controller
+  media: platform: synopsys: Add support for hdmi input driver
+
+ .../bindings/media/snps,dw-hdmi-rx.yaml       |  132 +
+ MAINTAINERS                                   |    8 +
+ .../dts/rockchip/rk3588-base-pinctrl.dtsi     |   14 +
+ .../arm64/boot/dts/rockchip/rk3588-extra.dtsi |   56 +
+ drivers/media/platform/Kconfig                |    1 +
+ drivers/media/platform/Makefile               |    1 +
+ drivers/media/platform/synopsys/Kconfig       |    3 +
+ drivers/media/platform/synopsys/Makefile      |    2 +
+ .../media/platform/synopsys/hdmirx/Kconfig    |   27 +
+ .../media/platform/synopsys/hdmirx/Makefile   |    4 +
+ .../platform/synopsys/hdmirx/snps_hdmirx.c    | 2763 +++++++++++++++++
+ .../platform/synopsys/hdmirx/snps_hdmirx.h    |  394 +++
+ .../synopsys/hdmirx/snps_hdmirx_cec.c         |  285 ++
+ .../synopsys/hdmirx/snps_hdmirx_cec.h         |   44 +
+ 14 files changed, 3734 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/media/snps,dw-hdmi-rx.yaml
+ create mode 100644 drivers/media/platform/synopsys/Kconfig
+ create mode 100644 drivers/media/platform/synopsys/Makefile
+ create mode 100644 drivers/media/platform/synopsys/hdmirx/Kconfig
+ create mode 100644 drivers/media/platform/synopsys/hdmirx/Makefile
+ create mode 100644 drivers/media/platform/synopsys/hdmirx/snps_hdmirx.c
+ create mode 100644 drivers/media/platform/synopsys/hdmirx/snps_hdmirx.h
+ create mode 100644 drivers/media/platform/synopsys/hdmirx/snps_hdmirx_cec.c
+ create mode 100644 drivers/media/platform/synopsys/hdmirx/snps_hdmirx_cec.h
+
+-- 
+2.39.2
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
