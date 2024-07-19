@@ -4,52 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AAA00C3DA5D
-	for <linux-rockchip@archiver.kernel.org>; Fri, 19 Jul 2024 13:16:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 39ADBC3DA59
+	for <linux-rockchip@archiver.kernel.org>; Fri, 19 Jul 2024 13:37:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=jpuyoPnq79l5dwAYV4fK2fqiChchkejh736wUFgnOdk=; b=huOpInNe/id1wT
-	MRyKDuVEtJSMe+DshP1Iyy1z6hKBauYZO4F9TFElTxXskmCOcJTOflEWMe7yhs9esnHh9ixLaqd4L
-	O4/hoVivn5gQenR0yYAT3XzWQ25rEH3U7Yh0HhnUUOPl43UbmlbL811LXj2+zktxryLgU2MOkX6T0
-	FLiHqJvqc4+PBE3Yw6wm+HqJSlxUnCsX3oqxOYvPM1MSpoHeaoZe/tbpgXV9DSL0kHzpAYLQ2rUlL
-	zYJrDrSdGJbMK2M6/tt6f0Vxz56rDOCjUIzxTnxAJu7bfianm5927SVgmUMiuaBtcz+2MgBLNN0PT
-	W/ynGi3vPfEF2UD/Sg+Q==;
+	List-Owner; bh=hgf4S+4/xUAQ72dxvll4CyDz4BX3gYzIkWm1F241UZo=; b=1IPn/7QsaiXzgf
+	zmK/URDkDCDdt+Kc2CsfOaBKw2c4duGPnSx+QesgeIw8Dhjd3une9ATRIjOKFG49pvXAiHLfKOPGF
+	JZW7ixz+sy16+JOhcpRzZzXzDb+fQX0WZ5FLFMHiHGX43IL2VOMmHBhvmsVbuUiZu7HzpYWwhevjv
+	CGjR2MYJWdGKjmtSXQZE5XVxG8XNalg7WdYj9zWsvLxFkLBuvmAd9U4DPFGqCTxl2nWDknc2z/DiY
+	8BszGpJBNk2fMDKqckm6fF6iLQTu/R6t4LH88255o6fDI9lN3YzoAL8LdJ8+PxB72bN9ad6NCl93G
+	b3CAjSjtp3eysnA8/D7Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sUnSt-00000002k3J-1Bsm;
-	Fri, 19 Jul 2024 13:16:03 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1sUnnU-00000002nke-2pm1;
+	Fri, 19 Jul 2024 13:37:20 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sUnSq-00000002k22-0QQ8
+	id 1sUnnR-00000002nj5-25iw
 	for linux-rockchip@lists.infradead.org;
-	Fri, 19 Jul 2024 13:16:02 +0000
+	Fri, 19 Jul 2024 13:37:19 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 5905D61BBB;
-	Fri, 19 Jul 2024 13:15:59 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7FE79C32782;
-	Fri, 19 Jul 2024 13:15:57 +0000 (UTC)
-Message-ID: <91c2843f-b8e9-42cb-b4e9-fe7b13df9f53@xs4all.nl>
-Date: Fri, 19 Jul 2024 15:15:56 +0200
+	by dfw.source.kernel.org (Postfix) with ESMTP id D6CAF61B8A;
+	Fri, 19 Jul 2024 13:37:16 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 038C4C32782;
+	Fri, 19 Jul 2024 13:37:14 +0000 (UTC)
+Message-ID: <98f5cd5c-cb9c-45ca-a7c7-a546f525c393@xs4all.nl>
+Date: Fri, 19 Jul 2024 15:37:13 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 1/2] media: videodev2: Add flags to unconditionnaly
- enumerate pixels formats
+Subject: Re: [PATCH v4 0/2] Enumerate all pixels formats
 To: Benjamin Gaignard <benjamin.gaignard@collabora.com>, mchehab@kernel.org,
  ezequiel@vanguardiasur.com.ar
 Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-rockchip@lists.infradead.org, kernel@collabora.com
 References: <20240717131430.159727-1-benjamin.gaignard@collabora.com>
- <20240717131430.159727-2-benjamin.gaignard@collabora.com>
+ <07f62fbb-d1eb-41c3-86a8-13a082a8374f@xs4all.nl>
+ <743e2589-c0df-461d-97d4-fafe78c334ea@collabora.com>
 Content-Language: en-US, nl
 From: Hans Verkuil <hverkuil-cisco@xs4all.nl>
-In-Reply-To: <20240717131430.159727-2-benjamin.gaignard@collabora.com>
+In-Reply-To: <743e2589-c0df-461d-97d4-fafe78c334ea@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240719_061600_328818_35D46394 
-X-CRM114-Status: GOOD (  39.00  )
+X-CRM114-CacheID: sfid-20240719_063717_876359_E49F7C95 
+X-CRM114-Status: GOOD (  30.13  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -61,164 +61,93 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 17/07/2024 15:14, Benjamin Gaignard wrote:
-> Add new flags to enumerate all pixels formats when calling VIDIOC_ENUM_FMT ioctl.
-> When this V4L2_FMT_FLAG_ENUM_ALL_FORMATS flag is set drivers must
-> ignore the configuration and return the hardware supported pixel
-> formats for the specified queue.
-> To distinguish this particular enumeration case V4L2_FMT_FLAG_ALL_FORMATS
-> flag must be set by the drivers to highlight support of this feature
-> to user space applications.
-> This will permit to discover which pixel formats are supported
-> without setting codec-specific information so userland can more easily
-> know if the driver suits its needs well.
-> The main target are stateless decoders so update the documentation
-> about how to use this flag.
-> 
-> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-> ---
-> changes in version 4:
-> - Explicitly document that the new flags are targeting mem2mem devices.
-> 
->  .../userspace-api/media/v4l/dev-stateless-decoder.rst |  6 ++++++
->  .../userspace-api/media/v4l/vidioc-enum-fmt.rst       | 11 +++++++++++
->  .../userspace-api/media/videodev2.h.rst.exceptions    |  2 ++
->  drivers/media/v4l2-core/v4l2-ioctl.c                  |  3 +++
->  include/uapi/linux/videodev2.h                        |  2 ++
->  5 files changed, 24 insertions(+)
-> 
-> diff --git a/Documentation/userspace-api/media/v4l/dev-stateless-decoder.rst b/Documentation/userspace-api/media/v4l/dev-stateless-decoder.rst
-> index 35ed05f2695e..b0b657de910d 100644
-> --- a/Documentation/userspace-api/media/v4l/dev-stateless-decoder.rst
-> +++ b/Documentation/userspace-api/media/v4l/dev-stateless-decoder.rst
-> @@ -58,6 +58,12 @@ Querying capabilities
->       default values for these controls being used, and a returned set of formats
->       that may not be usable for the media the client is trying to decode.
->  
-> +   * If the ``V4L2_FMT_FLAG_ENUM_ALL_FORMATS`` flag is set the driver must enumerate
-> +     all the supported formats without taking care of codec-dependent controls
-> +     set on the ``OUTPUT`` queue. To indicate that the driver has take care of this
-> +     flag it must set ``V4L2_FMT_FLAG_ALL_FORMATS`` flag for each format while
-> +     enumerating.
-> +
->  3. The client may use :c:func:`VIDIOC_ENUM_FRAMESIZES` to detect supported
->     resolutions for a given format, passing desired pixel format in
->     :c:type:`v4l2_frmsizeenum`'s ``pixel_format``.
-> diff --git a/Documentation/userspace-api/media/v4l/vidioc-enum-fmt.rst b/Documentation/userspace-api/media/v4l/vidioc-enum-fmt.rst
-> index 3adb3d205531..15bc2f59c05a 100644
-> --- a/Documentation/userspace-api/media/v4l/vidioc-enum-fmt.rst
-> +++ b/Documentation/userspace-api/media/v4l/vidioc-enum-fmt.rst
-> @@ -234,6 +234,17 @@ the ``mbus_code`` field is handled differently:
->  	valid. The buffer consists of ``height`` lines, each having ``width``
->  	Data Units of data and the offset (in bytes) between the beginning of
->  	each two consecutive lines is ``bytesperline``.
-> +    * - ``V4L2_FMT_FLAG_ENUM_ALL_FORMATS``
-> +      - 0x0400
-> +      - Set by userland applications to enumerate all possible pixel formats
-> +        without taking care of any OUTPUT or CAPTURE queue configuration.
-> +        This flag is relevant only for mem2mem devices.
-> +    * - ``V4L2_FMT_FLAG_ALL_FORMATS``
-> +      - 0x0800
-> +      - Set by the driver to indicated that format have been enumerated because
-> +        :ref:`V4L2_FMT_FLAG_ENUM_ALL_FORMATS <v4l2-pix-fmt-flag-set-csc>` has
-> +        been set by the userland application.
-> +        This flag is relevant only for mem2mem devices.
->  
->  Return Value
->  ============
-> diff --git a/Documentation/userspace-api/media/videodev2.h.rst.exceptions b/Documentation/userspace-api/media/videodev2.h.rst.exceptions
-> index bdc628e8c1d6..7a3a1e9dc055 100644
-> --- a/Documentation/userspace-api/media/videodev2.h.rst.exceptions
-> +++ b/Documentation/userspace-api/media/videodev2.h.rst.exceptions
-> @@ -216,6 +216,8 @@ replace define V4L2_FMT_FLAG_CSC_YCBCR_ENC fmtdesc-flags
->  replace define V4L2_FMT_FLAG_CSC_HSV_ENC fmtdesc-flags
->  replace define V4L2_FMT_FLAG_CSC_QUANTIZATION fmtdesc-flags
->  replace define V4L2_FMT_FLAG_META_LINE_BASED fmtdesc-flags
-> +replace define V4L2_FMT_FLAG_ENUM_ALL_FORMATS fmtdesc-flags
-> +replace define V4L2_FMT_FLAG_ALL_FORMATS fmtdesc-flags
->  
->  # V4L2 timecode types
->  replace define V4L2_TC_TYPE_24FPS timecode-type
-> diff --git a/drivers/media/v4l2-core/v4l2-ioctl.c b/drivers/media/v4l2-core/v4l2-ioctl.c
-> index 4c76d17b4629..5785a98b6ba2 100644
-> --- a/drivers/media/v4l2-core/v4l2-ioctl.c
-> +++ b/drivers/media/v4l2-core/v4l2-ioctl.c
-> @@ -1569,6 +1569,7 @@ static int v4l_enum_fmt(const struct v4l2_ioctl_ops *ops,
->  	int ret = check_fmt(file, p->type);
->  	u32 mbus_code;
->  	u32 cap_mask;
-> +	u32 flags;
->  
->  	if (ret)
->  		return ret;
-> @@ -1578,8 +1579,10 @@ static int v4l_enum_fmt(const struct v4l2_ioctl_ops *ops,
->  		p->mbus_code = 0;
->  
->  	mbus_code = p->mbus_code;
-> +	flags = p->flags & V4L2_FMT_FLAG_ENUM_ALL_FORMATS;
->  	memset_after(p, 0, type);
->  	p->mbus_code = mbus_code;
-> +	p->flags = flags;
->  
->  	switch (p->type) {
->  	case V4L2_BUF_TYPE_VIDEO_CAPTURE:
-> diff --git a/include/uapi/linux/videodev2.h b/include/uapi/linux/videodev2.h
-> index fe6b67e83751..b6a5da79ba21 100644
-> --- a/include/uapi/linux/videodev2.h
-> +++ b/include/uapi/linux/videodev2.h
-> @@ -886,6 +886,8 @@ struct v4l2_fmtdesc {
->  #define V4L2_FMT_FLAG_CSC_HSV_ENC		V4L2_FMT_FLAG_CSC_YCBCR_ENC
->  #define V4L2_FMT_FLAG_CSC_QUANTIZATION		0x0100
->  #define V4L2_FMT_FLAG_META_LINE_BASED		0x0200
-> +#define V4L2_FMT_FLAG_ENUM_ALL_FORMATS		0x0400
-> +#define V4L2_FMT_FLAG_ALL_FORMATS		0x0800
-
-For reasons mentioned earlier, you cannot make the flags field an input to the
-driver, that will almost certainly break some applications that do not zero
-the flags field today, since they expect it to be set by the driver.
-
-What probably will work is to add a flag to the index field: this would be
-similar to what I do in VIDIOC_QUERYCTRL where you can OR the id field with
-V4L2_CTRL_FLAG_NEXT_CTRL to modify the behavior.
-
-It is perfectly fine to use the top bits of the index for this.
-
-Drivers that do not support this will just fail with EINVAL, and drivers that
-do support this will return a proper format.
-
-Applications can easily test support for this by just calling ENUM_FMT with 0
-ORed with the new flag: if it is supported, then it will return 0, otherwise
--EINVAL.
-
-With this scheme I think you can also drop the proposed V4L2_FMT_FLAG_ALL_FORMATS
-flag.
-
-But as I mentioned in my reply to the cover letter of this series, I am not
-convinced we really need this, and if we do, then I am not convinced about
-the name of the flag.
-
-And I would also like to know if such a feature can be used by m2m drivers
-that are not codecs (e.g. scalers, csc converters), and if that would impact
-the name/description of the flag.
-
-It is currently very specific for decoders, but I prefer to see a more general
-solution, not just for one specific corner case.
-
-Regards,
-
-	Hans
-
->  
->  	/* Frame Size and frame rate enumeration */
->  /*
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gMTkvMDcvMjAyNCAxNToxNSwgQmVuamFtaW4gR2FpZ25hcmQgd3JvdGU6Cj4gCj4gTGUgMTkv
+MDcvMjAyNCDDoCAxNDo1NywgSGFucyBWZXJrdWlsIGEgw6ljcml0wqA6Cj4+IE9uIDE3LzA3LzIw
+MjQgMTU6MTQsIEJlbmphbWluIEdhaWduYXJkIHdyb3RlOgo+Pj4gVGhlIGdvYWwgb2YgdGhpcyBz
+ZXJpZXMgaXMgdG8gbGV0IHVzZXJsYW5kIGFwcGxpY2F0aW9ucyBlbnVtZXJhdGUKPj4+IGFsbCB0
+aGUgc3VwcG9ydGVkIHBpeGVscyBmb3JtYXRzIG9mIGEgc3RhdGVsZXNzIGRlY29kZXIgd2l0aG91
+dAo+Pj4gc2V0dGluZyBhbGwgdGhlIHBvc3NpYmxlIGNvZGVjLWRlcGVuZGVudCBjb250cm9sLgo+
+Pj4gVGhhdCBvZmZlciBhIHNpbXBsZXN0IHNvbHV0aW9uIGZvciBhcHBsaWNhdGlvbnMgdG8gZGlz
+Y292ZXIKPj4+IHN1cHBvcnRlZCBwaXhlbHMgZm9ybWF0cyBhbmQgcG9zc2libHkgbGV0IHRoZW0g
+ZG9pbmcgc21hcnRlcgo+Pj4gY2hvaWNlIGJldHdlZW4gc3RhdGVsZXNzIGRlY29kZXJzLgo+Pj4K
+Pj4+IEFuIGV4YW1wbGUgb2YgaG93IGl0IGNhbiBiZSB1c2VkIGluIEdTdHJlYW1lciB0byBkaXNj
+b3ZlciB0aGUKPj4+IHN1cHBvcnRlZCBwaXhlbHMgZm9ybWF0cyBmb3Igc3RhdGVsZXNzIGRlY29k
+ZXIgaXMgYXZhaWxhYmxlIGhlcmU6Cj4+PiBodHRwczovL2dpdGxhYi5mcmVlZGVza3RvcC5vcmcv
+YmVuamFtaW4uZ2FpZ25hcmQxL2dzdHJlYW1lci8tL2NvbW1pdHMvdjRsMmNvZGVjc19lbnVtX2Fs
+bF9zdXBwb3J0ZWRfZm9ybWF0cz9yZWZfdHlwZT1oZWFkcwo+PiBTbyBlZmZlY3RpdmVseSBzcGVj
+aWZ5aW5nIHRoaXMgZmxhZyBtYWtlcyBFTlVNX0ZNVCBhbHNvIHJldHVybgo+PiBmb3JtYXRzIHRo
+YXQgZG8gbm90IG1hdGNoIHRoZSBiaXQgZGVwdGguCj4+Cj4+IFNvIHRoZSBBVjEgKGZvciBleGFt
+cGxlKSBjb21wcmVzc2VkIHZpZGVvIHVzZXMgZS5nLiA4IGJpdCBkZXB0aCwgYnV0IGluc3RlYWQg
+b2YganVzdAo+PiBsaXN0aW5nIG9ubHkgOCBiaXQgdW5jb21wcmVzc2VkIHBpeGVsZm9ybWF0cywg
+eW91IHdhbnQgdG8gbGlzdCB0aGVtIGZvciBhbnkKPj4gYml0IGRlcHRoLgo+Pgo+PiBCdXQgd2hh
+dCBpcyB0aGUgcG9pbnQgb2YgdGhhdCBpZiB0aGUgZGVjb2RlciBjYW4ndCBkZWNvZGUgOCBiaXQg
+Y29tcHJlc3NlZCB0bywKPj4gc2F5LCAxMCBiaXQgdW5jb21wcmVzc2VkIHZpZGVvPwo+IAo+IE5v
+IGRlY29kZXIgd2lsbCBkbyA4IGJpdHMgdG8gMTAgYml0cyAoYXMgZmFyIEkga25vd3MpLgo+IFRo
+ZSBwb2ludCBpcyB0byBiZSBhYmxlIHRvIHNheSB0aGF0IGRlY29kZXIgY291bGQgcHJvZHVjZSAx
+MCBiaXQgZnJhbWVzIHdpdGhvdXQKPiBzZXR0aW5nIGEgZnVsbCBzcHMvcHBzIGZvciBlYWNoIGNh
+c2UgKGFuZCBmb3IgZWFjaCBzdXBwb3J0ZWQgY29kZWMpLgo+IAo+Pgo+PiBJIGFjdHVhbGx5IHRo
+b3VnaHQgdGhhdCB0aGlzIGZsYWcgd291bGQganVzdCBsaXN0IGFsbCBmb3JtYXRzLCBpbmRlcGVu
+ZGVudAo+PiBvZiB0aGUgb3V0cHV0IGZvcm1hdCAoZS5nLiBBVjEsIEgyNjQsIGV0Yy4pLCBidXQg
+dGhhdCBkb2VzIG5vdCBhcHBlYXIgdG8gYmUKPj4gdGhlIGNhc2U/IEkuZS4sIGlmIGNhcHR1cmUg
+cGl4ZWxmb3JtYXQgWCBpcyBvbmx5IGF2YWlsYWJsZSB3aXRoIEFWMSwgd2lsbCB0aGF0IHN0aWxs
+Cj4+IGJlIGxpc3RlZCBpZiB0aGUgb3V0cHV0IHBpeGVsIGlzIHNldCB0byBIMjY0Pwo+Pgo+PiBJ
+IHRoaW5rIHlvdSBuZWVkIHRvIGRlc2NyaWJlIGEgcmVhbCB1c2UtY2FzZSBoZXJlLCBhbmQgSSBh
+bSBub3QgY29udmluY2VkIGFib3V0Cj4+IHRoZSBuYW1lIG9mIHRoZSBmbGFnIGVpdGhlci4KPiAK
+PiBJIG1heSBoYXZlIG1pc3Mgc29tZXRoaW5nIGJ1dCB5ZXMgdGhlIGdvYWwgaXMgdG8gbGlzdCBh
+bGwgZm9ybWF0cyBpbmRlcGVuZGVudGx5Cj4gb2YgdGhlIG91dHB1dCBmb3JtYXQuCj4gV2hlbiBh
+IFNvQyBoYXZlIG11bHRpcGxlIGRlY29kZXJzIGZvciB0aGUgc2FtZSBjb2RlYywga25vd2luZyB0
+aGUgc3VwcG9ydGVkIGZvcm1hdHMKPiBpcyBrZXkgdG8gc2VsZWN0IHRoZSBiZXR0ZXIgb25lLgo+
+IFNpbmNlIEkgd2lsbCBoYXZlIHRvIGRvIG1vcmUgaXRlcmF0aW9uLCBmZWVsIGZyZWUgdG8gcHJv
+dmlkZSBhIGJldHRlciBuYW1lIGZvciB0aGUKPiBmbGFnKHMpLiBJJ20gYWx3YXlzIGJhZCBmb3Ig
+bmFtaW5nIHRoaXMga2luZCBvZiB0aGluZy4KClRoYXQgcmVhbGx5IG5lZWRzIHRvIGJlIGNsYXJp
+ZmllZCwgc2luY2UgaW4gcGF0Y2ggMS8yIGl0IHNheXM6CgorICAgKiBJZiB0aGUgYGBWNEwyX0ZN
+VF9GTEFHX0VOVU1fQUxMX0ZPUk1BVFNgYCBmbGFnIGlzIHNldCB0aGUgZHJpdmVyIG11c3QgZW51
+bWVyYXRlCisgICAgIGFsbCB0aGUgc3VwcG9ydGVkIGZvcm1hdHMgd2l0aG91dCB0YWtpbmcgY2Fy
+ZSBvZiBjb2RlYy1kZXBlbmRlbnQgY29udHJvbHMKKyAgICAgc2V0IG9uIHRoZSBgYE9VVFBVVGBg
+IHF1ZXVlLiBUbyBpbmRpY2F0ZSB0aGF0IHRoZSBkcml2ZXIgaGFzIHRha2UgY2FyZSBvZiB0aGlz
+CisgICAgIGZsYWcgaXQgbXVzdCBzZXQgYGBWNEwyX0ZNVF9GTEFHX0FMTF9GT1JNQVRTYGAgZmxh
+ZyBmb3IgZWFjaCBmb3JtYXQgd2hpbGUKKyAgICAgZW51bWVyYXRpbmcuCgpIZXJlIGl0IGp1c3Qg
+dGFsa3MgYWJvdXQgJ2NvZGVjLWRlcGVuZGVudCBjb250cm9scyBzZXQgb24gdGhlIGBgT1VUUFVU
+YGAgcXVldWUnLCBpdApkb2Vzbid0IHNheSBhbnl0aGluZyBhYm91dCB0aGUgY29tcHJlc3NlZCBw
+aXhlbGZvcm1hdCBzZXQgZm9yIHRoZSBPVVRQVVQgcXVldWUuCgpBbmQgcGF0Y2ggMi8yIHNldHMg
+dGhlIGlnbm9yZV9kZXB0aF9tYXRjaCBib29sZWFuLCBzdWdnZXN0aW5nIGFsc28gdGhhdCBpdCBp
+cwpub3QgbGlzdGluZyBhbGwgZm9ybWF0cywgYnV0IGp1c3QgaWdub3JpbmcgYSBzcGVjaWZpYyBj
+aGVjay4KCkJ1dCBpZiB5b3UgbGlzdCBhbGwgcGl4ZWxmb3JtYXRzIHdpdGhvdXQgdGFraW5nIHRo
+ZSBPVVRQVVQgcGl4ZWxmb3JtYXQgaW50bwphY2NvdW50LCBob3cgZG8geW91IGtub3cgd2hpY2gg
+cGl4ZWxmb3JtYXQgaXMgdmFsaWQgZm9yIHdoaWNoIGNvZGVjPwoKU2F5IHRoYXQgb25seSBNUEVH
+IHN1cHBvcnQgTlYxMiAoanVzdCBmb3IgdGhlIHNha2Ugb2YgYXJndW1lbnQpLCBhbmQgdGhhdCdz
+CndoYXQgeW91IHdhbnQgdG8gdXNlLCB5b3UgaGF2ZSBubyB3YXkgb2Yga25vd2luZyB0aGF0IE5W
+MTIgaXMgc3BlY2lmaWMgdG8gTVBFRywKeW91IHdvdWxkIGhhdmUgdG8gdHJ5IGVhY2ggY29kZWMg
+YW5kIHNlZSBpZiBOVjEyIGlzIHN1cHBvcnRlZCBmb3IgdGhhdCBjb2RlYy4KCkkganVzdCBkb24n
+dCBzZWUgaG93IHRoaXMgY2FuIGJlIHVzZWQgaW4gcHJhY3RpY2UuCgpXaGF0IGV4YWN0bHkgaXMg
+dGhlIHByb2JsZW0geW91IHdhbnQgdG8gc29sdmU/IEEgcmVhbC1saWZlIHByb2JsZW0sIG5vdCBh
+IHRoZW9yZXRpY2FsCm9uZSA6LSkKClJlZ2FyZHMsCgoJSGFucwoKPiAKPiAKPj4KPj4+IGNoYW5n
+ZXMgaW4gdmVyc2lvbiA0Ogo+Pj4gLSBFeHBsaWNpdGx5IGRvY3VtZW50IHRoYXQgdGhlIG5ldyBm
+bGFncyBhcmUgdGFyZ2V0aW5nIG1lbTJtZW0gZGV2aWNlcy4KPj4+Cj4+PiBjaGFuZ2VzIGluIHZl
+cnNpb24gMzoKPj4+IC0gQWRkIGEgZmxhZyB0byBpbmZvcm0gdXNlcnNwYWNlIGFwcGxpY2F0aW9u
+IHRoYXQgZHJpdmVyCj4+PiDCoMKgIGFzIHRha2UgY2FyZSBvZiB0aGUgZmxhZy4KPj4+Cj4+PiBj
+aGFuZ2VzIGluIHZlcnNpb24gMjoKPj4+IC0gQ2xhcmlmeSBkb2N1bWVudGF0aW9uLgo+Pj4gLSBP
+bmx5IGtlZXAgVjRMMl9GTVRfRkxBR19BTExfRk9STUFUUyBmbGFnIGluIGlvY3RsLgo+Pj4KPj4+
+IEJlbmphbWluCj4+Pgo+Pj4gQmVuamFtaW4gR2FpZ25hcmQgKDIpOgo+Pj4gwqDCoCBtZWRpYTog
+dmlkZW9kZXYyOiBBZGQgZmxhZ3MgdG8gdW5jb25kaXRpb25uYWx5IGVudW1lcmF0ZSBwaXhlbHMK
+Pj4+IMKgwqDCoMKgIGZvcm1hdHMKPj4gSS5lLjogaXQgaXMgbm90IHVuY29uZGl0aW9uYWxseSwg
+aXQgc3RpbGwgZGVwZW5kcyBvbiB0aGUgY2hvc2VuIGNvZGVjLgo+Pgo+PiBSZWdhcmRzLAo+Pgo+
+PiDCoMKgwqDCoEhhbnMKPj4KPj4+IMKgwqAgbWVkaWE6IHZlcmlzaWxpY29uOiBVc2UgVjRMMl9G
+TVRfRkxBR19FTlVNX0FMTF9GT1JNQVRTIGZsYWcKPj4+Cj4+PiDCoCAuLi4vbWVkaWEvdjRsL2Rl
+di1zdGF0ZWxlc3MtZGVjb2Rlci5yc3TCoMKgwqDCoMKgwqDCoMKgwqAgfMKgIDYgKysrKysrCj4+
+PiDCoCAuLi4vdXNlcnNwYWNlLWFwaS9tZWRpYS92NGwvdmlkaW9jLWVudW0tZm10LnJzdMKgIHwg
+MTEgKysrKysrKysrKysKPj4+IMKgIC4uLi9tZWRpYS92aWRlb2RldjIuaC5yc3QuZXhjZXB0aW9u
+c8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCB8wqAgMiArKwo+Pj4gwqAgZHJpdmVycy9tZWRpYS9w
+bGF0Zm9ybS92ZXJpc2lsaWNvbi9oYW50cm9fdjRsMi5jIHwgMTYgKysrKysrKysrKysrKy0tLQo+
+Pj4gwqAgZHJpdmVycy9tZWRpYS92NGwyLWNvcmUvdjRsMi1pb2N0bC5jwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgIHzCoCAzICsrKwo+Pj4gwqAgaW5jbHVkZS91YXBpL2xpbnV4L3ZpZGVvZGV2Mi5o
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIHzCoCAyICsrCj4+PiDCoCA2IGZp
+bGVzIGNoYW5nZWQsIDM3IGluc2VydGlvbnMoKyksIDMgZGVsZXRpb25zKC0pCj4+Pgo+Pgo+IAoK
+Cl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJv
+Y2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0
+dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
