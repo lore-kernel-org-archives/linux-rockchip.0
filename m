@@ -4,49 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 631E9C3DA59
-	for <linux-rockchip@archiver.kernel.org>; Sat, 20 Jul 2024 21:12:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4413DC3DA49
+	for <linux-rockchip@archiver.kernel.org>; Sat, 20 Jul 2024 21:12:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Ci4fQaQMw7uiFFeIYL9eMo+zAei4qEKTjZNPeaqyR2c=; b=1PJgwkCjoPf2et
-	CF4/M9PXiMlXzr4OU4ayDOkVnZ45YefGIiylwM4OxEdu/tHOv5yjx9ty9WPGcfQXX2sxQOfj1yV0D
-	G90kI6CbHqptG4YgLZzpNhCU55eW5ASw/yKuPFv0K9/d5CUKoiC6SuCfB1zkNLlFG+k430pEJRGSc
-	zVYAWUuLK+auelNIXs6r6sZ3B/qiVL9xijWRtCiuJqyi353pOahzIdGNf11EmoYbkwqzFYwQRLK/l
-	wjZZqIeikctpzqUkm6OzBF1X2RAQejx1rjWNAAnhI9/jgV3pPEOnGCzOEK4++cFS9k0ezG4OMU52e
-	myvWe8vaBBXtydt17Uow==;
+	List-Owner; bh=8EQ0lxMOuVn+Thb51BjJDeGZ3wBTThfguml38a6erAE=; b=wlB9TFX+XqPGU/
+	EXwzEIAdd3FMxbUrw+QjGX/LCQeFSErHgmRkaZkuFplb29OH0vcT2CuadZjAUmfSTatxrYqRI0rHg
+	LG8rbgxcsiWw8sN9NV+FA2aypWa6KfLqiY/P1Iv0OCJ6vZ53k0Hft+ZWrSlGfF28dsuLqK/qsaHe0
+	3gRSAJY+Laf1QC6a2cB6hokofbRrb1Zn1gOFZgCX+l7vLo5aV/5f9jN8vdTG2SjteKnYkn3XzCakm
+	YASzGBWj1fsBG2Dofh+7OcoDNXXb0qZixnuoUvbmfVxdABt/paSYmyE0MnqnzEZbIlqzT6V3m5aL8
+	LrDaMR1sHjL0V8hd8ppA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sVHNt-00000005gbP-1M32;
+	id 1sVHNt-00000005gbg-2vpe;
 	Sat, 20 Jul 2024 21:12:53 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sVHMB-00000005fvr-0Ixw;
-	Sat, 20 Jul 2024 21:11:08 +0000
-Received: from i5e860cd3.versanet.de ([94.134.12.211] helo=phil.lan)
+	id 1sVHMT-00000005g1g-1e1V;
+	Sat, 20 Jul 2024 21:11:26 +0000
+Received: from i5e860cd3.versanet.de ([94.134.12.211] helo=diego.localnet)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1sVHKE-00061D-4I; Sat, 20 Jul 2024 23:09:06 +0200
-From: Heiko Stuebner <heiko@sntech.de>
-To: heiko@sntech.de
-Cc: ukleinek@debian.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH 8/8] arm64: dts: rockchip: add hdd leds to Qnap-TS433
-Date: Sat, 20 Jul 2024 23:08:56 +0200
-Message-Id: <20240720210856.778014-11-heiko@sntech.de>
-X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20240720210856.778014-1-heiko@sntech.de>
+	id 1sVHMS-00067D-52; Sat, 20 Jul 2024 23:11:24 +0200
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+To: linux-rockchip@lists.infradead.org
+Cc: ukleinek@debian.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+Subject: Re: [PATCH 4/8] arm64: dts: rockchip: enable usb ports on qnap ts433
+Date: Sat, 20 Jul 2024 23:11:23 +0200
+Message-ID: <3384439.9LS3J3VOpE@diego>
+In-Reply-To: <20240720210856.778014-6-heiko@sntech.de>
 References: <20240720210856.778014-1-heiko@sntech.de>
+ <20240720210856.778014-6-heiko@sntech.de>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240720_141107_156411_926C9448 
-X-CRM114-Status: GOOD (  10.60  )
+X-CRM114-CacheID: sfid-20240720_141125_469836_CD22D3E7 
+X-CRM114-Status: GOOD (  11.19  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -63,102 +61,20 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add the 4 gpio-controlled LEDs to the Qnap-TS433.
+Am Samstag, 20. Juli 2024, 23:08:51 CEST schrieb Heiko Stuebner:
+> Enable usb controllers and phys and add regulator infrastructure for the
+> usb ports on the ts433.
+> 
+> Of course there are no schematics available for the device, so the
+> regulator information comes from the vendor-devicetree with unknown
+> accuracy.
+> 
+> Signed-off-by: Heiko Stuebner <heiko@sntech.de>
 
-They are meant for individual disk activitivy, but I haven't found a
-way for how to connect them to their individual sata slot yet.
+ignore this one ;-)
 
-Signed-off-by: Heiko Stuebner <heiko@sntech.de>
----
- .../boot/dts/rockchip/rk3568-qnap-ts433.dts   | 59 +++++++++++++++++++
- 1 file changed, 59 insertions(+)
+I updated the subject and them fumbled with git-format-patch
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3568-qnap-ts433.dts b/arch/arm64/boot/dts/rockchip/rk3568-qnap-ts433.dts
-index c05433ca7dda4..d36467c2baf02 100644
---- a/arch/arm64/boot/dts/rockchip/rk3568-qnap-ts433.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3568-qnap-ts433.dts
-@@ -6,6 +6,7 @@
- 
- /dts-v1/;
- 
-+#include <dt-bindings/leds/common.h>
- #include <dt-bindings/gpio/gpio.h>
- #include "rk3568.dtsi"
- 
-@@ -22,6 +23,46 @@ chosen: chosen {
- 		stdout-path = "serial2:115200n8";
- 	};
- 
-+	leds {
-+		compatible = "gpio-leds";
-+
-+		led_hdd1: led-0 {
-+			color = <LED_COLOR_ID_GREEN>;
-+			function = LED_FUNCTION_DISK;
-+			gpios = <&gpio1 RK_PD5 GPIO_ACTIVE_LOW>;
-+			linux,default-trigger = "disk-activity";
-+			pinctrl-names = "default";
-+			pinctrl-0 = <&hdd1_led_pin>;
-+		};
-+
-+		led_hdd2: led-1 {
-+			color = <LED_COLOR_ID_GREEN>;
-+			function = LED_FUNCTION_DISK;
-+			gpios = <&gpio1 RK_PD6 GPIO_ACTIVE_LOW>;
-+			linux,default-trigger = "disk-activity";
-+			pinctrl-names = "default";
-+			pinctrl-0 = <&hdd2_led_pin>;
-+		};
-+
-+		led_hdd3: led-2 {
-+			color = <LED_COLOR_ID_GREEN>;
-+			function = LED_FUNCTION_DISK;
-+			gpios = <&gpio1 RK_PD7 GPIO_ACTIVE_LOW>;
-+			linux,default-trigger = "disk-activity";
-+			pinctrl-names = "default";
-+			pinctrl-0 = <&hdd3_led_pin>;
-+		};
-+
-+		led_hdd4: led-3 {
-+			color = <LED_COLOR_ID_GREEN>;
-+			function = LED_FUNCTION_DISK;
-+			gpios = <&gpio2 RK_PA0 GPIO_ACTIVE_LOW>;
-+			linux,default-trigger = "disk-activity";
-+			pinctrl-names = "default";
-+			pinctrl-0 = <&hdd4_led_pin>;
-+		};
-+	};
-+
- 	dc_12v: regulator-dc-12v {
- 		compatible = "regulator-fixed";
- 		regulator-name = "dc_12v";
-@@ -158,6 +199,24 @@ &pcie3x2 {
- };
- 
- &pinctrl {
-+	leds {
-+		hdd1_led_pin: hdd1-led-pin {
-+			rockchip,pins = <1 RK_PD5 RK_FUNC_GPIO &pcfg_pull_up>;
-+		};
-+
-+		hdd2_led_pin: hdd2-led-pin {
-+			rockchip,pins = <1 RK_PD6 RK_FUNC_GPIO &pcfg_pull_up>;
-+		};
-+
-+		hdd3_led_pin: hdd3-led-pin {
-+			rockchip,pins = <1 RK_PD7 RK_FUNC_GPIO &pcfg_pull_up>;
-+		};
-+
-+		hdd4_led_pin: hdd4_led-pin {
-+			rockchip,pins = <2 RK_PA0 RK_FUNC_GPIO &pcfg_pull_up>;
-+		};
-+	};
-+
- 	usb {
- 		vcc5v0_host_en: vcc5v0-host-en {
- 			rockchip,pins = <0 RK_PA6 RK_FUNC_GPIO &pcfg_pull_none>;
--- 
-2.39.2
 
 
 _______________________________________________
