@@ -4,66 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DFD77C3DA59
-	for <linux-rockchip@archiver.kernel.org>; Fri, 19 Jul 2024 22:10:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9629EC3DA59
+	for <linux-rockchip@archiver.kernel.org>; Sat, 20 Jul 2024 08:40:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:References:
-	In-Reply-To:Cc:To:From:MIME-Version:Date:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=5kl7k69Gn2J5TyN5dYZYE4Vnb1AqnEqd+QvVnaNZ6nk=; b=Sy2wCqTUFNz7+0vbPgw48GNAiu
-	K9FU1BBOPX+k6Ev6e54zCf+FbGbfpZ31h9/aKNKNn3eYh1tM9qbggfslZL7tyXgjTqTjZICMQuOOA
-	BZLKI+cI0ZO8eueOkh7T21brsEYJiBwHgW0y/n0LjW9YqkCy98ImnKayjSX/dGhTDi26Qx+7GjFfE
-	A1dRNRGIiEfByeRUWCuXs+KCo5QDCYAizufS93WTFOkxJ0ONo6zshw039a6RArljBTRLmbAeYYP8y
-	mSAjPfzuTwb76SOg6jvKlx6qVPNYGW2aPLJ7yVtnfSZk1Hc5gaW67dC8P1KVxLjMzlyKFMHMc3omQ
-	HMAZowYQ==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To:From:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=wBZsHekqhFPdNEye58wPuEql4ulS8PtUz+Xrlb3W6B8=; b=GgsmwxVEeCQvRl
+	JeloKqgBMsOurDCVHx0Pl2jYl8w/O1/xLI38gTucSjpBQpfslNnRtHw+mLSRFwTKNgJl3zxZfv6zy
+	TLQjBC71lawjQtYJetWXHax5bcZzu3DARPfF/488hXQMuaj1oQNJsE56rTiWiXKlvKAO6T1FEZ+JH
+	pQhCMfB8RjXyQspViM7qmwxoCOq2KfqtHA6VHXAwblw4EsghvSDxBaJMlpf7RbbbhF+YkuSSGbquA
+	SBCHjfNsWAXy8fmC/TR72fD0Jq17jc1BbsOOU/bc8mITTkl3JNZpHi7k5NhMU7A4b99hoqC/qhLAy
+	1GMA0kQJG/jh1F/rpV9w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sUvoQ-00000003t0L-3pI2;
-	Fri, 19 Jul 2024 22:10:50 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1sV5dj-00000004m2V-2rnU;
+	Sat, 20 Jul 2024 08:40:27 +0000
+Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sUvo4-00000003sus-1Lha;
-	Fri, 19 Jul 2024 22:10:29 +0000
+	id 1sV5dg-00000004m1x-0oqr
+	for linux-rockchip@lists.infradead.org;
+	Sat, 20 Jul 2024 08:40:26 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 4786761B14;
-	Fri, 19 Jul 2024 22:10:27 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 971E3C32782;
-	Fri, 19 Jul 2024 22:10:26 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1721427027;
-	bh=V0c7nQInZQHViP4y2EWyTjZ7257Z/OpHVNmbSCyY7ZY=;
-	h=Date:From:To:Cc:In-Reply-To:References:Subject:From;
-	b=ZCefEhJxD0kJDQF5aFMBqtXgHQF4iEAJ4Q/a4iQMbM9zpxDeZ82frT8KnDMfOuBD/
-	 SLj8mUvaW4Mi0+vR7N4k/ogzdRkfpgGMy7D7MSadkG5tbin2bGmh3bT7+ZvAi3f8gW
-	 S090FuPqtelLDtxuycYBSSa97nF9akGChXYyAX5wC/zhvYvFpQuwXxAqjxnpQkEPgV
-	 rkXd/2P43VWn+/3GcfXHhP9l/UUZaojZbrB0QyX1b82s9jkONpc5ercshIM+3uqUz5
-	 snTa2//H9sHznlbEjrPODobZwxTSlb5s8LNGP7hct7cOwJYQqin5ZKKWBcchGFfndO
-	 OfdLGACRqzP+w==
-Date: Fri, 19 Jul 2024 16:10:23 -0600
+	by sin.source.kernel.org (Postfix) with ESMTP id B4DACCE01C8;
+	Sat, 20 Jul 2024 08:40:20 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 75E07C2BD10;
+	Sat, 20 Jul 2024 08:40:18 +0000 (UTC)
+Message-ID: <d48f71b4-327c-4fe0-99b4-a48f48f3f1e2@xs4all.nl>
+Date: Sat, 20 Jul 2024 10:40:16 +0200
 MIME-Version: 1.0
-From: "Rob Herring (Arm)" <robh@kernel.org>
-To: Shreeya Patel <shreeya.patel@collabora.com>
-Cc: kernel@collabora.com, mchehab@kernel.org, conor+dt@kernel.org, 
- linux-media@vger.kernel.org, nelson.costa@synopsys.com, 
- linux-arm-kernel@lists.infradead.org, heiko@sntech.de, 
- mturquette@baylibre.com, hverkuil@xs4all.nl, hverkuil-cisco@xs4all.nl, 
- linux-rockchip@lists.infradead.org, shawn.wen@rock-chips.com, 
- sboyd@kernel.org, Dmitry Osipenko <dmitry.osipenko@collabora.com>, 
- p.zabel@pengutronix.de, jose.abreu@synopsys.com, 
- linux-kernel@vger.kernel.org, krzk+dt@kernel.org, 
- devicetree@vger.kernel.org, nicolas.dufresne@collabora.com
-In-Reply-To: <20240719124032.26852-3-shreeya.patel@collabora.com>
-References: <20240719124032.26852-1-shreeya.patel@collabora.com>
- <20240719124032.26852-3-shreeya.patel@collabora.com>
-Message-Id: <172142702137.153951.8294803513682327237.robh@kernel.org>
-Subject: Re: [PATCH v4 2/4] dt-bindings: media: Document bindings for HDMI
- RX Controller
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v4 1/2] media: videodev2: Add flags to unconditionnaly
+ enumerate pixels formats
+From: Hans Verkuil <hverkuil-cisco@xs4all.nl>
+To: Benjamin Gaignard <benjamin.gaignard@collabora.com>, mchehab@kernel.org,
+ ezequiel@vanguardiasur.com.ar
+Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, kernel@collabora.com
+References: <20240717131430.159727-1-benjamin.gaignard@collabora.com>
+ <20240717131430.159727-2-benjamin.gaignard@collabora.com>
+ <91c2843f-b8e9-42cb-b4e9-fe7b13df9f53@xs4all.nl>
+Content-Language: en-US, nl
+In-Reply-To: <91c2843f-b8e9-42cb-b4e9-fe7b13df9f53@xs4all.nl>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240719_151028_513478_5A28F7E7 
-X-CRM114-Status: GOOD (  15.76  )
+X-CRM114-CacheID: sfid-20240720_014024_638894_8F3F3430 
+X-CRM114-Status: GOOD (  43.09  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,63 +67,170 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-
-On Fri, 19 Jul 2024 18:10:30 +0530, Shreeya Patel wrote:
-> Document bindings for the Synopsys DesignWare HDMI RX Controller.
+On 19/07/2024 15:15, Hans Verkuil wrote:
+> On 17/07/2024 15:14, Benjamin Gaignard wrote:
+>> Add new flags to enumerate all pixels formats when calling VIDIOC_ENUM_FMT ioctl.
+>> When this V4L2_FMT_FLAG_ENUM_ALL_FORMATS flag is set drivers must
+>> ignore the configuration and return the hardware supported pixel
+>> formats for the specified queue.
+>> To distinguish this particular enumeration case V4L2_FMT_FLAG_ALL_FORMATS
+>> flag must be set by the drivers to highlight support of this feature
+>> to user space applications.
+>> This will permit to discover which pixel formats are supported
+>> without setting codec-specific information so userland can more easily
+>> know if the driver suits its needs well.
+>> The main target are stateless decoders so update the documentation
+>> about how to use this flag.
+>>
+>> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+>> ---
+>> changes in version 4:
+>> - Explicitly document that the new flags are targeting mem2mem devices.
+>>
+>>  .../userspace-api/media/v4l/dev-stateless-decoder.rst |  6 ++++++
+>>  .../userspace-api/media/v4l/vidioc-enum-fmt.rst       | 11 +++++++++++
+>>  .../userspace-api/media/videodev2.h.rst.exceptions    |  2 ++
+>>  drivers/media/v4l2-core/v4l2-ioctl.c                  |  3 +++
+>>  include/uapi/linux/videodev2.h                        |  2 ++
+>>  5 files changed, 24 insertions(+)
+>>
+>> diff --git a/Documentation/userspace-api/media/v4l/dev-stateless-decoder.rst b/Documentation/userspace-api/media/v4l/dev-stateless-decoder.rst
+>> index 35ed05f2695e..b0b657de910d 100644
+>> --- a/Documentation/userspace-api/media/v4l/dev-stateless-decoder.rst
+>> +++ b/Documentation/userspace-api/media/v4l/dev-stateless-decoder.rst
+>> @@ -58,6 +58,12 @@ Querying capabilities
+>>       default values for these controls being used, and a returned set of formats
+>>       that may not be usable for the media the client is trying to decode.
+>>  
+>> +   * If the ``V4L2_FMT_FLAG_ENUM_ALL_FORMATS`` flag is set the driver must enumerate
+>> +     all the supported formats without taking care of codec-dependent controls
+>> +     set on the ``OUTPUT`` queue. To indicate that the driver has take care of this
+>> +     flag it must set ``V4L2_FMT_FLAG_ALL_FORMATS`` flag for each format while
+>> +     enumerating.
+>> +
+>>  3. The client may use :c:func:`VIDIOC_ENUM_FRAMESIZES` to detect supported
+>>     resolutions for a given format, passing desired pixel format in
+>>     :c:type:`v4l2_frmsizeenum`'s ``pixel_format``.
+>> diff --git a/Documentation/userspace-api/media/v4l/vidioc-enum-fmt.rst b/Documentation/userspace-api/media/v4l/vidioc-enum-fmt.rst
+>> index 3adb3d205531..15bc2f59c05a 100644
+>> --- a/Documentation/userspace-api/media/v4l/vidioc-enum-fmt.rst
+>> +++ b/Documentation/userspace-api/media/v4l/vidioc-enum-fmt.rst
+>> @@ -234,6 +234,17 @@ the ``mbus_code`` field is handled differently:
+>>  	valid. The buffer consists of ``height`` lines, each having ``width``
+>>  	Data Units of data and the offset (in bytes) between the beginning of
+>>  	each two consecutive lines is ``bytesperline``.
+>> +    * - ``V4L2_FMT_FLAG_ENUM_ALL_FORMATS``
+>> +      - 0x0400
+>> +      - Set by userland applications to enumerate all possible pixel formats
+>> +        without taking care of any OUTPUT or CAPTURE queue configuration.
+>> +        This flag is relevant only for mem2mem devices.
+>> +    * - ``V4L2_FMT_FLAG_ALL_FORMATS``
+>> +      - 0x0800
+>> +      - Set by the driver to indicated that format have been enumerated because
+>> +        :ref:`V4L2_FMT_FLAG_ENUM_ALL_FORMATS <v4l2-pix-fmt-flag-set-csc>` has
+>> +        been set by the userland application.
+>> +        This flag is relevant only for mem2mem devices.
+>>  
+>>  Return Value
+>>  ============
+>> diff --git a/Documentation/userspace-api/media/videodev2.h.rst.exceptions b/Documentation/userspace-api/media/videodev2.h.rst.exceptions
+>> index bdc628e8c1d6..7a3a1e9dc055 100644
+>> --- a/Documentation/userspace-api/media/videodev2.h.rst.exceptions
+>> +++ b/Documentation/userspace-api/media/videodev2.h.rst.exceptions
+>> @@ -216,6 +216,8 @@ replace define V4L2_FMT_FLAG_CSC_YCBCR_ENC fmtdesc-flags
+>>  replace define V4L2_FMT_FLAG_CSC_HSV_ENC fmtdesc-flags
+>>  replace define V4L2_FMT_FLAG_CSC_QUANTIZATION fmtdesc-flags
+>>  replace define V4L2_FMT_FLAG_META_LINE_BASED fmtdesc-flags
+>> +replace define V4L2_FMT_FLAG_ENUM_ALL_FORMATS fmtdesc-flags
+>> +replace define V4L2_FMT_FLAG_ALL_FORMATS fmtdesc-flags
+>>  
+>>  # V4L2 timecode types
+>>  replace define V4L2_TC_TYPE_24FPS timecode-type
+>> diff --git a/drivers/media/v4l2-core/v4l2-ioctl.c b/drivers/media/v4l2-core/v4l2-ioctl.c
+>> index 4c76d17b4629..5785a98b6ba2 100644
+>> --- a/drivers/media/v4l2-core/v4l2-ioctl.c
+>> +++ b/drivers/media/v4l2-core/v4l2-ioctl.c
+>> @@ -1569,6 +1569,7 @@ static int v4l_enum_fmt(const struct v4l2_ioctl_ops *ops,
+>>  	int ret = check_fmt(file, p->type);
+>>  	u32 mbus_code;
+>>  	u32 cap_mask;
+>> +	u32 flags;
+>>  
+>>  	if (ret)
+>>  		return ret;
+>> @@ -1578,8 +1579,10 @@ static int v4l_enum_fmt(const struct v4l2_ioctl_ops *ops,
+>>  		p->mbus_code = 0;
+>>  
+>>  	mbus_code = p->mbus_code;
+>> +	flags = p->flags & V4L2_FMT_FLAG_ENUM_ALL_FORMATS;
+>>  	memset_after(p, 0, type);
+>>  	p->mbus_code = mbus_code;
+>> +	p->flags = flags;
+>>  
+>>  	switch (p->type) {
+>>  	case V4L2_BUF_TYPE_VIDEO_CAPTURE:
+>> diff --git a/include/uapi/linux/videodev2.h b/include/uapi/linux/videodev2.h
+>> index fe6b67e83751..b6a5da79ba21 100644
+>> --- a/include/uapi/linux/videodev2.h
+>> +++ b/include/uapi/linux/videodev2.h
+>> @@ -886,6 +886,8 @@ struct v4l2_fmtdesc {
+>>  #define V4L2_FMT_FLAG_CSC_HSV_ENC		V4L2_FMT_FLAG_CSC_YCBCR_ENC
+>>  #define V4L2_FMT_FLAG_CSC_QUANTIZATION		0x0100
+>>  #define V4L2_FMT_FLAG_META_LINE_BASED		0x0200
+>> +#define V4L2_FMT_FLAG_ENUM_ALL_FORMATS		0x0400
+>> +#define V4L2_FMT_FLAG_ALL_FORMATS		0x0800
 > 
-> Reviewed-by: Rob Herring <robh@kernel.org>
-> Reviewed-by: Dmitry Osipenko <dmitry.osipenko@collabora.com>
-> Signed-off-by: Shreeya Patel <shreeya.patel@collabora.com>
-> ---
+> For reasons mentioned earlier, you cannot make the flags field an input to the
+> driver, that will almost certainly break some applications that do not zero
+> the flags field today, since they expect it to be set by the driver.
 > 
-> Changes in v4 :-
->   - No change
+> What probably will work is to add a flag to the index field: this would be
+> similar to what I do in VIDIOC_QUERYCTRL where you can OR the id field with
+> V4L2_CTRL_FLAG_NEXT_CTRL to modify the behavior.
 > 
-> Changes in v3 :-
->   - Rename hdmirx_cma to hdmi_receiver_cma
->   - Add a Reviewed-by tag
+> It is perfectly fine to use the top bits of the index for this.
 > 
-> Changes in v2 :-
->   - Add a description for the hardware
->   - Rename resets, vo1 grf and HPD properties
->   - Add a proper description for grf and vo1-grf phandles
->   - Rename the HDMI Input node name to hdmi-receiver
->   - Improve the subject line
->   - Include gpio header file in example to fix dt_binding_check failure
+> Drivers that do not support this will just fail with EINVAL, and drivers that
+> do support this will return a proper format.
 > 
->  .../bindings/media/snps,dw-hdmi-rx.yaml       | 132 ++++++++++++++++++
->  1 file changed, 132 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/media/snps,dw-hdmi-rx.yaml
+> Applications can easily test support for this by just calling ENUM_FMT with 0
+> ORed with the new flag: if it is supported, then it will return 0, otherwise
+> -EINVAL.
 > 
+> With this scheme I think you can also drop the proposed V4L2_FMT_FLAG_ALL_FORMATS
+> flag.
 
-My bot found errors running 'make dt_binding_check' on your patch:
+Please note that this is an addition to the uAPI, so this also implies that
+there should be patches for v4l-utils (v4l2-ctl and v4l2-compliance) and
+ideally patches for one or more of the media test-drivers to implement this
+flag. Together with v4l2-compliance that will ensure that the new flag is
+actually tested by the regression tests.
 
-yamllint warnings/errors:
+Regards,
 
-dtschema/dtc warnings/errors:
-Error: Documentation/devicetree/bindings/media/snps,dw-hdmi-rx.example.dts:53.38-39 syntax error
-FATAL ERROR: Unable to parse input tree
-make[2]: *** [scripts/Makefile.lib:427: Documentation/devicetree/bindings/media/snps,dw-hdmi-rx.example.dtb] Error 1
-make[2]: *** Waiting for unfinished jobs....
-make[1]: *** [/builds/robherring/dt-review-ci/linux/Makefile:1430: dt_binding_check] Error 2
-make: *** [Makefile:240: __sub-make] Error 2
+	Hans
 
-doc reference errors (make refcheckdocs):
-
-See https://patchwork.ozlabs.org/project/devicetree-bindings/patch/20240719124032.26852-3-shreeya.patel@collabora.com
-
-The base for the series is generally the latest rc1. A different dependency
-should be noted in *this* patch.
-
-If you already ran 'make dt_binding_check' and didn't see the above
-error(s), then make sure 'yamllint' is installed and dt-schema is up to
-date:
-
-pip3 install dtschema --upgrade
-
-Please check and re-submit after running the above command yourself. Note
-that DT_SCHEMA_FILES can be set to your schema file to speed up checking
-your schema. However, it must be unset to test all examples with your schema.
+> 
+> But as I mentioned in my reply to the cover letter of this series, I am not
+> convinced we really need this, and if we do, then I am not convinced about
+> the name of the flag.
+> 
+> And I would also like to know if such a feature can be used by m2m drivers
+> that are not codecs (e.g. scalers, csc converters), and if that would impact
+> the name/description of the flag.
+> 
+> It is currently very specific for decoders, but I prefer to see a more general
+> solution, not just for one specific corner case.
+> 
+> Regards,
+> 
+> 	Hans
+> 
+>>  
+>>  	/* Frame Size and frame rate enumeration */
+>>  /*
+> 
+> 
 
 
 _______________________________________________
