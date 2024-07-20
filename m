@@ -4,68 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D9244C3DA59
-	for <linux-rockchip@archiver.kernel.org>; Sat, 20 Jul 2024 10:46:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 31C6DC3DA59
+	for <linux-rockchip@archiver.kernel.org>; Sat, 20 Jul 2024 11:34:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Message-ID:MIME-Version:References:
-	In-Reply-To:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=IpEewgV5hNLn0+jrpRJ8jr3oaHDrLHIW/85ZnXfdv0A=; b=C7QSdS1vzFRfKW
-	3R/MHhJf/21ann2ZEFeg9oRYC7Dq+bi1VrTH+eHaaBguqvOfuO1y5eO+OKsrw1PQ/LVV6kkmDJPR1
-	Voe6zs3LlABQMIt2wI2lg7EkYi4LE1x2OHzKuHza2lXRCKyyWb4WpTl8yqB1QqFDA/j0BWtVMc4cZ
-	+jobqRuhC+5W+HCk5T7zmVSwkCel23NQ+TA18jITPDGcK75uDlxYeQC9gx5+1kcNuqjc6nW6P+zT1
-	3JYZpUja1UeNo4ArjJyiF4JIre/ec8OvA9PUzB47RCSmmt6Oj4S+VusEz3lrvUgMAYNYEpgofzf+Z
-	cAxHYAFQx3uh8/L92JWQ==;
+	List-Owner; bh=mAKl7TpvXJ7aC8jC1P1QzKc90ROwyMxiWqm5EGFs5Ew=; b=VI2ZLdYQpqh9oP
+	szHEOoLYSUiEoPO54Mn5w1FoFK3zk9KgDy4a9Mw5nUvT0BxoEwsZ+7MwTSuaNo3+1I3eIrewcRMp6
+	eBFhfdmnQkh8/gx3WBQufA6vdNiM44pPG+7sJ4EfDYVF0p+pb7Q3JP7c75WiNHqs6Q0bu0ICC3Y62
+	KgB4GlIIJdlwG+4o7kVYwB1s1aMSYeu7ljLxk9zpyq2V+3CmZDpNRT0FNHIWw8sp2GQmr+n+4kKVc
+	BMYZPy4UjhdHnTCSetCY9jgzZHon53mGFLXagu2Ak9cQCNgAOr9ubNttC5+f7to4sMmMr5x0cZl/h
+	IdYRiKlVdKZuYQn0AKag==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sV7bK-00000004wo9-3LLd;
-	Sat, 20 Jul 2024 10:46:06 +0000
-Received: from m16.mail.163.com ([220.197.31.2])
-	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sV7ax-00000004wlV-0xcp;
-	Sat, 20 Jul 2024 10:45:45 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=Date:From:Subject:Content-Type:MIME-Version:
-	Message-ID; bh=xBLo64VKE4cKpnPTnnt2bAZVJn4fCnGs0iPxxcy9BTA=; b=W
-	3t/D23cjlsfdkKLc3gu/gqT6HFlJGqboHwHb/EgfvleWd5dX7NDbA6qT3HC3avSM
-	ff9o348paH+CfyHTVY1fMTTAAVxGPqPzCP6fAaghmyuhaMxnYPGm9o70skb2oAX2
-	PEhKHI9aVwZZnj45qyTP4cfkgc+XOyuJrCE8wF/MLE=
-Received: from andyshrk$163.com ( [58.22.7.114] ) by
- ajax-webmail-wmsvr-40-131 (Coremail) ; Sat, 20 Jul 2024 18:45:21 +0800
- (CST)
-X-Originating-IP: [58.22.7.114]
-Date: Sat, 20 Jul 2024 18:45:21 +0800 (CST)
-From: "Andy Yan" <andyshrk@163.com>
-To: "Dragan Simic" <dsimic@manjaro.org>
-Cc: heiko@sntech.de, krzk+dt@kernel.org, robh@kernel.org, 
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org
-Subject: Re:Re: [PATCH 2/2] arm64: dts: rockchip: Add support for rk3588
- GenBook
-X-Priority: 3
-X-Mailer: Coremail Webmail Server Version XT5.0.14 build 20230109(dcb5de15)
- Copyright (c) 2002-2024 www.mailtech.cn 163com
-In-Reply-To: <123bda9c6421ffe718c7497f1040d102@manjaro.org>
-References: <20240714112851.1048184-1-andyshrk@163.com>
- <20240714112851.1048184-2-andyshrk@163.com>
- <983cfe67f4d83ea96ffc37ec2dde00aa@manjaro.org>
- <32f2518d.a66c.190b5fe86a6.Coremail.andyshrk@163.com>
- <f16ab2d662a7bd35748cb19b3bb89135@manjaro.org>
- <60235dee.991a.190bb035bc1.Coremail.andyshrk@163.com>
- <9c2e80008663c4bcac11c9d1e5c678be@manjaro.org>
- <123bda9c6421ffe718c7497f1040d102@manjaro.org>
-X-NTES-SC: AL_Qu2ZA/icvUsp5ymaZ+lSzDJwxZV8J573y75wnMIFefEsnATpyzoLT3xgI1bqyuYzR9bA5boZqDY4kURPIfxE
+	id 1sV8Lu-000000050nM-1vlo;
+	Sat, 20 Jul 2024 11:34:14 +0000
+Received: from forward501b.mail.yandex.net ([178.154.239.145])
+	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
+	id 1sV8LV-000000050ih-1LwW;
+	Sat, 20 Jul 2024 11:33:52 +0000
+Received: from mail-nwsmtp-smtp-production-canary-88.sas.yp-c.yandex.net (mail-nwsmtp-smtp-production-canary-88.sas.yp-c.yandex.net [IPv6:2a02:6b8:c14:3483:0:640:1715:0])
+	by forward501b.mail.yandex.net (Yandex) with ESMTPS id 5272960DEC;
+	Sat, 20 Jul 2024 14:33:46 +0300 (MSK)
+Received: by mail-nwsmtp-smtp-production-canary-88.sas.yp-c.yandex.net (smtp/Yandex) with ESMTPSA id fXJd7fFm4Sw0-N2IjXqhy;
+	Sat, 20 Jul 2024 14:33:45 +0300
+X-Yandex-Fwd: 1
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yandex.com; s=mail;
+	t=1721475225; bh=AOlsoPkReRmqiSS47kGKmnkW038lQcq/Grefo+iL3lA=;
+	h=From:In-Reply-To:Cc:Date:References:To:Subject:Message-ID;
+	b=gS3ykZPi8Y2j50cJH7I5GIMRzDa3u2GENm72Ep7ZruK8kYsHBQr3udXF99v9pzs/k
+	 B7S+s4Syn4e1nJ5y2nFXAE6FlY/BVk0f/0Qi1sdj5XcWP6GvrP+2Ik0PEXITkpHiVR
+	 IFQuuB19kol8f9CY+TCsJZW5EnlpJKsndFWWE/2E=
+Authentication-Results: mail-nwsmtp-smtp-production-canary-88.sas.yp-c.yandex.net; dkim=pass header.i=@yandex.com
+Message-ID: <2044f205-60d1-40b3-a7d7-4be7526669a3@yandex.com>
+Date: Sat, 20 Jul 2024 13:33:41 +0200
 MIME-Version: 1.0
-Message-ID: <78c35af3.2cab.190cfbf098e.Coremail.andyshrk@163.com>
-X-Coremail-Locale: zh_CN
-X-CM-TRANSID: _____wD33xpClZtmYZM7AA--.13945W
-X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/1tbiMwEiXmXAmm81TQADsl
-X-Coremail-Antispam: 1U5529EdanIXcx71UUUUU7vcSsGvfC2KfnxnUU==
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v4 4/4] media: platform: synopsys: Add support for hdmi
+ input driver
+To: Shreeya Patel <shreeya.patel@collabora.com>, heiko@sntech.de,
+ mchehab@kernel.org, robh@kernel.org, krzk+dt@kernel.org,
+ conor+dt@kernel.org, mturquette@baylibre.com, sboyd@kernel.org,
+ p.zabel@pengutronix.de, jose.abreu@synopsys.com, nelson.costa@synopsys.com,
+ shawn.wen@rock-chips.com, nicolas.dufresne@collabora.com,
+ hverkuil@xs4all.nl, hverkuil-cisco@xs4all.nl
+Cc: kernel@collabora.com, linux-kernel@vger.kernel.org,
+ linux-media@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ Dmitry Osipenko <dmitry.osipenko@collabora.com>
+References: <20240719124032.26852-1-shreeya.patel@collabora.com>
+ <20240719124032.26852-5-shreeya.patel@collabora.com>
+Content-Language: en-US
+From: Johan Jonker <jbx6244@yandex.com>
+In-Reply-To: <20240719124032.26852-5-shreeya.patel@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240720_034543_709312_06523008 
-X-CRM114-Status: GOOD (  23.59  )
+X-CRM114-CacheID: sfid-20240720_043349_770834_A2894067 
+X-CRM114-Status: GOOD (  33.87  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,252 +74,466 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-CkhlbGxvIERyYWdhbu+8jAoK5ZyoIDIwMjQtMDctMjAgMTg6MjE6MzfvvIwiRHJhZ2FuIFNpbWlj
-IiA8ZHNpbWljQG1hbmphcm8ub3JnPiDlhpnpgZPvvJoKPkhlbGxvIEFuZHksCj4KPkkgZm9yZ290
-IHRvIG5vdGUgc29tZXRoaW5nIGluIG15IHByZXZpb3VzIHJlc3BvbnNlLCBzbyBwbGVhc2UKPnNl
-ZSBhbiBhZGRpdGlvbmFsIG5vdGUgYmVsb3cuCj4KPk9uIDIwMjQtMDctMTYgMTU6NTAsIERyYWdh
-biBTaW1pYyB3cm90ZToKPj4gT24gMjAyNC0wNy0xNiAxMjowNywgQW5keSBZYW4gd3JvdGU6Cj4+
-PiDlnKggMjAyNC0wNy0xNSAyMjo0NzowNO+8jCJEcmFnYW4gU2ltaWMiIDxkc2ltaWNAbWFuamFy
-by5vcmc+IOWGmemBk++8mgo+Pj4+IE9uIDIwMjQtMDctMTUgMTI6NDQsIEFuZHkgWWFuIHdyb3Rl
-Ogo+Pj4+PiBBdCAyMDI0LTA3LTE0IDIzOjI3OjU0LCAiRHJhZ2FuIFNpbWljIiA8ZHNpbWljQG1h
-bmphcm8ub3JnPiB3cm90ZToKPj4+Pj4+IFBsZWFzZSBzZWUgYSBmZXcgY29tbWVudHMgYmVsb3cu
-Cj4+Pj4+PiAKPj4+Pj4+IE9uIDIwMjQtMDctMTQgMTM6MjgsIEFuZHkgWWFuIHdyb3RlOgo+Pj4+
-Pj4+IENvb2wgUGkgR2VuQm9vayB3b3JrcyBhcyBhIG1vdGhlciBib2FyZCBjb25uZWN0IHdpdGgg
-Q001IFswXS4KPj4+Pj4+IAo+Pj4+Pj4gcy9tb3RoZXIgYm9hcmQvY2FycmllciBib2FyZC8KPj4+
-Pj4gCj4+Pj4+IFRoaXMgY2FuIGJlIGNoYW5nZWQgdG8gY2FycmllciBib2FyZCBpbiBuZXh0IHZl
-cnNpb27jgIIKPj4+Pj4gCj4+Pj4+PiBzL0NNNS9HZW5NNS8KPj4+Pj4gCj4+Pj4+IEluIGZhY3Qs
-IHRoZSBTT00gIGlzIGNhbGxlZCAgQ001IGFsd2F5c1swXe+8jCBldmVuIHRoaXMgbGFwdG9wIHdh
-cwo+Pj4+PiBjYWxsZWQgY201IGxhcHRvcCBmcm9tIHRoZQo+Pj4+PiB2ZXJ5IGJlZ2lubmluZyBv
-ZiB0aGUgZGVzaWdu44CCCj4+Pj4+IFRoZXkganVzdCBnYXZlIGl0IGEgbmV3IG5hbWUgR2VuQm9v
-ayB3aGVuIGl0IGNvbWVzIHRvIGNyb3dkc3VwcGx5Lgo+Pj4+PiAKPj4+Pj4gVGhlIGR0c2kgZm9y
-IENNNSBpcyBhcmVhZHkgbGFuZGluZyB1cHN0cmVhbe+8jEkgaW5jbHVsZGUgaXQgaW4gdGhlCj4+
-Pj4+IGN1cnJlbnQgZ2VuYm9vayBkdHPjgIIKPj4+Pj4gCj4+Pj4+IFswXWh0dHBzOi8vZm9ydW0u
-Y29vbC1waS5jb20vdG9waWMvOTgvY29vbC1waS01LWNvbXB1dGUtbW9kdWxlLW1pbmlwYy1jYXJy
-aWVyLWJvYXJkLXNwZWMKPj4+PiAKPj4+PiBBaCwgdGhhdCdzIHF1aXRlIGludGVyZXN0aW5nLCBp
-dCB3YXMgcHJvYmFibHkgcmVuYW1lZCBmb3IgbWFya2V0aW5nCj4+Pj4gcHVycG9zZXMuICBUaGFu
-a3MgZm9yIHRoZSBjbGFyaWZpY2F0aW9uLgo+Pj4+IAo+Pj4+IFRvIGFkZCB0byB0aGUgY29uZnVz
-aW9uLCBub25lIG9mICJHZW5Cb29rIiwgIkNNNSIgb3IgIkdlbk01IiBhcHBlYXIKPj4+PiBvbiB0
-aGUgbGFiZWxzIGZvdW5kIG9uIHRoZSBhY3R1YWwgUENCcy4gWzFdICBJbnN0ZWFkLCB0aGVyZSBh
-cmUgb25seQo+Pj4+IHNvbWUgcmF0aGVyIGdlbmVyaWMgdGVybXMuCj4+PiAKPj4+IFNvIHdlIGNh
-biBrZWVwIHRoZSBuYW1lIGFzIGl0IGlzIG5vdyDvvJ8KPj4gCj4+IEFzIGZhciBhcyBJJ20gY29u
-Y2VybmVkLCB5ZXMuICBFdmVyeXRoaW5nIHBvaW50cyB0byAiQ29vbFBpIENNNSIKPj4gYW5kICJD
-b29sUGkgR2VuQm9vayIgYmVpbmcgdGhlIHJpZ3RoIG5hbWVzIGluIHRoZSB1cHN0cmVhbSBrZXJu
-ZWwKPj4gZm9yIHRoZSBTb00gYW5kIHRoZSBjYXJyaWVyIGJvYXJkLCByZXNwZWN0aXZlbHkuCj4+
-IAo+PiBIb3dldmVyLCBwbGVhc2Ugc2VlIGFub3RoZXIgY29tbWVudCBiZWxvdy4KPj4gCj4+Pj4g
-WzFdIAo+Pj4+IGh0dHBzOi8vd3d3LmNyb3dkc3VwcGx5LmNvbS9pbWcvNjE4NS82MGMzNTg1Mi03
-YTU4LTRiNmYtODBmYy1hZjNhMGUzZDYxODUvZ2VuYm9vay1yazM1ODgtbWFpbi1ib2FyZC1jbG9z
-ZS11cF9qcGdfZ2FsbGVyeS1sZy5qcGcKPj4+PiAKPj4+Pj4+PiBTcGVjaWZpY2F0aW9uOgo+Pj4+
-Pj4+IC0gUm9ja2NoaXAgUkszNTg4Cj4+Pj4+Pj4gLSBMUEREUjVYIDgvMzIgR0IKPj4+Pj4+PiAt
-IGVNTUMgNjQgR0IKPj4+Pj4+PiAtIEhETUkgVHlwZSBBIG91dCB4IDEKPj4+Pj4+PiAtIFVTQiAz
-LjAgSG9zdCB4IDEKPj4+Pj4+PiAtIFVTQi1DIDMuMCB3aXRoIERpc3BsYXlQb3J0IEFsdE1vZGUK
-Pj4+Pj4+PiAtIFBDSUUgTS4yIEUgS2V5IGZvciBSVEw4ODUyQkUgV2lyZWxlc3MgY29ubmVjdGlv
-bgo+Pj4+Pj4+IC0gUENJRSBNLjIgTSBLZXkgZm9yIE5WTUUgY29ubmVjdGlvbgo+Pj4+Pj4+IC0g
-ZURQIHBhbmVsIHdpdGggMTkyMHgxMDgwCj4+Pj4+Pj4gCj4+Pj4+Pj4gVGhpcyBwYXRjaCBhZGQg
-YmFzaWMgc3VwcG9ydCB0byBicmluZ3VwIGVNTUMvVVNCIEhPU1QvV2lGaQo+Pj4+Pj4+IGFuZCBj
-YW4gYWxzbyBkcml2ZSBhIEhETUkgb3V0cHV0IHdpdGggb3V0IG9mIHRyZWUgaGRtaSBwYXRjaGVz
-Lgo+Pj4+Pj4+IAo+Pj4+Pj4+IFswXQo+Pj4+Pj4+IGh0dHBzOi8vd3d3LmNyb3dkc3VwcGx5LmNv
-bS9zaGVuemhlbi10aWFubWFvLXRlY2hub2xvZ3ktY28tbHRkL2dlbmJvb2stcmszNTg4Cj4+Pj4+
-Pj4gCj4+Pj4+Pj4gU2lnbmVkLW9mZi1ieTogQW5keSBZYW4gPGFuZHlzaHJrQDE2My5jb20+Cj4+
-Pj4+Pj4gLS0tCj4+Pj4+Pj4gCj4+Pj4+Pj4gIGFyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAv
-TWFrZWZpbGUgICAgICAgICB8ICAgMSArCj4+Pj4+Pj4gIC4uLi9kdHMvcm9ja2NoaXAvcmszNTg4
-LWNvb2xwaS1nZW5ib29rLmR0cyAgICB8IDI5Ngo+Pj4+Pj4+ICsrKysrKysrKysrKysrKysrKwo+
-Pj4+Pj4+ICAyIGZpbGVzIGNoYW5nZWQsIDI5NyBpbnNlcnRpb25zKCspCj4+Pj4+Pj4gIGNyZWF0
-ZSBtb2RlIDEwMDY0NAo+Pj4+Pj4+IGFyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszNTg4
-LWNvb2xwaS1nZW5ib29rLmR0cwo+Pj4+Pj4gCj4+Pj4+PiBJdCB3b3VsZCBiZSBiZXR0ZXIgdG8g
-c3BsaXQgdGhpcyBpbnRvIHR3byBmaWxlczogYSBkdHNpIGZvciB0aGUgCj4+Pj4+PiBHZW5NNQo+
-Pj4+Pj4gc3lzdGVtCj4+Pj4+PiBvbiBtb2R1bGUsIGFuZCBhIGR0cyBmb3IgdGhlIEdlbkJvb2sg
-Y2FycmllciBib2FyZC4gIFRoYXQgd2F5LCB0aGUKPj4+Pj4+IGR0cyhpKSBmaWxlcwo+Pj4+Pj4g
-d291bGQgZGVzY3JpYmUgdGhlIGFjdHVhbCBoYXJkd2FyZSBiZXR0ZXIuCj4+Pj4+PiAKPj4+Pj4+
-PiBkaWZmIC0tZ2l0IGEvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9NYWtlZmlsZQo+Pj4+
-Pj4+IGIvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9NYWtlZmlsZQo+Pj4+Pj4+IGluZGV4
-IDhmYTQ2OWRiNDAwYy4uMGZhZDU0OTM5YmJkIDEwMDY0NAo+Pj4+Pj4+IC0tLSBhL2FyY2gvYXJt
-NjQvYm9vdC9kdHMvcm9ja2NoaXAvTWFrZWZpbGUKPj4+Pj4+PiArKysgYi9hcmNoL2FybTY0L2Jv
-b3QvZHRzL3JvY2tjaGlwL01ha2VmaWxlCj4+Pj4+Pj4gQEAgLTEyMiw2ICsxMjIsNyBAQCBkdGIt
-JChDT05GSUdfQVJDSF9ST0NLQ0hJUCkgKz0KPj4+Pj4+PiByazM1Njgtd29sZnZpc2lvbi1wZjUt
-ZGlzcGxheS12ei5kdGJvCj4+Pj4+Pj4gIGR0Yi0kKENPTkZJR19BUkNIX1JPQ0tDSElQKSArPQo+
-Pj4+Pj4+IHJrMzU2OC13b2xmdmlzaW9uLXBmNS1pby1leHBhbmRlci5kdGJvCj4+Pj4+Pj4gIGR0
-Yi0kKENPTkZJR19BUkNIX1JPQ0tDSElQKSArPSByazM1ODgtYXJtc29tLXNpZ2U3LmR0Ygo+Pj4+
-Pj4+ICBkdGItJChDT05GSUdfQVJDSF9ST0NLQ0hJUCkgKz0gcmszNTg4LWNvb2xwaS1jbTUtZXZi
-LmR0Ygo+Pj4+Pj4+ICtkdGItJChDT05GSUdfQVJDSF9ST0NLQ0hJUCkgKz0gcmszNTg4LWNvb2xw
-aS1nZW5ib29rLmR0Ygo+Pj4+Pj4+ICBkdGItJChDT05GSUdfQVJDSF9ST0NLQ0hJUCkgKz0gcmsz
-NTg4LWVkZ2VibGUtbmV1NmEtaW8uZHRiCj4+Pj4+Pj4gIGR0Yi0kKENPTkZJR19BUkNIX1JPQ0tD
-SElQKSArPSByazM1ODgtZWRnZWJsZS1uZXU2YS13aWZpLmR0Ym8KPj4+Pj4+PiAgZHRiLSQoQ09O
-RklHX0FSQ0hfUk9DS0NISVApICs9IHJrMzU4OC1lZGdlYmxlLW5ldTZiLWlvLmR0Ygo+Pj4+Pj4+
-IGRpZmYgLS1naXQgCj4+Pj4+Pj4gYS9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzU4
-OC1jb29scGktZ2VuYm9vay5kdHMKPj4+Pj4+PiBiL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2No
-aXAvcmszNTg4LWNvb2xwaS1nZW5ib29rLmR0cwo+Cj5UaGUgbmV3IGRldmljZSBkdHMgZmlsZSBz
-aG91bGQgYmUgbmFtZWQgcmszNTg4LWNvb2xwaS1jbTUtZ2VuYm9vay5kdHMKPmluc3RlYWQgb2Yg
-cmszNTg4LWNvb2xwaS1nZW5ib29rLmR0cywgYmVjYXVzZSB0aGF0IHdvdWxkOgoKCk9rYXnvvIx3
-aWxsIGJlIGRvbmUgaW4gVjIuClRoYW5rcwoKPgo+ICAgKGEpIGZvbGxvdyB0aGUgImRlcGVuZGVu
-Y3kgZ3JhcGgiIG5hbWluZyBzY2hlbWUsIGFuZAo+ICAgKGIpIG1ha2UgdGhlIG5hbWluZyBzY2hl
-bWUgZnV0dXJlLXByb29mIGZvciBzb21lIG90aGVyIFNvTSB0aGF0Cj4gICAgICAgY291bGQgcG9z
-c2libHkgYmUgbWFkZSBhdmFpbGFibGUgZm9yIHRoZSBHZW5Cb29rIGluIHRoZQo+ICAgICAgIGZ1
-dHVyZSwgZm9yIHdoaWNoIHRoZSBuZXcgZGV2aWNlIGR0cyBmaWxlIHdvdWxkIGJlIG5hbWVkCj4g
-ICAgICAgcmszNTg4LWNvb2xwaS1YWVotZ2VuYm9vay5kdHMuCj4KPj4+Pj4+PiBuZXcgZmlsZSBt
-b2RlIDEwMDY0NAo+Pj4+Pj4+IGluZGV4IDAwMDAwMDAwMDAwMC4uMjgzNTdjNmYwNWZiCj4+Pj4+
-Pj4gLS0tIC9kZXYvbnVsbAo+Pj4+Pj4+ICsrKyBiL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2No
-aXAvcmszNTg4LWNvb2xwaS1nZW5ib29rLmR0cwo+Pj4+Pj4+IEBAIC0wLDAgKzEsMjk2IEBACj4+
-Pj4+Pj4gKy8vIFNQRFgtTGljZW5zZS1JZGVudGlmaWVyOiAoR1BMLTIuMCsgT1IgTUlUKQo+Pj4+
-Pj4+ICsvKgo+Pj4+Pj4+ICsgKiBDb3B5cmlnaHQgKGMpIDIwMjQgUm9ja2NoaXAgRWxlY3Ryb25p
-Y3MgQ28uLCBMdGQuCj4+Pj4+Pj4gKyAqCj4+Pj4+Pj4gKyAqLwo+Pj4+Pj4+ICsKPj4+Pj4+PiAr
-L2R0cy12MS87Cj4+Pj4+Pj4gKwo+Pj4+Pj4+ICsjaW5jbHVkZSA8ZHQtYmluZGluZ3MvbGVkcy9j
-b21tb24uaD4KPj4+Pj4+PiArI2luY2x1ZGUgInJrMzU4OC1jb29scGktY201LmR0c2kiCj4+Pj4+
-Pj4gKwo+Pj4+Pj4+ICsvIHsKPj4+Pj4+PiArCW1vZGVsID0gIlJLMzU4OCBDb29sUGkgR2VuQm9v
-ayI7Cj4+IAo+PiBJdCB3b3VsZCBiZSBiZXR0ZXIgdG8gb21pdCAiUkszNTg4IiBmcm9tIHRoZSBt
-b2RlbCBuYW1lIGFuZCB1c2UKPj4gIkNNNSIgaW5zdGVhZCwgYmVjYXVzZSB0aGF0IG1vcmUgcHJl
-Y2lzZWx5IHJlZmxlY3RzIHRoZSAiZGVwZW5kZW5jeQo+PiBncmFwaCIsIHNvIHRvIHNwZWFrLiAg
-VGh1cywgSSdkIHN1Z2dlc3QgdGhhdCAiQ29vbFBpIENNNSBHZW5Cb29rIgo+PiBpcyB1c2VkIGFz
-IHRoZSBtb2RlbCBuYW1lLgo+PiAKPj4gVGVjaG5pY2FsbHksICJDb29sUGkgQ001IG9uIEdlbkJv
-b2sgY2FycmllciBib2FyZCIgd291bGQgYmUgYSBtb3JlCj4+IGNvcnJlY3QgbW9kZWwgbmFtZSwg
-c28gdGhhdCdzIGFub3RoZXIgb3B0aW9uLCBidXQgdGhlIGFib3ZlLXByb3Bvc2VkCj4+ICJDb29s
-UGkgQ001IEdlbkJvb2siIHNvdW5kcyBtb3JlIGxpa2UgYSBmaW5pc2hlZCBwcm9kdWN0L2Rldmlj
-ZQo+PiB0aGFuIGp1c3Qgc29tZSBjYXJyaWVyIGJvYXJkIHdpdGggYW4gU29NLgo+PiAKPj4+Pj4+
-PiArCWNvbXBhdGlibGUgPSAiY29vbHBpLGdlbmJvb2siLCAiY29vbHBpLHBpLWNtNSIsIAo+Pj4+
-Pj4+ICJyb2NrY2hpcCxyazM1ODgiOwo+Pj4+Pj4+ICsKPj4+Pj4+PiArCWJhY2tsaWdodDogYmFj
-a2xpZ2h0IHsKPj4+Pj4+PiArCQljb21wYXRpYmxlID0gInB3bS1iYWNrbGlnaHQiOwo+Pj4+Pj4+
-ICsJCWVuYWJsZS1ncGlvcyA9IDwmZ3BpbzQgUktfUEEzIEdQSU9fQUNUSVZFX0hJR0g+Owo+Pj4+
-Pj4+ICsJCXBpbmN0cmwtbmFtZXMgPSAiZGVmYXVsdCI7Cj4+Pj4+Pj4gKwkJcGluY3RybC0wID0g
-PCZibF9lbj47Cj4+Pj4+Pj4gKwkJcG93ZXItc3VwcGx5ID0gPCZ2Y2MxMnZfZGNpbj47Cj4+Pj4+
-Pj4gKwkJcHdtcyA9IDwmcHdtNiAwIDI1MDAwIDA+Owo+Pj4+Pj4+ICsJfTsKPj4+Pj4+PiArCj4+
-Pj4+Pj4gKwlsZWRzOiBsZWRzIHsKPj4+Pj4+PiArCQljb21wYXRpYmxlID0gImdwaW8tbGVkcyI7
-Cj4+Pj4+Pj4gKwo+Pj4+Pj4+ICsJCWhlYXJ0YmVhdF9sZWQ6IGxlZC0wIHsKPj4+Pj4+PiArCQkJ
-Y29sb3IgPSA8TEVEX0NPTE9SX0lEX0dSRUVOPjsKPj4+Pj4+PiArCQkJZnVuY3Rpb24gPSBMRURf
-RlVOQ1RJT05fU1RBVFVTOwo+Pj4+Pj4+ICsJCQlncGlvcyA9IDwmZ3BpbzEgUktfUEIwIEdQSU9f
-QUNUSVZFX0hJR0g+Owo+Pj4+Pj4+ICsJCQlsaW51eCxkZWZhdWx0LXRyaWdnZXIgPSAiaGVhcnRi
-ZWF0IjsKPj4+Pj4+PiArCQl9Owo+Pj4+Pj4+ICsKPj4+Pj4+PiArCQl3bGFuX2xlZDogbGVkLTEg
-ewo+Pj4+Pj4+ICsJCQljb2xvciA9IDxMRURfQ09MT1JfSURfR1JFRU4+Owo+Pj4+Pj4+ICsJCQlm
-dW5jdGlvbiA9IExFRF9GVU5DVElPTl9XTEFOOwo+Pj4+Pj4+ICsJCQlncGlvcyA9IDwmZ3BpbzAg
-UktfUEM1IEdQSU9fQUNUSVZFX0hJR0g+Owo+Pj4+Pj4+ICsJCX07Cj4+Pj4+Pj4gKwo+Pj4+Pj4+
-ICsJCWNoYXJnaW5nX3JlZDogbGVkLTIgewo+Pj4+Pj4+ICsJCQlmdW5jdGlvbiA9IExFRF9GVU5D
-VElPTl9DSEFSR0lORzsKPj4+Pj4+PiArCQkJY29sb3IgPSA8TEVEX0NPTE9SX0lEX1JFRD47Cj4+
-Pj4+Pj4gKwkJCWdwaW9zID0gPCZncGlvMyBSS19QRDIgR1BJT19BQ1RJVkVfSElHSD47Cj4+Pj4+
-Pj4gKwkJfTsKPj4+Pj4+PiArCX07Cj4+Pj4+Pj4gKwo+Pj4+Pj4+ICsJdmNjMTJ2X2RjaW46IHZj
-YzEydi1kY2luLXJlZ3VsYXRvciB7Cj4+Pj4+Pj4gKwkJY29tcGF0aWJsZSA9ICJyZWd1bGF0b3It
-Zml4ZWQiOwo+Pj4+Pj4+ICsJCXJlZ3VsYXRvci1uYW1lID0gInZjYzEydl9kY2luIjsKPj4+Pj4+
-PiArCQlyZWd1bGF0b3ItYWx3YXlzLW9uOwo+Pj4+Pj4+ICsJCXJlZ3VsYXRvci1ib290LW9uOwo+
-Pj4+Pj4+ICsJCXJlZ3VsYXRvci1taW4tbWljcm92b2x0ID0gPDEyMDAwMDAwPjsKPj4+Pj4+PiAr
-CQlyZWd1bGF0b3ItbWF4LW1pY3Jvdm9sdCA9IDwxMjAwMDAwMD47Cj4+Pj4+Pj4gKwl9Owo+Pj4+
-Pj4+ICsKPj4+Pj4+PiArCXZjY19zeXM6IHZjYy1zeXMtcmVndWxhdG9yIHsKPj4+Pj4+PiArCQlj
-b21wYXRpYmxlID0gInJlZ3VsYXRvci1maXhlZCI7Cj4+Pj4+Pj4gKwkJcmVndWxhdG9yLW5hbWUg
-PSAidmNjX3N5cyI7Cj4+Pj4+Pj4gKwkJcmVndWxhdG9yLWFsd2F5cy1vbjsKPj4+Pj4+PiArCQly
-ZWd1bGF0b3ItYm9vdC1vbjsKPj4+Pj4+PiArCQlyZWd1bGF0b3ItbWluLW1pY3Jvdm9sdCA9IDw3
-MDAwMDAwPjsKPj4+Pj4+PiArCQlyZWd1bGF0b3ItbWF4LW1pY3Jvdm9sdCA9IDw3MDAwMDAwPjsK
-Pj4+Pj4+PiArCQl2aW4tc3VwcGx5ID0gPCZ2Y2MxMnZfZGNpbj47Cj4+Pj4+Pj4gKwl9Owo+Pj4+
-Pj4+ICsKPj4+Pj4+PiArCXZjYzV2MF9zeXM6IHZjYzV2MC1zeXMtcmVndWxhdG9yIHsKPj4+Pj4+
-PiArCQljb21wYXRpYmxlID0gInJlZ3VsYXRvci1maXhlZCI7Cj4+Pj4+Pj4gKwkJcmVndWxhdG9y
-LW5hbWUgPSAidmNjNXYwX3N5cyI7Cj4+Pj4+Pj4gKwkJcmVndWxhdG9yLWFsd2F5cy1vbjsKPj4+
-Pj4+PiArCQlyZWd1bGF0b3ItYm9vdC1vbjsKPj4+Pj4+PiArCQlyZWd1bGF0b3ItbWluLW1pY3Jv
-dm9sdCA9IDw3MDAwMDAwPjsKPj4+Pj4+PiArCQlyZWd1bGF0b3ItbWF4LW1pY3Jvdm9sdCA9IDw3
-MDAwMDAwPjsKPj4+Pj4+PiArCQl2aW4tc3VwcGx5ID0gPCZ2Y2Nfc3lzPjsKPj4+Pj4+PiArCX07
-Cj4+Pj4+Pj4gKwo+Pj4+Pj4+ICsJdmNjM3YzX3N5czogdmNjM3YzLXN5cy1yZWd1bGF0b3Igewo+
-Pj4+Pj4+ICsJCWNvbXBhdGlibGUgPSAicmVndWxhdG9yLWZpeGVkIjsKPj4+Pj4+PiArCQlyZWd1
-bGF0b3ItbmFtZSA9ICJ2Y2MzdjNfc3lzIjsKPj4+Pj4+PiArCQlyZWd1bGF0b3ItYWx3YXlzLW9u
-Owo+Pj4+Pj4+ICsJCXJlZ3VsYXRvci1ib290LW9uOwo+Pj4+Pj4+ICsJCXJlZ3VsYXRvci1taW4t
-bWljcm92b2x0ID0gPDMzMDAwMDA+Owo+Pj4+Pj4+ICsJCXJlZ3VsYXRvci1tYXgtbWljcm92b2x0
-ID0gPDMzMDAwMDA+Owo+Pj4+Pj4+ICsJCXZpbi1zdXBwbHkgPSA8JnZjYzV2MF9zeXM+Owo+Pj4+
-Pj4+ICsJfTsKPj4+Pj4+PiArCj4+Pj4+Pj4gKwl2Y2MzdjNfbGNkOiB2Y2MzdjMtbGNkLXJlZ3Vs
-YXRvciB7Cj4+Pj4+Pj4gKwkJY29tcGF0aWJsZSA9ICJyZWd1bGF0b3ItZml4ZWQiOwo+Pj4+Pj4+
-ICsJCXJlZ3VsYXRvci1uYW1lID0gInZjYzN2M19sY2QiOwo+Pj4+Pj4+ICsJCWVuYWJsZS1hY3Rp
-dmUtaGlnaDsKPj4+Pj4+PiArCQlncGlvID0gPCZncGlvMSBSS19QQzQgR1BJT19BQ1RJVkVfSElH
-SD47Cj4+Pj4+Pj4gKwkJcGluY3RybC1uYW1lcyA9ICJkZWZhdWx0IjsKPj4+Pj4+PiArCQlwaW5j
-dHJsLTAgPSA8JmxjZHB3cl9lbj47Cj4+Pj4+Pj4gKwkJdmluLXN1cHBseSA9IDwmdmNjM3YzX3N5
-cz47Cj4+Pj4+Pj4gKwl9Owo+Pj4+Pj4+ICsKPj4+Pj4+PiArCXZjYzV2MF91c2I6IHZjYzV2MC11
-c2ItcmVndWxhdG9yIHsKPj4+Pj4+PiArCQljb21wYXRpYmxlID0gInJlZ3VsYXRvci1maXhlZCI7
-Cj4+Pj4+Pj4gKwkJcmVndWxhdG9yLW5hbWUgPSAidmNjNXYwX3VzYiI7Cj4+Pj4+Pj4gKwkJcmVn
-dWxhdG9yLWJvb3Qtb247Cj4+Pj4+Pj4gKwkJcmVndWxhdG9yLWFsd2F5cy1vbjsKPj4+Pj4+PiAr
-CQllbmFibGUtYWN0aXZlLWhpZ2g7Cj4+Pj4+Pj4gKwkJcmVndWxhdG9yLW1pbi1taWNyb3ZvbHQg
-PSA8NTAwMDAwMD47Cj4+Pj4+Pj4gKwkJcmVndWxhdG9yLW1heC1taWNyb3ZvbHQgPSA8NTAwMDAw
-MD47Cj4+Pj4+Pj4gKwkJZ3BpbyA9IDwmZ3BpbzEgUktfUEQ1IEdQSU9fQUNUSVZFX0hJR0g+Owo+
-Pj4+Pj4+ICsJCXBpbmN0cmwtbmFtZXMgPSAiZGVmYXVsdCI7Cj4+Pj4+Pj4gKwkJcGluY3RybC0w
-ID0gPCZ1c2JfcHdyZW4+Owo+Pj4+Pj4+ICsJCXZpbi1zdXBwbHkgPSA8JnZjY19zeXM+Owo+Pj4+
-Pj4+ICsJfTsKPj4+Pj4+PiArCj4+Pj4+Pj4gKwl2Y2M1djBfdXNiX2hvc3QwOiB2Y2M1djBfdXNi
-MzBfaG9zdDogdmNjNXYwLXVzYi1ob3N0LXJlZ3VsYXRvciB7Cj4+Pj4+Pj4gKwkJY29tcGF0aWJs
-ZSA9ICJyZWd1bGF0b3ItZml4ZWQiOwo+Pj4+Pj4+ICsJCXJlZ3VsYXRvci1uYW1lID0gInZjYzV2
-MF9ob3N0IjsKPj4+Pj4+PiArCQlyZWd1bGF0b3ItYm9vdC1vbjsKPj4+Pj4+PiArCQlyZWd1bGF0
-b3ItYWx3YXlzLW9uOwo+Pj4+Pj4+ICsJCWVuYWJsZS1hY3RpdmUtaGlnaDsKPj4+Pj4+PiArCQly
-ZWd1bGF0b3ItbWluLW1pY3Jvdm9sdCA9IDw1MDAwMDAwPjsKPj4+Pj4+PiArCQlyZWd1bGF0b3It
-bWF4LW1pY3Jvdm9sdCA9IDw1MDAwMDAwPjsKPj4+Pj4+PiArCQlncGlvID0gPCZncGlvMSBSS19Q
-QTcgR1BJT19BQ1RJVkVfSElHSD47Cj4+Pj4+Pj4gKwkJcGluY3RybC1uYW1lcyA9ICJkZWZhdWx0
-IjsKPj4+Pj4+PiArCQlwaW5jdHJsLTAgPSA8JnVzYl9ob3N0X3B3cmVuPjsKPj4+Pj4+PiArCQl2
-aW4tc3VwcGx5ID0gPCZ2Y2M1djBfdXNiPjsKPj4+Pj4+PiArCX07Cj4+Pj4+Pj4gK307Cj4+Pj4+
-Pj4gKwo+Pj4+Pj4+ICsmZ21hYzAgewo+Pj4+Pj4+ICsJc3RhdHVzID0gImRpc2FibGVkIjsKPj4+
-Pj4+PiArfTsKPj4+Pj4+PiArCj4+Pj4+Pj4gKy8qIE0uMiBFLUtleSAqLwo+Pj4+Pj4+ICsmcGNp
-ZTJ4MWwwIHsKPj4+Pj4+PiArCXJlc2V0LWdwaW9zID0gPCZncGlvNCBSS19QQTIgR1BJT19BQ1RJ
-VkVfSElHSD47Cj4+Pj4+Pj4gKwl2cGNpZTN2My1zdXBwbHkgPSA8JnZjYzN2M19zeXM+Owo+Pj4+
-Pj4+ICsJcGluY3RybC1uYW1lcyA9ICJkZWZhdWx0IjsKPj4+Pj4+PiArCXBpbmN0cmwtMCA9IDwm
-cGNpZV9jbGtyZXEgJnBjaWVfd2FrZSAmcGNpZV9yc3QgJndpZmlfcHdyb24KPj4+Pj4+PiAmYnRf
-cHdyb24+Owo+Pj4+Pj4+ICsJc3RhdHVzID0gIm9rYXkiOwo+Pj4+Pj4+ICt9Owo+Pj4+Pj4+ICsK
-Pj4+Pj4+PiArJnBjaWUyeDFsMiB7Cj4+Pj4+Pj4gKwlzdGF0dXMgPSAiZGlzYWJsZWQiOwo+Pj4+
-Pj4+ICt9Owo+Pj4+Pj4+ICsKPj4+Pj4+PiArJnBjaWUzMHBoeSB7Cj4+Pj4+Pj4gKwlzdGF0dXMg
-PSAib2theSI7Cj4+Pj4+Pj4gK307Cj4+Pj4+Pj4gKwo+Pj4+Pj4+ICsvKiBNLjIgTS1LZXkgc3Nk
-ICovCj4+Pj4+Pj4gKyZwY2llM3g0IHsKPj4+Pj4+PiArCXJlc2V0LWdwaW9zID0gPCZncGlvNCBS
-S19QQjYgR1BJT19BQ1RJVkVfSElHSD47Cj4+Pj4+Pj4gKwl2cGNpZTN2My1zdXBwbHkgPSA8JnZj
-YzN2M19zeXM+Owo+Pj4+Pj4+ICsJc3RhdHVzID0gIm9rYXkiOwo+Pj4+Pj4+ICt9Owo+Pj4+Pj4+
-ICsKPj4+Pj4+PiArJnBpbmN0cmwgewo+Pj4+Pj4+ICsJbGNkIHsKPj4+Pj4+PiArCQlsY2Rwd3Jf
-ZW46IGxjZHB3ci1lbiB7Cj4+Pj4+Pj4gKwkJCXJvY2tjaGlwLHBpbnMgPSA8MSBSS19QQzQgUktf
-RlVOQ19HUElPICZwY2ZnX3B1bGxfZG93bj47Cj4+Pj4+Pj4gKwkJfTsKPj4+Pj4+PiArCj4+Pj4+
-Pj4gKwkJYmxfZW46IGJsLWVuIHsKPj4+Pj4+PiArCQkJcm9ja2NoaXAscGlucyA9IDw0IFJLX1BB
-MyBSS19GVU5DX0dQSU8gJnBjZmdfcHVsbF9ub25lPjsKPj4+Pj4+PiArCQl9Owo+Pj4+Pj4+ICsJ
-fTsKPj4+Pj4+PiArCj4+Pj4+Pj4gKwl1c2Igewo+Pj4+Pj4+ICsJCXVzYl9wd3JlbjogdXNiLXB3
-cmVuIHsKPj4+Pj4+PiArCQkJcm9ja2NoaXAscGlucyA9IDwxIFJLX1BENSBSS19GVU5DX0dQSU8g
-JnBjZmdfcHVsbF91cD47Cj4+Pj4+Pj4gKwkJfTsKPj4+Pj4+PiArCj4+Pj4+Pj4gKwkJdXNiX290
-Z19wd3JlbjogdXNiLW90Zy1wd3JlbiB7Cj4+Pj4+Pj4gKwkJCXJvY2tjaGlwLHBpbnMgPSA8MCBS
-S19QQTAgUktfRlVOQ19HUElPICZwY2ZnX3B1bGxfdXA+Owo+Pj4+Pj4+ICsJCX07Cj4+Pj4+Pj4g
-Kwo+Pj4+Pj4+ICsJCXVzYl9ob3N0X3B3cmVuOiB1c2ItaG9zdC1wd3JlbiB7Cj4+Pj4+Pj4gKwkJ
-CXJvY2tjaGlwLHBpbnMgPSA8MSBSS19QQTcgUktfRlVOQ19HUElPICZwY2ZnX3B1bGxfdXA+Owo+
-Pj4+Pj4+ICsJCX07Cj4+Pj4+Pj4gKwl9Owo+Pj4+Pj4+ICsKPj4+Pj4+PiArCXdpZmkgewo+Pj4+
-Pj4+ICsJCWJ0X3B3cm9uOiBidC1wd3JvbiB7Cj4+Pj4+Pj4gKwkJCXJvY2tjaGlwLHBpbnMgPSA8
-MyBSS19QQTYgUktfRlVOQ19HUElPICZwY2ZnX3B1bGxfdXA+Owo+Pj4+Pj4+ICsJCX07Cj4+Pj4+
-Pj4gKwo+Pj4+Pj4+ICsJCXBjaWVfY2xrcmVxOiBwY2llLWNsa3JlcSB7Cj4+Pj4+Pj4gKwkJCXJv
-Y2tjaGlwLHBpbnMgPSA8NCBSS19QQTAgUktfRlVOQ19HUElPICZwY2ZnX3B1bGxfdXA+Owo+Pj4+
-Pj4+ICsJCX07Cj4+Pj4+Pj4gKwo+Pj4+Pj4+ICsJCXBjaWVfcnN0OiBwY2llLXJzdCB7Cj4+Pj4+
-Pj4gKwkJCXJvY2tjaGlwLHBpbnMgPSA8NCBSS19QQTIgUktfRlVOQ19HUElPICZwY2ZnX3B1bGxf
-dXA+Owo+Pj4+Pj4+ICsJCX07Cj4+Pj4+Pj4gKwo+Pj4+Pj4+ICsJCXdpZmlfcHdyb246IHdpZmkt
-cHdyb24gewo+Pj4+Pj4+ICsJCQlyb2NrY2hpcCxwaW5zID0gPDMgUktfUEIxIFJLX0ZVTkNfR1BJ
-TyAmcGNmZ19wdWxsX3VwPjsKPj4+Pj4+PiArCQl9Owo+Pj4+Pj4+ICsKPj4+Pj4+PiArCQlwY2ll
-X3dha2U6IHBjaWUtd2FrZSB7Cj4+Pj4+Pj4gKwkJCXJvY2tjaGlwLHBpbnMgPSA8NCBSS19QQTEg
-UktfRlVOQ19HUElPICZwY2ZnX3B1bGxfdXA+Owo+Pj4+Pj4+ICsJCX07Cj4+Pj4+Pj4gKwl9Owo+
-Pj4+Pj4+ICt9Owo+Pj4+Pj4+ICsKPj4+Pj4+PiArJnB3bTYgewo+Pj4+Pj4+ICsJcGluY3RybC0w
-ID0gPCZwd202bTFfcGlucz47Cj4+Pj4+Pj4gKwlzdGF0dXMgPSAib2theSI7Cj4+Pj4+Pj4gK307
-Cj4+Pj4+Pj4gKwo+Pj4+Pj4+ICsmc2RtbWMgewo+Pj4+Pj4+ICsJc3RhdHVzID0gImRpc2FibGVk
-IjsKPj4+Pj4+PiArfTsKPj4+Pj4+PiArCj4+Pj4+Pj4gKyZzZmMgewo+Pj4+Pj4+ICsJcGluY3Ry
-bC1uYW1lcyA9ICJkZWZhdWx0IjsKPj4+Pj4+PiArCXBpbmN0cmwtMCA9IDwmZnNwaW0yX3BpbnM+
-Owo+Pj4+Pj4+ICsJc3RhdHVzID0gIm9rYXkiOwo+Pj4+Pj4+ICsKPj4+Pj4+PiArCWZsYXNoQDAg
-ewo+Pj4+Pj4+ICsJCWNvbXBhdGlibGUgPSAiamVkZWMsc3BpLW5vciI7Cj4+Pj4+Pj4gKwkJcmVn
-ID0gPDB4MD47Cj4+Pj4+Pj4gKwkJc3BpLW1heC1mcmVxdWVuY3kgPSA8MTAwMDAwMDAwPjsKPj4+
-Pj4+PiArCQlzcGktcngtYnVzLXdpZHRoID0gPDQ+Owo+Pj4+Pj4+ICsJCXNwaS10eC1idXMtd2lk
-dGggPSA8MT47Cj4+Pj4+Pj4gKwl9Owo+Pj4+Pj4+ICt9Owo+Pj4+Pj4+ICsKPj4+Pj4+PiArJnUy
-cGh5MCB7Cj4+Pj4+Pj4gKwlzdGF0dXMgPSAib2theSI7Cj4+Pj4+Pj4gK307Cj4+Pj4+Pj4gKwo+
-Pj4+Pj4+ICsmdTJwaHkwX290ZyB7Cj4+Pj4+Pj4gKwlzdGF0dXMgPSAib2theSI7Cj4+Pj4+Pj4g
-K307Cj4+Pj4+Pj4gKwo+Pj4+Pj4+ICsmdXNiZHBfcGh5MCB7Cj4+Pj4+Pj4gKwlzdGF0dXMgPSAi
-b2theSI7Cj4+Pj4+Pj4gK307Cj4+Pj4+Pj4gKwo+Pj4+Pj4+ICsmdTJwaHkxIHsKPj4+Pj4+PiAr
-CXN0YXR1cyA9ICJva2F5IjsKPj4+Pj4+PiArfTsKPj4+Pj4+PiArCj4+Pj4+Pj4gKyZ1MnBoeTFf
-b3RnIHsKPj4+Pj4+PiArCXN0YXR1cyA9ICJva2F5IjsKPj4+Pj4+PiArfTsKPj4+Pj4+PiArCj4+
-Pj4+Pj4gKyZ1MnBoeTIgewo+Pj4+Pj4+ICsJc3RhdHVzID0gIm9rYXkiOwo+Pj4+Pj4+ICt9Owo+
-Pj4+Pj4+ICsKPj4+Pj4+PiArJnUycGh5MyB7Cj4+Pj4+Pj4gKwlzdGF0dXMgPSAib2theSI7Cj4+
-Pj4+Pj4gK307Cj4+Pj4+Pj4gKwo+Pj4+Pj4+ICsmdTJwaHkyX2hvc3Qgewo+Pj4+Pj4+ICsJcGh5
-LXN1cHBseSA9IDwmdmNjNXYwX3VzYl9ob3N0MD47Cj4+Pj4+Pj4gKwlzdGF0dXMgPSAib2theSI7
-Cj4+Pj4+Pj4gK307Cj4+Pj4+Pj4gKwo+Pj4+Pj4+ICsmdTJwaHkzX2hvc3Qgewo+Pj4+Pj4+ICsJ
-cGh5LXN1cHBseSA9IDwmdmNjNXYwX3VzYj47Cj4+Pj4+Pj4gKwlzdGF0dXMgPSAib2theSI7Cj4+
-Pj4+Pj4gK307Cj4+Pj4+Pj4gKwo+Pj4+Pj4+ICsmdXNiZHBfcGh5MSB7Cj4+Pj4+Pj4gKwlzdGF0
-dXMgPSAib2theSI7Cj4+Pj4+Pj4gK307Cj4+Pj4+Pj4gKwo+Pj4+Pj4+ICsvKiBGb3IgS2V5cGFk
-ICovCj4+Pj4+Pj4gKyZ1c2JfaG9zdDBfZWhjaSB7Cj4+Pj4+Pj4gKwlzdGF0dXMgPSAib2theSI7
-Cj4+Pj4+Pj4gK307Cj4+Pj4+Pj4gKwo+Pj4+Pj4+ICsmdXNiX2hvc3QwX29oY2kgewo+Pj4+Pj4+
-ICsJc3RhdHVzID0gIm9rYXkiOwo+Pj4+Pj4+ICt9Owo+Pj4+Pj4+ICsKPj4+Pj4+PiArLyogVHlw
-ZSBDIHBvcnQgKi8KPj4+Pj4+PiArJnVzYl9ob3N0MF94aGNpIHsKPj4+Pj4+PiArCWRyX21vZGUg
-PSAicGVyaXBoZXJhbCI7Cj4+Pj4+Pj4gKwltYXhpbXVtLXNwZWVkID0gImhpZ2gtc3BlZWQiOwo+
-Pj4+Pj4+ICsJc3RhdHVzID0gIm9rYXkiOwo+Pj4+Pj4+ICt9Owo+Pj4+Pj4+ICsKPj4+Pj4+PiAr
-LyogY29ubmVjdGVkIHRvIGEgSFVCIGZvciBjYW1lcmEgYW5kIEJUICovCj4+Pj4+Pj4gKyZ1c2Jf
-aG9zdDFfZWhjaSB7Cj4+Pj4+Pj4gKwlzdGF0dXMgPSAib2theSI7Cj4+Pj4+Pj4gK307Cj4+Pj4+
-Pj4gKwo+Pj4+Pj4+ICsmdXNiX2hvc3QxX29oY2kgewo+Pj4+Pj4+ICsJc3RhdHVzID0gIm9rYXki
-Owo+Pj4+Pj4+ICt9Owo+Pj4+Pj4+ICsKPj4+Pj4+PiArLyogVVNCIEEgb3V0ICovCj4+Pj4+Pj4g
-KyZ1c2JfaG9zdDFfeGhjaSB7Cj4+Pj4+Pj4gKwlkcl9tb2RlID0gImhvc3QiOwo+Pj4+Pj4+ICsJ
-c3RhdHVzID0gIm9rYXkiOwo+Pj4+Pj4+ICt9OwpfX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9j
-a2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWls
-bWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+
+
+On 7/19/24 14:40, Shreeya Patel wrote:
+> Add initial support for the Synopsys DesignWare HDMI RX
+> Controller Driver used by Rockchip RK3588. The driver
+> supports:
+>  - HDMI 1.4b and 2.0 modes (HDMI 4k@60Hz)
+>  - RGB888, YUV422, YUV444 and YCC420 pixel formats
+>  - CEC
+>  - EDID configuration
+> 
+> The hardware also has Audio and HDCP capabilities, but these are
+> not yet supported by the driver.
+> 
+> Reviewed-by: Dmitry Osipenko <dmitry.osipenko@collabora.com>
+> Tested-by: Dmitry Osipenko <dmitry.osipenko@collabora.com>
+> Co-developed-by: Dingxian Wen <shawn.wen@rock-chips.com>
+> Signed-off-by: Dingxian Wen <shawn.wen@rock-chips.com>
+> Signed-off-by: Shreeya Patel <shreeya.patel@collabora.com>
+> ---
+> 
+> Changes in v4 :-
+>   - Create a separate config option for selecting the EDID
+>     and enable it by default
+>   - Improve the comment related to DV timings and move it
+>     to the side of hdmirx_get_detected_timings
+>   - Add 100ms delay before pulling the HPD high
+>   - Do not return the detected timings from VIDIOC_G_DV_TIMINGS
+>   - Drop the bus info from hdmirx_querycap
+>   - If *num_planes != 0 then return 0 in hdmirx_queue_setup
+>   - Set queue->min_queued_buffers to 1
+>   - Drop q->allow_cache_hints = 0; as it's always 0 by default
+>   - Add a comment for q->dma_attrs = DMA_ATTR_FORCE_CONTIGUOUS;
+>   - Drop .read = vb2_fop_read as it's not supported by driver
+>   - Remove redundant edid_init_data_600M
+>   - Make HPD low when driver is loaded
+>   - Add support for reading AVI Infoframe
+>   - Remove msg_len checks from hdmirx_cec_transmit
+>   - Add info about the CEC compliance test in the cover letter
+>   - Add arbitration lost status
+>   - Validate the physical address inside the EDID
+> 
+> Changes in v3 :-
+>   - Use v4l2-common helper functions
+> 
+> Changes in v2 :-
+>   - Fix checkpatch --strict warnings
+>   - Rename resets, vo1-grf and HPD node names as per the DT changes
+> 
+>  drivers/media/platform/Kconfig                |    1 +
+>  drivers/media/platform/Makefile               |    1 +
+>  drivers/media/platform/synopsys/Kconfig       |    3 +
+>  drivers/media/platform/synopsys/Makefile      |    2 +
+>  .../media/platform/synopsys/hdmirx/Kconfig    |   27 +
+>  .../media/platform/synopsys/hdmirx/Makefile   |    4 +
+>  .../platform/synopsys/hdmirx/snps_hdmirx.c    | 2763 +++++++++++++++++
+>  .../platform/synopsys/hdmirx/snps_hdmirx.h    |  394 +++
+>  .../synopsys/hdmirx/snps_hdmirx_cec.c         |  285 ++
+>  .../synopsys/hdmirx/snps_hdmirx_cec.h         |   44 +
+>  10 files changed, 3524 insertions(+)
+>  create mode 100644 drivers/media/platform/synopsys/Kconfig
+>  create mode 100644 drivers/media/platform/synopsys/Makefile
+>  create mode 100644 drivers/media/platform/synopsys/hdmirx/Kconfig
+>  create mode 100644 drivers/media/platform/synopsys/hdmirx/Makefile
+>  create mode 100644 drivers/media/platform/synopsys/hdmirx/snps_hdmirx.c
+>  create mode 100644 drivers/media/platform/synopsys/hdmirx/snps_hdmirx.h
+>  create mode 100644 drivers/media/platform/synopsys/hdmirx/snps_hdmirx_cec.c
+>  create mode 100644 drivers/media/platform/synopsys/hdmirx/snps_hdmirx_cec.h
+> 
+> diff --git a/drivers/media/platform/Kconfig b/drivers/media/platform/Kconfig
+> index 85d2627776b6..9287faafdce5 100644
+> --- a/drivers/media/platform/Kconfig
+> +++ b/drivers/media/platform/Kconfig
+> @@ -85,6 +85,7 @@ source "drivers/media/platform/rockchip/Kconfig"
+>  source "drivers/media/platform/samsung/Kconfig"
+>  source "drivers/media/platform/st/Kconfig"
+>  source "drivers/media/platform/sunxi/Kconfig"
+> +source "drivers/media/platform/synopsys/Kconfig"
+>  source "drivers/media/platform/ti/Kconfig"
+>  source "drivers/media/platform/verisilicon/Kconfig"
+>  source "drivers/media/platform/via/Kconfig"
+> diff --git a/drivers/media/platform/Makefile b/drivers/media/platform/Makefile
+> index ace4e34483dd..6fd7db0541c7 100644
+> --- a/drivers/media/platform/Makefile
+> +++ b/drivers/media/platform/Makefile
+> @@ -28,6 +28,7 @@ obj-y += rockchip/
+>  obj-y += samsung/
+>  obj-y += st/
+>  obj-y += sunxi/
+> +obj-y += synopsys/
+>  obj-y += ti/
+>  obj-y += verisilicon/
+>  obj-y += via/
+> diff --git a/drivers/media/platform/synopsys/Kconfig b/drivers/media/platform/synopsys/Kconfig
+> new file mode 100644
+> index 000000000000..4fd521f78425
+> --- /dev/null
+> +++ b/drivers/media/platform/synopsys/Kconfig
+> @@ -0,0 +1,3 @@
+> +# SPDX-License-Identifier: GPL-2.0-only
+> +
+> +source "drivers/media/platform/synopsys/hdmirx/Kconfig"
+> diff --git a/drivers/media/platform/synopsys/Makefile b/drivers/media/platform/synopsys/Makefile
+> new file mode 100644
+> index 000000000000..3b12c574dd67
+> --- /dev/null
+> +++ b/drivers/media/platform/synopsys/Makefile
+> @@ -0,0 +1,2 @@
+> +# SPDX-License-Identifier: GPL-2.0-only
+> +obj-y += hdmirx/
+> diff --git a/drivers/media/platform/synopsys/hdmirx/Kconfig b/drivers/media/platform/synopsys/hdmirx/Kconfig
+> new file mode 100644
+> index 000000000000..ab569e59300f
+> --- /dev/null
+> +++ b/drivers/media/platform/synopsys/hdmirx/Kconfig
+> @@ -0,0 +1,27 @@
+> +# SPDX-License-Identifier: GPL-2.0
+> +
+> +config VIDEO_SYNOPSYS_HDMIRX
+> +	tristate "Synopsys DesignWare HDMI Receiver driver"
+> +	depends on VIDEO_DEV
+> +	depends on ARCH_ROCKCHIP
+> +	select MEDIA_CONTROLLER
+> +	select VIDEO_V4L2_SUBDEV_API
+> +	select VIDEOBUF2_DMA_CONTIG
+> +	select CEC_CORE
+> +	select CEC_NOTIFIER
+> +	select HDMI
+> +	help
+> +	  Support for Synopsys HDMI HDMI RX Controller.
+> +	  This driver supports HDMI 2.0 version.
+> +
+> +	  To compile this driver as a module, choose M here. The module
+> +	  will be called synopsys_hdmirx.
+> +
+> +config HDMIRX_LOAD_DEFAULT_EDID
+> +	bool "Load default EDID"
+> +	depends on VIDEO_SYNOPSYS_HDMIRX
+> +	default "y"
+> +	help
+> +	  Preload the default EDID (Extended Display Identification Data).
+> +	  EDID contains information about the capabilities of the display,
+> +	  such as supported resolutions, refresh rates, and audio formats.
+> diff --git a/drivers/media/platform/synopsys/hdmirx/Makefile b/drivers/media/platform/synopsys/hdmirx/Makefile
+> new file mode 100644
+> index 000000000000..2fa2d9e25300
+> --- /dev/null
+> +++ b/drivers/media/platform/synopsys/hdmirx/Makefile
+> @@ -0,0 +1,4 @@
+> +# SPDX-License-Identifier: GPL-2.0
+> +synopsys-hdmirx-objs := snps_hdmirx.o snps_hdmirx_cec.o
+> +
+> +obj-$(CONFIG_VIDEO_SYNOPSYS_HDMIRX) += synopsys-hdmirx.o
+> diff --git a/drivers/media/platform/synopsys/hdmirx/snps_hdmirx.c b/drivers/media/platform/synopsys/hdmirx/snps_hdmirx.c
+
+[..]
+
+For FTRACE it is needed that all functions start with the same function prefix.
+
+> +static bool tx_5v_power_present(struct snps_hdmirx_dev *hdmirx_dev)
+
+> +static bool signal_not_lock(struct snps_hdmirx_dev *hdmirx_dev)
+
+> +static bool port_no_link(struct snps_hdmirx_dev *hdmirx_dev)
+
+> +static int wait_reg_bit_status(struct snps_hdmirx_dev *hdmirx_dev, u32 reg,
+> +			       u32 bit_mask, u32 expect_val, bool is_grf,
+> +			       u32 ms)
+
+> +static void return_all_buffers(struct hdmirx_stream *stream,
+> +			       enum vb2_buffer_state state)
+
+> +static void process_signal_change(struct snps_hdmirx_dev *hdmirx_dev)
+
+> +static void avpunit_0_int_handler(struct snps_hdmirx_dev *hdmirx_dev,
+> +				  int status, bool *handled)
+
+> +static void avpunit_1_int_handler(struct snps_hdmirx_dev *hdmirx_dev,
+> +				  int status, bool *handled)
+
+> +static void mainunit_0_int_handler(struct snps_hdmirx_dev *hdmirx_dev,
+> +				   int status, bool *handled)
+
+> +static void mainunit_2_int_handler(struct snps_hdmirx_dev *hdmirx_dev,
+> +				   int status, bool *handled)
+
+> +static void pkt_2_int_handler(struct snps_hdmirx_dev *hdmirx_dev,
+> +			      int status, bool *handled)
+
+> +static void scdc_int_handler(struct snps_hdmirx_dev *hdmirx_dev,
+> +			     int status, bool *handled)
+
+> +static void dma_idle_int_handler(struct snps_hdmirx_dev *hdmirx_dev,
+> +				 bool *handled)
+
+> +static void line_flag_int_handler(struct snps_hdmirx_dev *hdmirx_dev,
+> +				  bool *handled)
+
+[..]
+
+> +static int hdmirx_setup_irq(struct snps_hdmirx_dev *hdmirx_dev,
+> +			    struct platform_device *pdev)
+> +{
+> +	struct device *dev = hdmirx_dev->dev;
+> +	int ret, irq;
+> +
+> +	irq = platform_get_irq_byname(pdev, "hdmi");
+> +	if (irq < 0) {
+> +		dev_err_probe(dev, irq, "failed to get hdmi irq\n");
+> +		return irq;
+> +	}
+> +
+> +	irq_set_status_flags(irq, IRQ_NOAUTOEN);
+> +
+> +	hdmirx_dev->hdmi_irq = irq;
+> +	ret = devm_request_irq(dev, irq, hdmirx_hdmi_irq_handler, 0,
+> +			       "rk_hdmirx-hdmi", hdmirx_dev);
+> +	if (ret) {
+> +		dev_err_probe(dev, ret, "failed to request hdmi irq\n");
+> +		return ret;
+> +	}
+> +
+> +	irq = platform_get_irq_byname(pdev, "dma");
+> +	if (irq < 0) {
+> +		dev_err_probe(dev, irq, "failed to get dma irq\n");
+> +		return irq;
+> +	}
+> +
+> +	irq_set_status_flags(irq, IRQ_NOAUTOEN);
+> +
+> +	hdmirx_dev->dma_irq = irq;
+> +	ret = devm_request_threaded_irq(dev, irq, NULL, hdmirx_dma_irq_handler,
+> +					IRQF_ONESHOT, "rk_hdmirx-dma",
+> +					hdmirx_dev);
+> +	if (ret) {
+> +		dev_err_probe(dev, ret, "failed to request dma irq\n");
+> +		return ret;
+> +	}
+> +
+> +	irq = gpiod_to_irq(hdmirx_dev->detect_5v_gpio);
+> +	if (irq < 0) {
+> +		dev_err_probe(dev, irq, "failed to get hdmirx-5v irq\n");
+> +		return irq;
+> +	}
+> +
+> +	irq_set_status_flags(irq, IRQ_NOAUTOEN);
+> +
+> +	hdmirx_dev->det_irq = irq;
+> +	ret = devm_request_irq(dev, irq, hdmirx_5v_det_irq_handler,
+> +			       IRQF_TRIGGER_FALLING | IRQF_TRIGGER_RISING,
+> +			       "rk_hdmirx-5v", hdmirx_dev);
+> +	if (ret) {
+> +		dev_err_probe(dev, ret, "failed to request hdmirx-5v irq\n");
+> +		return ret;
+> +	}
+> +
+> +	return 0;
+> +}
+> +
+> +static int hdmirx_register_cec(struct snps_hdmirx_dev *hdmirx_dev,
+> +			       struct platform_device *pdev)
+> +{
+> +	struct device *dev = hdmirx_dev->dev;
+> +	struct hdmirx_cec_data cec_data;
+> +	int irq;
+> +
+> +	irq = platform_get_irq_byname(pdev, "cec");
+> +	if (irq < 0) {
+> +		dev_err_probe(dev, irq, "failed to get cec irq\n");
+> +		return irq;
+> +	}
+> +
+> +	hdmirx_dev->cec_notifier = cec_notifier_conn_register(dev, NULL, NULL);
+> +	if (!hdmirx_dev->cec_notifier)
+> +		return -EINVAL;
+> +
+> +	cec_data.hdmirx = hdmirx_dev;
+> +	cec_data.dev = hdmirx_dev->dev;
+> +	cec_data.ops = &hdmirx_cec_ops;
+> +	cec_data.irq = irq;
+> +
+> +	hdmirx_dev->cec = snps_hdmirx_cec_register(&cec_data);
+> +	if (!hdmirx_dev->cec) {
+> +		cec_notifier_conn_unregister(hdmirx_dev->cec_notifier);
+> +		return -EINVAL;
+> +	}
+> +
+> +	return 0;
+> +}
+> +
+> +static int hdmirx_probe(struct platform_device *pdev)
+> +{
+> +	struct snps_hdmirx_dev *hdmirx_dev;
+> +	struct device *dev = &pdev->dev;
+> +	struct v4l2_ctrl_handler *hdl;
+> +	struct hdmirx_stream *stream;
+> +	struct v4l2_device *v4l2_dev;
+> +	int ret;
+> +
+> +	hdmirx_dev = devm_kzalloc(dev, sizeof(*hdmirx_dev), GFP_KERNEL);
+> +	if (!hdmirx_dev)
+> +		return -ENOMEM;
+> +
+> +	ret = dma_coerce_mask_and_coherent(dev, DMA_BIT_MASK(32));
+> +	if (ret)
+> +		return ret;
+> +
+> +	hdmirx_dev->dev = dev;
+> +	dev_set_drvdata(dev, hdmirx_dev);
+> +
+> +	ret = hdmirx_parse_dt(hdmirx_dev);
+> +	if (ret)
+> +		return ret;
+> +
+> +	ret = hdmirx_setup_irq(hdmirx_dev, pdev);
+> +	if (ret)
+> +		return ret;
+> +
+> +	hdmirx_dev->regs = devm_platform_ioremap_resource(pdev, 0);
+> +	if (IS_ERR(hdmirx_dev->regs))
+> +		return dev_err_probe(dev, PTR_ERR(hdmirx_dev->regs),
+> +				     "failed to remap regs resource\n");
+> +
+> +	mutex_init(&hdmirx_dev->stream_lock);
+> +	mutex_init(&hdmirx_dev->work_lock);
+> +	spin_lock_init(&hdmirx_dev->rst_lock);
+> +
+> +	init_completion(&hdmirx_dev->cr_write_done);
+> +	init_completion(&hdmirx_dev->timer_base_lock);
+> +	init_completion(&hdmirx_dev->avi_pkt_rcv);
+> +
+> +	INIT_WORK(&hdmirx_dev->work_wdt_config, hdmirx_work_wdt_config);
+> +	INIT_DELAYED_WORK(&hdmirx_dev->delayed_work_hotplug,
+> +			  hdmirx_delayed_work_hotplug);
+> +	INIT_DELAYED_WORK(&hdmirx_dev->delayed_work_res_change,
+> +			  hdmirx_delayed_work_res_change);
+> +	INIT_DELAYED_WORK(&hdmirx_dev->delayed_work_heartbeat,
+> +			  hdmirx_delayed_work_heartbeat);
+> +
+> +	hdmirx_dev->cur_fmt_fourcc = V4L2_PIX_FMT_BGR24;
+> +	hdmirx_dev->timings = cea640x480;
+> +
+> +	hdmirx_enable(dev);
+> +	hdmirx_init(hdmirx_dev);
+> +
+> +	v4l2_dev = &hdmirx_dev->v4l2_dev;
+> +	strscpy(v4l2_dev->name, dev_name(dev), sizeof(v4l2_dev->name));
+> +
+> +	hdl = &hdmirx_dev->hdl;
+> +	v4l2_ctrl_handler_init(hdl, 1);
+> +
+> +	hdmirx_dev->detect_tx_5v_ctrl = v4l2_ctrl_new_std(hdl, NULL,
+> +							  V4L2_CID_DV_RX_POWER_PRESENT,
+> +							  0, 1, 0, 0);
+> +
+> +	hdmirx_dev->rgb_range = v4l2_ctrl_new_std_menu(hdl, 0,
+> +						       V4L2_CID_DV_RX_RGB_RANGE,
+> +						       V4L2_DV_RGB_RANGE_FULL, 0,
+> +						       V4L2_DV_RGB_RANGE_AUTO);
+> +
+> +	hdmirx_dev->rgb_range->flags |= V4L2_CTRL_FLAG_READ_ONLY;
+> +
+> +	if (hdl->error) {
+> +		dev_err(dev, "v4l2 ctrl handler init failed\n");
+> +		ret = hdl->error;
+> +		goto err_pm;
+> +	}
+> +	hdmirx_dev->v4l2_dev.ctrl_handler = hdl;
+> +
+> +	ret = v4l2_device_register(dev, &hdmirx_dev->v4l2_dev);
+> +	if (ret < 0) {
+> +		dev_err(dev, "register v4l2 device failed\n");
+> +		goto err_hdl;
+> +	}
+> +
+> +	stream = &hdmirx_dev->stream;
+> +	stream->hdmirx_dev = hdmirx_dev;
+> +	ret = hdmirx_register_stream_vdev(stream);
+> +	if (ret < 0) {
+> +		dev_err(dev, "register video device failed\n");
+> +		goto err_unreg_v4l2_dev;
+> +	}
+> +
+> +	ret = hdmirx_register_cec(hdmirx_dev, pdev);
+> +	if (ret)
+> +		goto err_unreg_video_dev;
+> +
+> +	hdmirx_load_default_edid(hdmirx_dev);
+> +
+> +	hdmirx_enable_irq(dev);
+> +
+> +	return 0;
+> +
+> +err_unreg_video_dev:
+> +	video_unregister_device(&hdmirx_dev->stream.vdev);
+> +err_unreg_v4l2_dev:
+> +	v4l2_device_unregister(&hdmirx_dev->v4l2_dev);
+> +err_hdl:
+> +	v4l2_ctrl_handler_free(&hdmirx_dev->hdl);
+> +err_pm:
+> +	hdmirx_disable(dev);
+> +
+> +	return ret;
+> +}
+> +
+> +static void hdmirx_remove(struct platform_device *pdev)
+> +{
+> +	struct device *dev = &pdev->dev;
+> +	struct snps_hdmirx_dev *hdmirx_dev = dev_get_drvdata(dev);
+> +
+> +	snps_hdmirx_cec_unregister(hdmirx_dev->cec);
+> +	cec_notifier_conn_unregister(hdmirx_dev->cec_notifier);
+> +
+> +	hdmirx_disable_irq(dev);
+> +
+> +	video_unregister_device(&hdmirx_dev->stream.vdev);
+> +	v4l2_ctrl_handler_free(&hdmirx_dev->hdl);
+> +	v4l2_device_unregister(&hdmirx_dev->v4l2_dev);
+> +
+> +	hdmirx_disable(dev);
+> +
+> +	reset_control_bulk_assert(HDMIRX_NUM_RST, hdmirx_dev->resets);
+> +
+> +	of_reserved_mem_device_release(dev);
+> +}
+> +
+> +static const struct of_device_id hdmirx_id[] = {
+> +	{ .compatible = "rockchip,rk3588-hdmirx-ctrler" },
+> +	{ },
+> +};
+> +MODULE_DEVICE_TABLE(of, hdmirx_id);
+> +
+> +static struct platform_driver hdmirx_driver = {
+> +	.probe = hdmirx_probe,
+> +	.remove = hdmirx_remove,
+> +	.driver = {
+> +		.name = "snps_hdmirx",
+> +		.of_match_table = hdmirx_id,
+> +		.pm = &snps_hdmirx_pm_ops,
+> +	}
+> +};
+> +module_platform_driver(hdmirx_driver);
+> +
+> +MODULE_DESCRIPTION("Rockchip HDMI Receiver Driver");
+
+While the file is called snps_hdmirx.c and the driver name is "snps_hdmirx" the module description calls it a Rockchip driver.
+This patch serie somewhat hints at the use of multiple SoCs and possible multiple brands then a more clear separation between common snps and Rockchip (rk3588) SoC specific is needed?
+
+Johan
+
+> +MODULE_AUTHOR("Dingxian Wen <shawn.wen@rock-chips.com>");
+> +MODULE_AUTHOR("Shreeya Patel <shreeya.patel@collabora.com>");
+> +MODULE_LICENSE("GPL");
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
