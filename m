@@ -4,49 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1F967C3DA70
-	for <linux-rockchip@archiver.kernel.org>; Sat, 20 Jul 2024 21:12:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A46E0C3DA7E
+	for <linux-rockchip@archiver.kernel.org>; Sat, 20 Jul 2024 21:12:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=kEHuMCr+pbx8Q3iP+rBXe3OBTuSkeYPxhju7f0j/F5A=; b=MaUzaI0euI5YHj
-	UER5vQyMLD4Lbqzr5287wGhoiREplCeduE15o/MH0MxhYMULecJ5BV72HgLHyXehRmbZzNZrdiXOh
-	W8+fNx23Ya0n9txYfi68wiVPjHWE556Cd/S7aQAvoHtzOEsMM/tNxYRiAgz7r5LMx2WJOxw3aXuVJ
-	A0XByAqkbQyOeanZKH/EdYSM3Oye8mDEBcJ2FELa5+tli/lREkOGVIocjrnYGBDP3DvcP24MG3kIZ
-	iPhiDTh0ZgzHCmJ1uRljopsUcdxuvCPyeOoDFSYlQ262Xho/MN4V2Pg2C+02YkNEF4ZgYN1IMLDuy
-	kXD29T73ERirgdngQywQ==;
+	List-Owner; bh=3MRnkCuUkFhDrkzrSddUuV75SkQ2lcaBhsil3QhdKmY=; b=MEpSl6mjqJqTye
+	RFhZ8Er6AsHx4hwCWAuzVn4vDGKcxZwettve33DGbGWOiUAAITIpeP2jvoLDzlVTQQjAQnjFs4RgF
+	s/OFUD10+ij/UmcDaU8palG+ie3qeIu7Aq9dtb+OPiSnj8NsH/OtpjkHguK7WvaohaftwhMDcGuXU
+	o8Lh13WUrk8YfHXkbpI57dRiANF3GeqX6jqBKf3HvyzVSaMRZao8Deitwk05EyGDBP8+Oy+X5kQQ3
+	tOw5b3NPjJPa1KjJ61Dl7zvgYO8B6ksPCjZaOflguddveXoqszB4t031GfCcAIrQq7i80+Hb0YUC7
+	R2wAI/655xqja518SSpg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sVHNZ-00000005gSc-1qYn;
-	Sat, 20 Jul 2024 21:12:33 +0000
+	id 1sVHNa-00000005gTI-1499;
+	Sat, 20 Jul 2024 21:12:34 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sVHKE-00000005f32-3eVO;
-	Sat, 20 Jul 2024 21:09:08 +0000
-Received: from i5e860cd3.versanet.de ([94.134.12.211] helo=phil.lan)
+	id 1sVHM6-00000005fu3-3vdr;
+	Sat, 20 Jul 2024 21:11:04 +0000
+Received: from i5e860cd3.versanet.de ([94.134.12.211] helo=diego.localnet)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1sVHKD-00061D-Ha; Sat, 20 Jul 2024 23:09:05 +0200
-From: Heiko Stuebner <heiko@sntech.de>
-To: heiko@sntech.de
-Cc: ukleinek@debian.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH 6/8] arm64: dts: rockchip: enable sata1+2 on Qnap-TS433
-Date: Sat, 20 Jul 2024 23:08:54 +0200
-Message-Id: <20240720210856.778014-9-heiko@sntech.de>
-X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20240720210856.778014-1-heiko@sntech.de>
+	id 1sVHM5-00065w-Li; Sat, 20 Jul 2024 23:11:01 +0200
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+To: linux-rockchip@lists.infradead.org
+Cc: ukleinek@debian.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+Subject: Re: [PATCH 3/8] arm64: dts: rockchip: enable uart0 on qnap ts433
+Date: Sat, 20 Jul 2024 23:11:01 +0200
+Message-ID: <4879096.JsnAkG3lO3@diego>
+In-Reply-To: <20240720210856.778014-4-heiko@sntech.de>
 References: <20240720210856.778014-1-heiko@sntech.de>
+ <20240720210856.778014-4-heiko@sntech.de>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240720_140906_944766_D1C1CDAF 
-X-CRM114-Status: GOOD (  10.89  )
+X-CRM114-CacheID: sfid-20240720_141103_019897_080B79B9 
+X-CRM114-Status: GOOD (  10.02  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -63,53 +61,16 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The TS433 has 4 bays. The last two are accessed via a pci-connected
-sata controller, while the first two are accessed via the rk3568's
-sata controllers. Enable these two now.
+Am Samstag, 20. Juli 2024, 23:08:49 CEST schrieb Heiko Stuebner:
+> Uart0 is connected to an MCU on the board that handles system control
+> like the fan-speed. So far no driver for it is available though.
+> 
+> Signed-off-by: Heiko Stuebner <heiko@sntech.de>
 
-Signed-off-by: Heiko Stuebner <heiko@sntech.de>
----
- .../boot/dts/rockchip/rk3568-qnap-ts433.dts    | 18 ++++++++++++++++++
- 1 file changed, 18 insertions(+)
+ignore this one ;-)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3568-qnap-ts433.dts b/arch/arm64/boot/dts/rockchip/rk3568-qnap-ts433.dts
-index 4fbbdb735eb58..69bed01cbe4ed 100644
---- a/arch/arm64/boot/dts/rockchip/rk3568-qnap-ts433.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3568-qnap-ts433.dts
-@@ -80,6 +80,16 @@ &combphy0 {
- 	status = "okay";
- };
- 
-+/* connected to sata1 */
-+&combphy1 {
-+	status = "okay";
-+};
-+
-+/* connected to sata2 */
-+&combphy2 {
-+	status = "okay";
-+};
-+
- &gmac0 {
- 	assigned-clocks = <&cru SCLK_GMAC0_RX_TX>, <&cru SCLK_GMAC0>;
- 	assigned-clock-parents = <&cru SCLK_GMAC0_RGMII_SPEED>, <&cru CLK_MAC0_2TOP>;
-@@ -154,6 +164,14 @@ vcc5v0_otg_en: vcc5v0-otg-en {
- 	};
- };
- 
-+&sata1 {
-+	status = "okay";
-+};
-+
-+&sata2 {
-+	status = "okay";
-+};
-+
- &sdhci {
- 	bus-width = <8>;
- 	max-frequency = <200000000>;
--- 
-2.39.2
+I updated the subject and them fumbled with git-format-patch
+
 
 
 _______________________________________________
