@@ -4,52 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 960CBC3DA59
-	for <linux-rockchip@archiver.kernel.org>; Sat, 20 Jul 2024 22:10:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5D1F1C3DA49
+	for <linux-rockchip@archiver.kernel.org>; Sat, 20 Jul 2024 23:44:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Subject:From:To
-	:Date:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=/uaaxm0rcAZoLvGDw3GD6qC/Zd5jp9lx0rP7XXmsOoA=; b=kuioUPmvUT9pXC
-	ks/VI1pzzxdv4CEY6KKS/kXFvhcWGTgrMGDhfq7FCmW7++L/IpL7WMkwL6VVelqwDovVBNDHj7y0J
-	j3uF5twOJJHr4YEl0INLtGAI98UAjpnSnwwoXL2AtbNC7hx8qUYJsUH8f1D19oEig5ycYzcH2Heg+
-	qhio3obAYjs6g3UTycAX344KZaa8X3CpA1h1XLQw2bcqhgpdVtdV5f+7JOBnclqsrsj3qRhmnEmb8
-	+1yBJfKQvVtpQ1eujNFXr4JK9iJjrK+yOrujTaCEftQgesT1rl6Xx+Sh939HmMyNtKtmJFm2u5GH2
-	rZH+4vTCAm4YaRtyfI+g==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:CC:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=L8ejH921NjSLoQbxD4AablmTdAwAKuV0yzb8CjV/q4E=; b=4Gohuuh6bi/CCP
+	tGNx/smcjmrNJ0P+/vWlVErGbPzRMtMUUeSt2cRY9vRDaECT9BLg5SQjf1+jndroB8jdoVJGNVZCI
+	D4Fa0gfI0YaoUNJZMU9diRaMNq3tORW3hD6o0N2d6bZt9rLPK9T0KFCk53/3RzyfpU+I1D2mFphWp
+	IeqjwrmmI3Itsd0fMLNuij6jZpwhbvdAXpNknRof2jdNVceNgx9huhpHrIAolJ4NGlxt36+XNiT5J
+	4MydSS5NUKf0i0duTXJhK7yTZKiw4lOntuR7NcOfQT42cHNLzaSd5Khm/EX33iQrSgBSo1qPHQxOp
+	pHPRxXwxEWYFO8UJhRPg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sVIHe-00000005l1A-0ulc;
-	Sat, 20 Jul 2024 22:10:30 +0000
-Received: from mail-40130.protonmail.ch ([185.70.40.130])
+	id 1sVJkP-00000005riC-27YC;
+	Sat, 20 Jul 2024 23:44:17 +0000
+Received: from mx1.sberdevices.ru ([37.18.73.165])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sVIHa-00000005l0T-3cBO
-	for linux-rockchip@lists.infradead.org;
-	Sat, 20 Jul 2024 22:10:28 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=proton.me;
-	s=protonmail; t=1721513421; x=1721772621;
-	bh=e4QKqLCq8CsT5SPzs25GwTTQ4zu6H5vCC6AEfBq2DTM=;
-	h=Date:To:From:Subject:Message-ID:Feedback-ID:From:To:Cc:Date:
-	 Subject:Reply-To:Feedback-ID:Message-ID:BIMI-Selector;
-	b=XuhSdLHI/bQHncl/2GwyO4x+QIPaV84GEejAxzQzV+pqChJLswjh3JZ4tiegpGKx1
-	 43Vg8RzgFTXB4vlcouwKElcULmjIiYg0KBFbaED544OvZXp0F3teUGUiRoMuQBNYXj
-	 iiAySGyxCoxgkm4o5lGdHAPKg8wGDCLqNzM8yJKQfuB5DCQdx2/zulkPl9A2SyQkjx
-	 j7YWAjzt1kkcBUlsqhS4FhoMJfX1nfkIJw/a67YWJuUK6V2LarlDOZuO3M+0/25dlL
-	 6gOiMHyjaAWY/Zj6Zl9QhylppLpAFZH7XO7LDA7WtyPA+ACqgXaWxMQV5MWvIuVF3m
-	 aadGGMlNpOdFg==
-Date: Sat, 20 Jul 2024 22:10:16 +0000
-To: "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>
-From: pZ010001011111 <pZ010001011111@proton.me>
-Subject: [PATCH] rockchip/drm: vop2: add support for gamma LUT
-Message-ID: <btjgvj4UvkQUkP9ByLcL1YSu8-7sDJ8UYXjdmbtSl2Bd02MvC2LULx6gnxVPEaNWo1OWc8UUX9NfIULjZA10mAW_37MrmOWjoqDszTspo24=@proton.me>
-Feedback-ID: 53478694:user:proton
-X-Pm-Message-ID: 47c26d6ce610e3959bedc824434607094c6e9c24
+	id 1sVJk0-00000005rdu-3Ydh;
+	Sat, 20 Jul 2024 23:43:55 +0000
+Received: from p-infra-ksmg-sc-msk01.sberdevices.ru (localhost [127.0.0.1])
+	by mx1.sberdevices.ru (Postfix) with ESMTP id 6ECBB100005;
+	Sun, 21 Jul 2024 02:43:45 +0300 (MSK)
+DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.sberdevices.ru 6ECBB100005
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=salutedevices.com;
+	s=mail; t=1721519025;
+	bh=g24+UhvGrnOWMz/mhUcWCb3PyHRvlOlSwGOnoi3HCN0=;
+	h=Message-ID:Date:MIME-Version:Subject:To:From:Content-Type:From;
+	b=clw3iwTgpEimcsMVGG/rjJ76pzjT0LDO9hzKUC1FKhcdjUWs1lqh+vJ/PpOk5hCrr
+	 9aSd845zoz1PjHcvhkhQ4/zgK3HZjd/bXK8fHA08TIpdecooxrGyyR7hp92wzpZQg9
+	 5M6tQcm1B1hrgEWIN9YBxCYG2yKNHkr+9ZhbQ2xPcVjzencYJGqVI/ZhNyT/VKqN1s
+	 mHd9IbnJg70Ac/B4mb29SiB2JNzFyqmAHBsfJLsifGsy0nwQe/C1EgslN8+R6/fgJv
+	 SsGyDucqo5G7YosN4QpftPO73mH2SjOOEsqE6adlB0sTcboCotQQQ2Pg3K5mu32C+R
+	 E8EbZ2jFw+cNg==
+Received: from smtp.sberdevices.ru (p-i-exch-sc-m02.sberdevices.ru [172.16.192.103])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mx1.sberdevices.ru (Postfix) with ESMTPS;
+	Sun, 21 Jul 2024 02:43:44 +0300 (MSK)
+Received: from [192.168.1.143] (100.64.160.123) by
+ p-i-exch-sc-m02.sberdevices.ru (172.16.192.103) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.40; Sun, 21 Jul 2024 02:43:44 +0300
+Message-ID: <0d67019e-dac5-489c-a42a-dab5028c1bce@salutedevices.com>
+Date: Sun, 21 Jul 2024 02:43:44 +0300
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v4 4/4] media: platform: synopsys: Add support for hdmi
+ input driver
+To: Shreeya Patel <shreeya.patel@collabora.com>, <heiko@sntech.de>,
+	<mchehab@kernel.org>, <robh@kernel.org>, <krzk+dt@kernel.org>,
+	<conor+dt@kernel.org>, <mturquette@baylibre.com>, <sboyd@kernel.org>,
+	<p.zabel@pengutronix.de>, <jose.abreu@synopsys.com>,
+	<nelson.costa@synopsys.com>, <shawn.wen@rock-chips.com>,
+	<nicolas.dufresne@collabora.com>, <hverkuil@xs4all.nl>,
+	<hverkuil-cisco@xs4all.nl>
+CC: <kernel@collabora.com>, <linux-kernel@vger.kernel.org>,
+	<linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-rockchip@lists.infradead.org>,
+	Dmitry Osipenko <dmitry.osipenko@collabora.com>
+References: <20240719124032.26852-1-shreeya.patel@collabora.com>
+ <20240719124032.26852-5-shreeya.patel@collabora.com>
+Content-Language: en-US
+From: George Stark <gnstark@salutedevices.com>
+In-Reply-To: <20240719124032.26852-5-shreeya.patel@collabora.com>
+X-Originating-IP: [100.64.160.123]
+X-ClientProxiedBy: p-i-exch-sc-m02.sberdevices.ru (172.16.192.103) To
+ p-i-exch-sc-m02.sberdevices.ru (172.16.192.103)
+X-KSMG-Rule-ID: 10
+X-KSMG-Message-Action: clean
+X-KSMG-AntiSpam-Lua-Profiles: 186632 [Jul 20 2024]
+X-KSMG-AntiSpam-Version: 6.1.0.4
+X-KSMG-AntiSpam-Envelope-From: gnstark@salutedevices.com
+X-KSMG-AntiSpam-Rate: 0
+X-KSMG-AntiSpam-Status: not_detected
+X-KSMG-AntiSpam-Method: none
+X-KSMG-AntiSpam-Auth: dkim=none
+X-KSMG-AntiSpam-Info: LuaCore: 24 0.3.24 186c4d603b899ccfd4883d230c53f273b80e467f, {Tracking_from_domain_doesnt_match_to}, salutedevices.com:7.1.1;smtp.sberdevices.ru:5.0.1,7.1.1;d41d8cd98f00b204e9800998ecf8427e.com:7.1.1;127.0.0.199:7.1.2;100.64.160.123:7.1.2, FromAlignment: s, ApMailHostAddress: 100.64.160.123
+X-MS-Exchange-Organization-SCL: -1
+X-KSMG-AntiSpam-Interceptor-Info: scan successful
+X-KSMG-AntiPhishing: Clean
+X-KSMG-LinksScanning: Clean
+X-KSMG-AntiVirus: Kaspersky Secure Mail Gateway, version 2.0.1.6960, bases: 2024/07/20 20:49:00 #26110273
+X-KSMG-AntiVirus-Status: Clean, skipped
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240720_151027_544861_167201BA 
-X-CRM114-Status: UNSURE (   9.27  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240720_164353_602733_5E5FBC3F 
+X-CRM114-Status: GOOD (  31.08  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -61,225 +104,220 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add support for gamma LUT in VOP2 driver. The implementation is based on 
-the one found in VOP driver and modified to be compatible with VOP2. Blue
-and red channels in gamma LUT register write were swapped with respect to
-how gamma LUT values are written in VOP. Write of the current video port id
-to VOP2_SYS_LUT_PORT_SEL register was added before the write of DSP_LUT_EN
-bit. Gamma size is set and drm color management is enabled for each video 
-port's CRTC except ones which have no associated device.
+Hello everybody
 
-Signed-off-by: Piotr Zalewski <pZ010001011111@proton.me>
----
+On 7/19/24 15:40, Shreeya Patel wrote:
+> Add initial support for the Synopsys DesignWare HDMI RX
+> Controller Driver used by Rockchip RK3588. The driver
+> supports:
+>   - HDMI 1.4b and 2.0 modes (HDMI 4k@60Hz)
+>   - RGB888, YUV422, YUV444 and YCC420 pixel formats
+>   - CEC
+>   - EDID configuration
+> 
+> The hardware also has Audio and HDCP capabilities, but these are
+> not yet supported by the driver.
+> 
+> Reviewed-by: Dmitry Osipenko <dmitry.osipenko@collabora.com>
+> Tested-by: Dmitry Osipenko <dmitry.osipenko@collabora.com>
+> Co-developed-by: Dingxian Wen <shawn.wen@rock-chips.com>
+> Signed-off-by: Dingxian Wen <shawn.wen@rock-chips.com>
+> Signed-off-by: Shreeya Patel <shreeya.patel@collabora.com>
+> ---
+> 
+> Changes in v4 :-
+>    - Create a separate config option for selecting the EDID
+>      and enable it by default
+>    - Improve the comment related to DV timings and move it
+>      to the side of hdmirx_get_detected_timings
+>    - Add 100ms delay before pulling the HPD high
+>    - Do not return the detected timings from VIDIOC_G_DV_TIMINGS
+>    - Drop the bus info from hdmirx_querycap
+>    - If *num_planes != 0 then return 0 in hdmirx_queue_setup
+>    - Set queue->min_queued_buffers to 1
+>    - Drop q->allow_cache_hints = 0; as it's always 0 by default
+>    - Add a comment for q->dma_attrs = DMA_ATTR_FORCE_CONTIGUOUS;
+>    - Drop .read = vb2_fop_read as it's not supported by driver
+>    - Remove redundant edid_init_data_600M
+>    - Make HPD low when driver is loaded
+>    - Add support for reading AVI Infoframe
+>    - Remove msg_len checks from hdmirx_cec_transmit
+>    - Add info about the CEC compliance test in the cover letter
+>    - Add arbitration lost status
+>    - Validate the physical address inside the EDID
+> 
+> Changes in v3 :-
+>    - Use v4l2-common helper functions
+> 
+> Changes in v2 :-
+>    - Fix checkpatch --strict warnings
+>    - Rename resets, vo1-grf and HPD node names as per the DT changes
+> 
+>   drivers/media/platform/Kconfig                |    1 +
+>   drivers/media/platform/Makefile               |    1 +
+>   drivers/media/platform/synopsys/Kconfig       |    3 +
+>   drivers/media/platform/synopsys/Makefile      |    2 +
+>   .../media/platform/synopsys/hdmirx/Kconfig    |   27 +
+>   .../media/platform/synopsys/hdmirx/Makefile   |    4 +
+>   .../platform/synopsys/hdmirx/snps_hdmirx.c    | 2763 +++++++++++++++++
+>   .../platform/synopsys/hdmirx/snps_hdmirx.h    |  394 +++
+>   .../synopsys/hdmirx/snps_hdmirx_cec.c         |  285 ++
+>   .../synopsys/hdmirx/snps_hdmirx_cec.h         |   44 +
+>   10 files changed, 3524 insertions(+)
+>   create mode 100644 drivers/media/platform/synopsys/Kconfig
+>   create mode 100644 drivers/media/platform/synopsys/Makefile
+>   create mode 100644 drivers/media/platform/synopsys/hdmirx/Kconfig
+>   create mode 100644 drivers/media/platform/synopsys/hdmirx/Makefile
+>   create mode 100644 drivers/media/platform/synopsys/hdmirx/snps_hdmirx.c
+>   create mode 100644 drivers/media/platform/synopsys/hdmirx/snps_hdmirx.h
+>   create mode 100644 drivers/media/platform/synopsys/hdmirx/snps_hdmirx_cec.c
+>   create mode 100644 drivers/media/platform/synopsys/hdmirx/snps_hdmirx_cec.h
+> 
+...
+> diff --git a/drivers/media/platform/synopsys/hdmirx/snps_hdmirx.c b/drivers/media/platform/synopsys/hdmirx/snps_hdmirx.c
+> new file mode 100644
+> index 000000000000..1dfecf256393
+> --- /dev/null
+> +++ b/drivers/media/platform/synopsys/hdmirx/snps_hdmirx.c
+> @@ -0,0 +1,2763 @@
+> +// SPDX-License-Identifier: GPL-2.0
+> +/*
 
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-index 9873172e3fd3..16abdc4a59a8 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-@@ -278,6 +278,15 @@ static u32 vop2_readl(struct vop2 *vop2, u32 offset)
- 	return val;
- }
- 
-+static u32 vop2_vp_read(struct vop2_video_port *vp, u32 offset)
-+{
-+	u32 val;
-+
-+	regmap_read(vp->vop2->map, vp->data->offset + offset, &val);
-+
-+	return val;
-+}
-+
- static void vop2_win_write(const struct vop2_win *win, unsigned int reg, u32 v)
- {
- 	regmap_field_write(win->reg[reg], v);
-@@ -1482,6 +1491,97 @@ static bool vop2_crtc_mode_fixup(struct drm_crtc *crtc,
- 	return true;
- }
- 
-+static bool vop2_vp_dsp_lut_is_enabled(struct vop2_video_port *vp)
-+{
-+	return (u32) (vop2_vp_read(vp, RK3568_VP_DSP_CTRL) & RK3568_VP_DSP_CTRL__DSP_LUT_EN) >
-+	    0;
-+}
-+
-+static void vop2_vp_dsp_lut_enable(struct vop2_video_port *vp)
-+{
-+	u32 dsp_ctrl = vop2_vp_read(vp, RK3568_VP_DSP_CTRL);
-+
-+	dsp_ctrl |= RK3568_VP_DSP_CTRL__DSP_LUT_EN;
-+	vop2_vp_write(vp, RK3568_VP_DSP_CTRL, dsp_ctrl);
-+}
-+
-+static void vop2_vp_dsp_lut_disable(struct vop2_video_port *vp)
-+{
-+	u32 dsp_ctrl = vop2_vp_read(vp, RK3568_VP_DSP_CTRL);
-+
-+	dsp_ctrl &= ~RK3568_VP_DSP_CTRL__DSP_LUT_EN;
-+	vop2_vp_write(vp, RK3568_VP_DSP_CTRL, dsp_ctrl);
-+}
-+
-+static void vop2_crtc_write_gamma_lut(struct vop2 *vop2, struct drm_crtc *crtc)
-+{
-+	const struct vop2_data *vop2_data = vop2->data;
-+	const struct vop2_video_port *vp = to_vop2_video_port(crtc);
-+	const struct vop2_video_port_data *vp_data = &vop2_data->vp[vp->id];
-+
-+	struct drm_color_lut *lut = crtc->state->gamma_lut->data;
-+	unsigned int i, bpc = ilog2(vp_data->gamma_lut_len);
-+	u32 word;
-+
-+	for (i = 0; i < crtc->gamma_size; i++) {
-+		word = (drm_color_lut_extract(lut[i].blue, bpc) << (2 * bpc)) |
-+		    (drm_color_lut_extract(lut[i].green, bpc) << bpc) |
-+		    drm_color_lut_extract(lut[i].red, bpc);
-+
-+		writel(word, vop2->lut_regs + i * 4);
-+	}
-+}
-+
-+static void vop2_crtc_gamma_set(struct vop2 *vop2, struct drm_crtc *crtc,
-+				struct drm_crtc_state *old_state)
-+{
-+	struct drm_crtc_state *state = crtc->state;
-+	struct vop2_video_port *vp = to_vop2_video_port(crtc);
-+	u32 dsp_ctrl;
-+	int ret;
-+
-+	if (!vop2->lut_regs)
-+		return;
-+
-+	if (!state->gamma_lut) {
-+		/*
-+		 * To disable gamma (gamma_lut is null) or to write
-+		 * an update to the LUT, clear dsp_lut_en.
-+		 */
-+		vop2_lock(vop2);
-+
-+		vop2_vp_dsp_lut_disable(vp);
-+
-+		vop2_cfg_done(vp);
-+		vop2_unlock(vop2);
-+		/*
-+		 * In order to write the LUT to the internal memory,
-+		 * we need to first make sure the dsp_lut_en bit is cleared.
-+		 */
-+		ret =
-+		    readx_poll_timeout(vop2_vp_dsp_lut_is_enabled, vp, dsp_ctrl, !dsp_ctrl, 5,
-+				       30 * 1000);
-+
-+		if (ret) {
-+			DRM_DEV_ERROR(vop2->dev, "display LUT RAM enable timeout!\n");
-+			return;
-+		}
-+
-+		if (!state->gamma_lut)
-+			return;
-+	}
-+
-+	vop2_crtc_write_gamma_lut(vop2, crtc);
-+
-+	vop2_lock(vop2);
-+	vop2_writel(vp->vop2, RK3568_LUT_PORT_SEL, vp->id);
-+
-+	vop2_vp_dsp_lut_enable(vp);
-+
-+	vop2_cfg_done(vp);
-+	vop2_unlock(vop2);
-+}
-+
- static void vop2_dither_setup(struct drm_crtc *crtc, u32 *dsp_ctrl)
- {
- 	struct rockchip_crtc_state *vcstate = to_rockchip_crtc_state(crtc->state);
-@@ -1925,6 +2025,7 @@ static void vop2_crtc_atomic_enable(struct drm_crtc *crtc,
- 	const struct vop2_data *vop2_data = vop2->data;
- 	const struct vop2_video_port_data *vp_data = &vop2_data->vp[vp->id];
- 	struct drm_crtc_state *crtc_state = drm_atomic_get_new_crtc_state(state, crtc);
-+	struct drm_crtc_state *old_state = drm_atomic_get_old_crtc_state(state, crtc);
- 	struct rockchip_crtc_state *vcstate = to_rockchip_crtc_state(crtc->state);
- 	struct drm_display_mode *mode = &crtc->state->adjusted_mode;
- 	unsigned long clock = mode->crtc_clock * 1000;
-@@ -2060,6 +2161,9 @@ static void vop2_crtc_atomic_enable(struct drm_crtc *crtc,
- 	drm_crtc_vblank_on(crtc);
- 
- 	vop2_unlock(vop2);
-+
-+	if (crtc->state->gamma_lut)
-+		vop2_crtc_gamma_set(vop2, crtc, old_state);
- }
- 
- static int vop2_crtc_atomic_check(struct drm_crtc *crtc,
-@@ -2070,6 +2174,16 @@ static int vop2_crtc_atomic_check(struct drm_crtc *crtc,
- 	int nplanes = 0;
- 	struct drm_crtc_state *crtc_state = drm_atomic_get_new_crtc_state(state, crtc);
- 
-+	if (vp->vop2->lut_regs && crtc_state->color_mgmt_changed && crtc_state->gamma_lut) {
-+		unsigned int len = drm_color_lut_size(crtc_state->gamma_lut);
-+
-+		if (len != crtc->gamma_size) {
-+			DRM_DEBUG_KMS("Invalid LUT size; got %d, expected %d\n",
-+				      len, crtc->gamma_size);
-+			return -EINVAL;
-+		}
-+	}
-+
- 	drm_atomic_crtc_state_for_each_plane(plane, crtc_state)
- 		nplanes++;
- 
-@@ -2459,6 +2573,10 @@ static void vop2_setup_dly_for_windows(struct vop2 *vop2)
- static void vop2_crtc_atomic_begin(struct drm_crtc *crtc,
- 				   struct drm_atomic_state *state)
- {
-+	struct drm_crtc_state *crtc_state = drm_atomic_get_new_crtc_state(state,
-+									  crtc);
-+	struct drm_crtc_state *old_crtc_state = drm_atomic_get_old_crtc_state(state,
-+									      crtc);
- 	struct vop2_video_port *vp = to_vop2_video_port(crtc);
- 	struct vop2 *vop2 = vp->vop2;
- 	struct drm_plane *plane;
-@@ -2482,6 +2600,9 @@ static void vop2_crtc_atomic_begin(struct drm_crtc *crtc,
- 	vop2_setup_layer_mixer(vp);
- 	vop2_setup_alpha(vp);
- 	vop2_setup_dly_for_windows(vop2);
-+
-+	if (crtc_state->color_mgmt_changed && !crtc_state->active_changed)
-+		vop2_crtc_gamma_set(vop2, crtc, old_crtc_state);
- }
- 
- static void vop2_crtc_atomic_flush(struct drm_crtc *crtc,
-@@ -2791,6 +2912,14 @@ static int vop2_create_crtcs(struct vop2 *vop2)
- 
- 		drm_crtc_helper_add(&vp->crtc, &vop2_crtc_helper_funcs);
- 
-+		if (vop2->lut_regs && vp->crtc.dev != NULL) {
-+			const struct vop2_video_port_data *vp_data = &vop2_data->vp[vp->id];
-+
-+			drm_mode_crtc_set_gamma_size(&vp->crtc, vp_data->gamma_lut_len);
-+			drm_crtc_enable_color_mgmt(&vp->crtc, 0, false,
-+						   vp_data->gamma_lut_len);
-+		}
-+
- 		init_completion(&vp->dsp_hold_completion);
- 	}
- 
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h
-index 615a16196aff..3a58b73fa876 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h
-@@ -394,6 +394,7 @@ enum dst_factor_mode {
- #define RK3568_REG_CFG_DONE__GLB_CFG_DONE_EN		BIT(15)
- 
- #define RK3568_VP_DSP_CTRL__STANDBY			BIT(31)
-+#define RK3568_VP_DSP_CTRL__DSP_LUT_EN			BIT(28)
- #define RK3568_VP_DSP_CTRL__DITHER_DOWN_MODE		BIT(20)
- #define RK3568_VP_DSP_CTRL__DITHER_DOWN_SEL		GENMASK(19, 18)
- #define RK3568_VP_DSP_CTRL__DITHER_DOWN_EN		BIT(17)
+...
+
+> +}
+> +
+> +static int hdmirx_probe(struct platform_device *pdev)
+> +{
+> +	struct snps_hdmirx_dev *hdmirx_dev;
+> +	struct device *dev = &pdev->dev;
+> +	struct v4l2_ctrl_handler *hdl;
+> +	struct hdmirx_stream *stream;
+> +	struct v4l2_device *v4l2_dev;
+> +	int ret;
+> +
+> +	hdmirx_dev = devm_kzalloc(dev, sizeof(*hdmirx_dev), GFP_KERNEL);
+> +	if (!hdmirx_dev)
+> +		return -ENOMEM;
+> +
+> +	ret = dma_coerce_mask_and_coherent(dev, DMA_BIT_MASK(32));
+> +	if (ret)
+> +		return ret;
+> +
+> +	hdmirx_dev->dev = dev;
+> +	dev_set_drvdata(dev, hdmirx_dev);
+> +
+> +	ret = hdmirx_parse_dt(hdmirx_dev);
+> +	if (ret)
+> +		return ret;
+> +
+> +	ret = hdmirx_setup_irq(hdmirx_dev, pdev);
+> +	if (ret)
+> +		return ret;
+> +
+> +	hdmirx_dev->regs = devm_platform_ioremap_resource(pdev, 0);
+> +	if (IS_ERR(hdmirx_dev->regs))
+> +		return dev_err_probe(dev, PTR_ERR(hdmirx_dev->regs),
+> +				     "failed to remap regs resource\n");
+> +
+> +	mutex_init(&hdmirx_dev->stream_lock);
+> +	mutex_init(&hdmirx_dev->work_lock);
 
 
+AFAIK there's no unified opinion on droping mutex_destroy.
+Is it so accepted in media subsystem or should we used devm_mutex_init?
+
+
+ > +	spin_lock_init(&hdmirx_dev->rst_lock);
+ > +
+ > +	init_completion(&hdmirx_dev->cr_write_done);
+ > +	init_completion(&hdmirx_dev->timer_base_lock);
+ > +	init_completion(&hdmirx_dev->avi_pkt_rcv);
+ > +
+ > +	INIT_WORK(&hdmirx_dev->work_wdt_config, hdmirx_work_wdt_config);
+ > +	INIT_DELAYED_WORK(&hdmirx_dev->delayed_work_hotplug,
+ > +			  hdmirx_delayed_work_hotplug);
+ > +	INIT_DELAYED_WORK(&hdmirx_dev->delayed_work_res_change,
+ > +			  hdmirx_delayed_work_res_change);
+ > +	INIT_DELAYED_WORK(&hdmirx_dev->delayed_work_heartbeat,
+ > +			  hdmirx_delayed_work_heartbeat);
+ > +
+ > +	hdmirx_dev->cur_fmt_fourcc = V4L2_PIX_FMT_BGR24;
+ > +	hdmirx_dev->timings = cea640x480;
+ > +
+ > +	hdmirx_enable(dev);
+ > +	hdmirx_init(hdmirx_dev);
+ > +
+ > +	v4l2_dev = &hdmirx_dev->v4l2_dev;
+ > +	strscpy(v4l2_dev->name, dev_name(dev), sizeof(v4l2_dev->name));
+ > +
+ > +	hdl = &hdmirx_dev->hdl;
+ > +	v4l2_ctrl_handler_init(hdl, 1);
+ > +
+ > +	hdmirx_dev->detect_tx_5v_ctrl = v4l2_ctrl_new_std(hdl, NULL,
+ > +							  V4L2_CID_DV_RX_POWER_PRESENT,
+ > +							  0, 1, 0, 0);
+ > +
+ > +	hdmirx_dev->rgb_range = v4l2_ctrl_new_std_menu(hdl, 0,
+ > +						       V4L2_CID_DV_RX_RGB_RANGE,
+ > +						       V4L2_DV_RGB_RANGE_FULL, 0,
+ > +						       V4L2_DV_RGB_RANGE_AUTO);
+ > +
+ > +	hdmirx_dev->rgb_range->flags |= V4L2_CTRL_FLAG_READ_ONLY;
+ > +
+ > +	if (hdl->error) {
+ > +		dev_err(dev, "v4l2 ctrl handler init failed\n");
+ > +		ret = hdl->error;
+ > +		goto err_pm;
+ > +	}
+ > +	hdmirx_dev->v4l2_dev.ctrl_handler = hdl;
+ > +
+ > +	ret = v4l2_device_register(dev, &hdmirx_dev->v4l2_dev);
+ > +	if (ret < 0) {
+ > +		dev_err(dev, "register v4l2 device failed\n");
+ > +		goto err_hdl;
+ > +	}
+ > +
+ > +	stream = &hdmirx_dev->stream;
+ > +	stream->hdmirx_dev = hdmirx_dev;
+ > +	ret = hdmirx_register_stream_vdev(stream);
+ > +	if (ret < 0) {
+ > +		dev_err(dev, "register video device failed\n");
+ > +		goto err_unreg_v4l2_dev;
+ > +	}
+ > +
+ > +	ret = hdmirx_register_cec(hdmirx_dev, pdev);
+ > +	if (ret)
+ > +		goto err_unreg_video_dev;
+ > +
+ > +	hdmirx_load_default_edid(hdmirx_dev);
+ > +
+ > +	hdmirx_enable_irq(dev);
+ > +
+ > +	return 0;
+ > +
+ > +err_unreg_video_dev:
+ > +	video_unregister_device(&hdmirx_dev->stream.vdev);
+ > +err_unreg_v4l2_dev:
+ > +	v4l2_device_unregister(&hdmirx_dev->v4l2_dev);
+ > +err_hdl:
+ > +	v4l2_ctrl_handler_free(&hdmirx_dev->hdl);
+ > +err_pm:
+ > +	hdmirx_disable(dev);
+ > +
+ > +	return ret;
+ > +}
+
+...
+
+-- 
+Best regards
+George
 
 _______________________________________________
 Linux-rockchip mailing list
