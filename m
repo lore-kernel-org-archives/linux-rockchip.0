@@ -4,57 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0484DC3DA61
-	for <linux-rockchip@archiver.kernel.org>; Sun, 21 Jul 2024 03:46:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 67CEAC3DA61
+	for <linux-rockchip@archiver.kernel.org>; Sun, 21 Jul 2024 04:06:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=dawmI/zs/YdvYokZ7uSr7dooaiAQ6dlOY/WMtahpoA4=; b=xXhReYRZ6+Ic1k
-	jbdaGUGlcCXUuAYUE9Le87wGUTQqjIHA6r74vTLNdcnO1W1SrYQZG3voVnYh2XqetDEbLSDgOMKBK
-	BJrMa32O1Em9HZjLb1Ag8VOwuG5SR+FlTnactt19vLnwgJxN0lBtTWyd9DG4MM3kApMo85zkJ8fBF
-	YutejG96lxCOvDBC2Crr98wtOhRqxy9KjtlnGAsZyMa4uTRkLMJjT4NOd9rww2xOHPXFT2OYME63v
-	YdSWt+XiUWUj6m8m4Oqd2OfvwsAoHRT6PCsaSPafmlKlb+EcMBChluH92F/rDN++den/PLoiM/f5T
-	u5encS2Qz/T8bKYQwmiQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
+	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=bCpPPDJdmeaNI134jZ+naRyPoUxF2eQQBhtSLeCJ6to=; b=jiPR6nhYfq5oDvxatWHI5mu0ec
+	vQDUzjrEc2g0G8Eu2JNftsvmBj8TmEh/NSbjn+rwG6XhdjXfdYDQwOYP8F0rSGqm/6VqRIdnCkSXu
+	9+rcpl2kXR5w271p9H0IDPn0ldSZpIYcMOy+RpVQVdEgi5EYIGobbE9jzpRkhEjgdRj7ZLorupv1B
+	5pwvC87gf77+3ve5Oe8FZ6+pecbznarh9fTfVey23NwnPYKzDo405CUMHfwDKH13sRX9tmsnr47Z6
+	kOLUMnE2jiMzB9xnsRMgdE+rPtuOI0/GQYoMu+s27G2GCZVn++w57hWzxThtpsenp8AWQBmkmLK+H
+	tB1nVWvw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sVNWF-000000067dL-0fXU;
-	Sun, 21 Jul 2024 03:45:55 +0000
-Received: from mail.manjaro.org ([2a01:4f8:c0c:51f3::1])
+	id 1sVNpj-000000068sy-1Qrn;
+	Sun, 21 Jul 2024 04:06:03 +0000
+Received: from mail.manjaro.org ([116.203.91.91])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sVNVp-000000067Z2-48mw;
-	Sun, 21 Jul 2024 03:45:32 +0000
-From: Dragan Simic <dsimic@manjaro.org>
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
-	t=1721533526;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding;
-	bh=hIeA1N27z3xcXOiVoRMm1GE/f7bvHy+yMPCX/cwB2lQ=;
-	b=tsU6lK34nNI0q9hdzpPZO/yphZWHWsmwIOr1Cd9LrXIHvyL6yvKICamsg1AFIGRHczbVJO
-	Ml+TYMXXe4s12PgawSBeZHmcYZanWKROeetdKGd0tNS9EI82X18nwsurlw77mCFiiCp41j
-	r7heAvpmivDoC2zA6strfG+1RqGyyroYx+NzQsRxL4U49GyH2FfxS+e8VGb85upgFgQ9k8
-	BGFWl14uK1eI0uqSLj8B/WzSBoH5PDms4gecLApWb6hIDBq0dczA4WnEaF9Jyw1uyLO+1F
-	fh9Jmw647QoJFK6WVBSQapcaO/CDk1mCdo/CQ5YBHErRaX+Ip595lIK9IZ6szw==
-To: linux-rockchip@lists.infradead.org
-Cc: heiko@sntech.de,
-	linux-arm-kernel@lists.infradead.org,
-	devicetree@vger.kernel.org,
-	robh@kernel.org,
-	krzk+dt@kernel.org,
-	conor+dt@kernel.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH] arm64: dts: rockchip: Move RK3399 OPPs to dtsi files for SoC variants
-Date: Sun, 21 Jul 2024 05:45:16 +0200
-Message-Id: <9417b5c5b64f9aceea64530a85a536169a3e7466.1721532747.git.dsimic@manjaro.org>
+	id 1sVNpf-000000068sN-2FP4
+	for linux-rockchip@lists.infradead.org;
+	Sun, 21 Jul 2024 04:06:01 +0000
 MIME-Version: 1.0
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
+	t=1721534757;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=GQBWO3RgP4diyOpsjdhRu7lN4NxiMCb5xE15HssddlQ=;
+	b=kHeH0DzWC3VVN7+qNEB4oU/LstVXH/AxuO5b9ZoQFo+BYDwdtFBok4etScrSUWg5s8MC6s
+	ooyZrMvbj4svJeTh++Nj65iMlRbP0vhx2VSZj9TnDd5I++4JCxEHnnl3fe2yby+xDtCTDp
+	ZF/wDdo4FVp3lHFr5g5xtX7QwUlhPHNZigwuqbq8L+MmbWDL8rtcRDLIbZ6rpf2S0UENLz
+	njC6IhZc8m6C1yMiw+AR0OVFirLAIIluP8FIJbyaEw/T4tbNMaQywff3wdkBXFRh6Ol3CI
+	w3oQZcEgqfKYbL6L/1HdhGJEch+u+9KrD1DlhlUoH48A5xy3AS+tEqKu45h5Nw==
+Date: Sun, 21 Jul 2024 06:05:57 +0200
+From: Dragan Simic <dsimic@manjaro.org>
+To: pZ010001011111 <pZ010001011111@proton.me>
+Cc: linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH] rockchip/drm: vop2: add support for gamma LUT
+In-Reply-To: <btjgvj4UvkQUkP9ByLcL1YSu8-7sDJ8UYXjdmbtSl2Bd02MvC2LULx6gnxVPEaNWo1OWc8UUX9NfIULjZA10mAW_37MrmOWjoqDszTspo24=@proton.me>
+References: <btjgvj4UvkQUkP9ByLcL1YSu8-7sDJ8UYXjdmbtSl2Bd02MvC2LULx6gnxVPEaNWo1OWc8UUX9NfIULjZA10mAW_37MrmOWjoqDszTspo24=@proton.me>
+Message-ID: <f59e4d751566aee1feab98a02d46ccd7@manjaro.org>
+X-Sender: dsimic@manjaro.org
 Authentication-Results: ORIGINATING;
 	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240720_204530_662886_5F20D18F 
-X-CRM114-Status: GOOD (  17.02  )
+X-CRM114-CacheID: sfid-20240720_210559_908336_7501FE71 
+X-CRM114-Status: GOOD (  26.10  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -66,483 +65,270 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Rename the Rockchip RK3399 SoC dtsi files and, consequently, adjust their
-contents and the contents of the affected board dts(i) files appropriately,
-to "encapsulate" the different CPU and GPU OPPs for each of the supported
-RK3399 SoC variants into the respective SoC variant dtsi files.
+Hello Piotr,
 
-Moving the OPPs to the SoC variant dtsi files, instead of requiring the
-board dts(i) files to include both the SoC variant dtsi file and the right
-OPP variant dtsi file, reduces the possibility for mismatched inclusion and
-improves the overall hierarchical representation of data.
+On 2024-07-21 00:10, pZ010001011111 wrote:
+> Add support for gamma LUT in VOP2 driver. The implementation is based 
+> on
+> the one found in VOP driver and modified to be compatible with VOP2. 
+> Blue
+> and red channels in gamma LUT register write were swapped with respect 
+> to
+> how gamma LUT values are written in VOP. Write of the current video 
+> port id
+> to VOP2_SYS_LUT_PORT_SEL register was added before the write of 
+> DSP_LUT_EN
+> bit. Gamma size is set and drm color management is enabled for each 
+> video
+> port's CRTC except ones which have no associated device.
+> 
+> Signed-off-by: Piotr Zalewski <pZ010001011111@proton.me>
 
-These changes follow the approach used for the Rockchip RK3588 SoC variants,
-which was introduced and described further in commit def88eb4d836 ("arm64:
-dts: rockchip: Prepare RK3588 SoC dtsi files for per-variant OPPs").  Please
-see that commit for a more detailed explanation.
+Please resend the patch as "[PATCH RESEND]" to all email addresses 
+returned
+by scripts/get_maintainer.pl, and make sure that the "From" line in your
+patch submission matches your "Signed-off-by" tag, i.e. please include 
+your
+full name in the "From" email address.
 
-No functional changes are introduced, which was validated by decompiling and
-comparing all affected dtb files before and after these changes.  In more
-detail, all decompiled dtb files remain exactly the same, except the files
-list below, which results from all of them stemming from the same base board
-dtsi file (rk3399-rock-pi-4.dtsi), while all of them include one of the three
-different RK3399 SoC variant dtsi files by themselves:
-
-  - rk3399-rock-4se.dtb
-  - rk3399-rock-pi-4a.dtb
-  - rk3399-rock-pi-4a-plus.dtb
-  - rk3399-rock-pi-4b.dtb
-  - rk3399-rock-pi-4b-plus.dtb
-  - rk3399-rock-pi-4c.dtb
-
-When compared with the decompiled original dtb files, these dtb files have
-some of their blocks shuffled around a bit and some of their phandles have
-different values, as a result of the changes to the order in which the
-building blocks from the parent dtsi files are included into them, but they
-still effectively remain the same as the originals.
-
-The only exception to the "include only a SoC variant dtsi" is found in
-rk3399-evb.dts, which includes rk3399-base.dtsi instead of rk3399.dtsi.
-This is intentional, because this board dts file doesn't enable the TSADC,
-so including rk3399.dtsi would enable the SoC to go into higher OPPs with
-no thermal throttling in place.  Let's hope that people interested in this
-board will fix this in the future.
-
-As a side note, due to the nature of introduced changes, this commit is best
-viewed using the --break-rewrites option for git-log(1).
-
-Related-to: def88eb4d836 ("arm64: dts: rockchip: Prepare RK3588 SoC dtsi files for per-variant OPPs")
-Signed-off-by: Dragan Simic <dsimic@manjaro.org>
----
- arch/arm64/boot/dts/rockchip/{rk3399.dtsi => rk3399-base.dtsi} | 0
- arch/arm64/boot/dts/rockchip/rk3399-eaidk-610.dts              | 1 -
- arch/arm64/boot/dts/rockchip/rk3399-evb.dts                    | 2 +-
- arch/arm64/boot/dts/rockchip/rk3399-firefly.dts                | 1 -
- arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi                   | 3 +--
- arch/arm64/boot/dts/rockchip/rk3399-hugsun-x99.dts             | 1 -
- arch/arm64/boot/dts/rockchip/rk3399-khadas-edge.dtsi           | 1 -
- arch/arm64/boot/dts/rockchip/rk3399-kobol-helios64.dts         | 1 -
- arch/arm64/boot/dts/rockchip/rk3399-leez-p710.dts              | 1 -
- arch/arm64/boot/dts/rockchip/rk3399-nanopi4.dtsi               | 1 -
- .../boot/dts/rockchip/{rk3399-op1-opp.dtsi => rk3399-op1.dtsi} | 2 ++
- arch/arm64/boot/dts/rockchip/rk3399-orangepi.dts               | 1 -
- arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts           | 1 -
- arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts          | 1 -
- arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi                  | 1 -
- arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi                | 1 -
- arch/arm64/boot/dts/rockchip/rk3399-rock-4c-plus.dts           | 3 +--
- arch/arm64/boot/dts/rockchip/rk3399-rock-4se.dts               | 2 +-
- arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dtsi             | 2 --
- arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4a-plus.dts        | 2 +-
- arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4a.dts             | 2 +-
- arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4b-plus.dts        | 2 +-
- arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4b.dts             | 2 +-
- arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4c.dts             | 2 +-
- arch/arm64/boot/dts/rockchip/rk3399-rock960.dtsi               | 3 +--
- arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dtsi             | 1 -
- arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi              | 1 -
- .../boot/dts/rockchip/{rk3399-t-opp.dtsi => rk3399-t.dtsi}     | 2 ++
- arch/arm64/boot/dts/rockchip/{rk3399-opp.dtsi => rk3399.dtsi}  | 2 ++
- arch/arm64/boot/dts/rockchip/rk3399pro-rock-pi-n10.dts         | 1 -
- 30 files changed, 16 insertions(+), 30 deletions(-)
- rename arch/arm64/boot/dts/rockchip/{rk3399.dtsi => rk3399-base.dtsi} (100%)
- rename arch/arm64/boot/dts/rockchip/{rk3399-op1-opp.dtsi => rk3399-op1.dtsi} (99%)
- rename arch/arm64/boot/dts/rockchip/{rk3399-t-opp.dtsi => rk3399-t.dtsi} (98%)
- rename arch/arm64/boot/dts/rockchip/{rk3399-opp.dtsi => rk3399.dtsi} (98%)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-base.dtsi
-similarity index 100%
-rename from arch/arm64/boot/dts/rockchip/rk3399.dtsi
-rename to arch/arm64/boot/dts/rockchip/rk3399-base.dtsi
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-eaidk-610.dts b/arch/arm64/boot/dts/rockchip/rk3399-eaidk-610.dts
-index 173da81fc231..1489eb32e266 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-eaidk-610.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-eaidk-610.dts
-@@ -8,7 +8,6 @@
- #include <dt-bindings/pwm/pwm.h>
- #include <dt-bindings/usb/pd.h>
- #include "rk3399.dtsi"
--#include "rk3399-opp.dtsi"
- 
- / {
- 	model = "OPEN AI LAB EAIDK-610";
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-evb.dts b/arch/arm64/boot/dts/rockchip/rk3399-evb.dts
-index 55eca7a50a1f..54e67d2dac09 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-evb.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-evb.dts
-@@ -5,7 +5,7 @@
- 
- /dts-v1/;
- #include <dt-bindings/pwm/pwm.h>
--#include "rk3399.dtsi"
-+#include "rk3399-base.dtsi"
- 
- / {
- 	model = "Rockchip RK3399 Evaluation Board";
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-firefly.dts b/arch/arm64/boot/dts/rockchip/rk3399-firefly.dts
-index 260415d99aeb..f4491317a1b0 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-firefly.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-firefly.dts
-@@ -9,7 +9,6 @@
- #include <dt-bindings/pwm/pwm.h>
- #include <dt-bindings/usb/pd.h>
- #include "rk3399.dtsi"
--#include "rk3399-opp.dtsi"
- 
- / {
- 	model = "Firefly-RK3399 Board";
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi
-index 3cd63d1e8f15..776c0eec04d7 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi
-@@ -6,8 +6,7 @@
-  */
- 
- #include <dt-bindings/input/input.h>
--#include "rk3399.dtsi"
--#include "rk3399-op1-opp.dtsi"
-+#include "rk3399-op1.dtsi"
- 
- / {
- 	aliases {
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-hugsun-x99.dts b/arch/arm64/boot/dts/rockchip/rk3399-hugsun-x99.dts
-index 4a6ab6c2e24c..5a02502d21cd 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-hugsun-x99.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-hugsun-x99.dts
-@@ -4,7 +4,6 @@
- #include <dt-bindings/input/input.h>
- #include <dt-bindings/interrupt-controller/irq.h>
- #include "rk3399.dtsi"
--#include "rk3399-opp.dtsi"
- 
- / {
- 	model = "Hugsun X99 TV BOX";
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-khadas-edge.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-khadas-edge.dtsi
-index 9d9297bc5f04..c772985ae4e5 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-khadas-edge.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-khadas-edge.dtsi
-@@ -9,7 +9,6 @@
- #include <dt-bindings/interrupt-controller/irq.h>
- #include <dt-bindings/pwm/pwm.h>
- #include "rk3399.dtsi"
--#include "rk3399-opp.dtsi"
- 
- / {
- 	aliases {
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-kobol-helios64.dts b/arch/arm64/boot/dts/rockchip/rk3399-kobol-helios64.dts
-index 9586bb12a5d8..b0c1fb0b704e 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-kobol-helios64.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-kobol-helios64.dts
-@@ -12,7 +12,6 @@
- 
- /dts-v1/;
- #include "rk3399.dtsi"
--#include "rk3399-opp.dtsi"
- 
- / {
- 	model = "Kobol Helios64";
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-leez-p710.dts b/arch/arm64/boot/dts/rockchip/rk3399-leez-p710.dts
-index cb69e2145fa9..f12b1eb00575 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-leez-p710.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-leez-p710.dts
-@@ -8,7 +8,6 @@
- #include <dt-bindings/interrupt-controller/irq.h>
- #include <dt-bindings/pwm/pwm.h>
- #include "rk3399.dtsi"
--#include "rk3399-opp.dtsi"
- 
- / {
- 	model = "Leez RK3399 P710";
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-nanopi4.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-nanopi4.dtsi
-index b7f1e47978a6..7debc4a1b5fa 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-nanopi4.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-nanopi4.dtsi
-@@ -14,7 +14,6 @@
- /dts-v1/;
- #include <dt-bindings/input/linux-event-codes.h>
- #include "rk3399.dtsi"
--#include "rk3399-opp.dtsi"
- 
- / {
- 	aliases {
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-op1-opp.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-op1.dtsi
-similarity index 99%
-rename from arch/arm64/boot/dts/rockchip/rk3399-op1-opp.dtsi
-rename to arch/arm64/boot/dts/rockchip/rk3399-op1.dtsi
-index 783120e9cebe..b24bff511513 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-op1-opp.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-op1.dtsi
-@@ -3,6 +3,8 @@
-  * Copyright (c) 2016-2017 Fuzhou Rockchip Electronics Co., Ltd
-  */
- 
-+#include "rk3399.dtsi"
-+
- / {
- 	cluster0_opp: opp-table-0 {
- 		compatible = "operating-points-v2";
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-orangepi.dts b/arch/arm64/boot/dts/rockchip/rk3399-orangepi.dts
-index e26e2d86279c..07ec33f3f55f 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-orangepi.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-orangepi.dts
-@@ -10,7 +10,6 @@
- #include <dt-bindings/interrupt-controller/irq.h>
- #include "dt-bindings/usb/pd.h"
- #include "rk3399.dtsi"
--#include "rk3399-opp.dtsi"
- 
- / {
- 	model = "Orange Pi RK3399 Board";
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts b/arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts
-index 294eb2de263d..292f3fa84442 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts
-@@ -12,7 +12,6 @@
- #include <dt-bindings/usb/pd.h>
- #include <dt-bindings/leds/common.h>
- #include "rk3399.dtsi"
--#include "rk3399-opp.dtsi"
- 
- / {
- 	model = "Pine64 Pinebook Pro";
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts b/arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts
-index ef754ea30a94..1a44582a49fb 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts
-@@ -14,7 +14,6 @@
- #include <dt-bindings/input/linux-event-codes.h>
- #include <dt-bindings/leds/common.h>
- #include "rk3399.dtsi"
--#include "rk3399-opp.dtsi"
- 
- / {
- 	model = "Pine64 PinePhone Pro";
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi
-index ccbe3a7a1d2c..8c16527cd456 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi
-@@ -5,7 +5,6 @@
- 
- #include <dt-bindings/pwm/pwm.h>
- #include "rk3399.dtsi"
--#include "rk3399-opp.dtsi"
- 
- / {
- 	aliases {
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi
-index ca7a446b6568..d95b1cde1fc3 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi
-@@ -7,7 +7,6 @@
- #include <dt-bindings/input/linux-event-codes.h>
- #include <dt-bindings/pwm/pwm.h>
- #include "rk3399.dtsi"
--#include "rk3399-opp.dtsi"
- 
- / {
- 	model = "Firefly ROC-RK3399-PC Board";
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rock-4c-plus.dts b/arch/arm64/boot/dts/rockchip/rk3399-rock-4c-plus.dts
-index 972aea843afd..d4b4dced3e39 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-rock-4c-plus.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-rock-4c-plus.dts
-@@ -7,8 +7,7 @@
- 
- /dts-v1/;
- #include <dt-bindings/leds/common.h>
--#include "rk3399.dtsi"
--#include "rk3399-t-opp.dtsi"
-+#include "rk3399-t.dtsi"
- 
- / {
- 	model = "Radxa ROCK 4C+";
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rock-4se.dts b/arch/arm64/boot/dts/rockchip/rk3399-rock-4se.dts
-index 7cfc198bbae7..9dd26150c369 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-rock-4se.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-rock-4se.dts
-@@ -5,8 +5,8 @@
-  */
- 
- /dts-v1/;
-+#include "rk3399-t.dtsi"
- #include "rk3399-rock-pi-4.dtsi"
--#include "rk3399-t-opp.dtsi"
- 
- / {
- 	model = "Radxa ROCK 4SE";
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dtsi
-index b9d6284bb804..9666504cd1c1 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dtsi
-@@ -4,11 +4,9 @@
-  * Copyright (c) 2019 Pragnesh Patel <Pragnesh_Patel@mentor.com>
-  */
- 
--/dts-v1/;
- #include <dt-bindings/input/linux-event-codes.h>
- #include <dt-bindings/leds/common.h>
- #include <dt-bindings/pwm/pwm.h>
--#include "rk3399.dtsi"
- 
- / {
- 	aliases {
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4a-plus.dts b/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4a-plus.dts
-index f5a68d8d072d..725ac3c1f6f6 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4a-plus.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4a-plus.dts
-@@ -5,8 +5,8 @@
-  */
- 
- /dts-v1/;
-+#include "rk3399-op1.dtsi"
- #include "rk3399-rock-pi-4.dtsi"
--#include "rk3399-op1-opp.dtsi"
- 
- / {
- 	model = "Radxa ROCK Pi 4A+";
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4a.dts b/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4a.dts
-index c68f45849c44..32d6bce5e3d4 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4a.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4a.dts
-@@ -5,8 +5,8 @@
-  */
- 
- /dts-v1/;
-+#include "rk3399.dtsi"
- #include "rk3399-rock-pi-4.dtsi"
--#include "rk3399-opp.dtsi"
- 
- / {
- 	model = "Radxa ROCK Pi 4A";
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4b-plus.dts b/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4b-plus.dts
-index 8a17c1eaae15..682e8b7297c1 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4b-plus.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4b-plus.dts
-@@ -5,8 +5,8 @@
-  */
- 
- /dts-v1/;
-+#include "rk3399-op1.dtsi"
- #include "rk3399-rock-pi-4.dtsi"
--#include "rk3399-op1-opp.dtsi"
- 
- / {
- 	model = "Radxa ROCK Pi 4B+";
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4b.dts b/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4b.dts
-index 6ea3180e57ca..55285c7c6e54 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4b.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4b.dts
-@@ -5,8 +5,8 @@
-  */
- 
- /dts-v1/;
-+#include "rk3399.dtsi"
- #include "rk3399-rock-pi-4.dtsi"
--#include "rk3399-opp.dtsi"
- 
- / {
- 	model = "Radxa ROCK Pi 4B";
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4c.dts b/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4c.dts
-index 5274938bf1b8..82ad2ca6b5c2 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4c.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4c.dts
-@@ -6,8 +6,8 @@
-  */
- 
- /dts-v1/;
-+#include "rk3399.dtsi"
- #include "rk3399-rock-pi-4.dtsi"
--#include "rk3399-opp.dtsi"
- 
- / {
- 	model = "Radxa ROCK Pi 4C";
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rock960.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-rock960.dtsi
-index c920ddf44baf..8146f870d2bd 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-rock960.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-rock960.dtsi
-@@ -5,9 +5,8 @@
-  * Copyright (c) 2018 Linaro Ltd.
-  */
- 
--#include "rk3399.dtsi"
--#include "rk3399-opp.dtsi"
- #include <dt-bindings/interrupt-controller/irq.h>
-+#include "rk3399.dtsi"
- 
- / {
- 	aliases {
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dtsi
-index f30b82a10ca3..11d99d8b34a2 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dtsi
-@@ -7,7 +7,6 @@
- #include <dt-bindings/input/linux-event-codes.h>
- #include <dt-bindings/pwm/pwm.h>
- #include "rk3399.dtsi"
--#include "rk3399-opp.dtsi"
- 
- / {
- 	aliases {
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi
-index b3ef1c85e754..31832aae9ab6 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi
-@@ -6,7 +6,6 @@
- #include "dt-bindings/pwm/pwm.h"
- #include "dt-bindings/input/input.h"
- #include "rk3399.dtsi"
--#include "rk3399-opp.dtsi"
- 
- / {
- 	compatible = "rockchip,rk3399-sapphire", "rockchip,rk3399";
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-t-opp.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-t.dtsi
-similarity index 98%
-rename from arch/arm64/boot/dts/rockchip/rk3399-t-opp.dtsi
-rename to arch/arm64/boot/dts/rockchip/rk3399-t.dtsi
-index 1ababadda9df..72989f03fcb1 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-t-opp.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-t.dtsi
-@@ -4,6 +4,8 @@
-  * Copyright (c) 2022 Radxa Limited
-  */
- 
-+#include "rk3399-base.dtsi"
-+
- / {
- 	cluster0_opp: opp-table-0 {
- 		compatible = "operating-points-v2";
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-opp.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-similarity index 98%
-rename from arch/arm64/boot/dts/rockchip/rk3399-opp.dtsi
-rename to arch/arm64/boot/dts/rockchip/rk3399.dtsi
-index fee5e7111279..6bc1249d99e6 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-opp.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-@@ -3,6 +3,8 @@
-  * Copyright (c) 2016-2017 Fuzhou Rockchip Electronics Co., Ltd
-  */
- 
-+#include "rk3399-base.dtsi"
-+
- / {
- 	cluster0_opp: opp-table-0 {
- 		compatible = "operating-points-v2";
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399pro-rock-pi-n10.dts b/arch/arm64/boot/dts/rockchip/rk3399pro-rock-pi-n10.dts
-index c58fb7658d7a..d3c628218ce3 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399pro-rock-pi-n10.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3399pro-rock-pi-n10.dts
-@@ -7,7 +7,6 @@
- 
- /dts-v1/;
- #include "rk3399.dtsi"
--#include "rk3399-opp.dtsi"
- #include <arm/rockchip/rockchip-radxa-dalang-carrier.dtsi>
- #include "rk3399pro-vmarc-som.dtsi"
- 
+> ---
+> 
+> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+> b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+> index 9873172e3fd3..16abdc4a59a8 100644
+> --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+> @@ -278,6 +278,15 @@ static u32 vop2_readl(struct vop2 *vop2, u32 
+> offset)
+>  	return val;
+>  }
+> 
+> +static u32 vop2_vp_read(struct vop2_video_port *vp, u32 offset)
+> +{
+> +	u32 val;
+> +
+> +	regmap_read(vp->vop2->map, vp->data->offset + offset, &val);
+> +
+> +	return val;
+> +}
+> +
+>  static void vop2_win_write(const struct vop2_win *win, unsigned int 
+> reg, u32 v)
+>  {
+>  	regmap_field_write(win->reg[reg], v);
+> @@ -1482,6 +1491,97 @@ static bool vop2_crtc_mode_fixup(struct drm_crtc 
+> *crtc,
+>  	return true;
+>  }
+> 
+> +static bool vop2_vp_dsp_lut_is_enabled(struct vop2_video_port *vp)
+> +{
+> +	return (u32) (vop2_vp_read(vp, RK3568_VP_DSP_CTRL) &
+> RK3568_VP_DSP_CTRL__DSP_LUT_EN) >
+> +	    0;
+> +}
+> +
+> +static void vop2_vp_dsp_lut_enable(struct vop2_video_port *vp)
+> +{
+> +	u32 dsp_ctrl = vop2_vp_read(vp, RK3568_VP_DSP_CTRL);
+> +
+> +	dsp_ctrl |= RK3568_VP_DSP_CTRL__DSP_LUT_EN;
+> +	vop2_vp_write(vp, RK3568_VP_DSP_CTRL, dsp_ctrl);
+> +}
+> +
+> +static void vop2_vp_dsp_lut_disable(struct vop2_video_port *vp)
+> +{
+> +	u32 dsp_ctrl = vop2_vp_read(vp, RK3568_VP_DSP_CTRL);
+> +
+> +	dsp_ctrl &= ~RK3568_VP_DSP_CTRL__DSP_LUT_EN;
+> +	vop2_vp_write(vp, RK3568_VP_DSP_CTRL, dsp_ctrl);
+> +}
+> +
+> +static void vop2_crtc_write_gamma_lut(struct vop2 *vop2, struct 
+> drm_crtc *crtc)
+> +{
+> +	const struct vop2_data *vop2_data = vop2->data;
+> +	const struct vop2_video_port *vp = to_vop2_video_port(crtc);
+> +	const struct vop2_video_port_data *vp_data = &vop2_data->vp[vp->id];
+> +
+> +	struct drm_color_lut *lut = crtc->state->gamma_lut->data;
+> +	unsigned int i, bpc = ilog2(vp_data->gamma_lut_len);
+> +	u32 word;
+> +
+> +	for (i = 0; i < crtc->gamma_size; i++) {
+> +		word = (drm_color_lut_extract(lut[i].blue, bpc) << (2 * bpc)) |
+> +		    (drm_color_lut_extract(lut[i].green, bpc) << bpc) |
+> +		    drm_color_lut_extract(lut[i].red, bpc);
+> +
+> +		writel(word, vop2->lut_regs + i * 4);
+> +	}
+> +}
+> +
+> +static void vop2_crtc_gamma_set(struct vop2 *vop2, struct drm_crtc 
+> *crtc,
+> +				struct drm_crtc_state *old_state)
+> +{
+> +	struct drm_crtc_state *state = crtc->state;
+> +	struct vop2_video_port *vp = to_vop2_video_port(crtc);
+> +	u32 dsp_ctrl;
+> +	int ret;
+> +
+> +	if (!vop2->lut_regs)
+> +		return;
+> +
+> +	if (!state->gamma_lut) {
+> +		/*
+> +		 * To disable gamma (gamma_lut is null) or to write
+> +		 * an update to the LUT, clear dsp_lut_en.
+> +		 */
+> +		vop2_lock(vop2);
+> +
+> +		vop2_vp_dsp_lut_disable(vp);
+> +
+> +		vop2_cfg_done(vp);
+> +		vop2_unlock(vop2);
+> +		/*
+> +		 * In order to write the LUT to the internal memory,
+> +		 * we need to first make sure the dsp_lut_en bit is cleared.
+> +		 */
+> +		ret =
+> +		    readx_poll_timeout(vop2_vp_dsp_lut_is_enabled, vp, dsp_ctrl,
+> !dsp_ctrl, 5,
+> +				       30 * 1000);
+> +
+> +		if (ret) {
+> +			DRM_DEV_ERROR(vop2->dev, "display LUT RAM enable timeout!\n");
+> +			return;
+> +		}
+> +
+> +		if (!state->gamma_lut)
+> +			return;
+> +	}
+> +
+> +	vop2_crtc_write_gamma_lut(vop2, crtc);
+> +
+> +	vop2_lock(vop2);
+> +	vop2_writel(vp->vop2, RK3568_LUT_PORT_SEL, vp->id);
+> +
+> +	vop2_vp_dsp_lut_enable(vp);
+> +
+> +	vop2_cfg_done(vp);
+> +	vop2_unlock(vop2);
+> +}
+> +
+>  static void vop2_dither_setup(struct drm_crtc *crtc, u32 *dsp_ctrl)
+>  {
+>  	struct rockchip_crtc_state *vcstate = 
+> to_rockchip_crtc_state(crtc->state);
+> @@ -1925,6 +2025,7 @@ static void vop2_crtc_atomic_enable(struct 
+> drm_crtc *crtc,
+>  	const struct vop2_data *vop2_data = vop2->data;
+>  	const struct vop2_video_port_data *vp_data = &vop2_data->vp[vp->id];
+>  	struct drm_crtc_state *crtc_state =
+> drm_atomic_get_new_crtc_state(state, crtc);
+> +	struct drm_crtc_state *old_state = 
+> drm_atomic_get_old_crtc_state(state, crtc);
+>  	struct rockchip_crtc_state *vcstate = 
+> to_rockchip_crtc_state(crtc->state);
+>  	struct drm_display_mode *mode = &crtc->state->adjusted_mode;
+>  	unsigned long clock = mode->crtc_clock * 1000;
+> @@ -2060,6 +2161,9 @@ static void vop2_crtc_atomic_enable(struct 
+> drm_crtc *crtc,
+>  	drm_crtc_vblank_on(crtc);
+> 
+>  	vop2_unlock(vop2);
+> +
+> +	if (crtc->state->gamma_lut)
+> +		vop2_crtc_gamma_set(vop2, crtc, old_state);
+>  }
+> 
+>  static int vop2_crtc_atomic_check(struct drm_crtc *crtc,
+> @@ -2070,6 +2174,16 @@ static int vop2_crtc_atomic_check(struct 
+> drm_crtc *crtc,
+>  	int nplanes = 0;
+>  	struct drm_crtc_state *crtc_state =
+> drm_atomic_get_new_crtc_state(state, crtc);
+> 
+> +	if (vp->vop2->lut_regs && crtc_state->color_mgmt_changed &&
+> crtc_state->gamma_lut) {
+> +		unsigned int len = drm_color_lut_size(crtc_state->gamma_lut);
+> +
+> +		if (len != crtc->gamma_size) {
+> +			DRM_DEBUG_KMS("Invalid LUT size; got %d, expected %d\n",
+> +				      len, crtc->gamma_size);
+> +			return -EINVAL;
+> +		}
+> +	}
+> +
+>  	drm_atomic_crtc_state_for_each_plane(plane, crtc_state)
+>  		nplanes++;
+> 
+> @@ -2459,6 +2573,10 @@ static void vop2_setup_dly_for_windows(struct 
+> vop2 *vop2)
+>  static void vop2_crtc_atomic_begin(struct drm_crtc *crtc,
+>  				   struct drm_atomic_state *state)
+>  {
+> +	struct drm_crtc_state *crtc_state = 
+> drm_atomic_get_new_crtc_state(state,
+> +									  crtc);
+> +	struct drm_crtc_state *old_crtc_state = 
+> drm_atomic_get_old_crtc_state(state,
+> +									      crtc);
+>  	struct vop2_video_port *vp = to_vop2_video_port(crtc);
+>  	struct vop2 *vop2 = vp->vop2;
+>  	struct drm_plane *plane;
+> @@ -2482,6 +2600,9 @@ static void vop2_crtc_atomic_begin(struct 
+> drm_crtc *crtc,
+>  	vop2_setup_layer_mixer(vp);
+>  	vop2_setup_alpha(vp);
+>  	vop2_setup_dly_for_windows(vop2);
+> +
+> +	if (crtc_state->color_mgmt_changed && !crtc_state->active_changed)
+> +		vop2_crtc_gamma_set(vop2, crtc, old_crtc_state);
+>  }
+> 
+>  static void vop2_crtc_atomic_flush(struct drm_crtc *crtc,
+> @@ -2791,6 +2912,14 @@ static int vop2_create_crtcs(struct vop2 *vop2)
+> 
+>  		drm_crtc_helper_add(&vp->crtc, &vop2_crtc_helper_funcs);
+> 
+> +		if (vop2->lut_regs && vp->crtc.dev != NULL) {
+> +			const struct vop2_video_port_data *vp_data = 
+> &vop2_data->vp[vp->id];
+> +
+> +			drm_mode_crtc_set_gamma_size(&vp->crtc, vp_data->gamma_lut_len);
+> +			drm_crtc_enable_color_mgmt(&vp->crtc, 0, false,
+> +						   vp_data->gamma_lut_len);
+> +		}
+> +
+>  		init_completion(&vp->dsp_hold_completion);
+>  	}
+> 
+> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h
+> b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h
+> index 615a16196aff..3a58b73fa876 100644
+> --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h
+> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h
+> @@ -394,6 +394,7 @@ enum dst_factor_mode {
+>  #define RK3568_REG_CFG_DONE__GLB_CFG_DONE_EN		BIT(15)
+> 
+>  #define RK3568_VP_DSP_CTRL__STANDBY			BIT(31)
+> +#define RK3568_VP_DSP_CTRL__DSP_LUT_EN			BIT(28)
+>  #define RK3568_VP_DSP_CTRL__DITHER_DOWN_MODE		BIT(20)
+>  #define RK3568_VP_DSP_CTRL__DITHER_DOWN_SEL		GENMASK(19, 18)
+>  #define RK3568_VP_DSP_CTRL__DITHER_DOWN_EN		BIT(17)
+> 
+> 
+> 
+> _______________________________________________
+> Linux-rockchip mailing list
+> Linux-rockchip@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
 _______________________________________________
 Linux-rockchip mailing list
