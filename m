@@ -4,49 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0D6D7C3DA61
-	for <linux-rockchip@archiver.kernel.org>; Sun, 21 Jul 2024 17:42:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3262FC3DA5D
+	for <linux-rockchip@archiver.kernel.org>; Sun, 21 Jul 2024 17:45:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=wSmQJU5FSKriQIf9qudFpovOZYsc1t51z1P2y66Q/So=; b=xEuoP8YYoPmlrB
-	zNW9n50neT3G+HDpQbFvxSEoyjHkN3NxWyDIkNF7U3dhH7gn5Ayqb3inmYHj9M+ztw1EDERG1qg6d
-	+wcHDyZFBxJTvtR6qUkhhRpSewJhWx21Y1MvJxeoRVdGOF/2mFhenOIIT04+OXV5v0h0UqqB7DQdS
-	Mq2lx+BmI9BJIxumJkCRq/LlxTg6oDFj/VFJDqhUQyMJB8hi+svwpgrdYTU1Vah1sL4h4Z2IUqO4c
-	k5xSXn3vyjAJUC2LdsE50Ousji4oSZYIS47UuiWnAvejvWqaAHny3S3ectE+0hL0KUlKjg6f1XYZd
-	GjEHJK7MhcdzDHK8DOlQ==;
+	List-Owner; bh=78qV0Wg+aGiyyaprPcXoF5ZTy82HQODJVcb/7JE9xGM=; b=Wid9e/VlBdYirt
+	2Col2CJPYLk9dYMIHCggOlzzYQ6cziy1+mrtb1+iHLnGd9jAATT3Rlu6kHyrYTRVrcrce0CHNhldA
+	KKdALeE5V30q9PaSAT16Ub/Fc+9NHJ5l7MgBFqAZDkONg6NQzmSHpiiDvEOTQ/FSBcGv9bSaf5Sxc
+	YuqdTueqUppiOp81IDafRZ3RWhGATcqXfllP0LvsxTRDIzSETiMqp5UdbE2v9ciHXi31Na4oN7aW3
+	fw4J1ujwKAm7CRKvns5FLmPK3+8o1NbZsj71L3hhZ9B76oRTtB0enSX6idxVMZz5I6z6V/4FQisPO
+	AebQS80+nmlkIT5Gq0Zg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sVaa3-00000007H0w-2YuE;
-	Sun, 21 Jul 2024 17:42:43 +0000
+	id 1sVacJ-00000007HHD-2sA1;
+	Sun, 21 Jul 2024 17:45:03 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sVaXK-00000007G1R-0Dka;
-	Sun, 21 Jul 2024 17:39:55 +0000
-Received: from i5e860cd3.versanet.de ([94.134.12.211] helo=phil.lan)
+	id 1sVacH-00000007HGR-01kk;
+	Sun, 21 Jul 2024 17:45:02 +0000
+Received: from i5e860cd3.versanet.de ([94.134.12.211] helo=diego.localnet)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1sVaV3-00075D-1w; Sun, 21 Jul 2024 19:37:33 +0200
-From: Heiko Stuebner <heiko@sntech.de>
-To: heiko@sntech.de
-Cc: ukleinek@debian.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH v2 13/14] arm64: dts: rockchip: enable gpu on Qnap-TS433
-Date: Sun, 21 Jul 2024 19:37:22 +0200
-Message-Id: <20240721173723.919961-14-heiko@sntech.de>
-X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20240721173723.919961-1-heiko@sntech.de>
+	id 1sVacF-0007HK-FD; Sun, 21 Jul 2024 19:44:59 +0200
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+To: linux-rockchip@lists.infradead.org
+Cc: ukleinek@debian.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v2 11/14] arm64: dts: rockchip: define cpu-supply on the
+ Qnap-TS433
+Date: Sun, 21 Jul 2024 19:44:58 +0200
+Message-ID: <3358212.0oRPG1VZx4@diego>
+In-Reply-To: <20240721173723.919961-12-heiko@sntech.de>
 References: <20240721173723.919961-1-heiko@sntech.de>
+ <20240721173723.919961-12-heiko@sntech.de>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240721_103954_111195_D6BBF587 
-X-CRM114-Status: GOOD (  11.10  )
+X-CRM114-CacheID: sfid-20240721_104501_082040_D46FB73A 
+X-CRM114-Status: GOOD (  11.40  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -63,34 +62,32 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The TS433 doesn't provide display output, but the gpu nevertheless can be
-used for compute tasks for example.
+Am Sonntag, 21. Juli 2024, 19:37:20 CEST schrieb Heiko Stuebner:
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3568-qnap-ts433.dts b/arch/arm64/boot/dts/rockchip/rk3568-qnap-ts433.dts
+> index c593a9c2313a3..a576d45ccc3e0 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3568-qnap-ts433.dts
+> +++ b/arch/arm64/boot/dts/rockchip/rk3568-qnap-ts433.dts
+> @@ -129,6 +129,16 @@ vcc5v0_otg: regulator-vcc5v0-otg {
+>  		vin-supply = <&vcc5v0_usb>;
+>  	};
+>  
+> +	vcc5v0_sys: vcc5v0-sys {
 
-So there is no reason not to enable it.
+should be
+	vcc5v0_sys: regulator-vcc5v0-sys {
 
-Signed-off-by: Heiko Stuebner <heiko@sntech.de>
----
- arch/arm64/boot/dts/rockchip/rk3568-qnap-ts433.dts | 5 +++++
- 1 file changed, 5 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3568-qnap-ts433.dts b/arch/arm64/boot/dts/rockchip/rk3568-qnap-ts433.dts
-index 779e1b8a35ca5..913d28cee8e9e 100644
---- a/arch/arm64/boot/dts/rockchip/rk3568-qnap-ts433.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3568-qnap-ts433.dts
-@@ -209,6 +209,11 @@ &gmac0_rgmii_clk
- 	status = "okay";
- };
- 
-+&gpu {
-+	mali-supply = <&vdd_gpu>;
-+	status = "okay";
-+};
-+
- &i2c0 {
- 	status = "okay";
- 
--- 
-2.39.2
+> +		compatible = "regulator-fixed";
+> +		regulator-name = "vcc5v0_sys";
+> +		regulator-always-on;
+> +		regulator-boot-on;
+> +		regulator-min-microvolt = <5000000>;
+> +		regulator-max-microvolt = <5000000>;
+> +		vin-supply = <&dc_12v>;
+> +	};
+> +
+
+
 
 
 _______________________________________________
