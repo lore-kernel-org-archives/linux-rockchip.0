@@ -4,95 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5D1F1C3DA49
-	for <linux-rockchip@archiver.kernel.org>; Sat, 20 Jul 2024 23:44:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0C313C3DA59
+	for <linux-rockchip@archiver.kernel.org>; Sun, 21 Jul 2024 00:27:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:CC:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=L8ejH921NjSLoQbxD4AablmTdAwAKuV0yzb8CjV/q4E=; b=4Gohuuh6bi/CCP
-	tGNx/smcjmrNJ0P+/vWlVErGbPzRMtMUUeSt2cRY9vRDaECT9BLg5SQjf1+jndroB8jdoVJGNVZCI
-	D4Fa0gfI0YaoUNJZMU9diRaMNq3tORW3hD6o0N2d6bZt9rLPK9T0KFCk53/3RzyfpU+I1D2mFphWp
-	IeqjwrmmI3Itsd0fMLNuij6jZpwhbvdAXpNknRof2jdNVceNgx9huhpHrIAolJ4NGlxt36+XNiT5J
-	4MydSS5NUKf0i0duTXJhK7yTZKiw4lOntuR7NcOfQT42cHNLzaSd5Khm/EX33iQrSgBSo1qPHQxOp
-	pHPRxXwxEWYFO8UJhRPg==;
+	List-Owner; bh=2dAwlywRCxTsqoU67flhI6MqZAOeNZzNtJDwxpGVA9o=; b=yKKBN/9eQNp2Yw
+	L9xyb5eAIgy51DxxdDHy/9/s3TzOnP/ioy0lsBVC62G/C/gXV4R66Ka5TXe9Zk81SnXBHmTms0B6I
+	XAwN8TOO41JqlZ9WoukC7DqUXx2UfRp70NVzG7fHGGlDYoQAAlkPoT7Q4+jbO6EzdyAU3sH9mm1Bf
+	0HVltWBEccN95W7MUvrz/XvSVB5ul+TJWnIUiWC+tWZiVkpOrlEWT5gIZ4VcYaGjpAXLZrJtOqEDu
+	TSZVE9HiWKJs7jDmSYyUAk9o8g2qL92xalTdP94reQuTz3eii0S0DrQpKRm2AuqrXqnVN7UajiUS0
+	rnC2xzkh+X0sJnQqeJzA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sVJkP-00000005riC-27YC;
-	Sat, 20 Jul 2024 23:44:17 +0000
-Received: from mx1.sberdevices.ru ([37.18.73.165])
+	id 1sVKQ1-00000005uEz-29iB;
+	Sun, 21 Jul 2024 00:27:17 +0000
+Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sVJk0-00000005rdu-3Ydh;
-	Sat, 20 Jul 2024 23:43:55 +0000
-Received: from p-infra-ksmg-sc-msk01.sberdevices.ru (localhost [127.0.0.1])
-	by mx1.sberdevices.ru (Postfix) with ESMTP id 6ECBB100005;
-	Sun, 21 Jul 2024 02:43:45 +0300 (MSK)
-DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.sberdevices.ru 6ECBB100005
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=salutedevices.com;
-	s=mail; t=1721519025;
-	bh=g24+UhvGrnOWMz/mhUcWCb3PyHRvlOlSwGOnoi3HCN0=;
-	h=Message-ID:Date:MIME-Version:Subject:To:From:Content-Type:From;
-	b=clw3iwTgpEimcsMVGG/rjJ76pzjT0LDO9hzKUC1FKhcdjUWs1lqh+vJ/PpOk5hCrr
-	 9aSd845zoz1PjHcvhkhQ4/zgK3HZjd/bXK8fHA08TIpdecooxrGyyR7hp92wzpZQg9
-	 5M6tQcm1B1hrgEWIN9YBxCYG2yKNHkr+9ZhbQ2xPcVjzencYJGqVI/ZhNyT/VKqN1s
-	 mHd9IbnJg70Ac/B4mb29SiB2JNzFyqmAHBsfJLsifGsy0nwQe/C1EgslN8+R6/fgJv
-	 SsGyDucqo5G7YosN4QpftPO73mH2SjOOEsqE6adlB0sTcboCotQQQ2Pg3K5mu32C+R
-	 E8EbZ2jFw+cNg==
-Received: from smtp.sberdevices.ru (p-i-exch-sc-m02.sberdevices.ru [172.16.192.103])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mx1.sberdevices.ru (Postfix) with ESMTPS;
-	Sun, 21 Jul 2024 02:43:44 +0300 (MSK)
-Received: from [192.168.1.143] (100.64.160.123) by
- p-i-exch-sc-m02.sberdevices.ru (172.16.192.103) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.40; Sun, 21 Jul 2024 02:43:44 +0300
-Message-ID: <0d67019e-dac5-489c-a42a-dab5028c1bce@salutedevices.com>
-Date: Sun, 21 Jul 2024 02:43:44 +0300
+	id 1sVKPd-00000005uAi-2fQY;
+	Sun, 21 Jul 2024 00:26:55 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sin.source.kernel.org (Postfix) with ESMTP id 5C18ECE09FC;
+	Sun, 21 Jul 2024 00:26:50 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7D312C2BD10;
+	Sun, 21 Jul 2024 00:26:46 +0000 (UTC)
+Authentication-Results: smtp.kernel.org;
+	dkim=pass (1024-bit key) header.d=zx2c4.com header.i=@zx2c4.com header.b="Ofoz6UP3"
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=zx2c4.com; s=20210105;
+	t=1721521604;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=94FH1yeLhYBAH1oy+kJ20vtAV9HFB221cCBm9BA0Y7A=;
+	b=Ofoz6UP3L2rYYQH6xpyv5+l3QzmBz2DqzvtyQRdg0I5jCeLGXesg2U3vIwij0bYuMW6qCI
+	ZNiNA2P7D9i/D9QhhHqK/3V0pVmuRhMTdrpi71gIrXXXCdKnm0K38ac5w05FbuGtgiS481
+	HiX89vVGR/i+0MON2fj7Dx418V6Dwgo=
+Received: by mail.zx2c4.com (ZX2C4 Mail Server) with ESMTPSA id 6afbfb1c (TLSv1.3:TLS_AES_256_GCM_SHA384:256:NO);
+	Sun, 21 Jul 2024 00:26:44 +0000 (UTC)
+Date: Sun, 21 Jul 2024 02:26:40 +0200
+From: "Jason A. Donenfeld" <Jason@zx2c4.com>
+To: Daniel Golle <daniel@makrotopia.org>
+Subject: Re: [PATCH v7 2/3] hwrng: add hwrng driver for Rockchip RK3568 SoC
+Message-ID: <ZpxVwFdIZxLw3R_l@zx2c4.com>
+References: <cover.1720969799.git.daniel@makrotopia.org>
+ <f606403145588d28dda14a55ba3afef85720a4dc.1720969799.git.daniel@makrotopia.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 4/4] media: platform: synopsys: Add support for hdmi
- input driver
-To: Shreeya Patel <shreeya.patel@collabora.com>, <heiko@sntech.de>,
-	<mchehab@kernel.org>, <robh@kernel.org>, <krzk+dt@kernel.org>,
-	<conor+dt@kernel.org>, <mturquette@baylibre.com>, <sboyd@kernel.org>,
-	<p.zabel@pengutronix.de>, <jose.abreu@synopsys.com>,
-	<nelson.costa@synopsys.com>, <shawn.wen@rock-chips.com>,
-	<nicolas.dufresne@collabora.com>, <hverkuil@xs4all.nl>,
-	<hverkuil-cisco@xs4all.nl>
-CC: <kernel@collabora.com>, <linux-kernel@vger.kernel.org>,
-	<linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-rockchip@lists.infradead.org>,
-	Dmitry Osipenko <dmitry.osipenko@collabora.com>
-References: <20240719124032.26852-1-shreeya.patel@collabora.com>
- <20240719124032.26852-5-shreeya.patel@collabora.com>
-Content-Language: en-US
-From: George Stark <gnstark@salutedevices.com>
-In-Reply-To: <20240719124032.26852-5-shreeya.patel@collabora.com>
-X-Originating-IP: [100.64.160.123]
-X-ClientProxiedBy: p-i-exch-sc-m02.sberdevices.ru (172.16.192.103) To
- p-i-exch-sc-m02.sberdevices.ru (172.16.192.103)
-X-KSMG-Rule-ID: 10
-X-KSMG-Message-Action: clean
-X-KSMG-AntiSpam-Lua-Profiles: 186632 [Jul 20 2024]
-X-KSMG-AntiSpam-Version: 6.1.0.4
-X-KSMG-AntiSpam-Envelope-From: gnstark@salutedevices.com
-X-KSMG-AntiSpam-Rate: 0
-X-KSMG-AntiSpam-Status: not_detected
-X-KSMG-AntiSpam-Method: none
-X-KSMG-AntiSpam-Auth: dkim=none
-X-KSMG-AntiSpam-Info: LuaCore: 24 0.3.24 186c4d603b899ccfd4883d230c53f273b80e467f, {Tracking_from_domain_doesnt_match_to}, salutedevices.com:7.1.1;smtp.sberdevices.ru:5.0.1,7.1.1;d41d8cd98f00b204e9800998ecf8427e.com:7.1.1;127.0.0.199:7.1.2;100.64.160.123:7.1.2, FromAlignment: s, ApMailHostAddress: 100.64.160.123
-X-MS-Exchange-Organization-SCL: -1
-X-KSMG-AntiSpam-Interceptor-Info: scan successful
-X-KSMG-AntiPhishing: Clean
-X-KSMG-LinksScanning: Clean
-X-KSMG-AntiVirus: Kaspersky Secure Mail Gateway, version 2.0.1.6960, bases: 2024/07/20 20:49:00 #26110273
-X-KSMG-AntiVirus-Status: Clean, skipped
+Content-Disposition: inline
+In-Reply-To: <f606403145588d28dda14a55ba3afef85720a4dc.1720969799.git.daniel@makrotopia.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240720_164353_602733_5E5FBC3F 
-X-CRM114-Status: GOOD (  31.08  )
+X-CRM114-CacheID: sfid-20240720_172654_091965_5E162928 
+X-CRM114-Status: UNSURE (   9.72  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,220 +69,18 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Cc: linux-arm-kernel@lists.infradead.org, Rob Herring <robh@kernel.org>, Conor Dooley <conor+dt@kernel.org>, linux-kernel@vger.kernel.org, Herbert Xu <herbert@gondor.apana.org.au>, devicetree@vger.kernel.org, Martin Kaiser <martin@kaiser.cx>, Sascha Hauer <s.hauer@pengutronix.de>, Sebastian Reichel <sebastian.reichel@collabora.com>, Ard Biesheuvel <ardb@kernel.org>, Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <ukleinek@debian.org>, linux-crypto@vger.kernel.org, Philipp Zabel <p.zabel@pengutronix.de>, Olivia Mackall <olivia@selenic.com>, linux-rockchip@lists.infradead.org, Krzysztof Kozlowski <krzk+dt@kernel.org>, Chen-Yu Tsai <wens@kernel.org>, Dragan Simic <dsimic@manjaro.org>, Aurelien Jarno <aurelien@aurel32.net>, Heiko Stuebner <heiko@sntech.de>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello everybody
+On Sun, Jul 14, 2024 at 04:16:17PM +0100, Daniel Golle wrote:
+> +	rk_rng->rng.quality = 900;
 
-On 7/19/24 15:40, Shreeya Patel wrote:
-> Add initial support for the Synopsys DesignWare HDMI RX
-> Controller Driver used by Rockchip RK3588. The driver
-> supports:
->   - HDMI 1.4b and 2.0 modes (HDMI 4k@60Hz)
->   - RGB888, YUV422, YUV444 and YCC420 pixel formats
->   - CEC
->   - EDID configuration
-> 
-> The hardware also has Audio and HDCP capabilities, but these are
-> not yet supported by the driver.
-> 
-> Reviewed-by: Dmitry Osipenko <dmitry.osipenko@collabora.com>
-> Tested-by: Dmitry Osipenko <dmitry.osipenko@collabora.com>
-> Co-developed-by: Dingxian Wen <shawn.wen@rock-chips.com>
-> Signed-off-by: Dingxian Wen <shawn.wen@rock-chips.com>
-> Signed-off-by: Shreeya Patel <shreeya.patel@collabora.com>
-> ---
-> 
-> Changes in v4 :-
->    - Create a separate config option for selecting the EDID
->      and enable it by default
->    - Improve the comment related to DV timings and move it
->      to the side of hdmirx_get_detected_timings
->    - Add 100ms delay before pulling the HPD high
->    - Do not return the detected timings from VIDIOC_G_DV_TIMINGS
->    - Drop the bus info from hdmirx_querycap
->    - If *num_planes != 0 then return 0 in hdmirx_queue_setup
->    - Set queue->min_queued_buffers to 1
->    - Drop q->allow_cache_hints = 0; as it's always 0 by default
->    - Add a comment for q->dma_attrs = DMA_ATTR_FORCE_CONTIGUOUS;
->    - Drop .read = vb2_fop_read as it's not supported by driver
->    - Remove redundant edid_init_data_600M
->    - Make HPD low when driver is loaded
->    - Add support for reading AVI Infoframe
->    - Remove msg_len checks from hdmirx_cec_transmit
->    - Add info about the CEC compliance test in the cover letter
->    - Add arbitration lost status
->    - Validate the physical address inside the EDID
-> 
-> Changes in v3 :-
->    - Use v4l2-common helper functions
-> 
-> Changes in v2 :-
->    - Fix checkpatch --strict warnings
->    - Rename resets, vo1-grf and HPD node names as per the DT changes
-> 
->   drivers/media/platform/Kconfig                |    1 +
->   drivers/media/platform/Makefile               |    1 +
->   drivers/media/platform/synopsys/Kconfig       |    3 +
->   drivers/media/platform/synopsys/Makefile      |    2 +
->   .../media/platform/synopsys/hdmirx/Kconfig    |   27 +
->   .../media/platform/synopsys/hdmirx/Makefile   |    4 +
->   .../platform/synopsys/hdmirx/snps_hdmirx.c    | 2763 +++++++++++++++++
->   .../platform/synopsys/hdmirx/snps_hdmirx.h    |  394 +++
->   .../synopsys/hdmirx/snps_hdmirx_cec.c         |  285 ++
->   .../synopsys/hdmirx/snps_hdmirx_cec.h         |   44 +
->   10 files changed, 3524 insertions(+)
->   create mode 100644 drivers/media/platform/synopsys/Kconfig
->   create mode 100644 drivers/media/platform/synopsys/Makefile
->   create mode 100644 drivers/media/platform/synopsys/hdmirx/Kconfig
->   create mode 100644 drivers/media/platform/synopsys/hdmirx/Makefile
->   create mode 100644 drivers/media/platform/synopsys/hdmirx/snps_hdmirx.c
->   create mode 100644 drivers/media/platform/synopsys/hdmirx/snps_hdmirx.h
->   create mode 100644 drivers/media/platform/synopsys/hdmirx/snps_hdmirx_cec.c
->   create mode 100644 drivers/media/platform/synopsys/hdmirx/snps_hdmirx_cec.h
-> 
-...
-> diff --git a/drivers/media/platform/synopsys/hdmirx/snps_hdmirx.c b/drivers/media/platform/synopsys/hdmirx/snps_hdmirx.c
-> new file mode 100644
-> index 000000000000..1dfecf256393
-> --- /dev/null
-> +++ b/drivers/media/platform/synopsys/hdmirx/snps_hdmirx.c
-> @@ -0,0 +1,2763 @@
-> +// SPDX-License-Identifier: GPL-2.0
-> +/*
+This is out of 1024, not 1000.
 
-...
-
-> +}
-> +
-> +static int hdmirx_probe(struct platform_device *pdev)
-> +{
-> +	struct snps_hdmirx_dev *hdmirx_dev;
-> +	struct device *dev = &pdev->dev;
-> +	struct v4l2_ctrl_handler *hdl;
-> +	struct hdmirx_stream *stream;
-> +	struct v4l2_device *v4l2_dev;
-> +	int ret;
-> +
-> +	hdmirx_dev = devm_kzalloc(dev, sizeof(*hdmirx_dev), GFP_KERNEL);
-> +	if (!hdmirx_dev)
-> +		return -ENOMEM;
-> +
-> +	ret = dma_coerce_mask_and_coherent(dev, DMA_BIT_MASK(32));
-> +	if (ret)
-> +		return ret;
-> +
-> +	hdmirx_dev->dev = dev;
-> +	dev_set_drvdata(dev, hdmirx_dev);
-> +
-> +	ret = hdmirx_parse_dt(hdmirx_dev);
-> +	if (ret)
-> +		return ret;
-> +
-> +	ret = hdmirx_setup_irq(hdmirx_dev, pdev);
-> +	if (ret)
-> +		return ret;
-> +
-> +	hdmirx_dev->regs = devm_platform_ioremap_resource(pdev, 0);
-> +	if (IS_ERR(hdmirx_dev->regs))
-> +		return dev_err_probe(dev, PTR_ERR(hdmirx_dev->regs),
-> +				     "failed to remap regs resource\n");
-> +
-> +	mutex_init(&hdmirx_dev->stream_lock);
-> +	mutex_init(&hdmirx_dev->work_lock);
-
-
-AFAIK there's no unified opinion on droping mutex_destroy.
-Is it so accepted in media subsystem or should we used devm_mutex_init?
-
-
- > +	spin_lock_init(&hdmirx_dev->rst_lock);
- > +
- > +	init_completion(&hdmirx_dev->cr_write_done);
- > +	init_completion(&hdmirx_dev->timer_base_lock);
- > +	init_completion(&hdmirx_dev->avi_pkt_rcv);
- > +
- > +	INIT_WORK(&hdmirx_dev->work_wdt_config, hdmirx_work_wdt_config);
- > +	INIT_DELAYED_WORK(&hdmirx_dev->delayed_work_hotplug,
- > +			  hdmirx_delayed_work_hotplug);
- > +	INIT_DELAYED_WORK(&hdmirx_dev->delayed_work_res_change,
- > +			  hdmirx_delayed_work_res_change);
- > +	INIT_DELAYED_WORK(&hdmirx_dev->delayed_work_heartbeat,
- > +			  hdmirx_delayed_work_heartbeat);
- > +
- > +	hdmirx_dev->cur_fmt_fourcc = V4L2_PIX_FMT_BGR24;
- > +	hdmirx_dev->timings = cea640x480;
- > +
- > +	hdmirx_enable(dev);
- > +	hdmirx_init(hdmirx_dev);
- > +
- > +	v4l2_dev = &hdmirx_dev->v4l2_dev;
- > +	strscpy(v4l2_dev->name, dev_name(dev), sizeof(v4l2_dev->name));
- > +
- > +	hdl = &hdmirx_dev->hdl;
- > +	v4l2_ctrl_handler_init(hdl, 1);
- > +
- > +	hdmirx_dev->detect_tx_5v_ctrl = v4l2_ctrl_new_std(hdl, NULL,
- > +							  V4L2_CID_DV_RX_POWER_PRESENT,
- > +							  0, 1, 0, 0);
- > +
- > +	hdmirx_dev->rgb_range = v4l2_ctrl_new_std_menu(hdl, 0,
- > +						       V4L2_CID_DV_RX_RGB_RANGE,
- > +						       V4L2_DV_RGB_RANGE_FULL, 0,
- > +						       V4L2_DV_RGB_RANGE_AUTO);
- > +
- > +	hdmirx_dev->rgb_range->flags |= V4L2_CTRL_FLAG_READ_ONLY;
- > +
- > +	if (hdl->error) {
- > +		dev_err(dev, "v4l2 ctrl handler init failed\n");
- > +		ret = hdl->error;
- > +		goto err_pm;
- > +	}
- > +	hdmirx_dev->v4l2_dev.ctrl_handler = hdl;
- > +
- > +	ret = v4l2_device_register(dev, &hdmirx_dev->v4l2_dev);
- > +	if (ret < 0) {
- > +		dev_err(dev, "register v4l2 device failed\n");
- > +		goto err_hdl;
- > +	}
- > +
- > +	stream = &hdmirx_dev->stream;
- > +	stream->hdmirx_dev = hdmirx_dev;
- > +	ret = hdmirx_register_stream_vdev(stream);
- > +	if (ret < 0) {
- > +		dev_err(dev, "register video device failed\n");
- > +		goto err_unreg_v4l2_dev;
- > +	}
- > +
- > +	ret = hdmirx_register_cec(hdmirx_dev, pdev);
- > +	if (ret)
- > +		goto err_unreg_video_dev;
- > +
- > +	hdmirx_load_default_edid(hdmirx_dev);
- > +
- > +	hdmirx_enable_irq(dev);
- > +
- > +	return 0;
- > +
- > +err_unreg_video_dev:
- > +	video_unregister_device(&hdmirx_dev->stream.vdev);
- > +err_unreg_v4l2_dev:
- > +	v4l2_device_unregister(&hdmirx_dev->v4l2_dev);
- > +err_hdl:
- > +	v4l2_ctrl_handler_free(&hdmirx_dev->hdl);
- > +err_pm:
- > +	hdmirx_disable(dev);
- > +
- > +	return ret;
- > +}
-
-...
-
--- 
-Best regards
-George
+https://elixir.bootlin.com/linux/v6.10/source/include/linux/hw_random.h#L35
 
 _______________________________________________
 Linux-rockchip mailing list
