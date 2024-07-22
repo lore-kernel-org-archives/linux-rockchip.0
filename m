@@ -4,44 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C78D8C3DA5D
-	for <linux-rockchip@archiver.kernel.org>; Mon, 22 Jul 2024 09:53:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A2D87C3DA59
+	for <linux-rockchip@archiver.kernel.org>; Mon, 22 Jul 2024 13:55:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=n9WDSVRHZNs0wo/sJOCwSTvBGPVIjaSYkI0Rj9kqZMU=; b=DPp33dorAMBMK5
-	u4E4wATpAoQFIJhBm8yhxvhx31xoB342g6szm1gIWsxKYdj6xRj+3Vp6td3K0wGnyopBy/9VUzDFD
-	ZPMZAEKy5LWgTAuRlExtocihtIxvuzLTiWdb4Q12/YQtbC84GnJc55uclj99lHdX23yT4pTBYzt+F
-	kwBdOT5gJ3PYpm8dUdR0vXRM8rjU4mI/63LRjMvV6u2PCDjcBt6Cugj2B0QEXLs+8ov5JPCjsdSeH
-	bcq1Pt89rtzUHXwc94y2tXoSmhirQpsAHLoGI15S6K6JD4rwcnk4SnJFCJGF1T49Sz9HXcHvE8ZWf
-	enQqgAyQ1ltf4/hNOScQ==;
+	List-Archive:List-Unsubscribe:List-Id:Subject:Message-ID:MIME-Version:To:Cc:
+	Date:References:In-Reply-To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=nx1WFl+9Bumt2pkkwqbqPZvstOuhGaQjD9DJm6D+GN4=; b=Ub9D1toh+UUe1o
+	50Z69T9FvDXQ9okb0WsmTFsgzn/Xqo0ZwZcVLwnTL/S8HDVKoEgF/sKcB80+7iAzDK60YhMDAMFG0
+	nfZ0xmIs+Y2eTYcd1fMYchPQB5BEG7PQzsDZRaUzqAeXHBhhS0fPD4hswAwPUtLJ4n10d3WTNuzTS
+	e2wk3ByR87Pp43Qs7/9g2EA6fAvAVVqj5vnyqmgb0TsLBXGkjO6PvEtUSNAwc9GPv04/tSLn9AC/u
+	IoH5lvpbB5owaER+EzVWYApSSxPkgjn+fwkHrZ8ZciHQ+7FOpV+5aAdATFUxjw9RF/8rj87o7C5fG
+	7ewlEMVP7KWCUfvLWQuA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sVpiu-000000097bX-17fq;
-	Mon, 22 Jul 2024 09:52:52 +0000
-Received: from sakura.naobsd.org ([160.16.200.221] helo=mail.naobsd.org)
+	id 1sVtVg-00000009hfB-2iXy;
+	Mon, 22 Jul 2024 13:55:28 +0000
+Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sVpiq-000000097YP-2VMY
-	for linux-rockchip@lists.infradead.org;
-	Mon, 22 Jul 2024 09:52:51 +0000
-Received: from secure.fukaumi.org ([10.0.0.2])
-	by mail.naobsd.org (8.14.4/8.14.4/Debian-4.1ubuntu1.1) with ESMTP id 46M9qga0003644;
-	Mon, 22 Jul 2024 18:52:43 +0900
-From: FUKAUMI Naoki <naoki@radxa.com>
-To: heiko@sntech.de
-Cc: linux-rockchip@lists.infradead.org, FUKAUMI Naoki <naoki@radxa.com>
-Subject: [PATCH] arm64: dts: rockchip: fix PMIC interrupt pin in pinctrl for ROCK Pi E
-Date: Mon, 22 Jul 2024 18:52:16 +0900
-Message-ID: <20240722095216.1656081-1-naoki@radxa.com>
-X-Mailer: git-send-email 2.43.0
+	id 1sVtTO-00000009hT6-3Wu5;
+	Mon, 22 Jul 2024 13:55:07 +0000
+Received: from harlem.collaboradmins.com (harlem.collaboradmins.com [IPv6:2a01:4f8:1c0c:5936::1])
+	by madrid.collaboradmins.com (Postfix) with ESMTP id A9CC537811CD;
+	Mon, 22 Jul 2024 13:53:01 +0000 (UTC)
+From: "Shreeya Patel" <shreeya.patel@collabora.com>
+In-Reply-To: <c926b73e-9ee7-4c4f-9c06-761929425468@yandex.com>
+X-Forward: 127.0.0.1
+References: <20240719124032.26852-1-shreeya.patel@collabora.com>
+ <20240719124032.26852-3-shreeya.patel@collabora.com> <c926b73e-9ee7-4c4f-9c06-761929425468@yandex.com>
+Date: Mon, 22 Jul 2024 14:53:01 +0100
+Cc: heiko@sntech.de, mchehab@kernel.org, robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org, mturquette@baylibre.com, sboyd@kernel.org, p.zabel@pengutronix.de, jose.abreu@synopsys.com, nelson.costa@synopsys.com, shawn.wen@rock-chips.com, nicolas.dufresne@collabora.com, hverkuil@xs4all.nl, hverkuil-cisco@xs4all.nl, kernel@collabora.com, linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, "Dmitry Osipenko" <dmitry.osipenko@collabora.com>
+To: "Johan Jonker" <jbx6244@yandex.com>
 MIME-Version: 1.0
+Message-ID: <3328a8-669e6400-1-609f7800@94177214>
+Subject: =?utf-8?q?Re=3A?= [PATCH v4 2/4] =?utf-8?q?dt-bindings=3A?=
+ =?utf-8?q?_media=3A?= Document bindings for HDMI RX Controller
+User-Agent: SOGoMail 5.10.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240722_025248_871119_29EC8596 
-X-CRM114-Status: UNSURE (   8.81  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240722_065307_038527_3D74B199 
+X-CRM114-Status: GOOD (  23.87  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -58,30 +61,198 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-use GPIO0_A2 as PMIC interrupt pin in pinctrl.
-(I forgot to fix this part in previous commit.)
+On Saturday, July 20, 2024 16:14 IST, Johan Jonker <jbx6244@yandex.com> wrote:
 
-Fixes: 02afd3d5b9fa ("arm64: dts: rockchip: fix PMIC interrupt pin on ROCK Pi E")
-Signed-off-by: FUKAUMI Naoki <naoki@radxa.com>
----
- arch/arm64/boot/dts/rockchip/rk3328-rock-pi-e.dts | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Hi Johan,
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3328-rock-pi-e.dts b/arch/arm64/boot/dts/rockchip/rk3328-rock-pi-e.dts
-index a608a219543e5..3e08e2fd0a782 100644
---- a/arch/arm64/boot/dts/rockchip/rk3328-rock-pi-e.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3328-rock-pi-e.dts
-@@ -387,7 +387,7 @@ led_pin: led-pin {
- 
- 	pmic {
- 		pmic_int_l: pmic-int-l {
--			rockchip,pins = <2 RK_PA6 RK_FUNC_GPIO &pcfg_pull_up>;
-+			rockchip,pins = <0 RK_PA2 RK_FUNC_GPIO &pcfg_pull_up>;
- 		};
- 	};
- 
--- 
-2.43.0
+> 
+> 
+> On 7/19/24 14:40, Shreeya Patel wrote:
+> > Document bindings for the Synopsys DesignWare HDMI RX Controller.
+> > 
+> > Reviewed-by: Rob Herring <robh@kernel.org>
+> > Reviewed-by: Dmitry Osipenko <dmitry.osipenko@collabora.com>
+> > Signed-off-by: Shreeya Patel <shreeya.patel@collabora.com>
+> > ---
+> > 
+> > Changes in v4 :-
+> >   - No change
+> > 
+> > Changes in v3 :-
+> >   - Rename hdmirx_cma to hdmi_receiver_cma
+> >   - Add a Reviewed-by tag
+> > 
+> > Changes in v2 :-
+> >   - Add a description for the hardware
+> >   - Rename resets, vo1 grf and HPD properties
+> >   - Add a proper description for grf and vo1-grf phandles
+> >   - Rename the HDMI Input node name to hdmi-receiver
+> >   - Improve the subject line
+> >   - Include gpio header file in example to fix dt_binding_check failure
+> > 
+> >  .../bindings/media/snps,dw-hdmi-rx.yaml       | 132 ++++++++++++++++++
+> >  1 file changed, 132 insertions(+)
+> >  create mode 100644 Documentation/devicetree/bindings/media/snps,dw-hdmi-rx.yaml
+> > 
+> > diff --git a/Documentation/devicetree/bindings/media/snps,dw-hdmi-rx.yaml b/Documentation/devicetree/bindings/media/snps,dw-hdmi-rx.yaml
+> > new file mode 100644
+> > index 000000000000..96ae1e2d2816
+> > --- /dev/null
+> > +++ b/Documentation/devicetree/bindings/media/snps,dw-hdmi-rx.yaml
+> > @@ -0,0 +1,132 @@
+> > +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> > +# Device Tree bindings for Synopsys DesignWare HDMI RX Controller
+> > +
+> > +---
+> > +$id: http://devicetree.org/schemas/media/snps,dw-hdmi-rx.yaml#
+> > +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> > +
+> > +title: Synopsys DesignWare HDMI RX Controller
+> > +
+> > +maintainers:
+> > +  - Shreeya Patel <shreeya.patel@collabora.com>
+> > +
+> > +description:
+> > +  Synopsys DesignWare HDMI Input Controller preset on RK3588 SoCs
+> > +  allowing devices to receive and decode high-resolution video streams
+> > +  from external sources like media players, cameras, laptops, etc.
+> > +
+> > +properties:
+> > +  compatible:
+> > +    items:
+> > +      - const: rockchip,rk3588-hdmirx-ctrler
+> 
+> > +      - const: snps,dw-hdmi-rx
+> 
+> 1: Compatible strings must be SoC orientated.
+> 2: In Linux there's no priority in which string will probed first. 
+> What's the point of having a fallback string when there's no common code, but instead only the first string is used?
+> 
+> +static const struct of_device_id hdmirx_id[] = {
+> +	{ .compatible = "rockchip,rk3588-hdmirx-ctrler" },
+> +	{ },
+> +};
+> 
+
+We believe the HDMIRX driver can be used for the Synopsys IP on other SoCs
+in the future, which is why we have added snps,dw-hdmi-rx as the fallback compatible.
+Currently, we have tested the driver only on the RK3588 Rock5B, so we are using the
+rockchip,rk3588-hdmirx-ctrler compatible in the driver instead of the fallback one.
+
+
+Thanks,
+Shreeya Patel
+
+> > +
+> > +  reg:
+> > +    maxItems: 1
+> > +
+> > +  interrupts:
+> > +    maxItems: 3
+> > +
+> > +  interrupt-names:
+> > +    items:
+> > +      - const: cec
+> > +      - const: hdmi
+> > +      - const: dma
+> > +
+> > +  clocks:
+> > +    maxItems: 7
+> > +
+> > +  clock-names:
+> > +    items:
+> > +      - const: aclk
+> > +      - const: audio
+> > +      - const: cr_para
+> > +      - const: pclk
+> > +      - const: ref
+> > +      - const: hclk_s_hdmirx
+> > +      - const: hclk_vo1
+> > +
+> > +  power-domains:
+> > +    maxItems: 1
+> > +
+> > +  resets:
+> > +    maxItems: 4
+> > +
+> > +  reset-names:
+> > +    items:
+> > +      - const: axi
+> > +      - const: apb
+> > +      - const: ref
+> > +      - const: biu
+> > +
+> > +  memory-region:
+> > +    maxItems: 1
+> > +
+> > +  hpd-gpios:
+> > +    description: GPIO specifier for HPD.
+> > +    maxItems: 1
+> > +
+> > +  rockchip,grf:
+> > +    $ref: /schemas/types.yaml#/definitions/phandle
+> > +    description:
+> > +      The phandle of the syscon node for the general register file
+> > +      containing HDMIRX PHY status bits.
+> > +
+> > +  rockchip,vo1-grf:
+> > +    $ref: /schemas/types.yaml#/definitions/phandle
+> > +    description:
+> > +      The phandle of the syscon node for the Video Output GRF register
+> > +      to enable EDID transfer through SDAIN and SCLIN.
+> > +
+> > +required:
+> > +  - compatible
+> > +  - reg
+> > +  - interrupts
+> > +  - interrupt-names
+> > +  - clocks
+> > +  - clock-names
+> > +  - power-domains
+> > +  - resets
+> > +  - pinctrl-0
+> > +  - hpd-gpios
+> > +
+> > +additionalProperties: false
+> > +
+> > +examples:
+> > +  - |
+> > +    #include <dt-bindings/clock/rockchip,rk3588-cru.h>
+> > +    #include <dt-bindings/gpio/gpio.h>
+> > +    #include <dt-bindings/interrupt-controller/arm-gic.h>
+> > +    #include <dt-bindings/interrupt-controller/irq.h>
+> > +    #include <dt-bindings/power/rk3588-power.h>
+> > +    #include <dt-bindings/reset/rockchip,rk3588-cru.h>
+> > +    hdmi_receiver: hdmi-receiver@fdee0000 {
+> > +      compatible = "rockchip,rk3588-hdmirx-ctrler", "snps,dw-hdmi-rx";
+> > +      reg = <0xfdee0000 0x6000>;
+> > +      interrupts = <GIC_SPI 177 IRQ_TYPE_LEVEL_HIGH 0>,
+> > +                   <GIC_SPI 436 IRQ_TYPE_LEVEL_HIGH 0>,
+> > +                   <GIC_SPI 179 IRQ_TYPE_LEVEL_HIGH 0>;
+> > +      interrupt-names = "cec", "hdmi", "dma";
+> > +      clocks = <&cru ACLK_HDMIRX>,
+> > +               <&cru CLK_HDMIRX_AUD>,
+> > +               <&cru CLK_CR_PARA>,
+> > +               <&cru PCLK_HDMIRX>,
+> > +               <&cru CLK_HDMIRX_REF>,
+> > +               <&cru PCLK_S_HDMIRX>,
+> > +               <&cru HCLK_VO1>;
+> > +      clock-names = "aclk",
+> > +                    "audio",
+> > +                    "cr_para",
+> > +                    "pclk",
+> > +                    "ref",
+> > +                    "hclk_s_hdmirx",
+> > +                    "hclk_vo1";
+> > +      power-domains = <&power RK3588_PD_VO1>;
+> > +      resets = <&cru SRST_A_HDMIRX>, <&cru SRST_P_HDMIRX>,
+> > +               <&cru SRST_HDMIRX_REF>, <&cru SRST_A_HDMIRX_BIU>;
+> > +      reset-names = "axi", "apb", "ref", "biu";
+> > +      memory-region = <&hdmi_receiver_cma>;
+> > +      pinctrl-0 = <&hdmim1_rx_cec &hdmim1_rx_hpdin &hdmim1_rx_scl &hdmim1_rx_sda &hdmirx_5v_detection>;
+> > +      pinctrl-names = "default";
+> > +      hpd-gpios = <&gpio1 22 GPIO_ACTIVE_LOW>;
+> > +    };
 
 
 _______________________________________________
