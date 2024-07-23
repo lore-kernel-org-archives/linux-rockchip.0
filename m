@@ -4,47 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EF2EAC3DA5D
-	for <linux-rockchip@archiver.kernel.org>; Mon, 22 Jul 2024 20:27:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A812AC3DA5D
+	for <linux-rockchip@archiver.kernel.org>; Tue, 23 Jul 2024 02:58:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Subject:Message-ID:MIME-Version:To:Cc:
-	Date:References:In-Reply-To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=EKU3CM32Qv4T8PcK/1HzEtK//l9Sjsx+ymiXjIcs+X4=; b=FpBEuT/HL5HWsW
-	mKwp14AuRYsfhWl4ReMUqCY2L0kOnHxDgRXlFkhHSRv4IU1/GTGm7q5o5QpJKsQj5DhT1G1CGPbZp
-	+GOnA1WYWpotkTrpivtriS/FeYqmSXigowRrO1nUlhKIzDzmOQyBTW7AExVQfbJdueeG+E/X7wUMG
-	tAoUGNLf1Pc3U+PYFOIfijx4GR15jfLFhf45Tqx9RLE0D3YRb0VMI9cHYz7nx4q0/91l8m+IeZzQX
-	YyTqQ+T3COCuFLM1oohuvzu5TwVOgQsNChsVFkgI+oY+kRvVBlf2bdxE3PMAUUEKBtHVDBUqWkjcH
-	8UECXXxNq/ymU8qBierA==;
+	List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:References:
+	In-Reply-To:Cc:To:From:MIME-Version:Date:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=Dux1JQ7czHCHnORZFZKbyo32goPzvRFG8KN3oUL0r90=; b=f+1BxWsFPPWLIrROs58ZQMotV3
+	kXSdb22VOGOsy+MC6zo+KCwYlb0JEXC4hS87l+TNFYnnWSLktEfNFl1jPvlnHYuMR9jXBk/FT5Up3
+	7+QG6N1uu9CzWlcRhG0HUfhaeTnAi8GeaF/7F34bpUpaVNIPBMzIBnwx5sKU4MVshQrLoKPB2+ENZ
+	mvoPlTURSPAcgl7WhS3lL2mG0HnohdKbGsDWSY7uhHTyDcVuXufU8tmsvwSdOaMVV4DexOGxb3BeO
+	PHs7BpCtqJdERcjLYTNttN2oGWRQXkUn+p2MPWB5MuATDTe4QuqLiDhOujiCECIFIksSlGAUVjbls
+	Cz8za97A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sVzco-0000000AUJy-23Vp;
-	Mon, 22 Jul 2024 20:27:14 +0000
-Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
+	id 1sW5jY-0000000BBXD-3cfi;
+	Tue, 23 Jul 2024 02:58:36 +0000
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sVzcP-0000000AUEm-1y5r;
-	Mon, 22 Jul 2024 20:26:51 +0000
-Received: from harlem.collaboradmins.com (harlem.collaboradmins.com [IPv6:2a01:4f8:1c0c:5936::1])
-	by madrid.collaboradmins.com (Postfix) with ESMTP id A2DE53780692;
-	Mon, 22 Jul 2024 20:26:45 +0000 (UTC)
-From: "Shreeya Patel" <shreeya.patel@collabora.com>
-In-Reply-To: <20240722193946.1246372-1-hoff.benjamin.k@gmail.com>
-X-Forward: 127.0.0.1
-References: <20240719124032.26852-1-shreeya.patel@collabora.com> <20240722193946.1246372-1-hoff.benjamin.k@gmail.com>
-Date: Mon, 22 Jul 2024 21:26:45 +0100
-Cc: conor+dt@kernel.org, devicetree@vger.kernel.org, heiko@sntech.de, hverkuil-cisco@xs4all.nl, hverkuil@xs4all.nl, jose.abreu@synopsys.com, kernel@collabora.com, krzk+dt@kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, mchehab@kernel.org, mturquette@baylibre.com, nelson.costa@synopsys.com, nicolas.dufresne@collabora.com, p.zabel@pengutronix.de, robh@kernel.org, sboyd@kernel.org, shawn.wen@rock-chips.com
-To: hoff.benjamin.k@gmail.com
+	id 1sW5ih-0000000BBEt-40qa;
+	Tue, 23 Jul 2024 02:57:46 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sin.source.kernel.org (Postfix) with ESMTP id 3B828CE0DB4;
+	Tue, 23 Jul 2024 02:57:41 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0A10FC32782;
+	Tue, 23 Jul 2024 02:57:39 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1721703460;
+	bh=/TRII93/10eFu+qM4B82YYGwGymPU+swqszXC+vxlQw=;
+	h=Date:From:To:Cc:In-Reply-To:References:Subject:From;
+	b=uc6c+F2chvE9bqzu1K2My/iiu22H5744okPF42KJb+wQ1AEnL4lR0/0ggPQrWEe41
+	 wv/XrBQAeBpW6y+nqNtWp0FkZxvMhdEsQrqaWjw3UUKkdFO3OsxsLG/gP14cUWixUV
+	 RIbVfQJGhFmOzJAfYub9QLYpSRv+P2lWcw7uTei7Jkr71CVHHN9t7eD5ykpAYdSbY0
+	 GZS30+8r3v1WqrxQZIMf9p3uzPvnetXjbqPVW8IQSJyj2B6D820riifnXZPLEG+lmn
+	 Dj7iOc82o1lp69vJTLhjCum+P8te6DP7tCW2tlEeIBDpl6EZp1MeTHANh4InPl+7p5
+	 x6lPms31MX4CQ==
+Date: Mon, 22 Jul 2024 20:57:37 -0600
 MIME-Version: 1.0
-Message-ID: <354380-669ec080-1-27ae20c0@20216750>
-Subject: =?utf-8?q?Re=3A?= [PATCH v4 4/4] =?utf-8?q?media=3A?=
- =?utf-8?q?_platform=3A?==?utf-8?q?_synopsys=3A?= Add support for hdmi input 
- driver
-User-Agent: SOGoMail 5.10.0
+From: "Rob Herring (Arm)" <robh@kernel.org>
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: ukleinek@debian.org, linux-kernel@vger.kernel.org, 
+ linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+In-Reply-To: <20240721173723.919961-1-heiko@sntech.de>
+References: <20240721173723.919961-1-heiko@sntech.de>
+Message-Id: <172170324698.205262.12290895401170418124.robh@kernel.org>
+Subject: Re: [PATCH v2 00/14] Expand available features on Qnap TS433
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240722_132649_662233_D5C243B9 
-X-CRM114-Status: GOOD (  16.86  )
+X-CRM114-CacheID: sfid-20240722_195744_366972_4E9D68B1 
+X-CRM114-Status: GOOD (  25.63  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -61,69 +71,100 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tuesday, July 23, 2024 01:09 IST, hoff.benjamin.k@gmail.com wrote:
 
-Hi Benjamin,
-
-> > Add initial support for the Synopsys DesignWare HDMI RX
-> > Controller Driver used by Rockchip RK3588. The driver
-> > supports:
-> >  - HDMI 1.4b and 2.0 modes (HDMI 4k@60Hz)
-> >  - RGB888, YUV422, YUV444 and YCC420 pixel formats
-> >  - CEC
-> >  - EDID configuration
-> >
-> > The hardware also has Audio and HDCP capabilities, but these are
-> > not yet supported by the driver.
-> >
-> > Reviewed-by: Dmitry Osipenko <dmitry.osipenko@collabora.com>
-> > Tested-by: Dmitry Osipenko <dmitry.osipenko@collabora.com>
-> > Co-developed-by: Dingxian Wen <shawn.wen@rock-chips.com>
-> > Signed-off-by: Dingxian Wen <shawn.wen@rock-chips.com>
-> > Signed-off-by: Shreeya Patel <shreeya.patel@collabora.com>
-> > ---
-> >
-...
-> > +
-> > +static const struct of_device_id hdmirx_id[] = {
-> > +	{ .compatible = "rockchip,rk3588-hdmirx-ctrler" },
-> > +	{ },
-> > +};
-> > +MODULE_DEVICE_TABLE(of, hdmirx_id);
-> >
-> >
-> According to the platform_driver struct, they like the `remove_new` over remove. 
-> When I was compiling for Armbian, I was getting a type mismatch that prevented compililng
+On Sun, 21 Jul 2024 19:37:09 +0200, Heiko Stuebner wrote:
+> Thanks to the nicely supported rk3568, the hardest part for adding things,
+> is to pull things from the vendor-kernel and translating them to mainline
+> standards.
 > 
-> See here: https://github.com/torvalds/linux/blob/933069701c1b507825b514317d4edd5d3fd9d417/include/linux/platform_device.h#L236
+> This series allows the TS433 to use all 4 bays [0], wiggle some LEDs and
+> access devices connected to all 3 usb ports.
+> 
+> The device runs stable now and might be usable for actual usage.
+> 
+> There is still a todo-list though:
+> - the ethernet mac address for the realtek chip seems correct,
+>   but the gmac0 interface currently uses a wrong one
+> - i2cdetect reports devices on i2c-1 on addresses 54,55,56,57
+>   model_Q0B20_Q0B30_10_10.conf from the original rescue image labels them
+>     VPD_MB = I2C:0x54, VPD_BP = I2C:0x56
+>   the meaning currently being unknown. Some eeprom maybe?
+> - The regulator tree is slightly dubious. Everthing seems to follow rk3568
+>   reference designs, but especially the regulator labeled vcc3v3_sd
+>   seems to supply some PCIe functionality. So I guess the device's
+>   schematics will look quite different than the regulators added to the
+>   vendor devicetree.
+> - Quite a bit of functionality is provided by the MCU connected to uart0.
+>   According to the model.conf there should be fan-control, a number of
+>   additional LEDs (status,locate,usb?)
+> 
+> 
+> Thanks to Qnap engineers adding an easily accessible header for maskrom
+> mode on the board, replacing the bootloader is also quite a breeze. A
+> branch on top of today's u-boot master branch can be found on [1]. I'll
+> submit that code to u-boot once I can cherry-pick the dts patches.
+> 
+> 
+> changes in v2:
+> - add patches for tsadc, gpio-keys, cpu-supply, pmic, gpu and io-domains
+> 
+> 
+> [0] I only have two drives right now, but I tested both the internal
+> sata connector as well as the PCIe connected sata controller in different
+> combinations.
+> [1] https://github.com/mmind/u-boot-rockchip/tree/dev/qnap-ts433/v2024.07
+> 
+> 
+> Heiko Stuebner (14):
+>   arm64: dts: rockchip: add PCIe supply regulator to Qnap-TS433
+>   arm64: dts: rockchip: enable second PCIe controller on the Qnap-TS433
+>   arm64: dts: rockchip: enable uart0 on Qnap-TS433
+>   arm64: dts: rockchip: enable usb ports on Qnap-TS433
+>   arm64: dts: rockchip: add stdout path on Qnap-TS433
+>   arm64: dts: rockchip: enable sata1+2 on Qnap-TS433
+>   arm64: dts: rockchip: add board-aliases for Qnap-TS433
+>   arm64: dts: rockchip: add hdd leds to Qnap-TS433
+>   arm64: dts: rockchip: enable the tsadc on the Qnap-TS433
+>   arm64: dts: rockchip: add gpio-keys to Qnap-TS433
+>   arm64: dts: rockchip: define cpu-supply on the Qnap-TS433
+>   arm64: dts: rockchip: add missing pmic information on Qnap-TS433
+>   arm64: dts: rockchip: enable gpu on Qnap-TS433
+>   arm64: dts: rockchip: add 2 pmu_io_domain supplies for Qnap-TS433
+> 
+>  .../boot/dts/rockchip/rk3568-qnap-ts433.dts   | 539 +++++++++++++++++-
+>  1 file changed, 536 insertions(+), 3 deletions(-)
+> 
+> --
+> 2.39.2
+> 
+> 
 > 
 
-This patch series is based on linux-next and there seems to be some recent changes
-related to .remove and .remove_new. New drivers are supposed to use .remove()
 
-See the reason here :-
-https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git/tree/include/linux/platform_device.h?h=next-20240722#n239
+My bot found new DTB warnings on the .dts files added or changed in this
+series.
 
-If you apply the patches on top of linux-next then there shouldn't be any
-compilation error.
+Some warnings may be from an existing SoC .dtsi. Or perhaps the warnings
+are fixed by another series. Ultimately, it is up to the platform
+maintainer whether these warnings are acceptable or not. No need to reply
+unless the platform maintainer has comments.
 
-> >
-> > +
-> > +static struct platform_driver hdmirx_driver = {
-> > +	.probe = hdmirx_probe,
-> > +	.remove = hdmirx_remove,
-> > +	.driver = {
-> > +		.name = "snps_hdmirx",
-> > +		.of_match_table = hdmirx_id,
-> > +		.pm = &snps_hdmirx_pm_ops,
-> > +	}
-> > +};
-> > +module_platform_driver(hdmirx_driver);
-> > +
-> > +MODULE_DESCRIPTION("Rockchip HDMI Receiver Driver");
-> > +MODULE_AUTHOR("Dingxian Wen <shawn.wen@rock-chips.com>");
-> > +MODULE_AUTHOR("Shreeya Patel <shreeya.patel@collabora.com>");
-> > +MODULE_LICENSE("GPL");
+If you already ran DT checks and didn't see these error(s), then
+make sure dt-schema is up to date:
+
+  pip3 install dtschema --upgrade
+
+
+New warnings running 'make CHECK_DTBS=y rockchip/rk3568-qnap-ts433.dtb' for 20240721173723.919961-1-heiko@sntech.de:
+
+arch/arm64/boot/dts/rockchip/rk3568-qnap-ts433.dtb: sata@fc400000: Unevaluated properties are not allowed ('power-domains' was unexpected)
+	from schema $id: http://devicetree.org/schemas/ata/rockchip,dwc-ahci.yaml#
+arch/arm64/boot/dts/rockchip/rk3568-qnap-ts433.dtb: sata@fc800000: Unevaluated properties are not allowed ('power-domains' was unexpected)
+	from schema $id: http://devicetree.org/schemas/ata/rockchip,dwc-ahci.yaml#
+
+
+
+
 
 
 _______________________________________________
