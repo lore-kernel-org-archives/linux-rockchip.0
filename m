@@ -4,64 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 256DDC3DA49
-	for <linux-rockchip@archiver.kernel.org>; Tue, 23 Jul 2024 09:00:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8A55AC3DA49
+	for <linux-rockchip@archiver.kernel.org>; Tue, 23 Jul 2024 09:49:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
 	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=uQCHrbJV9BS6RPe3Dm7PZBaKt0ym1bjiBAlpRIQYU4c=; b=xpSSqbExa6ozBPKOBjBRsz6fMS
-	UhXjd2LAVgZmsRxPf8YsL6gEJJlNSS5snZ4V4iUTx3BU8cU81Z/jMMZ9QtuiGxpjkL3reK9z2qOMG
-	4HbeozuVWRrsS8sU8eVzfjxisSwOpK27gIMVgquH8W6lxpdbXeiJKuxGBOYN6TpBBlYNV543tyURp
-	yTkzqFJe52q0CXqFyqP2JlvNdp1mqU/LsuihfB70o1RNVC5aL0StG5C5uJVMK3XY7NVy6NlAMeK8q
-	ID+gRda5GF+PP5lBqXKChIWFwQYKSGDZXbQT8aHoJ1JdlwESP3HU6XSdXHj6Y+5ak16WtHSoK4iDT
-	wtnSSjOw==;
+	bh=AU7PjauU58SadkrDTYKHhTQmAKksyZgsvwlpiwsShuA=; b=vaqkIidnbNmWtxlED4Ai4N4exW
+	G5KPUbVmE+HEonXczM5vCBh2IHY/iOkoojuYNRzTJBzkpIqK2EnzPu/3POjVo+Uu1T+R+b97itS3x
+	VF0peTYpfTqfAqt4QIoKQaFNN7Sm4Exj27xKsx/gHOc/1n3UQFRcdFUWBxyPLapPfscshG9jG3ZtP
+	Qh7KIgQK+ZxOU4Bu51zbl8Naye5xBdae3hlMlSJRftnF9Nf2CP2qsPrNXGf1ACWHq3JiJIRtWlJET
+	unRTsdxU5kAm4z94GR16esg6zjktf+RsZOY9f93IJ5dI1CnmdUfIsrvS4PYYsbr1g+UbP/Y01WaSZ
+	71fp5OYQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sWBNy-0000000Buqz-26DD;
-	Tue, 23 Jul 2024 09:00:42 +0000
+	id 1sWC93-0000000C4T6-1EjD;
+	Tue, 23 Jul 2024 09:49:21 +0000
 Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sWBNu-0000000Buq2-07aV
+	id 1sWC8y-0000000C4SR-3Tjv
 	for linux-rockchip@lists.infradead.org;
-	Tue, 23 Jul 2024 09:00:41 +0000
+	Tue, 23 Jul 2024 09:49:19 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1721725233;
-	bh=jfLE9tpnZChXcVn8NYHzUuHrYd/r/GTpbk7NGi3GtOY=;
+	s=mail; t=1721728155;
+	bh=LBspR0RbbvdyB9NgEAS7Jm6rYf6aPZu2TWqo0xRIwac=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=rOhQ3otYyKYfJ8hOJSPsZ9L3itr87QK9ScTyIpWs5hSVTiTao5b2E9JzzHSkqMIXk
-	 lxd+aQdaZy0IQvOwPq8KEa0X1Vsc33MgjI0GkJCUgomnlXuudyqcyJyd6lk8uYlg+p
-	 Ygx99gDG+Bgrw2rzQWn0gZv3OmvR4vR3hC2qJxO12L+aavT4p1Pyrtx0la2iu0uahh
-	 FNpjGGBtNNMTDDhOGuFLZeR8oR4wQa0dW/Dogs64djjxSQqF6xrg7j7OxUtq7iZIo5
-	 SwlRzYbSeJdUh+clBGd0jSOY6CA65wBGSh5EnbNxaNYxs1tic+HNM8CUkq++aWkc5B
-	 q9mW+nReEUYcw==
+	b=FhYSjz1SVPnHMkaNadaN/f0VP8GyKwI9mdowhp7isv5O9yewojPP23aVbCtzT7bRv
+	 edhWFV79GnbgMx95dOzgsyuAQN73hMbKItTzYKmN+ShHWM7HLjCmjMJ07Yf0u/Akle
+	 nKifgbASm1JesU0OKYDx6rIyQ//OwDQeIYqVpZliJUDPbYtcs+DucbbJzHQY+boEKO
+	 MQp7bHcg59oJwivAyYBsnmNhGvLOI2710jaJ8ly62Cty6mWza+1wt56+EQHeK0FPuu
+	 m5iOTfwygm1AAYjhFdGeuiSLPwxhEjLNx5uNWvu1+WRYpSVIqkjdntfdY6ZXZrXucE
+	 jdWKOI3IrUnyA==
 Received: from localhost (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: sebastianfricke)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 49EF13780EC6;
-	Tue, 23 Jul 2024 09:00:33 +0000 (UTC)
-Date: Tue, 23 Jul 2024 11:00:32 +0200
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id E7A153781167;
+	Tue, 23 Jul 2024 09:49:14 +0000 (UTC)
+Date: Tue, 23 Jul 2024 11:49:13 +0200
 From: Sebastian Fricke <sebastian.fricke@collabora.com>
 To: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 Cc: mchehab@kernel.org, ezequiel@vanguardiasur.com.ar,
 	hverkuil-cisco@xs4all.nl, linux-media@vger.kernel.org,
 	linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
 	kernel@collabora.com
-Subject: Re: [PATCH v5 1/3] media: videodev2: Add flag to unconditionnaly
- enumerate pixels formats
-Message-ID: <20240723090032.x24ezk5vgihaf6z3@basti-XPS-13-9310>
+Subject: Re: [PATCH v5 2/3] media: test-drivers: Use V4L2_FMT_FLAG_ENUM_ALL
+ flag
+Message-ID: <20240723094913.4zuywzqsthvkowlv@basti-XPS-13-9310>
 References: <20240722150523.149667-1-benjamin.gaignard@collabora.com>
- <20240722150523.149667-2-benjamin.gaignard@collabora.com>
+ <20240722150523.149667-3-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20240722150523.149667-2-benjamin.gaignard@collabora.com>
+In-Reply-To: <20240722150523.149667-3-benjamin.gaignard@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240723_020038_391192_E9908830 
-X-CRM114-Status: GOOD (  15.40  )
+X-CRM114-CacheID: sfid-20240723_024917_048917_7ACAB851 
+X-CRM114-Status: GOOD (  14.01  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,108 +80,122 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 Hey Benjamin,
 
-in the subject line:
-
-s/unconditionnaly enumerate pixels/unconditionally enumerate pixel/
-
 On 22.07.2024 17:05, Benjamin Gaignard wrote:
->When the index field is ORed with V4L2_FMT_FLAG_ENUM_ALL the driver
+>Since V4L2_FMT_FLAG_ENUM_ALL flag mostly targeting stateless
 
-s/is ORed with/is set with/ (same meaning but a lot less confusing)
+s/Since/Since the/
+s/targeting/targets/
 
->will ignore any configuration and enumerate all the possible formats.
->Drivers which do not support this flag yet always return an EINVAL
+>decoder pixel formats enumeration, update vicodec visl test
 
-s/yet always/yet, always/
+s/pixel formats/pixel-format/
 
->error code.
->
->Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
->---
->changes in version 5:
->- Reset the proposal to follow Hans's advices
->- Add new flag to be used with index field.
->
-> .../userspace-api/media/v4l/vidioc-enum-fmt.rst      | 12 +++++++++++-
-> .../userspace-api/media/videodev2.h.rst.exceptions   |  1 +
-> include/uapi/linux/videodev2.h                       |  3 +++
-> 3 files changed, 15 insertions(+), 1 deletion(-)
->
->diff --git a/Documentation/userspace-api/media/v4l/vidioc-enum-fmt.rst b/Documentation/userspace-api/media/v4l/vidioc-enum-fmt.rst
->index 3adb3d205531..12e1e65e6a71 100644
->--- a/Documentation/userspace-api/media/v4l/vidioc-enum-fmt.rst
->+++ b/Documentation/userspace-api/media/v4l/vidioc-enum-fmt.rst
->@@ -85,7 +85,11 @@ the ``mbus_code`` field is handled differently:
->     * - __u32
->       - ``index``
->       - Number of the format in the enumeration, set by the application.
->-	This is in no way related to the ``pixelformat`` field.
->+        This is in no way related to the ``pixelformat`` field. When the
->+        index is ORed with V4L2_FMT_FLAG_ENUM_ALL the driver will ignore
+>drivers to use it.
 
-s/ORed/set/ (same as above)
+s/drivers/driver/
 
->+        any configuration and enumerate all the possible formats. Drivers
->+        which do not support this flag yet always return an ``EINVAL``
+The rest below basically just strips the flag from every use-case of the
+index, before using it.
 
-s/yet always/yet, always/
+I wonder couldn't we implement a macro for this, as I believe this will
+have to be done in a lot of places, something like:
 
->+        error code.
->     * - __u32
->       - ``type``
->       - Type of the data stream, set by the application. Only these types
->@@ -234,6 +238,12 @@ the ``mbus_code`` field is handled differently:
-> 	valid. The buffer consists of ``height`` lines, each having ``width``
-> 	Data Units of data and the offset (in bytes) between the beginning of
-> 	each two consecutive lines is ``bytesperline``.
->+    * - ``V4L2_FMT_FLAG_ENUM_ALL``
->+      - 0x80000000
->+      - When the applications ORs ``index`` with ``V4L2_FMT_FLAG_ENUM_ALL`` flag
+/*
+  * Drivers can support an enumeration of all formats, by ORing the
+  * V4L2_FMT_FLAG_ENUM_ALL flag into the index field.
+  * In order to use the index field, strip the flag first.
+  *
+  * See vidioc-enum-fmt.rst documentation for more details.
+  */
+#define STRIP_ENUM_ALL_FLAG(index) \
+   index & ~V4L2_FMT_FLAG_ENUM_ALL
 
-s/applications/application/
-s/ORs/sets/
+And then use it like this:
 
->+        the driver enumerates all the possible pixel formats without taking care
->+        of any already set configuration. Drivers which do not support this flag
->+        yet always return ``EINVAL``.
+u32 index = STRIP_ENUM_ALL_FLAG(f->index);
 
-s/yet always/yet, always/
+If we define this in a common header, then every driver can easily
+utilize it and you have built-in documentation.
 
->
-> Return Value
-> ============
->diff --git a/Documentation/userspace-api/media/videodev2.h.rst.exceptions b/Documentation/userspace-api/media/videodev2.h.rst.exceptions
->index bdc628e8c1d6..8dc10a500fc6 100644
->--- a/Documentation/userspace-api/media/videodev2.h.rst.exceptions
->+++ b/Documentation/userspace-api/media/videodev2.h.rst.exceptions
->@@ -216,6 +216,7 @@ replace define V4L2_FMT_FLAG_CSC_YCBCR_ENC fmtdesc-flags
-> replace define V4L2_FMT_FLAG_CSC_HSV_ENC fmtdesc-flags
-> replace define V4L2_FMT_FLAG_CSC_QUANTIZATION fmtdesc-flags
-> replace define V4L2_FMT_FLAG_META_LINE_BASED fmtdesc-flags
->+replace define V4L2_FMT_FLAG_ENUM_ALL fmtdesc-flags
->
-> # V4L2 timecode types
-> replace define V4L2_TC_TYPE_24FPS timecode-type
->diff --git a/include/uapi/linux/videodev2.h b/include/uapi/linux/videodev2.h
->index 4e91362da6da..3d11f91273a1 100644
->--- a/include/uapi/linux/videodev2.h
->+++ b/include/uapi/linux/videodev2.h
->@@ -904,6 +904,9 @@ struct v4l2_fmtdesc {
-> #define V4L2_FMT_FLAG_CSC_QUANTIZATION		0x0100
-> #define V4L2_FMT_FLAG_META_LINE_BASED		0x0200
->
->+/*  Format description flag, to be ORed with the index */
-
-s/ORed/set/
+What do you think?
 
 Regards,
 Sebastian
 
->+#define V4L2_FMT_FLAG_ENUM_ALL			0x80000000
+>
+>Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+>---
+> drivers/media/test-drivers/vicodec/vicodec-core.c |  7 ++++---
+> drivers/media/test-drivers/visl/visl-video.c      | 11 +++++++----
+> 2 files changed, 11 insertions(+), 7 deletions(-)
+>
+>diff --git a/drivers/media/test-drivers/vicodec/vicodec-core.c b/drivers/media/test-drivers/vicodec/vicodec-core.c
+>index 3e011fe62ae1..1b4cd8ddd7c2 100644
+>--- a/drivers/media/test-drivers/vicodec/vicodec-core.c
+>+++ b/drivers/media/test-drivers/vicodec/vicodec-core.c
+>@@ -706,6 +706,7 @@ static int enum_fmt(struct v4l2_fmtdesc *f, struct vicodec_ctx *ctx,
+> 		    bool is_out)
+> {
+> 	bool is_uncomp = (ctx->is_enc && is_out) || (!ctx->is_enc && !is_out);
+>+	u32 index = f->index & ~V4L2_FMT_FLAG_ENUM_ALL;
+>
+> 	if (V4L2_TYPE_IS_MULTIPLANAR(f->type) && !multiplanar)
+> 		return -EINVAL;
+>@@ -718,18 +719,18 @@ static int enum_fmt(struct v4l2_fmtdesc *f, struct vicodec_ctx *ctx,
+>
+> 		if (ctx->is_enc ||
+> 		    !vb2_is_streaming(&ctx->fh.m2m_ctx->cap_q_ctx.q))
+>-			info = v4l2_fwht_get_pixfmt(f->index);
+>+			info = v4l2_fwht_get_pixfmt(index);
+> 		else
+> 			info = v4l2_fwht_find_nth_fmt(info->width_div,
+> 						     info->height_div,
+> 						     info->components_num,
+> 						     info->pixenc,
+>-						     f->index);
+>+						     index);
+> 		if (!info)
+> 			return -EINVAL;
+> 		f->pixelformat = info->id;
+> 	} else {
+>-		if (f->index)
+>+		if (index)
+> 			return -EINVAL;
+> 		f->pixelformat = ctx->is_stateless ?
+> 			V4L2_PIX_FMT_FWHT_STATELESS : V4L2_PIX_FMT_FWHT;
+>diff --git a/drivers/media/test-drivers/visl/visl-video.c b/drivers/media/test-drivers/visl/visl-video.c
+>index f8d970319764..c5f3e13b4198 100644
+>--- a/drivers/media/test-drivers/visl/visl-video.c
+>+++ b/drivers/media/test-drivers/visl/visl-video.c
+>@@ -341,21 +341,24 @@ static int visl_enum_fmt_vid_cap(struct file *file, void *priv,
+> 				 struct v4l2_fmtdesc *f)
+> {
+> 	struct visl_ctx *ctx = visl_file_to_ctx(file);
+>+	u32 index = f->index & ~V4L2_FMT_FLAG_ENUM_ALL;
+>
+>-	if (f->index >= ctx->coded_format_desc->num_decoded_fmts)
+>+	if (index >= ctx->coded_format_desc->num_decoded_fmts)
+> 		return -EINVAL;
+>
+>-	f->pixelformat = ctx->coded_format_desc->decoded_fmts[f->index];
+>+	f->pixelformat = ctx->coded_format_desc->decoded_fmts[index];
+> 	return 0;
+> }
+>
+> static int visl_enum_fmt_vid_out(struct file *file, void *priv,
+> 				 struct v4l2_fmtdesc *f)
+> {
+>-	if (f->index >= ARRAY_SIZE(visl_coded_fmts))
+>+	u32 index = f->index & ~V4L2_FMT_FLAG_ENUM_ALL;
 >+
-> 	/* Frame Size and frame rate enumeration */
-> /*
->  *	F R A M E   S I Z E   E N U M E R A T I O N
+>+	if (index >= ARRAY_SIZE(visl_coded_fmts))
+> 		return -EINVAL;
+>
+>-	f->pixelformat = visl_coded_fmts[f->index].pixelformat;
+>+	f->pixelformat = visl_coded_fmts[index].pixelformat;
+> 	return 0;
+> }
+>
 >-- 
 >2.43.0
 >
