@@ -4,69 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BAAFEC3DA63
-	for <linux-rockchip@archiver.kernel.org>; Wed, 24 Jul 2024 10:12:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 52C23C3DA61
+	for <linux-rockchip@archiver.kernel.org>; Wed, 24 Jul 2024 13:21:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=KcI1qVrOsNIbwDBiWewiI2ZgyQzih+VIU7jB0R8KLwo=; b=lyBPilbuwl06Ep
-	t200lBzO5YYG3LrOlyj+JKOwTL8xzKgipS/QRMitaXAu9YHiYa2F47tdGBjO74rfW+wuh1spseLSh
-	ouYLuEBHUYELSf8LWFajrPEdXyoIdbVPdQaoUXgJdwnl8S2pyy9F+PycCWXK0cXbgZgeHDE0kWiYy
-	ur0cZRGh0dwo8Zy2g4llBrrMjlW3LDvJP/6AkAojfLSGe4zBv9uzt/J7RThKAg424vLmiKfriOifq
-	hEC+07ckxz3chsHV9W64wFMuUcgNKKHgBTzreWNooVaibUxcHFau8mDFaIpbWXDM5SDKyjuwGTglJ
-	Aec46HWoFO4Z0SdQMYww==;
+	List-Owner; bh=1jIJAa0XRjllvle34f5TQXwqpILexwCouyz1oxvsx20=; b=oPatMMqMTfQypz
+	apnnOL6/WXMK8oHM1mfNs3qM2eADWcTg+Yb55UB6e86QNBe+SQQHbGvTcGSoFfxzIwCkPE8Jg+D5U
+	hdX7cnwPSmME1skmCgsScyV3mVVgMqv1aMufnHohKNPVKvs9cNpCgo4U9QJdQQuSzaI4wqLre+q5A
+	JufehoyO+HjKj0JqD8yYDe2OF7wGbpisiWuXZtIjMg5J8fwFKX0AwLl6FD4iEJK3ogjg4igOb5IlH
+	pRYD0c20Q07aUoeF0IHOCVymIGAY6F+Ixqt698+aXIDGNbdJnZaH1GsgNDlaNqsjeDeRnJyfRh/zF
+	tspoMDA55CCdHV7b7KcA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sWYyy-0000000F3Bc-31U8;
-	Wed, 24 Jul 2024 10:12:28 +0000
-Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
+	id 1sWbva-0000000FQTY-0ZQR;
+	Wed, 24 Jul 2024 13:21:10 +0000
+Received: from forward502a.mail.yandex.net ([178.154.239.82])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sWYyX-0000000F2oR-3tQO;
-	Wed, 24 Jul 2024 10:12:19 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1721815920;
-	bh=18I0p/kEKSfZHTf43kPu+uWYuOzwe0CqfW8X/D46g8w=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=mUbP34XdziNf6NaBF0t03uobZpHXq2wFouqDEKlZ90sEOEekvrN+YYajmvFNvdc4l
-	 NhMScH+JsLcaHtklzvCViqn+i6DNv1YcKz6lIjNXjBGHQ/1YOaVI8vEpRMBQfGkChW
-	 elRnR+h7i3ceL5A6QsKghzZEY29hqKBKlh+VfMkwub5ouLIecn3bJT0TBtTGYM/Fnv
-	 LWuPt0RmODe0B94dlNNxAQocZokDtB8hQ0+L8ZEiUXy3nOXHdYV+uuUFNSeiyld01X
-	 Lk6FCLvT9j8VEgqATs4+0HArhtb3ozvYYXO17he2rIyDiX7UhqnZdG4xLT8eClhJWr
-	 hGvxW7p9HuGeA==
-Received: from localhost.localdomain (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: vignesh)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id EC91D37820C2;
-	Wed, 24 Jul 2024 10:11:57 +0000 (UTC)
-From: Vignesh Raman <vignesh.raman@collabora.com>
-To: dri-devel@lists.freedesktop.org
-Cc: daniels@collabora.com,
-	helen.koike@collabora.com,
-	airlied@gmail.com,
-	daniel@ffwll.ch,
-	guilherme.gallo@collabora.com,
-	sergi.blanch.torne@collabora.com,
-	deborah.brouwer@collabora.com,
-	robdclark@gmail.com,
-	linux-mediatek@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-amlogic@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH v8 5/5] drm/ci: rockchip: add tests for rockchip display driver
-Date: Wed, 24 Jul 2024 15:40:08 +0530
-Message-ID: <20240724101015.523535-6-vignesh.raman@collabora.com>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20240724101015.523535-1-vignesh.raman@collabora.com>
-References: <20240724101015.523535-1-vignesh.raman@collabora.com>
+	id 1sWbv9-0000000FQOV-0kyE;
+	Wed, 24 Jul 2024 13:20:46 +0000
+Received: from mail-nwsmtp-smtp-production-main-68.vla.yp-c.yandex.net (mail-nwsmtp-smtp-production-main-68.vla.yp-c.yandex.net [IPv6:2a02:6b8:c2a:245:0:640:bda:0])
+	by forward502a.mail.yandex.net (Yandex) with ESMTPS id A0DC561A9A;
+	Wed, 24 Jul 2024 16:20:33 +0300 (MSK)
+Received: by mail-nwsmtp-smtp-production-main-68.vla.yp-c.yandex.net (smtp/Yandex) with ESMTPSA id SKPLkI2qEW20-wxrpCvQD;
+	Wed, 24 Jul 2024 16:20:32 +0300
+X-Yandex-Fwd: 1
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yandex.com; s=mail;
+	t=1721827232; bh=+iu2sPO9qRuOHtyVNsDaCAm4+DJZSiPw1ZwyNCt0UxY=;
+	h=From:In-Reply-To:Cc:Date:References:To:Subject:Message-ID;
+	b=pfQ5kNtyn6lNqXT+34xQHUsLVc2+bd8K5n6yy4PhEA1SDS67HnoYad6x5nEKXAEXy
+	 H8hK+7ZLuONlcgWyJosFyfQutJJvZ2ie14JAP27uTpBK9ahcOIK6FRAKNHazUn6Apk
+	 WT8p0FkjXSTBtLt5tvgz4z0+KXImkHAYZHQCF+aY=
+Authentication-Results: mail-nwsmtp-smtp-production-main-68.vla.yp-c.yandex.net; dkim=pass header.i=@yandex.com
+Message-ID: <80090f6e-7bc8-422a-bb2a-0c0a4abf32f0@yandex.com>
+Date: Wed, 24 Jul 2024 15:20:28 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v4 2/4] dt-bindings: media: Document bindings for HDMI RX
+ Controller
+To: Sebastian Reichel <sebastian.reichel@collabora.com>
+Cc: Shreeya Patel <shreeya.patel@collabora.com>, heiko@sntech.de,
+ mchehab@kernel.org, robh@kernel.org, krzk+dt@kernel.org,
+ conor+dt@kernel.org, mturquette@baylibre.com, sboyd@kernel.org,
+ p.zabel@pengutronix.de, jose.abreu@synopsys.com, nelson.costa@synopsys.com,
+ shawn.wen@rock-chips.com, nicolas.dufresne@collabora.com,
+ hverkuil@xs4all.nl, hverkuil-cisco@xs4all.nl, kernel@collabora.com,
+ linux-kernel@vger.kernel.org, linux-media@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org,
+ Dmitry Osipenko <dmitry.osipenko@collabora.com>
+References: <20240719124032.26852-1-shreeya.patel@collabora.com>
+ <20240719124032.26852-3-shreeya.patel@collabora.com>
+ <c926b73e-9ee7-4c4f-9c06-761929425468@yandex.com>
+ <3328a8-669e6400-1-609f7800@94177214>
+ <ae3f574a-256f-4ced-a371-a26255024750@yandex.com>
+ <6nzakkvpfodztxh6jnxlhknd7x7ni6agwpguxyqd6gcncedp53@vsk5mnaayfqs>
+Content-Language: en-US
+From: Johan Jonker <jbx6244@yandex.com>
+In-Reply-To: <6nzakkvpfodztxh6jnxlhknd7x7ni6agwpguxyqd6gcncedp53@vsk5mnaayfqs>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240724_031202_643311_09E12188 
-X-CRM114-Status: GOOD (  22.73  )
+X-CRM114-CacheID: sfid-20240724_062043_960056_494BB852 
+X-CRM114-Status: GOOD (  47.72  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,616 +84,423 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-For rockchip rk3288 and rk3399, the display driver is rockchip
-and gpu driver is panfrost. Currently, in drm-ci for rockchip
-rk3288 and rk3399, only the gpu driver is tested. Refactor
-the existing rockchip jobs to test both display and gpu driver
-and update xfails.
 
-Since the correct driver name is passed from the job to test gpu
-and display driver, remove the check to set IGT_FORCE_DRIVER
-based on driver name for rockchip jobs.
 
-Signed-off-by: Vignesh Raman <vignesh.raman@collabora.com>
----
+On 7/23/24 19:28, Sebastian Reichel wrote:
+> Hi,
+>
+> On Tue, Jul 23, 2024 at 01:16:00PM GMT, Johan Jonker wrote:
+>> On 7/22/24 15:53, Shreeya Patel wrote:
+>>> On Saturday, July 20, 2024 16:14 IST, Johan Jonker <jbx6244@yandex.com> wrote:
+>>>> On 7/19/24 14:40, Shreeya Patel wrote:
+>>>>> Document bindings for the Synopsys DesignWare HDMI RX Controller.
+>>>>>
+>>
+>>>>> Reviewed-by: Rob Herring <robh@kernel.org>
+>>>>> Reviewed-by: Dmitry Osipenko <dmitry.osipenko@collabora.com>
+>>
+>> Remove to trigger a new review.
+>
+> Rob and Dmitry both already reviewed the version with the fallback
+> compatible. I don't think the rename of hdmirx_cma to hdmi_receiver_cma
+> warrant a new review. Also FWIW:
+>
 
-v2:
-  - Refactor the patch to rename job to indicate display driver testing,
-    rename the existing xfail files.
+> Reviewed-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 
-v3:
-  - Add the job name in GPU_VERSION and use it for xfail file names
-    instead of using DRIVER_NAME. Also update xfails.
+Please have a look at the comments below before you tag.
 
-v4:
-  - Remove the display suffix in job and rename xfails accordingly.
-    Remove the change adding job name in GPU_VERSION.
+>
+>>>>> Signed-off-by: Shreeya Patel <shreeya.patel@collabora.com>
+>>>>> ---
+>>>>>
+>>>>> Changes in v4 :-
+>>>>>   - No change
+>>>>>
+>>>>> Changes in v3 :-
+>>>>>   - Rename hdmirx_cma to hdmi_receiver_cma
+>>>>>   - Add a Reviewed-by tag
+>>>>>
+>>>>> Changes in v2 :-
+>>>>>   - Add a description for the hardware
+>>>>>   - Rename resets, vo1 grf and HPD properties
+>>>>>   - Add a proper description for grf and vo1-grf phandles
+>>>>>   - Rename the HDMI Input node name to hdmi-receiver
+>>>>>   - Improve the subject line
+>>>>>   - Include gpio header file in example to fix dt_binding_check failure
+>>>>>
+>>>>>  .../bindings/media/snps,dw-hdmi-rx.yaml       | 132 ++++++++++++++++++
+>>>>>  1 file changed, 132 insertions(+)
+>>>>>  create mode 100644 Documentation/devicetree/bindings/media/snps,dw-hdmi-rx.yaml
+>>>>>
+>>>>> diff --git a/Documentation/devicetree/bindings/media/snps,dw-hdmi-rx.yaml b/Documentation/devicetree/bindings/media/snps,dw-hdmi-rx.yaml
+>>>>> new file mode 100644
+>>>>> index 000000000000..96ae1e2d2816
+>>>>> --- /dev/null
+>>>>> +++ b/Documentation/devicetree/bindings/media/snps,dw-hdmi-rx.yaml
+>>>>> @@ -0,0 +1,132 @@
+>>>>> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+>>>>> +# Device Tree bindings for Synopsys DesignWare HDMI RX Controller
+>>>>> +
+>>>>> +---
+>>>>> +$id: http://devicetree.org/schemas/media/snps,dw-hdmi-rx.yaml#
+>>>>> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+>>>>> +
+>>>>> +title: Synopsys DesignWare HDMI RX Controller
+>>>>> +
+>>>>> +maintainers:
+>>>>> +  - Shreeya Patel <shreeya.patel@collabora.com>
+>>>>> +
+>>>>> +description:
+>>>>> +  Synopsys DesignWare HDMI Input Controller preset on RK3588 SoCs
+>>>>> +  allowing devices to receive and decode high-resolution video streams
+>>>>> +  from external sources like media players, cameras, laptops, etc.
+>>>>> +
+>>>>> +properties:
+>>>>> +  compatible:
+>>>>> +    items:
+>>>>> +      - const: rockchip,rk3588-hdmirx-ctrler
+>>>>
+>>
+>>>>> +      - const: snps,dw-hdmi-rx
+>>
+>> remove
+>>
+>>>>
 
-v5:
-  - Add rockchip-display job and skip driver-specfic tests.
+Relevant compatible methods in use for Rockchip drivers:
 
-v6:
-  - Squash commits for display and gpu driver testing. Reword the commit message.
+===================================================================================================
 
-v7:
-  - Rebase with recent drm-ci fixes and retest with latest IGT.
+Compatible method #1:
+Probe is triggered by a SoC orientated string.
 
-v8:
-  - Add the link to the flaky test bug report and add header for each flaky test.
+compatible = "rockchip,rk3588-hdmirx-ctrler";
 
----
- drivers/gpu/drm/ci/igt_runner.sh              |  3 -
- drivers/gpu/drm/ci/test.yml                   | 48 +++++++---
- .../drm/ci/xfails/mediatek-mt8183-fails.txt   |  1 -
- .../drm/ci/xfails/panfrost-rk3288-fails.txt   |  8 ++
- .../drm/ci/xfails/panfrost-rk3288-skips.txt   | 71 +++++++++++++++
- .../drm/ci/xfails/panfrost-rk3399-fails.txt   |  8 ++
- .../drm/ci/xfails/panfrost-rk3399-flakes.txt  |  6 ++
- .../drm/ci/xfails/panfrost-rk3399-skips.txt   | 24 +++++
- .../drm/ci/xfails/rockchip-rk3288-fails.txt   | 21 +++--
- .../drm/ci/xfails/rockchip-rk3288-flakes.txt  |  6 ++
- .../drm/ci/xfails/rockchip-rk3288-skips.txt   | 54 +----------
- .../drm/ci/xfails/rockchip-rk3399-fails.txt   | 90 +++++++++++++++++--
- .../drm/ci/xfails/rockchip-rk3399-flakes.txt  | 50 ++++++++++-
- .../drm/ci/xfails/rockchip-rk3399-skips.txt   |  7 +-
- 14 files changed, 307 insertions(+), 90 deletions(-)
- create mode 100644 drivers/gpu/drm/ci/xfails/panfrost-rk3288-fails.txt
- create mode 100644 drivers/gpu/drm/ci/xfails/panfrost-rk3288-skips.txt
- create mode 100644 drivers/gpu/drm/ci/xfails/panfrost-rk3399-fails.txt
- create mode 100644 drivers/gpu/drm/ci/xfails/panfrost-rk3399-flakes.txt
- create mode 100644 drivers/gpu/drm/ci/xfails/panfrost-rk3399-skips.txt
- create mode 100644 drivers/gpu/drm/ci/xfails/rockchip-rk3288-flakes.txt
+If for example a new SoC rk3599 is released that has the same device properties
+then the old string can be used as fallback string.
 
-diff --git a/drivers/gpu/drm/ci/igt_runner.sh b/drivers/gpu/drm/ci/igt_runner.sh
-index 1578a2a47a54..f38836ec837c 100755
---- a/drivers/gpu/drm/ci/igt_runner.sh
-+++ b/drivers/gpu/drm/ci/igt_runner.sh
-@@ -20,9 +20,6 @@ cat /sys/kernel/debug/dri/*/state
- set -e
- 
- case "$DRIVER_NAME" in
--    rockchip)
--        export IGT_FORCE_DRIVER="panfrost"
--        ;;
-     amdgpu|vkms)
-         # Cannot use HWCI_KERNEL_MODULES as at that point we don't have the module in /lib
-         mv /install/modules/lib/modules/* /lib/modules/. || true
-diff --git a/drivers/gpu/drm/ci/test.yml b/drivers/gpu/drm/ci/test.yml
-index 5ccf57b3bf91..b22b2cf8f06f 100644
---- a/drivers/gpu/drm/ci/test.yml
-+++ b/drivers/gpu/drm/ci/test.yml
-@@ -160,33 +160,57 @@ msm:sdm845:
-   script:
-     - ./install/bare-metal/cros-servo.sh
- 
--rockchip:rk3288:
--  extends:
--    - .lava-igt:arm32
-+.rockchip-device:
-+  variables:
-+    DTB: ${DEVICE_TYPE}
-+    BOOT_METHOD: depthcharge
-+
-+.rockchip-display:
-   stage: rockchip
-   variables:
-     DRIVER_NAME: rockchip
-+
-+.rk3288:
-+  extends:
-+    - .lava-igt:arm32
-+    - .rockchip-device
-+  variables:
-     DEVICE_TYPE: rk3288-veyron-jaq
--    DTB: ${DEVICE_TYPE}
--    BOOT_METHOD: depthcharge
--    KERNEL_IMAGE_TYPE: "zimage"
-     GPU_VERSION: rk3288
-+    KERNEL_IMAGE_TYPE: "zimage"
-     RUNNER_TAG: mesa-ci-x86-64-lava-rk3288-veyron-jaq
- 
--rockchip:rk3399:
-+.rk3399:
-   extends:
-     - .lava-igt:arm64
--  stage: rockchip
-+    - .rockchip-device
-   parallel: 2
-   variables:
--    DRIVER_NAME: rockchip
-     DEVICE_TYPE: rk3399-gru-kevin
--    DTB: ${DEVICE_TYPE}
--    BOOT_METHOD: depthcharge
--    KERNEL_IMAGE_TYPE: ""
-     GPU_VERSION: rk3399
-+    KERNEL_IMAGE_TYPE: ""
-     RUNNER_TAG: mesa-ci-x86-64-lava-rk3399-gru-kevin
- 
-+rockchip:rk3288:
-+  extends:
-+    - .rk3288
-+    - .rockchip-display
-+
-+panfrost:rk3288:
-+  extends:
-+    - .rk3288
-+    - .panfrost-gpu
-+
-+rockchip:rk3399:
-+  extends:
-+    - .rk3399
-+    - .rockchip-display
-+
-+panfrost:rk3399:
-+  extends:
-+    - .rk3399
-+    - .panfrost-gpu
-+
- .i915:
-   extends:
-     - .lava-igt:x86_64
-diff --git a/drivers/gpu/drm/ci/xfails/mediatek-mt8183-fails.txt b/drivers/gpu/drm/ci/xfails/mediatek-mt8183-fails.txt
-index cf3a747f7cec..826cca5efbff 100644
---- a/drivers/gpu/drm/ci/xfails/mediatek-mt8183-fails.txt
-+++ b/drivers/gpu/drm/ci/xfails/mediatek-mt8183-fails.txt
-@@ -13,7 +13,6 @@ kms_bw@connected-linear-tiling-1-displays-1920x1080p,Fail
- kms_bw@connected-linear-tiling-1-displays-2160x1440p,Fail
- kms_bw@connected-linear-tiling-1-displays-2560x1440p,Fail
- kms_bw@linear-tiling-1-displays-1920x1080p,Fail
--kms_bw@linear-tiling-1-displays-2560x1440p,Fail
- kms_bw@linear-tiling-1-displays-3840x2160p,Fail
- kms_color@invalid-gamma-lut-sizes,Fail
- kms_flip@flip-vs-panning-vs-hang,Fail
-diff --git a/drivers/gpu/drm/ci/xfails/panfrost-rk3288-fails.txt b/drivers/gpu/drm/ci/xfails/panfrost-rk3288-fails.txt
-new file mode 100644
-index 000000000000..10689906da3a
---- /dev/null
-+++ b/drivers/gpu/drm/ci/xfails/panfrost-rk3288-fails.txt
-@@ -0,0 +1,8 @@
-+dumb_buffer@create-clear,Crash
-+dumb_buffer@create-valid-dumb,Crash
-+dumb_buffer@invalid-bpp,Crash
-+dumb_buffer@map-invalid-size,Crash
-+dumb_buffer@map-uaf,Crash
-+dumb_buffer@map-valid,Crash
-+panfrost/panfrost_prime@gem-prime-import,Crash
-+tools_test@tools_test,Crash
-diff --git a/drivers/gpu/drm/ci/xfails/panfrost-rk3288-skips.txt b/drivers/gpu/drm/ci/xfails/panfrost-rk3288-skips.txt
-new file mode 100644
-index 000000000000..b8cb31842323
---- /dev/null
-+++ b/drivers/gpu/drm/ci/xfails/panfrost-rk3288-skips.txt
-@@ -0,0 +1,71 @@
-+# Suspend to RAM seems to be broken on this machine
-+.*suspend.*
-+
-+# Too unstable, machine ends up hanging after lots of Oopses
-+kms_cursor_legacy.*
-+
-+# Started hanging the machine on Linux 5.19-rc2:
-+#
-+# [IGT] kms_plane_lowres: executing
-+# [IGT] kms_plane_lowres: starting subtest pipe-F-tiling-y
-+# [IGT] kms_plane_lowres: exiting, ret=77
-+# Console: switching to colour frame buffer device 170x48
-+# rockchip-drm display-subsystem: [drm] *ERROR* flip_done timed out
-+# rockchip-drm display-subsystem: [drm] *ERROR* [CRTC:35:crtc-0] commit wait timed out
-+# BUG: spinlock bad magic on CPU#3, kms_plane_lowre/482
-+# 8<--- cut here ---
-+# Unable to handle kernel paging request at virtual address 7812078e
-+# [7812078e] *pgd=00000000
-+# Internal error: Oops: 5 [#1] SMP ARM
-+# Modules linked in:
-+# CPU: 3 PID: 482 Comm: kms_plane_lowre Tainted: G        W         5.19.0-rc2-323596-g00535de92171 #1
-+# Hardware name: Rockchip (Device Tree)
-+# Process kms_plane_lowre (pid: 482, stack limit = 0x1193ac2b)
-+#  spin_dump from do_raw_spin_lock+0xa4/0xe8
-+#  do_raw_spin_lock from wait_for_completion_timeout+0x2c/0x120
-+#  wait_for_completion_timeout from drm_crtc_commit_wait+0x18/0x7c
-+#  drm_crtc_commit_wait from drm_atomic_helper_wait_for_dependencies+0x44/0x168
-+#  drm_atomic_helper_wait_for_dependencies from commit_tail+0x34/0x180
-+#  commit_tail from drm_atomic_helper_commit+0x164/0x18c
-+#  drm_atomic_helper_commit from drm_atomic_commit+0xac/0xe4
-+#  drm_atomic_commit from drm_client_modeset_commit_atomic+0x23c/0x284
-+#  drm_client_modeset_commit_atomic from drm_client_modeset_commit_locked+0x60/0x1c8
-+#  drm_client_modeset_commit_locked from drm_client_modeset_commit+0x24/0x40
-+#  drm_client_modeset_commit from drm_fbdev_client_restore+0x58/0x94
-+#  drm_fbdev_client_restore from drm_client_dev_restore+0x70/0xbc
-+#  drm_client_dev_restore from drm_release+0xf4/0x114
-+#  drm_release from __fput+0x74/0x240
-+#  __fput from task_work_run+0x84/0xb4
-+#  task_work_run from do_exit+0x34c/0xa20
-+#  do_exit from do_group_exit+0x34/0x98
-+#  do_group_exit from __wake_up_parent+0x0/0x18
-+# Code: e595c008 12843d19 03e00000 03093168 (15940508)
-+# ---[ end trace 0000000000000000 ]---
-+# note: kms_plane_lowre[482] exited with preempt_count 1
-+# Fixing recursive fault but reboot is needed!
-+kms_plane_lowres@pipe-F-tiling-y
-+
-+# Take too long, we have only two machines, and these are very flaky
-+kms_cursor_crc.*
-+
-+# Machine is hanging in this test, so skip it
-+kms_pipe_crc_basic@disable-crc-after-crtc
-+
-+# Skip driver specific tests
-+^amdgpu.*
-+^msm.*
-+nouveau_.*
-+^v3d.*
-+^vc4.*
-+^vmwgfx*
-+
-+# Skip intel specific tests
-+gem_.*
-+i915_.*
-+
-+# Panfrost is not a KMS driver, so skip the KMS tests
-+kms_.*
-+
-+# Currently fails and causes coverage loss for other tests
-+# since core_getversion also fails.
-+core_hotunplug.*
-diff --git a/drivers/gpu/drm/ci/xfails/panfrost-rk3399-fails.txt b/drivers/gpu/drm/ci/xfails/panfrost-rk3399-fails.txt
-new file mode 100644
-index 000000000000..5b7d623f404b
---- /dev/null
-+++ b/drivers/gpu/drm/ci/xfails/panfrost-rk3399-fails.txt
-@@ -0,0 +1,8 @@
-+dumb_buffer@create-clear,Fail
-+dumb_buffer@create-valid-dumb,Fail
-+dumb_buffer@invalid-bpp,Fail
-+dumb_buffer@map-invalid-size,Fail
-+dumb_buffer@map-uaf,Fail
-+dumb_buffer@map-valid,Fail
-+panfrost/panfrost_prime@gem-prime-import,Fail
-+tools_test@tools_test,Fail
-diff --git a/drivers/gpu/drm/ci/xfails/panfrost-rk3399-flakes.txt b/drivers/gpu/drm/ci/xfails/panfrost-rk3399-flakes.txt
-new file mode 100644
-index 000000000000..ac4f8f7244d4
---- /dev/null
-+++ b/drivers/gpu/drm/ci/xfails/panfrost-rk3399-flakes.txt
-@@ -0,0 +1,6 @@
-+# Board Name: rk3399-gru-kevin
-+# Bug Report: https://lore.kernel.org/dri-devel/5cc34a8b-c1fa-4744-9031-2d33ecf41011@collabora.com/T/#u
-+# Failure Rate: 50
-+# IGT Version: 1.28-g0df7b9b97
-+# Linux Version: 6.9.0-rc7
-+panfrost/panfrost_submit@pan-unhandled-pagefault
-diff --git a/drivers/gpu/drm/ci/xfails/panfrost-rk3399-skips.txt b/drivers/gpu/drm/ci/xfails/panfrost-rk3399-skips.txt
-new file mode 100644
-index 000000000000..743f3eeb2f80
---- /dev/null
-+++ b/drivers/gpu/drm/ci/xfails/panfrost-rk3399-skips.txt
-@@ -0,0 +1,24 @@
-+# Suspend to RAM seems to be broken on this machine
-+.*suspend.*
-+
-+# Too unstable, machine ends up hanging after lots of Oopses
-+kms_cursor_legacy.*
-+
-+# Skip driver specific tests
-+^amdgpu.*
-+^msm.*
-+nouveau_.*
-+^v3d.*
-+^vc4.*
-+^vmwgfx*
-+
-+# Skip intel specific tests
-+gem_.*
-+i915_.*
-+
-+# Panfrost is not a KMS driver, so skip the KMS tests
-+kms_.*
-+
-+# Currently fails and causes coverage loss for other tests
-+# since core_getversion also fails.
-+core_hotunplug.*
-diff --git a/drivers/gpu/drm/ci/xfails/rockchip-rk3288-fails.txt b/drivers/gpu/drm/ci/xfails/rockchip-rk3288-fails.txt
-index 10689906da3a..9961ef307bb4 100644
---- a/drivers/gpu/drm/ci/xfails/rockchip-rk3288-fails.txt
-+++ b/drivers/gpu/drm/ci/xfails/rockchip-rk3288-fails.txt
-@@ -1,8 +1,19 @@
-+core_setmaster@master-drop-set-root,Crash
-+core_setmaster@master-drop-set-user,Crash
-+core_setmaster_vs_auth,Crash
-+device_reset@cold-reset-bound,Crash
-+device_reset@reset-bound,Crash
-+device_reset@unbind-cold-reset-rebind,Crash
-+device_reset@unbind-reset-rebind,Crash
- dumb_buffer@create-clear,Crash
--dumb_buffer@create-valid-dumb,Crash
- dumb_buffer@invalid-bpp,Crash
--dumb_buffer@map-invalid-size,Crash
--dumb_buffer@map-uaf,Crash
--dumb_buffer@map-valid,Crash
--panfrost/panfrost_prime@gem-prime-import,Crash
-+fbdev@pan,Crash
-+kms_cursor_crc@cursor-onscreen-32x10,Crash
-+kms_cursor_crc@cursor-onscreen-32x32,Crash
-+kms_cursor_crc@cursor-random-32x10,Crash
-+kms_cursor_crc@cursor-sliding-32x32,Crash
-+kms_cursor_legacy@basic-flip-before-cursor-atomic,Fail
-+kms_cursor_legacy@cursor-vs-flip-legacy,Fail
-+kms_prop_blob@invalid-set-prop,Crash
-+kms_prop_blob@invalid-set-prop-any,Crash
- tools_test@tools_test,Crash
-diff --git a/drivers/gpu/drm/ci/xfails/rockchip-rk3288-flakes.txt b/drivers/gpu/drm/ci/xfails/rockchip-rk3288-flakes.txt
-new file mode 100644
-index 000000000000..7ede273aab20
---- /dev/null
-+++ b/drivers/gpu/drm/ci/xfails/rockchip-rk3288-flakes.txt
-@@ -0,0 +1,6 @@
-+# Board Name: rk3288-veyron-jaq
-+# Bug Report: https://lore.kernel.org/linux-rockchip/3e267d0c-fde4-4533-b001-6ab7d7c03546@collabora.com/T/#u
-+# Failure Rate: 100
-+# IGT Version: 1.28-gf13702b8e
-+# Linux Version: 6.10.0-rc5
-+kms_cursor_legacy@flip-vs-cursor-atomic
-diff --git a/drivers/gpu/drm/ci/xfails/rockchip-rk3288-skips.txt b/drivers/gpu/drm/ci/xfails/rockchip-rk3288-skips.txt
-index b8cb31842323..f28241b6581f 100644
---- a/drivers/gpu/drm/ci/xfails/rockchip-rk3288-skips.txt
-+++ b/drivers/gpu/drm/ci/xfails/rockchip-rk3288-skips.txt
-@@ -1,60 +1,11 @@
- # Suspend to RAM seems to be broken on this machine
- .*suspend.*
- 
--# Too unstable, machine ends up hanging after lots of Oopses
--kms_cursor_legacy.*
--
--# Started hanging the machine on Linux 5.19-rc2:
--#
--# [IGT] kms_plane_lowres: executing
--# [IGT] kms_plane_lowres: starting subtest pipe-F-tiling-y
--# [IGT] kms_plane_lowres: exiting, ret=77
--# Console: switching to colour frame buffer device 170x48
--# rockchip-drm display-subsystem: [drm] *ERROR* flip_done timed out
--# rockchip-drm display-subsystem: [drm] *ERROR* [CRTC:35:crtc-0] commit wait timed out
--# BUG: spinlock bad magic on CPU#3, kms_plane_lowre/482
--# 8<--- cut here ---
--# Unable to handle kernel paging request at virtual address 7812078e
--# [7812078e] *pgd=00000000
--# Internal error: Oops: 5 [#1] SMP ARM
--# Modules linked in:
--# CPU: 3 PID: 482 Comm: kms_plane_lowre Tainted: G        W         5.19.0-rc2-323596-g00535de92171 #1
--# Hardware name: Rockchip (Device Tree)
--# Process kms_plane_lowre (pid: 482, stack limit = 0x1193ac2b)
--#  spin_dump from do_raw_spin_lock+0xa4/0xe8
--#  do_raw_spin_lock from wait_for_completion_timeout+0x2c/0x120
--#  wait_for_completion_timeout from drm_crtc_commit_wait+0x18/0x7c
--#  drm_crtc_commit_wait from drm_atomic_helper_wait_for_dependencies+0x44/0x168
--#  drm_atomic_helper_wait_for_dependencies from commit_tail+0x34/0x180
--#  commit_tail from drm_atomic_helper_commit+0x164/0x18c
--#  drm_atomic_helper_commit from drm_atomic_commit+0xac/0xe4
--#  drm_atomic_commit from drm_client_modeset_commit_atomic+0x23c/0x284
--#  drm_client_modeset_commit_atomic from drm_client_modeset_commit_locked+0x60/0x1c8
--#  drm_client_modeset_commit_locked from drm_client_modeset_commit+0x24/0x40
--#  drm_client_modeset_commit from drm_fbdev_client_restore+0x58/0x94
--#  drm_fbdev_client_restore from drm_client_dev_restore+0x70/0xbc
--#  drm_client_dev_restore from drm_release+0xf4/0x114
--#  drm_release from __fput+0x74/0x240
--#  __fput from task_work_run+0x84/0xb4
--#  task_work_run from do_exit+0x34c/0xa20
--#  do_exit from do_group_exit+0x34/0x98
--#  do_group_exit from __wake_up_parent+0x0/0x18
--# Code: e595c008 12843d19 03e00000 03093168 (15940508)
--# ---[ end trace 0000000000000000 ]---
--# note: kms_plane_lowre[482] exited with preempt_count 1
--# Fixing recursive fault but reboot is needed!
--kms_plane_lowres@pipe-F-tiling-y
--
--# Take too long, we have only two machines, and these are very flaky
--kms_cursor_crc.*
--
--# Machine is hanging in this test, so skip it
--kms_pipe_crc_basic@disable-crc-after-crtc
--
- # Skip driver specific tests
- ^amdgpu.*
- ^msm.*
- nouveau_.*
-+^panfrost.*
- ^v3d.*
- ^vc4.*
- ^vmwgfx*
-@@ -63,9 +14,6 @@ nouveau_.*
- gem_.*
- i915_.*
- 
--# Panfrost is not a KMS driver, so skip the KMS tests
--kms_.*
--
- # Currently fails and causes coverage loss for other tests
- # since core_getversion also fails.
- core_hotunplug.*
-diff --git a/drivers/gpu/drm/ci/xfails/rockchip-rk3399-fails.txt b/drivers/gpu/drm/ci/xfails/rockchip-rk3399-fails.txt
-index 5b7d623f404b..3c0862faeaef 100644
---- a/drivers/gpu/drm/ci/xfails/rockchip-rk3399-fails.txt
-+++ b/drivers/gpu/drm/ci/xfails/rockchip-rk3399-fails.txt
-@@ -1,8 +1,86 @@
--dumb_buffer@create-clear,Fail
--dumb_buffer@create-valid-dumb,Fail
-+device_reset@cold-reset-bound,Fail
-+device_reset@reset-bound,Fail
-+device_reset@unbind-cold-reset-rebind,Fail
-+device_reset@unbind-reset-rebind,Fail
-+dumb_buffer@create-clear,Crash
- dumb_buffer@invalid-bpp,Fail
--dumb_buffer@map-invalid-size,Fail
--dumb_buffer@map-uaf,Fail
--dumb_buffer@map-valid,Fail
--panfrost/panfrost_prime@gem-prime-import,Fail
-+kms_atomic_transition@modeset-transition,Fail
-+kms_atomic_transition@modeset-transition-fencing,Fail
-+kms_atomic_transition@plane-toggle-modeset-transition,Fail
-+kms_bw@linear-tiling-1-displays-2560x1440p,Fail
-+kms_color@gamma,Fail
-+kms_color@legacy-gamma,Fail
-+kms_cursor_crc@cursor-alpha-opaque,Fail
-+kms_cursor_crc@cursor-alpha-transparent,Fail
-+kms_cursor_crc@cursor-dpms,Fail
-+kms_cursor_crc@cursor-offscreen-32x10,Fail
-+kms_cursor_crc@cursor-offscreen-32x32,Fail
-+kms_cursor_crc@cursor-offscreen-64x21,Fail
-+kms_cursor_crc@cursor-offscreen-64x64,Fail
-+kms_cursor_crc@cursor-onscreen-32x10,Fail
-+kms_cursor_crc@cursor-onscreen-32x32,Fail
-+kms_cursor_crc@cursor-onscreen-64x21,Fail
-+kms_cursor_crc@cursor-onscreen-64x64,Fail
-+kms_cursor_crc@cursor-random-32x10,Fail
-+kms_cursor_crc@cursor-random-32x32,Fail
-+kms_cursor_crc@cursor-random-64x21,Fail
-+kms_cursor_crc@cursor-random-64x64,Fail
-+kms_cursor_crc@cursor-rapid-movement-32x10,Fail
-+kms_cursor_crc@cursor-rapid-movement-32x32,Fail
-+kms_cursor_crc@cursor-rapid-movement-64x21,Fail
-+kms_cursor_crc@cursor-rapid-movement-64x64,Fail
-+kms_cursor_crc@cursor-size-change,Fail
-+kms_cursor_crc@cursor-sliding-32x10,Fail
-+kms_cursor_crc@cursor-sliding-32x32,Fail
-+kms_cursor_crc@cursor-sliding-64x21,Fail
-+kms_cursor_crc@cursor-sliding-64x64,Fail
-+kms_cursor_edge_walk@64x64-left-edge,Fail
-+kms_cursor_legacy@basic-flip-before-cursor-atomic,Fail
-+kms_cursor_legacy@basic-flip-before-cursor-legacy,Fail
-+kms_cursor_legacy@cursor-vs-flip-atomic,Fail
-+kms_cursor_legacy@cursor-vs-flip-legacy,Fail
-+kms_cursor_legacy@cursor-vs-flip-toggle,Fail
-+kms_cursor_legacy@flip-vs-cursor-atomic,Fail
-+kms_cursor_legacy@flip-vs-cursor-crc-atomic,Fail
-+kms_cursor_legacy@flip-vs-cursor-crc-legacy,Fail
-+kms_cursor_legacy@flip-vs-cursor-legacy,Fail
-+kms_cursor_legacy@long-nonblocking-modeset-vs-cursor-atomic,Fail
-+kms_flip@basic-flip-vs-wf_vblank,Fail
-+kms_flip@blocking-wf_vblank,Fail
-+kms_flip@dpms-vs-vblank-race,Fail
-+kms_flip@flip-vs-absolute-wf_vblank,Fail
-+kms_flip@flip-vs-blocking-wf-vblank,Fail
-+kms_flip@flip-vs-modeset-vs-hang,Fail
-+kms_flip@flip-vs-panning,Fail
-+kms_flip@flip-vs-panning-interruptible,Fail
-+kms_flip@flip-vs-panning-vs-hang,Fail
-+kms_flip@modeset-vs-vblank-race,Fail
-+kms_flip@modeset-vs-vblank-race-interruptible,Fail
-+kms_flip@plain-flip-fb-recreate,Fail
-+kms_flip@plain-flip-fb-recreate-interruptible,Fail
-+kms_flip@plain-flip-ts-check,Fail
-+kms_flip@plain-flip-ts-check-interruptible,Fail
-+kms_flip@wf_vblank-ts-check,Fail
-+kms_flip@wf_vblank-ts-check-interruptible,Fail
-+kms_invalid_mode@int-max-clock,Fail
-+kms_lease@lease-uevent,Fail
-+kms_lease@page-flip-implicit-plane,Fail
-+kms_pipe_crc_basic@compare-crc-sanitycheck-nv12,Fail
-+kms_pipe_crc_basic@compare-crc-sanitycheck-xr24,Fail
-+kms_pipe_crc_basic@disable-crc-after-crtc,Fail
-+kms_pipe_crc_basic@nonblocking-crc,Fail
-+kms_pipe_crc_basic@nonblocking-crc-frame-sequence,Fail
-+kms_pipe_crc_basic@read-crc,Fail
-+kms_pipe_crc_basic@read-crc-frame-sequence,Fail
-+kms_plane@pixel-format,Crash
-+kms_plane@pixel-format-source-clamping,Crash
-+kms_plane@plane-panning-bottom-right,Fail
-+kms_plane@plane-panning-top-left,Fail
-+kms_plane@plane-position-covered,Fail
-+kms_plane@plane-position-hole,Fail
-+kms_plane@plane-position-hole-dpms,Fail
-+kms_plane_cursor@primary,Fail
-+kms_plane_multiple@tiling-none,Fail
-+kms_rmfb@close-fd,Fail
-+kms_universal_plane@universal-plane-functional,Fail
- tools_test@tools_test,Fail
-diff --git a/drivers/gpu/drm/ci/xfails/rockchip-rk3399-flakes.txt b/drivers/gpu/drm/ci/xfails/rockchip-rk3399-flakes.txt
-index ac4f8f7244d4..d98f6a17343c 100644
---- a/drivers/gpu/drm/ci/xfails/rockchip-rk3399-flakes.txt
-+++ b/drivers/gpu/drm/ci/xfails/rockchip-rk3399-flakes.txt
-@@ -1,6 +1,48 @@
- # Board Name: rk3399-gru-kevin
--# Bug Report: https://lore.kernel.org/dri-devel/5cc34a8b-c1fa-4744-9031-2d33ecf41011@collabora.com/T/#u
-+# Bug Report: https://lore.kernel.org/linux-rockchip/3e267d0c-fde4-4533-b001-6ab7d7c03546@collabora.com/T/#u
- # Failure Rate: 50
--# IGT Version: 1.28-g0df7b9b97
--# Linux Version: 6.9.0-rc7
--panfrost/panfrost_submit@pan-unhandled-pagefault
-+# IGT Version: 1.28-gf13702b8e
-+# Linux Version: 6.10.0-rc5
-+kms_bw@linear-tiling-1-displays-2560x1440p
-+
-+# Board Name: rk3399-gru-kevin
-+# Bug Report: https://lore.kernel.org/linux-rockchip/3e267d0c-fde4-4533-b001-6ab7d7c03546@collabora.com/T/#u
-+# Failure Rate: 50
-+# IGT Version: 1.28-gf13702b8e
-+# Linux Version: 6.10.0-rc5
-+kms_cursor_legacy@nonblocking-modeset-vs-cursor-atomic
-+
-+# Board Name: rk3399-gru-kevin
-+# Bug Report: https://lore.kernel.org/linux-rockchip/3e267d0c-fde4-4533-b001-6ab7d7c03546@collabora.com/T/#u
-+# Failure Rate: 50
-+# IGT Version: 1.28-gf13702b8e
-+# Linux Version: 6.10.0-rc5
-+kms_flip@dpms-vs-vblank-race-interruptible
-+
-+# Board Name: rk3399-gru-kevin
-+# Bug Report: https://lore.kernel.org/linux-rockchip/3e267d0c-fde4-4533-b001-6ab7d7c03546@collabora.com/T/#u
-+# Failure Rate: 50
-+# IGT Version: 1.28-gf13702b8e
-+# Linux Version: 6.10.0-rc5
-+kms_flip@flip-vs-absolute-wf_vblank-interruptible
-+
-+# Board Name: rk3399-gru-kevin
-+# Bug Report: https://lore.kernel.org/linux-rockchip/3e267d0c-fde4-4533-b001-6ab7d7c03546@collabora.com/T/#u
-+# Failure Rate: 50
-+# IGT Version: 1.28-gf13702b8e
-+# Linux Version: 6.10.0-rc5
-+kms_flip@flip-vs-wf_vblank-interruptible
-+
-+# Board Name: rk3399-gru-kevin
-+# Bug Report: https://lore.kernel.org/linux-rockchip/3e267d0c-fde4-4533-b001-6ab7d7c03546@collabora.com/T/#u
-+# Failure Rate: 50
-+# IGT Version: 1.28-gf13702b8e
-+# Linux Version: 6.10.0-rc5
-+kms_setmode@basic
-+
-+# Board Name: rk3399-gru-kevin
-+# Bug Report: https://lore.kernel.org/linux-rockchip/3e267d0c-fde4-4533-b001-6ab7d7c03546@collabora.com/T/#u
-+# Failure Rate: 50
-+# IGT Version: 1.28-gf13702b8e
-+# Linux Version: 6.10.0-rc5
-+kms_bw@connected-linear-tiling-1-displays-2560x1440p
-diff --git a/drivers/gpu/drm/ci/xfails/rockchip-rk3399-skips.txt b/drivers/gpu/drm/ci/xfails/rockchip-rk3399-skips.txt
-index 743f3eeb2f80..f28241b6581f 100644
---- a/drivers/gpu/drm/ci/xfails/rockchip-rk3399-skips.txt
-+++ b/drivers/gpu/drm/ci/xfails/rockchip-rk3399-skips.txt
-@@ -1,13 +1,11 @@
- # Suspend to RAM seems to be broken on this machine
- .*suspend.*
- 
--# Too unstable, machine ends up hanging after lots of Oopses
--kms_cursor_legacy.*
--
- # Skip driver specific tests
- ^amdgpu.*
- ^msm.*
- nouveau_.*
-+^panfrost.*
- ^v3d.*
- ^vc4.*
- ^vmwgfx*
-@@ -16,9 +14,6 @@ nouveau_.*
- gem_.*
- i915_.*
- 
--# Panfrost is not a KMS driver, so skip the KMS tests
--kms_.*
--
- # Currently fails and causes coverage loss for other tests
- # since core_getversion also fails.
- core_hotunplug.*
--- 
-2.43.0
+compatible = ""rockchip,rk3599-hdmirx-ctrler" , "rockchip,rk3588-hdmirx-ctrler";
 
+The driver structure:
+{ .compatible = "rockchip,rk3588-hdmirx-ctrler" },
+
+===================================================================================================
+Compatible method #2:
+Probe is triggered by a IP orientated fallback string.
+
+compatible = "rockchip,rk3588-hdmirx-ctrler" , "snps,dw-hdmi-rx";
+
+If for example a new SoC rk3599 is released that has the same device properties
+then add the same fallback string.
+
+compatible = ""rockchip,rk3599-hdmirx-ctrler" , "snps,dw-hdmi-rx";
+
+The driver structure:
+{ .compatible = "snps,dw-hdmi-rx" },
+
+If for example a new SoC rk3599 is released that has NOT the same device properties
+then use method #1.
+
+The driver structure:
+{ .compatible = "rockchip,rk3599-hdmirx-ctrler" .data = &rk3599_ops },
+{ .compatible = "snps,dw-hdmi-rx" },
+
+===================================================================================================
+
+Compatible method #3:
+Probe is triggered by a vendor orientated fallback string.
+
+Special case only useful if the driver is written long after all SoCs are released.
+The standalone IP has a version register and the driver can handle all the feature difference
+inside the IP depending on the version register.
+
+compatible = "rockchip,sfc";
+
+The driver structure:
+{ .compatible = "rockchip,sfc"},
+
+===================================================================================================
+
+The rules:
+
+1: Compatible strings must be SoC orientated.
+2: In Linux there's no priority in which string will probed first.
+3: There is a commitment that old DT's should still work with newer kernels.
+
+>>>> What's the point of having a fallback string when there's no common code, but instead only the first string is used?
+>>>>
+>>>> +static const struct of_device_id hdmirx_id[] = {
+>>>> +	{ .compatible = "rockchip,rk3588-hdmirx-ctrler" },
+>>>> +	{ },
+>>>> +};
+>>>>
+
+The consequence of the third rule is that drivers must continue to support this string once added and
+can not be removed as suggested below.
+
+If for example the fallback is added later it will trigger 2 probes and it breaks rule #2.
+Only one of string is allowed to trigger a probe in the driver.
+
+This is wrong:
+compatible = "rockchip,rk3588-hdmirx-ctrler", "snps,dw-hdmi-rx";
+
+{ .compatible = "rockchip,rk3588-hdmirx-ctrler" },
+{ .compatible = "snps,dw-hdmi-rx" },
+
+Ones a compatible method is chosen the driver must stick to it.
+
+===================================================================================================
+
+>>>
+>>
+>>> We believe the HDMIRX driver can be used for the Synopsys IP on other SoCs
+>>> in the future, which is why we have added snps,dw-hdmi-rx as the fallback compatible.
+>>> Currently, we have tested the driver only on the RK3588 Rock5B, so we are using the
+>>> rockchip,rk3588-hdmirx-ctrler compatible in the driver instead of the fallback one.
+>>
+>> The rule that compatible strings (for internal SoC components)
+>> must be SoC orientated also applies to the fallback string.
+>> "snps,xxxx" does not refer to an independent SoC.
+
+This refers to compatible method #1.
+
+>
+> Where did you learn that? Having non-SoC specific generic fallback
+> compatibles is pretty much standard throughout the kernel. See for
+> example these RK3588 DesignWare compatibles:
+>
+> Synopsys Serial Controller:
+>     Documentation/devicetree/bindings/serial/snps-dw-apb-uart.yaml
+>     compatible = "rockchip,rk3588-uart", "snps,dw-apb-uart";
+
+Compatible method #2:
+	{ .compatible = "snps,dw-apb-uart", .data = &dw8250_dw_apb },
+
+>
+> Synopsys USB3 Controller:
+>     Documentation/devicetree/bindings/usb/rockchip,dwc3.yaml
+>     compatible = "rockchip,rk3588-dwc3", "snps,dwc3";
+
+Compatible method #2:
+	{
+		.compatible = "snps,dwc3"
+	},
+
+>
+> Synopsys Ethernet Controller:
+>     Documentation/devicetree/bindings/net/snps,dwmac.yaml
+>     compatible = "rockchip,rk3588-gmac", "snps,dwmac-4.20a";
+
+Compatible method #1:
+	{ .compatible = "rockchip,rk3588-gmac", .data = &rk3588_ops },
+
+	    of_device_is_compatible(np, "snps,dwmac-4.20a") ||
+
+>
+> Synsopsys SATA Controller:
+>     Documentation/devicetree/bindings/ata/rockchip,dwc-ahci.yaml
+>     compatible = "rockchip,rk3588-dwc-ahci", "snps,dwc-ahci"
+
+Compatible method #2:
+	{ .compatible = "snps,dwc-ahci", &ahci_dwc_plat },
+
+>
+> It's also not specific to Synopsys (but RK3588 has a lot of Synopsys
+> design incl. the HDMI-RX IP currently worked on by Shreeya). Here
+> are some other examples:
+>
+> ARM Mali GPU:
+>     Documentation/devicetree/bindings/gpu/arm,mali-valhall-csf.yaml
+>     compatible = "rockchip,rk3588-mali", "arm,mali-valhall-csf";
+
+Should be compatible method #2:
+	{ .compatible = "rockchip,rk3588-mali" },
+	{ .compatible = "arm,mali-valhall-csf" },
+
+This is wrong!
+Each strings will trigger a probe.
+The string "rockchip,rk3588-mali" should be removed.
+
+Review was done by Collabora people and without including the Rockchip mail list.
+https://patchwork.freedesktop.org/patch/msgid/20240229162230.2634044-12-boris.brezillon@collabora.com
+
+Could someone look at this and test.
+
+>
+> Generic EHCI:
+>     Documentation/devicetree/bindings/usb/generic-ehci.yaml
+>     compatible = "rockchip,rk3588-ehci", "generic-ehci";
+
+compatible method #2:
+	{ .compatible = "generic-ehci", },
+
+>
+> As you can see almost everything in RK3588 has a non SoC specific
+> fallback :) It's also not a Rockchip/RK3588 specific thing, but
+> I think you should be able to find enough references yourself by
+> looking into the kernel's DTS files.
+
+You are mixing up 2 compatible methods.
+The driver has compatible method #1 and the DT has method #2.
+
+>
+>> Don't invent strings for devices that we don't know yet if it
+>> might or might not be compatible in the future.
+>
+> Right now it's a sensible assumption, that an operating system driver
+> for this hardware (i.e. not necessarily the one submitted by Shreeya
+> right now) can handle the Synopsys HDMI receiver hardware from different
+> SoCs just like it is the case for other Synopsys IP.
+>
+> Whatever is being done now is set in stone, since DT is considered
+> ABI. So without the fallback compatible being available in DT from
+> the beginning we need to carry the RK3588 specific compatible in the
+
+> kernel driver forever. OTOH if we add the generic one now, the kernel
+> can switch to use the generic one at any point in time and ignore the
+> RK3588 specific one.
+
+Ignoring breaks rule #3 as explained above.
+
+For you the task to select a compatible method:
+
+If the IP device registers are guaranteed remain the same then choose compatible method #2 and fix the driver.
+If in doubt choose compatible method #1 and fix the binding.
+
+Johan
+
+>
+> Greetings,
+>
+> -- Sebastian
+>
+>> Johan
+>>
+>>>
+>>>
+>>> Thanks,
+>>> Shreeya Patel
+>>>
+>>>>> +
+>>>>> +  reg:
+>>>>> +    maxItems: 1
+>>>>> +
+>>>>> +  interrupts:
+>>>>> +    maxItems: 3
+>>>>> +
+>>>>> +  interrupt-names:
+>>>>> +    items:
+>>>>> +      - const: cec
+>>>>> +      - const: hdmi
+>>>>> +      - const: dma
+>>>>> +
+>>>>> +  clocks:
+>>>>> +    maxItems: 7
+>>>>> +
+>>>>> +  clock-names:
+>>>>> +    items:
+>>>>> +      - const: aclk
+>>>>> +      - const: audio
+>>>>> +      - const: cr_para
+>>>>> +      - const: pclk
+>>>>> +      - const: ref
+>>>>> +      - const: hclk_s_hdmirx
+>>>>> +      - const: hclk_vo1
+>>>>> +
+>>>>> +  power-domains:
+>>>>> +    maxItems: 1
+>>>>> +
+>>>>> +  resets:
+>>>>> +    maxItems: 4
+>>>>> +
+>>>>> +  reset-names:
+>>>>> +    items:
+>>>>> +      - const: axi
+>>>>> +      - const: apb
+>>>>> +      - const: ref
+>>>>> +      - const: biu
+>>>>> +
+>>>>> +  memory-region:
+>>>>> +    maxItems: 1
+>>>>> +
+>>>>> +  hpd-gpios:
+>>>>> +    description: GPIO specifier for HPD.
+>>>>> +    maxItems: 1
+>>>>> +
+>>>>> +  rockchip,grf:
+>>>>> +    $ref: /schemas/types.yaml#/definitions/phandle
+>>>>> +    description:
+>>>>> +      The phandle of the syscon node for the general register file
+>>>>> +      containing HDMIRX PHY status bits.
+>>>>> +
+>>>>> +  rockchip,vo1-grf:
+>>>>> +    $ref: /schemas/types.yaml#/definitions/phandle
+>>>>> +    description:
+>>>>> +      The phandle of the syscon node for the Video Output GRF register
+>>>>> +      to enable EDID transfer through SDAIN and SCLIN.
+>>>>> +
+>>>>> +required:
+>>>>> +  - compatible
+>>>>> +  - reg
+>>>>> +  - interrupts
+>>>>> +  - interrupt-names
+>>>>> +  - clocks
+>>>>> +  - clock-names
+>>>>> +  - power-domains
+>>>>> +  - resets
+>>>>> +  - pinctrl-0
+>>>>> +  - hpd-gpios
+>>>>> +
+>>>>> +additionalProperties: false
+>>>>> +
+>>>>> +examples:
+>>>>> +  - |
+>>>>> +    #include <dt-bindings/clock/rockchip,rk3588-cru.h>
+>>>>> +    #include <dt-bindings/gpio/gpio.h>
+>>>>> +    #include <dt-bindings/interrupt-controller/arm-gic.h>
+>>>>> +    #include <dt-bindings/interrupt-controller/irq.h>
+>>>>> +    #include <dt-bindings/power/rk3588-power.h>
+>>>>> +    #include <dt-bindings/reset/rockchip,rk3588-cru.h>
+>>>>> +    hdmi_receiver: hdmi-receiver@fdee0000 {
+>>
+>>>>> +      compatible = "rockchip,rk3588-hdmirx-ctrler", "snps,dw-hdmi-rx";
+>>
+>>       compatible = "rockchip,rk3588-hdmirx-ctrler";
+>>
+>>>>> +      reg = <0xfdee0000 0x6000>;
+>>>>> +      interrupts = <GIC_SPI 177 IRQ_TYPE_LEVEL_HIGH 0>,
+>>>>> +                   <GIC_SPI 436 IRQ_TYPE_LEVEL_HIGH 0>,
+>>>>> +                   <GIC_SPI 179 IRQ_TYPE_LEVEL_HIGH 0>;
+>>>>> +      interrupt-names = "cec", "hdmi", "dma";
+>>>>> +      clocks = <&cru ACLK_HDMIRX>,
+>>>>> +               <&cru CLK_HDMIRX_AUD>,
+>>>>> +               <&cru CLK_CR_PARA>,
+>>>>> +               <&cru PCLK_HDMIRX>,
+>>>>> +               <&cru CLK_HDMIRX_REF>,
+>>>>> +               <&cru PCLK_S_HDMIRX>,
+>>>>> +               <&cru HCLK_VO1>;
+>>>>> +      clock-names = "aclk",
+>>>>> +                    "audio",
+>>>>> +                    "cr_para",
+>>>>> +                    "pclk",
+>>>>> +                    "ref",
+>>>>> +                    "hclk_s_hdmirx",
+>>>>> +                    "hclk_vo1";
+>>>>> +      power-domains = <&power RK3588_PD_VO1>;
+>>>>> +      resets = <&cru SRST_A_HDMIRX>, <&cru SRST_P_HDMIRX>,
+>>>>> +               <&cru SRST_HDMIRX_REF>, <&cru SRST_A_HDMIRX_BIU>;
+>>>>> +      reset-names = "axi", "apb", "ref", "biu";
+>>>>> +      memory-region = <&hdmi_receiver_cma>;
+>>>>> +      pinctrl-0 = <&hdmim1_rx_cec &hdmim1_rx_hpdin &hdmim1_rx_scl &hdmim1_rx_sda &hdmirx_5v_detection>;
+>>>>> +      pinctrl-names = "default";
+>>>>> +      hpd-gpios = <&gpio1 22 GPIO_ACTIVE_LOW>;
+>>>>> +    };
+>>>
+>> _______________________________________________
+>> Kernel mailing list -- kernel@mailman.collabora.com
+>> To unsubscribe send an email to kernel-leave@mailman.collabora.com
+>> This list is managed by https://mailman.collabora.com
 
 _______________________________________________
 Linux-rockchip mailing list
