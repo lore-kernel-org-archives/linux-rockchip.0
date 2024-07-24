@@ -4,66 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2A363C3DA61
-	for <linux-rockchip@archiver.kernel.org>; Wed, 24 Jul 2024 08:53:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2CDB3C3DA61
+	for <linux-rockchip@archiver.kernel.org>; Wed, 24 Jul 2024 10:12:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Subject:From:Cc:To:MIME-Version:Date:Message-ID:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=hpREi2mscHYbLzs4gVv8Ia3JPdREOlzkq2eWvbFME2k=; b=bAvgkx+gOt4XJPWSZ169XntT0k
-	nbe4QuYP9903amU7uLtmTT7eLojItJQoR+a3BrJjrIIosH1yRT1G7N9IN4xdu2LO3GUFuns+Ykxen
-	ZMFJC/n6OFsUFHjKsLFEAJiUcz2LWMiuC8Zho4U1hoyL0TnMmmMOmVrCx09/N4sz0Y1cjnvxkxGqg
-	a1XciYFyUVpZ5BVJVZ6OoYiofvwSBzMiG5+ErlLiuob5nN3xnIpgYr6HaiqTRnjvUDHEwTi70fxtr
-	FyotLGfLEyiwhiAJoQ0RelKx15bZ09aq2ZhcyTgXrnhF3U8U+MAZdFC2t3iTW+nUtGPdVhZECXKDz
-	Pbt7cCMA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=QaoDE4gri1h7kfA1MNDOYjk1ih8kAs+eShbmR2Fvjm8=; b=gVcG0S9gLj0X68
+	vifeE5q6UKhjc9iDyxwGyjfJOp0Hn3xPZJ4p+E8p7rSY63YUsZHUhN1FrTl9n5SclGtsMtGBTpaaU
+	rEnkXZTIjICLlCrR8A05COjM3DYz7+LVdgIkNop85Ak6kZ1SSavTHaT1zNKCExlpzo5d+bMSx7d7Z
+	0wwIBq+9jNd4Cm/iJt6b87hnngez3AAh/bHseCBGG7wvfW8PbY6Ary9M+cp4ltDTQjYl0r46vEJEa
+	8Se7+0+EjNYp38Cg2kyyw7kdU1By4mjy9LZVsd8Ok1be08clisCjaDuWhVvHj4jUA6LmB5rPXbYOn
+	qz2JzRMwJGzsxXnguAhQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sWXk8-0000000EpBc-0oHp;
-	Wed, 24 Jul 2024 08:53:04 +0000
-Received: from madrid.collaboradmins.com ([46.235.227.194])
+	id 1sWYyR-0000000F2iZ-39RS;
+	Wed, 24 Jul 2024 10:11:55 +0000
+Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sWXk4-0000000EpAh-3qQd
-	for linux-rockchip@lists.infradead.org;
-	Wed, 24 Jul 2024 08:53:02 +0000
+	id 1sWYyL-0000000F2f1-3HrB;
+	Wed, 24 Jul 2024 10:11:51 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1721811175;
-	bh=9Q/j7zV2dHwZumpwXXSykRV+/pUuN3AcSk7kD6teegA=;
-	h=Date:To:Cc:From:Subject:From;
-	b=1w430ibWGDifLMIcp7iMYufETAQz3j2unkZ9rcphwozH9IA0WAEwmHKMp+WEYk6xZ
-	 at+DtXg3eQsFiNe/oCSILnVJiexazN4JKk6k4M0NtMW12syewpWvVxKq8rH8v3xTW4
-	 sKSydcrS7BZ186jQRgll0eGdE8JYqSg8VxH50qOZK4eGrvJr91+RkcvQhzxg8zBvNj
-	 mc9uuh/yPolxXaP1nFj2ONepZnB2RAgZZE8KSNGGSkNlNu8dtCv4EtM7YOuvQSTfsN
-	 oPN/LhAEFP1y0QrauZW6xbLUCZZ3EbBRWYkySlZvaKjt2RlBr+b87IP+ZPXrfeTlcf
-	 +5TCtvfyP1wcQ==
-Received: from [100.66.96.193] (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	s=mail; t=1721815908;
+	bh=TFq1Rj0XWofaCPyyni4j1/N7qsuqTiMf2WO89l/rlXw=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=SCduKJlteMqo9M0bZTDxi3rS9ZEwdrhCR2J+4WWKhazltyn8wz3XkvMGGXf0IMPjj
+	 AlsotlPN7LBT8e9/PvxIQxh9Qba9SvvPNQcqtbC0BMQaAh6RPyUePK58K8xknYA5NE
+	 V+/sAXhvse3914CWmSQAuaOnumMfbn2vsHIQpNdFuIKYCKhp2PGnaDd4JiJAhEfWy9
+	 UlZ730xNAKNm7BrBsDmmxbqWUedr8aZu3m8XV1EdIDtvB8yhKPNYe7T9boP5p85eyG
+	 M7JTzK+z8dp5Xn0k1G2n9AeKc9oRS/MeviXLicIB46SEhJOiFOgGuhaCBVf4rMa2lL
+	 tprO4HQuRwHFA==
+Received: from localhost.localdomain (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: vignesh)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id B40E83780BC2;
-	Wed, 24 Jul 2024 08:52:52 +0000 (UTC)
-Message-ID: <3e267d0c-fde4-4533-b001-6ab7d7c03546@collabora.com>
-Date: Wed, 24 Jul 2024 14:22:50 +0530
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Content-Language: en-US
-To: linux-rockchip@lists.infradead.org,
- dri-devel <dri-devel@lists.freedesktop.org>
-Cc: hjc@rock-chips.com, heiko@sntech.de, andy.yan@rock-chips.com,
- maarten.lankhorst@linux.intel.com, Maxime Ripard <mripard@kernel.org>,
- tzimmermann@suse.de, Dave Airlie <airlied@gmail.com>,
- Daniel Vetter <daniel@ffwll.ch>, Daniel Stone <daniels@collabora.com>,
- Helen Mae Koike Fornazier <helen.koike@collabora.com>,
- Sergi Blanch Torne <sergi.blanch.torne@collabora.com>,
- Guilherme Alcarde Gallo <guilherme.gallo@collabora.com>,
- Deborah Brouwer <deborah.brouwer@collabora.com>
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 7B69837812FA;
+	Wed, 24 Jul 2024 10:11:45 +0000 (UTC)
 From: Vignesh Raman <vignesh.raman@collabora.com>
-Subject: drm-ci: flaky tests for rockchip driver testing
+To: dri-devel@lists.freedesktop.org
+Cc: daniels@collabora.com,
+	helen.koike@collabora.com,
+	airlied@gmail.com,
+	daniel@ffwll.ch,
+	guilherme.gallo@collabora.com,
+	sergi.blanch.torne@collabora.com,
+	deborah.brouwer@collabora.com,
+	robdclark@gmail.com,
+	linux-mediatek@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-amlogic@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH v8 1/5] drm/ci: arm64.config: Enable CONFIG_DRM_ANALOGIX_ANX7625
+Date: Wed, 24 Jul 2024 15:40:04 +0530
+Message-ID: <20240724101015.523535-2-vignesh.raman@collabora.com>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20240724101015.523535-1-vignesh.raman@collabora.com>
+References: <20240724101015.523535-1-vignesh.raman@collabora.com>
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240724_015301_136626_C29998C5 
-X-CRM114-Status: UNSURE (   3.83  )
+X-CRM114-CacheID: sfid-20240724_031149_970393_A28D50B2 
+X-CRM114-Status: UNSURE (   8.48  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -76,47 +79,62 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Maintainers,
+Enable CONFIG_DRM_ANALOGIX_ANX7625 in the arm64 defconfig to get
+display driver probed on the mt8183-kukui-jacuzzi-juniper machine.
 
-There are some flaky tests reported for rockchip driver testing
-in drm-ci.
+arch/arm64/configs/defconfig has CONFIG_DRM_ANALOGIX_ANX7625=m,
+but drm-ci don't have initrd with modules, so add
+CONFIG_DRM_ANALOGIX_ANX7625=y in CI arm64 config.
 
-=== rockchip rk3288 ===
-# Board Name: rk3288-veyron-jaq
-# Failure Rate: 100
-# IGT Version: 1.28-gf13702b8e
-# Linux Version: 6.10.0-rc5
-kms_cursor_legacy@flip-vs-cursor-atomic
+Acked-by: Helen Koike <helen.koike@collabora.com>
+Signed-off-by: Vignesh Raman <vignesh.raman@collabora.com>
+---
 
-=== rockchip rk3399 ===
-# Board Name: rk3399-gru-kevin
-# Failure Rate: 50
-# IGT Version: 1.28-gf13702b8e
-# Linux Version: 6.10.0-rc5
-kms_bw@linear-tiling-1-displays-2560x1440p
-kms_cursor_legacy@nonblocking-modeset-vs-cursor-atomic
-kms_flip@dpms-vs-vblank-race-interruptible
-kms_flip@flip-vs-absolute-wf_vblank-interruptible
-kms_flip@flip-vs-wf_vblank-interruptible
-kms_setmode@basic
-kms_bw@connected-linear-tiling-1-displays-2560x1440p 
+v2:
+  - No changes
 
+v3:
+  - No changes
 
-Will add these tests in 
-drivers/gpu/drm/ci/xfails/rockchip-rk3288-flakes.txt and 
-drivers/gpu/drm/ci/xfails/rockchip-rk3399-flakes.txt 
-(https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/tree/Documentation/gpu/automated_testing.rst#n70)
+v4:
+  - No changes
 
-Please could you have a look at these test results and let us know if 
-you need more information. Thank you.
+v5:
+  - No changes
 
-Regards,
-Vignesh
+v6:
+  - No changes
+
+v7:
+  - No changes
+
+v8:
+  - No changes
+
+---
+ drivers/gpu/drm/ci/arm64.config | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/drivers/gpu/drm/ci/arm64.config b/drivers/gpu/drm/ci/arm64.config
+index 4140303d6260..66e70ced796f 100644
+--- a/drivers/gpu/drm/ci/arm64.config
++++ b/drivers/gpu/drm/ci/arm64.config
+@@ -187,6 +187,7 @@ CONFIG_MTK_DEVAPC=y
+ CONFIG_PWM_MTK_DISP=y
+ CONFIG_MTK_CMDQ=y
+ CONFIG_REGULATOR_DA9211=y
++CONFIG_DRM_ANALOGIX_ANX7625=y
+ 
+ # For nouveau.  Note that DRM must be a module so that it's loaded after NFS is up to provide the firmware.
+ CONFIG_ARCH_TEGRA=y
+-- 
+2.43.0
+
 
 _______________________________________________
 Linux-rockchip mailing list
