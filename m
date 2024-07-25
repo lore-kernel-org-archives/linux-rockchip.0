@@ -4,131 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C2754C3DA49
-	for <linux-rockchip@archiver.kernel.org>; Thu, 25 Jul 2024 14:03:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B1878C3DA5D
+	for <linux-rockchip@archiver.kernel.org>; Thu, 25 Jul 2024 14:11:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=mSB5tlMKfiQeDVIkI+uOnRY9BHJ8dZ/95Yg+bpJhXdg=; b=la+gHIk4wI2+1t
-	5LwkNsW85wMkvDhIVRXZTr1r+U7KI5tMWgd1ch55xtfgrbjHz35tCjRcQ9xBbUxcOnHOxEYN2+0/Q
-	HJbcUgl9bA+PxSOO/GzuNSRs5+QlZHK9KeZCHQ+/0EraVXUx8tF2ng7pwkBdU/md9wemaV3IuUjyV
-	D9SkkRIPJ+moq4h3pQ4tLw0MCWFYRty7sxP2e77v68BFdF/4LFFQ/nr0qy+tPrm6/gWBYV7+c32u6
-	1qSgI7wKD2W6+JtAPVFvmqp+JkOvEJ484QRdNc4mxJ87mSFVn6on3vJ748zbmA36sRqkLlfTuzjSE
-	wDqhrCJ3eLEH8yUNKMFg==;
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=GySceL+0hOFYzGKfbAgb6fjSVwbytC+9OPDoiZmDVOQ=; b=CGZrnN2IX9JDoTuNv3NpnPYpYK
+	0DxAUAE7B9tPSxrZ1JjV6CKIOwuZJv94bRzd6UQeFFj0nyemWxQHStqfDwMPuZreoLAjZrXUN1wcz
+	jJa+hxPlZ57Fhpy4PVVDcUuJ11Gd8/uzVD3YLWopSh8SaCyWbMF7B7WJqDqeDCrX3/HdEu7mivhot
+	Hh8GFk099KwHxE4nDKuQFoz7KA2AJXmdarAgfBSw0L9QkY426kQasqrd4rict9upx0K4igvuEXyzj
+	ZDmYy2XuuW8p4KT3rz9MT7qCqnmrTTt6LKQY8tghRt0Z9X9OuNkP8wNqFmfrP7wOvsiCbDPAjCl/u
+	GmU/wjHA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sWz3Z-00000001Az3-1p4W;
-	Thu, 25 Jul 2024 14:02:57 +0000
-Received: from mail-pf1-x429.google.com ([2607:f8b0:4864:20::429])
+	id 1sWzBe-00000001CpX-47M9;
+	Thu, 25 Jul 2024 14:11:18 +0000
+Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sWz39-00000001Aum-1WOg;
-	Thu, 25 Jul 2024 14:02:32 +0000
-Received: by mail-pf1-x429.google.com with SMTP id d2e1a72fcca58-70ea93aa9bdso821452b3a.0;
-        Thu, 25 Jul 2024 07:02:29 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1721916149; x=1722520949; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:autocrypt:from
-         :content-language:references:cc:to:subject:user-agent:mime-version
-         :date:message-id:sender:from:to:cc:subject:date:message-id:reply-to;
-        bh=rc9uYi1vvR27mBfOr62A0qQ8jW/hjgKuapPjwKohfaA=;
-        b=A7dTeYmumm7lP3mvWYkYIclWLyO4y3vslcv754cECM0oCcsoX1J9uduLdyn+FodBZT
-         qmCfCuCemk+cs+KXct2E1+R94BCJcUdRD25X+OEy8p/rMK/ahhOaWP17G9APbWTdVsuH
-         1+YN4RGiw3qsq6QP5+taw1+PI6+JK3Xh06Jr7sfMZ+bcYnKGDQXaSASS7metDNDtKNyn
-         AAGX4l0o+lkWJZQTEdaUiLP4mYnHZ4KXoPiSh1R84KjSg22ldTzCuySf4koi+A/h+Vis
-         jBX8JAigFjbF3qQQtBCkMx55R5TR7ZHjqKxcVORM++b2pwHKlrkujm6CgC3uKHAfg3qm
-         Tz0A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1721916149; x=1722520949;
-        h=content-transfer-encoding:in-reply-to:autocrypt:from
-         :content-language:references:cc:to:subject:user-agent:mime-version
-         :date:message-id:sender:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=rc9uYi1vvR27mBfOr62A0qQ8jW/hjgKuapPjwKohfaA=;
-        b=wuyo3uHOCx1iOnlQyZ7bTQXqWST/dH/5yxSDKxyTkCT3w+V49KRZzR6xdrMXTFbzEM
-         OFcR4pmPwFr7p2jQSlQhaUVr7KbxkJtbuzwngRoUrSgQvgXgBboTuycTKI59dhqdgAyV
-         4qmcJmWyMgs0IxnBV2oFKSdxvolCJ6nTlvz9ei8k0pC2+sOU2b84/fB2ZGtkmDmOTzXc
-         R7B6fkFctHHJ2Ny2cPmtJ2O0oGbw8jf3SVK6zt5uPm8ukQpHf3PLZifqEexVrUqHNa97
-         fMg4WKnnDUlqHg8FbNwib6nQx0iqZEf8nBSpEmLClNDnkCxfa2gKRV9jp43ZEmeYKWqd
-         wGFQ==
-X-Forwarded-Encrypted: i=1; AJvYcCW+PCslG+6zmLRuRPWr+eKX9YP8OJF+sJC60eckESh4an1GfXS1ZB5Cm/FGDY+cuOmAZlPLt3tgFOMkG/D8R0JjnrHq0OC9zd4tPak6RWdzCyQEdkslk6Q0SSpGPnYT9dBDyLaha5UN/othk/b0o76xwNXBtk284dw=
-X-Gm-Message-State: AOJu0YyTUfMOpgCuIC6EyZfGCcioOn4VobWLCFo1Y0+k6EaWns2o0EDE
-	7mYkWHgvmKWiTngsP/z5FfrGOKjQsyB/YF7ZOOkZnTHX2qk2PIAW
-X-Google-Smtp-Source: AGHT+IEe+ynWNN7smFvPvWuPR4+3TM1aCIXP+kLPkkGcim4MXDOB7yXhf7bS+sHPtdNN7sxDlUIHpw==
-X-Received: by 2002:a17:90a:c48:b0:2c7:e46e:f8b7 with SMTP id 98e67ed59e1d1-2cf23772d29mr3423784a91.4.1721916149020;
-        Thu, 25 Jul 2024 07:02:29 -0700 (PDT)
-Received: from ?IPV6:2600:1700:e321:62f0:329c:23ff:fee3:9d7c? ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
-        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-2cf28c55a38sm1570341a91.10.2024.07.25.07.02.27
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 25 Jul 2024 07:02:28 -0700 (PDT)
-Message-ID: <f1d87542-005e-44be-b247-0a2f12adcfec@roeck-us.net>
-Date: Thu, 25 Jul 2024 07:02:26 -0700
+	id 1sWzB4-00000001Cfe-1kSy;
+	Thu, 25 Jul 2024 14:10:54 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1721916637;
+	bh=8uoGNOyVe7gByYAZYQGatpKAMRp65mnINJWGyhyzYkE=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=tZ8Hk5azORZsm7EkL77nQDamAz+kIuA+HikQ8LVXxcEl3CKBNJiJDDR5hwZGktsn0
+	 xv9k9sq+4SSpnLUvQ7Xcb06XNVRDTwRSIRAw+twRbyyqJEZmv998TOXoRrPu05oYlB
+	 DdWe9Sp7BBjY7XbuJXA7NmY60Ec9vGlgqYtOADkfxymSvC77YNBjQgaOnlbht8LAc9
+	 tSA9zdV9HXWI1FsOIpxR2yGqQN8o3PE12Pa82mR99gM2TtmMsfMPkLPSpYDuhA9hx/
+	 xbfjY9iHpach7HhwIopfd9hyuwZ+cmwkp5k1IQslvju/JMBh4/LH9+/vKmPUaO6HoC
+	 sd7n+ztE3BdTQ==
+Received: from mercury (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: sre)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 527FA3782191;
+	Thu, 25 Jul 2024 14:10:37 +0000 (UTC)
+Received: by mercury (Postfix, from userid 1000)
+	id E549B106097F; Thu, 25 Jul 2024 16:10:36 +0200 (CEST)
+Date: Thu, 25 Jul 2024 16:10:36 +0200
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+To: Johan Jonker <jbx6244@yandex.com>
+Cc: Shreeya Patel <shreeya.patel@collabora.com>, heiko@sntech.de, 
+	mchehab@kernel.org, robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org, 
+	mturquette@baylibre.com, sboyd@kernel.org, p.zabel@pengutronix.de, 
+	jose.abreu@synopsys.com, nelson.costa@synopsys.com, shawn.wen@rock-chips.com, 
+	nicolas.dufresne@collabora.com, hverkuil@xs4all.nl, hverkuil-cisco@xs4all.nl, 
+	kernel@collabora.com, linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, 
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-rockchip@lists.infradead.org, Dmitry Osipenko <dmitry.osipenko@collabora.com>
+Subject: Re: [PATCH v4 2/4] dt-bindings: media: Document bindings for HDMI RX
+ Controller
+Message-ID: <3ro7jpo4xvjuhbyc62p5iglbo7ecau6dxack6crhbwdnzmqi3b@heaczv3umoy7>
+References: <20240719124032.26852-1-shreeya.patel@collabora.com>
+ <20240719124032.26852-3-shreeya.patel@collabora.com>
+ <c926b73e-9ee7-4c4f-9c06-761929425468@yandex.com>
+ <3328a8-669e6400-1-609f7800@94177214>
+ <ae3f574a-256f-4ced-a371-a26255024750@yandex.com>
+ <6nzakkvpfodztxh6jnxlhknd7x7ni6agwpguxyqd6gcncedp53@vsk5mnaayfqs>
+ <80090f6e-7bc8-422a-bb2a-0c0a4abf32f0@yandex.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v6 4/8] hwmon: (amc6821) add support for tsd,mule
-To: Farouk Bouabid <farouk.bouabid@cherry.de>,
- Andi Shyti <andi.shyti@kernel.org>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Quentin Schulz <quentin.schulz@cherry.de>,
- Peter Rosin <peda@axentia.se>, Jean Delvare <jdelvare@suse.com>,
- Heiko Stuebner <heiko@sntech.de>
-Cc: linux-i2c@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-hwmon@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
-References: <20240725-dev-mule-i2c-mux-v6-0-f9f6d7b60fb2@cherry.de>
- <20240725-dev-mule-i2c-mux-v6-4-f9f6d7b60fb2@cherry.de>
-Content-Language: en-US
-From: Guenter Roeck <linux@roeck-us.net>
-Autocrypt: addr=linux@roeck-us.net; keydata=
- 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
- mDW4+i+XlNFUPUYMrIKi9joBhu18ssf5i5Q=
-In-Reply-To: <20240725-dev-mule-i2c-mux-v6-4-f9f6d7b60fb2@cherry.de>
+In-Reply-To: <80090f6e-7bc8-422a-bb2a-0c0a4abf32f0@yandex.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240725_070231_439146_74BA876A 
-X-CRM114-Status: UNSURE (   9.63  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240725_071042_752565_A49C53F8 
+X-CRM114-Status: GOOD (  60.57  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -140,32 +82,364 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: multipart/mixed; boundary="===============1369974151169760744=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 7/25/24 06:27, Farouk Bouabid wrote:
-> Theobroma Systems Mule is an MCU that emulates a set of I2C devices,
-> among which is an amc6821 and other devices that are reachable through
-> an I2C-mux.
-> 
-> The devices on the mux can be selected by writing the appropriate device
-> number to an I2C config register (amc6821: reg 0xff)
-> 
-> Implement "tsd,mule" compatible to instantiate the I2C-mux platform device
-> when probing the amc6821.
-> 
-> Signed-off-by: Farouk Bouabid <farouk.bouabid@cherry.de>
 
-lgtm
+--===============1369974151169760744==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="vt4csphgu4s6kj2p"
+Content-Disposition: inline
 
-For my reference:
 
-Reviewed-by: Guenter Roeck <linux@roeck-us.net>
+--vt4csphgu4s6kj2p
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
+Hi,
+
+On Wed, Jul 24, 2024 at 03:20:28PM GMT, Johan Jonker wrote:
+>=20
+>=20
+> On 7/23/24 19:28, Sebastian Reichel wrote:
+> > Hi,
+> >
+> > On Tue, Jul 23, 2024 at 01:16:00PM GMT, Johan Jonker wrote:
+> >> On 7/22/24 15:53, Shreeya Patel wrote:
+> >>> On Saturday, July 20, 2024 16:14 IST, Johan Jonker <jbx6244@yandex.co=
+m> wrote:
+> >>>> On 7/19/24 14:40, Shreeya Patel wrote:
+> >>>>> Document bindings for the Synopsys DesignWare HDMI RX Controller.
+> >>>>>
+> >>
+> >>>>> Reviewed-by: Rob Herring <robh@kernel.org>
+> >>>>> Reviewed-by: Dmitry Osipenko <dmitry.osipenko@collabora.com>
+> >>
+> >> Remove to trigger a new review.
+> >
+> > Rob and Dmitry both already reviewed the version with the fallback
+> > compatible. I don't think the rename of hdmirx_cma to hdmi_receiver_cma
+> > warrant a new review. Also FWIW:
+> >
+>=20
+> > Reviewed-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+>=20
+> Please have a look at the comments below before you tag.
+>=20
+> >
+> >>>>> Signed-off-by: Shreeya Patel <shreeya.patel@collabora.com>
+> >>>>> ---
+> >>>>>
+> >>>>> Changes in v4 :-
+> >>>>>   - No change
+> >>>>>
+> >>>>> Changes in v3 :-
+> >>>>>   - Rename hdmirx_cma to hdmi_receiver_cma
+> >>>>>   - Add a Reviewed-by tag
+> >>>>>
+> >>>>> Changes in v2 :-
+> >>>>>   - Add a description for the hardware
+> >>>>>   - Rename resets, vo1 grf and HPD properties
+> >>>>>   - Add a proper description for grf and vo1-grf phandles
+> >>>>>   - Rename the HDMI Input node name to hdmi-receiver
+> >>>>>   - Improve the subject line
+> >>>>>   - Include gpio header file in example to fix dt_binding_check fai=
+lure
+> >>>>>
+> >>>>>  .../bindings/media/snps,dw-hdmi-rx.yaml       | 132 ++++++++++++++=
+++++
+> >>>>>  1 file changed, 132 insertions(+)
+> >>>>>  create mode 100644 Documentation/devicetree/bindings/media/snps,dw=
+-hdmi-rx.yaml
+> >>>>>
+> >>>>> diff --git a/Documentation/devicetree/bindings/media/snps,dw-hdmi-r=
+x.yaml b/Documentation/devicetree/bindings/media/snps,dw-hdmi-rx.yaml
+> >>>>> new file mode 100644
+> >>>>> index 000000000000..96ae1e2d2816
+> >>>>> --- /dev/null
+> >>>>> +++ b/Documentation/devicetree/bindings/media/snps,dw-hdmi-rx.yaml
+> >>>>> @@ -0,0 +1,132 @@
+> >>>>> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> >>>>> +# Device Tree bindings for Synopsys DesignWare HDMI RX Controller
+> >>>>> +
+> >>>>> +---
+> >>>>> +$id: http://devicetree.org/schemas/media/snps,dw-hdmi-rx.yaml#
+> >>>>> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> >>>>> +
+> >>>>> +title: Synopsys DesignWare HDMI RX Controller
+> >>>>> +
+> >>>>> +maintainers:
+> >>>>> +  - Shreeya Patel <shreeya.patel@collabora.com>
+> >>>>> +
+> >>>>> +description:
+> >>>>> +  Synopsys DesignWare HDMI Input Controller preset on RK3588 SoCs
+> >>>>> +  allowing devices to receive and decode high-resolution video str=
+eams
+> >>>>> +  from external sources like media players, cameras, laptops, etc.
+> >>>>> +
+> >>>>> +properties:
+> >>>>> +  compatible:
+> >>>>> +    items:
+> >>>>> +      - const: rockchip,rk3588-hdmirx-ctrler
+> >>>>
+> >>
+> >>>>> +      - const: snps,dw-hdmi-rx
+> >>
+> >> remove
+> >>
+> >>>>
+>=20
+> Relevant compatible methods in use for Rockchip drivers:
+
+You are arguing with kernel drivers. Drivers can be changed at any
+point in time, but DT bindings cannot, because they define an ABI.
+
+> =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
+>=20
+> Compatible method #1:
+> Probe is triggered by a SoC orientated string.
+>=20
+> compatible =3D "rockchip,rk3588-hdmirx-ctrler";
+>=20
+> If for example a new SoC rk3599 is released that has the same device prop=
+erties
+> then the old string can be used as fallback string.
+>=20
+> compatible =3D ""rockchip,rk3599-hdmirx-ctrler" , "rockchip,rk3588-hdmirx=
+-ctrler";
+>=20
+> The driver structure:
+> { .compatible =3D "rockchip,rk3588-hdmirx-ctrler" },
+>=20
+> =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
+> Compatible method #2:
+> Probe is triggered by a IP orientated fallback string.
+>=20
+> compatible =3D "rockchip,rk3588-hdmirx-ctrler" , "snps,dw-hdmi-rx";
+>=20
+> If for example a new SoC rk3599 is released that has the same device prop=
+erties
+> then add the same fallback string.
+>=20
+> compatible =3D ""rockchip,rk3599-hdmirx-ctrler" , "snps,dw-hdmi-rx";
+>=20
+> The driver structure:
+> { .compatible =3D "snps,dw-hdmi-rx" },
+>=20
+> If for example a new SoC rk3599 is released that has NOT the same device =
+properties
+> then use method #1.
+>=20
+> The driver structure:
+> { .compatible =3D "rockchip,rk3599-hdmirx-ctrler" .data =3D &rk3599_ops },
+> { .compatible =3D "snps,dw-hdmi-rx" },
+
+This is what is being used here. The only diference is, that the
+driver currently uses the RK3588 specific compatible string instead
+of the fallback string right now.
+
+If another SoC vendor adds the same IP into their latest chip and
+the driver has been proven to work with their hardware the driver
+can be changed to bind against "snps,dw-hdmi-rx" instead of the
+RK3588 specific compatible. Doing this change will keep
+compatibility with existing DTs, if we add the fallback string now.
+Until then we just carry it as an unused fallback.
+
+> =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
+>=20
+> Compatible method #3:
+> Probe is triggered by a vendor orientated fallback string.
+>=20
+> Special case only useful if the driver is written long after all SoCs are=
+ released.
+> The standalone IP has a version register and the driver can handle all th=
+e feature difference
+> inside the IP depending on the version register.
+>=20
+> compatible =3D "rockchip,sfc";
+>=20
+> The driver structure:
+> { .compatible =3D "rockchip,sfc"},
+
+FWIW I think _this_ is a bad example. It is missing the SoC specific
+compatible making applying of quirks harder than necessary. Just
+because no quirks are needed now, does not mean it will stay that
+way. E.g. if an Errata gets released that SFC on RK3588 must not be
+run at 1 MHz it would be super useful to have an "rockchip,rk3588-sfc"
+to match against. That's the reason for the rule #1 in the following
+list
+
+> =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
+>=20
+> The rules:
+>=20
+> 1: Compatible strings must be SoC orientated.
+> 2: In Linux there's no priority in which string will probed first.
+
+I initially thought you mean the list in the driver, but after
+reading your remaining mail - this is just wrong. There is a
+priority. If DT specifies
+
+compatible =3D "main", "fallback";
+
+Linux will first try to bind against "main". If that does not
+work it will try to bind against "fallback". To give you a
+simple example from the subsystem I maintain:
+
+DT binding: Documentation/devicetree/bindings/power/supply/sbs,sbs-battery.=
+yaml
+Linux Kernel Driver: drivers/power/supply/sbs-battery.c
+
+Valid compatibles according to the DT binding:
+ compatible =3D "ti,bq20z45", "sbs,sbs-battery";
+ compatible =3D "ti,bq20z65", "sbs,sbs-battery";
+ compatible =3D "ti,bq20z75", "sbs,sbs-battery";
+ compatible =3D "sbs,sbs-battery";
+
+The driver has these of_device_id entries:
+ { .compatible =3D "sbs,sbs-battery" },
+ { .compatible =3D "ti,bq20z65", QUIRKS },
+ { .compatible =3D "ti,bq20z75", QUIRKS },
+
+The driver will probe ONCE in all cases.
+
+compatible =3D "ti,bq20z45", "sbs,sbs-battery"; =3D> probe happens with fal=
+lback string
+compatible =3D "ti,bq20z65", "sbs,sbs-battery"; =3D> probe happens with mai=
+n string (QUIRKS apply)
+compatible =3D "ti,bq20z75", "sbs,sbs-battery"; =3D> probe happens with mai=
+n string (QUIRKS apply)
+compatible =3D "sbs,sbs-battery"; =3D> probe happens with main string
+
+> 3: There is a commitment that old DT's should still work with newer kerne=
+ls.
+
+> >>>> What's the point of having a fallback string when there's no common =
+code, but instead only the first string is used?
+> >>>>
+> >>>> +static const struct of_device_id hdmirx_id[] =3D {
+> >>>> +	{ .compatible =3D "rockchip,rk3588-hdmirx-ctrler" },
+> >>>> +	{ },
+> >>>> +};
+> >>>>
+>=20
+> The consequence of the third rule is that drivers must continue to
+> support this string once added and can not be removed as suggested
+> below.
+
+That's wrong. We can remove the "rockchip,rk3588-hdmirx-ctrler" from
+the kernel driver and use the fallback string at any point in time
+__IF__ we make it mandatory that rockchip,rk3588-hdmirx-ctrler must
+always be followed by the fallback compatible in DT. Because then we
+will keep working with old DTs, since the old DT also has the
+fallback compatible.
+
+> If for example the fallback is added later it will trigger 2 probes and i=
+t breaks rule #2.
+> Only one of string is allowed to trigger a probe in the driver.
+>=20
+> This is wrong:
+> compatible =3D "rockchip,rk3588-hdmirx-ctrler", "snps,dw-hdmi-rx";
+>=20
+> { .compatible =3D "rockchip,rk3588-hdmirx-ctrler" },
+> { .compatible =3D "snps,dw-hdmi-rx" },
+>=20
+> Ones a compatible method is chosen the driver must stick to it.
+
+I don't know how you came to that conclusion, but it's simply wrong.
+The above example will probe once using the "rockchip,rk3588-hdmirx-ctrler"
+compatible. At that point the DT node is marked as processed, so
+no other probe happens.
+
+> =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
+>=20
+> >>>
+> >>
+> >>> We believe the HDMIRX driver can be used for the Synopsys IP on other=
+ SoCs
+> >>> in the future, which is why we have added snps,dw-hdmi-rx as the fall=
+back compatible.
+> >>> Currently, we have tested the driver only on the RK3588 Rock5B, so we=
+ are using the
+> >>> rockchip,rk3588-hdmirx-ctrler compatible in the driver instead of the=
+ fallback one.
+> >>
+> >> The rule that compatible strings (for internal SoC components)
+> >> must be SoC orientated also applies to the fallback string.
+> >> "snps,xxxx" does not refer to an independent SoC.
+>=20
+> This refers to compatible method #1.
+
+Yeah, which is used when the IP is from the SoC vendor itself (or
+unknown) or if its not possible to use the generic IP compatible
+anyways.
+
+> [...]
+> If the IP device registers are guaranteed remain the same then
+> choose compatible method #2 and fix the driver.
+
+Adapting the driver is the plan, but it cannot be done right now
+because lack of information. This requires either another SoC with
+this IP or at least the Synopsys documentation. We only have the
+Rockchip documentation.
+
+But the driver can be fixed in the future and the DT binding is
+ABI. Thus the DT binding is prepared now to allow the driver looking
+like your method #2 in the future. Until then the extra compatible
+will just be ignored.
+
+-- Sebastian
+
+--vt4csphgu4s6kj2p
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmaiXNAACgkQ2O7X88g7
++poT9g//aUGecPhr6HQC4QXjBqwiCJCYwri9xEaVfEcOlA9jdOkHjWwNg66WDvRa
+dPYFeupumIi/g5pJiTiLs384ifGVFh2xNClCAjm4ZF6xsufqmX6H8ZBLXtTxz+1y
+m7KlHWKccZ8ciS6rFDXkWiNakApAxOMqb1W6Mk403rgv/i2WGjE49KjBqFx2N3jB
+3/QPpG1C1O7jYO6JxaGti9YrUKVmjAodNojU0Oye/TF90CemDRCZTo+Vqy3tcLjH
+QAg7x4EFmjlPvVLJEAPKGLZB2PrqiC8FcJrzSm+R3iaeToYaLrfvDTeKbfQsY7Vy
+FJx3FMftGHfFs9BrTFuVyM41NgIBmEzmNAbrHzVLlN4McDA7ZIBzsTw5gkqLTHhS
+lcdD5LvwByZC0tRh90DIobUqsZ1RRBEmksdFALzHSt/S0KcAjIwYxhCdIpszAF/p
+2WTs+//EyrjEbbAyjmbNQKgzN9gzZMy0+PrWhjyilt8m8ziGdtFgvoexg++QXW44
+5BkRrJFmR78aIKFBNoJQ9wO8eEevDJo/KH9IGem236l15Uh5Kb52gM5erlGA2IKI
+Y2t3ocKjK0Cl9F7gafBhI6o89iI0rLjDvOgwiTZ16Ny0CEvheGsqIrDLkIetAWYU
+XFWHHOsRJmt7gFexJkHVDRpFXXXwd0mgCQTXpG7qJxYGQu+49Kg=
+=u0hj
+-----END PGP SIGNATURE-----
+
+--vt4csphgu4s6kj2p--
+
+
+--===============1369974151169760744==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============1369974151169760744==--
+
