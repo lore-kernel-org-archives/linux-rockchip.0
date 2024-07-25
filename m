@@ -4,54 +4,117 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2918CC3DA61
-	for <linux-rockchip@archiver.kernel.org>; Wed, 24 Jul 2024 22:12:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 261A6C3DA49
+	for <linux-rockchip@archiver.kernel.org>; Thu, 25 Jul 2024 06:36:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Subject:From:To:Date:Reply-To:Cc:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=t4RDlU0m7C5BRSekPFYGhsVFd+DMS2fBP54eTeFjEiw=; b=V4lAnqZKnSBjLZ
-	yfcDfDXboKP4eIm3otahF6Zjn14HuY7sJv0f/wygKjYRwj81TPzSFVD3POCVqhO8Cv8jbxRHOQf/5
-	+h0hfcNwnjPM60AqGZxJaBRaZem9ZMhZDjT7ufYG1Bb547nP1AtTQ5sLbw0CiiwZuJqxlbOUFZHRd
-	U9KsL+H8F1edQLXwNVZRMOkxpLJCk/rGxSMNeKEek+drjpcaH6YotOleSz9wgZ2spVsVIk4QJAtIi
-	uqCSl8Kr3MMk5/IOrC3ByRPQNQFjWZWRUg5Yi4gm1DQ3Dsy3pvDrGgyugROwtkGE/djf5CGh6DWnf
-	6CvAfkrykDbzDvr1u5Fw==;
+	List-Owner; bh=mceceqt3v8YUF5WqUqBX8X1RYe92oHQy6bvN9YNq3oo=; b=cFIORoPme+ioOC
+	huSOABOIm7aaC2qXLmyE4IkbPL45YiIGMZfhCvxp1/oJqcvapkCeJHU4SQczhmVxE42pSVqQUVczb
+	DTyekNxZYzfsTRRfzlUBgUhUWB1FZcZ66qBORZ5qpLeDXfLDrX9ZlFNJhOJGN2pBNPqqTPM18u8a2
+	eBnW5dH2lvVj7TuH8tbthG2JwLo68MUY89cZb8YYo8gmG5Q5n5rJ1umXIeeQdRTzeK5DF949Qs6L1
+	PIECOslcPx679qxB+ca6U1eOmzL1Gn42cxAqC0yT1bixuGiaV4R2V0UEQ4nHGADAMUOghwvWOEgp3
+	ckA9hnYqrnyYZqXgewIg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sWkDu-0000000GfF7-3kMA;
-	Wed, 24 Jul 2024 22:12:39 +0000
-Received: from mail-43166.protonmail.ch ([185.70.43.166])
+	id 1sWs5S-000000003YK-14Fm;
+	Thu, 25 Jul 2024 06:36:26 +0000
+Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sWkDr-0000000GfEF-2JlM
-	for linux-rockchip@lists.infradead.org;
-	Wed, 24 Jul 2024 22:12:37 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=proton.me;
-	s=protonmail; t=1721859152; x=1722118352;
-	bh=Y3q6wyv95UM7ODxI2RYM+RBlxx/vpcUDxEO4RuJgGvM=;
-	h=Date:To:From:Subject:Message-ID:In-Reply-To:References:
-	 Feedback-ID:From:To:Cc:Date:Subject:Reply-To:Feedback-ID:
-	 Message-ID:BIMI-Selector;
-	b=Hjrg05yBBbKhW+y7N3o+o2l2RJ8xux4D9Aj+922+MTbN++3dcDMSZwB14EblOPvBn
-	 +c1nleACvHtU3J4NGSeZst2APETa12J6yA3MCyyqkPwoYoQWyyxFNL/vg9AWs3T1aK
-	 Z27lisE3cT8NXwa8D8pT5n3FQVNXBMLYxqzpVMZHCniwnQeiWcm8//c04afG6vQI9z
-	 dDwN9jJYHFbpWX6QXgZDqQGz5JVHVLO7wVp3Z7YadPTBkoWDOZ+AMBIFe9pCHisjUJ
-	 /bLWKe2LW++u6fn/Xgit8CjAMvy5lmJMoRMSyTxhkOBhO6Q+H+vGnA+K0UlGpUYulC
-	 BVEgagzwBMraw==
-Date: Wed, 24 Jul 2024 22:12:28 +0000
-To: "airlied@gmail.com" <airlied@gmail.com>, "andy.yan@rock-chips.com" <andy.yan@rock-chips.com>, "daniel@ffwll.ch" <daniel@ffwll.ch>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, "heiko@sntech.de" <heiko@sntech.de>, "hjc@rock-chips.com" <hjc@rock-chips.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, "maarten.lankhorst@linux.intel.com" <maarten.lankhorst@linux.intel.com>, "mripard@kernel.org" <mripard@kernel.org>, "tzimmermann@suse.de" <tzimmermann@suse.de>
-From: Piotr Zalewski <pZ010001011111@proton.me>
-Subject: Re: [PATCH v2] rockchip/drm: vop2: add support for gamma LUT
-Message-ID: <hhaq0wCH5_DWz6vjiyTLV3TcEVzi5owdIWxl0El_y36yTo9hPPzAtKvzBuXvcXNTy3E_cT63jbG2QJn6kPE32ltoojplR-fd0JBukRCfA8U=@proton.me>
-In-Reply-To: <Hk03HDb6wSSHWtEFZHUye06HR0-9YzP5nCHx9A8_kHzWSZawDrU1o1pjEGkCOJFoRg0nTB4BWEv6V0XBOjF4-0Mj44lp2TrjaQfnytzp-Pk=@proton.me>
-References: <Hk03HDb6wSSHWtEFZHUye06HR0-9YzP5nCHx9A8_kHzWSZawDrU1o1pjEGkCOJFoRg0nTB4BWEv6V0XBOjF4-0Mj44lp2TrjaQfnytzp-Pk=@proton.me>
-Feedback-ID: 53478694:user:proton
-X-Pm-Message-ID: aef39d10e8f770a96c9098bc69e9b2ade7178120
+	id 1sWs52-000000003PK-41wT;
+	Thu, 25 Jul 2024 06:36:03 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sin.source.kernel.org (Postfix) with ESMTP id 0A2DACE1252;
+	Thu, 25 Jul 2024 06:35:58 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 40BAEC116B1;
+	Thu, 25 Jul 2024 06:35:49 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1721889357;
+	bh=e+vAu011Q2XaPgxR1bgL1eB2JgNr0fymJeAhB9c8ogo=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=ZiOKlIWQVO8o6Db+DNWg6JtImhxpWRcPuL0iVEfgUaMNBq/HoHubwhNCdm5T3/Kup
+	 nvZgJXHtgfMWyNJ5lNXIoSSUMSFeHuxaBxB066ViFXG7YAaQwSW1/GIXjZ2roPo1/r
+	 aRJtMKv8emNFr2LlumDRvjIW+JpKeRwf81MOZAvx07SEX1bU6Hq/il0g6sFZbMk4oQ
+	 KQYLMRxrEiUxZick4Mb+a4gNiS7YIdHnT5DOmnMozd4le1FSBuCJqNOH4re2JwtvrV
+	 JTaEGv1nFBS1HvtnZeufMFnyRvp99GNEE78cEgBM0bScYXODE7NGPkSpuXCqycSS90
+	 RLTgsWvPOR+vg==
+Message-ID: <51099628-b820-45cc-8af5-5cfa604736a2@kernel.org>
+Date: Thu, 25 Jul 2024 08:35:47 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v4 2/4] dt-bindings: media: Document bindings for HDMI RX
+ Controller
+To: Johan Jonker <jbx6244@yandex.com>,
+ Sebastian Reichel <sebastian.reichel@collabora.com>
+Cc: Shreeya Patel <shreeya.patel@collabora.com>, heiko@sntech.de,
+ mchehab@kernel.org, robh@kernel.org, krzk+dt@kernel.org,
+ conor+dt@kernel.org, mturquette@baylibre.com, sboyd@kernel.org,
+ p.zabel@pengutronix.de, jose.abreu@synopsys.com, nelson.costa@synopsys.com,
+ shawn.wen@rock-chips.com, nicolas.dufresne@collabora.com,
+ hverkuil@xs4all.nl, hverkuil-cisco@xs4all.nl, kernel@collabora.com,
+ linux-kernel@vger.kernel.org, linux-media@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org,
+ Dmitry Osipenko <dmitry.osipenko@collabora.com>
+References: <20240719124032.26852-1-shreeya.patel@collabora.com>
+ <20240719124032.26852-3-shreeya.patel@collabora.com>
+ <c926b73e-9ee7-4c4f-9c06-761929425468@yandex.com>
+ <3328a8-669e6400-1-609f7800@94177214>
+ <ae3f574a-256f-4ced-a371-a26255024750@yandex.com>
+ <6nzakkvpfodztxh6jnxlhknd7x7ni6agwpguxyqd6gcncedp53@vsk5mnaayfqs>
+ <80090f6e-7bc8-422a-bb2a-0c0a4abf32f0@yandex.com>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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 fv0=
+In-Reply-To: <80090f6e-7bc8-422a-bb2a-0c0a4abf32f0@yandex.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240724_151236_220904_60C59DB7 
-X-CRM114-Status: GOOD (  16.24  )
+X-CRM114-CacheID: sfid-20240724_233601_518571_1B007CBA 
+X-CRM114-Status: GOOD (  12.58  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,82 +131,85 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-By mistake the incremental patch were sent here. The correct v2 patch was
-sent in the form of a v3 patch [1]
+On 24/07/2024 15:20, Johan Jonker wrote:
+> 
+>>
+>> Where did you learn that? Having non-SoC specific generic fallback
+>> compatibles is pretty much standard throughout the kernel. See for
+>> example these RK3588 DesignWare compatibles:
+>>
+>> Synopsys Serial Controller:
+>>     Documentation/devicetree/bindings/serial/snps-dw-apb-uart.yaml
+>>     compatible = "rockchip,rk3588-uart", "snps,dw-apb-uart";
+> 
+> Compatible method #2:
+> 	{ .compatible = "snps,dw-apb-uart", .data = &dw8250_dw_apb },
+> 
+>>
+>> Synopsys USB3 Controller:
+>>     Documentation/devicetree/bindings/usb/rockchip,dwc3.yaml
+>>     compatible = "rockchip,rk3588-dwc3", "snps,dwc3";
+> 
+> Compatible method #2:
+> 	{
+> 		.compatible = "snps,dwc3"
+> 	},
+> 
+>>
+>> Synopsys Ethernet Controller:
+>>     Documentation/devicetree/bindings/net/snps,dwmac.yaml
+>>     compatible = "rockchip,rk3588-gmac", "snps,dwmac-4.20a";
+> 
+> Compatible method #1:
+> 	{ .compatible = "rockchip,rk3588-gmac", .data = &rk3588_ops },
+> 
+> 	    of_device_is_compatible(np, "snps,dwmac-4.20a") ||
+> 
+>>
+>> Synsopsys SATA Controller:
+>>     Documentation/devicetree/bindings/ata/rockchip,dwc-ahci.yaml
+>>     compatible = "rockchip,rk3588-dwc-ahci", "snps,dwc-ahci"
+> 
+> Compatible method #2:
+> 	{ .compatible = "snps,dwc-ahci", &ahci_dwc_plat },
+> 
+>>
+>> It's also not specific to Synopsys (but RK3588 has a lot of Synopsys
+>> design incl. the HDMI-RX IP currently worked on by Shreeya). Here
+>> are some other examples:
+>>
+>> ARM Mali GPU:
+>>     Documentation/devicetree/bindings/gpu/arm,mali-valhall-csf.yaml
+>>     compatible = "rockchip,rk3588-mali", "arm,mali-valhall-csf";
+> 
+> Should be compatible method #2:
+> 	{ .compatible = "rockchip,rk3588-mali" },
+> 	{ .compatible = "arm,mali-valhall-csf" },
+> 
+> This is wrong!
 
-[1] https://lore.kernel.org/linux-rockchip/TkgKVivuaLFLILPY-n3iZo_8KF-daKdqdu-0_e0HP-5Ar_8DALDeNWog2suwWKjX7eomcbGET0KZe7DlzdhK2YM6CbLbeKeFZr-MJzJMtw0=@proton.me/T/#u
+Except that it is pointless and redundant, why is it wrong? You did not
+bring any argument, except "will trigger 2 probes" which is clearly false.
 
-On Wednesday, July 24th, 2024 at 9:06 PM, Piotr Zalewski <pZ010001011111@proton.me> wrote:
+> Each strings will trigger a probe.
 
-> Add support for gamma LUT in VOP2 driver. The implementation is based on
-> the one found in VOP driver and modified to be compatible with VOP2. Blue
-> and red channels in gamma LUT register write were swapped with respect to
-> how gamma LUT values are written in VOP. Write of the current video port id
-> to VOP2_SYS_LUT_PORT_SEL register was added before the write of DSP_LUT_EN
-> bit. Gamma size is set and drm color management is enabled for each video
-> port's CRTC except ones which have no associated device. Tested on RK3566
-> (Pinetab2).
+What? That's not true.
+
+> The string "rockchip,rk3588-mali" should be removed.
 > 
-> Helped-by: Dragan Simic dsimic@manjaro.org
+> Review was done by Collabora people and without including the Rockchip mail list.
+> https://patchwork.freedesktop.org/patch/msgid/20240229162230.2634044-12-boris.brezillon@collabora.com
 > 
-> Signed-off-by: Piotr Zalewski pZ010001011111@proton.me
-> 
-> ---
-> 
-> Notes:
-> Changes in v2:
-> - Apply code styling corrections [1]
-> - Move gamma LUT write inside the vop2 lock
-> 
-> Link to v1: https://lore.kernel.org/linux-rockchip/9736eadf6a9d8e97eef919c6b3d88828@manjaro.org/T/#t
-> 
-> [1] https://lore.kernel.org/linux-rockchip/d019761504b540600d9fc7a585d6f95f@manjaro.org/
-> 
-> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-> index 16abdc4a59a8..37fcf544a5fd 100644
-> --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-> @@ -1515,9 +1515,8 @@ static void vop2_vp_dsp_lut_disable(struct vop2_video_port *vp)
-> 
-> static void vop2_crtc_write_gamma_lut(struct vop2 *vop2, struct drm_crtc *crtc)
-> {
-> - const struct vop2_data *vop2_data = vop2->data;
-> 
-> const struct vop2_video_port *vp = to_vop2_video_port(crtc);
-> - const struct vop2_video_port_data *vp_data = &vop2_data->vp[vp->id];
-> 
-> + const struct vop2_video_port_data *vp_data = &vop2->data->vp[vp->id];
-> 
-> 
-> struct drm_color_lut *lut = crtc->state->gamma_lut->data;
-> 
-> unsigned int i, bpc = ilog2(vp_data->gamma_lut_len);
-> 
-> @@ -1558,9 +1557,8 @@ static void vop2_crtc_gamma_set(struct vop2 *vop2, struct drm_crtc *crtc,
-> * In order to write the LUT to the internal memory,
-> * we need to first make sure the dsp_lut_en bit is cleared.
-> */
-> - ret =
-> - readx_poll_timeout(vop2_vp_dsp_lut_is_enabled, vp, dsp_ctrl, !dsp_ctrl, 5,
-> - 30 * 1000);
-> + ret = readx_poll_timeout(vop2_vp_dsp_lut_is_enabled, vp, dsp_ctrl,
-> + !dsp_ctrl, 5, 30 * 1000);
-> 
-> if (ret) {
-> DRM_DEV_ERROR(vop2->dev, "display LUT RAM enable timeout!\n");
-> 
-> @@ -1571,9 +1569,9 @@ static void vop2_crtc_gamma_set(struct vop2 *vop2, struct drm_crtc *crtc,
-> return;
-> }
-> 
-> - vop2_crtc_write_gamma_lut(vop2, crtc);
-> 
-> vop2_lock(vop2);
-> + vop2_crtc_write_gamma_lut(vop2, crtc);
-> vop2_writel(vp->vop2, RK3568_LUT_PORT_SEL, vp->id);
-> 
-> 
-> vop2_vp_dsp_lut_enable(vp);
+> Could someone look at this and test.
+
+No need, just read how device matching and probing works...
+
+
+
+
+Best regards,
+Krzysztof
+
 
 _______________________________________________
 Linux-rockchip mailing list
