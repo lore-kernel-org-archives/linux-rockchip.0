@@ -4,47 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C5CB9C3DA5D
-	for <linux-rockchip@archiver.kernel.org>; Thu, 25 Jul 2024 09:48:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 379C2C3DA5D
+	for <linux-rockchip@archiver.kernel.org>; Thu, 25 Jul 2024 09:57:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Subject:Message-ID:MIME-Version:To:Cc:
 	Date:References:In-Reply-To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=CHLTVKVn8qP31GtMKjJ+0+piQmgXkTTK9b39gCM7G10=; b=H/fZ/pXHgpqFnn
-	dZB5ablzQkIja8zt3k2rhHMnN9p0yHwVYibY/nMPGyNRPaFv0sBzl/xon0BMNeueKTnp9acDnysUU
-	MuaMCtcmlEeC+lw4uyNgIwFw/Ajj0buLPU+tGyIUPewrPk7gr4D/sMoYutiX/d3DT5hCMHNBljVu5
-	tl7kdi+U/VcyNcmo409Pu80P7SmvlNCx5re2FUqICUd+7EE0m+8hGWUqmXXpK7LGlw9HLsvwRCv4I
-	YYJip3uzXSJFLsoOAONL8tcwbLWXh5X5vhKKo2IodyNFHbypVJTc8OQGOXUXcymbBOF5ACFD11OXo
-	1PvNiYdW96ckB1w6WKyA==;
+	List-Owner; bh=ujy2KIM5CQOcrp50gbOBZVpXZprm6+2lgqzvH2j3jg8=; b=GCrYU0IrGr9wn8
+	U0nKsLxfESBvDzoXZp+IrKyTEmPF9AGeiKSR/ViIUGHPp95ncYcq3j/2GnbWeim2tV9/rppPBZUvS
+	Vjn7Al++9LfGl70CUqhDAjUziWGdHgs+E3EqdZyWZtyQTRtlKJo8z1/bHXekKspomkhDnUmt/TNZj
+	Mt7mQTE2Mgzn2Y/OZ4gJ+0TQkdHRP7x6QyQMBMVO49TgAJms2aNrD8aLppJVf0+fL2yTUxoTynp7V
+	aZZMHkeqxd0ZvqNzRsvL+CsccXr7z6UPmlfp6Hzk/Ui96QbgruF4SKKRpVutz/oeUVZagh7ByLRgP
+	T5zloJ2iPiGZTf7eCPjQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sWv5O-00000000X8L-1FFz;
-	Thu, 25 Jul 2024 09:48:34 +0000
-Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
+	id 1sWvDh-00000000YB1-0sd3;
+	Thu, 25 Jul 2024 09:57:09 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sWv3n-00000000WSI-3lAk;
-	Thu, 25 Jul 2024 09:46:58 +0000
+	id 1sWvDE-00000000Y6z-3JMB;
+	Thu, 25 Jul 2024 09:56:40 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Subject:
+	Message-ID:MIME-Version:To:Cc:Date:References:Content-Type:In-Reply-To:From:
+	Sender:Reply-To:Content-ID:Content-Description;
+	bh=T/6m9J73acVwBufreH67PzE4y5hANP8CssvHs6cEC/Y=; b=idPMf43oIp3YSVZd1euO3pv0lV
+	Bd/tN+c2N1qO0xb+HjFcHxQlhX6pIX8jloeYHdD7hn5Dg7c5tW/ZbhcG4MfE4CljWUskMg0mjicR3
+	G3nPnWhrV2QeyvDFBqFLcuK3dHR7LspQ9ZN+AsEEj53PO0Q6wc7oVJPs/zRNrm9cK7wHAXthO/bkT
+	JtmeObtqWgiDjMLMq7+whYg2U8HeS8X+XN+3sRHcMLNl+UQMpfqk9Gbdz1O1xdlXSxYi2Bgp0MNT+
+	OLQ4vuGFjlITbHRTeCfJrvor1XaHndarerbBaNIhIpi46KqhDG5AXZ1JDhmTvn0tzrseL0qKAqFLg
+	FUzj0Qbg==;
+Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
+	by desiato.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
+	id 1sWvDA-00000003yrB-3kc2;
+	Thu, 25 Jul 2024 09:56:38 +0000
 Received: from harlem.collaboradmins.com (harlem.collaboradmins.com [IPv6:2a01:4f8:1c0c:5936::1])
-	by madrid.collaboradmins.com (Postfix) with ESMTP id AE7C137811F4;
-	Thu, 25 Jul 2024 09:46:51 +0000 (UTC)
+	by madrid.collaboradmins.com (Postfix) with ESMTP id 7AD8D37811F4;
+	Thu, 25 Jul 2024 09:56:32 +0000 (UTC)
 From: "Shreeya Patel" <shreeya.patel@collabora.com>
-In-Reply-To: <172142702137.153951.8294803513682327237.robh@kernel.org>
+In-Reply-To: <b8f1c80f-0e5f-41fc-bc20-0807db6c31d5@xs4all.nl>
 X-Forward: 127.0.0.1
 References: <20240719124032.26852-1-shreeya.patel@collabora.com>
- <20240719124032.26852-3-shreeya.patel@collabora.com> <172142702137.153951.8294803513682327237.robh@kernel.org>
-Date: Thu, 25 Jul 2024 10:46:51 +0100
-Cc: kernel@collabora.com, mchehab@kernel.org, conor+dt@kernel.org, linux-media@vger.kernel.org, nelson.costa@synopsys.com, linux-arm-kernel@lists.infradead.org, heiko@sntech.de, mturquette@baylibre.com, hverkuil@xs4all.nl, hverkuil-cisco@xs4all.nl, linux-rockchip@lists.infradead.org, shawn.wen@rock-chips.com, sboyd@kernel.org, "Dmitry Osipenko" <dmitry.osipenko@collabora.com>, p.zabel@pengutronix.de, jose.abreu@synopsys.com, linux-kernel@vger.kernel.org, krzk+dt@kernel.org, devicetree@vger.kernel.org, nicolas.dufresne@collabora.com
-To: "Rob Herring (Arm)" <robh@kernel.org>
+ <20240719124032.26852-5-shreeya.patel@collabora.com> <b8f1c80f-0e5f-41fc-bc20-0807db6c31d5@xs4all.nl>
+Date: Thu, 25 Jul 2024 10:56:32 +0100
+Cc: heiko@sntech.de, mchehab@kernel.org, robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org, mturquette@baylibre.com, sboyd@kernel.org, p.zabel@pengutronix.de, jose.abreu@synopsys.com, nelson.costa@synopsys.com, shawn.wen@rock-chips.com, nicolas.dufresne@collabora.com, hverkuil-cisco@xs4all.nl, kernel@collabora.com, linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, "Dmitry Osipenko" <dmitry.osipenko@collabora.com>
+To: "Hans Verkuil" <hverkuil@xs4all.nl>
 MIME-Version: 1.0
-Message-ID: <ae465-66a21f00-1-25170f80@209442668>
-Subject: =?utf-8?q?Re=3A?= [PATCH v4 2/4] =?utf-8?q?dt-bindings=3A?=
- =?utf-8?q?_media=3A?= Document bindings for HDMI RX Controller
+Message-ID: <ae40e-66a22180-1-60612780@204847186>
+Subject: =?utf-8?q?Re=3A?= [PATCH v4 4/4] =?utf-8?q?media=3A?=
+ =?utf-8?q?_platform=3A?==?utf-8?q?_synopsys=3A?= Add support for hdmi input 
+ driver
 User-Agent: SOGoMail 5.10.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240725_024656_117611_D81FD7BC 
-X-CRM114-Status: GOOD (  23.96  )
+X-CRM114-CacheID: sfid-20240725_105637_127208_4A8233C3 
+X-CRM114-Status: GOOD (  15.12  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -61,80 +76,42 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Saturday, July 20, 2024 03:40 IST, "Rob Herring (Arm)" <robh@kernel.org> wrote:
+On Sunday, July 21, 2024 14:21 IST, Hans Verkuil <hverkuil@xs4all.nl> wrote:
 
-> 
-> On Fri, 19 Jul 2024 18:10:30 +0530, Shreeya Patel wrote:
-> > Document bindings for the Synopsys DesignWare HDMI RX Controller.
+Hi Hans,
+
+> On 19/07/2024 14:40, Shreeya Patel wrote:
+> > Add initial support for the Synopsys DesignWare HDMI RX
+> > Controller Driver used by Rockchip RK3588. The driver
+> > supports:
+> >  - HDMI 1.4b and 2.0 modes (HDMI 4k@60Hz)
+> >  - RGB888, YUV422, YUV444 and YCC420 pixel formats
+> >  - CEC
+> >  - EDID configuration
 > > 
-> > Reviewed-by: Rob Herring <robh@kernel.org>
-> > Reviewed-by: Dmitry Osipenko <dmitry.osipenko@collabora.com>
-> > Signed-off-by: Shreeya Patel <shreeya.patel@collabora.com>
-> > ---
-> > 
-> > Changes in v4 :-
-> >   - No change
-> > 
-> > Changes in v3 :-
-> >   - Rename hdmirx_cma to hdmi_receiver_cma
-> >   - Add a Reviewed-by tag
-> > 
-> > Changes in v2 :-
-> >   - Add a description for the hardware
-> >   - Rename resets, vo1 grf and HPD properties
-> >   - Add a proper description for grf and vo1-grf phandles
-> >   - Rename the HDMI Input node name to hdmi-receiver
-> >   - Improve the subject line
-> >   - Include gpio header file in example to fix dt_binding_check failure
-> > 
-> >  .../bindings/media/snps,dw-hdmi-rx.yaml       | 132 ++++++++++++++++++
-> >  1 file changed, 132 insertions(+)
-> >  create mode 100644 Documentation/devicetree/bindings/media/snps,dw-hdmi-rx.yaml
-> > 
+> > The hardware also has Audio and HDCP capabilities, but these are
+> > not yet supported by the driver.
 > 
-> My bot found errors running 'make dt_binding_check' on your patch:
+> FYI: if you want to add HDCP support, then please contact me. I have code
+> available for that (i.e. the public API part), although it is out of date.
 > 
-> yamllint warnings/errors:
-> 
-> dtschema/dtc warnings/errors:
-> Error: Documentation/devicetree/bindings/media/snps,dw-hdmi-rx.example.dts:53.38-39 syntax error
-> FATAL ERROR: Unable to parse input tree
-> make[2]: *** [scripts/Makefile.lib:427: Documentation/devicetree/bindings/media/snps,dw-hdmi-rx.example.dtb] Error 1
-> make[2]: *** Waiting for unfinished jobs....
-> make[1]: *** [/builds/robherring/dt-review-ci/linux/Makefile:1430: dt_binding_check] Error 2
-> make: *** [Makefile:240: __sub-make] Error 2
-> 
-> doc reference errors (make refcheckdocs):
-> 
-> See https://patchwork.ozlabs.org/project/devicetree-bindings/patch/20240719124032.26852-3-shreeya.patel@collabora.com
-> 
-> The base for the series is generally the latest rc1. A different dependency
-> should be noted in *this* patch.
+> But if you want to enable HDCP in this driver, then I would be very happy
+> to clean it up and post patches for that. It is something we (i.e. Cisco)
+> have been using for several years now in out-of-tree drivers.
 > 
 
-My HDMI RX patches are based on the linux-next/master branch.
-Since the bot tested the patches on top of rc1, it resulted in some errors
-due to missing reset ID patches.
+Currently we do not have any plans to work on the HDCP support.
+But in case the requirement arises in future, we will definitely reach
+out to you.
 
-I think the above statement means I should explicitly mention in this
-patch that it is based on linux-next/master (something to keep in mind
-for future :)
+Thanks,
+Shreeya Patel
 
-
-> If you already ran 'make dt_binding_check' and didn't see the above
-> error(s), then make sure 'yamllint' is installed and dt-schema is up to
-> date:
+> I will try to review this patch in the next few days.
 > 
-> pip3 install dtschema --upgrade
+> Regards,
 > 
-> Please check and re-submit after running the above command yourself. Note
-> that DT_SCHEMA_FILES can be set to your schema file to speed up checking
-> your schema. However, it must be unset to test all examples with your schema.
-> 
-> _______________________________________________
-> Kernel mailing list -- kernel@mailman.collabora.com
-> To unsubscribe send an email to kernel-leave@mailman.collabora.com
-> This list is managed by https://mailman.collabora.com
+> 	Hans
 
 
 _______________________________________________
