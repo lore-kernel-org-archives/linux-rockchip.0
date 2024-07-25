@@ -4,49 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 261A6C3DA49
-	for <linux-rockchip@archiver.kernel.org>; Thu, 25 Jul 2024 06:36:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2DC84C3DA49
+	for <linux-rockchip@archiver.kernel.org>; Thu, 25 Jul 2024 06:39:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To:From:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=mceceqt3v8YUF5WqUqBX8X1RYe92oHQy6bvN9YNq3oo=; b=cFIORoPme+ioOC
-	huSOABOIm7aaC2qXLmyE4IkbPL45YiIGMZfhCvxp1/oJqcvapkCeJHU4SQczhmVxE42pSVqQUVczb
-	DTyekNxZYzfsTRRfzlUBgUhUWB1FZcZ66qBORZ5qpLeDXfLDrX9ZlFNJhOJGN2pBNPqqTPM18u8a2
-	eBnW5dH2lvVj7TuH8tbthG2JwLo68MUY89cZb8YYo8gmG5Q5n5rJ1umXIeeQdRTzeK5DF949Qs6L1
-	PIECOslcPx679qxB+ca6U1eOmzL1Gn42cxAqC0yT1bixuGiaV4R2V0UEQ4nHGADAMUOghwvWOEgp3
-	ckA9hnYqrnyYZqXgewIg==;
+	List-Owner; bh=eEhA0zMjquuPwFvXPVHVL/3WNv+kqE13AWrzK3yEnio=; b=3D9D9ndCaNfXKH
+	gZQV22n266zweIU7cO41w7hj3RrLQU5a1gj+iV8LA/NBae16r/0MpYadbBPNeo7wCo4J+SWMYiOd2
+	+D/kwTo+7SqJnEB3SwqzlVKQP8RQAZ8B4w2ltV4DgcOe0/1vzzbSqJhHvyKPZHUtfypvSGrzRV/5H
+	+NqBBpDW79pUzuvuuJzr4lcomB48w7bsB9kEAbmpGGTNwwfgYtoaS+xlDH9tdf9uwiWlUSkVgFxJx
+	s7mT3m5GTTaJqahYS2v5UbSGBGYRmIxsiy33EMkoxQng47g12LW7Tk/zgCt3L32XOP/ct32Jvi3nL
+	ULAQwpqNywt8KsFLJFMQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sWs5S-000000003YK-14Fm;
-	Thu, 25 Jul 2024 06:36:26 +0000
-Received: from sin.source.kernel.org ([145.40.73.55])
+	id 1sWs87-0000000047P-44qG;
+	Thu, 25 Jul 2024 06:39:11 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sWs52-000000003PK-41wT;
-	Thu, 25 Jul 2024 06:36:03 +0000
+	id 1sWs7i-0000000040S-11H1;
+	Thu, 25 Jul 2024 06:38:48 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 0A2DACE1252;
-	Thu, 25 Jul 2024 06:35:58 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 40BAEC116B1;
-	Thu, 25 Jul 2024 06:35:49 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 6975B612B2;
+	Thu, 25 Jul 2024 06:38:45 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5BB37C116B1;
+	Thu, 25 Jul 2024 06:38:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1721889357;
-	bh=e+vAu011Q2XaPgxR1bgL1eB2JgNr0fymJeAhB9c8ogo=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=ZiOKlIWQVO8o6Db+DNWg6JtImhxpWRcPuL0iVEfgUaMNBq/HoHubwhNCdm5T3/Kup
-	 nvZgJXHtgfMWyNJ5lNXIoSSUMSFeHuxaBxB066ViFXG7YAaQwSW1/GIXjZ2roPo1/r
-	 aRJtMKv8emNFr2LlumDRvjIW+JpKeRwf81MOZAvx07SEX1bU6Hq/il0g6sFZbMk4oQ
-	 KQYLMRxrEiUxZick4Mb+a4gNiS7YIdHnT5DOmnMozd4le1FSBuCJqNOH4re2JwtvrV
-	 JTaEGv1nFBS1HvtnZeufMFnyRvp99GNEE78cEgBM0bScYXODE7NGPkSpuXCqycSS90
-	 RLTgsWvPOR+vg==
-Message-ID: <51099628-b820-45cc-8af5-5cfa604736a2@kernel.org>
-Date: Thu, 25 Jul 2024 08:35:47 +0200
+	s=k20201202; t=1721889525;
+	bh=4z3M5ra6xij8S/0Mc5OaE/VUO1NbdtcoPBuP6rQ5rSU=;
+	h=Date:Subject:From:To:Cc:References:In-Reply-To:From;
+	b=d2MVeVmsZsHr2CSWLEkZn+GcfRyuymWiQ4JexLn+9yvvRvmhd32sxM+qvFakuyObE
+	 IGTCtdYQnD1gjN9DmHj2CSM1MxEiG/crDkW2lqSr/WuHi/J/AkNRhBwiTL4jpM8hJX
+	 aFCo6H9ulpte5pCJzxpn1nSFW8nf5F8laQhfTFugga7Q53wzTNWU5z68huP9Oh/imC
+	 grDqS6BGbDsMUoZibw3Ch+K0cSl9UUfElRkQVuGL5unJEAXkDQWrHVj/14ihn0mEyk
+	 C4MGdRZfrBZfbwJaERuOUcly6uEaCxwcD8vguk0tvnEfHd1zvtyxC+gbS+dBzrczCX
+	 XIdwUF0DW2gGg==
+Message-ID: <b632acf8-ead0-49d4-bf98-1701949ec13a@kernel.org>
+Date: Thu, 25 Jul 2024 08:38:34 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH v4 2/4] dt-bindings: media: Document bindings for HDMI RX
  Controller
+From: Krzysztof Kozlowski <krzk@kernel.org>
 To: Johan Jonker <jbx6244@yandex.com>,
  Sebastian Reichel <sebastian.reichel@collabora.com>
 Cc: Shreeya Patel <shreeya.patel@collabora.com>, heiko@sntech.de,
@@ -66,7 +67,7 @@ References: <20240719124032.26852-1-shreeya.patel@collabora.com>
  <ae3f574a-256f-4ced-a371-a26255024750@yandex.com>
  <6nzakkvpfodztxh6jnxlhknd7x7ni6agwpguxyqd6gcncedp53@vsk5mnaayfqs>
  <80090f6e-7bc8-422a-bb2a-0c0a4abf32f0@yandex.com>
-From: Krzysztof Kozlowski <krzk@kernel.org>
+ <51099628-b820-45cc-8af5-5cfa604736a2@kernel.org>
 Content-Language: en-US
 Autocrypt: addr=krzk@kernel.org; keydata=
  xsFNBFVDQq4BEAC6KeLOfFsAvFMBsrCrJ2bCalhPv5+KQF2PS2+iwZI8BpRZoV+Bd5kWvN79
@@ -111,10 +112,11 @@ Autocrypt: addr=krzk@kernel.org; keydata=
  uZwJCLykjad45hsWcOGk3OcaAGQS6NDlfhM6O9aYNwGL6tGt/6BkRikNOs7VDEa4/HlbaSJo
  7FgndGw1kWmkeL6oQh7wBvYll2buKod4qYntmNKEicoHGU+x91Gcan8mCoqhJkbqrL7+nXG2
  5Q/GS5M9RFWS+nYyJh+c3OcfKqVcZQNANItt7+ULzdNJuhvTRRdC3g9hmCEuNSr+CLMdnRBY fv0=
-In-Reply-To: <80090f6e-7bc8-422a-bb2a-0c0a4abf32f0@yandex.com>
+In-Reply-To: <51099628-b820-45cc-8af5-5cfa604736a2@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240724_233601_518571_1B007CBA 
-X-CRM114-Status: GOOD (  12.58  )
+X-CRM114-CacheID: sfid-20240724_233846_424887_1E9B51D0 
+X-CRM114-Status: UNSURE (   9.90  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -131,81 +133,77 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 24/07/2024 15:20, Johan Jonker wrote:
-> 
+On 25/07/2024 08:35, Krzysztof Kozlowski wrote:
+> On 24/07/2024 15:20, Johan Jonker wrote:
 >>
->> Where did you learn that? Having non-SoC specific generic fallback
->> compatibles is pretty much standard throughout the kernel. See for
->> example these RK3588 DesignWare compatibles:
+>>>
+>>> Where did you learn that? Having non-SoC specific generic fallback
+>>> compatibles is pretty much standard throughout the kernel. See for
+>>> example these RK3588 DesignWare compatibles:
+>>>
+>>> Synopsys Serial Controller:
+>>>     Documentation/devicetree/bindings/serial/snps-dw-apb-uart.yaml
+>>>     compatible = "rockchip,rk3588-uart", "snps,dw-apb-uart";
 >>
->> Synopsys Serial Controller:
->>     Documentation/devicetree/bindings/serial/snps-dw-apb-uart.yaml
->>     compatible = "rockchip,rk3588-uart", "snps,dw-apb-uart";
-> 
-> Compatible method #2:
-> 	{ .compatible = "snps,dw-apb-uart", .data = &dw8250_dw_apb },
-> 
+>> Compatible method #2:
+>> 	{ .compatible = "snps,dw-apb-uart", .data = &dw8250_dw_apb },
 >>
->> Synopsys USB3 Controller:
->>     Documentation/devicetree/bindings/usb/rockchip,dwc3.yaml
->>     compatible = "rockchip,rk3588-dwc3", "snps,dwc3";
-> 
-> Compatible method #2:
-> 	{
-> 		.compatible = "snps,dwc3"
-> 	},
-> 
+>>>
+>>> Synopsys USB3 Controller:
+>>>     Documentation/devicetree/bindings/usb/rockchip,dwc3.yaml
+>>>     compatible = "rockchip,rk3588-dwc3", "snps,dwc3";
 >>
->> Synopsys Ethernet Controller:
->>     Documentation/devicetree/bindings/net/snps,dwmac.yaml
->>     compatible = "rockchip,rk3588-gmac", "snps,dwmac-4.20a";
-> 
-> Compatible method #1:
-> 	{ .compatible = "rockchip,rk3588-gmac", .data = &rk3588_ops },
-> 
-> 	    of_device_is_compatible(np, "snps,dwmac-4.20a") ||
-> 
+>> Compatible method #2:
+>> 	{
+>> 		.compatible = "snps,dwc3"
+>> 	},
 >>
->> Synsopsys SATA Controller:
->>     Documentation/devicetree/bindings/ata/rockchip,dwc-ahci.yaml
->>     compatible = "rockchip,rk3588-dwc-ahci", "snps,dwc-ahci"
-> 
-> Compatible method #2:
-> 	{ .compatible = "snps,dwc-ahci", &ahci_dwc_plat },
-> 
+>>>
+>>> Synopsys Ethernet Controller:
+>>>     Documentation/devicetree/bindings/net/snps,dwmac.yaml
+>>>     compatible = "rockchip,rk3588-gmac", "snps,dwmac-4.20a";
 >>
->> It's also not specific to Synopsys (but RK3588 has a lot of Synopsys
->> design incl. the HDMI-RX IP currently worked on by Shreeya). Here
->> are some other examples:
+>> Compatible method #1:
+>> 	{ .compatible = "rockchip,rk3588-gmac", .data = &rk3588_ops },
 >>
->> ARM Mali GPU:
->>     Documentation/devicetree/bindings/gpu/arm,mali-valhall-csf.yaml
->>     compatible = "rockchip,rk3588-mali", "arm,mali-valhall-csf";
+>> 	    of_device_is_compatible(np, "snps,dwmac-4.20a") ||
+>>
+>>>
+>>> Synsopsys SATA Controller:
+>>>     Documentation/devicetree/bindings/ata/rockchip,dwc-ahci.yaml
+>>>     compatible = "rockchip,rk3588-dwc-ahci", "snps,dwc-ahci"
+>>
+>> Compatible method #2:
+>> 	{ .compatible = "snps,dwc-ahci", &ahci_dwc_plat },
+>>
+>>>
+>>> It's also not specific to Synopsys (but RK3588 has a lot of Synopsys
+>>> design incl. the HDMI-RX IP currently worked on by Shreeya). Here
+>>> are some other examples:
+>>>
+>>> ARM Mali GPU:
+>>>     Documentation/devicetree/bindings/gpu/arm,mali-valhall-csf.yaml
+>>>     compatible = "rockchip,rk3588-mali", "arm,mali-valhall-csf";
+>>
+>> Should be compatible method #2:
+>> 	{ .compatible = "rockchip,rk3588-mali" },
+>> 	{ .compatible = "arm,mali-valhall-csf" },
+>>
+>> This is wrong!
 > 
-> Should be compatible method #2:
-> 	{ .compatible = "rockchip,rk3588-mali" },
-> 	{ .compatible = "arm,mali-valhall-csf" },
+> Except that it is pointless and redundant, why is it wrong? You did not
+> bring any argument, except "will trigger 2 probes" which is clearly false.
 > 
-> This is wrong!
-
-Except that it is pointless and redundant, why is it wrong? You did not
-bring any argument, except "will trigger 2 probes" which is clearly false.
-
-> Each strings will trigger a probe.
-
-What? That's not true.
-
-> The string "rockchip,rk3588-mali" should be removed.
+>> Each strings will trigger a probe.
 > 
-> Review was done by Collabora people and without including the Rockchip mail list.
-> https://patchwork.freedesktop.org/patch/msgid/20240229162230.2634044-12-boris.brezillon@collabora.com
-> 
-> Could someone look at this and test.
+> What? That's not true.
 
-No need, just read how device matching and probing works...
+Although if you meant "any string will trigger one probe in total", then
+it would be true, so maybe that's what you meant.
 
-
-
+But then - what's wrong with this (except needless redundancy)? You did
+not bring any argument but keep calling more than once "wrong". So what
+is wrong?
 
 Best regards,
 Krzysztof
