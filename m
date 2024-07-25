@@ -4,33 +4,33 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 23A2AC3DA49
-	for <linux-rockchip@archiver.kernel.org>; Thu, 25 Jul 2024 19:48:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 10C1EC3DA5D
+	for <linux-rockchip@archiver.kernel.org>; Thu, 25 Jul 2024 19:48:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=I6saJLr8L2niUe1/cDsVcqr8HSJLo09GIP2MWsDNf40=; b=EV2/lx27Nkov14
-	SdZIm851EaS8qtUa5DVNNESyq6tvA7TTZ1HsA/tWGwS+mhiyTHdcLOgFOzgKWBvx9OkxL2wh+v6R9
-	g7c84F8rtl1sVQL+lNUAEa1yoGv5U4va0bYywDdCQUW4GR2QiZRi/gTQQOUs5YSfEffkScSK3kpM0
-	K2Tdk4lAdJbVmUj9V8d774uRUmFQkRne8mwft1LlTbdUvWY7i8/ulBGZtkayWloFb9w0glorHocdC
-	PouXN1b9cs7bw459jG9zQ5hceHEYZdHuLAgLAS8uINnH+/nnhd3qs/87UkcqnS+QPh1y+0Yhu8RZi
-	I3c2/AeioSHXTdqKYlVQ==;
+	List-Owner; bh=n14C7bJsgBsU4Llui/xVVGGHKkaj7aYL2GYbOCxgjXo=; b=ga6jq69o015V44
+	NpYVwkcpBERFSpKGwS+iegIlwHwiUZmHTd3tfBBtqiUaOZKoGLtNBbVeA51amQQBghnVXhqDlt4x3
+	0gj1ytIC31RJezRveNpZlOjhSqOKzhFRwNA08ysgZCuvBZrfNmRfxJgmpn0vJvT+EzFhYBVoNmaTa
+	d6rDmkbPCGWAfoKMDrK9ww4qvfuxIOQG6Fl5DQ/xC98DOYU5IQfiesuebLiN1qW2SYPAvPcG57qOy
+	M2TcO9famJTCq5BjSeg4R/CPWdM/aNoP0iEJV74U4UI6S6Q1hFPivKnLpd4Bi1F9OAv//a7EW+2rO
+	3ZKMFKO4jtjmXIHby+/g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sX4Rf-00000001wzM-3Bfi;
-	Thu, 25 Jul 2024 19:48:11 +0000
+	id 1sX4S7-00000001xGI-2oBW;
+	Thu, 25 Jul 2024 19:48:39 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sX4Pe-00000001wAA-40OA;
-	Thu, 25 Jul 2024 19:46:11 +0000
+	id 1sX4Pe-00000001wAB-46NQ;
+	Thu, 25 Jul 2024 19:46:12 +0000
 Received: from i5e860cdd.versanet.de ([94.134.12.221] helo=phil.lan)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1sX4PQ-0001rD-7y; Thu, 25 Jul 2024 21:45:52 +0200
+	id 1sX4PO-0001rD-Sf; Thu, 25 Jul 2024 21:45:50 +0200
 From: Heiko Stuebner <heiko@sntech.de>
 To: lee@kernel.org,
 	jdelvare@suse.com,
@@ -49,16 +49,16 @@ Cc: robh@kernel.org,
 	linux-hwmon@vger.kernel.org,
 	linux-input@vger.kernel.org,
 	linux-leds@vger.kernel.org
-Subject: [PATCH 4/7] Input: add driver for the input part of qnap-mcu devices
-Date: Thu, 25 Jul 2024 21:45:36 +0200
-Message-Id: <20240725194539.1780790-5-heiko@sntech.de>
+Subject: [PATCH 2/7] mfd: add base driver for qnap-mcu devices
+Date: Thu, 25 Jul 2024 21:45:34 +0200
+Message-Id: <20240725194539.1780790-3-heiko@sntech.de>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20240725194539.1780790-1-heiko@sntech.de>
 References: <20240725194539.1780790-1-heiko@sntech.de>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240725_124607_017911_AA200862 
-X-CRM114-Status: GOOD (  28.25  )
+X-CRM114-CacheID: sfid-20240725_124607_182354_EC6601B2 
+X-CRM114-Status: GOOD (  36.14  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,217 +75,468 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The MCU controls the power-button and beeper, so expose them as input
-device. There is of course no interrupt line, so the status of the
-power-button needs to be polled. To generate an event the power-button
-also needs to be held for 1-2 seconds, so the polling interval does
-not need to be overly fast.
+These MCUs are used in network-attached-storage devices made by QNAP
+and provide additional functionality to the system.
+
+This adds the base driver that implements the serial protocol via
+serdev and additionally hooks into the poweroff handlers to turn
+off the parts of the system not supplied by the general PMIC.
+
+Turning off (at least the TSx33 devices using Rockchip SoCs) is twofold.
+Turning off the MCU does not turn off the SoC and turning off the SoC
+does not turn off the hard-drives. And if the MCU is not turned off,
+the system also won't start again until it is unplugged from power.
+
+So on shutdown the MCU needs to be turned off before the general PMIC.
+
+The protocol spoken by the MCU is sadly not documented, but was
+obtained by listening to the chatter on the serial port, as thankfully
+the "hal_app" program from QNAPs firmware allows triggering all/most
+MCU actions from the command line.
+
+The implementation of how to talk to the serial device got some
+inspiration from the rave-sp servdev mfd.
 
 Signed-off-by: Heiko Stuebner <heiko@sntech.de>
 ---
- drivers/input/misc/Kconfig          |  12 +++
- drivers/input/misc/Makefile         |   1 +
- drivers/input/misc/qnap-mcu-input.c | 156 ++++++++++++++++++++++++++++
- 3 files changed, 169 insertions(+)
- create mode 100644 drivers/input/misc/qnap-mcu-input.c
+ drivers/mfd/Kconfig          |  10 +
+ drivers/mfd/Makefile         |   2 +
+ drivers/mfd/qnap-mcu.c       | 356 +++++++++++++++++++++++++++++++++++
+ include/linux/mfd/qnap-mcu.h |  28 +++
+ 4 files changed, 396 insertions(+)
+ create mode 100644 drivers/mfd/qnap-mcu.c
+ create mode 100644 include/linux/mfd/qnap-mcu.h
 
-diff --git a/drivers/input/misc/Kconfig b/drivers/input/misc/Kconfig
-index 6ba984d7f0b18..4ab8fe8301635 100644
---- a/drivers/input/misc/Kconfig
-+++ b/drivers/input/misc/Kconfig
-@@ -900,6 +900,18 @@ config INPUT_HISI_POWERKEY
- 	  To compile this driver as a module, choose M here: the
- 	  module will be called hisi_powerkey.
+diff --git a/drivers/mfd/Kconfig b/drivers/mfd/Kconfig
+index 266b4f54af603..bdd2d94d167cb 100644
+--- a/drivers/mfd/Kconfig
++++ b/drivers/mfd/Kconfig
+@@ -2306,6 +2306,16 @@ config MFD_INTEL_M10_BMC_PMCI
+ 	  additional drivers must be enabled in order to use the functionality
+ 	  of the device.
  
-+config INPUT_QNAP_MCU
-+	tristate "Input Support for QNAP MCU controllers"
-+	depends on MFD_QNAP_MCU
++config MFD_QNAP_MCU
++	tristate "QNAP MCU core driver"
++	depends on SERIAL_DEV_BUS
 +	help
-+	  This option enables support for input elements available on
-+	  embedded controllers used in QNAP NAS devices.
++	  Select this to get support for the QNAP MCU device found in
++	  several devices of QNAP network attached storages.
 +
-+	  This includes a polled power-button as well as a beeper.
++	  It implements the base serial protocol to talk to the device
++	  and provides functions for the other parts to hook into.
 +
-+	  To compile this driver as a module, choose M here: the
-+	  module will be called qnap-mcu-input.
+ config MFD_RSMU_I2C
+ 	tristate "Renesas Synchronization Management Unit with I2C"
+ 	depends on I2C && OF
+diff --git a/drivers/mfd/Makefile b/drivers/mfd/Makefile
+index c66f07edcd0e6..5c54ddd6b2f94 100644
+--- a/drivers/mfd/Makefile
++++ b/drivers/mfd/Makefile
+@@ -280,6 +280,8 @@ obj-$(CONFIG_MFD_INTEL_M10_BMC_PMCI)   += intel-m10-bmc-pmci.o
+ obj-$(CONFIG_MFD_ATC260X)	+= atc260x-core.o
+ obj-$(CONFIG_MFD_ATC260X_I2C)	+= atc260x-i2c.o
+ 
++obj-$(CONFIG_MFD_QNAP_MCU)	+= qnap-mcu.o
 +
- config INPUT_RAVE_SP_PWRBUTTON
- 	tristate "RAVE SP Power button Driver"
- 	depends on RAVE_SP_CORE
-diff --git a/drivers/input/misc/Makefile b/drivers/input/misc/Makefile
-index 04296a4abe8e8..05f5d0072b08f 100644
---- a/drivers/input/misc/Makefile
-+++ b/drivers/input/misc/Makefile
-@@ -66,6 +66,7 @@ obj-$(CONFIG_INPUT_PMIC8XXX_PWRKEY)	+= pmic8xxx-pwrkey.o
- obj-$(CONFIG_INPUT_POWERMATE)		+= powermate.o
- obj-$(CONFIG_INPUT_PWM_BEEPER)		+= pwm-beeper.o
- obj-$(CONFIG_INPUT_PWM_VIBRA)		+= pwm-vibra.o
-+obj-$(CONFIG_INPUT_QNAP_MCU)		+= qnap-mcu-input.o
- obj-$(CONFIG_INPUT_RAVE_SP_PWRBUTTON)	+= rave-sp-pwrbutton.o
- obj-$(CONFIG_INPUT_RB532_BUTTON)	+= rb532_button.o
- obj-$(CONFIG_INPUT_REGULATOR_HAPTIC)	+= regulator-haptic.o
-diff --git a/drivers/input/misc/qnap-mcu-input.c b/drivers/input/misc/qnap-mcu-input.c
+ rsmu-i2c-objs			:= rsmu_core.o rsmu_i2c.o
+ rsmu-spi-objs			:= rsmu_core.o rsmu_spi.o
+ obj-$(CONFIG_MFD_RSMU_I2C)	+= rsmu-i2c.o
+diff --git a/drivers/mfd/qnap-mcu.c b/drivers/mfd/qnap-mcu.c
 new file mode 100644
-index 0000000000000..9bac7ea2c6b80
+index 0000000000000..3a0f55ea41331
 --- /dev/null
-+++ b/drivers/input/misc/qnap-mcu-input.c
-@@ -0,0 +1,156 @@
++++ b/drivers/mfd/qnap-mcu.c
+@@ -0,0 +1,356 @@
 +// SPDX-License-Identifier: GPL-2.0-only
 +
 +/*
-+ * Driver for input events on QNAP-MCUs
++ * MFD core driver for the MCU in Qnap NAS devices that is connected
++ * via a dedicated UART port
 + *
 + * Copyright (C) 2024 Heiko Stuebner <heiko@sntech.de>
 + */
 +
-+#include <linux/input.h>
++#include <linux/export.h>
++#include <linux/slab.h>
++#include <linux/mfd/core.h>
 +#include <linux/mfd/qnap-mcu.h>
 +#include <linux/module.h>
-+#include <linux/platform_device.h>
-+#include <linux/slab.h>
-+#include <uapi/linux/input-event-codes.h>
++#include <linux/of.h>
++#include <linux/reboot.h>
++#include <linux/serdev.h>
++
++/* The longest command found so far is 5 bytes long */
++#define QNAP_MCU_MAX_CMD_SIZE		5
++#define QNAP_MCU_MAX_DATA_SIZE		36
++#define QNAP_MCU_CHECKSUM_SIZE		1
++
++#define QNAP_MCU_RX_BUFFER_SIZE		\
++		(QNAP_MCU_MAX_DATA_SIZE + QNAP_MCU_CHECKSUM_SIZE)
++
++#define QNAP_MCU_TX_BUFFER_SIZE		\
++		(QNAP_MCU_MAX_CMD_SIZE + QNAP_MCU_CHECKSUM_SIZE)
++
++/**
++ * struct qnap_mcu_reply - Reply to a command
++ *
++ * @data:	Buffer to store reply payload in
++ * @length:	Expected reply length, including the checksum
++ * @received:	So far received number of bytes
++ * @done:	Reply received completely
++ */
++struct qnap_mcu_reply {
++	u8 *data;
++	size_t length;
++	size_t received;
++	struct completion done;
++};
++
++/**
++ * struct qnap_mcu - QNAP NAS embedded controller
++ *
++ * @serdev:	Pointer to underlying serdev
++ * @bus_lock:	Lock to serialize access to the device
++ * @reply_lock:	Lock protecting @reply
++ * @reply:	Pointer to memory to store reply payload
++ * @variant:	Device variant specific information
++ * @version:	MCU firmware version
++ */
++struct qnap_mcu {
++	struct serdev_device *serdev;
++	struct mutex bus_lock;
++	struct mutex reply_lock;
++	struct qnap_mcu_reply *reply;
++	const struct qnap_mcu_variant *variant;
++	u8 version[4];
++};
 +
 +/*
-+ * The power-key needs to be pressed for a while to create an event,
-+ * so there is no use for overly frequent polling.
++ * The QNAP-MCU uses a basic XOR checksum.
++ * It is always the last byte and XORs the whole previous message.
 + */
-+#define POLL_INTERVAL		500
-+
-+struct qnap_mcu_input_dev {
-+	struct input_dev *input;
-+	struct qnap_mcu *mcu;
-+	struct device *dev;
-+
-+	struct work_struct beep_work;
-+	int beep_type;
-+};
-+
-+static void qnap_mcu_input_poll(struct input_dev *input)
++static u8 qnap_mcu_csum(const u8 *buf, size_t size)
 +{
-+	struct qnap_mcu_input_dev *idev = input_get_drvdata(input);
-+	u8 cmd[] = {
-+		[0] = 0x40, /* @ */
-+		[1] = 0x43, /* C */
-+		[2] = 0x56  /* V */
-+	};
-+	u8 reply[4];
-+	int state, ret;
++	u8 csum = 0;
 +
-+	/* poll the power button */
-+	ret = qnap_mcu_exec(idev->mcu, cmd, sizeof(cmd), reply, sizeof(reply));
-+	if (ret)
-+		return;
++	while (size--)
++		csum ^= *buf++;
 +
-+	/* First bytes must mirror the sent command */
-+	if (memcmp(cmd, reply, sizeof(cmd))) {
-+		dev_err(idev->dev, "malformed data received\n");
-+		return;
-+	}
-+
-+	state = reply[3] - 0x30;
-+	input_event(input, EV_KEY, KEY_POWER, state);
-+	input_sync(input);
++	return csum;
 +}
 +
-+static void qnap_mcu_input_beeper_work(struct work_struct *work)
++static int qnap_mcu_write(struct qnap_mcu *sp, const u8 *data, u8 data_size)
 +{
-+	struct qnap_mcu_input_dev *idev =
-+		container_of(work, struct qnap_mcu_input_dev, beep_work);
-+	u8 cmd[] = {
-+		[0] = 0x40, /* @ */
-+		[1] = 0x43, /* C */
-+		[2] = (idev->beep_type == SND_TONE) ? 0x33 : 0x32
-+	};
++	unsigned char tx[QNAP_MCU_TX_BUFFER_SIZE];
++	size_t length = data_size + QNAP_MCU_CHECKSUM_SIZE;
 +
-+	qnap_mcu_exec_with_ack(idev->mcu, cmd, sizeof(cmd));
-+}
-+
-+static int qnap_mcu_input_event(struct input_dev *input, unsigned int type,
-+				unsigned int code, int value)
-+{
-+	struct qnap_mcu_input_dev *idev = input_get_drvdata(input);
-+
-+	if (type != EV_SND || (code != SND_BELL && code != SND_TONE))
-+		return -EOPNOTSUPP;
-+
-+	if (value < 0)
-+		return -EINVAL;
-+
-+	/* beep runtime is determined by the MCU */
-+	if (value == 0)
-+		return 0;
-+
-+	/* Schedule work to actually turn the beeper on */
-+	idev->beep_type = code;
-+	schedule_work(&idev->beep_work);
-+
-+	return 0;
-+}
-+
-+static int qnap_mcu_input_probe(struct platform_device *pdev)
-+{
-+	struct qnap_mcu *mcu = dev_get_drvdata(pdev->dev.parent);
-+	struct qnap_mcu_input_dev *idev;
-+	struct device *dev = &pdev->dev;
-+	struct input_dev *input;
-+	int ret;
-+
-+	idev = devm_kzalloc(dev, sizeof(*idev), GFP_KERNEL);
-+	if (!idev)
++	if (WARN_ON(length > sizeof(tx)))
 +		return -ENOMEM;
 +
-+	input = devm_input_allocate_device(dev);
-+	if (!input)
-+		return dev_err_probe(dev, -ENOMEM, "no memory for input device\n");
++	memcpy(tx, data, data_size);
++	tx[data_size] = qnap_mcu_csum(data, data_size);
 +
-+	idev->input = input;
-+	idev->dev = dev;
-+	idev->mcu = mcu;
++	print_hex_dump_debug("qnap-mcu tx: ", DUMP_PREFIX_NONE,
++			     16, 1, tx, length, false);
 +
-+	input_set_drvdata(input, idev);
++	return serdev_device_write(sp->serdev, tx, length, HZ);
++}
 +
-+	input->name		= "qnap-mcu";
-+	input->phys		= "qnap-mcu-input/input0";
-+	input->id.bustype	= BUS_HOST;
-+	input->id.vendor	= 0x0001;
-+	input->id.product	= 0x0001;
-+	input->id.version	= 0x0100;
-+	input->event		= qnap_mcu_input_event;
++static size_t qnap_mcu_receive_buf(struct serdev_device *serdev,
++				  const u8 *buf, size_t size)
++{
++	struct device *dev = &serdev->dev;
++	struct qnap_mcu *mcu = dev_get_drvdata(dev);
++	struct qnap_mcu_reply *reply = mcu->reply;
++	const u8 *src = buf;
++	const u8 *end = buf + size;
 +
-+	input_set_capability(input, EV_KEY, KEY_POWER);
-+	input_set_capability(input, EV_SND, SND_BELL);
-+	input_set_capability(input, EV_SND, SND_TONE);
++	mutex_lock(&mcu->reply_lock);
++	if (!reply) {
++		dev_warn(dev, "received %lu bytes, we were not waiting for\n",
++			 size);
++		mutex_unlock(&mcu->reply_lock);
++		return size;
++	}
 +
-+	INIT_WORK(&idev->beep_work, qnap_mcu_input_beeper_work);
++	while (src < end) {
++		reply->data[reply->received] = *src++;
++		reply->received++;
 +
-+	ret = input_setup_polling(input, qnap_mcu_input_poll);
++		if (reply->received == reply->length) {
++			complete(&reply->done);
++			mutex_unlock(&mcu->reply_lock);
++
++			/*
++			 * We report the consumed number of bytes. If there
++			 * are still bytes remaining (though there shouldn't)
++			 * the serdev layer will re-execute this handler with
++			 * the remainder of the Rx bytes.
++			 */
++			return src - buf;
++		}
++	}
++
++	/*
++	 * The only way to get out of the above loop and end up here
++	 * is through consuming all of the supplied data, so here we
++	 * report that we processed it all.
++	 */
++	mutex_unlock(&mcu->reply_lock);
++	return size;
++}
++
++static const struct serdev_device_ops qnap_mcu_serdev_device_ops = {
++	.receive_buf  = qnap_mcu_receive_buf,
++	.write_wakeup = serdev_device_write_wakeup,
++};
++
++int qnap_mcu_exec(struct qnap_mcu *mcu,
++		  u8 *cmd_data, size_t cmd_data_size,
++		  u8 *reply_data, size_t reply_data_size)
++{
++	unsigned char rx[QNAP_MCU_RX_BUFFER_SIZE];
++	size_t length = reply_data_size + QNAP_MCU_CHECKSUM_SIZE;
++	struct qnap_mcu_reply reply = {
++		.data     = rx,
++		.length   = length,
++		.received = 0,
++		.done     = COMPLETION_INITIALIZER_ONSTACK(reply.done),
++	};
++	int ret;
++
++	if (WARN_ON(length > sizeof(rx)))
++		return -ENOMEM;
++
++	mutex_lock(&mcu->bus_lock);
++
++	mutex_lock(&mcu->reply_lock);
++	mcu->reply = &reply;
++	mutex_unlock(&mcu->reply_lock);
++
++	qnap_mcu_write(mcu, cmd_data, cmd_data_size);
++
++	if (!wait_for_completion_timeout(&reply.done,
++					 msecs_to_jiffies(500))) {
++		dev_err(&mcu->serdev->dev, "Command timeout\n");
++		ret = -ETIMEDOUT;
++	} else {
++		u8 crc = qnap_mcu_csum(rx, reply_data_size);
++
++		print_hex_dump_debug("qnap-mcu rx: ", DUMP_PREFIX_NONE,
++				     16, 1, rx, length, false);
++
++		if (crc != rx[reply_data_size]) {
++			dev_err(&mcu->serdev->dev,
++				"Checksum 0x%02x wrong for data\n", crc);
++			ret = -EIO;
++		} else {
++			memcpy(reply_data, rx, reply_data_size);
++			ret = 0;
++		}
++	}
++
++	mutex_lock(&mcu->reply_lock);
++	mcu->reply = NULL;
++	mutex_unlock(&mcu->reply_lock);
++
++	mutex_unlock(&mcu->bus_lock);
++	return ret;
++}
++EXPORT_SYMBOL_GPL(qnap_mcu_exec);
++
++int qnap_mcu_exec_with_ack(struct qnap_mcu *mcu,
++			   u8 *cmd_data,  size_t cmd_data_size)
++{
++	u8 ack[2];
++	int ret;
++
++	ret = qnap_mcu_exec(mcu, cmd_data, cmd_data_size, ack, sizeof(ack));
 +	if (ret)
-+		return dev_err_probe(dev, ret, "unable to set up polling\n");
++		return ret;
 +
-+	input_set_poll_interval(input, POLL_INTERVAL);
++	/* Should return @0 */
++	if (ack[0] != 0x40 || ack[1] != 0x30) {
++		dev_err(&mcu->serdev->dev, "Did not receive ack\n");
++		return -EIO;
++	}
 +
-+	ret = input_register_device(input);
++	return 0;
++}
++EXPORT_SYMBOL_GPL(qnap_mcu_exec_with_ack);
++
++const struct qnap_mcu_variant *qnap_mcu_get_variant_data(struct qnap_mcu *mcu)
++{
++	return mcu->variant;
++}
++EXPORT_SYMBOL_GPL(qnap_mcu_get_variant_data);
++
++static int qnap_mcu_get_version(struct qnap_mcu *mcu)
++{
++	u8 cmd[] = {
++		[0] = 0x25, /* % */
++		[1] = 0x56  /* V */
++	};
++	u8 rx[14];
++	int ret;
++
++	ret = qnap_mcu_exec(mcu, cmd, sizeof(cmd), rx, 6);
 +	if (ret)
-+		return dev_err_probe(dev, ret, "unable to register input device\n");
++		return ret;
 +
-+	qnap_mcu_input_poll(input);
-+	input_sync(input);
++	memcpy(mcu->version, &rx[2], 4);
 +
 +	return 0;
 +}
 +
-+static struct platform_driver qnap_mcu_input_driver = {
-+	.probe = qnap_mcu_input_probe,
++/*
++ * The MCU controls power to the peripherals but not the CPU.
++ *
++ * So using the pmic to power off the system keeps the MCU and hard-drives
++ * running. This also then prevents the system from turning back on until
++ * the MCU is turned off by unplugging the power-cable.
++ * Turning off the MCU alone on the other hand turns off the hard-drives,
++ * LEDs, etc while the main SoC stays running - including its network ports.
++ */
++static int qnap_mcu_power_off(struct sys_off_data *data)
++{
++	struct qnap_mcu *mcu = data->cb_data;
++	int ret;
++	u8 cmd[] = {
++		[0] = 0x40, /* @ */
++		[1] = 0x43, /* C */
++		[2] = 0x30  /* 0 */
++	};
++
++	dev_dbg(&mcu->serdev->dev, "running MCU poweroff\n");
++	ret = qnap_mcu_exec_with_ack(mcu, cmd, sizeof(cmd));
++	if (ret) {
++		dev_err(&mcu->serdev->dev, "MCU poweroff failed %d\n", ret);
++		return NOTIFY_STOP;
++	}
++
++	return NOTIFY_DONE;
++}
++
++static const struct qnap_mcu_variant qnap_ts433_mcu = {
++	.baud_rate = 115200,
++	.num_drives = 4,
++	.fan_pwm_min = 51,  /* specified in original model.conf */
++	.fan_pwm_max = 255,
++	.usb_led = true,
++};
++
++static const struct of_device_id qnap_mcu_dt_ids[] = {
++	{ .compatible = "qnap,ts433-mcu", .data = &qnap_ts433_mcu },
++	{ /* sentinel */ }
++};
++MODULE_DEVICE_TABLE(of, qnap_mcu_dt_ids);
++
++static const struct mfd_cell qnap_mcu_subdevs[] = {
++	{ .name = "qnap-mcu-input", },
++	{ .name = "qnap-mcu-leds", },
++	{ .name = "qnap-mcu-hwmon", }
++};
++
++static int qnap_mcu_probe(struct serdev_device *serdev)
++{
++	struct device *dev = &serdev->dev;
++	struct qnap_mcu *mcu;
++	int ret;
++
++	mcu = devm_kzalloc(dev, sizeof(*mcu), GFP_KERNEL);
++	if (!mcu)
++		return -ENOMEM;
++
++	mcu->serdev = serdev;
++	dev_set_drvdata(dev, mcu);
++
++	mcu->variant = of_device_get_match_data(dev);
++	if (!mcu->variant)
++		return -ENODEV;
++
++	mutex_init(&mcu->bus_lock);
++	mutex_init(&mcu->reply_lock);
++
++	serdev_device_set_client_ops(serdev, &qnap_mcu_serdev_device_ops);
++	ret = devm_serdev_device_open(dev, serdev);
++	if (ret)
++		return ret;
++
++	serdev_device_set_baudrate(serdev, mcu->variant->baud_rate);
++	serdev_device_set_flow_control(serdev, false);
++
++	ret = serdev_device_set_parity(serdev, SERDEV_PARITY_NONE);
++	if (ret) {
++		dev_err(dev, "Failed to set parity\n");
++		return ret;
++	}
++
++	ret = qnap_mcu_get_version(mcu);
++	if (ret)
++		return ret;
++
++	ret = devm_register_sys_off_handler(dev,
++					    SYS_OFF_MODE_POWER_OFF_PREPARE,
++					    SYS_OFF_PRIO_FIRMWARE,
++					    &qnap_mcu_power_off, mcu);
++	if (ret)
++		return dev_err_probe(dev, ret,
++				     "failed to register poweroff handler\n");
++
++	ret = devm_mfd_add_devices(dev, PLATFORM_DEVID_AUTO, qnap_mcu_subdevs,
++				   ARRAY_SIZE(qnap_mcu_subdevs), NULL, 0, NULL);
++	if (ret)
++		return dev_err_probe(dev, ret, "adding qnap mfd devices failed\n");
++
++	return 0;
++}
++
++static struct serdev_device_driver qnap_mcu_drv = {
++	.probe			= qnap_mcu_probe,
 +	.driver = {
-+		.name = "qnap-mcu-input",
++		.name		= "qnap-mcu",
++		.of_match_table	= qnap_mcu_dt_ids,
 +	},
 +};
-+module_platform_driver(qnap_mcu_input_driver);
++module_serdev_device_driver(qnap_mcu_drv);
 +
-+MODULE_ALIAS("platform:qnap-mcu-input");
-+MODULE_AUTHOR("Heiko Stuebner <heiko@sntech.de>");
-+MODULE_DESCRIPTION("QNAP MCU input driver");
 +MODULE_LICENSE("GPL");
++MODULE_AUTHOR("Heiko Stuebner <heiko@sntech.de>");
++MODULE_DESCRIPTION("QNAP MCU core driver");
+diff --git a/include/linux/mfd/qnap-mcu.h b/include/linux/mfd/qnap-mcu.h
+new file mode 100644
+index 0000000000000..a71d753705546
+--- /dev/null
++++ b/include/linux/mfd/qnap-mcu.h
+@@ -0,0 +1,28 @@
++/* SPDX-License-Identifier: GPL-2.0+ */
++
++/*
++ * Core definitions for QNAP MCU MFD driver.
++ * Copyright (C) 2024 Heiko Stuebner <heiko@sntech.de>
++ */
++
++#ifndef _LINUX_QNAP_MCU_H_
++#define _LINUX_QNAP_MCU_H_
++
++struct qnap_mcu;
++
++struct qnap_mcu_variant {
++	u32 baud_rate;
++	int num_drives;
++	int fan_pwm_min;
++	int fan_pwm_max;
++	bool usb_led;
++};
++
++int qnap_mcu_exec(struct qnap_mcu *mcu,
++		  u8 *cmd_data,  size_t cmd_data_size,
++		  u8 *reply_data, size_t reply_data_size);
++int qnap_mcu_exec_with_ack(struct qnap_mcu *mcu,
++			   u8 *cmd_data,  size_t cmd_data_size);
++const struct qnap_mcu_variant *qnap_mcu_get_variant_data(struct qnap_mcu *mcu);
++
++#endif /* _LINUX_QNAP_MCU_H_ */
 -- 
 2.39.2
 
