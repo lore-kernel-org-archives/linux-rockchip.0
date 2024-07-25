@@ -4,82 +4,166 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 73222C3DA49
-	for <linux-rockchip@archiver.kernel.org>; Thu, 25 Jul 2024 10:29:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5B73AC3DA49
+	for <linux-rockchip@archiver.kernel.org>; Thu, 25 Jul 2024 13:28:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=GpmGfrvZp5C4+/ORDvWToAwOfIQUfrXPf7+kzv3neT8=; b=IijGGc+agA8ZF+
-	kQZpZnzrrIyOsXWCSsZ4Pto2MGtpEKLW6A5FSBx9dAsy7afrwpmVp8osRgIocEs7pCZrrjVDxaCHj
-	8sDsKzQO6/uTXYf9MIG1a1R3+DX5ruGSskRP/mdhgp0A13luv99OuGa8TN+YUu12wAZbvZCBEtFjF
-	sMw69n74u9d/Y5dChbIZdz3FukWToj0HJeg7NIqYXhUwtBKC4sgDXxltt5lihv50o6HoxJc1MvwVj
-	o1qQylR9omeAh/zQwc6idRd8NC2+Ia9EcA1ITwKrj0XHuBVHY4aoFbWWoSHaqG8OATvjTE+mflUP2
-	vUVV+/SRy/+DJlhd7/HA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Cc:To:In-Reply-To:
+	References:Message-Id:Subject:Date:From:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=Bgfa8aHg5cxh+7i6XaFgHSX33fTnrec1XGk+cYCz0vE=; b=qNQFW+mKMV4xuT0SknL3CGwuuR
+	8tOIG8SfNFm3VBi5VGebhLCVzbYKWcRj+WCTfrkS9MB0f7n2HhYY7dKZ2rnXYKu7EnoC6+sLZbsWL
+	8h4ZfP/cx8mI6XfspiVThjieUttKK6tgEJBjeY/xBySGM7Fw+ZEEHoHsAE+AZUTQXH+jtXpFcssic
+	hB120uBNZahjcRwronU2z3THlWfwNzd2of6mDgzkdsC8LlbKFhcgnLDy1rBWkJh7h2gBvJp+/s/Tf
+	DWxU1sncKirbPYBgVRvbYkoXk3mH90mQ3gwIw51ErK4frg1LD5OY3ZJAHEa/agFeGIlC4irUSvYaq
+	m1PMKfNw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sWvj7-00000000cN8-1pyh;
-	Thu, 25 Jul 2024 10:29:37 +0000
-Received: from mail-qv1-xf2c.google.com ([2607:f8b0:4864:20::f2c])
+	id 1sWyWA-000000014XL-15D2;
+	Thu, 25 Jul 2024 13:28:26 +0000
+Received: from mail-db5eur02on20701.outbound.protection.outlook.com ([2a01:111:f403:2608::701] helo=EUR02-DB5-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sWvii-00000000cHy-17KW
-	for linux-rockchip@lists.infradead.org;
-	Thu, 25 Jul 2024 10:29:13 +0000
-Received: by mail-qv1-xf2c.google.com with SMTP id 6a1803df08f44-6b7a4668f07so3845466d6.1
-        for <linux-rockchip@lists.infradead.org>; Thu, 25 Jul 2024 03:29:11 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=fooishbar-org.20230601.gappssmtp.com; s=20230601; t=1721903350; x=1722508150; darn=lists.infradead.org;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=lqNON2XzzicgPcrb/MJYjLlf4KFN0gRBiFSG0lWMClg=;
-        b=ppSAAUhQ19qq3U1vf90vB3fI5PLH+csMbt0yYzyS0WKF1kMvEnrGQuHJ5y4Hvn7HdU
-         CQlkM4yNB8N+i+8zrJzSIzQGQkXrS5DoELp4lxf5s4nF91Vdjx3sKSnabb7YGq+BkJqO
-         leDVXUgcZJHNItU818Bkfh1K7dQiB6LS8P7tr4Ri1uJsxVSl61g0ZvSxniwbKvJM36CM
-         atKU2wQpTHrXe6/i1PPqX1OPDG2Xaa4Qqrepn1QZzs3PMYA7aFWSdM5gmI1SgKM8ZdvE
-         TTmZRD8rF/PPE5enNz5VYFbU/gk9bx4Vjd2AYFdxrYikDmFpO4EjQO1UeqsShsSy+bR7
-         8NSg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1721903350; x=1722508150;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=lqNON2XzzicgPcrb/MJYjLlf4KFN0gRBiFSG0lWMClg=;
-        b=RdBRIOzebHz8UKtsL2h9v7kozJGz1AJoCmyxmuiYfLvascnheJmtuZITTAe5nqXMzP
-         Kyz94nUPFzgnvYThTZ3MK+f7rxlaYn171rgujy7Nv084AI1sw2W/VJllnuK3ZnvdqGOr
-         8QaX5I9Zt/9ANoxgBZUiYkuQEYYfHBoAu+Oqzv0y9Aoy6aj2exZmQXSCvsylACuYFFE9
-         hCGhKORvOcRIEuX/D0PUO9LeiEBui3R3REi5lqlW+m2bfIFvqbkP12MVxnr9IpPyyzk2
-         1ujciYirT5TMHotq7GJDOo1bSfoqJtNRi/6Ek944S7Y2Gse7cQgsBL/zRL210pMhcT4c
-         mb3Q==
-X-Forwarded-Encrypted: i=1; AJvYcCU8QaNwxkM1dKOp3lcWEimFB/6YV+yXNqrWJFIlRIBTtjq02ISTokTuHyMmNfN4yj1Q9JbcR33kSVij6/3WvQmJFfP/BCwVuuX4jgRqOwwd2/Nd
-X-Gm-Message-State: AOJu0YyJijHA7O3iNinyyriAXcAla3TtHvYRQLEvr2OrIFo8Icb04mjD
-	x0SWzEPVp7BLJ7d1fPymlgkojL7cgK9ynrU9I5GOn2p2Zh5yGkdn+BfWlD9X/37BDijCTYScl80
-	EaKGl6l3LqPdjaQCkop4wWTw3ZsvGBcZF4K3iCw==
-X-Google-Smtp-Source: AGHT+IH58fYzPz2za1A4wbM/RxniQBXqyWW1aq5VxWvoCjFUwdMxzQTEFxAC6/D8edl0M5w58o3zWa9AamOI0NUg0xw=
-X-Received: by 2002:a05:6214:230c:b0:6b5:a4f6:daa2 with SMTP id
- 6a1803df08f44-6bb406fcd47mr14595366d6.17.1721903350287; Thu, 25 Jul 2024
- 03:29:10 -0700 (PDT)
+	id 1sWyW6-000000014Ul-2b6V;
+	Thu, 25 Jul 2024 13:28:25 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=EqO0hQ6M9AGoR1A3cvmttApuAslsbjFahD+ItQyOk7RwJHGs0M9lMcEPyqzf8pQv7PGhy6SWsdB3VjPIzoX+nJjhlYCiW1Htxt6GbxQKPaVILGCgwSuHV/EF2yCxDpSUtgOTrnTXqmjJB7gHivJy61MMwx+znuFulpoF+uG2DTZe1lUJOr7focvcquwOOm0GToWApzJXAoZBTScXTq7e/NQ1HfV5ARfg4EBMN3isBFh2xTIo1Wbqu07CUfAQNtWKV4nyip9rZGe8fGM1XfOWIgLj51ijswEdJhCUwQFvs7cLZfWGYWVuQTizLLiQXQWaeqWCLKqUmsxW3SxUPwDLTw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=pJnjelccAqGsu7IfgKRzMYfmKCxrKBYH0bERLOYy5IY=;
+ b=P7D9VxLA4ZyKX0Y9Q4xSfxogKN7lKQ9R8ZjE/1RWb8QZGF13SpFewkDXzZgLG52h+enfbVCC1kgVcFbk9LBvTpSXyv5ox1gHX+3VRi29k+HvDnu8JPmZwwgCE10cgBdvJfcwk5Jn2CtWYIVG/7j0Ip+0TmspMbjHd037Q9RQDi/LvXp44mtXfDb2MehQTcuf6n/rr+2QSi5oB5vRFnwR4GueIEGcz2Rm/GZT2Ws+bnQg2gPqVwVGtZ0PQlA3vyLM7DrRQL36sipSqSLQcfjKs1j7upX0XU2Gxbgmwy3rHVIr0ZhArWttOgLmGh2T5IK7Lhrzv9CuXFi5rjoiqiWuKw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=cherry.de; dmarc=pass action=none header.from=cherry.de;
+ dkim=pass header.d=cherry.de; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cherry.de;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=pJnjelccAqGsu7IfgKRzMYfmKCxrKBYH0bERLOYy5IY=;
+ b=Tp6wdJI6zkx7geDeY6dm9pF8JZD8tw83xazhQgnRDyISmFNlV93jRk0xCZUuJWUvVi4aFe0sTQFFOXM32GrrveHR4xeOYN9UwAkfMxozlrLlKfhjJt0zUMI/Uj/s9ZNCX4kRfokmKejtO0tmjNJY9ivRoSeh3vXHdl2ZxHAKbBw=
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=cherry.de;
+Received: from DU0PR04MB9562.eurprd04.prod.outlook.com (2603:10a6:10:321::10)
+ by PAXPR04MB8287.eurprd04.prod.outlook.com (2603:10a6:102:1c4::24) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7784.20; Thu, 25 Jul
+ 2024 13:28:16 +0000
+Received: from DU0PR04MB9562.eurprd04.prod.outlook.com
+ ([fe80::ad4d:8d53:1663:d181]) by DU0PR04MB9562.eurprd04.prod.outlook.com
+ ([fe80::ad4d:8d53:1663:d181%4]) with mapi id 15.20.7784.016; Thu, 25 Jul 2024
+ 13:28:15 +0000
+From: Farouk Bouabid <farouk.bouabid@cherry.de>
+Date: Thu, 25 Jul 2024 15:27:47 +0200
+Subject: [PATCH v6 1/8] dt-bindings: i2c: add support for tsd,mule-i2c-mux
+Message-Id: <20240725-dev-mule-i2c-mux-v6-1-f9f6d7b60fb2@cherry.de>
+References: <20240725-dev-mule-i2c-mux-v6-0-f9f6d7b60fb2@cherry.de>
+In-Reply-To: <20240725-dev-mule-i2c-mux-v6-0-f9f6d7b60fb2@cherry.de>
+To: Andi Shyti <andi.shyti@kernel.org>, Rob Herring <robh@kernel.org>, 
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ Farouk Bouabid <farouk.bouabid@cherry.de>, 
+ Quentin Schulz <quentin.schulz@cherry.de>, Peter Rosin <peda@axentia.se>, 
+ Jean Delvare <jdelvare@suse.com>, Guenter Roeck <linux@roeck-us.net>, 
+ Heiko Stuebner <heiko@sntech.de>
+Cc: linux-i2c@vger.kernel.org, devicetree@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-hwmon@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+X-Mailer: b4 0.14.0
+X-ClientProxiedBy: VI1P189CA0008.EURP189.PROD.OUTLOOK.COM
+ (2603:10a6:802:2a::21) To DU0PR04MB9562.eurprd04.prod.outlook.com
+ (2603:10a6:10:321::10)
 MIME-Version: 1.0
-References: <TkgKVivuaLFLILPY-n3iZo_8KF-daKdqdu-0_e0HP-5Ar_8DALDeNWog2suwWKjX7eomcbGET0KZe7DlzdhK2YM6CbLbeKeFZr-MJzJMtw0=@proton.me>
-In-Reply-To: <TkgKVivuaLFLILPY-n3iZo_8KF-daKdqdu-0_e0HP-5Ar_8DALDeNWog2suwWKjX7eomcbGET0KZe7DlzdhK2YM6CbLbeKeFZr-MJzJMtw0=@proton.me>
-From: Daniel Stone <daniel@fooishbar.org>
-Date: Thu, 25 Jul 2024 11:28:58 +0100
-Message-ID: <CAPj87rPwJ-vRTsjM1rWRj1gyjbJM_ryrkTiPRBF3ZF1D7TVDYw@mail.gmail.com>
-Subject: Re: [PATCH v3] rockchip/drm: vop2: add support for gamma LUT
-To: Piotr Zalewski <pZ010001011111@proton.me>
-Cc: "airlied@gmail.com" <airlied@gmail.com>, "andy.yan@rock-chips.com" <andy.yan@rock-chips.com>, 
-	"daniel@ffwll.ch" <daniel@ffwll.ch>, 
-	"dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, "heiko@sntech.de" <heiko@sntech.de>, 
-	"hjc@rock-chips.com" <hjc@rock-chips.com>, 
-	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, 
-	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, 
-	"linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, 
-	"maarten.lankhorst@linux.intel.com" <maarten.lankhorst@linux.intel.com>, 
-	"mripard@kernel.org" <mripard@kernel.org>, "tzimmermann@suse.de" <tzimmermann@suse.de>
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: DU0PR04MB9562:EE_|PAXPR04MB8287:EE_
+X-MS-Office365-Filtering-Correlation-Id: fd26d9c8-dcf7-478e-9872-08dcacada3dd
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|376014|7416014|52116014|1800799024|366016|38350700014|921020;
+X-Microsoft-Antispam-Message-Info: =?utf-8?B?eEZXa25QcG9tWlQwbzZNVzBkKy9GdVlwZ3h2OEVkcmNncVlPcjBiWGdRVXc5?=
+ =?utf-8?B?NUJIWEpwelZmUUVhOGRCTHJpYWg3VmYzV0tWcmh3MWovWDhLVzFqc1dld1JI?=
+ =?utf-8?B?MEZ2SGVxRXJEeVFqUTh5cG1WUkc2aDM3Sk1qa2ZpTHRnbTJkZTg4aERibFd4?=
+ =?utf-8?B?eGtaMWJyY0dTZWlaTE9EUGtBTUE4c2R6OUJYVlZEc1NWenpqZHNKaU1rNVg1?=
+ =?utf-8?B?cWc2T1QxSWZHNU5QOGtUQXR6QW1pbnpYSm8rZ2h3eDZsUTEzOHoxN0h6SG0r?=
+ =?utf-8?B?ZUhzdG9kT2FReDkydFBkQVR6TDgrT0RKQkJuL3RlV0FmM0FiUWdOZEQ3Wm85?=
+ =?utf-8?B?VytPTW5zMGNFbWdmNGI1dTVqT1UvbUhraVJGbmdhenRxajlzU1JTRXI0TERh?=
+ =?utf-8?B?RnJ1R3lDSGZqcnc1TWhHL2c5am1vTzFWYms5YytnRE01WmtIakh5RjVOVjVG?=
+ =?utf-8?B?T1N0VzlyVkNYU1czeWJSZXBuOWlWQzJsYzFTb3BJV0Z5cUk3bGpnSXZZdXpT?=
+ =?utf-8?B?VUFXLzNucDFaZmdQSTZmZkRlWTR4VEU2eHZ3UDlGU2Vtb0JQbmZITXJ3d0Jx?=
+ =?utf-8?B?SVNRNXFaUWNCaEprVDduTGZZYm0zSUZWazdiSG0xZU9rVFlwdUgvM1FIWTZh?=
+ =?utf-8?B?a2ZuMm5XcEFaa3B0UnVzdXBpdVdKUmVWd3UrTlZDNXlXWnhtbEtGbGgxL0w4?=
+ =?utf-8?B?MVJyMW52cHJoT01ER2RlcW8yMmVMaWtXc2MvY1lCem9QSkVjdWVvaUZCRThX?=
+ =?utf-8?B?cktQTG5TTmYyZ240NGN0THQ5alZkMmNKL0N0a2RhaTh2QzZkeXB0S1JDdDBz?=
+ =?utf-8?B?YjBjbHlNcHBLSGVycXJDSkV3bDFSdy8xOGYyNnVkbnFYL09Qcks0bXNGc0dC?=
+ =?utf-8?B?ak5adjJ5VmNPTUJMUWxaeUE1bmNIamx0ZHRhcFllWVRYNmpGMjkyVjdaMEdw?=
+ =?utf-8?B?WExGL0JmblR4cU5nWWtZeW11V0dXdnh3ZS82VjNuVVpaZ1RuL0drU1RidFdI?=
+ =?utf-8?B?QlF5cVV2UWJnUHhzejNiSHM1U01QeXZQTUVtSHRNQzlqYzYvN2x2Nk02MVkv?=
+ =?utf-8?B?K1pUc2lEaVJLNEFUY01CSHFtcnFNYzV5cW8xcDlLdmF5RzJ2cjBQdHN4UzIw?=
+ =?utf-8?B?WTBCSEp2L0YwWDNuUU9nMjEyNFR6blUvbnlFWEhBN0ExUFA3YmZnTnNhYnd5?=
+ =?utf-8?B?bE45RWFOZUUzbmZIbmxNakFhRTNia0I4VzVtcnNPV2dvMGFiMEVSZlhraDhh?=
+ =?utf-8?B?UHJDV1hqbmJsVDl2MXpYZkJVb0t0ViswV0ZIZFlQWkRocktuZUx4TXI5cmNU?=
+ =?utf-8?B?ZFZnWTVKSXhpa21GY3ZHUzVPY2VYbVpUS2pwcGticGYySXF0c3RlVnhTcytU?=
+ =?utf-8?B?cmR2ZStBUHdOVXVkczB3S1YrcDNhc0ZBRmVoVXJBc0RJWHNKL2k0Sng2Z2Rq?=
+ =?utf-8?B?Y2hjQnhSYVZ0QmhCZmRBUGNyTlJHTnFnMlc1dFgvcHI2aHp0NEZDaUFJcmNB?=
+ =?utf-8?B?OU5ZeFA2OUJLYVZxZGNRMm51SWRrRkVMMGZ4Y2pPMDg1c3VYcnQ2b3hsSFZa?=
+ =?utf-8?B?MEthODl1Rmovem5MTUk3Y01GL2grZnNJbUdOaWJRTWEwLzNNdDFmMXd1YStV?=
+ =?utf-8?B?d3lJVGFaVVVUNGY0OXNyRGQvQ1lQVXdaUjZwZ2VsczZnK01xRC9WZVdJa1pH?=
+ =?utf-8?B?MXg2MitWTDJPQnlrS2xKL3lFd2dFSEJGcFBoSnptUkl3a2l3NGxiSEIzUGx0?=
+ =?utf-8?B?S3ZqUGxZbHJTMlFnRmU3ZGl0M0hVbkxtbjNTbGxmeHZFQXdNVS84QTMrNFlq?=
+ =?utf-8?Q?vuNmoc+iczumjoics3yPUP5nBT5oQhYrGK/0c=3D?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:DU0PR04MB9562.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(376014)(7416014)(52116014)(1800799024)(366016)(38350700014)(921020);DIR:OUT;SFP:1102;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?TmJ4VWEyRXZwT1dYd0djcWMwTTQyR2ZIblVlNkwrOVhTdWlrWUNLZFc4NWVx?=
+ =?utf-8?B?SzV4VGdQa2ZObVRBUXptNS9CUDFWYjU0UVh5Y0pkM3ZTdjR5WTVZMnU0MjNO?=
+ =?utf-8?B?ZVdlU2s3RjRLVlZaU3JQTHl2emVvZnBEQXhFT3JvZkRzaVdaRE9VY3VZZDlP?=
+ =?utf-8?B?QldKSU1vM0lXUytYMDhMdWVQamVjWHJ1VHdocm9rSUlSSitzRUJ4dkNoTFI1?=
+ =?utf-8?B?OTF2bE9uMjNzZTJ3ZmZiSFBKMkRHSlBZbFJUQUwvU3o4Vy9uUjFXUk9pZ0xB?=
+ =?utf-8?B?bVVzcm44Mm5oTXFwQlFLVWhzNzl0eXVaRGszbEVGT3RFSDFZVFplaDNUc2gy?=
+ =?utf-8?B?Y0k4cEVQZmt0M3FDWXhoeEFIV0VvUHRDazNpbC9QRCtQY3JEOXh2OWgvL3Qz?=
+ =?utf-8?B?eWJOUTBrQ2xCNXlTREd4QUNlbjVJMDlkWVNsVlZpbkZ5N0xMS2JxS1VnSElQ?=
+ =?utf-8?B?SUVRVDMzMHdSOVV4bmU0YVhnWktKK0p5M2JDSkNRT3YxZHZvUkRZQnhWS25p?=
+ =?utf-8?B?ZFZFSkRaWTZVak01YjkrOW1GeEh4ZC9LZm4wREl0WHNCVWJuYnNtMjlWNExz?=
+ =?utf-8?B?Q3pkeGxvdlN4T3VQVjVsZUE0VkRHN0pyb25keC9jblhFNEZOcGkvVURqMVBj?=
+ =?utf-8?B?d1pmY3p3Y2tRVWVJM2pPeTh6SyttWkhwdTJneStzUERjMXJYLzdlYys2TnE4?=
+ =?utf-8?B?Rm1PZTdFT1pucEsyazdmZElpd1JoNU9pT25KVjZFelpBbGQrUndaVURlbThk?=
+ =?utf-8?B?Z2VTSVZwSEp2SDJuRlFrSEZ1UFJ1ZURKeDZTdWdhN3hsVURmaGxFVjRpdGhK?=
+ =?utf-8?B?UXJROWhUcmJ5cXY3M3FXNGpLcU9ETG9Bb3VKZHF3QXN0UlhsbFBxTDNnV0lo?=
+ =?utf-8?B?VHQ1VHN5QXYzaC9qMXVBandacEJnci9adGl6OEVxQjdXRW1scktVOEx3emhu?=
+ =?utf-8?B?UEhqS3VQU3VmSEY1akdTWTlEUzNIQXNKaERJTmZXMjUzTGtkOGQ3ZGJUK2RO?=
+ =?utf-8?B?UlVFYUhad2V2WnJGN0N2UEVHKy93eGczenlhS2ZEMlpMTlNnMXdTRDdzWmhE?=
+ =?utf-8?B?TGxBV2xKaHNYYnZCU09LOW01R0gybXFtM3JMNUxWcWc2Mk1yN1BnWDkxTUt3?=
+ =?utf-8?B?WVc1OS9jZ1JiRG94OGsxZHhpb3ZIMXhFN3hlTXJQdGliRUhXdnRwZ09NNU1W?=
+ =?utf-8?B?b0lTcDRvSnBPOFVOeG9sUlZsdUowYnBsM3lJeWhzcDdaLzVoeXRmZFo3NE5w?=
+ =?utf-8?B?eVRKcGV2K2xiNzAweWJRTmdLYnVVSGg5d01CLzZrUUphWm9DNWg1dFU4NE5T?=
+ =?utf-8?B?MjJ5eElTNjJPMTVXUCtLNUlFRFdTTGM0NTlEcmRKWHlYb2xDTVJGT1Z4bHVl?=
+ =?utf-8?B?RlZkajRZTExKSlJmcW5iYXQvQlhPOUVDOVMyNUY0QThSNGhkQ0h5TFRQYUp5?=
+ =?utf-8?B?ZnZiZTFBWlQ3NEY2WFJQakJaTG0rdkxONExocy9ORGY5VlJYZGV5ZDZFUWxU?=
+ =?utf-8?B?Z0VvNzAwMXdVL0F4aEpGQmp4ZER3VjlyMDR5dVF2UVJMZXIxbWlVTHhQZFc2?=
+ =?utf-8?B?c0R5U1lGd1dyYk50ekJoak4vOTRKa2J4NHlib2FIUDJjem00UW5jV0lZZVor?=
+ =?utf-8?B?WUJubmcxTDVxSEhzbHdzdi85RnlPZXBPTjhDOEFKcmZ6RG5acmpFUjRzemxC?=
+ =?utf-8?B?UzFoY0dNNGszSlhYVkV0R1phODNLWnFRSG9JU3pNOG5IOVpCN1ViUDNGQWJL?=
+ =?utf-8?B?NGlDblJ6MS9Ka1Y3SCtMbWpqME5FMHJxR0p5d2lpOFZmVnJRMS9uTkM5NGdL?=
+ =?utf-8?B?MkpFZG5FbnNtZFdnNnVJNFI4Vk4zWkpSQVIrODJaMlB6bjFxKzljNGtIREhq?=
+ =?utf-8?B?Smo1SVovTGdpWjd4NG1RSGZJODZreUxOYTVYbERWUVlIbk1ZakhWbGt5YmFr?=
+ =?utf-8?B?U3JNenVsK2VLNlU3QlJzSUkvV3F3VExiRExkb0lDdWJjQVBieUhrdVhKR293?=
+ =?utf-8?B?bHljMThJNTF6a0Q2cEY3K29IYmRHV1JpRkZycjlFcFFnMi8zV2YxK0dTd3BM?=
+ =?utf-8?B?SjIwN25pRkJrYlFjRFU0Q2hXd1dDM1VkbTlsSURnQllubG5FV2N6Y29GcEpW?=
+ =?utf-8?B?NG42ZE91OUs0RXc3Skx5MkFkZUZ3NHpBUWNTMEx4eTJUcE11SE1FRHU5b1Vp?=
+ =?utf-8?B?SGc9PQ==?=
+X-OriginatorOrg: cherry.de
+X-MS-Exchange-CrossTenant-Network-Message-Id: fd26d9c8-dcf7-478e-9872-08dcacada3dd
+X-MS-Exchange-CrossTenant-AuthSource: DU0PR04MB9562.eurprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 25 Jul 2024 13:28:15.9019
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 5e0e1b52-21b5-4e7b-83bb-514ec460677e
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: D5B7c3MikPdCAGIvajGfQUXy44zCTns9LMAZvuSYfXaL4u5qzLkFI7/mvEb95QllhM+lPHqN1ZYLy+tp4Ir++jaAGV/aA06dhqXwkrG+DMI=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: PAXPR04MB8287
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240725_032912_471099_EBA1BCCF 
-X-CRM114-Status: GOOD (  15.91  )
+X-CRM114-CacheID: sfid-20240725_062822_869002_FA682EC5 
+X-CRM114-Status: GOOD (  11.82  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,53 +180,96 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Piotr,
+Theobroma Systems Mule is an MCU that emulates a set of I2C devices,
+among which devices that are reachable through an I2C-mux. The devices
+on the mux can be selected by writing the appropriate device number to
+an I2C config register.
 
-On Wed, 24 Jul 2024 at 23:06, Piotr Zalewski <pZ010001011111@proton.me> wrote:
-> Add support for gamma LUT in VOP2 driver. The implementation is based on
-> the one found in VOP driver and modified to be compatible with VOP2. Blue
-> and red channels in gamma LUT register write were swapped with respect to
-> how gamma LUT values are written in VOP. Write of the current video port id
-> to VOP2_SYS_LUT_PORT_SEL register was added before the write of DSP_LUT_EN
-> bit. Gamma size is set and drm color management is enabled for each video
-> port's CRTC except ones which have no associated device. Tested on RK3566
-> (Pinetab2).
+Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
+Signed-off-by: Farouk Bouabid <farouk.bouabid@cherry.de>
+---
+ .../devicetree/bindings/i2c/tsd,mule-i2c-mux.yaml  | 69 ++++++++++++++++++++++
+ 1 file changed, 69 insertions(+)
 
-Thanks a lot for doing this!
+diff --git a/Documentation/devicetree/bindings/i2c/tsd,mule-i2c-mux.yaml b/Documentation/devicetree/bindings/i2c/tsd,mule-i2c-mux.yaml
+new file mode 100644
+index 000000000000..28139b676661
+--- /dev/null
++++ b/Documentation/devicetree/bindings/i2c/tsd,mule-i2c-mux.yaml
+@@ -0,0 +1,69 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/i2c/tsd,mule-i2c-mux.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: Theobroma Systems Mule I2C multiplexer
++
++maintainers:
++  - Farouk Bouabid <farouk.bouabid@cherry.de>
++  - Quentin Schulz <quentin.schulz@cherry.de>
++
++description: |
++  Theobroma Systems Mule is an MCU that emulates a set of I2C devices, among
++  which devices that are reachable through an I2C-mux. The devices on the mux
++  can be selected by writing the appropriate device number to an I2C config
++  register.
++
++
++      +--------------------------------------------------+
++      | Mule                                             |
++  0x18|    +---------------+                             |
++  -------->|Config register|----+                        |
++      |    +---------------+    |                        |
++      |                         V_                       |
++      |                        |  \          +--------+  |
++      |                        |   \-------->| dev #0 |  |
++      |                        |   |         +--------+  |
++  0x6f|                        | M |-------->| dev #1 |  |
++  ---------------------------->| U |         +--------+  |
++      |                        | X |-------->| dev #2 |  |
++      |                        |   |         +--------+  |
++      |                        |   /-------->| dev #3 |  |
++      |                        |__/          +--------+  |
++      +--------------------------------------------------+
++
++
++allOf:
++  - $ref: /schemas/i2c/i2c-mux.yaml#
++
++properties:
++  compatible:
++    const: tsd,mule-i2c-mux
++
++required:
++  - compatible
++
++unevaluatedProperties: false
++
++examples:
++  - |
++    i2c-mux {
++        compatible = "tsd,mule-i2c-mux";
++        #address-cells = <1>;
++        #size-cells = <0>;
++
++        i2c@0 {
++            reg = <0x0>;
++            #address-cells = <1>;
++            #size-cells = <0>;
++
++            rtc@6f {
++                compatible = "isil,isl1208";
++                reg = <0x6f>;
++            };
++        };
++    };
++...
++
 
-> +static void vop2_crtc_gamma_set(struct vop2 *vop2, struct drm_crtc *crtc,
-> +                               struct drm_crtc_state *old_state)
-> +{
-> +       [...]
-> +
-> +       vop2_lock(vop2);
-> +       vop2_crtc_write_gamma_lut(vop2, crtc);
-> +       vop2_writel(vp->vop2, RK3568_LUT_PORT_SEL, vp->id);
-> +
-> +       vop2_vp_dsp_lut_enable(vp);
-> +
-> +       vop2_cfg_done(vp);
-> +       vop2_unlock(vop2);
-> +}
->
-> @@ -2060,6 +2159,9 @@ static void vop2_crtc_atomic_enable(struct drm_crtc *crtc,
->         drm_crtc_vblank_on(crtc);
->
->         vop2_unlock(vop2);
-> +
-> +       if (crtc->state->gamma_lut)
-> +               vop2_crtc_gamma_set(vop2, crtc, old_state);
->  }
+-- 
+2.34.1
 
-In the atomic_enable callback, we are already holding the VOP lock,
-and waiting to set cfg_done etc - we then do it all over again here.
-This should all be atomic, so that we configure the LUT whilst doing
-the setup, and then only call cfg_done once, to avoid showing the user
-intermediate states which only later converge on the desired final
-state.
-
-Cheers,
-Daniel
 
 _______________________________________________
 Linux-rockchip mailing list
