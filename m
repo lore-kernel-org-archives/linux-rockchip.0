@@ -4,63 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5A810C3DA49
-	for <linux-rockchip@archiver.kernel.org>; Fri, 26 Jul 2024 17:15:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 94015C3DA49
+	for <linux-rockchip@archiver.kernel.org>; Fri, 26 Jul 2024 17:15:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=WLe3lV6j2cB4a78rn1tGiAGOlEmOr5BiC29tfB2m7fY=; b=faYIFcHFUIlWqx
-	LlTnd4Hv7mvaCuWubzRLSRwigeZSjjVAePUQ6NVOdbFHxzQ04krOdqv2GvVZKG4yHGF/fOWSff/c3
-	PqfiozdFDBfHlHwuLdE6gptVhjldORtK7HI/fQRXc9Eg8/XBZr1V70k+wf2qNzbnKMUpDacqoi7fq
-	70TgFMgTDbrMwxFubruM3heRjol1mK/wMYHwEgv2iG6rBhlUVzyA2LANfCdiZO4l3/Ibo9OYVzCaK
-	O8Autpo/b8jKpSHh0uC0zR3uBbO4ZVlTulf3rqdCXWmFHCydqfOppcN7mjCNx+qzZyhykfPb5+6b4
-	YlpApikde5fGU/+6FQyA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=dSq6TGoq/S7sDncrxMQrkMBaLa7opSphFnuRE84mG9o=; b=oHMemT58vKP94H
+	a2bfElKw0lyyrTjs8BRh6bvZ8oxKKNsU/hvcYwNlprRQ7NOBTR5eChf1jH5zZF1b7ruBpud8rMFLV
+	mnd/aFftlklrJxpgKfIiUykQdc+KONaUams/pCmhVE9laU6hL4pQvT9WIdfOVI0llpuuDWQh/bHVY
+	iHppxUKyiZzVlEp2sDNeY4YU+TWJFavBlIu/muLIvhLU8+Alcwa3cznM9T3nXZymh5DfGJ7dT3+l7
+	cADSDHL+Er5ZCharLx3vhhmri8wYmH6W9U7m8S4TdZBTeYv4w42uH8udpq3dXzrjQtOKSatGveI2X
+	5hFFbAu/56+CZhuu/eiw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sXOXT-00000004VPQ-4ADF;
-	Fri, 26 Jul 2024 17:15:32 +0000
-Received: from mail-pf1-x42b.google.com ([2607:f8b0:4864:20::42b])
+	id 1sXOXs-00000004VZD-04EZ;
+	Fri, 26 Jul 2024 17:15:56 +0000
+Received: from mail-pj1-x102c.google.com ([2607:f8b0:4864:20::102c])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sXOX3-00000004VH6-0dO2;
-	Fri, 26 Jul 2024 17:15:06 +0000
-Received: by mail-pf1-x42b.google.com with SMTP id d2e1a72fcca58-70ea93aa9bdso991438b3a.0;
-        Fri, 26 Jul 2024 10:15:04 -0700 (PDT)
+	id 1sXOX7-00000004VIH-0xPM;
+	Fri, 26 Jul 2024 17:15:10 +0000
+Received: by mail-pj1-x102c.google.com with SMTP id 98e67ed59e1d1-2cb674b48ccso852669a91.2;
+        Fri, 26 Jul 2024 10:15:09 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1722014103; x=1722618903; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=hG+eB5Tfylkp1eYxbyQ+cx5mDv2otnbkmfTzAe9Peb8=;
-        b=XhWxmcwi6ZRLYpc5LGXcDmc1tggVMthI+R40Zx4I4lE3SYM5RFLeisHokIdM6Uflx6
-         tZ7Ph8FHzGzaNzqIKDyUgOSRB52QXBK7IWvEYz0AML3omIo+upArfptYGTZtQnbu8CPr
-         sX+6Kztg/V4QYgvmhf9f1+vi7bPHG3Dube5vRz8tPORmym3VD37PdzkoGuN7YfELH8KD
-         EX3lKrL3lWNCQP5pOC16XnGfxXcy+ax1spkvRH/hga4huGTGn7hcDeVl0Kpxd5UJlP4U
-         05ucgT59JHuugK+WYWXQeqvHZAQgLhUaKm9cVzTbHf3IHIdTqvaBtljq3C2rg01RpZs9
-         uzKg==
+        d=gmail.com; s=20230601; t=1722014108; x=1722618908; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=IC8niKQLK2S9klSSRUjzxiqGLLkZ5D69ejUAD25RXeQ=;
+        b=WoBz5teXl6nbV/3+Os6ktdvU9T2kB3VCujENHh+XS8Vc/rCd2tokdNzd/yLti49xBu
+         CtdEb1Jq4GlE7gVHneHRA1L6HNh8SYcVUEoz0zUO5cDA4meeslVS7DyKDT7vCwyr7DKm
+         KDXBUPQ/hQRNi1nwpwifl2GHkuRSQ4K14D8SM8huUhSiPgc324tYYLEKy+a68mrEQy6P
+         55tQOAFNqqHCym952TbQa0XY+vK7VIucOF9vZU1A1ZV6qyGekX+4Un/xhdiFR90TD6K3
+         q08momseWoXgkpoaN6vwOLe8l83AEYHQ3dja01aERC7FT//NasuSdNlm9f4GoA76yw2C
+         jmTQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1722014103; x=1722618903;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=hG+eB5Tfylkp1eYxbyQ+cx5mDv2otnbkmfTzAe9Peb8=;
-        b=XRsTOWS/laBsRM9OmLPFsJ94ha81aOTDeLMd65jU6+JG1MPaZKOnHn3T+ERgwbruag
-         zRgTtdhxdvGLpTf1a2alEf9NNKFS2KKqcqg9C4SB65AxDSfKV8ugDVLhwVTeETOhhDT2
-         QSCqm9B1OX3n4AqohhKlPqhwSNG0WaWDqQKCFM6NDI24XUj9kdB6rxSFAWzxP1g54YTs
-         mwOMJWxdS+tarZHBTrty1VbiWdOCCwKMZ9NLXQJSyDkjuxO5KmA47/bZDovZEKoJS3tN
-         sCAkxE8V4QD63xAuzaO5yT1jc6OrSMbfOSRfvIWYJOnpvnJdiQEgGiNr6ltiKRpbrNgy
-         fVlA==
-X-Forwarded-Encrypted: i=1; AJvYcCXS1CcEcSgpd2fp20exgLgKw3jxnof751OyGFrM7RC44DMpEQx539hrY9ElfjrG8rGPFC4tey2AGXTxlWuwmxp7YzJoyXVQYmMgsKCq+t+cuTFJiu3mlavjTz3Ycr/pADM7AJO2dYdxvSqoOjW03XXcVA1bHkwvL6I=
-X-Gm-Message-State: AOJu0Yz1slC8TUMSEWzY0z1F2UyU78lGI+8HL/qKGh+/iwCI+CzlIsQQ
-	j/0qonPgc2IvLSC9Fqj+3bNJWelAUqPTi/bEJX1iCJgd6z6LgV4T
-X-Google-Smtp-Source: AGHT+IFOFTaHck9MrdAuCfkbyfhyFt1R2cNP/jjGLOySlT+KGHPdNpj2HnEBVu6jb7djXFd9HeK9zA==
-X-Received: by 2002:a05:6a20:7495:b0:1c2:94ad:1c6a with SMTP id adf61e73a8af0-1c4a13a356emr200628637.37.1722014103343;
-        Fri, 26 Jul 2024 10:15:03 -0700 (PDT)
+        d=1e100.net; s=20230601; t=1722014108; x=1722618908;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=IC8niKQLK2S9klSSRUjzxiqGLLkZ5D69ejUAD25RXeQ=;
+        b=gnabFn9bl/GT1RDNomql1cZdFA/bm4TuzbEVeUDC5ovxuSql316SR+L+0EKOIZNdsO
+         h2C9yC4vyaZWa5vXPRn0sBYEm+WD8TMSBeHAEzgSdFVXh5a/0fGoC2L+cdeqopW6aokx
+         lXniKjQcyMKRUHVpz+Z/FC1o37lVukslUpLyUuSqe4ASXOBj4CT/yFhafCMW9unLmhVt
+         odpSKLPD6qw52K09iLhaSwXypuhbr2jzUalDgYn0cyBTONdaUiW5Z5PP7bgnOw+fEKDu
+         ++VKYOyhBKWOZhFKxfpbQzk5fNFQ/fiVus7Nu+uJA2NVTAnoBw5hYVWCJ7kJID/ZXHiz
+         +GnA==
+X-Forwarded-Encrypted: i=1; AJvYcCVpC7fc56W6HbMOlkfolHBkqCkRYkL4mDcj9UB8cHsaIfVy6u2W2wnB9ovQjxbgpyzRGjHxC0vTpikrwWQC8X5VP8erWrtNdSdfeXgDd8w/RqnU4JdsCAysRYNswM3mYp+QtzPoJqhbWNf3paLyfk6KVVqsiB1eY7w=
+X-Gm-Message-State: AOJu0YyZpQ1vR2bzzfQHYaHp3Mgjk7Ry3gkGQDnc8Oy1aQxfNtbUYf3B
+	CpDNBNAxJyBNGRhsnDFaLYVA/F+AOfsJ4+/LfkEhdQagwnelGsWK
+X-Google-Smtp-Source: AGHT+IGevshhNnR1uDre3Jqcy2R5OX/tUZ6EUret7quFk8oYW//qmIpavooBD8dW51AVNNhGGzkZMw==
+X-Received: by 2002:a17:90a:66c9:b0:2c4:b0f0:8013 with SMTP id 98e67ed59e1d1-2cf7e1c06e4mr155614a91.11.1722014108250;
+        Fri, 26 Jul 2024 10:15:08 -0700 (PDT)
 Received: from localhost.localdomain ([113.30.217.222])
-        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-2cdb73ededcsm5718855a91.31.2024.07.26.10.15.00
+        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-2cdb73ededcsm5718855a91.31.2024.07.26.10.15.04
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 26 Jul 2024 10:15:03 -0700 (PDT)
+        Fri, 26 Jul 2024 10:15:07 -0700 (PDT)
 From: Anand Moon <linux.amoon@gmail.com>
 To: Rob Herring <robh@kernel.org>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
@@ -72,14 +73,16 @@ Cc: Anand Moon <linux.amoon@gmail.com>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org
-Subject: [PATCH v4 1/3] arm64: dts: rockchip: Add missing pinctrl for PCIe30x4 node
-Date: Fri, 26 Jul 2024 16:30:44 +0530
-Message-ID: <20240726110050.3664-1-linux.amoon@gmail.com>
+Subject: [PATCH v4 2/3] arm64: dts: rockchip: Add missing pinctrl for PCIe30x1 node
+Date: Fri, 26 Jul 2024 16:30:45 +0530
+Message-ID: <20240726110050.3664-2-linux.amoon@gmail.com>
 X-Mailer: git-send-email 2.44.0
+In-Reply-To: <20240726110050.3664-1-linux.amoon@gmail.com>
+References: <20240726110050.3664-1-linux.amoon@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240726_101505_217591_C7AD577B 
-X-CRM114-Status: GOOD (  16.82  )
+X-CRM114-CacheID: sfid-20240726_101509_289980_C3857B81 
+X-CRM114-Status: GOOD (  16.53  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,7 +99,7 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add missing pinctrl settings for PCIe 3.0 x4 clock request and wake
+Add missing pinctrl settings for PCIe 3.0 x1 clock request and wake
 signals. Each component of PCIe communication have the following control
 signals: PERST, WAKE, CLKREQ, and REFCLK. These signals work to generate
 high-speed signals and communicate with other PCIe devices.
@@ -113,61 +116,60 @@ interface to an active state when in a low-power state.
 CLKREQ signal is also an active-low signal and is used to request the
 reference clock.
 
-Rename node from 'pcie3' to 'pcie30x4' to align with schematic
+Rename node from 'pcie2' to 'pcie30x1' to align with schematic
 nomenclature.
 
 Signed-off-by: Anand Moon <linux.amoon@gmail.com>
 ---
 v4: rebase on master, used RK_FUNC_GPIO GPIO function instead of PIN
 number.
-V3: use pinctrl local to board
-V2: Update the commit messge to describe the changs.
-    use pinctl group as its pre define in pinctrl dtsi
+V3: New patch.
 ---
- .../arm64/boot/dts/rockchip/rk3588-rock-5b.dts | 18 ++++++++++++------
- 1 file changed, 12 insertions(+), 6 deletions(-)
+ .../arm64/boot/dts/rockchip/rk3588-rock-5b.dts | 18 +++++++++++++-----
+ 1 file changed, 13 insertions(+), 5 deletions(-)
 
 diff --git a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
-index 966bbc582d89..1c7080cca11f 100644
+index 1c7080cca11f..eeae14842b71 100644
 --- a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
 +++ b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
-@@ -338,7 +338,7 @@ &pcie30phy {
+@@ -318,7 +318,7 @@ map2 {
  
- &pcie3x4 {
+ &pcie2x1l0 {
  	pinctrl-names = "default";
--	pinctrl-0 = <&pcie3_rst>;
-+	pinctrl-0 = <&pcie30x4_pins>;
- 	reset-gpios = <&gpio4 RK_PB6 GPIO_ACTIVE_HIGH>;
- 	vpcie3v3-supply = <&vcc3v3_pcie30>;
+-	pinctrl-0 = <&pcie2_0_rst>;
++	pinctrl-0 = <&pcie30x1_pins>;
+ 	reset-gpios = <&gpio4 RK_PA5 GPIO_ACTIVE_HIGH>;
+ 	vpcie3v3-supply = <&vcc3v3_pcie2x1l0>;
  	status = "okay";
-@@ -377,14 +377,20 @@ pcie2_2_rst: pcie2-2-rst {
- 		};
+@@ -364,16 +364,24 @@ hp_detect: hp-detect {
  	};
  
--	pcie3 {
--		pcie3_rst: pcie3-rst {
--			rockchip,pins = <4 RK_PB6 RK_FUNC_GPIO &pcfg_pull_none>;
--		};
--
-+	pcie30x4 {
- 		pcie3_vcc3v3_en: pcie3-vcc3v3-en {
- 			rockchip,pins = <1 RK_PA4 RK_FUNC_GPIO &pcfg_pull_none>;
+ 	pcie2 {
+-		pcie2_0_rst: pcie2-0-rst {
+-			rockchip,pins = <4 RK_PA5 RK_FUNC_GPIO &pcfg_pull_none>;
++		pcie2_2_rst: pcie2-2-rst {
++			rockchip,pins = <3 RK_PB0 RK_FUNC_GPIO &pcfg_pull_none>;
  		};
-+
-+		pcie30x4_pins: pcie30x4-pins {
++	};
+ 
++	pcie30x1 {
+ 		pcie2_0_vcc3v3_en: pcie2-0-vcc-en {
+ 			rockchip,pins = <1 RK_PD2 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 
+-		pcie2_2_rst: pcie2-2-rst {
+-			rockchip,pins = <3 RK_PB0 RK_FUNC_GPIO &pcfg_pull_none>;
++		pcie30x1_pins: pcie30x1-pins {
 +			rockchip,pins =
-+				/* PCIE30X4_CLKREQn_M1_L */
-+				<4 RK_PB4 RK_FUNC_GPIO &pcfg_pull_up>,
-+				/* PCIE30X4_PERSTn_M1_L */
-+				<4 RK_PB6 RK_FUNC_GPIO &pcfg_pull_down>,
-+				/* PCIE30X4_WAKEn_M1_L */
-+				<4 RK_PB5 RK_FUNC_GPIO &pcfg_pull_down>;
-+		};
++				/* PCIE30x1_0_CLKREQn_M1_L */
++				<4 RK_PA3 RK_FUNC_GPIO &pcfg_pull_down>,
++				/* PCIE30x1_0_PERSTn_M1_L */
++				<4 RK_PA5 RK_FUNC_GPIO &pcfg_pull_down>,
++				/* PCIE30x1_0_WAKEn_M1_L */
++				<4 RK_PA4 RK_FUNC_GPIO &pcfg_pull_down>;
+ 		};
  	};
  
- 	usb {
-
-base-commit: 1722389b0d863056d78287a120a1d6cadb8d4f7b
 -- 
 2.44.0
 
