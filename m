@@ -4,67 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E4199C3DA7F
-	for <linux-rockchip@archiver.kernel.org>; Fri, 26 Jul 2024 10:07:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 22985C3DA49
+	for <linux-rockchip@archiver.kernel.org>; Fri, 26 Jul 2024 11:31:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=NrpWPkSJFH6Qe0R15IKIHqTTjLteobZ8x0d/eRKCcEI=; b=18dR3AXP0MLaMu
-	psuQciUsNp0Y0LnmXprm9kQMCpbqCohlXhNAGBRYmJbQID3wUNqCOirMOkNjZL8Ex0vhQEY4XIGC7
-	3/vKZoSgzjL8CSoKXIiYChjUvaNeMvDs1M/YFbHsZhNp/PnsbghrLUFWvYCTkJaS1D4/rF42agWW2
-	qhtkG0rZ/wDgcXbVsml0M9iGaphXvR9syzbJ/MsUKLJSQFowufqyxudFEOeJWfEA3r+YWoAYWDsRt
-	gLHEXIfR0chT8mMjgwrCtgcGweceCDV8YP2/VaNFPjcJP6WfMw88ruAzi4ynu3ECHyTYx8gkrGRbk
-	A+TFd0ml98nBZE+BrGNQ==;
+	List-Owner; bh=xmrPuEnDhoImSOL+UxuRl6iHdGKl/GD0kdULRg9+2Ow=; b=xLMDZruTGcpCAT
+	fT8SrTdD34lUjo7sHbgaVLV4ReUJNj+yeCLhbTr6vRkIDyj9Q80cZoooo6tTY3io00gcfDuME4fPx
+	HufDFIzDl0J8lxHtKLzFhTmvMmVTGpj7/41p4BUmWWEMbQMH+tJvneGToSRonSjJl7jWy0HCJYuMl
+	gVwuXySkDCiQRTRWveIPTyWmFRr93Joie3TFd+l6nVkrhQXt2pmNwAlB9agh3jIz9jh/98AwleUx0
+	D68yiTuw3DOKu/JM8PMjbV36LsAWTAADulRRERYpOu4N/nFewEdGMbI9K/M9emhaArL7aXc1ULmQN
+	xe0BL4wZduY21mjBkYnA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sXHrH-00000003Wkl-1xui;
-	Fri, 26 Jul 2024 10:07:31 +0000
-Received: from madrid.collaboradmins.com ([46.235.227.194])
+	id 1sXJAs-00000003jJ0-0EuS;
+	Fri, 26 Jul 2024 11:31:50 +0000
+Received: from mail-oo1-xc2d.google.com ([2607:f8b0:4864:20::c2d])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sXHrD-00000003WjW-3z4M;
-	Fri, 26 Jul 2024 10:07:29 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1721988446;
-	bh=d6RAV3x+NFkqdpVb86ATPZjPs7X0Voj8XsmWJrljTJQ=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=2qaNsi32srLc1IjeuNAQNW4FjclHKcJH4eubhhwDHttyzpfCRX3fuKY8K1JZA4wRg
-	 qogbBjsOP/IcSAc+mhEhRKEq5yPYhI5Z3DquDZEvgK/meNnW0FWCtEfoSPJtFOXk/6
-	 h/FT9qKMqz4eugPJB7gNJcRPdk06dnUPwMrD0YpFH/v/H+Qq+n/oemyeRGS0O/ic71
-	 Ws1DmQ0emOCjrewj54u9q7/mOz+4QOBd3uUzpeSZAJq8a3pesHJxh5TyK4Q4k6VG2h
-	 B1ydv39K73z/eS+wlRe/+I8/uSBemdxr2Hyw1Qdo4FwO2OM3ircAJ7aeb3LsRj7KDY
-	 Rgj+XcRkrX8BQ==
-Received: from [100.66.96.193] (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: vignesh)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 696E03780BDB;
-	Fri, 26 Jul 2024 10:07:23 +0000 (UTC)
-Message-ID: <27bd3884-51d8-454f-9ddc-6b5765fd744b@collabora.com>
-Date: Fri, 26 Jul 2024 15:37:20 +0530
+	id 1sXJAp-00000003jI4-388g
+	for linux-rockchip@lists.infradead.org;
+	Fri, 26 Jul 2024 11:31:49 +0000
+Received: by mail-oo1-xc2d.google.com with SMTP id 006d021491bc7-5d5af8a4abbso580654eaf.1
+        for <linux-rockchip@lists.infradead.org>; Fri, 26 Jul 2024 04:31:46 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=fooishbar-org.20230601.gappssmtp.com; s=20230601; t=1721993506; x=1722598306; darn=lists.infradead.org;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=Kmk1JjA2Ls4g+KyqSuHumcBghaFAtTT2atg+wkKZS7s=;
+        b=viqImDUrAX8NXWBBqGh9ECuJU/YWwB/goibB3SsOFS/85x7jIpT8z0lzlZG0q61UyR
+         aqilk7E5yPknuIjWmMIFO4NAw1i0FQIvO2QTP3H6U6xp24BI1qRT3EECW++U7H4YAd0r
+         GWULxulD52LR0ownFrFDvRjdIxYuMxdz5rq4NBaQ4aBd0HVCR5JI4nwTXotpZCevNkR3
+         CqLo10V9WLcfekYuTjD+dH1Uf9EGy2lXNcw7JIGnlTBoZQh64DVR2y48e3J/IkaobgMO
+         QU09T9c8O2+Da6+zWXcahrbrwXx6YiidCSpUgfbB8UB74sABISQbkVYVFoq6CJHMMOXX
+         hZEA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1721993506; x=1722598306;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=Kmk1JjA2Ls4g+KyqSuHumcBghaFAtTT2atg+wkKZS7s=;
+        b=BQXG3D5pnjY9lLaF5iDgzrJeU5xC1Zm/ydGhAPvr9T+Scy0JOK0IeKMo6eCL5HhDo4
+         Q33ZBmLY1VNw1CI3/tlRYxkfG/IEahv8Hcx4nHn+YZKHIN/hy5phGwkXS9CKhu4H9CwW
+         n77JU/pnvJO2t8ewhiGdyxMUjYljroYeWptWbQo3DBr28T4xlcGkADMbwYlkS3ViSkh4
+         Bzb7oUCyK+QKcaL35lY1Fm6FqDAiOk//gtFnj9i1AOlrnt79loqUTr30aN/CoSTaDxn3
+         8xNuE04edreLW6SCKLIsBQepGb/Igrsa9WI9VOSb3g4VUiJMBKCtcsUCm/aKVejYU4xy
+         aFBg==
+X-Forwarded-Encrypted: i=1; AJvYcCXhaA7aCcWKHD9GGnMVN4Hlqq22aOMArDmskOhbYaqHuAm3p5ovOTa7j3BswcYuZDJ+cotxpF+oxjCxAA0z4OZSeCSNNT4Ly8bloHpNXtFey507
+X-Gm-Message-State: AOJu0YySGI8tbfVoPvdMIfRMUOQZ9RWWQD6AQi3WrAF2w65WluNkFp+F
+	7M6HpAtG6uicquzu8ooOzpTyBAAafH0CQSC3mu81HrvB5q/nLVvpWD0JshJdpfBKxnkiEoZUcy6
+	rjJjSJOwxovZRO89gS2dM01uCwM6jSEvE+EOwXQ==
+X-Google-Smtp-Source: AGHT+IGvPfPntSm/3Bto2qo4lI9AXdvO3Bew6FS2Yq3n8hvJGd9oEEOgF1uuOwWL92xMEZYtBtPacNHYm21W/2FzE+w=
+X-Received: by 2002:a05:6358:280e:b0:1aa:bad6:2ba7 with SMTP id
+ e5c5f4694b2df-1acfb99ed34mr636036055d.25.1721993505839; Fri, 26 Jul 2024
+ 04:31:45 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v8 5/5] drm/ci: rockchip: add tests for rockchip display
- driver
-Content-Language: en-US
-To: Daniel Stone <daniel@fooishbar.org>
-Cc: dri-devel@lists.freedesktop.org, daniels@collabora.com,
- helen.koike@collabora.com, airlied@gmail.com, daniel@ffwll.ch,
- guilherme.gallo@collabora.com, sergi.blanch.torne@collabora.com,
- deborah.brouwer@collabora.com, robdclark@gmail.com,
- linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-amlogic@lists.infradead.org, linux-kernel@vger.kernel.org
-References: <20240724101015.523535-1-vignesh.raman@collabora.com>
- <20240724101015.523535-6-vignesh.raman@collabora.com>
- <CAPj87rMJUSRJ9G1uv-w5a_4qqS0R1dDaUEofoJf=ehbMszdfOw@mail.gmail.com>
-From: Vignesh Raman <vignesh.raman@collabora.com>
-In-Reply-To: <CAPj87rMJUSRJ9G1uv-w5a_4qqS0R1dDaUEofoJf=ehbMszdfOw@mail.gmail.com>
+References: <TkgKVivuaLFLILPY-n3iZo_8KF-daKdqdu-0_e0HP-5Ar_8DALDeNWog2suwWKjX7eomcbGET0KZe7DlzdhK2YM6CbLbeKeFZr-MJzJMtw0=@proton.me>
+ <CAPj87rPwJ-vRTsjM1rWRj1gyjbJM_ryrkTiPRBF3ZF1D7TVDYw@mail.gmail.com> <PGDz1uKmBh2U_yB-ut5xcahPHdmxgrIRAwALnJzsEHFuYssmMhQUz8jbHpEyUDBMjVbmQCjlP3K4gbzw3zZ53HhXUsXufBb5YzptnC58aeQ=@proton.me>
+In-Reply-To: <PGDz1uKmBh2U_yB-ut5xcahPHdmxgrIRAwALnJzsEHFuYssmMhQUz8jbHpEyUDBMjVbmQCjlP3K4gbzw3zZ53HhXUsXufBb5YzptnC58aeQ=@proton.me>
+From: Daniel Stone <daniel@fooishbar.org>
+Date: Fri, 26 Jul 2024 12:31:34 +0100
+Message-ID: <CAPj87rOM=j0zmuWL9frGKV1xzPbJrk=Q9ip7F_HAPYnbCqPouw@mail.gmail.com>
+Subject: Re: [PATCH v3] rockchip/drm: vop2: add support for gamma LUT
+To: Piotr Zalewski <pZ010001011111@proton.me>
+Cc: "airlied@gmail.com" <airlied@gmail.com>, "andy.yan@rock-chips.com" <andy.yan@rock-chips.com>, 
+	"daniel@ffwll.ch" <daniel@ffwll.ch>, 
+	"dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, "heiko@sntech.de" <heiko@sntech.de>, 
+	"hjc@rock-chips.com" <hjc@rock-chips.com>, 
+	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, 
+	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, 
+	"linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, 
+	"maarten.lankhorst@linux.intel.com" <maarten.lankhorst@linux.intel.com>, 
+	"mripard@kernel.org" <mripard@kernel.org>, "tzimmermann@suse.de" <tzimmermann@suse.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240726_030728_159167_352D7C6B 
-X-CRM114-Status: GOOD (  25.08  )
+X-CRM114-CacheID: sfid-20240726_043147_877821_61EF6643 
+X-CRM114-Status: GOOD (  18.07  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,109 +92,73 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Daniel,
+Hi Piotr,
 
-On 26/07/24 13:06, Daniel Stone wrote:
-> Hi Vignesh,
-> 
-> On Wed, 24 Jul 2024 at 11:12, Vignesh Raman <vignesh.raman@collabora.com> wrote:
->> For rockchip rk3288 and rk3399, the display driver is rockchip
->> and gpu driver is panfrost. Currently, in drm-ci for rockchip
->> rk3288 and rk3399, only the gpu driver is tested. Refactor
->> the existing rockchip jobs to test both display and gpu driver
->> and update xfails.
-> 
-> Could you also please add RK3588 in a new series (no need to hold this
-> one up), with Rockchip KMS and Panthor GPU? You can use the
-> rk3588-rock5-b device type in LAVA.
+On Thu, 25 Jul 2024 at 20:06, Piotr Zalewski <pZ010001011111@proton.me> wrote:
+> I based my patch on how gamma LUT is handled in VOP. There, in atomic
+> enable, gamma LUT write takes places at the end too, after the mutex was
+> already first-time unlocked. I understand the concept of DRM atomic state
+> updates and what you wrote makes sense.
 
-Sure. I Will add and send it in a new series.
+Yeah, no problem - the old VOP1 code is clearly incorrect here. I'm
+glad you can improve VOP2. :)
 
-> 
->> diff --git a/drivers/gpu/drm/ci/xfails/mediatek-mt8183-fails.txt b/drivers/gpu/drm/ci/xfails/mediatek-mt8183-fails.txt
->> index cf3a747f7cec..826cca5efbff 100644
->> --- a/drivers/gpu/drm/ci/xfails/mediatek-mt8183-fails.txt
->> +++ b/drivers/gpu/drm/ci/xfails/mediatek-mt8183-fails.txt
-> 
-> This is in the wrong patch?
+>  static void vop2_dither_setup(struct drm_crtc *crtc, u32 *dsp_ctrl)
+> @@ -2152,6 +2127,9 @@ static void vop2_crtc_atomic_enable(struct drm_crtc *crtc,
+>
+>         vop2_post_config(crtc);
+>
+> +       if (crtc->state->gamma_lut)
+> +               vop2_crtc_gamma_set(vop2, crtc, old_state, &dsp_ctrl);
 
-Yes, this needs to be dropped. Thanks for pointing that out.
+I think this call should be unconditional, so that we correctly
+program LUT_DIS if there is no LUT set up during enable.
 
-> 
->> +++ b/drivers/gpu/drm/ci/xfails/panfrost-rk3288-skips.txt
->> @@ -0,0 +1,71 @@
->> +# Suspend to RAM seems to be broken on this machine
->> +.*suspend.*
->> +
->> +# Too unstable, machine ends up hanging after lots of Oopses
->> +kms_cursor_legacy.*
->> +
->> +# Started hanging the machine on Linux 5.19-rc2:
->> +#
->> +# [IGT] kms_plane_lowres: executing
->> +# [IGT] kms_plane_lowres: starting subtest pipe-F-tiling-y
->> +# [IGT] kms_plane_lowres: exiting, ret=77
-> 
-> ret 77 is a pure skip here, as you'd expect from a pipe F test,
-> because Rockchip doesn't have six CRTCs.
-> 
->> +# Console: switching to colour frame buffer device 170x48
->> +# rockchip-drm display-subsystem: [drm] *ERROR* flip_done timed out
->> +# rockchip-drm display-subsystem: [drm] *ERROR* [CRTC:35:crtc-0] commit wait timed out
->> +# BUG: spinlock bad magic on CPU#3, kms_plane_lowre/482
->> +# 8<--- cut here ---
->> +# Unable to handle kernel paging request at virtual address 7812078e
->> +# [7812078e] *pgd=00000000
->> +# Internal error: Oops: 5 [#1] SMP ARM
->> +# Modules linked in:
->> +# CPU: 3 PID: 482 Comm: kms_plane_lowre Tainted: G        W         5.19.0-rc2-323596-g00535de92171 #1
->> +# Hardware name: Rockchip (Device Tree)
->> +# Process kms_plane_lowre (pid: 482, stack limit = 0x1193ac2b)
->> +#  spin_dump from do_raw_spin_lock+0xa4/0xe8
->> +#  do_raw_spin_lock from wait_for_completion_timeout+0x2c/0x120
->> +#  wait_for_completion_timeout from drm_crtc_commit_wait+0x18/0x7c
->> +#  drm_crtc_commit_wait from drm_atomic_helper_wait_for_dependencies+0x44/0x168
->> +#  drm_atomic_helper_wait_for_dependencies from commit_tail+0x34/0x180
->> +#  commit_tail from drm_atomic_helper_commit+0x164/0x18c
->> +#  drm_atomic_helper_commit from drm_atomic_commit+0xac/0xe4
->> +#  drm_atomic_commit from drm_client_modeset_commit_atomic+0x23c/0x284
->> +#  drm_client_modeset_commit_atomic from drm_client_modeset_commit_locked+0x60/0x1c8
->> +#  drm_client_modeset_commit_locked from drm_client_modeset_commit+0x24/0x40
->> +#  drm_client_modeset_commit from drm_fbdev_client_restore+0x58/0x94
->> +#  drm_fbdev_client_restore from drm_client_dev_restore+0x70/0xbc
->> +#  drm_client_dev_restore from drm_release+0xf4/0x114
->> +#  drm_release from __fput+0x74/0x240
->> +#  __fput from task_work_run+0x84/0xb4
->> +#  task_work_run from do_exit+0x34c/0xa20
->> +#  do_exit from do_group_exit+0x34/0x98
-> 
-> So this is pointing to the error being that, when a client exits, the
-> kernel attempts to restore fbdev and then it's broken. Pinning
-> pipe-F-tiling-y as specifically responsible for this seems quite odd
-> to me, given that it doesn't do anything but only skips. Is that maybe
-> just because it's the last test running in the kms_plane_lowres group
-> before it exits? Or does it occur more wildly on other test groups?
+> @@ -2599,8 +2575,17 @@ static void vop2_crtc_atomic_begin(struct drm_crtc *crtc,
+>         vop2_setup_alpha(vp);
+>         vop2_setup_dly_for_windows(vop2);
+>
+> -       if (crtc_state->color_mgmt_changed && !crtc_state->active_changed)
+> -               vop2_crtc_gamma_set(vop2, crtc, old_crtc_state);
+> +       if (crtc_state->color_mgmt_changed && !crtc_state->active_changed) {
+> +               u32 dsp_ctrl = vop2_vp_read(vp, RK3568_VP_DSP_CTRL);;
+> +
+> +               vop2_lock(vop2);
+> +
+> +               vop2_crtc_gamma_set(vop2, crtc, old_crtc_state, &dsp_ctrl);
+> +
+> +               vop2_vp_write(vp, RK3568_VP_DSP_CTRL, dsp_ctrl);
+> +               vop2_cfg_done(vp);
+> +               vop2_unlock(vop2);
+> +       }
 
-This was skipped for Linux 5.19-rc2. I will remove from skips and will 
-check the behavior.
+Calling lock/set/write/done/unlock here seems like an anti-pattern;
+the cfg_done is already written in atomic_flush, so at least that part
+is not necessary.
 
-> 
->> +tools_test@tools_test,Fail
-> 
-> I keep noticing this failing everywhere. What's up with that? Have you
-> reported these logs to the igt list?
+On platforms like RK3588, it looks like the new LUT can just be
+written directly from atomic_begin without needing to program
+DSP_CTRL, take locks, or synchronise against anything, so that should
+be an easy straight-line path.
 
-I will check this issue and report to igt developers.
+On platforms like RK3568, it would probably be better to set
+mode_changed when the colour management configuration changes. That
+will give you a good point to synchronise the cross-VOP dependencies
+(i.e. claim or release the shared LUT when it is being
+enabled/disabled), and also a hint to userspace that it is not going
+to be a seamless transition as the LUT is disabled, programmed, then
+re-enabled.
 
-Thanks.
+I think this would end up in a net reduction of LoC as well as a net
+reduction of code weirdness.
 
-Regards,
-Vignesh
+Cheers,
+Daniel
 
 _______________________________________________
 Linux-rockchip mailing list
