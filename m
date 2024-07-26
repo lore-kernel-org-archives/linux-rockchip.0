@@ -4,64 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B751CC3DA4A
-	for <linux-rockchip@archiver.kernel.org>; Fri, 26 Jul 2024 20:08:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A8A45C3DA4A
+	for <linux-rockchip@archiver.kernel.org>; Fri, 26 Jul 2024 21:06:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=fnvxAKLGWx6JGaFK2oezXWQjRMFAZjXcXu4/SqVjUng=; b=TXY/6OMQGK8nZk
-	xYrnXP+39Ck31xKwL9tdZYzfz7Ph1cwWLHoR1V1CgvM+ulmHspboEIhWfudU5Qs/ZnT/cGwyBqceH
-	TsHg0teLmvrWdfe4fO3EhXlTMctD2p8DsLFsp4R4TyLUjFJnklWF4X6SzYUVsI7dK6b5UD9OgfGNo
-	ncIVy47uo82kuD91fCaEt7zku4iRa84a4iwwu6aLMf5fJeihBB6zxUB49y7hioX4o0PkiTojYgC7D
-	FpUyHlZPbyq743wNf87H1nrpriNDosBGi/9turXlBH0AG8P/GruUVfuoBvBKwQpYI4v618xTTY5rx
-	GiA1PdN971dMlNgaGpsQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=AFo9gy41AEC5WVAkzsBpK5jyaZ+f1C2/i2wNP+lEt24=; b=EvlPqUob396yncCla9/3ZZozmL
+	OO63th7dZWk0zpHvg09BG6y6Qi2n0QFsKMr1lfZp6zpvvGPAOWYPhe/kqpl2EevRRZHKQTKZtdoXM
+	MsvYCo8qnA0HK3S1li1EsotEGABb7MrS8pVT6UEWX5mL09pBfMd4p4wGE7s+x8G/tp7F752TF5qLe
+	IyUS8aZfiA4BX8s8hy2JCiqxpzJU5Qg4yFKw8TsJSQhG54wN9ghTlUKBBEEsNWQUHywC121exLRUE
+	wxxypssapLSx+1AWu3NEwCLSEFABx4Yof2KxEf28LIKcGUSHLT3INdDkTwlfbajyPsdrsaHeJAskJ
+	eDjFvMGA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sXREX-00000004rWi-4AZq;
-	Fri, 26 Jul 2024 20:08:10 +0000
-Received: from smtp.forwardemail.net ([149.28.215.223])
+	id 1sXS90-000000050Oj-1CdX;
+	Fri, 26 Jul 2024 21:06:30 +0000
+Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sXRE7-00000004rSG-4C3B
+	id 1sXS8v-000000050Ni-3CIA
 	for linux-rockchip@lists.infradead.org;
-	Fri, 26 Jul 2024 20:07:45 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
- h=Content-Transfer-Encoding: Content-Type: In-Reply-To: From: References:
- Cc: To: Subject: MIME-Version: Date: Message-ID; q=dns/txt;
- s=fe-e1b5cab7be; t=1722024451;
- bh=fAviikwkH6hmnA7E9iefdvMIdw7782gxRltc2GxmQDc=;
- b=aPmx/nvjUc6Ds/VQ6rvjbXG8MVn/pmbmutUzsblMA2BsogyDOKfY4HM71rcxE8sjRCZKOST71
- suxcrxW9acf8khMH5VHXKSSALRgmB1OcJjvDQRVw/plLXTS65MruhFx3fN61lDZOcUtmixLgE9l
- LKo/A+5bzdwXRBLAfVhBLkfd3+tJh6HaZg3DOl4dan1XGrCqdzFJlgBmqEAW0ERRcuY8I1G76B7
- gAcUqpWNoH7Fb0+Eq6aRm6TUsEB8sh54eOBbAxkMxc4Yp6vfUzzBJrc5Gy81MHTQI0eSklA3bnd
- Q3IAaySCiEnZUQ7fskBOQXR4d8w3OkOFAU1Vz1bdL0cQ==
-Message-ID: <880603a5-35c5-4968-8cd0-81ebd2958bce@kwiboo.se>
-Date: Fri, 26 Jul 2024 22:07:26 +0200
+	Fri, 26 Jul 2024 21:06:28 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1722027982;
+	bh=dRXQdOX5p0F/7LyukkLtrmbXNq2DLYargesfwnVLE6g=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=MUSv0zhTBz9N/Cf7w48J7P+PIA/svEeJGEw+j3TPSe0yEt1WUbTJ5HV3wDBiw7g6u
+	 u3BdjKr4LVMNFO5Raedkkt8eQMVHDrSxJirfUgbJ4muw4JwhPWhPNRl6g/LXtCKVou
+	 JZSfBi8ATqXp9fm4A2PoxWz5s9p1T2fWyjOk5Es7i3D37qEg68zS9fTbVKM3/0oVuM
+	 gaYOrKYN6YCoXw/4f+Sm9kNgszA9E72FmQ5PRALSWPWGHwGYTnm70N5wCG12bsG1MW
+	 YSH0WW4Z9DlUkU+VRP3lJ+f0NQadPjqqU4SUxqR4xxR4fevPMad55knnMaDgVqdxWm
+	 +IIcICV/mEbHg==
+Received: from mercury (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: sre)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 510873781185;
+	Fri, 26 Jul 2024 21:06:22 +0000 (UTC)
+Received: by mercury (Postfix, from userid 1000)
+	id BB20E106097F; Fri, 26 Jul 2024 23:06:21 +0200 (CEST)
+Date: Fri, 26 Jul 2024 23:06:21 +0200
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+To: Chris Morgan <macroalpha82@gmail.com>
+Cc: linux-rockchip@lists.infradead.org, linux-pm@vger.kernel.org, 
+	devicetree@vger.kernel.org, jagan@edgeble.ai, andyshrk@163.com, jonas@kwiboo.se, 
+	t.schramm@manjaro.org, heiko@sntech.de, conor+dt@kernel.org, krzk+dt@kernel.org, 
+	robh@kernel.org, Chris Morgan <macromorgan@hotmail.com>
+Subject: Re: [PATCH 2/5] power: supply: cw2015: Add support for dual-cell
+ configurations
+Message-ID: <eimocj6mlvo6u4x54heywblwrfnftxelzpvfcogpjp7vjmunor@5eqlqsszk6ni>
+References: <20240726194948.109326-1-macroalpha82@gmail.com>
+ <20240726194948.109326-3-macroalpha82@gmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 1/3] arm64: dts: rockchip: Add missing pinctrl for
- PCIe30x4 node
-To: Anand Moon <linux.amoon@gmail.com>, Heiko Stuebner <heiko@sntech.de>
-Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski
- <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-References: <20240726110050.3664-1-linux.amoon@gmail.com>
-Content-Language: en-US
-From: Jonas Karlman <jonas@kwiboo.se>
-In-Reply-To: <20240726110050.3664-1-linux.amoon@gmail.com>
-X-Report-Abuse-To: abuse@forwardemail.net
-X-Report-Abuse: abuse@forwardemail.net
-X-Complaints-To: abuse@forwardemail.net
-X-ForwardEmail-Version: 0.4.40
-X-ForwardEmail-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
- 149.28.215.223
-X-ForwardEmail-ID: 66a40201df62d509e165a98b
+In-Reply-To: <20240726194948.109326-3-macroalpha82@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240726_130744_086984_4E3A4498 
-X-CRM114-Status: GOOD (  22.94  )
+X-CRM114-CacheID: sfid-20240726_140626_121920_F6C3F7C6 
+X-CRM114-Status: GOOD (  23.05  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,114 +74,134 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============3326508800901933019=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Anand,
 
-Sorry for no reply to your v3.
+--===============3326508800901933019==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="as2mi4krtxmu7mhn"
+Content-Disposition: inline
 
-On 2024-07-26 13:00, Anand Moon wrote:
-> Add missing pinctrl settings for PCIe 3.0 x4 clock request and wake
-> signals. Each component of PCIe communication have the following control
-> signals: PERST, WAKE, CLKREQ, and REFCLK. These signals work to generate
-> high-speed signals and communicate with other PCIe devices.
-> Used by root complex to endpoint depending on the power state.
-> 
-> PERST is referred to as a fundamental reset. PERST should be held low
-> until all the power rails in the system and the reference clock are stable.
-> A transition from low to high in this signal usually indicates the
-> beginning of link initialization.
-> 
-> WAKE signal is an active-low signal that is used to return the PCIe
-> interface to an active state when in a low-power state.
-> 
-> CLKREQ signal is also an active-low signal and is used to request the
-> reference clock.
-> 
-> Rename node from 'pcie3' to 'pcie30x4' to align with schematic
-> nomenclature.
-> 
-> Signed-off-by: Anand Moon <linux.amoon@gmail.com>
+
+--as2mi4krtxmu7mhn
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+Hi,
+
+On Fri, Jul 26, 2024 at 02:49:45PM GMT, Chris Morgan wrote:
+> From: Chris Morgan <macromorgan@hotmail.com>
+>=20
+> The Cellwise cw2015 datasheet reports that it can handle two cells
+> in a series configuration. Allow a device tree parameter to note
+> this condition so that the driver reports the correct voltage values
+> to userspace.
+
+I found this:
+
+http://www.cellwise-semi.com/Public/assests/menu/20230302/6400076806706.pdf
+
+Which says:
+
+  CW2015 can be used in 2 or more batteries connected in series, or
+  several cells connected in parallel.
+
+So dual-cell seems like a bad property name. Instead the number of
+serial cells should be provided. This property is then not really
+specific to the Cellwise fuel gauge and instead a property of the
+battery pack (i.e. simple-battery.yaml).
+
+> Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
 > ---
-> v4: rebase on master, used RK_FUNC_GPIO GPIO function instead of PIN
-> number.
-
-Why this change? Only reset should use gpio function, if I am not
-mistaken. Also how come you change the internal pull-up/down on these
-pins?, and why do they differ for each pcie node in this series?
-
-Please see [1] for some discussion related to these pins.
-
-"""
-The PERST is for sure should work as GPIO, and the same as WAKE;
-
-for CLKREQ, only those board want to support L1SS need to work as 
-function IO,
-"""
-
-As stated earlier only the reset pin need to be muxed to GPIO function,
-and that should also matches the only pin controlled with gpio in the
-driver, if I am not mistaken.
-
-[1] https://lore.kernel.org/u-boot/6de0ee14-3d85-4fda-af9d-9be7e0057dc8@rock-chips.com/
-
-Regards,
-Jonas
-
-> V3: use pinctrl local to board
-> V2: Update the commit messge to describe the changs.
->     use pinctl group as its pre define in pinctrl dtsi
-> ---
->  .../arm64/boot/dts/rockchip/rk3588-rock-5b.dts | 18 ++++++++++++------
->  1 file changed, 12 insertions(+), 6 deletions(-)
-> 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
-> index 966bbc582d89..1c7080cca11f 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
-> +++ b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
-> @@ -338,7 +338,7 @@ &pcie30phy {
->  
->  &pcie3x4 {
->  	pinctrl-names = "default";
-> -	pinctrl-0 = <&pcie3_rst>;
-> +	pinctrl-0 = <&pcie30x4_pins>;
->  	reset-gpios = <&gpio4 RK_PB6 GPIO_ACTIVE_HIGH>;
->  	vpcie3v3-supply = <&vcc3v3_pcie30>;
->  	status = "okay";
-> @@ -377,14 +377,20 @@ pcie2_2_rst: pcie2-2-rst {
->  		};
->  	};
->  
-> -	pcie3 {
-> -		pcie3_rst: pcie3-rst {
-> -			rockchip,pins = <4 RK_PB6 RK_FUNC_GPIO &pcfg_pull_none>;
-> -		};
-> -
-> +	pcie30x4 {
->  		pcie3_vcc3v3_en: pcie3-vcc3v3-en {
->  			rockchip,pins = <1 RK_PA4 RK_FUNC_GPIO &pcfg_pull_none>;
->  		};
+>  drivers/power/supply/cw2015_battery.c | 7 +++++++
+>  1 file changed, 7 insertions(+)
+>=20
+> diff --git a/drivers/power/supply/cw2015_battery.c b/drivers/power/supply=
+/cw2015_battery.c
+> index f63c3c410451..b23a6d4fa4fa 100644
+> --- a/drivers/power/supply/cw2015_battery.c
+> +++ b/drivers/power/supply/cw2015_battery.c
+> @@ -77,6 +77,8 @@ struct cw_battery {
+>  	u32 poll_interval_ms;
+>  	u8 alert_level;
+> =20
+> +	bool dual_cell;
 > +
-> +		pcie30x4_pins: pcie30x4-pins {
-> +			rockchip,pins =
-> +				/* PCIE30X4_CLKREQn_M1_L */
-> +				<4 RK_PB4 RK_FUNC_GPIO &pcfg_pull_up>,
-> +				/* PCIE30X4_PERSTn_M1_L */
-> +				<4 RK_PB6 RK_FUNC_GPIO &pcfg_pull_down>,
-> +				/* PCIE30X4_WAKEn_M1_L */
-> +				<4 RK_PB5 RK_FUNC_GPIO &pcfg_pull_down>;
-> +		};
->  	};
->  
->  	usb {
-> 
-> base-commit: 1722389b0d863056d78287a120a1d6cadb8d4f7b
+>  	unsigned int read_errors;
+>  	unsigned int charge_stuck_cnt;
+>  };
+> @@ -325,6 +327,9 @@ static int cw_get_voltage(struct cw_battery *cw_bat)
+>  	 */
+>  	voltage_mv =3D avg * 312 / 1024;
+> =20
+> +	if (cw_bat->dual_cell)
+> +		voltage_mv *=3D 2;
 
+Unfortunately there are no details in the document, but this looks
+very fishy. Does it only measure the first cell and hope that the
+other cells have the same voltage?
+
+This (unmerged) series also applies to your problem to some degree:
+
+https://lore.kernel.org/all/20240416121818.543896-3-mike.looijmans@topic.nl/
+
+-- Sebastian
+
+>  	dev_dbg(cw_bat->dev, "Read voltage: %d mV, raw=3D0x%04x\n",
+>  		voltage_mv, reg_val);
+>  	return voltage_mv;
+> @@ -587,6 +592,8 @@ static int cw2015_parse_properties(struct cw_battery =
+*cw_bat)
+>  			return ret;
+>  	}
+> =20
+> +	cw_bat->dual_cell =3D device_property_read_bool(dev, "cellwise,dual-cel=
+l");
+> +
+>  	ret =3D device_property_read_u32(dev, "cellwise,monitor-interval-ms",
+>  				       &cw_bat->poll_interval_ms);
+>  	if (ret) {
+> --=20
+> 2.34.1
+>=20
+>=20
+
+--as2mi4krtxmu7mhn
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmakD8MACgkQ2O7X88g7
++poMWg//VA9EuwQknC63eScPILOGznNuQY6GAyQxZ8ji3kha7/gD9JUtBrxFSct3
+p7BGtG1wqVA2EDnLYFilHuG5uG1SPDjYFsd/qK8BzOL1fU+0b8tBd75LqlbrIZWS
+9DwzKRDrWaYQGuwZAgNfIe77MYIF6h5uu1+/ifcA3//mJHaGK7muDPvfNkdwrKgt
+odB7BcQEAJkVgq7ABwbIobHrb8srzJLRGF5V2E9eVzyilfjb853uCupBp7AG02ru
+4bulkBo2caJq7nXNcMKXSWmyPy4BxtXvvzGaANy+f5NP4jy03Z4sxb0fcE0aX8cc
+rhmAcbZLOZ4oBXMTQWSK/1DxSIOr3eAypOSMGYWR7KBN/unibriZesp4xheeI8kn
+S9sSErh1+927eONcHUW3j6fWZyKr6FCjxNQwQdk7nMQjPfWgE3bBOoI4WRbwTfND
+nkvsfl1oyqAxumc97hibU+vPECl94PBfLYOQM5DOi3pDgJqes3tXIwOaQ/2LCZVv
+9sKUGwxp+EzOMNsK89AeDIFrosllc3LlxG65NgXI//+t0ETqD0oU+TFYekW7FT3q
++1qSvo4TerJjb2K/4igW4ZoscX/XHGXySOBFwAdts25vBNFLpIA9QFVbZ8Z0YxTS
+vdwlQ5D+nP+KN2V8rAw1lEHnVkLutJkEa4UpjfUZfh+PXNrKaVo=
+=mSc7
+-----END PGP SIGNATURE-----
+
+--as2mi4krtxmu7mhn--
+
+
+--===============3326508800901933019==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============3326508800901933019==--
+
