@@ -4,58 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 63B59C3DA70
-	for <linux-rockchip@archiver.kernel.org>; Thu, 25 Jul 2024 22:20:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C799FC3DA63
+	for <linux-rockchip@archiver.kernel.org>; Fri, 26 Jul 2024 07:25:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:References:
-	In-Reply-To:Cc:To:From:MIME-Version:Date:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=Ogl+B4diLrCmoinT+MCPL9Q0KXybmBRCpaWVeWWeUbc=; b=xiA29zm3jvo6k8M9xQ8u38E7t1
-	SjVVMXy7S59RKkZMH/50WG2ZpIU9eLq0zZYyg18F/+o3PgQISuUGMkWjFKU0S6m0cbbXopP8xsKCG
-	DGqafSL3Ty53ZF+F8EQStkN/jm8aRm2VZEd5JN2NfDW5cTTQKzp0TyvWtg80SAk/SpoAEIS8HMjP/
-	6FnaNi6L0hV5ehiF1zJFOugFKln6XtGJHusvYvLJ4M62AHih8XwznV2sVp04wDRjHMISlj3OC7K4R
-	mtlmH3jAWtqVh55Dh4ilmSCq2poL/8DAFMI3jYuJi2sXwRm/RCcC2Vv/kQI28T8awV+464hUcT5oE
-	i/wpKFMQ==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=qgzYy88bYscWwOWX4UMCpbAaVqmO366fCpRK3fV2LQg=; b=X7iAivNFVISgqk
+	Vz1z4G8njMEc3e5gJXo//RVoS3C5Zn4As7VOsrwhBKipztS/VS5jHuMTiS21Ltk2fbdajYvoH8ci2
+	/VWVQNzzgz0BYAokhFPDFsOlckwxM6ytUdVXhuY2y+ciAdFLAeikv8Y3pb+DzSirEOQWFd71LJ2+S
+	gdzXelbHiCXleCj015+n+tKa6Px12jol17pIzykKzn0uahE9IOhHO9Szxy3HG9qjeOVEvHk1/vrm0
+	mMM3fxvvR/XojU5jk5Eg8R6lTyT8Oawk2vjFfV0SrHuAfUXIoeE+VB+4HVAqtwoXFKhIaQN/EzyIH
+	hCnR554lJr80U038Gbsg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sX6pL-00000002GAk-1rwt;
-	Thu, 25 Jul 2024 22:20:47 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1sXFKB-00000003Arz-1Hhk;
+	Fri, 26 Jul 2024 07:25:11 +0000
+Received: from mail-qk1-x729.google.com ([2607:f8b0:4864:20::729])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sX6ov-00000002G2g-0p8b;
-	Thu, 25 Jul 2024 22:20:22 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 32B0D60EB2;
-	Thu, 25 Jul 2024 22:20:20 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id CEFCFC4AF0A;
-	Thu, 25 Jul 2024 22:20:19 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1721946020;
-	bh=ZRBNkkK2wEtPoDx1gVCpdzsuUoZfcrDb9qkuaGNq6yU=;
-	h=Date:From:To:Cc:In-Reply-To:References:Subject:From;
-	b=sGYjFfpMmQI6XTByFF8V8flHdWlRsmUv1cUlJlIWlF0xOBz9buXRzg2WEhLRpv/4G
-	 VIUzGsQjw0pU/JCKuw2xhYws7RGUc7DjTRHa79o7odYpm/I/Or9ET0Gzh+AFp5t7JO
-	 y5NBllJwS0YvexGTEGtHT9gLvHzpF7I0jQn+DWTf/twrgS3hyKj52bF7wsaYNZRoNA
-	 s0zZOxXqpajUItVwK2fZfZGi7KtsmsyM7lGFWyvfVVzP6zZTeCjKO/a+joKAoxjbwl
-	 TtnTlEBFOsq0hONPsOiy1Yc7t8L73GtUFexg/YOmGMKNLZMASIDeRqhGBHKf2CtJa8
-	 cYpJ830kcUOWQ==
-Date: Thu, 25 Jul 2024 17:20:18 -0500
+	id 1sXFK6-00000003Anc-3UiA
+	for linux-rockchip@lists.infradead.org;
+	Fri, 26 Jul 2024 07:25:08 +0000
+Received: by mail-qk1-x729.google.com with SMTP id af79cd13be357-7a1d024f775so28031585a.2
+        for <linux-rockchip@lists.infradead.org>; Fri, 26 Jul 2024 00:25:05 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=fooishbar-org.20230601.gappssmtp.com; s=20230601; t=1721978703; x=1722583503; darn=lists.infradead.org;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=avcZ0XeDvxhFCHHWnLz/cvRXaQLXwQeaSCVLcihXW2k=;
+        b=yeRLeeKHrdgOouIGieWLZA9Rj8xjy6UZ8opUxySb6GAtp4MaRB3qjr++/SW+hqKK69
+         B+f6JF7Tw20fW8qpPyEcn4zd/IaVbOGNeWpbxrVEdlciY4WFU70wjIo41NdabuMDkdWt
+         jAX/ZZbnEcfBzvqhbUkisInKiRG4i0eeCiJfhzHUdyaZUsD9YW32XvdONOCAEQ4Cbeo2
+         2zq2W/RiaLHL+z1MEUOnEp7s35Hs3E84o9tlCIruTGpYobtvsfkqzdnViB/FY0uaoXdo
+         o0w4DVPMbIIJlxljoM11yLc8r0LGgA0+EqdRRETrIARqP+v+ceUOrXJmngXUGIvjwVly
+         JfYg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1721978703; x=1722583503;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=avcZ0XeDvxhFCHHWnLz/cvRXaQLXwQeaSCVLcihXW2k=;
+        b=l+XjRWGDmhm0zwnl+YhT5ntNjfgwky38hr4Wuup72Az1fIn4yjApqWfXbMTVVKoHzp
+         rQIZugFmOeGeo+QmDUlfLOY44tQF2CE7huQmY6/1mFqi1x4QVSpnyCc8Hgj5k9QpDbdF
+         7zvFI6i68utqGhaDnp6yFaFfXEu+7oZfPOToIIJsFEog/nwq9gtDIRF4Og7WhbpAQZj/
+         tierIXjOy7mABsQ3akGvc04AtKWm4BVEWCNJCspxNZV8gH/uGCx3tumBOpRL7k7aEEIm
+         pBuZ3rC2Jm4nwfUQf3rnW5djJrAtF/8wsNq5ToORHWD7r0+rzagCse5JQKMndCkwnGlo
+         2kGA==
+X-Forwarded-Encrypted: i=1; AJvYcCV4N8vOirroCum0Yp7ZkPfeeLqBZSbqjKw5FPEE1guK4Mf/XXrTOLab4E3iaGzkDi4izDaYaTaJqFPXuFJtbtGXgp9vBGBeTAGL0/VUDaWU7RJf
+X-Gm-Message-State: AOJu0Yy2R2K+OheNsq6oo5EFZvGvUwZ0rH/kmMkKkra5Q32s45w1cN/9
+	tZtDEaP5sB3IsaLUNMQomG4bs8KECujAXrNRvTxVJDhuCGNM6ZzBwhu2mfzXxf4FZMJ2PFRhf57
+	gMdGjjlN325qP2GsclfFhwuXcYjfVOPGgy8NLpg==
+X-Google-Smtp-Source: AGHT+IEQMpCGcCv6MJDs37LwNfhYJ/aHQOmhySiSwOE4b8vVqH4/XnV6OaZWgrzn4PNCU6z/pjfP9qGkBv6/dQosuiY=
+X-Received: by 2002:a05:620a:1a15:b0:79f:c9e:6269 with SMTP id
+ af79cd13be357-7a1d7e8463cmr446035485a.37.1721978702356; Fri, 26 Jul 2024
+ 00:25:02 -0700 (PDT)
 MIME-Version: 1.0
-From: "Rob Herring (Arm)" <robh@kernel.org>
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: linux-rockchip@lists.infradead.org, 
- linux-arm-kernel@lists.infradead.org, ukleinek@debian.org, 
- linux-kernel@vger.kernel.org
-In-Reply-To: <20240723195538.1133436-1-heiko@sntech.de>
-References: <20240723195538.1133436-1-heiko@sntech.de>
-Message-Id: <172194566400.4001296.2011158817086396400.robh@kernel.org>
-Subject: Re: [PATCH v3 00/14] Expand available features on Qnap TS433
+References: <20240724101015.523535-1-vignesh.raman@collabora.com> <20240724101015.523535-3-vignesh.raman@collabora.com>
+In-Reply-To: <20240724101015.523535-3-vignesh.raman@collabora.com>
+From: Daniel Stone <daniel@fooishbar.org>
+Date: Fri, 26 Jul 2024 08:24:50 +0100
+Message-ID: <CAPj87rMfs+_EMyJT1PoLTXmrosDiqQy_N4VYSA+M3R5q4sit5Q@mail.gmail.com>
+Subject: Re: [PATCH v8 2/5] drm/ci: mediatek: add tests for mediatek display driver
+To: Vignesh Raman <vignesh.raman@collabora.com>
+Cc: dri-devel@lists.freedesktop.org, daniels@collabora.com, 
+	helen.koike@collabora.com, airlied@gmail.com, daniel@ffwll.ch, 
+	guilherme.gallo@collabora.com, sergi.blanch.torne@collabora.com, 
+	deborah.brouwer@collabora.com, robdclark@gmail.com, 
+	linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+	linux-amlogic@lists.infradead.org, linux-kernel@vger.kernel.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240725_152021_345098_EB9B02CC 
-X-CRM114-Status: GOOD (  28.38  )
+X-CRM114-CacheID: sfid-20240726_002506_921113_B4590F7A 
+X-CRM114-Status: UNSURE (   5.76  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,108 +94,24 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Hi Vignesh,
 
-On Tue, 23 Jul 2024 21:55:24 +0200, Heiko Stuebner wrote:
-> Thanks to the nicely supported rk3568, the hardest part for adding things,
-> is to pull things from the vendor-kernel and translating them to mainline
-> standards.
-> 
-> This series allows the TS433 to use all 4 bays [0], wiggle some LEDs and
-> access devices connected to all 3 usb ports.
-> 
-> The device runs stable now and might be usable for actual usage.
-> 
-> There is still a todo-list though:
-> - the ethernet mac address for the realtek chip seems correct,
->   but the gmac0 interface currently uses a wrong one
-> - i2cdetect reports devices on i2c-1 on addresses 54,55,56,57
->   model_Q0B20_Q0B30_10_10.conf from the original rescue image labels them
->     VPD_MB = I2C:0x54, VPD_BP = I2C:0x56
->   the meaning currently being unknown. Some eeprom maybe?
-> - The regulator tree is slightly dubious. Everthing seems to follow rk3568
->   reference designs, but especially the regulator labeled vcc3v3_sd
->   seems to supply some PCIe functionality. So I guess the device's
->   schematics will look quite different than the regulators added to the
->   vendor devicetree.
-> - Quite a bit of functionality is provided by the MCU connected to uart0.
->   According to the model.conf there should be fan-control, a number of
->   additional LEDs (status,locate,usb?)
-> 
-> 
-> Thanks to Qnap engineers adding an easily accessible header for maskrom
-> mode on the board, replacing the bootloader is also quite a breeze. A
-> branch on top of today's u-boot master branch can be found on [1]. I'll
-> submit that code to u-boot once I can cherry-pick the dts patches.
-> 
-> changes in v3:
-> - fix the two regulator node-names, I noticed after sending v2
-> - add Uwe's Tested-by tags
-> - fold in some of Uwe's suggestions:
->   - remove some phandles
->   - more comments to explain what is connected where
->   - handle the two RTCs in the system, though not by hacking around
->     to disable the pmic-one, instead just make sure the real one
->     stays the first rtc
-> changes in v2:
-> - add patches for tsadc, gpio-keys, cpu-supply, pmic, gpu and io-domains
-> 
-> 
-> [0] I only have two drives right now, but I tested both the internal
-> sata connector as well as the PCIe connected sata controller in different
-> combinations.
-> [1] https://github.com/mmind/u-boot-rockchip/tree/dev/qnap-ts433/v2024.07
-> 
-> Heiko Stuebner (14):
->   arm64: dts: rockchip: add PCIe supply regulator to Qnap-TS433
->   arm64: dts: rockchip: enable second PCIe controller on the Qnap-TS433
->   arm64: dts: rockchip: enable uart0 on Qnap-TS433
->   arm64: dts: rockchip: enable usb ports on Qnap-TS433
->   arm64: dts: rockchip: add stdout path on Qnap-TS433
->   arm64: dts: rockchip: enable sata1+2 on Qnap-TS433
->   arm64: dts: rockchip: add board-aliases for Qnap-TS433
->   arm64: dts: rockchip: add hdd leds to Qnap-TS433
->   arm64: dts: rockchip: enable the tsadc on the Qnap-TS433
->   arm64: dts: rockchip: add gpio-keys to Qnap-TS433
->   arm64: dts: rockchip: define cpu-supply on the Qnap-TS433
->   arm64: dts: rockchip: add missing pmic information on Qnap-TS433
->   arm64: dts: rockchip: enable gpu on Qnap-TS433
->   arm64: dts: rockchip: add 2 pmu_io_domain supplies for Qnap-TS433
-> 
->  .../boot/dts/rockchip/rk3568-qnap-ts433.dts   | 546 +++++++++++++++++-
->  1 file changed, 543 insertions(+), 3 deletions(-)
-> 
-> --
-> 2.39.2
-> 
-> 
-> 
+On Wed, 24 Jul 2024 at 11:11, Vignesh Raman <vignesh.raman@collabora.com> wrote:
+> +dumb_buffer@create-clear,Fail
+> +dumb_buffer@create-valid-dumb,Fail
+> +dumb_buffer@invalid-bpp,Fail
+> +dumb_buffer@map-invalid-size,Fail
+> +dumb_buffer@map-uaf,Fail
+> +dumb_buffer@map-valid,Fail
+> +fbdev@eof,Fail
+> +fbdev@read,Fail
+> +fbdev@unaligned-read,Fail
 
+Please skip dumb_buffer and fbdev tests for all GPU-only drivers,
+because those are testing display functionality.
 
-My bot found new DTB warnings on the .dts files added or changed in this
-series.
-
-Some warnings may be from an existing SoC .dtsi. Or perhaps the warnings
-are fixed by another series. Ultimately, it is up to the platform
-maintainer whether these warnings are acceptable or not. No need to reply
-unless the platform maintainer has comments.
-
-If you already ran DT checks and didn't see these error(s), then
-make sure dt-schema is up to date:
-
-  pip3 install dtschema --upgrade
-
-
-New warnings running 'make CHECK_DTBS=y rockchip/rk3568-qnap-ts433.dtb' for 20240723195538.1133436-1-heiko@sntech.de:
-
-arch/arm64/boot/dts/rockchip/rk3568-qnap-ts433.dtb: sata@fc400000: Unevaluated properties are not allowed ('power-domains' was unexpected)
-	from schema $id: http://devicetree.org/schemas/ata/rockchip,dwc-ahci.yaml#
-arch/arm64/boot/dts/rockchip/rk3568-qnap-ts433.dtb: sata@fc800000: Unevaluated properties are not allowed ('power-domains' was unexpected)
-	from schema $id: http://devicetree.org/schemas/ata/rockchip,dwc-ahci.yaml#
-
-
-
-
-
+Cheers,
+Daniel
 
 _______________________________________________
 Linux-rockchip mailing list
