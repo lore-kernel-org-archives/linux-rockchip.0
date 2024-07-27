@@ -4,51 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CB1C6C3DA61
-	for <linux-rockchip@archiver.kernel.org>; Sat, 27 Jul 2024 11:26:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2CF42C3DA61
+	for <linux-rockchip@archiver.kernel.org>; Sat, 27 Jul 2024 15:53:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=g/Q0hC91buuUwnRSSfFJbGxFKs5Ec4Gi3sttLisd5SI=; b=YVgDghbPna+pzD
-	+cY/zqY9cBF9kHMiy0VowYuHpwnT6kWYCCdXq4JyhEZo8J16qM70ZoU8zCalDH3P01WOhf6ARiV11
-	wQwzR/rWVIIm/aAYUuv6BAe4TvHTtz2RhG5sMfZVv1pwnSGkjuoSZmLUljrsNaLruVMI40hp484H0
-	cuuJdgQ0sUIvnFeh/OHqyUmPQLuiQGQYrLovI2eysyUU2S1mKd0uDA/6o4Qo6m6HTBulMUdDOFV0c
-	tunOHtoRspcaO4S0lh4j8fr4qWiMhuH9X5quqsXO1ma3kR4ZHmZAEFNGPG+TarLStHV/mpze1SCp+
-	tUIPFsSzLOYqYXe0nF/g==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
+	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=W4gUMHHk4j6mXi9r3TMSi2F39Rz1ED55j1fz8BkLCG4=; b=fr6zSikwz951qmxSTqvktdwW0y
+	qzHbaes/rNEZEPAsi3el3DXNZqRY7SMEwlZkwgJUunW4m6B2ye6f0wEMh1dPHqpUwTn5DJpwtdBl3
+	tC/3oOjYVLwB9/O7zE3QZXqc+q6XcHC0FdelUGU/ENIcr4CizzJGdLA5gnvMdsL9xJvW15JBd3Rbp
+	q7hsMYxMeLmYf4SAp6dOMI9qSLNt6UQbW17cCcM0URpaa16Wb/hqSpKxCh9O4axFpQEw4lCtKFndE
+	u8q1F5dllL6dJ8F7lCiBidCk8mxFir6GAy+U+ZoR/hw5v6SYIjZRROIFPNtR8EsxEOHd3hciUFlGW
+	ilBsdKFQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sXfYs-00000006bhz-43lR;
-	Sat, 27 Jul 2024 11:26:06 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1sXjjf-00000006vOn-4BCm;
+	Sat, 27 Jul 2024 15:53:32 +0000
+Received: from mail.manjaro.org ([2a01:4f8:c0c:51f3::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sXfYR-00000006bda-2g1I;
-	Sat, 27 Jul 2024 11:25:41 +0000
-Received: from i5e860cde.versanet.de ([94.134.12.222] helo=diego.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1sXfYK-0005ZZ-6A; Sat, 27 Jul 2024 13:25:32 +0200
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: Conor Dooley <conor@kernel.org>, Stephen Boyd <sboyd@kernel.org>
-Cc: mturquette@baylibre.com, robh@kernel.org, krzk+dt@kernel.org,
- conor+dt@kernel.org, linux-clk@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH v2 1/3] dt-bindings: clocks: add binding for
- voltage-controlled-oscillators
-Date: Sat, 27 Jul 2024 13:25:31 +0200
-Message-ID: <33119212.aRNtrjHk3s@diego>
-In-Reply-To: <00f9f4b8722d97b1c6fcec27d53bc06d.sboyd@kernel.org>
-References: <20240715110251.261844-1-heiko@sntech.de>
- <20240718-prozac-specks-6b5fd8b83e3e@spud>
- <00f9f4b8722d97b1c6fcec27d53bc06d.sboyd@kernel.org>
+	id 1sXjjF-00000006vKE-0kTQ;
+	Sat, 27 Jul 2024 15:53:07 +0000
 MIME-Version: 1.0
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
+	t=1722095580;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=ey6TLlvsh7W76LTwNBcAOelGm+P+oLYiI/XxNUy/ajs=;
+	b=lILBN6Is22+9nU3ZLKmZZFQGypsmiPkSNwHkNaelTVENPDXy9VcT7CBsOKOm7g4UAX7wpd
+	cALDfvIgXMszyl8NUSwXidsZjg59Z8ozIFbvx/Vf776+EIGSlapfqH0gRaFwhPRk9YE78U
+	LdgsFH3GPhJSc5At98CCtCO6OdYLHKEM3dZVB8CYZH6lM/ErBFbiwD/ZbL/inx5zIrpUf8
+	5j8OUmJ3wRLiz+42XPV408rtMmAmwsfNCWzU2akorIG8h7Zxy0YRyNcT1oGLSuO/mgUR8N
+	Njz7W0Kj3n41hd8PkmGaww5lVfVbjw4sF1SvsnbhvZ09iqzH3/sLIsEgzIlgyQ==
+Date: Sat, 27 Jul 2024 17:52:59 +0200
+From: Dragan Simic <dsimic@manjaro.org>
+To: Anand Moon <linux.amoon@gmail.com>
+Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, Jonas
+ Karlman <jonas@kwiboo.se>, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v4 1/3] arm64: dts: rockchip: Add missing pinctrl for
+ PCIe30x4 node
+In-Reply-To: <20240726110050.3664-1-linux.amoon@gmail.com>
+References: <20240726110050.3664-1-linux.amoon@gmail.com>
+Message-ID: <af63314cbac4cae4ffc84606024f9795@manjaro.org>
+X-Sender: dsimic@manjaro.org
+Authentication-Results: ORIGINATING;
+	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240727_042539_719330_CC4441F0 
-X-CRM114-Status: GOOD (  32.92  )
+X-CRM114-CacheID: sfid-20240727_085305_858393_3870E6B6 
+X-CRM114-Status: GOOD (  23.13  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -60,97 +69,95 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Am Samstag, 27. Juli 2024, 00:21:44 CEST schrieb Stephen Boyd:
-> Quoting Conor Dooley (2024-07-18 08:59:50)
-> > 
-> > FWIW, I wouldn't classify this as device-specific. "enable-gpios" and
-> > "vdd-supply" are pretty generic and I think the latter is missing from
-> > the vast majority of real* "fixed-clocks". I would expect that devices
-> > where the datasheet would call
-> > 
-> > * Real because there's plenty of "fixed-clocks" (both in and out of tree)
-> > that are used to work around the lack of a clock-controller driver for an
-> > SoC.
+Hello Anand,
+
+On 2024-07-26 13:00, Anand Moon wrote:
+> Add missing pinctrl settings for PCIe 3.0 x4 clock request and wake
+> signals. Each component of PCIe communication have the following 
+> control
+> signals: PERST, WAKE, CLKREQ, and REFCLK. These signals work to 
+> generate
+> high-speed signals and communicate with other PCIe devices.
+> Used by root complex to endpoint depending on the power state.
 > 
-> I agree!
+> PERST is referred to as a fundamental reset. PERST should be held low
+> until all the power rails in the system and the reference clock are 
+> stable.
+> A transition from low to high in this signal usually indicates the
+> beginning of link initialization.
 > 
-> > 
-> > > I think generic power-sequences
-> > >   were the topic back then, though that might have changed over time?
-> > > - There are places that describe "fixed-clock" as
-> > >   "basic fixed-rate clock that cannot gate" [1]
-> > 
-> > I think that that is something that could be changed, it's "just" a
-> > comment in some code! Sounds like Stephen disagrees though :)
+> WAKE signal is an active-low signal that is used to return the PCIe
+> interface to an active state when in a low-power state.
 > 
-> It's more about making a clear break from the fixed-clock binding so
-> that the extra properties are required.
+> CLKREQ signal is also an active-low signal and is used to request the
+> reference clock.
 > 
-> > 
-> > > - Stephen also suggested a separate binding [2]
-> > 
-> > I liked your "gated-oscillator" suggestion in another reply, but
-> > "gated-fixed-clock" might be a better "thematic" fit since this is a
-> > special case of fixed-clocks?
-> > 
+> Rename node from 'pcie3' to 'pcie30x4' to align with schematic
+> nomenclature.
+
+I wonder why the three patches in this series cannot be squashed into
+a single patch, because they target the same thing for the same board
+dts file?  I don't think that having these three separate patches may
+help with possible regression tracking in the future, for example.
+
+> Signed-off-by: Anand Moon <linux.amoon@gmail.com>
+> ---
+> v4: rebase on master, used RK_FUNC_GPIO GPIO function instead of PIN
+> number.
+> V3: use pinctrl local to board
+> V2: Update the commit messge to describe the changs.
+>     use pinctl group as its pre define in pinctrl dtsi
+> ---
+>  .../arm64/boot/dts/rockchip/rk3588-rock-5b.dts | 18 ++++++++++++------
+>  1 file changed, 12 insertions(+), 6 deletions(-)
 > 
-> It looks to me like we've arrived at the hardest problem in computer
-> science, i.e. naming. Any of these names is fine. I'd look to see what
-> those parts on mouser are called and use that to drive the compatible
-> name decision if you can't decide. The description section in the
-> binding could be verbose and link to some parts/pdfs if that helps too.
-> In the past I've seen EEs call these things clock buffers. I'm not a
-> classically trained EE myself but it usually helps to use similar names
-> from the schematic in DT because DT authors are sorta translating
-> schematics to DT.
-
-TL;DR: I'm fine with both "gated-oscillator" or "gated-fixed-clock" .
-Some tiny part in the back of my head wants to name things in the most
-specific way aka "gated-oscillator", but I guess "gated-fixed-clock" will
-possibly spare us the naming dance in the future :-)
-
-So I guess if nobody objects anymore, I'll go with "gated-fixed-clock".
-
---------- 8< --------
-Some background stuff for the oscillator / clock-buffer difference,
-which are actually both used on the Rock 5 ITX in question:
-
-[my ASCII-art may not survive mail readers]
-                                        ------------
-VCC3v3_PI6C (to both VDD + Enable) -----| VCC*     | - CLKoutA - to PCIe
-  |                                     |          |
---------------------                    |          | - CLKoutB - to PCIe
-| 100MHz,3.3V,3225 |-------XTAL_IN_OUT -| Au5426   |
---------------------                    |          | - REFout (unconnected)
-                                        ------------
-
-Just asking Google for that "100MHz,3.3V,3225" brings me to
-"100 MHz Standard Clock Oscillators" on Mouser.
-
-The Au5426 from Aurasemi is a "4 Differential and 1 LVCMOS Output Ultra
-Low Jitter High Performance Buffer" - aka a clock-buffer.
-
-In the Rock-5-ITX patch, I opted to ignore it, because on _that_ board
-it is transparent to the system, enabled by the same sources as the
-crystal and statically configured.
-
-On the other hand, the Au5426 actually _has_ input pins to select
-its working mode: 
-- select between different clock sources
-- enable/disable the output of the input clock as refclk
-- configure the clock buffer type (lvpecl, lvds, hcsl, hiz)
-
-So I didn't want to conjure a binding for that stuff out of thin air :-)
-
-
-Heiko
-
-
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
+> b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
+> index 966bbc582d89..1c7080cca11f 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
+> +++ b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
+> @@ -338,7 +338,7 @@ &pcie30phy {
+> 
+>  &pcie3x4 {
+>  	pinctrl-names = "default";
+> -	pinctrl-0 = <&pcie3_rst>;
+> +	pinctrl-0 = <&pcie30x4_pins>;
+>  	reset-gpios = <&gpio4 RK_PB6 GPIO_ACTIVE_HIGH>;
+>  	vpcie3v3-supply = <&vcc3v3_pcie30>;
+>  	status = "okay";
+> @@ -377,14 +377,20 @@ pcie2_2_rst: pcie2-2-rst {
+>  		};
+>  	};
+> 
+> -	pcie3 {
+> -		pcie3_rst: pcie3-rst {
+> -			rockchip,pins = <4 RK_PB6 RK_FUNC_GPIO &pcfg_pull_none>;
+> -		};
+> -
+> +	pcie30x4 {
+>  		pcie3_vcc3v3_en: pcie3-vcc3v3-en {
+>  			rockchip,pins = <1 RK_PA4 RK_FUNC_GPIO &pcfg_pull_none>;
+>  		};
+> +
+> +		pcie30x4_pins: pcie30x4-pins {
+> +			rockchip,pins =
+> +				/* PCIE30X4_CLKREQn_M1_L */
+> +				<4 RK_PB4 RK_FUNC_GPIO &pcfg_pull_up>,
+> +				/* PCIE30X4_PERSTn_M1_L */
+> +				<4 RK_PB6 RK_FUNC_GPIO &pcfg_pull_down>,
+> +				/* PCIE30X4_WAKEn_M1_L */
+> +				<4 RK_PB5 RK_FUNC_GPIO &pcfg_pull_down>;
+> +		};
+>  	};
+> 
+>  	usb {
+> 
+> base-commit: 1722389b0d863056d78287a120a1d6cadb8d4f7b
 
 _______________________________________________
 Linux-rockchip mailing list
