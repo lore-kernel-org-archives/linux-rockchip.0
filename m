@@ -4,106 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 60099C3DA4A
-	for <linux-rockchip@archiver.kernel.org>; Sat, 27 Jul 2024 09:10:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CB1C6C3DA61
+	for <linux-rockchip@archiver.kernel.org>; Sat, 27 Jul 2024 11:26:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Vm8Li8+GM7BSquWmAz1U3nY8YyUhYByLfOWVM+dzB0A=; b=fVy7ks89EdcNS8
-	xoq7zIgOc9WEQMR7mqGhdcG3giDhgcd7ohJ73qKTE2FlFlcsE5O+c+8bwVVlvTDcooCZtn79pjlOt
-	8kqzvC8rTHyKd8kHl+NyMScL4i4wkKBhQoexkHhSLWT9sfR4nIvjBWCdhCKqwqo+aH+0ZVEguVnQG
-	oj8iLIVkiuKq7n4ky0lsMQ9rTDPUI3GKyuH34nx5/AgILslSnH7UBqsbbj0uKxrds8NKsAHiFydOx
-	Hd+V0X0KZGBcydOwtGY8aShhougWp4Z11Na0uftS25EcvZRDKbJ6lCwlmY3r0056gBaY1SimUlnyG
-	01rOqRgUtvDECD9AooMQ==;
+	List-Owner; bh=g/Q0hC91buuUwnRSSfFJbGxFKs5Ec4Gi3sttLisd5SI=; b=YVgDghbPna+pzD
+	+cY/zqY9cBF9kHMiy0VowYuHpwnT6kWYCCdXq4JyhEZo8J16qM70ZoU8zCalDH3P01WOhf6ARiV11
+	wQwzR/rWVIIm/aAYUuv6BAe4TvHTtz2RhG5sMfZVv1pwnSGkjuoSZmLUljrsNaLruVMI40hp484H0
+	cuuJdgQ0sUIvnFeh/OHqyUmPQLuiQGQYrLovI2eysyUU2S1mKd0uDA/6o4Qo6m6HTBulMUdDOFV0c
+	tunOHtoRspcaO4S0lh4j8fr4qWiMhuH9X5quqsXO1ma3kR4ZHmZAEFNGPG+TarLStHV/mpze1SCp+
+	tUIPFsSzLOYqYXe0nF/g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sXdRF-00000006NM9-2U86;
-	Sat, 27 Jul 2024 09:10:05 +0000
-Received: from sin.source.kernel.org ([145.40.73.55])
+	id 1sXfYs-00000006bhz-43lR;
+	Sat, 27 Jul 2024 11:26:06 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sXdRC-00000006NLS-0PSE
-	for linux-rockchip@lists.infradead.org;
-	Sat, 27 Jul 2024 09:10:04 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id C1700CE0FB1;
-	Sat, 27 Jul 2024 09:09:59 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id CC38AC32781;
-	Sat, 27 Jul 2024 09:09:54 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1722071399;
-	bh=eLsefthmcGYqxw5g4EybCkj266s7F3dR/OoW099n4xE=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=XYCPmNehpOPnu868q0BIZL252/ESSFJFfy5bcnZcXfw2qBDzuNh+F9KlaJwrTnPAq
-	 ysXr6z+GmzWYwwIUPzGI8TLA8bVxW5vdcRa6x32SMat4T6OvWDzkgT/78YjRsTNhiM
-	 iLuY4RfkvOAxe53bo5tTyQ4cDtmLznvvSH13R8H/Q6sI7Q0N45jtaA+R98OcpuJkdJ
-	 W/i4+xvbet04J/21GjXbCmqMuwCXbwM7AV7iPa0rBDY4uz75aYhMBKFPutX/pDQ5Bk
-	 G6LehFM+E3niorWSdQ9KTnuOpvEikRDRg3KzU2zjQyqE/HEHDKbBkQ27G6bw2fwysF
-	 tGm2LGODwHxPA==
-Message-ID: <ddd1b5d5-d3b2-4f65-8021-2e53c9016b49@kernel.org>
-Date: Sat, 27 Jul 2024 11:09:52 +0200
+	id 1sXfYR-00000006bda-2g1I;
+	Sat, 27 Jul 2024 11:25:41 +0000
+Received: from i5e860cde.versanet.de ([94.134.12.222] helo=diego.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1sXfYK-0005ZZ-6A; Sat, 27 Jul 2024 13:25:32 +0200
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+To: Conor Dooley <conor@kernel.org>, Stephen Boyd <sboyd@kernel.org>
+Cc: mturquette@baylibre.com, robh@kernel.org, krzk+dt@kernel.org,
+ conor+dt@kernel.org, linux-clk@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH v2 1/3] dt-bindings: clocks: add binding for
+ voltage-controlled-oscillators
+Date: Sat, 27 Jul 2024 13:25:31 +0200
+Message-ID: <33119212.aRNtrjHk3s@diego>
+In-Reply-To: <00f9f4b8722d97b1c6fcec27d53bc06d.sboyd@kernel.org>
+References: <20240715110251.261844-1-heiko@sntech.de>
+ <20240718-prozac-specks-6b5fd8b83e3e@spud>
+ <00f9f4b8722d97b1c6fcec27d53bc06d.sboyd@kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 4/5] dt-bindings: arm: rockchip: Add GameForce Ace
-To: Chris Morgan <macroalpha82@gmail.com>, linux-rockchip@lists.infradead.org
-Cc: linux-pm@vger.kernel.org, devicetree@vger.kernel.org, jagan@edgeble.ai,
- andyshrk@163.com, jonas@kwiboo.se, sre@kernel.org, t.schramm@manjaro.org,
- heiko@sntech.de, conor+dt@kernel.org, krzk+dt@kernel.org, robh@kernel.org,
- Chris Morgan <macromorgan@hotmail.com>
-References: <20240726194948.109326-1-macroalpha82@gmail.com>
- <20240726194948.109326-5-macroalpha82@gmail.com>
-From: Krzysztof Kozlowski <krzk@kernel.org>
-Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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 fv0=
-In-Reply-To: <20240726194948.109326-5-macroalpha82@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240727_021002_964502_151C97C4 
-X-CRM114-Status: UNSURE (   6.66  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240727_042539_719330_CC4441F0 
+X-CRM114-Status: GOOD (  32.92  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -120,20 +65,91 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 26/07/2024 21:49, Chris Morgan wrote:
-> From: Chris Morgan <macromorgan@hotmail.com>
+Am Samstag, 27. Juli 2024, 00:21:44 CEST schrieb Stephen Boyd:
+> Quoting Conor Dooley (2024-07-18 08:59:50)
+> > 
+> > FWIW, I wouldn't classify this as device-specific. "enable-gpios" and
+> > "vdd-supply" are pretty generic and I think the latter is missing from
+> > the vast majority of real* "fixed-clocks". I would expect that devices
+> > where the datasheet would call
+> > 
+> > * Real because there's plenty of "fixed-clocks" (both in and out of tree)
+> > that are used to work around the lack of a clock-controller driver for an
+> > SoC.
 > 
-> Add devicetree binding for the GameForce Ace.
+> I agree!
 > 
-> Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
-> ---
->  Documentation/devicetree/bindings/arm/rockchip.yaml | 5 +++++
->  1 file changed, 5 insertions(+)
+> > 
+> > > I think generic power-sequences
+> > >   were the topic back then, though that might have changed over time?
+> > > - There are places that describe "fixed-clock" as
+> > >   "basic fixed-rate clock that cannot gate" [1]
+> > 
+> > I think that that is something that could be changed, it's "just" a
+> > comment in some code! Sounds like Stephen disagrees though :)
+> 
+> It's more about making a clear break from the fixed-clock binding so
+> that the extra properties are required.
+> 
+> > 
+> > > - Stephen also suggested a separate binding [2]
+> > 
+> > I liked your "gated-oscillator" suggestion in another reply, but
+> > "gated-fixed-clock" might be a better "thematic" fit since this is a
+> > special case of fixed-clocks?
+> > 
+> 
+> It looks to me like we've arrived at the hardest problem in computer
+> science, i.e. naming. Any of these names is fine. I'd look to see what
+> those parts on mouser are called and use that to drive the compatible
+> name decision if you can't decide. The description section in the
+> binding could be verbose and link to some parts/pdfs if that helps too.
+> In the past I've seen EEs call these things clock buffers. I'm not a
+> classically trained EE myself but it usually helps to use similar names
+> from the schematic in DT because DT authors are sorta translating
+> schematics to DT.
 
-Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+TL;DR: I'm fine with both "gated-oscillator" or "gated-fixed-clock" .
+Some tiny part in the back of my head wants to name things in the most
+specific way aka "gated-oscillator", but I guess "gated-fixed-clock" will
+possibly spare us the naming dance in the future :-)
 
-Best regards,
-Krzysztof
+So I guess if nobody objects anymore, I'll go with "gated-fixed-clock".
+
+--------- 8< --------
+Some background stuff for the oscillator / clock-buffer difference,
+which are actually both used on the Rock 5 ITX in question:
+
+[my ASCII-art may not survive mail readers]
+                                        ------------
+VCC3v3_PI6C (to both VDD + Enable) -----| VCC*     | - CLKoutA - to PCIe
+  |                                     |          |
+--------------------                    |          | - CLKoutB - to PCIe
+| 100MHz,3.3V,3225 |-------XTAL_IN_OUT -| Au5426   |
+--------------------                    |          | - REFout (unconnected)
+                                        ------------
+
+Just asking Google for that "100MHz,3.3V,3225" brings me to
+"100 MHz Standard Clock Oscillators" on Mouser.
+
+The Au5426 from Aurasemi is a "4 Differential and 1 LVCMOS Output Ultra
+Low Jitter High Performance Buffer" - aka a clock-buffer.
+
+In the Rock-5-ITX patch, I opted to ignore it, because on _that_ board
+it is transparent to the system, enabled by the same sources as the
+crystal and statically configured.
+
+On the other hand, the Au5426 actually _has_ input pins to select
+its working mode: 
+- select between different clock sources
+- enable/disable the output of the input clock as refclk
+- configure the clock buffer type (lvpecl, lvds, hcsl, hiz)
+
+So I didn't want to conjure a binding for that stuff out of thin air :-)
+
+
+Heiko
+
 
 
 _______________________________________________
