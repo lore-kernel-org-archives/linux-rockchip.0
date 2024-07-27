@@ -4,56 +4,106 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 29D0BC3DA49
-	for <linux-rockchip@archiver.kernel.org>; Fri, 26 Jul 2024 22:39:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 60099C3DA4A
+	for <linux-rockchip@archiver.kernel.org>; Sat, 27 Jul 2024 09:10:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Date:To:Cc:From:Subject:References:
-	In-Reply-To:MIME-Version:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=pQG07qC5mlrpM3Nlfx72qABU1QAxfaLjFk0+OxAsXgU=; b=E65iNLV0RyJDNW
-	LH/rqIXzLFVKZ6PyfogA05qFvfnkaPnyho9hcm7Jw8X+e84XxUqnQe+x+tSFHtC1WRdJWMqBm94yC
-	PKK8TBmqrSLc0yvzL37VvbaiOaf5sR/WcGlwbydSViAPozaSFXgVIrAF0HGjCO5CfhsmeBjBjCsCM
-	pawftoztJStGKe7pfCTQ8I1Wy5+f4Y9tDEZo4BgRLyaYvIHxfWNFv/3FyRGbekqIrnnyDV+NKaCOW
-	Qnx6doHUQsdq8SUKruc2COVPIvhxgu+ldAyhtKeNdOc12dZA98O5SUa5H+VB7yyaKH4MGCPLQb1UK
-	MoQXK/BNnDz8l9hwhIaA==;
+	List-Owner; bh=Vm8Li8+GM7BSquWmAz1U3nY8YyUhYByLfOWVM+dzB0A=; b=fVy7ks89EdcNS8
+	xoq7zIgOc9WEQMR7mqGhdcG3giDhgcd7ohJ73qKTE2FlFlcsE5O+c+8bwVVlvTDcooCZtn79pjlOt
+	8kqzvC8rTHyKd8kHl+NyMScL4i4wkKBhQoexkHhSLWT9sfR4nIvjBWCdhCKqwqo+aH+0ZVEguVnQG
+	oj8iLIVkiuKq7n4ky0lsMQ9rTDPUI3GKyuH34nx5/AgILslSnH7UBqsbbj0uKxrds8NKsAHiFydOx
+	Hd+V0X0KZGBcydOwtGY8aShhougWp4Z11Na0uftS25EcvZRDKbJ6lCwlmY3r0056gBaY1SimUlnyG
+	01rOqRgUtvDECD9AooMQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sXTbD-00000005EK6-2E9y;
-	Fri, 26 Jul 2024 22:39:43 +0000
+	id 1sXdRF-00000006NM9-2U86;
+	Sat, 27 Jul 2024 09:10:05 +0000
 Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sXTam-00000005EDP-3PiP;
-	Fri, 26 Jul 2024 22:39:18 +0000
+	id 1sXdRC-00000006NLS-0PSE
+	for linux-rockchip@lists.infradead.org;
+	Sat, 27 Jul 2024 09:10:04 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 9AFC7CE0F93;
-	Fri, 26 Jul 2024 22:39:14 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5F94CC32782;
-	Fri, 26 Jul 2024 22:39:13 +0000 (UTC)
+	by sin.source.kernel.org (Postfix) with ESMTP id C1700CE0FB1;
+	Sat, 27 Jul 2024 09:09:59 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id CC38AC32781;
+	Sat, 27 Jul 2024 09:09:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1722033553;
-	bh=tc4bb2Nm0/M0kPveLY1Vp6o9t8P48zNwwlZP+5YVO9I=;
-	h=In-Reply-To:References:Subject:From:Cc:To:Date:From;
-	b=nJVVBG93nzOpL9Vm5/nkgPt/6E4jjb4gSShBSTSLr3V8/TcHJsWTEEW0LEPKSgT9R
-	 j7Zz7goZex1DSDFkMH4zzqnCLEaUotykV2qMw43hEeEw2nXdYUOI2qreUFJvsiGmFQ
-	 TKrqqqs9P5v9HWgDNMwGKfnTu/H3REWkuI+o/7gdbcRCqUn4RD4hjO8Icu0Pe/FntI
-	 lLncLa4uwkPAp30waRdAlvYUxi8rBRf9i23ngLWaUjqaEomtQB5pvkH2slWf/MkCZh
-	 cygqMt4k1itqCmcb3DecGpLUIZV25uFRV7qyGXI00/MERsHlA6LtPt8IzNp27bB836
-	 SPwMBNtmDADzA==
-Message-ID: <84b55412bc61cdcbbc4e051c88827c00.sboyd@kernel.org>
+	s=k20201202; t=1722071399;
+	bh=eLsefthmcGYqxw5g4EybCkj266s7F3dR/OoW099n4xE=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=XYCPmNehpOPnu868q0BIZL252/ESSFJFfy5bcnZcXfw2qBDzuNh+F9KlaJwrTnPAq
+	 ysXr6z+GmzWYwwIUPzGI8TLA8bVxW5vdcRa6x32SMat4T6OvWDzkgT/78YjRsTNhiM
+	 iLuY4RfkvOAxe53bo5tTyQ4cDtmLznvvSH13R8H/Q6sI7Q0N45jtaA+R98OcpuJkdJ
+	 W/i4+xvbet04J/21GjXbCmqMuwCXbwM7AV7iPa0rBDY4uz75aYhMBKFPutX/pDQ5Bk
+	 G6LehFM+E3niorWSdQ9KTnuOpvEikRDRg3KzU2zjQyqE/HEHDKbBkQ27G6bw2fwysF
+	 tGm2LGODwHxPA==
+Message-ID: <ddd1b5d5-d3b2-4f65-8021-2e53c9016b49@kernel.org>
+Date: Sat, 27 Jul 2024 11:09:52 +0200
 MIME-Version: 1.0
-In-Reply-To: <20240715110251.261844-3-heiko@sntech.de>
-References: <20240715110251.261844-1-heiko@sntech.de> <20240715110251.261844-3-heiko@sntech.de>
-Subject: Re: [PATCH v2 2/3] clk: add driver for voltage controlled oscillators
-From: Stephen Boyd <sboyd@kernel.org>
-Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org, heiko@sntech.de, linux-clk@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
-To: Heiko Stuebner <heiko@sntech.de>, mturquette@baylibre.com
-Date: Fri, 26 Jul 2024 15:39:11 -0700
-User-Agent: alot/0.10
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 4/5] dt-bindings: arm: rockchip: Add GameForce Ace
+To: Chris Morgan <macroalpha82@gmail.com>, linux-rockchip@lists.infradead.org
+Cc: linux-pm@vger.kernel.org, devicetree@vger.kernel.org, jagan@edgeble.ai,
+ andyshrk@163.com, jonas@kwiboo.se, sre@kernel.org, t.schramm@manjaro.org,
+ heiko@sntech.de, conor+dt@kernel.org, krzk+dt@kernel.org, robh@kernel.org,
+ Chris Morgan <macromorgan@hotmail.com>
+References: <20240726194948.109326-1-macroalpha82@gmail.com>
+ <20240726194948.109326-5-macroalpha82@gmail.com>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ xsFNBFVDQq4BEAC6KeLOfFsAvFMBsrCrJ2bCalhPv5+KQF2PS2+iwZI8BpRZoV+Bd5kWvN79
+ cFgcqTTuNHjAvxtUG8pQgGTHAObYs6xeYJtjUH0ZX6ndJ33FJYf5V3yXqqjcZ30FgHzJCFUu
+ JMp7PSyMPzpUXfU12yfcRYVEMQrmplNZssmYhiTeVicuOOypWugZKVLGNm0IweVCaZ/DJDIH
+ gNbpvVwjcKYrx85m9cBVEBUGaQP6AT7qlVCkrf50v8bofSIyVa2xmubbAwwFA1oxoOusjPIE
+ J3iadrwpFvsZjF5uHAKS+7wHLoW9hVzOnLbX6ajk5Hf8Pb1m+VH/E8bPBNNYKkfTtypTDUCj
+ NYcd27tjnXfG+SDs/EXNUAIRefCyvaRG7oRYF3Ec+2RgQDRnmmjCjoQNbFrJvJkFHlPeHaeS
+ BosGY+XWKydnmsfY7SSnjAzLUGAFhLd/XDVpb1Een2XucPpKvt9ORF+48gy12FA5GduRLhQU
+ vK4tU7ojoem/G23PcowM1CwPurC8sAVsQb9KmwTGh7rVz3ks3w/zfGBy3+WmLg++C2Wct6nM
+ Pd8/6CBVjEWqD06/RjI2AnjIq5fSEH/BIfXXfC68nMp9BZoy3So4ZsbOlBmtAPvMYX6U8VwD
+ TNeBxJu5Ex0Izf1NV9CzC3nNaFUYOY8KfN01X5SExAoVTr09ewARAQABzSVLcnp5c3p0b2Yg
+ S296bG93c2tpIDxrcnprQGtlcm5lbC5vcmc+wsGVBBMBCgA/AhsDBgsJCAcDAgYVCAIJCgsE
+ FgIDAQIeAQIXgBYhBJvQfg4MUfjVlne3VBuTQ307QWKbBQJgPO8PBQkUX63hAAoJEBuTQ307
+ QWKbBn8P+QFxwl7pDsAKR1InemMAmuykCHl+XgC0LDqrsWhAH5TYeTVXGSyDsuZjHvj+FRP+
+ gZaEIYSw2Yf0e91U9HXo3RYhEwSmxUQ4Fjhc9qAwGKVPQf6YuQ5yy6pzI8brcKmHHOGrB3tP
+ /MODPt81M1zpograAC2WTDzkICfHKj8LpXp45PylD99J9q0Y+gb04CG5/wXs+1hJy/dz0tYy
+ iua4nCuSRbxnSHKBS5vvjosWWjWQXsRKd+zzXp6kfRHHpzJkhRwF6ArXi4XnQ+REnoTfM5Fk
+ VmVmSQ3yFKKePEzoIriT1b2sXO0g5QXOAvFqB65LZjXG9jGJoVG6ZJrUV1MVK8vamKoVbUEe
+ 0NlLl/tX96HLowHHoKhxEsbFzGzKiFLh7hyboTpy2whdonkDxpnv/H8wE9M3VW/fPgnL2nPe
+ xaBLqyHxy9hA9JrZvxg3IQ61x7rtBWBUQPmEaK0azW+l3ysiNpBhISkZrsW3ZUdknWu87nh6
+ eTB7mR7xBcVxnomxWwJI4B0wuMwCPdgbV6YDUKCuSgRMUEiVry10xd9KLypR9Vfyn1AhROrq
+ AubRPVeJBf9zR5UW1trJNfwVt3XmbHX50HCcHdEdCKiT9O+FiEcahIaWh9lihvO0ci0TtVGZ
+ MCEtaCE80Q3Ma9RdHYB3uVF930jwquplFLNF+IBCn5JRzsFNBFVDXDQBEADNkrQYSREUL4D3
+ Gws46JEoZ9HEQOKtkrwjrzlw/tCmqVzERRPvz2Xg8n7+HRCrgqnodIYoUh5WsU84N03KlLue
+ MNsWLJBvBaubYN4JuJIdRr4dS4oyF1/fQAQPHh8Thpiz0SAZFx6iWKB7Qrz3OrGCjTPcW6ei
+ OMheesVS5hxietSmlin+SilmIAPZHx7n242u6kdHOh+/SyLImKn/dh9RzatVpUKbv34eP1wA
+ GldWsRxbf3WP9pFNObSzI/Bo3kA89Xx2rO2roC+Gq4LeHvo7ptzcLcrqaHUAcZ3CgFG88CnA
+ 6z6lBZn0WyewEcPOPdcUB2Q7D/NiUY+HDiV99rAYPJztjeTrBSTnHeSBPb+qn5ZZGQwIdUW9
+ YegxWKvXXHTwB5eMzo/RB6vffwqcnHDoe0q7VgzRRZJwpi6aMIXLfeWZ5Wrwaw2zldFuO4Dt
+ 91pFzBSOIpeMtfgb/Pfe/a1WJ/GgaIRIBE+NUqckM+3zJHGmVPqJP/h2Iwv6nw8U+7Yyl6gU
+ BLHFTg2hYnLFJI4Xjg+AX1hHFVKmvl3VBHIsBv0oDcsQWXqY+NaFahT0lRPjYtrTa1v3tem/
+ JoFzZ4B0p27K+qQCF2R96hVvuEyjzBmdq2esyE6zIqftdo4MOJho8uctOiWbwNNq2U9pPWmu
+ 4vXVFBYIGmpyNPYzRm0QPwARAQABwsF8BBgBCgAmAhsMFiEEm9B+DgxR+NWWd7dUG5NDfTtB
+ YpsFAmA872oFCRRflLYACgkQG5NDfTtBYpvScw/9GrqBrVLuJoJ52qBBKUBDo4E+5fU1bjt0
+ Gv0nh/hNJuecuRY6aemU6HOPNc2t8QHMSvwbSF+Vp9ZkOvrM36yUOufctoqON+wXrliEY0J4
+ ksR89ZILRRAold9Mh0YDqEJc1HmuxYLJ7lnbLYH1oui8bLbMBM8S2Uo9RKqV2GROLi44enVt
+ vdrDvo+CxKj2K+d4cleCNiz5qbTxPUW/cgkwG0lJc4I4sso7l4XMDKn95c7JtNsuzqKvhEVS
+ oic5by3fbUnuI0cemeizF4QdtX2uQxrP7RwHFBd+YUia7zCcz0//rv6FZmAxWZGy5arNl6Vm
+ lQqNo7/Poh8WWfRS+xegBxc6hBXahpyUKphAKYkah+m+I0QToCfnGKnPqyYIMDEHCS/RfqA5
+ t8F+O56+oyLBAeWX7XcmyM6TGeVfb+OZVMJnZzK0s2VYAuI0Rl87FBFYgULdgqKV7R7WHzwD
+ uZwJCLykjad45hsWcOGk3OcaAGQS6NDlfhM6O9aYNwGL6tGt/6BkRikNOs7VDEa4/HlbaSJo
+ 7FgndGw1kWmkeL6oQh7wBvYll2buKod4qYntmNKEicoHGU+x91Gcan8mCoqhJkbqrL7+nXG2
+ 5Q/GS5M9RFWS+nYyJh+c3OcfKqVcZQNANItt7+ULzdNJuhvTRRdC3g9hmCEuNSr+CLMdnRBY fv0=
+In-Reply-To: <20240726194948.109326-5-macroalpha82@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240726_153917_255444_156263EC 
-X-CRM114-Status: GOOD (  22.06  )
+X-CRM114-CacheID: sfid-20240727_021002_964502_151C97C4 
+X-CRM114-Status: UNSURE (   6.66  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,149 +120,21 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Quoting Heiko Stuebner (2024-07-15 04:02:50)
-> diff --git a/drivers/clk/Makefile b/drivers/clk/Makefile
-> index 4abe16c8ccdfe..ca7b7b7ddfd8d 100644
-> --- a/drivers/clk/Makefile
-> +++ b/drivers/clk/Makefile
-> @@ -79,6 +79,7 @@ obj-$(CONFIG_COMMON_CLK_SI521XX)      += clk-si521xx.o
->  obj-$(CONFIG_COMMON_CLK_VC3)           += clk-versaclock3.o
->  obj-$(CONFIG_COMMON_CLK_VC5)           += clk-versaclock5.o
->  obj-$(CONFIG_COMMON_CLK_VC7)           += clk-versaclock7.o
-> +obj-$(CONFIG_COMMON_CLK_VCO)           += clk-vco.o
+On 26/07/2024 21:49, Chris Morgan wrote:
+> From: Chris Morgan <macromorgan@hotmail.com>
+> 
+> Add devicetree binding for the GameForce Ace.
+> 
+> Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
+> ---
+>  Documentation/devicetree/bindings/arm/rockchip.yaml | 5 +++++
+>  1 file changed, 5 insertions(+)
 
-Wrong section. It's basically a common clk type.
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
->  obj-$(CONFIG_COMMON_CLK_WM831X)                += clk-wm831x.o
->  obj-$(CONFIG_COMMON_CLK_XGENE)         += clk-xgene.o
->  
-> diff --git a/drivers/clk/clk-vco.c b/drivers/clk/clk-vco.c
-> new file mode 100644
-> index 0000000000000..f7fe2bc627f36
-> --- /dev/null
-> +++ b/drivers/clk/clk-vco.c
-> @@ -0,0 +1,133 @@
-> +// SPDX-License-Identifier: GPL-2.0
-> +/*
-> + * Copyright (C) 2024 Heiko Stuebner <heiko@sntech.de>
-> + *
-> + * Generic voltage controlled oscillator
-> + */
-> +
-> +#include <linux/clk-provider.h>
-> +#include <linux/err.h>
-> +#include <linux/gpio/consumer.h>
-> +#include <linux/module.h>
-> +#include <linux/platform_device.h>
-> +#include <linux/regulator/consumer.h>
-> +#include <linux/slab.h>
-> +
-> +struct clk_vco {
-> +       struct device *dev;
-> +       struct clk_hw hw;
-> +       u32 rate;
-> +       struct regulator *supply;
-> +       struct gpio_desc *enable_gpio;
-> +};
-> +
-> +#define to_clk_vco(_hw) container_of(_hw, struct clk_vco, hw)
-> +
-> +static int clk_vco_prepare(struct clk_hw *hw)
-> +{
-> +       return regulator_enable(to_clk_vco(hw)->supply);
-> +}
-> +
-> +static void clk_vco_unprepare(struct clk_hw *hw)
-> +{
-> +       regulator_disable(to_clk_vco(hw)->supply);
-> +}
-> +
-> +static int clk_vco_enable(struct clk_hw *hw)
-> +{
-> +       gpiod_set_value(to_clk_vco(hw)->enable_gpio, 1);
-> +       return 0;
-> +}
-> +
-> +static void clk_vco_disable(struct clk_hw *hw)
-> +{
-> +       gpiod_set_value(to_clk_vco(hw)->enable_gpio, 0);
-> +}
+Best regards,
+Krzysztof
 
-It looks similar to clk-gpio.c code, but not as complete because it
-assumes gpios can't sleep. Please look into reusing that code somehow,
-possibly exporting 'clk_gpio_gate_ops' and struct clk_gpio for use in
-this new driver. It would be good to fold the sleepable gpio bit as well
-somehow, maybe with a new function to get a device's gpiod along with
-returning a const pointer to the clk_ops that can be copied and amended
-with the regulator part.
-
-> +
-> +static unsigned long clk_vco_recalc_rate(struct clk_hw *hw,
-> +                                              unsigned long parent_rate)
-> +{
-> +       return to_clk_vco(hw)->rate;
-> +}
-> +
-> +const struct clk_ops clk_vco_ops = {
-> +       .prepare = clk_vco_prepare,
-> +       .unprepare = clk_vco_unprepare,
-> +       .enable = clk_vco_enable,
-> +       .disable = clk_vco_disable,
-> +       .recalc_rate = clk_vco_recalc_rate,
-> +};
-> +
-> +static int clk_vco_probe(struct platform_device *pdev)
-> +{
-> +       struct device *dev = &pdev->dev;
-> +       struct clk_vco *clkgen;
-> +       const char *clk_name;
-> +       int ret;
-> +
-> +       clkgen = devm_kzalloc(dev, sizeof(*clkgen), GFP_KERNEL);
-> +       if (!clkgen)
-> +               return -ENOMEM;
-> +
-> +       clkgen->dev = dev;
-
-Is this used outside of probe? Why stash it?
-
-> +
-> +       if (device_property_read_u32(dev, "clock-frequency", &clkgen->rate))
-> +               return dev_err_probe(dev, -EIO, "failed to get clock-frequency");
-> +
-> +       ret = device_property_read_string(dev, "clock-output-names", &clk_name);
-> +       if (ret)
-> +               clk_name = fwnode_get_name(dev->fwnode);
-> +
-> +       clkgen->supply = devm_regulator_get_optional(dev, "vdd");
-> +       if (IS_ERR(clkgen->supply)) {
-> +               if (PTR_ERR(clkgen->supply) != -ENODEV)
-> +                       return dev_err_probe(dev, PTR_ERR(clkgen->supply),
-> +                                            "failed to get regulator\n");
-> +               clkgen->supply = NULL;
-> +       }
-> +
-> +       clkgen->enable_gpio = devm_gpiod_get_optional(dev, "enable",
-> +                                                     GPIOD_OUT_LOW);
-> +       if (IS_ERR(clkgen->enable_gpio))
-> +               return dev_err_probe(dev, PTR_ERR(clkgen->enable_gpio),
-> +                                    "failed to get gpio\n");
-> +
-> +       ret = gpiod_direction_output(clkgen->enable_gpio, 0);
-> +       if (ret < 0)
-> +               return dev_err_probe(dev, ret, "failed to set gpio output");
-
-Missing newline.
-
-> +
-> +       clkgen->hw.init = CLK_HW_INIT_NO_PARENT(clk_name, &clk_vco_ops, 0);
-> +
-> +       /* register the clock */
-> +       ret = devm_clk_hw_register(dev, &clkgen->hw);
-> +       if (ret)
-> +               return dev_err_probe(dev, ret,
-> +                                    "failed to register clock\n");
-> +
 
 _______________________________________________
 Linux-rockchip mailing list
