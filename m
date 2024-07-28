@@ -4,63 +4,104 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 00FD3C3DA64
-	for <linux-rockchip@archiver.kernel.org>; Sun, 28 Jul 2024 08:21:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B915BC3DA70
+	for <linux-rockchip@archiver.kernel.org>; Sun, 28 Jul 2024 09:15:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=SBLu1Nu0eGcII7WTfzENQWfkghMIkZIZo3vBtse5y3U=; b=ddda33ugQtfjWc
-	C/4ASSmkcXoVtnumwNuIem4zkIXN0ECTFI+ZD/RZPOPAwKh7eF43r2K+Z/1iqa0xzVPciSmaijlj6
-	c8JJLfJshB1AwlsnQR8OgeidKqGUMMsWe4SyAtHnHKB7mKAfXVrG3nug1XsG0IsUNZl0H49pmCmI8
-	yWAlb6dIwxj9o4cNFnX5/eqH4rpnZotX+g+FS5Ll1+et8obQ8xluRDz2y7cufdH1kxLz3NEZj1pxM
-	O3GB/ZcsWqtbC5lzp7skq002/5PJCfsLDM11piAFLw0y1zQGeVyfdfeKzPJZfSj4ggSro+JbHFS7S
-	VklEJkhdPuFMLfUZbhTg==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=btb6GwvO7CrGCltnfSCAcZC4vPRnM3XcCQpJGhSp2Vc=; b=osbQ+U2+uadtJX
+	PeLDSN1lz5AkJKgEn/LESNMDCro5LezaumUzNOH+V00YqeIK9Wfbue1jgkrMtJJ/FeEm9Cie7Ntjt
+	qNOH9DT/uh1cjOrdanDkk1lOtvrMC+jMJm+4ARHLE+edSN+eCwPNuxRNVA0/lXhShDq17h7rcIky5
+	12WH+BWgc5AUVN8WTiV7/IWS7ydJYD25vz6kapz7UudR1OrQ266hCHnUR7sTG14wVy+aqmkk4FmiE
+	GNKaY/MwYKM+6agI87fIbnHqbV/HGM8BMxR75CRsbRx+2nqF3FtvoDI3J34myK5d0OG9ZpgUodyFz
+	v1yQLfoUey/uIpeKGPfQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sXzA4-000000088PZ-1UgC;
-	Sun, 28 Jul 2024 08:21:48 +0000
-Received: from m16.mail.163.com ([117.135.210.5])
-	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sXz8r-0000000885i-3D4s;
-	Sun, 28 Jul 2024 08:20:35 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=From:Subject:Date:Message-Id:MIME-Version; bh=adiGC
-	DuL728eGkg+8TRJCfZU+t/cL/RD1/bFz0cBfCM=; b=iyfKsx5w6IVHdwq3IPnCz
-	dTpvZXD97qoYx8YNqr+L9yq28GNUd9UuGfGhoySt2cZxPbAfbdh7eMI4GC6uDC8M
-	XAag+tAGHet3V/GhmUp/d6GhAJovNdmGEmuv5MnGeFfimdhV1LbvEZarm0G0/Ccp
-	x4rVo3M/76DOVeGewgr2J8=
-Received: from ProDesk.. (unknown [58.22.7.114])
-	by gzga-smtp-mta-g2-4 (Coremail) with SMTP id _____wCnb242_6VmJZF9Bw--.37149S2;
-	Sun, 28 Jul 2024 16:20:10 +0800 (CST)
-From: Andy Yan <andyshrk@163.com>
-To: heiko@sntech.de
-Cc: dsimic@manjaro.org,
-	krzk+dt@kernel.org,
-	robh@kernel.org,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	Andy Yan <andyshrk@163.com>
-Subject: [PATCH v2 0/2] Add support for Cool Pi GenBook
-Date: Sun, 28 Jul 2024 16:20:02 +0800
-Message-Id: <20240728082004.36575-1-andyshrk@163.com>
-X-Mailer: git-send-email 2.34.1
+	id 1sY00J-00000008CRy-1RTG;
+	Sun, 28 Jul 2024 09:15:47 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
+	id 1sXzzs-00000008CNv-3OlT;
+	Sun, 28 Jul 2024 09:15:22 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id E23EC60660;
+	Sun, 28 Jul 2024 09:15:19 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6375AC116B1;
+	Sun, 28 Jul 2024 09:15:16 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1722158119;
+	bh=GcwImipTSBI21h4C5yH10/RHYYKQ5C+/EnMO4c6bhz8=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=Qi4Y6NdjiCKg7FOAN+4Z2zi+575gvVn+qbda0a+yioE19nrsXYGBY40tTvciDeL5k
+	 x1xD83AguB7eeccR3cvgZU9QgAtTAPpNbkm8nZXvvLI75CM86l83coR+Ulx5AQtCw0
+	 tsL5ZB6Z+kS9TJ4Yk2d4AN2VRjGVjiu1zFWiNkoIhlVaBmH8JDezFoctTKNb2F+AvA
+	 ntfH0sBQrxXqJR0sVEWd1Cwwgksdy4nEYovgR5EB1RlK41K8YVXaJSFUnFA4jRSONr
+	 3cLzF/ONawMm04RIhdjYUa++w0aCFaf7MZo/zj5l8qjdwi+Y2b+wGR089LrrM8egb0
+	 g/gJcHYi4T0qw==
+Message-ID: <24f35b29-20ee-4bdc-aac5-5de5d5e0fb83@kernel.org>
+Date: Sun, 28 Jul 2024 11:15:14 +0200
 MIME-Version: 1.0
-X-CM-TRANSID: _____wCnb242_6VmJZF9Bw--.37149S2
-X-Coremail-Antispam: 1Uf129KBjvdXoW7GF1kKFy8Xw13XF1ktryftFb_yoWDJwb_Ka
-	y7WrZrJa1FqFn09F9xt3y8JrW3G39Fkr98GF4rZFsxZF9rJ3y8GF1ftw1vvF15AFW29r13
-	Aa1FqF1rWwn8CjkaLaAFLSUrUUUUjb8apTn2vfkv8UJUUUU8Yxn0WfASr-VFAUDa7-sFnT
-	9fnUUvcSsGvfC2KfnxnUUI43ZEXa7sR_NBMPUUUUU==
-X-Originating-IP: [58.22.7.114]
-X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/1tbiqQYqXmVOBz4pcgAAsS
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 1/2] dt-bindings: arm: rockchip: Add Cool Pi CM5
+ GenBook
+To: Andy Yan <andyshrk@163.com>, heiko@sntech.de
+Cc: dsimic@manjaro.org, krzk+dt@kernel.org, robh@kernel.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org
+References: <20240728082004.36575-1-andyshrk@163.com>
+ <20240728082004.36575-2-andyshrk@163.com>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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 fv0=
+In-Reply-To: <20240728082004.36575-2-andyshrk@163.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240728_012034_280413_2A3EEFB0 
-X-CRM114-Status: UNSURE (   9.60  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240728_021520_992515_DAA76B17 
+X-CRM114-Status: GOOD (  13.66  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,33 +118,49 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Cool Pi GenBook is a rk3588 based laptop, it is designed
-to consist of a carrier board conntected with a CM5 SoM.
+On 28/07/2024 10:20, Andy Yan wrote:
+> Add Cool Pi CM5 GenBook, a laptop powered by RK3588.
+> 
+> Cool Pi GenBook works with a carrier board connect
+> with CM5.
 
-This series add support of eMMC/USB HOST/WiFi/Battery/TouchPad/Keyboard,
-with a mainline based u-boot[0], it can boot a third-party distribution
-such as Armbian on u-disk.
+Please wrap commit message according to Linux coding style / submission
+process (neither too early nor over the limit):
+https://elixir.bootlin.com/linux/v6.4-rc1/source/Documentation/process/submitting-patches.rst#L597
 
-[0]https://github.com/andyshrk/u-boot/commit/8eedc6700367166bfa63b861d8e7aca486d315fe
+> 
+> Signed-off-by: Andy Yan <andyshrk@163.com>
+> 
+> ---
+> 
+> Changes in v2:
+> - Descripte it as Cool Pi CM5 GenBook
+> 
+>  Documentation/devicetree/bindings/arm/rockchip.yaml | 8 ++++++++
+>  1 file changed, 8 insertions(+)
+> 
+> diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
+> index 1ef09fbfdfaf..a9bfb87e69f5 100644
+> --- a/Documentation/devicetree/bindings/arm/rockchip.yaml
+> +++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
+> @@ -96,6 +96,14 @@ properties:
+>            - const: coolpi,pi-cm5
+>            - const: rockchip,rk3588
+>  
+> +      - description: Cool Pi CM5 GenBook
+> +        items:
+> +          - enum:
+> +              - coolpi,genbook
+> +          - const: coolpi,pi-cm5
+> +          - const: rockchip,rk3588
+> +
+> +
 
-Changes in v2:
-- Descripte it as Cool Pi CM5 GenBook
-- rename dts to rk3588-coolpi-cm5-genbook
-- enable touchpad
-- enable battery
+Just one blank line. Please always take a look how the code looks around
+and do not implement things entirely different. Like odd blank lines.
 
-Andy Yan (2):
-  dt-bindings: arm: rockchip: Add Cool Pi CM5 GenBook
-  arm64: dts: rockchip: Add support for rk3588 based Cool Pi CM5 GenBook
-
- .../devicetree/bindings/arm/rockchip.yaml     |   8 +
- arch/arm64/boot/dts/rockchip/Makefile         |   1 +
- .../rockchip/rk3588-coolpi-cm5-genbook.dts    | 349 ++++++++++++++++++
- 3 files changed, 358 insertions(+)
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3588-coolpi-cm5-genbook.dts
-
--- 
-2.34.1
+Best regards,
+Krzysztof
 
 
 _______________________________________________
