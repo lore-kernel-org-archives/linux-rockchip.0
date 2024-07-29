@@ -4,64 +4,111 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CA2D4C3DA61
-	for <linux-rockchip@archiver.kernel.org>; Mon, 29 Jul 2024 07:19:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6D4EDC3DA61
+	for <linux-rockchip@archiver.kernel.org>; Mon, 29 Jul 2024 07:36:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=YBG6NLsmI1kEQuINMDPRsnICV5KazrIWlIUJnnUL+vE=; b=gXeqr0q+7AgXz4
-	LTL8bPscoFv78b6vcEnwfOb/yzBS02NM7fhjty5zmg/7/0rrxn++clynuM20YSK9u0QY1SfzHKO8w
-	TTzNgpygjoLlPKtxxKi9rDOnc9KZhRIR8DBrQD2XUgeN9owFizf5ugtrboa6B7YE87ppBHkeRLR0M
-	f1PkrNcdQU0FeOQOeeKz0uhg0+RgtN39RgVrMT4SrKbhi2X/IQHK+6LgyiddUTECEJW7rLHimq4Hl
-	9mX0DsTprEJ+erOdgCvPMG/wgJVdWF5LPeciqEl4C1Ts7kwDHgmyUZT0o42YIv5E7b9yhEotmmTTk
-	qGK3ISFU6Fu4sMR//0Xw==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=TN8Wm5mampSc0Rr4K/COLkKOuG3urvuR8lZjpXLVszQ=; b=kA+UZELL7dyQQD
+	oXAvPa6NzCZVK/zi0GxJWoocQhYCllQzonteWfJh3Pr4uOYrCKs9O6p3DoIXYod9brBIFSJ6sSdK0
+	PXISFc+EnXtVh/w8Hugz/SRDZUUu5fTu0dVL50HVfGJZX3XzXuDHMqBJ5PyYcrDqdDgxNg6/1wC74
+	1g5tQkhavbDEz9ssFnPp4kjJPumkUQfPD61O7DCXOUSP8hUROa5at4KciYkfaC0E71zoLCuO0sKZt
+	v2K7ZukgzUwCwxYIPDZAMktPSHRXlcQR0e+AL9p5JIsbUqEdRndq2X85jdvrnS11XJXMIcVfGuhW2
+	ju022CNUcMYB5g6XXn+w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sYKfK-0000000AKNF-2mAP;
-	Mon, 29 Jul 2024 07:19:30 +0000
-Received: from mail-m1973179.qiye.163.com ([220.197.31.79])
+	id 1sYKvO-0000000AMW9-3sWf;
+	Mon, 29 Jul 2024 07:36:06 +0000
+Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sYKfG-0000000AKIc-2n55
-	for linux-rockchip@lists.infradead.org;
-	Mon, 29 Jul 2024 07:19:29 +0000
-DKIM-Signature: a=rsa-sha256;
-	b=B+YHaiXm+hMf9y4DDNvUJ8uxoehVkJMuW91044uVsb3iIYLwOzIVTk2HwbAxFWcdO0KAtEzZf94c+nKou4iiiUK38HXPkpk9rUcPHc3nNQXD8SbNoUGpM1gRqECbqXzqsbPcK3Ygzbhy0dS9VupqTwm3yYG7B4ZFcE+TiPHCDM0=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=FcmXjeAkKvtdC+ugyemXAcabljIvjviQhtEuBXWIglE=;
-	h=date:mime-version:subject:message-id:from;
-Received: from localhost.localdomain (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTPA id 47D5B900141;
-	Mon, 29 Jul 2024 15:18:52 +0800 (CST)
-From: Kever Yang <kever.yang@rock-chips.com>
-To: heiko@sntech.de
-Cc: linux-rockchip@lists.infradead.org,
-	Kever Yang <kever.yang@rock-chips.com>,
-	Jonas Karlman <jonas@kwiboo.se>,
-	Joseph Chen <chenjh@rock-chips.com>,
-	Philipp Tomsich <philipp.tomsich@theobroma-systems.com>,
-	Philipp Tomsich <philipp.tomsich@vrull.eu>,
-	Simon Glass <sjg@chromium.org>,
-	Tom Rini <trini@konsulko.com>,
-	u-boot@lists.denx.de
-Subject: [PATCH] rockchip: dts: rk3568: Sync the evb board name with kernel
-Date: Mon, 29 Jul 2024 15:18:50 +0800
-Message-Id: <20240729071850.918007-1-kever.yang@rock-chips.com>
-X-Mailer: git-send-email 2.25.1
+	id 1sYKuY-0000000AMGZ-0oF2;
+	Mon, 29 Jul 2024 07:35:16 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sin.source.kernel.org (Postfix) with ESMTP id 40817CE010D;
+	Mon, 29 Jul 2024 07:35:11 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3A545C32786;
+	Mon, 29 Jul 2024 07:35:03 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1722238510;
+	bh=gyRMn/ZRT8UeeZ9ZlmeuVUiCI2n55MR2NKAn/5uQ2Kg=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=nBVdmPxnfwUe1lhpDN0VPiG2GuVMSYvhsM4D1IHWiD0xODPoCJGO3it9K0KaB2xOq
+	 Cye3iXX2TJqQp0bZ78Tsx37FqW239ItnlIxul5XDRy9n+R/yB3DrYOchmyuLd8FN++
+	 WLuwP2IyHoCsHZtxgHoHk+MwZTpUbOuEGJ4KhF+apHp5qZcD1HMUxoyDwzHmNHFU1n
+	 VfI8uDt91dwyWkAJKELGvXj4mkVljagKqfNfTglCmzVfbgy3LGK7+IoXeAkGK5bEtI
+	 3ALizYx+3K1KnSxOS3tL5QEYK5uQPaQZkEfm2kdAwHGkpQFYvu0r8xa6CrYMXobehf
+	 q55ZelSpdacnQ==
+Message-ID: <1724f480-369d-4b4a-9384-1c6b33b00433@kernel.org>
+Date: Mon, 29 Jul 2024 09:35:00 +0200
 MIME-Version: 1.0
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQh5DS1YYSk5KGktLGUJOTUNWFRQJFh
-	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
-	hVSktLVUpCS0tZBg++
-X-HM-Tid: 0a90fd5b3a7f03a9kunm47d5b900141
-X-HM-MType: 1
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6NTo6IRw5HzIyTDIrNShWMS8u
-	IRAKFB5VSlVKTElJSUhMTkhISU5PVTMWGhIXVRAeDR4JVQIaFRw7CRQYEFYYExILCFUYFBZFWVdZ
-	EgtZQVlOQ1VJSVVMVUpKT1lXWQgBWUFKQ0pPNwY+
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v4 2/5] dt-bindings: net: wireless: brcm4329-fmac: add
+ clock description for AP6275P Wi-Fi device
+To: Jacobe Zang <jacobe.zang@wesion.com>, robh@kernel.org,
+ krzk+dt@kernel.org, heiko@sntech.de, kvalo@kernel.org, davem@davemloft.net,
+ edumazet@google.com, kuba@kernel.org, pabeni@redhat.com,
+ conor+dt@kernel.org, arend.vanspriel@broadcom.com
+Cc: efectn@protonmail.com, dsimic@manjaro.org, jagan@edgeble.ai,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+ arend@broadcom.com, linux-wireless@vger.kernel.org, netdev@vger.kernel.org,
+ megi@xff.cz, duoming@zju.edu.cn, bhelgaas@google.com,
+ minipli@grsecurity.net, brcm80211@lists.linux.dev,
+ brcm80211-dev-list.pdl@broadcom.com, nick@khadas.com
+References: <20240729070102.3770318-1-jacobe.zang@wesion.com>
+ <20240729070102.3770318-3-jacobe.zang@wesion.com>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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 fv0=
+In-Reply-To: <20240729070102.3770318-3-jacobe.zang@wesion.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240729_001926_958465_606EF0C3 
-X-CRM114-Status: UNSURE (   4.62  )
+X-CRM114-CacheID: sfid-20240729_003514_632764_BBC12C7B 
+X-CRM114-Status: UNSURE (   6.47  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -79,21 +126,21 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The name of rk3568 evb in mainline kernel is rk3568-evb1-v10.
+On 29/07/2024 09:00, Jacobe Zang wrote:
+> Add clocks and clock-names for brcm4329-fmac.
 
-Signed-off-by: Kever Yang <kever.yang@rock-chips.com>
----
+Why? Which devices have it? If only your newest addon, then squash the
+patches and add appropriate allOf:if:then disallowing the clocks for
+others. Or maybe all of them have it? Why commit msg does not explain
+anything about the hardware?
 
- .../dts/{rk3568-evb-u-boot.dtsi => rk3568-evb1-v10-u-boot.dtsi}   | 0
- 1 file changed, 0 insertions(+), 0 deletions(-)
- rename arch/arm/dts/{rk3568-evb-u-boot.dtsi => rk3568-evb1-v10-u-boot.dtsi} (100%)
+> 
+> Reviewed-by: Arend van Spriel <arend.vanspriel@broadcom.com>
+> Signed-off-by: Jacobe Zang <jacobe.zang@wesion.com>
+> ---
 
-diff --git a/arch/arm/dts/rk3568-evb-u-boot.dtsi b/arch/arm/dts/rk3568-evb1-v10-u-boot.dtsi
-similarity index 100%
-rename from arch/arm/dts/rk3568-evb-u-boot.dtsi
-rename to arch/arm/dts/rk3568-evb1-v10-u-boot.dtsi
--- 
-2.25.1
+Best regards,
+Krzysztof
 
 
 _______________________________________________
