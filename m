@@ -4,71 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BEFEAC3DA49
-	for <linux-rockchip@archiver.kernel.org>; Mon, 29 Jul 2024 02:35:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7BBFAC3DA61
+	for <linux-rockchip@archiver.kernel.org>; Mon, 29 Jul 2024 06:25:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Qvcl5ydbavEE548qgAmh3AKxlBJQ9HvKNUOjCISSyyw=; b=LGmAAlPA19AkgV
-	Zli6s6CLetDpfRRqDrQItbdHJg7CVeWd+jr25nTl3FNQNOSb/jS0ra5btU2zAeg26plEqVLaYFLHx
-	IpUa2Qj6A0d3njHCVHdu5vz1ftB47bFGniMkD3gYkNspl3ALbMZgOMcEGonCpbKDNZI0pi6UAMJWC
-	wnQwwCYlmXDUGxNMhEsBmcABV750p4+x8l3de3CWP1gcQZQuIodwlG/dHktMslUuiAsl1VllWdlr3
-	rbigDPCma0YXYG2fZBqkLBD/Vi0bxbAS1iinvw7vvDhvjJ2uhcfeI0L2y/YJ9OpZG5p9l6k0ZAv+1
-	tLOnWV77NwcTMfht3v8w==;
+	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
+	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=lDt3hQJPnfwjyQc9t9VklLL903J+fN/kb7BdBSTNBT0=; b=qTaWblTm/hOyLSmmsr/63+wq3J
+	wf1CD5FPYJAbjHnzyh2aiD4VRf4aDCn+s0IxXhJdKLEpFTKYHXVRjbvSKJbiuRS0Sx/DYfDBSvB+Q
+	vURKdlvhOlh9ZCdrJxo4ZLbUVqSEd/7xHaRsH8VUvH4NycRXoMs3y9Hg2iJXaBY8ZUasVHJaTyEt/
+	7KW6BbDPI6JqNR/lTJgGexvBuqYKFEB/odwWndj+afNGBaKPbmjSKeZ11P/eLshCJ/7+ZaWJGL0Zu
+	TSbzQS7823kaWhA/vAnD6kq82XlllcTkA3+zj1s1HMAiN6e6Zr6RLBu9JwQEgL5vLYnTNThvP+ERl
+	1y3G07tA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sYGEd-00000009l9F-2kVG;
-	Mon, 29 Jul 2024 02:35:39 +0000
-Received: from mail-m6014.netease.com ([210.79.60.14])
+	id 1sYJor-0000000A9DH-2y3F;
+	Mon, 29 Jul 2024 06:25:17 +0000
+Received: from mxout70.expurgate.net ([91.198.224.70])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sYGEZ-00000009l8c-1Lpj;
-	Mon, 29 Jul 2024 02:35:37 +0000
-DKIM-Signature: a=rsa-sha256;
-	b=TMckSxN596Z34NcUzLqL8pYKnP0umfUaqbWR1PJ37f+4f9Cb5OD/AIqv28PwhxzRHeSldDuINboM06H3FlvRRGmsUIavjraWuqrVEH8HSLVW96WLX/8RHHMEyGbLdH9BxEJISGUZMiUGzu8PA7Y5UiwcEHdTiX5MgT5HEUUGCak=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
-	bh=4mHI6JfYkUK4Rm1kPTrX/fJ18TyPM8C33ADS+xkr440=;
-	h=date:mime-version:subject:message-id:from;
-Received: from [172.16.12.141] (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTPA id DE535840C2C;
-	Mon, 29 Jul 2024 10:35:13 +0800 (CST)
-Message-ID: <48249708-8c05-40d2-a5d8-23de960c5a77@rock-chips.com>
-Date: Mon, 29 Jul 2024 10:35:13 +0800
+	id 1sYJoP-0000000A94u-0BEL;
+	Mon, 29 Jul 2024 06:24:50 +0000
+Received: from [127.0.0.1] (helo=localhost)
+	by relay.expurgate.net with smtp (Exim 4.92)
+	(envelope-from <prvs=1954343a27=fe@dev.tdt.de>)
+	id 1sYJo5-00EKwC-RE; Mon, 29 Jul 2024 08:24:29 +0200
+Received: from [195.243.126.94] (helo=securemail.tdt.de)
+	by relay.expurgate.net with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+	(Exim 4.92)
+	(envelope-from <fe@dev.tdt.de>)
+	id 1sYJo4-007xPo-H2; Mon, 29 Jul 2024 08:24:28 +0200
+Received: from securemail.tdt.de (localhost [127.0.0.1])
+	by securemail.tdt.de (Postfix) with ESMTP id 1C9D1240040;
+	Mon, 29 Jul 2024 08:24:28 +0200 (CEST)
+Received: from mail.dev.tdt.de (unknown [10.2.4.42])
+	by securemail.tdt.de (Postfix) with ESMTP id 04C26240036;
+	Mon, 29 Jul 2024 08:24:28 +0200 (CEST)
+Received: from mail.dev.tdt.de (localhost [IPv6:::1])
+	by mail.dev.tdt.de (Postfix) with ESMTP id 1E66B20A38;
+	Mon, 29 Jul 2024 08:24:27 +0200 (CEST)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3] rockchip/drm: vop2: add support for gamma LUT
-To: Piotr Zalewski <pZ010001011111@proton.me>
-Cc: "airlied@gmail.com" <airlied@gmail.com>, "daniel@ffwll.ch"
- <daniel@ffwll.ch>,
- "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
- "heiko@sntech.de" <heiko@sntech.de>, "hjc@rock-chips.com"
- <hjc@rock-chips.com>,
- "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>,
- "maarten.lankhorst@linux.intel.com" <maarten.lankhorst@linux.intel.com>,
- "mripard@kernel.org" <mripard@kernel.org>,
- "tzimmermann@suse.de" <tzimmermann@suse.de>
-References: <TkgKVivuaLFLILPY-n3iZo_8KF-daKdqdu-0_e0HP-5Ar_8DALDeNWog2suwWKjX7eomcbGET0KZe7DlzdhK2YM6CbLbeKeFZr-MJzJMtw0=@proton.me>
- <ec283a7c-845b-4c58-8d86-cdd07862a0dc@rock-chips.com>
- <KbOjWzFKMM_fwDora8CjaLFBHWypRP1Mk6nPzHkwNAGxFHzJIynx3W8_jyZvbygH99lRAXDdrJmdFEQuY8M2Ao-a8F42zt8no4B1DCBiQIs=@proton.me>
-Content-Language: en-US
-From: Andy Yan <andy.yan@rock-chips.com>
-In-Reply-To: <KbOjWzFKMM_fwDora8CjaLFBHWypRP1Mk6nPzHkwNAGxFHzJIynx3W8_jyZvbygH99lRAXDdrJmdFEQuY8M2Ao-a8F42zt8no4B1DCBiQIs=@proton.me>
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGUgYHlZPGkJOTk1NHkxNHh5WFRQJFh
-	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
-	hVSktLVUpCS0tZBg++
-X-HM-Tid: 0a90fc578cdf03a4kunmde535840c2c
-X-HM-MType: 1
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6NBA6Kyo5AzI6FzMDSAhKCy8D
-	VlZPCT9VSlVKTElJSUlLTkpOSk5CVTMWGhIXVRoVHwJVAhoVOwkUGBBWGBMSCwhVGBQWRVlXWRIL
-	WUFZTkNVSUlVTFVKSk9ZV1kIAVlBSkhDTU83Bg++
+Date: Mon, 29 Jul 2024 08:24:26 +0200
+From: Florian Eckert <fe@dev.tdt.de>
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: lee@kernel.org, jdelvare@suse.com, linux@roeck-us.net,
+ dmitry.torokhov@gmail.com, pavel@ucw.cz, robh@kernel.org,
+ krzk+dt@kernel.org, conor+dt@kernel.org, ukleinek@debian.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-hwmon@vger.kernel.org, linux-input@vger.kernel.org,
+ linux-leds@vger.kernel.org
+Subject: Re: [PATCH v2 3/7] leds: add driver for LEDs from qnap-mcu devices
+In-Reply-To: <20240728211751.2160123-4-heiko@sntech.de>
+References: <20240728211751.2160123-1-heiko@sntech.de>
+ <20240728211751.2160123-4-heiko@sntech.de>
+Message-ID: <f7d10147a643f4d0d7cf2decbe490315@dev.tdt.de>
+X-Sender: fe@dev.tdt.de
+User-Agent: Roundcube Webmail/1.3.17
+X-purgate-ID: 151534::1722234269-EBEF3E81-86CD54DD/0/0
+X-purgate-type: clean
+X-purgate: clean
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240728_193535_630716_417C2EA8 
-X-CRM114-Status: GOOD (  34.07  )
+X-CRM114-CacheID: sfid-20240728_232449_266602_EAC0C2BE 
+X-CRM114-Status: GOOD (  25.35  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,297 +84,290 @@ Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Piotr,
+Hello Heiko,
 
-On 7/27/24 03:49, Piotr Zalewski wrote:
-> 
-> On Friday, July 26th, 2024 at 10:55 AM, Andy Yan <andy.yan@rock-chips.com> wrote:
-> 
->> Hi Piotr
-> 
-> Hi Andy!
-> 
->> Thanks for your work.
->>
->> On 7/25/24 06:05, Piotr Zalewski wrote:
->>
->>> Add support for gamma LUT in VOP2 driver. The implementation is based on
->>> the one found in VOP driver and modified to be compatible with VOP2. Blue
->>> and red channels in gamma LUT register write were swapped with respect to
->>> how gamma LUT values are written in VOP. Write of the current video port id
->>> to VOP2_SYS_LUT_PORT_SEL register was added before the write of DSP_LUT_EN
->>> bit. Gamma size is set and drm color management is enabled for each video
->>> port's CRTC except ones which have no associated device. Tested on RK3566
->>> (Pinetab2).
->>>
->>> Helped-by: Dragan Simic dsimic@manjaro.org
->>> Signed-off-by: Piotr Zalewski pZ010001011111@proton.me
->>> ---
->>>
->>> Notes:
->>> Changes in v3:
->>> - v3 is patch v2 "resend", by mistake the incremental patch were
->>> sent in v2
->>>
->>> Changes in v2:
->>> - Apply code styling corrections [1]
->>> - Move gamma LUT write inside the vop2 lock
->>>
->>> Link to v2: https://lore.kernel.org/linux-rockchip/Hk03HDb6wSSHWtEFZHUye06HR0-9YzP5nCHx9A8_kHzWSZawDrU1o1pjEGkCOJFoRg0nTB4BWEv6V0XBOjF4-0Mj44lp2TrjaQfnytzp-Pk=@proton.me/T/#u
->>> Link to v1: https://lore.kernel.org/linux-rockchip/9736eadf6a9d8e97eef919c6b3d88828@manjaro.org/T/#t
->>>
->>> [1] https://lore.kernel.org/linux-rockchip/d019761504b540600d9fc7a585d6f95f@manjaro.org/
->>>
->>> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
->>> index 9873172e3fd3..37fcf544a5fd 100644
->>> --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
->>> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
->>> @@ -278,6 +278,15 @@ static u32 vop2_readl(struct vop2 *vop2, u32 offset)
->>> return val;
->>> }
->>>
->>> +static u32 vop2_vp_read(struct vop2_video_port *vp, u32 offset)
->>> +{
->>> + u32 val;
->>> +
->>> + regmap_read(vp->vop2->map, vp->data->offset + offset, &val);
->>> +
->>> + return val;
->>> +}
->>> +
->>> static void vop2_win_write(const struct vop2_win *win, unsigned int reg, u32 v)
->>> {
->>> regmap_field_write(win->reg[reg], v);
->>> @@ -1482,6 +1491,95 @@ static bool vop2_crtc_mode_fixup(struct drm_crtc *crtc,
->>> return true;
->>> }
->>>
->>> +static bool vop2_vp_dsp_lut_is_enabled(struct vop2_video_port *vp)
->>> +{
->>> + return (u32) (vop2_vp_read(vp, RK3568_VP_DSP_CTRL) & RK3568_VP_DSP_CTRL__DSP_LUT_EN) >
->>> + 0;
->>> +}
->>> +
->>> +static void vop2_vp_dsp_lut_enable(struct vop2_video_port *vp)
->>> +{
->>> + u32 dsp_ctrl = vop2_vp_read(vp, RK3568_VP_DSP_CTRL);
->>> +
->>> + dsp_ctrl |= RK3568_VP_DSP_CTRL__DSP_LUT_EN;
->>> + vop2_vp_write(vp, RK3568_VP_DSP_CTRL, dsp_ctrl);
->>> +}
->>> +
->>> +static void vop2_vp_dsp_lut_disable(struct vop2_video_port *vp)
->>> +{
->>> + u32 dsp_ctrl = vop2_vp_read(vp, RK3568_VP_DSP_CTRL);
->>> +
->>> + dsp_ctrl &= ~RK3568_VP_DSP_CTRL__DSP_LUT_EN;
->>> + vop2_vp_write(vp, RK3568_VP_DSP_CTRL, dsp_ctrl);
->>> +}
->>> +
->>> +static void vop2_crtc_write_gamma_lut(struct vop2 *vop2, struct drm_crtc *crtc)
->>> +{
->>> + const struct vop2_video_port *vp = to_vop2_video_port(crtc);
->>> + const struct vop2_video_port_data *vp_data = &vop2->data->vp[vp->id];
->>> +
->>> + struct drm_color_lut *lut = crtc->state->gamma_lut->data;
->>> + unsigned int i, bpc = ilog2(vp_data->gamma_lut_len);
->>> + u32 word;
->>> +
->>> + for (i = 0; i < crtc->gamma_size; i++) {
->>> + word = (drm_color_lut_extract(lut[i].blue, bpc) << (2 * bpc)) |
->>> + (drm_color_lut_extract(lut[i].green, bpc) << bpc) |
->>> + drm_color_lut_extract(lut[i].red, bpc);
->>> +
->>> + writel(word, vop2->lut_regs + i * 4);
->>> + }
->>> +}
->>> +
->>> +static void vop2_crtc_gamma_set(struct vop2 *vop2, struct drm_crtc *crtc,
->>> + struct drm_crtc_state *old_state)
->>> +{
->>> + struct drm_crtc_state *state = crtc->state;
->>> + struct vop2_video_port *vp = to_vop2_video_port(crtc);
->>> + u32 dsp_ctrl;
->>> + int ret;
->>> +
->>> + if (!vop2->lut_regs)
->>> + return;
->>> +
->>> + if (!state->gamma_lut) {
->>
->>
->> What's the purpose of checking !state->gamma_lut here,
->>
->> and you check it again at the end for return.
->> This makes me very confused.
-> 
-> I understood it this way - since the vop2 lock is unlocked after disabling
-> gamma LUT, the CRTC state can change while waiting for DSP_LUT_EN bit to
-> be unset. With the change I sent in response to Daniel's reply, gamma LUT
-> state modification should now be fully atomic so there shouldn't be a need
-> for the second state check there anymore (if my logic is incorrect please
-> explain).
+> diff --git a/drivers/leds/Makefile b/drivers/leds/Makefile
+> index effdfc6f1e951..27eb6cd827610 100644
+> --- a/drivers/leds/Makefile
+> +++ b/drivers/leds/Makefile
+> @@ -77,6 +77,7 @@ obj-$(CONFIG_LEDS_PCA995X)		+= leds-pca995x.o
+>  obj-$(CONFIG_LEDS_PM8058)		+= leds-pm8058.o
+>  obj-$(CONFIG_LEDS_POWERNV)		+= leds-powernv.o
+>  obj-$(CONFIG_LEDS_PWM)			+= leds-pwm.o
+> +obj-$(CONFIG_LEDS_QNAP_MCU)		+= leds-qnap-mcu.o
+>  obj-$(CONFIG_LEDS_REGULATOR)		+= leds-regulator.o
+>  obj-$(CONFIG_LEDS_SC27XX_BLTC)		+= leds-sc27xx-bltc.o
+>  obj-$(CONFIG_LEDS_SUN50I_A100)		+= leds-sun50i-a100.o
+> diff --git a/drivers/leds/leds-qnap-mcu.c 
+> b/drivers/leds/leds-qnap-mcu.c
+> new file mode 100644
+> index 0000000000000..e3244923759d2
+> --- /dev/null
+> +++ b/drivers/leds/leds-qnap-mcu.c
+> @@ -0,0 +1,247 @@
+> +// SPDX-License-Identifier: GPL-2.0-only
+> +
+> +/*
+> + * Driver for LEDs found on QNAP MCU devices
+> + *
+> + * Copyright (C) 2024 Heiko Stuebner <heiko@sntech.de>
+> + */
+> +
+> +#include <linux/leds.h>
+> +#include <linux/mfd/qnap-mcu.h>
+> +#include <linux/module.h>
+> +#include <linux/platform_device.h>
+> +#include <linux/slab.h>
+> +#include <uapi/linux/uleds.h>
+> +
+> +enum qnap_mcu_err_led_mode {
+> +	QNAP_MCU_ERR_LED_ON = 0,
+> +	QNAP_MCU_ERR_LED_OFF = 1,
+> +	QNAP_MCU_ERR_LED_BLINK_FAST = 2,
+> +	QNAP_MCU_ERR_LED_BLINK_SLOW = 3,
+> +};
+> +
+> +struct qnap_mcu_err_led {
+> +	struct qnap_mcu *mcu;
+> +	struct led_classdev cdev;
+> +	u8 num;
+> +	u8 mode;
+> +};
+> +
+> +static inline struct qnap_mcu_err_led *
+> +		cdev_to_qnap_mcu_err_led(struct led_classdev *led_cdev)
+> +{
+> +	return container_of(led_cdev, struct qnap_mcu_err_led, cdev);
+> +}
+> +
+> +static int qnap_mcu_err_led_set(struct led_classdev *led_cdev,
+> +				enum led_brightness value)
+> +{
+> +	struct qnap_mcu_err_led *err_led = 
+> cdev_to_qnap_mcu_err_led(led_cdev);
+> +	u8 cmd[] = {
+> +		[0] = 0x40,
+> +		[1] = 0x52,
+> +		[2] = 0x30 + err_led->num,
+> +		[3] = 0x30
+> +	};
+> +
+> +	/*
+> +	 * If the led is off, turn it on. Otherwise don't disturb
+> +	 * a possible set blink-mode.
+> +	 */
+> +	if (value == 0)
+> +		err_led->mode = QNAP_MCU_ERR_LED_OFF;
+> +	else if (err_led->mode == QNAP_MCU_ERR_LED_OFF)
+> +		err_led->mode = QNAP_MCU_ERR_LED_ON;
+> +
+> +	cmd[3] = 0x30 + err_led->mode;
+> +
+> +	return qnap_mcu_exec_with_ack(err_led->mcu, cmd, sizeof(cmd));
+> +}
+> +
+> +static int qnap_mcu_err_led_blink_set(struct led_classdev *led_cdev,
+> +				      unsigned long *delay_on,
+> +				      unsigned long *delay_off)
+> +{
+> +	struct qnap_mcu_err_led *err_led = 
+> cdev_to_qnap_mcu_err_led(led_cdev);
+> +	u8 cmd[] = {
+> +		[0] = 0x40,
+> +		[1] = 0x52,
+> +		[2] = 0x30 + err_led->num,
+> +		[3] = 0x30
+> +	};
+> +
+> +	/* LED is off, nothing to do */
+> +	if (err_led->mode == QNAP_MCU_ERR_LED_OFF)
+> +		return 0;
+> +
+> +	if (*delay_on < 500) {
+> +		*delay_on = 100;
+> +		*delay_off = 100;
+> +		err_led->mode = QNAP_MCU_ERR_LED_BLINK_FAST;
+> +	} else {
+> +		*delay_on = 500;
+> +		*delay_off = 500;
+> +		err_led->mode = QNAP_MCU_ERR_LED_BLINK_SLOW;
+> +	}
+> +
+> +	cmd[3] = 0x30 + err_led->mode;
+> +
+> +	return qnap_mcu_exec_with_ack(err_led->mcu, cmd, sizeof(cmd));
+> +}
+> +
+> +static int qnap_mcu_register_err_led(struct device *dev, struct
+> qnap_mcu *mcu, int num)
+> +{
+> +	struct qnap_mcu_err_led *err_led;
+> +	char tmp_buf[LED_MAX_NAME_SIZE];
+> +	int ret;
+> +
+> +	err_led = devm_kzalloc(dev, sizeof(*err_led), GFP_KERNEL);
+> +	if (!err_led)
+> +		return -ENOMEM;
+> +
+> +	err_led->mcu = mcu;
+> +	err_led->num = num;
+> +	err_led->mode = QNAP_MCU_ERR_LED_OFF;
+> +
+> +	snprintf(tmp_buf, LED_MAX_NAME_SIZE, "hdd%d:red:status", num + 1);
+> +	err_led->cdev.name = tmp_buf;
 
-After reading the commit message for adding gamma control for rk3399[0] i understand
-what is going on here:
-
-we should run into the if block in two cases:
-
-(1) if the state->gamma_lut is null, we just need to disable dsp_lut and return,
-     this is why vop1 code check !state->gamma_lut again at the end.
-(2) for platform unlinke rk3399(rk3566/8), we also need to disable dsp_lut befor we
-     write gamma_lut data, for platform like rk3399(rk3588), we don't need do the disable,
-     this is why vop1 code also has a !VOP_HAS_REG(vop, common, update_gamma_lut) check.
-
-so we also need a similary check here:
-(1) if the state->gamma_lut is null, disable dsp lut and return directly.
-(1) if the state has a gamma_lut, we shoud dsiable dsp_lut than write gamma lut data on rk3566/8,
-      buf for rk3588, we should not disable dsp_lut before write gamma
+Should not the memory have to be allocated here via 'kzalloc' for 
+'err_led->cdev.name'?
+After leaving the function, tmp_buf is no longer on the stack?
 
 
-[0]https://lists.infradead.org/pipermail/linux-rockchip/2021-October/028132.html
-> 
->>> + /*
->>> + * To disable gamma (gamma_lut is null) or to write
->>> + * an update to the LUT, clear dsp_lut_en.
->>> + /
->>> + vop2_lock(vop2);
->>> +
->>> + vop2_vp_dsp_lut_disable(vp);
->>> +
->>> + vop2_cfg_done(vp);
->>> + vop2_unlock(vop2);
->>> + /
->>> + * In order to write the LUT to the internal memory,
->>> + * we need to first make sure the dsp_lut_en bit is cleared.
->>> + */
->>> + ret = readx_poll_timeout(vop2_vp_dsp_lut_is_enabled, vp, dsp_ctrl,
->>> + !dsp_ctrl, 5, 30 * 1000);
->>> +
->>> + if (ret) {
->>> + DRM_DEV_ERROR(vop2->dev, "display LUT RAM enable timeout!\n");
->>> + return;
->>> + }
->>> +
->>> + if (!state->gamma_lut)
->>> + return;
->>> + }
->>> +
->>> +
->>> + vop2_lock(vop2);
->>> + vop2_crtc_write_gamma_lut(vop2, crtc);
->>> + vop2_writel(vp->vop2, RK3568_LUT_PORT_SEL, vp->id);
->>
->>
->> We should select lut_port befor write gamma.
->>
->> And there is one thing to note here is that:
->> There is only one gamma for rk3568/rk3566, that means only one
->> of the three VPs can exclusively use it at a time, so we need
->> a exclusive check for rk3568/rk3566.
->>
->> For rk3588 and the new soc, there is no such limination.
->>
->> The another thing to note is that for rk35588 and other new soc, no need to disable dsp_lut before write it.
-> 
-> Thank you for the clarification! I will change my patch according to these
-> facts.
-> 
->>> +
->>> + vop2_vp_dsp_lut_enable(vp);
->>> +
->>> + vop2_cfg_done(vp);
->>> + vop2_unlock(vop2);
->>> +}
->>> +
->>> static void vop2_dither_setup(struct drm_crtc *crtc, u32 *dsp_ctrl)
->>> {
->>> struct rockchip_crtc_state *vcstate = to_rockchip_crtc_state(crtc->state);
->>> @@ -1925,6 +2023,7 @@ static void vop2_crtc_atomic_enable(struct drm_crtc *crtc,
->>> const struct vop2_data *vop2_data = vop2->data;
->>> const struct vop2_video_port_data *vp_data = &vop2_data->vp[vp->id];
->>> struct drm_crtc_state *crtc_state = drm_atomic_get_new_crtc_state(state, crtc);
->>> + struct drm_crtc_state *old_state = drm_atomic_get_old_crtc_state(state, crtc);
->>> struct rockchip_crtc_state *vcstate = to_rockchip_crtc_state(crtc->state);
->>> struct drm_display_mode *mode = &crtc->state->adjusted_mode;
->>> unsigned long clock = mode->crtc_clock * 1000;
->>> @@ -2060,6 +2159,9 @@ static void vop2_crtc_atomic_enable(struct drm_crtc *crtc,
->>> drm_crtc_vblank_on(crtc);
->>>
->>> vop2_unlock(vop2);
->>> +
->>> + if (crtc->state->gamma_lut)
->>> + vop2_crtc_gamma_set(vop2, crtc, old_state);
->>> }
->>>
->>> static int vop2_crtc_atomic_check(struct drm_crtc *crtc,
->>> @@ -2070,6 +2172,16 @@ static int vop2_crtc_atomic_check(struct drm_crtc *crtc,
->>> int nplanes = 0;
->>> struct drm_crtc_state *crtc_state = drm_atomic_get_new_crtc_state(state, crtc);
->>>
->>> + if (vp->vop2->lut_regs && crtc_state->color_mgmt_changed && crtc_state->gamma_lut) {
->>> + unsigned int len = drm_color_lut_size(crtc_state->gamma_lut);
->>> +
->>> + if (len != crtc->gamma_size) {
->>> + DRM_DEBUG_KMS("Invalid LUT size; got %d, expected %d\n",
->>> + len, crtc->gamma_size);
->>> + return -EINVAL;
->>> + }
->>> + }
->>> +
->>> drm_atomic_crtc_state_for_each_plane(plane, crtc_state)
->>> nplanes++;
->>>
->>> @@ -2459,6 +2571,10 @@ static void vop2_setup_dly_for_windows(struct vop2 *vop2)
->>> static void vop2_crtc_atomic_begin(struct drm_crtc *crtc,
->>> struct drm_atomic_state *state)
->>> {
->>> + struct drm_crtc_state *crtc_state = drm_atomic_get_new_crtc_state(state,
->>> + crtc);
->>> + struct drm_crtc_state *old_crtc_state = drm_atomic_get_old_crtc_state(state,
->>> + crtc);
->>> struct vop2_video_port *vp = to_vop2_video_port(crtc);
->>> struct vop2 *vop2 = vp->vop2;
->>> struct drm_plane *plane;
->>> @@ -2482,6 +2598,9 @@ static void vop2_crtc_atomic_begin(struct drm_crtc *crtc,
->>> vop2_setup_layer_mixer(vp);
->>> vop2_setup_alpha(vp);
->>> vop2_setup_dly_for_windows(vop2);
->>> +
->>> + if (crtc_state->color_mgmt_changed && !crtc_state->active_changed)
->>> + vop2_crtc_gamma_set(vop2, crtc, old_crtc_state);
->>> }
->>>
->>> static void vop2_crtc_atomic_flush(struct drm_crtc *crtc,
->>> @@ -2791,6 +2910,14 @@ static int vop2_create_crtcs(struct vop2 *vop2)
->>>
->>> drm_crtc_helper_add(&vp->crtc, &vop2_crtc_helper_funcs);
->>>
->>> + if (vop2->lut_regs && vp->crtc.dev != NULL) {
->>> + const struct vop2_video_port_data *vp_data = &vop2_data->vp[vp->id];
->>> +
->>> + drm_mode_crtc_set_gamma_size(&vp->crtc, vp_data->gamma_lut_len);
->>> + drm_crtc_enable_color_mgmt(&vp->crtc, 0, false,
->>> + vp_data->gamma_lut_len);
->>> + }
->>> +
->>> init_completion(&vp->dsp_hold_completion);
->>> }
->>>
->>> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h
->>> index 615a16196aff..3a58b73fa876 100644
->>> --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h
->>> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h
->>> @@ -394,6 +394,7 @@ enum dst_factor_mode {
->>> #define RK3568_REG_CFG_DONE__GLB_CFG_DONE_EN BIT(15)
->>>
->>> #define RK3568_VP_DSP_CTRL__STANDBY BIT(31)
->>> +#define RK3568_VP_DSP_CTRL__DSP_LUT_EN BIT(28)
->>> #define RK3568_VP_DSP_CTRL__DITHER_DOWN_MODE BIT(20)
->>> #define RK3568_VP_DSP_CTRL__DITHER_DOWN_SEL GENMASK(19, 18)
->>> #define RK3568_VP_DSP_CTRL__DITHER_DOWN_EN BIT(17)
-> 
-> Best regards, Piotr Zalewski
+> +
+> +	err_led->cdev.brightness_set_blocking = qnap_mcu_err_led_set;
+> +	err_led->cdev.blink_set = qnap_mcu_err_led_blink_set;
+> +	err_led->cdev.brightness = 0;
+> +	err_led->cdev.max_brightness = 1;
+> +
+> +	ret = devm_led_classdev_register(dev, &err_led->cdev);
+> +	if (ret)
+> +		return dev_err_probe(dev, ret, "failed to register hdd led %d", 
+> num);
+> +
+> +	return qnap_mcu_err_led_set(&err_led->cdev, 0);
+> +}
+> +
+> +enum qnap_mcu_usb_led_mode {
+> +	QNAP_MCU_USB_LED_ON = 1,
+> +	QNAP_MCU_USB_LED_OFF = 3,
+> +	QNAP_MCU_USB_LED_BLINK = 2,
+> +};
+> +
+> +struct qnap_mcu_usb_led {
+> +	struct qnap_mcu *mcu;
+> +	struct led_classdev cdev;
+> +	u8 mode;
+> +};
+> +
+> +static inline struct qnap_mcu_usb_led *
+> +		cdev_to_qnap_mcu_usb_led(struct led_classdev *led_cdev)
+> +{
+> +	return container_of(led_cdev, struct qnap_mcu_usb_led, cdev);
+> +}
+> +
+> +static int qnap_mcu_usb_led_set(struct led_classdev *led_cdev,
+> +				enum led_brightness value)
+> +{
+> +	struct qnap_mcu_usb_led *usb_led = 
+> cdev_to_qnap_mcu_usb_led(led_cdev);
+> +	u8 cmd[] = {
+> +		[0] = 0x40,
+> +		[1] = 0x43,
+> +		[2] = 0
+> +	};
+> +
+> +	/*
+> +	 * If the led is off, turn it on. Otherwise don't disturb
+> +	 * a possible set blink-mode.
+> +	 */
+> +	if (value == 0)
+> +		usb_led->mode = QNAP_MCU_USB_LED_OFF;
+> +	else if (usb_led->mode == QNAP_MCU_USB_LED_OFF)
+> +		usb_led->mode = QNAP_MCU_USB_LED_ON;
+> +
+> +	/* byte 3 is shared between the usb led target and setting the mode 
+> */
+> +	cmd[2] = 0x44 | usb_led->mode;
+> +
+> +	return qnap_mcu_exec_with_ack(usb_led->mcu, cmd, sizeof(cmd));
+> +}
+> +
+> +static int qnap_mcu_usb_led_blink_set(struct led_classdev *led_cdev,
+> +				      unsigned long *delay_on,
+> +				      unsigned long *delay_off)
+> +{
+> +	struct qnap_mcu_usb_led *usb_led = 
+> cdev_to_qnap_mcu_usb_led(led_cdev);
+> +	u8 cmd[] = {
+> +		[0] = 0x40,
+> +		[1] = 0x43,
+> +		[2] = 0
+> +	};
+> +
+> +	/* LED is off, nothing to do */
+> +	if (usb_led->mode == QNAP_MCU_USB_LED_OFF)
+> +		return 0;
+> +
+> +	*delay_on = 250;
+> +	*delay_off = 250;
+> +	usb_led->mode = QNAP_MCU_USB_LED_BLINK;
+> +
+> +	/* byte 3 is shared between the usb led target and setting the mode 
+> */
+> +	cmd[2] = 0x44 | usb_led->mode;
+> +
+> +	return qnap_mcu_exec_with_ack(usb_led->mcu, cmd, sizeof(cmd));
+> +}
+> +
+> +static int qnap_mcu_register_usb_led(struct device *dev, struct 
+> qnap_mcu *mcu)
+> +{
+> +	struct qnap_mcu_usb_led *usb_led;
+> +	int ret;
+> +
+> +	usb_led = devm_kzalloc(dev, sizeof(*usb_led), GFP_KERNEL);
+> +	if (!usb_led)
+> +		return -ENOMEM;
+> +
+> +	usb_led->mcu = mcu;
+> +	usb_led->mode = QNAP_MCU_USB_LED_OFF;
+> +	usb_led->cdev.name = "usb:blue:disk";
+> +	usb_led->cdev.brightness_set_blocking = qnap_mcu_usb_led_set;
+> +	usb_led->cdev.blink_set = qnap_mcu_usb_led_blink_set;
+> +	usb_led->cdev.brightness = 0;
+> +	usb_led->cdev.max_brightness = 1;
+> +
+> +	ret = devm_led_classdev_register(dev, &usb_led->cdev);
+> +	if (ret)
+> +		return dev_err_probe(dev, ret, "failed to register usb led");
+> +
+> +	return qnap_mcu_usb_led_set(&usb_led->cdev, 0);
+> +}
+> +
+> +static int qnap_mcu_leds_probe(struct platform_device *pdev)
+> +{
+> +	struct qnap_mcu *mcu = dev_get_drvdata(pdev->dev.parent);
+> +	const struct qnap_mcu_variant *variant = 
+> qnap_mcu_get_variant_data(mcu);
+> +	int ret, i;
+> +
+> +	for (i = 0; i < variant->num_drives; i++) {
+> +		ret = qnap_mcu_register_err_led(&pdev->dev, mcu, i);
+> +		if (ret)
+> +			return dev_err_probe(&pdev->dev, ret,
+> +					"failed to register error led %d\n", i);
+> +	}
+> +
+> +	if (variant->usb_led) {
+> +		ret = qnap_mcu_register_usb_led(&pdev->dev, mcu);
+> +		if (ret)
+> +			return dev_err_probe(&pdev->dev, ret,
+> +					"failed to register usb led %d\n", i);
+> +	}
+> +
+> +	return 0;
+> +}
+> +
+> +static struct platform_driver qnap_mcu_leds_driver = {
+> +	.probe = qnap_mcu_leds_probe,
+> +	.driver = {
+> +		.name = "qnap-mcu-leds",
+> +	},
+> +};
+> +module_platform_driver(qnap_mcu_leds_driver);
+> +
+> +MODULE_ALIAS("platform:qnap-mcu-leds");
+> +MODULE_AUTHOR("Heiko Stuebner <heiko@sntech.de>");
+> +MODULE_DESCRIPTION("QNAP MCU LEDs driver");
+> +MODULE_LICENSE("GPL");
 
 _______________________________________________
 Linux-rockchip mailing list
