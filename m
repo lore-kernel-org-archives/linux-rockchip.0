@@ -4,70 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7BBFAC3DA61
-	for <linux-rockchip@archiver.kernel.org>; Mon, 29 Jul 2024 06:25:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C85D0C3DA7F
+	for <linux-rockchip@archiver.kernel.org>; Mon, 29 Jul 2024 06:28:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
-	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=lDt3hQJPnfwjyQc9t9VklLL903J+fN/kb7BdBSTNBT0=; b=qTaWblTm/hOyLSmmsr/63+wq3J
-	wf1CD5FPYJAbjHnzyh2aiD4VRf4aDCn+s0IxXhJdKLEpFTKYHXVRjbvSKJbiuRS0Sx/DYfDBSvB+Q
-	vURKdlvhOlh9ZCdrJxo4ZLbUVqSEd/7xHaRsH8VUvH4NycRXoMs3y9Hg2iJXaBY8ZUasVHJaTyEt/
-	7KW6BbDPI6JqNR/lTJgGexvBuqYKFEB/odwWndj+afNGBaKPbmjSKeZ11P/eLshCJ/7+ZaWJGL0Zu
-	TSbzQS7823kaWhA/vAnD6kq82XlllcTkA3+zj1s1HMAiN6e6Zr6RLBu9JwQEgL5vLYnTNThvP+ERl
-	1y3G07tA==;
+	List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To:From:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=UnMxXhZkv8TzjIM7OdmuKPUPwmtUryDH+AnBOuu2A1k=; b=yPdNIo5jAvPEFs
+	uKf3DvDtV8OaT0+0ifdRPZiRBaEcRtfnivTOrC9RVv3LZQwr5UXcbD5mwzYorfYmafaX0Fks7cwdl
+	fPcLNNWreyR5MAXUVwQeATjW82JXQGHjGMMuOQA1yzbL2jSIQGASrCZ+a2wx9934+5jWQivkl2ymk
+	hBhCSR/SyThafOtZQYPCRdT3uUSHZJuHOGktB8vQB+984Phe/ZoOVrOGynxr5Zu9qkfzElnWtWMTH
+	5QRnWT3fWG/PPodpk7cqqNTUcdJQ86z6jOs0KYkgli2Zrw522c8w6NEj1I6LaMZOvVcwxvWxaoutv
+	JL3fRDR1VcY9cVi92dwA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sYJor-0000000A9DH-2y3F;
-	Mon, 29 Jul 2024 06:25:17 +0000
-Received: from mxout70.expurgate.net ([91.198.224.70])
+	id 1sYJrf-0000000A9zE-31vz;
+	Mon, 29 Jul 2024 06:28:11 +0000
+Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sYJoP-0000000A94u-0BEL;
-	Mon, 29 Jul 2024 06:24:50 +0000
-Received: from [127.0.0.1] (helo=localhost)
-	by relay.expurgate.net with smtp (Exim 4.92)
-	(envelope-from <prvs=1954343a27=fe@dev.tdt.de>)
-	id 1sYJo5-00EKwC-RE; Mon, 29 Jul 2024 08:24:29 +0200
-Received: from [195.243.126.94] (helo=securemail.tdt.de)
-	by relay.expurgate.net with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
-	(Exim 4.92)
-	(envelope-from <fe@dev.tdt.de>)
-	id 1sYJo4-007xPo-H2; Mon, 29 Jul 2024 08:24:28 +0200
-Received: from securemail.tdt.de (localhost [127.0.0.1])
-	by securemail.tdt.de (Postfix) with ESMTP id 1C9D1240040;
-	Mon, 29 Jul 2024 08:24:28 +0200 (CEST)
-Received: from mail.dev.tdt.de (unknown [10.2.4.42])
-	by securemail.tdt.de (Postfix) with ESMTP id 04C26240036;
-	Mon, 29 Jul 2024 08:24:28 +0200 (CEST)
-Received: from mail.dev.tdt.de (localhost [IPv6:::1])
-	by mail.dev.tdt.de (Postfix) with ESMTP id 1E66B20A38;
-	Mon, 29 Jul 2024 08:24:27 +0200 (CEST)
+	id 1sYJrV-0000000A9vF-40WJ;
+	Mon, 29 Jul 2024 06:28:09 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1722234477;
+	bh=c2Gb33yB6AGUPL7oB/bVbgijksIJQN8Vp6pPt6OQkXg=;
+	h=Date:Subject:From:To:Cc:References:In-Reply-To:From;
+	b=tDoLvKKUFH90Zfy4QS9BC3Q8oXlzM1iVsd4bWvx+NrYo5aa8ZvMRU2X2Dgo1TCwOl
+	 BrHmLD8BRYw0WHcQcvtoe7SXbJgoEM2gZDOsQMvKuE+mB3sZZsunKwZAsNrxb5oToT
+	 xp/gqCD456E+Fmlcab15zjZvWCR/uqFji4qV0cXAHOl+V/sCCyeth2nJFCBliEedPH
+	 NghPSHqqMnUCfBz8fN0tYaRTOtrQs0DC2iyAzuc/vYlHVifRpsbyapUvaFI8Qg0yLX
+	 iYBqqMx7MOF2v1kVu41W33xUHRkYViJbxDucAPR9b3K9TXQZ8mdwQGk8pv1vnhtDkv
+	 zRe6Pf/5xmm2Q==
+Received: from [100.66.96.193] (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: vignesh)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 51D4D37813E1;
+	Mon, 29 Jul 2024 06:27:54 +0000 (UTC)
+Message-ID: <c790e122-c656-4f2c-8f1d-6e405fc70233@collabora.com>
+Date: Mon, 29 Jul 2024 11:57:52 +0530
 MIME-Version: 1.0
-Date: Mon, 29 Jul 2024 08:24:26 +0200
-From: Florian Eckert <fe@dev.tdt.de>
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: lee@kernel.org, jdelvare@suse.com, linux@roeck-us.net,
- dmitry.torokhov@gmail.com, pavel@ucw.cz, robh@kernel.org,
- krzk+dt@kernel.org, conor+dt@kernel.org, ukleinek@debian.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-hwmon@vger.kernel.org, linux-input@vger.kernel.org,
- linux-leds@vger.kernel.org
-Subject: Re: [PATCH v2 3/7] leds: add driver for LEDs from qnap-mcu devices
-In-Reply-To: <20240728211751.2160123-4-heiko@sntech.de>
-References: <20240728211751.2160123-1-heiko@sntech.de>
- <20240728211751.2160123-4-heiko@sntech.de>
-Message-ID: <f7d10147a643f4d0d7cf2decbe490315@dev.tdt.de>
-X-Sender: fe@dev.tdt.de
-User-Agent: Roundcube Webmail/1.3.17
-X-purgate-ID: 151534::1722234269-EBEF3E81-86CD54DD/0/0
-X-purgate-type: clean
-X-purgate: clean
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v8 5/5] drm/ci: rockchip: add tests for rockchip display
+ driver
+From: Vignesh Raman <vignesh.raman@collabora.com>
+To: Daniel Stone <daniel@fooishbar.org>
+Cc: dri-devel@lists.freedesktop.org, daniels@collabora.com,
+ helen.koike@collabora.com, airlied@gmail.com, daniel@ffwll.ch,
+ guilherme.gallo@collabora.com, sergi.blanch.torne@collabora.com,
+ deborah.brouwer@collabora.com, robdclark@gmail.com,
+ linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-amlogic@lists.infradead.org, linux-kernel@vger.kernel.org
+References: <20240724101015.523535-1-vignesh.raman@collabora.com>
+ <20240724101015.523535-6-vignesh.raman@collabora.com>
+ <CAPj87rMJUSRJ9G1uv-w5a_4qqS0R1dDaUEofoJf=ehbMszdfOw@mail.gmail.com>
+ <27bd3884-51d8-454f-9ddc-6b5765fd744b@collabora.com>
+Content-Language: en-US
+In-Reply-To: <27bd3884-51d8-454f-9ddc-6b5765fd744b@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240728_232449_266602_EAC0C2BE 
-X-CRM114-Status: GOOD (  25.35  )
+X-CRM114-CacheID: sfid-20240728_232802_195582_4E8C9784 
+X-CRM114-Status: GOOD (  23.02  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,297 +77,94 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello Heiko,
-
-> diff --git a/drivers/leds/Makefile b/drivers/leds/Makefile
-> index effdfc6f1e951..27eb6cd827610 100644
-> --- a/drivers/leds/Makefile
-> +++ b/drivers/leds/Makefile
-> @@ -77,6 +77,7 @@ obj-$(CONFIG_LEDS_PCA995X)		+= leds-pca995x.o
->  obj-$(CONFIG_LEDS_PM8058)		+= leds-pm8058.o
->  obj-$(CONFIG_LEDS_POWERNV)		+= leds-powernv.o
->  obj-$(CONFIG_LEDS_PWM)			+= leds-pwm.o
-> +obj-$(CONFIG_LEDS_QNAP_MCU)		+= leds-qnap-mcu.o
->  obj-$(CONFIG_LEDS_REGULATOR)		+= leds-regulator.o
->  obj-$(CONFIG_LEDS_SC27XX_BLTC)		+= leds-sc27xx-bltc.o
->  obj-$(CONFIG_LEDS_SUN50I_A100)		+= leds-sun50i-a100.o
-> diff --git a/drivers/leds/leds-qnap-mcu.c 
-> b/drivers/leds/leds-qnap-mcu.c
-> new file mode 100644
-> index 0000000000000..e3244923759d2
-> --- /dev/null
-> +++ b/drivers/leds/leds-qnap-mcu.c
-> @@ -0,0 +1,247 @@
-> +// SPDX-License-Identifier: GPL-2.0-only
-> +
-> +/*
-> + * Driver for LEDs found on QNAP MCU devices
-> + *
-> + * Copyright (C) 2024 Heiko Stuebner <heiko@sntech.de>
-> + */
-> +
-> +#include <linux/leds.h>
-> +#include <linux/mfd/qnap-mcu.h>
-> +#include <linux/module.h>
-> +#include <linux/platform_device.h>
-> +#include <linux/slab.h>
-> +#include <uapi/linux/uleds.h>
-> +
-> +enum qnap_mcu_err_led_mode {
-> +	QNAP_MCU_ERR_LED_ON = 0,
-> +	QNAP_MCU_ERR_LED_OFF = 1,
-> +	QNAP_MCU_ERR_LED_BLINK_FAST = 2,
-> +	QNAP_MCU_ERR_LED_BLINK_SLOW = 3,
-> +};
-> +
-> +struct qnap_mcu_err_led {
-> +	struct qnap_mcu *mcu;
-> +	struct led_classdev cdev;
-> +	u8 num;
-> +	u8 mode;
-> +};
-> +
-> +static inline struct qnap_mcu_err_led *
-> +		cdev_to_qnap_mcu_err_led(struct led_classdev *led_cdev)
-> +{
-> +	return container_of(led_cdev, struct qnap_mcu_err_led, cdev);
-> +}
-> +
-> +static int qnap_mcu_err_led_set(struct led_classdev *led_cdev,
-> +				enum led_brightness value)
-> +{
-> +	struct qnap_mcu_err_led *err_led = 
-> cdev_to_qnap_mcu_err_led(led_cdev);
-> +	u8 cmd[] = {
-> +		[0] = 0x40,
-> +		[1] = 0x52,
-> +		[2] = 0x30 + err_led->num,
-> +		[3] = 0x30
-> +	};
-> +
-> +	/*
-> +	 * If the led is off, turn it on. Otherwise don't disturb
-> +	 * a possible set blink-mode.
-> +	 */
-> +	if (value == 0)
-> +		err_led->mode = QNAP_MCU_ERR_LED_OFF;
-> +	else if (err_led->mode == QNAP_MCU_ERR_LED_OFF)
-> +		err_led->mode = QNAP_MCU_ERR_LED_ON;
-> +
-> +	cmd[3] = 0x30 + err_led->mode;
-> +
-> +	return qnap_mcu_exec_with_ack(err_led->mcu, cmd, sizeof(cmd));
-> +}
-> +
-> +static int qnap_mcu_err_led_blink_set(struct led_classdev *led_cdev,
-> +				      unsigned long *delay_on,
-> +				      unsigned long *delay_off)
-> +{
-> +	struct qnap_mcu_err_led *err_led = 
-> cdev_to_qnap_mcu_err_led(led_cdev);
-> +	u8 cmd[] = {
-> +		[0] = 0x40,
-> +		[1] = 0x52,
-> +		[2] = 0x30 + err_led->num,
-> +		[3] = 0x30
-> +	};
-> +
-> +	/* LED is off, nothing to do */
-> +	if (err_led->mode == QNAP_MCU_ERR_LED_OFF)
-> +		return 0;
-> +
-> +	if (*delay_on < 500) {
-> +		*delay_on = 100;
-> +		*delay_off = 100;
-> +		err_led->mode = QNAP_MCU_ERR_LED_BLINK_FAST;
-> +	} else {
-> +		*delay_on = 500;
-> +		*delay_off = 500;
-> +		err_led->mode = QNAP_MCU_ERR_LED_BLINK_SLOW;
-> +	}
-> +
-> +	cmd[3] = 0x30 + err_led->mode;
-> +
-> +	return qnap_mcu_exec_with_ack(err_led->mcu, cmd, sizeof(cmd));
-> +}
-> +
-> +static int qnap_mcu_register_err_led(struct device *dev, struct
-> qnap_mcu *mcu, int num)
-> +{
-> +	struct qnap_mcu_err_led *err_led;
-> +	char tmp_buf[LED_MAX_NAME_SIZE];
-> +	int ret;
-> +
-> +	err_led = devm_kzalloc(dev, sizeof(*err_led), GFP_KERNEL);
-> +	if (!err_led)
-> +		return -ENOMEM;
-> +
-> +	err_led->mcu = mcu;
-> +	err_led->num = num;
-> +	err_led->mode = QNAP_MCU_ERR_LED_OFF;
-> +
-> +	snprintf(tmp_buf, LED_MAX_NAME_SIZE, "hdd%d:red:status", num + 1);
-> +	err_led->cdev.name = tmp_buf;
-
-Should not the memory have to be allocated here via 'kzalloc' for 
-'err_led->cdev.name'?
-After leaving the function, tmp_buf is no longer on the stack?
-
-
-> +
-> +	err_led->cdev.brightness_set_blocking = qnap_mcu_err_led_set;
-> +	err_led->cdev.blink_set = qnap_mcu_err_led_blink_set;
-> +	err_led->cdev.brightness = 0;
-> +	err_led->cdev.max_brightness = 1;
-> +
-> +	ret = devm_led_classdev_register(dev, &err_led->cdev);
-> +	if (ret)
-> +		return dev_err_probe(dev, ret, "failed to register hdd led %d", 
-> num);
-> +
-> +	return qnap_mcu_err_led_set(&err_led->cdev, 0);
-> +}
-> +
-> +enum qnap_mcu_usb_led_mode {
-> +	QNAP_MCU_USB_LED_ON = 1,
-> +	QNAP_MCU_USB_LED_OFF = 3,
-> +	QNAP_MCU_USB_LED_BLINK = 2,
-> +};
-> +
-> +struct qnap_mcu_usb_led {
-> +	struct qnap_mcu *mcu;
-> +	struct led_classdev cdev;
-> +	u8 mode;
-> +};
-> +
-> +static inline struct qnap_mcu_usb_led *
-> +		cdev_to_qnap_mcu_usb_led(struct led_classdev *led_cdev)
-> +{
-> +	return container_of(led_cdev, struct qnap_mcu_usb_led, cdev);
-> +}
-> +
-> +static int qnap_mcu_usb_led_set(struct led_classdev *led_cdev,
-> +				enum led_brightness value)
-> +{
-> +	struct qnap_mcu_usb_led *usb_led = 
-> cdev_to_qnap_mcu_usb_led(led_cdev);
-> +	u8 cmd[] = {
-> +		[0] = 0x40,
-> +		[1] = 0x43,
-> +		[2] = 0
-> +	};
-> +
-> +	/*
-> +	 * If the led is off, turn it on. Otherwise don't disturb
-> +	 * a possible set blink-mode.
-> +	 */
-> +	if (value == 0)
-> +		usb_led->mode = QNAP_MCU_USB_LED_OFF;
-> +	else if (usb_led->mode == QNAP_MCU_USB_LED_OFF)
-> +		usb_led->mode = QNAP_MCU_USB_LED_ON;
-> +
-> +	/* byte 3 is shared between the usb led target and setting the mode 
-> */
-> +	cmd[2] = 0x44 | usb_led->mode;
-> +
-> +	return qnap_mcu_exec_with_ack(usb_led->mcu, cmd, sizeof(cmd));
-> +}
-> +
-> +static int qnap_mcu_usb_led_blink_set(struct led_classdev *led_cdev,
-> +				      unsigned long *delay_on,
-> +				      unsigned long *delay_off)
-> +{
-> +	struct qnap_mcu_usb_led *usb_led = 
-> cdev_to_qnap_mcu_usb_led(led_cdev);
-> +	u8 cmd[] = {
-> +		[0] = 0x40,
-> +		[1] = 0x43,
-> +		[2] = 0
-> +	};
-> +
-> +	/* LED is off, nothing to do */
-> +	if (usb_led->mode == QNAP_MCU_USB_LED_OFF)
-> +		return 0;
-> +
-> +	*delay_on = 250;
-> +	*delay_off = 250;
-> +	usb_led->mode = QNAP_MCU_USB_LED_BLINK;
-> +
-> +	/* byte 3 is shared between the usb led target and setting the mode 
-> */
-> +	cmd[2] = 0x44 | usb_led->mode;
-> +
-> +	return qnap_mcu_exec_with_ack(usb_led->mcu, cmd, sizeof(cmd));
-> +}
-> +
-> +static int qnap_mcu_register_usb_led(struct device *dev, struct 
-> qnap_mcu *mcu)
-> +{
-> +	struct qnap_mcu_usb_led *usb_led;
-> +	int ret;
-> +
-> +	usb_led = devm_kzalloc(dev, sizeof(*usb_led), GFP_KERNEL);
-> +	if (!usb_led)
-> +		return -ENOMEM;
-> +
-> +	usb_led->mcu = mcu;
-> +	usb_led->mode = QNAP_MCU_USB_LED_OFF;
-> +	usb_led->cdev.name = "usb:blue:disk";
-> +	usb_led->cdev.brightness_set_blocking = qnap_mcu_usb_led_set;
-> +	usb_led->cdev.blink_set = qnap_mcu_usb_led_blink_set;
-> +	usb_led->cdev.brightness = 0;
-> +	usb_led->cdev.max_brightness = 1;
-> +
-> +	ret = devm_led_classdev_register(dev, &usb_led->cdev);
-> +	if (ret)
-> +		return dev_err_probe(dev, ret, "failed to register usb led");
-> +
-> +	return qnap_mcu_usb_led_set(&usb_led->cdev, 0);
-> +}
-> +
-> +static int qnap_mcu_leds_probe(struct platform_device *pdev)
-> +{
-> +	struct qnap_mcu *mcu = dev_get_drvdata(pdev->dev.parent);
-> +	const struct qnap_mcu_variant *variant = 
-> qnap_mcu_get_variant_data(mcu);
-> +	int ret, i;
-> +
-> +	for (i = 0; i < variant->num_drives; i++) {
-> +		ret = qnap_mcu_register_err_led(&pdev->dev, mcu, i);
-> +		if (ret)
-> +			return dev_err_probe(&pdev->dev, ret,
-> +					"failed to register error led %d\n", i);
-> +	}
-> +
-> +	if (variant->usb_led) {
-> +		ret = qnap_mcu_register_usb_led(&pdev->dev, mcu);
-> +		if (ret)
-> +			return dev_err_probe(&pdev->dev, ret,
-> +					"failed to register usb led %d\n", i);
-> +	}
-> +
-> +	return 0;
-> +}
-> +
-> +static struct platform_driver qnap_mcu_leds_driver = {
-> +	.probe = qnap_mcu_leds_probe,
-> +	.driver = {
-> +		.name = "qnap-mcu-leds",
-> +	},
-> +};
-> +module_platform_driver(qnap_mcu_leds_driver);
-> +
-> +MODULE_ALIAS("platform:qnap-mcu-leds");
-> +MODULE_AUTHOR("Heiko Stuebner <heiko@sntech.de>");
-> +MODULE_DESCRIPTION("QNAP MCU LEDs driver");
-> +MODULE_LICENSE("GPL");
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGkgRGFuaWVsLAoKT24gMjYvMDcvMjQgMTU6MzcsIFZpZ25lc2ggUmFtYW4gd3JvdGU6Cj4gSGkg
+RGFuaWVsLAo+IAo+IE9uIDI2LzA3LzI0IDEzOjA2LCBEYW5pZWwgU3RvbmUgd3JvdGU6Cj4+IEhp
+IFZpZ25lc2gsCj4+Cj4+IE9uIFdlZCwgMjQgSnVsIDIwMjQgYXQgMTE6MTIsIFZpZ25lc2ggUmFt
+YW4gCj4+IDx2aWduZXNoLnJhbWFuQGNvbGxhYm9yYS5jb20+IHdyb3RlOgo+Pj4gRm9yIHJvY2tj
+aGlwIHJrMzI4OCBhbmQgcmszMzk5LCB0aGUgZGlzcGxheSBkcml2ZXIgaXMgcm9ja2NoaXAKPj4+
+IGFuZCBncHUgZHJpdmVyIGlzIHBhbmZyb3N0LiBDdXJyZW50bHksIGluIGRybS1jaSBmb3Igcm9j
+a2NoaXAKPj4+IHJrMzI4OCBhbmQgcmszMzk5LCBvbmx5IHRoZSBncHUgZHJpdmVyIGlzIHRlc3Rl
+ZC4gUmVmYWN0b3IKPj4+IHRoZSBleGlzdGluZyByb2NrY2hpcCBqb2JzIHRvIHRlc3QgYm90aCBk
+aXNwbGF5IGFuZCBncHUgZHJpdmVyCj4+PiBhbmQgdXBkYXRlIHhmYWlscy4KPj4KPj4gQ291bGQg
+eW91IGFsc28gcGxlYXNlIGFkZCBSSzM1ODggaW4gYSBuZXcgc2VyaWVzIChubyBuZWVkIHRvIGhv
+bGQgdGhpcwo+PiBvbmUgdXApLCB3aXRoIFJvY2tjaGlwIEtNUyBhbmQgUGFudGhvciBHUFU/IFlv
+dSBjYW4gdXNlIHRoZQo+PiByazM1ODgtcm9jazUtYiBkZXZpY2UgdHlwZSBpbiBMQVZBLgo+IAo+
+IFN1cmUuIEkgV2lsbCBhZGQgYW5kIHNlbmQgaXQgaW4gYSBuZXcgc2VyaWVzLgo+IAo+Pgo+Pj4g
+ZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9jaS94ZmFpbHMvbWVkaWF0ZWstbXQ4MTgzLWZh
+aWxzLnR4dCAKPj4+IGIvZHJpdmVycy9ncHUvZHJtL2NpL3hmYWlscy9tZWRpYXRlay1tdDgxODMt
+ZmFpbHMudHh0Cj4+PiBpbmRleCBjZjNhNzQ3ZjdjZWMuLjgyNmNjYTVlZmJmZiAxMDA2NDQKPj4+
+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9jaS94ZmFpbHMvbWVkaWF0ZWstbXQ4MTgzLWZhaWxzLnR4
+dAo+Pj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL2NpL3hmYWlscy9tZWRpYXRlay1tdDgxODMtZmFp
+bHMudHh0Cj4+Cj4+IFRoaXMgaXMgaW4gdGhlIHdyb25nIHBhdGNoPwo+IAo+IFllcywgdGhpcyBu
+ZWVkcyB0byBiZSBkcm9wcGVkLiBUaGFua3MgZm9yIHBvaW50aW5nIHRoYXQgb3V0Lgo+IAo+Pgo+
+Pj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL2NpL3hmYWlscy9wYW5mcm9zdC1yazMyODgtc2tpcHMu
+dHh0Cj4+PiBAQCAtMCwwICsxLDcxIEBACj4+PiArIyBTdXNwZW5kIHRvIFJBTSBzZWVtcyB0byBi
+ZSBicm9rZW4gb24gdGhpcyBtYWNoaW5lCj4+PiArLipzdXNwZW5kLioKPj4+ICsKPj4+ICsjIFRv
+byB1bnN0YWJsZSwgbWFjaGluZSBlbmRzIHVwIGhhbmdpbmcgYWZ0ZXIgbG90cyBvZiBPb3BzZXMK
+Pj4+ICtrbXNfY3Vyc29yX2xlZ2FjeS4qCj4+PiArCj4+PiArIyBTdGFydGVkIGhhbmdpbmcgdGhl
+IG1hY2hpbmUgb24gTGludXggNS4xOS1yYzI6Cj4+PiArIwo+Pj4gKyMgW0lHVF0ga21zX3BsYW5l
+X2xvd3JlczogZXhlY3V0aW5nCj4+PiArIyBbSUdUXSBrbXNfcGxhbmVfbG93cmVzOiBzdGFydGlu
+ZyBzdWJ0ZXN0IHBpcGUtRi10aWxpbmcteQo+Pj4gKyMgW0lHVF0ga21zX3BsYW5lX2xvd3Jlczog
+ZXhpdGluZywgcmV0PTc3Cj4+Cj4+IHJldCA3NyBpcyBhIHB1cmUgc2tpcCBoZXJlLCBhcyB5b3Un
+ZCBleHBlY3QgZnJvbSBhIHBpcGUgRiB0ZXN0LAo+PiBiZWNhdXNlIFJvY2tjaGlwIGRvZXNuJ3Qg
+aGF2ZSBzaXggQ1JUQ3MuCj4+Cj4+PiArIyBDb25zb2xlOiBzd2l0Y2hpbmcgdG8gY29sb3VyIGZy
+YW1lIGJ1ZmZlciBkZXZpY2UgMTcweDQ4Cj4+PiArIyByb2NrY2hpcC1kcm0gZGlzcGxheS1zdWJz
+eXN0ZW06IFtkcm1dICpFUlJPUiogZmxpcF9kb25lIHRpbWVkIG91dAo+Pj4gKyMgcm9ja2NoaXAt
+ZHJtIGRpc3BsYXktc3Vic3lzdGVtOiBbZHJtXSAqRVJST1IqIFtDUlRDOjM1OmNydGMtMF0gCj4+
+PiBjb21taXQgd2FpdCB0aW1lZCBvdXQKPj4+ICsjIEJVRzogc3BpbmxvY2sgYmFkIG1hZ2ljIG9u
+IENQVSMzLCBrbXNfcGxhbmVfbG93cmUvNDgyCj4+PiArIyA4PC0tLSBjdXQgaGVyZSAtLS0KPj4+
+ICsjIFVuYWJsZSB0byBoYW5kbGUga2VybmVsIHBhZ2luZyByZXF1ZXN0IGF0IHZpcnR1YWwgYWRk
+cmVzcyA3ODEyMDc4ZQo+Pj4gKyMgWzc4MTIwNzhlXSAqcGdkPTAwMDAwMDAwCj4+PiArIyBJbnRl
+cm5hbCBlcnJvcjogT29wczogNSBbIzFdIFNNUCBBUk0KPj4+ICsjIE1vZHVsZXMgbGlua2VkIGlu
+Ogo+Pj4gKyMgQ1BVOiAzIFBJRDogNDgyIENvbW06IGttc19wbGFuZV9sb3dyZSBUYWludGVkOiBH
+wqDCoMKgwqDCoMKgwqAgVyAgICAgICAgIAo+Pj4gNS4xOS4wLXJjMi0zMjM1OTYtZzAwNTM1ZGU5
+MjE3MSAjMQo+Pj4gKyMgSGFyZHdhcmUgbmFtZTogUm9ja2NoaXAgKERldmljZSBUcmVlKQo+Pj4g
+KyMgUHJvY2VzcyBrbXNfcGxhbmVfbG93cmUgKHBpZDogNDgyLCBzdGFjayBsaW1pdCA9IDB4MTE5
+M2FjMmIpCj4+PiArI8KgIHNwaW5fZHVtcCBmcm9tIGRvX3Jhd19zcGluX2xvY2srMHhhNC8weGU4
+Cj4+PiArI8KgIGRvX3Jhd19zcGluX2xvY2sgZnJvbSB3YWl0X2Zvcl9jb21wbGV0aW9uX3RpbWVv
+dXQrMHgyYy8weDEyMAo+Pj4gKyPCoCB3YWl0X2Zvcl9jb21wbGV0aW9uX3RpbWVvdXQgZnJvbSBk
+cm1fY3J0Y19jb21taXRfd2FpdCsweDE4LzB4N2MKPj4+ICsjwqAgZHJtX2NydGNfY29tbWl0X3dh
+aXQgZnJvbSAKPj4+IGRybV9hdG9taWNfaGVscGVyX3dhaXRfZm9yX2RlcGVuZGVuY2llcysweDQ0
+LzB4MTY4Cj4+PiArI8KgIGRybV9hdG9taWNfaGVscGVyX3dhaXRfZm9yX2RlcGVuZGVuY2llcyBm
+cm9tIGNvbW1pdF90YWlsKzB4MzQvMHgxODAKPj4+ICsjwqAgY29tbWl0X3RhaWwgZnJvbSBkcm1f
+YXRvbWljX2hlbHBlcl9jb21taXQrMHgxNjQvMHgxOGMKPj4+ICsjwqAgZHJtX2F0b21pY19oZWxw
+ZXJfY29tbWl0IGZyb20gZHJtX2F0b21pY19jb21taXQrMHhhYy8weGU0Cj4+PiArI8KgIGRybV9h
+dG9taWNfY29tbWl0IGZyb20gZHJtX2NsaWVudF9tb2Rlc2V0X2NvbW1pdF9hdG9taWMrMHgyM2Mv
+MHgyODQKPj4+ICsjwqAgZHJtX2NsaWVudF9tb2Rlc2V0X2NvbW1pdF9hdG9taWMgZnJvbSAKPj4+
+IGRybV9jbGllbnRfbW9kZXNldF9jb21taXRfbG9ja2VkKzB4NjAvMHgxYzgKPj4+ICsjwqAgZHJt
+X2NsaWVudF9tb2Rlc2V0X2NvbW1pdF9sb2NrZWQgZnJvbSAKPj4+IGRybV9jbGllbnRfbW9kZXNl
+dF9jb21taXQrMHgyNC8weDQwCj4+PiArI8KgIGRybV9jbGllbnRfbW9kZXNldF9jb21taXQgZnJv
+bSBkcm1fZmJkZXZfY2xpZW50X3Jlc3RvcmUrMHg1OC8weDk0Cj4+PiArI8KgIGRybV9mYmRldl9j
+bGllbnRfcmVzdG9yZSBmcm9tIGRybV9jbGllbnRfZGV2X3Jlc3RvcmUrMHg3MC8weGJjCj4+PiAr
+I8KgIGRybV9jbGllbnRfZGV2X3Jlc3RvcmUgZnJvbSBkcm1fcmVsZWFzZSsweGY0LzB4MTE0Cj4+
+PiArI8KgIGRybV9yZWxlYXNlIGZyb20gX19mcHV0KzB4NzQvMHgyNDAKPj4+ICsjwqAgX19mcHV0
+IGZyb20gdGFza193b3JrX3J1bisweDg0LzB4YjQKPj4+ICsjwqAgdGFza193b3JrX3J1biBmcm9t
+IGRvX2V4aXQrMHgzNGMvMHhhMjAKPj4+ICsjwqAgZG9fZXhpdCBmcm9tIGRvX2dyb3VwX2V4aXQr
+MHgzNC8weDk4Cj4+Cj4+IFNvIHRoaXMgaXMgcG9pbnRpbmcgdG8gdGhlIGVycm9yIGJlaW5nIHRo
+YXQsIHdoZW4gYSBjbGllbnQgZXhpdHMsIHRoZQo+PiBrZXJuZWwgYXR0ZW1wdHMgdG8gcmVzdG9y
+ZSBmYmRldiBhbmQgdGhlbiBpdCdzIGJyb2tlbi4gUGlubmluZwo+PiBwaXBlLUYtdGlsaW5nLXkg
+YXMgc3BlY2lmaWNhbGx5IHJlc3BvbnNpYmxlIGZvciB0aGlzIHNlZW1zIHF1aXRlIG9kZAo+PiB0
+byBtZSwgZ2l2ZW4gdGhhdCBpdCBkb2Vzbid0IGRvIGFueXRoaW5nIGJ1dCBvbmx5IHNraXBzLiBJ
+cyB0aGF0IG1heWJlCj4+IGp1c3QgYmVjYXVzZSBpdCdzIHRoZSBsYXN0IHRlc3QgcnVubmluZyBp
+biB0aGUga21zX3BsYW5lX2xvd3JlcyBncm91cAo+PiBiZWZvcmUgaXQgZXhpdHM/IE9yIGRvZXMg
+aXQgb2NjdXIgbW9yZSB3aWxkbHkgb24gb3RoZXIgdGVzdCBncm91cHM/Cj4gCj4gVGhpcyB3YXMg
+c2tpcHBlZCBmb3IgTGludXggNS4xOS1yYzIuIEkgd2lsbCByZW1vdmUgZnJvbSBza2lwcyBhbmQg
+d2lsbCAKPiBjaGVjayB0aGUgYmVoYXZpb3IuCgpUaGlzIGlzIGZvciBwYW5mcm9zdCBkcml2ZXIg
+KHJrMzI4OCkuIEFsbCBrbXMgdGVzdHMgYXJlIHNraXBwZWQgZm9yIApncHUtb25seSBkcml2ZXIu
+IFdpbGwgcmVtb3ZlIHRoZSBvdGhlciBrbXMgdGVzdHMgaW4gdGhpcyBmaWxlIGFzIHdlIGhhdmUK
+c2VwYXJhdGUgc2tpcHMgZmlsZSBmb3Igcm9ja2NoaXAgZHJpdmVyIG5vdy4KCj4+Cj4+PiArdG9v
+bHNfdGVzdEB0b29sc190ZXN0LEZhaWwKPj4KPj4gSSBrZWVwIG5vdGljaW5nIHRoaXMgZmFpbGlu
+ZyBldmVyeXdoZXJlLiBXaGF0J3MgdXAgd2l0aCB0aGF0PyBIYXZlIHlvdQo+PiByZXBvcnRlZCB0
+aGVzZSBsb2dzIHRvIHRoZSBpZ3QgbGlzdD8KPiAKPiBJIHdpbGwgY2hlY2sgdGhpcyBpc3N1ZSBh
+bmQgcmVwb3J0IHRvIGlndCBkZXZlbG9wZXJzLgoKdG9vbHNfdGVzdCBpcyBhIHdyYXBwZXIgZm9y
+IHJ1bm5pbmcgdG9vbHMvaW50ZWxfcmVnIGFuZCAKdG9vbHMvaW50ZWxfbDNfcGFyaXR5LiBTbyBz
+a2lwIHRoZXNlIHRlc3RzIG9uIG5vbi1pbnRlbCBwbGF0Zm9ybXMuCgoKUmVnYXJkcywKVmlnbmVz
+aAoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgt
+cm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcK
+aHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hp
+cAo=
