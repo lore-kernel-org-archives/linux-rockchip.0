@@ -4,92 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2BF67C3DA61
-	for <linux-rockchip@archiver.kernel.org>; Mon, 29 Jul 2024 13:16:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A6619C3DA61
+	for <linux-rockchip@archiver.kernel.org>; Mon, 29 Jul 2024 18:53:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
-	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=iPv8rm9spk35LQBKrtUBYUxobjpbjk4ys0MBXdEQqc4=; b=3wGwxhvsE6jjGe
-	50dNRdVUzMDEzdzufzg6nN8rvzmIRyu4o6KOM/m3gQr7VDSbLWjMrZynRNszgrY8hpnfI9ReHimIb
-	fu9m5A6fnZc8DIUsr2xr2di10IGvQv2ivrBIS/jwpLcLj1zyqs6oC0GSzXLNW0L1dYv3mFCkf1eNz
-	1jlgcJ6hRnzIQteUu9U0dDZUL5TkmAzN0oyqoP62CrbPm770EWHG5DJ/TtLrvvCAqgJqujdHje9mQ
-	E1t8Qyn+RWFn5nFFfLu5zX/74fFSJIkvrMYKY1j2U3mlS/iY33yXXHgiloMTqGmehuIkrFVfo6w6p
-	alHCr+jOxeQABZoE5FxA==;
+	List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:References:
+	In-Reply-To:Cc:To:From:MIME-Version:Date:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=CfGBR/rCfrCvheDQlxKmtiT8L//7lMv/NxaaRG4aWjQ=; b=u0Bo+OgWikTCzi32cWI2oHTZ6N
+	f+lxWhV62Y8ucPW3AKbwkl/gG7mPwpvvsBxiXti8v43G2AS8NfWaXatuKCZu25z2nEXjFHlt70Z1r
+	RKqjBNIX/xiYabNbvr3MWltZk1S9k55E1OMPy7iwJscKPDQmAwQCupfTloc935sDT/og2P3fDJr2S
+	+hn1tUK/XrXpsTeX/1he2CtDSvhy/otYWU3mrf/UpDjSPE+EwWNEdSsIbGzT6aw0ayJCEQXK+tYao
+	z4uaSH2twryhOcvulfhGSTRZDUob3fQfvc2wAuP6eI2yO7dHPMmjbplEh3qIxT0wL/xQT5w8xzKYG
+	dnlccttw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sYQEw-0000000BOw3-2D25;
-	Mon, 29 Jul 2024 13:16:38 +0000
-Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
+	id 1sYVUr-0000000COo0-3X4d;
+	Mon, 29 Jul 2024 18:53:25 +0000
+Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sYQ61-0000000BLS2-0TCg
+	id 1sYVUP-0000000COhE-1iSy
 	for linux-rockchip@lists.infradead.org;
-	Mon, 29 Jul 2024 13:07:29 +0000
-Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
-	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
-	(Exim 4.92)
-	(envelope-from <mkl@pengutronix.de>)
-	id 1sYQ5z-00015H-Sh
-	for linux-rockchip@lists.infradead.org; Mon, 29 Jul 2024 15:07:23 +0200
-Received: from [2a0a:edc0:0:b01:1d::7b] (helo=bjornoya.blackshift.org)
-	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <mkl@pengutronix.de>)
-	id 1sYQ5z-0033MM-1a
-	for linux-rockchip@lists.infradead.org; Mon, 29 Jul 2024 15:07:23 +0200
-Received: from dspam.blackshift.org (localhost [127.0.0.1])
-	by bjornoya.blackshift.org (Postfix) with SMTP id A385F310F2E
-	for <linux-rockchip@lists.infradead.org>; Mon, 29 Jul 2024 13:07:22 +0000 (UTC)
-Received: from hardanger.blackshift.org (unknown [172.20.34.65])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(Client did not present a certificate)
-	by bjornoya.blackshift.org (Postfix) with ESMTPS id 82E33310E8F;
-	Mon, 29 Jul 2024 13:07:13 +0000 (UTC)
-Received: from [172.20.34.65] (localhost [::1])
-	by hardanger.blackshift.org (OpenSMTPD) with ESMTP id 49c4f439;
-	Mon, 29 Jul 2024 13:06:31 +0000 (UTC)
-From: Marc Kleine-Budde <mkl@pengutronix.de>
-Date: Mon, 29 Jul 2024 15:05:50 +0200
-Subject: [PATCH can-next 19/21] can: rockchip_canfd: add hardware
- timestamping support
+	Mon, 29 Jul 2024 18:52:59 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sin.source.kernel.org (Postfix) with ESMTP id 1D059CE0BD3;
+	Mon, 29 Jul 2024 18:52:53 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E48B7C32786;
+	Mon, 29 Jul 2024 18:52:51 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1722279172;
+	bh=yt/TEqkUG7PE55ZFi3CWgk1De/758QNjYZB7+sdWAF8=;
+	h=Date:From:To:Cc:In-Reply-To:References:Subject:From;
+	b=fe5oeRdjCPJrzt8taKEaRFv5iTxsmq835QgyWaogwQnJzLezor+5acCS6DwJlaqa7
+	 oFzvObtInXfwJAg4k9Zp96ccDMJfbRK6lUcWwWtx/fkueElPKyssu4eT6QITGFwy8g
+	 4rXIu0+Ql2MPfVV63K0M5N8mgR47nkBdsdirvuKaIebO43VaNIo9+RgDN9dxSojLWN
+	 eXoQOwoQDWsHYOD6kkLTYD8vQxwBk1Nw1kSnyi2GY5xoIt3DlLClKkFFEKdBROx/Hn
+	 z1qdNFHbeNTaIfFembiNqffMcJDC3Z3+s7uNICG+M3K5BfYUfByk6MuCcG/8PqYE8P
+	 ULC2bUIvIWtTQ==
+Date: Mon, 29 Jul 2024 12:52:50 -0600
 MIME-Version: 1.0
-Message-Id: <20240729-rockchip-canfd-v1-19-fa1250fd6be3@pengutronix.de>
-References: <20240729-rockchip-canfd-v1-0-fa1250fd6be3@pengutronix.de>
-In-Reply-To: <20240729-rockchip-canfd-v1-0-fa1250fd6be3@pengutronix.de>
-To: kernel@pengutronix.de, Vincent Mailhol <mailhol.vincent@wanadoo.fr>, 
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
- Philipp Zabel <p.zabel@pengutronix.de>, 
- Elaine Zhang <zhangqing@rock-chips.com>, 
- David Jander <david.jander@protonic.nl>
-Cc: linux-can@vger.kernel.org, netdev@vger.kernel.org, 
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
- Marc Kleine-Budde <mkl@pengutronix.de>
-X-Mailer: b4 0.15-dev-37811
-X-Developer-Signature: v=1; a=openpgp-sha256; l=8421; i=mkl@pengutronix.de;
- h=from:subject:message-id; bh=rhcGW3kiEYmIQim/qgs5GLioJ0mU2ZsLeziqXxXvi5M=;
- b=owEBbQGS/pANAwAKASg4oj56LbxvAcsmYgBmp5PSctHYza2/MQiDPR8Ji09hmnMOCxNJ++KQ9
- USp4TvW+16JATMEAAEKAB0WIQRQQLqG4LYE3Sm8Pl8oOKI+ei28bwUCZqeT0gAKCRAoOKI+ei28
- b7wPB/94RK2SrpPIni+z7Nz6vQ1IaIxGQy7sovijGiOnaCLCssD632ogFTKRUCDcF4/CqGMWnd6
- 2UR5d4GC4CEWI6LoTD7OmCE+kRIhx0oUMlGSJTO4xVIJEWJyQygD4BhaRwcpTB3JepckYmm7+bs
- nNYzZ8z8l6Fxyn43Wz1e1DwGEFNpFX6iwyxv9/ypl16dMKB8Qg5Kd/WQ3ySVYx1oaQdemVFPgyT
- xavdIq37hhZ+lMUdudFrmCoYcCYK9jj9snbshUSzGiHQbp+hLPuA2u5UllijU4LSX1oRuLK5T2F
- b2tx/xxPCCq7y8YotgMiwdAwC0oe7DoIXbslr20yq8NbgOtm
-X-Developer-Key: i=mkl@pengutronix.de; a=openpgp;
- fpr=C1400BA0B3989E6FBC7D5B5C2B5EE211C58AEA54
-X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
-X-SA-Exim-Mail-From: mkl@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
+From: "Rob Herring (Arm)" <robh@kernel.org>
+To: Chris Morgan <macroalpha82@gmail.com>
+Cc: sre@kernel.org, linux-pm@vger.kernel.org, jagan@edgeble.ai, 
+ jonas@kwiboo.se, heiko@sntech.de, Chris Morgan <macromorgan@hotmail.com>, 
+ krzk+dt@kernel.org, andyshrk@163.com, conor+dt@kernel.org, 
+ devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+ t.schramm@manjaro.org
+In-Reply-To: <20240726194948.109326-1-macroalpha82@gmail.com>
+References: <20240726194948.109326-1-macroalpha82@gmail.com>
+Message-Id: <172227904756.1346368.2529190213661296274.robh@kernel.org>
+Subject: Re: [PATCH 0/5] Add GameForce Ace
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240729_060725_413787_D5D0B5A3 
-X-CRM114-Status: GOOD (  19.30  )
+X-CRM114-CacheID: sfid-20240729_115257_647968_AB21A03B 
+X-CRM114-Status: GOOD (  14.22  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,235 +75,59 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add support for hardware based timestamping.
 
-Signed-off-by: Marc Kleine-Budde <mkl@pengutronix.de>
----
- drivers/net/can/rockchip/rockchip_canfd-core.c     |  6 ++
- drivers/net/can/rockchip/rockchip_canfd-ethtool.c  |  2 +-
- drivers/net/can/rockchip/rockchip_canfd-rx.c       |  1 +
- .../net/can/rockchip/rockchip_canfd-timestamp.c    | 94 +++++++++++++++++++++-
- drivers/net/can/rockchip/rockchip_canfd-tx.c       |  2 +
- drivers/net/can/rockchip/rockchip_canfd.h          | 10 +++
- 6 files changed, 112 insertions(+), 3 deletions(-)
+On Fri, 26 Jul 2024 14:49:43 -0500, Chris Morgan wrote:
+> From: Chris Morgan <macromorgan@hotmail.com>
+> 
+> Add support for the GameForce Ace. The GameForce Ace is an RK3588s
+> based gaming device with a 1080p display, touchscreen, hall effect
+> joysticks and triggers, 128GB of eMMC, 8GB or 12GB of RAM, WiFi 5,
+> and support for a 2242 NVME.
+> 
+> Chris Morgan (5):
+>   dt-bindings: power: supply: add dual-cell for cw2015
+>   power: supply: cw2015: Add support for dual-cell configurations
+>   arm64: dts: rockchip: Pull up sdio pins on RK3588
+>   dt-bindings: arm: rockchip: Add GameForce Ace
+>   arm64: dts: rockchip: Add GameForce Ace
+> 
+>  .../devicetree/bindings/arm/rockchip.yaml     |    5 +
+>  .../bindings/power/supply/cw2015_battery.yaml |    6 +
+>  arch/arm64/boot/dts/rockchip/Makefile         |    1 +
+>  .../dts/rockchip/rk3588-base-pinctrl.dtsi     |   10 +-
+>  .../dts/rockchip/rk3588s-gameforce-ace.dts    | 1315 +++++++++++++++++
+>  drivers/power/supply/cw2015_battery.c         |    7 +
+>  6 files changed, 1339 insertions(+), 5 deletions(-)
+>  create mode 100644 arch/arm64/boot/dts/rockchip/rk3588s-gameforce-ace.dts
+> 
+> --
+> 2.34.1
+> 
+> 
+> 
 
-diff --git a/drivers/net/can/rockchip/rockchip_canfd-core.c b/drivers/net/can/rockchip/rockchip_canfd-core.c
-index 9c762b59e310..acbbfdd4cb69 100644
---- a/drivers/net/can/rockchip/rockchip_canfd-core.c
-+++ b/drivers/net/can/rockchip/rockchip_canfd-core.c
-@@ -292,6 +292,8 @@ static void rkcanfd_chip_start(struct rkcanfd_priv *priv)
- 
- 	rkcanfd_chip_fifo_setup(priv);
- 	rkcanfd_timestamp_init(priv);
-+	rkcanfd_timestamp_start(priv);
-+
- 	rkcanfd_set_bittiming(priv);
- 
- 	rkcanfd_chip_interrupts_disable(priv);
-@@ -315,6 +317,7 @@ static void rkcanfd_chip_stop(struct rkcanfd_priv *priv, const enum can_state st
- {
- 	priv->can.state = state;
- 
-+	rkcanfd_timestamp_stop(priv);
- 	__rkcanfd_chip_stop(priv, state);
- }
- 
-@@ -322,6 +325,7 @@ static void rkcanfd_chip_stop_sync(struct rkcanfd_priv *priv, const enum can_sta
- {
- 	priv->can.state = state;
- 
-+	rkcanfd_timestamp_stop_sync(priv);
- 	__rkcanfd_chip_stop(priv, state);
- }
- 
-@@ -353,6 +357,8 @@ rkcanfd_alloc_can_err_skb(struct rkcanfd_priv *priv,
- 	*timestamp = rkcanfd_get_timestamp(priv);
- 
- 	skb = alloc_can_err_skb(priv->ndev, cf);
-+	if (skb)
-+		rkcanfd_skb_set_timestamp(priv, skb, *timestamp);
- 
- 	return skb;
- }
-diff --git a/drivers/net/can/rockchip/rockchip_canfd-ethtool.c b/drivers/net/can/rockchip/rockchip_canfd-ethtool.c
-index 0084f37b2b9f..5aeeef64a67a 100644
---- a/drivers/net/can/rockchip/rockchip_canfd-ethtool.c
-+++ b/drivers/net/can/rockchip/rockchip_canfd-ethtool.c
-@@ -59,7 +59,7 @@ rkcanfd_ethtool_get_ethtool_stats(struct net_device *ndev,
- }
- 
- static const struct ethtool_ops rkcanfd_ethtool_ops = {
--	.get_ts_info = ethtool_op_get_ts_info,
-+	.get_ts_info = can_ethtool_op_get_ts_info_hwts,
- 	.get_strings = rkcanfd_ethtool_get_strings,
- 	.get_sset_count = rkcanfd_ethtool_get_sset_count,
- 	.get_ethtool_stats = rkcanfd_ethtool_get_ethtool_stats,
-diff --git a/drivers/net/can/rockchip/rockchip_canfd-rx.c b/drivers/net/can/rockchip/rockchip_canfd-rx.c
-index fa7913ef415d..411b0cf5487a 100644
---- a/drivers/net/can/rockchip/rockchip_canfd-rx.c
-+++ b/drivers/net/can/rockchip/rockchip_canfd-rx.c
-@@ -267,6 +267,7 @@ static int rkcanfd_handle_rx_int_one(struct rkcanfd_priv *priv)
- 	}
- 
- 	memcpy(skb_cfd, cfd, len);
-+	rkcanfd_skb_set_timestamp(priv, skb, header->ts);
- 
- 	err = can_rx_offload_queue_timestamp(&priv->offload, skb, header->ts);
- 	if (err)
-diff --git a/drivers/net/can/rockchip/rockchip_canfd-timestamp.c b/drivers/net/can/rockchip/rockchip_canfd-timestamp.c
-index 9301b3ceceb0..81cccc5fd838 100644
---- a/drivers/net/can/rockchip/rockchip_canfd-timestamp.c
-+++ b/drivers/net/can/rockchip/rockchip_canfd-timestamp.c
-@@ -4,12 +4,102 @@
- //               Marc Kleine-Budde <kernel@pengutronix.de>
- //
- 
-+#include <linux/clocksource.h>
-+
- #include "rockchip_canfd.h"
- 
-+static u64 rkcanfd_timestamp_read(const struct cyclecounter *cc)
-+{
-+	const struct rkcanfd_priv *priv = container_of(cc, struct rkcanfd_priv, cc);
-+
-+	return rkcanfd_get_timestamp(priv);
-+}
-+
-+void rkcanfd_skb_set_timestamp(const struct rkcanfd_priv *priv,
-+			       struct sk_buff *skb, const u32 timestamp)
-+{
-+	struct skb_shared_hwtstamps *hwtstamps = skb_hwtstamps(skb);
-+	u64 ns;
-+
-+	ns = timecounter_cyc2time(&priv->tc, timestamp);
-+
-+	hwtstamps->hwtstamp = ns_to_ktime(ns);
-+}
-+
-+static void rkcanfd_timestamp_work(struct work_struct *work)
-+{
-+	const struct delayed_work *delayed_work = to_delayed_work(work);
-+	struct rkcanfd_priv *priv;
-+
-+	priv = container_of(delayed_work, struct rkcanfd_priv, timestamp);
-+	timecounter_read(&priv->tc);
-+
-+	schedule_delayed_work(&priv->timestamp, priv->work_delay_jiffies);
-+}
-+
- void rkcanfd_timestamp_init(struct rkcanfd_priv *priv)
- {
--	u32 reg;
-+	const struct can_bittiming *dbt = &priv->can.data_bittiming;
-+	const struct can_bittiming *bt = &priv->can.bittiming;
-+	struct cyclecounter *cc = &priv->cc;
-+	u32 bitrate, div, reg, rate;
-+	u64 work_delay_ns;
-+	u64 max_cycles;
- 
--	reg = RKCANFD_REG_TIMESTAMP_CTRL_TIME_BASE_COUNTER_ENABLE;
-+	/* At the standard clock rate of 300Mhz on the rk3658, the 32
-+	 * bit timer overflows every 14s. This means that we have to
-+	 * poll it quite often to avoid missing a wrap around.
-+	 *
-+	 * Divide it down to a reasonable rate, at least twice the bit
-+	 * rate.
-+	 */
-+	bitrate = max(bt->bitrate, dbt->bitrate);
-+	div = min(DIV_ROUND_UP(priv->can.clock.freq, bitrate * 2),
-+		  FIELD_MAX(RKCANFD_REG_TIMESTAMP_CTRL_TIME_BASE_COUNTER_PRESCALE) + 1);
-+
-+	reg = FIELD_PREP(RKCANFD_REG_TIMESTAMP_CTRL_TIME_BASE_COUNTER_PRESCALE,
-+			 div - 1) |
-+		RKCANFD_REG_TIMESTAMP_CTRL_TIME_BASE_COUNTER_ENABLE;
- 	rkcanfd_write(priv, RKCANFD_REG_TIMESTAMP_CTRL, reg);
-+
-+	cc->read = rkcanfd_timestamp_read;
-+	cc->mask = CYCLECOUNTER_MASK(32);
-+
-+	rate = priv->can.clock.freq / div;
-+	clocks_calc_mult_shift(&cc->mult, &cc->shift, rate, NSEC_PER_SEC,
-+			       RKCANFD_TIMESTAMP_WORK_MAX_DELAY_SEC);
-+
-+	max_cycles = div_u64(ULLONG_MAX, cc->mult);
-+	max_cycles = min(max_cycles, cc->mask);
-+	work_delay_ns = clocksource_cyc2ns(max_cycles, cc->mult, cc->shift) / 3;
-+	priv->work_delay_jiffies = nsecs_to_jiffies(work_delay_ns);
-+	INIT_DELAYED_WORK(&priv->timestamp, rkcanfd_timestamp_work);
-+
-+	netdev_dbg(priv->ndev, "clock=%lu.%02luMHz bitrate=%lu.%02luMBit/s div=%u rate=%lu.%02luMHz mult=%u shift=%u delay=%lus\n",
-+		   priv->can.clock.freq / MEGA,
-+		   priv->can.clock.freq % MEGA / KILO / 10,
-+		   bitrate / MEGA,
-+		   bitrate % MEGA / KILO / 100,
-+		   div,
-+		   rate / MEGA,
-+		   rate % MEGA / KILO / 10,
-+		   cc->mult, cc->shift,
-+		   priv->work_delay_jiffies / HZ);
-+}
-+
-+void rkcanfd_timestamp_start(struct rkcanfd_priv *priv)
-+{
-+	timecounter_init(&priv->tc, &priv->cc, ktime_get_real_ns());
-+
-+	schedule_delayed_work(&priv->timestamp, priv->work_delay_jiffies);
-+}
-+
-+void rkcanfd_timestamp_stop(struct rkcanfd_priv *priv)
-+{
-+	cancel_delayed_work(&priv->timestamp);
-+}
-+
-+void rkcanfd_timestamp_stop_sync(struct rkcanfd_priv *priv)
-+{
-+	cancel_delayed_work_sync(&priv->timestamp);
- }
-diff --git a/drivers/net/can/rockchip/rockchip_canfd-tx.c b/drivers/net/can/rockchip/rockchip_canfd-tx.c
-index d719a52258e3..f954f38b955f 100644
---- a/drivers/net/can/rockchip/rockchip_canfd-tx.c
-+++ b/drivers/net/can/rockchip/rockchip_canfd-tx.c
-@@ -157,6 +157,8 @@ void rkcanfd_handle_tx_done_one(struct rkcanfd_priv *priv, const u32 ts,
- 	if (priv->bec.txerr)
- 		priv->bec.txerr--;
- 
-+	if (skb)
-+		rkcanfd_skb_set_timestamp(priv, skb, ts);
- 	stats->tx_bytes +=
- 		can_rx_offload_get_echo_skb_queue_timestamp(&priv->offload,
- 							    tx_tail, ts,
-diff --git a/drivers/net/can/rockchip/rockchip_canfd.h b/drivers/net/can/rockchip/rockchip_canfd.h
-index f06f6a83b77f..aa3064101721 100644
---- a/drivers/net/can/rockchip/rockchip_canfd.h
-+++ b/drivers/net/can/rockchip/rockchip_canfd.h
-@@ -468,6 +468,11 @@ struct rkcanfd_priv {
- 	u32 reg_int_mask_default;
- 	struct rkcanfd_devtype_data devtype_data;
- 
-+	struct cyclecounter cc;
-+	struct timecounter tc;
-+	struct delayed_work timestamp;
-+	unsigned long work_delay_jiffies;
-+
- 	struct can_berr_counter bec;
- 
- 	struct rkcanfd_stats stats;
-@@ -530,7 +535,12 @@ void rkcanfd_ethtool_init(struct rkcanfd_priv *priv);
- 
- int rkcanfd_handle_rx_int(struct rkcanfd_priv *priv);
- 
-+void rkcanfd_skb_set_timestamp(const struct rkcanfd_priv *priv,
-+			       struct sk_buff *skb, const u32 timestamp);
- void rkcanfd_timestamp_init(struct rkcanfd_priv *priv);
-+void rkcanfd_timestamp_start(struct rkcanfd_priv *priv);
-+void rkcanfd_timestamp_stop(struct rkcanfd_priv *priv);
-+void rkcanfd_timestamp_stop_sync(struct rkcanfd_priv *priv);
- 
- unsigned int rkcanfd_get_effective_tx_free(const struct rkcanfd_priv *priv);
- void rkcanfd_xmit_retry(struct rkcanfd_priv *priv);
 
--- 
-2.43.0
+My bot found new DTB warnings on the .dts files added or changed in this
+series.
+
+Some warnings may be from an existing SoC .dtsi. Or perhaps the warnings
+are fixed by another series. Ultimately, it is up to the platform
+maintainer whether these warnings are acceptable or not. No need to reply
+unless the platform maintainer has comments.
+
+If you already ran DT checks and didn't see these error(s), then
+make sure dt-schema is up to date:
+
+  pip3 install dtschema --upgrade
+
+
+New warnings running 'make CHECK_DTBS=y rockchip/rk3588s-gameforce-ace.dtb' for 20240726194948.109326-1-macroalpha82@gmail.com:
+
+arch/arm64/boot/dts/rockchip/rk3588s-gameforce-ace.dtb: typec-portc@22: 'vbus-supply' is a required property
+	from schema $id: http://devicetree.org/schemas/usb/fcs,fusb302.yaml#
+
+
+
 
 
 
