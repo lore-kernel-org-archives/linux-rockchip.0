@@ -4,59 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BF268C3DA61
-	for <linux-rockchip@archiver.kernel.org>; Mon, 29 Jul 2024 13:12:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0D689C3DA61
+	for <linux-rockchip@archiver.kernel.org>; Mon, 29 Jul 2024 13:12:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=B/h8Yr0qx61RVekK9j+pPu7RHpiC1sb0Z52EECDM7jo=; b=vfZSnzKScMjAX9
-	Yasg3ErdUJ1xrI8zUHcHpgKYvQZ65ln1yVlYmm4j5V7jAoSTseW2EM3vHJw6bMPuykvOjUqQPdGa3
-	mN825BogIVefExT49nzFleHghO9yku2RcSN8DzBvfLX+V00wr5n1sQfO+wAmlvWlePXGXgEpzqc9M
-	NdUGaTUGvyoYxcpI2sOvVRN+++E9oJYifU7uk1314kZlJMzqY5CNLHPoqcfXs450hzKfNcKjKuYuB
-	k/A6c4qwcx8GlK2bovvx1x73fsRjVCFW+Y3u71F5z2BD/mlr8XeQIzjfaRfsibyTh8SrIvaitlHRV
-	EiA/X5uUSfR3WVuz+lGA==;
+	List-Owner; bh=kgvnh8QSyxo6VAgQWoJ1txoaQX86Dl2Djdkm4IwfKR8=; b=lbIirORhhk7ubT
+	B1Q10Tv03f7pWCLx0RJvvOWtKiGFkxHuo+nTCYUp4rT5p6ePWrI0MIZ9Ip0/6Roh9Zlh/z8Ia8Xit
+	mxo+rcFf9EIH2dLeZU/dMF009TGEMCXFYTyNI3Q3UHfGlffKBf+lTTCkA61AY0hjxxNA7KPtotCnV
+	7tlbGfdEMAL8uWLB/AWORnTyw864uAfO7NTxoH5Z1qZEgp3Yqqp8cFZJNdxLFmUdNsY/jMg3QS3/k
+	byEpGA9tFUjjf39yZmhN0ZCUzpzxWLNsbfzn9PLHDUtepqc8QnA1OIsOqF0IRrqxKgo+2xFzcWhFf
+	HgIzSTDWUc01Hh9obMOw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sYQAR-0000000BNDE-1fr8;
-	Mon, 29 Jul 2024 13:11:59 +0000
+	id 1sYQAr-0000000BNR8-36Ra;
+	Mon, 29 Jul 2024 13:12:25 +0000
 Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sYQ5m-0000000BLJo-1PAD
+	id 1sYQ5o-0000000BLLG-32Ou
 	for linux-rockchip@lists.infradead.org;
-	Mon, 29 Jul 2024 13:07:12 +0000
+	Mon, 29 Jul 2024 13:07:14 +0000
 Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
 	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
 	(Exim 4.92)
 	(envelope-from <mkl@pengutronix.de>)
-	id 1sYQ5l-0000ZC-1h
-	for linux-rockchip@lists.infradead.org; Mon, 29 Jul 2024 15:07:09 +0200
+	id 1sYQ5n-0000cc-5f
+	for linux-rockchip@lists.infradead.org; Mon, 29 Jul 2024 15:07:11 +0200
 Received: from [2a0a:edc0:0:b01:1d::7b] (helo=bjornoya.blackshift.org)
 	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <mkl@pengutronix.de>)
-	id 1sYQ5k-0033BZ-4V
-	for linux-rockchip@lists.infradead.org; Mon, 29 Jul 2024 15:07:08 +0200
+	id 1sYQ5m-0033DH-1I
+	for linux-rockchip@lists.infradead.org; Mon, 29 Jul 2024 15:07:10 +0200
 Received: from dspam.blackshift.org (localhost [127.0.0.1])
-	by bjornoya.blackshift.org (Postfix) with SMTP id C888E310E47
-	for <linux-rockchip@lists.infradead.org>; Mon, 29 Jul 2024 13:07:07 +0000 (UTC)
+	by bjornoya.blackshift.org (Postfix) with SMTP id A9537310E64
+	for <linux-rockchip@lists.infradead.org>; Mon, 29 Jul 2024 13:07:09 +0000 (UTC)
 Received: from hardanger.blackshift.org (unknown [172.20.34.65])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(Client did not present a certificate)
-	by bjornoya.blackshift.org (Postfix) with ESMTPS id A43C5310DE2;
-	Mon, 29 Jul 2024 13:06:59 +0000 (UTC)
+	by bjornoya.blackshift.org (Postfix) with ESMTPS id 3A7F1310E07;
+	Mon, 29 Jul 2024 13:07:01 +0000 (UTC)
 Received: from [172.20.34.65] (localhost [::1])
-	by hardanger.blackshift.org (OpenSMTPD) with ESMTP id f3d53853;
+	by hardanger.blackshift.org (OpenSMTPD) with ESMTP id 1fab6443;
 	Mon, 29 Jul 2024 13:06:31 +0000 (UTC)
 From: Marc Kleine-Budde <mkl@pengutronix.de>
-Date: Mon, 29 Jul 2024 15:05:42 +0200
-Subject: [PATCH can-next 11/21] can: rockchip_canfd: add functions to check
- if CAN-FD frames are equal
+Date: Mon, 29 Jul 2024 15:05:44 +0200
+Subject: [PATCH can-next 13/21] can: rockchip_canfd: implement workaround
+ for erratum 6
 MIME-Version: 1.0
-Message-Id: <20240729-rockchip-canfd-v1-11-fa1250fd6be3@pengutronix.de>
+Message-Id: <20240729-rockchip-canfd-v1-13-fa1250fd6be3@pengutronix.de>
 References: <20240729-rockchip-canfd-v1-0-fa1250fd6be3@pengutronix.de>
 In-Reply-To: <20240729-rockchip-canfd-v1-0-fa1250fd6be3@pengutronix.de>
 To: kernel@pengutronix.de, Vincent Mailhol <mailhol.vincent@wanadoo.fr>, 
@@ -72,15 +72,15 @@ Cc: linux-can@vger.kernel.org, netdev@vger.kernel.org,
  linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
  Marc Kleine-Budde <mkl@pengutronix.de>
 X-Mailer: b4 0.15-dev-37811
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1974; i=mkl@pengutronix.de;
- h=from:subject:message-id; bh=pk+HWp61aRbrMc8jao9rsWPH0utzFUIr6luS6CcCfzk=;
- b=owEBbQGS/pANAwAKASg4oj56LbxvAcsmYgBmp5PFCHanwgo22d/CXs+k/48vJoczWNABB6IQO
- mY8hHz3lAqJATMEAAEKAB0WIQRQQLqG4LYE3Sm8Pl8oOKI+ei28bwUCZqeTxQAKCRAoOKI+ei28
- b2gIB/9adnJSmWuuoCby01FRyUSVp3vwYNmiSBRj3NglwYqq1BMLbVUTDQv8GD8z8zRVn/YOmtq
- NSbOr86kyzQJuFQqr95dGUZ3lTXAQg0m7vw+fzWL5dd7l1I8OkjiZaGvKYp9wek9bFZBMSojWNm
- f0ZJUzDrML07mCcQ6+3c7QKSItIgtDkcEsVLZ6/3WEMZ0KpxoKeL5jNSeUPevcq0NaHWYSN42Qj
- NCpuCjSHdfB10WZs4Gau5yJN/7vpHqUilue5/MzE5BjXatNzqjY0IBYVevQ2IqWA7CN1fWiDz3k
- xEcyf1ud5EzFiFOb9haxQJKAUY82HHUIeDcZQ1oqEaiUhWz5
+X-Developer-Signature: v=1; a=openpgp-sha256; l=5063; i=mkl@pengutronix.de;
+ h=from:subject:message-id; bh=TuIRK1CvzzmPquSKlL+wCQEDsH+hjtLRzNCc9OCMn3c=;
+ b=owEBbQGS/pANAwAKASg4oj56LbxvAcsmYgBmp5PIRjGH3JfBxeP01oAsbEVANJnSEkXP3CjUs
+ cCK0xXlN8uJATMEAAEKAB0WIQRQQLqG4LYE3Sm8Pl8oOKI+ei28bwUCZqeTyAAKCRAoOKI+ei28
+ b6cQB/0a6+gsVzf20044h8OLRxUhUlAvwYuPka3Mbh46thsjQ5XQ6+1OEjYqqxkX9QFcYKtZQGm
+ DwSb5WQ2cXP2ZS//aMy/6OvvVM5iI/IL+4c+OZeahTmWOusLafjygoMGTPPXnueLovUvjgiBK7W
+ rtxOgKhnoN0egXx4IWEQEQAljOAzr6vojG+Q3myUnUZH+VprvSev1pj3e04KaeJzGxCon+2bkjY
+ 4CuhezqJN/vJNVUw32zC0k2h6BYxPdns85DoDSElIHOX91sTvGplDQjpWcwHf3dswJWrJSW1yg5
+ GcSnFgO+NK2InrJJZwJe2fX/R9UkyL9wVhHdVHFZ43l4ARWO
 X-Developer-Key: i=mkl@pengutronix.de; a=openpgp;
  fpr=C1400BA0B3989E6FBC7D5B5C2B5EE211C58AEA54
 X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
@@ -88,8 +88,8 @@ X-SA-Exim-Mail-From: mkl@pengutronix.de
 X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
 X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240729_060710_388800_8F0D8F41 
-X-CRM114-Status: GOOD (  13.37  )
+X-CRM114-CacheID: sfid-20240729_060712_992606_B0D7E430 
+X-CRM114-Status: GOOD (  20.87  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,73 +106,150 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add a pair new functions to check if 2 struct canfd_frame are equal.
-The 1st checks if the header of the CAN frames are equal, the 2nd
-checks if the data portion are equal:
+The rk3568 CAN-FD errata sheet as of Tue 07 Nov 2023 11:25:31 +08:00
+says:
 
-- rkcanfd_can_frame_header_equal()
-- rkcanfd_can_frame_data_equal()
+| The CAN controller's transmission of extended frames may
+| intermittently change into standard frames.
+|
+| When using the CAN controller to send extended frames, if the
+| 'tx_req' is configured as 1 and coincides with the internal
+| transmission point, the extended frame will be transmitted onto the
+| bus in the format of a standard frame.
 
-This functionality is needed in the next patch.
+To work around Erratum 6, the driver is in self-receiving mode (RXSTX)
+and all received CAN frames are passed through rkcanfd_rxstx_filter().
+
+Add a check in rkcanfd_rxstx_filter() whether the received frame
+corresponds to the current outgoing frame, but the extended CAN ID has
+been mangled to a standard ID. In this case re-send the original CAN
+frame.
 
 Signed-off-by: Marc Kleine-Budde <mkl@pengutronix.de>
 ---
- drivers/net/can/rockchip/rockchip_canfd-rx.c | 42 ++++++++++++++++++++++++++++
- 1 file changed, 42 insertions(+)
+ drivers/net/can/rockchip/rockchip_canfd-rx.c | 44 ++++++++++++++++++++++++++++
+ drivers/net/can/rockchip/rockchip_canfd-tx.c |  8 +++++
+ drivers/net/can/rockchip/rockchip_canfd.h    | 19 ++++++++++++
+ 3 files changed, 71 insertions(+)
 
 diff --git a/drivers/net/can/rockchip/rockchip_canfd-rx.c b/drivers/net/can/rockchip/rockchip_canfd-rx.c
-index c7b316e52580..df5280375ca9 100644
+index af90c66de60f..15d52abad3b3 100644
 --- a/drivers/net/can/rockchip/rockchip_canfd-rx.c
 +++ b/drivers/net/can/rockchip/rockchip_canfd-rx.c
-@@ -6,6 +6,48 @@
+@@ -95,6 +95,7 @@ static int rkcanfd_rxstx_filter(struct rkcanfd_priv *priv,
+ 				const struct canfd_frame *cfd_rx, const u32 ts,
+ 				bool *tx_done)
+ {
++	struct net_device_stats *stats = &priv->ndev->stats;
+ 	const struct canfd_frame *cfd_nominal;
+ 	const struct sk_buff *skb;
+ 	unsigned int tx_tail;
+@@ -130,6 +131,49 @@ static int rkcanfd_rxstx_filter(struct rkcanfd_priv *priv,
+ 		return 0;
+ 	}
  
- #include "rockchip_canfd.h"
++	if (!(priv->devtype_data.quirks & RKCANFD_QUIRK_RK3568_ERRATUM_6))
++		return 0;
++
++	/* Erratum 6: Extended frames may be send as standard frames.
++	 *
++	 * Not affected if:
++	 * - TX'ed a standard frame -or-
++	 * - RX'ed an extended frame
++	 */
++	if (!(cfd_nominal->can_id & CAN_EFF_FLAG) ||
++	    (cfd_rx->can_id & CAN_EFF_FLAG))
++		return 0;
++
++	/* Not affected if:
++	 * - standard part and RTR flag of the TX'ed frame
++	 *   is not equal the CAN-ID and RTR flag of the RX'ed frame.
++	 */
++	if ((cfd_nominal->can_id & (CAN_RTR_FLAG | CAN_SFF_MASK)) !=
++	    (cfd_rx->can_id & (CAN_RTR_FLAG | CAN_SFF_MASK)))
++		return 0;
++
++	/* Not affected if:
++	 * - length is not the same
++	 */
++	if (cfd_nominal->len != cfd_rx->len)
++		return 0;
++
++	/* Not affected if:
++	 * - the data of non RTR frames is different
++	 */
++	if (!(cfd_nominal->can_id & CAN_RTR_FLAG) &&
++	    memcmp(cfd_nominal->data, cfd_rx->data, cfd_nominal->len))
++		return 0;
++
++	/* Affected by Erratum 6 */
++
++	*tx_done = true;
++
++	stats->tx_packets++;
++	stats->tx_errors++;
++
++	rkcanfd_xmit_retry(priv);
++
+ 	return 0;
+ }
  
-+static bool rkcanfd_can_frame_header_equal(const struct canfd_frame *const cfd1,
-+					   const struct canfd_frame *const cfd2,
-+					   const bool is_canfd)
+diff --git a/drivers/net/can/rockchip/rockchip_canfd-tx.c b/drivers/net/can/rockchip/rockchip_canfd-tx.c
+index 85daf7b7be8b..fcf7d8f07118 100644
+--- a/drivers/net/can/rockchip/rockchip_canfd-tx.c
++++ b/drivers/net/can/rockchip/rockchip_canfd-tx.c
+@@ -14,6 +14,14 @@ static void rkcanfd_start_xmit_write_cmd(const struct rkcanfd_priv *priv,
+ 	rkcanfd_write(priv, RKCANFD_REG_CMD, reg_cmd);
+ }
+ 
++void rkcanfd_xmit_retry(struct rkcanfd_priv *priv)
 +{
-+	const u8 mask_flags = CANFD_BRS | CANFD_ESI | CANFD_FDF;
-+	canid_t mask = CAN_EFF_FLAG;
++	const unsigned int tx_head = rkcanfd_get_tx_head(priv);
++	const u32 reg_cmd = RKCANFD_REG_CMD_TX_REQ(tx_head);
 +
-+	if (canfd_sanitize_len(cfd1->len) != canfd_sanitize_len(cfd2->len))
-+		return false;
-+
-+	if (!is_canfd)
-+		mask |= CAN_RTR_FLAG;
-+
-+	if (cfd1->can_id & CAN_EFF_FLAG)
-+		mask |= CAN_EFF_MASK;
-+	else
-+		mask |= CAN_SFF_MASK;
-+
-+	if ((cfd1->can_id & mask) != (cfd2->can_id & mask))
-+		return false;
-+
-+	if (is_canfd &&
-+	    (cfd1->flags & mask_flags) != (cfd2->flags & mask_flags))
-+		return false;
-+
-+	return true;
++	rkcanfd_start_xmit_write_cmd(priv, reg_cmd);
 +}
 +
-+static bool rkcanfd_can_frame_data_equal(const struct canfd_frame *cfd1,
-+					 const struct canfd_frame *cfd2,
-+					 const bool is_canfd)
-+{
-+	u8 len;
-+
-+	if (!is_canfd && (cfd1->can_id & CAN_RTR_FLAG))
-+		return true;
-+
-+	len = canfd_sanitize_len(cfd1->len);
-+
-+	return !memcmp(cfd1->data, cfd2->data, len);
-+}
-+
- static unsigned int
- rkcanfd_fifo_header_to_cfd_header(const struct rkcanfd_priv *priv,
- 				  const struct rkcanfd_fifo_header *header,
+ int rkcanfd_start_xmit(struct sk_buff *skb, struct net_device *ndev)
+ {
+ 	struct rkcanfd_priv *priv = netdev_priv(ndev);
+diff --git a/drivers/net/can/rockchip/rockchip_canfd.h b/drivers/net/can/rockchip/rockchip_canfd.h
+index ddc9cba1a095..de6c72b3d235 100644
+--- a/drivers/net/can/rockchip/rockchip_canfd.h
++++ b/drivers/net/can/rockchip/rockchip_canfd.h
+@@ -341,6 +341,24 @@
+ 
+ /* Erratum 6: The CAN controller's transmission of extended frames may
+  * intermittently change into standard frames
++ *
++ * Work around this issue by activating self reception (RXSTX). If we
++ * have pending TX CAN frames, check all RX'ed CAN frames in
++ * rkcanfd_rxstx_filter().
++ *
++ * If it's a frame we've send and it's OK, call the TX complete
++ * handler: rkcanfd_handle_tx_done_one(). Mask the TX complete IRQ.
++ *
++ * If it's a frame we've send, but the CAN-ID is mangled, resend the
++ * original extended frame.
++ *
++ * To reproduce:
++ * host:
++ *   canfdtest -evx -g can0
++ *   candump any,0:80000000 -cexdtA
++ * dut:
++ *   canfdtest -evx can0
++ *   ethtool -S can0
+  */
+ #define RKCANFD_QUIRK_RK3568_ERRATUM_6 BIT(5)
+ 
+@@ -498,6 +516,7 @@ int rkcanfd_handle_rx_int(struct rkcanfd_priv *priv);
+ 
+ void rkcanfd_timestamp_init(struct rkcanfd_priv *priv);
+ 
++void rkcanfd_xmit_retry(struct rkcanfd_priv *priv);
+ int rkcanfd_start_xmit(struct sk_buff *skb, struct net_device *ndev);
+ void rkcanfd_handle_tx_done_one(struct rkcanfd_priv *priv, const u32 ts,
+ 				unsigned int *frame_len_p);
 
 -- 
 2.43.0
