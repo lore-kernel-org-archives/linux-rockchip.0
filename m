@@ -4,55 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D3B5EC3DA61
-	for <linux-rockchip@archiver.kernel.org>; Mon, 29 Jul 2024 21:21:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 479AAC3DA4A
+	for <linux-rockchip@archiver.kernel.org>; Mon, 29 Jul 2024 23:19:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Subject:Cc:From:To:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=KO+HytvDYWAUPzoaJGlhw3myQPZsWlXDIJmnEK4RffE=; b=0jHHUY1UecWnEF
-	PVqbdK/u/SM944r81ozB6YyNfZKAtAl5M6sjSWbazAAMhCqmrwjDwHwKBfAjbgeDahU//b2jSljl+
-	BBQaDndl61oQgQJ4r0XJ99r7HOhnC/+wxVWWJY8Bz4rhC+I+cP2Q8/03oqAfh7Uh+KQBiJ7SBzFIB
-	8mZ9iG06RSipbTItrSA+xOauFLrFzqhxIabmTDaGNOAeVCEHGz0nIz4d9o2sxvmqepYiMazw1C+Mm
-	k9ClNNfuuiLbiHJOtEBaQsOx6msMddvhqE3amsHxg7cZ2LVp8VUCGCy3TxNv/BMhkn0GwuD8ZzTKd
-	LvSx/x5ZmSAVzYNiE3Aw==;
+	List-Owner; bh=iWLPw0mw3u+2j/sQKY6ZbY84nZ8Uz9yyI/K/uoy/7+Y=; b=pLMdgPUvQ3UJlS
+	QCnGaWHkS2qjluk0e4PCCRBY/v01R3hML+xQpNWYuYVLqcLUAOPS6UPS1GxM33ufC2L+9Bkm3v3G7
+	uTOlSfPmWfa2vIb/02gpJ5rDgETU26WNszwBPF0hmcWNChpX5U7ifGM0dbPllzyfpqJQee+9a2hlL
+	LJigiUf8ExGsBJh6cor+4s2lkIosv25XHNRefc6tSEYExwS13uFzZEIsVK+bKN4m9mkBCCHN4KvfC
+	Ifwb/3dCwVVDNofQaHISFA9WkyeRtcvumgn6B8HO7pbA7ZPUrU4KuJGmkGfk5gjTJrrJDFyZWK3AD
+	MQ0STBTynTQxAoYBKgzg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sYXo5-0000000CmAT-0nJY;
-	Mon, 29 Jul 2024 21:21:25 +0000
-Received: from mail-4322.protonmail.ch ([185.70.43.22])
+	id 1sYZdu-0000000Czpq-1Kiq;
+	Mon, 29 Jul 2024 23:19:02 +0000
+Received: from pidgin.makrotopia.org ([2a07:2ec0:3002::65])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sYXnc-0000000Cm3f-3zNl
-	for linux-rockchip@lists.infradead.org;
-	Mon, 29 Jul 2024 21:20:58 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=proton.me;
-	s=protonmail; t=1722288051; x=1722547251;
-	bh=JPubHYzdmcE9DV8QqhlyGjO/AODrdpWCvyvc9CcrJfY=;
-	h=Date:To:From:Cc:Subject:Message-ID:In-Reply-To:References:
-	 Feedback-ID:From:To:Cc:Date:Subject:Reply-To:Feedback-ID:
-	 Message-ID:BIMI-Selector;
-	b=faQ3z3mC59AKTQSEqrmsGAPRQ5IFPQ6+Dv78q2NP0o1XkEm0w1LXDBSnFh/ezLqk4
-	 RWJFBTMaQ13vu+yy7+4AXtApK7SZYEarCfs0t452wKZLbTCx3wAr3y94U6HPM3uStz
-	 JuoRJ9IcKUapmLqcjhTypGyo6CcHsMimM8UPGcfBdv2Y6062Z4WXB+XmktIf73X9Js
-	 11V1N2nGTEu28U3cvsX3MRjQYNY0NkmbEsPyyQgWFUCwwqfF9b7J86ck95f5kPjJor
-	 M6qF28cagSUtJaSmfwyrrQ+mvAXpT/AzRrglslg7xSeNfedSj+sL5PxEzRc2x5Z8NP
-	 /UTLEZ0HyPUcg==
-Date: Mon, 29 Jul 2024 21:20:45 +0000
-To: Andy Yan <andy.yan@rock-chips.com>
-From: Piotr Zalewski <pZ010001011111@proton.me>
-Cc: "airlied@gmail.com" <airlied@gmail.com>, "daniel@ffwll.ch" <daniel@ffwll.ch>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, "heiko@sntech.de" <heiko@sntech.de>, "hjc@rock-chips.com" <hjc@rock-chips.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, "maarten.lankhorst@linux.intel.com" <maarten.lankhorst@linux.intel.com>, "mripard@kernel.org" <mripard@kernel.org>, "tzimmermann@suse.de" <tzimmermann@suse.de>
-Subject: Re: [PATCH v3] rockchip/drm: vop2: add support for gamma LUT
-Message-ID: <y_bpV0FizWkAqq0XPIKrauaZ07r_Ds-MnDr696Y1qFTLNiLsx7pL4C-Zsu-K9TzVBJ85L5cdkzDQOExcXXTf0owUYramMHdZd4erMRpJUXI=@proton.me>
-In-Reply-To: <48249708-8c05-40d2-a5d8-23de960c5a77@rock-chips.com>
-References: <TkgKVivuaLFLILPY-n3iZo_8KF-daKdqdu-0_e0HP-5Ar_8DALDeNWog2suwWKjX7eomcbGET0KZe7DlzdhK2YM6CbLbeKeFZr-MJzJMtw0=@proton.me> <ec283a7c-845b-4c58-8d86-cdd07862a0dc@rock-chips.com> <KbOjWzFKMM_fwDora8CjaLFBHWypRP1Mk6nPzHkwNAGxFHzJIynx3W8_jyZvbygH99lRAXDdrJmdFEQuY8M2Ao-a8F42zt8no4B1DCBiQIs=@proton.me> <48249708-8c05-40d2-a5d8-23de960c5a77@rock-chips.com>
-Feedback-ID: 53478694:user:proton
-X-Pm-Message-ID: 519082746c86342059362fada372d3e721229ce1
+	id 1sYZdq-0000000Czos-2LaM;
+	Mon, 29 Jul 2024 23:19:01 +0000
+Received: from local
+	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
+	 (Exim 4.98)
+	(envelope-from <daniel@makrotopia.org>)
+	id 1sYZdZ-000000006Q5-0COe;
+	Mon, 29 Jul 2024 23:18:41 +0000
+Date: Tue, 30 Jul 2024 00:18:37 +0100
+From: Daniel Golle <daniel@makrotopia.org>
+To: Dragan Simic <dsimic@manjaro.org>
+Cc: Diederik de Haas <didi.debian@cknow.org>,
+	Chen-Yu Tsai <wens@kernel.org>, linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, Rob Herring <robh@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>, linux-kernel@vger.kernel.org,
+	Herbert Xu <herbert@gondor.apana.org.au>,
+	Martin Kaiser <martin@kaiser.cx>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	Sebastian Reichel <sebastian.reichel@collabora.com>,
+	Ard Biesheuvel <ardb@kernel.org>,
+	Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <ukleinek@debian.org>,
+	devicetree@vger.kernel.org, linux-crypto@vger.kernel.org,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	Olivia Mackall <olivia@selenic.com>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Aurelien Jarno <aurelien@aurel32.net>,
+	Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH v7 0/3] hwrng: add hwrng support for Rockchip RK3568
+Message-ID: <ZqgjTQMgWZO2FjaC@makrotopia.org>
+References: <cover.1720969799.git.daniel@makrotopia.org>
+ <3190961.CRkYR5qTbq@bagend>
+ <CAGb2v64Dx7XaJOu0HHzFxYYY2ddUZao5Tar8-s1R_miVZqWcXA@mail.gmail.com>
+ <4406786.zLnsZ2vfAB@bagend>
+ <faa0baebabd3c31adf1afa7efbbdf608@manjaro.org>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <faa0baebabd3c31adf1afa7efbbdf608@manjaro.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240729_142057_141581_70158B64 
-X-CRM114-Status: GOOD (  23.31  )
+X-CRM114-CacheID: sfid-20240729_161858_619108_C1E38327 
+X-CRM114-Status: UNSURE (   9.64  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,81 +81,19 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Andy
+On Wed, Jul 24, 2024 at 08:07:51AM +0200, Dragan Simic wrote:
+> Thanks a lot for the testing.  Though, such wildly different test results
+> can, regrettably, lead to only one conclusion:  the HWRNG found in RK3566
+> is unusable. :/
 
-On Monday, July 29th, 2024 at 4:35 AM, Andy Yan <andy.yan@rock-chips.com> wrote:
+The results on RK3568 look much better and the series right now also
+only enabled the RNG on RK3568 systems. However, we have only seen few
+boards with RK3568 up to now, and I only got a couple of NanoPi R5C
+here to test, all with good hwrng results.
 
-> > > > +
-> > > > +static void vop2_crtc_gamma_set(struct vop2 *vop2, struct drm_crtc *crtc,
-> > > > + struct drm_crtc_state *old_state)
-> > > > +{
-> > > > + struct drm_crtc_state *state = crtc->state;
-> > > > + struct vop2_video_port *vp = to_vop2_video_port(crtc);
-> > > > + u32 dsp_ctrl;
-> > > > + int ret;
-> > > > +
-> > > > + if (!vop2->lut_regs)
-> > > > + return;
-> > > > +
-> > > > + if (!state->gamma_lut) {
-> > >
-> > > What's the purpose of checking !state->gamma_lut here,
-> > >
-> > > and you check it again at the end for return.
-> > > This makes me very confused.
-> >
-> > I understood it this way - since the vop2 lock is unlocked after disabling
-> > gamma LUT, the CRTC state can change while waiting for DSP_LUT_EN bit to
-> > be unset. With the change I sent in response to Daniel's reply, gamma LUT
-> > state modification should now be fully atomic so there shouldn't be a need
-> > for the second state check there anymore (if my logic is incorrect please
-> > explain).
->
->
-> After reading the commit message for adding gamma control for rk3399[0] i understand
-> what is going on here:
->
-> we should run into the if block in two cases:
->
-> (1) if the state->gamma_lut is null, we just need to disable dsp_lut and return,
->
-> this is why vop1 code check !state->gamma_lut again at the end.
->
-> (2) for platform unlinke rk3399(rk3566/8), we also need to disable dsp_lut befor we
-> write gamma_lut data, for platform like rk3399(rk3588), we don't need do the disable,
-> this is why vop1 code also has a !VOP_HAS_REG(vop, common, update_gamma_lut) check.
->
-> so we also need a similary check here:
-> (1) if the state->gamma_lut is null, disable dsp lut and return directly.
->
-> (1) if the state has a gamma_lut, we shoud dsiable dsp_lut than write gamma lut data on rk3566/8,
-> buf for rk3588, we should not disable dsp_lut before write gamma
->
->
-> [0]https://lists.infradead.org/pipermail/linux-rockchip/2021-October/028132.html
->
-
-Ok I see it. So In my patch it doesn't make sense at all to check it again
-(forgot about that extra if statement condition there, which I cut out 
-when porting to VOP2). I reworked my patch further for it to handle RK3588 
-case and to better utilize DRM atomic updates. It's contained in the 
-response to Daniel's review [1]. I experienced some problems so I'm waiting 
-for his response/comment on that.
-
-Regarding RK3588, I checked RK3588 TRM v1.0 part2. In its VOP2 section I 
-found:
-  - SYS_CTRL_LUT_PORT_SEL: gamma_ahb_write_sel (seems to represent the 
-    same concept as LUT_PORT_SEL in case of RK356x)
-  - VOP2_POST0_DSP_CTRL: gamma_update_en (seems to represent the same 
-    concept as in VOP1 in case of RK3399)
-  - I also found dsp_lut_en but I presume it is a bug in documentation.
-
-Should RK3588 be handled as RK3399? (gamma LUT can be written directly but 
-gamma_update_en bit has to be set before). What about gamma_ahb_write_sel?
- 
-[1] https://lkml.org/lkml/2024/7/27/293
-
-Best Regards, Piotr Zalewski
+Do you think it would be agreeable to only enable the HWRNG for RK3568
+as suggested in this series? Or are we expecting quality to also vary
+as much as it (sadly) does for RK3566?
 
 _______________________________________________
 Linux-rockchip mailing list
