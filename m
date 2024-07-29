@@ -4,57 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D954FC3DA4A
-	for <linux-rockchip@archiver.kernel.org>; Mon, 29 Jul 2024 20:24:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0CA5CC3DA4A
+	for <linux-rockchip@archiver.kernel.org>; Mon, 29 Jul 2024 20:25:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=GAKLMaNEF8ZYsQtVGOaKPuSI+VQdedF4tKhQUoqRK7I=; b=yUPC3pxr0xsBTb
-	ZS4OTPXimtDOQKE2q9vAE7fKpmGH64QKT28oAsyojA2n86QAMrcLtifoACdA+vYDn+fpCIjZ/jZCJ
-	RdHIHUe27kPKzFnmvAffCDHc6uPSnl74RaFTZhvvde6OYsrRei4RJkUr9R1J2VaPeQdSH07ySpbqm
-	IC3r6CLu0umT2mZFupFMPLZFOHwUOmfO+mddc3Wnr2BSHC+V0fNdfBP971pc/iOmTOnE8ia79X4lh
-	mSVr5tTqeIxUoPdLw6WYLzfh7lejrF65HGnI8xrkUk1kESZhkwYXyYHUnLbGL+wJ9owACIuvNy+Gq
-	venKL+1zA6NMBIuLmT8A==;
+	List-Owner; bh=OcLVdigErqw1xBh69AQEL7aRRbbpPuWtjKn7to1emho=; b=LhhIlL8pF0VS6t
+	BgdkRMxz5hkBSb+sYafsHy8cl/c9GvhhA9zOhX2XijDVk7SEakjushN/7Kzq1FTrOiCJj0X6oRw0T
+	O0mvTU+xdAHcBJ4a/ywA/Iuq7pJPJFeh1BiHs0+aeafQnhKzuLqgJptmcYh/92/B4Z93FYM2A1kLd
+	AdvqGdX7LOvOjflpsv4GAp1JRRO4tGFnrgeCb3Km83Iyv9p5WO9C05Ry9vK3wY7+iA6uYOb/qnfjG
+	lGnZWqQZUVv4pjYKPx8whiuElJVpilzwUOOtlKTui5wLQS/Cb+ZLzvYSQFlnhXlShBSC3od431TyJ
+	OKmAu8fGOjfmEx6fbSIA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sYWuu-0000000CdDl-0nUr;
-	Mon, 29 Jul 2024 20:24:24 +0000
+	id 1sYWw6-0000000Cddw-1ZBV;
+	Mon, 29 Jul 2024 20:25:38 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sYWrq-0000000Cc6S-3JIX;
-	Mon, 29 Jul 2024 20:21:16 +0000
+	id 1sYWrq-0000000Cc6V-3Kke;
+	Mon, 29 Jul 2024 20:21:17 +0000
 Received: from i5e86192c.versanet.de ([94.134.25.44] helo=phil.lan)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1sYWrn-0007Xp-Ut; Mon, 29 Jul 2024 22:21:12 +0200
+	id 1sYWro-0007Xp-D2; Mon, 29 Jul 2024 22:21:12 +0200
 From: Heiko Stuebner <heiko@sntech.de>
-To: Christopher Obbard <chris.obbard@collabora.com>,
-	Rob Herring <robh@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>
+To: Diederik de Haas <didi.debian@cknow.org>
 Cc: Heiko Stuebner <heiko@sntech.de>,
 	devicetree@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
 	linux-arm-kernel@lists.infradead.org,
-	Kever Yang <kever.yang@rock-chips.com>,
-	Collabora Kernel Mailing List <kernel@collabora.com>,
+	Johan Jonker <jbx6244@gmail.com>,
 	linux-kernel@vger.kernel.org,
-	Dragan Simic <dsimic@manjaro.org>
-Subject: Re: [PATCH v3 0/3] Add support for Firefly Core-PX30-JD4 SoM & baseboard
-Date: Mon, 29 Jul 2024 22:21:01 +0200
-Message-Id: <172228429362.2312452.6948912348651428897.b4-ty@sntech.de>
+	Alex Bee <knaerzche@gmail.com>,
+	Chen-Yu Tsai <wens@csie.org>
+Subject: Re: [PATCH v3 0/2] sdmmc/sdio/emmc improvements for RK3328
+Date: Mon, 29 Jul 2024 22:21:02 +0200
+Message-Id: <172228429366.2312452.3957597355505563883.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20240718-rockchip-px30-firefly-v3-0-3835cdd22eae@collabora.com>
-References: <20240718-rockchip-px30-firefly-v3-0-3835cdd22eae@collabora.com>
+In-Reply-To: <20240710132830.14710-1-didi.debian@cknow.org>
+References: <20240710132830.14710-1-didi.debian@cknow.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240729_132114_910340_5FCAE9B1 
-X-CRM114-Status: UNSURE (   9.82  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240729_132114_915640_15AF9D37 
+X-CRM114-Status: GOOD (  13.91  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,20 +67,24 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, 18 Jul 2024 09:40:23 +0100, Christopher Obbard wrote:
-> This adds support for the PX30-based Core-PX30-JD4 system-on-module from
-> Firefly and includes support for the SoM in combination with the
-> Firefly MB-JD4-PX30 baseboard.
+On Wed, 10 Jul 2024 15:28:10 +0200, Diederik de Haas wrote:
+> This is a rebased resend of Alex Bee's prior patches which haven't been
+> merged even though there doesn't seem to be anything wrong with it.
+> These patches have been used in LibreELEC for years, which means I've
+> been using it for years on my Rock64 and I've also added it to my
+> latest 6.10-rc7 build and that worked fine too.
 > 
+> Link to v2:
+> https://lore.kernel.org/linux-rockchip/20210623145918.187018-1-knaerzche@gmail.com/
+> 
+> [...]
 
 Applied, thanks!
 
-[1/3] dt-bindings: arm: rockchip: Add Firefly Core-PX30-JD4 on baseboard
-      commit: 0406da35b4967e3e40036495627b76a48db51113
-[2/3] arm64: dts: rockchip: add Firefly Core-PX30-JD4 SoM
-      commit: a32b1a46502ee5748ec54268209ed539ebf675a4
-[3/3] arm64: dts: rockchip: add Firefly JD4 baseboard with Core-PX30-JD4 SoM
-      commit: 710a568b6ab83742c31507c96201e2cf6652562d
+[1/2] arm64: dts: rockchip: Add sdmmc_ext for RK3328
+      commit: 82e3aaae388199a0aff33e5371db307b3274f77a
+[2/2] arm64: dts: rockchip: Add sdmmc/sdio/emmc reset controls for RK3328
+      commit: bd6e614356d4fc852480cfb14d705da0561d5777
 
 Best regards,
 -- 
