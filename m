@@ -4,49 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 437BAC3DA49
-	for <linux-rockchip@archiver.kernel.org>; Tue, 30 Jul 2024 06:04:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9DE0BC3DA61
+	for <linux-rockchip@archiver.kernel.org>; Tue, 30 Jul 2024 06:04:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=m/HPxJTnVPyVDdtk9+Mp6lXz+66bCvMv4RyMeyqo/pE=; b=ock4eTIXyZ4e8a
-	OrNuR3LCTrer+HdTIj/abhfEt/JQfV18+7bmu0hrsCMnmYqA/U6Bo2Q+/onBJz4R2xa7OhBiBR5E+
-	jraRM5wl9JqXlGhh+zAG+GynGu5vOYrZbh5bBMSAk7egv2++u8gKFFxFBLVGnxyT/gDibGRoq3hau
-	oG6s6UXO6ATEZR6KsWmQO7BbNbn/E1lH7GVf+hwXxM8IKW5PMdjXq+GYfyt+hopwB4D1gcW3UGvhN
-	56wJn5vbYcAHb0PE+nUdarFQcRMCuPQDp7eC08Ql/2v2/NUqwbFrNswcDKS/nvfPmfbo4Qegrt1oW
-	8xOuQhJlSftZq8hg/m5Q==;
+	List-Owner; bh=XRF7MFBypaMMB0nGX3EU6GVdyYXFXnsbJCv17l0xSGg=; b=QAYNPDjmLRnKSw
+	RzUiSPebS3CPHtxeDZhzxUMhWpdy23A5Tzip1VZGEFvb4vjbkPOxc1gFlH6OjTRo9Ix64YqTlKpzB
+	cJz0g2T0ReZrqjiVWzKi1PM0vfT0zvCH16KIjZsYGOZ0acJFFDVZW3iHwbgyTeXJsVChbo4/FcoAA
+	vjP5PF+ptGk7/6Erin8Z7rcCWsTRjhfhw63du/WbxQsdVCk0gA/28zeAGSgL4fR+3oDUMvz/DtT/q
+	v2kjHQYg4hz/rbuF1oLXwLD4it1tDsuQpQst3iag+0Hm8Q8yHRy/+VI7MEGi1F+PnzgRupyIDBS1H
+	q2RZ6b0i4RIqIhlAG3oQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sYfxt-0000000Dmg3-1Z1L;
-	Tue, 30 Jul 2024 06:04:05 +0000
+	id 1sYfyI-0000000DmpK-3QCY;
+	Tue, 30 Jul 2024 06:04:30 +0000
 Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sYfxR-0000000DmaW-0MRu;
-	Tue, 30 Jul 2024 06:03:38 +0000
+	id 1sYfxZ-0000000DmbF-06DS;
+	Tue, 30 Jul 2024 06:03:46 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 08BCDCE0C30;
-	Tue, 30 Jul 2024 06:03:34 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E1214C32782;
-	Tue, 30 Jul 2024 06:03:24 +0000 (UTC)
+	by sin.source.kernel.org (Postfix) with ESMTP id E83A6CE0E64;
+	Tue, 30 Jul 2024 06:03:42 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 00472C4AF09;
+	Tue, 30 Jul 2024 06:03:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1722319413;
-	bh=oL8vRiWidptUNxRTdT1hQz8E7qWGGM60Lp/Ehe5Ovtc=;
+	s=k20201202; t=1722319422;
+	bh=J1drVKJOLr7ECqy0xr8VVmAHJ0xro7tTHQnAtctm4Jg=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=EB5YXv7l9n3q695IC0pKlQVMp4pqApvOVDQteLhLc69Tvd35UcnGZZjZ8T0t3Bg6z
-	 YG0aNWW1kPKSkeyXObYIlgXo81ZW530aZApkmSmxg/yAnXBLS8xMKHH7izqUZzx0bx
-	 3DYQAIAEDU+eJonvn8CAYg7vY3DkABYZaujRPIErZUMYaUmAKChYwkYkEJHN1VCE2y
-	 5DXWoCMFg+9C6cGsDnc7Kos5dsfM/zcqEygjYTdmlgxcoNPzKWMQsLFJtruU6d6QUc
-	 6hEnCboEnRU9NWBQtA8qbbjrIyr2oS1I5Kj5xwbgR4Dg3YTm/3yKbRjRqaRhmzcVN3
-	 76ja7zN6Tk7vA==
-Message-ID: <841572d7-ecb6-4c11-a890-aa29fd58adf4@kernel.org>
-Date: Tue, 30 Jul 2024 08:03:21 +0200
+	b=VupzIOafU5MV+C/FfeoUDuldze0mfrhBAZ/Kp6Nk/Sv94V3Bwycxj5O+TWk85zLUn
+	 Orgpj8wRJxohBKQ2t41qWNLBq9E4nFnMTX1RCQpppNEod+ABoNOEc2XCD584Ftcc7q
+	 GvZfxR0kGu+AnvLFb6NIiVZXIhK3Oy4Avos1drmqzkXq/2kDPZ92vB1OK7xtW7drqZ
+	 tpQU5SZ6Iek3rOmQrcvWKlG50ru2hKqhXGt+TtmWCYubLrSwVjeWBXCNun/SAby6wF
+	 3hWRmO6Os9izN2t18ILa/RQjILxPzpNnnJnjP9F3RYyFsvi/h5XPafU0vcXMbXqTho
+	 8JT8yeW7G7t9w==
+Message-ID: <06894f75-f066-42b3-92e5-8d2eef7b1341@kernel.org>
+Date: Tue, 30 Jul 2024 08:03:27 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 1/5] dt-bindings: net: wireless: brcm4329-fmac: add
- pci14e4,449d
+Subject: Re: [PATCH v5 2/5] dt-bindings: net: wireless: brcm4329-fmac: add
+ clock description for AP6275P
 To: Jacobe Zang <jacobe.zang@wesion.com>, robh@kernel.org,
  krzk+dt@kernel.org, heiko@sntech.de, kvalo@kernel.org, davem@davemloft.net,
  edumazet@google.com, kuba@kernel.org, pabeni@redhat.com, conor+dt@kernel.org
@@ -59,7 +59,7 @@ Cc: efectn@protonmail.com, dsimic@manjaro.org, jagan@edgeble.ai,
  brcm80211-dev-list.pdl@broadcom.com, nick@khadas.com,
  Arend van Spriel <arend.vanspriel@broadcom.com>
 References: <20240730033053.4092132-1-jacobe.zang@wesion.com>
- <20240730033053.4092132-2-jacobe.zang@wesion.com>
+ <20240730033053.4092132-3-jacobe.zang@wesion.com>
 From: Krzysztof Kozlowski <krzk@kernel.org>
 Content-Language: en-US
 Autocrypt: addr=krzk@kernel.org; keydata=
@@ -105,10 +105,10 @@ Autocrypt: addr=krzk@kernel.org; keydata=
  uZwJCLykjad45hsWcOGk3OcaAGQS6NDlfhM6O9aYNwGL6tGt/6BkRikNOs7VDEa4/HlbaSJo
  7FgndGw1kWmkeL6oQh7wBvYll2buKod4qYntmNKEicoHGU+x91Gcan8mCoqhJkbqrL7+nXG2
  5Q/GS5M9RFWS+nYyJh+c3OcfKqVcZQNANItt7+ULzdNJuhvTRRdC3g9hmCEuNSr+CLMdnRBY fv0=
-In-Reply-To: <20240730033053.4092132-2-jacobe.zang@wesion.com>
+In-Reply-To: <20240730033053.4092132-3-jacobe.zang@wesion.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240729_230337_647836_FAF63CDD 
-X-CRM114-Status: UNSURE (   6.96  )
+X-CRM114-CacheID: sfid-20240729_230345_455181_FAACF35B 
+X-CRM114-Status: UNSURE (   5.82  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -127,14 +127,14 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 On 30/07/2024 05:30, Jacobe Zang wrote:
-> It's the device id used by AP6275P which is the Wi-Fi module
-> used by Rockchip's RK3588 evaluation board and also used in
-> some other RK3588 boards.
+> Not only AP6275P Wi-Fi device but also all Broadcom wireless devices allow
+> external low power clock input. In DTS the clock as an optional choice in
+> the absence of an internal clock.
 > 
-> Acked-by: Arend van Spriel <arend.vanspriel@broadcom.com>
+> Reviewed-by: Arend van Spriel <arend.vanspriel@broadcom.com>
 > Signed-off-by: Jacobe Zang <jacobe.zang@wesion.com>
 
-Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
 Best regards,
 Krzysztof
