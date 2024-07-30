@@ -4,85 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9C57FC3DA70
-	for <linux-rockchip@archiver.kernel.org>; Tue, 30 Jul 2024 15:28:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9F3C8C3DA49
+	for <linux-rockchip@archiver.kernel.org>; Tue, 30 Jul 2024 16:08:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=doN2it45vSSCFUe9ra7btRImVDIitToWjQLOBmvQyO8=; b=XZrhOKGYgjzuXJ
-	I5WxAmIlzAO4vnYg9WL22ms86J4DNkYQCKUZzBVebUL5euVMgMbjSFeJFohg2t71zxHyzXauDF2uH
-	skrEpp14gC37X3IK3JBMN8aYgk+IfX/bgLe3K9ZGsdvJ180Hl9GoZiHRJomfFVIzhVebiOeg1nSwD
-	NDKdVJ41uj1uSGuhVypWy6M5DsKg8L9rEpkBgonxau69tiXsDv6FPXYZrEoniz8V1sndPBjJSGw04
-	2UnvJRSjdvti76KUMxlf8nDW6YbG/szWpKdZMxToQslx7BgYQ392SCqzJJlWiGQApXFnJeJI/1mZq
-	nXVmjEJn5f1IaMwBsCgA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Subject:To:From
+	:Date:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=rVcuwlRTxuzC5gZ//k7zJXRgT6JAhYDqOK6f3hok/CM=; b=24phVtYxmzwdTO
+	/Lz9FxIfBEFzfqXKgkTE38zi0PSY2zTaAUb4tNsdASi0BdDSrWRPas1z3GSJ8PDGfYr5f32xTeH9Q
+	xV9nPgkaZGGPPpZgCcCtkz4u6UdvNtwX7QDq0q0ZU7wD792wfU7pHUmHE19vHoIPYOU4mljTnC2Gy
+	YnvsfxTTv1cKFAUnYFumHALCdNNNG7YsVZv3tMu/WDE6x2/GnZraFgdVS57UUDo7pAU+q1NNWtAA+
+	hNHBtBPf90xvwUO2I0YieC7J1SwtMXYZPYXM7cSDJfhDoKIFG3fZYYlF+blb642+JIp3OZPDmmdAR
+	m4kE6FCpNzAUOmxYj8HQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sYolr-0000000FfHQ-1WFR;
-	Tue, 30 Jul 2024 15:28:15 +0000
-Received: from mail-pf1-x434.google.com ([2607:f8b0:4864:20::434])
+	id 1sYpPC-0000000Fmea-26jS;
+	Tue, 30 Jul 2024 16:08:54 +0000
+Received: from pidgin.makrotopia.org ([2a07:2ec0:3002::65])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sYolO-0000000FfBB-385B;
-	Tue, 30 Jul 2024 15:27:47 +0000
-Received: by mail-pf1-x434.google.com with SMTP id d2e1a72fcca58-70d333d57cdso3185504b3a.3;
-        Tue, 30 Jul 2024 08:27:46 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1722353265; x=1722958065; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:sender:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=k9fB8RPDY0z+oCE/hyzm1c3RzHRC+GlwxeI848w9iZo=;
-        b=MHRUrzUmqpILoNwbjmZnKP57tQ/EskMK/tS7UMTiNzZH62ieNKuGqmZq3u9OOw2iUf
-         Pd43EOcFkmcYRQZ/A74lFN13LU0aBgM+alBnyDMqyzmNpQuRFoszxc411UgIOIlubdEA
-         h2qyhvgkQFx7YNXxLbxJb7bHbQIpQXM4StHSvmsCp36o/pz8U6UXTr69iHW+2LvmzF3C
-         bffPwtSxOc6xLLBVxOk87cyRWFSQ2gAEBJe2XTThagGO5X1H5s1eDCYr2alm4Vx/JcUX
-         S3ZHMRQ1OWgGePkUKfYNDcTDzcd0JcbInou/78HT0iVmHcKad5iqEOrmEJvCY69qrIHo
-         WZDQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1722353265; x=1722958065;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:sender:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=k9fB8RPDY0z+oCE/hyzm1c3RzHRC+GlwxeI848w9iZo=;
-        b=CQBKPXJviU0LrerwEAC5LoWW4W6Qiqy1AkG8bO/u6Dd+mZ/bQ0Rg7kmuxBNS5NW7Xf
-         Piyx03kuSRG1HFFsSPgdI9oLKS/GRT3Z8pI902FZ92zfT863i0kshNMoqJj4XaZ4wpF2
-         Rz11VraJt45PqP5L+An7vAIhGGWifq7zxHUvUQ9qlrxQ1sHyhpejkAJhNnrGepm7ITDs
-         VnNRyS7WWqvfqU5CFEmlNsiqBxB8TEwrEmwJRWc7ns9aGA5Pg0+ZCnf0jFUSSBCmSZ4O
-         9FMn8hp9x3ERn171z3V4xPWkarTpSwa1bvNmOIJqxdVzheO0hiWbvPME9LY5yDt/fs2j
-         /jqg==
-X-Forwarded-Encrypted: i=1; AJvYcCXdLJx0wpV9mJuC4tRgt+xvvH/xXqqx61OdUaJ1ItKu/GMmQD74XRB/KuT5oJG1Ehj7I60fLbPJ+E1uhRYBjshsJgTk10u7DTVF7/PvyurXFAoDrSJ4utKiIK66GCYKCy2rWq4HL2QbZMO1PWEtk/5JyoH+udr1L+s=
-X-Gm-Message-State: AOJu0YwJXu8v7OOc/gSjgbbkf8AZlJcgGXSaotAdb7WbZjJ2YPS1paUa
-	nuzECGIkeCDq7YkOLQqQnFaqOE0zuzo9ukoy3jmijhMjlJ+14284
-X-Google-Smtp-Source: AGHT+IH53uN+ps3K8FG722OlZVH9uQ9lhJBPizHtofyjk7vLzArAEYnaqOOhdbpSqtoFe0xY9sV3lg==
-X-Received: by 2002:a05:6a21:6da0:b0:1c2:8ece:97ae with SMTP id adf61e73a8af0-1c4a13afd52mr8779302637.34.1722353265287;
-        Tue, 30 Jul 2024 08:27:45 -0700 (PDT)
-Received: from server.roeck-us.net ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-70ead86ff47sm8863987b3a.145.2024.07.30.08.27.43
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 30 Jul 2024 08:27:44 -0700 (PDT)
-Date: Tue, 30 Jul 2024 08:27:42 -0700
-From: Guenter Roeck <linux@roeck-us.net>
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: lee@kernel.org, jdelvare@suse.com, dmitry.torokhov@gmail.com,
-	pavel@ucw.cz, robh@kernel.org, krzk+dt@kernel.org,
-	conor+dt@kernel.org, ukleinek@debian.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-hwmon@vger.kernel.org,
-	linux-input@vger.kernel.org, linux-leds@vger.kernel.org
-Subject: Re: [PATCH v2 5/7] hwmon: add driver for the hwmon parts of qnap-mcu
- devices
-Message-ID: <83226476-8b23-4a11-a100-d01049f6eef2@roeck-us.net>
-References: <20240728211751.2160123-1-heiko@sntech.de>
- <20240728211751.2160123-6-heiko@sntech.de>
+	id 1sYpOj-0000000FmVD-1l6y;
+	Tue, 30 Jul 2024 16:08:26 +0000
+Received: from local
+	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
+	 (Exim 4.98)
+	(envelope-from <daniel@makrotopia.org>)
+	id 1sYpOS-000000002LS-1H0P;
+	Tue, 30 Jul 2024 16:08:08 +0000
+Date: Tue, 30 Jul 2024 17:08:04 +0100
+From: Daniel Golle <daniel@makrotopia.org>
+To: Daniel Golle <daniel@makrotopia.org>,
+	Aurelien Jarno <aurelien@aurel32.net>,
+	Olivia Mackall <olivia@selenic.com>,
+	Herbert Xu <herbert@gondor.apana.org.au>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	Dragan Simic <dsimic@manjaro.org>,
+	Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <ukleinek@debian.org>,
+	Cristian Ciocaltea <cristian.ciocaltea@collabora.com>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	Francesco Dolcini <francesco.dolcini@toradex.com>,
+	Ard Biesheuvel <ardb@kernel.org>, linux-crypto@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: [PATCH v9 0/3] hwrng: add hwrng support for Rockchip RK3568
+Message-ID: <cover.1722355365.git.daniel@makrotopia.org>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20240728211751.2160123-6-heiko@sntech.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240730_082746_807306_674C39CD 
-X-CRM114-Status: GOOD (  13.43  )
+X-CRM114-CacheID: sfid-20240730_090825_481414_5F8F1DB5 
+X-CRM114-Status: GOOD (  19.35  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,36 +74,136 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Sun, Jul 28, 2024 at 11:17:49PM +0200, Heiko Stuebner wrote:
-> The MCU can be found on network-attached-storage devices made by QNAP
-> and provides access to fan control including reading back its RPM as
-> well as reading the temperature of the NAS case.
-> 
-> Signed-off-by: Heiko Stuebner <heiko@sntech.de>
+Rockchip SoCs used to have a random number generator as part of their
+crypto device.
 
-Minor comment inline, in case you resend, otherwise
+However newer Rockchip SoCs like the RK3568 have an independent True
+Random Number Generator device. This patchset adds a driver for it and
+enables it in the device tree for RK3568.
 
-Acked-by: Guenter Roeck <linux@roeck-us.net>
+It turns out the HW RNG returns very low quality on RK3566, so while
+it is theoretically also present on that SoC, only enable it on RK3568
+for now on which the quality expectations are met.
 
-> +static int qnap_mcu_hwmon_write(struct device *dev, enum hwmon_sensor_types type,
-> +				u32 attr, int channel, long val)
-> +{
-> +	struct qnap_mcu_hwmon *hwm = dev_get_drvdata(dev);
-> +
-> +	switch (attr) {
-> +	case hwmon_pwm_input:
-> +		if (val < 0 || val > 255)
-> +			return -EINVAL;
-> +
-> +		if (val < hwm->pwm_min)
-> +			val = hwm->pwm_min;
-> +
-> +		if (val > hwm->pwm_max)
-> +			val = hwm->pwm_max;
-> +
-		val = clamp_val(val, hwm->pwm_min, hwm->pwm_max);
+Tested on FriendlyARM NanoPi R5C.
 
-Guenter
+v8 -> v9:
+ * Patch 1: revert to v7
+
+ * Patch 2: revert to v7, use 922 as quality
+
+ * Patch 3: drop new properties, but enable only in rk3568.dtsi
+
+v7 -> v8:
+ * Patch 1: document new properties
+   - introduce 'rockchip,sample-count'
+   - require to specify 'quality' (0~1024)
+
+ * Patch 2:
+   - read sample-count and quality from DT
+
+ * Patch 3:
+   - disable hwrng in rk356x.dtsi, enable only in rk3568.dtsi
+   - set sample-count 1000 and quality 900 (87.9%) as before
+
+v6 -> v7:
+ * Patch 1: unchanged
+
+ * Patch 2: bring back rk_rng_write_ctl()
+   - bring back rk_rng_write_ctl() with improved comment to describe
+     the hardware.
+
+ * Patch 3: unchaned
+
+v5 -> v6:
+ * Patch 1: unchanged
+
+ * Patch 2: get rid of #ifdef
+   - use if (IS_ENABLED(...)) { ... }instead of #ifdef inside functions
+   - use __maybe_unused for functions previously enclosed by #ifdef'ery
+
+ * Patch 3: unchanged
+
+v4 -> v5:
+ * Patch 1: always use RK3568 name
+   - use full RK3568 name in patch description
+   - add RK3568 to title in binding
+
+ * Patch 2: full name and cosmetics
+   - also always mention RK3568 as there may be other RNG in other
+     (future) Rockchip SoCs
+   - remove debug output on successful probe
+   - use MODULE_AUTHOR several times instead of single comma-separated
+
+ * Patch 3: unchanged
+
+v3 -> v4:
+ * Patch 1: minor corrections
+   - fix Rokchip -> Rockchip typo
+   - change commit title as requested
+
+ * Patch 2: improved error handling and resource management
+   - Always use writel() instead of writel_relaxed()
+   - Use pm_runtime_resume_and_get
+   - Correctly return error code in rk_rng_read()
+   - Make use of devm_reset_control_array_get_exclusive
+   - Use devm_pm_runtime_enable and there by get rid of rk_rng_remove()
+
+ * Patch 3:
+   - Move node to conform with ordering by address
+
+v2 -> v3: patch adopted by Daniel Golle
+ * Patch 1: address comments of Krzysztof Kozlowski, add MAINTAINERS
+   - improved description
+   - meaningful clock-names
+   - add entry in MAINTAINERS files
+
+ * Patch 2: numerous code-style improvements
+   - drop misleading rk_rng_write_ctl(), simplify I/O writes
+   - drop unused TRNG_RNG_DOUT_[1-7] macros
+   - handle error handling for pm_runtime_get_sync()
+   - use memcpy_fromio() instead of open coding for-loop
+   - some minor white-spaces fixes
+
+ * Patch 3:
+   - use clock-names as defined in dt-bindings
+
+v1 -> v2:
+ * Patch 1: fix issues reported by Rob Herring and Krzysztof Kozlowski:
+   - Rename rockchip-rng.yaml into rockchip,rk3568-rng.yaml
+   - Fix binding title and description
+   - Fix compatible property
+   - Rename clocks and add the corresponding descriptions
+   - Drop reset-names
+   - Add a bus definition with #address-cells and #size-cells to the
+     example.
+
+ * Patch 2: fix issue reported by kernel test robot <lkp@intel.com>
+   - Do not read the random registers as big endian, looking at the
+     RK3568 TRM this is actually not needed. This fixes a sparse
+     warning.
+
+ * Patch 3: unchanged
+
+
+Aurelien Jarno (3):
+  dt-bindings: rng: Add Rockchip RK3568 TRNG
+  hwrng: add hwrng driver for Rockchip RK3568 SoC
+  arm64: dts: rockchip: add DT entry for RNG to RK356x
+
+ .../bindings/rng/rockchip,rk3568-rng.yaml     |  61 +++++
+ MAINTAINERS                                   |   7 +
+ arch/arm64/boot/dts/rockchip/rk3568.dtsi      |   4 +
+ arch/arm64/boot/dts/rockchip/rk356x.dtsi      |  10 +
+ drivers/char/hw_random/Kconfig                |  14 ++
+ drivers/char/hw_random/Makefile               |   1 +
+ drivers/char/hw_random/rockchip-rng.c         | 227 ++++++++++++++++++
+ 7 files changed, 324 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/rng/rockchip,rk3568-rng.yaml
+ create mode 100644 drivers/char/hw_random/rockchip-rng.c
+
+-- 
+2.45.2
 
 _______________________________________________
 Linux-rockchip mailing list
