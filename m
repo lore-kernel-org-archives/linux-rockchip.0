@@ -4,74 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D9037C3DA49
-	for <linux-rockchip@archiver.kernel.org>; Tue, 30 Jul 2024 17:38:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9107CC3DA49
+	for <linux-rockchip@archiver.kernel.org>; Tue, 30 Jul 2024 18:09:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=PdZzFuhkObRAvtY3JQp1LW5yw7uTM26A9/BDDkpp+/Q=; b=Ni/fsSu25k6gCU0bq+NP5CxQMz
-	wO2biuZqWaHoBqtCADdN6OyP6iS3zANpQeBuAtierq8w9v2weAOI1+Ptim2NY7sJydmFbgVbuXn6q
-	CZOe7ibiBgI7iaAzoIUPNlhggUk6m5Cnvp2OwvuLSoR7dNHlC6542WUCKMe9fu5XOwQYu5j07GvtT
-	UlXSnqnem3WIBtQKNGktDkDXqJu+EoDBdG2aoy8KC/W4Q77QyhNsWzGI32QpeePyCGjP/Y952opRw
-	F89mo72peIH4ohJl2rvV87aqFYQmxqBPKglUGNJiATJBx36kj0tLEqO0QWnTcuDWvR9BS71CkbRU+
-	0ORKUb5w==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=jbKRkfB8Kao87SfIjBM2/GUeHd1jP1qBkcjNKUTR66c=; b=3ITPmLVOSm+wKw
+	KpBSoqsL1xDDtDByJ6CHTxndyhHABpnQkhh2xWMaQThDkb6/aXSU3ccZu1sO1U9MAi+eaC5aKhub3
+	qJPldG/KNbTuDZDLkJDpjyUmmLccmFASF0LvMR9AmeZLmARgIAJQKsG7YnlSC6x3GeWglAzH09mWE
+	zRHyGW3DzQRy/VWe5WRgUwkwf8ruQazHJhp0yYwJ/O1YGpGjZWwJ1PX0jYn9XYDgBgpGMQjzFSDLK
+	BPGXsJXFMBFI/HeqExRgWXM2pIp9wPkgDTwWDfftWf4kvzEyWkrtzpc5JzA1+4BPo5YaBJP34Jb2q
+	RinHC9xLQ3BSAKE/OtpQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sYqoD-0000000G2ym-4AqW;
-	Tue, 30 Jul 2024 17:38:50 +0000
-Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
+	id 1sYrHl-0000000G6Em-2SIC;
+	Tue, 30 Jul 2024 18:09:21 +0000
+Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sYqnl-0000000G2t0-0frz;
-	Tue, 30 Jul 2024 17:38:22 +0000
+	id 1sYrHi-0000000G6EK-34Qz
+	for linux-rockchip@lists.infradead.org;
+	Tue, 30 Jul 2024 18:09:20 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1722361096;
-	bh=9IUleP8OzhpQtp7S1NkmiFennhuOo0B3m/rmGIOk5+M=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=LRGoCPiZ0JAyuj7ggrTjMFyQRrwTvDzXOiWdMhoyjs55Te5FcWuCA9a2yMO90y6B+
-	 pm7uqlKSKJrS5muy4DTbqQ6E+8r9o8x9wEsFFqKeGj3mDABsPgU6mzkqbTz8UuWop3
-	 sCZcybBDE31UicBaqMaCTGoKoqMiJ1C4q9LMvnjLdRVHs6q8WLCqZzN8ibQGKy/FZb
-	 KvYHjpHqbX6y7gROPQ/4oZSkWsa4lwQevOiozL9vzus5VKGUzoUxzzbP9BD2HNtns7
-	 o6laaQKI8jsgDLBP5MqYg6P1eV5x9fMMEL0KQveiRtfMJl9/DRYlUpGkHrJohdWGu1
-	 EU+ryKM3Pt85w==
-Received: from mercury (cola.collaboradmins.com [195.201.22.229])
+	s=mail; t=1722362956;
+	bh=+PyuAXNvzsOMoJPhIzCcq2lv0hmRbpd+QT24orU3Xv4=;
+	h=From:To:Cc:Subject:Date:From;
+	b=zNcrStyaA7kWxJZ8JdBiC/hDWkyFGxUvL8eU4TFT3eFvd2hmjS2GATer2OlYphMQr
+	 IfE63LfjgA7S82Ii/EfS5rzRvKprw859omA0OWvTKQ495TT9TBZgcpLbweX6+w3+aS
+	 83sBf4J2nRoSmr8upyIzOukCO61f95LAhqzjgLqY6XWXLygZ494kkYnX2lpxVvtcxO
+	 oHC46Mou8fIN2uENlgd/0EyxL3z6EIPCu6Mq/ur9NJlxeeE83TwpBQCohxyMn3YMxl
+	 TtnpiCfhRoBDRGaHIm5snYddcHb4+fB+MuOT4NpkeD6+d85ovwbPxZdzPBOS6tiL7r
+	 ztPIxBlMPKsUw==
+Received: from jupiter.universe (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: sre)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id CC1AA3781139;
-	Tue, 30 Jul 2024 17:38:16 +0000 (UTC)
-Received: by mercury (Postfix, from userid 1000)
-	id 70AD510609BB; Tue, 30 Jul 2024 19:38:16 +0200 (CEST)
-Date: Tue, 30 Jul 2024 19:38:16 +0200
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id CDDD03781139;
+	Tue, 30 Jul 2024 18:09:16 +0000 (UTC)
+Received: by jupiter.universe (Postfix, from userid 1000)
+	id 758D44800E4; Tue, 30 Jul 2024 20:09:16 +0200 (CEST)
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
-To: Arend Van Spriel <arend.vanspriel@broadcom.com>
-Cc: Krzysztof Kozlowski <krzk@kernel.org>, 
-	Jacobe Zang <jacobe.zang@wesion.com>, robh@kernel.org, krzk+dt@kernel.org, heiko@sntech.de, 
-	kvalo@kernel.org, davem@davemloft.net, edumazet@google.com, kuba@kernel.org, 
-	pabeni@redhat.com, conor+dt@kernel.org, Linus Walleij <linus.walleij@linaro.org>, 
-	efectn@protonmail.com, dsimic@manjaro.org, jagan@edgeble.ai, devicetree@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	arend@broadcom.com, linux-wireless@vger.kernel.org, netdev@vger.kernel.org, 
-	megi@xff.cz, duoming@zju.edu.cn, bhelgaas@google.com, minipli@grsecurity.net, 
-	brcm80211@lists.linux.dev, brcm80211-dev-list.pdl@broadcom.com, nick@khadas.com
-Subject: Re: [PATCH v5 2/5] dt-bindings: net: wireless: brcm4329-fmac: add
- clock description for AP6275P
-Message-ID: <k3dhdsa5bjzad2ha5e2uurg2azzs773ier5thkot4w2qcvnv54@yuf52eluqsae>
-References: <20240730033053.4092132-1-jacobe.zang@wesion.com>
- <20240730033053.4092132-3-jacobe.zang@wesion.com>
- <191025b5268.279b.9b12b7fc0a3841636cfb5e919b41b954@broadcom.com>
- <f45c1fa7-f321-4a1f-b65c-6ed326a18268@kernel.org>
- <191030eac78.279b.9b12b7fc0a3841636cfb5e919b41b954@broadcom.com>
- <3d3b8e0a-7492-4db1-bd73-c30a488edaa7@kernel.org>
- <191035b8c28.279b.9b12b7fc0a3841636cfb5e919b41b954@broadcom.com>
+To: Lee Jones <lee@kernel.org>
+Cc: Dmitrii Osipenko <dmitry.osipenko@collabora.com>,
+	Mark Brown <broonie@kernel.org>,
+	Urja <urja@urja.dev>,
+	Heiko Stuebner <heiko@sntech.de>,
+	linux-rockchip@lists.infradead.org,
+	linux-spi@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	Sebastian Reichel <sebastian.reichel@collabora.com>,
+	kernel@collabora.com,
+	stable@vger.kernel.org
+Subject: [PATCH v1 1/1] mfd: rk8xx: Fix shutdown handler
+Date: Tue, 30 Jul 2024 20:05:05 +0200
+Message-ID: <20240730180903.81688-1-sebastian.reichel@collabora.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-In-Reply-To: <191035b8c28.279b.9b12b7fc0a3841636cfb5e919b41b954@broadcom.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240730_103821_518376_1DA3FC3B 
-X-CRM114-Status: GOOD (  41.74  )
+X-CRM114-CacheID: sfid-20240730_110919_096250_A5F358AA 
+X-CRM114-Status: GOOD (  28.47  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,162 +77,190 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============7871118723653611109=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+When I converted rk808 to device managed resources I converted the rk808
+specific pm_power_off handler to devm_register_sys_off_handler() using
+SYS_OFF_MODE_POWER_OFF_PREPARE, which is allowed to sleep. I did this
+because the driver's poweroff function makes use of regmap and the backend
+of that might sleep.
 
---===============7871118723653611109==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="jf2alk6nvvmfsvtq"
-Content-Disposition: inline
+But the PMIC poweroff function will kill off the board power and the
+kernel does some extra steps after the prepare handler. Thus the prepare
+handler should not be used for the PMIC's poweroff routine. Instead the
+normal SYS_OFF_MODE_POWER_OFF phase should be used. The old pm_power_off
+method is also being called from there, so this would have been a
+cleaner conversion anyways.
 
+But it still makes sense to investigate the sleep handling and check
+if there are any issues. Apparently the Rockchip and Meson I2C drivers
+(the only platforms using the PMICs handled by this driver) both have
+support for atomic transfers and thus may be called from the proper
+poweroff context.
 
---jf2alk6nvvmfsvtq
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Things are different on the SPI side. That is so far only used by rk806
+and that one is only used by Rockchip RK3588. Unfortunately the Rockchip
+SPI driver does not support atomic transfers. That means using the
+normal POWER_OFF handler would introduce the following error splash
+during shutdown on all RK3588 boards currently supported upstream:
 
-Hi,
+[   13.761353] ------------[ cut here ]------------
+[   13.761764] Voluntary context switch within RCU read-side critical section!
+[   13.761776] WARNING: CPU: 0 PID: 1 at kernel/rcu/tree_plugin.h:330 rcu_note_context_switch+0x3ac/0x404
+[   13.763219] Modules linked in:
+[   13.763498] CPU: 0 UID: 0 PID: 1 Comm: systemd-shutdow Not tainted 6.10.0-12284-g2818a9a19514 #1499
+[   13.764297] Hardware name: Rockchip RK3588 EVB1 V10 Board (DT)
+[   13.764812] pstate: 604000c9 (nZCv daIF +PAN -UAO -TCO -DIT -SSBS BTYPE=--)
+[   13.765427] pc : rcu_note_context_switch+0x3ac/0x404
+[   13.765871] lr : rcu_note_context_switch+0x3ac/0x404
+[   13.766314] sp : ffff800084f4b5b0
+[   13.766609] x29: ffff800084f4b5b0 x28: ffff00040139b800 x27: 00007dfb4439ae80
+[   13.767245] x26: ffff00040139bc80 x25: 0000000000000000 x24: ffff800082118470
+[   13.767880] x23: 0000000000000000 x22: ffff000400300000 x21: ffff000400300000
+[   13.768515] x20: ffff800083a9d600 x19: ffff0004fee48600 x18: fffffffffffed448
+[   13.769151] x17: 000000040044ffff x16: 005000f2b5503510 x15: 0000000000000048
+[   13.769787] x14: fffffffffffed490 x13: ffff80008473b3c0 x12: 0000000000000900
+[   13.770421] x11: 0000000000000300 x10: ffff800084797bc0 x9 : ffff80008473b3c0
+[   13.771057] x8 : 00000000ffffefff x7 : ffff8000847933c0 x6 : 0000000000000300
+[   13.771692] x5 : 0000000000000301 x4 : 40000000fffff300 x3 : 0000000000000000
+[   13.772328] x2 : 0000000000000000 x1 : 0000000000000000 x0 : ffff000400300000
+[   13.772964] Call trace:
+[   13.773184]  rcu_note_context_switch+0x3ac/0x404
+[   13.773598]  __schedule+0x94/0xb0c
+[   13.773907]  schedule+0x34/0x104
+[   13.774198]  schedule_timeout+0x84/0xfc
+[   13.774544]  wait_for_completion_timeout+0x78/0x14c
+[   13.774980]  spi_transfer_one_message+0x588/0x690
+[   13.775403]  __spi_pump_transfer_message+0x19c/0x4ec
+[   13.775846]  __spi_sync+0x2a8/0x3c4
+[   13.776161]  spi_write_then_read+0x120/0x208
+[   13.776543]  rk806_spi_bus_read+0x54/0x88
+[   13.776905]  _regmap_raw_read+0xec/0x16c
+[   13.777257]  _regmap_bus_read+0x44/0x7c
+[   13.777601]  _regmap_read+0x60/0xd8
+[   13.777915]  _regmap_update_bits+0xf4/0x13c
+[   13.778289]  regmap_update_bits_base+0x64/0x98
+[   13.778686]  rk808_power_off+0x70/0xfc
+[   13.779024]  sys_off_notify+0x40/0x6c
+[   13.779356]  atomic_notifier_call_chain+0x60/0x90
+[   13.779776]  do_kernel_power_off+0x54/0x6c
+[   13.780146]  machine_power_off+0x18/0x24
+[   13.780499]  kernel_power_off+0x70/0x7c
+[   13.780845]  __do_sys_reboot+0x210/0x270
+[   13.781198]  __arm64_sys_reboot+0x24/0x30
+[   13.781558]  invoke_syscall+0x48/0x10c
+[   13.781897]  el0_svc_common+0x3c/0xe8
+[   13.782228]  do_el0_svc+0x20/0x2c
+[   13.782528]  el0_svc+0x34/0xd8
+[   13.782806]  el0t_64_sync_handler+0x120/0x12c
+[   13.783197]  el0t_64_sync+0x190/0x194
+[   13.783527] ---[ end trace 0000000000000000 ]---
 
-On Tue, Jul 30, 2024 at 01:16:57PM GMT, Arend Van Spriel wrote:
-> On July 30, 2024 12:18:20 PM Krzysztof Kozlowski <krzk@kernel.org> wrote:
->=20
-> > On 30/07/2024 11:52, Arend Van Spriel wrote:
-> > > On July 30, 2024 11:01:43 AM Krzysztof Kozlowski <krzk@kernel.org> wr=
-ote:
-> > >=20
-> > > > On 30/07/2024 08:37, Arend Van Spriel wrote:
-> > > > > + Linus W
-> > > > >=20
-> > > > > On July 30, 2024 5:31:15 AM Jacobe Zang <jacobe.zang@wesion.com> =
-wrote:
-> > > > >=20
-> > > > > > Not only AP6275P Wi-Fi device but also all Broadcom wireless de=
-vices allow
-> > > > > > external low power clock input. In DTS the clock as an optional=
- choice in
-> > > > > > the absence of an internal clock.
-> > > > > >=20
-> > > > > > Reviewed-by: Arend van Spriel <arend.vanspriel@broadcom.com>
-> > > > > > Signed-off-by: Jacobe Zang <jacobe.zang@wesion.com>
-> > > > > > ---
-> > > > > > .../bindings/net/wireless/brcm,bcm4329-fmac.yaml          | 8 +=
-+++++++
-> > > > > > 1 file changed, 8 insertions(+)
-> > > > > >=20
-> > > > > > diff --git
-> > > > > > a/Documentation/devicetree/bindings/net/wireless/brcm,bcm4329-f=
-mac.yaml
-> > > > > > b/Documentation/devicetree/bindings/net/wireless/brcm,bcm4329-f=
-mac.yaml
-> > > > > > index 2c2093c77ec9a..a3607d55ef367 100644
-> > > > > > --- a/Documentation/devicetree/bindings/net/wireless/brcm,bcm43=
-29-fmac.yaml
-> > > > > > +++ b/Documentation/devicetree/bindings/net/wireless/brcm,bcm43=
-29-fmac.yaml
-> > > > > > @@ -122,6 +122,14 @@ properties:
-> > > > > > NVRAM. This would normally be filled in by the bootloader from =
-platform
-> > > > > > configuration data.
-> > > > > >=20
-> > > > > > +  clocks:
-> > > > > > +    items:
-> > > > > > +      - description: External Low Power Clock input (32.768KHz)
-> > > > > > +
-> > > > > > +  clock-names:
-> > > > > > +    items:
-> > > > > > +      - const: lpo
-> > > > > > +
-> > > > >=20
-> > > > > We still have an issue that this clock input is also present in t=
-he
-> > > > > bindings specification broadcom-bluetooth.yaml (not in bluetooth
-> > > > > subfolder). This clock is actually a chip resource. What happens =
-if both
-> > > > > are defined and both wifi and bt drivers try to enable this clock=
-? Can this
-> > > > > be expressed in yaml or can we only put a textual warning in the =
-property
-> > > > > descriptions?
-> > > >=20
-> > > > Just like all clocks, what would happen? It will be enabled.
-> > >=20
-> > > Oh, wow! Cool stuff. But seriously is it not a problem to have two en=
-tities
-> > > controlling one and the same clock? Is this use-case taken into accou=
-nt by
-> > > the clock framework?
-> >=20
-> > Yes, it is handled correctly. That's a basic use-case, handled by CCF
-> > since some years (~12?). Anyway, whatever OS is doing (or not doing)
-> > with the clocks is independent of the bindings here. The question is
->=20
-> Agree. Probably the bindings would not be the place to document this if it
-> would be an issue.
->=20
-> > about hardware - does this node, which represents PCI interface of the
-> > chip, has/uses the clocks.
->=20
-> The schematics I found for the wifi module and the khadas edge platform s=
-how
-> these are indeed wired to the chip.
+To avoid this we keep the SYS_OFF_MODE_POWER_OFF_PREPARE handler for the
+SPI backend. This is not great, but at least avoids regressions and the
+fix should be small enough to allow backporting.
 
-I have a Rockchip RK3588 Evaluation Board on my desk, which uses the
-same WLAN AP6275P module. I think I already commented on a prior
-version of this series: The LPO clock is needed to make the PCIe
-device visible on the bus. That means this series only works if the
-clock has already been running. Otherwise the PCIe driver will never
-be probed. To become visible the devices requires:
+As a side-effect this also works around a shutdown problem on the Asus
+C201. For reasons unknown that skips calling the prepare handler and
+directly calls the final shutdown handler.
 
-1. The LPO clock to be enabled
-2. Power to be applied
-3. The WL_EN gpio to be configured correctly
+Fixes: 4fec8a5a85c49 ("mfd: rk808: Convert to device managed resources")
+Cc: stable@vger.kernel.org
+Reported-by: Urja <urja@urja.dev>
+Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+---
+ drivers/mfd/rk8xx-core.c  | 15 +++++++++++++--
+ drivers/mfd/rk8xx-i2c.c   |  2 +-
+ drivers/mfd/rk8xx-spi.c   |  2 +-
+ include/linux/mfd/rk808.h |  2 +-
+ 4 files changed, 16 insertions(+), 5 deletions(-)
 
-If one of the above is not met, the device will not even appear in
-'lspci'. I believe the binding needs to take into consideration, that
-pwrseq is needed for the PCIe side. Fortuantely the heavy lifting of
-creating the proper infrastructure for this has already been done by
-Bartosz Golaszewski for Qualcomm WLAN chips. What is missing is a
-pwrseq driver for the Broadcom chip (or this specific module?).
+diff --git a/drivers/mfd/rk8xx-core.c b/drivers/mfd/rk8xx-core.c
+index 5eda3c0dbbdf..757ef8181328 100644
+--- a/drivers/mfd/rk8xx-core.c
++++ b/drivers/mfd/rk8xx-core.c
+@@ -692,10 +692,11 @@ void rk8xx_shutdown(struct device *dev)
+ }
+ EXPORT_SYMBOL_GPL(rk8xx_shutdown);
+ 
+-int rk8xx_probe(struct device *dev, int variant, unsigned int irq, struct regmap *regmap)
++int rk8xx_probe(struct device *dev, int variant, unsigned int irq, struct regmap *regmap, bool is_spi)
+ {
+ 	struct rk808 *rk808;
+ 	const struct rk808_reg_data *pre_init_reg;
++	enum sys_off_mode pwr_off_mode = SYS_OFF_MODE_POWER_OFF;
+ 	const struct mfd_cell *cells;
+ 	int dual_support = 0;
+ 	int nr_pre_init_regs;
+@@ -785,10 +786,20 @@ int rk8xx_probe(struct device *dev, int variant, unsigned int irq, struct regmap
+ 	if (ret)
+ 		return dev_err_probe(dev, ret, "failed to add MFD devices\n");
+ 
++	/*
++	 * Currently the Rockchip SPI driver always sleeps when doing SPI
++	 * transfers. This is not allowed in the SYS_OFF_MODE_POWER_OFF
++	 * handler, so we are using the prepare handler as a workaround.
++	 * This should be removed once the Rockchip SPI driver has been
++	 * adapted.
++	 */
++	if (is_spi)
++		pwr_off_mode = SYS_OFF_MODE_POWER_OFF_PREPARE;
++
+ 	if (device_property_read_bool(dev, "rockchip,system-power-controller") ||
+ 	    device_property_read_bool(dev, "system-power-controller")) {
+ 		ret = devm_register_sys_off_handler(dev,
+-				    SYS_OFF_MODE_POWER_OFF_PREPARE, SYS_OFF_PRIO_HIGH,
++				    pwr_off_mode, SYS_OFF_PRIO_HIGH,
+ 				    &rk808_power_off, rk808);
+ 		if (ret)
+ 			return dev_err_probe(dev, ret,
+diff --git a/drivers/mfd/rk8xx-i2c.c b/drivers/mfd/rk8xx-i2c.c
+index 69a6b297d723..a2029decd654 100644
+--- a/drivers/mfd/rk8xx-i2c.c
++++ b/drivers/mfd/rk8xx-i2c.c
+@@ -189,7 +189,7 @@ static int rk8xx_i2c_probe(struct i2c_client *client)
+ 		return dev_err_probe(&client->dev, PTR_ERR(regmap),
+ 				     "regmap initialization failed\n");
+ 
+-	return rk8xx_probe(&client->dev, data->variant, client->irq, regmap);
++	return rk8xx_probe(&client->dev, data->variant, client->irq, regmap, false);
+ }
+ 
+ static void rk8xx_i2c_shutdown(struct i2c_client *client)
+diff --git a/drivers/mfd/rk8xx-spi.c b/drivers/mfd/rk8xx-spi.c
+index 3405fb82ff9f..20f9428f94bb 100644
+--- a/drivers/mfd/rk8xx-spi.c
++++ b/drivers/mfd/rk8xx-spi.c
+@@ -94,7 +94,7 @@ static int rk8xx_spi_probe(struct spi_device *spi)
+ 		return dev_err_probe(&spi->dev, PTR_ERR(regmap),
+ 				     "Failed to init regmap\n");
+ 
+-	return rk8xx_probe(&spi->dev, RK806_ID, spi->irq, regmap);
++	return rk8xx_probe(&spi->dev, RK806_ID, spi->irq, regmap, true);
+ }
+ 
+ static const struct of_device_id rk8xx_spi_of_match[] = {
+diff --git a/include/linux/mfd/rk808.h b/include/linux/mfd/rk808.h
+index 69cbea78b430..be15b84cff9e 100644
+--- a/include/linux/mfd/rk808.h
++++ b/include/linux/mfd/rk808.h
+@@ -1349,7 +1349,7 @@ struct rk808 {
+ };
+ 
+ void rk8xx_shutdown(struct device *dev);
+-int rk8xx_probe(struct device *dev, int variant, unsigned int irq, struct regmap *regmap);
++int rk8xx_probe(struct device *dev, int variant, unsigned int irq, struct regmap *regmap, bool is_spi);
+ int rk8xx_suspend(struct device *dev);
+ int rk8xx_resume(struct device *dev);
+ 
+-- 
+2.43.0
 
-Greetings,
-
--- Sebastian
-
---jf2alk6nvvmfsvtq
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmapJP4ACgkQ2O7X88g7
-+ppEtw//U1k4jbWPNYlqHLMqe+zCNqwKR5lm/UcmOBN5NZbS+CUQkPZxNBGlVGmV
-GN7dnCABPzlKtbi+IybAV9D3zuZ9pjWqoUmqXDENHluMxyevsPqeIqUdg+QWQbgr
-5XbEXHYbGSl2Ous+jbo3pUBC+riwepUOqO9lMVS/AjpeOgX1JyOIpYEOT9IAqrRn
-ZMHASWZ8jZZCgXZcivEAkpVXhz9TrxDjGZzUKe8zXu4JawYlZt7z1bD3pwoxyQ7J
-KRZpVm3a5RWSJzWcPefJwJ2mhk+/TmDJHMhn+bGtg5j/IoNiBAqFn+hiNRcn1S9E
-Bprr5IAJEs/jYjyytrCAm013AXPpI29pd9k5zBTbj8OeS0DKZA1dOi8gDhB89jVo
-wC/+s6YU2RYC4DwY5FXBjvoZGb2jCALl9vWb2Hhrk9OLtjtphUEz3aPkZYnARWpo
-ElAVz0x76stHIfe4DOIautJHlH9zf4TaBEiqv8M4Sx2fM10Kq5sps6gbSESNLyru
-rswZR4SJwBnJfcAarov9LcWiESEztmGm5HRVGehHqw2470kyUprdElP2h3YLudfx
-frNemcdHN9IByCVz70O6m9sHl9wTaIDCRaFul8DlNalIRbcHNE4Gw1Pr7P8t7rRZ
-pe2MsIYPSY9JzvYlRcuztpgaGHmChUSdhTMhQdbu6x416/EFaOY=
-=lH9x
------END PGP SIGNATURE-----
-
---jf2alk6nvvmfsvtq--
-
-
---===============7871118723653611109==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============7871118723653611109==--
-
