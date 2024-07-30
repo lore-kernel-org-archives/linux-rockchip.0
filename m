@@ -4,113 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 428DEC3DA49
-	for <linux-rockchip@archiver.kernel.org>; Tue, 30 Jul 2024 09:02:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2894AC3DA61
+	for <linux-rockchip@archiver.kernel.org>; Tue, 30 Jul 2024 09:04:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=El1c31tRXcvZ7bwVHZVQ4f0YlAOTYTps0AeoAeIPcOQ=; b=T82+aju/Ut6A+X
-	dj+crn01s0HDmBeFCYGSqSnfBlLICBh551DtUPHG7r+wzspyJm0d0e7re+iS35kNHHsctvH3utzL+
-	jW1nYQh99xHxvWGIKajeqE3uOQaMEfQxcIiR2DyZxu6EhhQjfw5+GfyuDpasUkAq9HVQPlacSW/E5
-	R3bv0zYX7vjEzbnCGbPqI2HiDXY04dq65edTqVsqU6T/7kWMQ9tZYNEXpvcSSZyk9H+jGdVdKsvbx
-	azhW19kb+A0dl+STgCvnMrxzgQ6a38FxMURO2Ko/dAQ5wT63owCPCs8zgiZ+belqxunjZib/kPS/C
-	yqC7+xBXv8GnNLagqrbQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=EmbuF6TuIzPqR5PufVX82NIvUWWLZBbPNZqNc5UYjXE=; b=dL+ICFKRf4GcLnLhVQMCpfPKQN
+	D5KZQkdUkN28MxzRGviMtD84QNM4HUUlpzfZBZEiLO6j9Fn4MsH1hg3m9cVEvn4Yd9j5tY80InNvG
+	U5+78YLgpBktPZksXF4B4AlVmCaCYg3bHEeWH4yZWwFLaM8wiMTlvNWhJ+vfN6SHjATFwov5gIN1p
+	u9hdyhc54cOIaUBmrCUiK9WTk4SZAaauRPUrQ663/LAvqFOsgSgJJUzC8EFT5oZWxkvzYJ895JJak
+	4AcfVqdRMrkSyxX7LAlAlZqujjKOlQjF7C68V2aT9tX4lSoo2UOgSPDs6Gd9P1KaLqeFfw04DhEeE
+	1MalLSBA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sYikG-0000000EQSH-0K42;
-	Tue, 30 Jul 2024 09:02:12 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1sYilx-0000000EQv2-2usR;
+	Tue, 30 Jul 2024 09:03:57 +0000
+Received: from out-181.mta0.migadu.com ([91.218.175.181])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sYijo-0000000EQIy-0R33;
-	Tue, 30 Jul 2024 09:01:45 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id E8B0661E27;
-	Tue, 30 Jul 2024 09:01:42 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E83C1C4AF09;
-	Tue, 30 Jul 2024 09:01:33 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1722330102;
-	bh=u+hG7S/8LwpabqbN+3cXg3zN7GnJesSJ19ebqFRAYaM=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=Z42ia4CV1fqEXUxrwNfDZhJBqeEZlxnf3IwaRvewBdvrMdk/EyNYPrED2uIkKdgxB
-	 rv7bz0NVyHxnhYDcMBe5sfKdjBDSoxfL8hXBEGlumL1FEvHSr3SWNVJr1D3c/tsw/A
-	 2xQxhujXYEPRTP+SsOg9yuflDq8oQi+twXF2iUxfV4Ix4ITjS2w9x1qWGvM8i11SNV
-	 89iaRz9ZGgQ6c905mQFfSbQ1f+6LZcaQODAII3ax7cripVuoZF8kJUom62X/Ho4xNW
-	 EhxaXtsTdL6Lm8YE2eKRPhwjKHMJ3hXP/eDBL3nNAL55a/wYjQwMwuQnBKXdMEAfRe
-	 Ti7jfkEppCaqw==
-Message-ID: <f45c1fa7-f321-4a1f-b65c-6ed326a18268@kernel.org>
-Date: Tue, 30 Jul 2024 11:01:31 +0200
+	id 1sYilT-0000000EQli-0Rkz
+	for linux-rockchip@lists.infradead.org;
+	Tue, 30 Jul 2024 09:03:29 +0000
+X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow.org; s=key1;
+	t=1722330203;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=B1rX42vyLb2o7bCFZWbpolb7axljRnf+cPcxVtkPaGQ=;
+	b=bCfFGBIT1faiidn30la/pcdfIJvxka3DNVc0xjGFfX6kvV2FhIXUlEqbjhoKhyZVD6OrZu
+	rUWUQCJCb90tmf8Ez/2TwpgNJatjH6TVQ2qCBKL6H1pwV2sVJIuEwRP9qxWWFT+CrqbuFX
+	IKAjb5OD/VQm9YCL6AEP+0qmdTMRRpA36I4UqbQ6LxOkXwRaXEhfPwhsGbjsGOrxweKuOX
+	EvdKyeXhkFALDJjEWLNZJ0Hr7gSWA75mH6TWg25dyyU3j00GjKVCoTSNaVBvQhMEElubb6
+	7Qd/GNZXXTZRjpCPAImtTpu5VYy3orfCohbBN26pAlMSOWBH5vwLH7nb9B/3Qw==
+From: Diederik de Haas <didi.debian@cknow.org>
+To: Dragan Simic <dsimic@manjaro.org>, Daniel Golle <daniel@makrotopia.org>
+Cc: Chen-Yu Tsai <wens@kernel.org>, linux-rockchip@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, Rob Herring <robh@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, linux-kernel@vger.kernel.org,
+ Herbert Xu <herbert@gondor.apana.org.au>, Martin Kaiser <martin@kaiser.cx>,
+ Sascha Hauer <s.hauer@pengutronix.de>,
+ Sebastian Reichel <sebastian.reichel@collabora.com>,
+ Ard Biesheuvel <ardb@kernel.org>,
+ Uwe =?ISO-8859-1?Q?Kleine=2DK=F6nig?= <ukleinek@debian.org>,
+ devicetree@vger.kernel.org, linux-crypto@vger.kernel.org,
+ Philipp Zabel <p.zabel@pengutronix.de>, Olivia Mackall <olivia@selenic.com>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Aurelien Jarno <aurelien@aurel32.net>, Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH v7 0/3] hwrng: add hwrng support for Rockchip RK3568
+Date: Tue, 30 Jul 2024 11:03:06 +0200
+Message-ID: <6690040.iosknibmi9@bagend>
+Organization: Connecting Knowledge
+In-Reply-To: <ZqgjTQMgWZO2FjaC@makrotopia.org>
+References: <cover.1720969799.git.daniel@makrotopia.org>
+ <faa0baebabd3c31adf1afa7efbbdf608@manjaro.org>
+ <ZqgjTQMgWZO2FjaC@makrotopia.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 2/5] dt-bindings: net: wireless: brcm4329-fmac: add
- clock description for AP6275P
-To: Arend Van Spriel <arend.vanspriel@broadcom.com>,
- Jacobe Zang <jacobe.zang@wesion.com>, robh@kernel.org, krzk+dt@kernel.org,
- heiko@sntech.de, kvalo@kernel.org, davem@davemloft.net, edumazet@google.com,
- kuba@kernel.org, pabeni@redhat.com, conor+dt@kernel.org,
- Linus Walleij <linus.walleij@linaro.org>
-Cc: efectn@protonmail.com, dsimic@manjaro.org, jagan@edgeble.ai,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
- arend@broadcom.com, linux-wireless@vger.kernel.org, netdev@vger.kernel.org,
- megi@xff.cz, duoming@zju.edu.cn, bhelgaas@google.com,
- minipli@grsecurity.net, brcm80211@lists.linux.dev,
- brcm80211-dev-list.pdl@broadcom.com, nick@khadas.com
-References: <20240730033053.4092132-1-jacobe.zang@wesion.com>
- <20240730033053.4092132-3-jacobe.zang@wesion.com>
- <191025b5268.279b.9b12b7fc0a3841636cfb5e919b41b954@broadcom.com>
-From: Krzysztof Kozlowski <krzk@kernel.org>
-Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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 fv0=
-In-Reply-To: <191025b5268.279b.9b12b7fc0a3841636cfb5e919b41b954@broadcom.com>
+X-Migadu-Flow: FLOW_OUT
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240730_020144_264302_59C7719A 
-X-CRM114-Status: GOOD (  15.24  )
+X-CRM114-CacheID: sfid-20240730_020327_702534_6579A99C 
+X-CRM114-Status: GOOD (  20.33  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -122,59 +77,89 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============3162848206951692761=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 30/07/2024 08:37, Arend Van Spriel wrote:
-> + Linus W
-> 
-> On July 30, 2024 5:31:15 AM Jacobe Zang <jacobe.zang@wesion.com> wrote:
-> 
->> Not only AP6275P Wi-Fi device but also all Broadcom wireless devices allow
->> external low power clock input. In DTS the clock as an optional choice in
->> the absence of an internal clock.
->>
->> Reviewed-by: Arend van Spriel <arend.vanspriel@broadcom.com>
->> Signed-off-by: Jacobe Zang <jacobe.zang@wesion.com>
->> ---
->> .../bindings/net/wireless/brcm,bcm4329-fmac.yaml          | 8 ++++++++
->> 1 file changed, 8 insertions(+)
->>
->> diff --git 
->> a/Documentation/devicetree/bindings/net/wireless/brcm,bcm4329-fmac.yaml 
->> b/Documentation/devicetree/bindings/net/wireless/brcm,bcm4329-fmac.yaml
->> index 2c2093c77ec9a..a3607d55ef367 100644
->> --- a/Documentation/devicetree/bindings/net/wireless/brcm,bcm4329-fmac.yaml
->> +++ b/Documentation/devicetree/bindings/net/wireless/brcm,bcm4329-fmac.yaml
->> @@ -122,6 +122,14 @@ properties:
->> NVRAM. This would normally be filled in by the bootloader from platform
->> configuration data.
->>
->> +  clocks:
->> +    items:
->> +      - description: External Low Power Clock input (32.768KHz)
->> +
->> +  clock-names:
->> +    items:
->> +      - const: lpo
->> +
-> 
-> We still have an issue that this clock input is also present in the 
-> bindings specification broadcom-bluetooth.yaml (not in bluetooth 
-> subfolder). This clock is actually a chip resource. What happens if both 
-> are defined and both wifi and bt drivers try to enable this clock? Can this 
-> be expressed in yaml or can we only put a textual warning in the property 
-> descriptions?
+--===============3162848206951692761==
+Content-Type: multipart/signed; boundary="nextPart20867227.UFCzubSe9b";
+ micalg="pgp-sha256"; protocol="application/pgp-signature"
 
-Just like all clocks, what would happen? It will be enabled.
+--nextPart20867227.UFCzubSe9b
+Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain; charset="us-ascii"; protected-headers="v1"
+From: Diederik de Haas <didi.debian@cknow.org>
+Date: Tue, 30 Jul 2024 11:03:06 +0200
+Message-ID: <6690040.iosknibmi9@bagend>
+Organization: Connecting Knowledge
+In-Reply-To: <ZqgjTQMgWZO2FjaC@makrotopia.org>
+MIME-Version: 1.0
 
-Best regards,
-Krzysztof
+On Tuesday, 30 July 2024 01:18:37 CEST Daniel Golle wrote:
+> On Wed, Jul 24, 2024 at 08:07:51AM +0200, Dragan Simic wrote:
+> > Thanks a lot for the testing.  Though, such wildly different test results
+> > can, regrettably, lead to only one conclusion:  the HWRNG found in RK3566
+> > is unusable. :/
 
+FTR: I agree with Dragan, unfortunately.
+
+> The results on RK3568 look much better and the series right now also
+> only enabled the RNG on RK3568 systems. However, we have only seen few
+> boards with RK3568 up to now, and I only got a couple of NanoPi R5C
+> here to test, all with good hwrng results.
+> 
+> Do you think it would be agreeable to only enable the HWRNG for RK3568
+> as suggested in this series? Or are we expecting quality to also vary
+> as much as it (sadly) does for RK3566?
+
+Unless we get *evidence* to the contrary, we should assume that the HWRNG on 
+RK3568 is fine as the currently available test results are fine.
+So I think enabling it only for RK3568 is the right thing to do.
+
+So a 'revert' to v7 variant seems appropriate, but with the following changes:
+- Add `status = "disabled";` property to the definition in rk356x.dtsi
+- Add a new commit where you enable it only for rk3568 and document in the 
+commit message why it's not enabled on rk3566 with a possible link to the v7 
+thread for clarification on why that is
+
+You could probably also integrate that into 1 commit, but make sure that the 
+commit summary and description match the implementation.
+IMO that wasn't 'technically' the case in v8 as the rng node was added to 
+rk356x, but it was only enabled on rk3568.
+
+My 0.02
+--nextPart20867227.UFCzubSe9b
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: This is a digitally signed message part.
+Content-Transfer-Encoding: 7Bit
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYIAB0WIQT1sUPBYsyGmi4usy/XblvOeH7bbgUCZqisSgAKCRDXblvOeH7b
+brDnAQD8u6tajseWbanb373R9KrnELq+Iwcw8RlufXKnVpFIQwD/YZ/Dq5lXye++
+z2hXSo/Jh+izrQpNgfewXWOAVGeswAI=
+=mbtE
+-----END PGP SIGNATURE-----
+
+--nextPart20867227.UFCzubSe9b--
+
+
+
+
+
+--===============3162848206951692761==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============3162848206951692761==--
+
+
+
+
