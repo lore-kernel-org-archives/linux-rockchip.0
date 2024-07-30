@@ -4,76 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1D023C3DA61
-	for <linux-rockchip@archiver.kernel.org>; Tue, 30 Jul 2024 06:37:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 43CEBC3DA61
+	for <linux-rockchip@archiver.kernel.org>; Tue, 30 Jul 2024 07:08:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Subject:References:In-Reply-To:
-	Message-ID:Date:CC:To:From:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=kTglnUbNH9NgxT6on11J2lL1iukQrmtsiibnEsVB5es=; b=FZKQ6GAMKf96im
-	bI/YbCKdxok9PU0fT9r+WkFmojpZLIU0S+E+nmkSCVw0IT9/6JtNmp+dlzeEDKVEhAg00zymekCUD
-	vtxkcJWNUkgOlg7FeabHxnuNO6j3JyGzNiwRMeXQrWGr9PyfLlhLmTesOB3SgvdOsxFSurSFRHA71
-	OEXMDsrlMFMqhEAmUJyg9B8RZou2Om4YXwzJjQdLqA0G+76OgHB/VbiRY8w8WwojwHFH6h4ONsYRK
-	hzxAuOKV8Yk5ef05bgBLbMNi3ZBFS6ByayoQGGRqzeyAPT4L4/DKu18OdQ6w4p/pG9XtEhWxk0NSX
-	R9iy+kvLNiwjW/Pcsyqg==;
+	List-Owner; bh=2Eb8IeK29oJ+xBhlb3jq4WQEgoy6ye/4DMSa/vC/wFU=; b=FhUx1QUdVbfbtl
+	PSECutUznG4DG0QTnqVAMz4sgBvJZBF2pTIvL2SNGheur4rK05jbrrs2Ln07A71fuReQhrY3/ssA4
+	3PsjeygK7ceNjrqOxqkeOJ3syPNqJwRTmnKNyfJi2LRD1DDe8d5+SBQHQCjWzFpKlqw8XvpWdbCR+
+	y52egRHbwsXUlpzy+lVvzlvtWuHDZ6aOg9wko3L0NXSUBofztCgyj8tIdfmXtYWPp7wdSH6WcP+Rt
+	4lMgbvrDW7E/1P8KtuGpbMkzwGfdH+fjmVQziUbeGAu22Fm56SQ0SE9cNetY5sdBSPqs/jT3ZyKyj
+	dHoTk64vigiuMfQoBSog==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sYgU3-0000000DrHQ-3IEt;
-	Tue, 30 Jul 2024 06:37:19 +0000
-Received: from mail-pj1-x1030.google.com ([2607:f8b0:4864:20::1030])
+	id 1sYgyB-0000000Dw5C-1E9a;
+	Tue, 30 Jul 2024 07:08:27 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sYgU0-0000000DrGS-3DrK
+	id 1sYgy8-0000000Dw4Q-1BJZ
 	for linux-rockchip@lists.infradead.org;
-	Tue, 30 Jul 2024 06:37:18 +0000
-Received: by mail-pj1-x1030.google.com with SMTP id 98e67ed59e1d1-2cb7cd6f5f2so3175736a91.2
-        for <linux-rockchip@lists.infradead.org>; Mon, 29 Jul 2024 23:37:15 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=broadcom.com; s=google; t=1722321434; x=1722926234; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:subject:user-agent
-         :references:in-reply-to:message-id:date:cc:to:from:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=d8n8rYBKoxfcGnZbJLvEREPokWsFDiloFhCfdKHeZA0=;
-        b=ZaAphuXTcc/Emy9KHyieRf7q3Wlt6DBNiZVQ+NWRDlCtwdghtfQhjtfZjEA0DBNZY8
-         AReho+BN9ep02YY7miRM2fsKajWollphx4iPubILfr+dcelVtUFU6bOOOEiCKz2xk8Zu
-         VNZNeXjS3Z8EEzMCuUyjVHSWBQ7rPHbRUt7Wc=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1722321434; x=1722926234;
-        h=content-transfer-encoding:mime-version:subject:user-agent
-         :references:in-reply-to:message-id:date:cc:to:from
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=d8n8rYBKoxfcGnZbJLvEREPokWsFDiloFhCfdKHeZA0=;
-        b=Y8PyouZ08eJK1LhCVSvEIiThZdqZQg8SQ4/pNF4pnn/R89W/lOycLpH6yyyqXvNqYx
-         UqLPCcpzw1BeFln8+G0J/LHbAStklLUIl8oGbk0ExuvGYE8r5GMRAxxcsphJxSq86fJk
-         yqHHNRlEPGIBoHLghcBwIfqwf0UhNdz7s64o2uh6/TvND0zLu1Z2T8y7U9T/L9v2JtUy
-         xVW/nDuBWSFtZSKtBCFLurQCPkhZ17usuF6cYP7rsS/AB4ZIIwPG8qReZS86o4Hub/Vv
-         Eg7RKEot6JUL1BTMMRkAO0UehqGv9F8+oI1wdFc2eNNTlOnWmiUb/pIwTrkQZ9YXnswM
-         Eemw==
-X-Forwarded-Encrypted: i=1; AJvYcCUngfTCeFs+V6588ZfgIbfZ5j5pbBs0SAW8VaI87cPlO8FtVuDTfVSN1epYKXWb8eCn6OCnAlqk3JSxEmoNsLOBC/70D73GXwvhNo+p2N4aLUsF
-X-Gm-Message-State: AOJu0Yxq7+u+AQJ5XliR5QG43bvEpkC1PC0+TL5znaF31Q359eJKaaFg
-	ZcYP9t/sEBrgJORZFizizxUuiDXfmgJg+P8pm2Zu/5i0zEuSp0E2HkMND2eBcA==
-X-Google-Smtp-Source: AGHT+IEbAYsTcrcjdD3UrZN6PQy+Do67Ei8GuSEd9YQg6UqH56tJFOZ2LAJA39UhwaNb5oNVG9ACLg==
-X-Received: by 2002:a17:90a:6b4c:b0:2c9:7ebd:b957 with SMTP id 98e67ed59e1d1-2cf7e1df0abmr10618508a91.11.1722321434495;
-        Mon, 29 Jul 2024 23:37:14 -0700 (PDT)
-Received: from [192.168.178.38] (f215227.upc-f.chello.nl. [80.56.215.227])
-        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-2cdb7608b88sm11733257a91.56.2024.07.29.23.37.07
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 29 Jul 2024 23:37:14 -0700 (PDT)
-From: Arend Van Spriel <arend.vanspriel@broadcom.com>
-To: Jacobe Zang <jacobe.zang@wesion.com>, <robh@kernel.org>, <krzk+dt@kernel.org>, <heiko@sntech.de>, <kvalo@kernel.org>, <davem@davemloft.net>, <edumazet@google.com>, <kuba@kernel.org>, <pabeni@redhat.com>, <conor+dt@kernel.org>, Linus Walleij <linus.walleij@linaro.org>
-CC: <efectn@protonmail.com>, <dsimic@manjaro.org>, <jagan@edgeble.ai>, <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>, <linux-rockchip@lists.infradead.org>, <linux-kernel@vger.kernel.org>, <arend@broadcom.com>, <linux-wireless@vger.kernel.org>, <netdev@vger.kernel.org>, <megi@xff.cz>, <duoming@zju.edu.cn>, <bhelgaas@google.com>, <minipli@grsecurity.net>, <brcm80211@lists.linux.dev>, <brcm80211-dev-list.pdl@broadcom.com>, <nick@khadas.com>
-Date: Tue, 30 Jul 2024 08:37:05 +0200
-Message-ID: <191025b5268.279b.9b12b7fc0a3841636cfb5e919b41b954@broadcom.com>
-In-Reply-To: <20240730033053.4092132-3-jacobe.zang@wesion.com>
-References: <20240730033053.4092132-1-jacobe.zang@wesion.com>
- <20240730033053.4092132-3-jacobe.zang@wesion.com>
-User-Agent: AquaMail/1.51.5 (build: 105105504)
-Subject: Re: [PATCH v5 2/5] dt-bindings: net: wireless: brcm4329-fmac: add clock description for AP6275P
+	Tue, 30 Jul 2024 07:08:25 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id C870B61B77;
+	Tue, 30 Jul 2024 07:08:22 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 41CB5C32782;
+	Tue, 30 Jul 2024 07:08:21 +0000 (UTC)
+Message-ID: <0b4e2f13-8d79-4931-b868-6100f8b8893f@xs4all.nl>
+Date: Tue, 30 Jul 2024 09:08:19 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v5 1/3] media: videodev2: Add flag to unconditionnaly
+ enumerate pixels formats
+To: Benjamin Gaignard <benjamin.gaignard@collabora.com>, mchehab@kernel.org,
+ ezequiel@vanguardiasur.com.ar
+Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, kernel@collabora.com
+References: <20240722150523.149667-1-benjamin.gaignard@collabora.com>
+ <20240722150523.149667-2-benjamin.gaignard@collabora.com>
+Content-Language: en-US, nl
+From: Hans Verkuil <hverkuil-cisco@xs4all.nl>
+In-Reply-To: <20240722150523.149667-2-benjamin.gaignard@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240729_233716_881801_1D53A98F 
-X-CRM114-Status: GOOD (  14.74  )
+X-CRM114-CacheID: sfid-20240730_000824_494291_3C18FCAA 
+X-CRM114-Status: GOOD (  23.28  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,55 +61,105 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-+ Linus W
-
-On July 30, 2024 5:31:15 AM Jacobe Zang <jacobe.zang@wesion.com> wrote:
-
-> Not only AP6275P Wi-Fi device but also all Broadcom wireless devices allow
-> external low power clock input. In DTS the clock as an optional choice in
-> the absence of an internal clock.
->
-> Reviewed-by: Arend van Spriel <arend.vanspriel@broadcom.com>
-> Signed-off-by: Jacobe Zang <jacobe.zang@wesion.com>
+On 22/07/2024 17:05, Benjamin Gaignard wrote:
+> When the index field is ORed with V4L2_FMT_FLAG_ENUM_ALL the driver
+> will ignore any configuration and enumerate all the possible formats.
+> Drivers which do not support this flag yet always return an EINVAL
+> error code.
+> 
+> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 > ---
-> .../bindings/net/wireless/brcm,bcm4329-fmac.yaml          | 8 ++++++++
-> 1 file changed, 8 insertions(+)
->
-> diff --git 
-> a/Documentation/devicetree/bindings/net/wireless/brcm,bcm4329-fmac.yaml 
-> b/Documentation/devicetree/bindings/net/wireless/brcm,bcm4329-fmac.yaml
-> index 2c2093c77ec9a..a3607d55ef367 100644
-> --- a/Documentation/devicetree/bindings/net/wireless/brcm,bcm4329-fmac.yaml
-> +++ b/Documentation/devicetree/bindings/net/wireless/brcm,bcm4329-fmac.yaml
-> @@ -122,6 +122,14 @@ properties:
-> NVRAM. This would normally be filled in by the bootloader from platform
-> configuration data.
->
-> +  clocks:
-> +    items:
-> +      - description: External Low Power Clock input (32.768KHz)
-> +
-> +  clock-names:
-> +    items:
-> +      - const: lpo
-> +
+> changes in version 5:
+> - Reset the proposal to follow Hans's advices
+> - Add new flag to be used with index field.
+> 
+>  .../userspace-api/media/v4l/vidioc-enum-fmt.rst      | 12 +++++++++++-
+>  .../userspace-api/media/videodev2.h.rst.exceptions   |  1 +
+>  include/uapi/linux/videodev2.h                       |  3 +++
+>  3 files changed, 15 insertions(+), 1 deletion(-)
+> 
+> diff --git a/Documentation/userspace-api/media/v4l/vidioc-enum-fmt.rst b/Documentation/userspace-api/media/v4l/vidioc-enum-fmt.rst
+> index 3adb3d205531..12e1e65e6a71 100644
+> --- a/Documentation/userspace-api/media/v4l/vidioc-enum-fmt.rst
+> +++ b/Documentation/userspace-api/media/v4l/vidioc-enum-fmt.rst
+> @@ -85,7 +85,11 @@ the ``mbus_code`` field is handled differently:
+>      * - __u32
+>        - ``index``
+>        - Number of the format in the enumeration, set by the application.
+> -	This is in no way related to the ``pixelformat`` field.
+> +        This is in no way related to the ``pixelformat`` field. When the
 
-We still have an issue that this clock input is also present in the 
-bindings specification broadcom-bluetooth.yaml (not in bluetooth 
-subfolder). This clock is actually a chip resource. What happens if both 
-are defined and both wifi and bt drivers try to enable this clock? Can this 
-be expressed in yaml or can we only put a textual warning in the property 
-descriptions?
+You need to start a new paragraph before 'When'. Otherwise you might read
+that the 'When' sentence is somehow related to the previous sentence.
+
+> +        index is ORed with V4L2_FMT_FLAG_ENUM_ALL the driver will ignore
+> +        any configuration and enumerate all the possible formats. Drivers
+
+I'd rephrase this a little bit:
+
+the driver will enumerate all the possible formats, ignoring any limitations
+from the current configuration.
+
+And after that I would like to see an example of a use-case.
+
+> +        which do not support this flag yet always return an ``EINVAL``
+> +        error code.
+>      * - __u32
+>        - ``type``
+>        - Type of the data stream, set by the application. Only these types
+> @@ -234,6 +238,12 @@ the ``mbus_code`` field is handled differently:
+>  	valid. The buffer consists of ``height`` lines, each having ``width``
+>  	Data Units of data and the offset (in bytes) between the beginning of
+>  	each two consecutive lines is ``bytesperline``.
+> +    * - ``V4L2_FMT_FLAG_ENUM_ALL``
+
+I am not really happy with this name since the prefix is identical to that
+of other V4L2_FMT_FLAG_ defines. How about: V4L2_FMTDESC_FLAG_ENUM_ALL?
+Or V4L2_FMT_IDX_ENUM_ALL?
+
+> +      - 0x80000000
+> +      - When the applications ORs ``index`` with ``V4L2_FMT_FLAG_ENUM_ALL`` flag
+> +        the driver enumerates all the possible pixel formats without taking care
+> +        of any already set configuration. Drivers which do not support this flag
+> +        yet always return ``EINVAL``.
+>  
+>  Return Value
+>  ============
+> diff --git a/Documentation/userspace-api/media/videodev2.h.rst.exceptions b/Documentation/userspace-api/media/videodev2.h.rst.exceptions
+> index bdc628e8c1d6..8dc10a500fc6 100644
+> --- a/Documentation/userspace-api/media/videodev2.h.rst.exceptions
+> +++ b/Documentation/userspace-api/media/videodev2.h.rst.exceptions
+> @@ -216,6 +216,7 @@ replace define V4L2_FMT_FLAG_CSC_YCBCR_ENC fmtdesc-flags
+>  replace define V4L2_FMT_FLAG_CSC_HSV_ENC fmtdesc-flags
+>  replace define V4L2_FMT_FLAG_CSC_QUANTIZATION fmtdesc-flags
+>  replace define V4L2_FMT_FLAG_META_LINE_BASED fmtdesc-flags
+> +replace define V4L2_FMT_FLAG_ENUM_ALL fmtdesc-flags
+>  
+>  # V4L2 timecode types
+>  replace define V4L2_TC_TYPE_24FPS timecode-type
+> diff --git a/include/uapi/linux/videodev2.h b/include/uapi/linux/videodev2.h
+> index 4e91362da6da..3d11f91273a1 100644
+> --- a/include/uapi/linux/videodev2.h
+> +++ b/include/uapi/linux/videodev2.h
+> @@ -904,6 +904,9 @@ struct v4l2_fmtdesc {
+>  #define V4L2_FMT_FLAG_CSC_QUANTIZATION		0x0100
+>  #define V4L2_FMT_FLAG_META_LINE_BASED		0x0200
+>  
+> +/*  Format description flag, to be ORed with the index */
+> +#define V4L2_FMT_FLAG_ENUM_ALL			0x80000000
+> +
+>  	/* Frame Size and frame rate enumeration */
+>  /*
+>   *	F R A M E   S I Z E   E N U M E R A T I O N
 
 Regards,
-Arend
 
-
+	Hans
 
 _______________________________________________
 Linux-rockchip mailing list
