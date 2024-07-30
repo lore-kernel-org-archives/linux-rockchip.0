@@ -4,54 +4,165 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D043FC3DA7F
-	for <linux-rockchip@archiver.kernel.org>; Tue, 30 Jul 2024 21:51:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 532C5C3DA49
+	for <linux-rockchip@archiver.kernel.org>; Tue, 30 Jul 2024 23:58:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Subject:Cc:From:To:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=PHS5f1wJS5e7QUgEpTdufqQCYaZu+7FAyXLjK08Zi6s=; b=UQivQoHNW2s5sI
-	FXYL+hpwuv80hplxvhy22NEThF4J0hIVrjkbynFKCAWRteVR/FoYGnoeY/EEuj1zjigWczxsK3Hac
-	5u7XRjiSS762Zt2UFWnHyScmbbkcI2Qw6EhSOQnitAtMYsbu+cKdpbny5DADBUsOUMDEz+HQk5ZTE
-	jf/BiST9Vxo174/XtSFaQnlKzq9lnRnpOUPYec6DSJuepCFE+qJGdXMLMs2ho/OQiewrXp3pdZpUh
-	Fozqd+hQMak1GIjPIcQLz66tiyEUdyzwM09/0ZWK65vGj6EybDw762KY3Zz9lj5QaUmFhdxhY2B0z
-	+martpMkVIZGtZrqu7AA==;
+	List-Owner; bh=mfPio7OMyHXKJF1IOZgCcxE3JJePb0l2ZankfjgoGQc=; b=4/Bf2lCGD+5EQ0
+	LQrwwY7Mo4eTWneYTsC0d5i4l9KDWD5IOWxjvrQZoVNGbogTg9eg+u74uxFGbFiJSjZwY1dJBY9Tl
+	72SvywiurRNBeH/9U51VpBu++0MGPBn7YeEft+mnAD10VHtEhQprURT211thaXJ3S7HOj7kvCiy4A
+	z3IM8r0YUShM0DVY0zLk6/EsM89ZS4IaNqP3B1p5PPzQtZwTblK2qbZIdRuXo/IMM2lNfW5CdLo6x
+	NAEwLdYWwegRdYirniQ6L0dbZWlIF3z9zbTC1wcO3B/lI8YoMuN4eYtBnj74C/rRDVHiuVKIBTUid
+	6AD4wO4gvHwO5RNMrZMg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sYukI-0000000GZzC-3hP9;
-	Tue, 30 Jul 2024 21:51:02 +0000
-Received: from mail-4322.protonmail.ch ([185.70.43.22])
+	id 1sYwjS-0000000GmZP-3HaL;
+	Tue, 30 Jul 2024 23:58:18 +0000
+Received: from mail-sgaapc01on20711.outbound.protection.outlook.com ([2a01:111:f400:feab::711] helo=APC01-SG2-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sYujo-0000000GZua-2vEg;
-	Tue, 30 Jul 2024 21:50:35 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=proton.me;
-	s=protonmail; t=1722376228; x=1722635428;
-	bh=RI+MO1DUmLECB6a6KqRs8Ki6aLcuzWc/MPzcype02eU=;
-	h=Date:To:From:Cc:Subject:Message-ID:In-Reply-To:References:
-	 Feedback-ID:From:To:Cc:Date:Subject:Reply-To:Feedback-ID:
-	 Message-ID:BIMI-Selector;
-	b=UGz7Gj0iD8b72ONMMp3U48oCY1W36JIttlQHOkCcqR/Dc+w7CYGPg/YufXPF7KsU7
-	 KrkG/ONaPjUaam0ECrUVRVP9lLELqvIRgkPZ5Wzt33lSRrR51bfosllpoWRvDYhlPM
-	 i+BO6sachtnZvkwHB3zF7yfzZUPJV2YRgtzb0p4nBIo0kQ/q4WPkYFF970mcx34y7l
-	 xf21DkbiDQ0LjJZKW1vcpdZBQf5oEofESJneA2veF6E5Yo+qYjnqK7wBhv6wB904lr
-	 HyjJ1ZpVKiKP37xoyGxjSAGb3VNEZW+14yO/pRLreonkwfz+3mNpmelQPApyJeyPuN
-	 JChuwW8z7tP7g==
-Date: Tue, 30 Jul 2024 21:50:23 +0000
-To: Andy Yan <andy.yan@rock-chips.com>
-From: Piotr Zalewski <pZ010001011111@proton.me>
-Cc: "airlied@gmail.com" <airlied@gmail.com>, "daniel@ffwll.ch" <daniel@ffwll.ch>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, "heiko@sntech.de" <heiko@sntech.de>, "hjc@rock-chips.com" <hjc@rock-chips.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, "maarten.lankhorst@linux.intel.com" <maarten.lankhorst@linux.intel.com>, "mripard@kernel.org" <mripard@kernel.org>, "tzimmermann@suse.de" <tzimmermann@suse.de>
-Subject: Re: [PATCH v3] rockchip/drm: vop2: add support for gamma LUT
-Message-ID: <jmdWz62Mhq515i3Kg6STPlrgiBbmxcryXENKYO5ov3fNtDwuF3_6eeq-sC4DC5HB0BDzlCGnPNnuNQoXYgVRI9YZDiUxKlXsS_bf27IwdEo=@proton.me>
-In-Reply-To: <7d998e4c-e1d3-4e8b-af76-c5bc83b43647@rock-chips.com>
-References: <TkgKVivuaLFLILPY-n3iZo_8KF-daKdqdu-0_e0HP-5Ar_8DALDeNWog2suwWKjX7eomcbGET0KZe7DlzdhK2YM6CbLbeKeFZr-MJzJMtw0=@proton.me> <ec283a7c-845b-4c58-8d86-cdd07862a0dc@rock-chips.com> <KbOjWzFKMM_fwDora8CjaLFBHWypRP1Mk6nPzHkwNAGxFHzJIynx3W8_jyZvbygH99lRAXDdrJmdFEQuY8M2Ao-a8F42zt8no4B1DCBiQIs=@proton.me> <48249708-8c05-40d2-a5d8-23de960c5a77@rock-chips.com> <y_bpV0FizWkAqq0XPIKrauaZ07r_Ds-MnDr696Y1qFTLNiLsx7pL4C-Zsu-K9TzVBJ85L5cdkzDQOExcXXTf0owUYramMHdZd4erMRpJUXI=@proton.me> <7d998e4c-e1d3-4e8b-af76-c5bc83b43647@rock-chips.com>
-Feedback-ID: 53478694:user:proton
-X-Pm-Message-ID: d2e110ff2b83b052d01e54318b01eb36611f3ec6
+	id 1sYwj0-0000000GmTv-3MfY;
+	Tue, 30 Jul 2024 23:57:52 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=fFGwP53jk/yskMBLzxAe8FIlIvxVm1FyPmBwDhoNcP81zOKA/FSkT8eed7ch+vFXLZFHjjfCGRKQ61tnpzLyCwHKUKF2F8iqItzZFrrGBb0AvPlAhbTfDvGYEWu1EZKMhdgov2vTzNColCbft6ER0fa4LFjVGany1hJHT2oubi7efPdAD3q1bKvhP5uUd1AQWw+Lc9ANca3OTRCKk5ZYt5knl2iny14cW84d/58djhNzwIKOMogOluql3T097CqlJfyKzxoSAcHtzINEWaaGVJLwcyijrWEN/Vtee3/JB2NppPu0M76j3Ogtu9CJ0L53n6CnAA9QOuRlQEIrfUk33Q==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=cgnwg/Y3HfgxiTuwmubb/gTc1D2UXBQ7FfupFCnV4a8=;
+ b=FcbEgyKjNf3nTdxA0VPFx0GxIv3iqzEgGPm9jS05FKayPzS1UD92wfuZlr26a1zv5zTP9PMe6ntHka892LYtq8BAU2SrMnFSnmNSt6Dk9pF+ORw+NhyFL/wOczzJ77SRjQry9K5pqk0oi7R6CremZ00dZfGekZIozwUESD6Q5iyqYYwLjy9VDHa5Bo7WXlml2MSayndsF/9BnWp9rX1m9/juldgP0NjRsZoRrSbZsAme5hTutNlOZ5zoP0dPB/qimJQ4b7s6p3Kv5pkXnOc6tBf8NCYvCTMZP4gikQTX9O7BSIRtnBgsBwjCExHwjkxPaS8bLoHeOjPECX/BP4wrOA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=wesion.com; dmarc=pass action=none header.from=wesion.com;
+ dkim=pass header.d=wesion.com; arc=none
+Received: from TYZPR03MB7001.apcprd03.prod.outlook.com (2603:1096:400:26a::14)
+ by SEZPR03MB7218.apcprd03.prod.outlook.com (2603:1096:101:e7::15) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7807.28; Tue, 30 Jul
+ 2024 23:57:28 +0000
+Received: from TYZPR03MB7001.apcprd03.prod.outlook.com
+ ([fe80::78dd:5e68:1a9c:36c0]) by TYZPR03MB7001.apcprd03.prod.outlook.com
+ ([fe80::78dd:5e68:1a9c:36c0%6]) with mapi id 15.20.7828.016; Tue, 30 Jul 2024
+ 23:57:28 +0000
+From: Jacobe Zang <jacobe.zang@wesion.com>
+To: Arend van Spriel <arend.vanspriel@broadcom.com>, "robh@kernel.org"
+	<robh@kernel.org>, "krzk+dt@kernel.org" <krzk+dt@kernel.org>,
+	"heiko@sntech.de" <heiko@sntech.de>, "kvalo@kernel.org" <kvalo@kernel.org>,
+	"davem@davemloft.net" <davem@davemloft.net>, "edumazet@google.com"
+	<edumazet@google.com>, "kuba@kernel.org" <kuba@kernel.org>,
+	"pabeni@redhat.com" <pabeni@redhat.com>, "conor+dt@kernel.org"
+	<conor+dt@kernel.org>
+CC: "efectn@protonmail.com" <efectn@protonmail.com>, "dsimic@manjaro.org"
+	<dsimic@manjaro.org>, "jagan@edgeble.ai" <jagan@edgeble.ai>,
+	"devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+	"linux-arm-kernel@lists.infradead.org"
+	<linux-arm-kernel@lists.infradead.org>, "linux-rockchip@lists.infradead.org"
+	<linux-rockchip@lists.infradead.org>, "linux-kernel@vger.kernel.org"
+	<linux-kernel@vger.kernel.org>, "arend@broadcom.com" <arend@broadcom.com>,
+	"linux-wireless@vger.kernel.org" <linux-wireless@vger.kernel.org>,
+	"netdev@vger.kernel.org" <netdev@vger.kernel.org>, "megi@xff.cz"
+	<megi@xff.cz>, "duoming@zju.edu.cn" <duoming@zju.edu.cn>,
+	"bhelgaas@google.com" <bhelgaas@google.com>, "minipli@grsecurity.net"
+	<minipli@grsecurity.net>, "brcm80211@lists.linux.dev"
+	<brcm80211@lists.linux.dev>, "brcm80211-dev-list.pdl@broadcom.com"
+	<brcm80211-dev-list.pdl@broadcom.com>, Nick Xie <nick@khadas.com>
+Subject: Re: [PATCH v5 4/5] wifi: brcmfmac: Add optional lpo clock enable
+ support
+Thread-Topic: [PATCH v5 4/5] wifi: brcmfmac: Add optional lpo clock enable
+ support
+Thread-Index: AQHa4jDyTCD7Ll9DxE6Duj0gEEYIJrIPnTUAgABWfT4=
+Date: Tue, 30 Jul 2024 23:57:28 +0000
+Message-ID: <TYZPR03MB70010073A25C8C3D67ED47DF80B02@TYZPR03MB7001.apcprd03.prod.outlook.com>
+References: <20240730033053.4092132-1-jacobe.zang@wesion.com>
+ <20240730033053.4092132-5-jacobe.zang@wesion.com>
+ <35321e96-2cbf-47fa-bf0a-fe658f3751bb@broadcom.com>
+In-Reply-To: <35321e96-2cbf-47fa-bf0a-fe658f3751bb@broadcom.com>
+Accept-Language: en-US, zh-CN
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+msip_labels: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=wesion.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: TYZPR03MB7001:EE_|SEZPR03MB7218:EE_
+x-ms-office365-filtering-correlation-id: f9e3a6c8-700c-4df0-d09b-08dcb0f35e02
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;ARA:13230040|366016|1800799024|7416014|376014|921020|38070700018;
+x-microsoft-antispam-message-info: =?iso-8859-1?Q?cnFq3PmMeNjKhjwPApNnFPcjDm3aVfUXj9Q9ce2qISKMcv4TJwEFbGC6Lp?=
+ =?iso-8859-1?Q?XxXHLAr4IAxs+AjCKlwfgJ09KMqniM+47uxgcqxCfp2BAdVwibrjA8eXw+?=
+ =?iso-8859-1?Q?b1b4sgQ8erc8wtpFqfaSH9zbMISAyB1JJakMfFKK3eK9wZHjGwI1noeGtu?=
+ =?iso-8859-1?Q?+fOXjj6lbw8IwKzQVp5syk9LtN7EqJoNoIcumslpgjnAuAJJE2OrMnPZwQ?=
+ =?iso-8859-1?Q?+UnqCTtTQhxceVhz1lEynOdnFbWPxF0c+LEgwVSgdh9Cblrdw7uB21P/Eb?=
+ =?iso-8859-1?Q?akdeNLMupgdqdRtNp1PIMalqHbjvlPkXRi5b2yfuoBESOmp11KkOeBrRhp?=
+ =?iso-8859-1?Q?vepcA+HtF+MQsABhrfExCBA3kzYBSv8hDgpYswqtC50TIb2xYkejT78kTC?=
+ =?iso-8859-1?Q?rP/uzhE5C6OJHTiAwk+Si9tNGw5aXwhB/AuxhreQmhLLZoJM49B7BHM/8D?=
+ =?iso-8859-1?Q?Bf6Q9YeDqjVsVxB9mXvq/Pm8vI6vMb++qK0x9CtPOvL6t/HmYOW9edVE97?=
+ =?iso-8859-1?Q?hmcyIEVNrrTgtdGSm2J8pof9vc5bDtOYLt7OabF3nPT2ouPgu5Q9Dqg6ki?=
+ =?iso-8859-1?Q?Yum/LbtY5qdcLjVRIck5zaadLx7dcz9jlzMwbhgL2MKrmGl/VjkD8892XP?=
+ =?iso-8859-1?Q?tEx5MyWpgMUtcvpbi/Dj2sLfVSKuWWY267xyKHGYiavwlo5TtjZH7JTVnd?=
+ =?iso-8859-1?Q?0vVWknqwnBPtLMqkcwQxkXvH0uguPmUBqhLgTn1GZ11LeDXbyQa91oSe7q?=
+ =?iso-8859-1?Q?1plwq/GHoshJK6X/ONuRCJKVD8vTS+UpXgsap45lN0UZ8X5va2ofKtqZE1?=
+ =?iso-8859-1?Q?X3rSDnBhlhcXsg55PX5+hONQ07BMqxbL5dMjQMlZXTKWyXa0j41VaQlHi/?=
+ =?iso-8859-1?Q?8awo5nzSLGAf/11KOLyEVz83284yAHmxYfrqakMxFMpcr/43Gs+J5y9jpx?=
+ =?iso-8859-1?Q?c+uZVlciL+5xsw6pqL+0865zWCteaCAavAeIMeFHFsPjIae3MRqzwFo04t?=
+ =?iso-8859-1?Q?wLacnyJ7MReVCfqfIbR+C4KJfF2mgzNB5WAdeUXO6JSWABMYsoheFoQIQm?=
+ =?iso-8859-1?Q?U53MfijjyAVLWEtk/nORkWCA0rf7TJ/Cznc154NKilTdL7hdHG3hO0PyPP?=
+ =?iso-8859-1?Q?CJmhCyRADbITvFQSSgf6LfJTxa+6YhGS3xPPyvNyp8xyXgkVNgBOYJRrEr?=
+ =?iso-8859-1?Q?1z3C7Nofw8UOm2jJHZGjq4HlRkDAaPRwmMVM9+MMNai2W4XdgWNwP2iS91?=
+ =?iso-8859-1?Q?lycffPJGHV/hWZbjaKs5Hj0VFL/5v0eZN+UIuQbT8PTt8fpVjpKgxqpPbm?=
+ =?iso-8859-1?Q?lU4zp5lfUzRGMXUkbS+ik4menJ8rIbsgYI5j54meE896NR4tNgYSlALDHH?=
+ =?iso-8859-1?Q?KC9LNhoD0UZp5H/ioVmD1r0LrW+GLlL95oXY41eVnTVZzn9wK/rpXlNCIT?=
+ =?iso-8859-1?Q?gWP7twD2fw+vb/o+Js9woYjPyW9g55lHaJ/Iaxwn5Gbb1DC5TU6/8xiO1I?=
+ =?iso-8859-1?Q?I=3D?=
+x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:TYZPR03MB7001.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(366016)(1800799024)(7416014)(376014)(921020)(38070700018);DIR:OUT;SFP:1102;
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?iso-8859-1?Q?qxgYLLlTWm7T/h6V8Lnp/Ja6O8LaCeyrcyMwT7sXHm8HVe0yUbA60+oaY8?=
+ =?iso-8859-1?Q?hGc51YRiVHM0qTV0ChTpOhDaqG/NJ7kHQ0U6/wZa0md8JTmHg8t1WDbib/?=
+ =?iso-8859-1?Q?2BG59QXLuke5rHioD4qD0WzUQVuGXYtaqK6Dpdnpy74HKUT+ciDm8ja9sH?=
+ =?iso-8859-1?Q?9adisS8zyYKxYkRTD+dtEwzLTZVJvvAhY7yzRPu3ECLDeuO8WnRpVwNw46?=
+ =?iso-8859-1?Q?AN+q7mZdSWqkbkrRY4hhHjMu8cOYf/GiUN/jsQNf1KGIxLUXAfQykJwGuK?=
+ =?iso-8859-1?Q?wiigVEDkSK1GVnWT3F9Siif1OfwPF2zcyqN7tCcyTs6Bxa4XhnIPcLtp5A?=
+ =?iso-8859-1?Q?b5kdLftBjPgp8aMKKbARhZjp3fHZYyRmB3dWVZOR6mhiuy/Ax9cDZ3nZFg?=
+ =?iso-8859-1?Q?2CgN2IiBAkJySewYga/KdBdEd2eyTvJMCg6U8mZtAS6OeXLYzr9fbdZq3E?=
+ =?iso-8859-1?Q?ya10l5degEKFDx35teA3OstAm2hMLyMR6qPBAj7DzhrGSEv0OAaadDVUg8?=
+ =?iso-8859-1?Q?wA3bwzg5dK3FH/RndwyANZd/3vxZmyxeBFUtiUPJIfFeZYbLLAaDxsUqmq?=
+ =?iso-8859-1?Q?g04bxnE3YCGWnq+EkTPxwh8o4yA+4LNm5k0DpY306TmBJ9BiZkHa9GSqGc?=
+ =?iso-8859-1?Q?/Ya+oanBHurlENg49Ui+9FFeODTj/8Nu68KTjtywtyMYQvU523kpwgoKxE?=
+ =?iso-8859-1?Q?fi2aBv3qFRJKfzDrULcbjcyzQ9NA6gO8fqNl8Zci+92DPYD124lWrqIZvy?=
+ =?iso-8859-1?Q?J1iTDA9XBBAy+EgMUPr9IeqHXuGcMT1JzUAT/bFg5IEETIXbB8sMCeg3c1?=
+ =?iso-8859-1?Q?jhHj/8D4qnLU1DAOZiEHeebxY+2g/PtWkI8cG+BalnpoaR3D0hn6/8YVdf?=
+ =?iso-8859-1?Q?u9A0V84u58oCSp8SSIO6BfxueKQoCLMFY8wYF+A4nccjCkT1otLnu1asmQ?=
+ =?iso-8859-1?Q?T6O2wC6Q+98+IwS/6s9Gy5d2jlJd4BOoe/m37IGOLYzpfl7u5kjp1HL5JY?=
+ =?iso-8859-1?Q?7UcuGnoEFCRu8psIRv0cMyX3acWciPe5KoY1kDXGn4X36hQE47vfENgBAX?=
+ =?iso-8859-1?Q?8ca4x9MZ7f6CPsTBtYCSeg7Jg8HOyMaHeyeDlAAFhYc7soNxUnPK1FHQHW?=
+ =?iso-8859-1?Q?fDqkVUJtthTQS/rEy7uBY8WWpCOEHJ2AhOdDGYs9wZUPWsulV+sesqfT9J?=
+ =?iso-8859-1?Q?K38d+WJv68Dg/ydTK7m9W9aHvigGrjB0v1+8zD72UWIMEg/jpkByaCr9hV?=
+ =?iso-8859-1?Q?ws5cqAfGXZOGg3QwMza5QBjLRon+p8O/tMVw1vOEw/vOPoSTL8onP9/eAd?=
+ =?iso-8859-1?Q?F57Zwue8HhZhWkFNBYro+Hk7Lk21NdQ1CAO7ROD0mbhhsB0YvohoQ6NW4Z?=
+ =?iso-8859-1?Q?rPbfjC210WW7vAZJ1NuCn5OikWTM6bhyWEX9Ga6uZeWPaS87b6jAWc5f/E?=
+ =?iso-8859-1?Q?/6knQ5JiU3UHthunCLwgc97iEHL0D1AMT2OHIw6noZgkfR2MoLvjMAusaF?=
+ =?iso-8859-1?Q?bUjkC2Mm7f6USANTO6lQAC5Wb32w2pICE3rq9qzQDzdrYZwuFLIo1T5BRW?=
+ =?iso-8859-1?Q?PumjkM5m0RUGF6eJjSmEoaflZQ8/C0vbXvhBU54410zR6H2e6eV2nqF02K?=
+ =?iso-8859-1?Q?WxzaUb2qBbt5670zGfHEHyxdHxscGAz8Af?=
 MIME-Version: 1.0
+X-OriginatorOrg: wesion.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: TYZPR03MB7001.apcprd03.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: f9e3a6c8-700c-4df0-d09b-08dcb0f35e02
+X-MS-Exchange-CrossTenant-originalarrivaltime: 30 Jul 2024 23:57:28.0312
+ (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 2dc3bd76-7ac2-4780-a5b7-6c6cc6b5af9b
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: 2r/xpLIGpR2wcNR47UlMYAhQVqXELfRYvWkx43/wSC5qKfTlHY72IScLeO+odG3h8vj+2sAs1De95gtanC4Icg==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SEZPR03MB7218
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240730_145033_370944_D82C30F2 
-X-CRM114-Status: GOOD (  36.36  )
+X-CRM114-CacheID: sfid-20240730_165751_146395_B767FD6D 
+X-CRM114-Status: UNSURE (   8.49  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -63,111 +174,69 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tuesday, July 30th, 2024 at 12:43 PM, Andy Yan <andy.yan@rock-chips.com> wrote:
+>> WiFi modules often require 32kHz clock to function. Add support to
+>> enable the clock to PCIe driver.
+>>
+>> Co-developed-by: Ondrej Jirman <megi@xff.cz>
+>> Signed-off-by: Ondrej Jirman <megi@xff.cz>
+>> Signed-off-by: Jacobe Zang <jacobe.zang@wesion.com>
+>> ---
+>>=A0=A0 drivers/net/wireless/broadcom/brcm80211/brcmfmac/of.c | 8 ++++++++
+>>=A0=A0 1 file changed, 8 insertions(+)
+>>
+>> diff --git a/drivers/net/wireless/broadcom/brcm80211/brcmfmac/of.c b/dri=
+vers/net/wireless/broadcom/brcm80211/brcmfmac/of.c
+>> index e406e11481a62..6246e3fd7399f 100644
+>> --- a/drivers/net/wireless/broadcom/brcm80211/brcmfmac/of.c
+>> +++ b/drivers/net/wireless/broadcom/brcm80211/brcmfmac/of.c
+>> @@ -6,6 +6,7 @@
+>>=A0=A0 #include <linux/of.h>
+>>=A0=A0 #include <linux/of_irq.h>
+>>=A0=A0 #include <linux/of_net.h>
+>> +#include <linux/clk.h>
+>>=A0=A0
+>>=A0=A0 #include <defs.h>
+>>=A0=A0 #include "debug.h"
+>> @@ -70,6 +71,7 @@ void brcmf_of_probe(struct device *dev, enum brcmf_bus=
+_type bus_type,
+>>=A0=A0 {
+>>=A0=A0=A0=A0=A0=A0=A0 struct brcmfmac_sdio_pd *sdio =3D &settings->bus.sd=
+io;
+>>=A0=A0=A0=A0=A0=A0=A0 struct device_node *root, *np =3D dev->of_node;
+>> +=A0=A0=A0=A0 struct clk *clk;
+>>=A0=A0=A0=A0=A0=A0=A0 const char *prop;
+>>=A0=A0=A0=A0=A0=A0=A0 int irq;
+>>=A0=A0=A0=A0=A0=A0=A0 int err;
+>> @@ -113,6 +115,12 @@ void brcmf_of_probe(struct device *dev, enum brcmf_=
+bus_type bus_type,
+>>=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 of_node_put(root);
+>>=A0=A0=A0=A0=A0=A0=A0 }
+>>=A0=A0
+>> +=A0=A0=A0=A0 clk =3D devm_clk_get_optional_enabled(dev, "lpo");
+>> +=A0=A0=A0=A0 if (!IS_ERR_OR_NULL(clk)) {
+>> +=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 brcmf_dbg(INFO, "enabling 32kHz cl=
+ock\n");
+>> +=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 clk_set_rate(clk, 32768);
+>> +=A0=A0=A0=A0 }
+>> +
+>>=A0=A0=A0=A0=A0=A0=A0 if (!np || !of_device_is_compatible(np, "brcm,bcm43=
+29-fmac"))
+>>=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 return;
+>
+> This if-statement should be the first check in brcmf_of_probe(). Can you
+> include that change in your patch.
 
-> Hi Piotr,
+Sure. I will change it ;-)
 
-Hi Andy
 
-> On 7/30/24 05:20, Piotr Zalewski wrote:
-> 
-> > 
-> > On Monday, July 29th, 2024 at 4:35 AM, Andy Yan andy.yan@rock-chips.com wrote:
-> > 
-> > > > > > +
-> > > > > > +static void vop2_crtc_gamma_set(struct vop2 *vop2, struct drm_crtc *crtc,
-> > > > > > + struct drm_crtc_state *old_state)
-> > > > > > +{
-> > > > > > + struct drm_crtc_state *state = crtc->state;
-> > > > > > + struct vop2_video_port *vp = to_vop2_video_port(crtc);
-> > > > > > + u32 dsp_ctrl;
-> > > > > > + int ret;
-> > > > > > +
-> > > > > > + if (!vop2->lut_regs)
-> > > > > > + return;
-> > > > > > +
-> > > > > > + if (!state->gamma_lut) {
-> > > > > 
-> > > > > What's the purpose of checking !state->gamma_lut here,
-> > > > > 
-> > > > > and you check it again at the end for return.
-> > > > > This makes me very confused.
-> > > > 
-> > > > I understood it this way - since the vop2 lock is unlocked after disabling
-> > > > gamma LUT, the CRTC state can change while waiting for DSP_LUT_EN bit to
-> > > > be unset. With the change I sent in response to Daniel's reply, gamma LUT
-> > > > state modification should now be fully atomic so there shouldn't be a need
-> > > > for the second state check there anymore (if my logic is incorrect please
-> > > > explain).
-> > > 
-> > > After reading the commit message for adding gamma control for rk3399[0] i understand
-> > > what is going on here:
-> > > 
-> > > we should run into the if block in two cases:
-> > > 
-> > > (1) if the state->gamma_lut is null, we just need to disable dsp_lut and return,
-> > > 
-> > > this is why vop1 code check !state->gamma_lut again at the end.
-> > > 
-> > > (2) for platform unlinke rk3399(rk3566/8), we also need to disable dsp_lut befor we
-> > > write gamma_lut data, for platform like rk3399(rk3588), we don't need do the disable,
-> > > this is why vop1 code also has a !VOP_HAS_REG(vop, common, update_gamma_lut) check.
-> > > 
-> > > so we also need a similary check here:
-> > > (1) if the state->gamma_lut is null, disable dsp lut and return directly.
-> > > 
-> > > (1) if the state has a gamma_lut, we shoud dsiable dsp_lut than write gamma lut data on rk3566/8,
-> > > buf for rk3588, we should not disable dsp_lut before write gamma
-> > > 
-> > > [0]https://lists.infradead.org/pipermail/linux-rockchip/2021-October/028132.html
-> > 
-> > Ok I see it. So In my patch it doesn't make sense at all to check it again
-> > (forgot about that extra if statement condition there, which I cut out
-> > when porting to VOP2). I reworked my patch further for it to handle RK3588
-> > case and to better utilize DRM atomic updates. It's contained in the
-> > response to Daniel's review [1]. I experienced some problems so I'm waiting
-> > for his response/comment on that.
-> > 
-> > Regarding RK3588, I checked RK3588 TRM v1.0 part2. In its VOP2 section I
-> > found:
-> > - SYS_CTRL_LUT_PORT_SEL: gamma_ahb_write_sel (seems to represent the
-> > same concept as LUT_PORT_SEL in case of RK356x)
-> 
-> 
-> We should also setting it to she VP id we want write gamma, this is used for selet
-> ahb bus.
-> 
-> > - VOP2_POST0_DSP_CTRL: gamma_update_en (seems to represent the same
-> > concept as in VOP1 in case of RK3399)
-> 
-> we also need to set it every time we update the gamma lut.
-> 
-> > - I also found dsp_lut_en but I presume it is a bug in documentation.
-> 
-> 
-> No, it is not a bug, we should set it when we enable gamma lut, we just don't
-> need to disable it before we update gamma lut.
-> 
-> Here is some code you can take as reference [0]
-> [0]:https://github.com/radxa/kernel/blob/linux-6.1-stan-rkr1/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c#L3437
-> 
-
-Thank you for further clarification. I will include it in the next version
-of my patch.
-
-> > Should RK3588 be handled as RK3399? (gamma LUT can be written directly but
-> > gamma_update_en bit has to be set before). What about gamma_ahb_write_sel?
-> > 
-> > [1] https://lkml.org/lkml/2024/7/27/293
-> > 
-
-Best Regards, Piotr Zalewski
-
+---
+Best Regards
+Jacobe
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
