@@ -4,68 +4,118 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C3A2CC3DA7F
-	for <linux-rockchip@archiver.kernel.org>; Wed, 31 Jul 2024 17:02:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6008DC3DA64
+	for <linux-rockchip@archiver.kernel.org>; Wed, 31 Jul 2024 17:15:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=RwVHzYyKtQSn4vB6WHW+G/8wrOvPW+l70KVW8zaxZUw=; b=r9yEGBwTsNcJG+
-	mMiLHSN5bWWCF08aA0+y9c5ymp50TD1OsQfY1z6PJgh1Jv12sIKmrF1RJliAwztElFj2oWxbrL7J3
-	wQqRxyOu350UCuGQox7wYRsfW5X9Y9t3aqNyv4Uz7zfJmc3U9XjVDjdyAJZ1f7p2qLXlnX+uyATUl
-	FLCBu7fs3i04+XHb3zgU3343pIqhIXeMMzOMwmtw6lVyW6kh1EpuclYDX9uQLnpSqZakFLoE1r/6C
-	fWmD7Zv1dsLRwO7hHPClhrlUy6cfqjnuGUzqAh0tmtM3FmGprbbhX4ABoUDCmaKKQXpeOHmiIpBI6
-	S4i5Ma4gRtT7AWb4k3zw==;
+	List-Owner; bh=5vi/9D2AmUmKEd1vKerinYXFZ4n8YFkyJ+azvAwa0xU=; b=u/QO+n4BFki1jf
+	FfBciq3KGJ1uFC0Gqe4A9qp+08LdpHV8V6OZuOj2aW/HNKEZuoWv+xbi5yGpVdqckdi07Iv/oqqCz
+	z1xsYnccQsnindDnPmEDYux+DZbgrnxWZJN7E6eB0sD78Jz7rFeEH0CbF2xg6BnNcIyd4K8W2MX58
+	SBt05G2PLhF5b7w5E1OqCqgnk3kbdmD3Au4yZt2u9E2yK/h44kY2aTxA3Y96m/jkag4thHidrZHY4
+	DXd7FxRquIQ2UVKiDPRwC1nDcO96BlI/asAQ4291vkzNgGSBriAfcmgX5lWQXdOBVkPbMyFODcD8B
+	zxNyhzKsiW7OyBIkO7Sw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sZCii-00000001xGD-12pW;
-	Wed, 31 Jul 2024 17:02:36 +0000
-Received: from madrid.collaboradmins.com ([46.235.227.194])
+	id 1sZCv7-00000001zh2-3ekG;
+	Wed, 31 Jul 2024 17:15:25 +0000
+Received: from mail-mw2nam12olkn20810.outbound.protection.outlook.com ([2a01:111:f403:2805::810] helo=NAM12-MW2-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sZCif-00000001xF5-06dn
+	id 1sZCu0-00000001zUH-1tpv
 	for linux-rockchip@lists.infradead.org;
-	Wed, 31 Jul 2024 17:02:34 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1722445349;
-	bh=qGzzunRIYxeTcWj7omTdrSNOG9dCO97PljZMNVe2e5U=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=s4exjKh3pPkozbOL087t7JdBLujhE58hBWR4pRjZIQiFw6BFLy23cVUT6pHCgqZ/R
-	 GzdliexMTTvKJWsF0/s7Wb/EUOvnr4wKFc2wPL9WWohIYkqGAWPkVWGC8rckcNgCun
-	 +VeHg1wA2ZaXr4MxlQepFutykpxl2uS5mCRzVVPWHcHBRDoV05HLzM+4Gy2taYrhq+
-	 hGO5AiZYlEe21wlPL3N54CMU37hhqgPjB/bTLgc8s56DUfkx0Hy5bmRxNeLFX5myr3
-	 Qg9lFuKhugDHlD57DMhcf4g3N+9eQox5zwml4mvFh+vth2nGTEAkmtAJNEEnoT1/nw
-	 NM5qijnvXlfTQ==
-Received: from mercury (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: sre)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id D7DC13782200;
-	Wed, 31 Jul 2024 17:02:28 +0000 (UTC)
-Received: by mercury (Postfix, from userid 1000)
-	id 7EBA710609BB; Wed, 31 Jul 2024 19:02:28 +0200 (CEST)
-Date: Wed, 31 Jul 2024 19:02:28 +0200
-From: Sebastian Reichel <sebastian.reichel@collabora.com>
-To: Chris Morgan <macromorgan@hotmail.com>
-Cc: Chris Morgan <macroalpha82@gmail.com>, 
-	linux-rockchip@lists.infradead.org, linux-pm@vger.kernel.org, devicetree@vger.kernel.org, 
-	jagan@edgeble.ai, andyshrk@163.com, jonas@kwiboo.se, t.schramm@manjaro.org, 
-	heiko@sntech.de, conor+dt@kernel.org, krzk+dt@kernel.org, robh@kernel.org
+	Wed, 31 Jul 2024 17:14:18 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=Vhex27nJWTWu2zyooIRQiwAdkJrJ1lJXGdnKpdcSX+oPe1BB1aNe55DYMDemixYp7uYdTiVuzcNZtEiMfUs2lnwRd+1ybIx/IolQoigbTt56eH5A59JKDgSWuAyhLbF3JfEFvwSxpRiW5B4daGtnMiK2Oxu/M4VSwb/KN5PcQGD5iZazt4Ms9vm/p9O4t01lAU1WBBTcMBOPe8BhxI3L+R4+A6/8slJeCMeqAn29T7RlQt8lRn3O1Fl2Y9p7IvXsbg/HVSozjQS0LDkGJYBmpvgUyQUgdmtWzCclCwBK7U0PoVUWATMbgmrih2F2BdpcvzXGquEisA97RegZRBXBVA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=JWPegqjSjUYD+yn4Xzfk3uuOI2DTUyYdus6qfEEj+qk=;
+ b=agauBwfTdvPcRrCBsydhHPg39zaUi4DnWMU/PMd4Dh+NhK2JQthZlU0DSNqQZOleeig63ma7PvrMUBA2cIB7XjisKPPHiNWk9q1Y3YJCBdpUVOarsX9Gxul++Ql6OPDX8Br3NXY4W5ETns7psqsMEHFtwbs9mbdaw+Shb+UyVJEjmFpSBtlZfioz1hmUtH4GVb+5ABIXnqy8785SWWyOiD7Q3SMI/KTvgLouFFSqAkwF1ww9uoUclAr9tX3RJyG8itzJS/yjXUUOxt+5lbeS/SADIsXAPD/wKNIPACb5CU3S/IfOjSWQJVQQV9CQWWY1ZWFAbqy0PeRTC5HC+vlqiQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=none; dmarc=none;
+ dkim=none; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=hotmail.com;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=JWPegqjSjUYD+yn4Xzfk3uuOI2DTUyYdus6qfEEj+qk=;
+ b=Y4/bHNDeqbLDRyuUTkT05B2AgZ6ffP4LlYs83qpUYRkovZCUFFvHFnT3CCB4NgcpSLl6WduR8n/eAiYoXXoIrvIiTUsW9ryU8fWoOSaX5sC44DUs2DgtK82+cDlcQoE62aBjuypt3STFyXc2N5tt0jVh/nyo2aJ3ewVe7AfKUV6kGyR3FFeqZCJB4FGqxtCn69jcAEKynsUXokc/MjBluiV/rwdjBytf5gf1TSGxiDchgxsmqPCshz7b9Snw+TU4ZYDNvlQTl5KPzOaROCOO7mSPDZbtDQglKPEzmVXT7CLOOZQ/93TQSS96nR28UByrnSmU1N57LMGfGnKPhoCARQ==
+Received: from MN2PR16MB2941.namprd16.prod.outlook.com (2603:10b6:208:e1::15)
+ by SA1PR16MB6242.namprd16.prod.outlook.com (2603:10b6:806:3d1::20) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7807.28; Wed, 31 Jul
+ 2024 17:14:10 +0000
+Received: from MN2PR16MB2941.namprd16.prod.outlook.com
+ ([fe80::9d62:95ae:c373:c490]) by MN2PR16MB2941.namprd16.prod.outlook.com
+ ([fe80::9d62:95ae:c373:c490%4]) with mapi id 15.20.7828.021; Wed, 31 Jul 2024
+ 17:14:10 +0000
+Date: Wed, 31 Jul 2024 12:14:06 -0500
+From: Chris Morgan <macromorgan@hotmail.com>
+To: Sebastian Reichel <sebastian.reichel@collabora.com>
+Cc: Chris Morgan <macroalpha82@gmail.com>,
+	linux-rockchip@lists.infradead.org, linux-pm@vger.kernel.org,
+	devicetree@vger.kernel.org, jagan@edgeble.ai, andyshrk@163.com,
+	jonas@kwiboo.se, t.schramm@manjaro.org, heiko@sntech.de,
+	conor+dt@kernel.org, krzk+dt@kernel.org, robh@kernel.org
 Subject: Re: [PATCH 2/5] power: supply: cw2015: Add support for dual-cell
  configurations
-Message-ID: <2eh5iqwtwlbpg5kpr4lvvhxo2tngw4w7qanelr6filcrru62le@o7cwpsahp2n7>
+Message-ID: <MN2PR16MB29415FF49F8EA592D0F58164A5B12@MN2PR16MB2941.namprd16.prod.outlook.com>
 References: <20240726194948.109326-1-macroalpha82@gmail.com>
  <20240726194948.109326-3-macroalpha82@gmail.com>
  <eimocj6mlvo6u4x54heywblwrfnftxelzpvfcogpjp7vjmunor@5eqlqsszk6ni>
  <MN2PR16MB2941F5FFA92B056533586FBDA5B12@MN2PR16MB2941.namprd16.prod.outlook.com>
-MIME-Version: 1.0
+ <2eh5iqwtwlbpg5kpr4lvvhxo2tngw4w7qanelr6filcrru62le@o7cwpsahp2n7>
 Content-Disposition: inline
-In-Reply-To: <MN2PR16MB2941F5FFA92B056533586FBDA5B12@MN2PR16MB2941.namprd16.prod.outlook.com>
+In-Reply-To: <2eh5iqwtwlbpg5kpr4lvvhxo2tngw4w7qanelr6filcrru62le@o7cwpsahp2n7>
+X-TMN: [mRWvRDJl2SCSwZHR4a9qMRrEhoEQtSqau2kRGnDUfdQ=]
+X-ClientProxiedBy: SN4PR0501CA0049.namprd05.prod.outlook.com
+ (2603:10b6:803:41::26) To MN2PR16MB2941.namprd16.prod.outlook.com
+ (2603:10b6:208:e1::15)
+X-Microsoft-Original-Message-ID: <Zqpw3hPiZMVUFUin@wintermute.localhost.fail>
+MIME-Version: 1.0
+X-MS-Exchange-MessageSentRepresentingType: 1
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: MN2PR16MB2941:EE_|SA1PR16MB6242:EE_
+X-MS-Office365-Filtering-Correlation-Id: b3f96ecc-4655-457f-482d-08dcb18430f5
+X-Microsoft-Antispam: BCL:0;ARA:14566002|461199028|8060799006|19110799003|5072599009|56899033|1602099012|4302099013|440099028|3412199025;
+X-Microsoft-Antispam-Message-Info: /wsFx5KqulltSJndA3x/WWkPYePKgE6G2Hejub0mPj5KiZhZqSlFbYUoD2MKlfj4N3uOwyxeG4qaLTZATWAdb3+8A2sLyedO6YjZT7PIXnVPOv86FWo+P4rZr+96yl/7iq7tTs/z+l6KCK4hAoI2oIMmq7LHeLxhUrf94mXRSQZ3G9LrKyRaOzF1sy30PJxVf8k3Sp8xTqewrfAYFpf48/fGy9JYx1jBXuF6uTM3SqrUVFHaKcnQJccnC4T0l59iN+pImr0qkQtWkyk0tXWXmG8CY226i5mMj8TnORN2DEkyO4SmzYr3U39EYPEoIEnTlAxGUd7WruzEPnKV1ybW5l3DHuoD3Z0yn06fcGYf0adSIbLof3qMPD7NJswWknsaFOm21fv7qBGL7heKbEyw8lUqnn432TOzMf5GIrycbZT7Pz3k6inzicZCXGhezbQTrbALk/WAr4Y1wQb7/7oLE54IkMR14uMD1KeJHbz8ck3B0FVaQpUKKR0hLDDI7lK+qhSzasnC/i3iEEjvQqzkfwd6JkftAeKNWz+Hdag5bQgS/c1EMG+v21CWi+GeLtm9h5Xmut8JHrqUDyoBzbbPIcKWhPPZ8qNcnHK7Zz2TsissMSO1/FkXvqX1bmZmIhmkpEueCxOde6xIzCAUvyLslr0Y2gt91gIMKxHcqBD0PEz34l1bH0cBPb5xKsk5O5S+5AS8XDcES4f5kjZzuC5RVhhz8GNt276dxFg24TypUIFDe6F1BwbT7Od2kv/xkhUDMeT4WxTdDfHmcHQfPBmOpdXNVqHT/EN/x4IBJQR8+pE=
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?jKQLKb6wvXA9Pn5lfOrqxcafdkU7/qexhO+ClSfSNXCqCTzhRdnKmaPVSLKj?=
+ =?us-ascii?Q?Sh9yeyDaeKUrVq/7d0ovWu7mvnntabQm8Q1IAeaAIzoSWlVvYr453SFK/Tlt?=
+ =?us-ascii?Q?O+/d72kwJ6YtZaUDOC/yPqASZsjT0FyHT5ZAbbjEoU5WDn05jWy4XQTYCB5N?=
+ =?us-ascii?Q?EPhxe705SQZkjrssIqfQRJnTBjMyzWj/2QE9CzpjI6eds0hW2UsKlNXsHqf/?=
+ =?us-ascii?Q?sMfmDzrT2/UD82JtBotPkpb5woJIImcSYB2fDwKYYmckNFtJalAYSB3QfaUf?=
+ =?us-ascii?Q?jNMc5BCTQIy9TYnuZK8Y9H02vxJ3Aoptjom6LfoVJRR3Tr3vmiy6hJgKwFLS?=
+ =?us-ascii?Q?vTtJYkNrTe0ecf4kC6R3U5j/a0NEw+pLyj5RDygyhH+qJPqQoUkZuVWhqkN4?=
+ =?us-ascii?Q?3xpKgPtTCTO6ACvidi487oioFG3mDQRSv9kBDYw/eqmNUj5ljN3c1P6EzOiA?=
+ =?us-ascii?Q?aAY5EXvFvUVsWCILOqjsUEWEtGm20oiRd5NDI5iNI9v7kbr8z20NczBvf5YT?=
+ =?us-ascii?Q?9B75WJHabtyPFPbeLbm84yAypCg2ANSw5WOAopyPeq1iAVMzpw46THYNd/dD?=
+ =?us-ascii?Q?iCXAe0lWpjCml16UebVSykEyLEhCZKAE2/a4GIQBIYR3rX6YP/Pfsq24Zjc4?=
+ =?us-ascii?Q?F9BF3ABKj0XooMr7KQ2r7EQFLSjQLicyUh+UKEs8LApsyEKxCBoEvOJasxZL?=
+ =?us-ascii?Q?D05CquO5bzwnM2nc7Tfs0xObcqmoqib6mNmlTSSBZ735yyE8JT40zs+yQyr7?=
+ =?us-ascii?Q?xfO5rQOZ4XXDtyb6cLY8TVK6EOJE1eBqT7ttTx986M8OzX+r+Xtr+hJ/z6rG?=
+ =?us-ascii?Q?Mq+vF1eskelFvU4y5aj+fah0rZuAKjOr42OZJbcZcmHMzycFzT/NxI5pxo6T?=
+ =?us-ascii?Q?E55vCwCZC5PSp9kyomlFYRd3HGVyNbX6Qi1LMcq2kMlTfa8By5BzOfxzuTlf?=
+ =?us-ascii?Q?NxHBHDNpFUrwL1hgUsvhhXlcHV6FglxSY9thPkYdeeu21BDby+nrVZgUEKWS?=
+ =?us-ascii?Q?kx9UxBYJhMJCr3vIuTx8Sv/U9zOt/L/r0JXlwEpOupBRRWBi4R4sij/u4qMg?=
+ =?us-ascii?Q?4MI8lsl94cR1pls1bveO8s6J/2vQ3KJD9RCjcvszbTff/3pngF1yjWWL0F6q?=
+ =?us-ascii?Q?YrXhsl7b4PMquMBK/E+Bz5Na1AwRc5q+13l5I6dcfo3ULElUKPKQda8d4BSj?=
+ =?us-ascii?Q?u4kz+M4Yn7OClcDCAkNRdB1mCTywyXvWLWFrDO90SXiZcTimtVFTBf2BsbOo?=
+ =?us-ascii?Q?7M8hfaKko4lVGwPQDiVa4UIIw24rEZYbYMXt8TPhTw=3D=3D?=
+X-OriginatorOrg: sct-15-20-7719-20-msonline-outlook-559fc.templateTenant
+X-MS-Exchange-CrossTenant-Network-Message-Id: b3f96ecc-4655-457f-482d-08dcb18430f5
+X-MS-Exchange-CrossTenant-AuthSource: MN2PR16MB2941.namprd16.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 31 Jul 2024 17:14:09.8107
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa
+X-MS-Exchange-CrossTenant-RMS-PersistedConsumerOrg: 00000000-0000-0000-0000-000000000000
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SA1PR16MB6242
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240731_100233_225142_734CAB89 
-X-CRM114-Status: GOOD (  45.64  )
+X-CRM114-CacheID: sfid-20240731_101416_535605_C189B4DB 
+X-CRM114-Status: GOOD (  53.24  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,135 +132,152 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi,
-
-On Wed, Jul 31, 2024 at 11:02:11AM GMT, Chris Morgan wrote:
-> On Fri, Jul 26, 2024 at 11:06:21PM +0200, Sebastian Reichel wrote:
-> > Hi,
-> > 
-> > On Fri, Jul 26, 2024 at 02:49:45PM GMT, Chris Morgan wrote:
-> > > From: Chris Morgan <macromorgan@hotmail.com>
+On Wed, Jul 31, 2024 at 07:02:28PM +0200, Sebastian Reichel wrote:
+> Hi,
+> 
+> On Wed, Jul 31, 2024 at 11:02:11AM GMT, Chris Morgan wrote:
+> > On Fri, Jul 26, 2024 at 11:06:21PM +0200, Sebastian Reichel wrote:
+> > > Hi,
 > > > 
-> > > The Cellwise cw2015 datasheet reports that it can handle two cells
-> > > in a series configuration. Allow a device tree parameter to note
-> > > this condition so that the driver reports the correct voltage values
-> > > to userspace.
-> > 
-> > I found this:
-> > 
-> > http://www.cellwise-semi.com/Public/assests/menu/20230302/6400076806706.pdf
-> > 
-> > Which says:
-> > 
-> >   CW2015 can be used in 2 or more batteries connected in series, or
-> >   several cells connected in parallel.
-> > 
-> > So dual-cell seems like a bad property name. Instead the number of
-> > serial cells should be provided. This property is then not really
-> > specific to the Cellwise fuel gauge and instead a property of the
-> > battery pack (i.e. simple-battery.yaml).
-> 
-> It's conflicting information (which further confuses me). I see in that
-> datasheet it says 2 or more, whereas the datasheet found here says only
-> 2 cells:
-> 
-> https://www.lestat.st/_media/informatique/projets/python-cw2015/cw2015-power-management-datasheet.pdf
-> 
-> But I agree in principle that we should be setting this as a property
-> of a simple-battery rather than a manufacturer specific parameter.
-> 
-> > 
-> > > Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
-> > > ---
-> > >  drivers/power/supply/cw2015_battery.c | 7 +++++++
-> > >  1 file changed, 7 insertions(+)
+> > > On Fri, Jul 26, 2024 at 02:49:45PM GMT, Chris Morgan wrote:
+> > > > From: Chris Morgan <macromorgan@hotmail.com>
+> > > > 
+> > > > The Cellwise cw2015 datasheet reports that it can handle two cells
+> > > > in a series configuration. Allow a device tree parameter to note
+> > > > this condition so that the driver reports the correct voltage values
+> > > > to userspace.
 > > > 
-> > > diff --git a/drivers/power/supply/cw2015_battery.c b/drivers/power/supply/cw2015_battery.c
-> > > index f63c3c410451..b23a6d4fa4fa 100644
-> > > --- a/drivers/power/supply/cw2015_battery.c
-> > > +++ b/drivers/power/supply/cw2015_battery.c
-> > > @@ -77,6 +77,8 @@ struct cw_battery {
-> > >  	u32 poll_interval_ms;
-> > >  	u8 alert_level;
-> > >  
-> > > +	bool dual_cell;
-> > > +
-> > >  	unsigned int read_errors;
-> > >  	unsigned int charge_stuck_cnt;
-> > >  };
-> > > @@ -325,6 +327,9 @@ static int cw_get_voltage(struct cw_battery *cw_bat)
-> > >  	 */
-> > >  	voltage_mv = avg * 312 / 1024;
-> > >  
-> > > +	if (cw_bat->dual_cell)
-> > > +		voltage_mv *= 2;
-> > 
-> > Unfortunately there are no details in the document, but this looks
-> > very fishy. Does it only measure the first cell and hope that the
-> > other cells have the same voltage?
-> > 
-> > This (unmerged) series also applies to your problem to some degree:
-> > 
-> > https://lore.kernel.org/all/20240416121818.543896-3-mike.looijmans@topic.nl/
-> 
-> I think based on the application diagram it is in fact measuring the
-> cell voltage.
->
-> That said, this ultimately boils down to a cosmetic thing
-> as not having this property simply means userspace sees the battery
-> voltage as 3.8v instead of 7.6v as is written on the side.
-
-With the cells being connected in serial, the voltage of both cells
-can be different. There is not "the cell voltage". Instead there is
-a voltage for cell 1 and a voltage for cell 2. In a perfect battery
-they are the same, but in reality they are not. In the extreme case
-one of the cells may be broken while the other is still fine. It
-sounds as if this is just measuring the voltage from the first
-cell and assumes the second cell has the same voltage.
-
-Ideally the voltage on these platforms is not exposed via the normal
-VOLTAGE property and instead uses a new property for telling
-userspace the voltage for a single cell. The kernel simply does not
-know the voltage of the whole battery pack.
-
-FWIW this is the worst battery measurement system I've seen so far
-if my understanding of the hardware design is correct.
-
--- Sebastian
-
-> I think for simplification sake I will remove this from the series, add
-> a note to the device tree, and wait for the other battery series to get
-> pulled. When it gets pulled I'll request a device tree property so we
-> can add POWER_SUPPLY_PROP_NUMBER_OF_SERIAL_CELLS to the simple-battery
-> and then parse this value. Or if that series ends up getting abandoned
-> I can just add a quick and dirty new property like this.
-
-
-> 
-> Thank you,
-> Chris
-> 
-> > 
-> > -- Sebastian
-> > 
-> > >  	dev_dbg(cw_bat->dev, "Read voltage: %d mV, raw=0x%04x\n",
-> > >  		voltage_mv, reg_val);
-> > >  	return voltage_mv;
-> > > @@ -587,6 +592,8 @@ static int cw2015_parse_properties(struct cw_battery *cw_bat)
-> > >  			return ret;
-> > >  	}
-> > >  
-> > > +	cw_bat->dual_cell = device_property_read_bool(dev, "cellwise,dual-cell");
-> > > +
-> > >  	ret = device_property_read_u32(dev, "cellwise,monitor-interval-ms",
-> > >  				       &cw_bat->poll_interval_ms);
-> > >  	if (ret) {
-> > > -- 
-> > > 2.34.1
+> > > I found this:
 > > > 
+> > > http://www.cellwise-semi.com/Public/assests/menu/20230302/6400076806706.pdf
 > > > 
+> > > Which says:
+> > > 
+> > >   CW2015 can be used in 2 or more batteries connected in series, or
+> > >   several cells connected in parallel.
+> > > 
+> > > So dual-cell seems like a bad property name. Instead the number of
+> > > serial cells should be provided. This property is then not really
+> > > specific to the Cellwise fuel gauge and instead a property of the
+> > > battery pack (i.e. simple-battery.yaml).
+> > 
+> > It's conflicting information (which further confuses me). I see in that
+> > datasheet it says 2 or more, whereas the datasheet found here says only
+> > 2 cells:
+> > 
+> > https://www.lestat.st/_media/informatique/projets/python-cw2015/cw2015-power-management-datasheet.pdf
+> > 
+> > But I agree in principle that we should be setting this as a property
+> > of a simple-battery rather than a manufacturer specific parameter.
+> > 
+> > > 
+> > > > Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
+> > > > ---
+> > > >  drivers/power/supply/cw2015_battery.c | 7 +++++++
+> > > >  1 file changed, 7 insertions(+)
+> > > > 
+> > > > diff --git a/drivers/power/supply/cw2015_battery.c b/drivers/power/supply/cw2015_battery.c
+> > > > index f63c3c410451..b23a6d4fa4fa 100644
+> > > > --- a/drivers/power/supply/cw2015_battery.c
+> > > > +++ b/drivers/power/supply/cw2015_battery.c
+> > > > @@ -77,6 +77,8 @@ struct cw_battery {
+> > > >  	u32 poll_interval_ms;
+> > > >  	u8 alert_level;
+> > > >  
+> > > > +	bool dual_cell;
+> > > > +
+> > > >  	unsigned int read_errors;
+> > > >  	unsigned int charge_stuck_cnt;
+> > > >  };
+> > > > @@ -325,6 +327,9 @@ static int cw_get_voltage(struct cw_battery *cw_bat)
+> > > >  	 */
+> > > >  	voltage_mv = avg * 312 / 1024;
+> > > >  
+> > > > +	if (cw_bat->dual_cell)
+> > > > +		voltage_mv *= 2;
+> > > 
+> > > Unfortunately there are no details in the document, but this looks
+> > > very fishy. Does it only measure the first cell and hope that the
+> > > other cells have the same voltage?
+> > > 
+> > > This (unmerged) series also applies to your problem to some degree:
+> > > 
+> > > https://lore.kernel.org/all/20240416121818.543896-3-mike.looijmans@topic.nl/
+> > 
+> > I think based on the application diagram it is in fact measuring the
+> > cell voltage.
+> >
+> > That said, this ultimately boils down to a cosmetic thing
+> > as not having this property simply means userspace sees the battery
+> > voltage as 3.8v instead of 7.6v as is written on the side.
+> 
+> With the cells being connected in serial, the voltage of both cells
+> can be different. There is not "the cell voltage". Instead there is
+> a voltage for cell 1 and a voltage for cell 2. In a perfect battery
+> they are the same, but in reality they are not. In the extreme case
+> one of the cells may be broken while the other is still fine. It
+> sounds as if this is just measuring the voltage from the first
+> cell and assumes the second cell has the same voltage.
+> 
+> Ideally the voltage on these platforms is not exposed via the normal
+> VOLTAGE property and instead uses a new property for telling
+> userspace the voltage for a single cell. The kernel simply does not
+> know the voltage of the whole battery pack.
+> 
+> FWIW this is the worst battery measurement system I've seen so far
+> if my understanding of the hardware design is correct.
+> 
+> -- Sebastian
+> 
+
+Don't get me started, this whole stack is a nightmare. The battery
+won't charge at all without a bq25703 driver (so this current DTS
+basically has the device running while plugged in); and for some
+reason the fcs,fc302 chip wants to go interrupt crazy if you're not
+using a PD charger. Part of the reason of getting this upstreamed
+is so I can have a common base for others to help me get this last
+bit of nonsense sorted out. Displaying the correct voltage on the
+battery however isn't critical, as the device will still report the
+correct SoC and will even charge and function just fine when a driver
+is in place for the bq25703. It's just the voltage reported in sysfs
+will be wrong.
+
+Thank you,
+Chris
+
+> > I think for simplification sake I will remove this from the series, add
+> > a note to the device tree, and wait for the other battery series to get
+> > pulled. When it gets pulled I'll request a device tree property so we
+> > can add POWER_SUPPLY_PROP_NUMBER_OF_SERIAL_CELLS to the simple-battery
+> > and then parse this value. Or if that series ends up getting abandoned
+> > I can just add a quick and dirty new property like this.
 > 
 > 
+> > 
+> > Thank you,
+> > Chris
+> > 
+> > > 
+> > > -- Sebastian
+> > > 
+> > > >  	dev_dbg(cw_bat->dev, "Read voltage: %d mV, raw=0x%04x\n",
+> > > >  		voltage_mv, reg_val);
+> > > >  	return voltage_mv;
+> > > > @@ -587,6 +592,8 @@ static int cw2015_parse_properties(struct cw_battery *cw_bat)
+> > > >  			return ret;
+> > > >  	}
+> > > >  
+> > > > +	cw_bat->dual_cell = device_property_read_bool(dev, "cellwise,dual-cell");
+> > > > +
+> > > >  	ret = device_property_read_u32(dev, "cellwise,monitor-interval-ms",
+> > > >  				       &cw_bat->poll_interval_ms);
+> > > >  	if (ret) {
+> > > > -- 
+> > > > 2.34.1
+> > > > 
+> > > > 
+> > 
+> > 
 
 _______________________________________________
 Linux-rockchip mailing list
