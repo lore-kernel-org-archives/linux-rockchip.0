@@ -4,86 +4,139 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D720DC3DA64
-	for <linux-rockchip@archiver.kernel.org>; Wed, 31 Jul 2024 12:57:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E2E1BC3DA7F
+	for <linux-rockchip@archiver.kernel.org>; Wed, 31 Jul 2024 12:57:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=nxCIl9pONOwhcmDYR6RsEee5L51JtrJYCvAIcIAlR8A=; b=2+Dk78jC7DuY3k
-	HTY2D1LKW47//Eg/J1yKTyRVG38C4H3bChvEOnk2Q3l9jySpXWkzALlRQudfahn/o2Y9XFJTIgV6X
-	6rey9vCMO+pl/wr4xXHue03Jeq5+5Bv12HGNRHKvokhdVl2ACZMFxktIFRpOiG9rg5Hx9i2vLurR0
-	PV06y2G2AxsEbpwmENKBOxAPFrgbakOd2zhoqHtyqTN4MKORgb+8252pz2TAH/mfpkd5vI8vXFIC7
-	GYlkkfOUnesHctCIRuTffBrY6z7WJ5cj/BrF7UvBvo+wDDARbix2rysOPNRuNGRA09MEgp9VH6ZGr
-	QbhcIZlwly71k6QMo2tg==;
+	List-Owner; bh=stGCAjCiNv0kQX7MN7qXhdOR+3OD++QRYjU0gyM6U1Y=; b=AqOAWQkwYSC3WM
+	XSCcLczECzi2B5k9zwEY6vaFWYbbCWRzVYjhwsMhRQQD4vEPSy9Y8YBWDyebPWIj6yWYXdamDu6Nw
+	c7zsHJuqonp8x4uGiAg1q6vyBtppcq6hynw/To9wdbSiYjQozKNarwZ1UC3M52lUVU5IcYrg+hFXA
+	bKR/NmJZ6Mmv3V6+fQoXx7zZrb2vGxPxSacABLKUxzwen5yiulgmGSfkxICN1ON5U/gVN2ZfiJgSs
+	u007UpH+j3vK3TAz7RlzcACwcXiidIoHj6K1gYgP/XlSn4O9XB9mNg6rRYxlCBZp6r9Q7Q+4/hRkj
+	r1CfNofTR9skrgVQyhpA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sZ8t4-00000001CUs-1YaO;
-	Wed, 31 Jul 2024 12:57:02 +0000
-Received: from mail-qt1-x836.google.com ([2607:f8b0:4864:20::836])
+	id 1sZ8tq-00000001CtG-3TTD;
+	Wed, 31 Jul 2024 12:57:50 +0000
+Received: from mail-oo1-xc30.google.com ([2607:f8b0:4864:20::c30])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sZ8sZ-00000001CMk-1Cq1;
-	Wed, 31 Jul 2024 12:56:33 +0000
-Received: by mail-qt1-x836.google.com with SMTP id d75a77b69052e-45019dccc3aso23190761cf.1;
-        Wed, 31 Jul 2024 05:56:30 -0700 (PDT)
+	id 1sZ8tk-00000001CpQ-4446
+	for linux-rockchip@lists.infradead.org;
+	Wed, 31 Jul 2024 12:57:49 +0000
+Received: by mail-oo1-xc30.google.com with SMTP id 006d021491bc7-5d5bf833de7so3161583eaf.2
+        for <linux-rockchip@lists.infradead.org>; Wed, 31 Jul 2024 05:57:44 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1722430590; x=1723035390; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=1seQq6pVWKt421meYywLs/KfxY3tgGQZFmNZ1IQhRhU=;
-        b=Z1Xe6QaNI1uZISxYQALVJJcwllz7Z1wXgyPoPIj5htrCFzdWXcQh0Bqa5XO6q24Wit
-         FL0gDnKCaiorPZZzNynLBYC4vld0HZa5dUYj6iWpWseaOpsddKCt6oclcZ2Mhf8TZUqU
-         0yc5gFAhB/wL54erZv1J36kPL1S/jySrOe2fS5LwUrTQwtAw5r/1s/lK746+9JiVK8x8
-         lm6vkv41BrwWDMKuZ+f49M9u152VC62IpFCJAhLVf2RNUakF/StZ5tRADfQjUHOHab+q
-         ++v6u/kshmHFgud+Jcr8F8+2hYuKZjlv/H4m7DYWqkn7Zu2Jk2grxnJZRlpDSiL6/Map
-         N2hA==
+        d=broadcom.com; s=google; t=1722430664; x=1723035464; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:autocrypt:from
+         :content-language:references:cc:to:subject:user-agent:mime-version
+         :date:message-id:from:to:cc:subject:date:message-id:reply-to;
+        bh=EzC0eqz8Kjb84+0Jbqizan62tKi+1Crzp5DWFl/GO8k=;
+        b=TV78Xz2HHZyRf4C5iRMyHiBq9mVh6mOMBgeqL/uotwqWK0+MXRwJhQTuYZDE4liUgt
+         WH58fYZi3Ef8/4Rosy6WpTb3D4BW5M3wzw6zO04+Z2Kxv2NfigHwwhqL7xrwwd8uPjRw
+         EszfJV9VVulFdvoFysgOfCweTLCalBDfRdc/Q=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1722430590; x=1723035390;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=1seQq6pVWKt421meYywLs/KfxY3tgGQZFmNZ1IQhRhU=;
-        b=wsOU7GhNN2B8RR18AGQKVknLUT9BbEShCfIWU8987JOlwmeCli89DK3FBWjvNu+YT7
-         EB+Zg/iqT6p8QqZeZS0wLLZjRZzZ+qNyOlcWJDcvkLF4oq2uOjF4cs61pqE+4+MP+7os
-         sJFv3OWMpr6Kk+p4Vg3khfmoMRdO/ExUP6OTMUtMMIJLo2DiHl7y2LwrssIvGyjj8U4F
-         qFXYA/4n5hcX5UA0s983vBVLPNdm1G4Nl8IF0QZJB1MtyCaBrPBgSuRx2uDit4C+pAPS
-         Dqn/J5K6Cl89G4An7VG6f9nzXYoGK8lV3bzvkpf3qgUij05Jbz6rmGxJWRkxu0q0cyBk
-         AvWg==
-X-Forwarded-Encrypted: i=1; AJvYcCXk44Ly2f6rI7ui6eQdh1QZkAB0aJ0Igkv4Lhb6gzKpnmKrn3S4lpe5pqa/E10CPI5C/F4caMVSTFCV4N11QUrjZwen4eOoTbjM8wf1pY2Zt44+s/8/XbNqC2b8fCKMVvStu0QvcNeaxlYui/myrNRFMzVR4WCM+I8=
-X-Gm-Message-State: AOJu0YwmT1Is2CbxC7CATiBUoeX4j/8GEeXTZdD9ihrNnynMSCLxsM7L
-	iJ54weA/lfqeFihJY8HnPwmcLa7drGz463ORZsOBoXcTur5V+BFfz7n22vZl1T5TFH6rP3Kjsg6
-	fHEaGEVquY0mzDC1B5/G54AepYYo=
-X-Google-Smtp-Source: AGHT+IHjDtpIf0QCPWYz+XhMAa8yvBe/ManCTONa09BmUisSVpzkusuCKuxED1ndPBdlxCf66ZyqBkZoqGckyZQwO10=
-X-Received: by 2002:ac8:7d10:0:b0:447:f469:b58d with SMTP id
- d75a77b69052e-45004f4e214mr187667771cf.42.1722430589901; Wed, 31 Jul 2024
- 05:56:29 -0700 (PDT)
+        d=1e100.net; s=20230601; t=1722430664; x=1723035464;
+        h=content-transfer-encoding:in-reply-to:autocrypt:from
+         :content-language:references:cc:to:subject:user-agent:mime-version
+         :date:message-id:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=EzC0eqz8Kjb84+0Jbqizan62tKi+1Crzp5DWFl/GO8k=;
+        b=go+p3CfFYFol/WGKA8RH6Hq7sOd1sROyu8QiTpgrePBo6nGJA69o2GKEowBft3cvZP
+         dvzQIEAoKf9gYI0ms3kIoJZl3bgLAhBfwZkvHJnrHNaSXRbqRzv1FMs2zalDXLQLmQVh
+         Rly4WDgNDBe8DbnwL+ocHqChybITU9Db35kUA9kVxHOcIIeHzKC4FHeFVrXnyQDy1Kv+
+         HWq9un3k6DiRKiqFvbPhEqtRCdhDEf9gU7yy0ONHDle3n/4cSsZYKI3upKZvLSJS+5Lb
+         TesPgECw/TquNyP1fRpGrVBtPNS9zDyo76gHZsW0ThzNfX4ZhOeOivq5i4bJKK4OKyMj
+         0hvw==
+X-Forwarded-Encrypted: i=1; AJvYcCU+0CSL8XPGmBOhoMG2i4CD7UoKrHWSEJ/BgpnleJ5dZ7geWLviOmMK/mxr+AZ1uhZPAsfQxk90up0Lt8wDRDuqlb9Bq85h6vud7bNaEuKq4VhB
+X-Gm-Message-State: AOJu0Yxhl9pBnxPgr3oRjfrIRuC8Alrpakqtre9lULWjxGQNrZpHzYf5
+	h36R5cm1LcjdcKTf6N8MjSIqDD6mkPeL4dIQhyO1LUfNWbFujNbb5r9dFsb+Mw==
+X-Google-Smtp-Source: AGHT+IHnwjS7xUKmnQm2qU+GCK1j/DPPQMAqXjgNJonWiPZW/IiZxnqhcjOzlbYc88CqRd8NLxWBbQ==
+X-Received: by 2002:a05:6358:b409:b0:1ac:efb0:fb2e with SMTP id e5c5f4694b2df-1adc06d4d72mr2646273855d.22.1722430663503;
+        Wed, 31 Jul 2024 05:57:43 -0700 (PDT)
+Received: from [192.168.178.137] (f215227.upc-f.chello.nl. [80.56.215.227])
+        by smtp.gmail.com with ESMTPSA id 6a1803df08f44-6bb3f91a8cfsm72720796d6.60.2024.07.31.05.57.39
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 31 Jul 2024 05:57:42 -0700 (PDT)
+Message-ID: <dd381dc1-454f-4ecd-adb7-55de2e15d592@broadcom.com>
+Date: Wed, 31 Jul 2024 14:57:37 +0200
 MIME-Version: 1.0
-References: <20240731061132.703368-1-jacobe.zang@wesion.com>
- <20240731061132.703368-5-jacobe.zang@wesion.com> <0a78a0fb-0a5e-424f-a801-4a63b9ee1a49@gmail.com>
- <3ded8aea-ee11-43da-9dd7-1259cf931747@broadcom.com> <CABjd4YxiSY0A0iVHGHw9RDey+avxmzUapoLLLyf=80MzVX0yWA@mail.gmail.com>
- <6e34c814-a6dc-4a96-9e46-ca25af67f4f6@broadcom.com>
-In-Reply-To: <6e34c814-a6dc-4a96-9e46-ca25af67f4f6@broadcom.com>
-From: Alexey Charkov <alchark@gmail.com>
-Date: Wed, 31 Jul 2024 15:56:18 +0300
-Message-ID: <CABjd4YxdCh7EceYOfcFxKtV0H7Von0oZAMWD=69sM6y4-CoAQw@mail.gmail.com>
-Subject: Re: [PATCH v6 4/5] wifi: brcmfmac: Add optional lpo clock enable support
-To: Arend van Spriel <arend.vanspriel@broadcom.com>
-Cc: Jacobe Zang <jacobe.zang@wesion.com>, robh@kernel.org, krzk+dt@kernel.org, 
-	heiko@sntech.de, kvalo@kernel.org, davem@davemloft.net, edumazet@google.com, 
-	kuba@kernel.org, pabeni@redhat.com, conor+dt@kernel.org, 
-	efectn@protonmail.com, dsimic@manjaro.org, jagan@edgeble.ai, 
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	arend@broadcom.com, linux-wireless@vger.kernel.org, netdev@vger.kernel.org, 
-	megi@xff.cz, duoming@zju.edu.cn, bhelgaas@google.com, minipli@grsecurity.net, 
-	brcm80211@lists.linux.dev, brcm80211-dev-list.pdl@broadcom.com, 
-	nick@khadas.com
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v5 2/5] dt-bindings: net: wireless: brcm4329-fmac: add
+ clock description for AP6275P
+To: Sebastian Reichel <sebastian.reichel@collabora.com>
+Cc: Krzysztof Kozlowski <krzk@kernel.org>,
+ Jacobe Zang <jacobe.zang@wesion.com>, robh@kernel.org, krzk+dt@kernel.org,
+ heiko@sntech.de, kvalo@kernel.org, davem@davemloft.net, edumazet@google.com,
+ kuba@kernel.org, pabeni@redhat.com, conor+dt@kernel.org,
+ Linus Walleij <linus.walleij@linaro.org>, efectn@protonmail.com,
+ dsimic@manjaro.org, jagan@edgeble.ai, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org, arend@broadcom.com,
+ linux-wireless@vger.kernel.org, netdev@vger.kernel.org, megi@xff.cz,
+ duoming@zju.edu.cn, bhelgaas@google.com, minipli@grsecurity.net,
+ brcm80211@lists.linux.dev, brcm80211-dev-list.pdl@broadcom.com,
+ nick@khadas.com, Andy Green <andy@warmcat.com>
+References: <20240730033053.4092132-1-jacobe.zang@wesion.com>
+ <20240730033053.4092132-3-jacobe.zang@wesion.com>
+ <191025b5268.279b.9b12b7fc0a3841636cfb5e919b41b954@broadcom.com>
+ <f45c1fa7-f321-4a1f-b65c-6ed326a18268@kernel.org>
+ <191030eac78.279b.9b12b7fc0a3841636cfb5e919b41b954@broadcom.com>
+ <3d3b8e0a-7492-4db1-bd73-c30a488edaa7@kernel.org>
+ <191035b8c28.279b.9b12b7fc0a3841636cfb5e919b41b954@broadcom.com>
+ <k3dhdsa5bjzad2ha5e2uurg2azzs773ier5thkot4w2qcvnv54@yuf52eluqsae>
+Content-Language: en-US
+From: Arend van Spriel <arend.vanspriel@broadcom.com>
+Autocrypt: addr=arend.vanspriel@broadcom.com; keydata=
+ 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
+In-Reply-To: <k3dhdsa5bjzad2ha5e2uurg2azzs773ier5thkot4w2qcvnv54@yuf52eluqsae>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240731_055631_352627_61C4F785 
-X-CRM114-Status: GOOD (  41.77  )
+X-CRM114-CacheID: sfid-20240731_055745_132081_92B1F66E 
+X-CRM114-Status: GOOD (  35.77  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,119 +148,130 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gV2VkLCBKdWwgMzEsIDIwMjQgYXQgMzozMuKAr1BNIEFyZW5kIHZhbiBTcHJpZWwKPGFyZW5k
-LnZhbnNwcmllbEBicm9hZGNvbS5jb20+IHdyb3RlOgo+Cj4gT24gNy8zMS8yMDI0IDI6MDEgUE0s
-IEFsZXhleSBDaGFya292IHdyb3RlOgo+ID4gT24gV2VkLCBKdWwgMzEsIDIwMjQgYXQgMjoxNeKA
-r1BNIEFyZW5kIHZhbiBTcHJpZWwKPiA+IDxhcmVuZC52YW5zcHJpZWxAYnJvYWRjb20uY29tPiB3
-cm90ZToKPiA+Pgo+ID4+IE9uIDcvMzEvMjAyNCAxMjoxNiBQTSwgQWxleGV5IENoYXJrb3Ygd3Jv
-dGU6Cj4gPj4+IEhpIEphY29iZSwKPiA+Pj4KPiA+Pj4KPiA+Pj4gT24gMzEvMDcvMjAyNCA5OjEx
-IGFtLCBKYWNvYmUgWmFuZyB3cm90ZToKPiA+Pj4gICA+IFdpRmkgbW9kdWxlcyBvZnRlbiByZXF1
-aXJlIDMya0h6IGNsb2NrIHRvIGZ1bmN0aW9uLiBBZGQgc3VwcG9ydCB0bwo+ID4+PiAgID4gZW5h
-YmxlIHRoZSBjbG9jayB0byBQQ0llIGRyaXZlciBhbmQgbW92ZSAiYnJjbSxiY200MzI5LWZtYWMi
-IGNoZWNrCj4gPj4+ICAgPiB0byB0aGUgdG9wIG9mIGJyY21mX29mX3Byb2JlCj4gPj4+ICAgPgo+
-ID4+PiAgID4gQ28tZGV2ZWxvcGVkLWJ5OiBPbmRyZWogSmlybWFuIDxtZWdpQHhmZi5jej4KPiA+
-Pj4gICA+IFNpZ25lZC1vZmYtYnk6IE9uZHJlaiBKaXJtYW4gPG1lZ2lAeGZmLmN6Pgo+ID4+PiAg
-ID4gU2lnbmVkLW9mZi1ieTogSmFjb2JlIFphbmcgPGphY29iZS56YW5nQHdlc2lvbi5jb20+Cj4g
-Pj4+ICAgPiAtLS0KPiA+Pj4gICA+ICAuLi4vbmV0L3dpcmVsZXNzL2Jyb2FkY29tL2JyY204MDIx
-MS9icmNtZm1hYy9vZi5jICAgIHwgMTIgKysrKysrKysrKystCj4gPj4+ICAgPiAgMSBmaWxlIGNo
-YW5nZWQsIDExIGluc2VydGlvbnMoKyksIDEgZGVsZXRpb24oLSkKPiA+Pj4gICA+Cj4gPj4+ICAg
-PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9uZXQvd2lyZWxlc3MvYnJvYWRjb20vYnJjbTgwMjExL2Jy
-Y21mbWFjL29mLmMKPiA+Pj4gYi9kcml2ZXJzL25ldC93aXJlbGVzcy9icm9hZGNvbS9icmNtODAy
-MTEvYnJjbWZtYWMvb2YuYwo+ID4+PiAgID4gaW5kZXggZTQwNmUxMTQ4MWE2Mi4uN2UwYTJhZDVj
-N2M4YSAxMDA2NDQKPiA+Pj4gICA+IC0tLSBhL2RyaXZlcnMvbmV0L3dpcmVsZXNzL2Jyb2FkY29t
-L2JyY204MDIxMS9icmNtZm1hYy9vZi5jCj4gPj4+ICAgPiArKysgYi9kcml2ZXJzL25ldC93aXJl
-bGVzcy9icm9hZGNvbS9icmNtODAyMTEvYnJjbWZtYWMvb2YuYwo+ID4+PiAgID4gQEAgLTYsNiAr
-Niw3IEBACj4gPj4+ICAgPiAgI2luY2x1ZGUgPGxpbnV4L29mLmg+Cj4gPj4+ICAgPiAgI2luY2x1
-ZGUgPGxpbnV4L29mX2lycS5oPgo+ID4+PiAgID4gICNpbmNsdWRlIDxsaW51eC9vZl9uZXQuaD4K
-PiA+Pj4gICA+ICsjaW5jbHVkZSA8bGludXgvY2xrLmg+Cj4gPj4+ICAgPgo+ID4+PiAgID4gICNp
-bmNsdWRlIDxkZWZzLmg+Cj4gPj4+ICAgPiAgI2luY2x1ZGUgImRlYnVnLmgiCj4gPj4+ICAgPiBA
-QCAtNzAsMTIgKzcxLDE2IEBAIHZvaWQgYnJjbWZfb2ZfcHJvYmUoc3RydWN0IGRldmljZSAqZGV2
-LCBlbnVtCj4gPj4+IGJyY21mX2J1c190eXBlIGJ1c190eXBlLAo+ID4+PiAgID4gIHsKPiA+Pj4g
-ICA+ICAgICAgc3RydWN0IGJyY21mbWFjX3NkaW9fcGQgKnNkaW8gPSAmc2V0dGluZ3MtPmJ1cy5z
-ZGlvOwo+ID4+PiAgID4gICAgICBzdHJ1Y3QgZGV2aWNlX25vZGUgKnJvb3QsICpucCA9IGRldi0+
-b2Zfbm9kZTsKPiA+Pj4gICA+ICsgICAgc3RydWN0IGNsayAqY2xrOwo+ID4+PiAgID4gICAgICBj
-b25zdCBjaGFyICpwcm9wOwo+ID4+PiAgID4gICAgICBpbnQgaXJxOwo+ID4+PiAgID4gICAgICBp
-bnQgZXJyOwo+ID4+PiAgID4gICAgICB1MzIgaXJxZjsKPiA+Pj4gICA+ICAgICAgdTMyIHZhbDsK
-PiA+Pj4gICA+Cj4gPj4+ICAgPiArICAgIGlmICghbnAgfHwgIW9mX2RldmljZV9pc19jb21wYXRp
-YmxlKG5wLCAiYnJjbSxiY200MzI5LWZtYWMiKSkKPiA+Pj4gICA+ICsgICAgICAgIHJldHVybjsK
-PiA+Pj4KPiA+Pj4gRGlkIHlvdSB0ZXN0IHRoaXM/IFRoZSBEVFMgcGF0Y2ggeW91IHNlbnQgYXMg
-cGFydCBvZiB0aGlzIHNlcmllcyBkb2Vzbid0Cj4gPj4+IGxpc3QgImJyY20sYmNtNDMyOS1mbWFj
-IiBpbiB0aGUgY29tcGF0aWJsZSwgc28gdGhpcyB3aWxsIHByb2JhYmx5IHJldHVybgo+ID4+PiBy
-aWdodCBoZXJlLCBza2lwcGluZyBvdmVyIHRoZSByZXN0IG9mIHlvdXIgcGF0Y2guCj4gPj4+Cj4g
-Pj4+IFBsZWFzZSB0ZXN0IGJlZm9yZSByZXNlbmRpbmcsIGJvdGggd2l0aCBhbmQgd2l0aG91dCB0
-aGUgZHJpdmVyIGZvciB0aGUKPiA+Pj4gQmx1ZXRvb3RoIHBhcnQgb2YgdGhlIGNoaXAgKHNpbmNl
-IGl0IGFsc28gdG91Y2hlcyBjbG9ja3MpLgo+ID4+Pgo+ID4+PiBZb3UgYXJlIGFsc28gY2hhbmdp
-bmcgdGhlIGJlaGF2aW9yIGZvciBvdGhlciBzeXN0ZW1zIGJ5IHB1dHRpbmcgdGhpcwo+ID4+PiBj
-aGVjayBmdXJ0aGVyIHVwIHRoZSBwcm9iZSBwYXRoLCB3aGljaCBtaWdodCBicmVhayB0aGluZ3Mg
-Zm9yIG5vIHJlYXNvbi4KPiA+Pj4gQmV0dGVyIHB1dCB5b3VyIGNsay1yZWxhdGVkIGFkZGl0aW9u
-IGJlbG93IHdoZXJlIHRoaXMgY2hlY2sgd2FzCj4gPj4+IG9yaWdpbmFsbHksIHJhdGhlciB0aGFu
-IHJlb3JkZXIgc3R1ZmYgeW91IGRvbid0IGhhdmUgdG8gcmVvcmRlci4KPiA+Pgo+ID4+IFRoYXQg
-d2FzIHVwb24gbXkgc3VnZ2VzdGlvbi4gVGhhdCBjaGVjayB3YXMgb3JpZ2luYWxseSBhdCB0aGUg
-dG9wIG9mIHRoZQo+ID4+IGZ1bmN0aW9uLCBidXQgcGVvcGxlIGFkZGVkIHN0dWZmIGJlZm9yZSB0
-aGF0LiBJIGFncmVlIHRoYXQgbWFrZXMgdGhlCj4gPj4gY29tcGF0aWJsZSAiYnJjbSxicmNtNDMy
-OS1mbWFjIiByZXF1aXJlZCB3aGljaCBpcyB3aGF0IHRoZSB0ZXh0dWFsCj4gPj4gYmluZGluZyBz
-dGF0ZWQgYmVmb3JlIHRoZSBzd2l0Y2ggdG8gWUFNTCB3YXMgbWFkZToKPiA+Pgo+ID4+ICIiIgo+
-ID4+IEJyb2FkY29tIEJDTTQzeHggRnVsbG1hYyB3aXJlbGVzcyBTRElPIGRldmljZXMKPiA+Pgo+
-ID4+IFRoaXMgbm9kZSBwcm92aWRlcyBwcm9wZXJ0aWVzIGZvciBjb250cm9sbGluZyB0aGUgQnJv
-YWRjb20gd2lyZWxlc3MKPiA+PiBkZXZpY2UuIFRoZQo+ID4+IG5vZGUgaXMgZXhwZWN0ZWQgdG8g
-YmUgc3BlY2lmaWVkIGFzIGEgY2hpbGQgbm9kZSB0byB0aGUgU0RJTyBjb250cm9sbGVyIHRoYXQK
-PiA+PiBjb25uZWN0cyB0aGUgZGV2aWNlIHRvIHRoZSBzeXN0ZW0uCj4gPj4KPiA+PiBSZXF1aXJl
-ZCBwcm9wZXJ0aWVzOgo+ID4+Cj4gPj4gICAgLSBjb21wYXRpYmxlIDogU2hvdWxkIGJlICJicmNt
-LGJjbTQzMjktZm1hYyIuCj4gPj4gIiIiCj4gPj4KPiA+PiBOb3Qgc3VyZSB3aGV0aGVyIHRoaXMg
-aXMgc3RpbGwgdHJ1ZSBmb3IgWUFNTCB2ZXJzaW9uIChwb29yIFlBTUwgcmVhZGluZwo+ID4+IHNr
-aWxscyA7LSkgKSwgYnV0IGl0IHNob3VsZCBhcyB0aGUgc3dpdGNoIGZyb20gdGV4dHVhbCB0byBZ
-QU1MIHNob3VsZAo+ID4+IG5vdCBoYXZlIGNoYW5nZWQgdGhlIGJpbmRpbmdzIHNwZWNpZmljYXRp
-b24uCj4gPj4KPiA+Pj4gICA+ICsKPiA+Pj4gICA+ICAgICAgLyogQXBwbGUgQVJNNjQgcGxhdGZv
-cm1zIGhhdmUgdGhlaXIgb3duIGlkZWEgb2YgYm9hcmQgdHlwZSwKPiA+Pj4gcGFzc2VkIGluCj4g
-Pj4+ICAgPiAgICAgICAqIHZpYSB0aGUgZGV2aWNlIHRyZWUuIFRoZXkgYWxzbyBoYXZlIGFuIGFu
-dGVubmEgU0tVIHBhcmFtZXRlcgo+ID4+PiAgID4gICAgICAgKi8KPiA+Pj4gICA+IEBAIC0xMTMs
-OCArMTE4LDEzIEBAIHZvaWQgYnJjbWZfb2ZfcHJvYmUoc3RydWN0IGRldmljZSAqZGV2LCBlbnVt
-Cj4gPj4+IGJyY21mX2J1c190eXBlIGJ1c190eXBlLAo+ID4+PiAgID4gICAgICAgICAgb2Zfbm9k
-ZV9wdXQocm9vdCk7Cj4gPj4+ICAgPiAgICAgIH0KPiA+Pj4gICA+Cj4gPj4+ICAgPiAtICAgIGlm
-ICghbnAgfHwgIW9mX2RldmljZV9pc19jb21wYXRpYmxlKG5wLCAiYnJjbSxiY200MzI5LWZtYWMi
-KSkKPiA+Pj4gICA+ICsgICAgY2xrID0gZGV2bV9jbGtfZ2V0X29wdGlvbmFsX2VuYWJsZWQoZGV2
-LCAibHBvIik7Cj4gPj4+ICAgPiArICAgIGlmICghSVNfRVJSX09SX05VTEwoY2xrKSkgewo+ID4+
-PiAgID4gKyAgICAgICAgYnJjbWZfZGJnKElORk8sICJlbmFibGluZyAzMmtIeiBjbG9ja1xuIik7
-Cj4gPj4+ICAgPiArICAgICAgICBjbGtfc2V0X3JhdGUoY2xrLCAzMjc2OCk7Cj4gPj4+ICAgPiAr
-ICAgIH0gZWxzZSB7Cj4gPj4+ICAgPiAgICAgICAgICByZXR1cm47Cj4gPj4+Cj4gPj4+IFdoeSBy
-ZXR1cm4gaGVyZT8gSWYgdGhlIGNsb2NrIGlzIG9wdGlvbmFsLCBhIGxvdCBvZiBzeXN0ZW1zIHdp
-bGwgbm90Cj4gPj4+IGhhdmUgaXQgLSB0aGF0IHNob3VsZG4ndCBwcmV2ZW50IHRoZSBkcml2ZXIg
-ZnJvbSBwcm9iaW5nLiBBbmQgeW91IGFyZQo+ID4+PiBzdGlsbCBub3QgaGFuZGxpbmcgdGhlIC1F
-UFJPQkVfREVGRVIgY2FzZSB3aGljaCB3YXMgbWVudGlvbmVkIG9uIHlvdXIKPiA+Pj4gcHJldmlv
-dXMgc3VibWlzc2lvbi4KPiA+Pgo+ID4+IFJpZ2h0LiBUaGUgZWxzZSBzdGF0ZW1lbnQgYWJvdmUg
-Y291bGQvc2hvdWxkIGJlOgo+ID4+Cj4gPj4gfSBlbHNlIGlmIChjbGsgJiYgUFRSX0VSUihjbGsp
-ID09IC1FUFJPQkVfREVGRVIpIHsKPiA+PiAgICAgICAgICAgcmV0dXJuIFBUUl9FUlIoY2xrKTsK
-PiA+PiB9Cj4gPgo+ID4gLi4uIHBsdXMgY2hhbmdlIHRoZSBmdW5jdGlvbiBwcm90b3R5cGUgdG8g
-cmV0dXJuIGludCBhbmQgcHJvcGFnYXRlCj4gPiB0aGF0IGVycm9yIGNvZGUgdGhyb3VnaCBicmNt
-Zl9nZXRfbW9kdWxlX3BhcmFtIHRvIGJyY21mX3BjaWVfcHJvYmUncwo+ID4gcmV0dXJuIHZhbHVl
-LiBJIGd1ZXNzIGNoZWNraW5nIGNsayBmb3IgTlVMTCBpcyBhbHNvIHJlZHVuZGFudCBpbiB0aGlz
-Cj4gPiBjYXNlPwo+Cj4gT25seSB3YW50ZWQgdG8gZ2l2ZSB0aGUgc3VnZ2VzdGlvbiB0byBnZXQg
-c3RhcnRlZC4gUHJvcGFnYXRpbmcgdGhlCj4gcmV0dXJuIHZhbHVlIHNlZW1lZCBvYnZpb3VzIHRv
-IG1lLCBidXQgeW91IGFyZSBhYnNvbHV0ZWx5IHJpZ2h0Lgo+IFBUUl9FUlIoTlVMTCkgd2lsbCBw
-cm9iYWJseSBiZSBzb21ldGhpbmcgZWxzZSB0aGFuIC1FUFJPQkVfREVGRVIgYnV0IGl0Cj4gc2Vl
-bXMgb2RkIHRvIG1lLiBNYXliZSBQVFJfRVJSX09SX1pFUk8oY2xrKSBpcyBhIGJldHRlciBvcHRp
-b24gaGVyZS4KCkluZGVlZC4gUGVyaGFwcyBzb21ldGhpbmcgYWxvbmcgdGhlIGxpbmVzIG9mOgoK
-ICAgICAgIGNsayA9IGRldm1fY2xrX2dldF9vcHRpb25hbF9lbmFibGVkKGRldiwgImxwbyIpOwog
-ICAgICAgaWYgKCFJU19FUlJfT1JfTlVMTChjbGspKSB7CiAgICAgICAgICAgICAgIGJyY21mX2Ri
-ZyhJTkZPLCAiZW5hYmxpbmcgMzJrSHogY2xvY2tcbiIpOwogICAgICAgICAgICAgICByZXR1cm4g
-Y2xrX3NldF9yYXRlKGNsaywgMzI3NjgpOwogICAgICAgfSBlbHNlIHsKICAgICAgICAgICAgICAg
-cmV0dXJuIFBUUl9FUlJfT1JfWkVSTyhjbGspOwogICAgICAgfQoKLi4uIHdoaWNoIHNob3VsZCB0
-aGVuIGdvIGF0IHRoZSB2ZXJ5IGVuZCBvZiBicmNtZl9vZl9wcm9iZS4gQW5kIGFsbCBvZgp0aGUg
-ZXhpc3Rpbmcgdm9pZCByZXR1cm5zIHNob3VsZCBnZXQgYXBwcm9wcmlhdGUgZXJybm8ncy4gQW5k
-IHRoZQpmdW5jdGlvbnMgcHJvdG90eXBlcyBzaG91bGQgYmUgdXBkYXRlZCBhbG9uZyB0aGUgY2Fs
-bCBjaGFpbi4gQW5kIHRoZW4KaXQgd291bGQgc3RpbGwgb25seSB3b3JrIGFmdGVyIHB3cnNlcSBp
-cyBhZGRlZCB0byBlbnN1cmUgdGhhdCBwb3dlcgphbmQgd2FrZSBzaWduYWxzIGFyZSBhcHBsaWVk
-IGNvcnJlY3RseSBhbG9uZyB3aXRoIHRoaXMgY2xvY2ssIGFzClNlYmFzdGlhbiBwb2ludGVkIG91
-dCBpbiB0aGUgb3RoZXIgdGhyZWFkIDopCgpXaGljaCByZWFsbHkgcHJvbXB0cyBhIHF1ZXN0aW9u
-OiBzaG91bGQgdGhpcyBjbG9jayBiZSBhZGRlZCB0byB0aGUKUENJZSBkcml2ZXIgYW5kIHRoZSBy
-ZXNwZWN0aXZlIERUIGJpbmRpbmcgaW4gdGhlIGZpcnN0IHBsYWNlLCBvcgpzaG91bGQgaXQgaW5z
-dGVhZCBiZSBjbGFpbWVkIGJ5IHB3cnNlcSwgbGVhdmluZyBicmNtZm1hYyBhbG9uZT8KCkJlc3Qg
-cmVnYXJkcywKQWxleGV5CgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMu
-aW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZv
-L2xpbnV4LXJvY2tjaGlwCg==
+On 7/30/2024 7:38 PM, Sebastian Reichel wrote:
+> Hi,
+> 
+> On Tue, Jul 30, 2024 at 01:16:57PM GMT, Arend Van Spriel wrote:
+>> On July 30, 2024 12:18:20 PM Krzysztof Kozlowski <krzk@kernel.org> wrote:
+>>
+>>> On 30/07/2024 11:52, Arend Van Spriel wrote:
+>>>> On July 30, 2024 11:01:43 AM Krzysztof Kozlowski <krzk@kernel.org> wrote:
+>>>>
+>>>>> On 30/07/2024 08:37, Arend Van Spriel wrote:
+>>>>>> + Linus W
+>>>>>>
+>>>>>> On July 30, 2024 5:31:15 AM Jacobe Zang <jacobe.zang@wesion.com> wrote:
+>>>>>>
+>>>>>>> Not only AP6275P Wi-Fi device but also all Broadcom wireless devices allow
+>>>>>>> external low power clock input. In DTS the clock as an optional choice in
+>>>>>>> the absence of an internal clock.
+>>>>>>>
+>>>>>>> Reviewed-by: Arend van Spriel <arend.vanspriel@broadcom.com>
+>>>>>>> Signed-off-by: Jacobe Zang <jacobe.zang@wesion.com>
+>>>>>>> ---
+>>>>>>> .../bindings/net/wireless/brcm,bcm4329-fmac.yaml          | 8 ++++++++
+>>>>>>> 1 file changed, 8 insertions(+)
+>>>>>>>
+>>>>>>> diff --git
+>>>>>>> a/Documentation/devicetree/bindings/net/wireless/brcm,bcm4329-fmac.yaml
+>>>>>>> b/Documentation/devicetree/bindings/net/wireless/brcm,bcm4329-fmac.yaml
+>>>>>>> index 2c2093c77ec9a..a3607d55ef367 100644
+>>>>>>> --- a/Documentation/devicetree/bindings/net/wireless/brcm,bcm4329-fmac.yaml
+>>>>>>> +++ b/Documentation/devicetree/bindings/net/wireless/brcm,bcm4329-fmac.yaml
+>>>>>>> @@ -122,6 +122,14 @@ properties:
+>>>>>>> NVRAM. This would normally be filled in by the bootloader from platform
+>>>>>>> configuration data.
+>>>>>>>
+>>>>>>> +  clocks:
+>>>>>>> +    items:
+>>>>>>> +      - description: External Low Power Clock input (32.768KHz)
+>>>>>>> +
+>>>>>>> +  clock-names:
+>>>>>>> +    items:
+>>>>>>> +      - const: lpo
+>>>>>>> +
+>>>>>>
+>>>>>> We still have an issue that this clock input is also present in the
+>>>>>> bindings specification broadcom-bluetooth.yaml (not in bluetooth
+>>>>>> subfolder). This clock is actually a chip resource. What happens if both
+>>>>>> are defined and both wifi and bt drivers try to enable this clock? Can this
+>>>>>> be expressed in yaml or can we only put a textual warning in the property
+>>>>>> descriptions?
+>>>>>
+>>>>> Just like all clocks, what would happen? It will be enabled.
+>>>>
+>>>> Oh, wow! Cool stuff. But seriously is it not a problem to have two entities
+>>>> controlling one and the same clock? Is this use-case taken into account by
+>>>> the clock framework?
+>>>
+>>> Yes, it is handled correctly. That's a basic use-case, handled by CCF
+>>> since some years (~12?). Anyway, whatever OS is doing (or not doing)
+>>> with the clocks is independent of the bindings here. The question is
+>>
+>> Agree. Probably the bindings would not be the place to document this if it
+>> would be an issue.
+>>
+>>> about hardware - does this node, which represents PCI interface of the
+>>> chip, has/uses the clocks.
+>>
+>> The schematics I found for the wifi module and the khadas edge platform show
+>> these are indeed wired to the chip.
+> 
+> I have a Rockchip RK3588 Evaluation Board on my desk, which uses the
+> same WLAN AP6275P module. I think I already commented on a prior
+> version of this series: The LPO clock is needed to make the PCIe
+> device visible on the bus. That means this series only works if the
+> clock has already been running. Otherwise the PCIe driver will never
+> be probed. To become visible the devices requires:
+> 
+> 1. The LPO clock to be enabled
+> 2. Power to be applied
+> 3. The WL_EN gpio to be configured correctly
+> 
+> If one of the above is not met, the device will not even appear in
+> 'lspci'. I believe the binding needs to take into consideration, that
+> pwrseq is needed for the PCIe side. Fortuantely the heavy lifting of
+> creating the proper infrastructure for this has already been done by
+> Bartosz Golaszewski for Qualcomm WLAN chips. What is missing is a
+> pwrseq driver for the Broadcom chip (or this specific module?).
+
+That does not really make sense. There is no relation between the LPO 
+clock and the PCIe clocks so 1) being a requirement for probing the 
+device looks odd. It also does not match past experience when I assisted 
+Andy Green in getting this module up and running almost two years ago.
+
+"""
+On 11/9/22 18:26, Arend Van Spriel wrote:
+ > On November 8, 2022 11:48:22 AM Andy Green <andy@warmcat.com> wrote:
+ >> Hi -
+ >>
+ >> I'm trying to bring up AP6275 support on 6.1-rc4... I have tried a 
+forward-ported sdk broadcom driver from the 5.10 based soc sdk, and the 
+mainline brcm fullmac driver.
+ >
+ > Do you have a reference to the SDK? For what SoC?
+
+Hi Arend -
+
+It's the OOT broadcom driver that came with the latest (Sept 2022) 
+vendor SDK for RK3588, from Rockchip.  Their evb has an AP6275 onboard.
+
+PCIe generally is working on this (eg, for NVMe in the PCIe 4-lane slot) 
+and for network, and the PCIe part seems OK when I hack in a gpio 
+regulator to hold up the module enable gpio.
+"""
+
+So regarding 2) and 3) I agree with you.
+
+Regards,
+Arend
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
