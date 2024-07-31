@@ -4,89 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0D09CC3DA64
-	for <linux-rockchip@archiver.kernel.org>; Wed, 31 Jul 2024 10:17:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E0A9FC3DA7F
+	for <linux-rockchip@archiver.kernel.org>; Wed, 31 Jul 2024 10:45:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=XV5sQnliOR3thDm0HJdS7BsyrS3gT1882qBr30189Mo=; b=W08CEc2nBO+XoA
-	kY3L9YxLmwUihvA3JrJLQsMclUlIya4Sl65uU9NMVGwMx87vzdi6JOjbXC/x6TilseZSxI2FG/lIx
-	mFElMau3lg13heHy5BupnfzbK/CVqeFhQVrbkulO7K5M56vJNvr7NxL/HdiONHmnHIvWawzA1u0+z
-	Vo0N2FQj60345mtTgvmK8yNS61IxsCZV22Uk9cWxqP8DmjEaMh+BSaXacmCC8sKUI9y6t/BYoWPgH
-	YleFnbf8H5l16W2MsXPn9AJ5sH+j9l51+f2OfTQs0y52eGTa43iQvgR4+GloceTbUKNzTcDEM0b+R
-	HQRu6TsekvvOTHDkCnew==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
+	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=c2ZBs9Dz0jmLA7yiws0jWqVcgCN25aic/p9m6QMtTeo=; b=x5L+Jze/tYLKyV
+	XhJGXSv7KrumbXdtxj9RfvCcW4cbmctejeUEl3MbaaPDnHISWC6ya33Zk++VZcSnFyeIbLbBe2Are
+	0gzbIUQzYur0b2aDeHH/qnQ327phfjiCpdB/+mz69T6ap8oA5tLirhvZOnc/920HLTBJARucTSl82
+	S2vPS8ps56QBqqwE8TxBrrj2iLg5xUxfOPuuPJmIcy1BB68X//tUrs8X1aZA/v8DcP7x66DoPZPpU
+	//5tWAYHl4NJuW43GAtnQWqz6sOaSauduwN4mSbK8MGFKuuKA00O8oiDG709UNA/6mlwVluP17ftM
+	HPlW6lxwrhKa+xmhhgYQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sZ6Og-00000000hKL-3hq8;
-	Wed, 31 Jul 2024 10:17:30 +0000
-Received: from mail-lf1-x12d.google.com ([2a00:1450:4864:20::12d])
+	id 1sZ6q1-00000000m3h-0Tmk;
+	Wed, 31 Jul 2024 10:45:45 +0000
+Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sZ6OD-00000000hEG-1ESd;
-	Wed, 31 Jul 2024 10:17:02 +0000
-Received: by mail-lf1-x12d.google.com with SMTP id 2adb3069b0e04-530ae4ef29dso1609173e87.3;
-        Wed, 31 Jul 2024 03:17:00 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1722421019; x=1723025819; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=0AaaFuIf1xRzlWKEfSWSyC0cUztpO1y/p+yF/M4k91k=;
-        b=jRVKg8FOpBDFkJCPQKSTvp0k9SeZ9Gilgj0vnUvQslKa91JYz5M40Za8ArCZqNX5yq
-         abd0EgPB/jtSyXwif76dthg3cPkjMfitoIPuABavxRskVUXEm5IusSCABRsf3F53AirY
-         LDaxBEMjTAtdpKEDNqTSEmPIlDcxeRmvoSVALIJrLPN0NjfOiG4YbjvsxLsccWkFp+Ai
-         CMZzQqMDc6cApKMJ4PaH3yyrbpSOuNMD50X2h5RwXlhEzQqX0x5JOxDuAzv5lGkS/tVs
-         XV46Zrc8albVQ60BjOZck9MHLJEb/nC2n8k6qAH+p3qD4sQ0kaTcEPA9os1zK6OIkWdF
-         N7vg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1722421019; x=1723025819;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=0AaaFuIf1xRzlWKEfSWSyC0cUztpO1y/p+yF/M4k91k=;
-        b=vqjn+Z05KqoI6Qjuod46NhgLOtWrKGu4wjXWYfXoO+maPjRA05e3OlCvKBXWKNW0cy
-         EIqJWD3OmyqVVuF06+nfOgShZ6BJ4azqguletPy7J5nB8dlb3AT9NK1X+5Ile2I+XHrc
-         pcuWky2lFk/bd23qcJIWRjIvMm+m+Y4PPWrW+IiIGlffjdrdpjh/TN+eObL84+Zhw+8G
-         hw8t+dgwbyW2Kc+lyoKxxI31rXYUDf2WNNvVU1UU86xHS/qa88H9ScjqJ7IobsmqR5hL
-         mwLdBpguBO8gKRvGyoJxhD/Ir4wKrS1+JVkEhwRm2Xtb6MZcMudo16/0EK6i3jOpMOgm
-         bOsA==
-X-Forwarded-Encrypted: i=1; AJvYcCVEoC9noUCjVMP4VsdKrocyElasTRC5oegwPJaa0AfPmkxB0PPPv3WFaD7TV3/i5ZwujJyu5k2Ih6F2aKJG5BPW@lists.infradead.org, AJvYcCWmsW/Z9IZYvletuB6YOc4ISbpeDrVeVNeo9i2vimXpT3hUrWDHT6iRJ9YKJQol76jLeMZtMAkuFDeE+vYoGqA=@lists.infradead.org
-X-Gm-Message-State: AOJu0YyxuK+pX8NfnL7IC+2VS0id/t4LENnOlE75nKqfeBgk93MuTVjT
-	oLPsoowg2yBhXKNS8Y8CEiB1sQ0/0d9QzBywfrrfd7OIxbSnOzzi
-X-Google-Smtp-Source: AGHT+IF2e1PeQYS2su4wh/SIyoSoRuTA/mOWzxXZEnnmqqjxiriV4Tt63IghqsPDtpogPid6UjTSbQ==
-X-Received: by 2002:a19:8c11:0:b0:52c:c9e4:3291 with SMTP id 2adb3069b0e04-5309b2e0b50mr8248953e87.60.1722421018492;
-        Wed, 31 Jul 2024 03:16:58 -0700 (PDT)
-Received: from [172.30.17.119] ([194.247.191.114])
-        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-52fd5c0820esm2149509e87.167.2024.07.31.03.16.56
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 31 Jul 2024 03:16:57 -0700 (PDT)
-Message-ID: <0a78a0fb-0a5e-424f-a801-4a63b9ee1a49@gmail.com>
-Date: Wed, 31 Jul 2024 13:16:56 +0300
+	id 1sZ5mG-00000000X9j-44Q0
+	for linux-rockchip@lists.infradead.org;
+	Wed, 31 Jul 2024 09:37:50 +0000
+Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
+	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+	(Exim 4.92)
+	(envelope-from <mkl@pengutronix.de>)
+	id 1sZ5mF-0005M3-Ch
+	for linux-rockchip@lists.infradead.org; Wed, 31 Jul 2024 11:37:47 +0200
+Received: from [2a0a:edc0:0:b01:1d::7b] (helo=bjornoya.blackshift.org)
+	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <mkl@pengutronix.de>)
+	id 1sZ5mE-003UcP-VD
+	for linux-rockchip@lists.infradead.org; Wed, 31 Jul 2024 11:37:46 +0200
+Received: from dspam.blackshift.org (localhost [127.0.0.1])
+	by bjornoya.blackshift.org (Postfix) with SMTP id 9AE7E3127C2
+	for <linux-rockchip@lists.infradead.org>; Wed, 31 Jul 2024 09:37:46 +0000 (UTC)
+Received: from hardanger.blackshift.org (unknown [172.20.34.65])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(Client did not present a certificate)
+	by bjornoya.blackshift.org (Postfix) with ESMTPS id 348723127B5;
+	Wed, 31 Jul 2024 09:37:43 +0000 (UTC)
+Received: from [172.20.34.65] (localhost [::1])
+	by hardanger.blackshift.org (OpenSMTPD) with ESMTP id b4adc51c;
+	Wed, 31 Jul 2024 09:37:42 +0000 (UTC)
+From: Marc Kleine-Budde <mkl@pengutronix.de>
+Subject: [PATCH can-next v2 00/20] an: rockchip_canfd: add support for
+ CAN-FD IP core found on Rockchip RK3568
+Date: Wed, 31 Jul 2024 11:37:02 +0200
+Message-Id: <20240731-rockchip-canfd-v2-0-d9604c5b4be8@pengutronix.de>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v6 4/5] wifi: brcmfmac: Add optional lpo clock enable
- support
-To: Jacobe Zang <jacobe.zang@wesion.com>, robh@kernel.org,
- krzk+dt@kernel.org, heiko@sntech.de, kvalo@kernel.org, davem@davemloft.net,
- edumazet@google.com, kuba@kernel.org, pabeni@redhat.com,
- conor+dt@kernel.org, arend.vanspriel@broadcom.com
-Cc: efectn@protonmail.com, dsimic@manjaro.org, jagan@edgeble.ai,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
- arend@broadcom.com, linux-wireless@vger.kernel.org, netdev@vger.kernel.org,
- megi@xff.cz, duoming@zju.edu.cn, bhelgaas@google.com,
- minipli@grsecurity.net, brcm80211@lists.linux.dev,
- brcm80211-dev-list.pdl@broadcom.com, nick@khadas.com
-References: <20240731061132.703368-1-jacobe.zang@wesion.com>
- <20240731061132.703368-5-jacobe.zang@wesion.com>
-Content-Language: en-US
-From: Alexey Charkov <alchark@gmail.com>
-In-Reply-To: <20240731061132.703368-5-jacobe.zang@wesion.com>
+X-B4-Tracking: v=1; b=H4sIAL8FqmYC/3WNwQqDMBBEf0X23C1JtEp78j+KB7vZ6FJIJEnFI
+ v57g/cehzfzZofEUTjBo9oh8ipJgi/BXCqgefQTo9iSwSjTqM7cMQZ60ywL0uidxcbUNXXaKaI
+ WymiJ7GQ7hU8oFfS8ZRgKmSXlEL/n06pP/k+6alToRm1uytn2xXW/sJ8+OQYv29UyDMdx/AAM9
+ a6puwAAAA==
+To: kernel@pengutronix.de, Vincent Mailhol <mailhol.vincent@wanadoo.fr>, 
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+ Philipp Zabel <p.zabel@pengutronix.de>, 
+ Elaine Zhang <zhangqing@rock-chips.com>, 
+ David Jander <david.jander@protonic.nl>
+Cc: Simon Horman <horms@kernel.org>, linux-can@vger.kernel.org, 
+ netdev@vger.kernel.org, devicetree@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+ linux-kernel@vger.kernel.org, Marc Kleine-Budde <mkl@pengutronix.de>, 
+ David Jander <david@protonic.nl>
+X-Mailer: b4 0.15-dev-37811
+X-Developer-Signature: v=1; a=openpgp-sha256; l=3819; i=mkl@pengutronix.de;
+ h=from:subject:message-id; bh=GO59upStYuX6KDK7/B4Tl+IdeOZBkFxd5/MzaQiLUek=;
+ b=owEBbQGS/pANAwAKASg4oj56LbxvAcsmYgBmqgXEP5iAQFsodcibHwYKUukXtw/a3cNK8Kzh9
+ RCpVgiy+GuJATMEAAEKAB0WIQRQQLqG4LYE3Sm8Pl8oOKI+ei28bwUCZqoFxAAKCRAoOKI+ei28
+ b206CACHikVqA+GW1UJ7oNs7+JlNvNkHAddEvCZuQ6aPmfOFivPx4W9H67xDNwhvQuEPZTQ9nZ5
+ KEO3dxLCw9tyHXkIqVoXFDl72Rh/+sMmcg/1HWOD/7PPu3TFbC69u3aKEs6bln6mNXcQiZ1nT+S
+ uaClVyRUVNNLPzHYFbRM11o5+iWQh7UvEXOflrMga5GBpwwkP2jKGsz2Zx88qg42dzygqElZ5+q
+ 8wYrXzuFpvO5BGhOiHVk/NNxhFCvsLxl034bl2Dz0WkmsHmr1H1NljxFuhGmzfnhJLtvXQ6j3sn
+ IWmvAVlD0apAs9q4UGrEv+4PmSJNDMCaxDGjWTJF39JqLIcd
+X-Developer-Key: i=mkl@pengutronix.de; a=openpgp;
+ fpr=C1400BA0B3989E6FBC7D5B5C2B5EE211C58AEA54
+X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
+X-SA-Exim-Mail-From: mkl@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240731_031701_356679_8949AC5B 
-X-CRM114-Status: GOOD (  21.79  )
+X-CRM114-CacheID: sfid-20240731_023749_051627_6F1ABF12 
+X-CRM114-Status: GOOD (  13.66  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,64 +104,92 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGkgSmFjb2JlLAoKCk9uIDMxLzA3LzIwMjQgOToxMSBhbSwgSmFjb2JlIFphbmcgd3JvdGU6CiA+
-IFdpRmkgbW9kdWxlcyBvZnRlbiByZXF1aXJlIDMya0h6IGNsb2NrIHRvIGZ1bmN0aW9uLiBBZGQg
-c3VwcG9ydCB0bwogPiBlbmFibGUgdGhlIGNsb2NrIHRvIFBDSWUgZHJpdmVyIGFuZCBtb3ZlICJi
-cmNtLGJjbTQzMjktZm1hYyIgY2hlY2sKID4gdG8gdGhlIHRvcCBvZiBicmNtZl9vZl9wcm9iZQog
-PgogPiBDby1kZXZlbG9wZWQtYnk6IE9uZHJlaiBKaXJtYW4gPG1lZ2lAeGZmLmN6PgogPiBTaWdu
-ZWQtb2ZmLWJ5OiBPbmRyZWogSmlybWFuIDxtZWdpQHhmZi5jej4KID4gU2lnbmVkLW9mZi1ieTog
-SmFjb2JlIFphbmcgPGphY29iZS56YW5nQHdlc2lvbi5jb20+CiA+IC0tLQogPsKgIC4uLi9uZXQv
-d2lyZWxlc3MvYnJvYWRjb20vYnJjbTgwMjExL2JyY21mbWFjL29mLmPCoMKgwqAgfCAxMiArKysr
-KysrKysrKy0KID7CoCAxIGZpbGUgY2hhbmdlZCwgMTEgaW5zZXJ0aW9ucygrKSwgMSBkZWxldGlv
-bigtKQogPgogPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9uZXQvd2lyZWxlc3MvYnJvYWRjb20vYnJj
-bTgwMjExL2JyY21mbWFjL29mLmMgCmIvZHJpdmVycy9uZXQvd2lyZWxlc3MvYnJvYWRjb20vYnJj
-bTgwMjExL2JyY21mbWFjL29mLmMKID4gaW5kZXggZTQwNmUxMTQ4MWE2Mi4uN2UwYTJhZDVjN2M4
-YSAxMDA2NDQKID4gLS0tIGEvZHJpdmVycy9uZXQvd2lyZWxlc3MvYnJvYWRjb20vYnJjbTgwMjEx
-L2JyY21mbWFjL29mLmMKID4gKysrIGIvZHJpdmVycy9uZXQvd2lyZWxlc3MvYnJvYWRjb20vYnJj
-bTgwMjExL2JyY21mbWFjL29mLmMKID4gQEAgLTYsNiArNiw3IEBACiA+wqAgI2luY2x1ZGUgPGxp
-bnV4L29mLmg+CiA+wqAgI2luY2x1ZGUgPGxpbnV4L29mX2lycS5oPgogPsKgICNpbmNsdWRlIDxs
-aW51eC9vZl9uZXQuaD4KID4gKyNpbmNsdWRlIDxsaW51eC9jbGsuaD4KID4KID7CoCAjaW5jbHVk
-ZSA8ZGVmcy5oPgogPsKgICNpbmNsdWRlICJkZWJ1Zy5oIgogPiBAQCAtNzAsMTIgKzcxLDE2IEBA
-IHZvaWQgYnJjbWZfb2ZfcHJvYmUoc3RydWN0IGRldmljZSAqZGV2LCBlbnVtIApicmNtZl9idXNf
-dHlwZSBidXNfdHlwZSwKID7CoCB7CiA+wqDCoMKgwqDCoCBzdHJ1Y3QgYnJjbWZtYWNfc2Rpb19w
-ZCAqc2RpbyA9ICZzZXR0aW5ncy0+YnVzLnNkaW87CiA+wqDCoMKgwqDCoCBzdHJ1Y3QgZGV2aWNl
-X25vZGUgKnJvb3QsICpucCA9IGRldi0+b2Zfbm9kZTsKID4gK8KgwqDCoCBzdHJ1Y3QgY2xrICpj
-bGs7CiA+wqDCoMKgwqDCoCBjb25zdCBjaGFyICpwcm9wOwogPsKgwqDCoMKgwqAgaW50IGlycTsK
-ID7CoMKgwqDCoMKgIGludCBlcnI7CiA+wqDCoMKgwqDCoCB1MzIgaXJxZjsKID7CoMKgwqDCoMKg
-IHUzMiB2YWw7CiA+CiA+ICvCoMKgwqAgaWYgKCFucCB8fCAhb2ZfZGV2aWNlX2lzX2NvbXBhdGli
-bGUobnAsICJicmNtLGJjbTQzMjktZm1hYyIpKQogPiArwqDCoMKgwqDCoMKgwqAgcmV0dXJuOwoK
-RGlkIHlvdSB0ZXN0IHRoaXM/IFRoZSBEVFMgcGF0Y2ggeW91IHNlbnQgYXMgcGFydCBvZiB0aGlz
-IHNlcmllcyBkb2Vzbid0IApsaXN0ICJicmNtLGJjbTQzMjktZm1hYyIgaW4gdGhlIGNvbXBhdGli
-bGUsIHNvIHRoaXMgd2lsbCBwcm9iYWJseSByZXR1cm4gCnJpZ2h0IGhlcmUsIHNraXBwaW5nIG92
-ZXIgdGhlIHJlc3Qgb2YgeW91ciBwYXRjaC4KClBsZWFzZSB0ZXN0IGJlZm9yZSByZXNlbmRpbmcs
-IGJvdGggd2l0aCBhbmQgd2l0aG91dCB0aGUgZHJpdmVyIGZvciB0aGUgCkJsdWV0b290aCBwYXJ0
-IG9mIHRoZSBjaGlwIChzaW5jZSBpdCBhbHNvIHRvdWNoZXMgY2xvY2tzKS4KCllvdSBhcmUgYWxz
-byBjaGFuZ2luZyB0aGUgYmVoYXZpb3IgZm9yIG90aGVyIHN5c3RlbXMgYnkgcHV0dGluZyB0aGlz
-IApjaGVjayBmdXJ0aGVyIHVwIHRoZSBwcm9iZSBwYXRoLCB3aGljaCBtaWdodCBicmVhayB0aGlu
-Z3MgZm9yIG5vIHJlYXNvbi4gCkJldHRlciBwdXQgeW91ciBjbGstcmVsYXRlZCBhZGRpdGlvbiBi
-ZWxvdyB3aGVyZSB0aGlzIGNoZWNrIHdhcyAKb3JpZ2luYWxseSwgcmF0aGVyIHRoYW4gcmVvcmRl
-ciBzdHVmZiB5b3UgZG9uJ3QgaGF2ZSB0byByZW9yZGVyLgoKID4gKwogPsKgwqDCoMKgwqAgLyog
-QXBwbGUgQVJNNjQgcGxhdGZvcm1zIGhhdmUgdGhlaXIgb3duIGlkZWEgb2YgYm9hcmQgdHlwZSwg
-CnBhc3NlZCBpbgogPsKgwqDCoMKgwqDCoCAqIHZpYSB0aGUgZGV2aWNlIHRyZWUuIFRoZXkgYWxz
-byBoYXZlIGFuIGFudGVubmEgU0tVIHBhcmFtZXRlcgogPsKgwqDCoMKgwqDCoCAqLwogPiBAQCAt
-MTEzLDggKzExOCwxMyBAQCB2b2lkIGJyY21mX29mX3Byb2JlKHN0cnVjdCBkZXZpY2UgKmRldiwg
-ZW51bSAKYnJjbWZfYnVzX3R5cGUgYnVzX3R5cGUsCiA+wqDCoMKgwqDCoMKgwqDCoMKgIG9mX25v
-ZGVfcHV0KHJvb3QpOwogPsKgwqDCoMKgwqAgfQogPgogPiAtwqDCoMKgIGlmICghbnAgfHwgIW9m
-X2RldmljZV9pc19jb21wYXRpYmxlKG5wLCAiYnJjbSxiY200MzI5LWZtYWMiKSkKID4gK8KgwqDC
-oCBjbGsgPSBkZXZtX2Nsa19nZXRfb3B0aW9uYWxfZW5hYmxlZChkZXYsICJscG8iKTsKID4gK8Kg
-wqDCoCBpZiAoIUlTX0VSUl9PUl9OVUxMKGNsaykpIHsKID4gK8KgwqDCoMKgwqDCoMKgIGJyY21m
-X2RiZyhJTkZPLCAiZW5hYmxpbmcgMzJrSHogY2xvY2tcbiIpOwogPiArwqDCoMKgwqDCoMKgwqAg
-Y2xrX3NldF9yYXRlKGNsaywgMzI3NjgpOwogPiArwqDCoMKgIH0gZWxzZSB7CiA+wqDCoMKgwqDC
-oMKgwqDCoMKgIHJldHVybjsKCldoeSByZXR1cm4gaGVyZT8gSWYgdGhlIGNsb2NrIGlzIG9wdGlv
-bmFsLCBhIGxvdCBvZiBzeXN0ZW1zIHdpbGwgbm90IApoYXZlIGl0IC0gdGhhdCBzaG91bGRuJ3Qg
-cHJldmVudCB0aGUgZHJpdmVyIGZyb20gcHJvYmluZy4gQW5kIHlvdSBhcmUgCnN0aWxsIG5vdCBo
-YW5kbGluZyB0aGUgLUVQUk9CRV9ERUZFUiBjYXNlIHdoaWNoIHdhcyBtZW50aW9uZWQgb24geW91
-ciAKcHJldmlvdXMgc3VibWlzc2lvbi4KCkJlc3QgcmVnYXJkcywKQWxleGV5CgpfX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWls
-aW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMu
-aW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+This series adds support for the CAN-FD IP core found on the Rockchip
+RK3568.
+
+The IP core is a bit complicated and has several documented errata.
+The driver is added in several stages, first the base driver including
+the RX-path. Then several workarounds for errata and the TX-path, and
+finally features like hardware time stamping, loop-back mode and
+bus error reporting.
+
+regards,
+Marc
+
+Signed-off-by: Marc Kleine-Budde <mkl@pengutronix.de>
+---
+Changes in v2:
+- dt-bindings: remove redundant words from subject and patch
+  description (thanks Rob)
+- dt-bindings: clean up clock- and reset-names (thanks Rob)
+- base driver: add missing bitfield.h header
+- base driver: rkcanfd_handle_rx_int_one(): initialize header to avoid
+  uninitialzied variable warning on m68k
+- base driver: rkcanfd_get_berr_counter_raw(): don't add assigned only
+  variable (bec_raw), move to 14/20 (thanks Simon)
+- CAN-FD frame equal check + TX-path: squash, to avoid unused
+  functions (thanks Simon)
+- TX-path: rkcanfd_handle_tx_done_one(): don't add assigned only
+  variable (skb), move to 18/20 (thanks Simon)
+- HW-timetamping: add missing timecounter.h header (thanks Simon)
+- Link to v1: https://lore.kernel.org/all/20240729-rockchip-canfd-v1-0-fa1250fd6be3@pengutronix.de
+
+---
+David Jander (2):
+      arm64: dts: rockchip: add CAN-FD controller nodes to rk3568
+      arm64: dts: rockchip: mecsbc: add CAN0 and CAN1 interfaces
+
+Marc Kleine-Budde (18):
+      dt-bindings: can: rockchip_canfd: add rockchip CAN-FD controller
+      can: rockchip_canfd: add driver for Rockchip CAN-FD controller
+      can: rockchip_canfd: add quirks for errata workarounds
+      can: rockchip_canfd: add quirk for broken CAN-FD support
+      can: rockchip_canfd: add support for rk3568v3
+      can: rockchip_canfd: add notes about known issues
+      can: rockchip_canfd: rkcanfd_handle_rx_int_one(): implement workaround for erratum 5: check for empty FIFO
+      can: rockchip_canfd: rkcanfd_register_done(): add warning for erratum 5
+      can: rockchip_canfd: add TX PATH
+      can: rockchip_canfd: implement workaround for erratum 6
+      can: rockchip_canfd: implement workaround for erratum 12
+      can: rockchip_canfd: rkcanfd_get_berr_counter_corrected(): work around broken {RX,TX}ERRORCNT register
+      can: rockchip_canfd: add stats support for errata workarounds
+      can: rockchip_canfd: prepare to use full TX-FIFO depth
+      can: rockchip_canfd: enable full TX-FIFO depth of 2
+      can: rockchip_canfd: add hardware timestamping support
+      can: rockchip_canfd: add support for CAN_CTRLMODE_LOOPBACK
+      can: rockchip_canfd: add support for CAN_CTRLMODE_BERR_REPORTING
+
+ .../bindings/net/can/rockchip,canfd.yaml           |  76 ++
+ MAINTAINERS                                        |   8 +
+ arch/arm64/boot/dts/rockchip/rk3568-mecsbc.dts     |  14 +
+ arch/arm64/boot/dts/rockchip/rk3568.dtsi           |  39 +
+ drivers/net/can/Kconfig                            |   1 +
+ drivers/net/can/Makefile                           |   1 +
+ drivers/net/can/rockchip/Kconfig                   |   9 +
+ drivers/net/can/rockchip/Makefile                  |  10 +
+ drivers/net/can/rockchip/rockchip_canfd-core.c     | 972 +++++++++++++++++++++
+ drivers/net/can/rockchip/rockchip_canfd-ethtool.c  |  73 ++
+ drivers/net/can/rockchip/rockchip_canfd-rx.c       | 299 +++++++
+ .../net/can/rockchip/rockchip_canfd-timestamp.c    | 105 +++
+ drivers/net/can/rockchip/rockchip_canfd-tx.c       | 167 ++++
+ drivers/net/can/rockchip/rockchip_canfd.h          | 553 ++++++++++++
+ 14 files changed, 2327 insertions(+)
+---
+base-commit: 1722389b0d863056d78287a120a1d6cadb8d4f7b
+change-id: 20240729-rockchip-canfd-4233c71f0cc6
+
+Best regards,
+-- 
+Marc Kleine-Budde <mkl@pengutronix.de>
+
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
