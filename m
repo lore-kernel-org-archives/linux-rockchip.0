@@ -4,84 +4,116 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E9972C3DA64
-	for <linux-rockchip@archiver.kernel.org>; Wed, 31 Jul 2024 15:13:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B989EC3DA7F
+	for <linux-rockchip@archiver.kernel.org>; Wed, 31 Jul 2024 15:31:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Subject:References:In-Reply-To:
-	Message-ID:Date:CC:To:From:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=FaSdz9KL5ux6ZPHvoRb5Sc5OFl93/VfcyiEQa4kh6ts=; b=ICGRkY0WA/HJwq
-	S4QaUQWXhqWieuQndgISL6vS+t/h/hhPbW7GuVpxkGYjOpVhs6Qi/FrzWRIZ1M0nysZjge1xSUJ5D
-	y+v5IsaPh6ndEpCkGcdiQghIhJ1KUw57raInrhOneTraVSGR9VBYnB4Kn5T62CTcX3JlHi9kZeQsQ
-	b47DRSZ69yOM7dwb5N6DdY7zSaed7/wfUUmXV1xVKu/I0PR8EJClhQcmHpZjNbm9fddA+vmXO7NY1
-	PnC6j5d/WNr54SY+ErBIiaBCiPJ5F8F8AZrXRQCjEAz2TelrxnFunhLbC6gedoMHPKLeg66D87/dF
-	PShsg6BusuwDZYkdVNwA==;
+	List-Owner; bh=wIZU/ERNTtCKTt+m0HJMtP0MmTNOPEXbK7X2fs4Uc8U=; b=CN7mkgxqaghGXM
+	g4aFB7DjQZnsAoJnrlOgeJiCcZpYC5ok4UEaRArgq2uZbbcAUZWcr+Lkh5k2ulceZoYZ4DZ3VRp0n
+	GfZLQ1yhPtNwvCDQ2jm76TKGvf5dIYYfvkhgQWNTTYhnIWp1FQJDvm26YCrldD5hTZ+bNqaot0rjO
+	lo6yr2hdBHzIVXUc1VuAGYRE9IsWcLMAVYUP1nReRUb1TMmOZ4KxzLO6kqVTaWJI8JqHI/56LJFJM
+	f3eaGUUigACANJTTh5u0+PraWlWQmw9iw8/rscGoTaSldoQ4nLL7/SXsrz53mpVut36uePbj6AL27
+	DaOudfI7humMqLxhc+mg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sZB1I-00000001eqo-3866;
-	Wed, 31 Jul 2024 15:13:40 +0000
-Received: from mail-pf1-x42c.google.com ([2607:f8b0:4864:20::42c])
+	id 1sZBII-00000001jDN-2439;
+	Wed, 31 Jul 2024 15:31:14 +0000
+Received: from mail-dm6nam12olkn20801.outbound.protection.outlook.com ([2a01:111:f403:2c17::801] helo=NAM12-DM6-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sZB0Y-00000001eXY-3wyM
+	id 1sZBIF-00000001jCQ-1c2i
 	for linux-rockchip@lists.infradead.org;
-	Wed, 31 Jul 2024 15:12:57 +0000
-Received: by mail-pf1-x42c.google.com with SMTP id d2e1a72fcca58-70d23caf8ddso5118861b3a.0
-        for <linux-rockchip@lists.infradead.org>; Wed, 31 Jul 2024 08:12:54 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=broadcom.com; s=google; t=1722438773; x=1723043573; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:subject:user-agent
-         :references:in-reply-to:message-id:date:cc:to:from:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=ydsvrBXtt6nU238Px/qRdSbaJLxYYF7XQP8F6wgRzZA=;
-        b=TNJhJDaC85HIEM8SR0xC0HGejvbrvypWSRY2oZGSQl7QS4FA/x/lH6hfm/ruH393oa
-         mRd8hUL85l1O4E1FPkTToGwhPsqCXYgIua6yF8y0+X79o2MxLmSkd5lCqICWcYFvndVd
-         oeWzptfb0NqgujOplGtyBziN6tdVQXNyF1HE8=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1722438773; x=1723043573;
-        h=content-transfer-encoding:mime-version:subject:user-agent
-         :references:in-reply-to:message-id:date:cc:to:from
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=ydsvrBXtt6nU238Px/qRdSbaJLxYYF7XQP8F6wgRzZA=;
-        b=DryjBi4Mc/tNyYyLVJmwmDLIalRw6U/klEX/zshhEs7tiOu4dWdRjsmKa6a/VD+lYg
-         vWsVK1BMV6eWNz2PnWPf9d+hwF4GkVtzl00sQL2h+ixXPlNQDkcxIHeObyo3e4yIqIuh
-         vUWJHemtiVyGzBYfjILtBeXjzG/MoKW/9PdsGGH7aHCUVhcHWhsuLT5Lea9Lj2PoEOR4
-         rqwcVVAjOzufqzugmpKQ7b5tvzc3VLRawvgHIxbmABjyXmCrk+ER47GGYtFw5r8tN41N
-         XnOQRkdbgr2W5glqFSx7h+QMEkixosBI2SN/tCrW4i5hNRSBML6GCt0TnpOCxtMfUt4L
-         sOJQ==
-X-Forwarded-Encrypted: i=1; AJvYcCV2O+QBUwljPFnvPmMyQGnuKy5A+msmozdMIcDCq1YVQACd29/GppDyrCxD2b0xW1lPbdP2AHMxp6uOdErpSHl192k72xzLcHyGoVLjzzOtC/JA
-X-Gm-Message-State: AOJu0YxL7g+U89TF2zT87jC9CBtSpIIUk8Kr1WgPLIhmE0kfqn1uKJIj
-	nxTbd15DRuumC2/eNJ39ovodcxmeUY7Bb6B3YjHjaW1TeVlN+q4B9of7qkhiDA==
-X-Google-Smtp-Source: AGHT+IHEl06Nm3dVBLJpGj1Uk+cVGvjdXmv2CgeM4NvVMJyMb/tbEYSvWNiGXEabI5NOqoQNRCIVqA==
-X-Received: by 2002:a05:6a00:8592:b0:706:31d9:9c99 with SMTP id d2e1a72fcca58-70ece928cf5mr17384197b3a.0.1722438773104;
-        Wed, 31 Jul 2024 08:12:53 -0700 (PDT)
-Received: from [192.168.178.38] (f215227.upc-f.chello.nl. [80.56.215.227])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-70ead7156c8sm10059508b3a.83.2024.07.31.08.12.45
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 31 Jul 2024 08:12:52 -0700 (PDT)
-From: Arend Van Spriel <arend.vanspriel@broadcom.com>
-To: Sebastian Reichel <sebastian.reichel@collabora.com>
-CC: Krzysztof Kozlowski <krzk@kernel.org>, Jacobe Zang <jacobe.zang@wesion.com>, <robh@kernel.org>, <krzk+dt@kernel.org>, <heiko@sntech.de>, <kvalo@kernel.org>, <davem@davemloft.net>, <edumazet@google.com>, <kuba@kernel.org>, <pabeni@redhat.com>, <conor+dt@kernel.org>, Linus Walleij <linus.walleij@linaro.org>, <efectn@protonmail.com>, <dsimic@manjaro.org>, <jagan@edgeble.ai>, <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>, <linux-rockchip@lists.infradead.org>, <linux-kernel@vger.kernel.org>, <arend@broadcom.com>, <linux-wireless@vger.kernel.org>, <netdev@vger.kernel.org>, <megi@xff.cz>, <duoming@zju.edu.cn>, <bhelgaas@google.com>, <minipli@grsecurity.net>, <brcm80211@lists.linux.dev>, <brcm80211-dev-list.pdl@broadcom.com>, <nick@khadas.com>, Andy Green <andy@warmcat.com>
-Date: Wed, 31 Jul 2024 17:12:43 +0200
-Message-ID: <1910959c1f8.279b.9b12b7fc0a3841636cfb5e919b41b954@broadcom.com>
-In-Reply-To: <sgfd5ccltsi7mjbybmdbs3fmsfcp3vqtpitdac7exzgxav53kk@6lwogbq4fhks>
-References: <20240730033053.4092132-1-jacobe.zang@wesion.com>
- <20240730033053.4092132-3-jacobe.zang@wesion.com>
- <191025b5268.279b.9b12b7fc0a3841636cfb5e919b41b954@broadcom.com>
- <f45c1fa7-f321-4a1f-b65c-6ed326a18268@kernel.org>
- <191030eac78.279b.9b12b7fc0a3841636cfb5e919b41b954@broadcom.com>
- <3d3b8e0a-7492-4db1-bd73-c30a488edaa7@kernel.org>
- <191035b8c28.279b.9b12b7fc0a3841636cfb5e919b41b954@broadcom.com>
- <k3dhdsa5bjzad2ha5e2uurg2azzs773ier5thkot4w2qcvnv54@yuf52eluqsae>
- <dd381dc1-454f-4ecd-adb7-55de2e15d592@broadcom.com>
- <sgfd5ccltsi7mjbybmdbs3fmsfcp3vqtpitdac7exzgxav53kk@6lwogbq4fhks>
-User-Agent: AquaMail/1.51.5 (build: 105105504)
-Subject: Re: [PATCH v5 2/5] dt-bindings: net: wireless: brcm4329-fmac: add clock description for AP6275P
+	Wed, 31 Jul 2024 15:31:13 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=YLvUTRDZENIuKu4xuTwMUjfC1RE8o8ZuQ/bFnwvJAxZNwKV3aTXBgVgUvj4xUPDxENSnAOmm9yka98Sx7lhB6qYavkY1UOM8HGUFiuHAFw+8pCujhVo8h4VQEp+RWe7snRxUx3itoU10AYYQGtHC7wJxDfyR88X6YXTRG6dv+1S+k93ACzRJZ8Kblt7IRcr60bOqgZLWg3nQRzRY4ky1OcgAozrIEaBKhFz2ZIkXCiZeQrI6SQb2sUCUZS6eY/7uU9MJW4YgdIgitGVQhEffvstWHRONV4EbeC1JZSp87y3FD4BuEW+II8r4ioAV1huLQHK73LholsOl+pqtJs4Psg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=wrdWCxhQs2HvXf4C6GKiD2X61lr0vTcY1aeDUSn9ryA=;
+ b=rL0ihprvTo1h8QHvKCL2UpCQuYtNAX4osZ8Bh3zaj8vKlA+jRUDWbtM8mxPeGKUy/Sr+VXa3cCZLnpj8IxhhqVigyg+Ym3sruF8OaVOes9j9G+OWdejTmuRjPT7oUn2ohwtY/8pqLJmH3nK4esNj8Bu89JLWxo3oI8j1kAFH4P62XwFgBNH5CF16CBBd1p1QRlujLQVOeXywilkfnoVYBlQEplcYfOQ/oUPZ7+4BhL6zqmwXXTs7ikcmZAYkKYacWvlWzbxcAV6MKN1O6EKqVeeCnIyKQtMNcTs/r34wK/xm0HKX8/XFNEYUt0E786nZPFi9PBqSw4E5F5pZalsZxQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=none; dmarc=none;
+ dkim=none; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=hotmail.com;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=wrdWCxhQs2HvXf4C6GKiD2X61lr0vTcY1aeDUSn9ryA=;
+ b=HIah0D2jdFyaDp+gpBDX2pGGiOa6/KgRTdFQH3vsMfuBdJ5MOTZ/QTMJfd2dP/9HatCXsk6z5qsM3Jc1IZ6/mpPhvyfcnqvto0CSvLrbvmEbD/UdQ2KHGkKucX7R8C33Pso2MjNnLMzceYBnlpDj68WxlO6ASB9etjyGcQVwLpN9uD+0FR0MdqaGcmkJdOnlh6/zUuRqwKPL5O5DshJ8AQyuHwslw/z2v+1G32/Lx/U+g/5WGQuXzlX9zOsBk/OwEhTdnR5icQIjtRqKI2qHAi7ruCMbQNehLIqAszblplWrZZ8n0h6cjuBybqWtUuLJK2umh0C5MSnzLa2mWDexwA==
+Received: from MN2PR16MB2941.namprd16.prod.outlook.com (2603:10b6:208:e1::15)
+ by SA0PR16MB3856.namprd16.prod.outlook.com (2603:10b6:806:84::22) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7807.27; Wed, 31 Jul
+ 2024 15:31:01 +0000
+Received: from MN2PR16MB2941.namprd16.prod.outlook.com
+ ([fe80::9d62:95ae:c373:c490]) by MN2PR16MB2941.namprd16.prod.outlook.com
+ ([fe80::9d62:95ae:c373:c490%4]) with mapi id 15.20.7828.021; Wed, 31 Jul 2024
+ 15:31:01 +0000
+Date: Wed, 31 Jul 2024 10:30:54 -0500
+From: Chris Morgan <macromorgan@hotmail.com>
+To: Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+Cc: linux-rockchip@lists.infradead.org,
+	Chris Morgan <macroalpha82@gmail.com>, linux-pm@vger.kernel.org,
+	devicetree@vger.kernel.org, jagan@edgeble.ai, andyshrk@163.com,
+	jonas@kwiboo.se, sre@kernel.org, t.schramm@manjaro.org,
+	conor+dt@kernel.org, krzk+dt@kernel.org, robh@kernel.org
+Subject: Re: [PATCH 3/5] arm64: dts: rockchip: Pull up sdio pins on RK3588
+Message-ID: <MN2PR16MB2941F553BB291D82732FA729A5B12@MN2PR16MB2941.namprd16.prod.outlook.com>
+References: <20240726194948.109326-1-macroalpha82@gmail.com>
+ <20240726194948.109326-4-macroalpha82@gmail.com>
+ <5127387.e8TTKsaY2g@diego>
+Content-Disposition: inline
+In-Reply-To: <5127387.e8TTKsaY2g@diego>
+X-TMN: [/6y8RiLQPtqE0bwu6ESG5LsvjvhY2whCzAQVdxOH08E=]
+X-ClientProxiedBy: SA9PR11CA0028.namprd11.prod.outlook.com
+ (2603:10b6:806:6e::33) To MN2PR16MB2941.namprd16.prod.outlook.com
+ (2603:10b6:208:e1::15)
+X-Microsoft-Original-Message-ID: <ZqpYrun5vammWLeu@wintermute.localhost.fail>
 MIME-Version: 1.0
+X-MS-Exchange-MessageSentRepresentingType: 1
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: MN2PR16MB2941:EE_|SA0PR16MB3856:EE_
+X-MS-Office365-Filtering-Correlation-Id: a7741597-ae7b-46e6-bd06-08dcb175c5db
+X-Microsoft-Antispam: BCL:0;ARA:14566002|5072599009|19110799003|461199028|8060799006|440099028|4302099013|3412199025|1602099012;
+X-Microsoft-Antispam-Message-Info: ADrL0c8EQoD3enyZoIcYKDS7SNVLl6vpAeVOpQLFT5aiKNyobHJqdr4vaJa4ASJz5DpNpWHRNJT6AMHyCMIHgxzhSD3Ks/2n3TeID/erRuKx3pvtnaudjpqomc6PiWUur/A2enARTuw1FiMFfdEUkmvMeR9H7ISV7BC6+1yweZw+jSDl5SU6M0CcEgMT1UW5ZhVxxhjLoRp0hK2t1F6CDPdsEk4C7RwsiAzvPenRT3TxZr/k/JX9sBt2+w59PT8L8MOXCpT4x0uaVOXezkaKpIOF5tmFoI/OV6XkQnLEaZQV6vmCFIfewoOKp4GMDwlyOiNFPa5quBU+EhWFEUgNYlt0DYHO59/fol4lEPuJ67AA83nbgHaPg+f6Om2wHQfXOexUm7gJXQoErzEGkEISn8TFhzYA2Hcezpy2cuBPooPvR6VZfxVYS/KMDNS0j0AyoSDudlNsQN/1d3aHRr8Ac+WmvgLTASwEFdXvepMGsNhEsr2bMd0pxYkADAuPWhKLp96YpJeSF7zftSguVYQENnJioHkcu0vCbFCadrONFxGI+eQzIrko4N7fTBeyaeIuOWQDOVQ/j1lNKx3yOP6z3FOXaR9phPxygaFp0mE3a7rdyt6CKcjkEGmPzoEcSdyPSCb5uqxbkmKb8ElhLqwWF01nRf8mqmUBM6BooctqN7mhvt7mI6Sh0hQBLZnAmeBMjb5vw3922+npJm4ZmXP1YPMP7PwYgi8BxXGSCPIxzpUrQNF+AlZdoOFu8KO7v0HKys+4amxuG9GNl5yRQ0LNDA==
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?iso-8859-1?Q?h+gXA+DIPW2Dw70tWcbggpXjZ/7/eMxahXdgIER2tA7u7z6JhnSNky80WH?=
+ =?iso-8859-1?Q?ilmrRUseCilomjbQgQtl8JRYLmHW+4bOz1ohrl/uYc6xJU9hr4jTEUxihL?=
+ =?iso-8859-1?Q?N90ceSi60ypc+MHkV1ib8tdZJd2VXmaedAQaBfXm06pKfXuAlXxa7qdiMG?=
+ =?iso-8859-1?Q?xGNYG0dOGcI4uUwoHtT8wMFbnWJGC0mrBL5CzRFIz3qBq88wuuiwHH8VCE?=
+ =?iso-8859-1?Q?4n9HElykXzuQcKjWP0hm46fwH2j7C5s2Xd8PoKjrLsncIaT9TauMoa8Z/3?=
+ =?iso-8859-1?Q?G3hPyi0CUx+F2r1yPXA+O4wWaC4qkXkEJhbTU6bQZ9tpY6LrnJSM54mL3+?=
+ =?iso-8859-1?Q?NMoO05/QwjZ0ogK/Tf3FPzDzU5BC2LPUHhNP14qfuRTtf2z7auuoMNfEcx?=
+ =?iso-8859-1?Q?Dpou2MISpF5c4t+OypXnQMxTOjPDW6Hf+N4QeBfpIvh3ZsB9e/+WJ+i2is?=
+ =?iso-8859-1?Q?bHRWeNkLt/DwxoJS0TOrDShcS+pLOT3QSKKQ2+KXcGC22iu+cPH0SYZsq7?=
+ =?iso-8859-1?Q?3NKB/0LVuzVaOKT9B2zjBfsyawYGFn3trj5OEgSg6L35HkqBJmC7R9UGVL?=
+ =?iso-8859-1?Q?UrwszH1AGcddp3g9T/Bjc9HgRti9k9UnazlWSzIW4q57lz9eiy4TUbuYY/?=
+ =?iso-8859-1?Q?Sm4uxG07tleQ2N0fEktmTifj2REFAQhmHiCKfA6FA8w5zDFOpMqVztsdqQ?=
+ =?iso-8859-1?Q?s8xKlxQqrOudDveVdZEa1uk+WkoKUBxFi6sXm8kF4Qk3MFsB5PCACHBCtz?=
+ =?iso-8859-1?Q?m8sqdbg275zUoRrfqDnop7mrYUoGs9DlIArrng58GRckVLQHU0bjbt7hfv?=
+ =?iso-8859-1?Q?MINEgOggRJmEMOFKVEQJhvEbAGr6PM8KsD08qIV8hNgixtQg68Yf+VBF3K?=
+ =?iso-8859-1?Q?aFSW/quPd/rTlfAXXTPMN7UFI+LF9SgvN8lo6PCeiZldRBOZSsj8d+0bQc?=
+ =?iso-8859-1?Q?yNX9XSBE7Xv4VD9qeHnp6qDk/MeXUqagiElvGI9iu7LIP2cSlcFY5vFx0/?=
+ =?iso-8859-1?Q?L1dweBqZGkb+Zob6DW3IrFiiJxYFPcNphXsQuepF+edrhWOLrfCfsQMmj7?=
+ =?iso-8859-1?Q?pQgwYONNpu7eUVvt+2z26wz/2TSmwH8LxKOdbEbGB05Wmx4oPxIX5NeDHm?=
+ =?iso-8859-1?Q?0Wl5JtLh2TXNfWB7aV4NkKqijlZMcAdoCyRqjM08DMCvWPtpPepED0sEpX?=
+ =?iso-8859-1?Q?p51zR2DyZ6yPeXopC0k7w8sPFSpKT151/fKcjCA4xqoSSU4+0yDDms93AO?=
+ =?iso-8859-1?Q?ufm6z9eh5kplqOSJQmZkIjRx2nc7irGcMsK6AiWvObSt1INmiYxD9rMrWx?=
+ =?iso-8859-1?Q?c8CZDmxmjAt7HREfDdDBI7KHzg=3D=3D?=
+X-OriginatorOrg: sct-15-20-7719-20-msonline-outlook-559fc.templateTenant
+X-MS-Exchange-CrossTenant-Network-Message-Id: a7741597-ae7b-46e6-bd06-08dcb175c5db
+X-MS-Exchange-CrossTenant-AuthSource: MN2PR16MB2941.namprd16.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 31 Jul 2024 15:31:01.0611
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa
+X-MS-Exchange-CrossTenant-RMS-PersistedConsumerOrg: 00000000-0000-0000-0000-000000000000
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SA0PR16MB3856
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240731_081255_309966_C964A83A 
-X-CRM114-Status: GOOD (  40.70  )
+X-CRM114-CacheID: sfid-20240731_083111_450366_92D969F4 
+X-CRM114-Status: GOOD (  20.20  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,144 +125,86 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On July 31, 2024 3:54:52 PM Sebastian Reichel 
-<sebastian.reichel@collabora.com> wrote:
+On Fri, Jul 26, 2024 at 11:42:28PM +0200, Heiko St=FCbner wrote:
+> Am Freitag, 26. Juli 2024, 21:49:46 CEST schrieb Chris Morgan:
+> > From: Chris Morgan <macromorgan@hotmail.com>
+> > =
 
-> Hi,
->
-> On Wed, Jul 31, 2024 at 02:57:37PM GMT, Arend van Spriel wrote:
->> On 7/30/2024 7:38 PM, Sebastian Reichel wrote:
->>> Hi,
->>>
->>> On Tue, Jul 30, 2024 at 01:16:57PM GMT, Arend Van Spriel wrote:
->>>> On July 30, 2024 12:18:20 PM Krzysztof Kozlowski <krzk@kernel.org> wrote:
->>>>
->>>>> On 30/07/2024 11:52, Arend Van Spriel wrote:
->>>>>> On July 30, 2024 11:01:43 AM Krzysztof Kozlowski <krzk@kernel.org> wrote:
->>>>>>
->>>>>>> On 30/07/2024 08:37, Arend Van Spriel wrote:
->>>>>>> > + Linus W
->>>>>>> >
->>>>>>> > On July 30, 2024 5:31:15 AM Jacobe Zang <jacobe.zang@wesion.com> wrote:
->>>>>>> >
->>>>>>> > > Not only AP6275P Wi-Fi device but also all Broadcom wireless devices allow
->>>>>>> > > external low power clock input. In DTS the clock as an optional choice in
->>>>>>> > > the absence of an internal clock.
->>>>>>> > >
->>>>>>> > > Reviewed-by: Arend van Spriel <arend.vanspriel@broadcom.com>
->>>>>>> > > Signed-off-by: Jacobe Zang <jacobe.zang@wesion.com>
->>>>>>> > > ---
->>>>>>> > > .../bindings/net/wireless/brcm,bcm4329-fmac.yaml          | 8 ++++++++
->>>>>>> > > 1 file changed, 8 insertions(+)
->>>>>>> > >
->>>>>>> > > diff --git
->>>>>>> > > a/Documentation/devicetree/bindings/net/wireless/brcm,bcm4329-fmac.yaml
->>>>>>> > > b/Documentation/devicetree/bindings/net/wireless/brcm,bcm4329-fmac.yaml
->>>>>>> > > index 2c2093c77ec9a..a3607d55ef367 100644
->>>>>>> > > --- a/Documentation/devicetree/bindings/net/wireless/brcm,bcm4329-fmac.yaml
->>>>>>> > > +++ b/Documentation/devicetree/bindings/net/wireless/brcm,bcm4329-fmac.yaml
->>>>>>> > > @@ -122,6 +122,14 @@ properties:
->>>>>>> > > NVRAM. This would normally be filled in by the bootloader from platform
->>>>>>> > > configuration data.
->>>>>>> > >
->>>>>>> > > +  clocks:
->>>>>>> > > +    items:
->>>>>>> > > +      - description: External Low Power Clock input (32.768KHz)
->>>>>>> > > +
->>>>>>> > > +  clock-names:
->>>>>>> > > +    items:
->>>>>>> > > +      - const: lpo
->>>>>>> > > +
->>>>>>> >
->>>>>>> > We still have an issue that this clock input is also present in the
->>>>>>> > bindings specification broadcom-bluetooth.yaml (not in bluetooth
->>>>>>> > subfolder). This clock is actually a chip resource. What happens if both
->>>>>>> > are defined and both wifi and bt drivers try to enable this clock? Can this
->>>>>>> > be expressed in yaml or can we only put a textual warning in the property
->>>>>>> > descriptions?
->>>>>>>
->>>>>>> Just like all clocks, what would happen? It will be enabled.
->>>>>>
->>>>>> Oh, wow! Cool stuff. But seriously is it not a problem to have two entities
->>>>>> controlling one and the same clock? Is this use-case taken into account by
->>>>>> the clock framework?
->>>>>
->>>>> Yes, it is handled correctly. That's a basic use-case, handled by CCF
->>>>> since some years (~12?). Anyway, whatever OS is doing (or not doing)
->>>>> with the clocks is independent of the bindings here. The question is
->>>>
->>>> Agree. Probably the bindings would not be the place to document this if it
->>>> would be an issue.
->>>>
->>>>> about hardware - does this node, which represents PCI interface of the
->>>>> chip, has/uses the clocks.
->>>>
->>>> The schematics I found for the wifi module and the khadas edge platform show
->>>> these are indeed wired to the chip.
->>>
->>> I have a Rockchip RK3588 Evaluation Board on my desk, which uses the
->>> same WLAN AP6275P module. I think I already commented on a prior
->>> version of this series: The LPO clock is needed to make the PCIe
->>> device visible on the bus. That means this series only works if the
->>> clock has already been running. Otherwise the PCIe driver will never
->>> be probed. To become visible the devices requires:
->>>
->>> 1. The LPO clock to be enabled
->>> 2. Power to be applied
->>> 3. The WL_EN gpio to be configured correctly
->>>
->>> If one of the above is not met, the device will not even appear in
->>> 'lspci'. I believe the binding needs to take into consideration, that
->>> pwrseq is needed for the PCIe side. Fortuantely the heavy lifting of
->>> creating the proper infrastructure for this has already been done by
->>> Bartosz Golaszewski for Qualcomm WLAN chips. What is missing is a
->>> pwrseq driver for the Broadcom chip (or this specific module?).
->>
->> That does not really make sense. There is no relation between the LPO clock
->> and the PCIe clocks so 1) being a requirement for probing the device looks
->> odd. It also does not match past experience when I assisted Andy Green in
->> getting this module up and running almost two years ago.
->
-> Well, first of all I can easily reproduce this on my RK3588 EVB1. I
-> intentionally ignore any bluetooth bits to avoid cross-effects from
-> bluetooth enabling any clocks / regulators / GPIOs and make sure the
-> RTC output clock is disabled at boot time (i.e. boot once without
-> any reference to the RTC clock and without 'clk_ignore_unused'
-> kernel argument). When booting up like this the WLAN device is not
-> visible in 'lspci' despite the WL_REG_ON GPIO being hogged. If I
-> additionally hack the RTC output clock to be enabled the WLAN device
-> becomes visible in 'lspci'.
->
-> The datasheet fully explains this:
->
-> https://www.lcsc.com/datasheet/lcsc_datasheet_2203281730_AMPAK-Tech-AP6275P_C2984107.pdf
->
-> PDF Page 23/24 (20/21 in the footer) has the Host Interface Timing
-> Diagram. WL_REG_ON should only be enabled after 2 cycles from LPO.
-> That means with LPO being disabled WL_REG_ON cannot be enabled. I'm
-> pretty sure WL_REG_ON means WLAN_REGULATOR_ON, so the logic is not
-> powered. On page 27 (24 in the footer) there is also a PCIe Power-On
-> Timing diagram, which shows that WL_REG_ON must be enabled before
-> the PCIe refclk is enabled.
->
-> So there is a specific power up sequence, which must be followed.
+> > When using an Ampak derived bcm43456 on an RK3588s based GameForce Ace
+> > the WiFi failed to work properly until I set the SDIO pins from
+> > pull-none to pull-up. This matches the vendor kernel located at [1].
+> > I tested this then on an RK3588s based Indiedroid Nova and did not
+> > observe any adverse effects.
+> > =
 
-The chip also has an (less accurate) internal LPO so the 32khz sleep clock 
-in the diagram does not have to be an external clock. Maybe Ampak 
-bootstrapped the chip to disable the internal clock. Dunno.
+> > [1] https://github.com/rockchip-linux/kernel/commit/b96485b7af46a99c14f=
+3c4818eb18c7836eb809c
+> =
 
-What Andy needed back then to get firmware running was a change in the 
-nvram file to force using the internal LPO, but the device was already 
-visible on the PCIe bus.
+> As you're essentially duplicating the change by Alex Zhao it might be
+> nice to keep their authorship?
+> =
 
-Regards,
-Arend
+> So, "From" + first Signed-off from Alex, then you add a
+> [adapted to pinctrl filename change]
+> Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
+> =
 
+> below that.
+
+Thank you, that was an oversight but I'll get it done in v2.
+
+> =
+
+> > =
+
+> > Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
+> > ---
+> >  arch/arm64/boot/dts/rockchip/rk3588-base-pinctrl.dtsi | 10 +++++-----
+> >  1 file changed, 5 insertions(+), 5 deletions(-)
+> > =
+
+> > diff --git a/arch/arm64/boot/dts/rockchip/rk3588-base-pinctrl.dtsi b/ar=
+ch/arm64/boot/dts/rockchip/rk3588-base-pinctrl.dtsi
+> > index 30db12c4fc82..d1368418502a 100644
+> > --- a/arch/arm64/boot/dts/rockchip/rk3588-base-pinctrl.dtsi
+> > +++ b/arch/arm64/boot/dts/rockchip/rk3588-base-pinctrl.dtsi
+> > @@ -2449,15 +2449,15 @@ sdiom1_pins: sdiom1-pins {
+> >  				/* sdio_clk_m1 */
+> >  				<3 RK_PA5 2 &pcfg_pull_none>,
+> >  				/* sdio_cmd_m1 */
+> > -				<3 RK_PA4 2 &pcfg_pull_none>,
+> > +				<3 RK_PA4 2 &pcfg_pull_up>,
+> >  				/* sdio_d0_m1 */
+> > -				<3 RK_PA0 2 &pcfg_pull_none>,
+> > +				<3 RK_PA0 2 &pcfg_pull_up>,
+> >  				/* sdio_d1_m1 */
+> > -				<3 RK_PA1 2 &pcfg_pull_none>,
+> > +				<3 RK_PA1 2 &pcfg_pull_up>,
+> >  				/* sdio_d2_m1 */
+> > -				<3 RK_PA2 2 &pcfg_pull_none>,
+> > +				<3 RK_PA2 2 &pcfg_pull_up>,
+> >  				/* sdio_d3_m1 */
+> > -				<3 RK_PA3 2 &pcfg_pull_none>;
+> > +				<3 RK_PA3 2 &pcfg_pull_up>;
+> >  		};
+> >  	};
+> >  =
+
+> > =
+
+> =
+
+> =
+
+> =
+
+> =
 
 
 _______________________________________________
