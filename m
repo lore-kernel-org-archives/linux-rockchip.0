@@ -4,116 +4,115 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B989EC3DA7F
-	for <linux-rockchip@archiver.kernel.org>; Wed, 31 Jul 2024 15:31:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B58CEC3DA7F
+	for <linux-rockchip@archiver.kernel.org>; Wed, 31 Jul 2024 15:32:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=wIZU/ERNTtCKTt+m0HJMtP0MmTNOPEXbK7X2fs4Uc8U=; b=CN7mkgxqaghGXM
-	g4aFB7DjQZnsAoJnrlOgeJiCcZpYC5ok4UEaRArgq2uZbbcAUZWcr+Lkh5k2ulceZoYZ4DZ3VRp0n
-	GfZLQ1yhPtNwvCDQ2jm76TKGvf5dIYYfvkhgQWNTTYhnIWp1FQJDvm26YCrldD5hTZ+bNqaot0rjO
-	lo6yr2hdBHzIVXUc1VuAGYRE9IsWcLMAVYUP1nReRUb1TMmOZ4KxzLO6kqVTaWJI8JqHI/56LJFJM
-	f3eaGUUigACANJTTh5u0+PraWlWQmw9iw8/rscGoTaSldoQ4nLL7/SXsrz53mpVut36uePbj6AL27
-	DaOudfI7humMqLxhc+mg==;
+	List-Owner; bh=LWMeU/PXdvSkGPrOtNnXByrSuARFiygQOakz/cIKFnk=; b=YOgLdyJ1phcH9O
+	k4tW/BKfEsC66CQ7UmpFEzokCw46toKR0c0BlwLxAWhMXd2rVY00R+nR6fKvLChtoXo8hgCdHRbmc
+	JvRGBn2eKHie+KMYh8NuGKENiVpZE90Wb9+TaI8oln7hcWRBkdS0CEkvI1yB8LpszSQ2//aYSio3j
+	xzYnlrzrcR62+pZEHbFtYWCSC0qyhQbTyW5gPufkZqj5Lkl6svucfEBs5zE+jgge55KbvTKXatg7U
+	e+a1fJ23G1l3TgdGNctlZKpqLj8gNAl0fvud7EjhC1gFOMgAZ+2YOZFF5JMPu2UDOtcedkt5vy6Q1
+	D1WSQnCzb7vpwEstyV7A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sZBII-00000001jDN-2439;
-	Wed, 31 Jul 2024 15:31:14 +0000
-Received: from mail-dm6nam12olkn20801.outbound.protection.outlook.com ([2a01:111:f403:2c17::801] helo=NAM12-DM6-obe.outbound.protection.outlook.com)
+	id 1sZBJu-00000001jUY-0Mjp;
+	Wed, 31 Jul 2024 15:32:54 +0000
+Received: from mail-bn8nam04olkn20814.outbound.protection.outlook.com ([2a01:111:f403:2c08::814] helo=NAM04-BN8-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sZBIF-00000001jCQ-1c2i
+	id 1sZBJl-00000001jSm-3xig
 	for linux-rockchip@lists.infradead.org;
-	Wed, 31 Jul 2024 15:31:13 +0000
+	Wed, 31 Jul 2024 15:32:52 +0000
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=YLvUTRDZENIuKu4xuTwMUjfC1RE8o8ZuQ/bFnwvJAxZNwKV3aTXBgVgUvj4xUPDxENSnAOmm9yka98Sx7lhB6qYavkY1UOM8HGUFiuHAFw+8pCujhVo8h4VQEp+RWe7snRxUx3itoU10AYYQGtHC7wJxDfyR88X6YXTRG6dv+1S+k93ACzRJZ8Kblt7IRcr60bOqgZLWg3nQRzRY4ky1OcgAozrIEaBKhFz2ZIkXCiZeQrI6SQb2sUCUZS6eY/7uU9MJW4YgdIgitGVQhEffvstWHRONV4EbeC1JZSp87y3FD4BuEW+II8r4ioAV1huLQHK73LholsOl+pqtJs4Psg==
+ b=CKaMGd4vwV0cQ2G62r/Bp9kD7ZICM7Yg9Uvb61xdGGxkFs1034QoY0WSgESCcEK8IzX/9HqS/ECKbhegLI4TRdsRYNxSFFzdjMI3E3gMN4ndZd3RRuk+MbsnnCdaFE0ipqhWbIACj3FSococQrl5SD46OnyjoBVyIXrRmWHzwipH0leKnKm5VYXohueMEpp9T0/BYKdG7iIuelNC3BnWs8AwAOGU8VX5tY+Pa5VOfsIi1Ar7tAGAKA0gRobWCelR2Kahwqfk+oS5BD5iUVGDal+AvuMDPfzKR3y2nTQo4/GaxblOLWo/2LwnrWUrp0X3toV02hzGPP1xu30GUqBg/w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
  s=arcselector10001;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=wrdWCxhQs2HvXf4C6GKiD2X61lr0vTcY1aeDUSn9ryA=;
- b=rL0ihprvTo1h8QHvKCL2UpCQuYtNAX4osZ8Bh3zaj8vKlA+jRUDWbtM8mxPeGKUy/Sr+VXa3cCZLnpj8IxhhqVigyg+Ym3sruF8OaVOes9j9G+OWdejTmuRjPT7oUn2ohwtY/8pqLJmH3nK4esNj8Bu89JLWxo3oI8j1kAFH4P62XwFgBNH5CF16CBBd1p1QRlujLQVOeXywilkfnoVYBlQEplcYfOQ/oUPZ7+4BhL6zqmwXXTs7ikcmZAYkKYacWvlWzbxcAV6MKN1O6EKqVeeCnIyKQtMNcTs/r34wK/xm0HKX8/XFNEYUt0E786nZPFi9PBqSw4E5F5pZalsZxQ==
+ bh=Xto606DjTSXXftNgyG5lr5egQUYx8B5klw5deADgLlw=;
+ b=oHHqDXhnebVWdYnA6zLKXY800Z5O0yY/63W9/BoQz2DVpQg9omCNMwAOTBWfH6BagQzvFy2UdFMpX/cP7xmGOETmteTbOCfsJ+OeNTuyO7LQmPDt/qBMF0LWSFgV0io84G3BOltv1LtVZFmqpBlsAPY6WPJLvfedfnZg0WocIea++FKaoPHYQBEB2Z7PQwcX7d6kDJOKYOg32HEVq4/WxAX0UBtjWxVphVNTDJNI3BFB2Fv226rUg9TIe+3Hg1kkQV5q1/UTy+3xGL0hi0yoPm/OofLNZyZtYBVUnnDigkoc81niRRmtZa8Wlx9SM++sY3VUO9POx452K+54JF4y/Q==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=none; dmarc=none;
  dkim=none; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=hotmail.com;
  s=selector1;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=wrdWCxhQs2HvXf4C6GKiD2X61lr0vTcY1aeDUSn9ryA=;
- b=HIah0D2jdFyaDp+gpBDX2pGGiOa6/KgRTdFQH3vsMfuBdJ5MOTZ/QTMJfd2dP/9HatCXsk6z5qsM3Jc1IZ6/mpPhvyfcnqvto0CSvLrbvmEbD/UdQ2KHGkKucX7R8C33Pso2MjNnLMzceYBnlpDj68WxlO6ASB9etjyGcQVwLpN9uD+0FR0MdqaGcmkJdOnlh6/zUuRqwKPL5O5DshJ8AQyuHwslw/z2v+1G32/Lx/U+g/5WGQuXzlX9zOsBk/OwEhTdnR5icQIjtRqKI2qHAi7ruCMbQNehLIqAszblplWrZZ8n0h6cjuBybqWtUuLJK2umh0C5MSnzLa2mWDexwA==
+ bh=Xto606DjTSXXftNgyG5lr5egQUYx8B5klw5deADgLlw=;
+ b=rlZb1Rgb8PmvExO/GSJurUb9IsfOmwECSzdtmblfbG1bjNkGLfn6vPGCjZNrzhZsKwxxp7Pn97HSwS62t9o+fvU0p9ue3JZqM6+jdGKv22lFU+mOc9dvrzd9HOkS8zLfMvyT4bbv7gSyyC2Y0KLxgOQuoW2wWCrE2ScgdJe5VguQvBWwJbLXEhzZcoqf3l/5pK2qUPEfT5KR0v5r5MGFrPNf95mxWQkIF2t842WiT07/ZTgqJMtdHFX7BtpXGkpUvSDkzT68SVWDISk2zAMPYKjcvFZBOSIBuQSopi7mUhmVLT3btdqTrYrvK/an9WfQxYZDJqWr9HBg+Ov20jRpCw==
 Received: from MN2PR16MB2941.namprd16.prod.outlook.com (2603:10b6:208:e1::15)
- by SA0PR16MB3856.namprd16.prod.outlook.com (2603:10b6:806:84::22) with
+ by CH0PR16MB5253.namprd16.prod.outlook.com (2603:10b6:610:183::12) with
  Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7807.27; Wed, 31 Jul
- 2024 15:31:01 +0000
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7807.28; Wed, 31 Jul
+ 2024 15:32:39 +0000
 Received: from MN2PR16MB2941.namprd16.prod.outlook.com
  ([fe80::9d62:95ae:c373:c490]) by MN2PR16MB2941.namprd16.prod.outlook.com
  ([fe80::9d62:95ae:c373:c490%4]) with mapi id 15.20.7828.021; Wed, 31 Jul 2024
- 15:31:01 +0000
-Date: Wed, 31 Jul 2024 10:30:54 -0500
+ 15:32:39 +0000
+Date: Wed, 31 Jul 2024 10:32:36 -0500
 From: Chris Morgan <macromorgan@hotmail.com>
-To: Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Cc: linux-rockchip@lists.infradead.org,
-	Chris Morgan <macroalpha82@gmail.com>, linux-pm@vger.kernel.org,
-	devicetree@vger.kernel.org, jagan@edgeble.ai, andyshrk@163.com,
-	jonas@kwiboo.se, sre@kernel.org, t.schramm@manjaro.org,
-	conor+dt@kernel.org, krzk+dt@kernel.org, robh@kernel.org
-Subject: Re: [PATCH 3/5] arm64: dts: rockchip: Pull up sdio pins on RK3588
-Message-ID: <MN2PR16MB2941F553BB291D82732FA729A5B12@MN2PR16MB2941.namprd16.prod.outlook.com>
+To: "Rob Herring (Arm)" <robh@kernel.org>
+Cc: Chris Morgan <macroalpha82@gmail.com>, sre@kernel.org,
+	linux-pm@vger.kernel.org, jagan@edgeble.ai, jonas@kwiboo.se,
+	heiko@sntech.de, krzk+dt@kernel.org, andyshrk@163.com,
+	conor+dt@kernel.org, devicetree@vger.kernel.org,
+	linux-rockchip@lists.infradead.org, t.schramm@manjaro.org
+Subject: Re: [PATCH 0/5] Add GameForce Ace
+Message-ID: <MN2PR16MB29412320A3E3E35D9AEA0643A5B12@MN2PR16MB2941.namprd16.prod.outlook.com>
 References: <20240726194948.109326-1-macroalpha82@gmail.com>
- <20240726194948.109326-4-macroalpha82@gmail.com>
- <5127387.e8TTKsaY2g@diego>
+ <172227904756.1346368.2529190213661296274.robh@kernel.org>
 Content-Disposition: inline
-In-Reply-To: <5127387.e8TTKsaY2g@diego>
-X-TMN: [/6y8RiLQPtqE0bwu6ESG5LsvjvhY2whCzAQVdxOH08E=]
-X-ClientProxiedBy: SA9PR11CA0028.namprd11.prod.outlook.com
- (2603:10b6:806:6e::33) To MN2PR16MB2941.namprd16.prod.outlook.com
+In-Reply-To: <172227904756.1346368.2529190213661296274.robh@kernel.org>
+X-TMN: [eYLGcnw0iJm9MFXdDakv570SUJus8q44+3fif0thCSU=]
+X-ClientProxiedBy: SA9P223CA0022.NAMP223.PROD.OUTLOOK.COM
+ (2603:10b6:806:26::27) To MN2PR16MB2941.namprd16.prod.outlook.com
  (2603:10b6:208:e1::15)
-X-Microsoft-Original-Message-ID: <ZqpYrun5vammWLeu@wintermute.localhost.fail>
+X-Microsoft-Original-Message-ID: <ZqpZFB1xsxce0UHW@wintermute.localhost.fail>
 MIME-Version: 1.0
 X-MS-Exchange-MessageSentRepresentingType: 1
 X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: MN2PR16MB2941:EE_|SA0PR16MB3856:EE_
-X-MS-Office365-Filtering-Correlation-Id: a7741597-ae7b-46e6-bd06-08dcb175c5db
-X-Microsoft-Antispam: BCL:0;ARA:14566002|5072599009|19110799003|461199028|8060799006|440099028|4302099013|3412199025|1602099012;
-X-Microsoft-Antispam-Message-Info: ADrL0c8EQoD3enyZoIcYKDS7SNVLl6vpAeVOpQLFT5aiKNyobHJqdr4vaJa4ASJz5DpNpWHRNJT6AMHyCMIHgxzhSD3Ks/2n3TeID/erRuKx3pvtnaudjpqomc6PiWUur/A2enARTuw1FiMFfdEUkmvMeR9H7ISV7BC6+1yweZw+jSDl5SU6M0CcEgMT1UW5ZhVxxhjLoRp0hK2t1F6CDPdsEk4C7RwsiAzvPenRT3TxZr/k/JX9sBt2+w59PT8L8MOXCpT4x0uaVOXezkaKpIOF5tmFoI/OV6XkQnLEaZQV6vmCFIfewoOKp4GMDwlyOiNFPa5quBU+EhWFEUgNYlt0DYHO59/fol4lEPuJ67AA83nbgHaPg+f6Om2wHQfXOexUm7gJXQoErzEGkEISn8TFhzYA2Hcezpy2cuBPooPvR6VZfxVYS/KMDNS0j0AyoSDudlNsQN/1d3aHRr8Ac+WmvgLTASwEFdXvepMGsNhEsr2bMd0pxYkADAuPWhKLp96YpJeSF7zftSguVYQENnJioHkcu0vCbFCadrONFxGI+eQzIrko4N7fTBeyaeIuOWQDOVQ/j1lNKx3yOP6z3FOXaR9phPxygaFp0mE3a7rdyt6CKcjkEGmPzoEcSdyPSCb5uqxbkmKb8ElhLqwWF01nRf8mqmUBM6BooctqN7mhvt7mI6Sh0hQBLZnAmeBMjb5vw3922+npJm4ZmXP1YPMP7PwYgi8BxXGSCPIxzpUrQNF+AlZdoOFu8KO7v0HKys+4amxuG9GNl5yRQ0LNDA==
+X-MS-TrafficTypeDiagnostic: MN2PR16MB2941:EE_|CH0PR16MB5253:EE_
+X-MS-Office365-Filtering-Correlation-Id: 91115bfb-3d66-45f0-b46b-08dcb17602ed
+X-MS-Exchange-SLBlob-MailProps: Z68gl6A5j29eivOTv8WwyzVp/Gk/pryOGmyL7tpr3IZuhz3HYkcoLCe49eNW+WgnNG8kEUg/2cRx+jDc0Hw/k3PacV5yzlKbvvfizgWAyraWzTqN+irB3SYUvW0S3Kc7AcwusYRjlZODd6TiBFSmcf0EG/NqZmyctZ9PtLFwm0jTCZCcGPrkFZrwK02DvUzVAmgwbx0+e/V7nbwREY57jNrxhmiK1rkyJqG6bBzwotNM7OtyCsn0qMkL6uFPzezQRgtAGT4wBWmrVZMO9JISldMxig01BE99Ui4FrlSbL42rMyPn6qjrkQzLbFIcxQOPGc10JXk3WeFuM7xuM+aWJcL2mfmeLfA4y57mAztBgTLxn0f3M6NIiNbH/Evn6CuqrLbHF/RnoRCTpRb3RJS2VmmswlgjMxow8xBGyaPp7Age/cSFEqzQvOuGAMTALzhYGSHqms+PH8MQL+WUNThsdWrcp06IKQqgJT1rWkDk+G/QFE/LJFB5HEePyhDnGQFik98V/sw1higl6a62mT++RKb+OSYqpHDA8AXvjStoCNjWRbR1TzJ5WP3AhMTsaRLRXxshez7GZ/aPBjLmSxgy/D5MT+rMRfygwh8JmyiA7bicVuSLz8z9f7UKvG/M3FR49+dRHLjDaauOUvCN0nrQya75bH02rXSkk2zOtEaAW03rFDSJoDg0MOegCkbzoh1+dmPEXdn0s/iu1JM/SVe72hq1r3BrszjiJ2TRrBbXkouH3B44eA9YW4293pjDOFKoBBCjVOjJCxhuiNmWiN20Jqtk/ZKQnZSf0OVXcPvL3a4qXkgVwsyrubDTUhMRFEjj
+X-Microsoft-Antispam: BCL:0;ARA:14566002|5072599009|461199028|8060799006|19110799003|440099028|4302099013|3412199025|1602099012;
+X-Microsoft-Antispam-Message-Info: kwUgx8knaQj9MuChzoJAjDKx1xNzASSLoyTM+q9jlKoAE+Wc7Mez1Ea+wSyGTEFUa2KJUPvyyDA3BncB/R5e9NXECTtCfa7H5IbTG4n3tu1OIVMV7FEEpPMTo+s6JcvF521baZgqRrSi5SYuuAWlY4AitsCBXD+sl77zCk0+34kprC5uo6pLeyCHAi+v8KLQAs7wWS4IwgwtVWGLknO+Wmpv6CzR7NR6s4IeKI3R99k9FromIaQ+BrJdh7ewsVkvpWd3dlUte5dGAhnHqcD2Nxy+mZfQyB+WT0Cgnhy/KQ9YsjKnQs25a3AppgEzxFZa3eAtd9M4lh2Enlr2tHz/ZlmG2v55faSz5WfbI9kKfxAT07wbQk1a+7HVWlF9h9rCftSmos0ci6x4XitAhQjCrIQ/Q/gKhwKGtVqbUvApX0Z64JdWz3HpZNT0IWEgx1IV89SsMRxrkg1+1xrohGNurQBWb9y5V46CQ5BVZ92BxrHOuVZ9umoMkcUfbK5CffLiGKy915FPSGRVKxbWu9Yuotb2hv/IyLOTSjwStXXbE6F1iMlmwb3f5ptzoUbW3h8etk2waybm3e+NySC5pvM/lSRZBl/9KbNbnom9J1HAXrAMQ+kSeqx+GxW7vDDP7oYLbNA0EEwBOqHp2ryBZOk1/JVMD421LclZqDkhiI05Jt4XvWYwUEEm7oO7lFU4dN0aHhOkq7YCI4AsPhuA+n9hd+XidnTXNRa3Q1dTmYnZH32bPCfzlSCw7YyRel0M+hwo+j3p0fApvmZn0luh+Z4BLw==
 X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?iso-8859-1?Q?h+gXA+DIPW2Dw70tWcbggpXjZ/7/eMxahXdgIER2tA7u7z6JhnSNky80WH?=
- =?iso-8859-1?Q?ilmrRUseCilomjbQgQtl8JRYLmHW+4bOz1ohrl/uYc6xJU9hr4jTEUxihL?=
- =?iso-8859-1?Q?N90ceSi60ypc+MHkV1ib8tdZJd2VXmaedAQaBfXm06pKfXuAlXxa7qdiMG?=
- =?iso-8859-1?Q?xGNYG0dOGcI4uUwoHtT8wMFbnWJGC0mrBL5CzRFIz3qBq88wuuiwHH8VCE?=
- =?iso-8859-1?Q?4n9HElykXzuQcKjWP0hm46fwH2j7C5s2Xd8PoKjrLsncIaT9TauMoa8Z/3?=
- =?iso-8859-1?Q?G3hPyi0CUx+F2r1yPXA+O4wWaC4qkXkEJhbTU6bQZ9tpY6LrnJSM54mL3+?=
- =?iso-8859-1?Q?NMoO05/QwjZ0ogK/Tf3FPzDzU5BC2LPUHhNP14qfuRTtf2z7auuoMNfEcx?=
- =?iso-8859-1?Q?Dpou2MISpF5c4t+OypXnQMxTOjPDW6Hf+N4QeBfpIvh3ZsB9e/+WJ+i2is?=
- =?iso-8859-1?Q?bHRWeNkLt/DwxoJS0TOrDShcS+pLOT3QSKKQ2+KXcGC22iu+cPH0SYZsq7?=
- =?iso-8859-1?Q?3NKB/0LVuzVaOKT9B2zjBfsyawYGFn3trj5OEgSg6L35HkqBJmC7R9UGVL?=
- =?iso-8859-1?Q?UrwszH1AGcddp3g9T/Bjc9HgRti9k9UnazlWSzIW4q57lz9eiy4TUbuYY/?=
- =?iso-8859-1?Q?Sm4uxG07tleQ2N0fEktmTifj2REFAQhmHiCKfA6FA8w5zDFOpMqVztsdqQ?=
- =?iso-8859-1?Q?s8xKlxQqrOudDveVdZEa1uk+WkoKUBxFi6sXm8kF4Qk3MFsB5PCACHBCtz?=
- =?iso-8859-1?Q?m8sqdbg275zUoRrfqDnop7mrYUoGs9DlIArrng58GRckVLQHU0bjbt7hfv?=
- =?iso-8859-1?Q?MINEgOggRJmEMOFKVEQJhvEbAGr6PM8KsD08qIV8hNgixtQg68Yf+VBF3K?=
- =?iso-8859-1?Q?aFSW/quPd/rTlfAXXTPMN7UFI+LF9SgvN8lo6PCeiZldRBOZSsj8d+0bQc?=
- =?iso-8859-1?Q?yNX9XSBE7Xv4VD9qeHnp6qDk/MeXUqagiElvGI9iu7LIP2cSlcFY5vFx0/?=
- =?iso-8859-1?Q?L1dweBqZGkb+Zob6DW3IrFiiJxYFPcNphXsQuepF+edrhWOLrfCfsQMmj7?=
- =?iso-8859-1?Q?pQgwYONNpu7eUVvt+2z26wz/2TSmwH8LxKOdbEbGB05Wmx4oPxIX5NeDHm?=
- =?iso-8859-1?Q?0Wl5JtLh2TXNfWB7aV4NkKqijlZMcAdoCyRqjM08DMCvWPtpPepED0sEpX?=
- =?iso-8859-1?Q?p51zR2DyZ6yPeXopC0k7w8sPFSpKT151/fKcjCA4xqoSSU4+0yDDms93AO?=
- =?iso-8859-1?Q?ufm6z9eh5kplqOSJQmZkIjRx2nc7irGcMsK6AiWvObSt1INmiYxD9rMrWx?=
- =?iso-8859-1?Q?c8CZDmxmjAt7HREfDdDBI7KHzg=3D=3D?=
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?RabAczMQ4b/KOzf2Rxdl4JjpHKTe/0a6gbbG7dTVypqSzpYpRxnk7ZqkMxTm?=
+ =?us-ascii?Q?UrBl9NFT1AUp3KomEYeT4ZTxBPEXycoxpJUvKywjDD3mejdS8mPYET4h3ZtK?=
+ =?us-ascii?Q?sfZx3knn9/qv8A38BI09/3qYGpJbs9RtXnuddlTok9OxeHe5vt9WeOh0wvgR?=
+ =?us-ascii?Q?QCVQIOLZhZmAkZUWeh7Q4oPCGat6uJAkMqwmiMDaXW/b7ui987VhVAy4C2yS?=
+ =?us-ascii?Q?E4Gm0waFgcrhnetxxB1nKHWht6Uwb/d866hN3cFSeLH9NtF506Ud51hh/WgL?=
+ =?us-ascii?Q?4PMeBEV6RYIMvWuga5m4tFbD/hRV3o0DKAyhyvCErJ9U++GNSV6bIEB4Ya32?=
+ =?us-ascii?Q?B7yx5SiH36aHMN5AUsgBjT4fjkHPIWn34+fD/2OYvjlUGyI0vQJx5IdPI4/L?=
+ =?us-ascii?Q?z6HT+JivSudU7BS0JN0wdmjIR434k6tVHB2zjHIisXANgFjBNwN84jybo3p5?=
+ =?us-ascii?Q?t1dCjjrBvwqO/uxSF4CHQQ3y4fTHRkvoVaqaKPo3gCHeuBTWYWCbAbCtEjp8?=
+ =?us-ascii?Q?j2bhiXPFQsDwX2HwN/3rqJRCw/KAoCQIvYD6qSguui+vtNG5bZEhj8IaOEqN?=
+ =?us-ascii?Q?4X0ULNGCCYD72a/BU6w7rTjX4dq0/rL3XUiJzPgiBAZW5rEES6F21e2i6bMd?=
+ =?us-ascii?Q?ZphkTblWsOrc5xnbzZmOqRmUSCH+Tvo5tXqUIytutyu3jqo2Tt4sK+1LCAVG?=
+ =?us-ascii?Q?N1Ntp9xNLV+WtkaVzevp/W8/ztRutrt6Bx6FnGjLQqB2WwWttZVxhpHu2IlH?=
+ =?us-ascii?Q?3VDtgXJCLSns4d01lL4jnV1JlVrl0S0RsTzoczKCcBuhLTxRqN3XiiSqzf5Q?=
+ =?us-ascii?Q?egvFQKjSpK9y3l+sWCsh5W7Wgz4Xeu19KDxRupEqtBiewoYp1YxWEjj9nAd2?=
+ =?us-ascii?Q?cGOxUQJocH/KJym/6ds0LnxEZBLDCbex4SOHLzokLruecpMd8ELX/N0sX4Ci?=
+ =?us-ascii?Q?+nx9GCDs0a/64uwlzAab6jY1qc2Q7/QtPu1CsVbRARxGav9I8Scsx4BIjjQP?=
+ =?us-ascii?Q?+zqwlzM2Fjt95EWgwe0kttVr859C0rPxvAOzFiKiaAMYMXFX1dP4CAHiwygg?=
+ =?us-ascii?Q?trBX9hmedebBs922VcT1c+962AQ7A/LYBdLJ7g28+aD1QtSJNH1o5bEfnX7k?=
+ =?us-ascii?Q?G3QnuqEF6k18+eLt5mmb2ixLx7iSKmg4QXx3VrKZE4Y48I8D7ov7Ha+I24+v?=
+ =?us-ascii?Q?V0FrsqSo9SqOj7nXCBbbpEWNuHsU16qY9x251HOKwR3gjpRnRU/YLqo+zdCX?=
+ =?us-ascii?Q?Me/0tu/+4mno0bnlfUVDqH4Pw6/xiETk7eTqKX/OAg=3D=3D?=
 X-OriginatorOrg: sct-15-20-7719-20-msonline-outlook-559fc.templateTenant
-X-MS-Exchange-CrossTenant-Network-Message-Id: a7741597-ae7b-46e6-bd06-08dcb175c5db
+X-MS-Exchange-CrossTenant-Network-Message-Id: 91115bfb-3d66-45f0-b46b-08dcb17602ed
 X-MS-Exchange-CrossTenant-AuthSource: MN2PR16MB2941.namprd16.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 31 Jul 2024 15:31:01.0611
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 31 Jul 2024 15:32:39.6866
  (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
 X-MS-Exchange-CrossTenant-Id: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa
 X-MS-Exchange-CrossTenant-RMS-PersistedConsumerOrg: 00000000-0000-0000-0000-000000000000
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SA0PR16MB3856
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CH0PR16MB5253
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240731_083111_450366_92D969F4 
-X-CRM114-Status: GOOD (  20.20  )
+X-CRM114-CacheID: sfid-20240731_083246_012159_E2F9A06B 
+X-CRM114-Status: GOOD (  23.23  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -125,87 +124,75 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, Jul 26, 2024 at 11:42:28PM +0200, Heiko St=FCbner wrote:
-> Am Freitag, 26. Juli 2024, 21:49:46 CEST schrieb Chris Morgan:
+On Mon, Jul 29, 2024 at 12:52:50PM -0600, Rob Herring (Arm) wrote:
+> 
+> On Fri, 26 Jul 2024 14:49:43 -0500, Chris Morgan wrote:
 > > From: Chris Morgan <macromorgan@hotmail.com>
-> > =
+> > 
+> > Add support for the GameForce Ace. The GameForce Ace is an RK3588s
+> > based gaming device with a 1080p display, touchscreen, hall effect
+> > joysticks and triggers, 128GB of eMMC, 8GB or 12GB of RAM, WiFi 5,
+> > and support for a 2242 NVME.
+> > 
+> > Chris Morgan (5):
+> >   dt-bindings: power: supply: add dual-cell for cw2015
+> >   power: supply: cw2015: Add support for dual-cell configurations
+> >   arm64: dts: rockchip: Pull up sdio pins on RK3588
+> >   dt-bindings: arm: rockchip: Add GameForce Ace
+> >   arm64: dts: rockchip: Add GameForce Ace
+> > 
+> >  .../devicetree/bindings/arm/rockchip.yaml     |    5 +
+> >  .../bindings/power/supply/cw2015_battery.yaml |    6 +
+> >  arch/arm64/boot/dts/rockchip/Makefile         |    1 +
+> >  .../dts/rockchip/rk3588-base-pinctrl.dtsi     |   10 +-
+> >  .../dts/rockchip/rk3588s-gameforce-ace.dts    | 1315 +++++++++++++++++
+> >  drivers/power/supply/cw2015_battery.c         |    7 +
+> >  6 files changed, 1339 insertions(+), 5 deletions(-)
+> >  create mode 100644 arch/arm64/boot/dts/rockchip/rk3588s-gameforce-ace.dts
+> > 
+> > --
+> > 2.34.1
+> > 
+> > 
+> > 
+> 
+> 
+> My bot found new DTB warnings on the .dts files added or changed in this
+> series.
+> 
+> Some warnings may be from an existing SoC .dtsi. Or perhaps the warnings
+> are fixed by another series. Ultimately, it is up to the platform
+> maintainer whether these warnings are acceptable or not. No need to reply
+> unless the platform maintainer has comments.
+> 
+> If you already ran DT checks and didn't see these error(s), then
+> make sure dt-schema is up to date:
+> 
+>   pip3 install dtschema --upgrade
+> 
+> 
+> New warnings running 'make CHECK_DTBS=y rockchip/rk3588s-gameforce-ace.dtb' for 20240726194948.109326-1-macroalpha82@gmail.com:
+> 
+> arch/arm64/boot/dts/rockchip/rk3588s-gameforce-ace.dtb: typec-portc@22: 'vbus-supply' is a required property
+> 	from schema $id: http://devicetree.org/schemas/usb/fcs,fusb302.yaml#
+> 
 
-> > When using an Ampak derived bcm43456 on an RK3588s based GameForce Ace
-> > the WiFi failed to work properly until I set the SDIO pins from
-> > pull-none to pull-up. This matches the vendor kernel located at [1].
-> > I tested this then on an RK3588s based Indiedroid Nova and did not
-> > observe any adverse effects.
-> > =
+For the moment this is expected, because the regulator is driven by a
+TI BQ25703 chip that I'm still working on getting supported. Is it
+preferable to either keep it empty (and cause this error) or fill it
+with a dummy regulator for now?
 
-> > [1] https://github.com/rockchip-linux/kernel/commit/b96485b7af46a99c14f=
-3c4818eb18c7836eb809c
-> =
+Thank you.
 
-> As you're essentially duplicating the change by Alex Zhao it might be
-> nice to keep their authorship?
-> =
-
-> So, "From" + first Signed-off from Alex, then you add a
-> [adapted to pinctrl filename change]
-> Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
-> =
-
-> below that.
-
-Thank you, that was an oversight but I'll get it done in v2.
-
-> =
-
-> > =
-
-> > Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
-> > ---
-> >  arch/arm64/boot/dts/rockchip/rk3588-base-pinctrl.dtsi | 10 +++++-----
-> >  1 file changed, 5 insertions(+), 5 deletions(-)
-> > =
-
-> > diff --git a/arch/arm64/boot/dts/rockchip/rk3588-base-pinctrl.dtsi b/ar=
-ch/arm64/boot/dts/rockchip/rk3588-base-pinctrl.dtsi
-> > index 30db12c4fc82..d1368418502a 100644
-> > --- a/arch/arm64/boot/dts/rockchip/rk3588-base-pinctrl.dtsi
-> > +++ b/arch/arm64/boot/dts/rockchip/rk3588-base-pinctrl.dtsi
-> > @@ -2449,15 +2449,15 @@ sdiom1_pins: sdiom1-pins {
-> >  				/* sdio_clk_m1 */
-> >  				<3 RK_PA5 2 &pcfg_pull_none>,
-> >  				/* sdio_cmd_m1 */
-> > -				<3 RK_PA4 2 &pcfg_pull_none>,
-> > +				<3 RK_PA4 2 &pcfg_pull_up>,
-> >  				/* sdio_d0_m1 */
-> > -				<3 RK_PA0 2 &pcfg_pull_none>,
-> > +				<3 RK_PA0 2 &pcfg_pull_up>,
-> >  				/* sdio_d1_m1 */
-> > -				<3 RK_PA1 2 &pcfg_pull_none>,
-> > +				<3 RK_PA1 2 &pcfg_pull_up>,
-> >  				/* sdio_d2_m1 */
-> > -				<3 RK_PA2 2 &pcfg_pull_none>,
-> > +				<3 RK_PA2 2 &pcfg_pull_up>,
-> >  				/* sdio_d3_m1 */
-> > -				<3 RK_PA3 2 &pcfg_pull_none>;
-> > +				<3 RK_PA3 2 &pcfg_pull_up>;
-> >  		};
-> >  	};
-> >  =
-
-> > =
-
-> =
-
-> =
-
-> =
-
-> =
-
+> 
+> 
+> 
+> 
 
 _______________________________________________
 Linux-rockchip mailing list
