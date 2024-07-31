@@ -4,118 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6008DC3DA64
-	for <linux-rockchip@archiver.kernel.org>; Wed, 31 Jul 2024 17:15:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5167EC3DA7F
+	for <linux-rockchip@archiver.kernel.org>; Wed, 31 Jul 2024 17:50:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=5vi/9D2AmUmKEd1vKerinYXFZ4n8YFkyJ+azvAwa0xU=; b=u/QO+n4BFki1jf
-	FfBciq3KGJ1uFC0Gqe4A9qp+08LdpHV8V6OZuOj2aW/HNKEZuoWv+xbi5yGpVdqckdi07Iv/oqqCz
-	z1xsYnccQsnindDnPmEDYux+DZbgrnxWZJN7E6eB0sD78Jz7rFeEH0CbF2xg6BnNcIyd4K8W2MX58
-	SBt05G2PLhF5b7w5E1OqCqgnk3kbdmD3Au4yZt2u9E2yK/h44kY2aTxA3Y96m/jkag4thHidrZHY4
-	DXd7FxRquIQ2UVKiDPRwC1nDcO96BlI/asAQ4291vkzNgGSBriAfcmgX5lWQXdOBVkPbMyFODcD8B
-	zxNyhzKsiW7OyBIkO7Sw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=KzvAGDXVwpgoUSKlfDIA2f9LrYBBnYADlBXjMxWYY6s=; b=O5hlugxyJAo70eTMthp+QyAlRZ
+	OqfpIR6uO4yO4zLmrWSH7SfEmPrlJAVrJnIhfJODfzf+Gy5VSXZ9cLiOzrn1uA59g9t9PKeZZlR5/
+	iZAwWtjsT4kbJhA21dq0wR+cKO4JTzmG6pRu68/wDWfpOBIv933jRHHL5Zlknxm27r3hqGEIgybvM
+	X+ByizImP6fFdbfjE22uzrKXkDExIZDyld+xT007pIU8aDKV7TTehwoqribtMlPYy4b9x7hvg+lMF
+	0O7J5mXSly8geMni3R2WKwUkIRuldOsuRwdSzAypUQ7TrLOPl+2NfT4awv3tKYaRRFaGBxyJ1K+Mp
+	00rhCmQQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sZCv7-00000001zh2-3ekG;
-	Wed, 31 Jul 2024 17:15:25 +0000
-Received: from mail-mw2nam12olkn20810.outbound.protection.outlook.com ([2a01:111:f403:2805::810] helo=NAM12-MW2-obe.outbound.protection.outlook.com)
+	id 1sZDTQ-000000023th-1bpv;
+	Wed, 31 Jul 2024 17:50:52 +0000
+Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sZCu0-00000001zUH-1tpv
-	for linux-rockchip@lists.infradead.org;
-	Wed, 31 Jul 2024 17:14:18 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=Vhex27nJWTWu2zyooIRQiwAdkJrJ1lJXGdnKpdcSX+oPe1BB1aNe55DYMDemixYp7uYdTiVuzcNZtEiMfUs2lnwRd+1ybIx/IolQoigbTt56eH5A59JKDgSWuAyhLbF3JfEFvwSxpRiW5B4daGtnMiK2Oxu/M4VSwb/KN5PcQGD5iZazt4Ms9vm/p9O4t01lAU1WBBTcMBOPe8BhxI3L+R4+A6/8slJeCMeqAn29T7RlQt8lRn3O1Fl2Y9p7IvXsbg/HVSozjQS0LDkGJYBmpvgUyQUgdmtWzCclCwBK7U0PoVUWATMbgmrih2F2BdpcvzXGquEisA97RegZRBXBVA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=JWPegqjSjUYD+yn4Xzfk3uuOI2DTUyYdus6qfEEj+qk=;
- b=agauBwfTdvPcRrCBsydhHPg39zaUi4DnWMU/PMd4Dh+NhK2JQthZlU0DSNqQZOleeig63ma7PvrMUBA2cIB7XjisKPPHiNWk9q1Y3YJCBdpUVOarsX9Gxul++Ql6OPDX8Br3NXY4W5ETns7psqsMEHFtwbs9mbdaw+Shb+UyVJEjmFpSBtlZfioz1hmUtH4GVb+5ABIXnqy8785SWWyOiD7Q3SMI/KTvgLouFFSqAkwF1ww9uoUclAr9tX3RJyG8itzJS/yjXUUOxt+5lbeS/SADIsXAPD/wKNIPACb5CU3S/IfOjSWQJVQQV9CQWWY1ZWFAbqy0PeRTC5HC+vlqiQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=none; dmarc=none;
- dkim=none; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=hotmail.com;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=JWPegqjSjUYD+yn4Xzfk3uuOI2DTUyYdus6qfEEj+qk=;
- b=Y4/bHNDeqbLDRyuUTkT05B2AgZ6ffP4LlYs83qpUYRkovZCUFFvHFnT3CCB4NgcpSLl6WduR8n/eAiYoXXoIrvIiTUsW9ryU8fWoOSaX5sC44DUs2DgtK82+cDlcQoE62aBjuypt3STFyXc2N5tt0jVh/nyo2aJ3ewVe7AfKUV6kGyR3FFeqZCJB4FGqxtCn69jcAEKynsUXokc/MjBluiV/rwdjBytf5gf1TSGxiDchgxsmqPCshz7b9Snw+TU4ZYDNvlQTl5KPzOaROCOO7mSPDZbtDQglKPEzmVXT7CLOOZQ/93TQSS96nR28UByrnSmU1N57LMGfGnKPhoCARQ==
-Received: from MN2PR16MB2941.namprd16.prod.outlook.com (2603:10b6:208:e1::15)
- by SA1PR16MB6242.namprd16.prod.outlook.com (2603:10b6:806:3d1::20) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7807.28; Wed, 31 Jul
- 2024 17:14:10 +0000
-Received: from MN2PR16MB2941.namprd16.prod.outlook.com
- ([fe80::9d62:95ae:c373:c490]) by MN2PR16MB2941.namprd16.prod.outlook.com
- ([fe80::9d62:95ae:c373:c490%4]) with mapi id 15.20.7828.021; Wed, 31 Jul 2024
- 17:14:10 +0000
-Date: Wed, 31 Jul 2024 12:14:06 -0500
-From: Chris Morgan <macromorgan@hotmail.com>
-To: Sebastian Reichel <sebastian.reichel@collabora.com>
-Cc: Chris Morgan <macroalpha82@gmail.com>,
-	linux-rockchip@lists.infradead.org, linux-pm@vger.kernel.org,
-	devicetree@vger.kernel.org, jagan@edgeble.ai, andyshrk@163.com,
-	jonas@kwiboo.se, t.schramm@manjaro.org, heiko@sntech.de,
-	conor+dt@kernel.org, krzk+dt@kernel.org, robh@kernel.org
-Subject: Re: [PATCH 2/5] power: supply: cw2015: Add support for dual-cell
- configurations
-Message-ID: <MN2PR16MB29415FF49F8EA592D0F58164A5B12@MN2PR16MB2941.namprd16.prod.outlook.com>
-References: <20240726194948.109326-1-macroalpha82@gmail.com>
- <20240726194948.109326-3-macroalpha82@gmail.com>
- <eimocj6mlvo6u4x54heywblwrfnftxelzpvfcogpjp7vjmunor@5eqlqsszk6ni>
- <MN2PR16MB2941F5FFA92B056533586FBDA5B12@MN2PR16MB2941.namprd16.prod.outlook.com>
- <2eh5iqwtwlbpg5kpr4lvvhxo2tngw4w7qanelr6filcrru62le@o7cwpsahp2n7>
-Content-Disposition: inline
-In-Reply-To: <2eh5iqwtwlbpg5kpr4lvvhxo2tngw4w7qanelr6filcrru62le@o7cwpsahp2n7>
-X-TMN: [mRWvRDJl2SCSwZHR4a9qMRrEhoEQtSqau2kRGnDUfdQ=]
-X-ClientProxiedBy: SN4PR0501CA0049.namprd05.prod.outlook.com
- (2603:10b6:803:41::26) To MN2PR16MB2941.namprd16.prod.outlook.com
- (2603:10b6:208:e1::15)
-X-Microsoft-Original-Message-ID: <Zqpw3hPiZMVUFUin@wintermute.localhost.fail>
+	id 1sZDSw-000000023oq-1LdR;
+	Wed, 31 Jul 2024 17:50:23 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1722448218;
+	bh=SUbvt4YQ/Ri8ijmIeyQW1LP0iNmjh7l+SdztU2CMSK0=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=4kZycYuV7rNgk7MiZhkpjl4EucXIPgirUN25IkczKeVsWf+15NwbJgmL7FnZf0Iur
+	 qw8GHuzCnO6tgfbiIFh/5peplsfE1E3D2xM2eu4L2dxdZ7xGDPcDvy3DjQpYEFdEf2
+	 wiKbpoEzmbEZvYt6LCvZlssx1UzfkrTlU1AKKefjV85WokbvHb/tuo0sBsKTYF26Ub
+	 nbJ/2vNhxt9f/YkkozjXB1px0JuPFgZ2HrEvC86dCvS8dn5yHcmNYrtaMFT7lXc0F7
+	 nVxwtQv/otUZX+QNT4RIJVBzCtxmQX4MvxG8cQfFbOlPftdXn79iNbfxY0G89qYD4O
+	 wmmMUVbMZcc4A==
+Received: from mercury (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: sre)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 5484437804C8;
+	Wed, 31 Jul 2024 17:50:18 +0000 (UTC)
+Received: by mercury (Postfix, from userid 1000)
+	id F37A110609BB; Wed, 31 Jul 2024 19:50:17 +0200 (CEST)
+Date: Wed, 31 Jul 2024 19:50:17 +0200
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+To: Arend Van Spriel <arend.vanspriel@broadcom.com>
+Cc: Krzysztof Kozlowski <krzk@kernel.org>, 
+	Jacobe Zang <jacobe.zang@wesion.com>, robh@kernel.org, krzk+dt@kernel.org, heiko@sntech.de, 
+	kvalo@kernel.org, davem@davemloft.net, edumazet@google.com, kuba@kernel.org, 
+	pabeni@redhat.com, conor+dt@kernel.org, Linus Walleij <linus.walleij@linaro.org>, 
+	efectn@protonmail.com, dsimic@manjaro.org, jagan@edgeble.ai, devicetree@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	arend@broadcom.com, linux-wireless@vger.kernel.org, netdev@vger.kernel.org, 
+	megi@xff.cz, duoming@zju.edu.cn, bhelgaas@google.com, minipli@grsecurity.net, 
+	brcm80211@lists.linux.dev, brcm80211-dev-list.pdl@broadcom.com, nick@khadas.com, 
+	Andy Green <andy@warmcat.com>
+Subject: Re: [PATCH v5 2/5] dt-bindings: net: wireless: brcm4329-fmac: add
+ clock description for AP6275P
+Message-ID: <cn4vykgbj6mhiikyco5uvyfa424njoun67hsoof4lbwvscwoc2@5xfl4q5mvooy>
+References: <20240730033053.4092132-3-jacobe.zang@wesion.com>
+ <191025b5268.279b.9b12b7fc0a3841636cfb5e919b41b954@broadcom.com>
+ <f45c1fa7-f321-4a1f-b65c-6ed326a18268@kernel.org>
+ <191030eac78.279b.9b12b7fc0a3841636cfb5e919b41b954@broadcom.com>
+ <3d3b8e0a-7492-4db1-bd73-c30a488edaa7@kernel.org>
+ <191035b8c28.279b.9b12b7fc0a3841636cfb5e919b41b954@broadcom.com>
+ <k3dhdsa5bjzad2ha5e2uurg2azzs773ier5thkot4w2qcvnv54@yuf52eluqsae>
+ <dd381dc1-454f-4ecd-adb7-55de2e15d592@broadcom.com>
+ <sgfd5ccltsi7mjbybmdbs3fmsfcp3vqtpitdac7exzgxav53kk@6lwogbq4fhks>
+ <1910959c1f8.279b.9b12b7fc0a3841636cfb5e919b41b954@broadcom.com>
 MIME-Version: 1.0
-X-MS-Exchange-MessageSentRepresentingType: 1
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: MN2PR16MB2941:EE_|SA1PR16MB6242:EE_
-X-MS-Office365-Filtering-Correlation-Id: b3f96ecc-4655-457f-482d-08dcb18430f5
-X-Microsoft-Antispam: BCL:0;ARA:14566002|461199028|8060799006|19110799003|5072599009|56899033|1602099012|4302099013|440099028|3412199025;
-X-Microsoft-Antispam-Message-Info: /wsFx5KqulltSJndA3x/WWkPYePKgE6G2Hejub0mPj5KiZhZqSlFbYUoD2MKlfj4N3uOwyxeG4qaLTZATWAdb3+8A2sLyedO6YjZT7PIXnVPOv86FWo+P4rZr+96yl/7iq7tTs/z+l6KCK4hAoI2oIMmq7LHeLxhUrf94mXRSQZ3G9LrKyRaOzF1sy30PJxVf8k3Sp8xTqewrfAYFpf48/fGy9JYx1jBXuF6uTM3SqrUVFHaKcnQJccnC4T0l59iN+pImr0qkQtWkyk0tXWXmG8CY226i5mMj8TnORN2DEkyO4SmzYr3U39EYPEoIEnTlAxGUd7WruzEPnKV1ybW5l3DHuoD3Z0yn06fcGYf0adSIbLof3qMPD7NJswWknsaFOm21fv7qBGL7heKbEyw8lUqnn432TOzMf5GIrycbZT7Pz3k6inzicZCXGhezbQTrbALk/WAr4Y1wQb7/7oLE54IkMR14uMD1KeJHbz8ck3B0FVaQpUKKR0hLDDI7lK+qhSzasnC/i3iEEjvQqzkfwd6JkftAeKNWz+Hdag5bQgS/c1EMG+v21CWi+GeLtm9h5Xmut8JHrqUDyoBzbbPIcKWhPPZ8qNcnHK7Zz2TsissMSO1/FkXvqX1bmZmIhmkpEueCxOde6xIzCAUvyLslr0Y2gt91gIMKxHcqBD0PEz34l1bH0cBPb5xKsk5O5S+5AS8XDcES4f5kjZzuC5RVhhz8GNt276dxFg24TypUIFDe6F1BwbT7Od2kv/xkhUDMeT4WxTdDfHmcHQfPBmOpdXNVqHT/EN/x4IBJQR8+pE=
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?jKQLKb6wvXA9Pn5lfOrqxcafdkU7/qexhO+ClSfSNXCqCTzhRdnKmaPVSLKj?=
- =?us-ascii?Q?Sh9yeyDaeKUrVq/7d0ovWu7mvnntabQm8Q1IAeaAIzoSWlVvYr453SFK/Tlt?=
- =?us-ascii?Q?O+/d72kwJ6YtZaUDOC/yPqASZsjT0FyHT5ZAbbjEoU5WDn05jWy4XQTYCB5N?=
- =?us-ascii?Q?EPhxe705SQZkjrssIqfQRJnTBjMyzWj/2QE9CzpjI6eds0hW2UsKlNXsHqf/?=
- =?us-ascii?Q?sMfmDzrT2/UD82JtBotPkpb5woJIImcSYB2fDwKYYmckNFtJalAYSB3QfaUf?=
- =?us-ascii?Q?jNMc5BCTQIy9TYnuZK8Y9H02vxJ3Aoptjom6LfoVJRR3Tr3vmiy6hJgKwFLS?=
- =?us-ascii?Q?vTtJYkNrTe0ecf4kC6R3U5j/a0NEw+pLyj5RDygyhH+qJPqQoUkZuVWhqkN4?=
- =?us-ascii?Q?3xpKgPtTCTO6ACvidi487oioFG3mDQRSv9kBDYw/eqmNUj5ljN3c1P6EzOiA?=
- =?us-ascii?Q?aAY5EXvFvUVsWCILOqjsUEWEtGm20oiRd5NDI5iNI9v7kbr8z20NczBvf5YT?=
- =?us-ascii?Q?9B75WJHabtyPFPbeLbm84yAypCg2ANSw5WOAopyPeq1iAVMzpw46THYNd/dD?=
- =?us-ascii?Q?iCXAe0lWpjCml16UebVSykEyLEhCZKAE2/a4GIQBIYR3rX6YP/Pfsq24Zjc4?=
- =?us-ascii?Q?F9BF3ABKj0XooMr7KQ2r7EQFLSjQLicyUh+UKEs8LApsyEKxCBoEvOJasxZL?=
- =?us-ascii?Q?D05CquO5bzwnM2nc7Tfs0xObcqmoqib6mNmlTSSBZ735yyE8JT40zs+yQyr7?=
- =?us-ascii?Q?xfO5rQOZ4XXDtyb6cLY8TVK6EOJE1eBqT7ttTx986M8OzX+r+Xtr+hJ/z6rG?=
- =?us-ascii?Q?Mq+vF1eskelFvU4y5aj+fah0rZuAKjOr42OZJbcZcmHMzycFzT/NxI5pxo6T?=
- =?us-ascii?Q?E55vCwCZC5PSp9kyomlFYRd3HGVyNbX6Qi1LMcq2kMlTfa8By5BzOfxzuTlf?=
- =?us-ascii?Q?NxHBHDNpFUrwL1hgUsvhhXlcHV6FglxSY9thPkYdeeu21BDby+nrVZgUEKWS?=
- =?us-ascii?Q?kx9UxBYJhMJCr3vIuTx8Sv/U9zOt/L/r0JXlwEpOupBRRWBi4R4sij/u4qMg?=
- =?us-ascii?Q?4MI8lsl94cR1pls1bveO8s6J/2vQ3KJD9RCjcvszbTff/3pngF1yjWWL0F6q?=
- =?us-ascii?Q?YrXhsl7b4PMquMBK/E+Bz5Na1AwRc5q+13l5I6dcfo3ULElUKPKQda8d4BSj?=
- =?us-ascii?Q?u4kz+M4Yn7OClcDCAkNRdB1mCTywyXvWLWFrDO90SXiZcTimtVFTBf2BsbOo?=
- =?us-ascii?Q?7M8hfaKko4lVGwPQDiVa4UIIw24rEZYbYMXt8TPhTw=3D=3D?=
-X-OriginatorOrg: sct-15-20-7719-20-msonline-outlook-559fc.templateTenant
-X-MS-Exchange-CrossTenant-Network-Message-Id: b3f96ecc-4655-457f-482d-08dcb18430f5
-X-MS-Exchange-CrossTenant-AuthSource: MN2PR16MB2941.namprd16.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 31 Jul 2024 17:14:09.8107
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa
-X-MS-Exchange-CrossTenant-RMS-PersistedConsumerOrg: 00000000-0000-0000-0000-000000000000
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SA1PR16MB6242
+In-Reply-To: <1910959c1f8.279b.9b12b7fc0a3841636cfb5e919b41b954@broadcom.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240731_101416_535605_C189B4DB 
-X-CRM114-Status: GOOD (  53.24  )
+X-CRM114-CacheID: sfid-20240731_105022_552852_F0F60021 
+X-CRM114-Status: GOOD (  60.90  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -127,159 +87,223 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============7487867976618625284=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jul 31, 2024 at 07:02:28PM +0200, Sebastian Reichel wrote:
-> Hi,
-> 
-> On Wed, Jul 31, 2024 at 11:02:11AM GMT, Chris Morgan wrote:
-> > On Fri, Jul 26, 2024 at 11:06:21PM +0200, Sebastian Reichel wrote:
-> > > Hi,
-> > > 
-> > > On Fri, Jul 26, 2024 at 02:49:45PM GMT, Chris Morgan wrote:
-> > > > From: Chris Morgan <macromorgan@hotmail.com>
-> > > > 
-> > > > The Cellwise cw2015 datasheet reports that it can handle two cells
-> > > > in a series configuration. Allow a device tree parameter to note
-> > > > this condition so that the driver reports the correct voltage values
-> > > > to userspace.
-> > > 
-> > > I found this:
-> > > 
-> > > http://www.cellwise-semi.com/Public/assests/menu/20230302/6400076806706.pdf
-> > > 
-> > > Which says:
-> > > 
-> > >   CW2015 can be used in 2 or more batteries connected in series, or
-> > >   several cells connected in parallel.
-> > > 
-> > > So dual-cell seems like a bad property name. Instead the number of
-> > > serial cells should be provided. This property is then not really
-> > > specific to the Cellwise fuel gauge and instead a property of the
-> > > battery pack (i.e. simple-battery.yaml).
-> > 
-> > It's conflicting information (which further confuses me). I see in that
-> > datasheet it says 2 or more, whereas the datasheet found here says only
-> > 2 cells:
-> > 
-> > https://www.lestat.st/_media/informatique/projets/python-cw2015/cw2015-power-management-datasheet.pdf
-> > 
-> > But I agree in principle that we should be setting this as a property
-> > of a simple-battery rather than a manufacturer specific parameter.
-> > 
-> > > 
-> > > > Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
-> > > > ---
-> > > >  drivers/power/supply/cw2015_battery.c | 7 +++++++
-> > > >  1 file changed, 7 insertions(+)
-> > > > 
-> > > > diff --git a/drivers/power/supply/cw2015_battery.c b/drivers/power/supply/cw2015_battery.c
-> > > > index f63c3c410451..b23a6d4fa4fa 100644
-> > > > --- a/drivers/power/supply/cw2015_battery.c
-> > > > +++ b/drivers/power/supply/cw2015_battery.c
-> > > > @@ -77,6 +77,8 @@ struct cw_battery {
-> > > >  	u32 poll_interval_ms;
-> > > >  	u8 alert_level;
-> > > >  
-> > > > +	bool dual_cell;
-> > > > +
-> > > >  	unsigned int read_errors;
-> > > >  	unsigned int charge_stuck_cnt;
-> > > >  };
-> > > > @@ -325,6 +327,9 @@ static int cw_get_voltage(struct cw_battery *cw_bat)
-> > > >  	 */
-> > > >  	voltage_mv = avg * 312 / 1024;
-> > > >  
-> > > > +	if (cw_bat->dual_cell)
-> > > > +		voltage_mv *= 2;
-> > > 
-> > > Unfortunately there are no details in the document, but this looks
-> > > very fishy. Does it only measure the first cell and hope that the
-> > > other cells have the same voltage?
-> > > 
-> > > This (unmerged) series also applies to your problem to some degree:
-> > > 
-> > > https://lore.kernel.org/all/20240416121818.543896-3-mike.looijmans@topic.nl/
-> > 
-> > I think based on the application diagram it is in fact measuring the
-> > cell voltage.
-> >
-> > That said, this ultimately boils down to a cosmetic thing
-> > as not having this property simply means userspace sees the battery
-> > voltage as 3.8v instead of 7.6v as is written on the side.
-> 
-> With the cells being connected in serial, the voltage of both cells
-> can be different. There is not "the cell voltage". Instead there is
-> a voltage for cell 1 and a voltage for cell 2. In a perfect battery
-> they are the same, but in reality they are not. In the extreme case
-> one of the cells may be broken while the other is still fine. It
-> sounds as if this is just measuring the voltage from the first
-> cell and assumes the second cell has the same voltage.
-> 
-> Ideally the voltage on these platforms is not exposed via the normal
-> VOLTAGE property and instead uses a new property for telling
-> userspace the voltage for a single cell. The kernel simply does not
-> know the voltage of the whole battery pack.
-> 
-> FWIW this is the worst battery measurement system I've seen so far
-> if my understanding of the hardware design is correct.
-> 
-> -- Sebastian
-> 
 
-Don't get me started, this whole stack is a nightmare. The battery
-won't charge at all without a bq25703 driver (so this current DTS
-basically has the device running while plugged in); and for some
-reason the fcs,fc302 chip wants to go interrupt crazy if you're not
-using a PD charger. Part of the reason of getting this upstreamed
-is so I can have a common base for others to help me get this last
-bit of nonsense sorted out. Displaying the correct voltage on the
-battery however isn't critical, as the device will still report the
-correct SoC and will even charge and function just fine when a driver
-is in place for the bq25703. It's just the voltage reported in sysfs
-will be wrong.
+--===============7487867976618625284==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="my2grf6ekzwdybt6"
+Content-Disposition: inline
 
-Thank you,
-Chris
 
-> > I think for simplification sake I will remove this from the series, add
-> > a note to the device tree, and wait for the other battery series to get
-> > pulled. When it gets pulled I'll request a device tree property so we
-> > can add POWER_SUPPLY_PROP_NUMBER_OF_SERIAL_CELLS to the simple-battery
-> > and then parse this value. Or if that series ends up getting abandoned
-> > I can just add a quick and dirty new property like this.
-> 
-> 
-> > 
-> > Thank you,
-> > Chris
-> > 
-> > > 
-> > > -- Sebastian
-> > > 
-> > > >  	dev_dbg(cw_bat->dev, "Read voltage: %d mV, raw=0x%04x\n",
-> > > >  		voltage_mv, reg_val);
-> > > >  	return voltage_mv;
-> > > > @@ -587,6 +592,8 @@ static int cw2015_parse_properties(struct cw_battery *cw_bat)
-> > > >  			return ret;
-> > > >  	}
-> > > >  
-> > > > +	cw_bat->dual_cell = device_property_read_bool(dev, "cellwise,dual-cell");
-> > > > +
-> > > >  	ret = device_property_read_u32(dev, "cellwise,monitor-interval-ms",
-> > > >  				       &cw_bat->poll_interval_ms);
-> > > >  	if (ret) {
-> > > > -- 
-> > > > 2.34.1
-> > > > 
-> > > > 
-> > 
-> > 
+--my2grf6ekzwdybt6
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+Hi,
+
+On Wed, Jul 31, 2024 at 05:12:43PM GMT, Arend Van Spriel wrote:
+> On July 31, 2024 3:54:52 PM Sebastian Reichel
+> <sebastian.reichel@collabora.com> wrote:
+> > On Wed, Jul 31, 2024 at 02:57:37PM GMT, Arend van Spriel wrote:
+> > > On 7/30/2024 7:38 PM, Sebastian Reichel wrote:
+> > > > On Tue, Jul 30, 2024 at 01:16:57PM GMT, Arend Van Spriel wrote:
+> > > > > On July 30, 2024 12:18:20 PM Krzysztof Kozlowski <krzk@kernel.org=
+> wrote:
+> > > > >=20
+> > > > > > On 30/07/2024 11:52, Arend Van Spriel wrote:
+> > > > > > > On July 30, 2024 11:01:43 AM Krzysztof Kozlowski <krzk@kernel=
+=2Eorg> wrote:
+> > > > > > >=20
+> > > > > > > > On 30/07/2024 08:37, Arend Van Spriel wrote:
+> > > > > > > > > + Linus W
+> > > > > > > > >
+> > > > > > > > > On July 30, 2024 5:31:15 AM Jacobe Zang <jacobe.zang@wesi=
+on.com> wrote:
+> > > > > > > > >
+> > > > > > > > > > Not only AP6275P Wi-Fi device but also all Broadcom wir=
+eless devices allow
+> > > > > > > > > > external low power clock input. In DTS the clock as an =
+optional choice in
+> > > > > > > > > > the absence of an internal clock.
+> > > > > > > > > >
+> > > > > > > > > > Reviewed-by: Arend van Spriel <arend.vanspriel@broadcom=
+=2Ecom>
+> > > > > > > > > > Signed-off-by: Jacobe Zang <jacobe.zang@wesion.com>
+> > > > > > > > > > ---
+> > > > > > > > > > .../bindings/net/wireless/brcm,bcm4329-fmac.yaml       =
+   | 8 ++++++++
+> > > > > > > > > > 1 file changed, 8 insertions(+)
+> > > > > > > > > >
+> > > > > > > > > > diff --git
+> > > > > > > > > > a/Documentation/devicetree/bindings/net/wireless/brcm,b=
+cm4329-fmac.yaml
+> > > > > > > > > > b/Documentation/devicetree/bindings/net/wireless/brcm,b=
+cm4329-fmac.yaml
+> > > > > > > > > > index 2c2093c77ec9a..a3607d55ef367 100644
+> > > > > > > > > > --- a/Documentation/devicetree/bindings/net/wireless/br=
+cm,bcm4329-fmac.yaml
+> > > > > > > > > > +++ b/Documentation/devicetree/bindings/net/wireless/br=
+cm,bcm4329-fmac.yaml
+> > > > > > > > > > @@ -122,6 +122,14 @@ properties:
+> > > > > > > > > > NVRAM. This would normally be filled in by the bootload=
+er from platform
+> > > > > > > > > > configuration data.
+> > > > > > > > > >
+> > > > > > > > > > +  clocks:
+> > > > > > > > > > +    items:
+> > > > > > > > > > +      - description: External Low Power Clock input (3=
+2.768KHz)
+> > > > > > > > > > +
+> > > > > > > > > > +  clock-names:
+> > > > > > > > > > +    items:
+> > > > > > > > > > +      - const: lpo
+> > > > > > > > > > +
+> > > > > > > > >
+> > > > > > > > > We still have an issue that this clock input is also pres=
+ent in the
+> > > > > > > > > bindings specification broadcom-bluetooth.yaml (not in bl=
+uetooth
+> > > > > > > > > subfolder). This clock is actually a chip resource. What =
+happens if both
+> > > > > > > > > are defined and both wifi and bt drivers try to enable th=
+is clock? Can this
+> > > > > > > > > be expressed in yaml or can we only put a textual warning=
+ in the property
+> > > > > > > > > descriptions?
+> > > > > > > >=20
+> > > > > > > > Just like all clocks, what would happen? It will be enabled.
+> > > > > > >=20
+> > > > > > > Oh, wow! Cool stuff. But seriously is it not a problem to hav=
+e two entities
+> > > > > > > controlling one and the same clock? Is this use-case taken in=
+to account by
+> > > > > > > the clock framework?
+> > > > > >=20
+> > > > > > Yes, it is handled correctly. That's a basic use-case, handled =
+by CCF
+> > > > > > since some years (~12?). Anyway, whatever OS is doing (or not d=
+oing)
+> > > > > > with the clocks is independent of the bindings here. The questi=
+on is
+> > > > >=20
+> > > > > Agree. Probably the bindings would not be the place to document t=
+his if it
+> > > > > would be an issue.
+> > > > >=20
+> > > > > > about hardware - does this node, which represents PCI interface=
+ of the
+> > > > > > chip, has/uses the clocks.
+> > > > >=20
+> > > > > The schematics I found for the wifi module and the khadas edge pl=
+atform show
+> > > > > these are indeed wired to the chip.
+> > > >=20
+> > > > I have a Rockchip RK3588 Evaluation Board on my desk, which uses the
+> > > > same WLAN AP6275P module. I think I already commented on a prior
+> > > > version of this series: The LPO clock is needed to make the PCIe
+> > > > device visible on the bus. That means this series only works if the
+> > > > clock has already been running. Otherwise the PCIe driver will never
+> > > > be probed. To become visible the devices requires:
+> > > >=20
+> > > > 1. The LPO clock to be enabled
+> > > > 2. Power to be applied
+> > > > 3. The WL_EN gpio to be configured correctly
+> > > >=20
+> > > > If one of the above is not met, the device will not even appear in
+> > > > 'lspci'. I believe the binding needs to take into consideration, th=
+at
+> > > > pwrseq is needed for the PCIe side. Fortuantely the heavy lifting of
+> > > > creating the proper infrastructure for this has already been done by
+> > > > Bartosz Golaszewski for Qualcomm WLAN chips. What is missing is a
+> > > > pwrseq driver for the Broadcom chip (or this specific module?).
+> > >=20
+> > > That does not really make sense. There is no relation between the LPO=
+ clock
+> > > and the PCIe clocks so 1) being a requirement for probing the device =
+looks
+> > > odd. It also does not match past experience when I assisted Andy Gree=
+n in
+> > > getting this module up and running almost two years ago.
+> >=20
+> > Well, first of all I can easily reproduce this on my RK3588 EVB1. I
+> > intentionally ignore any bluetooth bits to avoid cross-effects from
+> > bluetooth enabling any clocks / regulators / GPIOs and make sure the
+> > RTC output clock is disabled at boot time (i.e. boot once without
+> > any reference to the RTC clock and without 'clk_ignore_unused'
+> > kernel argument). When booting up like this the WLAN device is not
+> > visible in 'lspci' despite the WL_REG_ON GPIO being hogged. If I
+> > additionally hack the RTC output clock to be enabled the WLAN device
+> > becomes visible in 'lspci'.
+> >=20
+> > The datasheet fully explains this:
+> >=20
+> > https://www.lcsc.com/datasheet/lcsc_datasheet_2203281730_AMPAK-Tech-AP6=
+275P_C2984107.pdf
+> >=20
+> > PDF Page 23/24 (20/21 in the footer) has the Host Interface Timing
+> > Diagram. WL_REG_ON should only be enabled after 2 cycles from LPO.
+> > That means with LPO being disabled WL_REG_ON cannot be enabled. I'm
+> > pretty sure WL_REG_ON means WLAN_REGULATOR_ON, so the logic is not
+> > powered. On page 27 (24 in the footer) there is also a PCIe Power-On
+> > Timing diagram, which shows that WL_REG_ON must be enabled before
+> > the PCIe refclk is enabled.
+> >=20
+> > So there is a specific power up sequence, which must be followed.
+>=20
+> The chip also has an (less accurate) internal LPO so the 32khz sleep clock
+> in the diagram does not have to be an external clock. Maybe Ampak
+> bootstrapped the chip to disable the internal clock. Dunno.
+>=20
+> What Andy needed back then to get firmware running was a change in the nv=
+ram
+> file to force using the internal LPO, but the device was already visible =
+on
+> the PCIe bus.
+
+mh, I just tested again and I can no longer reproduce the LPO
+requirement for PCIe detection. Maybe it was something else all
+along (I did most of my tests quite some time ago).
+Sorry for the noise.
+
+-- Sebastian
+
+--my2grf6ekzwdybt6
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmaqeUsACgkQ2O7X88g7
++pp84w/+KBmheZfpb0fRtyqgN36WgVqY9s5Gox0tnnz/NiXMcnTlgKuFpzHgWkPF
+c+6p/y8tcZnKqx4cUzOUERWdqLKhv4Eg79XECqCfryltPVF5Ws1/Q3SKOH/mfIQM
+392BAuZhrk0tu5OGir02czB0Am6yWsbsWNgmCqgK0HEPOdAOG635B0bgXe9Mao+c
+b5MRSoDcMVIkm0N1I5HECk6fAojJfENfWHvHsT83Ehg8Jrkbbm/d9ddcbfw+Bd/J
+ydUzMu+FZMLWQk6jr2ToB6Vtgjkoa5uTh4zjdIvsDP5gijQ31rQSQBEhCph1UONs
+Ug9v3YVpQVZJ8zKXZYL3lelPVyUd3izhCB0pApRDXottaMSjzW7TjVT7YdDeu1mX
+qjQlW5U/tiexec2NUsoKrCjXdpd2nh2rMbF08qCgjQLTqVaKThxILtN8I67DPn8E
+ikV4rwXSLsnq6KKYLycJmSBRHVsMJTfwXF0OyNXi8ISNsdT1WTlUpYED/nLfyFxB
+S6mkYaOFFHO+FqQ+uXWveskh235zEJLqq9XJdlpZlFfySI6D5TxaBbnfanCnrJsH
+fUQD9szb1KuJ8RnvIIvYLX7Izl5IpHYo1lEeTIfLRCmDwtrCLEmcj06Q2cfOcaWz
+FyEBLa7DmERYhwIvtWCzA8NTXM7j+gYmcNEM0Mia8d0MYIhYjFw=
+=Uz9w
+-----END PGP SIGNATURE-----
+
+--my2grf6ekzwdybt6--
+
+
+--===============7487867976618625284==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============7487867976618625284==--
+
