@@ -4,160 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CCF8CC3DA4A
-	for <linux-rockchip@archiver.kernel.org>; Thu,  1 Aug 2024 09:09:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 15531C3DA64
+	for <linux-rockchip@archiver.kernel.org>; Thu,  1 Aug 2024 09:50:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=7l7WOLPjRWRVCK8zritDm/2SArKryejCmzG0kY51sW4=; b=LeYFsv3chcHdV/
-	b91vT30RZets7x0CKFPohw4YYuQBzFqx5zZIYv9nEiIVQpx0P8yfsGeuLk9/oXI+RfTZqWZqumTyq
-	uW/h/chY0yNLy5ShPoownNAtlkreOR3Au2ryxqCNLOdrW02sjJk3cA4EVdTPiFK/dCfid9r1Fj7lg
-	5cNeg52qWB4UupYdhqVbmpumNk7xAqBlgdCyPgVrE7DAT5GrYh9z9k0MgC2G25KlPJo619yu5w3Es
-	3iM8tm5672D64gRD1kQq/RClrDnJP1U1S0fTc6exMNf6ggTaYtbygQiapkui3raM2eNPKj7+5EDzj
-	4Z04r48wmnWyKqT6LsIw==;
+	List-Owner; bh=Ou/KPnJF3R+J99gRHLrcEdyfO631wh3nfzNo2fUVQFA=; b=pt+kuKqYUG1EdI
+	X9JRxx2WsuKs3K/dILjXPyC0zUrTtQpMSJbFvSCTaY7UVi3DzP5zeFgbchcwjRdYlXOd0i+erq2qG
+	Zksomi5TIh6JWqMO8vwor0NHjfNRrjDxeqtN1IIJrfouvnboTAnJYcn0LAezrEa5T51ueaiEm2CW/
+	R9/G6CX3+F9UhJsbfAvdD7i3VoswapCdRPa7iq+1aCvMW37RVZkJEqLhzw+Xn4umonp4ldP+TluBU
+	bul96BSDmSYHtCdQRYtUQepv0DvwOOWWCsjVX5qKc3ZPawZuVd/tZM2HzrDFRoVKeDCPSq5g4zdEA
+	uAXV9aj8CGDzk3KpYj/w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sZRo4-00000004TqT-41yw;
-	Thu, 01 Aug 2024 09:09:08 +0000
-Received: from smtp-out2.suse.de ([2a07:de40:b251:101:10:150:64:2])
+	id 1sZSSH-00000004eMg-1Bsa;
+	Thu, 01 Aug 2024 09:50:41 +0000
+Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sZRnW-00000004TfT-2TbB;
-	Thu, 01 Aug 2024 09:08:38 +0000
-Received: from imap1.dmz-prg2.suse.org (unknown [10.150.64.97])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	id 1sZSRm-00000004eGl-1z0n;
+	Thu, 01 Aug 2024 09:50:12 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1722505806;
+	bh=++7YBygtyHrsIKH24UC+hO0yBDoc31paLAZPeS2iAeA=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=dIpJjCKAqtMZnaGMhWjBrKNVWJ+uLhaCBsWlNlDpsDy9pV1At1Ykqaf24L1+EGUa3
+	 y2V8YSsQDVw/jTgmi+Y9i6yRMIBaK4dGoS4eiVdRgShNE4qyXyCQHouEA4UZ0TFfB5
+	 cC/w5zcFw6k0QcDlrsOa9Bxu83HAhxd+zM9hwh+px/jhSKvzr2yTX4Dw6Clyze6/8R
+	 X8mZdyI+UiIKaQXAHLMQmdF+X2LyAg00r0BlMyZU/QAgbl/8f4vbUJ71ynACX8+pW7
+	 LNIovqrtThsU56K38SWNNX8fu7rbSoojnU8iDWJ8fJXT7CTpfw3tv22t4mcB6n52Zu
+	 eFIo67TV5CylQ==
+Received: from [100.115.223.179] (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	by smtp-out2.suse.de (Postfix) with ESMTPS id E64FB1F7D2;
-	Thu,  1 Aug 2024 09:08:32 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1722503313; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
-	bh=8CLGoz52zKPxxoWPDdh/ixZ43op1lXLpYfCTNUCzfSY=;
-	b=qXD2DlSzzFWUgMio7zZWFMELsmA2PSy8X8hXcAFTxBc5CoxScwkzoaKMwZW1uTzSnN2L9w
-	rr7iuffb5Zw7QmGPMKcDHSwMijLRdwEJbdshmyhM2ShEC6DKAfhn7ESGaqKpbQH6SfAC+W
-	+VXBNUZlFMEmCrIkEcWacCZF6MdR+PU=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1722503313;
-	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
-	bh=8CLGoz52zKPxxoWPDdh/ixZ43op1lXLpYfCTNUCzfSY=;
-	b=0Ew0Q+ojsmKR2aJnwkB7JvH5fHokyjzh7ThkUmFqRlLxYdNnwHOrePQ3UX0IMHOYBK0QRK
-	0wR1KpxoNaGsHDBw==
-Authentication-Results: smtp-out2.suse.de;
-	none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1722503312; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
-	bh=8CLGoz52zKPxxoWPDdh/ixZ43op1lXLpYfCTNUCzfSY=;
-	b=0C9b4pU3dJxYHGf3YbdFnjHYmOdas7PPJ/u/86ZU2q4P3K4FWhhw/vUtJ/GZvgpey+f6L+
-	2hx6eaCUtEHHr0vrp3RskaDmwbGqMbkzcJhMLYYZVNqh754df6c4VZdpmDx0DDVCPqPema
-	DqHPRu69gWCtXzq0oEEPXEhwx5B0T5c=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1722503312;
-	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
-	bh=8CLGoz52zKPxxoWPDdh/ixZ43op1lXLpYfCTNUCzfSY=;
-	b=u47VYPgMu7mWYeQJm6pnxUbYZsLq6IkQG9TnUNmcNdbaS9jshsz+yFaCuunJRmT1esjAJR
-	4M/ec3zktzIFKiAg==
-Received: from imap1.dmz-prg2.suse.org (localhost [127.0.0.1])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	by imap1.dmz-prg2.suse.org (Postfix) with ESMTPS id 53DF2136CF;
-	Thu,  1 Aug 2024 09:08:32 +0000 (UTC)
-Received: from dovecot-director2.suse.de ([2a07:de40:b281:106:10:150:64:167])
-	by imap1.dmz-prg2.suse.org with ESMTPSA
-	id kSc4E5BQq2aqHwAAD6G6ig
-	(envelope-from <tzimmermann@suse.de>); Thu, 01 Aug 2024 09:08:32 +0000
-Message-ID: <5934b4b2-3a99-4b6b-b3e3-e57eb82b9b16@suse.de>
-Date: Thu, 1 Aug 2024 11:08:31 +0200
+	(Authenticated sender: cristicc)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 47A71378220A;
+	Thu,  1 Aug 2024 09:50:05 +0000 (UTC)
+Message-ID: <aeeac627-2fce-45f2-b745-9e851a4dbd59@collabora.com>
+Date: Thu, 1 Aug 2024 12:50:04 +0300
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v15 01/29] drm/connector: Introduce an HDMI connector
- initialization function
-To: Maxime Ripard <mripard@kernel.org>,
+Subject: Re: [PATCH v2 1/3] dt-bindings: display: rockchip: Add schema for
+ RK3588 HDMI TX Controller
+To: "Rob Herring (Arm)" <robh@kernel.org>
+Cc: Andy Yan <andy.yan@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?=
+ <heiko@sntech.de>, Luis de Arquer <ldearquer@gmail.com>,
  Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>,
- Jonathan Corbet <corbet@lwn.net>, Sandy Huang <hjc@rock-chips.com>,
- =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>,
- Chen-Yu Tsai <wens@csie.org>, Jernej Skrabec <jernej.skrabec@gmail.com>,
- Samuel Holland <samuel@sholland.org>, Andy Yan <andy.yan@rock-chips.com>
-Cc: Hans Verkuil <hverkuil@xs4all.nl>,
- Sebastian Wick <sebastian.wick@redhat.com>,
- =?UTF-8?B?VmlsbGUgU3lyasOkbMOk?= <ville.syrjala@linux.intel.com>,
- dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
- linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-sunxi@lists.linux.dev, Dave Stevenson
- <dave.stevenson@raspberrypi.com>, Sui Jingfeng <sui.jingfeng@linux.dev>,
- Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
-References: <20240527-kms-hdmi-connector-state-v15-0-c5af16c3aae2@kernel.org>
- <20240527-kms-hdmi-connector-state-v15-1-c5af16c3aae2@kernel.org>
+ David Airlie <airlied@gmail.com>, Alexandre ARNOUD <aarnoud@me.com>,
+ Robert Foss <rfoss@kernel.org>, devicetree@vger.kernel.org,
+ Maxime Ripard <mripard@kernel.org>, dri-devel@lists.freedesktop.org,
+ Neil Armstrong <neil.armstrong@linaro.org>,
+ linux-rockchip@lists.infradead.org, Thomas Zimmermann <tzimmermann@suse.de>,
+ Andrzej Hajda <andrzej.hajda@intel.com>, Mark Yao <markyao0591@gmail.com>,
+ Sascha Hauer <s.hauer@pengutronix.de>, Jonas Karlman <jonas@kwiboo.se>,
+ Conor Dooley <conor+dt@kernel.org>, Daniel Vetter <daniel@ffwll.ch>,
+ Sandy Huang <hjc@rock-chips.com>, linux-kernel@vger.kernel.org,
+ kernel@collabora.com, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ linux-arm-kernel@lists.infradead.org,
+ Jernej Skrabec <jernej.skrabec@gmail.com>
+References: <20240801-b4-rk3588-bridge-upstream-v2-0-9fa657a4e15b@collabora.com>
+ <20240801-b4-rk3588-bridge-upstream-v2-1-9fa657a4e15b@collabora.com>
+ <172248345225.2862796.6921035362248469311.robh@kernel.org>
+From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 Content-Language: en-US
-From: Thomas Zimmermann <tzimmermann@suse.de>
-Autocrypt: addr=tzimmermann@suse.de; keydata=
- xsBNBFs50uABCADEHPidWt974CaxBVbrIBwqcq/WURinJ3+2WlIrKWspiP83vfZKaXhFYsdg
- XH47fDVbPPj+d6tQrw5lPQCyqjwrCPYnq3WlIBnGPJ4/jreTL6V+qfKRDlGLWFjZcsrPJGE0
- BeB5BbqP5erN1qylK9i3gPoQjXGhpBpQYwRrEyQyjuvk+Ev0K1Jc5tVDeJAuau3TGNgah4Yc
- hdHm3bkPjz9EErV85RwvImQ1dptvx6s7xzwXTgGAsaYZsL8WCwDaTuqFa1d1jjlaxg6+tZsB
- 9GluwvIhSezPgnEmimZDkGnZRRSFiGP8yjqTjjWuf0bSj5rUnTGiyLyRZRNGcXmu6hjlABEB
- AAHNJ1Rob21hcyBaaW1tZXJtYW5uIDx0emltbWVybWFubkBzdXNlLmRlPsLAjgQTAQgAOAIb
- AwULCQgHAgYVCgkICwIEFgIDAQIeAQIXgBYhBHIX+6yM6c9jRKFo5WgNwR1TC3ojBQJftODH
- AAoJEGgNwR1TC3ojx1wH/0hKGWugiqDgLNXLRD/4TfHBEKmxIrmfu9Z5t7vwUKfwhFL6hqvo
- lXPJJKQpQ2z8+X2vZm/slsLn7J1yjrOsoJhKABDi+3QWWSGkaGwRJAdPVVyJMfJRNNNIKwVb
- U6B1BkX2XDKDGffF4TxlOpSQzdtNI/9gleOoUA8+jy8knnDYzjBNOZqLG2FuTdicBXblz0Mf
- vg41gd9kCwYXDnD91rJU8tzylXv03E75NCaTxTM+FBXPmsAVYQ4GYhhgFt8S2UWMoaaABLDe
- 7l5FdnLdDEcbmd8uLU2CaG4W2cLrUaI4jz2XbkcPQkqTQ3EB67hYkjiEE6Zy3ggOitiQGcqp
- j//OwE0EWznS4AEIAMYmP4M/V+T5RY5at/g7rUdNsLhWv1APYrh9RQefODYHrNRHUE9eosYb
- T6XMryR9hT8XlGOYRwKWwiQBoWSDiTMo/Xi29jUnn4BXfI2px2DTXwc22LKtLAgTRjP+qbU6
- 3Y0xnQN29UGDbYgyyK51DW3H0If2a3JNsheAAK+Xc9baj0LGIc8T9uiEWHBnCH+RdhgATnWW
- GKdDegUR5BkDfDg5O/FISymJBHx2Dyoklv5g4BzkgqTqwmaYzsl8UxZKvbaxq0zbehDda8lv
- hFXodNFMAgTLJlLuDYOGLK2AwbrS3Sp0AEbkpdJBb44qVlGm5bApZouHeJ/+n+7r12+lqdsA
- EQEAAcLAdgQYAQgAIAIbDBYhBHIX+6yM6c9jRKFo5WgNwR1TC3ojBQJftOH6AAoJEGgNwR1T
- C3ojVSkIALpAPkIJPQoURPb1VWjh34l0HlglmYHvZszJWTXYwavHR8+k6Baa6H7ufXNQtThR
- yIxJrQLW6rV5lm7TjhffEhxVCn37+cg0zZ3j7zIsSS0rx/aMwi6VhFJA5hfn3T0TtrijKP4A
- SAQO9xD1Zk9/61JWk8OysuIh7MXkl0fxbRKWE93XeQBhIJHQfnc+YBLprdnxR446Sh8Wn/2D
- Ya8cavuWf2zrB6cZurs048xe0UbSW5AOSo4V9M0jzYI4nZqTmPxYyXbm30Kvmz0rYVRaitYJ
- 4kyYYMhuULvrJDMjZRvaNe52tkKAvMevcGdt38H4KSVXAylqyQOW5zvPc4/sq9c=
-In-Reply-To: <20240527-kms-hdmi-connector-state-v15-1-c5af16c3aae2@kernel.org>
-X-Spamd-Result: default: False [-2.59 / 50.00];
-	BAYES_HAM(-3.00)[100.00%];
-	SUSPICIOUS_RECIPS(1.50)[];
-	NEURAL_HAM_LONG(-1.00)[-1.000];
-	MIME_GOOD(-0.10)[text/plain];
-	XM_UA_NO_VERSION(0.01)[];
-	FUZZY_BLOCKED(0.00)[rspamd.com];
-	DKIM_SIGNED(0.00)[suse.de:s=susede2_rsa,suse.de:s=susede2_ed25519];
-	FREEMAIL_TO(0.00)[kernel.org,linux.intel.com,gmail.com,ffwll.ch,lwn.net,rock-chips.com,sntech.de,csie.org,sholland.org];
-	TO_MATCH_ENVRCPT_ALL(0.00)[];
-	RCPT_COUNT_TWELVE(0.00)[24];
-	ARC_NA(0.00)[];
-	MIME_TRACE(0.00)[0:+];
-	FREEMAIL_ENVRCPT(0.00)[gmail.com,xs4all.nl];
-	FREEMAIL_CC(0.00)[xs4all.nl,redhat.com,linux.intel.com,lists.freedesktop.org,lists.infradead.org,vger.kernel.org,lists.linux.dev,raspberrypi.com,linux.dev,linaro.org];
-	RCVD_COUNT_TWO(0.00)[2];
-	FROM_EQ_ENVFROM(0.00)[];
-	FROM_HAS_DN(0.00)[];
-	TO_DN_SOME(0.00)[];
-	MID_RHS_MATCH_FROM(0.00)[];
-	RCVD_VIA_SMTP_AUTH(0.00)[];
-	TAGGED_RCPT(0.00)[];
-	RCVD_TLS_ALL(0.00)[];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[linaro.org:email,imap1.dmz-prg2.suse.org:helo]
+In-Reply-To: <172248345225.2862796.6921035362248469311.robh@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240801_020834_824112_D9BF0C03 
-X-CRM114-Status: GOOD (  30.52  )
+X-CRM114-CacheID: sfid-20240801_025010_671509_32037CF7 
+X-CRM114-Status: GOOD (  15.52  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -169,141 +86,59 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi
+On 8/1/24 6:37 AM, Rob Herring (Arm) wrote:
+> 
+> On Thu, 01 Aug 2024 05:25:52 +0300, Cristian Ciocaltea wrote:
+>> Rockchip RK3588 SoC integrates the Synopsys DesignWare HDMI 2.1
+>> Quad-Pixel (QP) TX controller IP.
+>>
+>> Since this is a new IP block, quite different from those used in the
+>> previous generations of Rockchip SoCs, add a dedicated binding file.
+>>
+>> Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+>> ---
+>>  .../display/rockchip/rockchip,dw-hdmi-qp.yaml      | 188 +++++++++++++++++++++
+>>  1 file changed, 188 insertions(+)
+>>
+> 
+> My bot found errors running 'make dt_binding_check' on your patch:
 
-Am 27.05.24 um 15:57 schrieb Maxime Ripard:
-> A lot of the various HDMI drivers duplicate some logic that depends on
-> the HDMI spec itself and not really a particular hardware
-> implementation.
->
-> Output BPC or format selection, infoframe generation are good examples
-> of such areas.
->
-> This creates a lot of boilerplate, with a lot of variations, which makes
-> it hard for userspace to rely on, and makes it difficult to get it right
-> for drivers.
->
-> In the next patches, we'll add a lot of infrastructure around the
-> drm_connector and drm_connector_state structures, which will allow to
-> abstract away the duplicated logic. This infrastructure comes with a few
-> requirements though, and thus we need a new initialization function.
->
-> Hopefully, this will make drivers simpler to handle, and their behaviour
-> more consistent.
->
-> Reviewed-by: Dave Stevenson <dave.stevenson@raspberrypi.com>
-> Reviewed-by: Sui Jingfeng <sui.jingfeng@linux.dev>
-> Reviewed-by: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
-> Signed-off-by: Maxime Ripard <mripard@kernel.org>
-> ---
->   drivers/gpu/drm/drm_connector.c | 39 +++++++++++++++++++++++++++++++++++++++
->   include/drm/drm_connector.h     |  5 +++++
->   2 files changed, 44 insertions(+)
->
-> diff --git a/drivers/gpu/drm/drm_connector.c b/drivers/gpu/drm/drm_connector.c
-> index b0516505f7ae..d9961cce8245 100644
-> --- a/drivers/gpu/drm/drm_connector.c
-> +++ b/drivers/gpu/drm/drm_connector.c
-> @@ -450,10 +450,49 @@ int drmm_connector_init(struct drm_device *dev,
->   
->   	return 0;
->   }
->   EXPORT_SYMBOL(drmm_connector_init);
->   
-> +/**
-> + * drmm_connector_hdmi_init - Init a preallocated HDMI connector
-> + * @dev: DRM device
-> + * @connector: A pointer to the HDMI connector to init
-> + * @funcs: callbacks for this connector
-> + * @connector_type: user visible type of the connector
-> + * @ddc: optional pointer to the associated ddc adapter
-> + *
-> + * Initialises a preallocated HDMI connector. Connectors can be
-> + * subclassed as part of driver connector objects.
-> + *
-> + * Cleanup is automatically handled with a call to
-> + * drm_connector_cleanup() in a DRM-managed action.
-> + *
-> + * The connector structure should be allocated with drmm_kzalloc().
-> + *
-> + * Returns:
-> + * Zero on success, error code on failure.
-> + */
-> +int drmm_connector_hdmi_init(struct drm_device *dev,
-> +			     struct drm_connector *connector,
-> +			     const struct drm_connector_funcs *funcs,
-> +			     int connector_type,
-> +			     struct i2c_adapter *ddc)
+This is because the referenced synopsys,dw-hdmi-qp.yaml is provided by a
+separate patchset:
 
-I know I'm late to the review.
+https://lore.kernel.org/lkml/20240801-dw-hdmi-qp-tx-v1-1-148f542de5fd@collabora.com/
 
-Wouldn't it be better to make a separate HDMI-setup helper instead of 
-yet another init function? The type of init function to use is mostly 
-about memory management within the driver, while the new HDMI state is 
-about features.
-
-Maybe rather add something like drm_connector_init_hdmi_state(), which 
-takes an initialized connector and sets all the values coming the other 
-patches. Drivers would not have to subscribe to a certain way of memory 
-management. AFAICT this would also allow to protect the helper and the 
-new drm_connector.hdmi field behind DRM_DISPLAY_HDMI_STATE_HELPER. Best 
-regards Thomas
-> +{
-> +	int ret;
-> +
-> +	if (!(connector_type == DRM_MODE_CONNECTOR_HDMIA ||
-> +	      connector_type == DRM_MODE_CONNECTOR_HDMIB))
-> +		return -EINVAL;
-> +
-> +	ret = drmm_connector_init(dev, connector, funcs, connector_type, ddc);
-> +	if (ret)
-> +		return ret;
-> +
-> +	return 0;
-> +}
-> +EXPORT_SYMBOL(drmm_connector_hdmi_init);
-> +
->   /**
->    * drm_connector_attach_edid_property - attach edid property.
->    * @connector: the connector
->    *
->    * Some connector types like DRM_MODE_CONNECTOR_VIRTUAL do not get a
-> diff --git a/include/drm/drm_connector.h b/include/drm/drm_connector.h
-> index fe88d7fc6b8f..4491c4c2fb6e 100644
-> --- a/include/drm/drm_connector.h
-> +++ b/include/drm/drm_connector.h
-> @@ -1902,10 +1902,15 @@ int drm_connector_init_with_ddc(struct drm_device *dev,
->   int drmm_connector_init(struct drm_device *dev,
->   			struct drm_connector *connector,
->   			const struct drm_connector_funcs *funcs,
->   			int connector_type,
->   			struct i2c_adapter *ddc);
-> +int drmm_connector_hdmi_init(struct drm_device *dev,
-> +			     struct drm_connector *connector,
-> +			     const struct drm_connector_funcs *funcs,
-> +			     int connector_type,
-> +			     struct i2c_adapter *ddc);
->   void drm_connector_attach_edid_property(struct drm_connector *connector);
->   int drm_connector_register(struct drm_connector *connector);
->   void drm_connector_unregister(struct drm_connector *connector);
->   int drm_connector_attach_encoder(struct drm_connector *connector,
->   				      struct drm_encoder *encoder);
->
-
--- 
---
-Thomas Zimmermann
-Graphics Driver Developer
-SUSE Software Solutions Germany GmbH
-Frankenstrasse 146, 90461 Nuernberg, Germany
-GF: Ivo Totev, Andrew Myers, Andrew McDonald, Boudien Moerman
-HRB 36809 (AG Nuernberg)
-
+> yamllint warnings/errors:
+> 
+> dtschema/dtc warnings/errors:
+> /builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-hdmi-qp.example.dtb: hdmi@fde80000: False schema does not allow {'compatible': ['rockchip,rk3588-dw-hdmi-qp'], 'reg': [[0, 4259840000, 0, 131072]], 'clocks': [[4294967295, 528], [4294967295, 529], [4294967295, 530], [4294967295, 564], [4294967295, 594], [4294967295, 717]], 'clock-names': ['pclk', 'earc', 'ref', 'aud', 'hdp', 'hclk_vo1'], 'interrupts': [[0, 169, 4, 0], [0, 170, 4, 0], [0, 171, 4, 0], [0, 172, 4, 0], [0, 360, 4, 0]], 'interrupt-names': ['avp', 'cec', 'earc', 'main', 'hpd'], 'phys': [[4294967295]], 'phy-names': ['hdmi'], 'power-domains': [[4294967295, 26]], 'resets': [[4294967295, 462], [4294967295, 560]], 'reset-names': ['ref', 'hdp'], 'rockchip,grf': [[4294967295]], 'rockchip,vo1_grf': [[4294967295]], '#sound-dai-cells': 0, 'ports': {'#address-cells': 1, '#size-cells': 0, 'port@0': {'reg': [[0]], 'endpoint': {'remote-endpoint': [[4294967295]]}}, 'port@1': {'reg': [[1]]
+>  , 'endpoint': {'remote-endpoint': [[4294967295]]}}}, '$nodename': ['hdmi@fde80000']}
+> 	from schema $id: http://devicetree.org/schemas/display/rockchip/rockchip,dw-hdmi-qp.yaml#
+> /builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-hdmi-qp.example.dtb: hdmi@fde80000: Unevaluated properties are not allowed ('reg' was unexpected)
+> 	from schema $id: http://devicetree.org/schemas/display/rockchip/rockchip,dw-hdmi-qp.yaml#
+> 
+> doc reference errors (make refcheckdocs):
+> 
+> See https://patchwork.ozlabs.org/project/devicetree-bindings/patch/20240801-b4-rk3588-bridge-upstream-v2-1-9fa657a4e15b@collabora.com
+> 
+> The base for the series is generally the latest rc1. A different dependency
+> should be noted in *this* patch.
+> 
+> If you already ran 'make dt_binding_check' and didn't see the above
+> error(s), then make sure 'yamllint' is installed and dt-schema is up to
+> date:
+> 
+> pip3 install dtschema --upgrade
+> 
+> Please check and re-submit after running the above command yourself. Note
+> that DT_SCHEMA_FILES can be set to your schema file to speed up checking
+> your schema. However, it must be unset to test all examples with your schema.
+> 
 
 _______________________________________________
 Linux-rockchip mailing list
