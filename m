@@ -4,61 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0C731C3DA7F
-	for <linux-rockchip@archiver.kernel.org>; Wed, 31 Jul 2024 21:29:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 562DAC3DA7F
+	for <linux-rockchip@archiver.kernel.org>; Thu,  1 Aug 2024 02:23:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To:Subject:From:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=198pF0YM7Kx2Om7xfrnPC5XBJ5vs7ulSYfommKVa4Cw=; b=AqztMMAtdy8tZn
-	OV5ztckBYN9zXedWOXfwG4JErVADUiCKWMCZ/TqnY6KP9dQgMQRVbJLbe5il5YWNMwPEahvNO4iJn
-	ET5tLzCtFui7IXeMLFwedcS7A+a4RCuioHsU3yNTr4IfheiHuv6r+lZTe+2NbyLFm5sfXUGgPA9pR
-	Z5uMelJxaaEWbTxkCcc4cd567R3S6ISDzOZvy1Rx1WcZc2swAabF2AtL9LAokMZVzXmjo6NoQ2fl4
-	5HlDFdnjVf5TANSQA7fZDKrO0JnZY2U2/aDVYEczmqMCMbYl9fKMfKVGDu1PPefcjFN2yUUJJYqZ3
-	+eTllelSEz74xrte0Chg==;
+	List-Owner; bh=qIalR9RaOZbcPr1ThV0X1GVea6qh2CPLbUWe7AT9OAw=; b=gyvP1DJOpsDYhs
+	eAiNE9y509j7Sj47eAaqouMWLYBpTEJqkiIb0rc554CKgqFQBrgwo2macaSovua3XywQ2QLVO6wuT
+	PbjwbZ9gz1coDA3Vy5/uFCuiWXo4DFhOHzKhhhxV2ZxVgJaHFb1bO9LoTR4+QLFCdHChVGgpqGAaR
+	Qk/zNAVAcPhvilc7nGYto5uPMxJBvgR1lIFGCCfF0NuHD7pm4yWLuhAk2vgjRc8P4nZBUHmj0oXsw
+	Dsm0XOiMM5xCU7wELW/78lXT1SFv79HvZgA+o26N7j6AAq4j3G+RtbyZ48fy97dfRprSa4jPMH0Z7
+	7ewzZGg3wXKU8BMRM7ew==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sZGsS-00000002aVu-2vCc;
-	Wed, 31 Jul 2024 21:28:56 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1sZLTU-00000003QlA-2vtJ;
+	Thu, 01 Aug 2024 02:23:28 +0000
+Received: from mail-m25487.xmail.ntesmail.com ([103.129.254.87])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sZGoa-00000002Ys1-45eb;
-	Wed, 31 Jul 2024 21:24:58 +0000
-Received: from i53875ac5.versanet.de ([83.135.90.197] helo=phil.lan)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1sZGoO-0007jg-FM; Wed, 31 Jul 2024 23:24:44 +0200
-From: Heiko Stuebner <heiko@sntech.de>
-To: lee@kernel.org,
-	jdelvare@suse.com,
-	linux@roeck-us.net,
-	dmitry.torokhov@gmail.com,
-	pavel@ucw.cz
-Cc: robh@kernel.org,
-	krzk+dt@kernel.org,
-	conor+dt@kernel.org,
-	heiko@sntech.de,
-	ukleinek@debian.org,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-hwmon@vger.kernel.org,
-	linux-input@vger.kernel.org,
-	linux-leds@vger.kernel.org
-Subject: [PATCH v3 4/7] Input: add driver for the input part of qnap-mcu devices
-Date: Wed, 31 Jul 2024 23:24:27 +0200
-Message-Id: <20240731212430.2677900-5-heiko@sntech.de>
-X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20240731212430.2677900-1-heiko@sntech.de>
-References: <20240731212430.2677900-1-heiko@sntech.de>
+	id 1sZLTQ-00000003Qiv-2w7h;
+	Thu, 01 Aug 2024 02:23:27 +0000
+DKIM-Signature: a=rsa-sha256;
+	b=C1G+RTTDBunZ0iZ1mpZWDGnZMAMjXDBk1fORX1EZWWTcYVnZQMzNXRwAjNL0MgDxaZ+Gx5Th2KGAvdve35BASoGgbiwKaMMyh1oMI3zHp7yxwxcJIcNGvUabXk8THm+DRaTZaRHJd9qDhYRIa+TVAgXaUhvDnfRTL0Tc2CTzgp4=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=9lurVAzzVNkLf/T6OA5qeOAz22bqJP8dlqU3S35by5Q=;
+	h=date:mime-version:subject:message-id:from;
+Received: from [172.16.12.93] (unknown [58.22.7.114])
+	by smtp.qiye.163.com (Hmail) with ESMTPA id 8D10190038E;
+	Thu,  1 Aug 2024 10:23:01 +0800 (CST)
+Message-ID: <394ad670-c4ea-432b-8737-89720c526653@rock-chips.com>
+Date: Thu, 1 Aug 2024 10:23:01 +0800
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+From: Kever Yang <kever.yang@rock-chips.com>
+Subject: Re: [PATCH v2] arm64: dts: rockchip: Add missing pinctrl for PCIe30x4
+ node
+To: Jonas Karlman <jonas@kwiboo.se>, Anand Moon <linux.amoon@gmail.com>
+Cc: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+References: <20240711060939.1128-1-linux.amoon@gmail.com>
+ <a8c1f49e-bf25-4fd3-a16f-13088f75767f@kwiboo.se>
+ <CANAwSgQCn3jgiruiLs0cu-C+DguLtnk=msboAh8jNSF4P28gjA@mail.gmail.com>
+ <6250fa05-7a06-4fa1-a2be-9cb66a2d2822@kwiboo.se>
+Content-Language: en-US
+In-Reply-To: <6250fa05-7a06-4fa1-a2be-9cb66a2d2822@kwiboo.se>
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGU0YQ1YYTk4fGkkeTRpLTB1WFRQJFh
+	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
+	hVSktLVUpCS0tZBg++
+X-HM-Tid: 0a910bbf73ce03a9kunm8d10190038e
+X-HM-MType: 1
+X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6ODI6Izo5IjI2OS8YMQkUNAk0
+	NTwaCg1VSlVKTElJT0xDQkNJTUJOVTMWGhIXVRAeDR4JVQIaFRw7CRQYEFYYExILCFUYFBZFWVdZ
+	EgtZQVlOQ1VJSVVMVUpKT1lXWQgBWUFMTkxDNwY+
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240731_142457_037404_FA953D83 
-X-CRM114-Status: GOOD (  29.98  )
+X-CRM114-CacheID: sfid-20240731_192325_356332_951DE542 
+X-CRM114-Status: GOOD (  34.75  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,243 +75,147 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The MCU controls the power-button and beeper, so expose them as input
-device. There is of course no interrupt line, so the status of the
-power-button needs to be polled. To generate an event the power-button
-also needs to be held for 1-2 seconds, so the polling interval does
-not need to be overly fast.
+Hi Anand, Jonas,
 
-Signed-off-by: Heiko Stuebner <heiko@sntech.de>
----
- MAINTAINERS                         |   1 +
- drivers/input/misc/Kconfig          |  12 +++
- drivers/input/misc/Makefile         |   1 +
- drivers/input/misc/qnap-mcu-input.c | 161 ++++++++++++++++++++++++++++
- 4 files changed, 175 insertions(+)
- create mode 100644 drivers/input/misc/qnap-mcu-input.c
+On 2024/7/11 17:44, Jonas Karlman wrote:
+> Hi Anand,
+>
+> On 2024-07-11 11:09, Anand Moon wrote:
+>> Hi Jonas,
+>>
+>> Thanks for your review comments.
+>>
+>> On Thu, 11 Jul 2024 at 14:13, Jonas Karlman<jonas@kwiboo.se>  wrote:
+>>> Hi Anand,
+>>>
+>>> On 2024-07-11 08:09, Anand Moon wrote:
+>>>> Add missing pinctrl settings for PCIe 3.0 x4 clock request and wake
+>>>> signals.Each component of PCIe communication have the following control
+>>>> signals: PERST, WAKE, CLKREQ, and REFCLK. These signals work to generate
+>>>> high-speed signals and communicate with other PCIe devices.
+>>>> Used by root complex to endpoint depending on the power state.
+>>>>
+>>>> PERST is referred to as a fundamental reset. PERST should be held low
+>>>> until all the power rails in the system and the reference clock are stable.
+>>>> A transition from low to high in this signal usually indicates the
+>>>> beginning of link initialization.
+>>>>
+>>>> WAKE signal is an active-low signal that is used to return the PCIe
+>>>> interface to an active state when in a low-power state.
+>>>>
+>>>> CLKREQ signal is also an active-low signal and is used to request the
+>>>> reference clock.
+>>>>
+>>>> Signed-off-by: Anand Moon<linux.amoon@gmail.com>
+>>>> ---
+>>>> V2: Update the commit messge to describe the changs.
+>>>>      use pinctl group as its pre define in pinctl dtsi
+>>>> ---
+>>>>   arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts | 6 +-----
+>>>>   1 file changed, 1 insertion(+), 5 deletions(-)
+>>>>
+>>>> diff --git a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
+>>>> index 2e7512676b7e..ab3a20986c6a 100644
+>>>> --- a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
+>>>> +++ b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
+>>>> @@ -301,7 +301,7 @@ &pcie30phy {
+>>>>
+>>>>   &pcie3x4 {
+>>>>        pinctrl-names = "default";
+>>>> -     pinctrl-0 = <&pcie3_rst>;
+>>>> +     pinctrl-0 = <&pcie30x4m1_pins>;
+>>> Use of the existing pcie30x4m1_pins group may not be fully accurate for
+>>> the PERST pin. The use of reset-gpios indicate that the PERST pin is
+>>> used with GPIO function and the driver will implicitly change the
+>>> function from perstn_m1 to GPIO. So this may not be best representation
+>>> of the hw, hence my initial suggestion, something like:
+>>>
+>>>          pcie30x4_pins: pcie30x4-pins {
+>>>                  rockchip,pins =
+>>>                          <4 RK_PB4 4 &pcfg_pull_none>,
+>>>                          <4 RK_PB6 RK_FUNC_GPIO &pcfg_pull_none>,
+>>>                          <4 RK_PB5 4 &pcfg_pull_none>;
+>>>          };
+>>>
+>>> Similar change should probably also be done for pcie2x1l0 and pcie2x1l2,
+>>> not just pcie3x4.
+>>>
+>> Ok but it is better to update this in rk3588s-pinctrl.dtsi otherwise
+>> the pcie30x4m1_pins
+>> will not be used at all on all the boards
+> I agree that it is unfortunate that the PERST pin is included in the
+> groups in pinctrl.dtsi, however, for pcie ep mode the pins should more
+> than likely be using the perstn_m1 function and not GPIO, so there are
+> uses for the existing pin groups for ep mode.
+Please note that the pcie30x4m1_pins define in pinctrl.dtsi is somehow 
+not correct due to the TRM.
+- The WAKE should always work in GPIO mode, this is totally support by 
+SoC, not PCIe controller;
+- The PERST should always work in GPIO mode in PCIe RC mode; and for all 
+the rk3588 EP mode
+hardware I have seem, the PERST from RC connect in to board POR instead 
+of SoC PERST;
+The PCIe in most of boards works in RC mode, so we should make PERST 
+default as GPIO;
+- CLKREQ, it depends on boards, if the board need to support L1SS or 
+not, most of the boards
+does not support L1SS, which means CLKREQ works in GPIO mode instead of 
+PCIe function.
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 69c770ce73ee5..fa486343d9827 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -18654,6 +18654,7 @@ F:	drivers/media/tuners/qm1d1c0042*
- QNAP MCU DRIVER
- M:	Heiko Stuebner <heiko@sntech.de>
- S:	Maintained
-+F:	drivers/input/misc/qnap-mcu-input.c
- F:	drivers/leds/leds-qnap-mcu.c
- F:	drivers/mfd/qnap-mcu.c
- F:	include/linux/qnap-mcu.h
-diff --git a/drivers/input/misc/Kconfig b/drivers/input/misc/Kconfig
-index 6a852c76331b6..13d135257e060 100644
---- a/drivers/input/misc/Kconfig
-+++ b/drivers/input/misc/Kconfig
-@@ -917,6 +917,18 @@ config INPUT_HISI_POWERKEY
- 	  To compile this driver as a module, choose M here: the
- 	  module will be called hisi_powerkey.
- 
-+config INPUT_QNAP_MCU
-+	tristate "Input Support for QNAP MCU controllers"
-+	depends on MFD_QNAP_MCU
-+	help
-+	  This option enables support for input elements available on
-+	  embedded controllers used in QNAP NAS devices.
-+
-+	  This includes a polled power-button as well as a beeper.
-+
-+	  To compile this driver as a module, choose M here: the
-+	  module will be called qnap-mcu-input.
-+
- config INPUT_RAVE_SP_PWRBUTTON
- 	tristate "RAVE SP Power button Driver"
- 	depends on RAVE_SP_CORE
-diff --git a/drivers/input/misc/Makefile b/drivers/input/misc/Makefile
-index 4f7f736831ba8..6d91804d0a6f7 100644
---- a/drivers/input/misc/Makefile
-+++ b/drivers/input/misc/Makefile
-@@ -68,6 +68,7 @@ obj-$(CONFIG_INPUT_PMIC8XXX_PWRKEY)	+= pmic8xxx-pwrkey.o
- obj-$(CONFIG_INPUT_POWERMATE)		+= powermate.o
- obj-$(CONFIG_INPUT_PWM_BEEPER)		+= pwm-beeper.o
- obj-$(CONFIG_INPUT_PWM_VIBRA)		+= pwm-vibra.o
-+obj-$(CONFIG_INPUT_QNAP_MCU)		+= qnap-mcu-input.o
- obj-$(CONFIG_INPUT_RAVE_SP_PWRBUTTON)	+= rave-sp-pwrbutton.o
- obj-$(CONFIG_INPUT_RB532_BUTTON)	+= rb532_button.o
- obj-$(CONFIG_INPUT_REGULATOR_HAPTIC)	+= regulator-haptic.o
-diff --git a/drivers/input/misc/qnap-mcu-input.c b/drivers/input/misc/qnap-mcu-input.c
-new file mode 100644
-index 0000000000000..8debc8f988246
---- /dev/null
-+++ b/drivers/input/misc/qnap-mcu-input.c
-@@ -0,0 +1,161 @@
-+// SPDX-License-Identifier: GPL-2.0-only
-+
-+/*
-+ * Driver for input events on QNAP-MCUs
-+ *
-+ * Copyright (C) 2024 Heiko Stuebner <heiko@sntech.de>
-+ */
-+
-+#include <linux/input.h>
-+#include <linux/mfd/qnap-mcu.h>
-+#include <linux/module.h>
-+#include <linux/platform_device.h>
-+#include <linux/slab.h>
-+#include <uapi/linux/input-event-codes.h>
-+
-+/*
-+ * The power-key needs to be pressed for a while to create an event,
-+ * so there is no use for overly frequent polling.
-+ */
-+#define POLL_INTERVAL		500
-+
-+struct qnap_mcu_input_dev {
-+	struct input_dev *input;
-+	struct qnap_mcu *mcu;
-+	struct device *dev;
-+
-+	struct work_struct beep_work;
-+	int beep_type;
-+};
-+
-+static void qnap_mcu_input_poll(struct input_dev *input)
-+{
-+	struct qnap_mcu_input_dev *idev = input_get_drvdata(input);
-+	static const u8 cmd[] = {
-+		[0] = 0x40, /* @ */
-+		[1] = 0x43, /* C */
-+		[2] = 0x56  /* V */
-+	};
-+	u8 reply[4];
-+	int state, ret;
-+
-+	/* poll the power button */
-+	ret = qnap_mcu_exec(idev->mcu, cmd, sizeof(cmd), reply, sizeof(reply));
-+	if (ret)
-+		return;
-+
-+	/* First bytes must mirror the sent command */
-+	if (memcmp(cmd, reply, sizeof(cmd))) {
-+		dev_err(idev->dev, "malformed data received\n");
-+		return;
-+	}
-+
-+	state = reply[3] - 0x30;
-+	input_event(input, EV_KEY, KEY_POWER, state);
-+	input_sync(input);
-+}
-+
-+static void qnap_mcu_input_beeper_work(struct work_struct *work)
-+{
-+	struct qnap_mcu_input_dev *idev =
-+		container_of(work, struct qnap_mcu_input_dev, beep_work);
-+	const u8 cmd[] = {
-+		[0] = 0x40, /* @ */
-+		[1] = 0x43, /* C */
-+		[2] = (idev->beep_type == SND_TONE) ? 0x33 : 0x32
-+	};
-+
-+	qnap_mcu_exec_with_ack(idev->mcu, cmd, sizeof(cmd));
-+}
-+
-+static int qnap_mcu_input_event(struct input_dev *input, unsigned int type,
-+				unsigned int code, int value)
-+{
-+	struct qnap_mcu_input_dev *idev = input_get_drvdata(input);
-+
-+	if (type != EV_SND || (code != SND_BELL && code != SND_TONE))
-+		return -EOPNOTSUPP;
-+
-+	if (value < 0)
-+		return -EINVAL;
-+
-+	/* beep runtime is determined by the MCU */
-+	if (value == 0)
-+		return 0;
-+
-+	/* Schedule work to actually turn the beeper on */
-+	idev->beep_type = code;
-+	schedule_work(&idev->beep_work);
-+
-+	return 0;
-+}
-+
-+static void qnap_mcu_input_close(struct input_dev *input)
-+{
-+	struct qnap_mcu_input_dev *idev = input_get_drvdata(input);
-+
-+	cancel_work_sync(&idev->beep_work);
-+}
-+
-+static int qnap_mcu_input_probe(struct platform_device *pdev)
-+{
-+	struct qnap_mcu *mcu = dev_get_drvdata(pdev->dev.parent);
-+	struct qnap_mcu_input_dev *idev;
-+	struct device *dev = &pdev->dev;
-+	struct input_dev *input;
-+	int ret;
-+
-+	idev = devm_kzalloc(dev, sizeof(*idev), GFP_KERNEL);
-+	if (!idev)
-+		return -ENOMEM;
-+
-+	input = devm_input_allocate_device(dev);
-+	if (!input)
-+		return dev_err_probe(dev, -ENOMEM, "no memory for input device\n");
-+
-+	idev->input = input;
-+	idev->dev = dev;
-+	idev->mcu = mcu;
-+
-+	input_set_drvdata(input, idev);
-+
-+	input->name		= "qnap-mcu";
-+	input->phys		= "qnap-mcu-input/input0";
-+	input->id.bustype	= BUS_HOST;
-+	input->id.vendor	= 0x0001;
-+	input->id.product	= 0x0001;
-+	input->id.version	= 0x0100;
-+	input->event		= qnap_mcu_input_event;
-+	input->close		= qnap_mcu_input_close;
-+
-+	input_set_capability(input, EV_KEY, KEY_POWER);
-+	input_set_capability(input, EV_SND, SND_BELL);
-+	input_set_capability(input, EV_SND, SND_TONE);
-+
-+	INIT_WORK(&idev->beep_work, qnap_mcu_input_beeper_work);
-+
-+	ret = input_setup_polling(input, qnap_mcu_input_poll);
-+	if (ret)
-+		return dev_err_probe(dev, ret, "unable to set up polling\n");
-+
-+	input_set_poll_interval(input, POLL_INTERVAL);
-+
-+	ret = input_register_device(input);
-+	if (ret)
-+		return dev_err_probe(dev, ret, "unable to register input device\n");
-+
-+	return 0;
-+}
-+
-+static struct platform_driver qnap_mcu_input_driver = {
-+	.probe = qnap_mcu_input_probe,
-+	.driver = {
-+		.name = "qnap-mcu-input",
-+	},
-+};
-+module_platform_driver(qnap_mcu_input_driver);
-+
-+MODULE_ALIAS("platform:qnap-mcu-input");
-+MODULE_AUTHOR("Heiko Stuebner <heiko@sntech.de>");
-+MODULE_DESCRIPTION("QNAP MCU input driver");
-+MODULE_LICENSE("GPL");
--- 
-2.39.2
-
+Thanks,
+- Kever
+> In my opinion using pcie30x4m1_pins as-is and having implicitly changing
+> to GPIO function when driver/usage in the software require it is an okay
+> description of the hw.
+>
+> However, seeing how use of pcie ep is described using its own node in DT
+> I can understand that for rc mode the pin should be changed to GPIO to
+> properly describe the expected usage.
+>
+> When I tried to add similar implicit change to use GPIO function in
+> U-Boot to fix system freeze when improper pinctrl was used, it resulted
+> in some discussions, see [1] ;-)
+>
+> [1]https://lore.kernel.org/u-boot/20240511112821.1156519-1-jonas@kwiboo.se/t/#u
+>
+>> I will update the PERST pin to RK_FUNC_GPIO on all the pcie2x1l0,
+>> pcie2x1l2 and  pcie30x4
+>> is this ok for you?
+> This should probably be reworked in pinctrl.dtsi together with all
+> affected boards and/or use a group override in the board dts.
+>
+> Regards,
+> Jonas
+>
+>>> Regards,
+>>> Jonas
+>> Thanks
+>> -Anand
+>>>>        reset-gpios = <&gpio4 RK_PB6 GPIO_ACTIVE_HIGH>;
+>>>>        vpcie3v3-supply = <&vcc3v3_pcie30>;
+>>>>        status = "okay";
+>>>> @@ -341,10 +341,6 @@ pcie2_2_rst: pcie2-2-rst {
+>>>>        };
+>>>>
+>>>>        pcie3 {
+>>>> -             pcie3_rst: pcie3-rst {
+>>>> -                     rockchip,pins = <4 RK_PB6 RK_FUNC_GPIO &pcfg_pull_none>;
+>>>> -             };
+>>>> -
+>>>>                pcie3_vcc3v3_en: pcie3-vcc3v3-en {
+>>>>                        rockchip,pins = <1 RK_PA4 RK_FUNC_GPIO &pcfg_pull_none>;
+>>>>                };
+>>>>
+>>>> base-commit: 34afb82a3c67f869267a26f593b6f8fc6bf35905
+> _______________________________________________
+> Linux-rockchip mailing list
+> Linux-rockchip@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
 _______________________________________________
 Linux-rockchip mailing list
