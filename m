@@ -4,77 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 15531C3DA64
-	for <linux-rockchip@archiver.kernel.org>; Thu,  1 Aug 2024 09:50:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D4CB1C3DA64
+	for <linux-rockchip@archiver.kernel.org>; Thu,  1 Aug 2024 10:36:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Ou/KPnJF3R+J99gRHLrcEdyfO631wh3nfzNo2fUVQFA=; b=pt+kuKqYUG1EdI
-	X9JRxx2WsuKs3K/dILjXPyC0zUrTtQpMSJbFvSCTaY7UVi3DzP5zeFgbchcwjRdYlXOd0i+erq2qG
-	Zksomi5TIh6JWqMO8vwor0NHjfNRrjDxeqtN1IIJrfouvnboTAnJYcn0LAezrEa5T51ueaiEm2CW/
-	R9/G6CX3+F9UhJsbfAvdD7i3VoswapCdRPa7iq+1aCvMW37RVZkJEqLhzw+Xn4umonp4ldP+TluBU
-	bul96BSDmSYHtCdQRYtUQepv0DvwOOWWCsjVX5qKc3ZPawZuVd/tZM2HzrDFRoVKeDCPSq5g4zdEA
-	uAXV9aj8CGDzk3KpYj/w==;
+	List-Owner; bh=vJqs/hDx2MmzNgcgiXSHilF2CpewxmDBO08UygCcb4k=; b=stuLwbszDAull2
+	PRr65xoD3z0RIsDefFrgXO18/fcY3RN//6dV4qJrgu8IyTiahV+9zk6N8bmeft+hSKbP/EholeqFs
+	D9KLrT0j0XpmZ46pw2pCqoJ0nuPDBj57636NFbKfoYpNV3EiSOMmm8ImmMLW4wB6PjoBRsYRt72rj
+	K++uaShmwlYIZrOPWG09VhwtwvDDtsxePzOMHJhgSwX2z+LHNPZXXWaZBALnyReV+q7Cguj4rYXe7
+	7ha5IGq8NgLtno7wMenXVDQhnYq2cnsJWLxkx28Xnpl+D9NB/uwAM/9uYmdO4CqhjrLBWRc/I+W8d
+	KDTFsMnioLYQNLXC1DhQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sZSSH-00000004eMg-1Bsa;
-	Thu, 01 Aug 2024 09:50:41 +0000
-Received: from madrid.collaboradmins.com ([46.235.227.194])
+	id 1sZTAn-00000004lnU-1eLc;
+	Thu, 01 Aug 2024 10:36:41 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sZSRm-00000004eGl-1z0n;
-	Thu, 01 Aug 2024 09:50:12 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1722505806;
-	bh=++7YBygtyHrsIKH24UC+hO0yBDoc31paLAZPeS2iAeA=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=dIpJjCKAqtMZnaGMhWjBrKNVWJ+uLhaCBsWlNlDpsDy9pV1At1Ykqaf24L1+EGUa3
-	 y2V8YSsQDVw/jTgmi+Y9i6yRMIBaK4dGoS4eiVdRgShNE4qyXyCQHouEA4UZ0TFfB5
-	 cC/w5zcFw6k0QcDlrsOa9Bxu83HAhxd+zM9hwh+px/jhSKvzr2yTX4Dw6Clyze6/8R
-	 X8mZdyI+UiIKaQXAHLMQmdF+X2LyAg00r0BlMyZU/QAgbl/8f4vbUJ71ynACX8+pW7
-	 LNIovqrtThsU56K38SWNNX8fu7rbSoojnU8iDWJ8fJXT7CTpfw3tv22t4mcB6n52Zu
-	 eFIo67TV5CylQ==
-Received: from [100.115.223.179] (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: cristicc)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 47A71378220A;
-	Thu,  1 Aug 2024 09:50:05 +0000 (UTC)
-Message-ID: <aeeac627-2fce-45f2-b745-9e851a4dbd59@collabora.com>
-Date: Thu, 1 Aug 2024 12:50:04 +0300
+	id 1sZTAk-00000004llw-1NaO;
+	Thu, 01 Aug 2024 10:36:39 +0000
+Received: from i5e86192c.versanet.de ([94.134.25.44] helo=diego.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1sZTAb-0005uf-Nz; Thu, 01 Aug 2024 12:36:29 +0200
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+To: Sebastian Fricke <sebastian.fricke@collabora.com>
+Cc: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Conor Dooley <conor+dt@kernel.org>, Alex Bee <knaerzche@gmail.com>,
+ linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+Subject: Re: [PATCH 1/3] dt-bindings: media: rockchip,vpu: Document RK3128 compatible
+Date: Thu, 01 Aug 2024 12:36:28 +0200
+Message-ID: <23279441.ssLaC8jLEa@diego>
+In-Reply-To: <20240528083747.z55laxnmioorzaru@basti-XPS-13-9310>
+References: <20240523185633.71355-1-knaerzche@gmail.com> <3639993.hdfAi7Kttb@diego>
+ <20240528083747.z55laxnmioorzaru@basti-XPS-13-9310>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 1/3] dt-bindings: display: rockchip: Add schema for
- RK3588 HDMI TX Controller
-To: "Rob Herring (Arm)" <robh@kernel.org>
-Cc: Andy Yan <andy.yan@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?=
- <heiko@sntech.de>, Luis de Arquer <ldearquer@gmail.com>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- David Airlie <airlied@gmail.com>, Alexandre ARNOUD <aarnoud@me.com>,
- Robert Foss <rfoss@kernel.org>, devicetree@vger.kernel.org,
- Maxime Ripard <mripard@kernel.org>, dri-devel@lists.freedesktop.org,
- Neil Armstrong <neil.armstrong@linaro.org>,
- linux-rockchip@lists.infradead.org, Thomas Zimmermann <tzimmermann@suse.de>,
- Andrzej Hajda <andrzej.hajda@intel.com>, Mark Yao <markyao0591@gmail.com>,
- Sascha Hauer <s.hauer@pengutronix.de>, Jonas Karlman <jonas@kwiboo.se>,
- Conor Dooley <conor+dt@kernel.org>, Daniel Vetter <daniel@ffwll.ch>,
- Sandy Huang <hjc@rock-chips.com>, linux-kernel@vger.kernel.org,
- kernel@collabora.com, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>,
- linux-arm-kernel@lists.infradead.org,
- Jernej Skrabec <jernej.skrabec@gmail.com>
-References: <20240801-b4-rk3588-bridge-upstream-v2-0-9fa657a4e15b@collabora.com>
- <20240801-b4-rk3588-bridge-upstream-v2-1-9fa657a4e15b@collabora.com>
- <172248345225.2862796.6921035362248469311.robh@kernel.org>
-From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Content-Language: en-US
-In-Reply-To: <172248345225.2862796.6921035362248469311.robh@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240801_025010_671509_32037CF7 
-X-CRM114-Status: GOOD (  15.52  )
+X-CRM114-CacheID: sfid-20240801_033638_387283_A546C98A 
+X-CRM114-Status: GOOD (  19.79  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,59 +62,73 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 8/1/24 6:37 AM, Rob Herring (Arm) wrote:
-> 
-> On Thu, 01 Aug 2024 05:25:52 +0300, Cristian Ciocaltea wrote:
->> Rockchip RK3588 SoC integrates the Synopsys DesignWare HDMI 2.1
->> Quad-Pixel (QP) TX controller IP.
->>
->> Since this is a new IP block, quite different from those used in the
->> previous generations of Rockchip SoCs, add a dedicated binding file.
->>
->> Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
->> ---
->>  .../display/rockchip/rockchip,dw-hdmi-qp.yaml      | 188 +++++++++++++++++++++
->>  1 file changed, 188 insertions(+)
->>
-> 
-> My bot found errors running 'make dt_binding_check' on your patch:
+Hey,
 
-This is because the referenced synopsys,dw-hdmi-qp.yaml is provided by a
-separate patchset:
+Am Dienstag, 28. Mai 2024, 10:37:47 CEST schrieb Sebastian Fricke:
+> On 28.05.2024 10:19, Heiko St=FCbner wrote:
+> >Am Donnerstag, 23. Mai 2024, 20:56:31 CEST schrieb Alex Bee:
+> >> The integration for this SoC is similar to RK3066/RK3188.
+> >>
+> >> Document it's compatible.
+> >>
+> >> Signed-off-by: Alex Bee <knaerzche@gmail.com>
+> >
+> >Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+> >
+> >Media people, can you apply this patch alone from the series?
+> =
 
-https://lore.kernel.org/lkml/20240801-dw-hdmi-qp-tx-v1-1-148f542de5fd@collabora.com/
+> Yes, will do got this on my list already :).
 
-> yamllint warnings/errors:
-> 
-> dtschema/dtc warnings/errors:
-> /builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-hdmi-qp.example.dtb: hdmi@fde80000: False schema does not allow {'compatible': ['rockchip,rk3588-dw-hdmi-qp'], 'reg': [[0, 4259840000, 0, 131072]], 'clocks': [[4294967295, 528], [4294967295, 529], [4294967295, 530], [4294967295, 564], [4294967295, 594], [4294967295, 717]], 'clock-names': ['pclk', 'earc', 'ref', 'aud', 'hdp', 'hclk_vo1'], 'interrupts': [[0, 169, 4, 0], [0, 170, 4, 0], [0, 171, 4, 0], [0, 172, 4, 0], [0, 360, 4, 0]], 'interrupt-names': ['avp', 'cec', 'earc', 'main', 'hpd'], 'phys': [[4294967295]], 'phy-names': ['hdmi'], 'power-domains': [[4294967295, 26]], 'resets': [[4294967295, 462], [4294967295, 560]], 'reset-names': ['ref', 'hdp'], 'rockchip,grf': [[4294967295]], 'rockchip,vo1_grf': [[4294967295]], '#sound-dai-cells': 0, 'ports': {'#address-cells': 1, '#size-cells': 0, 'port@0': {'reg': [[0]], 'endpoint': {'remote-endpoint': [[4294967295]]}}, 'port@1': {'reg': [[1]]
->  , 'endpoint': {'remote-endpoint': [[4294967295]]}}}, '$nodename': ['hdmi@fde80000']}
-> 	from schema $id: http://devicetree.org/schemas/display/rockchip/rockchip,dw-hdmi-qp.yaml#
-> /builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-hdmi-qp.example.dtb: hdmi@fde80000: Unevaluated properties are not allowed ('reg' was unexpected)
-> 	from schema $id: http://devicetree.org/schemas/display/rockchip/rockchip,dw-hdmi-qp.yaml#
-> 
-> doc reference errors (make refcheckdocs):
-> 
-> See https://patchwork.ozlabs.org/project/devicetree-bindings/patch/20240801-b4-rk3588-bridge-upstream-v2-1-9fa657a4e15b@collabora.com
-> 
-> The base for the series is generally the latest rc1. A different dependency
-> should be noted in *this* patch.
-> 
-> If you already ran 'make dt_binding_check' and didn't see the above
-> error(s), then make sure 'yamllint' is installed and dt-schema is up to
-> date:
-> 
-> pip3 install dtschema --upgrade
-> 
-> Please check and re-submit after running the above command yourself. Note
-> that DT_SCHEMA_FILES can be set to your schema file to speed up checking
-> your schema. However, it must be unset to test all examples with your schema.
-> 
+as I'm going through my list of "waiting for ..." patches,
+is this still on the radar?
+
+As far as I can tell, it didn't make it into 6.11-rc1, but 6.12 would be
+nice :-)
+
+
+Thanks a lot
+Heiko
+
+
+
+> >> ---
+> >>  Documentation/devicetree/bindings/media/rockchip-vpu.yaml | 4 +++-
+> >>  1 file changed, 3 insertions(+), 1 deletion(-)
+> >>
+> >> diff --git a/Documentation/devicetree/bindings/media/rockchip-vpu.yaml=
+ b/Documentation/devicetree/bindings/media/rockchip-vpu.yaml
+> >> index c57e1f488895..d1b47b14ca57 100644
+> >> --- a/Documentation/devicetree/bindings/media/rockchip-vpu.yaml
+> >> +++ b/Documentation/devicetree/bindings/media/rockchip-vpu.yaml
+> >> @@ -26,7 +26,9 @@ properties:
+> >>            - rockchip,rk3568-vpu
+> >>            - rockchip,rk3588-av1-vpu
+> >>        - items:
+> >> -          - const: rockchip,rk3188-vpu
+> >> +          - enum:
+> >> +              - rockchip,rk3128-vpu
+> >> +              - rockchip,rk3188-vpu
+> >>            - const: rockchip,rk3066-vpu
+> >>        - items:
+> >>            - const: rockchip,rk3228-vpu
+> >>
+> >
+> >
+> >
+> >
+> >
+> =
+
+
+
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
