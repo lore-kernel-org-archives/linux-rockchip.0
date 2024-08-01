@@ -4,71 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 67143C3DA64
-	for <linux-rockchip@archiver.kernel.org>; Thu,  1 Aug 2024 14:45:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E9441C3DA4A
+	for <linux-rockchip@archiver.kernel.org>; Thu,  1 Aug 2024 14:46:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ZyOSG55tDiMJowfYWG/1eHEiVqZrYvrktDnrGggu7gU=; b=gn7roag3dcvh3V
-	HreuPCgXcREIF5vlaUYEHRTagOUlVg4NO+LT92I22B41P+RqlhSZmA51IbMPXAZw2JOZkQJfkk+dY
-	g+5K10LiCEBWQdyxbgzbICKA8mN3G8G4uwrdkqTR2lgvo+h97YTsuQc+/xa3/Mx3I/PFCgFH7EN1J
-	Gw6QoqRrgbvKQVmFIyo8havI0eZ5tfqnTCdxKJPxdgi05Xt7t/UXdt4B5a3Q0mfgy8weef5kZ5q2x
-	K4NFAhm+kuzDJHzFFnG5aT0VxpLK4MJ8xynyfvqxwY0wdebds3KSdyKQpruOxvY8nt/u2aBNFB0Hp
-	H1Ag+zquSKEBg6JrCVdg==;
+	List-Owner; bh=TXunfCsvc2oGLlIRzOiQgTT7yTE6XVD1rje9g58pOQ8=; b=Nktv4WEBT9WSQa
+	5+/GL9XJuKRQk977KWKFW6MXI5/toeZuzvyKFVP+bZ0BRs+ExS73VSjgMU9z47rCDjjPfU336Zaba
+	jYbN2ouaAQGdV2PeGbr+tjZwYurjltzHoUIwCekQMg0YZwtFaB8ZBkGBX56b5el5xDBXU+fhaqCm7
+	SZ3EDXyHJZ/q29fypqyW972D9FSX4wLSoOseHh86tiNU8Ay7V2vmxZmLnGUBzOJ1L2lI54/aIRW7y
+	cSvA3CzzoOH/Vs+vMRuIqED2/TrN/sGNX7l/GvV40Z5taMC6LNtTyf6tS0viSPdLV/6L4DTeWD/iN
+	2gOgsrRsMNptU5V8X4YQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sZX3k-00000005jEZ-0OJF;
-	Thu, 01 Aug 2024 14:45:40 +0000
-Received: from sin.source.kernel.org ([145.40.73.55])
+	id 1sZX4O-00000005jTt-0FOF;
+	Thu, 01 Aug 2024 14:46:20 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sZX3D-00000005j2d-3ros;
-	Thu, 01 Aug 2024 14:45:09 +0000
+	id 1sZX3s-00000005jJ6-2tBD;
+	Thu, 01 Aug 2024 14:45:50 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id BA0B0CE19CF;
-	Thu,  1 Aug 2024 14:45:05 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id CEE58C32786;
-	Thu,  1 Aug 2024 14:44:55 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 06EAB62502;
+	Thu,  1 Aug 2024 14:45:48 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C9D5EC32786;
+	Thu,  1 Aug 2024 14:45:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1722523505;
-	bh=TnehU+4nQi/mGzlkRiUy46s0TeIG1voBQaGg+h+RXfQ=;
+	s=k20201202; t=1722523547;
+	bh=ynD7QXa6nbck1NM7QRDpNGZa/07oVXF4giE0qGLrMBM=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=jWdjicrYFj/X9MQpzJnSBzeCFGlFO8M2k5ZETHfkUcFtqBP8xNa+vnlnHuxVZ22tM
-	 SO1R0Q5x30MZrxpvslapVEuwB+5NjvBgKWnB6E72HXMVEv0mGVM6wHPvPYXSRX8kDk
-	 3itaS9Sf3xrh4W1kmazrGYL92DfXE0lKXUxcLY1BKspx3wjua9WJ6P3crEmgtRqOr0
-	 AwAR/ub8ST3G1oOwviqd5QQC1Hj8pxQ4tHlcwDXerGPNAu6uiJTOseSWJIYKLTgokh
-	 XMn0RbK2uwGXEMG2+pl6MNorbuKeh7e1uXwitrs2H7vkr6fkyLTsHgT9w5kl/3T9td
-	 H6OHQ2jhe2+5Q==
-Message-ID: <2c97429e-4633-46f5-8e7a-ec6903901360@kernel.org>
-Date: Thu, 1 Aug 2024 16:44:53 +0200
+	b=Ml2iEl/qrUF+tU3f8mqi/xDrO0HgBiI00zoJCF/IXfrbRQVBSwrHc6SCD0dcGuGbx
+	 824TddCt25PLx/abt6g+oObHBwAel56iW83eIttgL0jpLGNxvzRleUyhLrnFkyeQH3
+	 r7Q9elQqm4pDcYQkkpCqT/izvujZ8958Evf2mSiR8cogAzJx42FEnI6jbrhpevs6Cy
+	 5nqpT9+xvR2TxZwuap3WnnV/b0wmsIowAB6aj1nMuJhN7DuuWrNi45lYWZLdWuqW6l
+	 3EP5l3hGYGrpWry84B9ZfyAUUBLszpnlrMpvVtlGDQvTIHi1K2dz0eC9H75ZaPtFJE
+	 +wsL0fagBswBg==
+Message-ID: <fe49a89e-324c-4755-8350-cb6f7b3323d9@kernel.org>
+Date: Thu, 1 Aug 2024 16:45:36 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 1/3] dt-bindings: display: rockchip: Add schema for
- RK3588 HDMI TX Controller
+Subject: Re: [PATCH v2 2/3] drm/rockchip: Explicitly include bits header
 To: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>,
- "Rob Herring (Arm)" <robh@kernel.org>
-Cc: Andy Yan <andy.yan@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?=
- <heiko@sntech.de>, Luis de Arquer <ldearquer@gmail.com>,
+ Andrzej Hajda <andrzej.hajda@intel.com>,
+ Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>,
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+ Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
  Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- David Airlie <airlied@gmail.com>, Alexandre ARNOUD <aarnoud@me.com>,
- Robert Foss <rfoss@kernel.org>, devicetree@vger.kernel.org,
- Maxime Ripard <mripard@kernel.org>, dri-devel@lists.freedesktop.org,
- Neil Armstrong <neil.armstrong@linaro.org>,
- linux-rockchip@lists.infradead.org, Thomas Zimmermann <tzimmermann@suse.de>,
- Andrzej Hajda <andrzej.hajda@intel.com>, Mark Yao <markyao0591@gmail.com>,
- Sascha Hauer <s.hauer@pengutronix.de>, Jonas Karlman <jonas@kwiboo.se>,
- Conor Dooley <conor+dt@kernel.org>, Daniel Vetter <daniel@ffwll.ch>,
- Sandy Huang <hjc@rock-chips.com>, linux-kernel@vger.kernel.org,
- kernel@collabora.com, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>,
- linux-arm-kernel@lists.infradead.org,
- Jernej Skrabec <jernej.skrabec@gmail.com>
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>,
+ Sandy Huang <hjc@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?=
+ <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Mark Yao <markyao0591@gmail.com>,
+ Sascha Hauer <s.hauer@pengutronix.de>
+Cc: dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ devicetree@vger.kernel.org, kernel@collabora.com,
+ Alexandre ARNOUD <aarnoud@me.com>, Luis de Arquer <ldearquer@gmail.com>
 References: <20240801-b4-rk3588-bridge-upstream-v2-0-9fa657a4e15b@collabora.com>
- <20240801-b4-rk3588-bridge-upstream-v2-1-9fa657a4e15b@collabora.com>
- <172248345225.2862796.6921035362248469311.robh@kernel.org>
- <aeeac627-2fce-45f2-b745-9e851a4dbd59@collabora.com>
+ <20240801-b4-rk3588-bridge-upstream-v2-2-9fa657a4e15b@collabora.com>
 From: Krzysztof Kozlowski <krzk@kernel.org>
 Content-Language: en-US
 Autocrypt: addr=krzk@kernel.org; keydata=
@@ -114,10 +110,11 @@ Autocrypt: addr=krzk@kernel.org; keydata=
  uZwJCLykjad45hsWcOGk3OcaAGQS6NDlfhM6O9aYNwGL6tGt/6BkRikNOs7VDEa4/HlbaSJo
  7FgndGw1kWmkeL6oQh7wBvYll2buKod4qYntmNKEicoHGU+x91Gcan8mCoqhJkbqrL7+nXG2
  5Q/GS5M9RFWS+nYyJh+c3OcfKqVcZQNANItt7+ULzdNJuhvTRRdC3g9hmCEuNSr+CLMdnRBY fv0=
-In-Reply-To: <aeeac627-2fce-45f2-b745-9e851a4dbd59@collabora.com>
+In-Reply-To: <20240801-b4-rk3588-bridge-upstream-v2-2-9fa657a4e15b@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240801_074508_363686_1A9BFD50 
-X-CRM114-Status: GOOD (  10.50  )
+X-CRM114-CacheID: sfid-20240801_074548_851800_474246FA 
+X-CRM114-Status: UNSURE (   9.18  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -134,32 +131,19 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 01/08/2024 11:50, Cristian Ciocaltea wrote:
-> On 8/1/24 6:37 AM, Rob Herring (Arm) wrote:
->>
->> On Thu, 01 Aug 2024 05:25:52 +0300, Cristian Ciocaltea wrote:
->>> Rockchip RK3588 SoC integrates the Synopsys DesignWare HDMI 2.1
->>> Quad-Pixel (QP) TX controller IP.
->>>
->>> Since this is a new IP block, quite different from those used in the
->>> previous generations of Rockchip SoCs, add a dedicated binding file.
->>>
->>> Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
->>> ---
->>>  .../display/rockchip/rockchip,dw-hdmi-qp.yaml      | 188 +++++++++++++++++++++
->>>  1 file changed, 188 insertions(+)
->>>
->>
->> My bot found errors running 'make dt_binding_check' on your patch:
+On 01/08/2024 04:25, Cristian Ciocaltea wrote:
+> Driver makes use of the BIT() macro, but relies on the bits header being
+> implicitly included.
 > 
-> This is because the referenced synopsys,dw-hdmi-qp.yaml is provided by a
-> separate patchset:
+> Explicitly pull the header in to avoid potential build failures in some
+> configurations.
 > 
-> https://lore.kernel.org/lkml/20240801-dw-hdmi-qp-tx-v1-1-148f542de5fd@collabora.com/
+> While at it, reorder include directives alphabetically.
+> 
+> Fixes: 8c8546546f25 ("drm/rockchip: move output interface related definition to rockchip_drm_drv.h")
 
-
-So you made things untestable. No, this must be one patchset. Do not
-send some library/helper and users of it in separate patchsets.
+There is no bug here to be fixed. Drop. Especially bugfixes should not
+be combined with cleanups.
 
 Best regards,
 Krzysztof
