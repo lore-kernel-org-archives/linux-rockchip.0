@@ -4,117 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E9441C3DA4A
-	for <linux-rockchip@archiver.kernel.org>; Thu,  1 Aug 2024 14:46:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 60E00C3DA64
+	for <linux-rockchip@archiver.kernel.org>; Thu,  1 Aug 2024 15:22:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=TXunfCsvc2oGLlIRzOiQgTT7yTE6XVD1rje9g58pOQ8=; b=Nktv4WEBT9WSQa
-	5+/GL9XJuKRQk977KWKFW6MXI5/toeZuzvyKFVP+bZ0BRs+ExS73VSjgMU9z47rCDjjPfU336Zaba
-	jYbN2ouaAQGdV2PeGbr+tjZwYurjltzHoUIwCekQMg0YZwtFaB8ZBkGBX56b5el5xDBXU+fhaqCm7
-	SZ3EDXyHJZ/q29fypqyW972D9FSX4wLSoOseHh86tiNU8Ay7V2vmxZmLnGUBzOJ1L2lI54/aIRW7y
-	cSvA3CzzoOH/Vs+vMRuIqED2/TrN/sGNX7l/GvV40Z5taMC6LNtTyf6tS0viSPdLV/6L4DTeWD/iN
-	2gOgsrRsMNptU5V8X4YQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=PN4JWSnED5EGI/0WPlyK5KN3y2hC00S0Fwsr/9RPgEc=; b=e2Tjo9AeZzhoiRz6wTrCfEVnnc
+	Rpe7P+r3kJehMBDLjczEmf34g7CtjK/Bff7TYRA7O1gSiju6SkSsPFXBwb5jotViHoyaMgJrDeJCM
+	loelYSNM0DecePGOy46+TScT4TB+qpdspKWc0qLdHLkoIP2XSkFe8tcSamo+TAiL95wb2ykBJhLZG
+	6xV1JrfvMV10r3nTXueOb3qjHk42x7kYEPHFEZYvQiI6L7I/b1Bp+EpmtVyVje4p0Dvp/GPxkR+5E
+	ohrGrLghILqo9o5mhGTn5X5XFj6uxueLqPCU3iW4MimrwB8fJh6lzZHpsmjsTkyffxeg7xfzp2Bpx
+	utZFJOmQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sZX4O-00000005jTt-0FOF;
-	Thu, 01 Aug 2024 14:46:20 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1sZXdN-00000005qNZ-1MMJ;
+	Thu, 01 Aug 2024 15:22:29 +0000
+Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sZX3s-00000005jJ6-2tBD;
-	Thu, 01 Aug 2024 14:45:50 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 06EAB62502;
-	Thu,  1 Aug 2024 14:45:48 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C9D5EC32786;
-	Thu,  1 Aug 2024 14:45:38 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1722523547;
-	bh=ynD7QXa6nbck1NM7QRDpNGZa/07oVXF4giE0qGLrMBM=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=Ml2iEl/qrUF+tU3f8mqi/xDrO0HgBiI00zoJCF/IXfrbRQVBSwrHc6SCD0dcGuGbx
-	 824TddCt25PLx/abt6g+oObHBwAel56iW83eIttgL0jpLGNxvzRleUyhLrnFkyeQH3
-	 r7Q9elQqm4pDcYQkkpCqT/izvujZ8958Evf2mSiR8cogAzJx42FEnI6jbrhpevs6Cy
-	 5nqpT9+xvR2TxZwuap3WnnV/b0wmsIowAB6aj1nMuJhN7DuuWrNi45lYWZLdWuqW6l
-	 3EP5l3hGYGrpWry84B9ZfyAUUBLszpnlrMpvVtlGDQvTIHi1K2dz0eC9H75ZaPtFJE
-	 +wsL0fagBswBg==
-Message-ID: <fe49a89e-324c-4755-8350-cb6f7b3323d9@kernel.org>
-Date: Thu, 1 Aug 2024 16:45:36 +0200
+	id 1sZXdK-00000005qM1-3uzX
+	for linux-rockchip@lists.infradead.org;
+	Thu, 01 Aug 2024 15:22:28 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1722525744;
+	bh=zWV9fwEvLkpA9pAeJ3oXXYHMJLMCa0NehNRH5O/nh8Q=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=rUfvYyZsOxApkTth73GusmRQGJN5JbQZgYt/0D1/aWxoQ3Nt+bKxILAE34nC8yFxW
+	 YrmqkM9sIUv152l8ePXuya1qxFIQvHalvOAPjyC3T/Tls0ckcaS/BzS+gH1mDnaQoN
+	 JhFeoA4PyVB7brI689Ndzi7PU0gQQbzoo6ERWQgq0iNIALzmegacW2yM6k3msYRnCl
+	 1FZbjC25KfTJvt/xIQL/8oPgoa1i31vTnX+DH6SoWNlz0B8ypmS0FtfDtScp6peiOD
+	 Rbtuu+0FRrvFBH2ZTefICx0CtY55HwS3Vw8Ur+FFWByq3Hm9VBvNY4TeCP5vcpugM2
+	 bxmGdQFEG1GXA==
+Received: from mercury (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: sre)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id C6BF73782167;
+	Thu,  1 Aug 2024 15:22:24 +0000 (UTC)
+Received: by mercury (Postfix, from userid 1000)
+	id 70DF5106097C; Thu, 01 Aug 2024 17:22:24 +0200 (CEST)
+Date: Thu, 1 Aug 2024 17:22:24 +0200
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+To: Lee Jones <lee@kernel.org>
+Cc: Dmitrii Osipenko <dmitry.osipenko@collabora.com>, 
+	Mark Brown <broonie@kernel.org>, Urja <urja@urja.dev>, Heiko Stuebner <heiko@sntech.de>, 
+	linux-rockchip@lists.infradead.org, linux-spi@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	kernel@collabora.com, stable@vger.kernel.org
+Subject: Re: [PATCH v1 1/1] mfd: rk8xx: Fix shutdown handler
+Message-ID: <ih7hiojzuvqzpyipj66mgu5pmcderltabim7s5dnfzm6qpztbh@jqkst5tfw5ra>
+References: <20240730180903.81688-1-sebastian.reichel@collabora.com>
+ <20240801131823.GB1019230@google.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 2/3] drm/rockchip: Explicitly include bits header
-To: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>,
- Andrzej Hajda <andrzej.hajda@intel.com>,
- Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>,
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
- Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>,
- Sandy Huang <hjc@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?=
- <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Mark Yao <markyao0591@gmail.com>,
- Sascha Hauer <s.hauer@pengutronix.de>
-Cc: dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- devicetree@vger.kernel.org, kernel@collabora.com,
- Alexandre ARNOUD <aarnoud@me.com>, Luis de Arquer <ldearquer@gmail.com>
-References: <20240801-b4-rk3588-bridge-upstream-v2-0-9fa657a4e15b@collabora.com>
- <20240801-b4-rk3588-bridge-upstream-v2-2-9fa657a4e15b@collabora.com>
-From: Krzysztof Kozlowski <krzk@kernel.org>
-Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- xsFNBFVDQq4BEAC6KeLOfFsAvFMBsrCrJ2bCalhPv5+KQF2PS2+iwZI8BpRZoV+Bd5kWvN79
- cFgcqTTuNHjAvxtUG8pQgGTHAObYs6xeYJtjUH0ZX6ndJ33FJYf5V3yXqqjcZ30FgHzJCFUu
- JMp7PSyMPzpUXfU12yfcRYVEMQrmplNZssmYhiTeVicuOOypWugZKVLGNm0IweVCaZ/DJDIH
- gNbpvVwjcKYrx85m9cBVEBUGaQP6AT7qlVCkrf50v8bofSIyVa2xmubbAwwFA1oxoOusjPIE
- J3iadrwpFvsZjF5uHAKS+7wHLoW9hVzOnLbX6ajk5Hf8Pb1m+VH/E8bPBNNYKkfTtypTDUCj
- NYcd27tjnXfG+SDs/EXNUAIRefCyvaRG7oRYF3Ec+2RgQDRnmmjCjoQNbFrJvJkFHlPeHaeS
- BosGY+XWKydnmsfY7SSnjAzLUGAFhLd/XDVpb1Een2XucPpKvt9ORF+48gy12FA5GduRLhQU
- vK4tU7ojoem/G23PcowM1CwPurC8sAVsQb9KmwTGh7rVz3ks3w/zfGBy3+WmLg++C2Wct6nM
- Pd8/6CBVjEWqD06/RjI2AnjIq5fSEH/BIfXXfC68nMp9BZoy3So4ZsbOlBmtAPvMYX6U8VwD
- TNeBxJu5Ex0Izf1NV9CzC3nNaFUYOY8KfN01X5SExAoVTr09ewARAQABzSVLcnp5c3p0b2Yg
- S296bG93c2tpIDxrcnprQGtlcm5lbC5vcmc+wsGVBBMBCgA/AhsDBgsJCAcDAgYVCAIJCgsE
- FgIDAQIeAQIXgBYhBJvQfg4MUfjVlne3VBuTQ307QWKbBQJgPO8PBQkUX63hAAoJEBuTQ307
- QWKbBn8P+QFxwl7pDsAKR1InemMAmuykCHl+XgC0LDqrsWhAH5TYeTVXGSyDsuZjHvj+FRP+
- gZaEIYSw2Yf0e91U9HXo3RYhEwSmxUQ4Fjhc9qAwGKVPQf6YuQ5yy6pzI8brcKmHHOGrB3tP
- /MODPt81M1zpograAC2WTDzkICfHKj8LpXp45PylD99J9q0Y+gb04CG5/wXs+1hJy/dz0tYy
- iua4nCuSRbxnSHKBS5vvjosWWjWQXsRKd+zzXp6kfRHHpzJkhRwF6ArXi4XnQ+REnoTfM5Fk
- VmVmSQ3yFKKePEzoIriT1b2sXO0g5QXOAvFqB65LZjXG9jGJoVG6ZJrUV1MVK8vamKoVbUEe
- 0NlLl/tX96HLowHHoKhxEsbFzGzKiFLh7hyboTpy2whdonkDxpnv/H8wE9M3VW/fPgnL2nPe
- xaBLqyHxy9hA9JrZvxg3IQ61x7rtBWBUQPmEaK0azW+l3ysiNpBhISkZrsW3ZUdknWu87nh6
- eTB7mR7xBcVxnomxWwJI4B0wuMwCPdgbV6YDUKCuSgRMUEiVry10xd9KLypR9Vfyn1AhROrq
- AubRPVeJBf9zR5UW1trJNfwVt3XmbHX50HCcHdEdCKiT9O+FiEcahIaWh9lihvO0ci0TtVGZ
- MCEtaCE80Q3Ma9RdHYB3uVF930jwquplFLNF+IBCn5JRzsFNBFVDXDQBEADNkrQYSREUL4D3
- Gws46JEoZ9HEQOKtkrwjrzlw/tCmqVzERRPvz2Xg8n7+HRCrgqnodIYoUh5WsU84N03KlLue
- MNsWLJBvBaubYN4JuJIdRr4dS4oyF1/fQAQPHh8Thpiz0SAZFx6iWKB7Qrz3OrGCjTPcW6ei
- OMheesVS5hxietSmlin+SilmIAPZHx7n242u6kdHOh+/SyLImKn/dh9RzatVpUKbv34eP1wA
- GldWsRxbf3WP9pFNObSzI/Bo3kA89Xx2rO2roC+Gq4LeHvo7ptzcLcrqaHUAcZ3CgFG88CnA
- 6z6lBZn0WyewEcPOPdcUB2Q7D/NiUY+HDiV99rAYPJztjeTrBSTnHeSBPb+qn5ZZGQwIdUW9
- YegxWKvXXHTwB5eMzo/RB6vffwqcnHDoe0q7VgzRRZJwpi6aMIXLfeWZ5Wrwaw2zldFuO4Dt
- 91pFzBSOIpeMtfgb/Pfe/a1WJ/GgaIRIBE+NUqckM+3zJHGmVPqJP/h2Iwv6nw8U+7Yyl6gU
- BLHFTg2hYnLFJI4Xjg+AX1hHFVKmvl3VBHIsBv0oDcsQWXqY+NaFahT0lRPjYtrTa1v3tem/
- JoFzZ4B0p27K+qQCF2R96hVvuEyjzBmdq2esyE6zIqftdo4MOJho8uctOiWbwNNq2U9pPWmu
- 4vXVFBYIGmpyNPYzRm0QPwARAQABwsF8BBgBCgAmAhsMFiEEm9B+DgxR+NWWd7dUG5NDfTtB
- YpsFAmA872oFCRRflLYACgkQG5NDfTtBYpvScw/9GrqBrVLuJoJ52qBBKUBDo4E+5fU1bjt0
- Gv0nh/hNJuecuRY6aemU6HOPNc2t8QHMSvwbSF+Vp9ZkOvrM36yUOufctoqON+wXrliEY0J4
- ksR89ZILRRAold9Mh0YDqEJc1HmuxYLJ7lnbLYH1oui8bLbMBM8S2Uo9RKqV2GROLi44enVt
- vdrDvo+CxKj2K+d4cleCNiz5qbTxPUW/cgkwG0lJc4I4sso7l4XMDKn95c7JtNsuzqKvhEVS
- oic5by3fbUnuI0cemeizF4QdtX2uQxrP7RwHFBd+YUia7zCcz0//rv6FZmAxWZGy5arNl6Vm
- lQqNo7/Poh8WWfRS+xegBxc6hBXahpyUKphAKYkah+m+I0QToCfnGKnPqyYIMDEHCS/RfqA5
- t8F+O56+oyLBAeWX7XcmyM6TGeVfb+OZVMJnZzK0s2VYAuI0Rl87FBFYgULdgqKV7R7WHzwD
- uZwJCLykjad45hsWcOGk3OcaAGQS6NDlfhM6O9aYNwGL6tGt/6BkRikNOs7VDEa4/HlbaSJo
- 7FgndGw1kWmkeL6oQh7wBvYll2buKod4qYntmNKEicoHGU+x91Gcan8mCoqhJkbqrL7+nXG2
- 5Q/GS5M9RFWS+nYyJh+c3OcfKqVcZQNANItt7+ULzdNJuhvTRRdC3g9hmCEuNSr+CLMdnRBY fv0=
-In-Reply-To: <20240801-b4-rk3588-bridge-upstream-v2-2-9fa657a4e15b@collabora.com>
+In-Reply-To: <20240801131823.GB1019230@google.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240801_074548_851800_474246FA 
-X-CRM114-Status: UNSURE (   9.18  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240801_082227_129993_34D80AC4 
+X-CRM114-Status: GOOD (  21.11  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -126,30 +73,93 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============7980438713913174507=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 01/08/2024 04:25, Cristian Ciocaltea wrote:
-> Driver makes use of the BIT() macro, but relies on the bits header being
-> implicitly included.
-> 
-> Explicitly pull the header in to avoid potential build failures in some
-> configurations.
-> 
-> While at it, reorder include directives alphabetically.
-> 
-> Fixes: 8c8546546f25 ("drm/rockchip: move output interface related definition to rockchip_drm_drv.h")
 
-There is no bug here to be fixed. Drop. Especially bugfixes should not
-be combined with cleanups.
+--===============7980438713913174507==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="5ij2xz22fzghfnfr"
+Content-Disposition: inline
 
-Best regards,
-Krzysztof
 
+--5ij2xz22fzghfnfr
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+Hello Lee,
+
+On Thu, Aug 01, 2024 at 02:18:23PM GMT, Lee Jones wrote:
+> > +	/*
+> > +	 * Currently the Rockchip SPI driver always sleeps when doing SPI
+> > +	 * transfers. This is not allowed in the SYS_OFF_MODE_POWER_OFF
+> > +	 * handler, so we are using the prepare handler as a workaround.
+> > +	 * This should be removed once the Rockchip SPI driver has been
+> > +	 * adapted.
+> > +	 */
+>=20
+> So why not just adapt the SPI driver now?
+
+This patch is simple and thus can easily be backported, so that the
+Acer Chromebook shutdown is fixed in the stable kernels. SPI based
+rkxx has been using SYS_OFF_MODE_POWER_OFF_PREPARE from the start,
+so it's not a regression.
+
+As far as I could see the SPI framework does not have something
+comparable to the I2C .xfer_atomic handler. So fixing up the
+Rockchip SPI driver probably involves creating some SPI core
+helpers. I'm not yet sure about the best way to deal with this.
+But I guess it will be better not having to backport all of the
+requires changes to stable.
+
+In any case I think the next step in this direction is discussing
+how to handle this in general for SPI.
+
+> What's the bet that if accepted, this hack is still here in 5 years time?
+
+Even if I don't work on this now, I would expect somebody to have
+issues with broken shutdown on RK3588 boards before 5 years are
+over :)
+
+Greetings,
+
+-- Sebastian
+
+--5ij2xz22fzghfnfr
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmarqCsACgkQ2O7X88g7
++prvRA//QpziJs2zje1Qs5sT0QdiKwVULJnHSVmN2UsJp8Nw8PlCA7Mroafv8j9l
+rrWa+8tAEtNgwOrjqKJQRt3wDg5kIK/w1MOJ+JN1Du+miRL1Wa8c2TB51E8dLjZC
+gFPg5jZMcqon5+36cDEOn7x8nNv5rZyWcYf6PKtdtz1/88KhFPX55J9uX7rR9WGR
+hRci+TllwouFpCAXe5CI2TSUWE69Bma3hrzpuFC8iqTesC6K42qqaV74JkuKMRLx
+uoJ3zwBMChMZsrPjf8sFQpl/DQc3/kGOJsf19QjvYa+IOyDYUAWsxDDURyyifiXG
+dQhXNyWe93tXKtqwqO1aQ9n/faqMvfN22mpUM/9/XRy7E9OZ62x4pW7CgspIDRUD
+DN5CntPyOdGOAvY0v87PwwGo17LMH5BHP/TycsCAjBV1Euld8JAwK5VXBdZehYs0
+Wf3TJ32Vu6dNugbXthA5p+l+auW8cFw9mYujAo5N++ao0VoVRYh8XdzUj6EcuYDn
+v38wN8S8nzqoH9qgrjsopJ5e936s7uw5soeLnjtHPZmXxopFaXo82ky1MUBLeQeW
+1gjeYMSqwicmW/XruQy5mm+8SCzI95d9l9GiJXavEmyBWBC1R2J1cory+m2KOvEZ
+IZACNzdWQwXOyjzKtG0wLkxqB+6UsNg2NUebLYUO5div78AcDnQ=
+=6MRC
+-----END PGP SIGNATURE-----
+
+--5ij2xz22fzghfnfr--
+
+
+--===============7980438713913174507==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============7980438713913174507==--
+
