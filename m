@@ -4,67 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 43CDEC3DA4A
-	for <linux-rockchip@archiver.kernel.org>; Thu,  1 Aug 2024 18:05:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8165EC3DA64
+	for <linux-rockchip@archiver.kernel.org>; Thu,  1 Aug 2024 18:06:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=R27jMT3f/06Mbt26vH9sp9SyXeH7yBglqywxW7PRtGY=; b=Lyg1eAhZVPIcud
-	nizWK423s0+LMIKkzQGGxMm0zyhLiMjg0xDKpIk+yJX2Ifn7xQ2AyVdeU75DgYDe0Fciwl36WfD8e
-	lFbCiFFEUQ9FNAROaC4tyrFZTwRbyNVDtHJC1lpmQCZqAmjCf1Z7Maw16Uu+RguP1C02gOXu/3UQt
-	oGQOBCjsOYimJdHD/oloMiyDfjpZn4njuR9WeSIl1qxY9U+E+pdaaq1YmQybMCt16o3CjLIYSZWqi
-	/i49yfTYeSv3Ia8cfWu8liYI79hCqWs9RrFTMiBdh80W33xPE+0kPgmragT93EvlThp044LYPP3j/
-	mSV7wOwwnxcPQVZRAfLw==;
+	List-Owner; bh=4EqAt4XGytOzAYgJ30RgZCp67EnQO8z7myWd8niukd4=; b=ZMuoS6XKfoRxzo
+	UpLVtKrC/zZScwjJrRxL+EVyHQjRhjdh14RhFATxexo5qfIFGBRqBc8lWaRN44aOpjHsu9oE0Fprl
+	XmMZutTbosmL3VCbQoMIF9H0bQQjWsKkhUwYgwN5+FdVYYnWoAZucMKJlrf7IdhEy3LOFCPsJewAp
+	Y8Rxg/UwC/bv3AVcMrpmTiX4zPxRRNRqCgxD+d/2U/gXgylLnHLqd0wUGZjwWAgD50hK3bhbWbXO9
+	u+fg2XN3WtBiIE05gpoqFa+ktCm/zmX144gMi69a7H1KqqB1bkYOg4OQ048NBReW4E4NzoDhmv6LE
+	Y6k7gPYpkxBxh1Q6eRAA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sZaAr-00000006Lb5-0n1i;
-	Thu, 01 Aug 2024 18:05:13 +0000
-Received: from madrid.collaboradmins.com ([46.235.227.194])
-	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sZaAm-00000006LYd-2bKO
+	id 1sZaBw-00000006Lmv-2dO4;
+	Thu, 01 Aug 2024 18:06:21 +0000
+Received: from xn--80adja5bqm.su ([198.44.140.76])
+	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
+	id 1sZaBt-00000006LmX-2AQG
 	for linux-rockchip@lists.infradead.org;
-	Thu, 01 Aug 2024 18:05:11 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1722535507;
-	bh=JQaGnDvmk/eH49aIh6Pmq8xbttq3olRoqsnPrZXpSXU=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=HOnLLR9Xp9B+bYNE4eGIP+B+t7dahIZmxw6U7kafUV/U0g0oMR6q05CRIwB9vq2/D
-	 L2Itl1pYxo4M9x/j0UkIcSgpFvScjnK8cMbnl2sm5LwwtqSGaVxpKvbOjEK2qjtepY
-	 bdoOznSIUUzKsG1YEuDUGawfulvR9Y+0AvMu7olzGpw4wMG5FKp+CufnztS4N52H5I
-	 KBjlvDj1ZlxvvQ/6LgBQqneQVW0T3GXre3xNEIOHwen2emdwbdyt53uZREgw2WMi4Z
-	 CCjf3ESRu+9v9ggMLsEfoOxF5dVLFUk+jTFD1LCAbaQtSXEYt2M7kda3qGzYvHN8dr
-	 5L4kH+UJWuMXA==
-Received: from [100.109.49.129] (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: dmitry.osipenko)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 5F38437804C8;
-	Thu,  1 Aug 2024 18:05:06 +0000 (UTC)
-Message-ID: <20c5ee69-3510-4c15-aa40-6d61c64d8ef1@collabora.com>
-Date: Thu, 1 Aug 2024 21:05:03 +0300
+	Thu, 01 Aug 2024 18:06:18 +0000
+Received: by xn--80adja5bqm.su (Postfix, from userid 1000)
+	id 08A4440460CC; Thu,  1 Aug 2024 18:05:39 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 xn--80adja5bqm.su 08A4440460CC
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=mediatomb.cc;
+	s=default; t=1722535539;
+	bh=8TV5DwJYV27YdvGwHWo9ffXTN5cjDWmzzlyafnAnMXk=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=Xfbctd31NCXfEIsmUQCV/ps5lb95zozcemwjzkPJm71nEJB9yqfPF5PlOHvTqhhNs
+	 mLeh0Il1FHFjTWa/TuwG547q4hUJvLzcz5eLdxdgOPoyMFpB8CTmZkzyY8xhY1Q3pj
+	 k+TGIOqaDHvpsySUGLaVTwio/MFeQqXY3HNVwmh2DhyNJ1f+FdSpXSQG59bimftd3a
+	 qk30ZQK2dMuZK7UTjWH2EJUrONtdIj1uzqqgBYfsyVg/wVlab7I9NYlR01CfnEHvgr
+	 vqXI1T7qdedjna8EmkwNsUqvjwhMbKypge2duDGlWieoO6wCNv/4tv/mj4K8m3L8ZA
+	 izJqaC3V756cQ==
+Date: Thu, 1 Aug 2024 18:05:38 +0000
+From: Sergey 'Jin' Bostandzhyan <jin@mediatomb.cc>
+To: Krzysztof Kozlowski <krzk@kernel.org>
+Cc: linux-rockchip@lists.infradead.org, heiko@sntech.de
+Subject: Re: [PATCH 2/2] dt-bindings: arm: rockchip: Add NanoPi R2S Plus
+Message-ID: <20240801180538.GD14610@ветеран.su>
+References: <20240731204126.8689-1-jin@mediatomb.cc>
+ <20240731204126.8689-3-jin@mediatomb.cc>
+ <22bbec28-41c1-4f36-b776-6e091bf118d9@kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1 1/1] mfd: rk8xx: Fix shutdown handler
-To: Sebastian Reichel <sebastian.reichel@collabora.com>,
- =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>
-Cc: Lee Jones <lee@kernel.org>, Mark Brown <broonie@kernel.org>,
- Urja <urja@urja.dev>, linux-rockchip@lists.infradead.org,
- linux-spi@vger.kernel.org, linux-kernel@vger.kernel.org,
- kernel@collabora.com, stable@vger.kernel.org
-References: <20240730180903.81688-1-sebastian.reichel@collabora.com>
- <c4d6da27-3b23-4a96-bad0-17f2392287ef@collabora.com>
- <22969419.5W6oEpyPa8@diego>
- <wad5fdqxwoq2wy35wbhwk5jinpgyz6xmxnt5aqddci777qctsd@qay2lr2ubkws>
-Content-Language: en-US
-From: Dmitry Osipenko <dmitry.osipenko@collabora.com>
-In-Reply-To: <wad5fdqxwoq2wy35wbhwk5jinpgyz6xmxnt5aqddci777qctsd@qay2lr2ubkws>
+Content-Disposition: inline
+In-Reply-To: <22bbec28-41c1-4f36-b776-6e091bf118d9@kernel.org>
+User-Agent: Mutt/1.5.21 (2010-09-15)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240801_110508_877107_4DD3BDC9 
-X-CRM114-Status: GOOD (  20.26  )
+X-CRM114-CacheID: sfid-20240801_110617_647135_FB7AAD11 
+X-CRM114-Status: GOOD (  18.55  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,44 +67,45 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gOC8xLzI0IDIwOjUyLCBTZWJhc3RpYW4gUmVpY2hlbCB3cm90ZToKPiBIaSwKPiAKPiBPbiBU
-aHUsIEF1ZyAwMSwgMjAyNCBhdCAwNzo0MTo0NFBNIEdNVCwgSGVpa28gU3TDvGJuZXIgd3JvdGU6
-Cj4+IEFtIERvbm5lcnN0YWcsIDEuIEF1Z3VzdCAyMDI0LCAxNzozMTozMyBDRVNUIHNjaHJpZWIg
-RG1pdHJ5IE9zaXBlbmtvOgo+Pj4gT24gNy8zMC8yNCAyMTowNSwgU2ViYXN0aWFuIFJlaWNoZWwg
-d3JvdGU6Cj4+Pj4gKwkvKgo+Pj4+ICsJICogQ3VycmVudGx5IHRoZSBSb2NrY2hpcCBTUEkgZHJp
-dmVyIGFsd2F5cyBzbGVlcHMgd2hlbiBkb2luZyBTUEkKPj4+PiArCSAqIHRyYW5zZmVycy4gVGhp
-cyBpcyBub3QgYWxsb3dlZCBpbiB0aGUgU1lTX09GRl9NT0RFX1BPV0VSX09GRgo+Pj4+ICsJICog
-aGFuZGxlciwgc28gd2UgYXJlIHVzaW5nIHRoZSBwcmVwYXJlIGhhbmRsZXIgYXMgYSB3b3JrYXJv
-dW5kLgo+Pj4+ICsJICogVGhpcyBzaG91bGQgYmUgcmVtb3ZlZCBvbmNlIHRoZSBSb2NrY2hpcCBT
-UEkgZHJpdmVyIGhhcyBiZWVuCj4+Pj4gKwkgKiBhZGFwdGVkLgo+Pj4+ICsJICovCj4+Pj4gKwlp
-ZiAoaXNfc3BpKQo+Pj4+ICsJCXB3cl9vZmZfbW9kZSA9IFNZU19PRkZfTU9ERV9QT1dFUl9PRkZf
-UFJFUEFSRTsKPj4+Cj4+PiBUaGlzIHByZXZlbnRzIHRoZSBzeXNjb3JlX3NodXRkb3duKCkgc3Rl
-cCBmcm9tIGV4ZWN1dGlvbi4gSXMgaXQgYmV0dGVyCj4+PiB0aGFuIG5vdCBwb3dlcmluZyBvZmY/
-Cj4+Pgo+Pj4gSSdkIHJhdGhlciBza2lwIHJlZ2lzdHJhdGlvbiBvZiB0aGUgcG93ZXItb2ZmIGhh
-bmRsZXJzIGluIGEgY2FzZSBvZiBTUEkgOikKPj4KPj4gT3IgYmxhc3BoZW1vdXMgdGhvdWdodCwg
-d2UgY291bGQgbGl2ZSB3aXRoIHRoZSB3YXJuaW5nLXNwbGFzaCBmb3IgYSBiaXQuCj4+Cj4+IEZy
-b20gU2ViYXN0aWFuJ3MgbG9nIEkgYXNzdW1lIHRoZSBXQVJOSU5HIGNvbWVzIGZyb20gdGhlCj4+
-IHdhaXRfZm9yX2NvbXBsZXRpb24oKSBpbiBzcGlfdHJhbnNmZXJfd2FpdCgpLCBhbmQgSSBndWVz
-cyB0aGUgdHJhbnNmZXIKPj4gd2l0aCB0aGUgcG93ZXJvZmYgY29tbWFuZCBpdHNlbGYgd2lsbCBh
-bHJlYWR5IGhhdmUgaGFwcGVuZWQgdGhlbj8KPj4KPj4gU28gdGhlIGRldmljZSBpcyBtb3N0IGxp
-a2VseSBzdGlsbCBwb3dlcmVkIG9mZiBpbiB0aGF0IGNhc2U/Cj4+IE5vdCBzdXJlIGhvdyBtdWNo
-IG9mICJiYWQgdGFzdGUiIHRoYXQgdGhvdWdodCBpcyB0aG91Z2ggOy0pCj4gCj4gWWVzLCBhcyBm
-YXIgYXMgSSBjb3VsZCBzZWUgaXQgd29ya3MgZmluZSAodGhlIHNwbGFzaCBmcm9tIHRoZSBjb21t
-aXQKPiBtZXNzYWdlIGlzIGZyb20gZXhhY3RseSB0aGlzIHNvbHV0aW9uIHJ1bm5pbmcgb24gUksz
-NTg4IEVWQjEgYW5kIHRoZQo+IGJvYXJkIHdhcyBwb3dlcmVkIG9mZiBwcm9wZXJseSBhcyBmYXIg
-YXMgSSBjYW4gdGVsbCkuIEJ1dCBpdCBmZWx0IGEKPiBiaXQgc3RyYW5nZSB0byBrbm93aW5nbHkg
-aW50cm9kdWNlIGFuIGVycm9yIHNwbGFzaCBpbiBhIGZpeCBpbnRlbmRlZAo+IGZvciBiZWluZyBi
-YWNrcG9ydGVkIHRvIHRoZSBzdGFibGUgdHJlZXMsIHNvIEkgc3dpdGNoZWQgdG8gdGhlIGN1cnJl
-bnQKPiB2ZXJzaW9uIGJlZm9yZSBzZW5kaW5nLgoKQ2FuIHlvdSBhZGQgYSBidXN5LXdhaXQgdG8g
-dGhlIFNQSSBkcml2ZXIgVFggZnVuYyBmb3IgdGhlIGNhc2Ugd2hlcmUKaXQncyBpbnZva2VkIHdp
-dGggYSBkaXNhYmxlZCBpbnRlcnJ1cHRzPyBUaGF0IGNvdWxkIGJlIGEgYmV0dGVyCndvcmthcm91
-bmQsIHNpbGVuY2luZyB0aGUgd2FybmluZyBhbmQga2VlcGluZyBwb3dlci1vZmYgd29ya2luZyBw
-cm9wZXJseS4KCi0tIApCZXN0IHJlZ2FyZHMsCkRtaXRyeQoKCl9fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApM
-aW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQu
-b3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+Hi Krzysztof,
+
+On Thu, Aug 01, 2024 at 10:10:09AM +0200, Krzysztof Kozlowski wrote:
+> <form letter>
+> Please use scripts/get_maintainers.pl to get a list of necessary people
+> and lists to CC. It might happen, that command when run on an older
+> kernel, gives you outdated entries. Therefore please be sure you base
+> your patches on recent Linux kernel.
+> 
+> Tools like b4 or scripts/get_maintainer.pl provide you proper list of
+> people, so fix your workflow. Tools might also fail if you work on some
+> ancient tree (don't, instead use mainline) or work on fork of kernel
+> (don't, instead use mainline). Just use b4 and everything should be
+> fine, although remember about `b4 prep --auto-to-cc` if you added new
+> patches to the patchset.
+> 
+> You missed at least devicetree list (maybe more), so this won't be
+> tested by automated tooling. Performing review on untested code might be
+> a waste of time.
+> 
+> Please kindly resend and include all necessary To/Cc entries.
+> </form letter>
+
+thank you for all the hints, I did now use b4 to populate the addresses, so
+I hope I did not miss anything. Sorry for the first fail, I am a "once in a few
+years" submitter and I am having a hard time to get through the whole process :)
+
+The patchset has been resent.
+
+Kind regards,
+Sergey
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
