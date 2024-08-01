@@ -4,70 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 39842C3DA64
-	for <linux-rockchip@archiver.kernel.org>; Thu,  1 Aug 2024 19:05:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 21CEAC3DA64
+	for <linux-rockchip@archiver.kernel.org>; Thu,  1 Aug 2024 19:10:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=smwAx0RfmOqbmQ6OD04eLc6MO3KmIlTmD8MWzd2BF4E=; b=Q2Xqit6JbxBg4B
-	MKPJIgtYtdjugRGPs//eoRZaEtcfYSHTNftGmvPY0QN5fK4VOMe9KJm5W98C4IypKmlJwHzqgFv/S
-	ajfyNEp63ZH93lZGIN+QlRRSuz6KI0wDzYOq4gRBmHZxVNK/hThK0xDt9qmdoZ3HZFPiHI3Ui/efk
-	nWUGLAqHQCiUbSJtWEcuQXAwei7WY2fQBD2cbSD/MDx8TDJG6WMsBagwRB+nmxc4JPWSqaOsplo2o
-	s+Yqu6/Sx/pu0jVfkWjc1pfsA0qnAuNHfIFqjV64Q1yvK0+mnwe4JTzjD10npldX/kpp8rv7IBBnx
-	TNgYLpEnDX7c3aOomn9Q==;
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=WTFSLnS6pSqyp4d3iP5mb+V0UyTjTRRgShqMqUgv8f4=; b=1xDCiCiCujS1Hf
+	yuxmgw+q1tLyGeocxx5ljp8V0Q0lK6bBSlpzmDntpZ/nB8571ND1LAFWM2rgHGbSIBcBoqQhR+EnV
+	t1GrLKu75zFQmQReSKlI6+L4+83uzl5wTkbijH4Z4nyGLZiu2lvxw2WPa8Xk+lTDsTrXv4dE7ZYwn
+	a8lZ2CQKJki9zuQR/5ReU6JEVhdQfm1z6t9fsoHfnoaE+hZGvIKXxQMKxssluez2hejhvJS42YvH/
+	8h/YNRZGvH7EHjPODxdCJ6z3ZKrYFI6QfSlIoYg6+WUpXgoHfzukol4ujglwmfDumTGn/OHqdcBEr
+	+rMrXBUBZZEmRluIBrUA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sZb72-00000006U3h-0r9y;
-	Thu, 01 Aug 2024 19:05:20 +0000
-Received: from mail-yb1-xb2f.google.com ([2607:f8b0:4864:20::b2f])
+	id 1sZbBa-00000006UkN-36uS;
+	Thu, 01 Aug 2024 19:10:02 +0000
+Received: from mail-yb1-xb2a.google.com ([2607:f8b0:4864:20::b2a])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sZb6y-00000006U38-14CT;
-	Thu, 01 Aug 2024 19:05:18 +0000
-Received: by mail-yb1-xb2f.google.com with SMTP id 3f1490d57ef6-e0b10e8b6b7so6123097276.2;
-        Thu, 01 Aug 2024 12:05:15 -0700 (PDT)
+	id 1sZbBW-00000006UjM-3tBZ;
+	Thu, 01 Aug 2024 19:10:00 +0000
+Received: by mail-yb1-xb2a.google.com with SMTP id 3f1490d57ef6-e02b79c6f21so6205039276.2;
+        Thu, 01 Aug 2024 12:09:58 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1722539114; x=1723143914; darn=lists.infradead.org;
-        h=cc:to:subject:message-id:date:from:mime-version:from:to:cc:subject
-         :date:message-id:reply-to;
-        bh=Wy1fSK5TbCFhDaKs9s6dA1EYcwoVObyVPGSvPgScVEI=;
-        b=Pf57pKHhyvI1X0LaAT6JMvhug2vQUyADzRqYFCtiXa4LOAxgQGaOmfZ/ouum6MHwjY
-         8ekI2xjZ7lJbcerUvXcisBxNPtyGzRpD7qTlppvzq1MCImk2a7QEQygXF8/B6dq25RqO
-         INEweOQcLmWYZ7TSGiotjH0SKJMDBJBZ5MUMgJSD9v/MqG07vpTP2NLm68U8uNyZR5kU
-         q+pI4RmKUQr06LxGB1ycvFmuP7AoVtLjgyR43yJKRjecpBDN5geQ+kQ14Jb8DiJilebE
-         lBAZ4XHR6ts7jg63QDhFS4AxGOB1ttF/j6h+VHaef5fhC2a8p2PsypASqfVraS50gPab
-         m86Q==
+        d=gmail.com; s=20230601; t=1722539397; x=1723144197; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=/5Lj7N/+a+EhHTg5SWWgl8sge+z39a8Eh3W42UiauSw=;
+        b=jswqXR2qQlVuaWscBoK+eW1VASE1NpkNzy4Mz1ebckxMmCaDDYuP8DOzDjzpo4aADi
+         P5BiTiyMQjH35hDznfGZjI9hUKizjBzfJW/ChlfMS4Z6jq8RehCeituPEakqIPR+Y72R
+         ooyeAnkOyY1KvQlJs6uWioDStZ4tKqxBIhMQI1gBIsfRmA92NMXQsU1CAiPN9rnxnigz
+         5LqraeVyNWBGKWm16hZrQBJmcx2WtZk1BC+Oguh5723K7cEzLokW/e/lNuptHfEEd7O7
+         neG5AX6IsFt0uNjNfSM37bllUNspB4XMiZAXhICYK2w/Wm2UN3IBMy0UuwgHIYXJG4hV
+         eMcw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1722539114; x=1723143914;
-        h=cc:to:subject:message-id:date:from:mime-version:x-gm-message-state
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=Wy1fSK5TbCFhDaKs9s6dA1EYcwoVObyVPGSvPgScVEI=;
-        b=PDTiai0c7E8/sxolKe1kemcGsgpEY2dkexjqidVE5EeccPkpYQwX4+99maNVS5OJnh
-         mS0rh85XE6u2NvwWjYPlkOaEAGMkPY7R8ucPvS3cMLkdTpNcYCNGraeQFLqY9Ss7Co4U
-         pCgfkC6w5IsmuGRApKZieQisSJ9zuToYCNd4q5Nmtq9rh+VPpHXPLPQv2t6KKgqX9dvp
-         OOU2BHNs39riPYUuOckziawP7d167+r5N5mgtlovhC2j53a3h+SHuIr0+mOL1ZM3Nnsx
-         EQvKXm/Tm9sCM6iuDTlV6UGN9u/KF8RrExWVGee5hhpOM7utUZzz8zpZrKgmDhC4BixS
-         Gj3g==
-X-Forwarded-Encrypted: i=1; AJvYcCWzWitkC9XGH3mRjR5CDbmLbxzppt3lBhfjTLAMIsPvAshgzg0XoaOwM423wWRtkJMKmwWp76GXl+lfnyNdWjXqpVrvQslcsAn3CtbzGXm448VQQM0=
-X-Gm-Message-State: AOJu0Yx7jqbUZnAB9rmwe+MtRNkGuGIFMyyOl7Q4L0VKcvhy9/69bG5T
-	5KyLHEs5+5O0+SlggSUuPWXIhQuwsSh4VzMOIkp3wxsnw/oV0OoLoBeTSiNJU8ymJ7JbdNg1/vu
-	ais5/8hUqojb2APZoUjg9Cnkxo5V7DgNluig=
-X-Google-Smtp-Source: AGHT+IFkNPsoHcR3eqLl+QNUye/2VRdwqpBKvsZYnHazZuJyS4rcR8Oi7mmiJ/9OpDTpPCuiYmqnX0zNybYthc9uRqk=
-X-Received: by 2002:a5b:688:0:b0:e02:e12d:88c7 with SMTP id
- 3f1490d57ef6-e0bde528e27mr1315199276.51.1722539114250; Thu, 01 Aug 2024
- 12:05:14 -0700 (PDT)
+        d=1e100.net; s=20230601; t=1722539397; x=1723144197;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=/5Lj7N/+a+EhHTg5SWWgl8sge+z39a8Eh3W42UiauSw=;
+        b=SEYB2o6Vk7jSvjzCKeEFbHnbKu107OhQY0B6BEbnIC4Jjo1VkWdVsLULcejxlis5az
+         h66+qrV4L5j4K3Gvp3Ruy8As5f5ZT8FkpJnSmlcJ1YTM0cwUrbKo6hlxm0j6mc+T7ny8
+         cKkAyMly4akrll3y8rBCo4YFWneXXNqoHKkla1Pv2fN/U6ZTfJYm8EUPkVUh7GswdEZb
+         IBwD6M8fEIUENJlJit8NIYvWfQrKoshFhhWH0zRWEXUvkp+LipqSf38MHB0yw8CZ/+IN
+         Cijx06+65brAUur1jMhvNmINWEdnek0eOaKcd9jGAYpb/IH+Df3ZcgxPb9YK748ktayX
+         Is+g==
+X-Forwarded-Encrypted: i=1; AJvYcCUkXqrEuOlWhJXnD7vfUxtbGUFnCQDAQX2uuK2Abmnrw5tCfNClLZO1Wxf6cBLUKnb3SgC0SSGmNJPYvmKAsclrrPbdUQHWS01xtV3Q2X3MOGt7lOs=
+X-Gm-Message-State: AOJu0YwSyEaKHOeAtIpudV56QQwQTHzp4HuqXBzfQtiuqElW0e5d5pco
+	ITdGSCzJSAbYd1VnILJYKbM/MBMu4hXTGbhxhYsT+MoRHN15q9fIJaxW15Mt3ZGIqr952PvuGKO
+	3AaQQ1epWed/h2pDliqVC0HZX2cxRCTqWTRw=
+X-Google-Smtp-Source: AGHT+IELDNWOqM07BPESVtoKJlMTsZwFPu5+uP+pWM2Ie2Xh6ARHOMuHghybl/gRd01Zx2wwUxvd4lg8qq5i2SwfNoA=
+X-Received: by 2002:a05:6902:13c7:b0:e0b:b5ff:ec53 with SMTP id
+ 3f1490d57ef6-e0bde4cab00mr1334437276.39.1722539397480; Thu, 01 Aug 2024
+ 12:09:57 -0700 (PDT)
 MIME-Version: 1.0
+References: <CAN9vWD+vzqeqZuJaUXMoqTBV26Goji1yPqCoPQwEtu4jhPSjNw@mail.gmail.com>
+In-Reply-To: <CAN9vWD+vzqeqZuJaUXMoqTBV26Goji1yPqCoPQwEtu4jhPSjNw@mail.gmail.com>
 From: Michael Zimmermann <sigmaepsilon92@gmail.com>
-Date: Thu, 1 Aug 2024 21:05:03 +0200
-Message-ID: <CAN9vWD+vzqeqZuJaUXMoqTBV26Goji1yPqCoPQwEtu4jhPSjNw@mail.gmail.com>
-Subject: rk3588(CM3588) USB issues
+Date: Thu, 1 Aug 2024 21:09:46 +0200
+Message-ID: <CAN9vWD+Qiy71WpmJcW-+dKANX2_BS2xruKaA_U4=T1La-Z4Fjg@mail.gmail.com>
+Subject: Re: rk3588(CM3588) USB issues
 To: Heiko Stuebner <heiko@sntech.de>
 Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240801_120516_332731_4D213C49 
-X-CRM114-Status: GOOD (  16.02  )
+X-CRM114-CacheID: sfid-20240801_120959_100591_00E084B7 
+X-CRM114-Status: GOOD (  31.45  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,297 +83,275 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi,
-
-I have a friendlyelec CM3588 and USB doesn't quite seem to work. I
-started with 6.8 but am now mostly testing with 6.11-rc1 since it
-fixed the typec ports and pcie bifurcation and both of them seem to
-have issues. I'm using fedora coreOS 40 with a self compiled
-mainline-mcuboot which simply adds a config and dtb for that board. I
-tried many different situations and I'll list a few but here are the
-symptoms that can happen when a device is already connected before
-powering on the SoC:
-
-1) The system dies after these log lines:
-[    6.446287] hub 1-0:1.0: USB hub found
-[    6.446713] hub 1-0:1.0: 1 port detected
-No watchdog will trigger, the power button doesn't work.
-
-2) The watchdog complains after the same lines as in 1, but the system
-is still stuck:
-[   36.025461] Modules linked in: dw_mmc(+) phy_rockchip_usbdp(+)
-nvme_core rockchip_saradc phy_rockchip_naneng_combphy
-phy_rockchip_snps_pcie3 industrialio_triggered_buffer
-nvmem_rockchip_otp rtc_hym8563(+) rockchip_dfi typec pl330 kfifo_buf
-dw_wdt nvme_auth dwc3 phy_rockchip_inno_usb2 ohci_platform udc_core
-adc_keys pwm_rockchip industrialio ohci_hcd ehci_platform ulpi
-cpufreq_dt be2iscsi bnx2i cnic uio cxgb4i cxgb4 tls cxgb3i cxgb3 mdio
-libcxgbi libcxgb qla4xxx iscsi_boot_sysfs iscsi_tcp libiscsi_tcp
-libiscsi scsi_transport_iscsi scsi_dh_rdac scsi_dh_emc scsi_dh_alua
-ip6_tables ip_tables fuse dm_multipath
-
-3) The system boots fine but USB doesn't work and the system is
-spammed with these logs:
-[   29.439659] usb usb6-port1: Cannot enable. Maybe the USB cable is bad?
-[   30.583618] usb usb6-port1: Cannot enable. Maybe the USB cable is bad?
-[   31.727508] usb usb6-port1: Cannot enable. Maybe the USB cable is bad?
-
-Things I have tried: using an unpowered USB3-hub, using a powered
-USB3-hub. Connecting USB3 devices to the USB2 port and vice-versa.
-Below only list test results which were done through a powered hub to
-exclude skewed results due to power issues.
-
-Keep in mind that the CM3588 has 4 USB ports:
-- typeC(which I am not testing)
-- USB2
-- USB3A
-- USB3A connected to the SoCs second typeC port. In the results below
-I'll call this USB3AC
-
-I also don't have any low-power usb3 dongles or usb3 drives whose
-controllers are expensive enough that I trust them for these tests, So
-I'm mostly testing with my Pixel8.
-
-Some test results:
-
-1) Boot with Pixel8 connected to USB3AC. The behavior is random.
-Sometimes I have this:
-...
-[    6.237348] ohci-platform fc840000.usb: Generic Platform OHCI controller
-[    6.238187] ohci-platform fc840000.usb: new USB bus registered,
-assigned bus number 1
-[    6.239009] ohci-platform fc840000.usb: irq 42, io mem 0xfc840000
-[    6.242667] ehci-platform fc800000.usb: EHCI Host Controller
-[    6.244480] ehci-platform fc800000.usb: new USB bus registered,
-assigned bus number 2
-[    6.245294] ehci-platform fc800000.usb: irq 44, io mem 0xfc800000
-[    6.251160] ehci-platform fc880000.usb: EHCI Host Controller
-[    6.251694] ohci-platform fc8c0000.usb: Generic Platform OHCI controller
-[    6.252503] ohci-platform fc8c0000.usb: new USB bus registered,
-assigned bus number 3
-[    6.253271] ohci-platform fc8c0000.usb: irq 46, io mem 0xfc8c0000
-[    6.253643] ehci-platform fc800000.usb: USB 2.0 started, EHCI 1.00
-[    6.253850] ehci-platform fc880000.usb: new USB bus registered,
-assigned bus number 4
-[    6.254502] usb usb2: New USB device found, idVendor=1d6b,
-idProduct=0002, bcdDevice= 6.11
-[    6.255121] ehci-platform fc880000.usb: irq 47, io mem 0xfc880000
-[    6.255777] usb usb2: New USB device strings: Mfr=3, Product=2,
-SerialNumber=1
-[    6.256967] usb usb2: Product: EHCI Host Controller
-[    6.257407] usb usb2: Manufacturer: Linux
-6.11.0-0.rc1.20240729gitdc1c8034e31b.16.fc41.aarch64 ehci_hcd
-[    6.258231] usb usb2: SerialNumber: fc800000.usb
-[    6.259129] hub 2-0:1.0: USB hub found
-[    6.259521] hub 2-0:1.0: 1 port detected
-[    6.263349] ehci-platform fc880000.usb: USB 2.0 started, EHCI 1.00
-[    6.264046] usb usb4: New USB device found, idVendor=1d6b,
-idProduct=0002, bcdDevice= 6.11
-[    6.264794] usb usb4: New USB device strings: Mfr=3, Product=2,
-SerialNumber=1
-[    6.265436] usb usb4: Product: EHCI Host Controller
-[    6.265867] usb usb4: Manufacturer: Linux
-6.11.0-0.rc1.20240729gitdc1c8034e31b.16.fc41.aarch64 ehci_hcd
-[    6.266695] usb usb4: SerialNumber: fc880000.usb
-[    6.268464] hub 4-0:1.0: USB hub found
-[    6.268876] hub 4-0:1.0: 1 port detected
-[    6.297227] usb usb1: New USB device found, idVendor=1d6b,
-idProduct=0001, bcdDevice= 6.11
-[    6.297982] usb usb1: New USB device strings: Mfr=3, Product=2,
-SerialNumber=1
-[    6.298627] usb usb1: Product: Generic Platform OHCI controller
-[    6.299148] usb usb1: Manufacturer: Linux
-6.11.0-0.rc1.20240729gitdc1c8034e31b.16.fc41.aarch64 ohci_hcd
-[    6.299976] usb usb1: SerialNumber: fc840000.usb
-[    6.301706] hub 1-0:1.0: USB hub found
-[    6.302069] hub 1-0:1.0: 1 port detected
-[    6.311456] usb usb3: New USB device found, idVendor=1d6b,
-idProduct=0001, bcdDevice= 6.11
-[    6.312198] usb usb3: New USB device strings: Mfr=3, Product=2,
-SerialNumber=1
-[    6.312845] usb usb3: Product: Generic Platform OHCI controller
-[    6.313371] usb usb3: Manufacturer: Linux
-6.11.0-0.rc1.20240729gitdc1c8034e31b.16.fc41.aarch64 ohci_hcd
-[    6.314206] usb usb3: SerialNumber: fc8c0000.usb
-[    6.315073] hub 3-0:1.0: USB hub found
-[    6.315457] hub 3-0:1.0: 1 port detected
-[    6.316795] sdhci: Secure Digital Host Controller Interface driver
-[    6.317390] sdhci: Copyright(c) Pierre Ossman
-[    6.325998] Synopsys Designware Multimedia Card Interface Driver
-[    6.335776] dma-pl330 fea10000.dma-controller: Loaded driver for
-PL330 DMAC-241330
-[    6.336514] dma-pl330 fea10000.dma-controller:
-DBUFF-128x8bytes Num_Chans-8 Num_Peri-32 Num_Events-16
-[    6.366285] sdhci-pltfm: SDHCI platform and OF driver helper
-[   36.026322] watchdog: Watchdog detected hard LOCKUP on cpu 5
-[   36.026837] Modules linked in: phy_rockchip_usbdp(+) typec
-phy_rockchip_naneng_combphy(+) sdhci_pltfm phy_rockchip_snps_pcie3
-dw_mmc_rockchip nvme_core(+) rockchip_saradc rockchip_dfi dw_mmc_pltfm
-industrialio_triggered_buffer cqhci pl330(+) dw_mmc kfifo_buf sdhci
-dwc3 nvme_auth ehci_platform phy_rockchip_inno_usb2 pwm_rockchip
-adc_keys cpufreq_dt udc_core industrialio ulpi ohci_platform ohci_hcd
-be2iscsi bnx2i cnic uio cxgb4i cxgb4 tls cxgb3i cxgb3 mdio libcxgbi
-libcxgb qla4xxx iscsi_boot_sysfs iscsi_tcp libiscsi_tcp libiscsi
-scsi_transport_iscsi scsi_dh_rdac scsi_dh_emc scsi_dh_alua ip6_tables
-ip_tables fuse dm_multipath
-[   36.029321] watchdog: Watchdog detected hard LOCKUP on cpu 0
-[   36.031733] Sending NMI from CPU 4 to CPUs 5:
-[   36.032228] Modules linked in: phy_rockchip_usbdp(+) typec
-phy_rockchip_naneng_combphy(+) sdhci_pltfm phy_rockchip_snps_pcie3
-dw_mmc_rockchip nvme_core(+) rockchip_saradc rockchip_dfi dw_mmc_pltfm
-industrialio_triggered_buffer cqhci pl330(+) dw_mmc kfifo_buf sdhci
-dwc3 nvme_auth ehci_platform phy_rockchip_inno_usb2 pwm_rockchip
-adc_keys cpufreq_dt udc_core industrialio ulpi ohci_platform ohci_hcd
-be2iscsi bnx2i cnic uio cxgb4i cxgb4 tls cxgb3i cxgb3 mdio libcxgbi
-libcxgb qla4xxx iscsi_boot_sysfs iscsi_tcp libiscsi_tcp libiscsi
-scsi_transport_iscsi scsi_dh_rdac scsi_dh_emc scsi_dh_alua ip6_tables
-ip_tables fuse dm_multipath
-[   66.371321] rcu: INFO: rcu_preempt detected stalls on CPUs/tasks:
-[   66.371862] rcu:     0-...!: (0 ticks this GP) idle=47c0/0/0x0
-softirq=1091/1091 fqs=0 (false positive?)
-[   66.372678] rcu:     6-...!: (1 GPs behind)
-idle=7b84/1/0x4000000000000000 softirq=1557/1558 fqs=0
-[   66.373447] rcu:     (detected by 4, t=60004 jiffies, g=1689, q=29 ncpus=8)
-[   66.374039] Sending NMI from CPU 4 to CPUs 0:
-[   76.375676] Sending NMI from CPU 4 to CPUs 6:
-[   86.377312] rcu: rcu_preempt kthread timer wakeup didn't happen for
-80004 jiffies! g1689 f0x0 RCU_GP_WAIT_FQS(5) ->state=0x402
-[   86.378313] rcu:     Possible timer handling issue on cpu=5 timer-softirq=315
-[   86.378917] rcu: rcu_preempt kthread starved for 80009 jiffies!
-g1689 f0x0 RCU_GP_WAIT_FQS(5) ->state=0x402 ->cpu=5
-[   86.379834] rcu:     Unless rcu_preempt kthread gets sufficient CPU
-time, OOM is now expected behavior.
-[   86.380633] rcu: RCU grace-period kthread stack dump:
-[   86.381077] task:rcu_preempt     state:I stack:0     pid:18
-tgid:18    ppid:2      flags:0x00000008
-[   86.381899] Call trace:
-[   86.382119]  __switch_to+0xc4/0xe8
-[   86.382432]  __schedule+0x2a0/0x798
-[   86.382747]  schedule+0x3c/0xe0
-[   86.383031]  schedule_timeout+0x9c/0x1a8
-[   86.383382]  rcu_gp_fqs_loop+0x124/0x580
-[   86.383733]  rcu_gp_kthread+0x180/0x200
-[   86.384075]  kthread+0xf4/0x110
-[   86.384359]  ret_from_fork+0x10/0x20
-[   86.384681] rcu: Stack dump where RCU GP kthread last ran:
-[   86.385163] Sending NMI from CPU 4 to CPUs 5:
-...
-and then it hangs. And sometimes it boots, doesn't detect a devices
-and keeps spamming the log with "usb usb6-port1: Cannot enable. Maybe
-the USB cable is bad?".
-
-2) Boot without anything connected, then connect Pixel8 to USB3A: No
-device detected, logs spammed with "usb usb6-port1: Cannot enable.
-Maybe the USB cable is bad?".
-
-3) Boot with Pixel8 connected to USB3AC: works just fine. Also works
-when I connect it at runtime.
-
-4) Boot with Pixel 8 connected to USB2 port:
-...
-[    6.331359] hub 4-0:1.0: USB hub found
-[    6.331439] input: gpio-keys as /devices/platform/gpio-keys/input/input0
-[    6.331756] hub 4-0:1.0: 1 port detected
-[    6.334789] usb usb3: New USB device found, idVendor=1d6b,
-idProduct=0001, bcdDevice= 6.11
-[    6.335530] usb usb3: New USB device strings: Mfr=3, Product=2,
-SerialNumber=1
-[    6.336176] usb usb3: Product: Generic Platform OHCI controller
-[    6.336698] usb usb3: Manufacturer: Linux
-6.11.0-0.rc1.20240729gitdc1c8034e31b.16.fc41.aarch64 ohci_hcd
-[    6.337526] usb usb3: SerialNumber: fc8c0000.usb
-[   36.022707] watchdog: Watchdog detected hard LOCKUP on cpu 2
-[   36.023240] Modules linked in: rtc_hym8563(+) tcpm dw_mmc gpio_keys
-pwm_fan phy_rockchip_usbdp nvme_core phy_rockchip_snps_pcie3
-phy_rockchip_naneng_combphy typec cqhci dw_wdt nvmem_rockchip_otp
-pl330(+) spi_rockchip sdhci kfifo_buf rockchip_dfi nvme_auth dwc3
-phy_rockchip_inno_usb2 pwm_rockchip ohci_platform adc_keys udc_core
-ohci_hcd industrialio ehci_platform ulpi cpufreq_dt be2iscsi bnx2i
-cnic uio cxgb4i cxgb4 tls cxgb3i cxgb3 mdio libcxgbi libcxgb qla4xxx
-iscsi_boot_sysfs iscsi_tcp libiscsi_tcp libiscsi scsi_transport_iscsi
-scsi_dh_rdac scsi_dh_emc scsi_dh_alua ip6_tables ip_tables fuse
-dm_multipath
-[   36.024708] watchdog: Watchdog detected hard LOCKUP on cpu 4
-[   36.028171] Sending NMI from CPU 1 to CPUs 2:
-[   36.028669] Modules linked in: rtc_hym8563(+) tcpm dw_mmc gpio_keys
-pwm_fan phy_rockchip_usbdp nvme_core phy_rockchip_snps_pcie3
-phy_rockchip_naneng_combphy typec cqhci dw_wdt nvmem_rockchip_otp
-pl330(+) spi_rockchip sdhci kfifo_buf rockchip_dfi nvme_auth dwc3
-phy_rockchip_inno_usb2 pwm_rockchip ohci_platform adc_keys udc_core
-ohci_hcd industrialio ehci_platform ulpi cpufreq_dt be2iscsi bnx2i
-cnic uio cxgb4i cxgb4 tls cxgb3i cxgb3 mdio libcxgbi libcxgb qla4xxx
-iscsi_boot_sysfs iscsi_tcp libiscsi_tcp libiscsi scsi_transport_iscsi
-scsi_dh_rdac scsi_dh_emc scsi_dh_alua ip6_tables ip_tables fuse
-dm_multipath
-[   66.336708] rcu: INFO: rcu_preempt detected stalls on CPUs/tasks:
-[   66.337272] rcu:     4-...0: (1 GPs behind)
-idle=afbc/1/0x4000000000000000 softirq=1897/1898 fqs=6846
-[   66.338089] rcu:     (detected by 1, t=60005 jiffies, g=1757, q=91 ncpus=8)
-[   66.338699] Sending NMI from CPU 1 to CPUs 4:
-[   76.340352] rcu: rcu_preempt kthread timer wakeup didn't happen for
-17792 jiffies! g1757 f0x0 RCU_GP_WAIT_FQS(5) ->state=0x402
-[   76.341374] rcu:     Possible timer handling issue on cpu=3
-timer-softirq=6205
-[   76.342000] rcu: rcu_preempt kthread starved for 17795 jiffies!
-g1757 f0x0 RCU_GP_WAIT_FQS(5) ->state=0x402 ->cpu=3
-[   76.342937] rcu:     Unless rcu_preempt kthread gets sufficient CPU
-time, OOM is now expected behavior.
-[   76.343754] rcu: RCU grace-period kthread stack dump:
-[   76.344211] task:rcu_preempt     state:I stack:0     pid:18
-tgid:18    ppid:2      flags:0x00000008
-[   76.345056] Call trace:
-[   76.345287]  __switch_to+0xc4/0xe8
-[   76.345617]  __schedule+0x2a0/0x798
-[   76.345948]  schedule+0x3c/0xe0
-[   76.346247]  schedule_timeout+0x9c/0x1a8
-[   76.346613]  rcu_gp_fqs_loop+0x124/0x580
-[   76.346979]  rcu_gp_kthread+0x180/0x200
-[   76.347337]  kthread+0xf4/0x110
-[   76.347637]  ret_from_fork+0x10/0x20
-[   76.347975] rcu: Stack dump where RCU GP kthread last ran:
-[   76.348470] Sending NMI from CPU 1 to CPUs 3:
-...
-And then it hangs. It works if I connect it after booting.
-
-5) USB2 stick works on all ports when connected at runtime.
-
-6) Booting with USB2 stick connected to USB3A port: works
-7) Booting with USB2 stick connected to USB3AC port: hangs after:
-[    6.423500] hub 4-0:1.0: USB hub found
-[    6.423870] hub 4-0:1.0: 1 port detected
-[    6.602224] rtc-hym8563 6-0051: registered as rtc0
-[    6.610981] rtc-hym8563 6-0051: setting system clock to
-2024-08-01T18:56:52 UTC (1722538612)
-
-8) Booting with USB2 stick connected to USB2 port: hangs after:
-[    6.337067] hub 3-0:1.0: USB hub found
-[    6.337494] hub 3-0:1.0: 1 port detected
-[    6.338460] rtc-hym8563 6-0051: registered as rtc0
-[    6.339744] rtc-hym8563 6-0051: setting system clock to
-2024-08-01T18:59:56 UTC (1722538796)
-[    6.372577] usb usb2: New USB device found, idVendor=1d6b,
-idProduct=0001, bcdDevice= 6.11
-[    6.373361] usb usb2: New USB device strings: Mfr=3, Product=2,
-SerialNumber=1
-[    6.374018] usb usb2: Product: Generic Platform OHCI controller
-[    6.374573] usb usb2: Manufacturer: Linux
-6.11.0-0.rc1.20240729gitdc1c8034e31b.16.fc41.aarch64 ohci_hcd
-[    6.375431] usb usb2: SerialNumber: fc8c0000.usb
-
-9) Boot with ch341-uart connected to USB2: works.
-
-I hope that this is enough information for you to start investigating
-the issue. I also hope this is reproducible on your side.
-
-Thanks
-Michael
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+Q29ycmVjdGlvbjogIkJlbG93IG9ubHkgbGlzdCB0ZXN0IHJlc3VsdHMgd2hpY2ggd2VyZSBkb25l
+IHRocm91Z2ggYQpwb3dlcmVkIGh1YiB0bwpleGNsdWRlIHNrZXdlZCByZXN1bHRzIGR1ZSB0byBw
+b3dlciBpc3N1ZXMuIiBUaGF0IHNlbnRlbmNlIGlzIG5vdAp0cnVlLiBJIGRpZCBub3QgdXNlIGFu
+eSBhZGRpdGlvbmFsIGh1YnMgaW4gYW55IHRlc3RzLiBmcm9tIHRoYXQgbWFpbC4KSSBkZWNpZGVk
+IGFnYWluc3QgaXQgYmVjYXVzZSBpdCBtaWdodCBjYXVzZSBtb3JlIGlzc3VlcyBhbmQgdGhlIGJv
+YXJkCnNob3VsZCBiZSBhYmxlIHRvIHBvd2VyIFVTQiBkZXZpY2VzIHByb3Blcmx5LiBBbHNvLCB0
+aGUgUGl4ZWw4IHJ1bnMgb24KYmF0dGVyeS4KCk9uIFRodSwgQXVnIDEsIDIwMjQgYXQgOTowNeKA
+r1BNIE1pY2hhZWwgWmltbWVybWFubgo8c2lnbWFlcHNpbG9uOTJAZ21haWwuY29tPiB3cm90ZToK
+Pgo+IEhpLAo+Cj4gSSBoYXZlIGEgZnJpZW5kbHllbGVjIENNMzU4OCBhbmQgVVNCIGRvZXNuJ3Qg
+cXVpdGUgc2VlbSB0byB3b3JrLiBJCj4gc3RhcnRlZCB3aXRoIDYuOCBidXQgYW0gbm93IG1vc3Rs
+eSB0ZXN0aW5nIHdpdGggNi4xMS1yYzEgc2luY2UgaXQKPiBmaXhlZCB0aGUgdHlwZWMgcG9ydHMg
+YW5kIHBjaWUgYmlmdXJjYXRpb24gYW5kIGJvdGggb2YgdGhlbSBzZWVtIHRvCj4gaGF2ZSBpc3N1
+ZXMuIEknbSB1c2luZyBmZWRvcmEgY29yZU9TIDQwIHdpdGggYSBzZWxmIGNvbXBpbGVkCj4gbWFp
+bmxpbmUtbWN1Ym9vdCB3aGljaCBzaW1wbHkgYWRkcyBhIGNvbmZpZyBhbmQgZHRiIGZvciB0aGF0
+IGJvYXJkLiBJCj4gdHJpZWQgbWFueSBkaWZmZXJlbnQgc2l0dWF0aW9ucyBhbmQgSSdsbCBsaXN0
+IGEgZmV3IGJ1dCBoZXJlIGFyZSB0aGUKPiBzeW1wdG9tcyB0aGF0IGNhbiBoYXBwZW4gd2hlbiBh
+IGRldmljZSBpcyBhbHJlYWR5IGNvbm5lY3RlZCBiZWZvcmUKPiBwb3dlcmluZyBvbiB0aGUgU29D
+Ogo+Cj4gMSkgVGhlIHN5c3RlbSBkaWVzIGFmdGVyIHRoZXNlIGxvZyBsaW5lczoKPiBbICAgIDYu
+NDQ2Mjg3XSBodWIgMS0wOjEuMDogVVNCIGh1YiBmb3VuZAo+IFsgICAgNi40NDY3MTNdIGh1YiAx
+LTA6MS4wOiAxIHBvcnQgZGV0ZWN0ZWQKPiBObyB3YXRjaGRvZyB3aWxsIHRyaWdnZXIsIHRoZSBw
+b3dlciBidXR0b24gZG9lc24ndCB3b3JrLgo+Cj4gMikgVGhlIHdhdGNoZG9nIGNvbXBsYWlucyBh
+ZnRlciB0aGUgc2FtZSBsaW5lcyBhcyBpbiAxLCBidXQgdGhlIHN5c3RlbQo+IGlzIHN0aWxsIHN0
+dWNrOgo+IFsgICAzNi4wMjU0NjFdIE1vZHVsZXMgbGlua2VkIGluOiBkd19tbWMoKykgcGh5X3Jv
+Y2tjaGlwX3VzYmRwKCspCj4gbnZtZV9jb3JlIHJvY2tjaGlwX3NhcmFkYyBwaHlfcm9ja2NoaXBf
+bmFuZW5nX2NvbWJwaHkKPiBwaHlfcm9ja2NoaXBfc25wc19wY2llMyBpbmR1c3RyaWFsaW9fdHJp
+Z2dlcmVkX2J1ZmZlcgo+IG52bWVtX3JvY2tjaGlwX290cCBydGNfaHltODU2MygrKSByb2NrY2hp
+cF9kZmkgdHlwZWMgcGwzMzAga2ZpZm9fYnVmCj4gZHdfd2R0IG52bWVfYXV0aCBkd2MzIHBoeV9y
+b2NrY2hpcF9pbm5vX3VzYjIgb2hjaV9wbGF0Zm9ybSB1ZGNfY29yZQo+IGFkY19rZXlzIHB3bV9y
+b2NrY2hpcCBpbmR1c3RyaWFsaW8gb2hjaV9oY2QgZWhjaV9wbGF0Zm9ybSB1bHBpCj4gY3B1ZnJl
+cV9kdCBiZTJpc2NzaSBibngyaSBjbmljIHVpbyBjeGdiNGkgY3hnYjQgdGxzIGN4Z2IzaSBjeGdi
+MyBtZGlvCj4gbGliY3hnYmkgbGliY3hnYiBxbGE0eHh4IGlzY3NpX2Jvb3Rfc3lzZnMgaXNjc2lf
+dGNwIGxpYmlzY3NpX3RjcAo+IGxpYmlzY3NpIHNjc2lfdHJhbnNwb3J0X2lzY3NpIHNjc2lfZGhf
+cmRhYyBzY3NpX2RoX2VtYyBzY3NpX2RoX2FsdWEKPiBpcDZfdGFibGVzIGlwX3RhYmxlcyBmdXNl
+IGRtX211bHRpcGF0aAo+Cj4gMykgVGhlIHN5c3RlbSBib290cyBmaW5lIGJ1dCBVU0IgZG9lc24n
+dCB3b3JrIGFuZCB0aGUgc3lzdGVtIGlzCj4gc3BhbW1lZCB3aXRoIHRoZXNlIGxvZ3M6Cj4gWyAg
+IDI5LjQzOTY1OV0gdXNiIHVzYjYtcG9ydDE6IENhbm5vdCBlbmFibGUuIE1heWJlIHRoZSBVU0Ig
+Y2FibGUgaXMgYmFkPwo+IFsgICAzMC41ODM2MThdIHVzYiB1c2I2LXBvcnQxOiBDYW5ub3QgZW5h
+YmxlLiBNYXliZSB0aGUgVVNCIGNhYmxlIGlzIGJhZD8KPiBbICAgMzEuNzI3NTA4XSB1c2IgdXNi
+Ni1wb3J0MTogQ2Fubm90IGVuYWJsZS4gTWF5YmUgdGhlIFVTQiBjYWJsZSBpcyBiYWQ/Cj4KPiBU
+aGluZ3MgSSBoYXZlIHRyaWVkOiB1c2luZyBhbiB1bnBvd2VyZWQgVVNCMy1odWIsIHVzaW5nIGEg
+cG93ZXJlZAo+IFVTQjMtaHViLiBDb25uZWN0aW5nIFVTQjMgZGV2aWNlcyB0byB0aGUgVVNCMiBw
+b3J0IGFuZCB2aWNlLXZlcnNhLgo+IEJlbG93IG9ubHkgbGlzdCB0ZXN0IHJlc3VsdHMgd2hpY2gg
+d2VyZSBkb25lIHRocm91Z2ggYSBwb3dlcmVkIGh1YiB0bwo+IGV4Y2x1ZGUgc2tld2VkIHJlc3Vs
+dHMgZHVlIHRvIHBvd2VyIGlzc3Vlcy4KPgo+IEtlZXAgaW4gbWluZCB0aGF0IHRoZSBDTTM1ODgg
+aGFzIDQgVVNCIHBvcnRzOgo+IC0gdHlwZUMod2hpY2ggSSBhbSBub3QgdGVzdGluZykKPiAtIFVT
+QjIKPiAtIFVTQjNBCj4gLSBVU0IzQSBjb25uZWN0ZWQgdG8gdGhlIFNvQ3Mgc2Vjb25kIHR5cGVD
+IHBvcnQuIEluIHRoZSByZXN1bHRzIGJlbG93Cj4gSSdsbCBjYWxsIHRoaXMgVVNCM0FDCj4KPiBJ
+IGFsc28gZG9uJ3QgaGF2ZSBhbnkgbG93LXBvd2VyIHVzYjMgZG9uZ2xlcyBvciB1c2IzIGRyaXZl
+cyB3aG9zZQo+IGNvbnRyb2xsZXJzIGFyZSBleHBlbnNpdmUgZW5vdWdoIHRoYXQgSSB0cnVzdCB0
+aGVtIGZvciB0aGVzZSB0ZXN0cywgU28KPiBJJ20gbW9zdGx5IHRlc3Rpbmcgd2l0aCBteSBQaXhl
+bDguCj4KPiBTb21lIHRlc3QgcmVzdWx0czoKPgo+IDEpIEJvb3Qgd2l0aCBQaXhlbDggY29ubmVj
+dGVkIHRvIFVTQjNBQy4gVGhlIGJlaGF2aW9yIGlzIHJhbmRvbS4KPiBTb21ldGltZXMgSSBoYXZl
+IHRoaXM6Cj4gLi4uCj4gWyAgICA2LjIzNzM0OF0gb2hjaS1wbGF0Zm9ybSBmYzg0MDAwMC51c2I6
+IEdlbmVyaWMgUGxhdGZvcm0gT0hDSSBjb250cm9sbGVyCj4gWyAgICA2LjIzODE4N10gb2hjaS1w
+bGF0Zm9ybSBmYzg0MDAwMC51c2I6IG5ldyBVU0IgYnVzIHJlZ2lzdGVyZWQsCj4gYXNzaWduZWQg
+YnVzIG51bWJlciAxCj4gWyAgICA2LjIzOTAwOV0gb2hjaS1wbGF0Zm9ybSBmYzg0MDAwMC51c2I6
+IGlycSA0MiwgaW8gbWVtIDB4ZmM4NDAwMDAKPiBbICAgIDYuMjQyNjY3XSBlaGNpLXBsYXRmb3Jt
+IGZjODAwMDAwLnVzYjogRUhDSSBIb3N0IENvbnRyb2xsZXIKPiBbICAgIDYuMjQ0NDgwXSBlaGNp
+LXBsYXRmb3JtIGZjODAwMDAwLnVzYjogbmV3IFVTQiBidXMgcmVnaXN0ZXJlZCwKPiBhc3NpZ25l
+ZCBidXMgbnVtYmVyIDIKPiBbICAgIDYuMjQ1Mjk0XSBlaGNpLXBsYXRmb3JtIGZjODAwMDAwLnVz
+YjogaXJxIDQ0LCBpbyBtZW0gMHhmYzgwMDAwMAo+IFsgICAgNi4yNTExNjBdIGVoY2ktcGxhdGZv
+cm0gZmM4ODAwMDAudXNiOiBFSENJIEhvc3QgQ29udHJvbGxlcgo+IFsgICAgNi4yNTE2OTRdIG9o
+Y2ktcGxhdGZvcm0gZmM4YzAwMDAudXNiOiBHZW5lcmljIFBsYXRmb3JtIE9IQ0kgY29udHJvbGxl
+cgo+IFsgICAgNi4yNTI1MDNdIG9oY2ktcGxhdGZvcm0gZmM4YzAwMDAudXNiOiBuZXcgVVNCIGJ1
+cyByZWdpc3RlcmVkLAo+IGFzc2lnbmVkIGJ1cyBudW1iZXIgMwo+IFsgICAgNi4yNTMyNzFdIG9o
+Y2ktcGxhdGZvcm0gZmM4YzAwMDAudXNiOiBpcnEgNDYsIGlvIG1lbSAweGZjOGMwMDAwCj4gWyAg
+ICA2LjI1MzY0M10gZWhjaS1wbGF0Zm9ybSBmYzgwMDAwMC51c2I6IFVTQiAyLjAgc3RhcnRlZCwg
+RUhDSSAxLjAwCj4gWyAgICA2LjI1Mzg1MF0gZWhjaS1wbGF0Zm9ybSBmYzg4MDAwMC51c2I6IG5l
+dyBVU0IgYnVzIHJlZ2lzdGVyZWQsCj4gYXNzaWduZWQgYnVzIG51bWJlciA0Cj4gWyAgICA2LjI1
+NDUwMl0gdXNiIHVzYjI6IE5ldyBVU0IgZGV2aWNlIGZvdW5kLCBpZFZlbmRvcj0xZDZiLAo+IGlk
+UHJvZHVjdD0wMDAyLCBiY2REZXZpY2U9IDYuMTEKPiBbICAgIDYuMjU1MTIxXSBlaGNpLXBsYXRm
+b3JtIGZjODgwMDAwLnVzYjogaXJxIDQ3LCBpbyBtZW0gMHhmYzg4MDAwMAo+IFsgICAgNi4yNTU3
+NzddIHVzYiB1c2IyOiBOZXcgVVNCIGRldmljZSBzdHJpbmdzOiBNZnI9MywgUHJvZHVjdD0yLAo+
+IFNlcmlhbE51bWJlcj0xCj4gWyAgICA2LjI1Njk2N10gdXNiIHVzYjI6IFByb2R1Y3Q6IEVIQ0kg
+SG9zdCBDb250cm9sbGVyCj4gWyAgICA2LjI1NzQwN10gdXNiIHVzYjI6IE1hbnVmYWN0dXJlcjog
+TGludXgKPiA2LjExLjAtMC5yYzEuMjAyNDA3MjlnaXRkYzFjODAzNGUzMWIuMTYuZmM0MS5hYXJj
+aDY0IGVoY2lfaGNkCj4gWyAgICA2LjI1ODIzMV0gdXNiIHVzYjI6IFNlcmlhbE51bWJlcjogZmM4
+MDAwMDAudXNiCj4gWyAgICA2LjI1OTEyOV0gaHViIDItMDoxLjA6IFVTQiBodWIgZm91bmQKPiBb
+ICAgIDYuMjU5NTIxXSBodWIgMi0wOjEuMDogMSBwb3J0IGRldGVjdGVkCj4gWyAgICA2LjI2MzM0
+OV0gZWhjaS1wbGF0Zm9ybSBmYzg4MDAwMC51c2I6IFVTQiAyLjAgc3RhcnRlZCwgRUhDSSAxLjAw
+Cj4gWyAgICA2LjI2NDA0Nl0gdXNiIHVzYjQ6IE5ldyBVU0IgZGV2aWNlIGZvdW5kLCBpZFZlbmRv
+cj0xZDZiLAo+IGlkUHJvZHVjdD0wMDAyLCBiY2REZXZpY2U9IDYuMTEKPiBbICAgIDYuMjY0Nzk0
+XSB1c2IgdXNiNDogTmV3IFVTQiBkZXZpY2Ugc3RyaW5nczogTWZyPTMsIFByb2R1Y3Q9MiwKPiBT
+ZXJpYWxOdW1iZXI9MQo+IFsgICAgNi4yNjU0MzZdIHVzYiB1c2I0OiBQcm9kdWN0OiBFSENJIEhv
+c3QgQ29udHJvbGxlcgo+IFsgICAgNi4yNjU4NjddIHVzYiB1c2I0OiBNYW51ZmFjdHVyZXI6IExp
+bnV4Cj4gNi4xMS4wLTAucmMxLjIwMjQwNzI5Z2l0ZGMxYzgwMzRlMzFiLjE2LmZjNDEuYWFyY2g2
+NCBlaGNpX2hjZAo+IFsgICAgNi4yNjY2OTVdIHVzYiB1c2I0OiBTZXJpYWxOdW1iZXI6IGZjODgw
+MDAwLnVzYgo+IFsgICAgNi4yNjg0NjRdIGh1YiA0LTA6MS4wOiBVU0IgaHViIGZvdW5kCj4gWyAg
+ICA2LjI2ODg3Nl0gaHViIDQtMDoxLjA6IDEgcG9ydCBkZXRlY3RlZAo+IFsgICAgNi4yOTcyMjdd
+IHVzYiB1c2IxOiBOZXcgVVNCIGRldmljZSBmb3VuZCwgaWRWZW5kb3I9MWQ2YiwKPiBpZFByb2R1
+Y3Q9MDAwMSwgYmNkRGV2aWNlPSA2LjExCj4gWyAgICA2LjI5Nzk4Ml0gdXNiIHVzYjE6IE5ldyBV
+U0IgZGV2aWNlIHN0cmluZ3M6IE1mcj0zLCBQcm9kdWN0PTIsCj4gU2VyaWFsTnVtYmVyPTEKPiBb
+ICAgIDYuMjk4NjI3XSB1c2IgdXNiMTogUHJvZHVjdDogR2VuZXJpYyBQbGF0Zm9ybSBPSENJIGNv
+bnRyb2xsZXIKPiBbICAgIDYuMjk5MTQ4XSB1c2IgdXNiMTogTWFudWZhY3R1cmVyOiBMaW51eAo+
+IDYuMTEuMC0wLnJjMS4yMDI0MDcyOWdpdGRjMWM4MDM0ZTMxYi4xNi5mYzQxLmFhcmNoNjQgb2hj
+aV9oY2QKPiBbICAgIDYuMjk5OTc2XSB1c2IgdXNiMTogU2VyaWFsTnVtYmVyOiBmYzg0MDAwMC51
+c2IKPiBbICAgIDYuMzAxNzA2XSBodWIgMS0wOjEuMDogVVNCIGh1YiBmb3VuZAo+IFsgICAgNi4z
+MDIwNjldIGh1YiAxLTA6MS4wOiAxIHBvcnQgZGV0ZWN0ZWQKPiBbICAgIDYuMzExNDU2XSB1c2Ig
+dXNiMzogTmV3IFVTQiBkZXZpY2UgZm91bmQsIGlkVmVuZG9yPTFkNmIsCj4gaWRQcm9kdWN0PTAw
+MDEsIGJjZERldmljZT0gNi4xMQo+IFsgICAgNi4zMTIxOThdIHVzYiB1c2IzOiBOZXcgVVNCIGRl
+dmljZSBzdHJpbmdzOiBNZnI9MywgUHJvZHVjdD0yLAo+IFNlcmlhbE51bWJlcj0xCj4gWyAgICA2
+LjMxMjg0NV0gdXNiIHVzYjM6IFByb2R1Y3Q6IEdlbmVyaWMgUGxhdGZvcm0gT0hDSSBjb250cm9s
+bGVyCj4gWyAgICA2LjMxMzM3MV0gdXNiIHVzYjM6IE1hbnVmYWN0dXJlcjogTGludXgKPiA2LjEx
+LjAtMC5yYzEuMjAyNDA3MjlnaXRkYzFjODAzNGUzMWIuMTYuZmM0MS5hYXJjaDY0IG9oY2lfaGNk
+Cj4gWyAgICA2LjMxNDIwNl0gdXNiIHVzYjM6IFNlcmlhbE51bWJlcjogZmM4YzAwMDAudXNiCj4g
+WyAgICA2LjMxNTA3M10gaHViIDMtMDoxLjA6IFVTQiBodWIgZm91bmQKPiBbICAgIDYuMzE1NDU3
+XSBodWIgMy0wOjEuMDogMSBwb3J0IGRldGVjdGVkCj4gWyAgICA2LjMxNjc5NV0gc2RoY2k6IFNl
+Y3VyZSBEaWdpdGFsIEhvc3QgQ29udHJvbGxlciBJbnRlcmZhY2UgZHJpdmVyCj4gWyAgICA2LjMx
+NzM5MF0gc2RoY2k6IENvcHlyaWdodChjKSBQaWVycmUgT3NzbWFuCj4gWyAgICA2LjMyNTk5OF0g
+U3lub3BzeXMgRGVzaWdud2FyZSBNdWx0aW1lZGlhIENhcmQgSW50ZXJmYWNlIERyaXZlcgo+IFsg
+ICAgNi4zMzU3NzZdIGRtYS1wbDMzMCBmZWExMDAwMC5kbWEtY29udHJvbGxlcjogTG9hZGVkIGRy
+aXZlciBmb3IKPiBQTDMzMCBETUFDLTI0MTMzMAo+IFsgICAgNi4zMzY1MTRdIGRtYS1wbDMzMCBm
+ZWExMDAwMC5kbWEtY29udHJvbGxlcjoKPiBEQlVGRi0xMjh4OGJ5dGVzIE51bV9DaGFucy04IE51
+bV9QZXJpLTMyIE51bV9FdmVudHMtMTYKPiBbICAgIDYuMzY2Mjg1XSBzZGhjaS1wbHRmbTogU0RI
+Q0kgcGxhdGZvcm0gYW5kIE9GIGRyaXZlciBoZWxwZXIKPiBbICAgMzYuMDI2MzIyXSB3YXRjaGRv
+ZzogV2F0Y2hkb2cgZGV0ZWN0ZWQgaGFyZCBMT0NLVVAgb24gY3B1IDUKPiBbICAgMzYuMDI2ODM3
+XSBNb2R1bGVzIGxpbmtlZCBpbjogcGh5X3JvY2tjaGlwX3VzYmRwKCspIHR5cGVjCj4gcGh5X3Jv
+Y2tjaGlwX25hbmVuZ19jb21icGh5KCspIHNkaGNpX3BsdGZtIHBoeV9yb2NrY2hpcF9zbnBzX3Bj
+aWUzCj4gZHdfbW1jX3JvY2tjaGlwIG52bWVfY29yZSgrKSByb2NrY2hpcF9zYXJhZGMgcm9ja2No
+aXBfZGZpIGR3X21tY19wbHRmbQo+IGluZHVzdHJpYWxpb190cmlnZ2VyZWRfYnVmZmVyIGNxaGNp
+IHBsMzMwKCspIGR3X21tYyBrZmlmb19idWYgc2RoY2kKPiBkd2MzIG52bWVfYXV0aCBlaGNpX3Bs
+YXRmb3JtIHBoeV9yb2NrY2hpcF9pbm5vX3VzYjIgcHdtX3JvY2tjaGlwCj4gYWRjX2tleXMgY3B1
+ZnJlcV9kdCB1ZGNfY29yZSBpbmR1c3RyaWFsaW8gdWxwaSBvaGNpX3BsYXRmb3JtIG9oY2lfaGNk
+Cj4gYmUyaXNjc2kgYm54MmkgY25pYyB1aW8gY3hnYjRpIGN4Z2I0IHRscyBjeGdiM2kgY3hnYjMg
+bWRpbyBsaWJjeGdiaQo+IGxpYmN4Z2IgcWxhNHh4eCBpc2NzaV9ib290X3N5c2ZzIGlzY3NpX3Rj
+cCBsaWJpc2NzaV90Y3AgbGliaXNjc2kKPiBzY3NpX3RyYW5zcG9ydF9pc2NzaSBzY3NpX2RoX3Jk
+YWMgc2NzaV9kaF9lbWMgc2NzaV9kaF9hbHVhIGlwNl90YWJsZXMKPiBpcF90YWJsZXMgZnVzZSBk
+bV9tdWx0aXBhdGgKPiBbICAgMzYuMDI5MzIxXSB3YXRjaGRvZzogV2F0Y2hkb2cgZGV0ZWN0ZWQg
+aGFyZCBMT0NLVVAgb24gY3B1IDAKPiBbICAgMzYuMDMxNzMzXSBTZW5kaW5nIE5NSSBmcm9tIENQ
+VSA0IHRvIENQVXMgNToKPiBbICAgMzYuMDMyMjI4XSBNb2R1bGVzIGxpbmtlZCBpbjogcGh5X3Jv
+Y2tjaGlwX3VzYmRwKCspIHR5cGVjCj4gcGh5X3JvY2tjaGlwX25hbmVuZ19jb21icGh5KCspIHNk
+aGNpX3BsdGZtIHBoeV9yb2NrY2hpcF9zbnBzX3BjaWUzCj4gZHdfbW1jX3JvY2tjaGlwIG52bWVf
+Y29yZSgrKSByb2NrY2hpcF9zYXJhZGMgcm9ja2NoaXBfZGZpIGR3X21tY19wbHRmbQo+IGluZHVz
+dHJpYWxpb190cmlnZ2VyZWRfYnVmZmVyIGNxaGNpIHBsMzMwKCspIGR3X21tYyBrZmlmb19idWYg
+c2RoY2kKPiBkd2MzIG52bWVfYXV0aCBlaGNpX3BsYXRmb3JtIHBoeV9yb2NrY2hpcF9pbm5vX3Vz
+YjIgcHdtX3JvY2tjaGlwCj4gYWRjX2tleXMgY3B1ZnJlcV9kdCB1ZGNfY29yZSBpbmR1c3RyaWFs
+aW8gdWxwaSBvaGNpX3BsYXRmb3JtIG9oY2lfaGNkCj4gYmUyaXNjc2kgYm54MmkgY25pYyB1aW8g
+Y3hnYjRpIGN4Z2I0IHRscyBjeGdiM2kgY3hnYjMgbWRpbyBsaWJjeGdiaQo+IGxpYmN4Z2IgcWxh
+NHh4eCBpc2NzaV9ib290X3N5c2ZzIGlzY3NpX3RjcCBsaWJpc2NzaV90Y3AgbGliaXNjc2kKPiBz
+Y3NpX3RyYW5zcG9ydF9pc2NzaSBzY3NpX2RoX3JkYWMgc2NzaV9kaF9lbWMgc2NzaV9kaF9hbHVh
+IGlwNl90YWJsZXMKPiBpcF90YWJsZXMgZnVzZSBkbV9tdWx0aXBhdGgKPiBbICAgNjYuMzcxMzIx
+XSByY3U6IElORk86IHJjdV9wcmVlbXB0IGRldGVjdGVkIHN0YWxscyBvbiBDUFVzL3Rhc2tzOgo+
+IFsgICA2Ni4zNzE4NjJdIHJjdTogICAgIDAtLi4uITogKDAgdGlja3MgdGhpcyBHUCkgaWRsZT00
+N2MwLzAvMHgwCj4gc29mdGlycT0xMDkxLzEwOTEgZnFzPTAgKGZhbHNlIHBvc2l0aXZlPykKPiBb
+ICAgNjYuMzcyNjc4XSByY3U6ICAgICA2LS4uLiE6ICgxIEdQcyBiZWhpbmQpCj4gaWRsZT03Yjg0
+LzEvMHg0MDAwMDAwMDAwMDAwMDAwIHNvZnRpcnE9MTU1Ny8xNTU4IGZxcz0wCj4gWyAgIDY2LjM3
+MzQ0N10gcmN1OiAgICAgKGRldGVjdGVkIGJ5IDQsIHQ9NjAwMDQgamlmZmllcywgZz0xNjg5LCBx
+PTI5IG5jcHVzPTgpCj4gWyAgIDY2LjM3NDAzOV0gU2VuZGluZyBOTUkgZnJvbSBDUFUgNCB0byBD
+UFVzIDA6Cj4gWyAgIDc2LjM3NTY3Nl0gU2VuZGluZyBOTUkgZnJvbSBDUFUgNCB0byBDUFVzIDY6
+Cj4gWyAgIDg2LjM3NzMxMl0gcmN1OiByY3VfcHJlZW1wdCBrdGhyZWFkIHRpbWVyIHdha2V1cCBk
+aWRuJ3QgaGFwcGVuIGZvcgo+IDgwMDA0IGppZmZpZXMhIGcxNjg5IGYweDAgUkNVX0dQX1dBSVRf
+RlFTKDUpIC0+c3RhdGU9MHg0MDIKPiBbICAgODYuMzc4MzEzXSByY3U6ICAgICBQb3NzaWJsZSB0
+aW1lciBoYW5kbGluZyBpc3N1ZSBvbiBjcHU9NSB0aW1lci1zb2Z0aXJxPTMxNQo+IFsgICA4Ni4z
+Nzg5MTddIHJjdTogcmN1X3ByZWVtcHQga3RocmVhZCBzdGFydmVkIGZvciA4MDAwOSBqaWZmaWVz
+IQo+IGcxNjg5IGYweDAgUkNVX0dQX1dBSVRfRlFTKDUpIC0+c3RhdGU9MHg0MDIgLT5jcHU9NQo+
+IFsgICA4Ni4zNzk4MzRdIHJjdTogICAgIFVubGVzcyByY3VfcHJlZW1wdCBrdGhyZWFkIGdldHMg
+c3VmZmljaWVudCBDUFUKPiB0aW1lLCBPT00gaXMgbm93IGV4cGVjdGVkIGJlaGF2aW9yLgo+IFsg
+ICA4Ni4zODA2MzNdIHJjdTogUkNVIGdyYWNlLXBlcmlvZCBrdGhyZWFkIHN0YWNrIGR1bXA6Cj4g
+WyAgIDg2LjM4MTA3N10gdGFzazpyY3VfcHJlZW1wdCAgICAgc3RhdGU6SSBzdGFjazowICAgICBw
+aWQ6MTgKPiB0Z2lkOjE4ICAgIHBwaWQ6MiAgICAgIGZsYWdzOjB4MDAwMDAwMDgKPiBbICAgODYu
+MzgxODk5XSBDYWxsIHRyYWNlOgo+IFsgICA4Ni4zODIxMTldICBfX3N3aXRjaF90bysweGM0LzB4
+ZTgKPiBbICAgODYuMzgyNDMyXSAgX19zY2hlZHVsZSsweDJhMC8weDc5OAo+IFsgICA4Ni4zODI3
+NDddICBzY2hlZHVsZSsweDNjLzB4ZTAKPiBbICAgODYuMzgzMDMxXSAgc2NoZWR1bGVfdGltZW91
+dCsweDljLzB4MWE4Cj4gWyAgIDg2LjM4MzM4Ml0gIHJjdV9ncF9mcXNfbG9vcCsweDEyNC8weDU4
+MAo+IFsgICA4Ni4zODM3MzNdICByY3VfZ3Bfa3RocmVhZCsweDE4MC8weDIwMAo+IFsgICA4Ni4z
+ODQwNzVdICBrdGhyZWFkKzB4ZjQvMHgxMTAKPiBbICAgODYuMzg0MzU5XSAgcmV0X2Zyb21fZm9y
+aysweDEwLzB4MjAKPiBbICAgODYuMzg0NjgxXSByY3U6IFN0YWNrIGR1bXAgd2hlcmUgUkNVIEdQ
+IGt0aHJlYWQgbGFzdCByYW46Cj4gWyAgIDg2LjM4NTE2M10gU2VuZGluZyBOTUkgZnJvbSBDUFUg
+NCB0byBDUFVzIDU6Cj4gLi4uCj4gYW5kIHRoZW4gaXQgaGFuZ3MuIEFuZCBzb21ldGltZXMgaXQg
+Ym9vdHMsIGRvZXNuJ3QgZGV0ZWN0IGEgZGV2aWNlcwo+IGFuZCBrZWVwcyBzcGFtbWluZyB0aGUg
+bG9nIHdpdGggInVzYiB1c2I2LXBvcnQxOiBDYW5ub3QgZW5hYmxlLiBNYXliZQo+IHRoZSBVU0Ig
+Y2FibGUgaXMgYmFkPyIuCj4KPiAyKSBCb290IHdpdGhvdXQgYW55dGhpbmcgY29ubmVjdGVkLCB0
+aGVuIGNvbm5lY3QgUGl4ZWw4IHRvIFVTQjNBOiBObwo+IGRldmljZSBkZXRlY3RlZCwgbG9ncyBz
+cGFtbWVkIHdpdGggInVzYiB1c2I2LXBvcnQxOiBDYW5ub3QgZW5hYmxlLgo+IE1heWJlIHRoZSBV
+U0IgY2FibGUgaXMgYmFkPyIuCj4KPiAzKSBCb290IHdpdGggUGl4ZWw4IGNvbm5lY3RlZCB0byBV
+U0IzQUM6IHdvcmtzIGp1c3QgZmluZS4gQWxzbyB3b3Jrcwo+IHdoZW4gSSBjb25uZWN0IGl0IGF0
+IHJ1bnRpbWUuCj4KPiA0KSBCb290IHdpdGggUGl4ZWwgOCBjb25uZWN0ZWQgdG8gVVNCMiBwb3J0
+Ogo+IC4uLgo+IFsgICAgNi4zMzEzNTldIGh1YiA0LTA6MS4wOiBVU0IgaHViIGZvdW5kCj4gWyAg
+ICA2LjMzMTQzOV0gaW5wdXQ6IGdwaW8ta2V5cyBhcyAvZGV2aWNlcy9wbGF0Zm9ybS9ncGlvLWtl
+eXMvaW5wdXQvaW5wdXQwCj4gWyAgICA2LjMzMTc1Nl0gaHViIDQtMDoxLjA6IDEgcG9ydCBkZXRl
+Y3RlZAo+IFsgICAgNi4zMzQ3ODldIHVzYiB1c2IzOiBOZXcgVVNCIGRldmljZSBmb3VuZCwgaWRW
+ZW5kb3I9MWQ2YiwKPiBpZFByb2R1Y3Q9MDAwMSwgYmNkRGV2aWNlPSA2LjExCj4gWyAgICA2LjMz
+NTUzMF0gdXNiIHVzYjM6IE5ldyBVU0IgZGV2aWNlIHN0cmluZ3M6IE1mcj0zLCBQcm9kdWN0PTIs
+Cj4gU2VyaWFsTnVtYmVyPTEKPiBbICAgIDYuMzM2MTc2XSB1c2IgdXNiMzogUHJvZHVjdDogR2Vu
+ZXJpYyBQbGF0Zm9ybSBPSENJIGNvbnRyb2xsZXIKPiBbICAgIDYuMzM2Njk4XSB1c2IgdXNiMzog
+TWFudWZhY3R1cmVyOiBMaW51eAo+IDYuMTEuMC0wLnJjMS4yMDI0MDcyOWdpdGRjMWM4MDM0ZTMx
+Yi4xNi5mYzQxLmFhcmNoNjQgb2hjaV9oY2QKPiBbICAgIDYuMzM3NTI2XSB1c2IgdXNiMzogU2Vy
+aWFsTnVtYmVyOiBmYzhjMDAwMC51c2IKPiBbICAgMzYuMDIyNzA3XSB3YXRjaGRvZzogV2F0Y2hk
+b2cgZGV0ZWN0ZWQgaGFyZCBMT0NLVVAgb24gY3B1IDIKPiBbICAgMzYuMDIzMjQwXSBNb2R1bGVz
+IGxpbmtlZCBpbjogcnRjX2h5bTg1NjMoKykgdGNwbSBkd19tbWMgZ3Bpb19rZXlzCj4gcHdtX2Zh
+biBwaHlfcm9ja2NoaXBfdXNiZHAgbnZtZV9jb3JlIHBoeV9yb2NrY2hpcF9zbnBzX3BjaWUzCj4g
+cGh5X3JvY2tjaGlwX25hbmVuZ19jb21icGh5IHR5cGVjIGNxaGNpIGR3X3dkdCBudm1lbV9yb2Nr
+Y2hpcF9vdHAKPiBwbDMzMCgrKSBzcGlfcm9ja2NoaXAgc2RoY2kga2ZpZm9fYnVmIHJvY2tjaGlw
+X2RmaSBudm1lX2F1dGggZHdjMwo+IHBoeV9yb2NrY2hpcF9pbm5vX3VzYjIgcHdtX3JvY2tjaGlw
+IG9oY2lfcGxhdGZvcm0gYWRjX2tleXMgdWRjX2NvcmUKPiBvaGNpX2hjZCBpbmR1c3RyaWFsaW8g
+ZWhjaV9wbGF0Zm9ybSB1bHBpIGNwdWZyZXFfZHQgYmUyaXNjc2kgYm54MmkKPiBjbmljIHVpbyBj
+eGdiNGkgY3hnYjQgdGxzIGN4Z2IzaSBjeGdiMyBtZGlvIGxpYmN4Z2JpIGxpYmN4Z2IgcWxhNHh4
+eAo+IGlzY3NpX2Jvb3Rfc3lzZnMgaXNjc2lfdGNwIGxpYmlzY3NpX3RjcCBsaWJpc2NzaSBzY3Np
+X3RyYW5zcG9ydF9pc2NzaQo+IHNjc2lfZGhfcmRhYyBzY3NpX2RoX2VtYyBzY3NpX2RoX2FsdWEg
+aXA2X3RhYmxlcyBpcF90YWJsZXMgZnVzZQo+IGRtX211bHRpcGF0aAo+IFsgICAzNi4wMjQ3MDhd
+IHdhdGNoZG9nOiBXYXRjaGRvZyBkZXRlY3RlZCBoYXJkIExPQ0tVUCBvbiBjcHUgNAo+IFsgICAz
+Ni4wMjgxNzFdIFNlbmRpbmcgTk1JIGZyb20gQ1BVIDEgdG8gQ1BVcyAyOgo+IFsgICAzNi4wMjg2
+NjldIE1vZHVsZXMgbGlua2VkIGluOiBydGNfaHltODU2MygrKSB0Y3BtIGR3X21tYyBncGlvX2tl
+eXMKPiBwd21fZmFuIHBoeV9yb2NrY2hpcF91c2JkcCBudm1lX2NvcmUgcGh5X3JvY2tjaGlwX3Nu
+cHNfcGNpZTMKPiBwaHlfcm9ja2NoaXBfbmFuZW5nX2NvbWJwaHkgdHlwZWMgY3FoY2kgZHdfd2R0
+IG52bWVtX3JvY2tjaGlwX290cAo+IHBsMzMwKCspIHNwaV9yb2NrY2hpcCBzZGhjaSBrZmlmb19i
+dWYgcm9ja2NoaXBfZGZpIG52bWVfYXV0aCBkd2MzCj4gcGh5X3JvY2tjaGlwX2lubm9fdXNiMiBw
+d21fcm9ja2NoaXAgb2hjaV9wbGF0Zm9ybSBhZGNfa2V5cyB1ZGNfY29yZQo+IG9oY2lfaGNkIGlu
+ZHVzdHJpYWxpbyBlaGNpX3BsYXRmb3JtIHVscGkgY3B1ZnJlcV9kdCBiZTJpc2NzaSBibngyaQo+
+IGNuaWMgdWlvIGN4Z2I0aSBjeGdiNCB0bHMgY3hnYjNpIGN4Z2IzIG1kaW8gbGliY3hnYmkgbGli
+Y3hnYiBxbGE0eHh4Cj4gaXNjc2lfYm9vdF9zeXNmcyBpc2NzaV90Y3AgbGliaXNjc2lfdGNwIGxp
+YmlzY3NpIHNjc2lfdHJhbnNwb3J0X2lzY3NpCj4gc2NzaV9kaF9yZGFjIHNjc2lfZGhfZW1jIHNj
+c2lfZGhfYWx1YSBpcDZfdGFibGVzIGlwX3RhYmxlcyBmdXNlCj4gZG1fbXVsdGlwYXRoCj4gWyAg
+IDY2LjMzNjcwOF0gcmN1OiBJTkZPOiByY3VfcHJlZW1wdCBkZXRlY3RlZCBzdGFsbHMgb24gQ1BV
+cy90YXNrczoKPiBbICAgNjYuMzM3MjcyXSByY3U6ICAgICA0LS4uLjA6ICgxIEdQcyBiZWhpbmQp
+Cj4gaWRsZT1hZmJjLzEvMHg0MDAwMDAwMDAwMDAwMDAwIHNvZnRpcnE9MTg5Ny8xODk4IGZxcz02
+ODQ2Cj4gWyAgIDY2LjMzODA4OV0gcmN1OiAgICAgKGRldGVjdGVkIGJ5IDEsIHQ9NjAwMDUgamlm
+ZmllcywgZz0xNzU3LCBxPTkxIG5jcHVzPTgpCj4gWyAgIDY2LjMzODY5OV0gU2VuZGluZyBOTUkg
+ZnJvbSBDUFUgMSB0byBDUFVzIDQ6Cj4gWyAgIDc2LjM0MDM1Ml0gcmN1OiByY3VfcHJlZW1wdCBr
+dGhyZWFkIHRpbWVyIHdha2V1cCBkaWRuJ3QgaGFwcGVuIGZvcgo+IDE3NzkyIGppZmZpZXMhIGcx
+NzU3IGYweDAgUkNVX0dQX1dBSVRfRlFTKDUpIC0+c3RhdGU9MHg0MDIKPiBbICAgNzYuMzQxMzc0
+XSByY3U6ICAgICBQb3NzaWJsZSB0aW1lciBoYW5kbGluZyBpc3N1ZSBvbiBjcHU9Mwo+IHRpbWVy
+LXNvZnRpcnE9NjIwNQo+IFsgICA3Ni4zNDIwMDBdIHJjdTogcmN1X3ByZWVtcHQga3RocmVhZCBz
+dGFydmVkIGZvciAxNzc5NSBqaWZmaWVzIQo+IGcxNzU3IGYweDAgUkNVX0dQX1dBSVRfRlFTKDUp
+IC0+c3RhdGU9MHg0MDIgLT5jcHU9Mwo+IFsgICA3Ni4zNDI5MzddIHJjdTogICAgIFVubGVzcyBy
+Y3VfcHJlZW1wdCBrdGhyZWFkIGdldHMgc3VmZmljaWVudCBDUFUKPiB0aW1lLCBPT00gaXMgbm93
+IGV4cGVjdGVkIGJlaGF2aW9yLgo+IFsgICA3Ni4zNDM3NTRdIHJjdTogUkNVIGdyYWNlLXBlcmlv
+ZCBrdGhyZWFkIHN0YWNrIGR1bXA6Cj4gWyAgIDc2LjM0NDIxMV0gdGFzazpyY3VfcHJlZW1wdCAg
+ICAgc3RhdGU6SSBzdGFjazowICAgICBwaWQ6MTgKPiB0Z2lkOjE4ICAgIHBwaWQ6MiAgICAgIGZs
+YWdzOjB4MDAwMDAwMDgKPiBbICAgNzYuMzQ1MDU2XSBDYWxsIHRyYWNlOgo+IFsgICA3Ni4zNDUy
+ODddICBfX3N3aXRjaF90bysweGM0LzB4ZTgKPiBbICAgNzYuMzQ1NjE3XSAgX19zY2hlZHVsZSsw
+eDJhMC8weDc5OAo+IFsgICA3Ni4zNDU5NDhdICBzY2hlZHVsZSsweDNjLzB4ZTAKPiBbICAgNzYu
+MzQ2MjQ3XSAgc2NoZWR1bGVfdGltZW91dCsweDljLzB4MWE4Cj4gWyAgIDc2LjM0NjYxM10gIHJj
+dV9ncF9mcXNfbG9vcCsweDEyNC8weDU4MAo+IFsgICA3Ni4zNDY5NzldICByY3VfZ3Bfa3RocmVh
+ZCsweDE4MC8weDIwMAo+IFsgICA3Ni4zNDczMzddICBrdGhyZWFkKzB4ZjQvMHgxMTAKPiBbICAg
+NzYuMzQ3NjM3XSAgcmV0X2Zyb21fZm9yaysweDEwLzB4MjAKPiBbICAgNzYuMzQ3OTc1XSByY3U6
+IFN0YWNrIGR1bXAgd2hlcmUgUkNVIEdQIGt0aHJlYWQgbGFzdCByYW46Cj4gWyAgIDc2LjM0ODQ3
+MF0gU2VuZGluZyBOTUkgZnJvbSBDUFUgMSB0byBDUFVzIDM6Cj4gLi4uCj4gQW5kIHRoZW4gaXQg
+aGFuZ3MuIEl0IHdvcmtzIGlmIEkgY29ubmVjdCBpdCBhZnRlciBib290aW5nLgo+Cj4gNSkgVVNC
+MiBzdGljayB3b3JrcyBvbiBhbGwgcG9ydHMgd2hlbiBjb25uZWN0ZWQgYXQgcnVudGltZS4KPgo+
+IDYpIEJvb3Rpbmcgd2l0aCBVU0IyIHN0aWNrIGNvbm5lY3RlZCB0byBVU0IzQSBwb3J0OiB3b3Jr
+cwo+IDcpIEJvb3Rpbmcgd2l0aCBVU0IyIHN0aWNrIGNvbm5lY3RlZCB0byBVU0IzQUMgcG9ydDog
+aGFuZ3MgYWZ0ZXI6Cj4gWyAgICA2LjQyMzUwMF0gaHViIDQtMDoxLjA6IFVTQiBodWIgZm91bmQK
+PiBbICAgIDYuNDIzODcwXSBodWIgNC0wOjEuMDogMSBwb3J0IGRldGVjdGVkCj4gWyAgICA2LjYw
+MjIyNF0gcnRjLWh5bTg1NjMgNi0wMDUxOiByZWdpc3RlcmVkIGFzIHJ0YzAKPiBbICAgIDYuNjEw
+OTgxXSBydGMtaHltODU2MyA2LTAwNTE6IHNldHRpbmcgc3lzdGVtIGNsb2NrIHRvCj4gMjAyNC0w
+OC0wMVQxODo1Njo1MiBVVEMgKDE3MjI1Mzg2MTIpCj4KPiA4KSBCb290aW5nIHdpdGggVVNCMiBz
+dGljayBjb25uZWN0ZWQgdG8gVVNCMiBwb3J0OiBoYW5ncyBhZnRlcjoKPiBbICAgIDYuMzM3MDY3
+XSBodWIgMy0wOjEuMDogVVNCIGh1YiBmb3VuZAo+IFsgICAgNi4zMzc0OTRdIGh1YiAzLTA6MS4w
+OiAxIHBvcnQgZGV0ZWN0ZWQKPiBbICAgIDYuMzM4NDYwXSBydGMtaHltODU2MyA2LTAwNTE6IHJl
+Z2lzdGVyZWQgYXMgcnRjMAo+IFsgICAgNi4zMzk3NDRdIHJ0Yy1oeW04NTYzIDYtMDA1MTogc2V0
+dGluZyBzeXN0ZW0gY2xvY2sgdG8KPiAyMDI0LTA4LTAxVDE4OjU5OjU2IFVUQyAoMTcyMjUzODc5
+NikKPiBbICAgIDYuMzcyNTc3XSB1c2IgdXNiMjogTmV3IFVTQiBkZXZpY2UgZm91bmQsIGlkVmVu
+ZG9yPTFkNmIsCj4gaWRQcm9kdWN0PTAwMDEsIGJjZERldmljZT0gNi4xMQo+IFsgICAgNi4zNzMz
+NjFdIHVzYiB1c2IyOiBOZXcgVVNCIGRldmljZSBzdHJpbmdzOiBNZnI9MywgUHJvZHVjdD0yLAo+
+IFNlcmlhbE51bWJlcj0xCj4gWyAgICA2LjM3NDAxOF0gdXNiIHVzYjI6IFByb2R1Y3Q6IEdlbmVy
+aWMgUGxhdGZvcm0gT0hDSSBjb250cm9sbGVyCj4gWyAgICA2LjM3NDU3M10gdXNiIHVzYjI6IE1h
+bnVmYWN0dXJlcjogTGludXgKPiA2LjExLjAtMC5yYzEuMjAyNDA3MjlnaXRkYzFjODAzNGUzMWIu
+MTYuZmM0MS5hYXJjaDY0IG9oY2lfaGNkCj4gWyAgICA2LjM3NTQzMV0gdXNiIHVzYjI6IFNlcmlh
+bE51bWJlcjogZmM4YzAwMDAudXNiCj4KPiA5KSBCb290IHdpdGggY2gzNDEtdWFydCBjb25uZWN0
+ZWQgdG8gVVNCMjogd29ya3MuCj4KPiBJIGhvcGUgdGhhdCB0aGlzIGlzIGVub3VnaCBpbmZvcm1h
+dGlvbiBmb3IgeW91IHRvIHN0YXJ0IGludmVzdGlnYXRpbmcKPiB0aGUgaXNzdWUuIEkgYWxzbyBo
+b3BlIHRoaXMgaXMgcmVwcm9kdWNpYmxlIG9uIHlvdXIgc2lkZS4KPgo+IFRoYW5rcwo+IE1pY2hh
+ZWwKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4
+LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3Jn
+Cmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2No
+aXAK
