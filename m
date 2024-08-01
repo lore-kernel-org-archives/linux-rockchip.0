@@ -4,51 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2A48DC3DA7F
-	for <linux-rockchip@archiver.kernel.org>; Thu,  1 Aug 2024 02:27:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 035E5C3DA64
+	for <linux-rockchip@archiver.kernel.org>; Thu,  1 Aug 2024 02:28:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=jDNuqbY58h9H//F1llYIw6gpoahFnn6ChBKU36vv7Ds=; b=HMfS7SIBVtTbCh
-	08W6gjz+qkuIRj1srIhx2w4FQfFGlBtymoSIc1Fd84eVC09zHFRG5UEbBzUVwFJ/ikf7H3xKmDpUq
-	U0eeQGUCkvsMJNhnpiW9M+Xeluxl0bMUSbYdoIf4Gu8K4AJFjSqPF6KUGBn/HS7oO1Gwy5OhJ+IqD
-	8tswkUwL731c+CO3zlTF884E7/UtcsMEEkjezPsOGS/xXUYFYwNKSUMx7ARkup0zs75Sq4dfVbOJz
-	JcnqY6YV0yLzR3cRkpED3oYy+VYlSaoH3xhKIlExQRpMIiGSqzQ6vqaMxKTYrdAo00aYk55Squ9Pn
-	Fw5cgICOFCuFhZJ1U7Vg==;
+	List-Owner; bh=naj+wqoGPpDx0wZ3X78F2k/Ucw7mTRBTz9DyRmfGRrs=; b=qIZXmbsA3eGVMt
+	jSf208AYaA4CPV8g3ttlsGElzl92yRsJNqmd/jwL25aBWnQLtkn+DkRt/BN9/AYcIh+yULYEb/KdG
+	wLl5ROPNpd4z8wEj5QTFfWlG8h2UuWmLEoBQ0wYP9pBz+XcKjeTDKxuGfwEhGpe+RKeDO6xjFBW+x
+	bkm8aPq3jv/ZvLMtPVrujfIwF3Svw7Zk/gnWCKwHbgsvE9DLj8WGk4h9wZ2RqHjIjZcBR/RpdOg6X
+	y8pAFSGCQQrVExPjSmPm9+24zVtyv53tIabNCnVrO+5DbjR8fmHTQd1CMFzmVqIPnddad21XOQPpy
+	MY41Hh4h3yb9MdT6RWWg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sZLXP-00000003Rhq-3Plc;
-	Thu, 01 Aug 2024 02:27:31 +0000
-Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
+	id 1sZLXr-00000003RwW-2BP1;
+	Thu, 01 Aug 2024 02:27:59 +0000
+Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sZLWN-00000003RQc-2X4Y;
-	Thu, 01 Aug 2024 02:26:50 +0000
+	id 1sZLWN-00000003RQl-2dz6;
+	Thu, 01 Aug 2024 02:26:54 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1722479183;
-	bh=PJnERirt5cRL63lnv/HsDpSZEpu4TQvzEFViwuEEtH0=;
+	s=mail; t=1722479184;
+	bh=89fKMA77G8ZMlK1UoBHBthXO24qwokaCENfTUaZojDg=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=jA9Q5bx7fdxgy4Ry+zbMjDIN56ilUJsPiFh4uxAdP1SlLg29XT6/uzGuJ1afCmD3k
-	 k/d56utLzAYT1l4dHccA4Wx5itftXa8qI8+vz2x+xBdSlDOWqlJrF6KQf4pNyPfjRl
-	 J+vHL8m3aJEkazfrI/7U0MTNhEoRs9zQ116P3VAp7OYTft1NV/26FLeHbaVaMzoq7a
-	 mbVc2rG/4wnlzHwl82wmIQbyGzp2/leYh0Qjo9Bbr1ELjnDrMUqKiU8DaYf8gCEXOz
-	 4qfmyzy50QBRZq8Ctb7jJb3JaSNeawos3JkrJPUe+PJohOkLyTmH33DjIY73rADp/a
-	 O+Sz7j+aYh15g==
+	b=5E1YKnPyd91FZWGkWqtI63/mZdcm6PsSFrCmqeZg+o4TlnGwiShTdPbiodALCY37R
+	 WQDSz/+Ci20lGFBbw+FGH8dj/OjSzIeu9gPXqdk0vpMSNXNjsn46P++IIeau3WHSfL
+	 0udzua9HLsXCnc/g2OWM4Lftu8gjJ+94OYFBt0oefdWBeAUJaLXvmEtY+fP0eNntTp
+	 4KWmJ5Ao3ISYXmibVS/YfR21motk8VtlRWA3exrID4/zR5UhTqz84y7UshMGqLHbRM
+	 rhjwD3oXGJs1S0JSvcD9zZe0BF7Axi42gaQ48M+Aq1lhior3bZIe485Ae/k89EJOSi
+	 sXI/bM4/SNFmA==
 Received: from localhost (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: cristicc)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 31FC03782204;
-	Thu,  1 Aug 2024 02:26:23 +0000 (UTC)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 558483782207;
+	Thu,  1 Aug 2024 02:26:24 +0000 (UTC)
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Date: Thu, 01 Aug 2024 05:25:52 +0300
-Subject: [PATCH v2 1/3] dt-bindings: display: rockchip: Add schema for
- RK3588 HDMI TX Controller
+Date: Thu, 01 Aug 2024 05:25:53 +0300
+Subject: [PATCH v2 2/3] drm/rockchip: Explicitly include bits header
 MIME-Version: 1.0
-Message-Id: <20240801-b4-rk3588-bridge-upstream-v2-1-9fa657a4e15b@collabora.com>
+Message-Id: <20240801-b4-rk3588-bridge-upstream-v2-2-9fa657a4e15b@collabora.com>
 References: <20240801-b4-rk3588-bridge-upstream-v2-0-9fa657a4e15b@collabora.com>
 In-Reply-To: <20240801-b4-rk3588-bridge-upstream-v2-0-9fa657a4e15b@collabora.com>
 To: Andrzej Hajda <andrzej.hajda@intel.com>, 
@@ -70,8 +69,8 @@ Cc: dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
  Alexandre ARNOUD <aarnoud@me.com>, Luis de Arquer <ldearquer@gmail.com>
 X-Mailer: b4 0.14.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240731_192627_840699_AA0353B6 
-X-CRM114-Status: GOOD (  14.13  )
+X-CRM114-CacheID: sfid-20240731_192627_845882_6EA0A413 
+X-CRM114-Status: GOOD (  11.39  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,211 +87,36 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Rockchip RK3588 SoC integrates the Synopsys DesignWare HDMI 2.1
-Quad-Pixel (QP) TX controller IP.
+Driver makes use of the BIT() macro, but relies on the bits header being
+implicitly included.
 
-Since this is a new IP block, quite different from those used in the
-previous generations of Rockchip SoCs, add a dedicated binding file.
+Explicitly pull the header in to avoid potential build failures in some
+configurations.
 
+While at it, reorder include directives alphabetically.
+
+Fixes: 8c8546546f25 ("drm/rockchip: move output interface related definition to rockchip_drm_drv.h")
 Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 ---
- .../display/rockchip/rockchip,dw-hdmi-qp.yaml      | 188 +++++++++++++++++++++
- 1 file changed, 188 insertions(+)
+ drivers/gpu/drm/rockchip/rockchip_drm_drv.h | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-hdmi-qp.yaml b/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-hdmi-qp.yaml
-new file mode 100644
-index 000000000000..33572c88a589
---- /dev/null
-+++ b/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-hdmi-qp.yaml
-@@ -0,0 +1,188 @@
-+# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/display/rockchip/rockchip,dw-hdmi-qp.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: Rockchip DW HDMI QP TX Encoder
-+
-+maintainers:
-+  - Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-+
-+description:
-+  Rockchip RK3588 SoC integrates the Synopsys DesignWare HDMI QP TX controller
-+  IP and a HDMI/eDP TX Combo PHY based on a Samsung IP block.
-+
-+allOf:
-+  - $ref: ../bridge/synopsys,dw-hdmi-qp.yaml#
-+  - $ref: /schemas/sound/dai-common.yaml#
-+
-+properties:
-+  compatible:
-+    enum:
-+      - rockchip,rk3588-dw-hdmi-qp
-+
-+  clocks:
-+    minItems: 4
-+    items:
-+      - {}
-+      - {}
-+      - {}
-+      - {}
-+      # The next clocks are optional, but shall be specified in this
-+      # order when present.
-+      - description: TMDS/FRL link clock
-+      - description: Video datapath clock
-+
-+  clock-names:
-+    minItems: 4
-+    items:
-+      - {}
-+      - {}
-+      - {}
-+      - {}
-+      - enum: [hdp, hclk_vo1]
-+      - const: hclk_vo1
-+
-+  interrupts:
-+    items:
-+      - {}
-+      - {}
-+      - {}
-+      - {}
-+      - description: HPD interrupt
-+
-+  interrupt-names:
-+    items:
-+      - {}
-+      - {}
-+      - {}
-+      - {}
-+      - const: hpd
-+
-+  phys:
-+    maxItems: 1
-+    description: The HDMI/eDP PHY.
-+
-+  phy-names:
-+    const: hdmi
-+
-+  ports:
-+    $ref: /schemas/graph.yaml#/properties/ports
-+
-+    properties:
-+      port@0:
-+        $ref: /schemas/graph.yaml#/properties/port
-+        description:
-+          Port node with one endpoint connected to a vop node.
-+
-+      port@1:
-+        $ref: /schemas/graph.yaml#/properties/port
-+        description:
-+          Port node with one endpoint connected to a hdmi-connector node.
-+
-+    required:
-+      - port@0
-+      - port@1
-+
-+  power-domains:
-+    maxItems: 1
-+
-+  resets:
-+    minItems: 2
-+    maxItems: 2
-+
-+  reset-names:
-+    items:
-+      - const: ref
-+      - const: hdp
-+
-+  "#sound-dai-cells":
-+    const: 0
-+
-+  rockchip,grf:
-+    $ref: /schemas/types.yaml#/definitions/phandle
-+    description:
-+      Most HDMI QP related data is accessed through SYS GRF regs.
-+
-+  rockchip,vo1_grf:
-+    $ref: /schemas/types.yaml#/definitions/phandle
-+    description:
-+      Additional HDMI QP related data is accessed through VO1 GRF regs.
-+
-+required:
-+  - compatible
-+  - reg
-+  - clocks
-+  - clock-names
-+  - interrupts
-+  - interrupt-names
-+  - phys
-+  - phy-names
-+  - ports
-+  - resets
-+  - reset-names
-+  - rockchip,grf
-+  - rockchip,vo1_grf
-+
-+unevaluatedProperties: false
-+
-+examples:
-+  - |
-+    #include <dt-bindings/clock/rockchip,rk3588-cru.h>
-+    #include <dt-bindings/interrupt-controller/arm-gic.h>
-+    #include <dt-bindings/interrupt-controller/irq.h>
-+    #include <dt-bindings/power/rk3588-power.h>
-+    #include <dt-bindings/reset/rockchip,rk3588-cru.h>
-+
-+    soc {
-+      #address-cells = <2>;
-+      #size-cells = <2>;
-+
-+      hdmi@fde80000 {
-+        compatible = "rockchip,rk3588-dw-hdmi-qp";
-+        reg = <0x0 0xfde80000 0x0 0x20000>;
-+        clocks = <&cru PCLK_HDMITX0>,
-+                 <&cru CLK_HDMITX0_EARC>,
-+                 <&cru CLK_HDMITX0_REF>,
-+                 <&cru MCLK_I2S5_8CH_TX>,
-+                 <&cru CLK_HDMIHDP0>,
-+                 <&cru HCLK_VO1>;
-+        clock-names = "pclk", "earc", "ref", "aud", "hdp", "hclk_vo1";
-+        interrupts = <GIC_SPI 169 IRQ_TYPE_LEVEL_HIGH 0>,
-+                     <GIC_SPI 170 IRQ_TYPE_LEVEL_HIGH 0>,
-+                     <GIC_SPI 171 IRQ_TYPE_LEVEL_HIGH 0>,
-+                     <GIC_SPI 172 IRQ_TYPE_LEVEL_HIGH 0>,
-+                     <GIC_SPI 360 IRQ_TYPE_LEVEL_HIGH 0>;
-+        interrupt-names = "avp", "cec", "earc", "main", "hpd";
-+        phys = <&hdptxphy_hdmi0>;
-+        phy-names = "hdmi";
-+        power-domains = <&power RK3588_PD_VO1>;
-+        resets = <&cru SRST_HDMITX0_REF>, <&cru SRST_HDMIHDP0>;
-+        reset-names = "ref", "hdp";
-+        rockchip,grf = <&sys_grf>;
-+        rockchip,vo1_grf = <&vo1_grf>;
-+        #sound-dai-cells = <0>;
-+
-+        ports {
-+          #address-cells = <1>;
-+          #size-cells = <0>;
-+
-+          port@0 {
-+            reg = <0>;
-+
-+            hdmi0_in_vp0: endpoint {
-+                remote-endpoint = <&vp0_out_hdmi0>;
-+            };
-+          };
-+
-+          port@1 {
-+            reg = <1>;
-+
-+            hdmi0_out_con0: endpoint {
-+                remote-endpoint = <&hdmi_con0_in>;
-+            };
-+          };
-+        };
-+      };
-+    };
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_drv.h b/drivers/gpu/drm/rockchip/rockchip_drm_drv.h
+index bbb9e0bf6804..8d566fcd80a2 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_drv.h
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_drv.h
+@@ -12,9 +12,10 @@
+ #include <drm/drm_atomic_helper.h>
+ #include <drm/drm_gem.h>
+ 
++#include <linux/bits.h>
++#include <linux/component.h>
+ #include <linux/i2c.h>
+ #include <linux/module.h>
+-#include <linux/component.h>
+ 
+ #define ROCKCHIP_MAX_FB_BUFFER	3
+ #define ROCKCHIP_MAX_CONNECTOR	2
 
 -- 
 2.45.2
