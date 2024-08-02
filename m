@@ -4,81 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 52378C3DA7F
-	for <linux-rockchip@archiver.kernel.org>; Fri,  2 Aug 2024 09:49:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 385B9C3DA49
+	for <linux-rockchip@archiver.kernel.org>; Fri,  2 Aug 2024 10:06:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:Message-ID:In-Reply-To:
-	Subject:cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=CJEdvwN49pJrOJuA2zdNWfsDg5SvwtFEVqLxlIw1HkE=; b=lJs+O9gpcZa/dgOyME3uXLbRyq
-	Pe/7WahYWdbjQSTTlgW/2VHpeX34lwhCfECiPz7Nkz2RAE3Czw8K4Zdu5PKBV3l21yt4+3YrsjRYN
-	qFQBTU55ksVI9AupfK4Zm8kd94/GnOdruJ1Em40epNsgK30CrZOQsFyzs4bneP0QuKP4T86OwJ4g2
-	xnHjQn4gLLkJ9vWVVGt5HpTPdarSRYI1K0IDx1QmEDs+rPnceJQGsvAjuzvAJiGaMze7P8aYBIMwR
-	AGTFpsd4w95XeaCNVK6BCaEEKa9yxzUsy/a5jYXWgyTslsNQpl7F35eEYSeI+aL541eFWGHXTNk1y
-	l+HvVdCg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=sCPsCa1FEyyoRgu3iMaY1SZM3cmMTtw0yzhoMMqlcL4=; b=d6/GftEH9lWDI4
+	KifaFE2C4+YM3/8YFjBadwpWVfTUQG9jOGJCnkVpzOyXLkc0tG5N1LH3UvxtATsLKSiyPXO0ili8R
+	0MpgOOOyeuAV6L5G+3aO0UJrCfDHVOrLuIQYAoWQfOydRVPtUYQkH2GovHs8ffgJr01PDRJ31cKby
+	dUXiWkTv33KnVLNGSY/GwazLP1IlNrzXXoDpUEDzkX4RqoccosqTk75ZtTS27W75JpbhIxAPq8FdA
+	LfY+qrSW/5/4Fc7R7kiNZo9uo3ox22Gwai/nT74Pzeo9DNRxGAiFS/BF8C1Cs0t7uhuDrySjgGH64
+	zfBdPHO7HnYFtLD6k+2A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sZouB-00000008LLJ-1b4v;
-	Fri, 02 Aug 2024 09:48:59 +0000
-Received: from mx-01.divo.sbone.de ([2003:a:140a:2200:6:594:fffe:19])
-	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sZou7-00000008KxX-3oEP
-	for linux-rockchip@lists.infradead.org;
-	Fri, 02 Aug 2024 09:48:58 +0000
-Received: from mail.sbone.de (mail.sbone.de [IPv6:fde9:577b:c1a9:4902:0:7404:2:1025])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
-	(No client certificate requested)
-	by mx-01.divo.sbone.de (Postfix) with ESMTPS id 2A6FBA64808;
-	Fri, 02 Aug 2024 09:46:42 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=zabbadoz.net;
-	s=20240622; t=1722592002;
-	bh=BdE9txZihg93zoUJIdYX0o3vhnu2uDuyjz8mtdq00BY=;
-	h=Date:From:To:cc:Subject:In-Reply-To:References;
-	b=W3k6sIWvhqXJcuJaRi1RSr5VLTIBnpzWxNHDL1xpZM21JF162KrJ6zgVeVgMsGYoG
-	 m4YCS0CJJn6VZnzJq74Ci8g3YkNeBv3wdnVPQgw+6rpHxllZyyRyC/2YEJenqRR176
-	 gtBedrJcGfwVxN5sIg57Et+cThKemU/VJrj0rScAAgolSsk0Rhu0ojesJ5JCLPIam7
-	 PivBaKsXbIQ02O9yKFCy8/1TLy7LEQi59hBKSUThBf5vE2gPayvha7c7tRlW6wyr7E
-	 rjbvTHPDdAMtUkMMOXs80jLzcRkKJh3OMwgBjMtJdbtOZR2QE29BiRnrvsm45LDcQX
-	 tNeKgX07qZJFsDPyUObzrdPYL8DF+ZN0cuJwvQ/QBxM8A7vglCLIZO4aTYMT1duIVN
-	 cEXSlTsVzuFVIImoIeIwKbLInmxaqQTXHPS57awc58cDlctWhiWuS8D+NqswLx41VV
-	 ZRVPCOqrJ94nDtx3l6oCFylqYtyDF1iVjOvCgz5h83mHCqe0e4umCRwYOrmd08dhhU
-	 DUP1GwdJf3r0ePsXhjMDREkXzsW0UGcbRqPgnK8zqSFUxiT+6aCTlE9PobBLhJqpn7
-	 BmDJT7CfVIM1Y+7X6rflvycTG48N9ihIqf/TekruJDm3efSPDaafSlbUULS7SOkcmz
-	 NT6leu2e8nfQFlWe8joy+Ssk=
-Received: from content-filter.t4-02.sbone.de (content-filter.t4-02.sbone.de [IPv6:fde9:577b:c1a9:4902:0:7404:2:2742])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	by mail.sbone.de (Postfix) with ESMTPS id 5C6192D029D8;
-	Fri,  2 Aug 2024 09:46:43 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at sbone.de
-Received: from mail.sbone.de ([IPv6:fde9:577b:c1a9:4902:0:7404:2:1025])
-	by content-filter.t4-02.sbone.de (content-filter.t4-02.sbone.de [IPv6:fde9:577b:c1a9:4902:0:7404:2:2742]) (amavisd-new, port 10024)
-	with ESMTP id qiaa6JdiXyBI; Fri,  2 Aug 2024 09:46:42 +0000 (UTC)
-Received: from strong-iwl0.sbone.de (strong-iwl0.sbone.de [IPv6:fde9:577b:c1a9:4902:b66b:fcff:fef3:e3d2])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	by mail.sbone.de (Postfix) with ESMTPSA id 59D1C2D029D2;
-	Fri,  2 Aug 2024 09:46:41 +0000 (UTC)
-Date: Fri, 2 Aug 2024 09:46:40 +0000 (UTC)
-From: "Bjoern A. Zeeb" <bzeeb-lists@lists.zabbadoz.net>
-To: Sergey Bostandzhyan <jin@mediatomb.cc>
-cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org, heiko@sntech.de, 
-    devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-    linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+	id 1sZpAa-00000008Ov9-3fFy;
+	Fri, 02 Aug 2024 10:05:56 +0000
+Received: from xn--80adja5bqm.su ([198.44.140.76])
+	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
+	id 1sZpA5-00000008Opd-45tT;
+	Fri, 02 Aug 2024 10:05:27 +0000
+Received: by xn--80adja5bqm.su (Postfix, from userid 1000)
+	id C661B40050C0; Fri,  2 Aug 2024 10:04:47 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 xn--80adja5bqm.su C661B40050C0
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=mediatomb.cc;
+	s=default; t=1722593087;
+	bh=QsN5/NZ66aTtsFvoL5pLZIv6o50us0fY8Yrb52ESz6k=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=gMdc5ivB/L+PDFudBOPTqscH5VEN4eYzXm6s23rVgX+fdPcqY5haJ1MmKpJ9mUvda
+	 RIcP5kGJQOnLh2aMpmcQtnMgHDwGI+FU61ntph7HeLxrmaND+cn1+oUPwyERoRe6U0
+	 7DXT4SvM5K8VtaFtL5+9C1vVk9GJUrXnrhyvCe8X/VP//PqodmM135l01bX5/Cfb8h
+	 g9vXafFqVm3KTm5zRepfQqrDNaWCafKlnIBZr5qhwRlh6+Cb4a3MGiZTudmvTZoevy
+	 hBIW+QAEKn45YG4k+5+EU9uiaiTi7LlsW06KpxpG0qp9MT1IeHrBh16vGS/WVmL1Ck
+	 eQdcuyuh7xfEw==
+Date: Fri, 2 Aug 2024 10:04:47 +0000
+From: Sergey 'Jin' Bostandzhyan <jin@mediatomb.cc>
+To: "Bjoern A. Zeeb" <bzeeb-lists@lists.zabbadoz.net>
+Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
+	heiko@sntech.de, devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 Subject: Re: [PATCH V2 0/2 RESEND] Add DTS for NanoPi R2S Plus
-In-Reply-To: <20240801175736.16591-1-jin@mediatomb.cc>
-Message-ID: <756p9487-56pr-88p2-6o79-7oron3q8462n@yvfgf.mnoonqbm.arg>
-References: <22bbec28-41c1-4f36-b776-6e091bf118d9@kernel.org> <20240801175736.16591-1-jin@mediatomb.cc>
-X-OpenPGP-Key-Id: 0x14003F198FEFA3E77207EE8D2B58B8F83CCF1842
+Message-ID: <20240802100447.GB18509@ветеран.su>
+References: <22bbec28-41c1-4f36-b776-6e091bf118d9@kernel.org>
+ <20240801175736.16591-1-jin@mediatomb.cc>
+ <756p9487-56pr-88p2-6o79-7oron3q8462n@yvfgf.mnoonqbm.arg>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <756p9487-56pr-88p2-6o79-7oron3q8462n@yvfgf.mnoonqbm.arg>
+User-Agent: Mutt/1.5.21 (2010-09-15)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240802_024856_449878_F3CAC4BE 
-X-CRM114-Status: GOOD (  11.60  )
+X-CRM114-CacheID: sfid-20240802_030526_091704_D718BC37 
+X-CRM114-Status: GOOD (  16.36  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,32 +69,43 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, 1 Aug 2024, Sergey Bostandzhyan wrote:
+Hi,
 
-> Hi,
->
-> as requested, I am resending the patch series, now with hopefully all
-> relevant addresses on To/Cc.
->
-> I noticed, that a DTS for the R2S Plus is not yet available, while the
-> R2S is already there. The only difference is, that the Plus version has an
-> eMMC, so we can reuse the R2S definitions and only add an eMMC block, which
-> I copied from the DTS in the friendlyarm/uboot-rockchip repo.
+On Fri, Aug 02, 2024 at 09:46:40AM +0000, Bjoern A. Zeeb wrote:
+> >I noticed, that a DTS for the R2S Plus is not yet available, while the
+> >R2S is already there. The only difference is, that the Plus version has an
+> >eMMC, so we can reuse the R2S definitions and only add an eMMC block, which
+> >I copied from the DTS in the friendlyarm/uboot-rockchip repo.
+> 
+> The original has a
+> 	// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
+> 
+> please don't lose the OR MIT as other projects outside Linux do use the
+> same dts files;  and the original r2s file also preserved it.
 
-The original has a
- 	// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
+Uhm... I am confused now, I copy-pasted the emmc block from this file:
+https://github.com/friendlyarm/uboot-rockchip/blob/nanopi4-v2017.09/arch/arm/dts/rk3328-nanopi-r2.dts#L7
 
-please don't lose the OR MIT as other projects outside Linux do use the
-same dts files;  and the original r2s file also preserved it.
+The header does not have the "OR MIT" in there, it's just
+"SPDX-License-Identifier:     GPL-2.0+" which is what I also copied
+over, together with the (c) part.
 
+The source which I was using is described in the commit message:
 
--- 
-Bjoern A. Zeeb                                                     r15:7
+The eMMC configuration for the DTS has been extracted and copied from
+rk3328-nanopi-r2.dts, v2017.09 branch from the friendlyarm/uboot-rockchip 
+repository.
+
+Maybe you looked at a different branch? Shall I still add the "OR
+MIT" or leave it as in the original file which I copied it from?
+
+Kind regards,
+Sergey
 
 _______________________________________________
 Linux-rockchip mailing list
