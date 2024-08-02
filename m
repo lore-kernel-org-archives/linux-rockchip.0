@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B1A7FC3DA7F
-	for <linux-rockchip@archiver.kernel.org>; Fri,  2 Aug 2024 21:47:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C16EAC3DA4A
+	for <linux-rockchip@archiver.kernel.org>; Fri,  2 Aug 2024 21:47:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=WroVd/R5HXwL0lmgXDxfXxhkie4G7XpJ5iMuMt2Hhg8=; b=QdgRqN6AnQHjqE
-	5ZEDC72BlpJt5avIB7QRo/FN1mlelebVQuNQP8guVZblb32mKVO+gyIZV0l+oISLaULGz6CR5P47/
-	MeePZLkQHhxz9mecWyD2gMqCeMiYtqfJXhWbXOnFmBl7sXI4YnbtlXZIEFGVus+ANc3HP3xfdVqkk
-	EHYjQ36Hg5aAuWn21T6c1DEGPnVdG7UjypUy60CD2uEk1s4C/qTVxkjd5JWF/GaSWbwLXLw6yB0Bn
-	9a9W22Lcw8/rYTz90HTo3p3hK27mDiMHQApE3Z3kd0ameuPergfMEKy7m3xt5eNnMKTfAKLGv6K0B
-	ZxZWTOKgQfVwUtbcg6tw==;
+	List-Owner; bh=LxrOEFQRi1orNp46cD2wJibMNcI4X+R4LnNRRyHJzEk=; b=rqeez+Lp9fKDTV
+	SWX2aNBxOsixZp4cq/Na0a9Z/6KpKreh/uyrXKbHAZ4LNNTkxD14qVh+e3eLeyBrElHd12LLfe7Ya
+	PCzBDnkXO6ZENapNEsfZMkzQ6of+skPJEqOO9KCVEfNFiMZPr8HFExcpAiOeK9sLxSR1tLg613T3l
+	v6N8T9NITexXTrKCmvPAqeirv6pURnCAqtp99/7axutNqcFqpI1ay27DAFWWE8mu/TIYe0+h4PV08
+	HOke1wfbJDfqgS4ZEFZdD22jvUIvuFNXLJQk/TDFsPiHywhpMeO8t8OwLylT+YxZa0UDUcJTJulNR
+	LnFSiQ3UUWHufdDa0M+w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sa07S-0000000AAjD-42Fc;
-	Fri, 02 Aug 2024 21:47:26 +0000
-Received: from madrid.collaboradmins.com ([46.235.227.194])
+	id 1sa07v-0000000AAtB-3eZz;
+	Fri, 02 Aug 2024 21:47:55 +0000
+Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sa05e-0000000A9vQ-3wyp;
-	Fri, 02 Aug 2024 21:45:36 +0000
+	id 1sa05k-0000000A9wG-0fkx;
+	Fri, 02 Aug 2024 21:45:41 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1722635133;
-	bh=e0+PUEkHSyUD2HR5V+vwn4lHRQiXIOqVrikA7wcZnLc=;
+	s=mail; t=1722635139;
+	bh=FhIxHawWEwh964/jKmFUWfPuSLrTDhbhoA914QemqOA=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=TXQD84DfiFvaTtmHgPfoi4qlFE9GP6WNpIE0vkOt20H1K+DJb7kEAikpQAjLLDpan
-	 KuEcrpwuRWXzXf8sWxPSYM5eUOOuFJcNkNeH7GJQa1MiWz8QeJufSNlX65/ERNiAg/
-	 K2/9FHJap7CYmE/SjaGhleTsO4nJec+ZVfXyE4IFmFcmQCJvZVWtnQUbUtR17enylB
-	 YWKnroTvg5l/ToSQird1WVO8AMlXHqwFmpQpoD5oPA4ubu77H6y2eLH42jGGKiXukE
-	 fxh3PWZ6bOH1vEBlNLTp3x5+O7dmHHwtKV75slSyD3OwjgCt+erz5yXxIhDqS16mJS
-	 oWimHfggzbueg==
+	b=fWK2QnqVqKS5xNsBaP5oiffm/+HgvDyOSqB8s9oqlP/jDGa9OeYC3+QXJnckBsm7o
+	 31Ct66DjQ5wNt0N2VhL2aTKxQGF3I2AiY1CcngO2AJJUP7fJnr10wBQMAgHrlKFow7
+	 fMu1XOdeuB/0VYPTLy6HLP8wsefAlNeFZsQ9lnC4rT2U0D2LSMJ2Bv0jmjq74oLsaG
+	 tkzKMwGW0DDgPNvJx7+U3AdxgBAvgXpwos0WarK3oAh2NGxXONEMwLiv3r8axcVGkY
+	 Cks89IsQ8bzHTrCITF1I3gDAYy/TwQz2EVQbee5eTuS40BoTKMTmCKVHVYRoPgKUfE
+	 tBJZ8OuY/wQag==
 Received: from trenzalore.hitronhub.home (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: detlev)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id ECDBB378221C;
-	Fri,  2 Aug 2024 21:45:28 +0000 (UTC)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 21054378221E;
+	Fri,  2 Aug 2024 21:45:34 +0000 (UTC)
 From: Detlev Casanova <detlev.casanova@collabora.com>
 To: linux-kernel@vger.kernel.org
 Cc: Rob Herring <robh@kernel.org>,
@@ -82,17 +82,16 @@ Cc: Rob Herring <robh@kernel.org>,
 	linux-iio@vger.kernel.org,
 	linux-serial@vger.kernel.org,
 	kernel@collabora.com
-Subject: [PATCH 03/10] dt-bindings: i2c: i2c-rk3x: Add rk3576 compatible
-Date: Fri,  2 Aug 2024 17:45:30 -0400
-Message-ID: <20240802214612.434179-4-detlev.casanova@collabora.com>
+Subject: [PATCH 04/10] dt-bindings: iio: adc: Add rockchip,rk3576-saradc string
+Date: Fri,  2 Aug 2024 17:45:31 -0400
+Message-ID: <20240802214612.434179-5-detlev.casanova@collabora.com>
 X-Mailer: git-send-email 2.46.0
 In-Reply-To: <20240802214612.434179-1-detlev.casanova@collabora.com>
 References: <20240802214612.434179-1-detlev.casanova@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240802_144535_126793_641AC8CD 
-X-CRM114-Status: UNSURE (   9.61  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240802_144540_355345_121AC3E4 
+X-CRM114-Status: GOOD (  10.19  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,26 +108,29 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Just like RK356x and RK3588, RK3576 is compatible to the existing
-rk3399 binding.
+Add rockchip,rk3576-saradc compatible string.
+The saradc on RK3576 is compatible with the one on RK3588, so they are
+used together in an arm of the oneOf.
 
 Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
 ---
- Documentation/devicetree/bindings/i2c/i2c-rk3x.yaml | 1 +
- 1 file changed, 1 insertion(+)
+ Documentation/devicetree/bindings/iio/adc/rockchip-saradc.yaml | 3 +++
+ 1 file changed, 3 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/i2c/i2c-rk3x.yaml b/Documentation/devicetree/bindings/i2c/i2c-rk3x.yaml
-index 82b9d6682297b..a9dae5b52f286 100644
---- a/Documentation/devicetree/bindings/i2c/i2c-rk3x.yaml
-+++ b/Documentation/devicetree/bindings/i2c/i2c-rk3x.yaml
-@@ -38,6 +38,7 @@ properties:
-               - rockchip,rk3308-i2c
-               - rockchip,rk3328-i2c
-               - rockchip,rk3568-i2c
-+              - rockchip,rk3576-i2c
-               - rockchip,rk3588-i2c
-               - rockchip,rv1126-i2c
-           - const: rockchip,rk3399-i2c
+diff --git a/Documentation/devicetree/bindings/iio/adc/rockchip-saradc.yaml b/Documentation/devicetree/bindings/iio/adc/rockchip-saradc.yaml
+index aa24b841393c0..fd93ed3991e05 100644
+--- a/Documentation/devicetree/bindings/iio/adc/rockchip-saradc.yaml
++++ b/Documentation/devicetree/bindings/iio/adc/rockchip-saradc.yaml
+@@ -16,6 +16,9 @@ properties:
+       - const: rockchip,rk3066-tsadc
+       - const: rockchip,rk3399-saradc
+       - const: rockchip,rk3588-saradc
++      - items:
++          - const: rockchip,rk3576-saradc
++          - const: rockchip,rk3588-saradc
+       - items:
+           - enum:
+               - rockchip,px30-saradc
 -- 
 2.46.0
 
