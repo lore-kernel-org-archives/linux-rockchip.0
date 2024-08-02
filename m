@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 31D34C3DA4A
-	for <linux-rockchip@archiver.kernel.org>; Fri,  2 Aug 2024 21:49:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 79788C3DA4A
+	for <linux-rockchip@archiver.kernel.org>; Fri,  2 Aug 2024 21:49:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=r3A4xhIC7IFI9WUeXIta3CFyWmdke3iMBCmXEVpPAMY=; b=a1M8+W+h/rtdea
-	CXR7Xo8vEmYNJbNdIrULTXSwa6l3zcYaWw1SzV7XTKjuo4hDF0S8pRVXsi538QiZIeek/VQ6SnDe3
-	71MqPBX8KLecwv/GPRk8fY5lSgjr302SOqKpxeHveUaz0rUwm9QhaWdoMEJz5CPI2OzMWNarZsI8g
-	Q+TsZUjCxHlK78kkj7FtqZHbRR77lJOMZMxDjeCQyIyaOkDWBfNp/mNbpdQFeASo/nyq+VnjpHVM/
-	GvDQQmwZP4m/+FhLdHaGEiDwZA+FgIlRw5slIZ+sX0sR/Qkl1l5A82a6AfNPMHjQygM3yyfzE1x3V
-	pGc21iq1SCRHaKIojvnA==;
+	List-Owner; bh=beDZDmWBFuG8fQRsbq/iBu1MBiLF95K6Gbc8BVMoB9E=; b=DJiHFXS92q8S8+
+	BtdtsGdAfNU+uL4MpFY/BIWQF9YfNPFNG9SmJ0fE+0ZLCFtllQhHk1VMLSF6nSaJ03XX45U/TVqdS
+	b8fIePLk2BMd6aBvy7YwGxBOMtjTNd9XFdwXpDGOwmZ1VInLTdPBI6s5NgqFt97CjdCalFbOEBy2i
+	VLtSz8fjB5gJZHatwW/ZoDeBTrIJte8awHJ9drwBRQsr5DFuBZmYevxc2Y74exL8IXdt22MMecKmT
+	AxdJwz43QwnXN2B2P688RoYa6amYqpOEgdW394+h/Bn6dlaj5Zjaby3lNWE14M/mI89XViFqfHkyd
+	tY3BX7PyAAGAX93fr9Yw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sa09M-0000000ABOZ-3bMi;
-	Fri, 02 Aug 2024 21:49:24 +0000
-Received: from madrid.collaboradmins.com ([46.235.227.194])
+	id 1sa09r-0000000ABb8-1QNM;
+	Fri, 02 Aug 2024 21:49:55 +0000
+Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sa05z-0000000AA3W-3AMr;
-	Fri, 02 Aug 2024 21:45:57 +0000
+	id 1sa064-0000000AA5M-3WzL;
+	Fri, 02 Aug 2024 21:46:02 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1722635154;
-	bh=uvT3dzvWR0w8/HlD0nqMKCFCYJsuy6C0W36k7ko/k7Q=;
+	s=mail; t=1722635159;
+	bh=t8pVIHFP0dyPMBeNusib0D5b7hMU5lnrduHBDi7Js0M=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=sHfJhj00PVz457G4VpgLq9dsaQfHiMM9+5zj45iiyD7cfDOlOuZphIZvXhWU7gl8q
-	 cx2UckLCPRWCSb6umTrhEog5UcaLM/yHjzg+NNkx/JTMGYhTxD3PxRHkmpqAeTGb/M
-	 2WcjoWgWRTdq84gJkKnanNEaxn8MBNYvF2cpBmtRu5xQInYXDicDkKPT1tjnc7vMsn
-	 tlSHzEMB/zURYGiY3o3irG+jeY0OJLUpKr6A8CASuwPCkYjkJs7/QU4z/rCpNx0mpF
-	 B/G21SAccur35w/eBdQePnk9t0cyEhMHOAAeERB/lSdNRuNKx3xQm2q6Wy8cg7o9rv
-	 hkBhezsMbORng==
+	b=sC29UgKnByhEVVvXnd2DiS2Oa38vUnBRPcvTM+ruwRqN0YpaexFuHC30S0NriKeO+
+	 5dwXJ+QZBTzdJaYcUyfSpQrqMEkeekYGK+OW8/eRimJ3/OHPEo/MU0+/r6RAMpsdtK
+	 EV3LmVMNbXZbHi8lwS4gQeYA21LiqW0EK9A2f5nE17//eYDPtS65tHLm4GZCOeD8cq
+	 24wMeRxFwmtTV771yzrQSVPx9n3gXcbZ+VplXzqcK4d7tqgH7CbhXWaSTSMzOMRGrt
+	 2/9ygvuZAFJTEr/CYbl62Bcxxa81Ow+EYcunhm3qC+Cm8AeW6r/Dduo5Za5ZK9lCsi
+	 QJ1iyo8K+SfUA==
 Received: from trenzalore.hitronhub.home (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: detlev)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id A4B043782220;
-	Fri,  2 Aug 2024 21:45:49 +0000 (UTC)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id D2A663782221;
+	Fri,  2 Aug 2024 21:45:54 +0000 (UTC)
 From: Detlev Casanova <detlev.casanova@collabora.com>
 To: linux-kernel@vger.kernel.org
 Cc: Rob Herring <robh@kernel.org>,
@@ -82,16 +82,16 @@ Cc: Rob Herring <robh@kernel.org>,
 	linux-iio@vger.kernel.org,
 	linux-serial@vger.kernel.org,
 	kernel@collabora.com
-Subject: [PATCH 07/10] dt-bindings: soc: rockchip: Add rk3576 syscon compatibles
-Date: Fri,  2 Aug 2024 17:45:34 -0400
-Message-ID: <20240802214612.434179-8-detlev.casanova@collabora.com>
+Subject: [PATCH 08/10] dt-bindings: timer: rockchip: Add rk3576 compatible
+Date: Fri,  2 Aug 2024 17:45:35 -0400
+Message-ID: <20240802214612.434179-9-detlev.casanova@collabora.com>
 X-Mailer: git-send-email 2.46.0
 In-Reply-To: <20240802214612.434179-1-detlev.casanova@collabora.com>
 References: <20240802214612.434179-1-detlev.casanova@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240802_144555_955240_73EA56CF 
-X-CRM114-Status: UNSURE (   8.97  )
+X-CRM114-CacheID: sfid-20240802_144601_034732_B72E04DE 
+X-CRM114-Status: UNSURE (   9.55  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -109,47 +109,25 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add all syscon compatibles for RK3576.
+Add compatible string for Rockchip RK3576 timer.
 
 Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
 ---
- .../devicetree/bindings/soc/rockchip/grf.yaml    | 16 ++++++++++++++++
- 1 file changed, 16 insertions(+)
+ Documentation/devicetree/bindings/timer/rockchip,rk-timer.yaml | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/Documentation/devicetree/bindings/soc/rockchip/grf.yaml b/Documentation/devicetree/bindings/soc/rockchip/grf.yaml
-index 78c6d5b64138f..4570fa6e67d61 100644
---- a/Documentation/devicetree/bindings/soc/rockchip/grf.yaml
-+++ b/Documentation/devicetree/bindings/soc/rockchip/grf.yaml
-@@ -20,6 +20,20 @@ properties:
-               - rockchip,rk3568-pipe-grf
-               - rockchip,rk3568-pipe-phy-grf
-               - rockchip,rk3568-usb2phy-grf
-+              - rockchip,rk3576-bigcore-grf
-+              - rockchip,rk3576-cci-grf
-+              - rockchip,rk3576-litcore-grf
-+              - rockchip,rk3576-gpu-grf
-+              - rockchip,rk3576-npu-grf
-+              - rockchip,rk3576-pmu1-grf
-+              - rockchip,rk3576-php-grf
-+              - rockchip,rk3576-pipe-phy-grf
-+              - rockchip,rk3576-sdgmac-grf
-+              - rockchip,rk3576-sys-grf
-+              - rockchip,rk3576-usb-grf
-+              - rockchip,rk3576-usbdpphy-grf
-+              - rockchip,rk3576-vo0-grf
-+              - rockchip,rk3576-vop-grf
-               - rockchip,rk3588-bigcore0-grf
-               - rockchip,rk3588-bigcore1-grf
-               - rockchip,rk3588-hdptxphy-grf
-@@ -58,6 +72,8 @@ properties:
-               - rockchip,rk3399-pmugrf
-               - rockchip,rk3568-grf
-               - rockchip,rk3568-pmugrf
-+              - rockchip,rk3576-ioc-grf
-+              - rockchip,rk3576-pmu0-grf
-               - rockchip,rk3588-usb2phy-grf
-               - rockchip,rv1108-grf
-               - rockchip,rv1108-pmugrf
+diff --git a/Documentation/devicetree/bindings/timer/rockchip,rk-timer.yaml b/Documentation/devicetree/bindings/timer/rockchip,rk-timer.yaml
+index 19e56b7577a08..6d0eb0014eee7 100644
+--- a/Documentation/devicetree/bindings/timer/rockchip,rk-timer.yaml
++++ b/Documentation/devicetree/bindings/timer/rockchip,rk-timer.yaml
+@@ -24,6 +24,7 @@ properties:
+               - rockchip,rk3228-timer
+               - rockchip,rk3229-timer
+               - rockchip,rk3368-timer
++              - rockchip,rk3576-timer
+               - rockchip,rk3588-timer
+               - rockchip,px30-timer
+           - const: rockchip,rk3288-timer
 -- 
 2.46.0
 
