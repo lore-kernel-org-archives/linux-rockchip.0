@@ -4,76 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D6A58C52D71
-	for <linux-rockchip@archiver.kernel.org>; Fri,  2 Aug 2024 05:38:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 033AAC3DA4A
+	for <linux-rockchip@archiver.kernel.org>; Fri,  2 Aug 2024 07:32:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Subject:References:In-Reply-To:
-	Message-ID:Date:CC:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=uKzIUpBAxG5XRN7kcoDzbEAd32xthA3uSNGvVuXlws0=; b=rnRdLWKJ9Rlv5D
-	casUo1Cxz16mAJ//4u37CutJynAQvv2/kZd4srOv0auo5LwPjkqm6lRycuOs4MhdfAh1nbPjSUzUf
-	QgY/UVoKUvJPNb1j4OMZVhCcKB8p7GMy0CAGNKJoD40QppQph9uYFFkxgpmXB9mhtc1UcY6XWEPC9
-	mzNQA+IAFhyse/4f0H7CsJsfMAis6NBVHF7ZJXBwnwUumwSiLhk6EYm62fTXmp4IjmBp4I8cN0BBC
-	Sp4EgYFePOzce1yu0dJqsOSs6TyiflsFciiVq75mDCUVWRyIZ22WRkoNYq4M6m0WJZOjNJFMvYrQQ
-	f0x5NcQImrpIUzJr1e1g==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Subject:To:From:Date:
+	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
+	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=qj2X2sIa48yj4P9Ny33qOR+6sEKieGJ8e30b1y8a/mU=; b=l3jgLtNd4tYXrX
+	1xi3/4NRdWiRvRhJEZdkeYcWwB3CybWg2Lu8QU04HbRnPlAE/eO//5rnJlGiPcP7MTXOA0Jr2SbhT
+	O4Qhi7sv9/qsapx8vmRj1yzMsZ7tN3LGklqShvXWFKjSRgwjS/wWz8NaGoUS8dAKIgFnqVhzHZHd0
+	DGiquu0hweC+TifU4bYSoEw0sjwcC+Zh+SZvkR80Gcrw0w+vj8s1gyLN5kODKyUPw6JAvD1nQemvB
+	WnK0pl+qD6vM3upP7Qx2T7jlCruWoRweJYSdO7TtUl3cIS586JVNEK1hy2atxnUBAauMl1wCk+gnP
+	cZHewYkvl3uyQ/sTyO5A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sZkzk-00000007iDl-1DmE;
-	Fri, 02 Aug 2024 05:38:28 +0000
-Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
+	id 1sZmla-00000007xYb-3HzZ;
+	Fri, 02 Aug 2024 07:31:58 +0000
+Received: from mail.synergyflux.pl ([51.38.99.212])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sZkzh-00000007iBo-3cRj
+	id 1sZmlX-00000007xX3-2hsQ
 	for linux-rockchip@lists.infradead.org;
-	Fri, 02 Aug 2024 05:38:27 +0000
-Received: by mail-wm1-x336.google.com with SMTP id 5b1f17b1804b1-428141be2ddso51167615e9.2
-        for <linux-rockchip@lists.infradead.org>; Thu, 01 Aug 2024 22:38:24 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=broadcom.com; s=google; t=1722577103; x=1723181903; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:subject:user-agent
-         :references:in-reply-to:message-id:date:cc:to:from:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=DfeP6amEbFO01B4Acz+SaLNxYhMl+/N6xqPd9wmuVYo=;
-        b=NYYuB3Qi2T2dkCqntHkw78u3QbhbTttLVsMa09rfWH38bHV1PCX+rMJLXuNofxuTo/
-         Ee3wE5zJqgILXIjRyg16Un9C6MfZbD3vlfxtstlbvqiQdmbXq071E217thOG2uFvKHzU
-         s/CoUqwvoXr8aqNknafIvgYQSADTABTYq5CZA=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1722577103; x=1723181903;
-        h=content-transfer-encoding:mime-version:subject:user-agent
-         :references:in-reply-to:message-id:date:cc:to:from
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=DfeP6amEbFO01B4Acz+SaLNxYhMl+/N6xqPd9wmuVYo=;
-        b=MqRp32HGaT5Qw1x+qcX2CwBiPnB/gdkzNRdZGoRK+/6t85dQcT5hyPLAbtuVcSy+3o
-         zmGv4vRHUpaQ9NCd6d0ZtG7aOmV/NIMWshgSG8gpv2C81xC31w3m5cYVvYgJzRzEmFTp
-         6trHRlz4kEzXRc/oWaU5nEt0KL3ZVWZP0y4ydJhuzzQ8ywuwHQTrT2MNMNe7BPIBSO5m
-         VXkoNQlq/N+5dY1xnoGr43GfcRI93hRu/v7CU5vFBiaVO5pt+PMYh9uE/LvIeo3m4FDW
-         BB0zrZEPoGczwmprPlylmVeIcV1ULb12RQPcs1pN8woanSxQTHAQ6LCbTAeXDoAkgjs7
-         V0xA==
-X-Forwarded-Encrypted: i=1; AJvYcCW/WfUJ27/LAMk4qn6Kce4ZSUIqyulmZ8vLN1sxa5ACkyhd0BXdRlF21RlEKj9nbpCzs0bl+kbn4wgcD51GaxvJI5PskIEpCZDvDpgFQNTrHa/b
-X-Gm-Message-State: AOJu0Yy4vuhn/j4BpFe2CuIGVGBtSavd7a6PGb/hYsq93a0u5vI6i+wc
-	G7T5SiLBDnGl7gQ0qp2uDrLVv7YJT+PRM1eG+EsJwcQKW+UUdcO1AUJJkX6vUg==
-X-Google-Smtp-Source: AGHT+IEejV9gHMncaZ3o/uEqdLFU6pJXfTAhrguKl3WqsWQrl6f780k97r/VhDfVH2wQrwxF/xsUbA==
-X-Received: by 2002:a05:600c:1d20:b0:426:668f:5eca with SMTP id 5b1f17b1804b1-428e6af76f7mr14366225e9.7.1722577103013;
-        Thu, 01 Aug 2024 22:38:23 -0700 (PDT)
-Received: from [10.229.42.193] ([192.19.176.250])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4282b89a946sm81037345e9.6.2024.08.01.22.38.21
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 01 Aug 2024 22:38:22 -0700 (PDT)
-From: Arend Van Spriel <arend.vanspriel@broadcom.com>
-To: Jacobe Zang <jacobe.zang@wesion.com>, <robh@kernel.org>, <krzk+dt@kernel.org>, <heiko@sntech.de>, <kvalo@kernel.org>, <davem@davemloft.net>, <edumazet@google.com>, <kuba@kernel.org>, <pabeni@redhat.com>, <conor+dt@kernel.org>
-CC: <efectn@protonmail.com>, <dsimic@manjaro.org>, <jagan@edgeble.ai>, <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>, <linux-rockchip@lists.infradead.org>, <linux-kernel@vger.kernel.org>, <arend@broadcom.com>, <linux-wireless@vger.kernel.org>, <netdev@vger.kernel.org>, <megi@xff.cz>, <duoming@zju.edu.cn>, <bhelgaas@google.com>, <minipli@grsecurity.net>, <brcm80211@lists.linux.dev>, <brcm80211-dev-list.pdl@broadcom.com>, <nick@khadas.com>
-Date: Fri, 02 Aug 2024 07:38:22 +0200
-Message-ID: <1911198a4b0.279b.9b12b7fc0a3841636cfb5e919b41b954@broadcom.com>
-In-Reply-To: <20240802025715.2360456-5-jacobe.zang@wesion.com>
-References: <20240802025715.2360456-1-jacobe.zang@wesion.com>
- <20240802025715.2360456-5-jacobe.zang@wesion.com>
-User-Agent: AquaMail/1.51.5 (build: 105105504)
-Subject: Re: [PATCH v7 4/5] wifi: brcmfmac: Add optional lpo clock enable support
+	Fri, 02 Aug 2024 07:31:56 +0000
+Received: by mail.synergyflux.pl (Postfix, from userid 1002)
+	id 38484259F9; Fri,  2 Aug 2024 09:31:44 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=synergyflux.pl;
+	s=mail; t=1722583914;
+	bh=n9RRp8MlabRDJBtJNro49Rmci90RtotaZYZ8+xo6WI4=;
+	h=Date:From:To:Subject:From;
+	b=mokOFefsVYN7dv3Y/UItaW5DAKuwoev0h9e5waj41QXA/g8I9R1QUDRV90xqUnxX7
+	 vAPEnVVIVoWLgEmQIsTEMhvEutCsdDiawQVBJDShAs84bqoL0SKc0X49oo1eKfiQQU
+	 uokpbUvHNYnkFukgB2nbbOfhS6VWuRVwDHN/yd13yvGMf1WXj8itqSabw09mvNlgmC
+	 Z2fntAzAkko39iNblh80S8BoMqVFV9AwNZec3ZM8uwql/HqsvhupSVioR2R9o+SPUY
+	 xeG/pF2ljKukuir8XJmob7LUyx5v5pxwG+FnUMxZ2pRJAvowLwXrHECQajv7UbEFqo
+	 Tne/g6v/FDyTw==
+Received: by mail.synergyflux.pl for <linux-rockchip@lists.infradead.org>; Fri,  2 Aug 2024 07:30:58 GMT
+Message-ID: <20240802084500-0.1.d4.39hcx.0.gkunolg797@synergyflux.pl>
+Date: Fri,  2 Aug 2024 07:30:58 GMT
+From: =?UTF-8?Q?"Konrad_Zieli=C5=84ski_"?= <konrad.zielinski@synergyflux.pl>
+To: <linux-rockchip@lists.infradead.org>
+Subject: Instalacja pv
+X-Mailer: mail.synergyflux.pl
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240801_223826_187669_B8CC6117 
-X-CRM114-Status: GOOD (  10.74  )
+X-CRM114-CacheID: sfid-20240802_003155_853571_3CE5ECD4 
+X-CRM114-Status: UNSURE (   0.40  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,38 +62,19 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On August 2, 2024 4:57:48 AM Jacobe Zang <jacobe.zang@wesion.com> wrote:
-
-> WiFi modules often require 32kHz clock to function. Add support to
-> enable the clock to PCIe driver and move "brcm,bcm4329-fmac" check
-> to the top of brcmf_of_probe. Change function prototypes from void
-> to int and add appropriate errno's for return values.
-
-Sorry, but this is moving in the wrong direction. The reason for changing 
-from void to int was to propagate the error up to the bus, ie. PCIe, SDIO, 
-or USB. Anyway, I reworked this patch last night to do just that. Let me 
-send it out to you.
-
-Regards,
-Arend
-
-> Co-developed-by: Ondrej Jirman <megi@xff.cz>
-> Signed-off-by: Ondrej Jirman <megi@xff.cz>
-> Signed-off-by: Jacobe Zang <jacobe.zang@wesion.com>
-> Change-Id: I21bf9e21b275452369dce1f50c2f092eded6376c
-> ---
-> .../wireless/broadcom/brcm80211/brcmfmac/of.c | 49 +++++++++++--------
-> .../wireless/broadcom/brcm80211/brcmfmac/of.h |  4 +-
-> 2 files changed, 31 insertions(+), 22 deletions(-)
-
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+RHppZcWEIGRvYnJ5LAoKY3p5IHPEhSBQYcWEc3R3byBvdHdhcmNpIG5hIG5pZXpvYm93acSFenVq
+xIVjxIUgcm96bW93xJkgbmEgdGVtYXQgZm90b3dvbHRhaWtpPwoKSmFrbyBmaXJtYSBzcGVjamFs
+aXp1asSFY2Egc2nEmSB3IGluc3RhbGFjamkgaSBzZXJ3aXNpZSBuYWpsZXBzenljaCBqYWtvxZtj
+aW93byBwYW5lbGkgc8WCb25lY3pueWNoIG5hIHJ5bmt1IGNoY2lhxYJieW0gcHJ6ZWRzdGF3acSH
+IHByb3BvenljasSZLCBqYWvEhSB3c3DDs2xuaWUgeiB6ZXNwb8WCZW0gcHJ6eWdvdG93YWxpxZtt
+eSBkbGEgUGHFhHN0d2Egb2JpZWt0dS4KCkLEmWTEmSB3ZHppxJljem55IHphIHdpYWRvbW/Fm8SH
+IG9kIFBhxYRzdHdhIGN6eSBtb8W8ZW15IHBvcm96bWF3aWHEhy4KCgpQb3pkcmF3aWFtCktvbnJh
+ZCBaaWVsacWEc2tpIAoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmlu
+ZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9s
+aW51eC1yb2NrY2hpcAo=
