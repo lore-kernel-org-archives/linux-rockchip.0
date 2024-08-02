@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A09D1C52D6F
-	for <linux-rockchip@archiver.kernel.org>; Fri,  2 Aug 2024 15:35:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E998DC3DA4A
+	for <linux-rockchip@archiver.kernel.org>; Fri,  2 Aug 2024 15:36:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=yUDIZ8DKgGVGsxJhh1A6ybzu/26is6/If0a5QjirrVY=; b=NE8IRz2SG8MHsA
-	APHKD765iMvHJTjfPeVyrh1NPNrgLRGaORA/tjQU3eQAdRzSJB6SH3kVqXSqZKV+LhqzejMfyJdl4
-	FOrfomsJLHGR5DD8XpAFA0Wzu+gKVPJv5VT2XifTzMNnC1qYrj+EL6hu8IV35XARdqMuPhAQ49K/9
-	FtyYtGhgvsloWizrV5YXDcn1ksrNoUedTONFu3qGaemVYQdWoLQ6QVXHNWCx9AVxqot3b+aer7EMU
-	H9K2geCmZoTB0F3hOiKmEzUtDE1K3M9PYZdClVGicQgf8pGiBQelwE4EAVox1GXfmZ605mx4lHzGq
-	mS127WtrXhdk88j2nWvQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=Pp53eiTkQkXFfstUKUuC1wPp6cIOMbMAZJvMbQJDjQY=; b=MkMx0K9XZHNJIp
+	vxwENPNW8J+416Rp2hch+UO4m8B21vW8SSKx22+sCYOcQ75HlxGP1XGtbEdo8dBYqHu2wRygMEYiM
+	0v0IK2+Okhhq9qAoXUE7wLpUGgcvBde+FW8IDY1SHeM4JCe+c+/iBhCzEJaFGNQqvCJ0sP9yMYPwW
+	RbSam4w2x+HdKpeN6WORps3V1l91DEyMA+/YRVlquYo/+L6vmYiqoB8TE1EGNdbpIhIfpYYXw/fzE
+	zEl3dFIUrcdib9kR9+v33u9zFIUSDmfq1DdEbx0YDQ0xdItAtzazQUh73imPsr+OK/48iDLF9KHGF
+	7S2VxmchHbMi5zcZQlpA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sZuJg-00000009Id2-0MN8;
-	Fri, 02 Aug 2024 15:35:40 +0000
-Received: from madrid.collaboradmins.com ([46.235.227.194])
+	id 1sZuK9-00000009ImD-0cBF;
+	Fri, 02 Aug 2024 15:36:09 +0000
+Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sZuJA-00000009ITV-0hol;
+	id 1sZuJA-00000009ITX-0wHI;
 	Fri, 02 Aug 2024 15:35:09 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1722612904;
-	bh=k5rIFuap9u09uK4DFf3V6w/o37SuG4BJxHIP00dzT/o=;
-	h=From:To:Cc:Subject:Date:From;
-	b=15wWidehvvP1d0fUCgwMWS5h4SN6RPQUX90ZDvRIaSEhKdErdn8heH8glxWkbYSWA
-	 WdamB47lPsOz2Ze+lvi2mV/lm8b3ywNWUiLRPI+iWoHuG/uYjZvxj4qRKLUAr3AFwd
-	 +of/UK1AaZ8agJgWpiQWPpTchQcGA/h99F6bjsTPFX8OfoVxjfB/OJYmTWCQIBFS8h
-	 u3qIe5NNJByDhxzgJbEPhvEA/DVr4D+ysR39ESExInRVeb1Mpz/q3SAMEKUWI2JKfF
-	 guKr7AKPwW9JWHfhMup4IseDQ+r+hI0N9N4VWMe5BUB8+5vEfNmzS8UbcwFUkHltJK
-	 UVTUhaJCHL4Yg==
+	s=mail; t=1722612906;
+	bh=jOKejuFSI0ocJibzterhxRI6kfUg7oPe9uQyDE1Jcuk=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=fU5f7jpHZiCqmXKjm6eioVwx5zs6v6QO8kPVDatiedSdLlPC3BdGUo70zwDTXY3Ss
+	 1rSch4obdF5cbuN/8mlP8dNWMPZBHNvwQjx/iHOiXI1GZRDSrJwxX6MctFNlF83xwx
+	 7emxEu0uHmakYAMdmDpxXzCLScrv8SCcWgGNi6thRrLpDNjW06l9lgusXuuFGpbEkN
+	 OGiDYGfYJeBpJFtBM/sx361MZCeAJd1ZLsM14qCMIKUfPQWmAdacdgKEXx/RcdxU0y
+	 qL2AV1xVQ7qdrBQJAJKTmsTNj6H2LWzfmqLQgVJE92a/Txcrs/RCsBIJATk2TKwQcW
+	 gSWHKee63G86Q==
 Received: from trenzalore.hitronhub.home (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: detlev)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 0D4BC3782212;
-	Fri,  2 Aug 2024 15:35:02 +0000 (UTC)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 21E823782219;
+	Fri,  2 Aug 2024 15:35:05 +0000 (UTC)
 From: Detlev Casanova <detlev.casanova@collabora.com>
 To: linux-kernel@vger.kernel.org
 Cc: Ulf Hansson <ulf.hansson@linaro.org>,
@@ -56,14 +56,16 @@ Cc: Ulf Hansson <ulf.hansson@linaro.org>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
 	Detlev Casanova <detlev.casanova@collabora.com>
-Subject: [PATCH 0/3] Add dw_mmc support for rk3576
-Date: Fri,  2 Aug 2024 11:31:26 -0400
-Message-ID: <20240802153609.296197-1-detlev.casanova@collabora.com>
+Subject: [PATCH 1/3] dt-bindings: pinctrl: Add rk3576 dw-mshc bindings
+Date: Fri,  2 Aug 2024 11:31:27 -0400
+Message-ID: <20240802153609.296197-2-detlev.casanova@collabora.com>
 X-Mailer: git-send-email 2.46.0
+In-Reply-To: <20240802153609.296197-1-detlev.casanova@collabora.com>
+References: <20240802153609.296197-1-detlev.casanova@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240802_083508_366421_852E4A9E 
-X-CRM114-Status: GOOD (  10.15  )
+X-CRM114-CacheID: sfid-20240802_083508_409632_1B5A0BB5 
+X-CRM114-Status: GOOD (  13.51  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,23 +82,43 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The SD card controller on the rk3576 SoC uses a new tuning version that is
-capable of using pre-boot tuning information.
+Add the compatible string for rockchip,rk3576-dw-mshc and add support
+for the rockchip,use-v2-tuning flag, a new feature of this core.
 
-Also, it stores the phase settings into the dw_mmc controller, so the code
-has to be adapted to implement that.
+Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
+---
+ .../devicetree/bindings/mmc/rockchip-dw-mshc.yaml     | 11 +++++++++++
+ 1 file changed, 11 insertions(+)
 
-Detlev Casanova (1):
-  dt-bindings: pinctrl: Add rk3576 dw-mshc bindings
-
-Shawn Lin (2):
-  mmc: dw_mmc-rockchip: Add v2 tuning support
-  mmc: dw_mmc-rockchip: Add internal phase support
-
- .../bindings/mmc/rockchip-dw-mshc.yaml        |  11 +
- drivers/mmc/host/dw_mmc-rockchip.c            | 224 +++++++++++++++++-
- 2 files changed, 226 insertions(+), 9 deletions(-)
-
+diff --git a/Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.yaml b/Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.yaml
+index 211cd0b0bc5f3..dd8d1e773bb38 100644
+--- a/Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.yaml
++++ b/Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.yaml
+@@ -39,6 +39,7 @@ properties:
+               - rockchip,rk3368-dw-mshc
+               - rockchip,rk3399-dw-mshc
+               - rockchip,rk3568-dw-mshc
++              - rockchip,rk3576-dw-mshc
+               - rockchip,rk3588-dw-mshc
+               - rockchip,rv1108-dw-mshc
+               - rockchip,rv1126-dw-mshc
+@@ -95,6 +96,16 @@ properties:
+       If not specified, the host will do tuning for 360 times,
+       namely tuning for each degree.
+ 
++  rockchip,use-v2-tuning:
++    $ref: /schemas/types.yaml#/definitions/flag
++    description:
++      If present, use tuning version 2.
++      v2 tuning will inherit pre-stage loader's phase settings for the first
++      time, and do re-tune if necessary.
++      Re-tune will still try the rough degrees, for instance, 90, 180, 270,
++      360 but continue to do the fine tuning if sample window isn't good
++      enough.
++
+ required:
+   - compatible
+   - reg
 -- 
 2.46.0
 
