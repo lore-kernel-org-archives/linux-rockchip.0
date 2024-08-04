@@ -4,56 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 14B73C3DA7F
-	for <linux-rockchip@archiver.kernel.org>; Sun,  4 Aug 2024 15:52:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 75BF2C3DA64
+	for <linux-rockchip@archiver.kernel.org>; Sun,  4 Aug 2024 16:30:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=a3ChD8X2utKnAtdc1Bn9Uf8NvqdTP1/CcSg6seIEZwo=; b=E1oS/R1NNQGfGq
-	ZW5PPsBhfqrecR0iNL2i3dRUTzJpe1Tvd3SouqP3TyqXHPV54PzQN1RKYK2nYpE7GKZBsA+fgM0Cz
-	YVt7uOqTVhLvIa9F60ptjUpRMEy/6jckhZBCs612RCrBdmwIeuVVDD93omomgxyGfoLaZY3T0BxCT
-	TLT7/h1of+9zisVIerWkQEG0dMLR3J7Er35jxK6rGYDl+9qn1NSPc4dBFL+6NqJGc/4FcOE8k6gm3
-	M7aCCQGzOT0Se21tfP3V62qXwi9Hfe1Dv8PSye/XWUugo/7y8l1+7E81zqgjE0GX/48IIlsOnZQ1o
-	bIwQEHhUXfFzDNpKhkuA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=M/50ZSt+xhGVFmTLDrmQR8YT0uZuc+mQROqZ3ZeQp6o=; b=YRIq7LZp+W5NagukCpEQXmYQB+
+	t6RwltKwAbPBXrWme3WcV7ewbRHo5uDpOqurZL4v3msIKjkW93JfgXaAq7JVaDbFELs/ZWnu/JpD/
+	uXKage9ApadDytkZYLvutucrg4/99Bq88kOQi2fo7ey2mcfsjX+CpfmSgSEyAC2gYZZ2vkz0X+piw
+	GJ4Chy1+ynENZePI17gIC0H1IoHjTcWY2drMHj9rBfq6wQyTU9VxjDudXpskvFRano6zFKTW9qV42
+	dbPD+jA1TUdkaH0QOJ0sFVMX5L6j/uz0ZDcN+cBvXI2SfBO2Ihf+7d3I/A6l2WX3hfLEv2RhzRt+R
+	fdu0plBg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sadWe-0000000DXET-1HVE;
-	Sun, 04 Aug 2024 15:52:04 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1sae7h-0000000DaE5-1XBC;
+	Sun, 04 Aug 2024 16:30:21 +0000
+Received: from sender4-op-o14.zoho.com ([136.143.188.14])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sadW7-0000000DX9k-0ug3;
-	Sun, 04 Aug 2024 15:51:33 +0000
-Received: from i53875a9f.versanet.de ([83.135.90.159] helo=diego.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1sadVp-0001Lx-IS; Sun, 04 Aug 2024 17:51:13 +0200
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+	id 1sae7e-0000000DaCk-09Cd
+	for linux-rockchip@lists.infradead.org;
+	Sun, 04 Aug 2024 16:30:19 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1722789006; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=nwje/47x9KaVtqaLL0x9JfB1uyv0xjezjL1JgVw191JI3w3bKebnLgfS1NI8frLPb5pc3a0X5cmnF8vYOrqYPt8JqyNVHyR3ya2WcQcVTa9FI2bveOCgsHI4ZA9F5pwtVB8LKnunM05oT9gJxR7/3cOnvOTfkWqhJT2YN6iicSA=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1722789006; h=Content-Type:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=k83AKgKohjBrZOHcPcl1ds4ciQppXSWeH0BLAv75Agw=; 
+	b=N4LwckCvh1DS36oBCam3In4ZWTiB7Nvp0kLKR5oZvbVj8uHEkv56H5txuTLUMTUzBwzKyJXYvyzsqrMa4d7WZPyroZiuCRG964e3cbAMCJ7I3Pt9n9QBh/vdCgBm3EPQ6w1mEIT6ziWI5iCwpYaU/LmdsilKE4wJEMH+gBjXwtg=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=sebastian.reichel@collabora.com;
+	dmarc=pass header.from=<sebastian.reichel@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1722789006;
+	s=zohomail; d=collabora.com; i=sebastian.reichel@collabora.com;
+	h=Date:Date:From:From:To:To:Cc:Cc:Subject:Subject:Message-ID:References:MIME-Version:Content-Type:In-Reply-To:Message-Id:Reply-To;
+	bh=k83AKgKohjBrZOHcPcl1ds4ciQppXSWeH0BLAv75Agw=;
+	b=AMrbWufef61W362zeWt6joY4UHfkcqN8r6+iGgbsMlePkrgRDUA3CPzRfNY4iOgZ
+	CGnuqKI96NKx2E0X8NFOVBOkdi34qci86W4D/aiDioJbhR6ekf6OAYOPlRdt6J5afxz
+	DIqkJTgD653qMtX9NVZODt8R4/185rnW/YO+B+eQ=
+Received: by mx.zohomail.com with SMTPS id 1722789004041478.35275864340895;
+	Sun, 4 Aug 2024 09:30:04 -0700 (PDT)
+Received: by mercury (Postfix, from userid 1000)
+	id 5F8131060930; Sun, 04 Aug 2024 18:29:57 +0200 (CEST)
+Date: Sun, 4 Aug 2024 18:29:57 +0200
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
 To: Dragan Simic <dsimic@manjaro.org>
-Cc: Yao Zi <ziyao@disroot.org>, Krzysztof Kozlowski <krzk@kernel.org>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Jiri Slaby <jirislaby@kernel.org>, Chris Morgan <macromorgan@hotmail.com>,
- Jonas Karlman <jonas@kwiboo.se>, Tim Lunn <tim@feathertop.org>,
- Andy Yan <andyshrk@163.com>, Muhammed Efe Cetin <efectn@protonmail.com>,
- Jagan Teki <jagan@edgeble.ai>, Ondrej Jirman <megi@xff.cz>,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-serial@vger.kernel.org
-Subject: Re: [PATCH 3/4] arm64: dts: rockchip: Add base DT for rk3528 SoC
-Date: Sun, 04 Aug 2024 17:51:12 +0200
-Message-ID: <10256980.nnTZe4vzsl@diego>
-In-Reply-To: <81147f0205c2a9555c9c64e4f7a69b6b@manjaro.org>
-References: <20240803125510.4699-2-ziyao@disroot.org> <2408413.9XhxPE3A7Q@diego>
- <81147f0205c2a9555c9c64e4f7a69b6b@manjaro.org>
+Cc: Chris Morgan <macromorgan@hotmail.com>, 
+	Chris Morgan <macroalpha82@gmail.com>, linux-rockchip@lists.infradead.org, linux-pm@vger.kernel.org, 
+	devicetree@vger.kernel.org, jagan@edgeble.ai, andyshrk@163.com, jonas@kwiboo.se, 
+	t.schramm@manjaro.org, heiko@sntech.de, conor+dt@kernel.org, krzk+dt@kernel.org, 
+	robh@kernel.org
+Subject: Re: [PATCH 2/5] power: supply: cw2015: Add support for dual-cell
+ configurations
+Message-ID: <3fgf7jyla6gtxqppjjnjb5dgciqqus2iwjunjavlmhy7fxdqv7@a2iycmzlgkbb>
+References: <20240726194948.109326-1-macroalpha82@gmail.com>
+ <20240726194948.109326-3-macroalpha82@gmail.com>
+ <eimocj6mlvo6u4x54heywblwrfnftxelzpvfcogpjp7vjmunor@5eqlqsszk6ni>
+ <MN2PR16MB2941F5FFA92B056533586FBDA5B12@MN2PR16MB2941.namprd16.prod.outlook.com>
+ <2eh5iqwtwlbpg5kpr4lvvhxo2tngw4w7qanelr6filcrru62le@o7cwpsahp2n7>
+ <8c44fcf923c5697ca55c8e32f3938d3b@manjaro.org>
 MIME-Version: 1.0
+In-Reply-To: <8c44fcf923c5697ca55c8e32f3938d3b@manjaro.org>
+X-Zoho-Virus-Status: 1
+X-Zoho-AV-Stamp: zmail-av-1.3.1/222.613.84
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240804_085132_307729_C64A7459 
-X-CRM114-Status: GOOD (  39.36  )
+X-CRM114-CacheID: sfid-20240804_093018_292623_E095F71B 
+X-CRM114-Status: GOOD (  52.19  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -65,238 +85,184 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: multipart/mixed; boundary="===============0092841604582709998=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Am Sonntag, 4. August 2024, 15:59:19 CEST schrieb Dragan Simic:
-> On 2024-08-04 15:44, Heiko St=FCbner wrote:
-> > Am Sonntag, 4. August 2024, 15:25:47 CEST schrieb Dragan Simic:
-> >> On 2024-08-04 15:20, Yao Zi wrote:
-> >> > On Sun, Aug 04, 2024 at 12:05:11PM +0200, Krzysztof Kozlowski wrote:
-> >> >> On 03/08/2024 14:55, Yao Zi wrote:
-> >> >> > This initial device tree describes CPU, interrupts and UART on th=
-e chip
-> >> >> > and is able to boot into basic kernel with only UART. Cache infor=
-mation
-> >> >> > is omitted for now as there is no precise documentation. Support =
-for
-> >> >> > other features will be added later.
-> >> >> >
-> >> >> > Signed-off-by: Yao Zi <ziyao@disroot.org>
-> >> >> > ---
-> >> >> >  arch/arm64/boot/dts/rockchip/rk3528.dtsi | 182 +++++++++++++++++=
-++++++
-> >> >> >  1 file changed, 182 insertions(+)
-> >> >> >  create mode 100644 arch/arm64/boot/dts/rockchip/rk3528.dtsi
-> >> >> >
-> >> >> > diff --git a/arch/arm64/boot/dts/rockchip/rk3528.dtsi b/arch/arm6=
-4/boot/dts/rockchip/rk3528.dtsi
-> >> >> > new file mode 100644
-> >> >> > index 000000000000..77687d9e7e80
-> >> >> > --- /dev/null
-> >> >> > +++ b/arch/arm64/boot/dts/rockchip/rk3528.dtsi
-> >> >> > @@ -0,0 +1,182 @@
-> >> >> > +// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
-> >> >> > +/*
-> >> >> > + * Copyright (c) 2022 Rockchip Electronics Co., Ltd.
-> >> >> > + * Copyright (c) 2024 Yao Zi <ziyao@disroot.org>
-> >> >> > + */
-> >> >> > +
-> >> >> > +#include <dt-bindings/interrupt-controller/arm-gic.h>
-> >> >> > +#include <dt-bindings/interrupt-controller/irq.h>
-> >> >> > +
-> >> >> > +/ {
-> >> >> > +	compatible =3D "rockchip,rk3528";
-> >> >> > +
-> >> >> > +	interrupt-parent =3D <&gic>;
-> >> >> > +	#address-cells =3D <2>;
-> >> >> > +	#size-cells =3D <2>;
-> >> >> > +
-> >> >> > +	aliases {
-> >> >> > +		serial0 =3D &uart0;
-> >> >> > +		serial1 =3D &uart1;
-> >> >> > +		serial2 =3D &uart2;
-> >> >> > +		serial3 =3D &uart3;
-> >> >> > +		serial4 =3D &uart4;
-> >> >> > +		serial5 =3D &uart5;
-> >> >> > +		serial6 =3D &uart6;
-> >> >> > +		serial7 =3D &uart7;
-> >> >> > +	};
-> >> >> > +
-> >> >> > +	cpus {
-> >> >> > +		#address-cells =3D <1>;
-> >> >> > +		#size-cells =3D <0>;
-> >> >> > +
-> >> >> > +		cpu-map {
-> >> >> > +			cluster0 {
-> >> >> > +				core0 {
-> >> >> > +					cpu =3D <&cpu0>;
-> >> >> > +				};
-> >> >> > +				core1 {
-> >> >> > +					cpu =3D <&cpu1>;
-> >> >> > +				};
-> >> >> > +				core2 {
-> >> >> > +					cpu =3D <&cpu2>;
-> >> >> > +				};
-> >> >> > +				core3 {
-> >> >> > +					cpu =3D <&cpu3>;
-> >> >> > +				};
-> >> >> > +			};
-> >> >> > +		};
-> >> >> > +
-> >> >> > +		cpu0: cpu@0 {
-> >> >> > +			device_type =3D "cpu";
-> >> >> > +			compatible =3D "arm,cortex-a53";
-> >> >> > +			reg =3D <0x0>;
-> >> >> > +			enable-method =3D "psci";
-> >> >> > +		};
-> >> >> > +
-> >> >> > +		cpu1: cpu@1 {
-> >> >> > +			device_type =3D "cpu";
-> >> >> > +			compatible =3D "arm,cortex-a53";
-> >> >> > +			reg =3D <0x1>;
-> >> >> > +			enable-method =3D "psci";
-> >> >> > +		};
-> >> >> > +
-> >> >> > +		cpu2: cpu@2 {
-> >> >> > +			device_type =3D "cpu";
-> >> >> > +			compatible =3D "arm,cortex-a53";
-> >> >> > +			reg =3D <0x2>;
-> >> >> > +			enable-method =3D "psci";
-> >> >> > +		};
-> >> >> > +
-> >> >> > +		cpu3: cpu@3 {
-> >> >> > +			device_type =3D "cpu";
-> >> >> > +			compatible =3D "arm,cortex-a53";
-> >> >> > +			reg =3D <0x3>;
-> >> >> > +			enable-method =3D "psci";
-> >> >> > +		};
-> >> >> > +	};
-> >> >> > +
-> >> >> > +	psci {
-> >> >> > +		compatible =3D "arm,psci-1.0", "arm,psci-0.2";
-> >> >> > +		method =3D "smc";
-> >> >> > +	};
-> >> >> > +
-> >> >> > +	timer {
-> >> >> > +		compatible =3D "arm,armv8-timer";
-> >> >> > +		interrupts =3D <GIC_PPI 13 (GIC_CPU_MASK_SIMPLE(4) | IRQ_TYPE_=
-LEVEL_LOW)>,
-> >> >> > +			     <GIC_PPI 14 (GIC_CPU_MASK_SIMPLE(4) | IRQ_TYPE_LEVEL_LOW=
-)>,
-> >> >> > +			     <GIC_PPI 11 (GIC_CPU_MASK_SIMPLE(4) | IRQ_TYPE_LEVEL_LOW=
-)>,
-> >> >> > +			     <GIC_PPI 10 (GIC_CPU_MASK_SIMPLE(4) | IRQ_TYPE_LEVEL_LOW=
-)>;
-> >> >> > +	};
-> >> >> > +
-> >> >> > +	xin24m: xin24m {
-> >> >>
-> >> >> Please use name for all fixed clocks which matches current format
-> >> >> recommendation: 'clock-([0-9]+|[a-z0-9-]+)+'
-> >> >
-> >> > Will be fixed in next revision.
-> >> =
 
-> >> Hmm, why should we apply that rule to the xin24m clock, which is
-> >> named exactly like that everywhere else in Rockchip SoC dtsi files?
-> >> It's much better to remain consistent.
-> > =
-
-> > bindings or how we write devicetrees evolve over time ... similarly the
-> > xin24m name comes from more than 10 years ago.
-> > =
-
-> > We also name all those regulator nodes regulator-foo now, which in turn
-> > automatically does enforce a nice sorting rule to keep all the =
-
-> > regulators
-> > around the same area ;-)
-> > =
-
-> > So I don't see a problem of going with xin24m: clock-xin24m {}
-> =
-
-> I agree that using "clock-xin24m" makes more sense in general, but the
-> trouble is that we can't rename the already existing instances of =
-
-> "xin24m",
-> because that has become part of the ABI.  Thus, I'm not sure that =
-
-> breaking
-> away from the legacy brings benefits in this particular case.
-
-In the regulator case, we have _new_ boards using the new _node_-names
-but I don't see any renaming of old boards and also don't think we should.
-
-But that still does not keep us from using the nicer naming convention in
-new boards ;-) .
+--===============0092841604582709998==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="nr6obygdxvzehgev"
+Content-Disposition: inline
 
 
-Same with xin24m. We're talking only about the node-name here. The
-phandle stays the same and also the actual clock name stays the same and
-really only the actual node name you need to look for in /proc/device-tree
-changes ;-) .
+--nr6obygdxvzehgev
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-So I don't see the need to go about changing all the old socs, but new
-additions should use improved naming conventions.
+Hi,
 
-xin24m: clock-xin24m {
-	compatible =3D "fixed-clock";
-	#clock-cells =3D <0>;
-	clock-frequency =3D <24000000>;
-	clock-output-names =3D "xin24m";
-};
+On Fri, Aug 02, 2024 at 11:39:24PM GMT, Dragan Simic wrote:
+> On 2024-07-31 19:02, Sebastian Reichel wrote:
+> > On Wed, Jul 31, 2024 at 11:02:11AM GMT, Chris Morgan wrote:
+> > > On Fri, Jul 26, 2024 at 11:06:21PM +0200, Sebastian Reichel wrote:
+> > > > On Fri, Jul 26, 2024 at 02:49:45PM GMT, Chris Morgan wrote:
+> > > > > From: Chris Morgan <macromorgan@hotmail.com>
+> > > > >
+> > > > > The Cellwise cw2015 datasheet reports that it can handle two cells
+> > > > > in a series configuration. Allow a device tree parameter to note
+> > > > > this condition so that the driver reports the correct voltage val=
+ues
+> > > > > to userspace.
+> > > >
+> > > > I found this:
+> > > >
+> > > > http://www.cellwise-semi.com/Public/assests/menu/20230302/640007680=
+6706.pdf
+> > > >
+> > > > Which says:
+> > > >
+> > > >   CW2015 can be used in 2 or more batteries connected in series, or
+> > > >   several cells connected in parallel.
+> > > >
+> > > > So dual-cell seems like a bad property name. Instead the number of
+> > > > serial cells should be provided. This property is then not really
+> > > > specific to the Cellwise fuel gauge and instead a property of the
+> > > > battery pack (i.e. simple-battery.yaml).
+> > >=20
+> > > It's conflicting information (which further confuses me). I see in
+> > > that
+> > > datasheet it says 2 or more, whereas the datasheet found here says
+> > > only
+> > > 2 cells:
+> > >=20
+> > > https://www.lestat.st/_media/informatique/projets/python-cw2015/cw201=
+5-power-management-datasheet.pdf
+> > >=20
+> > > But I agree in principle that we should be setting this as a property
+> > > of a simple-battery rather than a manufacturer specific parameter.
+> > >=20
+> > > >
+> > > > > Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
+> > > > > ---
+> > > > >  drivers/power/supply/cw2015_battery.c | 7 +++++++
+> > > > >  1 file changed, 7 insertions(+)
+> > > > >
+> > > > > diff --git a/drivers/power/supply/cw2015_battery.c b/drivers/powe=
+r/supply/cw2015_battery.c
+> > > > > index f63c3c410451..b23a6d4fa4fa 100644
+> > > > > --- a/drivers/power/supply/cw2015_battery.c
+> > > > > +++ b/drivers/power/supply/cw2015_battery.c
+> > > > > @@ -77,6 +77,8 @@ struct cw_battery {
+> > > > >  	u32 poll_interval_ms;
+> > > > >  	u8 alert_level;
+> > > > >
+> > > > > +	bool dual_cell;
+> > > > > +
+> > > > >  	unsigned int read_errors;
+> > > > >  	unsigned int charge_stuck_cnt;
+> > > > >  };
+> > > > > @@ -325,6 +327,9 @@ static int cw_get_voltage(struct cw_battery *=
+cw_bat)
+> > > > >  	 */
+> > > > >  	voltage_mv =3D avg * 312 / 1024;
+> > > > >
+> > > > > +	if (cw_bat->dual_cell)
+> > > > > +		voltage_mv *=3D 2;
+> > > >
+> > > > Unfortunately there are no details in the document, but this looks
+> > > > very fishy. Does it only measure the first cell and hope that the
+> > > > other cells have the same voltage?
+> > > >
+> > > > This (unmerged) series also applies to your problem to some degree:
+> > > >
+> > > > https://lore.kernel.org/all/20240416121818.543896-3-mike.looijmans@=
+topic.nl/
+> > >=20
+> > > I think based on the application diagram it is in fact measuring the
+> > > cell voltage.
+> > >=20
+> > > That said, this ultimately boils down to a cosmetic thing
+> > > as not having this property simply means userspace sees the battery
+> > > voltage as 3.8v instead of 7.6v as is written on the side.
+> >=20
+> > With the cells being connected in serial, the voltage of both cells
+> > can be different. There is not "the cell voltage". Instead there is
+> > a voltage for cell 1 and a voltage for cell 2. In a perfect battery
+> > they are the same, but in reality they are not. In the extreme case
+> > one of the cells may be broken while the other is still fine. It
+> > sounds as if this is just measuring the voltage from the first
+> > cell and assumes the second cell has the same voltage.
+> >=20
+> > Ideally the voltage on these platforms is not exposed via the normal
+> > VOLTAGE property and instead uses a new property for telling
+> > userspace the voltage for a single cell. The kernel simply does not
+> > know the voltage of the whole battery pack.
+> >=20
+> > FWIW this is the worst battery measurement system I've seen so far
+> > if my understanding of the hardware design is correct.
+>=20
+> Please note that two facts should be considered here:
+>=20
+>  - The GenBook schematic [1] clearly shows that the individual battery
+>    cells aren't exposed at its internal battery connector and, as a
+>    result, aren't available for individual cell voltage monitoring
+>=20
+>  - The GenBook uses a CW2013 as it fuel gauge, [1] instead of CW2015
+>    as mentioned here a few times, but I haven't went through the CW2013
+>    datasheet(s) yet to see what are the actual differences between it
+>    and the CW2015
+>=20
+> [1] https://wiki.cool-pi.com/notebook/coolpi-genbook-v20.pdf
+
+Ah, thanks for pointing to the schematics. So the fuel gauge can
+only measure the voltage of the whole battery, but VCELL register
+provides the voltage for 1 cell? What is the origin of the dual-cell
+property? Was this something you came up with yourself when noticing
+the wrong voltage?
+
+Based on the above information my guess would be that CW2013 uses a
+different voltage resolution than CW2015 for the VCELL register. The
+datasheet for CW2015 says 14bit ADC with 305uV resolution. Maybe
+the CW2013 simply uses a different ADC. Do you have the datasheet
+for the chip?
+
+-- Sebastian
+
+--nr6obygdxvzehgev
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmavrH0ACgkQ2O7X88g7
++pr/qxAApdbotqU12LgNuKVPIMNCOH7Yh7rvIWQo+T5qKZ02AaK6/KMqHdXEeak6
+zeEpTOYH7It70HVoe04AXVCUxl2Nq1YtKZP1aWoeHbjuE8fQNqyAGk/C/X3Lv5uA
+MbjschmTykXt9iUc/7aQnLUjsKf6Oi1SnhQA6fMlXqZxxaEAaNvRyorx0JLSnNv9
+w13ijDtnhKY45jkYONftZr7KTSOFg8E3YqnG4Rzxmx58m5caL6kGDbiUbi3VksfL
+tooBQgLw6N4kbzY0Egwv6wkDKRmEcsgtm8+CylHa1IO7Pji0BZX1C19HxXp+eR4G
+ATkTXWkdDl4bhA0vuc0gIISLp/H//YzMBqIdd6jYXFxma0BwpWBGdeFdb2oYWea6
+JKmPpX2/XaMF0AQXFY9eckn/GD1Kq/ogvuni4fPHPppOfl6Q3lSl4R1N5Kunuxfy
+sE4Kby5004Eyl+etceuAEOfNvNxDO6HVIDzjVmBumwW2/bdG511zM7BeVX2nz1Jk
+DMXP0BLEHekROWv+vY3JYskD+Iuux0FPMOU8YFEw97nBXAvt7JNIruv4ROO1bMPW
+/Eg1WzAd41kVw1rPYdY+lfCX949L/LlXgPz+EXzynYzR5M8nDtaNIE9IaQ+r1aoX
+5jNA+6qaAtg5r4Jwo5QdHz+XHPS1dkN5qvCJh/kfjOV9341UFxY=
+=82He
+-----END PGP SIGNATURE-----
+
+--nr6obygdxvzehgev--
 
 
-Heiko
-
-
-
-> >> >> https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/=
-tree/Documentation/devicetree/bindings/clock/fixed-clock.yaml?h=3Dv6.11-rc1
-> >> >>
-> >> >> > +		compatible =3D "fixed-clock";
-> >> >> > +		#clock-cells =3D <0>;
-> >> >> > +		clock-frequency =3D <24000000>;
-> >> >> > +		clock-output-names =3D "xin24m";
-> >> >> > +	};
-> >> >> > +
-> >> >> > +	gic: interrupt-controller@fed01000 {
-> >> >>
-> >> >> Why this all is outside of SoC?
-> >> >
-> >> > Just as Heiko says, device tree for all other Rockchip SoCs don't ha=
-ve
-> >> > a "soc" node. I didn't know why before but just follow the style.
-> >> >
-> >> > If you prefer add a soc node, I am willing to.
-> >> =
-
-> > =
-
-> > =
-
-> > =
-
-> > =
-
-> > =
-
-> > _______________________________________________
-> > Linux-rockchip mailing list
-> > Linux-rockchip@lists.infradead.org
-> > http://lists.infradead.org/mailman/listinfo/linux-rockchip
-> =
-
-
-
-
-
+--===============0092841604582709998==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============0092841604582709998==--
+
