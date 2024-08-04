@@ -4,49 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 390C1C3DA7F
-	for <linux-rockchip@archiver.kernel.org>; Sun,  4 Aug 2024 09:49:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6ECC3C3DA7F
+	for <linux-rockchip@archiver.kernel.org>; Sun,  4 Aug 2024 09:50:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=sRETTKX0wSoOuKDj3DDAEOCmDq0JfidSlg7CcOyij+c=; b=wW/w4zecLfRdyh
-	eHIAdsKPYVENhBkjpO4sk8qGrHUcvTynlCqfqSsD9GbYQEytt1wuQRaoSpyc8qReLxCd5j3CKGzda
-	P60zI14o0mVOLyIvaKRGqov0YpJOuFo3FCR7vXTCSePDewD8VdAK9MIsy4oTWxLme3a+NB2KG/frC
-	FXO1NFrbTcD/PIrDt+DSRT82bZwc+1Zu0gySP7v0mwikRg4oxauHkS0eYe4JF0FGkp1eosUz7SeDc
-	peKDVeqh5nR6Qme4OSVyiqnSE+Vs1yB35jktmuoNCAJ8XDfr77AFBuZe5RZFZpBFQMaZLsBHXvDVe
-	LervD7mpclf4/VaLjPSQ==;
+	List-Owner; bh=hhrcXDaOv4du3DIprZUqtRBL+t4TB3E8nCAxs55PjhM=; b=OX7Hb4h3Sp2bDx
+	DzLQmZH5JmcY7BiAuhHNVT14acgwvPVzDorubThwwTStIZnp9cR9MGvJahKeF3HkpVhUltcPsWgZd
+	MNdRMOJ2wjR5a6qieVbWLDE+eqi6g63oM9q8SrunBdWAJpv6kz8KzAYSrqxvUlUK6mE8v7xTPaRX7
+	aytZD0n+cUh99Eg/JrUC0w2QHAF5vIldFW9dtduyseGVci61filYRisIJ3FjwjrKkmbafp3RIGrS1
+	leOsCQThD1w+NEz3OiUeOYz33A5NppuJiHZWc8lLfCWkRf/i5qPDoO+xjDJ+Yn9Bl2O3d+CQwWwgY
+	G4bx1tfc1MzsiQalaTjg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1saXrm-0000000D1dp-3aAG;
-	Sun, 04 Aug 2024 09:49:30 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1saXsG-0000000D1lO-0Tup;
+	Sun, 04 Aug 2024 09:50:00 +0000
+Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1saXqy-0000000D1N0-2Ciw;
-	Sun, 04 Aug 2024 09:48:42 +0000
+	id 1saXr9-0000000D1PG-2aCx;
+	Sun, 04 Aug 2024 09:48:53 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id D334E6092A;
+	by sin.source.kernel.org (Postfix) with ESMTP id EC93ECE0954;
+	Sun,  4 Aug 2024 09:48:49 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0AB46C4AF0B;
 	Sun,  4 Aug 2024 09:48:39 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 56F87C32786;
-	Sun,  4 Aug 2024 09:48:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1722764919;
-	bh=SaK4XvoclEBkrnrsgQAptzUeCU5PqYnX0IcNKYyo+Kg=;
+	s=k20201202; t=1722764929;
+	bh=f+oU3kC7tC8NIFM4SMMTaL4qOAzthdDJTokzRX8VlqA=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=AS5ts1nXYnjY3YGK6ok+IB1KPymFdJyyhiGDz7KlUY6dHBMLU4EMBy5m8YPozyGRU
-	 y2l/oUMmlzMv6a2xl4bac3qJCnmnW64Mgb8Rsov421eo+3La3gc8qEO9zlWDsbwLEa
-	 w2C9d4g4vwz3yK3u1rDC+hSfkfCX/DFiQ2Ndl76OxGigLg9Z+t+K0JEySwscfgzpKX
-	 HteJ54iGljrYVBVw1qfzjiYv8qJ9twdG4tyTRzcA7HQGrqH+F3jlBi7ECETlM3QhGj
-	 ik3f+v/+Qf9rFHry7y1EAqbhtj77vvZM7BEf6TJS2N9z0hInCoTRRSrRHvlVH8bADe
-	 Fg7k86LurySZg==
-Message-ID: <70f44083-cbeb-40b9-9efd-c54e967f680d@kernel.org>
-Date: Sun, 4 Aug 2024 11:48:25 +0200
+	b=eLMEEXnrmG0L2xRvPr0FyyjXE6YR1g93SJ7lUepdW/tS0q8piuTZFCrkS8p5imeSF
+	 N7775jHF5kZfFM90cG6RzPtSfoxVGfZMT6KYJ/ippfJ/4+LQSZ2dKS+5tmAi+Uw7KQ
+	 VeO4GAuZieV+A1nM4C7K43xWH7FZceY8zCNa0Ik0oakyweGHbUBkn4c3QOC/rJ7ztZ
+	 QturrEfm0z+1k2fzW7lKm2uGdZ5dRc65HvhIHJHQ5erKavoZNyvxFhRqbKCIpYDtAn
+	 90vkw+9bsd92gDdfoHW2jyueCcB3sjLFSQcCt1WGiw+OxJXkgSWBXwW+lTO+T6OQ3g
+	 BF/svcw0gC1Kg==
+Message-ID: <51da9837-0ade-4126-9cc4-d4b56e2d89db@kernel.org>
+Date: Sun, 4 Aug 2024 11:48:34 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 05/10] dt-bindings: mfd: syscon: Add rk3576 QoS register
- compatible
+Subject: Re: [PATCH 06/10] dt-bindings: serial: snps-dw-apb-uart: Add Rockchip
+ RK3576
 To: Detlev Casanova <detlev.casanova@collabora.com>,
  linux-kernel@vger.kernel.org
 Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
@@ -70,7 +70,7 @@ Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
  linux-rockchip@lists.infradead.org, linux-i2c@vger.kernel.org,
  linux-iio@vger.kernel.org, linux-serial@vger.kernel.org, kernel@collabora.com
 References: <20240802214612.434179-1-detlev.casanova@collabora.com>
- <20240802214612.434179-6-detlev.casanova@collabora.com>
+ <20240802214612.434179-7-detlev.casanova@collabora.com>
 From: Krzysztof Kozlowski <krzk@kernel.org>
 Content-Language: en-US
 Autocrypt: addr=krzk@kernel.org; keydata=
@@ -116,10 +116,10 @@ Autocrypt: addr=krzk@kernel.org; keydata=
  uZwJCLykjad45hsWcOGk3OcaAGQS6NDlfhM6O9aYNwGL6tGt/6BkRikNOs7VDEa4/HlbaSJo
  7FgndGw1kWmkeL6oQh7wBvYll2buKod4qYntmNKEicoHGU+x91Gcan8mCoqhJkbqrL7+nXG2
  5Q/GS5M9RFWS+nYyJh+c3OcfKqVcZQNANItt7+ULzdNJuhvTRRdC3g9hmCEuNSr+CLMdnRBY fv0=
-In-Reply-To: <20240802214612.434179-6-detlev.casanova@collabora.com>
+In-Reply-To: <20240802214612.434179-7-detlev.casanova@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240804_024840_746622_6426228C 
-X-CRM114-Status: UNSURE (   5.50  )
+X-CRM114-CacheID: sfid-20240804_024852_058555_A0F8FAED 
+X-CRM114-Status: UNSURE (   5.65  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -138,11 +138,11 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 On 02/08/2024 23:45, Detlev Casanova wrote:
-> Document rk3576 compatible for QoS registers.
+> Add a Rockchip RK3576 compatible.
 > 
 > Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
 
-Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
 Best regards,
 Krzysztof
