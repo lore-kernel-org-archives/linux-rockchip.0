@@ -4,61 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 68E0BC3DA7F
-	for <linux-rockchip@archiver.kernel.org>; Sun,  4 Aug 2024 09:57:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AAF8EC3DA7F
+	for <linux-rockchip@archiver.kernel.org>; Sun,  4 Aug 2024 09:58:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=S/Ne1X9qV7y3BIlW5MbeEqXpVJqgH6dwBRTE6tGenVk=; b=N2z9HVv5IdQWwK
-	RenN+mhCZDOb+JaQ35K732A1uKhvgnH7X+aFalmpEIQD8Jvsw8G8UoRxBBQQOMA4H+qsfONYwjJvl
-	aS/HtentASyIh2A8SMpKp81bV7WCl7s1rHwHJ/lV05WBx6oXiRal6t9HhY0YC9kdeTIioqDwGkROo
-	pMmc2HOwcsVsLERN1cm0565qRYl+lEwlB7mabRkU0wwck32dfkJFsLCmPaiMB1/2A9lgwY/MwBgsN
-	BqI5I1uA32LDl6l5yfEb8I5WDRfE0+Ktk2oXM+2EMWksfm948jrLB3dqav80a/u3T7HohWJiK7OTu
-	pZ3t199CplcuGWo8Pr6g==;
+	List-Owner; bh=Jz6JAVWPc5Lasa+FSiUE/V35FsZf74QjV+s0KYEb2UE=; b=AqaEg8aw0YuT1Z
+	Tl50MfYljweZBjDxFmJ96R1Vf/uR63bfhU84V1U4NAcxMlUK4+GKLk8LeBJq7xrO3zM2OQWtPF36M
+	FPl0xJuymgr1hO0O+vjdGVUt7hGFETMtfbkjCx26lOgAT9ohBhRlQMGWwJlEMuO4MnYncaQAf608c
+	D6qQHHmDEC9qX2hc2HYIoRyy/nhuy+L9gRjUipEPMnumFKpvCKf/sWq9M+XfYgS5Ooo6/dEEo8bdm
+	GZNCQDaUtH46vpj1zMnNQV1hc9DSesvGt1HdTlobKVPLQLqWFIrfGJ6DcrEyhxNq8nLvZILyUpScb
+	bFAkEw4t4N6qEMROYa0A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1saXzO-0000000D35m-04XD;
-	Sun, 04 Aug 2024 09:57:22 +0000
+	id 1saY0l-0000000D3L5-1HOh;
+	Sun, 04 Aug 2024 09:58:47 +0000
 Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1saXyr-0000000D2vp-1Pg6;
-	Sun, 04 Aug 2024 09:56:51 +0000
+	id 1saY0E-0000000D3Dj-2gkk;
+	Sun, 04 Aug 2024 09:58:16 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id A80E5CE0947;
-	Sun,  4 Aug 2024 09:56:47 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6D386C32786;
-	Sun,  4 Aug 2024 09:56:42 +0000 (UTC)
+	by sin.source.kernel.org (Postfix) with ESMTP id F3895CE0950;
+	Sun,  4 Aug 2024 09:58:12 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id CCB3AC32786;
+	Sun,  4 Aug 2024 09:58:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1722765407;
-	bh=74iIi3ysijcnAnukqflV6pp71g4JoQ1CiUa4Bpj4IIc=;
+	s=k20201202; t=1722765492;
+	bh=EOUjBy9rrG/GDZG9Kp9n9d33+UGi1uo5OiMu+Sxji10=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=PSgcKQ7ZB4ZshMyiGTV/O8PlYFKc0V6MPAFh2OyY4ZRdQmGPQIS3aTuz5+8g0vvQI
-	 E0V/zGS68NRL3HK5e4THJ+vL9DdMpHtsVUHV8YSnIR3vA4fT6t7t0es7gGGE/17VfU
-	 BocaPCXdt0htweCZVkt0bNVyETZUYURAh26gz6aDRtOrHpNq0R+UJaT5lgpBgFssmI
-	 jnLVnnUt8x9vs9jB8jVaExDFEXw/NYDOxQVMLqP/5Eavjkmb0jLvXLqCXB+YnznIAs
-	 eSITWskI+Y4NTOKDnqOLoSoSUBTQE9GwnNYOt5fFivCV4TTikbSAI2wMMh8wl0ehgU
-	 kGw43UYTWfrGw==
-Message-ID: <e04258dc-07c4-45c7-90d4-bc1ed9eb100b@kernel.org>
-Date: Sun, 4 Aug 2024 11:56:39 +0200
+	b=Uekmcjx3hNmjOJqHap13oSx1QdS7AjJ0Bx5PPo/T7PbmwOG7GTPaygKEz23rU2458
+	 O5bUnYozDtkA+k3yOI1uE52/k3chxAAxv84XncaICsMBirN9G9Odozfc9W0Cm1xKLH
+	 /Dw+b2VTbCdIIT3vr94+UgYiisIMrOXwVR2TQp4NdYLP+G4Fb8C4vF8CIFEdyeBDlg
+	 4ksvo18itiFbOIdq4r1jjOCX43mJ2rPyIqL3YG9sc98kgWksLdPNwa3SNZ1BhVxRMC
+	 M0zIwYKJwZ2sf9tE0nF0yYtDU++nNjHa3EIB2RYmsrql5N92tbIGI2FA4yPYA8qjY9
+	 0Pl2RVEX4Pd/g==
+Message-ID: <0a4c8b5c-a394-4e16-a5a6-c8c4f588fd1e@kernel.org>
+Date: Sun, 4 Aug 2024 11:58:05 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 2/3] dt-bindings: Add power-domain header for RK3576 SoCs
+Subject: Re: [PATCH 2/2] dt-bindings: pinctrl: Add rk3576 pinctrl bindings
 To: Detlev Casanova <detlev.casanova@collabora.com>,
  linux-kernel@vger.kernel.org
-Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- Ulf Hansson <ulf.hansson@linaro.org>,
- Geert Uytterhoeven <geert+renesas@glider.be>,
- "Rafael J . Wysocki" <rafael@kernel.org>,
- Finley Xiao <finley.xiao@rock-chips.com>, Jagan Teki <jagan@edgeble.ai>,
- Elaine Zhang <zhangqing@rock-chips.com>, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-pm@vger.kernel.org
-References: <20240802151647.294307-1-detlev.casanova@collabora.com>
- <20240802151647.294307-3-detlev.casanova@collabora.com>
+Cc: Linus Walleij <linus.walleij@linaro.org>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ linux-gpio@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+References: <20240802145458.291890-1-detlev.casanova@collabora.com>
+ <20240802145458.291890-3-detlev.casanova@collabora.com>
 From: Krzysztof Kozlowski <krzk@kernel.org>
 Content-Language: en-US
 Autocrypt: addr=krzk@kernel.org; keydata=
@@ -104,10 +100,10 @@ Autocrypt: addr=krzk@kernel.org; keydata=
  uZwJCLykjad45hsWcOGk3OcaAGQS6NDlfhM6O9aYNwGL6tGt/6BkRikNOs7VDEa4/HlbaSJo
  7FgndGw1kWmkeL6oQh7wBvYll2buKod4qYntmNKEicoHGU+x91Gcan8mCoqhJkbqrL7+nXG2
  5Q/GS5M9RFWS+nYyJh+c3OcfKqVcZQNANItt7+ULzdNJuhvTRRdC3g9hmCEuNSr+CLMdnRBY fv0=
-In-Reply-To: <20240802151647.294307-3-detlev.casanova@collabora.com>
+In-Reply-To: <20240802145458.291890-3-detlev.casanova@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240804_025649_789244_14D4017A 
-X-CRM114-Status: GOOD (  12.84  )
+X-CRM114-CacheID: sfid-20240804_025815_069974_38C78C95 
+X-CRM114-Status: GOOD (  13.07  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -124,41 +120,45 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 02/08/2024 17:14, Detlev Casanova wrote:
-> From: Finley Xiao <finley.xiao@rock-chips.com>
-> 
-> Define power domain IDs as described in the TRM.
+On 02/08/2024 16:52, Detlev Casanova wrote:
+> This adds the compatible string as well as the optional rockchip,sys-grf field.
 
-Please use subject prefixes matching the subsystem. You can get them for
-example with `git log --oneline -- DIRECTORY_OR_FILE` on the directory
-your patch is touching. For bindings, the preferred subjects are
-explained here:
-https://www.kernel.org/doc/html/latest/devicetree/bindings/submitting-patches.html#i-for-patch-submitters
+Please do not use "This commit/patch/change", but imperative mood. See
+longer explanation here:
+https://elixir.bootlin.com/linux/v5.17.1/source/Documentation/process/submitting-patches.rst#L95
+
+Please wrap commit message according to Linux coding style / submission
+process (neither too early nor over the limit):
+https://elixir.bootlin.com/linux/v6.4-rc1/source/Documentation/process/submitting-patches.rst#L597
 
 > 
-> Signed-off-by: Finley Xiao <finley.xiao@rock-chips.com>
-> [reword]
 > Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
 > ---
->  include/dt-bindings/power/rk3576-power.h | 30 ++++++++++++++++++++++++
->  1 file changed, 30 insertions(+)
->  create mode 100644 include/dt-bindings/power/rk3576-power.h
-
-This is part of bindings.
-
+>  .../devicetree/bindings/pinctrl/rockchip,pinctrl.yaml       | 6 ++++++
+>  1 file changed, 6 insertions(+)
 > 
-> diff --git a/include/dt-bindings/power/rk3576-power.h b/include/dt-bindings/power/rk3576-power.h
+> diff --git a/Documentation/devicetree/bindings/pinctrl/rockchip,pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/rockchip,pinctrl.yaml
+> index 20e806dce1ecb..a202b6681624c 100644
+> --- a/Documentation/devicetree/bindings/pinctrl/rockchip,pinctrl.yaml
+> +++ b/Documentation/devicetree/bindings/pinctrl/rockchip,pinctrl.yaml
+> @@ -45,6 +45,7 @@ properties:
+>        - rockchip,rk3368-pinctrl
+>        - rockchip,rk3399-pinctrl
+>        - rockchip,rk3568-pinctrl
+> +      - rockchip,rk3576-pinctrl
+>        - rockchip,rk3588-pinctrl
+>        - rockchip,rv1108-pinctrl
+>        - rockchip,rv1126-pinctrl
+> @@ -54,6 +55,11 @@ properties:
+>      description:
+>        The phandle of the syscon node for the GRF registers.
+>  
+> +  rockchip,sys-grf:
+> +    $ref: /schemas/types.yaml#/definitions/phandle
+> +    description:
+> +      The phandle of the syscon node for the SYS GRF registers.
 
-Missing vendor prefix. This should be named after compatible.
-
-> new file mode 100644
-> index 0000000000000..cb33a32c1aed9
-> --- /dev/null
-> +++ b/include/dt-bindings/power/rk3576-power.h
-> @@ -0,0 +1,30 @@
-> +/* SPDX-License-Identifier: (GPL-2.0+ OR MIT) */
-
-Weird license.
+Describe what for.
 
 Best regards,
 Krzysztof
