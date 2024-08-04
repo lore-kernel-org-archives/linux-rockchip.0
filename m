@@ -4,49 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CE260C3DA7F
-	for <linux-rockchip@archiver.kernel.org>; Sun,  4 Aug 2024 10:02:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4FCE3C3DA64
+	for <linux-rockchip@archiver.kernel.org>; Sun,  4 Aug 2024 10:03:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=yCacIG2HvHN6GeCBFfS44zelt9NlHfwto4ec6K4PppI=; b=YaS/QYSBu4Y1w4
-	+7YpJHsNRxl07EltefcVSZwFAmWaUdTFEvOBZhaHbASKPDY8bEY8RmbAbh6GQFTkhLil0MHo9OZ9c
-	GhchfqgYSNM2SCSyoMsBt0bdiCAmwiKr4cIG/P3D6A4RoL9go9FQVCBPGEFcrnL023kCIF4g7Vgto
-	czKggB6G3Oh5V7tWeJUB88G2rFUUFBJETGAWKkAkpQHMrO2LQTWgZpZV4HXe7wrowFwAN4Xim9NwI
-	1Ts1xMKtWRg4jf51lM9erR8cZ4N3unQyFFNqj4ytW98F7ciDdmBSlOQ7TrxF7F+P4diffb2GvvBsO
-	hSN6z61DoQrO0F+9toGQ==;
+	List-Owner; bh=MmrQuBMTSNThUSwOFzQV4LaN+IulYp4t1VpVmtnonLs=; b=P8zcYOL5wXAd0m
+	X09sFCLSUgiP51QFHkRdDiwQEOz77+Mj5GZyjlQP5BWwLH8Ywv3pU/bwZeZuvvtv+FZQo6GOvTqSD
+	yq5+nXKwboeCkAx2goKS+zXX0+z5IszKu+EGXJH2z5ABVYNGyGewYh+plqsP+CwBuvp0AiAh12ZRW
+	XTnRV0l8iWc8haYfy+/nZVgMKjtpfGHlxGm6CCDUyhC/11uJVb2beZJiux/AQeFOKdKcjL7IHrZaR
+	frQcW/EJGNG5H8q1xWAYVe0fVixJpWNJwBdCoGkoTsQSG9pPOS64WKG+slpcP9GHKR3lEDcpK4QBF
+	JckylWZ+9sfPE/WioPAQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1saY4S-0000000D3sf-3Zk7;
-	Sun, 04 Aug 2024 10:02:36 +0000
-Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
+	id 1saY4v-0000000D3z2-14Fg;
+	Sun, 04 Aug 2024 10:03:05 +0000
+Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1saY3v-0000000D3in-2udI;
-	Sun, 04 Aug 2024 10:02:05 +0000
+	id 1saY47-0000000D3ns-2aFM;
+	Sun, 04 Aug 2024 10:02:17 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 77EBBCE028A;
-	Sun,  4 Aug 2024 10:01:59 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 904DCC32786;
-	Sun,  4 Aug 2024 10:01:52 +0000 (UTC)
+	by sin.source.kernel.org (Postfix) with ESMTP id C6A1CCE08CE;
+	Sun,  4 Aug 2024 10:02:13 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 02339C32786;
+	Sun,  4 Aug 2024 10:02:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1722765718;
-	bh=i6qyUsLnam0YxhCM0p1RR1sn4VEEU9wicB1dBImWJpQ=;
+	s=k20201202; t=1722765733;
+	bh=61gDcWGjSdpN2ExiE+2svTcKti1Ysm2uZk4fjDJNI4Q=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=BH9ClIKFJNvbqwk/IgUy7IwhefmfRm3HBbia/8AUAUTcrFDlBiCddGwMWKtnmivvs
-	 aDO6lTTfYSpkJsyHb8fbaSJJtWibR+8TaU3pe1sB1jAO3pIkUxDM2NKIGe3s2au8jY
-	 oI4G00sg8Z8MAsSzwU87cCF/8MhplDrxPsFi5HqxtUnMbWdCrbyefnnxQC2p/j5y+c
-	 aXTZjzLlAN3qWsK16ohHkobdOoXoWXnWo0t++sdJ4EO0eeNB1L9sh79qPF9ssd5VEz
-	 LpJIR7MpU4PU3Pp3RFgFGRfB+z/RYl6KwdemtwDYytn+cgzwvJ6xu9vPoXJI4D+Zv5
-	 ebeeeqUuCnz3A==
-Message-ID: <62edbe11-b0e6-4e73-a41d-f21573c5dc88@kernel.org>
-Date: Sun, 4 Aug 2024 12:01:49 +0200
+	b=N1T8pUguIx2/6317PRXOV8RlmCWrN3ri+JAxujePxA/h6UFZoa6CgapF2kb8OZ1u0
+	 HOu5s1HxxnGYYb0BPA0ZsqL89w6Ju38R5QHQhh1mZmmItWu5dBr9uvlaVmxFwyCTUb
+	 7tiMQbXGzwlUHGb8m3jPcEoMHfHSBlCE4cWzVM114JlR5Cv7QwuOtI2F5IIRvvDfwc
+	 r/78Gai14ZBR7wRBGC4fuY9tqv91MC40LGpKyA7+TbntfP5zWYA3hia4ij8Ty5St8/
+	 +HaCFx36nxEQXObvPhFw08bQZiPPJ2GOkZ091YfPtmUnaksnBLL4HJHbXhCYoQ2LbW
+	 Pbj7TjQasiwTQ==
+Message-ID: <b9c1daea-34f6-4099-97e7-e4734b8b3ece@kernel.org>
+Date: Sun, 4 Aug 2024 12:02:04 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/4] dt-bindings: serial: snps-dw-apb-uart: Document
- Rockchip RK3528
+Subject: Re: [PATCH 2/4] dt-bindings: arm: rockchip: Add Radxa E20C board
 To: Yao Zi <ziyao@disroot.org>, Rob Herring <robh@kernel.org>,
  Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
  <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
@@ -60,7 +59,7 @@ Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
  linux-serial@vger.kernel.org
 References: <20240803125510.4699-2-ziyao@disroot.org>
- <20240803125510.4699-3-ziyao@disroot.org>
+ <20240803125510.4699-4-ziyao@disroot.org>
 From: Krzysztof Kozlowski <krzk@kernel.org>
 Content-Language: en-US
 Autocrypt: addr=krzk@kernel.org; keydata=
@@ -106,10 +105,10 @@ Autocrypt: addr=krzk@kernel.org; keydata=
  uZwJCLykjad45hsWcOGk3OcaAGQS6NDlfhM6O9aYNwGL6tGt/6BkRikNOs7VDEa4/HlbaSJo
  7FgndGw1kWmkeL6oQh7wBvYll2buKod4qYntmNKEicoHGU+x91Gcan8mCoqhJkbqrL7+nXG2
  5Q/GS5M9RFWS+nYyJh+c3OcfKqVcZQNANItt7+ULzdNJuhvTRRdC3g9hmCEuNSr+CLMdnRBY fv0=
-In-Reply-To: <20240803125510.4699-3-ziyao@disroot.org>
+In-Reply-To: <20240803125510.4699-4-ziyao@disroot.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240804_030204_121593_991419F2 
-X-CRM114-Status: UNSURE (   9.99  )
+X-CRM114-CacheID: sfid-20240804_030216_045620_B0191836 
+X-CRM114-Status: UNSURE (   5.48  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -128,31 +127,10 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 On 03/08/2024 14:55, Yao Zi wrote:
-> Rockchip RK3528 comes with a snps-dw-apb-uart compatible UART. Document
-> it in dt-bindings.
+> Add device tree documentation for Radxa E20C board.
 > 
-> Signed-off-by: Yao Zi <ziyao@disroot.org>
 
 Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-
-
----
-
-<form letter>
-This is an automated instruction, just in case, because many review tags
-are being ignored. If you know the process, you can skip it (please do
-not feel offended by me posting it here - no bad intentions intended).
-If you do not know the process, here is a short explanation:
-
-Please add Acked-by/Reviewed-by/Tested-by tags when posting new
-versions, under or above your Signed-off-by tag. Tag is "received", when
-provided in a message replied to you on the mailing list. Tools like b4
-can help here. However, there's no need to repost patches *only* to add
-the tags. The upstream maintainer will do that for tags received on the
-version they apply.
-
-https://elixir.bootlin.com/linux/v6.5-rc3/source/Documentation/process/submitting-patches.rst#L577
-</form letter>
 
 Best regards,
 Krzysztof
