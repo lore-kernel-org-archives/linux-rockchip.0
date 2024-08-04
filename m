@@ -4,49 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D7500C3DA64
-	for <linux-rockchip@archiver.kernel.org>; Sun,  4 Aug 2024 09:48:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7F68CC3DA64
+	for <linux-rockchip@archiver.kernel.org>; Sun,  4 Aug 2024 09:48:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=/F59QaPXJRPMt0/tEflxdCWJD47GSL9Q8ZXgBmGjnSQ=; b=gSfWEnfPcHgTGH
-	YW41fTCQdp8aRpRwUDO5sg/nDfl/L8MsnBndV9h/Ishuuv2t+KbqmHjuqtf70L+HidAIetL+CcZ0B
-	kUX0uCIijj2ueJApeYNHWNXHwj0OvG0XVoG+dSmRaHf7SFJ/FA/AoBc7WYm0VQKxmtgNFUu+h7e8E
-	IUO4UV+wFPnUTpaBelXSCN/qSSmjGB2kRPZrC56wLK3Jro1rqodRsW8/ViX6HV/K+QH5u86fNIp81
-	nUY7+gI3Uyg6d24v1pQyCl3O2Xw6B/VL8voXsdJENEt8jJ554TeAaVVE/yjr05rHAArU3RbbfxR3Q
-	K4EEWZdX1aoW06XrvdOA==;
+	List-Owner; bh=e4pgRN3BoxSfmllgwnKhUwNGmCUC8Qaq3gbPbTcX7tE=; b=IgQYu2ZleotQmE
+	0gEmAGHsBvI8rKShEYdFBFq/13GDtL5fVKSUYL/9ZTxGY8oZmgiTXVBX+uvtsi6d6K/We2d6Z+yCQ
+	MDOUJ6rUtbTDe+siLStM5e5ekT2CIaTXs+NYgqp0TF8m6NhN7Xg30eDPucY8OMuy6c89YecI8+als
+	c4MPa0ymJrbKCK7IIsmMlfrZ8lEp4ihD2fUuBMh1/e9pALrUBEPZYtxWRB8EBz5uhUs4hb+CDFqrV
+	av6htfy1/fB6JeJwetCIbggqMH7rZCJY3ZMPHSzJoSNVXqIBwEHBuNfb1TSJUB2y56Qx+0qr6OvzU
+	YQQF8v5yRPUuFmunZm8Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1saXqK-0000000D17l-3Ual;
-	Sun, 04 Aug 2024 09:48:00 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1saXqo-0000000D1J5-0GD9;
+	Sun, 04 Aug 2024 09:48:30 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1saXpi-0000000D0ww-2ULm;
-	Sun, 04 Aug 2024 09:47:23 +0000
+	id 1saXps-0000000D0yA-0to5;
+	Sun, 04 Aug 2024 09:47:47 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 8B5E8602C3;
-	Sun,  4 Aug 2024 09:47:20 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1A659C32786;
-	Sun,  4 Aug 2024 09:47:10 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 2FAA4602C3;
+	Sun,  4 Aug 2024 09:47:31 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 40797C4AF1A;
+	Sun,  4 Aug 2024 09:47:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1722764840;
-	bh=vWPW1/XmXJ5XBAVJM3CJkX8yDHIWMCym7v6IFeWGOhA=;
+	s=k20201202; t=1722764850;
+	bh=8gUtAQP5PQyXOqx/NHYFOhkTwbaMkgZcOCbW4NOnWjM=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=MDNZIkbo2WbTmQ07bTb0UaT6kqh2okp3LxbBNzKF5nVTTVpwKKrq35sx+qLsvjUP2
-	 cIgbpQfX/NUVlS8wEQXSy5ga0hXNU0PMRLS0Hx26UcK2Kt0W8HABDBdijWD7ZrSj2d
-	 rhiMAeUDgEKDnwdK+/KcYKOYSuXoDjsfsFrHVOA/PLzvGyi4m//mezXq4XVjgk+nqx
-	 oepJkyi5HflrB5XbXHfAQ03SR7VgrXMf4HhGp7+mrNFPHZLG39lguoh5ObF3KN/Xds
-	 5oK0ldEG43tquzTeQxu0GDRSXKWDaNe3diJuLLnpJ64dGzyur8LALP6XgUX4aUSXMh
-	 bNUpg9XNeWlxQ==
-Message-ID: <6b8918dd-30fc-4052-8c2a-86c59b6858da@kernel.org>
-Date: Sun, 4 Aug 2024 11:47:08 +0200
+	b=EL88il4kupXE920fPZIi6NavBxLdofgPV7Gy5+tDdh/Skzy/m5bG9cmJVS5QFI9aV
+	 QoeYwc2lJmLdGDkHHno0DBOCWDzOpkscOZuR57qcMq+KvUtXkXzKiv3VB6w7arJakp
+	 3HHUMLSDeLWt9SvvM+DZ5QvH433UFf0ATTBD/k/A/xs0WgxDCaKc3L47zF71qDU5l4
+	 fUVP/yu6rEIeW86w/pryPpgqpW/cTLrhxt/f89fPGBnLoiDpO5EabJZAaKMAo2kQLZ
+	 kZCq6ZXFDhYe7tY/RNLjnOMXa9FFYPTCXQEYaMtp/d4YJBG2aSIklasuHh6WM5T9dI
+	 ksxWoR6/dXvrQ==
+Message-ID: <3f7e7d12-1cad-4458-95bc-ed1181798f05@kernel.org>
+Date: Sun, 4 Aug 2024 11:47:19 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 02/10] dt-bindings: arm: rockchip: Add rk576 compatible
- string to pmu.yaml
+Subject: Re: [PATCH 03/10] dt-bindings: i2c: i2c-rk3x: Add rk3576 compatible
 To: Detlev Casanova <detlev.casanova@collabora.com>,
  linux-kernel@vger.kernel.org
 Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
@@ -70,7 +69,7 @@ Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
  linux-rockchip@lists.infradead.org, linux-i2c@vger.kernel.org,
  linux-iio@vger.kernel.org, linux-serial@vger.kernel.org, kernel@collabora.com
 References: <20240802214612.434179-1-detlev.casanova@collabora.com>
- <20240802214612.434179-3-detlev.casanova@collabora.com>
+ <20240802214612.434179-4-detlev.casanova@collabora.com>
 From: Krzysztof Kozlowski <krzk@kernel.org>
 Content-Language: en-US
 Autocrypt: addr=krzk@kernel.org; keydata=
@@ -116,10 +115,10 @@ Autocrypt: addr=krzk@kernel.org; keydata=
  uZwJCLykjad45hsWcOGk3OcaAGQS6NDlfhM6O9aYNwGL6tGt/6BkRikNOs7VDEa4/HlbaSJo
  7FgndGw1kWmkeL6oQh7wBvYll2buKod4qYntmNKEicoHGU+x91Gcan8mCoqhJkbqrL7+nXG2
  5Q/GS5M9RFWS+nYyJh+c3OcfKqVcZQNANItt7+ULzdNJuhvTRRdC3g9hmCEuNSr+CLMdnRBY fv0=
-In-Reply-To: <20240802214612.434179-3-detlev.casanova@collabora.com>
+In-Reply-To: <20240802214612.434179-4-detlev.casanova@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240804_024722_769327_E4BEB974 
-X-CRM114-Status: UNSURE (   7.25  )
+X-CRM114-CacheID: sfid-20240804_024732_426032_C0786865 
+X-CRM114-Status: UNSURE (   6.61  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -138,13 +137,12 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 On 02/08/2024 23:45, Detlev Casanova wrote:
-> Add the compatible for the pmu mfd on rk3576.
+> Just like RK356x and RK3588, RK3576 is compatible to the existing
+> rk3399 binding.
 > 
 > Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
-> ---
->  Documentation/devicetree/bindings/arm/rockchip/pmu.yaml | 2 ++
 
-Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
 Best regards,
 Krzysztof
