@@ -4,49 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CB09BC3DA64
-	for <linux-rockchip@archiver.kernel.org>; Sun,  4 Aug 2024 09:49:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 390C1C3DA7F
+	for <linux-rockchip@archiver.kernel.org>; Sun,  4 Aug 2024 09:49:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=1ITQpz65jQnWAsJU3HBlj+w9V6oRGLN+r9oWQNFw0dQ=; b=xwJVIZbva5DOpS
-	8Wz2M2WiFJ7b2TYxDQGBEtCWcXXikwlfgEmrZjjpmy5uv9QPw6hK0hBFJRlPJ9Qsf0x4GZizOkBb8
-	p+ChoEyG6cLmdN+5UGQPbFYgdFcrQXd+1GFnQIO3ETqccyrFnw0rwiUkrZQjDHOj4teW78YDm0uY5
-	YnGa3uC2S68YcBqzSkE+8GeIP/uOghzZGO7ITRdLZAD2XDx/cKBTOJ/+XhSNIR/MfXdbxN7Zq9OLv
-	S0SrJgmt+pMZmNReLEZpVaEbZI4CyiGsgJ1xSqR5jm4umjbuKDlozI9BXyGxHHKLdbntRfSeTREDp
-	50Q4X+IpS4Ho2xWuC7lw==;
+	List-Owner; bh=sRETTKX0wSoOuKDj3DDAEOCmDq0JfidSlg7CcOyij+c=; b=wW/w4zecLfRdyh
+	eHIAdsKPYVENhBkjpO4sk8qGrHUcvTynlCqfqSsD9GbYQEytt1wuQRaoSpyc8qReLxCd5j3CKGzda
+	P60zI14o0mVOLyIvaKRGqov0YpJOuFo3FCR7vXTCSePDewD8VdAK9MIsy4oTWxLme3a+NB2KG/frC
+	FXO1NFrbTcD/PIrDt+DSRT82bZwc+1Zu0gySP7v0mwikRg4oxauHkS0eYe4JF0FGkp1eosUz7SeDc
+	peKDVeqh5nR6Qme4OSVyiqnSE+Vs1yB35jktmuoNCAJ8XDfr77AFBuZe5RZFZpBFQMaZLsBHXvDVe
+	LervD7mpclf4/VaLjPSQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1saXrG-0000000D1SW-3l7N;
-	Sun, 04 Aug 2024 09:48:58 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1saXrm-0000000D1dp-3aAG;
+	Sun, 04 Aug 2024 09:49:30 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1saXqH-0000000D15o-102x;
-	Sun, 04 Aug 2024 09:47:58 +0000
+	id 1saXqy-0000000D1N0-2Ciw;
+	Sun, 04 Aug 2024 09:48:42 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id B042C6068B;
-	Sun,  4 Aug 2024 09:47:56 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 66A6FC32786;
-	Sun,  4 Aug 2024 09:47:47 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id D334E6092A;
+	Sun,  4 Aug 2024 09:48:39 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 56F87C32786;
+	Sun,  4 Aug 2024 09:48:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1722764876;
-	bh=GqnftHx9W+a0dEby3EpNu34A0OqaIGFyINW72zaEdnc=;
+	s=k20201202; t=1722764919;
+	bh=SaK4XvoclEBkrnrsgQAptzUeCU5PqYnX0IcNKYyo+Kg=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=WSr1vgxcu9oeFQoOYolujvESI7BgFUSohsqDvY9+/R7b6Iwb07evrRF4c/fBBvLkc
-	 3OF+W+PR2Ly1jUTl+cr/KTps+E0M4Id2/1T++l37aeLZvPNV2fl0Y7D0oNBtOEQ9EX
-	 6Bx1NUlxSkVVhQm9ngAKpunmaOQUT36ACHNI2TDsG/qDeG3l+7XNJma9WPSvlGJVwx
-	 /ZC0U1qqieiLMyQ9Rt5kn2/FhEKK3+v8iV9Xz4m+gYc6gtMM2FNKNcyu6jnn3GurV9
-	 Yjut2VTZ2ivTq8aWva8PeddQwxfuuDW9wdWTalLphs09fSblPBdm+1BegCyX14W4QW
-	 qxlmyWmSazwPg==
-Message-ID: <66118cb8-595a-4149-84c9-0105a2949151@kernel.org>
-Date: Sun, 4 Aug 2024 11:47:44 +0200
+	b=AS5ts1nXYnjY3YGK6ok+IB1KPymFdJyyhiGDz7KlUY6dHBMLU4EMBy5m8YPozyGRU
+	 y2l/oUMmlzMv6a2xl4bac3qJCnmnW64Mgb8Rsov421eo+3La3gc8qEO9zlWDsbwLEa
+	 w2C9d4g4vwz3yK3u1rDC+hSfkfCX/DFiQ2Ndl76OxGigLg9Z+t+K0JEySwscfgzpKX
+	 HteJ54iGljrYVBVw1qfzjiYv8qJ9twdG4tyTRzcA7HQGrqH+F3jlBi7ECETlM3QhGj
+	 ik3f+v/+Qf9rFHry7y1EAqbhtj77vvZM7BEf6TJS2N9z0hInCoTRRSrRHvlVH8bADe
+	 Fg7k86LurySZg==
+Message-ID: <70f44083-cbeb-40b9-9efd-c54e967f680d@kernel.org>
+Date: Sun, 4 Aug 2024 11:48:25 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 04/10] dt-bindings: iio: adc: Add rockchip,rk3576-saradc
- string
+Subject: Re: [PATCH 05/10] dt-bindings: mfd: syscon: Add rk3576 QoS register
+ compatible
 To: Detlev Casanova <detlev.casanova@collabora.com>,
  linux-kernel@vger.kernel.org
 Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
@@ -70,7 +70,7 @@ Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
  linux-rockchip@lists.infradead.org, linux-i2c@vger.kernel.org,
  linux-iio@vger.kernel.org, linux-serial@vger.kernel.org, kernel@collabora.com
 References: <20240802214612.434179-1-detlev.casanova@collabora.com>
- <20240802214612.434179-5-detlev.casanova@collabora.com>
+ <20240802214612.434179-6-detlev.casanova@collabora.com>
 From: Krzysztof Kozlowski <krzk@kernel.org>
 Content-Language: en-US
 Autocrypt: addr=krzk@kernel.org; keydata=
@@ -116,10 +116,10 @@ Autocrypt: addr=krzk@kernel.org; keydata=
  uZwJCLykjad45hsWcOGk3OcaAGQS6NDlfhM6O9aYNwGL6tGt/6BkRikNOs7VDEa4/HlbaSJo
  7FgndGw1kWmkeL6oQh7wBvYll2buKod4qYntmNKEicoHGU+x91Gcan8mCoqhJkbqrL7+nXG2
  5Q/GS5M9RFWS+nYyJh+c3OcfKqVcZQNANItt7+ULzdNJuhvTRRdC3g9hmCEuNSr+CLMdnRBY fv0=
-In-Reply-To: <20240802214612.434179-5-detlev.casanova@collabora.com>
+In-Reply-To: <20240802214612.434179-6-detlev.casanova@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240804_024757_408697_2F399692 
-X-CRM114-Status: UNSURE (   6.77  )
+X-CRM114-CacheID: sfid-20240804_024840_746622_6426228C 
+X-CRM114-Status: UNSURE (   5.50  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -138,10 +138,9 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 On 02/08/2024 23:45, Detlev Casanova wrote:
-> Add rockchip,rk3576-saradc compatible string.
-> The saradc on RK3576 is compatible with the one on RK3588, so they are
-> used together in an arm of the oneOf.
+> Document rk3576 compatible for QoS registers.
 > 
+> Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
 
 Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
