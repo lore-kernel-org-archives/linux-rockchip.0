@@ -4,48 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6F107C3DA64
-	for <linux-rockchip@archiver.kernel.org>; Sun,  4 Aug 2024 09:53:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5B705C3DA64
+	for <linux-rockchip@archiver.kernel.org>; Sun,  4 Aug 2024 09:54:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=q6fd0qt+6uQfqdUR341SjpMre+Dv1BpKfYRBQP8leOk=; b=DUvEXZtxh4JKZh
-	4wZQOcmkVE9lu1kBUPcjpvAvf8pjKHfyN3GOC0CGF8qy3+KkBjwOgL/Xv9Oc7JWAyp/N6zo/57Xvh
-	fCIYgfg3Q3UDLEO2DvjHF3Ibo+OhpaRQCLR0+xlIPcMvBtvh0/6GbsUHtP0KZUAnYTq3t5kLo62Pz
-	g7PwMMQ+x7YZiYu3fVQUpWuVEAKRymBMM+Aq0MDjXROU8ye02h8VbpWZuBGv0OHutlGHXg26bOTe4
-	BP01YlbrPxa/8VsOZBKhfWWjbH27fpwcVmUEOpqPT9rCxvLYmX00IcEcRjEN81kZQdFJsz+RLGBRP
-	sJECVkiomn4sXYTBoMig==;
+	List-Owner; bh=MwWD2OdgehLpN54sAN/KJpbkA5coL9flvqDTXL+9PmE=; b=kJ4jgiYW74dNy0
+	GfZio/RS+qXQRRMU1hTXcofblPcW8/7Ow9oSKLnKELjwkM2CZiatR3M85nEp2beBDPynyt/VqAApn
+	mAkR3qOU8z1cdwggrHquAeDWIifnfyU24OI4p0BnfMOvVjznePrRWqBPrkmMmQXxi8L7mGj2Wa1Cd
+	ZXDjaSXLGwa0l5A+TMpQwm5cIc6IeCb4sWulyONlJV7EBsuFasK13BhJj8kHBEJlOP8268vp8xACF
+	dWHyK+GHVwK0CnzAqFvAAKUuw+OjZX6Fo6AjGZRTCSJggEJOOAYopcYNHcqvD0KvWWFTMHt0BpqxL
+	Cl+own2ITVYfAEu63tpg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1saXvl-0000000D2Qj-2JD4;
-	Sun, 04 Aug 2024 09:53:37 +0000
-Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
+	id 1saXwj-0000000D2an-0ZG9;
+	Sun, 04 Aug 2024 09:54:37 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1saXvD-0000000D2La-3t2e;
-	Sun, 04 Aug 2024 09:53:05 +0000
+	id 1saXwC-0000000D2VJ-41vR;
+	Sun, 04 Aug 2024 09:54:06 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id E7F88CE0947;
-	Sun,  4 Aug 2024 09:53:01 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C80FBC32786;
-	Sun,  4 Aug 2024 09:52:56 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 2CBD2601D7;
+	Sun,  4 Aug 2024 09:54:04 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 54748C32786;
+	Sun,  4 Aug 2024 09:54:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1722765180;
-	bh=2V4bwc4EGQDBu7h5327C3Wy4iLbvMzYSTOhrOTbqqMk=;
+	s=k20201202; t=1722765243;
+	bh=BnS7gc5IM1P2KzQ6X3kpI2RwIV3Tqg5zNIJrzqh5mTI=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=RzgD4cZWYz7mqyo2JXz21QGjHm1HNNAaEQNcvSosSy4CkJzTIoN1lNIkvjGGZWgsB
-	 /1JGHQWAp78LwW3lmOz0DZukBAbiY5w/4my9ezBKf4wE+RdMwfPR+dsP5MD2v1zK52
-	 k7O9cXyaeW80eKQy9qdJbsOyLjDDaUPdtULWUgzSOnBoheMGfic+a19LEIfWvKvvBD
-	 bgU1rGY+UA40ZxTJwldeXVpE1a+xU65r6loHw9fg/aApppm+k1LxktkgPTrKDjqREF
-	 NhPd9qMtwt2j/0wo+2wRkjaO9atvKSqlTjdgXQE6Jm49K9vC+BZv9cQAvm4/Lpk43U
-	 aPKGnzleb/4PA==
-Message-ID: <87503c5b-95dc-463b-8363-3e1fab03f8f2@kernel.org>
-Date: Sun, 4 Aug 2024 11:52:53 +0200
+	b=Z4WnfH/PV37thgVd/FDIJ3w2ImKK81UThkorv4hdWQf59T9U0C9yT0nSv27c8AGrn
+	 NixC2s7ZGS9tBXimaiOsGa5XIdMjwDIka6v+T78G1esVD0+vSwyPZOy3qvXd5mzfMB
+	 UBjNzd3kNVpDHpirjK60r0Jc+iTSpdHagsik3gXP1zTJzLHIcB8O5tn2ihkciOHVq0
+	 svRhejCpkca6a/OJoT5sm/2xc7D1tgns7HRQx3UXSdmGkSyLnpvFaZe9l7Ye28r8kR
+	 20cIop9YreXPjiywYxqti0+RrWaZs6vTqybIm/hfvd+dVUAIWnQbfghFoqpxnjoR8c
+	 iG5LTKM4SWBBA==
+Message-ID: <1600ee06-ac19-436f-8229-1bb44b29c683@kernel.org>
+Date: Sun, 4 Aug 2024 11:53:57 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 1/3] dt-bindings: clock: add rk3576 cru bindings
+Subject: Re: [PATCH v2 2/3] clk: rockchip: Add dt-binding header for rk3576
 To: Detlev Casanova <detlev.casanova@collabora.com>,
  linux-kernel@vger.kernel.org
 Cc: Michael Turquette <mturquette@baylibre.com>,
@@ -55,9 +55,10 @@ Cc: Michael Turquette <mturquette@baylibre.com>,
  Philipp Zabel <p.zabel@pengutronix.de>,
  Elaine Zhang <zhangqing@rock-chips.com>, linux-clk@vger.kernel.org,
  devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, kernel@collabora.com
+ linux-rockchip@lists.infradead.org, kernel@collabora.com,
+ Sugar Zhang <sugar.zhang@rock-chips.com>
 References: <20240802214053.433493-1-detlev.casanova@collabora.com>
- <20240802214053.433493-2-detlev.casanova@collabora.com>
+ <20240802214053.433493-3-detlev.casanova@collabora.com>
 From: Krzysztof Kozlowski <krzk@kernel.org>
 Content-Language: en-US
 Autocrypt: addr=krzk@kernel.org; keydata=
@@ -103,10 +104,10 @@ Autocrypt: addr=krzk@kernel.org; keydata=
  uZwJCLykjad45hsWcOGk3OcaAGQS6NDlfhM6O9aYNwGL6tGt/6BkRikNOs7VDEa4/HlbaSJo
  7FgndGw1kWmkeL6oQh7wBvYll2buKod4qYntmNKEicoHGU+x91Gcan8mCoqhJkbqrL7+nXG2
  5Q/GS5M9RFWS+nYyJh+c3OcfKqVcZQNANItt7+ULzdNJuhvTRRdC3g9hmCEuNSr+CLMdnRBY fv0=
-In-Reply-To: <20240802214053.433493-2-detlev.casanova@collabora.com>
+In-Reply-To: <20240802214053.433493-3-detlev.casanova@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240804_025304_358221_28076E41 
-X-CRM114-Status: GOOD (  19.42  )
+X-CRM114-CacheID: sfid-20240804_025405_121348_D2D70ACB 
+X-CRM114-Status: GOOD (  16.13  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -124,116 +125,65 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 On 02/08/2024 23:35, Detlev Casanova wrote:
-> Document the device tree bindings of the rockchip rk3576 SoC
-> clock and reset unit.
+> From: Elaine Zhang <zhangqing@rock-chips.com>
 > 
+> Add the dt-bindings header for the rk3576, that gets shared between
+> the clock controller and the clock references in the dts.
+> 
+> Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
+> Signed-off-by: Sugar Zhang <sugar.zhang@rock-chips.com>
+> [rebased, separate clocks and resets]
 > Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
 
-A nit, subject: drop second/last, redundant "bindings". The
-"dt-bindings" prefix is already stating that these are bindings.
-See also:
-https://elixir.bootlin.com/linux/v6.7-rc8/source/Documentation/devicetree/bindings/submitting-patches.rst#L18
+Please use subject prefixes matching the subsystem. You can get them for
+example with `git log --oneline -- DIRECTORY_OR_FILE` on the directory
+your patch is touching. For bindings, the preferred subjects are
+explained here:
+https://www.kernel.org/doc/html/latest/devicetree/bindings/submitting-patches.html#i-for-patch-submitters
+
 
 > ---
->  .../bindings/clock/rockchip,rk3576-cru.yaml   | 73 +++++++++++++++++++
->  1 file changed, 73 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/clock/rockchip,rk3576-cru.yaml
+>  .../dt-bindings/clock/rockchip,rk3576-cru.h   | 589 ++++++++++++++++++
+>  .../dt-bindings/reset/rockchip,rk3576-cru.h   | 484 ++++++++++++++
+>  2 files changed, 1073 insertions(+)
+>  create mode 100644 include/dt-bindings/clock/rockchip,rk3576-cru.h
+>  create mode 100644 include/dt-bindings/reset/rockchip,rk3576-cru.h
+
+These are bindings. Must be squashed with previous patch.
+
 > 
-> diff --git a/Documentation/devicetree/bindings/clock/rockchip,rk3576-cru.yaml b/Documentation/devicetree/bindings/clock/rockchip,rk3576-cru.yaml
+> diff --git a/include/dt-bindings/clock/rockchip,rk3576-cru.h b/include/dt-bindings/clock/rockchip,rk3576-cru.h
 > new file mode 100644
-> index 0000000000000..929eb6183bf18
+> index 0000000000000..14b54543d1a11
 > --- /dev/null
-> +++ b/Documentation/devicetree/bindings/clock/rockchip,rk3576-cru.yaml
-> @@ -0,0 +1,73 @@
-> +# SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/clock/rockchip,rk3576-cru.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: Rockchip rk3576 Family Clock and Reset Control Module
-> +
-> +maintainers:
-> +  - Elaine Zhang <zhangqing@rock-chips.com>
-> +  - Heiko Stuebner <heiko@sntech.de>
-> +
-> +description: |
-> +  The RK3576 clock controller generates the clock and also implements a reset
-> +  controller for SoC peripherals. For example it provides SCLK_UART2 and
-> +  PCLK_UART2, as well as SRST_P_UART2 and SRST_S_UART2 for the second UART
-> +  module.
-> +  Each clock is assigned an identifier and client nodes can use this identifier
-> +  to specify the clock which they consume. All available clock and reset IDs
-> +  are defined as preprocessor macros in dt-binding headers.
+> +++ b/include/dt-bindings/clock/rockchip,rk3576-cru.h
+> @@ -0,0 +1,589 @@
+> +/* SPDX-License-Identifier: (GPL-2.0+ OR MIT) */
 
-Drop paragraph, it is obvious. You could provide here the name of the
-header...
+Weird license. Why not using recommended one?
 
+> +/*
+> + * Copyright (c) 2023 Rockchip Electronics Co. Ltd.
+> + * Author: Elaine Zhang <zhangqing@rock-chips.com>
+> + */
 > +
-> +properties:
-> +  compatible:
-> +    enum:
-> +      - rockchip,rk3576-cru
+> +#ifndef _DT_BINDINGS_CLK_ROCKCHIP_RK3576_H
+> +#define _DT_BINDINGS_CLK_ROCKCHIP_RK3576_H
 > +
-> +  reg:
-> +    maxItems: 1
+> +/* cru-clocks indices */
 > +
-> +  "#clock-cells":
-> +    const: 1
-> +
-> +  "#reset-cells":
-> +    const: 1
-> +
-> +  clocks:
-> +    minItems: 2
+> +/* cru plls */
+> +#define PLL_BPLL			1
+> +#define PLL_LPLL			3
+> +#define PLL_VPLL			4
+> +#define PLL_AUPLL			5
+> +#define PLL_CPLL			6
+> +#define PLL_GPLL			7
+> +#define PLL_PPLL			9
 
-You can drop minitems
+Nope, indices start from 1 and are incremented continuously.
 
-> +    maxItems: 2
-> +
-> +  clock-names:
-> +    items:
-> +      - const: xin24m
-> +      - const: xin32k
-> +
-> +  assigned-clocks: true
-> +
-> +  assigned-clock-rates: true
-> +
-> +  assigned-clock-parents: true
 
-Drop  all these three
-
-> +
-> +  rockchip,grf:
-> +    $ref: /schemas/types.yaml#/definitions/phandle
-> +    description: >
-> +      phandle to the syscon managing the "general register files". It is used
-> +      for GRF muxes, if missing any muxes present in the GRF will not be
-> +      available.
-> +
-> +required:
-> +  - compatible
-> +  - reg
-> +  - "#clock-cells"
-> +  - "#reset-cells"
-> +
-> +additionalProperties: false
-> +
-> +examples:
-> +  - |
-> +    cru: clock-controller@27200000 {
-
-Drop unused label
-
-> +      compatible = "rockchip,rk3576-cru";
-> +      reg = <0xfd7c0000 0x5c000>;
-> +      #clock-cells = <1>;
-> +      #reset-cells = <1>;
-
-Make the example complete.
-
-> +    };
 
 Best regards,
 Krzysztof
