@@ -4,56 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B6650C3DA7F
-	for <linux-rockchip@archiver.kernel.org>; Mon,  5 Aug 2024 11:48:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CDE2CC3DA7F
+	for <linux-rockchip@archiver.kernel.org>; Mon,  5 Aug 2024 13:13:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ifhYCu0HuuXazd9N0mKZCTUlgBSvEFURrsCDqup32QU=; b=qysh7KmqakVEJL
-	koSn3pIYzxsgBntvIGFs1UKCKcsSUftgkmnoIJ4fJj2ASEniEh/qXFk1X1xopg4AraThOQL3aGpd+
-	eKYIIWKcDfCiW5Nsmy8Hp58lZM8m0J0qzOWzNJrBrn2urIR3zdRmWZwCEq1TYrD+EZbxQOJxGGuw5
-	DEsCR0InbT5MMFvYoTpvmTykinebtwEGPMQJuM/XjFgEYhdZ56qnCkbNIO4zKFmp5rUUuoll0dfjJ
-	Bo1MKAGlXDBV9PGg9ysBOTTXpmB9C5DjOPu0L12uH5Il3eXuRxqpgbH+ujTSlw74gXVBDJTGEMwVF
-	kIaXp86EkJU/kdeDx0PA==;
+	List-Owner; bh=Ysixrht/AwgQF8q0HY/1aS4TmdwiBaIsIjbVwyEbsuE=; b=fzBZjCz/rkwUKq
+	ESWXxVdjlJHF14KD0R3sbcMeX8DbF7hAqMDwCs/iWFFeiEyUIZ++7+2Fia8Ew0nhmgbfzuxftLz1m
+	pkGv+wvsKlbRef0yQyNxtnhktYAHikJK5U1iE0A6bjH+qSClDQVLc+o8PGza01Q01feSKLJSm/JsM
+	bG+dBdsLSXAplYJAFl/H1bysq3m1xHAjxkisGmXnrIudAR0k4KLF7pnPyTzlexfZtMuxrnWlSnm1w
+	omziOM+YvsE9T1sL/QFdE+1sgjPLvavcq6rUU9djNyPsW2I6hNeUBKd/2utmktmz7x8SUKBzuwpBm
+	yLmKbvrclbkmohtLunuQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sawCa-0000000FiqI-2tcH;
-	Mon, 05 Aug 2024 11:48:36 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1saxWi-0000000Fuat-0OsE;
+	Mon, 05 Aug 2024 13:13:28 +0000
+Received: from mail-qk1-x72c.google.com ([2607:f8b0:4864:20::72c])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sawC4-0000000Fijx-1De4;
-	Mon, 05 Aug 2024 11:48:05 +0000
-Received: from i53875a9f.versanet.de ([83.135.90.159] helo=diego.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1sawBm-0001Hv-Lc; Mon, 05 Aug 2024 13:47:46 +0200
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: Yao Zi <ziyao@disroot.org>, Dragan Simic <dsimic@manjaro.org>
-Cc: Krzysztof Kozlowski <krzk@kernel.org>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Jiri Slaby <jirislaby@kernel.org>, Chris Morgan <macromorgan@hotmail.com>,
- Jonas Karlman <jonas@kwiboo.se>, Tim Lunn <tim@feathertop.org>,
- Andy Yan <andyshrk@163.com>, Muhammed Efe Cetin <efectn@protonmail.com>,
- Jagan Teki <jagan@edgeble.ai>, Ondrej Jirman <megi@xff.cz>,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-serial@vger.kernel.org
-Subject: Re: [PATCH 3/4] arm64: dts: rockchip: Add base DT for rk3528 SoC
-Date: Mon, 05 Aug 2024 13:47:45 +0200
-Message-ID: <7941737.iedYuu7f5S@diego>
-In-Reply-To: <82e7e3a78f784b3ad63094c8a0ab1932@manjaro.org>
-References: <20240803125510.4699-2-ziyao@disroot.org>
- <ZrCwrWjRgvE0RS98@ziyaolaptop.my.domain>
- <82e7e3a78f784b3ad63094c8a0ab1932@manjaro.org>
+	id 1saxV4-0000000Fu8D-0iGU
+	for linux-rockchip@lists.infradead.org;
+	Mon, 05 Aug 2024 13:11:48 +0000
+Received: by mail-qk1-x72c.google.com with SMTP id af79cd13be357-7a1e1f6a924so684390285a.1
+        for <linux-rockchip@lists.infradead.org>; Mon, 05 Aug 2024 06:11:45 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=fooishbar-org.20230601.gappssmtp.com; s=20230601; t=1722863504; x=1723468304; darn=lists.infradead.org;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=wqu7bGkFRyONJ595ZHT2dPa2sQS3elnU8rD7fvADtto=;
+        b=Iv8A0Y4cWnDSEcF9eoKOSfm3ZK8aoiBsHv72Yleafmc08ImqC0VY4kY5y/HAnvFrLq
+         a5pIAwgiiB4zvPQrELBdE186ogcnZR38pKyhC2GAR3Vy64eZAHkVUgs31vPegysPgVJP
+         XAKIfzSnhHCe1BM5599oJvH7eIL4vO2sWFElfQLNV+lgTOIE/Vb8dWG18jNmWfTQFgme
+         pAXF+7MDFhXA+IQ878Ut8VQIfO78PeoUApJWhPrag++5xJPopysITUmxSTdnjbG2kuPb
+         Y/0mK/rrfsjeGirvmvoNkk9GCfQD4Ryrh9oJA/7Egtf44cVg5LRLb0KfoLRD+Z7FrAi9
+         a5dg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1722863504; x=1723468304;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=wqu7bGkFRyONJ595ZHT2dPa2sQS3elnU8rD7fvADtto=;
+        b=ooPDf8TME07EKFAQzCxJQm6GTTxK+VNKEuMpSHKc9zkARgD2tyJPyROLh/3eskssML
+         PxsOtbqxtkoLxBDVmySEYHeofaGlhY8zBMboWXFo77VjZJE9ulwS5XUxgkLez2ry9nSH
+         d3JFj1z//Q2TM/jxnshVEJNfg8lkR7b87HsukiB5PukiVZscRneBGMK/JebI/WvU9WdX
+         YzMYKlU4KAHbXShhMtEynM/JfRBM2Ryr+9s2XTO4Sc4TkGP5CRkMpYjt1XQEokuO1v2V
+         dURrsAkjYlQ+u7bEOjuv9bvDImgdyFnepLYgskmkVofe+yBk7Tp2d62DrapyEbb/eZeV
+         7Pow==
+X-Forwarded-Encrypted: i=1; AJvYcCU3ZWQfE0cwi522HYMCtzyyZQz+Z2hDOiIW7sIXCUyX0eBzYlgOQyyPZraRQ8pzndPVH8YzaBVT7T6FK1e05lR4aru2W62cbMcyJv0/7vxpjLzY
+X-Gm-Message-State: AOJu0Yw2KPeXLjhB0UljNsk6wnMIvhnFI4hYNjBSJwOKqbwizMZ7Wj1O
+	id8sg229F66s/MV4l4WlkaoS1oDPUF7Gh3q8xXtXTK2sBasYNiPby1Nt5G4/QNMp0WGDb0UKu+j
+	a3/j+KNFirtaiwbtOOdVmPMNLTz3KYNegl/zuvA==
+X-Google-Smtp-Source: AGHT+IF/O5ePVsP9F9/4LdJgMcHnbAiRBVz6rWucn4L0+VzzRP1U+YIN/SKoA9Ocbj/mAccdLjT4/BuXBtCo084/sM8=
+X-Received: by 2002:a05:620a:24c6:b0:7a2:e6c:41e7 with SMTP id
+ af79cd13be357-7a34eeb959dmr1463955085a.9.1722863504285; Mon, 05 Aug 2024
+ 06:11:44 -0700 (PDT)
 MIME-Version: 1.0
+References: <20240730021545.912271-1-vignesh.raman@collabora.com>
+In-Reply-To: <20240730021545.912271-1-vignesh.raman@collabora.com>
+From: Daniel Stone <daniel@fooishbar.org>
+Date: Mon, 5 Aug 2024 14:11:32 +0100
+Message-ID: <CAPj87rOYVCG2A10ruyYan9y6NmMY0fUM6Z5-9ht7dEp_THYmNw@mail.gmail.com>
+Subject: Re: [PATCH v9 0/6] drm/ci: Add support for GPU and display testing
+To: Vignesh Raman <vignesh.raman@collabora.com>
+Cc: dri-devel@lists.freedesktop.org, daniels@collabora.com, 
+	helen.koike@collabora.com, airlied@gmail.com, daniel@ffwll.ch, 
+	robdclark@gmail.com, guilherme.gallo@collabora.com, 
+	sergi.blanch.torne@collabora.com, deborah.brouwer@collabora.com, 
+	dmitry.baryshkov@linaro.org, mcanal@igalia.com, melissa.srw@gmail.com, 
+	linux-mediatek@lists.infradead.org, linux-amlogic@lists.infradead.org, 
+	linux-rockchip@lists.infradead.org, amd-gfx@lists.freedesktop.org, 
+	linux-arm-msm@vger.kernel.org, intel-gfx@lists.freedesktop.org, 
+	virtualization@lists.linux.dev, linux-kernel@vger.kernel.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240805_044804_365887_2EF76F74 
-X-CRM114-Status: GOOD (  25.02  )
+X-CRM114-CacheID: sfid-20240805_061146_293949_BDA74475 
+X-CRM114-Status: GOOD (  14.04  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,49 +96,33 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Am Montag, 5. August 2024, 13:37:11 CEST schrieb Dragan Simic:
-> On 2024-08-05 12:59, Yao Zi wrote:
-> > On Sun, Aug 04, 2024 at 04:05:24PM +0200, Krzysztof Kozlowski wrote:
-> >> On 04/08/2024 15:20, Yao Zi wrote:
-> >> >>
-> >> >>> +		compatible = "fixed-clock";
-> >> >>> +		#clock-cells = <0>;
-> >> >>> +		clock-frequency = <24000000>;
-> >> >>> +		clock-output-names = "xin24m";
-> >> >>> +	};
-> >> >>> +
-> >> >>> +	gic: interrupt-controller@fed01000 {
-> >> >>
-> >> >> Why this all is outside of SoC?
-> >> >
-> >> > Just as Heiko says, device tree for all other Rockchip SoCs don't have
-> >> > a "soc" node. I didn't know why before but just follow the style.
-> >> >
-> >> > If you prefer add a soc node, I am willing to.
-> >> 
-> >> Surprising as usually we expect MMIO nodes being part of SoC to be 
-> >> under
-> >> soc@, but if that's Rockchip preference then fine.
-> >> 
-> > 
-> > Okay, then I would leave it as is.
-> > 
-> > For the fixed-clock node, I think "xin24m: clock-24m { }" is okay and
-> > follows the new rule?
-> 
-> I find "xin24m: clock-xin24m { }" better, because keeping the "xin24m"
-> part in /sys listing(s), for example, can only be helpful.
+Hi Vignesh,
 
-I would second that :-) . Like on a number of boards we have for example
-125MHz gmac clock generators ... with 2 gmacs, there are 2 of them.
+On Tue, 30 Jul 2024 at 03:16, Vignesh Raman <vignesh.raman@collabora.com> wrote:
+> Some ARM SOCs have a separate display controller and GPU, each with
+> different drivers. For mediatek mt8173, the GPU driver is powervr,
+> and the display driver is mediatek. In the case of mediatek mt8183,
+> the GPU driver is panfrost, and the display driver is mediatek.
+> With rockchip rk3288/rk3399, the GPU driver is panfrost, while the
+> display driver is rockchip. For amlogic meson G12B (A311D) SOC, the
+> GPU driver is panfrost, and the display driver is meson.
+>
+> IGT tests run various tests with different xfails and can test both
+> GPU devices and KMS/display devices. Currently, in drm-ci for MediaTek,
+> Rockchip, and Amlogic Meson platforms, only the GPU driver is tested.
+> This leads to incomplete coverage since the display is never tested on
+> these platforms. This commit series adds support in drm-ci to run tests
+> for both GPU and display drivers for MediaTek mt8173/mt8183, Rockchip
+> rk3288/rk3399, and Amlogic Meson G12B (A311D) platforms.
+>
+> Update the expectations file, and skip driver-specific tests and
+> tools_test on non-intel platforms.
 
-I'm not sure the preferred name accounts for that?
+Thanks, series looks sensible and is:
+Reviewed-by: Daniel Stone <daniels@collabora.com>
 
-Similarly we also keep the naming in the regulator node,
-it's regulator-vcc3v3-somename {} instead of just regulator-3v3 {}.
-
-
-
+Cheers,
+Daniel
 
 _______________________________________________
 Linux-rockchip mailing list
