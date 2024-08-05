@@ -4,67 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 29F9DC3DA7F
-	for <linux-rockchip@archiver.kernel.org>; Mon,  5 Aug 2024 19:14:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 29F79C3DA4A
+	for <linux-rockchip@archiver.kernel.org>; Mon,  5 Aug 2024 19:18:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
-	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=gwU10LhWeKk649m88Ww3mgeLgsmJU1JsOLPNpE3xqd4=; b=ZLcavUFADpXz1ODDduE0PuaF7p
-	viLSYxofgkF9DvFzg6U9KJ+yulxZ48AwUFH+3Gj7Gow5qIwRg8gXaDY4JnvveeVoSHKdC8pujEYEO
-	3T7MCb+LnsKBmDOU5tGZJyv1l4dM0G7/456NWchUkn8OHMPTFhhWNNqDY+q24+t1McEV/WHcePhDP
-	a4N0xI/lSo8rFe+CyOc8rfYMwXGLcEEwhzbC6XwLBd5G0tdbEOzzvKtj6ijH+ORz52tVmoZTF3C6G
-	IgcenMx8ETc0QnvIQw+UkrMdmdDP1Iucd+BIyOv4sg3MGFQYLh4ay73cfo2LF40wpgRN9d0TcbtMr
-	UqCy2tpQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=xMaE2KRF4PZpWVOfayQVlOv7utTeTQO4bzihrow5swE=; b=lpUxs4cwchHlJg
+	URC+ln8Tqa3YSVYgj02nZv/AGExAZ9rrmIqOhPBHGILkKh/UxdG0tIVDTBle+p0Qk4uRDMb3mAez9
+	t24NZS0izUEXnz0OXnxOenMUX4/y2fYK0+KRlBngp72uf9TRET8Ulf4nX1c7D+/O8fn0lv9woRqYi
+	BqL3NJEExMG6Y7KKYxwqpDmKinqZKkAKxeboKlvtMHXQy8dh8IrwtLVBXL22kFwnKPduI0b9fxtXw
+	qtYFl19ncCDMPfH54Kp7glQHJBUiYHBocZuICLBZ9sWqAc3V6Zh0hO5dMM+9JRwu4V+9F++9UXdRe
+	BHvvPPpK2xlBVox36i0g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sb3A8-0000000GyQY-1oYI;
-	Mon, 05 Aug 2024 19:14:32 +0000
-Received: from mail.manjaro.org ([116.203.91.91])
+	id 1sb3DT-0000000Gyv2-1LAY;
+	Mon, 05 Aug 2024 19:17:59 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sb39a-0000000GyIB-40tp;
-	Mon, 05 Aug 2024 19:14:00 +0000
+	id 1sb3Cw-0000000Gyma-1NE6;
+	Mon, 05 Aug 2024 19:17:27 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 5EEAC60C4F;
+	Mon,  5 Aug 2024 19:17:25 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id DA4DAC32782;
+	Mon,  5 Aug 2024 19:17:24 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1722885445;
+	bh=yIzYBRhu3FkCRao5W4ixWWwmAsOLTrfWSG9/9Ucrdsg=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=u1XOg7lq5Gb+Iyutvrb8Ggq1n89ppsPewkZrwb13K7CWOXV1ARdNO+yQznlR51CJv
+	 x9DjQkQdymtnwglT35Zr3AzKShlloIi9pbSBHhQ2EU+RLp0dmJCQ66l9NgegZpPZbx
+	 S6QVW7Q46UxRi9amYrn3ZRfZGrXJhA1TeNTeXK3MCaIm6KiOVSgtIPPViJ783BI2A8
+	 ue5GOs/Uyl1OXFptfdXDApl1bygdQuBO2dH64KCQBaI+qRFJnTycQlHXQnh88c93Uq
+	 VD2po/oxeg5ZwuWR8jHjjzIzBSo6y1R5jMi6xF2A3CYcnDHnP1IVDk97wQl53JhHjK
+	 36UJfSxOdj/Og==
+Date: Mon, 5 Aug 2024 13:17:23 -0600
+From: Rob Herring <robh@kernel.org>
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: lee@kernel.org, jdelvare@suse.com, linux@roeck-us.net,
+	dmitry.torokhov@gmail.com, pavel@ucw.cz, krzk+dt@kernel.org,
+	conor+dt@kernel.org, ukleinek@debian.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-hwmon@vger.kernel.org,
+	linux-input@vger.kernel.org, linux-leds@vger.kernel.org,
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Subject: Re: [PATCH v3 1/7] dt-bindings: mfd: add binding for qnap,ts433-mcu
+ devices
+Message-ID: <20240805191723.GA2636745-robh@kernel.org>
+References: <20240731212430.2677900-1-heiko@sntech.de>
+ <20240731212430.2677900-2-heiko@sntech.de>
 MIME-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
-	t=1722885236;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=dtk5dG3EnMjfhWRTuibDKCkK/kKGRGj1UhF5G7S1ARA=;
-	b=VwYd2R8Q579hnEEWI6Tq589C2vlwN4VYNLiC0PcWaImyY2FszadxQtKzN0maGSHTV3JfaN
-	gIjIDVGsZY5QDpPMqRU6uHhduha4T8g03a5cZJJDIlOoZIqYyb7O2XYzdSSZ4lOE/eV9R0
-	OUnFd3cfGCh/tATD+QHfo1sY2q5H396b7mrGdzNDcfdahJzIXx+q51tTY6B4v4rt4X2Hcq
-	8hVasH96My11mkUjXPIOIuMForyQZJw38IK2Ohp9yvUDmSUtm35sU2hsFzwwYtxMMZxoeF
-	mCnYUPJA5mpSO3u+UzcDbQupl/raVQbTwClA+29Y5q1U6s0NvkqgIztx35C/JQ==
-Date: Mon, 05 Aug 2024 21:13:53 +0200
-From: Dragan Simic <dsimic@manjaro.org>
-To: Yao Zi <ziyao@disroot.org>
-Cc: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, Krzysztof Kozlowski
- <krzk@kernel.org>, Rob Herring <robh@kernel.org>, Krzysztof Kozlowski
- <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Greg Kroah-Hartman
- <gregkh@linuxfoundation.org>, Jiri Slaby <jirislaby@kernel.org>, Chris
- Morgan <macromorgan@hotmail.com>, Jonas Karlman <jonas@kwiboo.se>, Tim Lunn
- <tim@feathertop.org>, Andy Yan <andyshrk@163.com>, Muhammed Efe Cetin
- <efectn@protonmail.com>, Jagan Teki <jagan@edgeble.ai>, Ondrej Jirman
- <megi@xff.cz>, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-serial@vger.kernel.org
-Subject: Re: [PATCH 3/4] arm64: dts: rockchip: Add base DT for rk3528 SoC
-In-Reply-To: <ZrD8N7_tYAiKCg-C@ziyaolaptop.my.domain>
-References: <20240803125510.4699-2-ziyao@disroot.org>
- <ZrCwrWjRgvE0RS98@ziyaolaptop.my.domain>
- <82e7e3a78f784b3ad63094c8a0ab1932@manjaro.org> <7941737.iedYuu7f5S@diego>
- <ZrD8N7_tYAiKCg-C@ziyaolaptop.my.domain>
-Message-ID: <303a27ab5681e13467f01de9bfe94b45@manjaro.org>
-X-Sender: dsimic@manjaro.org
-Authentication-Results: ORIGINATING;
-	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
+Content-Disposition: inline
+In-Reply-To: <20240731212430.2677900-2-heiko@sntech.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240805_121359_597399_906D129D 
-X-CRM114-Status: GOOD (  24.98  )
+X-CRM114-CacheID: sfid-20240805_121726_457376_9214D622 
+X-CRM114-Status: GOOD (  17.77  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,52 +74,67 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGVsbG8gWWFvLAoKT24gMjAyNC0wOC0wNSAxODoyMiwgWWFvIFppIHdyb3RlOgo+IE9uIE1vbiwg
-QXVnIDA1LCAyMDI0IGF0IDAxOjQ3OjQ1UE0gKzAyMDAsIEhlaWtvIFN0w7xibmVyIHdyb3RlOgo+
-PiBBbSBNb250YWcsIDUuIEF1Z3VzdCAyMDI0LCAxMzozNzoxMSBDRVNUIHNjaHJpZWIgRHJhZ2Fu
-IFNpbWljOgo+PiA+IE9uIDIwMjQtMDgtMDUgMTI6NTksIFlhbyBaaSB3cm90ZToKPj4gPiA+IE9u
-IFN1biwgQXVnIDA0LCAyMDI0IGF0IDA0OjA1OjI0UE0gKzAyMDAsIEtyenlzenRvZiBLb3psb3dz
-a2kgd3JvdGU6Cj4+ID4gPj4gT24gMDQvMDgvMjAyNCAxNToyMCwgWWFvIFppIHdyb3RlOgo+PiA+
-ID4+ID4+Cj4+ID4gPj4gPj4+ICsJCWNvbXBhdGlibGUgPSAiZml4ZWQtY2xvY2siOwo+PiA+ID4+
-ID4+PiArCQkjY2xvY2stY2VsbHMgPSA8MD47Cj4+ID4gPj4gPj4+ICsJCWNsb2NrLWZyZXF1ZW5j
-eSA9IDwyNDAwMDAwMD47Cj4+ID4gPj4gPj4+ICsJCWNsb2NrLW91dHB1dC1uYW1lcyA9ICJ4aW4y
-NG0iOwo+PiA+ID4+ID4+PiArCX07Cj4+ID4gPj4gPj4+ICsKPj4gPiA+PiA+Pj4gKwlnaWM6IGlu
-dGVycnVwdC1jb250cm9sbGVyQGZlZDAxMDAwIHsKPj4gPiA+PiA+Pgo+PiA+ID4+ID4+IFdoeSB0
-aGlzIGFsbCBpcyBvdXRzaWRlIG9mIFNvQz8KPj4gPiA+PiA+Cj4+ID4gPj4gPiBKdXN0IGFzIEhl
-aWtvIHNheXMsIGRldmljZSB0cmVlIGZvciBhbGwgb3RoZXIgUm9ja2NoaXAgU29DcyBkb24ndCBo
-YXZlCj4+ID4gPj4gPiBhICJzb2MiIG5vZGUuIEkgZGlkbid0IGtub3cgd2h5IGJlZm9yZSBidXQg
-anVzdCBmb2xsb3cgdGhlIHN0eWxlLgo+PiA+ID4+ID4KPj4gPiA+PiA+IElmIHlvdSBwcmVmZXIg
-YWRkIGEgc29jIG5vZGUsIEkgYW0gd2lsbGluZyB0by4KPj4gPiA+Pgo+PiA+ID4+IFN1cnByaXNp
-bmcgYXMgdXN1YWxseSB3ZSBleHBlY3QgTU1JTyBub2RlcyBiZWluZyBwYXJ0IG9mIFNvQyB0byBi
-ZQo+PiA+ID4+IHVuZGVyCj4+ID4gPj4gc29jQCwgYnV0IGlmIHRoYXQncyBSb2NrY2hpcCBwcmVm
-ZXJlbmNlIHRoZW4gZmluZS4KPj4gPiA+Pgo+PiA+ID4KPj4gPiA+IE9rYXksIHRoZW4gSSB3b3Vs
-ZCBsZWF2ZSBpdCBhcyBpcy4KPj4gPiA+Cj4+ID4gPiBGb3IgdGhlIGZpeGVkLWNsb2NrIG5vZGUs
-IEkgdGhpbmsgInhpbjI0bTogY2xvY2stMjRtIHsgfSIgaXMgb2theSBhbmQKPj4gPiA+IGZvbGxv
-d3MgdGhlIG5ldyBydWxlPwo+PiA+Cj4+ID4gSSBmaW5kICJ4aW4yNG06IGNsb2NrLXhpbjI0bSB7
-IH0iIGJldHRlciwgYmVjYXVzZSBrZWVwaW5nIHRoZSAieGluMjRtIgo+PiA+IHBhcnQgaW4gL3N5
-cyBsaXN0aW5nKHMpLCBmb3IgZXhhbXBsZSwgY2FuIG9ubHkgYmUgaGVscGZ1bC4KPj4gCj4+IEkg
-d291bGQgc2Vjb25kIHRoYXQgOi0pIC4gTGlrZSBvbiBhIG51bWJlciBvZiBib2FyZHMgd2UgaGF2
-ZSBmb3IgCj4+IGV4YW1wbGUKPj4gMTI1TUh6IGdtYWMgY2xvY2sgZ2VuZXJhdG9ycyAuLi4gd2l0
-aCAyIGdtYWNzLCB0aGVyZSBhcmUgMiBvZiB0aGVtLgo+PiAKPj4gSSdtIG5vdCBzdXJlIHRoZSBw
-cmVmZXJyZWQgbmFtZSBhY2NvdW50cyBmb3IgdGhhdD8KPj4gCj4+IFNpbWlsYXJseSB3ZSBhbHNv
-IGtlZXAgdGhlIG5hbWluZyBpbiB0aGUgcmVndWxhdG9yIG5vZGUsCj4+IGl0J3MgcmVndWxhdG9y
-LXZjYzN2My1zb21lbmFtZSB7fSBpbnN0ZWFkIG9mIGp1c3QgcmVndWxhdG9yLTN2MyB7fS4KPiAK
-PiAiY2xvY2steGluMjRtIiB3b3VsZG4ndCBiZSBtb3JlIGRlc2NyaXB0aXZlIHRoYW4gImNsb2Nr
-LTI0bSIgYW5kIHRoZXJlCj4gYXJlIHVzdWFsbHkgb25seSBhIGZldyBmaXhlZCBjbG9ja3MgaW4g
-ZHQsIHRodXMgZmluZGluZyBjb3JyZXNwb25kaW5nCj4gZGVmaW5pdGlvbiBpc24ndCBhIHByb2Js
-ZW0gSSB0aGluay4KCldlbGwsIHVzaW5nICJjbG9jay14aW4yNG0iIGNvbWVzIHdpdGggYW5vdGhl
-ciBiZW5lZml0LCB3aGljaCBpcyB1c2luZwp0aGUgc2FtZSAieGluMjRtIiBhcyBpbiB0aGUgYWN0
-dWFsIGNsb2NrIG5hbWUuICBUaGF0IHdheSwgdGhlIHNhbWUgY2xvY2sKbmFtZSBnZXRzIHVzZWQg
-aW4gdmFyaW91cyAvc3lzIGxpc3RpbmdzIGFuZCBpbiB0aGUgZGVidWcgY2xvY2sgc3VtbWFyeQpp
-biAvc3lzLiAgSGF2aW5nIHRoYXQga2luZCBvZiBjb25zaXN0ZW5jeSBjYW4gb25seSBiZSBiZW5l
-ZmljaWFsLgoKPiBGb3IgdGhlIGdtYWMgY2FzZSwgS3J6eXN6dG9mLCBkbyB5b3UgdGhpbmsgc29t
-ZXRoaW5nIGxpa2UKPiAiY2xvY2stMTI1bS1nbWFjMSIgaXMgYWNjZXB0YWJsZSwganVzdCBsaWtl
-IHdoYXQgaGFzIGJlZW4gZG9uZSBmb3IKPiByZWd1bGF0b3JzPwoKX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0
-CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVh
-ZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+On Wed, Jul 31, 2024 at 11:24:24PM +0200, Heiko Stuebner wrote:
+> These MCUs can be found in network attached storage devices made by QNAP.
+> They are connected to a serial port of the host device and provide
+> functionality like LEDs, power-control and temperature monitoring.
+> 
+> Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+> Signed-off-by: Heiko Stuebner <heiko@sntech.de>
+> ---
+>  .../bindings/mfd/qnap,ts433-mcu.yaml          | 43 +++++++++++++++++++
+>  1 file changed, 43 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/mfd/qnap,ts433-mcu.yaml
+> 
+> diff --git a/Documentation/devicetree/bindings/mfd/qnap,ts433-mcu.yaml b/Documentation/devicetree/bindings/mfd/qnap,ts433-mcu.yaml
+> new file mode 100644
+> index 0000000000000..5ae19d8faedbd
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/mfd/qnap,ts433-mcu.yaml
+> @@ -0,0 +1,43 @@
+> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/mfd/qnap,ts433-mcu.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: QNAP NAS on-board Microcontroller
+> +
+> +maintainers:
+> +  - Heiko Stuebner <heiko@sntech.de>
+> +
+> +description:
+> +  QNAP embeds a microcontroller on their NAS devices adding system feature
+> +  as PWM Fan control, additional LEDs, power button status and more.
+
+Doesn't really look like the binding is complete.
+
+> +
+> +properties:
+> +  compatible:
+> +    enum:
+> +      - qnap,ts433-mcu
+> +
+> +  "#cooling-cells":
+> +    const: 2
+> +
+> +  cooling-levels:
+> +    description: PWM duty cycle values corresponding to thermal cooling states.
+> +    $ref: /schemas/types.yaml#/definitions/uint32-array
+> +    items:
+> +      maximum: 255
+
+These are fan properties and should be in a "fan" node referencing 
+hwmon/fan-common.yaml.
+
+Rob
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
