@@ -4,131 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9C215C3DA4A
-	for <linux-rockchip@archiver.kernel.org>; Mon,  5 Aug 2024 08:38:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7B3D9C3DA4A
+	for <linux-rockchip@archiver.kernel.org>; Mon,  5 Aug 2024 09:01:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=emOtIkVlhAvcFag/Lu1pyf9vai72Fh04RFJIWJ9/gZQ=; b=zuVt68JwebbhDr
-	+LkiBdgzsCc8OOZfnDMjKoNFwyWJz0LjN/vrotE8Ax4FR9fQKVXp1rYCra6OYGm8s633o61kUF1rC
-	MKodgibAdL8VKJkzUh1eEau2Q9P8w+egg+sYvgqIZXWO5Oa+qa+lDdyjO60xNG5DTTI4u8wWBX/jq
-	M/F3txCDpTZmyKdG+mqDNr5kl8CIvk7w0+WAly/55QUKa1nl1m2DeI4Eowsa0hz6q0V33bQ1238b5
-	MwUQyR5ynn2MtrNQmWg3tmKaevJg9LsX+kPfTR6U2o0OhyNndbJ3W5YTdOuEaAUOWYwmfgr8JsUL7
-	r5/T0l7s3Sijod1NVsKw==;
+	List-Owner; bh=h3bmOwqNCqCujAKXUG3NZRF9yMtSawa1gyO85+aWs0E=; b=MWM3Z34rYV6w5d
+	I3+oBA0VGpS13l7tQ+bSGw3flYQhRGVEW+yGOc8daJiXDQSb2Y4ETmF9pYfXXLYUhr9WbESg4RP2d
+	MMblXSa3gj4Quu7SetVEV3YDiUCYmFD0HdfLECSKd+tZOQvjrTWYTFr3W0/nJCxwrzHzD73oFidnk
+	X7CTPg6ekgglEWQEasATfPmMGV8+OEToPugUj3Rpe90bdeJWvTvxzZQ/hcrfAogouvG0XfFXCxet9
+	fApoxJRLNEpRenBC2Bj9xof1R4vMrTmKk+nXez8zJzcXEV5c8ktkM7r2cJaszB2jiWQLJE7WVxmI/
+	ujAifLIlZAWjsrWtuhAw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1satEE-0000000F92R-0kyL;
-	Mon, 05 Aug 2024 08:38:06 +0000
-Received: from mail-pf1-x42f.google.com ([2607:f8b0:4864:20::42f])
-	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1satEA-0000000F91h-2igg
-	for linux-rockchip@lists.infradead.org;
-	Mon, 05 Aug 2024 08:38:04 +0000
-Received: by mail-pf1-x42f.google.com with SMTP id d2e1a72fcca58-70eb73a9f14so7706564b3a.2
-        for <linux-rockchip@lists.infradead.org>; Mon, 05 Aug 2024 01:38:01 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=broadcom.com; s=google; t=1722847081; x=1723451881; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:autocrypt:from
-         :content-language:references:cc:to:subject:user-agent:mime-version
-         :date:message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=lwKaJV11ZNo64nhEmzjMhGqxhmedgN2za3+jM9f935A=;
-        b=N0GKSzI5DhE/qF0X/VwSVhwi9W+ph+jGbTaCWNKfsj2i8xL4sahYe3CkEo6F79jLl7
-         +Om7d4jFMfIlUlv8fUQljgFLtU0wP8xyuxWRVtcpoq/5V4sBfUcHDtLm0rHb+8ckqq7P
-         mWIJ1Bwwdsc8OmfQJiNR9+VX4zM8JLkyi0SPk=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1722847081; x=1723451881;
-        h=content-transfer-encoding:in-reply-to:autocrypt:from
-         :content-language:references:cc:to:subject:user-agent:mime-version
-         :date:message-id:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=lwKaJV11ZNo64nhEmzjMhGqxhmedgN2za3+jM9f935A=;
-        b=O7yLWILlrSoqGUSurFT7iG3rg9MWwvNlFPr+oKkmGyZzKstIpm6s7N2FLUwqz9KXTY
-         FDadQOL8ZQd4kyd+vlVhRjJBtBkQq790256cidSN384QEeicm7CnlFFBSfzlWkjwMbXJ
-         22x+2TLZH0tO/9xuDjV76t+4ISm8gG+PxGe9sJKBKrs32HZ3R/+lCtnRT7kj9q6rBAJL
-         DGr6MFtPKjtMWa1rzAhvOGdQ5BROQGc42kp46AEMlyL/himHTZF/YBX+yS9ewwLGstM0
-         nE9TPlM15NDP222TJ2c3u+wWxt3mmnLSOm6P//B81lC+4ELC9gfVBmrBDYcbELOxy3yu
-         5nHQ==
-X-Forwarded-Encrypted: i=1; AJvYcCXv5GpQc8pLMBkcXcmNmgHa+U8Q7mBfXo+X4Iqypk7FWxI6zSE6TkzbG3LOfR41JNgHPrhbG9e5lWuykOgT7PvHHqFRx21nAFoms6AF5KMWIrBY
-X-Gm-Message-State: AOJu0YyEoqyHE760brinBF7D7LdJD/90Bs4WeTaElLtdrAKIrx0oUUPS
-	v5GYBAaL7bcE9qNB1/Ob6JpTpwIO5KgwC/qYr8VI0pIvvEzMjNX2MB7d26zwvg==
-X-Google-Smtp-Source: AGHT+IGkudqNL0fTBNkSAE89yZQ5MD4zd9FpMTyItlaPtVglqeJXDe8fDvsl1Fh4ANkwyM3hm/+jBQ==
-X-Received: by 2002:a05:6a20:9193:b0:1c2:8d91:634 with SMTP id adf61e73a8af0-1c6996b9324mr16846423637.45.1722847080953;
-        Mon, 05 Aug 2024 01:38:00 -0700 (PDT)
-Received: from [10.176.68.61] ([192.19.176.250])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-1ff58f53c4csm62072535ad.72.2024.08.05.01.37.55
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 05 Aug 2024 01:38:00 -0700 (PDT)
-Message-ID: <32ddf003-0547-4905-9c87-899b9074ede3@broadcom.com>
-Date: Mon, 5 Aug 2024 10:37:52 +0200
+	id 1sataV-0000000FCbk-3ONA;
+	Mon, 05 Aug 2024 09:01:07 +0000
+Received: from xn--80adja5bqm.su ([198.44.140.76])
+	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
+	id 1satZv-0000000FCIk-2L5v;
+	Mon, 05 Aug 2024 09:00:33 +0000
+Received: by xn--80adja5bqm.su (Postfix, from userid 1000)
+	id 3C82F40438C0; Mon,  5 Aug 2024 08:59:35 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 xn--80adja5bqm.su 3C82F40438C0
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=mediatomb.cc;
+	s=default; t=1722848375;
+	bh=tmHgGf62PeYz9BY6aiMtg+20K319NfsqGiqHiVaLq7k=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=kddCsnBu9RWy/QmNJ0vEK1WGes0SGvJGpwGqRyFVeRlqWMf+s+FvFH8y53OkcHDC0
+	 r0MVhpUA0osJ93dJb3G+WOh+FHcmXzW4CmZxpKnuq7jXCaqeY/ab0WZ9XhFHZdseIT
+	 zG6AliqSLvXBxxez+/J3oEpV5P5+rp/VLpKo1ZzFTaG1U0CfkXdtJjRRxxb9DZRzTH
+	 XjS2XZaxUBIH5MLnF8M+QXKXDpFMCg2EIU+ngxG7U8uspGkVQaMdw2wpjAB8LMIGDv
+	 9BdCiS7i55Evl6ISKvRsqqYi6Vi05SUmmv7MdLvNISANWyFaapaijMCHUxqAnb4gdI
+	 xXxeTk7IxZyvA==
+Date: Mon, 5 Aug 2024 08:59:35 +0000
+From: Sergey 'Jin' Bostandzhyan <jin@mediatomb.cc>
+To: Daniel Golle <daniel@makrotopia.org>
+Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
+	heiko@sntech.de, devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH V2 1/2 RESEND] arm64: dts: rockchip: Add DTS for
+ FriendlyARM NanoPi R2S Plus
+Message-ID: <20240805085935.GA26754@ветеран.su>
+References: <22bbec28-41c1-4f36-b776-6e091bf118d9@kernel.org>
+ <20240801175736.16591-1-jin@mediatomb.cc>
+ <20240801175736.16591-2-jin@mediatomb.cc>
+ <Zq7LBqKVvVVVLg7a@makrotopia.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v8 3/5] arm64: dts: rockchip: Add AP6275P wireless support
- to Khadas Edge 2
-To: Jacobe Zang <jacobe.zang@wesion.com>, robh@kernel.org,
- krzk+dt@kernel.org, heiko@sntech.de, kvalo@kernel.org, davem@davemloft.net,
- edumazet@google.com, kuba@kernel.org, pabeni@redhat.com, conor+dt@kernel.org
-Cc: efectn@protonmail.com, dsimic@manjaro.org, jagan@edgeble.ai,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
- arend@broadcom.com, linux-wireless@vger.kernel.org, netdev@vger.kernel.org,
- megi@xff.cz, duoming@zju.edu.cn, bhelgaas@google.com,
- minipli@grsecurity.net, brcm80211@lists.linux.dev,
- brcm80211-dev-list.pdl@broadcom.com, nick@khadas.com
-References: <20240805073425.3492078-1-jacobe.zang@wesion.com>
- <20240805073425.3492078-4-jacobe.zang@wesion.com>
-Content-Language: en-US
-From: Arend van Spriel <arend.vanspriel@broadcom.com>
-Autocrypt: addr=arend.vanspriel@broadcom.com; keydata=
- xsFNBGP96SABEACfErEjSRi7TA1ttHYaUM3GuirbgqrNvQ41UJs1ag1T0TeyINqG+s6aFuO8
- evRHRnyAqTjMQoo4tkfy21XQX/OsBlgvMeNzfs6jnVwlCVrhqPkX5g5GaXJnO3c4AvXHyWik
- SOd8nOIwt9MNfGn99tkRAmmsLaMiVLzYfg+n3kNDsqgylcSahbd+gVMq+32q8QA+L1B9tAkM
- UccmSXuhilER70gFMJeM9ZQwD/WPOQ2jHpd0hDVoQsTbBxZZnr2GSjSNr7r5ilGV7a3uaRUU
- HLWPOuGUngSktUTpjwgGYZ87Edp+BpxO62h0aKMyjzWNTkt6UVnMPOwvb70hNA2v58Pt4kHh
- 8ApHky6IepI6SOCcMpUEHQuoKxTMw/pzmlb4A8PY//Xu/SJF8xpkpWPVcQxNTqkjbpazOUw3
- 12u4EK1lzwH7wjnhM3Fs5aNBgyg+STS1VWIwoXJ7Q2Z51odh0XecsjL8EkHbp9qHdRvZQmMu
- Ns8lBPBkzpS7y2Q6Sp7DcRvDfQQxPrE2sKxKLZVGcRYAD90r7NANryRA/i+785MSPUNSTWK3
- MGZ3Xv3fY7phISvYAklVn/tYRh88Zthf6iDuq86m5mr+qOO8s1JnCz6uxd/SSWLVOWov9Gx3
- uClOYpVsUSu3utTta3XVcKVMWG/M+dWkbdt2KES2cv4P5twxyQARAQABzS9BcmVuZCB2YW4g
- U3ByaWVsIDxhcmVuZC52YW5zcHJpZWxAYnJvYWRjb20uY29tPsLBhwQTAQgAMRYhBLX1Z69w
- T4l/vfdb0pZ6NOIYA/1RBQJj/ek9AhsDBAsJCAcFFQgJCgsFFgIDAQAACgkQlno04hgD/VGw
- 8A//VEoGTamfCks+a12yFtT1d/GjDdf3i9agKMk3esn08JwjJ96x9OFFl2vFaQCSiefeXITR
- K4T/yT+n/IXntVWT3pOBfb343cAPjpaZvBMh8p32z3CuV1H0Y+753HX7gdWTEojGWaWmKkZh
- w3nGoRZQEeAcwcF3gMNwsM5Gemj7aInIhRLUeoKh/0yV85lNE1D7JkyNheQ+v91DWVj5/a9X
- 7kiL18fH1iC9kvP3lq5VE54okpGqUj5KE5pmHNFBp7HZO3EXFAd3Zxm9ol5ic9tggY0oET28
- ucARi1wXLD/oCf1R9sAoWfSTnvOcJjG+kUwK7T+ZHTF8YZ4GAT3k5EwZ2Mk3+Rt62R81gzRF
- A6+zsewqdymbpwgyPDKcJ8YUHbqvspMQnPTmXNk+7p7fXReVPOYFtzzfBGSCByIkh1bB45jO
- +TM5ZbMmhsUbqA0dFT5JMHjJIaGmcw21ocgBcLsJ730fbLP/L08udgWHywPoq7Ja7lj5W0io
- ZDLz5uQ6CEER6wzD07vZwSl/NokljVexnOrwbR3wIhdr6B0Hc/0Bh7T8gpeM+QcK6EwJBG7A
- xCHLEacOuKo4jinf94YQrOEMnOmvucuQRm9CIwZrQ69Mg6rLn32pA4cK4XWQN1N3wQXnRUnb
- MTymLAoxE4MInhDVsZCtIDFxMVvBUgZiZZszN33OwU0EY/3pIgEQAN35Ii1Hn90ghm/qlvz/
- L+wFi3PTQ90V6UKPv5Q5hq+1BtLA6aj2qmdFBO9lgO9AbzHo8Eizrgtxp41GkKTgHuYChijI
- kdhTVPm+Pv44N/3uHUeFhN3wQ3sTs1ZT/0HhwXt8JvjqbhvtNmoGosZvpUCTwiyM1VBF/ICT
- ltzFmXd5z7sEuDyZcz9Q1t1Bb2cmbhp3eIgLmVA4Lc9ZS3sK1UMgSDwaR4KYBhF0OKMC1OH8
- M5jfcPHR8OLTLIM/Thw0YIUiYfj6lWwWkb82qa4IQvIEmz0LwvHkaLU1TCXbehO0pLWB9HnK
- r3nofx5oMfhu+cMa5C6g3fBB8Z43mDi2m/xM6p5c3q/EybOxBzhujeKN7smBTlkvAdwQfvuD
- jKr9lvrC2oKIjcsO+MxSGY4zRU0WKr4KD720PV2DCn54ZcOxOkOGR624d5bhDbjw1l2r+89V
- WLRLirBZn7VmWHSdfq5Xl9CyHT1uY6X9FRr3sWde9kA/C7Z2tqy0MevXAz+MtavOJb9XDUlI
- 7Bm0OPe5BTIuhtLvVZiW4ivT2LJOpkokLy2K852u32Z1QlOYjsbimf77avcrLBplvms0D7j6
- OaKOq503UKfcSZo3lF70J5UtJfXy64noI4oyVNl1b+egkV2iSXifTGGzOjt50/efgm1bKNkX
- iCVOYt9sGTrVhiX1ABEBAAHCwXYEGAEIACAWIQS19WevcE+Jf733W9KWejTiGAP9UQUCY/3p
- PgIbDAAKCRCWejTiGAP9UaC/EACZvViKrMkFooyACGaukqIo/s94sGuqxj308NbZ4g5jgy/T
- +lYBzlurnFmIbJESFOEq0MBZorozDGk+/p8pfAh4S868i1HFeLivVIujkcL6unG1UYEnnJI9
- uSwUbEqgA8vwdUPEGewYkPH6AaQoh1DdYGOleQqDq1Mo62xu+bKstYHpArzT2islvLdrBtjD
- MEzYThskDgDUk/aGPgtPlU9mB7IiBnQcqbS/V5f01ZicI1esy9ywnlWdZCHy36uTUfacshpz
- LsTCSKICXRotA0p6ZiCQloW7uRH28JFDBEbIOgAcuXGojqYx5vSM6o+03W9UjKkBGYFCqjIy
- Ku843p86Ky4JBs5dAXN7msLGLhAhtiVx8ymeoLGMoYoxqIoqVNaovvH9y1ZHGqS/IYXWf+jE
- H4MX7ucv4N8RcsoMGzXyi4UbBjxgljAhTYs+c5YOkbXfkRqXQeECOuQ4prsc6/zxGJf7MlPy
- NKowQLrlMBGXT4NnRNV0+yHmusXPOPIqQCKEtbWSx9s2slQxmXukPYvLnuRJqkPkvrTgjn5d
- eSE0Dkhni4292/Nn/TnZf5mxCNWH1p3dz/vrT6EIYk2GSJgCLoTkCcqaM6+5E4IwgYOq3UYu
- AAgeEbPV1QeTVAPrntrLb0t0U5vdwG7Xl40baV9OydTv7ghjYZU349w1d5mdxg==
-In-Reply-To: <20240805073425.3492078-4-jacobe.zang@wesion.com>
+Content-Disposition: inline
+In-Reply-To: <Zq7LBqKVvVVVLg7a@makrotopia.org>
+User-Agent: Mutt/1.5.21 (2010-09-15)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240805_013802_899487_23A9331F 
-X-CRM114-Status: UNSURE (   9.21  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240805_020031_742750_9183E19D 
+X-CRM114-Status: GOOD (  32.14  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -140,23 +71,140 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 8/5/2024 9:34 AM, Jacobe Zang wrote:
-> Khadas Edge2 uses the PCI-e Ampak AP6275P 2T2R Wi-Fi 6 module. The
-> pcie@0 node can be used as Bridge1, so the wifi@0 node is used as a
-> device under the Bridge1.
+Daniel,
 
-Reviewed-by: Arend van Spriel <arend.vanspriel@broadcom.com>
-> Co-developed-by: Muhammed Efe Cetin <efectn@protonmail.com>
-> Signed-off-by: Muhammed Efe Cetin <efectn@protonmail.com>
-> Signed-off-by: Jacobe Zang <jacobe.zang@wesion.com>
-> ---
->   .../boot/dts/rockchip/rk3588s-khadas-edge2.dts   | 16 ++++++++++++++++
->   1 file changed, 16 insertions(+)
+On Sun, Aug 04, 2024 at 01:27:50AM +0100, Daniel Golle wrote:
+> On Thu, Aug 01, 2024 at 05:57:35PM +0000, Sergey Bostandzhyan wrote:
+> > The R2S Plus is basically an R2S with additional eMMC.
+> > 
+> > The eMMC configuration for the DTS has been extracted and copied from
+> > rk3328-nanopi-r2.dts, v2017.09 branch from the friendlyarm/uboot-rockchip
+> > repository.
+> > 
+> > Signed-off-by: Sergey Bostandzhyan <jin@mediatomb.cc>
+> > ---
+> >  arch/arm64/boot/dts/rockchip/Makefile         |  1 +
+> >  .../dts/rockchip/rk3328-nanopi-r2s-plus.dts   | 31 +++++++++++++++++++
+> >  2 files changed, 32 insertions(+)
+> >  create mode 100644 arch/arm64/boot/dts/rockchip/rk3328-nanopi-r2s-plus.dts
+> > 
+> > diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
+> > index fda1b980eb4b..36258dc8dafd 100644
+> > --- a/arch/arm64/boot/dts/rockchip/Makefile
+> > +++ b/arch/arm64/boot/dts/rockchip/Makefile
+> > @@ -20,6 +20,7 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3328-evb.dtb
+> >  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3328-nanopi-r2c.dtb
+> >  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3328-nanopi-r2c-plus.dtb
+> >  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3328-nanopi-r2s.dtb
+> > +dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3328-nanopi-r2s-plus.dtb
+> >  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3328-orangepi-r1-plus.dtb
+> >  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3328-orangepi-r1-plus-lts.dtb
+> >  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3328-rock64.dtb
+> > diff --git a/arch/arm64/boot/dts/rockchip/rk3328-nanopi-r2s-plus.dts b/arch/arm64/boot/dts/rockchip/rk3328-nanopi-r2s-plus.dts
+> > new file mode 100644
+> > index 000000000000..7b83090a2145
+> > --- /dev/null
+> > +++ b/arch/arm64/boot/dts/rockchip/rk3328-nanopi-r2s-plus.dts
+> > @@ -0,0 +1,31 @@
+> > +// SPDX-License-Identifier: GPL-2.0+
+> > +/*
+> > + * (C) Copyright 2018 FriendlyElec Computer Tech. Co., Ltd.
+> > + * (http://www.friendlyarm.com)
+> > + *
+> > + * (C) Copyright 2016 Rockchip Electronics Co., Ltd
+> > + */
+> > +
+> > +/dts-v1/;
+> > +#include "rk3328-nanopi-r2s.dts"
+> > +
+> > +/ {
+> > +	model = "FriendlyElec NanoPi R2S Plus";
+> > +	compatible = "friendlyarm,nanopi-r2s-plus", "rockchip,rk3328";
+> > +
+> > +	aliases {
+> > +		mmc1 = &emmc;
+> > +	};
+> > +};
+> > +
+> > +&emmc {
+> > +	bus-width = <8>;
+> > +	cap-mmc-highspeed;
+> > +	supports-emmc;
+> > +	disable-wp;
+> > +	non-removable;
+> > +	num-slots = <1>;
+> > +	pinctrl-names = "default";
+> > +	pinctrl-0 = <&emmc_clk &emmc_cmd &emmc_bus8>;
+> 
+> I think it's worth adding
+> 
+> 	mmc-hs200-1_8v;
+> 
+> 
+> I've tried getting the best speed possible and while HS400 with and
+> without enhanced strobe did NOT work, hs200 works just fine.
+> [    0.459863] mmc_host mmc1: Bus speed (slot 0) = 50000000Hz (slot req 52000000Hz, actual 50000000HZ div = 0)
+> [    0.460884] mmc_host mmc1: Bus speed (slot 0) = 150000000Hz (slot req 150000000Hz, actual 150000000HZ div = 0)
+> ...
+> [    0.728220] dwmmc_rockchip ff520000.mmc: Successfully tuned phase to 194
+> [    0.728940] mmc1: new HS200 MMC card at address 0001
+> [    0.730774] mmcblk1: mmc1:0001 A3A551 28.9 GiB
+> [    0.733262]  mmcblk1: p1 p2
+> [    0.734562] mmcblk1boot0: mmc1:0001 A3A551 4.00 MiB
+> [    0.736818] mmcblk1boot1: mmc1:0001 A3A551 4.00 MiB
+> [    0.738503] mmcblk1rpmb: mmc1:0001 A3A551 16.0 MiB, chardev (245:0)
+> 
+> root@OpenWrt:/# hdparm -t /dev/mmcblk1
+> 
+> /dev/mmcblk1:
+>  Timing buffered disk reads: 342 MB in  3.00 seconds = 113.81 MB/sec
+> 
+> 
+> Without 'mmc-hs200-1_8v' property in DT the eMMC is detected as
+> [    0.440465] mmc_host mmc1: Bus speed (slot 0) = 50000000Hz (slot req 52000000Hz, actual 50000000HZ div = 0)
+> [    0.442032] mmc1: new high speed MMC card at address 0001
+> [    0.444261] mmcblk1: mmc1:0001 A3A551 28.9 GiB
+> [    0.447388]  mmcblk1: p1 p2
+> [    0.448744] mmcblk1boot0: mmc1:0001 A3A551 4.00 MiB
+> [    0.451065] mmcblk1boot1: mmc1:0001 A3A551 4.00 MiB
+> [    0.452871] mmcblk1rpmb: mmc1:0001 A3A551 16.0 MiB, chardev (245:0)
+> 
+> 
+> root@OpenWrt:/# hdparm -t /dev/mmcblk1
+> 
+> /dev/mmcblk1:
+>  Timing buffered disk reads: 134 MB in  3.03 seconds =  44.18 MB/sec
+> 
+> 
+> > +	status = "okay";
+> > +};
+> 
+> I'm right now trying to get SDIO RTL8822CS working, so far I'm out of luck,
+> but it can be added later once we got it working.
+
+would you be interested in taking over my attempted patches? Thing is,
+that I am a userspace guy who only copy-pasted some entries from
+FriendlyElec and things happened to work, but I really have no clue what I am
+doing when it comes to hardware and DTS. I see that some changes were suggested, 
+not only by you above, but also by others earlier and I have little
+understanding of where I should be inserting what and how.
+
+At this point I think it would make more sense if someone who actually
+understands what they are doing would continue to tune the DTS :)
+
+So it'd be great if either you or anyone else would be willing to take
+over?
+
+Kind regards,
+Sergey
+
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
