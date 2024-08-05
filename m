@@ -4,82 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CDE2CC3DA7F
-	for <linux-rockchip@archiver.kernel.org>; Mon,  5 Aug 2024 13:13:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3B5BFC3DA7F
+	for <linux-rockchip@archiver.kernel.org>; Mon,  5 Aug 2024 15:00:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Ysixrht/AwgQF8q0HY/1aS4TmdwiBaIsIjbVwyEbsuE=; b=fzBZjCz/rkwUKq
-	ESWXxVdjlJHF14KD0R3sbcMeX8DbF7hAqMDwCs/iWFFeiEyUIZ++7+2Fia8Ew0nhmgbfzuxftLz1m
-	pkGv+wvsKlbRef0yQyNxtnhktYAHikJK5U1iE0A6bjH+qSClDQVLc+o8PGza01Q01feSKLJSm/JsM
-	bG+dBdsLSXAplYJAFl/H1bysq3m1xHAjxkisGmXnrIudAR0k4KLF7pnPyTzlexfZtMuxrnWlSnm1w
-	omziOM+YvsE9T1sL/QFdE+1sgjPLvavcq6rUU9djNyPsW2I6hNeUBKd/2utmktmz7x8SUKBzuwpBm
-	yLmKbvrclbkmohtLunuQ==;
+	List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:References:
+	In-Reply-To:Cc:To:From:MIME-Version:Date:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=NruVjzzR694FlexwnnbFwyESf3E97ITiTa55xtUe5k8=; b=buSHAXOS1XsBz7Z79c0V2kMB3u
+	d3OkjV4fg++amcWD/BNXg+qzRDIGyVRffZDOOL+U2Ix6sEDEOKm6s3Q9l0nswI+KCCzqIicdm9Aw5
+	xJcR/vV75MyUAEMZAvSPKxQ9xFHlzPp30/hxCkPK6lDNJ3q01s91F8/qTIjKEcyACW69o4tBADRXr
+	/RDruEvsw4ZudhcFkiwuJ3mb/yjRWMLmH+/WRV2hfcT03fhoBjd9vgZaYafuBmDGTvlaEKZ6+mRHq
+	zMvpFfA7MdODUVP7XTy+0j55EU5BZ2MYFqSH2XjmRvuLpkPQDdamHDHxc90N2387yB1j8qZcTDLyw
+	6eVrxLNA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1saxWi-0000000Fuat-0OsE;
-	Mon, 05 Aug 2024 13:13:28 +0000
-Received: from mail-qk1-x72c.google.com ([2607:f8b0:4864:20::72c])
+	id 1sazCg-0000000GEYK-1ol6;
+	Mon, 05 Aug 2024 15:00:54 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1saxV4-0000000Fu8D-0iGU
-	for linux-rockchip@lists.infradead.org;
-	Mon, 05 Aug 2024 13:11:48 +0000
-Received: by mail-qk1-x72c.google.com with SMTP id af79cd13be357-7a1e1f6a924so684390285a.1
-        for <linux-rockchip@lists.infradead.org>; Mon, 05 Aug 2024 06:11:45 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=fooishbar-org.20230601.gappssmtp.com; s=20230601; t=1722863504; x=1723468304; darn=lists.infradead.org;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=wqu7bGkFRyONJ595ZHT2dPa2sQS3elnU8rD7fvADtto=;
-        b=Iv8A0Y4cWnDSEcF9eoKOSfm3ZK8aoiBsHv72Yleafmc08ImqC0VY4kY5y/HAnvFrLq
-         a5pIAwgiiB4zvPQrELBdE186ogcnZR38pKyhC2GAR3Vy64eZAHkVUgs31vPegysPgVJP
-         XAKIfzSnhHCe1BM5599oJvH7eIL4vO2sWFElfQLNV+lgTOIE/Vb8dWG18jNmWfTQFgme
-         pAXF+7MDFhXA+IQ878Ut8VQIfO78PeoUApJWhPrag++5xJPopysITUmxSTdnjbG2kuPb
-         Y/0mK/rrfsjeGirvmvoNkk9GCfQD4Ryrh9oJA/7Egtf44cVg5LRLb0KfoLRD+Z7FrAi9
-         a5dg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1722863504; x=1723468304;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=wqu7bGkFRyONJ595ZHT2dPa2sQS3elnU8rD7fvADtto=;
-        b=ooPDf8TME07EKFAQzCxJQm6GTTxK+VNKEuMpSHKc9zkARgD2tyJPyROLh/3eskssML
-         PxsOtbqxtkoLxBDVmySEYHeofaGlhY8zBMboWXFo77VjZJE9ulwS5XUxgkLez2ry9nSH
-         d3JFj1z//Q2TM/jxnshVEJNfg8lkR7b87HsukiB5PukiVZscRneBGMK/JebI/WvU9WdX
-         YzMYKlU4KAHbXShhMtEynM/JfRBM2Ryr+9s2XTO4Sc4TkGP5CRkMpYjt1XQEokuO1v2V
-         dURrsAkjYlQ+u7bEOjuv9bvDImgdyFnepLYgskmkVofe+yBk7Tp2d62DrapyEbb/eZeV
-         7Pow==
-X-Forwarded-Encrypted: i=1; AJvYcCU3ZWQfE0cwi522HYMCtzyyZQz+Z2hDOiIW7sIXCUyX0eBzYlgOQyyPZraRQ8pzndPVH8YzaBVT7T6FK1e05lR4aru2W62cbMcyJv0/7vxpjLzY
-X-Gm-Message-State: AOJu0Yw2KPeXLjhB0UljNsk6wnMIvhnFI4hYNjBSJwOKqbwizMZ7Wj1O
-	id8sg229F66s/MV4l4WlkaoS1oDPUF7Gh3q8xXtXTK2sBasYNiPby1Nt5G4/QNMp0WGDb0UKu+j
-	a3/j+KNFirtaiwbtOOdVmPMNLTz3KYNegl/zuvA==
-X-Google-Smtp-Source: AGHT+IF/O5ePVsP9F9/4LdJgMcHnbAiRBVz6rWucn4L0+VzzRP1U+YIN/SKoA9Ocbj/mAccdLjT4/BuXBtCo084/sM8=
-X-Received: by 2002:a05:620a:24c6:b0:7a2:e6c:41e7 with SMTP id
- af79cd13be357-7a34eeb959dmr1463955085a.9.1722863504285; Mon, 05 Aug 2024
- 06:11:44 -0700 (PDT)
+	id 1sazCA-0000000GEU8-32oD;
+	Mon, 05 Aug 2024 15:00:22 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Subject:Message-Id:References:
+	In-Reply-To:Cc:To:From:MIME-Version:Content-Transfer-Encoding:Content-Type:
+	Date:Sender:Reply-To:Content-ID:Content-Description;
+	bh=SZoDW/WNj4kpqQAJb4vZQgfR1+6iCY19s8Ybkv43Yew=; b=EBAEA6HgkHPdnNJqFupmUpZzKN
+	bHM+aHkQmqAupcX5GVCmbdQ/v7loTXVmt61s24xvE+jfRzngi4YklgMKtDuZqdFQZ647zT1K/fUCp
+	/WFVb/KHFQRIkRUg+TYsoVw8I3mpkIxSZS/JAUnHm1cLH6RIoI4stkACHTzeaR9LLdCYMvKM+BEQ3
+	6X47TI32wD+dJCA9efL8+HRssJTi3H9T0k+dUtGU5dovS7PB0EIqtDTSP6h1nBRqZPRxFqgJ1sHMv
+	r2UjNoyJ1rhKd9vS9zqt2H5b8sYZdHq/Bqg/YTM9Db0cWXNlHrNrVrwJ7kv3+65KbTifbbsKZbhd8
+	AwQcRRWQ==;
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	by desiato.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
+	id 1sazC5-00000006HI7-2Fna;
+	Mon, 05 Aug 2024 15:00:21 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 7A42A60B83;
+	Mon,  5 Aug 2024 15:00:14 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E690BC32782;
+	Mon,  5 Aug 2024 15:00:13 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1722870014;
+	bh=BvrkceB7VckQ65t9UIejN1/seIpoW+gmGHw6Bpfa1KI=;
+	h=Date:From:To:Cc:In-Reply-To:References:Subject:From;
+	b=RgtOWvXIe5UibJyNzAZ9c81c0XVk+dYUbypvfMiCLu2/CUOtXzp4ElCbp1eBqdScs
+	 uEqs+7rh1jh6yZ5pNZvL0QsAFXom71FJX4NR/FeRQrwmcLUkWaGaAwrfk7/w4IhnxP
+	 NfDHwDJbxDUJ7fQBdtsZPPWNZBP2ASER6HtQGMnRPvIjZQA33aAbD1AMYwMCD6vk8m
+	 yk/G7fWZIt9Q7gNmul801q9CMnxxMJQelHMDHzK9Gd7NV2TwPgUbYwXl27++m+ruTI
+	 oKciF7qSJbyqrRvurkAP++QjNYKZRcDc3HwvfMcJuL37P1BIPtmSMgds+t5kJP2Tcm
+	 eCITua3KKiKoQ==
+Date: Mon, 05 Aug 2024 09:00:12 -0600
 MIME-Version: 1.0
-References: <20240730021545.912271-1-vignesh.raman@collabora.com>
-In-Reply-To: <20240730021545.912271-1-vignesh.raman@collabora.com>
-From: Daniel Stone <daniel@fooishbar.org>
-Date: Mon, 5 Aug 2024 14:11:32 +0100
-Message-ID: <CAPj87rOYVCG2A10ruyYan9y6NmMY0fUM6Z5-9ht7dEp_THYmNw@mail.gmail.com>
-Subject: Re: [PATCH v9 0/6] drm/ci: Add support for GPU and display testing
-To: Vignesh Raman <vignesh.raman@collabora.com>
-Cc: dri-devel@lists.freedesktop.org, daniels@collabora.com, 
-	helen.koike@collabora.com, airlied@gmail.com, daniel@ffwll.ch, 
-	robdclark@gmail.com, guilherme.gallo@collabora.com, 
-	sergi.blanch.torne@collabora.com, deborah.brouwer@collabora.com, 
-	dmitry.baryshkov@linaro.org, mcanal@igalia.com, melissa.srw@gmail.com, 
-	linux-mediatek@lists.infradead.org, linux-amlogic@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org, amd-gfx@lists.freedesktop.org, 
-	linux-arm-msm@vger.kernel.org, intel-gfx@lists.freedesktop.org, 
-	virtualization@lists.linux.dev, linux-kernel@vger.kernel.org
+From: "Rob Herring (Arm)" <robh@kernel.org>
+To: Sergey Bostandzhyan <jin@mediatomb.cc>
+Cc: linux-arm-kernel@lists.infradead.org, heiko@sntech.de, 
+ devicetree@vger.kernel.org, conor+dt@kernel.org, krzk+dt@kernel.org, 
+ linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org
+In-Reply-To: <20240801175736.16591-1-jin@mediatomb.cc>
+References: <22bbec28-41c1-4f36-b776-6e091bf118d9@kernel.org>
+ <20240801175736.16591-1-jin@mediatomb.cc>
+Message-Id: <172286966609.2708545.4957056858125634326.robh@kernel.org>
+Subject: Re: [PATCH V2 0/2 RESEND] Add DTS for NanoPi R2S Plus
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240805_061146_293949_BDA74475 
-X-CRM114-Status: GOOD (  14.04  )
+X-CRM114-CacheID: sfid-20240805_160018_602943_2F5099DD 
+X-CRM114-Status: GOOD (  19.01  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,33 +87,71 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Vignesh,
 
-On Tue, 30 Jul 2024 at 03:16, Vignesh Raman <vignesh.raman@collabora.com> wrote:
-> Some ARM SOCs have a separate display controller and GPU, each with
-> different drivers. For mediatek mt8173, the GPU driver is powervr,
-> and the display driver is mediatek. In the case of mediatek mt8183,
-> the GPU driver is panfrost, and the display driver is mediatek.
-> With rockchip rk3288/rk3399, the GPU driver is panfrost, while the
-> display driver is rockchip. For amlogic meson G12B (A311D) SOC, the
-> GPU driver is panfrost, and the display driver is meson.
->
-> IGT tests run various tests with different xfails and can test both
-> GPU devices and KMS/display devices. Currently, in drm-ci for MediaTek,
-> Rockchip, and Amlogic Meson platforms, only the GPU driver is tested.
-> This leads to incomplete coverage since the display is never tested on
-> these platforms. This commit series adds support in drm-ci to run tests
-> for both GPU and display drivers for MediaTek mt8173/mt8183, Rockchip
-> rk3288/rk3399, and Amlogic Meson G12B (A311D) platforms.
->
-> Update the expectations file, and skip driver-specific tests and
-> tools_test on non-intel platforms.
+On Thu, 01 Aug 2024 17:57:34 +0000, Sergey Bostandzhyan wrote:
+> Hi,
+> 
+> as requested, I am resending the patch series, now with hopefully all
+> relevant addresses on To/Cc.
+> 
+> I noticed, that a DTS for the R2S Plus is not yet available, while the
+> R2S is already there. The only difference is, that the Plus version has an
+> eMMC, so we can reuse the R2S definitions and only add an eMMC block, which
+> I copied from the DTS in the friendlyarm/uboot-rockchip repo.
+> 
+> I applied the same DTS changes to u-boot and tested u-boot 2024.04 with
+> kernel 6.6.35 on an R2S Plus which I have here and the eMMC became visible
+> and usable.
+> 
+> Kind regards,
+> Sergey
+> 
+> 
+> Sergey Bostandzhyan (2):
+>   arm64: dts: rockchip: Add DTS for FriendlyARM NanoPi R2S Plus
+>   dt-bindings: arm: rockchip: Add NanoPi R2S Plus
+> 
+>  .../devicetree/bindings/arm/rockchip.yaml     |  1 +
+>  arch/arm64/boot/dts/rockchip/Makefile         |  1 +
+>  .../dts/rockchip/rk3328-nanopi-r2s-plus.dts   | 31 +++++++++++++++++++
+>  3 files changed, 33 insertions(+)
+>  create mode 100644 arch/arm64/boot/dts/rockchip/rk3328-nanopi-r2s-plus.dts
+> 
+> --
+> 2.20.1
+> 
+> 
+> 
 
-Thanks, series looks sensible and is:
-Reviewed-by: Daniel Stone <daniels@collabora.com>
 
-Cheers,
-Daniel
+My bot found new DTB warnings on the .dts files added or changed in this
+series.
+
+Some warnings may be from an existing SoC .dtsi. Or perhaps the warnings
+are fixed by another series. Ultimately, it is up to the platform
+maintainer whether these warnings are acceptable or not. No need to reply
+unless the platform maintainer has comments.
+
+If you already ran DT checks and didn't see these error(s), then
+make sure dt-schema is up to date:
+
+  pip3 install dtschema --upgrade
+
+
+New warnings running 'make CHECK_DTBS=y rockchip/rk3328-nanopi-r2s-plus.dtb' for 20240801175736.16591-1-jin@mediatomb.cc:
+
+arch/arm64/boot/dts/rockchip/rk3328-nanopi-r2s-plus.dtb: hdmi@ff3c0000: interrupts: [[0, 35, 4], [0, 71, 4]] is too long
+	from schema $id: http://devicetree.org/schemas/display/rockchip/rockchip,dw-hdmi.yaml#
+arch/arm64/boot/dts/rockchip/rk3328-nanopi-r2s-plus.dtb: /phy@ff430000: failed to match any schema with compatible: ['rockchip,rk3328-hdmi-phy']
+arch/arm64/boot/dts/rockchip/rk3328-nanopi-r2s-plus.dtb: /clock-controller@ff440000: failed to match any schema with compatible: ['rockchip,rk3328-cru', 'rockchip,cru', 'syscon']
+arch/arm64/boot/dts/rockchip/rk3328-nanopi-r2s-plus.dtb: /clock-controller@ff440000: failed to match any schema with compatible: ['rockchip,rk3328-cru', 'rockchip,cru', 'syscon']
+arch/arm64/boot/dts/rockchip/rk3328-nanopi-r2s-plus.dtb: mmc@ff520000: Unevaluated properties are not allowed ('num-slots', 'supports-emmc' were unexpected)
+	from schema $id: http://devicetree.org/schemas/mmc/rockchip-dw-mshc.yaml#
+
+
+
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
