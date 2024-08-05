@@ -4,59 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 87878C3DA4A
-	for <linux-rockchip@archiver.kernel.org>; Mon,  5 Aug 2024 11:30:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 54B8AC3DA4A
+	for <linux-rockchip@archiver.kernel.org>; Mon,  5 Aug 2024 11:37:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:References:In-Reply-To:
-	Subject:To:From:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=OMxkfh8+qX7O8yXJGZtBcg29K1qX7oZIM9kxjmxSfNw=; b=4uSOHerqrlQ46v
-	MkGW2/T/1XJDlx6MXO1LSrLv1KQjIvFDvQuDIoNBJxeonxb0domfDVhgNdPpAjoKrSwnBUGLPRbtD
-	oIZ0wh9Cqr9nx5D7u3PlFSK5mdkDkMe1HwwBehEGszL9EZq4y2UKlwwO4MN+hBSii6Kv51Keue0wr
-	1iDTe2DWYFJX7ovlr30uOJFr7BKHl3+V1KmFeXzH5TYbh2dIg6j1TB8LtwJnz0HcFKdo9oi/jo9fT
-	2Sel6ugqKgPcwrttwSoFRA5QVACSDRuhr3gunk9OaSwKNPuRkEC8EqxjdT4m2ULmLGN0WnMnfT4Oo
-	Ufg6d7I/T5Qngc00H8jA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
+	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=M2Xhr4oLzAl/EWvneR5eAhzRX23YZA0xZdxeBlqxh7A=; b=is1Q7vuwTMlTVeBXZCkOluZvrJ
+	CnNRB7LEgDoO6BNZyEY/mC/WxZQCepQBpRvOphkaMsMz1YMh1k6BRZ5yDNX55FAyqfK1me8LgZvOl
+	K/w/8BG0xWcmtG75ly6qhmf7/q7G7iOLq70sHnRZNnMoK8QxuyfZ+FqNzAGnkD5ZDa3pHj5Ce/bMl
+	168J9rwxC/i7RhHJnYSoZXw1s1eqCbmrUUUP6Dba9wSLtC2Jln68idWY4Llb4VKGusQyUsKq2owX7
+	q0lhjIxVfdqTi3h+N8QvgGvo1r6G4ijZ8Qet3MEnJubK5lHvEYfs1aceFBPofJK2pYWDlgJ2/XLEh
+	GIlt216A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1savvQ-0000000FftI-1fb4;
-	Mon, 05 Aug 2024 11:30:52 +0000
-Received: from sin.source.kernel.org ([145.40.73.55])
+	id 1saw2A-0000000FhfF-3iii;
+	Mon, 05 Aug 2024 11:37:50 +0000
+Received: from mail.manjaro.org ([116.203.91.91])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1savut-0000000Ffn7-0vch;
-	Mon, 05 Aug 2024 11:30:20 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id DB9FFCE0AB6;
-	Mon,  5 Aug 2024 11:30:16 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id BB450C32782;
-	Mon,  5 Aug 2024 11:30:15 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1722857416;
-	bh=8Z1pSg25/Oj1kOS1VJAI/o4U3DsNumKOXI+5DUXr2U8=;
-	h=Date:From:To:Subject:In-Reply-To:References:Cc:From;
-	b=bmuqOyl/OZHd2e7fzJ8Yle2rThjupSzExrUP3BTo3fuqs7HDMTOV/KMVymyNt+F5+
-	 xvsg5XGekR8loCllKC/lymrO/P181NuFZoqRmZr7KyU1Og37jlHgP221NvmlOr3VGW
-	 UZKFQtv1N7xdW5CPP7GhfHbEwHzK5AGTUHp8ChuwXEtwLZZF3dlzGasnCj9htDqZ8i
-	 aLNvE19Og+JfvV75rP57zJjeOd18X3/6M39bIyOfZWzSrqShB6KFDkd2Ofhh+MvoHf
-	 yU9+zBw/kKv3GHhc7AHi/oyqPvP5uo+JDvEnttvK/Qoq0yCjufcBd0QWF/FuuQ3sc3
-	 V7wLjVSKum6Nw==
-Message-ID: <fea441df060ae1ed802980782f3e3d5d@kernel.org>
-Date: Mon, 05 Aug 2024 11:30:13 +0000
-From: "Maxime Ripard" <mripard@kernel.org>
-To: "Alex Bee" <knaerzche@gmail.com>
-Subject: Re: [PATCH] drm/rockchip: inno-hdmi: Fix infoframe upload
-In-Reply-To: <20240805110855.274140-2-knaerzche@gmail.com>
-References: <20240805110855.274140-2-knaerzche@gmail.com>
-Cc: dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, "Andy
- Yan" <andy.yan@rock-chips.com>, "Daniel Vetter" <daniel@ffwll.ch>, "David
- Airlie" <airlied@gmail.com>, =?utf-8?b?SGVpa28gU3TDvGJuZXI=?= <heiko@sntech.de>, "Maarten
- Lankhorst" <maarten.lankhorst@linux.intel.com>, "Maxime Ripard" <mripard@kernel.org>, "Sandy
- Huang" <hjc@rock-chips.com>, "Thomas Zimmermann" <tzimmermann@suse.de>
+	id 1saw1d-0000000FhW6-2vBh;
+	Mon, 05 Aug 2024 11:37:19 +0000
+MIME-Version: 1.0
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
+	t=1722857833;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=eXUv4vhwwDrlK6OrMkKD/adJ3fBSeeUSyzbCZQ61tL0=;
+	b=qUUlxRPT1IMSC952YYeidmM0KBYMvEOIsbrWjX5Wcam1Tqn5KVnFKpwl8kQOgxOCNf+9fx
+	9WLIi3gt00vx7CwV0DbX2hhKD2/5mp3ir3ZOmOHaJ4c58zU5kLXPWjNpnyxsRtlnvi4u/7
+	WOrr4TD7UFyOEH3loM4VszSqwDGpAVOAwdgwD6fWnzOv1sRs+Dru7PRIW9byugYmu5pgVG
+	3I09LAldrwTsabdPnpYCVcgJ+eLOWKhToSd0N94QN/YwU39dCX5wjobRLuloLLMtT1vOFY
+	7Pp89kj2kr/0co2oV38y7Di/ruP30FVWjRab2fOwVxzjFQQRK4qtsK99Hdl4vg==
+Date: Mon, 05 Aug 2024 13:37:11 +0200
+From: Dragan Simic <dsimic@manjaro.org>
+To: Yao Zi <ziyao@disroot.org>
+Cc: Krzysztof Kozlowski <krzk@kernel.org>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, Greg Kroah-Hartman
+ <gregkh@linuxfoundation.org>, Jiri Slaby <jirislaby@kernel.org>, Chris
+ Morgan <macromorgan@hotmail.com>, Jonas Karlman <jonas@kwiboo.se>, Tim Lunn
+ <tim@feathertop.org>, Andy Yan <andyshrk@163.com>, Muhammed Efe Cetin
+ <efectn@protonmail.com>, Jagan Teki <jagan@edgeble.ai>, Ondrej Jirman
+ <megi@xff.cz>, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-serial@vger.kernel.org
+Subject: Re: [PATCH 3/4] arm64: dts: rockchip: Add base DT for rk3528 SoC
+In-Reply-To: <ZrCwrWjRgvE0RS98@ziyaolaptop.my.domain>
+References: <20240803125510.4699-2-ziyao@disroot.org>
+ <20240803125510.4699-5-ziyao@disroot.org>
+ <56bd1478-ce8c-4c1d-ab16-afe4ad462bf5@kernel.org>
+ <Zq-AFWYaqu7zGuz-@ziyaolaptop.my.domain>
+ <b967ab05-dd0e-4fc5-bee6-ad7639e47bfb@kernel.org>
+ <ZrCwrWjRgvE0RS98@ziyaolaptop.my.domain>
+Message-ID: <82e7e3a78f784b3ad63094c8a0ab1932@manjaro.org>
+X-Sender: dsimic@manjaro.org
+Authentication-Results: ORIGINATING;
+	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240805_043019_474235_8F4D81E3 
-X-CRM114-Status: UNSURE (   7.97  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240805_043718_230686_F830CC92 
+X-CRM114-Status: GOOD (  15.38  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,25 +78,42 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, 5 Aug 2024 13:08:56 +0200, Alex Bee wrote:
-> HDMI analyser shows that the AVI infoframe is no being longer send.
+On 2024-08-05 12:59, Yao Zi wrote:
+> On Sun, Aug 04, 2024 at 04:05:24PM +0200, Krzysztof Kozlowski wrote:
+>> On 04/08/2024 15:20, Yao Zi wrote:
+>> >>
+>> >>> +		compatible = "fixed-clock";
+>> >>> +		#clock-cells = <0>;
+>> >>> +		clock-frequency = <24000000>;
+>> >>> +		clock-output-names = "xin24m";
+>> >>> +	};
+>> >>> +
+>> >>> +	gic: interrupt-controller@fed01000 {
+>> >>
+>> >> Why this all is outside of SoC?
+>> >
+>> > Just as Heiko says, device tree for all other Rockchip SoCs don't have
+>> > a "soc" node. I didn't know why before but just follow the style.
+>> >
+>> > If you prefer add a soc node, I am willing to.
+>> 
+>> Surprising as usually we expect MMIO nodes being part of SoC to be 
+>> under
+>> soc@, but if that's Rockchip preference then fine.
+>> 
 > 
-> The switch to the HDMI connector api should have used the frame content
-> which is now given in the buffer parameter, but instead still uses the
-> (now) empty and superfluous packed_frame variable.
+> Okay, then I would leave it as is.
 > 
-> [ ... ]
+> For the fixed-clock node, I think "xin24m: clock-24m { }" is okay and
+> follows the new rule?
 
-Acked-by: Maxime Ripard <mripard@kernel.org>
-
-Thanks!
-Maxime
+I find "xin24m: clock-xin24m { }" better, because keeping the "xin24m"
+part in /sys listing(s), for example, can only be helpful.
 
 _______________________________________________
 Linux-rockchip mailing list
