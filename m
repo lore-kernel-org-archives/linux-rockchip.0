@@ -4,65 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 29F79C3DA4A
-	for <linux-rockchip@archiver.kernel.org>; Mon,  5 Aug 2024 19:18:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7297DC3DA4A
+	for <linux-rockchip@archiver.kernel.org>; Mon,  5 Aug 2024 19:48:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=xMaE2KRF4PZpWVOfayQVlOv7utTeTQO4bzihrow5swE=; b=lpUxs4cwchHlJg
-	URC+ln8Tqa3YSVYgj02nZv/AGExAZ9rrmIqOhPBHGILkKh/UxdG0tIVDTBle+p0Qk4uRDMb3mAez9
-	t24NZS0izUEXnz0OXnxOenMUX4/y2fYK0+KRlBngp72uf9TRET8Ulf4nX1c7D+/O8fn0lv9woRqYi
-	BqL3NJEExMG6Y7KKYxwqpDmKinqZKkAKxeboKlvtMHXQy8dh8IrwtLVBXL22kFwnKPduI0b9fxtXw
-	qtYFl19ncCDMPfH54Kp7glQHJBUiYHBocZuICLBZ9sWqAc3V6Zh0hO5dMM+9JRwu4V+9F++9UXdRe
-	BHvvPPpK2xlBVox36i0g==;
+	List-Owner; bh=We6VeGMB66X3Rlsxx+e+C4Jnvt5kqneK2BFqkAdtDiE=; b=VYNLHPVC3/XTML
+	hUvq2sbEvzExaV33OlOvbgF7zx6ANigjuFxscDt6dC8ykZOnzisFIpeUfUiNtRDM0hRuSPHJGmYrN
+	IqDrOwgorXLwccP6H6jbabQzByiD0gcUrngRvYqVpNySPzGlFmewa56T0agK4ywOUgHyvlIQpcLQ2
+	oWDSb9wH/Kc6u8Mxr6LOsMiFrhMt2wwXRjBVEVVVF2T7eN6OfgD5RS4ODcwW7wf9/zXGO/+5qC9Z9
+	xAm1y1fHi4LTjLN7on3Swxut5Th5DD68Esi6prSGB9H8DWQOh4YYFAwqPQ9mzaZ3/BwUWkr5ZQ6by
+	Ii8NJ4XK71SP3WfpPaXg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sb3DT-0000000Gyv2-1LAY;
-	Mon, 05 Aug 2024 19:17:59 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1sb3gl-0000000H4in-3J1E;
+	Mon, 05 Aug 2024 19:48:15 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sb3Cw-0000000Gyma-1NE6;
-	Mon, 05 Aug 2024 19:17:27 +0000
+	id 1sb3gE-0000000H4YL-3RdJ;
+	Mon, 05 Aug 2024 19:47:44 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 5EEAC60C4F;
-	Mon,  5 Aug 2024 19:17:25 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id DA4DAC32782;
-	Mon,  5 Aug 2024 19:17:24 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 4269460CA3;
+	Mon,  5 Aug 2024 19:47:42 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9F779C32782;
+	Mon,  5 Aug 2024 19:47:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1722885445;
-	bh=yIzYBRhu3FkCRao5W4ixWWwmAsOLTrfWSG9/9Ucrdsg=;
+	s=k20201202; t=1722887261;
+	bh=cuyjByXL2D1AJd9a3vQq1EBfMAign6H9/NzGZnl2f8E=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=u1XOg7lq5Gb+Iyutvrb8Ggq1n89ppsPewkZrwb13K7CWOXV1ARdNO+yQznlR51CJv
-	 x9DjQkQdymtnwglT35Zr3AzKShlloIi9pbSBHhQ2EU+RLp0dmJCQ66l9NgegZpPZbx
-	 S6QVW7Q46UxRi9amYrn3ZRfZGrXJhA1TeNTeXK3MCaIm6KiOVSgtIPPViJ783BI2A8
-	 ue5GOs/Uyl1OXFptfdXDApl1bygdQuBO2dH64KCQBaI+qRFJnTycQlHXQnh88c93Uq
-	 VD2po/oxeg5ZwuWR8jHjjzIzBSo6y1R5jMi6xF2A3CYcnDHnP1IVDk97wQl53JhHjK
-	 36UJfSxOdj/Og==
-Date: Mon, 5 Aug 2024 13:17:23 -0600
+	b=nJ6NX7jWM1JONW67LYY42jJxw3wA9172UTFQsJ2D7BI3J9AwJfNUU9ZTapIHEDTTH
+	 fP5cId5pTdCdTTNfI8GZjRIGthHi4si8FzoPbqsOs8UvTYwC0EuuGYdVJSoaPgrZ8f
+	 rhbMPyMA+VgQy8RA0L+JA5BNCo6RmEyNIR1NviZqNtC7EjoY7jJe+QsjulMbvVATnN
+	 vUMmF86CyN9kA//qJldrArAvvoh15wMemsH/4bzT3HQ1zlN3bdtHZcs+wsDDp498Jm
+	 BSKIcgux8O95t9+lG+4WkJOZ/BsGBxEvdrl0WLqcFxFy8Fdfgad4GeVMlen0ad4COF
+	 fFwka+Tfmelig==
+Date: Mon, 5 Aug 2024 13:47:40 -0600
 From: Rob Herring <robh@kernel.org>
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: lee@kernel.org, jdelvare@suse.com, linux@roeck-us.net,
-	dmitry.torokhov@gmail.com, pavel@ucw.cz, krzk+dt@kernel.org,
-	conor+dt@kernel.org, ukleinek@debian.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+To: Detlev Casanova <detlev.casanova@collabora.com>
+Cc: linux-kernel@vger.kernel.org, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Andi Shyti <andi.shyti@kernel.org>,
+	Jonathan Cameron <jic23@kernel.org>,
+	Lars-Peter Clausen <lars@metafoo.de>, Lee Jones <lee@kernel.org>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Jiri Slaby <jirislaby@kernel.org>,
+	Daniel Lezcano <daniel.lezcano@linaro.org>,
+	Thomas Gleixner <tglx@linutronix.de>,
+	Chris Morgan <macromorgan@hotmail.com>,
+	Jonas Karlman <jonas@kwiboo.se>, Tim Lunn <tim@feathertop.org>,
+	Muhammed Efe Cetin <efectn@protonmail.com>,
+	Andy Yan <andyshrk@163.com>, Jagan Teki <jagan@edgeble.ai>,
+	Dragan Simic <dsimic@manjaro.org>,
+	Sebastian Reichel <sebastian.reichel@collabora.com>,
+	Shresth Prasad <shresthprasad7@gmail.com>,
+	Ondrej Jirman <megi@xff.cz>,
+	Weizhao Ouyang <weizhao.ouyang@arm.com>,
+	Alexey Charkov <alchark@gmail.com>,
+	Jimmy Hon <honyuenkwun@gmail.com>,
+	Finley Xiao <finley.xiao@rock-chips.com>,
+	Yifeng Zhao <yifeng.zhao@rock-chips.com>,
+	Elaine Zhang <zhangqing@rock-chips.com>,
+	Liang Chen <cl@rock-chips.com>, devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-hwmon@vger.kernel.org,
-	linux-input@vger.kernel.org, linux-leds@vger.kernel.org,
-	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Subject: Re: [PATCH v3 1/7] dt-bindings: mfd: add binding for qnap,ts433-mcu
- devices
-Message-ID: <20240805191723.GA2636745-robh@kernel.org>
-References: <20240731212430.2677900-1-heiko@sntech.de>
- <20240731212430.2677900-2-heiko@sntech.de>
+	linux-rockchip@lists.infradead.org, linux-i2c@vger.kernel.org,
+	linux-iio@vger.kernel.org, linux-serial@vger.kernel.org,
+	kernel@collabora.com
+Subject: Re: [PATCH 02/10] dt-bindings: arm: rockchip: Add rk576 compatible
+ string to pmu.yaml
+Message-ID: <20240805194740.GA3188010-robh@kernel.org>
+References: <20240802214612.434179-1-detlev.casanova@collabora.com>
+ <20240802214612.434179-3-detlev.casanova@collabora.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20240731212430.2677900-2-heiko@sntech.de>
+In-Reply-To: <20240802214612.434179-3-detlev.casanova@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240805_121726_457376_9214D622 
-X-CRM114-Status: GOOD (  17.77  )
+X-CRM114-CacheID: sfid-20240805_124742_925034_2245E3B3 
+X-CRM114-Status: GOOD (  14.80  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,60 +100,40 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jul 31, 2024 at 11:24:24PM +0200, Heiko Stuebner wrote:
-> These MCUs can be found in network attached storage devices made by QNAP.
-> They are connected to a serial port of the host device and provide
-> functionality like LEDs, power-control and temperature monitoring.
+On Fri, Aug 02, 2024 at 05:45:29PM -0400, Detlev Casanova wrote:
+> Add the compatible for the pmu mfd on rk3576.
+
+Typo in the subject. rk576?
+
 > 
-> Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-> Signed-off-by: Heiko Stuebner <heiko@sntech.de>
+> Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
 > ---
->  .../bindings/mfd/qnap,ts433-mcu.yaml          | 43 +++++++++++++++++++
->  1 file changed, 43 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/mfd/qnap,ts433-mcu.yaml
+>  Documentation/devicetree/bindings/arm/rockchip/pmu.yaml | 2 ++
+>  1 file changed, 2 insertions(+)
 > 
-> diff --git a/Documentation/devicetree/bindings/mfd/qnap,ts433-mcu.yaml b/Documentation/devicetree/bindings/mfd/qnap,ts433-mcu.yaml
-> new file mode 100644
-> index 0000000000000..5ae19d8faedbd
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/mfd/qnap,ts433-mcu.yaml
-> @@ -0,0 +1,43 @@
-> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/mfd/qnap,ts433-mcu.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: QNAP NAS on-board Microcontroller
-> +
-> +maintainers:
-> +  - Heiko Stuebner <heiko@sntech.de>
-> +
-> +description:
-> +  QNAP embeds a microcontroller on their NAS devices adding system feature
-> +  as PWM Fan control, additional LEDs, power button status and more.
-
-Doesn't really look like the binding is complete.
-
-> +
-> +properties:
-> +  compatible:
-> +    enum:
-> +      - qnap,ts433-mcu
-> +
-> +  "#cooling-cells":
-> +    const: 2
-> +
-> +  cooling-levels:
-> +    description: PWM duty cycle values corresponding to thermal cooling states.
-> +    $ref: /schemas/types.yaml#/definitions/uint32-array
-> +    items:
-> +      maximum: 255
-
-These are fan properties and should be in a "fan" node referencing 
-hwmon/fan-common.yaml.
-
-Rob
+> diff --git a/Documentation/devicetree/bindings/arm/rockchip/pmu.yaml b/Documentation/devicetree/bindings/arm/rockchip/pmu.yaml
+> index b79c81cd9f0e6..932f981265ccb 100644
+> --- a/Documentation/devicetree/bindings/arm/rockchip/pmu.yaml
+> +++ b/Documentation/devicetree/bindings/arm/rockchip/pmu.yaml
+> @@ -26,6 +26,7 @@ select:
+>            - rockchip,rk3368-pmu
+>            - rockchip,rk3399-pmu
+>            - rockchip,rk3568-pmu
+> +          - rockchip,rk3576-pmu
+>            - rockchip,rk3588-pmu
+>            - rockchip,rv1126-pmu
+>  
+> @@ -43,6 +44,7 @@ properties:
+>            - rockchip,rk3368-pmu
+>            - rockchip,rk3399-pmu
+>            - rockchip,rk3568-pmu
+> +          - rockchip,rk3576-pmu
+>            - rockchip,rk3588-pmu
+>            - rockchip,rv1126-pmu
+>        - const: syscon
+> -- 
+> 2.46.0
+> 
 
 _______________________________________________
 Linux-rockchip mailing list
