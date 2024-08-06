@@ -4,61 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1AFBCC52D71
-	for <linux-rockchip@archiver.kernel.org>; Tue,  6 Aug 2024 17:25:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1F55FC52D71
+	for <linux-rockchip@archiver.kernel.org>; Tue,  6 Aug 2024 17:36:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=bkOEo1J4KxM2fcdWSx76iecxTmZwMHuyqSA3AFdfVcM=; b=KOAPEnhwlT4oM3
-	fyHmqNDk/+oy++kzzMWKNyfErE5vDZqbGy6vYFU1bTDG4mwtzGZxn6lio8u8Ck+J8w9FR8Bdcj4BF
-	5XcTWcnanpP8lpKVet6eKyjSnOOSStHYlrxaJ7naIAVYAnz8inMMkRfkCmwbDGeCAKi2Ob/kPFZ2A
-	XGcF2liQSTzUVDHXxUfi932BEFUmVQM5luYb++n/SlM6Pg6Fr3T07ZO9A94/oVC5sIpFkFDn1IjLD
-	kNpiIKN0+prRP2Kw1jfw8BfBy2RXQREviphCYpwacjfI6N3VppCcaTHPLai3wzdqldLTu4RygafNG
-	hMAn0J5arLm7q1H8ERBg==;
+	List-Owner; bh=5x0ES+Wv5M1I3fVthVrSBGi4QHmOWI3OrMF8KO9/9IY=; b=1f7jDAzxC906eZ
+	F07OlUyGGLwVc/njXBuhV+TOXb7dIEkVSYzP2M2U6c2urQ8OlHuzy+ekN0KaHZlKLg+b2Sq0Dtc9w
+	iysInDngLebBK4W0TG637aQU0yayv43vXbjuophNfRfzslRpoHbD6yR9pXcZnj99Z+iJGpFVQqQW6
+	Mg5de1aFZSFiCGMpaDj08ooWvchd55tKj8uF4VekfALg3pHcqPU7Z5X99Mrdd6HWp0BUCHvlW8PKc
+	79QSexIbdjRPilajh0VxSMNq+FF9aX+KrvSekkFK+M6QTbWn3lfN9UxLfhPoivKTKBWMS9mitLoQ9
+	qiDOio2D65JFgyzgCDLw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sbNw8-00000002UO2-2s0n;
-	Tue, 06 Aug 2024 17:25:28 +0000
-Received: from sin.source.kernel.org ([145.40.73.55])
+	id 1sbO6G-00000002Wl7-3JVE;
+	Tue, 06 Aug 2024 17:35:56 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sbNvZ-00000002UCK-3xaI;
-	Tue, 06 Aug 2024 17:24:55 +0000
+	id 1sbO5i-00000002Wdm-2yVo;
+	Tue, 06 Aug 2024 17:35:23 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 07FABCE0EA2;
-	Tue,  6 Aug 2024 17:24:52 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E27CDC32786;
-	Tue,  6 Aug 2024 17:24:50 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id F2EE4610A1;
+	Tue,  6 Aug 2024 17:35:21 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9CBBBC4AF0E;
+	Tue,  6 Aug 2024 17:35:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1722965091;
-	bh=MCsRf95V/233ppFa+ogoZO+TKh+T4CSExd6cp5gIZw4=;
+	s=k20201202; t=1722965721;
+	bh=sbFiD0UTPz3Xhgo7u+pcibnbth29PoEv4oSZWuoSTH0=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=nX5McNm4MWFmK0KGuU0aKb/nNbKdG468bU9lApVnGo7uzkscv+XRH9q2Aa0ZkiWHZ
-	 9v5Y6xnJ+4LDwrp1yrlQ1GOEpxDyq8bMe7XFMo5VvvH90uFV+q4yKJQX1RoRjNtLot
-	 YgouMUgnDxcqJ0FLVXbfWMqPxffDI9kCG5t/aHVq3Pu6e8arIBFPMemwH3GO9FN8/m
-	 T4H/kfn5JW+wuQ8fnMz19iUL92HF0R2MpjK/UcQdEJqEl+qwvA1LwYaMxKo87oQUiB
-	 2d+OvoY3xpgclfg3RPHwcqsGNIc+lY9nZZBN8LbeBX52Jcr+lYW3fU5OfRJmCcQVbA
-	 FjnEeo4XLNASQ==
-Date: Tue, 6 Aug 2024 11:24:49 -0600
+	b=AraJaUcKzqP3jBmRFw6xv4VnTrnEVv1aMvKj0UsGZVEII5DF5HuwCnr7knf3XnQns
+	 rGNx6IM+xauv2tAmu3bgXTiYlquGu3Rlgl1Aug6P7gqabxD/ZdnN1xxJewPvM4FjC5
+	 J7M15LPoteevpcLEvidwur5kSOEmiHcEKRXZAkyxqsOlV1e6syhXlwJ3zMjU20Av48
+	 LswP5i2igU9+OlMAaDpL0rOMJUrMFDv3RwF/UrbSkMNiqBskdCE5w0geB6Y7r2g+vG
+	 aOcB8T5te3zffbvfnUKz57/V6bXG786oDFRNVZPrw8GdMQq2QIh2VS6GJBI2HdsQqd
+	 bq1OZqSiR54pQ==
+Date: Tue, 6 Aug 2024 11:35:20 -0600
 From: "Rob Herring (Arm)" <robh@kernel.org>
-To: Sergey Bostandzhyan <jin@mediatomb.cc>
-Cc: linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
-	heiko@sntech.de, linux-arm-kernel@lists.infradead.org,
-	krzk+dt@kernel.org, conor+dt@kernel.org, devicetree@vger.kernel.org
-Subject: Re: [PATCH V2 2/2 RESEND] dt-bindings: arm: rockchip: Add NanoPi R2S
- Plus
-Message-ID: <172296508945.1835210.9491608113074748962.robh@kernel.org>
-References: <22bbec28-41c1-4f36-b776-6e091bf118d9@kernel.org>
- <20240801175736.16591-1-jin@mediatomb.cc>
- <20240801175736.16591-3-jin@mediatomb.cc>
+To: Detlev Casanova <detlev.casanova@collabora.com>
+Cc: Paolo Abeni <pabeni@redhat.com>, Jakub Kicinski <kuba@kernel.org>,
+	linux-kernel@vger.kernel.org, David Wu <david.wu@rock-chips.com>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>,
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+	devicetree@vger.kernel.org,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>, Jose Abreu <joabreu@synopsys.com>,
+	netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-stm32@st-md-mailman.stormreply.com,
+	"David S . Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH 2/2] dt-bindings: net: Add rk3576 dwmac bindings
+Message-ID: <172296571928.1850493.16580227879384063021.robh@kernel.org>
+References: <20240802173918.301668-1-detlev.casanova@collabora.com>
+ <20240802173918.301668-3-detlev.casanova@collabora.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20240801175736.16591-3-jin@mediatomb.cc>
+In-Reply-To: <20240802173918.301668-3-detlev.casanova@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240806_102454_176387_BA83F27A 
-X-CRM114-Status: UNSURE (   8.19  )
+X-CRM114-CacheID: sfid-20240806_103522_833733_9FA1048B 
+X-CRM114-Status: UNSURE (   9.19  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -77,13 +85,14 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
-On Thu, 01 Aug 2024 17:57:36 +0000, Sergey Bostandzhyan wrote:
-> Add the NanoPi R2S Plus variant, which is an R2S with eMMC.
+On Fri, 02 Aug 2024 13:38:03 -0400, Detlev Casanova wrote:
+> Add a rockchip,rk3576-gmac compatible for supporting the 2 gmac
+> devices on the rk3576.
 > 
-> Signed-off-by: Sergey Bostandzhyan <jin@mediatomb.cc>
+> Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
 > ---
->  Documentation/devicetree/bindings/arm/rockchip.yaml | 1 +
->  1 file changed, 1 insertion(+)
+>  Documentation/devicetree/bindings/net/rockchip-dwmac.yaml | 2 ++
+>  1 file changed, 2 insertions(+)
 > 
 
 Acked-by: Rob Herring (Arm) <robh@kernel.org>
