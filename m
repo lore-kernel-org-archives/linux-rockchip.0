@@ -4,49 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E71E3C3DA64
-	for <linux-rockchip@archiver.kernel.org>; Tue,  6 Aug 2024 08:44:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 15C62C52D6D
+	for <linux-rockchip@archiver.kernel.org>; Tue,  6 Aug 2024 08:46:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=2Vk+g2rK2Csa1sIVK05fnajsJkdTaQN/0knwOm7EIK8=; b=lwFlaQevXYaoCw
-	gcrm2yqf0sB6vC7H7/sCrbRcv+7Nz1SIdzTfNDAPMecBWccAziH2o8ynvFeyi3+JAwYvF0BCZnZu6
-	NnBn8PNEmOt66l4m2hOC33NWOPrhM9qwGXuJg/a64ZtPGlERafdroUXT9ynTS3IDnjS7JX9xnmzY2
-	UExiqiV+S7OUwSWTy0dW545JTQkY7UWlKUSHk/Df07pVGccHCwo/qNRkQtX1DAWkZtDv7hlZzMEPv
-	+4ydwvs5kGYqPLlJqgn3H08LXvu0ohljwzwkC7CyAVc+Gz7KszLgsaWsAEjlEhhAnuch9h6WFww6k
-	/sja51v5iAGscm3XHvuA==;
+	List-Owner; bh=43aQ193bA+ALG482Hrf4X35ug8c4+WlhA83bBEYSCi8=; b=AfutL24K6SIBpQ
+	63+hUlj/8xAogHv1seVFw1F1iMtzsafmDkG2QgTOhkYzRuQI5Cnn7O+ySgyIehsEBvtyoYT07piXs
+	Pfhhb5kv83uKz1RIh6kzVOP7mHHhRjDRkdOz/fi0Ioz1Wp8WYQISTjfhqL7EqNmrlGGC+pGGRlVQy
+	K6PADlbRPh+AQVrYKHfviEgvVoxOQFLvwDF5aAJvSPFjWOFudFCYfTtPjQWh+D9a3I29RCqBptHau
+	Bcj0xizPUWNg2u8nVkVZ5oMnSKRF1YQ+uES896COQfbjtjIM6AcQOv7ofqK6uDdWwLh7+5TID9vue
+	ZYKgwWLK4LKIYEmIxbzA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sbFnc-00000000zAN-3FXT;
-	Tue, 06 Aug 2024 08:44:08 +0000
-Received: from sin.source.kernel.org ([145.40.73.55])
+	id 1sbFpb-00000000zRs-05yb;
+	Tue, 06 Aug 2024 08:46:11 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sbFna-00000000z9U-0yYL
+	id 1sbFpY-00000000zQc-0W4H
 	for linux-rockchip@lists.infradead.org;
-	Tue, 06 Aug 2024 08:44:07 +0000
+	Tue, 06 Aug 2024 08:46:09 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 0B65DCE0CDA;
-	Tue,  6 Aug 2024 08:44:04 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id EA74FC32786;
-	Tue,  6 Aug 2024 08:43:58 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 586EF60F37;
+	Tue,  6 Aug 2024 08:46:07 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0C2B8C32786;
+	Tue,  6 Aug 2024 08:46:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1722933843;
-	bh=B0WQPw973C3LVxYk5S53XmcEe0PD9+2JgOcuWSoxE+M=;
+	s=k20201202; t=1722933967;
+	bh=KpLTqIRYw/63BYWYgOmRb37YZpVOAPEAm9TncfHtMF8=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=h5CGQqF8n+gyRKnX92AoR975/Pi+PSNvgw3kAi84Iak6hDF24gIwz9Yb1MdxmPIP2
-	 ESsJlVZMSIGjb1c/yhJJ5RRov+fQtj2FQN97reAhf7PmN7u3wIW7JJNyZlpLAnBiZh
-	 izRQF37DE31yTEJjfzQi10kNXXbbyL+UUQfEUCAVI43F/XQo7n7T/2vyo60Q31+shy
-	 C6r81y9xdsNnVhvfsG7GZhEQ/DlkdRsZmf9KgVfS5GwWLesUBIV9MZ9cNS3hsTa3ch
-	 gntcMVXQNcJ/CvLlKp8g3LhRrwW8xuIAUvxK23cLuIPKiYll78v5OHVRK+WL+yKRP0
-	 pzPyWW2mM/3MQ==
-Message-ID: <ea136482-16bc-4e67-8370-de72ee0c034e@kernel.org>
-Date: Tue, 6 Aug 2024 10:43:56 +0200
+	b=uTdsG3KhtpYGIl4vOSzLj4NfhtDlzxlVRR/IlCbLMJKFfjowBCt9+NDJ+EwjJIWjg
+	 ERPUO8lWwrtKn0JWd3yZJ1/vnV/hmsYx/6ClPnq2pDUZYulm+09P0O657v0IRTkAhg
+	 GuGWSl9epOl/BvtDo6BvvpVo/dZ3Q+Kg6M/7ca2MDmli3EltyyfN34Ejk2T40Rf3Rw
+	 xAWrCwj0QALmj4r2N2hxDisxGqz09oHo5OB5hg2l0RylOqaoVnPpW0hTPbULY6sKh2
+	 pi4CBVtT+VspKWBCgw07zRMi4E6yGZAcAc0Qyi5W7s2oe8do725/CViJk89D1aLZTT
+	 t4CpfbLNZ8BnQ==
+Message-ID: <ec191693-9ab2-46ad-9d4b-36eb2f2ebff1@kernel.org>
+Date: Tue, 6 Aug 2024 10:46:00 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1 3/3] scsi: ufs: rockchip: init support for UFS
+Subject: Re: [PATCH v1 2/3] dt-bindings: ufs: Document Rockchip UFS host
+ controller
 To: Shawn Lin <shawn.lin@rock-chips.com>, Rob Herring <robh+dt@kernel.org>,
  "Martin K . Petersen" <martin.petersen@oracle.com>
 Cc: Heiko Stuebner <heiko@sntech.de>, Alim Akhtar <alim.akhtar@samsung.com>,
@@ -55,7 +56,7 @@ Cc: Heiko Stuebner <heiko@sntech.de>, Alim Akhtar <alim.akhtar@samsung.com>,
  linux-scsi@vger.kernel.org, linux-rockchip@lists.infradead.org,
  devicetree@vger.kernel.org
 References: <1722928800-137042-1-git-send-email-shawn.lin@rock-chips.com>
- <1722928800-137042-4-git-send-email-shawn.lin@rock-chips.com>
+ <1722928800-137042-3-git-send-email-shawn.lin@rock-chips.com>
 From: Krzysztof Kozlowski <krzk@kernel.org>
 Content-Language: en-US
 Autocrypt: addr=krzk@kernel.org; keydata=
@@ -101,10 +102,10 @@ Autocrypt: addr=krzk@kernel.org; keydata=
  uZwJCLykjad45hsWcOGk3OcaAGQS6NDlfhM6O9aYNwGL6tGt/6BkRikNOs7VDEa4/HlbaSJo
  7FgndGw1kWmkeL6oQh7wBvYll2buKod4qYntmNKEicoHGU+x91Gcan8mCoqhJkbqrL7+nXG2
  5Q/GS5M9RFWS+nYyJh+c3OcfKqVcZQNANItt7+ULzdNJuhvTRRdC3g9hmCEuNSr+CLMdnRBY fv0=
-In-Reply-To: <1722928800-137042-4-git-send-email-shawn.lin@rock-chips.com>
+In-Reply-To: <1722928800-137042-3-git-send-email-shawn.lin@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240806_014406_672711_F0AB8979 
-X-CRM114-Status: GOOD (  20.87  )
+X-CRM114-CacheID: sfid-20240806_014608_289650_AF1AA2B6 
+X-CRM114-Status: GOOD (  16.47  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -121,327 +122,137 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 06/08/2024 09:20, Shawn Lin wrote:
-> RK3576 contains a UFS controller, add init support fot it.
+On 06/08/2024 09:19, Shawn Lin wrote:
+> Document Rockchip UFS host controller for RK3576 SoC.
 > 
+
+<form letter>
+Please use scripts/get_maintainers.pl to get a list of necessary people
+and lists to CC (and consider --no-git-fallback argument). It might
+happen, that command when run on an older kernel, gives you outdated
+entries. Therefore please be sure you base your patches on recent Linux
+kernel.
+
+Tools like b4 or scripts/get_maintainer.pl provide you proper list of
+people, so fix your workflow. Tools might also fail if you work on some
+ancient tree (don't, instead use mainline) or work on fork of kernel
+(don't, instead use mainline). Just use b4 and everything should be
+fine, although remember about `b4 prep --auto-to-cc` if you added new
+patches to the patchset.
+</form letter>
+
+Limited review follows.
+
+
 > Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
-> 
 > ---
+> 
+>  .../devicetree/bindings/ufs/rockchip,ufs.yaml      | 78 ++++++++++++++++++++++
+>  1 file changed, 78 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/ufs/rockchip,ufs.yaml
+> 
+> diff --git a/Documentation/devicetree/bindings/ufs/rockchip,ufs.yaml b/Documentation/devicetree/bindings/ufs/rockchip,ufs.yaml
+> new file mode 100644
+> index 0000000..e2e492c
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/ufs/rockchip,ufs.yaml
 
+Filename as compatible.
 
+> @@ -0,0 +1,78 @@
+> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/ufs/rockchip,ufs.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: Rockchip UFS Host Controller
+> +
+> +maintainers:
+> +  - Shawn Lin <shawn.lin@rock-chips.com>
+> +
+> +allOf:
+> +  - $ref: ufs-common.yaml
+> +
+> +properties:
+> +  compatible:
+> +    const: rockchip,rk3576-ufs
+> +
+> +  reg:
+> +    maxItems: 5
+> +
+> +  reg-names:
+> +    items:
+> +     - const: hci
+> +     - const: mphy
+> +     - const: hci_grf
+> +     - const: mphy_grf
+> +     - const: hci_apb
+> +
+> +  clocks:
+> +    maxItems: 4
+> +
+> +  clock-names:
+> +    items:
+> +      - const: core
+> +      - const: pclk
+> +      - const: pclk_mphy
+> +      - const: ref_out
+> +
+> +  power-domains:
+> +    maxItems: 1
+> +
+> +  resets:
+> +    maxItems: 4
+
+List the items instead
 
 > +
-> +static int ufs_rockchip_common_init(struct ufs_hba *hba)
-> +{
-> +	struct device *dev = hba->dev;
-> +	struct platform_device *pdev = to_platform_device(dev);
-> +	struct ufs_rockchip_host *host;
-> +	int err = 0;
-> +
-> +	host = devm_kzalloc(dev, sizeof(*host), GFP_KERNEL);
-> +	if (!host)
-> +		return -ENOMEM;
-> +
-> +	/* system control register for hci */
-> +	host->ufs_sys_ctrl = devm_platform_ioremap_resource_byname(pdev, "hci_grf");
-> +	if (IS_ERR(host->ufs_sys_ctrl)) {
-> +		dev_err(dev, "cannot ioremap for hci system control register\n");
-> +		return PTR_ERR(host->ufs_sys_ctrl);
-> +	}
-> +
-> +	/* system control register for mphy */
-> +	host->ufs_phy_ctrl = devm_platform_ioremap_resource_byname(pdev, "mphy_grf");
-> +	if (IS_ERR(host->ufs_phy_ctrl)) {
-> +		dev_err(dev, "cannot ioremap for mphy system control register\n");
-> +		return PTR_ERR(host->ufs_phy_ctrl);
-> +	}
-> +
-> +	/* mphy base register */
-> +	host->mphy_base = devm_platform_ioremap_resource_byname(pdev, "mphy");
-> +	if (IS_ERR(host->mphy_base)) {
-> +		dev_err(dev, "cannot ioremap for mphy base register\n");
-> +		return PTR_ERR(host->mphy_base);
-> +	}
-> +
-> +	host->rst = devm_reset_control_array_get_exclusive(dev);
-> +	if (IS_ERR(host->rst)) {
-> +		dev_err(dev, "failed to get reset control\n");
-> +		return PTR_ERR(host->rst);
+> +required:
+> +  - compatible
+> +  - reg
 
-return dev_err_probe, assuming this is a probe path?
+reg-names are not required? Test your DTS (where is it btw?) without
+reg-names then.
 
-> +	}
+> +  - clocks
+> +  - clock-names
+> +  - power-domains
+> +  - resets
 > +
-> +	reset_control_assert(host->rst);
-> +	udelay(1);
-> +	reset_control_deassert(host->rst);
+> +unevaluatedProperties: false
 > +
-> +	host->ref_out_clk = devm_clk_get(dev, "ref_out");
-> +	if (IS_ERR(host->ref_out_clk)) {
-> +		dev_err(dev, "ciu-drive not available\n");
-> +		return PTR_ERR(host->ref_out_clk);
+> +examples:
+> +  - |
+> +    #include <dt-bindings/clock/rockchip,rk3576-cru.h>
+> +    #include <dt-bindings/interrupt-controller/arm-gic.h>
+> +    #include <dt-bindings/power/rk3576-power.h>
+> +
+> +    ufs: ufs@2a2d0000 {
+> +            compatible = "rockchip,rk3576-ufs";
+> +            reg = <0x0 0x2a2d0000 0 0x10000>,
 
-Ditto
+Fix indentation. See writing schema.
 
-> +	}
-> +	err = clk_prepare_enable(host->ref_out_clk);
-> +	if (err) {
-> +		dev_err(dev, "failed to enable ref out clock %d\n", err);
-> +		return err;
-> +	}
-> +
-> +	host->rst_gpio = devm_gpiod_get(&pdev->dev, "reset", GPIOD_OUT_LOW);
+Use 4 spaces for example indentation
+.
+> +	          <0x0 0x2b040000 0 0x10000>,
+> +		  <0x0 0x2601f000 0 0x1000>,
+> +		  <0x0 0x2603c000 0 0x1000>,
+> +		  <0x0 0x2a2e0000 0 0x10000>;
+> +            reg-names = "hci", "mphy", "hci_grf", "mphy_grf", "hci_apb";
+> +            clocks = <&cru ACLK_UFS_SYS>, <&cru PCLK_USB_ROOT>, <&cru PCLK_MPHY>,
+> +                     <&cru CLK_REF_UFS_CLKOUT>;
+> +            clock-names = "core", "pclk", "pclk_mphy", "ref_out";
+> +            interrupts = <GIC_SPI 361 IRQ_TYPE_LEVEL_HIGH>;
+> +            power-domains = <&power RK3576_PD_USB>;
+> +            resets = <&cru SRST_A_UFS_BIU>, <&cru SRST_A_UFS_SYS>, <&cru SRST_A_UFS>,
+> +	             <&cru SRST_P_UFS_GRF>;
+> +            reset-names = "biu", "sys", "ufs", "grf";
 
-Hm? Test your DTS and bindings.
+Crap. This was never tested!
 
-> +	if (IS_ERR(host->rst_gpio)) {
-> +		dev_err(&pdev->dev, "invalid reset-gpios property in node\n");
-
-Post your DTS so we can review it. Post also results of dtbs_check...
-
-> +		err = PTR_ERR(host->rst_gpio);
-
-dev_err_probe
-
-> +		goto out;
-> +	}
-> +	udelay(20);
-> +	gpiod_set_value_cansleep(host->rst_gpio, 1);
-> +
-> +	host->clks[0].id = "core";
-> +	host->clks[1].id = "pclk";
-> +	host->clks[2].id = "pclk_mphy";
-> +	err = devm_clk_bulk_get_optional(dev, UFS_MAX_CLKS, host->clks);
-> +	if (err) {
-> +		dev_err(dev, "failed to get clocks %d\n", err);
-> +		goto out;
-> +	}
-> +
-> +	err = clk_bulk_prepare_enable(UFS_MAX_CLKS, host->clks);
-> +	if (err) {
-> +		dev_err(dev, "failed to enable clocks %d\n", err);
-> +		goto out;
-> +	}
-> +
-> +	if (device_property_read_u32(dev, "ufs-phy-config-mode",
-
-No, stop adding undocumented properties.
-
-> +				     &host->phy_config_mode))
-> +		host->phy_config_mode = 0;
-> +
-> +	pm_runtime_set_active(&pdev->dev);
-> +
-> +	host->hba = hba;
-> +	ufs_rockchip_set_pm_lvl(hba);
-> +
-> +	ufshcd_set_variant(hba, host);
-> +
-> +	return 0;
-> +out:
-> +	clk_disable_unprepare(host->ref_out_clk);
-> +	return err;
-> +}
-> +
-> +static int ufs_rockchip_rk3576_init(struct ufs_hba *hba)
-> +{
-> +	int ret = 0;
-> +	struct device *dev = hba->dev;
-> +
-> +	hba->quirks = UFSHCI_QUIRK_BROKEN_HCE | UFSHCD_QUIRK_SKIP_DEF_UNIPRO_TIMEOUT_SETTING;
-> +
-> +	/* Enable BKOPS when suspend */
-> +	hba->caps |= UFSHCD_CAP_AUTO_BKOPS_SUSPEND;
-> +	/* Enable putting device into deep sleep */
-> +	hba->caps |= UFSHCD_CAP_DEEPSLEEP;
-> +	/* Enable devfreq of UFS */
-> +	hba->caps |= UFSHCD_CAP_CLK_SCALING;
-> +	/* Enable WriteBooster */
-> +	hba->caps |= UFSHCD_CAP_WB_EN;
-> +
-> +	ret = ufs_rockchip_common_init(hba);
-> +	if (ret) {
-> +		dev_err(dev, "ufs common init fail\n");
-> +		return ret;
-> +	}
-> +
-> +	return 0;
-> +}
-> +
-> +static int ufs_rockchip_device_reset(struct ufs_hba *hba)
-> +{
-> +	struct ufs_rockchip_host *host = ufshcd_get_variant(hba);
-> +
-> +	if (!host->rst_gpio)
-> +		return -EOPNOTSUPP;
-> +
-> +	gpiod_set_value_cansleep(host->rst_gpio, 0);
-> +	udelay(20);
-> +
-> +	gpiod_set_value_cansleep(host->rst_gpio, 1);
-> +	udelay(20);
-> +
-> +	return 0;
-> +}
-> +
-> +static const struct ufs_hba_variant_ops ufs_hba_rk3576_vops = {
-> +	.name = "rk3576",
-> +	.init = ufs_rockchip_rk3576_init,
-> +	.device_reset = ufs_rockchip_device_reset,
-> +	.hce_enable_notify = ufs_rockchip_hce_enable_notify,
-> +	.phy_initialization = ufs_rockchip_rk3576_phy_init,
-> +};
-> +
-> +static const struct of_device_id ufs_rockchip_of_match[] = {
-> +	{ .compatible = "rockchip,rk3576-ufs", .data = &ufs_hba_rk3576_vops},
-> +	{},
-> +};
-> +MODULE_DEVICE_TABLE(of, ufs_rockchip_of_match);
-> +
-> +static int ufs_rockchip_probe(struct platform_device *pdev)
-> +{
-> +	int err;
-> +	struct device *dev = &pdev->dev;
-> +	const struct ufs_hba_variant_ops *vops;
-> +
-> +	vops = device_get_match_data(dev);
-> +	err = ufshcd_pltfrm_init(pdev, vops);
-> +	if (err)
-> +		dev_err(dev, "ufshcd_pltfrm_init() failed %d\n", err);
-> +
-> +	return err;
-> +}
-> +
-> +static void ufs_rockchip_remove(struct platform_device *pdev)
-> +{
-> +	struct ufs_hba *hba = platform_get_drvdata(pdev);
-> +	struct ufs_rockchip_host *host = ufshcd_get_variant(hba);
-> +
-> +	pm_runtime_forbid(&pdev->dev);
-> +	pm_runtime_get_noresume(&pdev->dev);
-> +	ufshcd_remove(hba);
-> +	ufshcd_dealloc_host(hba);
-> +	clk_disable_unprepare(host->ref_out_clk);
-> +}
-> +
-> +static int ufs_rockchip_restore_link(struct ufs_hba *hba, bool is_store)
-> +{
-> +	struct ufs_rockchip_host *host = ufshcd_get_variant(hba);
-> +	int err, retry = 3;
-> +
-> +	if (is_store) {
-> +		host->ie = ufshcd_readl(hba, REG_INTERRUPT_ENABLE);
-> +		host->ahit = ufshcd_readl(hba, REG_AUTO_HIBERNATE_IDLE_TIMER);
-> +		return 0;
-> +	}
-> +
-> +	/* Enable controller */
-> +	err = ufshcd_hba_enable(hba);
-> +	if (err)
-> +		return err;
-> +
-> +	/* Link startup and wait for DP */
-> +	do {
-> +		err = ufshcd_dme_link_startup(hba);
-> +		if (!err && ufshcd_is_device_present(hba)) {
-> +			dev_dbg_ratelimited(hba->dev, "rockchip link startup successfully.\n");
-> +			break;
-> +		}
-> +	} while (retry--);
-> +
-> +	if (retry < 0) {
-> +		dev_err(hba->dev, "rockchip link startup failed.\n");
-> +		return -ENXIO;
-> +	}
-> +
-> +	/* Restore negotiated power mode */
-> +	err = ufshcd_config_pwr_mode(hba, &(hba->pwr_info));
-> +	if (err)
-> +		dev_err(hba->dev, "Failed to restore power mode, err = %d\n", err);
-> +
-> +	/* Restore task and transfer list */
-> +	ufshcd_writel(hba, 0xffffffff, REG_INTERRUPT_STATUS);
-> +	ufshcd_make_hba_operational(hba);
-> +
-> +	/* Restore lost regs */
-> +	ufshcd_writel(hba, host->ie, REG_INTERRUPT_ENABLE);
-> +	ufshcd_writel(hba, host->ahit, REG_AUTO_HIBERNATE_IDLE_TIMER);
-> +	ufshcd_writel(hba, 0x1, REG_UTP_TRANSFER_REQ_LIST_RUN_STOP);
-> +	ufshcd_writel(hba, 0x1, REG_UTP_TASK_REQ_LIST_RUN_STOP);
-> +
-> +	return err;
-> +}
-> +
-> +static int ufs_rockchip_runtime_suspend(struct device *dev)
-> +{
-> +	struct ufs_hba *hba = dev_get_drvdata(dev);
-> +	struct ufs_rockchip_host *host = ufshcd_get_variant(hba);
-> +
-> +	clk_disable_unprepare(host->ref_out_clk);
-> +	return ufs_rockchip_restore_link(hba, true);
-> +}
-> +
-> +static int ufs_rockchip_runtime_resume(struct device *dev)
-> +{
-> +	struct ufs_hba *hba = dev_get_drvdata(dev);
-> +	struct ufs_rockchip_host *host = ufshcd_get_variant(hba);
-> +	int err;
-> +
-> +	err = clk_prepare_enable(host->ref_out_clk);
-> +	if (err) {
-> +		dev_err(hba->dev, "failed to enable ref out clock %d\n", err);
-> +		return err;
-> +	}
-> +
-> +	reset_control_assert(host->rst);
-> +	udelay(1);
-> +	reset_control_deassert(host->rst);
-> +
-> +	return ufs_rockchip_restore_link(hba, false);
-> +}
-> +
-> +static int ufs_rockchip_suspend(struct device *dev)
-> +{
-> +	struct ufs_hba *hba = dev_get_drvdata(dev);
-> +
-> +	if (pm_runtime_suspended(hba->dev))
-> +		return 0;
-> +
-> +	ufs_rockchip_restore_link(hba, true);
-> +
-> +	return 0;
-> +}
-> +
-> +static int ufs_rockchip_resume(struct device *dev)
-> +{
-> +	struct ufs_hba *hba = dev_get_drvdata(dev);
-> +
-> +	if (pm_runtime_suspended(hba->dev))
-> +		return 0;
-> +
-> +	/* Reset device if possible */
-> +	ufs_rockchip_device_reset(hba);
-> +	ufs_rockchip_restore_link(hba, false);
-> +
-> +	return 0;
-> +}
-> +
-> +static const struct dev_pm_ops ufs_rockchip_pm_ops = {
-> +	SET_SYSTEM_SLEEP_PM_OPS(ufs_rockchip_suspend, ufs_rockchip_resume)
-> +	SET_RUNTIME_PM_OPS(ufs_rockchip_runtime_suspend, ufs_rockchip_runtime_resume, NULL)
-> +	.prepare	 = ufshcd_suspend_prepare,
-> +	.complete	 = ufshcd_resume_complete,
-> +};
-> +
-> +static struct platform_driver ufs_rockchip_pltform = {
-> +	.probe = ufs_rockchip_probe,
-> +	.remove = ufs_rockchip_remove,
-> +	.driver = {
-> +		.name = "ufshcd-rockchip",
-> +		.pm = &ufs_rockchip_pm_ops,
-> +		.of_match_table = of_match_ptr(ufs_rockchip_of_match),
-
-Drop of_match_ptr, you have here warnings.
+NAK
 
 Best regards,
 Krzysztof
