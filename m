@@ -4,74 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 44A45C52D70
-	for <linux-rockchip@archiver.kernel.org>; Tue,  6 Aug 2024 21:18:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5D069C52D6F
+	for <linux-rockchip@archiver.kernel.org>; Tue,  6 Aug 2024 21:21:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:Cc:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=j7W4zPpalh35hqJslFj4SdrZCs1DVhuYwumA7DrLc+U=; b=QBA6WYeVUrp3v7
-	67G7UaybMBGQzD1i3wzLLd9Ag90YRy0mw14HPbrCir4bWyIoT5l/arYgb9QOivdFIj0P/2oSqIkR/
-	d6kjIe12LVcAwJBkc9cYS7pUZvoRq3lWyQDhV7Uj77ymXUX2kvlytCl5TOP3rJEHGXWPsAtw7ei5I
-	X0duKNXgcqrp2DzBiY8tkZIdq7G7moqxk6ALt4+fyNzK98fZEoYXHXLI3mmndtr4Od8R5jP7OwNxN
-	U81WI4wR8chfBg2TXE4F11cB5tdJc4Oq9eiaqMJB8qAJf07OP9HkfHdzq1Tgxg7kGFiMBrUuE3c8+
-	YkWSHEcxKdBePgBucZng==;
+	List-Owner; bh=joWRkwWnVkZC2ZzExpqzT5bvZKJfZwSe/Pq3Jm38QbI=; b=HYF68ZySrw3cC7
+	7nYsPxNK2kJf01+VU56o0ueeXS/RqbWvmKNrXySfCVgAxaRcL53BBE5L/+9xsrtGvkNs6cfH2LI+v
+	+4E2hGPhSQpbPXCOL6nx2uOhQa/iaiczZ+lEbPXZzlUDw3P5XnFwljX+lJCpKP7fcHl6B3Og90oIK
+	JZmUA7ASHfd/3Fc66/psR9tXslgkPTUQFPoGL8W+gJYJNKwM/qLS784Ps4VX5TSALu+xVPqNPUN7u
+	UfZwSmRIsdL6Kylc9EecJmgtBiaEss6eX+xEQzhSiBL5g+PcGpaH93+7wppPFxVO3TcCK9bHd2RpP
+	Qe1cB6OEPwie1j+ftYvg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sbRZS-00000002wBP-04k2;
-	Tue, 06 Aug 2024 21:18:18 +0000
-Received: from sender4-op-o14.zoho.com ([136.143.188.14])
+	id 1sbRc9-00000002wNK-3Epw;
+	Tue, 06 Aug 2024 21:21:05 +0000
+Received: from sender4-op-o12.zoho.com ([136.143.188.12])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sbRZO-00000002wAo-0vPK;
-	Tue, 06 Aug 2024 21:18:15 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1722979084; cv=none; 
+	id 1sbRc5-00000002wMd-3U66;
+	Tue, 06 Aug 2024 21:21:03 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1722979252; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=kJU6zPIfWUudt7/XRn7/TOg0fe55t5arfi7vARhhCP6MF7RvWzD84vIuKeFmkA4eAYNit+LKpF5uxMWaJWlWpakk4so/16te7AXgQtvctebweUfTIlNTUOcpYDiF5VuEQQ9nzwTtt6zeeNcSk3j6DGsUKoYqb3spEVlpVesO3xI=
+	b=BMf2ZRFvtqi/sR13Gc59m+dMM+UrIaQjfzvHt/w/TtAtrfbrDjwxqIZdy43GRVczq3kSoc4u3i7kVIFcEGMvqDs3ykaK4njgc8RgXWxRRJ3QMHSnPjSbpHFOvu9UMXh8HFCg+p/B5n9gtX+qJUtdFTAAiZc2OW5ohWPOLu+G7Qg=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1722979084; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=1utvhZHP0c6T8Ir5t589WiTudCfRoOIw0DiDKTzIf38=; 
-	b=Vln/VZMrK75Lw8wGQ5yGeEQeZHvszyvBo7X9MMrDL8jwFcbPu7J011BtX6p3Dun79CqbpQ8hruVt5NL5Gk3SyvgrDbejSpAgMPWJiZMHK5mPXLuDJoBSxPcHwSOVplKb6jg3Zz+VjRiGC0OXJG3uYuxIJomdtO7Tcj2Y4yVcw6E=
+	t=1722979252; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=ohjTRCVxkhKXSgrx3m+MPEhGY7a9HSyHDy3Be9j0/h4=; 
+	b=as4PYSvJHpawzeoKIOiKghAb3Q10+Hueo6mC49qrGYx9oCiWrUGCmp5QWkAvSbS7CsNdVvnDQFAkPTeuSf43fv3Ls2OVwuxNUGG+o5BEABohi9rihiYPEnq4zpnX73Uc3ZhQ7cKBWxlzLmuPPMvqzvytx5J0PfvfMwBlLyyfkJc=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=nicolas.dufresne@collabora.com;
-	dmarc=pass header.from=<nicolas.dufresne@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1722979084;
-	s=zohomail; d=collabora.com; i=nicolas.dufresne@collabora.com;
-	h=Message-ID:Subject:Subject:From:From:To:To:Cc:Cc:Date:Date:In-Reply-To:References:Content-Type:Content-Transfer-Encoding:MIME-Version:Message-Id:Reply-To;
-	bh=1utvhZHP0c6T8Ir5t589WiTudCfRoOIw0DiDKTzIf38=;
-	b=kMK3/MuPZXiddxJtOppeyg/qVO1KC8I7lLYcf667P+mF/nJCBXAQnGFbYsENftWv
-	Q2rfbB9P682e+5c2KG8Y+oDq8rdQmRnR7DfUuwUZG3gWtrhurdNuimzYoz5HqML9NhA
-	neornCWQdp7AypaXPGfyLMjOJtxjIAsvnSOeZvSI=
-Received: by mx.zohomail.com with SMTPS id 172297908214914.577164447111386;
-	Tue, 6 Aug 2024 14:18:02 -0700 (PDT)
-Message-ID: <3c388a51fef3d2c284fe7648ffd7215e097980a9.camel@collabora.com>
-Subject: Re: [PATCH v4 0/4] Add Synopsys DesignWare HDMI RX Controller
-From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-To: Tim Surber <me@timsurber.de>, Dmitry Osipenko
- <dmitry.osipenko@collabora.com>, Shreeya Patel
- <shreeya.patel@collabora.com>,  heiko@sntech.de, mchehab@kernel.org,
- robh@kernel.org, krzk+dt@kernel.org,  conor+dt@kernel.org,
- mturquette@baylibre.com, sboyd@kernel.org,  p.zabel@pengutronix.de,
- jose.abreu@synopsys.com, nelson.costa@synopsys.com, 
- shawn.wen@rock-chips.com, hverkuil@xs4all.nl, hverkuil-cisco@xs4all.nl
-Cc: kernel@collabora.com, linux-kernel@vger.kernel.org, 
-	linux-media@vger.kernel.org, devicetree@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
-Date: Tue, 06 Aug 2024 17:17:58 -0400
-In-Reply-To: <06838f40-881c-4301-826b-e29a4277e663@timsurber.de>
-References: <20240719124032.26852-1-shreeya.patel@collabora.com>
-	 <6f5c4ebb-84ab-4b65-9817-ac5f6158911f@timsurber.de>
-	 <929d2f50-6b0e-4d1e-a6d3-482d615bd06a@collabora.com>
-	 <06838f40-881c-4301-826b-e29a4277e663@timsurber.de>
-User-Agent: Evolution 3.52.3 (3.52.3-1.fc40) 
+	spf=pass  smtp.mailfrom=detlev.casanova@collabora.com;
+	dmarc=pass header.from=<detlev.casanova@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1722979252;
+	s=zohomail; d=collabora.com; i=detlev.casanova@collabora.com;
+	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
+	bh=ohjTRCVxkhKXSgrx3m+MPEhGY7a9HSyHDy3Be9j0/h4=;
+	b=ZYH/46hvnZV51VVqorVH3LiC7WuZwmTxVLc/nGongNTjLICSXR084ljtqdkNA+bq
+	JV1L4kc+ynO8+JgRqvok3f9lbrk32ZFQ4+EsZudEfgGCpDuGTmgVfY9f/9emGgLv4DN
+	coIyZRUQ0FrEFP7wTKsdYulpLLLTxQe/EO7Y8SCM=
+Received: by mx.zohomail.com with SMTPS id 17229792513511020.8164380601129;
+	Tue, 6 Aug 2024 14:20:51 -0700 (PDT)
+From: Detlev Casanova <detlev.casanova@collabora.com>
+To: linux-kernel@vger.kernel.org, Krzysztof Kozlowski <krzk@kernel.org>
+Cc: Michael Turquette <mturquette@baylibre.com>,
+ Stephen Boyd <sboyd@kernel.org>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
+ Heiko Stuebner <heiko@sntech.de>, Philipp Zabel <p.zabel@pengutronix.de>,
+ Elaine Zhang <zhangqing@rock-chips.com>, linux-clk@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, kernel@collabora.com
+Subject: Re: [PATCH v2 1/3] dt-bindings: clock: add rk3576 cru bindings
+Date: Tue, 06 Aug 2024 17:22:03 -0400
+Message-ID: <1975336.PYKUYFuaPT@trenzalore>
+In-Reply-To: <87503c5b-95dc-463b-8363-3e1fab03f8f2@kernel.org>
+References: <20240802214053.433493-1-detlev.casanova@collabora.com>
+ <20240802214053.433493-2-detlev.casanova@collabora.com>
+ <87503c5b-95dc-463b-8363-3e1fab03f8f2@kernel.org>
 MIME-Version: 1.0
 X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240806_141814_359511_5508C4A3 
-X-CRM114-Status: UNSURE (   6.64  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240806_142101_934541_CB8F8379 
+X-CRM114-Status: GOOD (  25.29  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,32 +78,141 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGkgVGltLAoKTGUgbWFyZGkgMDYgYW/Du3QgMjAyNCDDoCAyMjozNyArMDIwMCwgVGltIFN1cmJl
-ciBhIMOpY3JpdMKgOgo+ICMjI3NvdXJjZSBzZXQgdG8gNGs2MGZwcyMjIyMKPiAtLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0KPiB2NGwyLWN0bCAtLXZlcmJvc2UgLWQgL2Rldi92aWRlbzEgCj4g
-LS1zZXQtZm10LXZpZGVvPXdpZHRoPTM4NDAsaGVpZ2h0PTIxNjAscGl4ZWxmb3JtYXQ9J05WMTIn
-IAo+IC0tc3RyZWFtLW1tYXA9NCAtLXN0cmVhbS1za2lwPTMgLS1zdHJlYW0tY291bnQ9MTAwIC0t
-c3RyZWFtLXBvbGwKPiAtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0KPiBWSURJT0NfUVVFUllD
-QVA6IG9rCj4gVklESU9DX0dfRk1UOiBvawo+IFZJRElPQ19TX0ZNVDogb2sKPiBGb3JtYXQgVmlk
-ZW8gQ2FwdHVyZSBNdWx0aXBsYW5hcjoKPiDCoMKgwqDCoCBXaWR0aC9IZWlnaHTCoMKgwqDCoMKg
-IDogMzg0MC8yMTYwCj4gwqDCoMKgwqAgUGl4ZWwgRm9ybWF0wqDCoMKgwqDCoCA6ICdOVjEyJyAo
-WS9VViA0OjI6MCkKPiDCoMKgwqDCoCBGaWVsZMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCA6IE5v
-bmUKPiDCoMKgwqDCoCBOdW1iZXIgb2YgcGxhbmVzwqAgOiAxCj4gwqDCoMKgwqAgRmxhZ3PCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqAgOgo+IMKgwqDCoMKgIENvbG9yc3BhY2XCoMKgwqDCoMKgwqDC
-oCA6IHNSR0IKPiDCoMKgwqDCoCBUcmFuc2ZlciBGdW5jdGlvbiA6IERlZmF1bHQKPiDCoMKgwqDC
-oCBZQ2JDci9IU1YgRW5jb2Rpbmc6IERlZmF1bHQKPiDCoMKgwqDCoCBRdWFudGl6YXRpb27CoMKg
-wqDCoMKgIDogRGVmYXVsdAo+IMKgwqDCoMKgIFBsYW5lIDDCoMKgwqDCoMKgwqDCoMKgwqDCoCA6
-Cj4gwqDCoMKgwqDCoMKgwqAgQnl0ZXMgcGVyIExpbmUgOiAzODQwCj4gwqDCoMKgwqDCoMKgwqAg
-U2l6ZSBJbWFnZcKgwqDCoMKgIDogODI5NDQwMAoKWW91IGhhdmUgaGlnaGxpZ2h0ZWQgYSBidWcg
-aGVyZS4gTlYxMiBoYXMgMiBwbGFuZXMsIGJ1dCB0aGUgc2l6ZSBpbWFnZSBvbmx5CmFsbG93IGZv
-ciB0aGUgbHVtYSB0byBiZSBzdG9yZWQuCgogICBTaXplIEltYWdlOiAzODQwICogMjE2MCAqIDMg
-LyAyID0gMTI0NDE2MDAgYnl0ZXMuCgpMZXRzIGF0IGxlYXN0IGdldCB0aGF0IGZpeGVkLCBhbmQg
-Y2hlY2sgYWdhaW4uCgpOaWNvbGFzCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBs
-aXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlz
-dGluZm8vbGludXgtcm9ja2NoaXAK
+Hi Krzysztof,
+
+On Sunday, 4 August 2024 05:52:53 EDT Krzysztof Kozlowski wrote:
+> On 02/08/2024 23:35, Detlev Casanova wrote:
+> > Document the device tree bindings of the rockchip rk3576 SoC
+> > clock and reset unit.
+> > 
+> > Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
+> 
+> A nit, subject: drop second/last, redundant "bindings". The
+> "dt-bindings" prefix is already stating that these are bindings.
+> See also:
+> https://elixir.bootlin.com/linux/v6.7-rc8/source/Documentation/devicetree/bi
+> ndings/submitting-patches.rst#L18
+> > ---
+> > 
+> >  .../bindings/clock/rockchip,rk3576-cru.yaml   | 73 +++++++++++++++++++
+> >  1 file changed, 73 insertions(+)
+> >  create mode 100644
+> >  Documentation/devicetree/bindings/clock/rockchip,rk3576-cru.yaml> 
+> > diff --git
+> > a/Documentation/devicetree/bindings/clock/rockchip,rk3576-cru.yaml
+> > b/Documentation/devicetree/bindings/clock/rockchip,rk3576-cru.yaml new
+> > file mode 100644
+> > index 0000000000000..929eb6183bf18
+> > --- /dev/null
+> > +++ b/Documentation/devicetree/bindings/clock/rockchip,rk3576-cru.yaml
+> > @@ -0,0 +1,73 @@
+> > +# SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
+> > +%YAML 1.2
+> > +---
+> > +$id: http://devicetree.org/schemas/clock/rockchip,rk3576-cru.yaml#
+> > +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> > +
+> > +title: Rockchip rk3576 Family Clock and Reset Control Module
+> > +
+> > +maintainers:
+> > +  - Elaine Zhang <zhangqing@rock-chips.com>
+> > +  - Heiko Stuebner <heiko@sntech.de>
+> > +
+> > +description: |
+> > +  The RK3576 clock controller generates the clock and also implements a
+> > reset +  controller for SoC peripherals. For example it provides
+> > SCLK_UART2 and +  PCLK_UART2, as well as SRST_P_UART2 and SRST_S_UART2
+> > for the second UART +  module.
+> > +  Each clock is assigned an identifier and client nodes can use this
+> > identifier +  to specify the clock which they consume. All available
+> > clock and reset IDs +  are defined as preprocessor macros in dt-binding
+> > headers.
+> 
+> Drop paragraph, it is obvious. You could provide here the name of the
+> header...
+> 
+> > +
+> > +properties:
+> > +  compatible:
+> > +    enum:
+> > +      - rockchip,rk3576-cru
+> > +
+> > +  reg:
+> > +    maxItems: 1
+> > +
+> > +  "#clock-cells":
+> > +    const: 1
+> > +
+> > +  "#reset-cells":
+> > +    const: 1
+> > +
+> > +  clocks:
+> > +    minItems: 2
+> 
+> You can drop minitems
+> 
+> > +    maxItems: 2
+> > +
+> > +  clock-names:
+> > +    items:
+> > +      - const: xin24m
+> > +      - const: xin32k
+> > +
+> > +  assigned-clocks: true
+> > +
+> > +  assigned-clock-rates: true
+> > +
+> > +  assigned-clock-parents: true
+> 
+> Drop  all these three
+
+Why dro pthese if I need them in the device tree ? Should I remove them from 
+there as well ? It seems to be working without it.
+
+> > +
+> > +  rockchip,grf:
+> > +    $ref: /schemas/types.yaml#/definitions/phandle
+> > +    description: >
+> > +      phandle to the syscon managing the "general register files". It is
+> > used +      for GRF muxes, if missing any muxes present in the GRF will
+> > not be +      available.
+> > +
+> > +required:
+> > +  - compatible
+> > +  - reg
+> > +  - "#clock-cells"
+> > +  - "#reset-cells"
+> > +
+> > +additionalProperties: false
+> > +
+> > +examples:
+> > +  - |
+> > +    cru: clock-controller@27200000 {
+> 
+> Drop unused label
+> 
+> > +      compatible = "rockchip,rk3576-cru";
+> > +      reg = <0xfd7c0000 0x5c000>;
+> > +      #clock-cells = <1>;
+> > +      #reset-cells = <1>;
+> 
+> Make the example complete.
+> 
+> > +    };
+> 
+
+Detlev.
+
+
+
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
