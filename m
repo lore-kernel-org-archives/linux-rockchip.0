@@ -4,70 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CB641C3DA64
-	for <linux-rockchip@archiver.kernel.org>; Tue,  6 Aug 2024 15:22:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 78354C52D70
+	for <linux-rockchip@archiver.kernel.org>; Tue,  6 Aug 2024 16:34:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=IUuY0UpTWc6nT1msa5cKmuelBWXZJZBi5dFp74aMhG4=; b=1bQwhsvTbV1P8C
-	L8stDO48Q8jxo938RT8nwIHEhLKHjb9FpZBtSKFNdvdh1Y+o7Q9XRySQCFuokgODbW44mDr63GpSk
-	DH6QJ11DHMptyptgaTMrq7g4V/9Rkw+p0tFhvbGWCI9iUQzE+aVdBgpY6N5UEOcLQNNxP1d/hU501
-	+q+CQqKA0pHA9vP/KU/zU78KzvtjIseKJ3bvRGocp62mT6Mo4wmiWf7ulXnf/Pmh3PQ5uQYPKTdym
-	CHizpNLRp0zhpFLVeGBcld0AY/QFa6q1zO7pLXw8y4WZZmdt+TKS9YPbQB7lFW8G9c5gYKl7NTdk5
-	XaUfUdwzSdb089egYMuw==;
+	List-Owner; bh=cnRzDyVR0jY6ABfEG8Nl26KRKwigrmAoha/RHM3WzVQ=; b=YxHXXn9hRDwL9R
+	HQ08dwdcdSJwqSFhfye8NIInGlzZVjRHY2J7jWvgqA5y8Ib+0T7n4vrCBCDYbEP3kQ1K6ZKR/4rzO
+	/+Z8hF/ZkQuFoZ9OZLIDddOxZnEhi4524Wrrp52SFIJ4tnGFmmXgmAZpI0BJxfEPFBuoJr5Ys1+GP
+	Z/M5R9cglK64P+ieyUvfNsHSiR8jAS5sD6eJWUFW+BpXWvxMDepMLkqc4bTgQU967ka+gT6dx7U3b
+	0gOXX1tU6iHhpG71VKfCWIFn6c9mwCfTG/IDZqBzhtFxKUjVjyMGt/OtKFhmoQmZR9jgzbLAfvTJR
+	cX4aWncco0mxigq3jXkw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sbM1B-000000029yC-2UgI;
-	Tue, 06 Aug 2024 15:22:33 +0000
+	id 1sbN8W-00000002Mav-096p;
+	Tue, 06 Aug 2024 16:34:12 +0000
 Received: from sender4-op-o12.zoho.com ([136.143.188.12])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sbM16-000000029x7-2COI;
-	Tue, 06 Aug 2024 15:22:30 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1722957739; cv=none; 
+	id 1sbN7x-00000002MVf-03YX;
+	Tue, 06 Aug 2024 16:33:38 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1722962010; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=X528A3SDqlxQS6uBuvYp/fY/an5pNhTKOg6VxX8/lV238DXnO7fkA2JqZDYq/Uw0UzFBzRNEcnt7VwJDRwZzQ9VGY34iuHdSPecS3hCDqXEOwXJtOYzv3hT3ci598zg7TNoh8Lj0M7vUB5ImS7xgqEtf6yLSXGvCJ+v35ZIWY9E=
+	b=nVmjkx2NYYfGexWUTXG6+br7K+/tYNcm2BTNaHP0pmFRRUF6ugYmgQNdE1Z4TgZeOsBp4IWtKiRsYRVcx4LkEdgW5NMOcFdNYbTecmOXjMHwkj1saTbQw/ng9eOW0VYI7I9+0R3Xa0qXjOLqYMnRZAmrgi5gzUp/2gUkgllXlLc=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1722957739; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=4E7YYytNxcERJA+P5c4RQhUBo3UBV2EKfxk7gX+2rTM=; 
-	b=TKo9JKPjy6afGWCkdn8B7MKOGG4ytVCihNakvPPNXhc3m4mt4gpY2HbqlrH1RsRGTUfcqxpDPDaRiaI84prLM3GoatssHJatedODQXHBfs9dm9fGbQL+s32OvQ1kp5nsRW5wqMKBoPu8yAUl3XOGhJZWaO8OUlBdOo8BLVZkijE=
+	t=1722962010; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=l/JHjYFYD5hXu+XbGOm+SC68og+CQ6amBp7xMsiP/Lo=; 
+	b=CsIS/Zd0X+HOmXOqsWJsKqIQT07/9srdSQNwHL6RoqLJaMD9Y7UgQFJDZlOIfmDqWpuGwgErLkyLoDibyGeJbGBU4/MH4oUSKMRMUfT3DV8t98XX8dQFQcQEUv5AgtcB6RaxxkM77B4O7oCmvoyML5/04OYGhINcMrEJWljfpwI=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=collabora.com;
 	spf=pass  smtp.mailfrom=detlev.casanova@collabora.com;
 	dmarc=pass header.from=<detlev.casanova@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1722957739;
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1722962010;
 	s=zohomail; d=collabora.com; i=detlev.casanova@collabora.com;
 	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
-	bh=4E7YYytNxcERJA+P5c4RQhUBo3UBV2EKfxk7gX+2rTM=;
-	b=QT6omPpk0QHjjuJfgBNeP66BFRUwXPimJeRjTSygjmdjXWvwmN0wUJrfWdFdAoKn
-	nzXgIyfDanTB9wv84E2jic3W9dgaLFmwBr5mIO4cfYpYC3tbhB3fECOEYeH/3wO8dJg
-	NpNPaiHc85uYtSu9Zeo7kkV4217sSzbwpkQ3/qb8=
-Received: by mx.zohomail.com with SMTPS id 1722957736998397.9644636527041;
-	Tue, 6 Aug 2024 08:22:16 -0700 (PDT)
+	bh=l/JHjYFYD5hXu+XbGOm+SC68og+CQ6amBp7xMsiP/Lo=;
+	b=AqFJDYCdobJ60Kpe/ZGzSVKMoNEWj3yVbIBcC+9Q5Pm9KxZG5CRvJ6KdXceQzpe0
+	oTPRGkOL6pPFlfJdmaHXdCx6ZHWo1MpTI8HyNji7wYzk/OsF9zTgIQ861Gn/BzZk1Gc
+	TNyFVoh6ilAbmNIrlRYMu/halSDBLbAqVtm76XCE=
+Received: by mx.zohomail.com with SMTPS id 1722962009873809.7480289049981;
+	Tue, 6 Aug 2024 09:33:29 -0700 (PDT)
 From: Detlev Casanova <detlev.casanova@collabora.com>
 To: linux-kernel@vger.kernel.org, Krzysztof Kozlowski <krzk@kernel.org>
-Cc: Michael Turquette <mturquette@baylibre.com>,
- Stephen Boyd <sboyd@kernel.org>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
- Heiko Stuebner <heiko@sntech.de>, Philipp Zabel <p.zabel@pengutronix.de>,
- Elaine Zhang <zhangqing@rock-chips.com>, linux-clk@vger.kernel.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, kernel@collabora.com,
- Sugar Zhang <sugar.zhang@rock-chips.com>
-Subject: Re: [PATCH v2 2/3] clk: rockchip: Add dt-binding header for rk3576
-Date: Tue, 06 Aug 2024 11:23:28 -0400
-Message-ID: <2949191.e9J7NaK4W3@trenzalore>
-In-Reply-To: <1600ee06-ac19-436f-8229-1bb44b29c683@kernel.org>
-References: <20240802214053.433493-1-detlev.casanova@collabora.com>
- <20240802214053.433493-3-detlev.casanova@collabora.com>
- <1600ee06-ac19-436f-8229-1bb44b29c683@kernel.org>
+Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ Ulf Hansson <ulf.hansson@linaro.org>,
+ Geert Uytterhoeven <geert+renesas@glider.be>,
+ "Rafael J . Wysocki" <rafael@kernel.org>,
+ Finley Xiao <finley.xiao@rock-chips.com>, Jagan Teki <jagan@edgeble.ai>,
+ Elaine Zhang <zhangqing@rock-chips.com>, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-pm@vger.kernel.org
+Subject: Re: [PATCH 2/3] dt-bindings: Add power-domain header for RK3576 SoCs
+Date: Tue, 06 Aug 2024 12:34:41 -0400
+Message-ID: <3310992.44csPzL39Z@trenzalore>
+In-Reply-To: <e04258dc-07c4-45c7-90d4-bc1ed9eb100b@kernel.org>
+References: <20240802151647.294307-1-detlev.casanova@collabora.com>
+ <20240802151647.294307-3-detlev.casanova@collabora.com>
+ <e04258dc-07c4-45c7-90d4-bc1ed9eb100b@kernel.org>
 MIME-Version: 1.0
 X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240806_082228_810143_DB75537E 
-X-CRM114-Status: GOOD (  21.79  )
+X-CRM114-CacheID: sfid-20240806_093337_136337_50768793 
+X-CRM114-Status: GOOD (  18.60  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,17 +85,11 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Sunday, 4 August 2024 05:53:57 EDT Krzysztof Kozlowski wrote:
-> On 02/08/2024 23:35, Detlev Casanova wrote:
-> > From: Elaine Zhang <zhangqing@rock-chips.com>
+On Sunday, 4 August 2024 05:56:39 EDT Krzysztof Kozlowski wrote:
+> On 02/08/2024 17:14, Detlev Casanova wrote:
+> > From: Finley Xiao <finley.xiao@rock-chips.com>
 > > 
-> > Add the dt-bindings header for the rk3576, that gets shared between
-> > the clock controller and the clock references in the dts.
-> > 
-> > Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
-> > Signed-off-by: Sugar Zhang <sugar.zhang@rock-chips.com>
-> > [rebased, separate clocks and resets]
-> > Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
+> > Define power domain IDs as described in the TRM.
 > 
 > Please use subject prefixes matching the subsystem. You can get them for
 > example with `git log --oneline -- DIRECTORY_OR_FILE` on the directory
@@ -102,60 +97,37 @@ On Sunday, 4 August 2024 05:53:57 EDT Krzysztof Kozlowski wrote:
 > explained here:
 > https://www.kernel.org/doc/html/latest/devicetree/bindings/submitting-patche
 > s.html#i-for-patch-submitters
+> > Signed-off-by: Finley Xiao <finley.xiao@rock-chips.com>
+> > [reword]
+> > Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
 > > ---
 > > 
-> >  .../dt-bindings/clock/rockchip,rk3576-cru.h   | 589 ++++++++++++++++++
-> >  .../dt-bindings/reset/rockchip,rk3576-cru.h   | 484 ++++++++++++++
-> >  2 files changed, 1073 insertions(+)
-> >  create mode 100644 include/dt-bindings/clock/rockchip,rk3576-cru.h
-> >  create mode 100644 include/dt-bindings/reset/rockchip,rk3576-cru.h
+> >  include/dt-bindings/power/rk3576-power.h | 30 ++++++++++++++++++++++++
+> >  1 file changed, 30 insertions(+)
+> >  create mode 100644 include/dt-bindings/power/rk3576-power.h
 > 
-> These are bindings. Must be squashed with previous patch.
+> This is part of bindings.
+> 
+> > diff --git a/include/dt-bindings/power/rk3576-power.h
+> > b/include/dt-bindings/power/rk3576-power.h
+> Missing vendor prefix. This should be named after compatible.
 
-Ok, so you'd rather have a commit for reset definitions (dt-bindings: reset: 
-Add rk3576 reset definitions) and another one for clock definitions + 
-Documentation (dt-bindings: clock: Add rk3576 clock definitions and 
-documentation) ?
+Looks like all other rockchip power bindings use the include/dt-bindings/
+power/rkXXXX.h format. Should I keep that way ?
 
-> > diff --git a/include/dt-bindings/clock/rockchip,rk3576-cru.h
-> > b/include/dt-bindings/clock/rockchip,rk3576-cru.h new file mode 100644
-> > index 0000000000000..14b54543d1a11
+> > new file mode 100644
+> > index 0000000000000..cb33a32c1aed9
 > > --- /dev/null
-> > +++ b/include/dt-bindings/clock/rockchip,rk3576-cru.h
-> > @@ -0,0 +1,589 @@
+> > +++ b/include/dt-bindings/power/rk3576-power.h
+> > @@ -0,0 +1,30 @@
 > > +/* SPDX-License-Identifier: (GPL-2.0+ OR MIT) */
 > 
-> Weird license. Why not using recommended one?
-
-Oh right, I suppose "GPL-2.0 OR MIT" is better ? At least that is what I see 
-for rk3588. include/dt-bindings/clock/rockchip,rv1126-cru.h uses "GPL-2.0+ OR 
-MIT" though.
-
-> > +/*
-> > + * Copyright (c) 2023 Rockchip Electronics Co. Ltd.
-> > + * Author: Elaine Zhang <zhangqing@rock-chips.com>
-> > + */
-> > +
-> > +#ifndef _DT_BINDINGS_CLK_ROCKCHIP_RK3576_H
-> > +#define _DT_BINDINGS_CLK_ROCKCHIP_RK3576_H
-> > +
-> > +/* cru-clocks indices */
-> > +
-> > +/* cru plls */
-> > +#define PLL_BPLL			1
-> > +#define PLL_LPLL			3
-> > +#define PLL_VPLL			4
-> > +#define PLL_AUPLL			5
-> > +#define PLL_CPLL			6
-> > +#define PLL_GPLL			7
-> > +#define PLL_PPLL			9
+> Weird license.
 > 
-> Nope, indices start from 1 and are incremented continuously.
+> Best regards,
+> Krzysztof
 
-Why start at 1 ? RK3588 starts at 0 for clocks and resets
 
-Regards,
-Detlev.
 
 
 
