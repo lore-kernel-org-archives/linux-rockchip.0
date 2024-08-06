@@ -4,72 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5B378C52D6F
-	for <linux-rockchip@archiver.kernel.org>; Tue,  6 Aug 2024 11:58:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A7350C3DA64
+	for <linux-rockchip@archiver.kernel.org>; Tue,  6 Aug 2024 13:43:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=4i6q/6H6wiRKpHTEV/fyJHyzUpIiME7iZErzCJZWJtI=; b=KpRqOfTJb8BudX
-	UjtVv5uqQW3C+k0leO7Y8Mw8pQiBxdyMU2Ss0LlyPtyvbbb6hsvyZGk+g1aXfqBJEOiit8xUppZJu
-	4yebG+MXrThwKP1uGDomwBoP85FFhzwW/NH6NhRVKgotBZ549QEyu9CJDNXYEXDhhNhGz4PNBm+71
-	phopNWNas+pib2+Kn+hxKY8wGtdpk2f5XU3swROL6mk5iwsfs8odSLQEWAuGjbYgxRjw7WwbiHapq
-	2WyD5GOvj8QbFSpYMpLI9YOvIEJ8Z/F6EDDUq0CclMn3XMsRuYBRTJPOdkGpFZJQhE5Og8+eEMWsK
-	T77jXFDwyJaOtufaCIJQ==;
+	List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:References:
+	In-Reply-To:Cc:To:From:MIME-Version:Date:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=/YCuLzcs6KScv6jqKDAHuHi38Umey14ZHQix3cB4RxQ=; b=BNJYqpYL4VZIpcQfUr+TvUs7KM
+	1kFjUGXDrBM+KEBMfGtA60NU9U8kbZ21rCKBHOPIPiXEcJkgDtGhT0ZlNmmM+WLC7QlgLHdNnqkTt
+	/9KcxAGbPt7Cdw1ICIJATdvqJgoebfo5jnND+nNlGPj15XpSS5b6EBWyKJXhgOhpATfZF8EqPUy+/
+	EBypNTLbZoIV8FtmOfK3e+ZIU/e7qpYjmUsKliEQGi9jSi30gidzbkyYDCQz0xmZ/QpT+ICNa8nYS
+	6nIm5xQmoaGTwSDE9xa6kXOLGhL91HlfMEZSbpjoqAOCWr2FIeFvala9lH1g3/ZUBTnSRW/TbJF55
+	iPLIcfzQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sbIpt-00000001Pk7-0q51;
-	Tue, 06 Aug 2024 11:58:41 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1sbKTc-00000001pgV-0cAw;
+	Tue, 06 Aug 2024 13:43:48 +0000
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sbIpo-00000001PjR-1oq4;
-	Tue, 06 Aug 2024 11:58:37 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1722945497; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=OtfNcwuLHczvL3PGe4brG2g1/ATYA97GUqWrNCS/kqHaAIUyU72cHXqkBi99QibOGMTF3ox31D4V+j5tlTZUWOK6f3A1CO29Z172tYrnokLc2Jox7lUaAmZuPxAzbgZofHuGtfE+RWKhujZotdvgsGZmKXcgOfqHpd7DFa5pqeo=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1722945497; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=GUl7n+rnOu9EMuo1/gD5MP5eCxVNnOpkTAodKwwv4e4=; 
-	b=D6wxYgNk7hdmVztiEz/yP34x3N93lsoFngMqeTPkDNGl3eVbuZhVPuKtL4R2m6MKJ9N1bk54OsSsCwu5sgPX22ea4U6hyvwTKoegMgwIqzkIy+W4Rca6BOQtB7s9RcHhelBrThoSWgNw9r3PeZztsotU7caqFdlce42LiKmQWCk=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=dmitry.osipenko@collabora.com;
-	dmarc=pass header.from=<dmitry.osipenko@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1722945497;
-	s=zohomail; d=collabora.com; i=dmitry.osipenko@collabora.com;
-	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
-	bh=GUl7n+rnOu9EMuo1/gD5MP5eCxVNnOpkTAodKwwv4e4=;
-	b=bkh98zX1F1CBHoTSUQkD8/YaKz3/kdxoxgoAVVYS4lgnhSmRXKzMtugxJQXTTmDy
-	TepE5MqSGt9XcEpgHQpA4eQB8el87wBucUDXmlkJ2tIioRmL1baacIwojDSW45WoYQ+
-	qWwB3jg7KP6b25eVzzB+RYJ9I743gvVCZIlnI28I=
-Received: by mx.zohomail.com with SMTPS id 1722945495133332.7271484161171;
-	Tue, 6 Aug 2024 04:58:15 -0700 (PDT)
-Message-ID: <929d2f50-6b0e-4d1e-a6d3-482d615bd06a@collabora.com>
-Date: Tue, 6 Aug 2024 14:58:08 +0300
+	id 1sbKTZ-00000001pf7-3pni
+	for linux-rockchip@lists.infradead.org;
+	Tue, 06 Aug 2024 13:43:47 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sin.source.kernel.org (Postfix) with ESMTP id D1E23CE0B5F;
+	Tue,  6 Aug 2024 13:43:43 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D5198C32786;
+	Tue,  6 Aug 2024 13:43:42 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1722951823;
+	bh=7cgpMKZ/sRoxMwB5sW8eWWI81jOeYc0K6w4lNJu+HD4=;
+	h=Date:From:To:Cc:In-Reply-To:References:Subject:From;
+	b=hwHh4RZ8gZdKdrU0Uu1D1uNE8rxtqIANcdo3t4Ixd03WAD9mg74UDhKwd9rZWLQC0
+	 IY9MtA2fKCAZNkZTscqk0Q86bc+UVfmxdWRUryv1r6p7jlhxKt24A5fTY0lvBkr7Wv
+	 GMDxKYHbpMPOMua5+Eih3gwnUSLec+65jc5KaRqinZiFHCDMzrO2wvaTh3pQm9iHYt
+	 x4Fy8/gwvpQqDnoPuVWY2aiR+N0uFNFhJlyEWQt6pdrMwaSGPQtHUZ1pg4WjZg/grQ
+	 TKFlgxz6Seg9qbL0Tqb/GYFKs/nIKJvEAeQjv9RpnG5vuhiDz4AF0p9eD0qI/bvAaV
+	 74IAQl23rNxqw==
+Date: Tue, 06 Aug 2024 07:43:41 -0600
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 0/4] Add Synopsys DesignWare HDMI RX Controller
-To: Tim Surber <me@timsurber.de>, Shreeya Patel
- <shreeya.patel@collabora.com>, heiko@sntech.de, mchehab@kernel.org,
- robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
- mturquette@baylibre.com, sboyd@kernel.org, p.zabel@pengutronix.de,
- jose.abreu@synopsys.com, nelson.costa@synopsys.com,
- shawn.wen@rock-chips.com, nicolas.dufresne@collabora.com,
- hverkuil@xs4all.nl, hverkuil-cisco@xs4all.nl
-Cc: kernel@collabora.com, linux-kernel@vger.kernel.org,
- linux-media@vger.kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
-References: <20240719124032.26852-1-shreeya.patel@collabora.com>
- <6f5c4ebb-84ab-4b65-9817-ac5f6158911f@timsurber.de>
-Content-Language: en-US
-From: Dmitry Osipenko <dmitry.osipenko@collabora.com>
-In-Reply-To: <6f5c4ebb-84ab-4b65-9817-ac5f6158911f@timsurber.de>
-X-ZohoMailClient: External
+From: "Rob Herring (Arm)" <robh@kernel.org>
+To: FUKAUMI Naoki <naoki@radxa.com>
+Cc: heiko@sntech.de, krzk+dt@kernel.org, devicetree@vger.kernel.org, 
+ Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, 
+ linux-rockchip@lists.infradead.org, conor+dt@kernel.org
+In-Reply-To: <20240805232932.2030-1-naoki@radxa.com>
+References: <20240805232932.2030-1-naoki@radxa.com>
+Message-Id: <172295171605.1220315.16278406037765570238.robh@kernel.org>
+Subject: Re: [PATCH v3 1/2] dt-bindings: arm: rockchip: add support for
+ Radxa ROCK Pi E v3.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240806_045836_559439_93E7C7BE 
-X-CRM114-Status: GOOD (  15.08  )
+X-CRM114-CacheID: sfid-20240806_064346_147567_DA21B3DC 
+X-CRM114-Status: GOOD (  11.81  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,41 +69,61 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gOC80LzI0IDAyOjU3LCBUaW0gU3VyYmVyIHdyb3RlOgo+IEhpIFNocmVleWEsCj4gCj4gSSB0
-ZXN0ZWQgeW91ciBwYXRjaCBhbmQgbm90aWNlZCBwcm9ibGVtcyB3aGVuIHVzaW5nIDM4NDB4MjE2
-MCByZXNvbHV0aW9uCj4gYXQgwqA2MGZwcy4KPiAKPiBGb3IgbXkgdGVzdGluZyBJIGNvbm5lY3Rl
-ZCBhbiBIRE1JIHNvdXJjZSBhbmQgc2V0IGl0IHRvIDRrNjBmcHMuIEkKPiB2ZXJpZmllZCB0aGF0
-IHRoaXMgc291cmNlIGFuZCB0aGUgY2FibGVzIHdvcmsgb24gYSBzY3JlZW4gYXQgdGhpcwo+IHJl
-c29sdXRpb24uCj4gCj4gVXNpbmcKPiAndjRsMi1jdGwgLS12ZXJib3NlIC1kIC9kZXYvdmlkZW8x
-Cj4gLS1zZXQtZm10LXZpZGVvPXdpZHRoPTM4NDAsaGVpZ2h0PTIxNjAscGl4ZWxmb3JtYXQ9J05W
-MTInCj4gLS1zdHJlYW0tbW1hcD00IC0tc3RyZWFtLXNraXA9MyAtLXN0cmVhbS1jb3VudD0xMDAg
-LS1zdHJlYW0tcG9sbCcKPiBJIGdldCB0aGUgdmlkZW8gZm9ybWF0IG91dHB1dCwgYnV0IG5vdCB0
-aGUgcGVyaW9kaWMgb3V0cHV0IHdoaWNoIHNob3dzCj4gdGhlIGZwcy4KPiAKPiBVc2luZwo+ICdH
-U1RfREVCVUc9NCBnc3QtbGF1bmNoLTEuMCAtdiB2NGwyc3JjIGRldmljZT0vZGV2L3ZpZGVvMSAh
-Cj4gZnBzZGlzcGxheXNpbmsgdGV4dC1vdmVybGF5PWZhbHNlIHZpZGVvLXNpbms9ImZha2V2aWRl
-b3NpbmsiJwo+IEkgZ2V0IHRoZSBmb2xsb3dpbmcgZXJyb3IgbWVzc2FnZToKPiAKPiAoZ3N0LWxh
-dW5jaC0xLjA6MzIzMSk6IEdTdHJlYW1lci1DUklUSUNBTCAqKjogMDE6MzQ6MzkuMTM3Ogo+IGdz
-dF9tZW1vcnlfcmVzaXplOiBhc3NlcnRpb24gJ3NpemUgKyBtZW0tPm9mZnNldCArIG9mZnNldCA8
-PQo+IG1lbS0+bWF4c2l6ZScgZmFpbGVkCj4gMDowMDowMy40ODkzODI1MjkgwqAzMjMxIDB4ZmZm
-ZmEwMDAwYjkwIFdBUk4gwqB2NGwyYnVmZmVycG9vbAo+IGdzdHY0bDJidWZmZXJwb29sLmM6MjIw
-OTpnc3RfdjRsMl9idWZmZXJfcG9vbF9wcm9jZXNzOjx2NGwyc3JjMDpwb29sMDpzcmM+IERyb3Bw
-aW5nIHRydW5jYXRlZCBidWZmZXIsIHRoaXMgaXMgbGlrZWx5IGEgZHJpdmVyIGJ1Zy4KPiAwOjAw
-OjAzLjQ4OTQyMTkwNiDCoDMyMzEgMHhmZmZmYTAwMDBiOTAgV0FSTiDCoGJ1ZmZlcnBvb2wKPiBn
-c3RidWZmZXJwb29sLmM6MTI1MjpkZWZhdWx0X3Jlc2V0X2J1ZmZlcjo8djRsMnNyYzA6cG9vbDA6
-c3JjPiBCdWZmZXIKPiAweGZmZmY5ODAwOGU4MCB3aXRob3V0IHRoZSBtZW1vcnkgdGFnIGhhcyBt
-YXhzaXplICg4Mjk0NDAwKSB0aGF0IGlzCj4gc21hbGxlciB0aGFuIHRoZSBjb25maWd1cmVkIGJ1
-ZmZlciBwb29sIHNpemUgKDEyNDQxNjAwKS4gVGhlIGJ1ZmZlciB3aWxsCj4gYmUgbm90IGJlIHJl
-dXNlZC4gVGhpcyBpcyBtb3N0IGxpa2VseSBhIGJ1ZyBpbiB0aGlzIEdzdEJ1ZmZlclBvb2wgc3Vi
-Y2xhc3MKPiAKPiAKPiBFdmVyeXRoaW5nIHdvcmtzIHdpdGggNGszMGZwcyBvciAxMDgwcCA2MGZw
-cy4gVGhlIGhhcmR3YXJlIHNob3VsZAo+IHN1cHBvcnQgNGs2MGZwcy4KClBsZWFzZSBkbyBgZWNo
-byAzID4gL3N5cy9tb2R1bGUvc3lub3BzeXNfaGRtaXJ4L3BhcmFtZXRlcnMvZGVidWdgIGFuZApz
-aG93IHRoZSBrZXJuZWwgbG9nIG9mIGNhcHR1cmluZyA0a0A2MCB3aXRoIHY0bDItY3RsLgoKLS0g
-CkJlc3QgcmVnYXJkcywKRG1pdHJ5CgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlw
-QGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9s
-aXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+
+On Tue, 06 Aug 2024 08:29:31 +0900, FUKAUMI Naoki wrote:
+> Radxa ROCK Pi E v3.0 is a compact networking SBC[1] using the Rockchip
+> RK3328 chip.
+> 
+> [1] https://radxa.com/products/rockpi/pie
+> 
+> Signed-off-by: FUKAUMI Naoki <naoki@radxa.com>
+> Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+> ---
+> Changes in v3:
+> - collect A-b tag
+> Changes in v2:
+> - fix typo in commit message
+> - add missing --- in commit message
+> - add new section instead of new item in rockchip.yaml
+> ---
+>  Documentation/devicetree/bindings/arm/rockchip.yaml | 5 +++++
+>  1 file changed, 5 insertions(+)
+> 
+
+
+My bot found new DTB warnings on the .dts files added or changed in this
+series.
+
+Some warnings may be from an existing SoC .dtsi. Or perhaps the warnings
+are fixed by another series. Ultimately, it is up to the platform
+maintainer whether these warnings are acceptable or not. No need to reply
+unless the platform maintainer has comments.
+
+If you already ran DT checks and didn't see these error(s), then
+make sure dt-schema is up to date:
+
+  pip3 install dtschema --upgrade
+
+
+New warnings running 'make CHECK_DTBS=y rockchip/rk3328-rock-pi-e-v3.dtb rockchip/rk3328-rock-pi-e.dtb' for 20240805232932.2030-1-naoki@radxa.com:
+
+arch/arm64/boot/dts/rockchip/rk3328-rock-pi-e-v3.dtb: hdmi@ff3c0000: interrupts: [[0, 35, 4], [0, 71, 4]] is too long
+	from schema $id: http://devicetree.org/schemas/display/rockchip/rockchip,dw-hdmi.yaml#
+arch/arm64/boot/dts/rockchip/rk3328-rock-pi-e-v3.dtb: /phy@ff430000: failed to match any schema with compatible: ['rockchip,rk3328-hdmi-phy']
+arch/arm64/boot/dts/rockchip/rk3328-rock-pi-e-v3.dtb: /clock-controller@ff440000: failed to match any schema with compatible: ['rockchip,rk3328-cru', 'rockchip,cru', 'syscon']
+arch/arm64/boot/dts/rockchip/rk3328-rock-pi-e-v3.dtb: /clock-controller@ff440000: failed to match any schema with compatible: ['rockchip,rk3328-cru', 'rockchip,cru', 'syscon']
+
+
+
+
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
