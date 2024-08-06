@@ -4,69 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5D069C52D6F
-	for <linux-rockchip@archiver.kernel.org>; Tue,  6 Aug 2024 21:21:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 772B2C52D6F
+	for <linux-rockchip@archiver.kernel.org>; Tue,  6 Aug 2024 23:17:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=joWRkwWnVkZC2ZzExpqzT5bvZKJfZwSe/Pq3Jm38QbI=; b=HYF68ZySrw3cC7
-	7nYsPxNK2kJf01+VU56o0ueeXS/RqbWvmKNrXySfCVgAxaRcL53BBE5L/+9xsrtGvkNs6cfH2LI+v
-	+4E2hGPhSQpbPXCOL6nx2uOhQa/iaiczZ+lEbPXZzlUDw3P5XnFwljX+lJCpKP7fcHl6B3Og90oIK
-	JZmUA7ASHfd/3Fc66/psR9tXslgkPTUQFPoGL8W+gJYJNKwM/qLS784Ps4VX5TSALu+xVPqNPUN7u
-	UfZwSmRIsdL6Kylc9EecJmgtBiaEss6eX+xEQzhSiBL5g+PcGpaH93+7wppPFxVO3TcCK9bHd2RpP
-	Qe1cB6OEPwie1j+ftYvg==;
+	List-Owner; bh=RmPTnoYQinXsJn1SvNS0/07E+3yUzxB9/vT2DBBnP4A=; b=x0HlON8jjV8kNU
+	gfxroVx4uHqWJRlFVC0eDfGNBV4xiPzaQUNUl4cNtPQTOnr5GZ/M4aCX5+jAohv3xRBzapttnhKGL
+	Oz9JaSxoBWdGX5Uyp3FiMUzpB9bwHxjVG/joXJAtxGZt7iaRAxFyei2KG00DHDW7abd/y+jX8V0tq
+	lDt2t1XvuXBcqxFetlYv9y/+76C5Zu/hQl233XtRv1dtdgwQhvkXpevACfRkBnwg+H3lkZUizECb7
+	81ObfQMqPsTiQM7TCx+ZR/wOVfNxCZSjkAOXfLvNanACQEz92V/BMc+/vhSI4wUzA6XUdW64tbdr8
+	0I6DYtTWC6K20GMOMwiw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sbRc9-00000002wNK-3Epw;
-	Tue, 06 Aug 2024 21:21:05 +0000
-Received: from sender4-op-o12.zoho.com ([136.143.188.12])
+	id 1sbTQY-00000003Hvx-409A;
+	Tue, 06 Aug 2024 23:17:14 +0000
+Received: from mail-lj1-x229.google.com ([2a00:1450:4864:20::229])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sbRc5-00000002wMd-3U66;
-	Tue, 06 Aug 2024 21:21:03 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1722979252; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=BMf2ZRFvtqi/sR13Gc59m+dMM+UrIaQjfzvHt/w/TtAtrfbrDjwxqIZdy43GRVczq3kSoc4u3i7kVIFcEGMvqDs3ykaK4njgc8RgXWxRRJ3QMHSnPjSbpHFOvu9UMXh8HFCg+p/B5n9gtX+qJUtdFTAAiZc2OW5ohWPOLu+G7Qg=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1722979252; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=ohjTRCVxkhKXSgrx3m+MPEhGY7a9HSyHDy3Be9j0/h4=; 
-	b=as4PYSvJHpawzeoKIOiKghAb3Q10+Hueo6mC49qrGYx9oCiWrUGCmp5QWkAvSbS7CsNdVvnDQFAkPTeuSf43fv3Ls2OVwuxNUGG+o5BEABohi9rihiYPEnq4zpnX73Uc3ZhQ7cKBWxlzLmuPPMvqzvytx5J0PfvfMwBlLyyfkJc=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=detlev.casanova@collabora.com;
-	dmarc=pass header.from=<detlev.casanova@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1722979252;
-	s=zohomail; d=collabora.com; i=detlev.casanova@collabora.com;
-	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
-	bh=ohjTRCVxkhKXSgrx3m+MPEhGY7a9HSyHDy3Be9j0/h4=;
-	b=ZYH/46hvnZV51VVqorVH3LiC7WuZwmTxVLc/nGongNTjLICSXR084ljtqdkNA+bq
-	JV1L4kc+ynO8+JgRqvok3f9lbrk32ZFQ4+EsZudEfgGCpDuGTmgVfY9f/9emGgLv4DN
-	coIyZRUQ0FrEFP7wTKsdYulpLLLTxQe/EO7Y8SCM=
-Received: by mx.zohomail.com with SMTPS id 17229792513511020.8164380601129;
-	Tue, 6 Aug 2024 14:20:51 -0700 (PDT)
-From: Detlev Casanova <detlev.casanova@collabora.com>
-To: linux-kernel@vger.kernel.org, Krzysztof Kozlowski <krzk@kernel.org>
-Cc: Michael Turquette <mturquette@baylibre.com>,
- Stephen Boyd <sboyd@kernel.org>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
- Heiko Stuebner <heiko@sntech.de>, Philipp Zabel <p.zabel@pengutronix.de>,
- Elaine Zhang <zhangqing@rock-chips.com>, linux-clk@vger.kernel.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, kernel@collabora.com
-Subject: Re: [PATCH v2 1/3] dt-bindings: clock: add rk3576 cru bindings
-Date: Tue, 06 Aug 2024 17:22:03 -0400
-Message-ID: <1975336.PYKUYFuaPT@trenzalore>
-In-Reply-To: <87503c5b-95dc-463b-8363-3e1fab03f8f2@kernel.org>
-References: <20240802214053.433493-1-detlev.casanova@collabora.com>
- <20240802214053.433493-2-detlev.casanova@collabora.com>
- <87503c5b-95dc-463b-8363-3e1fab03f8f2@kernel.org>
+	id 1sbTJk-00000003Fk9-3wWR;
+	Tue, 06 Aug 2024 23:10:16 +0000
+Received: by mail-lj1-x229.google.com with SMTP id 38308e7fff4ca-2f035ae1083so12972061fa.3;
+        Tue, 06 Aug 2024 16:10:11 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1722985810; x=1723590610; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=3BKACjifm4zlJzrEKsrZ7Wm5mri4Uy3NlfpdbimrVeQ=;
+        b=ZXHWAvDO6LYcbsjNJ4qGFl64D1q5hcfB5S1M3GnMnV2NoFXfmrNtE/KY2IX14Owsu/
+         i4ensObWTQRZSmlU7gMyswHhaVjdbkb/YJsaNn6Vy+CrB7/IPsutRB6yDtc2tM0eot57
+         fnrHYPvfH7p18vMN2oW0WKxeud2rTe8i/HCWVMmy04qcO34r8oik/8ZTuV/Db6cvFE8F
+         BTMj3bkjmlnLHcnLMDAFm5AzYvj43FBuDRUHMofjdTzAgSE+pE2vJ9UPqywU0H/V/SZQ
+         IAAhK0wGkOYqEzqdipNWpv85taWSUQ7aZAGZX2jjo9xJ3xiCHoC7bCHlqojVBzJada2V
+         esIw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1722985810; x=1723590610;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=3BKACjifm4zlJzrEKsrZ7Wm5mri4Uy3NlfpdbimrVeQ=;
+        b=RQvWllq8uAmIi3MoL59nGuMeU03ETDgbqxAJ91gwI/c1QfuTTRHcd0Kqg+jqdc7kPr
+         vIGb2kefT5J/jClNZsDia7h9YSUMfYRFi1dFtPTBSQ1rT3dIDHuyjur9fMZeR1stSmnC
+         af6LNBcWFepfduU1+Vd1xfjUgSayOLNsTOBcR4CwHqBAkxeUziRc92ZEqDeKEWwfdZOb
+         kd7eQy0PYis61uSs/SU4Mx9KxRqJ5jBHkHX54fJDPmS3JTAlnrcigQ9lHdsCljkDyOPo
+         mpPh+GKyF1Jshna91IqqJo7sG1AYwlsIMxBPHsPenLQi4SwtfQHwBdQWTQorULwNpbYx
+         0dVA==
+X-Forwarded-Encrypted: i=1; AJvYcCUPIM6irulU2wmrLrFgYr6CgXJDewHu64ZCFmjhttq6/lAc96HD/guD/OtKhMz0ySwoLt540zQuG1JPzisWsd3DeZPNHZO2NY/wjsk3ru8AWmYX3tPjs2Dgs8N1NQwkZQkrN/k/7+qxYeYt0SfOrZ96xy3iD+7yN8Q=
+X-Gm-Message-State: AOJu0YyG1USCD0tP4lWn89Dp6ekA9ATQxG/lbisTYS9lcmcPUTwNgdDE
+	cmeGEmRcU3HoN86OjDEiRPLIlGlQyX2bx7hnux+Jz3+MNnLfdrSd
+X-Google-Smtp-Source: AGHT+IH1IDUX/E2a9IMuptV/iccaNx9WmZvl3qI21Sp6hM167FBjhC6RR0DjKYp4VWYMwsWmwhqZrg==
+X-Received: by 2002:a2e:320e:0:b0:2ef:206c:37c4 with SMTP id 38308e7fff4ca-2f15ab0bf8fmr114974771fa.33.1722985809610;
+        Tue, 06 Aug 2024 16:10:09 -0700 (PDT)
+Received: from [10.42.0.74] ([176.59.40.49])
+        by smtp.gmail.com with ESMTPSA id 38308e7fff4ca-2f16a656b1fsm14289261fa.92.2024.08.06.16.10.06
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 06 Aug 2024 16:10:08 -0700 (PDT)
+Message-ID: <2e38c2bd-2cb2-4104-97ad-0355069606c0@gmail.com>
+Date: Wed, 7 Aug 2024 02:10:06 +0300
 MIME-Version: 1.0
-X-ZohoMailClient: External
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v8 4/5] wifi: brcmfmac: Add optional lpo clock enable
+ support
+To: Jacobe Zang <jacobe.zang@wesion.com>, robh@kernel.org,
+ krzk+dt@kernel.org, heiko@sntech.de, kvalo@kernel.org, davem@davemloft.net,
+ edumazet@google.com, kuba@kernel.org, pabeni@redhat.com,
+ conor+dt@kernel.org, arend.vanspriel@broadcom.com
+Cc: efectn@protonmail.com, dsimic@manjaro.org, jagan@edgeble.ai,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+ arend@broadcom.com, linux-wireless@vger.kernel.org, netdev@vger.kernel.org,
+ megi@xff.cz, duoming@zju.edu.cn, bhelgaas@google.com,
+ minipli@grsecurity.net, brcm80211@lists.linux.dev,
+ brcm80211-dev-list.pdl@broadcom.com, nick@khadas.com
+References: <20240805073425.3492078-1-jacobe.zang@wesion.com>
+ <20240805073425.3492078-5-jacobe.zang@wesion.com>
+Content-Language: en-US
+From: Alexey Charkov <alchark@gmail.com>
+In-Reply-To: <20240805073425.3492078-5-jacobe.zang@wesion.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240806_142101_934541_CB8F8379 
-X-CRM114-Status: GOOD (  25.29  )
+X-CRM114-CacheID: sfid-20240806_161013_168933_7B3CB912 
+X-CRM114-Status: GOOD (  31.78  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,139 +98,310 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Krzysztof,
+Hi Jacobe,
 
-On Sunday, 4 August 2024 05:52:53 EDT Krzysztof Kozlowski wrote:
-> On 02/08/2024 23:35, Detlev Casanova wrote:
-> > Document the device tree bindings of the rockchip rk3576 SoC
-> > clock and reset unit.
-> > 
-> > Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
+On 05/08/2024 10:34 am, Jacobe Zang wrote:
+> WiFi modules often require 32kHz clock to function. Add support to
+> enable the clock to PCIe driver and move "brcm,bcm4329-fmac" check
+> to the top of brcmf_of_probe. Change function prototypes from void
+> to int and add appropriate errno's for return values that will be
+> send to bus when error occurred.
 > 
-> A nit, subject: drop second/last, redundant "bindings". The
-> "dt-bindings" prefix is already stating that these are bindings.
-> See also:
-> https://elixir.bootlin.com/linux/v6.7-rc8/source/Documentation/devicetree/bi
-> ndings/submitting-patches.rst#L18
-> > ---
-> > 
-> >  .../bindings/clock/rockchip,rk3576-cru.yaml   | 73 +++++++++++++++++++
-> >  1 file changed, 73 insertions(+)
-> >  create mode 100644
-> >  Documentation/devicetree/bindings/clock/rockchip,rk3576-cru.yaml> 
-> > diff --git
-> > a/Documentation/devicetree/bindings/clock/rockchip,rk3576-cru.yaml
-> > b/Documentation/devicetree/bindings/clock/rockchip,rk3576-cru.yaml new
-> > file mode 100644
-> > index 0000000000000..929eb6183bf18
-> > --- /dev/null
-> > +++ b/Documentation/devicetree/bindings/clock/rockchip,rk3576-cru.yaml
-> > @@ -0,0 +1,73 @@
-> > +# SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
-> > +%YAML 1.2
-> > +---
-> > +$id: http://devicetree.org/schemas/clock/rockchip,rk3576-cru.yaml#
-> > +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> > +
-> > +title: Rockchip rk3576 Family Clock and Reset Control Module
-> > +
-> > +maintainers:
-> > +  - Elaine Zhang <zhangqing@rock-chips.com>
-> > +  - Heiko Stuebner <heiko@sntech.de>
-> > +
-> > +description: |
-> > +  The RK3576 clock controller generates the clock and also implements a
-> > reset +  controller for SoC peripherals. For example it provides
-> > SCLK_UART2 and +  PCLK_UART2, as well as SRST_P_UART2 and SRST_S_UART2
-> > for the second UART +  module.
-> > +  Each clock is assigned an identifier and client nodes can use this
-> > identifier +  to specify the clock which they consume. All available
-> > clock and reset IDs +  are defined as preprocessor macros in dt-binding
-> > headers.
+> Co-developed-by: Ondrej Jirman <megi@xff.cz>
+> Signed-off-by: Ondrej Jirman <megi@xff.cz>
+> Co-developed-by: Arend van Spriel <arend.vanspriel@broadcom.com>
+> Signed-off-by: Arend van Spriel <arend.vanspriel@broadcom.com>
+> Signed-off-by: Jacobe Zang <jacobe.zang@wesion.com>
+> ---
+>   .../broadcom/brcm80211/brcmfmac/bcmsdh.c      |  4 +++
+>   .../broadcom/brcm80211/brcmfmac/common.c      |  6 +++-
+>   .../wireless/broadcom/brcm80211/brcmfmac/of.c | 28 +++++++++++++------
+>   .../wireless/broadcom/brcm80211/brcmfmac/of.h |  9 +++---
+>   .../broadcom/brcm80211/brcmfmac/pcie.c        |  3 ++
+>   .../broadcom/brcm80211/brcmfmac/sdio.c        | 18 ++++++++----
+>   .../broadcom/brcm80211/brcmfmac/usb.c         |  3 ++
+>   7 files changed, 52 insertions(+), 19 deletions(-)
 > 
-> Drop paragraph, it is obvious. You could provide here the name of the
-> header...
-> 
-> > +
-> > +properties:
-> > +  compatible:
-> > +    enum:
-> > +      - rockchip,rk3576-cru
-> > +
-> > +  reg:
-> > +    maxItems: 1
-> > +
-> > +  "#clock-cells":
-> > +    const: 1
-> > +
-> > +  "#reset-cells":
-> > +    const: 1
-> > +
-> > +  clocks:
-> > +    minItems: 2
-> 
-> You can drop minitems
-> 
-> > +    maxItems: 2
-> > +
-> > +  clock-names:
-> > +    items:
-> > +      - const: xin24m
-> > +      - const: xin32k
-> > +
-> > +  assigned-clocks: true
-> > +
-> > +  assigned-clock-rates: true
-> > +
-> > +  assigned-clock-parents: true
-> 
-> Drop  all these three
+> diff --git a/drivers/net/wireless/broadcom/brcm80211/brcmfmac/bcmsdh.c b/drivers/net/wireless/broadcom/brcm80211/brcmfmac/bcmsdh.c
+> index 13391c2d82aae..ee3ca85c4a47b 100644
+> --- a/drivers/net/wireless/broadcom/brcm80211/brcmfmac/bcmsdh.c
+> +++ b/drivers/net/wireless/broadcom/brcm80211/brcmfmac/bcmsdh.c
+> @@ -951,6 +951,10 @@ int brcmf_sdiod_probe(struct brcmf_sdio_dev *sdiodev)
+>   		ret = -ENODEV;
+>   		goto out;
+>   	}
+> +	if (IS_ERR(sdiodev->bus)) {
+> +		ret = PTR_ERR(sdiodev->bus);
+> +		goto out;
+> +	}
 
-Why dro pthese if I need them in the device tree ? Should I remove them from 
-there as well ? It seems to be working without it.
+Maybe return -ENODEV error pointer instead of NULL from brcmf_sdio_probe 
+as the default for the fail path? Then you can condense these two checks 
+into one
 
-> > +
-> > +  rockchip,grf:
-> > +    $ref: /schemas/types.yaml#/definitions/phandle
-> > +    description: >
-> > +      phandle to the syscon managing the "general register files". It is
-> > used +      for GRF muxes, if missing any muxes present in the GRF will
-> > not be +      available.
-> > +
-> > +required:
-> > +  - compatible
-> > +  - reg
-> > +  - "#clock-cells"
-> > +  - "#reset-cells"
-> > +
-> > +additionalProperties: false
-> > +
-> > +examples:
-> > +  - |
-> > +    cru: clock-controller@27200000 {
-> 
-> Drop unused label
-> 
-> > +      compatible = "rockchip,rk3576-cru";
-> > +      reg = <0xfd7c0000 0x5c000>;
-> > +      #clock-cells = <1>;
-> > +      #reset-cells = <1>;
-> 
-> Make the example complete.
-> 
-> > +    };
-> 
+>   	brcmf_sdiod_host_fixup(sdiodev->func2->card->host);
+>   out:
+>   	if (ret)
+> diff --git a/drivers/net/wireless/broadcom/brcm80211/brcmfmac/common.c b/drivers/net/wireless/broadcom/brcm80211/brcmfmac/common.c
+> index b24faae35873d..6c5d26f9b7661 100644
+> --- a/drivers/net/wireless/broadcom/brcm80211/brcmfmac/common.c
+> +++ b/drivers/net/wireless/broadcom/brcm80211/brcmfmac/common.c
+> @@ -561,8 +561,12 @@ struct brcmf_mp_device *brcmf_get_module_param(struct device *dev,
+>   	if (!found) {
+>   		/* No platform data for this device, try OF and DMI data */
+>   		brcmf_dmi_probe(settings, chip, chiprev);
+> -		brcmf_of_probe(dev, bus_type, settings);
+>   		brcmf_acpi_probe(dev, bus_type, settings);
+> +		i = brcmf_of_probe(dev, bus_type, settings);
+> +		if (i < 0) {
+> +			kfree(settings);
+> +			settings = ERR_PTR(i);
+> +		}
 
-Detlev.
+This looks wrong. First, you're calling brcmf_of_probe twice. Second, if 
+either DMI or ACPI probe successfully but OF doesn't, then you return an 
+error code instead of success, and also overwrite settings with an error 
+pointer thus rendering both brcmf_dmi_probe and brcmf_acpi_probe useless
 
+>   	}
+>   	return settings;
+>   }
+> diff --git a/drivers/net/wireless/broadcom/brcm80211/brcmfmac/of.c b/drivers/net/wireless/broadcom/brcm80211/brcmfmac/of.c
+> index e406e11481a62..5f61363fb5d0e 100644
+> --- a/drivers/net/wireless/broadcom/brcm80211/brcmfmac/of.c
+> +++ b/drivers/net/wireless/broadcom/brcm80211/brcmfmac/of.c
+> @@ -6,6 +6,7 @@
+>   #include <linux/of.h>
+>   #include <linux/of_irq.h>
+>   #include <linux/of_net.h>
+> +#include <linux/clk.h>
+>   
+>   #include <defs.h>
+>   #include "debug.h"
+> @@ -65,17 +66,21 @@ static int brcmf_of_get_country_codes(struct device *dev,
+>   	return 0;
+>   }
+>   
+> -void brcmf_of_probe(struct device *dev, enum brcmf_bus_type bus_type,
+> -		    struct brcmf_mp_device *settings)
+> +int brcmf_of_probe(struct device *dev, enum brcmf_bus_type bus_type,
+> +		   struct brcmf_mp_device *settings)
+>   {
+>   	struct brcmfmac_sdio_pd *sdio = &settings->bus.sdio;
+>   	struct device_node *root, *np = dev->of_node;
+> +	struct clk *clk;
+>   	const char *prop;
+>   	int irq;
+>   	int err;
+>   	u32 irqf;
+>   	u32 val;
+>   
+> +	if (!np || !of_device_is_compatible(np, "brcm,bcm4329-fmac"))
+> +		return 0;
+> +
 
+return 0 implies this function has completed successfully, while in this 
+case it's obviously returned early due to not finding the correct device 
+in DT. -ENODEV perhaps?
 
+>   	/* Apple ARM64 platforms have their own idea of board type, passed in
+>   	 * via the device tree. They also have an antenna SKU parameter
+>   	 */
+> @@ -105,7 +110,7 @@ void brcmf_of_probe(struct device *dev, enum brcmf_bus_type bus_type,
+>   		board_type = devm_kstrdup(dev, tmp, GFP_KERNEL);
+>   		if (!board_type) {
+>   			of_node_put(root);
+> -			return;
+> +			return 0;
 
+-ENOMEM?
+
+>   		}
+>   		strreplace(board_type, '/', '-');
+>   		settings->board_type = board_type;
+> @@ -113,8 +118,13 @@ void brcmf_of_probe(struct device *dev, enum brcmf_bus_type bus_type,
+>   		of_node_put(root);
+>   	}
+>   
+> -	if (!np || !of_device_is_compatible(np, "brcm,bcm4329-fmac"))
+> -		return;
+> +	clk = devm_clk_get_optional_enabled(dev, "lpo");
+> +	if (!IS_ERR_OR_NULL(clk)) {
+> +		brcmf_dbg(INFO, "enabling 32kHz clock\n");
+> +		clk_set_rate(clk, 32768);
+> +	} else if (PTR_ERR_OR_ZERO(clk) == -EPROBE_DEFER) {
+
+PTR_ERR should be enough, no? Or better yet move this to the bottom of 
+the function as was discussed on your previous submission, then you can 
+return PTR_ERR_OR_ZERO(clk) right away, which would be a bit neater.
+
+> +		return -EPROBE_DEFER;
+> +	}
+>   
+>   	err = brcmf_of_get_country_codes(dev, settings);
+>   	if (err)
+> @@ -123,23 +133,25 @@ void brcmf_of_probe(struct device *dev, enum brcmf_bus_type bus_type,
+>   	of_get_mac_address(np, settings->mac);
+>   
+>   	if (bus_type != BRCMF_BUSTYPE_SDIO)
+> -		return;
+> +		return 0;
+>   
+>   	if (of_property_read_u32(np, "brcm,drive-strength", &val) == 0)
+>   		sdio->drive_strength = val;
+>   
+>   	/* make sure there are interrupts defined in the node */
+>   	if (!of_property_present(np, "interrupts"))
+> -		return;
+> +		return 0;
+
+-ENOENT?
+
+>   
+>   	irq = irq_of_parse_and_map(np, 0);
+>   	if (!irq) {
+>   		brcmf_err("interrupt could not be mapped\n");
+> -		return;
+> +		return 0;
+
+-ENXIO?
+
+>   	}
+>   	irqf = irqd_get_trigger_type(irq_get_irq_data(irq));
+>   
+>   	sdio->oob_irq_supported = true;
+>   	sdio->oob_irq_nr = irq;
+>   	sdio->oob_irq_flags = irqf;
+> +
+> +	return 0;
+>   }
+> diff --git a/drivers/net/wireless/broadcom/brcm80211/brcmfmac/of.h b/drivers/net/wireless/broadcom/brcm80211/brcmfmac/of.h
+> index 10bf52253337e..ae124c73fc3b7 100644
+> --- a/drivers/net/wireless/broadcom/brcm80211/brcmfmac/of.h
+> +++ b/drivers/net/wireless/broadcom/brcm80211/brcmfmac/of.h
+> @@ -3,11 +3,12 @@
+>    * Copyright (c) 2014 Broadcom Corporation
+>    */
+>   #ifdef CONFIG_OF
+> -void brcmf_of_probe(struct device *dev, enum brcmf_bus_type bus_type,
+> -		    struct brcmf_mp_device *settings);
+> +int brcmf_of_probe(struct device *dev, enum brcmf_bus_type bus_type,
+> +		   struct brcmf_mp_device *settings);
+>   #else
+> -static void brcmf_of_probe(struct device *dev, enum brcmf_bus_type bus_type,
+> -			   struct brcmf_mp_device *settings)
+> +static int brcmf_of_probe(struct device *dev, enum brcmf_bus_type bus_type,
+> +			  struct brcmf_mp_device *settings)
+>   {
+> +	return 0;
+>   }
+>   #endif /* CONFIG_OF */
+> diff --git a/drivers/net/wireless/broadcom/brcm80211/brcmfmac/pcie.c b/drivers/net/wireless/broadcom/brcm80211/brcmfmac/pcie.c
+> index 06698a714b523..c34405a6d38b8 100644
+> --- a/drivers/net/wireless/broadcom/brcm80211/brcmfmac/pcie.c
+> +++ b/drivers/net/wireless/broadcom/brcm80211/brcmfmac/pcie.c
+> @@ -2457,6 +2457,9 @@ brcmf_pcie_probe(struct pci_dev *pdev, const struct pci_device_id *id)
+>   		ret = -ENOMEM;
+>   		goto fail;
+>   	}
+> +	ret = PTR_ERR_OR_ZERO(devinfo->settings);
+> +	if (ret < 0)
+> +		goto fail;
+>   
+>   	bus = kzalloc(sizeof(*bus), GFP_KERNEL);
+>   	if (!bus) {
+> diff --git a/drivers/net/wireless/broadcom/brcm80211/brcmfmac/sdio.c b/drivers/net/wireless/broadcom/brcm80211/brcmfmac/sdio.c
+> index 6b38d9de71af6..7d79e2db201b5 100644
+> --- a/drivers/net/wireless/broadcom/brcm80211/brcmfmac/sdio.c
+> +++ b/drivers/net/wireless/broadcom/brcm80211/brcmfmac/sdio.c
+> @@ -3943,7 +3943,7 @@ static const struct brcmf_buscore_ops brcmf_sdio_buscore_ops = {
+>   	.write32 = brcmf_sdio_buscore_write32,
+>   };
+>   
+> -static bool
+> +static int
+>   brcmf_sdio_probe_attach(struct brcmf_sdio *bus)
+>   {
+>   	struct brcmf_sdio_dev *sdiodev;
+> @@ -3953,6 +3953,7 @@ brcmf_sdio_probe_attach(struct brcmf_sdio *bus)
+>   	u32 reg_val;
+>   	u32 drivestrength;
+>   	u32 enum_base;
+> +	int ret = -EBADE;
+>   
+>   	sdiodev = bus->sdiodev;
+>   	sdio_claim_host(sdiodev->func1);
+> @@ -4001,8 +4002,9 @@ brcmf_sdio_probe_attach(struct brcmf_sdio *bus)
+>   						   BRCMF_BUSTYPE_SDIO,
+>   						   bus->ci->chip,
+>   						   bus->ci->chiprev);
+> -	if (!sdiodev->settings) {
+> +	if (IS_ERR_OR_NULL(sdiodev->settings)) {
+>   		brcmf_err("Failed to get device parameters\n");
+> +		ret = PTR_ERR_OR_ZERO(sdiodev->settings);
+>   		goto fail;
+>   	}
+>   	/* platform specific configuration:
+> @@ -4071,7 +4073,7 @@ brcmf_sdio_probe_attach(struct brcmf_sdio *bus)
+>   	/* allocate header buffer */
+>   	bus->hdrbuf = kzalloc(MAX_HDR_READ + bus->head_align, GFP_KERNEL);
+>   	if (!bus->hdrbuf)
+> -		return false;
+> +		return -ENOMEM;
+>   	/* Locate an appropriately-aligned portion of hdrbuf */
+>   	bus->rxhdr = (u8 *) roundup((unsigned long)&bus->hdrbuf[0],
+>   				    bus->head_align);
+> @@ -4082,11 +4084,11 @@ brcmf_sdio_probe_attach(struct brcmf_sdio *bus)
+>   	if (bus->poll)
+>   		bus->pollrate = 1;
+>   
+> -	return true;
+> +	return 0;
+>   
+>   fail:
+>   	sdio_release_host(sdiodev->func1);
+> -	return false;
+> +	return ret;
+>   }
+>   
+>   static int
+> @@ -4446,6 +4448,7 @@ struct brcmf_sdio *brcmf_sdio_probe(struct brcmf_sdio_dev *sdiodev)
+>   	struct brcmf_sdio *bus;
+>   	struct workqueue_struct *wq;
+>   	struct brcmf_fw_request *fwreq;
+> +	int probe_attach_result;
+>   
+>   	brcmf_dbg(TRACE, "Enter\n");
+>   
+> @@ -4474,7 +4477,8 @@ struct brcmf_sdio *brcmf_sdio_probe(struct brcmf_sdio_dev *sdiodev)
+>   	bus->brcmf_wq = wq;
+>   
+>   	/* attempt to attach to the dongle */
+> -	if (!(brcmf_sdio_probe_attach(bus))) {
+> +	probe_attach_result = brcmf_sdio_probe_attach(bus);
+> +	if (probe_attach_result < 0) {
+>   		brcmf_err("brcmf_sdio_probe_attach failed\n");
+>   		goto fail;
+>   	}
+> @@ -4546,6 +4550,8 @@ struct brcmf_sdio *brcmf_sdio_probe(struct brcmf_sdio_dev *sdiodev)
+>   
+>   fail:
+>   	brcmf_sdio_remove(bus);
+> +	if (probe_attach_result < 0)
+> +		return ERR_PTR(probe_attach_result);
+>   	return NULL;
+
+See my comment on the bcmsdh.c part above - perhaps initialize 
+probe_attach_result to -ENODEV by default and just return 
+ERR_PTR(probe_attach_result) here instead
+
+Best regards,
+Alexey
 
 _______________________________________________
 Linux-rockchip mailing list
