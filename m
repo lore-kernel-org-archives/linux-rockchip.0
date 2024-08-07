@@ -4,84 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6A7DCC52D73
-	for <linux-rockchip@archiver.kernel.org>; Wed,  7 Aug 2024 16:49:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3E06DC52D73
+	for <linux-rockchip@archiver.kernel.org>; Wed,  7 Aug 2024 17:02:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ZJo9vK9RQ30++GAvREdjDX5y7tTKUJT/47EVouci9A8=; b=aYaOKJnjCaCf+B
-	wa8ZJlU4BbMKGpblnZ8bKEVNtABqQm8vh1+n7lWWylaKq33gVE5lrEw4Ut1yz20If7ubRAVZdLw9w
-	0a1RiDjX3UBHe5ohZSYKJZS/+RMajKNKHNZ1skQfCBdJQ9eOry4CdG9POEw3dw1Vpj9sqcEqP7uVu
-	82sy9lPlVz4gcA36ZyDk4vECDJ3cDVf5ZLG5nCoi+yyQRb+BbK4niIs0BaDyfAxHa9tOgftpQgiXS
-	jW5z1Ij/oZawrq+ZFt3q5TXoCmjQ0adrQlzXqIUPpIDZijQfS3SFst2DHO2rT02eKOI2gJ/RBwXoi
-	Nm/7apGjM3mLQeaEUKdQ==;
+	List-Owner; bh=EcmcnRW767bbQ+2Nbmr/+QIkDKVrmwmhhQgRjJGmMRE=; b=l4h6QQzU+Goo78
+	TK/+dQaV703QWMgT8052ycJGf/uG4nKLeyIvg5oAogUBporoN1kLcvGhFnxZfnZ4c8A2QmPH2ZTOB
+	2xSrs4oVQ5f/rC7pNYurjxc1DF77pPFmXlohQAcfxaC7MbHYavfnCiIMN7z6q/hpY6nTtG8w9k887
+	8Cq3okjyHoJDszkbywaFs4ZwZLYZAA3WXTcSGdzyPupP/xrT8Ev0/TpNcPGUwsDw1e9o+lnSotWAK
+	rSV0eX+SMbDgDbyCieVE85U6RiEsdPJA0yW9X0A2vMUvZVlkDoeVILpb3Vqp1khsDzXeVgO4X1MRl
+	tgEt879KIjZOO14caWRg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sbjrB-00000005k01-31fM;
-	Wed, 07 Aug 2024 16:49:49 +0000
-Received: from mail-qk1-x72f.google.com ([2607:f8b0:4864:20::72f])
+	id 1sbk2v-00000005lsQ-0s9r;
+	Wed, 07 Aug 2024 17:01:57 +0000
+Received: from mail-pl1-x62c.google.com ([2607:f8b0:4864:20::62c])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sbjpu-00000005jdF-2PHx;
-	Wed, 07 Aug 2024 16:48:32 +0000
-Received: by mail-qk1-x72f.google.com with SMTP id af79cd13be357-7a1d3959ad5so6241085a.0;
-        Wed, 07 Aug 2024 09:48:29 -0700 (PDT)
+	id 1sbk1Q-00000005lQc-0JgI
+	for linux-rockchip@lists.infradead.org;
+	Wed, 07 Aug 2024 17:00:26 +0000
+Received: by mail-pl1-x62c.google.com with SMTP id d9443c01a7336-1fc49c0aaffso1239895ad.3
+        for <linux-rockchip@lists.infradead.org>; Wed, 07 Aug 2024 10:00:23 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1723049309; x=1723654109; darn=lists.infradead.org;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=ppEzbuljpxEqS9CSU1lR4GhsTWn9NP9h9n5p+ezkHKg=;
-        b=bQ3mrZUSjIQAXI9Wff1DYhDXxtGPAbV+klxN5W+hTl9s6pnKsGMJBz7ayhcX8bogWr
-         izy7z1Cxu2x7BYcSL6laqS/rv3Hav4y8tzTUqc+hBdbokQSFu5lPllrGHp++mOfYxeRF
-         sk1lutchU5U/RXmC3jlWfWc6Osl+4BLRKynZOc9Vn4clWBc15NeRHtXLYNQf1KmuIT42
-         MLaRUDKCs+kzB+cT/oXsltqVtqBoENn7kdJRfnJ7Pt1fXuTParNWw9gKLJbx74i0IBnW
-         D3FrUo4DyqdUpfPmgIQSeXwGiKFIAOd7529581Rco5eYxsUzlsqWxM17ijq6eTfmc4BH
-         UJRw==
+        d=linaro.org; s=google; t=1723050023; x=1723654823; darn=lists.infradead.org;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=WWwBbhcDkvNaxUygLQVH/xx2sd0hR+vnAl1kEVRw/lA=;
+        b=YPAlmLENmbncWWFJRp2ufySwRe2SzyFKjjWih3Ut5SEgiZmyQs54ampGHita+RfZEU
+         QsJiFz9Lh7q59Q+RcTeXFwowobnONxLvpknmn6/3sJHV5pRwpD1bkXIRQ8RMb/mI7Sn1
+         TXz2VJCGOLZ4SgHAjcVONe0sjkiCaZXFNpH3ew7qdwCbX1HyURR4ptL1uRL2s0Hc7ArN
+         6TagU6pDwExsTE/J08NbNfB4Yxb52iTOTlKI8Tlr5ydeON+vxcP0Bjl7bX9Srndzz2mE
+         6PshSTt/kbg0t+vd07b4BYSYj0vwcBLJEDPxXJcdoXle/QFWGss7XzlXNoxVp2jWfqMV
+         uoWw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1723049309; x=1723654109;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=ppEzbuljpxEqS9CSU1lR4GhsTWn9NP9h9n5p+ezkHKg=;
-        b=ViDbDH518R1IjIqQQmcE48AzAf9vHbytCbgTd3FgFKmFI43lXV52cKDFGfgRM4NHsi
-         JzIPkbkzcu1UdnaKbMXYAG1uHLkuLXKcqu1Q/ibbu19Oqlz5uhnoYuT5iP8d4D12Kma4
-         WWfEfgGC2kmu7gn9pX0kftrNocgj5CrONXD+pLbOe2IoU/t8Y4648sygxw2602zQXYVG
-         JFj0Vm1CXkyyiLH7LlwoBabP6LLZhsgI2XNapUr1lp+xauF/VYQUAHnadBG3Qs/dM0oT
-         NWM1ZwLUvM5RTXORXYfC+eDXtKkciE8iG5zPephUCzTBBSwethvj1dgyzY7JusjrVZvr
-         QsoQ==
-X-Forwarded-Encrypted: i=1; AJvYcCUlkAtHiPE977tNu3WUc2eDXA4YoqHwYVu7CdjsZnZpS0Z/fwdFvZIbK87IH0M1V8uEeHj1yV2UmPeO2WQ4U+ppaOs9Mp7IJMp0K32Yp8Rrs3hjuY9Nb0lK/bVQW+flJKB6mylcYDOOZFf5e3iya3KTQuBpAz39spA=
-X-Gm-Message-State: AOJu0YyZQtOq6clOKv3bcTkz2NcLwsoPoQwNh4Z/25MnKc8qaybUQfI1
-	noZ+UPQHSq0Jun901cpVwUG59QuJYXZa8NZcQA73Gaj/pLMRJKYW2qUKNfN2bb6oLBKbUrb+9DD
-	KbpmhWXwWUqpBRBWdsQ/ffrTowLk=
-X-Google-Smtp-Source: AGHT+IGrz1woRCdFcf3AU1cz6WnokARNZ8npr64xqniUVjK159lEQjZ0EsGdSQw2I8QF6WpZIMde7xJ4DnI207ISe+Y=
-X-Received: by 2002:a05:620a:2484:b0:7a1:dc64:59db with SMTP id
- af79cd13be357-7a377ba35c1mr531954785a.8.1723049308726; Wed, 07 Aug 2024
- 09:48:28 -0700 (PDT)
+        d=1e100.net; s=20230601; t=1723050023; x=1723654823;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=WWwBbhcDkvNaxUygLQVH/xx2sd0hR+vnAl1kEVRw/lA=;
+        b=iqOGyGRwVfFWucI0KfhS7TVpYZ+eTrCRFnAVNiPZjcl2IAcV4GE2aSoO1rkZFavEGF
+         pmyWN8OCstOWUB5a/tr+yNLvmk2K5TFFjGOaDFjHVF0igQmQGt+kN9+TnHJCjBtBc03k
+         L2J7aHd8ySUj8oyUQkPFBg18Tcb3T89+Wdyn8tUThs+oER1jZHn7QTrogg0TZb1qKbNV
+         XL+1HQqHjsWbmlp2zcTHKXeBgASiISACvUhHfumJnkjaeCnZpikiM83CnP9hBC0zlqrE
+         KUTmpkMNiRCBiYcpyzf6wwG8AWDynO08BKRbYsnLcEkCRr5JEbDfyWJxizNok8feGgcD
+         Q7fQ==
+X-Forwarded-Encrypted: i=1; AJvYcCWvVUiNtEhUE7AuRjMoNsVNMImfvQvR+nADSAfrdu4Fk5JEBB7XM5x9bBtC00kSp29Vkakz79BQDwJnIdznE6n11IMKsDKQtYpuCVLtk1ImFwG5
+X-Gm-Message-State: AOJu0Yw4zBqffNLfX+KZDtz1rBWQOyUY0YUF44L9LC+BVyIjIkV4hKDC
+	LqyehgXIfyixsvT0pggWNtUj/EAsn+3dRnWblHY6PJ7wG0/bYiViTe4++NXu3g==
+X-Google-Smtp-Source: AGHT+IGQ8DPd+Wqtq+Spl5EDiAuVhLzByGSc7Am4v9rp+zU/4CqC8Aerp7AGU/R+/C2yss5AVMTF5w==
+X-Received: by 2002:a17:903:1108:b0:1fd:9044:13d8 with SMTP id d9443c01a7336-1ff57257f52mr197895405ad.9.1723050022643;
+        Wed, 07 Aug 2024 10:00:22 -0700 (PDT)
+Received: from thinkpad ([120.60.60.211])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-1ff592ad9e4sm108304425ad.283.2024.08.07.10.00.18
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 07 Aug 2024 10:00:21 -0700 (PDT)
+Date: Wed, 7 Aug 2024 22:30:11 +0530
+From: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
+To: Bjorn Helgaas <helgaas@kernel.org>
+Cc: Anand Moon <linux.amoon@gmail.com>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
+	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
+	Heiko Stuebner <heiko@sntech.de>, linux-pci@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH linu-next v1] PCI: dw-rockchip: Enable async probe by
+ default
+Message-ID: <20240807170011.GC5664@thinkpad>
+References: <20240625155759.132878-1-linux.amoon@gmail.com>
+ <20240807163106.GA101420@bhelgaas>
 MIME-Version: 1.0
-References: <20240805073425.3492078-1-jacobe.zang@wesion.com>
- <20240805073425.3492078-5-jacobe.zang@wesion.com> <2e38c2bd-2cb2-4104-97ad-0355069606c0@gmail.com>
- <b6551bf0-2ee9-4b79-af68-0677e3f0f915@broadcom.com>
-In-Reply-To: <b6551bf0-2ee9-4b79-af68-0677e3f0f915@broadcom.com>
-From: Alexey Charkov <alchark@gmail.com>
-Date: Wed, 7 Aug 2024 19:48:17 +0300
-Message-ID: <CABjd4YzEzDW6KhTJ1ZBU1PptHotgDqg8i03Z7VAfdzAgQo8BDw@mail.gmail.com>
-Subject: Re: [PATCH v8 4/5] wifi: brcmfmac: Add optional lpo clock enable support
-To: Arend van Spriel <arend.vanspriel@broadcom.com>, Jacobe Zang <jacobe.zang@wesion.com>, 
-	robh@kernel.org, krzk+dt@kernel.org, heiko@sntech.de, kvalo@kernel.org, 
-	davem@davemloft.net, edumazet@google.com, kuba@kernel.org, pabeni@redhat.com, 
-	conor+dt@kernel.org
-Cc: efectn@protonmail.com, dsimic@manjaro.org, jagan@edgeble.ai, 
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	arend@broadcom.com, linux-wireless@vger.kernel.org, netdev@vger.kernel.org, 
-	megi@xff.cz, duoming@zju.edu.cn, bhelgaas@google.com, minipli@grsecurity.net, 
-	brcm80211@lists.linux.dev, brcm80211-dev-list.pdl@broadcom.com, 
-	nick@khadas.com
+Content-Disposition: inline
+In-Reply-To: <20240807163106.GA101420@bhelgaas>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240807_094830_655869_327F9882 
-X-CRM114-Status: GOOD (  28.44  )
+X-CRM114-CacheID: sfid-20240807_100024_173167_036AA5FE 
+X-CRM114-Status: GOOD (  27.68  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,171 +95,48 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 07/08/2024 2:17 pm, Arend van Spriel wrote:
-> On 8/7/2024 1:10 AM, Alexey Charkov wrote:
->> Hi Jacobe,
->>
->> On 05/08/2024 10:34 am, Jacobe Zang wrote:
->>> WiFi modules often require 32kHz clock to function. Add support to
->>> enable the clock to PCIe driver and move "brcm,bcm4329-fmac" check
->>> to the top of brcmf_of_probe. Change function prototypes from void
->>> to int and add appropriate errno's for return values that will be
->>> send to bus when error occurred.
->>>
->>> Co-developed-by: Ondrej Jirman <megi@xff.cz>
->>> Signed-off-by: Ondrej Jirman <megi@xff.cz>
->>> Co-developed-by: Arend van Spriel <arend.vanspriel@broadcom.com>
->>> Signed-off-by: Arend van Spriel <arend.vanspriel@broadcom.com>
->>> Signed-off-by: Jacobe Zang <jacobe.zang@wesion.com>
->>> ---
->>>   .../broadcom/brcm80211/brcmfmac/bcmsdh.c      |  4 +++
->>>   .../broadcom/brcm80211/brcmfmac/common.c      |  6 +++-
->>>   .../wireless/broadcom/brcm80211/brcmfmac/of.c | 28 +++++++++++++------
->>>   .../wireless/broadcom/brcm80211/brcmfmac/of.h |  9 +++---
->>>   .../broadcom/brcm80211/brcmfmac/pcie.c        |  3 ++
->>>   .../broadcom/brcm80211/brcmfmac/sdio.c        | 18 ++++++++----
->>>   .../broadcom/brcm80211/brcmfmac/usb.c         |  3 ++
->>>   7 files changed, 52 insertions(+), 19 deletions(-)
->>>
->>> diff --git a/drivers/net/wireless/broadcom/brcm80211/brcmfmac/
->>> bcmsdh.c b/drivers/net/wireless/broadcom/brcm80211/brcmfmac/bcmsdh.c
->>> index 13391c2d82aae..ee3ca85c4a47b 100644
->>> --- a/drivers/net/wireless/broadcom/brcm80211/brcmfmac/bcmsdh.c
->>> +++ b/drivers/net/wireless/broadcom/brcm80211/brcmfmac/bcmsdh.c
->>> @@ -951,6 +951,10 @@ int brcmf_sdiod_probe(struct brcmf_sdio_dev
->>> *sdiodev)
->>>           ret = -ENODEV;
->>>           goto out;
->>>       }
->>> +    if (IS_ERR(sdiodev->bus)) {
->>> +        ret = PTR_ERR(sdiodev->bus);
->>> +        goto out;
->>> +    }
->>
->> Maybe return -ENODEV error pointer instead of NULL from
->> brcmf_sdio_probe as the default for the fail path? Then you can
->> condense these two checks into one
->
-> Sound reasonable.
->
->>>       brcmf_sdiod_host_fixup(sdiodev->func2->card->host);
->>>   out:
->>>       if (ret)
->>> diff --git a/drivers/net/wireless/broadcom/brcm80211/brcmfmac/
->>> common.c b/drivers/net/wireless/broadcom/brcm80211/brcmfmac/common.c
->>> index b24faae35873d..6c5d26f9b7661 100644
->>> --- a/drivers/net/wireless/broadcom/brcm80211/brcmfmac/common.c
->>> +++ b/drivers/net/wireless/broadcom/brcm80211/brcmfmac/common.c
->>> @@ -561,8 +561,12 @@ struct brcmf_mp_device
->>> *brcmf_get_module_param(struct device *dev,
->>>       if (!found) {
->>>           /* No platform data for this device, try OF and DMI data */
->>>           brcmf_dmi_probe(settings, chip, chiprev);
->>> -        brcmf_of_probe(dev, bus_type, settings);
->>>           brcmf_acpi_probe(dev, bus_type, settings);
->>> +        i = brcmf_of_probe(dev, bus_type, settings);
->>> +        if (i < 0) {
->>> +            kfree(settings);
->>> +            settings = ERR_PTR(i);
->>> +        }
->>
->> This looks wrong. First, you're calling brcmf_of_probe twice. Second,
->> if either DMI or ACPI probe successfully but OF doesn't, then you
->> return an error code instead of success, and also overwrite settings
->> with an error pointer thus rendering both brcmf_dmi_probe and
->> brcmf_acpi_probe useless
->
-> Twice? it is removed and added few lines below.
-
-Indeed, time to change glasses :) Didn't see the minus sign
-
-> It does change the order
-> so that may not be best thing to do here. We actually only want to
-> handle the scenario where the clock resources are not yet available, ie.
-> when -EPROBE_DEFER is returned because that error value is taken into
-> account by the bus driver and tries to bind the driver again later.
-
-Maybe we then do something like the following, which would retain the
-old behavior but pass -EPROBE_DEFER on to the bus:
-
-diff --git a/drivers/net/wireless/broadcom/brcm80211/brcmfmac/common.c
-b/drivers/net/wireless/broadcom/brcm80211/brcmfmac/common.c
-index b24faae35873d..6c5d26f9b7661 100644
---- a/drivers/net/wireless/broadcom/brcm80211/brcmfmac/common.c
-+++ b/drivers/net/wireless/broadcom/brcm80211/brcmfmac/common.c
-@@ -561,8 +561,12 @@ struct brcmf_mp_device
-*brcmf_get_module_param(struct device *dev,
-        if (!found) {
-                /* No platform data for this device, try OF and DMI data */
-                brcmf_dmi_probe(settings, chip, chiprev);
--               brcmf_of_probe(dev, bus_type, settings);
-+               if (brcmf_of_probe(dev, bus_type, settings) == -EPROBE_DEFER)
-+                       return ERR_PTR(-EPROBE_DEFER);
-                brcmf_acpi_probe(dev, bus_type, settings);
-        }
-        return settings;
- }
-
->>>       }
->>>       return settings;
->>>   }
->>> diff --git a/drivers/net/wireless/broadcom/brcm80211/brcmfmac/of.c b/
->>> drivers/net/wireless/broadcom/brcm80211/brcmfmac/of.c
->>> index e406e11481a62..5f61363fb5d0e 100644
->>> --- a/drivers/net/wireless/broadcom/brcm80211/brcmfmac/of.c
->>> +++ b/drivers/net/wireless/broadcom/brcm80211/brcmfmac/of.c
->>> @@ -6,6 +6,7 @@
->>>   #include <linux/of.h>
->>>   #include <linux/of_irq.h>
->>>   #include <linux/of_net.h>
->>> +#include <linux/clk.h>
->>>   #include <defs.h>
->>>   #include "debug.h"
->>> @@ -65,17 +66,21 @@ static int brcmf_of_get_country_codes(struct
->>> device *dev,
->>>       return 0;
->>>   }
->>> -void brcmf_of_probe(struct device *dev, enum brcmf_bus_type bus_type,
->>> -            struct brcmf_mp_device *settings)
->>> +int brcmf_of_probe(struct device *dev, enum brcmf_bus_type bus_type,
->>> +           struct brcmf_mp_device *settings)
->>>   {
->>>       struct brcmfmac_sdio_pd *sdio = &settings->bus.sdio;
->>>       struct device_node *root, *np = dev->of_node;
->>> +    struct clk *clk;
->>>       const char *prop;
->>>       int irq;
->>>       int err;
->>>       u32 irqf;
->>>       u32 val;
->>> +    if (!np || !of_device_is_compatible(np, "brcm,bcm4329-fmac"))
->>> +        return 0;
->>> +
->>
->> return 0 implies this function has completed successfully, while in
->> this case it's obviously returned early due to not finding the correct
->> device in DT. -ENODEV perhaps?
->
-> This was a void function so returning 0 retains the behavior as before,
-> which is important to keep in mind here.
->
-> This function will be called if the platform has CONFIG_OF enabled.
-> However, that does not mean that on every platform there is a node
-> defined for the struct device being probed. That is fine if it does not
-> require any DT properties to be functional. Hence we bail out here
-> without an error.
-
-Fair enough, thanks for the explanation!
-
-Best regards,
-Alexey
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gV2VkLCBBdWcgMDcsIDIwMjQgYXQgMTE6MzE6MDZBTSAtMDUwMCwgQmpvcm4gSGVsZ2FhcyB3
+cm90ZToKPiBPbiBUdWUsIEp1biAyNSwgMjAyNCBhdCAwOToyNzo1N1BNICswNTMwLCBBbmFuZCBN
+b29uIHdyb3RlOgo+ID4gUm9ja2NoaXAgUENJZSBkcml2ZXIgbGV0cyB3YWl0cyBmb3IgdGhlIGNv
+bWJvIFBIWSBsaW5rIGxpa2UgUENJZSAzLjAsCj4gPiBQQ0llIDIuMCBhbmQgU0FUQSAzLjAgY29u
+dHJvbGxlciB0byBiZSB1cCBkdXJpbmcgdGhlIHByb2JlIHRoaXMKPiA+IGNvbnN1bWVzIHNldmVy
+YWwgbWlsbGlzZWNvbmRzIGR1cmluZyBib290Lgo+IAo+IFRoaXMgbmVlZHMgc29tZSB3b3Jkc21p
+dGhpbmcuICAiZHJpdmVyIGxldHMgd2FpdHMiIC4uLiBJIGd1ZXNzICJsZXRzIgo+IGlzIG5vdCBz
+dXBwb3NlZCB0byBiZSB0aGVyZT8gIEknbSBub3Qgc3VyZSB3aGF0IHRoZSByZWxldmFuY2Ugb2Yg
+IlBDSWUKPiAzLjAsIFBDSWUgMi4wLCBTQVRBIDMuMCIgaXMuICBJIGFzc3VtZSB0aGUgaG9zdCBj
+b250cm9sbGVyIGRyaXZlcgo+IGRvZXNuJ3Qga25vdyB3aGF0IGRvd25zdHJlYW0gZGV2aWNlcyBt
+aWdodCBiZSBwcmVzZW50LCBhbmQgdGhlIGFzeW5jCj4gcHJvYmluZyBpcyBkZXNpcmFibGUgbm8g
+bWF0dGVyIHdoYXQgdGhleSBtaWdodCBiZT8KPiAKClNpbmNlIHRoZSBEV0MgZHJpdmVyIGlzIGVu
+YWJsaW5nIGxpbmsgdHJhaW5pbmcgZHVyaW5nIGJvb3QsIGl0IGFsc28gd2FpdHMgZm9yCnRoZSBs
+aW5rIHRvIGJlICd1cCcuIEJ1dCBpZiB0aGUgZGV2aWNlIGlzICd1cCcsIHRoZW4gdGhlIHdhaXQg
+dGltZSB3b3VsZCBiZQp1c3VhbGx5IG5lZ2xpZ2libGUgKGZldyBtcykuIEJ1dCBpZiB0aGVyZSBp
+cyBubyBkZXZpY2UsIHRoZW4gdGhlIHdhaXQgdGltZSBvZiAxcwp3b3VsZCBiZSBldmlkZW50LgoK
+QnV0IGhlcmUgdGhlIHBhdGNoIGlzIHRyeWluZyB0byBhdm9pZCB0aGUgZmV3IG1zIGRlbGF5IGl0
+c2VsZiAod2hpY2ggaXMgZmluZSkuClRoZSB0eXBlIG9mIGVuZHBvaW50IG1pZ2h0IGhhdmUgc29t
+ZSBpbXBhY3Qgb24gdGhlIGxpbmsgdHJhaW5pbmcgYWxzby4gQnV0IGFzeW5jCnByb2JlIGlzIGFs
+d2F5cyBwcmVmZXJyZWQuCgotIE1hbmkKCj4gPiBFc3RhYmxpc2hpbmcgYSBQQ0llIGxpbmsgY2Fu
+IHRha2UgYSB3aGlsZTsgYWxsb3cgYXN5bmNocm9ub3VzIHByb2Jpbmcgc28KPiA+IHRoYXQgbGlu
+ayBlc3RhYmxpc2htZW50IGNhbiBoYXBwZW4gaW4gdGhlIGJhY2tncm91bmQgd2hpbGUgb3RoZXIg
+ZGV2aWNlcwo+ID4gYXJlIGJlaW5nIHByb2JlZC4KPiA+IAo+ID4gU2lnbmVkLW9mZi1ieTogQW5h
+bmQgTW9vbiA8bGludXguYW1vb25AZ21haWwuY29tPgo+ID4gLS0tCj4gPiAgZHJpdmVycy9wY2kv
+Y29udHJvbGxlci9kd2MvcGNpZS1kdy1yb2NrY2hpcC5jIHwgMSArCj4gPiAgMSBmaWxlIGNoYW5n
+ZWQsIDEgaW5zZXJ0aW9uKCspCj4gPiAKPiA+IGRpZmYgLS1naXQgYS9kcml2ZXJzL3BjaS9jb250
+cm9sbGVyL2R3Yy9wY2llLWR3LXJvY2tjaGlwLmMgYi9kcml2ZXJzL3BjaS9jb250cm9sbGVyL2R3
+Yy9wY2llLWR3LXJvY2tjaGlwLmMKPiA+IGluZGV4IDYxYjFhY2JhNzE4Mi4uNzRhM2U5ZDE3MmEw
+IDEwMDY0NAo+ID4gLS0tIGEvZHJpdmVycy9wY2kvY29udHJvbGxlci9kd2MvcGNpZS1kdy1yb2Nr
+Y2hpcC5jCj4gPiArKysgYi9kcml2ZXJzL3BjaS9jb250cm9sbGVyL2R3Yy9wY2llLWR3LXJvY2tj
+aGlwLmMKPiA+IEBAIC0zNjcsNiArMzY3LDcgQEAgc3RhdGljIHN0cnVjdCBwbGF0Zm9ybV9kcml2
+ZXIgcm9ja2NoaXBfcGNpZV9kcml2ZXIgPSB7Cj4gPiAgCQkubmFtZQk9ICJyb2NrY2hpcC1kdy1w
+Y2llIiwKPiA+ICAJCS5vZl9tYXRjaF90YWJsZSA9IHJvY2tjaGlwX3BjaWVfb2ZfbWF0Y2gsCj4g
+PiAgCQkuc3VwcHJlc3NfYmluZF9hdHRycyA9IHRydWUsCj4gPiArCQkucHJvYmVfdHlwZSA9IFBS
+T0JFX1BSRUZFUl9BU1lOQ0hST05PVVMsCj4gPiAgCX0sCj4gPiAgCS5wcm9iZSA9IHJvY2tjaGlw
+X3BjaWVfcHJvYmUsCj4gPiAgfTsKPiA+IC0tIAo+ID4gMi40NC4wCj4gPiAKPiAKCi0tIArgrq7g
+rqPgrr/grrXgrqPgr43grqPgrqngr40g4K6a4K6k4K6+4K6a4K6/4K614K6u4K+NCgpfX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBt
+YWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlz
+dHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
