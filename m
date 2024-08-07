@@ -4,62 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8794EC3DA7F
-	for <linux-rockchip@archiver.kernel.org>; Wed,  7 Aug 2024 05:51:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1BC10C52D6F
+	for <linux-rockchip@archiver.kernel.org>; Wed,  7 Aug 2024 06:59:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ShDEwna0M4h9ykVVQKGjY2XrQHEJ8T3IcnXD9lhy79w=; b=Gcxu35cZ40sCRk
-	MO90pJ3yvLD2uFMR4amtkSIJfQtTACvnG4pMSTMo1L+e3BQ7gYu67AmLy8peed85+CIrC7JsP/i9M
-	sDWoDLaCBuF268los2pckRmFVqHvd/YTnDbnQBXhjMG2v8c0KsYwfrFgU8ONhE64whxECChowcB9c
-	tlufMm2v7ZBfVr7u+Za03mr8hGXvGwxCq7IAg2sjbR9Q08M9HoMN/xrHPyTOV7NzdN4LhoxKlKcc6
-	sZuxoK0pJFmysA2jJzzi7GopSLHKdO8wrADVqAQpME9c42qDji+/FWNKpiTYrutYbrRnf+23bpWVO
-	fT3UHRI2SalUPILIsdzg==;
+	List-Owner; bh=h1R2w96eZxC1gkzU+GEQhMXRpZ8zxn0xv1uJxg+NhXo=; b=wFu0uVVdqvTUJ2
+	PBYiwsqYEfEW79/HcwdFfIReiiJdKArjo6Ooju8dFN1r5oFCNpZExlRfdMedBPwsc8huauY4oTR0H
+	pkvFPuWBbWVACcNoJRkx+Y2hcP9SM0QiOHUlJXOkWCZGAIac8lAOQBhKlrrUWk/AoRHJ9OUwVHAc1
+	yA+BGwQtpFC8wUCy+kFrCfgp3EmSKt93KrqdqdhPsUX0414bdG0GQJEUc/3PDCSE+d5JHbN24+STC
+	OB6eC34ZLW+gutmt6ccGCwXiXjhnj5HtsjD3DhITEbMFVO0dxg3a+exUoi+1GXCDCxM/Z7/SOrRPH
+	1ZaNkb6Fpam9CMGnzhgg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sbZaL-00000003vWd-3zhK;
-	Wed, 07 Aug 2024 05:51:46 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1sbadb-000000048fm-1meG;
+	Wed, 07 Aug 2024 06:59:11 +0000
+Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sbZZ7-00000003v6f-15tW;
-	Wed, 07 Aug 2024 05:50:30 +0000
+	id 1sbabD-000000047tz-0JHB;
+	Wed, 07 Aug 2024 06:56:44 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 936FE61164;
-	Wed,  7 Aug 2024 05:50:28 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 758B3C32782;
-	Wed,  7 Aug 2024 05:50:24 +0000 (UTC)
+	by sin.source.kernel.org (Postfix) with ESMTP id 50A05CE0F7B;
+	Wed,  7 Aug 2024 06:56:41 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D1B82C32782;
+	Wed,  7 Aug 2024 06:56:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1723009828;
-	bh=lmP+ZdXHsac+0RiSFGbAJ99rlOluNKgbG+I2rcL9z34=;
+	s=k20201202; t=1723013800;
+	bh=/po+MddZ8FuEEl3M+jBbRCwteNi78BYA5nu6cGjx2VY=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=WZXq+WWh7iDH6qDzRIpWG2icW6XSliR2uGkAKn0fSSBcEKr8+xz3Ypzxke18JHTfO
-	 /uY+ncEeuN90ZsNUfl1OMt/2XJBzQh4b6fPEeax2rMDUvOmSr+os0C2Bnyk5pLxp/C
-	 I+VPmHa1Zq/qSST+NX35BpocDFz+MFfEwahnBHySiHd8e3j9Sca0+vslLhLi0UG8BX
-	 sPVYUZpv+o+GzMGqYsNt8CLzmvRRkbtYOyABK2NsaLIu1NL/xJ4Q1stKkwdoHqtGr+
-	 DowDmEAExyJwfGK2/xVWpj0jTkZCbO1zrkHBHYnaJCB3nOWMtAhn9ckImH7cFoo1is
-	 ZZxJUmp89oO6A==
-Message-ID: <fedcf52c-1eb4-4b3e-a945-3a05330c41ef@kernel.org>
-Date: Wed, 7 Aug 2024 07:50:22 +0200
+	b=RxJUMTbC1ubEa2ORv1BFPR9CH5Uks5e8Bqy4iR6ws+Rpc46GWeFbivuhK9ohC+Q3s
+	 xe2Wc5ABWJ2CMaoJC/Wpae34/VquBHXMNQ+dbaHYqZeKLn3wKM0aITozFDpdhmLPoq
+	 uF9RzbuMPuQNRQLf0/kbqIOTR7SwEdJDE/0o0ANUDb0S/qqzoDF+RWgyFNohmEPdlI
+	 W1VNrmmv5xTJYeA7A3Fcd9pGrfyMjmLdEb5jhgrQlQsaRvq2UMstOI9rC0qlltcJJ/
+	 9uenXmKFRJmQ9vBCeGYPaC+fb+EXJcY49W55hlhEwvmM4J7xrtSIYdiH0jnWkAe3b0
+	 NNM5MPyvNi0CQ==
+Message-ID: <c177faaf-b66b-4f3d-a7d5-dc07b5332331@kernel.org>
+Date: Wed, 7 Aug 2024 08:56:31 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 1/3] dt-bindings: clock: add rk3576 cru bindings
+Subject: Re: [PATCH 2/2] dt-bindings: net: Add rk3576 dwmac bindings
 To: Detlev Casanova <detlev.casanova@collabora.com>,
  linux-kernel@vger.kernel.org
-Cc: Michael Turquette <mturquette@baylibre.com>,
- Stephen Boyd <sboyd@kernel.org>, Rob Herring <robh@kernel.org>,
+Cc: Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>, Rob Herring <robh@kernel.org>,
  Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
  <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- Philipp Zabel <p.zabel@pengutronix.de>,
- Elaine Zhang <zhangqing@rock-chips.com>, linux-clk@vger.kernel.org,
+ Alexandre Torgue <alexandre.torgue@foss.st.com>,
+ Jose Abreu <joabreu@synopsys.com>,
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+ David Wu <david.wu@rock-chips.com>, netdev@vger.kernel.org,
  devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, kernel@collabora.com
-References: <20240802214053.433493-1-detlev.casanova@collabora.com>
- <20240802214053.433493-2-detlev.casanova@collabora.com>
- <87503c5b-95dc-463b-8363-3e1fab03f8f2@kernel.org>
- <1975336.PYKUYFuaPT@trenzalore>
+ linux-rockchip@lists.infradead.org,
+ linux-stm32@st-md-mailman.stormreply.com,
+ "David S . Miller" <davem@davemloft.net>
+References: <20240802173918.301668-1-detlev.casanova@collabora.com>
+ <20240802173918.301668-3-detlev.casanova@collabora.com>
 From: Krzysztof Kozlowski <krzk@kernel.org>
 Content-Language: en-US
 Autocrypt: addr=krzk@kernel.org; keydata=
@@ -105,10 +107,10 @@ Autocrypt: addr=krzk@kernel.org; keydata=
  uZwJCLykjad45hsWcOGk3OcaAGQS6NDlfhM6O9aYNwGL6tGt/6BkRikNOs7VDEa4/HlbaSJo
  7FgndGw1kWmkeL6oQh7wBvYll2buKod4qYntmNKEicoHGU+x91Gcan8mCoqhJkbqrL7+nXG2
  5Q/GS5M9RFWS+nYyJh+c3OcfKqVcZQNANItt7+ULzdNJuhvTRRdC3g9hmCEuNSr+CLMdnRBY fv0=
-In-Reply-To: <1975336.PYKUYFuaPT@trenzalore>
+In-Reply-To: <20240802173918.301668-3-detlev.casanova@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240806_225029_470694_25766DA1 
-X-CRM114-Status: UNSURE (   8.63  )
+X-CRM114-CacheID: sfid-20240806_235643_528974_65526709 
+X-CRM114-Status: UNSURE (   8.20  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -126,27 +128,17 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 06/08/2024 23:22, Detlev Casanova wrote:
->>> +    maxItems: 2
->>> +
->>> +  clock-names:
->>> +    items:
->>> +      - const: xin24m
->>> +      - const: xin32k
->>> +
->>> +  assigned-clocks: true
->>> +
->>> +  assigned-clock-rates: true
->>> +
->>> +  assigned-clock-parents: true
->>
->> Drop  all these three
+On 02/08/2024 19:38, Detlev Casanova wrote:
+> Add a rockchip,rk3576-gmac compatible for supporting the 2 gmac
+> devices on the rk3576.
 > 
-> Why dro pthese if I need them in the device tree ? Should I remove them from 
-> there as well ? It seems to be working without it.
+> Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
+> ---
+>  Documentation/devicetree/bindings/net/rockchip-dwmac.yaml | 2 ++
+>  1 file changed, 2 insertions(+)
 
-Because they are already accepted via dependency of clocks. This is just
-redundant. Please trim your replies to relevant content.
+As Johan Jonker pointed out, this is incomplete. Just git grep for
+rockchip compatibles...
 
 Best regards,
 Krzysztof
