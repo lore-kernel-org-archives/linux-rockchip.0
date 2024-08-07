@@ -4,56 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47E61C3DA7F
-	for <linux-rockchip@archiver.kernel.org>; Wed,  7 Aug 2024 14:51:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A5D73C3DA7F
+	for <linux-rockchip@archiver.kernel.org>; Wed,  7 Aug 2024 15:20:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
-	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=n8Acb9+8m/tInFbeW4KOKkTHeeCONA+/b/EFqPzUrZs=; b=B/up5sh0NdsM4ddSOCB2NtIPsj
-	H/h4akj9mcNq1aYZ7lUgkjt3oBMOc5D0NNmwUDPGyXrL7It7CjFKHC47yaYy4mCF/zNZe/B321ulP
-	lOoITRvF91CuelH+qfo16ETnNEDabCM0+7aaKrVZaC+ttgzM21eeW8U9OTxtRFLUzLb2SdgHvUVpy
-	lv+skv5qaEIx1MPNcEeaOb/dcSuEz9XqZ6xqlEeJbJj0OQsuVf5SYQfODTmrJPPSA1wkqyTmR9ySr
-	/9nJxz0MS4uFtjyRKEkI2p/Pcr6Y0FhZZcJyG3msePBDNPC9kCldyQbu0zvCbKuxZ08ldN+BTFT1T
-	mb5ak8AQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:References:
+	In-Reply-To:Cc:To:From:MIME-Version:Date:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=TjmwzYMH3m3yTgggKADGs48DWhbgoAtsXdVCS0U3xHg=; b=PxciO0Ci5veKz1iykluKaOlQFx
+	YR7nbnWDH+ENac/on7bY30CjVHWIkfJwE+cU4Cj1cEaxY+dDe9nWIIa3jz9pNZ58s1I1yqeqXXICo
+	dj+yVoNzdEqjpOykbHppmf6Ft54Ggt6RW4KjKkN3Zgf0RRjnxqFo0YSV4ZOE1FN61Mpti/Jaryy35
+	YtwW8haAMiPT9iPLYL64D3DVoVJdaQLdf3oi5GRLUG8kxSUF40bqCuaC4kq9muCKtKcbwPsiQzYnv
+	IXCg8bJ9JNVPK9E0WA3tPLnEKQFobnKIf2PwibHrJuvIKCZmFCIjwd5tjPO5JJ4xJofKssqBm2qEU
+	CqSpYM3g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sbi08-00000005OVK-3KFA;
-	Wed, 07 Aug 2024 14:50:56 +0000
-Received: from mail.manjaro.org ([2a01:4f8:c0c:51f3::1])
+	id 1sbiSm-00000005UC5-1JR3;
+	Wed, 07 Aug 2024 15:20:32 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sbhzs-00000005OTN-3H66
+	id 1sbiSj-00000005UBB-30bu
 	for linux-rockchip@lists.infradead.org;
-	Wed, 07 Aug 2024 14:50:42 +0000
+	Wed, 07 Aug 2024 15:20:31 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 20744611F4;
+	Wed,  7 Aug 2024 15:20:29 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6A253C4AF0D;
+	Wed,  7 Aug 2024 15:20:28 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1723044028;
+	bh=pLFN9w/+n0MeDntYCYv2CDhdPD3EXRaMmnfwSv6Y6OU=;
+	h=Date:From:To:Cc:In-Reply-To:References:Subject:From;
+	b=SAUZFW9f5JwCbC6RR3he+Vh6cmSX9AiKflylsHRDlh2D9OObaQtivdf4rATf/ULdl
+	 0eRYA/dnPZLtzMB4PMxjq7c9oZ4vi0xAhh3J1s8+1qlooD3uiMLyVlsFYqbKuupzdY
+	 B6rtGbolTpAoIrghCteogk8Aw7pwtRHb4vZM0n8s0gUUjohDme+hjSvoAoQENLIlUE
+	 vgKxIKg3WDFqH118tDGZGEzPm8h6YNA6GZj6uaBB9Ur8fFJU7iFb6wJ7AAybFtFJ43
+	 /whNNsnXeEK9gMaDXVC1qR/YZ5vn1jGHnbTj5mlmGu4iK4VcL1yehfG5AHsejFPiCT
+	 v07dz+7vhbFxw==
+Date: Wed, 07 Aug 2024 09:20:27 -0600
 MIME-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
-	t=1723042237;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=ELN6BEIp3hOavY7nVLCzGZJ7HFvIUZlv5YQ2bIVSMLE=;
-	b=fIpJnbqtW+sXBbIP/4eGe0T3kUwckSy/BueXEPQghV50kuZQRks5lEpoPnMRIdC1KNC5KA
-	VUuGTvSD4+3zNnCGsr3cKazN+1pg7koJQm5mqvRKDZfX6WveXIet2AFfRrNQalcufZsJec
-	oqIqqAtkB7ue3wFvrGtcdzuhv86PwE4CKP5SiDR8DpB3zNpXr8FGU3r+IPWu2tx5cTXxrB
-	Uf8ckf66Nj1Gp0d3UuwWTOnKuJ10UeIzbK2t8Ed/OXP+RBlhlWkLAdFqJ9A8eK5/Hmw3OR
-	fqaF0Ogql5inxC+w+2H6q7IPFOpC6TjTKv5cKs/wZE0E7jHlM70OwVRBgtZj0A==
-Date: Wed, 07 Aug 2024 16:50:37 +0200
-From: Dragan Simic <dsimic@manjaro.org>
+From: "Rob Herring (Arm)" <robh@kernel.org>
 To: FUKAUMI Naoki <naoki@radxa.com>
 Cc: linux-rockchip@lists.infradead.org
-Subject: Re: [RFC 1/2] dt-bindings: arm: rockchip: add Radxa E52C
 In-Reply-To: <20240807084642.742-1-naoki@radxa.com>
 References: <20240807084642.742-1-naoki@radxa.com>
-Message-ID: <b7f1f8c0cdc132b175d8cfba218b4441@manjaro.org>
-X-Sender: dsimic@manjaro.org
-Authentication-Results: ORIGINATING;
-	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
+Message-Id: <172304385887.2508235.982090729519727246.robh@kernel.org>
+Subject: Re: [RFC 1/2] dt-bindings: arm: rockchip: add Radxa E52C
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240807_075041_287900_483C35E0 
-X-CRM114-Status: GOOD (  11.48  )
+X-CRM114-CacheID: sfid-20240807_082029_827212_B3E23F07 
+X-CRM114-Status: GOOD (  11.53  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -65,14 +66,13 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello Fukaumi,
 
-On 2024-08-07 10:46, FUKAUMI Naoki wrote:
+On Wed, 07 Aug 2024 17:46:41 +0900, FUKAUMI Naoki wrote:
 > Add devicetree binding for the Radxa E52C.
 > 
 > Radxa E52C is a compact network computer using the Rockchip RK3582
@@ -82,34 +82,42 @@ On 2024-08-07 10:46, FUKAUMI Naoki wrote:
 > ---
 > how should we handle RK3582? as far as I know, it's just an another
 > version of RK3588S.
-
-Could you, please, provide links to downstream kernel code from
-Rockchip that shows the CPU and GPU OPPs for the RK3582?
-
-By the way, is the schematic of Radxa E52C available?
-
 > ---
 >  Documentation/devicetree/bindings/arm/rockchip.yaml | 6 ++++++
 >  1 file changed, 6 insertions(+)
 > 
-> diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml
-> b/Documentation/devicetree/bindings/arm/rockchip.yaml
-> index 2ad835f4068e..ba6d03b37bef 100644
-> --- a/Documentation/devicetree/bindings/arm/rockchip.yaml
-> +++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
-> @@ -759,6 +759,12 @@ properties:
->            - const: radxa,cm3i
->            - const: rockchip,rk3568
-> 
-> +      - description: Radxa E52C
-> +        items:
-> +          - enum:
-> +              - radxa,e52c
-> +          - const: rockchip,rk3588s
-> +
->        - description: Radxa Rock
->          items:
->            - const: radxa,rock
+
+
+My bot found new DTB warnings on the .dts files added or changed in this
+series.
+
+Some warnings may be from an existing SoC .dtsi. Or perhaps the warnings
+are fixed by another series. Ultimately, it is up to the platform
+maintainer whether these warnings are acceptable or not. No need to reply
+unless the platform maintainer has comments.
+
+If you already ran DT checks and didn't see these error(s), then
+make sure dt-schema is up to date:
+
+  pip3 install dtschema --upgrade
+
+
+New warnings running 'make CHECK_DTBS=y rockchip/rk3588s-radxa-e52c.dtb' for 20240807084642.742-1-naoki@radxa.com:
+
+arch/arm64/boot/dts/rockchip/rk3588s-radxa-e52c.dtb: leds: led-2:linux,default-trigger: 'oneOf' conditional failed, one must be fixed:
+	'r8169-4-4100:00:link' is not one of ['backlight', 'default-on', 'heartbeat', 'disk-activity', 'disk-read', 'disk-write', 'timer', 'pattern', 'audio-micmute', 'audio-mute', 'bluetooth-power', 'flash', 'kbd-capslock', 'mtd', 'nand-disk', 'none', 'torch', 'usb-gadget', 'usb-host', 'usbport']
+	'r8169-4-4100:00:link' does not match '^cpu[0-9]*$'
+	'r8169-4-4100:00:link' does not match '^hci[0-9]+-power$'
+	'r8169-4-4100:00:link' does not match '^mmc[0-9]+$'
+	'r8169-4-4100:00:link' does not match '^phy[0-9]+tx$'
+	from schema $id: http://devicetree.org/schemas/leds/leds-gpio.yaml#
+arch/arm64/boot/dts/rockchip/rk3588s-radxa-e52c.dtb: leds: led-2: Unevaluated properties are not allowed ('linux,default-trigger' was unexpected)
+	from schema $id: http://devicetree.org/schemas/leds/leds-gpio.yaml#
+
+
+
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
