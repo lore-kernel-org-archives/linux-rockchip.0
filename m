@@ -4,114 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1BC10C52D6F
-	for <linux-rockchip@archiver.kernel.org>; Wed,  7 Aug 2024 06:59:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CF8BEC3DA7F
+	for <linux-rockchip@archiver.kernel.org>; Wed,  7 Aug 2024 08:40:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=h1R2w96eZxC1gkzU+GEQhMXRpZ8zxn0xv1uJxg+NhXo=; b=wFu0uVVdqvTUJ2
-	PBYiwsqYEfEW79/HcwdFfIReiiJdKArjo6Ooju8dFN1r5oFCNpZExlRfdMedBPwsc8huauY4oTR0H
-	pkvFPuWBbWVACcNoJRkx+Y2hcP9SM0QiOHUlJXOkWCZGAIac8lAOQBhKlrrUWk/AoRHJ9OUwVHAc1
-	yA+BGwQtpFC8wUCy+kFrCfgp3EmSKt93KrqdqdhPsUX0414bdG0GQJEUc/3PDCSE+d5JHbN24+STC
-	OB6eC34ZLW+gutmt6ccGCwXiXjhnj5HtsjD3DhITEbMFVO0dxg3a+exUoi+1GXCDCxM/Z7/SOrRPH
-	1ZaNkb6Fpam9CMGnzhgg==;
+	List-Owner; bh=L0ng82ef9k7mttGiVLRAMj/5GeRj1kemRKZNWA7YQik=; b=X5HMSoeIBDcKTA
+	VK41juUEg0UAIX46Hi0O0l+aoVQ83/1J929VFDxEDRgwslFJavgIZEYlEEmiCZ4l58YdZJ6b2ekmJ
+	C+NO3a6/ECNtty6E0kwjWXldRPs6GI6JZt88EFt7dp3k/COyfGdIZbDA1VXuHA9R06SPjd2VxQj9M
+	/QceeZwg5MgT61+gah3QzCk7YLArkRlq7XuFvCFzoJxOykJxF55No8kpxu6IObWPTjG1Zia0ksDD2
+	KHS09cjan3lMi2hwhY0LRO7xErXWMFk2GwbblBqAqVMWmcbCQ9qaNGhGy3jHeFuO8HhVpZodqZhaP
+	RTTRA6OZ1bIGQCBH494g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sbadb-000000048fm-1meG;
-	Wed, 07 Aug 2024 06:59:11 +0000
-Received: from sin.source.kernel.org ([145.40.73.55])
+	id 1sbcDC-00000004PD4-2BIw;
+	Wed, 07 Aug 2024 08:40:02 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sbabD-000000047tz-0JHB;
-	Wed, 07 Aug 2024 06:56:44 +0000
+	id 1sbcD9-00000004PBh-07yY
+	for linux-rockchip@lists.infradead.org;
+	Wed, 07 Aug 2024 08:40:00 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 50A05CE0F7B;
-	Wed,  7 Aug 2024 06:56:41 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D1B82C32782;
-	Wed,  7 Aug 2024 06:56:33 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1723013800;
-	bh=/po+MddZ8FuEEl3M+jBbRCwteNi78BYA5nu6cGjx2VY=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=RxJUMTbC1ubEa2ORv1BFPR9CH5Uks5e8Bqy4iR6ws+Rpc46GWeFbivuhK9ohC+Q3s
-	 xe2Wc5ABWJ2CMaoJC/Wpae34/VquBHXMNQ+dbaHYqZeKLn3wKM0aITozFDpdhmLPoq
-	 uF9RzbuMPuQNRQLf0/kbqIOTR7SwEdJDE/0o0ANUDb0S/qqzoDF+RWgyFNohmEPdlI
-	 W1VNrmmv5xTJYeA7A3Fcd9pGrfyMjmLdEb5jhgrQlQsaRvq2UMstOI9rC0qlltcJJ/
-	 9uenXmKFRJmQ9vBCeGYPaC+fb+EXJcY49W55hlhEwvmM4J7xrtSIYdiH0jnWkAe3b0
-	 NNM5MPyvNi0CQ==
-Message-ID: <c177faaf-b66b-4f3d-a7d5-dc07b5332331@kernel.org>
-Date: Wed, 7 Aug 2024 08:56:31 +0200
+	by dfw.source.kernel.org (Postfix) with ESMTP id 28C1B60FC8;
+	Wed,  7 Aug 2024 08:39:58 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 997C3C32782;
+	Wed,  7 Aug 2024 08:39:56 +0000 (UTC)
+Message-ID: <c9e6ed97-bb42-465a-9bce-797adb44906f@xs4all.nl>
+Date: Wed, 7 Aug 2024 10:39:54 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 2/2] dt-bindings: net: Add rk3576 dwmac bindings
-To: Detlev Casanova <detlev.casanova@collabora.com>,
- linux-kernel@vger.kernel.org
-Cc: Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- Alexandre Torgue <alexandre.torgue@foss.st.com>,
- Jose Abreu <joabreu@synopsys.com>,
- Maxime Coquelin <mcoquelin.stm32@gmail.com>,
- David Wu <david.wu@rock-chips.com>, netdev@vger.kernel.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org,
- linux-stm32@st-md-mailman.stormreply.com,
- "David S . Miller" <davem@davemloft.net>
-References: <20240802173918.301668-1-detlev.casanova@collabora.com>
- <20240802173918.301668-3-detlev.casanova@collabora.com>
-From: Krzysztof Kozlowski <krzk@kernel.org>
-Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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 fv0=
-In-Reply-To: <20240802173918.301668-3-detlev.casanova@collabora.com>
+Subject: Re: [PATCH v6 1/3] media: videodev2: Add flag to unconditionally
+ enumerate pixel formats
+To: Benjamin Gaignard <benjamin.gaignard@collabora.com>, mchehab@kernel.org,
+ ezequiel@vanguardiasur.com.ar
+Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, kernel@collabora.com
+References: <20240731093457.29095-1-benjamin.gaignard@collabora.com>
+ <20240731093457.29095-2-benjamin.gaignard@collabora.com>
+Content-Language: en-US, nl
+From: Hans Verkuil <hverkuil-cisco@xs4all.nl>
+In-Reply-To: <20240731093457.29095-2-benjamin.gaignard@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240806_235643_528974_65526709 
-X-CRM114-Status: UNSURE (   8.20  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240807_013959_238408_AE96D5DF 
+X-CRM114-Status: GOOD (  23.36  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -128,21 +66,107 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 02/08/2024 19:38, Detlev Casanova wrote:
-> Add a rockchip,rk3576-gmac compatible for supporting the 2 gmac
-> devices on the rk3576.
+On 31/07/2024 11:34, Benjamin Gaignard wrote:
+> When the index is ORed with V4L2_FMTDESC_FLAG_ENUM_ALL the
+> driver clears the flag and enumerate all the possible formats,
+> ignoring any limitations from the current configuration.
+> Drivers which do not support this flag yet always return an EINVAL.
 > 
-> Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
+> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 > ---
->  Documentation/devicetree/bindings/net/rockchip-dwmac.yaml | 2 ++
->  1 file changed, 2 insertions(+)
+> change in version 6:
+> - Change flag name.
+> - Improve documentation.
+> 
+>  .../userspace-api/media/v4l/vidioc-enum-fmt.rst  | 16 +++++++++++++++-
+>  .../media/videodev2.h.rst.exceptions             |  1 +
+>  include/uapi/linux/videodev2.h                   |  3 +++
+>  3 files changed, 19 insertions(+), 1 deletion(-)
+> 
+> diff --git a/Documentation/userspace-api/media/v4l/vidioc-enum-fmt.rst b/Documentation/userspace-api/media/v4l/vidioc-enum-fmt.rst
+> index 3adb3d205531..1112dc9044b2 100644
+> --- a/Documentation/userspace-api/media/v4l/vidioc-enum-fmt.rst
+> +++ b/Documentation/userspace-api/media/v4l/vidioc-enum-fmt.rst
+> @@ -85,7 +85,15 @@ the ``mbus_code`` field is handled differently:
+>      * - __u32
+>        - ``index``
+>        - Number of the format in the enumeration, set by the application.
+> -	This is in no way related to the ``pixelformat`` field.
+> +        This is in no way related to the ``pixelformat`` field.
+> +        When the index is ORed with ``V4L2_FMTDESC_FLAG_ENUM_ALL`` the
+> +        driver clears the flag and enumerate all the possible formats,
 
-As Johan Jonker pointed out, this is incomplete. Just git grep for
-rockchip compatibles...
+enumerate -> enumerates
 
-Best regards,
-Krzysztof
+> +        ignoring any limitations from the current configuration. Drivers
+> +        which do not support this flag yet always return an ``EINVAL``
 
+Drop the 'yet'.
+
+But this raises a question: should this flag only be supported by drivers
+that can actually return different format lists depending on this flag?
+
+Or can it be supported as well by a driver where this makes no difference?
+
+I'm inclined to limit it to drivers that actually can return different
+results. If nothing else, that will indicate to the application that this
+is actually possible.
+
+If we agree on that, then that should be documented as well.
+
+> +        error code.
+> +        Formats enumerated when using ``V4L2_FMTDESC_FLAG_ENUM_ALL`` flag
+> +        shouldn't be used when calling :c:func:`VIDIOC_ENUM_FRAMESIZES`
+> +        or :c:func:`VIDIOC_ENUM_FRAMEINTERVALS`.
+>      * - __u32
+>        - ``type``
+>        - Type of the data stream, set by the application. Only these types
+> @@ -234,6 +242,12 @@ the ``mbus_code`` field is handled differently:
+>  	valid. The buffer consists of ``height`` lines, each having ``width``
+>  	Data Units of data and the offset (in bytes) between the beginning of
+>  	each two consecutive lines is ``bytesperline``.
+> +    * - ``V4L2_FMTDESC_FLAG_ENUM_ALL``
+> +      - 0x80000000
+> +      - When the applications ORs ``index`` with ``V4L2_FMTDESC_FLAG_ENUM_ALL`` flag
+> +        the driver enumerates all the possible pixel formats without taking care
+> +        of any already set configuration. Drivers which do not support this flag
+> +        yet, always return ``EINVAL``.
+
+Drop 'yet'
+
+>  
+>  Return Value
+>  ============
+> diff --git a/Documentation/userspace-api/media/videodev2.h.rst.exceptions b/Documentation/userspace-api/media/videodev2.h.rst.exceptions
+> index bdc628e8c1d6..0a9ea9686c24 100644
+> --- a/Documentation/userspace-api/media/videodev2.h.rst.exceptions
+> +++ b/Documentation/userspace-api/media/videodev2.h.rst.exceptions
+> @@ -216,6 +216,7 @@ replace define V4L2_FMT_FLAG_CSC_YCBCR_ENC fmtdesc-flags
+>  replace define V4L2_FMT_FLAG_CSC_HSV_ENC fmtdesc-flags
+>  replace define V4L2_FMT_FLAG_CSC_QUANTIZATION fmtdesc-flags
+>  replace define V4L2_FMT_FLAG_META_LINE_BASED fmtdesc-flags
+> +replace define V4L2_FMTDESC_FLAG_ENUM_ALL fmtdesc-flags
+>  
+>  # V4L2 timecode types
+>  replace define V4L2_TC_TYPE_24FPS timecode-type
+> diff --git a/include/uapi/linux/videodev2.h b/include/uapi/linux/videodev2.h
+> index 4e91362da6da..421a30cb0c51 100644
+> --- a/include/uapi/linux/videodev2.h
+> +++ b/include/uapi/linux/videodev2.h
+> @@ -904,6 +904,9 @@ struct v4l2_fmtdesc {
+>  #define V4L2_FMT_FLAG_CSC_QUANTIZATION		0x0100
+>  #define V4L2_FMT_FLAG_META_LINE_BASED		0x0200
+>  
+> +/*  Format description flag, to be ORed with the index */
+> +#define V4L2_FMTDESC_FLAG_ENUM_ALL		0x80000000
+> +
+>  	/* Frame Size and frame rate enumeration */
+>  /*
+>   *	F R A M E   S I Z E   E N U M E R A T I O N
+
+Regards,
+
+	Hans
 
 _______________________________________________
 Linux-rockchip mailing list
