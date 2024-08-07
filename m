@@ -4,57 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A5D73C3DA7F
-	for <linux-rockchip@archiver.kernel.org>; Wed,  7 Aug 2024 15:20:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2C935C3DA7F
+	for <linux-rockchip@archiver.kernel.org>; Wed,  7 Aug 2024 16:20:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:References:
-	In-Reply-To:Cc:To:From:MIME-Version:Date:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=TjmwzYMH3m3yTgggKADGs48DWhbgoAtsXdVCS0U3xHg=; b=PxciO0Ci5veKz1iykluKaOlQFx
-	YR7nbnWDH+ENac/on7bY30CjVHWIkfJwE+cU4Cj1cEaxY+dDe9nWIIa3jz9pNZ58s1I1yqeqXXICo
-	dj+yVoNzdEqjpOykbHppmf6Ft54Ggt6RW4KjKkN3Zgf0RRjnxqFo0YSV4ZOE1FN61Mpti/Jaryy35
-	YtwW8haAMiPT9iPLYL64D3DVoVJdaQLdf3oi5GRLUG8kxSUF40bqCuaC4kq9muCKtKcbwPsiQzYnv
-	IXCg8bJ9JNVPK9E0WA3tPLnEKQFobnKIf2PwibHrJuvIKCZmFCIjwd5tjPO5JJ4xJofKssqBm2qEU
-	CqSpYM3g==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To
+	:From:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=ktRGW0E56xnA0WaPK0cQa37bwkMRrNNMnbZAJWJegnY=; b=d9NIfuMqGeKyaZ
+	mMVALqc2HDN3EcmrfxX8M20HXTEo14iB83Ld4Z7/Ykw2n0ozsBHahhq/YTzUzD7892380GSXtqzzX
+	TYfw5LQ2DeDtIVLD9A2s9McDfsJWEqto7bWrd9kZDCBh+exjtpGVuG7h6t7QWi6hpmWp9aom83iMf
+	kpAYrpO+4whwhPKdz7ppl1rZ5NmgTWl2bh7n8w9Ee6jzZxK4e46G07saKY1go/yPbImgrbau1mY30
+	4C96IJ1sS6kDzLfHKrmMRuYJabaOKkofX+XO5/Mrq9rl9VQzSQB/6gKrLTfayY/jpNS60NbcUOvy5
+	/37RWimfsoDRBz2Z6wNA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sbiSm-00000005UC5-1JR3;
-	Wed, 07 Aug 2024 15:20:32 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1sbjPA-00000005eLd-2FY5;
+	Wed, 07 Aug 2024 16:20:52 +0000
+Received: from mail.flokli.de ([116.203.226.116])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sbiSj-00000005UBB-30bu
-	for linux-rockchip@lists.infradead.org;
-	Wed, 07 Aug 2024 15:20:31 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 20744611F4;
-	Wed,  7 Aug 2024 15:20:29 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6A253C4AF0D;
-	Wed,  7 Aug 2024 15:20:28 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1723044028;
-	bh=pLFN9w/+n0MeDntYCYv2CDhdPD3EXRaMmnfwSv6Y6OU=;
-	h=Date:From:To:Cc:In-Reply-To:References:Subject:From;
-	b=SAUZFW9f5JwCbC6RR3he+Vh6cmSX9AiKflylsHRDlh2D9OObaQtivdf4rATf/ULdl
-	 0eRYA/dnPZLtzMB4PMxjq7c9oZ4vi0xAhh3J1s8+1qlooD3uiMLyVlsFYqbKuupzdY
-	 B6rtGbolTpAoIrghCteogk8Aw7pwtRHb4vZM0n8s0gUUjohDme+hjSvoAoQENLIlUE
-	 vgKxIKg3WDFqH118tDGZGEzPm8h6YNA6GZj6uaBB9Ur8fFJU7iFb6wJ7AAybFtFJ43
-	 /whNNsnXeEK9gMaDXVC1qR/YZ5vn1jGHnbTj5mlmGu4iK4VcL1yehfG5AHsejFPiCT
-	 v07dz+7vhbFxw==
-Date: Wed, 07 Aug 2024 09:20:27 -0600
+	id 1sbjOa-00000005eHy-4833;
+	Wed, 07 Aug 2024 16:20:18 +0000
+From: Florian Klink <flokli@flokli.de>
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=flokli.de; s=mail;
+	t=1723047609; bh=xzTHPU4ay+ojdbSyqF8Os8imRNbH54y0xGyqIDsp8TI=;
+	h=From:To:Subject:Date;
+	b=QnRpCDisb3Xljb/+6HX+YkFlvqGPXsLih7lMAmZPSgaasfWfoyu17PsMb2e+DiOJg
+	 Rs94BZfEa1ebxQys2TaZyGHDUC5bKO7JQTpEIyNN1MVbsqmha2kuODdpbkCPUNemfX
+	 52KZLRa0eB2XxhBOpagIccyxGhe0mRNHtTJPZ9zE=
+To: Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Sebastian Reichel <sebastian.reichel@collabora.com>,
+	Dragan Simic <dsimic@manjaro.org>,
+	Florian Klink <flokli@flokli.de>,
+	Kever Yang <kever.yang@rock-chips.com>,
+	Muhammed Efe Cetin <efectn@protonmail.com>,
+	FUKAUMI Naoki <naoki@radxa.com>,
+	=?UTF-8?q?Tam=C3=A1s=20Sz=C5=B1cs?= <tszucs@protonmail.ch>,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH] arm64: dts: rockchip: add rfkill node for M.2 E wifi on orangepi-5-plus
+Date: Wed,  7 Aug 2024 19:20:01 +0300
+Message-ID: <20240807162001.1737829-1-flokli@flokli.de>
 MIME-Version: 1.0
-From: "Rob Herring (Arm)" <robh@kernel.org>
-To: FUKAUMI Naoki <naoki@radxa.com>
-Cc: linux-rockchip@lists.infradead.org
-In-Reply-To: <20240807084642.742-1-naoki@radxa.com>
-References: <20240807084642.742-1-naoki@radxa.com>
-Message-Id: <172304385887.2508235.982090729519727246.robh@kernel.org>
-Subject: Re: [RFC 1/2] dt-bindings: arm: rockchip: add Radxa E52C
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240807_082029_827212_B3E23F07 
-X-CRM114-Status: GOOD (  11.53  )
+X-CRM114-CacheID: sfid-20240807_092017_492261_0FC597E6 
+X-CRM114-Status: UNSURE (   8.53  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,52 +72,43 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+This follows the same logic as 82d40b141a4c7ab66, which did the same
+for rock-5b.
 
-On Wed, 07 Aug 2024 17:46:41 +0900, FUKAUMI Naoki wrote:
-> Add devicetree binding for the Radxa E52C.
-> 
-> Radxa E52C is a compact network computer using the Rockchip RK3582
-> chip.
-> 
-> Signed-off-by: FUKAUMI Naoki <naoki@radxa.com>
-> ---
-> how should we handle RK3582? as far as I know, it's just an another
-> version of RK3588S.
-> ---
->  Documentation/devicetree/bindings/arm/rockchip.yaml | 6 ++++++
->  1 file changed, 6 insertions(+)
-> 
+The GPIO pin connecting the WiFi enable signal inside the M.2 Key E slot
+is the same as there.
 
+This can be validated in
+arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-plus.dtsi from Armbian
+rk-5.10-rkr4 kernel, which contains a `wifi_disable` node with that same
+GPIO pin.
 
-My bot found new DTB warnings on the .dts files added or changed in this
-series.
+Signed-off-by: Florian Klink <flokli@flokli.de>
+Tested-by: Florian Klink <flokli@flokli.de>
+---
+ arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-plus.dts | 7 +++++++
+ 1 file changed, 7 insertions(+)
 
-Some warnings may be from an existing SoC .dtsi. Or perhaps the warnings
-are fixed by another series. Ultimately, it is up to the platform
-maintainer whether these warnings are acceptable or not. No need to reply
-unless the platform maintainer has comments.
-
-If you already ran DT checks and didn't see these error(s), then
-make sure dt-schema is up to date:
-
-  pip3 install dtschema --upgrade
-
-
-New warnings running 'make CHECK_DTBS=y rockchip/rk3588s-radxa-e52c.dtb' for 20240807084642.742-1-naoki@radxa.com:
-
-arch/arm64/boot/dts/rockchip/rk3588s-radxa-e52c.dtb: leds: led-2:linux,default-trigger: 'oneOf' conditional failed, one must be fixed:
-	'r8169-4-4100:00:link' is not one of ['backlight', 'default-on', 'heartbeat', 'disk-activity', 'disk-read', 'disk-write', 'timer', 'pattern', 'audio-micmute', 'audio-mute', 'bluetooth-power', 'flash', 'kbd-capslock', 'mtd', 'nand-disk', 'none', 'torch', 'usb-gadget', 'usb-host', 'usbport']
-	'r8169-4-4100:00:link' does not match '^cpu[0-9]*$'
-	'r8169-4-4100:00:link' does not match '^hci[0-9]+-power$'
-	'r8169-4-4100:00:link' does not match '^mmc[0-9]+$'
-	'r8169-4-4100:00:link' does not match '^phy[0-9]+tx$'
-	from schema $id: http://devicetree.org/schemas/leds/leds-gpio.yaml#
-arch/arm64/boot/dts/rockchip/rk3588s-radxa-e52c.dtb: leds: led-2: Unevaluated properties are not allowed ('linux,default-trigger' was unexpected)
-	from schema $id: http://devicetree.org/schemas/leds/leds-gpio.yaml#
-
-
-
-
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-plus.dts b/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-plus.dts
+index e74871491ef5..c3a6812cc93a 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-plus.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-plus.dts
+@@ -105,6 +105,13 @@ led {
+ 		};
+ 	};
+ 
++	rfkill {
++		compatible = "rfkill-gpio";
++		label = "rfkill-pcie-wlan";
++		radio-type = "wlan";
++		shutdown-gpios = <&gpio0 RK_PC4 GPIO_ACTIVE_HIGH>;
++	};
++
+ 	sound {
+ 		compatible = "simple-audio-card";
+ 		pinctrl-names = "default";
+-- 
+2.45.2
 
 
 _______________________________________________
