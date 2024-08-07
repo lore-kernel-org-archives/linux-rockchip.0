@@ -4,48 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 35DD8C52D6F
-	for <linux-rockchip@archiver.kernel.org>; Wed,  7 Aug 2024 05:50:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8794EC3DA7F
+	for <linux-rockchip@archiver.kernel.org>; Wed,  7 Aug 2024 05:51:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=lN+jam7V/O8KEdwCc2WXX4b/bfZKwPXpdK+FMWTkEVQ=; b=D6IFquBKEDiFU9
-	JX2I+NLP6PnIWOZtUZQR9qm1V3McP3Mmh+D6ljHJcPvY7ShVLOlbcu7RjDyih7mGN0hQyykwpnCl0
-	XEo9thVYCnsuVJn6RX2/YLdnHNLSisjo4qxzcH/viOsjC4+MQFrnEO81LTu8yKNz/A8Cqi/cpug6N
-	Ku8tBtE80043DNcB2MyAbwXPNaubMPzmUN9DhtPSNMRewh1mtYfE0BYe67Utli/Nh+eHFU/lyYyng
-	9oOcvi2AZmUarpS1tDqT1UBVJBnprFf0vnc3dxtUvcg4Q5bPSdkJtysF857E+y77PeO/DYcQQcLg+
-	J0QDXUHmGHeMt6fEzxyg==;
+	List-Owner; bh=ShDEwna0M4h9ykVVQKGjY2XrQHEJ8T3IcnXD9lhy79w=; b=Gcxu35cZ40sCRk
+	MO90pJ3yvLD2uFMR4amtkSIJfQtTACvnG4pMSTMo1L+e3BQ7gYu67AmLy8peed85+CIrC7JsP/i9M
+	sDWoDLaCBuF268los2pckRmFVqHvd/YTnDbnQBXhjMG2v8c0KsYwfrFgU8ONhE64whxECChowcB9c
+	tlufMm2v7ZBfVr7u+Za03mr8hGXvGwxCq7IAg2sjbR9Q08M9HoMN/xrHPyTOV7NzdN4LhoxKlKcc6
+	sZuxoK0pJFmysA2jJzzi7GopSLHKdO8wrADVqAQpME9c42qDji+/FWNKpiTYrutYbrRnf+23bpWVO
+	fT3UHRI2SalUPILIsdzg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sbZZI-00000003v9S-3hEf;
-	Wed, 07 Aug 2024 05:50:40 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1sbZaL-00000003vWd-3zhK;
+	Wed, 07 Aug 2024 05:51:46 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sbZYF-00000003uro-0mg7;
-	Wed, 07 Aug 2024 05:49:36 +0000
+	id 1sbZZ7-00000003v6f-15tW;
+	Wed, 07 Aug 2024 05:50:30 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id A8A3161164;
-	Wed,  7 Aug 2024 05:49:34 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6E926C32782;
-	Wed,  7 Aug 2024 05:49:29 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 936FE61164;
+	Wed,  7 Aug 2024 05:50:28 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 758B3C32782;
+	Wed,  7 Aug 2024 05:50:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1723009774;
-	bh=NfrOBcjO/1edtJr1f92xqBL5hzAd7ZcuUUv/ggnDR9k=;
+	s=k20201202; t=1723009828;
+	bh=lmP+ZdXHsac+0RiSFGbAJ99rlOluNKgbG+I2rcL9z34=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=m1TKo++0oG4AuvFgbcX7Zd8lsvYZaSD5VQREoYuRyBL9UOmMw8NaTjxEXZ8E6Mxp/
-	 M23nhWPGk+9QsPjZWRZWVq0pSveUuu8MCFTHwEZr41luoWO28Zgawm7f1UyJDUjT3Z
-	 VeG1qrEi3eHrQlCSaQmkEAZ175EHtvzSdbTeO1PWy7p/S2wZ4vabV/KLy2ZZyer6Ze
-	 Gd1eAZN4zSd7REZJDZTZQqSbgwX1ZdDHMrPdKBYBDXCSELrxovpExoA2Jzwxmacgz5
-	 JjbfP45q3uuwOOibgDaewyPgAYamRzyr3+Bksk53uK0FC46DxVJpbS/SxnWOrgeqqQ
-	 cm5/vnS8qjzoA==
-Message-ID: <03b8a48c-e97e-4d7b-8378-66cc55ed56f7@kernel.org>
-Date: Wed, 7 Aug 2024 07:49:27 +0200
+	b=WZXq+WWh7iDH6qDzRIpWG2icW6XSliR2uGkAKn0fSSBcEKr8+xz3Ypzxke18JHTfO
+	 /uY+ncEeuN90ZsNUfl1OMt/2XJBzQh4b6fPEeax2rMDUvOmSr+os0C2Bnyk5pLxp/C
+	 I+VPmHa1Zq/qSST+NX35BpocDFz+MFfEwahnBHySiHd8e3j9Sca0+vslLhLi0UG8BX
+	 sPVYUZpv+o+GzMGqYsNt8CLzmvRRkbtYOyABK2NsaLIu1NL/xJ4Q1stKkwdoHqtGr+
+	 DowDmEAExyJwfGK2/xVWpj0jTkZCbO1zrkHBHYnaJCB3nOWMtAhn9ckImH7cFoo1is
+	 ZZxJUmp89oO6A==
+Message-ID: <fedcf52c-1eb4-4b3e-a945-3a05330c41ef@kernel.org>
+Date: Wed, 7 Aug 2024 07:50:22 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 2/3] clk: rockchip: Add dt-binding header for rk3576
+Subject: Re: [PATCH v2 1/3] dt-bindings: clock: add rk3576 cru bindings
 To: Detlev Casanova <detlev.casanova@collabora.com>,
  linux-kernel@vger.kernel.org
 Cc: Michael Turquette <mturquette@baylibre.com>,
@@ -55,12 +55,11 @@ Cc: Michael Turquette <mturquette@baylibre.com>,
  Philipp Zabel <p.zabel@pengutronix.de>,
  Elaine Zhang <zhangqing@rock-chips.com>, linux-clk@vger.kernel.org,
  devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, kernel@collabora.com,
- Sugar Zhang <sugar.zhang@rock-chips.com>
+ linux-rockchip@lists.infradead.org, kernel@collabora.com
 References: <20240802214053.433493-1-detlev.casanova@collabora.com>
- <20240802214053.433493-3-detlev.casanova@collabora.com>
- <1600ee06-ac19-436f-8229-1bb44b29c683@kernel.org>
- <2949191.e9J7NaK4W3@trenzalore>
+ <20240802214053.433493-2-detlev.casanova@collabora.com>
+ <87503c5b-95dc-463b-8363-3e1fab03f8f2@kernel.org>
+ <1975336.PYKUYFuaPT@trenzalore>
 From: Krzysztof Kozlowski <krzk@kernel.org>
 Content-Language: en-US
 Autocrypt: addr=krzk@kernel.org; keydata=
@@ -106,10 +105,11 @@ Autocrypt: addr=krzk@kernel.org; keydata=
  uZwJCLykjad45hsWcOGk3OcaAGQS6NDlfhM6O9aYNwGL6tGt/6BkRikNOs7VDEa4/HlbaSJo
  7FgndGw1kWmkeL6oQh7wBvYll2buKod4qYntmNKEicoHGU+x91Gcan8mCoqhJkbqrL7+nXG2
  5Q/GS5M9RFWS+nYyJh+c3OcfKqVcZQNANItt7+ULzdNJuhvTRRdC3g9hmCEuNSr+CLMdnRBY fv0=
-In-Reply-To: <2949191.e9J7NaK4W3@trenzalore>
+In-Reply-To: <1975336.PYKUYFuaPT@trenzalore>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240806_224935_347464_A22F7C71 
-X-CRM114-Status: GOOD (  17.04  )
+X-CRM114-CacheID: sfid-20240806_225029_470694_25766DA1 
+X-CRM114-Status: UNSURE (   8.63  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -126,78 +126,27 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 06/08/2024 17:23, Detlev Casanova wrote:
-> On Sunday, 4 August 2024 05:53:57 EDT Krzysztof Kozlowski wrote:
->> On 02/08/2024 23:35, Detlev Casanova wrote:
->>> From: Elaine Zhang <zhangqing@rock-chips.com>
->>>
->>> Add the dt-bindings header for the rk3576, that gets shared between
->>> the clock controller and the clock references in the dts.
->>>
->>> Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
->>> Signed-off-by: Sugar Zhang <sugar.zhang@rock-chips.com>
->>> [rebased, separate clocks and resets]
->>> Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
->>
->> Please use subject prefixes matching the subsystem. You can get them for
->> example with `git log --oneline -- DIRECTORY_OR_FILE` on the directory
->> your patch is touching. For bindings, the preferred subjects are
->> explained here:
->> https://www.kernel.org/doc/html/latest/devicetree/bindings/submitting-patche
->> s.html#i-for-patch-submitters
->>> ---
->>>
->>>  .../dt-bindings/clock/rockchip,rk3576-cru.h   | 589 ++++++++++++++++++
->>>  .../dt-bindings/reset/rockchip,rk3576-cru.h   | 484 ++++++++++++++
->>>  2 files changed, 1073 insertions(+)
->>>  create mode 100644 include/dt-bindings/clock/rockchip,rk3576-cru.h
->>>  create mode 100644 include/dt-bindings/reset/rockchip,rk3576-cru.h
->>
->> These are bindings. Must be squashed with previous patch.
-> 
-> Ok, so you'd rather have a commit for reset definitions (dt-bindings: reset: 
-> Add rk3576 reset definitions) and another one for clock definitions + 
-> Documentation (dt-bindings: clock: Add rk3576 clock definitions and 
-> documentation) ?
-> 
->>> diff --git a/include/dt-bindings/clock/rockchip,rk3576-cru.h
->>> b/include/dt-bindings/clock/rockchip,rk3576-cru.h new file mode 100644
->>> index 0000000000000..14b54543d1a11
->>> --- /dev/null
->>> +++ b/include/dt-bindings/clock/rockchip,rk3576-cru.h
->>> @@ -0,0 +1,589 @@
->>> +/* SPDX-License-Identifier: (GPL-2.0+ OR MIT) */
->>
->> Weird license. Why not using recommended one?
-> 
-> Oh right, I suppose "GPL-2.0 OR MIT" is better ? At least that is what I see 
-> for rk3588. include/dt-bindings/clock/rockchip,rv1126-cru.h uses "GPL-2.0+ OR 
-> MIT" though.
-> 
->>> +/*
->>> + * Copyright (c) 2023 Rockchip Electronics Co. Ltd.
->>> + * Author: Elaine Zhang <zhangqing@rock-chips.com>
->>> + */
+On 06/08/2024 23:22, Detlev Casanova wrote:
+>>> +    maxItems: 2
 >>> +
->>> +#ifndef _DT_BINDINGS_CLK_ROCKCHIP_RK3576_H
->>> +#define _DT_BINDINGS_CLK_ROCKCHIP_RK3576_H
+>>> +  clock-names:
+>>> +    items:
+>>> +      - const: xin24m
+>>> +      - const: xin32k
 >>> +
->>> +/* cru-clocks indices */
+>>> +  assigned-clocks: true
 >>> +
->>> +/* cru plls */
->>> +#define PLL_BPLL			1
->>> +#define PLL_LPLL			3
->>> +#define PLL_VPLL			4
->>> +#define PLL_AUPLL			5
->>> +#define PLL_CPLL			6
->>> +#define PLL_GPLL			7
->>> +#define PLL_PPLL			9
+>>> +  assigned-clock-rates: true
+>>> +
+>>> +  assigned-clock-parents: true
 >>
->> Nope, indices start from 1 and are incremented continuously.
+>> Drop  all these three
 > 
-> Why start at 1 ? RK3588 starts at 0 for clocks and resets
+> Why dro pthese if I need them in the device tree ? Should I remove them from 
+> there as well ? It seems to be working without it.
 
-Or 0, even better, sure.
+Because they are already accepted via dependency of clocks. This is just
+redundant. Please trim your replies to relevant content.
 
 Best regards,
 Krzysztof
