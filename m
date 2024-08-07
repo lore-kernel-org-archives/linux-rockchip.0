@@ -4,75 +4,112 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2A317C3DA7F
-	for <linux-rockchip@archiver.kernel.org>; Wed,  7 Aug 2024 04:40:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 35DD8C52D6F
+	for <linux-rockchip@archiver.kernel.org>; Wed,  7 Aug 2024 05:50:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=p5vTklTYa19TleJCGS67Nhp/5UHyxYhdGM4gz1r1R/Q=; b=cucXDj4HmoerRn
-	ORuVghwsgIQN7cAoXUeW2/7kNje3r4Wkwk2B5Us+paoiiIvgwAJLgZL46/lXCxDwEI8KCIRVHG0ux
-	vNiAhx+HBhaW5hXssspixR2AeWVqiCWxtkShfTuQIVsl+zA2kTvQmzimYM0JeJPCnKISuA8RcxSIq
-	ZGXIhQ/+wVH1BHjU5Bhd3al+KoMTWnfvQkPUSY/p8o1EcmbtIjFV7sZ2r5ZSna9MJuEBawaTYX5ju
-	+XU/VRQZsXaDgVsi/BeZBo48pJ3B5ETrHuTelPrH42Dkk2SUfqFuLTIrM8AUWHaG0eKGj4g4D9Dzc
-	DruW/hR6JbFIAoDmFqnQ==;
+	List-Owner; bh=lN+jam7V/O8KEdwCc2WXX4b/bfZKwPXpdK+FMWTkEVQ=; b=D6IFquBKEDiFU9
+	JX2I+NLP6PnIWOZtUZQR9qm1V3McP3Mmh+D6ljHJcPvY7ShVLOlbcu7RjDyih7mGN0hQyykwpnCl0
+	XEo9thVYCnsuVJn6RX2/YLdnHNLSisjo4qxzcH/viOsjC4+MQFrnEO81LTu8yKNz/A8Cqi/cpug6N
+	Ku8tBtE80043DNcB2MyAbwXPNaubMPzmUN9DhtPSNMRewh1mtYfE0BYe67Utli/Nh+eHFU/lyYyng
+	9oOcvi2AZmUarpS1tDqT1UBVJBnprFf0vnc3dxtUvcg4Q5bPSdkJtysF857E+y77PeO/DYcQQcLg+
+	J0QDXUHmGHeMt6fEzxyg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sbYTc-00000003o8v-01n8;
-	Wed, 07 Aug 2024 04:40:44 +0000
-Received: from mail-oi1-x229.google.com ([2607:f8b0:4864:20::229])
+	id 1sbZZI-00000003v9S-3hEf;
+	Wed, 07 Aug 2024 05:50:40 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sbYT4-00000003o4N-0GgS;
-	Wed, 07 Aug 2024 04:40:11 +0000
-Received: by mail-oi1-x229.google.com with SMTP id 5614622812f47-3db16a98d16so797805b6e.0;
-        Tue, 06 Aug 2024 21:40:09 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1723005608; x=1723610408; darn=lists.infradead.org;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=vputw6en5UM/U6FW3NvGX277Q4urgiLXbQEtEOomLNY=;
-        b=nhehIDYK1MlWCnRrJfEYD3ZZQ0dZe5WS5j7tyCrb2xhkQizqmQqDCXxK3txGhFXzEo
-         Kg1ueKJeiQy3Qd3yWHsF+zVkvftVRveU3Ng2j7gNhXMESFF2iuWblgP+6KLX9nTzoifZ
-         I3qtugS125wdl7NOp7s1jyf7TuzGrssEWHDKgaxMaLFA2B7x8U33t97NZS44FZuSYxJc
-         8gntTcaa9cT6Orm3N9mWB1MhaegM+hn/iu/Ml8UWv8YI+eP4TunaRtZUJsYnQrObEhPE
-         wFaRqbae4cu9tUaro3lXS/Oq8YbfiBBhQEIhbMda+Zw6TVLwPsFtnAZ/z+Uhs9Gh+0bl
-         Jq9A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1723005608; x=1723610408;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=vputw6en5UM/U6FW3NvGX277Q4urgiLXbQEtEOomLNY=;
-        b=u9y82vahFya+0jzb5xUAYpW6CCCoh2ffO7NFjS4mLxfZckEideoTpVDO818vWJiOkQ
-         XeO1kVTv0gOE3rfJ7lXbkxxHNnbUxjn8oNKx6YQxSpj1TWspLyIDWEA1tc4zYM+cdtRj
-         nA5qdWoTi8zBwUjlcCKoviUzDoZrbdVj/8hx//tv89ZdDKLO6Kt62hRwq8dOk/1owo8g
-         X+9Qd8dlz26f18jkSbC2jI/D4l1wVvTXAqYfLfMNOf/Aoh52rBxgqdXlm3gIdMX6KTs9
-         EY/5Ak0cJhIw6sCIqRQ1wAGEcCtRfajtBvq/Injzp8jT9PrVn0L9j53iyVrJjSZARHKF
-         XGOg==
-X-Forwarded-Encrypted: i=1; AJvYcCVPgEVGEsV/IAfSRCBpexJ1mvYs1VghjyaAk5dNhm+mqxNeQ5lHoy3msuF6qI7j6H1bmNDV3mrRF5f0xqFOQl7o7h+M70//FZgzOdZ0vG6xfltWkm/qNcy7BIUufrj1NQyjlVWi9yWx3fIFYV6Tj3y+jtWEfYiZnTs=
-X-Gm-Message-State: AOJu0Yxxb9NTCUqKYO4BqT48gKhT2hOg3aaNt9I8IpZIS0otgafVafxp
-	32LaFTUDU4ftM38uTuNibDnLquAm85FD2Y8elcpmvlr8ereh6LKrl1sfudUeENEDMFhUP0nvLXL
-	cV3J3ITmeEFRvNhyRRH2PSR1DdL8=
-X-Google-Smtp-Source: AGHT+IFroz+WxNH1Yjo2QJuI+bBuCAZqGU9Q0IyIYNW7GfFp1a9rjGaeHs68lxVGlmKdcMqcPiGU0G3y5RuOgJGhM4w=
-X-Received: by 2002:a05:6871:3325:b0:261:218:dae with SMTP id
- 586e51a60fabf-26891ea8f86mr22541861fac.33.1723005608211; Tue, 06 Aug 2024
- 21:40:08 -0700 (PDT)
+	id 1sbZYF-00000003uro-0mg7;
+	Wed, 07 Aug 2024 05:49:36 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id A8A3161164;
+	Wed,  7 Aug 2024 05:49:34 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6E926C32782;
+	Wed,  7 Aug 2024 05:49:29 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1723009774;
+	bh=NfrOBcjO/1edtJr1f92xqBL5hzAd7ZcuUUv/ggnDR9k=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=m1TKo++0oG4AuvFgbcX7Zd8lsvYZaSD5VQREoYuRyBL9UOmMw8NaTjxEXZ8E6Mxp/
+	 M23nhWPGk+9QsPjZWRZWVq0pSveUuu8MCFTHwEZr41luoWO28Zgawm7f1UyJDUjT3Z
+	 VeG1qrEi3eHrQlCSaQmkEAZ175EHtvzSdbTeO1PWy7p/S2wZ4vabV/KLy2ZZyer6Ze
+	 Gd1eAZN4zSd7REZJDZTZQqSbgwX1ZdDHMrPdKBYBDXCSELrxovpExoA2Jzwxmacgz5
+	 JjbfP45q3uuwOOibgDaewyPgAYamRzyr3+Bksk53uK0FC46DxVJpbS/SxnWOrgeqqQ
+	 cm5/vnS8qjzoA==
+Message-ID: <03b8a48c-e97e-4d7b-8378-66cc55ed56f7@kernel.org>
+Date: Wed, 7 Aug 2024 07:49:27 +0200
 MIME-Version: 1.0
-References: <20240625155759.132878-1-linux.amoon@gmail.com>
-In-Reply-To: <20240625155759.132878-1-linux.amoon@gmail.com>
-From: Anand Moon <linux.amoon@gmail.com>
-Date: Wed, 7 Aug 2024 10:09:53 +0530
-Message-ID: <CANAwSgRP3m6hY7cNeBv6EXavoApZZ_zmemStg2v__iK3DLm2ig@mail.gmail.com>
-Subject: Re: [PATCH linu-next v1] PCI: dw-rockchip: Enable async probe by default
-To: Lorenzo Pieralisi <lpieralisi@kernel.org>, =?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?= <kw@linux.com>, 
-	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>, Heiko Stuebner <heiko@sntech.de>
-Cc: linux-pci@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 2/3] clk: rockchip: Add dt-binding header for rk3576
+To: Detlev Casanova <detlev.casanova@collabora.com>,
+ linux-kernel@vger.kernel.org
+Cc: Michael Turquette <mturquette@baylibre.com>,
+ Stephen Boyd <sboyd@kernel.org>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Elaine Zhang <zhangqing@rock-chips.com>, linux-clk@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, kernel@collabora.com,
+ Sugar Zhang <sugar.zhang@rock-chips.com>
+References: <20240802214053.433493-1-detlev.casanova@collabora.com>
+ <20240802214053.433493-3-detlev.casanova@collabora.com>
+ <1600ee06-ac19-436f-8229-1bb44b29c683@kernel.org>
+ <2949191.e9J7NaK4W3@trenzalore>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ xsFNBFVDQq4BEAC6KeLOfFsAvFMBsrCrJ2bCalhPv5+KQF2PS2+iwZI8BpRZoV+Bd5kWvN79
+ cFgcqTTuNHjAvxtUG8pQgGTHAObYs6xeYJtjUH0ZX6ndJ33FJYf5V3yXqqjcZ30FgHzJCFUu
+ JMp7PSyMPzpUXfU12yfcRYVEMQrmplNZssmYhiTeVicuOOypWugZKVLGNm0IweVCaZ/DJDIH
+ gNbpvVwjcKYrx85m9cBVEBUGaQP6AT7qlVCkrf50v8bofSIyVa2xmubbAwwFA1oxoOusjPIE
+ J3iadrwpFvsZjF5uHAKS+7wHLoW9hVzOnLbX6ajk5Hf8Pb1m+VH/E8bPBNNYKkfTtypTDUCj
+ NYcd27tjnXfG+SDs/EXNUAIRefCyvaRG7oRYF3Ec+2RgQDRnmmjCjoQNbFrJvJkFHlPeHaeS
+ BosGY+XWKydnmsfY7SSnjAzLUGAFhLd/XDVpb1Een2XucPpKvt9ORF+48gy12FA5GduRLhQU
+ vK4tU7ojoem/G23PcowM1CwPurC8sAVsQb9KmwTGh7rVz3ks3w/zfGBy3+WmLg++C2Wct6nM
+ Pd8/6CBVjEWqD06/RjI2AnjIq5fSEH/BIfXXfC68nMp9BZoy3So4ZsbOlBmtAPvMYX6U8VwD
+ TNeBxJu5Ex0Izf1NV9CzC3nNaFUYOY8KfN01X5SExAoVTr09ewARAQABzSVLcnp5c3p0b2Yg
+ S296bG93c2tpIDxrcnprQGtlcm5lbC5vcmc+wsGVBBMBCgA/AhsDBgsJCAcDAgYVCAIJCgsE
+ FgIDAQIeAQIXgBYhBJvQfg4MUfjVlne3VBuTQ307QWKbBQJgPO8PBQkUX63hAAoJEBuTQ307
+ QWKbBn8P+QFxwl7pDsAKR1InemMAmuykCHl+XgC0LDqrsWhAH5TYeTVXGSyDsuZjHvj+FRP+
+ gZaEIYSw2Yf0e91U9HXo3RYhEwSmxUQ4Fjhc9qAwGKVPQf6YuQ5yy6pzI8brcKmHHOGrB3tP
+ /MODPt81M1zpograAC2WTDzkICfHKj8LpXp45PylD99J9q0Y+gb04CG5/wXs+1hJy/dz0tYy
+ iua4nCuSRbxnSHKBS5vvjosWWjWQXsRKd+zzXp6kfRHHpzJkhRwF6ArXi4XnQ+REnoTfM5Fk
+ VmVmSQ3yFKKePEzoIriT1b2sXO0g5QXOAvFqB65LZjXG9jGJoVG6ZJrUV1MVK8vamKoVbUEe
+ 0NlLl/tX96HLowHHoKhxEsbFzGzKiFLh7hyboTpy2whdonkDxpnv/H8wE9M3VW/fPgnL2nPe
+ xaBLqyHxy9hA9JrZvxg3IQ61x7rtBWBUQPmEaK0azW+l3ysiNpBhISkZrsW3ZUdknWu87nh6
+ eTB7mR7xBcVxnomxWwJI4B0wuMwCPdgbV6YDUKCuSgRMUEiVry10xd9KLypR9Vfyn1AhROrq
+ AubRPVeJBf9zR5UW1trJNfwVt3XmbHX50HCcHdEdCKiT9O+FiEcahIaWh9lihvO0ci0TtVGZ
+ MCEtaCE80Q3Ma9RdHYB3uVF930jwquplFLNF+IBCn5JRzsFNBFVDXDQBEADNkrQYSREUL4D3
+ Gws46JEoZ9HEQOKtkrwjrzlw/tCmqVzERRPvz2Xg8n7+HRCrgqnodIYoUh5WsU84N03KlLue
+ MNsWLJBvBaubYN4JuJIdRr4dS4oyF1/fQAQPHh8Thpiz0SAZFx6iWKB7Qrz3OrGCjTPcW6ei
+ OMheesVS5hxietSmlin+SilmIAPZHx7n242u6kdHOh+/SyLImKn/dh9RzatVpUKbv34eP1wA
+ GldWsRxbf3WP9pFNObSzI/Bo3kA89Xx2rO2roC+Gq4LeHvo7ptzcLcrqaHUAcZ3CgFG88CnA
+ 6z6lBZn0WyewEcPOPdcUB2Q7D/NiUY+HDiV99rAYPJztjeTrBSTnHeSBPb+qn5ZZGQwIdUW9
+ YegxWKvXXHTwB5eMzo/RB6vffwqcnHDoe0q7VgzRRZJwpi6aMIXLfeWZ5Wrwaw2zldFuO4Dt
+ 91pFzBSOIpeMtfgb/Pfe/a1WJ/GgaIRIBE+NUqckM+3zJHGmVPqJP/h2Iwv6nw8U+7Yyl6gU
+ BLHFTg2hYnLFJI4Xjg+AX1hHFVKmvl3VBHIsBv0oDcsQWXqY+NaFahT0lRPjYtrTa1v3tem/
+ JoFzZ4B0p27K+qQCF2R96hVvuEyjzBmdq2esyE6zIqftdo4MOJho8uctOiWbwNNq2U9pPWmu
+ 4vXVFBYIGmpyNPYzRm0QPwARAQABwsF8BBgBCgAmAhsMFiEEm9B+DgxR+NWWd7dUG5NDfTtB
+ YpsFAmA872oFCRRflLYACgkQG5NDfTtBYpvScw/9GrqBrVLuJoJ52qBBKUBDo4E+5fU1bjt0
+ Gv0nh/hNJuecuRY6aemU6HOPNc2t8QHMSvwbSF+Vp9ZkOvrM36yUOufctoqON+wXrliEY0J4
+ ksR89ZILRRAold9Mh0YDqEJc1HmuxYLJ7lnbLYH1oui8bLbMBM8S2Uo9RKqV2GROLi44enVt
+ vdrDvo+CxKj2K+d4cleCNiz5qbTxPUW/cgkwG0lJc4I4sso7l4XMDKn95c7JtNsuzqKvhEVS
+ oic5by3fbUnuI0cemeizF4QdtX2uQxrP7RwHFBd+YUia7zCcz0//rv6FZmAxWZGy5arNl6Vm
+ lQqNo7/Poh8WWfRS+xegBxc6hBXahpyUKphAKYkah+m+I0QToCfnGKnPqyYIMDEHCS/RfqA5
+ t8F+O56+oyLBAeWX7XcmyM6TGeVfb+OZVMJnZzK0s2VYAuI0Rl87FBFYgULdgqKV7R7WHzwD
+ uZwJCLykjad45hsWcOGk3OcaAGQS6NDlfhM6O9aYNwGL6tGt/6BkRikNOs7VDEa4/HlbaSJo
+ 7FgndGw1kWmkeL6oQh7wBvYll2buKod4qYntmNKEicoHGU+x91Gcan8mCoqhJkbqrL7+nXG2
+ 5Q/GS5M9RFWS+nYyJh+c3OcfKqVcZQNANItt7+ULzdNJuhvTRRdC3g9hmCEuNSr+CLMdnRBY fv0=
+In-Reply-To: <2949191.e9J7NaK4W3@trenzalore>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240806_214010_129652_8978ECF0 
-X-CRM114-Status: GOOD (  10.31  )
+X-CRM114-CacheID: sfid-20240806_224935_347464_A22F7C71 
+X-CRM114-Status: GOOD (  17.04  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,24 +126,82 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi All,
+On 06/08/2024 17:23, Detlev Casanova wrote:
+> On Sunday, 4 August 2024 05:53:57 EDT Krzysztof Kozlowski wrote:
+>> On 02/08/2024 23:35, Detlev Casanova wrote:
+>>> From: Elaine Zhang <zhangqing@rock-chips.com>
+>>>
+>>> Add the dt-bindings header for the rk3576, that gets shared between
+>>> the clock controller and the clock references in the dts.
+>>>
+>>> Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
+>>> Signed-off-by: Sugar Zhang <sugar.zhang@rock-chips.com>
+>>> [rebased, separate clocks and resets]
+>>> Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
+>>
+>> Please use subject prefixes matching the subsystem. You can get them for
+>> example with `git log --oneline -- DIRECTORY_OR_FILE` on the directory
+>> your patch is touching. For bindings, the preferred subjects are
+>> explained here:
+>> https://www.kernel.org/doc/html/latest/devicetree/bindings/submitting-patche
+>> s.html#i-for-patch-submitters
+>>> ---
+>>>
+>>>  .../dt-bindings/clock/rockchip,rk3576-cru.h   | 589 ++++++++++++++++++
+>>>  .../dt-bindings/reset/rockchip,rk3576-cru.h   | 484 ++++++++++++++
+>>>  2 files changed, 1073 insertions(+)
+>>>  create mode 100644 include/dt-bindings/clock/rockchip,rk3576-cru.h
+>>>  create mode 100644 include/dt-bindings/reset/rockchip,rk3576-cru.h
+>>
+>> These are bindings. Must be squashed with previous patch.
+> 
+> Ok, so you'd rather have a commit for reset definitions (dt-bindings: reset: 
+> Add rk3576 reset definitions) and another one for clock definitions + 
+> Documentation (dt-bindings: clock: Add rk3576 clock definitions and 
+> documentation) ?
+> 
+>>> diff --git a/include/dt-bindings/clock/rockchip,rk3576-cru.h
+>>> b/include/dt-bindings/clock/rockchip,rk3576-cru.h new file mode 100644
+>>> index 0000000000000..14b54543d1a11
+>>> --- /dev/null
+>>> +++ b/include/dt-bindings/clock/rockchip,rk3576-cru.h
+>>> @@ -0,0 +1,589 @@
+>>> +/* SPDX-License-Identifier: (GPL-2.0+ OR MIT) */
+>>
+>> Weird license. Why not using recommended one?
+> 
+> Oh right, I suppose "GPL-2.0 OR MIT" is better ? At least that is what I see 
+> for rk3588. include/dt-bindings/clock/rockchip,rv1126-cru.h uses "GPL-2.0+ OR 
+> MIT" though.
+> 
+>>> +/*
+>>> + * Copyright (c) 2023 Rockchip Electronics Co. Ltd.
+>>> + * Author: Elaine Zhang <zhangqing@rock-chips.com>
+>>> + */
+>>> +
+>>> +#ifndef _DT_BINDINGS_CLK_ROCKCHIP_RK3576_H
+>>> +#define _DT_BINDINGS_CLK_ROCKCHIP_RK3576_H
+>>> +
+>>> +/* cru-clocks indices */
+>>> +
+>>> +/* cru plls */
+>>> +#define PLL_BPLL			1
+>>> +#define PLL_LPLL			3
+>>> +#define PLL_VPLL			4
+>>> +#define PLL_AUPLL			5
+>>> +#define PLL_CPLL			6
+>>> +#define PLL_GPLL			7
+>>> +#define PLL_PPLL			9
+>>
+>> Nope, indices start from 1 and are incremented continuously.
+> 
+> Why start at 1 ? RK3588 starts at 0 for clocks and resets
 
-On Tue, 25 Jun 2024 at 21:28, Anand Moon <linux.amoon@gmail.com> wrote:
->
-> Rockchip PCIe driver lets waits for the combo PHY link like PCIe 3.0,
-> PCIe 2.0 and SATA 3.0 controller to be up during the probe this
-> consumes several milliseconds during boot.
->
-> Establishing a PCIe link can take a while; allow asynchronous probing so
-> that link establishment can happen in the background while other devices
-> are being probed.
->
-> Signed-off-by: Anand Moon <linux.amoon@gmail.com>
+Or 0, even better, sure.
 
-Gentle ping.
+Best regards,
+Krzysztof
 
-Thanks
--Anand
 
 _______________________________________________
 Linux-rockchip mailing list
