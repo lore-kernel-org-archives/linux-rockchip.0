@@ -4,46 +4,46 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EC78DC52D73
-	for <linux-rockchip@archiver.kernel.org>; Thu,  8 Aug 2024 10:38:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 41F5BC3DA4A
+	for <linux-rockchip@archiver.kernel.org>; Thu,  8 Aug 2024 10:41:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=81vDFnz+aDnuneaL1KGnAaJo5por2Zgi2fyGa4EFWKk=; b=NmzYc4/NH8ojBH
-	PiH0HVubovUtYoggcNmoD+/6Ufs2qLgbM9ksfv0rbjEOkhm1+L8IZ2/oXvxiuPyyAyx7IbGa9cXG6
-	Q+jMmtyK3spcBQc/iUqx/gEj+Z44Qhq5wbnvtWiqdTlK5I/VH69nPMRxcCEIjuBSnH6dMmVSikuHs
-	GhIUXdLGQcOuQqaRywHLLB6L1994bER4JS2uy24TPfvXuA0M6juvU9fJph9FtKTY9OEUctwKJ6JJT
-	xxc/mJdLpTqw+e2IYym6APdnNKQhZuQkxftXwsTbAm1dYPhLlJq+9XoAneefQ85q96xxrH0+RsB80
-	rWcTno3F4EStgegqwztw==;
+	List-Owner; bh=2OKyM4oHnx0bU6A/jy2P3hCiMjGSTLTj+p97+REO2xw=; b=nkzotBhlQgswIW
+	jGKL9S0fvWTt10d7ky1OxM2p34rV+T5IzgnrlENR429cVgjL+BMjfzYnZ8DSBrujQXRpkPL1WU4Yj
+	YjHafm03F7lLWhaeOfJHwyI2R0jsZI/TojTG7duW4AbvgbnreoyAvlyjxZj0Riu/ePOLJuU8mQiTJ
+	c2lccN7KC6jgDbHnaRj2jZXNR3WiPxefjy20i+qPCSaoRa8r3zYH4sTai+CDde1DflBdKe4vfR12p
+	AaNKV3b2AqjIgZAFchAD1Rr/EF4of6fWPWusC0KQavOP1jaKYpHENhy3dEYhZ5zUzArVKqM1rtcFF
+	I8qiptV2//IWyZbx38/A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sc0XU-00000007wGX-2t50;
-	Thu, 08 Aug 2024 10:38:36 +0000
-Received: from sin.source.kernel.org ([145.40.73.55])
+	id 1sc0af-00000007wfD-3Clh;
+	Thu, 08 Aug 2024 10:41:53 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sc0WA-00000007w5n-2uXO
+	id 1sc0Yk-00000007wPm-2p3F
 	for linux-rockchip@lists.infradead.org;
-	Thu, 08 Aug 2024 10:38:34 +0000
+	Thu, 08 Aug 2024 10:41:51 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 6FA67CE1235;
-	Thu,  8 Aug 2024 10:37:07 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 95EC9C4AF0D;
-	Thu,  8 Aug 2024 10:37:01 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id CD31A60F12;
+	Thu,  8 Aug 2024 10:39:53 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id F1165C32782;
+	Thu,  8 Aug 2024 10:39:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1723113426;
-	bh=0kNLFQPI5nfXCEqRnoX8UgfOmT9hxy59dY7HbhkRp7I=;
+	s=k20201202; t=1723113593;
+	bh=WLaBgQp2ctD38pTuetz+HKLmo85VwsC2+lHbCeA41cA=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=eTkGBqIFyRANWpKh6JZIReu9cY+c3+hfyPyxBnw8mRmp9Cnpw26lCDmsod1S7KTrc
-	 hLbMgIS8cBa7qOI916XTjvNgB48UaO9Y1OLZmIcInah2rB4KxfgYVIydadqfCEDS67
-	 iVnjUlujmHWLVK5/4/ZeZvxAmYUfYaI/FN9/CvtDYfUJfZ4wRqLkvuENPDHtsn8Zgw
-	 DPg1Ucg6tapZoEulJoaXeiFYGgMU2CY93+lLrSCbX7bYlvsAGA5crsCo9RcQ8/rn86
-	 yKto3cpk1wzhP8zhK27BSm16zYBRB07sm/dOs+28mM7DsRtZ714A01cm7C3d6yizVd
-	 xcqakncI1ZjPw==
-Message-ID: <93a16a4a-6a12-446f-bfc9-e8aa907e0598@kernel.org>
-Date: Thu, 8 Aug 2024 12:36:59 +0200
+	b=RiRTViNa+pdEvVYuFzLPV8qekqRh0PQ0I1I9uMsd7PxgV8lRnh9eTRmIglSXhuwLu
+	 22Dn35RVpDy8vO8HV6TSFjgZRYcdx4cVtLQiwauRsQQbvdGZCxGbHd3qb4wdfs7Y+l
+	 7SHSOEbyFR60DlTxlenKNIQdJm49K11FvSt7NLq/6t8x/DE6MI2Dj14bDXji7QB9zv
+	 vk3k8BSnCmd3uKZTV58Pwtu0wGYvGyQhwcNKxk19DY50FPB7znWNIf+/M8mMFuPAk8
+	 STgxpLpHJfHckv2DictVzBBQxWDxqSgJ8pXMKB+I/W8yTT5gNDP3EeHd0PUhgtC+aB
+	 C+++2XdEMhfew==
+Message-ID: <5edd79ec-4ab6-4df4-a3cb-811730b15c75@kernel.org>
+Date: Thu, 8 Aug 2024 12:39:46 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH v2 3/3] scsi: ufs: rockchip: init support for UFS
@@ -106,8 +106,8 @@ Autocrypt: addr=krzk@kernel.org; keydata=
  5Q/GS5M9RFWS+nYyJh+c3OcfKqVcZQNANItt7+ULzdNJuhvTRRdC3g9hmCEuNSr+CLMdnRBY fv0=
 In-Reply-To: <1723089163-28983-4-git-send-email-shawn.lin@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240808_033715_119109_9BE9E98F 
-X-CRM114-Status: GOOD (  10.75  )
+X-CRM114-CacheID: sfid-20240808_033954_877445_94B34C4A 
+X-CRM114-Status: GOOD (  10.96  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -130,8 +130,15 @@ On 08/08/2024 05:52, Shawn Lin wrote:
 > Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
 > 
 
-...
 
+> +	reset_control_assert(host->rst);
+> +	udelay(1);
+> +	reset_control_deassert(host->rst);
+> +
+> +	host->ref_out_clk = devm_clk_get(dev, "ref_out");
+> +	if (IS_ERR(host->ref_out_clk))
+> +		return dev_err_probe(dev, PTR_ERR(host->ref_out_clk), "ciu-drive not available\n");
+> +
 > +	err = clk_prepare_enable(host->ref_out_clk);
 > +	if (err)
 > +		return dev_err_probe(dev, err, "failed to enable ref out clock\n");
@@ -141,15 +148,16 @@ On 08/08/2024 05:52, Shawn Lin wrote:
 > +		dev_err_probe(&pdev->dev, PTR_ERR(host->rst_gpio),
 > +				"invalid reset-gpios property in node\n");
 > +		err = PTR_ERR(host->rst_gpio);
+> +		goto out;
+> +	}
+> +	udelay(20);
+> +	gpiod_set_value_cansleep(host->rst_gpio, 1);
 
-No. Look at your code above - you have return dev_err_probe, so logical
-is that the syntax is err = dev_err_probe. Don't over-complicate the code.
+Also, why do you leave the device in the reset state? Logical one means
+- reset is asserted. This applies to ufs_rockchip_device_reset() as well
+- that's just wrong code.
 
-Anyway, this is suspicious. You already have resets with four resets
-(!!!) and you claim you have fifth reset - GPIO? This looks just wrong,
-like you represent some properties which do not belong here.
 
-Where is your DTS so we can validate it?
 
 Best regards,
 Krzysztof
