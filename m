@@ -4,50 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D351FC52D71
-	for <linux-rockchip@archiver.kernel.org>; Thu,  8 Aug 2024 10:34:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EC78DC52D73
+	for <linux-rockchip@archiver.kernel.org>; Thu,  8 Aug 2024 10:38:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=YCLRprE3Xa+7BzsEC4+gC/U6hjOeGFaENXAOVHO+UEo=; b=BkwcIw+TR/QMsT
-	vC46i0UkFPZGsPwyo3hJhuIKnjbZ8K2ZVLs2FHsOaiNRYET9iijufOeehMKI6z3BxQQ8iv5WTBjsz
-	42R/ey7ah+Y8XEnABGrHlk7D7tkBfqqpmdiyx17acy4FG0oofosDIbJwqclRcinMeE/5meTBm0IWb
-	k99px3xT9ljLjpa6A+gLFg4dAh7Tm+yiL6SFX9i7AEfwnvotvbM0lU8CUfgn4YvpZLOY0ujAwsa0C
-	hM8nO6Q8SLaC1nw16P8O38esK8BSnicP5/huBxH+qV5nMRjkDfhY0ziOESSRDxzvyYNz26nh98O8w
-	fNJ8gdcAOr7dP7P6HWWQ==;
+	List-Owner; bh=81vDFnz+aDnuneaL1KGnAaJo5por2Zgi2fyGa4EFWKk=; b=NmzYc4/NH8ojBH
+	PiH0HVubovUtYoggcNmoD+/6Ufs2qLgbM9ksfv0rbjEOkhm1+L8IZ2/oXvxiuPyyAyx7IbGa9cXG6
+	Q+jMmtyK3spcBQc/iUqx/gEj+Z44Qhq5wbnvtWiqdTlK5I/VH69nPMRxcCEIjuBSnH6dMmVSikuHs
+	GhIUXdLGQcOuQqaRywHLLB6L1994bER4JS2uy24TPfvXuA0M6juvU9fJph9FtKTY9OEUctwKJ6JJT
+	xxc/mJdLpTqw+e2IYym6APdnNKQhZuQkxftXwsTbAm1dYPhLlJq+9XoAneefQ85q96xxrH0+RsB80
+	rWcTno3F4EStgegqwztw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sc0To-00000007vhX-1rvm;
-	Thu, 08 Aug 2024 10:34:48 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1sc0XU-00000007wGX-2t50;
+	Thu, 08 Aug 2024 10:38:36 +0000
+Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sc0TT-00000007vcC-2Bde
+	id 1sc0WA-00000007w5n-2uXO
 	for linux-rockchip@lists.infradead.org;
-	Thu, 08 Aug 2024 10:34:47 +0000
+	Thu, 08 Aug 2024 10:38:34 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id BACB9614D7;
-	Thu,  8 Aug 2024 10:34:26 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C75F7C32782;
-	Thu,  8 Aug 2024 10:34:21 +0000 (UTC)
+	by sin.source.kernel.org (Postfix) with ESMTP id 6FA67CE1235;
+	Thu,  8 Aug 2024 10:37:07 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 95EC9C4AF0D;
+	Thu,  8 Aug 2024 10:37:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1723113266;
-	bh=HLT8k04Hl029XQQEj0TM4a3dTQdPE/rMulXZ7DPKX7U=;
+	s=k20201202; t=1723113426;
+	bh=0kNLFQPI5nfXCEqRnoX8UgfOmT9hxy59dY7HbhkRp7I=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=Udz6ct0Z0TnSMbNfkiryw7aephX+yb8PSmUJlF1T74C84oeaROdHA4sQITLxWCFkz
-	 s/Z3tWV6zSJhnjrq5Inj8teypd3vA20myAJbAgpdUM6Md9rWfozWbrrV/vIc2WDG/u
-	 ZtGaiUlJlE+z2J9VXGdzp/QRFkPIbMRSv9yOxPVbsGb2GNsNPYdbAcr8fsE5NLyWGv
-	 4QyYtdXZ2mlMrtGSb5mBJjWhgAaxRJYIOp85TkKeZ/Fecj60g2iHJ9e03X1gLk+QFz
-	 ONjQZ4jZbW92Thv0AttycML40I1GCEdQ2SKTorq8cnj1UKim1A8nTj/sI8zq1t15YT
-	 ejEc5/di/Z3rw==
-Message-ID: <a4f8059f-efe0-4874-8746-24e4cf9b9e89@kernel.org>
-Date: Thu, 8 Aug 2024 12:34:19 +0200
+	b=eTkGBqIFyRANWpKh6JZIReu9cY+c3+hfyPyxBnw8mRmp9Cnpw26lCDmsod1S7KTrc
+	 hLbMgIS8cBa7qOI916XTjvNgB48UaO9Y1OLZmIcInah2rB4KxfgYVIydadqfCEDS67
+	 iVnjUlujmHWLVK5/4/ZeZvxAmYUfYaI/FN9/CvtDYfUJfZ4wRqLkvuENPDHtsn8Zgw
+	 DPg1Ucg6tapZoEulJoaXeiFYGgMU2CY93+lLrSCbX7bYlvsAGA5crsCo9RcQ8/rn86
+	 yKto3cpk1wzhP8zhK27BSm16zYBRB07sm/dOs+28mM7DsRtZ714A01cm7C3d6yizVd
+	 xcqakncI1ZjPw==
+Message-ID: <93a16a4a-6a12-446f-bfc9-e8aa907e0598@kernel.org>
+Date: Thu, 8 Aug 2024 12:36:59 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 2/3] dt-bindings: ufs: Document Rockchip UFS host
- controller
+Subject: Re: [PATCH v2 3/3] scsi: ufs: rockchip: init support for UFS
 To: Shawn Lin <shawn.lin@rock-chips.com>, Rob Herring <robh+dt@kernel.org>,
  "James E . J . Bottomley" <James.Bottomley@HansenPartnership.com>,
  "Martin K . Petersen" <martin.petersen@oracle.com>,
@@ -59,7 +58,7 @@ Cc: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
  linux-scsi@vger.kernel.org, linux-rockchip@lists.infradead.org,
  linux-kernel@vger.kernel.org, devicetree@vger.kernel.org
 References: <1723089163-28983-1-git-send-email-shawn.lin@rock-chips.com>
- <1723089163-28983-3-git-send-email-shawn.lin@rock-chips.com>
+ <1723089163-28983-4-git-send-email-shawn.lin@rock-chips.com>
 From: Krzysztof Kozlowski <krzk@kernel.org>
 Content-Language: en-US
 Autocrypt: addr=krzk@kernel.org; keydata=
@@ -105,11 +104,10 @@ Autocrypt: addr=krzk@kernel.org; keydata=
  uZwJCLykjad45hsWcOGk3OcaAGQS6NDlfhM6O9aYNwGL6tGt/6BkRikNOs7VDEa4/HlbaSJo
  7FgndGw1kWmkeL6oQh7wBvYll2buKod4qYntmNKEicoHGU+x91Gcan8mCoqhJkbqrL7+nXG2
  5Q/GS5M9RFWS+nYyJh+c3OcfKqVcZQNANItt7+ULzdNJuhvTRRdC3g9hmCEuNSr+CLMdnRBY fv0=
-In-Reply-To: <1723089163-28983-3-git-send-email-shawn.lin@rock-chips.com>
+In-Reply-To: <1723089163-28983-4-git-send-email-shawn.lin@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240808_033427_684226_0B27680A 
-X-CRM114-Status: UNSURE (   9.79  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240808_033715_119109_9BE9E98F 
+X-CRM114-Status: GOOD (  10.75  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -127,48 +125,31 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 On 08/08/2024 05:52, Shawn Lin wrote:
-> Document Rockchip UFS host controller for RK3576 SoC.
+> RK3576 contains a UFS controller, add init support fot it.
 > 
 > Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
 > 
-> ---
-> 
-> Changes in v2:
-> - renmae file name
-> - fix all errors and pass the dt_binding_check:
->   make dt_binding_check DT_SCHEMA_FILES=rockchip,rk3576-ufs.yaml
 
+...
 
-You did much more. Some properties appeared which were here not
-before... The way you send patches makes it difficult to review. Look:
+> +	err = clk_prepare_enable(host->ref_out_clk);
+> +	if (err)
+> +		return dev_err_probe(dev, err, "failed to enable ref out clock\n");
+> +
+> +	host->rst_gpio = devm_gpiod_get(&pdev->dev, "reset", GPIOD_OUT_LOW);
+> +	if (IS_ERR(host->rst_gpio)) {
+> +		dev_err_probe(&pdev->dev, PTR_ERR(host->rst_gpio),
+> +				"invalid reset-gpios property in node\n");
+> +		err = PTR_ERR(host->rst_gpio);
 
-b4 diff '<1723089163-28983-3-git-send-email-shawn.lin@rock-chips.com>'
-Grabbing thread from
-lore.kernel.org/all/1723089163-28983-3-git-send-email-shawn.lin@rock-chips.com/t.mbox.gz
-Checking for older revisions
-Grabbing search results from lore.kernel.org
-  Added from v1: 4 patches
----
-Analyzing 18 messages in the thread
-WARNING: duplicate messages found at index 2
-   Subject 1: dt-bindings: ufs: Document Rockchip UFS host controller
-   Subject 2: dt-bindings: ufs: Document Rockchip UFS host controller
-  2 is not a reply... assume additional patch
-Looking for additional code-review trailers on lore.kernel.org
-Analyzing 0 code-review messages
-Preparing fake-am for v1: Init support for RK3576 UFS controller
-  range: e86f0d80765d..3ae8e722f6ab
-Preparing fake-am for v2: scsi: ufs: core: Export
-ufshcd_dme_link_startup() helper
-ERROR: v2 series incomplete; unable to create a fake-am range
----
-Could not create fake-am range for upper series v2
+No. Look at your code above - you have return dev_err_probe, so logical
+is that the syntax is err = dev_err_probe. Don't over-complicate the code.
 
+Anyway, this is suspicious. You already have resets with four resets
+(!!!) and you claim you have fifth reset - GPIO? This looks just wrong,
+like you represent some properties which do not belong here.
 
-So how can we handle it? Your job is to use standard process so life of
-reviewers is not more difficult than it should be.
-
-Provide FULL CHANGELOG with explanation what happened here.
+Where is your DTS so we can validate it?
 
 Best regards,
 Krzysztof
