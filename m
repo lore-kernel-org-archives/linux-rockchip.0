@@ -4,54 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BD945C3DA4A
-	for <linux-rockchip@archiver.kernel.org>; Thu,  8 Aug 2024 16:42:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 548CCC52D7B
+	for <linux-rockchip@archiver.kernel.org>; Thu,  8 Aug 2024 16:44:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=D5CYHODop5vxrnIMGyhSXOnV4QUPHydS9Hl8DgYxMK8=; b=OQDhGshQjf0UtF
-	tPkN1gnBOof3A5dF3+LeJvE1lsEqgqfqXgPB3mJhse0g4lCfXZMcXq20FeXcmmbH7alrMeqO3QY5d
-	FX24WmLKKsagz3qBFP2dYH+QMV2OF3Czo4R23qISmjImcFqgWJrze6tWGAgC3hjfSdXFRmygv17JW
-	/rQjxTF7ZXiXe1WrUbcw3dC/D8vgweQpSoxUi1JDWm0x26cFs+RUgqjTBGc+0jS2SZDlhNBi+e0ia
-	wBkamkpQXWD5E8XEWMIBH94pIy+y1V35lUZx8L/fBQRVvGMhFk3Lzopvc48oVY6Vnx+RmbuTWCpeW
-	/GoqwwdTCQJYmjv6tI8g==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
+	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=NkbDXqSZfKHN1KagkqkeeLIxg5zipNQQD5O4NFzd8Wg=; b=jKtCdrAuBjNVseB51+pqHSW37o
+	2399ZzkZiKtkfmK1InZ+UQ7GW5bpjQWfk2Osvgwb6JgLWrT3dXoMtkRHFenPGVgx9+WHVi0pLqTfb
+	yKTTNpSWXLC4LWO7HjKj5NlJlqvc+id7klvoPe66GNvtnpGPfbpcpQ7UdgLI7ziXWnd8EHfD0DCoX
+	GCxKWYqkfdxcbS9lElaxCJUYwvjWhgxDR9/V+yBB+OXmXDPNnJdw6wQKfRDzUU7LQJfp93nxog2Mk
+	ZJYuZbf/KXdwuDpgaECbJEsdPp8+wSkPS+RDBUQ7CWJCsJ1QizQA1GPRJVINbP2WJKMVV5WqX+dDC
+	L/zqzbmQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sc6D9-00000008yoX-3e6a;
-	Thu, 08 Aug 2024 16:41:59 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1sc6FW-00000008zC9-1nwH;
+	Thu, 08 Aug 2024 16:44:26 +0000
+Received: from mail.manjaro.org ([2a01:4f8:c0c:51f3::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sc6Ca-00000008ygu-1nnv;
-	Thu, 08 Aug 2024 16:41:25 +0000
-Received: from i53875a9f.versanet.de ([83.135.90.159] helo=diego.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1sc6CN-0004h9-Q6; Thu, 08 Aug 2024 18:41:11 +0200
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: linux-kernel@vger.kernel.org,
- Detlev Casanova <detlev.casanova@collabora.com>
-Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Ulf Hansson <ulf.hansson@linaro.org>,
- Detlev Casanova <detlev.casanova@collabora.com>,
- Finley Xiao <finley.xiao@rock-chips.com>, Jagan Teki <jagan@edgeble.ai>,
- Arnd Bergmann <arnd@arndb.de>, Elaine Zhang <zhangqing@rock-chips.com>,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-pm@vger.kernel.org,
- kernel@collabora.com
-Subject: Re: [PATCH v2 2/2] pmdomain: rockchip: Add support for rk3576 SoC
-Date: Thu, 08 Aug 2024 18:41:05 +0200
-Message-ID: <17766579.lhrHg4fidi@diego>
-In-Reply-To: <20240808163451.80750-3-detlev.casanova@collabora.com>
-References: <20240808163451.80750-1-detlev.casanova@collabora.com>
- <20240808163451.80750-3-detlev.casanova@collabora.com>
+	id 1sc6Ew-00000008z5C-13s9;
+	Thu, 08 Aug 2024 16:43:52 +0000
 MIME-Version: 1.0
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
+	t=1723135425;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=XKlIGGPj13gK8yKpbp3U+LvRWbJSc5NnOp+pssl/vnc=;
+	b=eiGqp1bDO1iRcXfgByn26YpBoXRBjhUz/evQL5MbuhNC3NEPvW6e2awJdeHjD6c9Cmcli5
+	T22v+igIm4LWS/Z0vzPi7qQpr+zOODRAI8FQzeX/VoTuJpX2TorePmcpkvVClT+T1zTLXt
+	Jmc9oz666xX/v+8UVdfNgAJkVoTgFP9yEL3zSt3idBaho/C0gzOADiV0lnv5d4YS6qJF3i
+	R5VJ1CeLWlY07jRDRLe5ypFjhOCmmr9lU5SmK5BOCiFtD9P4kCHHANWYBs7FuGELQVbOJj
+	Li4dJGA5VMfv3ZUNx6EFcmNHLnGeR6Sm45FR1VFnGq/PiBD8a9z2uW+wfD4WTw==
+Date: Thu, 08 Aug 2024 18:43:42 +0200
+From: Dragan Simic <dsimic@manjaro.org>
+To: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>
+Cc: linux-kernel@vger.kernel.org, Krzysztof Kozlowski <krzk@kernel.org>,
+ Detlev Casanova <detlev.casanova@collabora.com>, Rob Herring
+ <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Ulf Hansson <ulf.hansson@linaro.org>, Geert
+ Uytterhoeven <geert+renesas@glider.be>, "Rafael J . Wysocki"
+ <rafael@kernel.org>, Finley Xiao <finley.xiao@rock-chips.com>, Jagan Teki
+ <jagan@edgeble.ai>, Elaine Zhang <zhangqing@rock-chips.com>,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-pm@vger.kernel.org
+Subject: Re: [PATCH 2/3] dt-bindings: Add power-domain header for RK3576 SoCs
+In-Reply-To: <10908017.3WhfQktd6Z@diego>
+References: <20240802151647.294307-1-detlev.casanova@collabora.com>
+ <e04258dc-07c4-45c7-90d4-bc1ed9eb100b@kernel.org>
+ <3310992.44csPzL39Z@trenzalore> <10908017.3WhfQktd6Z@diego>
+Message-ID: <0c66dbf97fc5a5adc3831b1ed01e1188@manjaro.org>
+X-Sender: dsimic@manjaro.org
+Authentication-Results: ORIGINATING;
+	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240808_094124_500452_EB7544DE 
-X-CRM114-Status: GOOD (  19.93  )
+X-CRM114-CacheID: sfid-20240808_094350_773648_5008DD8A 
+X-CRM114-Status: GOOD (  17.21  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -63,64 +74,43 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Detlev,
-
-Am Donnerstag, 8. August 2024, 18:31:05 CEST schrieb Detlev Casanova:
-> From: Finley Xiao <finley.xiao@rock-chips.com>
-> 
-> Add configuration for RK3576 SoC and list the power domains.
-> 
-> Signed-off-by: Finley Xiao <finley.xiao@rock-chips.com>
-> [rebase, reword, squash]
-> Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
-> ---
->  drivers/pmdomain/rockchip/pm-domains.c | 73 ++++++++++++++++++++++++--
->  1 file changed, 70 insertions(+), 3 deletions(-)
-> 
-> diff --git a/drivers/pmdomain/rockchip/pm-domains.c b/drivers/pmdomain/rockchip/pm-domains.c
-> index 9b76b62869d0d..863f1ad6b9e11 100644
-> --- a/drivers/pmdomain/rockchip/pm-domains.c
-> +++ b/drivers/pmdomain/rockchip/pm-domains.c
-
-[...]
-
-> @@ -175,6 +195,9 @@ struct rockchip_pmu {
->  #define DOMAIN_RK3568(name, pwr, req, wakeup)		\
->  	DOMAIN_M(name, pwr, pwr, req, req, req, wakeup)
->  
-> +#define DOMAIN_RK3576(name, p_offset, pwr, status, r_status, r_offset, req, idle, g_mask, delay, wakeup)	\
-> +	DOMAIN_M_O_R_G(name, p_offset, pwr, status, r_status, r_offset, req, idle, idle, g_mask, delay, wakeup)
-> +
->  /*
->   * Dynamic Memory Controller may need to coordinate with us -- see
->   * rockchip_pmu_block().
-> @@ -552,7 +575,10 @@ static int rockchip_pd_power(struct rockchip_pm_domain *pd, bool power_on)
->  			/* if powering up, leave idle mode */
->  			rockchip_pmu_set_idle_request(pd, false);
->  
-> -			rockchip_pmu_restore_qos(pd);
-> +			if (pd->info->delay_us)
-> +				udelay(pd->info->delay_us);
-> +			else
-> +				rockchip_pmu_restore_qos(pd);
-
-I still want this behaviour change in a separate patch with adequate
-commit message please.
-
-Going from always handling qos to allowing to just wait a specific time
-needs explanation and is not part of "just" adding rk3576 support.
-
-
-Heiko
-
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGVsbG8gSGVpa28sCgpPbiAyMDI0LTA4LTA4IDA5OjU0LCBIZWlrbyBTdMO8Ym5lciB3cm90ZToK
+PiBBbSBEaWVuc3RhZywgNi4gQXVndXN0IDIwMjQsIDE4OjM0OjQxIENFU1Qgc2NocmllYiBEZXRs
+ZXYgQ2FzYW5vdmE6Cj4+IE9uIFN1bmRheSwgNCBBdWd1c3QgMjAyNCAwNTo1NjozOSBFRFQgS3J6
+eXN6dG9mIEtvemxvd3NraSB3cm90ZToKPj4gPiBPbiAwMi8wOC8yMDI0IDE3OjE0LCBEZXRsZXYg
+Q2FzYW5vdmEgd3JvdGU6Cj4+ID4gPiBGcm9tOiBGaW5sZXkgWGlhbyA8ZmlubGV5LnhpYW9Acm9j
+ay1jaGlwcy5jb20+Cj4+ID4gPgo+PiA+ID4gRGVmaW5lIHBvd2VyIGRvbWFpbiBJRHMgYXMgZGVz
+Y3JpYmVkIGluIHRoZSBUUk0uCj4+ID4KPj4gPiBQbGVhc2UgdXNlIHN1YmplY3QgcHJlZml4ZXMg
+bWF0Y2hpbmcgdGhlIHN1YnN5c3RlbS4gWW91IGNhbiBnZXQgdGhlbSBmb3IKPj4gPiBleGFtcGxl
+IHdpdGggYGdpdCBsb2cgLS1vbmVsaW5lIC0tIERJUkVDVE9SWV9PUl9GSUxFYCBvbiB0aGUgZGly
+ZWN0b3J5Cj4+ID4geW91ciBwYXRjaCBpcyB0b3VjaGluZy4gRm9yIGJpbmRpbmdzLCB0aGUgcHJl
+ZmVycmVkIHN1YmplY3RzIGFyZQo+PiA+IGV4cGxhaW5lZCBoZXJlOgo+PiA+IGh0dHBzOi8vd3d3
+Lmtlcm5lbC5vcmcvZG9jL2h0bWwvbGF0ZXN0L2RldmljZXRyZWUvYmluZGluZ3Mvc3VibWl0dGlu
+Zy1wYXRjaGUKPj4gPiBzLmh0bWwjaS1mb3ItcGF0Y2gtc3VibWl0dGVycwo+PiA+ID4gU2lnbmVk
+LW9mZi1ieTogRmlubGV5IFhpYW8gPGZpbmxleS54aWFvQHJvY2stY2hpcHMuY29tPgo+PiA+ID4g
+W3Jld29yZF0KPj4gPiA+IFNpZ25lZC1vZmYtYnk6IERldGxldiBDYXNhbm92YSA8ZGV0bGV2LmNh
+c2Fub3ZhQGNvbGxhYm9yYS5jb20+Cj4+ID4gPiAtLS0KPj4gPiA+Cj4+ID4gPiAgaW5jbHVkZS9k
+dC1iaW5kaW5ncy9wb3dlci9yazM1NzYtcG93ZXIuaCB8IDMwICsrKysrKysrKysrKysrKysrKysr
+KysrKwo+PiA+ID4gIDEgZmlsZSBjaGFuZ2VkLCAzMCBpbnNlcnRpb25zKCspCj4+ID4gPiAgY3Jl
+YXRlIG1vZGUgMTAwNjQ0IGluY2x1ZGUvZHQtYmluZGluZ3MvcG93ZXIvcmszNTc2LXBvd2VyLmgK
+Pj4gPgo+PiA+IFRoaXMgaXMgcGFydCBvZiBiaW5kaW5ncy4KPj4gPgo+PiA+ID4gZGlmZiAtLWdp
+dCBhL2luY2x1ZGUvZHQtYmluZGluZ3MvcG93ZXIvcmszNTc2LXBvd2VyLmgKPj4gPiA+IGIvaW5j
+bHVkZS9kdC1iaW5kaW5ncy9wb3dlci9yazM1NzYtcG93ZXIuaAo+PiA+IE1pc3NpbmcgdmVuZG9y
+IHByZWZpeC4gVGhpcyBzaG91bGQgYmUgbmFtZWQgYWZ0ZXIgY29tcGF0aWJsZS4KPj4gCj4+IExv
+b2tzIGxpa2UgYWxsIG90aGVyIHJvY2tjaGlwIHBvd2VyIGJpbmRpbmdzIHVzZSB0aGUgCj4+IGlu
+Y2x1ZGUvZHQtYmluZGluZ3MvCj4+IHBvd2VyL3JrWFhYWC5oIGZvcm1hdC4gU2hvdWxkIEkga2Vl
+cCB0aGF0IHdheSA/Cj4gCj4gdGhlcmUgaXMgYWxzbyByb2NrY2hpcCxydjExMjYtcG93ZXIuaCAs
+IHNvIHBsZWFzZSBmb2xsb3cgS3J6eXN6dG9mJ3MKPiBzdWdnZXN0aW9uLiBPbGRlciBoZWFkZXIg
+bmFtaW5ncyBuZWVkIHRvIHN0YXkgdGhlIHNhbWUgb2YgY291cnNlCj4gYnV0IHRoYXQgc2hvdWxk
+bid0IGtlZXAgdXMgZnJvbSB1cGRhdGluZyBuYW1pbmcgc2NoZW1lcyB0byBiZXR0ZXIKPiB3b3Jr
+IGluIG5ldyBhZGRpdGlvbnMuCgpBY3R1YWxseSwgd2h5IGRvbid0IHdlIHJlbmFtZSB0aGUgb2xk
+IGhlYWRlcnMgdG8gZm9sbG93IHRoZSBuZXcgbmFtaW5nIApydWxlcz8KSXMgdGhlcmUgc29tZXRo
+aW5nIHByZXZlbnRpbmcgdXMgZnJvbSBkb2luZyB0aGF0LCB3aGljaCBJJ20gbWlzc2luZz8KCl9f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tj
+aGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6
+Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
