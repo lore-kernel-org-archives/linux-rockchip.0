@@ -4,36 +4,36 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 766C5C3DA4A
-	for <linux-rockchip@archiver.kernel.org>; Thu,  8 Aug 2024 03:53:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 94987C52D7C
+	for <linux-rockchip@archiver.kernel.org>; Thu,  8 Aug 2024 03:53:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
 	List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ngaqHkz/KS/RJxZUkuWztGscD5JqhOCvEw8PJgIBoiE=; b=WtUo8INDFBSv+U
-	49F8JKz5OF6Kg0BIdKDRIZCghxs510Zp9nsCypASnasuu4wemQcPnDOZfUT4sKF9m2fQdACmh3dp+
-	1cN5Ifq8dfSra6wyRZ+DgsJIuvU6D8IfnLHmpkmkfgutvfsTJNenYXxRfnmDa3fHLuxkfFOT9TNXI
-	NOlqPRilXN2CjEaSHRL2stEVhYLn8kreR9BH2jcStYWZaeGQJatda8WUsHz2++E2BN2auWn2EnRhC
-	ecoUE1noxqv+EILaPsNoi7/KGNSLsPLL4v0fkRYw3Z71cWgNZN3IrBEddQ1of3J16hH/kvMz2X72g
-	gnwkcMMcLH2g8ZZK/Waw==;
+	List-Owner; bh=354bAtkN/wpdt/H4xWDp9kKzi5Pi8lw7LjxzZxlYOZY=; b=A3btNmdt+AbJ/K
+	7dkWmK0Ba4DDjGjAYsbwFKgoZVRxexmeF7i1XAZ+12I5M6jW1LI6zOU2P7K0loGfKRYsUtuvZ188q
+	bDYBb7IPXUg0T1VsDPTnrpex5py5bLFq4XZhLDDGWOgW1M2ugFvsIeC9tn3vqMnZBP0h52Gg5YAkA
+	USAc3kaEANdJk9pOjelyQ+90MvGFXGunPcNPLqAc+oXnLg+0K03zBj1YQhjjEeNdXvQcv5zIOX6VD
+	R/fuTZZf4v75Mn8dRPMrvnpv2NlsiAah5Qqr9AOG83+OcXk2ut+U5+QcFvkNjo3JNT8D2YbYaVOsl
+	BypG6qxsSOwmG1j6JzRA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sbuDg-00000006xqe-3jRc;
+	id 1sbuDg-00000006xqC-0ZYb;
 	Thu, 08 Aug 2024 03:53:44 +0000
-Received: from mail-m1973198.qiye.163.com ([220.197.31.98])
+Received: from mail-m3279.qiye.163.com ([220.197.32.79])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sbuDc-00000006xoA-2eSa
+	id 1sbuDc-00000006xoB-2fnF
 	for linux-rockchip@lists.infradead.org;
-	Thu, 08 Aug 2024 03:53:44 +0000
+	Thu, 08 Aug 2024 03:53:42 +0000
 DKIM-Signature: a=rsa-sha256;
-	b=kFaVLnmxJ0WqyG9uyAzc2wSGNjmA7umrS3fRsCE8PPp0trWDtDyqmW40bngSnC3QOTGZiKQ1ttOi7uaY+ZO/f/K5C3fCtKCdbROWqE9sK0o5Hqw6Fg9HOpvx6dYXgyfgzfGgQVGyeRyPRn97ml7xra20CPQ6EfRAw/nkX7Xek3g=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=Q2TCGiFQuP7Aex+0R9cXIqy0nyZPoAyhqD5py5ZHqSI=;
+	b=C6Qc1zZCbwq3gyPEJCt2aXffC1lXAgfkCt5iaq4GM8MRCgUxpcsOjRQj9bu38sAQtskppzj/NMhQRfpjGwRT8/r1qZCZAxBW0P/tsANArajIwg0xg0M5enEvECbikZjo2Hn4E+d5YNZxQ9YXhekdPkMz95qpWNkLAtOkI8kmhl8=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=gA/OcFEf+xm3tk0hvXdWxM6LYScuTWZNo5bHWGuX6kI=;
 	h=date:mime-version:subject:message-id:from;
 Received: from localhost.localdomain (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTPA id EE56F4603EB;
-	Thu,  8 Aug 2024 11:53:12 +0800 (CST)
+	by smtp.qiye.163.com (Hmail) with ESMTPA id 73BD44600D6;
+	Thu,  8 Aug 2024 11:53:08 +0800 (CST)
 From: Shawn Lin <shawn.lin@rock-chips.com>
 To: Rob Herring <robh+dt@kernel.org>,
 	"James E . J . Bottomley" <James.Bottomley@HansenPartnership.com>,
@@ -52,24 +52,24 @@ Cc: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
 	linux-kernel@vger.kernel.org,
 	devicetree@vger.kernel.org,
 	Shawn Lin <shawn.lin@rock-chips.com>
-Subject: [PATCH v2 2/3] dt-bindings: ufs: Document Rockchip UFS host controller
-Date: Thu,  8 Aug 2024 11:52:42 +0800
-Message-Id: <1723089163-28983-3-git-send-email-shawn.lin@rock-chips.com>
+Subject: [PATCH v2 1/3] scsi: ufs: core: Export ufshcd_dme_link_startup() helper
+Date: Thu,  8 Aug 2024 11:52:41 +0800
+Message-Id: <1723089163-28983-2-git-send-email-shawn.lin@rock-chips.com>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1723089163-28983-1-git-send-email-shawn.lin@rock-chips.com>
 References: <1723089163-28983-1-git-send-email-shawn.lin@rock-chips.com>
 X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGkkdS1YaSk9JSkpDTB8YS0tWFRQJFh
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQ0lIHlZJQx0ZHUgeTh5LTkxWFRQJFh
 	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSUhCSE
 	NVSktLVUpCS0tZBg++
-X-HM-Tid: 0a91301e8bce03aekunmee56f4603eb
+X-HM-Tid: 0a91301e79b203aekunm73bd44600d6
 X-HM-MType: 1
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6OAw6GRw4DTIyOQsrPws0KD4e
-	H0swCQ1VSlVKTElIS0NCSkJPT09OVTMWGhIXVQgTGgwVVRcSFTsJFBgQVhgTEgsIVRgUFkVZV1kS
-	C1lBWU5DVUlJVUxVSkpPWVdZCAFZQU5ISUs3Bg++
+X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6Mj46NAw6QzIxAwszEQksKD9W
+	SEoaChhVSlVKTElIS0NCSkNCTEhMVTMWGhIXVQgTGgwVVRcSFTsJFBgQVhgTEgsIVRgUFkVZV1kS
+	C1lBWU5DVUlJVUxVSkpPWVdZCAFZQUhNTUM3Bg++
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240807_205341_159372_C36E14F0 
-X-CRM114-Status: GOOD (  12.52  )
+X-CRM114-CacheID: sfid-20240807_205341_156418_53F64315 
+X-CRM114-Status: GOOD (  12.17  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,123 +87,51 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Document Rockchip UFS host controller for RK3576 SoC.
+Export it for host drivers.
 
 Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
-
 ---
 
-Changes in v2:
-- renmae file name
-- fix all errors and pass the dt_binding_check:
-  make dt_binding_check DT_SCHEMA_FILES=rockchip,rk3576-ufs.yaml
+Changes in v2: None
 
- .../bindings/ufs/rockchip,rk3576-ufs.yaml          | 96 ++++++++++++++++++++++
- 1 file changed, 96 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/ufs/rockchip,rk3576-ufs.yaml
+ drivers/ufs/core/ufshcd.c | 4 +++-
+ include/ufs/ufshcd.h      | 1 +
+ 2 files changed, 4 insertions(+), 1 deletion(-)
 
-diff --git a/Documentation/devicetree/bindings/ufs/rockchip,rk3576-ufs.yaml b/Documentation/devicetree/bindings/ufs/rockchip,rk3576-ufs.yaml
-new file mode 100644
-index 0000000..1844fe3
---- /dev/null
-+++ b/Documentation/devicetree/bindings/ufs/rockchip,rk3576-ufs.yaml
-@@ -0,0 +1,96 @@
-+# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/ufs/rockchip,ufs.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
+diff --git a/drivers/ufs/core/ufshcd.c b/drivers/ufs/core/ufshcd.c
+index 8f4abc5..e09f004 100644
+--- a/drivers/ufs/core/ufshcd.c
++++ b/drivers/ufs/core/ufshcd.c
+@@ -4019,7 +4019,7 @@ static void ufshcd_host_memory_configure(struct ufs_hba *hba)
+  *
+  * Return: 0 on success, non-zero value on failure.
+  */
+-static int ufshcd_dme_link_startup(struct ufs_hba *hba)
++int ufshcd_dme_link_startup(struct ufs_hba *hba)
+ {
+ 	struct uic_command uic_cmd = {
+ 		.command = UIC_CMD_DME_LINK_STARTUP,
+@@ -4032,6 +4032,8 @@ static int ufshcd_dme_link_startup(struct ufs_hba *hba)
+ 			"dme-link-startup: error code %d\n", ret);
+ 	return ret;
+ }
++EXPORT_SYMBOL_GPL(ufshcd_dme_link_startup);
 +
-+title: Rockchip UFS Host Controller
-+
-+maintainers:
-+  - Shawn Lin <shawn.lin@rock-chips.com>
-+
-+allOf:
-+  - $ref: ufs-common.yaml
-+
-+properties:
-+  compatible:
-+    const: rockchip,rk3576-ufs
-+
-+  reg:
-+    maxItems: 5
-+
-+  reg-names:
-+    items:
-+      - const: hci
-+      - const: mphy
-+      - const: hci_grf
-+      - const: mphy_grf
-+      - const: hci_apb
-+
-+  clocks:
-+    maxItems: 4
-+
-+  clock-names:
-+    items:
-+      - const: core
-+      - const: pclk
-+      - const: pclk_mphy
-+      - const: ref_out
-+
-+  power-domains:
-+    maxItems: 1
-+
-+  resets:
-+    maxItems: 4
-+
-+  reset-names:
-+    items:
-+      - const: biu
-+      - const: sys
-+      - const: ufs
-+      - const: grf
-+
-+  reset-gpios:
-+    maxItems: 1
-+
-+required:
-+  - compatible
-+  - reg
-+  - reg-names
-+  - clocks
-+  - clock-names
-+  - interrupts
-+  - power-domains
-+  - resets
-+  - reset-names
-+  - reset-gpios
-+
-+unevaluatedProperties: false
-+
-+examples:
-+  - |
-+    #include <dt-bindings/clock/rockchip,rk3576-cru.h>
-+    #include <dt-bindings/reset/rockchip,rk3576-cru.h>
-+    #include <dt-bindings/interrupt-controller/arm-gic.h>
-+    #include <dt-bindings/power/rk3576-power.h>
-+    #include <dt-bindings/pinctrl/rockchip.h>
-+    #include <dt-bindings/gpio/gpio.h>
-+
-+    ufs: ufs@2a2d0000 {
-+          compatible = "rockchip,rk3576-ufs";
-+          reg = <0x2a2d0000 0x10000>,
-+                <0x2b040000 0x10000>,
-+                <0x2601f000 0x1000>,
-+                <0x2603c000 0x1000>,
-+                <0x2a2e0000 0x10000>;
-+          reg-names = "hci", "mphy", "hci_grf", "mphy_grf", "hci_apb";
-+          clocks = <&cru ACLK_UFS_SYS>, <&cru PCLK_USB_ROOT>, <&cru PCLK_MPHY>,
-+                  <&cru CLK_REF_UFS_CLKOUT>;
-+          clock-names = "core", "pclk", "pclk_mphy", "ref_out";
-+          interrupts = <GIC_SPI 361 IRQ_TYPE_LEVEL_HIGH>;
-+          power-domains = <&power RK3576_PD_USB>;
-+          resets = <&cru SRST_A_UFS_BIU>, <&cru SRST_A_UFS_SYS>, <&cru SRST_A_UFS>,
-+                    <&cru SRST_P_UFS_GRF>;
-+          reset-names = "biu", "sys", "ufs", "grf";
-+          reset-gpios = <&gpio4 RK_PD0 GPIO_ACTIVE_HIGH>;
-+    };
+ /**
+  * ufshcd_dme_reset - UIC command for DME_RESET
+  * @hba: per adapter instance
+diff --git a/include/ufs/ufshcd.h b/include/ufs/ufshcd.h
+index cac0cdb..8bc28c1 100644
+--- a/include/ufs/ufshcd.h
++++ b/include/ufs/ufshcd.h
+@@ -1432,6 +1432,7 @@ int ufshcd_read_string_desc(struct ufs_hba *hba, u8 desc_index,
+ void ufshcd_hold(struct ufs_hba *hba);
+ void ufshcd_release(struct ufs_hba *hba);
+ 
++int ufshcd_dme_link_startup(struct ufs_hba *hba);
+ void ufshcd_clkgate_delay_set(struct device *dev, unsigned long value);
+ 
+ int ufshcd_get_vreg(struct device *dev, struct ufs_vreg *vreg);
 -- 
 2.7.4
 
