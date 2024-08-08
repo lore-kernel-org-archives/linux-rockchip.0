@@ -4,70 +4,105 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CCA93C3DA4A
-	for <linux-rockchip@archiver.kernel.org>; Thu,  8 Aug 2024 17:52:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9BB3EC3DA4A
+	for <linux-rockchip@archiver.kernel.org>; Thu,  8 Aug 2024 17:55:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=RGJoxHFTHNRqkfUr/sBK2cCDbh4YjeSUhLMikEVVd9g=; b=DvKGC8AUCUQEh8
-	PiFHpEsQYw2hOqDDcHx9CJs1VjzgboXZrBRc1odYPnt+jpBRVnuvvyUw2UuZpvT4gzPnANGDY1mId
-	lv4hWyJWdEzxioX+3tqeTAE6/FCkMnJsMZEVr5DVop3dJmGqdJVvgqUU3HpFK3Mq9hjOmdEAyCaFn
-	wHlzl6EJbfPEREWP2OQhzw3KPKoBls+qVdxzdtKQaYmUls4BSgmO7+fhouSlH5GgFWz9kXm1T2DMA
-	TDztopEGBf6VZ0dIAN8FdPy7K/EDLDUnChWgUyYM/M6LEn66wu85ASqQsAGk0PyJybxIoJgL1iSNi
-	F61F+cvkGURywBPQaSfw==;
+	List-Owner; bh=IH92E6SlZCex9srr7/m1Xyl/7Uvi82ZninY5x21Ionk=; b=LgmO+yLrgfr7xq
+	SdA5VnuMpuqn8WFUiHd6jLqG/v6V/JRvrcQNp3B9Svy6o6TaEGDJ8oQCdkx1KCoIcIRqmL4XMQQT0
+	bu2RO+AuoIyyqhYMuqzHM3pX5jd7siPuyTwxpM/YKf06Pc2iox6X3hhUM+dnWio0jR81L4WgRXVqj
+	yk5PyH0Pd37OXSYE+4iAvI8VozU42RDGN249ZRM2RlZHdoJ8f3WLekUiDwieP93Q7aoi6h/zlC+fk
+	4zU+k7uk9QR6QG7aVgDRrmqW5Kz4zB/JBFQfRFJrB2cP5Ee1qJztH04a+/+C59mKgQTb5JzE4J5EA
+	4pSRc306XdPAhNnQqVGw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sc7JD-000000098e6-06Ks;
-	Thu, 08 Aug 2024 17:52:19 +0000
-Received: from sender4-op-o12.zoho.com ([136.143.188.12])
+	id 1sc7ML-0000000990a-1FW0;
+	Thu, 08 Aug 2024 17:55:33 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sc7J8-000000098dX-4AAi;
-	Thu, 08 Aug 2024 17:52:16 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1723139524; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=Z5RkGYweZDCj33L+9XVp7NUsy9qorTJumRZa1LgxuRjS80WUvyI0CLLtoi/YIn+y7pVZ8Q4wYe6/yIUvFdioWrfBZKhanGSSAOjDqOvP1Bh/CjXQTpRnJnLObqFyLsEgo/BG+d3YEHASnTjmU1AZ4c6oFG5ZtnPcmfdjDZ8uKA0=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1723139524; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=ZPWX9nQFc4zdu6yspZOvI5jMNY9Ewabr9vrBLea3YM4=; 
-	b=V1ep5TXuqay3hF4BdasanLQtOeW0lGjl02E0MCusyLESdyoUGbnEHRu6U3pwcWx76ZOAU3MbjAfz+5hpY9xH47RtRSqgGQ1qjy4UU/hlDS3RfkjHVTGU4U/B9wl3wc0VVIIruOhvIuxSPqkpdeiBrTrVxaq/R+vRntZ0Gue+Q34=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=detlev.casanova@collabora.com;
-	dmarc=pass header.from=<detlev.casanova@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1723139524;
-	s=zohomail; d=collabora.com; i=detlev.casanova@collabora.com;
-	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
-	bh=ZPWX9nQFc4zdu6yspZOvI5jMNY9Ewabr9vrBLea3YM4=;
-	b=SUf2zPf8ofT0XUr+yvKRzZjdSOZkiv/HcHz6jC112prhVEf3TDQ8+QJCqXXkrhb1
-	0LbtgkeoyybsSLxaRYrYYrGqTJt1wGXpS3lVq2RuAEnICwk2lkbGu8LlqjhQMBVrcti
-	IwJBAERJ4k3P7/WIzfHVKJa9VS9z7xWgKF6dLD+4=
-Received: by mx.zohomail.com with SMTPS id 1723139522203254.50577975633348;
-	Thu, 8 Aug 2024 10:52:02 -0700 (PDT)
-From: Detlev Casanova <detlev.casanova@collabora.com>
-To: linux-kernel@vger.kernel.org,
- Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Ulf Hansson <ulf.hansson@linaro.org>,
- Finley Xiao <finley.xiao@rock-chips.com>, Jagan Teki <jagan@edgeble.ai>,
- Arnd Bergmann <arnd@arndb.de>, Elaine Zhang <zhangqing@rock-chips.com>,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-pm@vger.kernel.org,
- kernel@collabora.com
-Subject: Re: [PATCH v2 2/2] pmdomain: rockchip: Add support for rk3576 SoC
-Date: Thu, 08 Aug 2024 13:53:20 -0400
-Message-ID: <5805279.DvuYhMxLoT@trenzalore>
-In-Reply-To: <17766579.lhrHg4fidi@diego>
-References: <20240808163451.80750-1-detlev.casanova@collabora.com>
- <20240808163451.80750-3-detlev.casanova@collabora.com>
- <17766579.lhrHg4fidi@diego>
+	id 1sc7MI-000000098zZ-13iV
+	for linux-rockchip@lists.infradead.org;
+	Thu, 08 Aug 2024 17:55:31 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id BF8B361565;
+	Thu,  8 Aug 2024 17:55:29 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id CBC7FC4AF0D;
+	Thu,  8 Aug 2024 17:55:26 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1723139729;
+	bh=e2Qsr9jv5ZSuiivqkfD48WpnpeS2H2+o7CeK1rJ723E=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=RVt8d5SULboSZCDAr43OEbQKxiQdo0LT1nqEWsByFoPRqFsWT3OYZ1T5bew8QnSqM
+	 3V7wjk6Jttrx+kcJaB7E0JYHX9VOJTDWgyVjN+z7hskrSY9TtrAyzxaoI6EHJhf2Ee
+	 F4i0oQx+MbLT1GJnp2HgxYJtvQPseH97JkgglxqCwzbK6zTKvIrQXFTPQ8XJto6Ytq
+	 cAAAshppySIS2CTgVAdxAqaprXt1PAn/f9p2pRYte09oEF0TRtmAZ++Atn/p8GLonA
+	 d1UmCjcrz8UFNoFk0BlxL7VWymV6YJu9Ko0LpoaWNpjcFnPg+g1JIXvh7aYnkjwqX7
+	 VtkrS1joOMeqw==
+Message-ID: <f4cf42b6-61d1-4759-b3c0-c96e01b00e53@kernel.org>
+Date: Thu, 8 Aug 2024 19:55:24 +0200
 MIME-Version: 1.0
-X-ZohoMailClient: External
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 07/10] arm64: dts: rockchip: standardize the definition of
+ LEDs for Radxa E25
+To: FUKAUMI Naoki <naoki@radxa.com>, heiko@sntech.de
+Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
+ devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org
+References: <20240808093808.1740-1-naoki@radxa.com>
+ <20240808093808.1740-8-naoki@radxa.com>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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 fv0=
+In-Reply-To: <20240808093808.1740-8-naoki@radxa.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240808_105215_104772_450A0FA5 
-X-CRM114-Status: GOOD (  15.71  )
+X-CRM114-CacheID: sfid-20240808_105530_411563_C051C76F 
+X-CRM114-Status: UNSURE (   5.42  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,31 +114,24 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGkgSGVpa28sCgpPbiBUaHVyc2RheSwgOCBBdWd1c3QgMjAyNCAxMjo0MTowNSBFRFQgSGVpa28g
-U3TDvGJuZXIgd3JvdGU6Cj4gSGkgRGV0bGV2LAo+IAo+ID4gCj4gPiBAQCAtNTUyLDcgKzU3NSwx
-MCBAQCBzdGF0aWMgaW50IHJvY2tjaGlwX3BkX3Bvd2VyKHN0cnVjdAo+ID4gcm9ja2NoaXBfcG1f
-ZG9tYWluICpwZCwgYm9vbCBwb3dlcl9vbik+IAo+ID4gIAkJCS8qIGlmIHBvd2VyaW5nIHVwLCBs
-ZWF2ZSBpZGxlIG1vZGUgKi8KPiA+ICAJCQlyb2NrY2hpcF9wbXVfc2V0X2lkbGVfcmVxdWVzdChw
-ZCwgZmFsc2UpOwo+ID4gCj4gPiAtCQkJcm9ja2NoaXBfcG11X3Jlc3RvcmVfcW9zKHBkKTsKPiA+
-ICsJCQlpZiAocGQtPmluZm8tPmRlbGF5X3VzKQo+ID4gKwkJCQl1ZGVsYXkocGQtPmluZm8tPmRl
-bGF5X3VzKTsKPiA+ICsJCQllbHNlCj4gPiArCQkJCXJvY2tjaGlwX3BtdV9yZXN0b3JlX3Fvcyhw
-ZCk7Cj4gCj4gSSBzdGlsbCB3YW50IHRoaXMgYmVoYXZpb3VyIGNoYW5nZSBpbiBhIHNlcGFyYXRl
-IHBhdGNoIHdpdGggYWRlcXVhdGUKPiBjb21taXQgbWVzc2FnZSBwbGVhc2UuCj4gCj4gR29pbmcg
-ZnJvbSBhbHdheXMgaGFuZGxpbmcgcW9zIHRvIGFsbG93aW5nIHRvIGp1c3Qgd2FpdCBhIHNwZWNp
-ZmljIHRpbWUKPiBuZWVkcyBleHBsYW5hdGlvbiBhbmQgaXMgbm90IHBhcnQgb2YgImp1c3QiIGFk
-ZGluZyByazM1NzYgc3VwcG9ydC4KCllvdSBhcmUgcmlnaHQsIEkgZGlkbid0IHRha2xlIHRoaXMg
-aXNzdWUuClRoaXMgaXMgYWN0dWFsbHkgYSBidWcsIHRoZSBlbHNlIGlzIG5vdCBzdXBwb3NlZCB0
-byBiZSB0aGVyZSwgaXQgc2hvdWxkIG9ubHkgCmJlIGFuIGFkZGVkIGRlbGF5IGZvciBzb21lIFBE
-cy4KClVuZm9ydHVuYXRlbHksIEknbSBub3Qgc3VyZSB3aHkgdGhhdCBkZWxheSBpcyBuZWVkZWQg
-ZXhhY3RseSwgc28gSSdtIHdpbGxpbmcgCnRvIHJlbW92ZSBpdCBmb3Igbm93IChvbmx5IHVzZWQg
-YnkgbnB1dG9wIGFuZCB2b3AsIGJvdGggdW5zdXBwb3J0ZWQpIGFuZCBjb21lIApiYWNrIHRvIGl0
-IGlmIG5lZWRlZCB3aGVuIFZPUC9OUFUgc3VwcG9ydCBpcyBhZGRlZC4KCldvdWxkIHRoYXQgd29y
-ayBmb3IgdGhpcyB1cHN0cmVhbSA/CgpEZXRsZXYuCgoKCgoKX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0Ckxp
-bnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5v
-cmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+On 08/08/2024 11:38, FUKAUMI Naoki wrote:
+> - sort properties
+> - add default-state
+> - add function for multi-led
+> - remove redundant parameters from pwms
+
+Why redundant? I don't think this was tested. :(
+
+Best regards,
+Krzysztof
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
