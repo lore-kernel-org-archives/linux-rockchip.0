@@ -4,48 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C10CDC3DA4A
-	for <linux-rockchip@archiver.kernel.org>; Thu,  8 Aug 2024 16:48:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9DA36C52D7C
+	for <linux-rockchip@archiver.kernel.org>; Thu,  8 Aug 2024 16:48:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=+nINDiBvzVgYzLm0fAvjLOzKqpaKRjiP+5ImeFlvpIY=; b=HqRk0VT1f7rT3Q
-	2Wrv0asI0TyMDznLdNaAeoJVwBLyy/aDnFYy7HsDCPt2S/GIcI19qoYlwo32wY24LvvCxXYO8Q4kh
-	qeeo2SVLMSjSgOtAYejx/YN+oVzBXCQwThHcqMMTbJytnz3si8UZthCVtfP7mQL82pWBXC/xI7AYg
-	zbvT7twR5cQWLD7lLyhUWC8M9uQSyxaX7GPYC1eCCm1cAasx+fIVzVplX4ZlUZgMdZPw6T2jZKtOd
-	1cQ0fqdMxxwcqZfXlnvcAwFcQK4F2DEbGwfMmu6Z70MYinOJTiEkKgUsOyQYRiOtDiDuQtuRtxGpw
-	HXxLku7U/O4zQLVJSoKA==;
+	List-Owner; bh=JF68n8D+pQpIfXNK/Douw6Hc5QhTfxacbaQiBqhU1+c=; b=imUDObhr3yMDQa
+	aUZbL/f65BNRl72FU/cFpVUGfdisMP83g+gRSMcGolsbt/qK/NGfJbkiK42+Yy092QVNJcrabtBah
+	0jS5Coq7aSvqWbm9vlmFTR7s7/G7A3tl4KXAsHXYU5y9Bg7ci8snim8OZ1FEao3jzPQykD0nCamOj
+	zGWoRhXfdBExoHD/C9E8UxvQbgcEOTSh0+Bad8Zz9ffAasllns14odC2H8Hi1RnQ7kobevPQoCvuB
+	pp9+QLBYIbrbPEiWribcSKnW1ltQpbgTNl/yxJTOMpcesTLjSnDsxBICjjw8n2GxANsmOuSvDY1Zn
+	eUHGbcyhx8u4a69fe3eQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sc6J1-00000008zmd-28s8;
-	Thu, 08 Aug 2024 16:48:03 +0000
+	id 1sc6J2-00000008znQ-0tDn;
+	Thu, 08 Aug 2024 16:48:04 +0000
 Received: from sender4-op-o14.zoho.com ([136.143.188.14])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sc6Iv-00000008ziM-0IZb;
-	Thu, 08 Aug 2024 16:47:59 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1723135668; cv=none; 
+	id 1sc6Iw-00000008zjT-31dV;
+	Thu, 08 Aug 2024 16:48:01 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1723135670; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=YAEl09JnraNSYxohjFcTxTRvx99kVb98TD3T+bzyZEUD6f6BjoLJ80qLd0NpAJSaAxF8es2RBscusazRhaCsDOqV6Qgj0Jl1cMjHv4zRFBGDrtx3awQn1YY1KtRARwMDCnQwIPvP5X8IsW8wJb9K8XEdVkD7BmYcWj/YMehoI80=
+	b=Q2f8+kq84rWJh2D3HefhcG9uGuuwohkm6QyBnUc6PkLz+WzKGmNfAxRLhW10J/TDS8onmrTi9A/jDApcfVXg6kCvdNDTCoeCZ/re5RMr84ubEG2RdlXBdI9y9iPr13Gl6HjMKCUePK6RXRGhrLiXCV/8u+U0sJnD5RWAO+MVnDc=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1723135668; h=Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=u7x3BBVWbQj9O66a03U8di21WFDenCBnzydCXxuHLKw=; 
-	b=HVv2DWChYDU18R/iWwpcwuDaBnGQ8lv8txYGMmElAgg0uJ33RmKfJDS4aPiW2McbivTDFBaptyfX0cSqpR8nwBwQpWG4RzGO9Ig85xJVhDeloHNWszlyxE+rYfrDWpLyvZLutCT5CEYMBbjdPN6M346XEEvVj/1MYDOZhT/OK8k=
+	t=1723135670; h=Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=aXt8DW2JUD9bIKgV9lF6ZQt+rFVAXi+kPSk4FyLw7Lw=; 
+	b=VG0hnoj3MHzlkfWLeJm3FZmMIzP3w6qx+EulnzPCzkHTTdqXqEyce5LQgffeYeHY41/+DKN9t9yihbxvCpRmGELbeRZI1Vtp99H4XBhZzHZGFiA6vXDVrjiviaKPDyUl0cHArCwRLuxw21TFHR7WtsGM4RhmcTeTZ5hjcZ5zqhM=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=collabora.com;
 	spf=pass  smtp.mailfrom=detlev.casanova@collabora.com;
 	dmarc=pass header.from=<detlev.casanova@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1723135668;
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1723135670;
 	s=zohomail; d=collabora.com; i=detlev.casanova@collabora.com;
 	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Message-Id:Reply-To;
-	bh=u7x3BBVWbQj9O66a03U8di21WFDenCBnzydCXxuHLKw=;
-	b=eUeXtWITwa8zubnC+fOUmdVshnafTbqsiYktGgnqFWbkiUbFuvoubyqsG8igT0pF
-	adGgdtfE3QpcdpQeiSQ2GmtJqhKjQ4NTKBsqVMebArRWbSuGbzpOTwMWYsFvboROH+S
-	szk+XvptbA8PscLdeRiAa7Lz01VxsMU++fFXF0ys=
-Received: by mx.zohomail.com with SMTPS id 1723135665925829.4284392419496;
-	Thu, 8 Aug 2024 09:47:45 -0700 (PDT)
+	bh=aXt8DW2JUD9bIKgV9lF6ZQt+rFVAXi+kPSk4FyLw7Lw=;
+	b=IuKmvg3jx1Z+d/MdDHyozUexLygmc2GLi07vndy+x0lf6FYIvoPMpQ3CzO4/zt8o
+	437j8NPt+8Cjn0kaAZ8QIhB8oirkgxu+skKuOuXcmj36efPm3n3UtIh1p0CPdLx+opq
+	YyNlsRzZYHE90CxBFh17KrFz+HnItEXaE8XUdJDE=
+Received: by mx.zohomail.com with SMTPS id 172313566925236.90630355739677;
+	Thu, 8 Aug 2024 09:47:49 -0700 (PDT)
 From: Detlev Casanova <detlev.casanova@collabora.com>
 To: linux-kernel@vger.kernel.org
 Cc: Ulf Hansson <ulf.hansson@linaro.org>,
@@ -59,18 +59,19 @@ Cc: Ulf Hansson <ulf.hansson@linaro.org>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
 	kernel@collabora.com,
+	Shawn Lin <shawn.lin@rock-chips.com>,
 	Detlev Casanova <detlev.casanova@collabora.com>
-Subject: [PATCH v2 1/3] dt-bindings: mmc: Add support for rk3576 dw-mshc
-Date: Thu,  8 Aug 2024 12:47:15 -0400
-Message-ID: <20240808164900.81871-2-detlev.casanova@collabora.com>
+Subject: [PATCH v2 3/3] mmc: dw_mmc-rockchip: Add internal phase support
+Date: Thu,  8 Aug 2024 12:47:17 -0400
+Message-ID: <20240808164900.81871-4-detlev.casanova@collabora.com>
 X-Mailer: git-send-email 2.46.0
 In-Reply-To: <20240808164900.81871-1-detlev.casanova@collabora.com>
 References: <20240808164900.81871-1-detlev.casanova@collabora.com>
 MIME-Version: 1.0
 X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240808_094757_305875_E92D73A4 
-X-CRM114-Status: GOOD (  12.16  )
+X-CRM114-CacheID: sfid-20240808_094758_854182_F9F1ECAE 
+X-CRM114-Status: GOOD (  29.41  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,39 +88,283 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add the compatible string for rockchip,rk3576-dw-mshc and add support
-for the rockchip,v2-tuning flag, a new feature of this core.
+From: Shawn Lin <shawn.lin@rock-chips.com>
 
+Some Rockchip devices put the phase settings into the dw_mmc controller.
+
+The feature is implemented in devices where the USRID register contains
+0x20230002.
+
+Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
 Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
 ---
- .../devicetree/bindings/mmc/rockchip-dw-mshc.yaml          | 7 +++++++
- 1 file changed, 7 insertions(+)
+ drivers/mmc/host/dw_mmc-rockchip.c | 180 +++++++++++++++++++++++++++--
+ 1 file changed, 169 insertions(+), 11 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.yaml b/Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.yaml
-index 211cd0b0bc5f3..86c986a7adb23 100644
---- a/Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.yaml
-+++ b/Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.yaml
-@@ -39,6 +39,7 @@ properties:
-               - rockchip,rk3368-dw-mshc
-               - rockchip,rk3399-dw-mshc
-               - rockchip,rk3568-dw-mshc
-+              - rockchip,rk3576-dw-mshc
-               - rockchip,rk3588-dw-mshc
-               - rockchip,rv1108-dw-mshc
-               - rockchip,rv1126-dw-mshc
-@@ -95,6 +96,12 @@ properties:
-       If not specified, the host will do tuning for 360 times,
-       namely tuning for each degree.
+diff --git a/drivers/mmc/host/dw_mmc-rockchip.c b/drivers/mmc/host/dw_mmc-rockchip.c
+index b1b437ea878ae..4652691eb19f9 100644
+--- a/drivers/mmc/host/dw_mmc-rockchip.c
++++ b/drivers/mmc/host/dw_mmc-rockchip.c
+@@ -16,6 +16,17 @@
+ #include "dw_mmc-pltfm.h"
  
-+  rockchip,v2-tuning:
-+    $ref: /schemas/types.yaml#/definitions/flag
-+    description:
-+      Specify when the v2 tuning is supported. In this case, the hardware
-+      inherits pre-stage loader's phase settings.
+ #define RK3288_CLKGEN_DIV	2
++#define USRID_INTER_PHASE	0x20230001
++#define SDMMC_TIMING_CON0	0x130
++#define SDMMC_TIMING_CON1	0x134
++#define ROCKCHIP_MMC_DELAY_SEL BIT(10)
++#define ROCKCHIP_MMC_DEGREE_MASK 0x3
++#define ROCKCHIP_MMC_DELAYNUM_OFFSET 2
++#define ROCKCHIP_MMC_DELAYNUM_MASK (0xff << ROCKCHIP_MMC_DELAYNUM_OFFSET)
++#define PSECS_PER_SEC 1000000000000LL
++#define ROCKCHIP_MMC_DELAY_ELEMENT_PSEC 60
++#define HIWORD_UPDATE(val, mask, shift) \
++		((val) << (shift) | (mask) << ((shift) + 16))
+ 
+ static const unsigned int freqs[] = { 100000, 200000, 300000, 400000 };
+ 
+@@ -25,9 +36,121 @@ struct dw_mci_rockchip_priv_data {
+ 	int			default_sample_phase;
+ 	int			num_phases;
+ 	bool			use_v2_tuning;
++	int			usrid;
+ 	int			last_degree;
+ };
+ 
++/*
++ * Each fine delay is between 44ps-77ps. Assume each fine delay is 60ps to
++ * simplify calculations. So 45degs could be anywhere between 33deg and 57.8deg.
++ */
++static int rockchip_mmc_get_phase(struct dw_mci *host, bool sample)
++{
++	unsigned long rate = clk_get_rate(host->ciu_clk);
++	u32 raw_value;
++	u16 degrees;
++	u32 delay_num = 0;
 +
- required:
-   - compatible
-   - reg
++	/* Constant signal, no measurable phase shift */
++	if (!rate)
++		return 0;
++
++	if (sample)
++		raw_value = mci_readl(host, TIMING_CON1) >> 1;
++	else
++		raw_value = mci_readl(host, TIMING_CON0) >> 1;
++
++	degrees = (raw_value & ROCKCHIP_MMC_DEGREE_MASK) * 90;
++
++	if (raw_value & ROCKCHIP_MMC_DELAY_SEL) {
++		/* degrees/delaynum * 1000000 */
++		unsigned long factor = (ROCKCHIP_MMC_DELAY_ELEMENT_PSEC / 10) *
++					36 * (rate / 10000);
++
++		delay_num = (raw_value & ROCKCHIP_MMC_DELAYNUM_MASK);
++		delay_num >>= ROCKCHIP_MMC_DELAYNUM_OFFSET;
++		degrees += DIV_ROUND_CLOSEST(delay_num * factor, 1000000);
++	}
++
++	return degrees % 360;
++}
++
++static int rockchip_mmc_set_phase(struct dw_mci *host, bool sample, int degrees)
++{
++	unsigned long rate = clk_get_rate(host->ciu_clk);
++	u8 nineties, remainder;
++	u8 delay_num;
++	u32 raw_value;
++	u32 delay;
++
++	/*
++	 * The below calculation is based on the output clock from
++	 * MMC host to the card, which expects the phase clock inherits
++	 * the clock rate from its parent, namely the output clock
++	 * provider of MMC host. However, things may go wrong if
++	 * (1) It is orphan.
++	 * (2) It is assigned to the wrong parent.
++	 *
++	 * This check help debug the case (1), which seems to be the
++	 * most likely problem we often face and which makes it difficult
++	 * for people to debug unstable mmc tuning results.
++	 */
++	if (!rate) {
++		dev_err(host->dev, "%s: invalid clk rate\n", __func__);
++		return -EINVAL;
++	}
++
++	nineties = degrees / 90;
++	remainder = (degrees % 90);
++
++	/*
++	 * Due to the inexact nature of the "fine" delay, we might
++	 * actually go non-monotonic.  We don't go _too_ monotonic
++	 * though, so we should be OK.  Here are options of how we may
++	 * work:
++	 *
++	 * Ideally we end up with:
++	 *   1.0, 2.0, ..., 69.0, 70.0, ...,  89.0, 90.0
++	 *
++	 * On one extreme (if delay is actually 44ps):
++	 *   .73, 1.5, ..., 50.6, 51.3, ...,  65.3, 90.0
++	 * The other (if delay is actually 77ps):
++	 *   1.3, 2.6, ..., 88.6. 89.8, ..., 114.0, 90
++	 *
++	 * It's possible we might make a delay that is up to 25
++	 * degrees off from what we think we're making.  That's OK
++	 * though because we should be REALLY far from any bad range.
++	 */
++
++	/*
++	 * Convert to delay; do a little extra work to make sure we
++	 * don't overflow 32-bit / 64-bit numbers.
++	 */
++	delay = 10000000; /* PSECS_PER_SEC / 10000 / 10 */
++	delay *= remainder;
++	delay = DIV_ROUND_CLOSEST(delay,
++			(rate / 1000) * 36 *
++				(ROCKCHIP_MMC_DELAY_ELEMENT_PSEC / 10));
++
++	delay_num = (u8) min_t(u32, delay, 255);
++
++	raw_value = delay_num ? ROCKCHIP_MMC_DELAY_SEL : 0;
++	raw_value |= delay_num << ROCKCHIP_MMC_DELAYNUM_OFFSET;
++	raw_value |= nineties;
++
++	if (sample)
++		mci_writel(host, TIMING_CON1, HIWORD_UPDATE(raw_value, 0x07ff, 1));
++	else
++		mci_writel(host, TIMING_CON0, HIWORD_UPDATE(raw_value, 0x07ff, 1));
++
++	dev_dbg(host->dev, "set %s_phase(%d) delay_nums=%u actual_degrees=%d\n",
++		sample ? "sample" : "drv", degrees, delay_num,
++		rockchip_mmc_get_phase(host, sample)
++	);
++
++	return 0;
++}
++
+ static void dw_mci_rk3288_set_ios(struct dw_mci *host, struct mmc_ios *ios)
+ {
+ 	struct dw_mci_rockchip_priv_data *priv = host->priv;
+@@ -65,8 +188,12 @@ static void dw_mci_rk3288_set_ios(struct dw_mci *host, struct mmc_ios *ios)
+ 	}
+ 
+ 	/* Make sure we use phases which we can enumerate with */
+-	if (!IS_ERR(priv->sample_clk) && ios->timing <= MMC_TIMING_SD_HS)
+-		clk_set_phase(priv->sample_clk, priv->default_sample_phase);
++	if (!IS_ERR(priv->sample_clk) && ios->timing <= MMC_TIMING_SD_HS) {
++		if (priv->usrid == USRID_INTER_PHASE)
++			rockchip_mmc_set_phase(host, true, priv->default_sample_phase);
++		else
++			clk_set_phase(priv->sample_clk, priv->default_sample_phase);
++	}
+ 
+ 	/*
+ 	 * Set the drive phase offset based on speed mode to achieve hold times.
+@@ -129,7 +256,10 @@ static void dw_mci_rk3288_set_ios(struct dw_mci *host, struct mmc_ios *ios)
+ 			break;
+ 		}
+ 
+-		clk_set_phase(priv->drv_clk, phase);
++		if (priv->usrid == USRID_INTER_PHASE)
++			rockchip_mmc_set_phase(host, false, phase);
++		else
++			clk_set_phase(priv->drv_clk, phase);
+ 	}
+ }
+ 
+@@ -147,7 +277,10 @@ static int dw_mci_v2_execute_tuning(struct dw_mci_slot *slot, u32 opcode)
+ 
+ 	if (inherit) {
+ 		inherit = false;
+-		i = clk_get_phase(priv->sample_clk) / 90 - 1;
++		if (priv->usrid == USRID_INTER_PHASE)
++			i = rockchip_mmc_get_phase(host, true) / 90;
++		else
++			i = clk_get_phase(priv->sample_clk) / 90 - 1;
+ 		goto done;
+ 	}
+ 
+@@ -156,7 +289,12 @@ static int dw_mci_v2_execute_tuning(struct dw_mci_slot *slot, u32 opcode)
+ 		if (degrees[i] == priv->last_degree)
+ 			continue;
+ 
+-		clk_set_phase(priv->sample_clk, degrees[i]);
++		u32 degree = degrees[i] + priv->last_degree + 90;
++		degree = degree % 360;
++		if (priv->usrid == USRID_INTER_PHASE)
++			rockchip_mmc_set_phase(host, true, degree);
++		else
++			clk_set_phase(priv->sample_clk, degree);
+ 		if (!mmc_send_tuning(mmc, opcode, NULL))
+ 			break;
+ 	}
+@@ -209,8 +347,15 @@ static int dw_mci_rk3288_execute_tuning(struct dw_mci_slot *slot, u32 opcode)
+ 
+ 	/* Try each phase and extract good ranges */
+ 	for (i = 0; i < priv->num_phases; ) {
+-		clk_set_phase(priv->sample_clk,
+-			      TUNING_ITERATION_TO_PHASE(i, priv->num_phases));
++		/* Cannot guarantee any phases larger than 270 would work well */
++		if (TUNING_ITERATION_TO_PHASE(i, priv->num_phases) > 270)
++			break;
++		if (priv->usrid == USRID_INTER_PHASE)
++			rockchip_mmc_set_phase(host, true,
++				TUNING_ITERATION_TO_PHASE(i, priv->num_phases));
++		else
++			clk_set_phase(priv->sample_clk,
++				TUNING_ITERATION_TO_PHASE(i, priv->num_phases));
+ 
+ 		v = !mmc_send_tuning(mmc, opcode, NULL);
+ 
+@@ -256,7 +401,10 @@ static int dw_mci_rk3288_execute_tuning(struct dw_mci_slot *slot, u32 opcode)
+ 	}
+ 
+ 	if (ranges[0].start == 0 && ranges[0].end == priv->num_phases - 1) {
+-		clk_set_phase(priv->sample_clk, priv->default_sample_phase);
++		if (priv->usrid == USRID_INTER_PHASE)
++			rockchip_mmc_set_phase(host, true, priv->default_sample_phase);
++		else
++			clk_set_phase(priv->sample_clk, priv->default_sample_phase);
+ 		dev_info(host->dev, "All phases work, using default phase %d.",
+ 			 priv->default_sample_phase);
+ 		goto free;
+@@ -296,9 +444,12 @@ static int dw_mci_rk3288_execute_tuning(struct dw_mci_slot *slot, u32 opcode)
+ 	dev_info(host->dev, "Successfully tuned phase to %d\n",
+ 		 TUNING_ITERATION_TO_PHASE(middle_phase, priv->num_phases));
+ 
+-	clk_set_phase(priv->sample_clk,
+-		      TUNING_ITERATION_TO_PHASE(middle_phase,
+-						priv->num_phases));
++	if (priv->usrid == USRID_INTER_PHASE)
++		rockchip_mmc_set_phase(host, true, TUNING_ITERATION_TO_PHASE(middle_phase,
++                                                priv->num_phases));
++	else
++		clk_set_phase(priv->sample_clk, TUNING_ITERATION_TO_PHASE(middle_phase,
++                                                priv->num_phases));
+ 
+ free:
+ 	kfree(ranges);
+@@ -340,6 +491,7 @@ static int dw_mci_rk3288_parse_dt(struct dw_mci *host)
+ static int dw_mci_rockchip_init(struct dw_mci *host)
+ {
+ 	int ret, i;
++	struct dw_mci_rockchip_priv_data *priv = host->priv;
+ 
+ 	/* It is slot 8 on Rockchip SoCs */
+ 	host->sdio_id0 = 8;
+@@ -363,6 +515,12 @@ static int dw_mci_rockchip_init(struct dw_mci *host)
+ 			dev_warn(host->dev, "no valid minimum freq: %d\n", ret);
+ 	}
+ 
++	priv->usrid = mci_readl(host, USRID);
++	if (priv->usrid == USRID_INTER_PHASE) {
++		priv->sample_clk = NULL;
++		priv->drv_clk = NULL;
++	}
++
+ 	return 0;
+ }
+ 
 -- 
 2.46.0
 
