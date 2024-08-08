@@ -4,47 +4,104 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 21E37C52D71
-	for <linux-rockchip@archiver.kernel.org>; Thu,  8 Aug 2024 10:45:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E9444C3DA4A
+	for <linux-rockchip@archiver.kernel.org>; Thu,  8 Aug 2024 10:51:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=LQ3U1h+njW3FYEwqbEugSebje0MuFoRm5h1XSfxlxmA=; b=E04MQkb3laX4DG
-	F11W+iyItrs4ThfLoDt1hoAXvKThiORvsXSHxlNmW97Mb4IDYPwNFkgg2GRu+XBaU0Wo/HMYiIVQ4
-	VArJFDp7AjGxTxdoEqcW4UfJr8PxkBzD758Ujha+ICgjJqQiEdZ/OkElmBtr6Eo3SrMulCw8weMZ9
-	n9cWXjJl8rvvq/ZD7Pi5WioBY+wvlbhlKSLVeGJoZL6I+6AmAIRrJ0qLoD1/wlR3fksOd7CMirlRG
-	wTmp4yezLtqzUZN9gD+WpM402JJGcuLazKwLUcN1uWGfpgirz9CNIOjxFuf8AwbmqO8Umojf+f8rd
-	MA3MbgvEBcBtWVKSmSqA==;
+	List-Owner; bh=9lilUTflaz01sxgi68szTL3NBiODI4Zsk2VB9iQb9Ek=; b=ldfotdM048zVPm
+	mkseK6F6Lnqw42h8bkZPv4zOaFo6cDyDuhHenvCA+m9HsMMo3KYoT8RlRQxkT/4xqHEZ1yqXJmcYB
+	HToobm7Pc6fNLIOTpWaxc+ep1tnonqabbwYl6q9dAysdgTRMEAJtG2TltlFKB3/8F3xjoZbfdqRsZ
+	8gfU6PmjxIdydhdBwApBaSzPBPmDdy42POfvTO7g9A8gtF4joAgRLHby5bBV/Dbe7l+rdR6moNvkW
+	rznWJztq1A9qvW/4oARLOaXJ6Yx2eoM6cc/8NuwIx6vzM3KER4llthaWgLzJ+N21dSjfH0M5M2De0
+	YS0rplK1LkKpa4LR2AZA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sc0eY-00000007x9q-0wGt;
-	Thu, 08 Aug 2024 10:45:54 +0000
-Received: from sakura.naobsd.org ([160.16.200.221] helo=mail.naobsd.org)
+	id 1sc0kJ-00000007yJJ-0oPy;
+	Thu, 08 Aug 2024 10:51:51 +0000
+Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sbzbQ-00000007kEI-0hrU
+	id 1sc0jn-00000007yCN-1IdM
 	for linux-rockchip@lists.infradead.org;
-	Thu, 08 Aug 2024 09:38:38 +0000
-Received: from secure.fukaumi.org ([10.0.0.2])
-	by mail.naobsd.org (8.14.4/8.14.4/Debian-4.1ubuntu1.1) with ESMTP id 4789cSE2030905;
-	Thu, 8 Aug 2024 18:38:30 +0900
-From: FUKAUMI Naoki <naoki@radxa.com>
-To: heiko@sntech.de
-Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
-        devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org,
-        FUKAUMI Naoki <naoki@radxa.com>
-Subject: [PATCH 01/10] arm64: dts: rockchip: standardize the definition of LEDs for Radxa ROCK Pi S
-Date: Thu,  8 Aug 2024 18:37:59 +0900
-Message-ID: <20240808093808.1740-2-naoki@radxa.com>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20240808093808.1740-1-naoki@radxa.com>
-References: <20240808093808.1740-1-naoki@radxa.com>
+	Thu, 08 Aug 2024 10:51:22 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sin.source.kernel.org (Postfix) with ESMTP id A1198CE12FE;
+	Thu,  8 Aug 2024 10:51:17 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7AA3AC32782;
+	Thu,  8 Aug 2024 10:51:14 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1723114276;
+	bh=fu1RLS4aTvtkAWF//hFiJK9NK+g+G4l4d7I94dJur3w=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=CmKI3Au3O03Y6F3SbTRQCTh9RZhLmhkKkYFClWElfS5GBcTFLId6z2sMaQgI9lzXG
+	 mL29s9rvzHPVuvym+yhlUm6FBqEkgcG75ol+IklEBm2SJa6dxv4wE0zUuVAWbERVoB
+	 PC5BYFZ0zkPHfj6PzaKEMNwVDPy91C3+sRfw9VKHbp5zvEdgAslcRnXIz0vaHzr7bB
+	 ulZSTF0MvqrI6JenO/Cnp9iSQ6MD2dXfdWB3GUF9AxmqFgqSZ6TjgmkQhKPDB0Idet
+	 OvV7lZNhzi5pId+UXrnC1CL3bKcxI9ZobH4yKtncwVJcaOJ/UUYFFnBaG/PuJCWWj/
+	 SIKO9YbvXuVWw==
+Message-ID: <cfa312fe-0a82-402a-9232-46b9169f9a42@kernel.org>
+Date: Thu, 8 Aug 2024 12:51:12 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 01/10] arm64: dts: rockchip: standardize the definition of
+ LEDs for Radxa ROCK Pi S
+To: FUKAUMI Naoki <naoki@radxa.com>, heiko@sntech.de
+Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
+ devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org
+References: <20240808093808.1740-1-naoki@radxa.com>
+ <20240808093808.1740-2-naoki@radxa.com>
+Content-Language: en-US
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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 fv0=
+In-Reply-To: <20240808093808.1740-2-naoki@radxa.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240808_023836_447423_7F6F2BFF 
-X-CRM114-Status: UNSURE (   7.86  )
+X-CRM114-CacheID: sfid-20240808_035119_905879_C9FCF6E7 
+X-CRM114-Status: UNSURE (   4.00  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -62,44 +119,17 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-- remove label
-- cosmetic change
+On 08/08/2024 11:37, FUKAUMI Naoki wrote:
+> - remove label
 
-Signed-off-by: FUKAUMI Naoki <naoki@radxa.com>
----
- arch/arm64/boot/dts/rockchip/rk3308-rock-pi-s.dts | 4 +---
- 1 file changed, 1 insertion(+), 3 deletions(-)
+Why? You affect user-space.
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3308-rock-pi-s.dts b/arch/arm64/boot/dts/rockchip/rk3308-rock-pi-s.dts
-index 62d18ca769a1..504054f9723e 100644
---- a/arch/arm64/boot/dts/rockchip/rk3308-rock-pi-s.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3308-rock-pi-s.dts
-@@ -27,14 +27,13 @@ chosen {
- 	leds {
- 		compatible = "gpio-leds";
- 		pinctrl-names = "default";
--		pinctrl-0 = <&green_led>, <&heartbeat_led>;
-+		pinctrl-0 = <&green_led &heartbeat_led>;
- 
- 		green-led {
- 			color = <LED_COLOR_ID_GREEN>;
- 			default-state = "on";
- 			function = LED_FUNCTION_POWER;
- 			gpios = <&gpio0 RK_PA6 GPIO_ACTIVE_HIGH>;
--			label = "rockpis:green:power";
- 			linux,default-trigger = "default-on";
- 		};
- 
-@@ -43,7 +42,6 @@ blue-led {
- 			default-state = "on";
- 			function = LED_FUNCTION_HEARTBEAT;
- 			gpios = <&gpio0 RK_PA5 GPIO_ACTIVE_HIGH>;
--			label = "rockpis:blue:user";
- 			linux,default-trigger = "heartbeat";
- 		};
- 	};
--- 
-2.43.0
+> - cosmetic change
+
+What? Why? Commit subject also does not help here at all.
+
+Best regards,
+Krzysztof
 
 
 _______________________________________________
