@@ -4,55 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1B12DC3DA4A
-	for <linux-rockchip@archiver.kernel.org>; Thu,  8 Aug 2024 10:55:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 302D9C52D71
+	for <linux-rockchip@archiver.kernel.org>; Thu,  8 Aug 2024 10:55:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=kyk/Y45p7Exl8Mx9NIgTcxFKaGyhBRMDrIsZ0ZmwRgE=; b=Q9X5gS642uCco3
-	wLvTxEG/U4p6iHiCIp7ngxMNkIbm8VIY+cB5/aICSmscagrLBnDQaRkzQ7dfm3GELeIfQgK1MgyKo
-	HcnSB+cJk/WWlTGeS/IXDhoJ/cuNhSPqXGsw+bgSzMHr5Nxlj3i8rX3Ei0Ne4ZqelsbnVR4R2b0Ne
-	5IkDl6iqOuQ4nXs7ShDoc4N4GLxKV6NmHlBJnrTDgu7vigqMYi7GJn2NxiNyaaGaSv7ejlKhNNoS0
-	I23Q4xQ9Qac+J1zKQ9zuU07rfKik7u9CFE6n7EJBXPSG6JFHidGf5EgCOOyvCTreRJzT5KwJZAKOW
-	pbZ2hO1vqjPDQO14wZPg==;
+	List-Owner; bh=ixb3S+mF5ReT5lWVeWkYivpOhSisOxQJy+IYS99xJ+s=; b=eNn6ryX6Ai+q+t
+	nsz5hzQL4lynnHLrK5zn4onGf2IYIkzRAnsHuqMWvsDSoanKnLQRutw2EWt0ecebL4LyasHJhy0aw
+	xkWOdBeUVpahPWEdc3xldik2QMk1fhdT7/DcNPytXpQuMr1AyuyzeUo8ojukw6rGuwbpXVsZlr/1d
+	6hF5Nm7wS3gMpyTuTCc8TyYQ9rpTIe13k9OQ8jwldzy66zbrL1iyN9aiaLYCiw2f9Ekj4opUeeoBr
+	kB14ak2Erqfn/jfltXSoFP28t851zjpvQafKwl1O0GxPCbZWYsOtfYYZ46FJ6kRCeAldKcDNypLBN
+	jzxKiq5AQWtFWZMT/DnA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sc0nK-00000007yuY-1dyL;
-	Thu, 08 Aug 2024 10:54:58 +0000
-Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
+	id 1sc0nP-00000007ywN-3lop;
+	Thu, 08 Aug 2024 10:55:03 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sc0mt-00000007ypf-3KsM
+	id 1sc0nN-00000007yvG-0arY
 	for linux-rockchip@lists.infradead.org;
-	Thu, 08 Aug 2024 10:54:33 +0000
+	Thu, 08 Aug 2024 10:55:02 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 2AFC2CE12FE;
-	Thu,  8 Aug 2024 10:54:30 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 442F5C4AF0F;
-	Thu,  8 Aug 2024 10:54:27 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 4F75661435;
+	Thu,  8 Aug 2024 10:55:00 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id ADFA6C32782;
+	Thu,  8 Aug 2024 10:54:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1723114469;
-	bh=zKvKC2kKm707nMzw/ht3NkKwNiFEgmSQmCJZPucqhN8=;
+	s=k20201202; t=1723114500;
+	bh=JaCPHWurPRxIu7uk1U4/MSovCxOrfLWNcmaqNS+s6wA=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=qaohk+/mU5a+awo2S3PWKmNzaGa4VPaZt3OMkyTqmFkUEYpqMyQ0K5BYZaQQyCtT5
-	 96SwT3aZL31hMHpEryZYcK1kCW7RYrun15I2AIcYEMwuVghERfWUFqYvdIke4RG5JM
-	 PxT1cKwwKGyS5q0zgJrabZvtgyjveJT+w2hbkaFUjWOS08KjmCpt0Ac4mg4NdVghID
-	 oc7Ql32VKPUIeD/6zgN0fG6rxk1g06zuWBa8RjJBIS/2dMk4eJWcuOd433WagupdjC
-	 /vvLGEBaOeqa9hmaOS/TAWuNz8MF+1w+kxGx3qovFHBM27KqXLgQF/qbMq0zBvJUZ6
-	 4339GxJa1RxZQ==
-Message-ID: <7637582e-6821-47ef-8135-aa15a0d1b50e@kernel.org>
-Date: Thu, 8 Aug 2024 12:54:25 +0200
+	b=ND/2JDiztgmMLBg2IdopsEf22W+adsG/0sLQWK2drdMtm2aBYBenVmNiKVrpT/mf2
+	 827OV7l9cmGsMEFbIXWjsICiSdaUoZcR2y0cZzO2YNqe6FODWC9Nf/kxemtl4W96f9
+	 8IoCl/c6TVjtS71cIBm2tDcJb4cCI1kZf9DZW+oKM0SSzyWyfTjW9qUNNU+EeD+CHx
+	 PI6CpwBbTifVzpEdPPxObsZtUlXm6YUjiLMaHZQPhPWbvC4/eha7dhm1ALi+xvjwbX
+	 bf196V8+vbT7fcyAiwuCabfVdXrKEX5sIHEkX73bbQ/od4uUuwVztss/NjA24jBNh3
+	 serJTtdE6pTaQ==
+Message-ID: <7188d54a-87c6-4abd-9df0-0432263381c0@kernel.org>
+Date: Thu, 8 Aug 2024 12:54:55 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 07/10] arm64: dts: rockchip: standardize the definition of
- LEDs for Radxa E25
+Subject: Re: [PATCH 10/10] arm64: dts: rockchip: standardize the definition of
+ LEDs for Radxa ROCK 5A
 To: FUKAUMI Naoki <naoki@radxa.com>, heiko@sntech.de
 Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
  devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org
 References: <20240808093808.1740-1-naoki@radxa.com>
- <20240808093808.1740-8-naoki@radxa.com>
+ <20240808093808.1740-11-naoki@radxa.com>
 From: Krzysztof Kozlowski <krzk@kernel.org>
 Content-Language: en-US
 Autocrypt: addr=krzk@kernel.org; keydata=
@@ -98,10 +98,10 @@ Autocrypt: addr=krzk@kernel.org; keydata=
  uZwJCLykjad45hsWcOGk3OcaAGQS6NDlfhM6O9aYNwGL6tGt/6BkRikNOs7VDEa4/HlbaSJo
  7FgndGw1kWmkeL6oQh7wBvYll2buKod4qYntmNKEicoHGU+x91Gcan8mCoqhJkbqrL7+nXG2
  5Q/GS5M9RFWS+nYyJh+c3OcfKqVcZQNANItt7+ULzdNJuhvTRRdC3g9hmCEuNSr+CLMdnRBY fv0=
-In-Reply-To: <20240808093808.1740-8-naoki@radxa.com>
+In-Reply-To: <20240808093808.1740-11-naoki@radxa.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240808_035432_215058_2E50C954 
-X-CRM114-Status: UNSURE (   5.94  )
+X-CRM114-CacheID: sfid-20240808_035501_451041_B1E94F41 
+X-CRM114-Status: UNSURE (   4.49  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -120,18 +120,13 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 On 08/08/2024 11:38, FUKAUMI Naoki wrote:
-> - sort properties
 > - add default-state
-> - add function for multi-led
-> - remove redundant parameters from pwms
+> - change function from STATUS to HEARTBEAT
 
-This does not match commit subject at all. Anyway, one commit per
-logical change. Trivial cleanups are not per board, but per entire
-subsystem. Changes with impact can be per board.
+Why? Explain in ALL YOUR COMMITS why you are doing this.
 
-The way you split your work makes review, bisecting and backporting
-unnecessary difficult. It's not even logical. There is no logical change
-like "I will do 10 things for board X".
+What you are doing is visible from the diff.
+
 
 Best regards,
 Krzysztof
