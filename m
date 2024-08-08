@@ -4,48 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 12F8DC52D7B
-	for <linux-rockchip@archiver.kernel.org>; Thu,  8 Aug 2024 17:00:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1FAFCC52D7C
+	for <linux-rockchip@archiver.kernel.org>; Thu,  8 Aug 2024 17:00:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=emhxekSj7+mw35q6X9C4IabZq2MQHCH3mN+BDTBhnn0=; b=vNoB/PzI5UY7Wv
-	RnlFC+wcPHEEZB/UNR0p/D1NpPvpcuvU2bUEVYZHiC/RjZBYj0q6c0E/59OTfu/kVXb6Jd6kP336t
-	P4IJ3Xfv3THQM04l9fPWgQvdHNJYFeCC9RQlg5hmsKKokMzXqRSv0816yoBw21c/EtAKQc6rBS+DH
-	JmmwN0P5yVfgTVYxfzuVqTACf+l5GPci8Pa1tVAo/UTs/yM/751NXk8DX7MaDygBaT9oAQF9Tqpr1
-	En6MpEZW31hinAPl5+VZd8K6QUvKZwVeXNBO/jK1viqSPty9sZTIhjfk6Yr0z5TQnfq4ZtiULaxg2
-	METpO2hXMJ/IMUjVUU7Q==;
+	List-Owner; bh=Fx5QA2C9G6ZnJLib+imd3mhAIPCmAzjtTrp2nbZTX0U=; b=V6QEdsx1RV1FA6
+	zqLT//2ciHi5yY0LuDP33GqgZ+t39Z7ic2q2zdIlU4gJlyVxpMF2uauWR8iaOkjvIDIewf19KdyHO
+	Om5FQ4SIqZyecFq1WySxaDOGRqEkYN9TMS/D7/yIx4Q/Tu9igdPTFAIFVqgv7WzKu96Y8AInipCL5
+	RdyokgOaNt5/l0CKFQJIi7DQFaxQ3jZSIUlKCqObH/WcqvR0MRUmCuFrDv39S4gZEAvJ1ZGPfK96k
+	yt5RGfK9VHCX4eUgyVmx/QLSHSZJyKI5tXH2x/utCpprneBk582etFXt1c7trh47GHEblcohZG9Ry
+	F+yhwXgM6bu02mtIh/9w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sc6V7-000000091Ku-1lri;
+	id 1sc6V7-000000091LB-3T2J;
 	Thu, 08 Aug 2024 17:00:33 +0000
 Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sc6V2-000000091HO-0iHh;
+	id 1sc6V2-000000091Hl-0iEO;
 	Thu, 08 Aug 2024 17:00:29 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1723136402; cv=none; 
+ARC-Seal: i=1; a=rsa-sha256; t=1723136404; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=cDx01yDh7lUs26ZMaFyFO9MsijiHmbGtfL+Hu0MyAIgnCzRPmB/Mr8lkVOUGaY6FNXbTCpSbAMDjrFtldxZh2Hkcqo7xLf4H65oJDCrmCBfHElMfTVywY9SqIhd6QHgzJMzpwhCOuV41T1SqsRAh7qH2YF3anL+iTeRMR6oJJco=
+	b=Y1khZaNYJOJehUcadi0Ebk8llRNdz2aWNnGf9ptu5/82RT1oGZ9O+/BsK4u02LRV6bTIQh6h34dQdtPeV/i5B0BKBKqo/6AnCIMTCr17hmGaN8ckUWI4AAwG+D1KjinV9q5iheONWvLnBjiJTR8iUZeoT48h5RbAjcdWxllTIqc=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1723136402; h=Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=Bb0Qp7PvjL/FavJnOuFCckFOcaryUTEY+obrN+nW6zg=; 
-	b=WZAyVt6nSaLfVdwD+/04pMV2pJEbvp0QOAkLHcspcG52yke2jDHcHOCpn/+EBf9NxKNznX03U8RM3a3fdcKKryLvQB6OXeFEiG7KOtA8NXLL4Is49gyb4nM+cTyZ4ZBauPrHkKymEmz2PXi7UoCsaA0D0O10jsIRQS/dn6JgWno=
+	t=1723136404; h=Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=YC9mK9tDux9if1jjq44zZCozmGqOGn8PObz3o8/d74c=; 
+	b=EROUBlB518PboYi2PE+FYAmji+gApfEYuvQMBbHT75lk9Lh+o7QivfnGuiFXKeyEdFfC85/3JU2NQY+x6vW8sI92+NEXyDnLPd/dCTdOhfYCNrWBKSx460w3uaAThiz4dCMmrd08RiGJRmMNngHrgE7rmhQljJT7qgWKcm7/xas=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=collabora.com;
 	spf=pass  smtp.mailfrom=detlev.casanova@collabora.com;
 	dmarc=pass header.from=<detlev.casanova@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1723136402;
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1723136404;
 	s=zohomail; d=collabora.com; i=detlev.casanova@collabora.com;
 	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Message-Id:Reply-To;
-	bh=Bb0Qp7PvjL/FavJnOuFCckFOcaryUTEY+obrN+nW6zg=;
-	b=eveb4LpoVVc7wtQEDXqdNqsdIVvxMtzHOjzx3u/UomyYii+BClAH5cArmVLosTjt
-	QNZMPGbydJQM9GdfUuA/oKWlmGAWe5ke8ZI4fu0i/CfkNZXcNCCutYxviVekrGLgsbm
-	ghpBbFSzIBdXtDAEMFo74YDQOSSbzV6tLs1SDPws=
-Received: by mx.zohomail.com with SMTPS id 1723136401248537.1302993822321;
-	Thu, 8 Aug 2024 10:00:01 -0700 (PDT)
+	bh=YC9mK9tDux9if1jjq44zZCozmGqOGn8PObz3o8/d74c=;
+	b=avIOnsiyyS2G6W+aOBzZ+vXiF9nXKmi2a56EFAi/eV2V/XvE3PovSKUZ4TQNh77s
+	hMTV4V9iAaF2o5LM4SU6Ym2KE68TbVOlAKgXNAbQp7Z3X1JpxFRGwcig38BM/OXYG1a
+	eXQrfKr04N2oKMvTXsRTGw0t/uNAwRLBvWDdTRos=
+Received: by mx.zohomail.com with SMTPS id 1723136403611383.43297244538667;
+	Thu, 8 Aug 2024 10:00:03 -0700 (PDT)
 From: Detlev Casanova <detlev.casanova@collabora.com>
 To: linux-kernel@vger.kernel.org
 Cc: "David S . Miller" <davem@davemloft.net>,
@@ -68,18 +68,17 @@ Cc: "David S . Miller" <davem@davemloft.net>,
 	linux-stm32@st-md-mailman.stormreply.com,
 	kernel@collabora.com,
 	Detlev Casanova <detlev.casanova@collabora.com>
-Subject: [PATCH v2 1/2] dt-bindings: net: Add support for rk3576 dwmac
-Date: Thu,  8 Aug 2024 13:00:17 -0400
-Message-ID: <20240808170113.82775-2-detlev.casanova@collabora.com>
+Subject: [PATCH v2 2/2] ethernet: stmmac: dwmac-rk: Add GMAC support for RK3576
+Date: Thu,  8 Aug 2024 13:00:18 -0400
+Message-ID: <20240808170113.82775-3-detlev.casanova@collabora.com>
 X-Mailer: git-send-email 2.46.0
 In-Reply-To: <20240808170113.82775-1-detlev.casanova@collabora.com>
 References: <20240808170113.82775-1-detlev.casanova@collabora.com>
 MIME-Version: 1.0
 X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240808_100028_282362_CDA3C1D8 
-X-CRM114-Status: UNSURE (   9.59  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240808_100028_267380_8387789F 
+X-CRM114-Status: GOOD (  15.38  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,48 +95,191 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add a rockchip,rk3576-gmac compatible for supporting the 2 gmac
-devices on the rk3576.
+From: David Wu <david.wu@rock-chips.com>
 
+Add constants and callback functions for the dwmac on RK3576 soc.
+
+Signed-off-by: David Wu <david.wu@rock-chips.com>
+[rebase, extracted bindings]
 Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
-Acked-by: Rob Herring (Arm) <robh@kernel.org>
 ---
- Documentation/devicetree/bindings/net/rockchip-dwmac.yaml | 2 ++
- Documentation/devicetree/bindings/net/snps,dwmac.yaml     | 1 +
- 2 files changed, 3 insertions(+)
+ .../net/ethernet/stmicro/stmmac/dwmac-rk.c    | 156 ++++++++++++++++++
+ 1 file changed, 156 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/net/rockchip-dwmac.yaml b/Documentation/devicetree/bindings/net/rockchip-dwmac.yaml
-index 6bbe96e352509..f8a576611d6c1 100644
---- a/Documentation/devicetree/bindings/net/rockchip-dwmac.yaml
-+++ b/Documentation/devicetree/bindings/net/rockchip-dwmac.yaml
-@@ -25,6 +25,7 @@ select:
-           - rockchip,rk3368-gmac
-           - rockchip,rk3399-gmac
-           - rockchip,rk3568-gmac
-+          - rockchip,rk3576-gmac
-           - rockchip,rk3588-gmac
-           - rockchip,rv1108-gmac
-           - rockchip,rv1126-gmac
-@@ -52,6 +53,7 @@ properties:
-       - items:
-           - enum:
-               - rockchip,rk3568-gmac
-+              - rockchip,rk3576-gmac
-               - rockchip,rk3588-gmac
-               - rockchip,rv1126-gmac
-           - const: snps,dwmac-4.20a
-diff --git a/Documentation/devicetree/bindings/net/snps,dwmac.yaml b/Documentation/devicetree/bindings/net/snps,dwmac.yaml
-index 3eb65e63fdaec..4e2ba1bf788c9 100644
---- a/Documentation/devicetree/bindings/net/snps,dwmac.yaml
-+++ b/Documentation/devicetree/bindings/net/snps,dwmac.yaml
-@@ -80,6 +80,7 @@ properties:
-         - rockchip,rk3328-gmac
-         - rockchip,rk3366-gmac
-         - rockchip,rk3368-gmac
-+        - rockchip,rk3576-gmac
-         - rockchip,rk3588-gmac
-         - rockchip,rk3399-gmac
-         - rockchip,rv1108-gmac
+diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
+index 7ae04d8d291c8..e1fa8fc9f4012 100644
+--- a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
++++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
+@@ -1116,6 +1116,161 @@ static const struct rk_gmac_ops rk3568_ops = {
+ 	},
+ };
+ 
++/* VCCIO0_1_3_IOC */
++#define RK3576_VCCIO0_1_3_IOC_CON2		0X6408
++#define RK3576_VCCIO0_1_3_IOC_CON3		0X640c
++#define RK3576_VCCIO0_1_3_IOC_CON4		0X6410
++#define RK3576_VCCIO0_1_3_IOC_CON5		0X6414
++
++#define RK3576_GMAC_RXCLK_DLY_ENABLE		GRF_BIT(15)
++#define RK3576_GMAC_RXCLK_DLY_DISABLE		GRF_CLR_BIT(15)
++#define RK3576_GMAC_TXCLK_DLY_ENABLE		GRF_BIT(7)
++#define RK3576_GMAC_TXCLK_DLY_DISABLE		GRF_CLR_BIT(7)
++
++#define RK3576_GMAC_CLK_RX_DL_CFG(val)		HIWORD_UPDATE(val, 0x7F, 8)
++#define RK3576_GMAC_CLK_TX_DL_CFG(val)		HIWORD_UPDATE(val, 0x7F, 0)
++
++/* SDGMAC_GRF */
++#define RK3576_GRF_GMAC_CON0			0X0020
++#define RK3576_GRF_GMAC_CON1			0X0024
++
++#define RK3576_GMAC_RMII_MODE			GRF_BIT(3)
++#define RK3576_GMAC_RGMII_MODE			GRF_CLR_BIT(3)
++
++#define RK3576_GMAC_CLK_SELET_IO		GRF_BIT(7)
++#define RK3576_GMAC_CLK_SELET_CRU		GRF_CLR_BIT(7)
++
++#define RK3576_GMAC_CLK_RMII_DIV2		GRF_BIT(5)
++#define RK3576_GMAC_CLK_RMII_DIV20		GRF_CLR_BIT(5)
++
++#define RK3576_GMAC_CLK_RGMII_DIV1		\
++			(GRF_CLR_BIT(6) | GRF_CLR_BIT(5))
++#define RK3576_GMAC_CLK_RGMII_DIV5		\
++			(GRF_BIT(6) | GRF_BIT(5))
++#define RK3576_GMAC_CLK_RGMII_DIV50		\
++			(GRF_BIT(6) | GRF_CLR_BIT(5))
++
++#define RK3576_GMAC_CLK_RMII_GATE		GRF_BIT(4)
++#define RK3576_GMAC_CLK_RMII_NOGATE		GRF_CLR_BIT(4)
++
++static void rk3576_set_to_rgmii(struct rk_priv_data *bsp_priv,
++				int tx_delay, int rx_delay)
++{
++	struct device *dev = &bsp_priv->pdev->dev;
++	unsigned int offset_con;
++
++	if (IS_ERR(bsp_priv->grf) || IS_ERR(bsp_priv->php_grf)) {
++		dev_err(dev, "Missing rockchip,grf or rockchip,php_grf property\n");
++		return;
++	}
++
++	offset_con = bsp_priv->id == 1 ? RK3576_GRF_GMAC_CON1 :
++					 RK3576_GRF_GMAC_CON0;
++
++	regmap_write(bsp_priv->grf, offset_con, RK3576_GMAC_RGMII_MODE);
++
++	offset_con = bsp_priv->id == 1 ? RK3576_VCCIO0_1_3_IOC_CON4 :
++					 RK3576_VCCIO0_1_3_IOC_CON2;
++
++	/* m0 && m1 delay enabled */
++	regmap_write(bsp_priv->php_grf, offset_con,
++		     DELAY_ENABLE(RK3576, tx_delay, rx_delay));
++	regmap_write(bsp_priv->php_grf, offset_con + 0x4,
++		     DELAY_ENABLE(RK3576, tx_delay, rx_delay));
++
++	/* m0 && m1 delay value */
++	regmap_write(bsp_priv->php_grf, offset_con,
++		     RK3576_GMAC_CLK_TX_DL_CFG(tx_delay) |
++		     RK3576_GMAC_CLK_RX_DL_CFG(rx_delay));
++	regmap_write(bsp_priv->php_grf, offset_con + 0x4,
++		     RK3576_GMAC_CLK_TX_DL_CFG(tx_delay) |
++		     RK3576_GMAC_CLK_RX_DL_CFG(rx_delay));
++}
++
++static void rk3576_set_to_rmii(struct rk_priv_data *bsp_priv)
++{
++	struct device *dev = &bsp_priv->pdev->dev;
++	unsigned int offset_con;
++
++	if (IS_ERR(bsp_priv->php_grf)) {
++		dev_err(dev, "%s: Missing rockchip,php_grf property\n", __func__);
++		return;
++	}
++
++	offset_con = bsp_priv->id == 1 ? RK3576_GRF_GMAC_CON1 :
++					 RK3576_GRF_GMAC_CON0;
++
++	regmap_write(bsp_priv->grf, offset_con, RK3576_GMAC_RMII_MODE);
++}
++
++static void rk3576_set_gmac_speed(struct rk_priv_data *bsp_priv, int speed)
++{
++	struct device *dev = &bsp_priv->pdev->dev;
++	unsigned int val = 0, offset_con;
++
++	switch (speed) {
++	case 10:
++		if (bsp_priv->phy_iface == PHY_INTERFACE_MODE_RMII)
++			val = RK3576_GMAC_CLK_RMII_DIV20;
++		else
++			val = RK3576_GMAC_CLK_RGMII_DIV50;
++		break;
++	case 100:
++		if (bsp_priv->phy_iface == PHY_INTERFACE_MODE_RMII)
++			val = RK3576_GMAC_CLK_RMII_DIV2;
++		else
++			val = RK3576_GMAC_CLK_RGMII_DIV5;
++		break;
++	case 1000:
++		if (bsp_priv->phy_iface != PHY_INTERFACE_MODE_RMII)
++			val = RK3576_GMAC_CLK_RGMII_DIV1;
++		else
++			goto err;
++		break;
++	default:
++		goto err;
++	}
++
++	offset_con = bsp_priv->id == 1 ? RK3576_GRF_GMAC_CON1 :
++					 RK3576_GRF_GMAC_CON0;
++
++	regmap_write(bsp_priv->grf, offset_con, val);
++
++	return;
++err:
++	dev_err(dev, "unknown speed value for GMAC speed=%d", speed);
++}
++
++static void rk3576_set_clock_selection(struct rk_priv_data *bsp_priv, bool input,
++				       bool enable)
++{
++	unsigned int val = input ? RK3576_GMAC_CLK_SELET_IO :
++				   RK3576_GMAC_CLK_SELET_CRU;
++	unsigned int offset_con;
++
++	val |= enable ? RK3576_GMAC_CLK_RMII_NOGATE :
++			RK3576_GMAC_CLK_RMII_GATE;
++
++	offset_con = bsp_priv->id == 1 ? RK3576_GRF_GMAC_CON1 :
++					 RK3576_GRF_GMAC_CON0;
++
++	regmap_write(bsp_priv->grf, offset_con, val);
++}
++
++static const struct rk_gmac_ops rk3576_ops = {
++	.set_to_rgmii = rk3576_set_to_rgmii,
++	.set_to_rmii = rk3576_set_to_rmii,
++	.set_rgmii_speed = rk3576_set_gmac_speed,
++	.set_rmii_speed = rk3576_set_gmac_speed,
++	.set_clock_selection = rk3576_set_clock_selection,
++	.regs_valid = true,
++	.regs = {
++		0x2a220000, /* gmac0 */
++		0x2a230000, /* gmac1 */
++		0x0, /* sentinel */
++	},
++};
++
+ /* sys_grf */
+ #define RK3588_GRF_GMAC_CON7			0X031c
+ #define RK3588_GRF_GMAC_CON8			0X0320
+@@ -1908,6 +2063,7 @@ static const struct of_device_id rk_gmac_dwmac_match[] = {
+ 	{ .compatible = "rockchip,rk3368-gmac", .data = &rk3368_ops },
+ 	{ .compatible = "rockchip,rk3399-gmac", .data = &rk3399_ops },
+ 	{ .compatible = "rockchip,rk3568-gmac", .data = &rk3568_ops },
++	{ .compatible = "rockchip,rk3576-gmac", .data = &rk3576_ops },
+ 	{ .compatible = "rockchip,rk3588-gmac", .data = &rk3588_ops },
+ 	{ .compatible = "rockchip,rv1108-gmac", .data = &rv1108_ops },
+ 	{ .compatible = "rockchip,rv1126-gmac", .data = &rv1126_ops },
 -- 
 2.46.0
 
