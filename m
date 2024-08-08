@@ -4,55 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8861CC3DA4A
-	for <linux-rockchip@archiver.kernel.org>; Thu,  8 Aug 2024 10:55:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4A032C3DA4A
+	for <linux-rockchip@archiver.kernel.org>; Thu,  8 Aug 2024 10:57:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ICDMAySuln64Q7UYkDDaE/fbn8+RcULhh95DY8bi1jc=; b=dSLCd71ZlDXwJZ
-	EUZX/awViOV4AP2h7ZT8C9Q23+qlT30ZtYRCJGHbzRlfpNASvYBpKfZz/rMe1dbOUv4nZMuStePHv
-	9W8uFUQA+VoRzNUiTROykCNfHsDgiR3n/H/ikF0+5xI8FlT/sRB7mh5NnNcMNQz8SP6i2dI2Tq47z
-	bQRcUhAx1bkcNizGeVxdbG+CoHOUe3j50is/kHmI9P2xxZBAZic54+2XPZNEZLncRpDqJokEFlfeg
-	xmoScc7H+i0Ek4oO4HsQLHGeAsxa78/Dmfu4iY4Nq579LLXjvB1NDCV+cljPIg7VSPEs7h+W/tWUp
-	i/4ThrSU20axKaPa1jBQ==;
+	List-Owner; bh=dbGWRFahoG7wcLPn0ASgzn0r/zD3xYYdVbmUbFcxYfo=; b=qUVHXZp87QvExc
+	8TnuSnHNCRPZyV69ixV/sZkAvI/0f5GKWVo3bE14zBXKOID6H3IzKfbqyOdkFzS4CaIK0YhqhXtRJ
+	StM5STWGA9WH7eu/PGg4qSNcIpxXDaHod2mh4ruCnYWuclwX5KoIA/W6rrA7nKGNeRt26bKsL0HKF
+	+MRGS8A0d502d644UClpEImPUZPARDxVfU2l5a/pb1SGzuKRRKSc5SAkDy8BOAQQCLf+lRNa+EySF
+	7eG+Ts9AZmJemnPaamseattRjKrSMSeG3pOSDALaACtlkh9NTQ33fOTsC5MWJzrQjT08YueK939eq
+	XzwN7UDOAlUPQK/hQTmg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sc0nq-00000007z2L-21JG;
-	Thu, 08 Aug 2024 10:55:30 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1sc0pb-00000007zDY-2HdF;
+	Thu, 08 Aug 2024 10:57:19 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sc0no-00000007z1q-0Qwv
+	id 1sc0pZ-00000007zDD-0xSP
 	for linux-rockchip@lists.infradead.org;
-	Thu, 08 Aug 2024 10:55:29 +0000
+	Thu, 08 Aug 2024 10:57:18 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 48CB6612DD;
-	Thu,  8 Aug 2024 10:55:27 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5417BC32782;
-	Thu,  8 Aug 2024 10:55:24 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 964D461520;
+	Thu,  8 Aug 2024 10:57:16 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id ABADDC32782;
+	Thu,  8 Aug 2024 10:57:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1723114527;
-	bh=V1+HKybTS2kAJJUlb1sobippbtPh16P5AaYs+/hvglM=;
+	s=k20201202; t=1723114636;
+	bh=wYy0whA1soGcHzTknUfhbM0xv3q/Gn8RXLBTbW1JJ1c=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=F/ic0qY+RwFHzTZswDl8pE53la31BOwyyij64Gdox9SUaiRrMBVtDu2lMYXTACzTQ
-	 SIX3b4qPCXBjiHcDbRDZBdP3QVZwdqdZ2PSwaHoZROb4RUaiysUWKlpzCUe0Z43gEL
-	 /BrG5Ro0NnOmKBngq58RErLN6aQcU7epD7IfsyRdNuOQRDWzCuLJchN5Erto7mls1X
-	 9vhgFofEXgG/OhNMqLtlaHr1qPwPeog0CNqG7JkoC3/t6mhpQgUma4PHqeszqYGmcN
-	 bKXmvDrUJX/0Y8ynUOfpREhuD4S06mweP9YpF/bMmdAkvqq/V4PFAeQXL27nx2u7k6
-	 E2YSvitJSaIJg==
-Message-ID: <0e5194c5-9e23-45e9-97a5-8d7441ab7223@kernel.org>
-Date: Thu, 8 Aug 2024 12:55:21 +0200
+	b=Wgw7xFqSJkgxFZxlFgvoeRfcGE5PaIAS9VsCM2kHHO9RskLxPbO3lb79/yhN++nak
+	 kOqJuS1aGgytfNksbuYR3CRKbWuQRWxZ4QrH78mLzCrNl7p0CWR+4rTzsW8idtf+JR
+	 6q8VvwxVmgpa4yMnWBwSAUTcKFdpe5nfEZhlEUA3QbBbt9ifDidjH172ytu9FT/OT9
+	 VxW9Ej0CAUZz1zQoSBw5+YA6x1svEMIQ8AclM8cUn+V13gk9v2ri4G9lkYGkQKOEen
+	 f1vTWhNQMWqCrm6VUIFWl9ek0lqMDgO+fzVZ+li8NnKq1CxMOM6UGqedATjyTgJutD
+	 H0qhw/fjb3ldg==
+Message-ID: <291b87b0-4701-4743-aed9-adbef7cf3b77@kernel.org>
+Date: Thu, 8 Aug 2024 12:57:11 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 08/10] arm64: dts: rockchip: standardize the definition of
- LEDs for Radxa ROCK 3A
+Subject: Re: [RFC v2 1/2] dt-bindings: arm: rockchip: add Radxa E52C
 To: FUKAUMI Naoki <naoki@radxa.com>, heiko@sntech.de
 Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
  devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org
-References: <20240808093808.1740-1-naoki@radxa.com>
- <20240808093808.1740-9-naoki@radxa.com>
+References: <20240808090405.738-1-naoki@radxa.com>
 From: Krzysztof Kozlowski <krzk@kernel.org>
 Content-Language: en-US
 Autocrypt: addr=krzk@kernel.org; keydata=
@@ -98,10 +96,10 @@ Autocrypt: addr=krzk@kernel.org; keydata=
  uZwJCLykjad45hsWcOGk3OcaAGQS6NDlfhM6O9aYNwGL6tGt/6BkRikNOs7VDEa4/HlbaSJo
  7FgndGw1kWmkeL6oQh7wBvYll2buKod4qYntmNKEicoHGU+x91Gcan8mCoqhJkbqrL7+nXG2
  5Q/GS5M9RFWS+nYyJh+c3OcfKqVcZQNANItt7+ULzdNJuhvTRRdC3g9hmCEuNSr+CLMdnRBY fv0=
-In-Reply-To: <20240808093808.1740-9-naoki@radxa.com>
+In-Reply-To: <20240808090405.738-1-naoki@radxa.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240808_035528_307367_7FDA837B 
-X-CRM114-Status: UNSURE (   9.60  )
+X-CRM114-CacheID: sfid-20240808_035717_402862_BCDFF9BB 
+X-CRM114-Status: UNSURE (   6.30  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -119,28 +117,18 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 08/08/2024 11:38, FUKAUMI Naoki wrote:
-> - move pinctrl properties
-> - sort properties
-> - add default-state
+On 08/08/2024 11:04, FUKAUMI Naoki wrote:
+> Add devicetree binding for the Radxa E52C.
+> 
+> Radxa E52C is a compact network computer using the Rockchip RK3582
+> chip.
 > 
 > Signed-off-by: FUKAUMI Naoki <naoki@radxa.com>
 > ---
->  arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts | 9 +++++----
->  1 file changed, 5 insertions(+), 4 deletions(-)
-> 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts b/arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts
-> index 59f1403b4fa5..4fd6096f16ea 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts
-> +++ b/arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts
-> @@ -42,14 +42,15 @@ gmac1_clkin: external-gmac1-clock {
->  
->  	leds {
->  		compatible = "gpio-leds";
-> +		pinctrl-names = "default";
-> +		pinctrl-0 = <&led_user_en>;
+> Changes in v2:
+> - none
 
-Weird order. names never precede the property.
+Why this is not ready for review? Why this is RFC?
 
 Best regards,
 Krzysztof
