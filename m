@@ -4,62 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DFA60C3DA4A
-	for <linux-rockchip@archiver.kernel.org>; Thu,  8 Aug 2024 10:29:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 19F1BC3DA4A
+	for <linux-rockchip@archiver.kernel.org>; Thu,  8 Aug 2024 10:30:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=2aHWGe94jDCQyIqKegksv038Y2HhRByRa3zpiCOr8Sc=; b=2YoxxJwucbuXsC
-	+fqoDyfceUg7csyKPJldst8Uq8A8bCi/17idO2MsHlsAzh6ywm5fje8riN1KwiHFlUGeATlCboqb5
-	GXpoL0QiMEUjgyMIsnvryb9ivCSx+SB+lNXZLKWiFql6Jf1aCOF3AIDHSN9GwaRxIUnljfF5Fua+k
-	7AK+/jVw24K+XgU8cxbF6LqiV0bT7YZvEZQwyL51WtXjZhpuYZMz+D2o76tqSBxSKm3dnVV8AOiCB
-	V5b9JtHB+9Svw0lBxVS65UdAdA1rWq0/JInKgS8bijXjBzxMfQfNx6ohkrC9EHZ5xSimE9FzAvK60
-	0xIseld+tO6KwShRPSTw==;
+	List-Owner; bh=dd33szXWJAJGyFgZBeAIPlVanpBKjSpqINmi4JfugZE=; b=l5jCWm3OXHS/Xa
+	E45ynNHLQrkAUbIfDz4GNz35lwEcOQQDpuXObDzpNBRxKJwnhp4OVE1uclQazOFqO1UnfClLoOYe7
+	iwgx/nEVuHAQ2MDIyBgBJnr+9/MKmo+bhfOskD3UbKF6vyo6gxoPaJu+UgYddr6QBc/MXA52O0fZI
+	iTvzlH4dv/W87eMCheSguVPQE8qb7Fz6NhvpmMWSO/uGFVppVy6V7Ey9JUP+jpUgGhZ9TRC1edyPf
+	uugM7ccifdwjqDTANd2cnQ3NXyRp4zv1wYPFfFTqZP/qX55E0ys9fBQhVgXGICrcIC1BZtqbILdzH
+	YLk3a8Cp5+sbKnQ14dRA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sc0Ot-00000007u5Y-3WPI;
-	Thu, 08 Aug 2024 10:29:43 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1sc0PW-00000007uEM-1WMc;
+	Thu, 08 Aug 2024 10:30:22 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sc0Or-00000007u4x-2STG
+	id 1sc0PT-00000007uDu-3d4s
 	for linux-rockchip@lists.infradead.org;
-	Thu, 08 Aug 2024 10:29:42 +0000
+	Thu, 08 Aug 2024 10:30:21 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id E48D461435;
-	Thu,  8 Aug 2024 10:29:40 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id EB2A9C32782;
-	Thu,  8 Aug 2024 10:29:35 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 0FF0E61202;
+	Thu,  8 Aug 2024 10:30:19 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5F766C32782;
+	Thu,  8 Aug 2024 10:30:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1723112980;
-	bh=xFEtRXSAkiZfD4gmNu7FXYx4Shcuk2S7F29sdId7pXA=;
+	s=k20201202; t=1723113018;
+	bh=/56fxGSSQJLGnsfiWBBFCbnhTda1JtL0tMRpLS0QqgY=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=TaCidAC9aYfl0cwC26ZisNDRn9Wn3Aq8djc9/d5Khk7ZeQw4O6/rnQXYc+jXLYdLU
-	 kPPc1502DMsliLcvWbwybz/0iAR1QIQpuKy8D8oX5vs8boJ9Hh14wSkBgNTKaxxdEA
-	 LWHlPW9WqIsBcNIHvD7TZPVrKnk8SdV6FvW8YmjCRdZXNuXxPhHYGfJuVSlTUR0RyB
-	 rtDw5DuRM5DxLtakjofrW/8q/RmjCcGdt26AfZnTdpLEkLvMf+6Vr5PxHG9ITr2NAo
-	 LKGYevLSNqlRtfWK5F8kzD6yLln/S9Zl3T4L6y8i/EwU8M98NovR1+fJkwK0gOglRa
-	 jglBoRKk/6/UA==
-Message-ID: <402a5cb2-a502-4833-89a6-6daf5336b0b8@kernel.org>
-Date: Thu, 8 Aug 2024 12:29:33 +0200
+	b=PQfUZ4DD/XPrLPC1vpexKGzQtpLH7Uc0dbfKiT0sTGewcyMIO9hxlQbMsXuB5/X6w
+	 ACcUeDuHQPlpafhi2I/VR7Rd505/CLs50q7TxIdE/bd/6orMYbh5PX9oMw6YsJnOHY
+	 Opltqe1uSJlFdoxwxzVWt212Ds5a0JwjPRAnbdYizF1LMj5EtAaZsJiO5UG8nCtjtl
+	 VpjmDg/G4ahzzjFAp66kx6EcJg3xK6DkzKSjGGSOezH6R5UjFAWex+JULLUv/czO0K
+	 K+OZDChm96mAYTKGMf3TKinuvr6HDh4F2xbzeZy0Uard43rphRXXH2vxM7A3X7KmuJ
+	 RjtQ/JzSHPldg==
+Message-ID: <be40aed4-38f9-4db7-a3df-e1da61295b18@kernel.org>
+Date: Thu, 8 Aug 2024 12:30:12 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [RESEND PATCH v2 2/3] dt-bindings: ufs: Document Rockchip UFS
  host controller
-To: Shawn Lin <shawn.lin@rock-chips.com>, Rob Herring <robh+dt@kernel.org>,
+To: "Rob Herring (Arm)" <robh@kernel.org>,
+ Shawn Lin <shawn.lin@rock-chips.com>
+Cc: linux-rockchip@lists.infradead.org, linux-scsi@vger.kernel.org,
+ YiFeng Zhao <zyf@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>,
+ devicetree@vger.kernel.org, Avri Altman <avri.altman@wdc.com>,
  "James E . J . Bottomley" <James.Bottomley@HansenPartnership.com>,
+ Bart Van Assche <bvanassche@acm.org>, Liang Chen <cl@rock-chips.com>,
+ linux-kernel@vger.kernel.org, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>,
  "Martin K . Petersen" <martin.petersen@oracle.com>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>
-Cc: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
- Heiko Stuebner <heiko@sntech.de>, Alim Akhtar <alim.akhtar@samsung.com>,
- Avri Altman <avri.altman@wdc.com>, Bart Van Assche <bvanassche@acm.org>,
- YiFeng Zhao <zyf@rock-chips.com>, Liang Chen <cl@rock-chips.com>,
- linux-scsi@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org, devicetree@vger.kernel.org
+ Alim Akhtar <alim.akhtar@samsung.com>, Rob Herring <robh+dt@kernel.org>,
+ Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
 References: <1723089163-28983-1-git-send-email-shawn.lin@rock-chips.com>
  <1723091220-29291-1-git-send-email-shawn.lin@rock-chips.com>
+ <172310944186.384374.16402625285044950364.robh@kernel.org>
 From: Krzysztof Kozlowski <krzk@kernel.org>
 Content-Language: en-US
 Autocrypt: addr=krzk@kernel.org; keydata=
@@ -105,11 +108,10 @@ Autocrypt: addr=krzk@kernel.org; keydata=
  uZwJCLykjad45hsWcOGk3OcaAGQS6NDlfhM6O9aYNwGL6tGt/6BkRikNOs7VDEa4/HlbaSJo
  7FgndGw1kWmkeL6oQh7wBvYll2buKod4qYntmNKEicoHGU+x91Gcan8mCoqhJkbqrL7+nXG2
  5Q/GS5M9RFWS+nYyJh+c3OcfKqVcZQNANItt7+ULzdNJuhvTRRdC3g9hmCEuNSr+CLMdnRBY fv0=
-In-Reply-To: <1723091220-29291-1-git-send-email-shawn.lin@rock-chips.com>
+In-Reply-To: <172310944186.384374.16402625285044950364.robh@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240808_032941_788707_8AECED1B 
-X-CRM114-Status: UNSURE (   8.03  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240808_033020_028144_7BDF0343 
+X-CRM114-Status: GOOD (  11.26  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -126,29 +128,37 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 08/08/2024 06:27, Shawn Lin wrote:
-> Document Rockchip UFS host controller for RK3576 SoC.
+On 08/08/2024 11:30, Rob Herring (Arm) wrote:
 > 
-> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+> On Thu, 08 Aug 2024 12:27:00 +0800, Shawn Lin wrote:
+>> Document Rockchip UFS host controller for RK3576 SoC.
+>>
+>> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+>>
+>> ---
+>>
+>> Changes in v2:
+>> - renmae file name
+>> - fix all errors and pass the dt_binding_check:
+>>   make dt_binding_check DT_SCHEMA_FILES=rockchip,rk3576-ufs.yaml
+>>
+>>  .../bindings/ufs/rockchip,rk3576-ufs.yaml          | 96 ++++++++++++++++++++++
+>>  1 file changed, 96 insertions(+)
+>>  create mode 100644 Documentation/devicetree/bindings/ufs/rockchip,rk3576-ufs.yaml
+>>
 > 
-> ---
+> My bot found errors running 'make dt_binding_check' on your patch:
 > 
-> Changes in v2:
-> - renmae file name
-> - fix all errors and pass the dt_binding_check:
->   make dt_binding_check DT_SCHEMA_FILES=rockchip,rk3576-ufs.yaml
+> yamllint warnings/errors:
+> 
+> dtschema/dtc warnings/errors:
+> Documentation/devicetree/bindings/ufs/rockchip,rk3576-ufs.example.dts:24:18: fatal error: dt-bindings/clock/rockchip,rk3576-cru.h: No such file or directory
+>    24 |         #include <dt-bindings/clock/rockchip,rk3576-cru.h>
+>       |                  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+> compilation terminated.
 
-That's not a correct way of sending patches. You already sent a v2, so
-how tools should process this?
-
-Do not attach (thread) your patchsets to some other threads (unrelated
-or older versions). This buries them deep in the mailbox and might
-interfere with applying entire sets.
-
-Also, still dependency is not explained.
-
-Because of that dependency, it is not possible to apply it, so no. Drop
-the dependency first.
+Nothing improved... stop sending new versions so fast but allow people
+to respond to your patches and then implement the feedback.
 
 Best regards,
 Krzysztof
