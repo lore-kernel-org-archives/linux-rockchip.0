@@ -4,101 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 724F2C52D73
-	for <linux-rockchip@archiver.kernel.org>; Thu,  8 Aug 2024 07:37:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E93F8C52D7B
+	for <linux-rockchip@archiver.kernel.org>; Thu,  8 Aug 2024 07:55:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Cc:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=/pFUu5cNuDbZlkiLqpSx1t5J6Uq/k6LNRUnh72b2ddc=; b=CtVqXGBC/AV6wx
-	HI7kk7AoCmSm8IZbZlmtVW0CASs9D9Kw7+s/A6R155orKpBO1GF36Yb22u87ocH8GkSMCFScAOlD1
-	44Y8CA1oyKUeKAISH27j2k7Jsr2buUHe+DBxt5PrdbTRe+9xpT/QziALsnmrSWPJWBmz8yJVbxdEu
-	V+2EZh4PwOo6J8rD9egrYTd0nZ++w6V8IMIbYaPRRcl+cU9LjM9ZkNwMqp2ASSjQbl93TP9fNZeu3
-	YNRPT3dn7/IC7G5YcjSpEkd7T+a58hpU+hjbveD1jf/GZAppa3MIU+qqLfJNa5Hq8AYc9ak6pLHHK
-	qaQB8Ey75vGeImUSP0og==;
+	List-Owner; bh=aWPsoWj8sccLqmokPMzgBVsIywWpriXPvgse8qQbiwc=; b=K/YKlWLL7tJLck
+	5L394zGALutf4K6qgtQT9pA4GvPyRs96DP8nKcrL6phw5VTsFyMu3JD6C7nyT7J6swwENMME2kfam
+	wfILdx+jtRa4l6kwlIR/96yAnUsv5TFlEPxtfyLDvATSkagj4d21PFAX7MD80sFK4jc/Tc+8fQtmn
+	9+iItt9oPNmnQtVWyRcF5W2LgZrdXCKkBJeuDMvXtk6p+6vofliINivecZYRlzxNR4ZtYV82XWgdm
+	21AmQ+CXbBfK5e46WFMdmYy0gps2SKNUdnjgHTikZ3zJlvspPYj3DukFi0+mRF+wISa5D/L9X9UIu
+	Of7yGh+TOzZZCTh3EYDg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sbxi9-00000007SFe-2j2Y;
-	Thu, 08 Aug 2024 07:37:25 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1sbxzr-00000007Uwh-04hc;
+	Thu, 08 Aug 2024 07:55:43 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sbxi6-00000007SFB-1c8n
-	for linux-rockchip@lists.infradead.org;
-	Thu, 08 Aug 2024 07:37:23 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id CC170614EF;
-	Thu,  8 Aug 2024 07:37:21 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 52C5CC32782;
-	Thu,  8 Aug 2024 07:37:19 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1723102641;
-	bh=k0oKUM4EOoIemR1iEt9aDXnK9MxFXb5v1nGzlzDKga0=;
-	h=Date:Subject:To:References:From:In-Reply-To:From;
-	b=LLmSETA9iLgp+jQI3JgfofcO7Fx6gwIlfAohCMz8A7Hug5zFmJGJslvnovf0uEdXj
-	 HOLYs54Sw+oKoGB1uTtXnJMYnZvWSbcpHyWvkK0cQyISOxvIIAIxgfu4gfl1iEvDkT
-	 KlfVxH1Wp2y2rdli09xw1XkbAlvj08CTJwuFI84qrtmgsCQlxlPwMXcgr6GtBShFlr
-	 17CMtE5PxfrOx0GSECyKc6Nl1jTvasA1ojJOcO+kzkkskn9zUmb+1cFotet2YRZZ+O
-	 n//5bGKoRWk/Uy+XndfCxCjv4h/8jxK0q3zpPOrLzrGJI2R+ZnGyXN+fN/feSnvrUL
-	 QE2Ef8+s0XARQ==
-Message-ID: <62c9b4a4-70ea-4233-90cf-5bedf7c070e3@kernel.org>
-Date: Thu, 8 Aug 2024 09:37:18 +0200
+	id 1sbxzG-00000007Upj-02aA;
+	Thu, 08 Aug 2024 07:55:07 +0000
+Received: from i53875a9f.versanet.de ([83.135.90.159] helo=diego.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1sbxz5-0000Hh-CK; Thu, 08 Aug 2024 09:54:55 +0200
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+To: linux-kernel@vger.kernel.org, Krzysztof Kozlowski <krzk@kernel.org>,
+ Detlev Casanova <detlev.casanova@collabora.com>
+Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Ulf Hansson <ulf.hansson@linaro.org>,
+ Geert Uytterhoeven <geert+renesas@glider.be>,
+ "Rafael J . Wysocki" <rafael@kernel.org>,
+ Finley Xiao <finley.xiao@rock-chips.com>, Jagan Teki <jagan@edgeble.ai>,
+ Elaine Zhang <zhangqing@rock-chips.com>, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-pm@vger.kernel.org
+Subject: Re: [PATCH 2/3] dt-bindings: Add power-domain header for RK3576 SoCs
+Date: Thu, 08 Aug 2024 09:54:54 +0200
+Message-ID: <10908017.3WhfQktd6Z@diego>
+In-Reply-To: <3310992.44csPzL39Z@trenzalore>
+References: <20240802151647.294307-1-detlev.casanova@collabora.com>
+ <e04258dc-07c4-45c7-90d4-bc1ed9eb100b@kernel.org>
+ <3310992.44csPzL39Z@trenzalore>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC 1/2] dt-bindings: arm: rockchip: add Radxa E52C
-To: FUKAUMI Naoki <naoki@radxa.com>, linux-rockchip@lists.infradead.org
-References: <20240807084642.742-1-naoki@radxa.com>
-From: Krzysztof Kozlowski <krzk@kernel.org>
-Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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 fv0=
-In-Reply-To: <20240807084642.742-1-naoki@radxa.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240808_003722_563058_0695E9DD 
-X-CRM114-Status: UNSURE (   9.40  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240808_005506_090227_E76F4FC6 
+X-CRM114-Status: GOOD (  20.48  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -115,39 +69,44 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 07/08/2024 10:46, FUKAUMI Naoki wrote:
-> Add devicetree binding for the Radxa E52C.
+Hi Detlev,
+
+Am Dienstag, 6. August 2024, 18:34:41 CEST schrieb Detlev Casanova:
+> On Sunday, 4 August 2024 05:56:39 EDT Krzysztof Kozlowski wrote:
+> > On 02/08/2024 17:14, Detlev Casanova wrote:
+> > > From: Finley Xiao <finley.xiao@rock-chips.com>
+> > > 
+> > > Define power domain IDs as described in the TRM.
+> > 
+> > Please use subject prefixes matching the subsystem. You can get them for
+> > example with `git log --oneline -- DIRECTORY_OR_FILE` on the directory
+> > your patch is touching. For bindings, the preferred subjects are
+> > explained here:
+> > https://www.kernel.org/doc/html/latest/devicetree/bindings/submitting-patche
+> > s.html#i-for-patch-submitters
+> > > Signed-off-by: Finley Xiao <finley.xiao@rock-chips.com>
+> > > [reword]
+> > > Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
+> > > ---
+> > > 
+> > >  include/dt-bindings/power/rk3576-power.h | 30 ++++++++++++++++++++++++
+> > >  1 file changed, 30 insertions(+)
+> > >  create mode 100644 include/dt-bindings/power/rk3576-power.h
+> > 
+> > This is part of bindings.
+> > 
+> > > diff --git a/include/dt-bindings/power/rk3576-power.h
+> > > b/include/dt-bindings/power/rk3576-power.h
+> > Missing vendor prefix. This should be named after compatible.
 > 
-> Radxa E52C is a compact network computer using the Rockchip RK3582
-> chip.
-> 
-> Signed-off-by: FUKAUMI Naoki <naoki@radxa.com>
-> ---
-> how should we handle RK3582? as far as I know, it's just an another
-> version of RK3588S.
+> Looks like all other rockchip power bindings use the include/dt-bindings/
+> power/rkXXXX.h format. Should I keep that way ?
 
-<form letter>
-Please use scripts/get_maintainers.pl to get a list of necessary people
-and lists to CC. It might happen, that command when run on an older
-kernel, gives you outdated entries. Therefore please be sure you base
-your patches on recent Linux kernel.
+there is also rockchip,rv1126-power.h , so please follow Krzysztof's
+suggestion. Older header namings need to stay the same of course
+but that shouldn't keep us from updating naming schemes to better
+work in new additions.
 
-Tools like b4 or scripts/get_maintainer.pl provide you proper list of
-people, so fix your workflow. Tools might also fail if you work on some
-ancient tree (don't, instead use mainline) or work on fork of kernel
-(don't, instead use mainline). Just use b4 and everything should be
-fine, although remember about `b4 prep --auto-to-cc` if you added new
-patches to the patchset.
-
-You missed at least devicetree list (maybe more), so this won't be
-tested by automated tooling. Performing review on untested code might be
-a waste of time.
-
-Please kindly resend and include all necessary To/Cc entries.
-</form letter>
-
-Best regards,
-Krzysztof
 
 
 _______________________________________________
