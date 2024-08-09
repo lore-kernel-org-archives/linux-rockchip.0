@@ -4,33 +4,33 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 44278C3DA4A
-	for <linux-rockchip@archiver.kernel.org>; Fri,  9 Aug 2024 12:29:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7F5A5C3DA4A
+	for <linux-rockchip@archiver.kernel.org>; Fri,  9 Aug 2024 12:30:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ruMhnmxtDmmFry+GkA7x+zgZvjqvKOnsrcJhwnhy+e0=; b=OPK7mL3BwkWTxB
-	Ea4hvHH7f96N0/8QjLvFYWGOvhox9uxbtQi/jIR+2I4i3Lp/qln37Ot118dD1znrhyI/kQkyIP4lL
-	2P2vohN4UoBOOeknQrmGrtT81xQif5DmR6pEQD6OWZllO4V/Qy8bnhUX5248zW7sGHcDYKa2/0/xF
-	mq5cCbdtR7jruutr6k6+tyMJ1zHpMJqCZeLR3iac1hNFG41r+AHrWNVJw0nhc/GUiEFYliTHhT8rx
-	Hsqyo0bdIU4kqq6jGduu0RWGAIomBaDSPvaDSA7G5e8SDgssgK6k1nOG9HMT/iCY5PHL+T5JrMvG8
-	cNuAhU2KkKxlIdiq4vtg==;
+	List-Owner; bh=eMBhG2L+Z3VqVDjpBWGd87PZNbz3gySoEYFmdc1MuiY=; b=MvsbjePubTN0Ox
+	e2bQa5ysrbevb0cvHnBUtfypvLi4mSVruPjfmrxEksNFHnvAz4maCtVdX+j1VCf6uSNB5ZBs0DeSs
+	OjgvhVCIk9Z3LMdrHt52B1fjy7I+bS74rig5m0W4h5bcSXnLGyMdevfwqcYu3NGEN/VgJL01XZKth
+	gCOKkrnl5Yxsl6sIWKQCSJxzygtU5t3YynvapnT385wTpa1QBVj0AJRpAhPP+xungX4Cgtdrg8BsQ
+	S0yq0NXfFzOty8PQ4Xe/3tRYsHTK9qP7iheC79LPVjYE5u8+OrwjrP3f0iIBcqcZY6GsJVChGG3L0
+	tAP5teh9LWo3kWM+rEzQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1scOkM-0000000BCG3-49Ry;
-	Fri, 09 Aug 2024 12:29:30 +0000
+	id 1scOkt-0000000BCRZ-3ipj;
+	Fri, 09 Aug 2024 12:30:03 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1scOjm-0000000BC5e-2YlF;
-	Fri, 09 Aug 2024 12:28:55 +0000
+	id 1scOjm-0000000BC5u-2bgS;
+	Fri, 09 Aug 2024 12:28:56 +0000
 Received: from i53875b02.versanet.de ([83.135.91.2] helo=diego.localnet)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1scOiz-0006Nc-37; Fri, 09 Aug 2024 14:28:05 +0200
+	id 1scOjU-0006Nw-KW; Fri, 09 Aug 2024 14:28:36 +0200
 From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
 To: linux-kernel@vger.kernel.org,
  Detlev Casanova <detlev.casanova@collabora.com>
@@ -54,16 +54,16 @@ Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
  devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-rockchip@lists.infradead.org, linux-i2c@vger.kernel.org,
  linux-iio@vger.kernel.org, linux-serial@vger.kernel.org, kernel@collabora.com
-Subject: Re: [PATCH 03/10] dt-bindings: i2c: i2c-rk3x: Add rk3576 compatible
-Date: Fri, 09 Aug 2024 14:28:03 +0200
-Message-ID: <2741894.hTDNKPQEx9@diego>
-In-Reply-To: <20240802214612.434179-4-detlev.casanova@collabora.com>
+Subject: Re: [PATCH 04/10] dt-bindings: iio: adc: Add rockchip,rk3576-saradc string
+Date: Fri, 09 Aug 2024 14:28:35 +0200
+Message-ID: <6786575.vcMjziH8VY@diego>
+In-Reply-To: <20240802214612.434179-5-detlev.casanova@collabora.com>
 References: <20240802214612.434179-1-detlev.casanova@collabora.com>
- <20240802214612.434179-4-detlev.casanova@collabora.com>
+ <20240802214612.434179-5-detlev.casanova@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240809_052854_685272_D8B4A897 
-X-CRM114-Status: GOOD (  10.32  )
+X-CRM114-CacheID: sfid-20240809_052854_695308_1D5D0B5B 
+X-CRM114-Status: GOOD (  11.17  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,9 +80,10 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Am Freitag, 2. August 2024, 23:45:30 CEST schrieb Detlev Casanova:
-> Just like RK356x and RK3588, RK3576 is compatible to the existing
-> rk3399 binding.
+Am Freitag, 2. August 2024, 23:45:31 CEST schrieb Detlev Casanova:
+> Add rockchip,rk3576-saradc compatible string.
+> The saradc on RK3576 is compatible with the one on RK3588, so they are
+> used together in an arm of the oneOf.
 > 
 > Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
 
