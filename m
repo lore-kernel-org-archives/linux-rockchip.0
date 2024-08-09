@@ -4,70 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C4009C52D7C
-	for <linux-rockchip@archiver.kernel.org>; Fri,  9 Aug 2024 17:26:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5A683C3DA4A
+	for <linux-rockchip@archiver.kernel.org>; Fri,  9 Aug 2024 17:52:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=6FQPuDgFcR19YbqjPP5s6NqrbCVgyrXFF0rnVMUgupY=; b=a5oYN8+6Cnbv3i
-	Q0ZqRG2JslmwniEudUVyRM9eR0F2H2RxJo5gkyQjYS1Zpnzj/PpfgIctgL5xkO032H6dCOt6YvPd+
-	TLznQ8SqfdeTJ6O8TdlqLfBMT0kvkLAiNZgqKCBZ3G6tEDbcE2RyuKhXwHphBYaPvlxP3MDq+yQ6J
-	E8wZ287NZH4geTSugSNaxQwu650LODd3n2pARrlZxrcVKuPFUPiD3mecx6FyVMj1TlXBgfZzDMVZW
-	AMFdau+Wgk7NpoUpOplTmyMGxMD+Xjz/T2ibury+r0YZT3w8c28N05L+J3in2XLj3o/hHuZd2uTWe
-	+64yE88YN1D0odpO1upQ==;
+	List-Owner; bh=lCr8i9o3C1ysYKItyDr8nzauJjXdxFg5wQJPzuN7ydk=; b=xrEhcpY6t0CBoH
+	VWCrnFv/sRYLems8b9fkr631o22NR3J5iNY65ff/U2v1sJk1LhKeh5MCoyFvYBMd1VjHgQLS/vpUx
+	5s5LIleJK8YEflUJpXR7KjkVLqIVv06MWU1i403TsWrwWpRNJpGzfn9ZGwsQKRgE6A9oUT1tiKmWe
+	dgnk6VDLTVUr1MccHprB/IX+46Ra9dfL3wcj2hZlJAZ2nHD/W1zi+EZSuTx1qIkG/Pw1vn6JyZ7pa
+	MzrX4IU1PjCvNpU3T5Axsw9UuW5T3B6Iyx5sctCIHpP0+vZ2IGrwA7irIjsq10jrVLF9u8N1BQK+z
+	0Vgw7r0u7WTke9t9hPcw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1scTNf-0000000C3nB-3qw4;
-	Fri, 09 Aug 2024 17:26:23 +0000
+	id 1scTmn-0000000C77R-1Uq7;
+	Fri, 09 Aug 2024 17:52:21 +0000
 Received: from sender4-op-o12.zoho.com ([136.143.188.12])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1scTNT-0000000C3lR-3tOm;
-	Fri, 09 Aug 2024 17:26:13 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1723224360; cv=none; 
+	id 1scTmb-0000000C75p-1Bfl;
+	Fri, 09 Aug 2024 17:52:10 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1723225918; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=iQBBvpC8vMJ99e7tPEJeC1lrhmU+/jexmlTqOoZ+995lMWieOIKa/s5uDT9qXsjWf8zbCmSTshziCVldb3YGDNMPxPMCC0CxD2wiBS8K25JTJrCAXZwkk4g5S9llOyHhQ3ieDE5XPC2cv/hU9G/MRT0893l3SFiUXLzMRBYzXHk=
+	b=S+A9AILRdKvrlCGFSy00odNQG9O2FFEPDfwA4EBO4Iolg6H++cqpyDiDT4ZqftB3s4fNU0ZCdTf8jE8wKIpEOmHdieEqTVGrjq8GJpXQVkPuvXlX5/TruuLKW9zbst4QmvIPoCVKrGV3J1oe6mDIgHKNpplOjQpdGFPr1mxPpu4=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1723224360; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=MlUROrStYAoAJMglAHXmhXbY9RBE077SVTGfqsg6ysY=; 
-	b=R/1KB4AjFWPrhfm0PTCJmc1udbrhIScvCEelUDcMcAN+K95GEIVQe3Mef0ESN7xBXHeUo8BemfLOUk58A4+TPj1NrlynxjrdunusR6icUouuOE6cQwUCl5q8WOv+nfFz62/zRas73EE9RVYdmW2MbubJwl4hSet+q++ohPR8phs=
+	t=1723225918; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=1ql2EfSTUecIUIaUErNOW0M2LCtEFtewoUZd3lUg5SE=; 
+	b=JkDNR4/Cq/ztLtHH/aHRuodAtw5XtbKrUvLmkZndhAEzvmSnK5NoDlcfLixq3RdP65WtShzm1u1VBIEDvK2sAuZmA47W4Bi5XI4eS/52ccYSVrTgjtrWjQprFID/cqE9Ury2IJkR4WleOtymck5VubsLgaBsni3Lenv6VslU+vk=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=collabora.com;
 	spf=pass  smtp.mailfrom=detlev.casanova@collabora.com;
 	dmarc=pass header.from=<detlev.casanova@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1723224360;
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1723225918;
 	s=zohomail; d=collabora.com; i=detlev.casanova@collabora.com;
 	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
-	bh=MlUROrStYAoAJMglAHXmhXbY9RBE077SVTGfqsg6ysY=;
-	b=Hi/QJeSMAgrDib/xF0r0jqeTdhA/dx5DYQRYIqiN/kKk+tEj7N40lK5lSGQbz/I7
-	xHJcJty4BTWS/oGygqhUnh38BJdmcvM0nZI5oLrGMTqTSxWYIcylKqxhckllaCcdZsc
-	KbfRapariThTbf4Rm3Wung1JlRuwJyV/mMimDmNY=
-Received: by mx.zohomail.com with SMTPS id 1723224359034870.4612231906191;
-	Fri, 9 Aug 2024 10:25:59 -0700 (PDT)
+	bh=1ql2EfSTUecIUIaUErNOW0M2LCtEFtewoUZd3lUg5SE=;
+	b=J202LTRAanUypzJNuBchc173ecIXUZaNwBMvzG7CAEIPJFFCPdosOgURloAmgIdx
+	NbXE+CEf0Shy7ced7eK9xAqgxhbhRJV/H8dt7Ay4rOnRrkBuXRXw54oXS1USyqUR9mw
+	2Ib47arDAZI4JgtkF0kPtxA0sYDO4a7RrcHR2C2I=
+Received: by mx.zohomail.com with SMTPS id 1723225916646903.4101544239923;
+	Fri, 9 Aug 2024 10:51:56 -0700 (PDT)
 From: Detlev Casanova <detlev.casanova@collabora.com>
 To: Conor Dooley <conor@kernel.org>
-Cc: linux-kernel@vger.kernel.org, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
- Heiko Stuebner <heiko@sntech.de>, Ulf Hansson <ulf.hansson@linaro.org>,
- Finley Xiao <finley.xiao@rock-chips.com>, Jagan Teki <jagan@edgeble.ai>,
- Arnd Bergmann <arnd@arndb.de>, Elaine Zhang <zhangqing@rock-chips.com>,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-pm@vger.kernel.org,
+Cc: linux-kernel@vger.kernel.org, Linus Walleij <linus.walleij@linaro.org>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ linux-gpio@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
  kernel@collabora.com
-Subject: Re: [PATCH v2 1/2] dt-bindings: power: Add support for RK3576 SoC
-Date: Fri, 09 Aug 2024 13:27:18 -0400
-Message-ID: <2276665.iZASKD2KPV@trenzalore>
-In-Reply-To: <20240809-constant-oxidize-8aed145179c7@spud>
-References: <20240808163451.80750-1-detlev.casanova@collabora.com>
- <20240808163451.80750-2-detlev.casanova@collabora.com>
- <20240809-constant-oxidize-8aed145179c7@spud>
+Subject: Re: [PATCH v2 1/2] dt-bindings: pinctrl: Add rk3576 pinctrl bindings
+Date: Fri, 09 Aug 2024 13:53:16 -0400
+Message-ID: <22382840.EfDdHjke4D@trenzalore>
+In-Reply-To: <20240809-dexterity-attention-8376b3b16d59@spud>
+References: <20240808164132.81306-1-detlev.casanova@collabora.com>
+ <20240808164132.81306-2-detlev.casanova@collabora.com>
+ <20240809-dexterity-attention-8376b3b16d59@spud>
 MIME-Version: 1.0
 X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240809_102612_065375_11571509 
-X-CRM114-Status: GOOD (  20.68  )
+X-CRM114-CacheID: sfid-20240809_105209_423976_3151549B 
+X-CRM114-Status: GOOD (  18.11  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,86 +82,55 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Friday, 9 August 2024 10:59:58 EDT Conor Dooley wrote:
-> On Thu, Aug 08, 2024 at 12:31:04PM -0400, Detlev Casanova wrote:
-> > From: Finley Xiao <finley.xiao@rock-chips.com>
-> > 
-> > Define power domain IDs as described in the TRM and add compatible for
-> > rockchip,rk3576-power-controller
-> > 
-> > Signed-off-by: Finley Xiao <finley.xiao@rock-chips.com>
-> > [reword, add yaml]
+On Friday, 9 August 2024 10:58:38 EDT Conor Dooley wrote:
+> On Thu, Aug 08, 2024 at 12:39:55PM -0400, Detlev Casanova wrote:
+> > Add the compatible string as well as the optional rockchip,sys-grf field.
 > 
-> To be honest, both here and in your other patch, you should remove this
-> [] section and add a co-develop-ed-by instead.
+> Optional for all rockchip devices supported by this binding, or just the
+> one you're adding?
 
-That seems to be used quite often though, I like how it gives an idea of what 
-has been adapted from downstream patches.
+It is only optionally used by rk3576. I can add it in an 'if:', or update the 
+description with somthing like "It is used on rk3576 for i3c software 
+controlled weak pull-up"
 
-> Acked-by: Conor Dooley <conor.dooley@microchip.com>
-> 
 > > Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
 > > ---
 > > 
-> >  .../power/rockchip,power-controller.yaml      |  1 +
-> >  .../dt-bindings/power/rockchip,rk3576-power.h | 30 +++++++++++++++++++
-> >  2 files changed, 31 insertions(+)
-> >  create mode 100644 include/dt-bindings/power/rockchip,rk3576-power.h
+> >  .../devicetree/bindings/pinctrl/rockchip,pinctrl.yaml      | 7 +++++++
+> >  1 file changed, 7 insertions(+)
 > > 
 > > diff --git
-> > a/Documentation/devicetree/bindings/power/rockchip,power-controller.yaml
-> > b/Documentation/devicetree/bindings/power/rockchip,power-controller.yaml
-> > index 0d5e999a58f1b..650dc0aae6f51 100644
-> > ---
-> > a/Documentation/devicetree/bindings/power/rockchip,power-controller.yaml
-> > +++
-> > b/Documentation/devicetree/bindings/power/rockchip,power-controller.yaml> 
-> > @@ -41,6 +41,7 @@ properties:
-> >        - rockchip,rk3368-power-controller
-> >        - rockchip,rk3399-power-controller
-> >        - rockchip,rk3568-power-controller
+> > a/Documentation/devicetree/bindings/pinctrl/rockchip,pinctrl.yaml
+> > b/Documentation/devicetree/bindings/pinctrl/rockchip,pinctrl.yaml index
+> > 20e806dce1ecb..cd527ccc9e6bf 100644
+> > --- a/Documentation/devicetree/bindings/pinctrl/rockchip,pinctrl.yaml
+> > +++ b/Documentation/devicetree/bindings/pinctrl/rockchip,pinctrl.yaml
 > > 
-> > +      - rockchip,rk3576-power-controller
+> > @@ -45,6 +45,7 @@ properties:
+> >        - rockchip,rk3368-pinctrl
+> >        - rockchip,rk3399-pinctrl
+> >        - rockchip,rk3568-pinctrl
 > > 
-> >        - rockchip,rk3588-power-controller
-> >        - rockchip,rv1126-power-controller
+> > +      - rockchip,rk3576-pinctrl
 > > 
-> > diff --git a/include/dt-bindings/power/rockchip,rk3576-power.h
-> > b/include/dt-bindings/power/rockchip,rk3576-power.h new file mode 100644
-> > index 0000000000000..324a056aa8512
-> > --- /dev/null
-> > +++ b/include/dt-bindings/power/rockchip,rk3576-power.h
-> > @@ -0,0 +1,30 @@
-> > +/* SPDX-License-Identifier: (GPL-2.0 OR MIT) */
-> > +#ifndef __DT_BINDINGS_POWER_RK3576_POWER_H__
-> > +#define __DT_BINDINGS_POWER_RK3576_POWER_H__
+> >        - rockchip,rk3588-pinctrl
+> >        - rockchip,rv1108-pinctrl
+> >        - rockchip,rv1126-pinctrl
+> > 
+> > @@ -54,6 +55,12 @@ properties:
+> >      description:
+> >        The phandle of the syscon node for the GRF registers.
+> > 
+> > +  rockchip,sys-grf:
+> > +    $ref: /schemas/types.yaml#/definitions/phandle
+> > +    description:
+> > +      The phandle of the syscon node for the SYS GRF registers.
+> > +      It is used for i3c software controlled weak pull-up.
 > > +
-> > +/* VD_NPU */
-> > +#define RK3576_PD_NPU		0
-> > +#define RK3576_PD_NPUTOP	1
-> > +#define RK3576_PD_NPU0		2
-> > +#define RK3576_PD_NPU1		3
-> > +
-> > +/* VD_GPU */
-> > +#define RK3576_PD_GPU		4
-> > +
-> > +/* VD_LOGIC */
-> > +#define RK3576_PD_NVM		5
-> > +#define RK3576_PD_SDGMAC	6
-> > +#define RK3576_PD_USB		7
-> > +#define RK3576_PD_PHP		8
-> > +#define RK3576_PD_SUBPHP	9
-> > +#define RK3576_PD_AUDIO		10
-> > +#define RK3576_PD_VEPU0		11
-> > +#define RK3576_PD_VEPU1		12
-> > +#define RK3576_PD_VPU		13
-> > +#define RK3576_PD_VDEC		14
-> > +#define RK3576_PD_VI		15
-> > +#define RK3576_PD_VO0		16
-> > +#define RK3576_PD_VO1		17
-> > +#define RK3576_PD_VOP		18
-> > +
-> > +#endif
+> > 
+> >    rockchip,pmu:
+> >      $ref: /schemas/types.yaml#/definitions/phandle
+> >      description:
 
 
 
