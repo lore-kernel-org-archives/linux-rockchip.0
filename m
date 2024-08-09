@@ -4,68 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0E2D0C3DA4A
-	for <linux-rockchip@archiver.kernel.org>; Fri,  9 Aug 2024 12:36:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A2774C3DA4A
+	for <linux-rockchip@archiver.kernel.org>; Fri,  9 Aug 2024 12:54:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=XUFfS0GLJUZC0/WsyGz7CQgsP8o0HIvMN6jbrJq6Hcw=; b=w6x2dNZebvoLC5
-	eORNJWwrKKeeHxcWxylnN0n83sU5Rdd6Gk/zGQwLcBqPDl7s/ahYotCzQsRaLItFBTopykmljbbwS
-	7XYLL/St2ZbHe1YBqu9B1fpabgl075I7ZlLUDGzgQk+Yoh8/aDvzguWEgXmQxiVAF82byqtVwAZdp
-	TNWJ+wtiNoGBDlv325koDqR3P7P5BkrpwgRuR5kbcF19ueBJx9VEePm6Zjoe/XsKMm6rMr+hbvhRD
-	gwFJjU9Sy+fweJqZxUgdaRdQxuUzAua1mRNrTJ7skhntXm90Vd3x+8xwUv1tGaM+pg/eOD5W7CjLa
-	XkVRkSXS8IwbTrQd50XA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=BMrPb53ii1c2PF6znDCvwdJv/exxcA3ksDm+6mhvfPI=; b=2K735wULszWcuH
+	t9zcY/US8dZO2sDKB7QQHZZRrIhEHUicgagykNZaJJOyeSQG69FBk6M1UVL4Blf1X1pJcpDU/0Yh5
+	TArhQ0ueirHpMien3wA5/b5gZFwc+i0fKCCGE4kwxP9GZlj7si7vC5vrunNPlNqcrKyAbYNbktkvM
+	VeLvn5xOCuMLSrgYHaO6jtKQrxQziM4qwixXq5gtNaAPVVskqDvkFkN2xHsYXzGLcpwuq8lE6G9yJ
+	78tz2jUYXMf1xv7Zb2UxfUaCyrQIjPRpZnVUZNAw2cHgIDXUE4DjcHoEoepKTM9cLJtDGo773xafw
+	T4dkVYosd9qK2ej1dUWA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1scOrQ-0000000BDMJ-0MSG;
-	Fri, 09 Aug 2024 12:36:48 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1scP8t-0000000BFli-1bu7;
+	Fri, 09 Aug 2024 12:54:51 +0000
+Received: from sender4-op-o14.zoho.com ([136.143.188.14])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1scOqq-0000000BDI1-0q6q;
-	Fri, 09 Aug 2024 12:36:13 +0000
-Received: from i53875b02.versanet.de ([83.135.91.2] helo=diego.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1scOqX-0006V9-No; Fri, 09 Aug 2024 14:35:53 +0200
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: linux-kernel@vger.kernel.org,
- Detlev Casanova <detlev.casanova@collabora.com>
-Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Andi Shyti <andi.shyti@kernel.org>,
- Jonathan Cameron <jic23@kernel.org>, Lars-Peter Clausen <lars@metafoo.de>,
- Lee Jones <lee@kernel.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Jiri Slaby <jirislaby@kernel.org>,
- Daniel Lezcano <daniel.lezcano@linaro.org>,
- Thomas Gleixner <tglx@linutronix.de>, Chris Morgan <macromorgan@hotmail.com>,
- Jonas Karlman <jonas@kwiboo.se>, Tim Lunn <tim@feathertop.org>,
- Muhammed Efe Cetin <efectn@protonmail.com>, Andy Yan <andyshrk@163.com>,
- Jagan Teki <jagan@edgeble.ai>, Dragan Simic <dsimic@manjaro.org>,
- Detlev Casanova <detlev.casanova@collabora.com>,
- Sebastian Reichel <sebastian.reichel@collabora.com>,
- Shresth Prasad <shresthprasad7@gmail.com>, Ondrej Jirman <megi@xff.cz>,
- Weizhao Ouyang <weizhao.ouyang@arm.com>, Alexey Charkov <alchark@gmail.com>,
- Jimmy Hon <honyuenkwun@gmail.com>, Finley Xiao <finley.xiao@rock-chips.com>,
- Yifeng Zhao <yifeng.zhao@rock-chips.com>,
- Elaine Zhang <zhangqing@rock-chips.com>, Liang Chen <cl@rock-chips.com>,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-i2c@vger.kernel.org,
- linux-iio@vger.kernel.org, linux-serial@vger.kernel.org, kernel@collabora.com
-Subject: Re: [PATCH 05/10] dt-bindings: mfd: syscon: Add rk3576 QoS register
- compatible
-Date: Fri, 09 Aug 2024 14:35:51 +0200
-Message-ID: <14126945.ov1OQ5z9iq@diego>
-In-Reply-To: <20240802214612.434179-6-detlev.casanova@collabora.com>
-References: <20240802214612.434179-1-detlev.casanova@collabora.com>
- <20240802214612.434179-6-detlev.casanova@collabora.com>
+	id 1scP8o-0000000BFkK-47k3;
+	Fri, 09 Aug 2024 12:54:48 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1723208078; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=Hzcr4twoVfrqvrlrD2GBTEFtuQdmL1ORTouXRssrH0k4v6ZWDr+TrY1WeRp0IJkd1klltjPF7r06oUzBZ9j6h2IEzwWusoOxkEbYmbmpOpAcH4Z9PRONdVA2Eopfi2o81+UiJFUSA6ikieV6/Cz19MRCi1OtyDEmwWaBylZXKHY=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1723208078; h=Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=IVUh8m58sKRjRQsv42jlfzZauybp5FzG0mLkT/rScCU=; 
+	b=a+9KIWU9Rj3nabk8FTYWVNA9RucvMHthSyO697gZh2IKu/NG2zST1dzrSoS3nqrmS693cvLmYcBn6jgSkj0k2Fqj/H8NWNnK7caKTgE6RzysF/44RGjIZH3qseewWprAjrsEXa7VZ922G9Rt98MVqUjWwrsVOvrsL0awkRQio0E=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=detlev.casanova@collabora.com;
+	dmarc=pass header.from=<detlev.casanova@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1723208078;
+	s=zohomail; d=collabora.com; i=detlev.casanova@collabora.com;
+	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:MIME-Version:Content-Transfer-Encoding:Message-Id:Reply-To;
+	bh=IVUh8m58sKRjRQsv42jlfzZauybp5FzG0mLkT/rScCU=;
+	b=GOf9UHAIBQtxmkV810oYDqzrLY8+FYijBrCpxKOFER/Deget7xtmCqDT51xFFexc
+	hTQvKjlG2GB7SNZalKbhGWGxV83nxBNpucKT47lSvuHQZqhdYLO8r+DWeKQHwlTGRYP
+	lAB8BlZsdk434OYHWfjrHI6R8w5cuVPnMLgTHhx4=
+Received: by mx.zohomail.com with SMTPS id 1723208075915710.5668583394234;
+	Fri, 9 Aug 2024 05:54:35 -0700 (PDT)
+From: Detlev Casanova <detlev.casanova@collabora.com>
+To: linux-kernel@vger.kernel.org
+Cc: Michael Turquette <mturquette@baylibre.com>,
+	Stephen Boyd <sboyd@kernel.org>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	Elaine Zhang <zhangqing@rock-chips.com>,
+	linux-clk@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	kernel@collabora.com,
+	Detlev Casanova <detlev.casanova@collabora.com>
+Subject: [PATCH v4 0/3] Add CRU support for rk3576 SoC
+Date: Fri,  9 Aug 2024 08:54:51 -0400
+Message-ID: <20240809125553.3889-1-detlev.casanova@collabora.com>
+X-Mailer: git-send-email 2.46.0
 MIME-Version: 1.0
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240809_053612_269310_20501F6D 
-X-CRM114-Status: UNSURE (   9.49  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240809_055447_251659_D888FC00 
+X-CRM114-Status: GOOD (  12.08  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,13 +87,52 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Am Freitag, 2. August 2024, 23:45:32 CEST schrieb Detlev Casanova:
-> Document rk3576 compatible for QoS registers.
-> 
-> Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
+Add support for clocks and resets on the rk3576.
+Patches from downstream have been squashed and rebased.
 
-Acked-by: Heiko Stuebner <heiko@sntech.de>
+The resets have been renumbered without gaps and their actual register/bit
+information is set in rst-rk3576.c as it has been done for rk3588.
 
+Changes since v3
+- Add missing include in bindings
+
+Changes since v2:
+- Renumber IDs from 0
+- Commit clock header with clock bindings
+- Add missing resets on sub-cores
+- Add redundant fields in bindings
+
+Changes since v1:
+- Remove reset defines that are probably out of the main core
+- Separate resets and clocks bindings
+- Renumber the resets without gaps
+
+Detlev.
+
+Detlev Casanova (2):
+  dt-bindings: reset: Add rk3576 reset definitions
+  dt-bindings: clock: Add rk3576 clock definitions and documentation
+
+Elaine Zhang (1):
+  clk: rockchip: Add clock controller for the RK3576
+
+ .../bindings/clock/rockchip,rk3576-cru.yaml   |   84 +
+ drivers/clk/rockchip/Kconfig                  |    7 +
+ drivers/clk/rockchip/Makefile                 |    1 +
+ drivers/clk/rockchip/clk-rk3576.c             | 1819 +++++++++++++++++
+ drivers/clk/rockchip/clk.h                    |   53 +
+ drivers/clk/rockchip/rst-rk3576.c             |  652 ++++++
+ .../dt-bindings/clock/rockchip,rk3576-cru.h   |  592 ++++++
+ .../dt-bindings/reset/rockchip,rk3576-cru.h   |  564 +++++
+ 8 files changed, 3772 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/clock/rockchip,rk3576-cru.yaml
+ create mode 100644 drivers/clk/rockchip/clk-rk3576.c
+ create mode 100644 drivers/clk/rockchip/rst-rk3576.c
+ create mode 100644 include/dt-bindings/clock/rockchip,rk3576-cru.h
+ create mode 100644 include/dt-bindings/reset/rockchip,rk3576-cru.h
+
+-- 
+2.46.0
 
 
 _______________________________________________
