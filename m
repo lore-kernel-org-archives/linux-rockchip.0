@@ -4,33 +4,33 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 27F20C52D7C
-	for <linux-rockchip@archiver.kernel.org>; Fri,  9 Aug 2024 12:32:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0E2D0C3DA4A
+	for <linux-rockchip@archiver.kernel.org>; Fri,  9 Aug 2024 12:36:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Dwi4PR6ZSPqz1jDN7Loj4VMmCywZJ6Z146jevlFNh74=; b=31FV34oD0ewih+
-	byKaSNnacaeZgTvoRxf50tgVJf+RwUx6Q3qOUTS1k/AEfC10bO0AeB4qm9iHZ6FTlEccj2EDLEui3
-	Nzd0WnL28YnnI56WKg4C52NsnoPLIgT72NEwjsuFl1RRzBCRpYAW6zB58VZVyHDAoH/8ch9SYpmCy
-	ZYxLHH/nfhdO35RAlAT9P0zLbB37hUSziwMsxI+6ENll8d0VUMqqn5MypJGc/Pw+qUceM1xr+XOYh
-	KiUymDcOd/ZwfYE+G2/hWJjIu882eGHjNVZL7zDBSFAN+FiLj6YRVfVAQL0jeHjDJjqwnlcSnv55K
-	ys72vQTawajYco4ohrYA==;
+	List-Owner; bh=XUFfS0GLJUZC0/WsyGz7CQgsP8o0HIvMN6jbrJq6Hcw=; b=w6x2dNZebvoLC5
+	eORNJWwrKKeeHxcWxylnN0n83sU5Rdd6Gk/zGQwLcBqPDl7s/ahYotCzQsRaLItFBTopykmljbbwS
+	7XYLL/St2ZbHe1YBqu9B1fpabgl075I7ZlLUDGzgQk+Yoh8/aDvzguWEgXmQxiVAF82byqtVwAZdp
+	TNWJ+wtiNoGBDlv325koDqR3P7P5BkrpwgRuR5kbcF19ueBJx9VEePm6Zjoe/XsKMm6rMr+hbvhRD
+	gwFJjU9Sy+fweJqZxUgdaRdQxuUzAua1mRNrTJ7skhntXm90Vd3x+8xwUv1tGaM+pg/eOD5W7CjLa
+	XkVRkSXS8IwbTrQd50XA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1scOn3-0000000BCpS-2O4s;
-	Fri, 09 Aug 2024 12:32:17 +0000
+	id 1scOrQ-0000000BDMJ-0MSG;
+	Fri, 09 Aug 2024 12:36:48 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1scOmM-0000000BCgp-1kB9;
-	Fri, 09 Aug 2024 12:31:35 +0000
+	id 1scOqq-0000000BDI1-0q6q;
+	Fri, 09 Aug 2024 12:36:13 +0000
 Received: from i53875b02.versanet.de ([83.135.91.2] helo=diego.localnet)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1scOm6-0006R2-06; Fri, 09 Aug 2024 14:31:18 +0200
+	id 1scOqX-0006V9-No; Fri, 09 Aug 2024 14:35:53 +0200
 From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
 To: linux-kernel@vger.kernel.org,
  Detlev Casanova <detlev.casanova@collabora.com>
@@ -54,16 +54,17 @@ Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
  devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-rockchip@lists.infradead.org, linux-i2c@vger.kernel.org,
  linux-iio@vger.kernel.org, linux-serial@vger.kernel.org, kernel@collabora.com
-Subject: Re: [PATCH 08/10] dt-bindings: timer: rockchip: Add rk3576 compatible
-Date: Fri, 09 Aug 2024 14:31:16 +0200
-Message-ID: <7799613.SKYDtnEIZr@diego>
-In-Reply-To: <20240802214612.434179-9-detlev.casanova@collabora.com>
+Subject: Re: [PATCH 05/10] dt-bindings: mfd: syscon: Add rk3576 QoS register
+ compatible
+Date: Fri, 09 Aug 2024 14:35:51 +0200
+Message-ID: <14126945.ov1OQ5z9iq@diego>
+In-Reply-To: <20240802214612.434179-6-detlev.casanova@collabora.com>
 References: <20240802214612.434179-1-detlev.casanova@collabora.com>
- <20240802214612.434179-9-detlev.casanova@collabora.com>
+ <20240802214612.434179-6-detlev.casanova@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240809_053134_483850_434C73E3 
-X-CRM114-Status: UNSURE (   9.60  )
+X-CRM114-CacheID: sfid-20240809_053612_269310_20501F6D 
+X-CRM114-Status: UNSURE (   9.49  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -81,8 +82,8 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Am Freitag, 2. August 2024, 23:45:35 CEST schrieb Detlev Casanova:
-> Add compatible string for Rockchip RK3576 timer.
+Am Freitag, 2. August 2024, 23:45:32 CEST schrieb Detlev Casanova:
+> Document rk3576 compatible for QoS registers.
 > 
 > Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
 
