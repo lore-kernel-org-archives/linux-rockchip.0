@@ -4,48 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 74133C3DA4A
-	for <linux-rockchip@archiver.kernel.org>; Fri,  9 Aug 2024 12:58:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 85C50C52D7C
+	for <linux-rockchip@archiver.kernel.org>; Fri,  9 Aug 2024 12:58:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=THOLNU73JdY0rQhtb8PPOA1YPR4LrOa9TluzN4TQEIc=; b=ki7/KdCrJ2bbbp
-	GytmybmsgjF5NOJ459XNpmqkJ7xTT5CZ8DezDyc+EbMdj8gfgJENGjCri1pMhmgv3EZ7xeycw4g52
-	QPBwcXSOshCsuIDvIt9vebKnd38/HEgRZ6I54OX59KKgTU23eZpPACIRVtRJfmi7h9+Dci64juAja
-	S1Hc+LAeFqSDQjgElKhoIdAmpxOqO1o/b6P6OW5nbNzClHhGtU2kdjfjdnxxjV6Qn4PGb+DWJkf60
-	mD90Iy+Cy51Hqbq/5qS/V6BPWTRXLtpKYC/D6UZ6Y96OIJqytRggyqhH7Alaz6lzzMaKrTp4mvBa2
-	uryprIWcOD5kbPLcTx+g==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=y0GgbbNa3Z42loZXq//RugBSrJUdlWgg4gr0KlYr49M=; b=H17Q1xMM5nGlhf
+	36x3D+1tJdyqe0Zh5h4tSXJd1hsLquZYtBq2s/SqvEDqGijxP1cOv92GH8ny504UaYgGXG0C5fxCs
+	Xo21pCMxC0CpO7LUJ77Hv4+o1ZIuuzDLWZopYW1DyEpMxCr3JFoMVrW6htASjK9821znbv2nL9sms
+	GjnxdilMOV8Hub3K/Sdy6FA+F6X9ZHD9I4ihTHX7/+AHRGk5+0BU7zk4czWL71vdgOsFK66HYWHdk
+	afHHLy/9WR99twkWikNnHAiDTSS53xFvgFV4VsV3+7QWTuSuoiK42RTIwiNs8rmt2hf2fMZ+m8GdO
+	dCjLxiaykTqFCBVAY97w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1scPCG-0000000BGN9-2U0l;
-	Fri, 09 Aug 2024 12:58:20 +0000
+	id 1scPCN-0000000BGOm-07wk;
+	Fri, 09 Aug 2024 12:58:27 +0000
 Received: from sender4-op-o14.zoho.com ([136.143.188.14])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1scPCC-0000000BGMf-2YEt;
-	Fri, 09 Aug 2024 12:58:17 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1723208289; cv=none; 
+	id 1scPCJ-0000000BGNm-2VvK;
+	Fri, 09 Aug 2024 12:58:24 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1723208295; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=TFYc5GC2InGK2vJkzxzVWTL9GN3QpNSaShANM3c8hq4SgcO1sj7ZN26EMVdkVgi9WHi/+uGr9eVriYY4F0vUiq6wWIRrHWLQu3oqPvn0J/YvKrKBzHhH8LJFZtBB/JzBefzTGkI/nXpuY28RWtV749aXz0Lm1XJQkqN3FuPzM3Q=
+	b=Dni0RNT2cRBAXccLJlOFCbjkkuGgSZ3leA2jTTdtkCvdB5VCv8+HIp/e6SAZvXrdeRJHJMrj4FF0vPDp0Vy+0E+GGSrvmIsOpz6ALwji4IhxXCkB9phq+CO1QsGsqT6d3ulK3eKK1UVqBjN5qmo0ODdtOm7TrfRmxs96vkJf5gM=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1723208289; h=Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=QgHKMVm9qef45pCQ2A52WWjlGN1Vwr37tZFt+U9C6FE=; 
-	b=FPRT68Kuzo0e0ITTlViZO1K3d6GeY5cFy3axyw9CfuO9gWf3TBiWPnHnlY9t2H1Uv3TwVLNzVAChWPP1UiAa3UqkgbGmo4GXysKHpXG8w6UggkajXAFPcu/xlwa+Onuiq6+JuwIugeeBH4FHJBwvVPu5xmuQsGCM834hptoM1jc=
+	t=1723208295; h=Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=RyCepvyWzhp8Bg9hhu049ivfAGgOO+ujHi0U3uQVpzQ=; 
+	b=N6nC2MNN2lwyXFyHlTiq+kD1eq1gdKZxCaizzF98jIIp48YRM1Gy+uYcOTpPpWnDCuD7eSBrC120UjIm0nkRe2QKoPJ4ZpDOANbzldu9sSrd1fuWTSukzSx4nz4n/vzteCKstaj+z+nYnM82L7O9OdfxROGKlmzcwNLCIxVZy4U=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=collabora.com;
 	spf=pass  smtp.mailfrom=detlev.casanova@collabora.com;
 	dmarc=pass header.from=<detlev.casanova@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1723208289;
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1723208295;
 	s=zohomail; d=collabora.com; i=detlev.casanova@collabora.com;
-	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:MIME-Version:Content-Transfer-Encoding:Message-Id:Reply-To;
-	bh=QgHKMVm9qef45pCQ2A52WWjlGN1Vwr37tZFt+U9C6FE=;
-	b=fIGHu2gkMWgQrvoFr4Icwf3IrBEmG2HcFbaT1oBi9exQv5l/ODSUYIcTgt8o82n8
-	JQnvdf7a6hdrZ8BRZXDEBC74B7opNzWwO+XH7JzKLw7Nr/RHX99XKhvpUESckFERHOl
-	xGEwM73kr58aJrqEENWKA3YH+XWquhtd2Opf9sLk=
-Received: by mx.zohomail.com with SMTPS id 1723208288516683.9262197649491;
-	Fri, 9 Aug 2024 05:58:08 -0700 (PDT)
+	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Message-Id:Reply-To;
+	bh=RyCepvyWzhp8Bg9hhu049ivfAGgOO+ujHi0U3uQVpzQ=;
+	b=ATtkHeaQ4022HrnPvYITO0+xV8AkOlaT+q58GDEkCgiXhzcxFsjy6ElQl0i60oJV
+	3A88F1FnHHYP22w97TqnSUauZ1an8AkIHLQuNqcTCrCa+TBdRJ5gmXDSTrlcGwrrLE7
+	BNPznd7U6lnO/gQgB5PRbeGdRtmls3l4UL13nWDM=
+Received: by mx.zohomail.com with SMTPS id 17232082904921014.7498633269371;
+	Fri, 9 Aug 2024 05:58:10 -0700 (PDT)
 From: Detlev Casanova <detlev.casanova@collabora.com>
 To: linux-kernel@vger.kernel.org
 Cc: Rob Herring <robh@kernel.org>,
@@ -64,15 +64,17 @@ Cc: Rob Herring <robh@kernel.org>,
 	linux-rockchip@lists.infradead.org,
 	linux-pm@vger.kernel.org,
 	kernel@collabora.com
-Subject: [PATCH v3 0/2] Add power-controller support for rk3576
-Date: Fri,  9 Aug 2024 08:58:03 -0400
-Message-ID: <20240809125925.4295-1-detlev.casanova@collabora.com>
+Subject: [PATCH v3 1/2] dt-bindings: power: Add support for RK3576 SoC
+Date: Fri,  9 Aug 2024 08:58:04 -0400
+Message-ID: <20240809125925.4295-2-detlev.casanova@collabora.com>
 X-Mailer: git-send-email 2.46.0
+In-Reply-To: <20240809125925.4295-1-detlev.casanova@collabora.com>
+References: <20240809125925.4295-1-detlev.casanova@collabora.com>
 MIME-Version: 1.0
 X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240809_055816_692492_376CD982 
-X-CRM114-Status: GOOD (  11.20  )
+X-CRM114-CacheID: sfid-20240809_055823_696129_F733AE48 
+X-CRM114-Status: GOOD (  13.65  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,31 +91,68 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add support for the power domain controller on the rk3576 SoC.
-Patches from downstream have been rebased.
+From: Finley Xiao <finley.xiao@rock-chips.com>
 
-Note that the mentioned TRM is not publicly available.
+Define power domain IDs as described in the TRM and add compatible for
+rockchip,rk3576-power-controller
 
-Changes since v2:
-- Remove unused delay for npu and vop
-
-Changes since v1:
-- Rename rk3576-power.h to rockchip,rk3576-power.h
-- Add memory reset support
-- Squashed header files with bindings commit
-- Updated license
-- Fix commit messages for subsystem.
-
-Finley Xiao (2):
-  dt-bindings: power: Add support for RK3576 SoC
-  pmdomain: rockchip: Add support for rk3576 SoC
-
+Signed-off-by: Finley Xiao <finley.xiao@rock-chips.com>
+[reword, add yaml]
+Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
+---
  .../power/rockchip,power-controller.yaml      |  1 +
- drivers/pmdomain/rockchip/pm-domains.c        | 66 ++++++++++++++++++-
- .../dt-bindings/power/rockchip,rk3576-power.h | 30 +++++++++
- 3 files changed, 95 insertions(+), 2 deletions(-)
+ .../dt-bindings/power/rockchip,rk3576-power.h | 30 +++++++++++++++++++
+ 2 files changed, 31 insertions(+)
  create mode 100644 include/dt-bindings/power/rockchip,rk3576-power.h
 
+diff --git a/Documentation/devicetree/bindings/power/rockchip,power-controller.yaml b/Documentation/devicetree/bindings/power/rockchip,power-controller.yaml
+index 0d5e999a58f1b..650dc0aae6f51 100644
+--- a/Documentation/devicetree/bindings/power/rockchip,power-controller.yaml
++++ b/Documentation/devicetree/bindings/power/rockchip,power-controller.yaml
+@@ -41,6 +41,7 @@ properties:
+       - rockchip,rk3368-power-controller
+       - rockchip,rk3399-power-controller
+       - rockchip,rk3568-power-controller
++      - rockchip,rk3576-power-controller
+       - rockchip,rk3588-power-controller
+       - rockchip,rv1126-power-controller
+ 
+diff --git a/include/dt-bindings/power/rockchip,rk3576-power.h b/include/dt-bindings/power/rockchip,rk3576-power.h
+new file mode 100644
+index 0000000000000..324a056aa8512
+--- /dev/null
++++ b/include/dt-bindings/power/rockchip,rk3576-power.h
+@@ -0,0 +1,30 @@
++/* SPDX-License-Identifier: (GPL-2.0 OR MIT) */
++#ifndef __DT_BINDINGS_POWER_RK3576_POWER_H__
++#define __DT_BINDINGS_POWER_RK3576_POWER_H__
++
++/* VD_NPU */
++#define RK3576_PD_NPU		0
++#define RK3576_PD_NPUTOP	1
++#define RK3576_PD_NPU0		2
++#define RK3576_PD_NPU1		3
++
++/* VD_GPU */
++#define RK3576_PD_GPU		4
++
++/* VD_LOGIC */
++#define RK3576_PD_NVM		5
++#define RK3576_PD_SDGMAC	6
++#define RK3576_PD_USB		7
++#define RK3576_PD_PHP		8
++#define RK3576_PD_SUBPHP	9
++#define RK3576_PD_AUDIO		10
++#define RK3576_PD_VEPU0		11
++#define RK3576_PD_VEPU1		12
++#define RK3576_PD_VPU		13
++#define RK3576_PD_VDEC		14
++#define RK3576_PD_VI		15
++#define RK3576_PD_VO0		16
++#define RK3576_PD_VO1		17
++#define RK3576_PD_VOP		18
++
++#endif
 -- 
 2.46.0
 
