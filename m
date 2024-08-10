@@ -4,107 +4,148 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3846EC3DA4A
-	for <linux-rockchip@archiver.kernel.org>; Sat, 10 Aug 2024 12:32:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6653BC3DA7F
+	for <linux-rockchip@archiver.kernel.org>; Sat, 10 Aug 2024 13:01:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Cc:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=PzT8AYpffi00XyrscqNlciaXJ9lKPkZqDqE1/Zb1kaU=; b=c7nElKUPGoT2iH
-	Rn7CoVJInpYjxKJaJIQ2DqYCoFjSkdfEARqI3+tE37C03Vns3rDjg6Hs21pOaKy6usEzAMyLbvtUy
-	VznfxLCChjjzRGwlJxqB4L+BkrqA8KAelQKkSim5ux4iSwr9HevqaFS3dipDlrRE5lSa8eit84OoW
-	NcBbJ2Z2686PZ4Qpfx3fzUkFtvxiOzk7b615uCrkVGc7h26NajCn0WXTwUdQJryO73RQ/K7oGnEby
-	7Z3f51XJ0QasxRNTd6f3n0NAmtbLfb72OxqygzZ8SYcWfTtEZMud+AXm7TBePaECwBQBE2lxsEPMV
-	90CLcBxoyWdefH2auIow==;
+	List-Owner; bh=TG7nC5cWOnPI8h4UfiYBdt/DXkKcgY5XBDhQaP0Hqes=; b=NS+HAD75K9NPh4
+	F2bYIo2xWQ3HGziPR3Gcr40hLOTfU/pVOiaKucqntN5AaQv+P7aot+nGr8q737xQdpSyhGrcokl82
+	LLazr4A4Yme4o1yt3T8C6B6y/wWhQ4euXlQMT/2GvM0adn5z9qhLgU1Rafwh7bFLaLuhs7Z8T/ZzV
+	MM27GSJoD3s79iNnZ4SylGT//Hvfa1rqOJ8hYv1D7gYA9A60Pg3076NJeA+EenKT8KYLAEtAMCltI
+	sSkbitrI8/3ev/XcrIBLHg2K1L2AagSvMRAdVg4SUnj/WuSas2ZioPeSXIgglDLaIA6RExuw0jIg0
+	GyUrFFQ2GbnpsX99NWmg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sclH3-0000000E8Qi-1vEv;
-	Sat, 10 Aug 2024 12:32:45 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1scliV-0000000EAgD-1LGK;
+	Sat, 10 Aug 2024 13:01:07 +0000
+Received: from mail-dm6nam12on20701.outbound.protection.outlook.com ([2a01:111:f403:2417::701] helo=NAM12-DM6-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sclGS-0000000E8Lj-2CDr;
-	Sat, 10 Aug 2024 12:32:09 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id AD40060C09;
-	Sat, 10 Aug 2024 12:32:07 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id BAB4EC32781;
-	Sat, 10 Aug 2024 12:32:03 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1723293127;
-	bh=HnGsUuF9x9ZgA2drCBsxqDipQcuqcb3ZJNQgAJuj7Nw=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=jEtFWszXlkWVaZRRH2Wh5kUU3T9cMBsvn3RmQCdwCw1+dYtaWd0g2jOsmdsSlCnZn
-	 EHqW2LbUUHQnoF4w8zQFXFr+0g+jqvKNPty+nkk3j60q1O8debbh5tOj0pb0RGrgtQ
-	 1zbjrvIqB3rnCZ0xMav3UF+tvcBsijxgA4g5QRZzfP9YnouRU2OqI8869XxPE6Ld8r
-	 Y+uft1uKoB8YDIMwiqsVEKXjacz7Qi7NeAueS3ssG7d683aj6QPsFO+NbowyZmGelH
-	 84plmLdrxe+WkO8gIyUNEuNLey7VoZiRv1D2YS18q8PflMZlAkQhGb8UtDGMRlhs/z
-	 mbdg+7IrIIP5A==
-Message-ID: <0e46f4c2-5092-4803-9e6a-aa539a106fab@kernel.org>
-Date: Sat, 10 Aug 2024 14:32:01 +0200
+	id 1scliS-0000000EAdb-1fGE;
+	Sat, 10 Aug 2024 13:01:06 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=NaRSIafqYHddJn98umXbdD2U9Pl2ne/tuhFwevoFVdxxvLQ7XEmjBsBhfu0fep1F6ptNEZsgyv/XQrUAm0+9CeOnESHKyiIO75e0RGNh5Fj92LkcSLDx2DqKnnqCu1fpnpf4ILefBNE4RNrBKu++4nQxn7ENJvJJaHqRi2mdMTY83YHESpqOH88mIpj6XjTPi3xhbhVntlXzPjaiItek/eRFxuGWzrY9PDsCVoUSfuMBysolVnTmz26mQBwh4QgnCfWG35/QP9AGmGfHujlMHTLS9f+00T2AvL6VtfyfRWfIn70lUpIt2YPlUCZ+JSYTsy0tmVKEiV3dwl3nnhoTEA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=q9Oi4oYQnOzlG1npA50Az2S6pQzNYOO829BJQuYECgo=;
+ b=j0mPDDHNM7IhaZspt9IxJUwqTITfd+av4Gx//CtTxIgEa/tpiJVs9KLEgs1cX6tO6bnFIg6KSs3cyBK/WEKBS6Cx8oO4KkBUEg4I3MNwKFi8q2DEx/Ia7hJe3W0UHSSf7fTAyHD4VYIc2w8dgiUjvnePo54xaGStl3pR7DjifxqinH0G8PmRzoQcl7vhEBNfnLAs6HdwcLzhPoAc9HOhaLoSzsc4HiJzynhpWHkDi/rg6uy2MoaFT871QMsKAiyzSCjtC0pG7tx0mSvIF9tlf/DcxoTD0U8LeraM7gFac6Bsewbu1jSBfMVO1/i2Db3jseSIbtRVuhhwx13bXVo7YQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=inmusicbrands.com; dmarc=pass action=none
+ header.from=inmusicbrands.com; dkim=pass header.d=inmusicbrands.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=inmusicbrands.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=q9Oi4oYQnOzlG1npA50Az2S6pQzNYOO829BJQuYECgo=;
+ b=eiT44TQ8ewk0JazsOvNvoKuOc6uDPSCrJWGIrUclvGelBG7bDgJrItMa3ET0fQrFF6Vth/zGQyxmFmx4BYA2Z3AczJ/f3CupJgSh0JlXj3VvXdQwXB6xuYkJkKBv4bgVn73kUNbgtUkjaB0bzHGsIaAqt+RH3wJBdl7fmc4OB5M=
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=inmusicbrands.com;
+Received: from MW4PR08MB8282.namprd08.prod.outlook.com (2603:10b6:303:1bd::18)
+ by LV3PR08MB9290.namprd08.prod.outlook.com (2603:10b6:408:216::22) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7849.19; Sat, 10 Aug
+ 2024 13:00:44 +0000
+Received: from MW4PR08MB8282.namprd08.prod.outlook.com
+ ([fe80::55b3:31f1:11c0:4401]) by MW4PR08MB8282.namprd08.prod.outlook.com
+ ([fe80::55b3:31f1:11c0:4401%4]) with mapi id 15.20.7849.008; Sat, 10 Aug 2024
+ 13:00:43 +0000
+Date: Sat, 10 Aug 2024 14:00:36 +0100
+From: John Keeping <jkeeping@inmusicbrands.com>
+To: Michael Tretter <m.tretter@pengutronix.de>, linux-media@vger.kernel.org,
+	Jacob Chen <jacob-chen@iotwrt.com>,
+	Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	kernel@pengutronix.de
+Subject: Re: [PATCH] media: rockchip: rga: fix offset lookup
+Message-ID: <ZrdkdA-RJOqZNcUT-jkeeping@inmusicbrands.com>
+References: <20240806094842.248775-1-jkeeping@inmusicbrands.com>
+ <ZrYoT7HmTc7OT2Y4@pengutronix.de>
+Content-Disposition: inline
+In-Reply-To: <ZrYoT7HmTc7OT2Y4@pengutronix.de>
+X-ClientProxiedBy: LO4P265CA0161.GBRP265.PROD.OUTLOOK.COM
+ (2603:10a6:600:2c7::8) To MW4PR08MB8282.namprd08.prod.outlook.com
+ (2603:10b6:303:1bd::18)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 1/3] dt-bindings: mmc: Add support for rk3576 dw-mshc
-To: Detlev Casanova <detlev.casanova@collabora.com>,
- linux-kernel@vger.kernel.org
-Cc: Ulf Hansson <ulf.hansson@linaro.org>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- Jaehoon Chung <jh80.chung@samsung.com>, linux-mmc@vger.kernel.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, kernel@collabora.com
-References: <20240808164900.81871-1-detlev.casanova@collabora.com>
- <20240808164900.81871-2-detlev.casanova@collabora.com>
-Content-Language: en-US
-From: Krzysztof Kozlowski <krzk@kernel.org>
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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 fv0=
-In-Reply-To: <20240808164900.81871-2-detlev.casanova@collabora.com>
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: MW4PR08MB8282:EE_|LV3PR08MB9290:EE_
+X-MS-Office365-Filtering-Correlation-Id: c9a27e71-3da8-4918-ebb8-08dcb93c7188
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|366016|1800799024|376014|52116014|7416014|921020|38350700014;
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?3WB48AvCejzx9lcVjOV8xDa42cuLYdVKcT9tEGr5EE5tZEdnKsTOd6r9e133?=
+ =?us-ascii?Q?iwz20CLrkJjKF3asXxLGYLXLz3l1pzWVlYdLJYjkMI+sXu50OnVpCsEj1nIZ?=
+ =?us-ascii?Q?k9qhX1aoMfyb8tLD/6AH3HMirSSL59atGZSX1U8aeme2ef58t3CkytGS2mXt?=
+ =?us-ascii?Q?eZpekkjaAXriKwL94VPox+R6GHQiGu3MDOMCpfSN+6obmMqSv0obhUIBYY5d?=
+ =?us-ascii?Q?wHC0Fif7nsBwmgrMLNzIJyj4xOT/bH+yFbeLoFN7+is85pgCVCGFGsuf5Xl2?=
+ =?us-ascii?Q?a0RRTwSgtofGzmIxoruC3c/XLxYnVsGDMPgszU1GPyVDMVh64Td5osrmsEcA?=
+ =?us-ascii?Q?2gAoerDPWvczT7d98TouNS1iukIFYrQDXL/2Q78Ivi1E232Jpi1i1q8XoJ2z?=
+ =?us-ascii?Q?5u1vJZlqrYUgXfeQelKOPuFqVA5uJbzrQa0dbFCCttdhMvSSMYWDJ9wfnu41?=
+ =?us-ascii?Q?7s2aSKHgnDWbO6mPViUL4eisZUyR7AN+wZ0dSCA/RZvuvCDAG7DiyIpASE3I?=
+ =?us-ascii?Q?iU+MhX7af8MIMYgA3UPMGoDbZwh5SF0OR6puj/HSmQQrRF9Fzr7Q5lJdZbV4?=
+ =?us-ascii?Q?nYFt6pd3K3hTGTPGCBbmQ9ktaVkPNgS0oO04vUNm5uiqJy70VAI6LKINmFuM?=
+ =?us-ascii?Q?cZZklVHqJmIHa4Kbn/WHlfgtAxOJzyzy8QHDMl/pfqRZphn0U8NgqGJbM8OT?=
+ =?us-ascii?Q?5UFHTrPHPWVnaySYEgmJIJoV1gHHOezqzfeBYpw+gZPOrH6x3ItARBqlJEJZ?=
+ =?us-ascii?Q?6qvCc7VMBaL3av8UE8kxi+AEMTkKFBlN5Rnd80nZwsFsKylBnuWQD10OBbQS?=
+ =?us-ascii?Q?vPJR/yOpSI0gquk0fuEew5iNMBiDNbObYHksmyIwdj0tccLU3gzsWhfYuYpJ?=
+ =?us-ascii?Q?TNLfzcsCn2mh296Z0RvgIqo7sBqdRMdVrm9/LLgH6Nqd0vADXYUhxlG8Setx?=
+ =?us-ascii?Q?aX+2p81dDhtDrhAsxQwq2NNQJEyPhjFphHvV7cR4+78SbPKQll8q8bDueKJP?=
+ =?us-ascii?Q?g+9H8hEvFNoh1cS0Uk2Dzcwus6gKP7cwHc+0x/Tpgs+L0Cmlz3U/4GnfwpnF?=
+ =?us-ascii?Q?JDtm9weUKxMP3rl2TYJvkkmEx+cwimh9ySDnr/OnK7Aq5EBwj52GpI2uGX13?=
+ =?us-ascii?Q?EX7Z8TzsW/9gNkMRwRvFGFsIzZhpiDGQ0hwlH+zjeEfdPaFxcLKiuR6hj810?=
+ =?us-ascii?Q?sBow1DRH6dyd+G70ZmEIUgR5+0YEGsSY90Kt2pKmC1bS/UT8OpEnm6gfJuzX?=
+ =?us-ascii?Q?sCTeWw0m96xqkXoa9hXsrG3PpHa9j3DbW26HIP792YmEhbPZF0IrES8eDiS/?=
+ =?us-ascii?Q?BVn0+MNAeWB0ObB94SRJIFmNJrL8ZDq0TjlGCdUyynDpw+WEWeC13mL/jyHb?=
+ =?us-ascii?Q?Y8MuJEol0FNn7cz75aPgTnGTLnD3?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:MW4PR08MB8282.namprd08.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(366016)(1800799024)(376014)(52116014)(7416014)(921020)(38350700014);DIR:OUT;SFP:1102;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?s7/sW42ncBaenD7VUNfbk75JSSfs+SDufKt41TjLs9javEMnmvzyooekirPc?=
+ =?us-ascii?Q?uujEIUO1dCHPXvNj8hDR31zxCpWdSvZJJKOUxSRv8U5PDOt4qtqCkFqBRe46?=
+ =?us-ascii?Q?UMEijlGqYNKqtHzVlr1kIMDW4W2SYIkXVbeHbFLP88LQ2yrmvsC56YkStgze?=
+ =?us-ascii?Q?WjdZlRS0AYmAZE7/I6xNQqYWVy3m8xyiQocY3bsizwp9UNnV2GqqVGrJWlkk?=
+ =?us-ascii?Q?/B7/3pb5Ygtt3b/T1VQkkFY0lMhAaVHR2QNNQNMUP6bFErDVeihgzbFRfpKl?=
+ =?us-ascii?Q?N4YSNsE6n7ergYD9QIYmgsGMEytUU5HblbA02EfQv7JWPHd+AeRUglF5Flt8?=
+ =?us-ascii?Q?D7jUDOBvlRHzbt41k1fdIml3lduSPZ3UAAiixiCAxVujjetr97eVf6LI2d2L?=
+ =?us-ascii?Q?40klmBHoNvcDS3Jh/hNlZ2A9o+tYdVbf7/O3vJebADKRZcyxmJeA7p8v2ouS?=
+ =?us-ascii?Q?Yh8rLgCwjfRv4r95jc5Tlc3nXp1OozKw697RBazfR3FGW4U89xIjfVomXL3b?=
+ =?us-ascii?Q?ndKHhnVcfxwKUaOiM/aOswPvf3s9YwbHcsq/lxDbGs9tDBKvWpShZGQuv/JA?=
+ =?us-ascii?Q?nzneT5bqDin6Y7vkEG2vPTMws4iNUxFsW8+1JG8kc8yTWP91uFdDe+rBPVBf?=
+ =?us-ascii?Q?HdPpwTA3W6zCi/SX3SijMNePrRd8t0KJ9BESlx3BwrVRYKWtySMsDtuEdQEe?=
+ =?us-ascii?Q?QDWD97j8mWXIUOaBPON3A/WKYI0FoKzO7k2cGSn56U0F3M6dcmXOZ05DFM1H?=
+ =?us-ascii?Q?OBYyVWEO0IAuNmvIpXfbs1trTgerhYyXl7LufKYhJD56cOzr2yK7liWtU/81?=
+ =?us-ascii?Q?0qB9vBtqIkhac75Uu1tEcZJuad/w+32blx5UjyOCRQ8gQnrZEsbB6SWeNTUK?=
+ =?us-ascii?Q?swIVot9dAB89S1gMUoN0HTv2slW4XSmkkqV1f1dtcqCzXftK0PgmYh54wjZJ?=
+ =?us-ascii?Q?VXQNRKAuEwkZDzr/A2Es6ymnLoQnVCx0t5ZxrYH/g1T1koc4hX0FZyUv6pUp?=
+ =?us-ascii?Q?itDkQKU2M3BGHBJmzD48+P+WHwmpG7xhYr4bnuZ9o7uGF6TFW0iRz7xAOVwb?=
+ =?us-ascii?Q?KvxvfGHPQ7iEsOo8VGTc87gJMXgzSn+PXF4xIA5Js0BpKt4F4td1TmzZfLKM?=
+ =?us-ascii?Q?VgJhJcJnKA/fCZt1/o3vJ/HgJETF2MVGkLLYAJRbXKaCK2SnzLXThgLuBtVz?=
+ =?us-ascii?Q?Ci2gZz84cAo5IH7h7zEziTTugn/4AOXjzZbosbY7O/HGVxwCofADCBKBqQKF?=
+ =?us-ascii?Q?+WyZMuwF/l6rynVdd0xMXq9jl6RjY/AGUH7gX3OpTGGNE/VtqJTXbvUV2a03?=
+ =?us-ascii?Q?+TaTo40+GByBxbU5IXUDTNf1lQnjFitv1yT3OND2txrYvEIscCvUzcUxb78w?=
+ =?us-ascii?Q?iphF2WbNKSlR/C26Puc7t9jblcIQlLzjOkAE4MSkb+TjxG64wEKkFH3YNQjw?=
+ =?us-ascii?Q?lB3x/ugETczXQXf5xr9oCCOqB1CA+USohdVhpbCB7T5ugV8t6iQQlUeOm3SU?=
+ =?us-ascii?Q?PblwcmQ98usFbngHpF2GQFBOa0HSLwbYygfxvCxaLxDDw2t4D2CzVWx0TAmP?=
+ =?us-ascii?Q?8DyL3ony6H9SmOF6tknpkeFyCHgoMJ+86R1aBBtZujtn61MEGuCFsFk8N6OX?=
+ =?us-ascii?Q?qQ=3D=3D?=
+X-OriginatorOrg: inmusicbrands.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: c9a27e71-3da8-4918-ebb8-08dcb93c7188
+X-MS-Exchange-CrossTenant-AuthSource: MW4PR08MB8282.namprd08.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 10 Aug 2024 13:00:43.5234
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 24507e43-fb7c-4b60-ab03-f78fafaf0a65
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: 7D1pLb5Qz8azlPshb6PtIcHA2sgvwoBE9fnE6XAu8vShKohNNNMsadfSxY0lGO8VEZ7p4zyL0rnzC8vXx+iY7nRGz6xv34io29p4oWxg9yA=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: LV3PR08MB9290
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240810_053208_741155_F9C20B33 
-X-CRM114-Status: GOOD (  17.37  )
+X-CRM114-CacheID: sfid-20240810_060104_447864_F381D000 
+X-CRM114-Status: GOOD (  27.86  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -121,43 +162,68 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 08/08/2024 18:47, Detlev Casanova wrote:
-> Add the compatible string for rockchip,rk3576-dw-mshc and add support
-> for the rockchip,v2-tuning flag, a new feature of this core.
+Hi Michael,
+
+On Fri, Aug 09, 2024 at 04:31:43PM +0200, Michael Tretter wrote:
+> On Tue, 06 Aug 2024 10:48:41 +0100, John Keeping wrote:
+> > The rot_mir_point_matrix is arranged with the rotation values in rows
+> > and mirror settings in the columns.  Fix the order of indexing to match
+> > this so that the correct values are used.
 > 
-> Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
-> ---
->  .../devicetree/bindings/mmc/rockchip-dw-mshc.yaml          | 7 +++++++
->  1 file changed, 7 insertions(+)
+> The table and indexing is correct. The rows (second index) contain the
+> mirror modes and the columns (first index) contain the rotation modes,
+> and the table and the indexing are correct. If you read the columns, the
+> corner moves clockwise, but if you read the rows, the corner moves in a
+> z or s form, indicating that these are the mirror modes.
 > 
-> diff --git a/Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.yaml b/Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.yaml
-> index 211cd0b0bc5f3..86c986a7adb23 100644
-> --- a/Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.yaml
-> +++ b/Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.yaml
-> @@ -39,6 +39,7 @@ properties:
->                - rockchip,rk3368-dw-mshc
->                - rockchip,rk3399-dw-mshc
->                - rockchip,rk3568-dw-mshc
-> +              - rockchip,rk3576-dw-mshc
->                - rockchip,rk3588-dw-mshc
->                - rockchip,rv1108-dw-mshc
->                - rockchip,rv1126-dw-mshc
-> @@ -95,6 +96,12 @@ properties:
->        If not specified, the host will do tuning for 360 times,
->        namely tuning for each degree.
->  
-> +  rockchip,v2-tuning:
-> +    $ref: /schemas/types.yaml#/definitions/flag
-> +    description:
-> +      Specify when the v2 tuning is supported. In this case, the hardware
-> +      inherits pre-stage loader's phase settings.
+> It's probably worth documenting, how the table works.
+> 
+> However, there is a mixup of the arguments between the call to
+> rga_lookup_draw_pos() and the use in the function.
+> 
+> The function definition is
+> 
+> static struct rga_addr_offset *
+> rga_lookup_draw_pos(struct rga_corners_addr_offset * offsets,
+>                     u32 rotate_mode, u32 mirr_mode)
+> 
+> but it is called as
+> 
+> rga_lookup_draw_pos(&offsets, mir_mode, rot_mode);
+> 
+> I think, fixing the order of the arguments in the function call is the
+> correct fix to your observed bug.
 
-Is supported? This sounds compatible specific, so drop it. Unless it is
-bootloader dependent, but how?
+Ah, yes.  I'm not sure how I missed that.
 
-Best regards,
-Krzysztof
+I have confirmed your suggested change works and will send an updated
+patch.
 
+
+Thanks,
+John
+
+> > 
+> > Signed-off-by: John Keeping <jkeeping@inmusicbrands.com>
+> > ---
+> >  drivers/media/platform/rockchip/rga/rga-hw.c | 2 +-
+> >  1 file changed, 1 insertion(+), 1 deletion(-)
+> > 
+> > diff --git a/drivers/media/platform/rockchip/rga/rga-hw.c b/drivers/media/platform/rockchip/rga/rga-hw.c
+> > index 11c3d72347572..b7d51ddb10fa4 100644
+> > --- a/drivers/media/platform/rockchip/rga/rga-hw.c
+> > +++ b/drivers/media/platform/rockchip/rga/rga-hw.c
+> > @@ -97,7 +97,7 @@ static struct rga_addr_offset *rga_lookup_draw_pos(struct
+> >  	if (!offsets)
+> >  		return NULL;
+> >  
+> > -	switch (rot_mir_point_matrix[rotate_mode][mirr_mode]) {
+> > +	switch (rot_mir_point_matrix[mirr_mode][rotate_mode]) {
+> >  	case LT:
+> >  		return &offsets->left_top;
+> >  	case LB:
+> > -- 
+> > 2.45.2
 
 _______________________________________________
 Linux-rockchip mailing list
