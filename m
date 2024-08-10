@@ -4,63 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 14726C3DA4A
-	for <linux-rockchip@archiver.kernel.org>; Sat, 10 Aug 2024 12:30:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3846EC3DA4A
+	for <linux-rockchip@archiver.kernel.org>; Sat, 10 Aug 2024 12:32:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=blxBifqqtQ+ow3qqqvbPsZIEKqyrZRXZn8Al11V56xM=; b=rI80X8npXpvYb+
-	QjVLZ8vOYwU//Sq3V6j1/0Sa8bYTYRSKYBeOKvKUPrxIiTsAdzImBwaffAtDXjIKckyA9FZiKN30x
-	OwFLFc3xDzezgG1ZQiMDYeMad/rdL9O5B0QTyODc/yveGNwl5rc9se71jUyb75Fs4zeRpQt1rbWcI
-	zrXuurM7KdohByal9BSTqYl+DxTNhpmGfYcYtTIbNaO+vi/CImjeIIImNQN0BzjlQbdDW1sd2z/bE
-	f5ISR7ZF8K8jTVNry3DhkBDKDH10O4aTy7iJjsxhy5843IgsFYa3SkDz+zcdISbZn0Te8nDM9BfWA
-	9ntS2KurS4JnmBRemRwg==;
+	List-Owner; bh=PzT8AYpffi00XyrscqNlciaXJ9lKPkZqDqE1/Zb1kaU=; b=c7nElKUPGoT2iH
+	Rn7CoVJInpYjxKJaJIQ2DqYCoFjSkdfEARqI3+tE37C03Vns3rDjg6Hs21pOaKy6usEzAMyLbvtUy
+	VznfxLCChjjzRGwlJxqB4L+BkrqA8KAelQKkSim5ux4iSwr9HevqaFS3dipDlrRE5lSa8eit84OoW
+	NcBbJ2Z2686PZ4Qpfx3fzUkFtvxiOzk7b615uCrkVGc7h26NajCn0WXTwUdQJryO73RQ/K7oGnEby
+	7Z3f51XJ0QasxRNTd6f3n0NAmtbLfb72OxqygzZ8SYcWfTtEZMud+AXm7TBePaECwBQBE2lxsEPMV
+	90CLcBxoyWdefH2auIow==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sclEO-0000000E8Ak-3X1H;
-	Sat, 10 Aug 2024 12:30:00 +0000
+	id 1sclH3-0000000E8Qi-1vEv;
+	Sat, 10 Aug 2024 12:32:45 +0000
 Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sclDn-0000000E86c-2nNu;
-	Sat, 10 Aug 2024 12:29:25 +0000
+	id 1sclGS-0000000E8Lj-2CDr;
+	Sat, 10 Aug 2024 12:32:09 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id B0A0C60AE7;
-	Sat, 10 Aug 2024 12:29:22 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id AEA98C32781;
-	Sat, 10 Aug 2024 12:29:17 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id AD40060C09;
+	Sat, 10 Aug 2024 12:32:07 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id BAB4EC32781;
+	Sat, 10 Aug 2024 12:32:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1723292962;
-	bh=s09tt5kUfqGeZK7vMpooPY2p4dcDe4zacRBUn0/9Gko=;
+	s=k20201202; t=1723293127;
+	bh=HnGsUuF9x9ZgA2drCBsxqDipQcuqcb3ZJNQgAJuj7Nw=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=rOrPCoieA1i8HZJPTWyhPYfcgtBtkSZFjajrXO00z7YCk7nGEBnXD7R+49lmkbltS
-	 IYG80R6eJUlh7DB+xcikOpSieXKpniLCexiP80ASYzyDoN7v50QmG6PSjxiQNZ/obY
-	 lhbNvu+9scw/F1JnrHj9n0glZk33mELHy3QTH7OjP0I2WgZrqiedDpuyNolCzwI5fP
-	 qKMPOr07oFE6LVJybKqwgMX8Ic/unduS5JiH68xIJ8unRkPc3dKQFSsuVATS8+Gvdp
-	 L5xNhsfx5rg81LKzcipvO7eiY4xfrEhTGWHYUG5qLoc62Zqrhtdy62fvfgcSmAK7Uv
-	 QPd5aA9rrautQ==
-Message-ID: <5bfe6251-796c-4036-8db6-783147b4ebd9@kernel.org>
-Date: Sat, 10 Aug 2024 14:29:15 +0200
+	b=jEtFWszXlkWVaZRRH2Wh5kUU3T9cMBsvn3RmQCdwCw1+dYtaWd0g2jOsmdsSlCnZn
+	 EHqW2LbUUHQnoF4w8zQFXFr+0g+jqvKNPty+nkk3j60q1O8debbh5tOj0pb0RGrgtQ
+	 1zbjrvIqB3rnCZ0xMav3UF+tvcBsijxgA4g5QRZzfP9YnouRU2OqI8869XxPE6Ld8r
+	 Y+uft1uKoB8YDIMwiqsVEKXjacz7Qi7NeAueS3ssG7d683aj6QPsFO+NbowyZmGelH
+	 84plmLdrxe+WkO8gIyUNEuNLey7VoZiRv1D2YS18q8PflMZlAkQhGb8UtDGMRlhs/z
+	 mbdg+7IrIIP5A==
+Message-ID: <0e46f4c2-5092-4803-9e6a-aa539a106fab@kernel.org>
+Date: Sat, 10 Aug 2024 14:32:01 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 1/3] dt-bindings: reset: Add rk3576 reset definitions
+Subject: Re: [PATCH v2 1/3] dt-bindings: mmc: Add support for rk3576 dw-mshc
 To: Detlev Casanova <detlev.casanova@collabora.com>,
  linux-kernel@vger.kernel.org
-Cc: Michael Turquette <mturquette@baylibre.com>,
- Stephen Boyd <sboyd@kernel.org>, Rob Herring <robh@kernel.org>,
+Cc: Ulf Hansson <ulf.hansson@linaro.org>, Rob Herring <robh@kernel.org>,
  Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
  <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- Philipp Zabel <p.zabel@pengutronix.de>,
- Elaine Zhang <zhangqing@rock-chips.com>, linux-clk@vger.kernel.org,
+ Jaehoon Chung <jh80.chung@samsung.com>, linux-mmc@vger.kernel.org,
  devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, kernel@collabora.com,
- Sugar Zhang <sugar.zhang@rock-chips.com>
-References: <20240809125553.3889-1-detlev.casanova@collabora.com>
- <20240809125553.3889-2-detlev.casanova@collabora.com>
-From: Krzysztof Kozlowski <krzk@kernel.org>
+ linux-rockchip@lists.infradead.org, kernel@collabora.com
+References: <20240808164900.81871-1-detlev.casanova@collabora.com>
+ <20240808164900.81871-2-detlev.casanova@collabora.com>
 Content-Language: en-US
+From: Krzysztof Kozlowski <krzk@kernel.org>
 Autocrypt: addr=krzk@kernel.org; keydata=
  xsFNBFVDQq4BEAC6KeLOfFsAvFMBsrCrJ2bCalhPv5+KQF2PS2+iwZI8BpRZoV+Bd5kWvN79
  cFgcqTTuNHjAvxtUG8pQgGTHAObYs6xeYJtjUH0ZX6ndJ33FJYf5V3yXqqjcZ30FgHzJCFUu
@@ -104,11 +101,10 @@ Autocrypt: addr=krzk@kernel.org; keydata=
  uZwJCLykjad45hsWcOGk3OcaAGQS6NDlfhM6O9aYNwGL6tGt/6BkRikNOs7VDEa4/HlbaSJo
  7FgndGw1kWmkeL6oQh7wBvYll2buKod4qYntmNKEicoHGU+x91Gcan8mCoqhJkbqrL7+nXG2
  5Q/GS5M9RFWS+nYyJh+c3OcfKqVcZQNANItt7+ULzdNJuhvTRRdC3g9hmCEuNSr+CLMdnRBY fv0=
-In-Reply-To: <20240809125553.3889-2-detlev.casanova@collabora.com>
+In-Reply-To: <20240808164900.81871-2-detlev.casanova@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240810_052923_870587_483EA717 
-X-CRM114-Status: UNSURE (   9.22  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240810_053208_741155_F9C20B33 
+X-CRM114-Status: GOOD (  17.37  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -125,26 +121,39 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 09/08/2024 14:54, Detlev Casanova wrote:
-> Add reset ID defines for rk3576.
+On 08/08/2024 18:47, Detlev Casanova wrote:
+> Add the compatible string for rockchip,rk3576-dw-mshc and add support
+> for the rockchip,v2-tuning flag, a new feature of this core.
 > 
-> Compared to the downstream bindings this uses continous gapless
-> reset IDs starting at 1 instead of register offsets as IDs, as
-> introduced in the RK3588 bindings.
-> Thus all numbers are different between upstream and downstream,
-> but names are kept exactly the same.
-> 
-> Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
-> Signed-off-by: Sugar Zhang <sugar.zhang@rock-chips.com>
 > Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
 > ---
->  .../dt-bindings/reset/rockchip,rk3576-cru.h   | 564 ++++++++++++++++++
+>  .../devicetree/bindings/mmc/rockchip-dw-mshc.yaml          | 7 +++++++
+>  1 file changed, 7 insertions(+)
+> 
+> diff --git a/Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.yaml b/Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.yaml
+> index 211cd0b0bc5f3..86c986a7adb23 100644
+> --- a/Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.yaml
+> +++ b/Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.yaml
+> @@ -39,6 +39,7 @@ properties:
+>                - rockchip,rk3368-dw-mshc
+>                - rockchip,rk3399-dw-mshc
+>                - rockchip,rk3568-dw-mshc
+> +              - rockchip,rk3576-dw-mshc
+>                - rockchip,rk3588-dw-mshc
+>                - rockchip,rv1108-dw-mshc
+>                - rockchip,rv1126-dw-mshc
+> @@ -95,6 +96,12 @@ properties:
+>        If not specified, the host will do tuning for 360 times,
+>        namely tuning for each degree.
+>  
+> +  rockchip,v2-tuning:
+> +    $ref: /schemas/types.yaml#/definitions/flag
+> +    description:
+> +      Specify when the v2 tuning is supported. In this case, the hardware
+> +      inherits pre-stage loader's phase settings.
 
-I think I was clear:
-
-"These are bindings. Must be squashed with previous patch."
-
-Other comments were also not implemented?
+Is supported? This sounds compatible specific, so drop it. Unless it is
+bootloader dependent, but how?
 
 Best regards,
 Krzysztof
