@@ -4,33 +4,33 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8CFDFC3DA4A
-	for <linux-rockchip@archiver.kernel.org>; Sat, 10 Aug 2024 18:48:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 680A4C3DA4A
+	for <linux-rockchip@archiver.kernel.org>; Sat, 10 Aug 2024 18:49:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=nMwxBpYY5K8p3M48BRWecLHFrvbhls2FNZuba5m1V9Y=; b=2zsGp6rrdxpAx0
-	+KmcpNFbEHk/EvghiBiheuL0zzGG29mY2w0Nt1H5dqBtDpJLWFwOT3aMfDfiH7mnyp2MSwBVHSyvQ
-	7LLPyNlDOT7OhtYgkHtCnVfCXk3ZG6gsZ8XcaHWZxh+9f0QXe3FaaL88+RsqUB3Mi5IxmG3FEd7aO
-	s7CbYWgdlLPxhPEb3WRtdw3sOVpDBrSQncMeD5b073gj757DlGUGbJO85QD3Thg4r97b6ZOr1NHHD
-	qu2OC8qzbOLZmmjONFjlA9LF5wZXPbDYfW13lX3ByXrgBBdNb/qb1XBOTjoXNQAt8/oh3O4I2pdDJ
-	wSdXIncy6JykJKDZQexg==;
+	List-Owner; bh=eKYZybAxpTK0jfEUv8TsFJAz1PgAYy+W+A310AnEYN0=; b=OiBtIHIjXd2XeL
+	vMsDN3aa4IbmXf+Yaw+YBA945njvtZBHfi/jC0yhfHGQVVunlZFxccOGf0fhlPZQBu213sceX459X
+	WoXE+G6odNQ/ZTGyHIjawcUtKxBaKAPzwLGpSxA3ey693LFKXnKPHQlXnCdRFq/zoK14Fe4shPsXt
+	W4UZPZpfadsGnsp6BuskqiVVqh4+qJkD+4IbpdADrXl/VZkJekbuVbjUXUCLD0O9Jh6ajGjnxofZh
+	69JeLWm7zR4VESd+I2qxXqojpHxFETj7cuY00i9cfNkclaHnVI5BGvQKTURt6WAdo/jCpSNCx+EUZ
+	SSqUrOgEE1kTDXQXKRMA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1scr8r-0000000ESdL-1n6n;
-	Sat, 10 Aug 2024 18:48:41 +0000
+	id 1scr9P-0000000ESpp-2eyS;
+	Sat, 10 Aug 2024 18:49:15 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1scr8E-0000000EST2-1qBj;
-	Sat, 10 Aug 2024 18:48:04 +0000
+	id 1scr8E-0000000EST4-1qNt;
+	Sat, 10 Aug 2024 18:48:05 +0000
 Received: from i53875b02.versanet.de ([83.135.91.2] helo=phil.lan)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1scr83-0006GR-Rq; Sat, 10 Aug 2024 20:47:51 +0200
+	id 1scr84-0006GR-HN; Sat, 10 Aug 2024 20:47:52 +0200
 From: Heiko Stuebner <heiko@sntech.de>
 To: lee@kernel.org,
 	jdelvare@suse.com,
@@ -49,16 +49,16 @@ Cc: robh@kernel.org,
 	linux-hwmon@vger.kernel.org,
 	linux-input@vger.kernel.org,
 	linux-leds@vger.kernel.org
-Subject: [PATCH v4 6/7] arm64: dts: rockchip: hook up the MCU on the QNAP TS433
-Date: Sat, 10 Aug 2024 20:47:42 +0200
-Message-Id: <20240810184743.277248-7-heiko@sntech.de>
+Subject: [PATCH v4 7/7] arm64: dts: rockchip: set hdd led labels on qnap-ts433
+Date: Sat, 10 Aug 2024 20:47:43 +0200
+Message-Id: <20240810184743.277248-8-heiko@sntech.de>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20240810184743.277248-1-heiko@sntech.de>
 References: <20240810184743.277248-1-heiko@sntech.de>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240810_114802_500232_8A2CE809 
-X-CRM114-Status: GOOD (  14.63  )
+X-CRM114-CacheID: sfid-20240810_114802_500070_C251DAA0 
+X-CRM114-Status: GOOD (  11.16  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,99 +75,51 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The MCU is an important part of the device functionality. It provides
-functionality like fan-control, more leds, etc and even more important
-without it, the NAS-device cannot even fully turned off.
-
-Hook up the serial device to its uart and hook into the thermal
-management to control the fan according to the cpu temperature.
-
-While the MCU also provides a temperature sensor for the case, this one
-is just polled and does not provide functionality for handling trip
-points in hardware, so a lot of polling would be involved.
-As the cpu is only cooled passively in these devices, it's temperature
-rising will indicate the temperature level of the system just earlier.
+The automatically generated names for the LEDs from color and function
+do not match nicely for the 4 hdds, so set them manually per the label
+property to also match the LEDs generated from the MCU.
 
 Signed-off-by: Heiko Stuebner <heiko@sntech.de>
 ---
- .../boot/dts/rockchip/rk3568-qnap-ts433.dts   | 57 +++++++++++++++++++
- 1 file changed, 57 insertions(+)
+ arch/arm64/boot/dts/rockchip/rk3568-qnap-ts433.dts | 4 ++++
+ 1 file changed, 4 insertions(+)
 
 diff --git a/arch/arm64/boot/dts/rockchip/rk3568-qnap-ts433.dts b/arch/arm64/boot/dts/rockchip/rk3568-qnap-ts433.dts
-index 90d8d5266299b..6405ec7d47361 100644
+index 6405ec7d47361..110c323786848 100644
 --- a/arch/arm64/boot/dts/rockchip/rk3568-qnap-ts433.dts
 +++ b/arch/arm64/boot/dts/rockchip/rk3568-qnap-ts433.dts
-@@ -463,6 +463,54 @@ rgmii_phy0: ethernet-phy@0 {
- 	};
- };
- 
-+/*
-+ * The MCU can provide system temperature too, but only by polling and of
-+ * course also cannot set trip points. So attach to the cpu thermal-zone
-+ * instead to control the fan.
-+ */
-+&cpu_thermal {
-+	trips {
-+		case_fan0: case-fan0 {
-+			hysteresis = <2000>;
-+			temperature = <35000>;
-+			type = "active";
-+		};
-+
-+		case_fan1: case-fan1 {
-+			hysteresis = <2000>;
-+			temperature = <45000>;
-+			type = "active";
-+		};
-+
-+		case_fan2: case-fan2 {
-+			hysteresis = <2000>;
-+			temperature = <65000>;
-+			type = "active";
-+		};
-+	};
-+
-+	cooling-maps {
-+		/*
-+		 * Always provide some air movement, due to small case
-+		 * full of harddrives.
-+		 */
-+		map1 {
-+			cooling-device = <&fan THERMAL_NO_LIMIT 1>;
-+			trip = <&case_fan0>;
-+		};
-+
-+		map2 {
-+			cooling-device = <&fan 2 3>;
-+			trip = <&case_fan1>;
-+		};
-+
-+		map3 {
-+			cooling-device = <&fan 4 THERMAL_NO_LIMIT>;
-+			trip = <&case_fan2>;
-+		};
-+	};
-+};
-+
- &pcie30phy {
- 	data-lanes = <1 2>;
- 	status = "okay";
-@@ -562,6 +610,15 @@ &tsadc {
-  */
- &uart0 {
- 	status = "okay";
-+
-+	mcu {
-+		compatible = "qnap,ts433-mcu";
-+
-+		fan: fan-0 {
-+			#cooling-cells = <2>;
-+			cooling-levels = <0 64 89 128 166 204 221 238>;
-+		};
-+	};
- };
- 
- /*
+@@ -50,6 +50,7 @@ led-0 {
+ 			color = <LED_COLOR_ID_GREEN>;
+ 			function = LED_FUNCTION_DISK;
+ 			gpios = <&gpio1 RK_PD5 GPIO_ACTIVE_LOW>;
++			label = "hdd1:green:disk";
+ 			linux,default-trigger = "disk-activity";
+ 			pinctrl-names = "default";
+ 			pinctrl-0 = <&hdd1_led_pin>;
+@@ -59,6 +60,7 @@ led-1 {
+ 			color = <LED_COLOR_ID_GREEN>;
+ 			function = LED_FUNCTION_DISK;
+ 			gpios = <&gpio1 RK_PD6 GPIO_ACTIVE_LOW>;
++			label = "hdd2:green:disk";
+ 			linux,default-trigger = "disk-activity";
+ 			pinctrl-names = "default";
+ 			pinctrl-0 = <&hdd2_led_pin>;
+@@ -68,6 +70,7 @@ led-2 {
+ 			color = <LED_COLOR_ID_GREEN>;
+ 			function = LED_FUNCTION_DISK;
+ 			gpios = <&gpio1 RK_PD7 GPIO_ACTIVE_LOW>;
++			label = "hdd3:green:disk";
+ 			linux,default-trigger = "disk-activity";
+ 			pinctrl-names = "default";
+ 			pinctrl-0 = <&hdd3_led_pin>;
+@@ -77,6 +80,7 @@ led-3 {
+ 			color = <LED_COLOR_ID_GREEN>;
+ 			function = LED_FUNCTION_DISK;
+ 			gpios = <&gpio2 RK_PA0 GPIO_ACTIVE_LOW>;
++			label = "hdd4:green:disk";
+ 			linux,default-trigger = "disk-activity";
+ 			pinctrl-names = "default";
+ 			pinctrl-0 = <&hdd4_led_pin>;
 -- 
 2.39.2
 
