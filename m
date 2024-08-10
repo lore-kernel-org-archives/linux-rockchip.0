@@ -4,65 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D9057C3DA7F
-	for <linux-rockchip@archiver.kernel.org>; Sat, 10 Aug 2024 18:33:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 512FCC3DA7F
+	for <linux-rockchip@archiver.kernel.org>; Sat, 10 Aug 2024 18:33:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:MIME-Version:
 	Date:Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=iQqekmMoJgnvIfodMgYDJnvqwUM8YfMVNLBsYBAJDlI=; b=GypQG3kVkX6uRBTYLgODw56CC4
-	3HLwl8bZNzDGSWQYNNioDrNKcZjWT7F1Ft03cH3D80agcTy6t9LYR1bNNevGsEwxXQB2VjTKipuTZ
-	83sbr3oQBaHBHUNQA9uFq/gQenl2RvT3dKVnSQyo0dCvUOiJKN69npy1xi6LZv0ih0ddy430vPARu
-	EGDEn1llGegrHQGYcPlNoAapRKfBib4AMMPQK3PytNA+3D+RRNVXnisOf2nO71smXOFYn4jcswQrq
-	i+a6wrhzDreW49L33AMhn1JQ1nJ9SQ69jkdFh3493wtx8RGWDyz57UUcLEVsVH7nIE6AanXF8ln/C
-	BlyPDw1w==;
+	bh=iQqekmMoJgnvIfodMgYDJnvqwUM8YfMVNLBsYBAJDlI=; b=4zUObAWZo451BT3z5i/5h/+Eki
+	KpoewG6SwE3QVd+egYIieqrMWi+/Kw19aJpS+p3L7vpY+hj4gQ1jWKPs5Im62OvNjvrJI61IT/OQI
+	+iaV6DpOpeFpLd5VHasPxzAICZJBek0HqSpAjDhAmyJ8rGWXDenvEAV3dAhaKRB7MX+A34tKk4i1Y
+	zqEzQecOth1mBmcVYqwpDA7t8IrwpH70mH8HUi40su5iHsUAEx/JpEu32lmkrVayusTKOttA+UKCl
+	FVBvYwIaTRg7Tss/mhidXd3AZYu3O1hVmU0WpfIuZ97w2nBKF5fDztgnmqDcHtNcdxULRPFVyYfPI
+	MoJQA5TA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1scqtZ-0000000ERBM-0eGj;
-	Sat, 10 Aug 2024 18:32:53 +0000
-Received: from mail-ed1-x52e.google.com ([2a00:1450:4864:20::52e])
+	id 1scqu6-0000000ERJB-41R2;
+	Sat, 10 Aug 2024 18:33:26 +0000
+Received: from mail-ej1-x62f.google.com ([2a00:1450:4864:20::62f])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1scqtU-0000000ERAa-47NA
+	id 1scqtZ-0000000ERBL-3ly4
 	for linux-rockchip@lists.infradead.org;
-	Sat, 10 Aug 2024 18:32:51 +0000
-Received: by mail-ed1-x52e.google.com with SMTP id 4fb4d7f45d1cf-5bba25c1e15so3634262a12.2
-        for <linux-rockchip@lists.infradead.org>; Sat, 10 Aug 2024 11:32:47 -0700 (PDT)
+	Sat, 10 Aug 2024 18:32:55 +0000
+Received: by mail-ej1-x62f.google.com with SMTP id a640c23a62f3a-a728f74c23dso344806766b.1
+        for <linux-rockchip@lists.infradead.org>; Sat, 10 Aug 2024 11:32:53 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=broadcom.com; s=google; t=1723314766; x=1723919566; darn=lists.infradead.org;
+        d=broadcom.com; s=google; t=1723314771; x=1723919571; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:autocrypt:from
          :content-language:references:to:subject:user-agent:mime-version:date
          :message-id:from:to:cc:subject:date:message-id:reply-to;
         bh=u8muDajrGX3FO5dD48egl2aXV9/qSThjd9VJkKWphN4=;
-        b=REP8ar1QHCsak3V1V8Wyz0Jpae6vEMucnHFkZ5w7N7wwHjD11ZYHaVATZzGPLUDwHD
-         eyPG7psFWh+Mhez+QQY/65H3MrM9GWfTEx5chnUYJ3Z9SuxpXnZbAFEgHYBuMYberADr
-         LREN3o2QhVZWJwXyGMTEZ5ayReJjwh/cnBOZw=
+        b=cWb7BDGFaloPRmgQ4qiODwDIhLWiLZvOi0Bh2EsHciHlsj65sUTP3w3fFoqGsEeCDt
+         YF7T+y0pSfWAtbO2nIymXpj+CPzHBkgz6O9YchxKEN2h9u2fadp6eWz4Vfk/ujjBZXzU
+         wQwm6A8YKg3jvHnEDyqNqcWVumursf62CQ2fU=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1723314766; x=1723919566;
+        d=1e100.net; s=20230601; t=1723314771; x=1723919571;
         h=content-transfer-encoding:in-reply-to:autocrypt:from
          :content-language:references:to:subject:user-agent:mime-version:date
          :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
         bh=u8muDajrGX3FO5dD48egl2aXV9/qSThjd9VJkKWphN4=;
-        b=wu/g1MNqjmvB4eNz9A9/bT9bjMeqs1MwM+OA6UXeOcG3dMK3xJZXgHLXbfUHUXj1v3
-         UK4bvDERZadTBM+UjeYE0tmaXcV6vJuv0GBW6sBPXl2dFum9o+9SPZT457lA6Iq35OwQ
-         xFVmkfY0yU6DQICA+Ca+k7N3CcCPdDRwPX93rWZrzoFU0qa16JqAMELQnulvKl8cPnk8
-         72KtHW7wRUmw/8Q6Jj+u3CYUNh7RCMSaPai/GLh6zua661qAaUFp0aAFxLvsSEzHvHe0
-         agDU/ZpoJ1kXJ+ZwZT3E3Vf8Mgr/IL/Dw0JuUN2i+kZejCBz8nfuvLrc0oUPT+ikBe3b
-         i55Q==
-X-Forwarded-Encrypted: i=1; AJvYcCWKOypMxD97Zo1OpJxpAUy0jVzKVuWFdaqUtq1hS/UGerF9AGLfN6B3FUnyQHFC9gmDJEJENlk9vGW+LKv/IksC/AyrS5OtPFkY2qjOu/2ZI2Nb
-X-Gm-Message-State: AOJu0YxmBIJN1BgmJSmY0VeCMa1ZELnScc9lPbaQ45MObhypR/LIYhuf
-	K5itji+p0ubadrWUnWp2JPSa0voEsPydA7PIXR1BeOyramFnaNYDQVlE7nU/ZQ==
-X-Google-Smtp-Source: AGHT+IGop/ZoDA+Oc8+5qDzv25GL3CgFjr289f/SrTe7d5Ea2cqgNbnjGz8/e5qHIsy+G1LA+Xr+wA==
-X-Received: by 2002:a05:6402:90e:b0:59e:65d1:a56b with SMTP id 4fb4d7f45d1cf-5bd0a6668camr4516382a12.34.1723314765837;
-        Sat, 10 Aug 2024 11:32:45 -0700 (PDT)
+        b=ThrBYslAqvViF9EnQV4i/Z/kLQhBgnGrxcS61uAieSbRZj11A8stE39GsqctYsNdb2
+         yfn7KY/0sCxyZGkXdli1mFkWkIvj8LH5VIxKlxuJs5J8ReLW7+WPdtScHyl+303fv7wd
+         /TqoKex1NN24YnJPxpDqLWV4NwFYFSia7QlQXLy0cDSVPbsaYRjNJClrUmqQtVHjQykX
+         ETj/Lj+Mm/oq+0rY5UirFzmCXrYW3uUxVD1flVxVICAak3308DVYPEAqB8njn3n6YIBy
+         y3BHdU3ykvj7SRrtvEpvhdOYOGU3F3R8QECWnaOmjN41QWjGcsxo1Wj0qKi+xC7d7C9b
+         Pt7Q==
+X-Forwarded-Encrypted: i=1; AJvYcCVHGFNFX0s6/r8SVLSHYETmC8mCHCI6c6f4do4JyJOEIM0/rMe2Qs+F3qFXCYOyD3gVh7bCtQW73P7D71swao7MGDnmkrkt+BCdVbRZOYpeBQsF
+X-Gm-Message-State: AOJu0YzCT8+oW8zwHZ9aBTe6NlUJ8y4x5c/ypKDH2UVVL9fgU5+CgBN5
+	OQeNt99VwD/qY3yXhkXfQVQFmqfmp8TvnEMhHQ2faGKD+p39NZZVR2hgo/bONw==
+X-Google-Smtp-Source: AGHT+IFXh7cTxFRswFB21Qe1oiRIGT9vU7kgXTaII9dWIL3bZbqeNjqAb2dSA1bo5MXu4eCB4cG/2Q==
+X-Received: by 2002:a17:907:e69e:b0:a6f:4a42:1976 with SMTP id a640c23a62f3a-a80aa5dff21mr428744866b.37.1723314771330;
+        Sat, 10 Aug 2024 11:32:51 -0700 (PDT)
 Received: from [192.168.178.137] (f215227.upc-f.chello.nl. [80.56.215.227])
-        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-5bd187f2abasm768760a12.8.2024.08.10.11.32.44
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a80bb08ffa0sm88575466b.9.2024.08.10.11.32.50
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sat, 10 Aug 2024 11:32:45 -0700 (PDT)
-Message-ID: <fb9947fa-bca8-4c51-9feb-bf7ac6c6cc22@broadcom.com>
-Date: Sat, 10 Aug 2024 20:32:42 +0200
+        Sat, 10 Aug 2024 11:32:50 -0700 (PDT)
+Message-ID: <ff518c21-fcbb-4cfc-b5e3-40c0d4d18f0c@broadcom.com>
+Date: Sat, 10 Aug 2024 20:32:47 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH v9 4/5] wifi: brcmfmac: Add optional lpo clock enable
@@ -143,7 +143,7 @@ Autocrypt: addr=arend.vanspriel@broadcom.com; keydata=
  AAgeEbPV1QeTVAPrntrLb0t0U5vdwG7Xl40baV9OydTv7ghjYZU349w1d5mdxg==
 In-Reply-To: <d9a182e4-c620-476d-8eb2-752dfd1ba4f8@wesion.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240810_113249_405794_B3938FA9 
+X-CRM114-CacheID: sfid-20240810_113253_953654_69BCEE5C 
 X-CRM114-Status: GOOD (  22.98  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
