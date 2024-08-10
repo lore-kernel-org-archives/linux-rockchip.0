@@ -4,95 +4,159 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BCDCFC3DA4A
-	for <linux-rockchip@archiver.kernel.org>; Fri,  9 Aug 2024 21:10:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 93127C3DA4A
+	for <linux-rockchip@archiver.kernel.org>; Sat, 10 Aug 2024 03:52:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=QdjFIvRNPqWwDWOZzhTxaBVVBDw5XIWwFOnhcWFG89k=; b=kmjLH02wJYVbWo
-	F0i1G4nVaQ4zZhGj7JGxOcz15YLZD0ztvt1fZhdqLjinKlvp+bZeo7TSsswGzkvcdYQ+XyPRi+zQ0
-	RZ9WMoXnyVlnHRqeLmT3lURLJ84M5YsWsQL0f2Ily8osg6pAu6vcxqIkPr7qvZEv7ATlNIGpsXKa0
-	GutXbdwWkWUey/oX2+dJV13xqqxYRus/x35KtEwJ1zWiGye9TSMY6vKS2NJ8+TLJ4CiN/UU2U3J0j
-	HgBZSH9n+t3gOgzACcSuhirJOl2AjnLgAmtmJacaR3m7m1m9N/WWicbM8RN0YsRw661AgrvVcFvxN
-	jTAZU/7iinF2Sl2wmhfg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=7c/TsVHDV7ASQBFcv8McE2A1aZTSkNcqfYoTwCnUzfw=; b=JSVxz6kpcDUZWi
+	4P8iRD9foI4ysJYxdgTYpe/HcI7Ae7g4/+Hl6G5Z/t3L+f/9nZ84RAtzHGPiPD8YERCf16nXrUeU5
+	q02lUFqBQl7FBOqmS9jHOzL9+IDLCFEGJyM2BsIrWsOO/afB4ty4Og0wmAGoJkFwjJqE73tWCbUk8
+	igxjQfhB927IJclS+v+xAmdvstVkFI9avHUDN6/22CgVlTg6RLy/y0/nQCCYeZauDWR0p5OwbaHt4
+	TOt5pVY8/eGFURbbxfwhgtEwLafLubf19SrAq6GkcrCeD65mFh77swzc02R6ru9Zqe2MlzQr6UI5x
+	YcS5yanRgc1hfX7kYzkQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1scWsx-0000000CZn3-0zwp;
-	Fri, 09 Aug 2024 21:10:55 +0000
-Received: from mgamail.intel.com ([198.175.65.21])
+	id 1scd9N-0000000D7OZ-0Qbw;
+	Sat, 10 Aug 2024 03:52:17 +0000
+Received: from mail-psaapc01on20702.outbound.protection.outlook.com ([2a01:111:f400:feae::702] helo=APC01-PSA-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1scWsM-0000000CZi4-1E85;
-	Fri, 09 Aug 2024 21:10:20 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1723237819; x=1754773819;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=mqq+JEfGxXJbA9UuP3dN134huReQHnwuwzViD9L6Ti0=;
-  b=Eof7WJ8/iLWU541cbCqXZzqsT5apO0VZJwSpaz19+j8Ydwz6gtU5wR2I
-   urma/iF8KnyWX+FhTrKW9Mz65nnwDHg0SXq0f+iI7UWG0yhAYV5cixOl9
-   4+XPbg0BKIl4rzcK6JecvzRxrvgqsqrqd1uxreVzhYmDy2K/A4wLlKDqA
-   GERXqacslEGdfowbmgNm+CNRk28Jq/OVEwWWjBpgkbTchto0utT3uoE+T
-   mfDXaiU/veImX1tU6zjI3Biw6IY+gtsmLA+oNMuc9UbPz3WG/v7PnVXjH
-   3zeiE/TbzGeO/LjPkEPVQbfXOHvR1EmZ50XjTXQHOx6+ap305ipuHk4Ng
-   Q==;
-X-CSE-ConnectionGUID: QvvahNKmQ82uPGNPLCv3+g==
-X-CSE-MsgGUID: 4bwE65/sRjGuEdCgZq2u3A==
-X-IronPort-AV: E=McAfee;i="6700,10204,11159"; a="21403415"
-X-IronPort-AV: E=Sophos;i="6.09,277,1716274800"; 
-   d="scan'208";a="21403415"
-Received: from orviesa002.jf.intel.com ([10.64.159.142])
-  by orvoesa113.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 09 Aug 2024 14:10:12 -0700
-X-CSE-ConnectionGUID: 8FlihEywRfunBIQxxE36fA==
-X-CSE-MsgGUID: hXN7S+L4S3iqCNgzJ24Hzw==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.09,277,1716274800"; 
-   d="scan'208";a="88323810"
-Received: from unknown (HELO b6bf6c95bbab) ([10.239.97.151])
-  by orviesa002.jf.intel.com with ESMTP; 09 Aug 2024 14:10:05 -0700
-Received: from kbuild by b6bf6c95bbab with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1scWs5-0009Gp-2t;
-	Fri, 09 Aug 2024 21:10:01 +0000
-Date: Sat, 10 Aug 2024 05:09:20 +0800
-From: kernel test robot <lkp@intel.com>
-To: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>,
-	Andrzej Hajda <andrzej.hajda@intel.com>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Robert Foss <rfoss@kernel.org>,
-	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
-	Jonas Karlman <jonas@kwiboo.se>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>,
-	Sandy Huang <hjc@rock-chips.com>,
-	Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>,
-	Andy Yan <andy.yan@rock-chips.com>, Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Mark Yao <markyao0591@gmail.com>,
-	Sascha Hauer <s.hauer@pengutronix.de>
-Cc: llvm@lists.linux.dev, oe-kbuild-all@lists.linux.dev,
-	dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
+	id 1scd9J-0000000D7NI-3yo9;
+	Sat, 10 Aug 2024 03:52:15 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=Dv5Wg3TV90FEU9u/+VnM3GGtTXAVSv9TdOwDwNTdR2aNZ5DABgYJRBgARXuiARPUAzYLsaE6pg6X0IhWJehwJpdn364jzAGU0Q2y110YGOc5xMdzCZ/D7R9ivxYeTF/MyXqsk9pQARYD6ZF/o8+rxpB4L5hucmeYyCKZqr/Z9LOkuJDEIpAWcwfLiI6Rbc/LRsjmHqETMbABLyWruORI7UnnujuP9kAMTmQImNIhqndH4qS0k0sYpick15hMfMPUsGwg+2smTx9ibvSVGJ4RbfjLOUrRZhudy9ZqwqmWPMjSEwvDQ0Xd3v2aDqk80Jkg0P8R9sYCsYbjMcumyylLUw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=JWxvyZebHcn5nlT/XWQT3uL3yRarW/BmR9Lh58Ys/cE=;
+ b=BDcpioPZ/LtvwA8JEosJh46AhSp+2tpY6fldTZecEEvnhaAVPxJ9pX24ihP5UvMdQ9nDOYOsf+vTpRZNovVhgtPd1yi652jdS7Onl6uXn8CeIS3xC+n+2zBBpak2dW2BqF/sJ+6NIN+jjZ+ihkPUm+D4akvmZjc1kqsrLEy5rDb396XCwkyKpX6g8b11LypC0Tk4Gcr1KUmUj9havqFe+RF+i62pDh6TLOPu4+zHovZ5WgUg1AqqKHu7tV0cXHUhU5bppchFRdPmSvZDo2BKO7gbAyt/8xglKLEl+v1yq0D+WBN7zLcwHZIyvLxa0yu1RpAAQIQtpLR1Y2QKZt8xNA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=wesion.com; dmarc=pass action=none header.from=wesion.com;
+ dkim=pass header.d=wesion.com; arc=none
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=wesion.com;
+Received: from TYZPR03MB7001.apcprd03.prod.outlook.com (2603:1096:400:26a::14)
+ by TYSPR03MB8564.apcprd03.prod.outlook.com (2603:1096:405:61::13) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7828.27; Sat, 10 Aug
+ 2024 03:51:56 +0000
+Received: from TYZPR03MB7001.apcprd03.prod.outlook.com
+ ([fe80::78dd:5e68:1a9c:36c0]) by TYZPR03MB7001.apcprd03.prod.outlook.com
+ ([fe80::78dd:5e68:1a9c:36c0%6]) with mapi id 15.20.7849.015; Sat, 10 Aug 2024
+ 03:51:56 +0000
+From: Jacobe Zang <jacobe.zang@wesion.com>
+To: robh@kernel.org,
+	krzk+dt@kernel.org,
+	heiko@sntech.de,
+	kvalo@kernel.org,
+	davem@davemloft.net,
+	edumazet@google.com,
+	kuba@kernel.org,
+	pabeni@redhat.com,
+	conor+dt@kernel.org,
+	arend.vanspriel@broadcom.com
+Cc: efectn@protonmail.com,
+	dsimic@manjaro.org,
+	jagan@edgeble.ai,
+	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
-	kernel@collabora.com, Alexandre ARNOUD <aarnoud@me.com>,
-	Luis de Arquer <ldearquer@gmail.com>,
-	Algea Cao <algea.cao@rock-chips.com>
-Subject: Re: [PATCH v2 3/3] drm/rockchip: Add basic RK3588 HDMI output support
-Message-ID: <202408100431.ujB0M1q7-lkp@intel.com>
-References: <20240801-b4-rk3588-bridge-upstream-v2-3-9fa657a4e15b@collabora.com>
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	arend@broadcom.com,
+	linux-wireless@vger.kernel.org,
+	netdev@vger.kernel.org,
+	megi@xff.cz,
+	duoming@zju.edu.cn,
+	bhelgaas@google.com,
+	minipli@grsecurity.net,
+	brcm80211@lists.linux.dev,
+	brcm80211-dev-list.pdl@broadcom.com,
+	nick@khadas.com,
+	Jacobe Zang <jacobe.zang@wesion.com>
+Subject: [PATCH v9 0/5] Add AP6275P wireless support
+Date: Sat, 10 Aug 2024 11:51:36 +0800
+Message-Id: <20240810035141.439024-1-jacobe.zang@wesion.com>
+X-Mailer: git-send-email 2.34.1
+X-ClientProxiedBy: TYAPR03CA0020.apcprd03.prod.outlook.com
+ (2603:1096:404:14::32) To TYZPR03MB7001.apcprd03.prod.outlook.com
+ (2603:1096:400:26a::14)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20240801-b4-rk3588-bridge-upstream-v2-3-9fa657a4e15b@collabora.com>
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: TYZPR03MB7001:EE_|TYSPR03MB8564:EE_
+X-MS-Office365-Filtering-Correlation-Id: 9881e7b0-87ec-42af-64dc-08dcb8efc73b
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|366016|52116014|7416014|376014|1800799024|38350700014|921020;
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?6l67MsjeBj5NnZm22cGom4kJEwnbc65erypE75jX7hBh7doYZK0KIZf4Fx3L?=
+ =?us-ascii?Q?iKJ4K77EtYFJOL7qRyFxujiIvCHVxK9yaTDfOn5zdJUXYK4Xv5h68a/c3DQM?=
+ =?us-ascii?Q?Cxm7oPpAhsqK0+8BN5ChY/q+Bo9OuRii4t9IHV66d5yd5Tb8TbJQAOwnPpxS?=
+ =?us-ascii?Q?G1+KZSBxeL3p4smInjDqv1CFqK1fKagiGC4qEHwj7XaKHkG5LoBP2okcjpcD?=
+ =?us-ascii?Q?2DcjCsF65f2HVF4nZ9hOnoyOCIcJuMP61faCl+JyAxQcAR7DQhZNU3fYPIHt?=
+ =?us-ascii?Q?y+aFjyE0k89YHweLCeWXlpJyPrRBzjoOVczdTZgoT9PZxKrxHIlgWYBfeEVQ?=
+ =?us-ascii?Q?fU7Vc0gKwywlca+8iWzwRX9Ep1QvbAoPIB5hNoaOwZ7ekaywIoR0NZMJOsvq?=
+ =?us-ascii?Q?YYTORFzUMeJYgTYr2BMNONdrj2hOUvdZFhBp8ceVyhK9EHjVa0ipBnnyQ+f6?=
+ =?us-ascii?Q?fIrqyCCIOFdmbH3N2IudNzM600wXEpqr7iHzw1C3Z5QJE2BOOZPF7LZyE2Tz?=
+ =?us-ascii?Q?f7aXl9H9ipyRWsuVeKq4RWUsT2dRd8R63LgKRoHp9Y5IVEWqbqIj9+tpgIac?=
+ =?us-ascii?Q?QAf4DoQwTS6O0XHlm/CBkK52YxFXvtrnwFgUR5wKcs2CTmpLOADFUV65lC2o?=
+ =?us-ascii?Q?vPPFtFG49uO9H0YIxLkgnXDQDvcnQDhO8rcQgteiRqmxbOy74/nb4Hd8ayIr?=
+ =?us-ascii?Q?E+mfBNYZB+4+UDELwe1IW0U0bla5sBM8qprqYZSkjw7e8XLJZD+8vjlyILVQ?=
+ =?us-ascii?Q?63PnLxMtZZQPc2iqpHF/pc7syXz1jexTRysuHCFeoYsgzW1NfSQv2zmFTViK?=
+ =?us-ascii?Q?EtAhD8I5o1bsDD7zuGtkF+jL1xfNMrtRXyLck7I8jb+FlXy8aDgYSXIq8DbZ?=
+ =?us-ascii?Q?nnrC1BY1b7W/QOVblNHuGbjIOHAsZOJVpj8jxWSnjKjjJkAUFaliDGMTf1Ni?=
+ =?us-ascii?Q?GPVrwY+wNcLPeJLaZe4ctcy8krsdFO7/OzqV5Rwtgk/4S2uBlKUi6LbvItsI?=
+ =?us-ascii?Q?sM7WRl8EgMSnfRwlVaCQNc/c9GclnSdLliIDqWpcHmRUtomAw83JUV1btwVG?=
+ =?us-ascii?Q?s763WYekFFUUU6AP5Syk/xkvKQT4wpckscI1QiUHEfZ6M9VoXTZbG9YEPuSA?=
+ =?us-ascii?Q?bPSX/It71+ykb62jBppOrozpJ7qeDSElbj0POx664DtMe23OmggIV48GI0p7?=
+ =?us-ascii?Q?6SHmxWdJvWgi9ZrxVF8glpWWVXGGLvWZ+FLxUis3QjFSl3asuC2G1zKR+udS?=
+ =?us-ascii?Q?2gDOzPjl9vza7q0AY2onfWHjEOeWB+QCM2z/pCehfCfb397UUphcmd+SiHn4?=
+ =?us-ascii?Q?3ATyjVMZGzp5L2PZ7oEznfi42jUqaljJNnZgzPLOV7YnhNpLuRLrKCbBBqDv?=
+ =?us-ascii?Q?AQP20gmpP2AKyFWNvucrpifb9t13?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:TYZPR03MB7001.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(366016)(52116014)(7416014)(376014)(1800799024)(38350700014)(921020);DIR:OUT;SFP:1102;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?p0DyWeVu0/JUMyANZu7XFvDctZ7nsxM9ofCHkbsMXSMeVzGO4G6m30TrwDXW?=
+ =?us-ascii?Q?Vc8KvO21qmxMEnP8aNQtAyf6m1UouYqFvajBbbQ4a8KOSu6QPbRX9cuuzGU3?=
+ =?us-ascii?Q?VZMCFHqpXcVegLIM3Ho6nXAeaennLQ1ynKSx1hONpRI3IDr6PUjxXIVOeXMk?=
+ =?us-ascii?Q?MoApTi7cIOH9mgCPiKvN9qYA6FMBszCOvzNTYpSvuzPfEDZS5tZ67TVLsEmV?=
+ =?us-ascii?Q?A16cBK2exi3RILYpWv5HABZnJT0ZPgiFWj9vjXncoIeM0/yBJ8f2f5sAGRG2?=
+ =?us-ascii?Q?DzP1hhph//5/n7DMsxbw2k0VquHJK5YSNCbtVfwoaPDW2RqPHyetCzeSnXPr?=
+ =?us-ascii?Q?yTJSSAf/HTlX+0RJ+uxinfJsVsqpjb1QgmQMHQfS5xc+ilSafrcKfRsljbLu?=
+ =?us-ascii?Q?dqWm8xjs/vwe5OjupcoSawfCEgdIjVQ6575YAquZeTwipB1QxKWjdte5YN4+?=
+ =?us-ascii?Q?yChbmaFWv/NeqOtokmuKNnNgCCm49pU3dIUy2yKk4Bn/+CERYNupBebvPxPR?=
+ =?us-ascii?Q?AUfESRE3HVKrIF68LwzmqdurbSCUwf9tZ1dfGZ0OTZzS8KU14bvl8ivx+QBE?=
+ =?us-ascii?Q?TPaloDgn+/f0Vu3LZkJayiX72gFWghzDeb5YITkgGJyIIKHiLFbj2Hbz190H?=
+ =?us-ascii?Q?kZkNMPF7rZPoCOkgIckuJNh7QjsBToOEKHS9RoYEjTzkiOxjsqjhuzP2h/Xc?=
+ =?us-ascii?Q?E2tq6sd45ifPfwFb91jujrBtnKEx3p0ivTIqc9jJD44P1C2QTYc8/33l0+aq?=
+ =?us-ascii?Q?n9ciCE+nrHIrSX+4GH1NsXMVrVdwr9Y985BH4Xj3MMH6fzQsb7AfS3PRBQYL?=
+ =?us-ascii?Q?5dFX72WHNBhCDaxNwLCE0uhiSq6baxMyIDyiysgGIEjpYonA9nSWwzndLALa?=
+ =?us-ascii?Q?C1dP8MSSNgrfkKCLPwXIIK8efypQPqOsMCc4HdQBzWy6dunVB7e1RAo5vE6R?=
+ =?us-ascii?Q?3X+bSGVstQupdBki9j1/1HN8Qg9ujN6Uw5AJsrAOIbhdg67sufJ4Ke7ZExLH?=
+ =?us-ascii?Q?YiCZBeQwGo6/wuS0YTQCvaO0tsIdYPwcCl60Ws3k6q4/rS+DXEDeyrWnpBUO?=
+ =?us-ascii?Q?ijAUdSrKcM9WA+9OQcP1lLNmB2yuh+mEJrKZ+oT3MHFyxxufT5gChj8LcRcb?=
+ =?us-ascii?Q?UXtAf75WwGP+t4JSzBxga6SXpe8Ww1gq5s2iodRFJ4MMxiC3+gt2sk4culdU?=
+ =?us-ascii?Q?BwSle2o9dZoeZ7MTXHj69pX+bfJUCx6kK7KN2Fj3C1slDMlks8KlZ8VUfxv7?=
+ =?us-ascii?Q?FzjNmeSCJ5lOG2edSHq5PntRt62hqP5rqsY+C2KR4oTwTfv5ONh2T/ZfDeMX?=
+ =?us-ascii?Q?HZ5nfWY+jJQoGE7d2gL9T8FZF+D2+tdfKXp+8rbH3w+xDGnwJLY9FrP2f/TT?=
+ =?us-ascii?Q?FLK4yT06SH2daMgZSC4FbAKXo+luU9RvNs8FlQRBpz/dHNDdBCFmw2XVYgFT?=
+ =?us-ascii?Q?u9nGW1iXYg2wD5B+Xr9Yzf9zwtcs/nItShp+gIBV1rRJ0Gh8PGav7rPDVRzv?=
+ =?us-ascii?Q?L8X1sXHQbg4xNRz+Xa7ivqqddRoYM/RyvLJutFC8ukwsnYsqYTE9zxG9niGL?=
+ =?us-ascii?Q?+PZ2btGc0WavWCe6010zUan0TFPCxJviBf4x3OSd?=
+X-OriginatorOrg: wesion.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 9881e7b0-87ec-42af-64dc-08dcb8efc73b
+X-MS-Exchange-CrossTenant-AuthSource: TYZPR03MB7001.apcprd03.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 10 Aug 2024 03:51:56.0559
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 2dc3bd76-7ac2-4780-a5b7-6c6cc6b5af9b
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: 1uSpsAOu/Sz5vnMHFdP+3ys3FgW3ErEUl7bUJ5FIC0j9jegFLNMOjZhmInQ/FSjJNm0QKOHD0Cxp9qYS9pLenw==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: TYSPR03MB8564
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240809_141018_529273_5D718FFD 
-X-CRM114-Status: GOOD (  12.49  )
+X-CRM114-CacheID: sfid-20240809_205213_998707_AAF200CC 
+X-CRM114-Status: GOOD (  12.00  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,125 +173,87 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Cristian,
+These add AP6275P wireless support on Khadas Edge2. Enable 32k clock
+for Wi-Fi module and extend the hardware IDs table in the brcmfmac
+driver for it to attach.
 
-kernel test robot noticed the following build errors:
+Changes in v9:
+ - Add return -ENODEV error pointer from brcmf_sdio_probe as the default for the fail path
+ - Add if statement for brcmf_of_probe in common.c
+ - Retain modifications to of.c other than the return values
 
-[auto build test ERROR on 1613e604df0cd359cf2a7fbd9be7a0bcfacfabd0]
+ - Link to v8: https://lore.kernel.org/all/20240805073425.3492078-1-jacobe.zang@wesion.com/
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Cristian-Ciocaltea/dt-bindings-display-rockchip-Add-schema-for-RK3588-HDMI-TX-Controller/20240802-173018
-base:   1613e604df0cd359cf2a7fbd9be7a0bcfacfabd0
-patch link:    https://lore.kernel.org/r/20240801-b4-rk3588-bridge-upstream-v2-3-9fa657a4e15b%40collabora.com
-patch subject: [PATCH v2 3/3] drm/rockchip: Add basic RK3588 HDMI output support
-config: hexagon-allmodconfig (https://download.01.org/0day-ci/archive/20240810/202408100431.ujB0M1q7-lkp@intel.com/config)
-compiler: clang version 20.0.0git (https://github.com/llvm/llvm-project f86594788ce93b696675c94f54016d27a6c21d18)
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20240810/202408100431.ujB0M1q7-lkp@intel.com/reproduce)
+Changes in v8:
+ - Add appropriate errno's for return values that will be
+    send to bus when error occurred.
+ 
+ - Link to v7: https://lore.kernel.org/all/20240802025715.2360456-1-jacobe.zang@wesion.com/
 
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202408100431.ujB0M1q7-lkp@intel.com/
+Changes in v7:
+ - Change brcmf_of_probe prototypes from void to int, add appropriate errno's for return
+    value, move clock check to the end of brcmf_of_probe
+ - Add "brcm,bcm4329-fmac" compatible for wifi node
 
-All errors (new ones prefixed by >>):
+ - Link to v6: https://lore.kernel.org/all/20240731061132.703368-1-jacobe.zang@wesion.com/
 
-   In file included from drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c:15:
-   In file included from include/linux/phy/phy.h:17:
-   In file included from include/linux/regulator/consumer.h:35:
-   In file included from include/linux/suspend.h:5:
-   In file included from include/linux/swap.h:9:
-   In file included from include/linux/memcontrol.h:13:
-   In file included from include/linux/cgroup.h:26:
-   In file included from include/linux/kernel_stat.h:9:
-   In file included from include/linux/interrupt.h:11:
-   In file included from include/linux/hardirq.h:11:
-   In file included from ./arch/hexagon/include/generated/asm/hardirq.h:1:
-   In file included from include/asm-generic/hardirq.h:17:
-   In file included from include/linux/irq.h:20:
-   In file included from include/linux/io.h:14:
-   In file included from arch/hexagon/include/asm/io.h:328:
-   include/asm-generic/io.h:548:31: warning: performing pointer arithmetic on a null pointer has undefined behavior [-Wnull-pointer-arithmetic]
-     548 |         val = __raw_readb(PCI_IOBASE + addr);
-         |                           ~~~~~~~~~~ ^
-   include/asm-generic/io.h:561:61: warning: performing pointer arithmetic on a null pointer has undefined behavior [-Wnull-pointer-arithmetic]
-     561 |         val = __le16_to_cpu((__le16 __force)__raw_readw(PCI_IOBASE + addr));
-         |                                                         ~~~~~~~~~~ ^
-   include/uapi/linux/byteorder/little_endian.h:37:51: note: expanded from macro '__le16_to_cpu'
-      37 | #define __le16_to_cpu(x) ((__force __u16)(__le16)(x))
-         |                                                   ^
-   In file included from drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c:15:
-   In file included from include/linux/phy/phy.h:17:
-   In file included from include/linux/regulator/consumer.h:35:
-   In file included from include/linux/suspend.h:5:
-   In file included from include/linux/swap.h:9:
-   In file included from include/linux/memcontrol.h:13:
-   In file included from include/linux/cgroup.h:26:
-   In file included from include/linux/kernel_stat.h:9:
-   In file included from include/linux/interrupt.h:11:
-   In file included from include/linux/hardirq.h:11:
-   In file included from ./arch/hexagon/include/generated/asm/hardirq.h:1:
-   In file included from include/asm-generic/hardirq.h:17:
-   In file included from include/linux/irq.h:20:
-   In file included from include/linux/io.h:14:
-   In file included from arch/hexagon/include/asm/io.h:328:
-   include/asm-generic/io.h:574:61: warning: performing pointer arithmetic on a null pointer has undefined behavior [-Wnull-pointer-arithmetic]
-     574 |         val = __le32_to_cpu((__le32 __force)__raw_readl(PCI_IOBASE + addr));
-         |                                                         ~~~~~~~~~~ ^
-   include/uapi/linux/byteorder/little_endian.h:35:51: note: expanded from macro '__le32_to_cpu'
-      35 | #define __le32_to_cpu(x) ((__force __u32)(__le32)(x))
-         |                                                   ^
-   In file included from drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c:15:
-   In file included from include/linux/phy/phy.h:17:
-   In file included from include/linux/regulator/consumer.h:35:
-   In file included from include/linux/suspend.h:5:
-   In file included from include/linux/swap.h:9:
-   In file included from include/linux/memcontrol.h:13:
-   In file included from include/linux/cgroup.h:26:
-   In file included from include/linux/kernel_stat.h:9:
-   In file included from include/linux/interrupt.h:11:
-   In file included from include/linux/hardirq.h:11:
-   In file included from ./arch/hexagon/include/generated/asm/hardirq.h:1:
-   In file included from include/asm-generic/hardirq.h:17:
-   In file included from include/linux/irq.h:20:
-   In file included from include/linux/io.h:14:
-   In file included from arch/hexagon/include/asm/io.h:328:
-   include/asm-generic/io.h:585:33: warning: performing pointer arithmetic on a null pointer has undefined behavior [-Wnull-pointer-arithmetic]
-     585 |         __raw_writeb(value, PCI_IOBASE + addr);
-         |                             ~~~~~~~~~~ ^
-   include/asm-generic/io.h:595:59: warning: performing pointer arithmetic on a null pointer has undefined behavior [-Wnull-pointer-arithmetic]
-     595 |         __raw_writew((u16 __force)cpu_to_le16(value), PCI_IOBASE + addr);
-         |                                                       ~~~~~~~~~~ ^
-   include/asm-generic/io.h:605:59: warning: performing pointer arithmetic on a null pointer has undefined behavior [-Wnull-pointer-arithmetic]
-     605 |         __raw_writel((u32 __force)cpu_to_le32(value), PCI_IOBASE + addr);
-         |                                                       ~~~~~~~~~~ ^
-   In file included from drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c:15:
-   In file included from include/linux/phy/phy.h:17:
-   In file included from include/linux/regulator/consumer.h:35:
-   In file included from include/linux/suspend.h:5:
-   In file included from include/linux/swap.h:9:
-   In file included from include/linux/memcontrol.h:21:
-   In file included from include/linux/mm.h:2253:
-   include/linux/vmstat.h:514:36: warning: arithmetic between different enumeration types ('enum node_stat_item' and 'enum lru_list') [-Wenum-enum-conversion]
-     514 |         return node_stat_name(NR_LRU_BASE + lru) + 3; // skip "nr_"
-         |                               ~~~~~~~~~~~ ^ ~~~
->> drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c:18:10: fatal error: 'drm/bridge/dw_hdmi_qp.h' file not found
-      18 | #include <drm/bridge/dw_hdmi_qp.h>
-         |          ^~~~~~~~~~~~~~~~~~~~~~~~~
-   7 warnings and 1 error generated.
+Changes in v6:
+ - Move "brcm,bcm4329-fmac" check to the top of brcmf_of_probe in of.c
+ - Add return if clk didn't set in DTS
 
+ -Link to v5: https://lore.kernel.org/all/20240730033053.4092132-1-jacobe.zang@wesion.com/
 
-vim +18 drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
+Changes in v5:
+ - Add more commit message to the clock in bindings
+ - Use IS_ERR_OR_NULL as a judgment condition of clk
 
-    17	
-  > 18	#include <drm/bridge/dw_hdmi_qp.h>
-    19	#include <drm/drm_bridge_connector.h>
-    20	#include <drm/drm_of.h>
-    21	#include <drm/drm_probe_helper.h>
-    22	#include <drm/drm_simple_kms_helper.h>
-    23	
+ - Link to v4: https://lore.kernel.org/all/20240729070102.3770318-1-jacobe.zang@wesion.com/
+
+Changes in v4:
+ - Change clock description in dt-bindings
+ - Move enable clk from pcie.c to of.c
+ - Add compatible for wifi node in DTS
+ - Add random seed flag for firmware download
+
+ - Link to v3: https://lore.kernel.org/all/20240630073605.2164346-1-jacobe.zang@wesion.com/
+
+Changes in v3:
+ - Dropped redundant parts in dt-bindings.
+ - Change driver patch title prefix as 'wifi: brcmfmac:'.
+ - Change DTS Wi-Fi node clock-name as 'lpo'.
+ 
+ - Link to v2: https://lore.kernel.org/all/20240624081906.1399447-1-jacobe.zang@wesion.com/
+
+Changes in v2:
+ - Add SoB tags for original developer.
+ - Add dt-bindings for pci14e4,449d and clocks.
+ - Replace dev_info to brcmf_dbg in pcie.c
+
+ - Link to v1: https://lore.kernel.org/all/20240620020015.4021696-1-jacobe.zang@wesion.com/
+
+Jacobe Zang (5):
+  dt-bindings: net: wireless: brcm4329-fmac: add pci14e4,449d
+  dt-bindings: net: wireless: brcm4329-fmac: add clock description for
+    AP6275P
+  arm64: dts: rockchip: Add AP6275P wireless support to Khadas Edge 2
+  wifi: brcmfmac: Add optional lpo clock enable support
+  wifi: brcmfmac: add flag for random seed during firmware download
+
+ .../net/wireless/brcm,bcm4329-fmac.yaml       |  9 +++
+ .../dts/rockchip/rk3588s-khadas-edge2.dts     | 16 ++++++
+ .../broadcom/brcm80211/brcmfmac/bcmsdh.c      |  4 +-
+ .../broadcom/brcm80211/brcmfmac/common.c      |  3 +-
+ .../wireless/broadcom/brcm80211/brcmfmac/of.c | 53 +++++++++++-------
+ .../wireless/broadcom/brcm80211/brcmfmac/of.h |  9 +--
+ .../broadcom/brcm80211/brcmfmac/pcie.c        | 55 ++++++++++++++++---
+ .../broadcom/brcm80211/brcmfmac/sdio.c        | 24 +++++---
+ .../broadcom/brcm80211/brcmfmac/usb.c         |  3 +
+ .../broadcom/brcm80211/include/brcm_hw_ids.h  |  2 +
+ 10 files changed, 134 insertions(+), 44 deletions(-)
 
 -- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+2.34.1
+
 
 _______________________________________________
 Linux-rockchip mailing list
