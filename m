@@ -4,89 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B4D85C3DA4A
-	for <linux-rockchip@archiver.kernel.org>; Sun, 11 Aug 2024 19:27:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4A68CC52D7B
+	for <linux-rockchip@archiver.kernel.org>; Sun, 11 Aug 2024 20:19:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=gUBFsXklI6JZKm9S9uiZtydSM5E2V6Kd1ej1H3bITVw=; b=2lK5Hp1OFyioWy
-	c6glUVFciz/oCPNFo/XvHg9Lb8MnAKCM9O+2uqqGrrYW4hezjh9ijvrwpKfgLSyFoXdGCOMthlq7q
-	B3NxLmF4eKZiif0WPb1wy8ZM1s2venWxyl33rwVmoCYY1js3F3KpmvRq+xeW18NuWMLr9ojGBZv/U
-	A3i0tbrWKfcy61YBjoM8WazNJ8fDfNWpKv1ViSeltJ9oU7uDg3Ea5wzkZ8X9dgAr0pi7RplV7LM3X
-	9VXWlqQeBQjjbHxqU8CjI9+o1ab6N69LjUMwqXTFa8IuqfLaU2GJi3ywGsAXeIfBEXJsEFF4tZEP1
-	9C4p8M5igQHnRGHmnhbA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
+	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=B/+7LlINGmocThjcdgAeCt3LknIZWUvdP3d8xR4AcRQ=; b=pYdUj1SnbvHLiUTUJlrZg1lFX2
+	ImnaRqRmLcVILkgSA3AcrrOGNjhQpQWlduQFk2MNa+pqhdWVGvlNBzPdPrw9chgX5W0zsIEX04u6Q
+	FTJVnU3uypftSRxKFHKVPmZ5HH+yMIV9A7iH940EbixkciI/JyRvSoh5VtmZVzNBt4UYKq+swqkce
+	JdRw+2HlUa1215O4RQ22+8LQnMRZUtyFGXMwPok5lazD4LBu7DVsykdDAPAqU4rTM3lVA4RZ73g2S
+	bMnixs4ReO3XsG4nOQYNOmQbUuWz3Ab98ARe/IHdHZV68ZMInsIcDHANhi2sM9e4RirWf/TxFt71I
+	OmEwg/3w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sdEDp-0000000G2g3-1yIN;
-	Sun, 11 Aug 2024 19:27:21 +0000
-Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
+	id 1sdF2a-0000000G7wx-4935;
+	Sun, 11 Aug 2024 20:19:48 +0000
+Received: from mail.manjaro.org ([116.203.91.91])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sdEDl-0000000G2eo-2uw2
-	for linux-rockchip@lists.infradead.org;
-	Sun, 11 Aug 2024 19:27:19 +0000
-Received: by mail-wm1-x32a.google.com with SMTP id 5b1f17b1804b1-4281ca54fd3so27767015e9.2
-        for <linux-rockchip@lists.infradead.org>; Sun, 11 Aug 2024 12:27:17 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=bgdev-pl.20230601.gappssmtp.com; s=20230601; t=1723404435; x=1724009235; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=Qi4pCNP1Gdr9h0T5um8ZgiG7jkuJMsbVZXb0oh3Hft4=;
-        b=IoX7OHvzhbVnpwPS4k9U8JU6lJKYpabwYvApuaY9hejz6vgqw5TerhKkAPn0QIdKhD
-         DKsdj84NEtZ4EGoiJ/zHx/wz4FVm5Nop0g0O3McCoi1GYAMHmOVtqQd1hThg0rgIXN7D
-         sZCEpOp3OmFmAmBFvZbwuux03VBer6p5d/PA8waR88aUQEczJ4mEDvULv+34GkizsKEy
-         mX5QDAFXR3Ox74vql8wIVQ+nt/tWBEOFdkpAg/AtvcF8vGNtzmuYtJlfuoLGd3Tj79pO
-         8qX634WPrJgjfPMQ4cI1t0tMfBG7ZZLB4EGdPIDcFQRfeIh6zzzSqEdFirpDQDDd/hC5
-         4ueA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1723404435; x=1724009235;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=Qi4pCNP1Gdr9h0T5um8ZgiG7jkuJMsbVZXb0oh3Hft4=;
-        b=fWh7sI7TcwPn8s2+5B7O5AJ7zEoiR5cBcTvilsa+iC5Bl/MuHKao7813v1Sfb0at7w
-         8hwCPoxMUOFyZkQlQDAQmRbNTw3gPr5YRKTh+JD7sWjwa5rSnxKjYOgRLcjqjCU/QDYu
-         Z4FAZh7aZhavnOt3xsnPj94XcE/UlfqoDoVWneHvPq1pTqjE9N04BFBS2VzEyMCHzZKX
-         I3/4Qwarix7H5q49X1FPcP8Ti4qrC8bTHgnWAH9fkndNuvaK6XBvnZqORtzHTiHjGTWi
-         bNuiBFbThkZo3qkRfoUGNvlItNMatm/QCI4fbfPL9jJBXnPCvsTrdmEpl+5xpGAAiFx0
-         MaMg==
-X-Forwarded-Encrypted: i=1; AJvYcCVNxqXARoG9c7YAUbIo2rfJQmO+inC0Mzx9xQb7rgk4mHtpZxgkdJewwyGYgE84JmZCLDw+OvwXjMLSKQTWY3co2weF+OLf72LMo9akHa30N4Ga
-X-Gm-Message-State: AOJu0YxY5aQE1TxNgIN98oanRS5zPVk4QjvI3U+fvwf9kSZTlGi+XJhI
-	16UcyB3NPe1gLe79EUPniJsYTwcwuopY0ZW0v1dtBS/LQNFm0yJQ9YrbskzzZQg=
-X-Google-Smtp-Source: AGHT+IGagufT2xNn/QKQu3bmVrV6jU72TWeF3FBl77gAzQllDDZ8/5qNg/Q6eq++X65pc/tFy4d3Pw==
-X-Received: by 2002:adf:f349:0:b0:368:664a:d4f9 with SMTP id ffacd0b85a97d-36d5eb08646mr5681407f8f.28.1723404435210;
-        Sun, 11 Aug 2024 12:27:15 -0700 (PDT)
-Received: from brgl-uxlite.home ([2a01:cb1d:dc:7e00:6978:7b03:bbeb:d1af])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-36e4cfefe71sm5552517f8f.62.2024.08.11.12.27.14
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 11 Aug 2024 12:27:14 -0700 (PDT)
-From: Bartosz Golaszewski <brgl@bgdev.pl>
-To: brgl@bgdev.pl,
-	Heiko Stuebner <heiko@sntech.de>
-Cc: Bartosz Golaszewski <bartosz.golaszewski@linaro.org>,
-	robh@kernel.org,
-	krzk+dt@kernel.org,
-	conor+dt@kernel.org,
-	ukleinek@debian.org,
-	linux-i2c@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH 1/2] dt-bindings: eeprom: at24: Add compatible for Giantec GT24C04A
-Date: Sun, 11 Aug 2024 21:27:13 +0200
-Message-ID: <172340442666.7060.12608274118090495917.b4-ty@linaro.org>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20240810211438.286441-2-heiko@sntech.de>
-References: <20240810211438.286441-1-heiko@sntech.de> <20240810211438.286441-2-heiko@sntech.de>
+	id 1sdF1y-0000000G7qC-1DuU;
+	Sun, 11 Aug 2024 20:19:12 +0000
 MIME-Version: 1.0
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
+	t=1723407544;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=avYIGd3Krb0jitE0JQR1G+BW2JvujW9lhAompcelzLs=;
+	b=p5o4ArLHxxKBFW/W8tNRAOJPR0B+ur/ljeAawHHMVeD/RtlMla8BxDFhrA1rSuI2z4oMqM
+	5IrJooETD3PintWwGjCi6WpaRs37je2iEXhjIbZ8vQWLntnQ78hKlNjQTppuRjH0K8IFgD
+	4PpZ79UmRaNMgeldvgEDZsKUz9xYt6YMoLj67NxUd9O/3I/koSmhav5wh4h6ndfqtTNw/M
+	561t8+7bFO4Np0D17DD71oBj9sqXR3FCyn+J2a7/auSHj0hnuIECQVMTz4kOmw6/cDAiS3
+	Subyo6h5273SfmwrfWQ4fn32WEPJtE4RjPtiHGoIxvMFdfKsA7+iRpwCCiwGNw==
+Date: Sun, 11 Aug 2024 22:19:04 +0200
+From: Dragan Simic <dsimic@manjaro.org>
+To: Alexander Shiyan <eagle.alexander923@gmail.com>
+Cc: linux-arm-kernel@lists.infradead.org, Michael Turquette
+ <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, Heiko Stuebner
+ <heiko@sntech.de>, linux-clk@vger.kernel.org,
+ linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH v2] clk: rockchip: clk-rk3588: Fix 32k clock name for
+ pmu_24m_32k_100m_src_p
+In-Reply-To: <b827ebfd49aeef3aaed9d35b7cc42555@manjaro.org>
+References: <20240710165354.1338287-1-eagle.alexander923@gmail.com>
+ <b827ebfd49aeef3aaed9d35b7cc42555@manjaro.org>
+Message-ID: <300daf3be205f463922e277d63b73205@manjaro.org>
+X-Sender: dsimic@manjaro.org
+Authentication-Results: ORIGINATING;
+	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240811_122717_854174_F0E19CBE 
-X-CRM114-Status: UNSURE (   7.79  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240811_131910_969602_0923CE1E 
+X-CRM114-Status: GOOD (  20.76  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,28 +69,76 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
+Just a brief reminder about this patch...
 
 
-On Sat, 10 Aug 2024 23:14:37 +0200, Heiko Stuebner wrote:
-> The gt24c04a is just yet another 2404 compatible eeprom, and does not
-> follow the generic naming matching, so add a separate compatible for it.
+On 2024-07-13 05:51, Dragan Simic wrote:
+> Hello Alexander,
 > 
+> On 2024-07-10 18:53, Alexander Shiyan wrote:
+>> The 32kHz input clock is named "xin32k" in the driver,
+>> so the name "32k" appears to be a typo in this case. Lets fix this.
+>> 
+>> Signed-off-by: Alexander Shiyan <eagle.alexander923@gmail.com>
 > 
-
-Applied, thanks!
-
-[1/2] dt-bindings: eeprom: at24: Add compatible for Giantec GT24C04A
-      commit: a825dea2cd27a30e49816f18b7bc16545d5f0f89
-
-Best regards,
--- 
-Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
+> Makes sense to me, and it seems to be a typo inherited from the
+> downstream code, [1] which the base RK3588 dtsi confirms, [2] as
+> well as the RK3588 Hardware Design Guide, version 1.0.
+> 
+> Thus, please include:
+> 
+> Reviewed-by: Dragan Simic <dsimic@manjaro.org>
+> 
+> I'd also suggest that this patch receives a Fixes tag, and gets
+> submitted for inclusion into stable kernels.  Thus:
+> 
+> Fixes: f1c506d152ff ("clk: rockchip: add clock controller for the 
+> RK3588")
+> Cc: stable@vger.kernel.org
+> 
+> ... but you should actually submit the v2 with these tags, if you
+> choose to agree with this suggestion.
+> 
+> Furthermore, it seems that the board dts for Radxa ROCK 5B needs
+> some related fixes, because it deviates from the RK3588 EVB design,
+> but I still need to dig deeper into that and actually do some
+> testing to confirm it.  Perhaps that will apply to other similar
+> RK3588-based boards as well.
+> 
+> [1] 
+> https://raw.githubusercontent.com/rockchip-linux/kernel/develop-5.10/drivers/clk/rockchip/clk-rk3588.c
+> [2] 
+> https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git/tree/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi#n423
+> 
+>> ---
+>>  drivers/clk/rockchip/clk-rk3588.c | 2 +-
+>>  1 file changed, 1 insertion(+), 1 deletion(-)
+>> 
+>> diff --git a/drivers/clk/rockchip/clk-rk3588.c
+>> b/drivers/clk/rockchip/clk-rk3588.c
+>> index b30279a96dc8..3027379f2fdd 100644
+>> --- a/drivers/clk/rockchip/clk-rk3588.c
+>> +++ b/drivers/clk/rockchip/clk-rk3588.c
+>> @@ -526,7 +526,7 @@ PNAME(pmu_200m_100m_p)			= { "clk_pmu1_200m_src",
+>> "clk_pmu1_100m_src" };
+>>  PNAME(pmu_300m_24m_p)			= { "clk_300m_src", "xin24m" };
+>>  PNAME(pmu_400m_24m_p)			= { "clk_400m_src", "xin24m" };
+>>  PNAME(pmu_100m_50m_24m_src_p)		= { "clk_pmu1_100m_src",
+>> "clk_pmu1_50m_src", "xin24m" };
+>> -PNAME(pmu_24m_32k_100m_src_p)		= { "xin24m", "32k", 
+>> "clk_pmu1_100m_src" };
+>> +PNAME(pmu_24m_32k_100m_src_p)		= { "xin24m", "xin32k", 
+>> "clk_pmu1_100m_src" };
+>>  PNAME(hclk_pmu1_root_p)			= { "clk_pmu1_200m_src",
+>> "clk_pmu1_100m_src", "clk_pmu1_50m_src", "xin24m" };
+>>  PNAME(hclk_pmu_cm0_root_p)		= { "clk_pmu1_400m_src",
+>> "clk_pmu1_200m_src", "clk_pmu1_100m_src", "xin24m" };
+>>  PNAME(mclk_pdm0_p)			= { "clk_pmu1_300m_src", "clk_pmu1_200m_src" };
 
 _______________________________________________
 Linux-rockchip mailing list
