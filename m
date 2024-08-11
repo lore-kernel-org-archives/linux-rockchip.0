@@ -4,75 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 06581C3DA4A
-	for <linux-rockchip@archiver.kernel.org>; Sun, 11 Aug 2024 14:13:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B4D85C3DA4A
+	for <linux-rockchip@archiver.kernel.org>; Sun, 11 Aug 2024 19:27:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ZyxUEUxvdqTqPsc4oEKebQLnFR+9XYwxm+FR4SoeVEM=; b=rM3ufpcgVbgqsE
-	RiwfApEloudyM4BzXlP27NpmXGKFfOHMU8Zr4EVhfHQhsyciRD3bT+a4Zw3//T6we43+ArjmD2XJM
-	k3ApZqfxt6EuirFYZcNlJIsHCoc9np9Bcr+Sr0ixLeBK0QWfC2pcobQh+Jv9u2zCVzalW5TsQRT2r
-	dd9HVna9gl3xerWszr77P2Js5xBRcGWQT2rjyIEdkJauws2S5FfVU4ippAKhOV04pgEGXAAAk0ytR
-	m1n+78ZfqdvA49TDEAM07/GpRSt/ICpmzAGB5oA0s1XCjPEa8735dzpoOr3QLj8FLaSlKagoj5aNL
-	hzFWhvyG0DIAb5JkCKtQ==;
+	List-Owner; bh=gUBFsXklI6JZKm9S9uiZtydSM5E2V6Kd1ej1H3bITVw=; b=2lK5Hp1OFyioWy
+	c6glUVFciz/oCPNFo/XvHg9Lb8MnAKCM9O+2uqqGrrYW4hezjh9ijvrwpKfgLSyFoXdGCOMthlq7q
+	B3NxLmF4eKZiif0WPb1wy8ZM1s2venWxyl33rwVmoCYY1js3F3KpmvRq+xeW18NuWMLr9ojGBZv/U
+	A3i0tbrWKfcy61YBjoM8WazNJ8fDfNWpKv1ViSeltJ9oU7uDg3Ea5wzkZ8X9dgAr0pi7RplV7LM3X
+	9VXWlqQeBQjjbHxqU8CjI9+o1ab6N69LjUMwqXTFa8IuqfLaU2GJi3ywGsAXeIfBEXJsEFF4tZEP1
+	9C4p8M5igQHnRGHmnhbA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sd9K9-0000000Fehv-1jk7;
-	Sun, 11 Aug 2024 14:13:33 +0000
-Received: from layka.disroot.org ([178.21.23.139])
+	id 1sdEDp-0000000G2g3-1yIN;
+	Sun, 11 Aug 2024 19:27:21 +0000
+Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sd9JX-0000000FedB-1i5C;
-	Sun, 11 Aug 2024 14:12:57 +0000
-Received: from localhost (localhost [127.0.0.1])
-	by disroot.org (Postfix) with ESMTP id 268D8412A8;
-	Sun, 11 Aug 2024 16:12:54 +0200 (CEST)
-X-Virus-Scanned: SPAM Filter at disroot.org
-Received: from layka.disroot.org ([127.0.0.1])
-	by localhost (disroot.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 6SPoyhgfIyU9; Sun, 11 Aug 2024 16:12:53 +0200 (CEST)
-From: Yao Zi <ziyao@disroot.org>
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=disroot.org; s=mail;
-	t=1723385573; bh=FsXOnoz9SO31Lxbm93ffIh76rgL3IIymEIgRmwk0q9w=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=SyK7hWfKeZX62wTLr9Ds9evoTE8/l8Xxo/2ryCnia2cGIGugVRdobogwtk/8AKqB5
-	 zJvzHluFtjnE421hiIl7j1nwMulG9xufEMj5iEtHJ+uL9lryNeb5ELBSSylVXYNbu5
-	 j4VvpUE73lzowqYSWeQ7rMjsv9amQ5pavJbg0TDhBu8NyggB7A+swkD02qTtEgZwwB
-	 jjR0xDRFIj02nnk1a7IqhYFDejoaEdW252izuqCYiJztlejmF6I6iw7sA7WemrXCVL
-	 lP4TdTdEG/2jHTk5WWdK/LF3jW/rW/qelIN313+iuNYjiHaKCsQ2437b09++RpnJSi
-	 gHCB62X8O6g8w==
-To: Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Jiri Slaby <jirislaby@kernel.org>,
-	Chris Morgan <macromorgan@hotmail.com>,
-	Jonas Karlman <jonas@kwiboo.se>,
-	Tim Lunn <tim@feathertop.org>,
-	Andy Yan <andyshrk@163.com>,
-	Muhammed Efe Cetin <efectn@protonmail.com>,
-	Jagan Teki <jagan@edgeble.ai>,
-	Dragan Simic <dsimic@manjaro.org>,
-	Ondrej Jirman <megi@xff.cz>
-Cc: Celeste Liu <CoelacanthusHex@gmail.com>,
+	id 1sdEDl-0000000G2eo-2uw2
+	for linux-rockchip@lists.infradead.org;
+	Sun, 11 Aug 2024 19:27:19 +0000
+Received: by mail-wm1-x32a.google.com with SMTP id 5b1f17b1804b1-4281ca54fd3so27767015e9.2
+        for <linux-rockchip@lists.infradead.org>; Sun, 11 Aug 2024 12:27:17 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=bgdev-pl.20230601.gappssmtp.com; s=20230601; t=1723404435; x=1724009235; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=Qi4pCNP1Gdr9h0T5um8ZgiG7jkuJMsbVZXb0oh3Hft4=;
+        b=IoX7OHvzhbVnpwPS4k9U8JU6lJKYpabwYvApuaY9hejz6vgqw5TerhKkAPn0QIdKhD
+         DKsdj84NEtZ4EGoiJ/zHx/wz4FVm5Nop0g0O3McCoi1GYAMHmOVtqQd1hThg0rgIXN7D
+         sZCEpOp3OmFmAmBFvZbwuux03VBer6p5d/PA8waR88aUQEczJ4mEDvULv+34GkizsKEy
+         mX5QDAFXR3Ox74vql8wIVQ+nt/tWBEOFdkpAg/AtvcF8vGNtzmuYtJlfuoLGd3Tj79pO
+         8qX634WPrJgjfPMQ4cI1t0tMfBG7ZZLB4EGdPIDcFQRfeIh6zzzSqEdFirpDQDDd/hC5
+         4ueA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1723404435; x=1724009235;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=Qi4pCNP1Gdr9h0T5um8ZgiG7jkuJMsbVZXb0oh3Hft4=;
+        b=fWh7sI7TcwPn8s2+5B7O5AJ7zEoiR5cBcTvilsa+iC5Bl/MuHKao7813v1Sfb0at7w
+         8hwCPoxMUOFyZkQlQDAQmRbNTw3gPr5YRKTh+JD7sWjwa5rSnxKjYOgRLcjqjCU/QDYu
+         Z4FAZh7aZhavnOt3xsnPj94XcE/UlfqoDoVWneHvPq1pTqjE9N04BFBS2VzEyMCHzZKX
+         I3/4Qwarix7H5q49X1FPcP8Ti4qrC8bTHgnWAH9fkndNuvaK6XBvnZqORtzHTiHjGTWi
+         bNuiBFbThkZo3qkRfoUGNvlItNMatm/QCI4fbfPL9jJBXnPCvsTrdmEpl+5xpGAAiFx0
+         MaMg==
+X-Forwarded-Encrypted: i=1; AJvYcCVNxqXARoG9c7YAUbIo2rfJQmO+inC0Mzx9xQb7rgk4mHtpZxgkdJewwyGYgE84JmZCLDw+OvwXjMLSKQTWY3co2weF+OLf72LMo9akHa30N4Ga
+X-Gm-Message-State: AOJu0YxY5aQE1TxNgIN98oanRS5zPVk4QjvI3U+fvwf9kSZTlGi+XJhI
+	16UcyB3NPe1gLe79EUPniJsYTwcwuopY0ZW0v1dtBS/LQNFm0yJQ9YrbskzzZQg=
+X-Google-Smtp-Source: AGHT+IGagufT2xNn/QKQu3bmVrV6jU72TWeF3FBl77gAzQllDDZ8/5qNg/Q6eq++X65pc/tFy4d3Pw==
+X-Received: by 2002:adf:f349:0:b0:368:664a:d4f9 with SMTP id ffacd0b85a97d-36d5eb08646mr5681407f8f.28.1723404435210;
+        Sun, 11 Aug 2024 12:27:15 -0700 (PDT)
+Received: from brgl-uxlite.home ([2a01:cb1d:dc:7e00:6978:7b03:bbeb:d1af])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-36e4cfefe71sm5552517f8f.62.2024.08.11.12.27.14
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 11 Aug 2024 12:27:14 -0700 (PDT)
+From: Bartosz Golaszewski <brgl@bgdev.pl>
+To: brgl@bgdev.pl,
+	Heiko Stuebner <heiko@sntech.de>
+Cc: Bartosz Golaszewski <bartosz.golaszewski@linaro.org>,
+	robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
+	ukleinek@debian.org,
+	linux-i2c@vger.kernel.org,
 	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
-	linux-serial@vger.kernel.org,
-	Yao Zi <ziyao@disroot.org>
-Subject: [PATCH v2 4/4] arm64: dts: rockchip: Add Radxa e20c board
-Date: Sun, 11 Aug 2024 14:11:59 +0000
-Message-ID: <20240811141159.65505-1-ziyao@disroot.org>
-In-Reply-To: <20240811140725.64866-1-ziyao@disroot.org>
-References: <20240811140725.64866-1-ziyao@disroot.org>
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH 1/2] dt-bindings: eeprom: at24: Add compatible for Giantec GT24C04A
+Date: Sun, 11 Aug 2024 21:27:13 +0200
+Message-ID: <172340442666.7060.12608274118090495917.b4-ty@linaro.org>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20240810211438.286441-2-heiko@sntech.de>
+References: <20240810211438.286441-1-heiko@sntech.de> <20240810211438.286441-2-heiko@sntech.de>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240811_071255_894543_067818A4 
-X-CRM114-Status: GOOD (  12.83  )
+X-CRM114-CacheID: sfid-20240811_122717_854174_F0E19CBE 
+X-CRM114-Status: UNSURE (   7.79  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,62 +103,23 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add board-level device tree for Radxa e20c board[1]. This basic
-implementation supports boot into a kernel with only UART console.
-Other features will be added later.
+From: Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
 
-[1]: https://docs.radxa.com/en/e/e20c
 
-Signed-off-by: Yao Zi <ziyao@disroot.org>
----
- arch/arm64/boot/dts/rockchip/Makefile         |  1 +
- .../boot/dts/rockchip/rk3528-radxa-e20c.dts   | 22 +++++++++++++++++++
- 2 files changed, 23 insertions(+)
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3528-radxa-e20c.dts
+On Sat, 10 Aug 2024 23:14:37 +0200, Heiko Stuebner wrote:
+> The gt24c04a is just yet another 2404 compatible eeprom, and does not
+> follow the generic naming matching, so add a separate compatible for it.
+> 
+> 
 
-diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
-index fda1b980eb4b..ecdd767d0323 100644
---- a/arch/arm64/boot/dts/rockchip/Makefile
-+++ b/arch/arm64/boot/dts/rockchip/Makefile
-@@ -74,6 +74,7 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-rockpro64.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-sapphire.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-sapphire-excavator.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399pro-rock-pi-n10.dtb
-+dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3528-radxa-e20c.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3566-anbernic-rg-arc-d.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3566-anbernic-rg-arc-s.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3566-anbernic-rg353p.dtb
-diff --git a/arch/arm64/boot/dts/rockchip/rk3528-radxa-e20c.dts b/arch/arm64/boot/dts/rockchip/rk3528-radxa-e20c.dts
-new file mode 100644
-index 000000000000..d2cdb63d4a9d
---- /dev/null
-+++ b/arch/arm64/boot/dts/rockchip/rk3528-radxa-e20c.dts
-@@ -0,0 +1,22 @@
-+// SPDX-License-Identifier: GPL-2.0+
-+/*
-+ * Copyright (c) 2020 Rockchip Electronics Co., Ltd
-+ * Copyright (c) 2024 Radxa Limited
-+ * Copyright (c) 2024 Yao Zi <ziyao@disroot.org>
-+ */
-+
-+/dts-v1/;
-+#include "rk3528.dtsi"
-+
-+/ {
-+	model = "Radxa E20C";
-+	compatible = "radxa,e20c", "rockchip,rk3528";
-+
-+	chosen {
-+		stdout-path = "serial0:1500000n8";
-+	};
-+};
-+
-+&uart0 {
-+	status = "okay";
-+};
+Applied, thanks!
+
+[1/2] dt-bindings: eeprom: at24: Add compatible for Giantec GT24C04A
+      commit: a825dea2cd27a30e49816f18b7bc16545d5f0f89
+
+Best regards,
 -- 
-2.45.2
-
+Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
 
 _______________________________________________
 Linux-rockchip mailing list
