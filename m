@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1DE4CC3DA4A
-	for <linux-rockchip@archiver.kernel.org>; Sun, 11 Aug 2024 14:09:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 26B24C3DA4A
+	for <linux-rockchip@archiver.kernel.org>; Sun, 11 Aug 2024 14:09:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=HYj2qMG0u16DKcik1w1b9eh5RUWAhiATKoodr0QK1yg=; b=EkvjZ9X+u90gkJ
-	F2HLZx4/CCM2xSp8tMcqR8fqB6QLuI/lTz6ExKbtqzQv1efQYu1w3R6m61KFF1IzR+/Y1Od5S1H7+
-	B1t6YdZf1DOXAOIJATix9zU8L9i/rEsIwviCfQtDcVYk6O8PyV8KvgzyEzMZwMY+0ypLjGE88JLH+
-	loF/j2LAl2eixq1q3J7C5ysjJo16CowZWf8e4H92J2Hwa0rpXCGoHfW1O4M5Uy0o6Bh0K7Clu3EWa
-	mvKQfp48yk5Rfbmtw9BRbyT9aEg4KGNAwHi3MGQzTBZ/cJyGGMrQW6HxqzGh2Jzww6NmEQq/g50Z5
-	l1GDTRcoX5CXmOlCO7iA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=f+gyTsbM0e70R+iDtVSi8fPprZ81K32s9bGoL0c5KeE=; b=HHeYB6/dgP3QPa
+	q8YR3Vn/CcgMmmThK7iEK/AUKw35V+jeEbgA087Z3geXzSzmRBf07kV0pAc+UhTZ15cZ9aD3+8+/p
+	rRaqMdsdRJQ7+tITK+hXXmitvKwvfIg8/f3e1bbzJqZPbYvYXjFjuPvg5OX0B+8+YbBgcvS3IzXI/
+	DTGTaM/YYpHtsmef5RP74k1tzY3fM3A4gu7TBZAN7XmeJoAdpAGSNQg7Hp9GLAscuVwZ3C4ql5Nto
+	qtkVq4i8lQ+Sze0PqEZXwFlzrTlnN0m0JYc7jeI8tYWCSQTTmlMqrirOS2eo2mIgpJ66wf3/U+N8K
+	ZRIDEFtBSFmWg/q7giaw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sd9Fk-0000000Fe1R-1o2I;
-	Sun, 11 Aug 2024 14:09:00 +0000
+	id 1sd9GJ-0000000FeEH-05yc;
+	Sun, 11 Aug 2024 14:09:35 +0000
 Received: from layka.disroot.org ([178.21.23.139])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sd9F8-0000000FdvW-2o4c;
-	Sun, 11 Aug 2024 14:08:25 +0000
+	id 1sd9FY-0000000Fdzk-1Hao;
+	Sun, 11 Aug 2024 14:08:50 +0000
 Received: from localhost (localhost [127.0.0.1])
-	by disroot.org (Postfix) with ESMTP id 6724240CF8;
-	Sun, 11 Aug 2024 16:08:17 +0200 (CEST)
+	by disroot.org (Postfix) with ESMTP id 1068840CF8;
+	Sun, 11 Aug 2024 16:08:47 +0200 (CEST)
 X-Virus-Scanned: SPAM Filter at disroot.org
 Received: from layka.disroot.org ([127.0.0.1])
 	by localhost (disroot.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id dfrF0iKQAmrr; Sun, 11 Aug 2024 16:08:16 +0200 (CEST)
+	with ESMTP id cijQeAMapwPm; Sun, 11 Aug 2024 16:08:46 +0200 (CEST)
 From: Yao Zi <ziyao@disroot.org>
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=disroot.org; s=mail;
-	t=1723385296; bh=UNVNR/ZqPyzz34eJw5rBf+oEyAv4KDBkWcUQLDbLptw=;
-	h=From:To:Cc:Subject:Date;
-	b=PC7Oi5lD0TwnijadOykhVgXBuwvR6s4D3KPnmLQs6bLFUW0yvZkyxkA6u2+WYvf9w
-	 g7mj1Ugs1gSj0CJNLB9tlC5f1bw4Z1dCs7dYFNsIm7QQ6ExJ8c4KsBgN8Wl2/GFR4o
-	 8C3D58lvT9q2H1PoGvb0BAj+WXtYjIjEubLugmK7gry9w1Z84j9HjnasBak2gROdnc
-	 xAEggK4C/OJW2l6X+KbHjxJ+Abbg8G5Hxuerdf7gXAAw/FSeb4qVs99DrkIzjDrqOQ
-	 ti17eJQAtbGhEr8T7iW955lj1wLcvZ/3GXSTdk9RFo81Ql6d9QE82P2ox/+Cw3FUez
-	 Vxpdlgo+ytVNA==
+	t=1723385326; bh=8LxrzrFhWFpCUVmO9uUCUHCbQe2VRU08Ja69nX3UYjo=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References;
+	b=FB/+KNGGyXKfYYd7xCyqTeV9lhIvF67RYtHr8UcBEfIoA45cReMeIjZJ4kvCTG6IF
+	 qykbiNE51+Bt/fm+JyfuOnnD482jeT4c0u2ToIjLhH6jHOLyiqMyL7eXg1tRPf3TWI
+	 dV+nC1Hfej6eCsZhTBHixksmStj+NHwfHcDL5TF+bvdFwm7tuP2WnNOW/mmzZecQ4w
+	 2Y8KlX5xyPvJ6FTAt13Qa/pCiQ/sv8asCATTb24ElyrAF7D7+ecMmBhANOrsoWc0tu
+	 Z8HxH0bYpc8fW3+PJCXxOmOw1pF4J/iF/1T938wVyDfZpnmUWyWWptNyPj8yeQk5Z4
+	 oPcthvVpUnALw==
 To: Rob Herring <robh@kernel.org>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
 	Conor Dooley <conor+dt@kernel.org>,
@@ -63,14 +63,18 @@ Cc: Celeste Liu <CoelacanthusHex@gmail.com>,
 	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	linux-serial@vger.kernel.org,
-	Yao Zi <ziyao@disroot.org>
-Subject: [PATCH v2 0/4] Add initial support for Rockchip RK3528 SoC
-Date: Sun, 11 Aug 2024 14:07:21 +0000
-Message-ID: <20240811140725.64866-1-ziyao@disroot.org>
+	Yao Zi <ziyao@disroot.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Subject: [PATCH v2 1/4] dt-bindings: serial: snps-dw-apb-uart: Document Rockchip RK3528
+Date: Sun, 11 Aug 2024 14:07:22 +0000
+Message-ID: <20240811140725.64866-2-ziyao@disroot.org>
+In-Reply-To: <20240811140725.64866-1-ziyao@disroot.org>
+References: <20240811140725.64866-1-ziyao@disroot.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240811_070823_173704_9B498700 
-X-CRM114-Status: GOOD (  11.41  )
+X-CRM114-CacheID: sfid-20240811_070848_498509_A661980A 
+X-CRM114-Status: UNSURE (   7.61  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,37 +91,28 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Rockchip RK3528 is a quad-core ARM Cortex-A53 SoC designed for
-multimedia application. This series add a basic device tree with CPU,
-interrupts and UART nodes for it and is able to boot into a kernel with
-only UART console.
+Rockchip RK3528 comes with a snps-dw-apb-uart compatible UART. Document
+it in dt-bindings.
 
-Has been tested on Radxa E20C board[1] with vendor U-boot, successfully
-booted into initramfs with this log[2].
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+Signed-off-by: Yao Zi <ziyao@disroot.org>
+---
+ Documentation/devicetree/bindings/serial/snps-dw-apb-uart.yaml | 1 +
+ 1 file changed, 1 insertion(+)
 
-[1]: https://docs.radxa.com/en/e/e20c
-[2]: https://gist.github.com/ziyao233/b74523a1e3e8bf36286a572e008ca319
-
-Changed from v1:
-- fix stdout-path
-- style improvements
-https://lore.kernel.org/all/20240803125510.4699-2-ziyao@disroot.org/
-
-Yao Zi (4):
-  dt-bindings: serial: snps-dw-apb-uart: Document Rockchip RK3528
-  dt-bindings: arm: rockchip: Add Radxa E20C board
-  arm64: dts: rockchip: Add base DT for rk3528 SoC
-  arm64: dts: rockchip: Add Radxa e20c board
-
- .../devicetree/bindings/arm/rockchip.yaml     |   5 +
- .../bindings/serial/snps-dw-apb-uart.yaml     |   1 +
- arch/arm64/boot/dts/rockchip/Makefile         |   1 +
- .../boot/dts/rockchip/rk3528-radxa-e20c.dts   |  22 +++
- arch/arm64/boot/dts/rockchip/rk3528.dtsi      | 182 ++++++++++++++++++
- 5 files changed, 211 insertions(+)
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3528-radxa-e20c.dts
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3528.dtsi
-
+diff --git a/Documentation/devicetree/bindings/serial/snps-dw-apb-uart.yaml b/Documentation/devicetree/bindings/serial/snps-dw-apb-uart.yaml
+index 4cdb0dcaccf3..4573044be189 100644
+--- a/Documentation/devicetree/bindings/serial/snps-dw-apb-uart.yaml
++++ b/Documentation/devicetree/bindings/serial/snps-dw-apb-uart.yaml
+@@ -48,6 +48,7 @@ properties:
+               - rockchip,rk3328-uart
+               - rockchip,rk3368-uart
+               - rockchip,rk3399-uart
++              - rockchip,rk3528-uart
+               - rockchip,rk3568-uart
+               - rockchip,rk3588-uart
+               - rockchip,rv1108-uart
 -- 
 2.45.2
 
