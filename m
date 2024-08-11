@@ -4,106 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E2FAAC3DA4A
-	for <linux-rockchip@archiver.kernel.org>; Sun, 11 Aug 2024 12:30:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1DE4CC3DA4A
+	for <linux-rockchip@archiver.kernel.org>; Sun, 11 Aug 2024 14:09:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=KTIz/spjA2cxsKw0EZA5XK8+Nj/Yx+mS/CyCsYBYiAU=; b=VwBB2jKtJ0IEzH
-	UZ6jde7IiACRdztgFTCp1P6wF42KzzJB+NAgDXbR28SgM8Oia0gG/bfnt6kBct/9OKM2ZrLZ8ffmI
-	m4/xdRh53ugcBXuwDnwz5QziRXgG53OfCg8tHay4gAkRAlGx2zIA15ag/xGyQlBkCe6b0Tdy7UCPC
-	qv7S0QWNSDghMKRxVjaVTj8xEOiYeD3RXvIcHkg4IqJvMGLE/wF6LJcG+rtoRnm4nto+LXvNQmXVB
-	X3LeyU23LR9R8j+OlBon0hQmC2VpjCpIxTvurQna0HKhFQtUeoAWo+GnuUWCnYSUPYi2Je/GiTm35
-	UBYVvsu2yBeQ90Uze+/A==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=HYj2qMG0u16DKcik1w1b9eh5RUWAhiATKoodr0QK1yg=; b=EkvjZ9X+u90gkJ
+	F2HLZx4/CCM2xSp8tMcqR8fqB6QLuI/lTz6ExKbtqzQv1efQYu1w3R6m61KFF1IzR+/Y1Od5S1H7+
+	B1t6YdZf1DOXAOIJATix9zU8L9i/rEsIwviCfQtDcVYk6O8PyV8KvgzyEzMZwMY+0ypLjGE88JLH+
+	loF/j2LAl2eixq1q3J7C5ysjJo16CowZWf8e4H92J2Hwa0rpXCGoHfW1O4M5Uy0o6Bh0K7Clu3EWa
+	mvKQfp48yk5Rfbmtw9BRbyT9aEg4KGNAwHi3MGQzTBZ/cJyGGMrQW6HxqzGh2Jzww6NmEQq/g50Z5
+	l1GDTRcoX5CXmOlCO7iA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sd7hq-0000000FWfm-3wZB;
-	Sun, 11 Aug 2024 12:29:54 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1sd9Fk-0000000Fe1R-1o2I;
+	Sun, 11 Aug 2024 14:09:00 +0000
+Received: from layka.disroot.org ([178.21.23.139])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sd7gD-0000000FWKi-1WSd;
-	Sun, 11 Aug 2024 12:28:14 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 6BBEB60C5F;
-	Sun, 11 Aug 2024 12:28:12 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2574FC4AF09;
-	Sun, 11 Aug 2024 12:28:08 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1723379292;
-	bh=IqffBHILZUUhRWgbFY6LPMhP5C4EGRvdVYnWnsLUg90=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=VDaIn65blY40KR5PSiVnyA+8rTqVG50uMmSZphoq6XNO0h7nrcmoOtV9W7ue7vGpr
-	 mqWvLcnZpNwqgBK64Llmn3l55ETd+DRk4AD6pjMrkfjZ1jLcD4IJDDsDzOK65qCFIv
-	 UKY0pRnTYyzS1GUjRdAkdJG/tuIm2ERqNCD/YJNWuYz/y8XCX3XercCoqnj12b84lB
-	 /5NTDaQvkG+CEpP0eNojd0lIq8DU4Hn4nqGnCCdkpsIOmtbmx1+Hg+P/UptydvwjUJ
-	 hbdIDaueCb2+7X2aA8R4t3weYCvzhCZKnl0+yebnmVkIE7I4pGgxwtvRb9NZyXBXKq
-	 peBUCFGiCd2wA==
-Message-ID: <15abedde-912a-4e3a-b486-c609d3fe1725@kernel.org>
-Date: Sun, 11 Aug 2024 14:28:06 +0200
+	id 1sd9F8-0000000FdvW-2o4c;
+	Sun, 11 Aug 2024 14:08:25 +0000
+Received: from localhost (localhost [127.0.0.1])
+	by disroot.org (Postfix) with ESMTP id 6724240CF8;
+	Sun, 11 Aug 2024 16:08:17 +0200 (CEST)
+X-Virus-Scanned: SPAM Filter at disroot.org
+Received: from layka.disroot.org ([127.0.0.1])
+	by localhost (disroot.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id dfrF0iKQAmrr; Sun, 11 Aug 2024 16:08:16 +0200 (CEST)
+From: Yao Zi <ziyao@disroot.org>
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=disroot.org; s=mail;
+	t=1723385296; bh=UNVNR/ZqPyzz34eJw5rBf+oEyAv4KDBkWcUQLDbLptw=;
+	h=From:To:Cc:Subject:Date;
+	b=PC7Oi5lD0TwnijadOykhVgXBuwvR6s4D3KPnmLQs6bLFUW0yvZkyxkA6u2+WYvf9w
+	 g7mj1Ugs1gSj0CJNLB9tlC5f1bw4Z1dCs7dYFNsIm7QQ6ExJ8c4KsBgN8Wl2/GFR4o
+	 8C3D58lvT9q2H1PoGvb0BAj+WXtYjIjEubLugmK7gry9w1Z84j9HjnasBak2gROdnc
+	 xAEggK4C/OJW2l6X+KbHjxJ+Abbg8G5Hxuerdf7gXAAw/FSeb4qVs99DrkIzjDrqOQ
+	 ti17eJQAtbGhEr8T7iW955lj1wLcvZ/3GXSTdk9RFo81Ql6d9QE82P2ox/+Cw3FUez
+	 Vxpdlgo+ytVNA==
+To: Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Jiri Slaby <jirislaby@kernel.org>,
+	Chris Morgan <macromorgan@hotmail.com>,
+	Jonas Karlman <jonas@kwiboo.se>,
+	Tim Lunn <tim@feathertop.org>,
+	Andy Yan <andyshrk@163.com>,
+	Muhammed Efe Cetin <efectn@protonmail.com>,
+	Jagan Teki <jagan@edgeble.ai>,
+	Dragan Simic <dsimic@manjaro.org>,
+	Ondrej Jirman <megi@xff.cz>
+Cc: Celeste Liu <CoelacanthusHex@gmail.com>,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-serial@vger.kernel.org,
+	Yao Zi <ziyao@disroot.org>
+Subject: [PATCH v2 0/4] Add initial support for Rockchip RK3528 SoC
+Date: Sun, 11 Aug 2024 14:07:21 +0000
+Message-ID: <20240811140725.64866-1-ziyao@disroot.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/2] dt-bindings: eeprom: at24: Add compatible for Giantec
- GT24C04A
-To: Heiko Stuebner <heiko@sntech.de>, brgl@bgdev.pl
-Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
- ukleinek@debian.org, linux-i2c@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org
-References: <20240810211438.286441-1-heiko@sntech.de>
- <20240810211438.286441-2-heiko@sntech.de>
-From: Krzysztof Kozlowski <krzk@kernel.org>
-Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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 fv0=
-In-Reply-To: <20240810211438.286441-2-heiko@sntech.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240811_052813_536335_536AF91E 
-X-CRM114-Status: UNSURE (   8.16  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240811_070823_173704_9B498700 
+X-CRM114-Status: GOOD (  11.41  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -120,18 +87,39 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 10/08/2024 23:14, Heiko Stuebner wrote:
-> The gt24c04a is just yet another 2404 compatible eeprom, and does not
-> follow the generic naming matching, so add a separate compatible for it.
-> 
-> Signed-off-by: Heiko Stuebner <heiko@sntech.de>
-> ---
->  Documentation/devicetree/bindings/eeprom/at24.yaml | 1 +
+Rockchip RK3528 is a quad-core ARM Cortex-A53 SoC designed for
+multimedia application. This series add a basic device tree with CPU,
+interrupts and UART nodes for it and is able to boot into a kernel with
+only UART console.
 
-Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Has been tested on Radxa E20C board[1] with vendor U-boot, successfully
+booted into initramfs with this log[2].
 
-Best regards,
-Krzysztof
+[1]: https://docs.radxa.com/en/e/e20c
+[2]: https://gist.github.com/ziyao233/b74523a1e3e8bf36286a572e008ca319
+
+Changed from v1:
+- fix stdout-path
+- style improvements
+https://lore.kernel.org/all/20240803125510.4699-2-ziyao@disroot.org/
+
+Yao Zi (4):
+  dt-bindings: serial: snps-dw-apb-uart: Document Rockchip RK3528
+  dt-bindings: arm: rockchip: Add Radxa E20C board
+  arm64: dts: rockchip: Add base DT for rk3528 SoC
+  arm64: dts: rockchip: Add Radxa e20c board
+
+ .../devicetree/bindings/arm/rockchip.yaml     |   5 +
+ .../bindings/serial/snps-dw-apb-uart.yaml     |   1 +
+ arch/arm64/boot/dts/rockchip/Makefile         |   1 +
+ .../boot/dts/rockchip/rk3528-radxa-e20c.dts   |  22 +++
+ arch/arm64/boot/dts/rockchip/rk3528.dtsi      | 182 ++++++++++++++++++
+ 5 files changed, 211 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3528-radxa-e20c.dts
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3528.dtsi
+
+-- 
+2.45.2
 
 
 _______________________________________________
