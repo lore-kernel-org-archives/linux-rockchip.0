@@ -4,55 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3E2C7C3DA7F
-	for <linux-rockchip@archiver.kernel.org>; Mon, 12 Aug 2024 07:15:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 32469C531DC
+	for <linux-rockchip@archiver.kernel.org>; Mon, 12 Aug 2024 07:15:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=+eG+R+1WT7IngDK92dPRfLJ9K6/vHiX/MKm/Ua9E6VI=; b=lCKVEFOTgSNDFv
-	r0OLJ6nKMkJsOIm7E6jNRdFH3E+LHrEaegCZW3H58+qTOLMi6m11FO9uzsDZ9FnERIoEvxqeu9sBx
-	/YveGGkTiE3pVUVplrnW50Y4YZlH/V7XnIMXB5zgAT/VY/DwtFSpY3aEeHr46rs0gyXoVhPLxBJJn
-	B5NPsoNKQGCsM2CJPUVm53Z6mbw5sELYRe8RWAIld/0TiV5nv4lpFfmQZVrWQIQqUjLMVrVELz5an
-	x9C6qSn5CrS3gxvBh3jZwdhhL245PRuF/gSv+mPSQr0CHd1Z7lXueVVDEWuFvDaaP5D6ALI2s9840
-	wIEsgGeSuRVIjmFyGerQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=YabhYIfdPv6Ldp7Slqj17+pLiEAg/w3zCbuSnRsDzAA=; b=ImpPGpWfHYA6Qc
+	kWElp+4bXzH1oger1gxXaHrLwSpv6PJxR/Guv7HrzIGqH+rg094MGDE9ZH6F4fQWL8Ng7PsEhs3DT
+	EcnU8Pafnb4f1W1ddh5CuEKkYXmq/20ii83LzqNqHFi6hZVE6rv5x/SUDoSxZP0sQFpP9GfKRDKXi
+	K9zUpYSLSfqm02GE4U31q0XhTSJUCSqLHXMs+zlnehByuUAz2JN5R/kvJOi2vbFQzqJgtHK2yg4vR
+	h02hqcrrJsSFpsEC3mzqLe9QM5miKgn7XNKozIMAcS/Zdzw4hTtiKohW4gFGF/8CIXraXwuyRuaBf
+	+A7fadJV0PEHtvuX+i4Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sdPGl-0000000H7xR-2woF;
-	Mon, 12 Aug 2024 07:15:07 +0000
+	id 1sdPHK-0000000H84H-2kO2;
+	Mon, 12 Aug 2024 07:15:42 +0000
 Received: from mgamail.intel.com ([192.198.163.14])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sdPFs-0000000H7fP-3gph;
-	Mon, 12 Aug 2024 07:14:14 +0000
+	id 1sdPFx-0000000H7fP-2Inp;
+	Mon, 12 Aug 2024 07:14:18 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1723446853; x=1754982853;
-  h=from:to:cc:subject:date:message-id:mime-version:
-   content-transfer-encoding;
-  bh=2W/be8VISRZC7fVoJ9VGu3iMrIsNaD0YF4i34a1dFE4=;
-  b=R56Zd5iGKYcoDTzZpVbxZJRuAhRSHaMpGDDN01Na6WgPSaRoYAPmvlQZ
-   hp1gmqFluhh4EgSio8eXNYSy0eViq1dCJVVZtI1/nRcdgSCj0PI7nxfSx
-   OWGm8F0FXJ75cFLdtgPYzAYBFMqpA/tchRfDGGFrFFZnNVbUz8ls+SYqj
-   F3k/pLWMgXCUgMAqF3i9p9nNTl8LM+NcK7daxTQVcmjceXMF6sFe8LzQT
-   DClw8M4qlW6sWjY8xiy9fsyf2HuvMym+CdxLsX3I5fQsVCwq1jdzO2285
-   RWUtZRlRu1z5bbCRpTIKQSMYYPGiw7YGyujqKBTzZzbFK/t6NsBil4tY4
-   A==;
-X-CSE-ConnectionGUID: sYV1Eh00SBGcl2sZiZY2VQ==
-X-CSE-MsgGUID: pE2C/0BqRPm3Z67TMLVYUQ==
-X-IronPort-AV: E=McAfee;i="6700,10204,11161"; a="21711543"
+  t=1723446857; x=1754982857;
+  h=from:to:cc:subject:date:message-id:in-reply-to:
+   references:mime-version:content-transfer-encoding;
+  bh=ugPZI6M1TvdJVOqkCaWpsQPcKmLp14vmdPpzyb0jTXA=;
+  b=fEtQoajwEwEBBPvt9JNuAolVRFSpRZBXjBQtobHiiJMGmykqBBmUb8Ji
+   dUU3DlKZQYsKoEJHFTQyVSvaht0chuDNuvzNN3B88gQUgJcxlxUdy6TVV
+   YHdMElkJ7mOzoQP6Q3llcwXsnRzEKRrUj1mN2ACfSbzpMYyN5cJSC/KN0
+   VOGMYLlDrrzsrsY4Pi5ZKteK54Hkd8t/fmIaNH9OspWjL60ZMFpWyqhVw
+   5OanrckripR/V6eOnc6LepHYkxgIkfpPY0QXkpH/BJfWxmKXVrQYUZxKD
+   utlqtTCuEJnw1/nYH6PtBeP1YJVPJmnv3qGieZIC2AfdNRh07ZRupPGXx
+   g==;
+X-CSE-ConnectionGUID: s3fXfpOkT4WH2LyMQycLuA==
+X-CSE-MsgGUID: CoH0823SRsGzjgEqC7sSOw==
+X-IronPort-AV: E=McAfee;i="6700,10204,11161"; a="21711570"
 X-IronPort-AV: E=Sophos;i="6.09,282,1716274800"; 
-   d="scan'208";a="21711543"
+   d="scan'208";a="21711570"
 Received: from fmviesa007.fm.intel.com ([10.60.135.147])
-  by fmvoesa108.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 12 Aug 2024 00:14:11 -0700
-X-CSE-ConnectionGUID: OLEmc47wRB6veAq2mjcdLw==
-X-CSE-MsgGUID: r/FxCR4NT760l1EVOg/r5A==
+  by fmvoesa108.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 12 Aug 2024 00:14:17 -0700
+X-CSE-ConnectionGUID: 20gV+VxOTN66vkWjO4j+TA==
+X-CSE-MsgGUID: j+8tsWuwRpO5z66lvcz4BQ==
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="6.09,282,1716274800"; 
-   d="scan'208";a="57823793"
+   d="scan'208";a="57823816"
 Received: from allen-box.sh.intel.com ([10.239.159.127])
-  by fmviesa007.fm.intel.com with ESMTP; 12 Aug 2024 00:14:06 -0700
+  by fmviesa007.fm.intel.com with ESMTP; 12 Aug 2024 00:14:11 -0700
 From: Lu Baolu <baolu.lu@linux.intel.com>
 To: Karol Herbst <kherbst@redhat.com>,
 	Lyude Paul <lyude@redhat.com>,
@@ -79,15 +79,18 @@ Cc: dri-devel@lists.freedesktop.org,
 	linux-media@vger.kernel.org,
 	iommu@lists.linux.dev,
 	linux-kernel@vger.kernel.org,
-	Lu Baolu <baolu.lu@linux.intel.com>
-Subject: [PATCH 1/3] drm/nouveau/tegra: Use iommu_paging_domain_alloc()
-Date: Mon, 12 Aug 2024 15:10:32 +0800
-Message-Id: <20240812071034.9443-1-baolu.lu@linux.intel.com>
+	Lu Baolu <baolu.lu@linux.intel.com>,
+	Jason Gunthorpe <jgg@nvidia.com>
+Subject: [PATCH 2/3] drm/rockchip: Use iommu_paging_domain_alloc()
+Date: Mon, 12 Aug 2024 15:10:33 +0800
+Message-Id: <20240812071034.9443-2-baolu.lu@linux.intel.com>
 X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20240812071034.9443-1-baolu.lu@linux.intel.com>
+References: <20240812071034.9443-1-baolu.lu@linux.intel.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240812_001412_962717_2283A593 
-X-CRM114-Status: GOOD (  10.13  )
+X-CRM114-CacheID: sfid-20240812_001417_618786_CC5F27E2 
+X-CRM114-Status: GOOD (  11.36  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,31 +107,43 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-In nvkm_device_tegra_probe_iommu(), a paging domain is allocated for @dev
-and attached to it on success. Use iommu_paging_domain_alloc() to make it
-explicit.
+Commit <421be3ee36a4> ("drm/rockchip: Refactor IOMMU initialisation") has
+refactored rockchip_drm_init_iommu() to pass a device that the domain is
+allocated for. Replace iommu_domain_alloc() with
+iommu_paging_domain_alloc() to retire the former.
 
 Signed-off-by: Lu Baolu <baolu.lu@linux.intel.com>
-Link: https://lore.kernel.org/r/20240610085555.88197-7-baolu.lu@linux.intel.com
+Reviewed-by: Jason Gunthorpe <jgg@nvidia.com>
+Link: https://lore.kernel.org/r/20240610085555.88197-19-baolu.lu@linux.intel.com
 ---
- drivers/gpu/drm/nouveau/nvkm/engine/device/tegra.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ drivers/gpu/drm/rockchip/rockchip_drm_drv.c | 10 +++++++---
+ 1 file changed, 7 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/gpu/drm/nouveau/nvkm/engine/device/tegra.c b/drivers/gpu/drm/nouveau/nvkm/engine/device/tegra.c
-index 87caa4a72921..763c4c2925f9 100644
---- a/drivers/gpu/drm/nouveau/nvkm/engine/device/tegra.c
-+++ b/drivers/gpu/drm/nouveau/nvkm/engine/device/tegra.c
-@@ -120,8 +120,8 @@ nvkm_device_tegra_probe_iommu(struct nvkm_device_tegra *tdev)
- 	mutex_init(&tdev->iommu.mutex);
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_drv.c b/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
+index 44d769d9234d..11e5d10de4d7 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
+@@ -103,13 +103,17 @@ static int rockchip_drm_init_iommu(struct drm_device *drm_dev)
+ 	struct rockchip_drm_private *private = drm_dev->dev_private;
+ 	struct iommu_domain_geometry *geometry;
+ 	u64 start, end;
++	int ret;
  
- 	if (device_iommu_mapped(dev)) {
--		tdev->iommu.domain = iommu_domain_alloc(&platform_bus_type);
--		if (!tdev->iommu.domain)
-+		tdev->iommu.domain = iommu_paging_domain_alloc(dev);
-+		if (IS_ERR(tdev->iommu.domain))
- 			goto error;
+ 	if (IS_ERR_OR_NULL(private->iommu_dev))
+ 		return 0;
  
- 		/*
+-	private->domain = iommu_domain_alloc(private->iommu_dev->bus);
+-	if (!private->domain)
+-		return -ENOMEM;
++	private->domain = iommu_paging_domain_alloc(private->iommu_dev);
++	if (IS_ERR(private->domain)) {
++		ret = PTR_ERR(private->domain);
++		private->domain = NULL;
++		return ret;
++	}
+ 
+ 	geometry = &private->domain->geometry;
+ 	start = geometry->aperture_start;
 -- 
 2.34.1
 
