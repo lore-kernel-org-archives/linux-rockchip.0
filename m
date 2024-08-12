@@ -4,56 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B7A07C52D7C
-	for <linux-rockchip@archiver.kernel.org>; Mon, 12 Aug 2024 21:16:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0CCFAC3DA7F
+	for <linux-rockchip@archiver.kernel.org>; Mon, 12 Aug 2024 21:16:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
-	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=xrMkI2NGz/K9E7V3h8WQes7rILqt9xUkPA452EljFNI=; b=cXFnRZIaj+90hy
-	W+Mj09vm/BVNLIeE9Rp+AluIaQ6uEk/V34UGWHPK2YpAnAfAMsLz8JceKlnWHWrF5r4NdiwZpzs7a
-	3dZtVgaHWP5Xrv5B7i5PYBHzd5BeCU2fY6Gj871nQ4qW+9+tosgb7S0QGzi9M38NjjBVVB2ek/mWU
-	S0b6y0aj1179btJJtVd6F6w/4QPdoXhOeJ8Lga6kcFz0o7uFyVEhKlpUuNpoz6Dug5o1x7GJTBBJn
-	ld+jc/lT8fGupuEKm34tYD1iIbc9abEKDjy08FH/MHEaUQGblKqP1cgrbv5wLgrtrri5fbjw/1w2o
-	yu5aCUBKwm4PCujTG/LQ==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
+	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=tDEcxl0arggH+f1K6x6BYeuFhvFwiyJD74F6A8AqTvQ=; b=q3omBBZWA0VrBP
+	FYhy3koyls3oSOS/ijRynPbOFwvwZklpp2Ov2EsLeGsomWKxfp8oX0bezXlay4tSQr5coS60814kT
+	oiDYDn3HQcYCJhqQZ0wpGqJ0bu55ZbUwFsr8sKDLpsQ27hXPVk+NkA/3l2A+u9awafuJH2s8+gATL
+	MTBl+zZ9/fq7rYonQ2mtVQLpA+fo27l4oI9QJcqDdIEOkjm3RKkXenLPMSzqW4ur9cnRP7FdGVWtI
+	vFwXI3A3VDhHHO2rfAMSRK14J4mIPxt5JvezaKzbc0rGtUL5vIVgGcWGYfz38gFhr8NsO0Quj6twN
+	UhA5B8qjBcUEHtQEZQ+A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sdcOc-00000001att-0YOS;
-	Mon, 12 Aug 2024 21:16:06 +0000
+	id 1sdcOl-00000001awF-2Oum;
+	Mon, 12 Aug 2024 21:16:15 +0000
 Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sdcOO-00000001aqX-2Gij;
-	Mon, 12 Aug 2024 21:16:04 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1723497340; cv=none; 
+	id 1sdcOR-00000001ar6-3o16;
+	Mon, 12 Aug 2024 21:16:14 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1723497344; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=lLM8Nabp4cPHVThFZTVOq5Bd+gc6p2PC79wIMbKRl9Hcr0l1ujTJk78kaSHIbYBwcmGJmKxjmUOqKA/Sspoh29t4RCcWW+iV6tXGn9l1N8tZkh+KK98LcCsn1B65enUBdDhZX8s9QWkaESpu+C4bJPK6H5V7e2d4BcVVfRinMOQ=
+	b=b68lUKwpnjB/+7YqIHIz5YzlCpeCV9JHwdHmlKNmW5XOVH/5TAgLADPvCtsKyV5IdEIZ53XOWStXLJlPunPyUNtAT5PuRi01gXs+iZYT52z6BUUiVR/wWUo6QLRTbOyrv8sxw/n055dlZivmDS+BOou01bwsW4r17GCy48rMEKI=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1723497340; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=nI08eMuuYklw9xaxXgCwGjyVvNmHkByhpTj6sj4w9O4=; 
-	b=dzuBH1QtKNU2bABQNS2za1JhS+n6HtYzV3crBzYqBCovMDer2XumU9a0oAbt7u9WsM2BSqu2Q1yCdX9PPJ5iobd7zZbb7byViJWPKz+AwJl4Vo4Ndeg7uQMGn8FteUcKuXz0biy1j7NxlSuQ++2AMQk4OLTxc0WYNbAoIauyuzY=
+	t=1723497344; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=IXtCWW++4oKOuR0XGctguunjoFu5Fw/5NafoAGB0Owg=; 
+	b=XlcYPI9Jdi6o9OcOSdlixeuMzNQF+PGelN1M1S0m/xOU+tzg705Ek+X6KJ5jWcnLyjQa8qpM0bjKjpgYf5PvhRY6j4KNaMxzBpTM6eatzlgJg/tGwFv6sYKjtcmfZfm1nPS9kzg0CYuejkg6r7PR6y38u4wGfgA3Pqi2wgCYvB0=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=collabora.com;
 	spf=pass  smtp.mailfrom=cristian.ciocaltea@collabora.com;
 	dmarc=pass header.from=<cristian.ciocaltea@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1723497340;
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1723497344;
 	s=zohomail; d=collabora.com; i=cristian.ciocaltea@collabora.com;
-	h=From:From:Subject:Subject:Date:Date:Message-Id:Message-Id:MIME-Version:Content-Type:Content-Transfer-Encoding:To:To:Cc:Cc:Reply-To;
-	bh=nI08eMuuYklw9xaxXgCwGjyVvNmHkByhpTj6sj4w9O4=;
-	b=XkdwHxAGvcxLoBbNv/2+Qtr/rFlGZr+zlG22nw+JFQeMFdFU/os8KSBsqV29YdEb
-	gWIf6HpQeYvzTQGslOVVGZ07PApOnhm0KB+XE8GBrOE89iq2wHRLw+9Ry4vqjtc5AsU
-	6ONUJ0om1NrFJhf3OAd0ksQXPgxsxjE9t7kWR1M4=
-Received: by mx.zohomail.com with SMTPS id 1723497338310681.7662889692687;
-	Mon, 12 Aug 2024 14:15:38 -0700 (PDT)
+	h=From:From:Date:Date:Subject:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Message-Id:References:In-Reply-To:To:To:Cc:Cc:Reply-To;
+	bh=IXtCWW++4oKOuR0XGctguunjoFu5Fw/5NafoAGB0Owg=;
+	b=JbZ4MY2xa/NXZ/w497R+qYaoPAua9F3a+mjjfAYO0cClZV92QR6S0nWwyb2Kiu4q
+	IX0L41+8XtT6hNlak4+RCdr9vNk7RWmx3b8FotBn4E5HBNSOjInJR7AnrZWhD1o/WER
+	rlOnmWj8AhjDzHx3Zn5wbQJ8C3Hs++1NIhKajYas=
+Received: by mx.zohomail.com with SMTPS id 1723497343350386.70115570233713;
+	Mon, 12 Aug 2024 14:15:43 -0700 (PDT)
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Subject: [PATCH 0/4] Rockchip DW HDMI driver cleanup/improvements
-Date: Tue, 13 Aug 2024 00:15:07 +0300
-Message-Id: <20240813-dw-hdmi-rockchip-cleanup-v1-0-b3e73b5f4fd6@collabora.com>
+Date: Tue, 13 Aug 2024 00:15:08 +0300
+Subject: [PATCH 1/4] drm/rockchip: dw_hdmi: Use modern drm_device based
+ logging
 MIME-Version: 1.0
-X-B4-Tracking: v=1; b=H4sIAFt7umYC/x3MSQqEMBBA0atIrbvAxAHxKtKLWClNYXcMCQ4g3
- t3g8i3+vyBxFE7QFxdE3iXJ6jPUpwByxs+MYrNBl7ouO6XRHujsXzCutJCTgPRj47eAVTV2pNq
- pbYgh5yHyJOe7Hr73/QBMFmeOagAAAA==
+Message-Id: <20240813-dw-hdmi-rockchip-cleanup-v1-1-b3e73b5f4fd6@collabora.com>
+References: <20240813-dw-hdmi-rockchip-cleanup-v1-0-b3e73b5f4fd6@collabora.com>
+In-Reply-To: <20240813-dw-hdmi-rockchip-cleanup-v1-0-b3e73b5f4fd6@collabora.com>
 To: Sandy Huang <hjc@rock-chips.com>, 
  =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
  Andy Yan <andy.yan@rock-chips.com>, 
@@ -66,9 +66,8 @@ Cc: kernel@collabora.com, dri-devel@lists.freedesktop.org,
 X-Mailer: b4 0.14.1
 X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240812_141552_670345_56AE5E2A 
-X-CRM114-Status: UNSURE (   7.90  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240812_141556_030026_B67CCE0B 
+X-CRM114-Status: GOOD (  11.84  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,29 +84,130 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This series provides a few patches to cleanup/improve the Rockchip DW
-HDMI platform driver.
+Prefer drm_{err|info|dbg}() over deprecated DRM_DEV_{ERROR|INFO|DEBUG}()
+logging macros.
 
-Note the patches were initially sent as part of [1], in an attempt to
-add support for the RK3588 HDMI TX Controller, but were removed in the
-next revision as the patchset followed a different development path,
-i.e. not relying on the existing driver anymore.
+Conversion done with the help of the following semantic patch, followed
+by a few minor indentation adjustments:
 
-[1] https://lore.kernel.org/all/20240601-b4-rk3588-bridge-upstream-v1-0-f6203753232b@collabora.com/
+@@
+identifier T;
+@@
+
+(
+-DRM_DEV_ERROR(T->dev,
++drm_err(T,
+...)
+|
+-DRM_DEV_INFO(T->dev,
++drm_info(T,
+...)
+|
+-DRM_DEV_DEBUG(T->dev,
++drm_dbg(T,
+...)
+)
 
 Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 ---
-Cristian Ciocaltea (4):
-      drm/rockchip: dw_hdmi: Use modern drm_device based logging
-      drm/rockchip: dw_hdmi: Simplify clock handling
-      drm/rockchip: dw_hdmi: Use devm_regulator_get_enable()
-      drm/rockchip: dw_hdmi: Drop superfluous assignments of mpll_cfg, cur_ctr and phy_config
+ drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c | 24 +++++++++++-------------
+ 1 file changed, 11 insertions(+), 13 deletions(-)
 
- drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c | 92 ++++++++---------------------
- 1 file changed, 26 insertions(+), 66 deletions(-)
----
-base-commit: 9e6869691724b12e1f43655eeedc35fade38120c
-change-id: 20240812-dw-hdmi-rockchip-cleanup-33b8c16f65ce
+diff --git a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
+index fe33092abbe7..2509ce19313f 100644
+--- a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
++++ b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
+@@ -212,7 +212,7 @@ static int rockchip_hdmi_parse_dt(struct rockchip_hdmi *hdmi)
+ 
+ 	hdmi->regmap = syscon_regmap_lookup_by_phandle(np, "rockchip,grf");
+ 	if (IS_ERR(hdmi->regmap)) {
+-		DRM_DEV_ERROR(hdmi->dev, "Unable to get rockchip,grf\n");
++		drm_err(hdmi, "Unable to get rockchip,grf\n");
+ 		return PTR_ERR(hdmi->regmap);
+ 	}
+ 
+@@ -223,7 +223,7 @@ static int rockchip_hdmi_parse_dt(struct rockchip_hdmi *hdmi)
+ 	if (PTR_ERR(hdmi->ref_clk) == -EPROBE_DEFER) {
+ 		return -EPROBE_DEFER;
+ 	} else if (IS_ERR(hdmi->ref_clk)) {
+-		DRM_DEV_ERROR(hdmi->dev, "failed to get reference clock\n");
++		drm_err(hdmi, "failed to get reference clock\n");
+ 		return PTR_ERR(hdmi->ref_clk);
+ 	}
+ 
+@@ -233,7 +233,7 @@ static int rockchip_hdmi_parse_dt(struct rockchip_hdmi *hdmi)
+ 	} else if (PTR_ERR(hdmi->grf_clk) == -EPROBE_DEFER) {
+ 		return -EPROBE_DEFER;
+ 	} else if (IS_ERR(hdmi->grf_clk)) {
+-		DRM_DEV_ERROR(hdmi->dev, "failed to get grf clock\n");
++		drm_err(hdmi, "failed to get grf clock\n");
+ 		return PTR_ERR(hdmi->grf_clk);
+ 	}
+ 
+@@ -322,17 +322,16 @@ static void dw_hdmi_rockchip_encoder_enable(struct drm_encoder *encoder)
+ 
+ 	ret = clk_prepare_enable(hdmi->grf_clk);
+ 	if (ret < 0) {
+-		DRM_DEV_ERROR(hdmi->dev, "failed to enable grfclk %d\n", ret);
++		drm_err(hdmi, "failed to enable grfclk %d\n", ret);
+ 		return;
+ 	}
+ 
+ 	ret = regmap_write(hdmi->regmap, hdmi->chip_data->lcdsel_grf_reg, val);
+ 	if (ret != 0)
+-		DRM_DEV_ERROR(hdmi->dev, "Could not write to GRF: %d\n", ret);
++		drm_err(hdmi, "Could not write to GRF: %d\n", ret);
+ 
+ 	clk_disable_unprepare(hdmi->grf_clk);
+-	DRM_DEV_DEBUG(hdmi->dev, "vop %s output to hdmi\n",
+-		      ret ? "LIT" : "BIG");
++	drm_dbg(hdmi, "vop %s output to hdmi\n", ret ? "LIT" : "BIG");
+ }
+ 
+ static int
+@@ -592,7 +591,7 @@ static int dw_hdmi_rockchip_bind(struct device *dev, struct device *master,
+ 	ret = rockchip_hdmi_parse_dt(hdmi);
+ 	if (ret) {
+ 		if (ret != -EPROBE_DEFER)
+-			DRM_DEV_ERROR(hdmi->dev, "Unable to parse OF data\n");
++			drm_err(hdmi, "Unable to parse OF data\n");
+ 		return ret;
+ 	}
+ 
+@@ -600,26 +599,25 @@ static int dw_hdmi_rockchip_bind(struct device *dev, struct device *master,
+ 	if (IS_ERR(hdmi->phy)) {
+ 		ret = PTR_ERR(hdmi->phy);
+ 		if (ret != -EPROBE_DEFER)
+-			DRM_DEV_ERROR(hdmi->dev, "failed to get phy\n");
++			drm_err(hdmi, "failed to get phy\n");
+ 		return ret;
+ 	}
+ 
+ 	ret = regulator_enable(hdmi->avdd_0v9);
+ 	if (ret) {
+-		DRM_DEV_ERROR(hdmi->dev, "failed to enable avdd0v9: %d\n", ret);
++		drm_err(hdmi, "failed to enable avdd0v9: %d\n", ret);
+ 		goto err_avdd_0v9;
+ 	}
+ 
+ 	ret = regulator_enable(hdmi->avdd_1v8);
+ 	if (ret) {
+-		DRM_DEV_ERROR(hdmi->dev, "failed to enable avdd1v8: %d\n", ret);
++		drm_err(hdmi, "failed to enable avdd1v8: %d\n", ret);
+ 		goto err_avdd_1v8;
+ 	}
+ 
+ 	ret = clk_prepare_enable(hdmi->ref_clk);
+ 	if (ret) {
+-		DRM_DEV_ERROR(hdmi->dev, "Failed to enable HDMI reference clock: %d\n",
+-			      ret);
++		drm_err(hdmi, "Failed to enable HDMI reference clock: %d\n", ret);
+ 		goto err_clk;
+ 	}
+ 
+
+-- 
+2.46.0
 
 
 _______________________________________________
