@@ -4,148 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E3064C52D7C
-	for <linux-rockchip@archiver.kernel.org>; Mon, 12 Aug 2024 14:38:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 081F6C3DA7F
+	for <linux-rockchip@archiver.kernel.org>; Mon, 12 Aug 2024 15:10:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=vZIEd0OrdiyJXMiQtFpi+XIjsETDn7RZ/8LBnRqGvB8=; b=lvM2UKFhPz3LjU
-	lFSCK/IzppoNHU4xdeQ7NKE0xiUmu37uLTmok/TkPk3vzodwq3dLNakNWmDbtAZyzN+908IeNn6Zw
-	wegi+XeaPSUTl6u0nNxZ+DZoA66kZdcu/utCCbOyIcqf4XTBySKMm+bDEnvdvHf+Lp6sP+xMatkua
-	yROGHC+sEKr8W+ENbpK8DUBlJr+Un4Yi/ZmMRo9JyK3/AfLumf2NHQPv9QyERCHhCq5012RYKBuH4
-	bTzLJXGJ/VDM7ls3cFx62YluXeD+hVKCLVISxoOyYDhr8pjfrraJu2purPn3vwNchnTosyx3XLQPU
-	52e+1zLQBj11pZb1G/Jg==;
+	List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:References:
+	In-Reply-To:Cc:To:From:MIME-Version:Date:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=p/OYR0GOegw15Wlw2Mx8jAdZT8JX2OZ5fr8QQyL9qC8=; b=3aUi666qoV9a9+WpWEzNJ7iurg
+	frufK9yh+3RWeijlCGYTDcJvqLd8vEl5XUKuj33ufSP08mzxXN4fqExZR/9SnzfNCrIL/XR/rqo61
+	Z4a6lZiDdp3aI7gUb7k/M9gYMecAZrHVyAx8AzWoOiaRFv/7abU9HXi6ATKIPr0rI4yyY7AAjKNOj
+	fH4QotKrIjjb7wqq3l484/GBxeNPBpwqaqfX7Xa2hXj3nHGmRaTKQN++EV/XQuGhTU6gOd94MhuEk
+	H+vKDdEsIY30q9wwwIWkDbh+1SIpwQFIZZRazeFro4eKIZvUkztQIeW88PQdqJH8z2BRTHPNy8Ec7
+	vJ4szAjA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sdWCB-00000000bmj-25Xu;
-	Mon, 12 Aug 2024 14:38:51 +0000
-Received: from mail-bn8nam11on20717.outbound.protection.outlook.com ([2a01:111:f403:2414::717] helo=NAM11-BN8-obe.outbound.protection.outlook.com)
+	id 1sdWgd-00000000h2U-1Cag;
+	Mon, 12 Aug 2024 15:10:19 +0000
+Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sdW9h-00000000bEz-3kTK;
-	Mon, 12 Aug 2024 14:36:19 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=BGk8F2+0PyzztSCFRBoLjSeRehfYwgNb27ytW8uNXZM0Ck86XP4vRRu90FRqZ4K8USowmaOAqexls9EBYiyooew6HU4X6PRS68IlHhLn/uODxjpDjslC7yX/v1Gsf193/SZ9xo2UeE2/8qCgw87Kn74mcXB9PT0q/MsDn2/qJdI0Tcykw3EmXl77UOvjpcKh7YgEctNaWBLDmYImPK6ZKDe7RkqiNed+tItF2sQ650sVHPV/wGtSQDzXLdfClyB5sRBudBFff5oukk2q9juGIAY4Gbpo5HdeBOPQg4/cr2ZIG7Tj4rnD9cviLzCfwSVxTnr8At//P/dspc4SnTVEbA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=9r9T3XikLPiAvkoyT1wYTUxOmRsPcZyiaXeGynTlcyI=;
- b=xqAbwarSlFXD3Ih6juUcZY8mWZ9IbBuA5NzXbPa/8Z7HmAVcbDmI63RqBgevEWQhomYt6m9C3Vig84vXmsi0Wqb9kq/+mjMr5gWOasGsx918m0XklQfhVmIiGgS+egxwRboHz/KUA1S3v4EpY0GZevS/C2s+JPAZhvXqE55i/TpWGOTw5ayJP7pYu3h2sg024GuR5QsGATIdce+uEoRQpDh7o2Sd7NfXzXGHtUjU0OkgGEzMPYiVduxFWwVLaJunb8D/xzXclSoUj1IGkGtqtpxq92xnialCSWvjlBFHpPzPutforiSIfb+/A9MUrz1jBU0+PeNCtnCjB4qgFTvLWg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=inmusicbrands.com; dmarc=pass action=none
- header.from=inmusicbrands.com; dkim=pass header.d=inmusicbrands.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=inmusicbrands.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=9r9T3XikLPiAvkoyT1wYTUxOmRsPcZyiaXeGynTlcyI=;
- b=XAJ1XCCet55Ssv58mmFrVbR0AFhJ8sYx0abyYgHYRxGxxJnv9jKTX7n6jh99dCFSBg2+obDyUQx+yj3aiG33yKHWUOBndwojwSimYffaDq0T/IY5FL3yxgZRpt1cmoLNJXnaJR1Jv/3IY9dZDKfc5KL6+LDDkMZ41OkvUawRz3k=
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=inmusicbrands.com;
-Received: from MW4PR08MB8282.namprd08.prod.outlook.com (2603:10b6:303:1bd::18)
- by DM6PR08MB6377.namprd08.prod.outlook.com (2603:10b6:5:1f2::10) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7849.20; Mon, 12 Aug
- 2024 14:36:09 +0000
-Received: from MW4PR08MB8282.namprd08.prod.outlook.com
- ([fe80::55b3:31f1:11c0:4401]) by MW4PR08MB8282.namprd08.prod.outlook.com
- ([fe80::55b3:31f1:11c0:4401%5]) with mapi id 15.20.7849.019; Mon, 12 Aug 2024
- 14:36:09 +0000
-From: John Keeping <jkeeping@inmusicbrands.com>
-To: linux-media@vger.kernel.org
-Cc: John Keeping <jkeeping@inmusicbrands.com>,
-	Jacob Chen <jacob-chen@iotwrt.com>,
-	Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Hans Verkuil <hverkuil-cisco@xs4all.nl>,
-	Michael Tretter <m.tretter@pengutronix.de>,
-	linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH] media: platform: rga: fix 32-bit DMA limitation
-Date: Mon, 12 Aug 2024 15:35:55 +0100
-Message-ID: <20240812143555.530279-1-jkeeping@inmusicbrands.com>
-X-Mailer: git-send-email 2.46.0
-X-ClientProxiedBy: LO4P123CA0298.GBRP123.PROD.OUTLOOK.COM
- (2603:10a6:600:196::15) To MW4PR08MB8282.namprd08.prod.outlook.com
- (2603:10b6:303:1bd::18)
+	id 1sdWfx-00000000gtq-1vk9;
+	Mon, 12 Aug 2024 15:09:43 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sin.source.kernel.org (Postfix) with ESMTP id 64179CE0E60;
+	Mon, 12 Aug 2024 15:09:35 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id DED03C32782;
+	Mon, 12 Aug 2024 15:09:33 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1723475374;
+	bh=deWuRDJPCT5foWSV44HA7CYL8GYl7vdMf1Zpapv5XKo=;
+	h=Date:From:To:Cc:In-Reply-To:References:Subject:From;
+	b=AAIzYEwFnviJyUy/yD9Tw3CxmOF45cdw3/aF/vhW8GEyHCcIZBPuhVpzhJXB2Vsta
+	 9XbecjNGYw8q5pyqkdiR3ucGZ0wUSLmQLR69dC+IMBMIaJHxFWOFaSvQRCKISrrtNQ
+	 xiIlnoL2pBFsWohKL16xDtEf7nB8i+Qkac53bhyaER4+qi9z3bfP1iJuJ4KbTRRdDx
+	 o7M8/+jU1G1NxD4lZ/34RxQenx3jaw3jyLlkfk5KZshHzXL8eefGnXzUuhjsGCfO0A
+	 J41i+sV0lntGANeqwnlMfv6xWzFy68z0av4EJq8pqDIaWGwI6T/PWBh0Ew2Kov3uV4
+	 TnKaogwXhIdqQ==
+Date: Mon, 12 Aug 2024 09:09:32 -0600
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: MW4PR08MB8282:EE_|DM6PR08MB6377:EE_
-X-MS-Office365-Filtering-Correlation-Id: f2bfe311-08c0-4848-37e0-08dcbadc1b54
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|366016|376014|52116014|1800799024|7416014|38350700014;
-X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?22D4s8LnMbgFOeSTiPeIxDSXUZetH/zQnBXVkG+sHuxNCfShy17EakX1QfQG?=
- =?us-ascii?Q?PRI2pvHzKCCnGo4H3B+JGe6+uwpiIL6nVpZTj8V1xvhZMPnekZ64SzBZBJxd?=
- =?us-ascii?Q?CuyRQJnSHQFXNNicDTzA3DO9DLgZgwMxPqUarDwJFstJP50yqIhQ+hyPL/b3?=
- =?us-ascii?Q?BkI0L6frtKiaNT9kSxcI1GGUe3TVURY/tUjroadr3DKnxTFgG3S2nXdUHlQL?=
- =?us-ascii?Q?XOAAqu7krpV09cp6SZJ22+FRhNdL87Ab4C55XVgycoB/Bjj3+Ko2QfNln9Ib?=
- =?us-ascii?Q?sXDM8IL7VknmEZFJ3K+VZD/Wy30K/Yi9h8z44/D8ssVUFLyfLaJYgV68kYq/?=
- =?us-ascii?Q?MbWsuR1gyj8lFLHIlVXabp9Usy+NzMV3GAB6y8nPT72PZgfg8zJEPs+XDm8d?=
- =?us-ascii?Q?+dxelwrYQ/gopKudy7S7O6vlKZwuRd2opMNibrkgR3zzzcNevhYYavLYgL3R?=
- =?us-ascii?Q?C/BuDHo8L1hh7ZdDuXVYaBuQdDWcNE7WXGGVt2Hp2BGmRCWRGOEw8jGCf2Ic?=
- =?us-ascii?Q?jmwZnIDiMHI/ritEJZwLKzzTi3Ue436Sol8AenrcSsfIQqi2RwEFzsZifoU6?=
- =?us-ascii?Q?RnOJ4cFbUUeRvVjUnrOm4l9fDLC7yOKoCBkBJR7W94OUxTNVOOW68vLudYn3?=
- =?us-ascii?Q?S307XrPQQrJ0UjKo4wZjqG+IxnchdsJ7twVChPAUzKtDz6NUX6JXwJlY255W?=
- =?us-ascii?Q?TI3aFhrPRTL7O3/26oIUqwXomympOLHiQPkPT98n+wv6npBfB9OBYC+01tFw?=
- =?us-ascii?Q?qFMKsJ2xhyyUjykH4i5J+1NJFRAzs7jNv7mpAcjn3xAhHF+kf0z6r6LCYpPo?=
- =?us-ascii?Q?OiA4KixfTcqWYwf88cLwl2MC3T7TRckGRrxKvCMxilHXsZfPixhG1UmLDCLV?=
- =?us-ascii?Q?I9bQYL6UEXLm6x6J9RO1W/NRwt7S0uC11EEl1XSXdwaJgVL2Bi9lwypMErcD?=
- =?us-ascii?Q?O3sqXR5fOesrOkGznwpFVOxlfYQdgdF0w99kYzkhlNs61gmWk1AtgR7n3Dv3?=
- =?us-ascii?Q?GoDz/wX8T+8SuBp7Ag1eeJN6tJO2M5Aos5wuG6+eQmEiAJLAHvYertwC9S2B?=
- =?us-ascii?Q?R8wTuNIrd3cscMtWYwQ4K4qt4pYDRNzSqGN1xSGoOpn78tr8OMDzmry0rxPP?=
- =?us-ascii?Q?eGUAjmX8t9GA3AoSpFkSa4DVVb9TguGJgYxLRBb0qOpRiUhdIvt3FE2LVmZl?=
- =?us-ascii?Q?9bl/9KNXTD5KYu80VT6q+sZDWgGjMhXJAcSxMHcoqYwD8Ia9D7LFtiu2i6/T?=
- =?us-ascii?Q?eeFVscUQdlHUDq8mVVbvB23hAFKMTVk9n9AL2L8Yrr7Xjwp9Y5bbxI9Vww3K?=
- =?us-ascii?Q?aK/+kXrVRt4JMTHVoYqx5D8W+3sh/IF4oNGxPTDnhoxSxUHHM3dwGdiyGKOV?=
- =?us-ascii?Q?rnO9V5dFNNA9tGmsnzEyg3bkSUwBs6lQO6QgzZ7yz+5SkxNrIQ=3D=3D?=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:MW4PR08MB8282.namprd08.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(366016)(376014)(52116014)(1800799024)(7416014)(38350700014);DIR:OUT;SFP:1102;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?hEu3n+NplpJzPWc8CEahq+c19Y8N29itqvnTzlJk1lTlM+hujnKIeQjJta4X?=
- =?us-ascii?Q?36QT+Su7M0rTMVlMfPMIJ3isnyH/rVad5ZModvxrqZlqO+j+79ckVhC/EoOd?=
- =?us-ascii?Q?ahizevN+shP+7ZkVHweZsFfhVP95ixcdVE5P1b1xjW1LSibMkC1O8lRl023B?=
- =?us-ascii?Q?YbrwMPXpHuloo3l4zmbfjOLMjux07nV2PTe6Dl6ySKO0Qr6ntnVmnxnyFsFT?=
- =?us-ascii?Q?6DxcTOfUtSfuMMdXgIqkwdvIu6SC3tDgIt5+g19xaSdY2d9NzWDxOeJRy20g?=
- =?us-ascii?Q?158VMr1kSHION0y0nDRrumOeQ5XRz7uGVWO89NlQIfuVxeWsWdgKzyvA7mTc?=
- =?us-ascii?Q?uIFBzEPlaK3+WW/p+u8bt2qqqnR1OwE4mPABx7ZPqwCsl9a34oxazS4MxWiU?=
- =?us-ascii?Q?ou6uEGBKxq28kbFsZy+A8giIP9XADDrOdRdYQ5WNtaYtvXb0hQDC6h2fTWx3?=
- =?us-ascii?Q?zC2H3VXmREaKwBeXOXNfAHiEfgjNRdBekkVWFbTog6F3e/Whb0h7wVunDloB?=
- =?us-ascii?Q?BfwSuRKtyef5y3gsBBJwnwD5E5jryeHfr/U4d25fFEArpEXI8VLpEepBK/qo?=
- =?us-ascii?Q?asiiQc3fvTsdY7mDQLna+3SM+IKyS1zqOuOQUNlMw4yrVE4kJX851qR5YDD6?=
- =?us-ascii?Q?+FdWDMh0miSvyjfgsZouQKr2wdVeIuMxLy3YKv4WoaitsLjBDTCeUNDpSZOn?=
- =?us-ascii?Q?qk+41c3jDCOxcxCtdcg68hq3wwqdnWm10GheoAk79I8X6anAGjrdG7hpIBAa?=
- =?us-ascii?Q?IBwGS4O9eY+Y6ZakrFWfB6nnI9+ppk1dWXX1UNcKsDWgf7nda/NjiHozlobV?=
- =?us-ascii?Q?25H313JWbfV8IetxFaqOSN2LSLb/AO98hTNTmOcceGExnbXk+DCu6RetSGKm?=
- =?us-ascii?Q?r5jJBmpvn7YaMDl3yRbVWH4jYsKcxEXOmSAOoAzcrxf70V6NnmXhkI0OqnQu?=
- =?us-ascii?Q?gO96uFvPnxuPLZWIb+Ahoh+K/jayPm4xmAQ1dyeDLG/P8Cl7ymsTLCSlXEQA?=
- =?us-ascii?Q?a1axcO+JKJAmKGCmDTrrYJwAHTHLkNQRJtae0Add7nrwswwZlGCpaPVvtbux?=
- =?us-ascii?Q?CneJvNvuFbpBENvf1fgIdu242S9pKJALg6Xgcrd0HhxKH6D1zj94odQaFdx5?=
- =?us-ascii?Q?o1cweKZiE+2U/9g6OR9b+iwquXdWrp0rzFSqhbJwY6qvYw4zFqRm0Km/bwjj?=
- =?us-ascii?Q?N5VQfH/5967PXy6vdT+MtgCDaY99jn2jhexZKVXpg/1yeIIjvtsHRNzMCjgZ?=
- =?us-ascii?Q?3/9vXCeW/DzsHJ8iZCFuOEdBBDPpNThjlsMcvMMGD7S5hP5h2hXDZsEccGl8?=
- =?us-ascii?Q?MbQVzOFXohDroJmhynlX9+k98bBIrZwy+B1OfYoF/LIEJ/asXyOCteEVftFs?=
- =?us-ascii?Q?Hx+1PngEBImNiHZ1LoAbWJUTopPpTtgpwmhvz2DTEvCGKeK4puzDEa8SpS3S?=
- =?us-ascii?Q?7jAOggTV6bPCbYeHck4c7ZHPUsuHDeJL79nnCri/qagIr4fMjChBc5VZf3Kc?=
- =?us-ascii?Q?Lrlsbo8lQuKKtV2POso7lX4ZMcULc/+oLFVcD/KG1gFCGl+q87zQCNPfqp+P?=
- =?us-ascii?Q?KqbThmT/ricbso4YED4WN47QgwC/ivptQTPfL+nM/CEU12KzZQNjY16Fdlur?=
- =?us-ascii?Q?Fg=3D=3D?=
-X-OriginatorOrg: inmusicbrands.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: f2bfe311-08c0-4848-37e0-08dcbadc1b54
-X-MS-Exchange-CrossTenant-AuthSource: MW4PR08MB8282.namprd08.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 12 Aug 2024 14:36:09.7144
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 24507e43-fb7c-4b60-ab03-f78fafaf0a65
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: eb2BhAlCQY02OMr6Xk/yhP6pu33tTKEDRe+iSM5Ow4xS0q5y6ga2YIutAXhEH1Y2bQeKFZNHe8BmXWaCpN2x2nx8TRWclQ+C2fsBbVrOIxE=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM6PR08MB6377
+From: "Rob Herring (Arm)" <robh@kernel.org>
+To: Detlev Casanova <detlev.casanova@collabora.com>
+Cc: Thomas Gleixner <tglx@linutronix.de>, 
+ Alexey Charkov <alchark@gmail.com>, linux-iio@vger.kernel.org, 
+ Sebastian Reichel <sebastian.reichel@collabora.com>, 
+ linux-serial@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>, 
+ Daniel Lezcano <daniel.lezcano@linaro.org>, linux-i2c@vger.kernel.org, 
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Jonas Karlman <jonas@kwiboo.se>, 
+ Dragan Simic <dsimic@manjaro.org>, Jagan Teki <jagan@edgeble.ai>, 
+ Yifeng Zhao <yifeng.zhao@rock-chips.com>, Tim Lunn <tim@feathertop.org>, 
+ Elaine Zhang <zhangqing@rock-chips.com>, Andi Shyti <andi.shyti@kernel.org>, 
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+ Heiko Stuebner <heiko@sntech.de>, Jonathan Cameron <jic23@kernel.org>, 
+ Muhammed Efe Cetin <efectn@protonmail.com>, devicetree@vger.kernel.org, 
+ Finley Xiao <finley.xiao@rock-chips.com>, 
+ Lars-Peter Clausen <lars@metafoo.de>, 
+ Shresth Prasad <shresthprasad7@gmail.com>, linux-kernel@vger.kernel.org, 
+ Ondrej Jirman <megi@xff.cz>, Liang Chen <cl@rock-chips.com>, 
+ Weizhao Ouyang <weizhao.ouyang@arm.com>, Jiri Slaby <jirislaby@kernel.org>, 
+ Jimmy Hon <honyuenkwun@gmail.com>, linux-arm-kernel@lists.infradead.org, 
+ kernel@collabora.com, linux-rockchip@lists.infradead.org, 
+ Chris Morgan <macromorgan@hotmail.com>, Andy Yan <andyshrk@163.com>, 
+ Lee Jones <lee@kernel.org>
+In-Reply-To: <20240802214612.434179-10-detlev.casanova@collabora.com>
+References: <20240802214612.434179-1-detlev.casanova@collabora.com>
+ <20240802214612.434179-10-detlev.casanova@collabora.com>
+Message-Id: <172347513683.603014.1210944906291860196.robh@kernel.org>
+Subject: Re: [PATCH 09/10] arm64: dts: rockchip: Add rk3576 SoC base DT
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240812_073617_964525_F68BD13B 
-X-CRM114-Status: GOOD (  11.93  )
+X-CRM114-CacheID: sfid-20240812_080937_888139_63007D6F 
+X-CRM114-Status: GOOD (  16.41  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -162,31 +91,63 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The destination buffer flags are assigned twice but source is not set in
-what looks like a copy+paste mistake.  Assign the source queue flags so
-the 32-bit DMA limitation is handled consistently.
 
-Fixes: ec9ef8dda2a24 ("media: rockchip: rga: set dma mask to 32 bits")
-Signed-off-by: John Keeping <jkeeping@inmusicbrands.com>
----
- drivers/media/platform/rockchip/rga/rga.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+On Fri, 02 Aug 2024 17:45:36 -0400, Detlev Casanova wrote:
+> This device tree contains all devices necessary for booting from network
+> or SD Card.
+> 
+> It supports CPU, CRU, PM domains, dma, interrupts, timers, UART and
+> SDHCI (everything necessary to boot Linux on this system on chip) as
+> well as Ethernet, I2C, SPI and OTP.
+> 
+> Also add the necessary DT bindings for the SoC.
+> 
+> Signed-off-by: Liang Chen <cl@rock-chips.com>
+> Signed-off-by: Finley Xiao <finley.xiao@rock-chips.com>
+> Signed-off-by: Yifeng Zhao <yifeng.zhao@rock-chips.com>
+> Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
+> [rebase, squash and reword commit message]
+> Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
+> ---
+>  .../boot/dts/rockchip/rk3576-pinctrl.dtsi     | 5775 +++++++++++++++++
+>  arch/arm64/boot/dts/rockchip/rk3576.dtsi      | 1635 +++++
+>  2 files changed, 7410 insertions(+)
+>  create mode 100644 arch/arm64/boot/dts/rockchip/rk3576-pinctrl.dtsi
+>  create mode 100644 arch/arm64/boot/dts/rockchip/rk3576.dtsi
+> 
 
-diff --git a/drivers/media/platform/rockchip/rga/rga.c b/drivers/media/platform/rockchip/rga/rga.c
-index 0e768f3e9edab..de532b7ecd74c 100644
---- a/drivers/media/platform/rockchip/rga/rga.c
-+++ b/drivers/media/platform/rockchip/rga/rga.c
-@@ -102,7 +102,7 @@ queue_init(void *priv, struct vb2_queue *src_vq, struct vb2_queue *dst_vq)
- 	src_vq->drv_priv = ctx;
- 	src_vq->ops = &rga_qops;
- 	src_vq->mem_ops = &vb2_dma_sg_memops;
--	dst_vq->gfp_flags = __GFP_DMA32;
-+	src_vq->gfp_flags = __GFP_DMA32;
- 	src_vq->buf_struct_size = sizeof(struct rga_vb_buffer);
- 	src_vq->timestamp_flags = V4L2_BUF_FLAG_TIMESTAMP_COPY;
- 	src_vq->lock = &ctx->rga->mutex;
--- 
-2.46.0
+
+My bot found new DTB warnings on the .dts files added or changed in this
+series.
+
+Some warnings may be from an existing SoC .dtsi. Or perhaps the warnings
+are fixed by another series. Ultimately, it is up to the platform
+maintainer whether these warnings are acceptable or not. No need to reply
+unless the platform maintainer has comments.
+
+If you already ran DT checks and didn't see these error(s), then
+make sure dt-schema is up to date:
+
+  pip3 install dtschema --upgrade
+
+
+New warnings running 'make CHECK_DTBS=y rockchip/rk3576-armsom-sige5.dtb' for 20240802214612.434179-10-detlev.casanova@collabora.com:
+
+In file included from arch/arm64/boot/dts/rockchip/rk3576-armsom-sige5.dts:14:
+arch/arm64/boot/dts/rockchip/rk3576.dtsi:6:10: fatal error: dt-bindings/clock/rockchip,rk3576-cru.h: No such file or directory
+    6 | #include <dt-bindings/clock/rockchip,rk3576-cru.h>
+      |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+compilation terminated.
+make[3]: *** [scripts/Makefile.lib:434: arch/arm64/boot/dts/rockchip/rk3576-armsom-sige5.dtb] Error 1
+make[2]: *** [scripts/Makefile.build:485: arch/arm64/boot/dts/rockchip] Error 2
+make[2]: Target 'arch/arm64/boot/dts/rockchip/rk3576-armsom-sige5.dtb' not remade because of errors.
+make[1]: *** [/home/rob/proj/linux-dt-testing/Makefile:1389: rockchip/rk3576-armsom-sige5.dtb] Error 2
+make: *** [Makefile:224: __sub-make] Error 2
+make: Target 'rockchip/rk3576-armsom-sige5.dtb' not remade because of errors.
+
+
+
+
 
 
 _______________________________________________
