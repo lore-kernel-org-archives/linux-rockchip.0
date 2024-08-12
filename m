@@ -4,77 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 33C57C52D7C
-	for <linux-rockchip@archiver.kernel.org>; Mon, 12 Aug 2024 16:12:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 113B4C3DA7F
+	for <linux-rockchip@archiver.kernel.org>; Mon, 12 Aug 2024 16:14:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
 	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
 	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=gupUZGJVhkwEMATAba8+giXtD8q3vqdAtRG3usfyfe8=; b=qbCKcAl/Bli+bURa/KYSF4S2O+
-	P27AOf/JRt/0Dh+qHVFzXf0+L6dxEsL5uprqEHf5afW10F975ZnZeRAFkbC/eCZiUGUfaKhQSQ49e
-	g9eZh3iuZYliFKEV8+TJF+IbBI92SxMGLsPI79SPmERE8fMKmNi3PsXuCMLej7XJM5l2kNYPWjl24
-	b43H6tqOHNFngKS8DNbcQ75Q8U1TdPwzF+Lh8Q4JrkrwpGpuJaQvHXeMc3TU21yOgtI/5dPplXk6T
-	5wqixo0IqimooDNEjRaXTib1/haFYf+YgABjxgXfqDxsLqG9LNuVgLu8pUmL+6Ljc8JeC1YWpa7cg
-	EwP6jlEQ==;
+	bh=rRgCPkZ2FweRdqxfsSXZmps5izG1gYHSpE9wgCt67AE=; b=3qJA/9e3xyYPiTaUz2O9Rq8Nko
+	puw0q5qgIcOHguDVLPutYEcDEe9LEIaj475w0vZLm7UA9ACL6cFb1RSJeGMxa1Up/lPEGXU7OxelH
+	eKs07yY86+rHLSJJaaxpIWaZ4hT047pzFjKXjOBV65gsP3FJ0zIu+YdmenaqH5giMcbdIcHomYn+P
+	1cPnqemRlg7oB+MLkgyhOnlnK8JcZ24euNVGe9qgCo5q101PTomuq725eYtG8CK/6q3SsKTCN2qCq
+	BozjcDCaX/rfWH1kxO77oVHQ5WIFKWhJVgM0jlR5EYkRtvpMRWYilQwsowQPtCi8TwRYLPxCPj593
+	WE1S/MEA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sdXeM-00000000rHu-1Toh;
-	Mon, 12 Aug 2024 16:12:02 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1sdXgT-00000000rqm-3EmA;
+	Mon, 12 Aug 2024 16:14:13 +0000
+Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sdXdm-00000000rBW-2bHm;
-	Mon, 12 Aug 2024 16:11:26 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description;
-	bh=4LGlDYfh9hnYMFH9HallVbetIIWElNY/SAddpwGbcKE=; b=IUvmIPgatzGlTKv9a665xQ2qsq
-	VeU+otO7aWsBGMCs5G5y8qEjy21DONgZo5DlHPvvk7DsHjRerK/0cgW4QB2GvSdIexQ3GXmzD9McT
-	3KsGCx4s9fU7Qh1i4RuBoVyoQB3VjoUGv5OAFN997CLEgRLj3ampgzQtGhojSk+biVA+TiFyOkCzR
-	47+dHxauM6OpmQep5U09vFrltLd6n+LhEe35NYVclQksSBSs2Pzzug4bOFmM3PLzw5KA1/iRHp/Hg
-	hNfgSG0L21Kt+0MGmRoSbwOVLJPkKpfzBpFjs6KbgGEetnM2lmsEZsKTE9gi69y25Z8u0iolmtbt/
-	ItHXNTTg==;
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
-	by desiato.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sdXdj-00000007bZF-28Ub;
-	Mon, 12 Aug 2024 16:11:25 +0000
+	id 1sdXfs-00000000rj8-0jnW;
+	Mon, 12 Aug 2024 16:13:37 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 92963611B5;
-	Mon, 12 Aug 2024 16:11:20 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 004B2C32782;
-	Mon, 12 Aug 2024 16:11:16 +0000 (UTC)
+	by sin.source.kernel.org (Postfix) with ESMTP id 36F19CE0FCA;
+	Mon, 12 Aug 2024 16:13:34 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id F1F4BC32782;
+	Mon, 12 Aug 2024 16:13:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1723479080;
-	bh=4LGlDYfh9hnYMFH9HallVbetIIWElNY/SAddpwGbcKE=;
+	s=k20201202; t=1723479213;
+	bh=0YjTgfH3hHB0i3WXLphUYB3PzSTXzdLghJd8Rv3Ffaw=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=YiOYfU1Ij/i1jdXyGc8m98/EA7WtwNA41DwzsHqDSmtiyyPFtOzgwusn/AaHBqVmc
-	 8MLwIv5/W9AnfLXql3jEa5B0C2CIcmS12uUwsXjbX+9R4rS7v/rSJyvmHgSnLhwLXt
-	 tB0lGpaETVDV2vYQDbzIhRJksBIL4klb1d6EgAvh7ZXFU0PDxGvtwyHKB2NBLC+N+C
-	 HV7yoKzZPj/aVYBHdejEG+YayVBKOmT9lKioYyWHfqQ+Vts4gl0PVXSM15ii/5opJQ
-	 xX04n6Bu6aFCof+MOrkTBS1peejbyaSfRce56Q0Jx0xL7A1eQKaX+a/x6o+WUPrcZh
-	 gCOlGR5gTEsbA==
-Date: Mon, 12 Aug 2024 17:11:14 +0100
+	b=MhSrpplFKEYwtlVk144Qnb8h6EgRQApUaHgFeIzJ5rs43Qfcz8fhW/dkaEb+7Nt8z
+	 rqh4DVYf4igXuO0rM8BQTq2xhjR3SOa2cYOUkeUtF2rBPoTBHyFBoeF4SasAAPZWJ3
+	 /uY8fnW4neVjRNvNGUbf45h+AMGfj68syPoslq2NUjo/K9fJduRzrKTY3UJ8Mocwxk
+	 t+W+iR5bLko/qUffP5PTtVImPXvg3hE2ADeLvg72O0hMh8T6gf3M2g+WKruUvxIKlG
+	 8tyFukIH8gXw3pQOCx2KtB3MCJUX0P8ZRPodoDudjTgEvsTw1uEO327Z5BM7qiiwSD
+	 x9NcN6ClbhvUQ==
+Date: Mon, 12 Aug 2024 17:13:28 +0100
 From: Conor Dooley <conor@kernel.org>
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: lee@kernel.org, jdelvare@suse.com, linux@roeck-us.net,
-	dmitry.torokhov@gmail.com, pavel@ucw.cz, robh@kernel.org,
-	krzk+dt@kernel.org, conor+dt@kernel.org, ukleinek@debian.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-hwmon@vger.kernel.org,
-	linux-input@vger.kernel.org, linux-leds@vger.kernel.org
-Subject: Re: [PATCH v4 1/7] dt-bindings: mfd: add binding for qnap,ts433-mcu
- devices
-Message-ID: <20240812-unlisted-cussed-ffa50b07a82d@spud>
-References: <20240810184743.277248-1-heiko@sntech.de>
- <20240810184743.277248-2-heiko@sntech.de>
+To: Detlev Casanova <detlev.casanova@collabora.com>
+Cc: linux-kernel@vger.kernel.org, Linus Walleij <linus.walleij@linaro.org>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>, linux-gpio@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, kernel@collabora.com
+Subject: Re: [PATCH v2 1/2] dt-bindings: pinctrl: Add rk3576 pinctrl bindings
+Message-ID: <20240812-decibel-abdomen-90354e0ad4e6@spud>
+References: <20240808164132.81306-1-detlev.casanova@collabora.com>
+ <20240808164132.81306-2-detlev.casanova@collabora.com>
+ <20240809-dexterity-attention-8376b3b16d59@spud>
+ <22382840.EfDdHjke4D@trenzalore>
 MIME-Version: 1.0
-In-Reply-To: <20240810184743.277248-2-heiko@sntech.de>
+In-Reply-To: <22382840.EfDdHjke4D@trenzalore>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240812_171123_760071_D05A1E51 
-X-CRM114-Status: GOOD (  12.48  )
+X-CRM114-CacheID: sfid-20240812_091336_590585_81FE5DAF 
+X-CRM114-Status: GOOD (  22.55  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,53 +73,99 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============8322613103680340221=="
+Content-Type: multipart/mixed; boundary="===============0583575287894966040=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
---===============8322613103680340221==
+--===============0583575287894966040==
 Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="cHN7OHm8jMQ3S5kz"
+	protocol="application/pgp-signature"; boundary="puv11dB6IoxYMEpS"
 Content-Disposition: inline
 
 
---cHN7OHm8jMQ3S5kz
+--puv11dB6IoxYMEpS
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On Sat, Aug 10, 2024 at 08:47:37PM +0200, Heiko Stuebner wrote:
-> These MCUs can be found in network attached storage devices made by QNAP.
-> They are connected to a serial port of the host device and provide
-> functionality like LEDs, power-control and temperature monitoring.
+On Fri, Aug 09, 2024 at 01:53:16PM -0400, Detlev Casanova wrote:
+> On Friday, 9 August 2024 10:58:38 EDT Conor Dooley wrote:
+> > On Thu, Aug 08, 2024 at 12:39:55PM -0400, Detlev Casanova wrote:
+> > > Add the compatible string as well as the optional rockchip,sys-grf fi=
+eld.
+> >=20
+> > Optional for all rockchip devices supported by this binding, or just the
+> > one you're adding?
 >=20
-> LEDs, buttons, etc are all elements of the MCU firmware itself, so don't
-> need devicetree input, though the fan gets its cooling settings from
-> a fan-0 subnode.
->=20
-> A binding for the LEDs for setting the linux-default-trigger may come
-> later, once all the LEDs are understood and ATA controllers actually
-> can address individual port-LEDs, but are really optional.
->=20
-> Signed-off-by: Heiko Stuebner <heiko@sntech.de>
-Reviewed-by: Conor Dooley <conor.dooley@microchip.com>
+> It is only optionally used by rk3576. I can add it in an 'if:', or update=
+ the=20
+> description with somthing like "It is used on rk3576 for i3c software=20
+> controlled weak pull-up"
 
---cHN7OHm8jMQ3S5kz
+And if/else that restricts it to where it is available please.
+
+>=20
+> > > Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
+> > > ---
+> > >=20
+> > >  .../devicetree/bindings/pinctrl/rockchip,pinctrl.yaml      | 7 +++++=
+++
+> > >  1 file changed, 7 insertions(+)
+> > >=20
+> > > diff --git
+> > > a/Documentation/devicetree/bindings/pinctrl/rockchip,pinctrl.yaml
+> > > b/Documentation/devicetree/bindings/pinctrl/rockchip,pinctrl.yaml ind=
+ex
+> > > 20e806dce1ecb..cd527ccc9e6bf 100644
+> > > --- a/Documentation/devicetree/bindings/pinctrl/rockchip,pinctrl.yaml
+> > > +++ b/Documentation/devicetree/bindings/pinctrl/rockchip,pinctrl.yaml
+> > >=20
+> > > @@ -45,6 +45,7 @@ properties:
+> > >        - rockchip,rk3368-pinctrl
+> > >        - rockchip,rk3399-pinctrl
+> > >        - rockchip,rk3568-pinctrl
+> > >=20
+> > > +      - rockchip,rk3576-pinctrl
+> > >=20
+> > >        - rockchip,rk3588-pinctrl
+> > >        - rockchip,rv1108-pinctrl
+> > >        - rockchip,rv1126-pinctrl
+> > >=20
+> > > @@ -54,6 +55,12 @@ properties:
+> > >      description:
+> > >        The phandle of the syscon node for the GRF registers.
+> > >=20
+> > > +  rockchip,sys-grf:
+> > > +    $ref: /schemas/types.yaml#/definitions/phandle
+> > > +    description:
+> > > +      The phandle of the syscon node for the SYS GRF registers.
+> > > +      It is used for i3c software controlled weak pull-up.
+> > > +
+> > >=20
+> > >    rockchip,pmu:
+> > >      $ref: /schemas/types.yaml#/definitions/phandle
+> > >      description:
+>=20
+>=20
+>=20
+>=20
+
+--puv11dB6IoxYMEpS
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZro0IgAKCRB4tDGHoIJi
-0tg7AQCS2xWrPC2UUU1meYRX0JcteDszsR77WU6wV+xQhG4KEwEAlYF2R80DyuEq
-tvLDLFquMfbB3h6dMgWWxA51/UKOdQY=
-=E5pg
+iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZro0qAAKCRB4tDGHoIJi
+0kTXAQDyKDk5IqP6NphVJj1ZkDK5QCADbb+uzV5TA37RTt+HHgEAvaubL5mfaR+X
+heIH+qlN/7beb49IzJi3Kvx5wCZqXgE=
+=c1VS
 -----END PGP SIGNATURE-----
 
---cHN7OHm8jMQ3S5kz--
+--puv11dB6IoxYMEpS--
 
 
---===============8322613103680340221==
+--===============0583575287894966040==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -143,5 +176,5 @@ Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
---===============8322613103680340221==--
+--===============0583575287894966040==--
 
