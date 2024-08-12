@@ -4,62 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BFE58C3DA7F
-	for <linux-rockchip@archiver.kernel.org>; Mon, 12 Aug 2024 13:11:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1143AC52D7C
+	for <linux-rockchip@archiver.kernel.org>; Mon, 12 Aug 2024 13:14:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Cc:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=nliIM+Y52avr4G19tgDBCbd1X/TS8LYEcWw+ool50NI=; b=VBY3lPNZMiSd7o
-	2I2jF03FCVOL6BX5ZV1gOGZBhwS755zBTfP36KH5x4GSeD0gIiixvyf9c3uhhqriUHlDndeqBniZP
-	GMnj8z2aKYZs3vlR06bAydPirnb727CpceFXt7VkIvUApF2gtXD3vpQBz65VtFxvoyCKYjYf5uSvx
-	cuVoe34CG73inid/QVgfeXiki0V+D1ScD+h1DZKDJ/YabevCwa+FG62FYtADMJBid29Fo0uutc55a
-	l28+9P2/D/qu6nwg0kL0y729Q0sIJhGEgvAMhLiyurIEMN1xTicJ6AG4teQjJj+a85hRka3rUmPoV
-	s97LYhOKdhORIyqc8EJQ==;
+	List-Owner; bh=w79akPZXSRYGvjGV1xLHQHMqFVrfHs7yV3YfeJiW4d4=; b=lXdhHA0VEJuTMm
+	FHauhp7DEuCUo5mxcOrLJ6MTa2Zstkh0gL1hzEsBdix0uCIX1FkOP8gr+hQmsZ6cXTn1ipVVIxR6G
+	2wLaTHz8j55HF/ojMS00nldYqvPA0rVrZVhPH7GgYJp06FkBPUMKfRUipSHWqKzH+Ju0d7Bv651b+
+	78F2qjsa5S/w5XV73lWmioWh5TPpNpFner2UviMWLscQb5WUvRaQ90erMAmjawyCzELqhk3Twwuko
+	VFX+LpXRHS63WYI090kR3wRuDO82BqjzbKdQknlxjCoVEERSP2A8GURcLc/xcWX1M8l0NNkEf+UHx
+	Ii/4tTSyw7UFq8xFBq/A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sdUpn-00000000MsW-0ThL;
-	Mon, 12 Aug 2024 13:11:39 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1sdUs4-00000000NAy-1dWs;
+	Mon, 12 Aug 2024 13:14:00 +0000
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sdUpB-00000000Mo0-1UPL;
-	Mon, 12 Aug 2024 13:11:03 +0000
+	id 1sdUrR-00000000N4q-40WA;
+	Mon, 12 Aug 2024 13:13:23 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 80D7261213;
-	Mon, 12 Aug 2024 13:11:00 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4F0DBC32782;
-	Mon, 12 Aug 2024 13:10:55 +0000 (UTC)
+	by sin.source.kernel.org (Postfix) with ESMTP id DCED6CE0E83;
+	Mon, 12 Aug 2024 13:13:19 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 98E66C32782;
+	Mon, 12 Aug 2024 13:13:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1723468260;
-	bh=9pceFmA6z72sxXOnjaTJNtiGDc0SYLeSFqZUE6qpFJ8=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=nQRlUWwh5V08H11ZQcdD8ZiQk+rCMZMm7Fn1PkF6FaTY8q5k5DtgYuTz7IoTxLYF/
-	 PdOZRQTsCs9CbWtjp2InABfukKIA/x6cyArzEXeu1DW/4VCHoZ6PUGX7oNJiflh0Yv
-	 cHofsaiv6CQfJmeWhw9kMISyKLGSnGaXw8Bxhqw/4QXx6vjYCHT7J884YbxEKr975B
-	 0gUpp/uSuJffqI/sCV5KfkQ8jZdRHATGQv75Hxi1wAuGAzDKPIyk1ymlDfKSvtwEUV
-	 ErOstJZr6Y0rRWfCMti2qti7r071pcL+gBuVJqfBqVVRCEO0TVKlYGJAS8f3+nbH+w
-	 rw6IGcHWfeH1A==
-Message-ID: <fa54c691-467f-4b9e-b483-023dfeb8d32b@kernel.org>
-Date: Mon, 12 Aug 2024 15:10:52 +0200
+	s=k20201202; t=1723468399;
+	bh=zHWG9fUsgFS7BIhZ/fQc30T8uicddZvffvP29o/3yiI=;
+	h=Date:Subject:To:References:From:In-Reply-To:From;
+	b=ohxbVTY1te80hR/df40FrTeJMVaU9NbT91pKVcyq9iSUNPhBXZMO7CwWhrrJSMSDE
+	 5P1gkf7mndin4Pg6m/ekHusE0o5uC4tS6HxH/Ps90aozv1shVBY1ukAT2hNfzKMBd+
+	 spOlXO66H49do+iWOet5ZW/4kQ/U8RTrvjaLRbSsGzAChanyE8mFfUN/li3HKLHNJZ
+	 U7NreEmZEYuzIuQaBk9czmZ9KtPaXM/JMXLEWD7ZnQ5aCVyGLzuNiPV2UbDVkedelz
+	 /4sS61krmqpPRXGVn1zp9VqBhb7GiAvNi1ATXQPD8Wy4dua90OZTLrFHUwqbjT1mpw
+	 jICIeoKR6EImg==
+Message-ID: <426eb8b6-9b2f-4594-9cc3-320ef0cee835@kernel.org>
+Date: Mon, 12 Aug 2024 15:13:11 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v6 4/8] hwmon: (amc6821) add support for tsd,mule
-To: Quentin Schulz <quentin.schulz@cherry.de>,
- Guenter Roeck <linux@roeck-us.net>, Farouk Bouabid <farouk.bouabid@cherry.de>
-Cc: Andi Shyti <andi.shyti@kernel.org>, Rob Herring <robh@kernel.org>,
+Subject: Re: [PATCH v6 2/8] i2c: muxes: add support for tsd,mule-i2c
+ multiplexer
+To: Wolfram Sang <wsa+renesas@sang-engineering.com>,
+ Quentin Schulz <quentin.schulz@cherry.de>,
+ Farouk Bouabid <farouk.bouabid@cherry.de>, Andi Shyti
+ <andi.shyti@kernel.org>, Rob Herring <robh@kernel.org>,
  Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
  <conor+dt@kernel.org>, Peter Rosin <peda@axentia.se>,
- Jean Delvare <jdelvare@suse.com>, Heiko Stuebner <heiko@sntech.de>,
- linux-i2c@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-hwmon@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+ Jean Delvare <jdelvare@suse.com>, Guenter Roeck <linux@roeck-us.net>,
+ Heiko Stuebner <heiko@sntech.de>, linux-i2c@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-hwmon@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org
 References: <20240725-dev-mule-i2c-mux-v6-0-f9f6d7b60fb2@cherry.de>
- <20240725-dev-mule-i2c-mux-v6-4-f9f6d7b60fb2@cherry.de>
- <5d5c44cd-6320-4fcd-9409-f3fc97bc5389@roeck-us.net>
- <40ff0c23-f037-454c-9d79-05dd72655052@kernel.org>
- <bd70a54a-ea41-44cc-a971-e9a764a4212c@cherry.de>
+ <20240725-dev-mule-i2c-mux-v6-2-f9f6d7b60fb2@cherry.de>
+ <728a8e06-81f1-4771-8031-ea043b9baf20@cherry.de>
+ <3a36e89b-b4e2-4eb8-9197-a7a1d04a7fb6@kernel.org> <ZrnekeUKciV4eAKC@shikoro>
+ <f6dfc6cc-365d-4f0a-9a4c-dc34cf4c5b7d@kernel.org> <Zrn-ZkgYKVquarDX@ninjato>
 From: Krzysztof Kozlowski <krzk@kernel.org>
 Content-Language: en-US
 Autocrypt: addr=krzk@kernel.org; keydata=
@@ -105,10 +108,10 @@ Autocrypt: addr=krzk@kernel.org; keydata=
  uZwJCLykjad45hsWcOGk3OcaAGQS6NDlfhM6O9aYNwGL6tGt/6BkRikNOs7VDEa4/HlbaSJo
  7FgndGw1kWmkeL6oQh7wBvYll2buKod4qYntmNKEicoHGU+x91Gcan8mCoqhJkbqrL7+nXG2
  5Q/GS5M9RFWS+nYyJh+c3OcfKqVcZQNANItt7+ULzdNJuhvTRRdC3g9hmCEuNSr+CLMdnRBY fv0=
-In-Reply-To: <bd70a54a-ea41-44cc-a971-e9a764a4212c@cherry.de>
+In-Reply-To: <Zrn-ZkgYKVquarDX@ninjato>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240812_061101_549214_56E7B60F 
-X-CRM114-Status: GOOD (  27.95  )
+X-CRM114-CacheID: sfid-20240812_061322_391698_35A6DB78 
+X-CRM114-Status: GOOD (  17.60  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -120,64 +123,54 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gMTIvMDgvMjAyNCAxMzo1OCwgUXVlbnRpbiBTY2h1bHogd3JvdGU6Cj4gSGkgS3J6eXN6dG9m
-LAo+IAo+IE9uIDgvMTIvMjQgMTozOCBQTSwgS3J6eXN6dG9mIEtvemxvd3NraSB3cm90ZToKPj4g
-W1NvbWUgcGVvcGxlIHdobyByZWNlaXZlZCB0aGlzIG1lc3NhZ2UgZG9uJ3Qgb2Z0ZW4gZ2V0IGVt
-YWlsIGZyb20ga3J6a0BrZXJuZWwub3JnLiBMZWFybiB3aHkgdGhpcyBpcyBpbXBvcnRhbnQgYXQg
-aHR0cHM6Ly9ha2EubXMvTGVhcm5BYm91dFNlbmRlcklkZW50aWZpY2F0aW9uIF0KPj4KPj4gT24g
-MzEvMDcvMjAyNCAxNzoxMiwgR3VlbnRlciBSb2VjayB3cm90ZToKPj4+IE9uIFRodSwgSnVsIDI1
-LCAyMDI0IGF0IDAzOjI3OjUwUE0gKzAyMDAsIEZhcm91ayBCb3VhYmlkIHdyb3RlOgo+Pj4+IFRo
-ZW9icm9tYSBTeXN0ZW1zIE11bGUgaXMgYW4gTUNVIHRoYXQgZW11bGF0ZXMgYSBzZXQgb2YgSTJD
-IGRldmljZXMsCj4+Pj4gYW1vbmcgd2hpY2ggaXMgYW4gYW1jNjgyMSBhbmQgb3RoZXIgZGV2aWNl
-cyB0aGF0IGFyZSByZWFjaGFibGUgdGhyb3VnaAo+Pj4+IGFuIEkyQy1tdXguCj4+Pj4KPj4+PiBU
-aGUgZGV2aWNlcyBvbiB0aGUgbXV4IGNhbiBiZSBzZWxlY3RlZCBieSB3cml0aW5nIHRoZSBhcHBy
-b3ByaWF0ZSBkZXZpY2UKPj4+PiBudW1iZXIgdG8gYW4gSTJDIGNvbmZpZyByZWdpc3RlciAoYW1j
-NjgyMTogcmVnIDB4ZmYpCj4+Pj4KPj4+PiBJbXBsZW1lbnQgInRzZCxtdWxlIiBjb21wYXRpYmxl
-IHRvIGluc3RhbnRpYXRlIHRoZSBJMkMtbXV4IHBsYXRmb3JtIGRldmljZQo+Pj4+IHdoZW4gcHJv
-YmluZyB0aGUgYW1jNjgyMS4KPj4+Pgo+Pj4+IFNpZ25lZC1vZmYtYnk6IEZhcm91ayBCb3VhYmlk
-IDxmYXJvdWsuYm91YWJpZEBjaGVycnkuZGU+Cj4+Pj4gUmV2aWV3ZWQtYnk6IEd1ZW50ZXIgUm9l
-Y2sgPGxpbnV4QHJvZWNrLXVzLm5ldD4KPj4+Cj4+PiBBcHBsaWVkLgo+Pgo+PiBFaCwgdGhlcmUg
-aXMgdW5kb2N1bWVudGVkIGRlcGVuZGVuY3kgb24gSTJDIGhlcmUuIE5leHQgaGFzIHdhcm5pbmcK
-Pj4gYmVjYXVzZSBvZiB0aGlzLgo+Pgo+IAo+IEkgdGhpbmsgeW91IG1lYW50IHRvIGNvbW1lbnQg
-dGhpcyBvbiAKPiBodHRwczovL2xvcmUua2VybmVsLm9yZy9saW51eC1pMmMvMjAyNDA3MjUtZGV2
-LW11bGUtaTJjLW11eC12Ni0wLWY5ZjZkN2I2MGZiMkBjaGVycnkuZGUvVC8jbWRiNzk3NmYxZGMx
-NmZjZTBiN2RiOWFiZWU2ZmQwYjFmZDBhMmUyYmEgCj4gKHBhdGNoIDMgYW5kIG5vdCA0IG9mIHRo
-ZSBzZXJpZXMpLiBUaGlzIHBhdGNoICg0KSBpcyBmaW5lIG9uIGl0cyBvd24gSSAKPiBiZWxpZXZl
-LCBubyBkZXBlbmRlbmN5IG9uIGFueXRoaW5nIGVsc2UuICh3ZWxsLCBleGNlcHQgaWYgd2UgZXhw
-ZWN0IAo+IGJpbmRpbmdzIHRvIGJlIGFic29sdXRlbHkgbWVyZ2VkIGJlZm9yZSB0aGUgZHJpdmVy
-cz8gSSB0aGluayB3aGF0IAo+IG1hdHRlcnMgaXMgdGhlIERldmljZSBUcmVlIGNoYW5nZXMgbWFr
-aW5nIHVzZSBvZiB0aGUgbmV3IGJpbmRpbmcgYmUgCj4gbWVyZ2VkIGFmdGVyIGR0LWJpbmRpbmcg
-Y2hhbmdlcz8pLgoKWWVhaCwgdGhpcyB3YXMgYWJvdXQgRFQgYmluZGluZy4KCj4gCj4gSSBhZ3Jl
-ZSB0aGF0IHRoZXJlJ3MgYSBzb21ld2hhdCBub24tb2J2aW91cyBkZXBlbmRlbmN5IGJldHdlZW4g
-cGF0Y2ggMSAKPiBhbmQgMyAodGhlIGR0LWJpbmRpbmdzKSBhbmQgNS04IHdpdGggZXZlcnl0aGlu
-ZyBiZWZvcmUsIHdlIGNvdWxkIGhhdmUgCj4gbWFkZSB0aGlzIG1vcmUgZXhwbGljaXQuCj4gCj4+
-IEZhcm91aywgcGxlYXNlICphbHdheXMgbWVudGlvbiogdGhlIGRlcGVuZGVuY2llcyBiZXR3ZWVu
-IHBhdGNoZXMuCj4+Cj4gCj4gSSB3YXNuJ3QgYXdhcmUgb2YgdGhhdCBydWxlLCBteSBhcG9sb2dp
-ZXMgZm9yIG5vdCBjYXRjaGluZyB0aGlzIGJlZm9yZSAKPiB1cHN0cmVhbSBzdWJtaXNzaW9uLgo+
-IAo+IEZvciBhbnlvbmUgd29uZGVyaW5nIHRoZSBydWxlIGlzIG1hZGUgZXhwbGljaXQgaGVyZToK
-PiBodHRwczovL3d3dy5rZXJuZWwub3JnL2RvYy9odG1sL2xhdGVzdC9wcm9jZXNzL3N1Ym1pdHRp
-bmctcGF0Y2hlcy5odG1sI3NlcGFyYXRlLXlvdXItY2hhbmdlcwo+IAo+ICJJZiBvbmUgcGF0Y2gg
-ZGVwZW5kcyBvbiBhbm90aGVyIHBhdGNoIGluIG9yZGVyIGZvciBhIGNoYW5nZSB0byBiZSAKPiBj
-b21wbGV0ZSwgdGhhdCBpcyBPSy4gU2ltcGx5IG5vdGUg4oCcdGhpcyBwYXRjaCBkZXBlbmRzIG9u
-IHBhdGNoIFjigJ0gaW4gCj4geW91ciBwYXRjaCBkZXNjcmlwdGlvbi4iCj4gCj4gUXVlc3Rpb24g
-YWJvdXQgYjQgd29ya2Zsb3cgdGhvdWdoLiBJIGVuY291cmFnZSB1c2luZyBiNCB0byBhdm9pZCBh
-cyBtYW55IAo+IG1pc3Rha2VzIGFzIHBvc3NpYmxlIGFuZCBtYWtlIHRoZSB3b3JrZmxvdyBhcyBw
-YWlubGVzcyBhcyBwb3NzaWJsZS4gSSAKPiBiZWxpZXZlIGI0IGRvZXNuJ3QgYWxsb3cgeW91IHRv
-IGhhdmUgcGVyLXBhdGNoIG5vdGVzLCBvbmx5IGluIHRoZSAKPiBjb3Zlci1sZXR0ZXIuCgoiUGF0
-Y2ggZGVzY3JpcHRpb24iIG9yICJwZXIgcGF0Y2ggbm90ZXMiIGlzIHdoYXRldmVyIHlvdSB3cml0
-ZSBpbgpjaGFuZ2Vsb2csIHNvIHVuZGVyIC0tLS4KCgo+IGEpIGlzIHRoaXMgZGVwZW5kZW5jeSBs
-aXN0IGluIGNvdmVyLWxldHRlciBhY2NlcHRhYmxlLCBvcgo+IGIpIG5lZWQgdG8gYWRkIGl0IHRv
-IHRoZSBwYXRjaCBub3RlIChiZWxvdyB0aGUgLS0tKSwgb3IKCk9uZSBvZiBhYm92ZSBzaG91bGQg
-YmUgZW5vdWdoLCBib3RoIGFyZSBtb3JlIHdlbGNvbWVkIGJlY2F1c2UgbWFueQptYWludGFpbmVy
-cyBpZ25vcmUgY29tcGxldGVseSBjb3ZlciBsZXR0ZXJzLgoKPiBjKSBjYW4gYWRkIGl0IHRvIHRo
-ZSBwYXRjaCBjb21taXQgbG9nCgpObywgaWYgcGF0Y2hlcyBnbyB0aHJvdWdoIHNlcGFyYXRlIHRy
-ZWVzIHRoZW4gaXQgd291bGQgYmUganVzdCBjb25mdXNpbmcKYW5kIG5vdCBoZWxwaW5nIGF0IGFs
-bC4KCkJlc3QgcmVnYXJkcywKS3J6eXN6dG9mCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJv
-Y2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFp
-bG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+On 12/08/2024 14:21, Wolfram Sang wrote:
+> 
+>> Yep, but to be fair the patchset did not say anything about
+>> dependencies. There is absolutely nothing in cover letter, nothing in
+>> the patches, so I do not wonder that this mishap happened.
+> 
+> Still, one shouldn't take DT patches (which are even the last ones in
+> this series) until all other patches are at least in -next, or? Yes,
+> mistakes happen, so no big deal, but i2c is not to blame IMHO.
+
+No, it's not. It was just a ping. The issue is here not describing
+dependency, allowing Guenter to take the patch and not even telling him
+that now next has warning. :/ It's like entire weight is on maintainers
+and contributors care only about getting their patch inside. Once it is
+inside, not my problem anymore... :(
+
+
+> 
+>> Depends whether you rely on being CC-ed here. Existing entries do not
+> 
+> I don't rely on CC. I rely on patches being on the i2c list.
+> 
+>> include you, thus you are not cc-ed on maintainers. Peter Rosin is, but
+>> it seems Peter does not apply patches. It could be intentional, but then
+>> I understand that all pings should go to Peter?
+> 
+> Once Peter acks, I apply. He is the maintainer. Yet, he is very busy, so
+> I also apply when someone else I trust does a review. He is fine with
+
+Sure, that explains, so ping should not really go to you...
+
+> that and might chime in later, if needed. This patch here did not get
+> any review, sadly. As I said, resource problem. That being said, these
+> patches are somewhere on my todo list if nobody else steps up (what I
+> would prefer). But please, don't put pressure on me (or any other
+> potential reviewer) just because DT patches ended up upstream too early.
+
+
+Best regards,
+Krzysztof
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
