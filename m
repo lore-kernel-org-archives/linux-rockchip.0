@@ -4,79 +4,169 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 78352C3DA7F
-	for <linux-rockchip@archiver.kernel.org>; Mon, 12 Aug 2024 07:53:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 42F7BC3DA7F
+	for <linux-rockchip@archiver.kernel.org>; Mon, 12 Aug 2024 09:25:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Message-ID:MIME-Version:References:
-	In-Reply-To:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=c8sZOAukS6rNJ+GuV46jRetG+kO8KkH+VygGqzC1VJs=; b=yJ0MIu/DJEzTSz
-	l2bj2QDxfoOg+mj1ErU4cgnaei5ztPh4scp1S0qTWzBNs1HdQJalTckGu40DnF9fpuoR4C2p0Qfou
-	21GaRIZg8j92rKvBT3z5QON/iwsFtW7zpedV8zi2YcCodDBy2L/AWRw8VKDemRomo2hhCybQSt/iP
-	tp573Vm4ZTIzfSt9UWvVGriF6bbxnlozvpUZKu9OihIaFlcnnOvYrOUjNM8ulqUt1ECYQQsXDST6R
-	G39H97N9/KVUpUid8jCGr0UqCzwmqGODzO0af2DGycoYJfXelY430u/OsRU8gTQS4O0dnBnUoPHuc
-	ZhokHecH/k93D+OM374w==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:From:References:Cc:To:
+	Subject:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=9zjAWc1V90X5atNPQy55bBCSdOvR5KeBDYvu9THadx4=; b=kuOKuHAkaKVsv3XF4I7vgPnk+v
+	tUV0ukaXYkpIpIoCjQQOqoapfNh81LmjA9Ko6zKyh/dcgwt/PRu6txMTQxoqdq6vvxY/e6ETBBSSZ
+	Khhlqior7cy9xEu9Qk/D/id6QCpQFJiHpIEYUObJ8i3ucl9NWAYLflcAFlyaUkxeDX7w6PZuDecDC
+	wwqWsJ0VcJwaxVmCgP56POUVdo4HfBJU//WNelRi4PpNNa8pOXD0HECOi9EeMGYRYap6IBbp1RlaE
+	uYPda8PNJwp+7NjyJ4dPeBiyyjv5o/iRbVIofN5T7K7PMWEBqTkcfhPkisJzkJS2uEy5mNRB/yUSA
+	pzJloASA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sdPs0-0000000HDJL-0cdp;
-	Mon, 12 Aug 2024 07:53:36 +0000
-Received: from m16.mail.163.com ([117.135.210.4])
-	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sdPrO-0000000HDBI-1XFz;
-	Mon, 12 Aug 2024 07:53:00 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=Date:From:Subject:Content-Type:MIME-Version:
-	Message-ID; bh=cf/oDFPh1h7t+vr/sE7Er9gMs7gjh38TKu6Qs3h6YLk=; b=D
-	45LqLExEp5IWUA5Z8fu9VvId/Zb9as0AG1zJy4DsmMaqsD3BL/58cy8bf+47I/V0
-	U5sgfQAbnEIef6DR3KHIXGoPzYhgC641CYEye8WiNXWcxMv/XHZudg9demQ6Bza+
-	gEA8JBp2XxSWPxPAh2QfL1YgC31sPR3OQckHWGQI5w=
-Received: from andyshrk$163.com ( [58.22.7.114] ) by
- ajax-webmail-wmsvr-40-140 (Coremail) ; Mon, 12 Aug 2024 15:52:04 +0800
- (CST)
-X-Originating-IP: [58.22.7.114]
-Date: Mon, 12 Aug 2024 15:52:04 +0800 (CST)
-From: "Andy Yan" <andyshrk@163.com>
-To: "Lu Baolu" <baolu.lu@linux.intel.com>
-Cc: "Karol Herbst" <kherbst@redhat.com>, "Lyude Paul" <lyude@redhat.com>, 
-	"Danilo Krummrich" <dakr@redhat.com>, 
-	"David Airlie" <airlied@gmail.com>, 
-	"Daniel Vetter" <daniel@ffwll.ch>, 
-	"Thierry Reding" <thierry.reding@gmail.com>, 
-	"Jonathan Hunter" <jonathanh@nvidia.com>, 
-	"Sandy Huang" <hjc@rock-chips.com>, 
-	"Maarten Lankhorst" <maarten.lankhorst@linux.intel.com>, 
-	"Maxime Ripard" <mripard@kernel.org>, 
-	"Thomas Zimmermann" <tzimmermann@suse.de>, 
-	"Mikko Perttunen" <mperttunen@nvidia.com>, 
-	"Joerg Roedel" <joro@8bytes.org>, "Will Deacon" <will@kernel.org>, 
-	"Robin Murphy" <robin.murphy@arm.com>, 
-	"Jason Gunthorpe" <jgg@ziepe.ca>, 
-	"Kevin Tian" <kevin.tian@intel.com>, dri-devel@lists.freedesktop.org, 
-	nouveau@lists.freedesktop.org, linux-tegra@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org, linux-media@vger.kernel.org, 
-	iommu@lists.linux.dev, linux-kernel@vger.kernel.org, 
-	"Jason Gunthorpe" <jgg@nvidia.com>
-Subject: Re:[PATCH 2/3] drm/rockchip: Use iommu_paging_domain_alloc()
-X-Priority: 3
-X-Mailer: Coremail Webmail Server Version XT5.0.14 build 20230109(dcb5de15)
- Copyright (c) 2002-2024 www.mailtech.cn 163com
-In-Reply-To: <20240812071034.9443-2-baolu.lu@linux.intel.com>
-References: <20240812071034.9443-1-baolu.lu@linux.intel.com>
- <20240812071034.9443-2-baolu.lu@linux.intel.com>
-X-NTES-SC: AL_Qu2ZAfiftkkp4ieZY+kXn0kXhec2W8Czvvgg34JRP5k0hyXh4w84enhsBWX50cSJNTCNtx+ebhV8+Ol2d45bUprPl6S0Hryyge3eGEHR2scc
+	id 1sdRIa-0000000HRPZ-0aGX;
+	Mon, 12 Aug 2024 09:25:08 +0000
+Received: from mail-northeuropeazlp170130004.outbound.protection.outlook.com ([2a01:111:f403:c200::4] helo=DUZPR83CU001.outbound.protection.outlook.com)
+	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
+	id 1sdRHw-0000000HRCM-46T1;
+	Mon, 12 Aug 2024 09:24:31 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=ZQ8W3Ukl+mayvViaSHPnNnLXcMzmEtqUHn9lq6Ggr+cYDqcyH3FphuIK7sl5U3bUO8Efni3B4Mn8Rlv5jij6qGYfxew5zia3Y7hAnFX7EpRN9c7Tu/o6u+yaQKJ4WxyR/V49eug6PexkWJELbTEaqjIZ1eGYMPgGEMfQ4r4qxeN7FNqyfLjNG+8rbEYx+KZPbbHBHWnBz+pvvynu4zVF/B6izaEXwfVYOPwa+l6BwmNk5mpBkOX5IRxWhQCct3uvTPPp0ywqtVn2JAKzXCW3/TXxGkQml5XVY35ZQGIoTVARkthvheXfmJmzex23fAh7Oj2T1cOzgh7G4pkwQfDZUA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=XfTTiHVqwXDmD9AERIQf2bQAjVcpTjkk5tnEa+vGcxg=;
+ b=H0e23GPIkx4V3AdZg9vUX7sdR6lKGWkcEEJivSXZVmJX715mPRDuYSpfpPsuVPIBXXFYYcfX/Khy+TL0M5/AJRjg3fW/lshLIlvGqt5a5jSBLLPDoF6m9KSlTcAiDw7ZVfD4QjJO4fhSAr4dwTDQutu1yUdwLOGUFmhWGLeKLRmUrOB8Fh3Xt5gSYn1e2gf4fouIYjvvQCR5FH7aFnU1TF4EY/rR1xzwaLa1K/2+ByiO0jKJf+4OcDfURKdYSJRtwNMD/9znQPcKNrdMGatK/4nS0ZxxA3YAGHQDAInmzzukVZPltCymM2JoJNegq8uaSNlKDhyTBzg7D9zm8xKTXw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=cherry.de; dmarc=pass action=none header.from=cherry.de;
+ dkim=pass header.d=cherry.de; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cherry.de;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=XfTTiHVqwXDmD9AERIQf2bQAjVcpTjkk5tnEa+vGcxg=;
+ b=VaiYOjif4AU/bkPegE4H8ZURfTzFZAjEqPZY0IpNJfgachfhtbOaHqj48TOCu3ZcAmwRWffW1SnimEsHdk+OOBxOr3GQdkxcRxSQfDXtN10sVRwmnGJgsVgOlMJpWavaljLXLpB+wVeSxd63ndo2HDltN+33kp+kRyE09jU1gtw=
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=cherry.de;
+Received: from AM9PR04MB8906.eurprd04.prod.outlook.com (2603:10a6:20b:409::9)
+ by GVXPR04MB10922.eurprd04.prod.outlook.com (2603:10a6:150:218::9) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7849.20; Mon, 12 Aug
+ 2024 09:24:15 +0000
+Received: from AM9PR04MB8906.eurprd04.prod.outlook.com
+ ([fe80::d379:5378:b1:cea]) by AM9PR04MB8906.eurprd04.prod.outlook.com
+ ([fe80::d379:5378:b1:cea%3]) with mapi id 15.20.7849.019; Mon, 12 Aug 2024
+ 09:24:15 +0000
+Message-ID: <728a8e06-81f1-4771-8031-ea043b9baf20@cherry.de>
+Date: Mon, 12 Aug 2024 11:24:13 +0200
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v6 2/8] i2c: muxes: add support for tsd,mule-i2c
+ multiplexer
+To: Farouk Bouabid <farouk.bouabid@cherry.de>,
+ Andi Shyti <andi.shyti@kernel.org>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Peter Rosin <peda@axentia.se>,
+ Jean Delvare <jdelvare@suse.com>, Guenter Roeck <linux@roeck-us.net>,
+ Heiko Stuebner <heiko@sntech.de>,
+ Wolfram Sang <wsa+renesas@sang-engineering.com>
+Cc: linux-i2c@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-hwmon@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ Andi Shyti <andi.shyti@kernel.org>
+References: <20240725-dev-mule-i2c-mux-v6-0-f9f6d7b60fb2@cherry.de>
+ <20240725-dev-mule-i2c-mux-v6-2-f9f6d7b60fb2@cherry.de>
+Content-Language: en-US
+From: Quentin Schulz <quentin.schulz@cherry.de>
+In-Reply-To: <20240725-dev-mule-i2c-mux-v6-2-f9f6d7b60fb2@cherry.de>
+X-ClientProxiedBy: WA1P291CA0013.POLP291.PROD.OUTLOOK.COM
+ (2603:10a6:1d0:19::16) To AM9PR04MB8906.eurprd04.prod.outlook.com
+ (2603:10a6:20b:409::9)
 MIME-Version: 1.0
-Message-ID: <7031938c.673c.1914592a773.Coremail.andyshrk@163.com>
-X-Coremail-Locale: zh_CN
-X-CM-TRANSID: _____wD3H9ckv7lmqS4YAA--.648W
-X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/1tbiqRg5XmVOCJXbOwABsB
-X-Coremail-Antispam: 1U5529EdanIXcx71UUUUU7vcSsGvfC2KfnxnUU==
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: AM9PR04MB8906:EE_|GVXPR04MB10922:EE_
+X-MS-Office365-Filtering-Correlation-Id: 2f78886f-baba-42e6-f232-08dcbab088f8
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|7416014|1800799024|376014|366016|921020;
+X-Microsoft-Antispam-Message-Info: =?utf-8?B?NVMyT0xnOXd6enArK25hUUc5T1p0Ulh2UEhBNEIvL2h3UHltcHpCRURsRmpw?=
+ =?utf-8?B?aTgzQ1VLSXJOc1FrenpiZ1ZxT0FEYVo4Z3lxRTF3TU9QQVlScWh2eXpCVlZD?=
+ =?utf-8?B?blNuQks3UDI4Vyt6Q3BmZWFqMjZFR3NmUTJEYnc1RGo5Qm9QcTJrekwrNFZV?=
+ =?utf-8?B?UGpmZHNyLzVxVHJxYnFmODZ5cnpXVldXOXJmOFpmUXFjVTZNd21lMnBFZDN6?=
+ =?utf-8?B?MDRQd3ZuRkNlQTZLaWJXRFR5akV4bUZXUSt0ZE02WTBsTGErZlVPRGx5UWRC?=
+ =?utf-8?B?SDN5MnFBU3oyVTgyZCttVWlPaWQzVFRhTWhvdWZwYzk2SjhmMGNkUldIeUlX?=
+ =?utf-8?B?dDFEeElmSDJocFkxdnU1MnlIWnJobzFUMFMzeDQ5cmUvNVZydGtBeEVIWjlJ?=
+ =?utf-8?B?ZXYzM3Q2OU41QS8xdG1ZdzYzMkhSQXM5Z1poNkNyaWZYSi9lQWQzdUZBNzho?=
+ =?utf-8?B?QkRIWFgwK0hmRHZTWmRYNzRWZ3Fsa2tvb3ByYXBNWFlFTVdGeFBzcW9XdkZ3?=
+ =?utf-8?B?ZkNmVzYwNWdUbjZKejZ1M0FLZndUTW5QQVBiM0cyeXo4TDF6VURpS0dZdjVK?=
+ =?utf-8?B?cUhVMWdhZU5Ycm9yamJMZ0xSczNMVTZOMEVIUlNUYlUvVWQrTFk0SXdPeGVF?=
+ =?utf-8?B?TnJnOExkdXoxOUNqYzg2aVZlOEVGTDgrS1c3RUNBbWV1U2tmUDBMcy9MOTFi?=
+ =?utf-8?B?ZXh3SHJsTzkwemdRaXpYeEZjbmJWa0ZZWjZCVDlOZGtGWEdkQU9JMkNtTHBi?=
+ =?utf-8?B?T0oxMTM2MlM4NzJOVEQ4MFFCNUsxMWIvRW0wcnZBYWNUN1piNlRITTlZOW1m?=
+ =?utf-8?B?cnVhRTRuU0JleHNMQmFLU1UxV3NLTjVGeHlEbitJaThPYVlRUkMyQ1g4RC94?=
+ =?utf-8?B?T1FQeWdvdjExa3lQWk1PbzhRSENENVI3WUxtSzlHMkE4aWs4OFlXS3lvazdF?=
+ =?utf-8?B?MnRmRGR3b1RPNEVOOTFFamljb2hlancra0hJMnVUNStrQXdkRmlzck8wUG0w?=
+ =?utf-8?B?L0hSZ2wxQ21FLy9kK3ZwZTlyRjk5SXZzM09mS0g4TDMvZG16TWtKZk0wamo0?=
+ =?utf-8?B?cnQyOUF1SXI5WkQ0cUlPb1FSNDFYUzU0T3pGVmVBRzFsK09GZTZmMXRYYitU?=
+ =?utf-8?B?c1RVbUJlRjFlekNIYyt6eFhtYW92aG5SQmovVmQ5Q1NyZzRZYWN6NFA0aTFU?=
+ =?utf-8?B?VHVQaTJFRDM4SzQwcmRhdkpnWTFNN3d2cXR3R2N0dVluZ3AxMm5GVnU2WXlY?=
+ =?utf-8?B?ai9oTkorcU5CVmxncmlVaHk1cXVlK2JEdFlRMEhhOWpramlHNEFXK3Qxcld2?=
+ =?utf-8?B?YmtzMnRoMklkYTdISDloRXVWMnpuZ2NOQTlHckc2TGx2bW9nczhTdUdJQ3F1?=
+ =?utf-8?B?byt1ckN4K0IrTUJNT0NKQnVtWFU2eDlEb2FsVzk4WTNtVS9yUzVaT01zNjk3?=
+ =?utf-8?B?M1ZUeEo5Q3h0V1pPU1RpbFhCSlpQRE5MYzVwRXVsZjg0ZE4xWFVPWTdjTWln?=
+ =?utf-8?B?dFQ0bUlLOUt4RHFtSFFxNm9zb1ZDbjlXdVU2VDRJb3VxTjR1OEFhSjNiSGor?=
+ =?utf-8?B?Yk1hOVVZM2R4SjJxaWV3Qkg3a0swczQ4eDRWbVZqcFZBeUJqenBlZkNYeVJy?=
+ =?utf-8?B?eDJXVDdqbzZ5eUx3MmtRaHlRVkRtcXJieEUrMEpZZjVwbzNITVcwMkNuVlh3?=
+ =?utf-8?B?Kzg4U3p6L2hqS09GRUNnYjNaMU1YTjZpQU5pdGFrcmxRZ2JHem5VTjBsTEtI?=
+ =?utf-8?B?dFdpQ3pFa1RkR3doVUhYU2tBK2ZoS0tuelFDS29DMS95ZEpxYXg5U1l6ekFG?=
+ =?utf-8?B?RXpCRTNvQzk0UmxaT0NHdz09?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:AM9PR04MB8906.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(7416014)(1800799024)(376014)(366016)(921020);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?c3p4dSsrR0tyemg2ajUxSWtlMjhvd2FJSGhhL2szb1hxdzVFSXVSU2NVbmN3?=
+ =?utf-8?B?QUpYeTJNNkNKTStjZ1c0eVMrMUpqSnBoc0s5UkxGTyszK2JYeVdUZ1JmUlJN?=
+ =?utf-8?B?UENEN3BaZzhCUVBsNDJMRXowRTNSalJ5N1ArckpxaFVwR010K0U3N04rS2hB?=
+ =?utf-8?B?SjExYzZQQmRpQjB1L1FROHJ1Q05aL3VNMnlFOXl3WHBVamFWUlJNVE5Tck1M?=
+ =?utf-8?B?R1dXODNiOGJxeVZIWmo4c3VEekRoMUlUOUpSL0ZnNkZ0elU3SWFmdHlSUkpJ?=
+ =?utf-8?B?VEV3Q01HNmdEWU1oT0xxN2l4blJBUkl3bDh0d1MyYlJQbXV2NVY5aFNySG9p?=
+ =?utf-8?B?VmxiKytLdTVjU3dzek9ObDZ5dkMvbkpQL25ocWtTUkRQdW00UTg0eTVnei9n?=
+ =?utf-8?B?bHd1OGt6VjRaRXFxMUlUZ244Mkl6aEhrUldHcHhRelJ2NmhMV21DcGlMN0Vq?=
+ =?utf-8?B?U29sY3I4RWs3TnMyWlBPMXZwckVRdk9SY05zYndVTTlscWwyUWF1M1k1S2M1?=
+ =?utf-8?B?Z0tZU01XVHFIQTEvYldvWE5tcTFGRitaYktOZlU2VG5kak45VC9Wc3h4SEJP?=
+ =?utf-8?B?Tyt3a0J5TWtOc0lpbTV6YVBna3JKTmIzSGJ4VUlhUGdCclFzVHRPMXNncmZx?=
+ =?utf-8?B?cUR0OXllU25yU1p1N2tibnVTWnlOaFk0TVNSaU41d0NMTUJlMkdHbEN6VXZw?=
+ =?utf-8?B?b2YrL2ZxblU5dHJyYlRocmR0SUFvejlIaUw2RUhqRVpGMTB6NUVOOFRxQ0gz?=
+ =?utf-8?B?dnpRbHhiUUxmRzg2Rm0xSFJOS3NhUzI1YTB1Y243Rm9yYXdjS3RBZW5Kcldy?=
+ =?utf-8?B?MlVRNTlRalJjZVF1NThkVW9YbWZBSkpVOFk1WDRTY0hNNzFJemtzNUhvejFQ?=
+ =?utf-8?B?YWxzT24vdUY2eFArTlNxUkIxR0JndisxVEpLWnBGUFMxSjljWmtDSzZsRVN2?=
+ =?utf-8?B?aGl0bkE3d0ZCbGJlaDZYK3NqTXBYbEJGeWw0dE5rZ2pGWDBSOEt5TVhRMkty?=
+ =?utf-8?B?K2tEQ0l5M2piY2haNmZNSHJYbW1HQUZoTzYrUEFTcGFZd3BiVXlyNjJYMlpZ?=
+ =?utf-8?B?ZmZ0T2l1SnZ2SUVNbjMrSTJKR2tnb1p4aW9SNWxSanhoTTg2R2JqSHJaYkZI?=
+ =?utf-8?B?cWJzMkpDVUFKdXAxNWl2Ykt6ZWF0UiszcTVXTERaQ3BBcHBkaXZzVjAydktT?=
+ =?utf-8?B?bGRoMkY5USsva2NKMFBBZkRyODBmamlJTDFpUk1sMTNWYnZrTENjeXlDdWpL?=
+ =?utf-8?B?UWZqbnhHemVsNzhiM3gzMXZOUkcwVmJjZUwzWlhRVGM5TFZOSDhVU1lvR0Yv?=
+ =?utf-8?B?QlFXcFlXY0dERnBYZkxTSHVUZlZ2ZnVzMXJvKytIcEVXTDBkRzM0VHBaVWNC?=
+ =?utf-8?B?bEZ2MDc1cHZXZzg5MkUxSnFaSDE3V0ZHcFlXM0gzcGpIUVpvQW85QndaMmgy?=
+ =?utf-8?B?MXpNeE5NMnpacTN6VFJ6MS9OQkg5eWVBc1ROSENtNFNWbXV2V3ZuMUk2Y3V3?=
+ =?utf-8?B?S0dDQWh2NzFQVTBjbmFLeUZKZWVZd0JHYkdGWGhxQk1BN3hxemJkN3lpMlk0?=
+ =?utf-8?B?VGdwSDM2TWhodmRnYWdmYkJ2alJKdGRyYmxrQVZ1V2VVSndwZTlrSUhJZFVJ?=
+ =?utf-8?B?ZzdJSm9oem56MmxLaXN6VUdBd0dERGJ3U05CdkhHTmJsR29taEgwRG9yUGVO?=
+ =?utf-8?B?QjFYeGp2TDU2MnY1ZjVLVEVicWlCY1pCMXFBSk80Und0TkVwdjBPeFZibzZi?=
+ =?utf-8?B?SExQLy9iaWJreG1LVnZwRXE0T0JyVU1LL3l1OEY1cVQwNFpJc0dFRlhsTFB2?=
+ =?utf-8?B?a0dpQm5OV0dZcFBUR2lJN01ObEIyMzZIZ3NLY3BnMFhGaVNWeUpiV2d3YnQ5?=
+ =?utf-8?B?NlU5aUtYcXJ0dVA2bXlsKzYwb0VWdWFjeHRuS3FhcDVpaDlHdEI1dEFNZHF3?=
+ =?utf-8?B?NWZ3QTdwbENsamFxTEYrY3NXRVlhWE1kdzZtU3NvQVhlZ0Qyb3FLcTdTdDVN?=
+ =?utf-8?B?UytCMjNtTjlxc1RzelFCZkxvbmVSVVNkSkJnWXZ4YU9oeWZBQlNUUk9ocDNz?=
+ =?utf-8?B?dC96YkUybXllWUZxQWs2eFg0WVNleHFVVHZGWlRiSVZFT0xtQUlpU3owaXdZ?=
+ =?utf-8?B?Q3dyQ1prQzVyRmk3eXB4NHJQQWpjbDlYR0VtV3hLSXBRM1pTcUFlZXhuaVds?=
+ =?utf-8?B?Qnc9PQ==?=
+X-OriginatorOrg: cherry.de
+X-MS-Exchange-CrossTenant-Network-Message-Id: 2f78886f-baba-42e6-f232-08dcbab088f8
+X-MS-Exchange-CrossTenant-AuthSource: AM9PR04MB8906.eurprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 12 Aug 2024 09:24:15.5695
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 5e0e1b52-21b5-4e7b-83bb-514ec460677e
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: YRdfvJG1OuPOIeUaroIYkDKNdoUvLIc7W8YccnFb0cCK/w8Px/2+G9P7tDNMBv5TxqkQJOg4Hvi1ss1mQ7ziyDIOCARxygFBYotdCtrGVN4=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: GVXPR04MB10922
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240812_005258_775172_69F470E9 
-X-CRM114-Status: UNSURE (   7.21  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240812_022429_223068_B4BE478A 
+X-CRM114-Status: GOOD (  34.59  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,40 +178,264 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Ckhp77yMCiAgVGhhbmtzIGZvciB5b3VyIHBhdGNoCgpBdCAyMDI0LTA4LTEyIDE1OjEwOjMzLCAi
-THUgQmFvbHUiIDxiYW9sdS5sdUBsaW51eC5pbnRlbC5jb20+IHdyb3RlOgo+Q29tbWl0IDw0MjFi
-ZTNlZTM2YTQ+ICgiZHJtL3JvY2tjaGlwOiBSZWZhY3RvciBJT01NVSBpbml0aWFsaXNhdGlvbiIp
-IGhhcwo+cmVmYWN0b3JlZCByb2NrY2hpcF9kcm1faW5pdF9pb21tdSgpIHRvIHBhc3MgYSBkZXZp
-Y2UgdGhhdCB0aGUgZG9tYWluIGlzCj5hbGxvY2F0ZWQgZm9yLiBSZXBsYWNlIGlvbW11X2RvbWFp
-bl9hbGxvYygpIHdpdGgKPmlvbW11X3BhZ2luZ19kb21haW5fYWxsb2MoKSB0byByZXRpcmUgdGhl
-IGZvcm1lci4KPgo+U2lnbmVkLW9mZi1ieTogTHUgQmFvbHUgPGJhb2x1Lmx1QGxpbnV4LmludGVs
-LmNvbT4KPlJldmlld2VkLWJ5OiBKYXNvbiBHdW50aG9ycGUgPGpnZ0BudmlkaWEuY29tPgo+TGlu
-azogaHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcvci8yMDI0MDYxMDA4NTU1NS44ODE5Ny0xOS1iYW9s
-dS5sdUBsaW51eC5pbnRlbC5jb20KICBBY2tlZC1ieTogQW5keSBZYW4gPGFuZHlzaHJrQDE2My5j
-b20+CgoKPi0tLQo+IGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZHJ2LmMg
-fCAxMCArKysrKysrLS0tCj4gMSBmaWxlIGNoYW5nZWQsIDcgaW5zZXJ0aW9ucygrKSwgMyBkZWxl
-dGlvbnMoLSkKPgo+ZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hp
-cF9kcm1fZHJ2LmMgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2Rydi5j
-Cj5pbmRleCA0NGQ3NjlkOTIzNGQuLjExZTVkMTBkZTRkNyAxMDA2NDQKPi0tLSBhL2RyaXZlcnMv
-Z3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZHJ2LmMKPisrKyBiL2RyaXZlcnMvZ3B1L2Ry
-bS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZHJ2LmMKPkBAIC0xMDMsMTMgKzEwMywxNyBAQCBzdGF0
-aWMgaW50IHJvY2tjaGlwX2RybV9pbml0X2lvbW11KHN0cnVjdCBkcm1fZGV2aWNlICpkcm1fZGV2
-KQo+IAlzdHJ1Y3Qgcm9ja2NoaXBfZHJtX3ByaXZhdGUgKnByaXZhdGUgPSBkcm1fZGV2LT5kZXZf
-cHJpdmF0ZTsKPiAJc3RydWN0IGlvbW11X2RvbWFpbl9nZW9tZXRyeSAqZ2VvbWV0cnk7Cj4gCXU2
-NCBzdGFydCwgZW5kOwo+KwlpbnQgcmV0Owo+IAo+IAlpZiAoSVNfRVJSX09SX05VTEwocHJpdmF0
-ZS0+aW9tbXVfZGV2KSkKPiAJCXJldHVybiAwOwo+IAo+LQlwcml2YXRlLT5kb21haW4gPSBpb21t
-dV9kb21haW5fYWxsb2MocHJpdmF0ZS0+aW9tbXVfZGV2LT5idXMpOwo+LQlpZiAoIXByaXZhdGUt
-PmRvbWFpbikKPi0JCXJldHVybiAtRU5PTUVNOwo+Kwlwcml2YXRlLT5kb21haW4gPSBpb21tdV9w
-YWdpbmdfZG9tYWluX2FsbG9jKHByaXZhdGUtPmlvbW11X2Rldik7Cj4rCWlmIChJU19FUlIocHJp
-dmF0ZS0+ZG9tYWluKSkgewo+KwkJcmV0ID0gUFRSX0VSUihwcml2YXRlLT5kb21haW4pOwo+KwkJ
-cHJpdmF0ZS0+ZG9tYWluID0gTlVMTDsKPisJCXJldHVybiByZXQ7Cj4rCX0KPiAKPiAJZ2VvbWV0
-cnkgPSAmcHJpdmF0ZS0+ZG9tYWluLT5nZW9tZXRyeTsKPiAJc3RhcnQgPSBnZW9tZXRyeS0+YXBl
-cnR1cmVfc3RhcnQ7Cj4tLSAKPjIuMzQuMQo+Cl9fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2Nr
-Y2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxt
-YW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+Hi all,
+
+Gentle ping.
+
++To Wolfram Sang
+
+@Wolfram I see that you're the one merging most patches in in 
+drivers/i2c/muxes recently but ./scripts/get_maintainer.pl doesn't 
+return your mail address for the patches in that folder hence why you 
+weren't explicitly added (we used b4 prep --auto-to-cc)
+
+I assume this is due to:
+https://elixir.bootlin.com/linux/v6.10.2/source/MAINTAINERS#L10339
+which according to
+https://elixir.bootlin.com/linux/v6.10.2/source/MAINTAINERS#L36
+means everything that is a direct child from drivers/i2c but not deeper 
+than that. Is this expected?
+
++Cc Andi Shyti, since patches that weren't committed by Wolfram seems to 
+have been by Andi. Though I'm not entirely sure which entry in 
+MAINTAINERS shows that responsibility? Are we missing an update to 
+MAINTAINERS or is there an issue in how we get the maintainers for those 
+patches somehow?
+
+Looking forward to receiving feedback on those patches, thanks!
+
+For the original link of the patch series if somehow it didn't make it 
+to your inboxes:
+https://lore.kernel.org/linux-i2c/20240725-dev-mule-i2c-mux-v6-0-f9f6d7b60fb2@cherry.de/
+
+Cheers,
+Quentin
+
+On 7/25/24 3:27 PM, Farouk Bouabid wrote:
+> Theobroma Systems Mule is an MCU that emulates a set of I2C devices,
+> among which an amc6821 and devices that are reachable through an I2C-mux.
+> The devices on the mux can be selected by writing the appropriate device
+> number to an I2C config register (amc6821 reg 0xff).
+> 
+> This driver is expected to be probed as a platform device with amc6821
+> as its parent i2c device.
+> 
+> Add support for the mule-i2c-mux platform driver. The amc6821 driver
+> support for the mux will be added in a later commit.
+> 
+> Signed-off-by: Farouk Bouabid <farouk.bouabid@cherry.de>
+> ---
+>   drivers/i2c/muxes/Kconfig        |  16 ++++
+>   drivers/i2c/muxes/Makefile       |   1 +
+>   drivers/i2c/muxes/i2c-mux-mule.c | 155 +++++++++++++++++++++++++++++++++++++++
+>   3 files changed, 172 insertions(+)
+> 
+> diff --git a/drivers/i2c/muxes/Kconfig b/drivers/i2c/muxes/Kconfig
+> index db1b9057612a..6d2f66810cdc 100644
+> --- a/drivers/i2c/muxes/Kconfig
+> +++ b/drivers/i2c/muxes/Kconfig
+> @@ -119,4 +119,20 @@ config I2C_MUX_MLXCPLD
+>   	  This driver can also be built as a module.  If so, the module
+>   	  will be called i2c-mux-mlxcpld.
+>   
+> +config I2C_MUX_MULE
+> +	tristate "Theobroma Systems Mule I2C device multiplexer"
+> +	depends on OF && SENSORS_AMC6821
+> +	help
+> +	  Mule is an MCU that emulates a set of I2C devices, among which
+> +	  devices that are reachable through an I2C-mux. The devices on the mux
+> +	  can be selected by writing the appropriate device number to an I2C
+> +	  configuration register.
+> +
+> +	  If you say yes to this option, support will be included for a
+> +	  Theobroma Systems Mule I2C multiplexer. This driver provides access to
+> +	  I2C devices connected on this mux.
+> +
+> +	  This driver can also be built as a module.  If so, the module
+> +	  will be called i2c-mux-mule.
+> +
+>   endmenu
+> diff --git a/drivers/i2c/muxes/Makefile b/drivers/i2c/muxes/Makefile
+> index 6d9d865e8518..4b24f49515a7 100644
+> --- a/drivers/i2c/muxes/Makefile
+> +++ b/drivers/i2c/muxes/Makefile
+> @@ -10,6 +10,7 @@ obj-$(CONFIG_I2C_MUX_GPIO)	+= i2c-mux-gpio.o
+>   obj-$(CONFIG_I2C_MUX_GPMUX)	+= i2c-mux-gpmux.o
+>   obj-$(CONFIG_I2C_MUX_LTC4306)	+= i2c-mux-ltc4306.o
+>   obj-$(CONFIG_I2C_MUX_MLXCPLD)	+= i2c-mux-mlxcpld.o
+> +obj-$(CONFIG_I2C_MUX_MULE)	+= i2c-mux-mule.o
+>   obj-$(CONFIG_I2C_MUX_PCA9541)	+= i2c-mux-pca9541.o
+>   obj-$(CONFIG_I2C_MUX_PCA954x)	+= i2c-mux-pca954x.o
+>   obj-$(CONFIG_I2C_MUX_PINCTRL)	+= i2c-mux-pinctrl.o
+> diff --git a/drivers/i2c/muxes/i2c-mux-mule.c b/drivers/i2c/muxes/i2c-mux-mule.c
+> new file mode 100644
+> index 000000000000..062596869651
+> --- /dev/null
+> +++ b/drivers/i2c/muxes/i2c-mux-mule.c
+> @@ -0,0 +1,155 @@
+> +// SPDX-License-Identifier: GPL-2.0
+> +/*
+> + * Theobroma Systems Mule I2C device multiplexer
+> + *
+> + * Copyright (C) 2024 Theobroma Systems Design und Consulting GmbH
+> + */
+> +
+> +#include <linux/i2c-mux.h>
+> +#include <linux/i2c.h>
+> +#include <linux/module.h>
+> +#include <linux/of.h>
+> +#include <linux/platform_device.h>
+> +#include <linux/property.h>
+> +#include <linux/regmap.h>
+> +
+> +#define MUX_CONFIG_REG  0xff
+> +#define MUX_DEFAULT_DEV 0x0
+> +
+> +struct mule_i2c_reg_mux {
+> +	struct regmap *regmap;
+> +};
+> +
+> +static inline int __mux_select(struct regmap *regmap, u32 dev)
+> +{
+> +	return regmap_write(regmap, MUX_CONFIG_REG, dev);
+> +}
+> +
+> +static int mux_select(struct i2c_mux_core *muxc, u32 dev)
+> +{
+> +	struct mule_i2c_reg_mux *mux = muxc->priv;
+> +
+> +	return __mux_select(mux->regmap, dev);
+> +}
+> +
+> +static int mux_deselect(struct i2c_mux_core *muxc, u32 dev)
+> +{
+> +	return mux_select(muxc, MUX_DEFAULT_DEV);
+> +}
+> +
+> +static void mux_remove(void *data)
+> +{
+> +	struct i2c_mux_core *muxc = data;
+> +
+> +	i2c_mux_del_adapters(muxc);
+> +
+> +	mux_deselect(muxc, MUX_DEFAULT_DEV);
+> +}
+> +
+> +static int mule_i2c_mux_probe(struct platform_device *pdev)
+> +{
+> +	struct device *mux_dev = &pdev->dev;
+> +	struct mule_i2c_reg_mux *priv;
+> +	struct i2c_client *client;
+> +	struct i2c_mux_core *muxc;
+> +	struct device_node *dev;
+> +	unsigned int readback;
+> +	int ndev, ret;
+> +	bool old_fw;
+> +
+> +	/* Count devices on the mux */
+> +	ndev = of_get_child_count(mux_dev->of_node);
+> +	dev_dbg(mux_dev, "%d devices on the mux\n", ndev);
+> +
+> +	client = to_i2c_client(mux_dev->parent);
+> +
+> +	muxc = i2c_mux_alloc(client->adapter, mux_dev, ndev, sizeof(*priv),
+> +			     I2C_MUX_LOCKED, mux_select, mux_deselect);
+> +	if (!muxc)
+> +		return dev_err_probe(mux_dev, -ENOMEM,
+> +				     "Failed to allocate mux struct\n");
+> +
+> +	priv = i2c_mux_priv(muxc);
+> +
+> +	priv->regmap = dev_get_regmap(mux_dev->parent, NULL);
+> +	if (IS_ERR(priv->regmap))
+> +		return dev_err_probe(mux_dev, PTR_ERR(priv->regmap),
+> +				     "No parent i2c register map\n");
+> +
+> +	platform_set_drvdata(pdev, muxc);
+> +
+> +	/*
+> +	 * MUX_DEFAULT_DEV is guaranteed to exist on all old and new mule fw.
+> +	 * mule fw without mux support will accept write ops to the
+> +	 * config register, but readback returns 0xff (register not updated).
+> +	 */
+> +	ret = mux_select(muxc, MUX_DEFAULT_DEV);
+> +	if (ret)
+> +		return dev_err_probe(mux_dev, ret,
+> +				     "Failed to write config register\n");
+> +
+> +	ret = regmap_read(priv->regmap, MUX_CONFIG_REG, &readback);
+> +	if (ret)
+> +		return dev_err_probe(mux_dev, ret,
+> +				     "Failed to read config register\n");
+> +
+> +	old_fw = (readback != MUX_DEFAULT_DEV);
+> +
+> +	ret = devm_add_action_or_reset(mux_dev, mux_remove, muxc);
+> +	if (ret)
+> +		return dev_err_probe(mux_dev, ret,
+> +				     "Failed to register mux remove\n");
+> +
+> +	/* Create device adapters */
+> +	for_each_child_of_node(mux_dev->of_node, dev) {
+> +		u32 reg;
+> +
+> +		ret = of_property_read_u32(dev, "reg", &reg);
+> +		if (ret)
+> +			return dev_err_probe(mux_dev, ret,
+> +					     "No reg property found for %s\n",
+> +					     of_node_full_name(dev));
+> +
+> +		if (old_fw && reg != 0) {
+> +			dev_warn(mux_dev,
+> +				 "Mux is not supported, please update Mule FW\n");
+> +			continue;
+> +		}
+> +
+> +		ret = mux_select(muxc, reg);
+> +		if (ret) {
+> +			dev_warn(mux_dev,
+> +				 "Device %d not supported, please update Mule FW\n", reg);
+> +			continue;
+> +		}
+> +
+> +		ret = i2c_mux_add_adapter(muxc, 0, reg);
+> +		if (ret)
+> +			return dev_err_probe(mux_dev, ret,
+> +					     "Failed to add i2c mux adapter %d\n", reg);
+> +	}
+> +
+> +	mux_deselect(muxc, MUX_DEFAULT_DEV);
+> +
+> +	return 0;
+> +}
+> +
+> +static const struct of_device_id mule_i2c_mux_of_match[] = {
+> +	{.compatible = "tsd,mule-i2c-mux",},
+> +	{},
+> +};
+> +MODULE_DEVICE_TABLE(of, mule_i2c_mux_of_match);
+> +
+> +static struct platform_driver mule_i2c_mux_driver = {
+> +	.driver		= {
+> +		.name	= "mule-i2c-mux",
+> +		.of_match_table = mule_i2c_mux_of_match,
+> +	},
+> +	.probe		= mule_i2c_mux_probe,
+> +};
+> +
+> +module_platform_driver(mule_i2c_mux_driver);
+> +
+> +MODULE_AUTHOR("Farouk Bouabid <farouk.bouabid@cherry.de>");
+> +MODULE_DESCRIPTION("I2C mux driver for Theobroma Systems Mule");
+> +MODULE_LICENSE("GPL");
+> 
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
