@@ -4,76 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5D3E6C52D7C
-	for <linux-rockchip@archiver.kernel.org>; Tue, 13 Aug 2024 17:04:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A865DC52D7B
+	for <linux-rockchip@archiver.kernel.org>; Tue, 13 Aug 2024 17:59:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Subject:References:In-Reply-To:
-	Message-ID:Date:CC:To:From:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=LY7JkmawU2jgL9xb+zVoRKtHRDGxsy64Thfddoe3Iik=; b=fYM+C7iTz4PLa6
-	Cp/Ud86zSWZNaYSphrHDch48rTnpPgayWzY6UwIcULaKrE3RBvuOcTbpr7cwMBtxa4CZadhV5CMAs
-	bsxUwQewFZNrSS25JnqWJ8e+lpHfk1m+weFOJ/LteOY4Z+3rIXxYNxWsUZBDt/xO7BAQ+JzZynEXg
-	vk9rT8cmMiqnljnbBufkLjVKsOZnQxdypRetBDNy6daqujdNQ38HK6BzZl/qMaHZ2Em7+q1iU4nES
-	32HhHodaAETuBtMk5vHpPOY/kuGSxTV2YuvNRWtI3QMQ5HTfrblBG/WKD3AGa9QXtOVhivocX71+U
-	IXZ3TfNmHw7YXrvV7jVA==;
+	List-Owner; bh=vnf7T1NypFSCXvqd9VxoHpeWn1v7M39AdJkl4ccmNeg=; b=S++xk3uxATs0nC
+	4cMd+ZU2IGCONbG+KlGGS+w1axDFBat7gWOelBcCHg5SrTFvAYO68X/3bnA2JjIcShyo5Rax8P9Bs
+	U6oMAmw0Lsw0NhViJJX0HC7hugsKFcKlHRNyKkOHrIfZX2wsqJrKJnYo3H5qDmTZNVR8ST7ZSuw6A
+	ehCn5lC28/4trTJMqcJbYgdhAaMpUfmGoSg1dwxhb8iZJl6RBxfVAOgGaQrXhSB0sfBuuB1dXFeJ6
+	EUxapM6WmOpSBaYzPOr2WphX2H++o7QEC6zByiLdLPTHTnFNy0xVv3bEX6DV/VBeUhFR9CTNkI1ts
+	Kb0XsNchxzzgstkjTyhQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sduwi-00000004SBa-2aD0;
-	Tue, 13 Aug 2024 17:04:32 +0000
-Received: from mail-lj1-x22c.google.com ([2a00:1450:4864:20::22c])
+	id 1sdvoE-00000004ZH0-0QSK;
+	Tue, 13 Aug 2024 17:59:50 +0000
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sduwf-00000004SAD-20N2
-	for linux-rockchip@lists.infradead.org;
-	Tue, 13 Aug 2024 17:04:30 +0000
-Received: by mail-lj1-x22c.google.com with SMTP id 38308e7fff4ca-2f0271b0ae9so61856081fa.1
-        for <linux-rockchip@lists.infradead.org>; Tue, 13 Aug 2024 10:04:28 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=broadcom.com; s=google; t=1723568667; x=1724173467; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:subject:user-agent
-         :references:in-reply-to:message-id:date:cc:to:from:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=bmfVHiTAghiA5/icoM+TOI1VecjW2wcU/5Ch8OWg9QQ=;
-        b=dfq3sa6sVstvel2L+RzpNM4WuIxQGUyByIvYCTWTxB5sEBdifGu4HiSymEK3XfiYlM
-         702ZJN6dKQLM4Y7UH4Q+nwqOW5y8QLwI9k+sCTsERwaXr6ts25L7r9QKGlHmlbzHYdHR
-         Kn7eS5qRRNd6NoAFLsOyNqacR8Hs1y2gSoCWc=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1723568667; x=1724173467;
-        h=content-transfer-encoding:mime-version:subject:user-agent
-         :references:in-reply-to:message-id:date:cc:to:from
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=bmfVHiTAghiA5/icoM+TOI1VecjW2wcU/5Ch8OWg9QQ=;
-        b=SyZgA1sdwyEjYbHRA9oCTj6704BFR97utUKKl4yJoLapMuQxrL1LRE1w/vMi3eJ9lF
-         JJKpnDMtkynCQLXpw3NFqlxhaGqf6OaRVwJC3gett2mV4Y0YK+lnfPw7qkBEQV43ncWs
-         m7XzP/EdyqZtKc5bNtF/jVr/HP/Kv5MeET+ivkgyfXfGQ4xTeLmte0W7SnNJU4X6HhY/
-         DuEJ3vWJuUA86XEmRHQ8NqwjLpNGEn/sXdDdiDuaqcURNUe7MkbaFlBh+SOqwIvIiHzh
-         N++9oiV0Y4eC/NfIXdhBUTmbwpkTdq06sRSg+PNDG8MZm36SlmJ2nLprlXnyjQG5FOZz
-         dvlw==
-X-Forwarded-Encrypted: i=1; AJvYcCWcl8FTndc3epAvxTXP2wNN6b6qDU2dsRB2Ow8WqRlqoSxmIY3xyEUbrT2IGxQ8u/h3/DZtEox5oMhh+pS31tt3+NzJZmitd7MYnp6IIMsfKaNJ
-X-Gm-Message-State: AOJu0YxHMnt38ZygRQg8XBHOQ1RPUX9li3L0jdgFT0s2LGq3HTqkmZK3
-	lByPZs8cfpxcAq3J7aTHR3gOU8gfoGZWVnAqQ9mss5CNTuCf+hG5+JsqbSRIng==
-X-Google-Smtp-Source: AGHT+IGMS+LrGaCj1Lg+QZmrrlMH0Ixfn/L59zuCwNIRqWw0O7FBQUZWwFW5fNKu3n2lX5Yg9gyCBQ==
-X-Received: by 2002:a2e:f19:0:b0:2ee:80b2:1e99 with SMTP id 38308e7fff4ca-2f3aa1f9dcamr96771fa.44.1723568666421;
-        Tue, 13 Aug 2024 10:04:26 -0700 (PDT)
-Received: from [192.168.178.38] (f215227.upc-f.chello.nl. [80.56.215.227])
-        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-5bd190ad1d3sm3081547a12.28.2024.08.13.10.04.24
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 13 Aug 2024 10:04:25 -0700 (PDT)
-From: Arend Van Spriel <arend.vanspriel@broadcom.com>
-To: Jacobe Zang <jacobe.zang@wesion.com>, <robh@kernel.org>, <krzk+dt@kernel.org>, <heiko@sntech.de>, <kvalo@kernel.org>, <davem@davemloft.net>, <edumazet@google.com>, <kuba@kernel.org>, <pabeni@redhat.com>, <conor+dt@kernel.org>
-CC: <efectn@protonmail.com>, <dsimic@manjaro.org>, <jagan@edgeble.ai>, <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>, <linux-rockchip@lists.infradead.org>, <linux-kernel@vger.kernel.org>, <arend@broadcom.com>, <linux-wireless@vger.kernel.org>, <netdev@vger.kernel.org>, <megi@xff.cz>, <duoming@zju.edu.cn>, <bhelgaas@google.com>, <minipli@grsecurity.net>, <brcm80211@lists.linux.dev>, <brcm80211-dev-list.pdl@broadcom.com>, <nick@khadas.com>, Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Date: Tue, 13 Aug 2024 19:04:25 +0200
-Message-ID: <1914cb2b1a8.279b.9b12b7fc0a3841636cfb5e919b41b954@broadcom.com>
-In-Reply-To: <20240813082007.2625841-2-jacobe.zang@wesion.com>
-References: <20240813082007.2625841-1-jacobe.zang@wesion.com>
- <20240813082007.2625841-2-jacobe.zang@wesion.com>
-User-Agent: AquaMail/1.51.5 (build: 105105504)
-Subject: Re: [PATCH v10 1/5] dt-bindings: net: wireless: brcm4329-fmac: add pci14e4,449d
+	id 1sdvnW-00000004Yz2-01xo;
+	Tue, 13 Aug 2024 17:59:07 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sin.source.kernel.org (Postfix) with ESMTP id EA5B3CE10E0;
+	Tue, 13 Aug 2024 17:59:01 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B77EDC32782;
+	Tue, 13 Aug 2024 17:59:00 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1723571941;
+	bh=Udh93aatepcn0N17vUvPrrHSs078UxAKq9paEPu2A5c=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=ZwDCyGb6ESpAiWDw4I308wrMi6IOTwHGwFGfY5esWLUgJYkXthW4SMWzvWqFcj8vk
+	 /I4QDNzP3K1ZegzoYJu3oQGzUMsZ/Jqq3atk8HecHUIxUe/8yAL0VPq4JsfBMiGqwN
+	 ogtKbNzXakaii7goxXBJ2W+bdXMTWLB3S82PAyalkGfG5wX/u8xTdyDlr3RDNxlg3H
+	 RcFE143uOXbrfPabZagQWw3gjTrblLj1TwGIvpHRhsVeY/kQIcOsH6uQrcerZHfbUe
+	 ymHPssfV7j+vKiXWOSw3+vpzYtq7kAAYGXFIYgHfyCRBq04KyMJy5pxkMbEtKel5YR
+	 i8y5i62e3OHwg==
+Date: Tue, 13 Aug 2024 11:58:59 -0600
+From: Rob Herring <robh@kernel.org>
+To: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+Cc: Andrzej Hajda <andrzej.hajda@intel.com>,
+	Neil Armstrong <neil.armstrong@linaro.org>,
+	Robert Foss <rfoss@kernel.org>,
+	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+	Jonas Karlman <jonas@kwiboo.se>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Maxime Ripard <mripard@kernel.org>,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>,
+	Sandy Huang <hjc@rock-chips.com>,
+	Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>,
+	Andy Yan <andy.yan@rock-chips.com>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Mark Yao <markyao0591@gmail.com>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
+	kernel@collabora.com, Alexandre ARNOUD <aarnoud@me.com>,
+	Luis de Arquer <ldearquer@gmail.com>
+Subject: Re: [PATCH v3 3/5] dt-bindings: display: rockchip: Add schema for
+ RK3588 HDMI TX Controller
+Message-ID: <20240813175859.GA1415670-robh@kernel.org>
+References: <20240807-b4-rk3588-bridge-upstream-v3-0-60d6bab0dc7c@collabora.com>
+ <20240807-b4-rk3588-bridge-upstream-v3-3-60d6bab0dc7c@collabora.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20240807-b4-rk3588-bridge-upstream-v3-3-60d6bab0dc7c@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240813_100429_538226_05AF0D3E 
-X-CRM114-Status: GOOD (  10.33  )
+X-CRM114-CacheID: sfid-20240813_105906_415582_17CB2D17 
+X-CRM114-Status: GOOD (  19.62  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,34 +88,147 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On August 13, 2024 10:20:24 AM Jacobe Zang <jacobe.zang@wesion.com> wrote:
-
-> It's the device id used by AP6275P which is the Wi-Fi module
-> used by Rockchip's RK3588 evaluation board and also used in
-> some other RK3588 boards.
-
-Hi Kalle,
-
-There probably will be a v11, but wanted to know how this series will be 
-handled as it involves device tree bindings, arm arch device tree spec, and 
-brcmfmac driver code. Can it all go through wireless-next?
-
-Regards,
-Arend
-
-> Acked-by: Arend van Spriel <arend.vanspriel@broadcom.com>
-> Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-> Signed-off-by: Jacobe Zang <jacobe.zang@wesion.com>
+On Wed, Aug 07, 2024 at 02:07:25PM +0300, Cristian Ciocaltea wrote:
+> Rockchip RK3588 SoC integrates the Synopsys DesignWare HDMI 2.1
+> Quad-Pixel (QP) TX controller IP.
+> 
+> Since this is a new IP block, quite different from those used in the
+> previous generations of Rockchip SoCs, add a dedicated binding file.
+> 
+> Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 > ---
-> .../devicetree/bindings/net/wireless/brcm,bcm4329-fmac.yaml      | 1 +
-> 1 file changed, 1 insertion(+)
+>  .../display/rockchip/rockchip,dw-hdmi-qp.yaml      | 188 +++++++++++++++++++++
+>  1 file changed, 188 insertions(+)
+> 
+> diff --git a/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-hdmi-qp.yaml b/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-hdmi-qp.yaml
+> new file mode 100644
+> index 000000000000..33572c88a589
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-hdmi-qp.yaml
+> @@ -0,0 +1,188 @@
+> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/display/rockchip/rockchip,dw-hdmi-qp.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: Rockchip DW HDMI QP TX Encoder
+> +
+> +maintainers:
+> +  - Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+> +
+> +description:
+> +  Rockchip RK3588 SoC integrates the Synopsys DesignWare HDMI QP TX controller
+> +  IP and a HDMI/eDP TX Combo PHY based on a Samsung IP block.
+> +
+> +allOf:
+> +  - $ref: ../bridge/synopsys,dw-hdmi-qp.yaml#
 
+Use full path: /schemas/display/bridge/...
 
+> +  - $ref: /schemas/sound/dai-common.yaml#
+> +
+> +properties:
+> +  compatible:
+> +    enum:
+> +      - rockchip,rk3588-dw-hdmi-qp
+> +
+> +  clocks:
+> +    minItems: 4
+> +    items:
+> +      - {}
+> +      - {}
+> +      - {}
+> +      - {}
+> +      # The next clocks are optional, but shall be specified in this
+> +      # order when present.
+> +      - description: TMDS/FRL link clock
+> +      - description: Video datapath clock
+> +
+> +  clock-names:
+> +    minItems: 4
+> +    items:
+> +      - {}
+> +      - {}
+> +      - {}
+> +      - {}
+> +      - enum: [hdp, hclk_vo1]
+> +      - const: hclk_vo1
+> +
+> +  interrupts:
+> +    items:
+> +      - {}
+> +      - {}
+> +      - {}
+> +      - {}
+> +      - description: HPD interrupt
+> +
+> +  interrupt-names:
+> +    items:
+> +      - {}
+> +      - {}
+> +      - {}
+> +      - {}
+> +      - const: hpd
+> +
+> +  phys:
+> +    maxItems: 1
+> +    description: The HDMI/eDP PHY.
+> +
+> +  phy-names:
+> +    const: hdmi
+> +
+> +  ports:
+> +    $ref: /schemas/graph.yaml#/properties/ports
+> +
+> +    properties:
+> +      port@0:
+> +        $ref: /schemas/graph.yaml#/properties/port
+> +        description:
+> +          Port node with one endpoint connected to a vop node.
+> +
+> +      port@1:
+> +        $ref: /schemas/graph.yaml#/properties/port
+> +        description:
+> +          Port node with one endpoint connected to a hdmi-connector node.
+
+ports can go in the common schema. The description should be what the 
+data and direction are for the ports. What the connection is can vary 
+and is outside the scope of this binding.
+
+> +
+> +    required:
+> +      - port@0
+> +      - port@1
+> +
+> +  power-domains:
+> +    maxItems: 1
+> +
+> +  resets:
+> +    minItems: 2
+> +    maxItems: 2
+> +
+> +  reset-names:
+> +    items:
+> +      - const: ref
+> +      - const: hdp
+> +
+> +  "#sound-dai-cells":
+> +    const: 0
+> +
+> +  rockchip,grf:
+> +    $ref: /schemas/types.yaml#/definitions/phandle
+> +    description:
+> +      Most HDMI QP related data is accessed through SYS GRF regs.
+> +
+> +  rockchip,vo1_grf:
+
+rockchip,vo1-grf
 
 _______________________________________________
 Linux-rockchip mailing list
