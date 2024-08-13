@@ -4,71 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F0006C3DA7F
-	for <linux-rockchip@archiver.kernel.org>; Mon, 12 Aug 2024 21:16:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F027CC3DA7F
+	for <linux-rockchip@archiver.kernel.org>; Tue, 13 Aug 2024 02:41:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
-	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=HdqO7o2G+jn4Gc3QZa3y3fyG4rxLEtVDnnz84XtPSj8=; b=k7nG/6kxbhIK4f
-	QknpPUT/AqqLDgUg3I8hc8fijZSdVbda0zjNk+osTFAPF3lsjuCGRC4A9hzQmi5A6c/zg4CT6Z1BI
-	0Qh4P53VqXsnOU7iP5AoE/v8vnbvTt7UkGo+Uw6vHh3MiFzux8rEkkR4yUboYjBZ9ze0Rkwe2IJgC
-	wDUoMMMpDzoiVm0GmnsFq8ZSzaX7vs1KJmNj6eD8bKZoRJGeBYdi4mgwXBeEKO0UGwt4nrpBennS6
-	xQ2zE+sFiGR3uJb41G6gS+vm0rWY6qyJBP1gslS6FyJekex7xfRLMkKQHOJe5C5xzFLnTmR0ZI6F5
-	mNwu9oP8DFp7WXH2CIyg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
+	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=IBkJ142V2+sJ7eDNCgWb6JNm2//GVnaBWHNoyoIhk8E=; b=AneEPr5ZDqcNWmGfvJzIvBoXOA
+	yJxk08s4HS5PBxXbxZ2W32OOPaldxNi+YgRXwO3gep3rkfEEXj1XEa3l/CEsbPpM0DDBmFfg4waa6
+	ClPv3JkYJB1cCkHNVHFFrLX0Np+T5IwnHOmMJdRKczKN9tFHWudK/MWEl5iIZeZIOPr4zsv5VP9t+
+	I2gYOus1Mp/t/Jd63q6ZjiMwvTPljIHM08ln5gpRQBtEmZv+QWAjolYFdGs3AVjNk/cSKB1svK93n
+	WoFuMCZ4i5wyhcYpuS2Qn1M8L9vgFzPN4kNlGrJR7UEN1xz+C8Xmxya5jj/Bs1xo0abPHwJqEvWtt
+	McK0bMKw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sdcP7-00000001b41-1trh;
-	Mon, 12 Aug 2024 21:16:37 +0000
-Received: from sender4-op-o12.zoho.com ([136.143.188.12])
+	id 1sdhTl-000000027Te-3WQ2;
+	Tue, 13 Aug 2024 02:41:45 +0000
+Received: from mail.manjaro.org ([2a01:4f8:c0c:51f3::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sdcOf-00000001auz-493J;
-	Mon, 12 Aug 2024 21:16:36 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1723497358; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=RSgqYHbpvJn5Wr+j9THLyR6jhT2q71jHY2G1g84dWgEuyksCfJSlmACTjFmzwjlg1NNlgnxDVPt91CWFWHwtNGyEgRodleNdY6i/mpoCwkPjiSAtkgQ5w8BwBbamYiM7MrEqvxzaaJpzkPbF5C8qlRels7EfnKowzrflTK4xWrs=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1723497358; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=0I1JLzxrV0gVyw2bF2C9h87qd8Pc9eWrEb9tvdjX5cI=; 
-	b=n7TyYd8k3VJU4XZI9I0If5Rjgr09wPlshBiIAVtXAghizbtqMnRNrMHac/BZ+Q5bx/y1+3DuP3VxicdR4dii5je42dhTY2+m7AGyC+oan/psfKV2wI07gwruRtE7/QmBgBwBnm34pOfaYwoCwwZ9Fd2ii/zgHpgRsL6L02fyfe0=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=cristian.ciocaltea@collabora.com;
-	dmarc=pass header.from=<cristian.ciocaltea@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1723497358;
-	s=zohomail; d=collabora.com; i=cristian.ciocaltea@collabora.com;
-	h=From:From:Date:Date:Subject:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Message-Id:References:In-Reply-To:To:To:Cc:Cc:Reply-To;
-	bh=0I1JLzxrV0gVyw2bF2C9h87qd8Pc9eWrEb9tvdjX5cI=;
-	b=YI7Wnarb7Jf1A/cQaxHzhlPU1WxIlqg30fl35glMaLRl/u91qwW2ZfePzP0yG8it
-	j5uaqCgPP8hl1i++2+A1UgpMqAyCWoekovvJUwRfNfrDLmwFPCx959IO/qzsOIRyCyN
-	LT6Gpt76B19LVEFGAWSyQEENs6DrXzCrAgNsE5Qs=
-Received: by mx.zohomail.com with SMTPS id 1723497357461825.5740191228684;
-	Mon, 12 Aug 2024 14:15:57 -0700 (PDT)
-From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Date: Tue, 13 Aug 2024 00:15:11 +0300
-Subject: [PATCH 4/4] drm/rockchip: dw_hdmi: Drop superfluous assignments of
- mpll_cfg, cur_ctr and phy_config
+	id 1sdhTh-000000027T0-3f5k
+	for linux-rockchip@lists.infradead.org;
+	Tue, 13 Aug 2024 02:41:43 +0000
 MIME-Version: 1.0
-Message-Id: <20240813-dw-hdmi-rockchip-cleanup-v1-4-b3e73b5f4fd6@collabora.com>
-References: <20240813-dw-hdmi-rockchip-cleanup-v1-0-b3e73b5f4fd6@collabora.com>
-In-Reply-To: <20240813-dw-hdmi-rockchip-cleanup-v1-0-b3e73b5f4fd6@collabora.com>
-To: Sandy Huang <hjc@rock-chips.com>, 
- =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
- Andy Yan <andy.yan@rock-chips.com>, 
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
- David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>
-Cc: kernel@collabora.com, dri-devel@lists.freedesktop.org, 
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
- linux-kernel@vger.kernel.org
-X-Mailer: b4 0.14.1
-X-ZohoMailClient: External
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
+	t=1723516896;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=T4KCS3wY9nQhPAlvllmkBNCEOJZz3hSan8Vu+KsM1jU=;
+	b=J3EOlSZmtOtkFBNzMFf1dIClhqoPX841FvPMks8N8Mj0GyM5+KigI30XA/mNys+YH+Drrr
+	rBxCsKpLpDu9Q25eH0f+G3asGjvv1huwg49b8XwAPtvJ3NSlcjvN1YH9moElTmAu4PKHdO
+	EISl9b7qa+PCpb1lNHoQ/h9dJRFQnweIHA2ddXTQicvJbeZcJ+/DG+h9/ImReWt13PPghO
+	A9m6P1thmDTOZWLt2tkoMBgFTbK561oKX2TnQIPYw3rQV9tG4C/JGFG2BOJUm+PLW0vcjO
+	Woz8/tz1nyxGUJVB7YU7fg9rCLD3a00csMac9N7A52wmInL3RZ1lS7s5rxQDew==
+Date: Tue, 13 Aug 2024 04:41:36 +0200
+From: Dragan Simic <dsimic@manjaro.org>
+To: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
+Cc: Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org
+Subject: Re: DeviceTree for NanoPC-T6 LTS
+In-Reply-To: <d99fcb81-d864-4336-afe0-046c2136a4d7@linaro.org>
+References: <d99fcb81-d864-4336-afe0-046c2136a4d7@linaro.org>
+Message-ID: <2a7e3b2f61822dc8426b7aa7e5108c04@manjaro.org>
+X-Sender: dsimic@manjaro.org
+Authentication-Results: ORIGINATING;
+	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240812_141610_109051_BE6060DD 
-X-CRM114-Status: UNSURE (   9.04  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240812_194142_462268_CE244634 
+X-CRM114-Status: GOOD (  14.23  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,60 +65,39 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The mpll_cfg, cur_ctr and phy_config members in struct dw_hdmi_plat_data
-are only used to configure the Synopsys PHYs supported internally by DW
-HDMI transmitter driver (gpu/drm/bridge/synopsys/dw-hdmi.c), via
-hdmi_phy_configure_dwc_hdmi_3d_tx(), which is further invoked from
-dw_hdmi_phy_init().  This is part of the internal
-dw_hdmi_synopsys_phy_ops struct, managed within dw_hdmi_detect_phy().
+Hello Marcin,
 
-To handle vendor PHYs, DW HDMI driver doesn't make use of the internal
-PHY ops and, instead, relies on the glue layer to provide the phy_ops
-and phy_name members of struct dw_hdmi_plat_data.
+On 2024-08-12 17:36, Marcin Juszkiewicz wrote:
+> I bought FriendlyELEC NanoPC-T6 LTS recently for some development. Got
+> Fedora 'rawhide' running there with Linux 6.11-rc2 but got hit by some
+> issues.
+> 
+> SBC works with recent UEFI build (from edk2-rk3588 project) both in
+> ACPI and DeviceTree mode. The problem is that there are components
+> (like SD/eMMC and/or USB ehci/xhci) working in one or another.
+> 
+> I have spent some time trying to get DT mode working properly to find
+> out which values I need to change for ACPI mode to work. And got to
+> the point where I have a question:
+> 
+> Can we make rk3588-nanopc-t6-lts.dts file?
 
-Drop the unnecessary assignments of DW internal PHY related members from
-structs rk3228_hdmi_drv_data and rk3328_hdmi_drv_data, since both set
-the phy_force_vendor flag and correctly provide the expected vendor PHY
-data.
+It's certainly doable, but it requires someone who's skilled enough
+and willing to do that, while they also happen to own a NanoPC-T6 LTS
+to develop and test on.
 
-Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
----
- drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c | 6 ------
- 1 file changed, 6 deletions(-)
-
-diff --git a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
-index edfd877c98fc..ca6728a43159 100644
---- a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
-+++ b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
-@@ -444,9 +444,6 @@ static struct rockchip_hdmi_chip_data rk3228_chip_data = {
- 
- static const struct dw_hdmi_plat_data rk3228_hdmi_drv_data = {
- 	.mode_valid = dw_hdmi_rockchip_mode_valid,
--	.mpll_cfg = rockchip_mpll_cfg,
--	.cur_ctr = rockchip_cur_ctr,
--	.phy_config = rockchip_phy_config,
- 	.phy_data = &rk3228_chip_data,
- 	.phy_ops = &rk3228_hdmi_phy_ops,
- 	.phy_name = "inno_dw_hdmi_phy2",
-@@ -481,9 +478,6 @@ static struct rockchip_hdmi_chip_data rk3328_chip_data = {
- 
- static const struct dw_hdmi_plat_data rk3328_hdmi_drv_data = {
- 	.mode_valid = dw_hdmi_rockchip_mode_valid,
--	.mpll_cfg = rockchip_mpll_cfg,
--	.cur_ctr = rockchip_cur_ctr,
--	.phy_config = rockchip_phy_config,
- 	.phy_data = &rk3328_chip_data,
- 	.phy_ops = &rk3328_hdmi_phy_ops,
- 	.phy_name = "inno_dw_hdmi_phy2",
-
--- 
-2.46.0
-
+> Differences between T6 (2301) and T6 LTS (2310) may suggest separate
+> DT files. There is a USB hub on 2310 one to provide USB2 for m.2 type
+> E, two ports on internal header and one of external ports. Hub is
+> powered by vcc_3v3_s3 line. There are no mini-pcie and microsim slots
+> on 2310 as well. SPI flash is present by default.
+> 
+> Please keep me in Cc: as I am not on linux-rockchip ML.
 
 _______________________________________________
 Linux-rockchip mailing list
