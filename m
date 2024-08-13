@@ -4,161 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 42556C52D7C
-	for <linux-rockchip@archiver.kernel.org>; Tue, 13 Aug 2024 08:24:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A8FFDC52D7C
+	for <linux-rockchip@archiver.kernel.org>; Tue, 13 Aug 2024 08:39:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=P+5Cglefx5g+lBVyiUP7r8Sw/d6cr3V8hwzBj8tuw9A=; b=x34QkSprA0eJ3M
-	FgoQpOrZpJfecce+0igpR9OZI8eHKfeU2bWcC22BLDXlEkv3ffXUTx6nLLYi2Sh7L8PjkbXY2gTzR
-	rYlAoSdTAp8Em0uKB2uuqbWy7aFXPfaVN/n9KGNC2U6SyRR6LQfdo4aAoCrc8ujr9tPfJwuZ0SaOo
-	cgbbbdYRSSiMO8rZQ2Uqy7SA43WnOaCU8wcVGknMMAD8n93O1fimCjbP1ei2AroHll+dtlhSnRsHP
-	IARG4GRmJBKzxNkcG0YAsX1oaxwejkD9TT+xMjIP9nrBB9+l2gKU2XHpPvgM75gmtkUEr3Lgfwrgv
-	0dp0lekSiD4kl6dTKHvQ==;
+	List-Owner; bh=9nGsn7pdDwPLxflWweqHwK0TK0NYU5qsFsjXNyWPBOw=; b=PITkLFT9ADyclD
+	GHEi22u4zr1bH9Ywn6fy4zk5CkIhh4Xy72WQsiyQbOjkaPsut+m4KKzGMc14OnURRa8/ZBRkHs615
+	MkF2U6h2f/HjiUPk5s40cav40ghdmxNY6prrlMZJnVBzMNLnWyBAZAj9ZJeNOubRFSuRGKPFAHz5v
+	4iPhSqcYrCKRPxZHifty/PAU/GMQWpQF9+gsjiouM6FdYGmJSIw5PyGrY0c2XezCy4y++QtDAKFtE
+	IS63JJlu7ZE9OH1nEUMQP4GKwW+cKWsOvsbAwl2x7eohGO8WOeuhudcQ8f6ZhvKNT8PEo+vgpwxvA
+	DYmN+BHaRTgpapwz7foA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sdmp6-00000002t4v-1WAV;
-	Tue, 13 Aug 2024 08:24:08 +0000
-Received: from mail-tyzapc01on20700.outbound.protection.outlook.com ([2a01:111:f403:2011::700] helo=APC01-TYZ-obe.outbound.protection.outlook.com)
+	id 1sdn3V-00000002wCC-363n;
+	Tue, 13 Aug 2024 08:39:01 +0000
+Received: from mgamail.intel.com ([198.175.65.19])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sdmlm-00000002rrE-0Nmm;
-	Tue, 13 Aug 2024 08:20:43 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=tEfanvXXwafeOfAWxv3I3SonX5KgMZTfYDZiUEh7H5ttTUKlNGKxS+0VhuB2L52LF2JEdAfjeH+/JgpMjZOFUiH2fHcN/nqkIHeA/tV70EQrMahlyZuFO47xwkHAU3ZGU5vrKDdvtNhDFmOUo3OrakteS3dXHb6c7TMSrQuECrJWY0ythKlXaTPa8nNp60oQ6XD0JevbbRTCi7GsFWkLev0MPQ/vZh0/ki5keO0fcI5319RKGE3KFcUYXg3NluecYmm/KPLx/Ztii1KekNoJA2M9vIYyR9J25Ngs7L9kf84scXW1wyGi37l8i+vt4T9VKgUcPnAkHgebQfG606ZAjQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=ZWqN2d2WV5H3rjNNY/SuBA/Is/G4XlfllfCP+MEOJRA=;
- b=MRyxElc6Z7kfLutIJk9revrFg3wXcasGZd0RDKGDluVMT8LJV4UVYWb5KpyzKJNZ6qK8MsUDsx2z7R7XUp2IR01aFohFoLOUylW03rhqn2i9mR3hKsETfCojark3oTn5LCm+kCTznZV0eO/pBEE/2nR45ja8uDuTYqQ6+U+y8Bxd7NWcuJf9qC3H5YRncWP30ZQwsFPW1wy2LajrzRCIyds9GYFjNuslSS4pEs57n7P3vr6eiSD+1RfK2oLqYKRYrAwnhyoJPV8FfcbzuAMVkqET91L0JqSwSFizNyoBZ/9ELztiR/jBjOQRHvUZyviY22PZxyJ20N1XenWaKuqbkA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=wesion.com; dmarc=pass action=none header.from=wesion.com;
- dkim=pass header.d=wesion.com; arc=none
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=wesion.com;
-Received: from TYZPR03MB7001.apcprd03.prod.outlook.com (2603:1096:400:26a::14)
- by TY0PR03MB8198.apcprd03.prod.outlook.com (2603:1096:405:1b::11) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7849.22; Tue, 13 Aug
- 2024 08:20:36 +0000
-Received: from TYZPR03MB7001.apcprd03.prod.outlook.com
- ([fe80::78dd:5e68:1a9c:36c0]) by TYZPR03MB7001.apcprd03.prod.outlook.com
- ([fe80::78dd:5e68:1a9c:36c0%6]) with mapi id 15.20.7849.019; Tue, 13 Aug 2024
- 08:20:36 +0000
-From: Jacobe Zang <jacobe.zang@wesion.com>
-To: robh@kernel.org,
-	krzk+dt@kernel.org,
-	heiko@sntech.de,
-	kvalo@kernel.org,
-	davem@davemloft.net,
-	edumazet@google.com,
-	kuba@kernel.org,
-	pabeni@redhat.com,
-	conor+dt@kernel.org
-Cc: efectn@protonmail.com,
-	dsimic@manjaro.org,
-	jagan@edgeble.ai,
-	devicetree@vger.kernel.org,
+	id 1sdn2S-00000002vyi-36KQ;
+	Tue, 13 Aug 2024 08:37:57 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1723538277; x=1755074277;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=0zit28vkJLoveJCnlYRWpnW1iA4PdjPohhk+xYzQHsw=;
+  b=Lk8PgQEVXO6vqk9NQYUT/1Hz8pttX1l53ekjwmEvIdMPeJ6Qr3fnriT8
+   wMADcB2EBnCORN8zhk9b9wOujcFU/SHTvJqVwGYs28HGSFaCq4YWL4ztW
+   wjv2dCo9aCFSQzj60kIdGmEeqxX+MxLoAt66vYPvYqixGe2DLxIl1Kc+J
+   GpqWM9Vg7t/VOYepKYNh2g1dr29V4GIFub9TqMyzFmmXkHDTR8lVoCrMm
+   xK1VubqNw/4a28C3pOIHhCJNHWmjPDTKBMYa1Pd/BChYlfFg0pT/FIRiG
+   IGLaiw6L/buqE72zkhLxh+KjtIV8QMhgfHvCy/B/tFgZ+EKdyuEZbf7os
+   Q==;
+X-CSE-ConnectionGUID: JKxVnTufSy6KIwNN6ss66g==
+X-CSE-MsgGUID: WcXCjtYrRUacWgxozMg46Q==
+X-IronPort-AV: E=McAfee;i="6700,10204,11162"; a="21544186"
+X-IronPort-AV: E=Sophos;i="6.09,285,1716274800"; 
+   d="scan'208";a="21544186"
+Received: from fmviesa005.fm.intel.com ([10.60.135.145])
+  by orvoesa111.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 13 Aug 2024 01:37:55 -0700
+X-CSE-ConnectionGUID: NFUyk0GPR9WJTDrF79fqSg==
+X-CSE-MsgGUID: qta44cKjSb2kZSSuYxwWPQ==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.09,285,1716274800"; 
+   d="scan'208";a="62986362"
+Received: from smile.fi.intel.com ([10.237.72.54])
+  by fmviesa005.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 13 Aug 2024 01:37:52 -0700
+Received: from andy by smile.fi.intel.com with local (Exim 4.98)
+	(envelope-from <andriy.shevchenko@linux.intel.com>)
+	id 1sdn2L-0000000Ef5r-0xTf;
+	Tue, 13 Aug 2024 11:37:49 +0300
+Date: Tue, 13 Aug 2024 11:37:48 +0300
+From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+To: Sam Protsenko <semen.protsenko@linaro.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+	linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	arend@broadcom.com,
-	linux-wireless@vger.kernel.org,
-	netdev@vger.kernel.org,
-	megi@xff.cz,
-	duoming@zju.edu.cn,
-	bhelgaas@google.com,
-	minipli@grsecurity.net,
-	brcm80211@lists.linux.dev,
-	brcm80211-dev-list.pdl@broadcom.com,
-	nick@khadas.com,
-	Jacobe Zang <jacobe.zang@wesion.com>,
-	Arend van Spriel <arend.vanspriel@broadcom.com>
-Subject: [PATCH v10 5/5] wifi: brcmfmac: add flag for random seed during firmware download
-Date: Tue, 13 Aug 2024 16:20:07 +0800
-Message-Id: <20240813082007.2625841-6-jacobe.zang@wesion.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20240813082007.2625841-1-jacobe.zang@wesion.com>
-References: <20240813082007.2625841-1-jacobe.zang@wesion.com>
-X-ClientProxiedBy: TYCP286CA0309.JPNP286.PROD.OUTLOOK.COM
- (2603:1096:400:38b::10) To TYZPR03MB7001.apcprd03.prod.outlook.com
- (2603:1096:400:26a::14)
+	linux-samsung-soc@vger.kernel.org
+Cc: Michael Turquette <mturquette@baylibre.com>,
+	Stephen Boyd <sboyd@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+	Krzysztof Kozlowski <krzk@kernel.org>,
+	Sylwester Nawrocki <s.nawrocki@samsung.com>,
+	Chanwoo Choi <cw00.choi@samsung.com>,
+	Alim Akhtar <alim.akhtar@samsung.com>,
+	Nobuhiro Iwamatsu <nobuhiro1.iwamatsu@toshiba.co.jp>
+Subject: Re: [PATCH v1 0/4] clk: Switch to use kmemdup_array()
+Message-ID: <ZrsbXMVy1Dsi4UZe@smile.fi.intel.com>
+References: <20240606161028.2986587-1-andriy.shevchenko@linux.intel.com>
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: TYZPR03MB7001:EE_|TY0PR03MB8198:EE_
-X-MS-Office365-Filtering-Correlation-Id: aa3fca04-3fa3-466e-0fc6-08dcbb70cf30
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|366016|1800799024|52116014|7416014|376014|38350700014;
-X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?mhJKwADc7s0WlA1fwjFYvmet66CbmFXvcEHVcVImEk2xjMfbmccDQeaIiYp4?=
- =?us-ascii?Q?1ZdcV5XSLAGlw62nadBQ+YFmBVzqeuxsCLcAkx1v/BR6ZDBi41zwYcTr3Hvs?=
- =?us-ascii?Q?nB2qag1bJ6InHv8ivr3rSNlvHvAH5apLs3p5039mOZ937Jft0BPW3Ds1hQnO?=
- =?us-ascii?Q?rn4WympIu+3j5KdY0H1gP5tNZSrhj7Dx+B9AVotWj7X/GZ/KgTDuXbXijA2S?=
- =?us-ascii?Q?4r4+9jYxExjUuZvH5rKRXD2bwbTacWZfSN9Z4yXuUg2ggndYbT6gi2GoL9Si?=
- =?us-ascii?Q?HsNbawnQsv3YqNAc1wSxSRuBXt+14TZLrrmLkVTkLFJSY0xnoAt8Ia9+XqhO?=
- =?us-ascii?Q?wW13m5EgSeRwbWsL+DcijSaDsP8ZcThvhGEFqBhLzLFKoNbjc+W4ekGXcyX9?=
- =?us-ascii?Q?oM6glk6yhBB35LgZSSpRHAve0ARdFCUeA/wwJUN66ZH1SHeiTFAjHaDPsxF5?=
- =?us-ascii?Q?IKKq01vGavCEBpnwf6N6huknjMTpEMnWWK2D2tBT5cfvRisKlUwP6JTvzMG4?=
- =?us-ascii?Q?mBJYKnKKsFzRqfD301W+wdG40FwgRwW3Cj7jvrTnHFuwb+8EYwr4ep6CCNEi?=
- =?us-ascii?Q?+tiA4kGP+eo+ete4BIOulH/JGuIg/RjBDLPZz87QriWFFAfBsSGIO/NX0DrA?=
- =?us-ascii?Q?seGzNJAsbak9gD795oXzhUHVBOUWh7TpuGJahY0wknuy+Gzwn8b3Po3+GkKl?=
- =?us-ascii?Q?Ld4hPhKBeGXX3prhlMe1VQr6e35guIb2kcpPC3ppVCbelAJwTmkMHisWSV/m?=
- =?us-ascii?Q?UoCc1281Y6VwGGqIVWubeLqs4Pbgi/ukVkVQ+Jzqe0kbgKqiC2FFI6c1ShLH?=
- =?us-ascii?Q?pwvPkQZ469Xv21XEM3k0pQXBx+NH97O8iU6QjniZyVrrbfnNTYqd18VXL5t9?=
- =?us-ascii?Q?TllMnsHtwjSKolCLwkFvmXUKcOPpFcfq+czJNxfPRgweu81jjPI+0e6tFM2B?=
- =?us-ascii?Q?J5Y2FgoZGuyxlba4auxHI+W4EYi7qZrr/LZYOlbtPVIGLsAbleNVnncul1i2?=
- =?us-ascii?Q?CkPEbNSgHg56RzGdlZnJ87ESit4l3n4hkASbXF+1hIXV0q01EB0VuXYQ7mXz?=
- =?us-ascii?Q?Wyg0Qh6qw1chKmFGBq7zP24UhUDk0HsWKYeVQtOZCgALjTLrsgdE4QiPRXsT?=
- =?us-ascii?Q?NetBQKedK/ScSB3ZfAmqcvyUk7PEOB7Y9jncwXA74YvdoJQjlDxW8ZUoa6X5?=
- =?us-ascii?Q?L3ClXC3OdKZ+Su5zVEGVBMSlO07OPNGA61u5QdpyYHYCCCY42z17yN6SipTZ?=
- =?us-ascii?Q?ltQwkoclsFkw9j/f2uUooiAO7nB1d8Iq0suRUqkfn6YraIh0KiaKK5httkG6?=
- =?us-ascii?Q?F1U6Zm4RvRloTwgrLFDh+y+gDo6cw/Kvoa1yogmeI6GyVnrqGIeeEGAM8LGH?=
- =?us-ascii?Q?sqXS50w=3D?=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:TYZPR03MB7001.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(366016)(1800799024)(52116014)(7416014)(376014)(38350700014);DIR:OUT;SFP:1102;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?pAaIpsX8MDBxfJd1w4k05ZwROQiiFkz6OBajOfqYl1/DyHR8UeUBlUdMLTRz?=
- =?us-ascii?Q?S/sWUzjIOtajK+MkRhZ1Nv2Hb9jl+FyHseCBgfiLu2WvwbwqgrsCD7HmqNxW?=
- =?us-ascii?Q?pm0jgCBj3TO9ef9Zl57eunh4/PpTJc5TKbQMYjJISbFUJ/EcFOWoXbTeOx1+?=
- =?us-ascii?Q?4rZ6fhAJRec8680rkP37pKhLnyxoXbx20uSrLiuml8u8n040bX6ihs56n5bN?=
- =?us-ascii?Q?NyYhCZHblNCtnXl14eD2hViFWK4WJFyEJNiCY1PYjmQnfvqtqrZxwwPdJtet?=
- =?us-ascii?Q?OAzyXfc2rTFlZCAq3A9+otYi8jDPYSqQ6MpLBGUqeVAjzIHDK8W/U4FSn18z?=
- =?us-ascii?Q?4+Wq8fofiH02hoxaJo60F1rdBEdGyJvWGNe70YHL4Fu+aLOhFnILq511sRrR?=
- =?us-ascii?Q?X9lxB0mBHvejfG1y3dhRKE1xPm45gKqxNxxDWveEMSmE93WgYOH7vD0gg9gv?=
- =?us-ascii?Q?FAeKrVMhp2pg07aHtf7Ak6wkMhnREbRCCQK1HbXLos90YwMABHKJn6JoTuXB?=
- =?us-ascii?Q?StttsxaiYGQhQTwle3DAXJ5Y0aJBchmVLB4+Ir2MuqzS3BQ0Ya597tTqJM3t?=
- =?us-ascii?Q?aEl8V8JfBI2MO5KTLC7wJi+t51hF+vS1Cftx/dhmalmGsY5e3zNxPcJ5unI5?=
- =?us-ascii?Q?0f/ejmQ7eR4WoHU2DS5x2LTdvqZQmZ28N5Y2HxfRcpvmEIWrnFh04ZXTiGkm?=
- =?us-ascii?Q?emvz8JaB5g5P+NFDe+PQHG2q3C8M75IHeX1gAP1C3uGw/G32Jo9tCUkZXch+?=
- =?us-ascii?Q?ae8KqXrrfORGQJPUrTGbFon9mUs9qfdksG6WAe0zOT9IHOKUhRRmcFGPsDOJ?=
- =?us-ascii?Q?8tMArBz2t4VcYCP1qB7nffENNiYJMgkKUxbQWzWsZsl5x9mRxr/RGdQFqPVX?=
- =?us-ascii?Q?BY4WcJagQ5LIMMiXhVJEv9+6iTRuhT5PBq23VP3DQN3ZqVsl8svtwdBmmjYx?=
- =?us-ascii?Q?u4bN2KUNHxaBt9vOk34QZTJHYVJUX1g9AMhhUZ+FpqPBaNLBoJxPmYimRSev?=
- =?us-ascii?Q?WuO6JHs8QVyH+egHJH9RcO8kGoKqJzr457M6SpzUaKnsTF21f6eUaB2AAl2e?=
- =?us-ascii?Q?kjkB75/0QyQa0GaWCpMo4MptOlt7BqBnao4yZRvU3MfPVGjtzfIy54VAgDrg?=
- =?us-ascii?Q?/+KppciW7EnFmn5d8WLDqoz4n0H4QUIP7ZBjLJ5h/YtYmIRykBi2D8e03okd?=
- =?us-ascii?Q?JRVntuvjSPknGzR0kSNnTAY63uzrv8f5fJsY2H+Sv4I28wSiX2DSm8xjeL8i?=
- =?us-ascii?Q?CRPSVZKhhOQtvX9Ld6Wz0Th+mCYb+ZUKzWbgS92JQ2nGlV9YatoZ4E+cLVpG?=
- =?us-ascii?Q?45edPzAGTQLJlh+LoZIkXuI9tYHQrohnUdbU8Z5H6kr1ULqXP2mPOTzRKxZP?=
- =?us-ascii?Q?xsWKxRC7oVbQgMjuyFR4WKVpFD/0hdE4mWu8lY9fQLCGVyeZrIsjkfGcWdE7?=
- =?us-ascii?Q?vshgJZ2F8a8fOXT43uf6caejMlAjBrctulnL68HckDNBSZIqlXsIniSs0GQP?=
- =?us-ascii?Q?5z3j7mA83S5yWsItNnJSZRUyaVbTiT9zo8pljGnvqJlgNeeAFpdcd8HA1KtB?=
- =?us-ascii?Q?bye/r6Xlq40BxWQnCXDLFYdDHUjPCP6sy9ClUtzn?=
-X-OriginatorOrg: wesion.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: aa3fca04-3fa3-466e-0fc6-08dcbb70cf30
-X-MS-Exchange-CrossTenant-AuthSource: TYZPR03MB7001.apcprd03.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 13 Aug 2024 08:20:36.8388
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 2dc3bd76-7ac2-4780-a5b7-6c6cc6b5af9b
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: C9J5kkelgHudKCKdSb2ne4yebNd4Dy3LSJtDYWOtuppjEON7hJkry7KcqBNeZeJFyz+6BJhZDuAO0s6Tky6vwg==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: TY0PR03MB8198
+Content-Disposition: inline
+In-Reply-To: <20240606161028.2986587-1-andriy.shevchenko@linux.intel.com>
+Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240813_012042_248505_90F1FA29 
-X-CRM114-Status: GOOD (  16.75  )
+X-CRM114-CacheID: sfid-20240813_013756_847744_5B26380F 
+X-CRM114-Status: UNSURE (   8.30  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -175,171 +99,22 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Providing the random seed to firmware was tied to the fact that the
-device has a valid OTP, which worked for some Apple chips. However,
-it turns out the BCM43752 device also needs the random seed in order
-to get firmware running. Suspect it is simply tied to the firmware
-branch used for the device. Introducing a mechanism to allow setting
-it for a device through the device table.
+On Thu, Jun 06, 2024 at 07:09:30PM +0300, Andy Shevchenko wrote:
+> Replace open coded kmemdup_array(), which does an additional
+> overflow check.
 
-Co-developed-by: Ondrej Jirman <megi@xff.cz>
-Signed-off-by: Ondrej Jirman <megi@xff.cz>
-Co-developed-by: Arend van Spriel <arend.vanspriel@broadcom.com>
-Signed-off-by: Arend van Spriel <arend.vanspriel@broadcom.com>
-Signed-off-by: Jacobe Zang <jacobe.zang@wesion.com>
----
- .../broadcom/brcm80211/brcmfmac/pcie.c        | 52 ++++++++++++++++---
- .../broadcom/brcm80211/include/brcm_hw_ids.h  |  2 +
- 2 files changed, 46 insertions(+), 8 deletions(-)
+...
 
-diff --git a/drivers/net/wireless/broadcom/brcm80211/brcmfmac/pcie.c b/drivers/net/wireless/broadcom/brcm80211/brcmfmac/pcie.c
-index c34405a6d38b8..e88fa4cd62a1d 100644
---- a/drivers/net/wireless/broadcom/brcm80211/brcmfmac/pcie.c
-+++ b/drivers/net/wireless/broadcom/brcm80211/brcmfmac/pcie.c
-@@ -66,6 +66,7 @@ BRCMF_FW_DEF(4365C, "brcmfmac4365c-pcie");
- BRCMF_FW_DEF(4366B, "brcmfmac4366b-pcie");
- BRCMF_FW_DEF(4366C, "brcmfmac4366c-pcie");
- BRCMF_FW_DEF(4371, "brcmfmac4371-pcie");
-+BRCMF_FW_CLM_DEF(43752, "brcmfmac43752-pcie");
- BRCMF_FW_CLM_DEF(4377B3, "brcmfmac4377b3-pcie");
- BRCMF_FW_CLM_DEF(4378B1, "brcmfmac4378b1-pcie");
- BRCMF_FW_CLM_DEF(4378B3, "brcmfmac4378b3-pcie");
-@@ -104,6 +105,7 @@ static const struct brcmf_firmware_mapping brcmf_pcie_fwnames[] = {
- 	BRCMF_FW_ENTRY(BRCM_CC_43664_CHIP_ID, 0xFFFFFFF0, 4366C),
- 	BRCMF_FW_ENTRY(BRCM_CC_43666_CHIP_ID, 0xFFFFFFF0, 4366C),
- 	BRCMF_FW_ENTRY(BRCM_CC_4371_CHIP_ID, 0xFFFFFFFF, 4371),
-+	BRCMF_FW_ENTRY(BRCM_CC_43752_CHIP_ID, 0xFFFFFFFF, 43752),
- 	BRCMF_FW_ENTRY(BRCM_CC_4377_CHIP_ID, 0xFFFFFFFF, 4377B3), /* revision ID 4 */
- 	BRCMF_FW_ENTRY(BRCM_CC_4378_CHIP_ID, 0x0000000F, 4378B1), /* revision ID 3 */
- 	BRCMF_FW_ENTRY(BRCM_CC_4378_CHIP_ID, 0xFFFFFFE0, 4378B3), /* revision ID 5 */
-@@ -358,6 +360,7 @@ struct brcmf_pciedev_info {
- 			  u16 value);
- 	struct brcmf_mp_device *settings;
- 	struct brcmf_otp_params otp;
-+	bool fwseed;
- #ifdef DEBUG
- 	u32 console_interval;
- 	bool console_active;
-@@ -1720,14 +1723,14 @@ static int brcmf_pcie_download_fw_nvram(struct brcmf_pciedev_info *devinfo,
- 		memcpy_toio(devinfo->tcm + address, nvram, nvram_len);
- 		brcmf_fw_nvram_free(nvram);
- 
--		if (devinfo->otp.valid) {
-+		if (devinfo->fwseed) {
- 			size_t rand_len = BRCMF_RANDOM_SEED_LENGTH;
- 			struct brcmf_random_seed_footer footer = {
- 				.length = cpu_to_le32(rand_len),
- 				.magic = cpu_to_le32(BRCMF_RANDOM_SEED_MAGIC),
- 			};
- 
--			/* Some Apple chips/firmwares expect a buffer of random
-+			/* Some chips/firmwares expect a buffer of random
- 			 * data to be present before NVRAM
- 			 */
- 			brcmf_dbg(PCIE, "Download random seed\n");
-@@ -2399,6 +2402,37 @@ static void brcmf_pcie_debugfs_create(struct device *dev)
- }
- #endif
- 
-+struct brcmf_pcie_drvdata {
-+	enum brcmf_fwvendor vendor;
-+	bool fw_seed;
-+};
-+
-+enum {
-+	BRCMF_DRVDATA_CYW,
-+	BRCMF_DRVDATA_BCA,
-+	BRCMF_DRVDATA_WCC,
-+	BRCMF_DRVDATA_WCC_SEED,
-+};
-+
-+static const struct brcmf_pcie_drvdata drvdata[] = {
-+	[BRCMF_DRVDATA_CYW] = {
-+		.vendor = BRCMF_FWVENDOR_CYW,
-+		.fw_seed = false,
-+	},
-+	[BRCMF_DRVDATA_BCA] = {
-+		.vendor = BRCMF_FWVENDOR_BCA,
-+		.fw_seed = false,
-+	},
-+	[BRCMF_DRVDATA_WCC] = {
-+		.vendor = BRCMF_FWVENDOR_WCC,
-+		.fw_seed = false,
-+	},
-+	[BRCMF_DRVDATA_WCC_SEED] = {
-+		.vendor = BRCMF_FWVENDOR_WCC,
-+		.fw_seed = true,
-+	},
-+};
-+
- /* Forward declaration for pci_match_id() call */
- static const struct pci_device_id brcmf_pcie_devid_table[];
- 
-@@ -2480,9 +2514,10 @@ brcmf_pcie_probe(struct pci_dev *pdev, const struct pci_device_id *id)
- 	bus->bus_priv.pcie = pcie_bus_dev;
- 	bus->ops = &brcmf_pcie_bus_ops;
- 	bus->proto_type = BRCMF_PROTO_MSGBUF;
--	bus->fwvid = id->driver_data;
- 	bus->chip = devinfo->coreid;
- 	bus->wowl_supported = pci_pme_capable(pdev, PCI_D3hot);
-+	bus->fwvid = drvdata[id->driver_data].vendor;
-+	devinfo->fwseed = drvdata[id->driver_data].fw_seed;
- 	dev_set_drvdata(&pdev->dev, bus);
- 
- 	ret = brcmf_alloc(&devinfo->pdev->dev, devinfo->settings);
-@@ -2668,14 +2703,14 @@ static const struct dev_pm_ops brcmf_pciedrvr_pm = {
- 		BRCM_PCIE_VENDOR_ID_BROADCOM, (dev_id), \
- 		PCI_ANY_ID, PCI_ANY_ID, \
- 		PCI_CLASS_NETWORK_OTHER << 8, 0xffff00, \
--		BRCMF_FWVENDOR_ ## fw_vend \
-+		BRCMF_DRVDATA_ ## fw_vend \
- 	}
- #define BRCMF_PCIE_DEVICE_SUB(dev_id, subvend, subdev, fw_vend) \
- 	{ \
- 		BRCM_PCIE_VENDOR_ID_BROADCOM, (dev_id), \
- 		(subvend), (subdev), \
- 		PCI_CLASS_NETWORK_OTHER << 8, 0xffff00, \
--		BRCMF_FWVENDOR_ ## fw_vend \
-+		BRCMF_DRVDATA_ ## fw_vend \
- 	}
- 
- static const struct pci_device_id brcmf_pcie_devid_table[] = {
-@@ -2703,9 +2738,10 @@ static const struct pci_device_id brcmf_pcie_devid_table[] = {
- 	BRCMF_PCIE_DEVICE(BRCM_PCIE_4366_5G_DEVICE_ID, BCA),
- 	BRCMF_PCIE_DEVICE(BRCM_PCIE_4371_DEVICE_ID, WCC),
- 	BRCMF_PCIE_DEVICE(BRCM_PCIE_43596_DEVICE_ID, CYW),
--	BRCMF_PCIE_DEVICE(BRCM_PCIE_4377_DEVICE_ID, WCC),
--	BRCMF_PCIE_DEVICE(BRCM_PCIE_4378_DEVICE_ID, WCC),
--	BRCMF_PCIE_DEVICE(BRCM_PCIE_4387_DEVICE_ID, WCC),
-+	BRCMF_PCIE_DEVICE(BRCM_PCIE_4377_DEVICE_ID, WCC_SEED),
-+	BRCMF_PCIE_DEVICE(BRCM_PCIE_4378_DEVICE_ID, WCC_SEED),
-+	BRCMF_PCIE_DEVICE(BRCM_PCIE_4387_DEVICE_ID, WCC_SEED),
-+	BRCMF_PCIE_DEVICE(BRCM_PCIE_43752_DEVICE_ID, WCC_SEED),
- 
- 	{ /* end: all zeroes */ }
- };
-diff --git a/drivers/net/wireless/broadcom/brcm80211/include/brcm_hw_ids.h b/drivers/net/wireless/broadcom/brcm80211/include/brcm_hw_ids.h
-index 44684bf1b9acc..c1e22c589d85e 100644
---- a/drivers/net/wireless/broadcom/brcm80211/include/brcm_hw_ids.h
-+++ b/drivers/net/wireless/broadcom/brcm80211/include/brcm_hw_ids.h
-@@ -52,6 +52,7 @@
- #define BRCM_CC_43664_CHIP_ID		43664
- #define BRCM_CC_43666_CHIP_ID		43666
- #define BRCM_CC_4371_CHIP_ID		0x4371
-+#define BRCM_CC_43752_CHIP_ID		43752
- #define BRCM_CC_4377_CHIP_ID		0x4377
- #define BRCM_CC_4378_CHIP_ID		0x4378
- #define BRCM_CC_4387_CHIP_ID		0x4387
-@@ -94,6 +95,7 @@
- #define BRCM_PCIE_4366_5G_DEVICE_ID	0x43c5
- #define BRCM_PCIE_4371_DEVICE_ID	0x440d
- #define BRCM_PCIE_43596_DEVICE_ID	0x4415
-+#define BRCM_PCIE_43752_DEVICE_ID	0x449d
- #define BRCM_PCIE_4377_DEVICE_ID	0x4488
- #define BRCM_PCIE_4378_DEVICE_ID	0x4425
- #define BRCM_PCIE_4387_DEVICE_ID	0x4433
+>   clk: mmp: Switch to use kmemdup_array()
+
+>   clk: visconti: Switch to use kmemdup_array()
+
+Any news for these two?
+
 -- 
-2.34.1
+With Best Regards,
+Andy Shevchenko
+
 
 
 _______________________________________________
