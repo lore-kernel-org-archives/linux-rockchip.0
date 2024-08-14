@@ -4,86 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4E920C3DA4A
-	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Aug 2024 12:57:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9EB2DC52D7B
+	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Aug 2024 13:55:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=AZGPXmq9ljT8ENOygMMxyIwK2cue7Moyo6V8zCYyBXY=; b=TzVzB4aLoR1GyL
-	MvQ5GkpdSnmAL/5TCx/YMJ07g2xD5VZwNcw9CyIW0+uoPZnsUrZSKKaXyUrjbuFuf//T9qTJ9aw9e
-	jJqhUwPq91Tm+Un7n1kXZoSByvlCAM/Vb909+MaJIfxyhRHTDoUIAw4kVhkJ20k4m5OifKWquLHwk
-	XN7DBDBcVciZL/HUrS+68eUxJbOh8wd+73r8Cf5tHUaqAk6OG3cA7CO0ilPDpUvlgVu6tRk14VE8U
-	rZ4sLeuf03iIVVeDj6xx+V1rrbAUGhtmeIUfBxX8iPGjQzTJdvL4AKAwp4J5XCBSuzTBC3qUBLjc7
-	qZefI10fnxBNffCO2F0w==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:Message-ID:Date
+	:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
+	List-Owner; bh=f7PRnpKiwM1LThzOcuk/AjhYIU8NTJ3j85Nw2xf5lRo=; b=SqrNPS8p3h7doW
+	j/YsQBp+z5jeT2jrMVyKq+eEbp8uivBa9Tm7xxsdqbJHCX2Hpsc4mOBx7VZEKrxmfiPE/G6LTGO+z
+	iAAzuIpQQbddcSBTj1o5imuvzKoIP06oumjhZEKXuSCYqUOuebDoambfzvA2F4ztCa3xp5oZmB8u3
+	LFXTQ+tfw4CGPY27t0A8WpZ22QKQaWwpp6fxPI+jtuSg3U5Y6HhZweQxK1CaVsyxKkZjUsXPKGOOZ
+	4N/WDms4rsvrJhavI9slIZbc1dy+q1NCLj8J4afq2Q7ypB2rIiH7898v5QtfczOGt10nMfXHdhnWw
+	KRy4KiFvHn4e0bRMlIVQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1seDZV-0000000716l-3yPV;
-	Wed, 14 Aug 2024 12:57:49 +0000
-Received: from mgamail.intel.com ([192.198.163.17])
+	id 1seETE-00000007Afy-0jbR;
+	Wed, 14 Aug 2024 13:55:24 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1seDXk-000000070gP-2uTQ;
-	Wed, 14 Aug 2024 12:56:02 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1723640161; x=1755176161;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=KqRnxgjYWajhIUPo+HXdCS6BLSaBY1bMw/iNKPudTQQ=;
-  b=ByzoI4Fs+OUPHwuDOP1IFvArZErlXw2xjrF5gl3eBMrt0y93xyasKuEY
-   +txVtr1tmZd+SU8O7khwxAhd6yqgtwaH7g5WosBvAIEGnMCpJj+DGWHlm
-   n7Kk1+C87LLJtmrrVnhOIfZYNmqWUyI63+PRPruL2lCWNVEXT49ByJ8vz
-   +VbOWRRpgIwKtvybrb5lVEUygmgcZ1VPcg5nR0ZjaNiMtR7z6u5C4hPNu
-   9zwZZkCeVC4vfvOp8qYK++d68P6/3ikNdXRCRTnYFRluGKRLTkbTUfFo2
-   ogKf6aNmnqtgj6IiIpaBsqNrzi1yGbgvij/SfTCt7YvDzKf4abi7GfnS/
-   w==;
-X-CSE-ConnectionGUID: gnT0G1XiSsWgkcbU/izKsA==
-X-CSE-MsgGUID: GvLdoebiRBaTldV1J9Nzhg==
-X-IronPort-AV: E=McAfee;i="6700,10204,11164"; a="21725301"
-X-IronPort-AV: E=Sophos;i="6.10,145,1719903600"; 
-   d="scan'208";a="21725301"
-Received: from orviesa009.jf.intel.com ([10.64.159.149])
-  by fmvoesa111.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 14 Aug 2024 05:56:00 -0700
-X-CSE-ConnectionGUID: jLMItZHBQeaIFjD2BpAPlg==
-X-CSE-MsgGUID: k3SJaDUqS9ql6Jm0wEayyw==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.10,145,1719903600"; 
-   d="scan'208";a="58969860"
-Received: from smile.fi.intel.com ([10.237.72.54])
-  by orviesa009.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 14 Aug 2024 05:55:57 -0700
-Received: from andy by smile.fi.intel.com with local (Exim 4.98)
-	(envelope-from <andriy.shevchenko@linux.intel.com>)
-	id 1seDXd-0000000FBQD-1z8u;
-	Wed, 14 Aug 2024 15:55:53 +0300
-Date: Wed, 14 Aug 2024 15:55:53 +0300
-From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-To: Stephen Boyd <sboyd@kernel.org>
-Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
-	Sam Protsenko <semen.protsenko@linaro.org>,
-	linux-arm-kernel@lists.infradead.org, linux-clk@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
-	linux-samsung-soc@vger.kernel.org,
-	Michael Turquette <mturquette@baylibre.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Krzysztof Kozlowski <krzk@kernel.org>,
-	Sylwester Nawrocki <s.nawrocki@samsung.com>,
-	Chanwoo Choi <cw00.choi@samsung.com>,
-	Alim Akhtar <alim.akhtar@samsung.com>,
-	Nobuhiro Iwamatsu <nobuhiro1.iwamatsu@toshiba.co.jp>
-Subject: Re: [PATCH v1 0/4] clk: Switch to use kmemdup_array()
-Message-ID: <ZrypWaon4yIdzyx1@smile.fi.intel.com>
-References: <20240606161028.2986587-1-andriy.shevchenko@linux.intel.com>
- <ZrsbXMVy1Dsi4UZe@smile.fi.intel.com>
- <2478bc8a787d07cd3e412b6ee4400669.sboyd@kernel.org>
+	id 1seERl-00000007AIE-1pIF;
+	Wed, 14 Aug 2024 13:53:55 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	References:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:In-Reply-To:List-Id:List-Help:List-Unsubscribe:
+	List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=j2Lsb5odU7xswY1+GwKw+nWRQWuJgqe2YvXdnyLQ4Yw=; b=Q6MbG8pkvlyCyyw6banO2xDu07
+	8ktD9nvRoMahDmrzjat9ZXg2jaZlEfpQSSbTLe+p/WdVOcmXinjO5vAxxtJmdWypmNxQ864kAmdIL
+	hgYxOrCNp9eKUvoR60EswZKaztx4VVJrTqNTWO+Pdy0DblqsVnyQ6DvwuSP/1SYafF4POJZe3jPCL
+	FhoUqljKDtlRTRLkpjqrvs2ouhnrxg3LTsoukBuLVDWE/QOdbnEbadRtSlWJOC9gRZ/WE6bJ7F1ht
+	6AeQouuZVFi7YQyv4L/zlTpzaC/5dLftsQ9IANHBlniUrfw8y5X7Le9/dYAMwiswqxy8+yvo3uR84
+	du7QsHmw==;
+Received: from i53875a9f.versanet.de ([83.135.90.159] helo=diego.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1seERR-00042s-Dz; Wed, 14 Aug 2024 15:53:33 +0200
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+To: Sergey 'Jin' Bostandzhyan <jin@mediatomb.cc>
+Cc: Daniel Golle <daniel@makrotopia.org>, robh@kernel.org, krzk+dt@kernel.org,
+ conor+dt@kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+Subject: Re: [PATCH V2 1/2 RESEND] arm64: dts: rockchip: Add DTS for FriendlyARM
+ NanoPi R2S Plus
+Date: Wed, 14 Aug 2024 15:53:31 +0200
+Message-ID: <2687101.CFs8Y8CuNP@diego>
+References: <22bbec28-41c1-4f36-b776-6e091bf118d9@kernel.org> <3733110.CjrmPviFsx@diego>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <2478bc8a787d07cd3e412b6ee4400669.sboyd@kernel.org>
-Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240814_055600_766149_2F8DF567 
-X-CRM114-Status: GOOD (  10.88  )
+X-CRM114-CacheID: sfid-20240814_065353_673154_85E1C594 
+X-CRM114-Status: GOOD (  68.19  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,28 +69,329 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, Aug 13, 2024 at 05:01:50PM -0700, Stephen Boyd wrote:
-> Quoting Andy Shevchenko (2024-08-13 01:37:48)
-> > On Thu, Jun 06, 2024 at 07:09:30PM +0300, Andy Shevchenko wrote:
+Am Mittwoch, 14. August 2024, 14:24:03 CEST schrieb Sergey 'Jin' Bostandzhy=
+an:
+> On Wed, Aug 14, 2024 at 01:36:43PM +0200, Heiko St=FCbner wrote:
+> > Am Mittwoch, 14. August 2024, 13:21:38 CEST schrieb Sergey 'Jin' Bostan=
+dzhyan:
+> > > Hi,
+> > > =
 
-...
+> > > On Sat, Aug 10, 2024 at 09:11:56PM +0200, Heiko St=FCbner wrote:
+> > > > Am Montag, 5. August 2024, 10:59:35 CEST schrieb Sergey 'Jin' Bosta=
+ndzhyan:
+> > > > > On Sun, Aug 04, 2024 at 01:27:50AM +0100, Daniel Golle wrote:
+> > > > > > On Thu, Aug 01, 2024 at 05:57:35PM +0000, Sergey Bostandzhyan w=
+rote:
+> > > > > > > The R2S Plus is basically an R2S with additional eMMC.
+> > > > > > > =
 
-> > >   clk: mmp: Switch to use kmemdup_array()
-> > 
-> > >   clk: visconti: Switch to use kmemdup_array()
-> 
-> I have them all as "changes requested" so please resend.
+> > > > > > > The eMMC configuration for the DTS has been extracted and cop=
+ied from
+> > > > > > > rk3328-nanopi-r2.dts, v2017.09 branch from the friendlyarm/ub=
+oot-rockchip
+> > > > > > > repository.
+> > > > > > > =
 
-Done (Message-Id: 20240814125513.2637955-1-andriy.shevchenko@linux.intel.com).
+> > > > > > > Signed-off-by: Sergey Bostandzhyan <jin@mediatomb.cc>
+> > > > > > > ---
+> > > > > > >  arch/arm64/boot/dts/rockchip/Makefile         |  1 +
+> > > > > > >  .../dts/rockchip/rk3328-nanopi-r2s-plus.dts   | 31 +++++++++=
+++++++++++
+> > > > > > >  2 files changed, 32 insertions(+)
+> > > > > > >  create mode 100644 arch/arm64/boot/dts/rockchip/rk3328-nanop=
+i-r2s-plus.dts
+> > > > > > > =
 
--- 
-With Best Regards,
-Andy Shevchenko
+> > > > > > > diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm=
+64/boot/dts/rockchip/Makefile
+> > > > > > > index fda1b980eb4b..36258dc8dafd 100644
+> > > > > > > --- a/arch/arm64/boot/dts/rockchip/Makefile
+> > > > > > > +++ b/arch/arm64/boot/dts/rockchip/Makefile
+> > > > > > > @@ -20,6 +20,7 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) +=3D rk3328-evb=
+.dtb
+> > > > > > >  dtb-$(CONFIG_ARCH_ROCKCHIP) +=3D rk3328-nanopi-r2c.dtb
+> > > > > > >  dtb-$(CONFIG_ARCH_ROCKCHIP) +=3D rk3328-nanopi-r2c-plus.dtb
+> > > > > > >  dtb-$(CONFIG_ARCH_ROCKCHIP) +=3D rk3328-nanopi-r2s.dtb
+> > > > > > > +dtb-$(CONFIG_ARCH_ROCKCHIP) +=3D rk3328-nanopi-r2s-plus.dtb
+> > > > > > >  dtb-$(CONFIG_ARCH_ROCKCHIP) +=3D rk3328-orangepi-r1-plus.dtb
+> > > > > > >  dtb-$(CONFIG_ARCH_ROCKCHIP) +=3D rk3328-orangepi-r1-plus-lts=
+.dtb
+> > > > > > >  dtb-$(CONFIG_ARCH_ROCKCHIP) +=3D rk3328-rock64.dtb
+> > > > > > > diff --git a/arch/arm64/boot/dts/rockchip/rk3328-nanopi-r2s-p=
+lus.dts b/arch/arm64/boot/dts/rockchip/rk3328-nanopi-r2s-plus.dts
+> > > > > > > new file mode 100644
+> > > > > > > index 000000000000..7b83090a2145
+> > > > > > > --- /dev/null
+> > > > > > > +++ b/arch/arm64/boot/dts/rockchip/rk3328-nanopi-r2s-plus.dts
+> > > > > > > @@ -0,0 +1,31 @@
+> > > > > > > +// SPDX-License-Identifier: GPL-2.0+
+> > > > > > > +/*
+> > > > > > > + * (C) Copyright 2018 FriendlyElec Computer Tech. Co., Ltd.
+> > > > > > > + * (http://www.friendlyarm.com)
+> > > > > > > + *
+> > > > > > > + * (C) Copyright 2016 Rockchip Electronics Co., Ltd
+> > > > > > > + */
+> > > > > > > +
+> > > > > > > +/dts-v1/;
+> > > > > > > +#include "rk3328-nanopi-r2s.dts"
+> > > > > > > +
+> > > > > > > +/ {
+> > > > > > > +	model =3D "FriendlyElec NanoPi R2S Plus";
+> > > > > > > +	compatible =3D "friendlyarm,nanopi-r2s-plus", "rockchip,rk3=
+328";
+> > > > > > > +
+> > > > > > > +	aliases {
+> > > > > > > +		mmc1 =3D &emmc;
+> > > > > > > +	};
+> > > > > > > +};
+> > > > > > > +
+> > > > > > > +&emmc {
+> > > > > > > +	bus-width =3D <8>;
+> > > > > > > +	cap-mmc-highspeed;
+> > > > > > > +	supports-emmc;
+> > > > > > > +	disable-wp;
+> > > > > > > +	non-removable;
+> > > > > > > +	num-slots =3D <1>;
+> > > > > > > +	pinctrl-names =3D "default";
+> > > > > > > +	pinctrl-0 =3D <&emmc_clk &emmc_cmd &emmc_bus8>;
+> > > > > > =
+
+> > > > > > I think it's worth adding
+> > > > > > =
+
+> > > > > > 	mmc-hs200-1_8v;
+> > > > > > =
+
+> > > > > > =
+
+> > > > > > I've tried getting the best speed possible and while HS400 with=
+ and
+> > > > > > without enhanced strobe did NOT work, hs200 works just fine.
+> > > > > > [    0.459863] mmc_host mmc1: Bus speed (slot 0) =3D 50000000Hz=
+ (slot req 52000000Hz, actual 50000000HZ div =3D 0)
+> > > > > > [    0.460884] mmc_host mmc1: Bus speed (slot 0) =3D 150000000H=
+z (slot req 150000000Hz, actual 150000000HZ div =3D 0)
+> > > > > > ...
+> > > > > > [    0.728220] dwmmc_rockchip ff520000.mmc: Successfully tuned =
+phase to 194
+> > > > > > [    0.728940] mmc1: new HS200 MMC card at address 0001
+> > > > > > [    0.730774] mmcblk1: mmc1:0001 A3A551 28.9 GiB
+> > > > > > [    0.733262]  mmcblk1: p1 p2
+> > > > > > [    0.734562] mmcblk1boot0: mmc1:0001 A3A551 4.00 MiB
+> > > > > > [    0.736818] mmcblk1boot1: mmc1:0001 A3A551 4.00 MiB
+> > > > > > [    0.738503] mmcblk1rpmb: mmc1:0001 A3A551 16.0 MiB, chardev =
+(245:0)
+> > > > > > =
+
+> > > > > > root@OpenWrt:/# hdparm -t /dev/mmcblk1
+> > > > > > =
+
+> > > > > > /dev/mmcblk1:
+> > > > > >  Timing buffered disk reads: 342 MB in  3.00 seconds =3D 113.81=
+ MB/sec
+> > > > > > =
+
+> > > > > > =
+
+> > > > > > Without 'mmc-hs200-1_8v' property in DT the eMMC is detected as
+> > > > > > [    0.440465] mmc_host mmc1: Bus speed (slot 0) =3D 50000000Hz=
+ (slot req 52000000Hz, actual 50000000HZ div =3D 0)
+> > > > > > [    0.442032] mmc1: new high speed MMC card at address 0001
+> > > > > > [    0.444261] mmcblk1: mmc1:0001 A3A551 28.9 GiB
+> > > > > > [    0.447388]  mmcblk1: p1 p2
+> > > > > > [    0.448744] mmcblk1boot0: mmc1:0001 A3A551 4.00 MiB
+> > > > > > [    0.451065] mmcblk1boot1: mmc1:0001 A3A551 4.00 MiB
+> > > > > > [    0.452871] mmcblk1rpmb: mmc1:0001 A3A551 16.0 MiB, chardev =
+(245:0)
+> > > > > > =
+
+> > > > > > =
+
+> > > > > > root@OpenWrt:/# hdparm -t /dev/mmcblk1
+> > > > > > =
+
+> > > > > > /dev/mmcblk1:
+> > > > > >  Timing buffered disk reads: 134 MB in  3.03 seconds =3D  44.18=
+ MB/sec
+> > > > > > =
+
+> > > > > > =
+
+> > > > > > > +	status =3D "okay";
+> > > > > > > +};
+> > > > > > =
+
+> > > > > > I'm right now trying to get SDIO RTL8822CS working, so far I'm =
+out of luck,
+> > > > > > but it can be added later once we got it working.
+> > > > > =
+
+> > > > > would you be interested in taking over my attempted patches? Thin=
+g is,
+> > > > > that I am a userspace guy who only copy-pasted some entries from
+> > > > > FriendlyElec and things happened to work, but I really have no cl=
+ue what I am
+> > > > > doing when it comes to hardware and DTS. I see that some changes =
+were suggested, =
+
+> > > > > not only by you above, but also by others earlier and I have litt=
+le
+> > > > > understanding of where I should be inserting what and how.
+> > > > > =
+
+> > > > > At this point I think it would make more sense if someone who act=
+ually
+> > > > > understands what they are doing would continue to tune the DTS :)
+> > > > > =
+
+> > > > > So it'd be great if either you or anyone else would be willing to=
+ take
+> > > > > over?
+> > > > =
+
+> > > > Though, a board devicetree is a nice way to get "your feet wet" in =
+the
+> > > > kernel :-) and for a lot of people scratching ones own itches gets =
+them
+> > > > started.
+> > > =
+
+> > > While this may very well be true, my main issue is not the DT syntax,
+> > > but the lack of understanding of the underlying hardware and also a l=
+ack of
+> > > enthusiasm to dive into the hardware topics - I prefer to stay in
+> > > userspace where the kernel provides a very nice abstraction to all th=
+ose =
+
+> > > details ;)
+> > =
+
+> > No worries :-) .
+> > =
+
+> > Though in this case you're "on the hook" for the board devicetree :-D .
+> > =
+
+> > =
+
+> > > > The devicetree is easy enough, also looks correct and you even got =
+the
+> > > > binding change correct - and you're the person with the actual boar=
+d :-) .
+> > > > =
+
+> > > > Could you possibly test if the   mmc-hs200-1_8v; property works for=
+ you?
+> > > =
+
+> > > It does, I get pretty much the same results as Daniel:
+> > > =
+
+> > > root@nanopi-r2s-plus:~# hdparm -t /dev/mmcblk1
+> > > /dev/mmcblk1:
+> > >  Timing buffered disk reads: 134 MB in  3.04 seconds =3D  44.13 MB/sec
+> > > =
+
+> > > With mmc-hs200-1_8v:
+> > > =
+
+> > > root@nanopi-r2s-plus:~# hdparm -t /dev/mmcblk1
+> > >  /dev/mmcblk1:
+> > >   Timing buffered disk reads: 340 MB in  3.01 seconds =3D 113.08 MB/s=
+ec
+> > > =
+
+> > > Should I add a commit on top with this change and submit a v3 patchse=
+t?
+> > > =
+
+> > > On Thu, Aug 01, 2024 at 11:22:27PM +0200, Heiko St=FCbner wrote:
+> > > > general remark, please don't send new versions as threaded replies =
+to
+> > > > old
+> > > > versions. The normal case for git-send-email is to create a new thr=
+ead
+> > > > and this continuing inside the old thread confues tooling.
+> > > =
+
+> > > In case you tell me to go ahead with a v3 set, should it be in this
+> > > thread or not? I understood RESEND's should be new, but updates should
+> > > stay in the thread, right?
+> > > =
+
+> > > Sorry, I actually did read the guides, but seems misunderstood what I=
+ should
+> > > be doing as I inserted the in-reply-to header in my last RESEND.
+> > =
+
+> > Please do a v3 ... in a new thread.
+> =
+
+> There was one other note though to which I did not receive a clear
+> repsonse. Bjoern A. Zeeb noticed, that the newer version from the
+> rockhip repo has // SPDX-License-Identifier: (GPL-2.0+ OR MIT) while the
+> one which I copied the code from did not have the "OR MIT" part, hence I
+> also did not have it in my patch.
+> =
+
+> Am I supposed to leave it as is, since I copied the block from the
+> sources which indeed were GP-2.0 only or should I add the "OR MIT" part
+> as it is apparently the case in newer versions of the dts file from
+> rockhcip?
+
+the code you based your dts on changed licenses, so I guess you're also
+allowed to change. You could very well also just have "copied it again"
+from those new sources under GPL+MIT ;-)
+
+And yep, dual licensing is preferred.
+
+> > Also for the process, please add the Ack you received for patch 2
+> > in that v3.
+> =
+
+> You mean, ammend the appropriate commit and add the Acked-By to the
+> commit message? OK, will do.
+
+correct. That is the expecting thing to do. DT maintainers see so many
+patches that they won't keep track of "oh I have seen that already", so
+would in the worst case, re-review the binding patch. By adding the Ack
+they can just see (and probably tooling can simply filter out) those that
+are already done.
+
+
+> On Wed, Aug 14, 2024 at 01:34:13PM +0200, Diederik de Haas wrote:
+> > On Wed Aug 14, 2024 at 1:30 PM CEST, Diederik de Haas wrote:
+> > > On Wed Aug 14, 2024 at 1:21 PM CEST, Sergey 'Jin' Bostandzhyan
+> > > wrote:
+> > > > In case you tell me to go ahead with a v3 set, should it be in
+> > > > this
+> > > > thread or not? I understood RESEND's should be new, but updates
+> > > > should
+> > > > stay in the thread, right?
+> > >
+> > > No, a new series should be its own thread too.
+> > =
+
+> > More correctly and hopefully more clearly:
+> =
+
+> Understood, thank you!
+> =
+
+> Kind regards,
+> Sergey
+> =
+
+> =
+
+
+
 
 
 
