@@ -4,58 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47D67C52D7F
-	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Aug 2024 20:23:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3D975C52D7F
+	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Aug 2024 21:53:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=sPBU5sSWIa+wc4WVPiSuL2/hKL1g7jIp8YkdeeZuviI=; b=ZycDvttfvwOtQX
-	UY/584j1BvKDn4/n3Gpyd4SR+LzBAFvZ/oa9PyUnxElg1rYVsyBiyyfgo+LiH3t9mHA9H6FXG5x6N
-	/2+S/foEBBS+e2hbAKQEtaeigWbOMhyTt6SHWawSc92c3VEKxLEw8PCG4KPNDwFqq/eNvGI/2bYTR
-	zieIXBe8DiVHkr5evnS3reFsDtFTcdub6BsDyvR+aUJ40fjftE23Xq5JPumb1EIbvayIhh+ga4Ptb
-	iTIweAsLyHINxui6TgHP0hDx9w/YwjoQV+/lUEt7VO52cVsPGhRvmEAUBbT38y6RHeJjLFOxA/b/g
-	RN9EueWOMQlrYWuEWp3g==;
+	List-Owner; bh=RT4G6OkdTIcQExI/xiwW5f10JOsh7PozlnJqCL14BvA=; b=VHS7z7PvmK/M3r
+	QiTQkTKSg4WJTzmaGoKgWfMYjgB392bULWN0EffxhNt7XPEiFn9YD32eIHVLKuGqQ9KcpJDMq8I1q
+	OpRNLw3j0nYXgKWB8l6OfoSWh09foiEGQhJCS4uA387zod9sJ2I73/QcEmVrszYLC0c970ns3fmYQ
+	hRm02rijRItOhSzOXHKiQLUQLPsmYNM3OC/CtjJy808Z6SSEPiyhK1LM4n6UCnmB44aLuFUtzTt77
+	hSJlNmhNqVEg5eWC2v9xEkuGp+PysuaBXWFNz4FtToSeggAwkImCnFYhFSw5VqRMVWHcF2hqdwouG
+	Wf18F7BKHFfqET8Ic3Vw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1seKWN-00000008AMQ-2aQo;
-	Wed, 14 Aug 2024 20:23:03 +0000
-Received: from smtpbgeu1.qq.com ([52.59.177.22])
+	id 1seLwB-00000008NAs-3Eb6;
+	Wed, 14 Aug 2024 21:53:47 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1seKSu-000000089Uw-2h2x
+	id 1seLvn-00000008N9M-2DRL
 	for linux-rockchip@lists.infradead.org;
-	Wed, 14 Aug 2024 20:19:33 +0000
-X-QQ-mid: bizesmtp77t1723666733tpc2c35f
-X-QQ-Originating-IP: 7svP2jYGzlEOZVRd0xTQfN2dD3RCAivIW7bnys9U6QY=
-Received: from [192.168.159.131] ( [106.150.157.243])
-	by bizesmtp.qq.com (ESMTP) with 
-	id ; Thu, 15 Aug 2024 04:18:50 +0800 (CST)
-X-QQ-SSF: 0000000000000000000000000000000
-X-QQ-GoodBg: 0
-X-BIZMAIL-ID: 2262008500744718809
-Message-ID: <71AE5BF8A35A4D3D+d4ff3028-7c0d-475e-95e9-8974bcef1d31@radxa.com>
-Date: Thu, 15 Aug 2024 05:18:49 +0900
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 1/2] dt-bindings: arm: rockchip: add support for Radxa
- ROCK Pi E v3.0
-To: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>
+	Wed, 14 Aug 2024 21:53:27 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+	List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=hCElnUP5OM4oZWFtkQ09mnjhrNyXiNJ1Et4ltpy9AKI=; b=niQyKgx7qSIgChRUhrA1B2Vt6J
+	6tX+AXD4NXTc337XVeUk64/Dlo4IA2jyt8XK3zzwxalcmMCb66f4y29zMvunNULB8LAYlkHiPyc1G
+	3XCRDZ7Gk6+82mIeB2uTPByHRD8iej0eJD4VHLfMuym3QUtnmKYvT4hUTDU0AA+3LZ5anItNnoQ6r
+	VXgpwLl7wf/EAj7pAvSiaKFpp7Uia919PARZ37GdJ7YHoUe5tV//AZlrI24HldxUxg0gwaD8SKtIX
+	ducdtRd5hK6MjLT4IS9jzsIuxlXFx1PtSQC1V/Zszf2jL7PHe38PoV4I2VjYyMo+Kb4s4TfkWMZrF
+	FJyraslw==;
+Received: from i53875a9f.versanet.de ([83.135.90.159] helo=diego.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1seLve-0000iu-NN; Wed, 14 Aug 2024 23:53:14 +0200
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+To: FUKAUMI Naoki <naoki@radxa.com>
 Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
  devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org
-References: <20240814095727.1662908-1-naoki@radxa.com>
- <8FF4228B18A1DFEE+d359188b-64e9-4ce6-8796-f3fecd6a0781@radxa.com>
- <10385642.ICPdZLu4VQ@diego>
-Content-Language: en-US
-From: FUKAUMI Naoki <naoki@radxa.com>
-In-Reply-To: <10385642.ICPdZLu4VQ@diego>
-X-QQ-SENDSIZE: 520
-Feedback-ID: bizesmtp:radxa.com:qybglogicsvrgz:qybglogicsvrgz8a-1
+Subject: Re: [PATCH v4 1/2] dt-bindings: arm: rockchip: add support for Radxa ROCK Pi
+ E v3.0
+Date: Wed, 14 Aug 2024 23:53:13 +0200
+Message-ID: <3456551.yMk1gmxOD6@diego>
+In-Reply-To: <4F2DC0BFBC9A7038+cd76538a-6a56-44a1-9ae6-f81e9088ff48@radxa.com>
+References: <20240814095727.1662908-1-naoki@radxa.com> <9908246.lRi8OiJO2u@diego>
+ <4F2DC0BFBC9A7038+cd76538a-6a56-44a1-9ae6-f81e9088ff48@radxa.com>
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240814_131929_191196_9728F6D5 
-X-CRM114-Status: UNSURE (   8.46  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240814_145323_609499_B2C81B30 
+X-CRM114-Status: GOOD (  20.60  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,31 +70,99 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGksCgpPbiA4LzE0LzI0IDIwOjMyLCBIZWlrbyBTdMO8Ym5lciB3cm90ZToKPiBBbSBNaXR0d29j
-aCwgMTQuIEF1Z3VzdCAyMDI0LCAxMjoyNTo1NCBDRVNUIHNjaHJpZWIgRlVLQVVNSSBOYW9raToK
-Pj4gSGksCj4+Cj4+IE9uIDgvMTQvMjQgMTg6NTcsIEZVS0FVTUkgTmFva2kgd3JvdGU6Cj4+PiBS
-YWR4YSBST0NLIFBpIEUgdjMuMCBpcyBhIGNvbXBhY3QgbmV0d29ya2luZyBTQkNbMV0gdXNpbmcg
-dGhlIFJvY2tjaGlwCj4+PiBSSzMzMjggY2hpcC4KPj4+Cj4+PiBbMV0gaHR0cHM6Ly9yYWR4YS5j
-b20vcHJvZHVjdHMvcm9ja3BpL3BpZQo+Pj4KPj4+IFNpZ25lZC1vZmYtYnk6IEZVS0FVTUkgTmFv
-a2kgPG5hb2tpQHJhZHhhLmNvbT4KPj4+IC0tLQo+Pj4gQ2hhbmdlcyBpbiB2NDoKPj4+IC0gdXBk
-YXRlIGNvbXBhdGlibGUgc3RyaW5nIGZvciBPcGVuV3J0Cj4+Cj4+IHRoaXMgaXMgZm9yIGh0dHBz
-Oi8vZ2l0aHViLmNvbS9vcGVud3J0L29wZW53cnQvaXNzdWVzLzE2MTY4Cj4gCj4gSSB0aGlzIGJl
-Y2F1c2Ugb3BlbndydCB1c2VkIHNvbWUgb3V0LW9mLXRyZWUgZGV2aWNldHJlZT8KCm5vLCBiYXNp
-Y2FsbHkgdGhleSB1c2UgdXBzdHJlYW0gZHRzLgooaW4gdGhpcyBjYXNlLCBkdHMgaXMgYmFja3Bv
-cnRlZCBiZWNhdXNlIHRoZXkgdXNlIHY2LjYga2VybmVsLikKCmdlbmVyYWxseSB0aGVpciBNYWtl
-ZmlsZSBhbmQgc2NyaXB0IHZhcmlhYmxlcyByZWZlciBkdHMgZmlsZW5hbWUuCihkdHMgZmlsZW5h
-bWUgaXMgcmVmZXJyZWQgYXMgcmlnaHQgbmFtZSkKCj4gRm9yIHBlb3BsZSByZWFkaW5nIGFsb25n
-LCBhbGwgdGhlIG90aGVyIHJvY2twaSBkZXZpY2VzIGZvbGxvdyBhCj4gCj4gCXJhZHhhLHJvY2tw
-aS1mb28KCnRoZXJlIGFyZSByb29ja3BpNHggYW5kIHJvY2twaXMgOykKCj4gbmFtaW5nIHNjaGVt
-ZSBpbiB0aGVpciBjb21wYXRpYmxlcyB3aGlsZSBfdGhpc18gbmV3IGVudHJ5IHVzZXMKPiAKPiAJ
-IHJhZHhhLHJvY2stcGktZS12MwoKdGhpcyBpcyBuZXcgdGFyZ2V0LCBzbyBJIHRob3VnaHQgbmV3
-IGZvcm0gY2FuIGJlIHVzZWQuCgpCZXN0IHJlZ2FyZHMsCgotLQpGVUtBVU1JIE5hb2tpClJhZHhh
-IENvbXB1dGVyIChTaGVuemhlbikgQ28uLCBMdGQuCgpfX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgt
-cm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9t
-YWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+Am Mittwoch, 14. August 2024, 22:04:51 CEST schrieb FUKAUMI Naoki:
+> Hi,
+> =
+
+> thanks for the review!
+> =
+
+> On 8/14/24 20:30, Heiko St=FCbner wrote:
+> > Am Mittwoch, 14. August 2024, 11:57:26 CEST schrieb FUKAUMI Naoki:
+> >> Radxa ROCK Pi E v3.0 is a compact networking SBC[1] using the Rockchip
+> >> RK3328 chip.
+> >>
+> >> [1] https://radxa.com/products/rockpi/pie
+> >>
+> >> Signed-off-by: FUKAUMI Naoki <naoki@radxa.com>
+> >> ---
+> >> Changes in v4:
+> >> - update compatible string for OpenWrt
+> >> - drop A-b tag
+> >> Changes in v3:
+> >> - collect A-b tag
+> >> Changes in v2:
+> >> - fix typo in commit message
+> >> - add missing --- in commit message
+> >> - add new section instead of new item in rockchip.yaml
+> >> ---
+> >>   Documentation/devicetree/bindings/arm/rockchip.yaml | 5 +++++
+> >>   1 file changed, 5 insertions(+)
+> >>
+> >> diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Doc=
+umentation/devicetree/bindings/arm/rockchip.yaml
+> >> index 2ad835f4068e..1d426d4e1928 100644
+> >> --- a/Documentation/devicetree/bindings/arm/rockchip.yaml
+> >> +++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
+> >> @@ -790,6 +790,11 @@ properties:
+> >>             - const: radxa,rockpi-e
+> >>             - const: rockchip,rk3328
+> >>   =
+
+> >> +      - description: Radxa ROCK Pi E v3.0
+> >> +        items:
+> >> +          - const: radxa,rock-pi-e-v3
+> >> +          - const: rockchip,rk3328
+> >> +
+> > =
+
+> > Please don't add a separate entry for the simple updated version.
+> > Instead group it with the original Rock Pi e above.
+> > =
+
+> > For how to do it, look at the Radxa Zero 3w/3e .
+> =
+
+> https://patchwork.kernel.org/project/linux-rockchip/patch/20240711210526.=
+40448-1-naoki@radxa.com/
+> =
+
+> is this right way?
+
+Nope. You need an enum. That's the reason I pointed to the Radxa Zero as
+an example [0]
+
+So your entry should look something like:
+
+       - description: Radxa ROCK Pi E
+        items:
+          - enum:
+              - radxa,rockpi-e
+              - radxa,rockpi-e-v3
+          - const: rockchip,rk3328
+
+
+that way the binding matches against both:
+	compatible =3D "radxa,rockpi-e", "rockchip,rk3328"
+as well as
+	compatible =3D "radxa,rockpi-e-v3", "rockchip,rk3328"
+
+
+Hope that helps a bit
+Heiko
+
+
+[0] https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree=
+/Documentation/devicetree/bindings/arm/rockchip.yaml#n844
+
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
