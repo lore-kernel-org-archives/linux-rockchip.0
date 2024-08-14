@@ -4,57 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6FFC7C52D7B
-	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Aug 2024 00:02:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0C15CC52D7B
+	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Aug 2024 03:00:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Date:To:Cc:From:Subject:References:
-	In-Reply-To:MIME-Version:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=UuFFXndUmO7F6MSNW8a0WAdm9X3O+73gZ/B74SSKyQg=; b=m0IFoikT16yu7W
-	xJfyWLgfEIpqwto366ReShLvB/oOTTzbsUMqY593vR0r1OdRuuO8+LeSY1dYZuf7LzFr37+ALw95w
-	WzByxLj3rfAIAiWoCK3l6Y8tfCBLRPBRXocmquU6ekZG5o6sCRatIWx07/X7HrPVZy3/9YyhemQfH
-	SVkxiXZvN5hnRrNRc1i1pN9jntKFo1SZMNfoCldEQfhAG5vh/4fgH1uYPf4viRjTJEEJUevEHO+p8
-	1Jx0QIPKK0XI96W2kmZJWZgkxI4NMC17kV+tSY702mVDzCCD0ZbI6fND3D7yOWxzK059oWnB3St+d
-	jdLWJginJ1MwU9LZfYog==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=FqFCS9gLncJwv4P5cKaCb6AE9wqVwlC6RmE0cc3HDBM=; b=d8BWuNqcM/X6Si
+	fFU0HZXQd85i2CV8JyfrF3sv3cVmzwBwq+69xNhB2i6SLic/aewmzu+B6txsNkQLtawiY3koJuKGm
+	o7/6xWdUjoS33a1nDGxFwXCkGp6SFQNUJB+97jwv/fFTOum0etYVsH4EpHCP12xJYj+Fa54I8aXA+
+	ga3f/tG2tM52p4kfjOEjM2jhNyAZz3Z9YrATGNgUJx6jqNB4xZKpZKT73YAJWxBFqDs9u39y35AHp
+	UhZOlk31qGXHDzGawoel2nWmrQ/Z7I5XQQ9+/fm++3X41hgJ/lFcsEoFMEQNlUo6wTJFDb+XSSd2v
+	A1yXQZB1lIfIyyLLjASA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1se1TH-00000005Ezy-3V56;
-	Wed, 14 Aug 2024 00:02:35 +0000
-Received: from sin.source.kernel.org ([145.40.73.55])
+	id 1se4FR-00000005XPs-2Fzv;
+	Wed, 14 Aug 2024 03:00:29 +0000
+Received: from szxga04-in.huawei.com ([45.249.212.190])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1se1Sd-00000005Evb-2KgW;
-	Wed, 14 Aug 2024 00:01:57 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 63093CE17E3;
-	Wed, 14 Aug 2024 00:01:53 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 767A0C32782;
-	Wed, 14 Aug 2024 00:01:52 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1723593712;
-	bh=O+tDBnWVqdcf72Sp7gBl+Zs0H0ScKcO7cHY7UGsqRb4=;
-	h=In-Reply-To:References:Subject:From:Cc:To:Date:From;
-	b=fMT8PLDNvelDL+HOD1J1ZYfRGoqt/Q0iK5aJd7x1P+B5EC1E0NLInZLBX3KaqFqyC
-	 r5coCZOcQJoRZVopkzNQsBlYBayN/L78TDPzA8OLLJTBDVCgx1KZkMHEfRTWDzB3si
-	 p1Rwp9OTfazqu73Df99nbhdmHDOBgc2kjIZ7OpIgV7CD7Fp+lY+Lr9tqK3q/ICJpYT
-	 NIl6mLPJ+rn0Hj1sc2tOmD83V0jgkhUfUGRYobSo0fE5ggy+ffDfLcNegEBgypHnYE
-	 HE0HiyNTZVUdxE/Ug6anRB8lTH04PAI0PRmFoPv97XIopx2idgrTyTb4Oqckmh+IJL
-	 RenYj8Jt8LzaQ==
-Message-ID: <2478bc8a787d07cd3e412b6ee4400669.sboyd@kernel.org>
+	id 1se4Em-00000005XKo-2yGl;
+	Wed, 14 Aug 2024 02:59:50 +0000
+Received: from mail.maildlp.com (unknown [172.19.88.163])
+	by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4WkCXN5Mtzz2ClmC;
+	Wed, 14 Aug 2024 10:54:44 +0800 (CST)
+Received: from dggpemm500020.china.huawei.com (unknown [7.185.36.49])
+	by mail.maildlp.com (Postfix) with ESMTPS id 54289180019;
+	Wed, 14 Aug 2024 10:59:36 +0800 (CST)
+Received: from huawei.com (10.67.174.77) by dggpemm500020.china.huawei.com
+ (7.185.36.49) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.39; Wed, 14 Aug
+ 2024 10:59:36 +0800
+From: Liao Chen <liaochen4@huawei.com>
+To: <linux-rockchip@lists.infradead.org>,
+	<linux-arm-kernel@lists.infradead.org>
+CC: <linux-kernel@vger.kernel.org>, <jassisinghbrar@gmail.com>,
+	<heiko@sntech.de>, <wxt@rock-chips.com>
+Subject: [PATCH -next] mailbox: rockchip: fix a typo in module autoloading
+Date: Wed, 14 Aug 2024 02:51:47 +0000
+Message-ID: <20240814025147.3875634-1-liaochen4@huawei.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-In-Reply-To: <ZrsbXMVy1Dsi4UZe@smile.fi.intel.com>
-References: <20240606161028.2986587-1-andriy.shevchenko@linux.intel.com> <ZrsbXMVy1Dsi4UZe@smile.fi.intel.com>
-Subject: Re: [PATCH v1 0/4] clk: Switch to use kmemdup_array()
-From: Stephen Boyd <sboyd@kernel.org>
-Cc: Michael Turquette <mturquette@baylibre.com>, Heiko Stuebner <heiko@sntech.de>, Krzysztof Kozlowski <krzk@kernel.org>, Sylwester Nawrocki <s.nawrocki@samsung.com>, Chanwoo Choi <cw00.choi@samsung.com>, Alim Akhtar <alim.akhtar@samsung.com>, Nobuhiro Iwamatsu <nobuhiro1.iwamatsu@toshiba.co.jp>
-To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>, Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, Sam Protsenko <semen.protsenko@linaro.org>, linux-arm-kernel@lists.infradead.org, linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-samsung-soc@vger.kernel.org
-Date: Tue, 13 Aug 2024 17:01:50 -0700
-User-Agent: alot/0.10
+X-Originating-IP: [10.67.174.77]
+X-ClientProxiedBy: dggems703-chm.china.huawei.com (10.3.19.180) To
+ dggpemm500020.china.huawei.com (7.185.36.49)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240813_170155_991204_B8FA853F 
-X-CRM114-Status: UNSURE (   8.17  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240813_195949_042785_6570EFD3 
+X-CRM114-Status: GOOD (  11.19  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,18 +68,33 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Quoting Andy Shevchenko (2024-08-13 01:37:48)
-> On Thu, Jun 06, 2024 at 07:09:30PM +0300, Andy Shevchenko wrote:
-> > Replace open coded kmemdup_array(), which does an additional
-> > overflow check.
-> 
-> ...
-> 
-> >   clk: mmp: Switch to use kmemdup_array()
-> 
-> >   clk: visconti: Switch to use kmemdup_array()
+MODULE_DEVICE_TABLE(of, rockchip_mbox_of_match) could let the module
+properly autoloaded based on the alias from of_device_id table. It
+should be 'rockchip_mbox_of_match' instead of 'rockchp_mbox_of_match',
+just fix it.
 
-I have them all as "changes requested" so please resend.
+Fixes: f70ed3b5dc8b ("mailbox: rockchip: Add Rockchip mailbox driver")
+Signed-off-by: Liao Chen <liaochen4@huawei.com>
+---
+ drivers/mailbox/rockchip-mailbox.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/mailbox/rockchip-mailbox.c b/drivers/mailbox/rockchip-mailbox.c
+index 8ffad059e898..4d966cb2ed03 100644
+--- a/drivers/mailbox/rockchip-mailbox.c
++++ b/drivers/mailbox/rockchip-mailbox.c
+@@ -159,7 +159,7 @@ static const struct of_device_id rockchip_mbox_of_match[] = {
+ 	{ .compatible = "rockchip,rk3368-mailbox", .data = &rk3368_drv_data},
+ 	{ },
+ };
+-MODULE_DEVICE_TABLE(of, rockchp_mbox_of_match);
++MODULE_DEVICE_TABLE(of, rockchip_mbox_of_match);
+ 
+ static int rockchip_mbox_probe(struct platform_device *pdev)
+ {
+-- 
+2.34.1
+
 
 _______________________________________________
 Linux-rockchip mailing list
