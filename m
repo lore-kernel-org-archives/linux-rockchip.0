@@ -4,41 +4,41 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 092D4C52D7B
-	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Aug 2024 17:03:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A57D4C52D7B
+	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Aug 2024 17:04:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=xQXozA2HEO9/OqzrEWfjxoW8qIBiB5yLE/bljTSmmZk=; b=eaikV1GOUOi7Vt
-	FSzw4i8kucutgol5ZAmKMSwvbT939XfL6zEGvq32ForK81uPzZ3hwwI/Ot82JtXMpPf32nuqvTO5B
-	/p/yoMmb1ydOmfdIpdAWjRHR7u3BqUGOTpFed2CH+veUrJK009t3FIv+JOL1NngwOxmX4F22Kjjh7
-	Hxf/jB/SSX/JbLyyffbeF+rqBaLr0FU2+YtXPXlpeD/DwaC6/XxDRSFNknnQ/cT0/1nwdFGfwca7F
-	opfwv4k8r6r1HQtCWHBX8JlnKx5bVb9TJK0PDrkzY/Dq/Q/wo6NxkU5JXefXCwn000OMnDWQ3oWb+
-	z86q0tpOoZrwfG3MB98g==;
+	List-Owner; bh=CDsVm6e74nsMOIffP0ZbUS/pf/5sV4iSWDMy4gEbFLg=; b=SOZ01cPvKCuFEV
+	Zy5OyH+t8X/LoMaLu8P4zKGKoiZHotPHXfAXJcCsFNYT2rZ1uHhFpFNZnsgpWBCONfyHImIgzNKqH
+	m3kLObRIg+Zz7x78dUgEx7rQAQSFG//Z1IMmiVZQoACW3E9o5NlNzQPC2+seAQBCP/8sTqW569HCg
+	45m1JvfK3qAWHyLS7tZol7tlwu11L3bHOxjoD7PZZcFtQa81oanauafH7p+k/6yhVzf1hE+KyPx6v
+	8sFbWC+iJ1qbvdgeGcDsErJ8nKF0tFtFJAdBnnDAwdz4rj4FbuJ7zS1/81T15xmbGhwzqv6bzSoUn
+	c9b/IOqlXaqc3ep+bQew==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1seHOt-00000007lUs-3O5g;
-	Wed, 14 Aug 2024 17:03:07 +0000
+	id 1seHQ7-00000007lmi-20Y6;
+	Wed, 14 Aug 2024 17:04:23 +0000
 Received: from xn--80adja5bqm.su ([198.44.140.76])
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1seHNg-00000007lC1-45qF;
-	Wed, 14 Aug 2024 17:01:54 +0000
+	id 1seHNj-00000007lD6-2uxV;
+	Wed, 14 Aug 2024 17:01:56 +0000
 Received: by xn--80adja5bqm.su (Postfix, from userid 1000)
-	id ADA7340460CF; Wed, 14 Aug 2024 17:01:15 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 xn--80adja5bqm.su ADA7340460CF
+	id 77AD840460D0; Wed, 14 Aug 2024 17:01:17 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 xn--80adja5bqm.su 77AD840460D0
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=mediatomb.cc;
-	s=default; t=1723654875;
-	bh=ACf6VgbHVRXgS+SfXwLNva9kdcJ56r93s9Sim2553XU=;
+	s=default; t=1723654877;
+	bh=FhHzZ7Fofg7D9EyPQCAwN+Azjn9o2X8l0uUXnvwgdA0=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=BXrTPXh5uUagGPopLbSjTJE+04t339oOT9bQgn2PzWBtwXPg355OBnLtjR1nR+uNE
-	 YtrHEk1RQm8Gd2IRYYPSClwFAxG9eI5A3fbiHXiWIRO2P774jXpR4DNT3zxa+HVI/N
-	 5EfPr8JYGwC9KW9IKhZ29OnNP1N0oQTp2Zy1+8qiFQxFpRhDE6B8Yo4jzqGEsfTdUQ
-	 YwTF335CQOUAV5lcjQnVrz9IgRyXyBOlODit4CLEPCMZIlC1R5MJ3w2e6cqDFjcUhN
-	 3QDSkzEKscjAQ9h2YK54jS7zcsAGG4dZAK29xozr/uYYmZ+lUo6nGV+ADsKOcZ2u1f
-	 nHadmjNvyMUFw==
+	b=KtR4RYZjwnDWPF/ssvHdl0xyQzyTKC83HYw4xaa0GPlSKthQKyIXpLCpO8cqxExYY
+	 HiKxh17wsBAQ1xVvyvLN8fvDVZaAJpo8VnQx+qtM3p0IRlS0taUU2VZ4ir8Qo6es8r
+	 5x4gVUbMyCmBwqwH99pkaEIbDaCDhi07wBY/1XmPZGAUu6QewJYwn1CpVcj0WeTeQP
+	 jqKUno2sKWARSK/CCbUuB5+aOA6PXn5yhHNyKToU5NTcycoH+mN/UjzSZAlox4WErN
+	 vI/LP9mQxm8Z1pEB5qJzEN9GpChczs0RlL458/2awFng1uWu0Ch6xTY8Sdenj7o28l
+	 sudT/0euU3WDw==
 From: Sergey Bostandzhyan <jin@mediatomb.cc>
 To: robh@kernel.org,
 	krzk+dt@kernel.org,
@@ -49,16 +49,17 @@ Cc: devicetree@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	Sergey Bostandzhyan <jin@mediatomb.cc>
-Subject: [PATCH v3 1/3] arm64: dts: rockchip: Add DTS for FriendlyARM NanoPi R2S Plus
-Date: Wed, 14 Aug 2024 17:00:46 +0000
-Message-Id: <20240814170048.23816-2-jin@mediatomb.cc>
+Subject: [PATCH v3 2/3] dt-bindings: arm: rockchip: Add NanoPi R2S Plus
+Date: Wed, 14 Aug 2024 17:00:47 +0000
+Message-Id: <20240814170048.23816-3-jin@mediatomb.cc>
 X-Mailer: git-send-email 2.27.0
 In-Reply-To: <20240814170048.23816-1-jin@mediatomb.cc>
 References: <20240814170048.23816-1-jin@mediatomb.cc>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240814_100153_077525_B1F7BB77 
-X-CRM114-Status: GOOD (  13.16  )
+X-CRM114-CacheID: sfid-20240814_100155_819891_B64FD313 
+X-CRM114-Status: UNSURE (   8.41  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,68 +76,26 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The R2S Plus is basically an R2S with additional eMMC.
-
-The eMMC configuration for the DTS has been extracted and copied from
-rk3328-nanopi-r2.dts, v2017.09 branch from the friendlyarm/uboot-rockchip
-repository.
+Add the NanoPi R2S Plus variant, which is an R2S with eMMC.
 
 Signed-off-by: Sergey Bostandzhyan <jin@mediatomb.cc>
+Acked-by: Rob Herring (Arm) <robh@kernel.org>
 ---
- arch/arm64/boot/dts/rockchip/Makefile         |  1 +
- .../dts/rockchip/rk3328-nanopi-r2s-plus.dts   | 31 +++++++++++++++++++
- 2 files changed, 32 insertions(+)
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3328-nanopi-r2s-plus.dts
+ Documentation/devicetree/bindings/arm/rockchip.yaml | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
-index fda1b980eb4b..36258dc8dafd 100644
---- a/arch/arm64/boot/dts/rockchip/Makefile
-+++ b/arch/arm64/boot/dts/rockchip/Makefile
-@@ -20,6 +20,7 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3328-evb.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3328-nanopi-r2c.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3328-nanopi-r2c-plus.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3328-nanopi-r2s.dtb
-+dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3328-nanopi-r2s-plus.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3328-orangepi-r1-plus.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3328-orangepi-r1-plus-lts.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3328-rock64.dtb
-diff --git a/arch/arm64/boot/dts/rockchip/rk3328-nanopi-r2s-plus.dts b/arch/arm64/boot/dts/rockchip/rk3328-nanopi-r2s-plus.dts
-new file mode 100644
-index 000000000000..12eabdbf8fe8
---- /dev/null
-+++ b/arch/arm64/boot/dts/rockchip/rk3328-nanopi-r2s-plus.dts
-@@ -0,0 +1,31 @@
-+// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
-+/*
-+ * (C) Copyright 2018 FriendlyElec Computer Tech. Co., Ltd.
-+ * (http://www.friendlyarm.com)
-+ *
-+ * (C) Copyright 2016 Rockchip Electronics Co., Ltd
-+ */
-+
-+/dts-v1/;
-+#include "rk3328-nanopi-r2s.dts"
-+
-+/ {
-+	model = "FriendlyElec NanoPi R2S Plus";
-+	compatible = "friendlyarm,nanopi-r2s-plus", "rockchip,rk3328";
-+
-+	aliases {
-+		mmc1 = &emmc;
-+	};
-+};
-+
-+&emmc {
-+	bus-width = <8>;
-+	cap-mmc-highspeed;
-+	supports-emmc;
-+	disable-wp;
-+	non-removable;
-+	num-slots = <1>;
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&emmc_clk &emmc_cmd &emmc_bus8>;
-+	status = "okay";
-+};
+diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
+index 1ef09fbfdfaf..e3121d4eba18 100644
+--- a/Documentation/devicetree/bindings/arm/rockchip.yaml
++++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
+@@ -216,6 +216,7 @@ properties:
+               - friendlyarm,nanopi-r2c
+               - friendlyarm,nanopi-r2c-plus
+               - friendlyarm,nanopi-r2s
++              - friendlyarm,nanopi-r2s-plus
+           - const: rockchip,rk3328
+ 
+       - description: FriendlyElec NanoPi4 series boards
 -- 
 2.20.1
 
