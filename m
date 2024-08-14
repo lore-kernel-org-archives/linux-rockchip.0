@@ -4,58 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 381DAC52D7F
-	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Aug 2024 06:13:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E58F9C3DA4A
+	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Aug 2024 07:41:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=M1wAK8lZYEPKQ26XGTwcliNh/zbZueVN5+ioIaQoUwM=; b=A2DYUAds92vaFK
-	PuABi68Epej3lBZSqZG6pIlpC8hX4DDwaVTa/D5fKa5vgeI9uh13MdAVY5jrtaDznUNIC9KY0P6NZ
-	Fh3hwz+fqDL6qds+BHl1/7nxmf8sk/PU3xUJyh8SuMcfrwwQIZY614ivmHehDXIIlmpiWLi4fVwo9
-	lvtqW/mqjHqrXPE0CpQR1Drvg1UWyVCuelGTOPwA42zlCJb5sLIS2gtV7S6SS2z4J05ULKXxYCvsV
-	qv9eZ5TQbVU9s5QEJU9Ba2E7E09jhAYPkkAFcEoRuZnLLabjnSikEIL7gLOuJvYhzKRioOuboadva
-	PeNnTRIRzO/CUuHlxuCw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Subject:To:From:Date:
+	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
+	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=2fcgD7I2tHIVsU9QXZXKAwzqgU+6IQI/2EDv/39M108=; b=2x5n0kcxYMlKor
+	KEdKlA4v++XtBl13PDMY/hZnuNeYLhIsq/6bmZPCizVaHQk6hB3G30hWqsuXrtEuX7QXnp2G2ak+y
+	5IibuV9K+cAddbCjUEZ8xF6I135Zt2RAwt99V+oNHlgUmBkXjDLfTKsXDS2w2Sbb8mSOZ9Ecji7Ib
+	nKNZZ3K9U6h6B4Z8Ri6cOGHpjuiYT8Gr1ZjSyXuZdK+K0MnjN2myWRFBWM0mjip+G9gFtOxznW/QO
+	SMWv5WCVOG3SDo+slgMDhmFoSfTN0Lw6ysyp2qeyr0yVEWBr1AYswuCgHK6KO4dQGDA+GvPTnKjUw
+	LTK9yd+BF+DuB4r5nd5Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1se7GW-00000005tFA-07qd;
-	Wed, 14 Aug 2024 06:13:48 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1se8cn-00000006636-3pgx;
+	Wed, 14 Aug 2024 07:40:53 +0000
+Received: from mail.widebizscope.pl ([51.77.245.187])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1se7GO-00000005tE2-3MQ3;
-	Wed, 14 Aug 2024 06:13:46 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
-	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=j21engmFs3GELUMW77iDDQjhaPDOeHUS9ui1dl3zxrw=; b=JhfeJuInZJtIHq01Ek4VKUtrGO
-	LiuqF/40ahXHrkWuILM0WLlqQezvG21QVLvdljpoVYdGvsuqLkCGtJNL1x14Or1GVa4KoEjyeSxtH
-	aIRULXOGnDFn6QiKteTyipFz1NxtOn7PgH9xu8LRq55U+JHN3sVuSmJI+NFqOCW8RDkGvjz+zfikn
-	7lQhWZUFXSB+dZah5x7BrGo77sLM24ieisnPrBbXrE8CY+RWSiFHbRZD0xJfZ1zj18kIs9DCWLFYE
-	0yPxFcGLnBDBLM8ZiYBa1pjtg1ziCv8H90rNfwpnizYQPl8d/u6Wyw/MOBzdXdgT70aCZszVfa6lR
-	QSwHMhlw==;
-Received: from i53875a9f.versanet.de ([83.135.90.159] helo=diego.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1se7GJ-00007F-LA; Wed, 14 Aug 2024 08:13:35 +0200
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- Liao Chen <liaochen4@huawei.com>
-Cc: linux-kernel@vger.kernel.org, jassisinghbrar@gmail.com, wxt@rock-chips.com
-Subject: Re: [PATCH -next] mailbox: rockchip: fix a typo in module autoloading
-Date: Wed, 14 Aug 2024 08:13:34 +0200
-Message-ID: <2181332.62m94kTkzf@diego>
-In-Reply-To: <20240814025147.3875634-1-liaochen4@huawei.com>
-References: <20240814025147.3875634-1-liaochen4@huawei.com>
+	id 1se8ck-0000000662S-1w1k
+	for linux-rockchip@lists.infradead.org;
+	Wed, 14 Aug 2024 07:40:52 +0000
+Received: by mail.widebizscope.pl (Postfix, from userid 1002)
+	id 687C124433; Wed, 14 Aug 2024 09:40:41 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=widebizscope.pl;
+	s=mail; t=1723621246;
+	bh=7b2Hseb9QY/049WYSH5jOQc1GsDAtRo2MBj6O2PAhWg=;
+	h=Date:From:To:Subject:From;
+	b=SD9X5qKRf0fQ7HmBESjr925JRNfNf/TiaGwCXp3e0L/fQQvPcMgcaWjz15604b1eR
+	 xL0cvBhj9dqA+a5qqd2QwpCci6czuNdPs8BKUjiWCOoXd/ArqRZBUik139qqNLW6rN
+	 zqcPsXYshLzsYJrylb671ceCBmkbSPbiRjnC/rJ/k18JE509nCKrmO8w4MstaDty2b
+	 nJAmRxhbT0feRJbaYoOQEQl5HctEwHswvkqY1Ad6zxB6kCQWXLmub0BSfJr64/bekW
+	 Y2+UQzu1hX5v1B8JH/I4EZNnSaHXfHD6jc+dwJDvTZynWQhdbnmVZh3ZZXJfm7D09d
+	 WFHwtPl8DhuIg==
+Received: by mail.widebizscope.pl for <linux-rockchip@lists.infradead.org>; Wed, 14 Aug 2024 07:40:39 GMT
+Message-ID: <20240814084500-0.1.d3.rog6.0.fj8hv267s4@widebizscope.pl>
+Date: Wed, 14 Aug 2024 07:40:39 GMT
+From: "Szczepan Andryszczuk" <szczepan.andryszczuk@widebizscope.pl>
+To: <linux-rockchip@lists.infradead.org>
+Subject: Faktury
+X-Mailer: mail.widebizscope.pl
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240813_231340_900818_4BEBD3A2 
-X-CRM114-Status: GOOD (  10.79  )
+X-CRM114-CacheID: sfid-20240814_004051_193716_F05A061D 
+X-CRM114-Status: UNSURE (   0.31  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,29 +62,19 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Am Mittwoch, 14. August 2024, 04:51:47 CEST schrieb Liao Chen:
-> MODULE_DEVICE_TABLE(of, rockchip_mbox_of_match) could let the module
-> properly autoloaded based on the alias from of_device_id table. It
-> should be 'rockchip_mbox_of_match' instead of 'rockchp_mbox_of_match',
-> just fix it.
-> 
-> Fixes: f70ed3b5dc8b ("mailbox: rockchip: Add Rockchip mailbox driver")
-> Signed-off-by: Liao Chen <liaochen4@huawei.com>
-
-nice catch :-)
-
-Reviewed-by: Heiko Stuebner <heiko@sntech.de>
-
-
-
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+U3phbm93bmkgUGHFhHN0d28sCgpDenkgem1hZ2FqxIUgc2nEmSBQYcWEc3R3byB6IHByb2JsZW1h
+bWkgcMWCeW5ub8WbY2kgZmluYW5zb3dlaiB3eW5pa2FqxIVjeW1pIHogZMWCdWdpY2ggdGVybWlu
+w7N3IHDFgmF0bm/Fm2NpIG9kIGtsaWVudMOzdz8gCgpOYXN6ZSB1c8WCdWdpIGZha3RvcmluZ293
+ZSBtb2fEhSBiecSHIHJvendpxIV6YW5pZW0sIGt0w7NyZWdvIHBvdHJ6ZWJ1amUgUGHFhHN0d2Eg
+ZmlybWEsIGFieSBzenliY2llaiB6YW1pZW5pYcSHIHd5c3Rhd2lvbmUgZmFrdHVyeSBuYSBnb3TD
+s3drxJkuCgpKZcWbbGkgemFsZcW8eSBQYcWEc3R3dSBuYSBuYXR5Y2htaWFzdG93eW0gZG9zdMSZ
+cGllIGRvIMWbcm9ka8OzdyBmaW5hbnNvd3ljaCBwbyB3eXN0YXdpZW5pdSBmYWt0dXJ5LCB6YXBy
+YXN6YW0gZG8ga29udGFrdHUuCgoKUG96ZHJhd2lhbQpTemN6ZXBhbiBBbmRyeXN6Y3p1awoKX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2No
+aXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDov
+L2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
