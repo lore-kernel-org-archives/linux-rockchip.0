@@ -4,48 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5B974C52D7F
-	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Aug 2024 22:27:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ED05DC3DA4A
+	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Aug 2024 22:27:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=2vlePW9IpO/xFzPL1PLGXrvrwd8xHz1esFz5/7or3+c=; b=tpRYKJ/GCUbwxV
-	GBaJ//YS/YxBaatmmj04GWgaKQPanmADYPMtyfzFBVpNmE/fj8BAmZgtUz81yShtMZ3kOXMa0pSca
-	oQNnxBLdxuhQW1C6l4VhtvG84VmQ/wmg/ShYEs6Fj1e10jOEcYDYVtVAezkBvFkPcPGmiZdiybeWO
-	zMGSHctydiXL1Apn4Dt5nVcJkmaTYoi1Xs6hVpCTvzGzD40cbiEpbWUjNqdELKlxnrCedE5p4r7hl
-	YoqxcEO5TM+1Etdi+Dtrcg7d1gsdLisG81ps6LVc4g+thzKMumng23LUCFEs6Hd5h8VNiVQgjeZHe
-	reRKXZpnGbG+gkQCiBsA==;
+	List-Owner; bh=jx4XDK5Na+V0Z0sdh4aQ883zaGKR9XrNT3MJ+Gy6lRc=; b=VE6+mFYCxxk/Kt
+	a0gaTFpB3m8OedjO3k9y0FihxBva+LV3T2CiWr7rMB5qVvnt8dOIvEeKTEjf+NT/hJEiCvEAMDRHd
+	AUlB67v1DMer9gp/2mwcybB799YNl20baGKshBTfIcDJV/ucnGnIQbpi6l9hXB4xdmTWz76/Jg+0B
+	iT9AM1Lda19BywYTYVDNlRkb4sRxxOidhsMMmAOpMpVEfBQ0sZ0rGonTKK9xon6wy67Vkqc1v+gah
+	KKTWy3G9MVsW8BTYRrKv80AbhzHy23ojVmIZGAXk97czLrrYL16RS9aLdtT9Vlw0NHiNkXvQnNxJT
+	ITCNNisBglRPe56I6abA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1seMSb-00000008S13-3OsJ;
-	Wed, 14 Aug 2024 22:27:17 +0000
+	id 1seMSd-00000008S1a-1LHC;
+	Wed, 14 Aug 2024 22:27:19 +0000
 Received: from sender4-op-o14.zoho.com ([136.143.188.14])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1seMSU-00000008Rz5-2So0;
-	Wed, 14 Aug 2024 22:27:14 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1723674422; cv=none; 
+	id 1seMSW-00000008RzT-0yJe;
+	Wed, 14 Aug 2024 22:27:16 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1723674424; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=mfx93T741fEjtPvM/XY6JEMfqbh/b4dSy3OvqsihugBO8gFpOYuUJ+GqX6FH8ixfIZlPyKrgt2jaxmIMuHhx7A129iwrLHHhkX3U8+7hE1nZD+sqbsxPwKDnoeSipgrfG+/FTkxAvtfCVq31r40vIrCaqyNgYmM8l1zWkTgSB4k=
+	b=NhDlqaJFdhyHgN+vLCzIv8j4D9G1R4oFT3vvpkjTHb5sT2UTocrDtNNLcEiNIa2qZoLaV7jWVcuG2Jh9Tz1r6Ne5D1vk6AsFES/Z7IF0VxN5rb4Ut44OLOff6aYrynHV5pCbhB3BjDgUvoLiM8XoIKOTVN4Honwmb0VL/qxW0cM=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1723674422; h=Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=jtk6kXHLiWSb3fabpSTdzCrxBw81ky2Jbh/22xPfH74=; 
-	b=BNrByHHUjJ/MIRKKJnu4Hh66f+z/U5eLYv2l9oZRutvJcKKC+iEbslcSUX2vMqS3+RnMW4df02okb3vUV+Sz/HcyiGi40AUi7Z9iJLM9q0IK4Z9G/Thl0VOho/nybi5AfwimOPSKRTE+gl93kFgYxjAgSn/C6JULikE6eFO4VTA=
+	t=1723674424; h=Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=De9uXx3ci4d/ueP00BBDWL8w2v0cipEWukSVgVhb6+Y=; 
+	b=gaAp3121NdRHwLUB+FeHHgchKSmo+ASXFVcCSroHvjwMXGT2Fi/X8odQKZr6JNEtDinFGqkYoXeedQzV4iHNYp3v0Q+BNW07ZZj8he2gYJfEjsJ2VvFOt5pp/jAefARRNoqLvMdwBTx62cyFImIPG+GXRkmWXqW+K7LCiWjw0nc=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=collabora.com;
 	spf=pass  smtp.mailfrom=detlev.casanova@collabora.com;
 	dmarc=pass header.from=<detlev.casanova@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1723674422;
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1723674424;
 	s=zohomail; d=collabora.com; i=detlev.casanova@collabora.com;
 	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Message-Id:Reply-To;
-	bh=jtk6kXHLiWSb3fabpSTdzCrxBw81ky2Jbh/22xPfH74=;
-	b=L2WDxHTSM0Uh3td0K1yE9nV4mTOKV5kVDOvMZ41DoLM8E4599XtCCsIkrzTBieTt
-	TakR+bkENl254HQB/Uy+jk9rhYbz3Q9ia1TYKIRu3LjkNGFQgcBJphDtMHnixhDJsh9
-	M6U6F9TdOtG7vh1lzzAZx5SV9lkdGzICg+s6H8io=
-Received: by mx.zohomail.com with SMTPS id 1723674420081557.4306191685197;
-	Wed, 14 Aug 2024 15:27:00 -0700 (PDT)
+	bh=De9uXx3ci4d/ueP00BBDWL8w2v0cipEWukSVgVhb6+Y=;
+	b=XuHfnd7I6LJBL4b289G5V67sZD3f8+9hDCl8/qd6fmqKJ1t7ze4P4hvuJJXBYWMf
+	H3bLSim6sv9KDfTbtCIo2LKtMaaBBtBLEg11TdRR7vFY3zeCIJQmwVWBt8qlmiI3aC1
+	9hRS3YmnkDvxHFWMuw/0P1EHSXIzAwpLLttPsPVQ=
+Received: by mx.zohomail.com with SMTPS id 1723674421840805.582818122019;
+	Wed, 14 Aug 2024 15:27:01 -0700 (PDT)
 From: Detlev Casanova <detlev.casanova@collabora.com>
 To: linux-kernel@vger.kernel.org
 Cc: Rob Herring <robh@kernel.org>,
@@ -62,19 +62,18 @@ Cc: Rob Herring <robh@kernel.org>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
 	linux-pm@vger.kernel.org,
-	kernel@collabora.com,
-	Conor Dooley <conor.dooley@microchip.com>
-Subject: [PATCH v4 1/2] dt-bindings: power: Add support for RK3576 SoC
-Date: Wed, 14 Aug 2024 18:26:41 -0400
-Message-ID: <20240814222824.3170-2-detlev.casanova@collabora.com>
+	kernel@collabora.com
+Subject: [PATCH v4 2/2] pmdomain: rockchip: Add support for RK3576 SoC
+Date: Wed, 14 Aug 2024 18:26:42 -0400
+Message-ID: <20240814222824.3170-3-detlev.casanova@collabora.com>
 X-Mailer: git-send-email 2.46.0
 In-Reply-To: <20240814222824.3170-1-detlev.casanova@collabora.com>
 References: <20240814222824.3170-1-detlev.casanova@collabora.com>
 MIME-Version: 1.0
 X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240814_152710_697098_DB12B6EB 
-X-CRM114-Status: GOOD (  13.11  )
+X-CRM114-CacheID: sfid-20240814_152712_349805_C0039DFB 
+X-CRM114-Status: GOOD (  12.57  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,67 +92,98 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Finley Xiao <finley.xiao@rock-chips.com>
 
-Define power domain IDs as described in the TRM and add compatible for
-rockchip,rk3576-power-controller
+Add configuration for RK3576 SoC and list the power domains.
 
 Signed-off-by: Finley Xiao <finley.xiao@rock-chips.com>
-Co-Developed-by: Detlev Casanova <detlev.casanova@collabora.com>
 Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
-Acked-by: Conor Dooley <conor.dooley@microchip.com>
 ---
- .../power/rockchip,power-controller.yaml      |  1 +
- .../dt-bindings/power/rockchip,rk3576-power.h | 30 +++++++++++++++++++
- 2 files changed, 31 insertions(+)
- create mode 100644 include/dt-bindings/power/rockchip,rk3576-power.h
+ drivers/pmdomain/rockchip/pm-domains.c | 45 ++++++++++++++++++++++++++
+ 1 file changed, 45 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/power/rockchip,power-controller.yaml b/Documentation/devicetree/bindings/power/rockchip,power-controller.yaml
-index 0d5e999a58f1b..650dc0aae6f51 100644
---- a/Documentation/devicetree/bindings/power/rockchip,power-controller.yaml
-+++ b/Documentation/devicetree/bindings/power/rockchip,power-controller.yaml
-@@ -41,6 +41,7 @@ properties:
-       - rockchip,rk3368-power-controller
-       - rockchip,rk3399-power-controller
-       - rockchip,rk3568-power-controller
-+      - rockchip,rk3576-power-controller
-       - rockchip,rk3588-power-controller
-       - rockchip,rv1126-power-controller
+diff --git a/drivers/pmdomain/rockchip/pm-domains.c b/drivers/pmdomain/rockchip/pm-domains.c
+index 9b76b62869d0d..64b4d7120d832 100644
+--- a/drivers/pmdomain/rockchip/pm-domains.c
++++ b/drivers/pmdomain/rockchip/pm-domains.c
+@@ -33,6 +33,7 @@
+ #include <dt-bindings/power/rk3368-power.h>
+ #include <dt-bindings/power/rk3399-power.h>
+ #include <dt-bindings/power/rk3568-power.h>
++#include <dt-bindings/power/rockchip,rk3576-power.h>
+ #include <dt-bindings/power/rk3588-power.h>
  
-diff --git a/include/dt-bindings/power/rockchip,rk3576-power.h b/include/dt-bindings/power/rockchip,rk3576-power.h
-new file mode 100644
-index 0000000000000..324a056aa8512
---- /dev/null
-+++ b/include/dt-bindings/power/rockchip,rk3576-power.h
-@@ -0,0 +1,30 @@
-+/* SPDX-License-Identifier: (GPL-2.0 OR MIT) */
-+#ifndef __DT_BINDINGS_POWER_RK3576_POWER_H__
-+#define __DT_BINDINGS_POWER_RK3576_POWER_H__
+ struct rockchip_domain_info {
+@@ -175,6 +176,9 @@ struct rockchip_pmu {
+ #define DOMAIN_RK3568(name, pwr, req, wakeup)		\
+ 	DOMAIN_M(name, pwr, pwr, req, req, req, wakeup)
+ 
++#define DOMAIN_RK3576(name, p_offset, pwr, status, r_status, r_offset, req, idle, wakeup)	\
++	DOMAIN_M_O_R(name, p_offset, pwr, status, 0, r_status, r_status, r_offset, req, idle, idle, wakeup)
 +
-+/* VD_NPU */
-+#define RK3576_PD_NPU		0
-+#define RK3576_PD_NPUTOP	1
-+#define RK3576_PD_NPU0		2
-+#define RK3576_PD_NPU1		3
+ /*
+  * Dynamic Memory Controller may need to coordinate with us -- see
+  * rockchip_pmu_block().
+@@ -1106,6 +1110,28 @@ static const struct rockchip_domain_info rk3568_pm_domains[] = {
+ 	[RK3568_PD_PIPE]	= DOMAIN_RK3568("pipe", BIT(8), BIT(11), false),
+ };
+ 
++static const struct rockchip_domain_info rk3576_pm_domains[] = {
++	[RK3576_PD_NPU]		= DOMAIN_RK3576("npu",    0x0, BIT(0),  BIT(0), 0,       0x0, 0,       0,       false),
++	[RK3576_PD_NVM]		= DOMAIN_RK3576("nvm",    0x0, BIT(6),  0,      BIT(6),  0x4, BIT(2),  BIT(18), false),
++	[RK3576_PD_SDGMAC]	= DOMAIN_RK3576("sdgmac", 0x0, BIT(7),  0,      BIT(7),  0x4, BIT(1),  BIT(17), false),
++	[RK3576_PD_AUDIO]	= DOMAIN_RK3576("audio",  0x0, BIT(8),  0,      BIT(8),  0x4, BIT(0),  BIT(16), false),
++	[RK3576_PD_PHP]		= DOMAIN_RK3576("php",    0x0, BIT(9),  0,      BIT(9),  0x0, BIT(15), BIT(15), false),
++	[RK3576_PD_SUBPHP]	= DOMAIN_RK3576("subphp", 0x0, BIT(10), 0,      BIT(10), 0x0, 0,       0,       false),
++	[RK3576_PD_VOP]		= DOMAIN_RK3576("vop",    0x0, BIT(11), 0,      BIT(11), 0x0, 0x6000,  0x6000,  false),
++	[RK3576_PD_VO1]		= DOMAIN_RK3576("vo1",    0x0, BIT(14), 0,      BIT(14), 0x0, BIT(12), BIT(12), false),
++	[RK3576_PD_VO0]		= DOMAIN_RK3576("vo0",    0x0, BIT(15), 0,      BIT(15), 0x0, BIT(11), BIT(11), false),
++	[RK3576_PD_USB]		= DOMAIN_RK3576("usb",    0x4, BIT(0),  0,      BIT(16), 0x0, BIT(10), BIT(10), true),
++	[RK3576_PD_VI]		= DOMAIN_RK3576("vi",     0x4, BIT(1),  0,      BIT(17), 0x0, BIT(9),  BIT(9),  false),
++	[RK3576_PD_VEPU0]	= DOMAIN_RK3576("vepu0",  0x4, BIT(2),  0,      BIT(18), 0x0, BIT(7),  BIT(7),  false),
++	[RK3576_PD_VEPU1]	= DOMAIN_RK3576("vepu1",  0x4, BIT(3),  0,      BIT(19), 0x0, BIT(8),  BIT(8),  false),
++	[RK3576_PD_VDEC]	= DOMAIN_RK3576("vdec",   0x4, BIT(4),  0,      BIT(20), 0x0, BIT(6),  BIT(6),  false),
++	[RK3576_PD_VPU]		= DOMAIN_RK3576("vpu",    0x4, BIT(5),  0,      BIT(21), 0x0, BIT(5),  BIT(5),  false),
++	[RK3576_PD_NPUTOP]	= DOMAIN_RK3576("nputop", 0x4, BIT(6),  0,      BIT(22), 0x0, 0x18,    0x18,    false),
++	[RK3576_PD_NPU0]	= DOMAIN_RK3576("npu0",   0x4, BIT(7),  0,      BIT(23), 0x0, BIT(1),  BIT(1),  false),
++	[RK3576_PD_NPU1]	= DOMAIN_RK3576("npu1",   0x4, BIT(8),  0,      BIT(24), 0x0, BIT(2),  BIT(2),  false),
++	[RK3576_PD_GPU]		= DOMAIN_RK3576("gpu",    0x4, BIT(9),  0,      BIT(25), 0x0, BIT(0),  BIT(0),  false),
++};
 +
-+/* VD_GPU */
-+#define RK3576_PD_GPU		4
+ static const struct rockchip_domain_info rk3588_pm_domains[] = {
+ 	[RK3588_PD_GPU]		= DOMAIN_RK3588("gpu",     0x0, BIT(0),  0,       0x0, 0,       BIT(1),  0x0, BIT(0),  BIT(0),  false),
+ 	[RK3588_PD_NPU]		= DOMAIN_RK3588("npu",     0x0, BIT(1),  BIT(1),  0x0, 0,       0,       0x0, 0,       0,       false),
+@@ -1284,6 +1310,21 @@ static const struct rockchip_pmu_info rk3568_pmu = {
+ 	.domain_info = rk3568_pm_domains,
+ };
+ 
++static const struct rockchip_pmu_info rk3576_pmu = {
++	.pwr_offset = 0x210,
++	.status_offset = 0x230,
++	.chain_status_offset = 0x248,
++	.mem_status_offset = 0x250,
++	.mem_pwr_offset = 0x300,
++	.req_offset = 0x110,
++	.idle_offset = 0x128,
++	.ack_offset = 0x120,
++	.repair_status_offset = 0x570,
 +
-+/* VD_LOGIC */
-+#define RK3576_PD_NVM		5
-+#define RK3576_PD_SDGMAC	6
-+#define RK3576_PD_USB		7
-+#define RK3576_PD_PHP		8
-+#define RK3576_PD_SUBPHP	9
-+#define RK3576_PD_AUDIO		10
-+#define RK3576_PD_VEPU0		11
-+#define RK3576_PD_VEPU1		12
-+#define RK3576_PD_VPU		13
-+#define RK3576_PD_VDEC		14
-+#define RK3576_PD_VI		15
-+#define RK3576_PD_VO0		16
-+#define RK3576_PD_VO1		17
-+#define RK3576_PD_VOP		18
++	.num_domains = ARRAY_SIZE(rk3576_pm_domains),
++	.domain_info = rk3576_pm_domains,
++};
 +
-+#endif
+ static const struct rockchip_pmu_info rk3588_pmu = {
+ 	.pwr_offset = 0x14c,
+ 	.status_offset = 0x180,
+@@ -1359,6 +1400,10 @@ static const struct of_device_id rockchip_pm_domain_dt_match[] = {
+ 		.compatible = "rockchip,rk3568-power-controller",
+ 		.data = (void *)&rk3568_pmu,
+ 	},
++	{
++		.compatible = "rockchip,rk3576-power-controller",
++		.data = (void *)&rk3576_pmu,
++	},
+ 	{
+ 		.compatible = "rockchip,rk3588-power-controller",
+ 		.data = (void *)&rk3588_pmu,
 -- 
 2.46.0
 
