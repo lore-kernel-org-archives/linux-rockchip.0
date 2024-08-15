@@ -4,67 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CCC95C52D7D
-	for <linux-rockchip@archiver.kernel.org>; Thu, 15 Aug 2024 07:20:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 16E88C52D7D
+	for <linux-rockchip@archiver.kernel.org>; Thu, 15 Aug 2024 09:31:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=BBKRjEidCEA6e0L1LPhNALVgOxiwpTdWdKkK0qCCrfg=; b=G8f0qocOtwZ9QJ
-	Ep4YeZwVKN6bDDPra+PFobRV++UGG1u0YKGrrMEI6XhNwrgjHlXKtisTzrA7SzKcpEDMXua8jYqFy
-	T2M8eoXbsfWDDWujGFjoJfTUs36wbufybP2lJt7L5skbd7pvokonWSafz/qI0ypisFeTZWJVBrE63
-	neFFHdsrZ/R/E1LRQ1cyMFmhnUD86+zMsTchqoS4GnwUnkfrRcPtd88LHpYPvSqQjjFlRb0n+ekVT
-	8BlfOSoTvA3FxczLkEK6KEk8aqvujC33SwwjzqGQATMhGtmnEssZim8fEzrgeB7UG/h/c3ofyG1hx
-	TQOIEQM0BXvT0uxp1Igg==;
+	List-Owner; bh=cmjjOhB4rdfmT2z/DoyGqhBxsggxpCwDrfP2WTNWg34=; b=D9Qe/RYJoiM5N8
+	Z65dEKiYJYxdegbNn+91S7FTX+FVgARS9kfj3hNXPbO8x85b7HUKbkX+XFDG4vJRL2UYIlC9A/Gcb
+	eM1MSCUjsfDFFbJL2gKq0MajVs/h3+Q5nQcZEKqcmgjBfvzAMVlbtBqa5QktvbnfwMWeTW0lN09rY
+	YMSv9dtHF9a3vtw3eErohr4nGHlSgUrISLrM7SDQnepawwko8iQaU2xd8LtcWzO0OQQDvnrDZTYjr
+	S7YaI2sOEE7brXk9DHrghMWYjFmpaeTyJjP7OepACkoxTL6gcFAgzHONJ9UW/T6gs7qP07zSawb4I
+	guQnHK11PRyt7mgdr/gw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1seUmJ-00000009Fzf-46zh;
-	Thu, 15 Aug 2024 07:20:11 +0000
-Received: from mail-m1973187.qiye.163.com ([220.197.31.87])
+	id 1seWpL-00000009US9-2um8;
+	Thu, 15 Aug 2024 09:31:27 +0000
+Received: from forward500d.mail.yandex.net ([2a02:6b8:c41:1300:1:45:d181:d500])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1seUjr-00000009FO1-0UTZ;
-	Thu, 15 Aug 2024 07:17:41 +0000
-DKIM-Signature: a=rsa-sha256;
-	b=eA2jhTkXEK2I35UrMAUN1eKbwUl4EfTpsKPp3eaqt0aRwm+PFk9lrlpdS1LdE2OdyEAtlumfYPvZT4V+1dfvDb1Iitka8nE/mYcNRGBjEHH269nJ+5tt1HKVQ1VACc506GzovN7q43anLpLxr925hhAy3DeopUsN987uf69gODw=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
-	bh=/IZKyXbHMGPvjkG5x/AIclBs0OTUdOjwDmOWIhDPpKk=;
-	h=date:mime-version:subject:message-id:from;
-Received: from rockchip.. (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTPA id B983A7E04A3;
-	Thu, 15 Aug 2024 15:17:24 +0800 (CST)
-From: Ye Zhang <ye.zhang@rock-chips.com>
-To: linus.walleij@linaro.org,
-	brgl@bgdev.pl,
-	heiko@sntech.de,
-	linux-gpio@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org
-Cc: linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	tao.huang@rock-chips.com,
-	finley.xiao@rock-chips.com,
-	tim.chen@rock-chips.com,
-	elaine.zhang@rock-chips.com,
-	Ye Zhang <ye.zhang@rock-chips.com>
-Subject: [PATCH v1 5/5] rockchip: gpio: fix debounce config error
-Date: Thu, 15 Aug 2024 15:16:51 +0800
-Message-Id: <20240815071651.3645949-6-ye.zhang@rock-chips.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20240815071651.3645949-1-ye.zhang@rock-chips.com>
-References: <20240815071651.3645949-1-ye.zhang@rock-chips.com>
+	id 1seWof-00000009UO8-2fys;
+	Thu, 15 Aug 2024 09:30:49 +0000
+Received: from mail-nwsmtp-smtp-production-main-77.klg.yp-c.yandex.net (mail-nwsmtp-smtp-production-main-77.klg.yp-c.yandex.net [IPv6:2a02:6b8:c42:ea0:0:640:da19:0])
+	by forward500d.mail.yandex.net (Yandex) with ESMTPS id 1E0406128E;
+	Thu, 15 Aug 2024 12:30:34 +0300 (MSK)
+Received: by mail-nwsmtp-smtp-production-main-77.klg.yp-c.yandex.net (smtp/Yandex) with ESMTPSA id QUEcpv4Hk4Y0-UhkQn8oc;
+	Thu, 15 Aug 2024 12:30:32 +0300
+X-Yandex-Fwd: 1
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yandex.com; s=mail;
+	t=1723714232; bh=R4tun9PXUYJLsqC80SlDr16BLkuJJ0cpb+rbUByGWYs=;
+	h=From:In-Reply-To:Cc:Date:References:To:Subject:Message-ID;
+	b=s7BTOevv5CeY5wohdlWoWG/1654k1XE3CDf4kzINoZD4Rc3AiZk++oH0oqDX7GhWu
+	 lzMxmvkKdmMTMHEqAzob1HvtPT5P5SkZCt8khQgEKr7jXm5ncfiLfeabAH1qrhtZ6R
+	 IYh4wW5yIEjoNhV821r07YrwDzGmyLa3QTtNY4Yg=
+Authentication-Results: mail-nwsmtp-smtp-production-main-77.klg.yp-c.yandex.net; dkim=pass header.i=@yandex.com
+Message-ID: <c5014fe3-130b-4ace-a66e-8773a9a4f1dc@yandex.com>
+Date: Thu, 15 Aug 2024 11:30:25 +0200
 MIME-Version: 1.0
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGkhNGFZOTR5PQ04eSB1NThlWFRQJFh
-	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSUhCSE
-	NVSktLVUpCS0tZBg++
-X-HM-Tid: 0a9154e600ff09cfkunmb983a7e04a3
-X-HM-MType: 1
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6N1E6ESo*HjI2SEMrDigaKFYO
-	KU8wCjpVSlVKTElITEtNSU9OQ09DVTMWGhIXVQIeVQETGhUcOwkUGBBWGBMSCwhVGBQWRVlXWRIL
-	WUFZTkNVSUlVTFVKSk9ZV1kIAVlBTUhMTzcG
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 09/10] arm64: dts: rockchip: Add rk3576 SoC base DT
+To: Detlev Casanova <detlev.casanova@collabora.com>,
+ linux-kernel@vger.kernel.org
+Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ Andi Shyti <andi.shyti@kernel.org>, Jonathan Cameron <jic23@kernel.org>,
+ Lars-Peter Clausen <lars@metafoo.de>, Lee Jones <lee@kernel.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Jiri Slaby <jirislaby@kernel.org>, Daniel Lezcano
+ <daniel.lezcano@linaro.org>, Thomas Gleixner <tglx@linutronix.de>,
+ Chris Morgan <macromorgan@hotmail.com>, Jonas Karlman <jonas@kwiboo.se>,
+ Tim Lunn <tim@feathertop.org>, Muhammed Efe Cetin <efectn@protonmail.com>,
+ Andy Yan <andyshrk@163.com>, Jagan Teki <jagan@edgeble.ai>,
+ Dragan Simic <dsimic@manjaro.org>,
+ Sebastian Reichel <sebastian.reichel@collabora.com>,
+ Shresth Prasad <shresthprasad7@gmail.com>, Ondrej Jirman <megi@xff.cz>,
+ Weizhao Ouyang <weizhao.ouyang@arm.com>, Alexey Charkov <alchark@gmail.com>,
+ Jimmy Hon <honyuenkwun@gmail.com>, Finley Xiao <finley.xiao@rock-chips.com>,
+ Yifeng Zhao <yifeng.zhao@rock-chips.com>,
+ Elaine Zhang <zhangqing@rock-chips.com>, Liang Chen <cl@rock-chips.com>,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-i2c@vger.kernel.org,
+ linux-iio@vger.kernel.org, linux-serial@vger.kernel.org, kernel@collabora.com
+References: <20240802214612.434179-1-detlev.casanova@collabora.com>
+ <20240802214612.434179-10-detlev.casanova@collabora.com>
+Content-Language: en-US
+From: Johan Jonker <jbx6244@yandex.com>
+In-Reply-To: <20240802214612.434179-10-detlev.casanova@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240815_001739_391526_149231A1 
-X-CRM114-Status: GOOD (  12.63  )
+X-CRM114-CacheID: sfid-20240815_023046_637800_07A0F923 
+X-CRM114-Status: GOOD (  17.63  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,146 +90,591 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-1. Prevent data from crossing boundaries
-2. Support GPIO_TYPE_V2_2 debounce config
-3. fix rockchip_gpio_set_config
+Some comments below. Whenever useful.
 
-Signed-off-by: Ye Zhang <ye.zhang@rock-chips.com>
----
- drivers/gpio/gpio-rockchip.c | 42 ++++++++++++++++++++++--------------
- 1 file changed, 26 insertions(+), 16 deletions(-)
+On 8/2/24 23:45, Detlev Casanova wrote:
+> This device tree contains all devices necessary for booting from network
+> or SD Card.
+> 
+> It supports CPU, CRU, PM domains, dma, interrupts, timers, UART and
+> SDHCI (everything necessary to boot Linux on this system on chip) as
+> well as Ethernet, I2C, SPI and OTP.
+> 
+> Also add the necessary DT bindings for the SoC.
+> 
+> Signed-off-by: Liang Chen <cl@rock-chips.com>
+> Signed-off-by: Finley Xiao <finley.xiao@rock-chips.com>
+> Signed-off-by: Yifeng Zhao <yifeng.zhao@rock-chips.com>
+> Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
+> [rebase, squash and reword commit message]
+> Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
+> ---
 
-diff --git a/drivers/gpio/gpio-rockchip.c b/drivers/gpio/gpio-rockchip.c
-index 03e949b0a344..186d8c750fce 100644
---- a/drivers/gpio/gpio-rockchip.c
-+++ b/drivers/gpio/gpio-rockchip.c
-@@ -84,7 +84,7 @@ static inline void rockchip_gpio_writel(struct rockchip_pin_bank *bank,
- {
- 	void __iomem *reg = bank->reg_base + offset;
- 
--	if (bank->gpio_type == GPIO_TYPE_V2)
-+	if (bank->gpio_type >= GPIO_TYPE_V2)
- 		gpio_writel_v2(value, reg);
- 	else
- 		writel(value, reg);
-@@ -96,7 +96,7 @@ static inline u32 rockchip_gpio_readl(struct rockchip_pin_bank *bank,
- 	void __iomem *reg = bank->reg_base + offset;
- 	u32 value;
- 
--	if (bank->gpio_type == GPIO_TYPE_V2)
-+	if (bank->gpio_type >= GPIO_TYPE_V2)
- 		value = gpio_readl_v2(reg);
- 	else
- 		value = readl(reg);
-@@ -111,7 +111,7 @@ static inline void rockchip_gpio_writel_bit(struct rockchip_pin_bank *bank,
- 	void __iomem *reg = bank->reg_base + offset;
- 	u32 data;
- 
--	if (bank->gpio_type == GPIO_TYPE_V2) {
-+	if (bank->gpio_type >= GPIO_TYPE_V2) {
- 		if (value)
- 			data = BIT(bit % 16) | BIT(bit % 16 + 16);
- 		else
-@@ -132,7 +132,7 @@ static inline u32 rockchip_gpio_readl_bit(struct rockchip_pin_bank *bank,
- 	void __iomem *reg = bank->reg_base + offset;
- 	u32 data;
- 
--	if (bank->gpio_type == GPIO_TYPE_V2) {
-+	if (bank->gpio_type >= GPIO_TYPE_V2) {
- 		data = readl(bit >= 16 ? reg + 0x4 : reg);
- 		data >>= bit % 16;
- 	} else {
-@@ -209,19 +209,25 @@ static int rockchip_gpio_set_debounce(struct gpio_chip *gc,
- 	unsigned int cur_div_reg;
- 	u64 div;
- 
--	if (bank->gpio_type == GPIO_TYPE_V2 && !IS_ERR(bank->db_clk)) {
--		div_debounce_support = true;
-+	div_debounce_support = (bank->gpio_type >= GPIO_TYPE_V2) && !IS_ERR(bank->db_clk);
-+	if (debounce && div_debounce_support) {
- 		freq = clk_get_rate(bank->db_clk);
- 		if (!freq)
- 			return -EINVAL;
--		max_debounce = (GENMASK(23, 0) + 1) * 2 * 1000000 / freq;
-+
-+		div = (u64)(GENMASK(23, 0) + 1) * 1000000;
-+		if (bank->gpio_type == GPIO_TYPE_V2)
-+			max_debounce = DIV_ROUND_CLOSEST_ULL(div, freq);
-+		else
-+			max_debounce = DIV_ROUND_CLOSEST_ULL(div, 2 * freq);
- 		if ((unsigned long)debounce > max_debounce)
- 			return -EINVAL;
- 
--		div = debounce * freq;
--		div_reg = DIV_ROUND_CLOSEST_ULL(div, 2 * USEC_PER_SEC) - 1;
--	} else {
--		div_debounce_support = false;
-+		div = (u64)debounce * freq;
-+		if (bank->gpio_type == GPIO_TYPE_V2)
-+			div_reg = DIV_ROUND_CLOSEST_ULL(div, USEC_PER_SEC) - 1;
-+		else
-+			div_reg = DIV_ROUND_CLOSEST_ULL(div, USEC_PER_SEC / 2) - 1;
- 	}
- 
- 	raw_spin_lock_irqsave(&bank->slock, flags);
-@@ -284,10 +290,11 @@ static int rockchip_gpio_set_config(struct gpio_chip *gc, unsigned int offset,
- 				  unsigned long config)
- {
- 	enum pin_config_param param = pinconf_to_config_param(config);
-+	unsigned int debounce = pinconf_to_config_argument(config);
- 
- 	switch (param) {
- 	case PIN_CONFIG_INPUT_DEBOUNCE:
--		rockchip_gpio_set_debounce(gc, offset, true);
-+		rockchip_gpio_set_debounce(gc, offset, debounce);
- 		/*
- 		 * Rockchip's gpio could only support up to one period
- 		 * of the debounce clock(pclk), which is far away from
-@@ -416,7 +423,7 @@ static int rockchip_irq_set_type(struct irq_data *d, unsigned int type)
- 	polarity = rockchip_gpio_readl(bank, bank->gpio_regs->int_polarity);
- 
- 	if (type == IRQ_TYPE_EDGE_BOTH) {
--		if (bank->gpio_type == GPIO_TYPE_V2) {
-+		if (bank->gpio_type >= GPIO_TYPE_V2) {
- 			rockchip_gpio_writel_bit(bank, d->hwirq, 1,
- 						 bank->gpio_regs->int_bothedge);
- 			goto out;
-@@ -435,7 +442,7 @@ static int rockchip_irq_set_type(struct irq_data *d, unsigned int type)
- 				polarity |= mask;
- 		}
- 	} else {
--		if (bank->gpio_type == GPIO_TYPE_V2) {
-+		if (bank->gpio_type >= GPIO_TYPE_V2) {
- 			rockchip_gpio_writel_bit(bank, d->hwirq, 0,
- 						 bank->gpio_regs->int_bothedge);
- 		} else {
-@@ -543,7 +550,7 @@ static int rockchip_interrupts_register(struct rockchip_pin_bank *bank)
- 	}
- 
- 	gc = irq_get_domain_generic_chip(bank->domain, 0);
--	if (bank->gpio_type == GPIO_TYPE_V2) {
-+	if (bank->gpio_type >= GPIO_TYPE_V2) {
- 		gc->reg_writel = gpio_writel_v2;
- 		gc->reg_readl = gpio_readl_v2;
- 	}
-@@ -632,10 +639,13 @@ static void rockchip_gpio_get_ver(struct rockchip_pin_bank *bank)
- 	switch (id) {
- 	case GPIO_TYPE_V2:
- 	case GPIO_TYPE_V2_1:
--	case GPIO_TYPE_V2_2:
- 		bank->gpio_regs = &gpio_regs_v2;
- 		bank->gpio_type = GPIO_TYPE_V2;
- 		break;
-+	case GPIO_TYPE_V2_2:
-+		bank->gpio_regs = &gpio_regs_v2;
-+		bank->gpio_type = GPIO_TYPE_V2_2;
-+		break;
- 	default:
- 		bank->gpio_regs = &gpio_regs_v1;
- 		bank->gpio_type = GPIO_TYPE_V1;
--- 
-2.34.1
+[..]
 
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3576.dtsi b/arch/arm64/boot/dts/rockchip/rk3576.dtsi
+> new file mode 100644
+> index 0000000000000..00c4d2a153ced
+> --- /dev/null
+> +++ b/arch/arm64/boot/dts/rockchip/rk3576.dtsi
+> @@ -0,0 +1,1635 @@
+> +// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
+> +/*
+> + * Copyright (c) 2023 Rockchip Electronics Co., Ltd.
+> + */
+> +
+
+> +#include <dt-bindings/clock/rockchip,rk3576-cru.h>
+> +#include <dt-bindings/reset/rockchip,rk3576-cru.h>
+> +#include <dt-bindings/interrupt-controller/arm-gic.h>
+> +#include <dt-bindings/interrupt-controller/irq.h>
+> +#include <dt-bindings/phy/phy.h>
+> +#include <dt-bindings/power/rk3576-power.h>
+> +#include <dt-bindings/pinctrl/rockchip.h>
+> +#include <dt-bindings/soc/rockchip,boot-mode.h>
+
+Sort includes.
+
+> +
+> +/ {
+> +	compatible = "rockchip,rk3576";
+> +
+> +	interrupt-parent = <&gic>;
+> +	#address-cells = <2>;
+> +	#size-cells = <2>;
+> +
+> +	aliases {
+> +		ethernet0 = &gmac0;
+> +		ethernet1 = &gmac1;
+> +		gpio0 = &gpio0;
+> +		gpio1 = &gpio1;
+> +		gpio2 = &gpio2;
+> +		gpio3 = &gpio3;
+> +		gpio4 = &gpio4;
+> +		i2c0 = &i2c0;
+> +		i2c1 = &i2c1;
+> +		i2c2 = &i2c2;
+> +		i2c3 = &i2c3;
+> +		i2c4 = &i2c4;
+> +		i2c5 = &i2c5;
+> +		i2c6 = &i2c6;
+> +		i2c7 = &i2c7;
+> +		i2c8 = &i2c8;
+> +		i2c9 = &i2c9;
+> +		serial0 = &uart0;
+> +		serial1 = &uart1;
+> +		serial2 = &uart2;
+> +		serial3 = &uart3;
+> +		serial4 = &uart4;
+> +		serial5 = &uart5;
+> +		serial6 = &uart6;
+> +		serial7 = &uart7;
+> +		serial8 = &uart8;
+> +		serial9 = &uart9;
+> +		serial10 = &uart10;
+> +		serial11 = &uart11;
+> +		spi0 = &spi0;
+> +		spi1 = &spi1;
+> +		spi2 = &spi2;
+> +		spi3 = &spi3;
+> +		spi4 = &spi4;
+> +	};
+> +
+
+[..]
+
+For uart0..uart11:
+
+> +
+> +	uart1: serial@27310000 {
+> +		compatible = "rockchip,rk3576-uart", "snps,dw-apb-uart";
+> +		reg = <0x0 0x27310000 0x0 0x100>;
+
+> +		interrupts = <GIC_SPI 77 IRQ_TYPE_LEVEL_HIGH>;
+
+"interrupts" are sort just like other properties. A mix of sort styles exists, so check all nodes.
+
+> +		clocks = <&cru SCLK_UART1>, <&cru PCLK_UART1>;
+> +		clock-names = "baudclk", "apb_pclk";
+
+> +		reg-shift = <2>;
+> +		reg-io-width = <4>;
+
+Move below "reg". 
+
+> +		dmas = <&dmac0 8>, <&dmac0 9>;
+> +		pinctrl-names = "default";
+> +		pinctrl-0 = <&uart1m0_xfer>;
+> +		status = "disabled";
+> +	};
+> +
+> +	pmu: power-management@27380000 {
+> +		compatible = "rockchip,rk3576-pmu", "syscon", "simple-mfd";
+> +		reg = <0x0 0x27380000 0x0 0x800>;
+> +
+> +		power: power-controller {
+> +			compatible = "rockchip,rk3576-power-controller";
+> +			#power-domain-cells = <1>;
+> +			#address-cells = <1>;
+> +			#size-cells = <0>;
+
+> +			status = "okay";
+
+Remove.
+
+> +
+> +			power-domain@RK3576_PD_NPU {
+> +				reg = <RK3576_PD_NPU>;
+
+> +				#power-domain-cells = <0>;
+
+				#power-domain-cells = <1>;
+
+      "#power-domain-cells":
+        enum: [0, 1]
+        description:
+          Must be 0 for nodes representing a single PM domain and 1 for nodes
+          providing multiple PM domains.
+
+> +				#address-cells = <1>;
+> +				#size-cells = <0>;
+> +
+> +				power-domain@RK3576_PD_NPUTOP {
+> +					reg = <RK3576_PD_NPUTOP>;
+
+> +					#power-domain-cells = <0>;
+
+
+					#power-domain-cells = <1>;
+      "#power-domain-cells":
+        enum: [0, 1]
+        description:
+          Must be 0 for nodes representing a single PM domain and 1 for nodes
+          providing multiple PM domains.
+
+> +					#address-cells = <1>;
+> +					#size-cells = <0>;
+> +					clocks = <&cru ACLK_RKNN0>,
+> +						 <&cru ACLK_RKNN1>,
+> +						 <&cru ACLK_RKNN_CBUF>,
+> +						 <&cru CLK_RKNN_DSU0>,
+> +						 <&cru HCLK_RKNN_CBUF>,
+> +						 <&cru HCLK_RKNN_ROOT>,
+> +						 <&cru HCLK_NPU_CM0_ROOT>,
+> +						 <&cru PCLK_NPUTOP_ROOT>;
+> +					pm_qos = <&qos_npu_mcu>,
+> +						 <&qos_npu_nsp0>,
+> +						 <&qos_npu_nsp1>,
+> +						 <&qos_npu_m0ro>,
+> +						 <&qos_npu_m1ro>;
+> +
+> +					power-domain@RK3576_PD_NPU0 {
+> +						reg = <RK3576_PD_NPU0>;
+> +						#power-domain-cells = <0>;
+> +						clocks = <&cru HCLK_RKNN_ROOT>,
+> +							 <&cru ACLK_RKNN0>;
+> +						pm_qos = <&qos_npu_m0>;
+> +					};
+> +					power-domain@RK3576_PD_NPU1 {
+> +						reg = <RK3576_PD_NPU1>;
+> +						#power-domain-cells = <0>;
+> +						clocks = <&cru HCLK_RKNN_ROOT>,
+> +							 <&cru ACLK_RKNN1>;
+> +						pm_qos = <&qos_npu_m1>;
+> +					};
+> +				};
+> +			};
+> +
+> +			power-domain@RK3576_PD_GPU {
+> +				reg = <RK3576_PD_GPU>;
+> +				#power-domain-cells = <0>;
+> +				clocks = <&cru CLK_GPU>;
+> +				pm_qos = <&qos_gpu>;
+> +			};
+> +
+> +			power-domain@RK3576_PD_NVM {
+> +				reg = <RK3576_PD_NVM>;
+
+> +				#power-domain-cells = <0>;
+
+				#power-domain-cells = <1>;
+      "#power-domain-cells":
+        enum: [0, 1]
+        description:
+          Must be 0 for nodes representing a single PM domain and 1 for nodes
+          providing multiple PM domains.
+
+> +				#address-cells = <1>;
+> +				#size-cells = <0>;
+> +				clocks = <&cru ACLK_EMMC>, <&cru HCLK_EMMC>;
+> +				pm_qos = <&qos_emmc>,
+> +					 <&qos_fspi0>;
+> +
+> +				power-domain@RK3576_PD_SDGMAC {
+> +					reg = <RK3576_PD_SDGMAC>;
+
+> +				#power-domain-cells = <0>;
+
+TAB ??
+
+> +					clocks = <&cru ACLK_HSGPIO>,
+> +						 <&cru ACLK_GMAC0>,
+> +						 <&cru ACLK_GMAC1>,
+> +						 <&cru CCLK_SRC_SDIO>,
+> +						 <&cru CCLK_SRC_SDMMC0>,
+> +						 <&cru HCLK_HSGPIO>,
+> +						 <&cru HCLK_SDIO>,
+> +						 <&cru HCLK_SDMMC0>;
+> +					pm_qos = <&qos_fspi1>,
+> +						 <&qos_gmac0>,
+> +						 <&qos_gmac1>,
+> +						 <&qos_sdio>,
+> +						 <&qos_sdmmc>,
+> +						 <&qos_flexbus>;
+> +				};
+> +			};
+> +			power-domain@RK3576_PD_PHP {
+> +				reg = <RK3576_PD_PHP>;
+
+> +				#power-domain-cells = <0>;
+
+				#power-domain-cells = <1>;
+      "#power-domain-cells":
+        enum: [0, 1]
+        description:
+          Must be 0 for nodes representing a single PM domain and 1 for nodes
+          providing multiple PM domains.
+
+> +				#address-cells = <1>;
+> +				#size-cells = <0>;
+> +				clocks = <&cru ACLK_PHP_ROOT>,
+> +					 <&cru PCLK_PHP_ROOT>,
+> +					 <&cru ACLK_MMU0>,
+> +					 <&cru ACLK_MMU1>;
+> +				pm_qos = <&qos_mmu0>,
+> +					 <&qos_mmu1>;
+> +
+> +				power-domain@RK3576_PD_SUBPHP {
+> +					reg = <RK3576_PD_SUBPHP>;
+
+> +				#power-domain-cells = <0>;
+
+TAB??
+
+> +				};
+> +			};
+> +			power-domain@RK3576_PD_AUDIO {
+> +				reg = <RK3576_PD_AUDIO>;
+> +				#power-domain-cells = <0>;
+> +			};
+> +			power-domain@RK3576_PD_VEPU1 {
+
+> +				clocks = <&cru ACLK_VEPU1>,
+> +					 <&cru HCLK_VEPU1>;
+> +				reg = <RK3576_PD_VEPU1>;
+
+sort
+
+> +				#power-domain-cells = <0>;
+> +				pm_qos = <&qos_vepu1>;
+> +			};
+> +			power-domain@RK3576_PD_VPU {
+> +				reg = <RK3576_PD_VPU>;
+> +				#power-domain-cells = <0>;
+> +				clocks = <&cru ACLK_EBC>,
+> +					 <&cru HCLK_EBC>,
+> +					 <&cru ACLK_RGA2E_0>,
+> +					 <&cru HCLK_RGA2E_0>,
+> +					 <&cru ACLK_RGA2E_1>,
+> +					 <&cru HCLK_RGA2E_1>,
+> +					 <&cru ACLK_JPEG>,
+> +					 <&cru HCLK_JPEG>,
+> +					 <&cru ACLK_VDPP>,
+> +					 <&cru HCLK_VDPP>;
+> +				pm_qos = <&qos_ebc>,
+> +					 <&qos_rga0>,
+> +					 <&qos_rga1>,
+> +					 <&qos_jpeg>,
+> +					 <&qos_vdpp>;
+> +			};
+> +			power-domain@RK3576_PD_VDEC {
+> +				reg = <RK3576_PD_VDEC>;
+> +				#power-domain-cells = <0>;
+> +				clocks = <&cru ACLK_RKVDEC_ROOT>,
+> +					 <&cru HCLK_RKVDEC>;
+> +				pm_qos = <&qos_rkvdec>;
+> +			};
+> +			power-domain@RK3576_PD_VI {
+> +				reg = <RK3576_PD_VI>;
+
+> +				#power-domain-cells = <0>;
+
+				#power-domain-cells = <1>;
+      "#power-domain-cells":
+        enum: [0, 1]
+        description:
+          Must be 0 for nodes representing a single PM domain and 1 for nodes
+
+> +				#address-cells = <1>;
+> +				#size-cells = <0>;
+> +				clocks = <&cru ACLK_VICAP>,
+> +					 <&cru HCLK_VICAP>,
+> +					 <&cru DCLK_VICAP>,
+> +					 <&cru ACLK_VI_ROOT>,
+> +					 <&cru HCLK_VI_ROOT>,
+> +					 <&cru PCLK_VI_ROOT>,
+> +					 <&cru CLK_ISP_CORE>,
+> +					 <&cru ACLK_ISP>,
+> +					 <&cru HCLK_ISP>,
+> +					 <&cru CLK_CORE_VPSS>,
+> +					 <&cru ACLK_VPSS>,
+> +					 <&cru HCLK_VPSS>;
+> +				pm_qos = <&qos_isp_mro>,
+> +					 <&qos_isp_mwo>,
+> +					 <&qos_vicap_m0>,
+> +					 <&qos_vpss_mro>,
+> +					 <&qos_vpss_mwo>;
+> +
+> +				power-domain@RK3576_PD_VEPU0 {
+> +					reg = <RK3576_PD_VEPU0>;
+> +					#power-domain-cells = <0>;
+> +					clocks = <&cru ACLK_VEPU0>,
+> +						 <&cru HCLK_VEPU0>;
+> +					pm_qos = <&qos_vepu0>;
+> +				};
+> +			};
+> +			power-domain@RK3576_PD_VOP {
+> +				reg = <RK3576_PD_VOP>;
+
+> +				#power-domain-cells = <0>;
+
+				#power-domain-cells = <1>;
+      "#power-domain-cells":
+        enum: [0, 1]
+        description:
+          Must be 0 for nodes representing a single PM domain and 1 for nodes
+          providing multiple PM domains.
+
+> +				#address-cells = <1>;
+> +				#size-cells = <0>;
+> +				clocks = <&cru ACLK_VOP>,
+> +					 <&cru HCLK_VOP>,
+> +					 <&cru HCLK_VOP_ROOT>;
+> +				pm_qos = <&qos_vop_m0>,
+> +					 <&qos_vop_m1ro>;
+> +
+> +				power-domain@RK3576_PD_USB {
+
+Since when is USB part of VOP?
+Recheck?
+
+> +					reg = <RK3576_PD_USB>;
+> +					#power-domain-cells = <0>;
+> +					clocks = <&cru PCLK_PHP_ROOT>,
+> +						 <&cru ACLK_USB_ROOT>,
+> +						 <&cru ACLK_MMU2>,
+> +						 <&cru ACLK_SLV_MMU2>,
+> +						 <&cru ACLK_UFS_SYS>;
+> +					pm_qos = <&qos_mmu2>,
+> +						 <&qos_ufshc>;
+> +				};
+> +				power-domain@RK3576_PD_VO0 {
+> +					reg = <RK3576_PD_VO0>;
+> +					#power-domain-cells = <0>;
+> +					clocks = <&cru ACLK_HDCP0>,
+> +						 <&cru HCLK_HDCP0>,
+> +						 <&cru ACLK_VO0_ROOT>,
+> +						 <&cru PCLK_VO0_ROOT>,
+> +						 <&cru HCLK_VOP_ROOT>;
+> +					pm_qos = <&qos_hdcp0>;
+> +				};
+> +				power-domain@RK3576_PD_VO1 {
+> +					reg = <RK3576_PD_VO1>;
+> +					#power-domain-cells = <0>;
+> +					clocks = <&cru ACLK_HDCP1>,
+> +						 <&cru HCLK_HDCP1>,
+> +						 <&cru ACLK_VO1_ROOT>,
+> +						 <&cru PCLK_VO1_ROOT>,
+> +						 <&cru HCLK_VOP_ROOT>;
+> +					pm_qos = <&qos_hdcp1>;
+> +				};
+> +			};
+> +		};
+> +	};
+> +
+
+[..]
+
+> +
+
+> +	rktimer: timer@2acc0000 {
+
+timer0: .....
+
+> +		compatible = "rockchip,rk3576-timer", "rockchip,rk3288-timer";
+> +		reg = <0x0 0x2acc0000 0x0 0x20>;
+
+> +		interrupts = <GIC_SPI 45 IRQ_TYPE_LEVEL_HIGH>;
+
+sort
+
+> +		clocks = <&cru PCLK_BUSTIMER0>, <&cru CLK_TIMER0>;
+> +		clock-names = "pclk", "timer";
+> +	};
+> +
+> +	wdt: watchdog@2ace0000 {
+
+> +		compatible = "snps,dw-wdt";
+
+Must be SoC related.
+Add something to snps,dw-wdt.yaml
+
+> +		reg = <0x0 0x2ace0000 0x0 0x100>;
+> +		clocks = <&cru TCLK_WDT0>, <&cru PCLK_WDT0>;
+> +		clock-names = "tclk", "pclk";
+> +		interrupts = <GIC_SPI 40 IRQ_TYPE_LEVEL_HIGH>;
+> +		status = "disabled";
+> +	};
+> +
+
+For spi0..spi4:
+
+
+> +	spi0: spi@2acf0000 {
+
+> +		compatible = "rockchip,rk3066-spi";
+
+Must be SoC related.
+Add something to spi-rockchip.yaml
+
+> +		reg = <0x0 0x2acf0000 0x0 0x1000>;
+
+> +		interrupts = <GIC_SPI 116 IRQ_TYPE_LEVEL_HIGH>;
+
+sort
+
+> +		#address-cells = <1>;
+> +		#size-cells = <0>;
+
+Move things that start with # down the list as posible.
+
+> +		clocks = <&cru CLK_SPI0>, <&cru PCLK_SPI0>;
+> +		clock-names = "spiclk", "apb_pclk";
+> +		dmas = <&dmac0 14>, <&dmac0 15>;
+> +		dma-names = "tx", "rx";
+> +		pinctrl-names = "default";
+> +		pinctrl-0 = <&spi0m0_csn0 &spi0m0_csn1 &spi0m0_pins>;
+> +		num-cs = <2>;
+> +		status = "disabled";
+> +	};
+> +
+> +	spi1: spi@2ad00000 {
+
+> +	spi2: spi@2ad10000 {
+
+> +	spi3: spi@2ad20000 {
+
+> +	spi4: spi@2ad30000 {
+
+> +	uart0: serial@2ad40000 {
+
+> +	uart2: serial@2ad50000 {
+
+> +	uart3: serial@2ad60000 {
+
+> +	uart4: serial@2ad70000 {
+
+> +	uart5: serial@2ad80000 {
+
+> +	uart6: serial@2ad90000 {
+
+> +	uart7: serial@2ada0000 {
+
+> +	uart8: serial@2adb0000 {
+
+> +	uart9: serial@2adc0000 {
+
+> +	saradc: adc@2ae00000 {
+> +		compatible = "rockchip,rk3576-saradc", "rockchip,rk3588-saradc";
+> +		reg = <0x0 0x2ae00000 0x0 0x10000>;
+
+> +		interrupts = <GIC_SPI 124 IRQ_TYPE_LEVEL_HIGH>;
+
+sort
+
+> +		#io-channel-cells = <1>;
+
+Things that start with "#" are used to interpreted the DT, so down the list as possible.
+
+> +		clocks = <&cru CLK_SARADC>, <&cru PCLK_SARADC>;
+> +		clock-names = "saradc", "apb_pclk";
+> +		resets = <&cru SRST_P_SARADC>;
+> +		reset-names = "saradc-apb";
+> +		status = "disabled";
+> +	};
+> +
+
+[..]
+
+> +
+> +	uart10: serial@2afc0000 {
+> +
+> +	uart11: serial@2afd0000 {
+> +
+
+[..]
+
+> +
+> +	pinctrl: pinctrl {
+> +		compatible = "rockchip,rk3576-pinctrl";
+> +		rockchip,grf = <&ioc_grf>;
+> +		rockchip,sys-grf = <&sys_grf>;
+> +		#address-cells = <2>;
+> +		#size-cells = <2>;
+> +		ranges;
+> +
+
+> +		gpio0: gpio@27320000 {
+
+The use of gpio nodes as subnode of pinctrl is deprecated.
+
+patternProperties:
+  "gpio@[0-9a-f]+$":
+    type: object
+
+    $ref: /schemas/gpio/rockchip,gpio-bank.yaml#
+    deprecated: true
+
+    unevaluatedProperties: false
+
+> +			compatible = "rockchip,gpio-bank";
+
+When in use as separate node the compatible must be SoC related.
+
+Question for the maintainers: Extra entry to rockchip,gpio-bank.yaml ??
+
+> +			reg = <0x0 0x27320000 0x0 0x200>;
+> +			interrupts = <GIC_SPI 153 IRQ_TYPE_LEVEL_HIGH>;
+> +			clocks = <&cru PCLK_GPIO0>, <&cru DBCLK_GPIO0>;
+> +
+> +			gpio-controller;
+> +			#gpio-cells = <2>;
+> +			gpio-ranges = <&pinctrl 0 0 32>;
+> +			interrupt-controller;
+> +			#interrupt-cells = <2>;
+> +		};
+> +
+> +		gpio1: gpio@2ae10000 {
+> +
+> +		gpio2: gpio@2ae20000 {
+> +
+> +		gpio3: gpio@2ae30000 {
+> +
+> +		gpio4: gpio@2ae40000 {
+> +	};
+> +};
+> +
+> +#include "rk3576-pinctrl.dtsi"
 
 _______________________________________________
 Linux-rockchip mailing list
