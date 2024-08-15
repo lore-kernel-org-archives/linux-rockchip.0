@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D5B46C3DA7F
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CB399C52D7D
 	for <linux-rockchip@archiver.kernel.org>; Thu, 15 Aug 2024 10:43:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,61 +12,61 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=9lCqCb+sPt5A24a57mWzZvRjuJaD50hM2pLc/vV2wAk=; b=xQ6T75U1qzoySc
-	czskJwQvxu44xyDEal2q5YWwW8QeSPTHZSpT0MskODBXPVHFYWJv5U/dDg1tXOpJvmi/fjbDiYz4R
-	vDK3wjaIqV3PH8DukqV1RUfca6ErzNWt6biCQPHCWqKbVTae6wo2TyWP3Bexqh8mkOykaVwozf+hi
-	CqOfX2/iW+tSI4cxgf2TnLZhqNBkVenzP7erRPyXDxhRnppZgo3iO4yw6eXky0KL+8FEyVmzZK879
-	5XRdknQJgn2FmfTTAce0kkSvCjO5uDwih8OYlMvPtxC401cNfIZLQk0+SV0Dtcs4bhcV5lFaAQqlV
-	++U82ReHj5QCdeS5k+dg==;
+	List-Owner; bh=spS6Fhfs0a5rpibVlI/yJDopRI9qOSj7wt5B//S/PCU=; b=NMEARiCV0lsVfr
+	oFIjEF2ln1K0ngfIToj2/E0gMLWnZBvz4IO06LFEMFT01vmoOc7mpbuVJhXNHACufsr/76/mSf4wq
+	y/3SnIvVcbR4z8w3GPAaYu8TsRh4+UAX4AdOWZh5isQOtD3ozPRwG8zB/tZzM6SglkPbsLzh6wv15
+	HPcDiBtsl9YbzOsPOvk6Bp0t57mtTxsuaUyWf8s8NA7phnHONALtrdXf/5VVkZBHxPn3W4nn3lF+S
+	TMJM41iN8ndsideDzMnu0TZ3SX+aE37EOkBRRlbhfVBUKeE1PEuXiZzqRMHWozihg4jSN8JEfu/jO
+	tjqH4GkWs5fZKVoB2+Lg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1seXx0-00000009fX0-1tZo;
-	Thu, 15 Aug 2024 10:43:26 +0000
+	id 1seXwz-00000009fWO-3Ugv;
+	Thu, 15 Aug 2024 10:43:25 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1seXul-00000009elJ-38t2;
-	Thu, 15 Aug 2024 10:41:09 +0000
+	id 1seXuk-00000009ekG-3UT5;
+	Thu, 15 Aug 2024 10:41:08 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
 	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=vhK51bOti9km8q+PAjJsqfOkQmP4br8Lmu/o8WHP+Ik=; b=14QS5XXz34UzotjhZznoyjzdEA
-	zzVIpq0gV+HQvvrrJl+RHNosEAzZHvmkjOgS2pkFcoh9l2JVbzIBfUGh3umXdsH1RtuErY1TeJC4v
-	YsO0h5O+HWa/+RggLJ7CWM5dxiwUT4fBBEHqFSgxiVqJpFFc/1gBg5vZu0bUG0jGD55kPyaEg0CL5
-	rP5GftLnRDfH+inrGQca57zjD6Um+JRCef3VzAuIuD9lMWbfqeTGf2SxHeinQmE7kvFPeQg25SHiz
-	S/G6I/Ws6i0DRDYqkcMvU+lfN5PnBAJd2vYptnxuMyoX2tEbEdMnbxGDaVMrho8yOikQNBOb1TKec
-	cBH0FPwQ==;
+	bh=JtSYMyjFwSHhr4JtGadybcU9/7LYdzxEw3v7M77JOOI=; b=gSWfRbD9AgJemxejQrnE4jm7Z+
+	yogtanjJkf9uoZTJp1wo11bDeGrPq+AhivlTvFWYrkkOzMXbtQGDoYu2ZJDDTjOz5KoKCYG1IIhXz
+	ma08MKO6MPdooJ/ppqXLN5l9cWnO2oFpDplHhm9pADOkD6ihvs7x/T5Vbq0sFjlb9jIFuUom0A6lC
+	9zE2JiKvkXsqF5cXHFngitFfAYUgN5piYur+dqQPCbCpsFwlirbtJu6bOZpCNs0A7mKM1ERYxv+t7
+	BVRDOH1DQAMAt7yCxSGOuPQCS5rv78T1DV9xHa/giPjTq3+XFz3NsPmzepr9gYPh7fKzFuLlK7LGV
+	HuuY0YiA==;
 Received: from i53875a9f.versanet.de ([83.135.90.159] helo=phil.lan)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1seXuX-0000oc-0A; Thu, 15 Aug 2024 12:40:53 +0200
+	id 1seXuH-0000nZ-PS; Thu, 15 Aug 2024 12:40:37 +0200
 From: Heiko Stuebner <heiko@sntech.de>
-To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	Maxime Ripard <mripard@kernel.org>,
-	Sandy Huang <hjc@rock-chips.com>,
-	Andy Yan <andy.yan@rock-chips.com>,
-	Alex Bee <knaerzche@gmail.com>
+To: Val Packett <val@packett.cool>
 Cc: Heiko Stuebner <heiko@sntech.de>,
-	Daniel Vetter <daniel@ffwll.ch>,
-	linux-kernel@vger.kernel.org,
 	dri-devel@lists.freedesktop.org,
-	linux-rockchip@lists.infradead.org,
+	Daniel Vetter <daniel@ffwll.ch>,
+	Sandy Huang <hjc@rock-chips.com>,
+	linux-arm-kernel@lists.infradead.org,
+	Andy Yan <andy.yan@rock-chips.com>,
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Maxime Ripard <mripard@kernel.org>,
+	Thomas Zimmermann <tzimmermann@suse.de>,
 	David Airlie <airlied@gmail.com>,
-	linux-arm-kernel@lists.infradead.org
-Subject: Re: [PATCH] drm/rockchip: inno-hdmi: Fix infoframe upload
-Date: Thu, 15 Aug 2024 12:40:51 +0200
-Message-Id: <172371844381.722173.15806804441564466230.b4-ty@sntech.de>
+	linux-kernel@vger.kernel.org,
+	linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH v4 0/2] drm/rockchip: vop: Support internal display on RK3066
+Date: Thu, 15 Aug 2024 12:40:32 +0200
+Message-Id: <172371788341.684432.2581958703388281846.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20240805110855.274140-2-knaerzche@gmail.com>
-References: <20240805110855.274140-2-knaerzche@gmail.com>
+In-Reply-To: <20240624204054.5524-1-val@packett.cool>
+References: <20240624204054.5524-1-val@packett.cool>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240815_034107_875076_F835AE64 
-X-CRM114-Status: GOOD (  11.55  )
+X-CRM114-CacheID: sfid-20240815_034106_878119_7CE3CEB7 
+X-CRM114-Status: GOOD (  10.29  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,21 +83,22 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, 5 Aug 2024 13:08:56 +0200, Alex Bee wrote:
-> HDMI analyser shows that the AVI infoframe is no being longer send.
+On Mon, 24 Jun 2024 17:40:47 -0300, Val Packett wrote:
+> This tiny patch series makes the changes required to enable the RGB
+> display output on the Rockchip RK3066 SoC. Final version as discussed.
 > 
-> The switch to the HDMI connector api should have used the frame content
-> which is now given in the buffer parameter, but instead still uses the
-> (now) empty and superfluous packed_frame variable.
-> 
-> Fix it.
+> Val Packett (2):
+>   drm/rockchip: vop: clear DMA stop bit on RK3066
+>   drm/rockchip: vop: enable VOP_FEATURE_INTERNAL_RGB on RK3066
 > 
 > [...]
 
 Applied, thanks!
 
-[1/1] drm/rockchip: inno-hdmi: Fix infoframe upload
-      commit: fd45cc614b8acca5bb435ba37fe9b3f9a17fab84
+[1/2] drm/rockchip: vop: clear DMA stop bit on RK3066
+      commit: 6b44aa559d6c7f4ea591ef9d2352a7250138d62a
+[2/2] drm/rockchip: vop: enable VOP_FEATURE_INTERNAL_RGB on RK3066
+      commit: 6ed51ba95e27221ce87979bd2ad5926033b9e1b9
 
 Best regards,
 -- 
