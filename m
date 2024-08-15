@@ -4,64 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1AF6BC52D7C
-	for <linux-rockchip@archiver.kernel.org>; Thu, 15 Aug 2024 16:49:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0E6E0C52D7C
+	for <linux-rockchip@archiver.kernel.org>; Thu, 15 Aug 2024 17:27:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=q8EJXbpKBIsX+GQnIDftPKKOg++BHbz7awq4aYZXW3k=; b=BDUvwNNnDxH/f1
-	Y67fZb9E4/UghWmUWObMA5gRWSggnd0ydu2BUz+PChbYh80OY2lYcJ5Nj902EQRROHJYaCCTUF3JV
-	oVzJZLsPk9mJGM/ZUHGj3eVz6oFrZjeC6k160C8kHqDom8IN2NIygw70SmkAlyPUmsfTdMkklPx/9
-	YYvKUkIRjuWf2WNj8e0DFWccNx6YvZ9HIIakNlqCGXei4RpKPBLvRsZ+3kKZf1ksJPw05TzC7nAWA
-	SnUgZ0iOZ44APR3JIXlpH8KQsp3f+h5u3X2lUqL8Apgvgr0/RefczGPBjzIKidoCMPbTkDCXekZQr
-	xja41sEPLpSFwp9MINNQ==;
+	List-Owner; bh=Bo1/i1piyuUPEUzTwoF3nn5k11uUhPAJ3zkBDjT0AI4=; b=kR7k1LeSd1WLdQ
+	J0HwJpIztScOm9DqzUFZl0JdzUPJTPVUnMW60lUXl1zx5v9R8g8bUE+Eq0hr9Q2XXrMpdrfb3nFcc
+	8XEeLCTx0AkBtW+BHyGNgcnNRBs/IlzD+vdvnrpChoK/J4bzrQ9q+Rc47S09QoHz7rcykv6KL/AAi
+	FA8iVaXyzq3yn0GLnkhupx+XcXJalvEEr/0ralPeodX13qDHSG9VbQIsguV144V5iK5tgHCXOPqPM
+	HsuOJTDdfgnz33IEKoa7P+ZbJ5FQZmJLoKe2bH1en5p4Lp9D/Zn4exMfz5POrLVond+INqf42z44h
+	u7JwI9NYMN2V+KwnIjTw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sedfE-0000000AZDw-2hW6;
-	Thu, 15 Aug 2024 16:49:28 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1seeFx-0000000AdN9-0Rq6;
+	Thu, 15 Aug 2024 17:27:25 +0000
+Received: from sender4-op-o12.zoho.com ([136.143.188.12])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1seddx-0000000AYz0-2r7G;
-	Thu, 15 Aug 2024 16:48:14 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
-	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=UW7NGhbbVZFB4W/eRQdKKgB4HFlv6v7OSqkUP1DgWjU=; b=xcgdGWJAZtGBdmAfDttyTq+6C+
-	gjfpgSg3G+A1R1zmBgE5JftQ3Zl7fCNQbqVhg0sztOAanWsxR/tXcuasOcDjFvHkvIfIzbiRAnTSF
-	0wBXfnB7TJ6QlKkmbSZofD3GopHS68PEjOW58RoGec0gE5Z2SRq3P+Pas8uSQThvOUkFdckVpWkb9
-	WojcyThpRA3inrFDlmQVI0pZQ4mra7wS6zT+CyWQJJHEFt1zQDSaf8Uh74VHRVsZbWU+cUjYioNjv
-	znDrFbqfZevMIoKQCqCvgYOPkUrGR34VHyoUznj3Es9Fz5EHb+LJvNDn7COplqBQgAXstrLs3MATa
-	IrfQhpoA==;
-Received: from i53875a9f.versanet.de ([83.135.90.159] helo=diego.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1seddq-0005br-Jr; Thu, 15 Aug 2024 18:48:02 +0200
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: brgl@bgdev.pl, Bartosz Golaszewski <brgl@bgdev.pl>
-Cc: Bartosz Golaszewski <bartosz.golaszewski@linaro.org>, robh@kernel.org,
- krzk+dt@kernel.org, conor+dt@kernel.org, ukleinek@debian.org,
- linux-i2c@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH 1/2] dt-bindings: eeprom: at24: Add compatible for Giantec
- GT24C04A
-Date: Thu, 15 Aug 2024 18:48:01 +0200
-Message-ID: <12584345.NizCu2HIMA@diego>
-In-Reply-To: <172340442666.7060.12608274118090495917.b4-ty@linaro.org>
-References: <20240810211438.286441-1-heiko@sntech.de>
- <20240810211438.286441-2-heiko@sntech.de>
- <172340442666.7060.12608274118090495917.b4-ty@linaro.org>
+	id 1seeFs-0000000AdLL-3fbO;
+	Thu, 15 Aug 2024 17:27:22 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1723742822; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=chmoEqwf+/HX3ADYKvNk7Ng/Vy9TRVLgDl8UmqtgvL10PCDu9BDSycvb8n8ig9CBjgjFZ2RykxFu4el6Z8ZGjTNpUeL30GUZbhhRXH6+z3IP4Ch+0oNBCAFeDx2txS81kMK6hXN3OZxJVxyU6WhSpKvnhhAVDlyB8Js33Cvc/do=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1723742822; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=7ubLrdWiAuaARtSKkJ+5UEopClt1Yb7V+WKhakMp2tM=; 
+	b=E5aSY2DwZSZaKgg12dAJqKN9/FlAnx8etLqUPwRou1OJDID6OH0buupg+kvlJlDMQrhwV3/q//G4zsEFGPmrfskT0R9jgAztWFwIaaXPHEjibX3hOCJQD+hkYCGSZlHdmGv50GxVi83Gs93litKOmRdN0mHEXGukT2IbGxXO2mo=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=cristian.ciocaltea@collabora.com;
+	dmarc=pass header.from=<cristian.ciocaltea@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1723742822;
+	s=zohomail; d=collabora.com; i=cristian.ciocaltea@collabora.com;
+	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
+	bh=7ubLrdWiAuaARtSKkJ+5UEopClt1Yb7V+WKhakMp2tM=;
+	b=kFX92+ZBJEF3qr2ZiFa2KMXfiIvV5/FB5K/T1hbxvA5TiTa4cW1EKmOZ34CP+MSd
+	BkSjdghnDfh9yf+3T/LY1/bElXQIHGTlZFjq8wghPoVSfs4uSNbNdqRL7Yv3hLFTJye
+	G1dvj1moMblGf5nvnh77qw/kgiWGd/KsZKEFncbw=
+Received: by mx.zohomail.com with SMTPS id 1723742819663277.3175685898667;
+	Thu, 15 Aug 2024 10:26:59 -0700 (PDT)
+Message-ID: <80ffed99-7368-4f84-8dc9-4c980055e48d@collabora.com>
+Date: Thu, 15 Aug 2024 20:26:54 +0300
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH RESEND] drm/rockchip: Unregister platform drivers in
+ reverse order
+To: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>,
+ Sandy Huang <hjc@rock-chips.com>, Andy Yan <andy.yan@rock-chips.com>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>,
+ Sean Paul <seanpaul@chromium.org>, Jeffy Chen <jeffy.chen@rock-chips.com>,
+ Andrzej Hajda <andrzej.hajda@intel.com>, Mark Yao <markyao0591@gmail.com>
+Cc: kernel@collabora.com, dri-devel@lists.freedesktop.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+References: <20240808-rk-drm-fix-unreg-v1-1-c30d9a754722@collabora.com>
+ <9027071.qdD9tO9HgI@diego>
+From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+Content-Language: en-US
+In-Reply-To: <9027071.qdD9tO9HgI@diego>
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240815_094809_750724_D2894774 
-X-CRM114-Status: GOOD (  12.95  )
+X-CRM114-CacheID: sfid-20240815_102720_989486_BD566272 
+X-CRM114-Status: GOOD (  12.73  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,42 +82,39 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi,
-
-Am Sonntag, 11. August 2024, 21:27:13 CEST schrieb Bartosz Golaszewski:
-> From: Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
-> 
-> 
-> On Sat, 10 Aug 2024 23:14:37 +0200, Heiko Stuebner wrote:
-> > The gt24c04a is just yet another 2404 compatible eeprom, and does not
-> > follow the generic naming matching, so add a separate compatible for it.
-> > 
-> > 
-> 
-> Applied, thanks!
-> 
-> [1/2] dt-bindings: eeprom: at24: Add compatible for Giantec GT24C04A
->       commit: a825dea2cd27a30e49816f18b7bc16545d5f0f89
-
-just for my understanding, where is this commit living now?
-
-Because linux next seems to know it [0], but also says that
-"Notice: this object is not reachable from any branch."
-
-
-Thanks
-Heiko
-
-[0] https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git/commit/?id=a825dea2cd27a30e49816f18b7bc16545d5f0f89
-
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gOC8xNS8yNCA1OjIxIFBNLCBIZWlrbyBTdMO8Ym5lciB3cm90ZToKPiBBbSBEb25uZXJzdGFn
+LCA4LiBBdWd1c3QgMjAyNCwgMTM6NTg6MDIgQ0VTVCBzY2hyaWViIENyaXN0aWFuIENpb2NhbHRl
+YToKPj4gTW92ZSByb2NrY2hpcF9kcm1fcGxhdGZvcm1fZHJpdmVyIHVucmVnaXN0cmF0aW9uIGFm
+dGVyIGl0cyBzdWItZHJpdmVycywKPj4gd2hpY2ggZW5zdXJlcyBhbGwgZHJpdmVycyBhcmUgdW5y
+ZWdpc3RlcmVkIGluIHRoZSByZXZlcnNlIG9yZGVyIHVzZWQKPj4gd2hlbiB0aGV5IHdlcmUgcmVn
+aXN0ZXJlZC4KPiAKPiBhcmUgeW91IHN1cmUgYWJvdXQgdGhhdD8KPiAKPiBJLmUuIGN1cnJlbnRs
+eSByb2NrY2hpcF9kcm1faW5pdCgpIGRvZXMgCj4gICBwbGF0Zm9ybV9yZWdpc3Rlcl9kcml2ZXJz
+KHJvY2tjaGlwX3N1Yl9kcml2ZXJzLCAuLi4pCj4gdG8gcmVnaXN0ZXIgdGhlIHN1Yi1kcml2ZXJz
+IGFuZCBvbmx5IGFmdGVyIHRoYXQgcmVnaXN0ZXJzIHRoZSBtYWluCj4gZHJtLXBsYXRmb3JtLWRy
+aXZlcgo+IAo+IHJvY2tjaGlwX2RybV9maW5pIGN1cnJlbnRseSBkb2VzIHRoZSByZXZlcnNlIG9m
+IGZpcnN0IHVucmVnaXN0ZXJpbmcgdGhlCj4gbWFpbiBkcm0tcGxhdGZvcm0tZHJpdmVyIGFuZCBh
+ZnRlciB0aGF0IHVucmVnaXN0ZXJpbmcgdGhlIGFycmF5IG9mIHN1Yi0KPiBkcml2ZXJzLgo+IAo+
+IAo+IFNvIGFzIGl0IHN0YW5kcyByaWdodCBub3csIHJvY2tjaGlwX2RybV9maW5pIGRvZXMgYWxy
+ZWFkeSBkbyBleGFjdGx5IHRoZQo+IHJldmVyc2Ugd2hlbiBkZS1yZWdpc3RlcmluZy4KCkluZGVl
+ZCwgc29tZWhvdyBJIG92ZXJsb29rZWQgdGhpcyB3aGlsZSBkZWJ1Z2dpbmcgc29tZSBtb2R1bGUg
+dW5sb2FkaW5nCmlzc3Vlcy4gIEkgZ3Vlc3MgaXQganVzdCBmZWx0IG1vcmUgbmF0dXJhbGx5IHRv
+IGhhdmUgdGhlIHN1YmRyaXZlcnMKdW5yZWdpc3RlcmVkIGZpcnN0LgoKT3V0IG9mIGN1cmlvc2l0
+eSB0byBzZWUgaWYgdGhlcmUncyBhIGNvbW1vbiBwYXR0ZXJuIGZvciBoYW5kbGluZyB0aGlzLCBJ
+CmZvdW5kIHRoYXQgbW9zdCBkcml2ZXJzIGRvIGluZGVlZCB1bnJlZ2lzdGVyIHRoZSBzdWJkcml2
+ZXJzIGJlZm9yZSB0aGUgbWFpbgpwbGF0Zm9ybSBvbmUsIGJ1dCB3ZWlyZGx5IGVub3VnaCwgc29t
+ZSBvZiB0aGVtIGRvIGFsc28ga2VlcCB0aGUgc2FtZSBvcmRlcgpvbiByZWdpc3RyYXRpb24sIHNp
+bWlsYXJpbHkgdG8gd2hhdCB0aGlzIHBhdGNoIHVuaW50ZW50aW9uYWxseSBkb2VzOgoKICBkcml2
+ZXJzL3Bvd2VyL3N1cHBseS9hYjg1MDBfY2hhcmdlci5jCiAgZHJpdmVycy9ncHUvZHJtL3ZjNC92
+YzRfZHJ2LmMKICBkcml2ZXJzL2dwdS9kcm0vbWNkZS9tY2RlX2Rydi5jCgpOb3Qgc3VyZSBpZiB0
+aG9zZSBhcmUgcG90ZW50aWFsIG1pc3Rha2VzLCBvciBtYXliZSBpdCBkb2Vzbid0IHJlYWxseSBt
+YXR0ZXI/IQoKUGxlYXNlIGxldCBtZSBrbm93IGlmIHlvdSBoYXZlIGEgcHJlZmVyZW5jZSBmb3Ig
+aXQsIGFuZCBJJ2xsIHVwZGF0ZSB0aGUKcGF0Y2ggYWNjb3JkaW5nbHksIG90aGVyd2lzZSBsZXQn
+cyBqdXN0IGlnbm9yZSBpdCBhbHRvZ2V0aGVyLgoKVGhhbmtzLApDcmlzdGlhbgoKCl9fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1h
+aWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0
+cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
