@@ -4,65 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 08FFCC52D7D
-	for <linux-rockchip@archiver.kernel.org>; Thu, 15 Aug 2024 13:54:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 96182C3DA7F
+	for <linux-rockchip@archiver.kernel.org>; Thu, 15 Aug 2024 14:06:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=jWpUMHPJt0o6/SYrRKSvVQuRvBWcy+zR9aAQetiGJsk=; b=wftV4TSIJRLwUx
-	6tX9apKJeYyEZDlhCoqZkSoESh91U0gRpBGq8c5eeIlO0gLhBGG+Ev+S6hiZWYlt8kOhFsyppm5AW
-	U9pZDi4zkuuj9mddrXPt2huchpHtNkCa/BbRJex9XcLefoDJLdoms0KQyU459aR+b9wlg3Nfjr80e
-	Pt549SKqZzomzf7F6y33E4DdTmypjIsG9L+a2N5kFkH+eSmyzr5xV9naP7pDFj44fHQ1qZlwU3+xL
-	A1n7c7SgdiC64QEFGVbz3tiDqzPmkiOH3BGzLvVZ3j8fI++zfJPqX/uxRgEow0gh9BpHK0U8BTRnU
-	FwB/LGEw/o09oibi/6Zw==;
+	List-Owner; bh=e0IaGNLI/2yH1NAUCPPkbv+C5bcgrOdpeBcVsimPu8o=; b=BBt8ynmPDxQV8u
+	aU9qZnKe3O8xnxgiHlKubZPmkwwGJQM2kOEjuXqd2BJT3ENABULrmHb9UA3Zhskhfw1TVOi6/5GGh
+	4GgWaqfl6wTS+bZR87sMIIjYrurmjELEGP5iAu6+XCQ7qS+Wql5WiPCOr6Jg88l02PCzYgK6OFaxf
+	kTa+A3TaBrONRdLYZqg7HGaxCtuqW22RREetLAsgoNv3FDAwZE1k24xM65RcGCj98DnDSzgHUcmAN
+	h2//iMcngIDguMriITvqBupsP4GeUksuUc5Zz0myNlw3QGakpEwHVtQ2yGoJjyC+t0Kclup1NPASP
+	MV4lJxLOsYSgfliHkI+g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1seavN-0000000A6uj-1fcV;
-	Thu, 15 Aug 2024 13:53:57 +0000
+	id 1seb70-0000000A99T-0NRA;
+	Thu, 15 Aug 2024 14:05:58 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1seauG-0000000A6bb-1Qaz;
-	Thu, 15 Aug 2024 13:52:50 +0000
+	id 1seb6L-0000000A91s-0dLk;
+	Thu, 15 Aug 2024 14:05:19 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
 	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=MsRxBz3yKwaI5Jy/pfioIi0ruFXHd6dE3S/c9N2LVTQ=; b=b9WyvxSSrtg9dDeKf+yBjbYhBN
-	+Tz6VbKbEXzp1OnmCxvKQcV5GytSVeRxNbtZwJTmebfYnxqWdyMj/ZAvORgeUVVdBYVmMNh9CLiGZ
-	BK/TEGoQEW/3vcufbizHAotLK7ZOHMAKm17QHfpTo23T1iuGva4yiAP7fO8DNq0LzSDH+RS9WPUyM
-	4Nyv7rdKLg9hWJfloNNMoyU4PSo0vwjx5EnbzKdCC5NtHSsH39M+Y3P+UOD5r2SPJxvMqhOI3+osk
-	BJKt9GvxpKZxHSP7qCuny7ePIdaOgl7avGmwpL/og5AqN9mOMONON/j4UJxIQaDEQ30HCXw1XCz6J
-	G9X9lBTw==;
+	bh=pd/g4NdIixVnycV+jtpbd814jlvaxwOgs1DMB5K/sxs=; b=qcj+x9wbbS83wYhN4aNgMwfKBR
+	IQ7nlnTAfco4P21jkIMsKQLiouneD0tUO3bv3C2wCSmYSB0CtdtYjbayykHAOw+Ns/e/Sk1cpRf1R
+	DPD6nll8KwYPCKldPRxeZZj3nJ+yShsq87QV2hAkCmsPO73pmcbODI1KLsSwzl47U97ZRPZ9erUv7
+	fC59sPhhpaIZJD/HXs7ITN+bw7BPJrMYqX8OFKBnifOSIyV270M0dBR0Aa6CTIe+6UQ/FO7tr980+
+	QoIPv0C4qk7vakDbensKPsKjJCkE8MU1VqOrk8zhbHYJDCb74VfbEohnWzDu97KdmmZTz+vbi4Z0Y
+	knlo4Agw==;
 Received: from i53875a9f.versanet.de ([83.135.90.159] helo=diego.localnet)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1seau9-0003Eo-CV; Thu, 15 Aug 2024 15:52:41 +0200
+	id 1seb6D-0003Q8-AZ; Thu, 15 Aug 2024 16:05:09 +0200
 From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
 To: linux-kernel@vger.kernel.org,
  Detlev Casanova <detlev.casanova@collabora.com>
-Cc: Ulf Hansson <ulf.hansson@linaro.org>, Rob Herring <robh@kernel.org>,
+Cc: Linus Walleij <linus.walleij@linaro.org>, Rob Herring <robh@kernel.org>,
  Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
- Jaehoon Chung <jh80.chung@samsung.com>, linux-mmc@vger.kernel.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, kernel@collabora.com,
- Shawn Lin <shawn.lin@rock-chips.com>,
+ linux-gpio@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ kernel@collabora.com, Steven Liu <steven.liu@rock-chips.com>,
  Detlev Casanova <detlev.casanova@collabora.com>
-Subject: Re: [PATCH v3 3/3] mmc: dw_mmc-rockchip: Add internal phase support
-Date: Thu, 15 Aug 2024 15:52:40 +0200
-Message-ID: <12141241.2vOk3Fo9v1@diego>
-In-Reply-To: <20240814223555.3695-4-detlev.casanova@collabora.com>
-References: <20240814223555.3695-1-detlev.casanova@collabora.com>
- <20240814223555.3695-4-detlev.casanova@collabora.com>
+Subject: Re: [PATCH v3 2/2] pinctrl: rockchip: Add rk3576 pinctrl support
+Date: Thu, 15 Aug 2024 16:05:08 +0200
+Message-ID: <5865327.fQeU5cv6pJ@diego>
+In-Reply-To: <20240814223217.3498-3-detlev.casanova@collabora.com>
+References: <20240814223217.3498-1-detlev.casanova@collabora.com>
+ <20240814223217.3498-3-detlev.casanova@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240815_065248_578706_3D6B9092 
-X-CRM114-Status: GOOD (  47.05  )
+X-CRM114-CacheID: sfid-20240815_070517_518981_9933568B 
+X-CRM114-Status: GOOD (  36.86  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,343 +78,399 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Am Donnerstag, 15. August 2024, 00:34:02 CEST schrieb Detlev Casanova:
-> From: Shawn Lin <shawn.lin@rock-chips.com>
+Am Donnerstag, 15. August 2024, 00:30:39 CEST schrieb Detlev Casanova:
+> From: Steven Liu <steven.liu@rock-chips.com>
 > 
-> Some Rockchip devices put the phase settings into the dw_mmc controller.
+> Add support for the 5 rk3576 GPIO banks.
 > 
-> The feature is implemented in devices where the USRID register contains
-> 0x20230002.
+> This also adds support for optionnal support of the sys-grf syscon,
+
+only one "n" in optional
+
+> used for i3c software controlled weak pull-up.
 > 
-> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+> Signed-off-by: Steven Liu <steven.liu@rock-chips.com>
+> [rebase, reword commit message]
 > Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
 > ---
->  drivers/mmc/host/dw_mmc-rockchip.c | 184 ++++++++++++++++++++++++++---
->  1 file changed, 170 insertions(+), 14 deletions(-)
+>  drivers/pinctrl/pinctrl-rockchip.c | 228 +++++++++++++++++++++++++++++
+>  drivers/pinctrl/pinctrl-rockchip.h |   2 +
+>  2 files changed, 230 insertions(+)
 > 
-> diff --git a/drivers/mmc/host/dw_mmc-rockchip.c b/drivers/mmc/host/dw_mmc-rockchip.c
-> index 367633f4e8892..03e25a8b8a305 100644
-> --- a/drivers/mmc/host/dw_mmc-rockchip.c
-> +++ b/drivers/mmc/host/dw_mmc-rockchip.c
-> @@ -16,6 +16,17 @@
->  #include "dw_mmc-pltfm.h"
+> diff --git a/drivers/pinctrl/pinctrl-rockchip.c b/drivers/pinctrl/pinctrl-rockchip.c
+> index 0eacaf10c640f..110ed81d650be 100644
+> --- a/drivers/pinctrl/pinctrl-rockchip.c
+> +++ b/drivers/pinctrl/pinctrl-rockchip.c
+> @@ -84,6 +84,27 @@
+>  		},							\
+>  	}
 >  
->  #define RK3288_CLKGEN_DIV	2
-> +#define USRID_INTER_PHASE	0x20230001
-> +#define SDMMC_TIMING_CON0	0x130
-> +#define SDMMC_TIMING_CON1	0x134
-> +#define ROCKCHIP_MMC_DELAY_SEL BIT(10)
-> +#define ROCKCHIP_MMC_DEGREE_MASK 0x3
-> +#define ROCKCHIP_MMC_DELAYNUM_OFFSET 2
-
-the delaynum offset in the register is 3, please don't encode how you
-use constants below into the values. So the constants should reflect the
-register setup
-
-
-> +#define ROCKCHIP_MMC_DELAYNUM_MASK (0xff << ROCKCHIP_MMC_DELAYNUM_OFFSET)
-
-please use one firm of mask values ROCKCHIP_MMC_DEGREE_MASK is used
-for values _after_ they are shifted, while your DELAYNUM_MASK is vor values
-_before_ they are shifted. Please decide on one form for both.
-
-
-> +#define PSECS_PER_SEC 1000000000000LL
-
-this is the second definition of this value, after clk/rockchip/clk-mmc-phase.c [0] .
-The kernel already has a PSEC_PER_SEC definition in vdso/time64.h [1] and
-thus linux/time64.h, so please re-use that - the innosilicon-dsi-phy
-already does it too [2].
-
-[0] https://elixir.bootlin.com/linux/v6.10.5/source/drivers/clk/rockchip/clk-mmc-phase.c#L37
-[1] https://elixir.bootlin.com/linux/v6.10.5/source/include/vdso/time64.h#L11
-[2] https://elixir.bootlin.com/linux/v6.11-rc3/source/drivers/phy/rockchip/phy-rockchip-inno-dsidphy.c#L415
-
-
-> +#define ROCKCHIP_MMC_DELAY_ELEMENT_PSEC 60
-> +#define HIWORD_UPDATE(val, mask, shift) \
-> +		((val) << (shift) | (mask) << ((shift) + 16))
->  
->  static const unsigned int freqs[] = { 100000, 200000, 300000, 400000 };
->  
-> @@ -25,9 +36,121 @@ struct dw_mci_rockchip_priv_data {
->  	int			default_sample_phase;
->  	int			num_phases;
->  	bool			use_v2_tuning;
-> +	int			usrid;
->  	int			last_degree;
->  };
->  
-> +/*
-> + * Each fine delay is between 44ps-77ps. Assume each fine delay is 60ps to
-> + * simplify calculations. So 45degs could be anywhere between 33deg and 57.8deg.
-> + */
-> +static int rockchip_mmc_get_phase(struct dw_mci *host, bool sample)
-> +{
-> +	unsigned long rate = clk_get_rate(host->ciu_clk);
-> +	u32 raw_value;
-> +	u16 degrees;
-> +	u32 delay_num = 0;
-> +
-> +	/* Constant signal, no measurable phase shift */
-> +	if (!rate)
-> +		return 0;
-> +
-> +	if (sample)
-> +		raw_value = mci_readl(host, TIMING_CON1) >> 1;
-> +	else
-> +		raw_value = mci_readl(host, TIMING_CON0) >> 1;
-
-please define some sort of 
-	#define ROCKCHIP_MMC_DEGREE_OFFSET	1 
-above and use that constant instead of hard-coding the 1 shift
-
-> +
-> +	degrees = (raw_value & ROCKCHIP_MMC_DEGREE_MASK) * 90;
-> +
-> +	if (raw_value & ROCKCHIP_MMC_DELAY_SEL) {
-> +		/* degrees/delaynum * 1000000 */
-> +		unsigned long factor = (ROCKCHIP_MMC_DELAY_ELEMENT_PSEC / 10) *
-> +					36 * (rate / 10000);
-> +
-> +		delay_num = (raw_value & ROCKCHIP_MMC_DELAYNUM_MASK);
-> +		delay_num >>= ROCKCHIP_MMC_DELAYNUM_OFFSET;
-> +		degrees += DIV_ROUND_CLOSEST(delay_num * factor, 1000000);
+> +#define PIN_BANK_IOMUX_FLAGS_OFFSET_PULL_FLAGS(id, pins, label, iom0,	\
+> +					       iom1, iom2, iom3,	\
+> +					       offset0, offset1,	\
+> +					       offset2, offset3, pull0,	\
+> +					       pull1, pull2, pull3)	\
+> +	{								\
+> +		.bank_num	= id,					\
+> +		.nr_pins	= pins,					\
+> +		.name		= label,				\
+> +		.iomux		= {					\
+> +			{ .type = iom0, .offset = offset0 },		\
+> +			{ .type = iom1, .offset = offset1 },		\
+> +			{ .type = iom2, .offset = offset2 },		\
+> +			{ .type = iom3, .offset = offset3 },		\
+> +		},							\
+> +		.pull_type[0] = pull0,					\
+> +		.pull_type[1] = pull1,					\
+> +		.pull_type[2] = pull2,					\
+> +		.pull_type[3] = pull3,					\
 > +	}
 > +
-> +	return degrees % 360;
-> +}
-> +
-> +static int rockchip_mmc_set_phase(struct dw_mci *host, bool sample, int degrees)
-> +{
-> +	unsigned long rate = clk_get_rate(host->ciu_clk);
-> +	u8 nineties, remainder;
-> +	u8 delay_num;
-> +	u32 raw_value;
-> +	u32 delay;
-> +
-> +	/*
-> +	 * The below calculation is based on the output clock from
-> +	 * MMC host to the card, which expects the phase clock inherits
-> +	 * the clock rate from its parent, namely the output clock
-> +	 * provider of MMC host. However, things may go wrong if
-> +	 * (1) It is orphan.
-> +	 * (2) It is assigned to the wrong parent.
-> +	 *
-> +	 * This check help debug the case (1), which seems to be the
-> +	 * most likely problem we often face and which makes it difficult
-> +	 * for people to debug unstable mmc tuning results.
-> +	 */
-> +	if (!rate) {
-> +		dev_err(host->dev, "%s: invalid clk rate\n", __func__);
-> +		return -EINVAL;
+>  #define PIN_BANK_DRV_FLAGS(id, pins, label, type0, type1, type2, type3) \
+>  	{								\
+>  		.bank_num	= id,					\
+> @@ -1120,6 +1141,11 @@ static int rockchip_get_mux(struct rockchip_pin_bank *bank, int pin)
+>  	if (bank->recalced_mask & BIT(pin))
+>  		rockchip_get_recalced_mux(bank, pin, &reg, &bit, &mask);
+>  
+> +	if (ctrl->type == RK3576) {
+> +		if ((bank->bank_num == 0) && (pin >= RK_PB4) && (pin <= RK_PB7))
+> +			reg += 0x1FF4; /* GPIO0_IOC_GPIO0B_IOMUX_SEL_H */
+
+0x1ff4 in lower case please
+
+
 > +	}
 > +
-> +	nineties = degrees / 90;
-> +	remainder = (degrees % 90);
+>  	if (ctrl->type == RK3588) {
+>  		if (bank->bank_num == 0) {
+>  			if ((pin >= RK_PB4) && (pin <= RK_PD7)) {
+> @@ -1193,6 +1219,7 @@ static int rockchip_set_mux(struct rockchip_pin_bank *bank, int pin, int mux)
+>  	struct device *dev = info->dev;
+>  	int iomux_num = (pin / 8);
+>  	struct regmap *regmap;
+> +	struct regmap *regmap_sys;
+>  	int reg, ret, mask, mux_type;
+>  	u8 bit;
+>  	u32 data, rmask, route_location, route_reg, route_val;
+> @@ -1213,6 +1240,8 @@ static int rockchip_set_mux(struct rockchip_pin_bank *bank, int pin, int mux)
+>  	else
+>  		regmap = info->regmap_base;
+>  
+> +	regmap_sys = info->regmap_sys_grf;
 > +
-> +	/*
-> +	 * Due to the inexact nature of the "fine" delay, we might
-> +	 * actually go non-monotonic.  We don't go _too_ monotonic
-> +	 * though, so we should be OK.  Here are options of how we may
-> +	 * work:
-> +	 *
-> +	 * Ideally we end up with:
-> +	 *   1.0, 2.0, ..., 69.0, 70.0, ...,  89.0, 90.0
-> +	 *
-> +	 * On one extreme (if delay is actually 44ps):
-> +	 *   .73, 1.5, ..., 50.6, 51.3, ...,  65.3, 90.0
-> +	 * The other (if delay is actually 77ps):
-> +	 *   1.3, 2.6, ..., 88.6. 89.8, ..., 114.0, 90
-> +	 *
-> +	 * It's possible we might make a delay that is up to 25
-> +	 * degrees off from what we think we're making.  That's OK
-> +	 * though because we should be REALLY far from any bad range.
-> +	 */
+>  	/* get basic quadrupel of mux registers and the correct reg inside */
+>  	mux_type = bank->iomux[iomux_num].type;
+>  	reg = bank->iomux[iomux_num].offset;
+> @@ -1234,6 +1263,20 @@ static int rockchip_set_mux(struct rockchip_pin_bank *bank, int pin, int mux)
+>  	if (bank->recalced_mask & BIT(pin))
+>  		rockchip_get_recalced_mux(bank, pin, &reg, &bit, &mask);
+>  
+> +	if (ctrl->type == RK3576) {
+> +		if ((bank->bank_num == 0) && (pin >= RK_PB4) && (pin <= RK_PB7))
+> +			reg += 0x1FF4; /* GPIO0_IOC_GPIO0B_IOMUX_SEL_H */
+
+0x1ff4 please
+
+> +		/* i3c0 weakpull controlled by software */
+> +		if (((bank->bank_num == 0) && (pin == RK_PC5) && (mux == 0xb)) ||
+> +		    ((bank->bank_num == 1) && (pin == RK_PD1) && (mux == 0xa)))
+> +			regmap_update_bits(regmap_sys, 0x4, 0xc000c0, 0xc000c0);
+> +		/* i3c1 weakpull controlled by software */
+> +		if (((bank->bank_num == 2) && (pin == RK_PA5) && (mux == 0xe)) ||
+> +		    ((bank->bank_num == 2) && (pin == RK_PD6) && (mux == 0xc)) ||
+> +		    ((bank->bank_num == 3) && (pin == RK_PD1) && (mux == 0xb)))
+> +			regmap_update_bits(regmap_sys, 0x4, 0x3000300, 0x3000300);
+
+this setting belongs into drivers/soc/rockchip/grf.c .
+
+You want to decide that the i3c controller has no say over the pull
+settings, but instead pinctrl should always be in control.
+
+Such default system-wide settings should not clutter up the pinctrl
+driver please. The grf-"driver" exists for exactly that case.
+
+That way you also don't need the additional grf-handling here and
+in the dt-binding.
+
+
+> +	}
 > +
-> +	/*
-> +	 * Convert to delay; do a little extra work to make sure we
-> +	 * don't overflow 32-bit / 64-bit numbers.
-> +	 */
-> +	delay = 10000000; /* PSECS_PER_SEC / 10000 / 10 */
-> +	delay *= remainder;
-> +	delay = DIV_ROUND_CLOSEST(delay,
-> +			(rate / 1000) * 36 *
-> +				(ROCKCHIP_MMC_DELAY_ELEMENT_PSEC / 10));
+>  	if (ctrl->type == RK3588) {
+>  		if (bank->bank_num == 0) {
+>  			if ((pin >= RK_PB4) && (pin <= RK_PD7)) {
+> @@ -2038,6 +2081,142 @@ static int rk3568_calc_drv_reg_and_bit(struct rockchip_pin_bank *bank,
+>  	return 0;
+>  }
+>  
+> +#define RK3576_DRV_BITS_PER_PIN		4
+> +#define RK3576_DRV_PINS_PER_REG		4
+> +#define RK3576_DRV_GPIO0_AL_OFFSET	0x10
+> +#define RK3576_DRV_GPIO0_BH_OFFSET	0x2014
+> +#define RK3576_DRV_GPIO1_OFFSET		0x6020
+> +#define RK3576_DRV_GPIO2_OFFSET		0x6040
+> +#define RK3576_DRV_GPIO3_OFFSET		0x6060
+> +#define RK3576_DRV_GPIO4_AL_OFFSET	0x6080
+> +#define RK3576_DRV_GPIO4_CL_OFFSET	0xA090
+> +#define RK3576_DRV_GPIO4_DL_OFFSET	0xB098
 > +
-> +	delay_num = (u8) min_t(u32, delay, 255);
+> +static int rk3576_calc_drv_reg_and_bit(struct rockchip_pin_bank *bank,
+> +					int pin_num, struct regmap **regmap,
+> +					int *reg, u8 *bit)
+> +{
+> +	struct rockchip_pinctrl *info = bank->drvdata;
 > +
-> +	raw_value = delay_num ? ROCKCHIP_MMC_DELAY_SEL : 0;
-> +	raw_value |= delay_num << ROCKCHIP_MMC_DELAYNUM_OFFSET;
-> +	raw_value |= nineties;
+> +	*regmap = info->regmap_base;
 > +
-> +	if (sample)
-> +		mci_writel(host, TIMING_CON1, HIWORD_UPDATE(raw_value, 0x07ff, 1));
+> +	if (bank->bank_num == 0 && pin_num < 12)
+> +		*reg = RK3576_DRV_GPIO0_AL_OFFSET;
+> +	else if (bank->bank_num == 0)
+> +		*reg = RK3576_DRV_GPIO0_BH_OFFSET - 0xc;
+> +	else if (bank->bank_num == 1)
+> +		*reg = RK3576_DRV_GPIO1_OFFSET;
+> +	else if (bank->bank_num == 2)
+> +		*reg = RK3576_DRV_GPIO2_OFFSET;
+> +	else if (bank->bank_num == 3)
+> +		*reg = RK3576_DRV_GPIO3_OFFSET;
+> +	else if (bank->bank_num == 4 && pin_num < 16)
+> +		*reg = RK3576_DRV_GPIO4_AL_OFFSET;
+> +	else if (bank->bank_num == 4 && pin_num < 24)
+> +		*reg = RK3576_DRV_GPIO4_CL_OFFSET - 0x10;
+> +	else if (bank->bank_num == 4)
+> +		*reg = RK3576_DRV_GPIO4_DL_OFFSET - 0x18;
 > +	else
-> +		mci_writel(host, TIMING_CON0, HIWORD_UPDATE(raw_value, 0x07ff, 1));
+> +		dev_err(info->dev, "unsupported bank_num %d\n", bank->bank_num);
 > +
-> +	dev_dbg(host->dev, "set %s_phase(%d) delay_nums=%u actual_degrees=%d\n",
-> +		sample ? "sample" : "drv", degrees, delay_num,
-> +		rockchip_mmc_get_phase(host, sample)
-> +	);
+> +	*reg += ((pin_num / RK3576_DRV_PINS_PER_REG) * 4);
+> +	*bit = pin_num % RK3576_DRV_PINS_PER_REG;
+> +	*bit *= RK3576_DRV_BITS_PER_PIN;
 > +
 > +	return 0;
 > +}
 > +
->  static void dw_mci_rk3288_set_ios(struct dw_mci *host, struct mmc_ios *ios)
->  {
->  	struct dw_mci_rockchip_priv_data *priv = host->priv;
-> @@ -65,8 +188,12 @@ static void dw_mci_rk3288_set_ios(struct dw_mci *host, struct mmc_ios *ios)
->  	}
->  
->  	/* Make sure we use phases which we can enumerate with */
-> -	if (!IS_ERR(priv->sample_clk) && ios->timing <= MMC_TIMING_SD_HS)
-> -		clk_set_phase(priv->sample_clk, priv->default_sample_phase);
-> +	if (!IS_ERR(priv->sample_clk) && ios->timing <= MMC_TIMING_SD_HS) {
-> +		if (priv->usrid == USRID_INTER_PHASE)
-> +			rockchip_mmc_set_phase(host, true, priv->default_sample_phase);
-> +		else
-> +			clk_set_phase(priv->sample_clk, priv->default_sample_phase);
-> +	}
->  
->  	/*
->  	 * Set the drive phase offset based on speed mode to achieve hold times.
-> @@ -129,7 +256,10 @@ static void dw_mci_rk3288_set_ios(struct dw_mci *host, struct mmc_ios *ios)
->  			break;
->  		}
->  
-> -		clk_set_phase(priv->drv_clk, phase);
-> +		if (priv->usrid == USRID_INTER_PHASE)
-> +			rockchip_mmc_set_phase(host, false, phase);
-> +		else
-> +			clk_set_phase(priv->drv_clk, phase);
->  	}
->  }
->  
-> @@ -141,13 +271,16 @@ static int dw_mci_v2_execute_tuning(struct dw_mci_slot *slot, u32 opcode)
->  	struct dw_mci *host = slot->host;
->  	struct dw_mci_rockchip_priv_data *priv = host->priv;
->  	struct mmc_host *mmc = slot->mmc;
-> -	u32 degrees[4] = {90, 180, 270, 360};
-> +	u32 degree, degrees[4] = {90, 180, 270, 360};
->  	int i;
->  	static bool inherit = true;
->  
->  	if (inherit) {
->  		inherit = false;
-> -		i = clk_get_phase(priv->sample_clk) / 90 - 1;
-> +		if (priv->usrid == USRID_INTER_PHASE)
-> +			i = rockchip_mmc_get_phase(host, true) / 90;
-> +		else
-> +			i = clk_get_phase(priv->sample_clk) / 90 - 1;
->  		goto done;
->  	}
->  
-> @@ -156,7 +289,11 @@ static int dw_mci_v2_execute_tuning(struct dw_mci_slot *slot, u32 opcode)
->  		if (degrees[i] == priv->last_degree)
->  			continue;
->  
-> -		clk_set_phase(priv->sample_clk, degrees[i]);
-> +		degree = (degrees[i] + priv->last_degree + 90) % 360;
-> +		if (priv->usrid == USRID_INTER_PHASE)
-> +			rockchip_mmc_set_phase(host, true, degree);
-> +		else
-> +			clk_set_phase(priv->sample_clk, degree);
->  		if (!mmc_send_tuning(mmc, opcode, NULL))
->  			break;
->  	}
-> @@ -189,6 +326,7 @@ static int dw_mci_rk3288_execute_tuning(struct dw_mci_slot *slot, u32 opcode)
->  	int longest_range_len = -1;
->  	int longest_range = -1;
->  	int middle_phase;
-> +	int phase;
->  
->  	if (IS_ERR(priv->sample_clk)) {
->  		dev_err(host->dev, "Tuning clock (sample_clk) not defined.\n");
-> @@ -209,8 +347,15 @@ static int dw_mci_rk3288_execute_tuning(struct dw_mci_slot *slot, u32 opcode)
->  
->  	/* Try each phase and extract good ranges */
->  	for (i = 0; i < priv->num_phases; ) {
-> -		clk_set_phase(priv->sample_clk,
-> -			      TUNING_ITERATION_TO_PHASE(i, priv->num_phases));
-> +		/* Cannot guarantee any phases larger than 270 would work well */
-> +		if (TUNING_ITERATION_TO_PHASE(i, priv->num_phases) > 270)
-> +			break;
-
-this changes behaviour for the existing user as well.
-Not say that this is incorrect, but limiting phases to a working area should be a separate change.
-
-> +		if (priv->usrid == USRID_INTER_PHASE)
-> +			rockchip_mmc_set_phase(host, true,
-> +				TUNING_ITERATION_TO_PHASE(i, priv->num_phases));
-> +		else
-> +			clk_set_phase(priv->sample_clk,
-> +				TUNING_ITERATION_TO_PHASE(i, priv->num_phases));
->  
->  		v = !mmc_send_tuning(mmc, opcode, NULL);
->  
-> @@ -256,7 +401,10 @@ static int dw_mci_rk3288_execute_tuning(struct dw_mci_slot *slot, u32 opcode)
->  	}
->  
->  	if (ranges[0].start == 0 && ranges[0].end == priv->num_phases - 1) {
-> -		clk_set_phase(priv->sample_clk, priv->default_sample_phase);
-> +		if (priv->usrid == USRID_INTER_PHASE)
-> +			rockchip_mmc_set_phase(host, true, priv->default_sample_phase);
-> +		else
-> +			clk_set_phase(priv->sample_clk, priv->default_sample_phase);
->  		dev_info(host->dev, "All phases work, using default phase %d.",
->  			 priv->default_sample_phase);
->  		goto free;
-> @@ -293,12 +441,13 @@ static int dw_mci_rk3288_execute_tuning(struct dw_mci_slot *slot, u32 opcode)
->  
->  	middle_phase = ranges[longest_range].start + longest_range_len / 2;
->  	middle_phase %= priv->num_phases;
-> -	dev_info(host->dev, "Successfully tuned phase to %d\n",
-> -		 TUNING_ITERATION_TO_PHASE(middle_phase, priv->num_phases));
-> +	phase = TUNING_ITERATION_TO_PHASE(middle_phase, priv->num_phases);
-> +	dev_info(host->dev, "Successfully tuned phase to %d\n", phase);
->  
-> -	clk_set_phase(priv->sample_clk,
-> -		      TUNING_ITERATION_TO_PHASE(middle_phase,
-> -						priv->num_phases));
-> +	if (priv->usrid == USRID_INTER_PHASE)
-> +		rockchip_mmc_set_phase(host, true, phase);
+> +#define RK3576_PULL_BITS_PER_PIN	2
+> +#define RK3576_PULL_PINS_PER_REG	8
+> +#define RK3576_PULL_GPIO0_AL_OFFSET	0x20
+> +#define RK3576_PULL_GPIO0_BH_OFFSET	0x2028
+> +#define RK3576_PULL_GPIO1_OFFSET	0x6110
+> +#define RK3576_PULL_GPIO2_OFFSET	0x6120
+> +#define RK3576_PULL_GPIO3_OFFSET	0x6130
+> +#define RK3576_PULL_GPIO4_AL_OFFSET	0x6140
+> +#define RK3576_PULL_GPIO4_CL_OFFSET	0xA148
+> +#define RK3576_PULL_GPIO4_DL_OFFSET	0xB14C
+> +
+> +static int rk3576_calc_pull_reg_and_bit(struct rockchip_pin_bank *bank,
+> +					 int pin_num, struct regmap **regmap,
+> +					 int *reg, u8 *bit)
+> +{
+> +	struct rockchip_pinctrl *info = bank->drvdata;
+> +
+> +	*regmap = info->regmap_base;
+> +
+> +	if (bank->bank_num == 0 && pin_num < 12)
+> +		*reg = RK3576_PULL_GPIO0_AL_OFFSET;
+> +	else if (bank->bank_num == 0)
+> +		*reg = RK3576_PULL_GPIO0_BH_OFFSET - 0x4;
+> +	else if (bank->bank_num == 1)
+> +		*reg = RK3576_PULL_GPIO1_OFFSET;
+> +	else if (bank->bank_num == 2)
+> +		*reg = RK3576_PULL_GPIO2_OFFSET;
+> +	else if (bank->bank_num == 3)
+> +		*reg = RK3576_PULL_GPIO3_OFFSET;
+> +	else if (bank->bank_num == 4 && pin_num < 16)
+> +		*reg = RK3576_PULL_GPIO4_AL_OFFSET;
+> +	else if (bank->bank_num == 4 && pin_num < 24)
+> +		*reg = RK3576_PULL_GPIO4_CL_OFFSET - 0x8;
+> +	else if (bank->bank_num == 4)
+> +		*reg = RK3576_PULL_GPIO4_DL_OFFSET - 0xc;
 > +	else
-> +		clk_set_phase(priv->sample_clk, phase);
-
-with the change in compatible (not claiming to be compatible with tk3288)
-you can also just introduce a new dw_mci_drv_data for the rk3576 and
-following can therefore create a separate tuning function to not need all
-those ifs.
-
-And also a shorter parse_dt function that does not tries to get non-existent
-clocks.
-
-
->  
->  free:
->  	kfree(ranges);
-> @@ -342,6 +491,7 @@ static int dw_mci_rk3288_parse_dt(struct dw_mci *host)
->  static int dw_mci_rockchip_init(struct dw_mci *host)
->  {
->  	int ret, i;
-> +	struct dw_mci_rockchip_priv_data *priv = host->priv;
->  
->  	/* It is slot 8 on Rockchip SoCs */
->  	host->sdio_id0 = 8;
-> @@ -365,6 +515,12 @@ static int dw_mci_rockchip_init(struct dw_mci *host)
->  			dev_warn(host->dev, "no valid minimum freq: %d\n", ret);
+> +		dev_err(info->dev, "unsupported bank_num %d\n", bank->bank_num);
+> +
+> +	*reg += ((pin_num / RK3576_PULL_PINS_PER_REG) * 4);
+> +	*bit = pin_num % RK3576_PULL_PINS_PER_REG;
+> +	*bit *= RK3576_PULL_BITS_PER_PIN;
+> +
+> +	return 0;
+> +}
+> +
+> +#define RK3576_SMT_BITS_PER_PIN		1
+> +#define RK3576_SMT_PINS_PER_REG		8
+> +#define RK3576_SMT_GPIO0_AL_OFFSET	0x30
+> +#define RK3576_SMT_GPIO0_BH_OFFSET	0x2040
+> +#define RK3576_SMT_GPIO1_OFFSET		0x6210
+> +#define RK3576_SMT_GPIO2_OFFSET		0x6220
+> +#define RK3576_SMT_GPIO3_OFFSET		0x6230
+> +#define RK3576_SMT_GPIO4_AL_OFFSET	0x6240
+> +#define RK3576_SMT_GPIO4_CL_OFFSET	0xA248
+> +#define RK3576_SMT_GPIO4_DL_OFFSET	0xB24C
+> +
+> +static int rk3576_calc_schmitt_reg_and_bit(struct rockchip_pin_bank *bank,
+> +					   int pin_num,
+> +					   struct regmap **regmap,
+> +					   int *reg, u8 *bit)
+> +{
+> +	struct rockchip_pinctrl *info = bank->drvdata;
+> +
+> +	*regmap = info->regmap_base;
+> +
+> +	if (bank->bank_num == 0 && pin_num < 12)
+> +		*reg = RK3576_SMT_GPIO0_AL_OFFSET;
+> +	else if (bank->bank_num == 0)
+> +		*reg = RK3576_SMT_GPIO0_BH_OFFSET - 0x4;
+> +	else if (bank->bank_num == 1)
+> +		*reg = RK3576_SMT_GPIO1_OFFSET;
+> +	else if (bank->bank_num == 2)
+> +		*reg = RK3576_SMT_GPIO2_OFFSET;
+> +	else if (bank->bank_num == 3)
+> +		*reg = RK3576_SMT_GPIO3_OFFSET;
+> +	else if (bank->bank_num == 4 && pin_num < 16)
+> +		*reg = RK3576_SMT_GPIO4_AL_OFFSET;
+> +	else if (bank->bank_num == 4 && pin_num < 24)
+> +		*reg = RK3576_SMT_GPIO4_CL_OFFSET - 0x8;
+> +	else if (bank->bank_num == 4)
+> +		*reg = RK3576_SMT_GPIO4_DL_OFFSET - 0xc;
+> +	else
+> +		dev_err(info->dev, "unsupported bank_num %d\n", bank->bank_num);
+> +
+> +	*reg += ((pin_num / RK3576_SMT_PINS_PER_REG) * 4);
+> +	*bit = pin_num % RK3576_SMT_PINS_PER_REG;
+> +	*bit *= RK3576_SMT_BITS_PER_PIN;
+> +
+> +	return 0;
+> +}
+> +
+>  #define RK3588_PMU1_IOC_REG		(0x0000)
+>  #define RK3588_PMU2_IOC_REG		(0x4000)
+>  #define RK3588_BUS_IOC_REG		(0x8000)
+> @@ -2332,6 +2511,10 @@ static int rockchip_set_drive_perpin(struct rockchip_pin_bank *bank,
+>  		rmask_bits = RK3568_DRV_BITS_PER_PIN;
+>  		ret = (1 << (strength + 1)) - 1;
+>  		goto config;
+> +	} else if (ctrl->type == RK3576) {
+> +		rmask_bits = RK3576_DRV_BITS_PER_PIN;
+> +		ret = ((strength & BIT(2)) >> 2) | ((strength & BIT(0)) << 2) | (strength & BIT(1));
+> +		goto config;
 >  	}
 >  
-> +	priv->usrid = mci_readl(host, USRID);
-> +	if (priv->usrid == USRID_INTER_PHASE) {
-> +		priv->sample_clk = NULL;
-> +		priv->drv_clk = NULL;
+>  	if (ctrl->type == RV1126) {
+> @@ -2469,6 +2652,7 @@ static int rockchip_get_pull(struct rockchip_pin_bank *bank, int pin_num)
+>  	case RK3368:
+>  	case RK3399:
+>  	case RK3568:
+> +	case RK3576:
+>  	case RK3588:
+>  		pull_type = bank->pull_type[pin_num / 8];
+>  		data >>= bit;
+> @@ -2528,6 +2712,7 @@ static int rockchip_set_pull(struct rockchip_pin_bank *bank,
+>  	case RK3368:
+>  	case RK3399:
+>  	case RK3568:
+> +	case RK3576:
+>  	case RK3588:
+>  		pull_type = bank->pull_type[pin_num / 8];
+>  		ret = -EINVAL;
+> @@ -2793,6 +2978,7 @@ static bool rockchip_pinconf_pull_valid(struct rockchip_pin_ctrl *ctrl,
+>  	case RK3368:
+>  	case RK3399:
+>  	case RK3568:
+> +	case RK3576:
+>  	case RK3588:
+>  		return (pull != PIN_CONFIG_BIAS_PULL_PIN_DEFAULT);
+>  	}
+> @@ -3439,6 +3625,15 @@ static int rockchip_pinctrl_probe(struct platform_device *pdev)
+>  		}
+>  	}
+>  
+> +	/* try to find the optional reference to the sys_grf syscon */
+> +	node = of_parse_phandle(np, "rockchip,sys-grf", 0);
+> +	if (node) {
+> +		info->regmap_sys_grf = syscon_node_to_regmap(node);
+> +		of_node_put(node);
+> +		if (IS_ERR(info->regmap_sys_grf))
+> +			return PTR_ERR(info->regmap_sys_grf);
 > +	}
 > +
 
-in any case, shouldn't the clocks be NULL anyway?
+not needed if the i3c stuff moves into the grf driver.
 
+
+>  	/* try to find the optional reference to the pmu syscon */
+>  	node = of_parse_phandle(np, "rockchip,pmu", 0);
+>  	if (node) {
+> @@ -3949,6 +4144,37 @@ static struct rockchip_pin_ctrl rk3568_pin_ctrl = {
+>  	.schmitt_calc_reg	= rk3568_calc_schmitt_reg_and_bit,
+>  };
+>  
+> +#define RK3576_PIN_BANK(ID, LABEL, OFFSET0, OFFSET1, OFFSET2, OFFSET3)	\
+> +	PIN_BANK_IOMUX_FLAGS_OFFSET_PULL_FLAGS(ID, 32, LABEL,		\
+> +					       IOMUX_WIDTH_4BIT,	\
+> +					       IOMUX_WIDTH_4BIT,	\
+> +					       IOMUX_WIDTH_4BIT,	\
+> +					       IOMUX_WIDTH_4BIT,	\
+> +					       OFFSET0, OFFSET1,	\
+> +					       OFFSET2, OFFSET3,	\
+> +					       PULL_TYPE_IO_1V8_ONLY,	\
+> +					       PULL_TYPE_IO_1V8_ONLY,	\
+> +					       PULL_TYPE_IO_1V8_ONLY,	\
+> +					       PULL_TYPE_IO_1V8_ONLY)
+> +
+> +static struct rockchip_pin_bank rk3576_pin_banks[] = {
+> +	RK3576_PIN_BANK(0, "gpio0", 0, 0x8, 0x2004, 0x200C),
+> +	RK3576_PIN_BANK(1, "gpio1", 0x4020, 0x4028, 0x4030, 0x4038),
+> +	RK3576_PIN_BANK(2, "gpio2", 0x4040, 0x4048, 0x4050, 0x4058),
+> +	RK3576_PIN_BANK(3, "gpio3", 0x4060, 0x4068, 0x4070, 0x4078),
+> +	RK3576_PIN_BANK(4, "gpio4", 0x4080, 0x4088, 0xA390, 0xB398),
+> +};
+> +
+> +static struct rockchip_pin_ctrl rk3576_pin_ctrl __maybe_unused = {
+> +	.pin_banks		= rk3576_pin_banks,
+> +	.nr_banks		= ARRAY_SIZE(rk3576_pin_banks),
+> +	.label			= "RK3576-GPIO",
+> +	.type			= RK3576,
+> +	.pull_calc_reg		= rk3576_calc_pull_reg_and_bit,
+> +	.drv_calc_reg		= rk3576_calc_drv_reg_and_bit,
+> +	.schmitt_calc_reg	= rk3576_calc_schmitt_reg_and_bit,
+> +};
+> +
+>  static struct rockchip_pin_bank rk3588_pin_banks[] = {
+>  	RK3588_PIN_BANK_FLAGS(0, 32, "gpio0",
+>  			      IOMUX_WIDTH_4BIT, PULL_TYPE_IO_1V8_ONLY),
+> @@ -4005,6 +4231,8 @@ static const struct of_device_id rockchip_pinctrl_dt_match[] = {
+>  		.data = &rk3399_pin_ctrl },
+>  	{ .compatible = "rockchip,rk3568-pinctrl",
+>  		.data = &rk3568_pin_ctrl },
+> +	{ .compatible = "rockchip,rk3576-pinctrl",
+> +		.data = &rk3576_pin_ctrl },
+>  	{ .compatible = "rockchip,rk3588-pinctrl",
+>  		.data = &rk3588_pin_ctrl },
+>  	{},
+> diff --git a/drivers/pinctrl/pinctrl-rockchip.h b/drivers/pinctrl/pinctrl-rockchip.h
+> index 849266f8b1913..0b2b56014b173 100644
+> --- a/drivers/pinctrl/pinctrl-rockchip.h
+> +++ b/drivers/pinctrl/pinctrl-rockchip.h
+> @@ -197,6 +197,7 @@ enum rockchip_pinctrl_type {
+>  	RK3368,
+>  	RK3399,
+>  	RK3568,
+> +	RK3576,
+>  	RK3588,
+>  };
+>  
+> @@ -455,6 +456,7 @@ struct rockchip_pinctrl {
+>  	int				reg_size;
+>  	struct regmap			*regmap_pull;
+>  	struct regmap			*regmap_pmu;
+> +	struct regmap			*regmap_sys_grf;
+
+same
+
+>  	struct device			*dev;
+>  	struct rockchip_pin_ctrl	*ctrl;
+>  	struct pinctrl_desc		pctl;
+> 
+
+
+The pinctrl changes for the core rk3576 parts look fine.
 
 Heiko
 
