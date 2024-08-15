@@ -4,64 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 96182C3DA7F
-	for <linux-rockchip@archiver.kernel.org>; Thu, 15 Aug 2024 14:06:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6EF78C52D7D
+	for <linux-rockchip@archiver.kernel.org>; Thu, 15 Aug 2024 14:10:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=e0IaGNLI/2yH1NAUCPPkbv+C5bcgrOdpeBcVsimPu8o=; b=BBt8ynmPDxQV8u
-	aU9qZnKe3O8xnxgiHlKubZPmkwwGJQM2kOEjuXqd2BJT3ENABULrmHb9UA3Zhskhfw1TVOi6/5GGh
-	4GgWaqfl6wTS+bZR87sMIIjYrurmjELEGP5iAu6+XCQ7qS+Wql5WiPCOr6Jg88l02PCzYgK6OFaxf
-	kTa+A3TaBrONRdLYZqg7HGaxCtuqW22RREetLAsgoNv3FDAwZE1k24xM65RcGCj98DnDSzgHUcmAN
-	h2//iMcngIDguMriITvqBupsP4GeUksuUc5Zz0myNlw3QGakpEwHVtQ2yGoJjyC+t0Kclup1NPASP
-	MV4lJxLOsYSgfliHkI+g==;
+	List-Owner; bh=Mer3hXJcvIzoQBEAVgvmMK8nfMOcMEAc1WCYZCGc3bU=; b=jl7h+9p3GrS8Kj
+	ozWHqs+ru60wFAbHtvMdnUzBlRJj63UyGdADGfEr/iYLa47qplpNaF46TQov7yaHw2jSlCrNlSA+C
+	k0hW4eosGDef85DDJMlUI9SiAGLxnA3U8MtDv3x1MjV44LPxnnfshbedlXbbXW1WZA5XmzuzkKUgq
+	uYHe8ms7EosWJAfN/FJAGqAy+sgjSwbB8JYJrCHVGXNIBy5BrWSb067IfliKM4wtWPBbtgN/fZQok
+	vUiHhGXgbZern/iN0QeRigaQnEIuXVsGxEhqm8JZLHau0pzDVhfIRPd5gWSvvPoHufAxeSu5kq9fC
+	yFh3qHW2EEhkB+gtefKA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1seb70-0000000A99T-0NRA;
-	Thu, 15 Aug 2024 14:05:58 +0000
+	id 1sebBR-0000000A9yj-18qU;
+	Thu, 15 Aug 2024 14:10:33 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1seb6L-0000000A91s-0dLk;
-	Thu, 15 Aug 2024 14:05:19 +0000
+	id 1sebAk-0000000A9re-08S1;
+	Thu, 15 Aug 2024 14:09:53 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
 	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=pd/g4NdIixVnycV+jtpbd814jlvaxwOgs1DMB5K/sxs=; b=qcj+x9wbbS83wYhN4aNgMwfKBR
-	IQ7nlnTAfco4P21jkIMsKQLiouneD0tUO3bv3C2wCSmYSB0CtdtYjbayykHAOw+Ns/e/Sk1cpRf1R
-	DPD6nll8KwYPCKldPRxeZZj3nJ+yShsq87QV2hAkCmsPO73pmcbODI1KLsSwzl47U97ZRPZ9erUv7
-	fC59sPhhpaIZJD/HXs7ITN+bw7BPJrMYqX8OFKBnifOSIyV270M0dBR0Aa6CTIe+6UQ/FO7tr980+
-	QoIPv0C4qk7vakDbensKPsKjJCkE8MU1VqOrk8zhbHYJDCb74VfbEohnWzDu97KdmmZTz+vbi4Z0Y
-	knlo4Agw==;
+	bh=3GJHxN14hImGkfcEquuGy6L5t/9fvO8apZfgPwP8Qzs=; b=npOOkDXNtrDTvyhXZ1PxQqxQpf
+	J9s2SuKRp5nAkOf8YpkJHhwTM0lNog+gTwjUMgzJjR1OrpQzAIhXEOTWuirCxYffGP3xbGGAQk5yn
+	r23Fib9CrOZCCxIlkn6edxJB+/p8ZNx3ZZY+MTO/CjMCUqoLeNmIeGwv2sXNXepIj+/duZsqeijQW
+	QbbiLQ1qvWgGsYC+xYLR/nx9wtHKC7eKcP2Gbgyi9wfZHCglovXxcMWfsJVk2wKpla258zPvSumsn
+	0/fEZgJcNU/3eAiGdJvMhQ+hk5JJBCEcJ/hbS75Rfz4U/55zap7UX07abYl+4C4xBCgZQ3uH7CbtG
+	cnVe1EFw==;
 Received: from i53875a9f.versanet.de ([83.135.90.159] helo=diego.localnet)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1seb6D-0003Q8-AZ; Thu, 15 Aug 2024 16:05:09 +0200
+	id 1sebAb-0003Vr-44; Thu, 15 Aug 2024 16:09:41 +0200
 From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: linux-kernel@vger.kernel.org,
+To: linux-kernel@vger.kernel.org, Shawn Lin <shawn.lin@rock-chips.com>,
  Detlev Casanova <detlev.casanova@collabora.com>
-Cc: Linus Walleij <linus.walleij@linaro.org>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
- linux-gpio@vger.kernel.org, devicetree@vger.kernel.org,
+Cc: shawn.lin@rock-chips.com, Ulf Hansson <ulf.hansson@linaro.org>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Jaehoon Chung <jh80.chung@samsung.com>,
+ linux-mmc@vger.kernel.org, devicetree@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- kernel@collabora.com, Steven Liu <steven.liu@rock-chips.com>,
- Detlev Casanova <detlev.casanova@collabora.com>
-Subject: Re: [PATCH v3 2/2] pinctrl: rockchip: Add rk3576 pinctrl support
-Date: Thu, 15 Aug 2024 16:05:08 +0200
-Message-ID: <5865327.fQeU5cv6pJ@diego>
-In-Reply-To: <20240814223217.3498-3-detlev.casanova@collabora.com>
-References: <20240814223217.3498-1-detlev.casanova@collabora.com>
- <20240814223217.3498-3-detlev.casanova@collabora.com>
+ kernel@collabora.com
+Subject: Re: [PATCH v3 2/3] mmc: dw_mmc-rockchip: Add v2 tuning support
+Date: Thu, 15 Aug 2024 16:09:39 +0200
+Message-ID: <3273134.DVCPrJfaZc@diego>
+In-Reply-To: <2742918.mvXUDI8C0e@trenzalore>
+References: <20240814223555.3695-1-detlev.casanova@collabora.com>
+ <5dc82aa2-82a0-4778-b598-88775d5f791c@rock-chips.com>
+ <2742918.mvXUDI8C0e@trenzalore>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240815_070517_518981_9933568B 
-X-CRM114-Status: GOOD (  36.86  )
+X-CRM114-CacheID: sfid-20240815_070950_093948_3C16EE30 
+X-CRM114-Status: GOOD (  23.87  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,410 +74,46 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Am Donnerstag, 15. August 2024, 00:30:39 CEST schrieb Detlev Casanova:
-> From: Steven Liu <steven.liu@rock-chips.com>
-> 
-> Add support for the 5 rk3576 GPIO banks.
-> 
-> This also adds support for optionnal support of the sys-grf syscon,
-
-only one "n" in optional
-
-> used for i3c software controlled weak pull-up.
-> 
-> Signed-off-by: Steven Liu <steven.liu@rock-chips.com>
-> [rebase, reword commit message]
-> Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
-> ---
->  drivers/pinctrl/pinctrl-rockchip.c | 228 +++++++++++++++++++++++++++++
->  drivers/pinctrl/pinctrl-rockchip.h |   2 +
->  2 files changed, 230 insertions(+)
-> 
-> diff --git a/drivers/pinctrl/pinctrl-rockchip.c b/drivers/pinctrl/pinctrl-rockchip.c
-> index 0eacaf10c640f..110ed81d650be 100644
-> --- a/drivers/pinctrl/pinctrl-rockchip.c
-> +++ b/drivers/pinctrl/pinctrl-rockchip.c
-> @@ -84,6 +84,27 @@
->  		},							\
->  	}
->  
-> +#define PIN_BANK_IOMUX_FLAGS_OFFSET_PULL_FLAGS(id, pins, label, iom0,	\
-> +					       iom1, iom2, iom3,	\
-> +					       offset0, offset1,	\
-> +					       offset2, offset3, pull0,	\
-> +					       pull1, pull2, pull3)	\
-> +	{								\
-> +		.bank_num	= id,					\
-> +		.nr_pins	= pins,					\
-> +		.name		= label,				\
-> +		.iomux		= {					\
-> +			{ .type = iom0, .offset = offset0 },		\
-> +			{ .type = iom1, .offset = offset1 },		\
-> +			{ .type = iom2, .offset = offset2 },		\
-> +			{ .type = iom3, .offset = offset3 },		\
-> +		},							\
-> +		.pull_type[0] = pull0,					\
-> +		.pull_type[1] = pull1,					\
-> +		.pull_type[2] = pull2,					\
-> +		.pull_type[3] = pull3,					\
-> +	}
-> +
->  #define PIN_BANK_DRV_FLAGS(id, pins, label, type0, type1, type2, type3) \
->  	{								\
->  		.bank_num	= id,					\
-> @@ -1120,6 +1141,11 @@ static int rockchip_get_mux(struct rockchip_pin_bank *bank, int pin)
->  	if (bank->recalced_mask & BIT(pin))
->  		rockchip_get_recalced_mux(bank, pin, &reg, &bit, &mask);
->  
-> +	if (ctrl->type == RK3576) {
-> +		if ((bank->bank_num == 0) && (pin >= RK_PB4) && (pin <= RK_PB7))
-> +			reg += 0x1FF4; /* GPIO0_IOC_GPIO0B_IOMUX_SEL_H */
-
-0x1ff4 in lower case please
-
-
-> +	}
-> +
->  	if (ctrl->type == RK3588) {
->  		if (bank->bank_num == 0) {
->  			if ((pin >= RK_PB4) && (pin <= RK_PD7)) {
-> @@ -1193,6 +1219,7 @@ static int rockchip_set_mux(struct rockchip_pin_bank *bank, int pin, int mux)
->  	struct device *dev = info->dev;
->  	int iomux_num = (pin / 8);
->  	struct regmap *regmap;
-> +	struct regmap *regmap_sys;
->  	int reg, ret, mask, mux_type;
->  	u8 bit;
->  	u32 data, rmask, route_location, route_reg, route_val;
-> @@ -1213,6 +1240,8 @@ static int rockchip_set_mux(struct rockchip_pin_bank *bank, int pin, int mux)
->  	else
->  		regmap = info->regmap_base;
->  
-> +	regmap_sys = info->regmap_sys_grf;
-> +
->  	/* get basic quadrupel of mux registers and the correct reg inside */
->  	mux_type = bank->iomux[iomux_num].type;
->  	reg = bank->iomux[iomux_num].offset;
-> @@ -1234,6 +1263,20 @@ static int rockchip_set_mux(struct rockchip_pin_bank *bank, int pin, int mux)
->  	if (bank->recalced_mask & BIT(pin))
->  		rockchip_get_recalced_mux(bank, pin, &reg, &bit, &mask);
->  
-> +	if (ctrl->type == RK3576) {
-> +		if ((bank->bank_num == 0) && (pin >= RK_PB4) && (pin <= RK_PB7))
-> +			reg += 0x1FF4; /* GPIO0_IOC_GPIO0B_IOMUX_SEL_H */
-
-0x1ff4 please
-
-> +		/* i3c0 weakpull controlled by software */
-> +		if (((bank->bank_num == 0) && (pin == RK_PC5) && (mux == 0xb)) ||
-> +		    ((bank->bank_num == 1) && (pin == RK_PD1) && (mux == 0xa)))
-> +			regmap_update_bits(regmap_sys, 0x4, 0xc000c0, 0xc000c0);
-> +		/* i3c1 weakpull controlled by software */
-> +		if (((bank->bank_num == 2) && (pin == RK_PA5) && (mux == 0xe)) ||
-> +		    ((bank->bank_num == 2) && (pin == RK_PD6) && (mux == 0xc)) ||
-> +		    ((bank->bank_num == 3) && (pin == RK_PD1) && (mux == 0xb)))
-> +			regmap_update_bits(regmap_sys, 0x4, 0x3000300, 0x3000300);
-
-this setting belongs into drivers/soc/rockchip/grf.c .
-
-You want to decide that the i3c controller has no say over the pull
-settings, but instead pinctrl should always be in control.
-
-Such default system-wide settings should not clutter up the pinctrl
-driver please. The grf-"driver" exists for exactly that case.
-
-That way you also don't need the additional grf-handling here and
-in the dt-binding.
-
-
-> +	}
-> +
->  	if (ctrl->type == RK3588) {
->  		if (bank->bank_num == 0) {
->  			if ((pin >= RK_PB4) && (pin <= RK_PD7)) {
-> @@ -2038,6 +2081,142 @@ static int rk3568_calc_drv_reg_and_bit(struct rockchip_pin_bank *bank,
->  	return 0;
->  }
->  
-> +#define RK3576_DRV_BITS_PER_PIN		4
-> +#define RK3576_DRV_PINS_PER_REG		4
-> +#define RK3576_DRV_GPIO0_AL_OFFSET	0x10
-> +#define RK3576_DRV_GPIO0_BH_OFFSET	0x2014
-> +#define RK3576_DRV_GPIO1_OFFSET		0x6020
-> +#define RK3576_DRV_GPIO2_OFFSET		0x6040
-> +#define RK3576_DRV_GPIO3_OFFSET		0x6060
-> +#define RK3576_DRV_GPIO4_AL_OFFSET	0x6080
-> +#define RK3576_DRV_GPIO4_CL_OFFSET	0xA090
-> +#define RK3576_DRV_GPIO4_DL_OFFSET	0xB098
-> +
-> +static int rk3576_calc_drv_reg_and_bit(struct rockchip_pin_bank *bank,
-> +					int pin_num, struct regmap **regmap,
-> +					int *reg, u8 *bit)
-> +{
-> +	struct rockchip_pinctrl *info = bank->drvdata;
-> +
-> +	*regmap = info->regmap_base;
-> +
-> +	if (bank->bank_num == 0 && pin_num < 12)
-> +		*reg = RK3576_DRV_GPIO0_AL_OFFSET;
-> +	else if (bank->bank_num == 0)
-> +		*reg = RK3576_DRV_GPIO0_BH_OFFSET - 0xc;
-> +	else if (bank->bank_num == 1)
-> +		*reg = RK3576_DRV_GPIO1_OFFSET;
-> +	else if (bank->bank_num == 2)
-> +		*reg = RK3576_DRV_GPIO2_OFFSET;
-> +	else if (bank->bank_num == 3)
-> +		*reg = RK3576_DRV_GPIO3_OFFSET;
-> +	else if (bank->bank_num == 4 && pin_num < 16)
-> +		*reg = RK3576_DRV_GPIO4_AL_OFFSET;
-> +	else if (bank->bank_num == 4 && pin_num < 24)
-> +		*reg = RK3576_DRV_GPIO4_CL_OFFSET - 0x10;
-> +	else if (bank->bank_num == 4)
-> +		*reg = RK3576_DRV_GPIO4_DL_OFFSET - 0x18;
-> +	else
-> +		dev_err(info->dev, "unsupported bank_num %d\n", bank->bank_num);
-> +
-> +	*reg += ((pin_num / RK3576_DRV_PINS_PER_REG) * 4);
-> +	*bit = pin_num % RK3576_DRV_PINS_PER_REG;
-> +	*bit *= RK3576_DRV_BITS_PER_PIN;
-> +
-> +	return 0;
-> +}
-> +
-> +#define RK3576_PULL_BITS_PER_PIN	2
-> +#define RK3576_PULL_PINS_PER_REG	8
-> +#define RK3576_PULL_GPIO0_AL_OFFSET	0x20
-> +#define RK3576_PULL_GPIO0_BH_OFFSET	0x2028
-> +#define RK3576_PULL_GPIO1_OFFSET	0x6110
-> +#define RK3576_PULL_GPIO2_OFFSET	0x6120
-> +#define RK3576_PULL_GPIO3_OFFSET	0x6130
-> +#define RK3576_PULL_GPIO4_AL_OFFSET	0x6140
-> +#define RK3576_PULL_GPIO4_CL_OFFSET	0xA148
-> +#define RK3576_PULL_GPIO4_DL_OFFSET	0xB14C
-> +
-> +static int rk3576_calc_pull_reg_and_bit(struct rockchip_pin_bank *bank,
-> +					 int pin_num, struct regmap **regmap,
-> +					 int *reg, u8 *bit)
-> +{
-> +	struct rockchip_pinctrl *info = bank->drvdata;
-> +
-> +	*regmap = info->regmap_base;
-> +
-> +	if (bank->bank_num == 0 && pin_num < 12)
-> +		*reg = RK3576_PULL_GPIO0_AL_OFFSET;
-> +	else if (bank->bank_num == 0)
-> +		*reg = RK3576_PULL_GPIO0_BH_OFFSET - 0x4;
-> +	else if (bank->bank_num == 1)
-> +		*reg = RK3576_PULL_GPIO1_OFFSET;
-> +	else if (bank->bank_num == 2)
-> +		*reg = RK3576_PULL_GPIO2_OFFSET;
-> +	else if (bank->bank_num == 3)
-> +		*reg = RK3576_PULL_GPIO3_OFFSET;
-> +	else if (bank->bank_num == 4 && pin_num < 16)
-> +		*reg = RK3576_PULL_GPIO4_AL_OFFSET;
-> +	else if (bank->bank_num == 4 && pin_num < 24)
-> +		*reg = RK3576_PULL_GPIO4_CL_OFFSET - 0x8;
-> +	else if (bank->bank_num == 4)
-> +		*reg = RK3576_PULL_GPIO4_DL_OFFSET - 0xc;
-> +	else
-> +		dev_err(info->dev, "unsupported bank_num %d\n", bank->bank_num);
-> +
-> +	*reg += ((pin_num / RK3576_PULL_PINS_PER_REG) * 4);
-> +	*bit = pin_num % RK3576_PULL_PINS_PER_REG;
-> +	*bit *= RK3576_PULL_BITS_PER_PIN;
-> +
-> +	return 0;
-> +}
-> +
-> +#define RK3576_SMT_BITS_PER_PIN		1
-> +#define RK3576_SMT_PINS_PER_REG		8
-> +#define RK3576_SMT_GPIO0_AL_OFFSET	0x30
-> +#define RK3576_SMT_GPIO0_BH_OFFSET	0x2040
-> +#define RK3576_SMT_GPIO1_OFFSET		0x6210
-> +#define RK3576_SMT_GPIO2_OFFSET		0x6220
-> +#define RK3576_SMT_GPIO3_OFFSET		0x6230
-> +#define RK3576_SMT_GPIO4_AL_OFFSET	0x6240
-> +#define RK3576_SMT_GPIO4_CL_OFFSET	0xA248
-> +#define RK3576_SMT_GPIO4_DL_OFFSET	0xB24C
-> +
-> +static int rk3576_calc_schmitt_reg_and_bit(struct rockchip_pin_bank *bank,
-> +					   int pin_num,
-> +					   struct regmap **regmap,
-> +					   int *reg, u8 *bit)
-> +{
-> +	struct rockchip_pinctrl *info = bank->drvdata;
-> +
-> +	*regmap = info->regmap_base;
-> +
-> +	if (bank->bank_num == 0 && pin_num < 12)
-> +		*reg = RK3576_SMT_GPIO0_AL_OFFSET;
-> +	else if (bank->bank_num == 0)
-> +		*reg = RK3576_SMT_GPIO0_BH_OFFSET - 0x4;
-> +	else if (bank->bank_num == 1)
-> +		*reg = RK3576_SMT_GPIO1_OFFSET;
-> +	else if (bank->bank_num == 2)
-> +		*reg = RK3576_SMT_GPIO2_OFFSET;
-> +	else if (bank->bank_num == 3)
-> +		*reg = RK3576_SMT_GPIO3_OFFSET;
-> +	else if (bank->bank_num == 4 && pin_num < 16)
-> +		*reg = RK3576_SMT_GPIO4_AL_OFFSET;
-> +	else if (bank->bank_num == 4 && pin_num < 24)
-> +		*reg = RK3576_SMT_GPIO4_CL_OFFSET - 0x8;
-> +	else if (bank->bank_num == 4)
-> +		*reg = RK3576_SMT_GPIO4_DL_OFFSET - 0xc;
-> +	else
-> +		dev_err(info->dev, "unsupported bank_num %d\n", bank->bank_num);
-> +
-> +	*reg += ((pin_num / RK3576_SMT_PINS_PER_REG) * 4);
-> +	*bit = pin_num % RK3576_SMT_PINS_PER_REG;
-> +	*bit *= RK3576_SMT_BITS_PER_PIN;
-> +
-> +	return 0;
-> +}
-> +
->  #define RK3588_PMU1_IOC_REG		(0x0000)
->  #define RK3588_PMU2_IOC_REG		(0x4000)
->  #define RK3588_BUS_IOC_REG		(0x8000)
-> @@ -2332,6 +2511,10 @@ static int rockchip_set_drive_perpin(struct rockchip_pin_bank *bank,
->  		rmask_bits = RK3568_DRV_BITS_PER_PIN;
->  		ret = (1 << (strength + 1)) - 1;
->  		goto config;
-> +	} else if (ctrl->type == RK3576) {
-> +		rmask_bits = RK3576_DRV_BITS_PER_PIN;
-> +		ret = ((strength & BIT(2)) >> 2) | ((strength & BIT(0)) << 2) | (strength & BIT(1));
-> +		goto config;
->  	}
->  
->  	if (ctrl->type == RV1126) {
-> @@ -2469,6 +2652,7 @@ static int rockchip_get_pull(struct rockchip_pin_bank *bank, int pin_num)
->  	case RK3368:
->  	case RK3399:
->  	case RK3568:
-> +	case RK3576:
->  	case RK3588:
->  		pull_type = bank->pull_type[pin_num / 8];
->  		data >>= bit;
-> @@ -2528,6 +2712,7 @@ static int rockchip_set_pull(struct rockchip_pin_bank *bank,
->  	case RK3368:
->  	case RK3399:
->  	case RK3568:
-> +	case RK3576:
->  	case RK3588:
->  		pull_type = bank->pull_type[pin_num / 8];
->  		ret = -EINVAL;
-> @@ -2793,6 +2978,7 @@ static bool rockchip_pinconf_pull_valid(struct rockchip_pin_ctrl *ctrl,
->  	case RK3368:
->  	case RK3399:
->  	case RK3568:
-> +	case RK3576:
->  	case RK3588:
->  		return (pull != PIN_CONFIG_BIAS_PULL_PIN_DEFAULT);
->  	}
-> @@ -3439,6 +3625,15 @@ static int rockchip_pinctrl_probe(struct platform_device *pdev)
->  		}
->  	}
->  
-> +	/* try to find the optional reference to the sys_grf syscon */
-> +	node = of_parse_phandle(np, "rockchip,sys-grf", 0);
-> +	if (node) {
-> +		info->regmap_sys_grf = syscon_node_to_regmap(node);
-> +		of_node_put(node);
-> +		if (IS_ERR(info->regmap_sys_grf))
-> +			return PTR_ERR(info->regmap_sys_grf);
-> +	}
-> +
-
-not needed if the i3c stuff moves into the grf driver.
-
-
->  	/* try to find the optional reference to the pmu syscon */
->  	node = of_parse_phandle(np, "rockchip,pmu", 0);
->  	if (node) {
-> @@ -3949,6 +4144,37 @@ static struct rockchip_pin_ctrl rk3568_pin_ctrl = {
->  	.schmitt_calc_reg	= rk3568_calc_schmitt_reg_and_bit,
->  };
->  
-> +#define RK3576_PIN_BANK(ID, LABEL, OFFSET0, OFFSET1, OFFSET2, OFFSET3)	\
-> +	PIN_BANK_IOMUX_FLAGS_OFFSET_PULL_FLAGS(ID, 32, LABEL,		\
-> +					       IOMUX_WIDTH_4BIT,	\
-> +					       IOMUX_WIDTH_4BIT,	\
-> +					       IOMUX_WIDTH_4BIT,	\
-> +					       IOMUX_WIDTH_4BIT,	\
-> +					       OFFSET0, OFFSET1,	\
-> +					       OFFSET2, OFFSET3,	\
-> +					       PULL_TYPE_IO_1V8_ONLY,	\
-> +					       PULL_TYPE_IO_1V8_ONLY,	\
-> +					       PULL_TYPE_IO_1V8_ONLY,	\
-> +					       PULL_TYPE_IO_1V8_ONLY)
-> +
-> +static struct rockchip_pin_bank rk3576_pin_banks[] = {
-> +	RK3576_PIN_BANK(0, "gpio0", 0, 0x8, 0x2004, 0x200C),
-> +	RK3576_PIN_BANK(1, "gpio1", 0x4020, 0x4028, 0x4030, 0x4038),
-> +	RK3576_PIN_BANK(2, "gpio2", 0x4040, 0x4048, 0x4050, 0x4058),
-> +	RK3576_PIN_BANK(3, "gpio3", 0x4060, 0x4068, 0x4070, 0x4078),
-> +	RK3576_PIN_BANK(4, "gpio4", 0x4080, 0x4088, 0xA390, 0xB398),
-> +};
-> +
-> +static struct rockchip_pin_ctrl rk3576_pin_ctrl __maybe_unused = {
-> +	.pin_banks		= rk3576_pin_banks,
-> +	.nr_banks		= ARRAY_SIZE(rk3576_pin_banks),
-> +	.label			= "RK3576-GPIO",
-> +	.type			= RK3576,
-> +	.pull_calc_reg		= rk3576_calc_pull_reg_and_bit,
-> +	.drv_calc_reg		= rk3576_calc_drv_reg_and_bit,
-> +	.schmitt_calc_reg	= rk3576_calc_schmitt_reg_and_bit,
-> +};
-> +
->  static struct rockchip_pin_bank rk3588_pin_banks[] = {
->  	RK3588_PIN_BANK_FLAGS(0, 32, "gpio0",
->  			      IOMUX_WIDTH_4BIT, PULL_TYPE_IO_1V8_ONLY),
-> @@ -4005,6 +4231,8 @@ static const struct of_device_id rockchip_pinctrl_dt_match[] = {
->  		.data = &rk3399_pin_ctrl },
->  	{ .compatible = "rockchip,rk3568-pinctrl",
->  		.data = &rk3568_pin_ctrl },
-> +	{ .compatible = "rockchip,rk3576-pinctrl",
-> +		.data = &rk3576_pin_ctrl },
->  	{ .compatible = "rockchip,rk3588-pinctrl",
->  		.data = &rk3588_pin_ctrl },
->  	{},
-> diff --git a/drivers/pinctrl/pinctrl-rockchip.h b/drivers/pinctrl/pinctrl-rockchip.h
-> index 849266f8b1913..0b2b56014b173 100644
-> --- a/drivers/pinctrl/pinctrl-rockchip.h
-> +++ b/drivers/pinctrl/pinctrl-rockchip.h
-> @@ -197,6 +197,7 @@ enum rockchip_pinctrl_type {
->  	RK3368,
->  	RK3399,
->  	RK3568,
-> +	RK3576,
->  	RK3588,
->  };
->  
-> @@ -455,6 +456,7 @@ struct rockchip_pinctrl {
->  	int				reg_size;
->  	struct regmap			*regmap_pull;
->  	struct regmap			*regmap_pmu;
-> +	struct regmap			*regmap_sys_grf;
-
-same
-
->  	struct device			*dev;
->  	struct rockchip_pin_ctrl	*ctrl;
->  	struct pinctrl_desc		pctl;
-> 
-
-
-The pinctrl changes for the core rk3576 parts look fine.
-
-Heiko
-
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+QW0gRG9ubmVyc3RhZywgMTUuIEF1Z3VzdCAyMDI0LCAxNToyMzo0MCBDRVNUIHNjaHJpZWIgRGV0
+bGV2IENhc2Fub3ZhOgo+IE9uIFdlZG5lc2RheSwgMTQgQXVndXN0IDIwMjQgMjA6NTU6MzcgRURU
+IFNoYXduIExpbiB3cm90ZToKPiA+IEhpIERldGxldgo+ID4gCj4gPiDlnKggMjAyNC84LzE1IDY6
+MzQsIERldGxldiBDYXNhbm92YSDlhpnpgZM6Cj4gPiA+IEZyb206IFNoYXduIExpbiA8c2hhd24u
+bGluQHJvY2stY2hpcHMuY29tPgo+ID4gPiAKPiA+ID4gdjIgdHVuaW5nIHdpbGwgaW5oZXJpdCBw
+cmUtc3RhZ2UgbG9hZGVyJ3MgcGhhc2Ugc2V0dGluZ3MgZm9yIHRoZSBmaXJzdAo+ID4gPiB0aW1l
+LCBhbmQgZG8gcmUtdHVuZSBpZiBuZWNlc3NhcnkuCj4gPiA+IFJlLXR1bmUgd2lsbCBzdGlsbCB0
+cnkgdGhlIHJvdWdoIGRlZ3JlZXMsIGZvciBpbnN0YW5jZSwgOTAsIDE4MCwgMjcwLAo+ID4gPiAz
+NjAgYnV0IGNvbnRpbnVlIHRvIGRvIHRoZSBmaW5lIHR1bmluZyBpZiBzYW1wbGUgd2luZG93IGlz
+bid0IGdvb2QKPiA+ID4gZW5vdWdoLgo+ID4gPiAKPiA+ID4gU2lnbmVkLW9mZi1ieTogU2hhd24g
+TGluIDxzaGF3bi5saW5Acm9jay1jaGlwcy5jb20+Cj4gPiA+IFNpZ25lZC1vZmYtYnk6IERldGxl
+diBDYXNhbm92YSA8ZGV0bGV2LmNhc2Fub3ZhQGNvbGxhYm9yYS5jb20+Cj4gPiA+IC0tLQo+ID4g
+PiAKPiA+ID4gICBkcml2ZXJzL21tYy9ob3N0L2R3X21tYy1yb2NrY2hpcC5jIHwgNDkgKysrKysr
+KysrKysrKysrKysrKysrKysrKysrKysrCj4gPiA+ICAgMSBmaWxlIGNoYW5nZWQsIDQ5IGluc2Vy
+dGlvbnMoKykKPiA+ID4gCj4gPiA+IGRpZmYgLS1naXQgYS9kcml2ZXJzL21tYy9ob3N0L2R3X21t
+Yy1yb2NrY2hpcC5jCj4gPiA+IGIvZHJpdmVycy9tbWMvaG9zdC9kd19tbWMtcm9ja2NoaXAuYyBp
+bmRleCBiMDcxOTBiYTRiN2FjLi4zNjc2MzNmNGU4ODkyCj4gPiA+IDEwMDY0NAo+ID4gPiAtLS0g
+YS9kcml2ZXJzL21tYy9ob3N0L2R3X21tYy1yb2NrY2hpcC5jCj4gPiA+ICsrKyBiL2RyaXZlcnMv
+bW1jL2hvc3QvZHdfbW1jLXJvY2tjaGlwLmMKPiAKPiBbLi4uXQo+IAo+ID4gPiAgIAkJCj4gPiA+
+ICAgCQlwcml2LT5kZWZhdWx0X3NhbXBsZV9waGFzZSA9IDA7Cj4gPiA+IAo+ID4gPiArCXByaXYt
+PnVzZV92Ml90dW5pbmcgPQo+ID4gPiArCQlvZl9kZXZpY2VfaXNfY29tcGF0aWJsZShob3N0LT5k
+ZXYtPm9mX25vZGUsCj4gPiA+ICsJCQkJCSJyb2NrY2hpcCxyazM1NzYtZHctCj4gbXNoYyIpOwo+
+ID4gPiArCj4gPiAKPiA+IHYyIGlzIGEga2luZCBvZiBzb2Z0d2FyZSBkZWNpc2lvbiBpbnN0ZWFk
+IG9mIGhhcmR3YXJlIGRlcGVuZGVuY3kuCj4gPiBTbyBpbiB0aGVvcnksIGFueSBTb0MgY2FuIGNs
+YWltIHRvIHVzZSBpdCB2aWEgRFQuCj4gCj4gWWVzIGJ1dCBmcm9tIG15IHRlc3RzLCBvbmx5IHJr
+MzU3NiB3b24ndCB3b3JrIHdpdGhvdXQgaXQuIFNvIGl0IG1ha2VzIHNlbnNlIHRvIAo+IG9ubHkg
+dXNlIHYyIGZvciB0aGlzIFNvQyAoYW5kIG90aGVyIGZ1dHVyZSBvbmVzIG5vdCBzdXBwb3J0ZWQg
+eWV0KQoKR29vZCBrbm93IGFuZCB0aGFua3MgZm9yIHRlc3RpbmcgdGhhdCBzY2VuYXJpby4KCklm
+IHlvdSBnbyB3aXRoIG15IHN1Z2dlc3Rpb24gZnJvbSBwYXRjaDMgYW5kIHNlcGFyYXRlIHRoZSBy
+azM1NzYKZnJvbSB0aGUgb3JpZ2luYWwgcmszMjg4IHR5cGUsIHlvdSBjYW4gZXZlbiBqdXN0IGFz
+c3VtZSB0aGlzIHYyLXR1bmluZwpmb3IgYWxsIHRob3NlIHR5cGVzIChyazM1NzYgb25seSBzbyBm
+YXIpCgoKPiA+ID4gICAJcHJpdi0+ZHJ2X2NsayA9IGRldm1fY2xrX2dldChob3N0LT5kZXYsICJj
+aXUtZHJpdmUiKTsKPiA+ID4gICAJaWYgKElTX0VSUihwcml2LT5kcnZfY2xrKSkKPiA+ID4gICAJ
+Cj4gPiA+ICAgCQlkZXZfZGJnKGhvc3QtPmRldiwgImNpdS1kcml2ZSBub3QgYXZhaWxhYmxlXG4i
+KTsKPiAKPiAKPiBEZXRsZXYuCj4gCj4gCj4gCgoKCgoKX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4
+LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcv
+bWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
