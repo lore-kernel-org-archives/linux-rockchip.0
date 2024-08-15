@@ -4,69 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CB399C52D7D
-	for <linux-rockchip@archiver.kernel.org>; Thu, 15 Aug 2024 10:43:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 66C59C52D7D
+	for <linux-rockchip@archiver.kernel.org>; Thu, 15 Aug 2024 10:44:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=spS6Fhfs0a5rpibVlI/yJDopRI9qOSj7wt5B//S/PCU=; b=NMEARiCV0lsVfr
-	oFIjEF2ln1K0ngfIToj2/E0gMLWnZBvz4IO06LFEMFT01vmoOc7mpbuVJhXNHACufsr/76/mSf4wq
-	y/3SnIvVcbR4z8w3GPAaYu8TsRh4+UAX4AdOWZh5isQOtD3ozPRwG8zB/tZzM6SglkPbsLzh6wv15
-	HPcDiBtsl9YbzOsPOvk6Bp0t57mtTxsuaUyWf8s8NA7phnHONALtrdXf/5VVkZBHxPn3W4nn3lF+S
-	TMJM41iN8ndsideDzMnu0TZ3SX+aE37EOkBRRlbhfVBUKeE1PEuXiZzqRMHWozihg4jSN8JEfu/jO
-	tjqH4GkWs5fZKVoB2+Lg==;
+	List-Owner; bh=RMDgC/Qp6EJ2QYoFDzKCR7qvEDjtAkgYCocoLIsTLIk=; b=EyUzxr6Qo/TOHu
+	U/G6Met5HQndjri15OrDdYIw563iG6UrQLbuf/w4BRyWffU4MphG9biTLsIYLfNihUHFT5dxAo6iz
+	lbibYnGpyc3CLjbwCubhVHAYdOQXHxyrzg/Xi51a9eAi8RtCDH5QqvnGFuY7lXKk0qUDEr9niHV0R
+	LSzfZyj660KxH/aijF0eQZt1ezE5VUxWfMK5cJPPPgMuLGErBH7B01eqr02SQhupQ7d1lLTAgjltS
+	R8jENvJPhB+FwGBEngJKkplg7LTZmdbce2HalS6Gmi7fyHGj7hHOFz6/UBfw/KlA4nOv2uXIEo6X2
+	x62na3DWAtZZg++yBKGQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1seXwz-00000009fWO-3Ugv;
-	Thu, 15 Aug 2024 10:43:25 +0000
+	id 1seXyD-00000009fxh-3z3G;
+	Thu, 15 Aug 2024 10:44:41 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1seXuk-00000009ekG-3UT5;
-	Thu, 15 Aug 2024 10:41:08 +0000
+	id 1seXur-00000009enq-0XL4;
+	Thu, 15 Aug 2024 10:41:14 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
 	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=JtSYMyjFwSHhr4JtGadybcU9/7LYdzxEw3v7M77JOOI=; b=gSWfRbD9AgJemxejQrnE4jm7Z+
-	yogtanjJkf9uoZTJp1wo11bDeGrPq+AhivlTvFWYrkkOzMXbtQGDoYu2ZJDDTjOz5KoKCYG1IIhXz
-	ma08MKO6MPdooJ/ppqXLN5l9cWnO2oFpDplHhm9pADOkD6ihvs7x/T5Vbq0sFjlb9jIFuUom0A6lC
-	9zE2JiKvkXsqF5cXHFngitFfAYUgN5piYur+dqQPCbCpsFwlirbtJu6bOZpCNs0A7mKM1ERYxv+t7
-	BVRDOH1DQAMAt7yCxSGOuPQCS5rv78T1DV9xHa/giPjTq3+XFz3NsPmzepr9gYPh7fKzFuLlK7LGV
-	HuuY0YiA==;
+	bh=GgTI0NyTQzsStScrcGO6aMDCmPA8tFa+LOqjkXlw7B4=; b=T9wp4ksgpK8kyWUBawTO2KYM1Y
+	Py9VnW/j4d3UV7Sc5w3+L/RKZMIk7NBvlQm4xkBvOPQ2VsHUszJRQwTgD6G2x/0+2kWrP7GFXYoEQ
+	cie44dv3b3mE8nKJfvGfDH8ASdZqD6rFpcHuIsH+E45wNfJXq69vfxZBLZoc9PtY9Zg1r864hruXx
+	65l5Wr11sIb3oQAqF0SBsfEqegb2fP2FNeH740fWj90A9pcsnDK5VbmJsVddW0Yjw+HQJkbB2BrNW
+	lsQrY+gqNJuS7bsXvco5YCd4sqJ5AEI6++dB0J48I/JqaGxpA5JrW+UtUXCux1kKV9err0jUt17Mt
+	iNCLug3Q==;
 Received: from i53875a9f.versanet.de ([83.135.90.159] helo=phil.lan)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1seXuH-0000nZ-PS; Thu, 15 Aug 2024 12:40:37 +0200
+	id 1seXuG-0000nZ-Lf; Thu, 15 Aug 2024 12:40:36 +0200
 From: Heiko Stuebner <heiko@sntech.de>
-To: Val Packett <val@packett.cool>
-Cc: Heiko Stuebner <heiko@sntech.de>,
-	dri-devel@lists.freedesktop.org,
-	Daniel Vetter <daniel@ffwll.ch>,
-	Sandy Huang <hjc@rock-chips.com>,
-	linux-arm-kernel@lists.infradead.org,
-	Andy Yan <andy.yan@rock-chips.com>,
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+To: Andrzej Hajda <andrzej.hajda@intel.com>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Rob Herring <robh@kernel.org>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	Jonas Karlman <jonas@kwiboo.se>,
 	Maxime Ripard <mripard@kernel.org>,
+	Sandy Huang <hjc@rock-chips.com>,
+	Mark Yao <markyao0591@gmail.com>,
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Daniel Vetter <daniel@ffwll.ch>,
+	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
 	Thomas Zimmermann <tzimmermann@suse.de>,
-	David Airlie <airlied@gmail.com>,
+	Andy Yan <andy.yan@rock-chips.com>,
+	Robert Foss <rfoss@kernel.org>,
+	Cristian Ciocaltea <cristian.ciocaltea@collabora.com>,
+	Neil Armstrong <neil.armstrong@linaro.org>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	David Airlie <airlied@gmail.com>
+Cc: Heiko Stuebner <heiko@sntech.de>,
+	Alexandre ARNOUD <aarnoud@me.com>,
 	linux-kernel@vger.kernel.org,
+	dri-devel@lists.freedesktop.org,
+	kernel@collabora.com,
+	linux-arm-kernel@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	Algea Cao <algea.cao@rock-chips.com>,
+	Luis de Arquer <ldearquer@gmail.com>,
 	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH v4 0/2] drm/rockchip: vop: Support internal display on RK3066
-Date: Thu, 15 Aug 2024 12:40:32 +0200
-Message-Id: <172371788341.684432.2581958703388281846.b4-ty@sntech.de>
+Subject: Re: (subset) [PATCH v3 0/5] Add initial support for the Rockchip RK3588 HDMI TX Controller
+Date: Thu, 15 Aug 2024 12:40:30 +0200
+Message-Id: <172371788339.684432.3349154890008070129.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20240624204054.5524-1-val@packett.cool>
-References: <20240624204054.5524-1-val@packett.cool>
+In-Reply-To: <20240807-b4-rk3588-bridge-upstream-v3-0-60d6bab0dc7c@collabora.com>
+References: <20240807-b4-rk3588-bridge-upstream-v3-0-60d6bab0dc7c@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240815_034106_878119_7CE3CEB7 
-X-CRM114-Status: GOOD (  10.29  )
+X-CRM114-CacheID: sfid-20240815_034113_171339_E1B98989 
+X-CRM114-Status: GOOD (  10.92  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,22 +99,28 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, 24 Jun 2024 17:40:47 -0300, Val Packett wrote:
-> This tiny patch series makes the changes required to enable the RGB
-> display output on the Rockchip RK3066 SoC. Final version as discussed.
+On Wed, 07 Aug 2024 14:07:22 +0300, Cristian Ciocaltea wrote:
+> The Rockchip RK3588 SoC family integrates the Synopsys DesignWare HDMI
+> 2.1 Quad-Pixel (QP) TX controller, which is a new IP block, quite
+> different from those used in the previous generations of Rockchip SoCs.
 > 
-> Val Packett (2):
->   drm/rockchip: vop: clear DMA stop bit on RK3066
->   drm/rockchip: vop: enable VOP_FEATURE_INTERNAL_RGB on RK3066
+> The controller supports the following features, among others:
+> 
+> * Fixed Rate Link (FRL)
+> * Display Stream Compression (DSC)
+> * 4K@120Hz and 8K@60Hz video modes
+> * Variable Refresh Rate (VRR) including Quick Media Switching (QMS)
+> * Fast Vactive (FVA)
+> * SCDC I2C DDC access
+> * Multi-stream audio
+> * Enhanced Audio Return Channel (EARC)
 > 
 > [...]
 
 Applied, thanks!
 
-[1/2] drm/rockchip: vop: clear DMA stop bit on RK3066
-      commit: 6b44aa559d6c7f4ea591ef9d2352a7250138d62a
-[2/2] drm/rockchip: vop: enable VOP_FEATURE_INTERNAL_RGB on RK3066
-      commit: 6ed51ba95e27221ce87979bd2ad5926033b9e1b9
+[4/5] drm/rockchip: Explicitly include bits header
+      commit: ab03974df27e471ff03402265292f1bafafb5df6
 
 Best regards,
 -- 
