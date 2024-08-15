@@ -4,70 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 84C17C52D7C
-	for <linux-rockchip@archiver.kernel.org>; Thu, 15 Aug 2024 16:36:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DA92FC52D7C
+	for <linux-rockchip@archiver.kernel.org>; Thu, 15 Aug 2024 16:44:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=7D+/UEvobc2zjCC9oXlpOKbVeTN34T1ZWAbh+yMvMdI=; b=YiL7jQDVIfL8y7
-	h0OWo0T/KGGWXRFZ2wJhClICHHNQFPJe8sIlEuERddJTnwknMWPdNZNcxqiGh2kwx+Gsf0p6XXTZJ
-	SNMOPl65ewAZ7BqrALu/Ax5aQTfIGwKm5BS+O29lymCo44aDXC2OqWngVftDasUOZovAS6+G6zGj0
-	8tWLkmt5TZv4KVm8aXT8cz9TGYgr5/vsL8EHOKubHiNT8Twy2SC2lvXvTYznpYGHyK+6lVp9R5gwF
-	Qwsz6yIcjhd0V6Ek4GIQwcXrFnMMkrguwEXh9dwJihuS0Leh85HyKxRMNtkRySaKYkiZzIXW5NvGG
-	4tRI4yf2pMLvbFp1yW/A==;
+	List-Owner; bh=0Et18eLHYhBifeD2wqkrL5BnbearrsRI9y7y7F5+Ers=; b=11606S+jtZPzeR
+	uyjYZwJqucXuToyTa6QB/6CB7uIVVXvAJXUlfZ98d/9A+aEWNun7mTsztjqaaYm+5zTUrwWRq+PLa
+	Ie+A2bPAvJyxYwJ+bkP4+oDa0Q6Q+sd/t4JWbTLWl+TUIviRWacxt5SHFo0i6txj9heNfbgzOmnnS
+	USgDKhYFG0jJjCCxQ7jKMBEIUS4ThkdnjIUuABZpjezf0nBnUv57HHDVHed4xd/oTrHs+sESDxr4w
+	RHQYsft5zwddUo1N2XDO8mehhKThfm+rWgUWwHHMnpB10IAx0LTPZ0I74BaaHym+7vlC8bVgNECCd
+	7vmpTZQRCUQDCpbVnyDw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sedSh-0000000AXCD-2Uec;
-	Thu, 15 Aug 2024 16:36:31 +0000
+	id 1sedaL-0000000AYFg-1Ws6;
+	Thu, 15 Aug 2024 16:44:25 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sedRr-0000000AX5x-0bok;
-	Thu, 15 Aug 2024 16:35:44 +0000
+	id 1sedZc-0000000AY9G-270T;
+	Thu, 15 Aug 2024 16:43:46 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
 	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=2YsIYBU4KdzLxYOq/DWZJaW8fsNmm7V/n/GVrhzx8fU=; b=OyXy+w3bleVZ7blXyZNiQ9LVCb
-	bhzsyx0+QQMv/aBgZT9jtgM0Ws9Kkswdf6EMIbVOzYPIcIATpMTffVE98W5J2RC0NB/5JCK4UaHYa
-	5Y+DqD5Y3IgQHovKo69Q0srhgBNUXKHJ2btWtuc1hlO2XJIHixiRm29zqDv+0sfPu44JFw1A1VRKC
-	gHbNkBVlKal+PKZ8jl3HllTyWw9YIfVqGodkro07kCDtpNKPPH+55IDIr66B/N428V4pHw/faaZHQ
-	K7cm8AeiJw2ogzoQ9WU25F/04tDZ5EvEYJqpsrHvvZ3goIJxny75LNbFDCXc2W1uWYyCOp+p707c4
-	/igHZSFw==;
+	bh=Dq8puxKj0ZeN7IVpwGFCF5x6k5LykH5w1x10HHPN5Sg=; b=MBos0nqnRP7dkdT8OBgJI4MLbr
+	86XxcH61JoKPx3Lh9ripFgnIMZyaYuC2ajT6obDwySQfgVdtnNMqY4Z0hrkfaxWmMBW+r+c0OCMSN
+	0oHKHHCSm26Y0ZSb93NDXMoy8rC8opEiEyiJjy9nC1f7audLXYD3xgh+raPufldKTHKYSHKH+3WQz
+	/AuiBIEtcgLHBeGQHhvUIclFBmpt2vUG38M/9LJmdA1P3tLPG6ynRObk6ypfXQ7uvIkhzrAdZuj/P
+	lDZPDtBlieidCYjYDG7d06u0uf8YSEcthqNGD8m9KtWVy7SVbgROFbSb7TGXpIPc+HjwtxiDHy26J
+	6G1ymHlw==;
 Received: from i53875a9f.versanet.de ([83.135.90.159] helo=diego.localnet)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1sedRb-0005Qb-Gy; Thu, 15 Aug 2024 18:35:23 +0200
+	id 1sedZJ-0005XG-K6; Thu, 15 Aug 2024 18:43:21 +0200
 From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: Detlev Casanova <detlev.casanova@collabora.com>,
- linux-kernel@vger.kernel.org, David Wu <david.wu@rock-chips.com>
-Cc: "David S . Miller" <davem@davemloft.net>,
- Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
- Alexandre Torgue <alexandre.torgue@foss.st.com>,
- Jose Abreu <joabreu@synopsys.com>,
- Maxime Coquelin <mcoquelin.stm32@gmail.com>,
- Giuseppe Cavallaro <peppe.cavallaro@st.com>, netdev@vger.kernel.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-stm32@st-md-mailman.stormreply.com,
- kernel@collabora.com
-Subject: Re: [PATCH v2 2/2] ethernet: stmmac: dwmac-rk: Add GMAC support for RK3576
-Date: Thu, 15 Aug 2024 18:35:22 +0200
-Message-ID: <2148922.heUyiRONoq@diego>
-In-Reply-To: <a73ff2ab-7e68-4d6b-b38d-37e7303af40d@rock-chips.com>
-References: <20240808170113.82775-1-detlev.casanova@collabora.com>
- <3304458.aeNJFYEL58@trenzalore>
- <a73ff2ab-7e68-4d6b-b38d-37e7303af40d@rock-chips.com>
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Jiri Slaby <jirislaby@kernel.org>, Chris Morgan <macromorgan@hotmail.com>,
+ Jonas Karlman <jonas@kwiboo.se>, Tim Lunn <tim@feathertop.org>,
+ Andy Yan <andyshrk@163.com>, Muhammed Efe Cetin <efectn@protonmail.com>,
+ Jagan Teki <jagan@edgeble.ai>, Dragan Simic <dsimic@manjaro.org>,
+ Ondrej Jirman <megi@xff.cz>, Yao Zi <ziyao@disroot.org>
+Cc: Celeste Liu <CoelacanthusHex@gmail.com>, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-serial@vger.kernel.org,
+ Yao Zi <ziyao@disroot.org>
+Subject: Re: [PATCH v3 3/4] arm64: dts: rockchip: Add base DT for rk3528 SoC
+Date: Thu, 15 Aug 2024 18:43:20 +0200
+Message-ID: <10324095.IZOipudI63@diego>
+In-Reply-To: <20240814155014.18097-4-ziyao@disroot.org>
+References: <20240814155014.18097-1-ziyao@disroot.org>
+ <20240814155014.18097-4-ziyao@disroot.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240815_093539_202904_DC3ECED9 
-X-CRM114-Status: GOOD (  13.07  )
+X-CRM114-CacheID: sfid-20240815_094340_720117_38A12B0F 
+X-CRM114-Status: GOOD (  22.29  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,20 +77,236 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGkgRGF2aWQsCgpBbSBNb250YWcsIDEyLiBBdWd1c3QgMjAyNCwgMDQ6MjE6MjcgQ0VTVCBzY2hy
-aWViIERhdmlkIFd1Ogo+IEhpIERldGxldiwgSGVpa286Cj4gCj4gSXQncyByZWFsbHkgYSBUUk0g
-ZXJyb3IgaGVyZSwgUk1JSSBQSFkgaGFzIGJlZW4gdmVyaWZpZWQgZm9yIHRoaXMgcGF0Y2guCgp0
-aGFua3MgZm9yIGRvdWJsZSBjaGVja2luZy4KCgpIZWlrbwoKPiDlnKggMjAyNC84LzkgMjI6Mzgs
-IERldGxldiBDYXNhbm92YSDlhpnpgZM6Cj4gPiBDYW4ndCBiZSBzdXJlIGFib3V0IHRoYXQuIEFu
-IGVycm9yIGluIHRoZSBUUk0gaXMgbm90IGltcG9zc2libGUgZWl0aGVyLCBhcyBmb3IKPiA+IHJr
-MzU4OCwgaXQgaXMgYWxzbyBiaXRbNV09MDogRElWMjAgYW5kIGJpdFs1XT0xOiBESVYyLiBJIGNh
-biBzd2l0Y2ggdGhlbSB0bwo+ID4gbWF0Y2ggdGhlIFRSTSB0aG91Z2gsIHdlIG1heSBuZXZlciBu
-b3cuCgoKCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18K
-TGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVh
-ZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1y
-b2NrY2hpcAo=
+Hi,
+
+Am Mittwoch, 14. August 2024, 17:50:13 CEST schrieb Yao Zi:
+> This initial device tree describes CPU, interrupts and UART on the chip
+> and is able to boot into basic kernel with only UART. Cache information
+> is omitted for now as there is no precise documentation. Support for
+> other features will be added later.
+> 
+> Signed-off-by: Yao Zi <ziyao@disroot.org>
+
+not sure if you have seen Krzysztof's comment yesterday, that he found
+the soc node getting documented in 2019 [0].
+
+I guess that counts as a strong suggestion. Not sure how you're feeling
+about that, but I guess we could move to that scheme for new socs.
+
+So would you be willing to move the mmio-devices to a soc node?
+(stuff with mmio addresses in the node name)
+
+
+Thanks
+Heiko
+
+[0] https://lore.kernel.org/all/6320e4f3-e737-4787-8a72-7bd314ba883c@kernel.org/
+
+> ---
+>  arch/arm64/boot/dts/rockchip/rk3528.dtsi | 182 +++++++++++++++++++++++
+>  1 file changed, 182 insertions(+)
+>  create mode 100644 arch/arm64/boot/dts/rockchip/rk3528.dtsi
+> 
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3528.dtsi b/arch/arm64/boot/dts/rockchip/rk3528.dtsi
+> new file mode 100644
+> index 000000000000..816573c5fe9d
+> --- /dev/null
+> +++ b/arch/arm64/boot/dts/rockchip/rk3528.dtsi
+> @@ -0,0 +1,182 @@
+> +// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
+> +/*
+> + * Copyright (c) 2022 Rockchip Electronics Co., Ltd.
+> + * Copyright (c) 2024 Yao Zi <ziyao@disroot.org>
+> + */
+> +
+> +#include <dt-bindings/interrupt-controller/arm-gic.h>
+> +#include <dt-bindings/interrupt-controller/irq.h>
+> +
+> +/ {
+> +	compatible = "rockchip,rk3528";
+> +
+> +	interrupt-parent = <&gic>;
+> +	#address-cells = <2>;
+> +	#size-cells = <2>;
+> +
+> +	aliases {
+> +		serial0 = &uart0;
+> +		serial1 = &uart1;
+> +		serial2 = &uart2;
+> +		serial3 = &uart3;
+> +		serial4 = &uart4;
+> +		serial5 = &uart5;
+> +		serial6 = &uart6;
+> +		serial7 = &uart7;
+> +	};
+> +
+> +	cpus {
+> +		#address-cells = <1>;
+> +		#size-cells = <0>;
+> +
+> +		cpu-map {
+> +			cluster0 {
+> +				core0 {
+> +					cpu = <&cpu0>;
+> +				};
+> +				core1 {
+> +					cpu = <&cpu1>;
+> +				};
+> +				core2 {
+> +					cpu = <&cpu2>;
+> +				};
+> +				core3 {
+> +					cpu = <&cpu3>;
+> +				};
+> +			};
+> +		};
+> +
+> +		cpu0: cpu@0 {
+> +			compatible = "arm,cortex-a53";
+> +			reg = <0x0>;
+> +			device_type = "cpu";
+> +			enable-method = "psci";
+> +		};
+> +
+> +		cpu1: cpu@1 {
+> +			compatible = "arm,cortex-a53";
+> +			reg = <0x1>;
+> +			device_type = "cpu";
+> +			enable-method = "psci";
+> +		};
+> +
+> +		cpu2: cpu@2 {
+> +			compatible = "arm,cortex-a53";
+> +			reg = <0x2>;
+> +			device_type = "cpu";
+> +			enable-method = "psci";
+> +		};
+> +
+> +		cpu3: cpu@3 {
+> +			compatible = "arm,cortex-a53";
+> +			reg = <0x3>;
+> +			device_type = "cpu";
+> +			enable-method = "psci";
+> +		};
+> +	};
+> +
+> +	psci {
+> +		compatible = "arm,psci-1.0", "arm,psci-0.2";
+> +		method = "smc";
+> +	};
+> +
+> +	timer {
+> +		compatible = "arm,armv8-timer";
+> +		interrupts = <GIC_PPI 13 (GIC_CPU_MASK_SIMPLE(4) | IRQ_TYPE_LEVEL_LOW)>,
+> +			     <GIC_PPI 14 (GIC_CPU_MASK_SIMPLE(4) | IRQ_TYPE_LEVEL_LOW)>,
+> +			     <GIC_PPI 11 (GIC_CPU_MASK_SIMPLE(4) | IRQ_TYPE_LEVEL_LOW)>,
+> +			     <GIC_PPI 10 (GIC_CPU_MASK_SIMPLE(4) | IRQ_TYPE_LEVEL_LOW)>;
+> +	};
+> +
+> +	xin24m: clock-xin24m {
+> +		compatible = "fixed-clock";
+> +		clock-frequency = <24000000>;
+> +		clock-output-names = "xin24m";
+> +		#clock-cells = <0>;
+> +	};
+> +
+> +	gic: interrupt-controller@fed01000 {
+> +		compatible = "arm,gic-400";
+> +		reg = <0x0 0xfed01000 0 0x1000>,
+> +		      <0x0 0xfed02000 0 0x2000>,
+> +		      <0x0 0xfed04000 0 0x2000>,
+> +		      <0x0 0xfed06000 0 0x2000>;
+> +		interrupts = <GIC_PPI 9
+> +			(GIC_CPU_MASK_SIMPLE(4) | IRQ_TYPE_LEVEL_LOW)>;
+> +		interrupt-controller;
+> +		#address-cells = <0>;
+> +		#interrupt-cells = <3>;
+> +	};
+> +
+> +	uart0: serial@ff9f0000 {
+> +		compatible = "rockchip,rk3528-uart", "snps,dw-apb-uart";
+> +		reg = <0x0 0xff9f0000 0x0 0x100>;
+> +		clock-frequency = <24000000>;
+> +		interrupts = <GIC_SPI 40 IRQ_TYPE_LEVEL_HIGH>;
+> +		reg-io-width = <4>;
+> +		reg-shift = <2>;
+> +		status = "disabled";
+> +	};
+> +
+> +	uart1: serial@ff9f8000 {
+> +		compatible = "rockchip,rk3528-uart", "snps,dw-apb-uart";
+> +		reg = <0x0 0xff9f8000 0x0 0x100>;
+> +		interrupts = <GIC_SPI 41 IRQ_TYPE_LEVEL_HIGH>;
+> +		reg-io-width = <4>;
+> +		reg-shift = <2>;
+> +		status = "disabled";
+> +	};
+> +
+> +	uart2: serial@ffa00000 {
+> +		compatible = "rockchip,rk3528-uart", "snps,dw-apb-uart";
+> +		reg = <0x0 0xffa00000 0x0 0x100>;
+> +		interrupts = <GIC_SPI 42 IRQ_TYPE_LEVEL_HIGH>;
+> +		reg-io-width = <4>;
+> +		reg-shift = <2>;
+> +		status = "disabled";
+> +	};
+> +
+> +	uart3: serial@ffa08000 {
+> +		compatible = "rockchip,rk3528-uart", "snps,dw-apb-uart";
+> +		reg = <0x0 0xffa08000 0x0 0x100>;
+> +		reg-io-width = <4>;
+> +		reg-shift = <2>;
+> +		status = "disabled";
+> +	};
+> +
+> +	uart4: serial@ffa10000 {
+> +		compatible = "rockchip,rk3528-uart", "snps,dw-apb-uart";
+> +		reg = <0x0 0xffa10000 0x0 0x100>;
+> +		interrupts = <GIC_SPI 44 IRQ_TYPE_LEVEL_HIGH>;
+> +		reg-io-width = <4>;
+> +		reg-shift = <2>;
+> +		status = "disabled";
+> +	};
+> +
+> +	uart5: serial@ffa18000 {
+> +		compatible = "rockchip,rk3528-uart", "snps,dw-apb-uart";
+> +		reg = <0x0 0xffa18000 0x0 0x100>;
+> +		interrupts = <GIC_SPI 45 IRQ_TYPE_LEVEL_HIGH>;
+> +		reg-io-width = <4>;
+> +		reg-shift = <2>;
+> +		status = "disabled";
+> +	};
+> +
+> +	uart6: serial@ffa20000 {
+> +		compatible = "rockchip,rk3528-uart", "snps,dw-apb-uart";
+> +		reg = <0x0 0xffa20000 0x0 0x100>;
+> +		interrupts = <GIC_SPI 46 IRQ_TYPE_LEVEL_HIGH>;
+> +		reg-io-width = <4>;
+> +		reg-shift = <2>;
+> +		status = "disabled";
+> +	};
+> +
+> +	uart7: serial@ffa28000 {
+> +		compatible = "rockchip,rk3528-uart", "snps,dw-apb-uart";
+> +		reg = <0x0 0xffa28000 0x0 0x100>;
+> +		interrupts = <GIC_SPI 47 IRQ_TYPE_LEVEL_HIGH>;
+> +		reg-io-width = <4>;
+> +		reg-shift = <2>;
+> +		status = "disabled";
+> +	};
+> +};
+> 
+
+
+
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
