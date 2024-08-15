@@ -4,80 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8FB9DC52D7C
-	for <linux-rockchip@archiver.kernel.org>; Thu, 15 Aug 2024 16:16:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ADC20C52D7C
+	for <linux-rockchip@archiver.kernel.org>; Thu, 15 Aug 2024 16:20:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=sm/kHcwgY7hOq9+hFNpKhab0XWU/qm5NjVLi7TGTOmc=; b=4BP/KTvCbICmDPeLud5nQF1/jT
-	jLIouTYyGAO6aGcwmipMoDWM/MQTDZwHHb/+xYzuUmg/Ie0oHQziweN0qDFJu0ba3TruZi+dQtKAA
-	kRAuxQ5H/MgNNRoDZvn6+Iujuqx9nELNqxgAUAhaDN0RUVJE5cLgyMbQFTtkNzkdJS9NqkZLvM8NP
-	PH9/h/kYIggCM94yRNuyfyTV6zqLZ4z39Dk0WiEhhxTl8zyc1CMx9Ecbp2/SQk1gdOEI28tjPRVxf
-	Jnoh+coTHniIckmmVBO2n6rONGt278oypdyA/EafusfmfYp8cgl+uSQUns1ULJcYw2wTnKU4enK6F
-	Ywn31VuA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=HTGWswfjnWarkLGrEAAXNAaSaxRnVqlyNCBV5Er0FG8=; b=UxnDhc9AaB0uYz
+	mj/MFc6Sx1+3cU4RsyR9SKhccdWQGAi1L1ji8vo4A8iiMBdFMqzJMv2SMIs2t+BVPSsL0cmrltAHL
+	v3UiXQI9BmmqzSmhde9Sx9bjzwC0WpuYn5lNl/7XfOZkE7wQpyWDzHEwfFFYKDL2UDlaDv4Z8az+Q
+	yryRBhIvGV5XYwYR9uQ5LvF58Mlws5euHq3gfAdbaZuIqPIxngqgJpZezFXQSAgpJTa3kKeAM7cLk
+	bxnA0zAXY79SK3XiN6JgrCiWt3B52WT1/tWzZYt6uP6OCs33gAxVRz5usXklV9ErSxgh+4lE+IwZx
+	P5R4wNgp5ThlFlHEOT4g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sed8u-0000000AU9G-47EU;
-	Thu, 15 Aug 2024 16:16:04 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1sedD2-0000000AUuO-1jMb;
+	Thu, 15 Aug 2024 16:20:20 +0000
+Received: from mail-pg1-x52a.google.com ([2607:f8b0:4864:20::52a])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sec51-0000000AK4U-3Vk1;
-	Thu, 15 Aug 2024 15:08:00 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description;
-	bh=mcBob6mz7qQ195IUKtQRI3eLk0iuKcZAx/zn1FwfOaA=; b=UiVlF/nI2FqsKJ3Tp+qCHqL2rN
-	mD0/J1aLsbrvmymCTMuHb08hX8UZidv9AQ49MNwECsb4d/ubtIkOE31KWbPvd8DwaGcwCxVJIOLca
-	t/PmRWUYMH8f5efFOp5r8WYwAaoIHhrO6pT26iHxQ1ZB3u0/im/CfJJNRiXhWpM5xr22eLLkxeFrk
-	33bdOhXIerlZ0GUCBkbXKEM1+5Vlek0GOIMgLUyj9wuNwW61vkzjdaJ2CvaWwKIhJJAodsM8PcimC
-	QOOc9OTdtd/CXXMY8EG5SYpLsGbQ1Rei0gQZkGBpLdGvGiguyGRp0Od2ZzdaoZ1sfpVQTPiOQU6FW
-	RL+B2Axg==;
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
-	by desiato.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sec4w-00000008Oof-2onE;
-	Thu, 15 Aug 2024 15:07:58 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id B816F61A2F;
-	Thu, 15 Aug 2024 15:07:51 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2E351C4AF0D;
-	Thu, 15 Aug 2024 15:07:48 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1723734471;
-	bh=XND26O/tKxoC4B2lCq60aeKxRW/KGQ+GHy4XjkbiSGg=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=DvfJHLKMqDi5cSdYA2wTAftVDfKJtD5607gd3Nhhyj3Xn9eHECEXi1FmMYkHkDmI0
-	 Te8WuTIJvBBxTzFXtOEncyI9bcBh1jyUSzwPfECK0LDf3pLe2YPYUd5CcLhMjyy8Fz
-	 5MirxOnic70oG2k4/3LsV95OZxYFMbDuxX17d2dVwwStf+8d9JU5VyweLtU7axfGdL
-	 5ZeY4FaFXFYVkBOHEEib3q8HzAEUhLltWjdMGpivN1QD7wYs2Sa+vvQgS9vTcPKaKv
-	 fDhgZ1vlhxeKGSO7QwSeMa+Tu8drQC3XBd7Snp0APa7gZ7A3xdBwv+jNBQzWLNYqLM
-	 g2TE5BBgij7dw==
-Date: Thu, 15 Aug 2024 16:07:46 +0100
-From: Conor Dooley <conor@kernel.org>
-To: Detlev Casanova <detlev.casanova@collabora.com>
-Cc: linux-kernel@vger.kernel.org,
-	Michael Turquette <mturquette@baylibre.com>,
-	Stephen Boyd <sboyd@kernel.org>, Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
+	id 1sedCu-0000000AUsN-23RY
+	for linux-rockchip@lists.infradead.org;
+	Thu, 15 Aug 2024 16:20:18 +0000
+Received: by mail-pg1-x52a.google.com with SMTP id 41be03b00d2f7-7bb75419123so917328a12.3
+        for <linux-rockchip@lists.infradead.org>; Thu, 15 Aug 2024 09:20:11 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1723738811; x=1724343611; darn=lists.infradead.org;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=ik5jJmziSuK8GBVOaaeMajQRPRpyvl2v8hzurhsdC64=;
+        b=tW5MwpNQu8IuPFrtZ0CPj+gdKOGKimGgNiz8clwUMOk2HIOgIuCXxKj5cOlVqtLMbl
+         9QXh/63jccbyiq7WrQYpl1ukSXRAe8O49WrWFhCxW0q7Y7pE/Nj3XX9opVuRDHHKA3oa
+         qOYIZKMV+dpopMOoqyjKsEJLtGZVmdDKispHMh3syQSOOuG18UILIOYlpfpq12EwtSYI
+         kbKxqb4cHnkKO5YRBfopfvl3bfllreRuGuX6Udy6MovR51unZQgN8vF7bOtdL7awFG+p
+         vbmE98UQKIB6cUZcgGrDtgAYSF9ZfBnY1Y1UDuJZOtJVmhVmQCqPD/UErIghzp+63nZu
+         zOCQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1723738811; x=1724343611;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=ik5jJmziSuK8GBVOaaeMajQRPRpyvl2v8hzurhsdC64=;
+        b=MTJwoSsV1a3MPBEZLqs8tNbKFWx8JOhFkNbV+8PLmCWgxrjoikwy9vvRsDgK/Z+u1M
+         +LgYbXONUmBFGDwOEtNWdJXgH46RW0mEBGVNqOjR6pSP+Ea4qFnczd5j5aIAvEEqIYFO
+         h/aQNTgGG0/v8hg7NogK0up8rO/av1P2GrX0KuwKkYdrrk5lPU/Z9a4u1q0xYtuw+jZT
+         hlKVTLhbINasqtFo2CPpvoF9U7BozQ/vUwJvDGD4MJcdYz4evy0vPB7/YLKc+e80gZ3m
+         ph3DaPuNYOTqJ9vwinChEYOnfjQscCtDeQEkS5q10Xt6U7tHDv6XNT9rtBagp4DkHr8D
+         laCw==
+X-Forwarded-Encrypted: i=1; AJvYcCXeWjQkEhYaSQZEQCixvAS7M6MtCKzA5ViVQGugPOnKlTTMZ39zHPASYXMQ8vXRKeHTacpE7vDNXollAnHGeNQVSWmiJQdNat/8iIDYVSBEVO6u
+X-Gm-Message-State: AOJu0YwyJnFlhOmclvcoIJyW6BmTngPe5RXKd0rDPj8cBhFL76671RTp
+	AtA1RPMIZsHqQNWpZEaLF6HChkXPxWuG3+KwiOGy+E0/FPgmG786lNK2saYlsZNd5LmfjHLjO18
+	=
+X-Google-Smtp-Source: AGHT+IHuOzAztyLkgbs6qAt/4J9NqgairvPE0eQNt56uNJdXaObqpsnNzVitDeMRYZDtF3El/Xf7yw==
+X-Received: by 2002:a05:6a21:3401:b0:1c4:87b0:9157 with SMTP id adf61e73a8af0-1c904f91febmr249904637.22.1723738811113;
+        Thu, 15 Aug 2024 09:20:11 -0700 (PDT)
+Received: from thinkpad ([36.255.17.34])
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-7127af188a4sm1166094b3a.164.2024.08.15.09.20.06
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 15 Aug 2024 09:20:10 -0700 (PDT)
+Date: Thu, 15 Aug 2024 21:50:04 +0530
+From: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
+To: Anand Moon <linux.amoon@gmail.com>
+Cc: Shawn Lin <shawn.lin@rock-chips.com>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
+	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
 	Heiko Stuebner <heiko@sntech.de>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	Elaine Zhang <zhangqing@rock-chips.com>, linux-clk@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, kernel@collabora.com,
-	Sugar Zhang <sugar.zhang@rock-chips.com>
-Subject: Re: [PATCH v5 1/2] dt-bindings: clock, reset: Add support for rk3576
-Message-ID: <20240815-tassel-whacking-a460ee2ebd41@spud>
-References: <20240814222159.2598-1-detlev.casanova@collabora.com>
- <20240814222159.2598-2-detlev.casanova@collabora.com>
+	Philipp Zabel <p.zabel@pengutronix.de>, linux-pci@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v4 2/3] PCI: rockchip: Simplify reset control handling by
+ using reset_control_bulk*() function
+Message-ID: <20240815162004.GF2562@thinkpad>
+References: <20240625104039.48311-1-linux.amoon@gmail.com>
+ <20240625104039.48311-2-linux.amoon@gmail.com>
 MIME-Version: 1.0
-In-Reply-To: <20240814222159.2598-2-detlev.casanova@collabora.com>
+Content-Disposition: inline
+In-Reply-To: <20240625104039.48311-2-linux.amoon@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240815_160755_701460_3D2D4F1A 
-X-CRM114-Status: GOOD (  23.09  )
+X-CRM114-CacheID: sfid-20240815_092012_573399_CF54995F 
+X-CRM114-Status: GOOD (  28.61  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,1325 +97,183 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============5288071798743031792=="
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-
---===============5288071798743031792==
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="VIQYeD6dApYMRM+e"
-Content-Disposition: inline
-
-
---VIQYeD6dApYMRM+e
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Wed, Aug 14, 2024 at 06:19:22PM -0400, Detlev Casanova wrote:
-> Add clock and reset ID defines for rk3576.
->=20
-> Compared to the downstream bindings written by Elaine, this uses
-> continous gapless IDs starting at 0. Thus all numbers are
-> different between downstream and upstream, but names are kept
-> exactly the same.
->=20
-> Also add documentation for the rk3576 CRU core.
->=20
-> Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
-> Signed-off-by: Sugar Zhang <sugar.zhang@rock-chips.com>
-> Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
-> ---
->  .../bindings/clock/rockchip,rk3576-cru.yaml   |  64 ++
->  .../dt-bindings/clock/rockchip,rk3576-cru.h   | 592 ++++++++++++++++++
->  .../dt-bindings/reset/rockchip,rk3576-cru.h   | 564 +++++++++++++++++
->  3 files changed, 1220 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/clock/rockchip,rk35=
-76-cru.yaml
->  create mode 100644 include/dt-bindings/clock/rockchip,rk3576-cru.h
->  create mode 100644 include/dt-bindings/reset/rockchip,rk3576-cru.h
->=20
-> diff --git a/Documentation/devicetree/bindings/clock/rockchip,rk3576-cru.=
-yaml b/Documentation/devicetree/bindings/clock/rockchip,rk3576-cru.yaml
-> new file mode 100644
-> index 0000000000000..d69985e6fa0ce
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/clock/rockchip,rk3576-cru.yaml
-> @@ -0,0 +1,64 @@
-> +# SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/clock/rockchip,rk3576-cru.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: Rockchip rk3576 Family Clock and Reset Control Module
-> +
-> +maintainers:
-> +  - Elaine Zhang <zhangqing@rock-chips.com>
-> +  - Heiko Stuebner <heiko@sntech.de>
-> +  - Detlev Casanova <detlev.casanova@collabora.com>
-> +
-> +description:
-> +  The RK3576 clock controller generates the clock and also implements a =
-reset
-> +  controller for SoC peripherals. For example it provides SCLK_UART2 and
-> +  PCLK_UART2, as well as SRST_P_UART2 and SRST_S_UART2 for the second UA=
-RT
-> +  module.
-> +
-> +properties:
-> +  compatible:
-> +    const: rockchip,rk3576-cru
-> +
-> +  reg:
-> +    maxItems: 1
-> +
-> +  "#clock-cells":
-> +    const: 1
-> +
-> +  "#reset-cells":
-> +    const: 1
-> +
-> +  clocks:
-> +    maxItems: 2
-> +
-> +  clock-names:
-> +    items:
-> +      - const: xin24m
-> +      - const: xin32k
-> +
-> +  rockchip,grf:
-> +    $ref: /schemas/types.yaml#/definitions/phandle
-> +    description: >
-> +      phandle to the syscon managing the "general register files". It is=
- used
-> +      for GRF muxes, if missing any muxes present in the GRF will not be
-> +      available.
-
-Two questions on this property:
-- you only support one soc, why is this optional?
-- why can't you look it up by compatible?
-
-Cheers,
-Conor.
-
-> +
-> +required:
-> +  - compatible
-> +  - reg
-> +  - "#clock-cells"
-> +  - "#reset-cells"
-> +
-> +additionalProperties: false
-> +
-> +examples:
-> +  - |
-> +    clock-controller@27200000 {
-> +      compatible =3D "rockchip,rk3576-cru";
-> +      reg =3D <0xfd7c0000 0x5c000>;
-> +      #clock-cells =3D <1>;
-> +      #reset-cells =3D <1>;
-> +      rockchip,grf =3D <&pmu0_grf>;
-> +    };
-> diff --git a/include/dt-bindings/clock/rockchip,rk3576-cru.h b/include/dt=
--bindings/clock/rockchip,rk3576-cru.h
-> new file mode 100644
-> index 0000000000000..ee3718452b77e
-> --- /dev/null
-> +++ b/include/dt-bindings/clock/rockchip,rk3576-cru.h
-> @@ -0,0 +1,592 @@
-> +/* SPDX-License-Identifier: (GPL-2.0 OR MIT) */
-> +/*
-> +* Copyright (c) 2023 Rockchip Electronics Co. Ltd.
-> +* Copyright (c) 2024 Collabora Ltd.
-> +*
-> +* Author: Elaine Zhang <zhangqing@rock-chips.com>
-> +* Author: Detlev Casanova <detlev.casanova@collabora.com>
-> +*/
-> +
-> +#ifndef _DT_BINDINGS_CLK_ROCKCHIP_RK3576_H
-> +#define _DT_BINDINGS_CLK_ROCKCHIP_RK3576_H
-> +
-> +/* cru-clocks indices */
-> +
-> +/* cru plls */
-> +#define PLL_BPLL			0
-> +#define PLL_LPLL			1
-> +#define PLL_VPLL			2
-> +#define PLL_AUPLL			3
-> +#define PLL_CPLL			4
-> +#define PLL_GPLL			5
-> +#define PLL_PPLL			6
-> +#define ARMCLK_L			7
-> +#define ARMCLK_B			8
-> +
-> +/* cru clocks */
-> +#define CLK_CPLL_DIV20			9
-> +#define CLK_CPLL_DIV10			10
-> +#define CLK_GPLL_DIV8			11
-> +#define CLK_GPLL_DIV6			12
-> +#define CLK_CPLL_DIV4			13
-> +#define CLK_GPLL_DIV4			14
-> +#define CLK_SPLL_DIV2			15
-> +#define CLK_GPLL_DIV3			16
-> +#define CLK_CPLL_DIV2			17
-> +#define CLK_GPLL_DIV2			18
-> +#define CLK_SPLL_DIV1			19
-> +#define PCLK_TOP_ROOT			20
-> +#define ACLK_TOP			21
-> +#define HCLK_TOP			22
-> +#define CLK_AUDIO_FRAC_0		23
-> +#define CLK_AUDIO_FRAC_1		24
-> +#define CLK_AUDIO_FRAC_2		25
-> +#define CLK_AUDIO_FRAC_3		26
-> +#define CLK_UART_FRAC_0			27
-> +#define CLK_UART_FRAC_1			28
-> +#define CLK_UART_FRAC_2			29
-> +#define CLK_UART1_SRC_TOP		30
-> +#define CLK_AUDIO_INT_0			31
-> +#define CLK_AUDIO_INT_1			32
-> +#define CLK_AUDIO_INT_2			33
-> +#define CLK_PDM0_SRC_TOP		34
-> +#define CLK_PDM1_OUT			35
-> +#define CLK_GMAC0_125M_SRC		36
-> +#define CLK_GMAC1_125M_SRC		37
-> +#define LCLK_ASRC_SRC_0			38
-> +#define LCLK_ASRC_SRC_1			39
-> +#define REF_CLK0_OUT_PLL		40
-> +#define REF_CLK1_OUT_PLL		41
-> +#define REF_CLK2_OUT_PLL		42
-> +#define REFCLKO25M_GMAC0_OUT		43
-> +#define REFCLKO25M_GMAC1_OUT		44
-> +#define CLK_CIFOUT_OUT			45
-> +#define CLK_GMAC0_RMII_CRU		46
-> +#define CLK_GMAC1_RMII_CRU		47
-> +#define CLK_OTPC_AUTO_RD_G		48
-> +#define CLK_OTP_PHY_G			49
-> +#define CLK_MIPI_CAMERAOUT_M0		50
-> +#define CLK_MIPI_CAMERAOUT_M1		51
-> +#define CLK_MIPI_CAMERAOUT_M2		52
-> +#define MCLK_PDM0_SRC_TOP		53
-> +#define HCLK_AUDIO_ROOT			54
-> +#define HCLK_ASRC_2CH_0			55
-> +#define HCLK_ASRC_2CH_1			56
-> +#define HCLK_ASRC_4CH_0			57
-> +#define HCLK_ASRC_4CH_1			58
-> +#define CLK_ASRC_2CH_0			59
-> +#define CLK_ASRC_2CH_1			60
-> +#define CLK_ASRC_4CH_0			61
-> +#define CLK_ASRC_4CH_1			62
-> +#define MCLK_SAI0_8CH_SRC		63
-> +#define MCLK_SAI0_8CH			64
-> +#define HCLK_SAI0_8CH			65
-> +#define HCLK_SPDIF_RX0			66
-> +#define MCLK_SPDIF_RX0			67
-> +#define HCLK_SPDIF_RX1			68
-> +#define MCLK_SPDIF_RX1			69
-> +#define MCLK_SAI1_8CH_SRC		70
-> +#define MCLK_SAI1_8CH			71
-> +#define HCLK_SAI1_8CH			72
-> +#define MCLK_SAI2_2CH_SRC		73
-> +#define MCLK_SAI2_2CH			74
-> +#define HCLK_SAI2_2CH			75
-> +#define MCLK_SAI3_2CH_SRC		76
-> +#define MCLK_SAI3_2CH			77
-> +#define HCLK_SAI3_2CH			78
-> +#define MCLK_SAI4_2CH_SRC		79
-> +#define MCLK_SAI4_2CH			80
-> +#define HCLK_SAI4_2CH			81
-> +#define HCLK_ACDCDIG_DSM		82
-> +#define MCLK_ACDCDIG_DSM		83
-> +#define CLK_PDM1			84
-> +#define HCLK_PDM1			85
-> +#define MCLK_PDM1			86
-> +#define HCLK_SPDIF_TX0			87
-> +#define MCLK_SPDIF_TX0			88
-> +#define HCLK_SPDIF_TX1			89
-> +#define MCLK_SPDIF_TX1			90
-> +#define CLK_SAI1_MCLKOUT		91
-> +#define CLK_SAI2_MCLKOUT		92
-> +#define CLK_SAI3_MCLKOUT		93
-> +#define CLK_SAI4_MCLKOUT		94
-> +#define CLK_SAI0_MCLKOUT		95
-> +#define HCLK_BUS_ROOT			96
-> +#define PCLK_BUS_ROOT			97
-> +#define ACLK_BUS_ROOT			98
-> +#define HCLK_CAN0			99
-> +#define CLK_CAN0			100
-> +#define HCLK_CAN1			101
-> +#define CLK_CAN1			102
-> +#define CLK_KEY_SHIFT			103
-> +#define PCLK_I2C1			104
-> +#define PCLK_I2C2			105
-> +#define PCLK_I2C3			106
-> +#define PCLK_I2C4			107
-> +#define PCLK_I2C5			108
-> +#define PCLK_I2C6			109
-> +#define PCLK_I2C7			110
-> +#define PCLK_I2C8			111
-> +#define PCLK_I2C9			112
-> +#define PCLK_WDT_BUSMCU			113
-> +#define TCLK_WDT_BUSMCU			114
-> +#define ACLK_GIC			115
-> +#define CLK_I2C1			116
-> +#define CLK_I2C2			117
-> +#define CLK_I2C3			118
-> +#define CLK_I2C4			119
-> +#define CLK_I2C5			120
-> +#define CLK_I2C6			121
-> +#define CLK_I2C7			122
-> +#define CLK_I2C8			123
-> +#define CLK_I2C9			124
-> +#define PCLK_SARADC			125
-> +#define CLK_SARADC			126
-> +#define PCLK_TSADC			127
-> +#define CLK_TSADC			128
-> +#define PCLK_UART0			129
-> +#define PCLK_UART2			130
-> +#define PCLK_UART3			131
-> +#define PCLK_UART4			132
-> +#define PCLK_UART5			133
-> +#define PCLK_UART6			134
-> +#define PCLK_UART7			135
-> +#define PCLK_UART8			136
-> +#define PCLK_UART9			137
-> +#define PCLK_UART10			138
-> +#define PCLK_UART11			139
-> +#define SCLK_UART0			140
-> +#define SCLK_UART2			141
-> +#define SCLK_UART3			142
-> +#define SCLK_UART4			143
-> +#define SCLK_UART5			144
-> +#define SCLK_UART6			145
-> +#define SCLK_UART7			146
-> +#define SCLK_UART8			147
-> +#define SCLK_UART9			148
-> +#define SCLK_UART10			149
-> +#define SCLK_UART11			150
-> +#define PCLK_SPI0			151
-> +#define PCLK_SPI1			152
-> +#define PCLK_SPI2			153
-> +#define PCLK_SPI3			154
-> +#define PCLK_SPI4			155
-> +#define CLK_SPI0			156
-> +#define CLK_SPI1			157
-> +#define CLK_SPI2			158
-> +#define CLK_SPI3			159
-> +#define CLK_SPI4			160
-> +#define PCLK_WDT0			161
-> +#define TCLK_WDT0			162
-> +#define PCLK_PWM1			163
-> +#define CLK_PWM1			164
-> +#define CLK_OSC_PWM1			165
-> +#define CLK_RC_PWM1			166
-> +#define PCLK_BUSTIMER0			167
-> +#define PCLK_BUSTIMER1			168
-> +#define CLK_TIMER0_ROOT			169
-> +#define CLK_TIMER0			170
-> +#define CLK_TIMER1			171
-> +#define CLK_TIMER2			172
-> +#define CLK_TIMER3			173
-> +#define CLK_TIMER4			174
-> +#define CLK_TIMER5			175
-> +#define PCLK_MAILBOX0			176
-> +#define PCLK_GPIO1			177
-> +#define DBCLK_GPIO1			178
-> +#define PCLK_GPIO2			179
-> +#define DBCLK_GPIO2			180
-> +#define PCLK_GPIO3			181
-> +#define DBCLK_GPIO3			182
-> +#define PCLK_GPIO4			183
-> +#define DBCLK_GPIO4			184
-> +#define ACLK_DECOM			185
-> +#define PCLK_DECOM			186
-> +#define DCLK_DECOM			187
-> +#define CLK_TIMER1_ROOT			188
-> +#define CLK_TIMER6			189
-> +#define CLK_TIMER7			190
-> +#define CLK_TIMER8			191
-> +#define CLK_TIMER9			192
-> +#define CLK_TIMER10			193
-> +#define CLK_TIMER11			194
-> +#define ACLK_DMAC0			195
-> +#define ACLK_DMAC1			196
-> +#define ACLK_DMAC2			197
-> +#define ACLK_SPINLOCK			198
-> +#define HCLK_I3C0			199
-> +#define HCLK_I3C1			200
-> +#define HCLK_BUS_CM0_ROOT		201
-> +#define FCLK_BUS_CM0_CORE		202
-> +#define CLK_BUS_CM0_RTC			203
-> +#define PCLK_PMU2			204
-> +#define PCLK_PWM2			205
-> +#define CLK_PWM2			206
-> +#define CLK_RC_PWM2			207
-> +#define CLK_OSC_PWM2			208
-> +#define CLK_FREQ_PWM1			209
-> +#define CLK_COUNTER_PWM1		210
-> +#define SAI_SCLKIN_FREQ			211
-> +#define SAI_SCLKIN_COUNTER		212
-> +#define CLK_I3C0			213
-> +#define CLK_I3C1			214
-> +#define PCLK_CSIDPHY1			215
-> +#define PCLK_DDR_ROOT			216
-> +#define PCLK_DDR_MON_CH0		217
-> +#define TMCLK_DDR_MON_CH0		218
-> +#define ACLK_DDR_ROOT			219
-> +#define HCLK_DDR_ROOT			220
-> +#define FCLK_DDR_CM0_CORE		221
-> +#define CLK_DDR_TIMER_ROOT		222
-> +#define CLK_DDR_TIMER0			223
-> +#define CLK_DDR_TIMER1			224
-> +#define TCLK_WDT_DDR			225
-> +#define PCLK_WDT			226
-> +#define PCLK_TIMER			227
-> +#define CLK_DDR_CM0_RTC			228
-> +#define ACLK_RKNN0			229
-> +#define ACLK_RKNN1			230
-> +#define HCLK_RKNN_ROOT			231
-> +#define CLK_RKNN_DSU0			232
-> +#define PCLK_NPUTOP_ROOT		233
-> +#define PCLK_NPU_TIMER			234
-> +#define CLK_NPUTIMER_ROOT		235
-> +#define CLK_NPUTIMER0			236
-> +#define CLK_NPUTIMER1			237
-> +#define PCLK_NPU_WDT			238
-> +#define TCLK_NPU_WDT			239
-> +#define ACLK_RKNN_CBUF			240
-> +#define HCLK_NPU_CM0_ROOT		241
-> +#define FCLK_NPU_CM0_CORE		242
-> +#define CLK_NPU_CM0_RTC			243
-> +#define HCLK_RKNN_CBUF			244
-> +#define HCLK_NVM_ROOT			245
-> +#define ACLK_NVM_ROOT			246
-> +#define SCLK_FSPI_X2			247
-> +#define HCLK_FSPI			248
-> +#define CCLK_SRC_EMMC			249
-> +#define HCLK_EMMC			250
-> +#define ACLK_EMMC			251
-> +#define BCLK_EMMC			252
-> +#define TCLK_EMMC			253
-> +#define PCLK_PHP_ROOT			254
-> +#define ACLK_PHP_ROOT			255
-> +#define PCLK_PCIE0			256
-> +#define CLK_PCIE0_AUX			257
-> +#define ACLK_PCIE0_MST			258
-> +#define ACLK_PCIE0_SLV			259
-> +#define ACLK_PCIE0_DBI			260
-> +#define ACLK_USB3OTG1			261
-> +#define CLK_REF_USB3OTG1		262
-> +#define CLK_SUSPEND_USB3OTG1		263
-> +#define ACLK_MMU0			264
-> +#define ACLK_SLV_MMU0			265
-> +#define ACLK_MMU1			266
-> +#define ACLK_SLV_MMU1			267
-> +#define PCLK_PCIE1			268
-> +#define CLK_PCIE1_AUX			269
-> +#define ACLK_PCIE1_MST			270
-> +#define ACLK_PCIE1_SLV			271
-> +#define ACLK_PCIE1_DBI			272
-> +#define CLK_RXOOB0			273
-> +#define CLK_RXOOB1			274
-> +#define CLK_PMALIVE0			275
-> +#define CLK_PMALIVE1			276
-> +#define ACLK_SATA0			277
-> +#define ACLK_SATA1			278
-> +#define CLK_USB3OTG1_PIPE_PCLK		279
-> +#define CLK_USB3OTG1_UTMI		280
-> +#define CLK_USB3OTG0_PIPE_PCLK		281
-> +#define CLK_USB3OTG0_UTMI		282
-> +#define HCLK_SDGMAC_ROOT		283
-> +#define ACLK_SDGMAC_ROOT		284
-> +#define PCLK_SDGMAC_ROOT		285
-> +#define ACLK_GMAC0			286
-> +#define ACLK_GMAC1			287
-> +#define PCLK_GMAC0			288
-> +#define PCLK_GMAC1			289
-> +#define CCLK_SRC_SDIO			290
-> +#define HCLK_SDIO			291
-> +#define CLK_GMAC1_PTP_REF		292
-> +#define CLK_GMAC0_PTP_REF		293
-> +#define CLK_GMAC1_PTP_REF_SRC		294
-> +#define CLK_GMAC0_PTP_REF_SRC		295
-> +#define CCLK_SRC_SDMMC0			296
-> +#define HCLK_SDMMC0			297
-> +#define SCLK_FSPI1_X2			298
-> +#define HCLK_FSPI1			299
-> +#define ACLK_DSMC_ROOT			300
-> +#define ACLK_DSMC			301
-> +#define PCLK_DSMC			302
-> +#define CLK_DSMC_SYS			303
-> +#define HCLK_HSGPIO			304
-> +#define CLK_HSGPIO_TX			305
-> +#define CLK_HSGPIO_RX			306
-> +#define ACLK_HSGPIO			307
-> +#define PCLK_PHPPHY_ROOT		308
-> +#define PCLK_PCIE2_COMBOPHY0		309
-> +#define PCLK_PCIE2_COMBOPHY1		310
-> +#define CLK_PCIE_100M_SRC		311
-> +#define CLK_PCIE_100M_NDUTY_SRC		312
-> +#define CLK_REF_PCIE0_PHY		313
-> +#define CLK_REF_PCIE1_PHY		314
-> +#define CLK_REF_MPHY_26M		315
-> +#define HCLK_RKVDEC_ROOT		316
-> +#define ACLK_RKVDEC_ROOT		317
-> +#define HCLK_RKVDEC			318
-> +#define CLK_RKVDEC_HEVC_CA		319
-> +#define CLK_RKVDEC_CORE			320
-> +#define ACLK_UFS_ROOT			321
-> +#define ACLK_USB_ROOT			322
-> +#define PCLK_USB_ROOT			323
-> +#define ACLK_USB3OTG0			324
-> +#define CLK_REF_USB3OTG0		325
-> +#define CLK_SUSPEND_USB3OTG0		326
-> +#define ACLK_MMU2			327
-> +#define ACLK_SLV_MMU2			328
-> +#define ACLK_UFS_SYS			329
-> +#define ACLK_VPU_ROOT			330
-> +#define ACLK_VPU_MID_ROOT		331
-> +#define HCLK_VPU_ROOT			332
-> +#define ACLK_JPEG_ROOT			333
-> +#define ACLK_VPU_LOW_ROOT		334
-> +#define HCLK_RGA2E_0			335
-> +#define ACLK_RGA2E_0			336
-> +#define CLK_CORE_RGA2E_0		337
-> +#define ACLK_JPEG			338
-> +#define HCLK_JPEG			339
-> +#define HCLK_VDPP			340
-> +#define ACLK_VDPP			341
-> +#define CLK_CORE_VDPP			342
-> +#define HCLK_RGA2E_1			343
-> +#define ACLK_RGA2E_1			344
-> +#define CLK_CORE_RGA2E_1		345
-> +#define DCLK_EBC_FRAC_SRC		346
-> +#define HCLK_EBC			347
-> +#define ACLK_EBC			348
-> +#define DCLK_EBC			349
-> +#define HCLK_VEPU0_ROOT			350
-> +#define ACLK_VEPU0_ROOT			351
-> +#define HCLK_VEPU0			352
-> +#define ACLK_VEPU0			353
-> +#define CLK_VEPU0_CORE			354
-> +#define ACLK_VI_ROOT			355
-> +#define HCLK_VI_ROOT			356
-> +#define PCLK_VI_ROOT			357
-> +#define DCLK_VICAP			358
-> +#define ACLK_VICAP			359
-> +#define HCLK_VICAP			360
-> +#define CLK_ISP_CORE			361
-> +#define CLK_ISP_CORE_MARVIN		362
-> +#define CLK_ISP_CORE_VICAP		363
-> +#define ACLK_ISP			364
-> +#define HCLK_ISP			365
-> +#define ACLK_VPSS			366
-> +#define HCLK_VPSS			367
-> +#define CLK_CORE_VPSS			368
-> +#define PCLK_CSI_HOST_0			369
-> +#define PCLK_CSI_HOST_1			370
-> +#define PCLK_CSI_HOST_2			371
-> +#define PCLK_CSI_HOST_3			372
-> +#define PCLK_CSI_HOST_4			373
-> +#define ICLK_CSIHOST01			374
-> +#define ICLK_CSIHOST0			375
-> +#define CLK_ISP_PVTPLL_SRC		376
-> +#define ACLK_VI_ROOT_INTER		377
-> +#define CLK_VICAP_I0CLK			378
-> +#define CLK_VICAP_I1CLK			379
-> +#define CLK_VICAP_I2CLK			380
-> +#define CLK_VICAP_I3CLK			381
-> +#define CLK_VICAP_I4CLK			382
-> +#define ACLK_VOP_ROOT			383
-> +#define HCLK_VOP_ROOT			384
-> +#define PCLK_VOP_ROOT			385
-> +#define HCLK_VOP			386
-> +#define ACLK_VOP			387
-> +#define DCLK_VP0_SRC			388
-> +#define DCLK_VP1_SRC			389
-> +#define DCLK_VP2_SRC			390
-> +#define DCLK_VP0			391
-> +#define DCLK_VP1			392
-> +#define DCLK_VP2			393
-> +#define PCLK_VOPGRF			394
-> +#define ACLK_VO0_ROOT			395
-> +#define HCLK_VO0_ROOT			396
-> +#define PCLK_VO0_ROOT			397
-> +#define PCLK_VO0_GRF			398
-> +#define ACLK_HDCP0			399
-> +#define HCLK_HDCP0			400
-> +#define PCLK_HDCP0			401
-> +#define CLK_TRNG0_SKP			402
-> +#define PCLK_DSIHOST0			403
-> +#define CLK_DSIHOST0			404
-> +#define PCLK_HDMITX0			405
-> +#define CLK_HDMITX0_EARC		406
-> +#define CLK_HDMITX0_REF			407
-> +#define PCLK_EDP0			408
-> +#define CLK_EDP0_24M			409
-> +#define CLK_EDP0_200M			410
-> +#define MCLK_SAI5_8CH_SRC		411
-> +#define MCLK_SAI5_8CH			412
-> +#define HCLK_SAI5_8CH			413
-> +#define MCLK_SAI6_8CH_SRC		414
-> +#define MCLK_SAI6_8CH			415
-> +#define HCLK_SAI6_8CH			416
-> +#define HCLK_SPDIF_TX2			417
-> +#define MCLK_SPDIF_TX2			418
-> +#define HCLK_SPDIF_RX2			419
-> +#define MCLK_SPDIF_RX2			420
-> +#define HCLK_SAI8_8CH			421
-> +#define MCLK_SAI8_8CH_SRC		422
-> +#define MCLK_SAI8_8CH			423
-> +#define ACLK_VO1_ROOT			424
-> +#define HCLK_VO1_ROOT			425
-> +#define PCLK_VO1_ROOT			426
-> +#define MCLK_SAI7_8CH_SRC		427
-> +#define MCLK_SAI7_8CH			428
-> +#define HCLK_SAI7_8CH			429
-> +#define HCLK_SPDIF_TX3			430
-> +#define HCLK_SPDIF_TX4			431
-> +#define HCLK_SPDIF_TX5			432
-> +#define MCLK_SPDIF_TX3			433
-> +#define CLK_AUX16MHZ_0			434
-> +#define ACLK_DP0			435
-> +#define PCLK_DP0			436
-> +#define PCLK_VO1_GRF			437
-> +#define ACLK_HDCP1			438
-> +#define HCLK_HDCP1			439
-> +#define PCLK_HDCP1			440
-> +#define CLK_TRNG1_SKP			441
-> +#define HCLK_SAI9_8CH			442
-> +#define MCLK_SAI9_8CH_SRC		443
-> +#define MCLK_SAI9_8CH			444
-> +#define MCLK_SPDIF_TX4			445
-> +#define MCLK_SPDIF_TX5			446
-> +#define CLK_GPU_SRC_PRE			447
-> +#define CLK_GPU				448
-> +#define PCLK_GPU_ROOT			449
-> +#define ACLK_CENTER_ROOT		450
-> +#define ACLK_CENTER_LOW_ROOT		451
-> +#define HCLK_CENTER_ROOT		452
-> +#define PCLK_CENTER_ROOT		453
-> +#define ACLK_DMA2DDR			454
-> +#define ACLK_DDR_SHAREMEM		455
-> +#define PCLK_DMA2DDR			456
-> +#define PCLK_SHAREMEM			457
-> +#define HCLK_VEPU1_ROOT			458
-> +#define ACLK_VEPU1_ROOT			459
-> +#define HCLK_VEPU1			460
-> +#define ACLK_VEPU1			461
-> +#define CLK_VEPU1_CORE			462
-> +#define CLK_JDBCK_DAP			463
-> +#define PCLK_MIPI_DCPHY			464
-> +#define CLK_32K_USB2DEBUG		465
-> +#define PCLK_CSIDPHY			466
-> +#define PCLK_USBDPPHY			467
-> +#define CLK_PMUPHY_REF_SRC		468
-> +#define CLK_USBDP_COMBO_PHY_IMMORTAL	469
-> +#define CLK_HDMITXHPD			470
-> +#define PCLK_MPHY			471
-> +#define CLK_REF_OSC_MPHY		472
-> +#define CLK_REF_UFS_CLKOUT		473
-> +#define HCLK_PMU1_ROOT			474
-> +#define HCLK_PMU_CM0_ROOT		475
-> +#define CLK_200M_PMU_SRC		476
-> +#define CLK_100M_PMU_SRC		477
-> +#define CLK_50M_PMU_SRC			478
-> +#define FCLK_PMU_CM0_CORE		479
-> +#define CLK_PMU_CM0_RTC			480
-> +#define PCLK_PMU1			481
-> +#define CLK_PMU1			482
-> +#define PCLK_PMU1WDT			483
-> +#define TCLK_PMU1WDT			484
-> +#define PCLK_PMUTIMER			485
-> +#define CLK_PMUTIMER_ROOT		486
-> +#define CLK_PMUTIMER0			487
-> +#define CLK_PMUTIMER1			488
-> +#define PCLK_PMU1PWM			489
-> +#define CLK_PMU1PWM			490
-> +#define CLK_PMU1PWM_OSC			491
-> +#define PCLK_PMUPHY_ROOT		492
-> +#define PCLK_I2C0			493
-> +#define CLK_I2C0			494
-> +#define SCLK_UART1			495
-> +#define PCLK_UART1			496
-> +#define CLK_PMU1PWM_RC			497
-> +#define CLK_PDM0			498
-> +#define HCLK_PDM0			499
-> +#define MCLK_PDM0			500
-> +#define HCLK_VAD			501
-> +#define CLK_OSCCHK_PVTM			502
-> +#define CLK_PDM0_OUT			503
-> +#define CLK_HPTIMER_SRC			504
-> +#define PCLK_PMU0_ROOT			505
-> +#define PCLK_PMU0			506
-> +#define PCLK_GPIO0			507
-> +#define DBCLK_GPIO0			508
-> +#define CLK_OSC0_PMU1			509
-> +#define PCLK_PMU1_ROOT			510
-> +#define XIN_OSC0_DIV			511
-> +#define ACLK_USB			512
-> +#define ACLK_UFS			513
-> +#define ACLK_SDGMAC			514
-> +#define HCLK_SDGMAC			515
-> +#define PCLK_SDGMAC			516
-> +#define HCLK_VO1			517
-> +#define HCLK_VO0			518
-> +#define PCLK_CCI_ROOT			519
-> +#define ACLK_CCI_ROOT			520
-> +#define HCLK_VO0VOP_CHANNEL		521
-> +#define ACLK_VO0VOP_CHANNEL		522
-> +#define ACLK_TOP_MID			523
-> +#define ACLK_SECURE_HIGH		524
-> +#define CLK_USBPHY_REF_SRC		525
-> +#define CLK_PHY_REF_SRC			526
-> +#define CLK_CPLL_REF_SRC		527
-> +#define CLK_AUPLL_REF_SRC		528
-> +#define PCLK_SECURE_NS			529
-> +#define HCLK_SECURE_NS			530
-> +#define ACLK_SECURE_NS			531
-> +#define PCLK_OTPC_NS			532
-> +#define HCLK_CRYPTO_NS			533
-> +#define HCLK_TRNG_NS			534
-> +#define CLK_OTPC_NS			535
-> +#define SCLK_DSU			536
-> +#define SCLK_DDR			537
-> +#define ACLK_CRYPTO_NS			538
-> +#define CLK_PKA_CRYPTO_NS		539
-> +#define ACLK_RKVDEC_ROOT_BAK		540
-> +#define CLK_AUDIO_FRAC_0_SRC		541
-> +#define CLK_AUDIO_FRAC_1_SRC		542
-> +#define CLK_AUDIO_FRAC_2_SRC		543
-> +#define CLK_AUDIO_FRAC_3_SRC		544
-> +#define PCLK_HDPTX_APB			545
-> +
-> +/* secure clk */
-> +#define CLK_STIMER0_ROOT		546
-> +#define CLK_STIMER1_ROOT		547
-> +#define PCLK_SECURE_S			548
-> +#define HCLK_SECURE_S			549
-> +#define ACLK_SECURE_S			550
-> +#define CLK_PKA_CRYPTO_S		551
-> +#define HCLK_VO1_S			552
-> +#define PCLK_VO1_S			553
-> +#define HCLK_VO0_S			554
-> +#define PCLK_VO0_S			555
-> +#define PCLK_KLAD			556
-> +#define HCLK_CRYPTO_S			557
-> +#define HCLK_KLAD			558
-> +#define ACLK_CRYPTO_S			559
-> +#define HCLK_TRNG_S			560
-> +#define PCLK_OTPC_S			561
-> +#define CLK_OTPC_S			562
-> +#define PCLK_WDT_S			563
-> +#define TCLK_WDT_S			564
-> +#define PCLK_HDCP0_TRNG			565
-> +#define PCLK_HDCP1_TRNG			566
-> +#define HCLK_HDCP_KEY0			567
-> +#define HCLK_HDCP_KEY1			568
-> +#define PCLK_EDP_S			569
-> +#define ACLK_KLAD			570
-> +
-> +#endif
-> diff --git a/include/dt-bindings/reset/rockchip,rk3576-cru.h b/include/dt=
--bindings/reset/rockchip,rk3576-cru.h
-> new file mode 100644
-> index 0000000000000..8c968af4888d5
-> --- /dev/null
-> +++ b/include/dt-bindings/reset/rockchip,rk3576-cru.h
-> @@ -0,0 +1,564 @@
-> +/* SPDX-License-Identifier: (GPL-2.0 OR MIT) */
-> +/*
-> +* Copyright (c) 2023 Rockchip Electronics Co. Ltd.
-> +* Copyright (c) 2024 Collabora Ltd.
-> +*
-> +* Author: Elaine Zhang <zhangqing@rock-chips.com>
-> +* Author: Detlev Casanova <detlev.casanova@collabora.com>
-> +*/
-> +
-> +#ifndef _DT_BINDINGS_RESET_ROCKCHIP_RK3576_H
-> +#define _DT_BINDINGS_RESET_ROCKCHIP_RK3576_H
-> +
-> +#define SRST_A_TOP_BIU			0
-> +#define SRST_P_TOP_BIU			1
-> +#define SRST_A_TOP_MID_BIU		2
-> +#define SRST_A_SECURE_HIGH_BIU		3
-> +#define SRST_H_TOP_BIU			4
-> +
-> +#define SRST_H_VO0VOP_CHANNEL_BIU	5
-> +#define SRST_A_VO0VOP_CHANNEL_BIU	6
-> +
-> +#define SRST_BISRINTF			7
-> +
-> +#define SRST_H_AUDIO_BIU		8
-> +#define SRST_H_ASRC_2CH_0		9
-> +#define SRST_H_ASRC_2CH_1		10
-> +#define SRST_H_ASRC_4CH_0		11
-> +#define SRST_H_ASRC_4CH_1		12
-> +#define SRST_ASRC_2CH_0			13
-> +#define SRST_ASRC_2CH_1			14
-> +#define SRST_ASRC_4CH_0			15
-> +#define SRST_ASRC_4CH_1			16
-> +#define SRST_M_SAI0_8CH			17
-> +#define SRST_H_SAI0_8CH			18
-> +#define SRST_H_SPDIF_RX0		19
-> +#define SRST_M_SPDIF_RX0		20
-> +
-> +#define SRST_H_SPDIF_RX1		21
-> +#define SRST_M_SPDIF_RX1		22
-> +#define SRST_M_SAI1_8CH			23
-> +#define SRST_H_SAI1_8CH			24
-> +#define SRST_M_SAI2_2CH			25
-> +#define SRST_H_SAI2_2CH			26
-> +#define SRST_M_SAI3_2CH			27
-> +#define SRST_H_SAI3_2CH			28
-> +
-> +#define SRST_M_SAI4_2CH			29
-> +#define SRST_H_SAI4_2CH			30
-> +#define SRST_H_ACDCDIG_DSM		31
-> +#define SRST_M_ACDCDIG_DSM		32
-> +#define SRST_PDM1			33
-> +#define SRST_H_PDM1			34
-> +#define SRST_M_PDM1			35
-> +#define SRST_H_SPDIF_TX0		36
-> +#define SRST_M_SPDIF_TX0		37
-> +#define SRST_H_SPDIF_TX1		38
-> +#define SRST_M_SPDIF_TX1		39
-> +
-> +#define SRST_A_BUS_BIU			40
-> +#define SRST_P_BUS_BIU			41
-> +#define SRST_P_CRU			42
-> +#define SRST_H_CAN0			43
-> +#define SRST_CAN0			44
-> +#define SRST_H_CAN1			45
-> +#define SRST_CAN1			46
-> +#define SRST_P_INTMUX2BUS		47
-> +#define SRST_P_VCCIO_IOC		48
-> +#define SRST_H_BUS_BIU			49
-> +#define SRST_KEY_SHIFT			50
-> +
-> +#define SRST_P_I2C1			51
-> +#define SRST_P_I2C2			52
-> +#define SRST_P_I2C3			53
-> +#define SRST_P_I2C4			54
-> +#define SRST_P_I2C5			55
-> +#define SRST_P_I2C6			56
-> +#define SRST_P_I2C7			57
-> +#define SRST_P_I2C8			58
-> +#define SRST_P_I2C9			59
-> +#define SRST_P_WDT_BUSMCU		60
-> +#define SRST_T_WDT_BUSMCU		61
-> +#define SRST_A_GIC			62
-> +#define SRST_I2C1			63
-> +#define SRST_I2C2			64
-> +#define SRST_I2C3			65
-> +#define SRST_I2C4			66
-> +
-> +#define SRST_I2C5			67
-> +#define SRST_I2C6			68
-> +#define SRST_I2C7			69
-> +#define SRST_I2C8			70
-> +#define SRST_I2C9			71
-> +#define SRST_P_SARADC			72
-> +#define SRST_SARADC			73
-> +#define SRST_P_TSADC			74
-> +#define SRST_TSADC			75
-> +#define SRST_P_UART0			76
-> +#define SRST_P_UART2			77
-> +#define SRST_P_UART3			78
-> +#define SRST_P_UART4			79
-> +#define SRST_P_UART5			80
-> +#define SRST_P_UART6			81
-> +
-> +#define SRST_P_UART7			82
-> +#define SRST_P_UART8			83
-> +#define SRST_P_UART9			84
-> +#define SRST_P_UART10			85
-> +#define SRST_P_UART11			86
-> +#define SRST_S_UART0			87
-> +#define SRST_S_UART2			88
-> +#define SRST_S_UART3			89
-> +#define SRST_S_UART4			90
-> +#define SRST_S_UART5			91
-> +
-> +#define SRST_S_UART6			92
-> +#define SRST_S_UART7			93
-> +#define SRST_S_UART8			94
-> +#define SRST_S_UART9			95
-> +#define SRST_S_UART10			96
-> +#define SRST_S_UART11			97
-> +#define SRST_P_SPI0			98
-> +#define SRST_P_SPI1			99
-> +#define SRST_P_SPI2			100
-> +
-> +#define SRST_P_SPI3			101
-> +#define SRST_P_SPI4			102
-> +#define SRST_SPI0			103
-> +#define SRST_SPI1			104
-> +#define SRST_SPI2			105
-> +#define SRST_SPI3			106
-> +#define SRST_SPI4			107
-> +#define SRST_P_WDT0			108
-> +#define SRST_T_WDT0			109
-> +#define SRST_P_SYS_GRF			110
-> +#define SRST_P_PWM1			111
-> +#define SRST_PWM1			112
-> +
-> +#define SRST_P_BUSTIMER0		113
-> +#define SRST_P_BUSTIMER1		114
-> +#define SRST_TIMER0			115
-> +#define SRST_TIMER1			116
-> +#define SRST_TIMER2			117
-> +#define SRST_TIMER3			118
-> +#define SRST_TIMER4			119
-> +#define SRST_TIMER5			120
-> +#define SRST_P_BUSIOC			121
-> +#define SRST_P_MAILBOX0			122
-> +#define SRST_P_GPIO1			123
-> +
-> +#define SRST_GPIO1			124
-> +#define SRST_P_GPIO2			125
-> +#define SRST_GPIO2			126
-> +#define SRST_P_GPIO3			127
-> +#define SRST_GPIO3			128
-> +#define SRST_P_GPIO4			129
-> +#define SRST_GPIO4			130
-> +#define SRST_A_DECOM			131
-> +#define SRST_P_DECOM			132
-> +#define SRST_D_DECOM			133
-> +#define SRST_TIMER6			134
-> +#define SRST_TIMER7			135
-> +#define SRST_TIMER8			136
-> +#define SRST_TIMER9			137
-> +#define SRST_TIMER10			138
-> +
-> +#define SRST_TIMER11			139
-> +#define SRST_A_DMAC0			140
-> +#define SRST_A_DMAC1			141
-> +#define SRST_A_DMAC2			142
-> +#define SRST_A_SPINLOCK			143
-> +#define SRST_REF_PVTPLL_BUS		144
-> +#define SRST_H_I3C0			145
-> +#define SRST_H_I3C1			146
-> +#define SRST_H_BUS_CM0_BIU		147
-> +#define SRST_F_BUS_CM0_CORE		148
-> +#define SRST_T_BUS_CM0_JTAG		149
-> +
-> +#define SRST_P_INTMUX2PMU		150
-> +#define SRST_P_INTMUX2DDR		151
-> +#define SRST_P_PVTPLL_BUS		152
-> +#define SRST_P_PWM2			153
-> +#define SRST_PWM2			154
-> +#define SRST_FREQ_PWM1			155
-> +#define SRST_COUNTER_PWM1		156
-> +#define SRST_I3C0			157
-> +#define SRST_I3C1			158
-> +
-> +#define SRST_P_DDR_MON_CH0		159
-> +#define SRST_P_DDR_BIU			160
-> +#define SRST_P_DDR_UPCTL_CH0		161
-> +#define SRST_TM_DDR_MON_CH0		162
-> +#define SRST_A_DDR_BIU			163
-> +#define SRST_DFI_CH0			164
-> +#define SRST_DDR_MON_CH0		165
-> +#define SRST_P_DDR_HWLP_CH0		166
-> +#define SRST_P_DDR_MON_CH1		167
-> +#define SRST_P_DDR_HWLP_CH1		168
-> +
-> +#define SRST_P_DDR_UPCTL_CH1		169
-> +#define SRST_TM_DDR_MON_CH1		170
-> +#define SRST_DFI_CH1			171
-> +#define SRST_A_DDR01_MSCH0		172
-> +#define SRST_A_DDR01_MSCH1		173
-> +#define SRST_DDR_MON_CH1		174
-> +#define SRST_DDR_SCRAMBLE_CH0		175
-> +#define SRST_DDR_SCRAMBLE_CH1		176
-> +#define SRST_P_AHB2APB			177
-> +#define SRST_H_AHB2APB			178
-> +#define SRST_H_DDR_BIU			179
-> +#define SRST_F_DDR_CM0_CORE		180
-> +
-> +#define SRST_P_DDR01_MSCH0		181
-> +#define SRST_P_DDR01_MSCH1		182
-> +#define SRST_DDR_TIMER0			183
-> +#define SRST_DDR_TIMER1			184
-> +#define SRST_T_WDT_DDR			185
-> +#define SRST_P_WDT			186
-> +#define SRST_P_TIMER			187
-> +#define SRST_T_DDR_CM0_JTAG		188
-> +#define SRST_P_DDR_GRF			189
-> +
-> +#define SRST_DDR_UPCTL_CH0		190
-> +#define SRST_A_DDR_UPCTL_0_CH0		191
-> +#define SRST_A_DDR_UPCTL_1_CH0		192
-> +#define SRST_A_DDR_UPCTL_2_CH0		193
-> +#define SRST_A_DDR_UPCTL_3_CH0		194
-> +#define SRST_A_DDR_UPCTL_4_CH0		195
-> +
-> +#define SRST_DDR_UPCTL_CH1		196
-> +#define SRST_A_DDR_UPCTL_0_CH1		197
-> +#define SRST_A_DDR_UPCTL_1_CH1		198
-> +#define SRST_A_DDR_UPCTL_2_CH1		199
-> +#define SRST_A_DDR_UPCTL_3_CH1		200
-> +#define SRST_A_DDR_UPCTL_4_CH1		201
-> +
-> +#define SRST_REF_PVTPLL_DDR		202
-> +#define SRST_P_PVTPLL_DDR		203
-> +
-> +#define SRST_A_RKNN0			204
-> +#define SRST_A_RKNN0_BIU		205
-> +#define SRST_L_RKNN0_BIU		206
-> +
-> +#define SRST_A_RKNN1			207
-> +#define SRST_A_RKNN1_BIU		208
-> +#define SRST_L_RKNN1_BIU		209
-> +
-> +#define SRST_NPU_DAP			210
-> +#define SRST_L_NPUSUBSYS_BIU		211
-> +#define SRST_P_NPUTOP_BIU		212
-> +#define SRST_P_NPU_TIMER		213
-> +#define SRST_NPUTIMER0			214
-> +#define SRST_NPUTIMER1			215
-> +#define SRST_P_NPU_WDT			216
-> +#define SRST_T_NPU_WDT			217
-> +
-> +#define SRST_A_RKNN_CBUF		218
-> +#define SRST_A_RVCORE0			219
-> +#define SRST_P_NPU_GRF			220
-> +#define SRST_P_PVTPLL_NPU		221
-> +#define SRST_NPU_PVTPLL			222
-> +#define SRST_H_NPU_CM0_BIU		223
-> +#define SRST_F_NPU_CM0_CORE		224
-> +#define SRST_T_NPU_CM0_JTAG		225
-> +#define SRST_A_RKNNTOP_BIU		226
-> +#define SRST_H_RKNN_CBUF		227
-> +#define SRST_H_RKNNTOP_BIU		228
-> +
-> +#define SRST_H_NVM_BIU			229
-> +#define SRST_A_NVM_BIU			230
-> +#define SRST_S_FSPI			231
-> +#define SRST_H_FSPI			232
-> +#define SRST_C_EMMC			233
-> +#define SRST_H_EMMC			234
-> +#define SRST_A_EMMC			235
-> +#define SRST_B_EMMC			236
-> +#define SRST_T_EMMC			237
-> +
-> +#define SRST_P_GRF			238
-> +#define SRST_P_PHP_BIU			239
-> +#define SRST_A_PHP_BIU			240
-> +#define SRST_P_PCIE0			241
-> +#define SRST_PCIE0_POWER_UP		242
-> +
-> +#define SRST_A_USB3OTG1			243
-> +#define SRST_A_MMU0			244
-> +#define SRST_A_SLV_MMU0			245
-> +#define SRST_A_MMU1			246
-> +
-> +#define SRST_A_SLV_MMU1			247
-> +#define SRST_P_PCIE1			248
-> +#define SRST_PCIE1_POWER_UP		249
-> +
-> +#define SRST_RXOOB0			250
-> +#define SRST_RXOOB1			251
-> +#define SRST_PMALIVE0			252
-> +#define SRST_PMALIVE1			253
-> +#define SRST_A_SATA0			254
-> +#define SRST_A_SATA1			255
-> +#define SRST_ASIC1			256
-> +#define SRST_ASIC0			257
-> +
-> +#define SRST_P_CSIDPHY1			258
-> +#define SRST_SCAN_CSIDPHY1		259
-> +
-> +#define SRST_P_SDGMAC_GRF		260
-> +#define SRST_P_SDGMAC_BIU		261
-> +#define SRST_A_SDGMAC_BIU		262
-> +#define SRST_H_SDGMAC_BIU		263
-> +#define SRST_A_GMAC0			264
-> +#define SRST_A_GMAC1			265
-> +#define SRST_P_GMAC0			266
-> +#define SRST_P_GMAC1			267
-> +#define SRST_H_SDIO			268
-> +
-> +#define SRST_H_SDMMC0			269
-> +#define SRST_S_FSPI1			270
-> +#define SRST_H_FSPI1			271
-> +#define SRST_A_DSMC_BIU			272
-> +#define SRST_A_DSMC			273
-> +#define SRST_P_DSMC			274
-> +#define SRST_H_HSGPIO			275
-> +#define SRST_HSGPIO			276
-> +#define SRST_A_HSGPIO			277
-> +
-> +#define SRST_H_RKVDEC			278
-> +#define SRST_H_RKVDEC_BIU		279
-> +#define SRST_A_RKVDEC_BIU		280
-> +#define SRST_RKVDEC_HEVC_CA		281
-> +#define SRST_RKVDEC_CORE		282
-> +
-> +#define SRST_A_USB_BIU			283
-> +#define SRST_P_USBUFS_BIU		284
-> +#define SRST_A_USB3OTG0			285
-> +#define SRST_A_UFS_BIU			286
-> +#define SRST_A_MMU2			287
-> +#define SRST_A_SLV_MMU2			288
-> +#define SRST_A_UFS_SYS			289
-> +
-> +#define SRST_A_UFS			290
-> +#define SRST_P_USBUFS_GRF		291
-> +#define SRST_P_UFS_GRF			292
-> +
-> +#define SRST_H_VPU_BIU			293
-> +#define SRST_A_JPEG_BIU			294
-> +#define SRST_A_RGA_BIU			295
-> +#define SRST_A_VDPP_BIU			296
-> +#define SRST_A_EBC_BIU			297
-> +#define SRST_H_RGA2E_0			298
-> +#define SRST_A_RGA2E_0			299
-> +#define SRST_CORE_RGA2E_0		300
-> +
-> +#define SRST_A_JPEG			301
-> +#define SRST_H_JPEG			302
-> +#define SRST_H_VDPP			303
-> +#define SRST_A_VDPP			304
-> +#define SRST_CORE_VDPP			305
-> +#define SRST_H_RGA2E_1			306
-> +#define SRST_A_RGA2E_1			307
-> +#define SRST_CORE_RGA2E_1		308
-> +#define SRST_H_EBC			309
-> +#define SRST_A_EBC			310
-> +#define SRST_D_EBC			311
-> +
-> +#define SRST_H_VEPU0_BIU		312
-> +#define SRST_A_VEPU0_BIU		313
-> +#define SRST_H_VEPU0			314
-> +#define SRST_A_VEPU0			315
-> +#define SRST_VEPU0_CORE			316
-> +
-> +#define SRST_A_VI_BIU			317
-> +#define SRST_H_VI_BIU			318
-> +#define SRST_P_VI_BIU			319
-> +#define SRST_D_VICAP			320
-> +#define SRST_A_VICAP			321
-> +#define SRST_H_VICAP			322
-> +#define SRST_ISP0			323
-> +#define SRST_ISP0_VICAP			324
-> +
-> +#define SRST_CORE_VPSS			325
-> +#define SRST_P_CSI_HOST_0		326
-> +#define SRST_P_CSI_HOST_1		327
-> +#define SRST_P_CSI_HOST_2		328
-> +#define SRST_P_CSI_HOST_3		329
-> +#define SRST_P_CSI_HOST_4		330
-> +
-> +#define SRST_CIFIN			331
-> +#define SRST_VICAP_I0CLK		332
-> +#define SRST_VICAP_I1CLK		333
-> +#define SRST_VICAP_I2CLK		334
-> +#define SRST_VICAP_I3CLK		335
-> +#define SRST_VICAP_I4CLK		336
-> +
-> +#define SRST_A_VOP_BIU			337
-> +#define SRST_A_VOP2_BIU			338
-> +#define SRST_H_VOP_BIU			339
-> +#define SRST_P_VOP_BIU			340
-> +#define SRST_H_VOP			341
-> +#define SRST_A_VOP			342
-> +#define SRST_D_VP0			343
-> +
-> +#define SRST_D_VP1			344
-> +#define SRST_D_VP2			345
-> +#define SRST_P_VOP2_BIU			346
-> +#define SRST_P_VOPGRF			347
-> +
-> +#define SRST_H_VO0_BIU			348
-> +#define SRST_P_VO0_BIU			349
-> +#define SRST_A_HDCP0_BIU		350
-> +#define SRST_P_VO0_GRF			351
-> +#define SRST_A_HDCP0			352
-> +#define SRST_H_HDCP0			353
-> +#define SRST_HDCP0			354
-> +
-> +#define SRST_P_DSIHOST0			355
-> +#define SRST_DSIHOST0			356
-> +#define SRST_P_HDMITX0			357
-> +#define SRST_HDMITX0_REF		358
-> +#define SRST_P_EDP0			359
-> +#define SRST_EDP0_24M			360
-> +
-> +#define SRST_M_SAI5_8CH			361
-> +#define SRST_H_SAI5_8CH			362
-> +#define SRST_M_SAI6_8CH			363
-> +#define SRST_H_SAI6_8CH			364
-> +#define SRST_H_SPDIF_TX2		365
-> +#define SRST_M_SPDIF_TX2		366
-> +#define SRST_H_SPDIF_RX2		367
-> +#define SRST_M_SPDIF_RX2		368
-> +
-> +#define SRST_H_SAI8_8CH			369
-> +#define SRST_M_SAI8_8CH			370
-> +
-> +#define SRST_H_VO1_BIU			371
-> +#define SRST_P_VO1_BIU			372
-> +#define SRST_M_SAI7_8CH			373
-> +#define SRST_H_SAI7_8CH			374
-> +#define SRST_H_SPDIF_TX3		375
-> +#define SRST_H_SPDIF_TX4		376
-> +#define SRST_H_SPDIF_TX5		377
-> +#define SRST_M_SPDIF_TX3		378
-> +
-> +#define SRST_DP0			379
-> +#define SRST_P_VO1_GRF			380
-> +#define SRST_A_HDCP1_BIU		381
-> +#define SRST_A_HDCP1			382
-> +#define SRST_H_HDCP1			383
-> +#define SRST_HDCP1			384
-> +#define SRST_H_SAI9_8CH			385
-> +#define SRST_M_SAI9_8CH			386
-> +#define SRST_M_SPDIF_TX4		387
-> +#define SRST_M_SPDIF_TX5		388
-> +
-> +#define SRST_GPU			389
-> +#define SRST_A_S_GPU_BIU		390
-> +#define SRST_A_M0_GPU_BIU		391
-> +#define SRST_P_GPU_BIU			392
-> +#define SRST_P_GPU_GRF			393
-> +#define SRST_GPU_PVTPLL			394
-> +#define SRST_P_PVTPLL_GPU		395
-> +
-> +#define SRST_A_CENTER_BIU		396
-> +#define SRST_A_DMA2DDR			397
-> +#define SRST_A_DDR_SHAREMEM		398
-> +#define SRST_A_DDR_SHAREMEM_BIU		399
-> +#define SRST_H_CENTER_BIU		400
-> +#define SRST_P_CENTER_GRF		401
-> +#define SRST_P_DMA2DDR			402
-> +#define SRST_P_SHAREMEM			403
-> +#define SRST_P_CENTER_BIU		404
-> +
-> +#define SRST_LINKSYM_HDMITXPHY0		405
-> +
-> +#define SRST_DP0_PIXELCLK		406
-> +#define SRST_PHY_DP0_TX			407
-> +#define SRST_DP1_PIXELCLK		408
-> +#define SRST_DP2_PIXELCLK		409
-> +
-> +#define SRST_H_VEPU1_BIU		410
-> +#define SRST_A_VEPU1_BIU		411
-> +#define SRST_H_VEPU1			412
-> +#define SRST_A_VEPU1			413
-> +#define SRST_VEPU1_CORE			414
-> +
-> +#define SRST_P_PHPPHY_CRU		415
-> +#define SRST_P_APB2ASB_SLV_CHIP_TOP	416
-> +#define SRST_P_PCIE2_COMBOPHY0		417
-> +#define SRST_P_PCIE2_COMBOPHY0_GRF	418
-> +#define SRST_P_PCIE2_COMBOPHY1		419
-> +#define SRST_P_PCIE2_COMBOPHY1_GRF	420
-> +
-> +#define SRST_PCIE0_PIPE_PHY		421
-> +#define SRST_PCIE1_PIPE_PHY		422
-> +
-> +#define SRST_H_CRYPTO_NS		423
-> +#define SRST_H_TRNG_NS			424
-> +#define SRST_P_OTPC_NS			425
-> +#define SRST_OTPC_NS			426
-> +
-> +#define SRST_P_HDPTX_GRF		427
-> +#define SRST_P_HDPTX_APB		428
-> +#define SRST_P_MIPI_DCPHY		429
-> +#define SRST_P_DCPHY_GRF		430
-> +#define SRST_P_BOT0_APB2ASB		431
-> +#define SRST_P_BOT1_APB2ASB		432
-> +#define SRST_USB2DEBUG			433
-> +#define SRST_P_CSIPHY_GRF		434
-> +#define SRST_P_CSIPHY			435
-> +#define SRST_P_USBPHY_GRF_0		436
-> +#define SRST_P_USBPHY_GRF_1		437
-> +#define SRST_P_USBDP_GRF		438
-> +#define SRST_P_USBDPPHY			439
-> +#define SRST_USBDP_COMBO_PHY_INIT	440
-> +
-> +#define SRST_USBDP_COMBO_PHY_CMN	441
-> +#define SRST_USBDP_COMBO_PHY_LANE	442
-> +#define SRST_USBDP_COMBO_PHY_PCS	443
-> +#define SRST_M_MIPI_DCPHY		444
-> +#define SRST_S_MIPI_DCPHY		445
-> +#define SRST_SCAN_CSIPHY		446
-> +#define SRST_P_VCCIO6_IOC		447
-> +#define SRST_OTGPHY_0			448
-> +#define SRST_OTGPHY_1			449
-> +#define SRST_HDPTX_INIT			450
-> +#define SRST_HDPTX_CMN			451
-> +#define SRST_HDPTX_LANE			452
-> +#define SRST_HDMITXHPD			453
-> +
-> +#define SRST_MPHY_INIT			454
-> +#define SRST_P_MPHY_GRF			455
-> +#define SRST_P_VCCIO7_IOC		456
-> +
-> +#define SRST_H_PMU1_BIU			457
-> +#define SRST_P_PMU1_NIU			458
-> +#define SRST_H_PMU_CM0_BIU		459
-> +#define SRST_PMU_CM0_CORE		460
-> +#define SRST_PMU_CM0_JTAG		461
-> +
-> +#define SRST_P_CRU_PMU1			462
-> +#define SRST_P_PMU1_GRF			463
-> +#define SRST_P_PMU1_IOC			464
-> +#define SRST_P_PMU1WDT			465
-> +#define SRST_T_PMU1WDT			466
-> +#define SRST_P_PMUTIMER			467
-> +#define SRST_PMUTIMER0			468
-> +#define SRST_PMUTIMER1			469
-> +#define SRST_P_PMU1PWM			470
-> +#define SRST_PMU1PWM			471
-> +
-> +#define SRST_P_I2C0			472
-> +#define SRST_I2C0			473
-> +#define SRST_S_UART1			474
-> +#define SRST_P_UART1			475
-> +#define SRST_PDM0			476
-> +#define SRST_H_PDM0			477
-> +
-> +#define SRST_M_PDM0			478
-> +#define SRST_H_VAD			479
-> +
-> +#define SRST_P_PMU0GRF			480
-> +#define SRST_P_PMU0IOC			481
-> +#define SRST_P_GPIO0			482
-> +#define SRST_DB_GPIO0			483
-> +
-> +#endif
-> --=20
-> 2.46.0
->=20
-
---VIQYeD6dApYMRM+e
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZr4ZwgAKCRB4tDGHoIJi
-0vyKAQC95qqlvsnFzrIQIzfC6Mj4r7ft8/GtpIm1p4KPx8KuRAEAlWqTERzeh0qk
-B6zVpZFQIq4gMqMTAHHxm2uFKDHQ4wA=
-=bv+o
------END PGP SIGNATURE-----
-
---VIQYeD6dApYMRM+e--
-
-
---===============5288071798743031792==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============5288071798743031792==--
-
+T24gVHVlLCBKdW4gMjUsIDIwMjQgYXQgMDQ6MTA6MzNQTSArMDUzMCwgQW5hbmQgTW9vbiB3cm90
+ZToKPiBSZWZhY3RvciB0aGUgcmVzZXQgY29udHJvbCBoYW5kbGluZyBpbiB0aGUgUm9ja2NoaXAg
+UENJZSBkcml2ZXIsCj4gaW50cm9kdWNpbmcgYSBtb3JlIHJvYnVzdCBhbmQgZWZmaWNpZW50IG1l
+dGhvZCBmb3IgYXNzZXJ0IGFuZAo+IGRlYXNzZXJ0IHJlc2V0IGNvbnRyb2xsZXIgdXNpbmcgcmVz
+ZXRfY29udHJvbF9idWxrKigpIEFQSS4gVXNpbmcgdGhlCj4gcmVzZXRfY29udHJvbF9idWxrIEFQ
+SXMsIHRoZSByZXNldCBoYW5kbGluZyBmb3IgdGhlIGNvcmUgY2xvY2tzIHJlc2V0Cj4gdW5pdCBi
+ZWNvbWVzIG11Y2ggc2ltcGxlci4KPiAKPiBBcyBwZXIgcm9ja2NoaXAgcmszMzk5IFRSTSBTT0ZU
+UlNUX0NPTjggc29mdCByZXNldCBjb250cm9sbGVyCj4gaGF2ZSBjbG9jayByZXNldCB1bml0IHZh
+bHVlIHNldCB0byAweDEgZm9yIGV4YW1wbGUgInBjaWVfcGlwZSIsCj4gInBjaWVfbWdtdF9zdGlj
+a3kiLCAicGNpZV9tZ210IiBhbmQgInBjaV9jb3JlIiwgaGVuY2UgZ3JvdXAgdGhlbiB1bmRlcgo+
+IG9uZSByZXNldCBidWxrIGNvbnRyb2xsZXIuCj4gCj4gV2hlcmUgYXMgInBjaWVfcG0iLCAicHJl
+c2V0bl9wY2llIiwgImFyZXNldG5fcGNpZSIgaGF2ZSByZXNldCB2YWx1ZQo+IHNldCB0byAweDAs
+IGhlbmNlIGdyb3VwIHRoZW0gdW5kZXIgcmVzZXQgY29udHJvbCBidWxrIGNvbnRyb2xsZXIuCj4g
+Cj4gU2lnbmVkLW9mZi1ieTogQW5hbmQgTW9vbiA8bGludXguYW1vb25AZ21haWwuY29tPgo+IC0t
+LQo+IHY0OiB1c2UgZGV2X2Vycl9wcm9iZSBpbiBlcnJvciBwYXRoLgo+IHYzOiBGaXggdHlwbyBp
+biBjb21taXQgbWVzc2FnZSwgZHJvcHBlZCByZXBvcnRlZCBieS4KPiB2MjogRml4IGNvbXBpbGF0
+aW9uIGVycm9yIHJlcG9ydGVkIGJ5IEludGVsIHRlc3Qgcm9ib3QKPiAgICAgZml4ZWQgY2hlY2tw
+YXRjaCB3YXJuaW5nCj4gLS0tCj4gIGRyaXZlcnMvcGNpL2NvbnRyb2xsZXIvcGNpZS1yb2NrY2hp
+cC5jIHwgMTQ5ICsrKysrLS0tLS0tLS0tLS0tLS0tLS0tLS0KPiAgZHJpdmVycy9wY2kvY29udHJv
+bGxlci9wY2llLXJvY2tjaGlwLmggfCAgMjUgKysrLS0KPiAgMiBmaWxlcyBjaGFuZ2VkLCA0NyBp
+bnNlcnRpb25zKCspLCAxMjcgZGVsZXRpb25zKC0pCj4gCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMv
+cGNpL2NvbnRyb2xsZXIvcGNpZS1yb2NrY2hpcC5jIGIvZHJpdmVycy9wY2kvY29udHJvbGxlci9w
+Y2llLXJvY2tjaGlwLmMKPiBpbmRleCA4MDQxMzU1MTE1MjguLjAyNDMwOGJiNmFjOCAxMDA2NDQK
+PiAtLS0gYS9kcml2ZXJzL3BjaS9jb250cm9sbGVyL3BjaWUtcm9ja2NoaXAuYwo+ICsrKyBiL2Ry
+aXZlcnMvcGNpL2NvbnRyb2xsZXIvcGNpZS1yb2NrY2hpcC5jCj4gQEAgLTY5LDU1ICs2OSwyMyBA
+QCBpbnQgcm9ja2NoaXBfcGNpZV9wYXJzZV9kdChzdHJ1Y3Qgcm9ja2NoaXBfcGNpZSAqcm9ja2No
+aXApCj4gIAlpZiAocm9ja2NoaXAtPmxpbmtfZ2VuIDwgMCB8fCByb2NrY2hpcC0+bGlua19nZW4g
+PiAyKQo+ICAJCXJvY2tjaGlwLT5saW5rX2dlbiA9IDI7Cj4gIAo+IC0Jcm9ja2NoaXAtPmNvcmVf
+cnN0ID0gZGV2bV9yZXNldF9jb250cm9sX2dldF9leGNsdXNpdmUoZGV2LCAiY29yZSIpOwo+IC0J
+aWYgKElTX0VSUihyb2NrY2hpcC0+Y29yZV9yc3QpKSB7Cj4gLQkJaWYgKFBUUl9FUlIocm9ja2No
+aXAtPmNvcmVfcnN0KSAhPSAtRVBST0JFX0RFRkVSKQo+IC0JCQlkZXZfZXJyKGRldiwgIm1pc3Np
+bmcgY29yZSByZXNldCBwcm9wZXJ0eSBpbiBub2RlXG4iKTsKPiAtCQlyZXR1cm4gUFRSX0VSUihy
+b2NrY2hpcC0+Y29yZV9yc3QpOwo+IC0JfQo+IC0KPiAtCXJvY2tjaGlwLT5tZ210X3JzdCA9IGRl
+dm1fcmVzZXRfY29udHJvbF9nZXRfZXhjbHVzaXZlKGRldiwgIm1nbXQiKTsKPiAtCWlmIChJU19F
+UlIocm9ja2NoaXAtPm1nbXRfcnN0KSkgewo+IC0JCWlmIChQVFJfRVJSKHJvY2tjaGlwLT5tZ210
+X3JzdCkgIT0gLUVQUk9CRV9ERUZFUikKPiAtCQkJZGV2X2VycihkZXYsICJtaXNzaW5nIG1nbXQg
+cmVzZXQgcHJvcGVydHkgaW4gbm9kZVxuIik7Cj4gLQkJcmV0dXJuIFBUUl9FUlIocm9ja2NoaXAt
+Pm1nbXRfcnN0KTsKPiAtCX0KPiAtCj4gLQlyb2NrY2hpcC0+bWdtdF9zdGlja3lfcnN0ID0gZGV2
+bV9yZXNldF9jb250cm9sX2dldF9leGNsdXNpdmUoZGV2LAo+IC0JCQkJCQkJCSJtZ210LXN0aWNr
+eSIpOwo+IC0JaWYgKElTX0VSUihyb2NrY2hpcC0+bWdtdF9zdGlja3lfcnN0KSkgewo+IC0JCWlm
+IChQVFJfRVJSKHJvY2tjaGlwLT5tZ210X3N0aWNreV9yc3QpICE9IC1FUFJPQkVfREVGRVIpCj4g
+LQkJCWRldl9lcnIoZGV2LCAibWlzc2luZyBtZ210LXN0aWNreSByZXNldCBwcm9wZXJ0eSBpbiBu
+b2RlXG4iKTsKPiAtCQlyZXR1cm4gUFRSX0VSUihyb2NrY2hpcC0+bWdtdF9zdGlja3lfcnN0KTsK
+PiAtCX0KPiAtCj4gLQlyb2NrY2hpcC0+cGlwZV9yc3QgPSBkZXZtX3Jlc2V0X2NvbnRyb2xfZ2V0
+X2V4Y2x1c2l2ZShkZXYsICJwaXBlIik7Cj4gLQlpZiAoSVNfRVJSKHJvY2tjaGlwLT5waXBlX3Jz
+dCkpIHsKPiAtCQlpZiAoUFRSX0VSUihyb2NrY2hpcC0+cGlwZV9yc3QpICE9IC1FUFJPQkVfREVG
+RVIpCj4gLQkJCWRldl9lcnIoZGV2LCAibWlzc2luZyBwaXBlIHJlc2V0IHByb3BlcnR5IGluIG5v
+ZGVcbiIpOwo+IC0JCXJldHVybiBQVFJfRVJSKHJvY2tjaGlwLT5waXBlX3JzdCk7Cj4gLQl9Cj4g
+Kwlmb3IgKGkgPSAwOyBpIDwgUk9DS0NISVBfTlVNX1BNX1JTVFM7IGkrKykKPiArCQlyb2NrY2hp
+cC0+cG1fcnN0c1tpXS5pZCA9IHJvY2tjaGlwX3BjaV9wbV9yc3RzW2ldOwo+ICAKPiAtCXJvY2tj
+aGlwLT5wbV9yc3QgPSBkZXZtX3Jlc2V0X2NvbnRyb2xfZ2V0X2V4Y2x1c2l2ZShkZXYsICJwbSIp
+Owo+IC0JaWYgKElTX0VSUihyb2NrY2hpcC0+cG1fcnN0KSkgewo+IC0JCWlmIChQVFJfRVJSKHJv
+Y2tjaGlwLT5wbV9yc3QpICE9IC1FUFJPQkVfREVGRVIpCj4gLQkJCWRldl9lcnIoZGV2LCAibWlz
+c2luZyBwbSByZXNldCBwcm9wZXJ0eSBpbiBub2RlXG4iKTsKPiAtCQlyZXR1cm4gUFRSX0VSUihy
+b2NrY2hpcC0+cG1fcnN0KTsKPiAtCX0KPiArCWVyciA9IGRldm1fcmVzZXRfY29udHJvbF9idWxr
+X2dldF9vcHRpb25hbF9leGNsdXNpdmUoZGV2LAo+ICsJCQkJCQkJICAgICBST0NLQ0hJUF9OVU1f
+UE1fUlNUUywKPiArCQkJCQkJCSAgICAgcm9ja2NoaXAtPnBtX3JzdHMpOwo+ICsJaWYgKGVycikK
+PiArCQlyZXR1cm4gZGV2X2Vycl9wcm9iZShkZXYsIGVyciwgImNhbm5vdCBnZXQgdGhlIHJlc2V0
+IGNvbnRyb2xcbiIpOwo+ICAKPiAtCXJvY2tjaGlwLT5wY2xrX3JzdCA9IGRldm1fcmVzZXRfY29u
+dHJvbF9nZXRfZXhjbHVzaXZlKGRldiwgInBjbGsiKTsKPiAtCWlmIChJU19FUlIocm9ja2NoaXAt
+PnBjbGtfcnN0KSkgewo+IC0JCWlmIChQVFJfRVJSKHJvY2tjaGlwLT5wY2xrX3JzdCkgIT0gLUVQ
+Uk9CRV9ERUZFUikKPiAtCQkJZGV2X2VycihkZXYsICJtaXNzaW5nIHBjbGsgcmVzZXQgcHJvcGVy
+dHkgaW4gbm9kZVxuIik7Cj4gLQkJcmV0dXJuIFBUUl9FUlIocm9ja2NoaXAtPnBjbGtfcnN0KTsK
+PiAtCX0KPiArCWZvciAoaSA9IDA7IGkgPCBST0NLQ0hJUF9OVU1fQ09SRV9SU1RTOyBpKyspCj4g
+KwkJcm9ja2NoaXAtPmNvcmVfcnN0c1tpXS5pZCA9IHJvY2tjaGlwX3BjaV9jb3JlX3JzdHNbaV07
+Cj4gIAo+IC0Jcm9ja2NoaXAtPmFjbGtfcnN0ID0gZGV2bV9yZXNldF9jb250cm9sX2dldF9leGNs
+dXNpdmUoZGV2LCAiYWNsayIpOwo+IC0JaWYgKElTX0VSUihyb2NrY2hpcC0+YWNsa19yc3QpKSB7
+Cj4gLQkJaWYgKFBUUl9FUlIocm9ja2NoaXAtPmFjbGtfcnN0KSAhPSAtRVBST0JFX0RFRkVSKQo+
+IC0JCQlkZXZfZXJyKGRldiwgIm1pc3NpbmcgYWNsayByZXNldCBwcm9wZXJ0eSBpbiBub2RlXG4i
+KTsKPiAtCQlyZXR1cm4gUFRSX0VSUihyb2NrY2hpcC0+YWNsa19yc3QpOwo+IC0JfQo+ICsJZXJy
+ID0gZGV2bV9yZXNldF9jb250cm9sX2J1bGtfZ2V0X29wdGlvbmFsX2V4Y2x1c2l2ZShkZXYsCj4g
+KwkJCQkJCQkgICAgIFJPQ0tDSElQX05VTV9DT1JFX1JTVFMsCj4gKwkJCQkJCQkgICAgIHJvY2tj
+aGlwLT5jb3JlX3JzdHMpOwo+ICsJaWYgKGVycikKPiArCQlyZXR1cm4gZGV2X2Vycl9wcm9iZShk
+ZXYsIGVyciwgImNhbm5vdCBnZXQgdGhlIHJlc2V0IGNvbnRyb2xcbiIpOwo+ICAKPiAgCWlmIChy
+b2NrY2hpcC0+aXNfcmMpIHsKPiAgCQlyb2NrY2hpcC0+ZXBfZ3BpbyA9IGRldm1fZ3Bpb2RfZ2V0
+X29wdGlvbmFsKGRldiwgImVwIiwKPiBAQCAtMTUwLDIzICsxMTgsMTAgQEAgaW50IHJvY2tjaGlw
+X3BjaWVfaW5pdF9wb3J0KHN0cnVjdCByb2NrY2hpcF9wY2llICpyb2NrY2hpcCkKPiAgCWludCBl
+cnIsIGk7Cj4gIAl1MzIgcmVnczsKPiAgCj4gLQllcnIgPSByZXNldF9jb250cm9sX2Fzc2VydChy
+b2NrY2hpcC0+YWNsa19yc3QpOwo+IC0JaWYgKGVycikgewo+IC0JCWRldl9lcnIoZGV2LCAiYXNz
+ZXJ0IGFjbGtfcnN0IGVyciAlZFxuIiwgZXJyKTsKPiAtCQlyZXR1cm4gZXJyOwo+IC0JfQo+IC0K
+PiAtCWVyciA9IHJlc2V0X2NvbnRyb2xfYXNzZXJ0KHJvY2tjaGlwLT5wY2xrX3JzdCk7Cj4gLQlp
+ZiAoZXJyKSB7Cj4gLQkJZGV2X2VycihkZXYsICJhc3NlcnQgcGNsa19yc3QgZXJyICVkXG4iLCBl
+cnIpOwo+IC0JCXJldHVybiBlcnI7Cj4gLQl9Cj4gLQo+IC0JZXJyID0gcmVzZXRfY29udHJvbF9h
+c3NlcnQocm9ja2NoaXAtPnBtX3JzdCk7Cj4gLQlpZiAoZXJyKSB7Cj4gLQkJZGV2X2VycihkZXYs
+ICJhc3NlcnQgcG1fcnN0IGVyciAlZFxuIiwgZXJyKTsKPiAtCQlyZXR1cm4gZXJyOwo+IC0JfQo+
+ICsJZXJyID0gcmVzZXRfY29udHJvbF9idWxrX2Fzc2VydChST0NLQ0hJUF9OVU1fUE1fUlNUUywK
+PiArCQkJCQlyb2NrY2hpcC0+cG1fcnN0cyk7Cj4gKwlpZiAoZXJyKQo+ICsJCXJldHVybiBkZXZf
+ZXJyX3Byb2JlKGRldiwgZXJyLCAicmVzZXQgYnVsayBhc3NlcnQgcG0gcmVzZXRcbiIpOwo+ICAK
+PiAgCWZvciAoaSA9IDA7IGkgPCBNQVhfTEFORV9OVU07IGkrKykgewo+ICAJCWVyciA9IHBoeV9p
+bml0KHJvY2tjaGlwLT5waHlzW2ldKTsKPiBAQCAtMTc2LDQ3ICsxMzEsMTcgQEAgaW50IHJvY2tj
+aGlwX3BjaWVfaW5pdF9wb3J0KHN0cnVjdCByb2NrY2hpcF9wY2llICpyb2NrY2hpcCkKPiAgCQl9
+Cj4gIAl9Cj4gIAo+IC0JZXJyID0gcmVzZXRfY29udHJvbF9hc3NlcnQocm9ja2NoaXAtPmNvcmVf
+cnN0KTsKPiAtCWlmIChlcnIpIHsKPiAtCQlkZXZfZXJyKGRldiwgImFzc2VydCBjb3JlX3JzdCBl
+cnIgJWRcbiIsIGVycik7Cj4gLQkJZ290byBlcnJfZXhpdF9waHk7Cj4gLQl9Cj4gLQo+IC0JZXJy
+ID0gcmVzZXRfY29udHJvbF9hc3NlcnQocm9ja2NoaXAtPm1nbXRfcnN0KTsKPiAtCWlmIChlcnIp
+IHsKPiAtCQlkZXZfZXJyKGRldiwgImFzc2VydCBtZ210X3JzdCBlcnIgJWRcbiIsIGVycik7Cj4g
+LQkJZ290byBlcnJfZXhpdF9waHk7Cj4gLQl9Cj4gLQo+IC0JZXJyID0gcmVzZXRfY29udHJvbF9h
+c3NlcnQocm9ja2NoaXAtPm1nbXRfc3RpY2t5X3JzdCk7Cj4gLQlpZiAoZXJyKSB7Cj4gLQkJZGV2
+X2VycihkZXYsICJhc3NlcnQgbWdtdF9zdGlja3lfcnN0IGVyciAlZFxuIiwgZXJyKTsKPiAtCQln
+b3RvIGVycl9leGl0X3BoeTsKPiAtCX0KPiAtCj4gLQllcnIgPSByZXNldF9jb250cm9sX2Fzc2Vy
+dChyb2NrY2hpcC0+cGlwZV9yc3QpOwo+IC0JaWYgKGVycikgewo+IC0JCWRldl9lcnIoZGV2LCAi
+YXNzZXJ0IHBpcGVfcnN0IGVyciAlZFxuIiwgZXJyKTsKPiAtCQlnb3RvIGVycl9leGl0X3BoeTsK
+PiAtCX0KPiArCWVyciA9IHJlc2V0X2NvbnRyb2xfYnVsa19hc3NlcnQoUk9DS0NISVBfTlVNX0NP
+UkVfUlNUUywKPiArCQkJCQlyb2NrY2hpcC0+Y29yZV9yc3RzKTsKPiArCWlmIChlcnIpCj4gKwkJ
+cmV0dXJuIGRldl9lcnJfcHJvYmUoZGV2LCBlcnIsICJyZXNldCBidWxrIGFzc2VydCBjb3JlIHJl
+c2V0XG4iKTsKPiAgCj4gIAl1ZGVsYXkoMTApOwo+ICAKPiAtCWVyciA9IHJlc2V0X2NvbnRyb2xf
+ZGVhc3NlcnQocm9ja2NoaXAtPnBtX3JzdCk7Cj4gLQlpZiAoZXJyKSB7Cj4gLQkJZGV2X2Vycihk
+ZXYsICJkZWFzc2VydCBwbV9yc3QgZXJyICVkXG4iLCBlcnIpOwo+IC0JCWdvdG8gZXJyX2V4aXRf
+cGh5Owo+IC0JfQo+IC0KPiAtCWVyciA9IHJlc2V0X2NvbnRyb2xfZGVhc3NlcnQocm9ja2NoaXAt
+PmFjbGtfcnN0KTsKPiAtCWlmIChlcnIpIHsKPiAtCQlkZXZfZXJyKGRldiwgImRlYXNzZXJ0IGFj
+bGtfcnN0IGVyciAlZFxuIiwgZXJyKTsKPiAtCQlnb3RvIGVycl9leGl0X3BoeTsKPiAtCX0KPiAt
+Cj4gLQllcnIgPSByZXNldF9jb250cm9sX2RlYXNzZXJ0KHJvY2tjaGlwLT5wY2xrX3JzdCk7Cj4g
+KwllcnIgPSByZXNldF9jb250cm9sX2J1bGtfZGVhc3NlcnQoUk9DS0NISVBfTlVNX1BNX1JTVFMs
+Cj4gKwkJCQkJICByb2NrY2hpcC0+cG1fcnN0cyk7Cj4gIAlpZiAoZXJyKSB7Cj4gLQkJZGV2X2Vy
+cihkZXYsICJkZWFzc2VydCBwY2xrX3JzdCBlcnIgJWRcbiIsIGVycik7Cj4gKwkJZGV2X2Vycihk
+ZXYsICJyZXNldCBidWxrIGRlYXNzZXJ0IHBtIGVyciAlZFxuIiwgZXJyKTsKPiAgCQlnb3RvIGVy
+cl9leGl0X3BoeTsKPiAgCX0KPiAgCj4gQEAgLTI1OSwzMSArMTg0LDE1IEBAIGludCByb2NrY2hp
+cF9wY2llX2luaXRfcG9ydChzdHJ1Y3Qgcm9ja2NoaXBfcGNpZSAqcm9ja2NoaXApCj4gIAkgKiBQ
+bGVhc2UgZG9uJ3QgcmVvcmRlciB0aGUgZGVhc3NlcnQgc2VxdWVuY2Ugb2YgdGhlIGZvbGxvd2lu
+Zwo+ICAJICogZm91ciByZXNldCBwaW5zLgo+ICAJICovCgpUaGUgY29tbWVudCBhYm92ZSBzYXlz
+IHRoYXQgdGhlIHJlc2V0cyBzaG91bGQgbm90IGJlIHJlb3JkZXJlZC4gQnV0IHlvdSBoYXZlCnJl
+b3JkZXJlZCB0aGUgcmVzZXRzLgoKLSBNYW5pCgo+IC0JZXJyID0gcmVzZXRfY29udHJvbF9kZWFz
+c2VydChyb2NrY2hpcC0+bWdtdF9zdGlja3lfcnN0KTsKPiAtCWlmIChlcnIpIHsKPiAtCQlkZXZf
+ZXJyKGRldiwgImRlYXNzZXJ0IG1nbXRfc3RpY2t5X3JzdCBlcnIgJWRcbiIsIGVycik7Cj4gLQkJ
+Z290byBlcnJfcG93ZXJfb2ZmX3BoeTsKPiAtCX0KPiAtCj4gLQllcnIgPSByZXNldF9jb250cm9s
+X2RlYXNzZXJ0KHJvY2tjaGlwLT5jb3JlX3JzdCk7Cj4gKwllcnIgPSByZXNldF9jb250cm9sX2J1
+bGtfZGVhc3NlcnQoUk9DS0NISVBfTlVNX0NPUkVfUlNUUywKPiArCQkJCQkgIHJvY2tjaGlwLT5j
+b3JlX3JzdHMpOwo+ICAJaWYgKGVycikgewo+IC0JCWRldl9lcnIoZGV2LCAiZGVhc3NlcnQgY29y
+ZV9yc3QgZXJyICVkXG4iLCBlcnIpOwo+IC0JCWdvdG8gZXJyX3Bvd2VyX29mZl9waHk7Cj4gLQl9
+Cj4gLQo+IC0JZXJyID0gcmVzZXRfY29udHJvbF9kZWFzc2VydChyb2NrY2hpcC0+bWdtdF9yc3Qp
+Owo+IC0JaWYgKGVycikgewo+IC0JCWRldl9lcnIoZGV2LCAiZGVhc3NlcnQgbWdtdF9yc3QgZXJy
+ICVkXG4iLCBlcnIpOwo+IC0JCWdvdG8gZXJyX3Bvd2VyX29mZl9waHk7Cj4gLQl9Cj4gLQo+IC0J
+ZXJyID0gcmVzZXRfY29udHJvbF9kZWFzc2VydChyb2NrY2hpcC0+cGlwZV9yc3QpOwo+IC0JaWYg
+KGVycikgewo+IC0JCWRldl9lcnIoZGV2LCAiZGVhc3NlcnQgcGlwZV9yc3QgZXJyICVkXG4iLCBl
+cnIpOwo+ICsJCWRldl9lcnIoZGV2LCAicmVzZXQgYnVsayBkZWFzc2VydCBjb3JlIGVyciAlZFxu
+IiwgZXJyKTsKPiAgCQlnb3RvIGVycl9wb3dlcl9vZmZfcGh5Owo+ICAJfQo+ICAKPiAgCXJldHVy
+biAwOwo+ICsKPiAgZXJyX3Bvd2VyX29mZl9waHk6Cj4gIAl3aGlsZSAoaS0tKQo+ICAJCXBoeV9w
+b3dlcl9vZmYocm9ja2NoaXAtPnBoeXNbaV0pOwo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL3BjaS9j
+b250cm9sbGVyL3BjaWUtcm9ja2NoaXAuaCBiL2RyaXZlcnMvcGNpL2NvbnRyb2xsZXIvcGNpZS1y
+b2NrY2hpcC5oCj4gaW5kZXggNzIzNDZlMTdlNDVlLi4yN2U5NTFiNDFiODAgMTAwNjQ0Cj4gLS0t
+IGEvZHJpdmVycy9wY2kvY29udHJvbGxlci9wY2llLXJvY2tjaGlwLmgKPiArKysgYi9kcml2ZXJz
+L3BjaS9jb250cm9sbGVyL3BjaWUtcm9ja2NoaXAuaAo+IEBAIC0xNSw2ICsxNSw3IEBACj4gICNp
+bmNsdWRlIDxsaW51eC9rZXJuZWwuaD4KPiAgI2luY2x1ZGUgPGxpbnV4L3BjaS5oPgo+ICAjaW5j
+bHVkZSA8bGludXgvcGNpLWVjYW0uaD4KPiArI2luY2x1ZGUgPGxpbnV4L3Jlc2V0Lmg+Cj4gIAo+
+ICAvKgo+ICAgKiBUaGUgdXBwZXIgMTYgYml0cyBvZiBQQ0lFX0NMSUVOVF9DT05GSUcgYXJlIGEg
+d3JpdGUgbWFzayBmb3IgdGhlIGxvd2VyIDE2Cj4gQEAgLTI4OSw2ICsyOTAsOCBAQAo+ICAJCSBS
+T0NLQ0hJUF9QQ0lFX0NPUkVfRVBfRlVOQ19CQVJfQ0ZHX0JBUl9DVFJMX01BU0soYikpCj4gIAo+
+ICAjZGVmaW5lIFJPQ0tDSElQX05VTV9DTEtTCUFSUkFZX1NJWkUocm9ja2NoaXBfcGNpX2Nsa3Mp
+Cj4gKyNkZWZpbmUgUk9DS0NISVBfTlVNX1BNX1JTVFMJQVJSQVlfU0laRShyb2NrY2hpcF9wY2lf
+cG1fcnN0cykKPiArI2RlZmluZSBST0NLQ0hJUF9OVU1fQ09SRV9SU1RTCUFSUkFZX1NJWkUocm9j
+a2NoaXBfcGNpX2NvcmVfcnN0cykKPiAgCj4gIHN0YXRpYyBjb25zdCBjaGFyICogY29uc3Qgcm9j
+a2NoaXBfcGNpX2Nsa3NbXSA9IHsKPiAgCSJhY2xrIiwKPiBAQCAtMjk3LDE4ICszMDAsMjYgQEAg
+c3RhdGljIGNvbnN0IGNoYXIgKiBjb25zdCByb2NrY2hpcF9wY2lfY2xrc1tdID0gewo+ICAJInBt
+IiwKPiAgfTsKPiAgCj4gK3N0YXRpYyBjb25zdCBjaGFyICogY29uc3Qgcm9ja2NoaXBfcGNpX3Bt
+X3JzdHNbXSA9IHsKPiArCSJwbSIsCj4gKwkicGNsayIsCj4gKwkiYWNsayIsCj4gK307Cj4gKwo+
+ICtzdGF0aWMgY29uc3QgY2hhciAqIGNvbnN0IHJvY2tjaGlwX3BjaV9jb3JlX3JzdHNbXSA9IHsK
+PiArCSJjb3JlIiwKPiArCSJtZ210IiwKPiArCSJtZ210LXN0aWNreSIsCj4gKwkicGlwZSIsCj4g
+K307Cj4gKwo+ICBzdHJ1Y3Qgcm9ja2NoaXBfcGNpZSB7Cj4gIAl2b2lkCV9faW9tZW0gKnJlZ19i
+YXNlOwkJLyogRFQgYXhpLWJhc2UgKi8KPiAgCXZvaWQJX19pb21lbSAqYXBiX2Jhc2U7CQkvKiBE
+VCBhcGItYmFzZSAqLwo+ICAJYm9vbCAgICBsZWdhY3lfcGh5Owo+ICAJc3RydWN0ICBwaHkgKnBo
+eXNbTUFYX0xBTkVfTlVNXTsKPiAtCXN0cnVjdAlyZXNldF9jb250cm9sICpjb3JlX3JzdDsKPiAt
+CXN0cnVjdAlyZXNldF9jb250cm9sICptZ210X3JzdDsKPiAtCXN0cnVjdAlyZXNldF9jb250cm9s
+ICptZ210X3N0aWNreV9yc3Q7Cj4gLQlzdHJ1Y3QJcmVzZXRfY29udHJvbCAqcGlwZV9yc3Q7Cj4g
+LQlzdHJ1Y3QJcmVzZXRfY29udHJvbCAqcG1fcnN0Owo+IC0Jc3RydWN0CXJlc2V0X2NvbnRyb2wg
+KmFjbGtfcnN0Owo+IC0Jc3RydWN0CXJlc2V0X2NvbnRyb2wgKnBjbGtfcnN0Owo+ICsJc3RydWN0
+ICByZXNldF9jb250cm9sX2J1bGtfZGF0YSBwbV9yc3RzW1JPQ0tDSElQX05VTV9QTV9SU1RTXTsK
+PiArCXN0cnVjdCAgcmVzZXRfY29udHJvbF9idWxrX2RhdGEgY29yZV9yc3RzW1JPQ0tDSElQX05V
+TV9DT1JFX1JTVFNdOwo+ICAJc3RydWN0ICBjbGtfYnVsa19kYXRhIGNsa3NbUk9DS0NISVBfTlVN
+X0NMS1NdOwo+ICAJc3RydWN0CXJlZ3VsYXRvciAqdnBjaWUxMnY7IC8qIDEyViBwb3dlciBzdXBw
+bHkgKi8KPiAgCXN0cnVjdAlyZWd1bGF0b3IgKnZwY2llM3YzOyAvKiAzLjNWIHBvd2VyIHN1cHBs
+eSAqLwo+IC0tIAo+IDIuNDQuMAo+IAo+IAoKLS0gCuCuruCuo+Cuv+CuteCuo+CvjeCuo+CuqeCv
+jSDgrprgrqTgrr7grprgrr/grrXgrq7gr40KCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2Nr
+Y2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxt
+YW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
