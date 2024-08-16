@@ -4,77 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 95EC4C3DA4A
-	for <linux-rockchip@archiver.kernel.org>; Fri, 16 Aug 2024 11:29:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 21045C3DA4A
+	for <linux-rockchip@archiver.kernel.org>; Fri, 16 Aug 2024 11:58:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=gVjKjC3I0RE4LsK4WsmYPqLARP8bFGOV8wDzyXvlvQc=; b=VGBU99G7RMGWdi
-	8HB1dL+tVR4VJ0TtUtsGVKKIJjjwtZ9E9vJTekO44yjFIrhqwoF1Men6/47pbbRFKQ58osli+vSzN
-	WFrqCuRK+H1HzEMG27OegVGqRiSHe3cafPAyQKOrdssb67lu3gyizbHcxLVeC9pGAaw2RovPQ2GmS
-	7LhYBdsyKCyNCStWZo96WBNl7f2o33xGlZQ3TAyGY/AUKjqCSR9wpHMJFB846IN4b2/MWA812ZSEF
-	fboPMQvOVaHOPJGFen4ZzFlO3J01pFFKnT1gnQ8L0wxI4c2BrRMpX2frL7D3FuNgWg4Ux2GNCSbcM
-	Ij+zFagYsvQ98g02Ey+Q==;
+	List-Owner; bh=H3USC1htYx32wrTLZYSBj9JSdHxxtPzgL9BtlIN1Xfc=; b=h34r373bNjYFyI
+	sRJEMj0JQvGjjBeZgMZNmqHOk+XsRvzwW9I/jUiZR0Vr2PwrTYBRNlUht8Jlp87L39WK6jpYdgyva
+	+UAnGwmfpe/SCCKEZES+yopl9qnwo6qVwb8mRiD+tFdYnPxEe9HdZmvzHqFcZ39+peBbXU+qFY1D7
+	LANtlM17pDQz7kmOLVrIFdztcUHH1rZ+58Fj0/aDOK+N6nyq7NmAfgYnO64l44lSk5OK4Xb4bwfOi
+	0M48NsrvmvdzHtyGVJoiyNKACV5Jvh0rE6IRbztbxSQ27pVPJ8LGQ2Ek0UzO1cnrSfLiwhYNo0weV
+	01DDeZdm0CyZQoNNEkkQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sev9H-0000000ClZO-2AnV;
-	Fri, 16 Aug 2024 11:29:39 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1sevbF-0000000CokR-3b35;
+	Fri, 16 Aug 2024 11:58:33 +0000
+Received: from smtpbgbr2.qq.com ([54.207.22.56])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sev9G-0000000ClZB-0NFc
-	for linux-rockchip@bombadil.infradead.org;
-	Fri, 16 Aug 2024 11:29:38 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Type:Content-Transfer-Encoding
-	:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=dh13Yg5RYcx8fuw068Q03jh3AT3EGjbX//VB+8LRuW4=; b=Xf8lsuuWMPi/5NS46uFtbh4r3z
-	n9BKvUROHAYN7hzEi2/O7HuQMKm1MvtI55wZ0bhjnQc0z6eKT4bL0FtI9X5KorYgMYTJtZrhURWSF
-	ZZnB4Z0Vj6e9xuxRYISMNWzoYWClynKByPy3isC5U96Sx3lHc37x/AXj/0+WKzw250GNRJPfBjHpV
-	0zT8LvFUI3qxdNTQTi//U3gyWtBqFftbpSITFsiKz3ZGc4POlOjvAjVz7FQJoQcYc81xrNnSraEWC
-	tDQpmmiuKznQWd3R05I3D73meiz/UMyYZ/c7SpVOuSMvyBN3oR6VOol2BVvEI0Vz8dox+pi23e+ve
-	Y+FbShEQ==;
-Received: from gloria.sntech.de ([185.11.138.130])
-	by desiato.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sev9C-00000008dXY-2Ecj
+	id 1sevbC-0000000CohJ-2dEn
 	for linux-rockchip@lists.infradead.org;
-	Fri, 16 Aug 2024 11:29:36 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
-	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=dh13Yg5RYcx8fuw068Q03jh3AT3EGjbX//VB+8LRuW4=; b=TB5pwUcRTqa2lUVT4oHBHm+nzp
-	ybhVfTidmgvX4xw2Jf0FPnEboszAtISiaGv4eCV1izR7bWWhFcfeyLHBXDfIN5e35AdqxKFa1hwW/
-	o1yJS4reNbzoh1tlDEi0BRW/3mjANmnrqD/l7oEsbRNGCeRiLTvpcfSCXHnh96p1iw8o2F0qV72bg
-	FT/0Tm/C0pfL9AaIOBpZnujax7YHSvpKSYC4/0SwjfSC8KbUN7+tO4ZRrcFiCnkbZ1RQwEP7OqBnJ
-	lZqvyZCRpI8VZD/y0oGqhla9o74Gnj1iKIKF0Qfwmi7qlc/x6y7U9q3axLiHyOAMXMgPZM6hukbWE
-	ptuXJzQQ==;
-Received: from i53875a9f.versanet.de ([83.135.90.159] helo=diego.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1sev96-000182-VD; Fri, 16 Aug 2024 13:29:29 +0200
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: Krzysztof Kozlowski <krzk@kernel.org>, FUKAUMI Naoki <naoki@radxa.com>
-Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
- catalin.marinas@arm.com, will@kernel.org, devicetree@vger.kernel.org,
- linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH 1/2] arm64: defconfig: add CONFIG_LEDS_PWM_MULTICOLOR
-Date: Fri, 16 Aug 2024 13:29:27 +0200
-Message-ID: <1894793.tdWV9SEqCh@diego>
-In-Reply-To: <7AA0A63882CF1421+db730266-394c-4823-afa6-8595d40daa18@radxa.com>
-References: <20240816023243.487-1-naoki@radxa.com>
- <a6cf0764-508d-4929-9252-c9fb7567e3ee@kernel.org>
- <7AA0A63882CF1421+db730266-394c-4823-afa6-8595d40daa18@radxa.com>
+	Fri, 16 Aug 2024 11:58:32 +0000
+X-QQ-mid: bizesmtp87t1723809479tkg7y7fb
+X-QQ-Originating-IP: gQekxQ1rJdkb+DwrsrVnuCxALPpM7BB1ElFJNJZjVm4=
+Received: from [192.168.159.131] ( [106.150.157.243])
+	by bizesmtp.qq.com (ESMTP) with 
+	id ; Fri, 16 Aug 2024 19:57:56 +0800 (CST)
+X-QQ-SSF: 0000000000000000000000000000000
+X-QQ-GoodBg: 0
+X-BIZMAIL-ID: 14912246979607843899
+Message-ID: <5667DC6446CBC344+3d442915-f28d-4d50-85e3-3863e3c7092a@radxa.com>
+Date: Fri, 16 Aug 2024 20:57:56 +0900
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] arm64: dts: rockchip: use "pwm-leds" for multicolor PWM
+ LEDs on Radxa E25
+To: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>
+Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
+ devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org
+References: <20240816110402.840-1-naoki@radxa.com> <2335200.ElGaqSPkdT@diego>
+Content-Language: en-US
+From: FUKAUMI Naoki <naoki@radxa.com>
+In-Reply-To: <2335200.ElGaqSPkdT@diego>
+X-QQ-SENDSIZE: 520
+Feedback-ID: bizesmtp:radxa.com:qybglogicsvrgz:qybglogicsvrgz8a-1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240816_122934_820633_6F4EAA8C 
-X-CRM114-Status: GOOD (  14.38  )
+X-CRM114-CacheID: sfid-20240816_045831_540377_D6C01DD3 
+X-CRM114-Status: GOOD (  16.33  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,52 +64,61 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi,
-
-Am Freitag, 16. August 2024, 13:06:37 CEST schrieb FUKAUMI Naoki:
-> thank you very much for your review.
-> 
-> but, I decided not to use "pwm-leds-multicolor" for Radxa E25.
-> please ignore this patch series.
-
-What Krzysztof meant was probably more in line of that a commit message
-should not explain what the commit does, because that can be seen in the
-code.
-
-Instead the commit message should explain why that change is needed.
-
-
-> really sorry.
-> 
-> Best regards,
-> 
-> --
-> FUKAUMI Naoki
-> Radxa Computer (Shenzhen) Co., Ltd.
-> 
-> On 8/16/24 14:18, Krzysztof Kozlowski wrote:
-> > On 16/08/2024 04:32, FUKAUMI Naoki wrote:
-> >> enable "pwm-leds-multicolor" driver.
-> > 
-> > Why?
-> > 
-> > Best regards,
-> > Krzysztof
-> > 
-> > 
-> 
-> 
-
-
-
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGksCgpPbiA4LzE2LzI0IDIwOjI2LCBIZWlrbyBTdMO8Ym5lciB3cm90ZToKPiBBbSBGcmVpdGFn
+LCAxNi4gQXVndXN0IDIwMjQsIDEzOjA0OjAyIENFU1Qgc2NocmllYiBGVUtBVU1JIE5hb2tpOgo+
+PiB0byBtYWtlIG11bHRpY29sb3IgUFdNIExFRHMgYmVoYXZpb3IgbW9yZSBjb25zaXN0ZW50IHdp
+dGggdmVuZG9yCj4+IGtlcm5lbFsxXSwgdXNlICJwd20tbGVkcyIgZm9yIGl0IG9uIFJhZHhhIEUy
+NS4KPiAKPiBzb3JyeSwgYnV0IHRoYXQgaXMgZGVmaW5pdGx5IG5vdCBhIHZhbGlkIHJlYXNvbi4K
+Ckkgc2VlLiBJJ2xsIG5vdCBjaGFuZ2UgaXQuCgo+IEEgZGV2aWNldHJlZSBkb2VzIGRlc2NyaWJl
+IGFjdHVhbCBoYXJkd2FyZSBhbmQgaXMgbm90IGEgc3BhY2UgZm9yCj4gY29uZmlndXJhdGlvbiBj
+aG9pY2VzLiBTbyB0aGF0IHdob2xlIG5vdGlvbiB0byAibWF0Y2ggYSBrZXJuZWwiCj4gaXMgbm90
+IGNvcnJlY3QuCj4gCj4gTG9va2luZyBhdAo+IGh0dHBzOi8vd2lraS5yYWR4YS5jb20vUm9jazMv
+Q00vQ00zSS9FMjUvZ2V0dGluZ19zdGFydGVkCj4gdGhlIHNwZWNpZmljYXRpb24gdGFibGUgY2xl
+YXJseSBkZXNpZ25hdGVzIHRoZSBib2FyZCdzIExFRCBhcwo+ICJSR0IgTEVEIiAtIHNvIG9uZSBM
+RUQgYW5kIG11bHRpY29sb3IgLgoKSSB1bmRlcnN0YW5kIGZvbGxvd2luZyBiZWhhdmlvciBpcyBu
+b3QgcG9zc2libGUgb24gbWFpbmxpbmUuCgpodHRwczovL2dpdGh1Yi5jb20vcmFkeGEtcGtnL3Jz
+ZXR1cC9ibG9iL21haW4vY29uZmlnLzAwLXJnYjAtcmFpbmJvdy5jb25mCgp0aGlzIGlzIG5vdCB3
+aGF0IHdlKFJhZHhhKSB3YW50LCBidXQgd2UgbmVlZCB0byBmb2xsb3cgdGhlIHJ1bGUuCgooYnR3
+IHdpa2kucmFkeGEuY29tIGlzIG91dGRhdGVkLCBpdCdzIG5vdCB1c2VkIGFueW1vcmUpCgpCZXN0
+IHJlZ2FyZHMsCgotLQpGVUtBVU1JIE5hb2tpClJhZHhhIENvbXB1dGVyIChTaGVuemhlbikgQ28u
+LCBMdGQuCgo+IEhlaWtvCj4gCj4gCj4+IFsxXSBodHRwczovL2dpdGh1Yi5jb20vcmFkeGEva2Vy
+bmVsL2Jsb2IvbGludXgtNS4xMC1nZW4tcmtyNC4xL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2No
+aXAvcmszNTY4LXJhZHhhLWUyNS5kdHMjTDEwMC1MMTIxCj4+Cj4+IEZpeGVzOiAyYmYyZjRkOWY2
+NzMgKCJhcm02NDogZHRzOiByb2NrY2hpcDogQWRkIFJhZHhhIENNM0kgRTI1IikKPj4gU2lnbmVk
+LW9mZi1ieTogRlVLQVVNSSBOYW9raSA8bmFva2lAcmFkeGEuY29tPgo+PiAtLS0KPj4gICAuLi4v
+Ym9vdC9kdHMvcm9ja2NoaXAvcmszNTY4LXJhZHhhLWUyNS5kdHMgICAgfCAzNiArKysrKysrKysr
+LS0tLS0tLS0tCj4+ICAgMSBmaWxlIGNoYW5nZWQsIDIwIGluc2VydGlvbnMoKyksIDE2IGRlbGV0
+aW9ucygtKQo+Pgo+PiBkaWZmIC0tZ2l0IGEvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9y
+azM1NjgtcmFkeGEtZTI1LmR0cyBiL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszNTY4
+LXJhZHhhLWUyNS5kdHMKPj4gaW5kZXggNzJhZDc0YzM4YTJiLi4wYjUyN2Y2N2JkYmQgMTAwNjQ0
+Cj4+IC0tLSBhL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszNTY4LXJhZHhhLWUyNS5k
+dHMKPj4gKysrIGIvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazM1NjgtcmFkeGEtZTI1
+LmR0cwo+PiBAQCAtMTIsMjYgKzEyLDMwIEBAIGFsaWFzZXMgewo+PiAgIAl9Owo+PiAgIAo+PiAg
+IAlwd20tbGVkcyB7Cj4+IC0JCWNvbXBhdGlibGUgPSAicHdtLWxlZHMtbXVsdGljb2xvciI7Cj4+
+ICsJCWNvbXBhdGlibGUgPSAicHdtLWxlZHMiOwo+PiAgIAo+PiAtCQltdWx0aS1sZWQgewo+PiAt
+CQkJY29sb3IgPSA8TEVEX0NPTE9SX0lEX1JHQj47Cj4+ICsJCWxlZC1yZWQgewo+PiArCQkJY29s
+b3IgPSA8TEVEX0NPTE9SX0lEX1JFRD47Cj4+ICsJCQlkZWZhdWx0LXN0YXRlID0gIm9uIjsKPj4g
+KwkJCWZ1bmN0aW9uID0gTEVEX0ZVTkNUSU9OX1NUQVRVUzsKPj4gICAJCQltYXgtYnJpZ2h0bmVz
+cyA9IDwyNTU+Owo+PiArCQkJcHdtcyA9IDwmcHdtMSAwIDEwMDAwMDAgMD47Cj4+ICsJCX07Cj4+
+ICAgCj4+IC0JCQlsZWQtcmVkIHsKPj4gLQkJCQljb2xvciA9IDxMRURfQ09MT1JfSURfUkVEPjsK
+Pj4gLQkJCQlwd21zID0gPCZwd20xIDAgMTAwMDAwMCAwPjsKPj4gLQkJCX07Cj4+IC0KPj4gLQkJ
+CWxlZC1ncmVlbiB7Cj4+IC0JCQkJY29sb3IgPSA8TEVEX0NPTE9SX0lEX0dSRUVOPjsKPj4gLQkJ
+CQlwd21zID0gPCZwd20yIDAgMTAwMDAwMCAwPjsKPj4gLQkJCX07Cj4+ICsJCWxlZC1ncmVlbiB7
+Cj4+ICsJCQljb2xvciA9IDxMRURfQ09MT1JfSURfR1JFRU4+Owo+PiArCQkJZGVmYXVsdC1zdGF0
+ZSA9ICJvbiI7Cj4+ICsJCQlmdW5jdGlvbiA9IExFRF9GVU5DVElPTl9TVEFUVVM7Cj4+ICsJCQlt
+YXgtYnJpZ2h0bmVzcyA9IDwyNTU+Owo+PiArCQkJcHdtcyA9IDwmcHdtMiAwIDEwMDAwMDAgMD47
+Cj4+ICsJCX07Cj4+ICAgCj4+IC0JCQlsZWQtYmx1ZSB7Cj4+IC0JCQkJY29sb3IgPSA8TEVEX0NP
+TE9SX0lEX0JMVUU+Owo+PiAtCQkJCXB3bXMgPSA8JnB3bTEyIDAgMTAwMDAwMCAwPjsKPj4gLQkJ
+CX07Cj4+ICsJCWxlZC1ibHVlIHsKPj4gKwkJCWNvbG9yID0gPExFRF9DT0xPUl9JRF9CTFVFPjsK
+Pj4gKwkJCWRlZmF1bHQtc3RhdGUgPSAib24iOwo+PiArCQkJZnVuY3Rpb24gPSBMRURfRlVOQ1RJ
+T05fU1RBVFVTOwo+PiArCQkJbWF4LWJyaWdodG5lc3MgPSA8MjU1PjsKPj4gKwkJCXB3bXMgPSA8
+JnB3bTEyIDAgMTAwMDAwMCAwPjsKPj4gICAJCX07Cj4+ICAgCX07Cj4+ICAgCj4+Cj4gCj4gCj4g
+Cj4gCj4gCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpM
+aW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFk
+Lm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJv
+Y2tjaGlwCg==
