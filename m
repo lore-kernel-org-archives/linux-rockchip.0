@@ -4,61 +4,46 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B0960C3DA4A
-	for <linux-rockchip@archiver.kernel.org>; Fri, 16 Aug 2024 10:17:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C358AC531DC
+	for <linux-rockchip@archiver.kernel.org>; Fri, 16 Aug 2024 11:06:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:Message-ID:Date
-	:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
-	List-Owner; bh=CA4HSsCm/rAKTcmsGjEqwaT7W7JzruHbMiG50RxFsTA=; b=M6AGF6mO1a/CBL
-	8mVDRQEtQQ1TJHDN90mpRGV/QuVzJl4X2stN9oRkAyx6h+nFo0UhY42Zg6p1xwDwGEou5lK119GXW
-	XAxEUrkOHZcVwfUHOPmoylZpn9VLL3Ex9WVbkLjfmXrkXLZ0a1BL5cm6csdNicxLcGIiHniZLDRx8
-	7zUkURpKuim1dURFFnBPG9wXYtf+PyTLmLy/gkxmShbxdN1KapYLHUxB05tinXXZ81HJhBUH42Dun
-	ches7v5kMVyVXVxtcY6gKqz89MkcNOVb6PKxbO4K46HHSOdIHQQgjTuTjZPlGaciVcDHZczpmsS8c
-	dn30d1uk7e4Z0XfVnmaQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=pXUhEXETHS6DUZxSQ4k7AUuPfRVbS2RKO7edhhfKjz8=; b=QliIWZM+HUAR+x
+	32aAix7vqsILQFu7JXlZg3zxarCjuXgBX+/lHc5VO74Qdr4XndhunMIkm2n9P8kAtjyrhC7zwROk5
+	yxldqTXSivvzlPhXA4WTzDJku9WQCWEOOrR303l8BkKvuBFl3k+onmbxO0hk+DxTfUV8u8UXsufE8
+	AGV5+Y2V2fEku+Nvc6KKhe0rnkm6vx214MaGrRt2HXn2QcMwCpcN+FQ/S2O6APkrwQJiRA1xmZuY5
+	di/cMWar8W3FaS14L4/R1aYIKHolPW7w0guxD6sbPHpWA6i4FoPmY6uVcM7EDzF1f17a5DGgWTIkO
+	82oDVX/upweyNq1KI/TQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1seu1Z-0000000CZ1o-3KPF;
-	Fri, 16 Aug 2024 10:17:37 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1seumO-0000000Ch2A-1Cds;
+	Fri, 16 Aug 2024 11:06:00 +0000
+Received: from sakura.naobsd.org ([160.16.200.221] helo=mail.naobsd.org)
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1seu0u-0000000CYsR-1mwT;
-	Fri, 16 Aug 2024 10:16:57 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	References:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:In-Reply-To:List-Id:List-Help:List-Unsubscribe:
-	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=1srJQU9Lp6EXV/TNHEJRaeCIzq3POh/wVkC52KKLehw=; b=LtSknKU6PVF+UNOREKxl+Fdrhv
-	aUDPr8I0BJhIZJ8DHgpwTASmCUS4B+wu8mAQ9PC0iie9WRb4KMyxO7b9uQ8MDwHokGeLczF/kbggL
-	s2+TqXK2OOAMAUe0SX0rEg2cIdWYZWkLUgtQDk/S2GB2qkxOwV1Y8MmJUSddbMSkpaMtBFIZv22WZ
-	Imj9fvkx3boMFdA6MFjOqI8zayDdiQ57rJbAGNZlF6piK/tB9wcFcuVti+mMGMDfd8/Sw5UPUQ7Z5
-	xT+oG/a6B4hGZa3VDYeAVupo/V++pzLXqg2JEo3qmN0JRXW5XcVm+8OL532zVpBBels9DoQrcG8ez
-	gloZEYtg==;
-Received: from i53875a9f.versanet.de ([83.135.90.159] helo=diego.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1seu0m-0000Ra-Ag; Fri, 16 Aug 2024 12:16:48 +0200
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: Dragan Simic <dsimic@manjaro.org>,
- Sergey 'Jin' Bostandzhyan <jin@mediatomb.cc>
+	id 1seukn-0000000Cgid-3k7K
+	for linux-rockchip@lists.infradead.org;
+	Fri, 16 Aug 2024 11:04:24 +0000
+Received: from secure.fukaumi.org ([10.0.0.2])
+	by mail.naobsd.org (8.14.4/8.14.4/Debian-4.1ubuntu1.1) with ESMTP id 47GB4B0L025184;
+	Fri, 16 Aug 2024 20:04:12 +0900
+From: FUKAUMI Naoki <naoki@radxa.com>
+To: heiko@sntech.de
 Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v3 3/3] arm64: dts: rockchip: improve eMMC speed on NanoPi R2S
- Plus
-Date: Fri, 16 Aug 2024 12:16:47 +0200
-Message-ID: <2743124.mvXUDI8C0e@diego>
-References: <20240814170048.23816-1-jin@mediatomb.cc>
- <002107db3dcf3f1d1d1a767f049b5b79@manjaro.org>
+        devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org,
+        FUKAUMI Naoki <naoki@radxa.com>
+Subject: [PATCH] arm64: dts: rockchip: use "pwm-leds" for multicolor PWM LEDs on Radxa E25
+Date: Fri, 16 Aug 2024 20:04:02 +0900
+Message-ID: <20240816110402.840-1-naoki@radxa.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240816_031656_518160_71EACFA2 
-X-CRM114-Status: GOOD (  18.87  )
+X-CRM114-CacheID: sfid-20240816_040422_373119_F8759731 
+X-CRM114-Status: UNSURE (   6.71  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,31 +60,70 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Am Freitag, 16. August 2024, 12:10:18 CEST schrieb Sergey 'Jin' Bostandzhyan:
-> Hi,
-> 
-> On Fri, Aug 16, 2024 at 08:51:40AM +0200, Dragan Simic wrote:
-> > On 2024-08-14 19:00, Sergey Bostandzhyan wrote:
-> > >This change has been suggested by Daniel Golle during patch review,
-> > >adding mmc-hs200-1_8v; makes sure that eMMC gets detected as HS200
-> > >which improves it's performance.
-> > 
-> > Describing who suggested the patch in the patch description looks
-> > out of place.  Instead, you should add a Suggested-by tag, whose
-> > purpose is exactly to describe who suggested the patch.
-> 
-> thank you for the pointer, I guess I missed that, I generally had a hard time to 
-> come to grips with the hole process as there are so many details and nuances.
-> 
-> Heiko, I guess it is too late to fix that now, sine you wrote that the
-> patch has been applied?
+to make multicolor PWM LEDs behavior more consistent with vendor
+kernel[1], use "pwm-leds" for it on Radxa E25.
 
-correct ... and also folded into the first devicetree patch.
-So no worries :-) .
+[1] https://github.com/radxa/kernel/blob/linux-5.10-gen-rkr4.1/arch/arm64/boot/dts/rockchip/rk3568-radxa-e25.dts#L100-L121
 
+Fixes: 2bf2f4d9f673 ("arm64: dts: rockchip: Add Radxa CM3I E25")
+Signed-off-by: FUKAUMI Naoki <naoki@radxa.com>
+---
+ .../boot/dts/rockchip/rk3568-radxa-e25.dts    | 36 ++++++++++---------
+ 1 file changed, 20 insertions(+), 16 deletions(-)
 
-Heiko
-
+diff --git a/arch/arm64/boot/dts/rockchip/rk3568-radxa-e25.dts b/arch/arm64/boot/dts/rockchip/rk3568-radxa-e25.dts
+index 72ad74c38a2b..0b527f67bdbd 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3568-radxa-e25.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3568-radxa-e25.dts
+@@ -12,26 +12,30 @@ aliases {
+ 	};
+ 
+ 	pwm-leds {
+-		compatible = "pwm-leds-multicolor";
++		compatible = "pwm-leds";
+ 
+-		multi-led {
+-			color = <LED_COLOR_ID_RGB>;
++		led-red {
++			color = <LED_COLOR_ID_RED>;
++			default-state = "on";
++			function = LED_FUNCTION_STATUS;
+ 			max-brightness = <255>;
++			pwms = <&pwm1 0 1000000 0>;
++		};
+ 
+-			led-red {
+-				color = <LED_COLOR_ID_RED>;
+-				pwms = <&pwm1 0 1000000 0>;
+-			};
+-
+-			led-green {
+-				color = <LED_COLOR_ID_GREEN>;
+-				pwms = <&pwm2 0 1000000 0>;
+-			};
++		led-green {
++			color = <LED_COLOR_ID_GREEN>;
++			default-state = "on";
++			function = LED_FUNCTION_STATUS;
++			max-brightness = <255>;
++			pwms = <&pwm2 0 1000000 0>;
++		};
+ 
+-			led-blue {
+-				color = <LED_COLOR_ID_BLUE>;
+-				pwms = <&pwm12 0 1000000 0>;
+-			};
++		led-blue {
++			color = <LED_COLOR_ID_BLUE>;
++			default-state = "on";
++			function = LED_FUNCTION_STATUS;
++			max-brightness = <255>;
++			pwms = <&pwm12 0 1000000 0>;
+ 		};
+ 	};
+ 
+-- 
+2.43.0
 
 
 _______________________________________________
