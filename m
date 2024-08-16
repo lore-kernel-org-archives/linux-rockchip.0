@@ -4,67 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2BD4DC531DF
-	for <linux-rockchip@archiver.kernel.org>; Fri, 16 Aug 2024 06:46:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AED2DC3DA4A
+	for <linux-rockchip@archiver.kernel.org>; Fri, 16 Aug 2024 06:52:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=EMmOOYRqWoIuMFlZ22AHf2/HdThOHZm9VOfesQ3mbKk=; b=LMv/sRE6Ao8JdG
-	Zdmz6eFUGHnmZQf7cFZV+ZpVztr6z/4sVFk4aJa8ezeuJcsLWvA9CCdXXRbrd4ytKk5NjFtgWJyNu
-	A0IJBmVQo8QP81QOslyEiOcAw1xncbJk+qIAg6U4c0uLGXK9y1nhYE0UK1MVDsOufoOBZskgZeW3g
-	JRN8duXTMxifKVs21WdLk0qFLwccdDcfGND5rmV0RYTqnaTgmluGF6XRJCXB9cxVhE8dxkLiTezBD
-	qHIKFu07RtxOy6kB18OZ2PMJbYB/EaOTf2i9QbTrwFs9MZpW20inx5ZRaMQUuCawpGDuQFaEiFmv2
-	HYb5hvUMaj2LIr5V9CJQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
+	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=rg09npPOyYprVG9rjJpVzIvCIVuWIESmOpa6MQvOhwE=; b=SeHqd9/f3cG6EvEgjEAcMh46d8
+	CkOlmZk1y4597+wch1oM5xZli2N6i1Svb3vESi1r8MHr2OYXSEvuq4iWRPn2/xJtcsWRR3PI/qpV5
+	wbx8N4nR/Q7HQYmkPKwotTiStfYR5NolxCw/EooUp8Ozp9O8NC6PJp+Ult1cHoDbr6pDopzGOKBaB
+	u5bTPrFbU6Dls7VAymttWuwbKCPZqZet96t/AmOv1gArqq0jjl0fDBp1JJ4g3AHMNXyWPHMe2JNQb
+	LqhIQduKu0pomUmK5QW92OzYyAdpv36fejyywNcZa17NxrJ+YVdeL18ZIG/YwcvOYWmwyGxKd6242
+	iw8qU1fw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1seqje-0000000ByUO-2k6A;
-	Fri, 16 Aug 2024 06:46:54 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1seqp1-0000000BzL2-2fnO;
+	Fri, 16 Aug 2024 06:52:27 +0000
+Received: from mail.manjaro.org ([2a01:4f8:c0c:51f3::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1seqj0-0000000ByNS-1Z6R;
-	Fri, 16 Aug 2024 06:46:15 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
-	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=To4DwKZdAd1zrbvpD+Ji8ozx8eGEkCykPZqh6w3t1TM=; b=cK+AVozhS2b0KOClwOoGUpumHo
-	mMnwTsLmwvQ6KswCL88xMi32RjDFQi632p0h8Rq88UG20IPm24SPs29cgn/II3OLzUUv+X5VL1XOT
-	2bfxW6oKfkh9Cn5xSjNOOaDrh4NI3b3miJJKfDbRKNJSOQKR+7NohcOtsxOuhqe+wykMr4ilWLKAq
-	UN7ITgsR+iFNbOkGOpRMSPQunkkR7cbKYKws2rhodnxNJCGIRRJ9bl1JyW032Uu8yckgvVgKnTKU+
-	8uzasY3WO7ODR4N8ogw0gtpREabJav8/aKjf1F1dFLqcK/WstA2kF870ydhTl5fgjxjfA+9VPCxc6
-	uIDz/+Bg==;
-Received: from i53875a9f.versanet.de ([83.135.90.159] helo=diego.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1seqig-0006nr-A2; Fri, 16 Aug 2024 08:45:54 +0200
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Jiri Slaby <jirislaby@kernel.org>, Chris Morgan <macromorgan@hotmail.com>,
- Jonas Karlman <jonas@kwiboo.se>, Tim Lunn <tim@feathertop.org>,
- Andy Yan <andyshrk@163.com>, Muhammed Efe Cetin <efectn@protonmail.com>,
- Jagan Teki <jagan@edgeble.ai>, Dragan Simic <dsimic@manjaro.org>,
- Ondrej Jirman <megi@xff.cz>, Yao Zi <ziyao@disroot.org>
-Cc: Celeste Liu <CoelacanthusHex@gmail.com>, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-serial@vger.kernel.org
-Subject: Re: [PATCH v3 3/4] arm64: dts: rockchip: Add base DT for rk3528 SoC
-Date: Fri, 16 Aug 2024 08:45:53 +0200
-Message-ID: <22683755.GTVRSBfYgM@diego>
-In-Reply-To: <Zr7z-SOFIgcuplq-@ziyaolaptop.my.domain>
-References: <20240814155014.18097-1-ziyao@disroot.org> <10324095.IZOipudI63@diego>
- <Zr7z-SOFIgcuplq-@ziyaolaptop.my.domain>
+	id 1seqoL-0000000BzCW-2lov;
+	Fri, 16 Aug 2024 06:51:47 +0000
 MIME-Version: 1.0
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
+	t=1723791101;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=erdeOGfMKnjJZthRQ74ZwqFW9cbRAdXya4HEE8czlZo=;
+	b=DtUekxEajDyHcJ1DEsY/8VEsO+N6NYgruSKHNHe0ivJpXlj9DQu/LRb+Eg3kHDi0x6mIBo
+	gS+Hsibva5U/JDu847lT27TVtlRnMf3tPXALDAvVk9XVa3rpxkalsV6HUL/2mKXzy/Acj0
+	fBUWYKfvvG1Fj3JeXQ1WVgXmp5uKvu/ApsuYIYdHC1qLx1bbE5yxTMQ9pps75Wxy1pWhmJ
+	2SxOAuk5zOVSCMtwajBHCL+wo26g84iFVAenQILZzc9ci2KZTYz0cWmlwfmuwXHkNbrv7K
+	a6BQHUXj0mIZy7QY/5HRbx+MobPTlxrzJsjrGI2xGFXw4H0HmSfso3pHUyFk4Q==
+Date: Fri, 16 Aug 2024 08:51:40 +0200
+From: Dragan Simic <dsimic@manjaro.org>
+To: Sergey Bostandzhyan <jin@mediatomb.cc>
+Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
+ heiko@sntech.de, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v3 3/3] arm64: dts: rockchip: improve eMMC speed on NanoPi
+ R2S Plus
+In-Reply-To: <20240814170048.23816-4-jin@mediatomb.cc>
+References: <20240814170048.23816-1-jin@mediatomb.cc>
+ <20240814170048.23816-4-jin@mediatomb.cc>
+Message-ID: <002107db3dcf3f1d1d1a767f049b5b79@manjaro.org>
+X-Sender: dsimic@manjaro.org
+Authentication-Results: ORIGINATING;
+	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240815_234614_454995_0DD74286 
-X-CRM114-Status: GOOD (  23.41  )
+X-CRM114-CacheID: sfid-20240815_235146_246748_743EE893 
+X-CRM114-Status: GOOD (  11.91  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,54 +69,40 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Am Freitag, 16. August 2024, 08:39:38 CEST schrieb Yao Zi:
-> On Thu, Aug 15, 2024 at 06:43:20PM +0200, Heiko St=FCbner wrote:
-> > Hi,
-> > =
+Hello Sergey,
 
-> > Am Mittwoch, 14. August 2024, 17:50:13 CEST schrieb Yao Zi:
-> > > This initial device tree describes CPU, interrupts and UART on the ch=
-ip
-> > > and is able to boot into basic kernel with only UART. Cache informati=
-on
-> > > is omitted for now as there is no precise documentation. Support for
-> > > other features will be added later.
-> > > =
+On 2024-08-14 19:00, Sergey Bostandzhyan wrote:
+> This change has been suggested by Daniel Golle during patch review,
+> adding mmc-hs200-1_8v; makes sure that eMMC gets detected as HS200
+> which improves it's performance.
 
-> > > Signed-off-by: Yao Zi <ziyao@disroot.org>
-> > =
+Describing who suggested the patch in the patch description looks
+out of place.  Instead, you should add a Suggested-by tag, whose
+purpose is exactly to describe who suggested the patch.
 
-> > not sure if you have seen Krzysztof's comment yesterday, that he found
-> > the soc node getting documented in 2019 [0].
-> =
-
-> Oops, I don't read that before sending the series.
-
-no worries, I think both mails (the linked on and your v3) happened at =
-
-nearly the same time on wednesday.
-
-
-> > I guess that counts as a strong suggestion. Not sure how you're feeling
-> > about that, but I guess we could move to that scheme for new socs.
-> > =
-
-> > So would you be willing to move the mmio-devices to a soc node?
-> > (stuff with mmio addresses in the node name)
-> =
-
-> I'm willing to, there will be patch v4.
-
-thanks a lot :-)
-
-Heiko
-
-
+> Signed-off-by: Sergey Bostandzhyan <jin@mediatomb.cc>
+> ---
+>  arch/arm64/boot/dts/rockchip/rk3328-nanopi-r2s-plus.dts | 1 +
+>  1 file changed, 1 insertion(+)
+> 
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3328-nanopi-r2s-plus.dts
+> b/arch/arm64/boot/dts/rockchip/rk3328-nanopi-r2s-plus.dts
+> index 12eabdbf8fe8..146b1da198b8 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3328-nanopi-r2s-plus.dts
+> +++ b/arch/arm64/boot/dts/rockchip/rk3328-nanopi-r2s-plus.dts
+> @@ -23,6 +23,7 @@
+>  	cap-mmc-highspeed;
+>  	supports-emmc;
+>  	disable-wp;
+> +	mmc-hs200-1_8v;
+>  	non-removable;
+>  	num-slots = <1>;
+>  	pinctrl-names = "default";
 
 _______________________________________________
 Linux-rockchip mailing list
