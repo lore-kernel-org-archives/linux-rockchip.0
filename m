@@ -4,73 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BBE96C3DA4A
-	for <linux-rockchip@archiver.kernel.org>; Fri, 16 Aug 2024 06:41:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2BD4DC531DF
+	for <linux-rockchip@archiver.kernel.org>; Fri, 16 Aug 2024 06:46:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=jBSy+ZWKCbGd790Sq8t89fNjxw79jMBAEst7OnpSKKg=; b=pN3CsStOP+DOSn
-	ev3RTNcjQm0Np9r7kzi0ejbCM7eS9iCvK70fd2C+Tom2lKxB97f1AAOE+OSuG8/ugLyujef7lPtXW
-	VtozMQ7aYkHQA1O0WLFAQzKkabLWJytSAix0of2zlQjvO6Ts7RzxkgG08Gv2GKpFNRPtYY+l+YP/x
-	tetVQkOxWLj42vpmxNZsP6erdgHKaF6RSOiiBVo+VmyC02qWEuPiGiHTrznaisfj8zYkR/5I2FJzH
-	BwffvEyIgtgoJBUXdkLr2r/4yZIHAtePfny8ptWN2r3iSswUHw+0fBDACMBdN5aGwoTQDgabj+4sb
-	qgQfaH+LrCDIb37wLJ5w==;
+	List-Owner; bh=EMmOOYRqWoIuMFlZ22AHf2/HdThOHZm9VOfesQ3mbKk=; b=LMv/sRE6Ao8JdG
+	Zdmz6eFUGHnmZQf7cFZV+ZpVztr6z/4sVFk4aJa8ezeuJcsLWvA9CCdXXRbrd4ytKk5NjFtgWJyNu
+	A0IJBmVQo8QP81QOslyEiOcAw1xncbJk+qIAg6U4c0uLGXK9y1nhYE0UK1MVDsOufoOBZskgZeW3g
+	JRN8duXTMxifKVs21WdLk0qFLwccdDcfGND5rmV0RYTqnaTgmluGF6XRJCXB9cxVhE8dxkLiTezBD
+	qHIKFu07RtxOy6kB18OZ2PMJbYB/EaOTf2i9QbTrwFs9MZpW20inx5ZRaMQUuCawpGDuQFaEiFmv2
+	HYb5hvUMaj2LIr5V9CJQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1seqdv-0000000Bxpn-45Rx;
-	Fri, 16 Aug 2024 06:40:59 +0000
-Received: from layka.disroot.org ([178.21.23.139])
+	id 1seqje-0000000ByUO-2k6A;
+	Fri, 16 Aug 2024 06:46:54 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1seqdG-0000000Bxl6-12nw;
-	Fri, 16 Aug 2024 06:40:20 +0000
-Received: from localhost (localhost [127.0.0.1])
-	by disroot.org (Postfix) with ESMTP id 30FA841A4C;
-	Fri, 16 Aug 2024 08:40:13 +0200 (CEST)
-X-Virus-Scanned: SPAM Filter at disroot.org
-Received: from layka.disroot.org ([127.0.0.1])
-	by localhost (disroot.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id FE_tVLB1Jtg9; Fri, 16 Aug 2024 08:40:12 +0200 (CEST)
-Date: Fri, 16 Aug 2024 14:39:38 +0800
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=disroot.org; s=mail;
-	t=1723790412; bh=+d3XRUf7fgNNMkPhiBADu1Mygie2bfYXkkG+stkBDbU=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=loK2DQeQIcnGWc14T58cYt6F3lIPFvHEUxGbwKVUWvORBCWX6XEMF52h3WmB2kCUx
-	 hlm8Lxh88wonxf3bvyTY+IjDfE3k5X6TMIAtTLnLkooLmwPEQvokft9EOfdcjKwZ7M
-	 ZVCDQARu5buW+9uVxxFe+790ijbIy341vAk/TdTekKVr8Md0XTi/U7d7F7lzfx+Ic+
-	 81LG7Jb0VL8kG7ckXVWA2sLYlzC3iU+eq0bBZPFxggE/OFna+HfMyvvCBQV3Dma7Ey
-	 wrjIWEbh4P+L1ywrnrSsJDeuWMT+64mOLh6xuenU7HIPIS3W2Lco/i3hVqk4AYnHCY
-	 YGNaMbU2z5LdA==
-From: Yao Zi <ziyao@disroot.org>
-To: Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Jiri Slaby <jirislaby@kernel.org>,
-	Chris Morgan <macromorgan@hotmail.com>,
-	Jonas Karlman <jonas@kwiboo.se>, Tim Lunn <tim@feathertop.org>,
-	Andy Yan <andyshrk@163.com>,
-	Muhammed Efe Cetin <efectn@protonmail.com>,
-	Jagan Teki <jagan@edgeble.ai>, Dragan Simic <dsimic@manjaro.org>,
-	Ondrej Jirman <megi@xff.cz>
+	id 1seqj0-0000000ByNS-1Z6R;
+	Fri, 16 Aug 2024 06:46:15 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+	List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=To4DwKZdAd1zrbvpD+Ji8ozx8eGEkCykPZqh6w3t1TM=; b=cK+AVozhS2b0KOClwOoGUpumHo
+	mMnwTsLmwvQ6KswCL88xMi32RjDFQi632p0h8Rq88UG20IPm24SPs29cgn/II3OLzUUv+X5VL1XOT
+	2bfxW6oKfkh9Cn5xSjNOOaDrh4NI3b3miJJKfDbRKNJSOQKR+7NohcOtsxOuhqe+wykMr4ilWLKAq
+	UN7ITgsR+iFNbOkGOpRMSPQunkkR7cbKYKws2rhodnxNJCGIRRJ9bl1JyW032Uu8yckgvVgKnTKU+
+	8uzasY3WO7ODR4N8ogw0gtpREabJav8/aKjf1F1dFLqcK/WstA2kF870ydhTl5fgjxjfA+9VPCxc6
+	uIDz/+Bg==;
+Received: from i53875a9f.versanet.de ([83.135.90.159] helo=diego.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1seqig-0006nr-A2; Fri, 16 Aug 2024 08:45:54 +0200
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Jiri Slaby <jirislaby@kernel.org>, Chris Morgan <macromorgan@hotmail.com>,
+ Jonas Karlman <jonas@kwiboo.se>, Tim Lunn <tim@feathertop.org>,
+ Andy Yan <andyshrk@163.com>, Muhammed Efe Cetin <efectn@protonmail.com>,
+ Jagan Teki <jagan@edgeble.ai>, Dragan Simic <dsimic@manjaro.org>,
+ Ondrej Jirman <megi@xff.cz>, Yao Zi <ziyao@disroot.org>
 Cc: Celeste Liu <CoelacanthusHex@gmail.com>, devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
-	linux-serial@vger.kernel.org
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-serial@vger.kernel.org
 Subject: Re: [PATCH v3 3/4] arm64: dts: rockchip: Add base DT for rk3528 SoC
-Message-ID: <Zr7z-SOFIgcuplq-@ziyaolaptop.my.domain>
-References: <20240814155014.18097-1-ziyao@disroot.org>
- <20240814155014.18097-4-ziyao@disroot.org>
- <10324095.IZOipudI63@diego>
+Date: Fri, 16 Aug 2024 08:45:53 +0200
+Message-ID: <22683755.GTVRSBfYgM@diego>
+In-Reply-To: <Zr7z-SOFIgcuplq-@ziyaolaptop.my.domain>
+References: <20240814155014.18097-1-ziyao@disroot.org> <10324095.IZOipudI63@diego>
+ <Zr7z-SOFIgcuplq-@ziyaolaptop.my.domain>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <10324095.IZOipudI63@diego>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240815_234018_736265_844ED2B3 
-X-CRM114-Status: GOOD (  18.28  )
+X-CRM114-CacheID: sfid-20240815_234614_454995_0DD74286 
+X-CRM114-Status: GOOD (  23.41  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,47 +81,49 @@ Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, Aug 15, 2024 at 06:43:20PM +0200, Heiko St=FCbner wrote:
-> Hi,
-> =
-
-> Am Mittwoch, 14. August 2024, 17:50:13 CEST schrieb Yao Zi:
-> > This initial device tree describes CPU, interrupts and UART on the chip
-> > and is able to boot into basic kernel with only UART. Cache information
-> > is omitted for now as there is no precise documentation. Support for
-> > other features will be added later.
+Am Freitag, 16. August 2024, 08:39:38 CEST schrieb Yao Zi:
+> On Thu, Aug 15, 2024 at 06:43:20PM +0200, Heiko St=FCbner wrote:
+> > Hi,
 > > =
 
-> > Signed-off-by: Yao Zi <ziyao@disroot.org>
+> > Am Mittwoch, 14. August 2024, 17:50:13 CEST schrieb Yao Zi:
+> > > This initial device tree describes CPU, interrupts and UART on the ch=
+ip
+> > > and is able to boot into basic kernel with only UART. Cache informati=
+on
+> > > is omitted for now as there is no precise documentation. Support for
+> > > other features will be added later.
+> > > =
+
+> > > Signed-off-by: Yao Zi <ziyao@disroot.org>
+> > =
+
+> > not sure if you have seen Krzysztof's comment yesterday, that he found
+> > the soc node getting documented in 2019 [0].
 > =
 
-> not sure if you have seen Krzysztof's comment yesterday, that he found
-> the soc node getting documented in 2019 [0].
+> Oops, I don't read that before sending the series.
 
-Oops, I don't read that before sending the series.
+no worries, I think both mails (the linked on and your v3) happened at =
 
-> I guess that counts as a strong suggestion. Not sure how you're feeling
-> about that, but I guess we could move to that scheme for new socs.
+nearly the same time on wednesday.
+
+
+> > I guess that counts as a strong suggestion. Not sure how you're feeling
+> > about that, but I guess we could move to that scheme for new socs.
+> > =
+
+> > So would you be willing to move the mmio-devices to a soc node?
+> > (stuff with mmio addresses in the node name)
 > =
 
-> So would you be willing to move the mmio-devices to a soc node?
-> (stuff with mmio addresses in the node name)
+> I'm willing to, there will be patch v4.
 
-I'm willing to, there will be patch v4.
+thanks a lot :-)
 
-> =
-
-> Thanks
-> Heiko
-> =
-
-> [0] https://lore.kernel.org/all/6320e4f3-e737-4787-8a72-7bd314ba883c@kern=
-el.org/
-> =
+Heiko
 
 
-Best regards,
-Yao Zi
 
 _______________________________________________
 Linux-rockchip mailing list
