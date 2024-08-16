@@ -4,105 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F3855C52D7D
-	for <linux-rockchip@archiver.kernel.org>; Fri, 16 Aug 2024 12:25:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 37F8EC3DA4A
+	for <linux-rockchip@archiver.kernel.org>; Fri, 16 Aug 2024 13:57:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=vkaJMJYo2TmBZOgWY77hqJppFeVlDye/CRun59Qgm8w=; b=RETFsGN+SFlE1r
-	pCWmnmiAPPvLSJ9BaB0WwJQLEpaDjKsAEf9xo/1p4I3ZszyaCeRojRTDzLHcF/kMbUAVDk5cK4XzV
-	DGBgh9nzHmQ1JJkjy0v2PNG/zPvtC4mQt9tmO2lLbbjaMwKnXL7uSSignMWEbx72Cm23r/+7nU4sO
-	fM856i455PpA14pDzC1eAobHQlbWbfqnOUVhZlo9ZmwseBjAeqcxSu1jZhft53kn0Y4TZVjdYqSF8
-	S5Lmeu3FbqLrh4Z+fFy4kGcJxgOLkloCoOfv0bwJg+DRDvigtM6+kfql/o/enK3tgJg3HGVg+7hyP
-	mBQL+KHy8WRFrlitlZXg==;
+	List-Owner; bh=SL9ECZAi1wkqvvR08aYGQm6x88hFgIHpjgBAgMtqu8I=; b=FnwK6DbyH5zOmv
+	Xl3fg4uzv6QSvRY5cCp4EtoycJx3QudqBVLXRPIuD5hwxO4Dm7kvKeODPayDfQ1jzF8VNrEblOF8n
+	YIG0z3RUCXYdArL3I+MItS5IKYsGI9junokRo2ymQoW4NFdHWToNmD7gbKKhLn4V4D/gSArXusnBX
+	J5vkwDUjR3kvkvLi5LUkJfp0rZcQWXgAlUaS86DSjNpEvcUYcb9qcl1ONFybv1jEBnRLKVSOJQsK9
+	n3SEimDla6Im/Z9U23BgtNvdJBpTXLhiiWkmVKKrIfWAhpS8nnTD+UBMsHzy7UdwodqzhXzjh+4ZT
+	Ez7jhXcwcNy2VS75BVYw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sew1f-0000000Crdu-1UTC;
-	Fri, 16 Aug 2024 12:25:51 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1sexSR-0000000D6hM-3QNd;
+	Fri, 16 Aug 2024 13:57:35 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sew1c-0000000CrdB-0Vzy
-	for linux-rockchip@lists.infradead.org;
-	Fri, 16 Aug 2024 12:25:49 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 7546062137;
-	Fri, 16 Aug 2024 12:25:47 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id AF12DC32782;
-	Fri, 16 Aug 2024 12:25:43 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1723811147;
-	bh=gnwR0pAqsi+OxzW0MzIibaJdVOR8z9KqTz61WOxKnRs=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=s7VcAdDm5vLjYdrm+7BOibAlr9fvf7Tc7WgClQJdeWKvZ+fM/YZVMJQECh/7OPGG6
-	 2kyOB7sB7MkPrdYJfBXYaPB272ud3QwYJI4j8a/LKbtHM4AaRF7iDxV+ealVfMrSqX
-	 eZ/+hjmT86jM25sYImYa6/f7DoePFDZ9mg6/U3EHmgGH6uxWRKa1AOEFD9uUVNHVAs
-	 iciWNEqafZqZdL9x8rPvb8nHMXCAd1fmmWeNj1EEQJecFO9GHq6Dhe1jIJuOOqmbwL
-	 xBlxVqnO33Y5/wLRD2BF6o+BsOwb8wKKwFSwBoQFpChwyJm74oNIEJR68q3b6uFllR
-	 tsFT8AHVIuG8w==
-Message-ID: <6f9994b3-d16a-4bfa-aaf8-ce1c5abde91b@kernel.org>
-Date: Fri, 16 Aug 2024 14:25:41 +0200
+	id 1sexSO-0000000D6fj-3f2G;
+	Fri, 16 Aug 2024 13:57:34 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+	List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=c/qeNm0gickEi5kHpgsZtFtwQ/SdYgXdxnuELkHBkC4=; b=s+dtJTWMR1Z+iN5/NcVIN3Z+5x
+	ZKJSHyMDp6qT+0g6RR/0naXbad1QJp8au5ngnLaWAq7qmwNiIUwLwd2lT99UVnjBh1RgxRFYcGxIS
+	U/3yuezvXEsPs9IvY7xVFANYGD4lM8aqZbGFq7wGqfC9KLqy+xXJYbWbKhFPdYN1vEa1YE0hSvxZa
+	OxwsLCSiR66VXrh+22NnNn6UmwgI+/kyirGRXv1sVz7m9Av1Yq1ZmiCNbVmnFEyf9D7aNuB6KnVKf
+	P43b535eIAxltDBT1oqKdbzuFIyT82poSk7GUQ5HsZSxddFmUxRkafJ2Sg3uAY6b8ej8u58N/pZe6
+	LaMfmsIQ==;
+Received: from i53875a9f.versanet.de ([83.135.90.159] helo=phil.lan)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1sexSK-0002hb-TQ; Fri, 16 Aug 2024 15:57:29 +0200
+From: Heiko Stuebner <heiko@sntech.de>
+To: Conor Dooley <conor+dt@kernel.org>,
+	Michael Riesch <michael.riesch@wolfvision.net>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
+Cc: Heiko Stuebner <heiko@sntech.de>,
+	linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org
+Subject: Re: [PATCH] arm64: dts: rockchip: add wolfvision pf5 visualizer display
+Date: Fri, 16 Aug 2024 15:57:26 +0200
+Message-ID: <172381656037.84677.11780206459201436040.b4-ty@sntech.de>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20240412-feature-wolfvision-pf5-display-v1-1-f032f32dba1a@wolfvision.net>
+References: <20240412-feature-wolfvision-pf5-display-v1-1-f032f32dba1a@wolfvision.net>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] arm64: dts: rockchip: use "pwm-leds" for multicolor PWM
- LEDs on Radxa E25
-To: FUKAUMI Naoki <naoki@radxa.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?=
- <heiko@sntech.de>
-Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
- devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org
-References: <20240816110402.840-1-naoki@radxa.com> <2335200.ElGaqSPkdT@diego>
- <5667DC6446CBC344+3d442915-f28d-4d50-85e3-3863e3c7092a@radxa.com>
-From: Krzysztof Kozlowski <krzk@kernel.org>
-Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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 fv0=
-In-Reply-To: <5667DC6446CBC344+3d442915-f28d-4d50-85e3-3863e3c7092a@radxa.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240816_052548_297010_8AC8452F 
-X-CRM114-Status: GOOD (  13.08  )
+X-CRM114-CacheID: sfid-20240816_065732_943155_B50520E5 
+X-CRM114-Status: UNSURE (   9.99  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -114,32 +75,32 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gMTYvMDgvMjAyNCAxMzo1NywgRlVLQVVNSSBOYW9raSB3cm90ZToKPiBIaSwKPiAKPiBPbiA4
-LzE2LzI0IDIwOjI2LCBIZWlrbyBTdMO8Ym5lciB3cm90ZToKPj4gQW0gRnJlaXRhZywgMTYuIEF1
-Z3VzdCAyMDI0LCAxMzowNDowMiBDRVNUIHNjaHJpZWIgRlVLQVVNSSBOYW9raToKPj4+IHRvIG1h
-a2UgbXVsdGljb2xvciBQV00gTEVEcyBiZWhhdmlvciBtb3JlIGNvbnNpc3RlbnQgd2l0aCB2ZW5k
-b3IKPj4+IGtlcm5lbFsxXSwgdXNlICJwd20tbGVkcyIgZm9yIGl0IG9uIFJhZHhhIEUyNS4KPj4K
-Pj4gc29ycnksIGJ1dCB0aGF0IGlzIGRlZmluaXRseSBub3QgYSB2YWxpZCByZWFzb24uCj4gCj4g
-SSBzZWUuIEknbGwgbm90IGNoYW5nZSBpdC4KPiAKPj4gQSBkZXZpY2V0cmVlIGRvZXMgZGVzY3Jp
-YmUgYWN0dWFsIGhhcmR3YXJlIGFuZCBpcyBub3QgYSBzcGFjZSBmb3IKPj4gY29uZmlndXJhdGlv
-biBjaG9pY2VzLiBTbyB0aGF0IHdob2xlIG5vdGlvbiB0byAibWF0Y2ggYSBrZXJuZWwiCj4+IGlz
-IG5vdCBjb3JyZWN0Lgo+Pgo+PiBMb29raW5nIGF0Cj4+IGh0dHBzOi8vd2lraS5yYWR4YS5jb20v
-Um9jazMvQ00vQ00zSS9FMjUvZ2V0dGluZ19zdGFydGVkCj4+IHRoZSBzcGVjaWZpY2F0aW9uIHRh
-YmxlIGNsZWFybHkgZGVzaWduYXRlcyB0aGUgYm9hcmQncyBMRUQgYXMKPj4gIlJHQiBMRUQiIC0g
-c28gb25lIExFRCBhbmQgbXVsdGljb2xvciAuCj4gCj4gSSB1bmRlcnN0YW5kIGZvbGxvd2luZyBi
-ZWhhdmlvciBpcyBub3QgcG9zc2libGUgb24gbWFpbmxpbmUuCj4gCj4gaHR0cHM6Ly9naXRodWIu
-Y29tL3JhZHhhLXBrZy9yc2V0dXAvYmxvYi9tYWluL2NvbmZpZy8wMC1yZ2IwLXJhaW5ib3cuY29u
-Zgo+IAo+IHRoaXMgaXMgbm90IHdoYXQgd2UoUmFkeGEpIHdhbnQsIGJ1dCB3ZSBuZWVkIHRvIGZv
-bGxvdyB0aGUgcnVsZS4KPiAKPiAoYnR3IHdpa2kucmFkeGEuY29tIGlzIG91dGRhdGVkLCBpdCdz
-IG5vdCB1c2VkIGFueW1vcmUpCgpZb3VyIFJhZHhhIHZlbmRvciBrZXJuZWwgYW5kIHdoYXRldmVy
-IHlvdSBoYXZlICpNVVNUKiBhbGlnbiB0byB0aGUKdXBzdHJlYW0sIG5vdCB0aGUgb3RoZXIgd2F5
-LiBUaGUgdXBzdHJlYW0gaXMgdGhlIGNvcnJlY3Qgc291cmNlIG9mIGRvaW5nCnRoaW5ncywgbm90
-IHRoZSBvdGhlciB3YXkuCgpCZXN0IHJlZ2FyZHMsCktyenlzenRvZgoKCl9fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcg
-bGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZy
-YWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+On Fri, 12 Apr 2024 14:54:09 +0200, Michael Riesch wrote:
+> Add device tree overlay for the WolfVision PF5 Visualizer display.
+> Since there shall be additional variants of the WolfVision PF5 display in
+> future, move common definitions to a device tree include file.
+> 
+> 
+
+Applied, thanks!
+
+[1/1] arm64: dts: rockchip: add wolfvision pf5 visualizer display
+      commit: 73d6eb7e77099054f7ce4a595767603cb4a096b1
+
+DTC update in linux-next now:
+https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git/commit/?id=d2a97be34548fc5643b4e9536ac8789d839f7374
+to prevent the compile error regarding the unknown node-name
+
+Best regards,
+-- 
+Heiko Stuebner <heiko@sntech.de>
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
