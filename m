@@ -4,56 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3594EC3DA4A
-	for <linux-rockchip@archiver.kernel.org>; Fri, 16 Aug 2024 05:19:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A9E1BC531DC
+	for <linux-rockchip@archiver.kernel.org>; Fri, 16 Aug 2024 05:58:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=RXm4N6N4O+fmfMSmduu/js8lmSGR+nq8XhOTdTC4k28=; b=2mwCclZ58QSw/u
-	wqWbusFM9CNz6Q19/dSWfpBtO7RWOoVCygNEA4wURJ1xm0UL2UbdL3kXZPv5PQH7Ze5zFNv8xY7l4
-	gRIZk1lEqQ8r9+91pkmJ26RMjEeeNzN9bhBKs0WQOxIOJDHF4TjF0Ajn5RK9XRY2KZxfIk+lPvnE0
-	UosDDKTxZA7/ZWy6UFW/l5XIBVdAxmDpC2OkG6lGNb+0KVqBJMTh9nEbAwlkQ6c8J+fRsOVh3+Sy0
-	0v0ymjeSYbQFUgJc5sTRuwc5JuFDwpV+freqi/S0znzFrVEX90wIQzto552r48fqWibkeO199ylv4
-	mLDoaD0FxMBBSg1RGk4Q==;
+	List-Owner; bh=Nmj18pl1rrE5ZKgrZCtB0Gl8B3crNZt63HUIGg4iAR8=; b=TlvF+JN8mtCBKI
+	nxBiFxO6C1zjdVpXW0JNFTdzat7XRZyalRWpgUr/YTEJAbbgThvntqWbNKB+fFjV7LsWqT/SV88hQ
+	pzuWrt6N3Rn0AVfvWCx8H6Usb0ZNa74AoZwAeK0DrJtJMxtHmliPmNtM6FsNZp/cKrWdrp/AuPYNH
+	dAOIvBZNv5YFYjOantcZB7zKVsIjtdzVG+xVV4ednkYQF+jCIS6UJgz83jjMDFaXkw4ybJPyJQBZh
+	rgWoPD6sibKBkUB+/5DyzRWIOE8eWTJo5bkeZlXNnX6F9TxtqO7hWmXtkN8huCciZnyA5eFpqGvqb
+	U83tC5vaoCIIKYqC/UaA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sepMJ-0000000Bq13-1EGk;
-	Fri, 16 Aug 2024 05:18:43 +0000
-Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
+	id 1sepz6-0000000Btru-3zHi;
+	Fri, 16 Aug 2024 05:58:48 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sepMG-0000000Bq09-0yiS
-	for linux-rockchip@lists.infradead.org;
-	Fri, 16 Aug 2024 05:18:41 +0000
+	id 1sepyR-0000000Btnx-20OZ;
+	Fri, 16 Aug 2024 05:58:09 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 80AF3CE1E0E;
-	Fri, 16 Aug 2024 05:18:38 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 64163C32782;
-	Fri, 16 Aug 2024 05:18:34 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 9E21760F08;
+	Fri, 16 Aug 2024 05:58:06 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D5423C32782;
+	Fri, 16 Aug 2024 05:57:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1723785517;
-	bh=tLZyooNYoCRy7x4DLCuph7x1N8wUN2RhmVl+zPzYQVA=;
+	s=k20201202; t=1723787886;
+	bh=mrC7KQbQrAxXex/wa8omsiJATn3SVfbbeLWyX/xFST4=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=UyRbMbStJ/znwx+bmzZNA3a4JJ2r7cU5D3xcVf2LY2Sa4tuOKJfLpidKMayvUDz3O
-	 r18k7JvOww92d+C9zKAMgaiNJI0672cgRK0N7PIi3HxgXHDn+qsSSalsKirdj/Nsae
-	 6j8B8xoxDsV/8vpXvFlOGmYg0woyIAQ8WVBZ0IONXOz8Gi12iDYqZq8nqC4AFVTIfg
-	 q50Dh2oHpWRkECeUYs1JGOFuObbIX5oWd6HQ8LUcRz87xYbDnZncAEgqFW4DA2VBVg
-	 1zZa0gy9ddx2qMvuoQkeZc0ZveKvDtpKEaX7qQKDez//8Q8vfgzkmnr+pjDtVRR/Y9
-	 KMPvmUYz5/7nA==
-Message-ID: <a6cf0764-508d-4929-9252-c9fb7567e3ee@kernel.org>
-Date: Fri, 16 Aug 2024 07:18:32 +0200
+	b=eGnkED94cb70hlA9j74Xqwgu9r+aTWIE0WbNvTjjGY8U4ZRl6U5Z1prrWO1AL/oPE
+	 kZbZ7r24KPyinhDiDXMxU6Apyu5npe0oV7ye7cpoxK88tQnWHp2XlRv9VmwC+Qtpa7
+	 l6UJi9xbLuTleHdDGS4dC/5cLd0qxmbZl+P+9tVCzf6EquGXXCxrYBR2ywzcPmrS2X
+	 X6kOa/Iga+6EkqzYrHsjuY9QC8mFVecaSoLj0/der/PEi12DQ3iEuhltC7l7eA+f/s
+	 wpUhKUmxCUi8QKwQVf2DqUkkZEEkNzTCCcu1+9wE7/r78G8jYXaeX+R3lOmv4e6MfO
+	 EVUW33fF1H3TQ==
+Message-ID: <3faac3f5-5159-41aa-a5e7-31d2eee9c0bd@kernel.org>
+Date: Fri, 16 Aug 2024 07:57:57 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/2] arm64: defconfig: add CONFIG_LEDS_PWM_MULTICOLOR
-To: FUKAUMI Naoki <naoki@radxa.com>, heiko@sntech.de
-Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
- catalin.marinas@arm.com, will@kernel.org, devicetree@vger.kernel.org,
- linux-rockchip@lists.infradead.org
-References: <20240816023243.487-1-naoki@radxa.com>
-Content-Language: en-US
+Subject: Re: [PATCH 3/4] arm64: dts: rockchip: Add base DT for rk3528 SoC
+To: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>,
+ Yao Zi <ziyao@disroot.org>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Jiri Slaby <jirislaby@kernel.org>, Chris Morgan <macromorgan@hotmail.com>,
+ Jonas Karlman <jonas@kwiboo.se>, Tim Lunn <tim@feathertop.org>,
+ Andy Yan <andyshrk@163.com>, Muhammed Efe Cetin <efectn@protonmail.com>,
+ Jagan Teki <jagan@edgeble.ai>, Dragan Simic <dsimic@manjaro.org>,
+ Ondrej Jirman <megi@xff.cz>
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-serial@vger.kernel.org
+References: <20240803125510.4699-2-ziyao@disroot.org>
+ <b967ab05-dd0e-4fc5-bee6-ad7639e47bfb@kernel.org>
+ <6320e4f3-e737-4787-8a72-7bd314ba883c@kernel.org> <2548443.Ac65pObt5d@diego>
 From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
 Autocrypt: addr=krzk@kernel.org; keydata=
  xsFNBFVDQq4BEAC6KeLOfFsAvFMBsrCrJ2bCalhPv5+KQF2PS2+iwZI8BpRZoV+Bd5kWvN79
  cFgcqTTuNHjAvxtUG8pQgGTHAObYs6xeYJtjUH0ZX6ndJ33FJYf5V3yXqqjcZ30FgHzJCFUu
@@ -97,10 +106,10 @@ Autocrypt: addr=krzk@kernel.org; keydata=
  uZwJCLykjad45hsWcOGk3OcaAGQS6NDlfhM6O9aYNwGL6tGt/6BkRikNOs7VDEa4/HlbaSJo
  7FgndGw1kWmkeL6oQh7wBvYll2buKod4qYntmNKEicoHGU+x91Gcan8mCoqhJkbqrL7+nXG2
  5Q/GS5M9RFWS+nYyJh+c3OcfKqVcZQNANItt7+ULzdNJuhvTRRdC3g9hmCEuNSr+CLMdnRBY fv0=
-In-Reply-To: <20240816023243.487-1-naoki@radxa.com>
+In-Reply-To: <2548443.Ac65pObt5d@diego>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240815_221840_690660_9243FE98 
-X-CRM114-Status: UNSURE (   3.49  )
+X-CRM114-CacheID: sfid-20240815_225807_659973_17C1E494 
+X-CRM114-Status: UNSURE (   8.07  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -113,21 +122,19 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 16/08/2024 04:32, FUKAUMI Naoki wrote:
-> enable "pwm-leds-multicolor" driver.
-
-Why?
-
-Best regards,
-Krzysztof
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gMTUvMDgvMjAyNCAxODo0NCwgSGVpa28gU3TDvGJuZXIgd3JvdGU6Cj4+Cj4+IE9uZSBtb3Jl
+IGNvbW1lbnQsIEkgZm9yZ290IHdlIGFjdHVhbGx5IGhhdmUgaXQgZG9jdW1lbnRlZCBsb25nIHRp
+bWUgYWdvOgo+Pgo+PiBodHRwczovL2VsaXhpci5ib290bGluLmNvbS9saW51eC92Ni4xMS1yYzEv
+c291cmNlL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy93cml0aW5nLWJpbmRpbmdz
+LnJzdCNMOTAKPiAKPiBJIGd1ZXNzIHRoYXQgcGllY2Ugb2YgZG9jdW1lbnRhdGlvbiBzaG91bGQg
+bW92ZSB0byB0aGUgZHRzIHN0eWxlCj4gZ3VpZGUgdGhvdWdoPyBCZWNhdXNlIGl0J3Mgbm90IGFi
+b3V0IHdyaXRpbmcgYmluZGluZ3MgYnV0IGhvdwo+IHRvIHN0cnVjdHVyZSBhIGR0cy9kdHNpLgoK
+WWVzLCBpdCBzaG91bGQuCgpCZXN0IHJlZ2FyZHMsCktyenlzenRvZgoKCl9fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcg
+bGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZy
+YWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
