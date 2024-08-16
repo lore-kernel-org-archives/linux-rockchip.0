@@ -4,79 +4,110 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A9677C3DA4A
-	for <linux-rockchip@archiver.kernel.org>; Fri, 16 Aug 2024 08:03:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4748DC3DA4A
+	for <linux-rockchip@archiver.kernel.org>; Fri, 16 Aug 2024 08:19:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=BQSfsKcP3GUiUUZd8zz5YFV59n15rRDNr0uyBbvm0FU=; b=doI1PxQCy80G4+
-	ropVu8ph78KWDOwOxhDWRaOxK/OlDKETF+B1ixcsKIhyTjG2sFkDoBY5b3xkHjYm7xrmNL5S3D5li
-	qN46bZoBCrPmFt00Zeu4KQ6bBa+9FTflFGA3v0Kj21gc1fmW8eCqAipvkcHuRTlXpKc6VFVumkIIn
-	PEyak/CtOH05+rjo7znn6IhYgLpVnPAeUz7oD+2wD4iqZGjYM87uqCdPYqU2bgCpXjbd0uF3Hycz9
-	CXZIvfjOhceueRrIR57vmy+51lPOiHmsjMfG9T13MAQKPqyURE73Y/k0be7XGYfJTRsN/h4ru6pzn
-	idu8YJRKlPgrCbS59RAQ==;
+	List-Owner; bh=zc58PYYSa61EdRQ9/TMWn3J4sQph1lBKb9kKmeCjUTs=; b=z8s+P+6WX41Fpd
+	siUDzaf3LUON653Q2uR2dwlQ3H8eyHt6xbuAbolGk80vXjJ298Y5f5Khjgf4WmAyapQwYZ9dgp1zx
+	H5jwDOol0Rul+ZH7OKhQ/FvzX+bJObQtSWT5yYtZkBp60xNkI85YvNwuO8On5A2P5l23vyH+rEgJw
+	syJV1Psr82oKxDtMV9m/qokUhXwfZEKhPjZ5I4Wx5kz+BAxSGF5WEszyj2ZAC++0f/ghSVMstId46
+	UPeJb3mU0JY6qx3R54UsGV94ZZs2C+B/1ICI1ytastxeAWI4DdqPLRYjn1e6z4/ELcDuoM+BQ92rs
+	zzyvJyLp5W2rhGmQYX1Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1servn-0000000CDMJ-0Fw0;
-	Fri, 16 Aug 2024 08:03:31 +0000
-Received: from mail-yw1-x1135.google.com ([2607:f8b0:4864:20::1135])
+	id 1sesBB-0000000CF1D-3K8O;
+	Fri, 16 Aug 2024 08:19:25 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1servj-0000000CDKn-1QPH
-	for linux-rockchip@lists.infradead.org;
-	Fri, 16 Aug 2024 08:03:28 +0000
-Received: by mail-yw1-x1135.google.com with SMTP id 00721157ae682-6b2e6e7ad28so1329067b3.0
-        for <linux-rockchip@lists.infradead.org>; Fri, 16 Aug 2024 01:03:26 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1723795405; x=1724400205; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=VR26oQJGUDskARtTbfBCHHqlsRCVMlxxfj+UcLee/2U=;
-        b=jXcdEva0H3XRpKGQQ7Cc8p2WGmiT3w7n0Q2+WTs8KZLSxFp5y89YWuzWxtHK0ev6/A
-         0DjtokZrUXM0dM84+jUYO4Pss6x1QGy+Y5bt1AM6iIDESD3Jwl1vvXss2qy1QOKlk+fs
-         ixACIhvobAUCFrrsb80VcWwFotFeBfiaGVIhRVG6oilHGklO6Loysp+20BA8W5q64Ejv
-         5JRvS4IFZBMozkEbauMaRvLfQ0HyEs5vgSRbX99ZuqYqBvz3Ff2CwU8IeqFbXTXZfnFg
-         gc9dPuAnbwD02rbVSyrqjczF/STApy/I2P2Z+7A0YoYVyLC9ni8KDt9TvAmEeONH1k86
-         8sIg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1723795405; x=1724400205;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=VR26oQJGUDskARtTbfBCHHqlsRCVMlxxfj+UcLee/2U=;
-        b=u5TFeRHl6hVMj+lGAWOh0Npo8hiG/fiOAyQ1PYxA/M/VtgeFwXhr+U+eCGwWbZJ7Ss
-         ZKS7n8kym6cWiz3IR/Gzhix8E/YrU5APjbge95V28ZcusSC5+mVoBViv6R5WrwX2P9q5
-         cJHvqG/D7rRM3wni0S8r7Sc4+fR57xpV0SaRSplTKkk71RmHj5WqoaKb9nVBximPgBy/
-         Q8rhMQxBMHcIQP2NJ1gweAYgb9KSBXmdLrKysQQUqtdvfrySqLlnCjfHzbjXN+2Z9/rT
-         zfFfFbNg/MyhPCei2MpOGJgvERX8wnHEzUM/7iISD8kMeWNmZUwlJUgegWUCm/AFwdeE
-         Iocg==
-X-Forwarded-Encrypted: i=1; AJvYcCW8w934AIq4nhZlSaJvMtNZuIDltR2NvS617hTiSRJm84d7Gs36I0ua7DLXKjUBasNZGQanerH7dI3oUtEjymqQOXUdWYGTL5hEC2fCC5VnTiz/
-X-Gm-Message-State: AOJu0YxTi6vorbjvFst47DCm4+YEqCtfsy9eHPZPfVZBV7LJb2MIyX4/
-	ahxwvti93vG4bBeFEMwnGv4QVEikhDBAgqTzutnfhIxNkGaBz8EM6U7KXyorH/uq0ssbUO2Pmfi
-	TohI+POhiWrmAcqj9XIR/bmzS2AyuahRO/p2vVA==
-X-Google-Smtp-Source: AGHT+IFPXaGhgnB1O38F+OQxY8qufXLZWG9hoZgdNA43kJdPxtWrN+zVXWCoEb1vrisLWBNqibFhFqz0HaYdqSO/ADM=
-X-Received: by 2002:a05:690c:397:b0:6af:a6aa:2b59 with SMTP id
- 00721157ae682-6b1ee4e050emr14403077b3.5.1723795405222; Fri, 16 Aug 2024
- 01:03:25 -0700 (PDT)
+	id 1sesAV-0000000CEr5-061r;
+	Fri, 16 Aug 2024 08:18:45 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id EEA6A62107;
+	Fri, 16 Aug 2024 08:18:41 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4A23FC4AF0C;
+	Fri, 16 Aug 2024 08:18:35 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1723796321;
+	bh=GonFGzxM4BBjGyFw4yrLw/w1GcbIfc11E9GHQPxxnGM=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=fvJcOChx3U/+8g/XPJc5nDucCdoEejHqfKrfp7SvniPXp+rz1IthxHo7dLrkvRgBG
+	 6xsftIbYaMNGLrJZXMsxLHuhoIUnhhoBXJRzhsa6o79w79fA+8XARgrSJnxhjWEFzB
+	 lHi1XT5nXg38zMrZ9xIjmySqTsxBItU9Ug4B3PpN+TcziIDxgq83G0DMMEPOWoef/2
+	 +0t/ib/e9AuSN395HLxVasidrhQCJkuj/5KsCRgAco3yMp8S3GjCCuqkraXSXyP81b
+	 77tl4nktYNSYEMNgTl/lrgHIOFqu6whLshr+UYwYcmRzC09d9nooL236ZqClCykxWH
+	 aVbC2Ywn2cO0A==
+Message-ID: <525e1561-367b-4890-958b-872bf4922355@kernel.org>
+Date: Fri, 16 Aug 2024 10:18:30 +0200
 MIME-Version: 1.0
-References: <20240810211438.286441-1-heiko@sntech.de> <20240810211438.286441-2-heiko@sntech.de>
- <172340442666.7060.12608274118090495917.b4-ty@linaro.org> <12584345.NizCu2HIMA@diego>
-In-Reply-To: <12584345.NizCu2HIMA@diego>
-From: Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
-Date: Fri, 16 Aug 2024 10:03:14 +0200
-Message-ID: <CACMJSesFVdJDkJXyC4o5NZxeDB8kkg6Ks0_x6G1Bywr+_ONZVw@mail.gmail.com>
-Subject: Re: [PATCH 1/2] dt-bindings: eeprom: at24: Add compatible for Giantec GT24C04A
-To: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>
-Cc: Bartosz Golaszewski <brgl@bgdev.pl>, robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org, 
-	ukleinek@debian.org, linux-i2c@vger.kernel.org, devicetree@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 1/2] dt-bindings: eeprom: at24: Add compatible for Giantec
+ GT24C04A
+To: Bartosz Golaszewski <bartosz.golaszewski@linaro.org>,
+ =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>
+Cc: Bartosz Golaszewski <brgl@bgdev.pl>, robh@kernel.org, krzk+dt@kernel.org,
+ conor+dt@kernel.org, ukleinek@debian.org, linux-i2c@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+References: <20240810211438.286441-1-heiko@sntech.de>
+ <20240810211438.286441-2-heiko@sntech.de>
+ <172340442666.7060.12608274118090495917.b4-ty@linaro.org>
+ <12584345.NizCu2HIMA@diego>
+ <CACMJSesFVdJDkJXyC4o5NZxeDB8kkg6Ks0_x6G1Bywr+_ONZVw@mail.gmail.com>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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 fv0=
+In-Reply-To: <CACMJSesFVdJDkJXyC4o5NZxeDB8kkg6Ks0_x6G1Bywr+_ONZVw@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240816_010327_400759_A65F097D 
-X-CRM114-Status: GOOD (  13.80  )
+X-CRM114-CacheID: sfid-20240816_011843_251185_62219BE4 
+X-CRM114-Status: UNSURE (   8.22  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,32 +119,45 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gVGh1LCAxNSBBdWcgMjAyNCBhdCAxODo0OCwgSGVpa28gU3TDvGJuZXIgPGhlaWtvQHNudGVj
-aC5kZT4gd3JvdGU6Cj4KPiBIaSwKPgo+IEFtIFNvbm50YWcsIDExLiBBdWd1c3QgMjAyNCwgMjE6
-Mjc6MTMgQ0VTVCBzY2hyaWViIEJhcnRvc3ogR29sYXN6ZXdza2k6Cj4gPiBGcm9tOiBCYXJ0b3N6
-IEdvbGFzemV3c2tpIDxiYXJ0b3N6LmdvbGFzemV3c2tpQGxpbmFyby5vcmc+Cj4gPgo+ID4KPiA+
-IE9uIFNhdCwgMTAgQXVnIDIwMjQgMjM6MTQ6MzcgKzAyMDAsIEhlaWtvIFN0dWVibmVyIHdyb3Rl
-Ogo+ID4gPiBUaGUgZ3QyNGMwNGEgaXMganVzdCB5ZXQgYW5vdGhlciAyNDA0IGNvbXBhdGlibGUg
-ZWVwcm9tLCBhbmQgZG9lcyBub3QKPiA+ID4gZm9sbG93IHRoZSBnZW5lcmljIG5hbWluZyBtYXRj
-aGluZywgc28gYWRkIGEgc2VwYXJhdGUgY29tcGF0aWJsZSBmb3IgaXQuCj4gPiA+Cj4gPiA+Cj4g
-Pgo+ID4gQXBwbGllZCwgdGhhbmtzIQo+ID4KPiA+IFsxLzJdIGR0LWJpbmRpbmdzOiBlZXByb206
-IGF0MjQ6IEFkZCBjb21wYXRpYmxlIGZvciBHaWFudGVjIEdUMjRDMDRBCj4gPiAgICAgICBjb21t
-aXQ6IGE4MjVkZWEyY2QyN2EzMGU0OTgxNmYxOGI3YmMxNjU0NWQ1ZjBmODkKPgo+IGp1c3QgZm9y
-IG15IHVuZGVyc3RhbmRpbmcsIHdoZXJlIGlzIHRoaXMgY29tbWl0IGxpdmluZyBub3c/Cj4KPiBC
-ZWNhdXNlIGxpbnV4IG5leHQgc2VlbXMgdG8ga25vdyBpdCBbMF0sIGJ1dCBhbHNvIHNheXMgdGhh
-dAo+ICJOb3RpY2U6IHRoaXMgb2JqZWN0IGlzIG5vdCByZWFjaGFibGUgZnJvbSBhbnkgYnJhbmNo
-LiIKPgo+Cj4gVGhhbmtzCj4gSGVpa28KPgo+IFswXSBodHRwczovL2dpdC5rZXJuZWwub3JnL3B1
-Yi9zY20vbGludXgva2VybmVsL2dpdC9uZXh0L2xpbnV4LW5leHQuZ2l0L2NvbW1pdC8/aWQ9YTgy
-NWRlYTJjZDI3YTMwZTQ5ODE2ZjE4YjdiYzE2NTQ1ZDVmMGY4OQo+Cj4KCkl0IGxpdmVzIGluIG15
-IGtlcm5lbC5vcmcgdHJlZVsxXS4gWW91IGNhbiBnZXQgdGhhdCBpbmZvcm1hdGlvbiBmcm9tCnRo
-ZSBNQUlOVEFJTkVSUyBmaWxlLgoKQmFydAoKWzFdIGh0dHBzOi8vZ2l0Lmtlcm5lbC5vcmcvcHVi
-L3NjbS9saW51eC9rZXJuZWwvZ2l0L2JyZ2wvbGludXguZ2l0L2xvZy8/aD1hdDI0L2Zvci1uZXh0
-CgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1y
-b2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpo
-dHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlw
-Cg==
+On 16/08/2024 10:03, Bartosz Golaszewski wrote:
+>>>
+>>> Applied, thanks!
+>>>
+>>> [1/2] dt-bindings: eeprom: at24: Add compatible for Giantec GT24C04A
+>>>       commit: a825dea2cd27a30e49816f18b7bc16545d5f0f89
+>>
+>> just for my understanding, where is this commit living now?
+>>
+>> Because linux next seems to know it [0], but also says that
+>> "Notice: this object is not reachable from any branch."
+>>
+>>
+>> Thanks
+>> Heiko
+>>
+>> [0] https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git/commit/?id=a825dea2cd27a30e49816f18b7bc16545d5f0f89
+>>
+>>
+> 
+> It lives in my kernel.org tree[1]. You can get that information from
+> the MAINTAINERS file.
+
+Or use simple template - only one entry needed:
+b4.thanks-commit-url-mask = https://git.kernel.org/MR_FOO/linux/c/%s
+
+page 44 of PDF:
+https://lpc.events/event/17/contributions/1498/#preview:2452
+
+Best regards,
+Krzysztof
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
