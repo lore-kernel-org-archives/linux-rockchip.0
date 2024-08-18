@@ -4,101 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8D063C52D7C
-	for <linux-rockchip@archiver.kernel.org>; Sun, 18 Aug 2024 17:39:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 30D8BC52D7C
+	for <linux-rockchip@archiver.kernel.org>; Sun, 18 Aug 2024 18:14:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=+QZQtxqBur+3dx5KEeFBwtsRY8RLkZdt33eHpZa6crk=; b=F3LDt6pmBmUp9d
-	HIhvE4wGlI7p8Aq+SXoZIMFvYQyAHJU3XPy0ubGe63jnlbA3pilJriWmKWmpJSJXkFusVHWQvOg/7
-	ocrQH0NUh7yaL76mdvC0KF8suvHmYxFbhwQEJ9WhP41bnNsbBuvWja5LYQ2rcpI4NHIfLUxo57cFu
-	2HlTh+JXdwEQQPhzfNBt37ABF9Yeop1xUroQgd8o0sFXkNNxA37JhsKB8sA5myxziuYQQCXu7DQhI
-	YdcAdB44irKsAMzBVNbnhXuLfXASNFkYXtseNPwAj7vD5keWCpdYrsNkVX6XHvAgHtGpUW2NWYVCn
-	Mq1SQQniDetaYbAF9ooQ==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=gvTBsQObSLhoot09ndsNSNgtRjo6WNofy56fbszYJaA=; b=RBA1H9MNMCR6FO
+	FmUpYapFFkIpS8gmknzabIijoWzotFsPV4ZDXpfO9Fi04Sf4dWIunYlvLKMvRqNA9dmdgNvYWxdRZ
+	VzpBgtNbrKLpbF+141atSKnE5uZ2Q1DBfrtfQOKBVLbpAomH1YkE4NvBq9NKicChTIqD5EE1MXb2k
+	pok+LxIUn8+D8VHKwc8hsD8oux/EY5TtVDHWjJmQCSB1BtQznP0CU2+KdQZRJKNrbvYOBN3JgpBbB
+	dvp9SHrvsPS3X+jqVdW8ZAh1GO3kVxfqwH712xr/7j0QzMgo/0Ma8dv4EMFknHla/AAv64bapOB7o
+	R0mHHZdvBFcy5mTSydsw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sfjsC-0000000GvKU-0dx6;
-	Sun, 18 Aug 2024 17:39:24 +0000
-Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
+	id 1sfkPv-0000000GxCK-3VXK;
+	Sun, 18 Aug 2024 18:14:15 +0000
+Received: from mail-qt1-x831.google.com ([2607:f8b0:4864:20::831])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sfjjX-0000000GtDC-47By
-	for linux-rockchip@lists.infradead.org;
-	Sun, 18 Aug 2024 17:30:29 +0000
-Received: by mail-wm1-x331.google.com with SMTP id 5b1f17b1804b1-429da8b5feaso38707875e9.2
-        for <linux-rockchip@lists.infradead.org>; Sun, 18 Aug 2024 10:30:27 -0700 (PDT)
+	id 1sfkPs-0000000GxBr-4Bn4;
+	Sun, 18 Aug 2024 18:14:14 +0000
+Received: by mail-qt1-x831.google.com with SMTP id d75a77b69052e-454b3d8999aso10427881cf.1;
+        Sun, 18 Aug 2024 11:14:12 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1724002226; x=1724607026; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=aw4Fptl98pttOY10KCxMd4Nms4w6E/3GwtsKk+Wk4vc=;
-        b=fZUuslv+Bqh2YWWx/ERQtYgL986bhlOQs3QcfaqXb/KQ5i4t3euYExxkdT6xMdVOYy
-         Yw1B42uv0J0GrvXLyusZl7upDewhmQbzY9eWZyUhPIhsU+Ney33jjUwG0Xls8iPHD1lq
-         X2uzwUtxRWiKlLSVlYU1RyFxd+A0jEjXdQ/2gfjPd/hs5w0DLHyYLv3eqb0QwxA20S8Z
-         vW/s/kPPB9PcFO/ojPiCl8GtVVx61rTlqLaKe+8iVqxMKpGnO7XvrF4uH1mU0jnsNJl6
-         I/18s5IwNsXdVtGpph/zUcEVt+9BUAHVgFS7ek2vzHsIfLdR0i9HejP0UP/DN5P+9DoZ
-         xSUg==
+        d=gmail.com; s=20230601; t=1724004851; x=1724609651; darn=lists.infradead.org;
+        h=cc:to:subject:message-id:date:from:mime-version:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=lx41hX8slHGqhq4v8T55HkEzecCy+7NRWvJePT1xy54=;
+        b=PPpQcGwZqZ7oehwaMd2xpXFF6nlG4hB/LhGe6k8ny+QTNQdjDKB6JXEf5SpTFON0Tf
+         LzZeBlR/piJ1F2qF6IEpXFAVwhR34qXf+0T+UdKfZo56C3z2I/iXW9szmnZfu6szyShs
+         nHTg12Y2tB755xdgpiiNtIxzMam3qRS8riqOS6WN7jKqOENL64kl7RVEwmXQsTdVurBN
+         o4eQIo0obqQP8fiN1OSzA7d565ENat5g/6ybYK33+9TALApBbuRsFIcWWOVr/1+GdHH/
+         xNSj2aB6MS/IkA0Uq1rojhkREgaGNmudK/MTznzAKcg8dJ6G7b4Xyda1Qx8QyaV5XrGm
+         Q+Xw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1724002226; x=1724607026;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=aw4Fptl98pttOY10KCxMd4Nms4w6E/3GwtsKk+Wk4vc=;
-        b=Y0CGVXGY6QikWY80VMY0IUXyzasYZdwLBBdmRZImqsVqLmzRbHzDmjvGbfjM78NiP1
-         aHpHKcTF2SsIMcP0JYT8Otp000NcfWyG+Adt60X0Av/w2rC8vlD67CLLid0wx3CJP/Ui
-         f7BB5Ad/GdAip1V52LYKn/9vWXhi3K37xZqB1HC9X/eIzlnTTRSZXPj33hes/wrofMxJ
-         l7TDJ+OoKJ8sXc9A5tAsIhew2BLe6ZCgDnbDXnTSRqCyGD1EHN6de9GC3YAQC/KqSYAU
-         ErJZbel0gTQmZRJvydakajp39bkHRF01MwHaiskzUf35EXignFJ/MKX/Sv5NntHnrpry
-         BEJg==
-X-Forwarded-Encrypted: i=1; AJvYcCVskOmpbVvTYqotYKdddJndTZS3Mkfvz0HUgQXHxp19wgm87w2Nnw/lb45Av2MjjkhldCtKkvuej+BhpVIOX5TBA1xThtLMgV/VLv2Uv3GCQkRD
-X-Gm-Message-State: AOJu0Yz+lhNRfB/m9qLBLhffSnb2iWqoIZoCEBVqBYuMiEX6TonQa935
-	Deb9ypNz0N79xB6n7CW5qXAUCOOCHu/qal/xj/FkrbYBCV2NKQybRQOGTL699vE=
-X-Google-Smtp-Source: AGHT+IFPilTQ7go8vvbQhelRsOizLG7WbbiYR3MYgpB7AkCObI0W33aHc2RPr2v9rpCg6UZ9TBfHgg==
-X-Received: by 2002:a05:600c:358b:b0:428:e30:fa8d with SMTP id 5b1f17b1804b1-429ed784090mr75921025e9.6.1724002226203;
-        Sun, 18 Aug 2024 10:30:26 -0700 (PDT)
-Received: from krzk-bin.. ([178.197.215.209])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-429ded7d5a9sm134999915e9.43.2024.08.18.10.30.24
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 18 Aug 2024 10:30:25 -0700 (PDT)
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-To: Serge Semin <fancer.lancer@gmail.com>,
-	Michael Turquette <mturquette@baylibre.com>,
-	Stephen Boyd <sboyd@kernel.org>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Charles Keepax <ckeepax@opensource.cirrus.com>,
-	Richard Fitzgerald <rf@opensource.cirrus.com>,
-	Geert Uytterhoeven <geert+renesas@glider.be>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Magnus Damm <magnus.damm@gmail.com>,
-	patches@opensource.cirrus.com,
-	Elaine Zhang <zhangqing@rock-chips.com>,
-	Gabriel Fernandez <gabriel.fernandez@foss.st.com>,
-	linux-mips@vger.kernel.org,
-	linux-clk@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-renesas-soc@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-stm32@st-md-mailman.stormreply.com
-Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Subject: [PATCH 5/5] dt-bindings: clock: st,stm32mp1-rcc: add top-level constraints
-Date: Sun, 18 Aug 2024 19:30:14 +0200
-Message-ID: <20240818173014.122073-5-krzysztof.kozlowski@linaro.org>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20240818173014.122073-1-krzysztof.kozlowski@linaro.org>
-References: <20240818173014.122073-1-krzysztof.kozlowski@linaro.org>
+        d=1e100.net; s=20230601; t=1724004851; x=1724609651;
+        h=cc:to:subject:message-id:date:from:mime-version:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=lx41hX8slHGqhq4v8T55HkEzecCy+7NRWvJePT1xy54=;
+        b=uMMSNPFml/m0uTrDsjIdaRhhbL3pMUIcZaITYKQwRxKLSd2/4QJ4X/tJvEl15LTnyh
+         gwAKfSrjeG6sf1p4Ss8KxMfSAgUQJ9qQ1McMtohoiIbs9LBuRidV+isxyYWvahJgSH9v
+         KavDR+tW6+DWWJ1grVsx0ecraHzlYWocEvAOMepKrDBwhfx52SX8pVUSx5i5dieBsMnS
+         fZqF29FDBJpmoNadU7uhFc3TqXmyPPRTV64wqxQOT4GMwgrvpBEH58aItvavm8Ovrfa8
+         83+K8Z7oujvXFwsxwU+JOKQfuAMNVg07bFTalAXQEYnwEbyRMG+MnAgUzaOn2apgOa4y
+         8UOA==
+X-Gm-Message-State: AOJu0YytR+P6UdF8LHmimac1/mbyX53yzitEkO6LYzjSaZpVv9CW18AC
+	ZHjohS2BjtNGj2/Kptp4rxCAaR2fYd0Fx3rMEEedKnW9MqzJicY0ggWuOH4BoptWxfsvNvb88Et
+	Do77oVhnglF/vKN0BcZVnOUIRTMevr0w7
+X-Google-Smtp-Source: AGHT+IEBL625KcD1kpuBiCMK4VjFg/m1u/6ZmbtETY/JKUjKcrCFAc4j1uJJDGmQV/5EKd7mTqAbcleQO/3GhMql7Pg=
+X-Received: by 2002:a05:622a:428a:b0:44f:edad:3a23 with SMTP id
+ d75a77b69052e-453743a9f1fmr105192001cf.48.1724004851046; Sun, 18 Aug 2024
+ 11:14:11 -0700 (PDT)
 MIME-Version: 1.0
+From: Vicente Bergas <vicencb@gmail.com>
+Date: Sun, 18 Aug 2024 20:13:59 +0200
+Message-ID: <CAAMcf8Dts3=6CxNCLZBvXsdFHpaOs9mL2NJ8TMPU5+duray6-g@mail.gmail.com>
+Subject: [BUG] Rockchip SPI: Runtime PM usage count underflow!
+To: "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, linux-spi@vger.kernel.org, 
+	Mark Brown <broonie@kernel.org>, Heiko Stuebner <heiko@sntech.de>
+Cc: linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, 
+	Linux Kernel Mailing List <linux-kernel@vger.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240818_103028_062816_C49870B8 
-X-CRM114-Status: GOOD (  10.37  )
+X-CRM114-CacheID: sfid-20240818_111413_139912_7E8E3DB2 
+X-CRM114-Status: UNSURE (   6.19  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -115,40 +86,19 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Properties with variable number of items per each device are expected to
-have widest constraints in top-level "properties:" block and further
-customized (narrowed) in "if:then:".  Add missing top-level constraints
-for clocks and clock-names.
+Hi,
+i am a user of the CONFIG_SPI_SPIDEV device.
+It stopped working between 6.8 and 6.10.5.
+The SPI bus itself reports no errors to userspace, but no devices
+appear connected to the bus.
+The platform used is RK3328.
+The only spi-related message in dmesg is:
+rockchip-spi ff190000.spi: Runtime PM usage count underflow!
 
-Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
----
- .../devicetree/bindings/clock/st,stm32mp1-rcc.yaml     | 10 ++++++++--
- 1 file changed, 8 insertions(+), 2 deletions(-)
+Please, can somebody review this issue?
 
-diff --git a/Documentation/devicetree/bindings/clock/st,stm32mp1-rcc.yaml b/Documentation/devicetree/bindings/clock/st,stm32mp1-rcc.yaml
-index 5194be0b410e..9b3aaae546cb 100644
---- a/Documentation/devicetree/bindings/clock/st,stm32mp1-rcc.yaml
-+++ b/Documentation/devicetree/bindings/clock/st,stm32mp1-rcc.yaml
-@@ -60,8 +60,14 @@ properties:
-           - st,stm32mp1-rcc
-           - st,stm32mp13-rcc
-       - const: syscon
--  clocks: true
--  clock-names: true
-+
-+  clocks:
-+    minItems: 1
-+    maxItems: 5
-+
-+  clock-names:
-+    minItems: 1
-+    maxItems: 5
- 
-   reg:
-     maxItems: 1
--- 
-2.43.0
-
+Regards,
+  Vicente.
 
 _______________________________________________
 Linux-rockchip mailing list
