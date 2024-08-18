@@ -4,63 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8BA5DC531DF
-	for <linux-rockchip@archiver.kernel.org>; Sun, 18 Aug 2024 21:16:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 941A7C52D7C
+	for <linux-rockchip@archiver.kernel.org>; Sun, 18 Aug 2024 22:30:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
+	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=mp+WPt4ebkMELXc2sbqrT9JtNVDCtSKc2fzhqLqDDMg=; b=2ubbVQ/Ym06INO
-	ThnPOkFYHu8spLfU+3YHue3Vadc9xDVCE6xnJMPoltBkHYyQXzA1c4tO69xqHVP9OuEv/Dhnr61SE
-	hSeFd+MD0WJ+BDIpNy8qYbZFDbdMPbWZf0srkW2yEblB8iYe4BNxJu/M/J3OWnxQYlq2PwkNDmTMR
-	6PFngvvzRS9UHg8rEjxxHs+Q6GypcvU12QMWFxBCg+6sHlNS6g+E1hWZ2I8ST+NT9Gxoo+ZfPa7ex
-	6VoIHLe6TXaJSds2A1W1BRE7qSE1FeoWGQHLbR8IfklbvJwyRmSOHkLV/QrdGJDIRyyAeavYBlud4
-	P7EdvkM894c04OLZJkbg==;
+	List-Owner; bh=LJ/TOikrDBAXPHTg+V2xEp4ENEQ0mhJ1S3cOWgfqpvs=; b=33i/XTMn2n4rkY
+	kk5aN3CziLYvScp5ZMh4fYfRMC5WnqUQJCo2pN/22+1kZh/8NFOPpYJEBTjyKBnsK9XIdaS3u+hXD
+	GXAc71uKcRzfCwhfX9FmBBFbDifNKnOZIWWD5iE7ADnb7uKxuGQolJsvEDUkOnziz/w3QnVMGnPb9
+	QdfcwFnzJ9UJbAbXjdYae4fEIxlLWErCBiSRs4BlEPaZYYdNOZ3Tr3eJe+8/HzYN3DX4G8Q8vRBVg
+	cyuMZb1rv8vHbw4Vh20l8a52aXxQHB9gBAWWM0qac1nGYaYM/Lw3Nc4DnZ4pQxpjLcDKBwo4La4fI
+	Bed6owv44j2A8B0FmT6g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sfnGc-0000000HHtr-1TuP;
-	Sun, 18 Aug 2024 21:16:50 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1sfoQF-0000000HRac-3Mvy;
+	Sun, 18 Aug 2024 22:30:52 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sfnFs-0000000HHlg-3oAW;
-	Sun, 18 Aug 2024 21:16:09 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
-	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=tw/4lQQeW1YOwp5kih2jcJwbHpRnZLldiL+qxm7D/ss=; b=pMP5a3s7ErLWhc6t52Ur7h8ZvE
-	lw8pNJDbDqNy1v472TSBUqP0wvGQanZharekO2Mf+IABMYeuGqKDn7sjgrVKI43QEUpQTv9RqynFC
-	Nzsine5ZMHZRnikDcLMJjRmaxSb74lxvlm+fACS+aRXhy8fKOPn7CCF/q/4J54IePhsFicE/ygz1x
-	BgKJYUPplgQAXh1SyVKhUU2Qjb6Bg7jxjK/DEGvgOs6RKeMQy7eekrMAdHkwvjaabsNNphnojZOOy
-	zExi0I9ZiigaGxUecfLZuV9ZjDO9bMByc+vNZL7YHPXozDZPu8MmkA1t+6E1zTzImzJCOF7uhCCpu
-	fm0E9Q5Q==;
-Received: from i53875a9f.versanet.de ([83.135.90.159] helo=diego.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1sfnFZ-0004Bo-Cu; Sun, 18 Aug 2024 23:15:45 +0200
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: Lee Jones <lee@kernel.org>
-Cc: jdelvare@suse.com, linux@roeck-us.net, dmitry.torokhov@gmail.com,
- pavel@ucw.cz, robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
- ukleinek@debian.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-hwmon@vger.kernel.org,
- linux-input@vger.kernel.org, linux-leds@vger.kernel.org
-Subject: Re: [PATCH v4 2/7] mfd: add base driver for qnap-mcu devices
-Date: Sun, 18 Aug 2024 23:15:58 +0200
-Message-ID: <2875938.88bMQJbFj6@diego>
-In-Reply-To: <20240816171336.GF5853@google.com>
-References: <20240810184743.277248-1-heiko@sntech.de>
- <20240810184743.277248-3-heiko@sntech.de> <20240816171336.GF5853@google.com>
+	id 1sfoQA-0000000HRWl-0PwB;
+	Sun, 18 Aug 2024 22:30:47 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1724020219; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=lyFfFPx4YDENcZT6LyTuC5t3BYV7vf5LXCFyzKnyZGnEAf4PdEjsKh1yVJF4KPvPMCAOylnW77Tb4ULetcX/KTAJtR9nQEv91U1/6FroQN0mTx4QflhTq8oXltWfA6GKXSFMVUkGAGbS8DbXke/8vFjF15ajCQw4uxSsQtXuEwQ=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1724020219; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=GUxI7Nryt2fJIoARGtRz+5S3ET1E1hMLQbOdW+WClGA=; 
+	b=j36kkdoAtpoEgKCyrGHRrI03iJq6D2eA8PT+REWrMffW0jd3H+kgJ5qSFd3jMHmC5e3hU3PN37YaRvA8VythPOJrU1/ilVtq6TKjYqYJXHk8blL9ZVnr17kGjLc41xRVBB/SjAttPRk2ik5Cey1n/h9AP5D7IpVucD75iUx92/s=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=cristian.ciocaltea@collabora.com;
+	dmarc=pass header.from=<cristian.ciocaltea@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1724020219;
+	s=zohomail; d=collabora.com; i=cristian.ciocaltea@collabora.com;
+	h=From:From:Date:Date:Subject:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Message-Id:References:In-Reply-To:To:To:Cc:Cc:Reply-To;
+	bh=GUxI7Nryt2fJIoARGtRz+5S3ET1E1hMLQbOdW+WClGA=;
+	b=He/xZeshsZQS+JdN6+c/r4Cnz8sVRqqoptGPQEorSFk4CrnAnC+gV7ay8qNQgBgG
+	s0TOO8JQHeg1Qez14IAMDE21qG+qLMsdXEbpSPA14ZjWbz7GZGOrcrL6sMhIi58Vz10
+	zXFjJ+Ye3keoNk0OWo27I/DCN6pVkHPEVWWxxOY4=
+Received: by mx.zohomail.com with SMTPS id 1724020217463976.332429107037;
+	Sun, 18 Aug 2024 15:30:17 -0700 (PDT)
+From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+Date: Mon, 19 Aug 2024 01:29:28 +0300
+Subject: [PATCH v4 1/4] dt-bindings: display: bridge: Add schema for
+ Synopsys DW HDMI QP TX IP
 MIME-Version: 1.0
+Message-Id: <20240819-b4-rk3588-bridge-upstream-v4-1-6417c72a2749@collabora.com>
+References: <20240819-b4-rk3588-bridge-upstream-v4-0-6417c72a2749@collabora.com>
+In-Reply-To: <20240819-b4-rk3588-bridge-upstream-v4-0-6417c72a2749@collabora.com>
+To: Andrzej Hajda <andrzej.hajda@intel.com>, 
+ Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
+ Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
+ David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>, 
+ Sandy Huang <hjc@rock-chips.com>, 
+ =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
+ Andy Yan <andy.yan@rock-chips.com>, Rob Herring <robh@kernel.org>, 
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Mark Yao <markyao0591@gmail.com>, 
+ Sascha Hauer <s.hauer@pengutronix.de>
+Cc: dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+ devicetree@vger.kernel.org, kernel@collabora.com, 
+ Alexandre ARNOUD <aarnoud@me.com>, Luis de Arquer <ldearquer@gmail.com>
+X-Mailer: b4 0.14.1
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240818_141605_012265_EF0C8CCE 
-X-CRM114-Status: GOOD (  33.48  )
+X-CRM114-CacheID: sfid-20240818_153046_174325_C4FB8964 
+X-CRM114-Status: GOOD (  11.37  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,157 +92,114 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Lee,
+Add dt-binding schema containing the common properties for the Synopsys
+DesignWare HDMI QP TX controller.
 
-thanks a lot for your review,
+Note this is not a full dt-binding specification, but is meant to be
+referenced by platform-specific bindings for this IP core.
 
-Am Freitag, 16. August 2024, 19:13:36 CEST schrieb Lee Jones:
-> On Sat, 10 Aug 2024, Heiko Stuebner wrote:
+Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+---
+ .../display/bridge/synopsys,dw-hdmi-qp.yaml        | 88 ++++++++++++++++++++++
+ 1 file changed, 88 insertions(+)
 
+diff --git a/Documentation/devicetree/bindings/display/bridge/synopsys,dw-hdmi-qp.yaml b/Documentation/devicetree/bindings/display/bridge/synopsys,dw-hdmi-qp.yaml
+new file mode 100644
+index 000000000000..771f7fba6c50
+--- /dev/null
++++ b/Documentation/devicetree/bindings/display/bridge/synopsys,dw-hdmi-qp.yaml
+@@ -0,0 +1,88 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/display/bridge/synopsys,dw-hdmi-qp.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: Common Properties for Synopsys DesignWare HDMI QP TX Controller IP
++
++maintainers:
++  - Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
++
++description: |
++  The Synopsys DesignWare HDMI 2.1 Quad-Pixel (QP) TX Controller IP core
++  supports the following features, among others:
++
++  * Fixed Rate Link (FRL)
++  * Display Stream Compression (DSC)
++  * 4K@120Hz and 8K@60Hz video modes
++  * Variable Refresh Rate (VRR) including Quick Media Switching (QMS)
++  * Fast Vactive (FVA)
++  * SCDC I2C DDC access
++  * Multi-stream audio
++  * Enhanced Audio Return Channel (EARC)
++
++  Note this is not a full dt-binding specification, but is meant to be
++  referenced by platform-specific bindings for this IP core.
++
++properties:
++  reg:
++    maxItems: 1
++
++  clocks:
++    minItems: 4
++    maxItems: 6
++    items:
++      - description: Peripheral/APB bus clock
++      - description: EARC RX biphase clock
++      - description: Reference clock
++      - description: Audio interface clock
++    additionalItems: true
++
++  clock-names:
++    minItems: 4
++    maxItems: 6
++    items:
++      - const: pclk
++      - const: earc
++      - const: ref
++      - const: aud
++    additionalItems: true
++
++  interrupts:
++    minItems: 4
++    maxItems: 5
++    items:
++      - description: AVP Unit interrupt
++      - description: CEC interrupt
++      - description: eARC RX interrupt
++      - description: Main Unit interrupt
++    additionalItems: true
++
++  interrupt-names:
++    minItems: 4
++    maxItems: 5
++    items:
++      - const: avp
++      - const: cec
++      - const: earc
++      - const: main
++    additionalItems: true
++
++  ports:
++    $ref: /schemas/graph.yaml#/properties/ports
++
++    properties:
++      port@0:
++        $ref: /schemas/graph.yaml#/properties/port
++        description: Video port for RGB/YUV input.
++
++      port@1:
++        $ref: /schemas/graph.yaml#/properties/port
++        description: Video port for HDMI/eDP output.
++
++    required:
++      - port@0
++      - port@1
++
++additionalProperties: true
 
-> > +/*
-> > + * MFD core driver for the MCU in Qnap NAS devices that is connected
-> 
-> No such thing as an "MFD".  Please describe the device.
-> 
-> Is it QNAP or Qnap?  Please be consistent.
-
-Looks like QNAP spells itself in all upper case on their website, so I did
-go with that
-
-
-> > + * via a dedicated UART port
-> > + *
-> > + * Copyright (C) 2024 Heiko Stuebner <heiko@sntech.de>
-> > + */
-> > +
-> > +#include <linux/export.h>
-> 
-> What is this used for?
-
-the #define EXPORT_SYMBOL_GPL that gets used below lives in that file.
-
-
-> > + * struct qnap_mcu - QNAP NAS embedded controller
-> > + *
-> > + * @serdev:	Pointer to underlying serdev
-> > + * @bus_lock:	Lock to serialize access to the device
-> > + * @reply_lock:	Lock protecting @reply
-> > + * @reply:	Pointer to memory to store reply payload
-> > + * @variant:	Device variant specific information
-> > + * @version:	MCU firmware version
-> > + */
-> > +struct qnap_mcu {
-> > +	struct serdev_device *serdev;
-> > +	/* Serialize access to the device */
-> 
-> Comments and K-doc is OOT.
-
-I don't really know what OOT means, but I guess you mean that only
-one or the other is needed?
-
-Though somehow checkpatch was very unhappy without those comments directly
-above the mutex declaration. But I can of course remove these additional
-comments
-
-
-> > +	mutex_lock(&mcu->reply_lock);
-> > +	if (!reply) {
-> > +		dev_warn(dev, "received %zu bytes, we were not waiting for\n",
-> > +			 size);
-> > +		mutex_unlock(&mcu->reply_lock);
-> 
-> guard(mutex)?
-
-thanks a lot for pointing out this neat feature
-
-
-> > +int qnap_mcu_exec_with_ack(struct qnap_mcu *mcu,
-> > +			   const u8 *cmd_data, size_t cmd_data_size)
-> > +{
-> > +	u8 ack[2];
-> > +	int ret;
-> > +
-> > +	ret = qnap_mcu_exec(mcu, cmd_data, cmd_data_size, ack, sizeof(ack));
-> > +	if (ret)
-> > +		return ret;
-> > +
-> > +	/* Should return @0 */
-> > +	if (ack[0] != 0x40 || ack[1] != 0x30) {
-> 
-> Why not use the char variants?
-
-Consistency, I guess.
-
-While the basic commands _seem_ to use values equivalent to ascii
-characters, I've also seen other commands where the values are not based
-on those but use real numbers / hex values for data instead.
-
-So I opted to go with hex values for all and kept the comments, if someone
-wants to get started talking to their MCU via a terminal.
-
-
-> > +
-> > +/*
-> > + * The MCU controls power to the peripherals but not the CPU.
-> > + *
-> > + * So using the pmic to power off the system keeps the MCU and hard-drives
-> > + * running. This also then prevents the system from turning back on until
-> > + * the MCU is turned off by unplugging the power-cable.
-> > + * Turning off the MCU alone on the other hand turns off the hard-drives,
-> > + * LEDs, etc while the main SoC stays running - including its network ports.
-> > + */
-> > +static int qnap_mcu_power_off(struct sys_off_data *data)
-> > +{
-> > +	struct qnap_mcu *mcu = data->cb_data;
-> > +	int ret;
-> > +	u8 cmd[] = {
-> > +		[0] = 0x40, /* @ */
-> > +		[1] = 0x43, /* C */
-> > +		[2] = 0x30  /* 0 */
-> > +	};
-> 
-> u8 cmd [] = { '@', 'C', '0' };  ?
-
-see above.
-
-I guess this is a style choice, we could of course go with
-	u8 cmd[] = { 0x40, 0x43, 0x30 }
-if you prefer that.
-
-
-> > +static int qnap_mcu_probe(struct serdev_device *serdev)
-> > +{
-> > +	struct device *dev = &serdev->dev;
-> > +	struct qnap_mcu *mcu;
-> > +	int ret;
-> > +
-> > +	mcu = devm_kzalloc(dev, sizeof(*mcu), GFP_KERNEL);
-> > +	if (!mcu)
-> > +		return -ENOMEM;
-> > +
-> > +	mcu->serdev = serdev;
-> > +	dev_set_drvdata(dev, mcu);
-> > +
-> > +	mcu->variant = of_device_get_match_data(dev);
-> > +	if (!mcu->variant)
-> > +		return -ENODEV;
-> > +
-> > +	mutex_init(&mcu->bus_lock);
-> > +	mutex_init(&mcu->reply_lock);
-> 
-> Can you not get away with a single lock?
-
-Of course all behaviour information of the device come from observation
-alone right now, but it does look like the MCU does not cause
-transmissions of its own, but only as a reply to a sent command.
-
-So yes, I can probably do away with the whole reply assignment and just
-use one dataset and thus just the main lock.
-
-
-Heiko
-
+-- 
+2.46.0
 
 
 _______________________________________________
