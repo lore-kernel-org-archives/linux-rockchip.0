@@ -4,62 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7D38FC5320E
-	for <linux-rockchip@archiver.kernel.org>; Sun, 18 Aug 2024 20:26:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8BA5DC531DF
+	for <linux-rockchip@archiver.kernel.org>; Sun, 18 Aug 2024 21:16:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
-	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=0Qz4qHlqFMkMTRkmWg3n+Q9/BeYf1eaKajJyCaCLgpM=; b=mLQTrBToOr0MkHJz0q+MvQ/iHP
-	9MqiMsG8bW4ZwPOTCNnIGZP3+R4BDoduT3xWa26MgGxoIewhFEUkU8F7nwpVpeHHuThN/dYCEkSn+
-	5p3h/TMsV5ruZwh2OcKK6oZrzhHsB7CPVLpB9fBx2pCpUulb4Ev/2NyyzlQimxAi2Oo/cElGDtHDg
-	nIyewAf59HBMFsdB5oxqJlNMkDETU2qPxIRH9gIs3tX7Rnr69TzMcDWSyqsNz3PDWydNbsd3okST0
-	jvFFPLl/IRKfEENg5q2l1OMmYDNjevCaGQG7EU5AIT/tfn33lGiJnwgy/BcBE4045o8sk24C3lSK2
-	FWmqwYkg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=mp+WPt4ebkMELXc2sbqrT9JtNVDCtSKc2fzhqLqDDMg=; b=2ubbVQ/Ym06INO
+	ThnPOkFYHu8spLfU+3YHue3Vadc9xDVCE6xnJMPoltBkHYyQXzA1c4tO69xqHVP9OuEv/Dhnr61SE
+	hSeFd+MD0WJ+BDIpNy8qYbZFDbdMPbWZf0srkW2yEblB8iYe4BNxJu/M/J3OWnxQYlq2PwkNDmTMR
+	6PFngvvzRS9UHg8rEjxxHs+Q6GypcvU12QMWFxBCg+6sHlNS6g+E1hWZ2I8ST+NT9Gxoo+ZfPa7ex
+	6VoIHLe6TXaJSds2A1W1BRE7qSE1FeoWGQHLbR8IfklbvJwyRmSOHkLV/QrdGJDIRyyAeavYBlud4
+	P7EdvkM894c04OLZJkbg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sfmUE-0000000HCwJ-1T14;
-	Sun, 18 Aug 2024 20:26:50 +0000
-Received: from mail.manjaro.org ([116.203.91.91])
+	id 1sfnGc-0000000HHtr-1TuP;
+	Sun, 18 Aug 2024 21:16:50 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sfmTW-0000000HCsC-0UvR;
-	Sun, 18 Aug 2024 20:26:09 +0000
+	id 1sfnFs-0000000HHlg-3oAW;
+	Sun, 18 Aug 2024 21:16:09 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+	List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=tw/4lQQeW1YOwp5kih2jcJwbHpRnZLldiL+qxm7D/ss=; b=pMP5a3s7ErLWhc6t52Ur7h8ZvE
+	lw8pNJDbDqNy1v472TSBUqP0wvGQanZharekO2Mf+IABMYeuGqKDn7sjgrVKI43QEUpQTv9RqynFC
+	Nzsine5ZMHZRnikDcLMJjRmaxSb74lxvlm+fACS+aRXhy8fKOPn7CCF/q/4J54IePhsFicE/ygz1x
+	BgKJYUPplgQAXh1SyVKhUU2Qjb6Bg7jxjK/DEGvgOs6RKeMQy7eekrMAdHkwvjaabsNNphnojZOOy
+	zExi0I9ZiigaGxUecfLZuV9ZjDO9bMByc+vNZL7YHPXozDZPu8MmkA1t+6E1zTzImzJCOF7uhCCpu
+	fm0E9Q5Q==;
+Received: from i53875a9f.versanet.de ([83.135.90.159] helo=diego.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1sfnFZ-0004Bo-Cu; Sun, 18 Aug 2024 23:15:45 +0200
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+To: Lee Jones <lee@kernel.org>
+Cc: jdelvare@suse.com, linux@roeck-us.net, dmitry.torokhov@gmail.com,
+ pavel@ucw.cz, robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
+ ukleinek@debian.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-hwmon@vger.kernel.org,
+ linux-input@vger.kernel.org, linux-leds@vger.kernel.org
+Subject: Re: [PATCH v4 2/7] mfd: add base driver for qnap-mcu devices
+Date: Sun, 18 Aug 2024 23:15:58 +0200
+Message-ID: <2875938.88bMQJbFj6@diego>
+In-Reply-To: <20240816171336.GF5853@google.com>
+References: <20240810184743.277248-1-heiko@sntech.de>
+ <20240810184743.277248-3-heiko@sntech.de> <20240816171336.GF5853@google.com>
 MIME-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
-	t=1724012764;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=LoF+vbchm17LMfasv0YbGns6ehOlp2E0hnsjTQ7EaHg=;
-	b=V6jLkkeQuGWSmeFNRiuW2DjUeJl1EXtcalhwzICuy4nk9Y/aE5uajMMzQpvlDDAarDSxWv
-	PgqOnIGlIt3lh26j7ENfczvzcsWXwPjAdIbxj4on+sna1MZIaxFfDm+1IvPgSKmmlvieGm
-	7hXMpRjQGEfK8XpWARWTAAr2YU7EMcnlFGiPv4UNAto0PcG1QWb66K1uWRfRPnu5cUoyaG
-	m79uLxHPdFMpNbWfiAqsI06droltmBei5iJYtpgrWLsQGwY8NVkxOyDhkieKSnrxRR6Yfw
-	sdSP+vdEnpUXVfH7X3LBwt8W+gL/gVROptGdNdRlIYhjGdozTwuAn2WgKF1Z3A==
-Date: Sun, 18 Aug 2024 22:26:03 +0200
-From: Dragan Simic <dsimic@manjaro.org>
-To: Vicente Bergas <vicencb@gmail.com>
-Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
- linux-spi@vger.kernel.org, Mark Brown <broonie@kernel.org>, Heiko Stuebner
- <heiko@sntech.de>, linux-arm-kernel <linux-arm-kernel@lists.infradead.org>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>
-Subject: Re: [BUG] Rockchip SPI: Runtime PM usage count underflow!
-In-Reply-To: <CAAMcf8CpkZHY6Awyo3LWZXfkqbZ1z3YcvF5W_08uv-XNov2j-A@mail.gmail.com>
-References: <CAAMcf8Dts3=6CxNCLZBvXsdFHpaOs9mL2NJ8TMPU5+duray6-g@mail.gmail.com>
- <d35a5c5216ee3d0321c725aea61e0326@manjaro.org>
- <CAAMcf8CFED71FKUBpRy+FZNf8XKim1fuxW1C+ErZQqLsaWm1yQ@mail.gmail.com>
- <4455b5175d3c372c15d9732f03b9eb20@manjaro.org>
- <CAAMcf8CpkZHY6Awyo3LWZXfkqbZ1z3YcvF5W_08uv-XNov2j-A@mail.gmail.com>
-Message-ID: <58bcd9fad47377e4ccf203b3f11caf21@manjaro.org>
-X-Sender: dsimic@manjaro.org
-Authentication-Results: ORIGINATING;
-	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240818_132606_719422_AAEC528C 
-X-CRM114-Status: GOOD (  28.48  )
+X-CRM114-CacheID: sfid-20240818_141605_012265_EF0C8CCE 
+X-CRM114-Status: GOOD (  33.48  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,59 +72,165 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gMjAyNC0wOC0xOCAyMjoxMCwgVmljZW50ZSBCZXJnYXMgd3JvdGU6Cj4gT24gU3VuLCBBdWcg
-MTgsIDIwMjQgYXQgOToyMOKAr1BNIERyYWdhbiBTaW1pYyA8ZHNpbWljQG1hbmphcm8ub3JnPiAK
-PiB3cm90ZToKPj4gT24gMjAyNC0wOC0xOCAyMDo1NSwgVmljZW50ZSBCZXJnYXMgd3JvdGU6Cj4+
-ID4gT24gU3VuLCBBdWcgMTgsIDIwMjQgYXQgODoyNuKAr1BNIERyYWdhbiBTaW1pYyA8ZHNpbWlj
-QG1hbmphcm8ub3JnPgo+PiA+IHdyb3RlOgo+PiA+PiBPbiAyMDI0LTA4LTE4IDIwOjEzLCBWaWNl
-bnRlIEJlcmdhcyB3cm90ZToKPj4gPj4gPiBpIGFtIGEgdXNlciBvZiB0aGUgQ09ORklHX1NQSV9T
-UElERVYgZGV2aWNlLgo+PiA+PiA+IEl0IHN0b3BwZWQgd29ya2luZyBiZXR3ZWVuIDYuOCBhbmQg
-Ni4xMC41Lgo+PiA+PiA+IFRoZSBTUEkgYnVzIGl0c2VsZiByZXBvcnRzIG5vIGVycm9ycyB0byB1
-c2Vyc3BhY2UsIGJ1dCBubyBkZXZpY2VzCj4+ID4+ID4gYXBwZWFyIGNvbm5lY3RlZCB0byB0aGUg
-YnVzLgo+PiA+PiA+IFRoZSBwbGF0Zm9ybSB1c2VkIGlzIFJLMzMyOC4KPj4gPj4gPiBUaGUgb25s
-eSBzcGktcmVsYXRlZCBtZXNzYWdlIGluIGRtZXNnIGlzOgo+PiA+PiA+IHJvY2tjaGlwLXNwaSBm
-ZjE5MDAwMC5zcGk6IFJ1bnRpbWUgUE0gdXNhZ2UgY291bnQgdW5kZXJmbG93IQo+PiA+Pgo+PiA+
-PiBJJ20gd29ya2luZyBvbiBhIHJlbGF0ZWQgcGF0Y2guICBDb3VsZCB5b3UsIHBsZWFzZSwgZGVz
-Y3JpYmUgeW91cgo+PiA+PiB1c2UgY2FzZSBmb3IgdGhlIHNwaWRldiBkcml2ZXIsIGkuZS4gd2hh
-dCBib2FyZCBhcmUgeW91IHVzaW5nIGl0IG9uLAo+PiA+PiBhbmQgZm9yIHdoYXQgcHVycG9zZT8K
-Pj4gPgo+PiA+IFRoZSBib2FyZCBpcyBST0NLNjQgYW5kIHRoZSBwdXJwb3NlIGlzIHRvIHVwZGF0
-ZSBhbGwgdGhlIHNvZnR3YXJlIHRoYXQKPj4gPiBib2FyZCBydW5zLCB3aGljaCBpcyBzdG9yZWQg
-b24gdGhlIFNQSSBOT1IgZmxhc2ggb25ib2FyZC4KPj4gCj4+IFNvLCBpZiBJIGdvdCBpdCByaWdo
-dCwgeW91IGJvb3QgeW91ciBSb2NrNjQgZnJvbSB0aGUgU1BJIGNoaXAgdGhhdAo+PiBjb250YWlu
-cyBhbGwgdGhlIHNvZnR3YXJlIGl0IHJ1bnMsIGJ1dCB5b3UgYWxzbyBib290IExpbnV4IG9uIGl0
-IGZyb20KPiAKPiBjb3JyZWN0Cj4gCj4+IGEgbWljcm9TRCBjYXJkLCB0byB1cGRhdGUgdGhlIGNv
-bnRlbnRzIG9mIHRoZSBTUEkgY2hpcD8gIEknbSBndWVzc2luZwo+PiBpdCB0aGF0IHdheSwgYmVj
-YXVzZSB0aGUgc2l6ZSBvZiBhbiBTUEkgY2hpcCBpcyBoYXJkbHkgbGFyZ2UgZW5vdWdoCj4+IGZv
-ciBzdG9yaW5nIGV2ZW4gYW4gZXh0cmVtZWx5IHNpemUtb3B0aW1pemVkIExpbnV4IHN5c3RlbS4K
-PiAKPiBObywgZXZlcnl0aGluZyBpcyBpbiB0aGUgU1BJIE5PUiBmbGFzaCwgd2hpY2ggaXMgMTZN
-QiBpbiBzaXplIGFuZCBpdAo+IGlzIGVub3VnaCBmb3IgbXkgYXBwbGljYXRpb24uCgpUaGFua3Mg
-Zm9yIHRoZSBjbGFyaWZpY2F0aW9uLgoKPj4gQW55d2F5LCBJIHdvbmRlciB3aHkgZG8geW91IGhh
-dmUgdG8gdXNlIHRoZSBzcGlkZXYgZHJpdmVyIGZvciB0aGF0Cj4+IHB1cnBvc2U/ICBXaHkgY2Fu
-J3QgeW91IHVzZSAnY29tcGF0aWJsZSA9ICJqZWRlYyxzcGktbm9yIjsnIHRvIGFjY2Vzcwo+PiB0
-aGUgU1BJIGNoaXAgdGhyb3VnaCAvZGV2L210ZDAgdW5kZXIgTGludXg/Cj4gCj4gVGhlIGJ1ZyBy
-ZXBvcnQgaXMgYWJvdXQgdGhlIFNQSSBidXMsIE1URCBpcyBhIHNlcnZpY2UgcHJvdmlkZWQgb24g
-dG9wCj4gb2YgdGhlIFNQSSBidXMuCj4gSWYgdGhlIGJ1cyBmYWlscywgdGhlbiB0aGVyZSBpcyBu
-byBNVEQuCj4gVGhhdCBzYWlkLCBpIGRvbid0IHVzZSBNVEQuIFRoZSBib290bG9hZGVyIHJlYWRz
-IHRoZSBrZXJuZWwsIGR0YiBhbmQKPiBpbml0cmFtZnMgZnJvbSB0aGUgU1BJIGZsYXNoIGludG8g
-UkFNIGFuZCBib290cyBsaW51eCBlbnRpcmVseSBvbiBSQU0uCj4gVGhlcmUgaXMgbm8gcGVyc2lz
-dGVudCBmaWxlc3lzdGVtIG9uIHRvcCBvZiBNVEQuCgpBbHJpZ2h0LCBidXQgeW91IHdyb3RlIGlu
-aXRpYWxseSB0aGF0IHlvdSB1c2UgQ09ORklHX1NQSV9TUElERVYsCndoaWNoIG1lYW5zIHRoYXQg
-dXNlIHRoZSBzcGlkZXYgZHJpdmVyLCBhbmQgeW91IGFsc28gd3JvdGUgdGhhdCBpdApoYXMgc3Rv
-cHBlZCB3b3JraW5nLiAgQWxsIHRoYXQgbWVhbnQgdG8gbWUgdGhhdCB0aGUgc3BpZGV2IGRyaXZl
-cgpubyBsb25nZXIgd29ya3MgZm9yIHlvdSwgd2hpY2ggaXMgc29tZXdoYXQga25vd24gaXNzdWUu
-CgpBbnl3YXksIHBsZWFzZSBsZXQgbWUga25vdyBhcmUgdGhlIGZvbGxvd2luZyBkaXJlY3Rvcmll
-cyBwcmVzZW50Cm9uIHlvdXIgUm9jazY0IHJ1bm5pbmcgdGhlIHRyb3VibGVzb21lIHZlcnNpb24g
-b2YgTGludXgga2VybmVsLApwcmVzdW1hYmx5IDYuMTAuNSwgYW5kIGlmIHRoZXkgYXJlLCBwbGVh
-c2Ugc2VuZCBvdmVyIHRoZSBsaXN0aW5ncwpvZiB0aGVpciBjb250ZW50czoKCiAgIC0gL3N5cy9i
-dXMvc3BpCiAgIC0gL3N5cy9idXMvc3BpL2RldmljZXMKICAgLSAvc3lzL2J1cy9zcGkvZHJpdmVy
-cwoKPj4gPiBJIGhhdmUgbm90IHRlc3RlZCB0aGlzIGtlcm5lbCB2ZXJzaW9uIG9uIFJLMzM5OSwg
-YnV0IGl0IG1heSBhbHNvCj4+ID4gYWZmZWN0IHRoYXQgb3RoZXIgdXNlIGNhc2U6Cj4+ID4gaHR0
-cHM6Ly9naXRsYWIuY29tL3ZpY2VuY2Iva2V2aW5ib290CgpfX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGlu
-dXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9y
-Zy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+Hi Lee,
+
+thanks a lot for your review,
+
+Am Freitag, 16. August 2024, 19:13:36 CEST schrieb Lee Jones:
+> On Sat, 10 Aug 2024, Heiko Stuebner wrote:
+
+
+> > +/*
+> > + * MFD core driver for the MCU in Qnap NAS devices that is connected
+> 
+> No such thing as an "MFD".  Please describe the device.
+> 
+> Is it QNAP or Qnap?  Please be consistent.
+
+Looks like QNAP spells itself in all upper case on their website, so I did
+go with that
+
+
+> > + * via a dedicated UART port
+> > + *
+> > + * Copyright (C) 2024 Heiko Stuebner <heiko@sntech.de>
+> > + */
+> > +
+> > +#include <linux/export.h>
+> 
+> What is this used for?
+
+the #define EXPORT_SYMBOL_GPL that gets used below lives in that file.
+
+
+> > + * struct qnap_mcu - QNAP NAS embedded controller
+> > + *
+> > + * @serdev:	Pointer to underlying serdev
+> > + * @bus_lock:	Lock to serialize access to the device
+> > + * @reply_lock:	Lock protecting @reply
+> > + * @reply:	Pointer to memory to store reply payload
+> > + * @variant:	Device variant specific information
+> > + * @version:	MCU firmware version
+> > + */
+> > +struct qnap_mcu {
+> > +	struct serdev_device *serdev;
+> > +	/* Serialize access to the device */
+> 
+> Comments and K-doc is OOT.
+
+I don't really know what OOT means, but I guess you mean that only
+one or the other is needed?
+
+Though somehow checkpatch was very unhappy without those comments directly
+above the mutex declaration. But I can of course remove these additional
+comments
+
+
+> > +	mutex_lock(&mcu->reply_lock);
+> > +	if (!reply) {
+> > +		dev_warn(dev, "received %zu bytes, we were not waiting for\n",
+> > +			 size);
+> > +		mutex_unlock(&mcu->reply_lock);
+> 
+> guard(mutex)?
+
+thanks a lot for pointing out this neat feature
+
+
+> > +int qnap_mcu_exec_with_ack(struct qnap_mcu *mcu,
+> > +			   const u8 *cmd_data, size_t cmd_data_size)
+> > +{
+> > +	u8 ack[2];
+> > +	int ret;
+> > +
+> > +	ret = qnap_mcu_exec(mcu, cmd_data, cmd_data_size, ack, sizeof(ack));
+> > +	if (ret)
+> > +		return ret;
+> > +
+> > +	/* Should return @0 */
+> > +	if (ack[0] != 0x40 || ack[1] != 0x30) {
+> 
+> Why not use the char variants?
+
+Consistency, I guess.
+
+While the basic commands _seem_ to use values equivalent to ascii
+characters, I've also seen other commands where the values are not based
+on those but use real numbers / hex values for data instead.
+
+So I opted to go with hex values for all and kept the comments, if someone
+wants to get started talking to their MCU via a terminal.
+
+
+> > +
+> > +/*
+> > + * The MCU controls power to the peripherals but not the CPU.
+> > + *
+> > + * So using the pmic to power off the system keeps the MCU and hard-drives
+> > + * running. This also then prevents the system from turning back on until
+> > + * the MCU is turned off by unplugging the power-cable.
+> > + * Turning off the MCU alone on the other hand turns off the hard-drives,
+> > + * LEDs, etc while the main SoC stays running - including its network ports.
+> > + */
+> > +static int qnap_mcu_power_off(struct sys_off_data *data)
+> > +{
+> > +	struct qnap_mcu *mcu = data->cb_data;
+> > +	int ret;
+> > +	u8 cmd[] = {
+> > +		[0] = 0x40, /* @ */
+> > +		[1] = 0x43, /* C */
+> > +		[2] = 0x30  /* 0 */
+> > +	};
+> 
+> u8 cmd [] = { '@', 'C', '0' };  ?
+
+see above.
+
+I guess this is a style choice, we could of course go with
+	u8 cmd[] = { 0x40, 0x43, 0x30 }
+if you prefer that.
+
+
+> > +static int qnap_mcu_probe(struct serdev_device *serdev)
+> > +{
+> > +	struct device *dev = &serdev->dev;
+> > +	struct qnap_mcu *mcu;
+> > +	int ret;
+> > +
+> > +	mcu = devm_kzalloc(dev, sizeof(*mcu), GFP_KERNEL);
+> > +	if (!mcu)
+> > +		return -ENOMEM;
+> > +
+> > +	mcu->serdev = serdev;
+> > +	dev_set_drvdata(dev, mcu);
+> > +
+> > +	mcu->variant = of_device_get_match_data(dev);
+> > +	if (!mcu->variant)
+> > +		return -ENODEV;
+> > +
+> > +	mutex_init(&mcu->bus_lock);
+> > +	mutex_init(&mcu->reply_lock);
+> 
+> Can you not get away with a single lock?
+
+Of course all behaviour information of the device come from observation
+alone right now, but it does look like the MCU does not cause
+transmissions of its own, but only as a reply to a sent command.
+
+So yes, I can probably do away with the whole reply assignment and just
+use one dataset and thus just the main lock.
+
+
+Heiko
+
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
