@@ -4,65 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 62084C52D7C
-	for <linux-rockchip@archiver.kernel.org>; Sun, 18 Aug 2024 17:38:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8D063C52D7C
+	for <linux-rockchip@archiver.kernel.org>; Sun, 18 Aug 2024 17:39:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=qtq7NVO4TfdRZ/82+WAdDZmpIVL1trnW69ZZ4q5s3t4=; b=NRQRoR2Mj31eZn
-	vlpVcbmr0udjQB+qL/Tog6j4bAMqnaqAB5eaxWy5NI3HxNPe0sQST+cl489Lr3EESLWIZ1M4whgBT
-	JofVwECDLnHHVRv7Yobh0Oiz0aXPDEpsp8eXUATB8Eb8SI5q1H0/RGdVu9OtmUazyEYrOnp3ZWLhC
-	gHB1WrckI4teGYWP59z6T09D6cwwU4xOeutjfH2MV1QwDbMhO/5MhVp/W0jC/f4qG2+xxYAsU4TbD
-	lzc8JJU4CXu/I8hUIVdUQerqCtyNzOtsKH9OVfk/fRS/0eDEQVG+y3by+YO4dvSn4H3FUcZaV3RNF
-	2lfeiTGwUzuC46WihBKA==;
+	List-Owner; bh=+QZQtxqBur+3dx5KEeFBwtsRY8RLkZdt33eHpZa6crk=; b=F3LDt6pmBmUp9d
+	HIhvE4wGlI7p8Aq+SXoZIMFvYQyAHJU3XPy0ubGe63jnlbA3pilJriWmKWmpJSJXkFusVHWQvOg/7
+	ocrQH0NUh7yaL76mdvC0KF8suvHmYxFbhwQEJ9WhP41bnNsbBuvWja5LYQ2rcpI4NHIfLUxo57cFu
+	2HlTh+JXdwEQQPhzfNBt37ABF9Yeop1xUroQgd8o0sFXkNNxA37JhsKB8sA5myxziuYQQCXu7DQhI
+	YdcAdB44irKsAMzBVNbnhXuLfXASNFkYXtseNPwAj7vD5keWCpdYrsNkVX6XHvAgHtGpUW2NWYVCn
+	Mq1SQQniDetaYbAF9ooQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sfjqv-0000000Gv3W-42mO;
-	Sun, 18 Aug 2024 17:38:05 +0000
-Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
+	id 1sfjsC-0000000GvKU-0dx6;
+	Sun, 18 Aug 2024 17:39:24 +0000
+Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sfjjU-0000000GtAt-1n3X
+	id 1sfjjX-0000000GtDC-47By
 	for linux-rockchip@lists.infradead.org;
-	Sun, 18 Aug 2024 17:30:26 +0000
-Received: by mail-wm1-x32f.google.com with SMTP id 5b1f17b1804b1-428e1915e18so26298035e9.1
-        for <linux-rockchip@lists.infradead.org>; Sun, 18 Aug 2024 10:30:23 -0700 (PDT)
+	Sun, 18 Aug 2024 17:30:29 +0000
+Received: by mail-wm1-x331.google.com with SMTP id 5b1f17b1804b1-429da8b5feaso38707875e9.2
+        for <linux-rockchip@lists.infradead.org>; Sun, 18 Aug 2024 10:30:27 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1724002222; x=1724607022; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1724002226; x=1724607026; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=yDxabNXUGD2spiGWzUWebdJZipOuLFpvCr9ct8rDDA8=;
-        b=HN5V2sR1tje4FJGCwF0LsVFPXkaf95E5FdAAoRTu7TS+O2tK0/ottxOfFvwCXLVdYD
-         1isHmL83+hazt99s1fwKVUG0IkZe16vqCiLdGyc/voe3qUYOSwSknm2W9vcZjsnf/Mds
-         wJYQnm1BsnGpfBXlXlfyMRRXhA6RG8N16ihgmH4RHzXQSgc6Q6qsC9uABL8BgPKsAXCO
-         WsR1qryhCfPL0qN44zLLJA3ls6y16uXgXUl9oyc1DvZ3pqpydjgsmTbhbNyKTOFBqqmX
-         MGLEA5xMR6PE2xZQ/XMRFO7ISHJieR5h+XZCJd2zpF2k4XGtrOQZWQaAHIVOg2W7XkXt
-         O9nQ==
+        bh=aw4Fptl98pttOY10KCxMd4Nms4w6E/3GwtsKk+Wk4vc=;
+        b=fZUuslv+Bqh2YWWx/ERQtYgL986bhlOQs3QcfaqXb/KQ5i4t3euYExxkdT6xMdVOYy
+         Yw1B42uv0J0GrvXLyusZl7upDewhmQbzY9eWZyUhPIhsU+Ney33jjUwG0Xls8iPHD1lq
+         X2uzwUtxRWiKlLSVlYU1RyFxd+A0jEjXdQ/2gfjPd/hs5w0DLHyYLv3eqb0QwxA20S8Z
+         vW/s/kPPB9PcFO/ojPiCl8GtVVx61rTlqLaKe+8iVqxMKpGnO7XvrF4uH1mU0jnsNJl6
+         I/18s5IwNsXdVtGpph/zUcEVt+9BUAHVgFS7ek2vzHsIfLdR0i9HejP0UP/DN5P+9DoZ
+         xSUg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1724002222; x=1724607022;
+        d=1e100.net; s=20230601; t=1724002226; x=1724607026;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=yDxabNXUGD2spiGWzUWebdJZipOuLFpvCr9ct8rDDA8=;
-        b=dZij1MskKXW2m/CDDYPW6bpmDxUBZekXIKooS4/U3LUmvYGtsb3lg67qgD0Wx30FuW
-         1DvRn5GyCF0BuKV5B6fjnWooqBMg4YhyniVB+k1F3EmXkldMLuHb5LwfEqUWibPw5ghP
-         3nQDXHtR0qtDovpxcjLEjh471NoO4BYou5gdbBu2aCUC9ewdEn3wBX659vOUtIus0QNH
-         oh+2CPGs1q/QgbfKlea+xMKgZTRGkGS7AKAXcfHfSVLsFK9wXeRJRJVs1QbCzWyD8nMX
-         Pq4d6wzgZAKNl4N3mxId5ff0NeM5Mvw10zgHtX2cKjy9Moo6UpJOCWOIeOeNLIDy8LTF
-         Su6Q==
-X-Forwarded-Encrypted: i=1; AJvYcCV8rCI0tAFEU5B9n7MzL5F5el4pv2242VjPU+LBY0yG6Fcpp8wOevU4Ino/+gqLhMcjeGhOgigBAes4aK1KfXqqBOu3sI5rkqosEqYDhJgUapG2
-X-Gm-Message-State: AOJu0Ywm4HdxZphBSCywfCNWiaNePnzzUgd9mTLK4NhivJOv96ikGC4S
-	RYdXEo6nqVvfcV2CZCl8SmlDENz5WxqKUA+eKky6GXHUmj/RT9Bo1oWOaOtzpaU=
-X-Google-Smtp-Source: AGHT+IHTe5/9uPQMEtI6+zcncZ4iytZUcY1Qxy0hgPT1aarVYzDAmJ3Q55hH1n/3z5bWggegxUIW8w==
-X-Received: by 2002:adf:f2c5:0:b0:371:7cd1:86e5 with SMTP id ffacd0b85a97d-37194314fa2mr4713443f8f.8.1724002222433;
-        Sun, 18 Aug 2024 10:30:22 -0700 (PDT)
+        bh=aw4Fptl98pttOY10KCxMd4Nms4w6E/3GwtsKk+Wk4vc=;
+        b=Y0CGVXGY6QikWY80VMY0IUXyzasYZdwLBBdmRZImqsVqLmzRbHzDmjvGbfjM78NiP1
+         aHpHKcTF2SsIMcP0JYT8Otp000NcfWyG+Adt60X0Av/w2rC8vlD67CLLid0wx3CJP/Ui
+         f7BB5Ad/GdAip1V52LYKn/9vWXhi3K37xZqB1HC9X/eIzlnTTRSZXPj33hes/wrofMxJ
+         l7TDJ+OoKJ8sXc9A5tAsIhew2BLe6ZCgDnbDXnTSRqCyGD1EHN6de9GC3YAQC/KqSYAU
+         ErJZbel0gTQmZRJvydakajp39bkHRF01MwHaiskzUf35EXignFJ/MKX/Sv5NntHnrpry
+         BEJg==
+X-Forwarded-Encrypted: i=1; AJvYcCVskOmpbVvTYqotYKdddJndTZS3Mkfvz0HUgQXHxp19wgm87w2Nnw/lb45Av2MjjkhldCtKkvuej+BhpVIOX5TBA1xThtLMgV/VLv2Uv3GCQkRD
+X-Gm-Message-State: AOJu0Yz+lhNRfB/m9qLBLhffSnb2iWqoIZoCEBVqBYuMiEX6TonQa935
+	Deb9ypNz0N79xB6n7CW5qXAUCOOCHu/qal/xj/FkrbYBCV2NKQybRQOGTL699vE=
+X-Google-Smtp-Source: AGHT+IFPilTQ7go8vvbQhelRsOizLG7WbbiYR3MYgpB7AkCObI0W33aHc2RPr2v9rpCg6UZ9TBfHgg==
+X-Received: by 2002:a05:600c:358b:b0:428:e30:fa8d with SMTP id 5b1f17b1804b1-429ed784090mr75921025e9.6.1724002226203;
+        Sun, 18 Aug 2024 10:30:26 -0700 (PDT)
 Received: from krzk-bin.. ([178.197.215.209])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-429ded7d5a9sm134999915e9.43.2024.08.18.10.30.20
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-429ded7d5a9sm134999915e9.43.2024.08.18.10.30.24
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 18 Aug 2024 10:30:21 -0700 (PDT)
+        Sun, 18 Aug 2024 10:30:25 -0700 (PDT)
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 To: Serge Semin <fancer.lancer@gmail.com>,
 	Michael Turquette <mturquette@baylibre.com>,
@@ -89,17 +89,16 @@ To: Serge Semin <fancer.lancer@gmail.com>,
 	linux-rockchip@lists.infradead.org,
 	linux-stm32@st-md-mailman.stormreply.com
 Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Subject: [PATCH 3/5] dt-bindings: clock: renesas,cpg-clocks: add top-level constraints
-Date: Sun, 18 Aug 2024 19:30:12 +0200
-Message-ID: <20240818173014.122073-3-krzysztof.kozlowski@linaro.org>
+Subject: [PATCH 5/5] dt-bindings: clock: st,stm32mp1-rcc: add top-level constraints
+Date: Sun, 18 Aug 2024 19:30:14 +0200
+Message-ID: <20240818173014.122073-5-krzysztof.kozlowski@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20240818173014.122073-1-krzysztof.kozlowski@linaro.org>
 References: <20240818173014.122073-1-krzysztof.kozlowski@linaro.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240818_103024_475077_EB14B74E 
-X-CRM114-Status: UNSURE (   9.91  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240818_103028_062816_C49870B8 
+X-CRM114-Status: GOOD (  10.37  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -119,36 +118,34 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 Properties with variable number of items per each device are expected to
 have widest constraints in top-level "properties:" block and further
 customized (narrowed) in "if:then:".  Add missing top-level constraints
-for clocks and clock-output-names.
+for clocks and clock-names.
 
 Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 ---
- .../devicetree/bindings/clock/renesas,cpg-clocks.yaml     | 8 ++++++--
- 1 file changed, 6 insertions(+), 2 deletions(-)
+ .../devicetree/bindings/clock/st,stm32mp1-rcc.yaml     | 10 ++++++++--
+ 1 file changed, 8 insertions(+), 2 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/clock/renesas,cpg-clocks.yaml b/Documentation/devicetree/bindings/clock/renesas,cpg-clocks.yaml
-index 9185d101737e..a0e09b7002f0 100644
---- a/Documentation/devicetree/bindings/clock/renesas,cpg-clocks.yaml
-+++ b/Documentation/devicetree/bindings/clock/renesas,cpg-clocks.yaml
-@@ -32,12 +32,16 @@ properties:
-   reg:
-     maxItems: 1
- 
+diff --git a/Documentation/devicetree/bindings/clock/st,stm32mp1-rcc.yaml b/Documentation/devicetree/bindings/clock/st,stm32mp1-rcc.yaml
+index 5194be0b410e..9b3aaae546cb 100644
+--- a/Documentation/devicetree/bindings/clock/st,stm32mp1-rcc.yaml
++++ b/Documentation/devicetree/bindings/clock/st,stm32mp1-rcc.yaml
+@@ -60,8 +60,14 @@ properties:
+           - st,stm32mp1-rcc
+           - st,stm32mp13-rcc
+       - const: syscon
 -  clocks: true
+-  clock-names: true
++
 +  clocks:
 +    minItems: 1
-+    maxItems: 3
++    maxItems: 5
++
++  clock-names:
++    minItems: 1
++    maxItems: 5
  
-   '#clock-cells':
-     const: 1
- 
--  clock-output-names: true
-+  clock-output-names:
-+    minItems: 3
-+    maxItems: 17
- 
-   renesas,mode:
-     description: Board-specific settings of the MD_CK* bits on R-Mobile A1
+   reg:
+     maxItems: 1
 -- 
 2.43.0
 
