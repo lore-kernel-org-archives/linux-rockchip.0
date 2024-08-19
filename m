@@ -4,68 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B29AAC5321D
-	for <linux-rockchip@archiver.kernel.org>; Mon, 19 Aug 2024 18:45:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47078C3DA4A
+	for <linux-rockchip@archiver.kernel.org>; Mon, 19 Aug 2024 20:05:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=mR8njT8tB1EoVhOLl2EdbrSe92jzm8JROz2UU9FykKI=; b=lLjC2LS1U5jPDFpXgv4mRsLKCs
-	ZkrqGLvyGpEsOfQYfPrRMSfH4Vf9LrlUSQfD/4Wpcl0bxeFTeyo2tivVkwveQtIerwFox7GLsuZg1
-	HJHBlk6WiE7G0CDXA5na1XRrNlgFGojNyIpu+jHqMsv7DjRlw7grASIXmEgXjAuobulQJvl/wlTTz
-	tEDI+Eo4IDBh7W1UCb5IX8ED9hckFNNapmbfJ1U9Cb5laVo/gYa1gfWLASLOTyqCKlhX4sRoW3mDd
-	KJMl3VEdLYdaohsZ1iKtpJV1Nx3K0SK21piolCFREsKskeCtFO0djVM/D2e5ErQyPvScvXdhRfHdz
-	PR5jVZaQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=GjiuC2gAK2PfQrWgGFUIEr36M/csiCTO/DwfJ8VNUrk=; b=q4UFEUkanDFnC6
+	ekg3WqMiJ7sTsnURO9GduVtLPGQ5KTkaeuRhkzYpMiRTNZSs4i3soYIbDt1Lw729msRIYzNgg8XbB
+	O0M5sUc+Q6CTjB5VDtrMXalqn0jtl3uRyuAFIMo7pEe4PQwq03JmQ3ZCNmQFN3C2IogayJBQNMuAR
+	QlGr9k6vVHft5YzWAe1Z9JylQh8t/zXFnQ7qpmQ2MyrLBV6yGXggHCf7cs/xPbrfEcmJPIul6Fqd+
+	Jxt1igKb6kikahGs5uVnD3pPl8QnWHt6sk8AuuA8alyM0mumF0oR6cDLhORDDoLZg3KA2qmsqAc8+
+	K5/OB9ewAQ9p/nq0GUWA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sg7Ne-00000002dkt-0R1p;
-	Mon, 19 Aug 2024 18:45:26 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1sg8dC-00000002p2q-1krJ;
+	Mon, 19 Aug 2024 20:05:34 +0000
+Received: from sender4-op-o12.zoho.com ([136.143.188.12])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sg6Dr-00000002Q2Y-3nHj;
-	Mon, 19 Aug 2024 17:31:17 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 278DF60B59;
-	Mon, 19 Aug 2024 17:31:15 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B03C3C4AF0F;
-	Mon, 19 Aug 2024 17:31:11 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1724088674;
-	bh=CDXuThWufIjZiVOPIB93srMMHrTj0bHZ7xzdnTWXYrQ=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=b00VJOt1sTeXtc+MN3jBiySiwgvusC/rqeIfZTiURt+OHXuzaiiLnykvuu3Yvzjmz
-	 Lb6G4QIQtHBBMiU52IsRTG5ImdzymzLfjOC8o7u0LjU3ZcLJKcZApMp87i5Gb5efhN
-	 HeKQ5OMhuRy/jpj2RRBbaAOd7j1Y3t+me/R/O4dX328gWHQ3xwfw1yCQp77NHS62NB
-	 gIVPsi361g/Z0jkhSaq2QLdHXtD8+Lt8nq0uJ5y+xCU/HyFqEj5wHFaYtksLwXZtn7
-	 ywxoGRI5gGKdZBgW95AzOJFBz0UTxA+Kd5fjAPeXx+wjiX3T6+X9gNlB/3QD8I1zzC
-	 +XgI3LYtEje9w==
-Date: Mon, 19 Aug 2024 18:31:09 +0100
-From: Conor Dooley <conor@kernel.org>
-To: Detlev Casanova <detlev.casanova@collabora.com>
-Cc: linux-kernel@vger.kernel.org,
-	Michael Turquette <mturquette@baylibre.com>,
-	Stephen Boyd <sboyd@kernel.org>, Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	Elaine Zhang <zhangqing@rock-chips.com>, linux-clk@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, kernel@collabora.com,
-	Sugar Zhang <sugar.zhang@rock-chips.com>
-Subject: Re: [PATCH v5 1/2] dt-bindings: clock, reset: Add support for rk3576
-Message-ID: <20240819-robust-gutter-27540adb4621@spud>
-References: <20240814222159.2598-1-detlev.casanova@collabora.com>
- <5018731.31r3eYUQgx@trenzalore>
- <20240819-pelvis-monetary-211e2294f2f4@spud>
- <2071848.usQuhbGJ8B@trenzalore>
+	id 1sg8d7-00000002p2C-2qAg;
+	Mon, 19 Aug 2024 20:05:31 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1724097881; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=mbUnXMxQcnVKk11zc5ntwAcnrBBrfHYc79EHMLCWKn5hDAToFvfc1vAp5I5LFLVjWZs2zmZPiSirc7dLrhBI4q5l3AtUKYh7X+HG6aExvhm7g9A9hvCGVaF7El7Jz3FsX13HGkUqFZtihZdJcmQkOAGMks1+LHxIihLvEp6swpw=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1724097881; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=iAA8ouM6M/6kyeb+SrOHPtwZsGUYRPGPpNqj8UiAUpY=; 
+	b=hjLtvJj3FSGEcuvYGirBRak9OxSZhSZlPIHBMWr0SkonXTpJDgubKmg8jrLlvb8JRD8nrfa8DHQJI0Np3p9H7NeF0KEzPhrteVhuBBt08xFIMqqXukhBw91DCXeE0ZPfvIyZO8xMcaAbHjjubPtUCwpCpwNLmUeakzt8B2B1nRc=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=detlev.casanova@collabora.com;
+	dmarc=pass header.from=<detlev.casanova@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1724097881;
+	s=zohomail; d=collabora.com; i=detlev.casanova@collabora.com;
+	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
+	bh=iAA8ouM6M/6kyeb+SrOHPtwZsGUYRPGPpNqj8UiAUpY=;
+	b=a0e9wlXCB7HKm0DAbBwhKl41bOz9h4d/rV3kzgUZKYrlZ8h7gQImGySlTwv571zT
+	8iNGG6SiTKkMvinFqdhrbHNxMVjc8OVup8C2rybL+BooMVy1wPV6zvLLl2H7GIzOoFA
+	oWALsvdVit+8vfOcXWLluYpzi0Pk50AFsez/ojE0=
+Received: by mx.zohomail.com with SMTPS id 1724097879493204.13829241998803;
+	Mon, 19 Aug 2024 13:04:39 -0700 (PDT)
+From: Detlev Casanova <detlev.casanova@collabora.com>
+To: linux-kernel@vger.kernel.org, Johan Jonker <jbx6244@yandex.com>
+Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ Andi Shyti <andi.shyti@kernel.org>, Jonathan Cameron <jic23@kernel.org>,
+ Lars-Peter Clausen <lars@metafoo.de>, Lee Jones <lee@kernel.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Jiri Slaby <jirislaby@kernel.org>,
+ Daniel Lezcano <daniel.lezcano@linaro.org>,
+ Thomas Gleixner <tglx@linutronix.de>, Chris Morgan <macromorgan@hotmail.com>,
+ Jonas Karlman <jonas@kwiboo.se>, Tim Lunn <tim@feathertop.org>,
+ Muhammed Efe Cetin <efectn@protonmail.com>, Andy Yan <andyshrk@163.com>,
+ Jagan Teki <jagan@edgeble.ai>, Dragan Simic <dsimic@manjaro.org>,
+ Sebastian Reichel <sebastian.reichel@collabora.com>,
+ Shresth Prasad <shresthprasad7@gmail.com>, Ondrej Jirman <megi@xff.cz>,
+ Weizhao Ouyang <weizhao.ouyang@arm.com>, Alexey Charkov <alchark@gmail.com>,
+ Jimmy Hon <honyuenkwun@gmail.com>, Finley Xiao <finley.xiao@rock-chips.com>,
+ Yifeng Zhao <yifeng.zhao@rock-chips.com>,
+ Elaine Zhang <zhangqing@rock-chips.com>, Liang Chen <cl@rock-chips.com>,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-i2c@vger.kernel.org,
+ linux-iio@vger.kernel.org, linux-serial@vger.kernel.org, kernel@collabora.com
+Subject: Re: [PATCH 09/10] arm64: dts: rockchip: Add rk3576 SoC base DT
+Date: Mon, 19 Aug 2024 16:06:12 -0400
+Message-ID: <1944590.atdPhlSkOF@trenzalore>
+In-Reply-To: <c5014fe3-130b-4ace-a66e-8773a9a4f1dc@yandex.com>
+References: <20240802214612.434179-1-detlev.casanova@collabora.com>
+ <20240802214612.434179-10-detlev.casanova@collabora.com>
+ <c5014fe3-130b-4ace-a66e-8773a9a4f1dc@yandex.com>
 MIME-Version: 1.0
-In-Reply-To: <2071848.usQuhbGJ8B@trenzalore>
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240819_103116_056199_8117F777 
-X-CRM114-Status: GOOD (  47.91  )
+X-CRM114-CacheID: sfid-20240819_130529_938853_2A9E9C29 
+X-CRM114-Status: GOOD (  26.11  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,196 +91,166 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============8470031539773738503=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Hi Johan,
 
---===============8470031539773738503==
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="8nory5apk8iuCTjB"
-Content-Disposition: inline
+On Thursday, 15 August 2024 05:30:25 EDT Johan Jonker wrote:
+> Some comments below. Whenever useful.
+> 
+> On 8/2/24 23:45, Detlev Casanova wrote:
+> > This device tree contains all devices necessary for booting from network
+> > or SD Card.
+> > 
+> > It supports CPU, CRU, PM domains, dma, interrupts, timers, UART and
+> > SDHCI (everything necessary to boot Linux on this system on chip) as
+> > well as Ethernet, I2C, SPI and OTP.
+> > 
+> > Also add the necessary DT bindings for the SoC.
+> > 
+> > Signed-off-by: Liang Chen <cl@rock-chips.com>
+> > Signed-off-by: Finley Xiao <finley.xiao@rock-chips.com>
+> > Signed-off-by: Yifeng Zhao <yifeng.zhao@rock-chips.com>
+> > Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
+> > [rebase, squash and reword commit message]
+> > Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
+> > ---
+> 
+> [..]
+> 
+> > diff --git a/arch/arm64/boot/dts/rockchip/rk3576.dtsi
+> > b/arch/arm64/boot/dts/rockchip/rk3576.dtsi new file mode 100644
+> > index 0000000000000..00c4d2a153ced
+> > --- /dev/null
+> > +++ b/arch/arm64/boot/dts/rockchip/rk3576.dtsi
+> [..]
+> 
+> For uart0..uart11:
+> > +
+> > +	uart1: serial@27310000 {
+> > +		compatible = "rockchip,rk3576-uart", "snps,dw-apb-
+uart";
+> > +		reg = <0x0 0x27310000 0x0 0x100>;
+> > 
+> > +		interrupts = <GIC_SPI 77 IRQ_TYPE_LEVEL_HIGH>;
+> 
+> "interrupts" are sort just like other properties. A mix of sort styles
+> exists, so check all nodes.
 
+Ok, so it should be sorted alphabetically with the following exceptions:
+- 'compatible' and 'reg.*' on top
+- "#.*" at the end, sorted
+- "status" last.
 
---8nory5apk8iuCTjB
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Is that right ?
 
-On Mon, Aug 19, 2024 at 01:14:38PM -0400, Detlev Casanova wrote:
-> On Monday, 19 August 2024 12:34:15 EDT Conor Dooley wrote:
-> > On Mon, Aug 19, 2024 at 10:08:31AM -0400, Detlev Casanova wrote:
-> > > Hi Conor,
-> > >=20
-> > > On Thursday, 15 August 2024 11:07:46 EDT Conor Dooley wrote:
-> > > > On Wed, Aug 14, 2024 at 06:19:22PM -0400, Detlev Casanova wrote:
-> > > > > Add clock and reset ID defines for rk3576.
-> > > > >=20
-> > > > > Compared to the downstream bindings written by Elaine, this uses
-> > > > > continous gapless IDs starting at 0. Thus all numbers are
-> > > > > different between downstream and upstream, but names are kept
-> > > > > exactly the same.
-> > > > >=20
-> > > > > Also add documentation for the rk3576 CRU core.
-> > > > >=20
-> > > > > Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
-> > > > > Signed-off-by: Sugar Zhang <sugar.zhang@rock-chips.com>
-> > > > > Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
-> > > > > ---
-> > > > >=20
-> > > > >  .../bindings/clock/rockchip,rk3576-cru.yaml   |  64 ++
-> > > > >  .../dt-bindings/clock/rockchip,rk3576-cru.h   | 592
-> > > > >  ++++++++++++++++++
-> > > > >  .../dt-bindings/reset/rockchip,rk3576-cru.h   | 564 ++++++++++++=
-+++++
-> > > > >  3 files changed, 1220 insertions(+)
-> > > > >  create mode 100644
-> > > > >  Documentation/devicetree/bindings/clock/rockchip,rk3576-cru.yaml
-> > > > >  create
-> > > > >  mode 100644 include/dt-bindings/clock/rockchip,rk3576-cru.h crea=
-te
-> > > > >  mode
-> > > > >  100644 include/dt-bindings/reset/rockchip,rk3576-cru.h>
-> > > > >=20
-> > > > > diff --git
-> > > > > a/Documentation/devicetree/bindings/clock/rockchip,rk3576-cru.yaml
-> > > > > b/Documentation/devicetree/bindings/clock/rockchip,rk3576-cru.yam=
-l new
-> > > > > file mode 100644
-> > > > > index 0000000000000..d69985e6fa0ce
-> > > > > --- /dev/null
-> > > > > +++ b/Documentation/devicetree/bindings/clock/rockchip,rk3576-cru=
-=2Eyaml
-> > > > > @@ -0,0 +1,64 @@
-> > > > > +# SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
-> > > > > +%YAML 1.2
-> > > > > +---
-> > > > > +$id: http://devicetree.org/schemas/clock/rockchip,rk3576-cru.yam=
-l#
-> > > > > +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> > > > > +
-> > > > > +title: Rockchip rk3576 Family Clock and Reset Control Module
-> > > > > +
-> > > > > +maintainers:
-> > > > > +  - Elaine Zhang <zhangqing@rock-chips.com>
-> > > > > +  - Heiko Stuebner <heiko@sntech.de>
-> > > > > +  - Detlev Casanova <detlev.casanova@collabora.com>
-> > > > > +
-> > > > > +description:
-> > > > > +  The RK3576 clock controller generates the clock and also imple=
-ments
-> > > > > a
-> > > > > reset +  controller for SoC peripherals. For example it provides
-> > > > > SCLK_UART2 and +  PCLK_UART2, as well as SRST_P_UART2 and SRST_S_=
-UART2
-> > > > > for the second UART +  module.
-> > > > > +
-> > > > > +properties:
-> > > > > +  compatible:
-> > > > > +    const: rockchip,rk3576-cru
-> > > > > +
-> > > > > +  reg:
-> > > > > +    maxItems: 1
-> > > > > +
-> > > > > +  "#clock-cells":
-> > > > > +    const: 1
-> > > > > +
-> > > > > +  "#reset-cells":
-> > > > > +    const: 1
-> > > > > +
-> > > > > +  clocks:
-> > > > > +    maxItems: 2
-> > > > > +
-> > > > > +  clock-names:
-> > > > > +    items:
-> > > > > +      - const: xin24m
-> > > > > +      - const: xin32k
-> > > > > +
-> > > > > +  rockchip,grf:
-> > > > > +    $ref: /schemas/types.yaml#/definitions/phandle
-> > > > > +    description: >
-> > > > > +      phandle to the syscon managing the "general register files=
-". It
-> > > > > is
-> > > > > used +      for GRF muxes, if missing any muxes present in the GRF
-> > > > > will
-> > > > > not be +      available.
-> > > >=20
-> > > > Two questions on this property:
-> > > > - you only support one soc, why is this optional?
-> > >=20
-> > > It is optional because only used for some specific clocks. The SoC can
-> > > still be used without this, but some devices might not work (Not test=
-ed
-> > > but USB PHYs might not be working without the GRF)
+> > +		clocks = <&cru SCLK_UART1>, <&cru PCLK_UART1>;
+> > +		clock-names = "baudclk", "apb_pclk";
+> > 
+> > +		reg-shift = <2>;
+> > +		reg-io-width = <4>;
+> 
+> Move below "reg".
+> 
+> > +		dmas = <&dmac0 8>, <&dmac0 9>;
+> > +		pinctrl-names = "default";
+> > +		pinctrl-0 = <&uart1m0_xfer>;
+> > +		status = "disabled";
+> > +	};
+> > +
+> > +	pmu: power-management@27380000 {
 
-I would not bother making them optional. I don't think there's any
-benefit to doing so when there's only one instance of this controller
-on the device, and the grfs will also always be present.
+[...]
 
-> > > This is also set as optional in similar rockchip CRU bindings (rk3588=
-).
-> > >=20
-> > > > - why can't you look it up by compatible?
-> > >=20
-> > > These bindings are specific to one compatible only. It is very simila=
-r to
-> > > rk3588 but it looks like all rockchip CRU driver has its own yaml fil=
-e, so
-> > > I followed that trend instead of merging with the rk3588 CRU bindings.
-> > I don't think you've answered the question I am asking. Why can you not
-> > look up the syscon by the /syscon/'s compatible in the clock driver, and
-> > thus remove the property from here?
->=20
-> I don't think that this is possible.
+> > +				#address-cells = <1>;
+> > +				#size-cells = <0>;
+> > +				clocks = <&cru ACLK_VOP>,
+> > +					 <&cru HCLK_VOP>,
+> > +					 <&cru HCLK_VOP_ROOT>;
+> > +				pm_qos = <&qos_vop_m0>,
+> > +					 <&qos_vop_m1ro>;
+> > +
+> > +				power-domain@RK3576_PD_USB {
+> 
+> Since when is USB part of VOP?
+> Recheck?
 
-Undesirable maybe, impossible no.
+The TRM doesn't tell me anything, but If I don't put it as a child of VOP, it 
+just hangs when the kernel tries to shut it down.
 
-> That means modifying rockchip/clk.c to=20
-> lookup the syscon instead of using the `rockchip,grf` phandle. As it is u=
-sed=20
-> by other rockchip clock drivers, that means that we'd need to change the=
-=20
-> syscon's node name for some other SoCs to match what is being looked up.
+[...]
 
-No, you would not have to change anything for other SoCs, it would
-definitely be possible to do compatible based lookups on some devices
-and phandle on others, particularly given you're adding a new driver.
+> > +
+> > +	pinctrl: pinctrl {
+> > +		compatible = "rockchip,rk3576-pinctrl";
+> > +		rockchip,grf = <&ioc_grf>;
+> > +		rockchip,sys-grf = <&sys_grf>;
+> > +		#address-cells = <2>;
+> > +		#size-cells = <2>;
+> > +		ranges;
+> > +
+> > 
+> > +		gpio0: gpio@27320000 {
+> 
+> The use of gpio nodes as subnode of pinctrl is deprecated.
+> 
+> patternProperties:
+>   "gpio@[0-9a-f]+$":
+>     type: object
+> 
+>     $ref: /schemas/gpio/rockchip,gpio-bank.yaml#
+>     deprecated: true
+> 
+>     unevaluatedProperties: false
 
-> But the GRF nodes have different compatibles:
-> - rk3588 uses php_grf (rockchip,rk3588-php-grf)
-> - rk3576 uses pmu0_grf (rockchip,rk3576-pmu0-grf)
+I tried putting the gpio nodes out of the pinctrl node, they should work 
+because they already have a gpio-ranges field.
+But unfortunately, that seem to break the pinctrl driver which hangs at some 
+point. Maybe some adaptations are needed to support this, or am I missing 
+something ?
 
-Ditto this, the new clock driver that you're adding with knowledge of
-the clock tree could also contain the new compatible for that soc.
+> > +			compatible = "rockchip,gpio-bank";
+> 
+> When in use as separate node the compatible must be SoC related.
+> 
+> Question for the maintainers: Extra entry to rockchip,gpio-bank.yaml ??
+> 
+> > +			reg = <0x0 0x27320000 0x0 0x200>;
+> > +			interrupts = <GIC_SPI 153 
+IRQ_TYPE_LEVEL_HIGH>;
+> > +			clocks = <&cru PCLK_GPIO0>, <&cru 
+DBCLK_GPIO0>;
+> > +
+> > +			gpio-controller;
+> > +			#gpio-cells = <2>;
+> > +			gpio-ranges = <&pinctrl 0 0 32>;
+> > +			interrupt-controller;
+> > +			#interrupt-cells = <2>;
+> > +		};
+> > +
+> > +		gpio1: gpio@2ae10000 {
+> > +
+> > +		gpio2: gpio@2ae20000 {
+> > +
+> > +		gpio3: gpio@2ae30000 {
+> > +
+> > +		gpio4: gpio@2ae40000 {
+> > +	};
+> > +};
+> > +
+> > +#include "rk3576-pinctrl.dtsi"
 
->=20
-> So an optional rockchip,grf phandle sounds a good solution for this=20
+Regards,
 
---8nory5apk8iuCTjB
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZsOBXQAKCRB4tDGHoIJi
-0u/vAQDSwsluEKRxoOcYRAh1uVu2XPsw/p4RBvLSsDukZCR+2wEA9HnBhF+e7Itd
-Zv3H4QkSggfMtdslb8Hu9gCENceHNQE=
-=QO6A
------END PGP SIGNATURE-----
-
---8nory5apk8iuCTjB--
+Detlev
 
 
---===============8470031539773738503==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============8470031539773738503==--
-
