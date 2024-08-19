@@ -4,79 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0AE34C5320E
-	for <linux-rockchip@archiver.kernel.org>; Mon, 19 Aug 2024 13:14:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 081F4C5320E
+	for <linux-rockchip@archiver.kernel.org>; Mon, 19 Aug 2024 13:34:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=WKKLw9tX69orxVh02D4uvAPfpKWD/CzQ5dgxXoA30B4=; b=cut4i0YKl1fxe/
-	1qIRtpCrXZuBQs76dl4dridACUe3ASqYHl8rgZw4lXicweEO5u7ePOsLOVe0A//fPFg8MvJqjxMLg
-	d2rZSwx5kZaUDisRTIfM6TKP/AMJ/rvRK7AJ0aXYexpHXrtb/pd0gHhmEXu5TSuE95cGQ/DDvIBQp
-	xvL1OI6t0wIZmpIDSazo6P3D6F4EANtBJbcaTUWK7OmYfC4GpwKIxsy2eFeIbkWigLLUgLiOdVxye
-	+7XFjHq95RlDriXxeFrHZEvXzorQ2vGyu2uszp/mKft0R9zUxCxTdTddEJ8lEFjjI0x5RXQb21Oyr
-	wjX7wCng9gJ/77SbCdNA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:References:To:From:Subject:Cc:Message-Id:Date:Mime-Version:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=QGAPErk9GNgvPfio/Xn/z4Wkbd/ASN631tOR5ggChmI=; b=IXeplYAI3wE4brJV/TxapR7s5G
+	HgfS+Prd1px08Aj2G6j09bfOy/A71OvxE3wgy4xwpj10thvXqEMyII1lGwP5MUpkMorQPOjqTEHnt
+	u14kuYycrm5rD6rrplXDDvvnileNgXzZVrzZ3WeAh2S3iCtf09EwkL8html21PJwcJMoIDWxpeIa3
+	bp4FoDiK1HKr5c6Z4W8xZ1A0Tnxg3xGZIqKCvptdVU1H9yrg5SRK6ouPMOPb/sYxuh2JuFZvDqeJd
+	8KU/DPdLAX9zS8AoPK+SmjqPYD71kxAOSEoh3Q+F1yXu9T/GD22QuCkuS+dLZiMFmz/LAD3nNHrd0
+	LPb2CMKg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sg2DG-00000001Xq5-3afM;
-	Mon, 19 Aug 2024 13:14:22 +0000
-Received: from mail-qt1-x832.google.com ([2607:f8b0:4864:20::832])
+	id 1sg2Wt-00000001dOA-1nw0;
+	Mon, 19 Aug 2024 13:34:39 +0000
+Received: from out-171.mta1.migadu.com ([95.215.58.171])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sg2DE-00000001XpH-23H0;
-	Mon, 19 Aug 2024 13:14:22 +0000
-Received: by mail-qt1-x832.google.com with SMTP id d75a77b69052e-44ff7cc5432so33627141cf.3;
-        Mon, 19 Aug 2024 06:14:19 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1724073258; x=1724678058; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=9Wnf8Vek1pXTYVFxgy7NN2FbreAvac/mL1LGB55sZB8=;
-        b=IwgjEdRlW4C4bWFO6QJ/At6rCTnR83R2Gb7eji7R4kmFS6g2W0oGpQTYXi4F+o5Edz
-         UGh65Ae5AS5RCEmy2S8vOGmT2tvKjzamBxiZ3jZrd4Q4k4yZ7C+CAkXdid1z42Wgpk/U
-         30nCqQLxsUb62PSyTzgRHRfXVlE85Gyvn5RsymEqydF8kZaTHy3DmjLYp9GytNsWT0oI
-         Gxic38O4uSC45rqPJw01qGMDD7rGu512H1MSOVPwntPXDF21a9QA55Zmg12lYpFXzRZc
-         Q9ZVcqkYcixTstY3MvhykJH/5QUURig0RCZivQzAI/a4fjuKidgzi71Bj9OiCCzouX1L
-         ZBww==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1724073258; x=1724678058;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=9Wnf8Vek1pXTYVFxgy7NN2FbreAvac/mL1LGB55sZB8=;
-        b=la4ph5wjaANpRw8LLRVCBrJpnMkMjif3RH1mBlm7lXBSPpZFWydOtgZb/U/inUpWJX
-         eZ/CyslkYpBuVAJEH/oQstSIV3QzsXfvyVoVH6miO+cSy9mRwfPlZFqeznOFbQvMRvXD
-         mOwiC52vr0x1v/JCFXEy145BxedFinobCQ8YCcEgsJmhXhOQuU+7/UYz8usc3iyt9IaQ
-         XMmmAz5tp/V4tcrDGvUZEZVpZKef+HjqYf+jOtkKvDzajcYw+mxtDu6MIEiCLd9rrLQO
-         EKLbWj/s724o4+Qi1IwDdX/H/lT00e9396F68JNSpEUgFH5OZGww4EYlFWNI6gUU7kYw
-         7VJg==
-X-Forwarded-Encrypted: i=1; AJvYcCWtO+3cSsgPkMt4qvJQrawcEU7fU66V3R36SyNuvgCpGyu15Onz7XpLvWtoys070f19scZ8bR85mur7BZtSfw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YypK050NiCmiulvVSvtVKuRNvD8tsWKdI3H/BEB2BxswTLlYkSK
-	26ve0dMSUjjTEqdvrWr6fzQszZGzOQh8ZhfCnAxiZMtEbJlu+gUDKn+UzGRpjiLaTisJ6uSbKXs
-	0FA5W7B3QEmqUbiHQIuVOtLojG6k=
-X-Google-Smtp-Source: AGHT+IFLBkF0J6o432Y3Zy+PaCUGi3zp/x8gPERl08DGLbLG4sy0WXZFbK+iZ5k2pEMDYH4oOpsk18fjk3P1xDR9I3k=
-X-Received: by 2002:a05:622a:244c:b0:44f:e108:2854 with SMTP id
- d75a77b69052e-4537429fa1amr157807041cf.26.1724073258537; Mon, 19 Aug 2024
- 06:14:18 -0700 (PDT)
-MIME-Version: 1.0
-References: <CAAMcf8Dts3=6CxNCLZBvXsdFHpaOs9mL2NJ8TMPU5+duray6-g@mail.gmail.com>
- <CAAMcf8DZu4B2AN+=8xP3wuknqUtD-e-v+Ej31=08ibPfyL+dGw@mail.gmail.com> <CAAMcf8A59MqhZEswC5VmKZyThG7oG=ztEYd_yfuOwvGTvKzMow@mail.gmail.com>
-In-Reply-To: <CAAMcf8A59MqhZEswC5VmKZyThG7oG=ztEYd_yfuOwvGTvKzMow@mail.gmail.com>
-From: Vicente Bergas <vicencb@gmail.com>
-Date: Mon, 19 Aug 2024 15:14:06 +0200
-Message-ID: <CAAMcf8Ctr9rOZ2oOzk48haakJOO2bzyNURb2oZTRxJ3tnafXUA@mail.gmail.com>
+	id 1sg2Vi-00000001czG-2hKs
+	for linux-rockchip@lists.infradead.org;
+	Mon, 19 Aug 2024 13:33:29 +0000
+Mime-Version: 1.0
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow.org; s=key1;
+	t=1724074402;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=mUcz58dl6COkNRjXiS+XwoZIpjirix2gMX2fsFCVwqc=;
+	b=ljkVb+lTjdnqwLJrKao3uSZiJ5UsRjbEoSgjD8lP0CE2ae3ASMI3BPgcebBDyt7VyscRJS
+	ycmtkDoUGtdj8BblhOwd3lny3sKz1P/wK9MZ8c9S7nDEuBGCG63Zh8F30JMULw4QNSEIx/
+	6bU2giLnAuNEy5Z1orKiH1iquaECTqX5kLv3KB2BjfT92JBHXofm3w4U57/oeq95UAslL3
+	I5NkSlxcg9/xouNExxDHcqzerrtAVEzjhnC9h0jfgHQi3c2DWB9GRu8agOgphE3y7lhtly
+	oBeE3ybeLJqZwhFlowQHbKVKOkeAP7BeNrgPuSsxOjfnrkpJtOmHNjR5s/SirA==
+Date: Mon, 19 Aug 2024 15:33:12 +0200
+Message-Id: <D3JXD607339U.2F1IAKUSM59UP@cknow.org>
+Cc: "linux-arm-kernel" <linux-arm-kernel@lists.infradead.org>, "Linux Kernel
+ Mailing List" <linux-kernel@vger.kernel.org>, "Mark Brown"
+ <broonie@kernel.org>
 Subject: Re: [BUG] Rockchip SPI: Runtime PM usage count underflow!
-To: Huang-Huang Bao <i@eh5.me>, 
-	"open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, linux-spi@vger.kernel.org, 
-	Heiko Stuebner <heiko@sntech.de>, Linus Walleij <linus.walleij@linaro.org>, 
-	Sasha Levin <sashal@kernel.org>
-Cc: linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, 
-	Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, Mark Brown <broonie@kernel.org>
+X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
+From: "Diederik de Haas" <didi.debian@cknow.org>
+To: "Vicente Bergas" <vicencb@gmail.com>, "Huang-Huang Bao" <i@eh5.me>,
+ "Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
+ <linux-spi@vger.kernel.org>, "Heiko Stuebner" <heiko@sntech.de>, "Linus
+ Walleij" <linus.walleij@linaro.org>, "Sasha Levin" <sashal@kernel.org>
+References: <CAAMcf8Dts3=6CxNCLZBvXsdFHpaOs9mL2NJ8TMPU5+duray6-g@mail.gmail.com> <CAAMcf8DZu4B2AN+=8xP3wuknqUtD-e-v+Ej31=08ibPfyL+dGw@mail.gmail.com> <CAAMcf8A59MqhZEswC5VmKZyThG7oG=ztEYd_yfuOwvGTvKzMow@mail.gmail.com> <CAAMcf8Ctr9rOZ2oOzk48haakJOO2bzyNURb2oZTRxJ3tnafXUA@mail.gmail.com>
+In-Reply-To: <CAAMcf8Ctr9rOZ2oOzk48haakJOO2bzyNURb2oZTRxJ3tnafXUA@mail.gmail.com>
+X-Migadu-Flow: FLOW_OUT
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240819_061420_548174_BC7BF8BC 
-X-CRM114-Status: GOOD (  23.12  )
+X-CRM114-CacheID: sfid-20240819_063327_320136_837C56C5 
+X-CRM114-Status: GOOD (  16.88  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,44 +68,80 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: multipart/mixed; boundary="===============1264068653783034485=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gTW9uLCBBdWcgMTksIDIwMjQgYXQgMjo0OeKAr1BNIFZpY2VudGUgQmVyZ2FzIDx2aWNlbmNi
-QGdtYWlsLmNvbT4gd3JvdGU6Cj4KPiBPbiBNb24sIEF1ZyAxOSwgMjAyNCBhdCA0OjEy4oCvQU0g
-VmljZW50ZSBCZXJnYXMgPHZpY2VuY2JAZ21haWwuY29tPiB3cm90ZToKPiA+Cj4gPiBPbiBTdW4s
-IEF1ZyAxOCwgMjAyNCBhdCA4OjEz4oCvUE0gVmljZW50ZSBCZXJnYXMgPHZpY2VuY2JAZ21haWwu
-Y29tPiB3cm90ZToKPiA+ID4KPiA+ID4gSGksCj4gPiA+IGkgYW0gYSB1c2VyIG9mIHRoZSBDT05G
-SUdfU1BJX1NQSURFViBkZXZpY2UuCj4gPiA+IEl0IHN0b3BwZWQgd29ya2luZyBiZXR3ZWVuIDYu
-OCBhbmQgNi4xMC41Lgo+ID4gPiBUaGUgU1BJIGJ1cyBpdHNlbGYgcmVwb3J0cyBubyBlcnJvcnMg
-dG8gdXNlcnNwYWNlLCBidXQgbm8gZGV2aWNlcwo+ID4gPiBhcHBlYXIgY29ubmVjdGVkIHRvIHRo
-ZSBidXMuCj4gPiA+IFRoZSBwbGF0Zm9ybSB1c2VkIGlzIFJLMzMyOC4KPiA+ID4gVGhlIG9ubHkg
-c3BpLXJlbGF0ZWQgbWVzc2FnZSBpbiBkbWVzZyBpczoKPiA+ID4gcm9ja2NoaXAtc3BpIGZmMTkw
-MDAwLnNwaTogUnVudGltZSBQTSB1c2FnZSBjb3VudCB1bmRlcmZsb3chCj4gPiA+Cj4gPiA+IFBs
-ZWFzZSwgY2FuIHNvbWVib2R5IHJldmlldyB0aGlzIGlzc3VlPwo+ID4gPgo+ID4gPiBSZWdhcmRz
-LAo+ID4gPiAgIFZpY2VudGUuCj4gPgo+ID4gSSd2ZSB0cmllZCB0byBiaXNlY3QsIGJ1dCB0aGVy
-ZSBpcyBzb21lIHN0cmFuZ2UgYmVoYXZpb3VyOgo+ID4gVGhlIG1lc3NhZ2UgIlJ1bnRpbWUgUE0g
-dXNhZ2UgY291bnQgdW5kZXJmbG93ISIgY2FuIGFsc28gYXBwZWFyIG9uIGEKPiA+IGdvb2Qga2Vy
-bmVsLgo+ID4gSW4gb3JkZXIgdG8gaGF2ZSBhIHJlYXNvYmxlIGl0ZXJhdGlvbiBzcGVlZCwgaSBh
-bSB1cGRhdGluZyB0aGUga2VybmVsIHZpYSBrZXhlYy4KPiA+IElmIGEgZ29vZCBrZXJuZWwgKDYu
-Ni4zMCkgaXMgY29sZC1ib290ZWQsIHRoZW4sIGFsbCB0aGUga2VybmVscwo+ID4ga2V4ZWMnZCBm
-cm9tIGl0IHdvcmsgdG9vLgo+ID4gSWYgYSBiYWQga2VybmVsICg2LjEwLjUpIGlzIGNvbGQtYm9v
-dGVkLCB0aGVuIGEgNi42LjMwIGlzIGtleGVjJ2QgYW5kCj4gPiB0aGVuIHRoZSBzYW1lIDYuMTAu
-NSBpcyBrZXhlYydkIGl0IGJlY29tZXMgYSBnb29kIG9uZS4KPgo+IEFkZGVkOgo+IEh1YW5nLUh1
-YW5nIEJhbyA8aUBlaDUubWU+Cj4gTGludXMgV2FsbGVpaiA8bGludXMud2FsbGVpakBsaW5hcm8u
-b3JnPgo+IFNhc2hhIExldmluIDxzYXNoYWxAa2VybmVsLm9yZz4KPgo+IFRoZSBmaXJzdCBvZmZl
-bmRpbmcgY29tbWl0IGlzOgo+IDI5ZDgxMDFmYjk0NDI1NDQwNzdlNjhlMjc4MzlhMTk3OWY4NTYz
-M2QgcGluY3RybDogcm9ja2NoaXA6IGZpeCBwaW5tdXgKPiBiaXRzIGZvciBSSzMzMjggR1BJTzIt
-QiBwaW5zCj4KPiBJJ3ZlIGFsc28gdGVzdGVkIDYuMTAuNiB3aXRoIGl0IHJldmVydGVkIChhbmQK
-PiA0NTY0NDdmZjFmZTNjMjhlMmZkN2I1N2E3OTY1MGY2MjI0NWM2NDI4IGFuZAo+IDcxMjdjNjhj
-NzZmMTIwMzY3YjlhNTA1M2Y1MjRkZjBiNjAzZDRhNDggYXMgZGVwZW5kZW5jaWVzKSBhbmQgU1BJ
-Cj4gd29ya3MgZmluZS4KClNvcnJ5IGZvciB0aGUgbm9pc2U6CnJldmVydGluZyBvbmx5IDI5ZDgx
-MDFmYjk0NDI1NDQwNzdlNjhlMjc4MzlhMTk3OWY4NTYzM2QgbWFrZXMgaXQgd29yayBvbiA2LjEw
-LjYuCklnbm9yZSB3aGF0IGkgc2FpZCBhYm91dCA0NTY0NDdmZjFmZTNjMjhlMmZkN2I1N2E3OTY1
-MGY2MjI0NWM2NDI4IGFuZAo3MTI3YzY4Yzc2ZjEyMDM2N2I5YTUwNTNmNTI0ZGYwYjYwM2Q0YTQ4
-LgoKPiBSZWdhcmRzLAo+ICAgVmljZW50ZS4KCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2Nr
-Y2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxt
-YW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+--===============1264068653783034485==
+Content-Type: multipart/signed;
+ boundary=7d622726182a96d2bf0672ce2e9576632d95c43943cc86cf0e8f4ee1b5f3;
+ micalg=pgp-sha256; protocol="application/pgp-signature"
+
+--7d622726182a96d2bf0672ce2e9576632d95c43943cc86cf0e8f4ee1b5f3
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=UTF-8
+
+On Mon Aug 19, 2024 at 3:14 PM CEST, Vicente Bergas wrote:
+> On Mon, Aug 19, 2024 at 2:49 PM Vicente Bergas <vicencb@gmail.com> wrote:
+> > On Mon, Aug 19, 2024 at 4:12 AM Vicente Bergas <vicencb@gmail.com> wrote:
+> > > > i am a user of the CONFIG_SPI_SPIDEV device.
+> > > > It stopped working between 6.8 and 6.10.5.
+> > > > The SPI bus itself reports no errors to userspace, but no devices
+> > > > appear connected to the bus.
+> > > > The platform used is RK3328.
+> > > > The only spi-related message in dmesg is:
+> > > > rockchip-spi ff190000.spi: Runtime PM usage count underflow!
+
+FWIW: I've seen this issue as well.
+
+> > Added:
+> > Huang-Huang Bao <i@eh5.me>
+> > Linus Walleij <linus.walleij@linaro.org>
+> > Sasha Levin <sashal@kernel.org>
+> >
+> > The first offending commit is:
+> > 29d8101fb9442544077e68e27839a1979f85633d pinctrl: rockchip: fix pinmux
+> > bits for RK3328 GPIO2-B pins
+> >
+> > I've also tested 6.10.6 with it reverted (and
+> > 456447ff1fe3c28e2fd7b57a79650f62245c6428 and
+> > 7127c68c76f120367b9a5053f524df0b603d4a48 as dependencies) and SPI
+> > works fine.
+>
+> Sorry for the noise:
+> reverting only 29d8101fb9442544077e68e27839a1979f85633d makes it work on 6.10.6.
+> Ignore what i said about 456447ff1fe3c28e2fd7b57a79650f62245c6428 and
+> 7127c68c76f120367b9a5053f524df0b603d4a48.
+
+Please try if unreverting that commit and adding the following:
+https://lore.kernel.org/linux-rockchip/20240709105428.1176375-1-i@eh5.me/
+
+fixes the issue as well.
+
+--7d622726182a96d2bf0672ce2e9576632d95c43943cc86cf0e8f4ee1b5f3
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYIAB0WIQT1sUPBYsyGmi4usy/XblvOeH7bbgUCZsNJmwAKCRDXblvOeH7b
+bhyQAP92MFS0tEffPQaPvXYIqpxKxcuOQKgtci09ZuJAZ8cHcAD8CHTgUDgpnM8L
+KrOfRzWCigYY3k5CT8KNO6/JOHeTUQ0=
+=ku1k
+-----END PGP SIGNATURE-----
+
+--7d622726182a96d2bf0672ce2e9576632d95c43943cc86cf0e8f4ee1b5f3--
+
+
+--===============1264068653783034485==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============1264068653783034485==--
+
