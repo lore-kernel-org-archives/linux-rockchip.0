@@ -4,59 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9354AC3DA4A
-	for <linux-rockchip@archiver.kernel.org>; Mon, 19 Aug 2024 17:07:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B0158C3DA4A
+	for <linux-rockchip@archiver.kernel.org>; Mon, 19 Aug 2024 17:16:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:References:
-	In-Reply-To:Cc:To:From:MIME-Version:Date:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=0RzjVQaLb1db6GZNJWmOeBw1x6W86PCBUaSgMGoySLw=; b=gX9jKZkYli5Q2EJVY67CjWXMMm
-	oz49PfZSpA5TYISrCCQCP2GhhQPGjxALqc1Ewu/HCcGrCJEDdPkq+H/fX+QyjZ02E+y8QDj+MWD0S
-	s4dC+lGY7x13ez6zJ+l72xd74mIWosu6xdGH25Lop1HEPK9w5HJ9+uWgKPa8TPpSrMx112jOW+thL
-	8QfLrEN7jM/HFK1f9mWvrKcTtYoIvw2XjvWGU1WK45DFNDCaMSMhifdh/VbM60pTfXkzDnFBIFjPP
-	QHKyPVrPzATXexllprn1ib1FrRpB4RXtCgzzEe8GebsiIKTMBe+rM7cMiiz7esZbXiLLv8zBsi2qJ
-	NKjVuMVQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=XXbjLnPAF5PpzlpJ8dPM7v04hkKroALzHTfbBEMRA1w=; b=LyS6BHEDKqy/WKea0VHo/J6Wih
+	DAVourY7baWuRI+odyzEjTQTaW7TY0MdLrKOfrkjVBrWvvgFaLp/c3Ohz68SkpytnO5QW+KASB8e0
+	Dqc30kGwHj7LkDZh8XXD2fkfhJksAga+e4R6XN2wIImIPQU7XHq4uYa9CMO7xB3TlOV7DbhrCkSsQ
+	9W4w2Lz/jA4dhbPx69bCqKtkxfpw6XciMk/eUx1M8K5PVNLmi4vpaJW4V1jV4gd37w0pHmUu1Rrww
+	cHuXKPZj1N65qook37LP07Bw5ib7KPkGbgGLfpw91PKYYFYnuroVmLuYDtQVgTI0WqaVZyPVhVHwS
+	NsD1P52Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sg5qX-00000002K0P-0eum;
-	Mon, 19 Aug 2024 17:07:09 +0000
-Received: from sin.source.kernel.org ([145.40.73.55])
+	id 1sg5zk-00000002MmY-3vgy;
+	Mon, 19 Aug 2024 17:16:40 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sg5mJ-00000002IlV-3ars
-	for linux-rockchip@lists.infradead.org;
-	Mon, 19 Aug 2024 17:02:49 +0000
+	id 1sg5rx-00000002KVQ-3iRt;
+	Mon, 19 Aug 2024 17:08:39 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id E2CFDCE0AD0;
-	Mon, 19 Aug 2024 17:02:45 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id EB0B9C32782;
-	Mon, 19 Aug 2024 17:02:44 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 2D01260AB8;
+	Mon, 19 Aug 2024 17:08:37 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 351FDC32782;
+	Mon, 19 Aug 2024 17:08:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1724086965;
-	bh=Q1xW/0nBXIW/86VsGilfh+HMuH2E4QdrIJgAob+KTVE=;
-	h=Date:From:To:Cc:In-Reply-To:References:Subject:From;
-	b=nj1CWxvlBRYiNVii5vPO/kdnZO/7ga67Q5mk00xptcXTV6SPxYeQpyScNFEED+DA/
-	 81xXlYENgmyUK73KHwv4Org1LvOO5z/muerXrHc4zLDKdF8mYy6ENq0uhT7dRmUsQh
-	 cPgPT3bFVidZ4WmLtMU5wMRXyZzyL2osU1dgTbRoEjz9Gw9z073XxlVsMvIvjRh5K5
-	 w6QScWrHXc+d+Jj9bA6tjcpVMaOvAv3TNXVV3LJDUKHby2NSAN6SgtWfNPLYieyEDp
-	 hrF6khnPUGgKDFzicM4qbEyVQ+V8cDW6X5r4ib92mI87pnFVFpjlNOIynv/te1y0Mu
-	 fZd0kJ/GoiObQ==
-Date: Mon, 19 Aug 2024 11:02:43 -0600
+	s=k20201202; t=1724087316;
+	bh=E3wx3Yy8f4Z4HsNkio0m66ed4QzhHvCCsBlgSiuE7yA=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=MGuiYdlZpf/fS6Lsr3MsXPxoJoBAsh4wRG0kt/2k3f5Xnkz+VKP0FYzfDv4mrqJZ+
+	 Z6tHbi2sUCd6PKoznrsqe2PUuFTBxGqDkcI2z93joXi248VOOujU1LsBWID6N4sbTD
+	 jUKLM+CUIRcM1r9vE3WlMGK39nDOTEZx8nIDcblJtK3+vRV+x8zyWPQqGvgNkCaL7i
+	 ve/X3CgTr6mPe5hJ9+QAhRiZFQxT0GtgN6mxR2UtV7mKQ4qKywm30KZWXixt69UTUS
+	 bq10T4HkhCPYL82xFoaW9UGv49fCBOtb2ECdItVxeL0GjKzo3Q25z5enR3DgN5tn77
+	 jt2b1vOwB5sYQ==
+Date: Mon, 19 Aug 2024 18:08:30 +0100
+From: Conor Dooley <conor@kernel.org>
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Cc: Serge Semin <fancer.lancer@gmail.com>,
+	Michael Turquette <mturquette@baylibre.com>,
+	Stephen Boyd <sboyd@kernel.org>, Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Charles Keepax <ckeepax@opensource.cirrus.com>,
+	Richard Fitzgerald <rf@opensource.cirrus.com>,
+	Geert Uytterhoeven <geert+renesas@glider.be>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>,
+	Magnus Damm <magnus.damm@gmail.com>, patches@opensource.cirrus.com,
+	Elaine Zhang <zhangqing@rock-chips.com>,
+	Gabriel Fernandez <gabriel.fernandez@foss.st.com>,
+	linux-mips@vger.kernel.org, linux-clk@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-renesas-soc@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-stm32@st-md-mailman.stormreply.com
+Subject: Re: [PATCH 5/5] dt-bindings: clock: st,stm32mp1-rcc: add top-level
+ constraints
+Message-ID: <20240819-gatherer-sedan-154904ce49ba@spud>
+References: <20240818173014.122073-1-krzysztof.kozlowski@linaro.org>
+ <20240818173014.122073-5-krzysztof.kozlowski@linaro.org>
 MIME-Version: 1.0
-From: "Rob Herring (Arm)" <robh@kernel.org>
-To: FUKAUMI Naoki <naoki@radxa.com>
-Cc: linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, 
- krzk+dt@kernel.org, conor+dt@kernel.org, heiko@sntech.de
-In-Reply-To: <20240816213429.1093-1-naoki@radxa.com>
-References: <20240816213429.1093-1-naoki@radxa.com>
-Message-Id: <172408433165.1619643.7928785825448507704.robh@kernel.org>
-Subject: Re: [PATCH v5 1/2] dt-bindings: arm: rockchip: add support for
- Radxa ROCK Pi E v3.0
+In-Reply-To: <20240818173014.122073-5-krzysztof.kozlowski@linaro.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240819_100248_090701_482945D6 
-X-CRM114-Status: GOOD (  12.86  )
+X-CRM114-CacheID: sfid-20240819_100838_013757_522C4394 
+X-CRM114-Status: UNSURE (   9.96  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,66 +86,56 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============8288839471127752057=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
-On Sat, 17 Aug 2024 06:34:28 +0900, FUKAUMI Naoki wrote:
-> Radxa ROCK Pi E v3.0 is a compact networking SBC[1] using the Rockchip
-> RK3328 chip.
-> 
-> [1] https://radxa.com/products/rockpi/pie
-> 
-> Signed-off-by: FUKAUMI Naoki <naoki@radxa.com>
-> ---
-> Changes in v5:
-> - revert compatible string
-> - describe rockchip.yaml properly
-> Changes in v4:
-> - update compatible string for OpenWrt
-> - drop A-b tag
-> Changes in v3:
-> - collect A-b tag
-> Changes in v2:
-> - fix typo in commit message
-> - add missing --- in commit message
-> - add new section instead of new item in rockchip.yaml
-> ---
->  Documentation/devicetree/bindings/arm/rockchip.yaml | 4 +++-
->  1 file changed, 3 insertions(+), 1 deletion(-)
-> 
+--===============8288839471127752057==
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="rQtkFboImljYNJPX"
+Content-Disposition: inline
 
 
-My bot found new DTB warnings on the .dts files added or changed in this
-series.
+--rQtkFboImljYNJPX
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Some warnings may be from an existing SoC .dtsi. Or perhaps the warnings
-are fixed by another series. Ultimately, it is up to the platform
-maintainer whether these warnings are acceptable or not. No need to reply
-unless the platform maintainer has comments.
+On Sun, Aug 18, 2024 at 07:30:14PM +0200, Krzysztof Kozlowski wrote:
+> Properties with variable number of items per each device are expected to
+> have widest constraints in top-level "properties:" block and further
+> customized (narrowed) in "if:then:".  Add missing top-level constraints
+> for clocks and clock-names.
+>=20
+> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
-If you already ran DT checks and didn't see these error(s), then
-make sure dt-schema is up to date:
+Acked-by: Conor Dooley <conor.dooley@microchip.com>
 
-  pip3 install dtschema --upgrade
+--rQtkFboImljYNJPX
+Content-Type: application/pgp-signature; name="signature.asc"
 
+-----BEGIN PGP SIGNATURE-----
 
-New warnings running 'make CHECK_DTBS=y rockchip/rk3328-rock-pi-e-v3.dtb rockchip/rk3328-rock-pi-e.dtb' for 20240816213429.1093-1-naoki@radxa.com:
+iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZsN8DQAKCRB4tDGHoIJi
+0pVLAQDwyIKwfsPuyqXb02vbHEEbL8TGRHM/QQvfFPhvZCI9zAEA71idxnNe3Jq5
+wxYq+g9QkUAnqtmBwUD3Hm7yuVfTDgs=
+=1VCV
+-----END PGP SIGNATURE-----
 
-arch/arm64/boot/dts/rockchip/rk3328-rock-pi-e-v3.dtb: hdmi@ff3c0000: interrupts: [[0, 35, 4], [0, 71, 4]] is too long
-	from schema $id: http://devicetree.org/schemas/display/rockchip/rockchip,dw-hdmi.yaml#
-arch/arm64/boot/dts/rockchip/rk3328-rock-pi-e-v3.dtb: /phy@ff430000: failed to match any schema with compatible: ['rockchip,rk3328-hdmi-phy']
-arch/arm64/boot/dts/rockchip/rk3328-rock-pi-e-v3.dtb: /clock-controller@ff440000: failed to match any schema with compatible: ['rockchip,rk3328-cru', 'rockchip,cru', 'syscon']
-arch/arm64/boot/dts/rockchip/rk3328-rock-pi-e-v3.dtb: /clock-controller@ff440000: failed to match any schema with compatible: ['rockchip,rk3328-cru', 'rockchip,cru', 'syscon']
-
-
-
+--rQtkFboImljYNJPX--
 
 
+--===============8288839471127752057==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============8288839471127752057==--
+
