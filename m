@@ -4,59 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 21B0DC531DC
-	for <linux-rockchip@archiver.kernel.org>; Tue, 20 Aug 2024 14:29:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0D017C531DC
+	for <linux-rockchip@archiver.kernel.org>; Tue, 20 Aug 2024 14:49:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
-	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=yToDeLbx/agatsF8bAhkH5ZIDDCJCSn6IiEknhd6h38=; b=Iq1ButH4Qhj8ct+wNLIRwYJaMT
-	h9pr3NURk3zzGBSqwdvVQcGgO634BTTbcl1XIyXi8NqE6p9izID2p5JF+oXVWkLWp+FWx68Jz7BRJ
-	bQfSCgT8ooQ3neOKF1utd7Gq6Kg7kKlWq+AJfta7eQeiIccv5obxxm/STuBeepFOdCLEJOlfjfNBl
-	wJ3byAiuUk+aLMl46qo4spBTG/oTnyaOHIWpbHOXNnJz9FpQIZTr1qicrMR/ElOnhU46Ws09I0cvT
-	K9HzjsV7gy1J3xICdkThZKVtazdOaOo1wZkUgJSk/GylWL4lii37C3rWxnaWQQ8VB4b55tO+iMADV
-	Sd4nNRQg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:MIME-Version:Subject:
+	Date:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=AvhySBaH4jf7wztaNMF4pduxtLHHO4vYpwa9Hi9GXOM=; b=ND+rJGS2J9NaoS
+	XggO7u4dVTW3LQZzn6k7RxhD/RAHVn/VhJkF9O7IwmWp7Rdw5MJPXgjL1mdWbmZP20v8i6GTOl83H
+	danVy9KcvUordR95jyjDfqcYDVt8Zs0LoPfIcWg+x0JNyhwMsYuHd0uAdK4R9/J4o2OdWB47QrZKD
+	ifSrcpGn+JyT8w/T5HZuTCtXnsHpw60gUxUJYxIdczGEMT2uc2nOEwDrrNpLOPErs9JGBywF0bL78
+	F/U2tZc0rOtegDwdf+q8eLv4YLKDtNPIb5hXQ11777bxkPxmrYp+dPkL+7DRBHXvJZJLEwHHRKD8A
+	t4q19p2iKbH8mTlQ63ow==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sgPr0-00000005YCM-1n3j;
-	Tue, 20 Aug 2024 14:28:58 +0000
-Received: from mail.manjaro.org ([2a01:4f8:c0c:51f3::1])
+	id 1sgQAw-00000005dvP-1aPr;
+	Tue, 20 Aug 2024 14:49:34 +0000
+Received: from muminek.juszkiewicz.com.pl ([213.251.184.221])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sgPqF-00000005Xms-08wl;
-	Tue, 20 Aug 2024 14:28:13 +0000
+	id 1sgQ3x-00000005brZ-1cQh
+	for linux-rockchip@lists.infradead.org;
+	Tue, 20 Aug 2024 14:42:22 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=juszkiewicz.com.pl;
+	s=mail; t=1724164936;
+	bh=GbtwbMyDf8C8md31SFg3ziXO2s93kR8EZEcZwUbn7wU=;
+	h=From:Date:Subject:To:Cc:From;
+	b=Ri3FSr7dHDSB/ELK03IHy1DJwzJRvMZZlJSt9S4RhX+p/zaQEkU89D7w+7okJChzY
+	 RTpHtukyvhJUmwBFLPDhSO4x9vpSkSpXGvwdFtILKShNdMIXtzwfzYUMWnfGx7ErHP
+	 I4NRG3QOAaEtkCrbaan9WymYtoZn96ENLodfb+WJcnBH0HF1OM6MrRE7GXc8Z8zgrT
+	 O3EGYDlNN5jqFJOB26E5FeJabJOuHDTXA+QUNX0LWxouEuZvp4u6ErxUkRlXQPCzMg
+	 7EFb7fBE+NiK9TGbLRWyVJk1YMGVDaIhyICpuJMx63jHcb6d88spaim3n1q8JN9lLk
+	 CqbQoJrjOPREw==
+Received: from localhost (localhost [127.0.0.1])
+	by muminek.juszkiewicz.com.pl (Postfix) with ESMTP id 9CB90260746;
+	Tue, 20 Aug 2024 16:42:16 +0200 (CEST)
+X-Virus-Scanned: Debian amavis at juszkiewicz.com.pl
+Received: from muminek.juszkiewicz.com.pl ([127.0.0.1])
+ by localhost (muminek.juszkiewicz.com.pl [127.0.0.1]) (amavis, port 10024)
+ with ESMTP id 1iqgMStyytO2; Tue, 20 Aug 2024 16:42:14 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=juszkiewicz.com.pl;
+	s=mail; t=1724164934;
+	bh=GbtwbMyDf8C8md31SFg3ziXO2s93kR8EZEcZwUbn7wU=;
+	h=From:Date:Subject:To:Cc:From;
+	b=hEhuNm49naSHx9UEW4rK7zDCOqFcNlcOD2Pm9+7/d5Q5oSMvcEfRJugYdeqdmIWtr
+	 nLH/NaRNtjG8EoqYnhjl8K7Sh53cjjzFNJd9RazSBBjI105iIcUmm7W0zHIJQksOdq
+	 2fDuZ5FKa5BTT7aMIqP0vU2F9y0ZLNTtDYYnF1TO6mkFKsPBDj7XTYtUAfsD2881xC
+	 7W+HcjfJPGJf/lLrpuX9+IHjUCQcqD3NtruKWGTpSoZIYVGv8Ghoki7F4BcMQgdXL9
+	 3NJsDVgJkCtEK/zSwlHrtHQ94aRKP7UtSqBanFfOmgWqGgVeqAGfSc0mWsDogBiDmb
+	 Ig6UAPxIohCwg==
+Received: from puchatek.local (79.186.29.241.ipv4.supernova.orange.pl [79.186.29.241])
+	by muminek.juszkiewicz.com.pl (Postfix) with ESMTPSA id 797DF2601CD;
+	Tue, 20 Aug 2024 16:42:14 +0200 (CEST)
+From: Marcin Juszkiewicz <marcin@juszkiewicz.com.pl>
+Date: Tue, 20 Aug 2024 16:42:08 +0200
+Subject: [PATCH] arm64: dts: rockchip: Add FriendlyELEC NanoPC-T6 LTS
 MIME-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
-	t=1724164088;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=9lfYG8mLMZ0ToEvfuDohOV6aiGyWEujUFWVDSC8D4ic=;
-	b=ZkmOkAzx5YgLBlN0MF2JuKRo4gFfSBd7vX2rvvXuZL42jDBVELJnS9jK0H+Y8dduyFGbJy
-	iK7fGLYfh41uP/+Xu8HeVbszC/OW+ROrVDC0vSGHFGls2LUgnYXe95ImNBKXIhPh/CZKhX
-	IO3u0N7QbRf7+sdw5gBWqFVfkagCqT8gSXY39Yn/cn/fCwpVJSBpNdzR1NkNyPyEpmylnM
-	ppZYZvTHcNI49BZez2pJpNYBwt9eMHE73rTKY+MIcaa3WXPzTAXCpFb61M/+qozADXgZ9g
-	S85XQMEcoNzU/ClrIs+4nJ2LCRo0LpuVQcCvZmzOG/Fvl76pdMHx25SxgXWiIQ==
-Date: Tue, 20 Aug 2024 16:28:07 +0200
-From: Dragan Simic <dsimic@manjaro.org>
-To: Chukun Pan <amadeus@jmu.edu.cn>
-Cc: Heiko Stuebner <heiko@sntech.de>, Conor Dooley <conor+dt@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Rob Herring <robh@kernel.org>,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH 1/1] arm64: dts: rockchip: disable display subsystem only
- for Radxa E25
-In-Reply-To: <20240820120020.469375-1-amadeus@jmu.edu.cn>
-References: <20240820120020.469375-1-amadeus@jmu.edu.cn>
-Message-ID: <16c70a037d912ec88eb9c082f35100c6@manjaro.org>
-X-Sender: dsimic@manjaro.org
-Authentication-Results: ORIGINATING;
-	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
+Message-Id: <20240820-friendlyelec-nanopc-t6-lts-v1-1-da1273c3e08e@juszkiewicz.com.pl>
+X-B4-Tracking: v=1; b=H4sIAD+rxGYC/y2N0QrCMAxFf2Xk2UDsZB3+iviwpZkWSjbbTpSxf
+ zeoj+dwOXeDIjlKgXOzQZZnLHFWg+OhAb4PehOMwRgcuRP1jnCyuYb0liSMOui8MNYOUy1IxL7
+ zPbdj8GCBJcsUX9/45frjLI/VPupf7vsHqBsQUIEAAAA=
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: linux-rockchip@lists.infradead.org, 
+ Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
+X-Mailer: b4 0.14.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240820_072811_612712_986D3C18 
-X-CRM114-Status: GOOD (  12.80  )
+X-CRM114-CacheID: sfid-20240820_074221_648311_E2D67CAE 
+X-CRM114-Status: GOOD (  14.47  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,62 +83,142 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello Chukun,
+From: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
 
-On 2024-08-20 14:00, Chukun Pan wrote:
-> The SoM board has reserved HDMI output, while the Radxa E25
-> is not connected. So disable the display subsystem only for
-> Radxa E25.
-> 
-> Signed-off-by: Chukun Pan <amadeus@jmu.edu.cn>
+FriendlyELEC introduced new version of NanoPC-T6 SBC.
 
-Looking good to me, thanks for the patch.  The carrier board is what's
-responsible for exposing the actual HDMI port from the SoM.
+MiniPCIe slot got removed and USB 2.0 configuration has changed.
+There are two external accessible ports and two ports on internal
+header.
 
-Reviewed-by: Dragan Simic <dsimic@manjaro.org>
+There is on-board USB hub which provides:
+- one external connector (bottom one)
+- two internal ports on pin header
+- m.2 E port
 
-> ---
->  arch/arm64/boot/dts/rockchip/rk3568-radxa-cm3i.dtsi | 4 ----
->  arch/arm64/boot/dts/rockchip/rk3568-radxa-e25.dts   | 4 ++++
->  2 files changed, 4 insertions(+), 4 deletions(-)
-> 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3568-radxa-cm3i.dtsi
-> b/arch/arm64/boot/dts/rockchip/rk3568-radxa-cm3i.dtsi
-> index 45b03dcbbad4..19d309654bdb 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3568-radxa-cm3i.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk3568-radxa-cm3i.dtsi
-> @@ -108,10 +108,6 @@ &cpu3 {
->  	cpu-supply = <&vdd_cpu>;
->  };
-> 
-> -&display_subsystem {
-> -	status = "disabled";
-> -};
-> -
->  &gpu {
->  	mali-supply = <&vdd_gpu>;
->  	status = "okay";
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3568-radxa-e25.dts
-> b/arch/arm64/boot/dts/rockchip/rk3568-radxa-e25.dts
-> index 72ad74c38a2b..84a0789fad96 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3568-radxa-e25.dts
-> +++ b/arch/arm64/boot/dts/rockchip/rk3568-radxa-e25.dts
-> @@ -103,6 +103,10 @@ &combphy1 {
->  	phy-supply = <&vcc3v3_pcie30x1>;
->  };
-> 
-> +&display_subsystem {
-> +	status = "disabled";
-> +};
-> +
->  &pcie2x1 {
->  	pinctrl-names = "default";
->  	pinctrl-0 = <&pcie20_reset_h>;
+Top USB 2.0 connector comes directly from SoC.
+
+Signed-off-by: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
+---
+FriendlyELEC introduced new version of NanoPC-T6 SBC.
+
+MiniPCIe slot got removed and USB 2.0 configuration has changed.  There
+are two external accessible ports and two ports on internal header.
+
+There is on-board USB hub which provides:
+- one external connector (bottom one)
+- two internal ports on pin header
+- m.2 E port
+
+Top USB 2.0 connector comes directly from SoC.
+
+I am not sure should it be separate source file or should it be
+integrated into rk3588-nanopc-t6.dts one. The differences are small:
+
+- no vdd_4g_3v3 regulator on LTS
+- no vcc5v0_host_20 regulator on non-LTS
+- LTS one has more complex USB 2.0 setup
+
+When I merge LTS differences into NanoPC-T6 dts file then my
+NanoPC-T6 LTS board boots fine. But I have no way to test on non-LTS
+one.
+---
+ arch/arm64/boot/dts/rockchip/Makefile              |  1 +
+ .../boot/dts/rockchip/rk3588-nanopc-t6-lts.dts     | 60 ++++++++++++++++++++++
+ 2 files changed, 61 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
+index fda1b980eb4b..0f982c741243 100644
+--- a/arch/arm64/boot/dts/rockchip/Makefile
++++ b/arch/arm64/boot/dts/rockchip/Makefile
+@@ -128,6 +128,7 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-evb1-v10.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-friendlyelec-cm3588-nas.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-jaguar.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-nanopc-t6.dtb
++dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-nanopc-t6-lts.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-ok3588-c.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-orangepi-5-plus.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-quartzpro64.dtb
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6-lts.dts b/arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6-lts.dts
+new file mode 100644
+index 000000000000..13f273cfe94f
+--- /dev/null
++++ b/arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6-lts.dts
+@@ -0,0 +1,60 @@
++// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
++/*
++ * Copyright (c) 2021 Rockchip Electronics Co., Ltd.
++ * Copyright (c) 2023 Thomas McKahan
++ * Copyright (c) 2024 Marcin Juszkiewicz
++ *
++ */
++
++/dts-v1/;
++
++#include "rk3588-nanopc-t6.dts"
++
++/ {
++	model = "FriendlyElec NanoPC-T6 LTS";
++	compatible = "friendlyarm,nanopc-t6-lts", "rockchip,rk3588";
++
++	vcc5v0_host_20: vcc5v0-host-regulator {
++		compatible = "regulator-fixed";
++		enable-active-high;
++		gpio = <&gpio1 RK_PA4 GPIO_ACTIVE_HIGH>;
++		pinctrl-0 = <&usb20_host_pwren>;
++		pinctrl-names = "default";
++		regulator-always-on;
++		regulator-boot-on;
++		regulator-max-microvolt = <5000000>;
++		regulator-min-microvolt = <5000000>;
++		regulator-name = "vcc5v0_host";
++		vin-supply = <&vcc5v0_sys>;
++	};
++};
++
++&pinctrl {
++	usb {
++		usb20_host_pwren: vcc5v0-host-en {
++			rockchip,pins = <1 RK_PA4 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++	};
++};
++
++&u2phy1 {
++	status = "okay";
++};
++
++&u2phy1_otg {
++	status = "okay";
++};
++
++&u2phy2_host {
++	phy-supply = <&vcc5v0_host_20>;
++	status = "okay";
++};
++
++&usbdp_phy1 {
++	status = "okay";
++};
++
++&usb_host1_xhci {
++	dr_mode = "host";
++	status = "okay";
++};
+
+---
+base-commit: 6e4436539ae182dc86d57d13849862bcafaa4709
+change-id: 20240820-friendlyelec-nanopc-t6-lts-00c7678c3bd7
+
+Best regards,
+-- 
+Marcin Juszkiewicz <marcin@juszkiewicz.com.pl>
+
 
 _______________________________________________
 Linux-rockchip mailing list
