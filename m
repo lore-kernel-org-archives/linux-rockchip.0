@@ -4,55 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BB033C54722
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 980BAC52D6F
 	for <linux-rockchip@archiver.kernel.org>; Wed, 21 Aug 2024 08:33:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
-	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=2Dbb4D0jyr7XY0cvfxQK5//B/9QQ/O7fUTlXILIN2T4=; b=bhGqyulGFpdeKw
-	dgl5ewXKUTbcI6r+ALVe7G1xpR7josprZ2+M6oDpdVEFOq9F6xAww+Ou4mwPZRvnCKv0CTB59HXSB
-	NAEzP1gszLLZnb94xWhREM3+3dvJsK6jYblbylpUvBIgEdVExaeJlXBsWHgRyaGMBh6Ml/06kA4Jq
-	eBhP+Gw3kJfbblRtoUX/u6zCAroEdPduYvzrK8uCsS3huCfUVPeVI1fgcyIL/lF+C9m/3mnn5q08/
-	VlRaP/GkiMJlSxS0UhbZ7iTJe7Ud7kDfGKmAigd+DJ8HSpaVrkekhqTWjHyTn+TYAKTKt7gxFYicM
-	bUtuWAsQXXlrVKq0rZPA==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
+	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=tjTsb7Uf5zGOJIv6JmRy4ew6QEYB6xPZKsK/QoNpnfM=; b=SPiEm8XA65P/jG
+	XZAF6ViYyUm50cKfm7fdCqjYPoRo2YLIW+R7SJrb6E3i6frdCy+nLmQNtKS9cG/iljRPaMZw88l9Q
+	MsRzZJ97uFHLz4w5vX/KJM3B1alg9JJq8ODtMu713HMAzes/AVdCZK1Og7BAxu9v77xzuggB35b7q
+	Le6NOG6LX6DSUs2kBKuULyqLbGLM9KOltbbxqSyysOpeeBQxxGdHZhbxBipQAoYSKaxi1UIulShVY
+	8FV45HWP/rgQL9WM9kJBxg6f/WMV/QqAptneE3oZ3xtwR/UtKMamdDnmTiQIgFP/Qr1yo8oWmGmKB
+	T5Md+azyREEKRu/5eWhw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sggm2-0000000859F-2NQD;
-	Wed, 21 Aug 2024 08:32:58 +0000
+	id 1sggm3-0000000859o-1aMT;
+	Wed, 21 Aug 2024 08:32:59 +0000
 Received: from muminek.juszkiewicz.com.pl ([213.251.184.221])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sggf8-000000083Ir-1Rno
+	id 1sggf9-000000083JO-1yUy
 	for linux-rockchip@lists.infradead.org;
-	Wed, 21 Aug 2024 08:25:52 +0000
+	Wed, 21 Aug 2024 08:25:53 +0000
 Received: from localhost (localhost [127.0.0.1])
-	by muminek.juszkiewicz.com.pl (Postfix) with ESMTP id B4094261A06;
-	Wed, 21 Aug 2024 10:25:47 +0200 (CEST)
+	by muminek.juszkiewicz.com.pl (Postfix) with ESMTP id 7EEB5260983;
+	Wed, 21 Aug 2024 10:25:49 +0200 (CEST)
 X-Virus-Scanned: Debian amavis at juszkiewicz.com.pl
 Received: from muminek.juszkiewicz.com.pl ([127.0.0.1])
  by localhost (muminek.juszkiewicz.com.pl [127.0.0.1]) (amavis, port 10024)
- with ESMTP id XWZp5HdF9CAt; Wed, 21 Aug 2024 10:25:45 +0200 (CEST)
+ with ESMTP id Bl_mtQZers3B; Wed, 21 Aug 2024 10:25:47 +0200 (CEST)
 Received: from puchatek.local (79.186.29.241.ipv4.supernova.orange.pl [79.186.29.241])
-	by muminek.juszkiewicz.com.pl (Postfix) with ESMTPSA id 5B82926018E;
-	Wed, 21 Aug 2024 10:25:43 +0200 (CEST)
+	by muminek.juszkiewicz.com.pl (Postfix) with ESMTPSA id 200C12609DA;
+	Wed, 21 Aug 2024 10:25:46 +0200 (CEST)
 From: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
-Subject: [PATCH v2 0/6] improve FriendlyELEC NanoPC-T6 a bit
-Date: Wed, 21 Aug 2024 10:25:29 +0200
-Message-Id: <20240821-friendlyelec-nanopc-t6-lts-v2-0-e0138bb10042@linaro.org>
+Date: Wed, 21 Aug 2024 10:25:31 +0200
+Subject: [PATCH v2 2/6] arm64: dts: rockchip: define pinctl for SPI M1
 MIME-Version: 1.0
-X-B4-Tracking: v=1; b=H4sIAHmkxWYC/42OQQ6CMBREr0K69pO2GEpceQ/DAtuPVGuLbUGBc
- HcrLty6fJPJm1lIQK8xkEO2EI+jDtrZBHyXEdk19oKgVWLCKd/TilNoU90qM6FBCbaxrpcQSzA
- xAKVSlKKSxVkJkgS9x1a/Nvmp/rLHx5A24i/sdIjOT9uBkX3Sv7ZGBgxUw7goZIG0wuN1CPNN4
- 1PLOZfunveG1Ou6vgEAaoEH4gAAAA==
+Message-Id: <20240821-friendlyelec-nanopc-t6-lts-v2-2-e0138bb10042@linaro.org>
+References: <20240821-friendlyelec-nanopc-t6-lts-v2-0-e0138bb10042@linaro.org>
+In-Reply-To: <20240821-friendlyelec-nanopc-t6-lts-v2-0-e0138bb10042@linaro.org>
 To: Heiko Stuebner <heiko@sntech.de>
 Cc: linux-rockchip@lists.infradead.org, 
  Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
 X-Mailer: b4 0.14.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240821_012550_573878_B83DED0A 
-X-CRM114-Status: UNSURE (   7.01  )
+X-CRM114-CacheID: sfid-20240821_012551_800230_4142B4F9 
+X-CRM114-Status: UNSURE (   7.80  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -70,45 +68,45 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This series updates FriendlyELEC NanoPC-T6 DeviceTree a bit:
-
-- enable USB 2.0 ports on NanoPC-T6 LTS
-- enable USB-C port (one orientation only)
-- enable Mali GPU
-- enable IR receiver (not tested)
-- enable SPI flash (present on LTS, optional on non-LTS)
+FriendlyELEC NanoPC-T6 has 32MB of SPI flash connected to SPI M1 lines
+(always present on LTS version, optional on non-LTS one).
 
 Signed-off-by: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
-
 ---
-Changes in v2:
-- merged changes into NanoPC-T6 dts file
-- add SPI flash pinctl for SPI M1
-- enable SPI on NanoPC-T6 LTS
-- enable USB-C port (one orientation only)
-- enable Mali GPI
-- enable IR receiver (not tested)
-- Link to v1: https://lore.kernel.org/r/20240820-friendlyelec-nanopc-t6-lts-v1-1-da1273c3e08e@juszkiewicz.com.pl
+ arch/arm64/boot/dts/rockchip/rk3588-base-pinctrl.dtsi | 17 +++++++++++++++++
+ 1 file changed, 17 insertions(+)
 
----
-Marcin Juszkiewicz (6):
-      arm64: dts: rockchip: enable USB 2.0 on NanoPC-T6 LTS
-      arm64: dts: rockchip: define pinctl for SPI M1
-      arm64: dts: rockchip: enable SPI flash on NanoPC-T6 LTS
-      arm64: dts: rockchip: add IR-receiver to NanoPC-T6
-      arm64: dts: rockchip: enable GPU on NanoPC-T6
-      arm64: dts: rockchip: enable USB-C on NanoPC-T6
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588-base-pinctrl.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-base-pinctrl.dtsi
+index 30db12c4fc82..75d5816b6fa4 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588-base-pinctrl.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3588-base-pinctrl.dtsi
+@@ -407,6 +407,23 @@ fspim0_cs1: fspim0-cs1 {
+ 				<2 RK_PD7 2 &pcfg_pull_up_drv_level_2>;
+ 		};
+ 
++		/omit-if-no-ref/
++		fspim1_pins: fspim1-pins {
++			rockchip,pins =
++				/* fspi_clk_m1 */
++				<2 RK_PB3 5 &pcfg_pull_up_drv_level_2>,
++				/* fspi_cs0n_m1 */
++				<2 RK_PB4 2 &pcfg_pull_up_drv_level_2>,
++				/* fspi_d0_m1 */
++				<2 RK_PA6 5 &pcfg_pull_up_drv_level_2>,
++				/* fspi_d1_m1 */
++				<2 RK_PA7 5 &pcfg_pull_up_drv_level_2>,
++				/* fspi_d2_m1 */
++				<2 RK_PB0 5 &pcfg_pull_up_drv_level_2>,
++				/* fspi_d3_m1 */
++				<2 RK_PB1 5 &pcfg_pull_up_drv_level_2>;
++		};
++
+ 		/omit-if-no-ref/
+ 		fspim2_pins: fspim2-pins {
+ 			rockchip,pins =
 
- .../boot/dts/rockchip/rk3588-base-pinctrl.dtsi     |  17 +++
- arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dts  | 139 ++++++++++++++++++++-
- 2 files changed, 155 insertions(+), 1 deletion(-)
----
-base-commit: 6e4436539ae182dc86d57d13849862bcafaa4709
-change-id: 20240820-friendlyelec-nanopc-t6-lts-00c7678c3bd7
-
-Best regards,
 -- 
-Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
+2.46.0
 
 
 _______________________________________________
