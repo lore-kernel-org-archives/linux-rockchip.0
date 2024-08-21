@@ -4,59 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C1030C52D7C
-	for <linux-rockchip@archiver.kernel.org>; Wed, 21 Aug 2024 07:40:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6D45BC531DC
+	for <linux-rockchip@archiver.kernel.org>; Wed, 21 Aug 2024 08:33:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
+	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=AmYK/RWhb5K1M8WPJwqiBJT7mwo9xG9GjRmknZTlypY=; b=Y5aP+YTX8VDoWI
-	Jb/WeKjFh185yWeCXBY65CsNrgpK5KY/YWGEdmBhAcPRhbVTCa/rzj0kTYOtG2eqyTFY9suevlqmb
-	J6f8VXSZnQV8twdGSR87b1M4qGB8RcKwH7HkXWOvbKoye0i2Md6FSvEYwkYYmsOj4zIPQSYhVg2TT
-	P1Lz6awfFzNwbgRI6HuDhohNFYlwcZRhB0a2HjcUscrAGvaCB7xDn3f6Gn0NXMnUcBFlBbhtOTN2D
-	xMzIUFVG7IzMl9ANb5eieaVMqOaE9C32hDJc3mayW2yMOHe2ymL8zWKWoYPZ2yLYj4SdKXHMsVKP2
-	9puEg5Pn6QVT9UVZvKcQ==;
+	List-Owner; bh=qjsW1yylbVQTAbGLCAEtB6emhUQjd5g5lqQlrz+hL4Q=; b=ra2MEdfm022JLT
+	kEjA7Yh4Qsno/c6qGdzP+EDRcS8U2slQq4In28ntQWEXT/3IHoCOLI8vo1XGWrxLKfKDxISfcJJDV
+	pisNLEi0lfuHKzDIDpVUuo7HkCObISCTRH7SZTTEU/3aUbPfy6kJ+cjnG75fN7j71xQlQMQWh+Z/p
+	ipmrC28RxGM+Ykt375CoUSFx+1GHrctV9w81i1FTrwSOa2V2xmXtnoCicpBLqbcROvf5m+tMOX1cc
+	b+U+odk0yIGJuwdkUlmoP93UvTxEOQ/2Zj2Rxid84hsFfXN3gjfFzMR4xZgwYLSMnfjwa0BBpEpuB
+	KEyhM2VUoH6QTPufVMXg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sgfxh-00000007wxh-1798;
-	Wed, 21 Aug 2024 07:40:57 +0000
-Received: from mail.manjaro.org ([116.203.91.91])
+	id 1sggm2-00000008590-0pxZ;
+	Wed, 21 Aug 2024 08:32:58 +0000
+Received: from muminek.juszkiewicz.com.pl ([213.251.184.221])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sgfux-00000007wRJ-07Zj;
-	Wed, 21 Aug 2024 07:38:10 +0000
-From: Dragan Simic <dsimic@manjaro.org>
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
-	t=1724225884;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=7mpSgzy1mYsfmRZERxM1qKQwFf2Bvpti+0UrXxT9LS0=;
-	b=VAhqzafl1g0io65W7HyURf3pSL/CuyQtt3tQtsLmL6RP/7/Y5D791BM11qXYjdTOzK1Uxd
-	rUlZZtpStM7cbXzID5nq2aaFkEOusbAipxhnIUIJSvCs68zSJ8dSNkerAHOXN/A3t6uK1r
-	nxx2Abak3LxXCzttOgeF1wkzldIDOQl+uh8B3uEWv66dsOeXBWQQyqLv1AV3AGP7bdbKen
-	BZsZCj/L/ai2OosxqRKfLcuNUskNohqchZeEJbHg7AVSweKIJfNQp3jWdM/95k0IDOd5OR
-	KSjZCjdexqBVPeZphtsQ9KPqX2t1Ki72Crfle9BHveqVOOsraqle0SOMPgwiug==
-To: linux-rockchip@lists.infradead.org,
-	linux-phy@lists.infradead.org
-Cc: vkoul@kernel.org,
-	kishon@kernel.org,
-	heiko@sntech.de,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH v2 3/3] phy: phy-rockchip-inno-usb2: Improve error handling while probing
-Date: Wed, 21 Aug 2024 09:37:55 +0200
-Message-Id: <866445027a4f41165c872f494b04c218b6e67b09.1724225528.git.dsimic@manjaro.org>
-In-Reply-To: <cover.1724225528.git.dsimic@manjaro.org>
-References: <cover.1724225528.git.dsimic@manjaro.org>
+	id 1sggf8-000000083Ij-0csn
+	for linux-rockchip@lists.infradead.org;
+	Wed, 21 Aug 2024 08:25:51 +0000
+Received: from localhost (localhost [127.0.0.1])
+	by muminek.juszkiewicz.com.pl (Postfix) with ESMTP id D221A26018E;
+	Wed, 21 Aug 2024 10:25:47 +0200 (CEST)
+X-Virus-Scanned: Debian amavis at juszkiewicz.com.pl
+Received: from muminek.juszkiewicz.com.pl ([127.0.0.1])
+ by localhost (muminek.juszkiewicz.com.pl [127.0.0.1]) (amavis, port 10024)
+ with ESMTP id w4rYTOBLJoK3; Wed, 21 Aug 2024 10:25:46 +0200 (CEST)
+Received: from puchatek.local (79.186.29.241.ipv4.supernova.orange.pl [79.186.29.241])
+	by muminek.juszkiewicz.com.pl (Postfix) with ESMTPSA id BF3B3260983;
+	Wed, 21 Aug 2024 10:25:45 +0200 (CEST)
+From: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
+Date: Wed, 21 Aug 2024 10:25:30 +0200
+Subject: [PATCH v2 1/6] arm64: dts: rockchip: enable USB 2.0 on NanoPC-T6
+ LTS
 MIME-Version: 1.0
-Authentication-Results: ORIGINATING;
-	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
+Message-Id: <20240821-friendlyelec-nanopc-t6-lts-v2-1-e0138bb10042@linaro.org>
+References: <20240821-friendlyelec-nanopc-t6-lts-v2-0-e0138bb10042@linaro.org>
+In-Reply-To: <20240821-friendlyelec-nanopc-t6-lts-v2-0-e0138bb10042@linaro.org>
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: linux-rockchip@lists.infradead.org, 
+ Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
+X-Mailer: b4 0.14.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240821_003807_371951_A32D1965 
-X-CRM114-Status: GOOD (  11.88  )
+X-CRM114-CacheID: sfid-20240821_012550_377824_ECC84660 
+X-CRM114-Status: UNSURE (   9.74  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,97 +69,99 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Improve error handling in the probe path by using function dev_err_probe()
-where appropriate, and by no longer using it rather pointlessly in one place
-that actually produces a single, hardcoded error code.
+FriendlyELEC introduced new version of NanoPC-T6 SBC.
 
-Signed-off-by: Dragan Simic <dsimic@manjaro.org>
+MiniPCIe slot got removed and USB 2.0 configuration has changed.
+There are two external accessible ports and two ports on internal
+header.
+
+There is on-board USB hub which provides:
+- one external connector (bottom one)
+- two internal ports on pin header
+- m.2 E port
+
+Top USB 2.0 connector comes directly from SoC.
+
+Signed-off-by: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
 ---
- drivers/phy/rockchip/phy-rockchip-inno-usb2.c | 33 ++++++++-----------
- 1 file changed, 14 insertions(+), 19 deletions(-)
+ arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dts | 35 +++++++++++++++++++++++
+ 1 file changed, 35 insertions(+)
 
-diff --git a/drivers/phy/rockchip/phy-rockchip-inno-usb2.c b/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
-index 05af46dda11d..30b6134365ec 100644
---- a/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
-+++ b/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
-@@ -424,25 +424,22 @@ static int rockchip_usb2phy_extcon_register(struct rockchip_usb2phy *rphy)
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dts b/arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dts
+index ad8e36a339dc..bf2c4427ad74 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dts
+@@ -182,6 +182,20 @@ vdd_4g_3v3: vdd-4g-3v3-regulator {
+ 		regulator-max-microvolt = <3300000>;
+ 		vin-supply = <&vcc5v0_sys>;
+ 	};
++
++	vcc5v0_usb20_host: vcc5v0-usb20-host-regulator {
++		compatible = "regulator-fixed";
++		enable-active-high;
++		gpio = <&gpio1 RK_PA4 GPIO_ACTIVE_HIGH>;
++		pinctrl-0 = <&usb20_host_pwren>;
++		pinctrl-names = "default";
++		regulator-always-on;
++		regulator-boot-on;
++		regulator-max-microvolt = <5000000>;
++		regulator-min-microvolt = <5000000>;
++		regulator-name = "vcc5v0_usb20_host";
++		vin-supply = <&vcc5v0_sys>;
++	};
+ };
  
- 	if (of_property_read_bool(node, "extcon")) {
- 		edev = extcon_get_edev_by_phandle(rphy->dev, 0);
--		if (IS_ERR(edev)) {
--			if (PTR_ERR(edev) != -EPROBE_DEFER)
--				dev_err(rphy->dev, "Invalid or missing extcon\n");
--			return PTR_ERR(edev);
--		}
-+		if (IS_ERR(edev))
-+			return dev_err_probe(rphy->dev, PTR_ERR(edev),
-+					     "invalid or missing extcon\n");
- 	} else {
- 		/* Initialize extcon device */
- 		edev = devm_extcon_dev_allocate(rphy->dev,
- 						rockchip_usb2phy_extcon_cable);
+ &combphy0_ps {
+@@ -535,6 +549,10 @@ typec5v_pwren: typec5v-pwren {
+ 			rockchip,pins = <1 RK_PD2 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
  
- 		if (IS_ERR(edev))
- 			return dev_err_probe(rphy->dev, PTR_ERR(edev),
- 					     "failed to allocate extcon device\n");
++		usb20_host_pwren: usb20-host-pwren {
++			rockchip,pins = <1 RK_PA4 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++
+ 		usbc0_int: usbc0-int {
+ 			rockchip,pins = <0 RK_PD3 RK_FUNC_GPIO &pcfg_pull_up>;
+ 		};
+@@ -911,6 +929,14 @@ &uart2 {
+ 	status = "okay";
+ };
  
- 		ret = devm_extcon_dev_register(rphy->dev, edev);
--		if (ret) {
--			dev_err(rphy->dev, "failed to register extcon device\n");
--			return ret;
--		}
-+		if (ret)
-+			return dev_err_probe(rphy->dev, ret,
-+					     "failed to register extcon device\n");
- 	}
++&u2phy1 {
++	status = "okay";
++};
++
++&u2phy1_otg {
++	status = "okay";
++};
++
+ &u2phy2_host {
+ 	phy-supply = <&vdd_4g_3v3>;
+ 	status = "okay";
+@@ -928,6 +954,10 @@ &u2phy3 {
+ 	status = "okay";
+ };
  
- 	rphy->edev = edev;
-@@ -1375,8 +1372,10 @@ static int rockchip_usb2phy_probe(struct platform_device *pdev)
- 	rphy->irq = platform_get_irq_optional(pdev, 0);
- 	platform_set_drvdata(pdev, rphy);
- 
--	if (!phy_cfgs)
--		return dev_err_probe(dev, -EINVAL, "phy configs are not assigned!\n");
-+	if (!phy_cfgs) {
-+		dev_err(dev, "phy configs are not assigned\n");
-+		return -EINVAL;
-+	}
- 
- 	ret = rockchip_usb2phy_extcon_register(rphy);
- 	if (ret)
-@@ -1407,10 +1406,8 @@ static int rockchip_usb2phy_probe(struct platform_device *pdev)
- 				     "failed to get phyclk\n");
- 
- 	ret = rockchip_usb2phy_clk480m_register(rphy);
--	if (ret) {
--		dev_err(dev, "failed to register 480m output clock\n");
--		return ret;
--	}
-+	if (ret)
-+		return dev_err_probe(dev, ret, "failed to register 480m output clock\n");
- 
- 	if (rphy->phy_cfg->phy_tuning) {
- 		ret = rphy->phy_cfg->phy_tuning(rphy);
-@@ -1430,8 +1427,7 @@ static int rockchip_usb2phy_probe(struct platform_device *pdev)
- 
- 		phy = devm_phy_create(dev, child_np, &rockchip_usb2phy_ops);
- 		if (IS_ERR(phy)) {
--			dev_err_probe(dev, PTR_ERR(phy), "failed to create phy\n");
--			ret = PTR_ERR(phy);
-+			ret = dev_err_probe(dev, PTR_ERR(phy), "failed to create phy\n");
- 			goto put_child;
- 		}
- 
-@@ -1466,8 +1462,7 @@ static int rockchip_usb2phy_probe(struct platform_device *pdev)
- 						"rockchip_usb2phy",
- 						rphy);
- 		if (ret) {
--			dev_err(rphy->dev,
--				"failed to request usb2phy irq handle\n");
-+			dev_err_probe(rphy->dev, ret, "failed to request usb2phy irq handle\n");
- 			goto put_child;
- 		}
- 	}
++&usbdp_phy1 {
++	status = "okay";
++};
++
+ &usb_host0_ehci {
+ 	status = "okay";
+ };
+@@ -943,3 +973,8 @@ &usb_host1_ehci {
+ &usb_host1_ohci {
+ 	status = "okay";
+ };
++
++&usb_host1_xhci {
++	dr_mode = "host";
++	status = "okay";
++};
+
+-- 
+2.46.0
+
 
 _______________________________________________
 Linux-rockchip mailing list
