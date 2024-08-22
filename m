@@ -4,59 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 216F4C52D7C
-	for <linux-rockchip@archiver.kernel.org>; Thu, 22 Aug 2024 19:57:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 10A6FC3DA4A
+	for <linux-rockchip@archiver.kernel.org>; Thu, 22 Aug 2024 19:57:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=qx0KrH7Hqlsb+h3Pbj81H1MxZMJCtsa46H4hcc/TM8A=; b=j38sOObQY+1Wmj
-	zFaadkhxJs+aaJhQPW05f5ECqd3nLNnDxTlq81I31MEoL8Y3WT4KxKyHT1YlUnFvnqJNt0S4DSoXH
-	224Ag7x7oqURwZvr8QoyDf/AvHGuPN6HMqiZYsi2yVY0GiNN3/TqmpaXo17z53nBrIJzUk6JsMjk0
-	t8x+jtH5Nh62JJnurMaIPRSAc+ED08m+Vt97yyaEU6JYe20XMqR3E4ocR/sBkGsPNAqYUHV0Z5iBw
-	G2KMxl9lz/Cv9pAwW3lwQicWJoQqYl25SHLYgPSyHbk0dq4/jDo4OR0UMnMLGAItSq4vM1uqWFcpV
-	2U5jnnYUHb8LbhRH60WQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=Psx4W0hgI32FKTTjaL9C5Z2M3so5Qc8woOWyZk2jpSo=; b=37Y49fvy18mUL6
+	csGhx/h1kA1TE2DEWac3xFsnMj9CnjqnwehtxKG4F/1lH903ODRf6MOugsaLPEF1WOVva9K8/khwb
+	zoc8W3yiYEpYLVSFyQskbruIKaUsJ4UXhMDnGsReaniq8AjixPeVF0hZA4+SYEpYqY1z1dM1oBOkl
+	66O3ppSeIPVKEq84ImAt9H7aTsPmbe2coxD5oAbMmuZvW72YGbPlFPH/UY3P5wqYeNSql2PVVOirY
+	CtjNkpY6FFNDG/9qds/mpg+e9SjzXZvAztXecJQHqHzJR+kbCKVkgfhx9r5wdkA5TVLDtzuKm8X0J
+	vQCu+82NF6uzNCiceb2Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1shDw6-0000000EACH-28R9;
-	Thu, 22 Aug 2024 19:57:34 +0000
+	id 1shDw8-0000000EADL-1kYk;
+	Thu, 22 Aug 2024 19:57:36 +0000
 Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1shDw0-0000000EAAG-1spu;
-	Thu, 22 Aug 2024 19:57:29 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1724356642; cv=none; 
+	id 1shDw4-0000000EABL-3cpC;
+	Thu, 22 Aug 2024 19:57:34 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1724356644; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=mrMMoVI/vPpUTcwUWmVqAzUZqnK9BHKMfsEHlELNfsdLquU+g2sbqSC/T2dNXX6XiwOG9CgvkVNj9ObKBW2es24/xJ6P3VBbcGyDznFlso+BJtBIh9V02p4Cg1eAjsJHrJHJ0/hWSscDbd5C0JETX7oVfbb65oOwHRxsW5cEMcU=
+	b=Z8aYStN88XnrVLqh2BalbJKQLADmLTkpPBDEiWkEqWebpJaFabGa3W2O4lhm7MYEuOYj3y/dqeBft4z/0Y2+uVWLUlQteDXmdsJC3FBjHffn+FXkLIIk3ZGhg1KRo03vIUaevPnK7LB4zQGsSCItq92CU5x3PtOQrDEjtb1jP+4=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1724356642; h=Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=cDAWEJoEuz/zAjQB2GDr5o/+uMhJXPXP0OhvbyTM3eQ=; 
-	b=elg7zCTgG0JGoPym0Bt7GGwWg8QG1KDkl5/q4E4r6K7z7x3QCJK++XxwPqS/UlB0XmhbPk/dWM9S+k2rYS+FFZUX9MIKddGQkLjRTia8w3y5SMST03nVMpDIKM3mv2H1p0uTM6ZxaDAB842087kJ4C6aZI/yX1ioc4+QloOKHl8=
+	t=1724356644; h=Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=uyD1jgLYcHCHmk8wrlzBXsw88Lru62jDx3Q42nc0dV0=; 
+	b=NuvtUZVk20ZApOS/ylyDj/nY3VDaJwuRbNywS8vMYS0ibmvmaM3R8kX4WGOLtS3cY+qkyZ9cMUjz8bSHNsV6dzNE9gWcwzuZUXiwEC8Ek7669P9/muuKsyWCyjixgtpDcP07FSyZ0ob9lcqbbew2DrIFDwBZ7QrDQUsqkJyF008=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=collabora.com;
 	spf=pass  smtp.mailfrom=detlev.casanova@collabora.com;
 	dmarc=pass header.from=<detlev.casanova@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1724356642;
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1724356644;
 	s=zohomail; d=collabora.com; i=detlev.casanova@collabora.com;
-	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:MIME-Version:Content-Transfer-Encoding:Message-Id:Reply-To;
-	bh=cDAWEJoEuz/zAjQB2GDr5o/+uMhJXPXP0OhvbyTM3eQ=;
-	b=X7rNhmUo1ZZg/4il+v8om2GyJcVoSSVDqoPCpnzG28LruVhDc4F7fyqg6EUYsgZt
-	dseyrUIyFkYTnyMpsPvphi40gcPB1xt+buHfOSG85hV1DfBsUPpBoNlEW2/d8VXP4Rv
-	NC0RBqZb5TRpCGeyyzbbBxlctlEjcRjUzTDonVxY=
-Received: by mx.zohomail.com with SMTPS id 1724356639631760.212187062417;
-	Thu, 22 Aug 2024 12:57:19 -0700 (PDT)
+	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Message-Id:Reply-To;
+	bh=uyD1jgLYcHCHmk8wrlzBXsw88Lru62jDx3Q42nc0dV0=;
+	b=kgTOBg/Aob5IBudGhbviRrJBBsjWAvqBHe2hOWZGcdGwkFP9VRAh1YP3kf2g8X7J
+	jEey7nJBLWQXX03BxZH6QxyVIbgEC9eDysG6yP9GyWORb4Z56/69H155eaWzqJIrYzX
+	zo8/ESWPxoxSfiqgFh1RgadeKCYh4i32H9CAi4ak=
+Received: by mx.zohomail.com with SMTPS id 1724356643158395.86992208662514;
+	Thu, 22 Aug 2024 12:57:23 -0700 (PDT)
 From: Detlev Casanova <detlev.casanova@collabora.com>
 To: linux-kernel@vger.kernel.org
-Subject: [PATCH v4 0/4] Add pinctrl support for rk3576
-Date: Thu, 22 Aug 2024 15:53:35 -0400
-Message-ID: <20240822195706.920567-1-detlev.casanova@collabora.com>
+Subject: [PATCH v4 2/4] grf: rk3576: Add default GRF values
+Date: Thu, 22 Aug 2024 15:53:37 -0400
+Message-ID: <20240822195706.920567-3-detlev.casanova@collabora.com>
 X-Mailer: git-send-email 2.46.0
+In-Reply-To: <20240822195706.920567-1-detlev.casanova@collabora.com>
+References: <20240822195706.920567-1-detlev.casanova@collabora.com>
 MIME-Version: 1.0
 X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240822_125728_554088_9081FD4C 
-X-CRM114-Status: GOOD (  10.74  )
+X-CRM114-CacheID: sfid-20240822_125732_974807_793C01BC 
+X-CRM114-Status: GOOD (  11.64  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,42 +76,73 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add support for the pinctrl core on the rk3576 SoC.
-The patch from downstream has been rebased.
+Set SW controlled i3c weak pull up and disable JTAG function on SDMMC IO.
 
-The grf driver is added support for the rk3576 default values:
-- enable i3c weakpull SW control
-- disable jtag on sdmmc IO lines
+The i3c weak pull up is activated to let all gpio banks be controlled
+by the pinctrl driver.
 
-Changes since v3:
-- Set GRF bits through the GRF driver
-- Drop the rockchip,sys-grf phandle
+Disabling the JTAG function lets the SDMMC core use its full IO width.
 
-Changes since v2:
-- Document rockchip,sys-grf field as only needed for rk3576
+Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
+---
+ drivers/soc/rockchip/grf.c | 30 +++++++++++++++++++++++++++++-
+ 1 file changed, 29 insertions(+), 1 deletion(-)
 
-Changes since v1:
-- Reorder commits
-- Describe sys-grf use
-- Update imperative commit message
-
-Detlev.
-
-Detlev Casanova (3):
-  dt-bindings: soc: rockchip: Add rk3576 syscon compatibles
-  grf: rk3576: Add default GRF values
-  dt-bindings: pinctrl: Add rk3576 pinctrl support
-
-Steven Liu (1):
-  pinctrl: rockchip: Add rk3576 pinctrl support
-
- .../bindings/pinctrl/rockchip,pinctrl.yaml    |   1 +
- .../devicetree/bindings/soc/rockchip/grf.yaml |  16 ++
- drivers/pinctrl/pinctrl-rockchip.c            | 207 ++++++++++++++++++
- drivers/pinctrl/pinctrl-rockchip.h            |   1 +
- drivers/soc/rockchip/grf.c                    |  30 ++-
- 5 files changed, 254 insertions(+), 1 deletion(-)
-
+diff --git a/drivers/soc/rockchip/grf.c b/drivers/soc/rockchip/grf.c
+index 5fd62046b28a..4607fc0779e7 100644
+--- a/drivers/soc/rockchip/grf.c
++++ b/drivers/soc/rockchip/grf.c
+@@ -121,6 +121,29 @@ static const struct rockchip_grf_info rk3566_pipegrf __initconst = {
+ 	.num_values = ARRAY_SIZE(rk3566_defaults),
+ };
+ 
++#define RK3576_SYSGRF_SOC_CON1		0x0004
++
++static const struct rockchip_grf_value rk3576_defaults_sys_grf[] __initconst = {
++	{ "i3c0 weakpull", RK3576_SYSGRF_SOC_CON1, HIWORD_UPDATE(3, 3, 6) },
++	{ "i3c1 weakpull", RK3576_SYSGRF_SOC_CON1, HIWORD_UPDATE(3, 3, 8) },
++};
++
++static const struct rockchip_grf_info rk3576_sysgrf __initconst = {
++	.values = rk3576_defaults_sys_grf,
++	.num_values = ARRAY_SIZE(rk3576_defaults_sys_grf),
++};
++
++#define RK3576_IOCGRF_MISC_CON		0x04F0
++
++static const struct rockchip_grf_value rk3576_defaults_ioc_grf[] __initconst = {
++	{ "jtag switching", RK3576_IOCGRF_MISC_CON, HIWORD_UPDATE(0, 1, 1) },
++};
++
++static const struct rockchip_grf_info rk3576_iocgrf __initconst = {
++	.values = rk3576_defaults_ioc_grf,
++	.num_values = ARRAY_SIZE(rk3576_defaults_ioc_grf),
++};
++
+ #define RK3588_GRF_SOC_CON6		0x0318
+ 
+ static const struct rockchip_grf_value rk3588_defaults[] __initconst = {
+@@ -132,7 +155,6 @@ static const struct rockchip_grf_info rk3588_sysgrf __initconst = {
+ 	.num_values = ARRAY_SIZE(rk3588_defaults),
+ };
+ 
+-
+ static const struct of_device_id rockchip_grf_dt_match[] __initconst = {
+ 	{
+ 		.compatible = "rockchip,rk3036-grf",
+@@ -158,6 +180,12 @@ static const struct of_device_id rockchip_grf_dt_match[] __initconst = {
+ 	}, {
+ 		.compatible = "rockchip,rk3566-pipe-grf",
+ 		.data = (void *)&rk3566_pipegrf,
++	}, {
++		.compatible = "rockchip,rk3576-sys-grf",
++		.data = (void *)&rk3576_sysgrf,
++	}, {
++		.compatible = "rockchip,rk3576-ioc-grf",
++		.data = (void *)&rk3576_iocgrf,
+ 	}, {
+ 		.compatible = "rockchip,rk3588-sys-grf",
+ 		.data = (void *)&rk3588_sysgrf,
 -- 
 2.46.0
 
