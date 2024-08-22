@@ -4,75 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 14688C531DF
-	for <linux-rockchip@archiver.kernel.org>; Thu, 22 Aug 2024 07:02:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 01CFEC3DA4A
+	for <linux-rockchip@archiver.kernel.org>; Thu, 22 Aug 2024 07:42:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=C2a3E2ddqjQekaIJvXvMpQeLZnyigTEEfzVAIlETdWI=; b=KsxqJHD6DSPTvQ
-	0m07fkdJgOV+mMkH5EgIbXVJ7oEl9ic6cl7KLpaVrTOXjgkpsdeEOEXlBSCZ8ThhmYPkrr0nDQ2lW
-	kf9mYF/0IAvlY9I4cyQGEg7SyoFMv0anFs0FEYVtuBhTc/1XYymDS+lF8fTxxBZu0tgG17mo5oW+4
-	1+fuZdCfnQUWgWqNQBFQC1mziAaDA8IiI6MDZ/oJcKpD3md6blfYDbWQd9iZah1S/ClKK33D8tRfK
-	obShhw5flZrAKFDUowngX1p+cUh7XLOs7xTDziXCmOulkTjspOMhcwi+utPv70DdarDFA/0COk8xR
-	2BgWbR/jTEgYhBhPYM0A==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
+	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Y4PyIy1fxzVHancPRopRlle7CpLUmICYmktUya2gB90=; b=17d+Yo5ME6r4sWIFrY6NaPaMmm
+	WpdR8wJF+pRQD2mOolvIAIFVrqpRWJ5Zvv0arad+uFZoVPs18yXdyumhv10XcpvlGQOEa9oDQEWWb
+	LQrE9Z8HYqakNqimwXrOa3kssxYrHyj3LbqnxxBcXgPwG1K54OKZMyA8FID5Y9Mb5ZjByV0TnMEj7
+	7pEY07XKs/B+ZEt5wrxhcG6/8aSPFJf2vV3JFKxBo0acrRjGDweDdNLjCe8d3slRa2GK0CfmFRsts
+	3+4kKDMd1YgIRO8tQlzlWeeYCJUIwiipz32iXDekOuhH52HxGdMZzDwNU/QDcuSbGgnLxP9NSixol
+	G45fPlNQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sh1q0-0000000Bkfw-48Mo;
-	Thu, 22 Aug 2024 07:02:28 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1sh2SB-0000000Bufb-1EXj;
+	Thu, 22 Aug 2024 07:41:55 +0000
+Received: from mail.manjaro.org ([2a01:4f8:c0c:51f3::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sh1pF-0000000BkUG-1XeI;
-	Thu, 22 Aug 2024 07:01:42 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
-	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=Tuxt7GCqLf7xh3mnFjDC4fgCkiXHtZKNJyBCK2VSy6k=; b=Ru06Pgh4K8ho1mUnytGolB07m9
-	UndgQkYW/ugIGGOUwcJVoArjGBOCz5ajtJGLvRqmPVoYbvXFoE6zxhxvrdjjChtK76FGxWcJruJLk
-	N8H7z6OQ2w37lGDQF/X6cWxBUHFw/I6a5sRC/CUO3zNfY8Zznqw/OdCBr65tl63ormlrFXAFNS0Vs
-	YCioeiBVe8qHOKRqGCAkr35AhuCnnY7Dngf7xKv5NzAXcKsN5Dg07+EGOyN16OM5/ovS5W9HmbEbz
-	HiJEDiqDzUqB9NDsa5lWFtGi6PKN0YCaehQHRpk8Ei3uOt465sFzKFl5U6ahyZ8a/LVc2oOeqRtGh
-	1i316JZw==;
-Received: from i5e861925.versanet.de ([94.134.25.37] helo=diego.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1sh1od-0003XW-MI; Thu, 22 Aug 2024 09:01:03 +0200
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: Conor Dooley <conor@kernel.org>,
- Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Cc: Andrzej Hajda <andrzej.hajda@intel.com>,
- Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>,
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
- Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>,
- Sandy Huang <hjc@rock-chips.com>, Andy Yan <andy.yan@rock-chips.com>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Mark Yao <markyao0591@gmail.com>,
- Sascha Hauer <s.hauer@pengutronix.de>, dri-devel@lists.freedesktop.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
- kernel@collabora.com, Alexandre ARNOUD <aarnoud@me.com>,
- Luis de Arquer <ldearquer@gmail.com>
-Subject: Re: [PATCH v4 3/4] dt-bindings: display: rockchip: Add schema for RK3588 HDMI
- TX Controller
-Date: Thu, 22 Aug 2024 09:01:34 +0200
-Message-ID: <4167579.6PsWsQAL7t@diego>
-In-Reply-To: <2085e998-a453-4893-9e80-3be68b0fb13d@collabora.com>
-References: <20240819-b4-rk3588-bridge-upstream-v4-0-6417c72a2749@collabora.com>
- <7E8109D4-A353-4FE3-9152-3C3C6CB7D634@sntech.de>
- <2085e998-a453-4893-9e80-3be68b0fb13d@collabora.com>
+	id 1sh2S7-0000000BueH-2Rg4
+	for linux-rockchip@lists.infradead.org;
+	Thu, 22 Aug 2024 07:41:53 +0000
 MIME-Version: 1.0
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
+	t=1724312506;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=U/tUeDcmjjH+tT1Pgn1G/YDE4JdZ7FQnGPenollIgXw=;
+	b=IFcbWb0L2KgCG/CPhac2VFjxwB0/Vcxl7G8C2LZrbcxIZCtQZkJt3yM+abFsfGiGyHn3Ff
+	FhDHJWRFwKwyF/4qR9Mh7dM6ezzF0kKtucUEn62rGLeAe9TFL+6MOkgfhLeZOqY1meT4Up
+	FMxoLOWneQKZ9PWetWffkCtNOmObwFXAOUUjGkc4JGeUxNyC+liem1DIxQufoeVtasIOs8
+	bbwZwzn1EfzuNglRPb+MpGyd9kpq4L5onlVdVitOvHKPBXy/02GVMesFrxil4psDL4n4rW
+	gG2KXsORimtl+ivOTJjl99TkAmgp9k4847b+75tdAtylX9nhXpmpsbDG/O4rYw==
+Date: Thu, 22 Aug 2024 09:41:46 +0200
+From: Dragan Simic <dsimic@manjaro.org>
+To: Krzysztof Kozlowski <krzk@kernel.org>
+Cc: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>, Heiko Stuebner
+ <heiko@sntech.de>, Rob Herring <robh@kernel.org>, Krzysztof Kozlowski
+ <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
+ linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
+ naoki@radxa.com
+Subject: Re: [PATCH v3 2/7] arm64: dts: rockchip: add NanoPC-T6 LTS
+In-Reply-To: <5771ebfe-eb9d-46ee-9810-44e1fff03171@kernel.org>
+References: <20240821-friendlyelec-nanopc-t6-lts-v3-0-3ecfa996bbe0@linaro.org>
+ <20240821-friendlyelec-nanopc-t6-lts-v3-2-3ecfa996bbe0@linaro.org>
+ <fbdda0b5-a924-48f8-a4d5-6578c2b5d378@kernel.org>
+ <622eb49ded6ae0a13b318ac0fae21d92@manjaro.org>
+ <5771ebfe-eb9d-46ee-9810-44e1fff03171@kernel.org>
+Message-ID: <4a450e76e77d30afcdfc494818167e3a@manjaro.org>
+X-Sender: dsimic@manjaro.org
+Authentication-Results: ORIGINATING;
+	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240822_000141_470562_6F642841 
-X-CRM114-Status: GOOD (  40.19  )
+X-CRM114-CacheID: sfid-20240822_004152_261132_0601C33C 
+X-CRM114-Status: GOOD (  23.50  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,148 +73,136 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Am Donnerstag, 22. August 2024, 01:22:16 CEST schrieb Cristian Ciocaltea:
-> On 8/22/24 12:38 AM, Heiko Stuebner wrote:
-> > 
-> > 
-> > Am 21. August 2024 23:28:55 MESZ schrieb Conor Dooley <conor@kernel.org>:
-> >> Cristian, Heiko,
-> >>
-> >> On Wed, Aug 21, 2024 at 11:38:01PM +0300, Cristian Ciocaltea wrote:
-> >>> On 8/21/24 6:07 PM, Conor Dooley wrote:
-> >>>> On Tue, Aug 20, 2024 at 11:12:45PM +0300, Cristian Ciocaltea wrote:
-> >>>>> On 8/20/24 7:14 PM, Conor Dooley wrote:
-> >>>>>> On Tue, Aug 20, 2024 at 03:37:44PM +0300, Cristian Ciocaltea wrote:
-> >>>>>>> On 8/19/24 7:53 PM, Conor Dooley wrote:
-> >>>>>>>> On Mon, Aug 19, 2024 at 01:29:30AM +0300, Cristian Ciocaltea wrote:
-> >>>>>>>>> +  rockchip,grf:
-> >>>>>>>>> +    $ref: /schemas/types.yaml#/definitions/phandle
-> >>>>>>>>> +    description:
-> >>>>>>>>> +      Most HDMI QP related data is accessed through SYS GRF regs.
-> >>>>>>>>> +
-> >>>>>>>>> +  rockchip,vo1-grf:
-> >>>>>>>>> +    $ref: /schemas/types.yaml#/definitions/phandle
-> >>>>>>>>> +    description:
-> >>>>>>>>> +      Additional HDMI QP related data is accessed through VO1 GRF regs.
-> >>>>>>>>
-> >>>>>>>> Why are these required? What prevents you looking up the syscons by
-> >>>>>>>> compatible?
-> >>>>>>>
-> >>>>>>> That is for getting the proper instance:
-> >>>>>>
-> >>>>>> Ah, that makes sense. I am, however, curious why these have the same
-> >>>>>> compatible when they have different sized regions allocated to them.
-> >>>>>
-> >>>>> Good question, didn't notice.  I've just checked the TRM and, in both
-> >>>>> cases, the maximum register offset is within the 0x100 range.  Presumably
-> >>>>> this is nothing but an inconsistency, as the syscons have been added in
-> >>>>> separate commits.
-> >>>>
-> >>>> Is that TRM publicly available? I do find it curious that devices sound
-> >>>> like they have different contents have the same compatible. In my view,
-> >>>> that is incorrect and they should have unique compatibles if the
-> >>>> contents (and therefore the programming model) differs.
-> >>>
-> >>> Don't know if there's an official location to get it from, but a quick
-> >>> search on internet shows a few repos providing them, e.g. [1].
-> >>>
-> >>> Comparing "6.14 VO0_GRF Register Description" at pg. 777 with "6.15 VO1_GRF
-> >>> Register Description" at pg. 786 (from Part1) reveals the layout is mostly
-> >>> similar, with a few variations though.
-> >>
-> >> Page references and everything, thank you very much. I don't think those
-> >> two GRFs should have the same compatibles, they're, as you say, similar
-> >> but not identical. Seems like a bug to me!
-> >>
-> >> Heiko, what do you think?
-> > 
-> > Yes, while the register names sound similar, looking at the bit
-> > definitions this evening revealed that they handle vastly different
-> > settings.
-> > 
-> > So I guess we should fix the compatibles. They are all about graphics
-> > stuff and HDMI actually is the first output, so right now WE can at least
-> > still claim the no-users joker ;-)
+Hello Krzysztof,
+
+On 2024-08-22 08:31, Krzysztof Kozlowski wrote:
+> On 21/08/2024 16:39, Dragan Simic wrote:
+>> On 2024-08-21 15:13, Krzysztof Kozlowski wrote:
+>>> On 21/08/2024 12:26, Marcin Juszkiewicz wrote:
+>>>> FriendlyELEC introduced a second version of NanoPC-T6 SBC.
+>>>> 
+>>>> The miniPCIe slot got removed and USB 2.0 configuration has changed.
+>>>> There are two external accessible ports and two ports on the 
+>>>> internal
+>>>> header.
+>>>> 
+>>>> There is an on-board USB hub which provides:
+>>>> - one external connector (bottom one)
+>>>> - two internal ports on pin header
+>>>> - one port for m.2 E connector
+>>>> 
+>>>> The top USB 2.0 connector comes directly from the SoC.
+>>>> 
+>>>> Signed-off-by: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
+>>>> ---
+>>>>  arch/arm64/boot/dts/rockchip/Makefile              |  1 +
+>>>>  .../boot/dts/rockchip/rk3588-nanopc-t6-lts.dts     | 61
+>>>> ++++++++++++++++++++++
+>>>>  2 files changed, 62 insertions(+)
+>>>> 
+>>>> diff --git a/arch/arm64/boot/dts/rockchip/Makefile
+>>>> b/arch/arm64/boot/dts/rockchip/Makefile
+>>>> index fda1b980eb4b..0f982c741243 100644
+>>>> --- a/arch/arm64/boot/dts/rockchip/Makefile
+>>>> +++ b/arch/arm64/boot/dts/rockchip/Makefile
+>>>> @@ -128,6 +128,7 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += 
+>>>> rk3588-evb1-v10.dtb
+>>>>  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-friendlyelec-cm3588-nas.dtb
+>>>>  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-jaguar.dtb
+>>>>  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-nanopc-t6.dtb
+>>>> +dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-nanopc-t6-lts.dtb
+>>>>  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-ok3588-c.dtb
+>>>>  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-orangepi-5-plus.dtb
+>>>>  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-quartzpro64.dtb
+>>>> diff --git a/arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6-lts.dts
+>>>> b/arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6-lts.dts
+>>>> new file mode 100644
+>>>> index 000000000000..e950e40632cf
+>>>> --- /dev/null
+>>>> +++ b/arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6-lts.dts
+>>>> @@ -0,0 +1,61 @@
+>>>> +// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
+>>>> +/*
+>>>> + * Copyright (c) 2021 Rockchip Electronics Co., Ltd.
+>>>> + * Copyright (c) 2023 Thomas McKahan
+>>>> + * Copyright (c) 2024 Linaro Ltd.
+>>>> + *
+>>>> + */
+>>>> +
+>>>> +/dts-v1/;
+>>>> +
+>>>> +#include "rk3588-nanopc-t6.dts"
+>>> 
+>>> Do not include DTS files. Please rename board to DTSI (which is for
+>>> includes) and then include it in respective boards. Remember to
+>>> generate
+>>> patches with proper -M/-B/-C so the rename will be properly 
+>>> recognize.
+>> 
+>> This is perhaps a good opportunity to discuss this.  I already saw at
+>> least half a dozen of instances where a board dts file is included in
+>> another board dts file that modifies or extends it for another version
+>> of the same board, or something like that.
+>> 
+>> Moreover, we'll most likely have to introduce quite a few new board 
+>> dts
+>> files, for board versions that use different type of DRAM and so far
+>> were
+>> handled in U-Boot only. [1]
+>> 
+>> Thus, I think this is a good opportunity to conclude what to do there.
+>> If you insist on converting already existing dts files into dtsi 
+>> files,
 > 
-> I couldn't find any driver doing a lookup for them by compatible, so I
-> think it's fine to fix them - should we go for "rockchip,rk3588-vo0-grf" and
-> "rockchip,rk3588-vo1-grf", respectively?
+> I did not write anything about this.
 
-yep. While things like the MIPICDPHY{0,1}_GRF really are identifcal and
-serve two separate controllers ... vo0 and vo1 are very different entities,
-so fixing the compatible to reflect that makes a lot of sense.
+True, but I thought it was a good opportunity to discuss that in 
+advance,
+because it's going to be pretty much the same thing as what we're having
+currently with the NanoPC-T6 LTS as a board variant.
 
-
-> vo0_grf seems to be used by the usbdp phy nodes:
+>> we'll be introducing much more changes, which I'd be fine with, but 
+>> I'd
+>> then also like to convert _all_ existing cases of dts file inclusion
+>> into
 > 
->     usbdp_phy0: phy@fed80000 {
->         compatible = "rockchip,rk3588-usbdp-phy";
->         [...]
->         rockchip,vo-grf = <&vo0_grf>;
->         [...]
-> 
-> Same for "usbdp_phy1: phy@fed90000".
-> 
-> While vo1_grf is present in:
-> 
->     vop: vop@fdd90000 {
->         compatible = "rockchip,rk3588-vop";
->         [...]
->         rockchip,vo1-grf = <&vo1_grf>;
->         [...]
-> 
-> I guess it's too late to drop them while updating the related drivers
-> accordingly, hence I wonder if we should keep using the phandles for this
-> HDMI thing as well, for consistency reasons.
+> Don't understand. If I insist on converting already existing DTS, then
+> convert all existing DTS?
 
-For the property naming, I guess it just tells the driver which "vo"-grf
-to use, so the vop is more explicit in naming it vo1-grf even the vo-grf
-in the usbdp phy won't hurt too much.
+Let me clarify, please.  With the NanoPC-T6 LTS, you asked for the 
+current
+NanoPC-T6 board dts file to be converted into a dtsi, from which the two
+board variant dts files (the original and the LTS) will descend from.
 
-Of course we can still look up the grf by compatible and deprecate the
-phandle references.
+Then I noticed that we already have board dts files that descend from 
+other
+board dts files (so, not from dtsi files as they should). [2][3][4]  
+Based
+on that, I asked do you insist on converting the current NanoPC-T6 dts 
+into
+a dtsi, because if you do, then we should fix other instances of the dts
+inclusion as well.  Which I'm willing to do, by the way.
 
+I hope it all makes more sense now.
 
-@Conor: just for me, did some shift happen in our understanding of dt-
-best-practices in terms of syscon via phandle vs. syscon via compatible?
+[2] 
+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/arch/arm64/boot/dts/rockchip/rk3328-nanopi-r2c-plus.dts?h=v6.11-rc4#n10
+[3] 
+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/arch/arm64/boot/dts/rockchip/rk3328-nanopi-r2c.dts?h=v6.11-rc4#n10
+[4] 
+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/arch/arm64/boot/dts/rockchip/rk3588s-nanopi-r6c.dts?h=v6.11-rc4#n5
 
-Because Rockchip boards are referencing their GRFs via phandes forever
-but similar to the soc vs non-soc node thing, I'd like to stay on top of
-best-practices ;-)
-
-
-Heiko
-
-
-> > Heiko
-> > 
-> >>
-> >>> [1] https://github.com/FanX-Tek/rk3588-TRM-and-Datasheet
-> >>>
-> >>>>>
-> >>>>>>> 	vo0_grf: syscon@fd5a6000 {
-> >>>>>>> 		compatible = "rockchip,rk3588-vo-grf", "syscon";
-> >>>>>>> 		reg = <0x0 0xfd5a6000 0x0 0x2000>;
-> >>>>>>> 		clocks = <&cru PCLK_VO0GRF>;
-> >>>>>>> 	};
-> >>>>>>>
-> >>>>>>> 	vo1_grf: syscon@fd5a8000 {
-> >>>>>>> 		compatible = "rockchip,rk3588-vo-grf", "syscon";
-> >>>>>>> 		reg = <0x0 0xfd5a8000 0x0 0x100>;
-> >>>>>>> 		clocks = <&cru PCLK_VO1GRF>;
-> >>>>>>> 	};
-> >>>>
-> > 
-> 
-
-
-
-
+>> proper inclusion of dtsi files, which will result in even more new 
+>> files
+>> being introduced, etc.
+>> 
+>> [1]
+>> https://lore.kernel.org/linux-rockchip/172408433165.1619643.7928785825448507704.robh@kernel.org/T/#m52de793f30579a8063f66eb2e64026776da55a66
 
 _______________________________________________
 Linux-rockchip mailing list
