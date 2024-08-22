@@ -4,58 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 441A7C52D7C
-	for <linux-rockchip@archiver.kernel.org>; Wed, 21 Aug 2024 23:30:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 40C64C52D7C
+	for <linux-rockchip@archiver.kernel.org>; Thu, 22 Aug 2024 01:46:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=n2oI41hx+ctQNN6Ri1da9GMqcH6EtJKHtpxysF5boGo=; b=ofagHgSvpq4E7P
-	/n6deJbYKQKaA/VN94hXGlAqNtOotS76Y/XNzD3E7QktxDUdDluW/qeAANYjndy7Sgsdik1aQGhu8
-	U0YNYMeYLdsY9DgLj+0FDeoOvOztCxnFwaY9nEVUn6stUoIXOLE9tT/Nb30LkFXeCYdlwM3IbIUUI
-	YnudfB55Y4whfKfpui9o2cNlYJknOOHDvlur8Z5Sj19jJRXM7A5m+oTRA0nOQYp+sSC2FA5ehj3LO
-	UmAOKK0vLNDEkeIeoSkMzvJq7hfUYb9VkRSzTDa11/u0dRiAEzHcHr5debt6uH6ffBUZL81Mn/x1h
-	IBPNppq1AmAhfKr6DnYQ==;
+	List-Owner; bh=K/29MtYaEkK34AvQPy57+/g0C21zzq6A1VgwzISrLU8=; b=v8r4O3fwnmYV2+
+	UQVznzDBw8kXm/vY7p9SmRvxUhOD9B3HrE7cJQpE3F57bM4T/4NE6Him+avCugGmAA8RJIT3pl6LT
+	2wluKbZ/rD0Dpai7p6EwJbQw8AhhRSpgEfumE8j8m207kTockbrbPgVCE7XeXTIqKhDS05R3A5E3r
+	BUHSXgd2+m6feWfQxu0qI0GKW6DNuATQ1MUbo6RcbBzeM6Ga/K2O/uBMl8xNd3MgGYRpPqOCXy6/w
+	gavHsqIPmz+2xxlQfhCi9yv5I+yYnaUIMcAaOiduvvJ5WgB+o78pOIVeSOlFWEXH2RSGqwG7aPxAr
+	svYiaUGq+tMXbcbdSlJg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sgumi-0000000AfFS-2YFC;
-	Wed, 21 Aug 2024 23:30:36 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
+	id 1sgwuZ-0000000B08l-1M4c;
+	Thu, 22 Aug 2024 01:46:51 +0000
+Received: from mail-oo1-xc36.google.com ([2607:f8b0:4864:20::c36])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sguke-0000000AeYq-2Qmb
+	id 1sgwe6-0000000Aw1w-0kCb
 	for linux-rockchip@lists.infradead.org;
-	Wed, 21 Aug 2024 23:28:30 +0000
-Received: from pendragon.ideasonboard.com (81-175-209-231.bb.dnainternet.fi [81.175.209.231])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 6501F2D5;
-	Thu, 22 Aug 2024 01:27:18 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1724282838;
-	bh=9+JvsqBUfEI+RL/ie2rdDQQLLtHrPy2Q8Ug4scOkQMA=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=j77iXEHTan2gR+IoGtFfwGz/Fs0WDsoVUB/amIY39PQ9hdkUY1fUaPkGMfyRQWxiW
-	 jjxGP5Zz0YzKo4L387muD4LR+YOTrrR02H0CqaF8vE92jbeLLLcsL11I9V2fTKamXy
-	 Rse7FYALlAYmHK/nrJZ5jKP6qDhSXzPQqLuzvqMo=
-Date: Thu, 22 Aug 2024 02:28:19 +0300
-From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-To: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Cc: mchehab@kernel.org, tfiga@chromium.org, m.szyprowski@samsung.com,
-	ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de,
-	hverkuil-cisco@xs4all.nl, nicolas@ndufresne.ca,
-	linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-rockchip@lists.infradead.org, kernel@collabora.com
+	Thu, 22 Aug 2024 01:29:51 +0000
+Received: by mail-oo1-xc36.google.com with SMTP id 006d021491bc7-5d5ed6f51cfso219197eaf.0
+        for <linux-rockchip@lists.infradead.org>; Wed, 21 Aug 2024 18:29:49 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1724290188; x=1724894988; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=qkGym0+NINJviqEk2ORbY7KcAB/aBXVsRZojgi0XtMY=;
+        b=VGd7Znyd/804Xyr3PwKWwPhgng6yJRAGLJJzpLKNT6S6SPhAuUQtlYX8SDSdhonDaL
+         GqkyzUutrA9OgVc1aU5P8hz6aQtFAZd60jYTjumD2DLnOnasCrCrUrKfatv4IfeWtoZI
+         72G6FX31FG6S4OiDv3Xu5/5kR2Il2lMMHbH2k=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1724290188; x=1724894988;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=qkGym0+NINJviqEk2ORbY7KcAB/aBXVsRZojgi0XtMY=;
+        b=t3SAq+o+gd53mnNSz5AWgBGkw1HIhV51EfdNI1oqYGBBAIk3Hd/VA0MdqYsKK/Rk1A
+         P2H/fwZDT4BnwCMqfZeqLrizKjr+45RTqfxaN7MtLa4oKazwsfEquxsjILh3ehIPVHa8
+         Rn0lzeOME/E035RbsNYibW/viMy8IfvXjw0fimO1JSb9OJCUTZNk+Apci2P5xOOJ0pcK
+         RUobRuw5NXuvNdRVagWUnLmFK7c3XTlXiqIRoPDsL/PYsQ4ntM2I2YiCzgD0Z0Z4E2lA
+         IErtUCR/iDhgiQ1xS6oXQx4Y4pChNpoDnPyAEZ1RE6ouEeYnMO1jnyxqboUzSqOLnU86
+         5aEA==
+X-Forwarded-Encrypted: i=1; AJvYcCXvy9x43bYUQznRLj/QyuAyr8PlMMFdX2LT7MfAlP81nyMvprF6I2Kw+GEdgB5kDj2RTmORUzblwAl7DWRg9Q==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzB1PNDdez+WIkmsC///wZfygUuV7VcbgdXQ85i218uvW3Oy00A
+	4wDCVuK1ih/2HbyuN+iZOP0tNF9P43MElpOtb5uELXMKiO2FD1cd8dbtCPZ3UbzEY1r5fm5SQPV
+	mLg==
+X-Google-Smtp-Source: AGHT+IEHomhpR/0SwFIQ6YN6ws0PVYHvzRorK2wP7O0aYApnU0NtnhBwYqfZLGO3MW4WyVMNEJAv8A==
+X-Received: by 2002:a05:6358:3110:b0:1a1:c19f:403a with SMTP id e5c5f4694b2df-1b5b37ebc2emr60704655d.17.1724290187671;
+        Wed, 21 Aug 2024 18:29:47 -0700 (PDT)
+Received: from mail-qt1-f171.google.com (mail-qt1-f171.google.com. [209.85.160.171])
+        by smtp.gmail.com with ESMTPSA id af79cd13be357-7a67f3fbf22sm18424085a.103.2024.08.21.18.29.46
+        for <linux-rockchip@lists.infradead.org>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 21 Aug 2024 18:29:46 -0700 (PDT)
+Received: by mail-qt1-f171.google.com with SMTP id d75a77b69052e-454b1e08393so165941cf.0
+        for <linux-rockchip@lists.infradead.org>; Wed, 21 Aug 2024 18:29:46 -0700 (PDT)
+X-Forwarded-Encrypted: i=1; AJvYcCXxD8RCCU29L8MrbBOgQX7XKvUkusVXG9nRulZ4m45W4NwmhPdUF9Jgve7yj+Nq94VhiokHPg+iaLPW6Un5qw==@lists.infradead.org
+X-Received: by 2002:a05:622a:5285:b0:447:e8bd:2fbe with SMTP id
+ d75a77b69052e-454fd6ccbaamr1099211cf.1.1724290185907; Wed, 21 Aug 2024
+ 18:29:45 -0700 (PDT)
+MIME-Version: 1.0
+References: <20240314153226.197445-1-benjamin.gaignard@collabora.com>
+ <20240314153226.197445-3-benjamin.gaignard@collabora.com> <20240821232819.GA18600@pendragon.ideasonboard.com>
+In-Reply-To: <20240821232819.GA18600@pendragon.ideasonboard.com>
+From: Tomasz Figa <tfiga@chromium.org>
+Date: Thu, 22 Aug 2024 10:29:29 +0900
+X-Gmail-Original-Message-ID: <CAAFQd5AQTZa2epfkJnfn_6kpnaNRMzjZ=FjYjf1DM+ZxE0YkZQ@mail.gmail.com>
+Message-ID: <CAAFQd5AQTZa2epfkJnfn_6kpnaNRMzjZ=FjYjf1DM+ZxE0YkZQ@mail.gmail.com>
 Subject: Re: [PATCH v21 2/9] videobuf2: Add min_reqbufs_allocation field to
  vb2_queue structure
-Message-ID: <20240821232819.GA18600@pendragon.ideasonboard.com>
-References: <20240314153226.197445-1-benjamin.gaignard@collabora.com>
- <20240314153226.197445-3-benjamin.gaignard@collabora.com>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20240314153226.197445-3-benjamin.gaignard@collabora.com>
+To: Benjamin Gaignard <benjamin.gaignard@collabora.com>, 
+	Laurent Pinchart <laurent.pinchart@ideasonboard.com>, hverkuil-cisco@xs4all.nl
+Cc: mchehab@kernel.org, m.szyprowski@samsung.com, 
+	ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de, nicolas@ndufresne.ca, 
+	linux-media@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-rockchip@lists.infradead.org, kernel@collabora.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240821_162828_792385_FE30DF7A 
-X-CRM114-Status: GOOD (  41.04  )
+X-CRM114-CacheID: sfid-20240821_182950_287244_4D885D8E 
+X-CRM114-Status: GOOD (  49.95  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,174 +98,158 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Benjamin,
-
-On Thu, Mar 14, 2024 at 04:32:19PM +0100, Benjamin Gaignard wrote:
-> Add 'min_reqbufs_allocation' field in the vb2_queue structure so drivers
-> can specify the minimum number of buffers to allocate when calling
-> VIDIOC_REQBUFS.
-> When initializing the queue, v4l2 core makes sure that the following
-> constraints are respected:
-> - the minimum number of buffers to allocate must be at least 2 because
-> one buffer is used by the hardware while the other is being processed
-> by userspace.
-
-This breaks userspace for the Renesas vsp1 driver :-( Unit tests fail,
-as some of them rely on operation with a single buffer.
-
-The vsp1 is a memory-to-memory processing engine, so operating with a
-single buffer is fine in some use cases. I would argue that for live
-capture devices there are valid use cases to operate with a single
-buffer too. Changing this by default will break use cases.
-
-How can we relax this check ? Should I simply submit a patch that lowers
-the minimum to one buffer ?
-
-> -if the driver needs 'min_queued_buffers' in the queue before calling
-> start_streaming(), then the minimum requirement is 'min_queued_buffers + 1'
-> to keep at least one buffer available for userspace.
-> 
-> Simplify __vb2_init_fileio() by using 'min_reqbufs_allocation' directly
-> to avoid duplicating the minimum number of buffers to allocate computation.
-> 
-> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-> ---
->  .../media/common/videobuf2/videobuf2-core.c   | 38 +++++++++++--------
->  include/media/videobuf2-core.h                | 15 +++++++-
->  2 files changed, 37 insertions(+), 16 deletions(-)
-> 
-> diff --git a/drivers/media/common/videobuf2/videobuf2-core.c b/drivers/media/common/videobuf2/videobuf2-core.c
-> index d8b3c04cb3b5..58c495b253ce 100644
-> --- a/drivers/media/common/videobuf2/videobuf2-core.c
-> +++ b/drivers/media/common/videobuf2/videobuf2-core.c
-> @@ -866,7 +866,7 @@ int vb2_core_reqbufs(struct vb2_queue *q, enum vb2_memory memory,
->  	/*
->  	 * Make sure the requested values and current defaults are sane.
->  	 */
-> -	num_buffers = max_t(unsigned int, *count, q->min_queued_buffers);
-> +	num_buffers = max_t(unsigned int, *count, q->min_reqbufs_allocation);
->  	num_buffers = min_t(unsigned int, num_buffers, q->max_num_buffers);
->  	memset(q->alloc_devs, 0, sizeof(q->alloc_devs));
->  	/*
-> @@ -918,7 +918,7 @@ int vb2_core_reqbufs(struct vb2_queue *q, enum vb2_memory memory,
->  	 * There is no point in continuing if we can't allocate the minimum
->  	 * number of buffers needed by this vb2_queue.
->  	 */
-> -	if (allocated_buffers < q->min_queued_buffers)
-> +	if (allocated_buffers < q->min_reqbufs_allocation)
->  		ret = -ENOMEM;
->  
->  	/*
-> @@ -2524,6 +2524,25 @@ int vb2_core_queue_init(struct vb2_queue *q)
->  	if (WARN_ON(q->supports_requests && q->min_queued_buffers))
->  		return -EINVAL;
->  
-> +	/*
-> +	 * The minimum requirement is 2: one buffer is used
-> +	 * by the hardware while the other is being processed by userspace.
-> +	 */
-> +	if (q->min_reqbufs_allocation < 2)
-> +		q->min_reqbufs_allocation = 2;
-> +
-> +	/*
-> +	 * If the driver needs 'min_queued_buffers' in the queue before
-> +	 * calling start_streaming() then the minimum requirement is
-> +	 * 'min_queued_buffers + 1' to keep at least one buffer available
-> +	 * for userspace.
-> +	 */
-> +	if (q->min_reqbufs_allocation < q->min_queued_buffers + 1)
-> +		q->min_reqbufs_allocation = q->min_queued_buffers + 1;
-> +
-> +	if (WARN_ON(q->min_reqbufs_allocation > q->max_num_buffers))
-> +		return -EINVAL;
-> +
->  	INIT_LIST_HEAD(&q->queued_list);
->  	INIT_LIST_HEAD(&q->done_list);
->  	spin_lock_init(&q->done_lock);
-> @@ -2717,7 +2736,6 @@ static int __vb2_init_fileio(struct vb2_queue *q, int read)
->  	struct vb2_fileio_data *fileio;
->  	struct vb2_buffer *vb;
->  	int i, ret;
-> -	unsigned int count = 0;
->  
->  	/*
->  	 * Sanity check
-> @@ -2738,18 +2756,8 @@ static int __vb2_init_fileio(struct vb2_queue *q, int read)
->  	if (q->streaming || vb2_get_num_buffers(q) > 0)
->  		return -EBUSY;
->  
-> -	/*
-> -	 * Start with q->min_queued_buffers + 1, driver can increase it in
-> -	 * queue_setup()
-> -	 *
-> -	 * 'min_queued_buffers' buffers need to be queued up before you
-> -	 * can start streaming, plus 1 for userspace (or in this case,
-> -	 * kernelspace) processing.
-> -	 */
-> -	count = max(2, q->min_queued_buffers + 1);
-> -
->  	dprintk(q, 3, "setting up file io: mode %s, count %d, read_once %d, write_immediately %d\n",
-> -		(read) ? "read" : "write", count, q->fileio_read_once,
-> +		(read) ? "read" : "write", q->min_reqbufs_allocation, q->fileio_read_once,
->  		q->fileio_write_immediately);
->  
->  	fileio = kzalloc(sizeof(*fileio), GFP_KERNEL);
-> @@ -2763,7 +2771,7 @@ static int __vb2_init_fileio(struct vb2_queue *q, int read)
->  	 * Request buffers and use MMAP type to force driver
->  	 * to allocate buffers by itself.
->  	 */
-> -	fileio->count = count;
-> +	fileio->count = q->min_reqbufs_allocation;
->  	fileio->memory = VB2_MEMORY_MMAP;
->  	fileio->type = q->type;
->  	q->fileio = fileio;
-> diff --git a/include/media/videobuf2-core.h b/include/media/videobuf2-core.h
-> index 667bf9ee1101..4a8b9135cec8 100644
-> --- a/include/media/videobuf2-core.h
-> +++ b/include/media/videobuf2-core.h
-> @@ -549,9 +549,21 @@ struct vb2_buf_ops {
->   *		@start_streaming can be called. Used when a DMA engine
->   *		cannot be started unless at least this number of buffers
->   *		have been queued into the driver.
-> - *		VIDIOC_REQBUFS will ensure at least @min_queued_buffers
-> + *		VIDIOC_REQBUFS will ensure at least @min_queued_buffers + 1
->   *		buffers will be allocated. Note that VIDIOC_CREATE_BUFS will not
->   *		modify the requested buffer count.
-> + * @min_reqbufs_allocation: the minimum number of buffers to be allocated when
-> + *		calling VIDIOC_REQBUFS. Note that VIDIOC_CREATE_BUFS will *not*
-> + *		modify the requested buffer count and does not use this field.
-> + *		Drivers can set this if there has to be a certain number of
-> + *		buffers available for the hardware to work effectively.
-> + *		This allows calling VIDIOC_REQBUFS with a buffer count of 1 and
-> + *		it will be automatically adjusted to a workable	buffer count.
-> + *		If set, then @min_reqbufs_allocation must be larger than
-> + *		@min_queued_buffers + 1.
-> + *		If this field is > 3, then it is highly recommended that the
-> + *		driver implements the V4L2_CID_MIN_BUFFERS_FOR_CAPTURE/OUTPUT
-> + *		control.
->   * @alloc_devs:	&struct device memory type/allocator-specific per-plane device
->   */
->  /*
-> @@ -622,6 +634,7 @@ struct vb2_queue {
->  	u32				timestamp_flags;
->  	gfp_t				gfp_flags;
->  	u32				min_queued_buffers;
-> +	u32				min_reqbufs_allocation;
->  
->  	struct device			*alloc_devs[VB2_MAX_PLANES];
->  
-
--- 
-Regards,
-
-Laurent Pinchart
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gVGh1LCBBdWcgMjIsIDIwMjQgYXQgODoyOOKAr0FNIExhdXJlbnQgUGluY2hhcnQKPGxhdXJl
+bnQucGluY2hhcnRAaWRlYXNvbmJvYXJkLmNvbT4gd3JvdGU6Cj4KPiBIaSBCZW5qYW1pbiwKPgo+
+IE9uIFRodSwgTWFyIDE0LCAyMDI0IGF0IDA0OjMyOjE5UE0gKzAxMDAsIEJlbmphbWluIEdhaWdu
+YXJkIHdyb3RlOgo+ID4gQWRkICdtaW5fcmVxYnVmc19hbGxvY2F0aW9uJyBmaWVsZCBpbiB0aGUg
+dmIyX3F1ZXVlIHN0cnVjdHVyZSBzbyBkcml2ZXJzCj4gPiBjYW4gc3BlY2lmeSB0aGUgbWluaW11
+bSBudW1iZXIgb2YgYnVmZmVycyB0byBhbGxvY2F0ZSB3aGVuIGNhbGxpbmcKPiA+IFZJRElPQ19S
+RVFCVUZTLgo+ID4gV2hlbiBpbml0aWFsaXppbmcgdGhlIHF1ZXVlLCB2NGwyIGNvcmUgbWFrZXMg
+c3VyZSB0aGF0IHRoZSBmb2xsb3dpbmcKPiA+IGNvbnN0cmFpbnRzIGFyZSByZXNwZWN0ZWQ6Cj4g
+PiAtIHRoZSBtaW5pbXVtIG51bWJlciBvZiBidWZmZXJzIHRvIGFsbG9jYXRlIG11c3QgYmUgYXQg
+bGVhc3QgMiBiZWNhdXNlCj4gPiBvbmUgYnVmZmVyIGlzIHVzZWQgYnkgdGhlIGhhcmR3YXJlIHdo
+aWxlIHRoZSBvdGhlciBpcyBiZWluZyBwcm9jZXNzZWQKPiA+IGJ5IHVzZXJzcGFjZS4KPgo+IFRo
+aXMgYnJlYWtzIHVzZXJzcGFjZSBmb3IgdGhlIFJlbmVzYXMgdnNwMSBkcml2ZXIgOi0oIFVuaXQg
+dGVzdHMgZmFpbCwKPiBhcyBzb21lIG9mIHRoZW0gcmVseSBvbiBvcGVyYXRpb24gd2l0aCBhIHNp
+bmdsZSBidWZmZXIuCj4KPiBUaGUgdnNwMSBpcyBhIG1lbW9yeS10by1tZW1vcnkgcHJvY2Vzc2lu
+ZyBlbmdpbmUsIHNvIG9wZXJhdGluZyB3aXRoIGEKPiBzaW5nbGUgYnVmZmVyIGlzIGZpbmUgaW4g
+c29tZSB1c2UgY2FzZXMuIEkgd291bGQgYXJndWUgdGhhdCBmb3IgbGl2ZQo+IGNhcHR1cmUgZGV2
+aWNlcyB0aGVyZSBhcmUgdmFsaWQgdXNlIGNhc2VzIHRvIG9wZXJhdGUgd2l0aCBhIHNpbmdsZQo+
+IGJ1ZmZlciB0b28uIENoYW5naW5nIHRoaXMgYnkgZGVmYXVsdCB3aWxsIGJyZWFrIHVzZSBjYXNl
+cy4KPgo+IEhvdyBjYW4gd2UgcmVsYXggdGhpcyBjaGVjayA/IFNob3VsZCBJIHNpbXBseSBzdWJt
+aXQgYSBwYXRjaCB0aGF0IGxvd2Vycwo+IHRoZSBtaW5pbXVtIHRvIG9uZSBidWZmZXIgPwo+CgpV
+aG0sIEkgZGlkbid0IG5vdGljZSB0aGlzIHdoZW4gcmVhZGluZyB0aGlzIHNlcmllcy4gKEFjdHVh
+bGx5IGlmIEkKcmVjYWxsIGNvcnJlY3RseSwgb3JpZ2luYWxseSBpdCBkaWRuJ3QgaGF2ZSB0aGlz
+IHJlc3RyaWN0aW9uLikKCkluZGVlZCwgSSBkb24ndCBzZWUgd2hhdCdzIHdyb25nIHdpdGgganVz
+dCBoYXZpbmcgMSBidWZmZXIuIElmCnBlcmZvcm1hbmNlIGlzIG5vdCBhIGNvbmNlcm4sIGl0J3Mg
+b2theSB0byBqdXN0IHNlcmlhbGl6ZSB0aGUKb3BlcmF0aW9uIG9uIDEgYnVmZmVyLgoKSWYgeW91
+IHdvdWxkIGJlIHNvIG5pY2UgdG8gc2VuZCBpdCwgSSB0aGluayBhIHBhdGNoIHRoYXQgY2hhbmdl
+cwptaW5fcmVxYnVmc19hbGxvY2F0aW9uIHRvIG1heChtYXgoMSwgbWluX3JlcWJ1ZnNfYWxsb2Nh
+dGlvbiksCm1pbl9xdWV1ZWRfYnVmZmVycykpIHdvdWxkIGJlIGdvb2QuCgpUaGF0IHNhaWQsIEJl
+bmphbWluLCBIYW5zLCBhcmUgd2UgbWlzc2luZyBzb21ldGhpbmcgYnkgYW55IGNoYW5jZT8gOikK
+CkJlc3QsClRvbWFzegoKPiA+IC1pZiB0aGUgZHJpdmVyIG5lZWRzICdtaW5fcXVldWVkX2J1ZmZl
+cnMnIGluIHRoZSBxdWV1ZSBiZWZvcmUgY2FsbGluZwo+ID4gc3RhcnRfc3RyZWFtaW5nKCksIHRo
+ZW4gdGhlIG1pbmltdW0gcmVxdWlyZW1lbnQgaXMgJ21pbl9xdWV1ZWRfYnVmZmVycyArIDEnCj4g
+PiB0byBrZWVwIGF0IGxlYXN0IG9uZSBidWZmZXIgYXZhaWxhYmxlIGZvciB1c2Vyc3BhY2UuCj4g
+Pgo+ID4gU2ltcGxpZnkgX192YjJfaW5pdF9maWxlaW8oKSBieSB1c2luZyAnbWluX3JlcWJ1ZnNf
+YWxsb2NhdGlvbicgZGlyZWN0bHkKPiA+IHRvIGF2b2lkIGR1cGxpY2F0aW5nIHRoZSBtaW5pbXVt
+IG51bWJlciBvZiBidWZmZXJzIHRvIGFsbG9jYXRlIGNvbXB1dGF0aW9uLgo+ID4KPiA+IFNpZ25l
+ZC1vZmYtYnk6IEJlbmphbWluIEdhaWduYXJkIDxiZW5qYW1pbi5nYWlnbmFyZEBjb2xsYWJvcmEu
+Y29tPgo+ID4gLS0tCj4gPiAgLi4uL21lZGlhL2NvbW1vbi92aWRlb2J1ZjIvdmlkZW9idWYyLWNv
+cmUuYyAgIHwgMzggKysrKysrKysrKystLS0tLS0tLQo+ID4gIGluY2x1ZGUvbWVkaWEvdmlkZW9i
+dWYyLWNvcmUuaCAgICAgICAgICAgICAgICB8IDE1ICsrKysrKystCj4gPiAgMiBmaWxlcyBjaGFu
+Z2VkLCAzNyBpbnNlcnRpb25zKCspLCAxNiBkZWxldGlvbnMoLSkKPiA+Cj4gPiBkaWZmIC0tZ2l0
+IGEvZHJpdmVycy9tZWRpYS9jb21tb24vdmlkZW9idWYyL3ZpZGVvYnVmMi1jb3JlLmMgYi9kcml2
+ZXJzL21lZGlhL2NvbW1vbi92aWRlb2J1ZjIvdmlkZW9idWYyLWNvcmUuYwo+ID4gaW5kZXggZDhi
+M2MwNGNiM2I1Li41OGM0OTViMjUzY2UgMTAwNjQ0Cj4gPiAtLS0gYS9kcml2ZXJzL21lZGlhL2Nv
+bW1vbi92aWRlb2J1ZjIvdmlkZW9idWYyLWNvcmUuYwo+ID4gKysrIGIvZHJpdmVycy9tZWRpYS9j
+b21tb24vdmlkZW9idWYyL3ZpZGVvYnVmMi1jb3JlLmMKPiA+IEBAIC04NjYsNyArODY2LDcgQEAg
+aW50IHZiMl9jb3JlX3JlcWJ1ZnMoc3RydWN0IHZiMl9xdWV1ZSAqcSwgZW51bSB2YjJfbWVtb3J5
+IG1lbW9yeSwKPiA+ICAgICAgIC8qCj4gPiAgICAgICAgKiBNYWtlIHN1cmUgdGhlIHJlcXVlc3Rl
+ZCB2YWx1ZXMgYW5kIGN1cnJlbnQgZGVmYXVsdHMgYXJlIHNhbmUuCj4gPiAgICAgICAgKi8KPiA+
+IC0gICAgIG51bV9idWZmZXJzID0gbWF4X3QodW5zaWduZWQgaW50LCAqY291bnQsIHEtPm1pbl9x
+dWV1ZWRfYnVmZmVycyk7Cj4gPiArICAgICBudW1fYnVmZmVycyA9IG1heF90KHVuc2lnbmVkIGlu
+dCwgKmNvdW50LCBxLT5taW5fcmVxYnVmc19hbGxvY2F0aW9uKTsKPiA+ICAgICAgIG51bV9idWZm
+ZXJzID0gbWluX3QodW5zaWduZWQgaW50LCBudW1fYnVmZmVycywgcS0+bWF4X251bV9idWZmZXJz
+KTsKPiA+ICAgICAgIG1lbXNldChxLT5hbGxvY19kZXZzLCAwLCBzaXplb2YocS0+YWxsb2NfZGV2
+cykpOwo+ID4gICAgICAgLyoKPiA+IEBAIC05MTgsNyArOTE4LDcgQEAgaW50IHZiMl9jb3JlX3Jl
+cWJ1ZnMoc3RydWN0IHZiMl9xdWV1ZSAqcSwgZW51bSB2YjJfbWVtb3J5IG1lbW9yeSwKPiA+ICAg
+ICAgICAqIFRoZXJlIGlzIG5vIHBvaW50IGluIGNvbnRpbnVpbmcgaWYgd2UgY2FuJ3QgYWxsb2Nh
+dGUgdGhlIG1pbmltdW0KPiA+ICAgICAgICAqIG51bWJlciBvZiBidWZmZXJzIG5lZWRlZCBieSB0
+aGlzIHZiMl9xdWV1ZS4KPiA+ICAgICAgICAqLwo+ID4gLSAgICAgaWYgKGFsbG9jYXRlZF9idWZm
+ZXJzIDwgcS0+bWluX3F1ZXVlZF9idWZmZXJzKQo+ID4gKyAgICAgaWYgKGFsbG9jYXRlZF9idWZm
+ZXJzIDwgcS0+bWluX3JlcWJ1ZnNfYWxsb2NhdGlvbikKPiA+ICAgICAgICAgICAgICAgcmV0ID0g
+LUVOT01FTTsKPiA+Cj4gPiAgICAgICAvKgo+ID4gQEAgLTI1MjQsNiArMjUyNCwyNSBAQCBpbnQg
+dmIyX2NvcmVfcXVldWVfaW5pdChzdHJ1Y3QgdmIyX3F1ZXVlICpxKQo+ID4gICAgICAgaWYgKFdB
+Uk5fT04ocS0+c3VwcG9ydHNfcmVxdWVzdHMgJiYgcS0+bWluX3F1ZXVlZF9idWZmZXJzKSkKPiA+
+ICAgICAgICAgICAgICAgcmV0dXJuIC1FSU5WQUw7Cj4gPgo+ID4gKyAgICAgLyoKPiA+ICsgICAg
+ICAqIFRoZSBtaW5pbXVtIHJlcXVpcmVtZW50IGlzIDI6IG9uZSBidWZmZXIgaXMgdXNlZAo+ID4g
+KyAgICAgICogYnkgdGhlIGhhcmR3YXJlIHdoaWxlIHRoZSBvdGhlciBpcyBiZWluZyBwcm9jZXNz
+ZWQgYnkgdXNlcnNwYWNlLgo+ID4gKyAgICAgICovCj4gPiArICAgICBpZiAocS0+bWluX3JlcWJ1
+ZnNfYWxsb2NhdGlvbiA8IDIpCj4gPiArICAgICAgICAgICAgIHEtPm1pbl9yZXFidWZzX2FsbG9j
+YXRpb24gPSAyOwo+ID4gKwo+ID4gKyAgICAgLyoKPiA+ICsgICAgICAqIElmIHRoZSBkcml2ZXIg
+bmVlZHMgJ21pbl9xdWV1ZWRfYnVmZmVycycgaW4gdGhlIHF1ZXVlIGJlZm9yZQo+ID4gKyAgICAg
+ICogY2FsbGluZyBzdGFydF9zdHJlYW1pbmcoKSB0aGVuIHRoZSBtaW5pbXVtIHJlcXVpcmVtZW50
+IGlzCj4gPiArICAgICAgKiAnbWluX3F1ZXVlZF9idWZmZXJzICsgMScgdG8ga2VlcCBhdCBsZWFz
+dCBvbmUgYnVmZmVyIGF2YWlsYWJsZQo+ID4gKyAgICAgICogZm9yIHVzZXJzcGFjZS4KPiA+ICsg
+ICAgICAqLwo+ID4gKyAgICAgaWYgKHEtPm1pbl9yZXFidWZzX2FsbG9jYXRpb24gPCBxLT5taW5f
+cXVldWVkX2J1ZmZlcnMgKyAxKQo+ID4gKyAgICAgICAgICAgICBxLT5taW5fcmVxYnVmc19hbGxv
+Y2F0aW9uID0gcS0+bWluX3F1ZXVlZF9idWZmZXJzICsgMTsKPiA+ICsKPiA+ICsgICAgIGlmIChX
+QVJOX09OKHEtPm1pbl9yZXFidWZzX2FsbG9jYXRpb24gPiBxLT5tYXhfbnVtX2J1ZmZlcnMpKQo+
+ID4gKyAgICAgICAgICAgICByZXR1cm4gLUVJTlZBTDsKPiA+ICsKPiA+ICAgICAgIElOSVRfTElT
+VF9IRUFEKCZxLT5xdWV1ZWRfbGlzdCk7Cj4gPiAgICAgICBJTklUX0xJU1RfSEVBRCgmcS0+ZG9u
+ZV9saXN0KTsKPiA+ICAgICAgIHNwaW5fbG9ja19pbml0KCZxLT5kb25lX2xvY2spOwo+ID4gQEAg
+LTI3MTcsNyArMjczNiw2IEBAIHN0YXRpYyBpbnQgX192YjJfaW5pdF9maWxlaW8oc3RydWN0IHZi
+Ml9xdWV1ZSAqcSwgaW50IHJlYWQpCj4gPiAgICAgICBzdHJ1Y3QgdmIyX2ZpbGVpb19kYXRhICpm
+aWxlaW87Cj4gPiAgICAgICBzdHJ1Y3QgdmIyX2J1ZmZlciAqdmI7Cj4gPiAgICAgICBpbnQgaSwg
+cmV0Owo+ID4gLSAgICAgdW5zaWduZWQgaW50IGNvdW50ID0gMDsKPiA+Cj4gPiAgICAgICAvKgo+
+ID4gICAgICAgICogU2FuaXR5IGNoZWNrCj4gPiBAQCAtMjczOCwxOCArMjc1Niw4IEBAIHN0YXRp
+YyBpbnQgX192YjJfaW5pdF9maWxlaW8oc3RydWN0IHZiMl9xdWV1ZSAqcSwgaW50IHJlYWQpCj4g
+PiAgICAgICBpZiAocS0+c3RyZWFtaW5nIHx8IHZiMl9nZXRfbnVtX2J1ZmZlcnMocSkgPiAwKQo+
+ID4gICAgICAgICAgICAgICByZXR1cm4gLUVCVVNZOwo+ID4KPiA+IC0gICAgIC8qCj4gPiAtICAg
+ICAgKiBTdGFydCB3aXRoIHEtPm1pbl9xdWV1ZWRfYnVmZmVycyArIDEsIGRyaXZlciBjYW4gaW5j
+cmVhc2UgaXQgaW4KPiA+IC0gICAgICAqIHF1ZXVlX3NldHVwKCkKPiA+IC0gICAgICAqCj4gPiAt
+ICAgICAgKiAnbWluX3F1ZXVlZF9idWZmZXJzJyBidWZmZXJzIG5lZWQgdG8gYmUgcXVldWVkIHVw
+IGJlZm9yZSB5b3UKPiA+IC0gICAgICAqIGNhbiBzdGFydCBzdHJlYW1pbmcsIHBsdXMgMSBmb3Ig
+dXNlcnNwYWNlIChvciBpbiB0aGlzIGNhc2UsCj4gPiAtICAgICAgKiBrZXJuZWxzcGFjZSkgcHJv
+Y2Vzc2luZy4KPiA+IC0gICAgICAqLwo+ID4gLSAgICAgY291bnQgPSBtYXgoMiwgcS0+bWluX3F1
+ZXVlZF9idWZmZXJzICsgMSk7Cj4gPiAtCj4gPiAgICAgICBkcHJpbnRrKHEsIDMsICJzZXR0aW5n
+IHVwIGZpbGUgaW86IG1vZGUgJXMsIGNvdW50ICVkLCByZWFkX29uY2UgJWQsIHdyaXRlX2ltbWVk
+aWF0ZWx5ICVkXG4iLAo+ID4gLSAgICAgICAgICAgICAocmVhZCkgPyAicmVhZCIgOiAid3JpdGUi
+LCBjb3VudCwgcS0+ZmlsZWlvX3JlYWRfb25jZSwKPiA+ICsgICAgICAgICAgICAgKHJlYWQpID8g
+InJlYWQiIDogIndyaXRlIiwgcS0+bWluX3JlcWJ1ZnNfYWxsb2NhdGlvbiwgcS0+ZmlsZWlvX3Jl
+YWRfb25jZSwKPiA+ICAgICAgICAgICAgICAgcS0+ZmlsZWlvX3dyaXRlX2ltbWVkaWF0ZWx5KTsK
+PiA+Cj4gPiAgICAgICBmaWxlaW8gPSBremFsbG9jKHNpemVvZigqZmlsZWlvKSwgR0ZQX0tFUk5F
+TCk7Cj4gPiBAQCAtMjc2Myw3ICsyNzcxLDcgQEAgc3RhdGljIGludCBfX3ZiMl9pbml0X2ZpbGVp
+byhzdHJ1Y3QgdmIyX3F1ZXVlICpxLCBpbnQgcmVhZCkKPiA+ICAgICAgICAqIFJlcXVlc3QgYnVm
+ZmVycyBhbmQgdXNlIE1NQVAgdHlwZSB0byBmb3JjZSBkcml2ZXIKPiA+ICAgICAgICAqIHRvIGFs
+bG9jYXRlIGJ1ZmZlcnMgYnkgaXRzZWxmLgo+ID4gICAgICAgICovCj4gPiAtICAgICBmaWxlaW8t
+PmNvdW50ID0gY291bnQ7Cj4gPiArICAgICBmaWxlaW8tPmNvdW50ID0gcS0+bWluX3JlcWJ1ZnNf
+YWxsb2NhdGlvbjsKPiA+ICAgICAgIGZpbGVpby0+bWVtb3J5ID0gVkIyX01FTU9SWV9NTUFQOwo+
+ID4gICAgICAgZmlsZWlvLT50eXBlID0gcS0+dHlwZTsKPiA+ICAgICAgIHEtPmZpbGVpbyA9IGZp
+bGVpbzsKPiA+IGRpZmYgLS1naXQgYS9pbmNsdWRlL21lZGlhL3ZpZGVvYnVmMi1jb3JlLmggYi9p
+bmNsdWRlL21lZGlhL3ZpZGVvYnVmMi1jb3JlLmgKPiA+IGluZGV4IDY2N2JmOWVlMTEwMS4uNGE4
+YjkxMzVjZWM4IDEwMDY0NAo+ID4gLS0tIGEvaW5jbHVkZS9tZWRpYS92aWRlb2J1ZjItY29yZS5o
+Cj4gPiArKysgYi9pbmNsdWRlL21lZGlhL3ZpZGVvYnVmMi1jb3JlLmgKPiA+IEBAIC01NDksOSAr
+NTQ5LDIxIEBAIHN0cnVjdCB2YjJfYnVmX29wcyB7Cj4gPiAgICogICAgICAgICAgIEBzdGFydF9z
+dHJlYW1pbmcgY2FuIGJlIGNhbGxlZC4gVXNlZCB3aGVuIGEgRE1BIGVuZ2luZQo+ID4gICAqICAg
+ICAgICAgICBjYW5ub3QgYmUgc3RhcnRlZCB1bmxlc3MgYXQgbGVhc3QgdGhpcyBudW1iZXIgb2Yg
+YnVmZmVycwo+ID4gICAqICAgICAgICAgICBoYXZlIGJlZW4gcXVldWVkIGludG8gdGhlIGRyaXZl
+ci4KPiA+IC0gKiAgICAgICAgICAgVklESU9DX1JFUUJVRlMgd2lsbCBlbnN1cmUgYXQgbGVhc3Qg
+QG1pbl9xdWV1ZWRfYnVmZmVycwo+ID4gKyAqICAgICAgICAgICBWSURJT0NfUkVRQlVGUyB3aWxs
+IGVuc3VyZSBhdCBsZWFzdCBAbWluX3F1ZXVlZF9idWZmZXJzICsgMQo+ID4gICAqICAgICAgICAg
+ICBidWZmZXJzIHdpbGwgYmUgYWxsb2NhdGVkLiBOb3RlIHRoYXQgVklESU9DX0NSRUFURV9CVUZT
+IHdpbGwgbm90Cj4gPiAgICogICAgICAgICAgIG1vZGlmeSB0aGUgcmVxdWVzdGVkIGJ1ZmZlciBj
+b3VudC4KPiA+ICsgKiBAbWluX3JlcWJ1ZnNfYWxsb2NhdGlvbjogdGhlIG1pbmltdW0gbnVtYmVy
+IG9mIGJ1ZmZlcnMgdG8gYmUgYWxsb2NhdGVkIHdoZW4KPiA+ICsgKiAgICAgICAgICAgY2FsbGlu
+ZyBWSURJT0NfUkVRQlVGUy4gTm90ZSB0aGF0IFZJRElPQ19DUkVBVEVfQlVGUyB3aWxsICpub3Qq
+Cj4gPiArICogICAgICAgICAgIG1vZGlmeSB0aGUgcmVxdWVzdGVkIGJ1ZmZlciBjb3VudCBhbmQg
+ZG9lcyBub3QgdXNlIHRoaXMgZmllbGQuCj4gPiArICogICAgICAgICAgIERyaXZlcnMgY2FuIHNl
+dCB0aGlzIGlmIHRoZXJlIGhhcyB0byBiZSBhIGNlcnRhaW4gbnVtYmVyIG9mCj4gPiArICogICAg
+ICAgICAgIGJ1ZmZlcnMgYXZhaWxhYmxlIGZvciB0aGUgaGFyZHdhcmUgdG8gd29yayBlZmZlY3Rp
+dmVseS4KPiA+ICsgKiAgICAgICAgICAgVGhpcyBhbGxvd3MgY2FsbGluZyBWSURJT0NfUkVRQlVG
+UyB3aXRoIGEgYnVmZmVyIGNvdW50IG9mIDEgYW5kCj4gPiArICogICAgICAgICAgIGl0IHdpbGwg
+YmUgYXV0b21hdGljYWxseSBhZGp1c3RlZCB0byBhIHdvcmthYmxlIGJ1ZmZlciBjb3VudC4KPiA+
+ICsgKiAgICAgICAgICAgSWYgc2V0LCB0aGVuIEBtaW5fcmVxYnVmc19hbGxvY2F0aW9uIG11c3Qg
+YmUgbGFyZ2VyIHRoYW4KPiA+ICsgKiAgICAgICAgICAgQG1pbl9xdWV1ZWRfYnVmZmVycyArIDEu
+Cj4gPiArICogICAgICAgICAgIElmIHRoaXMgZmllbGQgaXMgPiAzLCB0aGVuIGl0IGlzIGhpZ2hs
+eSByZWNvbW1lbmRlZCB0aGF0IHRoZQo+ID4gKyAqICAgICAgICAgICBkcml2ZXIgaW1wbGVtZW50
+cyB0aGUgVjRMMl9DSURfTUlOX0JVRkZFUlNfRk9SX0NBUFRVUkUvT1VUUFVUCj4gPiArICogICAg
+ICAgICAgIGNvbnRyb2wuCj4gPiAgICogQGFsbG9jX2RldnM6ICAgICAgJnN0cnVjdCBkZXZpY2Ug
+bWVtb3J5IHR5cGUvYWxsb2NhdG9yLXNwZWNpZmljIHBlci1wbGFuZSBkZXZpY2UKPiA+ICAgKi8K
+PiA+ICAvKgo+ID4gQEAgLTYyMiw2ICs2MzQsNyBAQCBzdHJ1Y3QgdmIyX3F1ZXVlIHsKPiA+ICAg
+ICAgIHUzMiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgdGltZXN0YW1wX2ZsYWdzOwo+ID4g
+ICAgICAgZ2ZwX3QgICAgICAgICAgICAgICAgICAgICAgICAgICBnZnBfZmxhZ3M7Cj4gPiAgICAg
+ICB1MzIgICAgICAgICAgICAgICAgICAgICAgICAgICAgIG1pbl9xdWV1ZWRfYnVmZmVyczsKPiA+
+ICsgICAgIHUzMiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgbWluX3JlcWJ1ZnNfYWxsb2Nh
+dGlvbjsKPiA+Cj4gPiAgICAgICBzdHJ1Y3QgZGV2aWNlICAgICAgICAgICAgICAgICAgICphbGxv
+Y19kZXZzW1ZCMl9NQVhfUExBTkVTXTsKPiA+Cj4KPiAtLQo+IFJlZ2FyZHMsCj4KPiBMYXVyZW50
+IFBpbmNoYXJ0CgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+XwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFk
+ZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4
+LXJvY2tjaGlwCg==
