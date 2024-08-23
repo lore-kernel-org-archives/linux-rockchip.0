@@ -4,71 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 568F1C531DC
-	for <linux-rockchip@archiver.kernel.org>; Fri, 23 Aug 2024 12:56:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 30633C531DC
+	for <linux-rockchip@archiver.kernel.org>; Fri, 23 Aug 2024 12:58:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Owyyn+ycT4Am0mtJSH/Cta/8gTz44ayTx4aEBnPvbR4=; b=nhyJt9bgFnLbcG
-	kbHs12h5ylVqW1Ud6LaUOlivTshxWSD7K0R8zzZTpCy9yMgLeY0FiMl9uiKRyVbFS8p0aNQCykEh6
-	MXwE6khRV3ysBpJHThCbwVWe5IXmZEzk+2YfdytNwrA/EJZX2pifNuQMtx6s1N99Ht1WhFJxGno2J
-	48lV/l86H67FDiooLZL4cZaqqWrJsNb7Gus1exAyTCaaYzw8E+18xiXjKRJFMmQHmfMFcdLxnP4AK
-	a+LDounKLWEh9C2g65sfYoYpAIykccPUEJQRy2k53uo/LnMAs+QV3jt7IYMUZisXI49p+SStiMMTW
-	bSi5f74uE9lZNjF0xoSA==;
+	List-Owner; bh=GYqj7twSXoFq2+MsxQAuVZerFXhQfMBadykieQcVI0M=; b=x6IPAQY6MzZ5NO
+	niowEB7G2OPXAHELUGhLsrFuGWIr2UTmsuzaPmJ2mlWc9YtdkISJFMTu8IdO4fZefHXyfyU04qRFJ
+	ItbUJ14RSXy8/vpGREbIxYledHGTCNssT5ix00URKo932K4r+thGsVIcvxWQSfBf80yl7XGOT4D0G
+	ecWHmXGaSFxiBJP8YpLMObo1Zs5Nh6K80Ht5ETtNynr8oYJ52A4sWOun/gqu/ILS7MOuM8KoZPTqO
+	PbWDaWh/rY2YgpWXkjMunL3MOUF+Q0L/AEVQo686CVBYwgLF3wtJytu7lDor8DLzf41ykX/hje9CJ
+	8Wpq3/sH8honPaTYQQIw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1shTqV-0000000GmPh-3dKS;
-	Fri, 23 Aug 2024 12:56:51 +0000
-Received: from mail-lf1-x12c.google.com ([2a00:1450:4864:20::12c])
+	id 1shTrx-0000000Gmil-1gQY;
+	Fri, 23 Aug 2024 12:58:21 +0000
+Received: from mail-ej1-x62f.google.com ([2a00:1450:4864:20::62f])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1shTlW-0000000GlCr-0OqJ
+	id 1shTla-0000000GlFI-3arx
 	for linux-rockchip@lists.infradead.org;
-	Fri, 23 Aug 2024 12:51:43 +0000
-Received: by mail-lf1-x12c.google.com with SMTP id 2adb3069b0e04-5334eec7485so331405e87.3
-        for <linux-rockchip@lists.infradead.org>; Fri, 23 Aug 2024 05:51:41 -0700 (PDT)
+	Fri, 23 Aug 2024 12:51:48 +0000
+Received: by mail-ej1-x62f.google.com with SMTP id a640c23a62f3a-a866902708fso10065566b.2
+        for <linux-rockchip@lists.infradead.org>; Fri, 23 Aug 2024 05:51:46 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1724417500; x=1725022300; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1724417505; x=1725022305; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=pPH0zYeEKEXW0yb0C0QcNli7uy5nXQcT3Asm3cghOnA=;
-        b=ZmkLZTRpXzdlgZzDFVJ31zXiZT+hRluWj/bCYIr5NM0I8UyrjEkU0tfU6hBshhTpjf
-         wsoFSPfDPwY8n/vr+fCNcvd5ZMJL/xRcU/22tXNn4HvGeDcNm54b1XCSw9nyY+kWcQA1
-         LVEilFWfbbsgB6Injo5hGBf1w6eo7IDA8GuirBEN0hpYqU/trCyXURxKHzXtRMblETIK
-         HPZfjU2mIf7OfJy36DTHVaSVjEAYhN4GoZsdAraoFyPQ2lifAmJ8vDFWGnbUpcykIzYG
-         MEyhr58XX6P2E8xp0EUAj+aiwIH/oDGIfp/9gz7FIgFx3bg5/xjmlCxYPoE9s6mQi0HQ
-         kRPg==
+        bh=/rp37AUE8o1pDdOTGLdrCW8KtmisO6ANjwH8PgBb0ls=;
+        b=u/WdOdKm2ofphiZfF2CFQQuuN7u/8k1UPlNidb7u9RpVZI1oHO0Lplu7hdysFD9LjA
+         EzvGrOLLRDX8/xiOavth+3L+cXYwQgyfaVV3wDecNnptTkP3Wi2IX2W/BGRHPejfNIlH
+         C1IX8gB6E3FN1tIrXeaY2qWP2vAiNOa5TV1lP4hGWS/8AbTQv6w6lgPcyjnaPbMabvsY
+         jUZj3BCkrX/pZACgzPsr9Gd/36owqy9t2eCxsQketVGZ+FodYaGgsdS2Ou9HwhqBEYvG
+         aSwsFXEgAlYfeeqT/L+vv7ByzyPCMC6Q0OYfH7U8Ujt18L8jAt/BYjpKyCvCuHBV0pt5
+         vCOw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1724417500; x=1725022300;
+        d=1e100.net; s=20230601; t=1724417505; x=1725022305;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=pPH0zYeEKEXW0yb0C0QcNli7uy5nXQcT3Asm3cghOnA=;
-        b=LZYrDDCpbunDAdqp+0MB00RUGJwvPKEsitaF8gfItVWVnrtTB+6eLlynBmOjM0Rv3K
-         TrDCtTqXcirQyaUZAqlNNJHJlp97WAgHl9vrgk/qqMvvbjVewKTQvYvDqli4wTW3kTgz
-         ihL7jkBgFKlf00kT7Tu4mLYwNXtWHqKGK0izjFKqmnizZRcNq5t9ch8RhMARto/sHuHc
-         OG542TSZW3KhjkhueXgiLwBpaSwcysh1zv46OWthABOQkvlekcRokIUp5CvIyX05GMg8
-         4DvkHtOv3PG/tWO/CNby14BwONcDQomu8eeDxy3BqF5YfPIcC4EZiS6FillSAh9QOnza
-         Rfjg==
-X-Forwarded-Encrypted: i=1; AJvYcCUJ1j+1i0a/YKjBkVeyzteO4abrpQn9yghiqtK/fkLRUZ/opWEcaPUPj//tQKl13Itt1h9HwfttJyl2XUChyA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwJHjJXxi6GOA40sRaKMUVqCjTWZWRSy6qJfInUU4Ab+ZxVceE9
-	2tdmygDuqd4MtqZSsSbHZlrJUf5cU2GFNP5pf3rgpg2MfpXs8JhpGDlZBHRdI+g=
-X-Google-Smtp-Source: AGHT+IEx9QTBZ6Ig4dC6hFm6sSZWyp2NrZPz8Q5OQ6LiyVq1B5Hos95uvD5/wXcqZMFiFAQUCs44Kw==
-X-Received: by 2002:a05:6512:ea8:b0:52f:cf7e:b1bc with SMTP id 2adb3069b0e04-5343876c2a6mr830569e87.1.1724417499775;
-        Fri, 23 Aug 2024 05:51:39 -0700 (PDT)
+        bh=/rp37AUE8o1pDdOTGLdrCW8KtmisO6ANjwH8PgBb0ls=;
+        b=IxKgy5oKke7fTb9zNYeB1mOZ1bvEltxqMRoq9Ndq3yeR1n6wJf6QIdXh+eZysNSUZR
+         rrYF/QdOboENavbY0cViOWD/t2+mlSIWn+DGh8PiKXZew7r+bnLVnvA0lh8J5f8+vi6W
+         Zjb4Ha775AbJqo5R7l+1H2IVL6sceyx17JTcVpyPJ5121QOU9Ldjqbp+9Urr9v5+BJnA
+         n3oRBfOXm7adpOOq47LqGoNFsg+miHPvY6rh2wjPkGF0ThnBMIt6VHWfoduJemNundh/
+         4QQm/vlvENx85Syq2g5yvvJMUSFA/7eImiSMUE0qyFmVnSPocdvZN/Eloo00CqWOSbIM
+         GWbg==
+X-Forwarded-Encrypted: i=1; AJvYcCVQo8iLqu6qo5aiUW2OaMDUWTixwxwqPgQmH7ugVOJFIMZZOvdnIGwNDD2ojbqDR1cUATJHaz1v1eDiAQu2xg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwPoPG3UQSiYfsCJsk4Iv9H9Q6ytIKyO85jobkJ37RyTX4IT3vv
+	GJ9eMKfy83OphGzVl6LiSy1LAbLCEI4NcKiKShDwZUnpYu0q50Ry7pV/UfYV0PQ=
+X-Google-Smtp-Source: AGHT+IE1+3Q98ogeUT94jLgiJMspBnSs1Bmg9/MGG8bMaWFikVo5szbklH8yaPLEJlsyUwI0svusGA==
+X-Received: by 2002:a17:906:c355:b0:a86:a694:aaff with SMTP id a640c23a62f3a-a86a694abe2mr75972666b.1.1724417504852;
+        Fri, 23 Aug 2024 05:51:44 -0700 (PDT)
 Received: from [127.0.1.1] ([178.197.222.82])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a868f4f384bsm255931666b.192.2024.08.23.05.51.37
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a868f4f384bsm255931666b.192.2024.08.23.05.51.43
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 23 Aug 2024 05:51:39 -0700 (PDT)
+        Fri, 23 Aug 2024 05:51:44 -0700 (PDT)
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Date: Fri, 23 Aug 2024 14:51:11 +0200
-Subject: [PATCH 07/10] pmdomain: qcom: rpmhpd: Simplify locking with
- guard()
+Date: Fri, 23 Aug 2024 14:51:14 +0200
+Subject: [PATCH 10/10] pmdomain: renesas: rcar-sysc: Use scoped device node
+ handling to simplify error paths
 MIME-Version: 1.0
-Message-Id: <20240823-cleanup-h-guard-pm-domain-v1-7-8320722eaf39@linaro.org>
+Message-Id: <20240823-cleanup-h-guard-pm-domain-v1-10-8320722eaf39@linaro.org>
 References: <20240823-cleanup-h-guard-pm-domain-v1-0-8320722eaf39@linaro.org>
 In-Reply-To: <20240823-cleanup-h-guard-pm-domain-v1-0-8320722eaf39@linaro.org>
 To: Ulf Hansson <ulf.hansson@linaro.org>, Heiko Stuebner <heiko@sntech.de>, 
@@ -84,26 +84,26 @@ Cc: linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-renesas-soc@vger.kernel.org, 
  Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 X-Mailer: b4 0.14.1
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1388;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=3056;
  i=krzysztof.kozlowski@linaro.org; h=from:subject:message-id;
- bh=y0QBIaJnf0/fSVbWVB0Xkg+ZYq4xy8XVXKh8rGpZrnE=;
- b=owEBbQKS/ZANAwAKAcE3ZuaGi4PXAcsmYgBmyIXK0zZ4ZGoxkalISx0Oa0HQbALLrTngWax7j
- L5WXrBsTjyJAjMEAAEKAB0WIQTd0mIoPREbIztuuKjBN2bmhouD1wUCZsiFygAKCRDBN2bmhouD
- 1xawD/4+ne9u+0w9Ge4yGMtpLBPqws51qJWUNwZocPNFdFCwDtnWIBM/MFNMy6G7mVaitbYRu8S
- NufmqYkj3DXtJ2sKLwHYQ+wbGJkH2CKegDUkrberoehE5ecSQYeq+L8IeWTDwZ9t/8rORPyEAn3
- 0x+pkG6t7Pup4fVh2PrYBqNBLimMVjnwPz/u3f9Da+qwY2cQzBoPcqDso2D9mBwsquclFCwEpQR
- RWeucQ/vUYJtFQqNxObOMA/GEDW+JSHCT4mD2CN1z1T2ASa0Co/ordw0ZJc4WuU4KjCZk9xq9Dj
- 5GPBqEWzwt5f9DxLtaELBbhsyGQLEa13QryylbpEhT4Ax9ArnWkugphkF+OWJ5ewm8g5uB5xEqR
- KoLcKhf8VO506EI2bhmXkAW8+vnZmUMVyHnFQzvkDEeI7IjHYozxMcG8iYb+/3HEhwyZOL68qBx
- 32uk1Gw5Yu5BWFddNZeihHUePRt4KK8NHdUfvtPQiHYylFkpEFwViCU4s3Gwuz1A8vDyFBVWvfZ
- KzAVDDXyVLMfYt/VO5iVeN4dwHtmPf9xQzkIIwd0gDwPKgC062VVJVqdTysn95/R+LPN6zp8qej
- cO2gtpfnk+e8mUL7UlFd3ZonuKOUmlacOqS2E1+zGdH5umSfmjMv+B2cyoGRXy7d/2Gac7Miz36
- HqfXODj1mLYdYeA==
+ bh=RaCHoWfcvN19DBMmkgIRc0NGUjytTpFgVMcU13mcxgo=;
+ b=owEBbQKS/ZANAwAKAcE3ZuaGi4PXAcsmYgBmyIXNR2zayhDCmXFhzQ1RKmq8aC4JQfASOX82l
+ qQyhlx44UOJAjMEAAEKAB0WIQTd0mIoPREbIztuuKjBN2bmhouD1wUCZsiFzQAKCRDBN2bmhouD
+ 1xL8D/9RUFSYlgRZQEabYs+Zlod9oIJejL78n+4Ll7xzEa+aucx3mi/5XlXocpJxNV+gOzHmnL5
+ pTAKjf9vr2rrSCFpdxWqcebEDpOfdp3FhZVpBNUc1h/OP5bjr184cjhi7i9TuCDo/iVdB0pUXdN
+ M76MCTdDAD/bgYmwRgVMQpXF1J769uZTGjSJmi58B0VRQhOhJgjmrSLchp8/NAEnWPwerPXMCkm
+ eB714yX5DLHHI+JfhnayFx/N2/E534xyEO1HvsBvfioJrdNphfVPfe4xI/qOHupvYmd5t+/9Ghd
+ in1T0ooZnRBOqqF/8HZO+fb5oZPBETF2hHD6X7fMDmFhHDfW6lReeoDHG+ru1B6TG9NLvU0x98u
+ wrOOoAXHWLuo2AT/cJjkItEh9Q4T0t0HZ4GscFMohXEJ+GKyoOgFKiAgIBfVgaeJ9bfTpT6teuW
+ zljMa7caswrosPMTvLgRiWDI6NIuUAP1HdpDhMSMerJwDdR3mM18CodSRTqDknlhCH8Tff/UyzE
+ YQqB1Shvtr1g7dD8+6Ajdjhu72i65o1lOBEcq/i6nT6QV3efKKqIzTcF1WoXBmdjq5ZQQyxC71v
+ yN682xplaXESoBHsCxOVmTmEK5SdClLG2XTLvLhB2ErFuaqOK91wtibYaqRUCEPcNvHLuNxW/fR
+ 7csJsV6ahkbU4zA==
 X-Developer-Key: i=krzysztof.kozlowski@linaro.org; a=openpgp;
  fpr=9BD07E0E0C51F8D59677B7541B93437D3B41629B
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240823_055142_171339_576D830D 
-X-CRM114-Status: GOOD (  13.15  )
+X-CRM114-CacheID: sfid-20240823_055146_913727_B5DCAE2E 
+X-CRM114-Status: GOOD (  15.04  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -120,54 +120,113 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Simplify error handling (less gotos) over locks with guard().
+Obtain the device node reference with scoped/cleanup.h to reduce error
+handling and make the code a bit simpler.
 
 Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 ---
- drivers/pmdomain/qcom/rpmhpd.c | 11 +++++------
- 1 file changed, 5 insertions(+), 6 deletions(-)
+ drivers/pmdomain/renesas/rcar-sysc.c | 28 +++++++++++-----------------
+ 1 file changed, 11 insertions(+), 17 deletions(-)
 
-diff --git a/drivers/pmdomain/qcom/rpmhpd.c b/drivers/pmdomain/qcom/rpmhpd.c
-index d2cb4271a1ca..65505e1e2219 100644
---- a/drivers/pmdomain/qcom/rpmhpd.c
-+++ b/drivers/pmdomain/qcom/rpmhpd.c
-@@ -1,6 +1,7 @@
- // SPDX-License-Identifier: GPL-2.0
- /* Copyright (c) 2018, The Linux Foundation. All rights reserved.*/
+diff --git a/drivers/pmdomain/renesas/rcar-sysc.c b/drivers/pmdomain/renesas/rcar-sysc.c
+index b99326917330..da169eed638c 100644
+--- a/drivers/pmdomain/renesas/rcar-sysc.c
++++ b/drivers/pmdomain/renesas/rcar-sysc.c
+@@ -6,6 +6,7 @@
+  * Copyright (C) 2015-2017 Glider bvba
+  */
  
 +#include <linux/cleanup.h>
+ #include <linux/clk/renesas.h>
+ #include <linux/delay.h>
  #include <linux/err.h>
- #include <linux/init.h>
- #include <linux/kernel.h>
-@@ -775,9 +776,9 @@ static int rpmhpd_set_performance_state(struct generic_pm_domain *domain,
- 					unsigned int level)
- {
- 	struct rpmhpd *pd = domain_to_rpmhpd(domain);
--	int ret = 0, i;
-+	int ret, i;
+@@ -348,12 +349,12 @@ static int __init rcar_sysc_pd_init(void)
+ 	const struct rcar_sysc_info *info;
+ 	const struct of_device_id *match;
+ 	struct rcar_pm_domains *domains;
+-	struct device_node *np;
+ 	void __iomem *base;
+ 	unsigned int i;
+ 	int error;
  
--	mutex_lock(&rpmhpd_lock);
-+	guard(mutex)(&rpmhpd_lock);
+-	np = of_find_matching_node_and_match(NULL, rcar_sysc_matches, &match);
++	struct device_node *np __free(device_node) =
++		of_find_matching_node_and_match(NULL, rcar_sysc_matches, &match);
+ 	if (!np)
+ 		return -ENODEV;
  
- 	for (i = 0; i < pd->level_count; i++)
- 		if (level <= pd->level[i])
-@@ -797,14 +798,12 @@ static int rpmhpd_set_performance_state(struct generic_pm_domain *domain,
- 
- 		ret = rpmhpd_aggregate_corner(pd, i);
- 		if (ret)
--			goto out;
-+			return ret;
+@@ -362,7 +363,7 @@ static int __init rcar_sysc_pd_init(void)
+ 	if (info->init) {
+ 		error = info->init();
+ 		if (error)
+-			goto out_put;
++			return error;
  	}
  
- 	pd->corner = i;
--out:
--	mutex_unlock(&rpmhpd_lock);
+ 	has_cpg_mstp = of_find_compatible_node(NULL, NULL,
+@@ -371,8 +372,7 @@ static int __init rcar_sysc_pd_init(void)
+ 	base = of_iomap(np, 0);
+ 	if (!base) {
+ 		pr_warn("%pOF: Cannot map regs\n", np);
+-		error = -ENOMEM;
+-		goto out_put;
++		return -ENOMEM;
+ 	}
  
--	return ret;
-+	return 0;
+ 	rcar_sysc_base = base;
+@@ -382,10 +382,8 @@ static int __init rcar_sysc_pd_init(void)
+ 	rcar_sysc_extmask_val = info->extmask_val;
+ 
+ 	domains = kzalloc(sizeof(*domains), GFP_KERNEL);
+-	if (!domains) {
+-		error = -ENOMEM;
+-		goto out_put;
+-	}
++	if (!domains)
++		return -ENOMEM;
+ 
+ 	domains->onecell_data.domains = domains->domains;
+ 	domains->onecell_data.num_domains = ARRAY_SIZE(domains->domains);
+@@ -403,10 +401,8 @@ static int __init rcar_sysc_pd_init(void)
+ 
+ 		n = strlen(area->name) + 1;
+ 		pd = kzalloc(sizeof(*pd) + n, GFP_KERNEL);
+-		if (!pd) {
+-			error = -ENOMEM;
+-			goto out_put;
+-		}
++		if (!pd)
++			return -ENOMEM;
+ 
+ 		memcpy(pd->name, area->name, n);
+ 		pd->genpd.name = pd->name;
+@@ -417,7 +413,7 @@ static int __init rcar_sysc_pd_init(void)
+ 
+ 		error = rcar_sysc_pd_setup(pd);
+ 		if (error)
+-			goto out_put;
++			return error;
+ 
+ 		domains->domains[area->isr_bit] = &pd->genpd;
+ 
+@@ -429,7 +425,7 @@ static int __init rcar_sysc_pd_init(void)
+ 		if (error) {
+ 			pr_warn("Failed to add PM subdomain %s to parent %u\n",
+ 				area->name, area->parent);
+-			goto out_put;
++			return error;
+ 		}
+ 	}
+ 
+@@ -437,8 +433,6 @@ static int __init rcar_sysc_pd_init(void)
+ 	if (!error)
+ 		fwnode_dev_initialized(of_fwnode_handle(np), true);
+ 
+-out_put:
+-	of_node_put(np);
+ 	return error;
  }
- 
- static int rpmhpd_update_level_mapping(struct rpmhpd *rpmhpd)
+ early_initcall(rcar_sysc_pd_init);
 
 -- 
 2.43.0
