@@ -4,121 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9C9E1C52D7C
-	for <linux-rockchip@archiver.kernel.org>; Fri, 23 Aug 2024 12:59:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C315CC531DC
+	for <linux-rockchip@archiver.kernel.org>; Fri, 23 Aug 2024 13:19:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
-	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Nw5D9PL28VLRabcNsgYM46eDfKZGxGP4CknHbj37MtQ=; b=4kQRsQ5NWqlEli
-	zerXqVHM+hlmi6Xc3w8cu03Zc0jPqEeagISi3QdxkhVQh09qhyu/srfbYnxPBNlps6NQgpn46abZp
-	M/9j96waQHlH+oqQx3QHrXB5hfsTZz+sBttsVzyrHfWAYpoOoust4vaDEKss0PkmXM9E5VHAHQKIF
-	2NC2EvQxX1nrulwcMQP/UFCF0Sc33P3siESzg8M60l8Zs0Jt5fd+UjudrzAgE16e/q9et1t0qkrqK
-	q0m9QciYRpphKc2D4L00jWdxozDF+xpIJ4BZXpcRpYWAf1pLmxwE71KzrlBoKEmeh619Bm42LLvm6
-	630KEt0o8af9/y5NX3Hw==;
+	List-Owner; bh=djY2O6SoriyTLMUeCHuLqhIg2oRYSdpqWAfHLAclABo=; b=mqBIOQB0mmy6xB
+	ydiyRvrcTLHbbHew1Ub3vwfyuOAaKzQ1Enz1C0Fie5//iRdsaI2lGS6ekcgptxwQdNXsaOgliaizC
+	l2CAwa3fUjCiqTeq5zhXFphk4Jtp9IfT8yG616WY6G/f5IPA82e8a0D1Rq/JVLJASEaavjxT1ITa8
+	HU7UwSmT/bgXi8DEOo1NJZsbSRsZ7fjxCeXmloet1kAFIHw5JdbfmQwCXDMh1/2zkURTsMEHbfDwy
+	lgmS/Ln9eyV9Mvf+wsq3L0NE74oBqeMqN0ZvjAIM0cBT6m0ovxkFjGABjMi2MMjeRePSZ3JLDeOAM
+	lsMMaHqRb648eRB8FwFw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1shTtO-0000000Gn1m-3AZf;
-	Fri, 23 Aug 2024 12:59:51 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1shUCM-0000000GqVA-3cNF;
+	Fri, 23 Aug 2024 13:19:26 +0000
+Received: from sender4-op-o12.zoho.com ([136.143.188.12])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1shTli-0000000GlHA-12L6
-	for linux-rockchip@bombadil.infradead.org;
-	Fri, 23 Aug 2024 12:51:54 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
-	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Sender:Reply-To:Content-ID:Content-Description;
-	bh=FrO9VIOVY0Ri5IaSOP2cHACmrrm/g6eQHTHu7wmBZg8=; b=TdGLeBEhJwtagJbsGakqgoSdLj
-	9tNKqRcP2IluMKcCY665AUcQ4bk8WJbIzcSAhm7G8Zq9P51mG0PqHfla6ZB9wcA8Y69EsMTBgY2Vb
-	KD49R5nYvkO+bHEM2vl0EEaejTUMAn0M0waDDZLmrCmLXp84GFd1Qw5zJ9x74I1PaiuUyOkufOyxX
-	urWu1qynYo3cis2ZfJ7+XHrqObUyvZb8Qi9dpnmQmG2tQfiSebTDUAstLOzsUE1X1+aa1SX6eha2H
-	PFWtN2L/Bu2B2c6yhu0XlXertG0bGL4Fr2DJ2IDxWujQdzWBRdksrGoFuQf2RgkoAh6atJ0Z3N8+R
-	0EGDaGiA==;
-Received: from mail-lj1-x22f.google.com ([2a00:1450:4864:20::22f])
-	by desiato.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1shTlb-0000000A8Wk-0EFx
-	for linux-rockchip@lists.infradead.org;
-	Fri, 23 Aug 2024 12:51:51 +0000
-Received: by mail-lj1-x22f.google.com with SMTP id 38308e7fff4ca-2f3f2b86b2dso2492841fa.3
-        for <linux-rockchip@lists.infradead.org>; Fri, 23 Aug 2024 05:51:45 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1724417503; x=1725022303; darn=lists.infradead.org;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=FrO9VIOVY0Ri5IaSOP2cHACmrrm/g6eQHTHu7wmBZg8=;
-        b=O4hDa08fSkOs6UavaMHbIc4h/9d0wNiUu9YjPCA259xWMadbQKLvH0B19kPYOuMNjV
-         qhDzddwHePhYhM+BSUOnmlZFvmI6lr5lalPxOMsmrXELhkVW/4M+s8sTUShnlIOr0wcO
-         cwVMBUB1X8YNUWRros4J3PwlJBE7iQtYSqQMZl/PHbE7qcVUwngk0+XKMqVxKs2znf6G
-         Ih6N5+b54kru/ob4lov6/QdBBpHRnvAeiSuc+76OChNI60+gthglZP/n/vmsFDRDhWc9
-         l5QwFbLkTVbwwVcwQFCXBgCbVNC32kMN5L6JYFA2RsXG39h96ZkToIwiCWm4DYfl3Sz1
-         yzhg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1724417503; x=1725022303;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=FrO9VIOVY0Ri5IaSOP2cHACmrrm/g6eQHTHu7wmBZg8=;
-        b=ldG6jMnSnjZHM3F7UKtHprq2rc/tP96JrHdf6cd/OM8XrIsVFdjtHjpTSkikbTLfKz
-         YCoiyHBXle0uXHk58Xo9J4JehfMyh+wb0U41VkjAe7luxuOVazNREmNAm1UpHki7usn7
-         /uNlwACD2+fHZmqPNWyZdjd4peutMfLLAvaqaTNh61xgtpS/hfY8oTWd6tm7ZM9sThba
-         cyiDz/JJy6sO+rzNp2f9bCMyzopih/GaoJ+TGWVNiBJpxGmnDnKwO8Y/XnnAcWqLjTtM
-         Nc5ilO7UZVZjSmimY9D2VnNyDKCr15kbnbqeN84ioWWNqls8PVSLs3abItaL56RL/KG7
-         LIdg==
-X-Forwarded-Encrypted: i=1; AJvYcCUF8uOv0JDxBHQxGBlRALtsTBitQ7DX+CMJO039D4L7VD5ehOYr3Cqvpu7rreK0pSOkwEeysojNRN9VuBCnPg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzKjl+/D3UhEBuMfABDCyxymiIByBXSJnQ/5l3wzJoGte2tRsi1
-	H1rQ499EzL1vtL4ATUyzlGtvdN15SvGjY3tWWwnlm9phtD4c8M1kko2g86Fa+jM=
-X-Google-Smtp-Source: AGHT+IHQt6XsQjCUfkUrlag0GNPSCDr9z/SiyDUFBx8p2vfO9ppalFsmm1bqmGaVYaUEm16X8IjYbw==
-X-Received: by 2002:a05:651c:2204:b0:2ef:17df:6314 with SMTP id 38308e7fff4ca-2f4f4932c8dmr7795291fa.4.1724417503135;
-        Fri, 23 Aug 2024 05:51:43 -0700 (PDT)
-Received: from [127.0.1.1] ([178.197.222.82])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a868f4f384bsm255931666b.192.2024.08.23.05.51.41
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 23 Aug 2024 05:51:42 -0700 (PDT)
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Date: Fri, 23 Aug 2024 14:51:13 +0200
-Subject: [PATCH 09/10] pmdomain: renesas: rcar-gen4-sysc: Use scoped device
- node handling to simplify error paths
+	id 1shUCJ-0000000GqUL-1yWO;
+	Fri, 23 Aug 2024 13:19:25 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1724419152; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=CP6mR9nhLYaIveKpyLaeZ46q9sUT63lbSfiMIuaWfs7yx9M+FNNim+JoIotArBcgoed75YdHxptkraEtr19QO/CcqQArxJfW93c3amEoan5N/e/2pu1AsDKlPd6KKbMPLyvqkRzPPQPHjj5LMHrCtzV0dWyrkprbdJF5aUalctw=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1724419152; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=hZhy927uMS7MJX4gbRwhbG85sBlv12sTezrKNZF+Sjo=; 
+	b=a6JpAMOErhsOFMfZlM+H4x08BtZKGRkFsCGjhOiu3744h0qPwB4XIgU7hEEFkPdWm20KoJwNqK5sS4/v6xrzvuwa5weoFH5ICsohdVfuQvdoqMzod0YuzHhfSfEvHUXxnkI8mr/63f6w8AS2WL8TRBdTU5IWrf9EKSHXKkzLAIw=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=detlev.casanova@collabora.com;
+	dmarc=pass header.from=<detlev.casanova@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1724419152;
+	s=zohomail; d=collabora.com; i=detlev.casanova@collabora.com;
+	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
+	bh=hZhy927uMS7MJX4gbRwhbG85sBlv12sTezrKNZF+Sjo=;
+	b=g0HtSX6iROSiuef6fVy/H2/AVyaw27pgU7AiuzuYnBVDsvfDHPdrlums9H7gC0tQ
+	PjS2YqPH00fG1/6Dha5knVdpJy9nUnISGH3CSCb3gE1LioE1z+x0hzBizXynA7a2Nwm
+	SnjueHAAxM5G9HSRGeXZj03yVaWJKXNV4GFcKe8M=
+Received: by mx.zohomail.com with SMTPS id 1724419149648671.8521035840524;
+	Fri, 23 Aug 2024 06:19:09 -0700 (PDT)
+From: Detlev Casanova <detlev.casanova@collabora.com>
+To: Dragan Simic <dsimic@manjaro.org>
+Cc: linux-kernel@vger.kernel.org, Ulf Hansson <ulf.hansson@linaro.org>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ Jaehoon Chung <jh80.chung@samsung.com>, linux-mmc@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, kernel@collabora.com
+Subject: Re: [PATCH v4 4/4] mmc: dw_mmc-rockchip: Add support for rk3576 SoCs
+Date: Fri, 23 Aug 2024 09:20:50 -0400
+Message-ID: <5808226.DvuYhMxLoT@trenzalore>
+In-Reply-To: <26fe259f390a8015c3f08c6dc027711c@manjaro.org>
+References: <20240822212418.982927-1-detlev.casanova@collabora.com>
+ <20240822212418.982927-5-detlev.casanova@collabora.com>
+ <26fe259f390a8015c3f08c6dc027711c@manjaro.org>
 MIME-Version: 1.0
-Message-Id: <20240823-cleanup-h-guard-pm-domain-v1-9-8320722eaf39@linaro.org>
-References: <20240823-cleanup-h-guard-pm-domain-v1-0-8320722eaf39@linaro.org>
-In-Reply-To: <20240823-cleanup-h-guard-pm-domain-v1-0-8320722eaf39@linaro.org>
-To: Ulf Hansson <ulf.hansson@linaro.org>, Heiko Stuebner <heiko@sntech.de>, 
- Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, 
- Pengutronix Kernel Team <kernel@pengutronix.de>, 
- Fabio Estevam <festevam@gmail.com>, Bjorn Andersson <andersson@kernel.org>, 
- Konrad Dybcio <konradybcio@kernel.org>, 
- Geert Uytterhoeven <geert+renesas@glider.be>, 
- Magnus Damm <magnus.damm@gmail.com>
-Cc: linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
- imx@lists.linux.dev, linux-arm-msm@vger.kernel.org, 
- linux-renesas-soc@vger.kernel.org, 
- Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-X-Mailer: b4 0.14.1
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2725;
- i=krzysztof.kozlowski@linaro.org; h=from:subject:message-id;
- bh=XWmH+Hl1yGiIFL5fYsxLdEp7Bwy4xbJyw8YwEuJJ1k0=;
- b=owEBbQKS/ZANAwAKAcE3ZuaGi4PXAcsmYgBmyIXMuhF/r6XYZvbssPimAH7xSy/VPxtyP2RAn
- SKx6v/2vH+JAjMEAAEKAB0WIQTd0mIoPREbIztuuKjBN2bmhouD1wUCZsiFzAAKCRDBN2bmhouD
- 1xx0D/wOZ/Gin9mdDLVFXUWB37LsDCwOjzZhR9qfsq0n6W6JYFtvECA3bgQpv4nW/mYAB85dr+j
- ro8zgDq5YXul9FfRGG0ATZvZT2gcCHL/oAnDreUc8vfZLsSlJ1aX84TFJomiW+mQ3XXwCRmsZHB
- 1T0CJt70K1YB2eltp8jp0dig71yi2HdMF6UYhbDo/gYVGtlFtNiYB67Kwdw0UOeW9YzcmeFi6YK
- Tz8GvX3QEooih+bxbIDhHX8Z1IKftzyzty+quNuwmYUOyDi4eSZe2mp4j0/FoaW5MlY31kxW0rp
- 3S9JXPQfyAUVLKdG/0FQQEI8YLTvcupNPFisaS4Bby2Sn1U517UKrVFAFpZ9TDPTzWPFeQ7DUUe
- N8kAyUNMyWN+WNJx+ECpszWWFmk9bCNiZvIJN6pNvCy9N7GzJqATm4RWSxqwOZxL8H0sDTvlx5c
- SQz+eEInbU7p0zcJom64jgD1i2plMUsbuoINKbgMq1y+QdsEBmRi6astV/l1pDUIofIKm/A6u3Y
- N6sQEDEDv1e7tknn9+k5mh99Qk2SjG6+f2mhpMyv/XuC4yKpoHnihKWMMjM5xv97lj2iR1d0N26
- 3YLDkz0E6IEUTDsbNmc1w4Q/VgIsWFghm2U0TXGnTuF57hccO1BnQ1aFdYOM38AO3rCHpOxw96L
- jO9lsFhJ2yrQ1lw==
-X-Developer-Key: i=krzysztof.kozlowski@linaro.org; a=openpgp;
- fpr=9BD07E0E0C51F8D59677B7541B93437D3B41629B
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240823_135147_702180_2418E254 
-X-CRM114-Status: GOOD (  14.16  )
+X-CRM114-CacheID: sfid-20240823_061923_852536_EF65608E 
+X-CRM114-Status: GOOD (  23.80  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -135,103 +82,117 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Obtain the device node reference with scoped/cleanup.h to reduce error
-handling and make the code a bit simpler.
+Hi Dragan,
 
-Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
----
- drivers/pmdomain/renesas/rcar-gen4-sysc.c | 26 ++++++++++----------------
- 1 file changed, 10 insertions(+), 16 deletions(-)
+On Friday, 23 August 2024 03:00:57 EDT Dragan Simic wrote:
+> Hello Detlev,
+> 
+> Please see a comment below.
+> 
+> On 2024-08-22 23:15, Detlev Casanova wrote:
+> > On rk3576 the tunable clocks are inside the controller itself, removing
+> > the need for the "ciu-drive" and "ciu-sample" clocks.
+> > 
+> > That makes it a new type of controller that has its own dt_parse
+> > function.
+> > 
+> > Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
+> > ---
+> > 
+> >  drivers/mmc/host/dw_mmc-rockchip.c | 48 ++++++++++++++++++++++++++----
+> >  1 file changed, 43 insertions(+), 5 deletions(-)
+> > 
+> > diff --git a/drivers/mmc/host/dw_mmc-rockchip.c
+> > b/drivers/mmc/host/dw_mmc-rockchip.c
+> > index 1458cb5fd5c7..7c8ccf5e71bc 100644
+> > --- a/drivers/mmc/host/dw_mmc-rockchip.c
+> > +++ b/drivers/mmc/host/dw_mmc-rockchip.c
+[...]
+> > @@ -435,13 +451,25 @@ static int dw_mci_rk3288_parse_dt(struct dw_mci
+> > *host)
+> > 
+> >  	if (IS_ERR(priv->sample_clk))
+> >  	
+> >  		dev_dbg(host->dev, "ciu-sample not available\n");
+> > 
+> > -	host->priv = priv;
+> > -
+> > 
+> >  	priv->internal_phase = false;
+> >  	
+> >  	return 0;
+> >  
+> >  }
+> > 
+> > +static int dw_mci_rk3576_parse_dt(struct dw_mci *host)
+> > +{
+> > +	struct dw_mci_rockchip_priv_data *priv;
+> > +	int err = dw_mci_common_parse_dt(host);
+> > +	if (err)
+> > +		return err;
+> > +
+> > +	priv = host->priv;
+> > +
+> > +	priv->internal_phase = true;
+> 
+> Defining priv, assigning it and using it seems rather redundant,
+> when all that's needed is simple "host->priv->internal_phase = true"
+> assignment instead.
 
-diff --git a/drivers/pmdomain/renesas/rcar-gen4-sysc.c b/drivers/pmdomain/renesas/rcar-gen4-sysc.c
-index 66409cff2083..4ca85dbdedc2 100644
---- a/drivers/pmdomain/renesas/rcar-gen4-sysc.c
-+++ b/drivers/pmdomain/renesas/rcar-gen4-sysc.c
-@@ -6,6 +6,7 @@
-  */
- 
- #include <linux/bits.h>
-+#include <linux/cleanup.h>
- #include <linux/clk/renesas.h>
- #include <linux/delay.h>
- #include <linux/err.h>
-@@ -303,12 +304,12 @@ static int __init rcar_gen4_sysc_pd_init(void)
- 	const struct rcar_gen4_sysc_info *info;
- 	const struct of_device_id *match;
- 	struct rcar_gen4_pm_domains *domains;
--	struct device_node *np;
- 	void __iomem *base;
- 	unsigned int i;
- 	int error;
- 
--	np = of_find_matching_node_and_match(NULL, rcar_gen4_sysc_matches, &match);
-+	struct device_node *np __free(device_node) =
-+		of_find_matching_node_and_match(NULL, rcar_gen4_sysc_matches, &match);
- 	if (!np)
- 		return -ENODEV;
- 
-@@ -317,17 +318,14 @@ static int __init rcar_gen4_sysc_pd_init(void)
- 	base = of_iomap(np, 0);
- 	if (!base) {
- 		pr_warn("%pOF: Cannot map regs\n", np);
--		error = -ENOMEM;
--		goto out_put;
-+		return -ENOMEM;
- 	}
- 
- 	rcar_gen4_sysc_base = base;
- 
- 	domains = kzalloc(sizeof(*domains), GFP_KERNEL);
--	if (!domains) {
--		error = -ENOMEM;
--		goto out_put;
--	}
-+	if (!domains)
-+		return -ENOMEM;
- 
- 	domains->onecell_data.domains = domains->domains;
- 	domains->onecell_data.num_domains = ARRAY_SIZE(domains->domains);
-@@ -345,10 +343,8 @@ static int __init rcar_gen4_sysc_pd_init(void)
- 
- 		n = strlen(area->name) + 1;
- 		pd = kzalloc(sizeof(*pd) + n, GFP_KERNEL);
--		if (!pd) {
--			error = -ENOMEM;
--			goto out_put;
--		}
-+		if (!pd)
-+			return -ENOMEM;
- 
- 		memcpy(pd->name, area->name, n);
- 		pd->genpd.name = pd->name;
-@@ -357,7 +353,7 @@ static int __init rcar_gen4_sysc_pd_init(void)
- 
- 		error = rcar_gen4_sysc_pd_setup(pd);
- 		if (error)
--			goto out_put;
-+			return error;
- 
- 		domains->domains[area->pdr] = &pd->genpd;
- 
-@@ -369,14 +365,12 @@ static int __init rcar_gen4_sysc_pd_init(void)
- 		if (error) {
- 			pr_warn("Failed to add PM subdomain %s to parent %u\n",
- 				area->name, area->parent);
--			goto out_put;
-+			return error;
- 		}
- 	}
- 
- 	error = of_genpd_add_provider_onecell(np, &domains->onecell_data);
- 
--out_put:
--	of_node_put(np);
- 	return error;
- }
- early_initcall(rcar_gen4_sysc_pd_init);
+Yes, that's what I did at first, but host->priv is declared as void*, which 
+means it needs to be cast to struct dw_mci_rockchip_priv_data * and I felt 
+that 
 
--- 
-2.43.0
+((struct dw_mci_rockchip_priv_data *)host->priv)->internal_phase = true;
+
+is not very pretty and harder to read.
+
+> > +
+> > +	return 0;
+> > +}
+> > +
+> > 
+> >  static int dw_mci_rockchip_init(struct dw_mci *host)
+> >  {
+> >  
+> >  	int ret, i;
+> > 
+> > @@ -483,11 +511,21 @@ static const struct dw_mci_drv_data
+> > rk3288_drv_data = {
+> > 
+> >  	.init			= dw_mci_rockchip_init,
+> >  
+> >  };
+> > 
+> > +static const struct dw_mci_drv_data rk3576_drv_data = {
+> > +	.common_caps		= MMC_CAP_CMD23,
+> > +	.set_ios		= dw_mci_rk3288_set_ios,
+> > +	.execute_tuning		= dw_mci_rk3288_execute_tuning,
+> > +	.parse_dt		= dw_mci_rk3576_parse_dt,
+> > +	.init			= dw_mci_rockchip_init,
+> > +};
+> > +
+> > 
+> >  static const struct of_device_id dw_mci_rockchip_match[] = {
+> >  
+> >  	{ .compatible = "rockchip,rk2928-dw-mshc",
+> >  	
+> >  		.data = &rk2928_drv_data },
+> >  	
+> >  	{ .compatible = "rockchip,rk3288-dw-mshc",
+> >  	
+> >  		.data = &rk3288_drv_data },
+> > 
+> > +	{ .compatible = "rockchip,rk3576-dw-mshc",
+> > +		.data = &rk3576_drv_data },
+> > 
+> >  	{},
+> >  
+> >  };
+> >  MODULE_DEVICE_TABLE(of, dw_mci_rockchip_match);
+
+
+
 
 
 _______________________________________________
