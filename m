@@ -4,38 +4,38 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 32731C531DC
-	for <linux-rockchip@archiver.kernel.org>; Fri, 23 Aug 2024 09:19:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BCF43C531DC
+	for <linux-rockchip@archiver.kernel.org>; Fri, 23 Aug 2024 09:20:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=MXtaG0J7AV58UagQUOfS3SCKwfiajHpEHCV2uYfIbTc=; b=0jAZm7AqJp7ixh
-	3BNjt+yuuNmyYX+Mt6s3SitGkR82loZtYx2rNyvG+L4/R9dHBFhlkOqQjKrxvvGKkSUoUb3QINlns
-	dtmuz4lZ/Ru0PKs19EFx1xPwpXwqXaSjssPV1zvLqvqkKMligY8vw+SZSNCR8Uv3n/jbnE3I4Sxz/
-	e0ys88zRcvNWRsbA3G65djXRFgTrReI9voYtEZKaovtM+oaOwnoP/oGB2Q1yAvrLxa76LkapTvw1Y
-	bVDICjCI3Zq2X+qqKTvC6tCOifuD9J5bvk78G0RrekG6fR7Rg71JF+swzc77uyftiwB2eJ9guMCn6
-	3L+iCwKjSuxNWoiv/R7A==;
+	List-Owner; bh=H4hPFFVUkVKeImD6Jy49agHPdpt2lhhndltHiDnJZJU=; b=QZb/wTFjNde/iH
+	dXL8+PkcAR2HJdW+NoAnXA+zRwmFu66g8JT2eZP7hHtHY0sy6YdBw7zNMTMpaJT5l+mjWHiUocLY6
+	/BIKLSf8BrzdFu024c4Jlb6+ksrXLhjMxlGvhiALi3BouDzLZmA3T+r5hbraF5xRxjaQ+Mo4pUfb8
+	cX6osYZs/FVhsIuQRj5LqkVo/OaM8yivwUQZpVsRad0QU0C8v7Snu6cjae2WG1V6xT8T7smN9Lgnz
+	TR/DXK2ir2kQdrGOmlESqRZT2xC7864tCfGL6h1YZ+2xmlXEAHCs7Pi1COx12ts6gMjubXz37k3aI
+	gJhfeDtMoUp9lMj1AOiQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1shQRt-0000000G4f0-3yT3;
-	Fri, 23 Aug 2024 09:19:13 +0000
+	id 1shQSe-0000000G4ue-2qQV;
+	Fri, 23 Aug 2024 09:20:00 +0000
 Received: from szxga06-in.huawei.com ([45.249.212.32])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1shQMJ-0000000G33P-38lI;
+	id 1shQMJ-0000000G33N-47CO;
 	Fri, 23 Aug 2024 09:13:30 +0000
-Received: from mail.maildlp.com (unknown [172.19.162.112])
-	by szxga06-in.huawei.com (SkyGuard) with ESMTP id 4WqvSs3FRlz1xvwW;
-	Fri, 23 Aug 2024 17:11:25 +0800 (CST)
+Received: from mail.maildlp.com (unknown [172.19.88.214])
+	by szxga06-in.huawei.com (SkyGuard) with ESMTP id 4WqvSr5x12z1xvwT;
+	Fri, 23 Aug 2024 17:11:24 +0800 (CST)
 Received: from kwepemh500013.china.huawei.com (unknown [7.202.181.146])
-	by mail.maildlp.com (Postfix) with ESMTPS id CDDF914013B;
+	by mail.maildlp.com (Postfix) with ESMTPS id 36B161A016C;
 	Fri, 23 Aug 2024 17:13:20 +0800 (CST)
 Received: from huawei.com (10.90.53.73) by kwepemh500013.china.huawei.com
  (7.202.181.146) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.11; Fri, 23 Aug
- 2024 17:13:20 +0800
+ 2024 17:13:19 +0800
 From: Jinjie Ruan <ruanjinjie@huawei.com>
 To: <hjc@rock-chips.com>, <heiko@sntech.de>, <andy.yan@rock-chips.com>,
 	<maarten.lankhorst@linux.intel.com>, <mripard@kernel.org>,
@@ -44,9 +44,9 @@ To: <hjc@rock-chips.com>, <heiko@sntech.de>, <andy.yan@rock-chips.com>,
 	<linux-rockchip@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
 	<krzk@kernel.org>, <jic23@kernel.org>
 CC: <ruanjinjie@huawei.com>
-Subject: [PATCH -next 4/5] drm/nouveau: Use for_each_child_of_node_scoped()
-Date: Fri, 23 Aug 2024 17:20:52 +0800
-Message-ID: <20240823092053.3170445-5-ruanjinjie@huawei.com>
+Subject: [PATCH -next 3/5] drm: of: Use for_each_child_of_node_scoped()
+Date: Fri, 23 Aug 2024 17:20:51 +0800
+Message-ID: <20240823092053.3170445-4-ruanjinjie@huawei.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20240823092053.3170445-1-ruanjinjie@huawei.com>
 References: <20240823092053.3170445-1-ruanjinjie@huawei.com>
@@ -55,8 +55,8 @@ X-Originating-IP: [10.90.53.73]
 X-ClientProxiedBy: dggems706-chm.china.huawei.com (10.3.19.183) To
  kwepemh500013.china.huawei.com (7.202.181.146)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240823_021328_114524_29B6B05C 
-X-CRM114-Status: UNSURE (   9.34  )
+X-CRM114-CacheID: sfid-20240823_021328_310774_C3D848EF 
+X-CRM114-Status: UNSURE (   9.46  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -79,38 +79,49 @@ from the loop.
 
 Signed-off-by: Jinjie Ruan <ruanjinjie@huawei.com>
 ---
- drivers/gpu/drm/nouveau/nouveau_connector.c | 5 ++---
- 1 file changed, 2 insertions(+), 3 deletions(-)
+ drivers/gpu/drm/drm_of.c | 11 +++--------
+ 1 file changed, 3 insertions(+), 8 deletions(-)
 
-diff --git a/drivers/gpu/drm/nouveau/nouveau_connector.c b/drivers/gpu/drm/nouveau/nouveau_connector.c
-index b06aa473102b..8d5c9c74cbb9 100644
---- a/drivers/gpu/drm/nouveau/nouveau_connector.c
-+++ b/drivers/gpu/drm/nouveau/nouveau_connector.c
-@@ -477,14 +477,14 @@ nouveau_connector_of_detect(struct drm_connector *connector)
- 	struct nouveau_connector *nv_connector = nouveau_connector(connector);
- 	struct nouveau_encoder *nv_encoder;
- 	struct pci_dev *pdev = to_pci_dev(dev->dev);
--	struct device_node *cn, *dn = pci_device_to_OF_node(pdev);
-+	struct device_node *dn = pci_device_to_OF_node(pdev);
+diff --git a/drivers/gpu/drm/drm_of.c b/drivers/gpu/drm/drm_of.c
+index 177b600895d3..41d9288c97a7 100644
+--- a/drivers/gpu/drm/drm_of.c
++++ b/drivers/gpu/drm/drm_of.c
+@@ -304,10 +304,9 @@ static int drm_of_lvds_get_port_pixels_type(struct device_node *port_node)
+ static int drm_of_lvds_get_remote_pixels_type(
+ 			const struct device_node *port_node)
+ {
+-	struct device_node *endpoint = NULL;
+ 	int pixels_type = -EPIPE;
  
- 	if (!dn ||
- 	    !((nv_encoder = find_encoder(connector, DCB_OUTPUT_TMDS)) ||
- 	      (nv_encoder = find_encoder(connector, DCB_OUTPUT_ANALOG))))
- 		return NULL;
+-	for_each_child_of_node(port_node, endpoint) {
++	for_each_child_of_node_scoped(port_node, endpoint) {
+ 		struct device_node *remote_port;
+ 		int current_pt;
  
--	for_each_child_of_node(dn, cn) {
-+	for_each_child_of_node_scoped(dn, cn) {
- 		const char *name = of_get_property(cn, "name", NULL);
- 		const void *edid = of_get_property(cn, "EDID", NULL);
- 		int idx = name ? name[strlen(name) - 1] - 'A' : 0;
-@@ -492,7 +492,6 @@ nouveau_connector_of_detect(struct drm_connector *connector)
- 		if (nv_encoder->dcb->i2c_index == idx && edid) {
- 			nv_connector->edid =
- 				kmemdup(edid, EDID_LENGTH, GFP_KERNEL);
--			of_node_put(cn);
- 			return nv_encoder;
- 		}
+@@ -315,10 +314,8 @@ static int drm_of_lvds_get_remote_pixels_type(
+ 			continue;
+ 
+ 		remote_port = of_graph_get_remote_port(endpoint);
+-		if (!remote_port) {
+-			of_node_put(endpoint);
++		if (!remote_port)
+ 			return -EPIPE;
+-		}
+ 
+ 		current_pt = drm_of_lvds_get_port_pixels_type(remote_port);
+ 		of_node_put(remote_port);
+@@ -332,10 +329,8 @@ static int drm_of_lvds_get_remote_pixels_type(
+ 		 * configurations by passing the endpoints explicitly to
+ 		 * drm_of_lvds_get_dual_link_pixel_order().
+ 		 */
+-		if (!current_pt || pixels_type != current_pt) {
+-			of_node_put(endpoint);
++		if (!current_pt || pixels_type != current_pt)
+ 			return -EINVAL;
+-		}
  	}
+ 
+ 	return pixels_type;
 -- 
 2.34.1
 
