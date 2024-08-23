@@ -4,42 +4,42 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A6459C52D7C
-	for <linux-rockchip@archiver.kernel.org>; Fri, 23 Aug 2024 05:42:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3C133C52D7C
+	for <linux-rockchip@archiver.kernel.org>; Fri, 23 Aug 2024 05:46:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
 	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=j0bq/mOw9EmaypyWxaqxw3CP5jKRmRWhPRxBc0A+OSk=; b=FsCHfuOuWO99nDpuw35ptD+egM
-	DWFdJyGJjZE59cC2z5Lk5vLZqOJM/D7Qa6jUyby2lQRZa61tP+zQ7EVUGNqYFiplSML56BmBWFfeb
-	hBfrNE4eXDs73FBVVDKF9btOs4ZmgWxpxLAxtxqou9bmhzo8Ci/4/s9FrA1Qm5rsyWSUfpHBHvlVx
-	A1hvjPRSrG+hlskbn8zmYsWcNA/a26WLpWXjxEaG9IgzzKn6C7yOQwrRMpCasCYW6HVicPBSauGnm
-	Gp60CI03kOfCOeoY/DbG3tKqquw+C32+IbYLqMQCY8sCWgFgJAs9dCd1oDdKtiSkK3DMTk/UZiSJW
-	2zZ2pCxw==;
+	bh=jU7aOoPSPr8ia0jvWh0N9cr/LRmQPl8DU2aDK4ejAuQ=; b=rRjCYqsuPy9deqY4eCOTAQG3KG
+	b6tsaBGNRNGUVCapy98kbznqwrYjgJjW4AX6iPnLiqKdK1/FzNOSViuOvd4e5DavJ445EWajgNDgF
+	YlqPy47ELVmrzGrw9+8DL38Y7j4twbBjbsGRetkc0vZLzSirPiYOE3ZGRPYl3rwRnQ3sxFFN3nJ8X
+	XBWHwpWhQ2hatl12t06b3AsmQlnNGdgKvfFuZpxOZlgtcLA8nZ48h8lnv/BGXgrJ7kQxd8nwLJY1M
+	nx++XTvmS9KyUlYDi/aSFDnWqxaE7Up11Joi3EH+VPEtHoBL5umIUBl6+I4SpDg4HqQ4YkeBGE64W
+	Q68VNIIg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1shN4E-0000000FLY9-2XOi;
-	Fri, 23 Aug 2024 05:42:34 +0000
-Received: from mail.manjaro.org ([2a01:4f8:c0c:51f3::1])
+	id 1shN7V-0000000FM1A-25m4;
+	Fri, 23 Aug 2024 05:45:57 +0000
+Received: from mail.manjaro.org ([116.203.91.91])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1shN3T-0000000FLT1-0fA5;
-	Fri, 23 Aug 2024 05:41:48 +0000
+	id 1shN6k-0000000FLsC-0ePK;
+	Fri, 23 Aug 2024 05:45:11 +0000
 MIME-Version: 1.0
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
-	t=1724391705;
+	t=1724391908;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=kRUQof1fws+WZTJx29gSd/eBycDm7t6bJjqwUp6NViY=;
-	b=LRw7Ys8lgOzutA9tpD8TM3mcqM/cHCl/kjJKkrwpn3mGtvTgBmsoqtomdsRW28xZV+jB0o
-	Q7WOnRHSIdE2tTbMvE8AxLg8LnBoJ220unGcC1IQWjGus1m9XHp6zIuLmN2PBzu9PELq7K
-	Hf12AnExJlDAUGHYvA/kYWwSSjdhUZENypDXs2ebYxpn5/XlKS3DLOBr/OGFst6phiXvLW
-	1qPkJuIq8oaFZ+csNVMTNpEH9LHRCmIwleIqZxaYm0Hz8m+XuCqolnmxiCaTlB+777m/6B
-	p/d6Zy4GtieDHnE9jQ0i5YC58U2zz6FR6ghZahgWSF7H2F2DPLzmcWmt4axlug==
-Date: Fri, 23 Aug 2024 07:41:44 +0200
+	bh=9GwKuNVlfgC5W+9zlKT/gn1CtvwJSC/hAS1+oQKVxL0=;
+	b=uYz9Sx82KEjltSgj9k7p7gTmj84l82XVbz/+FrOV2fchA3LAlio2d1irfHFJS/SwyyQlN+
+	N/0zOPE0OAxzPvygvTWDdFI2IovwVFUuhxvN/bB7aPvs2EUTUZXpwpllTvfFB8mSEg1Pkw
+	naIZYOiLI+cQ343I3ol0sODHlpVO/5kbiMUwfB08wkz/R52G8Ex9ps0myU63vbz4KMGsIy
+	kQsD2+oACdrNxF1wsY9igmgWoPqFkKNL+E9SBFmfPQ5qrfeIy5YKMpNqTQY8xHBtRCe31R
+	WnLGyHemK7YtRV53my1aupiRFMpfQYePBuUyDsEiqwJZKksjLz1iN8kyQza1hg==
+Date: Fri, 23 Aug 2024 07:45:07 +0200
 From: Dragan Simic <dsimic@manjaro.org>
 To: Detlev Casanova <detlev.casanova@collabora.com>
 Cc: linux-kernel@vger.kernel.org, Ulf Hansson <ulf.hansson@linaro.org>, Rob
@@ -49,17 +49,18 @@ Cc: linux-kernel@vger.kernel.org, Ulf Hansson <ulf.hansson@linaro.org>, Rob
  devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-rockchip@lists.infradead.org, kernel@collabora.com, Shawn Lin
  <shawn.lin@rock-chips.com>
-Subject: Re: [PATCH v4 2/4] mmc: dw_mmc-rockchip: Add internal phase support
-In-Reply-To: <20240822212418.982927-3-detlev.casanova@collabora.com>
+Subject: Re: [PATCH v4 3/4] mmc: dw_mmc-rockchip: Skip all phases bigger than
+ 270 degrees
+In-Reply-To: <20240822212418.982927-4-detlev.casanova@collabora.com>
 References: <20240822212418.982927-1-detlev.casanova@collabora.com>
- <20240822212418.982927-3-detlev.casanova@collabora.com>
-Message-ID: <f0f5dec4a5403616fa25c6ed754f6050@manjaro.org>
+ <20240822212418.982927-4-detlev.casanova@collabora.com>
+Message-ID: <711f2561ac3d84bcd5bbe26723869b47@manjaro.org>
 X-Sender: dsimic@manjaro.org
 Authentication-Results: ORIGINATING;
 	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240822_224147_408948_832D7D87 
-X-CRM114-Status: GOOD (  19.21  )
+X-CRM114-CacheID: sfid-20240822_224510_378517_63062D58 
+X-CRM114-Status: GOOD (  16.54  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,63 +79,40 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 Hello Detlev,
 
-Please see a comment below.
-
 On 2024-08-22 23:15, Detlev Casanova wrote:
 > From: Shawn Lin <shawn.lin@rock-chips.com>
 > 
-> Some Rockchip devices put the phase settings into the dw_mmc 
-> controller.
-> 
-> When the feature is present, the ciu-drive and ciu-sample clocks are
-> not used and the phase configuration is done directly through the mmc
-> controller.
-> 
+> Per design recommendation, it'd better not try to use any phase
+> which is bigger than 270. Let's officially follow this.
+
+Would it be possible to provide a reference to the actual design
+specification?  This change affects all users of the dw_mmc-rockchip
+driver, so in case any regressions are found later, having as much
+detail as possible can only be beneficial.
+
 > Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+> (cherry picked from commit 2a53aab5cfa43065b2e979959d727332a8a03c03)
 > Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
-> Acked-by: Shawn Lin <shawn.lin@rock-chips.com>
 > ---
->  drivers/mmc/host/dw_mmc-rockchip.c | 171 +++++++++++++++++++++++++++--
->  1 file changed, 160 insertions(+), 11 deletions(-)
+>  drivers/mmc/host/dw_mmc-rockchip.c | 3 +++
+>  1 file changed, 3 insertions(+)
 > 
 > diff --git a/drivers/mmc/host/dw_mmc-rockchip.c
 > b/drivers/mmc/host/dw_mmc-rockchip.c
-> index b07190ba4b7a..2748f9bf2691 100644
+> index 2748f9bf2691..1458cb5fd5c7 100644
 > --- a/drivers/mmc/host/dw_mmc-rockchip.c
 > +++ b/drivers/mmc/host/dw_mmc-rockchip.c
-> @@ -15,7 +15,17 @@
->  #include "dw_mmc.h"
->  #include "dw_mmc-pltfm.h"
+> @@ -310,6 +310,9 @@ static int dw_mci_rk3288_execute_tuning(struct
+> dw_mci_slot *slot, u32 opcode)
 > 
-> -#define RK3288_CLKGEN_DIV	2
-> +#define RK3288_CLKGEN_DIV		2
-> +#define SDMMC_TIMING_CON0		0x130
-> +#define SDMMC_TIMING_CON1		0x134
-> +#define ROCKCHIP_MMC_DELAY_SEL		BIT(10)
-> +#define ROCKCHIP_MMC_DEGREE_MASK	0x3
-> +#define ROCKCHIP_MMC_DEGREE_OFFSET	1
-> +#define ROCKCHIP_MMC_DELAYNUM_OFFSET	2
-> +#define ROCKCHIP_MMC_DELAYNUM_MASK	(0xff << 
-> ROCKCHIP_MMC_DELAYNUM_OFFSET)
-> +#define ROCKCHIP_MMC_DELAY_ELEMENT_PSEC	60
-> +#define HIWORD_UPDATE(val, mask, shift) \
-> +		((val) << (shift) | (mask) << ((shift) + 16))
-> 
->  static const unsigned int freqs[] = { 100000, 200000, 300000, 400000 
-> };
-> 
-> @@ -24,8 +34,143 @@ struct dw_mci_rockchip_priv_data {
->  	struct clk		*sample_clk;
->  	int			default_sample_phase;
->  	int			num_phases;
-> +	int			internal_phase;
->  };
-
-It might be good to declare internal_phase as "unsigned int 
-internal_phase:1",
-i.e. as a bit field, which isn't going to save some memory in this 
-particular
-case, but it would show additional attention to detail.
+>  	/* Try each phase and extract good ranges */
+>  	for (i = 0; i < priv->num_phases; ) {
+> +		/* Cannot guarantee any phases larger than 270 would work well */
+> +		if (TUNING_ITERATION_TO_PHASE(i, priv->num_phases) > 270)
+> +			break;
+>  		rockchip_mmc_set_phase(host, true,
+>  				       TUNING_ITERATION_TO_PHASE(
+>  						i,
 
 _______________________________________________
 Linux-rockchip mailing list
