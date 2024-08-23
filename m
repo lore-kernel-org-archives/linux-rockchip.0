@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 080BEC5321E
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 568F1C531DC
 	for <linux-rockchip@archiver.kernel.org>; Fri, 23 Aug 2024 12:56:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,62 +12,63 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Ui6x0vHhWs4bC6L0moglhGJkOyRteJMUNFH9FC+uMb8=; b=vh7ZzjJ+kqurjM
-	2Tmgp5mD8SCKzO5wO1h8BjF2Xi64pdd/y656eemGzXT/h6xSPWJFJgmrBs8a586V26mHAGFRpN/yC
-	1tNRy4DwztGoRVnAy90Nm1WZzRELd/u2yh587Lv6jZK0QAKtIZiG3iwm+yOzz7Oys+parGUIXm0Yk
-	SqWTwjfKeWWpY1hCvekTKDysSaPfj9ZviX5BQe5/mnV/Iw7JTnvEti0A2ut1m/4+8AbpoBaU+evS6
-	jVt/eeyFIvJz9iLO2FL3oflYaIpX3YV43L2O7AKOmTqHM/RwLwS6kOyQqzBBOySYMggYWqUzGf4fe
-	38/mDMtii+mysiekwaqQ==;
+	List-Owner; bh=Owyyn+ycT4Am0mtJSH/Cta/8gTz44ayTx4aEBnPvbR4=; b=nhyJt9bgFnLbcG
+	kbHs12h5ylVqW1Ud6LaUOlivTshxWSD7K0R8zzZTpCy9yMgLeY0FiMl9uiKRyVbFS8p0aNQCykEh6
+	MXwE6khRV3ysBpJHThCbwVWe5IXmZEzk+2YfdytNwrA/EJZX2pifNuQMtx6s1N99Ht1WhFJxGno2J
+	48lV/l86H67FDiooLZL4cZaqqWrJsNb7Gus1exAyTCaaYzw8E+18xiXjKRJFMmQHmfMFcdLxnP4AK
+	a+LDounKLWEh9C2g65sfYoYpAIykccPUEJQRy2k53uo/LnMAs+QV3jt7IYMUZisXI49p+SStiMMTW
+	bSi5f74uE9lZNjF0xoSA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1shTqW-0000000GmQ1-1MsT;
-	Fri, 23 Aug 2024 12:56:52 +0000
+	id 1shTqV-0000000GmPh-3dKS;
+	Fri, 23 Aug 2024 12:56:51 +0000
 Received: from mail-lf1-x12c.google.com ([2a00:1450:4864:20::12c])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1shTlX-0000000GlDj-0NKD
+	id 1shTlW-0000000GlCr-0OqJ
 	for linux-rockchip@lists.infradead.org;
-	Fri, 23 Aug 2024 12:51:45 +0000
-Received: by mail-lf1-x12c.google.com with SMTP id 2adb3069b0e04-5334832fb94so440440e87.0
-        for <linux-rockchip@lists.infradead.org>; Fri, 23 Aug 2024 05:51:42 -0700 (PDT)
+	Fri, 23 Aug 2024 12:51:43 +0000
+Received: by mail-lf1-x12c.google.com with SMTP id 2adb3069b0e04-5334eec7485so331405e87.3
+        for <linux-rockchip@lists.infradead.org>; Fri, 23 Aug 2024 05:51:41 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1724417501; x=1725022301; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1724417500; x=1725022300; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=LWSvBRmFgwiSd3F2eMmjx+EmKWHuqV0doCXLi3Lc+dM=;
-        b=Btnh+ypkALidOGHPoE4G9AeGl0joYDY1tQFlBlUHrLlgvq2ornBOpr1cX5pGXjktbs
-         qkvj/9phLykShS9pE5UmJko1cnMWo9SiFH8jqGGIogT6ggyl6lVSmOyNtY0bnFuO/dkF
-         Sqon5++cx3VbKiGlXqXAUsl+Ogi+VuPopk4DGRpTwlrjI2rMEEg/8fxxsGu15qBZ2yVm
-         Amsp2/5zt77PdNUyllQDTQV7Mt2DRLLyS24s1+Qz96Vbgf7hsWPhCywQbAhwUhdGO/Ko
-         /w0c22+yq0nWOmpFelty0p7EcPWWrDHq2C01u8fkHpfsJBGrHPEO/ZBJopzxyJvWSONh
-         HH4g==
+        bh=pPH0zYeEKEXW0yb0C0QcNli7uy5nXQcT3Asm3cghOnA=;
+        b=ZmkLZTRpXzdlgZzDFVJ31zXiZT+hRluWj/bCYIr5NM0I8UyrjEkU0tfU6hBshhTpjf
+         wsoFSPfDPwY8n/vr+fCNcvd5ZMJL/xRcU/22tXNn4HvGeDcNm54b1XCSw9nyY+kWcQA1
+         LVEilFWfbbsgB6Injo5hGBf1w6eo7IDA8GuirBEN0hpYqU/trCyXURxKHzXtRMblETIK
+         HPZfjU2mIf7OfJy36DTHVaSVjEAYhN4GoZsdAraoFyPQ2lifAmJ8vDFWGnbUpcykIzYG
+         MEyhr58XX6P2E8xp0EUAj+aiwIH/oDGIfp/9gz7FIgFx3bg5/xjmlCxYPoE9s6mQi0HQ
+         kRPg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1724417501; x=1725022301;
+        d=1e100.net; s=20230601; t=1724417500; x=1725022300;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=LWSvBRmFgwiSd3F2eMmjx+EmKWHuqV0doCXLi3Lc+dM=;
-        b=CQH2fY9JKm6K1+OjB2eZ4BhWFPF7ZI+3UW/CCeVNBDAglgE8tBg/0YxcOANFjYKuI3
-         nu+Y59fObKd9ujXk2nQIvzQl033lUTNLsaFYXttwVo+MfLjV26V76d68ZESkt7ybh8mM
-         oLmwS6AI4aHsdXCeyIop1w7Wd2wM5MKm4EubolaQ42WGfiv6P2/aIZw36fQueibDk97a
-         mI84dyY8TS/gcBHTUX1EKf+ExnCpohmnWgsZV9KREiRezEBl7NXk/we6lP3rHPRN+Rlj
-         Yhd4tGwg0H8gYzwh46hvVh+KFS0Clx+UmhRn7Hz15EnaoTO4aTQx7EsLJxIsY6Lb1Hyr
-         1kdQ==
-X-Forwarded-Encrypted: i=1; AJvYcCUN8tTSD/HF6bbMcQgd9l0jZrATkNMtgqaLZTA3ACuzflw+O/i9mx0LChyIoBP7dE/0ztL07m7YoKxQKaDeOw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxltjMoHaGozVVZxdVe6wGTvA19kB2dqDomAq6uxmryMFiiQnvL
-	GFol/KV3tHXIUUvu/RHva57NhbmhFM2JrEoW5NMCSv/IP5FtaZEd+6mmvp0OraQ=
-X-Google-Smtp-Source: AGHT+IGLzwRApWGomk3qx7J1YXzN02rn4ed9Sav7TouTOUXRpc+oqNnzZE3qUGBBhBfveVxwQKMi4Q==
-X-Received: by 2002:a05:6512:1592:b0:52f:c142:6530 with SMTP id 2adb3069b0e04-534387c4976mr838734e87.6.1724417501464;
-        Fri, 23 Aug 2024 05:51:41 -0700 (PDT)
+        bh=pPH0zYeEKEXW0yb0C0QcNli7uy5nXQcT3Asm3cghOnA=;
+        b=LZYrDDCpbunDAdqp+0MB00RUGJwvPKEsitaF8gfItVWVnrtTB+6eLlynBmOjM0Rv3K
+         TrDCtTqXcirQyaUZAqlNNJHJlp97WAgHl9vrgk/qqMvvbjVewKTQvYvDqli4wTW3kTgz
+         ihL7jkBgFKlf00kT7Tu4mLYwNXtWHqKGK0izjFKqmnizZRcNq5t9ch8RhMARto/sHuHc
+         OG542TSZW3KhjkhueXgiLwBpaSwcysh1zv46OWthABOQkvlekcRokIUp5CvIyX05GMg8
+         4DvkHtOv3PG/tWO/CNby14BwONcDQomu8eeDxy3BqF5YfPIcC4EZiS6FillSAh9QOnza
+         Rfjg==
+X-Forwarded-Encrypted: i=1; AJvYcCUJ1j+1i0a/YKjBkVeyzteO4abrpQn9yghiqtK/fkLRUZ/opWEcaPUPj//tQKl13Itt1h9HwfttJyl2XUChyA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwJHjJXxi6GOA40sRaKMUVqCjTWZWRSy6qJfInUU4Ab+ZxVceE9
+	2tdmygDuqd4MtqZSsSbHZlrJUf5cU2GFNP5pf3rgpg2MfpXs8JhpGDlZBHRdI+g=
+X-Google-Smtp-Source: AGHT+IEx9QTBZ6Ig4dC6hFm6sSZWyp2NrZPz8Q5OQ6LiyVq1B5Hos95uvD5/wXcqZMFiFAQUCs44Kw==
+X-Received: by 2002:a05:6512:ea8:b0:52f:cf7e:b1bc with SMTP id 2adb3069b0e04-5343876c2a6mr830569e87.1.1724417499775;
+        Fri, 23 Aug 2024 05:51:39 -0700 (PDT)
 Received: from [127.0.1.1] ([178.197.222.82])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a868f4f384bsm255931666b.192.2024.08.23.05.51.39
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a868f4f384bsm255931666b.192.2024.08.23.05.51.37
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 23 Aug 2024 05:51:40 -0700 (PDT)
+        Fri, 23 Aug 2024 05:51:39 -0700 (PDT)
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Date: Fri, 23 Aug 2024 14:51:12 +0200
-Subject: [PATCH 08/10] pmdomain: qcom: rpmpd: Simplify locking with guard()
+Date: Fri, 23 Aug 2024 14:51:11 +0200
+Subject: [PATCH 07/10] pmdomain: qcom: rpmhpd: Simplify locking with
+ guard()
 MIME-Version: 1.0
-Message-Id: <20240823-cleanup-h-guard-pm-domain-v1-8-8320722eaf39@linaro.org>
+Message-Id: <20240823-cleanup-h-guard-pm-domain-v1-7-8320722eaf39@linaro.org>
 References: <20240823-cleanup-h-guard-pm-domain-v1-0-8320722eaf39@linaro.org>
 In-Reply-To: <20240823-cleanup-h-guard-pm-domain-v1-0-8320722eaf39@linaro.org>
 To: Ulf Hansson <ulf.hansson@linaro.org>, Heiko Stuebner <heiko@sntech.de>, 
@@ -83,26 +84,26 @@ Cc: linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-renesas-soc@vger.kernel.org, 
  Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 X-Mailer: b4 0.14.1
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1922;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1388;
  i=krzysztof.kozlowski@linaro.org; h=from:subject:message-id;
- bh=dEBqeOHv8ua+SDX2xXix8P9X1j2XB3X9nrWuqhTFOoY=;
- b=owEBbQKS/ZANAwAKAcE3ZuaGi4PXAcsmYgBmyIXLBp4hGT8aL0uXmCvXIwXYIZJjssZSgqVDO
- 1PWGdPkEI6JAjMEAAEKAB0WIQTd0mIoPREbIztuuKjBN2bmhouD1wUCZsiFywAKCRDBN2bmhouD
- 17+LEACYB2RFCyuya6wvvIC2WOhsGUn/MwYWW26D+fCbIN3o0SrRL0t2RUDZEA6ix5++ngYOHHz
- QzLYgCb0NHUJyStgjAPq4rdjorCAfCMNPzPRzcKMz7Ni4uLeVgMM7Y5K79/3fJ95/Xm5iKCPxoe
- 3HSnllESICwowfturIQwU2ysa7Ge0sRD+cmfbl09MpqsieJTpUb4bDR5UZWGQe7c3za/UBg3lmu
- 3gyghMwahQlUz6gDqQP6MUtcpRBn1lXXZhzrvp/V6Qt7fAcC27W0AhVj0rJm33YiJJfSFc3Ofjc
- ztvOWf2PN9LIjEEXuGVN99lJ3FNoiBGv+9k5vEkWRCbg3jaQdZGUfLeM+vQ+u8XH6NPzGj4ysae
- FVHwHV+i/7fjb3Juob8j4ggZGkBGZfvikKcr77+YRYu6Lx7cflUhRU2MFQHi27YUL0kV9FLZq+V
- tHs4IhWcQk6eLe1IWsqjBAOhDSKeXHuTWXJfNOEz0Jy+8aFrGwqfg1lhAS9OC/v4X1en+mmoDty
- IcGGsSXywdd7ALcchH6LZL4snqzzWY89VlAyuiq70LeUbCKPU3KzBFIuahkawgYnuUu73eqKSEP
- IWvOoXAm/T0Jo2MFaLy499xsUXDMPZKRmx4DA9rOM8hTxlZJ+Exu9F5QoZJVQXHK1tsmeYlGacT
- 8GcUEqo80oZTQ0g==
+ bh=y0QBIaJnf0/fSVbWVB0Xkg+ZYq4xy8XVXKh8rGpZrnE=;
+ b=owEBbQKS/ZANAwAKAcE3ZuaGi4PXAcsmYgBmyIXK0zZ4ZGoxkalISx0Oa0HQbALLrTngWax7j
+ L5WXrBsTjyJAjMEAAEKAB0WIQTd0mIoPREbIztuuKjBN2bmhouD1wUCZsiFygAKCRDBN2bmhouD
+ 1xawD/4+ne9u+0w9Ge4yGMtpLBPqws51qJWUNwZocPNFdFCwDtnWIBM/MFNMy6G7mVaitbYRu8S
+ NufmqYkj3DXtJ2sKLwHYQ+wbGJkH2CKegDUkrberoehE5ecSQYeq+L8IeWTDwZ9t/8rORPyEAn3
+ 0x+pkG6t7Pup4fVh2PrYBqNBLimMVjnwPz/u3f9Da+qwY2cQzBoPcqDso2D9mBwsquclFCwEpQR
+ RWeucQ/vUYJtFQqNxObOMA/GEDW+JSHCT4mD2CN1z1T2ASa0Co/ordw0ZJc4WuU4KjCZk9xq9Dj
+ 5GPBqEWzwt5f9DxLtaELBbhsyGQLEa13QryylbpEhT4Ax9ArnWkugphkF+OWJ5ewm8g5uB5xEqR
+ KoLcKhf8VO506EI2bhmXkAW8+vnZmUMVyHnFQzvkDEeI7IjHYozxMcG8iYb+/3HEhwyZOL68qBx
+ 32uk1Gw5Yu5BWFddNZeihHUePRt4KK8NHdUfvtPQiHYylFkpEFwViCU4s3Gwuz1A8vDyFBVWvfZ
+ KzAVDDXyVLMfYt/VO5iVeN4dwHtmPf9xQzkIIwd0gDwPKgC062VVJVqdTysn95/R+LPN6zp8qej
+ cO2gtpfnk+e8mUL7UlFd3ZonuKOUmlacOqS2E1+zGdH5umSfmjMv+B2cyoGRXy7d/2Gac7Miz36
+ HqfXODj1mLYdYeA==
 X-Developer-Key: i=krzysztof.kozlowski@linaro.org; a=openpgp;
  fpr=9BD07E0E0C51F8D59677B7541B93437D3B41629B
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240823_055143_174141_36B92E4C 
-X-CRM114-Status: GOOD (  14.05  )
+X-CRM114-CacheID: sfid-20240823_055142_171339_576D830D 
+X-CRM114-Status: GOOD (  13.15  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -123,75 +124,50 @@ Simplify error handling (less gotos) over locks with guard().
 
 Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 ---
- drivers/pmdomain/qcom/rpmpd.c | 20 ++++++--------------
- 1 file changed, 6 insertions(+), 14 deletions(-)
+ drivers/pmdomain/qcom/rpmhpd.c | 11 +++++------
+ 1 file changed, 5 insertions(+), 6 deletions(-)
 
-diff --git a/drivers/pmdomain/qcom/rpmpd.c b/drivers/pmdomain/qcom/rpmpd.c
-index 5e6280b4cf70..0be6b3026e3a 100644
---- a/drivers/pmdomain/qcom/rpmpd.c
-+++ b/drivers/pmdomain/qcom/rpmpd.c
+diff --git a/drivers/pmdomain/qcom/rpmhpd.c b/drivers/pmdomain/qcom/rpmhpd.c
+index d2cb4271a1ca..65505e1e2219 100644
+--- a/drivers/pmdomain/qcom/rpmhpd.c
++++ b/drivers/pmdomain/qcom/rpmhpd.c
 @@ -1,6 +1,7 @@
  // SPDX-License-Identifier: GPL-2.0
- /* Copyright (c) 2017-2018, The Linux Foundation. All rights reserved. */
+ /* Copyright (c) 2018, The Linux Foundation. All rights reserved.*/
  
 +#include <linux/cleanup.h>
  #include <linux/err.h>
  #include <linux/init.h>
  #include <linux/kernel.h>
-@@ -1024,20 +1025,17 @@ static int rpmpd_power_on(struct generic_pm_domain *domain)
- 	int ret;
- 	struct rpmpd *pd = domain_to_rpmpd(domain);
- 
--	mutex_lock(&rpmpd_lock);
-+	guard(mutex)(&rpmpd_lock);
- 
- 	ret = rpmpd_send_enable(pd, true);
- 	if (ret)
--		goto out;
-+		return ret;
- 
- 	pd->enabled = true;
- 
- 	if (pd->corner)
- 		ret = rpmpd_aggregate_corner(pd);
- 
--out:
--	mutex_unlock(&rpmpd_lock);
--
- 	return ret;
- }
- 
-@@ -1060,27 +1058,21 @@ static int rpmpd_power_off(struct generic_pm_domain *domain)
- static int rpmpd_set_performance(struct generic_pm_domain *domain,
- 				 unsigned int state)
+@@ -775,9 +776,9 @@ static int rpmhpd_set_performance_state(struct generic_pm_domain *domain,
+ 					unsigned int level)
  {
--	int ret = 0;
- 	struct rpmpd *pd = domain_to_rpmpd(domain);
+ 	struct rpmhpd *pd = domain_to_rpmhpd(domain);
+-	int ret = 0, i;
++	int ret, i;
  
- 	if (state > pd->max_state)
- 		state = pd->max_state;
+-	mutex_lock(&rpmhpd_lock);
++	guard(mutex)(&rpmhpd_lock);
  
--	mutex_lock(&rpmpd_lock);
-+	guard(mutex)(&rpmpd_lock);
+ 	for (i = 0; i < pd->level_count; i++)
+ 		if (level <= pd->level[i])
+@@ -797,14 +798,12 @@ static int rpmhpd_set_performance_state(struct generic_pm_domain *domain,
  
- 	pd->corner = state;
+ 		ret = rpmhpd_aggregate_corner(pd, i);
+ 		if (ret)
+-			goto out;
++			return ret;
+ 	}
  
- 	/* Always send updates for vfc and vfl */
- 	if (!pd->enabled && pd->key != cpu_to_le32(KEY_FLOOR_CORNER) &&
- 	    pd->key != cpu_to_le32(KEY_FLOOR_LEVEL))
--		goto out;
-+		return 0;
- 
--	ret = rpmpd_aggregate_corner(pd);
--
+ 	pd->corner = i;
 -out:
--	mutex_unlock(&rpmpd_lock);
--
+-	mutex_unlock(&rpmhpd_lock);
+ 
 -	return ret;
-+	return rpmpd_aggregate_corner(pd);
++	return 0;
  }
  
- static int rpmpd_probe(struct platform_device *pdev)
+ static int rpmhpd_update_level_mapping(struct rpmhpd *rpmhpd)
 
 -- 
 2.43.0
