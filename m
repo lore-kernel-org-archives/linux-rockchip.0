@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 01A50C5321E
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E2D10C5321D
 	for <linux-rockchip@archiver.kernel.org>; Fri, 23 Aug 2024 15:40:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,64 +12,64 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=db8aK5f6K7YITVzwrQJabxxv1nEboRmcApLNOFguemo=; b=oYhj1hrvRt/xDU
-	RarzngqB0alBLkS9tD5kuRS12oKMcb/gM/CLnPx1M90GZou6nUJ2IDbfejczAnfoOS0b8gNiMJCgb
-	ZEdqfYZeeG/l5SBv/hH1nJphYcCb1Okj0s/dQIBVMNvWRbP7Sl+jnULOcsjbo7CAHGwS8LKpA3NXj
-	7mLMiX5mEm5XlYXVzLBc85nmExJj/EMjyRWS/6/7i7dbPuzfR6iBTQHWCl2gpnqz8zHybV8qmWlrY
-	Hggc97qdDwrk5ZJWB1G4T9STFISjz9AFrMpAMCYYmJ0Qj1AmB+jy5yloYYM4M9z3/3JeKdYCw1lBf
-	TPqu/r9v9CCL2eexhM0A==;
+	List-Owner; bh=35lD6BVecTyoHyl3HurRO7e1gIB2trosYk9nYvxJBMA=; b=cqvHn39AsUz8+B
+	2rrkYNYDOc9sDm+r9CY1/9V6AyP39Dvu7LbYROgMEGLFMBZVOEc8KijO09vbwflJbNZHY7NFZZ2ZN
+	KiPX4xZTq2MECHJR9pypR0E6464PufdNeGrt9kxEs+7eweNeDGuleWdrnZBtIbJF9mh9Jb08J4qxS
+	sFM+fIj54gwXwnmjM5ob62oVH8SzrkPqLuZLx8q4LJSZE7Hh94VEJjKhYfQKRtMiky31zGwoqZ5ER
+	8hbyZtqMXyW0aaMkDBYaanzR5aFOXiNYFEL+xA1VcShigy5PYi8875xIAlo3wuW7hILGWRauw/t6d
+	AJllZbZmHWhuo8pAxPjA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1shWP6-0000000HLTJ-1EFY;
-	Fri, 23 Aug 2024 15:40:44 +0000
+	id 1shWP7-0000000HLUI-2NCT;
+	Fri, 23 Aug 2024 15:40:45 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1shWMI-0000000HKkv-2Nzk
+	id 1shWMJ-0000000HKlL-29VN
 	for linux-rockchip@bombadil.infradead.org;
-	Fri, 23 Aug 2024 15:37:50 +0000
+	Fri, 23 Aug 2024 15:37:51 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
 	:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
 	Content-Type:Content-ID:Content-Description;
-	bh=nqWL8jBxFHYZamQffy5P+pzLgJszdIlE2k6Pctncqvk=; b=oSqzBE8mWyQvYajLtyFCtRNebh
-	VkmqBvYX/QDy6YGOKdL0fAiCuJ62EAzex1R47/sjmtRGT4qY17jYtb5MdX0LH5I2W0F+tzJELzjL6
-	nAI4WQbwhvKODfB0fjBH2PO1wScUqPqWZDpjDJlGpNZj2MoNr9VicFRJcFahMLmHtm4SysEQh7RI1
-	ItRlckFD/CB6c4MdGiDXPBjEtvakk3qAuobtooZ4gC/fSNIkR2UHyvDTIAgFaQ2AFbS2FwWUF7AV1
-	07jXEqHbsaheoAG0PqQnQseIIvn2rCnoRgzzZDr8wtZbl0gNRrEZug7f2ZXsLse/OFvnfq89iK6Yt
-	HtKAi/ZA==;
+	bh=QaZcuLfM4TvFakz1qdZ4oRQbf4vrkbnvYGkuZfvKInE=; b=B7So4RIrhyi0g4x/4rYAEQzgJj
+	b9Aw8gGd+IzWdcIRm9e/GEyfw6MArp7HZK3MjoKoBKgxX9PJH2dSOi25UULmeiDUtZF8VZNVCKhAP
+	RemF3NUm8bPIgaCHLhTfs2xvGMOXf2ejt3/GoMHsiSKE++pOp7BZBo/RUuM8V8UMgiIVSG+k9pSR4
+	+IuS98cHZUy/kKnXgRVC5vHcocxa+cB1Cn7FA2fdFU2ArODqv336Ki98LYwKVMfv72va//WVhdcXx
+	HuqcvfrDj4VAeekx72/ieHmAUJIMt2+ctLGywlYBaem6i1Q7WTCOqpfMdlauFU7xAbfP7PXmd7iji
+	ODbckNMw==;
 Received: from omta36.uswest2.a.cloudfilter.net ([35.89.44.35])
 	by desiato.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1shWMD-0000000AAOa-36J2
+	id 1shWMF-0000000AAOc-0o75
 	for linux-rockchip@lists.infradead.org;
 	Fri, 23 Aug 2024 15:37:49 +0000
-Received: from eig-obgw-6003a.ext.cloudfilter.net ([10.0.30.151])
+Received: from eig-obgw-5008a.ext.cloudfilter.net ([10.0.29.246])
 	by cmsmtp with ESMTPS
-	id hQtmsFZzoqvuohWKUs6cO3; Fri, 23 Aug 2024 15:35:58 +0000
+	id h53KsAng9qvuohWKTs6cNe; Fri, 23 Aug 2024 15:35:58 +0000
 Received: from md-in-79.webhostbox.net ([43.225.55.182])
 	by cmsmtp with ESMTPS
-	id hWKRshYJoV2ivhWKTsmVrt; Fri, 23 Aug 2024 15:35:58 +0000
-X-Authority-Analysis: v=2.4 cv=OLns3jaB c=1 sm=1 tr=0 ts=66c8ac5e
+	id hWKRskt7U85uZhWKSs3C6A; Fri, 23 Aug 2024 15:35:57 +0000
+X-Authority-Analysis: v=2.4 cv=J6Gs7hnS c=1 sm=1 tr=0 ts=66c8ac5d
  a=LfuyaZh/8e9VOkaVZk0aRw==:117 a=kofhyyBXuK/oEhdxNjf66Q==:17
- a=yoJbH4e0A30A:10 a=vU9dKmh3AAAA:8 a=Kb_rVgeVel1wak-Xqx8A:9
- a=rsP06fVo5MYu2ilr0aT5:22 a=ZCPYImcxYIQFgLOT52_G:22
+ a=yoJbH4e0A30A:10 a=vU9dKmh3AAAA:8 a=jOwBCQwwsqbqoLW4yoUA:9
+ a=HjVMtnDHQlM7PJrv9UYS:22 a=rsP06fVo5MYu2ilr0aT5:22 a=ZCPYImcxYIQFgLOT52_G:22
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=linumiz.com
 	; s=default; h=Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
 	List-Post:List-Owner:List-Archive;
-	bh=nqWL8jBxFHYZamQffy5P+pzLgJszdIlE2k6Pctncqvk=; b=gan9XfQ+FPKlJQViHy7oe/svde
-	KEqV+axl3tQmJQmV3on823mfVI+jvZUTFaSufzEsojlZU9ENnKaDts5g8Ltz/qgvVrJFZnQfD7HjI
-	9A3RyfFpbTC/fUkI1HL9myUcppKMFaG5XsDTZRywCCX3jnktHiLp/+OC5a1qLGWhwBOFuKfHAF4Dw
-	GAlx3up7Yjd8UWBMr5QyWLjcx9BL6pXYK3pBIKS9lHNhnHKmis/NEYTGQ+5lcHP197WH1mi4bnZbB
-	5wPyuA2D1eo6J0cB2IdNemP1oW6AT5rxum7lGN7XfDti5Za+AyRtLMrW9RxDW4Dm6qoSEQ7+jDPsC
-	0sdVsaVA==;
+	bh=QaZcuLfM4TvFakz1qdZ4oRQbf4vrkbnvYGkuZfvKInE=; b=Uaidzje9PZk8YtV4SrsN9PtooW
+	Lw2E8bf2ZowaDnIee3CnLUjg0hWb0+nP2J+zIg/xDo9y4CpMMpydIMcUII5crZ5dHBveKDjlNRzfl
+	lzbcaMbRMs6/oP4tOtD0dLXmpEJ81A7H8Pq7cimvqPSpKTYtrweJhG8sVtohz/ykfKwsU2Z2nIOuL
+	twdyzPChwdO8CZsibu71683IuMJj8cy9MCRkih6n3Yz7pcfGXQaSb63qCKJxG5lW0qlNAfGwQTx23
+	+TNHCBmuaXgSeDRZ20US0Rj1LG34OWJ89ShCfJJaZd7FMuusQ+EdVKt7T37vk0WlUlwUZ4bTU8rA0
+	oybj6X7A==;
 Received: from [122.165.245.213] (port=53684 helo=localhost.localdomain)
 	by md-in-79.webhostbox.net with esmtpsa  (TLS1.2) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.96.2)
 	(envelope-from <karthikeyan@linumiz.com>)
-	id 1shWKQ-000GB4-0o;
-	Fri, 23 Aug 2024 21:05:54 +0530
+	id 1shWKO-000GB4-2a;
+	Fri, 23 Aug 2024 21:05:52 +0530
 From: Karthikeyan Krishnasamy <karthikeyan@linumiz.com>
 To: robh@kernel.org,
 	krzk+dt@kernel.org,
@@ -82,9 +82,9 @@ Cc: devicetree@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
 	linux-rtc@vger.kernel.org,
 	Karthikeyan Krishnasamy <karthikeyan@linumiz.com>
-Subject: [PATCH 5/8] Documentation: bindings: rtc: add clock-cells property
-Date: Fri, 23 Aug 2024 21:05:25 +0530
-Message-Id: <20240823153528.3863993-6-karthikeyan@linumiz.com>
+Subject: [PATCH 4/8] ARM: dts: rockchip: Add watchdog node for RV1126
+Date: Fri, 23 Aug 2024 21:05:24 +0530
+Message-Id: <20240823153528.3863993-5-karthikeyan@linumiz.com>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20240823153528.3863993-1-karthikeyan@linumiz.com>
 References: <20240823153528.3863993-1-karthikeyan@linumiz.com>
@@ -97,21 +97,21 @@ X-AntiAbuse: Sender Address Domain - linumiz.com
 X-BWhitelist: no
 X-Source-IP: 122.165.245.213
 X-Source-L: No
-X-Exim-ID: 1shWKQ-000GB4-0o
+X-Exim-ID: 1shWKO-000GB4-2a
 X-Source: 
 X-Source-Args: 
 X-Source-Dir: 
 X-Source-Sender: (localhost.localdomain) [122.165.245.213]:53684
 X-Source-Auth: karthikeyan@linumiz.com
-X-Email-Count: 51
+X-Email-Count: 43
 X-Org: HG=dishared_whb_net_legacy;ORG=directi;
 X-Source-Cap: bGludW1jbWM7aG9zdGdhdG9yO21kLWluLTc5LndlYmhvc3Rib3gubmV0
 X-Local-Domain: yes
-X-CMAE-Envelope: MS4xfGTa+jaLp4HYHajVQ8XcTbmzb3bEm4hLkfzSNXw+E9bjRRdh9TiDdnudGH0WMMT8QEx3zg6xbkM5KUrPdtyw2wBXIVLA4vmqcEk4Pb8a5hdUZOQfBpu5
- mA/d4q980PsOCRQ6YgqKfStlmHo2FYcfTTL4FIyPgiBmg8a1VO66/ycAuZx50csreZwL3+7hNSNTI0CdPfVhW+sAYiWTPxTnvT2RrhZ350jQor8nHj3BDN56
+X-CMAE-Envelope: MS4xfD0SJKPHDIrwRFt2wzBH7lqS6ITA8bkY6mg6n+L2pjXHvx44VA5dTaomx6U3sr/C7ZLp9+jIrKVXhcTluZK6MHp9ctucfZSVs3aU5KMQz/zQVPN6Sb23
+ LoXhAv8fbmlBUx138p55Dzw0pq84j4uITxsnsYfomxEOcZF0lDaorNq298yj3XxFaTeIAiWl35n6PmMRoqtIhJSztpJlnNx5mW01VN3bcnZ01AnVGtEwsRtG
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240823_163746_020456_FDB08D22 
-X-CRM114-Status: UNSURE (   3.27  )
+X-CRM114-CacheID: sfid-20240823_163748_194918_69BE5AD6 
+X-CRM114-Status: UNSURE (   5.21  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -129,28 +129,32 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-consume clkout from rv3028 rtc which is able to provide
-different clock frequency upon configuration
+Add watchdog node for Rockchip RV1126
 
 Signed-off-by: Karthikeyan Krishnasamy <karthikeyan@linumiz.com>
 ---
- Documentation/devicetree/bindings/rtc/microcrystal,rv3028.yaml | 3 +++
- 1 file changed, 3 insertions(+)
+ arch/arm/boot/dts/rockchip/rv1126.dtsi | 8 ++++++++
+ 1 file changed, 8 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/rtc/microcrystal,rv3028.yaml b/Documentation/devicetree/bindings/rtc/microcrystal,rv3028.yaml
-index 5ade5dfad048..cda8ad7c1203 100644
---- a/Documentation/devicetree/bindings/rtc/microcrystal,rv3028.yaml
-+++ b/Documentation/devicetree/bindings/rtc/microcrystal,rv3028.yaml
-@@ -22,6 +22,9 @@ properties:
-   interrupts:
-     maxItems: 1
+diff --git a/arch/arm/boot/dts/rockchip/rv1126.dtsi b/arch/arm/boot/dts/rockchip/rv1126.dtsi
+index abf442804d27..283985608428 100644
+--- a/arch/arm/boot/dts/rockchip/rv1126.dtsi
++++ b/arch/arm/boot/dts/rockchip/rv1126.dtsi
+@@ -544,6 +544,14 @@ timer0: timer@ff660000 {
+ 		clock-names = "pclk", "timer";
+ 	};
  
-+  "#clock-cells":
-+    const: 0
++	wdt: watchdog@ff680000 {
++		compatible = "snps,dw-wdt";
++		reg = <0xff680000 0x100>;
++		clocks = <&cru PCLK_WDT>;
++		interrupts = <GIC_SPI 32 IRQ_TYPE_LEVEL_HIGH>;
++		status = "disabled";
++	};
 +
-   trickle-resistor-ohms:
-     enum:
-       - 3000
+ 	i2s0: i2s@ff800000 {
+ 		compatible = "rockchip,rv1126-i2s-tdm";
+ 		reg = <0xff800000 0x1000>;
 -- 
 2.39.2
 
