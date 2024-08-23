@@ -4,48 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 369ACC52D7C
-	for <linux-rockchip@archiver.kernel.org>; Fri, 23 Aug 2024 15:01:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 05137C52D7C
+	for <linux-rockchip@archiver.kernel.org>; Fri, 23 Aug 2024 15:01:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=QS0QiYejao9Wc9epc8q/Ek7OEk8Zn6GltXfaO0D1C5E=; b=TJG1GXjTGOt3hH
-	RYPBC6Yj17LIe+g90iEncTj2OR5Kf9ZeUc8AqouDHY4DzyIsDfRKHBXB5zNeriPgjSosBiuLb7Ryc
-	JVExB5APBmjoVHWWoXrzgJocKRNsD7tNjwt9olwedfCUursvHr5SyLWPDAxERcb5OIf2tMGl4f2I8
-	mWO1NE1eK455FV+Sq+WCZmL0hj1Px7k1MjEj/uxX1IZb3PS/0sRd0rFKAh1PaK2htlcE907YOLr6O
-	7IUXgTfrUBSY3JwntKt/G+yoSTZV9HhwEcxe7Yz/jcCzMT0UKsERR1SqUxOQv/751OJ9MjeoUpXxc
-	0OMaCjROeXuzcTXbjUAQ==;
+	List-Owner; bh=8VOgp2tQ8cpmZ1JodgfOSw13qKlquXJTshXrtD+2yJE=; b=FDxGnBzhCdfCJm
+	i+r2sgxWp+4mumOoNfELYCp31IOPw/Ys6hrdlckPK3vVmAuzXvBS3VXAaiuw+IjJkJwi5Kfxkzdym
+	Fm1mkztUotyHhmtf43fY8nPIbY3zpK8B746JT+dJMJ522jiARek55/FtxQBqgf1Sg9FfwWdaorxte
+	AHE3+uQ8c9NmCbM7XJyCk1ZfgzFN3iRrlSs6plxH7M58JGhibrr4TNe/lswTZTTnym6Occ0S0a6V6
+	Xbc+MDT9OlOxKGE12kj4unygp6Xr1dCv2DunTj7bLo0AlFqrv4H42QLj6YFV/wSbA6CZRMAMhnczP
+	7JSu3mNilVpQPQbTEGKA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1shVmi-0000000HChM-2rLZ;
-	Fri, 23 Aug 2024 15:01:04 +0000
+	id 1shVmn-0000000HCk2-1Mzx;
+	Fri, 23 Aug 2024 15:01:09 +0000
 Received: from sender4-op-o12.zoho.com ([136.143.188.12])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1shVmd-0000000HCcd-3X87;
-	Fri, 23 Aug 2024 15:01:01 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1724425211; cv=none; 
+	id 1shVmg-0000000HCf6-2KDA;
+	Fri, 23 Aug 2024 15:01:04 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1724425207; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=Dj2mvWjbRalcqiNcTBVtZ9YUJHrpH4IwEUyv362i7BNkYtCnJA8ratxHeOATpXHR56y9zwmQoEK0UbOBfW3SxVV4GMUPq9/aEs4bXS5Uhtuc0uDdlbI4T0XM4EHbEHxkcGnt7yaiTMz/N/netouV068exKrfikRkGLzkhq1uV5U=
+	b=To5UpMT5/dliQ9H4Idja7g2lB6q3/OgG7JBdO2puJdy9Djf5sdK+gpBAvZxOeYOI8r4jO+6Ev0w3dMJFKytQLwPL2plv3xW+cHTcrWYdKJD4mBbWq1lZZ9zmlqdjYcx3xlCdGKht5Sgg7eyhPQpfH2+BGAiQ/ZaPtuL0VCOviWc=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1724425211; h=Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=8kgt/WHayX1JQch9XAM5RYvcZqKo8amtw9I5NRTG5h4=; 
-	b=KpFITTWxehKg2SJolFUwZttz0skyz0iSMRf/XuOsJsEyBSYF1NnL8Lq0DqAN2dgC0jWbZ7uZ+mOtBdsw/9vaRRKc4oayAV/ZIuv+KLtyP0Sl6Lyr7i+XPCvzn0rPEV2Q7ZRNosTvH4VXsXysI3OA56wVQkKXjXI1zESurhH4FqU=
+	t=1724425207; h=Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=RJt+jrzVWF99BF0Fo6GrGjf19zn92AkfQ+3EHeIwT/0=; 
+	b=IWoRsVDLJV863cdafosDQls3Vpdk9CryGTRLWdthI0PKe5q5YQYeculBXxwPn3wMKQ464NXtuPysATXGZ9Jc/GF/FhvTYS6xLgaDkNcb/7zx+Tdy29mGWwGMlpE2va5IMl52EQ+Qx+JOlZb8nJPpmyQXxIB+VEKMr22TQaXX0E0=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=collabora.com;
 	spf=pass  smtp.mailfrom=detlev.casanova@collabora.com;
 	dmarc=pass header.from=<detlev.casanova@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1724425211;
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1724425207;
 	s=zohomail; d=collabora.com; i=detlev.casanova@collabora.com;
 	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Message-Id:Reply-To;
-	bh=8kgt/WHayX1JQch9XAM5RYvcZqKo8amtw9I5NRTG5h4=;
-	b=IK5SE3zbope9OE9ZH9rnIFQdZELh8OI80Ky0BcRalysYipyNIpyzKaU2R4h+/HgQ
-	bOOSlcw8g7i2BaYVPQLhP8tyWmpBiAuL5X0QnnjzYsHQKNzQVNdQTbnRNVg4Dw5TkVK
-	TNctOhvHuhd0i0V1LE3VnHOIHtZrDKEbIC0+HBtY=
-Received: by mx.zohomail.com with SMTPS id 1724425210997501.96783202863116;
-	Fri, 23 Aug 2024 08:00:10 -0700 (PDT)
+	bh=RJt+jrzVWF99BF0Fo6GrGjf19zn92AkfQ+3EHeIwT/0=;
+	b=QkeFlMnOxLHfEBRAzc6+a7D6H9g9m3EreFowds7hTH23Fd+jz8ad6VhQk3uo8+rZ
+	GKhqi5I4rM9Zpg3A835zpcmN+j0Aj8ay9IMV7IASINlDE3rkD+XykRyfxgg8O85m4Ov
+	PI2kc9c5i2D2wqGylVDZEDFrKg1Cg/vO0wPPBiCk=
+Received: by mx.zohomail.com with SMTPS id 1724425206314104.53567088525097;
+	Fri, 23 Aug 2024 08:00:06 -0700 (PDT)
 From: Detlev Casanova <detlev.casanova@collabora.com>
 To: linux-kernel@vger.kernel.org
 Cc: Rob Herring <robh@kernel.org>,
@@ -98,17 +98,18 @@ Cc: Rob Herring <robh@kernel.org>,
 	linux-spi@vger.kernel.org,
 	linux-watchdog@vger.kernel.org,
 	kernel@collabora.com
-Subject: [PATCH v2 09/12] dt-bindings: watchdog: Add rockchip,rk3576-wdt compatible
-Date: Fri, 23 Aug 2024 10:52:36 -0400
-Message-ID: <20240823150057.56141-10-detlev.casanova@collabora.com>
+Subject: [PATCH v2 08/12] dt-bindings: gpu: Add rockchip,rk3576-mali compatible
+Date: Fri, 23 Aug 2024 10:52:35 -0400
+Message-ID: <20240823150057.56141-9-detlev.casanova@collabora.com>
 X-Mailer: git-send-email 2.46.0
 In-Reply-To: <20240823150057.56141-1-detlev.casanova@collabora.com>
 References: <20240823150057.56141-1-detlev.casanova@collabora.com>
 MIME-Version: 1.0
 X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240823_080100_022102_2BD776B1 
-X-CRM114-Status: GOOD (  10.27  )
+X-CRM114-CacheID: sfid-20240823_080102_701589_FAB8C640 
+X-CRM114-Status: UNSURE (   9.96  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -125,25 +126,25 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-It is compatible with the other rockchip SoCs.
+Add the rockchip,rk3576-mali in arm,mali-bifrost.yaml
 
 Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
 ---
- Documentation/devicetree/bindings/watchdog/snps,dw-wdt.yaml | 1 +
+ Documentation/devicetree/bindings/gpu/arm,mali-bifrost.yaml | 1 +
  1 file changed, 1 insertion(+)
 
-diff --git a/Documentation/devicetree/bindings/watchdog/snps,dw-wdt.yaml b/Documentation/devicetree/bindings/watchdog/snps,dw-wdt.yaml
-index c7aab0418a320..b5a3dc3770706 100644
---- a/Documentation/devicetree/bindings/watchdog/snps,dw-wdt.yaml
-+++ b/Documentation/devicetree/bindings/watchdog/snps,dw-wdt.yaml
-@@ -29,6 +29,7 @@ properties:
-               - rockchip,rk3368-wdt
-               - rockchip,rk3399-wdt
-               - rockchip,rk3568-wdt
-+              - rockchip,rk3576-wdt
-               - rockchip,rk3588-wdt
-               - rockchip,rv1108-wdt
-           - const: snps,dw-wdt
+diff --git a/Documentation/devicetree/bindings/gpu/arm,mali-bifrost.yaml b/Documentation/devicetree/bindings/gpu/arm,mali-bifrost.yaml
+index 278399adc5506..735c7f06c24e6 100644
+--- a/Documentation/devicetree/bindings/gpu/arm,mali-bifrost.yaml
++++ b/Documentation/devicetree/bindings/gpu/arm,mali-bifrost.yaml
+@@ -26,6 +26,7 @@ properties:
+               - renesas,r9a07g054-mali
+               - rockchip,px30-mali
+               - rockchip,rk3568-mali
++              - rockchip,rk3576-mali
+           - const: arm,mali-bifrost # Mali Bifrost GPU model/revision is fully discoverable
+       - items:
+           - enum:
 -- 
 2.46.0
 
