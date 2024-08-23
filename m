@@ -4,97 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C3F3AC5321D
-	for <linux-rockchip@archiver.kernel.org>; Fri, 23 Aug 2024 16:46:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 25213C5472C
+	for <linux-rockchip@archiver.kernel.org>; Fri, 23 Aug 2024 21:29:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=TebjMRmGUoVBFuxdybebKcm+VrI1WN3kI1ef2cBNmrc=; b=Tu5OdLE1RWIFJJ
-	HL5bLJ5IlfjYtZ9jTuDeRQWFq1O6M1aoB7CixkhwXtiC3P58Cm5txfc2zFoc7FFcxIjypuibI8nle
-	PQvPt0KOGqk1LcNtvouwM9kxNHRduqkfjmNRSxx/M77HehNma+UDuAqHGUsryJOO1N5KCUKJu39su
-	KWxLeNelE2OT4U0JoJT+2en6cMKcstEnB0uq+FmMh3R6HBRTGeJziTXK6j0TSXsaT6o4zS7SemLgu
-	KWMIsdTveTeJ2XEnWcQflY+Ge9mCfAdWSPLe5vxkFvTyDBgyvcmAvo/q3NvZ+vB5cdIC4E97ygG10
-	G7Hf+/82uYQc7lFC5+Ag==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Cc:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=5uFxApZ3BxAvgt0cTLEgNkdZlBP7Tt/LngdyXyItrmU=; b=r5uPDCEnJJ/X1R
+	TlsO+oFbeGw2ggseS0Ojbfe4OWyyHAv1EMwI2YCLeE8z3B/3x0v47hzUd7UyOqCpVYjlA+yHvNv8c
+	M7tUNsPc3+IeGy4CyL7xLaKjSBZSM8vkUmJsYrmfBhMUEMbQs6fIoz8ZUudjQSNaWsU6aBrBhVbSX
+	UfrtkeKWoH9SgF2FY2xm9QNpKTUpSgnzmlwpbQafXM825E3eP4SPTTM10NJKI1aWslKFh6gn5yJxt
+	O42KUsqpM+Bq0t/QaCuYA8Wv6MEr68YTKEG5ec3tfrBmuddGAXp3ElbKvO01nb1Qrs7r8MQe54Z9P
+	VufWUQfz3ZZLYesODeFQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1shXQQ-000000001Gm-0vYd;
-	Fri, 23 Aug 2024 16:46:10 +0000
-Received: from omta040.useast.a.cloudfilter.net ([44.202.169.39])
+	id 1shbqe-00000000iNB-0xdG;
+	Fri, 23 Aug 2024 21:29:32 +0000
+Received: from mail-pl1-x62c.google.com ([2607:f8b0:4864:20::62c])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1shWKf-0000000HKQS-358a
+	id 1shbps-00000000iAe-0sNb
 	for linux-rockchip@lists.infradead.org;
-	Fri, 23 Aug 2024 15:36:11 +0000
-Received: from eig-obgw-5002a.ext.cloudfilter.net ([10.0.29.215])
-	by cmsmtp with ESMTPS
-	id hRpCsNoGlnNFGhWKOsLVsZ; Fri, 23 Aug 2024 15:35:52 +0000
-Received: from md-in-79.webhostbox.net ([43.225.55.182])
-	by cmsmtp with ESMTPS
-	id hWKKsvyNAeieBhWKLsj9lr; Fri, 23 Aug 2024 15:35:51 +0000
-X-Authority-Analysis: v=2.4 cv=BoBWwpX5 c=1 sm=1 tr=0 ts=66c8ac57
- a=LfuyaZh/8e9VOkaVZk0aRw==:117 a=kofhyyBXuK/oEhdxNjf66Q==:17
- a=yoJbH4e0A30A:10 a=Hh393OduLPAXkTOZqikA:9 a=ZCPYImcxYIQFgLOT52_G:22
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=linumiz.com
-	; s=default; h=Content-Transfer-Encoding:MIME-Version:Message-Id:Date:Subject
-	:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
-	List-Post:List-Owner:List-Archive;
-	bh=FIxz5wswnZxJlIqs+c8ONwSGEnRq3jkU9qJL095u6eM=; b=EISDbXjYOIv1wiSu1BT2TQLH3g
-	Ol7kgEF3jRqjk63WyYPKmChdKNR9oqUkCrGPe8Bll0388tPPA9xfEQ5n3NxsM+VnmS8l6VElXeK7J
-	fnmWq8MfuAIKdBQ+zZPL1LKU7VUE5ouMs/Dnl2ltnPV5KG9GOZnIGDVh7G9qWO3Ldvv89aWVTqss6
-	rsqo75dApH0kiWW9jJ3p0FAtlU1CWkJgPWDGJ1QaiD+AaP1ew65eOjHRLAhDURbTiZXFh9VpqzXf9
-	vFE6UNQ5oEsx8lDFloyA9yiHOChTacmbb8wgwOjL0bwlc2nPmzHWPe/+WA2UiUjxS10noiN7eKQF/
-	aYqz7uhQ==;
-Received: from [122.165.245.213] (port=53684 helo=localhost.localdomain)
-	by md-in-79.webhostbox.net with esmtpsa  (TLS1.2) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.96.2)
-	(envelope-from <karthikeyan@linumiz.com>)
-	id 1shWKJ-000GB4-0P;
-	Fri, 23 Aug 2024 21:05:47 +0530
-From: Karthikeyan Krishnasamy <karthikeyan@linumiz.com>
-To: robh@kernel.org,
-	krzk+dt@kernel.org,
-	conor+dt@kernel.org,
-	heiko@sntech.de,
-	alexandre.belloni@bootlin.com
-Cc: devicetree@vger.kernel.org,
+	Fri, 23 Aug 2024 21:28:46 +0000
+Received: by mail-pl1-x62c.google.com with SMTP id d9443c01a7336-201df0b2df4so19104545ad.0
+        for <linux-rockchip@lists.infradead.org>; Fri, 23 Aug 2024 14:28:43 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1724448523; x=1725053323; darn=lists.infradead.org;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:to:from:date:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=x6yyPOjZiqt8OBw3MWeKPxceSdJUt3buN6TZjEitZlA=;
+        b=UQDCYHCd8vT9BByNm9krl8nQCAEuZKTDmFIX7XBDZj5DAx3bLZN4JHSb3JotHK+qHb
+         US+O4MLwn+ReDP+Zl9wlPZsGtMeOoIZawoCr3FZzuJe9hGixFYHNW75tIS7WeqSmaMLC
+         IOQI+Mzdb2WIy4K8tiEPr1tETaXZP1Pzmc628=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1724448523; x=1725053323;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=x6yyPOjZiqt8OBw3MWeKPxceSdJUt3buN6TZjEitZlA=;
+        b=r7AcVahZBOpM1NazMfiQrnDSmB6C0/H+GoIuSP1/QeLecR+QXfFdhY+imv+s1iQeGJ
+         L+jH4YxP1DlqvffBnlnvvLOtExQg+aizzKWJ0Cilqgf5WeF6K4O6tV+zMUwnkdscxaDN
+         NtScl3dsL9+IkcnEWc8FFtAGttiNDU9ORRqvESi8Hlk6455OMzWgQ0fkfsJbVOt40VMW
+         YgSTR3GI3ZryeKNEVrY/m9xB0AcWPn9k8T/PjSDzqXgFOOa97TYqrNyPVcFjnzz9AIPs
+         yNYmez5Ldq0aVeM6p4zEaBEb9+L/0FyZpUhJlPsZkjHOdUli4fe1yUGzi0H5Ux+ZaMQv
+         RbRA==
+X-Forwarded-Encrypted: i=1; AJvYcCVyNqmAh/LiTyoGC9wQ+4Pj6YC+bvPiOtXVP7Zw19inV5blvzFe3zDW66sTHSMdaxKaN81X7H/oDMh0PgqAwg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwhL1nzNVSgM2wiJpVkWdF9pEa9pAoisptUREkw7FZtafhd8/HO
+	Q3Ehn+EETU+sXJHqm/DdIS9+GrtImg7D4jYYaP+cNqN+t4Yj0EVeI2pU9tzgaA==
+X-Google-Smtp-Source: AGHT+IEyiELvUQ08sRXKAsH1w4lS8Mpljm5W6KidIpNO/oUI/CTnm9GKW1kRt4ARb+bsEYqhFyMDeQ==
+X-Received: by 2002:a17:903:1c6:b0:202:100f:7b9b with SMTP id d9443c01a7336-2039e4ca62amr43391485ad.35.1724448522990;
+        Fri, 23 Aug 2024 14:28:42 -0700 (PDT)
+Received: from localhost ([2a00:79e0:2e14:7:9d43:7af7:9970:8219])
+        by smtp.gmail.com with UTF8SMTPSA id d9443c01a7336-20385594057sm32605055ad.119.2024.08.23.14.28.41
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 23 Aug 2024 14:28:42 -0700 (PDT)
+Date: Fri, 23 Aug 2024 14:28:40 -0700
+From: Brian Norris <briannorris@chromium.org>
+To: =?utf-8?Q?Ond=C5=99ej?= Jirman <megi@xff.cz>,
+	Jon Lin <jon.lin@rock-chips.com>, broonie@kernel.org,
+	heiko@sntech.de, linux-spi@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-rtc@vger.kernel.org,
-	Karthikeyan Krishnasamy <karthikeyan@linumiz.com>
-Subject: [PATCH 0/8] Add support Relfor Saib board which is based on Rockchip RV1109 SoC
-Date: Fri, 23 Aug 2024 21:05:20 +0530
-Message-Id: <20240823153528.3863993-1-karthikeyan@linumiz.com>
-X-Mailer: git-send-email 2.39.2
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+	shengfei Xu <xsf@rock-chips.com>
+Subject: Re: [PATCH v3 5/6] spi: rockchip: Suspend and resume the bus during
+ NOIRQ_SYSTEM_SLEEP_PM ops
+Message-ID: <Zsj_CJR56TcahXBO@google.com>
+References: <20220216014028.8123-1-jon.lin@rock-chips.com>
+ <20220216014028.8123-6-jon.lin@rock-chips.com>
+ <20220621154218.sau54jeij4bunf56@core>
 MIME-Version: 1.0
-X-AntiAbuse: This header was added to track abuse, please include it with any abuse report
-X-AntiAbuse: Primary Hostname - md-in-79.webhostbox.net
-X-AntiAbuse: Original Domain - lists.infradead.org
-X-AntiAbuse: Originator/Caller UID/GID - [47 12] / [47 12]
-X-AntiAbuse: Sender Address Domain - linumiz.com
-X-BWhitelist: no
-X-Source-IP: 122.165.245.213
-X-Source-L: No
-X-Exim-ID: 1shWKJ-000GB4-0P
-X-Source: 
-X-Source-Args: 
-X-Source-Dir: 
-X-Source-Sender: (localhost.localdomain) [122.165.245.213]:53684
-X-Source-Auth: karthikeyan@linumiz.com
-X-Email-Count: 3
-X-Org: HG=dishared_whb_net_legacy;ORG=directi;
-X-Source-Cap: bGludW1jbWM7aG9zdGdhdG9yO21kLWluLTc5LndlYmhvc3Rib3gubmV0
-X-Local-Domain: yes
-X-CMAE-Envelope: MS4xfAy6+NU2CjzXePcFtosRJTHOSWGkwEPYHqZLBwa5Fi8XOvCie//JWwRZfRmq+h3xAvydSfeFitUyIPLKd4n8gE5LlJ7zaVl5Z/L4hwYt06tk+Vlv8aCS
- 62krWv2l2bsch/xeYx73dHLiG3RccGaB4dBkkCvpG9BIUJYSwHP2GurzL6XceTdCJ4PmNcbragFA9fQNlQ7ui8aBwA1bqfQqBeJ6noCOcmXUSYbKNVEgSC+w
+Content-Disposition: inline
+In-Reply-To: <20220621154218.sau54jeij4bunf56@core>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240823_083609_855652_8E25CA23 
-X-CRM114-Status: UNSURE (   5.06  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240823_142844_393716_1C814206 
+X-CRM114-Status: GOOD (  19.13  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,41 +91,36 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Rockchip RV1109 is compatible with Rockchip RV1126.
-Relfor Saib board is equipped with 1GB of RAM and 4GB of eMMC
-Pheripherals like Bluetooth 4.2, Wifi 5G, audio-codec,
-ir transmitter and receiver, etc
-
-Karthikeyan Krishnasamy (8):
-  ARM: dts: rockchip: Add i2c3 node for RV1126
-  ARM: dts: rockchip: Add i2s0 node for RV1126
-  ARM: dts: rockchip: Add pwm node for RV1126
-  ARM: dts: rockchip: Add watchdog node for RV1126
-  Documentation: bindings: rtc: add clock-cells property
-  dt-bindings: vendor-prefixes: Add Relfor labs
-  dt-bindings: arm: rockchip: Add Relfor Saib
-  ARM: dts: rockchip: Add Relfor Saib board
-
- .../devicetree/bindings/arm/rockchip.yaml     |   6 +
- .../bindings/rtc/microcrystal,rv3028.yaml     |   3 +
- .../devicetree/bindings/vendor-prefixes.yaml  |   2 +
- arch/arm/boot/dts/rockchip/Makefile           |   1 +
- .../boot/dts/rockchip/rv1109-relfor-saib.dts  | 439 ++++++++++++++++++
- .../arm/boot/dts/rockchip/rv1126-pinctrl.dtsi | 256 ++++++++++
- arch/arm/boot/dts/rockchip/rv1126.dtsi        | 159 +++++++
- 7 files changed, 866 insertions(+)
- create mode 100644 arch/arm/boot/dts/rockchip/rv1109-relfor-saib.dts
-
--- 
-2.39.2
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gVHVlLCBKdW4gMjEsIDIwMjIgYXQgMDU6NDI6MThQTSArMDIwMCwgT25kxZllaiBKaXJtYW4g
+d3JvdGU6Cj4gT24gV2VkLCBGZWIgMTYsIDIwMjIgYXQgMDk6NDA6MjdBTSArMDgwMCwgSm9uIExp
+biB3cm90ZToKPiA+IEZyb206IHNoZW5nZmVpIFh1IDx4c2ZAcm9jay1jaGlwcy5jb20+Cj4gPiAK
+PiA+IHRoZSB3YWtldXAgaW50ZXJydXB0IGhhbmRsZXIgd2hpY2ggaXMgZ3VhcmFudGVlZCBub3Qg
+dG8gcnVuIHdoaWxlCj4gPiBAcmVzdW1lIG5vaXJxKCkgaXMgYmVpbmcgZXhlY3V0ZWQuIHRoZSBw
+YXRjaCBjYW4gaGVscCB0byBhdm9pZCB0aGUKPiA+IHdha2V1cCBzb3VyY2UgdHJ5IHRvIGFjY2Vz
+cyBzcGkgd2hlbiB0aGUgc3BpIGlzIGluIHN1c3BlbmQgbW9kZS4KPiAKPiBUaGlzIHBhdGNoIGNh
+dXNlcyBvb3BzIG9uIHN1c3BlbmQgZXZlcnkgc2luZ2xlIHRpbWUsIGJlY2F1c2UgaXQgdHJpZXMg
+dG8gZGlzYWJsZQo+IGFscmVhZHkgZGlzYWJsZWQgY2xvY2tzIChvbmUgZGlzYWJsZSBpbiBydW50
+aW1lIFBNIHN1c3BlbmQsIGFuZCBvdGhlciBvbmUgaW4KPiBzeXN0ZW0gc3VzcGVuZCkuIEl0IGFs
+c28gZmFpbHMgdG8gcHJvcGVybHkgaGFuZGxlIGVycm9ycyBmcm9tIGNsa19wcmVwYXJlX2VuYWJs
+ZQo+IGluIHJvY2tjaGlwX3NwaV9yZXN1bWUsIHBvdGVudGlhbGx5IGNhdXNpbmcgZXZlbiBtb3Jl
+IGNsb2NrIGVuYWJsZS9kaXNhYmxlCj4gaW1iYWxsYW5jZSBpc3N1ZXMuCj4gCj4gUGxlYXNlIHNl
+bmQgYSByZXZlcnQgYW5kIGZpZ3VyZSBvdXQgYSBiZXR0ZXIgZml4IGZvciB0aGUgb3JpZ2luYWwg
+aXNzdWUuCgpEaWQgYW55b25lIGV2ZXIgcmVzb2x2ZSB0aGlzPyBJIHN0aWxsIHNlZSB0aGlzIGlz
+c3VlIG9uIDYuMTAuNi4KCklJVUMsIHdlIGNhbiBhY3R1YWxseSBkbyBhIHBhcnRpYWwgcmV2ZXJ0
+IC0tIHdlICpzaG91bGQqIGJlIHVzaW5nCnBtX3J1bnRpbWVfZm9yY2Vfe3N1c3BlbmQscmVzdW1l
+fSgpIChzbyB0aGF0IHdlIGNvb3JkaW5hdGUgY2xrLWRpc2FibGUsCmV0Yy4gd2l0aCB0aGUgcnVu
+dGltZSBQTSBzdGF0ZSksIGJ1dCB3ZSBhbHNvIHdhbnQgdG8gcnVuIGluIHRoZSBub2lycQpwaGFz
+ZS4KCklmIEkgZG9uJ3Qgc2VlIGFueW9uZSBlbHNlJ3Mgc29sdXRpb24gb3IgaW5wdXQsIEknbGwg
+cGxhbiBvbiBzdWJtaXR0aW5nCmEgcGFydGlhbCByZXZlcnQsIHdoaWNoIHNlZW1zIHRvIHRlc3Qg
+b3V0IE9LIGZvciBtZS4KCkJyaWFuCgpQLlMuIE9uZSBjYW4gd29yayBhcm91bmQgdGhpcyBwcm9i
+bGVtIGJ5IGRpc2FibGluZyBydW50aW1lIFBNIGZvciB0aGUKY29udHJvbGxlcnM6Cgpmb3IgaSBp
+biAvc3lzL2J1cy9wbGF0Zm9ybS9kcml2ZXJzL3JvY2tjaGlwLXNwaS8qL3Bvd2VyL2NvbnRyb2w7
+IGRvCiAgZWNobyBvbiA+JGkKZG9uZQoKQnV0IG9idmlvdXNseSB0aGF0J3Mgbm90IGlkZWFsLgoK
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9j
+a2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0
+cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
