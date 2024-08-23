@@ -4,65 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 55DDAC531DC
-	for <linux-rockchip@archiver.kernel.org>; Fri, 23 Aug 2024 10:46:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CBB9BC531DC
+	for <linux-rockchip@archiver.kernel.org>; Fri, 23 Aug 2024 10:48:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:MIME-Version:
-	Date:Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=lHpPVk5UvAw5gUfdxuQyB1MHrmjVFgwhD48gh2Un1zk=; b=cuIo70HCXuo5UgVtnFe7bV+7v7
-	ja7jU2qV7H8w4S3btKZUWLJuQBmw44JFYdtx97QJ9PSawAz9MwuNtcSwS5h3Cwk5R11GsmXV9OR6C
-	fg5fv/R8OaFDpSbCo9MWx1SKtf+gj6AQd70JxHYNwOZlcYWi6CcsqQlaaXrtt3emgacbTXlio32b/
-	i43aY/6J/SIvblqgVHVhMHNR0iRPSa3YqgHMiwXuWsu42CSzHP7g2WyrVZ26xiQw8l3ZH8V74yyat
-	Oww0cFaTTFEFlxy0D75LIQ0hHrei/6FSA8kCaLI5BYgkFmJqSp/EByTfDESFBZbgep3W0izvbQfhA
-	iGNtjjKQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=M/ok/wP0fjdtpSRRjHTaj0D/idWnj10N8mwOqbNRwqY=; b=n8oiB7p2TYcFdA
+	X3RJTteg4fSdwED8++WiII9LQlKc+WSFCG++YB8X7az+3JYuvO2zn+dMXKrQtUgpEOi3Noh3FTuPg
+	1bKfdP9LRvwYv8vdNm98NSVWkAU/9UhIaY0Eb9AJbDcSG+203k8UjehkCEbo7ZHjmDvc+30vj7UPS
+	ZPuX5dJC6s0TWr1e9rpIfIv+zyGGx0Zq89lRqX/RIV6w/IoUteCBQRo2ddbcy9X51x7WK+rNNb7kZ
+	EMo5px0LQr7U5NtUEamXZa5QGNMUNxvMCtpiMQzH67/wYRD6ZyT6oXWuWHOgC5YS0Noh9OZMWG5Ba
+	TFpyuy1FoGeZwYOg8+mQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1shRok-0000000GOG9-1WdS;
-	Fri, 23 Aug 2024 10:46:54 +0000
-Received: from msa-211.smtpout.orange.fr ([193.252.23.211] helo=msa.smtpout.orange.fr)
+	id 1shRqL-0000000GOo3-3rvI;
+	Fri, 23 Aug 2024 10:48:33 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1shRog-0000000GOD8-2ZYu;
-	Fri, 23 Aug 2024 10:46:52 +0000
-Received: from [192.168.1.37] ([90.11.132.44])
-	by smtp.orange.fr with ESMTPA
-	id hRoUsL4HOzHoQhRoUsTS08; Fri, 23 Aug 2024 12:46:46 +0200
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=wanadoo.fr;
-	s=t20230301; t=1724410006;
-	bh=M+BJHoqbevs+877BilSmYJZwm2Wj3hyd0gs95c8CmS8=;
-	h=Message-ID:Date:MIME-Version:Subject:To:From;
-	b=Q695rhyaBTCa8GxEUvcbWDnTM+h61/+qeGfRPaskg25Rmw3+MPFnHIXrEEKIENaPg
-	 plIuyFymEP3Jv4vPVizYLBwaRBW+jzBeASP7/nlnkpkbYu1vP8JVUY+uilslZ+M2Xq
-	 K7/Rby9SyhmGKEczNXRpJpcBJVTtu353UW1rhZXCSja80MtYtDf33PrKLirykyytCl
-	 5a3gY/F/G59CSPrJ+JgjLfh210d3fWSx0aJ4WSy8XcdbuJK+bvmfMCtNb7Skudf7RC
-	 mMKNXknhM2YyGDTKam4yub8cdwekmw7m19YjJ2jfAsQzlv+4B0pvIXa2JZzyWqtHKd
-	 JqWM25hr7IA0Q==
-X-ME-Helo: [192.168.1.37]
-X-ME-Auth: bWFyaW9uLmphaWxsZXRAd2FuYWRvby5mcg==
-X-ME-Date: Fri, 23 Aug 2024 12:46:46 +0200
-X-ME-IP: 90.11.132.44
-Message-ID: <a4d23c3a-9791-4d2b-9853-9c9b27460db5@wanadoo.fr>
-Date: Fri, 23 Aug 2024 12:46:38 +0200
+	id 1shRpV-0000000GOP8-1Q1K;
+	Fri, 23 Aug 2024 10:47:43 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+	List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=FNbXOx598TDYgdA8NaIEZsBVSraU+CQsgIhi1d4qqCQ=; b=cL9Er7Yo/5KkgBw8fyyBzi8wrU
+	XCc2z9xbbhkK5fhWM6Jj5Wzcza/+zd8fAcZcg7yCjAoxeO/vWqqh2QFSqwYkWlH0QhGnugHcvizYe
+	r+6R1gmBabHMxT6fcZYEO83j41sM5fpRmFaFjrEiz/bvDQ0kS5oC82wStifK6Rv0PWQwr9v1+GVJk
+	GfCuXCM62S2N5k5dHj4q5WHmtpd8eagMIKMTWNA9bWi/iXi0lueH4ngGgaanT4MHwrvAz8nutz/4d
+	baOQFeg0ZgxP8jILyEjC9tXnFLNAO7RuC86h3rFow8eF+69lnZXch0wdzf22VV3b5MCLECps3z+du
+	f4syM6Pw==;
+Received: from i5e861933.versanet.de ([94.134.25.51] helo=diego.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1shRoz-0004MQ-7M; Fri, 23 Aug 2024 12:47:09 +0200
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+To: Conor Dooley <conor@kernel.org>
+Subject: Re: [PATCH v4 3/4] dt-bindings: display: rockchip: Add schema for RK3588 HDMI
+ TX Controller
+Date: Fri, 23 Aug 2024 12:47:50 +0200
+Message-ID: <3137870.U3zVgo479M@diego>
+In-Reply-To: <20240822-pushchair-premises-f4055779216a@spud>
+References: <20240819-b4-rk3588-bridge-upstream-v4-0-6417c72a2749@collabora.com>
+ <4167579.6PsWsQAL7t@diego> <20240822-pushchair-premises-f4055779216a@spud>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH -next 2/5] drm/mediatek: Fix missing of_node_put() for
- mtk_drm_get_all_drm_priv()
-To: Jinjie Ruan <ruanjinjie@huawei.com>, hjc@rock-chips.com, heiko@sntech.de,
- andy.yan@rock-chips.com, maarten.lankhorst@linux.intel.com,
- mripard@kernel.org, tzimmermann@suse.de, airlied@gmail.com, daniel@ffwll.ch,
- dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
- krzk@kernel.org, jic23@kernel.org
-References: <20240823092053.3170445-1-ruanjinjie@huawei.com>
- <20240823092053.3170445-3-ruanjinjie@huawei.com>
-Content-Language: en-US, fr-FR
-From: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
-In-Reply-To: <20240823092053.3170445-3-ruanjinjie@huawei.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240823_034651_085861_C31E992F 
-X-CRM114-Status: GOOD (  18.79  )
+X-CRM114-CacheID: sfid-20240823_034741_423772_A3112AE4 
+X-CRM114-Status: GOOD (  20.85  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,58 +67,55 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Cc: dri-devel@lists.freedesktop.org, Sandy Huang <hjc@rock-chips.com>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Andrzej Hajda <andrzej.hajda@intel.com>, kernel@collabora.com, David Airlie <airlied@gmail.com>, Rob Herring <robh@kernel.org>, Robert Foss <rfoss@kernel.org>, Jernej Skrabec <jernej.skrabec@gmail.com>, linux-rockchip@lists.infradead.org, Luis de Arquer <ldearquer@gmail.com>, devicetree@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>, Daniel Vetter <daniel@ffwll.ch>, Jonas Karlman <jonas@kwiboo.se>, Sascha Hauer <s.hauer@pengutronix.de>, Alexandre ARNOUD <aarnoud@me.com>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, Mark Yao <markyao0591@gmail.com>, linux-arm-kernel@lists.infradead.org, Neil Armstrong <neil.armstrong@linaro.org>, linux-kernel@vger.kernel.org, Thomas Zimmermann <tzimmermann@suse.de>, Andy Yan <andy.yan@rock-chips.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-TGUgMjMvMDgvMjAyNCDDoCAxMToyMCwgSmluamllIFJ1YW4gYSDDqWNyaXTCoDoKPiBJbiBtdGtf
-ZHJtX2dldF9hbGxfZHJtX3ByaXYoKSwgYnJlYWsgaW4gZm9yX2VhY2hfY2hpbGRfb2Zfbm9kZSgp
-IHNob3VsZAo+IGNhbGwgb2Zfbm9kZV9wdXQoKSB0byBhdm9pZCBjaGlsZCBub2RlIHJlc291cmNl
-IGxlYWssIHVzZQo+IGZvcl9lYWNoX2NoaWxkX29mX25vZGVfc2NvcGVkKCkgdG8gZml4IGl0Lgo+
-IAo+IEFuZCBhdm9pZCB0aGUgbmVlZCBmb3IgbWFudWFsIGNsZWFudXAgb2Zfbm9kZV9wdXQoKSBp
-biBlYXJseSBleGl0cwo+IGZyb20gdGhlIGxvb3AgZm9yIGFub3RoZXIgb25lLgo+IAo+IEZpeGVz
-OiBkNzYxYjk0NTBlMzEgKCJkcm0vbWVkaWF0ZWs6IEFkZCBjbnQgY2hlY2tpbmcgZm9yIGNvdmVy
-aXR5IGlzc3VlIikKPiBTaWduZWQtb2ZmLWJ5OiBKaW5qaWUgUnVhbiA8cnVhbmppbmppZUBodWF3
-ZWkuY29tPgo+IC0tLQo+ICAgZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZHJ2LmMg
-fCAxMCArKystLS0tLS0tCj4gICAxIGZpbGUgY2hhbmdlZCwgMyBpbnNlcnRpb25zKCspLCA3IGRl
-bGV0aW9ucygtKQo+IAo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRr
-X2RybV9kcnYuYyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2Rydi5jCj4gaW5k
-ZXggNzdiNTBjNTZjMTI0Li40MWFmZjAxODNjYmQgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUv
-ZHJtL21lZGlhdGVrL210a19kcm1fZHJ2LmMKPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0
-ZWsvbXRrX2RybV9kcnYuYwo+IEBAIC0zNzEsMTIgKzM3MSwxMSBAQCBzdGF0aWMgYm9vbCBtdGtf
-ZHJtX2dldF9hbGxfZHJtX3ByaXYoc3RydWN0IGRldmljZSAqZGV2KQo+ICAgCXN0cnVjdCBtdGtf
-ZHJtX3ByaXZhdGUgKnRlbXBfZHJtX3ByaXY7Cj4gICAJc3RydWN0IGRldmljZV9ub2RlICpwaGFu
-ZGxlID0gZGV2LT5wYXJlbnQtPm9mX25vZGU7Cj4gICAJY29uc3Qgc3RydWN0IG9mX2RldmljZV9p
-ZCAqb2ZfaWQ7Cj4gLQlzdHJ1Y3QgZGV2aWNlX25vZGUgKm5vZGU7Cj4gICAJc3RydWN0IGRldmlj
-ZSAqZHJtX2RldjsKPiAgIAl1bnNpZ25lZCBpbnQgY250ID0gMDsKPiAgIAlpbnQgaSwgajsKPiAg
-IAo+IC0JZm9yX2VhY2hfY2hpbGRfb2Zfbm9kZShwaGFuZGxlLT5wYXJlbnQsIG5vZGUpIHsKPiAr
-CWZvcl9lYWNoX2NoaWxkX29mX25vZGVfc2NvcGVkKHBoYW5kbGUtPnBhcmVudCwgbm9kZSkgewo+
-ICAgCQlzdHJ1Y3QgcGxhdGZvcm1fZGV2aWNlICpwZGV2Owo+ICAgCj4gICAJCW9mX2lkID0gb2Zf
-bWF0Y2hfbm9kZShtdGtfZHJtX29mX2lkcywgbm9kZSk7Cj4gQEAgLTgyOCw3ICs4MjcsNiBAQCBz
-dGF0aWMgaW50IG10a19kcm1fcHJvYmUoc3RydWN0IHBsYXRmb3JtX2RldmljZSAqcGRldikKPiAg
-IAlzdHJ1Y3QgZGV2aWNlX25vZGUgKnBoYW5kbGUgPSBkZXYtPnBhcmVudC0+b2Zfbm9kZTsKPiAg
-IAljb25zdCBzdHJ1Y3Qgb2ZfZGV2aWNlX2lkICpvZl9pZDsKPiAgIAlzdHJ1Y3QgbXRrX2RybV9w
-cml2YXRlICpwcml2YXRlOwo+IC0Jc3RydWN0IGRldmljZV9ub2RlICpub2RlOwo+ICAgCXN0cnVj
-dCBjb21wb25lbnRfbWF0Y2ggKm1hdGNoID0gTlVMTDsKPiAgIAlzdHJ1Y3QgcGxhdGZvcm1fZGV2
-aWNlICpvdmxfYWRhcHRvcjsKPiAgIAlpbnQgcmV0Owo+IEBAIC04NjksNyArODY3LDcgQEAgc3Rh
-dGljIGludCBtdGtfZHJtX3Byb2JlKHN0cnVjdCBwbGF0Zm9ybV9kZXZpY2UgKnBkZXYpCj4gICAJ
-fQo+ICAgCj4gICAJLyogSXRlcmF0ZSBvdmVyIHNpYmxpbmcgRElTUCBmdW5jdGlvbiBibG9ja3Mg
-Ki8KPiAtCWZvcl9lYWNoX2NoaWxkX29mX25vZGUocGhhbmRsZS0+cGFyZW50LCBub2RlKSB7Cj4g
-Kwlmb3JfZWFjaF9jaGlsZF9vZl9ub2RlX3Njb3BlZChwaGFuZGxlLT5wYXJlbnQsIG5vZGUpIHsK
-PiAgIAkJY29uc3Qgc3RydWN0IG9mX2RldmljZV9pZCAqb2ZfaWQ7Cj4gICAJCWVudW0gbXRrX2Rk
-cF9jb21wX3R5cGUgY29tcF90eXBlOwo+ICAgCQlpbnQgY29tcF9pZDsKPiBAQCAtOTMzLDEwICs5
-MzEsOCBAQCBzdGF0aWMgaW50IG10a19kcm1fcHJvYmUoc3RydWN0IHBsYXRmb3JtX2RldmljZSAq
-cGRldikKPiAgIAkJfQo+ICAgCj4gICAJCXJldCA9IG10a19kZHBfY29tcF9pbml0KG5vZGUsICZw
-cml2YXRlLT5kZHBfY29tcFtjb21wX2lkXSwgY29tcF9pZCk7Cj4gLQkJaWYgKHJldCkgewo+IC0J
-CQlvZl9ub2RlX3B1dChub2RlKTsKPiArCQlpZiAocmV0KQo+ICAgCQkJZ290byBlcnJfbm9kZTsK
-CkhpLAoKSSd2ZSBzZWVuIG9uIGFub3RoZXIgdGhyZWFkIHRoYXQgaXMgd2FzIG5vdCBzdXJlIHRo
-YXQgc2NvcGVkIHZlcnNpb25zIAphbmQgZ290b3MgcGxheWVkIHdlbGwgdG9nZXRoZXIuCgpJdCB3
-YXMgYXNrZWQgdG8gY2hlY2sgbW9yZSBpbiBkZXRhaWxzIGFuZCBjb25maXJtIHRoYXQgaXQgd2Fz
-IHNhZmUgCmJlZm9yZSBhcHBseWluZyB0aGUgcGF0Y2guCgpJJ3ZlIG5vdCBmb2xsb3dlZCB0aGUg
-ZGlzY3Vzc2lvbiwgc28gSSBqdXN0IHBvaW50IGl0IG91dCwgaW4gY2FzZSBpdCBoZWxwcy4KCkkn
-bGwgdHJ5IHRvIGdpdmUgaXQgYSBsb29rIGluIHRoZSBjb21pbmcgZGF5cy4KCgpDSgoKPiAtCQl9
-Cj4gICAJfQo+ICAgCj4gICAJaWYgKCFwcml2YXRlLT5tdXRleF9ub2RlKSB7CgoKX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFp
-bGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3Rz
-LmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+Am Donnerstag, 22. August 2024, 10:41:10 CEST schrieb Conor Dooley:
+> On Thu, Aug 22, 2024 at 09:01:34AM +0200, Heiko St=FCbner wrote:
+> > @Conor: just for me, did some shift happen in our understanding of dt-
+> > best-practices in terms of syscon via phandle vs. syscon via compatible?
+> > =
+
+> > Because Rockchip boards are referencing their GRFs via phandes forever
+> > but similar to the soc vs non-soc node thing, I'd like to stay on top of
+> > best-practices ;-)
+> =
+
+> If IP blocks, and thus drivers, are going to be reused between devices,
+> using the phandles makes sense given that it is unlikely that syscon
+> nodes can make use of fallback compatibles due to bits within that "glue"
+> changing between devices. It also makes sense when there are multiple
+> instances of an IP on the device, which need to use different syscons.
+> My goal is to ask people why they are using these type of syscons
+> phandle properties, cos often they are not required at all - for example
+> with clocks where you effectively need a whole new driver for every
+> single soc and having a phandle property buys you nothing.
+
+I guess I'm of two minds here.
+
+For me at least it makes sense to spell out the dependency to the
+syscon in the devicetree and not just have that hidden away inside the
+driver.
+
+But on the other hand, we already have the per-soc configuration [0]
+defining which grf bits needs to be accessed, so adding a
+
+	.lanecfg1_grf_compat =3D "rockchip,rk3568-vo"
+
+would not create overhad, as the grf regs and bits and rearranged
+all the time anyway.
+
+
+[0] https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree=
+/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c#n1652
+taking DSI as an example, where this is even more obvious
+
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
