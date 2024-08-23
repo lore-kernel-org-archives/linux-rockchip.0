@@ -4,38 +4,38 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1497EC52D7C
-	for <linux-rockchip@archiver.kernel.org>; Fri, 23 Aug 2024 09:16:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9984AC52D7C
+	for <linux-rockchip@archiver.kernel.org>; Fri, 23 Aug 2024 09:17:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=k03d7zRxQmrS40k8orsg3Qh84UlZHwHhOxRMdLjuUeI=; b=WJv7lnWBZw/so2
-	WGC8F51NZs1i4AqwqAfxp2fK3tKWi1CejAapZJCpBRUgvd1pQPF5c7DU1bITr+3ethYWEOd2FVgdI
-	oQjT1cozmg9cYsSGykCqblRkXMjMwzUP/oN0PUhFmM89AsH/XWgWUGp1ZZGDjEVm0xKBr5PtBWj5N
-	yg8QIdEdjcDqex1z2T/Lgs6q2svoiukREYYbdn3I16KkQKJftWkuHG9oGpqxc7+Pw3q3iWwjfTejO
-	JMXrnJvCiYQXnXarYOEnuKcrjxONnIGePmKswyancnNCE6gEiq2DelVMCkIcVqTN7w9KBu1a3AolK
-	Nfs/7uHQUjposP891mTw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=I4OQUCFN65U210yKYxvrgYXMmW+VuHbEB2NULpsN4Og=; b=tWwnEcHumz6sdu
+	Pj2AKZQwMFudxt5ex9YPmC3bK4A2OKjoYSkSvGNssAasGl5cYKkevUd6jdtZaiFnq8UtJvF/64iZz
+	YKV03IPGXhXw1RA8OLTLT9Y1XXR8Y/GfyfPbQhPWqpiU3ch3EXuOipVeH2hsVHNPHgr4X3DLrETLi
+	RwmukNcEBFfB2NfhBtfuHtQXbgIROoA1RTWbhd7L3dXajhA9o63sEumXnYnkJGl9b70rc21FOM5nl
+	Zfm2nhQ4brCPlGmvl5G5od0b4mR5gv2fx0rRnuvII1jgPdtLtODYsI/kxcce3YfnK+qXuX0XRUboN
+	P/FedhHIvh6XGTSTXUsQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1shQOy-0000000G3u5-1WLX;
-	Fri, 23 Aug 2024 09:16:12 +0000
-Received: from szxga01-in.huawei.com ([45.249.212.187])
+	id 1shQQP-0000000G4C1-3vmz;
+	Fri, 23 Aug 2024 09:17:41 +0000
+Received: from szxga05-in.huawei.com ([45.249.212.191])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1shQMI-0000000G33B-1wIx;
-	Fri, 23 Aug 2024 09:13:28 +0000
-Received: from mail.maildlp.com (unknown [172.19.163.252])
-	by szxga01-in.huawei.com (SkyGuard) with ESMTP id 4WqvVF1hnczyQPX;
-	Fri, 23 Aug 2024 17:12:37 +0800 (CST)
+	id 1shQMJ-0000000G33D-25vP;
+	Fri, 23 Aug 2024 09:13:29 +0000
+Received: from mail.maildlp.com (unknown [172.19.162.112])
+	by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4WqvRJ1BfVz1HGjl;
+	Fri, 23 Aug 2024 17:10:04 +0800 (CST)
 Received: from kwepemh500013.china.huawei.com (unknown [7.202.181.146])
-	by mail.maildlp.com (Postfix) with ESMTPS id 05D831800D2;
-	Fri, 23 Aug 2024 17:13:19 +0800 (CST)
+	by mail.maildlp.com (Postfix) with ESMTPS id 5657714013B;
+	Fri, 23 Aug 2024 17:13:18 +0800 (CST)
 Received: from huawei.com (10.90.53.73) by kwepemh500013.china.huawei.com
  (7.202.181.146) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.11; Fri, 23 Aug
- 2024 17:13:18 +0800
+ 2024 17:13:17 +0800
 From: Jinjie Ruan <ruanjinjie@huawei.com>
 To: <hjc@rock-chips.com>, <heiko@sntech.de>, <andy.yan@rock-chips.com>,
 	<maarten.lankhorst@linux.intel.com>, <mripard@kernel.org>,
@@ -44,19 +44,18 @@ To: <hjc@rock-chips.com>, <heiko@sntech.de>, <andy.yan@rock-chips.com>,
 	<linux-rockchip@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
 	<krzk@kernel.org>, <jic23@kernel.org>
 CC: <ruanjinjie@huawei.com>
-Subject: [PATCH -next 1/5] drm/rockchip: Use for_each_child_of_node_scoped()
-Date: Fri, 23 Aug 2024 17:20:49 +0800
-Message-ID: <20240823092053.3170445-2-ruanjinjie@huawei.com>
+Subject: [PATCH -next 0/5] drm: Use for_each_child_of_node_scoped()
+Date: Fri, 23 Aug 2024 17:20:48 +0800
+Message-ID: <20240823092053.3170445-1-ruanjinjie@huawei.com>
 X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20240823092053.3170445-1-ruanjinjie@huawei.com>
-References: <20240823092053.3170445-1-ruanjinjie@huawei.com>
 MIME-Version: 1.0
 X-Originating-IP: [10.90.53.73]
 X-ClientProxiedBy: dggems706-chm.china.huawei.com (10.3.19.183) To
  kwepemh500013.china.huawei.com (7.202.181.146)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240823_021326_792301_3B5B7FF3 
-X-CRM114-Status: GOOD (  10.31  )
+X-CRM114-CacheID: sfid-20240823_021327_820705_219FD6C8 
+X-CRM114-Status: UNSURE (   4.84  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,45 +72,23 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Avoids the need for manual cleanup of_node_put() in early exits
-from the loop.
+Use for_each_child_of_node_scoped() to simplfy code and fix a bug
+by the way.
 
-Signed-off-by: Jinjie Ruan <ruanjinjie@huawei.com>
----
- drivers/gpu/drm/rockchip/rockchip_lvds.c | 8 +++-----
- 1 file changed, 3 insertions(+), 5 deletions(-)
+Jinjie Ruan (5):
+  drm/rockchip: Use for_each_child_of_node_scoped()
+  drm/mediatek: Fix missing of_node_put() for mtk_drm_get_all_drm_priv()
+  drm: of: Use for_each_child_of_node_scoped()
+  drm/nouveau: Use for_each_child_of_node_scoped()
+  gpu: host1x: Use for_each_available_child_of_node_scoped()
 
-diff --git a/drivers/gpu/drm/rockchip/rockchip_lvds.c b/drivers/gpu/drm/rockchip/rockchip_lvds.c
-index 9a01aa450741..f5b3f18794dd 100644
---- a/drivers/gpu/drm/rockchip/rockchip_lvds.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_lvds.c
-@@ -548,7 +548,7 @@ static int rockchip_lvds_bind(struct device *dev, struct device *master,
- 	struct drm_encoder *encoder;
- 	struct drm_connector *connector;
- 	struct device_node *remote = NULL;
--	struct device_node  *port, *endpoint;
-+	struct device_node  *port;
- 	int ret = 0, child_count = 0;
- 	const char *name;
- 	u32 endpoint_id = 0;
-@@ -560,15 +560,13 @@ static int rockchip_lvds_bind(struct device *dev, struct device *master,
- 			      "can't found port point, please init lvds panel port!\n");
- 		return -EINVAL;
- 	}
--	for_each_child_of_node(port, endpoint) {
-+	for_each_child_of_node_scoped(port, endpoint) {
- 		child_count++;
- 		of_property_read_u32(endpoint, "reg", &endpoint_id);
- 		ret = drm_of_find_panel_or_bridge(dev->of_node, 1, endpoint_id,
- 						  &lvds->panel, &lvds->bridge);
--		if (!ret) {
--			of_node_put(endpoint);
-+		if (!ret)
- 			break;
--		}
- 	}
- 	if (!child_count) {
- 		DRM_DEV_ERROR(dev, "lvds port does not have any children\n");
+ drivers/gpu/drm/drm_of.c                    | 11 +++--------
+ drivers/gpu/drm/mediatek/mtk_drm_drv.c      | 10 +++-------
+ drivers/gpu/drm/nouveau/nouveau_connector.c |  5 ++---
+ drivers/gpu/drm/rockchip/rockchip_lvds.c    |  8 +++-----
+ drivers/gpu/host1x/bus.c                    | 11 +++--------
+ 5 files changed, 14 insertions(+), 31 deletions(-)
+
 -- 
 2.34.1
 
