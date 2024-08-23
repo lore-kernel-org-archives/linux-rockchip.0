@@ -4,48 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ADDEAC531DC
-	for <linux-rockchip@archiver.kernel.org>; Fri, 23 Aug 2024 14:12:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1AEB5C52D7C
+	for <linux-rockchip@archiver.kernel.org>; Fri, 23 Aug 2024 14:12:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=SW6aWwd1vqZ4qYoR5cKiLVaDMFPr7pBckDfyGhhxxSI=; b=ecDKZbPzyfGLUG
-	iBjpR95jvUwRGO8fEVPYJbuqwpDDhVKdV/mAuV7d+jehe6HYkXJytu7CqNw/oanr2z6MjZyfmHwEb
-	QF41pSnJspK5+iWWXHr5EiiKqCe0jFCpMUkNqFti2mqAkcfgGvtuwy5J8YEaPbzpz66wRyiItAGww
-	foy94jNm+h7zW7FvzdKh5Cxb1T6/ssU3FnCjEgkcDum0Nf969XKahqFuGVYiVczdnfh+Z6jTDCjk4
-	45yPwuxUhQiZJNod55DmR7BR64vEx0BKWwR5AIaafyKzUUrPW0k+2WiIpRj53SoCLwwAdV18Pe3yM
-	AkGWXk1/I5oPU/9ULm8A==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=cbn6GlfOyDJFpAx2QRqBx8UqYt2D8oqp42SqjtAYuyA=; b=BG8E0TsMm0o7Yg
+	GESPJdt6wKoCa0zwlkkfkqOw1iDhwZFTKbZeJSqbLCu8P1yaqhUM71ZasWQ69P3RoYjKUAw+OqOty
+	1gAvqgAbx5s08bQx/54S5JElx0Yb1+e0ZIoH6USqIOK5RrtpB17uWmLJmCv1s1z1nHeHV0DljGref
+	NgLMoGaOv80JaFqT+ovZCHHDnupx9kY8HbHvqwTZAGl2sFnwVWRCgvcACa0jbMFvtKyem1mFurGW/
+	QkUSlyQ4Qi+kG5/mjf/wsiW+aR8s2fZbT20Nfo15S6XIW5YGKR5DZdatGAAvYnc7Km25dQj7U3lkf
+	LeYzfZYUipW9C5TN8wig==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1shV1d-0000000H2GI-135u;
-	Fri, 23 Aug 2024 14:12:25 +0000
+	id 1shV1f-0000000H2Hk-0xXN;
+	Fri, 23 Aug 2024 14:12:27 +0000
 Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1shV1X-0000000H2Co-3hDy;
-	Fri, 23 Aug 2024 14:12:21 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1724422312; cv=none; 
+	id 1shV1Y-0000000H2Ct-1Kku;
+	Fri, 23 Aug 2024 14:12:22 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1724422314; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=CrToZ2LTI//Gtte2hJPQcZ5QDN3uDirJqmj6R94r4N99Rbo4pAcHJ6JNdarmMzkEBpZSaLOFNlq/oDGKAg5gN+qfHGE6GEM+YUFWn8xcca65Cf2glLacy4w6ntuR8tof5ZtEPftnF+E8nrsAQUdmGRdd+eP3plHpLgnxRUEk7I8=
+	b=C7PH9zMpE4BMks1lgSGa3vL9pq4gb6RMI+rrRalhUxQv5U4LYS3w1/nN3HJ+xkr8+E/tBYod5/tp6LyVD5KJlBDtx+HMAPR0f8qg4LglJMlPTSgSm3dEdUZM3+cjFrnaxYB5YNqZHSAVQ1/Ic5WkbZMXzdX2RO03ca+EoJwnx6Q=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1724422312; h=Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=lNp4RfIxi4nUXP7c0Aub3ROaeoojv7EDzsSfORBjjkE=; 
-	b=kbuhsOTJ3xVK/tDGbTBlwkX0UY7Mpu8vkInysRClwom94FqXCu4HH10B1eLl66Zmfa5q3S3FD1evCvg+7Al53IfPtVT0FmikSPANKwRaMHDKdxBik8YMuPwYhwxEC66EgheFyBIeV7B7CcsIFEo/bEPGFCdQTf53XjmGnIxqDB8=
+	t=1724422314; h=Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=ROKKRsYio3xxAWmx1+IWV2SIFpDUD68JNopHgT+vf9Y=; 
+	b=EIWuVxUovOr0FypNSp/bGh7Tk8d2K7bkzScFAd9T1LMex5aiCsjzNXSiWEF+9HW9xl/VFsHYsY7Wypvqtu5zYr9LLh12si+eqCUIOoZIpPkC6LG3Qw2anTmdr9DdV9fZdvCHfTyNzCp/cwNGZLwrKAg2PBzNyvQJrTU4fWYdJyU=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=collabora.com;
 	spf=pass  smtp.mailfrom=detlev.casanova@collabora.com;
 	dmarc=pass header.from=<detlev.casanova@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1724422312;
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1724422314;
 	s=zohomail; d=collabora.com; i=detlev.casanova@collabora.com;
-	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:MIME-Version:Content-Transfer-Encoding:Message-Id:Reply-To;
-	bh=lNp4RfIxi4nUXP7c0Aub3ROaeoojv7EDzsSfORBjjkE=;
-	b=j16wgxcSJxUO1zGqi/UroUioB6/Ww52ql5liESPdnZOVqwk/aSTsYxSFeoCFmyXz
-	uN0O/2Ecu09IUH3arc/q0HKIHzbK3g3bVe7mXFdhPF9TH4cpaFsp0+UJprejLqRdEBH
-	oMXB7agPk6YwuXuePWrRV2JFeGJQWCfBWWnMVAbo=
-Received: by mx.zohomail.com with SMTPS id 1724422310105193.1328447504353;
-	Fri, 23 Aug 2024 07:11:50 -0700 (PDT)
+	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Message-Id:Reply-To;
+	bh=ROKKRsYio3xxAWmx1+IWV2SIFpDUD68JNopHgT+vf9Y=;
+	b=h38/bthj92pZiGKrNEBgZJC/YYHYYdIJ4g6j2ZvhqXmaU5JT578PI2mdVLUgA8XB
+	/Gt2VU/btw7knMxKMWW5dgYytLCYwP7kgzy03eI/+2XKY42ftK84uy5Xnx8zRvHs/rg
+	KHvSSBpOJF+NRUzXUCyti4OjC+uMEweVMO0XPifE=
+Received: by mx.zohomail.com with SMTPS id 1724422312337529.5391082814358;
+	Fri, 23 Aug 2024 07:11:52 -0700 (PDT)
 From: Detlev Casanova <detlev.casanova@collabora.com>
 To: linux-kernel@vger.kernel.org
 Cc: "David S . Miller" <davem@davemloft.net>,
@@ -68,15 +68,17 @@ Cc: "David S . Miller" <davem@davemloft.net>,
 	linux-stm32@st-md-mailman.stormreply.com,
 	kernel@collabora.com,
 	Detlev Casanova <detlev.casanova@collabora.com>
-Subject: [PATCH v3 0/3] Add GMAC support for rk3576
-Date: Fri, 23 Aug 2024 10:11:12 -0400
-Message-ID: <20240823141318.51201-1-detlev.casanova@collabora.com>
+Subject: [PATCH v3 1/3] ethernet: stmmac: dwmac-rk: Fix typo for RK3588 code
+Date: Fri, 23 Aug 2024 10:11:13 -0400
+Message-ID: <20240823141318.51201-2-detlev.casanova@collabora.com>
 X-Mailer: git-send-email 2.46.0
+In-Reply-To: <20240823141318.51201-1-detlev.casanova@collabora.com>
+References: <20240823141318.51201-1-detlev.casanova@collabora.com>
 MIME-Version: 1.0
 X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240823_071220_035914_AAF3C8AA 
-X-CRM114-Status: UNSURE (   8.28  )
+X-CRM114-CacheID: sfid-20240823_071220_442645_A5F259DF 
+X-CRM114-Status: UNSURE (   9.69  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -94,30 +96,40 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add the necessary constants and functions to support the GMAC devices on
-the rk3576.
+Fix SELET -> SELECT in RK3588_GMAC_CLK_SELET_CRU and
+RK3588_GMAC_CLK_SELET_IO
 
-Changes since v2:
-- Fix typos in RK3576_GMAC_CLK_SELET_*
-- Also fix typo for RK3588_GMAC_CLK_SELET_*
+Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
+---
+ drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
-Changes since v1:
-- Add binding in net/snps,dwmac.yaml too
-
-Detlev.
-
-David Wu (1):
-  ethernet: stmmac: dwmac-rk: Add GMAC support for RK3576
-
-Detlev Casanova (2):
-  ethernet: stmmac: dwmac-rk: Fix typo for RK3588 code
-  dt-bindings: net: Add support for rk3576 dwmac
-
- .../bindings/net/rockchip-dwmac.yaml          |   2 +
- .../devicetree/bindings/net/snps,dwmac.yaml   |   1 +
- .../net/ethernet/stmicro/stmmac/dwmac-rk.c    | 164 +++++++++++++++++-
- 3 files changed, 163 insertions(+), 4 deletions(-)
-
+diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
+index 7ae04d8d291c8..9cf0aa58d13bf 100644
+--- a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
++++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
+@@ -1141,8 +1141,8 @@ static const struct rk_gmac_ops rk3568_ops = {
+ #define RK3588_GMAC_CLK_RMII_MODE(id)		GRF_BIT(5 * (id))
+ #define RK3588_GMAC_CLK_RGMII_MODE(id)		GRF_CLR_BIT(5 * (id))
+ 
+-#define RK3588_GMAC_CLK_SELET_CRU(id)		GRF_BIT(5 * (id) + 4)
+-#define RK3588_GMAC_CLK_SELET_IO(id)		GRF_CLR_BIT(5 * (id) + 4)
++#define RK3588_GMAC_CLK_SELECT_CRU(id)		GRF_BIT(5 * (id) + 4)
++#define RK3588_GMAC_CLK_SELECT_IO(id)		GRF_CLR_BIT(5 * (id) + 4)
+ 
+ #define RK3588_GMA_CLK_RMII_DIV2(id)		GRF_BIT(5 * (id) + 2)
+ #define RK3588_GMA_CLK_RMII_DIV20(id)		GRF_CLR_BIT(5 * (id) + 2)
+@@ -1240,8 +1240,8 @@ static void rk3588_set_gmac_speed(struct rk_priv_data *bsp_priv, int speed)
+ static void rk3588_set_clock_selection(struct rk_priv_data *bsp_priv, bool input,
+ 				       bool enable)
+ {
+-	unsigned int val = input ? RK3588_GMAC_CLK_SELET_IO(bsp_priv->id) :
+-				   RK3588_GMAC_CLK_SELET_CRU(bsp_priv->id);
++	unsigned int val = input ? RK3588_GMAC_CLK_SELECT_IO(bsp_priv->id) :
++				   RK3588_GMAC_CLK_SELECT_CRU(bsp_priv->id);
+ 
+ 	val |= enable ? RK3588_GMAC_CLK_RMII_NOGATE(bsp_priv->id) :
+ 			RK3588_GMAC_CLK_RMII_GATE(bsp_priv->id);
 -- 
 2.46.0
 
