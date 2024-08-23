@@ -4,80 +4,109 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 99EB2C531DC
-	for <linux-rockchip@archiver.kernel.org>; Fri, 23 Aug 2024 15:00:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BA4CEC531DC
+	for <linux-rockchip@archiver.kernel.org>; Fri, 23 Aug 2024 15:00:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=+VD1A+sRZrxoe5gKviG5WS/Q5+uT6h4wCaOMbq8vCsc=; b=orSg0CSJhL6WgA
-	Vpn0lz3R033VoRzBxuEdUuG5KtjHi2l5ro3CihCG/J7bHuq2OeZDEhNNuwIfS9GEPrAoGapziPaNo
-	JB2/LTIo3rmVYQ75FNK6F/9+OqbAmjxzmpRHWZyrc6LonZaEowkWKLzkh73owwg1iMWlcsDWqdLu3
-	VFDTqLPyfEa0QtlCnvyVR1pDM5RkPcwvaI2pWdy3tZemDld+iD8+h0OwoeX7XAlHJICXQFy6PmX/u
-	PQc018oLOPIkg05fplNrp+UbWlJhf3P7zejXxAwO6BMOboYf0jcWTBx9s7qsUYCljGsZPZECRT+Ug
-	AVj9wieVuEqTdb/LT6LA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=we/3BSXJphz5gxaji3aCgrgZ3X9LdIkecaEff3bhwPQ=; b=hkAURDarSvIjX2
+	FMompHDVZEr74ArBR8RKKZN40l8euncH2Po1CS6CD3f9u93mWNHXrFaIr9gjvnyZJzKWwQKhHlzkC
+	0/rep97DmuAlbGkBsJ+hyMGesgF2uZdNUFeuNuaANXHlE/2rgCsrmvOXGZL94JWK2NTKZhXZXcASH
+	XQN5Ew2DQKm+YkwAJAkWAsjhZAbfS8xm9T6XHxbALQbyh/H/v5vXhvCSFmXHsmJlBeKq0v2HAVoiK
+	1VECRxfvRzzvQoFh9aS2rPDn0m+4mVQOYBydAY/vEyE1q4rdAgapdHX2gOBbGwfR1LrDgoQsL7fGb
+	ci3gfNhFVOyUw12KQ4Fg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1shVld-0000000HC3T-23q9;
-	Fri, 23 Aug 2024 14:59:57 +0000
-Received: from mgamail.intel.com ([192.198.163.7])
+	id 1shVmB-0000000HCLv-433Z;
+	Fri, 23 Aug 2024 15:00:31 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1shVkr-0000000HBsk-1DYp;
-	Fri, 23 Aug 2024 14:59:10 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1724425149; x=1755961149;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=dAF4EzAJlty3UqKFmsn5bGOq7/BaOfcncLQBYgpR638=;
-  b=f1PtZ2U2Oi5fPZAdiknnJMDen0P/rV0euRWr1ilYv7FNVs2QMsJ9i/Vl
-   lmm5/4gYrXxiA2JtxJvKpgOeIpGjBMCqpdfpx1mEVjJFbTmHvpZFizHfY
-   hR6mjorw2+5aB8nOtycLNanlbJUmKnM5RlQe64cUTNkgqEV1SZmqEVOu4
-   J3PEU5dIsay5jYVLy15vMgOZ5dP0sqVcZka8SsO3yooJ2srpWsCEDTJZp
-   se+6KkN/ZSdEf4c2Z9bl8zwEHle+VuHqQX5f3XdUpOrkJi3eG1noqqqI+
-   K7yMUxIn16Nu71Lw2duAZWeSNCHcZ6bQN0/lfOivS7WGEmt70bUHMsbzJ
-   A==;
-X-CSE-ConnectionGUID: 3tyTvRi/Ta+1vdOuAxbxuw==
-X-CSE-MsgGUID: W8JtIljoSFeRK0rqFV/n0w==
-X-IronPort-AV: E=McAfee;i="6700,10204,11172"; a="48289603"
-X-IronPort-AV: E=Sophos;i="6.10,170,1719903600"; 
-   d="scan'208";a="48289603"
-Received: from orviesa007.jf.intel.com ([10.64.159.147])
-  by fmvoesa101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 23 Aug 2024 07:59:08 -0700
-X-CSE-ConnectionGUID: brUjEvKwQ/WiUdboLXGsbQ==
-X-CSE-MsgGUID: 3YXQdEUZSwyvEZeNFk68LQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.10,170,1719903600"; 
-   d="scan'208";a="62334764"
-Received: from smile.fi.intel.com ([10.237.72.54])
-  by orviesa007.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 23 Aug 2024 07:59:05 -0700
-Received: from andy by smile.fi.intel.com with local (Exim 4.98)
-	(envelope-from <andriy.shevchenko@linux.intel.com>)
-	id 1shVkk-00000000pPA-1D25;
-	Fri, 23 Aug 2024 17:59:02 +0300
-Date: Fri, 23 Aug 2024 17:59:01 +0300
-From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-To: Ye Zhang <ye.zhang@rock-chips.com>
-Cc: linus.walleij@linaro.org, brgl@bgdev.pl, heiko@sntech.de,
-	linux-gpio@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
-	mika.westerberg@linux.intel.com, tao.huang@rock-chips.com,
-	finley.xiao@rock-chips.com, tim.chen@rock-chips.com,
-	elaine.zhang@rock-chips.com
-Subject: Re: [PATCH v2] gpio: rockchip: Set input direction when request irq
-Message-ID: <ZsijtURSzEWKCqHk@smile.fi.intel.com>
-References: <20240823034314.62305-1-ye.zhang@rock-chips.com>
- <20240823034314.62305-10-ye.zhang@rock-chips.com>
+	id 1shVm7-0000000HCIb-0bEX;
+	Fri, 23 Aug 2024 15:00:28 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1724425169; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=no39V9NnxnwNc1WnPDgoT+p7ZUw/z+a8UCFwGESfjxBCX0x5SsSVkOk9X4TFmR1hL+PE+YnwdK75h2b6OfkEtUt154I2/y0YUJ7iiUl139TmSeyE+WOFpKUncU9OT1aZ5j9vgv/+VZGzDXgC0reK6Z0WzzXGZ6dlVDCOMq2GS+o=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1724425169; h=Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=TwlvOdJ7MjOFHk4+IGiyU7dJ6E4gYxvsaSn7FY9AvBU=; 
+	b=Pdj+aCDgE4m2PkeUiGx1NRHxbuHRUmEujM+JMIaSk9iI+XRa4d1L0CGBYZ9HXk8C5vfVY1wT2eaBxd5L3gkDzdVLaagQZXH5pK8fnKYiBXTaRQGzHFUomMwGSau3to/5Us7OCAo2uiDZyngd2GwfzTnMwC0Qf4C7zhD0Ol9llJw=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=detlev.casanova@collabora.com;
+	dmarc=pass header.from=<detlev.casanova@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1724425169;
+	s=zohomail; d=collabora.com; i=detlev.casanova@collabora.com;
+	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:MIME-Version:Content-Transfer-Encoding:Message-Id:Reply-To;
+	bh=TwlvOdJ7MjOFHk4+IGiyU7dJ6E4gYxvsaSn7FY9AvBU=;
+	b=f02wVC+jsUJd5qWnUikwuktjSRUkeIjtwaq8U702xiDXQJOSNH2RvrYXx/yR2Lts
+	U9nSj0Q+Ar6fGYYuD1bQLxLS/W5Ik06iid5vmf3i1yzjD19MRoHxyLSO/6Y4ORWPl00
+	UDpxVmcQqdgpsgqSVq2pEVKou2AfpFThfHDDD84w=
+Received: by mx.zohomail.com with SMTPS id 1724425168680168.96164896631421;
+	Fri, 23 Aug 2024 07:59:28 -0700 (PDT)
+From: Detlev Casanova <detlev.casanova@collabora.com>
+To: linux-kernel@vger.kernel.org
+Cc: Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Maxime Ripard <mripard@kernel.org>,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	David Airlie <airlied@gmail.com>,
+	Daniel Vetter <daniel@ffwll.ch>,
+	Andi Shyti <andi.shyti@kernel.org>,
+	Jonathan Cameron <jic23@kernel.org>,
+	Lars-Peter Clausen <lars@metafoo.de>,
+	Lee Jones <lee@kernel.org>,
+	Ulf Hansson <ulf.hansson@linaro.org>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Jiri Slaby <jirislaby@kernel.org>,
+	Mark Brown <broonie@kernel.org>,
+	Wim Van Sebroeck <wim@linux-watchdog.org>,
+	Guenter Roeck <linux@roeck-us.net>,
+	Chris Morgan <macromorgan@hotmail.com>,
+	Jonas Karlman <jonas@kwiboo.se>,
+	Tim Lunn <tim@feathertop.org>,
+	Chukun Pan <amadeus@jmu.edu.cn>,
+	Andy Yan <andyshrk@163.com>,
+	Muhammed Efe Cetin <efectn@protonmail.com>,
+	Jagan Teki <jagan@edgeble.ai>,
+	Dragan Simic <dsimic@manjaro.org>,
+	Detlev Casanova <detlev.casanova@collabora.com>,
+	Ondrej Jirman <megi@xff.cz>,
+	Michael Riesch <michael.riesch@wolfvision.net>,
+	Jimmy Hon <honyuenkwun@gmail.com>,
+	Alexey Charkov <alchark@gmail.com>,
+	Elon Zhang <zhangzj@rock-chips.com>,
+	Elaine Zhang <zhangqing@rock-chips.com>,
+	Yifeng Zhao <yifeng.zhao@rock-chips.com>,
+	Finley Xiao <finley.xiao@rock-chips.com>,
+	Liang Chen <cl@rock-chips.com>,
+	Jisheng Zhang <jszhang@kernel.org>,
+	Jamie Iles <jamie@jamieiles.com>,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	dri-devel@lists.freedesktop.org,
+	linux-i2c@vger.kernel.org,
+	linux-iio@vger.kernel.org,
+	linux-mmc@vger.kernel.org,
+	linux-serial@vger.kernel.org,
+	linux-spi@vger.kernel.org,
+	linux-watchdog@vger.kernel.org,
+	kernel@collabora.com
+Subject: [PATCH v2 00/12] Add device tree for ArmSoM Sige 5 board
+Date: Fri, 23 Aug 2024 10:52:27 -0400
+Message-ID: <20240823150057.56141-1-detlev.casanova@collabora.com>
+X-Mailer: git-send-email 2.46.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20240823034314.62305-10-ye.zhang@rock-chips.com>
-Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240823_075909_550389_6518212C 
-X-CRM114-Status: UNSURE (   8.72  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240823_080027_249420_1F947EF9 
+X-CRM114-Status: GOOD (  15.16  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,23 +123,92 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, Aug 23, 2024 at 11:43:12AM +0800, Ye Zhang wrote:
-> Since the GPIO can only generate interrupts when its direction is set to
-> input, it is set to input before requesting the interrupt resources.
+Add device tree for ArmSoM Sige 5 board
 
-...
+Add the rk3576-armsom-sige5 device tree as well as its rk3576.dtsi base
+and pinctrl information in rk3576-pinctrl.dtsi.
 
-> +	rockchip_gpio_direction_input(&bank->gpio_chip, d->hwirq);
-> +
->  	return gpiochip_reqres_irq(&bank->gpio_chip, d->hwirq);
+The other commits add DT bindings documentation for the devices that
+already work with the current corresponding drivers.
 
-In both cases you want to use irq_hw_number_t and irqd_to_hwirq() at the top of
-the function(s).
+
+Note that as is, the rockchip gpio driver needs the gpio nodes
+to be children of the pinctrl node, even though this is deprecated.
+
+When the driver supports it, they can be moved out of the pinctrl node.
+
+The power-domain@RK3576_PD_USB is a child of power-domain@RK3576_PD_VOP.
+That looks strange but it seems to be how the hardware is.
+There has been no confirmation from Rockchip yet.
+
+The other bindings and driver implementations are in other patch sets:
+- PMIC: https://lore.kernel.org/all/20240802134736.283851-1-detlev.casanova@collabora.com/ (applied on next)
+- CRU: https://lore.kernel.org/all/20240822194956.918527-1-detlev.casanova@collabora.com/
+- PINCTRL: https://lore.kernel.org/all/20240822195706.920567-1-detlev.casanova@collabora.com/
+- PM DOMAIN: https://lore.kernel.org/all/20240814222824.3170-1-detlev.casanova@collabora.com/ (applied on next)
+- DW-MMC: https://lore.kernel.org/all/20240822212418.982927-1-detlev.casanova@collabora.com/
+- GMAC: https://lore.kernel.org/all/20240823141318.51201-1-detlev.casanova@collabora.com/
+
+Changes since v1:
+- Add eMMC support
+- Add gpu node
+- Add rtc node
+- Add spi compatible dt-bindings
+- Add watchdog support
+- Dropped timer compatible commit (applied in [0])
+- Move ethernet aliases to board dt
+- Move mmio nodes to soc node
+- Removed cru grf phandle
+- Removed gpio aliases
+- Removed grf compatibles (applied in [1])
+- Removed pinctrl php-grf phandle
+- Removed v2-tuning for sdcard
+- Renamed clock nodes
+- Renamed regulators do match regulator-vcc-<voltage>-<name>
+- Renamed the rkvdec_sram node to vdec_sram to match prior generations
+- Reorder fields consistently in nodes
+- Use correct #power-domain-cells values
+
+[0]: https://lore.kernel.org/all/918bb9e4-02d9-4dca-bed2-28bb123bdc10@linaro.org/
+[1]: https://lore.kernel.org/all/172441646605.877570.8075942261050000.b4-ty@sntech.de/
+
+Detlev.
+
+Detlev Casanova (12):
+  dt-bindings: arm: rockchip: Add ArmSoM Sige 5
+  dt-bindings: arm: rockchip: Add rk3576 compatible string to pmu.yaml
+  dt-bindings: i2c: i2c-rk3x: Add rk3576 compatible
+  dt-bindings: iio: adc: Add rockchip,rk3576-saradc string
+  dt-bindings: mfd: syscon: Add rk3576 QoS register compatible
+  dt-bindings: serial: snps-dw-apb-uart: Add Rockchip RK3576
+  dt-bindings: mmc: Add support for rk3576 eMMC
+  dt-bindings: gpu: Add rockchip,rk3576-mali compatible
+  dt-bindings: watchdog: Add rockchip,rk3576-wdt compatible
+  dt-bindings: spi: Add rockchip,rk3576-spi compatible
+  arm64: dts: rockchip: Add rk3576 SoC base DT
+  arm64: dts: rockchip: Add rk3576-armsom-sige5 board
+
+ .../devicetree/bindings/arm/rockchip.yaml     |    5 +
+ .../devicetree/bindings/arm/rockchip/pmu.yaml |    2 +
+ .../bindings/gpu/arm,mali-bifrost.yaml        |    1 +
+ .../devicetree/bindings/i2c/i2c-rk3x.yaml     |    1 +
+ .../bindings/iio/adc/rockchip-saradc.yaml     |    3 +
+ .../devicetree/bindings/mfd/syscon.yaml       |    2 +
+ .../bindings/mmc/snps,dwcmshc-sdhci.yaml      |   32 +-
+ .../bindings/serial/snps-dw-apb-uart.yaml     |    1 +
+ .../devicetree/bindings/spi/spi-rockchip.yaml |    1 +
+ .../bindings/watchdog/snps,dw-wdt.yaml        |    1 +
+ arch/arm64/boot/dts/rockchip/Makefile         |    1 +
+ .../boot/dts/rockchip/rk3576-armsom-sige5.dts |  651 ++
+ .../boot/dts/rockchip/rk3576-pinctrl.dtsi     | 5775 +++++++++++++++++
+ arch/arm64/boot/dts/rockchip/rk3576.dtsi      | 1710 +++++
+ 14 files changed, 8177 insertions(+), 9 deletions(-)
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3576-armsom-sige5.dts
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3576-pinctrl.dtsi
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3576.dtsi
 
 -- 
-With Best Regards,
-Andy Shevchenko
-
+2.46.0
 
 
 _______________________________________________
