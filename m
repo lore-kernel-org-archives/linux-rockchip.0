@@ -4,73 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1B87FC5320E
-	for <linux-rockchip@archiver.kernel.org>; Thu, 22 Aug 2024 21:24:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4AB83C531DF
+	for <linux-rockchip@archiver.kernel.org>; Fri, 23 Aug 2024 01:03:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Message-ID:MIME-Version:References:
+	In-Reply-To:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=tFbW6vCn1OWHE0/EqpRw5t7GHMe/IyrYFmTByUBRS5Y=; b=uQbtuzYMPPMN+2
-	djnrZRknCXrMW3JiJJXrmdQojW4BStUcBZotmurkUg1donlVeCcM8a1SQmICXdP5LHD3hkm9YFWEP
-	2O1uCbg2BJsQ6aqnKUXeeJL3hgLBP1/vzyAJpG2L0WjrI55td/W1gvbXlZaRmA05WFfpoejmDgFZj
-	pkXiN5Hk0U6Twq1QuJupamN3faggGcRI9nEJt42x8CB2gB8k+eJ+dc4N2183v5TRI6NwQ5qB+eMU5
-	eOyrH+RWIQpQ5843Fm/S/iuKMt4hTCInSDsLcobmyKbwNsaQXyr55X063Zhb7OqPZOR3W8e9SwPcD
-	LYOMAzlr2SLt6CvYajhA==;
+	List-Owner; bh=A3Lf3gk62xAsvq0EZFhkWCwDP0DFa4nGT5jkjSlXOIc=; b=rek79To9ONc+m6
+	VkuK7M4REPj99YY+IThUa3WSkkD1XrMx369KhpZSTvy5pwBFupVrKnmU4TaAW04FV6lSvOdaef8vk
+	oATxf/l1IeCH3DYQ44DCXLtDLkRuqC/590/EO1YGOiloOMSnVf4qCxpWyJ5ZFVjMQWrpYPUYI1gMz
+	+rrW9HlHfxtlPGkikHy3LWU0Fnozy8FWMi648yePHOzVmu2upjgQAzeco3CkFolnKVnANZPw/OL/x
+	QYFRGQBvIE/9YdTSMy7ue8mx6tByo0EK0kavjxzVshdADLcMZkQ8IojV1sFaxodvQUre+qpluCF9g
+	InLB4GVwLhw4n4BJU9Cw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1shFIe-0000000ELly-12Qm;
-	Thu, 22 Aug 2024 21:24:56 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
-	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1shFIX-0000000ELiD-0HUX;
-	Thu, 22 Aug 2024 21:24:50 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1724361880; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=IkA6hN8H3x2DF8V9mxRMupij6TobJMjfLmiPNg08ryAd5kADu5/UZ1Kq23geHJW2uvz4I90LrplXAx5OaIbzAf0iEpxGjwgaphkYAxTfi/khZyjL+UGqyJJoQODwEID4d+QbTp2rApd7MB9TMjZX71NUWtkfvZ2oNXxGLCyRv2M=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1724361880; h=Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=NS4CxkTiArEGKDo4R2GEQhehc7xfiMhtmReWN/dqCBE=; 
-	b=W7A44DjJT7euWf/KcWxrCSLeyNmpbGam22WBNLfcKAiIPveOukKa4l8rFL/BzT7IpgWYDNz1pNITqzrmFoqmAn+NHFQnP9Luz7R0Cy/Bb9KZ0Asi+Dt9200UJw1ZoHgOtrqLLL9Wvr0thlLCQ7+ZigYhc7K3P+qoH6OjVC1fmck=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=detlev.casanova@collabora.com;
-	dmarc=pass header.from=<detlev.casanova@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1724361880;
-	s=zohomail; d=collabora.com; i=detlev.casanova@collabora.com;
-	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Message-Id:Reply-To;
-	bh=NS4CxkTiArEGKDo4R2GEQhehc7xfiMhtmReWN/dqCBE=;
-	b=HCFZMrZto0mO1j4cXzVGozhYhFRFwk5rbDtiJ75nef5dQ0jIS5oe4KxziD7LiyiT
-	lDZ1F2EWXkHbShrhkcbjpBW7nPr4HIq664YeaZv+W7vrdiLIyfwGWRo/KdCjRmhCkC0
-	nS/03nNlDYiMLXh7exM8abOs+8Oo7JoTblQ5eSfc=
-Received: by mx.zohomail.com with SMTPS id 1724361878947371.4122073368609;
-	Thu, 22 Aug 2024 14:24:38 -0700 (PDT)
-From: Detlev Casanova <detlev.casanova@collabora.com>
-To: linux-kernel@vger.kernel.org
-Cc: Ulf Hansson <ulf.hansson@linaro.org>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Jaehoon Chung <jh80.chung@samsung.com>,
-	linux-mmc@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	kernel@collabora.com,
-	Detlev Casanova <detlev.casanova@collabora.com>
-Subject: [PATCH v4 4/4] mmc: dw_mmc-rockchip: Add support for rk3576 SoCs
-Date: Thu, 22 Aug 2024 17:15:34 -0400
-Message-ID: <20240822212418.982927-5-detlev.casanova@collabora.com>
-X-Mailer: git-send-email 2.46.0
-In-Reply-To: <20240822212418.982927-1-detlev.casanova@collabora.com>
-References: <20240822212418.982927-1-detlev.casanova@collabora.com>
+	id 1shIiF-0000000Elri-1ubB;
+	Fri, 23 Aug 2024 01:03:35 +0000
+Received: from m16.mail.163.com ([220.197.31.5])
+	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
+	id 1shIhS-0000000EllL-3WyR;
+	Fri, 23 Aug 2024 01:02:49 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
+	s=s110527; h=Date:From:Subject:Content-Type:MIME-Version:
+	Message-ID; bh=gKVSVFPC09Fwvh8vr5n5LVtxpmve0KLk/AGPTPWYriM=; b=L
+	JUycFROzWnVdX90eMObuLM4U6GBqeVi7cyVBAETygI2YrBWPo7IOuVYs2n0+69i+
+	hp6KySTPFzYG9FGjRoBVAmQYs1ri68kICbEDCA49tBUIzR3JXwzGVm2cdP/ANVQX
+	HcJMvG0qSdwjazCUTWEoso3ulFmBmOJV4XrbUmks94=
+Received: from andyshrk$163.com ( [58.22.7.114] ) by
+ ajax-webmail-wmsvr-40-105 (Coremail) ; Fri, 23 Aug 2024 09:01:51 +0800
+ (CST)
+X-Originating-IP: [58.22.7.114]
+Date: Fri, 23 Aug 2024 09:01:51 +0800 (CST)
+From: "Andy Yan" <andyshrk@163.com>
+To: "Cristian Ciocaltea" <cristian.ciocaltea@collabora.com>
+Cc: "Conor Dooley" <conor@kernel.org>, 
+	=?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
+	"Andrzej Hajda" <andrzej.hajda@intel.com>, 
+	"Neil Armstrong" <neil.armstrong@linaro.org>, 
+	"Robert Foss" <rfoss@kernel.org>, 
+	"Laurent Pinchart" <Laurent.pinchart@ideasonboard.com>, 
+	"Jonas Karlman" <jonas@kwiboo.se>, 
+	"Jernej Skrabec" <jernej.skrabec@gmail.com>, 
+	"Maarten Lankhorst" <maarten.lankhorst@linux.intel.com>, 
+	"Maxime Ripard" <mripard@kernel.org>, 
+	"Thomas Zimmermann" <tzimmermann@suse.de>, 
+	"David Airlie" <airlied@gmail.com>, 
+	"Daniel Vetter" <daniel@ffwll.ch>, 
+	"Sandy Huang" <hjc@rock-chips.com>, 
+	"Andy Yan" <andy.yan@rock-chips.com>, 
+	"Rob Herring" <robh@kernel.org>, 
+	"Krzysztof Kozlowski" <krzk+dt@kernel.org>, 
+	"Conor Dooley" <conor+dt@kernel.org>, 
+	"Mark Yao" <markyao0591@gmail.com>, 
+	"Sascha Hauer" <s.hauer@pengutronix.de>, 
+	dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, 
+	linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, 
+	kernel@collabora.com, "Alexandre ARNOUD" <aarnoud@me.com>, 
+	"Luis de Arquer" <ldearquer@gmail.com>
+Subject: Re:Re: [PATCH v4 3/4] dt-bindings: display: rockchip: Add schema
+ for RK3588 HDMI TX Controller
+X-Priority: 3
+X-Mailer: Coremail Webmail Server Version XT5.0.14 build 20240801(9da12a7b)
+ Copyright (c) 2002-2024 www.mailtech.cn 163com
+In-Reply-To: <7fc8cbc3-43d0-43d2-9272-350ac556e2b2@collabora.com>
+References: <20240819-b4-rk3588-bridge-upstream-v4-0-6417c72a2749@collabora.com>
+ <7E8109D4-A353-4FE3-9152-3C3C6CB7D634@sntech.de>
+ <2085e998-a453-4893-9e80-3be68b0fb13d@collabora.com>
+ <4167579.6PsWsQAL7t@diego> <20240822-pushchair-premises-f4055779216a@spud>
+ <7fc8cbc3-43d0-43d2-9272-350ac556e2b2@collabora.com>
+X-NTES-SC: AL_Qu2ZBv+cu0Eq5yOaZ+kXn0kXhec2W8Czvvgg34JRP5k0tyTL0xIbeGZ9IWHp79CuDxyJqQGmax9X9vRXYaNaX4woqRo5lR8DJERbq8Qshb5n
 MIME-Version: 1.0
-X-ZohoMailClient: External
+Message-ID: <4140b55c.a48.1917cc1095f.Coremail.andyshrk@163.com>
+X-Coremail-Locale: zh_CN
+X-CM-TRANSID: _____wD33yp_38dm6fAVAA--.20970W
+X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/xtbB0hNEXmWXz4pRpQADsb
+X-Coremail-Antispam: 1U5529EdanIXcx71UUUUU7vcSsGvfC2KfnxnUU==
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240822_142449_180201_0EC7620E 
-X-CRM114-Status: GOOD (  15.06  )
+X-CRM114-CacheID: sfid-20240822_180247_267086_A36C492C 
+X-CRM114-Status: GOOD (  12.88  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,121 +96,58 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On rk3576 the tunable clocks are inside the controller itself, removing
-the need for the "ciu-drive" and "ciu-sample" clocks.
-
-That makes it a new type of controller that has its own dt_parse function.
-
-Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
----
- drivers/mmc/host/dw_mmc-rockchip.c | 48 ++++++++++++++++++++++++++----
- 1 file changed, 43 insertions(+), 5 deletions(-)
-
-diff --git a/drivers/mmc/host/dw_mmc-rockchip.c b/drivers/mmc/host/dw_mmc-rockchip.c
-index 1458cb5fd5c7..7c8ccf5e71bc 100644
---- a/drivers/mmc/host/dw_mmc-rockchip.c
-+++ b/drivers/mmc/host/dw_mmc-rockchip.c
-@@ -410,7 +410,7 @@ static int dw_mci_rk3288_execute_tuning(struct dw_mci_slot *slot, u32 opcode)
- 	return ret;
- }
- 
--static int dw_mci_rk3288_parse_dt(struct dw_mci *host)
-+static int dw_mci_common_parse_dt(struct dw_mci *host)
- {
- 	struct device_node *np = host->dev->of_node;
- 	struct dw_mci_rockchip_priv_data *priv;
-@@ -420,13 +420,29 @@ static int dw_mci_rk3288_parse_dt(struct dw_mci *host)
- 		return -ENOMEM;
- 
- 	if (of_property_read_u32(np, "rockchip,desired-num-phases",
--					&priv->num_phases))
-+				 &priv->num_phases))
- 		priv->num_phases = 360;
- 
- 	if (of_property_read_u32(np, "rockchip,default-sample-phase",
--					&priv->default_sample_phase))
-+				 &priv->default_sample_phase))
- 		priv->default_sample_phase = 0;
- 
-+	host->priv = priv;
-+
-+	return 0;
-+}
-+
-+static int dw_mci_rk3288_parse_dt(struct dw_mci *host)
-+{
-+	struct dw_mci_rockchip_priv_data *priv;
-+	int err;
-+
-+	err = dw_mci_common_parse_dt(host);
-+	if (err)
-+		return err;
-+
-+	priv = host->priv;
-+
- 	priv->drv_clk = devm_clk_get(host->dev, "ciu-drive");
- 	if (IS_ERR(priv->drv_clk))
- 		dev_dbg(host->dev, "ciu-drive not available\n");
-@@ -435,13 +451,25 @@ static int dw_mci_rk3288_parse_dt(struct dw_mci *host)
- 	if (IS_ERR(priv->sample_clk))
- 		dev_dbg(host->dev, "ciu-sample not available\n");
- 
--	host->priv = priv;
--
- 	priv->internal_phase = false;
- 
- 	return 0;
- }
- 
-+static int dw_mci_rk3576_parse_dt(struct dw_mci *host)
-+{
-+	struct dw_mci_rockchip_priv_data *priv;
-+	int err = dw_mci_common_parse_dt(host);
-+	if (err)
-+		return err;
-+
-+	priv = host->priv;
-+
-+	priv->internal_phase = true;
-+
-+	return 0;
-+}
-+
- static int dw_mci_rockchip_init(struct dw_mci *host)
- {
- 	int ret, i;
-@@ -483,11 +511,21 @@ static const struct dw_mci_drv_data rk3288_drv_data = {
- 	.init			= dw_mci_rockchip_init,
- };
- 
-+static const struct dw_mci_drv_data rk3576_drv_data = {
-+	.common_caps		= MMC_CAP_CMD23,
-+	.set_ios		= dw_mci_rk3288_set_ios,
-+	.execute_tuning		= dw_mci_rk3288_execute_tuning,
-+	.parse_dt		= dw_mci_rk3576_parse_dt,
-+	.init			= dw_mci_rockchip_init,
-+};
-+
- static const struct of_device_id dw_mci_rockchip_match[] = {
- 	{ .compatible = "rockchip,rk2928-dw-mshc",
- 		.data = &rk2928_drv_data },
- 	{ .compatible = "rockchip,rk3288-dw-mshc",
- 		.data = &rk3288_drv_data },
-+	{ .compatible = "rockchip,rk3576-dw-mshc",
-+		.data = &rk3576_drv_data },
- 	{},
- };
- MODULE_DEVICE_TABLE(of, dw_mci_rockchip_match);
--- 
-2.46.0
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+Ckhp77yMCgrlnKggMjAyNC0wOC0yMiAxOTo1OTo0M++8jCJDcmlzdGlhbiBDaW9jYWx0ZWEiIDxj
+cmlzdGlhbi5jaW9jYWx0ZWFAY29sbGFib3JhLmNvbT4g5YaZ6YGT77yaCj5PbiA4LzIyLzI0IDEx
+OjQxIEFNLCBDb25vciBEb29sZXkgd3JvdGU6Cj4+IE9uIFRodSwgQXVnIDIyLCAyMDI0IGF0IDA5
+OjAxOjM0QU0gKzAyMDAsIEhlaWtvIFN0w7xibmVyIHdyb3RlOgo+Pj4gQENvbm9yOiBqdXN0IGZv
+ciBtZSwgZGlkIHNvbWUgc2hpZnQgaGFwcGVuIGluIG91ciB1bmRlcnN0YW5kaW5nIG9mIGR0LQo+
+Pj4gYmVzdC1wcmFjdGljZXMgaW4gdGVybXMgb2Ygc3lzY29uIHZpYSBwaGFuZGxlIHZzLiBzeXNj
+b24gdmlhIGNvbXBhdGlibGU/Cj4+Pgo+Pj4gQmVjYXVzZSBSb2NrY2hpcCBib2FyZHMgYXJlIHJl
+ZmVyZW5jaW5nIHRoZWlyIEdSRnMgdmlhIHBoYW5kZXMgZm9yZXZlcgo+Pj4gYnV0IHNpbWlsYXIg
+dG8gdGhlIHNvYyB2cyBub24tc29jIG5vZGUgdGhpbmcsIEknZCBsaWtlIHRvIHN0YXkgb24gdG9w
+IG9mCj4+PiBiZXN0LXByYWN0aWNlcyA7LSkKPj4gCj4+IElmIElQIGJsb2NrcywgYW5kIHRodXMg
+ZHJpdmVycywgYXJlIGdvaW5nIHRvIGJlIHJldXNlZCBiZXR3ZWVuIGRldmljZXMsCj4+IHVzaW5n
+IHRoZSBwaGFuZGxlcyBtYWtlcyBzZW5zZSBnaXZlbiB0aGF0IGl0IGlzIHVubGlrZWx5IHRoYXQg
+c3lzY29uCj4+IG5vZGVzIGNhbiBtYWtlIHVzZSBvZiBmYWxsYmFjayBjb21wYXRpYmxlcyBkdWUg
+dG8gYml0cyB3aXRoaW4gdGhhdCAiZ2x1ZSIKPj4gY2hhbmdpbmcgYmV0d2VlbiBkZXZpY2VzLiBJ
+dCBhbHNvIG1ha2VzIHNlbnNlIHdoZW4gdGhlcmUgYXJlIG11bHRpcGxlCj4+IGluc3RhbmNlcyBv
+ZiBhbiBJUCBvbiB0aGUgZGV2aWNlLCB3aGljaCBuZWVkIHRvIHVzZSBkaWZmZXJlbnQgc3lzY29u
+cy4KPj4gTXkgZ29hbCBpcyB0byBhc2sgcGVvcGxlIHdoeSB0aGV5IGFyZSB1c2luZyB0aGVzZSB0
+eXBlIG9mIHN5c2NvbnMKPj4gcGhhbmRsZSBwcm9wZXJ0aWVzLCBjb3Mgb2Z0ZW4gdGhleSBhcmUg
+bm90IHJlcXVpcmVkIGF0IGFsbCAtIGZvciBleGFtcGxlCj4+IHdpdGggY2xvY2tzIHdoZXJlIHlv
+dSBlZmZlY3RpdmVseSBuZWVkIGEgd2hvbGUgbmV3IGRyaXZlciBmb3IgZXZlcnkKPj4gc2luZ2xl
+IHNvYyBhbmQgaGF2aW5nIGEgcGhhbmRsZSBwcm9wZXJ0eSBidXlzIHlvdSBub3RoaW5nLgo+Cj5U
+aGF0IHdvdWxkIGJlIGFsc28gdGhlIGNhc2UgZm9yIHRoaXMgSERNSSBjb250cm9sbGVyIC0gbmVl
+ZCB0byBjaGVjayB0aGUKPnNwZWNzIGZvciB0aGUgbmV3ZXIgUkszNTc2IFNvQywgYnV0IEkgZXhw
+ZWN0IHRoZSBzeXNjb25zIHdvdWxkIGJlIHF1aXRlCj5kaWZmZXJlbnQgd2hlbiBjb21wYXJlZCB0
+byBSSzM1ODgsIGhlbmNlIHdlIHNob3VsZCBrZWVwIG1ha2luZyB1c2Ugb2YKPnRoZSBwaGFuZGxl
+cy4KCgpZZXPvvIxmb3IgcmszNTc277yMaXQgc2hhcmVzIHRoZSBzYW1lIEhETUkgSVAgYmxvY2vv
+vIhoZG1pIGNvbnRyb2xsZXIgYW5kIFBIWe+8ie+8jApvZiBjb3Vyc2UgcmV1c2UgdGhlIGRyaXZl
+ciBvZiByazM1ODjvvIwgYnV0IGl0IGhhcyBkaWZmZXJlbnQgR1JGIHRvIGRlcGVuZHMgb25bMF06
+CndoaWNoIGNhbGxzIGlvY19ncmYgYW5kIHZvMF9ncmY6CgpJIGFsc28gYmVsaWV2ZSB0aGF0IG1h
+a2VpbmcgdXNlIG9mIHBoYW5kbGUgYmVuZWZpY2lhbCBmb3IgZGlmZmVyZW50IGRldmljZXMgdG8g
+cmV1c2UgdGhlIHNhbWUgY29kZS4KCmhkbWk6IGhkbWlAMjdkYTAwMDAgewogICAgICAgICAgICAg
+ICAgY29tcGF0aWJsZSA9ICJyb2NrY2hpcCxyazM1NzYtZHctaGRtaSI7CiAgICAgICAgICAgICAg
+ICByZWcgPSA8MHgwIDB4MjdkYTAwMDAgMHgwIDB4MTAwMDA+LCA8MHgwIDB4MjdkYjAwMDAgMHgw
+IDB4MTAwMDA+OwogICAgICAgICAgICAgICAgaW50ZXJydXB0cyA9IDxHSUNfU1BJIDMzOCBJUlFf
+VFlQRV9MRVZFTF9ISUdIPiwKICAgICAgICAgICAgICAgICAgICAgICAgICAgICA8R0lDX1NQSSAz
+MzkgSVJRX1RZUEVfTEVWRUxfSElHSD4sCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgPEdJ
+Q19TUEkgMzQwIElSUV9UWVBFX0xFVkVMX0hJR0g+LAogICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgIDxHSUNfU1BJIDM0MSBJUlFfVFlQRV9MRVZFTF9ISUdIPiwKICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICA8R0lDX1NQSSAzNjcgSVJRX1RZUEVfTEVWRUxfSElHSD47CiwgICAgICAgICAg
+ICByb2NrY2hpcCxncmYgPSA8JmlvY19ncmY+OwogICAgICAgICAgICAgcm9ja2NoaXAsdm8wX2dy
+ZiA9IDwmdm8wX2dyZj47CiAgICAgICAgICAgICBwaHlzID0gPCZoZHB0eHBoeV9oZG1pPjsKICAg
+ICAgICAgICAgIHBoeS1uYW1lcyA9ICJoZG1pIjsKCgpbMF1odHRwczovL2dpdGh1Yi5jb20vYXJt
+Ymlhbi9saW51eC1yb2NrY2hpcC9ibG9iL3JrLTYuMS1ya3IzL2FyY2gvYXJtNjQvYm9vdC9kdHMv
+cm9ja2NoaXAvcmszNTc2LmR0c2kjTDMxMjJDMi1MMzEyM0MzMwoKPgo+X19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KPkxpbnV4LXJvY2tjaGlwIG1haWxpbmcg
+bGlzdAo+TGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwo+aHR0cDovL2xpc3RzLmlu
+ZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcApfX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5n
+IGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5m
+cmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
