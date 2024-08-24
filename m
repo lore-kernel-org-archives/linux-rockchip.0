@@ -4,106 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47987C52D6F
-	for <linux-rockchip@archiver.kernel.org>; Sat, 24 Aug 2024 06:22:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B88BDC52D6F
+	for <linux-rockchip@archiver.kernel.org>; Sat, 24 Aug 2024 06:31:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=/Qd1KBq8oCwjWmITuKFY2ZTOcXscNB19PrHwj5GH+fQ=; b=4tEAOfpkNHWgRE
-	obV0ey0wCc0yAbskyEV8GGKSXikR3MUvxHu9pRFmPesyNrSpfrHXcxJBwhDwY/bx4kLWaboO0kwRZ
-	JfmtKLMMi5TR3/ivZ1QIiEXniYLdqgAYZpY2kBNweQRwt9QCbYIl+jS4FTO9ulYIP/vMgziRHGx3X
-	puVjV0FcaPaPZR6/GBlp4e2J1eKnGyI9PeQfbNBclCd+wQlRSj0VMkBKhMD/rRQ69pkAwhkDJUsM/
-	gA13h0hen1+jd8LPi/AW0h5SWYjW/7gj5fc3JHl8kR8T7HGM4koyRWjoJjryovvQo6rt7gq0SB5N6
-	IqSzj+RSHJfQZD9jkf8A==;
+	List-Owner; bh=wvPZl63uM/yVskLvJgPAIt1a0MT5CdUrqB+qm4zbmno=; b=KY/CXpF8AjhCrC
+	44EZ3iBOXinR7QFaCYNI2bbtaSyNEWQTpG7B+xXwPK2PKfUlBFn6U24jxku7o62oN3y6uaKQvhVwh
+	pkg/q8gjI1kNCyebElWn+98h5SQhkyaaFL6P27LltEqt/9RbyIp9PcvPEdLlZzMt01XMIQ1Z0iwHB
+	wmkqrnQVjdaCTfHyL8iSoiOHK1qP28N2VbD4XOlMxyTBNi6dQIasj+RtaBq3ANIDcbi8bzgfdU1ZV
+	rI9iolBZHZVMkNCQ7tcSY+dPqVP9sXRywl2R2LrXlx7tRKoro7EwNuww24XMKohV56ud/xrtJO+oH
+	nTibfRv0ex9J8+O7WGiw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1shkA5-00000001dLs-2KqN;
-	Sat, 24 Aug 2024 06:22:09 +0000
-Received: from sin.source.kernel.org ([145.40.73.55])
+	id 1shkJU-00000001eUa-1BM5;
+	Sat, 24 Aug 2024 06:31:52 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1shk9H-00000001dCd-3f9q;
-	Sat, 24 Aug 2024 06:21:21 +0000
+	id 1shkJR-00000001eTn-0S4o;
+	Sat, 24 Aug 2024 06:31:50 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 2199ECE028A;
-	Sat, 24 Aug 2024 06:21:15 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id BA70AC32781;
-	Sat, 24 Aug 2024 06:21:10 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1724480474;
-	bh=Z6dWcYlPqm06YNAPdt4xcnuztyIyRWWD6uU4nqxVD8s=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=JUxtK1Qk+E9SRPmlvA+BMvxzMevULKBMMI+tTnViNt+ZxyJHBoGPdq6oNTG/sagzL
-	 ep2TwG0rLuPikrojnP41v455if1nPv5Qapbz0PxOIWga7ZyR3TsLZ5hdlxt6C7ht+c
-	 XPtrubsXJ1F1TFIWh8uLApSCjH8UBobNApJQ1v+q7VyNyxm38Ui2/aqJCO40P94m6N
-	 l/4v1sK4SAOpvK5C9ml+uGFH07nvXlYe9CwhxkZ/9KibkyOHuPN7/JNleXdepoz6oG
-	 9Wdaw2j1NP7XINRSJTe/Dg5I9IxQ7e0T5zN8a4QQIFJDLMd/36mbtrAEoa7w5W79Fa
-	 VTJ2VlmhUnuvA==
-Message-ID: <595a4009-ba70-44c1-b5a1-7a692624e196@kernel.org>
-Date: Sat, 24 Aug 2024 08:21:08 +0200
+	by nyc.source.kernel.org (Postfix) with ESMTP id B54A6A40179;
+	Sat, 24 Aug 2024 06:31:40 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B79BEC32781;
+	Sat, 24 Aug 2024 06:31:31 +0000 (UTC)
+Date: Sat, 24 Aug 2024 08:31:28 +0200
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+To: Detlev Casanova <detlev.casanova@collabora.com>
+Cc: linux-kernel@vger.kernel.org, Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Heiko Stuebner <heiko@sntech.de>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+	Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
+	David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>, 
+	Andi Shyti <andi.shyti@kernel.org>, Jonathan Cameron <jic23@kernel.org>, 
+	Lars-Peter Clausen <lars@metafoo.de>, Lee Jones <lee@kernel.org>, Ulf Hansson <ulf.hansson@linaro.org>, 
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Jiri Slaby <jirislaby@kernel.org>, 
+	Mark Brown <broonie@kernel.org>, Wim Van Sebroeck <wim@linux-watchdog.org>, 
+	Guenter Roeck <linux@roeck-us.net>, Chris Morgan <macromorgan@hotmail.com>, 
+	Jonas Karlman <jonas@kwiboo.se>, Tim Lunn <tim@feathertop.org>, Chukun Pan <amadeus@jmu.edu.cn>, 
+	Andy Yan <andyshrk@163.com>, Muhammed Efe Cetin <efectn@protonmail.com>, 
+	Jagan Teki <jagan@edgeble.ai>, Dragan Simic <dsimic@manjaro.org>, Ondrej Jirman <megi@xff.cz>, 
+	Michael Riesch <michael.riesch@wolfvision.net>, Jimmy Hon <honyuenkwun@gmail.com>, 
+	Alexey Charkov <alchark@gmail.com>, Elon Zhang <zhangzj@rock-chips.com>, 
+	Elaine Zhang <zhangqing@rock-chips.com>, Yifeng Zhao <yifeng.zhao@rock-chips.com>, 
+	Finley Xiao <finley.xiao@rock-chips.com>, Liang Chen <cl@rock-chips.com>, 
+	Jisheng Zhang <jszhang@kernel.org>, Jamie Iles <jamie@jamieiles.com>, devicetree@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+	dri-devel@lists.freedesktop.org, linux-i2c@vger.kernel.org, linux-iio@vger.kernel.org, 
+	linux-mmc@vger.kernel.org, linux-serial@vger.kernel.org, linux-spi@vger.kernel.org, 
+	linux-watchdog@vger.kernel.org, kernel@collabora.com
+Subject: Re: [PATCH v2 04/12] dt-bindings: iio: adc: Add
+ rockchip,rk3576-saradc string
+Message-ID: <wegeyglbv5xufuvpmf2ye2bu6w5ob753h4hfimxw3ozt2vnfoh@fgvdblizg5hc>
+References: <20240823150057.56141-1-detlev.casanova@collabora.com>
+ <20240823150057.56141-5-detlev.casanova@collabora.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 2/8] ARM: dts: rockchip: Add i2s0 node for RV1126
-To: Karthikeyan Krishnasamy <karthikeyan@linumiz.com>, robh@kernel.org,
- krzk+dt@kernel.org, conor+dt@kernel.org, heiko@sntech.de,
- alexandre.belloni@bootlin.com
-Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-rtc@vger.kernel.org
-References: <20240823153528.3863993-1-karthikeyan@linumiz.com>
- <20240823153528.3863993-3-karthikeyan@linumiz.com>
-From: Krzysztof Kozlowski <krzk@kernel.org>
-Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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 fv0=
-In-Reply-To: <20240823153528.3863993-3-karthikeyan@linumiz.com>
+Content-Disposition: inline
+In-Reply-To: <20240823150057.56141-5-detlev.casanova@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240823_232120_292817_F6C3E8BD 
-X-CRM114-Status: UNSURE (   8.98  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240823_233149_229033_082F21A2 
+X-CRM114-Status: GOOD (  10.84  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -120,40 +83,17 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 23/08/2024 17:35, Karthikeyan Krishnasamy wrote:
-> Add i2s0 node and possible pinctrl for Rockchip RV1126
+On Fri, Aug 23, 2024 at 10:52:31AM -0400, Detlev Casanova wrote:
+> Add rockchip,rk3576-saradc compatible string.
+> The saradc on RK3576 is compatible with the one on RK3588, so they are
+> used together in an arm of the oneOf.
 > 
-> Signed-off-by: Karthikeyan Krishnasamy <karthikeyan@linumiz.com>
+> Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
+> Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+> Acked-by: Heiko Stuebner <heiko@sntech.de>
 > ---
->  .../arm/boot/dts/rockchip/rv1126-pinctrl.dtsi | 102 ++++++++++++++++++
->  arch/arm/boot/dts/rockchip/rv1126.dtsi        |  26 +++++
->  2 files changed, 128 insertions(+)
 
-...
-
-> +		i2s0m1_sdo1_sdi3: i2s0m1-sdo1_sdi3 {
-> +			rockchip,pins =
-> +			/* i2s0_sdo1_sdi3_m1 */
-> +			<3 RK_PB3 3 &pcfg_pull_none>;
-> +		};
-> +		i2s0m1_sdo2_sdi2: i2s0m1-sdo2_sdi2 {
-> +			rockchip,pins =
-> +			/* i2s0_sdo2_sdi2_m1 */
-> +			<3 RK_PB4 3 &pcfg_pull_none>;
-
-Weird alignment...
-
-> +		};
-> +		i2s0m1_sdo3_sdi1: i2s0m1-sdo3_sdi1 {
-
-No underscores in node names,
-
-> +			rockchip,pins =
-> +			/* i2s0_sdo3_sdi1_m1 */
-> +			<3 RK_PB5 3 &pcfg_pull_none>;
-> +		};
-> +	};
-
+Why do you keep sending the same patch which was already applied?
 
 Best regards,
 Krzysztof
