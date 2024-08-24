@@ -4,80 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 260A3C5472C
-	for <linux-rockchip@archiver.kernel.org>; Sat, 24 Aug 2024 07:53:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E3524C5472C
+	for <linux-rockchip@archiver.kernel.org>; Sat, 24 Aug 2024 08:00:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=CyXCUy542NNdI64U81NplSdbEaMTfhi1OcrTXauNylE=; b=A/GQhuF5+G1XcL
-	ZNFArUdvea7M6Vb5wXN6YuYYdmIcVkDwB1rS20Ri0t4Ekp1w7Mw/d/2IZagI9ynN3cf0t4b0WoCeK
-	IYiibsz4K1f1INX0RABt0wHVu2fSmQ2T/NIQ+vw2k0E4hjv+IRIGX2Ra+kK/RPWDGCBVkcB3JUe8T
-	26BrQ4q0ej1fr5o5QbdHxv326M4WinErfvhw7m16IVnm/ZY6sD1jKtxI+ut28dxsyf/wFk+7Bys8P
-	AW/8z6VViHKnLiay9wzhXDe0Vzd5H/CDra7bxM2rLkJjnFuYQtFHOr+J3cl5YSxLpwHYDp7K9jl7G
-	u0eRGONycKRy6qhYnvsQ==;
+	List-Owner; bh=QRiTEJoU/67+ncDNNLz8MDO+ldULeeCZ71u57DHVazk=; b=qiu4nfGjwqZiZ7
+	tfM1nSUhRD41XKAVkezdn8nwEM79okyqlFSYNMgVXfJd1aQrw6Qpk79HCVirLldrS0CMZgIRYtbBD
+	m+THmTLQAYq3vXY1wcdyMiiUUqRsD94X6wDUoDPbexGlWC1YV0+w4svxksBkJ8SgsWoDC1YV1K2iv
+	v91hnSORtfyMkvXhFMvA/DT36gEs354WBGwuiV4LkbYQiOVUWxXwwbCHqTR5ep0ziAfM/aRT49OdR
+	0zZ4AEEa+FnmhL9hrqcPaxqeNecelZFCLyQLq3aw8qU5I9q06ttDGnjKwCtQBByf+REq2VDPDABDj
+	yxOfrs9dN/mvKXW5IKVA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1shlag-00000001lbU-2KTz;
-	Sat, 24 Aug 2024 07:53:42 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1shlhT-00000001mfS-3n94;
+	Sat, 24 Aug 2024 08:00:43 +0000
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1shlad-00000001lae-1efC;
-	Sat, 24 Aug 2024 07:53:41 +0000
+	id 1shlgg-00000001mP3-1Swp;
+	Sat, 24 Aug 2024 07:59:55 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id CF875A408DD;
-	Sat, 24 Aug 2024 07:53:31 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 40974C32781;
-	Sat, 24 Aug 2024 07:53:18 +0000 (UTC)
+	by sin.source.kernel.org (Postfix) with ESMTP id 7F867CE0660;
+	Sat, 24 Aug 2024 07:59:52 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 29949C32781;
+	Sat, 24 Aug 2024 07:59:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1724486018;
-	bh=yRF+b26qzZbAF/lj54mqxmxSAmsnvppo3aM396oz6Qs=;
+	s=k20201202; t=1724486391;
+	bh=s1cX48c4dGqS99HJ/A0oVBXL2PLUWSeKDKTkEcyvka4=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=GC9kHJnz+ylQDLPiCSV9p1V2P5SYmpcIHXMeumKkTQpWR3I4djBw5t6awd8n+lh43
-	 BQsxl4+R/IDmczuyWAn5JLsKKK+TxOHyRg359W4wkQFsCV49emeVklAqQBDgfTyUjB
-	 /TpsruLYtzV/F0YzMiqKiqkrvciC/tdruR/ISte5xtus0gncKbOPoIh0zUsXnvJwwk
-	 yFUa3sBs5H0PZmsMLcN6/IFMrnfYWbL45EIurmvwJZ0iXssWNXototDoBG70bZX38e
-	 22Q8zhFWt6s71D5uBzZ34ujfrusS9hXLtwif6chlSGgRQJf/z/oejJqoOrTwvoFQse
-	 aVO5Iuslho1Lg==
-Date: Sat, 24 Aug 2024 09:53:16 +0200
+	b=r3kf4DsWIA5PuvL2zvKI9VfFRzJ/LFvd/5Us+xJzPbRRGhhAFcPQbd9Uxi4p2x0R3
+	 3YlMGT3fChqEHdWURhPEdkEWd9GXFU7mK/apEQkFCydM4VW/Bi5nKNZc0aFwMgSesQ
+	 TrHFvRyuaxFiCu8agoMq3dYUxL2f4WyJRol6ylhlpI/cV14ETYj5aVoGXIXcrsrmw7
+	 oXp6Ni9EJlNcD+E3+u5VwnarTZWriqGpPCQs698XdAX2ZU69V3PGnXxGW9mj8JOPSY
+	 E/1ZANTJoMRe1cKwgY6O4vixNp01Xr4bqZebh6OExLVm9ySlktPnxEV/83H7yRIxLd
+	 akXJxaGWEMmdg==
+Date: Sat, 24 Aug 2024 09:59:44 +0200
 From: Krzysztof Kozlowski <krzk@kernel.org>
-To: Detlev Casanova <detlev.casanova@collabora.com>
-Cc: linux-kernel@vger.kernel.org, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Heiko Stuebner <heiko@sntech.de>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
-	Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
-	David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>, 
-	Andi Shyti <andi.shyti@kernel.org>, Jonathan Cameron <jic23@kernel.org>, 
-	Lars-Peter Clausen <lars@metafoo.de>, Lee Jones <lee@kernel.org>, Ulf Hansson <ulf.hansson@linaro.org>, 
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Jiri Slaby <jirislaby@kernel.org>, 
-	Mark Brown <broonie@kernel.org>, Wim Van Sebroeck <wim@linux-watchdog.org>, 
-	Guenter Roeck <linux@roeck-us.net>, Chris Morgan <macromorgan@hotmail.com>, 
-	Jonas Karlman <jonas@kwiboo.se>, Tim Lunn <tim@feathertop.org>, Chukun Pan <amadeus@jmu.edu.cn>, 
-	Andy Yan <andyshrk@163.com>, Muhammed Efe Cetin <efectn@protonmail.com>, 
-	Jagan Teki <jagan@edgeble.ai>, Dragan Simic <dsimic@manjaro.org>, Ondrej Jirman <megi@xff.cz>, 
-	Michael Riesch <michael.riesch@wolfvision.net>, Jimmy Hon <honyuenkwun@gmail.com>, 
-	Alexey Charkov <alchark@gmail.com>, Elon Zhang <zhangzj@rock-chips.com>, 
-	Elaine Zhang <zhangqing@rock-chips.com>, Yifeng Zhao <yifeng.zhao@rock-chips.com>, 
-	Finley Xiao <finley.xiao@rock-chips.com>, Liang Chen <cl@rock-chips.com>, 
-	Jisheng Zhang <jszhang@kernel.org>, Jamie Iles <jamie@jamieiles.com>, devicetree@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
-	dri-devel@lists.freedesktop.org, linux-i2c@vger.kernel.org, linux-iio@vger.kernel.org, 
-	linux-mmc@vger.kernel.org, linux-serial@vger.kernel.org, linux-spi@vger.kernel.org, 
-	linux-watchdog@vger.kernel.org, kernel@collabora.com
-Subject: Re: [PATCH v2 10/12] dt-bindings: spi: Add rockchip,rk3576-spi
- compatible
-Message-ID: <r474bbm3nnqwvgb6dumes5opxzw2sb7ck4ehqdhig7ejdabnxw@vgmafb7dayry>
-References: <20240823150057.56141-1-detlev.casanova@collabora.com>
- <1995660.usQuhbGJ8B@trenzalore>
+To: Karthikeyan Krishnasamy <karthikeyan@linumiz.com>
+Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org, 
+	heiko@sntech.de, alexandre.belloni@bootlin.com, devicetree@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	linux-rtc@vger.kernel.org
+Subject: Re: [PATCH 8/8] ARM: dts: rockchip: Add Relfor Saib board
+Message-ID: <3qczmjehmxro534jqmophdx3tkbfb6nkdv4jq35cwttqpfcbkx@6zwvtvdmrcbg>
+References: <20240823153528.3863993-1-karthikeyan@linumiz.com>
+ <20240823153528.3863993-9-karthikeyan@linumiz.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <1995660.usQuhbGJ8B@trenzalore>
+In-Reply-To: <20240823153528.3863993-9-karthikeyan@linumiz.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240824_005339_522096_20DF2E2F 
-X-CRM114-Status: UNSURE (   8.90  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240824_005954_762621_33343884 
+X-CRM114-Status: GOOD (  19.22  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,20 +74,224 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, Aug 23, 2024 at 12:07:10PM -0400, Detlev Casanova wrote:
-> It is compatible with the rockchip,rk3066-spi SPI core.
+On Fri, Aug 23, 2024 at 09:05:28PM +0530, Karthikeyan Krishnasamy wrote:
+> Saib is an consumer electronics board from Relfor
+> consists of 1GB RAM, 4GB eMMC.
+> Other peripherals:
+>  - Bluetooth 4.2
+>  - WiFi 5G/2.5G
+>  - IR transmitter/receiver
+>  - RTC rv3028
+>  - User leds
+>  - Switch
+> 
+> Add support for it.
+> 
+> Signed-off-by: Karthikeyan Krishnasamy <karthikeyan@linumiz.com>
+> ---
+>  arch/arm/boot/dts/rockchip/Makefile           |   1 +
+>  .../boot/dts/rockchip/rv1109-relfor-saib.dts  | 439 ++++++++++++++++++
+>  2 files changed, 440 insertions(+)
+>  create mode 100644 arch/arm/boot/dts/rockchip/rv1109-relfor-saib.dts
+> 
+> diff --git a/arch/arm/boot/dts/rockchip/Makefile b/arch/arm/boot/dts/rockchip/Makefile
+> index ab4cd9aab722..716f5540e438 100644
+> --- a/arch/arm/boot/dts/rockchip/Makefile
+> +++ b/arch/arm/boot/dts/rockchip/Makefile
+> @@ -2,6 +2,7 @@
+>  dtb-$(CONFIG_ARCH_ROCKCHIP) += \
+>  	rv1108-elgin-r1.dtb \
+>  	rv1108-evb.dtb \
+> +	rv1109-relfor-saib.dtb \
+>  	rv1109-sonoff-ihost.dtb \
+>  	rv1126-edgeble-neu2-io.dtb \
+>  	rv1126-sonoff-ihost.dtb \
+> diff --git a/arch/arm/boot/dts/rockchip/rv1109-relfor-saib.dts b/arch/arm/boot/dts/rockchip/rv1109-relfor-saib.dts
+> new file mode 100644
+> index 000000000000..7d7292bad779
+> --- /dev/null
+> +++ b/arch/arm/boot/dts/rockchip/rv1109-relfor-saib.dts
+> @@ -0,0 +1,439 @@
+> +// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
+> +/*
+> + * Copyright (c) 2024 Relfor Labs Pvt. Ltd.
+> + */
+> +
+> +
+> +/dts-v1/;
+> +#include "rv1109.dtsi"
+> +#include <dt-bindings/leds/common.h>
+> +#include <dt-bindings/input/input.h>
+> +
+> +/ {
+> +	model = "Rockchip RV1109 Relfor Saib Board";
+> +	compatible = "relfor,saib", "rockchip,rv1109";
+> +
+> +	vcc5v0_sys: vcc5v0-sys {
+> +		compatible = "regulator-fixed";
+> +		regulator-name = "vcc5v0_sys";
+> +		regulator-always-on;
+> +		regulator-boot-on;
+> +		regulator-min-microvolt = <5000000>;
+> +		regulator-max-microvolt = <5000000>;
+> +	};
+> +
+> +	/* Power sequence 1 */
+> +	vcc_0v8: vcc-0v8 {
+> +		compatible = "regulator-fixed";
+> +		regulator-name = "vcc_0v8";
+> +		regulator-always-on;
+> +		regulator-boot-on;
+> +		regulator-min-microvolt = <800000>;
+> +		startup-delay-us = <150>;
+> +		regulator-max-microvolt = <800000>;
+> +		vin-supply = <&vcc5v0_sys>;
+> +	};
+> +
+> +	/* Power sequence 2 */
+> +	vdd_npu_vepu: vdd-npu-vepu {
+> +		compatible = "pwm-regulator";
+> +		pwms = <&pwm1 0 5000 1>;
+> +		regulator-name = "vdd_npu_vepu";
+> +		regulator-min-microvolt = <650000>;
+> +		regulator-max-microvolt = <950000>;
+> +		regulator-always-on;
+> +		regulator-boot-on;
+> +		regulator-settling-time-up-us = <18000>;
+> +		pwm-supply = <&vcc3v3_sys>;
+> +		vin-supply = <&vcc5v0_sys>;
+> +		status = "okay";
 
-Same comments...
+Where is it being disabled?
 
-subject: spi: dt-bindings:
+> +	};
+> +
+> +	vdd_arm: vdd-arm {
+> +		compatible = "pwm-regulator";
+> +		pwms = <&pwm0 0 5000 1>;
+> +		regulator-name = "vdd_arm";
+> +		regulator-min-microvolt = <720000>;
+> +		regulator-max-microvolt = <1000000>;
+> +		regulator-always-on;
+> +		regulator-boot-on;
+> +		regulator-settling-time-up-us = <18000>;
+> +		pwm-supply = <&vcc3v3_sys>;
+> +		vin-supply = <&vcc5v0_sys>;
+> +		status = "okay";
 
-Please use subject prefixes matching the subsystem. You can get them for
-example with  on the directory
-your patch is touching. For bindings, the preferred subjects are
-explained here:
-https://www.kernel.org/doc/html/latest/devicetree/bindings/submitting-patches.html#i-for-patch-submitters
+? same question
 
-Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+> +	};
+> +
+> +	/* Power sequence 3 */
+> +	vcc_1v8: vcc-1v8 {
+> +		compatible = "regulator-fixed";
+> +		regulator-name = "vcc_1v8";
+> +		regulator-always-on;
+> +		regulator-boot-on;
+> +		startup-delay-us = <51000>;
+> +		regulator-min-microvolt = <1800000>;
+> +		regulator-max-microvolt = <1800000>;
+> +		vin-supply = <&vcc5v0_sys>;
+> +	};
+> +
+> +	/* Power sequence 4 */
+> +	vcc_1v2_ddr: vcc-1v2-ddr {
+> +		compatible = "regulator-fixed";
+> +		regulator-name = "vcc_1v2_ddr";
+> +		regulator-always-on;
+> +		regulator-boot-on;
+> +		startup-delay-us = <75000>;
+> +		regulator-min-microvolt = <1200000>;
+> +		regulator-max-microvolt = <1200000>;
+> +		vin-supply = <&vcc5v0_sys>;
+> +	};
+> +
+> +	/* Power sequence 5 */
+> +	vcc3v3_sys: vcc3v3-sys {
+> +		status = "okay";
+
+Huh? Drop
+
+> +		compatible = "regulator-fixed";
+> +		regulator-name = "vcc3v3_sys";
+> +		regulator-always-on;
+> +		regulator-boot-on;
+> +		startup-delay-us = <75000>;
+> +		regulator-min-microvolt = <3300000>;
+> +		regulator-max-microvolt = <3300000>;
+> +		vin-supply = <&vcc5v0_sys>;
+> +	};
+> +
+> +	/* LDO 2.5V */
+> +	vcc_2v5_ddr: vcc-2v5-ddr {
+> +		compatible = "regulator-fixed";
+> +		regulator-name = "vcc_2v5_ddr";
+> +		regulator-always-on;
+> +		regulator-boot-on;
+> +		regulator-min-microvolt = <2500000>;
+> +		regulator-max-microvolt = <2500000>;
+> +		vin-supply = <&vcc3v3_sys>;
+> +	};
+> +
+> +	/* Power IR transmitter */
+> +	vcc1v8_ir: vcc1v8-ir {
+> +		status = "okay";
+
+Drop
+
+> +		compatible = "regulator-fixed";
+> +		regulator-name = "vcc1v8_ir";
+> +		regulator-always-on;
+> +		regulator-boot-on;
+> +		regulator-min-microvolt = <1800000>;
+> +		regulator-max-microvolt = <1800000>;
+> +		vin-supply = <&vcc5v0_sys>;
+> +	};
+> +
+> +	sdio_pwrseq: pwrseq-sdio {
+> +		compatible = "mmc-pwrseq-simple";
+> +		clocks = <&rtc0>;
+> +		clock-names = "ext_clock";
+> +		pinctrl-names = "default";
+> +		pinctrl-0 = <&wifi_enable_h>;
+> +		reset-gpios = <&gpio1 RK_PD0 GPIO_ACTIVE_LOW>;
+> +	};
+> +
+> +	ir_receiver: ir-receiver {
+> +		compatible = "gpio-ir-receiver";
+> +		gpios = <&gpio3  RK_PB4 GPIO_ACTIVE_LOW>;
+> +		pinctrl-names = "default";
+> +		pinctrl-0 = <&ir_rx>;
+> +		status = "okay";
+
+Where is it disabled?
+
+> +	};
+> +
+> +	ir_transmitter: ir-transmitter {
+> +		compatible = "pwm-ir-tx";
+> +		pwms = <&pwm11 0 10000000 1>;
+> +		status = "okay";
+
+Do you see the pattern here? Some NEW nodes have status=okay, some not.
+It does not make much sense, right?
+
+> +	};
+> +
+> +	gpio-keys {
+> +		compatible = "gpio-keys";
+> +
+> +		button {
+> +			gpios = <&gpio2 RK_PA7 GPIO_ACTIVE_HIGH>;
+> +			status = "okay";
+
+Drop... this applies everywhere.
+
+> +			linux,code = <KEY_DATA>;
+> +			label = "GPIO User Switch";
+> +			linux,input-type = <1>;
+> +		};
 
 Best regards,
 Krzysztof
