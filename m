@@ -4,61 +4,106 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 30E22C52D6F
-	for <linux-rockchip@archiver.kernel.org>; Sat, 24 Aug 2024 05:15:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47987C52D6F
+	for <linux-rockchip@archiver.kernel.org>; Sat, 24 Aug 2024 06:22:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=jtE+HNrUKKgjDXJuNro+wqbTKxA/74PB4rZ7Jfc+sXo=; b=DZgX7Syp/mCEsg
-	jQ/5hzNh8fomj/ViMoUDzfsDESMLHWaUuCdUZc+kzNne8mr695o11hXXa9gi7Ac0+EB/zdG0rEnt+
-	BNjeXAeNAIU59Z0l2IpewDPlIzMNwrDExsFS9ZbiuQb2B4cc7yItTPQsD0jlbA0d0qNYxykKJPkp0
-	BDXogGcWVudMwSt5F20niLzYEB7XRvYVZf7y+eGqXBPjSFBXqFNqV+N3jtIbRH7emTHx9STMG/y1y
-	zzUsOnRrKql/n0lLW03MYhe3ZS/jIlBB/EahNIGR0+jMhhzT+WycvebTa5Fi2swsYVezNLFbhMb7V
-	nTGp/eN/91H/BNlL2hWg==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=/Qd1KBq8oCwjWmITuKFY2ZTOcXscNB19PrHwj5GH+fQ=; b=4tEAOfpkNHWgRE
+	obV0ey0wCc0yAbskyEV8GGKSXikR3MUvxHu9pRFmPesyNrSpfrHXcxJBwhDwY/bx4kLWaboO0kwRZ
+	JfmtKLMMi5TR3/ivZ1QIiEXniYLdqgAYZpY2kBNweQRwt9QCbYIl+jS4FTO9ulYIP/vMgziRHGx3X
+	puVjV0FcaPaPZR6/GBlp4e2J1eKnGyI9PeQfbNBclCd+wQlRSj0VMkBKhMD/rRQ69pkAwhkDJUsM/
+	gA13h0hen1+jd8LPi/AW0h5SWYjW/7gj5fc3JHl8kR8T7HGM4koyRWjoJjryovvQo6rt7gq0SB5N6
+	IqSzj+RSHJfQZD9jkf8A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1shj7K-00000001VYy-1OPu;
-	Sat, 24 Aug 2024 05:15:14 +0000
-Received: from mail-m17237.xmail.ntesmail.com ([45.195.17.237])
+	id 1shkA5-00000001dLs-2KqN;
+	Sat, 24 Aug 2024 06:22:09 +0000
+Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1shj7G-00000001VY7-3NK6;
-	Sat, 24 Aug 2024 05:15:12 +0000
-DKIM-Signature: a=rsa-sha256;
-	b=KFdvO7JscHuM/NTAAGVKObPjlLINFAnduAYtJLeB9c6tYIjoNrnFYJFXjLSxBCG400goR1rVJuD32o8LedATmKds7ONUrzKlcK/2qVNQZ4zc65cO4Basm004NSOKJpi2kbvBNGW0L5zwT04GW8a4YpwX4DVE32J9M9B6w8pWsZQ=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
-	bh=nd5VIf5W6pvlmFIxeaG4uBeEYTx1cRTIUzJ8Ujk2LXs=;
-	h=date:mime-version:subject:message-id:from;
-Received: from rockchip.. (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTPA id DA5DD6E085D;
-	Sat, 24 Aug 2024 13:14:54 +0800 (CST)
-From: Jon Lin <jon.lin@rock-chips.com>
-To: briannorris@chromium.org,
-	broonie@kernel.org
-Cc: linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	heiko@sntech.de,
-	jon.lin@rock-chips.com,
-	linux-arm-kernel@lists.infradead.org,
-	linux-spi@vger.kernel.org
-Subject: [PATCH] spi: rockchip: Avoid redundant clock disable in pm operation
-Date: Sat, 24 Aug 2024 13:14:52 +0800
-Message-Id: <20240824051452.3954878-1-jon.lin@rock-chips.com>
-X-Mailer: git-send-email 2.34.1
+	id 1shk9H-00000001dCd-3f9q;
+	Sat, 24 Aug 2024 06:21:21 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sin.source.kernel.org (Postfix) with ESMTP id 2199ECE028A;
+	Sat, 24 Aug 2024 06:21:15 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id BA70AC32781;
+	Sat, 24 Aug 2024 06:21:10 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1724480474;
+	bh=Z6dWcYlPqm06YNAPdt4xcnuztyIyRWWD6uU4nqxVD8s=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=JUxtK1Qk+E9SRPmlvA+BMvxzMevULKBMMI+tTnViNt+ZxyJHBoGPdq6oNTG/sagzL
+	 ep2TwG0rLuPikrojnP41v455if1nPv5Qapbz0PxOIWga7ZyR3TsLZ5hdlxt6C7ht+c
+	 XPtrubsXJ1F1TFIWh8uLApSCjH8UBobNApJQ1v+q7VyNyxm38Ui2/aqJCO40P94m6N
+	 l/4v1sK4SAOpvK5C9ml+uGFH07nvXlYe9CwhxkZ/9KibkyOHuPN7/JNleXdepoz6oG
+	 9Wdaw2j1NP7XINRSJTe/Dg5I9IxQ7e0T5zN8a4QQIFJDLMd/36mbtrAEoa7w5W79Fa
+	 VTJ2VlmhUnuvA==
+Message-ID: <595a4009-ba70-44c1-b5a1-7a692624e196@kernel.org>
+Date: Sat, 24 Aug 2024 08:21:08 +0200
 MIME-Version: 1.0
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGhlOGlZIS0lPGE9LSUsaSElWFRQJFh
-	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
-	hVSktLVUpCS0tZBg++
-X-HM-Tid: 0a9182cf15d509d5kunmda5dd6e085d
-X-HM-MType: 1
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6PTo6Hjo4OTIrKBoVOQoBVh4O
-	NzIaCkpVSlVKTElPT0xNT0JOTE9PVTMWGhIXVREUFVUXEhU7CRQYEFYYExILCFUYFBZFWVdZEgtZ
-	QVlOQ1VJSVVMVUpKT1lXWQgBWUFPTElDNwY+
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 2/8] ARM: dts: rockchip: Add i2s0 node for RV1126
+To: Karthikeyan Krishnasamy <karthikeyan@linumiz.com>, robh@kernel.org,
+ krzk+dt@kernel.org, conor+dt@kernel.org, heiko@sntech.de,
+ alexandre.belloni@bootlin.com
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-rtc@vger.kernel.org
+References: <20240823153528.3863993-1-karthikeyan@linumiz.com>
+ <20240823153528.3863993-3-karthikeyan@linumiz.com>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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 fv0=
+In-Reply-To: <20240823153528.3863993-3-karthikeyan@linumiz.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240823_221511_103121_16CE78FA 
-X-CRM114-Status: GOOD (  11.43  )
+X-CRM114-CacheID: sfid-20240823_232120_292817_F6C3E8BD 
+X-CRM114-Status: UNSURE (   8.98  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,131 +120,43 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Fix WARN_ON:
-[   22.869352][ T1885] clk_spi0 already unprepared
-[   22.869379][ T1885] WARNING: CPU: 3 PID: 1885 at drivers/clk/clk.c:813 clk_core_unprepare+0xbc4
-[   22.869380][ T1885] Modules linked in: bcmdhd dhd_static_buf
-[   22.869391][ T1885] CPU: 3 PID: 1885 Comm: Binder:355_2 Tainted: G        W         5.10.66 #59
-[   22.869393][ T1885] Hardware name: Rockchip RK3588 EVB1 LP4 V10 Board (DT)
-[   22.869397][ T1885] pstate: 60400009 (nZCv daif +PAN -UAO -TCO BTYPE=--)
-[   22.869401][ T1885] pc : clk_core_unprepare+0xbc/0x214
-[   22.869404][ T1885] lr : clk_core_unprepare+0xbc/0x214
+On 23/08/2024 17:35, Karthikeyan Krishnasamy wrote:
+> Add i2s0 node and possible pinctrl for Rockchip RV1126
+> 
+> Signed-off-by: Karthikeyan Krishnasamy <karthikeyan@linumiz.com>
+> ---
+>  .../arm/boot/dts/rockchip/rv1126-pinctrl.dtsi | 102 ++++++++++++++++++
+>  arch/arm/boot/dts/rockchip/rv1126.dtsi        |  26 +++++
+>  2 files changed, 128 insertions(+)
 
-Fixes:  ("spi: rockchip: Suspend and resume the bus during NOIRQ_SYSTEM_SLEEP_PM ops")
-Signed-off-by: Jon Lin <jon.lin@rock-chips.com>
----
+...
 
- drivers/spi/spi-rockchip.c | 57 +++++++++++++++++---------------------
- 1 file changed, 26 insertions(+), 31 deletions(-)
+> +		i2s0m1_sdo1_sdi3: i2s0m1-sdo1_sdi3 {
+> +			rockchip,pins =
+> +			/* i2s0_sdo1_sdi3_m1 */
+> +			<3 RK_PB3 3 &pcfg_pull_none>;
+> +		};
+> +		i2s0m1_sdo2_sdi2: i2s0m1-sdo2_sdi2 {
+> +			rockchip,pins =
+> +			/* i2s0_sdo2_sdi2_m1 */
+> +			<3 RK_PB4 3 &pcfg_pull_none>;
 
-diff --git a/drivers/spi/spi-rockchip.c b/drivers/spi/spi-rockchip.c
-index e1ecd96c7858..043a7739c330 100644
---- a/drivers/spi/spi-rockchip.c
-+++ b/drivers/spi/spi-rockchip.c
-@@ -940,33 +940,24 @@ static void rockchip_spi_remove(struct platform_device *pdev)
- 	spi_controller_put(ctlr);
- }
- 
--#ifdef CONFIG_PM_SLEEP
--static int rockchip_spi_suspend(struct device *dev)
-+#ifdef CONFIG_PM
-+static int rockchip_spi_runtime_suspend(struct device *dev)
- {
--	int ret;
- 	struct spi_controller *ctlr = dev_get_drvdata(dev);
- 	struct rockchip_spi *rs = spi_controller_get_devdata(ctlr);
- 
--	ret = spi_controller_suspend(ctlr);
--	if (ret < 0)
--		return ret;
--
- 	clk_disable_unprepare(rs->spiclk);
- 	clk_disable_unprepare(rs->apb_pclk);
- 
--	pinctrl_pm_select_sleep_state(dev);
--
- 	return 0;
- }
- 
--static int rockchip_spi_resume(struct device *dev)
-+static int rockchip_spi_runtime_resume(struct device *dev)
- {
- 	int ret;
- 	struct spi_controller *ctlr = dev_get_drvdata(dev);
- 	struct rockchip_spi *rs = spi_controller_get_devdata(ctlr);
- 
--	pinctrl_pm_select_default_state(dev);
--
- 	ret = clk_prepare_enable(rs->apb_pclk);
- 	if (ret < 0)
- 		return ret;
-@@ -975,41 +966,45 @@ static int rockchip_spi_resume(struct device *dev)
- 	if (ret < 0)
- 		clk_disable_unprepare(rs->apb_pclk);
- 
--	ret = spi_controller_resume(ctlr);
--	if (ret < 0) {
--		clk_disable_unprepare(rs->spiclk);
--		clk_disable_unprepare(rs->apb_pclk);
--	}
--
- 	return 0;
- }
--#endif /* CONFIG_PM_SLEEP */
-+#endif /* CONFIG_PM */
- 
--#ifdef CONFIG_PM
--static int rockchip_spi_runtime_suspend(struct device *dev)
-+#ifdef CONFIG_PM_SLEEP
-+static int rockchip_spi_suspend(struct device *dev)
- {
-+	int ret;
- 	struct spi_controller *ctlr = dev_get_drvdata(dev);
--	struct rockchip_spi *rs = spi_controller_get_devdata(ctlr);
- 
--	clk_disable_unprepare(rs->spiclk);
--	clk_disable_unprepare(rs->apb_pclk);
-+	ret = spi_controller_suspend(ctlr);
-+	if (ret < 0)
-+		return ret;
-+
-+	/* Avoid redundant clock disable */
-+	if (!pm_runtime_status_suspended(dev))
-+		rockchip_spi_runtime_suspend(dev);
-+
-+	pinctrl_pm_select_sleep_state(dev);
- 
- 	return 0;
- }
- 
--static int rockchip_spi_runtime_resume(struct device *dev)
-+static int rockchip_spi_resume(struct device *dev)
- {
- 	int ret;
- 	struct spi_controller *ctlr = dev_get_drvdata(dev);
--	struct rockchip_spi *rs = spi_controller_get_devdata(ctlr);
- 
--	ret = clk_prepare_enable(rs->apb_pclk);
--	if (ret < 0)
--		return ret;
-+	pinctrl_pm_select_default_state(dev);
- 
--	ret = clk_prepare_enable(rs->spiclk);
-+	if (!pm_runtime_status_suspended(dev)) {
-+		ret = rockchip_spi_runtime_resume(dev);
-+		if (ret < 0)
-+			return ret;
-+	}
-+
-+	ret = spi_controller_resume(ctlr);
- 	if (ret < 0)
--		clk_disable_unprepare(rs->apb_pclk);
-+		rockchip_spi_runtime_suspend(dev);
- 
- 	return 0;
- }
--- 
-2.34.1
+Weird alignment...
+
+> +		};
+> +		i2s0m1_sdo3_sdi1: i2s0m1-sdo3_sdi1 {
+
+No underscores in node names,
+
+> +			rockchip,pins =
+> +			/* i2s0_sdo3_sdi1_m1 */
+> +			<3 RK_PB5 3 &pcfg_pull_none>;
+> +		};
+> +	};
+
+
+Best regards,
+Krzysztof
 
 
 _______________________________________________
