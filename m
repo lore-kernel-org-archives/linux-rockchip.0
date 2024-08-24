@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1BA1DC5472C
-	for <linux-rockchip@archiver.kernel.org>; Sat, 24 Aug 2024 07:51:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C407BC52D6F
+	for <linux-rockchip@archiver.kernel.org>; Sat, 24 Aug 2024 07:52:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=GKAwolSZzrFh2nvP5JGeJO/vWFeqw3e5wz4R2ay+HlU=; b=tia+NEuWLwB6N2
-	dLuCvWpjuRHfytRZ3meTPqtG5nezq2Bc8swPyGJcrieEEKknS0JPqZyvjeh+v2KO3rl4NUHqB/KLr
-	QrcBImEj/KEea9p4KS21g60q1m3pt4NJRoX77FXaFvnZsqVMwJrgLmyTYUPtPEhU92pKnfCVtm3Id
-	WP1hXLEgQ7tf50YvUsYAhAKZ2LnhiOQ57ELKnirNdywr3yWtzm9/Y87HUBr9h6SjX98YHLb+D+X4u
-	LCvhnBGIfg9bv28/LAUJWGQh28nZpxR31YvZahGP7JAbYsDa+27vnPaeIKm4bUwUXF0zBBHcZSY1R
-	JU0LfHFLORTD+BABY/xw==;
+	List-Owner; bh=PTOwvRFIHyo5/DfkNE4V9G8Q8T/zyve4OlYvgTI9yTI=; b=DivCXrw3JrBFLO
+	C0uJdDZqKF7sG+10u0A51kjT5ERMbGJgtV4FCtbIMX/uwurYoUQfJ6oToSMh306PxIQtQMJwoWGti
+	ZxmyYJcnAE42BuT7UMV2gDo9Avf/5SKkyLBScH/6vsKPhc1h/DQc0kFNPlG3r6JElbdNqGuNjtAWl
+	tpQB4ELlBZBcixJhHU9EsNJHkLQYZwToP08NbNpQ0Fs2b4CF1ZuSHb5xJ5aOstLlyxScHZZZmJ1ot
+	cF8h7GcrQdiPG0pJ+uBABZS17wP4+gK6xgAzT0MC5zZepDhE6MA6i5SNWi9wtRJ230yYRFLY6XMM4
+	JEk3SOq+KkcXu7B0Vptw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1shlYb-00000001lIq-2tuQ;
-	Sat, 24 Aug 2024 07:51:33 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1shlZU-00000001lS0-41tY;
+	Sat, 24 Aug 2024 07:52:28 +0000
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1shlYZ-00000001lI7-1ySH;
-	Sat, 24 Aug 2024 07:51:32 +0000
+	id 1shlZR-00000001lQr-3Vnj;
+	Sat, 24 Aug 2024 07:52:27 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id D447EA41DF6;
-	Sat, 24 Aug 2024 07:51:23 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 146CBC32781;
-	Sat, 24 Aug 2024 07:51:11 +0000 (UTC)
+	by sin.source.kernel.org (Postfix) with ESMTP id 42E3ACE065F;
+	Sat, 24 Aug 2024 07:52:23 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 36470C32781;
+	Sat, 24 Aug 2024 07:52:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1724485890;
-	bh=K+Iyolpoe01eXcw+Ed1bQ1LMT52uPuNW77oqpgcVIEc=;
+	s=k20201202; t=1724485942;
+	bh=J7CJ4ewK1ei4WvrIKvVeq7IO2mBtlvBtEoZL+GqcpiY=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=blS2xJTSqpJ4riwJO+9+hBqZJaHOVdlFxCsVdPECFsXx814y0vmxZg+bQcCEcJJpH
-	 9J5r6PucoIYiTVCJv6jHQcxt14cR47Wd3f7DluNSu5Pm5rxofW9FsVw5QdvTN/QaGs
-	 /3gZ6KEJQ60N3THpT6LAJU0U55Yh32NPmG93VIT6IFKGY7FWsUeplgK8u/F3/y04AK
-	 EVSWZAMHSxcCZxolzhbV6czZGJkVjPZCdsaYNstNtjS8yoa5FiHTOBER1a429qfRgP
-	 OtfyFMBkq8Y9nXWXy2RAx2acUq3+VK6zOqyYoYJWHsoCHmZHJpENBlVHlIVtBGOb4h
-	 4G4PNHdKBLz0w==
-Date: Sat, 24 Aug 2024 09:51:08 +0200
+	b=aWz6a6UbzKGFpHdRPvkQh/kdN8iH1iiTbEgLvKfofw+awByVtTXMksxpWwxGubX+G
+	 AdAVZ7D2VLX3Yyw4cpTWJVxAMJvK19RXjeGUDt5/jBKq4secGcNpsJVYv0FzNdVsCI
+	 1X5RBcTsZ/qbDeL32MaAZ5i7U/8g+opq9kHqKe7K15YjlDvq9xjxcxWFKivUKAPaFm
+	 LAa30ZwXk7acwFePszse9qsy0gAtQdOnbD9es8bZU7egTxhHZ1foYLvkxazSn12C4W
+	 /Cs71gjB6O8boa6Rf1T8EqJ+8x8mXysDYjkK9+sm7LpwQaECHwD1GBlSGvA9+h4auM
+	 1ROhyqMBMd8kw==
+Date: Sat, 24 Aug 2024 09:52:01 +0200
 From: Krzysztof Kozlowski <krzk@kernel.org>
 To: Detlev Casanova <detlev.casanova@collabora.com>
 Cc: linux-kernel@vger.kernel.org, Rob Herring <robh@kernel.org>, 
@@ -66,17 +66,18 @@ Cc: linux-kernel@vger.kernel.org, Rob Herring <robh@kernel.org>,
 	dri-devel@lists.freedesktop.org, linux-i2c@vger.kernel.org, linux-iio@vger.kernel.org, 
 	linux-mmc@vger.kernel.org, linux-serial@vger.kernel.org, linux-spi@vger.kernel.org, 
 	linux-watchdog@vger.kernel.org, kernel@collabora.com
-Subject: Re: [PATCH v2 08/12] dt-bindings: gpu: Add rockchip,rk3576-mali
+Subject: Re: [PATCH v2 09/12] dt-bindings: watchdog: Add rockchip,rk3576-wdt
  compatible
-Message-ID: <tnj5oxrnv2r2d6ztlqd3gdsxkjislqgwpj7f2x7b2uj4qp5kmg@cuc4tda7pzpr>
+Message-ID: <qqc6rj4a5hrme3b5adw4l65zeb2c7zjgtyror6hwtkhm5g3mkw@bc2xijdjddmv>
 References: <20240823150057.56141-1-detlev.casanova@collabora.com>
- <20240823150057.56141-9-detlev.casanova@collabora.com>
+ <20240823150057.56141-10-detlev.casanova@collabora.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20240823150057.56141-9-detlev.casanova@collabora.com>
+In-Reply-To: <20240823150057.56141-10-detlev.casanova@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240824_005131_594911_C8566121 
-X-CRM114-Status: GOOD (  10.18  )
+X-CRM114-CacheID: sfid-20240824_005226_071035_77EBDF26 
+X-CRM114-Status: UNSURE (   9.08  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,17 +94,10 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, Aug 23, 2024 at 10:52:35AM -0400, Detlev Casanova wrote:
-> Add the rockchip,rk3576-mali in arm,mali-bifrost.yaml
-
-This we see from the diff. And from commit subject. You have here plenty
-of space to explain shortly the hardware, e.g. it's new and not
-compatible with existing.
-
+On Fri, Aug 23, 2024 at 10:52:36AM -0400, Detlev Casanova wrote:
+> It is compatible with the other rockchip SoCs.
 > 
 > Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
-> ---
->  Documentation/devicetree/bindings/gpu/arm,mali-bifrost.yaml | 1 +
 
 Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
