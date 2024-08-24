@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C407BC52D6F
-	for <linux-rockchip@archiver.kernel.org>; Sat, 24 Aug 2024 07:52:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 260A3C5472C
+	for <linux-rockchip@archiver.kernel.org>; Sat, 24 Aug 2024 07:53:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=PTOwvRFIHyo5/DfkNE4V9G8Q8T/zyve4OlYvgTI9yTI=; b=DivCXrw3JrBFLO
-	C0uJdDZqKF7sG+10u0A51kjT5ERMbGJgtV4FCtbIMX/uwurYoUQfJ6oToSMh306PxIQtQMJwoWGti
-	ZxmyYJcnAE42BuT7UMV2gDo9Avf/5SKkyLBScH/6vsKPhc1h/DQc0kFNPlG3r6JElbdNqGuNjtAWl
-	tpQB4ELlBZBcixJhHU9EsNJHkLQYZwToP08NbNpQ0Fs2b4CF1ZuSHb5xJ5aOstLlyxScHZZZmJ1ot
-	cF8h7GcrQdiPG0pJ+uBABZS17wP4+gK6xgAzT0MC5zZepDhE6MA6i5SNWi9wtRJ230yYRFLY6XMM4
-	JEk3SOq+KkcXu7B0Vptw==;
+	List-Owner; bh=CyXCUy542NNdI64U81NplSdbEaMTfhi1OcrTXauNylE=; b=A/GQhuF5+G1XcL
+	ZNFArUdvea7M6Vb5wXN6YuYYdmIcVkDwB1rS20Ri0t4Ekp1w7Mw/d/2IZagI9ynN3cf0t4b0WoCeK
+	IYiibsz4K1f1INX0RABt0wHVu2fSmQ2T/NIQ+vw2k0E4hjv+IRIGX2Ra+kK/RPWDGCBVkcB3JUe8T
+	26BrQ4q0ej1fr5o5QbdHxv326M4WinErfvhw7m16IVnm/ZY6sD1jKtxI+ut28dxsyf/wFk+7Bys8P
+	AW/8z6VViHKnLiay9wzhXDe0Vzd5H/CDra7bxM2rLkJjnFuYQtFHOr+J3cl5YSxLpwHYDp7K9jl7G
+	u0eRGONycKRy6qhYnvsQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1shlZU-00000001lS0-41tY;
-	Sat, 24 Aug 2024 07:52:28 +0000
-Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
+	id 1shlag-00000001lbU-2KTz;
+	Sat, 24 Aug 2024 07:53:42 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1shlZR-00000001lQr-3Vnj;
-	Sat, 24 Aug 2024 07:52:27 +0000
+	id 1shlad-00000001lae-1efC;
+	Sat, 24 Aug 2024 07:53:41 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 42E3ACE065F;
-	Sat, 24 Aug 2024 07:52:23 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 36470C32781;
-	Sat, 24 Aug 2024 07:52:03 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id CF875A408DD;
+	Sat, 24 Aug 2024 07:53:31 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 40974C32781;
+	Sat, 24 Aug 2024 07:53:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1724485942;
-	bh=J7CJ4ewK1ei4WvrIKvVeq7IO2mBtlvBtEoZL+GqcpiY=;
+	s=k20201202; t=1724486018;
+	bh=yRF+b26qzZbAF/lj54mqxmxSAmsnvppo3aM396oz6Qs=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=aWz6a6UbzKGFpHdRPvkQh/kdN8iH1iiTbEgLvKfofw+awByVtTXMksxpWwxGubX+G
-	 AdAVZ7D2VLX3Yyw4cpTWJVxAMJvK19RXjeGUDt5/jBKq4secGcNpsJVYv0FzNdVsCI
-	 1X5RBcTsZ/qbDeL32MaAZ5i7U/8g+opq9kHqKe7K15YjlDvq9xjxcxWFKivUKAPaFm
-	 LAa30ZwXk7acwFePszse9qsy0gAtQdOnbD9es8bZU7egTxhHZ1foYLvkxazSn12C4W
-	 /Cs71gjB6O8boa6Rf1T8EqJ+8x8mXysDYjkK9+sm7LpwQaECHwD1GBlSGvA9+h4auM
-	 1ROhyqMBMd8kw==
-Date: Sat, 24 Aug 2024 09:52:01 +0200
+	b=GC9kHJnz+ylQDLPiCSV9p1V2P5SYmpcIHXMeumKkTQpWR3I4djBw5t6awd8n+lh43
+	 BQsxl4+R/IDmczuyWAn5JLsKKK+TxOHyRg359W4wkQFsCV49emeVklAqQBDgfTyUjB
+	 /TpsruLYtzV/F0YzMiqKiqkrvciC/tdruR/ISte5xtus0gncKbOPoIh0zUsXnvJwwk
+	 yFUa3sBs5H0PZmsMLcN6/IFMrnfYWbL45EIurmvwJZ0iXssWNXototDoBG70bZX38e
+	 22Q8zhFWt6s71D5uBzZ34ujfrusS9hXLtwif6chlSGgRQJf/z/oejJqoOrTwvoFQse
+	 aVO5Iuslho1Lg==
+Date: Sat, 24 Aug 2024 09:53:16 +0200
 From: Krzysztof Kozlowski <krzk@kernel.org>
 To: Detlev Casanova <detlev.casanova@collabora.com>
 Cc: linux-kernel@vger.kernel.org, Rob Herring <robh@kernel.org>, 
@@ -66,17 +66,17 @@ Cc: linux-kernel@vger.kernel.org, Rob Herring <robh@kernel.org>,
 	dri-devel@lists.freedesktop.org, linux-i2c@vger.kernel.org, linux-iio@vger.kernel.org, 
 	linux-mmc@vger.kernel.org, linux-serial@vger.kernel.org, linux-spi@vger.kernel.org, 
 	linux-watchdog@vger.kernel.org, kernel@collabora.com
-Subject: Re: [PATCH v2 09/12] dt-bindings: watchdog: Add rockchip,rk3576-wdt
+Subject: Re: [PATCH v2 10/12] dt-bindings: spi: Add rockchip,rk3576-spi
  compatible
-Message-ID: <qqc6rj4a5hrme3b5adw4l65zeb2c7zjgtyror6hwtkhm5g3mkw@bc2xijdjddmv>
+Message-ID: <r474bbm3nnqwvgb6dumes5opxzw2sb7ck4ehqdhig7ejdabnxw@vgmafb7dayry>
 References: <20240823150057.56141-1-detlev.casanova@collabora.com>
- <20240823150057.56141-10-detlev.casanova@collabora.com>
+ <1995660.usQuhbGJ8B@trenzalore>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20240823150057.56141-10-detlev.casanova@collabora.com>
+In-Reply-To: <1995660.usQuhbGJ8B@trenzalore>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240824_005226_071035_77EBDF26 
-X-CRM114-Status: UNSURE (   9.08  )
+X-CRM114-CacheID: sfid-20240824_005339_522096_20DF2E2F 
+X-CRM114-Status: UNSURE (   8.90  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -94,10 +94,18 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, Aug 23, 2024 at 10:52:36AM -0400, Detlev Casanova wrote:
-> It is compatible with the other rockchip SoCs.
-> 
-> Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
+On Fri, Aug 23, 2024 at 12:07:10PM -0400, Detlev Casanova wrote:
+> It is compatible with the rockchip,rk3066-spi SPI core.
+
+Same comments...
+
+subject: spi: dt-bindings:
+
+Please use subject prefixes matching the subsystem. You can get them for
+example with  on the directory
+your patch is touching. For bindings, the preferred subjects are
+explained here:
+https://www.kernel.org/doc/html/latest/devicetree/bindings/submitting-patches.html#i-for-patch-submitters
 
 Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
