@@ -4,61 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3676CC5472D
-	for <linux-rockchip@archiver.kernel.org>; Sun, 25 Aug 2024 03:55:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2C3E5C5321E
+	for <linux-rockchip@archiver.kernel.org>; Sun, 25 Aug 2024 05:17:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=YQG6BJisXlYNlQ6EKp7VSRs0CePHiv0lsiBIHQiO2Sk=; b=qav7RFNMXVYSNz
-	x+X2AbH2ULkHgCW6eypvLfe0FeOq7ycdTCS36JpuuBEAUwy5ukjLkUB0w5GklymWe6+gGpf1lZTz8
-	IUiZHin4tOU0u3ghLPi+iWb1Mdt/U8LUoaGLsGzXjc4dH9wKp0ap/SfEcCnVtAIlwq5+3wiGYVHxj
-	ac7iHr5W2jdTRZ0dI5yva7JREOVSjw7lwcPQHZy5A/BmMfYStspWLv4kerU4GidP0a9kUqnBUouv7
-	feFnNc1yTr8UxDts1bHhoJwVURw2SJPfGUJNQL+Iw72RA+4AVnt2hJfQeZM4TgNLFPFB2rH+ppcum
-	qpdLJrzNCBq/elb4hXUA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:References:To:From:Subject:MIME-Version:
+	Date:Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=9GO3U6vXUUni9g+KxFQNKmKIkCvoGwlrm6wVto+vo0w=; b=UsxiXf+aw2hleO2a+/eBMdGoFI
+	MUjg42SVfW/Yw9a+PTcF+LlfVK8blzmflFiOtAIqOVuWjXRgr/dFgHM9VQfR/xj3S7w5iKeGid4XH
+	nf1cCzLC+Q8REEg0WrOPCIiKAg1VruRNqfe5CCMXzaor1Mc1R0Zq1l6faOWl/FJk+8mkVHnOSmdU+
+	+rpi69p8BZiPf9Y4E04mCqKgiQgNex8u8gP2VO2P3ExHYKNyDi2TADz7X2TaPYgyruPywFRpog6N+
+	uEefGVVkEbK/AuTDGfatHzXftGEBX55sHwwvzJHn/AqWz1wjpIYLas9KV2VTrBAhrX0T3uqasipVM
+	+bLRS+qw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1si4L7-00000003U4E-3xwE;
-	Sun, 25 Aug 2024 03:54:53 +0000
-Received: from mail-m1019.netease.com ([154.81.10.19])
+	id 1si5d5-00000003dv2-0pbb;
+	Sun, 25 Aug 2024 05:17:31 +0000
+Received: from smtp-78.smtpout.orange.fr ([80.12.242.78] helo=msa.smtpout.orange.fr)
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1si4L4-00000003U3K-2N1R;
-	Sun, 25 Aug 2024 03:54:52 +0000
-DKIM-Signature: a=rsa-sha256;
-	b=VYa0Yt98s0Rumgcmipid52XzFr4FclL8Z8e2rig7JJAGAvHrXCuld7IUKXJYwb7bySUldK1r8Bca2SE4/wNGj+FZ4wusQuEMSJ7VykbHZ+8bG5XKhns8uu0xeraOToXzXDwKQMOBuNP08vS/Of/rfPoV31oVJmUrQhxHN0HL7S8=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
-	bh=USvsLmNu2/MMrUgY+emHYMuQ+S74Sb6oHGMumsHYhoA=;
-	h=date:mime-version:subject:message-id:from;
-Received: from rockchip.. (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTPA id 0ED5B6E07EB;
-	Sun, 25 Aug 2024 11:54:25 +0800 (CST)
-From: Jon Lin <jon.lin@rock-chips.com>
-To: briannorris@chromium.org,
-	broonie@kernel.org
-Cc: linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	heiko@sntech.de,
-	jon.lin@rock-chips.com,
-	linux-arm-kernel@lists.infradead.org,
-	linux-spi@vger.kernel.org
-Subject: [PATCH] spi: rockchip: Avoid redundant clock disable in pm operation
-Date: Sun, 25 Aug 2024 11:54:22 +0800
-Message-Id: <20240825035422.900370-1-jon.lin@rock-chips.com>
-X-Mailer: git-send-email 2.34.1
+	id 1si5cG-00000003dag-3BV6;
+	Sun, 25 Aug 2024 05:16:43 +0000
+Received: from [192.168.1.37] ([90.11.132.44])
+	by smtp.orange.fr with ESMTPA
+	id i5c3sfnbnQaX2i5c3sLa2L; Sun, 25 Aug 2024 07:16:35 +0200
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=wanadoo.fr;
+	s=t20230301; t=1724562996;
+	bh=etav4+/0d2M+KsLJwpfXRerYAOxWEVkaPUajKyxnERA=;
+	h=Message-ID:Date:MIME-Version:Subject:From:To;
+	b=tI7fZsIR0lGDL5Pu+kP2C5UybE/oSXFDDtlpXC4+Ou/dEZJehmNg3cSPp0fbMf+kJ
+	 /nl2i/cUQLxosXcliwSxw3wuWv1gSX3eMn5fwpSpJEvvgwh25wLN7dCi9tYfPRfsmc
+	 BnTbo2u/NXT/bYI62v1S8aCAA6tXBDJGWee+849U9n/xNfCZyds4E7ajW15ItIv5tZ
+	 u/Jr34DFxZb30t2kiYsdiIfD28l9kULLWpDdtBkNwMMGKigaobpkuSaKzNBaxGRi/c
+	 o9HO204ux7k3oFB9h4pPS7qTj+KxSnKqvBWFbmxZzuOowXc2IQn7gJU01z3jUuGA3j
+	 3dX0K6x9UEmLw==
+X-ME-Helo: [192.168.1.37]
+X-ME-Auth: Y2hyaXN0b3BoZS5qYWlsbGV0QHdhbmFkb28uZnI=
+X-ME-Date: Sun, 25 Aug 2024 07:16:36 +0200
+X-ME-IP: 90.11.132.44
+Message-ID: <6d4ec950-878f-499c-a808-dd5b31c2ddb6@wanadoo.fr>
+Date: Sun, 25 Aug 2024 07:16:27 +0200
 MIME-Version: 1.0
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGUNMSlZIGE5ISUIYH0seSBpWFRQJFh
-	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
-	hVSktLVUpCS0tZBg++
-X-HM-Tid: 0a9187abbf3609d5kunm0ed5b6e07eb
-X-HM-MType: 1
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6Ni46PAw4TTI6SxkTETI8Tigz
-	EAgKCyhVSlVKTElPTk5DS01OQktIVTMWGhIXVREUFVUXEhU7CRQYEFYYExILCFUYFBZFWVdZEgtZ
-	QVlOQ1VJSVVMVUpKT1lXWQgBWUFPTEhDNwY+
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH -next 2/5] drm/mediatek: Fix missing of_node_put() for
+ mtk_drm_get_all_drm_priv()
+From: Marion & Christophe JAILLET <christophe.jaillet@wanadoo.fr>
+To: Jinjie Ruan <ruanjinjie@huawei.com>, hjc@rock-chips.com, heiko@sntech.de,
+ andy.yan@rock-chips.com, maarten.lankhorst@linux.intel.com,
+ mripard@kernel.org, tzimmermann@suse.de, airlied@gmail.com, daniel@ffwll.ch,
+ dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+ krzk@kernel.org, jic23@kernel.org
+References: <20240823092053.3170445-1-ruanjinjie@huawei.com>
+ <20240823092053.3170445-3-ruanjinjie@huawei.com>
+ <a4d23c3a-9791-4d2b-9853-9c9b27460db5@wanadoo.fr>
+Content-Language: en-US, fr-FR
+In-Reply-To: <a4d23c3a-9791-4d2b-9853-9c9b27460db5@wanadoo.fr>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240824_205451_139583_7BC5B058 
-X-CRM114-Status: GOOD (  11.68  )
+X-CRM114-CacheID: sfid-20240824_221641_485811_63CF1406 
+X-CRM114-Status: GOOD (  11.69  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,139 +75,36 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Fix WARN_ON:
-[   22.869352][ T1885] clk_spi0 already unprepared
-[   22.869379][ T1885] WARNING: CPU: 3 PID: 1885 at drivers/clk/clk.c:813 clk_core_unprepare+0xbc4
-[   22.869380][ T1885] Modules linked in: bcmdhd dhd_static_buf
-[   22.869391][ T1885] CPU: 3 PID: 1885 Comm: Binder:355_2 Tainted: G        W         5.10.66 #59
-[   22.869393][ T1885] Hardware name: Rockchip RK3588 EVB1 LP4 V10 Board (DT)
-[   22.869397][ T1885] pstate: 60400009 (nZCv daif +PAN -UAO -TCO BTYPE=--)
-[   22.869401][ T1885] pc : clk_core_unprepare+0xbc/0x214
-[   22.869404][ T1885] lr : clk_core_unprepare+0xbc/0x214
-
-Fixes: e882575efc77 ("spi: rockchip: Suspend and resume the bus during NOIRQ_SYSTEM_SLEEP_PM ops")
-Signed-off-by: Jon Lin <jon.lin@rock-chips.com>
----
-
- drivers/spi/spi-rockchip.c | 57 +++++++++++++++++---------------------
- 1 file changed, 26 insertions(+), 31 deletions(-)
-
-diff --git a/drivers/spi/spi-rockchip.c b/drivers/spi/spi-rockchip.c
-index e1ecd96c7858..043a7739c330 100644
---- a/drivers/spi/spi-rockchip.c
-+++ b/drivers/spi/spi-rockchip.c
-@@ -940,33 +940,24 @@ static void rockchip_spi_remove(struct platform_device *pdev)
- 	spi_controller_put(ctlr);
- }
- 
--#ifdef CONFIG_PM_SLEEP
--static int rockchip_spi_suspend(struct device *dev)
-+#ifdef CONFIG_PM
-+static int rockchip_spi_runtime_suspend(struct device *dev)
- {
--	int ret;
- 	struct spi_controller *ctlr = dev_get_drvdata(dev);
- 	struct rockchip_spi *rs = spi_controller_get_devdata(ctlr);
- 
--	ret = spi_controller_suspend(ctlr);
--	if (ret < 0)
--		return ret;
--
- 	clk_disable_unprepare(rs->spiclk);
- 	clk_disable_unprepare(rs->apb_pclk);
- 
--	pinctrl_pm_select_sleep_state(dev);
--
- 	return 0;
- }
- 
--static int rockchip_spi_resume(struct device *dev)
-+static int rockchip_spi_runtime_resume(struct device *dev)
- {
- 	int ret;
- 	struct spi_controller *ctlr = dev_get_drvdata(dev);
- 	struct rockchip_spi *rs = spi_controller_get_devdata(ctlr);
- 
--	pinctrl_pm_select_default_state(dev);
--
- 	ret = clk_prepare_enable(rs->apb_pclk);
- 	if (ret < 0)
- 		return ret;
-@@ -975,41 +966,45 @@ static int rockchip_spi_resume(struct device *dev)
- 	if (ret < 0)
- 		clk_disable_unprepare(rs->apb_pclk);
- 
--	ret = spi_controller_resume(ctlr);
--	if (ret < 0) {
--		clk_disable_unprepare(rs->spiclk);
--		clk_disable_unprepare(rs->apb_pclk);
--	}
--
- 	return 0;
- }
--#endif /* CONFIG_PM_SLEEP */
-+#endif /* CONFIG_PM */
- 
--#ifdef CONFIG_PM
--static int rockchip_spi_runtime_suspend(struct device *dev)
-+#ifdef CONFIG_PM_SLEEP
-+static int rockchip_spi_suspend(struct device *dev)
- {
-+	int ret;
- 	struct spi_controller *ctlr = dev_get_drvdata(dev);
--	struct rockchip_spi *rs = spi_controller_get_devdata(ctlr);
- 
--	clk_disable_unprepare(rs->spiclk);
--	clk_disable_unprepare(rs->apb_pclk);
-+	ret = spi_controller_suspend(ctlr);
-+	if (ret < 0)
-+		return ret;
-+
-+	/* Avoid redundant clock disable */
-+	if (!pm_runtime_status_suspended(dev))
-+		rockchip_spi_runtime_suspend(dev);
-+
-+	pinctrl_pm_select_sleep_state(dev);
- 
- 	return 0;
- }
- 
--static int rockchip_spi_runtime_resume(struct device *dev)
-+static int rockchip_spi_resume(struct device *dev)
- {
- 	int ret;
- 	struct spi_controller *ctlr = dev_get_drvdata(dev);
--	struct rockchip_spi *rs = spi_controller_get_devdata(ctlr);
- 
--	ret = clk_prepare_enable(rs->apb_pclk);
--	if (ret < 0)
--		return ret;
-+	pinctrl_pm_select_default_state(dev);
- 
--	ret = clk_prepare_enable(rs->spiclk);
-+	if (!pm_runtime_status_suspended(dev)) {
-+		ret = rockchip_spi_runtime_resume(dev);
-+		if (ret < 0)
-+			return ret;
-+	}
-+
-+	ret = spi_controller_resume(ctlr);
- 	if (ret < 0)
--		clk_disable_unprepare(rs->apb_pclk);
-+		rockchip_spi_runtime_suspend(dev);
- 
- 	return 0;
- }
--- 
-2.34.1
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+CgpMZSAyMy8wOC8yMDI0IMOgIDEyOjQ2LCBDaHJpc3RvcGhlIEpBSUxMRVQgYSDDqWNyaXTCoDoK
+Pj4gQEAgLTkzMywxMCArOTMxLDggQEAgc3RhdGljIGludCBtdGtfZHJtX3Byb2JlKHN0cnVjdCBw
+bGF0Zm9ybV9kZXZpY2UgCj4+ICpwZGV2KQo+PiDCoMKgwqDCoMKgwqDCoMKgwqAgfQo+PiDCoMKg
+wqDCoMKgwqDCoMKgwqAgcmV0ID0gbXRrX2RkcF9jb21wX2luaXQobm9kZSwgJnByaXZhdGUtPmRk
+cF9jb21wW2NvbXBfaWRdLCAKPj4gY29tcF9pZCk7Cj4+IC3CoMKgwqDCoMKgwqDCoCBpZiAocmV0
+KSB7Cj4+IC3CoMKgwqDCoMKgwqDCoMKgwqDCoMKgIG9mX25vZGVfcHV0KG5vZGUpOwo+PiArwqDC
+oMKgwqDCoMKgwqAgaWYgKHJldCkKPj4gwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgZ290byBl
+cnJfbm9kZTsKPiAKPiBIaSwKPiAKPiBJJ3ZlIHNlZW4gb24gYW5vdGhlciB0aHJlYWQgdGhhdCBp
+cyB3YXMgbm90IHN1cmUgdGhhdCBzY29wZWQgdmVyc2lvbnMgCj4gYW5kIGdvdG9zIHBsYXllZCB3
+ZWxsIHRvZ2V0aGVyLgo+IAo+IEl0IHdhcyBhc2tlZCB0byBjaGVjayBtb3JlIGluIGRldGFpbHMg
+YW5kIGNvbmZpcm0gdGhhdCBpdCB3YXMgc2FmZSAKPiBiZWZvcmUgYXBwbHlpbmcgdGhlIHBhdGNo
+Lgo+IAo+IEkndmUgbm90IGZvbGxvd2VkIHRoZSBkaXNjdXNzaW9uLCBzbyBJIGp1c3QgcG9pbnQg
+aXQgb3V0LCBpbiBjYXNlIGl0IGhlbHBzLgo+IAo+IEknbGwgdHJ5IHRvIGdpdmUgaXQgYSBsb29r
+IGluIHRoZSBjb21pbmcgZGF5cy4KPiAKPiAKPiBDSgo+IAoKSGksCmxvb2tpbmcgYXQgdGhlIGdl
+bmVyYXRlZCBhc20gZmlsZSAoZ2NjIDE0LjIuMSksIGV2ZXJ5dGhpbmcgbG9va3MgZmluZS4KCiMg
+ZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZHJ2LmM6OTMzOiAJCXJldCA9IAptdGtf
+ZGRwX2NvbXBfaW5pdChub2RlLCAmcHJpdmF0ZS0+ZGRwX2NvbXBbY29tcF9pZF0sIGNvbXBfaWQp
+OwoJc2FscQkkNSwgJXJheAkjLCBfMzYKCW1vdmwJJXIxNGQsICVlZHgJIyBjb21wX2lkLAoJbW92
+cQklcmJ4LCAlcmRpCSMgbm9kZSwKCWxlYXEJNTUyKCVyYnAsJXJheCksICVyc2kJIywgXzI4Cglj
+YWxsCW10a19kZHBfY29tcF9pbml0CSMKCW1vdmwJJWVheCwgJXIxMmQJIyB0bXAyMDUsIDxyZXR2
+YWw+CiMgZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZHJ2LmM6OTM0OiAJCWlmIChy
+ZXQpCgl0ZXN0bAklZWF4LCAlZWF4CSMgPHJldHZhbD4KCWpuZQkuTDIxMgkjLAoKLi4uCgouTDIx
+MjoKIyAuL2luY2x1ZGUvbGludXgvb2YuaDoxMzg6IERFRklORV9GUkVFKGRldmljZV9ub2RlLCBz
+dHJ1Y3QgZGV2aWNlX25vZGUgCiosIGlmIChfVCkgb2Zfbm9kZV9wdXQoX1QpKQoJbW92cQklcmJ4
+LCAlcmRpCSMgbm9kZSwKCWNhbGwJb2Zfbm9kZV9wdXQJIwoJam1wCS5MMTcxCSMKCkNKCgpfX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hp
+cCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8v
+bGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
