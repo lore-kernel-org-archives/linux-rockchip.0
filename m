@@ -4,66 +4,111 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2C3E5C5321E
-	for <linux-rockchip@archiver.kernel.org>; Sun, 25 Aug 2024 05:17:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D12F1C5321E
+	for <linux-rockchip@archiver.kernel.org>; Sun, 25 Aug 2024 07:04:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:References:To:From:Subject:MIME-Version:
-	Date:Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=9GO3U6vXUUni9g+KxFQNKmKIkCvoGwlrm6wVto+vo0w=; b=UsxiXf+aw2hleO2a+/eBMdGoFI
-	MUjg42SVfW/Yw9a+PTcF+LlfVK8blzmflFiOtAIqOVuWjXRgr/dFgHM9VQfR/xj3S7w5iKeGid4XH
-	nf1cCzLC+Q8REEg0WrOPCIiKAg1VruRNqfe5CCMXzaor1Mc1R0Zq1l6faOWl/FJk+8mkVHnOSmdU+
-	+rpi69p8BZiPf9Y4E04mCqKgiQgNex8u8gP2VO2P3ExHYKNyDi2TADz7X2TaPYgyruPywFRpog6N+
-	uEefGVVkEbK/AuTDGfatHzXftGEBX55sHwwvzJHn/AqWz1wjpIYLas9KV2VTrBAhrX0T3uqasipVM
-	+bLRS+qw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=ppD7JKNWmX3z10bw7OGvi7xa/jmahxZC20DU7SreDFY=; b=SR12SaDjETWdOF
+	/vsNl/9K3OD/L0pPpXpyVNH6hbA81hl3FbV+8+zqQxjmPYTl01aK8bfiZ3hga2Xh9zHmy83zijoyI
+	lOVtdYU8Lngyil0r11VJK42jNEvjHlKtnNs+c1pTvmyLbEbobh408dko98UUwsZdrhTUTYC0l1Ay6
+	pEcfpz+r9MrTHz5AcKh/tfsUOvskOC3gCVnCwGP0yzqfnm2ZuNuT0s2L2sxZGg5mUqYDkLAmS7LFD
+	Vn4O2xK8AkZvY5oICPVy6e1GWWl7YQ34ngJX7ox8T0wLWX0TuaFUiD+vDo2GB7LHsj72nT+hUflOh
+	tGyCJtmmKu9ZghWjUcug==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1si5d5-00000003dv2-0pbb;
-	Sun, 25 Aug 2024 05:17:31 +0000
-Received: from smtp-78.smtpout.orange.fr ([80.12.242.78] helo=msa.smtpout.orange.fr)
+	id 1si7IY-00000003pKB-1N0p;
+	Sun, 25 Aug 2024 07:04:26 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1si5cG-00000003dag-3BV6;
-	Sun, 25 Aug 2024 05:16:43 +0000
-Received: from [192.168.1.37] ([90.11.132.44])
-	by smtp.orange.fr with ESMTPA
-	id i5c3sfnbnQaX2i5c3sLa2L; Sun, 25 Aug 2024 07:16:35 +0200
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=wanadoo.fr;
-	s=t20230301; t=1724562996;
-	bh=etav4+/0d2M+KsLJwpfXRerYAOxWEVkaPUajKyxnERA=;
-	h=Message-ID:Date:MIME-Version:Subject:From:To;
-	b=tI7fZsIR0lGDL5Pu+kP2C5UybE/oSXFDDtlpXC4+Ou/dEZJehmNg3cSPp0fbMf+kJ
-	 /nl2i/cUQLxosXcliwSxw3wuWv1gSX3eMn5fwpSpJEvvgwh25wLN7dCi9tYfPRfsmc
-	 BnTbo2u/NXT/bYI62v1S8aCAA6tXBDJGWee+849U9n/xNfCZyds4E7ajW15ItIv5tZ
-	 u/Jr34DFxZb30t2kiYsdiIfD28l9kULLWpDdtBkNwMMGKigaobpkuSaKzNBaxGRi/c
-	 o9HO204ux7k3oFB9h4pPS7qTj+KxSnKqvBWFbmxZzuOowXc2IQn7gJU01z3jUuGA3j
-	 3dX0K6x9UEmLw==
-X-ME-Helo: [192.168.1.37]
-X-ME-Auth: Y2hyaXN0b3BoZS5qYWlsbGV0QHdhbmFkb28uZnI=
-X-ME-Date: Sun, 25 Aug 2024 07:16:36 +0200
-X-ME-IP: 90.11.132.44
-Message-ID: <6d4ec950-878f-499c-a808-dd5b31c2ddb6@wanadoo.fr>
-Date: Sun, 25 Aug 2024 07:16:27 +0200
+	id 1si7Hl-00000003pEW-0U76;
+	Sun, 25 Aug 2024 07:03:38 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 1A17F60C2F;
+	Sun, 25 Aug 2024 07:03:36 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1D614C4AF0E;
+	Sun, 25 Aug 2024 07:03:28 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1724569415;
+	bh=FFcG+eY9buRsb85CTY0R/4I65V+U5KehytBxVkcoTyw=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=stVOAa4RL5OHT8fKI7XifxLkD6izj0M9kXHx/7MKawbszh3ItDDQk558RJqi/D6Qv
+	 uUFo0DehcceASPi1ow9ZfmzQPZaWznj6gO/14uuXLU7Pt0Hilgr2jNnvg6x0fttL0w
+	 DrMaMt3d150qAm3gr/8hvgewjM2ZVVaYaZ/VJtfh8TpSX8f3Z3teTPA1AqOcLhccox
+	 INTw5/HzviX6Y1zX+bmdTfaQ7Y/KdQ7S8cFAAwaki/QkzuiU0Xi6+GCwJT6ksbavvf
+	 bvpW/b5WFaQ4D/VlI7kkdmfFcdcWRaYasarmXZkNu1+CIhPQtgMQspgzgpiOxL055m
+	 DnAMBIvSxHb3w==
+Message-ID: <fdf5677f-e7e2-442e-91d2-bcc9c2b3793e@kernel.org>
+Date: Sun, 25 Aug 2024 09:03:27 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH -next 2/5] drm/mediatek: Fix missing of_node_put() for
- mtk_drm_get_all_drm_priv()
-From: Marion & Christophe JAILLET <christophe.jaillet@wanadoo.fr>
-To: Jinjie Ruan <ruanjinjie@huawei.com>, hjc@rock-chips.com, heiko@sntech.de,
- andy.yan@rock-chips.com, maarten.lankhorst@linux.intel.com,
- mripard@kernel.org, tzimmermann@suse.de, airlied@gmail.com, daniel@ffwll.ch,
- dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
- krzk@kernel.org, jic23@kernel.org
-References: <20240823092053.3170445-1-ruanjinjie@huawei.com>
- <20240823092053.3170445-3-ruanjinjie@huawei.com>
- <a4d23c3a-9791-4d2b-9853-9c9b27460db5@wanadoo.fr>
-Content-Language: en-US, fr-FR
-In-Reply-To: <a4d23c3a-9791-4d2b-9853-9c9b27460db5@wanadoo.fr>
+Subject: Re: [PATCH v4 2/4] dt-bindings: media: Document bindings for HDMI RX
+ Controller
+To: Shreeya Patel <shreeya.patel@collabora.com>, heiko@sntech.de,
+ mchehab@kernel.org, robh@kernel.org, krzk+dt@kernel.org,
+ conor+dt@kernel.org, mturquette@baylibre.com, sboyd@kernel.org,
+ p.zabel@pengutronix.de, jose.abreu@synopsys.com, nelson.costa@synopsys.com,
+ shawn.wen@rock-chips.com, nicolas.dufresne@collabora.com,
+ hverkuil@xs4all.nl, hverkuil-cisco@xs4all.nl
+Cc: kernel@collabora.com, linux-kernel@vger.kernel.org,
+ linux-media@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ Dmitry Osipenko <dmitry.osipenko@collabora.com>
+References: <20240719124032.26852-1-shreeya.patel@collabora.com>
+ <20240719124032.26852-3-shreeya.patel@collabora.com>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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 fv0=
+In-Reply-To: <20240719124032.26852-3-shreeya.patel@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240824_221641_485811_63CF1406 
-X-CRM114-Status: GOOD (  11.69  )
+X-CRM114-CacheID: sfid-20240825_000337_291403_5042A4B6 
+X-CRM114-Status: UNSURE (   5.44  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,36 +120,35 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-CgpMZSAyMy8wOC8yMDI0IMOgIDEyOjQ2LCBDaHJpc3RvcGhlIEpBSUxMRVQgYSDDqWNyaXTCoDoK
-Pj4gQEAgLTkzMywxMCArOTMxLDggQEAgc3RhdGljIGludCBtdGtfZHJtX3Byb2JlKHN0cnVjdCBw
-bGF0Zm9ybV9kZXZpY2UgCj4+ICpwZGV2KQo+PiDCoMKgwqDCoMKgwqDCoMKgwqAgfQo+PiDCoMKg
-wqDCoMKgwqDCoMKgwqAgcmV0ID0gbXRrX2RkcF9jb21wX2luaXQobm9kZSwgJnByaXZhdGUtPmRk
-cF9jb21wW2NvbXBfaWRdLCAKPj4gY29tcF9pZCk7Cj4+IC3CoMKgwqDCoMKgwqDCoCBpZiAocmV0
-KSB7Cj4+IC3CoMKgwqDCoMKgwqDCoMKgwqDCoMKgIG9mX25vZGVfcHV0KG5vZGUpOwo+PiArwqDC
-oMKgwqDCoMKgwqAgaWYgKHJldCkKPj4gwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgZ290byBl
-cnJfbm9kZTsKPiAKPiBIaSwKPiAKPiBJJ3ZlIHNlZW4gb24gYW5vdGhlciB0aHJlYWQgdGhhdCBp
-cyB3YXMgbm90IHN1cmUgdGhhdCBzY29wZWQgdmVyc2lvbnMgCj4gYW5kIGdvdG9zIHBsYXllZCB3
-ZWxsIHRvZ2V0aGVyLgo+IAo+IEl0IHdhcyBhc2tlZCB0byBjaGVjayBtb3JlIGluIGRldGFpbHMg
-YW5kIGNvbmZpcm0gdGhhdCBpdCB3YXMgc2FmZSAKPiBiZWZvcmUgYXBwbHlpbmcgdGhlIHBhdGNo
-Lgo+IAo+IEkndmUgbm90IGZvbGxvd2VkIHRoZSBkaXNjdXNzaW9uLCBzbyBJIGp1c3QgcG9pbnQg
-aXQgb3V0LCBpbiBjYXNlIGl0IGhlbHBzLgo+IAo+IEknbGwgdHJ5IHRvIGdpdmUgaXQgYSBsb29r
-IGluIHRoZSBjb21pbmcgZGF5cy4KPiAKPiAKPiBDSgo+IAoKSGksCmxvb2tpbmcgYXQgdGhlIGdl
-bmVyYXRlZCBhc20gZmlsZSAoZ2NjIDE0LjIuMSksIGV2ZXJ5dGhpbmcgbG9va3MgZmluZS4KCiMg
-ZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZHJ2LmM6OTMzOiAJCXJldCA9IAptdGtf
-ZGRwX2NvbXBfaW5pdChub2RlLCAmcHJpdmF0ZS0+ZGRwX2NvbXBbY29tcF9pZF0sIGNvbXBfaWQp
-OwoJc2FscQkkNSwgJXJheAkjLCBfMzYKCW1vdmwJJXIxNGQsICVlZHgJIyBjb21wX2lkLAoJbW92
-cQklcmJ4LCAlcmRpCSMgbm9kZSwKCWxlYXEJNTUyKCVyYnAsJXJheCksICVyc2kJIywgXzI4Cglj
-YWxsCW10a19kZHBfY29tcF9pbml0CSMKCW1vdmwJJWVheCwgJXIxMmQJIyB0bXAyMDUsIDxyZXR2
-YWw+CiMgZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZHJ2LmM6OTM0OiAJCWlmIChy
-ZXQpCgl0ZXN0bAklZWF4LCAlZWF4CSMgPHJldHZhbD4KCWpuZQkuTDIxMgkjLAoKLi4uCgouTDIx
-MjoKIyAuL2luY2x1ZGUvbGludXgvb2YuaDoxMzg6IERFRklORV9GUkVFKGRldmljZV9ub2RlLCBz
-dHJ1Y3QgZGV2aWNlX25vZGUgCiosIGlmIChfVCkgb2Zfbm9kZV9wdXQoX1QpKQoJbW92cQklcmJ4
-LCAlcmRpCSMgbm9kZSwKCWNhbGwJb2Zfbm9kZV9wdXQJIwoJam1wCS5MMTcxCSMKCkNKCgpfX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hp
-cCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8v
-bGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+On 19/07/2024 14:40, Shreeya Patel wrote:
+> Document bindings for the Synopsys DesignWare HDMI RX Controller.
+> 
+> Reviewed-by: Rob Herring <robh@kernel.org>
+> Reviewed-by: Dmitry Osipenko <dmitry.osipenko@collabora.com>
+> Signed-off-by: Shreeya Patel <shreeya.patel@collabora.com>
+
+If you are going to send a new version, then:
+
+A nit, subject: drop second/last, redundant "Document bindings for". The
+"dt-bindings" prefix is already stating that these are bindings and this
+is documentation.
+See also:
+https://elixir.bootlin.com/linux/v6.7-rc8/source/Documentation/devicetree/bindings/submitting-patches.rst#L18
+
+
+"Add Synopsys HDMI RX Controller".
+
+
+Best regards,
+Krzysztof
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
