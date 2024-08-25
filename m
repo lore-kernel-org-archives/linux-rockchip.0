@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8DB22C5320E
-	for <linux-rockchip@archiver.kernel.org>; Sun, 25 Aug 2024 20:36:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E8BEFC5321E
+	for <linux-rockchip@archiver.kernel.org>; Sun, 25 Aug 2024 20:36:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=5jOelxk3daAS8VxSY1U9RLYyf4BOp9XXc252PmI/YYA=; b=C/8m/vn2ne8msZ
-	K1fq+HGli+MRGDIjksMfNhAaYyxwCw8unzHrY/st4nNjmJksAixP0heGUkWffl25r0noM5ZagabJG
-	4V2IO4XEK5jJPCGldVh4yymERIWn8UHOrQD4qEGXiH6Rk3IzXPbDtQbjj/1fAERlj/OlPNjPL9fba
-	2tuCJG8VdxVAzKs60fSN3BuySjYbsMGVHuTouy2ZfBIvWH5C0kH936/+aW/7DH4Finv/OZmKel2sW
-	H40qVxH/66ibO2JJRMqFnFkRzlMTr1obbhiW6R4sbgEv6L8d6rKd4uPBYsHRIVAlgxfghFeskLWBG
-	NoxxJg6zCicywVx4dtKA==;
+	List-Owner; bh=Q4wQPbnAlJMtSYvELGj9xLx2VDXi7cQaSnPgOE+UDbI=; b=esWa61psT1hBVL
+	/PO3NszL1A1oJ29fQe9mCn3IrDLlzx57GsB+XyScsxz8fiVN/WFbj+AoK4CimYj1LfUtFbKaXqANz
+	33NISudQC//64f6EPqbvibQ4nJw9ZO2Fp4B1wbM6Q9W/tQserpOnAAVFD8wxwIqQTwY2iWFZtOL8k
+	INyPslQo4pueMtjOhrmOa05ON20XIteYg6tBFPDROgA4iO73uRF16DqyfKa0wZGXFgAeqdomFIOaS
+	ckmhTa1SCt0NLez6ag3Yrz7nIBz2ik56emzD+7f6dDs4sG01JeqoNjsCbROjPyL+zIJ3lOO51NVZN
+	VVronRed6wOui7sYNcCA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1siJxy-000000052AB-2f7A;
-	Sun, 25 Aug 2024 20:36:02 +0000
+	id 1siJy8-000000052Dc-3ozw;
+	Sun, 25 Aug 2024 20:36:12 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1siJux-000000051HP-2RiY;
-	Sun, 25 Aug 2024 20:32:57 +0000
+	id 1siJux-000000051HO-28B5;
+	Sun, 25 Aug 2024 20:32:58 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Transfer-Encoding:MIME-Version:References:
 	In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
 	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=34VBey4pM9f27ceoXU7BRJqA2AAmnLAvx8X7m43unN4=; b=lMOtv9MehEReojG85GOKEa/t0f
-	gFen0UxGygvEw63Cs6/mEnyojG5pFc3tXhuQLCMNnl1b/4v3X6UIZJhnPqpUzulizZM+MeOboOhcP
-	t18IUhNg1CyUmvyVW2FVAwikXp/s9Tvo2+LqRT2QQBd2lAf0NdPsUetLX8/vDMobepUrFA0OYgnXv
-	jLW2jP6NW9NGZWwumGLt+ij910IDG7LU2NQ0D8pNb5PjPO59P0curJJbipE45Zrq7DtSpOwygDE8l
-	5EOq3tr/KH1uQKr1gb5SmVL9DOkLndJw3SdjIv8+nU1tDnjs9BmRWb20VLHkpz8NvMGg4JUG4iWTq
-	lBllyNMA==;
+	bh=q1jpFbe8UJlfuFdvluwPG8fKnNdFZmBXVzuyZQAcBU0=; b=yJfQ/ZYiGjXfIVii5sEup1e3oT
+	YoLOHgiUbggO1eXEczvmIWxBeHgK2DavbeoG4HWaUqbd/yKwGL8sYArl25mjYWmG2UyiTLzQuw5nQ
+	WEUsXg9adhpxTTYG81NFZWAMd38HhRRxyJrAlCxXMPOZfYMEqGEdHRy3dEwFrXEDuB/BxyedDQqpU
+	V3rnk+YDqoJN86IpKRAhNQvSkBeJJf9yAsehJVv71Ye2xwI6Zbz1zPgMz6DADAsL2IFzp8f0z56Vf
+	ufG5jrRVEkGe1ij3dl+nir8fu5NomR279+5wg90IkMiuBDBZSsbS3rDNT4GjHWrfqy5ZLN2DTVIZZ
+	R3rbk+BQ==;
 Received: from i53875a40.versanet.de ([83.135.90.64] helo=phil.lan)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1siJuj-0001cM-TZ; Sun, 25 Aug 2024 22:32:42 +0200
+	id 1siJun-0001cM-E0; Sun, 25 Aug 2024 22:32:45 +0200
 From: Heiko Stuebner <heiko@sntech.de>
 To: lee@kernel.org
 Cc: robh@kernel.org,
@@ -61,16 +61,16 @@ Cc: robh@kernel.org,
 	linux-rockchip@lists.infradead.org,
 	linux-input@vger.kernel.org,
 	linux-leds@vger.kernel.org
-Subject: [PATCH v6 2/7] mfd: add base driver for qnap-mcu devices
-Date: Sun, 25 Aug 2024 22:32:30 +0200
-Message-ID: <20240825203235.1122198-3-heiko@sntech.de>
+Subject: [PATCH v6 7/7] arm64: dts: rockchip: set hdd led labels on qnap-ts433
+Date: Sun, 25 Aug 2024 22:32:35 +0200
+Message-ID: <20240825203235.1122198-8-heiko@sntech.de>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20240825203235.1122198-1-heiko@sntech.de>
 References: <20240825203235.1122198-1-heiko@sntech.de>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240825_133256_105001_67BC8BF0 
-X-CRM114-Status: GOOD (  37.77  )
+X-CRM114-CacheID: sfid-20240825_133255_758651_A68B91E9 
+X-CRM114-Status: GOOD (  11.51  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,472 +87,51 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-These microcontroller units are used in network-attached-storage devices
-made by QNAP and provide additional functionality to the system.
-
-This adds the base driver that implements the serial protocol via
-serdev and additionally hooks into the poweroff handlers to turn
-off the parts of the system not supplied by the general PMIC.
-
-Turning off (at least the TSx33 devices using Rockchip SoCs) consists of
-two separate actions. Turning off the MCU alone does not turn off the main
-SoC and turning off only the SoC/PMIC does not turn off the hard-drives.
-Also if the MCU is not turned off, the system also won't start again until
-it is unplugged from power.
-
-So on shutdown the MCU needs to be turned off separately before the
-main PMIC.
-
-The protocol spoken by the MCU is sadly not documented, but was
-obtained by listening to the chatter on the serial port, as thankfully
-the "hal_app" program from QNAPs firmware allows triggering all/most
-MCU actions from the command line.
-
-The implementation of how to talk to the serial device got some
-inspiration from the rave-sp servdev driver.
+The automatically generated names for the LEDs from color and function
+do not match nicely for the 4 hdds, so set them manually per the label
+property to also match the LEDs generated from the MCU.
 
 Signed-off-by: Heiko Stuebner <heiko@sntech.de>
 ---
- MAINTAINERS                  |   6 +
- drivers/mfd/Kconfig          |  13 ++
- drivers/mfd/Makefile         |   2 +
- drivers/mfd/qnap-mcu.c       | 339 +++++++++++++++++++++++++++++++++++
- include/linux/mfd/qnap-mcu.h |  27 +++
- 5 files changed, 387 insertions(+)
- create mode 100644 drivers/mfd/qnap-mcu.c
- create mode 100644 include/linux/mfd/qnap-mcu.h
+ arch/arm64/boot/dts/rockchip/rk3568-qnap-ts433.dts | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 3e7359ac005c..0fbd2d953da4 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -18654,6 +18654,12 @@ L:	linux-media@vger.kernel.org
- S:	Odd Fixes
- F:	drivers/media/tuners/qm1d1c0042*
- 
-+QNAP MCU DRIVER
-+M:	Heiko Stuebner <heiko@sntech.de>
-+S:	Maintained
-+F:	drivers/mfd/qnap-mcu.c
-+F:	include/linux/qnap-mcu.h
-+
- QNX4 FILESYSTEM
- M:	Anders Larsen <al@alarsen.net>
- S:	Maintained
-diff --git a/drivers/mfd/Kconfig b/drivers/mfd/Kconfig
-index bc8be2e593b6..d43d2747ac4e 100644
---- a/drivers/mfd/Kconfig
-+++ b/drivers/mfd/Kconfig
-@@ -2362,6 +2362,19 @@ config MFD_INTEL_M10_BMC_PMCI
- 	  additional drivers must be enabled in order to use the functionality
- 	  of the device.
- 
-+config MFD_QNAP_MCU
-+	tristate "QNAP microcontroller unit core driver"
-+	depends on SERIAL_DEV_BUS
-+	select MFD_CORE
-+	help
-+	  Select this to get support for the QNAP MCU device found in
-+	  several devices of QNAP network attached storage devices that
-+	  implements additional functionality for the device, like
-+	  fan- and LED control.
-+
-+	  This driver implements the base serial protocol to talk to the
-+	  device and provides functions for the other parts to hook into.
-+
- config MFD_RSMU_I2C
- 	tristate "Renesas Synchronization Management Unit with I2C"
- 	depends on I2C && OF
-diff --git a/drivers/mfd/Makefile b/drivers/mfd/Makefile
-index 02b651cd7535..fc8b825725ff 100644
---- a/drivers/mfd/Makefile
-+++ b/drivers/mfd/Makefile
-@@ -286,5 +286,7 @@ obj-$(CONFIG_MFD_INTEL_M10_BMC_PMCI)   += intel-m10-bmc-pmci.o
- obj-$(CONFIG_MFD_ATC260X)	+= atc260x-core.o
- obj-$(CONFIG_MFD_ATC260X_I2C)	+= atc260x-i2c.o
- 
-+obj-$(CONFIG_MFD_QNAP_MCU)	+= qnap-mcu.o
-+
- obj-$(CONFIG_MFD_RSMU_I2C)	+= rsmu_i2c.o rsmu_core.o
- obj-$(CONFIG_MFD_RSMU_SPI)	+= rsmu_spi.o rsmu_core.o
-diff --git a/drivers/mfd/qnap-mcu.c b/drivers/mfd/qnap-mcu.c
-new file mode 100644
-index 000000000000..ab6036e9a843
---- /dev/null
-+++ b/drivers/mfd/qnap-mcu.c
-@@ -0,0 +1,339 @@
-+// SPDX-License-Identifier: GPL-2.0-only
-+/*
-+ * Core driver for the microcontroller unit in QNAP NAS devices that is
-+ * connected via a dedicated UART port.
-+ *
-+ * Copyright (C) 2024 Heiko Stuebner <heiko@sntech.de>
-+ */
-+
-+#include <linux/cleanup.h>
-+#include <linux/export.h>
-+#include <linux/mfd/core.h>
-+#include <linux/mfd/qnap-mcu.h>
-+#include <linux/module.h>
-+#include <linux/of.h>
-+#include <linux/reboot.h>
-+#include <linux/serdev.h>
-+#include <linux/slab.h>
-+
-+/* The longest command found so far is 5 bytes long */
-+#define QNAP_MCU_MAX_CMD_SIZE		5
-+#define QNAP_MCU_MAX_DATA_SIZE		36
-+#define QNAP_MCU_CHECKSUM_SIZE		1
-+
-+#define QNAP_MCU_RX_BUFFER_SIZE		\
-+		(QNAP_MCU_MAX_DATA_SIZE + QNAP_MCU_CHECKSUM_SIZE)
-+
-+#define QNAP_MCU_TX_BUFFER_SIZE		\
-+		(QNAP_MCU_MAX_CMD_SIZE + QNAP_MCU_CHECKSUM_SIZE)
-+
-+#define QNAP_MCU_ACK_LEN		2
-+#define QNAP_MCU_VERSION_LEN		4
-+
-+/**
-+ * struct qnap_mcu_reply - Reply to a command
-+ *
-+ * @data:	Buffer to store reply payload in
-+ * @length:	Expected reply length, including the checksum
-+ * @received:	Received number of bytes, so far
-+ * @done:	Triggered when the entire reply has been received
-+ */
-+struct qnap_mcu_reply {
-+	u8 *data;
-+	size_t length;
-+	size_t received;
-+	struct completion done;
-+};
-+
-+/**
-+ * struct qnap_mcu - QNAP NAS embedded controller
-+ *
-+ * @serdev:	Pointer to underlying serdev
-+ * @bus_lock:	Lock to serialize access to the device
-+ * @reply:	Reply data structure
-+ * @variant:	Device variant specific information
-+ * @version:	MCU firmware version
-+ */
-+struct qnap_mcu {
-+	struct serdev_device *serdev;
-+	struct mutex bus_lock;
-+	struct qnap_mcu_reply reply;
-+	const struct qnap_mcu_variant *variant;
-+	u8 version[QNAP_MCU_VERSION_LEN];
-+};
-+
-+/*
-+ * The QNAP-MCU uses a basic XOR checksum.
-+ * It is always the last byte and XORs the whole previous message.
-+ */
-+static u8 qnap_mcu_csum(const u8 *buf, size_t size)
-+{
-+	u8 csum = 0;
-+
-+	while (size--)
-+		csum ^= *buf++;
-+
-+	return csum;
-+}
-+
-+static int qnap_mcu_write(struct qnap_mcu *mcu, const u8 *data, u8 data_size)
-+{
-+	unsigned char tx[QNAP_MCU_TX_BUFFER_SIZE];
-+	size_t length = data_size + QNAP_MCU_CHECKSUM_SIZE;
-+
-+	if (length > sizeof(tx)) {
-+		dev_err(&mcu->serdev->dev, "data too big for transmit buffer");
-+		return -EINVAL;
-+	}
-+
-+	memcpy(tx, data, data_size);
-+	tx[data_size] = qnap_mcu_csum(data, data_size);
-+
-+	return serdev_device_write(mcu->serdev, tx, length, HZ);
-+}
-+
-+static size_t qnap_mcu_receive_buf(struct serdev_device *serdev, const u8 *buf, size_t size)
-+{
-+	struct device *dev = &serdev->dev;
-+	struct qnap_mcu *mcu = dev_get_drvdata(dev);
-+	struct qnap_mcu_reply *reply = &mcu->reply;
-+	const u8 *src = buf;
-+	const u8 *end = buf + size;
-+
-+	if (!reply->length) {
-+		dev_warn(dev, "Received %zu bytes, we were not waiting for\n",
-+			 size);
-+		return size;
-+	}
-+
-+	while (src < end) {
-+		reply->data[reply->received] = *src++;
-+		reply->received++;
-+
-+		if (reply->received == reply->length) {
-+			complete(&reply->done);
-+
-+			/*
-+			 * We report the consumed number of bytes. If there
-+			 * are still bytes remaining (though there shouldn't)
-+			 * the serdev layer will re-execute this handler with
-+			 * the remainder of the Rx bytes.
-+			 */
-+			return src - buf;
-+		}
-+	}
-+
-+	/*
-+	 * The only way to get out of the above loop and end up here
-+	 * is through consuming all of the supplied data, so here we
-+	 * report that we processed it all.
-+	 */
-+	return size;
-+}
-+
-+static const struct serdev_device_ops qnap_mcu_serdev_device_ops = {
-+	.receive_buf  = qnap_mcu_receive_buf,
-+	.write_wakeup = serdev_device_write_wakeup,
-+};
-+
-+int qnap_mcu_exec(struct qnap_mcu *mcu,
-+		  const u8 *cmd_data, size_t cmd_data_size,
-+		  u8 *reply_data, size_t reply_data_size)
-+{
-+	unsigned char rx[QNAP_MCU_RX_BUFFER_SIZE];
-+	size_t length = reply_data_size + QNAP_MCU_CHECKSUM_SIZE;
-+	struct qnap_mcu_reply *reply = &mcu->reply;
-+	int ret;
-+
-+	if (length > sizeof(rx)) {
-+		dev_err(&mcu->serdev->dev, "expected data too big for receive buffer");
-+		return -EINVAL;
-+	}
-+
-+	mutex_lock(&mcu->bus_lock);
-+
-+	/* Initialize reply fields */
-+	reply->data = rx,
-+	reply->length = length,
-+	reply->received = 0,
-+	reinit_completion(&reply->done);
-+
-+	qnap_mcu_write(mcu, cmd_data, cmd_data_size);
-+
-+	if (!wait_for_completion_timeout(&reply->done,
-+					 msecs_to_jiffies(500))) {
-+		dev_err(&mcu->serdev->dev, "Command timeout\n");
-+		ret = -ETIMEDOUT;
-+	} else {
-+		u8 crc = qnap_mcu_csum(rx, reply_data_size);
-+
-+		if (crc != rx[reply_data_size]) {
-+			dev_err(&mcu->serdev->dev,
-+				"Checksum 0x%02x wrong for data\n", crc);
-+			ret = -EIO;
-+		} else {
-+			memcpy(reply_data, rx, reply_data_size);
-+			ret = 0;
-+		}
-+	}
-+
-+	/* We don't expect any characters from the device now */
-+	reply->length = 0;
-+
-+	mutex_unlock(&mcu->bus_lock);
-+	return ret;
-+}
-+EXPORT_SYMBOL_GPL(qnap_mcu_exec);
-+
-+int qnap_mcu_exec_with_ack(struct qnap_mcu *mcu,
-+			   const u8 *cmd_data, size_t cmd_data_size)
-+{
-+	u8 ack[QNAP_MCU_ACK_LEN];
-+	int ret;
-+
-+	ret = qnap_mcu_exec(mcu, cmd_data, cmd_data_size, ack, sizeof(ack));
-+	if (ret)
-+		return ret;
-+
-+	/* Should return @0 */
-+	if (ack[0] != 0x40 || ack[1] != 0x30) {
-+		dev_err(&mcu->serdev->dev, "Did not receive ack\n");
-+		return -EIO;
-+	}
-+
-+	return 0;
-+}
-+EXPORT_SYMBOL_GPL(qnap_mcu_exec_with_ack);
-+
-+const struct qnap_mcu_variant *qnap_mcu_get_variant_data(struct qnap_mcu *mcu)
-+{
-+	return mcu->variant;
-+}
-+EXPORT_SYMBOL_GPL(qnap_mcu_get_variant_data);
-+
-+static int qnap_mcu_get_version(struct qnap_mcu *mcu)
-+{
-+	const u8 cmd[] = { 0x25, 0x56 }; /* %, V */
-+	u8 rx[14];
-+	int ret;
-+
-+	/* Reply is the 2 command-bytes + 4 bytes describing the version */
-+	ret = qnap_mcu_exec(mcu, cmd, sizeof(cmd), rx, QNAP_MCU_VERSION_LEN + 2);
-+	if (ret)
-+		return ret;
-+
-+	memcpy(mcu->version, &rx[2], QNAP_MCU_VERSION_LEN);
-+
-+	return 0;
-+}
-+
-+/*
-+ * The MCU controls power to the peripherals but not the CPU.
-+ *
-+ * So using the pmic to power off the system keeps the MCU and hard-drives
-+ * running. This also then prevents the system from turning back on until
-+ * the MCU is turned off by unplugging the power-cable.
-+ * Turning off the MCU alone on the other hand turns off the hard-drives,
-+ * LEDs, etc while the main SoC stays running - including its network ports.
-+ */
-+static int qnap_mcu_power_off(struct sys_off_data *data)
-+{
-+	const u8 cmd[] = { 0x40, 0x43, 0x30 }; /* @, C, 0 */
-+	struct qnap_mcu *mcu = data->cb_data;
-+	int ret;
-+
-+	ret = qnap_mcu_exec_with_ack(mcu, cmd, sizeof(cmd));
-+	if (ret) {
-+		dev_err(&mcu->serdev->dev, "MCU poweroff failed %d\n", ret);
-+		return NOTIFY_STOP;
-+	}
-+
-+	return NOTIFY_DONE;
-+}
-+
-+static const struct qnap_mcu_variant qnap_ts433_mcu = {
-+	.baud_rate = 115200,
-+	.num_drives = 4,
-+	.fan_pwm_min = 51,  /* Specified in original model.conf */
-+	.fan_pwm_max = 255,
-+	.usb_led = true,
-+};
-+
-+static const struct of_device_id qnap_mcu_dt_ids[] = {
-+	{ .compatible = "qnap,ts433-mcu", .data = &qnap_ts433_mcu },
-+	{ /* sentinel */ }
-+};
-+MODULE_DEVICE_TABLE(of, qnap_mcu_dt_ids);
-+
-+static const struct mfd_cell qnap_mcu_subdevs[] = {
-+	{ .name = "qnap-mcu-input", },
-+	{ .name = "qnap-mcu-leds", },
-+	{ .name = "qnap-mcu-hwmon", }
-+};
-+
-+static int qnap_mcu_probe(struct serdev_device *serdev)
-+{
-+	struct device *dev = &serdev->dev;
-+	struct qnap_mcu *mcu;
-+	int ret;
-+
-+	mcu = devm_kzalloc(dev, sizeof(*mcu), GFP_KERNEL);
-+	if (!mcu)
-+		return -ENOMEM;
-+
-+	mcu->serdev = serdev;
-+	dev_set_drvdata(dev, mcu);
-+
-+	mcu->variant = of_device_get_match_data(dev);
-+	if (!mcu->variant)
-+		return -ENODEV;
-+
-+	mutex_init(&mcu->bus_lock);
-+	init_completion(&mcu->reply.done);
-+
-+	serdev_device_set_client_ops(serdev, &qnap_mcu_serdev_device_ops);
-+	ret = devm_serdev_device_open(dev, serdev);
-+	if (ret)
-+		return ret;
-+
-+	serdev_device_set_baudrate(serdev, mcu->variant->baud_rate);
-+	serdev_device_set_flow_control(serdev, false);
-+
-+	ret = serdev_device_set_parity(serdev, SERDEV_PARITY_NONE);
-+	if (ret) {
-+		dev_err(dev, "Failed to set parity\n");
-+		return ret;
-+	}
-+
-+	ret = qnap_mcu_get_version(mcu);
-+	if (ret)
-+		return ret;
-+
-+	ret = devm_register_sys_off_handler(dev,
-+					    SYS_OFF_MODE_POWER_OFF_PREPARE,
-+					    SYS_OFF_PRIO_DEFAULT,
-+					    &qnap_mcu_power_off, mcu);
-+	if (ret)
-+		return dev_err_probe(dev, ret,
-+				     "Failed to register poweroff handler\n");
-+
-+	ret = devm_mfd_add_devices(dev, PLATFORM_DEVID_AUTO, qnap_mcu_subdevs,
-+				   ARRAY_SIZE(qnap_mcu_subdevs), NULL, 0, NULL);
-+	if (ret)
-+		return dev_err_probe(dev, ret, "Failed to add child devices\n");
-+
-+	return 0;
-+}
-+
-+static struct serdev_device_driver qnap_mcu_drv = {
-+	.probe = qnap_mcu_probe,
-+	.driver = {
-+		.name = "qnap-mcu",
-+		.of_match_table = qnap_mcu_dt_ids,
-+	},
-+};
-+module_serdev_device_driver(qnap_mcu_drv);
-+
-+MODULE_AUTHOR("Heiko Stuebner <heiko@sntech.de>");
-+MODULE_DESCRIPTION("QNAP MCU core driver");
-+MODULE_LICENSE("GPL");
-diff --git a/include/linux/mfd/qnap-mcu.h b/include/linux/mfd/qnap-mcu.h
-new file mode 100644
-index 000000000000..903b923537c7
---- /dev/null
-+++ b/include/linux/mfd/qnap-mcu.h
-@@ -0,0 +1,27 @@
-+/* SPDX-License-Identifier: GPL-2.0+ */
-+/*
-+ * Core definitions for QNAP MCU MFD driver.
-+ * Copyright (C) 2024 Heiko Stuebner <heiko@sntech.de>
-+ */
-+
-+#ifndef _LINUX_QNAP_MCU_H_
-+#define _LINUX_QNAP_MCU_H_
-+
-+struct qnap_mcu;
-+
-+struct qnap_mcu_variant {
-+	u32 baud_rate;
-+	int num_drives;
-+	int fan_pwm_min;
-+	int fan_pwm_max;
-+	bool usb_led;
-+};
-+
-+int qnap_mcu_exec(struct qnap_mcu *mcu,
-+		  const u8 *cmd_data, size_t cmd_data_size,
-+		  u8 *reply_data, size_t reply_data_size);
-+int qnap_mcu_exec_with_ack(struct qnap_mcu *mcu,
-+			   const u8 *cmd_data, size_t cmd_data_size);
-+const struct qnap_mcu_variant *qnap_mcu_get_variant_data(struct qnap_mcu *mcu);
-+
-+#endif /* _LINUX_QNAP_MCU_H_ */
+diff --git a/arch/arm64/boot/dts/rockchip/rk3568-qnap-ts433.dts b/arch/arm64/boot/dts/rockchip/rk3568-qnap-ts433.dts
+index 4bc5f5691d45..7bd32d230ad2 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3568-qnap-ts433.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3568-qnap-ts433.dts
+@@ -50,6 +50,7 @@ led-0 {
+ 			color = <LED_COLOR_ID_GREEN>;
+ 			function = LED_FUNCTION_DISK;
+ 			gpios = <&gpio1 RK_PD5 GPIO_ACTIVE_LOW>;
++			label = "hdd1:green:disk";
+ 			linux,default-trigger = "disk-activity";
+ 			pinctrl-names = "default";
+ 			pinctrl-0 = <&hdd1_led_pin>;
+@@ -59,6 +60,7 @@ led-1 {
+ 			color = <LED_COLOR_ID_GREEN>;
+ 			function = LED_FUNCTION_DISK;
+ 			gpios = <&gpio1 RK_PD6 GPIO_ACTIVE_LOW>;
++			label = "hdd2:green:disk";
+ 			linux,default-trigger = "disk-activity";
+ 			pinctrl-names = "default";
+ 			pinctrl-0 = <&hdd2_led_pin>;
+@@ -68,6 +70,7 @@ led-2 {
+ 			color = <LED_COLOR_ID_GREEN>;
+ 			function = LED_FUNCTION_DISK;
+ 			gpios = <&gpio1 RK_PD7 GPIO_ACTIVE_LOW>;
++			label = "hdd3:green:disk";
+ 			linux,default-trigger = "disk-activity";
+ 			pinctrl-names = "default";
+ 			pinctrl-0 = <&hdd3_led_pin>;
+@@ -77,6 +80,7 @@ led-3 {
+ 			color = <LED_COLOR_ID_GREEN>;
+ 			function = LED_FUNCTION_DISK;
+ 			gpios = <&gpio2 RK_PA0 GPIO_ACTIVE_LOW>;
++			label = "hdd4:green:disk";
+ 			linux,default-trigger = "disk-activity";
+ 			pinctrl-names = "default";
+ 			pinctrl-0 = <&hdd4_led_pin>;
 -- 
 2.43.0
 
