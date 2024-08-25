@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 17298C5321E
-	for <linux-rockchip@archiver.kernel.org>; Sun, 25 Aug 2024 20:37:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ACCF8C5320E
+	for <linux-rockchip@archiver.kernel.org>; Sun, 25 Aug 2024 20:38:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=t1Ld9g0Uohg7Rm00QZa8M7iIInDEQFUz0aAIcz4qkg0=; b=cfWHMWv96K7YvQ
-	16CFDMEc6rHapOO6jzF4g1mHGEtzjQXb9WNaBearlCfNtX5nXFjT26duJWz+OhKBMmSuobDeCX5/K
-	o9X7j5ZNQGbpW8YEy/wJL8+y/xtyzlWOZvpS7jEb3O+Mu799JBW+leEv9ZXVIdqMON/AhBMgyCOoH
-	UI6B5+N9VH2hbgItRvFFbz8cvNFeycbZN8KeVN6ZWndJeyzD01Mrq5axoXdZa9IB4su5dAU/YM9st
-	FVib6KRaUeXcTKyZ/B1Sh4VhFp9mDIgD0qhnvG+CoEFcJO+cs8agU4LR3H1XZ/2xCPEoqLuGb40X+
-	hfJWVg/sh0ICNW09unyA==;
+	List-Owner; bh=mHKPMO0/RmT4zXWhPCWp3o7cJHD7621QyIdWw1BHl98=; b=J4hpLrnrGc4ceO
+	PR/Pryo91GG02epD6iL3t1OsAHbmoPOR81TXx1RL04jnSSM8xjyMNgqu8/iQwQwi6ktQfSE2F1a1Z
+	FDlOnnvyHKvaC20YTdGJYBBfml9yXDZPC4KuVYzrpHP2voPTC202rKcrT+GFYba/4NptxuMjmkvTz
+	G+2L8sNWzULtr6iiDybgsUWtITU38VCG+jCnMwNWXeDRvDZP+M/aDBpEBCiudbSM/Nh2KcDHQFZs+
+	xnG05wF/NvyzYioo5Dom20wIEhoPvsP5eikFtMgfe63XPRcBVsH5yYXAvWulHmhgfKd/ccnSxxO/n
+	K/fFYFO88lZU3gQhUh9Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1siJzD-000000052Ny-0n74;
-	Sun, 25 Aug 2024 20:37:19 +0000
+	id 1siJzy-000000052aM-29Nr;
+	Sun, 25 Aug 2024 20:38:06 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1siJuz-000000051IN-3R2x;
-	Sun, 25 Aug 2024 20:32:59 +0000
+	id 1siJv1-000000051Iq-0ZGq;
+	Sun, 25 Aug 2024 20:33:01 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Transfer-Encoding:MIME-Version:References:
 	In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
 	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=6hBNIrRL2eucOx0CuvG4HfJnzv1sdgsf5exJGTlBIfU=; b=ZyZFkxDCZjiH4L9w7s+jjwzyqP
-	qRrowsHHlFjcQIpgpY5VoFZNFsfWRc0QMh+il4HEWSoKtoBCx6ZetBcMWVE1uKFhFZRSnVzqAIiWH
-	anjINs9GwJTHNB0icOWprQpmOBMt/6JTSqz0pW/e2eWgmfugjdKv0+hSRMoQb4iiyL4lyc7XmV0wH
-	mWcDGG7eBNuumDllqTMREYQZvN01a1zyrKQMb6XGRwe5PlhY1v0YmnrQOuoZMqIZx2dW9bqlNC1Wn
-	kcEDonopwRYaXVnfI02f9JOM71o/h6kiCF3IDwJSbWqsKJeDWotKEs0azS9OxNMWRelNM1QfOpslN
-	p++otGMg==;
+	bh=STSk6yWWwVN0S3N57FhRjWR7zPjTxlqPzZ4ZKSPwEtA=; b=hBKTQErnopmvQ7oO9Oeg/0gxz9
+	i2W9jYak8foiUdpFd1wWKPhDM2YYCii3Zo3KwVtVYTeOcQBPWZFvGlhmLnHI+8IKvlv3Y2e4Tc7+n
+	qjcNbR6hORakKKyMDGFlzsNGozjCYlEmU5CzLCUA3ZhGCP8avyH7PXtE7PvSRk/cu42UlQgx6olGm
+	T6y34mSIaY3I/5iiGoMkuTcSOp7Hl3e3piuUXsV3c/+SO/8pLiC0OkfoQLImN9fDIET6KQ4Kl5Ybu
+	Kq6fds8tlOjVjRdZI9BmgY9N+Z0OdCLO7Nj8yAk5eSDgGjPTCP45LAdxbB0I3eq/N35ftmYBX7ekg
+	rah64cuQ==;
 Received: from i53875a40.versanet.de ([83.135.90.64] helo=phil.lan)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1siJuk-0001cM-Lb; Sun, 25 Aug 2024 22:32:42 +0200
+	id 1siJum-0001cM-0z; Sun, 25 Aug 2024 22:32:44 +0200
 From: Heiko Stuebner <heiko@sntech.de>
 To: lee@kernel.org
 Cc: robh@kernel.org,
@@ -61,16 +61,16 @@ Cc: robh@kernel.org,
 	linux-rockchip@lists.infradead.org,
 	linux-input@vger.kernel.org,
 	linux-leds@vger.kernel.org
-Subject: [PATCH v6 3/7] leds: add driver for LEDs from qnap-mcu devices
-Date: Sun, 25 Aug 2024 22:32:31 +0200
-Message-ID: <20240825203235.1122198-4-heiko@sntech.de>
+Subject: [PATCH v6 5/7] hwmon: add driver for the hwmon parts of qnap-mcu devices
+Date: Sun, 25 Aug 2024 22:32:33 +0200
+Message-ID: <20240825203235.1122198-6-heiko@sntech.de>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20240825203235.1122198-1-heiko@sntech.de>
 References: <20240825203235.1122198-1-heiko@sntech.de>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240825_133258_085608_4E52F616 
-X-CRM114-Status: GOOD (  30.26  )
+X-CRM114-CacheID: sfid-20240825_133259_503519_F22A18F5 
+X-CRM114-Status: GOOD (  32.89  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,295 +87,484 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This adds a driver that connects to the qnap-mcu mfd driver and provides
-access to the LEDs on it.
+The MCU can be found on network-attached-storage devices made by QNAP
+and provides access to fan control including reading back its RPM as
+well as reading the temperature of the NAS case.
 
+Acked-by: Guenter Roeck <linux@roeck-us.net>
 Signed-off-by: Heiko Stuebner <heiko@sntech.de>
 ---
- MAINTAINERS                  |   1 +
- drivers/leds/Kconfig         |  11 ++
- drivers/leds/Makefile        |   1 +
- drivers/leds/leds-qnap-mcu.c | 226 +++++++++++++++++++++++++++++++++++
- 4 files changed, 239 insertions(+)
- create mode 100644 drivers/leds/leds-qnap-mcu.c
+ Documentation/hwmon/index.rst          |   1 +
+ Documentation/hwmon/qnap-mcu-hwmon.rst |  27 ++
+ MAINTAINERS                            |   1 +
+ drivers/hwmon/Kconfig                  |  12 +
+ drivers/hwmon/Makefile                 |   1 +
+ drivers/hwmon/qnap-mcu-hwmon.c         | 364 +++++++++++++++++++++++++
+ 6 files changed, 406 insertions(+)
+ create mode 100644 Documentation/hwmon/qnap-mcu-hwmon.rst
+ create mode 100644 drivers/hwmon/qnap-mcu-hwmon.c
 
+diff --git a/Documentation/hwmon/index.rst b/Documentation/hwmon/index.rst
+index 913c11390a45..7adbe23f0659 100644
+--- a/Documentation/hwmon/index.rst
++++ b/Documentation/hwmon/index.rst
+@@ -199,6 +199,7 @@ Hardware Monitoring Kernel Drivers
+    pxe1610
+    pwm-fan
+    q54sj108a2
++   qnap-mcu-hwmon
+    raspberrypi-hwmon
+    sbrmi
+    sbtsi_temp
+diff --git a/Documentation/hwmon/qnap-mcu-hwmon.rst b/Documentation/hwmon/qnap-mcu-hwmon.rst
+new file mode 100644
+index 000000000000..83407e3408f2
+--- /dev/null
++++ b/Documentation/hwmon/qnap-mcu-hwmon.rst
+@@ -0,0 +1,27 @@
++.. SPDX-License-Identifier: GPL-2.0-or-later
++
++Kernel driver qnap-mcu-hwmon
++============================
++
++This driver enables the use of the hardware monitoring and fan control
++of the MCU used on some QNAP network attached storage devices.
++
++Author: Heiko Stuebner <heiko@sntech.de>
++
++Description
++-----------
++
++The driver implements a simple interface for driving the fan controlled by
++setting its PWM output value and exposes the fan rpm and case-temperature
++to user space through hwmon's sysfs interface.
++
++The fan rotation speed returned via the optional 'fan1_input' is calculated
++inside the MCU device.
++
++The driver provides the following sensor accesses in sysfs:
++
++=============== ======= =======================================================
++fan1_input	ro	fan tachometer speed in RPM
++pwm1		rw	relative speed (0-255), 255=max. speed.
++temp1_input	ro	Measured temperature in millicelsius
++=============== ======= =======================================================
 diff --git a/MAINTAINERS b/MAINTAINERS
-index 0fbd2d953da4..4dff0e237f22 100644
+index a41906b3caa3..d500a771ad8a 100644
 --- a/MAINTAINERS
 +++ b/MAINTAINERS
 @@ -18657,6 +18657,7 @@ F:	drivers/media/tuners/qm1d1c0042*
  QNAP MCU DRIVER
  M:	Heiko Stuebner <heiko@sntech.de>
  S:	Maintained
-+F:	drivers/leds/leds-qnap-mcu.c
++F:	drivers/hwmon/qnap-mcu-hwmon.c
+ F:	drivers/input/misc/qnap-mcu-input.c
+ F:	drivers/leds/leds-qnap-mcu.c
  F:	drivers/mfd/qnap-mcu.c
- F:	include/linux/qnap-mcu.h
+diff --git a/drivers/hwmon/Kconfig b/drivers/hwmon/Kconfig
+index b60fe2e58ad6..0118ad91057e 100644
+--- a/drivers/hwmon/Kconfig
++++ b/drivers/hwmon/Kconfig
+@@ -1793,6 +1793,18 @@ config SENSORS_PWM_FAN
+ 	  This driver can also be built as a module. If so, the module
+ 	  will be called pwm-fan.
  
-diff --git a/drivers/leds/Kconfig b/drivers/leds/Kconfig
-index 8d9d8da376e4..9a337478dd80 100644
---- a/drivers/leds/Kconfig
-+++ b/drivers/leds/Kconfig
-@@ -580,6 +580,17 @@ config LEDS_PCA995X
- 	  LED driver chips accessed via the I2C bus. Supported
- 	  devices include PCA9955BTW, PCA9952TW and PCA9955TW.
- 
-+config LEDS_QNAP_MCU
-+	tristate "LED Support for QNAP MCU controllers"
-+	depends on LEDS_CLASS
++config SENSORS_QNAP_MCU_HWMON
++	tristate "QNAP MCU hardware monitoring"
 +	depends on MFD_QNAP_MCU
++	depends on THERMAL || THERMAL=n
 +	help
-+	  This option enables support for LEDs available on embedded
-+	  controllers used in QNAP NAS devices.
++	  Say yes here to enable support for fan and temperature sensor
++	  connected to a QNAP MCU, as found in a number of QNAP network
++	  attached storage devices.
 +
 +	  This driver can also be built as a module. If so, the module
-+	  will be called qnap-mcu-leds.
++	  will be called qnap-mcu-hwmon.
 +
- config LEDS_WM831X_STATUS
- 	tristate "LED support for status LEDs on WM831x PMICs"
- 	depends on LEDS_CLASS
-diff --git a/drivers/leds/Makefile b/drivers/leds/Makefile
-index 18afbb5a23ee..c6f74865d729 100644
---- a/drivers/leds/Makefile
-+++ b/drivers/leds/Makefile
-@@ -79,6 +79,7 @@ obj-$(CONFIG_LEDS_PCA995X)		+= leds-pca995x.o
- obj-$(CONFIG_LEDS_PM8058)		+= leds-pm8058.o
- obj-$(CONFIG_LEDS_POWERNV)		+= leds-powernv.o
- obj-$(CONFIG_LEDS_PWM)			+= leds-pwm.o
-+obj-$(CONFIG_LEDS_QNAP_MCU)		+= leds-qnap-mcu.o
- obj-$(CONFIG_LEDS_REGULATOR)		+= leds-regulator.o
- obj-$(CONFIG_LEDS_SC27XX_BLTC)		+= leds-sc27xx-bltc.o
- obj-$(CONFIG_LEDS_SUN50I_A100)		+= leds-sun50i-a100.o
-diff --git a/drivers/leds/leds-qnap-mcu.c b/drivers/leds/leds-qnap-mcu.c
+ config SENSORS_RASPBERRYPI_HWMON
+ 	tristate "Raspberry Pi voltage monitor"
+ 	depends on RASPBERRYPI_FIRMWARE || (COMPILE_TEST && !RASPBERRYPI_FIRMWARE)
+diff --git a/drivers/hwmon/Makefile b/drivers/hwmon/Makefile
+index b1c7056c37db..d60f46a03cc9 100644
+--- a/drivers/hwmon/Makefile
++++ b/drivers/hwmon/Makefile
+@@ -187,6 +187,7 @@ obj-$(CONFIG_SENSORS_POWERZ)	+= powerz.o
+ obj-$(CONFIG_SENSORS_POWR1220)  += powr1220.o
+ obj-$(CONFIG_SENSORS_PT5161L)	+= pt5161l.o
+ obj-$(CONFIG_SENSORS_PWM_FAN)	+= pwm-fan.o
++obj-$(CONFIG_SENSORS_QNAP_MCU_HWMON)	+= qnap-mcu-hwmon.o
+ obj-$(CONFIG_SENSORS_RASPBERRYPI_HWMON)	+= raspberrypi-hwmon.o
+ obj-$(CONFIG_SENSORS_SBTSI)	+= sbtsi_temp.o
+ obj-$(CONFIG_SENSORS_SBRMI)	+= sbrmi.o
+diff --git a/drivers/hwmon/qnap-mcu-hwmon.c b/drivers/hwmon/qnap-mcu-hwmon.c
 new file mode 100644
-index 000000000000..0723ec52e4c5
+index 000000000000..8fe6310a1b59
 --- /dev/null
-+++ b/drivers/leds/leds-qnap-mcu.c
-@@ -0,0 +1,226 @@
++++ b/drivers/hwmon/qnap-mcu-hwmon.c
+@@ -0,0 +1,364 @@
 +// SPDX-License-Identifier: GPL-2.0-only
 +
 +/*
-+ * Driver for LEDs found on QNAP MCU devices
++ * Driver for hwmon elements found on QNAP-MCU devices
 + *
 + * Copyright (C) 2024 Heiko Stuebner <heiko@sntech.de>
 + */
 +
-+#include <linux/leds.h>
++#include <linux/fwnode.h>
++#include <linux/hwmon.h>
 +#include <linux/mfd/qnap-mcu.h>
 +#include <linux/module.h>
 +#include <linux/platform_device.h>
-+#include <linux/slab.h>
-+#include <uapi/linux/uleds.h>
++#include <linux/property.h>
++#include <linux/thermal.h>
 +
-+enum qnap_mcu_err_led_mode {
-+	QNAP_MCU_ERR_LED_ON = 0,
-+	QNAP_MCU_ERR_LED_OFF = 1,
-+	QNAP_MCU_ERR_LED_BLINK_FAST = 2,
-+	QNAP_MCU_ERR_LED_BLINK_SLOW = 3,
-+};
-+
-+struct qnap_mcu_err_led {
++struct qnap_mcu_hwmon {
 +	struct qnap_mcu *mcu;
-+	struct led_classdev cdev;
-+	char name[LED_MAX_NAME_SIZE];
-+	u8 num;
-+	u8 mode;
++	struct device *dev;
++
++	unsigned int pwm_min;
++	unsigned int pwm_max;
++
++	struct fwnode_handle *fan_node;
++	unsigned int fan_state;
++	unsigned int fan_max_state;
++	unsigned int *fan_cooling_levels;
++
++	struct thermal_cooling_device *cdev;
++	struct hwmon_chip_info info;
 +};
 +
-+static inline struct qnap_mcu_err_led *
-+		cdev_to_qnap_mcu_err_led(struct led_classdev *led_cdev)
++static int qnap_mcu_hwmon_get_rpm(struct qnap_mcu_hwmon *hwm)
 +{
-+	return container_of(led_cdev, struct qnap_mcu_err_led, cdev);
-+}
-+
-+static int qnap_mcu_err_led_set(struct led_classdev *led_cdev,
-+				enum led_brightness value)
-+{
-+	struct qnap_mcu_err_led *err_led = cdev_to_qnap_mcu_err_led(led_cdev);
-+	u8 cmd[] = { 0x40, 0x52, 0x30 + err_led->num, 0x30 };
-+
-+	/* Don't disturb a possible set blink-mode if LED is already on */
-+	if (value == 0)
-+		err_led->mode = QNAP_MCU_ERR_LED_OFF;
-+	else if (err_led->mode == QNAP_MCU_ERR_LED_OFF)
-+		err_led->mode = QNAP_MCU_ERR_LED_ON;
-+
-+	cmd[3] = 0x30 + err_led->mode;
-+
-+	return qnap_mcu_exec_with_ack(err_led->mcu, cmd, sizeof(cmd));
-+}
-+
-+static int qnap_mcu_err_led_blink_set(struct led_classdev *led_cdev,
-+				      unsigned long *delay_on,
-+				      unsigned long *delay_off)
-+{
-+	struct qnap_mcu_err_led *err_led = cdev_to_qnap_mcu_err_led(led_cdev);
-+	u8 cmd[] = { 0x40, 0x52, 0x30 + err_led->num, 0x30 };
-+
-+	/* LED is off, nothing to do */
-+	if (err_led->mode == QNAP_MCU_ERR_LED_OFF)
-+		return 0;
-+
-+	if (*delay_on < 500) {
-+		*delay_on = 100;
-+		*delay_off = 100;
-+		err_led->mode = QNAP_MCU_ERR_LED_BLINK_FAST;
-+	} else {
-+		*delay_on = 500;
-+		*delay_off = 500;
-+		err_led->mode = QNAP_MCU_ERR_LED_BLINK_SLOW;
-+	}
-+
-+	cmd[3] = 0x30 + err_led->mode;
-+
-+	return qnap_mcu_exec_with_ack(err_led->mcu, cmd, sizeof(cmd));
-+}
-+
-+static int qnap_mcu_register_err_led(struct device *dev, struct qnap_mcu *mcu, int num)
-+{
-+	struct qnap_mcu_err_led *err_led;
++	static const u8 cmd[] = { 0x40, 0x46, 0x41 }; /* @, F, A */
++	u8 reply[6];
 +	int ret;
 +
-+	err_led = devm_kzalloc(dev, sizeof(*err_led), GFP_KERNEL);
-+	if (!err_led)
-+		return -ENOMEM;
-+
-+	err_led->mcu = mcu;
-+	err_led->num = num;
-+	err_led->mode = QNAP_MCU_ERR_LED_OFF;
-+
-+	snprintf(err_led->name, LED_MAX_NAME_SIZE, "hdd%d:red:status", num + 1);
-+	err_led->cdev.name = err_led->name;
-+
-+	err_led->cdev.brightness_set_blocking = qnap_mcu_err_led_set;
-+	err_led->cdev.blink_set = qnap_mcu_err_led_blink_set;
-+	err_led->cdev.brightness = 0;
-+	err_led->cdev.max_brightness = 1;
-+
-+	ret = devm_led_classdev_register(dev, &err_led->cdev);
++	/* poll the fan rpm */
++	ret = qnap_mcu_exec(hwm->mcu, cmd, sizeof(cmd), reply, sizeof(reply));
 +	if (ret)
-+		return dev_err_probe(dev, ret, "failed to register hdd led %d", num);
++		return ret;
 +
-+	return qnap_mcu_err_led_set(&err_led->cdev, 0);
++	/* First 2 bytes must mirror the sent command */
++	if (memcmp(cmd, reply, 2))
++		return -EIO;
++
++	return reply[4] * 30;
 +}
 +
-+enum qnap_mcu_usb_led_mode {
-+	QNAP_MCU_USB_LED_ON = 1,
-+	QNAP_MCU_USB_LED_OFF = 3,
-+	QNAP_MCU_USB_LED_BLINK = 2,
-+};
-+
-+struct qnap_mcu_usb_led {
-+	struct qnap_mcu *mcu;
-+	struct led_classdev cdev;
-+	u8 mode;
-+};
-+
-+static inline struct qnap_mcu_usb_led *
-+		cdev_to_qnap_mcu_usb_led(struct led_classdev *led_cdev)
++static int qnap_mcu_hwmon_get_pwm(struct qnap_mcu_hwmon *hwm)
 +{
-+	return container_of(led_cdev, struct qnap_mcu_usb_led, cdev);
++	static const u8 cmd[] = { 0x40, 0x46, 0x5a, 0x30 }; /* @, F, Z, 0 = fan-id? */
++	u8 reply[4];
++	int ret;
++
++	/* poll the fan pwm */
++	ret = qnap_mcu_exec(hwm->mcu, cmd, sizeof(cmd), reply, sizeof(reply));
++	if (ret)
++		return ret;
++
++	/* First 3 bytes must mirror the sent command */
++	if (memcmp(cmd, reply, 3))
++		return -EIO;
++
++	return reply[3];
 +}
 +
-+static int qnap_mcu_usb_led_set(struct led_classdev *led_cdev,
-+				enum led_brightness value)
++static int qnap_mcu_hwmon_set_pwm(struct qnap_mcu_hwmon *hwm, u8 pwm)
 +{
-+	struct qnap_mcu_usb_led *usb_led = cdev_to_qnap_mcu_usb_led(led_cdev);
-+	u8 cmd[] = { 0x40, 0x43, 0 };
++	const u8 cmd[] = { 0x40, 0x46, 0x57, 0x30, pwm }; /* @, F, W, 0 = fan-id, pwm */
++
++	/* set the fan pwm */
++	return qnap_mcu_exec_with_ack(hwm->mcu, cmd, sizeof(cmd));
++}
++
++static int qnap_mcu_hwmon_get_temp(struct qnap_mcu_hwmon *hwm)
++{
++	static const u8 cmd[] = { 0x40, 0x54, 0x33 }; /* @, T, 3 */
++	u8 reply[4];
++	int ret;
++
++	/* poll the fan rpm */
++	ret = qnap_mcu_exec(hwm->mcu, cmd, sizeof(cmd), reply, sizeof(reply));
++	if (ret)
++		return ret;
++
++	/* First bytes must mirror the sent command */
++	if (memcmp(cmd, reply, sizeof(cmd)))
++		return -EIO;
 +
 +	/*
-+	 * If the led is off, turn it on. Otherwise don't disturb
-+	 * a possible set blink-mode.
++	 * There is an unknown bit set in bit7.
++	 * Bits [6:0] report the actual temperature as returned by the
++	 * original qnap firmware-tools, so just drop bit7 for now.
 +	 */
-+	if (value == 0)
-+		usb_led->mode = QNAP_MCU_USB_LED_OFF;
-+	else if (usb_led->mode == QNAP_MCU_USB_LED_OFF)
-+		usb_led->mode = QNAP_MCU_USB_LED_ON;
-+
-+	/* byte 3 is shared between the usb led target and setting the mode */
-+	cmd[2] = 0x44 | usb_led->mode;
-+
-+	return qnap_mcu_exec_with_ack(usb_led->mcu, cmd, sizeof(cmd));
++	return (reply[3] & 0x7f) * 1000;
 +}
 +
-+static int qnap_mcu_usb_led_blink_set(struct led_classdev *led_cdev,
-+				      unsigned long *delay_on,
-+				      unsigned long *delay_off)
++static int qnap_mcu_hwmon_write(struct device *dev, enum hwmon_sensor_types type,
++				u32 attr, int channel, long val)
 +{
-+	struct qnap_mcu_usb_led *usb_led = cdev_to_qnap_mcu_usb_led(led_cdev);
-+	u8 cmd[] = { 0x40, 0x43, 0 };
++	struct qnap_mcu_hwmon *hwm = dev_get_drvdata(dev);
 +
-+	/* LED is off, nothing to do */
-+	if (usb_led->mode == QNAP_MCU_USB_LED_OFF)
-+		return 0;
++	switch (attr) {
++	case hwmon_pwm_input:
++		if (val < 0 || val > 255)
++			return -EINVAL;
 +
-+	*delay_on = 250;
-+	*delay_off = 250;
-+	usb_led->mode = QNAP_MCU_USB_LED_BLINK;
++		if (val != 0)
++			val = clamp_val(val, hwm->pwm_min, hwm->pwm_max);
 +
-+	/* byte 3 is shared between the usb led target and setting the mode */
-+	cmd[2] = 0x44 | usb_led->mode;
-+
-+	return qnap_mcu_exec_with_ack(usb_led->mcu, cmd, sizeof(cmd));
-+}
-+
-+static int qnap_mcu_register_usb_led(struct device *dev, struct qnap_mcu *mcu)
-+{
-+	struct qnap_mcu_usb_led *usb_led;
-+	int ret;
-+
-+	usb_led = devm_kzalloc(dev, sizeof(*usb_led), GFP_KERNEL);
-+	if (!usb_led)
-+		return -ENOMEM;
-+
-+	usb_led->mcu = mcu;
-+	usb_led->mode = QNAP_MCU_USB_LED_OFF;
-+	usb_led->cdev.name = "usb:blue:disk";
-+	usb_led->cdev.brightness_set_blocking = qnap_mcu_usb_led_set;
-+	usb_led->cdev.blink_set = qnap_mcu_usb_led_blink_set;
-+	usb_led->cdev.brightness = 0;
-+	usb_led->cdev.max_brightness = 1;
-+
-+	ret = devm_led_classdev_register(dev, &usb_led->cdev);
-+	if (ret)
-+		return dev_err_probe(dev, ret, "failed to register usb led");
-+
-+	return qnap_mcu_usb_led_set(&usb_led->cdev, 0);
-+}
-+
-+static int qnap_mcu_leds_probe(struct platform_device *pdev)
-+{
-+	struct qnap_mcu *mcu = dev_get_drvdata(pdev->dev.parent);
-+	const struct qnap_mcu_variant *variant = qnap_mcu_get_variant_data(mcu);
-+	int ret, i;
-+
-+	for (i = 0; i < variant->num_drives; i++) {
-+		ret = qnap_mcu_register_err_led(&pdev->dev, mcu, i);
-+		if (ret)
-+			return dev_err_probe(&pdev->dev, ret,
-+					"failed to register error led %d\n", i);
-+	}
-+
-+	if (variant->usb_led) {
-+		ret = qnap_mcu_register_usb_led(&pdev->dev, mcu);
-+		if (ret)
-+			return dev_err_probe(&pdev->dev, ret,
-+					"failed to register usb led %d\n", i);
++		return qnap_mcu_hwmon_set_pwm(hwm, val);
++	default:
++		return -EOPNOTSUPP;
 +	}
 +
 +	return 0;
 +}
 +
-+static struct platform_driver qnap_mcu_leds_driver = {
-+	.probe = qnap_mcu_leds_probe,
++static int qnap_mcu_hwmon_read(struct device *dev, enum hwmon_sensor_types type,
++			       u32 attr, int channel, long *val)
++{
++	struct qnap_mcu_hwmon *hwm = dev_get_drvdata(dev);
++	int ret;
++
++	switch (type) {
++	case hwmon_pwm:
++		switch (attr) {
++		case hwmon_pwm_input:
++			ret = qnap_mcu_hwmon_get_pwm(hwm);
++			if (ret < 0)
++				return ret;
++
++			*val = ret;
++			return 0;
++		default:
++			return -EOPNOTSUPP;
++		}
++	case hwmon_fan:
++		ret = qnap_mcu_hwmon_get_rpm(hwm);
++		if (ret < 0)
++			return ret;
++
++		*val = ret;
++		return 0;
++	case hwmon_temp:
++		ret = qnap_mcu_hwmon_get_temp(hwm);
++		if (ret < 0)
++			return ret;
++
++		*val = ret;
++		return 0;
++	default:
++		return -EOPNOTSUPP;
++	}
++}
++
++static umode_t qnap_mcu_hwmon_is_visible(const void *data,
++					 enum hwmon_sensor_types type,
++					 u32 attr, int channel)
++{
++	switch (type) {
++	case hwmon_temp:
++		return 0444;
++
++	case hwmon_pwm:
++		return 0644;
++
++	case hwmon_fan:
++		return 0444;
++
++	default:
++		return 0;
++	}
++}
++
++static const struct hwmon_ops qnap_mcu_hwmon_hwmon_ops = {
++	.is_visible = qnap_mcu_hwmon_is_visible,
++	.read = qnap_mcu_hwmon_read,
++	.write = qnap_mcu_hwmon_write,
++};
++
++/* thermal cooling device callbacks */
++static int qnap_mcu_hwmon_get_max_state(struct thermal_cooling_device *cdev,
++					unsigned long *state)
++{
++	struct qnap_mcu_hwmon *hwm = cdev->devdata;
++
++	if (!hwm)
++		return -EINVAL;
++
++	*state = hwm->fan_max_state;
++
++	return 0;
++}
++
++static int qnap_mcu_hwmon_get_cur_state(struct thermal_cooling_device *cdev,
++					unsigned long *state)
++{
++	struct qnap_mcu_hwmon *hwm = cdev->devdata;
++
++	if (!hwm)
++		return -EINVAL;
++
++	*state = hwm->fan_state;
++
++	return 0;
++}
++
++static int qnap_mcu_hwmon_set_cur_state(struct thermal_cooling_device *cdev,
++					unsigned long state)
++{
++	struct qnap_mcu_hwmon *hwm = cdev->devdata;
++	int ret;
++
++	if (!hwm || state > hwm->fan_max_state)
++		return -EINVAL;
++
++	if (state == hwm->fan_state)
++		return 0;
++
++	ret = qnap_mcu_hwmon_set_pwm(hwm, hwm->fan_cooling_levels[state]);
++	if (ret)
++		return ret;
++
++	hwm->fan_state = state;
++
++	return ret;
++}
++
++static const struct thermal_cooling_device_ops qnap_mcu_hwmon_cooling_ops = {
++	.get_max_state = qnap_mcu_hwmon_get_max_state,
++	.get_cur_state = qnap_mcu_hwmon_get_cur_state,
++	.set_cur_state = qnap_mcu_hwmon_set_cur_state,
++};
++
++static void devm_fan_node_release(void *data)
++{
++	struct qnap_mcu_hwmon *hwm = data;
++
++	fwnode_handle_put(hwm->fan_node);
++}
++
++static int qnap_mcu_hwmon_get_cooling_data(struct device *dev, struct qnap_mcu_hwmon *hwm)
++{
++	struct fwnode_handle *fwnode;
++	int num, i, ret;
++
++	fwnode = device_get_named_child_node(dev->parent, "fan-0");
++	if (!fwnode)
++		return 0;
++
++	/* if we found the fan-node, we're keeping it until device-unbind */
++	hwm->fan_node = fwnode;
++	ret = devm_add_action_or_reset(dev, devm_fan_node_release, hwm);
++	if (ret)
++		return ret;
++
++	num = fwnode_property_count_u32(fwnode, "cooling-levels");
++	if (num <= 0)
++		return dev_err_probe(dev, num ? : -EINVAL,
++				     "Failed to count elements in 'cooling-levels'\n");
++
++	hwm->fan_cooling_levels = devm_kcalloc(dev, num, sizeof(u32),
++					       GFP_KERNEL);
++	if (!hwm->fan_cooling_levels)
++		return -ENOMEM;
++
++	ret = fwnode_property_read_u32_array(fwnode, "cooling-levels",
++					     hwm->fan_cooling_levels, num);
++	if (ret)
++		return dev_err_probe(dev, ret, "Failed to read 'cooling-levels'\n");
++
++	for (i = 0; i < num; i++) {
++		if (hwm->fan_cooling_levels[i] > hwm->pwm_max)
++			return dev_err_probe(dev, -EINVAL, "fan state[%d]:%d > %d\n", i,
++					     hwm->fan_cooling_levels[i], hwm->pwm_max);
++	}
++
++	hwm->fan_max_state = num - 1;
++
++	return 0;
++}
++
++static const struct hwmon_channel_info * const qnap_mcu_hwmon_channels[] = {
++	HWMON_CHANNEL_INFO(pwm, HWMON_PWM_INPUT),
++	HWMON_CHANNEL_INFO(fan, HWMON_F_INPUT),
++	HWMON_CHANNEL_INFO(temp, HWMON_T_INPUT),
++	NULL
++};
++
++static int qnap_mcu_hwmon_probe(struct platform_device *pdev)
++{
++	struct qnap_mcu *mcu = dev_get_drvdata(pdev->dev.parent);
++	const struct qnap_mcu_variant *variant = qnap_mcu_get_variant_data(mcu);
++	struct qnap_mcu_hwmon *hwm;
++	struct thermal_cooling_device *cdev;
++	struct device *dev = &pdev->dev;
++	struct device *hwmon;
++	int ret;
++
++	hwm = devm_kzalloc(dev, sizeof(*hwm), GFP_KERNEL);
++	if (!hwm)
++		return -ENOMEM;
++
++	hwm->mcu = mcu;
++	hwm->dev = &pdev->dev;
++	hwm->pwm_min = variant->fan_pwm_min;
++	hwm->pwm_max = variant->fan_pwm_max;
++
++	platform_set_drvdata(pdev, hwm);
++
++	/*
++	 * Set duty cycle to maximum allowed.
++	 */
++	ret = qnap_mcu_hwmon_set_pwm(hwm, hwm->pwm_max);
++	if (ret)
++		return ret;
++
++	hwm->info.ops = &qnap_mcu_hwmon_hwmon_ops;
++	hwm->info.info = qnap_mcu_hwmon_channels;
++
++	ret = qnap_mcu_hwmon_get_cooling_data(dev, hwm);
++	if (ret)
++		return ret;
++
++	hwm->fan_state = hwm->fan_max_state;
++
++	hwmon = devm_hwmon_device_register_with_info(dev, "qnapmcu",
++						     hwm, &hwm->info, NULL);
++	if (IS_ERR(hwmon))
++		return dev_err_probe(dev, PTR_ERR(hwmon), "Failed to register hwmon device\n");
++
++	/*
++	 * Only register cooling device when we found cooling-levels.
++	 * qnap_mcu_hwmon_get_cooling_data() will fail when reading malformed
++	 * levels and only succeed with either no or correct cooling levels.
++	 */
++	if (IS_ENABLED(CONFIG_THERMAL) && hwm->fan_cooling_levels) {
++		cdev = devm_thermal_of_cooling_device_register(dev,
++					to_of_node(hwm->fan_node), "qnap-mcu-hwmon",
++					hwm, &qnap_mcu_hwmon_cooling_ops);
++		if (IS_ERR(cdev))
++			return dev_err_probe(dev, PTR_ERR(cdev),
++				"Failed to register qnap-mcu-hwmon as cooling device\n");
++		hwm->cdev = cdev;
++	}
++
++	return 0;
++}
++
++static struct platform_driver qnap_mcu_hwmon_driver = {
++	.probe = qnap_mcu_hwmon_probe,
 +	.driver = {
-+		.name = "qnap-mcu-leds",
++		.name = "qnap-mcu-hwmon",
 +	},
 +};
-+module_platform_driver(qnap_mcu_leds_driver);
++module_platform_driver(qnap_mcu_hwmon_driver);
 +
-+MODULE_ALIAS("platform:qnap-mcu-leds");
++MODULE_ALIAS("platform:qnap-mcu-hwmon");
 +MODULE_AUTHOR("Heiko Stuebner <heiko@sntech.de>");
-+MODULE_DESCRIPTION("QNAP MCU LEDs driver");
++MODULE_DESCRIPTION("QNAP MCU hwmon driver");
 +MODULE_LICENSE("GPL");
 -- 
 2.43.0
