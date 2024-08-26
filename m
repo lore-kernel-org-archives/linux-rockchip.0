@@ -4,106 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 45665C5321D
-	for <linux-rockchip@archiver.kernel.org>; Mon, 26 Aug 2024 08:53:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0625CC5321D
+	for <linux-rockchip@archiver.kernel.org>; Mon, 26 Aug 2024 09:05:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:CC:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=vHkaCcgYghqM8YrLVIsuBK5Si6Opc6D0LqmSgzfMy4A=; b=GeGdQbGxR4LgoA
-	v7aHGzsGqs3Ef0KgrT6ygw0tXXa7oQM71FsV1km93NeOBhyS/wjbi+ZGInzzzpjXfQzQ127xRuoG7
-	/v4bHK3SIUle/iSLeiPO6ZZColxKLlYNWhFgL9OJiel7myuuA1WT93wG6B6Y5aY/JpjzSk26Y+QHi
-	mGv26ZCY0/vhv7h1W+IRc0XfldNAaGyFE0wdCs9jRofNAYTJf4L66zgOUTNrmyUnPNLbYkW4fyW2t
-	sL0c+R+aX1QcHXhSjXAibnw6K3h0vzJIrww9d+EY9+G879JxRkcezFJPv2fVwMlc4kWP+c7hjI+fC
-	aClsZEGBUTf2dGDt7O0w==;
+	List-Owner; bh=lnCyw+oulZSTEGT+bURaLJKMHBQKujTWIDZvejcq+zI=; b=B3B4V1dzu+bLa+
+	SNhE24ZwL+JrqruRp1C7vegmpEbM4s+6QFZ8tbPjTyQypFYlNz5odDH3UQdkBYkYwX5sWaOrxdE/U
+	wsKJLJ3hL7X9ikmEyqSbphGiTGtKEeSEYnYZ9PPteQ5VRLcvgpeNX+6Po0RWeLcSxKsNWoOk5PrAd
+	OKsUgTbR6XUfr/jrcar00opp+WxGu/9AVrN+gjjr6QhG8JZeBUx9Flhoi/pcqzLYl9Lfy/AS+eOIX
+	3aHz0dXZjuSAGfJM6Yi6MXdmTz84vnlRVFIrAg7vGGUnMLUZlnr34RrWz8IhBvLFU8s5fXIQKtZHf
+	7kID05VtGCinpg4qkk4Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1siVU1-00000006ZFG-3sYw;
-	Mon, 26 Aug 2024 08:53:53 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1siVey-00000006b3w-46IO;
+	Mon, 26 Aug 2024 09:05:13 +0000
+Received: from szxga02-in.huawei.com ([45.249.212.188])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1siVSh-00000006Z06-31E6;
-	Mon, 26 Aug 2024 08:52:34 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id B535CA41FED;
-	Mon, 26 Aug 2024 08:52:22 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4BF89C567C3;
-	Mon, 26 Aug 2024 08:33:40 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1724661226;
-	bh=U1tJ1/ULEzBvcZ47ZFvB/rVYnyeyMrzi27GGYRy1N2k=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=Bh4IoI9J/w8IFTdTXrdD1sDrWDbvyXf7/Jo2QjABGam5mCuOGg6AiFHB2etNFndJi
-	 +v88wG4ATTA/C8yE0cTqxmRameI1L9QG/CugVOrrLpmm9gBOWFVeBwSG+vkx3F7ud5
-	 HKrmt31Vpbvp6E3sEj8WpE04x++r47itJsprVY2+T+exmIphAPqtyF+REgkLhsK7Sy
-	 Fn6sJaFU0L8xWT/7Mo2oHe2JFfpLS3Au0tXS394S4dMgQa0qkmFhXdPZg/O+unswoG
-	 n/A56xvKx8sX4HeIX72y6hUWNWCJogPhYH4k+udSw5FcKUDAmptE0KCSbqMcZ5QFg4
-	 ewY8LB1Hmu7tQ==
-Message-ID: <9537c866-cddc-4958-86a8-d097982067cd@kernel.org>
-Date: Mon, 26 Aug 2024 10:33:39 +0200
+	id 1siVe9-00000006awH-39P4;
+	Mon, 26 Aug 2024 09:04:24 +0000
+Received: from mail.maildlp.com (unknown [172.19.88.194])
+	by szxga02-in.huawei.com (SkyGuard) with ESMTP id 4Wsl7D27nYzpTZH;
+	Mon, 26 Aug 2024 17:02:32 +0800 (CST)
+Received: from kwepemh500013.china.huawei.com (unknown [7.202.181.146])
+	by mail.maildlp.com (Postfix) with ESMTPS id 28A361401F0;
+	Mon, 26 Aug 2024 17:04:11 +0800 (CST)
+Received: from [10.67.109.254] (10.67.109.254) by
+ kwepemh500013.china.huawei.com (7.202.181.146) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1544.11; Mon, 26 Aug 2024 17:04:09 +0800
+Message-ID: <ab3c09e7-43cc-b946-0f7c-44ea7f4111f2@huawei.com>
+Date: Mon, 26 Aug 2024 17:04:09 +0800
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 7/8] dt-bindings: arm: rockchip: Add Relfor Saib
-To: karthikeyan <karthikeyan@linumiz.com>, Conor Dooley <conor@kernel.org>
-Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
- heiko@sntech.de, alexandre.belloni@bootlin.com, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-rtc@vger.kernel.org
-References: <20240823153528.3863993-1-karthikeyan@linumiz.com>
- <20240823153528.3863993-8-karthikeyan@linumiz.com>
- <20240823-lark-regime-0d3ab4215d69@spud>
- <a5d4f421-5120-4421-944e-d39d67e482bb@linumiz.com>
-From: Krzysztof Kozlowski <krzk@kernel.org>
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
+ Thunderbird/102.2.0
+Subject: Re: [PATCH -next 1/5] drm/rockchip: Use
+ for_each_child_of_node_scoped()
 Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- xsFNBFVDQq4BEAC6KeLOfFsAvFMBsrCrJ2bCalhPv5+KQF2PS2+iwZI8BpRZoV+Bd5kWvN79
- cFgcqTTuNHjAvxtUG8pQgGTHAObYs6xeYJtjUH0ZX6ndJ33FJYf5V3yXqqjcZ30FgHzJCFUu
- JMp7PSyMPzpUXfU12yfcRYVEMQrmplNZssmYhiTeVicuOOypWugZKVLGNm0IweVCaZ/DJDIH
- gNbpvVwjcKYrx85m9cBVEBUGaQP6AT7qlVCkrf50v8bofSIyVa2xmubbAwwFA1oxoOusjPIE
- J3iadrwpFvsZjF5uHAKS+7wHLoW9hVzOnLbX6ajk5Hf8Pb1m+VH/E8bPBNNYKkfTtypTDUCj
- NYcd27tjnXfG+SDs/EXNUAIRefCyvaRG7oRYF3Ec+2RgQDRnmmjCjoQNbFrJvJkFHlPeHaeS
- BosGY+XWKydnmsfY7SSnjAzLUGAFhLd/XDVpb1Een2XucPpKvt9ORF+48gy12FA5GduRLhQU
- vK4tU7ojoem/G23PcowM1CwPurC8sAVsQb9KmwTGh7rVz3ks3w/zfGBy3+WmLg++C2Wct6nM
- Pd8/6CBVjEWqD06/RjI2AnjIq5fSEH/BIfXXfC68nMp9BZoy3So4ZsbOlBmtAPvMYX6U8VwD
- TNeBxJu5Ex0Izf1NV9CzC3nNaFUYOY8KfN01X5SExAoVTr09ewARAQABzSVLcnp5c3p0b2Yg
- S296bG93c2tpIDxrcnprQGtlcm5lbC5vcmc+wsGVBBMBCgA/AhsDBgsJCAcDAgYVCAIJCgsE
- FgIDAQIeAQIXgBYhBJvQfg4MUfjVlne3VBuTQ307QWKbBQJgPO8PBQkUX63hAAoJEBuTQ307
- QWKbBn8P+QFxwl7pDsAKR1InemMAmuykCHl+XgC0LDqrsWhAH5TYeTVXGSyDsuZjHvj+FRP+
- gZaEIYSw2Yf0e91U9HXo3RYhEwSmxUQ4Fjhc9qAwGKVPQf6YuQ5yy6pzI8brcKmHHOGrB3tP
- /MODPt81M1zpograAC2WTDzkICfHKj8LpXp45PylD99J9q0Y+gb04CG5/wXs+1hJy/dz0tYy
- iua4nCuSRbxnSHKBS5vvjosWWjWQXsRKd+zzXp6kfRHHpzJkhRwF6ArXi4XnQ+REnoTfM5Fk
- VmVmSQ3yFKKePEzoIriT1b2sXO0g5QXOAvFqB65LZjXG9jGJoVG6ZJrUV1MVK8vamKoVbUEe
- 0NlLl/tX96HLowHHoKhxEsbFzGzKiFLh7hyboTpy2whdonkDxpnv/H8wE9M3VW/fPgnL2nPe
- xaBLqyHxy9hA9JrZvxg3IQ61x7rtBWBUQPmEaK0azW+l3ysiNpBhISkZrsW3ZUdknWu87nh6
- eTB7mR7xBcVxnomxWwJI4B0wuMwCPdgbV6YDUKCuSgRMUEiVry10xd9KLypR9Vfyn1AhROrq
- AubRPVeJBf9zR5UW1trJNfwVt3XmbHX50HCcHdEdCKiT9O+FiEcahIaWh9lihvO0ci0TtVGZ
- MCEtaCE80Q3Ma9RdHYB3uVF930jwquplFLNF+IBCn5JRzsFNBFVDXDQBEADNkrQYSREUL4D3
- Gws46JEoZ9HEQOKtkrwjrzlw/tCmqVzERRPvz2Xg8n7+HRCrgqnodIYoUh5WsU84N03KlLue
- MNsWLJBvBaubYN4JuJIdRr4dS4oyF1/fQAQPHh8Thpiz0SAZFx6iWKB7Qrz3OrGCjTPcW6ei
- OMheesVS5hxietSmlin+SilmIAPZHx7n242u6kdHOh+/SyLImKn/dh9RzatVpUKbv34eP1wA
- GldWsRxbf3WP9pFNObSzI/Bo3kA89Xx2rO2roC+Gq4LeHvo7ptzcLcrqaHUAcZ3CgFG88CnA
- 6z6lBZn0WyewEcPOPdcUB2Q7D/NiUY+HDiV99rAYPJztjeTrBSTnHeSBPb+qn5ZZGQwIdUW9
- YegxWKvXXHTwB5eMzo/RB6vffwqcnHDoe0q7VgzRRZJwpi6aMIXLfeWZ5Wrwaw2zldFuO4Dt
- 91pFzBSOIpeMtfgb/Pfe/a1WJ/GgaIRIBE+NUqckM+3zJHGmVPqJP/h2Iwv6nw8U+7Yyl6gU
- BLHFTg2hYnLFJI4Xjg+AX1hHFVKmvl3VBHIsBv0oDcsQWXqY+NaFahT0lRPjYtrTa1v3tem/
- JoFzZ4B0p27K+qQCF2R96hVvuEyjzBmdq2esyE6zIqftdo4MOJho8uctOiWbwNNq2U9pPWmu
- 4vXVFBYIGmpyNPYzRm0QPwARAQABwsF8BBgBCgAmAhsMFiEEm9B+DgxR+NWWd7dUG5NDfTtB
- YpsFAmA872oFCRRflLYACgkQG5NDfTtBYpvScw/9GrqBrVLuJoJ52qBBKUBDo4E+5fU1bjt0
- Gv0nh/hNJuecuRY6aemU6HOPNc2t8QHMSvwbSF+Vp9ZkOvrM36yUOufctoqON+wXrliEY0J4
- ksR89ZILRRAold9Mh0YDqEJc1HmuxYLJ7lnbLYH1oui8bLbMBM8S2Uo9RKqV2GROLi44enVt
- vdrDvo+CxKj2K+d4cleCNiz5qbTxPUW/cgkwG0lJc4I4sso7l4XMDKn95c7JtNsuzqKvhEVS
- oic5by3fbUnuI0cemeizF4QdtX2uQxrP7RwHFBd+YUia7zCcz0//rv6FZmAxWZGy5arNl6Vm
- lQqNo7/Poh8WWfRS+xegBxc6hBXahpyUKphAKYkah+m+I0QToCfnGKnPqyYIMDEHCS/RfqA5
- t8F+O56+oyLBAeWX7XcmyM6TGeVfb+OZVMJnZzK0s2VYAuI0Rl87FBFYgULdgqKV7R7WHzwD
- uZwJCLykjad45hsWcOGk3OcaAGQS6NDlfhM6O9aYNwGL6tGt/6BkRikNOs7VDEa4/HlbaSJo
- 7FgndGw1kWmkeL6oQh7wBvYll2buKod4qYntmNKEicoHGU+x91Gcan8mCoqhJkbqrL7+nXG2
- 5Q/GS5M9RFWS+nYyJh+c3OcfKqVcZQNANItt7+ULzdNJuhvTRRdC3g9hmCEuNSr+CLMdnRBY fv0=
-In-Reply-To: <a5d4f421-5120-4421-944e-d39d67e482bb@linumiz.com>
+To: Jonathan Cameron <Jonathan.Cameron@Huawei.com>
+CC: <hjc@rock-chips.com>, <heiko@sntech.de>, <andy.yan@rock-chips.com>,
+	<maarten.lankhorst@linux.intel.com>, <mripard@kernel.org>,
+	<tzimmermann@suse.de>, <airlied@gmail.com>, <daniel@ffwll.ch>,
+	<dri-devel@lists.freedesktop.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-rockchip@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+	<krzk@kernel.org>, <jic23@kernel.org>
+References: <20240823092053.3170445-1-ruanjinjie@huawei.com>
+ <20240823092053.3170445-2-ruanjinjie@huawei.com>
+ <20240823123203.00002aac@Huawei.com>
+From: Jinjie Ruan <ruanjinjie@huawei.com>
+In-Reply-To: <20240823123203.00002aac@Huawei.com>
+X-Originating-IP: [10.67.109.254]
+X-ClientProxiedBy: dggems703-chm.china.huawei.com (10.3.19.180) To
+ kwepemh500013.china.huawei.com (7.202.181.146)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240826_015231_911754_64B39BA3 
-X-CRM114-Status: GOOD (  13.58  )
+X-CRM114-CacheID: sfid-20240826_020422_320166_A8489424 
+X-CRM114-Status: GOOD (  19.48  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -120,52 +78,82 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 24/08/2024 14:48, karthikeyan wrote:
-> On 8/23/24 21:51, Conor Dooley wrote:
->> On Fri, Aug 23, 2024 at 09:05:27PM +0530, Karthikeyan Krishnasamy wrote:
->>> Add devicetree binding documentation for Relfor Saib
->>> board which uses Rockchip RV1109 SoC
->>>
->>> Signed-off-by: Karthikeyan Krishnasamy <karthikeyan@linumiz.com>
->>> ---
->>>   Documentation/devicetree/bindings/arm/rockchip.yaml | 6 ++++++
->>>   1 file changed, 6 insertions(+)
->>>
->>> diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
->>> index 1ef09fbfdfaf..29f7e09ae443 100644
->>> --- a/Documentation/devicetree/bindings/arm/rockchip.yaml
->>> +++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
->>> @@ -848,6 +848,12 @@ properties:
->>>                 - radxa,zero-3w
->>>             - const: rockchip,rk3566
->>>   
->>> +      - description: Relfor SAIB board
->>> +        items:
->>> +          - const: relfor,saib
->>> +          - enum:
->>> +              - rockchip,rv1109
+
+
+On 2024/8/23 19:32, Jonathan Cameron wrote:
+> On Fri, 23 Aug 2024 17:20:49 +0800
+> Jinjie Ruan <ruanjinjie@huawei.com> wrote:
+> 
+>> Avoids the need for manual cleanup of_node_put() in early exits
+>> from the loop.
 >>
->> This does not make sense to me. Why do you have an enum for the SoC
->> model, implying that this SAIB board would have more than one possible
->> SoC? I'd expect to see - const: rockvhip,rv1109
+>> Signed-off-by: Jinjie Ruan <ruanjinjie@huawei.com>
+> 
+> There is more to do here, and looking at the code, I'm far from
+> sure it isn't releasing references it never had.
+> 
+>> ---
+>>  drivers/gpu/drm/rockchip/rockchip_lvds.c | 8 +++-----
+>>  1 file changed, 3 insertions(+), 5 deletions(-)
 >>
-> There is an upcoming version of SAIB board based on Rockchip RV1103.
+>> diff --git a/drivers/gpu/drm/rockchip/rockchip_lvds.c b/drivers/gpu/drm/rockchip/rockchip_lvds.c
+>> index 9a01aa450741..f5b3f18794dd 100644
+>> --- a/drivers/gpu/drm/rockchip/rockchip_lvds.c
+>> +++ b/drivers/gpu/drm/rockchip/rockchip_lvds.c
+>> @@ -548,7 +548,7 @@ static int rockchip_lvds_bind(struct device *dev, struct device *master,
+>>  	struct drm_encoder *encoder;
+>>  	struct drm_connector *connector;
+>>  	struct device_node *remote = NULL;
+>> -	struct device_node  *port, *endpoint;
+> 
+> Odd extra space before *port in original. Clean that up whilst here.
+> 
+> 
+>> +	struct device_node  *port;
+> 
+> Use __free(device_node) for *port as well.
+> 
+> So where the current asignment is.
+> 	struct device_node *port = of_graph_get_port_by_id(dev->of_node, 1);
+> 
+>>  	int ret = 0, child_count = 0;
+>>  	const char *name;
+>>  	u32 endpoint_id = 0;
+>> @@ -560,15 +560,13 @@ static int rockchip_lvds_bind(struct device *dev, struct device *master,
+>>  			      "can't found port point, please init lvds panel port!\n");
+>>  		return -EINVAL;
+>>  	}
+>> -	for_each_child_of_node(port, endpoint) {
+>> +	for_each_child_of_node_scoped(port, endpoint) {
+>>  		child_count++;
+>>  		of_property_read_u32(endpoint, "reg", &endpoint_id);
+>>  		ret = drm_of_find_panel_or_bridge(dev->of_node, 1, endpoint_id,
+>>  						  &lvds->panel, &lvds->bridge);
+>> -		if (!ret) {
+>> -			of_node_put(endpoint);
+>> +		if (!ret)
+>>  			break;
+> 
+> This then can simply be
+> 			return dev_err_probe(dev, ret,
+> 					     "failed to find pannel and bridge node\n");
+>> -		}
 
-Still wrong form multiple points of view:
-1. Not logical, we never expect such entry in top level bindings,
-2. Same board or different? If same, how is it possible to have two
-different SoCs (not modules!) in the same board? These are different
-boards. Or maybe this uses some SoM, but your commit msg explained
-nothing about this.
+Thank you! I'll resend and cleanup them.
 
-You have entire commit msg to explain the hardware. Use it, so you don't
-get such questions.
-
-The code above: NAK
-
-Best regards,
-Krzysztof
-
+> 
+> Various other paths become direct returns as well.
+> 
+>>  	}
+> 
+> The later code with remote looks suspect as not obvious who got the reference that
+> is being put but assuming that is correct, it's another possible place for __free based
+> cleanup.
+> 
+> 
+>>  	if (!child_count) {
+>>  		DRM_DEV_ERROR(dev, "lvds port does not have any children\n");
+> 
 
 _______________________________________________
 Linux-rockchip mailing list
