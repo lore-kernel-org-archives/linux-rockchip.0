@@ -4,38 +4,38 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0D2A4C5472E
-	for <linux-rockchip@archiver.kernel.org>; Mon, 26 Aug 2024 09:41:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 447B1C5321E
+	for <linux-rockchip@archiver.kernel.org>; Mon, 26 Aug 2024 09:42:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:To:From:Reply-To:Cc:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=t5FLcLYDKr2hIOGtZHSciEryVucx5p/clDgVUdpuj2E=; b=OyLp3g63USTN8n
-	gQgxiaGug6i6KFADPSV2CybLrCjfP4O95VaoeLwlcVoRwXuxfBKSQfL5s3nrA/v8H6pxl50zDs8D1
-	A2K/eRxvoK/g6BtO4a7XMZMc+0ncfeHdvc6HwKg62ZUsj4gs0JC43XMhDItUaOgCxzfQAOChCIp0w
-	VLtHrx+nmh5T2KoMvDflQ8+9uohslGcCxbadoHQgsvW+Ks3axmieVhmfa2SPWePKYbyluOV4OUeCs
-	sRSVnZ380hw+Wkxp6sSunkyBBdtJov+2OSA2FkhBdF2DqsUssxfwAm/pxwrOfjzAWJNHuy7YH64v+
-	AJijBgb75TY52HoQKkjg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To
+	:From:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=7Ua+jRqzTBPoGilFWGkCDUaC+AtoU65v/xsPByUaErc=; b=INqYoahy3dRHN2
+	AZbk+hTcAevJAUm4s3BOEVI0JcT51ac2AXp8UO0z/flKD3vLmFG9Sm7diG2cAefj9ye/P9zo3EMIP
+	zTN/edeYcn3gV6Zb7zyyMxHs8jXTdETeempGgYaR/EqbfGD/dU/obE6b4GM/dZ8PFH9R4ucBvRdKQ
+	cFhQqv039ZyCP5Vc3WfXz3+HorNg73KRyDKjbdXgVxQE1PHLOnQJTAZfrxD99u3RTUe4QVOz+0UDq
+	clNB4Q6HmPbOy66gk39k26E12iEsBukFoLEW95XdlI+f05WH2u2FCNM5esppoIxusuJEzzO1jplLs
+	FChEgng0uoE5t07tl4zw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1siWDf-00000006ipK-3CJT;
-	Mon, 26 Aug 2024 09:41:03 +0000
-Received: from szxga07-in.huawei.com ([45.249.212.35])
+	id 1siWFE-00000006jIh-1pYT;
+	Mon, 26 Aug 2024 09:42:40 +0000
+Received: from szxga04-in.huawei.com ([45.249.212.190])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1siW8s-00000006hAX-1QcD;
-	Mon, 26 Aug 2024 09:36:08 +0000
-Received: from mail.maildlp.com (unknown [172.19.162.112])
-	by szxga07-in.huawei.com (SkyGuard) with ESMTP id 4Wslsf5fQrz1S8sn;
-	Mon, 26 Aug 2024 17:35:50 +0800 (CST)
+	id 1siW8s-00000006hAY-2NEK;
+	Mon, 26 Aug 2024 09:36:09 +0000
+Received: from mail.maildlp.com (unknown [172.19.88.234])
+	by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4Wslsc0FqGz2CnTN;
+	Mon, 26 Aug 2024 17:35:48 +0800 (CST)
 Received: from kwepemh500013.china.huawei.com (unknown [7.202.181.146])
-	by mail.maildlp.com (Postfix) with ESMTPS id 0A2C5140120;
-	Mon, 26 Aug 2024 17:36:00 +0800 (CST)
+	by mail.maildlp.com (Postfix) with ESMTPS id AAF741402E1;
+	Mon, 26 Aug 2024 17:35:56 +0800 (CST)
 Received: from huawei.com (10.90.53.73) by kwepemh500013.china.huawei.com
  (7.202.181.146) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.11; Mon, 26 Aug
- 2024 17:35:58 +0800
+ 2024 17:35:55 +0800
 From: Jinjie Ruan <ruanjinjie@huawei.com>
 To: <miquel.raynal@bootlin.com>, <michal.simek@amd.com>, <richard@nod.at>,
 	<vigneshr@ti.com>, <liang.yang@amlogic.com>, <neil.armstrong@linaro.org>,
@@ -53,19 +53,17 @@ To: <miquel.raynal@bootlin.com>, <michal.simek@amd.com>, <richard@nod.at>,
 	<linux-renesas-soc@vger.kernel.org>, <linux-rockchip@lists.infradead.org>,
 	<linux-stm32@st-md-mailman.stormreply.com>, <krzk@kernel.org>,
 	<jic23@kernel.org>
-Subject: [PATCH -next RESEND 03/10] mtd: rawnand: pl353: Use for_each_child_of_node_scoped()
-Date: Mon, 26 Aug 2024 17:43:21 +0800
-Message-ID: <20240826094328.2991664-4-ruanjinjie@huawei.com>
+Subject: [PATCH -next RESEND 00/10] mtd: Use for_each_child_of_node_scoped()
+Date: Mon, 26 Aug 2024 17:43:18 +0800
+Message-ID: <20240826094328.2991664-1-ruanjinjie@huawei.com>
 X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20240826094328.2991664-1-ruanjinjie@huawei.com>
-References: <20240826094328.2991664-1-ruanjinjie@huawei.com>
 MIME-Version: 1.0
 X-Originating-IP: [10.90.53.73]
 X-ClientProxiedBy: dggems703-chm.china.huawei.com (10.3.19.180) To
  kwepemh500013.china.huawei.com (7.202.181.146)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240826_023606_647460_28E2A93C 
-X-CRM114-Status: UNSURE (   8.84  )
+X-CRM114-CacheID: sfid-20240826_023606_885518_25A72A7C 
+X-CRM114-Status: UNSURE (   4.34  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -83,39 +81,34 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Avoids the need for manual cleanup of_node_put() in early exits
-from the loop by using for_each_child_of_node_scoped().
+Use scoped for_each_available_child_of_node_scoped() when iterating over
+device nodes to make code a bit simpler.
 
-Signed-off-by: Jinjie Ruan <ruanjinjie@huawei.com>
----
- drivers/mtd/nand/raw/pl35x-nand-controller.c | 5 ++---
- 1 file changed, 2 insertions(+), 3 deletions(-)
+Jinjie Ruan (10):
+  mtd: rawnand: arasan: Use for_each_child_of_node_scoped()
+  mtd: rawnand: cadence: Use for_each_child_of_node_scoped()
+  mtd: rawnand: pl353: Use for_each_child_of_node_scoped()
+  mtd: rawnand: marvell: drm/rockchip: Use
+    for_each_child_of_node_scoped()
+  mtd: rawnand: rockchip: Use for_each_child_of_node_scoped()
+  mtd: rawnand: meson: Use for_each_child_of_node_scoped()
+  mtd: rawnand: mtk: Use for_each_child_of_node_scoped()
+  mtd: rawnand: renesas: Use for_each_child_of_node_scoped()
+  mtd: rawnand: stm32_fmc2: Use for_each_child_of_node_scoped()
+  mtd: rawnand: sunxi: Use for_each_child_of_node_scoped()
 
-diff --git a/drivers/mtd/nand/raw/pl35x-nand-controller.c b/drivers/mtd/nand/raw/pl35x-nand-controller.c
-index 1c76ee98efb7..2570fd0beea0 100644
---- a/drivers/mtd/nand/raw/pl35x-nand-controller.c
-+++ b/drivers/mtd/nand/raw/pl35x-nand-controller.c
-@@ -1111,7 +1111,7 @@ static void pl35x_nand_chips_cleanup(struct pl35x_nandc *nfc)
- 
- static int pl35x_nand_chips_init(struct pl35x_nandc *nfc)
- {
--	struct device_node *np = nfc->dev->of_node, *nand_np;
-+	struct device_node *np = nfc->dev->of_node;
- 	int nchips = of_get_child_count(np);
- 	int ret;
- 
-@@ -1121,10 +1121,9 @@ static int pl35x_nand_chips_init(struct pl35x_nandc *nfc)
- 		return -EINVAL;
- 	}
- 
--	for_each_child_of_node(np, nand_np) {
-+	for_each_child_of_node_scoped(np, nand_np) {
- 		ret = pl35x_nand_chip_init(nfc, nand_np);
- 		if (ret) {
--			of_node_put(nand_np);
- 			pl35x_nand_chips_cleanup(nfc);
- 			break;
- 		}
+ drivers/mtd/nand/raw/arasan-nand-controller.c   |  5 ++---
+ drivers/mtd/nand/raw/cadence-nand-controller.c  |  4 +---
+ drivers/mtd/nand/raw/marvell_nand.c             | 12 +++---------
+ drivers/mtd/nand/raw/meson_nand.c               |  4 +---
+ drivers/mtd/nand/raw/mtk_nand.c                 |  7 ++-----
+ drivers/mtd/nand/raw/pl35x-nand-controller.c    |  5 ++---
+ drivers/mtd/nand/raw/renesas-nand-controller.c  | 12 +++---------
+ drivers/mtd/nand/raw/rockchip-nand-controller.c |  5 ++---
+ drivers/mtd/nand/raw/stm32_fmc2_nand.c          |  7 ++-----
+ drivers/mtd/nand/raw/sunxi_nand.c               |  4 +---
+ 10 files changed, 19 insertions(+), 46 deletions(-)
+
 -- 
 2.34.1
 
