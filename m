@@ -4,76 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6CC29C5321D
-	for <linux-rockchip@archiver.kernel.org>; Mon, 26 Aug 2024 12:57:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 410DAC5321E
+	for <linux-rockchip@archiver.kernel.org>; Mon, 26 Aug 2024 14:01:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:CC:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=0l7AxMvCW7kG9Arh05ULQTCH0U8LSyHtmQySRVsrsrY=; b=OFrqfZzRLq02Oa
-	unuCiULmcL5/Nxtouc138Q/X3VO0c6cA/Y9xEfz3icHXkooPaRGs+JU6jnv8KXBb2kh1OQZZkm6lj
-	nRAL9FT5nqKXcEYsZ8ADSu64fHFeIxOw6MVByPTv7NDtlHEG3khSF0jwF6J6cfse6uw8sx43iPWEJ
-	xK2JdO3WBpQQkqfXrQlbyK2VDvQtERWsAFnCtIDUUyaUrMzySrM/bPFgS61z/oa5mZ70758nHwCXt
-	t5iU28+qZedlsO1LhVc76smj0DnIJx5F4mnFLNP1ufTk0GedTMn8BzSUHPGRGOjSC08if/cH2Qo+a
-	FMH2hxePSlKk8j7bGL/A==;
+	List-Owner; bh=LA/X4fNwjr2yaqupEYAZyC+nZP87VcDBetAp3ekOpew=; b=OZPRaHDKGnwU7X
+	lat3ZxIlLky1saDcqNavDOiH0zskVV3HtOE4NolpR3mur2MM9zWp0loZzDYe7isAqs2wIssRoHgOq
+	bLU4RlYQskmVQ5h65c+HLFHs2RGKP4eZR41tkiLEwADCP3B0KrRXCQGnW69GaK7pAXRJ5zdd+Y2i4
+	/Smv3dVrNu8Yh1DMaAYm/HRKIDQjhvbH32lfWt5W0zLJyu0DV0Kyy1VvduNy8f8HXtcKWjMeoHt2L
+	GLlz8hQ7FVAzJGCxa1Rz7N3G9etexGWHatWA0AjCbMcTcsh/FBGw4wwpFkIuWlLbZOFUQ7dq7X/02
+	7bhXg1ttPMPF2TtmmQ8Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1siZHT-00000007QOd-2O0D;
-	Mon, 26 Aug 2024 12:57:11 +0000
-Received: from szxga01-in.huawei.com ([45.249.212.187])
+	id 1siaHq-00000007aKX-0Vet;
+	Mon, 26 Aug 2024 14:01:38 +0000
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1siZGe-00000007Q8k-056X;
-	Mon, 26 Aug 2024 12:56:21 +0000
-Received: from mail.maildlp.com (unknown [172.19.163.252])
-	by szxga01-in.huawei.com (SkyGuard) with ESMTP id 4WsrJ9268SzyR3h;
-	Mon, 26 Aug 2024 20:55:37 +0800 (CST)
-Received: from kwepemh500013.china.huawei.com (unknown [7.202.181.146])
-	by mail.maildlp.com (Postfix) with ESMTPS id 79DC01800A5;
-	Mon, 26 Aug 2024 20:56:05 +0800 (CST)
-Received: from [10.67.109.254] (10.67.109.254) by
- kwepemh500013.china.huawei.com (7.202.181.146) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1544.11; Mon, 26 Aug 2024 20:56:03 +0800
-Message-ID: <061c39b9-c2fb-34e8-5848-dc2d2d9ca5eb@huawei.com>
-Date: Mon, 26 Aug 2024 20:56:02 +0800
+	id 1siaH1-00000007aB1-22TI;
+	Mon, 26 Aug 2024 14:00:48 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id A1FC9A4281E;
+	Mon, 26 Aug 2024 14:00:39 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id ED2E0C52FC3;
+	Mon, 26 Aug 2024 14:00:45 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1724680846;
+	bh=N6QZc8YM8klksq0nE1lKt6yDYzsUUOHjIINFLCMZQUM=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=a/xs8b/C1L9CHIrb9yc9EtcYI9Qixbr/BvDfyXHjXTL8woZUoYFLY+1J0vU267ATI
+	 BH1AKAPNDDgC/lqiI/dC20ap9LZTKo9eWGQLiKLDBzZbNECqv0Jo2SykjK8KHp95se
+	 J6AcxKncn/4aQo2+dOo5PqKlhgHyjfbv+RLWWABzQKRD2vAmHGY0uom0Fbw9rsvOXp
+	 aoo/FbIHBSvMrker4TZ/btb64fn3Jju67Y14TR9uwrRZGmt7P72ubDB6M4qKhYqvP4
+	 xCgi1RmrklIMnGp/G50pmlbJuUwckoPtIWoZsmRaGEw5ppxnWEFl0vCionzWvixwf+
+	 Sr0fnsf4GRoZA==
+Date: Mon, 26 Aug 2024 09:00:44 -0500
+From: "Rob Herring (Arm)" <robh@kernel.org>
+To: Detlev Casanova <detlev.casanova@collabora.com>
+Cc: Philipp Zabel <p.zabel@pengutronix.de>,
+	Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org,
+	Sugar Zhang <sugar.zhang@rock-chips.com>,
+	Michael Turquette <mturquette@baylibre.com>,
+	Elaine Zhang <zhangqing@rock-chips.com>,
+	Heiko Stuebner <heiko@sntech.de>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, kernel@collabora.com,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, linux-clk@vger.kernel.org,
+	linux-kernel@vger.kernel.org, Stephen Boyd <sboyd@kernel.org>
+Subject: Re: [PATCH v6 1/3] dt-bindings: clock, reset: Add support for rk3576
+Message-ID: <172468084271.72163.10961446550304422485.robh@kernel.org>
+References: <20240822194956.918527-1-detlev.casanova@collabora.com>
+ <20240822194956.918527-2-detlev.casanova@collabora.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
- Thunderbird/102.2.0
-Subject: Re: [PATCH -next RESEND 00/10] mtd: Use
- for_each_child_of_node_scoped()
-Content-Language: en-US
-To: Miquel Raynal <miquel.raynal@bootlin.com>, Krzysztof Kozlowski
-	<krzk@kernel.org>
-CC: <michal.simek@amd.com>, <richard@nod.at>, <vigneshr@ti.com>,
-	<liang.yang@amlogic.com>, <neil.armstrong@linaro.org>,
-	<khilman@baylibre.com>, <jbrunet@baylibre.com>,
-	<martin.blumenstingl@googlemail.com>, <matthias.bgg@gmail.com>,
-	<angelogioacchino.delregno@collabora.com>, <heiko@sntech.de>,
-	<mcoquelin.stm32@gmail.com>, <alexandre.torgue@foss.st.com>, <wens@csie.org>,
-	<jernej.skrabec@gmail.com>, <samuel@sholland.org>, <kees@kernel.org>,
-	<gustavoars@kernel.org>, <linux@treblig.org>, <robh@kernel.org>,
-	<u.kleine-koenig@pengutronix.de>, <erick.archer@gmx.com>,
-	<christophe.jaillet@wanadoo.fr>, <val@packett.cool>,
-	<christophe.kerello@foss.st.com>, <linux-mtd@lists.infradead.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-amlogic@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<linux-renesas-soc@vger.kernel.org>, <linux-rockchip@lists.infradead.org>,
-	<linux-stm32@st-md-mailman.stormreply.com>, <jic23@kernel.org>
-References: <20240826094328.2991664-1-ruanjinjie@huawei.com>
- <20240826115213.389acaef@xps-13>
- <f7430f87-88d2-4c08-bc1e-6bb3da4e332c@kernel.org>
- <20240826144917.2c4e202d@xps-13>
-From: Jinjie Ruan <ruanjinjie@huawei.com>
-In-Reply-To: <20240826144917.2c4e202d@xps-13>
-X-Originating-IP: [10.67.109.254]
-X-ClientProxiedBy: dggems706-chm.china.huawei.com (10.3.19.183) To
- kwepemh500013.china.huawei.com (7.202.181.146)
+Content-Disposition: inline
+In-Reply-To: <20240822194956.918527-2-detlev.casanova@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240826_055620_336705_9D65EE14 
-X-CRM114-Status: UNSURE (   8.01  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240826_070047_607441_58721A63 
+X-CRM114-Status: GOOD (  12.16  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,26 +75,39 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-CgpPbiAyMDI0LzgvMjYgMjA6NDksIE1pcXVlbCBSYXluYWwgd3JvdGU6Cj4gSGkgS3J6eXN6dG9m
-LAo+IAo+IGtyemtAa2VybmVsLm9yZyB3cm90ZSBvbiBNb24sIDI2IEF1ZyAyMDI0IDEyOjE5OjA3
-ICswMjAwOgo+IAo+PiBPbiAyNi8wOC8yMDI0IDExOjUyLCBNaXF1ZWwgUmF5bmFsIHdyb3RlOgo+
-Pj4gSGkgSmluamllLAo+Pj4KPj4+IHJ1YW5qaW5qaWVAaHVhd2VpLmNvbSB3cm90ZSBvbiBNb24s
-IDI2IEF1ZyAyMDI0IDE3OjQzOjE4ICswODAwOgo+Pj4gICAKPj4+PiBVc2Ugc2NvcGVkIGZvcl9l
-YWNoX2F2YWlsYWJsZV9jaGlsZF9vZl9ub2RlX3Njb3BlZCgpIHdoZW4gaXRlcmF0aW5nIG92ZXIK
-Pj4+PiBkZXZpY2Ugbm9kZXMgdG8gbWFrZSBjb2RlIGEgYml0IHNpbXBsZXIuICAKPj4+Cj4+PiBX
-aHkgaXMgdGhpcyBhIHJlc2VuZCA/IERpZCBJIG1pc3MgYSBwcmV2aW91cyBpdGVyYXRpb24/ICAK
-Pj4KPj4gWW91IHdlcmUgbm90IGNjLWVkIG9uIHByZXZpb3VzIGl0ZXJhdGlvbi4gSSBhc2tlZCBm
-b3IgcHJvcGVyIHNwbGl0Cj4+IGJldHdlZW4gc3Vic3lzdGVtcyBhbmQgc2VuZGluZyB0byBtYWlu
-dGFpbmVycywgdGh1cyB0aGlzIHJlc2VuZC4KPiAKPiBPay4gTWFrZXMgc2Vuc2UsIGFuZCB0aGUg
-cGF0Y2hzZXQgbG9va3MgZmluZS4KPiAKPiBKaW5qaWUsIHBsZWFzZSBhbHdheXMgaW5jbHVkZSBh
-IGNoYW5nZWxvZyB3aGVuIHlvdSBzZW5kIG5ldyB2ZXJzaW9ucywKPiBhbmQgZXhwbGFuYXRpb25z
-IGZvciBhIFJFU0VORC4KCk9rLCB0aGFua3MgZm9yIHRoZSBhZHZpY2UuCgo+IAo+IFRoYW5rcywK
-PiBNaXF1w6hsCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-XwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFk
-ZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4
-LXJvY2tjaGlwCg==
+
+On Thu, 22 Aug 2024 15:49:32 -0400, Detlev Casanova wrote:
+> Add clock and reset ID defines for rk3576.
+> 
+> Compared to the downstream bindings written by Elaine, this uses
+> continous gapless IDs starting at 0. Thus all numbers are
+> different between downstream and upstream, but names are kept
+> exactly the same.
+> 
+> Also add documentation for the rk3576 CRU core.
+> 
+> Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
+> Signed-off-by: Sugar Zhang <sugar.zhang@rock-chips.com>
+> Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
+> ---
+>  .../bindings/clock/rockchip,rk3576-cru.yaml   |  56 ++
+>  .../dt-bindings/clock/rockchip,rk3576-cru.h   | 592 ++++++++++++++++++
+>  .../dt-bindings/reset/rockchip,rk3576-cru.h   | 564 +++++++++++++++++
+>  3 files changed, 1212 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/clock/rockchip,rk3576-cru.yaml
+>  create mode 100644 include/dt-bindings/clock/rockchip,rk3576-cru.h
+>  create mode 100644 include/dt-bindings/reset/rockchip,rk3576-cru.h
+> 
+
+Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
