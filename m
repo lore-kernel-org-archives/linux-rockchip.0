@@ -4,84 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 97B7AC5321D
-	for <linux-rockchip@archiver.kernel.org>; Mon, 26 Aug 2024 18:30:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4D277C5321D
+	for <linux-rockchip@archiver.kernel.org>; Mon, 26 Aug 2024 18:45:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=YEE6XEOadchMzFgVGcy2Hw1u6qLX0CQPYum6/Z+dd04=; b=d9nm2a7Tum/3nc
-	VplA706tvQlt/ruUNaTuvaqsNMmAxK6nrUo9t6Usdp9L4EIxtBHUKXQ9hDD9culcIgc5JcC9P9Sw2
-	aPtstkvcvrszUeh69DTyE6G0ysEoBQ8xhW0I+qqqM40KE6yhFEXOP+JsCQ5FBhWeT2uAP9gkuYCRX
-	5nBExdmericok+bxyZGh17rgU+x4+eWPz90pYDMaEB0kmmXpL4vc91g1FbzYzswc1Ak8TeYLONxNH
-	dwheWcFtY6DqMwsde6sKS7z1ODWmNUX2imYqVBJzd1bf+OGglUXbpKLhj6lyMb1AnujXkVdUWRQC7
-	vEAa/6urfcng1iQKCDow==;
+	List-Owner; bh=jsGNpbkVkIulAbsCA3pesKSgGuMU6W9pXNG8oj8L0gg=; b=zwrI6D4h6PKx6R
+	vFZVAKI4HbwNs2ChkQ0e27DLumKWpnEJnFyjuz4WO/zG50Wbe3YEvKGwv/yHYnJ8elscTrkFL+a/a
+	s0/4FchKGK8gIHeI5/O4lGmgiBmJ+2ea8HpbDpGKRu/wizuUgWxL6ngyUaTkpdrtfDRsTUHmcO0fh
+	EJNIfVzlRgujtjaHKqbkcbQcplb54heEV+Rfku+9SCm9AA1MFaOC/JpgDP5zxAb33JFZ3kIN/4U5z
+	LmIJhoExPCJQZUuLUpRk+xITAZSJKnrk/HvRodY4LVBU2B9Kf5LDTHTRs6mNDEPj+zh6Xbkq+Lwl3
+	qIxoCe+JW+idL+3N1P0A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sieTh-00000008MaD-2IRc;
-	Mon, 26 Aug 2024 18:30:09 +0000
-Received: from mail-pj1-x1034.google.com ([2607:f8b0:4864:20::1034])
+	id 1sieiN-00000008OVh-0f3y;
+	Mon, 26 Aug 2024 18:45:19 +0000
+Received: from sender4-op-o14.zoho.com ([136.143.188.14])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sieTd-00000008MYM-3N0S
-	for linux-rockchip@lists.infradead.org;
-	Mon, 26 Aug 2024 18:30:07 +0000
-Received: by mail-pj1-x1034.google.com with SMTP id 98e67ed59e1d1-2d439572aeaso3170841a91.1
-        for <linux-rockchip@lists.infradead.org>; Mon, 26 Aug 2024 11:30:04 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1724697004; x=1725301804; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=B0uuXq8ne/yMxydWV736DEq+0IEdJmv6uA08FdC9hrU=;
-        b=RlqmNbFraCmlVvtWKGxfxCg9cQgP4LtaPn04nmoAD6IKvUFdK+lk4FsjZ7WMt634lz
-         VlZBlzvVlwxJIq7EqNasGHrPbGqpfMVJrfIuZ+9GiuF8ospuG7Y7ctm+ihygHkezah1u
-         BWknpNH+0AjqPIrtZuzj+CTNAaIbj6S/owTjU=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1724697004; x=1725301804;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=B0uuXq8ne/yMxydWV736DEq+0IEdJmv6uA08FdC9hrU=;
-        b=fs9DKGI2kjdVBlm7y9hewAGHXGXuH7248feqBFU/hed+1I5sY5fSdYDRM4n6JUXH3T
-         WmbN9Clkvd0RstysKa85FeU2CF1mjNhgClBlQJjaedkAS6+LH4i4TI6KAYpa2sV2dhFb
-         f0Gglvs5vpOTBcbXwiQBYfF2ciBCzLIN8VSGXhX9oZtIrZGQvD4PTed0z6z4NBYUpfQf
-         oeTqHfVISJSaQPyVp28pRMJYiUx1dFDip0dZBjt94yey2vwAn4G9jOWnMPOOEs9pPG61
-         GeIJQHLM1IpZb1dVJpKJZMXHK+Qo+a3jZxkfpROUKRD5+8ElKvzp0xPz9MHOgnZnwd33
-         VV6Q==
-X-Forwarded-Encrypted: i=1; AJvYcCWfxxby8VJNjwWRKKVTPQV+PKJWUogWT1E5IALiFmLdaU28ms+DY01counZJQd8w01lzZLkEV9FAVN7QFhjHA==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yx/TwFwhm38QNoqtvbzFCJ0RQSQ9rAg41nSSmLYBJkZrzgL/v3l
-	J9fIzHovi0YSRQ2RQIu569lYJ5APJtkCGLLfYc/31+ijmgGr6ezH2zt0EvWPec9OIXhEmXQAuaY
-	=
-X-Google-Smtp-Source: AGHT+IGwPAiSI+HmM0qi9NyJaLRHnGBHYsOwZ8N24Jvfmpi8hg6hXb+xyDInVkOXA4sv4ynq6h189w==
-X-Received: by 2002:a17:90b:1c8e:b0:2cf:f860:f13b with SMTP id 98e67ed59e1d1-2d824ccee69mr757303a91.17.1724697003957;
-        Mon, 26 Aug 2024 11:30:03 -0700 (PDT)
-Received: from localhost ([2a00:79e0:2e14:7:7e40:430b:848a:1da6])
-        by smtp.gmail.com with UTF8SMTPSA id 98e67ed59e1d1-2d613941e79sm10220036a91.25.2024.08.26.11.30.03
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 26 Aug 2024 11:30:03 -0700 (PDT)
-Date: Mon, 26 Aug 2024 11:30:02 -0700
-From: Brian Norris <briannorris@chromium.org>
-To: Jon Lin <jon.lin@rock-chips.com>
-Cc: =?utf-8?Q?Ond=C5=99ej?= Jirman <megi@xff.cz>, broonie@kernel.org,
-	heiko@sntech.de, linux-spi@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
-	shengfei Xu <xsf@rock-chips.com>
-Subject: Re: [PATCH v3 5/6] spi: rockchip: Suspend and resume the bus during
- NOIRQ_SYSTEM_SLEEP_PM ops
-Message-ID: <ZszJqpj4_8yfRwTu@google.com>
-References: <20220216014028.8123-1-jon.lin@rock-chips.com>
- <20220216014028.8123-6-jon.lin@rock-chips.com>
- <20220621154218.sau54jeij4bunf56@core>
- <Zsj_CJR56TcahXBO@google.com>
- <f836c6fe-3edc-4e6b-aa83-b50d9edcb816@rock-chips.com>
+	id 1sieht-00000008ONW-3uJY;
+	Mon, 26 Aug 2024 18:44:51 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1724697879; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=bgQwwXn15Aoufd+BzwNeginJ3mhUEPOciGcomXfAvREr2GMq/xAv7D1LEyhS8YFautIqkFkJZ1KeT7tdIVDwkmktmut5MwAlHlsx+GXw9WV145sVCs+CjXzqDb0OfPeYppW5lts6l6usoLa5uGhrqxZ7cSmEDbSAbwpPJP2nfwo=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1724697879; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=mlnYUtGPIbd9GPhhmlk+YwVhJr5+Jj0FaWL8g6QYGw8=; 
+	b=L5emk3qgbcXwjbvIy5cjN2Lw/xK8eQqkVSiyLGtGcz16XGNGwyRWF5A71fdxVZ/pMOGr3VAi1c5YKYqjuaIG3ajwLbDRv1i+c49dWs9S/6xttUCs+FhePz3q31ADQvx/T39x4g3RAoval1VybBY30tf98wjCMoWTUQ/omBzgdS4=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=detlev.casanova@collabora.com;
+	dmarc=pass header.from=<detlev.casanova@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1724697879;
+	s=zohomail; d=collabora.com; i=detlev.casanova@collabora.com;
+	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
+	bh=mlnYUtGPIbd9GPhhmlk+YwVhJr5+Jj0FaWL8g6QYGw8=;
+	b=QOFT4k+ZE6zA8KdK0rDSS8lu2HnhpP6tbxo+AU3GzG+c/C1fvz5juyyXxAe1YDke
+	Wspd5eYM/u3H437m7kRjNe+hSNqw9mhf+USIVhtTLhiDjn6lt5WVYltwxi99PMwTuvD
+	Dq2GGn04YSJK2wOHMvtqkM0E4bEtFdsnQaG9Iy18=
+Received: by mx.zohomail.com with SMTPS id 1724697878497938.876702576403;
+	Mon, 26 Aug 2024 11:44:38 -0700 (PDT)
+From: Detlev Casanova <detlev.casanova@collabora.com>
+To: Dragan Simic <dsimic@manjaro.org>
+Cc: linux-kernel@vger.kernel.org, Ulf Hansson <ulf.hansson@linaro.org>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ Jaehoon Chung <jh80.chung@samsung.com>, linux-mmc@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, kernel@collabora.com,
+ Shawn Lin <shawn.lin@rock-chips.com>
+Subject: Re: [PATCH v4 2/4] mmc: dw_mmc-rockchip: Add internal phase support
+Date: Mon, 26 Aug 2024 14:44:36 -0400
+Message-ID: <1999169.usQuhbGJ8B@bootstrap>
+In-Reply-To: <b57017bca1a4a5fe558556142a9cec3d@manjaro.org>
+References: <20240822212418.982927-1-detlev.casanova@collabora.com>
+ <4943132.31r3eYUQgx@trenzalore>
+ <b57017bca1a4a5fe558556142a9cec3d@manjaro.org>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <f836c6fe-3edc-4e6b-aa83-b50d9edcb816@rock-chips.com>
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240826_113005_886805_1586B5DF 
-X-CRM114-Status: GOOD (  12.59  )
+X-CRM114-CacheID: sfid-20240826_114450_111580_4808FE41 
+X-CRM114-Status: GOOD (  35.91  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,36 +83,108 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Jon,
+On Monday, 26 August 2024 10:39:58 EDT Dragan Simic wrote:
+> Hello Detlev,
+> 
+> On 2024-08-23 15:34, Detlev Casanova wrote:
+> > On Friday, 23 August 2024 01:41:44 EDT Dragan Simic wrote:
+> >> Hello Detlev,
+> >> 
+> >> Please see a comment below.
+> >> 
+> >> On 2024-08-22 23:15, Detlev Casanova wrote:
+> >> > From: Shawn Lin <shawn.lin@rock-chips.com>
+> >> > 
+> >> > Some Rockchip devices put the phase settings into the dw_mmc
+> >> > controller.
+> >> > 
+> >> > When the feature is present, the ciu-drive and ciu-sample clocks are
+> >> > not used and the phase configuration is done directly through the mmc
+> >> > controller.
+> >> > 
+> >> > Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+> >> > Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
+> >> > Acked-by: Shawn Lin <shawn.lin@rock-chips.com>
+> >> > ---
+> >> > 
+> >> >  drivers/mmc/host/dw_mmc-rockchip.c | 171 +++++++++++++++++++++++++++--
+> >> >  1 file changed, 160 insertions(+), 11 deletions(-)
+> >> > 
+> >> > diff --git a/drivers/mmc/host/dw_mmc-rockchip.c
+> >> > b/drivers/mmc/host/dw_mmc-rockchip.c
+> >> > index b07190ba4b7a..2748f9bf2691 100644
+> >> > --- a/drivers/mmc/host/dw_mmc-rockchip.c
+> >> > +++ b/drivers/mmc/host/dw_mmc-rockchip.c
+> >> > @@ -15,7 +15,17 @@
+> >> > 
+> >> >  #include "dw_mmc.h"
+> >> >  #include "dw_mmc-pltfm.h"
+> >> > 
+> >> > -#define RK3288_CLKGEN_DIV	2
+> >> > +#define RK3288_CLKGEN_DIV		2
+> >> > +#define SDMMC_TIMING_CON0		0x130
+> >> > +#define SDMMC_TIMING_CON1		0x134
+> >> > +#define ROCKCHIP_MMC_DELAY_SEL		BIT(10)
+> >> > +#define ROCKCHIP_MMC_DEGREE_MASK	0x3
+> >> > +#define ROCKCHIP_MMC_DEGREE_OFFSET	1
+> >> > +#define ROCKCHIP_MMC_DELAYNUM_OFFSET	2
+> >> > +#define ROCKCHIP_MMC_DELAYNUM_MASK	(0xff <<
+> >> > ROCKCHIP_MMC_DELAYNUM_OFFSET)
+> >> > +#define ROCKCHIP_MMC_DELAY_ELEMENT_PSEC	60
+> >> > +#define HIWORD_UPDATE(val, mask, shift) \
+> >> > +		((val) << (shift) | (mask) << ((shift) + 16))
+> >> > 
+> >> >  static const unsigned int freqs[] = { 100000, 200000, 300000, 400000
+> >> > 
+> >> > };
+> >> > 
+> >> > @@ -24,8 +34,143 @@ struct dw_mci_rockchip_priv_data {
+> >> > 
+> >> >  	struct clk		*sample_clk;
+> >> >  	int			default_sample_phase;
+> >> >  	int			num_phases;
+> >> > 
+> >> > +	int			internal_phase;
+> >> > 
+> >> >  };
+> >> 
+> >> It might be good to declare internal_phase as "unsigned int
+> >> internal_phase:1",
+> >> i.e. as a bit field, which isn't going to save some memory in this
+> >> particular
+> >> case, but it would show additional attention to detail.
+> > 
+> > In that case, I would go with a bool instead of int, that makes things
+> > even clearer.
+> 
+> My suggestion to use "unsigned int internal_phase:1" actually takes
+> inspiration from the ASoC code, in which such bit fields are used
+> quite a lot, even when using them actually doesn't save space.
+> 
+> In this particular case, using plain bool would make sense, but I
+> still think that using an "unsigned int internal_phase:1" bit field
+> would fit better, because it would show the intention to possibly
+> save a bit of RAM at some point.  OTOH, I don't think that using
+> bool with such bit fields would actually work cleanly, because bool
+> actually resolves to int that's a signed type.
 
-You sent HTML email, so it likely didn't reach the mailing list. There
-are some tips here that might help:
+I wouldn't use bool with a bit field of course. I've always considered using 
+bit fileds only for structs that must have a certain format, like a header 
+format definition.
 
-https://wireless.wiki.kernel.org/en/developers/documentation/submittingpatches
-https://www.infradead.org/~dwmw2/email.html
+For me, it is better to use "bool internal_phase" so that it is obvious that 
+the feature can be on or off when reading the code.
 
-Anyway, I'll quote what I can in response below:
+When using bit fields with a struct that is not marked as "__packed", I 
+immediately think that there could be a bug there and wonder why the bit field 
+is used, not really thinking "the dev wanted to show they cared about memory 
+usage".
+But I guess that is all about preferences. In the end, it won't change how it 
+works.
 
-On Sat, Aug 24, 2024 at 01:42:14PM +0800, Jon Lin wrote:
->    I made a submission in the community, and RK's SDK processing plan is
->    to
->    make compatibility processing for PM runtime and NOIRQ.
+Detlev.
 
-I'm not 100% sure what that means, but I see you submitted this:
 
-https://lore.kernel.org/all/20240825035422.900370-1-jon.lin@rock-chips.com/
-[PATCH] spi: rockchip: Avoid redundant clock disable in pm operation
-
-I may give that a proper review later, but I might request you take a
-look at my patch in addition or instead, which I believe is simpler and
-clearer, with a better description of what it's solving and why:
-
-https://lore.kernel.org/all/20240823214235.1718769-1-briannorris@chromium.org/
-[PATCH] spi: rockchip: Resolve unbalanced runtime PM / system PM handling
-
-Please let me know if that patch works for you.
-
-Brian
 
 _______________________________________________
 Linux-rockchip mailing list
