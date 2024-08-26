@@ -4,56 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 744D5C5472C
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 09D68C5321D
 	for <linux-rockchip@archiver.kernel.org>; Mon, 26 Aug 2024 23:07:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
-	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=93X+itlhP3/osGFbX7EB/RARDa4qCmW1LOUeF763+98=; b=gHB6zJqPcpzC0e
-	IwDdrZS0/rHJFAeOd0PLSquOk+fdo/1GZt41eFoj6wF46mG8dz0T1gzLyiubt2k+O682A/DIawyZM
-	kAqQ9rRPYziRJBFXajyUw8I+y4DIIGfH5SOdh5TQltmIASXf/QG5Cp/1pIa32vkxcymyNflTdOP1W
-	p5u4FjB8A+xT89XnHYiAnsgARoynBjeAg0gPlOJ/mbPVBpEfZgM/G3hd6d0nSQDaUKs2wGUWqf1/2
-	InL1DXhmVT8dwf5cQ73iviX5RE3NfBAy/6ZRlCqOLMg/f2G247vEFDn5fuD5ACWmdY6dF75SmN+ot
-	7dGRk2bxSEtgUcVHnAng==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
+	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=lYPmubQRmmpuranYYTbzOhWSRrFkZ7czAw5wFLjaZ/4=; b=HKTY/Rj3AfNekw
+	V2pyNCVlRc57cqlEEyP706ilNafbenLmAMc4rPj2N9oECHk2dcp/4BNBaSYxH0uJ3FwXNq8UU6vto
+	owTi0fXE4G2f0pfb5R4TL4f7mJu5xM6P9M7QROBSixfG11H1v4ijRVXIeZ3sp7IpEmezMcg1ajAAs
+	22lBbSU/nwZRXCfcvG8QhRuXp2PI7ZRJZIQQGO9TJeAeupCBv/HenhFv2WOD4rGsRPV2lnrPa0jDH
+	raGJybXViH64KAyckgpRoA1BLrMC3ikg7zTZCgBs+u33wokfipptzGcVzhfSRAgtmsY9qQ7wtal0P
+	J3rGEDIVXVzPdJTKA3Zw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1siioI-0000000976X-3bb1;
-	Mon, 26 Aug 2024 23:07:42 +0000
+	id 1siioK-00000009778-0xlo;
+	Mon, 26 Aug 2024 23:07:44 +0000
 Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1siioF-0000000975a-1aBE;
-	Mon, 26 Aug 2024 23:07:41 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1724713648; cv=none; 
+	id 1siioH-00000009762-0gIf;
+	Mon, 26 Aug 2024 23:07:42 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1724713652; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=C9IHZ8gRUJHQEjPa3DWNImYwv5b7A5bqNh/zuZVYddWHi/iamz1esQW7PVpDqs5kFhZxuepA26jy+72nczNP4b0+QjVaLzeeuNrW95UY4M0nAcUwj289TXqjCiIaaSqYcNL22l92sES/h6PXs5IvqczCCSL2z85ykiGMBn+0kmA=
+	b=n30YeZKpctL7lgeuk13iZuXGky6lQYaFw2xu5qLcanLDQavRHZSWWawuFaac7mfJwTjNDoh0Z5JldjHzWYa4uj7u8hLPPVt+D2XrARyjQsPBW/r7co5Nv8xIq0cChBY1tSNA4gRSm4u6oL06gKC802xtzo4NS4iAny5MquTIdo4=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1724713648; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=O4UgvPlxUIocUclKtFW+PPXZ5p2TpKUAXhxXfnHWxSA=; 
-	b=epQ1jqub8wIGQXeXOv5a1HmWNU3wQqqUpNcd2XbNamvNN8YOoIck1Fyuj0d5O8pWfjJk/GTiVNsqeMPTKPBXzHCYHCPGNeK3GOaRTXs5RaUB0yrbcEkr2EkM+ldjyopl6Ur4A7luDJ6WqY57RClMzdnn4oHDYS+OA0IQGtZs2e8=
+	t=1724713652; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=Z+jAzzzokKHCe3H8TXOmojTHnCSogBwzWxfbfhEDvF0=; 
+	b=LOhCs6hHAucsr9CR+MypUz1P8/pXP/ZCw0VoL33T9niOuJBDfCL4VhF6uZ/TJf/gkn4ZvXDht9a9/B7fO3PhYs+aBZIreW3Sqjt7u3qpT0eXAZeJImUlxjJyx5x9m7t6xJ1yieWpX4JWfS2+Zt6ksoDU20PCKqld0G9BDhScPQo=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=collabora.com;
 	spf=pass  smtp.mailfrom=cristian.ciocaltea@collabora.com;
 	dmarc=pass header.from=<cristian.ciocaltea@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1724713648;
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1724713652;
 	s=zohomail; d=collabora.com; i=cristian.ciocaltea@collabora.com;
-	h=From:From:Subject:Subject:Date:Date:Message-Id:Message-Id:MIME-Version:Content-Type:Content-Transfer-Encoding:To:To:Cc:Cc:Reply-To;
-	bh=O4UgvPlxUIocUclKtFW+PPXZ5p2TpKUAXhxXfnHWxSA=;
-	b=J3KyELADNktUDvd59M2fuuGLX6fl3YXdlgXiW3q3HAYqXQFbTWiThuCTISEhBgFo
-	oGpS1gNHGH3mCOYyIP5T6/DHkc9grjKbnDhGEe+kbDrPMkS58VA36Hdx2nNl8rWPIpJ
-	2PnY08RJFudIQ+ILx1z52m/VfeCnfZYeDGPJODrY=
-Received: by mx.zohomail.com with SMTPS id 1724713645980482.61635936819255;
-	Mon, 26 Aug 2024 16:07:25 -0700 (PDT)
+	h=From:From:Date:Date:Subject:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Message-Id:References:In-Reply-To:To:To:Cc:Cc:Reply-To;
+	bh=Z+jAzzzokKHCe3H8TXOmojTHnCSogBwzWxfbfhEDvF0=;
+	b=eDwUlTGyWvOJzKPBvCqVS+oeVzABeGwp4/T1ZpEiygNeDAvvYtGKJ999y1gFIA4y
+	CYF09afxAP+NWGud+766H5CiucKdWGFZnzOEkvUbitiKlHdEqGJs30nSwtsNj77n00F
+	n/36wRR30Hym/HlogxmN2PApktKi+H8Gc66j7HUE=
+Received: by mx.zohomail.com with SMTPS id 1724713650530383.7164698004325;
+	Mon, 26 Aug 2024 16:07:30 -0700 (PDT)
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Subject: [PATCH 0/2] Fix compatibles for RK3588 VO{0,1}_GRF
-Date: Tue, 27 Aug 2024 02:06:49 +0300
-Message-Id: <20240827-rk3588-vo-grf-compat-v1-0-d4a18acf951a@collabora.com>
+Date: Tue, 27 Aug 2024 02:06:50 +0300
+Subject: [PATCH 1/2] dt-bindings: soc: rockchip: Fix compatibles for RK3588
+ VO{0,1}_GRF
 MIME-Version: 1.0
-X-B4-Tracking: v=1; b=H4sIAIkKzWYC/6tWKk4tykwtVrJSqFYqSi3LLM7MzwNyDHUUlJIzE
- vPSU3UzU4B8JSMDIxMDCyNz3aJsY1MLC92yfN30ojTd5PzcgsQSXZMUo2QLk5RkcwujJCWg1oK
- i1LTMCrCx0bG1tQBVm0zRZgAAAA==
+Message-Id: <20240827-rk3588-vo-grf-compat-v1-1-d4a18acf951a@collabora.com>
+References: <20240827-rk3588-vo-grf-compat-v1-0-d4a18acf951a@collabora.com>
+In-Reply-To: <20240827-rk3588-vo-grf-compat-v1-0-d4a18acf951a@collabora.com>
 To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
  Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
 Cc: kernel@collabora.com, devicetree@vger.kernel.org, 
@@ -62,8 +62,8 @@ Cc: kernel@collabora.com, devicetree@vger.kernel.org,
 X-Mailer: b4 0.14.1
 X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240826_160739_503837_05C12315 
-X-CRM114-Status: UNSURE (   5.50  )
+X-CRM114-CacheID: sfid-20240826_160741_284539_3109B203 
+X-CRM114-Status: UNSURE (   9.38  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -81,26 +81,46 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-As Conor noticed recently [1], RK3588 VO0 & VO1 GRFs incorrectly share
-the compatible string, since they are not identical (though quite
-similar in terms of layout).
+According to RK3588 TRM, VO0_GRF and VO1_GRF have a similar layout, but
+definitely not an identical one, therefore sharing the compatible is not
+really justified.
 
-Provide dedicated compatible strings, as a follow-up.
+Since currently there is no user of this, hence no ABI break, let's fix
+it by providing dedicated strings.
 
-[1] https://lore.kernel.org/lkml/20240821-stretch-scam-09d7adc08a4c@spud/
-
+Reported-by: Conor Dooley <conor@kernel.org>
 Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 ---
-Cristian Ciocaltea (2):
-      dt-bindings: soc: rockchip: Fix compatibles for RK3588 VO{0,1}_GRF
-      arm64: dts: rockchip: Fix compatibles for RK3588 VO{0,1}_GRF
-
  Documentation/devicetree/bindings/soc/rockchip/grf.yaml | 6 ++++--
- arch/arm64/boot/dts/rockchip/rk3588-base.dtsi           | 6 +++---
- 2 files changed, 7 insertions(+), 5 deletions(-)
----
-base-commit: 8400291e289ee6b2bf9779ff1c83a291501f017b
-change-id: 20240827-rk3588-vo-grf-compat-4d2c84dc782b
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/Documentation/devicetree/bindings/soc/rockchip/grf.yaml b/Documentation/devicetree/bindings/soc/rockchip/grf.yaml
+index 78c6d5b64138..8fd539125f4a 100644
+--- a/Documentation/devicetree/bindings/soc/rockchip/grf.yaml
++++ b/Documentation/devicetree/bindings/soc/rockchip/grf.yaml
+@@ -31,7 +31,8 @@ properties:
+               - rockchip,rk3588-pcie3-pipe-grf
+               - rockchip,rk3588-usb-grf
+               - rockchip,rk3588-usbdpphy-grf
+-              - rockchip,rk3588-vo-grf
++              - rockchip,rk3588-vo0-grf
++              - rockchip,rk3588-vo1-grf
+               - rockchip,rk3588-vop-grf
+               - rockchip,rv1108-usbgrf
+           - const: syscon
+@@ -261,7 +262,8 @@ allOf:
+         compatible:
+           contains:
+             enum:
+-              - rockchip,rk3588-vo-grf
++              - rockchip,rk3588-vo0-grf
++              - rockchip,rk3588-vo1-grf
+ 
+     then:
+       required:
+
+-- 
+2.46.0
 
 
 _______________________________________________
