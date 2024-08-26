@@ -4,73 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ACCF8C5320E
-	for <linux-rockchip@archiver.kernel.org>; Sun, 25 Aug 2024 20:38:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C3549C5321E
+	for <linux-rockchip@archiver.kernel.org>; Mon, 26 Aug 2024 04:52:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=mHKPMO0/RmT4zXWhPCWp3o7cJHD7621QyIdWw1BHl98=; b=J4hpLrnrGc4ceO
-	PR/Pryo91GG02epD6iL3t1OsAHbmoPOR81TXx1RL04jnSSM8xjyMNgqu8/iQwQwi6ktQfSE2F1a1Z
-	FDlOnnvyHKvaC20YTdGJYBBfml9yXDZPC4KuVYzrpHP2voPTC202rKcrT+GFYba/4NptxuMjmkvTz
-	G+2L8sNWzULtr6iiDybgsUWtITU38VCG+jCnMwNWXeDRvDZP+M/aDBpEBCiudbSM/Nh2KcDHQFZs+
-	xnG05wF/NvyzYioo5Dom20wIEhoPvsP5eikFtMgfe63XPRcBVsH5yYXAvWulHmhgfKd/ccnSxxO/n
-	K/fFYFO88lZU3gQhUh9Q==;
+	List-Owner; bh=f6iQTWKgpWD7FDJY1dPSZ1GDoke/M/XBLz0AdgJ717Y=; b=L/hzfl5lYrAXs3
+	jtiol8kdTYLKRjhO8Tb4eZ38HC5WD93+RUmkCPdSRIEB9dx/qEpHSYTOOtaxJ1Tm9iV6jV3TigTo9
+	N4aPaUE6WmPuJwIKkt09gjfXP+cp2RP8KMNdH94HU0WC0sw9rHer2cTK0FNOhvQs/A0HyKK13T217
+	MN5WrrzCI7vJ2Iwgx/36B0dDolGk1lcBorSBfIkBvh12zOF62GluXblURIzMKpxsyE7L6e7NTAZBp
+	0Ige6t0c79VSFm3/2zj6edMqugDEFx5+eOXRlnWsuMoOah+ChnyH/m4jQK0++Q7cTduLROHcFJ6Us
+	X3j5H/QuQeG0JNwEwVYA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1siJzy-000000052aM-29Nr;
-	Sun, 25 Aug 2024 20:38:06 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
-	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1siJv1-000000051Iq-0ZGq;
-	Sun, 25 Aug 2024 20:33:01 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Transfer-Encoding:MIME-Version:References:
-	In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
-	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=STSk6yWWwVN0S3N57FhRjWR7zPjTxlqPzZ4ZKSPwEtA=; b=hBKTQErnopmvQ7oO9Oeg/0gxz9
-	i2W9jYak8foiUdpFd1wWKPhDM2YYCii3Zo3KwVtVYTeOcQBPWZFvGlhmLnHI+8IKvlv3Y2e4Tc7+n
-	qjcNbR6hORakKKyMDGFlzsNGozjCYlEmU5CzLCUA3ZhGCP8avyH7PXtE7PvSRk/cu42UlQgx6olGm
-	T6y34mSIaY3I/5iiGoMkuTcSOp7Hl3e3piuUXsV3c/+SO/8pLiC0OkfoQLImN9fDIET6KQ4Kl5Ybu
-	Kq6fds8tlOjVjRdZI9BmgY9N+Z0OdCLO7Nj8yAk5eSDgGjPTCP45LAdxbB0I3eq/N35ftmYBX7ekg
-	rah64cuQ==;
-Received: from i53875a40.versanet.de ([83.135.90.64] helo=phil.lan)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1siJum-0001cM-0z; Sun, 25 Aug 2024 22:32:44 +0200
-From: Heiko Stuebner <heiko@sntech.de>
-To: lee@kernel.org
-Cc: robh@kernel.org,
-	krzk+dt@kernel.org,
-	conor+dt@kernel.org,
-	jdelvare@suse.com,
-	linux@roeck-us.net,
-	heiko@sntech.de,
-	dmitry.torokhov@gmail.com,
-	pavel@ucw.cz,
-	ukleinek@debian.org,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-hwmon@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
+	id 1siRii-00000005oqI-1OJR;
+	Mon, 26 Aug 2024 04:52:48 +0000
+Received: from [129.204.178.38] (helo=classfun.cn)
+	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
+	id 1siRhu-00000005okZ-1hTs;
+	Mon, 26 Aug 2024 04:52:01 +0000
+Received: from bigfoot-server-arm-node1.classfun.cn (unknown [124.72.161.4])
+	(Authenticated sender: bigfoot)
+	by classfun.cn (Postfix) with ESMTPSA id EB63E78922;
+	Mon, 26 Aug 2024 12:46:00 +0800 (CST)
+DKIM-Filter: OpenDKIM Filter v2.11.0 classfun.cn EB63E78922
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=classfun.cn;
+	s=default; t=1724647561;
+	bh=fLYjuCo1RmAoQOic56outz/OhHOlYn5yO+2WrQYyZkk=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=W4ZvxhUnRmGghJcOYB8eIIn/csugOoL3/G3hCdkkUfGaeAWEmIgh5VBKuQnz9Qfzp
+	 8v7MdU6wHbghCTlkuGhB9mOXQAqswBd86QHJ1YJ6sYf8opK6CtXfWvZlsATye6ReWZ
+	 tP0qo/JOQIQW96Ptd6P6X7WVkP6TsS+Ho/zDbsu8=
+From: Junhao Xie <bigfoot@classfun.cn>
+To: devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org
+Cc: Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Jonas Karlman <jonas@kwiboo.se>,
+	Chukun Pan <amadeus@jmu.edu.cn>,
+	Junhao Xie <bigfoot@classfun.cn>,
+	FUKAUMI Naoki <naoki@radxa.com>,
+	Dragan Simic <dsimic@manjaro.org>,
 	linux-rockchip@lists.infradead.org,
-	linux-input@vger.kernel.org,
-	linux-leds@vger.kernel.org
-Subject: [PATCH v6 5/7] hwmon: add driver for the hwmon parts of qnap-mcu devices
-Date: Sun, 25 Aug 2024 22:32:33 +0200
-Message-ID: <20240825203235.1122198-6-heiko@sntech.de>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20240825203235.1122198-1-heiko@sntech.de>
-References: <20240825203235.1122198-1-heiko@sntech.de>
+	linux-kernel@vger.kernel.org
+Subject: [PATCH 2/3] dt-bindings: arm: rockchip: Add LCKFB Taishan Pi RK3566
+Date: Mon, 26 Aug 2024 12:44:12 +0800
+Message-ID: <20240826044530.726458-3-bigfoot@classfun.cn>
+X-Mailer: git-send-email 2.45.2
+In-Reply-To: <20240826044530.726458-1-bigfoot@classfun.cn>
+References: <20240826044530.726458-1-bigfoot@classfun.cn>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240825_133259_503519_F22A18F5 
-X-CRM114-Status: GOOD (  32.89  )
+X-CRM114-CacheID: sfid-20240825_215158_610627_0DB6319A 
+X-CRM114-Status: UNSURE (   7.58  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,487 +79,31 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The MCU can be found on network-attached-storage devices made by QNAP
-and provides access to fan control including reading back its RPM as
-well as reading the temperature of the NAS case.
+This documents LCKFB Taishan Pi which is a SBC based on the RK3566 SoC.
 
-Acked-by: Guenter Roeck <linux@roeck-us.net>
-Signed-off-by: Heiko Stuebner <heiko@sntech.de>
+Signed-off-by: Junhao Xie <bigfoot@classfun.cn>
 ---
- Documentation/hwmon/index.rst          |   1 +
- Documentation/hwmon/qnap-mcu-hwmon.rst |  27 ++
- MAINTAINERS                            |   1 +
- drivers/hwmon/Kconfig                  |  12 +
- drivers/hwmon/Makefile                 |   1 +
- drivers/hwmon/qnap-mcu-hwmon.c         | 364 +++++++++++++++++++++++++
- 6 files changed, 406 insertions(+)
- create mode 100644 Documentation/hwmon/qnap-mcu-hwmon.rst
- create mode 100644 drivers/hwmon/qnap-mcu-hwmon.c
+ Documentation/devicetree/bindings/arm/rockchip.yaml | 5 +++++
+ 1 file changed, 5 insertions(+)
 
-diff --git a/Documentation/hwmon/index.rst b/Documentation/hwmon/index.rst
-index 913c11390a45..7adbe23f0659 100644
---- a/Documentation/hwmon/index.rst
-+++ b/Documentation/hwmon/index.rst
-@@ -199,6 +199,7 @@ Hardware Monitoring Kernel Drivers
-    pxe1610
-    pwm-fan
-    q54sj108a2
-+   qnap-mcu-hwmon
-    raspberrypi-hwmon
-    sbrmi
-    sbtsi_temp
-diff --git a/Documentation/hwmon/qnap-mcu-hwmon.rst b/Documentation/hwmon/qnap-mcu-hwmon.rst
-new file mode 100644
-index 000000000000..83407e3408f2
---- /dev/null
-+++ b/Documentation/hwmon/qnap-mcu-hwmon.rst
-@@ -0,0 +1,27 @@
-+.. SPDX-License-Identifier: GPL-2.0-or-later
-+
-+Kernel driver qnap-mcu-hwmon
-+============================
-+
-+This driver enables the use of the hardware monitoring and fan control
-+of the MCU used on some QNAP network attached storage devices.
-+
-+Author: Heiko Stuebner <heiko@sntech.de>
-+
-+Description
-+-----------
-+
-+The driver implements a simple interface for driving the fan controlled by
-+setting its PWM output value and exposes the fan rpm and case-temperature
-+to user space through hwmon's sysfs interface.
-+
-+The fan rotation speed returned via the optional 'fan1_input' is calculated
-+inside the MCU device.
-+
-+The driver provides the following sensor accesses in sysfs:
-+
-+=============== ======= =======================================================
-+fan1_input	ro	fan tachometer speed in RPM
-+pwm1		rw	relative speed (0-255), 255=max. speed.
-+temp1_input	ro	Measured temperature in millicelsius
-+=============== ======= =======================================================
-diff --git a/MAINTAINERS b/MAINTAINERS
-index a41906b3caa3..d500a771ad8a 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -18657,6 +18657,7 @@ F:	drivers/media/tuners/qm1d1c0042*
- QNAP MCU DRIVER
- M:	Heiko Stuebner <heiko@sntech.de>
- S:	Maintained
-+F:	drivers/hwmon/qnap-mcu-hwmon.c
- F:	drivers/input/misc/qnap-mcu-input.c
- F:	drivers/leds/leds-qnap-mcu.c
- F:	drivers/mfd/qnap-mcu.c
-diff --git a/drivers/hwmon/Kconfig b/drivers/hwmon/Kconfig
-index b60fe2e58ad6..0118ad91057e 100644
---- a/drivers/hwmon/Kconfig
-+++ b/drivers/hwmon/Kconfig
-@@ -1793,6 +1793,18 @@ config SENSORS_PWM_FAN
- 	  This driver can also be built as a module. If so, the module
- 	  will be called pwm-fan.
+diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
+index 1ef09fbfdfaf..1fe3fbc36ced 100644
+--- a/Documentation/devicetree/bindings/arm/rockchip.yaml
++++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
+@@ -622,6 +622,11 @@ properties:
+           - const: leez,p710
+           - const: rockchip,rk3399
  
-+config SENSORS_QNAP_MCU_HWMON
-+	tristate "QNAP MCU hardware monitoring"
-+	depends on MFD_QNAP_MCU
-+	depends on THERMAL || THERMAL=n
-+	help
-+	  Say yes here to enable support for fan and temperature sensor
-+	  connected to a QNAP MCU, as found in a number of QNAP network
-+	  attached storage devices.
-+
-+	  This driver can also be built as a module. If so, the module
-+	  will be called qnap-mcu-hwmon.
-+
- config SENSORS_RASPBERRYPI_HWMON
- 	tristate "Raspberry Pi voltage monitor"
- 	depends on RASPBERRYPI_FIRMWARE || (COMPILE_TEST && !RASPBERRYPI_FIRMWARE)
-diff --git a/drivers/hwmon/Makefile b/drivers/hwmon/Makefile
-index b1c7056c37db..d60f46a03cc9 100644
---- a/drivers/hwmon/Makefile
-+++ b/drivers/hwmon/Makefile
-@@ -187,6 +187,7 @@ obj-$(CONFIG_SENSORS_POWERZ)	+= powerz.o
- obj-$(CONFIG_SENSORS_POWR1220)  += powr1220.o
- obj-$(CONFIG_SENSORS_PT5161L)	+= pt5161l.o
- obj-$(CONFIG_SENSORS_PWM_FAN)	+= pwm-fan.o
-+obj-$(CONFIG_SENSORS_QNAP_MCU_HWMON)	+= qnap-mcu-hwmon.o
- obj-$(CONFIG_SENSORS_RASPBERRYPI_HWMON)	+= raspberrypi-hwmon.o
- obj-$(CONFIG_SENSORS_SBTSI)	+= sbtsi_temp.o
- obj-$(CONFIG_SENSORS_SBRMI)	+= sbrmi.o
-diff --git a/drivers/hwmon/qnap-mcu-hwmon.c b/drivers/hwmon/qnap-mcu-hwmon.c
-new file mode 100644
-index 000000000000..8fe6310a1b59
---- /dev/null
-+++ b/drivers/hwmon/qnap-mcu-hwmon.c
-@@ -0,0 +1,364 @@
-+// SPDX-License-Identifier: GPL-2.0-only
-+
-+/*
-+ * Driver for hwmon elements found on QNAP-MCU devices
-+ *
-+ * Copyright (C) 2024 Heiko Stuebner <heiko@sntech.de>
-+ */
-+
-+#include <linux/fwnode.h>
-+#include <linux/hwmon.h>
-+#include <linux/mfd/qnap-mcu.h>
-+#include <linux/module.h>
-+#include <linux/platform_device.h>
-+#include <linux/property.h>
-+#include <linux/thermal.h>
-+
-+struct qnap_mcu_hwmon {
-+	struct qnap_mcu *mcu;
-+	struct device *dev;
-+
-+	unsigned int pwm_min;
-+	unsigned int pwm_max;
-+
-+	struct fwnode_handle *fan_node;
-+	unsigned int fan_state;
-+	unsigned int fan_max_state;
-+	unsigned int *fan_cooling_levels;
-+
-+	struct thermal_cooling_device *cdev;
-+	struct hwmon_chip_info info;
-+};
-+
-+static int qnap_mcu_hwmon_get_rpm(struct qnap_mcu_hwmon *hwm)
-+{
-+	static const u8 cmd[] = { 0x40, 0x46, 0x41 }; /* @, F, A */
-+	u8 reply[6];
-+	int ret;
-+
-+	/* poll the fan rpm */
-+	ret = qnap_mcu_exec(hwm->mcu, cmd, sizeof(cmd), reply, sizeof(reply));
-+	if (ret)
-+		return ret;
-+
-+	/* First 2 bytes must mirror the sent command */
-+	if (memcmp(cmd, reply, 2))
-+		return -EIO;
-+
-+	return reply[4] * 30;
-+}
-+
-+static int qnap_mcu_hwmon_get_pwm(struct qnap_mcu_hwmon *hwm)
-+{
-+	static const u8 cmd[] = { 0x40, 0x46, 0x5a, 0x30 }; /* @, F, Z, 0 = fan-id? */
-+	u8 reply[4];
-+	int ret;
-+
-+	/* poll the fan pwm */
-+	ret = qnap_mcu_exec(hwm->mcu, cmd, sizeof(cmd), reply, sizeof(reply));
-+	if (ret)
-+		return ret;
-+
-+	/* First 3 bytes must mirror the sent command */
-+	if (memcmp(cmd, reply, 3))
-+		return -EIO;
-+
-+	return reply[3];
-+}
-+
-+static int qnap_mcu_hwmon_set_pwm(struct qnap_mcu_hwmon *hwm, u8 pwm)
-+{
-+	const u8 cmd[] = { 0x40, 0x46, 0x57, 0x30, pwm }; /* @, F, W, 0 = fan-id, pwm */
-+
-+	/* set the fan pwm */
-+	return qnap_mcu_exec_with_ack(hwm->mcu, cmd, sizeof(cmd));
-+}
-+
-+static int qnap_mcu_hwmon_get_temp(struct qnap_mcu_hwmon *hwm)
-+{
-+	static const u8 cmd[] = { 0x40, 0x54, 0x33 }; /* @, T, 3 */
-+	u8 reply[4];
-+	int ret;
-+
-+	/* poll the fan rpm */
-+	ret = qnap_mcu_exec(hwm->mcu, cmd, sizeof(cmd), reply, sizeof(reply));
-+	if (ret)
-+		return ret;
-+
-+	/* First bytes must mirror the sent command */
-+	if (memcmp(cmd, reply, sizeof(cmd)))
-+		return -EIO;
-+
-+	/*
-+	 * There is an unknown bit set in bit7.
-+	 * Bits [6:0] report the actual temperature as returned by the
-+	 * original qnap firmware-tools, so just drop bit7 for now.
-+	 */
-+	return (reply[3] & 0x7f) * 1000;
-+}
-+
-+static int qnap_mcu_hwmon_write(struct device *dev, enum hwmon_sensor_types type,
-+				u32 attr, int channel, long val)
-+{
-+	struct qnap_mcu_hwmon *hwm = dev_get_drvdata(dev);
-+
-+	switch (attr) {
-+	case hwmon_pwm_input:
-+		if (val < 0 || val > 255)
-+			return -EINVAL;
-+
-+		if (val != 0)
-+			val = clamp_val(val, hwm->pwm_min, hwm->pwm_max);
-+
-+		return qnap_mcu_hwmon_set_pwm(hwm, val);
-+	default:
-+		return -EOPNOTSUPP;
-+	}
-+
-+	return 0;
-+}
-+
-+static int qnap_mcu_hwmon_read(struct device *dev, enum hwmon_sensor_types type,
-+			       u32 attr, int channel, long *val)
-+{
-+	struct qnap_mcu_hwmon *hwm = dev_get_drvdata(dev);
-+	int ret;
-+
-+	switch (type) {
-+	case hwmon_pwm:
-+		switch (attr) {
-+		case hwmon_pwm_input:
-+			ret = qnap_mcu_hwmon_get_pwm(hwm);
-+			if (ret < 0)
-+				return ret;
-+
-+			*val = ret;
-+			return 0;
-+		default:
-+			return -EOPNOTSUPP;
-+		}
-+	case hwmon_fan:
-+		ret = qnap_mcu_hwmon_get_rpm(hwm);
-+		if (ret < 0)
-+			return ret;
-+
-+		*val = ret;
-+		return 0;
-+	case hwmon_temp:
-+		ret = qnap_mcu_hwmon_get_temp(hwm);
-+		if (ret < 0)
-+			return ret;
-+
-+		*val = ret;
-+		return 0;
-+	default:
-+		return -EOPNOTSUPP;
-+	}
-+}
-+
-+static umode_t qnap_mcu_hwmon_is_visible(const void *data,
-+					 enum hwmon_sensor_types type,
-+					 u32 attr, int channel)
-+{
-+	switch (type) {
-+	case hwmon_temp:
-+		return 0444;
-+
-+	case hwmon_pwm:
-+		return 0644;
-+
-+	case hwmon_fan:
-+		return 0444;
-+
-+	default:
-+		return 0;
-+	}
-+}
-+
-+static const struct hwmon_ops qnap_mcu_hwmon_hwmon_ops = {
-+	.is_visible = qnap_mcu_hwmon_is_visible,
-+	.read = qnap_mcu_hwmon_read,
-+	.write = qnap_mcu_hwmon_write,
-+};
-+
-+/* thermal cooling device callbacks */
-+static int qnap_mcu_hwmon_get_max_state(struct thermal_cooling_device *cdev,
-+					unsigned long *state)
-+{
-+	struct qnap_mcu_hwmon *hwm = cdev->devdata;
-+
-+	if (!hwm)
-+		return -EINVAL;
-+
-+	*state = hwm->fan_max_state;
-+
-+	return 0;
-+}
-+
-+static int qnap_mcu_hwmon_get_cur_state(struct thermal_cooling_device *cdev,
-+					unsigned long *state)
-+{
-+	struct qnap_mcu_hwmon *hwm = cdev->devdata;
-+
-+	if (!hwm)
-+		return -EINVAL;
-+
-+	*state = hwm->fan_state;
-+
-+	return 0;
-+}
-+
-+static int qnap_mcu_hwmon_set_cur_state(struct thermal_cooling_device *cdev,
-+					unsigned long state)
-+{
-+	struct qnap_mcu_hwmon *hwm = cdev->devdata;
-+	int ret;
-+
-+	if (!hwm || state > hwm->fan_max_state)
-+		return -EINVAL;
-+
-+	if (state == hwm->fan_state)
-+		return 0;
-+
-+	ret = qnap_mcu_hwmon_set_pwm(hwm, hwm->fan_cooling_levels[state]);
-+	if (ret)
-+		return ret;
-+
-+	hwm->fan_state = state;
-+
-+	return ret;
-+}
-+
-+static const struct thermal_cooling_device_ops qnap_mcu_hwmon_cooling_ops = {
-+	.get_max_state = qnap_mcu_hwmon_get_max_state,
-+	.get_cur_state = qnap_mcu_hwmon_get_cur_state,
-+	.set_cur_state = qnap_mcu_hwmon_set_cur_state,
-+};
-+
-+static void devm_fan_node_release(void *data)
-+{
-+	struct qnap_mcu_hwmon *hwm = data;
-+
-+	fwnode_handle_put(hwm->fan_node);
-+}
-+
-+static int qnap_mcu_hwmon_get_cooling_data(struct device *dev, struct qnap_mcu_hwmon *hwm)
-+{
-+	struct fwnode_handle *fwnode;
-+	int num, i, ret;
-+
-+	fwnode = device_get_named_child_node(dev->parent, "fan-0");
-+	if (!fwnode)
-+		return 0;
-+
-+	/* if we found the fan-node, we're keeping it until device-unbind */
-+	hwm->fan_node = fwnode;
-+	ret = devm_add_action_or_reset(dev, devm_fan_node_release, hwm);
-+	if (ret)
-+		return ret;
-+
-+	num = fwnode_property_count_u32(fwnode, "cooling-levels");
-+	if (num <= 0)
-+		return dev_err_probe(dev, num ? : -EINVAL,
-+				     "Failed to count elements in 'cooling-levels'\n");
-+
-+	hwm->fan_cooling_levels = devm_kcalloc(dev, num, sizeof(u32),
-+					       GFP_KERNEL);
-+	if (!hwm->fan_cooling_levels)
-+		return -ENOMEM;
-+
-+	ret = fwnode_property_read_u32_array(fwnode, "cooling-levels",
-+					     hwm->fan_cooling_levels, num);
-+	if (ret)
-+		return dev_err_probe(dev, ret, "Failed to read 'cooling-levels'\n");
-+
-+	for (i = 0; i < num; i++) {
-+		if (hwm->fan_cooling_levels[i] > hwm->pwm_max)
-+			return dev_err_probe(dev, -EINVAL, "fan state[%d]:%d > %d\n", i,
-+					     hwm->fan_cooling_levels[i], hwm->pwm_max);
-+	}
-+
-+	hwm->fan_max_state = num - 1;
-+
-+	return 0;
-+}
-+
-+static const struct hwmon_channel_info * const qnap_mcu_hwmon_channels[] = {
-+	HWMON_CHANNEL_INFO(pwm, HWMON_PWM_INPUT),
-+	HWMON_CHANNEL_INFO(fan, HWMON_F_INPUT),
-+	HWMON_CHANNEL_INFO(temp, HWMON_T_INPUT),
-+	NULL
-+};
-+
-+static int qnap_mcu_hwmon_probe(struct platform_device *pdev)
-+{
-+	struct qnap_mcu *mcu = dev_get_drvdata(pdev->dev.parent);
-+	const struct qnap_mcu_variant *variant = qnap_mcu_get_variant_data(mcu);
-+	struct qnap_mcu_hwmon *hwm;
-+	struct thermal_cooling_device *cdev;
-+	struct device *dev = &pdev->dev;
-+	struct device *hwmon;
-+	int ret;
-+
-+	hwm = devm_kzalloc(dev, sizeof(*hwm), GFP_KERNEL);
-+	if (!hwm)
-+		return -ENOMEM;
-+
-+	hwm->mcu = mcu;
-+	hwm->dev = &pdev->dev;
-+	hwm->pwm_min = variant->fan_pwm_min;
-+	hwm->pwm_max = variant->fan_pwm_max;
-+
-+	platform_set_drvdata(pdev, hwm);
-+
-+	/*
-+	 * Set duty cycle to maximum allowed.
-+	 */
-+	ret = qnap_mcu_hwmon_set_pwm(hwm, hwm->pwm_max);
-+	if (ret)
-+		return ret;
-+
-+	hwm->info.ops = &qnap_mcu_hwmon_hwmon_ops;
-+	hwm->info.info = qnap_mcu_hwmon_channels;
-+
-+	ret = qnap_mcu_hwmon_get_cooling_data(dev, hwm);
-+	if (ret)
-+		return ret;
-+
-+	hwm->fan_state = hwm->fan_max_state;
-+
-+	hwmon = devm_hwmon_device_register_with_info(dev, "qnapmcu",
-+						     hwm, &hwm->info, NULL);
-+	if (IS_ERR(hwmon))
-+		return dev_err_probe(dev, PTR_ERR(hwmon), "Failed to register hwmon device\n");
-+
-+	/*
-+	 * Only register cooling device when we found cooling-levels.
-+	 * qnap_mcu_hwmon_get_cooling_data() will fail when reading malformed
-+	 * levels and only succeed with either no or correct cooling levels.
-+	 */
-+	if (IS_ENABLED(CONFIG_THERMAL) && hwm->fan_cooling_levels) {
-+		cdev = devm_thermal_of_cooling_device_register(dev,
-+					to_of_node(hwm->fan_node), "qnap-mcu-hwmon",
-+					hwm, &qnap_mcu_hwmon_cooling_ops);
-+		if (IS_ERR(cdev))
-+			return dev_err_probe(dev, PTR_ERR(cdev),
-+				"Failed to register qnap-mcu-hwmon as cooling device\n");
-+		hwm->cdev = cdev;
-+	}
-+
-+	return 0;
-+}
-+
-+static struct platform_driver qnap_mcu_hwmon_driver = {
-+	.probe = qnap_mcu_hwmon_probe,
-+	.driver = {
-+		.name = "qnap-mcu-hwmon",
-+	},
-+};
-+module_platform_driver(qnap_mcu_hwmon_driver);
-+
-+MODULE_ALIAS("platform:qnap-mcu-hwmon");
-+MODULE_AUTHOR("Heiko Stuebner <heiko@sntech.de>");
-+MODULE_DESCRIPTION("QNAP MCU hwmon driver");
-+MODULE_LICENSE("GPL");
++      - description: LCKFB Taishan Pi RK3566
++        items:
++          - const: lckfb,tspi-rk3566
++          - const: rockchip,rk3566
++
+       - description: Lunzn FastRhino R66S / R68S
+         items:
+           - enum:
 -- 
-2.43.0
+2.45.2
 
 
 _______________________________________________
