@@ -4,63 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 63CDBC5321E
-	for <linux-rockchip@archiver.kernel.org>; Mon, 26 Aug 2024 07:46:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B11ADC5321E
+	for <linux-rockchip@archiver.kernel.org>; Mon, 26 Aug 2024 07:51:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Cc:From:References:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=+CxIzw55bbnYdUiEcv0n5Euq7InmQ+SCMITdefcDz6I=; b=jVHRi2smGDHp9R
-	IbXEzn7K0xR45HYwb4fo5LhxqtjiVQOdC1a+Ys0GqalyzAxmW6Q6KtfiMhMFih7/rqtFcHW+h7Qew
-	kGMtX9w1bFZf1D+/nPeGjHGMAKwSzytkPXMS6RKLUwOcrUWYC8FfL+ElBrDCQx629JzCtK7EVMQuL
-	BU7Bq33qgFRIva9h4xGGy3W+dBHvCRL+cKZhmEXzUzxG5/YQLugMv4GCZrJtFyBhQO3Vmht80jsfr
-	VFX88Vu0/b0raQRGkcBpm4RyNduFccebOM3g/8HCLFHTv8u11Mr97gEeB6z4ICWn8KjVbWK9WkHO3
-	2Kbw2WE9oytPvcoCdKWQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=sJzd0lHHcNnzzK5ETHPDk/YjS9dpNh6893xHiBj4GUs=; b=xQO6PEHjvz2Gr0
+	C1K9dmlPlqW8oLo7jkgmzgUIJ2qIN6k2Odvfnh7OE4EQL7sHfwn1woLkKPMa/CvSsuJfHwxX2iyNS
+	SLGItHiwca8inQEQQ+PpFCDh2Z5dS4SONGkXmKFMFSC02WzaY1B+Eh4Dudqwjtnt/2YtWfT6hDx7v
+	ag3+xbBYAedbAgM+QQgVX9tFkKEY+8BONhbWgIorMKKQKSi4t6ACFW1WEUiT5g4BjclCT+Ge19ppl
+	xAH1ZSrv23O0eHwXU1uKzmWj4rdi0e679BvkLPkAixpw3MOcDealeE2Z8ii8Gx9fGF8ULJ00ceI5n
+	y/INdTmKAEoP0O3zHtxg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1siUQs-00000006JGN-1qnt;
-	Mon, 26 Aug 2024 07:46:34 +0000
-Received: from [129.204.178.38] (helo=classfun.cn)
-	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1siUQ3-00000006J9q-2JsW;
-	Mon, 26 Aug 2024 07:45:45 +0000
-Received: from [192.168.0.160] (unknown [14.153.79.170])
-	(Authenticated sender: bigfoot)
-	by classfun.cn (Postfix) with ESMTPSA id 21858789DF;
-	Mon, 26 Aug 2024 15:45:33 +0800 (CST)
-DKIM-Filter: OpenDKIM Filter v2.11.0 classfun.cn 21858789DF
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=classfun.cn;
-	s=default; t=1724658338;
-	bh=m5/rFI10QPDFYm6oHs30udevEbWy1s0fAFZ7HUo6nKU=;
-	h=Date:Subject:To:References:From:Cc:In-Reply-To:From;
-	b=UYIt0vymjXO0pPbBCdZajGwZOFuifJhyVT320kIjBgeOkzFuxZibkag7/1fN8mo9i
-	 pOfrm20CGGJwuthziD0PI73lrTeK1LUgMduoyDvNK2U9zJ5yextJaxLvEpiipo3u0k
-	 mqXx5XSzzywBQ6HS7qNVPRR0CLJQX4fdD75kHPqE=
-Message-ID: <25346f43-642a-477d-8df5-91ddf2765d69@classfun.cn>
-Date: Mon, 26 Aug 2024 15:46:49 +0800
+	id 1siUVz-00000006KB9-2c90;
+	Mon, 26 Aug 2024 07:51:51 +0000
+Received: from sakura.naobsd.org ([160.16.200.221] helo=mail.naobsd.org)
+	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
+	id 1siUVw-00000006K8C-0zTc
+	for linux-rockchip@lists.infradead.org;
+	Mon, 26 Aug 2024 07:51:50 +0000
+Received: from secure.fukaumi.org ([10.0.0.2])
+	by mail.naobsd.org (8.14.4/8.14.4/Debian-4.1ubuntu1.1) with ESMTP id 47Q7pZFA025012;
+	Mon, 26 Aug 2024 16:51:36 +0900
+From: FUKAUMI Naoki <naoki@radxa.com>
+To: heiko@sntech.de
+Cc: sebastian.reichel@collabora.com, linux-rockchip@lists.infradead.org,
+        FUKAUMI Naoki <naoki@radxa.com>
+Subject: [PATCH] arm64: dts: rockchip: remove unnecessary properties for Radxa ROCK 5A
+Date: Mon, 26 Aug 2024 16:51:29 +0900
+Message-ID: <20240826075130.546-1-naoki@radxa.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 3/3] arm64: dts: rockchip: add dts for LCKFB Taishan Pi
- RK3566
-To: Krzysztof Kozlowski <krzk@kernel.org>
-References: <20240826044530.726458-1-bigfoot@classfun.cn>
- <20240826044530.726458-4-bigfoot@classfun.cn>
- <wacysftuozwpumrw262tltoxqrldlju7mzj5fnxxcjheycjvzr@wb7mcnbiv6ic>
-Content-Language: en-US
-From: Junhao Xie <bigfoot@classfun.cn>
-Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- Jonas Karlman <jonas@kwiboo.se>, Chukun Pan <amadeus@jmu.edu.cn>,
- FUKAUMI Naoki <naoki@radxa.com>, Dragan Simic <dsimic@manjaro.org>,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
- Junhao Xie <bigfoot@classfun.cn>
-In-Reply-To: <wacysftuozwpumrw262tltoxqrldlju7mzj5fnxxcjheycjvzr@wb7mcnbiv6ic>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240826_004543_914413_9970142C 
-X-CRM114-Status: GOOD (  12.56  )
+X-CRM114-CacheID: sfid-20240826_005148_505129_50108F91 
+X-CRM114-Status: UNSURE (   6.10  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,43 +59,60 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 2024/8/26 14:06, Krzysztof Kozlowski  wrote:
-> On Mon, Aug 26, 2024 at 12:44:13PM +0800, Junhao Xie wrote:
->> Add dts for LCKFB Taishan Pi.
->>
+There is no "on-board WLAN/BT chip" on Radxa ROCK 5A. remove related
+properties.
 
-[...]
+Fixes: 1642bf66e270 ("arm64: dts: rockchip: add USB2 to rk3588s-rock5a")
+Signed-off-by: FUKAUMI Naoki <naoki@radxa.com>
+---
+ .../boot/dts/rockchip/rk3588s-rock-5a.dts     | 24 -------------------
+ 1 file changed, 24 deletions(-)
 
-> 
->> +	dc_12v: dc-12v {
-> 
-> Use some reasonable prefix or suffix (regulator) for all regulator
-> nodes. Or even: use name for all fixed regulators which matches current
-> format recommendation: 'regulator-[0-9]v[0-9]'
-> https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/Documentation/devicetree/bindings/regulator/fixed-regulator.yaml?h=v6.11-rc1#n46
-> 
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts b/arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts
+index 03ed48246d36..953a722198fe 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts
+@@ -317,28 +317,6 @@ vcc5v0_host_en: vcc5v0-host-en {
+ 			rockchip,pins = <4 RK_PB5 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 	};
+-
+-	wifibt {
+-		wl_reset: wl-reset {
+-			rockchip,pins = <0 RK_PD0 RK_FUNC_GPIO &pcfg_pull_up>;
+-		};
+-
+-		wl_dis: wl-dis {
+-			rockchip,pins = <0 RK_PD5 RK_FUNC_GPIO &pcfg_output_high>;
+-		};
+-
+-		wl_wake_host: wl-wake-host {
+-			rockchip,pins = <0 RK_PC7 RK_FUNC_GPIO &pcfg_pull_up>;
+-		};
+-
+-		bt_dis: bt-dis {
+-			rockchip,pins = <0 RK_PD4 RK_FUNC_GPIO &pcfg_output_high>;
+-		};
+-
+-		bt_wake_host: bt-wake-host {
+-			rockchip,pins = <0 RK_PC5 RK_FUNC_GPIO &pcfg_pull_up>;
+-		};
+-	};
+ };
+ 
+ &pwm3 {
+@@ -754,8 +732,6 @@ &usbdp_phy0 {
+ 
+ &usb_host0_ehci {
+ 	status = "okay";
+-	pinctrl-names = "default";
+-	pinctrl-0 = <&wl_reset &wl_dis &wl_wake_host &bt_dis &bt_wake_host>;
+ };
+ 
+ &usb_host0_ohci {
+-- 
+2.43.0
 
-Thanks, I will rename it to dc-12v-regulator
-
-[...]
-
->> +
->> +&sdhci {
->> +	bus-width = <8>;
->> +	max-frequency = <200000000>;
->> +	non-removable;
->> +	pinctrl-names = "default";
->> +	pinctrl-0 = <&emmc_bus8 &emmc_clk &emmc_cmd &emmc_datastrobe &emmc_rstnout>;
->> +	status = "okay";
-> 
-> Keep status the last.
-> 
-> Best regards,
-> Krzysztof
-> 
-> 
-
-Thanks for your review, I will fix all problems and post patch v2!
 
 _______________________________________________
 Linux-rockchip mailing list
