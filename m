@@ -4,74 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B1FDBC5472E
-	for <linux-rockchip@archiver.kernel.org>; Mon, 26 Aug 2024 19:57:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A0654C5321D
+	for <linux-rockchip@archiver.kernel.org>; Mon, 26 Aug 2024 21:03:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:References:To:From:Subject:Cc:Message-Id:Date:Mime-Version:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+mIMy6GJgS/btU5zJEQB4bS7CXc6Td4PBwA9bzZsfNg=; b=iGySXUOZnthMGW/jIm4Pjs0oMp
-	XbA5M2f3hdLxmMlzZIiinRNe9CRdC1/M4VbAclP5JJwIrnGZ5kW/BCrTwtV6E/QDb2VYKfXNLRfEm
-	pGse2O5ZN00Cbtp3lR1dFB0d1iRxMnJSHVXYvI3TGY8IDZvM6SMlWCSvboLrOuMbZCPsSzAeqCoW9
-	ClL1pXBf4DR6lpJaEN4OfJXm4aPFee25F37+P6BRu6vF/MQdbznlthka5vzXilkPYgHpysd3Z8M8y
-	dzDUXcpPLR78HpA8UwRrWK90VcgLe62DlKdUPa5Q/W79zqRtWuFTgHLkA29szsTd+Sd2dDbA1NpGg
-	Lp8d8IIw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Subject:Cc:To:From:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=tQC2RregO7WWORbjC9UrV6aeOFl+Yli47HTffde6QOg=; b=GbYESrqhkrtYAc
+	FjfXOwj0FDFDE+KrWMbBaUi09XNq8m3+YdV82QZAKNqDTQLMMop13SIB4XnMNlTpgo9876PADOCW+
+	mtW4dmY4AaqoiCBsoxRWtKwqHBJ24kUyPWo+V6VN/uUfQAi/mqq0BY44JoJNtHCxjvNpym3wUNvF/
+	x3xblO4biWhj0tj2okTcPRuOY/6n4B4IhaOIv5PdNf02hIYXcya/c28Jq1onC+jDxfVtpoTwvJs4/
+	r6C6BMzLcQ2knIr62ROIhdbUMxxWHFSS00HvLJtEqr0P8V7m1a55cdfGypYVgL65k2yWhE7jHKwoj
+	/Zc+vIllNYolM2kZHZHg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sifqZ-00000008Yq8-1dCo;
-	Mon, 26 Aug 2024 19:57:51 +0000
-Received: from out-171.mta0.migadu.com ([91.218.175.171])
+	id 1sigrr-00000008jRO-2jIK;
+	Mon, 26 Aug 2024 21:03:15 +0000
+Received: from smtp.forwardemail.net ([164.92.70.200])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sifpa-00000008Yga-3nIB
+	id 1sigkl-00000008hwh-1URd
 	for linux-rockchip@lists.infradead.org;
-	Mon, 26 Aug 2024 19:57:02 +0000
-Mime-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow.org; s=key1;
-	t=1724702208;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=lSNB16YmTmGtSszFku9OEpzxCSlM3sSnGKMEEle5Jqc=;
-	b=yMt3jDjCx/B0z6xC082cVw0HQY4Me/FagDvE50oGlZZXCMF5Jq6LNhf+2Qxm6GxDSPpGhy
-	osQCkmyACysyLu+u650VEqjzcGGEzFWl7uD9cGiG2uKMLG+neaKZVbHPdqs4NgFfV9kN36
-	F6RecMyRzzHf5tUuKzWLlXy6Zq2aaUrO4Nqz767HIHttvZPw1xfRvEvz1/LRgm5SKRKgW5
-	e98Q7S61cpPqJ69fgCnm4wfemUXqHoZmqLDjo7EW4Gn5fu5LKSLz7FsFpc5L1IqLMoKSNw
-	zVNkFcO6HzXLN8irNUWL94mMo90EcrTYmktZgOLYwgwJL0BRUy5LS22/0nNbVQ==
-Date: Mon, 26 Aug 2024 21:56:34 +0200
-Message-Id: <D3Q3WI8AHRJ1.3B8E985JAVVC2@cknow.org>
-Cc: <airlied@gmail.com>, <alchark@gmail.com>, <andi.shyti@kernel.org>,
- <andyshrk@163.com>, <broonie@kernel.org>, <cl@rock-chips.com>,
- <conor+dt@kernel.org>, <daniel@ffwll.ch>, <devicetree@vger.kernel.org>,
- <dri-devel@lists.freedesktop.org>, <dsimic@manjaro.org>,
- <efectn@protonmail.com>, <finley.xiao@rock-chips.com>,
- <gregkh@linuxfoundation.org>, <heiko@sntech.de>, <honyuenkwun@gmail.com>,
- <jagan@edgeble.ai>, <jamie@jamieiles.com>, <jic23@kernel.org>,
- <jirislaby@kernel.org>, <jonas@kwiboo.se>, <jszhang@kernel.org>,
- <kernel@collabora.com>, <krzk+dt@kernel.org>, <lars@metafoo.de>,
- <lee@kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-i2c@vger.kernel.org>, <linux-iio@vger.kernel.org>,
- <linux-kernel@vger.kernel.org>, <linux-mmc@vger.kernel.org>,
- <linux-rockchip@lists.infradead.org>, <linux-serial@vger.kernel.org>,
- <linux-spi@vger.kernel.org>, <linux-watchdog@vger.kernel.org>,
- <linux@roeck-us.net>, <maarten.lankhorst@linux.intel.com>,
- <macromorgan@hotmail.com>, <megi@xff.cz>, <michael.riesch@wolfvision.net>,
- <mripard@kernel.org>, <robh@kernel.org>, <tim@feathertop.org>,
- <tzimmermann@suse.de>, <ulf.hansson@linaro.org>, <wim@linux-watchdog.org>
-Subject: Re: [PATCH v2 11/12] arm64: dts: rockchip: Add rk3576 SoC base DT
-X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
-From: "Diederik de Haas" <didi.debian@cknow.org>
-To: "Detlev Casanova" <detlev.casanova@collabora.com>, "Chukun Pan"
- <amadeus@jmu.edu.cn>
-References: <23624422.6Emhk5qWAg@trenzalore>
- <20240825140824.200453-1-amadeus@jmu.edu.cn>
- <22403959.EfDdHjke4D@bootstrap>
-In-Reply-To: <22403959.EfDdHjke4D@bootstrap>
-X-Migadu-Flow: FLOW_OUT
+	Mon, 26 Aug 2024 20:55:57 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
+ h=Content-Transfer-Encoding: MIME-Version: Date: Subject: Cc: To: From:
+ Message-ID; q=dns/txt; s=fe-e1b5cab7be; t=1724705747;
+ bh=La1r0vb8HqM0uZe15gW8C1ZAEEWVA2k/jF0DeZaxmiQ=;
+ b=wDVvOuYsLVLkoicjTT2+ZtBY4+zDFHiv4ydbCWMhuStOfsqWrnkcsiOL6cb+w7IMg+20KmcsN
+ WwrZuPGbVAtbRP0y48oJa1ZepPoG0ZO5RWNSpWh6ROO0UgN4Bt7jqZ5qj4QSEo+VusAvBii3ZTG
+ eDXnEPr+qpTWrpMxlUbAlV+KMcrF4eCRoQRKPv7aYRbTeBfVylRCYv058J/uZn2OgR1539qFhDC
+ z3Ml1OJG7P871U8+yJsUowCu5Vvg8URMpaWdAqKOBCDm35Q4OJ0yO+j9raLHYSRfYg6WMMFc7vP
+ wzb3t5GaAOWoYJg+lnnfx+r1MoDCAmZwlIGEd1GVMIdQ==
+Message-ID: 20240826205538.1066103-1-jonas@kwiboo.se
+From: Jonas Karlman <jonas@kwiboo.se>
+To: Heiko Stuebner <heiko@sntech.de>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>
+Cc: linux-rockchip@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Jonas Karlman <jonas@kwiboo.se>
+Subject: [PATCH 0/4] arm64: dts: rockchip: Add Hardkernel ODROID-M1S
+Date: Mon, 26 Aug 2024 20:55:27 +0000
+X-Mailer: git-send-email 2.45.2
+MIME-Version: 1.0
+X-Report-Abuse-To: abuse@forwardemail.net
+X-Report-Abuse: abuse@forwardemail.net
+X-Complaints-To: abuse@forwardemail.net
+X-ForwardEmail-Version: 0.4.40
+X-ForwardEmail-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
+ 164.92.70.200
+X-ForwardEmail-ID: 66ccebd2e59276ede820346a
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240826_125651_152355_38AE7105 
-X-CRM114-Status: GOOD (  16.53  )
+X-CRM114-CacheID: sfid-20240826_135555_760891_D20CDC92 
+X-CRM114-Status: UNSURE (   9.20  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,78 +73,39 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============5516544844804627891=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
---===============5516544844804627891==
-Content-Type: multipart/signed;
- boundary=128cfb0fa1f91e2aae272ffecd950e1f386b558b6f3d91eca48fb6bdbb70;
- micalg=pgp-sha256; protocol="application/pgp-signature"
+This series fixes wrong vendor prefix on the Hardkernel ODROID-M1 board
+and adds initial support for the Hardkernel ODROID-M1S board.
 
---128cfb0fa1f91e2aae272ffecd950e1f386b558b6f3d91eca48fb6bdbb70
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain; charset=UTF-8
+The Hardkernel ODROID-M1S is a single-board computer based on Rockchip
+RK3566 SoC. It features e.g. 4/8 GB LPDDR4 RAM, 64 GB eMMC, SD-card,
+GbE LAN, HDMI 2.0, M.2 NVMe and USB 2.0/3.0.
 
-On Mon Aug 26, 2024 at 8:28 PM CEST, Detlev Casanova wrote:
-> On Sunday, 25 August 2024 10:08:24 EDT Chukun Pan wrote:
-> > > --- /dev/null
-> > > +++ b/arch/arm64/boot/dts/rockchip/rk3576.dtsi
-> > > ...
-> > > +		opp-1416000000 {
-> > > +			opp-hz =3D /bits/ 64 <1416000000>;
-> > > +			opp-microvolt =3D <725000 725000 950000>;
-> > > +			opp-microvolt-L1 =3D <712500 712500 950000>;
-> > > +			opp-microvolt-L2 =3D <700000 700000 950000>;
-> > > +			opp-microvolt-L3 =3D <700000 700000 950000>;
-> > > +			opp-microvolt-L4 =3D <700000 700000 950000>;
-> > > +			opp-microvolt-L5 =3D <700000 700000 950000>;
-> > > +			clock-latency-ns =3D <40000>;
-> > > +		};
-> > > ...
-> >=20
-> > I'm curious if these frequencies work properly. On the bsp kernel,
-> > 'opp-microvolt-L<name>' is used by the PVTM driver, I don't know
-> > if it works on the upstream kernel.
->
-> Which seems to correspond to the set opp-hz value. As mentionned by Alexe=
-y,=20
-> the opp-microvolt-L.* values are not used by the driver.
->
-> I also have not tested any cpufreq settings/driver on this board yet. I c=
-an=20
-> remove the opp-microvolt-L.* for now.
+Schematic for ODROID-M1S can be found at:
+https://wiki.odroid.com/_media/odroid-m1s/hardware/m1s_main_rev1.0_230906.pdf
 
-If you run this command on the upstream kernel:
-``grep -r "opp-microvolt" arch/arm64/boot/dts/rockchip/``
+Jonas Karlman (4):
+  dt-bindings: arm: rockchip: Correct vendor for Hardkernel ODROID-M1
+  arm64: dts: rockchip: Correct vendor prefix for Hardkernel ODROID-M1
+  dt-bindings: arm: rockchip: Add Hardkernel ODROID-M1S
+  arm64: dts: rockchip: Add Hardkernel ODROID-M1S
 
-you'll see it doesn't use the opp-microvolt-LN variants anywhere,
-so this is indeed a downstream/BSP only thing.
+ .../devicetree/bindings/arm/rockchip.yaml     |   7 +-
+ arch/arm64/boot/dts/rockchip/Makefile         |   1 +
+ .../boot/dts/rockchip/rk3566-odroid-m1s.dts   | 663 ++++++++++++++++++
+ .../boot/dts/rockchip/rk3568-odroid-m1.dts    |   2 +-
+ 4 files changed, 671 insertions(+), 2 deletions(-)
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3566-odroid-m1s.dts
 
---128cfb0fa1f91e2aae272ffecd950e1f386b558b6f3d91eca48fb6bdbb70
-Content-Type: application/pgp-signature; name="signature.asc"
+-- 
+2.45.2
 
------BEGIN PGP SIGNATURE-----
-
-iHUEABYIAB0WIQT1sUPBYsyGmi4usy/XblvOeH7bbgUCZszd+QAKCRDXblvOeH7b
-bsPMAP9CORw/HV6VNrTduOL78GjAIEpWxM/M9+0BOgYkBHnzpQEAjK8fuZpW3HrN
-ri8LuinsuvlO+D0OMT9SEJJAE8prZQE=
-=pQv4
------END PGP SIGNATURE-----
-
---128cfb0fa1f91e2aae272ffecd950e1f386b558b6f3d91eca48fb6bdbb70--
-
-
---===============5516544844804627891==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============5516544844804627891==--
-
