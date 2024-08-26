@@ -4,77 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ACE28C5472C
-	for <linux-rockchip@archiver.kernel.org>; Mon, 26 Aug 2024 22:28:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 744D5C5472C
+	for <linux-rockchip@archiver.kernel.org>; Mon, 26 Aug 2024 23:07:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=4BdZq23hoArMlFVk6FHTwjdhksrRNvgzqdjAsqapsao=; b=YiVlnEDf7y0F7o
-	i8M+HGQqmamcdcZIl2PawtRYfhf8WhK7XDFCwuAeSOI67LGvgRgxUJr6dR7QaQNR/vjVuRq4Z8ALt
-	MQYi6JGL0toe1eM/Fpvm10sp7cq8UVoXC+8+9DvUPMoNjV0eAeESOIg5pZ6iH7mOKbPVtlu8nKyXY
-	0EmxJJBWc9lC6DbXzpZ9bieWbmdsDFqlLvqZMm0CQRUAFbcLKZh+w/OieHWwJxxxY5bWCqhf7RQik
-	mn/Mi0oEYilsHaAwzhaJuHb/Xg4CUzIbbf4owRp7OnsaStuk5fZmc1k3Ii5PohMK/cZ3dBKAQYc0u
-	OBOatt6xwuc0tONf2Jqg==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
+	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=93X+itlhP3/osGFbX7EB/RARDa4qCmW1LOUeF763+98=; b=gHB6zJqPcpzC0e
+	IwDdrZS0/rHJFAeOd0PLSquOk+fdo/1GZt41eFoj6wF46mG8dz0T1gzLyiubt2k+O682A/DIawyZM
+	kAqQ9rRPYziRJBFXajyUw8I+y4DIIGfH5SOdh5TQltmIASXf/QG5Cp/1pIa32vkxcymyNflTdOP1W
+	p5u4FjB8A+xT89XnHYiAnsgARoynBjeAg0gPlOJ/mbPVBpEfZgM/G3hd6d0nSQDaUKs2wGUWqf1/2
+	InL1DXhmVT8dwf5cQ73iviX5RE3NfBAy/6ZRlCqOLMg/f2G247vEFDn5fuD5ACWmdY6dF75SmN+ot
+	7dGRk2bxSEtgUcVHnAng==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1siiC5-00000008zzf-01uF;
-	Mon, 26 Aug 2024 22:28:13 +0000
-Received: from mail-oa1-x2b.google.com ([2001:4860:4864:20::2b])
+	id 1siioI-0000000976X-3bb1;
+	Mon, 26 Aug 2024 23:07:42 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1siiBG-00000008zif-0vvB
-	for linux-rockchip@lists.infradead.org;
-	Mon, 26 Aug 2024 22:27:23 +0000
-Received: by mail-oa1-x2b.google.com with SMTP id 586e51a60fabf-27045e54272so3185683fac.0
-        for <linux-rockchip@lists.infradead.org>; Mon, 26 Aug 2024 15:27:21 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1724711241; x=1725316041; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=TSaDBvyq/bFcO3OcsC5ci/zFSviUd1t2kxCPPZcFB+8=;
-        b=VPKTSJmvac6s0tp9p0igBD6TfzYioB3VszII2VvxfanDuFCc1Bfy3kZMRMW8CELpj0
-         tblVls7smJqO9cx1oiNeJXOn+57NVGB2Os7lYTqgMrkbxdGXAI2gVtMiPRYzok+Txn2k
-         rl6oCaRvF1kYCtf73SZL3GVfH1D6HtXBsXwZc=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1724711241; x=1725316041;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=TSaDBvyq/bFcO3OcsC5ci/zFSviUd1t2kxCPPZcFB+8=;
-        b=u/DGxizhgYXT3hxHgpsaD7/+/RBFVYw/guXUCu9hLoPqERRh/YAt4Jefzi0VuJHjxE
-         3krF2Q8Jkz4WWuaNbnyZyFoSYekRihdLyvpq4BHP4vLDlQoOwJKWsUAOYn/UFRmzlOkk
-         nP3wHqV/8KgLpDUsENOdqmD6IUBZRINJDwGSiUNndYnJ+OgfMNQqGbQB//KDdGQxOY9M
-         lbyYpBWKZqNayyJhkR0htYBh3bT0B8rmKcAiwCD1YrpIyT4qajI8dT/XacrWl3aOKEJ6
-         0Lk4q555IloOx6FGYCoY/1Z6oDQgLa3iiOukAn3gGu5fdUi50DD/lp45CVqQuyL40t2V
-         q79g==
-X-Forwarded-Encrypted: i=1; AJvYcCVzM6ZGHNiFGCvmTgqUjNu/VuwuORZ5KrjN4/xt4d8CgzIiR+/ncD/RV9vHBQnvGnSpSdYxag0uUo2ilnjEow==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yw+NwQkAeEiSnS+7vq8v/5koMEOZS8ltyQ9m8YcgVT+F1rvGp6T
-	ayUDs27GT/+TTaWCXGsWAiB3MkL/M8rOcFyfeZ7xLL5sGwFGBAC2RB3DBi5R6w==
-X-Google-Smtp-Source: AGHT+IFUHF3HtJhxNyKdeJjkwJ+tECgitLmEFbmHNSQGwUUS7HccdzeehXGx7JgW5MXroG3lwlDQqQ==
-X-Received: by 2002:a05:6870:2108:b0:260:df8a:52bf with SMTP id 586e51a60fabf-273e64697eamr11748626fac.2.1724711240763;
-        Mon, 26 Aug 2024 15:27:20 -0700 (PDT)
-Received: from localhost ([2a00:79e0:2e14:7:7e40:430b:848a:1da6])
-        by smtp.gmail.com with UTF8SMTPSA id 41be03b00d2f7-7cd9acddb57sm8107858a12.54.2024.08.26.15.27.19
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 26 Aug 2024 15:27:20 -0700 (PDT)
-Date: Mon, 26 Aug 2024 15:27:18 -0700
-From: Brian Norris <briannorris@chromium.org>
-To: Jon Lin <jon.lin@rock-chips.com>
-Cc: broonie@kernel.org, linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org, heiko@sntech.de,
-	linux-arm-kernel@lists.infradead.org, linux-spi@vger.kernel.org
-Subject: Re: [PATCH] spi: rockchip: Avoid redundant clock disable in pm
- operation
-Message-ID: <Zs0BRsNdZdI69aXM@google.com>
-References: <20240825035422.900370-1-jon.lin@rock-chips.com>
+	id 1siioF-0000000975a-1aBE;
+	Mon, 26 Aug 2024 23:07:41 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1724713648; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=C9IHZ8gRUJHQEjPa3DWNImYwv5b7A5bqNh/zuZVYddWHi/iamz1esQW7PVpDqs5kFhZxuepA26jy+72nczNP4b0+QjVaLzeeuNrW95UY4M0nAcUwj289TXqjCiIaaSqYcNL22l92sES/h6PXs5IvqczCCSL2z85ykiGMBn+0kmA=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1724713648; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=O4UgvPlxUIocUclKtFW+PPXZ5p2TpKUAXhxXfnHWxSA=; 
+	b=epQ1jqub8wIGQXeXOv5a1HmWNU3wQqqUpNcd2XbNamvNN8YOoIck1Fyuj0d5O8pWfjJk/GTiVNsqeMPTKPBXzHCYHCPGNeK3GOaRTXs5RaUB0yrbcEkr2EkM+ldjyopl6Ur4A7luDJ6WqY57RClMzdnn4oHDYS+OA0IQGtZs2e8=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=cristian.ciocaltea@collabora.com;
+	dmarc=pass header.from=<cristian.ciocaltea@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1724713648;
+	s=zohomail; d=collabora.com; i=cristian.ciocaltea@collabora.com;
+	h=From:From:Subject:Subject:Date:Date:Message-Id:Message-Id:MIME-Version:Content-Type:Content-Transfer-Encoding:To:To:Cc:Cc:Reply-To;
+	bh=O4UgvPlxUIocUclKtFW+PPXZ5p2TpKUAXhxXfnHWxSA=;
+	b=J3KyELADNktUDvd59M2fuuGLX6fl3YXdlgXiW3q3HAYqXQFbTWiThuCTISEhBgFo
+	oGpS1gNHGH3mCOYyIP5T6/DHkc9grjKbnDhGEe+kbDrPMkS58VA36Hdx2nNl8rWPIpJ
+	2PnY08RJFudIQ+ILx1z52m/VfeCnfZYeDGPJODrY=
+Received: by mx.zohomail.com with SMTPS id 1724713645980482.61635936819255;
+	Mon, 26 Aug 2024 16:07:25 -0700 (PDT)
+From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+Subject: [PATCH 0/2] Fix compatibles for RK3588 VO{0,1}_GRF
+Date: Tue, 27 Aug 2024 02:06:49 +0300
+Message-Id: <20240827-rk3588-vo-grf-compat-v1-0-d4a18acf951a@collabora.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20240825035422.900370-1-jon.lin@rock-chips.com>
+X-B4-Tracking: v=1; b=H4sIAIkKzWYC/6tWKk4tykwtVrJSqFYqSi3LLM7MzwNyDHUUlJIzE
+ vPSU3UzU4B8JSMDIxMDCyNz3aJsY1MLC92yfN30ojTd5PzcgsQSXZMUo2QLk5RkcwujJCWg1oK
+ i1LTMCrCx0bG1tQBVm0zRZgAAAA==
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
+Cc: kernel@collabora.com, devicetree@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+ linux-kernel@vger.kernel.org, Conor Dooley <conor@kernel.org>
+X-Mailer: b4 0.14.1
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240826_152722_269935_BEBB2CC8 
-X-CRM114-Status: GOOD (  23.44  )
+X-CRM114-CacheID: sfid-20240826_160739_503837_05C12315 
+X-CRM114-Status: UNSURE (   5.50  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,77 +81,27 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-(NB: I have several nearly identical copies of this email. I'm replying
-to the latest one I see.)
+As Conor noticed recently [1], RK3588 VO0 & VO1 GRFs incorrectly share
+the compatible string, since they are not identical (though quite
+similar in terms of layout).
 
-Hi Jon,
+Provide dedicated compatible strings, as a follow-up.
 
-On Sun, Aug 25, 2024 at 11:54:22AM +0800, Jon Lin wrote:
-> Fix WARN_ON:
-> [   22.869352][ T1885] clk_spi0 already unprepared
-> [   22.869379][ T1885] WARNING: CPU: 3 PID: 1885 at drivers/clk/clk.c:813 clk_core_unprepare+0xbc4
-> [   22.869380][ T1885] Modules linked in: bcmdhd dhd_static_buf
-> [   22.869391][ T1885] CPU: 3 PID: 1885 Comm: Binder:355_2 Tainted: G        W         5.10.66 #59
-> [   22.869393][ T1885] Hardware name: Rockchip RK3588 EVB1 LP4 V10 Board (DT)
-> [   22.869397][ T1885] pstate: 60400009 (nZCv daif +PAN -UAO -TCO BTYPE=--)
-> [   22.869401][ T1885] pc : clk_core_unprepare+0xbc/0x214
-> [   22.869404][ T1885] lr : clk_core_unprepare+0xbc/0x214
+[1] https://lore.kernel.org/lkml/20240821-stretch-scam-09d7adc08a4c@spud/
 
-I appreciate the snippet of a WARNING trace, but I'd also appreciate
-some actual explanation of what the problem is, and why you're solving
-it this way.
+Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+---
+Cristian Ciocaltea (2):
+      dt-bindings: soc: rockchip: Fix compatibles for RK3588 VO{0,1}_GRF
+      arm64: dts: rockchip: Fix compatibles for RK3588 VO{0,1}_GRF
 
-> Fixes: e882575efc77 ("spi: rockchip: Suspend and resume the bus during NOIRQ_SYSTEM_SLEEP_PM ops")
-> Signed-off-by: Jon Lin <jon.lin@rock-chips.com>
-> ---
-> 
->  drivers/spi/spi-rockchip.c | 57 +++++++++++++++++---------------------
->  1 file changed, 26 insertions(+), 31 deletions(-)
-> 
-> diff --git a/drivers/spi/spi-rockchip.c b/drivers/spi/spi-rockchip.c
-> index e1ecd96c7858..043a7739c330 100644
-> --- a/drivers/spi/spi-rockchip.c
-> +++ b/drivers/spi/spi-rockchip.c
+ Documentation/devicetree/bindings/soc/rockchip/grf.yaml | 6 ++++--
+ arch/arm64/boot/dts/rockchip/rk3588-base.dtsi           | 6 +++---
+ 2 files changed, 7 insertions(+), 5 deletions(-)
+---
+base-commit: 8400291e289ee6b2bf9779ff1c83a291501f017b
+change-id: 20240827-rk3588-vo-grf-compat-4d2c84dc782b
 
-> +#ifdef CONFIG_PM_SLEEP
-> +static int rockchip_spi_suspend(struct device *dev)
->  {
-> +	int ret;
->  	struct spi_controller *ctlr = dev_get_drvdata(dev);
-> -	struct rockchip_spi *rs = spi_controller_get_devdata(ctlr);
->  
-> -	clk_disable_unprepare(rs->spiclk);
-> -	clk_disable_unprepare(rs->apb_pclk);
-> +	ret = spi_controller_suspend(ctlr);
-> +	if (ret < 0)
-> +		return ret;
-> +
-> +	/* Avoid redundant clock disable */
-> +	if (!pm_runtime_status_suspended(dev))
-> +		rockchip_spi_runtime_suspend(dev);
-
-It seems like you'd really be served well by
-pm_runtime_force_{suspend,resume}() here, and in fact, that's what this
-driver used to use before the breaking change (commit
-e882575efc77). Why aren't you just going back to using it? (This is the
-kind of thing I might expect in your commit message -- reasoning as to
-why you're doing what you're doing.)
-
-And in fact, I already submitted a patch that resolves the above problem
-and does exactly that:
-
-https://lore.kernel.org/all/20240823214235.1718769-1-briannorris@chromium.org/
-[PATCH] spi: rockchip: Resolve unbalanced runtime PM / system PM handling
-
-Do you see any problem with it?
-
-Thanks,
-Brian
-
-> +	pinctrl_pm_select_sleep_state(dev);
->  
->  	return 0;
->  }
 
 _______________________________________________
 Linux-rockchip mailing list
