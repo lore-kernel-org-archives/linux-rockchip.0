@@ -4,69 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4D277C5321D
-	for <linux-rockchip@archiver.kernel.org>; Mon, 26 Aug 2024 18:45:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8B6ECC5321D
+	for <linux-rockchip@archiver.kernel.org>; Mon, 26 Aug 2024 19:00:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To:Subject:
+	From:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=jsGNpbkVkIulAbsCA3pesKSgGuMU6W9pXNG8oj8L0gg=; b=zwrI6D4h6PKx6R
-	vFZVAKI4HbwNs2ChkQ0e27DLumKWpnEJnFyjuz4WO/zG50Wbe3YEvKGwv/yHYnJ8elscTrkFL+a/a
-	s0/4FchKGK8gIHeI5/O4lGmgiBmJ+2ea8HpbDpGKRu/wizuUgWxL6ngyUaTkpdrtfDRsTUHmcO0fh
-	EJNIfVzlRgujtjaHKqbkcbQcplb54heEV+Rfku+9SCm9AA1MFaOC/JpgDP5zxAb33JFZ3kIN/4U5z
-	LmIJhoExPCJQZUuLUpRk+xITAZSJKnrk/HvRodY4LVBU2B9Kf5LDTHTRs6mNDEPj+zh6Xbkq+Lwl3
-	qIxoCe+JW+idL+3N1P0A==;
+	List-Owner; bh=gMey2aw7MWISQqWw+GQ51x280RvNVXsCy5YSL9aIU2A=; b=nv8DgGLpbYvxOL
+	GOi23gcqPezzkgvkvHLlV19Z0XYFUE9vBPoUs3R83lDkti80jqoG4/jd/7YnX1liOO866NiNaHf9k
+	JPwEJKiUE3cLYYWcfR20Q6x4+7BSnrZmIB5a8fVwPaRdu+UbVW7mmBchL6zHlMnD1p0jISQ/U78ag
+	mYXKI+tIr+y4QqoRmXJDUv7HN0BuQ3Fx4Nfi4oRvyj38L82KU2wGxbAwhiYYt1rY+FJ7CKLFKl2d6
+	TDQXMKLFLDvrIIZYbFupM//E9xxIQNB8r+VSOKaSWNTfybJBpC3qf7MrdFESFNUG2thcSH+9IkK87
+	nB0+X4cJyJjczFkNcHbA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sieiN-00000008OVh-0f3y;
-	Mon, 26 Aug 2024 18:45:19 +0000
-Received: from sender4-op-o14.zoho.com ([136.143.188.14])
+	id 1siewz-00000008QPM-2eGL;
+	Mon, 26 Aug 2024 19:00:25 +0000
+Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sieht-00000008ONW-3uJY;
-	Mon, 26 Aug 2024 18:44:51 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1724697879; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=bgQwwXn15Aoufd+BzwNeginJ3mhUEPOciGcomXfAvREr2GMq/xAv7D1LEyhS8YFautIqkFkJZ1KeT7tdIVDwkmktmut5MwAlHlsx+GXw9WV145sVCs+CjXzqDb0OfPeYppW5lts6l6usoLa5uGhrqxZ7cSmEDbSAbwpPJP2nfwo=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1724697879; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=mlnYUtGPIbd9GPhhmlk+YwVhJr5+Jj0FaWL8g6QYGw8=; 
-	b=L5emk3qgbcXwjbvIy5cjN2Lw/xK8eQqkVSiyLGtGcz16XGNGwyRWF5A71fdxVZ/pMOGr3VAi1c5YKYqjuaIG3ajwLbDRv1i+c49dWs9S/6xttUCs+FhePz3q31ADQvx/T39x4g3RAoval1VybBY30tf98wjCMoWTUQ/omBzgdS4=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=detlev.casanova@collabora.com;
-	dmarc=pass header.from=<detlev.casanova@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1724697879;
-	s=zohomail; d=collabora.com; i=detlev.casanova@collabora.com;
-	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
-	bh=mlnYUtGPIbd9GPhhmlk+YwVhJr5+Jj0FaWL8g6QYGw8=;
-	b=QOFT4k+ZE6zA8KdK0rDSS8lu2HnhpP6tbxo+AU3GzG+c/C1fvz5juyyXxAe1YDke
-	Wspd5eYM/u3H437m7kRjNe+hSNqw9mhf+USIVhtTLhiDjn6lt5WVYltwxi99PMwTuvD
-	Dq2GGn04YSJK2wOHMvtqkM0E4bEtFdsnQaG9Iy18=
-Received: by mx.zohomail.com with SMTPS id 1724697878497938.876702576403;
-	Mon, 26 Aug 2024 11:44:38 -0700 (PDT)
-From: Detlev Casanova <detlev.casanova@collabora.com>
-To: Dragan Simic <dsimic@manjaro.org>
-Cc: linux-kernel@vger.kernel.org, Ulf Hansson <ulf.hansson@linaro.org>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- Jaehoon Chung <jh80.chung@samsung.com>, linux-mmc@vger.kernel.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, kernel@collabora.com,
- Shawn Lin <shawn.lin@rock-chips.com>
-Subject: Re: [PATCH v4 2/4] mmc: dw_mmc-rockchip: Add internal phase support
-Date: Mon, 26 Aug 2024 14:44:36 -0400
-Message-ID: <1999169.usQuhbGJ8B@bootstrap>
-In-Reply-To: <b57017bca1a4a5fe558556142a9cec3d@manjaro.org>
-References: <20240822212418.982927-1-detlev.casanova@collabora.com>
- <4943132.31r3eYUQgx@trenzalore>
- <b57017bca1a4a5fe558556142a9cec3d@manjaro.org>
+	id 1sick2-000000082kd-0L9F;
+	Mon, 26 Aug 2024 16:38:55 +0000
+Received: by mail-ed1-x52c.google.com with SMTP id 4fb4d7f45d1cf-5bef259a71fso652242a12.1;
+        Mon, 26 Aug 2024 09:38:53 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1724690332; x=1725295132; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:content-language:references
+         :cc:to:subject:from:user-agent:mime-version:date:message-id:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=EZu/jBjd1Q70dpjtoHTLkvik+k0qgpVx09i6KQH3MDg=;
+        b=KHDPSYFzQoI6qn0CiXzeBO9PHrDFIblS2/YRknewA8v4zqmymCyg2rnbG3jBfaLoIw
+         SwHThViMlr5Sj0RNgdYbgQQQsfDA2MZYKi7UQ7xnhzyqyDVYHE1ivvuOvGlqS8bnaSL5
+         bBkFQIFakuh/Us/hvQwu4esC+JABmLRzJcAHHj0g7ZhQmJieweOOwENHMaYQxB/XvI9e
+         DRYd5Ny6bEOWxgWlMioVwrPyappdTz/l59pZp6JuKgqwZQBmL/zI3E72l+PL2TSgXDyp
+         v+ExAyTIc4c5iZVMCmOy8raKkctqCLaUOO5QzWp9S4AQOBMuOLXYv/j4R3BCtfvT0z/B
+         nQjQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1724690332; x=1725295132;
+        h=content-transfer-encoding:in-reply-to:content-language:references
+         :cc:to:subject:from:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=EZu/jBjd1Q70dpjtoHTLkvik+k0qgpVx09i6KQH3MDg=;
+        b=X+nqBkoc3BK28qJ2noOVMy2q7CZw31WtAE2TiVKKftb29IRqEf7/CUPDg4aNwVGef6
+         WA5AjCkYXHyfEQ1y3Y+HUg35LMhbhuh8SLvKPoh1bcUZxLN1RXxXDqKhFV2H3VFXqI/e
+         zGnLHk6tRkLR68DQOLoVlAZdYrExUDBaQd39JRY15oSq5iDVHczIfJK8lyBe+aFZHYVI
+         RY8vrzggPdn9FT5Ctpu7ex4EofEV6t/IIO5/vNqMINxJKeRdEQoRfuWCySaTCcvdQ8pr
+         wlhmsjryl9tezn3j7Kcj7cj6ymRpImXqk00+xdM7zw9GTIaRDDraE+fe55zIlyHL6o13
+         BV6w==
+X-Forwarded-Encrypted: i=1; AJvYcCVmaECCMjh3ZnmSq005ALD7F7Xo+UnC0/y18XZQjbABc1ZUHzQZ/Q91jB0kLQ7HZdxbGIe4gCfAY18nEYF0Qfo=@lists.infradead.org, AJvYcCW3/W8Tkg4m/ITHf0Fraei+ot5KgdulnKoQntYASOnhVd56M+Vh/R6VHGODdeSiUGqRq5wmMnaWdt/O3EXYNkyY@lists.infradead.org
+X-Gm-Message-State: AOJu0Ywkzi0/UnM/nYAxVjgU3npUQu75UgzCJs4doLbVICKEitnbirUl
+	sj9UKw91GD9jmv6TXBKqjzb/qb7NfMMXi6mj8FoFlVn5MlN4HnWW
+X-Google-Smtp-Source: AGHT+IF5/mm796lJvJrh2R57EkeRqBcf4GBAINfr26Gtc7NdeyL4EuQ0tSkGoqsTXngxQRCUC4zWNw==
+X-Received: by 2002:a17:907:9724:b0:a7a:9f0f:ab1b with SMTP id a640c23a62f3a-a86a54bb7e9mr373585766b.7.1724690332196;
+        Mon, 26 Aug 2024 09:38:52 -0700 (PDT)
+Received: from ?IPV6:2a02:a449:4071:1:32d0:42ff:fe10:6983? ([2a02:a449:4071:1:32d0:42ff:fe10:6983])
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a868f4363b5sm684267966b.133.2024.08.26.09.38.51
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 26 Aug 2024 09:38:51 -0700 (PDT)
+Message-ID: <af141286-7994-4e3f-93e2-6ee4e718ef8a@gmail.com>
+Date: Mon, 26 Aug 2024 18:38:51 +0200
 MIME-Version: 1.0
-X-ZohoMailClient: External
+User-Agent: Mozilla Thunderbird
+From: Johan Jonker <jbx6244@gmail.com>
+Subject: [PATCH v1 4/9] clk: rockchip: rk3288: Drop CLK_NR_CLKS usage
+To: heiko@sntech.de
+Cc: robh@kernel.org, conor+dt@kernel.org, krzk+dt@kernel.org,
+ mturquette@baylibre.com, sboyd@kernel.org, linux-clk@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org, devicetree@vger.kernel.org
+References: <416cdaf2-fef2-471d-a03a-837775d6e7dc@gmail.com>
+Content-Language: en-US
+In-Reply-To: <416cdaf2-fef2-471d-a03a-837775d6e7dc@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240826_114450_111580_4808FE41 
-X-CRM114-Status: GOOD (  35.91  )
+X-CRM114-CacheID: sfid-20240826_093854_180185_75ED85CE 
+X-CRM114-Status: GOOD (  11.15  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,107 +95,40 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Monday, 26 August 2024 10:39:58 EDT Dragan Simic wrote:
-> Hello Detlev,
-> 
-> On 2024-08-23 15:34, Detlev Casanova wrote:
-> > On Friday, 23 August 2024 01:41:44 EDT Dragan Simic wrote:
-> >> Hello Detlev,
-> >> 
-> >> Please see a comment below.
-> >> 
-> >> On 2024-08-22 23:15, Detlev Casanova wrote:
-> >> > From: Shawn Lin <shawn.lin@rock-chips.com>
-> >> > 
-> >> > Some Rockchip devices put the phase settings into the dw_mmc
-> >> > controller.
-> >> > 
-> >> > When the feature is present, the ciu-drive and ciu-sample clocks are
-> >> > not used and the phase configuration is done directly through the mmc
-> >> > controller.
-> >> > 
-> >> > Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
-> >> > Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
-> >> > Acked-by: Shawn Lin <shawn.lin@rock-chips.com>
-> >> > ---
-> >> > 
-> >> >  drivers/mmc/host/dw_mmc-rockchip.c | 171 +++++++++++++++++++++++++++--
-> >> >  1 file changed, 160 insertions(+), 11 deletions(-)
-> >> > 
-> >> > diff --git a/drivers/mmc/host/dw_mmc-rockchip.c
-> >> > b/drivers/mmc/host/dw_mmc-rockchip.c
-> >> > index b07190ba4b7a..2748f9bf2691 100644
-> >> > --- a/drivers/mmc/host/dw_mmc-rockchip.c
-> >> > +++ b/drivers/mmc/host/dw_mmc-rockchip.c
-> >> > @@ -15,7 +15,17 @@
-> >> > 
-> >> >  #include "dw_mmc.h"
-> >> >  #include "dw_mmc-pltfm.h"
-> >> > 
-> >> > -#define RK3288_CLKGEN_DIV	2
-> >> > +#define RK3288_CLKGEN_DIV		2
-> >> > +#define SDMMC_TIMING_CON0		0x130
-> >> > +#define SDMMC_TIMING_CON1		0x134
-> >> > +#define ROCKCHIP_MMC_DELAY_SEL		BIT(10)
-> >> > +#define ROCKCHIP_MMC_DEGREE_MASK	0x3
-> >> > +#define ROCKCHIP_MMC_DEGREE_OFFSET	1
-> >> > +#define ROCKCHIP_MMC_DELAYNUM_OFFSET	2
-> >> > +#define ROCKCHIP_MMC_DELAYNUM_MASK	(0xff <<
-> >> > ROCKCHIP_MMC_DELAYNUM_OFFSET)
-> >> > +#define ROCKCHIP_MMC_DELAY_ELEMENT_PSEC	60
-> >> > +#define HIWORD_UPDATE(val, mask, shift) \
-> >> > +		((val) << (shift) | (mask) << ((shift) + 16))
-> >> > 
-> >> >  static const unsigned int freqs[] = { 100000, 200000, 300000, 400000
-> >> > 
-> >> > };
-> >> > 
-> >> > @@ -24,8 +34,143 @@ struct dw_mci_rockchip_priv_data {
-> >> > 
-> >> >  	struct clk		*sample_clk;
-> >> >  	int			default_sample_phase;
-> >> >  	int			num_phases;
-> >> > 
-> >> > +	int			internal_phase;
-> >> > 
-> >> >  };
-> >> 
-> >> It might be good to declare internal_phase as "unsigned int
-> >> internal_phase:1",
-> >> i.e. as a bit field, which isn't going to save some memory in this
-> >> particular
-> >> case, but it would show additional attention to detail.
-> > 
-> > In that case, I would go with a bool instead of int, that makes things
-> > even clearer.
-> 
-> My suggestion to use "unsigned int internal_phase:1" actually takes
-> inspiration from the ASoC code, in which such bit fields are used
-> quite a lot, even when using them actually doesn't save space.
-> 
-> In this particular case, using plain bool would make sense, but I
-> still think that using an "unsigned int internal_phase:1" bit field
-> would fit better, because it would show the intention to possibly
-> save a bit of RAM at some point.  OTOH, I don't think that using
-> bool with such bit fields would actually work cleanly, because bool
-> actually resolves to int that's a signed type.
+In order to get rid of CLK_NR_CLKS and be able to drop it from the
+bindings, use rockchip_clk_find_max_clk_id helper to find the highest
+clock id.
 
-I wouldn't use bool with a bit field of course. I've always considered using 
-bit fileds only for structs that must have a certain format, like a header 
-format definition.
+Signed-off-by: Johan Jonker <jbx6244@gmail.com>
+---
+ drivers/clk/rockchip/clk-rk3288.c | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
 
-For me, it is better to use "bool internal_phase" so that it is obvious that 
-the feature can be on or off when reading the code.
+diff --git a/drivers/clk/rockchip/clk-rk3288.c b/drivers/clk/rockchip/clk-rk3288.c
+index baa5aebd3277..90d329216064 100644
+--- a/drivers/clk/rockchip/clk-rk3288.c
++++ b/drivers/clk/rockchip/clk-rk3288.c
+@@ -932,6 +932,7 @@ static void __init rk3288_common_init(struct device_node *np,
+ 				      enum rk3288_variant soc)
+ {
+ 	struct rockchip_clk_provider *ctx;
++	unsigned long clk_nr_clks;
 
-When using bit fields with a struct that is not marked as "__packed", I 
-immediately think that there could be a bug there and wonder why the bit field 
-is used, not really thinking "the dev wanted to show they cared about memory 
-usage".
-But I guess that is all about preferences. In the end, it won't change how it 
-works.
+ 	rk3288_cru_base = of_iomap(np, 0);
+ 	if (!rk3288_cru_base) {
+@@ -939,7 +940,9 @@ static void __init rk3288_common_init(struct device_node *np,
+ 		return;
+ 	}
 
-Detlev.
-
+-	ctx = rockchip_clk_init(np, rk3288_cru_base, CLK_NR_CLKS);
++	clk_nr_clks = rockchip_clk_find_max_clk_id(rk3288_clk_branches,
++						   ARRAY_SIZE(rk3288_clk_branches)) + 1;
++	ctx = rockchip_clk_init(np, rk3288_cru_base, clk_nr_clks);
+ 	if (IS_ERR(ctx)) {
+ 		pr_err("%s: rockchip clk init failed\n", __func__);
+ 		iounmap(rk3288_cru_base);
+--
+2.39.2
 
 
 _______________________________________________
