@@ -4,85 +4,117 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B3C62C5321D
-	for <linux-rockchip@archiver.kernel.org>; Mon, 26 Aug 2024 09:59:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ABA02C5321E
+	for <linux-rockchip@archiver.kernel.org>; Mon, 26 Aug 2024 10:28:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=jnSSl+TnTHpZKB5PjqyY+f2nHyZOfnqgvwtZ1M0OksI=; b=hTyMRj6WKCCZAS
-	9O6J7tt75hkGRtinHbuUq7t1EUquTZBRcyKuN6TAtw4EHfbztvdr+2KxYcIN71RmyC35xirEgIpCL
-	SNNOKkV3QthSojwk9/UtGVG8YHGB0beSMlb4CVnu5VpMeELqoRnLOi8dEc1AKgkR37Z9p9SC7bQOL
-	qj78c2XJG8i8qp98AcUQv9w/UBloWbNV6oezyO1JFN/MpdJTQuwGAA2BXMK7D3dq/vMb/nS+7RhRw
-	BoK96hG9CAAFqHKQKhnLWhkAukkEIOzFBPlJODesqJ1NW9hlaKrHt2YzKKZfN5zARErxbS0TbnvEB
-	kZpOUtMFWDI3kn36Qe3A==;
+	List-Owner; bh=HnNFZLZ/z8c3qxL4QxO8jIsF15sZEX45y713dzUAsHc=; b=nicHLeIy+eHZzl
+	CnsRKBbR5/zMOzHPHv+r9vxjiWh47KDgZpN2i4dwydfdeK072I7QKOPzFSiTD10xhq/FefAZmFQxj
+	aEAlZnxoguoOQUqf7tyJtSEeAzFAbimsOQVaouoRMZjKJDAa6ReOddUN+0SrCtVBGFRDEGK/fHbvo
+	ZLcSbi2qneyglyS5eMFY1qXEPDYvnnOdetisPlVEszR38AVGGlr359pq6NO80o/U8bG/ExH3H+qXg
+	XHFII0pi4dG/+6uhNW4Zs297DZD5r5sNTFbOtZAG5d/1mMEU9d1nt1rqGLSrXkzG9kGdH8Ydo72OP
+	Z9qwHwfTkDsxogqr8IIw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1siWVZ-00000006oNV-3fMO;
-	Mon, 26 Aug 2024 09:59:33 +0000
-Received: from mail-yw1-f179.google.com ([209.85.128.179])
+	id 1siWxU-00000006viI-0Iix;
+	Mon, 26 Aug 2024 10:28:24 +0000
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1siWUd-00000006o7b-3H1x;
-	Mon, 26 Aug 2024 09:58:36 +0000
-Received: by mail-yw1-f179.google.com with SMTP id 00721157ae682-6b4412fac76so36892517b3.1;
-        Mon, 26 Aug 2024 02:58:35 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1724666314; x=1725271114;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=xIxHgySimhudfjPoZi8j1w/98XwT2TmQjMhDhWg7BtU=;
-        b=CaoD7UeDFzQtmApTPE6gDSx21JC5nfv17aPPu4Gqkr9KYDV+jknDGUeFa6eiKpXBS3
-         fOi7px1P6LIcGwViHP7LmSGU/r6FZS36AbYw8JwYad0zD065dqchALrNvQPHFQ5n+Ln5
-         RMW1hB3ri5QbWgKvAmbsnZLCagRoN488e/W2MxPXUlESwZ8Gm9nkAKnoa5ug8o8chh4i
-         H6SUCh9VFaOfkikFmU/3tS7MtXXUon+L3Q9xvPE0tsNmugFThT1ub+B3H2fQ2qiaAKCN
-         2gfuXAvR3jdEe47DsXFrc48fb+6h5dfTQ76kReASwdAhL1S2QEg13dbAGNPr5QwbzGaV
-         eRNQ==
-X-Forwarded-Encrypted: i=1; AJvYcCV+FN8iyp03WDsPXB1E9aDpWPiUUQrI6Ep9GcBXBYGGWESRC/Tgnj+fujfnMgJxQJtVwnRT1ofG/D6k@lists.infradead.org, AJvYcCVwUMukjrY/bow8Zdct7oie+/hCtaGFm9Dho9i8MxfPfU6v82hKn6WjYUFXkphU5L60djHTBr4SKc1C2m1vRdQ=@lists.infradead.org, AJvYcCVymCVWVILMTr94TscpS1gBtKElaITQIzUmPXVbtskO8mjvLPV9yPLAAm4g1xVV19cH0R+vqLw+HLgI/Py+h7o=@lists.infradead.org, AJvYcCX1nuc2UffZt9COCOd5jjyyQuKFUFQmvBj9UvGoLVhYB+vGg4aAgMZckWwMUkzW3zuZ+otlfigVOIjPo+Ns@lists.infradead.org, AJvYcCXHQuukWZIWUVMMUKUYm6MbRUohVE9WKqnhgME7Q/U8fLb+7n+m+Ri0DimZxq5TUysXiy93x8yrV4OIbE7RlWS+KA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxpzcIJMqCootajn3txdiHOwlGOIVeCEwKN+LQpOmhThmY+M10d
-	C6wLq/0SWfPOGpECmvspjksJHXV+N/uSfPox9tqtdhv6yX6h4wqVJh53YzR6
-X-Google-Smtp-Source: AGHT+IE+BSr3vSJyvCKiBS5TJxW0xNaioQcrCekukgUcEjWum8SDdelZO1MfxInNrfOSHuBPjrA8vA==
-X-Received: by 2002:a05:690c:ec9:b0:615:2a14:4ea6 with SMTP id 00721157ae682-6c62422c0b8mr125625867b3.8.1724666314093;
-        Mon, 26 Aug 2024 02:58:34 -0700 (PDT)
-Received: from mail-qk1-f171.google.com (mail-qk1-f171.google.com. [209.85.222.171])
-        by smtp.gmail.com with ESMTPSA id af79cd13be357-7a67f3d5c8csm438811785a.98.2024.08.26.02.58.33
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 26 Aug 2024 02:58:33 -0700 (PDT)
-Received: by mail-qk1-f171.google.com with SMTP id af79cd13be357-7a1dcc7bc05so267417985a.0;
-        Mon, 26 Aug 2024 02:58:33 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AJvYcCU3ogmls0xilJ3I4UAh+6GPsTCfPzcgFedwR5pEN56VQEQvnxN1wiEuPvN9O9id78YCpb3u6I4OxANn@lists.infradead.org, AJvYcCVUUggp5XsfBx5fXRGyr0dkzDaxVYkje1/NHeeWdZYw9PB3Rn15NUIskNjgUP+9EtHmg7A+mDreHLGPppB1EU8=@lists.infradead.org, AJvYcCWzE/K4HqfIHFx9dx8CWzv1VpsbSxHS71+YNBwGcRm6nA+krx7AON+lZqEbDOeNKk2pP3cw5DCXO1KAo7uK@lists.infradead.org, AJvYcCXC9S/GhlAKw88AUY4tdvqQoaNI+Bw9gNRAdM2YnBThytYBfvvqTkGY7xO93N/K27Mty0q1BKRPTdadNPhWws0=@lists.infradead.org, AJvYcCXYBFaszURqICEyhpj9xeNGuZOtql9jEZ3y6hZd3ysVmfVwjn2mQ2ZNS8td73SYe5n922yq3YkDFHVYXLGVjsYThA==@lists.infradead.org
-X-Received: by 2002:a05:690c:4246:b0:6b2:4154:e598 with SMTP id
- 00721157ae682-6c6262f43e4mr95411167b3.26.1724665994139; Mon, 26 Aug 2024
- 02:53:14 -0700 (PDT)
+	id 1siWwe-00000006vZU-3o3Q;
+	Mon, 26 Aug 2024 10:27:34 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sin.source.kernel.org (Postfix) with ESMTP id AFB85CE0CE0;
+	Mon, 26 Aug 2024 10:27:30 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4EA59C56891;
+	Mon, 26 Aug 2024 10:19:09 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1724667561;
+	bh=M+q8rHfzX3p2+aK8A+vt4lDSGTCZyD3lfTR+qdMghhg=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=f+8q9hYUDGLItmWEJlgcbiEZsxJcbdzrcB1nezvm7p2UCvVO8Els4jbQkD0nswQpy
+	 QXyzL8frL48aqrBdAmlBukgzAOXBy4fs5iK6omY67EVyZhLQQO0fBiOBl3qDpuToqc
+	 b+9A6AdXym5xz9vQXG1VeDvAEvrb8wmgvSTV/f4xeOyM6Ycle37glhOq1cVSRsWg4U
+	 guFNm7rB5JGGEOvAvHEyTQR1w2ZaCulzhckbWAm1svHkgftra3Z4/DLVK3EBXm30q0
+	 wrKUGarkUEKYhr8UEdH5lJlfDITEQZlfwupX5L46qS6MdCF3QC5dn+8CCa1+0KD5CJ
+	 yypK1po37LYfg==
+Message-ID: <f7430f87-88d2-4c08-bc1e-6bb3da4e332c@kernel.org>
+Date: Mon, 26 Aug 2024 12:19:07 +0200
 MIME-Version: 1.0
-References: <20240826094328.2991664-1-ruanjinjie@huawei.com> <20240826094328.2991664-9-ruanjinjie@huawei.com>
-In-Reply-To: <20240826094328.2991664-9-ruanjinjie@huawei.com>
-From: Geert Uytterhoeven <geert@linux-m68k.org>
-Date: Mon, 26 Aug 2024 11:53:02 +0200
-X-Gmail-Original-Message-ID: <CAMuHMdWhfDmRONWLjqgeCa4ZPKKXxXDv6T60OVSmEdvdm1RvvQ@mail.gmail.com>
-Message-ID: <CAMuHMdWhfDmRONWLjqgeCa4ZPKKXxXDv6T60OVSmEdvdm1RvvQ@mail.gmail.com>
-Subject: Re: [PATCH -next RESEND 08/10] mtd: rawnand: renesas: Use for_each_child_of_node_scoped()
-To: Jinjie Ruan <ruanjinjie@huawei.com>
-Cc: miquel.raynal@bootlin.com, michal.simek@amd.com, richard@nod.at, 
-	vigneshr@ti.com, liang.yang@amlogic.com, neil.armstrong@linaro.org, 
-	khilman@baylibre.com, jbrunet@baylibre.com, 
-	martin.blumenstingl@googlemail.com, matthias.bgg@gmail.com, 
-	angelogioacchino.delregno@collabora.com, heiko@sntech.de, 
-	mcoquelin.stm32@gmail.com, alexandre.torgue@foss.st.com, wens@csie.org, 
-	jernej.skrabec@gmail.com, samuel@sholland.org, kees@kernel.org, 
-	gustavoars@kernel.org, linux@treblig.org, robh@kernel.org, 
-	u.kleine-koenig@pengutronix.de, erick.archer@gmx.com, 
-	christophe.jaillet@wanadoo.fr, val@packett.cool, 
-	christophe.kerello@foss.st.com, linux-mtd@lists.infradead.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-amlogic@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, 
-	linux-stm32@st-md-mailman.stormreply.com, krzk@kernel.org, jic23@kernel.org
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH -next RESEND 00/10] mtd: Use
+ for_each_child_of_node_scoped()
+To: Miquel Raynal <miquel.raynal@bootlin.com>,
+ Jinjie Ruan <ruanjinjie@huawei.com>
+Cc: michal.simek@amd.com, richard@nod.at, vigneshr@ti.com,
+ liang.yang@amlogic.com, neil.armstrong@linaro.org, khilman@baylibre.com,
+ jbrunet@baylibre.com, martin.blumenstingl@googlemail.com,
+ matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
+ heiko@sntech.de, mcoquelin.stm32@gmail.com, alexandre.torgue@foss.st.com,
+ wens@csie.org, jernej.skrabec@gmail.com, samuel@sholland.org,
+ kees@kernel.org, gustavoars@kernel.org, linux@treblig.org, robh@kernel.org,
+ u.kleine-koenig@pengutronix.de, erick.archer@gmx.com,
+ christophe.jaillet@wanadoo.fr, val@packett.cool,
+ christophe.kerello@foss.st.com, linux-mtd@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-amlogic@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ linux-stm32@st-md-mailman.stormreply.com, jic23@kernel.org
+References: <20240826094328.2991664-1-ruanjinjie@huawei.com>
+ <20240826115213.389acaef@xps-13>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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 fv0=
+In-Reply-To: <20240826115213.389acaef@xps-13>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240826_025835_844002_6D125748 
-X-CRM114-Status: GOOD (  13.51  )
+X-CRM114-CacheID: sfid-20240826_032733_320549_0D7D6F88 
+X-CRM114-Status: UNSURE (   6.76  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,22 +126,32 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gTW9uLCBBdWcgMjYsIDIwMjQgYXQgMTE6MzfigK9BTSBKaW5qaWUgUnVhbiA8cnVhbmppbmpp
-ZUBodWF3ZWkuY29tPiB3cm90ZToKPiBBdm9pZHMgdGhlIG5lZWQgZm9yIG1hbnVhbCBjbGVhbnVw
-IG9mX25vZGVfcHV0KCkgaW4gZWFybHkgZXhpdHMKPiBmcm9tIHRoZSBsb29wLgo+Cj4gU2lnbmVk
-LW9mZi1ieTogSmluamllIFJ1YW4gPHJ1YW5qaW5qaWVAaHVhd2VpLmNvbT4KClJldmlld2VkLWJ5
-OiBHZWVydCBVeXR0ZXJob2V2ZW4gPGdlZXJ0K3JlbmVzYXNAZ2xpZGVyLmJlPgoKR3J7b2V0amUs
-ZWV0aW5nfXMsCgogICAgICAgICAgICAgICAgICAgICAgICBHZWVydAoKLS0gCkdlZXJ0IFV5dHRl
-cmhvZXZlbiAtLSBUaGVyZSdzIGxvdHMgb2YgTGludXggYmV5b25kIGlhMzIgLS0gZ2VlcnRAbGlu
-dXgtbTY4ay5vcmcKCkluIHBlcnNvbmFsIGNvbnZlcnNhdGlvbnMgd2l0aCB0ZWNobmljYWwgcGVv
-cGxlLCBJIGNhbGwgbXlzZWxmIGEgaGFja2VyLiBCdXQKd2hlbiBJJ20gdGFsa2luZyB0byBqb3Vy
-bmFsaXN0cyBJIGp1c3Qgc2F5ICJwcm9ncmFtbWVyIiBvciBzb21ldGhpbmcgbGlrZSB0aGF0Lgog
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIC0tIExpbnVzIFRvcnZhbGRzCgpfX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBt
-YWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlz
-dHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+On 26/08/2024 11:52, Miquel Raynal wrote:
+> Hi Jinjie,
+> 
+> ruanjinjie@huawei.com wrote on Mon, 26 Aug 2024 17:43:18 +0800:
+> 
+>> Use scoped for_each_available_child_of_node_scoped() when iterating over
+>> device nodes to make code a bit simpler.
+> 
+> Why is this a resend ? Did I miss a previous iteration?
+
+You were not cc-ed on previous iteration. I asked for proper split
+between subsystems and sending to maintainers, thus this resend.
+
+Although for such big patchset, I would expect some waiting time, not
+sending immediately.
+
+Best regards,
+Krzysztof
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
