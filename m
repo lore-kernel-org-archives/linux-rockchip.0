@@ -4,62 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BD8F8C5472E
-	for <linux-rockchip@archiver.kernel.org>; Mon, 26 Aug 2024 08:02:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A8707C5321E
+	for <linux-rockchip@archiver.kernel.org>; Mon, 26 Aug 2024 08:03:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Cc:From:References:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
+	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=vRlfQ1kWZjSLJxXzWyr+50SiNoYXVJtCk6LFHwemUb4=; b=NRDo6m0AyMw//P
-	i6CTJ39/lhnuQkg72F9fV/zF6bBYACsNCO6fMvjh3qZQoY00dboPXjDI5u+2oE1ePq21F/HMCt9pp
-	RmeiaVsRhQp0uoF4rI0tyyDUBlE/SV4jf5NkPA0EVFC2ObFoqBdObo/lasFA1XD9+ZoPlxJ+8EkiC
-	0887G3yeSokS9wxoJiyqH4W6Tm/a+cUk04/jwLnZ0L18dWp2O6v50xFf7Z0GhlEbXHIB51qMDu5jF
-	hu1KJLY0Ez0NzMhzMUo2HRddN2o4AcWalKXh29MjucjwBsn7xp2WJyB4G3UVnUMzq2TkgscC4Y/Nz
-	CjT2guI5firQOJCf/RvQ==;
+	List-Owner; bh=HghR9f9LpU16iUpbvqZqbBGDi4AN218/+Lmrioz99tA=; b=gLfbQ3b56CpPUa
+	AKizXdIaudSU2zYp4pYRlYpUfyXDISRdBnv4eLzFlkPZsNHWUvT5GdeJSFK2ZdnaZwgAXjxJt+Wp4
+	+/OxJEdAXRxZrWv1Nqb8XO9oasupizzuUfvOr46cSBeWg1vKtWgTICvbvH/Dc0zgQGAbQ8uXAUvYA
+	h7dTi5txcNP5bGC9qRm7UtBWcCchx4k671VZsfbxpTn/JAmB7am7c2pkprgzgeyQzYYCCrQSmd1ot
+	QQUctrrzEH9cph/V0zJ1ts3sxjOVDPEVQfjjRBNIPcktOl/LcdQ9Bs2pxYfncXbTfqWCTdSjsYHzB
+	/TIMWrUkO80KseRX1SfQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1siUgU-00000006NoL-2OBx;
-	Mon, 26 Aug 2024 08:02:42 +0000
-Received: from [129.204.178.38] (helo=classfun.cn)
-	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1siUfh-00000006Ncj-0KGM;
-	Mon, 26 Aug 2024 08:01:54 +0000
-Received: from [192.168.0.160] (unknown [14.153.79.170])
-	(Authenticated sender: bigfoot)
-	by classfun.cn (Postfix) with ESMTPSA id 2B0C4789E4;
-	Mon, 26 Aug 2024 16:01:50 +0800 (CST)
-DKIM-Filter: OpenDKIM Filter v2.11.0 classfun.cn 2B0C4789E4
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=classfun.cn;
-	s=default; t=1724659310;
-	bh=vEQbp8JhlcjDWWseCz9sjPI3YL2zLcYOUsfYIw62S8M=;
-	h=Date:Subject:To:References:From:Cc:In-Reply-To:From;
-	b=iGxqgMrnw4ByjCHyOS5757fQe+SlPABwwEgFFPOSpcpikJgfMIa+KIqKgMvUS+27J
-	 4PgZ+m4qFm57s7lc5X0rw2NppRLvo1agiI/7T074Zv94Ikl2dhbk3VVU1N7SpYxjWP
-	 eYqIpjrRnx+DRc/zvzYqf+24BZ2dApnMmqSU2fZI=
-Message-ID: <6edb8443-6bb4-4174-8fe0-906208757cef@classfun.cn>
-Date: Mon, 26 Aug 2024 16:03:01 +0800
+	id 1siUh6-00000006O2b-47Rr;
+	Mon, 26 Aug 2024 08:03:20 +0000
+Received: from muminek.juszkiewicz.com.pl ([213.251.184.221])
+	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
+	id 1siUh3-00000006Nzc-1RZd
+	for linux-rockchip@lists.infradead.org;
+	Mon, 26 Aug 2024 08:03:19 +0000
+Received: from localhost (localhost [127.0.0.1])
+	by muminek.juszkiewicz.com.pl (Postfix) with ESMTP id 497412602C9;
+	Mon, 26 Aug 2024 10:03:14 +0200 (CEST)
+X-Virus-Scanned: Debian amavis at juszkiewicz.com.pl
+Received: from muminek.juszkiewicz.com.pl ([127.0.0.1])
+ by localhost (muminek.juszkiewicz.com.pl [127.0.0.1]) (amavis, port 10024)
+ with ESMTP id MZJLnQJSEcah; Mon, 26 Aug 2024 10:03:12 +0200 (CEST)
+Received: from puchatek.local (83.25.211.12.ipv4.supernova.orange.pl [83.25.211.12])
+	by muminek.juszkiewicz.com.pl (Postfix) with ESMTPSA id 91B62260898;
+	Mon, 26 Aug 2024 10:03:11 +0200 (CEST)
+From: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
+Date: Mon, 26 Aug 2024 10:02:45 +0200
+Subject: [PATCH v5 1/7] dt-bindings: arm: rockchip: Add NanoPC-T6 LTS
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 3/3] arm64: dts: rockchip: add dts for LCKFB Taishan Pi
- RK3566
-To: Chukun Pan <amadeus@jmu.edu.cn>
-References: <20240826044530.726458-4-bigfoot@classfun.cn>
- <20240826070109.55659-1-amadeus@jmu.edu.cn>
-Content-Language: en-US
-From: Junhao Xie <bigfoot@classfun.cn>
-Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- Jonas Karlman <jonas@kwiboo.se>, Chukun Pan <amadeus@jmu.edu.cn>,
- FUKAUMI Naoki <naoki@radxa.com>, Dragan Simic <dsimic@manjaro.org>,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
- Junhao Xie <bigfoot@classfun.cn>
-In-Reply-To: <20240826070109.55659-1-amadeus@jmu.edu.cn>
+Message-Id: <20240826-friendlyelec-nanopc-t6-lts-v5-1-ba33edda7f17@linaro.org>
+References: <20240826-friendlyelec-nanopc-t6-lts-v5-0-ba33edda7f17@linaro.org>
+In-Reply-To: <20240826-friendlyelec-nanopc-t6-lts-v5-0-ba33edda7f17@linaro.org>
+To: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh@kernel.org>, 
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>
+Cc: linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, 
+ Jonas Karlman <jonas@kwiboo.se>, 
+ Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>, 
+ Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+X-Mailer: b4 0.14.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240826_010153_433614_727DC703 
-X-CRM114-Status: GOOD (  17.17  )
+X-CRM114-CacheID: sfid-20240826_010317_581650_9427E1AB 
+X-CRM114-Status: UNSURE (   7.75  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,120 +72,36 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 2024/8/26 15:01, Chukun Pan wrote:
-> Hi Junhao,
-> 
->> --- /dev/null
->> +++ b/arch/arm64/boot/dts/rockchip/rk3566-lckfb-tspi.dts
->> ...
->> +	aliases {
->> +		mmc0 = &sdmmc0;
->> +		mmc1 = &sdhci;
->> +		mmc2 = &sdmmc1;
->> +		wifi = &brcmf;
->> +		bluetooth = &bluetooth;
->> +	};
-> 
-> WiFi and Bluetooth do not need aliases.
-> 
->> ...
->> +	vcc5v0_host: vcc5v0-host-regulator {
->> +		compatible = "regulator-fixed";
->> +		regulator-name = "vcc5v0_host";
->> +		regulator-boot-on;
->> +		regulator-always-on;
-> 
-> This regulator does not need always-on and boot-on.
-> 
+Add devicetree binding for the NanoPC-T6 LTS board.
 
-I will remove them.
+Signed-off-by: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+---
+ Documentation/devicetree/bindings/arm/rockchip.yaml | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
 
-> 
->> ...
->> +	vccio_flash: vccio-flash {
->> +		compatible = "regulator-fixed";
->> +		regulator-name = "vccio_flash";
->> +		regulator-min-microvolt = <1800000>;
->> +		regulator-max-microvolt = <1800000>;
->> +		vin-supply = <&vcc_1v8>;
->> +	};
-> 
-> Generally speaking, vccio_flash is not a DCDC regulator,
-> it is directly connected to vcc_1v8. Maybe you need to
-> confirm the schematics.
-> 
+diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
+index 1ef09fbfdfaf..f45c7d055a6a 100644
+--- a/Documentation/devicetree/bindings/arm/rockchip.yaml
++++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
+@@ -243,9 +243,11 @@ properties:
+               - friendlyarm,nanopi-r6s
+           - const: rockchip,rk3588s
+ 
+-      - description: FriendlyElec NanoPC T6
++      - description: FriendlyElec NanoPC T6 series boards
+         items:
+-          - const: friendlyarm,nanopc-t6
++          - enum:
++              - friendlyarm,nanopc-t6
++              - friendlyarm,nanopc-t6-lts
+           - const: rockchip,rk3588
+ 
+       - description: FriendlyElec CM3588-based boards
 
-Yes, vccio_flash and vccio_wl are not DCDC regulator, they are connected to vcc_1v8 and vcc_3v3 through voltage selection resistors.
+-- 
+2.46.0
 
-> 
->> +
->> +	vccio_wl: vccio-wl {
->> +		compatible = "regulator-fixed";
->> +		regulator-name = "vccio_wl";
->> +		regulator-min-microvolt = <3300000>;
->> +		regulator-max-microvolt = <3300000>;
->> +		vin-supply = <&vcc_3v3>;
->> +	};
-> 
-> Same as above, usually like this:
-> VCC_1V8 or VCCA1V8_PMU - 0R - VCCIO_WL
-> `sd-uhs-sdr104` requires 1.8v io voltage,
-> you need to confirm the schematics.
-> 
-
-It is actually connected to vcc_1v8, I will fix it.
-
-> 
->> ...
->> +&pinctrl {
->> ...
->> pmic {
->> +	pmic {
->> +		pmic_int: pmic_int {
-> 
-> Only the pmic_int is needed.
-> Also `pmic_int: pmic-int {`
-> 
->> ...
->> +&sdhci {
->> +	bus-width = <8>;
->> +	max-frequency = <200000000>;
->> +	non-removable;
->> +	pinctrl-names = "default";
->> +	pinctrl-0 = <&emmc_bus8 &emmc_clk &emmc_cmd &emmc_datastrobe &emmc_rstnout>;
->> +	status = "okay";
->> +	vmmc-supply = <&vccio_flash>;
->> +	vqmmc-supply = <&vccio_flash>;
->> +};
-> 
-> The vmmc requires 3.3V supply (on rk356x).
-> 
-
-Yes, the vmmc of eMMC is actually connected to vcc_3v3, I will fix it.
-
-> 
->> ...
->> +&sdmmc1 {
->> ...
->> +	sd-uhs-sdr104;
->> +	vmmc-supply = <&vccio_wl>;
->> +	vqmmc-supply = <&vccio_wl>;
-> 
-> Same as above.
-> 
->> ...
-> +&uart1 {
->> ...
-> +		vbat-supply = <&vcc3v3_sys>;
-> +		vddio-supply = <&vccio_wl>;
-> 
-> Here corresponds to sdmmc1.
-> 
-> Thanks,
-> Chukun
-> 
-
-Thanks for your review, I will fix all problems and post patch v2!
 
 _______________________________________________
 Linux-rockchip mailing list
