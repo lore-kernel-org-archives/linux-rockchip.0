@@ -4,65 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8343AC5321E
-	for <linux-rockchip@archiver.kernel.org>; Mon, 26 Aug 2024 14:53:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C48BFC5321E
+	for <linux-rockchip@archiver.kernel.org>; Mon, 26 Aug 2024 15:09:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
-	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=5pt8VgNluvVDWMJ6oteCdVa0LZrJgzaRsD61EDUiXzA=; b=oal2kid/ALPGKQDQ1io8Iexu7f
-	AjPsKqUd8cBKmCbBV3bEa3alvLL+IHROQtNu04nc/Ty1O7rFKBWC4ntxS5h5ffqS1DK4aAPWxnVaU
-	7tbwTUg8b6V4JcwBZquiJg1fV7lpd+9nT0nIgoBzY6mXh0jiats+chuwY5cXAARZ3zNaPB0r5Y/gD
-	sZKDFmNIcld5hShetyVwI84ASi8AC0Jp49mVLL9c5bSwRVagANJ4jYXW1OKg2FRzMme/UYdn0BOHe
-	t7/8hBtYMeqYjGhehMm1icH5eDSHSTcXh55XxBKxZMKi5YyPMvIhjFJQsNqLyQRaSwgzueCJ/5mDC
-	+Aj/Z40g==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=VPbtjz+CGUXG4Idyf1oJluvT6POdbYMgKxghtXdPOTA=; b=XOQrpq7Mt2g5bE
+	GwTSb58rFbbiXzWHkHWQHu7jGI9uAOIqHLdU/upigD41f7ziMZuTT7KIDUHvIkl62GCtLcngqJGt6
+	/5TfL1MvP7HYtK0WOfW9hfA8D2LIa9PI908Z4CJ7nEYOYZbdX2lbZmjV1pWqjJCetdCoNYxBwYu6U
+	HumjafPikPskZDVz9g+uifkz0ApOeBOr+FcZQE0xUNqqwBu/8PhCG3uOw43w0j4DsgJk3cowNXpVU
+	ZD0pv5ApchHtRX8pm18JHHcGOCOyptFoi7ZRvdT/K+8NKjcAcSZ5RJqsVqaZkHRkh1InvC8Y0J1w1
+	hu8bWdGInlcI+A+9aKJw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sib6M-00000007jGO-3GT7;
-	Mon, 26 Aug 2024 14:53:50 +0000
-Received: from mail.manjaro.org ([2a01:4f8:c0c:51f3::1])
+	id 1sibLV-00000007lG2-3xvY;
+	Mon, 26 Aug 2024 15:09:29 +0000
+Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sib53-00000007j4m-1gDX;
-	Mon, 26 Aug 2024 14:52:30 +0000
+	id 1sibKf-00000007l0b-41bb
+	for linux-rockchip@lists.infradead.org;
+	Mon, 26 Aug 2024 15:08:39 +0000
+Received: by mail-wr1-x42f.google.com with SMTP id ffacd0b85a97d-3718ecfa0d6so97824f8f.2
+        for <linux-rockchip@lists.infradead.org>; Mon, 26 Aug 2024 08:08:36 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1724684915; x=1725289715; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=Qq3MT2U3Bii1oMqcjLAXejFqk1AKEOqI5iAx/L7MuJo=;
+        b=bsRl0hpqD1MiYHFiQZx6RzUJMzwZwBDiF7joVOnGJhri9EQ3cSYZdXMXGc8zg7NLyQ
+         E8pOvR3wV+DYDFKMGV8Pkoo6jSDrW0CK9xQBZGbb7rSZ1P1AfzDYOC1Lm6AleWeBr1oy
+         4WFbczKxwg6VqTdeFlWBJkVcmp2cl+gp/TvZmRAon05ZSm8NUC0Wg+0V2LWlzycQ7DiQ
+         7dlt6ckW2voAA0eRn0q4yXi7+h6W5ojta1QmD5Jig/nJiuFCNRbfcR2UHxAJWuGaTjwD
+         MB5QBSP6zhN8tGrc6zMTKmW9EUVUPei2KkN1DxZyHusMH4XF8fHvFjfZSn4Y0cqEKuAE
+         3eBA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1724684915; x=1725289715;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=Qq3MT2U3Bii1oMqcjLAXejFqk1AKEOqI5iAx/L7MuJo=;
+        b=dMwOLHRlIP/l7CN6SwTAaUoa0uFZFR/xdBanzmhf2QJdtLSdI2TcYEYZqz40Rw0Z+p
+         DJRits5QSDP6Zz0Wb5YHZ4hrOwkTCpdHwysfYLTrvByAQQcnidtwzRpRbLIaPaURDvBl
+         8foHU4FwacmyAIUoYgIGcIOkWvGnXYc8IjqD7jRNKsKwnCJvibZ2E+zbFZJrWrxdG+I4
+         Q2BnZb5Z/wx3MR2MGqOjZaKJkOXespneDtXC8bMg0ziA705VJ7JlE1ULaLr4OpFJaWvA
+         w4b/45JtdqmX2GVXIPTJots5HTcHAn4uN7Jhidh7hEilrlcanFTJM7Wcy5hbkWTmizNU
+         NsPw==
+X-Forwarded-Encrypted: i=1; AJvYcCVlV1dMavd9OYf8Bf1Yn4FXfUOAlWU5yhCuBmelZUSgEtXvR7JL/6B3XbLNUSY3y+fWlJxO848h2Car53SnUw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyRm4Y8otfrC3QTrwt+UYbH1xiErz/7BKtU+5Piy/L6lhqBEzgm
+	0BVdfCTT2Yc/fXvQYeRPyG+0KlUVwl6sXDtTBIZVbWP3cx50POIBNuOz9tb9kBE=
+X-Google-Smtp-Source: AGHT+IGp1HEFpKBlPzvGLdHjlSkL9VLALIn2mdOC9GkDps/j6o00dYXrlTi5d5CGoc1xVMCg+wJO1A==
+X-Received: by 2002:a5d:5889:0:b0:35f:1edb:4695 with SMTP id ffacd0b85a97d-373118b65acmr3696789f8f.6.1724684915215;
+        Mon, 26 Aug 2024 08:08:35 -0700 (PDT)
+Received: from krzk-bin.. ([178.197.222.82])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-42ac5162322sm155040825e9.24.2024.08.26.08.08.34
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 26 Aug 2024 08:08:34 -0700 (PDT)
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+To: Linus Walleij <linus.walleij@linaro.org>,
+	Bartosz Golaszewski <brgl@bgdev.pl>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Jianqun Xu <jay.xu@rock-chips.com>,
+	linux-gpio@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Subject: [PATCH] gpio: rockchip: fix OF node leak in probe()
+Date: Mon, 26 Aug 2024 17:08:32 +0200
+Message-ID: <20240826150832.65657-1-krzysztof.kozlowski@linaro.org>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
-	t=1724683947;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=zsLtJ21GMVO6oT89oMRfFsmwIaUm0tSl7H1ZIrPPfoM=;
-	b=KRxz8lztdXHXbtlweF6zWPEUz3/LYc5LCCYGpTLWet9hzCUGjVOSHLYu4qybICQEuaY9sB
-	LUbubrSZmp8tX6JmvyVNLgq7T6VgCznLzlGLjgSRRVrwTLtP7LepB5icYthDXO/OgMo8NY
-	ym9WDi8UAiNyYV39jrkE1vP+gLhH6KL9I9+LVFO01XT1zV8IUC3dG3Kyk4I+fLHAKRTVH/
-	AaqXcbVlmRZ+fAvSumcRJPJRuhZPSYuNqg+KPqbeU6XXgAMQo4gEQntJkF29tj/eKdYiKm
-	4J3U02Hx8av6IURlPGOEylBjk3yjWNpJEJSqiD9YVZGNC9efCtWJP9HSCsFtFA==
-Date: Mon, 26 Aug 2024 16:52:26 +0200
-From: Dragan Simic <dsimic@manjaro.org>
-To: Detlev Casanova <detlev.casanova@collabora.com>
-Cc: linux-kernel@vger.kernel.org, Ulf Hansson <ulf.hansson@linaro.org>, Rob
- Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor
- Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, Jaehoon
- Chung <jh80.chung@samsung.com>, linux-mmc@vger.kernel.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, kernel@collabora.com, Shawn Lin
- <shawn.lin@rock-chips.com>
-Subject: Re: [PATCH v4 3/4] mmc: dw_mmc-rockchip: Skip all phases bigger than
- 270 degrees
-In-Reply-To: <1894989.tdWV9SEqCh@trenzalore>
-References: <20240822212418.982927-1-detlev.casanova@collabora.com>
- <20240822212418.982927-4-detlev.casanova@collabora.com>
- <711f2561ac3d84bcd5bbe26723869b47@manjaro.org>
- <1894989.tdWV9SEqCh@trenzalore>
-Message-ID: <38952ff6affa5929612aaabbae3ca996@manjaro.org>
-X-Sender: dsimic@manjaro.org
-Authentication-Results: ORIGINATING;
-	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240826_075229_766668_C2FF75CF 
-X-CRM114-Status: GOOD (  24.15  )
+X-CRM114-CacheID: sfid-20240826_080838_002901_453DEC56 
+X-CRM114-Status: GOOD (  10.05  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,70 +91,35 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello Detlev,
+Driver code is leaking OF node reference from of_get_parent() in
+probe().
 
-On 2024-08-23 15:59, Detlev Casanova wrote:
-> On Friday, 23 August 2024 01:45:07 EDT Dragan Simic wrote:
->> Hello Detlev,
->> 
->> On 2024-08-22 23:15, Detlev Casanova wrote:
->> > From: Shawn Lin <shawn.lin@rock-chips.com>
->> >
->> > Per design recommendation, it'd better not try to use any phase
->> > which is bigger than 270. Let's officially follow this.
->> 
->> Would it be possible to provide a reference to the actual design
->> specification?  This change affects all users of the dw_mmc-rockchip
->> driver, so in case any regressions are found later, having as much
->> detail as possible can only be beneficial.
-> 
-> I don't have the reference and only trusting rockchip on this. This 
-> could be
-> specific to rockchip hardware.
-> Anyway, the drivers works well on my side on my rk3576 armsom sige5 
-> without
-> this patch, so I'm willing to drop it completely.
+Fixes: 936ee2675eee ("gpio/rockchip: add driver for rockchip gpio")
+Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+---
+ drivers/gpio/gpio-rockchip.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-I think it would be better if you'd drop it in this series, and submit
-it later separately, as a follow-up patch, to reduce the chances for any
-possible regressions.  Maybe we'll also have more background information
-available by then, who knows.
+diff --git a/drivers/gpio/gpio-rockchip.c b/drivers/gpio/gpio-rockchip.c
+index 0bd339813110..365ab947983c 100644
+--- a/drivers/gpio/gpio-rockchip.c
++++ b/drivers/gpio/gpio-rockchip.c
+@@ -713,6 +713,7 @@ static int rockchip_gpio_probe(struct platform_device *pdev)
+ 		return -ENODEV;
+ 
+ 	pctldev = of_pinctrl_get(pctlnp);
++	of_node_put(pctlnp);
+ 	if (!pctldev)
+ 		return -EPROBE_DEFER;
+ 
+-- 
+2.43.0
 
->> > Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
->> > (cherry picked from commit 2a53aab5cfa43065b2e979959d727332a8a03c03)
->> > Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
->> > ---
->> >
->> >  drivers/mmc/host/dw_mmc-rockchip.c | 3 +++
->> >  1 file changed, 3 insertions(+)
->> >
->> > diff --git a/drivers/mmc/host/dw_mmc-rockchip.c
->> > b/drivers/mmc/host/dw_mmc-rockchip.c
->> > index 2748f9bf2691..1458cb5fd5c7 100644
->> > --- a/drivers/mmc/host/dw_mmc-rockchip.c
->> > +++ b/drivers/mmc/host/dw_mmc-rockchip.c
->> > @@ -310,6 +310,9 @@ static int dw_mci_rk3288_execute_tuning(struct
->> > dw_mci_slot *slot, u32 opcode)
->> >
->> >  	/* Try each phase and extract good ranges */
->> >  	for (i = 0; i < priv->num_phases; ) {
->> >
->> > +		/* Cannot guarantee any phases larger than 270 would
-> work well */
->> > +		if (TUNING_ITERATION_TO_PHASE(i, priv->num_phases) >
-> 270)
->> > +			break;
->> >
->> >  		rockchip_mmc_set_phase(host, true,
->> >
->> >  				       TUNING_ITERATION_TO_PHASE(
->> >
->> >  						i,
 
 _______________________________________________
 Linux-rockchip mailing list
