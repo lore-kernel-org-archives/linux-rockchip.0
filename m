@@ -4,64 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0625CC5321D
-	for <linux-rockchip@archiver.kernel.org>; Mon, 26 Aug 2024 09:05:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C5639C5321D
+	for <linux-rockchip@archiver.kernel.org>; Mon, 26 Aug 2024 09:14:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:CC:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=lnCyw+oulZSTEGT+bURaLJKMHBQKujTWIDZvejcq+zI=; b=B3B4V1dzu+bLa+
-	SNhE24ZwL+JrqruRp1C7vegmpEbM4s+6QFZ8tbPjTyQypFYlNz5odDH3UQdkBYkYwX5sWaOrxdE/U
-	wsKJLJ3hL7X9ikmEyqSbphGiTGtKEeSEYnYZ9PPteQ5VRLcvgpeNX+6Po0RWeLcSxKsNWoOk5PrAd
-	OKsUgTbR6XUfr/jrcar00opp+WxGu/9AVrN+gjjr6QhG8JZeBUx9Flhoi/pcqzLYl9Lfy/AS+eOIX
-	3aHz0dXZjuSAGfJM6Yi6MXdmTz84vnlRVFIrAg7vGGUnMLUZlnr34RrWz8IhBvLFU8s5fXIQKtZHf
-	7kID05VtGCinpg4qkk4Q==;
+	List-Owner; bh=4eiKHcHFfA9nV4ZYho4U6smwcosPS3ALP30oCb4M5VA=; b=G6MzrMeN+hbuEO
+	V1e5ulB8Wqaq4CuFxC/2kTdyCg2ohgezTp4RncJZ/u/Q1baLZH4SIIBh8hIWi+tim2n2cZcZZy+oU
+	VKXqN6kX4XeLmYNOR7Aod3HNYrPFbSKQ19RDfxrHiUvUuwBHfKjuMK9y55V8eO1T4CIZ8335gMQo3
+	lVZu/e5O680bDXfmfVwPUaNrbUmcPcTLp26Bn/woDdENL37k+Tg6stCd8/+HIVWMU1TYfWUb3SrN/
+	YqAHHdh/lUlMRmhFMpijtrfQ7s7UxYIqSmgO2dHv+Spn1nJVS3/RljmMY/nCO8Zukg7K/1JAUHVwo
+	71QaFAalWUjp15VkWLsA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1siVey-00000006b3w-46IO;
-	Mon, 26 Aug 2024 09:05:13 +0000
-Received: from szxga02-in.huawei.com ([45.249.212.188])
-	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1siVe9-00000006awH-39P4;
-	Mon, 26 Aug 2024 09:04:24 +0000
-Received: from mail.maildlp.com (unknown [172.19.88.194])
-	by szxga02-in.huawei.com (SkyGuard) with ESMTP id 4Wsl7D27nYzpTZH;
-	Mon, 26 Aug 2024 17:02:32 +0800 (CST)
-Received: from kwepemh500013.china.huawei.com (unknown [7.202.181.146])
-	by mail.maildlp.com (Postfix) with ESMTPS id 28A361401F0;
-	Mon, 26 Aug 2024 17:04:11 +0800 (CST)
-Received: from [10.67.109.254] (10.67.109.254) by
- kwepemh500013.china.huawei.com (7.202.181.146) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1544.11; Mon, 26 Aug 2024 17:04:09 +0800
-Message-ID: <ab3c09e7-43cc-b946-0f7c-44ea7f4111f2@huawei.com>
-Date: Mon, 26 Aug 2024 17:04:09 +0800
+	id 1siVnz-00000006ce7-03IM;
+	Mon, 26 Aug 2024 09:14:31 +0000
+Received: from xn--80adja5bqm.su ([198.44.140.76])
+	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
+	id 1siVnB-00000006cVR-3399;
+	Mon, 26 Aug 2024 09:13:43 +0000
+Received: by xn--80adja5bqm.su (Postfix, from userid 1000)
+	id B2EF940438C0; Mon, 26 Aug 2024 09:12:44 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 xn--80adja5bqm.su B2EF940438C0
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=mediatomb.cc;
+	s=default; t=1724663564;
+	bh=0eRmK37KBjgcw2LNlR8+ezH5+oSLGu1OKO+3ua3wznQ=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=n4wDlcQYxBU2vjkLqN1bp2NG0trUyjeDqZffXUkVeS6SBAAy2XOBLB5Nrt3oPoXwz
+	 d7N3DrxYZ6JOND8Kp74SCWaWBSN1eiixSvZZgCanaH+8gnXvhI2CAgYK6TeeBvyim9
+	 GXc9S75FfWwAG+h4XBq7k3Dd2lHqBSSMlFseZveOXArD9xBDbR5VpBHZps8wmdZliJ
+	 tG0H0Sa6F9ohgH9ACPt9DerqKtfqLwxvWhIDerG7ThoICQ1q3aAdIIf9cuSTu0RFnp
+	 2MQhCgT6LDNa8N5TvKxFoOUF/qDiE/SCuhy3d6svvN9+7r5MaXHsfs3TapdJrq1OzO
+	 U9AlAO/+BDVxw==
+Date: Mon, 26 Aug 2024 09:12:44 +0000
+From: Sergey 'Jin' Bostandzhyan <jin@mediatomb.cc>
+To: m.plak@icloud.com
+Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
+	heiko@sntech.de, devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+	cnsztl@gmail.com
+Subject: Re: [PATCH v3 0/3] Add DTS for NanoPi R2S Plus
+Message-ID: <20240826091244.GA22141@ветеран.su>
+References: <20240814170048.23816-1-jin@mediatomb.cc>
+ <39753BDF-DC8C-4AA7-8BBC-621324BF75F3@icloud.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
- Thunderbird/102.2.0
-Subject: Re: [PATCH -next 1/5] drm/rockchip: Use
- for_each_child_of_node_scoped()
-Content-Language: en-US
-To: Jonathan Cameron <Jonathan.Cameron@Huawei.com>
-CC: <hjc@rock-chips.com>, <heiko@sntech.de>, <andy.yan@rock-chips.com>,
-	<maarten.lankhorst@linux.intel.com>, <mripard@kernel.org>,
-	<tzimmermann@suse.de>, <airlied@gmail.com>, <daniel@ffwll.ch>,
-	<dri-devel@lists.freedesktop.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-rockchip@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
-	<krzk@kernel.org>, <jic23@kernel.org>
-References: <20240823092053.3170445-1-ruanjinjie@huawei.com>
- <20240823092053.3170445-2-ruanjinjie@huawei.com>
- <20240823123203.00002aac@Huawei.com>
-From: Jinjie Ruan <ruanjinjie@huawei.com>
-In-Reply-To: <20240823123203.00002aac@Huawei.com>
-X-Originating-IP: [10.67.109.254]
-X-ClientProxiedBy: dggems703-chm.china.huawei.com (10.3.19.180) To
- kwepemh500013.china.huawei.com (7.202.181.146)
+Content-Disposition: inline
+In-Reply-To: <39753BDF-DC8C-4AA7-8BBC-621324BF75F3@icloud.com>
+User-Agent: Mutt/1.5.21 (2010-09-15)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240826_020422_320166_A8489424 
-X-CRM114-Status: GOOD (  19.48  )
+X-CRM114-CacheID: sfid-20240826_021341_923263_25E39317 
+X-CRM114-Status: GOOD (  33.22  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,89 +69,78 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-
-
-On 2024/8/23 19:32, Jonathan Cameron wrote:
-> On Fri, 23 Aug 2024 17:20:49 +0800
-> Jinjie Ruan <ruanjinjie@huawei.com> wrote:
-> 
->> Avoids the need for manual cleanup of_node_put() in early exits
->> from the loop.
->>
->> Signed-off-by: Jinjie Ruan <ruanjinjie@huawei.com>
-> 
-> There is more to do here, and looking at the code, I'm far from
-> sure it isn't releasing references it never had.
-> 
->> ---
->>  drivers/gpu/drm/rockchip/rockchip_lvds.c | 8 +++-----
->>  1 file changed, 3 insertions(+), 5 deletions(-)
->>
->> diff --git a/drivers/gpu/drm/rockchip/rockchip_lvds.c b/drivers/gpu/drm/rockchip/rockchip_lvds.c
->> index 9a01aa450741..f5b3f18794dd 100644
->> --- a/drivers/gpu/drm/rockchip/rockchip_lvds.c
->> +++ b/drivers/gpu/drm/rockchip/rockchip_lvds.c
->> @@ -548,7 +548,7 @@ static int rockchip_lvds_bind(struct device *dev, struct device *master,
->>  	struct drm_encoder *encoder;
->>  	struct drm_connector *connector;
->>  	struct device_node *remote = NULL;
->> -	struct device_node  *port, *endpoint;
-> 
-> Odd extra space before *port in original. Clean that up whilst here.
-> 
-> 
->> +	struct device_node  *port;
-> 
-> Use __free(device_node) for *port as well.
-> 
-> So where the current asignment is.
-> 	struct device_node *port = of_graph_get_port_by_id(dev->of_node, 1);
-> 
->>  	int ret = 0, child_count = 0;
->>  	const char *name;
->>  	u32 endpoint_id = 0;
->> @@ -560,15 +560,13 @@ static int rockchip_lvds_bind(struct device *dev, struct device *master,
->>  			      "can't found port point, please init lvds panel port!\n");
->>  		return -EINVAL;
->>  	}
->> -	for_each_child_of_node(port, endpoint) {
->> +	for_each_child_of_node_scoped(port, endpoint) {
->>  		child_count++;
->>  		of_property_read_u32(endpoint, "reg", &endpoint_id);
->>  		ret = drm_of_find_panel_or_bridge(dev->of_node, 1, endpoint_id,
->>  						  &lvds->panel, &lvds->bridge);
->> -		if (!ret) {
->> -			of_node_put(endpoint);
->> +		if (!ret)
->>  			break;
-> 
-> This then can simply be
-> 			return dev_err_probe(dev, ret,
-> 					     "failed to find pannel and bridge node\n");
->> -		}
-
-Thank you! I'll resend and cleanup them.
-
-> 
-> Various other paths become direct returns as well.
-> 
->>  	}
-> 
-> The later code with remote looks suspect as not obvious who got the reference that
-> is being put but assuming that is correct, it's another possible place for __free based
-> cleanup.
-> 
-> 
->>  	if (!child_count) {
->>  		DRM_DEV_ERROR(dev, "lvds port does not have any children\n");
-> 
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGksCgpPbiBTdW4sIEF1ZyAyNSwgMjAyNCBhdCAwNjoyODo0NFBNICswMjAwLCBtLnBsYWtAaWNs
+b3VkLmNvbSB3cm90ZToKPiBPbiAxNCBBdWcgMjAyNCwgYXQgMTk6MDAsIFNlcmdleSBCb3N0YW5k
+emh5YW4gPGppbkBtZWRpYXRvbWIuY2M+IHdyb3RlOgo+ID4gaGVyZSBpcyB2ZXJzaW9uIDMgb2Yg
+dGhlIE5hbm9QaSBSMlMgUGx1cyBwYXRjaHNldC4KPiAKPiAKPiBUaGFua3MhIEkgd2FzIGp1c3Qg
+ZXhwZXJpbWVudGluZyB3aXRoIGEgcGF0Y2ggZm9yIHRoYXQgYm9hcmQuCj4gCj4gCj4gZU1NQzoK
+PiAKPiBBIGNsb3NlIGNvdXNpbiBvZiB0aGF0IGJvYXJkLCB0aGUgTmFub1BpIFIyQyBQbHVzLCBz
+aW1pbGFybHkgYWRkcyBlTU1DIHRvIAo+IGl0cyBiYXNlIHZlcnNpb24sIFIyQy4KPiAKPiBSMkMg
+UGx1cyBpcyBhbHJlYWR5IHN1cHBvcnRlZCBieSByazMzMjgtbmFub3BpLXIyYy1wbHVzLmR0cy4K
+PiAKPiBUaGUgcjJjLXBsdXMgRFRTIGZpbGUgZGlmZmVycyBzbGlnaHRseSBmcm9tIHlvdXIgcGF0
+Y2guCj4gV291bGQgaXQgbm90IGJlIGJldHRlciB0byB1c2UgdGhlIHNhbWUgZnJhZ21lbnQgZm9y
+IGJvdGggcjJzLXBsdXMgYW5kIHIyYy1wbHVzPyAKPiBPciBldmVuIHBsYWNlIHRoZSBlTU1DIGFj
+dGl2YXRpb24gaW4gYSBzaGFyZWQgZHRzaSBmaWxlPwoKdGhhbmsgeW91IGZvciB0aGUgYWRkaXRp
+b25hbCByZXZpZXcgYW5kIHRlc3RpbmchCklmIHlvdSBmb2xsb3dlZCB0aGUgdGhyZWFkLCB0aGVu
+IHlvdSBwcm9iYWJseSBrbm93IHRoYXQgSSB3YXMgd2F5IG92ZXIgbXkgaGVhZApoZXJlLCBhcyBJ
+IG9wZXJhdGUgc29sZWxleSBpbiB1c2VyIHNwYWNlIDopIEkgd2FzIGJ1aWxkaW5nIGEgWW9jdG8g
+aW1hZ2UgZm9yIHRoaXMKYm9hcmQgZm9yIG9uZSBvZiBteSBjbGllbnRzIGFuZCBJIGZpZ3VyZWQg
+SSdsbCB0cnkgdG8gc3VibWl0IHNvbWV0aGluZyB0aGF0IHdhcyAKYWxyZWFkeSBwcmVzZW50IGlu
+IHRoZSBGcmllbmRseUVsZWMgcmVwb3MgYW5kIHdoaWNoIHdvcmtlZCBmb3IgbWUgYW5kIHdpdGgg
+dGhlIApoZWxwIGFuZCBndWlkYW5jZSBmcm9tIEhlaWtvIGFuZCBvdGhlcnMgd2UgbWFuYWdlZCB0
+byBnZXQgaXQgaW4sIHdoaWNoIGNvbmNsdWRlZCAKbXkga2VybmVsIGFkdmVudHVyZS4KCkl0J2xs
+IGJlIGdyZWF0IGlmIHlvdSBvciBhbnlvbmUgZWxzZSBpcyB3aWxsaW5nIHRvIGNvbnRpbnVlIGZy
+b20gdGhpcyBzdGFydGluZwpwb2ludCBpZiBmdXJ0aGVyIGltcHJvdmVtZW50cyBhcmUgbmVlZGVk
+LCBiZWNhdXNlIEkgdW5mb3J0dW5hdGVseSBkbyBub3QgaGF2ZSB0aGUKY2FwYWNpdHkgZm9yIGl0
+IC0gSSBhbSBoYXBweSBpZiBoYXJkd2FyZSAianVzdCB3b3JrcyIgYW5kCnZlcnkgbXVjaCBhcHBy
+ZWNpYXRlIHRoZSBhYnN0cmFjdGlvbiBBUElzIHRoYXQgdGhlIGtlcm5lbCBwcm92aWRlcyB0byBm
+b2xrcyBsaWtlCm1lIDopCgo+IEnigJl2ZSBjb21wYXJlZCB0aGUgdHdvIGFuZCB0aGUgZnJpZW5k
+bHllbGVjIGtlcm5lbCAobm90IHUtYm9vdCkgc291cmNlcy4KPiAgeW91ciBwYXRjaCBkb2VzIG5v
+dCBjb250YWluIHRoZXNlIGxpbmVzIGZyb20gcjJjLXBsdXM6Cj4gICAgIHZtbWMtc3VwcGx5ID0g
+PCZ2Y2NfaW9fMzM+Owo+ICAgICB2cW1tYy1zdXBwbHkgPSA8JnZjYzE4X2VtbWM+Owo+ICAgICBt
+bWMtZGRyLTFfOHY7Cj4gCj4geW91ciBwYXRjaCBhZGRzIHRoZXNlIGxpbmVzIHRoYXQgYXJlIG5v
+dCBpbiByMmMtcGx1czoKPiAgICAgc3VwcG9ydHMtZW1tYzsKPiAgICAgZGlzYWJsZS13cDsKPiAg
+ICAgbnVtLXNsb3RzID0gPDE+Owo+IAo+IHIyYy1wbHVzIGhhcyBhIGxpbmUgdGhhdCBpcyBpbiBy
+azMzMjguZHRzaSBhbHJlYWR5Ogo+ICAgICBtYXgtZnJlcXVlbmN5ID0gPDE1MDAwMDAwMD47IAo+
+IAo+IHRoZSBmcmllbmRseWVsZWMga2VybmVsIHNvdXJjZXMgYWxzbyBhZGQ6Cj4gICAgIG5vLXNk
+Owo+IAo+IAo+IEZyb20gdGhlIGRlc2NyaXB0aW9uIGluIHRoZSBtbWMtY29udHJvbGxlciBiaW5k
+aW5nIGRvY3VtZW50YXRpb24sIEkgYmVsaWV2ZQo+IGRpc2FibGUtd3Agc2hvdWxkIG5vdCBiZSB1
+c2VkLiBUaGUgZGVzY3JpcHRpb24gZm9yIG5vLXNkICBJIGZpbmQgY29uZnVzaW5nLgo+IENhbid0
+IGZpbmQgbnVtLXNsb3RzIGFuZCBzdXBwb3J0cy1lbW1jIHRoZXJlLgo+IAo+IFRoZSBSSzMyODgg
+ZGF0YXNoZWV0IGRvZXMgbm90IG1lbnRpb24gc3VwcG9ydCBmb3IgRERSIG1vZGUsIHNvIG1tYy1k
+ZHItMV84diAKPiBzdXJwcmlzZXMgbWUgYSBiaXQuIFRoZSBkYXRhc2hlZXQgZG9lcyBleHBsaWNp
+dGx5IG1lbnRpb24gdGhhdCBIUzQwMCBpcyBfbm90XyAKPiBzdXBwb3J0ZWQuCgpUaGUgbW1jLWRk
+ci0xXzh2IGNoYW5nZSB3YXMgc3VnZ2VzdGVkIGR1cmluZyByZXZpZXcgYW5kIEkgd2FzIGFza2Vk
+IHRvIHRlc3QgaWYgaXQKd29ya3MgYW5kIGltcHJvdmVzIHRoZSBlTU1DIHNwZWVkIChpdCBkaWQp
+LiBCYWNrIHRoZW4gSSBoYXZlIGFza2VkIGlmIHNvbWVvbmUgd2hvCmtub3dzIHdoYXQgdGhleSBh
+cmUgZG9pbmcgY291bGQgdGFrZSBvdmVyLCBiZWNhdXNlIEkgaG9uZXN0bHkgaGF2ZSBubyBjbHVl
+CndoYXQgdGhlc2UgdGhpbmdzIGRvIG9uIGhhcmR3YXJlIGxldmVsIGFuZCB3aGF0IHRoZSBpbXBs
+aWNhdGlvbnMgaGVyZSBhcmUuCkkgd2FzIG5vdCBsZXQgb2ZmIHRoZSBob29rIHRob3VnaCwgc28g
+SSBoYXZlIGp1c3QgZm9sbG93ZWQgdGhlIGluc3RydWN0aW9ucwpvZiB0aGUgcmV2aWV3ZXJzLiBJ
+ZiBpdCBpcyBub3QgaW4gdGhlIGRhdGFzaGVlZCwgdGhlbiBwZXJoYXBzIHRoaXMgbGluZSBzaG91
+bGQKYmUgcmVtb3ZlZCBhZnRlciBhbGw/Cgo+IFVTQjoKPiAKPiBBbm90aGVyIGNoYW5nZSB3aXRo
+IHRoZSBQbHVzIHZlcnNpb24gb2YgdGhlIFIyUyBpcyB0aGF0IHRoZSBVU0IgMi4wIHBvcnQgdGhh
+dCAKPiB1c2VkIHRvIGJlIHdpcmVkIHRvIHRoZSBldGhlcm5ldCBjaGlwIG5vdyBpcyB1c2VkIGZv
+ciBhbiBleHRlcm5hbCBVU0IgcG9ydC4gCj4gSSBkb27igJl0IGhhdmUgdGhlIGhhcmR3YXJlIGhl
+cmUgKHlldCksIHNvIGNhbid0IHRlc3QgaWYgdGhhdCBVU0IgMi4wIGFuZCB0aGUgCj4gVVNCIDMu
+MCB3b3JrIGluZGVwZW5kZW50bHkgb3IgbmVlZCB0byBiZSBleHBsaWNpdGx5IHNlcGFyYXRlZC4K
+Ckdvb2QgdG8ga25vdyB0aGF0IHRoZXJlIG1heSBiZSBhbiBpc3N1ZSwgdG8gYmUgaG9uZXN0IEkg
+ZGlkIG5vdCB0ZXN0IFVTQgpleHBsaWNpdGx5LCBidXQgYm90aCBldGhlcm5ldCBwb3J0cyB3b3Jr
+LiBJIGRpZCBub3QgbW9kaWZ5IGFueXRoaW5nIGluIHRoYXQKcmVnYXJkIGFueXdheSwgc2luY2Ug
+dGhlIFIyUyAobm9uIFBsdXMpIHZlcnNpb24gd2FzIGluIHRoZSBrZXJuZWwgYWxyZWFkeSBhbmQK
+SSBqdXN0IGNvcHktcGFzdGVkIHRoZSBlTU1DIGxpbmVzIGZyb20gdGhlIEZyaWVuZGx5RWxlYyBk
+ZXZpY2V0cmVlIG9uIHRvcCBvZiB0aGF0CnRvIGdldCBlTU1DIHRvIHNob3cgdXAuCgpXZSBvbmx5
+IG5lZWRlZCBldGhlcm5ldCBhbmQgZU1NQyB0byB3b3JrIG9uIHRoZSBSMlMgUGx1cywgc28gd2Ug
+ZGlkIG5vdCB0ZXN0CmFueXRoaW5nIGJlc2lkZXMgdGhhdC4KCkkgc3RpbGwgaGF2ZSB0aGUgaGFy
+ZHdhcmUgaGVyZSwgc28gSSBjb3VsZCBxdWlja2x5IHRlc3QgYSB0aGluZyBvciB0d28gaWYKbmVl
+ZGVkLCBqdXN0IHBsZWFzZSBtYWtlIHN1cmUgdG8gZS1tYWlsIG1lIGRpcmVjdGx5IGFzIEkgaGF2
+ZSBhbHJlYWR5IHVuc3Vic2NyaWJlZApmcm9tIHRoZSBtYWlsaW5nIGxpc3RzLgoKS2luZCByZWdh
+cmRzLApTZXJnZXkKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5m
+cmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xp
+bnV4LXJvY2tjaGlwCg==
