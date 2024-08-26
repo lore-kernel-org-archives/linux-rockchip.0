@@ -4,64 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 130CAC5321D
-	for <linux-rockchip@archiver.kernel.org>; Mon, 26 Aug 2024 09:31:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DB1C0C5321E
+	for <linux-rockchip@archiver.kernel.org>; Mon, 26 Aug 2024 09:39:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Cc:From:References:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:To:From:Reply-To:Cc:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=FzVpRhbkeW9qxUxmi3M03MaaxSk42k4Z3FHFd8kMWA0=; b=cVrhY+q1tyxIFh
-	C5YC0UaTjztD3EGSsb3mQLi3aPOiDsb57W+gMQaOV101/9wvLMNd7qgXZA0XVwFiRztjQR3ACCVK+
-	qjcVlnffzGWnW6jSZvvXyYqUsnWudF5IyGAiEqKhFUpY1P1fzhOjUz9opQltDmIomjX/AoAZlELF2
-	cbPmLslwlu+yn6F+/9I0QfMxAJ3qePJTVj1j+6sxeopRhW1+eZ3Re+EsInaqwsSNR8sFAVWSZznqa
-	qqzN/YiaxGVDJLGXh4RCaYD+eIjGCVF/lS1sK1/P18rrw25NYeNKGYKEIzcqdLfLdbzHc7ybsV4FN
-	ul5IvlT7j1qW1AEtT5kQ==;
+	List-Owner; bh=JvxP0QG9mWaRIc9W3OJ+uQac6FLrJXAsg4P4cj0AvZU=; b=xCus3O7UXcPGib
+	+ylEFjt+hY+n9RN/wa46oDG59DRReHLFk0PPI7dDR+jVGrV4y3eJ6zVwzv9ZRiV2XY0J8BtO41ZXn
+	Xv3sqd9N69o/TujXnN8NDSzPQbKyBbOTn8kHM4726uoxYtABSd6Ou/hVRcWrmfnmhsL+0ki2SltC6
+	9svCvJiw/0IkVAjyw1wvLPm7IiAeDaywl1NjMZNlzLooAP7/yp55VtSxlrX/SXxHa7YIH4oUKkEyb
+	NJrdT0Y0BFazBHOe5gcEaICiNBEXEre4LlhO54XydKt/OMn7tNr4jJaAmqPNofOBCeIzfPo3oAR5+
+	Au7jXpL+fqAVu2a0g0xg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1siW4O-00000006g68-0g3n;
-	Mon, 26 Aug 2024 09:31:28 +0000
-Received: from [129.204.178.38] (helo=classfun.cn)
-	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1siW3D-00000006fZr-1kLr;
-	Mon, 26 Aug 2024 09:30:17 +0000
-Received: from [192.168.0.160] (unknown [14.153.79.170])
-	(Authenticated sender: bigfoot)
-	by classfun.cn (Postfix) with ESMTPSA id BEBC3789E6;
-	Mon, 26 Aug 2024 17:30:09 +0800 (CST)
-DKIM-Filter: OpenDKIM Filter v2.11.0 classfun.cn BEBC3789E6
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=classfun.cn;
-	s=default; t=1724664612;
-	bh=E1SNoYEZ4p+3pbRHYtbReN/JAn6omYUTA1ydrwnhtbg=;
-	h=Date:Subject:To:References:From:Cc:In-Reply-To:From;
-	b=GbDhn75XwbsxD891FZqbysU++x/WvI6aVU5RhB9FOJiQlwust3OwEXrxCZ8WnO/rO
-	 FKP28r2SHmcYl7eYSaijA9UqLa/+J2ozqfKkY8uVuAZThtE3R/7FzL80bJhRPF2DqB
-	 ZgIp7wm3XYbS/QWhcNr3qvp90QivOa/65GaWnWwk=
-Message-ID: <38d627e8-3dd2-4042-a87d-21220fe9fb5a@classfun.cn>
-Date: Mon, 26 Aug 2024 17:31:25 +0800
+	id 1siWC3-00000006iG6-4Ata;
+	Mon, 26 Aug 2024 09:39:23 +0000
+Received: from szxga03-in.huawei.com ([45.249.212.189])
+	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
+	id 1siW8p-00000006hA1-0YLM;
+	Mon, 26 Aug 2024 09:36:05 +0000
+Received: from mail.maildlp.com (unknown [172.19.163.174])
+	by szxga03-in.huawei.com (SkyGuard) with ESMTP id 4WslmH2tT2z69Ly;
+	Mon, 26 Aug 2024 17:31:11 +0800 (CST)
+Received: from kwepemh500013.china.huawei.com (unknown [7.202.181.146])
+	by mail.maildlp.com (Postfix) with ESMTPS id E1569140258;
+	Mon, 26 Aug 2024 17:35:58 +0800 (CST)
+Received: from huawei.com (10.90.53.73) by kwepemh500013.china.huawei.com
+ (7.202.181.146) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.11; Mon, 26 Aug
+ 2024 17:35:57 +0800
+From: Jinjie Ruan <ruanjinjie@huawei.com>
+To: <miquel.raynal@bootlin.com>, <michal.simek@amd.com>, <richard@nod.at>,
+	<vigneshr@ti.com>, <liang.yang@amlogic.com>, <neil.armstrong@linaro.org>,
+	<khilman@baylibre.com>, <jbrunet@baylibre.com>,
+	<martin.blumenstingl@googlemail.com>, <matthias.bgg@gmail.com>,
+	<angelogioacchino.delregno@collabora.com>, <heiko@sntech.de>,
+	<mcoquelin.stm32@gmail.com>, <alexandre.torgue@foss.st.com>, <wens@csie.org>,
+	<jernej.skrabec@gmail.com>, <samuel@sholland.org>, <kees@kernel.org>,
+	<ruanjinjie@huawei.com>, <gustavoars@kernel.org>, <linux@treblig.org>,
+	<robh@kernel.org>, <u.kleine-koenig@pengutronix.de>, <erick.archer@gmx.com>,
+	<christophe.jaillet@wanadoo.fr>, <val@packett.cool>,
+	<christophe.kerello@foss.st.com>, <linux-mtd@lists.infradead.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-amlogic@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	<linux-renesas-soc@vger.kernel.org>, <linux-rockchip@lists.infradead.org>,
+	<linux-stm32@st-md-mailman.stormreply.com>, <krzk@kernel.org>,
+	<jic23@kernel.org>
+Subject: [PATCH -next RESEND 02/10] mtd: rawnand: cadence: Use for_each_child_of_node_scoped()
+Date: Mon, 26 Aug 2024 17:43:20 +0800
+Message-ID: <20240826094328.2991664-3-ruanjinjie@huawei.com>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20240826094328.2991664-1-ruanjinjie@huawei.com>
+References: <20240826094328.2991664-1-ruanjinjie@huawei.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 3/3] arm64: dts: rockchip: add dts for LCKFB Taishan Pi
- RK3566
-To: Krzysztof Kozlowski <krzk@kernel.org>
-References: <20240826044530.726458-1-bigfoot@classfun.cn>
- <20240826044530.726458-4-bigfoot@classfun.cn>
- <wacysftuozwpumrw262tltoxqrldlju7mzj5fnxxcjheycjvzr@wb7mcnbiv6ic>
- <25346f43-642a-477d-8df5-91ddf2765d69@classfun.cn>
- <8e14d43b-598b-4aef-9c22-84122e17a77e@kernel.org>
-Content-Language: en-US
-From: Junhao Xie <bigfoot@classfun.cn>
-Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- Jonas Karlman <jonas@kwiboo.se>, Chukun Pan <amadeus@jmu.edu.cn>,
- FUKAUMI Naoki <naoki@radxa.com>, Dragan Simic <dsimic@manjaro.org>,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-In-Reply-To: <8e14d43b-598b-4aef-9c22-84122e17a77e@kernel.org>
+X-Originating-IP: [10.90.53.73]
+X-ClientProxiedBy: dggems703-chm.china.huawei.com (10.3.19.180) To
+ kwepemh500013.china.huawei.com (7.202.181.146)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240826_023015_767878_1A0A6E30 
-X-CRM114-Status: GOOD (  12.85  )
+X-CRM114-CacheID: sfid-20240826_023603_456598_6877F8FE 
+X-CRM114-Status: UNSURE (   8.46  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,37 +83,41 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 2024/8/26 16:08, Krzysztof Kozlowski wrote:
-> On 26/08/2024 09:46, Junhao Xie wrote:
->> On 2024/8/26 14:06, Krzysztof Kozlowski  wrote:
->>> On Mon, Aug 26, 2024 at 12:44:13PM +0800, Junhao Xie wrote:
->>>> Add dts for LCKFB Taishan Pi.
->>>>
->>
->> [...]
->>
->>>
->>>> +	dc_12v: dc-12v {
->>>
->>> Use some reasonable prefix or suffix (regulator) for all regulator
->>> nodes. Or even: use name for all fixed regulators which matches current
->>> format recommendation: 'regulator-[0-9]v[0-9]'
->>> https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/Documentation/devicetree/bindings/regulator/fixed-regulator.yaml?h=v6.11-rc1#n46
->>>
->>
->> Thanks, I will rename it to dc-12v-regulator
-> 
-> Well, this makes ordering tricky and is not the proposed policy, but
-> sure... I gave you reference hoping you will read it.
-> 
-> Best regards,
-> Krzysztof
-> 
-> 
+Avoids the need for manual cleanup of_node_put() in early exits
+from the loop by using for_each_child_of_node_scoped().
 
-Oh, sorry, it should be renamed to 'regulator-12v0-dcin',
-as this name complies more with the policy.
-Thank you for the reminder!
+Signed-off-by: Jinjie Ruan <ruanjinjie@huawei.com>
+---
+ drivers/mtd/nand/raw/cadence-nand-controller.c | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
+
+diff --git a/drivers/mtd/nand/raw/cadence-nand-controller.c b/drivers/mtd/nand/raw/cadence-nand-controller.c
+index ff92c17def83..3bc89b356963 100644
+--- a/drivers/mtd/nand/raw/cadence-nand-controller.c
++++ b/drivers/mtd/nand/raw/cadence-nand-controller.c
+@@ -2836,7 +2836,6 @@ static void cadence_nand_chips_cleanup(struct cdns_nand_ctrl *cdns_ctrl)
+ static int cadence_nand_chips_init(struct cdns_nand_ctrl *cdns_ctrl)
+ {
+ 	struct device_node *np = cdns_ctrl->dev->of_node;
+-	struct device_node *nand_np;
+ 	int max_cs = cdns_ctrl->caps2.max_banks;
+ 	int nchips, ret;
+ 
+@@ -2849,10 +2848,9 @@ static int cadence_nand_chips_init(struct cdns_nand_ctrl *cdns_ctrl)
+ 		return -EINVAL;
+ 	}
+ 
+-	for_each_child_of_node(np, nand_np) {
++	for_each_child_of_node_scoped(np, nand_np) {
+ 		ret = cadence_nand_chip_init(cdns_ctrl, nand_np);
+ 		if (ret) {
+-			of_node_put(nand_np);
+ 			cadence_nand_chips_cleanup(cdns_ctrl);
+ 			return ret;
+ 		}
+-- 
+2.34.1
+
 
 _______________________________________________
 Linux-rockchip mailing list
