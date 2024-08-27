@@ -4,48 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7CEBEC52D6F
-	for <linux-rockchip@archiver.kernel.org>; Tue, 27 Aug 2024 09:52:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9ECFEC52D6F
+	for <linux-rockchip@archiver.kernel.org>; Tue, 27 Aug 2024 09:53:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=oWra+B0WTP6EVh7u3LDfRSV+APaMlp/FNNy3Llg1oD0=; b=4rDq58uaexJVGx
-	tJkTTVuxZYltsCf26Gw5oBqpSX4T/UaSCVKthXpf67Jw1B2zSNfZAbkUpakKPr2QhSzpTNv5K9kKg
-	v8fAfCw4I+8R+NUVEg1A74+rldTaa7CVKoetmIF233mmi5dgRvh8MEduKALG/vY7ICJLD9FROlHRm
-	0Do1YjPQlVXV2H0ipUnnIxlMRvY3DtfIxe+CwpiORKqfKNDZBBd+O6lMDUVR6Yy8CGgY3ycOca6LD
-	Rh5RTUM9xbEEyW3C+EiJUZ/AETQAOG1JBbZcAOeH7fHC26429L4VWB3/K7fn9i/FrFbTrLi68eZmk
-	WhfzLq/kkjMvtL54BTAg==;
+	List-Owner; bh=oWra+B0WTP6EVh7u3LDfRSV+APaMlp/FNNy3Llg1oD0=; b=1fkesEa71ZM31U
+	nmtJB7du5QtuYDKYaG+nuFAv8R3xscOSazUmNFSBZrFpEpVoW8zM5H8VXidsYNXuHghypVuEFVkEd
+	y6d9ociBCajibWQ/lAIztg6BaCP5Yssp+f0PGjLgDskI+YtcdmDseP4rqJj3qxVj3igL4I976P36t
+	js9ToFe1CACwkvrRUoqWge9bogIZrhZOJiNMpe3PgyqohlKHvRvpY5/HLfbE+Bn6VPltPZl8CYdf2
+	L+Rt8O1apn2SkhWVTZxgu+OqLvcHIraVNHES3PSjf+snxBK17igisUTlmNJSXNxHDFgME/QDWn9ie
+	Rh59+gDBxp4s5Ra1/q1g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sissg-0000000Afl8-2eRZ;
-	Tue, 27 Aug 2024 09:52:54 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1sistS-0000000AfxR-1rYf;
+	Tue, 27 Aug 2024 09:53:42 +0000
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sisnZ-0000000Aecq-39RL;
-	Tue, 27 Aug 2024 09:47:39 +0000
+	id 1sisoc-0000000Aeni-1ueX;
+	Tue, 27 Aug 2024 09:48:44 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 0C60AA41685;
-	Tue, 27 Aug 2024 09:47:30 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id CE59EC8B7A0;
-	Tue, 27 Aug 2024 09:47:31 +0000 (UTC)
+	by sin.source.kernel.org (Postfix) with ESMTP id 34F23CE111A;
+	Tue, 27 Aug 2024 09:48:40 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9651CC8B7A0;
+	Tue, 27 Aug 2024 09:48:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1724752056;
+	s=k20201202; t=1724752118;
 	bh=Lej6CAf6PPRt3VxOUgFXQ/Kh7FjIH2oWJQXtjqr3t1Y=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=Zr/XzIUsj5/ziXoYQv/3uU0SKUJrI/0HY2qErpDIQqPzJVs7Orag3qWxFWyBpFSEA
-	 HG0WGwTigeSzFpMaFz5++5EmdO6rh6RZ+4GvxkLAqFtF+9Tv0FycmZIcqDhP8MweeB
-	 Vftfy7pycegFwN4q3XAJUkjTg/RtEA1f1j3H2eyMCZJVfr6C8WDitEuq+hGTNFIvDI
-	 7bgVoW/r/KI/5k+YEyoiuLq31M9CTLF1ufv/drLxyl1yN/StHrW4Py7a/zqAzhxyEf
-	 GPoLRj/wx1u1bWSh0mzKPJ4svbMxAA7gPRHF5jJ73U9YnmTQ8BC7FmhjnkzR7iupvd
-	 /AZ6RENkIRDdA==
-Message-ID: <3a9914b6-521c-40da-a03a-685d7477fbb3@kernel.org>
-Date: Tue, 27 Aug 2024 11:47:29 +0200
+	b=W2tAqQVww/ncWjs8QD7oT3mEnmkczaF1jlfTUQpg9hajnJGo9DROxdfGCco4Avq3H
+	 O+z4VfIpohiu7vzbmZyl/u/M0KvabT3bK+nVA2QW7ObfVdMTO6W/5pd/hJUeUiL3zG
+	 1q3oSla6Z1CzJK3BjZ7mHw40dzIfJ3Hm15r7MvjeQceh4qAQE3D6UvMOEk0K4xOJou
+	 ySrsVlqC8kExStgBpoHQfeJnkmsCZyPNPMVX3nU0TMU7EeJS3JWKDsPhzKHMkzc8hL
+	 LS+c1uNuz1GJw8rWyZ8NL1vb2tbFxOY7gz3xv0cJukFjzLn+xvtmLCeJpXxicLnfHP
+	 us6xLPdG+azqg==
+Message-ID: <13101b4a-4158-4df1-9807-43fbbc11bf27@kernel.org>
+Date: Tue, 27 Aug 2024 11:48:31 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 06/10] pmdomain: qcom: cpr: Simplify locking with guard()
+Subject: Re: [PATCH 07/10] pmdomain: qcom: rpmhpd: Simplify locking with
+ guard()
 To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
  Ulf Hansson <ulf.hansson@linaro.org>, Heiko Stuebner <heiko@sntech.de>,
  Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>,
@@ -59,12 +60,12 @@ Cc: linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  imx@lists.linux.dev, linux-arm-msm@vger.kernel.org,
  linux-renesas-soc@vger.kernel.org
 References: <20240823-cleanup-h-guard-pm-domain-v1-0-8320722eaf39@linaro.org>
- <20240823-cleanup-h-guard-pm-domain-v1-6-8320722eaf39@linaro.org>
+ <20240823-cleanup-h-guard-pm-domain-v1-7-8320722eaf39@linaro.org>
 Content-Language: en-US
 From: Konrad Dybcio <konradybcio@kernel.org>
-In-Reply-To: <20240823-cleanup-h-guard-pm-domain-v1-6-8320722eaf39@linaro.org>
+In-Reply-To: <20240823-cleanup-h-guard-pm-domain-v1-7-8320722eaf39@linaro.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240827_024737_890450_FD31D891 
+X-CRM114-CacheID: sfid-20240827_024842_681806_FC3D27D0 
 X-CRM114-Status: UNSURE (   6.55  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
