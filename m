@@ -4,108 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4917AC52D6F
-	for <linux-rockchip@archiver.kernel.org>; Tue, 27 Aug 2024 07:08:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5E98DC5472C
+	for <linux-rockchip@archiver.kernel.org>; Tue, 27 Aug 2024 07:20:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=DCMa2fbRINXpds1QejLBcA5sEMVoJT4G3Bb9w4/8/WU=; b=wNTtot7Vu3lesX
-	3KYf+Ab4gaulQzZ/GxMGstMqEx+DXNLV028RiB7DxabZnaG3e8FE4KQUffoBkkx4ZmpqRkljSh8iB
-	UF6J1UF+RGw6fVF+KWJKukqn3AnwbmTIWTdydSf9gmmWq3gde9gBwT16VeWZpNndDNrMMDV3kBD5/
-	CaHIy9p8IoU/2HT9KOguJbijpQi7hv5GuY+rw+OmBMGSsFnwIp9ISwCxXl6dNFs2P73bC8W793LfJ
-	bquovmRNbM1RAbkd/xf8cXJOHhcVvztD0uF4LVEfmphd70C9hmT30ZY1Ks7gRF1t2MoUsTd6qyq0d
-	ZIjfYB/65fReWKxcGT/w==;
+	List-Owner; bh=7Dkh0mZO9zzV7yx+bZrZ7iB0EjrmN/5zrznXOMTa99I=; b=WmEVXmAJuL7ax4
+	ZbUBAsI2ooKCoVFPsQnuPzzRpVVOi95jecs0eELqrQEfJYtzaluUzIi+Ja9VK7Vw4df+jrIVcvqDM
+	kku4zYRkbrqUB6gOvNZfwrYKJGtp5sRGhyfjqOxCGpZUtvm4/W/gTfWj9XRqhxO7GK0Q0fqpae27r
+	Ad6jndMdN3gr3MD3NBbnrvTkHkss0+dZxf+nfGDGA6oeXqj7ys0KPRe3VP1QT7BdIRKPIVT5GN0vZ
+	X9Yv9GqCdrOTrzhUXZbe3VewmSQ6ks6qlPK6Hqs1R/KthTTPHoiHRiYZEizMJTT2G9VDs3YSJuYAe
+	LSKaY5rKcLSU/+jlS7dA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1siqJT-0000000A9Sm-0h7c;
-	Tue, 27 Aug 2024 07:08:23 +0000
-Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
+	id 1siqUi-0000000ABiF-3YxF;
+	Tue, 27 Aug 2024 07:20:01 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1siqId-0000000A9IA-1n6T;
-	Tue, 27 Aug 2024 07:07:33 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 8DE5BCE10CE;
-	Tue, 27 Aug 2024 07:07:29 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5B5C9C8B7C3;
-	Tue, 27 Aug 2024 06:50:29 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1724741435;
-	bh=QT+MRi5baJpsXBWIoJ6Tb30r2B4ECfvKGOAtAz+7gRI=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=SzRksq49EWy9GgvAxrsKvNNFiRPJxyX4r/EkMqrgigDfai90UDzci2W3uMNhCTG1F
-	 i/BdF7Vj3smr2jlx0NdvPKdjAFucDX9ZDhamJna9AucUGw3OepKnSriEhgbGLBVKjR
-	 uGJhFN3b1LWRQX1NImbTn8GwciRD+in5gaBfK737QBzDBgMgtbOyTG96PuhpEtrjB7
-	 fVLkjKn8Or8E5XCVwnQmqzkmapvf1EAH9lXIXGRLkvttJKbmJx9xEPFKaIeHSu/R1g
-	 VIyMmSglqJBC5QkU7odVEkQPOJEv/ISF8mhE4uCB8BwtXrLC39i7AYu87MEM8dckEx
-	 f6JESVDW6OeDw==
-Message-ID: <bf6145b6-8dd7-40e8-8b33-7eacd2c20a37@kernel.org>
-Date: Tue, 27 Aug 2024 08:50:27 +0200
+	id 1siqUf-0000000ABhb-3QcB;
+	Tue, 27 Aug 2024 07:19:59 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+	List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=YQZzVyWVHE64bLZ1bNm/sY3lX5QgmzBQtyCayOMnPw0=; b=Pe2KCEuid72Nb2ilWVbtO+eL40
+	+LKqbEnDDknPL5kNc1fhWZbDWHOXOzepeQPSTzDoeh63sa6m0nhjABdhLG0jSV3l5f9mD1cG6tEjX
+	n/3nirx4yDnEUY/3GIAEGUucD84WaKDEyl1zqe5TapXTOiM3JZQVJBahKKRvtvE2lTbAilqsKdH+S
+	85UBNG2N1BWEYrmpN+XLY0nXUyiY19q+DzrTky3jCvikxf7nKxax4l4mVH+DuvHjdVaLCUYiRcLJM
+	9T2hO/2m2iSDS2pyz4aQI/l8E1xjHfdtb8i/5XoztZ7MqJw/jEbRLaW1Bp9V3yoc2wNJC4ao+uA/O
+	KWaD/wKw==;
+Received: from i53875b81.versanet.de ([83.135.91.129] helo=diego.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1siqTy-00042K-2t; Tue, 27 Aug 2024 09:19:14 +0200
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+To: Detlev Casanova <detlev.casanova@collabora.com>,
+ Guenter Roeck <linux@roeck-us.net>
+Cc: linux-kernel@vger.kernel.org, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>,
+ Andi Shyti <andi.shyti@kernel.org>, Jonathan Cameron <jic23@kernel.org>,
+ Lars-Peter Clausen <lars@metafoo.de>, Lee Jones <lee@kernel.org>,
+ Ulf Hansson <ulf.hansson@linaro.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Jiri Slaby <jirislaby@kernel.org>, Mark Brown <broonie@kernel.org>,
+ Wim Van Sebroeck <wim@linux-watchdog.org>,
+ Chris Morgan <macromorgan@hotmail.com>, Jonas Karlman <jonas@kwiboo.se>,
+ Tim Lunn <tim@feathertop.org>, Chukun Pan <amadeus@jmu.edu.cn>,
+ Andy Yan <andyshrk@163.com>, Muhammed Efe Cetin <efectn@protonmail.com>,
+ Jagan Teki <jagan@edgeble.ai>, Dragan Simic <dsimic@manjaro.org>,
+ Ondrej Jirman <megi@xff.cz>, Michael Riesch <michael.riesch@wolfvision.net>,
+ Jimmy Hon <honyuenkwun@gmail.com>, Alexey Charkov <alchark@gmail.com>,
+ Elon Zhang <zhangzj@rock-chips.com>, Elaine Zhang <zhangqing@rock-chips.com>,
+ Yifeng Zhao <yifeng.zhao@rock-chips.com>,
+ Finley Xiao <finley.xiao@rock-chips.com>, Liang Chen <cl@rock-chips.com>,
+ Jisheng Zhang <jszhang@kernel.org>, Jamie Iles <jamie@jamieiles.com>,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org,
+ linux-i2c@vger.kernel.org, linux-iio@vger.kernel.org,
+ linux-mmc@vger.kernel.org, linux-serial@vger.kernel.org,
+ linux-spi@vger.kernel.org, linux-watchdog@vger.kernel.org,
+ kernel@collabora.com
+Subject: Re: [PATCH v2 09/12] dt-bindings: watchdog: Add rockchip,rk3576-wdt
+ compatible
+Date: Tue, 27 Aug 2024 09:20:15 +0200
+Message-ID: <3262963.l52yBJDM9G@diego>
+In-Reply-To: <612a447c-8a74-48c1-8470-280dddca8d19@roeck-us.net>
+References: <20240823150057.56141-1-detlev.casanova@collabora.com>
+ <20240823150057.56141-10-detlev.casanova@collabora.com>
+ <612a447c-8a74-48c1-8470-280dddca8d19@roeck-us.net>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/4] dt-bindings: arm: rockchip: Correct vendor for
- Hardkernel ODROID-M1
-To: Jonas Karlman <jonas@kwiboo.se>, Heiko Stuebner <heiko@sntech.de>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Aurelien Jarno <aurelien@aurel32.net>,
- Dongjin Kim <tobetter@gmail.com>
-Cc: linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-References: <20240826205538.1066103-1-jonas@kwiboo.se>
- <66ccebe1.c80a0220.22579e.e8daSMTPIN_ADDED_BROKEN@mx.google.com>
-Content-Language: en-US
-From: Krzysztof Kozlowski <krzk@kernel.org>
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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 fv0=
-In-Reply-To: <66ccebe1.c80a0220.22579e.e8daSMTPIN_ADDED_BROKEN@mx.google.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240827_000732_183294_00671070 
-X-CRM114-Status: UNSURE (   7.77  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240827_001957_911657_86BBBE62 
+X-CRM114-Status: GOOD (  14.92  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -122,33 +101,26 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 26/08/2024 22:55, Jonas Karlman wrote:
-> The vendor prefix for Hardkernel ODROID-M1 is incorrectly listed as
-> rockchip. Use the proper hardkernel vendor prefix for this board.
+Hi Guenter,
+
+Am Samstag, 24. August 2024, 18:44:29 CEST schrieb Guenter Roeck:
+> On Fri, Aug 23, 2024 at 10:52:36AM -0400, Detlev Casanova wrote:
+> > It is compatible with the other rockchip SoCs.
+> > 
+> > Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
 > 
-> Fixes: 19cc53eb2ce6 ("dt-bindings: rockchip: Add Hardkernel ODROID-M1 board")
-> Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
+> Acked-by: Guenter Roeck <linux@roeck-us.net>
 
-Your messages are broken somehow. Broken message id, rewritten by google
-but I cannot grab the thread neither by original nor by "fixed" message-id:
-b4 ... 66ccebe1.c80a0220.22579e.e8daSMTPIN_ADDED_BROKEN@mx.google.com
-Grabbing thread from
-lore.kernel.org/all/66ccebe1.c80a0220.22579e.e8daSMTPIN_ADDED_BROKEN@mx.google.com/t.mbox.gz
-That message-id is not known.
+For my understanding, does this Ack mean you expect the patch to go in
+with the other patches?
 
-b4 ... '20240826205538.1066103-1-jonas@kwiboo.se'
-Grabbing thread from
-lore.kernel.org/all/20240826205538.1066103-1-jonas@kwiboo.se/t.mbox.gz
-CRITICAL: '20240826205538.1066103-1-jonas@kwiboo.se
+Because in theory this patch could also be picked and go through the
+watchdog tree, similar to how the saradc binding went into the
+iio tree already.
 
-Anyway, this was sent:
-https://lore.kernel.org/all/20240116192605.GA274661-robh@kernel.org/
+Thanks
+Heiko
 
-it is technically ABI break, but likely without practical impact.
-
-
-Best regards,
-Krzysztof
 
 
 _______________________________________________
