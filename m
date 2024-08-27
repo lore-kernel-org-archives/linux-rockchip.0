@@ -4,80 +4,104 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E4DCDC5320E
-	for <linux-rockchip@archiver.kernel.org>; Tue, 27 Aug 2024 06:23:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 407F1C52D6F
+	for <linux-rockchip@archiver.kernel.org>; Tue, 27 Aug 2024 06:53:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=+UQiSrBnJnwvyzurWinihrY/zRgQRPLgFXjKCRvfS78=; b=Qvc5Y8+3vuNinD
-	r5S911C8hO0OIsh1uL11Crjq+PBqjxfMC1vq1wZ576gkS/UbbhlDeepFHSnM2M/g4X8JaR/BIRqxY
-	3QiueZ2yAiHukmMBQSZ4ftQKtx8+gM+zERtK4DsC1LwAF7hDkSrs7wvhKAEV+NI355mnmqHKfnxFF
-	RmPq0rZ/vXnei/+zCFT69C+eIwFu2IXNUVco5Ned2G3C0uK372C80fbs8RMzamK+VD+zDPLsRfONT
-	WbKrnpfxV/+82zwx+XDMsWfBkcCanfnJ4b4ER2GG7fcNR9Uip1+qyU74/lfQ5NEnt18I0i2t9u7r2
-	BgMkIn/lFjVvC3XhhEkg==;
+	List-Owner; bh=8Y3b2npWJuMY2jihJ3IMPbzHX7+rXM5x9jre16dasgk=; b=1jqgX9FFUvx8z9
+	x19E/W18zVNFSfda+p3S5atkWKtX5raa02HVGUmorMX/qm9p43fsluWlXPUfTXPbvoryUlNz+xd74
+	XivI4xlQ4tAQA2UuQT82DEn/NMGydCp47wOAaE/UDKPs3lttUfJ81TptVxG2Hf4Th/pPUJAJH86md
+	wSbEwikzIa9npaqkCoIdt5ZocJihxZPk6U2cub8KA0HSc9vK+kGtsGVtiT1WtevncNpyJSahsTx5x
+	ojc2Eo3H5cBaAr4xctdJ9oW7VSyTiDxPpvvnNXnA2X/A4J0S8B7KqLH/DkOnGdUiIsZcAxkUsJpMi
+	AwEBTrJQndAgqklSiyhA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sipcM-00000009zim-3oW1;
-	Tue, 27 Aug 2024 06:23:50 +0000
-Received: from mgamail.intel.com ([192.198.163.11])
+	id 1siq4n-0000000A71M-3X8e;
+	Tue, 27 Aug 2024 06:53:13 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sipbZ-00000009zZQ-0jZQ;
-	Tue, 27 Aug 2024 06:23:02 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1724739781; x=1756275781;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=sjyWgZeGfHgwkuBWTUfyr58uBeXYxYz+Nt1GMaQKmV0=;
-  b=CgRs9408iiGBeEoshx02sSRDabTOI9zTxpcgbTNkky/4sishumHEPbZe
-   B767UXGuJ0HUZYIhDiqFsDwnvkAXZYkXk37qxOE/Wq+8rdcrh7YVR6d3o
-   HzU4RxDB+NpQZTRFYWvzLqK73NTpk9LEI2skOCoLVn/p+Y7bhWlwmubZM
-   +dWeCZrtKx5RMdNNHXY2SsLqmMtWu+m8mzAASCW6a0NKd3CcO+SCMsHwQ
-   FDlU6FcRTzzRZWHoRW48k9HT3s2awPXeUGsTU2y7lqoLLaXuImt8SKOqR
-   kzxXCHUuhMk7PXXJmORPkzQkCu9pYnXcmh05ru4vXmyO2UfabNDBOWw0E
-   w==;
-X-CSE-ConnectionGUID: 7xCvtQMnTYOrUl0xDDfTtA==
-X-CSE-MsgGUID: WGUu7XS7Sqiy6kcn9hgElg==
-X-IronPort-AV: E=McAfee;i="6700,10204,11176"; a="33821579"
-X-IronPort-AV: E=Sophos;i="6.10,179,1719903600"; 
-   d="scan'208";a="33821579"
-Received: from orviesa010.jf.intel.com ([10.64.159.150])
-  by fmvoesa105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 26 Aug 2024 23:23:01 -0700
-X-CSE-ConnectionGUID: EgCJSd8CRbawrLjie8jyrw==
-X-CSE-MsgGUID: TiixJNvQRGGOiH+t8POUPA==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.10,179,1719903600"; 
-   d="scan'208";a="62589117"
-Received: from lkp-server01.sh.intel.com (HELO 9a732dc145d3) ([10.239.97.150])
-  by orviesa010.jf.intel.com with ESMTP; 26 Aug 2024 23:22:58 -0700
-Received: from kbuild by 9a732dc145d3 with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1sipbT-000I86-1q;
-	Tue, 27 Aug 2024 06:22:55 +0000
-Date: Tue, 27 Aug 2024 14:22:33 +0800
-From: kernel test robot <lkp@intel.com>
-To: Brian Norris <briannorris@chromium.org>,
-	Mark Brown <broonie@kernel.org>
-Cc: oe-kbuild-all@lists.linux.dev,
-	=?utf-8?Q?Ond=C5=99ej?= Jirman <megi@xff.cz>,
-	Brian Norris <briannorris@chromium.org>, stable@vger.kernel.org,
-	Heiko Stuebner <heiko@sntech.de>, Jon Lin <jon.lin@rock-chips.com>,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	linux-rockchip@lists.infradead.org, linux-spi@vger.kernel.org,
-	shengfei Xu <xsf@rock-chips.com>
-Subject: Re: [PATCH] spi: rockchip: Resolve unbalanced runtime PM / system PM
- handling
-Message-ID: <202408271225.Zh4Kc31M-lkp@intel.com>
-References: <20240823214235.1718769-1-briannorris@chromium.org>
+	id 1siq3x-0000000A6eo-2Nmn;
+	Tue, 27 Aug 2024 06:52:22 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id C75C0A406EC;
+	Tue, 27 Aug 2024 06:52:13 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 49385C8B7C6;
+	Tue, 27 Aug 2024 06:52:17 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1724741540;
+	bh=NFFYyetWLLnK/j7UnujThrwVZsi8OwjZbGEmvMMyLrc=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=ZbwrqmHZJQt6oX0uINbulTZ5E1MRT8y3X44bdof6DyCzVE7AoWWCXOdeLp7A6wu5+
+	 zp7OY+j6xEfTN2IGkcMWG3EoRHqnffqSl0Q/21Alj8w9weSzFoKmSo4KM2m4+0zxsZ
+	 H1S84qy4YnOpLviCkPV1XCuPbR4mzvaA0BsbE6Yce22ktv1SiXGWftTn/mHAN1DiY7
+	 WvVsCTho7zkzB1Ef8aL6Bjyqio5nsvo35x/ryju6lxf0SHFg/y9TdbSe/4EdEdPKz1
+	 NYkLgUM6xr4JztlRpBgAsiOGmBUY5mo1Kp/EFpUU+S8LqNSEZlPpoPDthUYz4ULZ0A
+	 Su32wypJtWLIA==
+Message-ID: <b69e5a0a-acf9-412c-90b4-ebe00c7e07d4@kernel.org>
+Date: Tue, 27 Aug 2024 08:52:15 +0200
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20240823214235.1718769-1-briannorris@chromium.org>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 3/4] dt-bindings: arm: rockchip: Add Hardkernel ODROID-M1S
+To: Jonas Karlman <jonas@kwiboo.se>, Heiko Stuebner <heiko@sntech.de>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>
+Cc: linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+References: <20240826205538.1066103-1-jonas@kwiboo.se>
+ <66ccebeb.d40a0220.356790.58caSMTPIN_ADDED_BROKEN@mx.google.com>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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 fv0=
+In-Reply-To: <66ccebeb.d40a0220.356790.58caSMTPIN_ADDED_BROKEN@mx.google.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240826_232301_250467_7364DC86 
-X-CRM114-Status: GOOD (  12.32  )
+X-CRM114-CacheID: sfid-20240826_235221_780450_862AFB8C 
+X-CRM114-Status: GOOD (  12.37  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,70 +118,38 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Brian,
+On 26/08/2024 22:55, Jonas Karlman wrote:
+> The Hardkernel ODROID-M1S is a single-board computer based on Rockchip
+> RK3566 SoC. It features e.g. 4/8 GB LPDDR4 RAM, 64 GB eMMC, SD-card,
+> GbE LAN, HDMI 2.0, M.2 NVMe and USB 2.0/3.0.
+> 
+> Add devicetree binding documentation for the Hardkernel ODROID-M1S board.
+> 
+> Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
+> ---
+>  Documentation/devicetree/bindings/arm/rockchip.yaml | 5 +++++
+>  1 file changed, 5 insertions(+)
+> 
+> diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
+> index f08e9f2f5dfc..9e29a5ecc94d 100644
+> --- a/Documentation/devicetree/bindings/arm/rockchip.yaml
+> +++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
+> @@ -598,6 +598,11 @@ properties:
+>            - const: hardkernel,rk3568-odroid-m1
+>            - const: rockchip,rk3568
+>  
+> +      - description: Hardkernel Odroid M1S
+> +        items:
+> +          - const: hardkernel,rk3566-odroid-m1s
 
-kernel test robot noticed the following build warnings:
+hardkernel,odroid-m1s
 
-[auto build test WARNING on rockchip/for-next]
-[also build test WARNING on broonie-sound/for-next broonie-spi/for-next linus/master v6.11-rc5 next-20240826]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
-
-url:    https://github.com/intel-lab-lkp/linux/commits/Brian-Norris/spi-rockchip-Resolve-unbalanced-runtime-PM-system-PM-handling/20240826-135245
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git for-next
-patch link:    https://lore.kernel.org/r/20240823214235.1718769-1-briannorris%40chromium.org
-patch subject: [PATCH] spi: rockchip: Resolve unbalanced runtime PM / system PM handling
-config: loongarch-allmodconfig (https://download.01.org/0day-ci/archive/20240827/202408271225.Zh4Kc31M-lkp@intel.com/config)
-compiler: loongarch64-linux-gcc (GCC) 14.1.0
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20240827/202408271225.Zh4Kc31M-lkp@intel.com/reproduce)
-
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202408271225.Zh4Kc31M-lkp@intel.com/
-
-All warnings (new ones prefixed by >>):
-
-   drivers/spi/spi-rockchip.c: In function 'rockchip_spi_suspend':
->> drivers/spi/spi-rockchip.c:948:30: warning: unused variable 'rs' [-Wunused-variable]
-     948 |         struct rockchip_spi *rs = spi_controller_get_devdata(ctlr);
-         |                              ^~
-   drivers/spi/spi-rockchip.c: In function 'rockchip_spi_resume':
-   drivers/spi/spi-rockchip.c:969:30: warning: unused variable 'rs' [-Wunused-variable]
-     969 |         struct rockchip_spi *rs = spi_controller_get_devdata(ctlr);
-         |                              ^~
+Why adding SoC name to the board? Can it be Odroid M1S with RK3568?
 
 
-vim +/rs +948 drivers/spi/spi-rockchip.c
+Best regards,
+Krzysztof
 
-64e36824b32b06 addy ke      2014-07-01  942  
-64e36824b32b06 addy ke      2014-07-01  943  #ifdef CONFIG_PM_SLEEP
-64e36824b32b06 addy ke      2014-07-01  944  static int rockchip_spi_suspend(struct device *dev)
-64e36824b32b06 addy ke      2014-07-01  945  {
-43de979ddc099c Jeffy Chen   2017-08-07  946  	int ret;
-d66571a20f68f1 Chris Ruehl  2020-05-11  947  	struct spi_controller *ctlr = dev_get_drvdata(dev);
-e882575efc771f shengfei Xu  2022-02-16 @948  	struct rockchip_spi *rs = spi_controller_get_devdata(ctlr);
-64e36824b32b06 addy ke      2014-07-01  949  
-d66571a20f68f1 Chris Ruehl  2020-05-11  950  	ret = spi_controller_suspend(ctlr);
-43de979ddc099c Jeffy Chen   2017-08-07  951  	if (ret < 0)
-64e36824b32b06 addy ke      2014-07-01  952  		return ret;
-64e36824b32b06 addy ke      2014-07-01  953  
-8d3fb5bc7d0206 Brian Norris 2024-08-23  954  	ret = pm_runtime_force_suspend(dev);
-8d3fb5bc7d0206 Brian Norris 2024-08-23  955  	if (ret < 0) {
-8d3fb5bc7d0206 Brian Norris 2024-08-23  956  		spi_controller_resume(ctlr);
-8d3fb5bc7d0206 Brian Norris 2024-08-23  957  		return ret;
-8d3fb5bc7d0206 Brian Norris 2024-08-23  958  	}
-64e36824b32b06 addy ke      2014-07-01  959  
-23e291c2e4c84a Brian Norris 2016-12-16  960  	pinctrl_pm_select_sleep_state(dev);
-23e291c2e4c84a Brian Norris 2016-12-16  961  
-43de979ddc099c Jeffy Chen   2017-08-07  962  	return 0;
-64e36824b32b06 addy ke      2014-07-01  963  }
-64e36824b32b06 addy ke      2014-07-01  964  
-
--- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
 
 _______________________________________________
 Linux-rockchip mailing list
