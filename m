@@ -4,68 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7D555C54FAD
-	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Aug 2024 12:58:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 06FF1C54FAA
+	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Aug 2024 12:59:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=FebOkg+SoBlG10bzoY9nON1+eEBWLnP5ie1PAM6CE8c=; b=HESHNrHFIXB+PB
-	B0iLweRWb5qPWd4KGxW4ZvS/p5BZLe3SbXZA9Q6Byq37ssevMPosXmOTWhBLS5rVtTFZq7d+Jn+uV
-	J84iCpbNgQea2IzGL6WNWv3bNulVPvl47k1KRfy+7qqUyCGiY+HWOvUHvkSiMrLzwNZEnVu2gg5Xy
-	U4YXpRrEVGO15ocxZst31/j4ybHjXFAg2jdIhh6Nde1prhYH7YeEO1yRIG5VJdM+m+k+JuWsfLqU6
-	+6TF6eIeHBD30kJeuWk9AYRnLaXlHqd1Y0pRD3TepAAPqq180XIj80gN74/HJhuLjzO2i2IpH4SaA
-	DKhTBjmP0TEFKeemRvCw==;
+	List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:References:
+	In-Reply-To:Cc:To:From:MIME-Version:Date:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=hC2lqjjvotF8CXqRfAfMGVANbWGmN+/HeScgbJxnC+w=; b=lKcosLQGxQG9CaBN6heq7cUXLM
+	ejM3qmPkF30IdDOMdsbwSNhMBgO4YgJjMyNoukqI5ror6YQ9vf1aEZR+cR7u1xUgq8QyAOTHHMfBg
+	valqprm1JGUIBmKRxhorpxu4KLqBpUG0UfgSXynYy5JiX3s9KuqRJYtLOhfvQJaEYK6u6z/Gf9p5H
+	a5OilT8iEWIE3E5iiLs8eBczJBk/3yCkHtO/PMW5T57IjagNePiP+fIYpksAAbAdMhus6ts7OpWlQ
+	I2F68jc9GJ4UScRBIG39Z2apS//pCCO8XWNniFwDkDxzJmdXuuE8Jb9vh5u6lpOhLP91ktceDcGOz
+	oItS60jA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sjIFZ-0000000FQWv-01OB;
-	Wed, 28 Aug 2024 12:58:13 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1sjIGa-0000000FQz4-1mMK;
+	Wed, 28 Aug 2024 12:59:16 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sjIDv-0000000FPwo-04ba
-	for linux-rockchip@lists.infradead.org;
-	Wed, 28 Aug 2024 12:56:32 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
-	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=3bMNu3lJFboLmoxcd2f5D0OI0rHEumBUEVx3ifZtn4c=; b=q4cO08WvKwTqslAfyp5DyrgBQk
-	107GUj52R78ifmj2wVr54IUNCgh0FSUN4wfmjHyn11shzJpHaiXJ68VTzp0NJq6e59tZoqC0Qrmlt
-	F8LsFgUW2vp0C/o9SflYzOQYylYf7JBKY8Q0M+zkw4aClYOoXASDiJoZ/rnjgVPsHRNQurzB8fP/n
-	kIktOdhjJcSfOJPomC1cWrUiIKg9mUCT+Pnha2q/9cnWPXJcOiJvemwwi+tJ4HfGkjdYDIhL18iii
-	Ka36d2jPaDsar+tYIpGIfkEdj0QJBPBixlXgN2KWKsA+2ZbBOiv8fB/VEzEozV/iENARLkZJ2w4wF
-	pRmimk8w==;
-Received: from i5e8616cd.versanet.de ([94.134.22.205] helo=phil.lan)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1sjIDs-0005MB-Dj; Wed, 28 Aug 2024 14:56:28 +0200
-From: Heiko Stuebner <heiko@sntech.de>
-To: Sebastian Reichel <sebastian.reichel@collabora.com>
-Cc: Heiko Stuebner <heiko@sntech.de>,
-	linux-kernel@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	Rob Herring <robh@kernel.org>,
-	Jianfeng Liu <liujianfeng1994@gmail.com>,
-	kernel@collabora.com,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	devicetree@vger.kernel.org,
-	Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>,
-	Conor Dooley <conor+dt@kernel.org>
-Subject: Re: [PATCH v8 0/2] RK3588 VEPU121/VPU121 support
-Date: Wed, 28 Aug 2024 14:56:24 +0200
-Message-ID: <172484978176.1499193.8850818524012540505.b4-ty@sntech.de>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20240827181206.147617-1-sebastian.reichel@collabora.com>
-References: <20240827181206.147617-1-sebastian.reichel@collabora.com>
+	id 1sjIEr-0000000FQGB-2m8H;
+	Wed, 28 Aug 2024 12:57:31 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id 97C58A40946;
+	Wed, 28 Aug 2024 12:57:21 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 78742C4FEFA;
+	Wed, 28 Aug 2024 12:51:14 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1724849474;
+	bh=Xj3q54Xs8pJypq3V2jbLTbUBopo2sjq2zYTrO+Fvrh8=;
+	h=Date:From:To:Cc:In-Reply-To:References:Subject:From;
+	b=KCrY8jpvMbbIitPFuw6LTwsNwwOTO9mGyzvA58CCJtU1zjfI9tIfItgQFNTceWoZx
+	 fOsJs/GrhafzzQAm+4wG/xOh6g3HOCUwioE3jp6JGWX2M1uHGVsUFgsDiGlId/fr2k
+	 RoWviw0SjpZeW0I74wBvKYDdTOF+y2/6wqFWvuSeEJ4oIQMFmlCuhi4zhfxI6xVr/7
+	 yrgeOMyaJo6T4qbUe6HevXRNKshF5AERp4ZJWTvMZ5DT/+Bv+DAMAx1Zr1l6ELOyfx
+	 FQDHgr+fJtR37b6RvQ8Uw5D7JDm+njb2eAAFDrMmkGKN+gnKR310R2UGr+xGNHU23Z
+	 NpuhWsF5Ee5Rg==
+Date: Wed, 28 Aug 2024 07:51:12 -0500
 MIME-Version: 1.0
+From: "Rob Herring (Arm)" <robh@kernel.org>
+To: Jonathan Liu <net147@gmail.com>
+Cc: Conor Dooley <conor+dt@kernel.org>, 
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ FUKAUMI Naoki <naoki@radxa.com>, linux-arm-kernel@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org
+In-Reply-To: <20240828074755.1320692-1-net147@gmail.com>
+References: <20240828074755.1320692-1-net147@gmail.com>
+Message-Id: <172484936512.3462690.18423493121475512611.robh@kernel.org>
+Subject: Re: [PATCH v2] arm64: dts: rockchip: Enable RK809 audio codec for
+ Radxa ROCK 4C+
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240828_055631_112841_5DD980D1 
-X-CRM114-Status: GOOD (  11.32  )
+X-CRM114-CacheID: sfid-20240828_055729_773879_102A8E12 
+X-CRM114-Status: GOOD (  11.03  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,29 +75,44 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, 27 Aug 2024 20:10:19 +0200, Sebastian Reichel wrote:
-> This enables support for Hantro in the RK3588 base devicetree. Sebastian Fricke
-> send the pull request for the driver/binding changes for 6.12 some hours ago:
-> 
-> https://lore.kernel.org/all/20240827133315.qlmwdvwmghidayzy@basti-XPS-13-9310/
-> 
-> Changes since PATCHv7:
->  * Dropped patches 1-4 (merged to media tree)
->  * Rebased DT patches to use rk3588-base.dtsi instead of rk3588s.dtsi
->  * Dropped a bunch of people from Cc since the media side is done
-> 
-> [...]
 
-Applied, thanks!
+On Wed, 28 Aug 2024 17:47:53 +1000, Jonathan Liu wrote:
+> This adds the necessary device tree changes to enable analog audio
+> output for the 3.5 mm TRS headphone jack on the Radxa ROCK 4C+ with
+> its RK809 audio codec.
+> 
+> Signed-off-by: Jonathan Liu <net147@gmail.com>
+> ---
+>  .../boot/dts/rockchip/rk3399-rock-4c-plus.dts | 46 ++++++++++++++++++-
+>  1 file changed, 45 insertions(+), 1 deletion(-)
+> 
 
-[1/2] arm64: dts: rockchip: Add VEPU121 to RK3588
-      commit: cc0a05865cd5ff2a12479ab85093ed203af10520
-[2/2] arm64: dts: rockchip: Add VPU121 support for RK3588
-      commit: 6166b1c0084e059af539c93a9d48afe44220dbef
 
-Best regards,
--- 
-Heiko Stuebner <heiko@sntech.de>
+My bot found new DTB warnings on the .dts files added or changed in this
+series.
+
+Some warnings may be from an existing SoC .dtsi. Or perhaps the warnings
+are fixed by another series. Ultimately, it is up to the platform
+maintainer whether these warnings are acceptable or not. No need to reply
+unless the platform maintainer has comments.
+
+If you already ran DT checks and didn't see these error(s), then
+make sure dt-schema is up to date:
+
+  pip3 install dtschema --upgrade
+
+
+New warnings running 'make CHECK_DTBS=y rockchip/rk3399-rock-4c-plus.dtb' for 20240828074755.1320692-1-net147@gmail.com:
+
+arch/arm64/boot/dts/rockchip/rk3399-rock-4c-plus.dtb: pmic: vsel1-gpio: {'rockchip,pins': [[1, 17, 0, 194]], 'phandle': 138} is not of type 'array'
+	from schema $id: http://devicetree.org/schemas/gpio/gpio-consumer.yaml#
+arch/arm64/boot/dts/rockchip/rk3399-rock-4c-plus.dtb: pmic: vsel2-gpio: {'rockchip,pins': [[1, 14, 0, 194]], 'phandle': 139} is not of type 'array'
+	from schema $id: http://devicetree.org/schemas/gpio/gpio-consumer.yaml#
+
+
+
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
