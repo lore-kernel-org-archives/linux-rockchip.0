@@ -4,56 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F046AC63798
-	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Aug 2024 18:32:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A554BC7112F
+	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Aug 2024 20:53:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Date:To:Cc:From:Subject:References:
-	In-Reply-To:MIME-Version:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=WwqDG8iVzibr2Y2oUjBswj2zWC0xSt6XmcFvDIle1IY=; b=DhNMJ172M/+KEX
-	OvKREI+Av5TZq/oJjQQdUtWLepnv8OWS93krPXGpXN2+DAokOTJq+5lTDB7iRXpeZ4QmnvgUpF4cK
-	DR7zDKKyoPZPS1tMECD7QgRFSLPiCv1MHaXIc07SCxmedSTG39SmMClWng/mezZI2lHaFXdw4imfJ
-	GsYeIF0C/jHvu3nj1mpBEyuuSBH8mPBCVgfLN9hgqnIUAO+SGRaHGEbDcpiW0WaIPwQgASh8JKDXd
-	I49DqfxNUKDVSJAUFcrElZDp+LzLNbl7Oxhp/FaxwnrM9vCxUcVYEdnPBMKCNPH10K+47UhJ/EoOi
-	I78fMuCvb6qJ6cKORiMg==;
+	List-Owner; bh=GO1r4xZZswC8+DS1gKcFPdM2BDEcDhlfPsZUEX+msQ4=; b=39wOnp/V1/Sz6s
+	h9arn4lj1FA/Cr/yYL8lQQG3ELRpTLdTJXKY9g5sKk2KgNzmV0iUgEv/3EriwLDjTVqG/p1uqbXET
+	q30+GWcfkCAIvElvWrozTpQBsSDsrgIzfO5VPIKLG9zQ/Z0suDWuHptH63orJzpOv5A7cxHuTpnOn
+	AlMg9Z4cU50b5fPRV9q2hZe09NXJ1JpDSXNdm/lUhfTIF+TeTuDk0RZauoTXLeHRKWuuZdbU3ku5d
+	0NvNSJN6ls43zPgafqhAkolf/ATBYFKCs5Ofn8BuS2OtmIzqQRw4fGEB3/63+0eZMRC7Vdq4sUsVT
+	oMjYcClqhOnpOJMaQpiw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sjNT5-0000000Gat7-25Ic;
-	Wed, 28 Aug 2024 18:32:31 +0000
-Received: from sin.source.kernel.org ([145.40.73.55])
+	id 1sjPfD-0000000Gxtk-49hP;
+	Wed, 28 Aug 2024 20:53:12 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sjNRY-0000000GaYu-439F;
-	Wed, 28 Aug 2024 18:30:58 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id C555DCE18EF;
-	Wed, 28 Aug 2024 18:30:54 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D5CFEC4CEC0;
-	Wed, 28 Aug 2024 18:30:53 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1724869854;
-	bh=gm5wNgQPq8zaVU7WuCxl/FdzOHpdZQaZpErO5w9GDQM=;
-	h=In-Reply-To:References:Subject:From:Cc:To:Date:From;
-	b=MvG5hgj0NmlYgc1Sij1LzfvqO6t7R1LgrCmV86zeZytuUxASd4oabSkCHo2Egn8om
-	 QxH23Drc+3JEHYkKGGMhkydBAop5+DydNF37PdRcBkexev+IX0Fj7hxdpv0WuNAgaw
-	 krV40gE6FWVNh0bDpMPqUWOmtHfHRY/7U0lF7CZQhOlRSSTyI1kepawtXtXXslHV5T
-	 amINvbq/7aOOBah1N0RSYeoKBk8EWPArYZh7H2929jWbUJspuk+V+cIUJSMWR+W1yS
-	 2wPWce9I/FX8fhDXbi0z7QudtnqvSAQ0kxFCbvv4bmdrNi3E/rh5SzgHPn0r4Urzql
-	 0C7hUMRYpMZUA==
-Message-ID: <9b92b5f03632e8793253ba75fc00f6e3.sboyd@kernel.org>
+	id 1sjPfB-0000000GxsH-0qv0;
+	Wed, 28 Aug 2024 20:53:10 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+	List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=W3xTxHAVy8T5VJ7Gg1s6MiPfQ5UiQz/WzG7TYzz8skM=; b=bzF8eE9KcDKbWremHjI+p9vENo
+	kOIg26PodC1g7xxbORtbpeQWua22oLyy4EqQdMupKpPdm45NkbFR6TZqGa7THFKRpSypmVGGrnUMR
+	xNNR2qsiFU5ilXpcsC9Y0Mnnsl5xYmy00k8CQ5UDwL+hVdxNj/eiIloiwHdzA0SNjHGP6be0YfI9O
+	VYrzn0CIPvxCFPWrjI0/3uDbJncw7K0vgTvq7/iVMgIok/2ydV/8ykuc+/rLTeP75pfylc+q3QDWh
+	PAshHSQvyOuVHdr+5AV7YtdgVuYEPG7o3KbOE0Thle7C+ewbX6iZCHG9e6W5yEPr/5tzI2SqEtbES
+	OdWcY/XA==;
+Received: from i5e8616cd.versanet.de ([94.134.22.205] helo=phil.lan)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1sjPf7-0007tF-O1; Wed, 28 Aug 2024 22:53:05 +0200
+From: Heiko Stuebner <heiko@sntech.de>
+To: Johan Jonker <jbx6244@gmail.com>
+Cc: Heiko Stuebner <heiko@sntech.de>,
+	mturquette@baylibre.com,
+	linux-kernel@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	conor+dt@kernel.org,
+	robh@kernel.org,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-clk@vger.kernel.org,
+	krzk+dt@kernel.org,
+	sboyd@kernel.org
+Subject: Re: [PATCH v1 0/9] clk: rockchip: Drop CLK_NR_CLKS CLKPMU_NR_CLKS usage
+Date: Wed, 28 Aug 2024 22:53:03 +0200
+Message-ID: <172487836642.1577158.12196598647797813806.b4-ty@sntech.de>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <416cdaf2-fef2-471d-a03a-837775d6e7dc@gmail.com>
+References: <416cdaf2-fef2-471d-a03a-837775d6e7dc@gmail.com>
 MIME-Version: 1.0
-In-Reply-To: <20240828101503.1478491-5-heiko@sntech.de>
-References: <20240828101503.1478491-1-heiko@sntech.de> <20240828101503.1478491-5-heiko@sntech.de>
-Subject: Re: [PATCH v3 4/5] clk: clk-gpio: add driver for gated-fixed-clocks
-From: Stephen Boyd <sboyd@kernel.org>
-Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org, linux-clk@vger.kernel.org, heiko@sntech.de, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
-To: Heiko Stuebner <heiko@sntech.de>, mturquette@baylibre.com
-Date: Wed, 28 Aug 2024 11:30:51 -0700
-User-Agent: alot/0.10
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240828_113057_384107_D44FF21B 
-X-CRM114-Status: GOOD (  25.16  )
+X-CRM114-CacheID: sfid-20240828_135309_283720_2F2FD073 
+X-CRM114-Status: UNSURE (   9.96  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,223 +83,49 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Quoting Heiko Stuebner (2024-08-28 03:15:02)
-> diff --git a/drivers/clk/clk-gpio.c b/drivers/clk/clk-gpio.c
-> index cda362a2eca0..8bcdef340b4c 100644
-> --- a/drivers/clk/clk-gpio.c
-> +++ b/drivers/clk/clk-gpio.c
-> @@ -239,3 +240,184 @@ static struct platform_driver gpio_clk_driver = {
->         },
->  };
->  builtin_platform_driver(gpio_clk_driver);
-> +
-> +/**
-> + * DOC: gated fixed clock, controlled with a gpio output and a regulator
-> + * Traits of this clock:
-> + * prepare - clk_prepare and clk_unprepare are function & control regulator
-> + *           optionally a gpio that can sleep
-> + * enable - clk_enable and clk_disable are functional & control gpio
-> + * rate - rate is fixed and set on clock generation
+On Mon, 26 Aug 2024 18:36:40 +0200, Johan Jonker wrote:
+> In order to get rid of CLK_NR_CLKS and CLKPMU_NR_CLKS
+> and be able to drop it from the bindings, use
+> rockchip_clk_find_max_clk_id helper to find the
+> highest clock id.
+> 
+> Johan Jonker (9):
+>   clk: rockchip: px30: Drop CLK_NR_CLKS CLKPMU_NR_CLKS usage
+>   clk: rockchip: rk3036: Drop CLK_NR_CLKS usage
+>   clk: rockchip: rk3228: Drop CLK_NR_CLKS usage
+>   clk: rockchip: rk3288: Drop CLK_NR_CLKS usage
+>   clk: rockchip: rk3308: Drop CLK_NR_CLKS usage
+>   clk: rockchip: rk3328: Drop CLK_NR_CLKS usage
+>   clk: rockchip: rk3368: Drop CLK_NR_CLKS usage
+>   clk: rockchip: rk3399: Drop CLK_NR_CLKS CLKPMU_NR_CLKS usage
+>   dt-bindings: clock: rockchip: remove CLK_NR_CLKS and CLKPMU_NR_CLKS
+> 
+> [...]
 
-Maybe 'clock registration'
+Applied, thanks!
 
-> + * parent - fixed clock is a root clock and has no parent.
+[1/9] clk: rockchip: px30: Drop CLK_NR_CLKS CLKPMU_NR_CLKS usage
+      commit: 2496910c84a4bd1aa2c10fe57cf4ae1cbcab17f4
+[2/9] clk: rockchip: rk3036: Drop CLK_NR_CLKS usage
+      commit: ec4f4261c315d9bc30bb1bb8c3bb17cbaebe7741
+[3/9] clk: rockchip: rk3228: Drop CLK_NR_CLKS usage
+      commit: 819b2e19a9f7dc9e84a00e2f6da2b2f15a01cee6
+[4/9] clk: rockchip: rk3288: Drop CLK_NR_CLKS usage
+      commit: 545b1313c5a24eed0e4d34554c715b46686251ff
+[5/9] clk: rockchip: rk3308: Drop CLK_NR_CLKS usage
+      commit: 31fe14956883bc09846ce239993e215330218a6f
+[6/9] clk: rockchip: rk3328: Drop CLK_NR_CLKS usage
+      commit: 0758fe99bc969294c2391de145b67c1223c7b104
+[7/9] clk: rockchip: rk3368: Drop CLK_NR_CLKS usage
+      commit: 41563197e7f2a0b449476bbbe931cb2806e84966
+[8/9] clk: rockchip: rk3399: Drop CLK_NR_CLKS CLKPMU_NR_CLKS usage
+      commit: 1a229868852ffe1d59f6bdad1e473d9d5f9e14bb
+[9/9] dt-bindings: clock: rockchip: remove CLK_NR_CLKS and CLKPMU_NR_CLKS
+      commit: fb234516c5a0728d7dbd718667c33c1523b55fe8
 
-Not sure why this one gets the period while other lines above don't.
-
-> + */
-> +
-> +/**
-> + * struct clk_gate_fixed - gated-fixed-clock
-> + *
-> + * clk_gpio:   instance of clk_gpio for gate-gpio
-> + * supply:     supply regulator
-> + * rate:       fixed rate
-> + */
-> +struct clk_gated_fixed {
-> +       struct clk_gpio clk_gpio;
-> +       struct regulator *supply;
-> +       u32 rate;
-
-unsigned long rate to match the CCF type please.
-
-> +};
-> +
-> +#define to_clk_gated_fixed(_clk_gpio) container_of(_clk_gpio, struct clk_gated_fixed, clk_gpio)
-> +
-> +static unsigned long clk_gated_fixed_recalc_rate(struct clk_hw *hw,
-> +                                                unsigned long parent_rate)
-> +{
-> +       return to_clk_gated_fixed(to_clk_gpio(hw))->rate;
-> +}
-> +
-> +static int clk_gated_fixed_prepare(struct clk_hw *hw)
-> +{
-> +       struct clk_gated_fixed *clk = to_clk_gated_fixed(to_clk_gpio(hw));
-> +
-> +       if (!clk->supply)
-> +               return 0;
-> +
-> +       return regulator_enable(clk->supply);
-> +}
-> +
-> +static void clk_gated_fixed_unprepare(struct clk_hw *hw)
-> +{
-> +       struct clk_gated_fixed *clk = to_clk_gated_fixed(to_clk_gpio(hw));
-> +
-> +       if (!clk->supply)
-> +               return;
-> +
-> +       regulator_disable(clk->supply);
-> +}
-> +
-> +static int clk_gated_fixed_is_prepared(struct clk_hw *hw)
-> +{
-> +       struct clk_gated_fixed *clk = to_clk_gated_fixed(to_clk_gpio(hw));
-> +
-> +       if (!clk->supply)
-> +               return true;
-> +
-> +       return regulator_is_enabled(clk->supply);
-> +}
-> +
-> +/*
-> + * Fixed gated clock with non-sleeping gpio.
-> + *
-> + * Prepare operation turns on the supply regulator
-> + * and the enable operation switches the enable-gpio.
-> + */
-> +const struct clk_ops clk_gated_fixed_ops = {
-
-static
-
-> +       .prepare = clk_gated_fixed_prepare,
-> +       .unprepare = clk_gated_fixed_unprepare,
-> +       .is_prepared = clk_gated_fixed_is_prepared,
-> +       .enable = clk_gpio_gate_enable,
-> +       .disable = clk_gpio_gate_disable,
-> +       .is_enabled = clk_gpio_gate_is_enabled,
-> +       .recalc_rate = clk_gated_fixed_recalc_rate,
-> +};
-> +
-> +static int clk_sleeping_gated_fixed_prepare(struct clk_hw *hw)
-> +{
-> +       int ret;
-> +
-> +       ret = clk_gated_fixed_prepare(hw);
-> +       if (ret)
-> +               return ret;
-> +
-> +       ret = clk_sleeping_gpio_gate_prepare(hw);
-> +       if (ret)
-> +               clk_gated_fixed_unprepare(hw);
-> +
-> +       return ret;
-> +}
-> +
-> +static void clk_sleeping_gated_fixed_unprepare(struct clk_hw *hw)
-> +{
-> +       clk_gated_fixed_unprepare(hw);
-> +       clk_sleeping_gpio_gate_unprepare(hw);
-> +}
-> +
-> +/*
-> + * Fixed gated clock with non-sleeping gpio.
-> + *
-> + * Enabling the supply regulator and switching the enable-gpio happens
-> + * both in the prepare step.
-> + * is_prepared only needs to check the gpio state, as toggling the
-> + * gpio is the last step when preparing.
-> + */
-> +const struct clk_ops clk_sleeping_gated_fixed_ops = {
-
-static
-
-> +       .prepare = clk_sleeping_gated_fixed_prepare,
-> +       .unprepare = clk_sleeping_gated_fixed_unprepare,
-> +       .is_prepared = clk_sleeping_gpio_gate_is_prepared,
-> +       .recalc_rate = clk_gated_fixed_recalc_rate,
-> +};
-> +
-> +static int clk_gated_fixed_probe(struct platform_device *pdev)
-> +{
-> +       struct device *dev = &pdev->dev;
-> +       struct clk_gated_fixed *clk;
-> +       const struct clk_ops *ops;
-> +       const char *clk_name;
-> +       int ret;
-> +
-> +       clk = devm_kzalloc(dev, sizeof(*clk), GFP_KERNEL);
-> +       if (!clk)
-> +               return -ENOMEM;
-> +
-> +       if (device_property_read_u32(dev, "clock-frequency", &clk->rate))
-
-Why not return the error code?
-
-> +               return dev_err_probe(dev, -EIO, "failed to get clock-frequency");
-
-Missing newline on printk.
-
-> +
-> +       ret = device_property_read_string(dev, "clock-output-names", &clk_name);
-> +       if (ret)
-> +               clk_name = fwnode_get_name(dev->fwnode);
-> +
-> +       clk->supply = devm_regulator_get_optional(dev, "vdd");
-> +       if (IS_ERR(clk->supply)) {
-> +               if (PTR_ERR(clk->supply) != -ENODEV)
-> +                       return dev_err_probe(dev, PTR_ERR(clk->supply),
-> +                                            "failed to get regulator\n");
-> +               clk->supply = NULL;
-> +       }
-> +
-> +       clk->clk_gpio.gpiod = devm_gpiod_get_optional(dev, "enable",
-> +                                                     GPIOD_OUT_LOW);
-> +       if (IS_ERR(clk->clk_gpio.gpiod))
-> +               return dev_err_probe(dev, PTR_ERR(clk->clk_gpio.gpiod),
-> +                                    "failed to get gpio\n");
-> +
-> +       if (gpiod_cansleep(clk->clk_gpio.gpiod))
-> +               ops = &clk_sleeping_gated_fixed_ops;
-> +       else
-> +               ops = &clk_gated_fixed_ops;
-> +
-> +       clk->clk_gpio.hw.init = CLK_HW_INIT_NO_PARENT(clk_name, ops, 0);
-> +
-> +       /* register the clock */
-> +       ret = devm_clk_hw_register(dev, &clk->clk_gpio.hw);
-> +       if (ret)
-> +               return dev_err_probe(dev, ret,
-> +                                    "failed to register clock\n");
-> +
-> +       ret = devm_of_clk_add_hw_provider(dev, of_clk_hw_simple_get,
-> +                                         &clk->clk_gpio.hw);
-> +       if (ret)
-> +               return dev_err_probe(dev, ret,
-> +                                    "failed to register clock provider\n");
-> +
-> +       return 0;
-> +}
-> +
-> +static const struct of_device_id gated_fixed_clk_match_table[] = {
-> +       { .compatible = "gated-fixed-clock" },
-
-Add a sentinel.
-
-> +};
-> +
-> +static struct platform_driver gated_fixed_clk_driver = {
-> +       .probe          = clk_gated_fixed_probe,
-> +       .driver         = {
-> +               .name   = "gated-fixed-clk",
-> +               .of_match_table = gated_fixed_clk_match_table,
-> +       },
-> +};
-> +builtin_platform_driver(gated_fixed_clk_driver);
-
-The comment above builtin_platform_driver says "Each driver may only use
-this macro once". Seems that we need to expand the macro.
+Best regards,
+-- 
+Heiko Stuebner <heiko@sntech.de>
 
 _______________________________________________
 Linux-rockchip mailing list
