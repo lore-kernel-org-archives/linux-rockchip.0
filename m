@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1ACDDC5AE5A
-	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Aug 2024 15:10:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 33AECC5AE5A
+	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Aug 2024 15:12:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=3Y33t6ztUWn3pghziXzJY9ApIFw0iAKqlHIt7vgDB6I=; b=M1H0+uRGupIzpL
-	76R71feWbexZrSQUTOVyVCoEfdgzlTXCSFtElUNn2IYFjHZe9wKiU+0iPGOQMNgs9cXGG5PSFU5P1
-	1Rm5g4aLyIuoJH9PHj0vFrwcpFP0QnvrTvVbViARsr+oR6uRztgBrhnouTAaU8CBgYzc1BP02tXjx
-	z+ZIGbE8GAYDhHm/1wYWLDhxOFVQCycGANzZtZ9cTQsF+rYxL+V60l4BMZQmfTZJHO2oomVyh5m5Q
-	R3js+C5GiZic13oGGypMyf6Lb/kVRohJaO2VJ0yiaK/JxC3GPc2OIrOCa34J5MCNxBO3c0sNqsWfn
-	NB4FLzL5Fz21NVR+qp8A==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=yBup9ppidNgyRrk8Kv3aj827+81M9y5y/96+50kNW8k=; b=o+S4IP5BqkgOpF
+	KfDT1uDLep0jetwq3QiZ0F/FisesKQykUC4cMnI05UuCKosAvVPpzYCkk7BSoEl8DFvHY0x2Ee879
+	BoCK/vbib4UmyApwoD5desMUbSEcYYaQRwccf2BpHk7A5CerhKRdSi3Ym0ZAkWRydMYEso+0OICWT
+	yKb0KRBL+GOuszircvHSg5IJhjVvDEUXkc0xZbyP4xwMMmRz8TRGL9GpZBmA2T5Qtvls2xlsBvMWC
+	vO0HDHKPOQirfxZ2Q5GPQeOTCrq6SLtePjwME4mJ9bpGpiuXDFY22xI03WP7RYbaKKQvGWkImucJ0
+	S6IPDxDLeGptzo1EDy5w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sjKJp-0000000Ftd6-0e1j;
-	Wed, 28 Aug 2024 15:10:45 +0000
-Received: from a7-28.smtp-out.eu-west-1.amazonses.com ([54.240.7.28])
+	id 1sjKLS-0000000FuE6-1lUL;
+	Wed, 28 Aug 2024 15:12:26 +0000
+Received: from a7-45.smtp-out.eu-west-1.amazonses.com ([54.240.7.45])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sjKJl-0000000FtbG-1KHc;
-	Wed, 28 Aug 2024 15:10:43 +0000
+	id 1sjKJp-0000000Ftcg-3PuG;
+	Wed, 28 Aug 2024 15:10:47 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
-	s=4232tfv5ebdrjdwkr5zzm7kytdkokgug; d=collabora.com; t=1724857836;
-	h=From:To:Cc:Subject:Date:Message-ID:MIME-Version:Content-Transfer-Encoding;
-	bh=/6xBr387lHpMiwXE06HG6XGKl2MHb0i9Xw/IsslGxeY=;
-	b=So6GTcbvolSMtNsUCWfb8CsMbmN8o1hLN+EU3OGSCp6G6ggakxwJR+tjfj4tuvmO
-	2iFphPt4sq3whGtEOFUlDZC0XFG7Ocmp3fzDtoj7lhbs4r7BBNudpIFNMLDJqIq7lFu
-	OtHXlEE0J6Tsk6+nt4i25p3SEtO2U7DX6P6MnfnUV/Q38nBG6RNnpIrEVLcj9dSlOEk
-	vZAgwDDjqiMUCl6Ziav3Nn/LyL7rdTuhGrwU2twVByj33MCEbtvHfh3piVEMQqcBnl5
-	5WhtHmiHN9c+mQ1Yhw5bNkyd5W2pncevISM+uTneW/tx1rFB60tC0uNnFAgzibv2z6V
-	C68N1PqD1w==
+	s=4232tfv5ebdrjdwkr5zzm7kytdkokgug; d=collabora.com; t=1724857841;
+	h=From:To:Cc:Subject:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding;
+	bh=f0D3qZRNJKjZ4ZItDHDKxzlfX2zSfpN5blcJ2RQ0XJo=;
+	b=Ow0MoXeGTo8d+uIkZO2V2kIwjrCIYFFVVsDdhffI3M4kptt6WnrRJPADwIg1CyBb
+	KO3chTFlbJ/Nr/1xCMLO6gMVK6qS7EZLvJnFkaQxqeSjc8r2JYPD/l6w4seu61wsnGg
+	2VQb6NnV68dWYPZ2v9NvWCJTbiGb8GvTJ7qC+tB1VaxDxAGSwnmU3dRRByZ8Lz6L8Do
+	ID8yTFbqZrWRWB33DM7nche1iU8cXaCKTRguBLXwaxoYDMi59/DefVF3UZPeG4iaCLp
+	mSmuXZajr9k5z6km/bux87cSsEjHxPf5+6FeX3zyjK3jFUVL42h+4y3DyF1+BDzZ/ma
+	k3oFTjghag==
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
-	s=uku4taia5b5tsbglxyj6zym32efj7xqv; d=amazonses.com; t=1724857836;
-	h=From:To:Cc:Subject:Date:Message-ID:MIME-Version:Content-Transfer-Encoding:Feedback-ID;
-	bh=/6xBr387lHpMiwXE06HG6XGKl2MHb0i9Xw/IsslGxeY=;
-	b=NGAgRuxDN5KLV7xQPZrLjHKHSu36qmbsagTi0A/Jw//EHQPMd3rky8uzhqSPZjzn
-	yW3h6SHcZ11Mi7D0oRMsawVkbWSuPcppzFU7IoxCqmkmivRRZFsS1gsservqYsNPHjE
-	cFeO8N7rwF4vkSpAlc2aIvusOfhoxD3Echpx1ZVU=
+	s=uku4taia5b5tsbglxyj6zym32efj7xqv; d=amazonses.com; t=1724857841;
+	h=From:To:Cc:Subject:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Feedback-ID;
+	bh=f0D3qZRNJKjZ4ZItDHDKxzlfX2zSfpN5blcJ2RQ0XJo=;
+	b=G5IpyAYm8o6+31201LsbYa8UkbT9KgN3PxXOJrNc8rEkfA9R/eICg+E/S/W84DlS
+	BpabpxV0/r94r+dqEUaL8rqgpjIvSC2UNY2XYIWF+RTPHXFYuR66bf0umBAV5m7Cr5C
+	hAxgUecbl7fafRupP/V6vFBQtVM1ygQ4zzUPJv6M=
 From: Detlev Casanova <detlev.casanova@collabora.com>
 To: linux-kernel@vger.kernel.org
 Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
@@ -75,17 +75,21 @@ Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
 	linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org, 
 	linux-i2c@vger.kernel.org, linux-mmc@vger.kernel.org, 
 	linux-serial@vger.kernel.org, linux-spi@vger.kernel.org, 
-	linux-watchdog@vger.kernel.org, kernel@collabora.com
-Subject: [PATCH v3 00/11] Add device tree for ArmSoM Sige 5 board
-Date: Wed, 28 Aug 2024 15:10:36 +0000
-Message-ID: <010201919989e3de-60b56341-85e0-4869-89d1-362407c4f2ec-000000@eu-west-1.amazonses.com>
+	linux-watchdog@vger.kernel.org, kernel@collabora.com, 
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Subject: [PATCH v3 01/11] dt-bindings: arm: rockchip: Add ArmSoM Sige 5
+Date: Wed, 28 Aug 2024 15:10:41 +0000
+Message-ID: <010201919989f6fd-ae98c345-db70-4ad5-885d-b2c067ea8de3-000000@eu-west-1.amazonses.com>
 X-Mailer: git-send-email 2.46.0
+In-Reply-To: <20240828151028.41255-1-detlev.casanova@collabora.com>
+References: <20240828151028.41255-1-detlev.casanova@collabora.com>
 MIME-Version: 1.0
 Feedback-ID: ::1.eu-west-1.YpP9ZbxnARFfy3Cb5pfsLd/pdsXBCNK0KEM7HforL4k=:AmazonSES
-X-SES-Outgoing: 2024.08.28-54.240.7.28
+X-SES-Outgoing: 2024.08.28-54.240.7.45
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240828_081041_533113_64C44D64 
-X-CRM114-Status: GOOD (  15.25  )
+X-CRM114-CacheID: sfid-20240828_081046_089803_831A7626 
+X-CRM114-Status: UNSURE (   9.02  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,94 +106,30 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add the rk3576-armsom-sige5 device tree as well as its rk3576.dtsi base
-and pinctrl information in rk3576-pinctrl.dtsi.
+Add devicetree binding for the ArmSoM Sige 5 board.
 
-The other commits add DT bindings documentation for the devices that
-already work with the current corresponding drivers.
+Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+---
+ Documentation/devicetree/bindings/arm/rockchip.yaml | 5 +++++
+ 1 file changed, 5 insertions(+)
 
-Note that as is, the rockchip gpio driver needs the gpio nodes
-to be children of the pinctrl node, even though this is deprecated.
-
-When the driver supports it, they can be moved out of the pinctrl node.
-
-The power-domain@RK3576_PD_USB is a child of power-domain@RK3576_PD_VOP.
-That looks strange but it is how the hardware is, and confirmed by
-Rockchip: The NOC bus of USB passes through the PD of VOP, so it relies on
-VOP PD.
-
-The other bindings and driver implementations are in other patch sets:
-- PMIC: https://lore.kernel.org/all/20240802134736.283851-1-detlev.casanova@collabora.com/ (applied on next)
-- CRU: https://lore.kernel.org/all/20240822194956.918527-1-detlev.casanova@collabora.com/
-- PINCTRL: https://lore.kernel.org/all/20240822195706.920567-1-detlev.casanova@collabora.com/
-- PM DOMAIN: https://lore.kernel.org/all/20240814222824.3170-1-detlev.casanova@collabora.com/ (applied on next)
-- DW-MMC: https://lore.kernel.org/all/20240822212418.982927-1-detlev.casanova@collabora.com/
-- GMAC: https://lore.kernel.org/all/20240823141318.51201-1-detlev.casanova@collabora.com/
-
-Changes since v2:
-- Fix LEDs in armsom dts
-- mmc: Move allOf after the required block
-- Remove saradc dt-binding commit (already applied)
-- Remove opp-microvolt-L* fields
-- Reword mali commit message
-- Use rgmii-id and remove delays on gmac nodes
-
-Changes since v1:
-- Add eMMC support
-- Add gpu node
-- Add rtc node
-- Add spi compatible dt-bindings
-- Add watchdog support
-- Dropped timer compatible commit (applied in [0])
-- Move ethernet aliases to board dt
-- Move mmio nodes to soc node
-- Removed cru grf phandle
-- Removed gpio aliases
-- Removed grf compatibles (applied in [1])
-- Removed pinctrl php-grf phandle
-- Removed v2-tuning for sdcard
-- Renamed clock nodes
-- Renamed regulators do match regulator-vcc-<voltage>-<name>
-- Renamed the rkvdec_sram node to vdec_sram to match prior generations
-- Reorder fields consistently in nodes
-- Use correct #power-domain-cells values
-
-[0]: https://lore.kernel.org/all/918bb9e4-02d9-4dca-bed2-28bb123bdc10@linaro.org/
-[1]: https://lore.kernel.org/all/172441646605.877570.8075942261050000.b4-ty@sntech.de/
-
-Detlev.
-
-Detlev Casanova (11):
-  dt-bindings: arm: rockchip: Add ArmSoM Sige 5
-  dt-bindings: arm: rockchip: Add rk3576 compatible string to pmu.yaml
-  dt-bindings: i2c: i2c-rk3x: Add rk3576 compatible
-  dt-bindings: mfd: syscon: Add rk3576 QoS register compatible
-  dt-bindings: serial: snps-dw-apb-uart: Add Rockchip RK3576
-  dt-bindings: mmc: Add support for rk3576 eMMC
-  dt-bindings: gpu: Add rockchip,rk3576-mali compatible
-  dt-bindings: watchdog: Add rockchip,rk3576-wdt compatible
-  spi: dt-bindings: Add rockchip,rk3576-spi compatible
-  arm64: dts: rockchip: Add rk3576 SoC base DT
-  arm64: dts: rockchip: Add rk3576-armsom-sige5 board
-
- .../devicetree/bindings/arm/rockchip.yaml     |    5 +
- .../devicetree/bindings/arm/rockchip/pmu.yaml |    2 +
- .../bindings/gpu/arm,mali-bifrost.yaml        |    1 +
- .../devicetree/bindings/i2c/i2c-rk3x.yaml     |    1 +
- .../devicetree/bindings/mfd/syscon.yaml       |    2 +
- .../bindings/mmc/snps,dwcmshc-sdhci.yaml      |   38 +-
- .../bindings/serial/snps-dw-apb-uart.yaml     |    1 +
- .../devicetree/bindings/spi/spi-rockchip.yaml |    1 +
- .../bindings/watchdog/snps,dw-wdt.yaml        |    1 +
- arch/arm64/boot/dts/rockchip/Makefile         |    1 +
- .../boot/dts/rockchip/rk3576-armsom-sige5.dts |  659 ++
- .../boot/dts/rockchip/rk3576-pinctrl.dtsi     | 5775 +++++++++++++++++
- arch/arm64/boot/dts/rockchip/rk3576.dtsi      | 1644 +++++
- 13 files changed, 8119 insertions(+), 12 deletions(-)
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3576-armsom-sige5.dts
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3576-pinctrl.dtsi
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3576.dtsi
-
+diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
+index 1ef09fbfdfaf..c3449d964659 100644
+--- a/Documentation/devicetree/bindings/arm/rockchip.yaml
++++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
+@@ -49,6 +49,11 @@ properties:
+               - anbernic,rg-arc-s
+           - const: rockchip,rk3566
+ 
++      - description: ArmSoM Sige5 board
++        items:
++          - const: armsom,sige5
++          - const: rockchip,rk3576
++
+       - description: ArmSoM Sige7 board
+         items:
+           - const: armsom,sige7
 -- 
 2.46.0
 
