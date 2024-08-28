@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 77046C5B55C
-	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Aug 2024 15:42:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ADE8BC5B54A
+	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Aug 2024 15:42:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=e6RL6m/6VLY3DA4ETkLbRNKDPGi5zII/yllWGYOc0Hw=; b=RneXmZseJwm0XS
-	Hjtwl5/7x5GiMXLiscBwmEt2pwo+qFIwJ3FWEYY+TDyiI+Dhb25bGnQGU7/GjXUn2Vrse5KfZcRUb
-	EOQvSqdXIubL2rWfO0zW/SU2d2OD1i1KUn8OrtRyi+wh06nn2b08rm31gtDohWoKuAUi2VAHM29C9
-	o0spdLJX/QxN5aURaI2GOskH+mLOp9KJjsCT+2/vvaKA7l5Soi2JCl3GmmYeiFLj/htuut41sY0rF
-	EKCCZDZiIY01d8oFQYKJIc6kshcSCFheXvOQF3nn4YMkkQsNVs5o/GYN5GkuKaIaCbiON3z+WoccH
-	z7TQzQeQX0mDG8zFU4Ug==;
+	List-Owner; bh=83kaI+VzCiDyF4IV4kXsdGAvwdfINlAtIDIt1C/1CH8=; b=4i7rwbFOus/Yin
+	/Megb9Z4yVN24it9+iW/Ldf29SdFfQOF0SH7oWaZeoKMuFctSmEYNQK6sbmrgStMzxBbAunvX/APs
+	YVxzJKhkBvPpbbHbINrmIwjKu13JkAfWZQxLw+T3pplB4soDVd/VVixRCGp5iVtM28PPcIRLZkg4a
+	ZDfikOGDma254SVBgNbi4fQ2PvnopdhdUl9rZ7U0DnrAHeYwW5AnWh4xDQUpmO2oE4ugK2HQ17AXn
+	FRXT1K4dknI3UemDq7pqT08SkgE2b4x+EEyU3SqS5UE+gEovt/+dUfgK+sYN77bU3iNmDDeB1peTg
+	dd577/Kt2vg68zD1uHLw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sjKoI-0000000G10l-0rFB;
-	Wed, 28 Aug 2024 15:42:14 +0000
-Received: from a7-44.smtp-out.eu-west-1.amazonses.com ([54.240.7.44])
+	id 1sjKoF-0000000G0yb-0EFt;
+	Wed, 28 Aug 2024 15:42:11 +0000
+Received: from a7-43.smtp-out.eu-west-1.amazonses.com ([54.240.7.43])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sjKKS-0000000FtrF-2QiR;
-	Wed, 28 Aug 2024 15:11:26 +0000
+	id 1sjKKD-0000000FtnB-42LG;
+	Wed, 28 Aug 2024 15:11:11 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
-	s=4232tfv5ebdrjdwkr5zzm7kytdkokgug; d=collabora.com; t=1724857880;
+	s=4232tfv5ebdrjdwkr5zzm7kytdkokgug; d=collabora.com; t=1724857865;
 	h=From:To:Cc:Subject:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding;
-	bh=3Mxy4AinXYBybrCx2Yls+Re1Ra8Op+cXhIbIKTJWLD8=;
-	b=F6gTDs7EE5PBv3yey2HBvWil3Ii+IfTD9WpdiYgD++cw6whv63oFBF2lN9i74yPN
-	CmBCepzrMy8iK6+T++JAyJOS2YoRgcoOi6U/ZGzTJ19hNZfzIFS13gY8hhfYrNeag+D
-	F5Liu4m1DXsFL7CzqI9/7EOBrcI5WcfwRfKspjuzBxfT+e7jD/nDLktRdeeVAUhMgNG
-	jUTzc+AcXQ98abwSnDyxXacaF04OZW92Qf2G4p9Z55UT94M0AP4Y9GyB/asFL/q24eW
-	uWzg0IAn7JomRcBbjEWQXJZmZNtgblPt9H4mFbMRd522PEopwRmdAFWnnTy6LkTSMZK
-	6pytuo4L4A==
+	bh=l4Gpo7LOU8NlLxSl1iKgM/8EeAwhluE9ALPDPnDi79g=;
+	b=GA6TBWRw06IFuPhTxtbmqf6iKNkM08X1qtJ27TlMlHP3wgTzYxhKh5XIEAKZOPyU
+	kemH3ebYiJ/Ld8pp+Q2tDs/eWvivAOS23mm6jzdEVE0UqdKNa3Ng3PZ/wU3CzR5wzRp
+	WoTqlcm0KyFAZ6PWzi9VIlsBnCfIIguwuIcQJa4gzTrFdnmlIGSiRDKXnOV33T0eNqP
+	3apGrHnbRWs+V06bQPPCYYBD1ctT9z1mdUW7jSrADAWxiYXPjkMsMbzB0FrAgooUXbY
+	vXKcO9zwUv8Dy1gGKIpTZh11QGunV/cAhsUmVzaVbzSndODjrRuLybPm7e8bRoa1ShO
+	BCGHdYjX8g==
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
-	s=uku4taia5b5tsbglxyj6zym32efj7xqv; d=amazonses.com; t=1724857880;
+	s=uku4taia5b5tsbglxyj6zym32efj7xqv; d=amazonses.com; t=1724857865;
 	h=From:To:Cc:Subject:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Feedback-ID;
-	bh=3Mxy4AinXYBybrCx2Yls+Re1Ra8Op+cXhIbIKTJWLD8=;
-	b=T7SN8tEOYLyEeLtLECRIjXEWWO4jxTMwG7tJcSh/AZ0QZzAm/SRSiF7oA3ecfpu+
-	dK8r3jbEvaVioU3rfhebtR8dNV0KFV0VPc5gb536tUtIzt3tkKHwlzQUazGt1nSW1vB
-	3Vk3dme+ebOMj2/bu/C/ydnLITodOcBjkHXYoMKs=
+	bh=l4Gpo7LOU8NlLxSl1iKgM/8EeAwhluE9ALPDPnDi79g=;
+	b=b6xZ/aVMadwXjO8u3Vvj5b0db70vGdBiQoYfwhld9IazeEAth2NHQPf/Uumuk/wz
+	eKhxlho83fm/aPY/qw5bA5/7JLZq4znus/SEpAAxqezu8WV6HYGlesI0ec27PrUNf/u
+	+Xwz1Gy6pTKs9XjAGybQJHO0QcmsqMH4rFIp06Mc=
 From: Detlev Casanova <detlev.casanova@collabora.com>
 To: linux-kernel@vger.kernel.org
 Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
@@ -77,19 +77,18 @@ Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
 	linux-serial@vger.kernel.org, linux-spi@vger.kernel.org, 
 	linux-watchdog@vger.kernel.org, kernel@collabora.com, 
 	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Subject: [PATCH v3 09/11] spi: dt-bindings: Add rockchip,rk3576-spi compatible
-Date: Wed, 28 Aug 2024 15:11:20 +0000
-Message-ID: <01020191998a8e9b-7b1e3358-d895-4ba9-9204-8b0ea3cb28c5-000000@eu-west-1.amazonses.com>
+Subject: [PATCH v3 06/11] dt-bindings: mmc: Add support for rk3576 eMMC
+Date: Wed, 28 Aug 2024 15:11:05 +0000
+Message-ID: <01020191998a55a9-697c3a2c-237e-49bb-b3dd-45762198d74f-000000@eu-west-1.amazonses.com>
 X-Mailer: git-send-email 2.46.0
 In-Reply-To: <20240828151028.41255-1-detlev.casanova@collabora.com>
 References: <20240828151028.41255-1-detlev.casanova@collabora.com>
 MIME-Version: 1.0
 Feedback-ID: ::1.eu-west-1.YpP9ZbxnARFfy3Cb5pfsLd/pdsXBCNK0KEM7HforL4k=:AmazonSES
-X-SES-Outgoing: 2024.08.28-54.240.7.44
+X-SES-Outgoing: 2024.08.28-54.240.7.43
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240828_081124_780241_CE2C9997 
-X-CRM114-Status: UNSURE (   9.06  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240828_081110_171466_54BB3000 
+X-CRM114-Status: GOOD (  11.15  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,26 +105,97 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-It is compatible with the rockchip,rk3066-spi SPI core.
+The device is compatible with rk3588, so add an entry for the 2
+compatibles together.
+
+The rk3576 device has a power-domain that needs to be on for the eMMC to
+be used. Add it as a requirement.
 
 Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
-Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 ---
- Documentation/devicetree/bindings/spi/spi-rockchip.yaml | 1 +
- 1 file changed, 1 insertion(+)
+ .../bindings/mmc/snps,dwcmshc-sdhci.yaml      | 38 +++++++++++++------
+ 1 file changed, 26 insertions(+), 12 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/spi/spi-rockchip.yaml b/Documentation/devicetree/bindings/spi/spi-rockchip.yaml
-index e4941e9212d1..46d9d6ee0923 100644
---- a/Documentation/devicetree/bindings/spi/spi-rockchip.yaml
-+++ b/Documentation/devicetree/bindings/spi/spi-rockchip.yaml
-@@ -35,6 +35,7 @@ properties:
-               - rockchip,rk3368-spi
-               - rockchip,rk3399-spi
-               - rockchip,rk3568-spi
-+              - rockchip,rk3576-spi
-               - rockchip,rk3588-spi
-               - rockchip,rv1126-spi
-           - const: rockchip,rk3066-spi
+diff --git a/Documentation/devicetree/bindings/mmc/snps,dwcmshc-sdhci.yaml b/Documentation/devicetree/bindings/mmc/snps,dwcmshc-sdhci.yaml
+index 4d3031d9965f..aff8106ec361 100644
+--- a/Documentation/devicetree/bindings/mmc/snps,dwcmshc-sdhci.yaml
++++ b/Documentation/devicetree/bindings/mmc/snps,dwcmshc-sdhci.yaml
+@@ -10,18 +10,19 @@ maintainers:
+   - Ulf Hansson <ulf.hansson@linaro.org>
+   - Jisheng Zhang <Jisheng.Zhang@synaptics.com>
+ 
+-allOf:
+-  - $ref: mmc-controller.yaml#
+-
+ properties:
+   compatible:
+-    enum:
+-      - rockchip,rk3568-dwcmshc
+-      - rockchip,rk3588-dwcmshc
+-      - snps,dwcmshc-sdhci
+-      - sophgo,cv1800b-dwcmshc
+-      - sophgo,sg2002-dwcmshc
+-      - thead,th1520-dwcmshc
++    oneOf:
++      - items:
++          - const: rockchip,rk3576-dwcmshc
++          - const: rockchip,rk3588-dwcmshc
++      - enum:
++          - rockchip,rk3568-dwcmshc
++          - rockchip,rk3588-dwcmshc
++          - snps,dwcmshc-sdhci
++          - sophgo,cv1800b-dwcmshc
++          - sophgo,sg2002-dwcmshc
++          - thead,th1520-dwcmshc
+ 
+   reg:
+     maxItems: 1
+@@ -38,7 +39,6 @@ properties:
+       - description: block clock for rockchip specified
+       - description: timer clock for rockchip specified
+ 
+-
+   clock-names:
+     minItems: 1
+     items:
+@@ -48,6 +48,9 @@ properties:
+       - const: block
+       - const: timer
+ 
++  power-domains:
++    maxItems: 1
++
+   resets:
+     maxItems: 5
+ 
+@@ -63,7 +66,6 @@ properties:
+     description: Specify the number of delay for tx sampling.
+     $ref: /schemas/types.yaml#/definitions/uint8
+ 
+-
+ required:
+   - compatible
+   - reg
+@@ -71,6 +73,18 @@ required:
+   - clocks
+   - clock-names
+ 
++allOf:
++  - $ref: mmc-controller.yaml#
++  - if:
++      properties:
++        compatible:
++          contains:
++            const: rockchip,rk3576-dwcmshc
++    then:
++      properties:
++        power-domains:
++          minItems: 1
++
+ unevaluatedProperties: false
+ 
+ examples:
 -- 
 2.46.0
 
