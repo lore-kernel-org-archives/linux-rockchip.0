@@ -4,160 +4,99 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AE923C54755
-	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Aug 2024 09:10:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BF52CC54757
+	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Aug 2024 09:26:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:From:References:Cc:To:
-	Subject:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ahIyNqOYMRlUTy2p3v/Bk39LpoCOKhI3BM/tXSNNa7A=; b=JkoAbC4I4L09A6TND3ik8l2dxm
-	6OmM0Rm4tOm7MlNvyqVrKPZDF/VObjXqwFQT0Pi4yOvkS3RzTgzT6Ax0hEU7FzxXhsDhTSaMftYdE
-	KalP0ONNZ/tnannIQytigghkmoBDV1Cru9kcO2cBNoPwa5Wmre6XuvdsYKbTKNdBP8JJpT/FtDMgo
-	pxJo1NsvhOYGcQ3th9vQT8RwYOZ8hQVxVftSL6RVilXH5JqUkpASVGS9M5R5TFYkynp+EcJVBPvTj
-	u2Ndj5T/93BRUdd0V75JEn4WGL5VOp/H3GPxiAM1Lz/Tq7hNAO/Xl38VwtUop1UpvJyxAK2e028Z7
-	litcWeHA==;
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=45UR6rzCOySj03H2EzFzTlF8p2cUjVopFUnLQ14TMbM=; b=Hrg7KF0Y/L/1E3
+	ZBXVjQZYKJcAP0K+1okECx8X0ePl0dCgJCIinKZklDOSaGtZYU77QuRgeD7j7GWdYRPnQvMI1z+cK
+	0yCWtjZ78SuzDWSNlakQ0nOUI7vgTyrxtDXEGPSjpnw5YdGgGtAkMO8VIt7qDqaiXE36qE5TnnZBL
+	d33fqZzmL1Q/MFAEGMoYZ4KIFEneT4CU08e2Gz6u5HFZK4lVbelcwOj336pcmOYpCq8YyTG1qGkus
+	Dq5BBcTPD5QfSLERf3c+8A5uo3CUJAsljoVd+hLb6kZruzpHNQX/Km8VzXGSAXqF2qSYJC6U7YXPg
+	yafBnjWkTpoiFhxb6FbA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sjEh4-0000000EeaU-1jrH;
-	Wed, 28 Aug 2024 09:10:22 +0000
-Received: from mail-sgaapc01on20721.outbound.protection.outlook.com ([2a01:111:f400:feab::721] helo=APC01-SG2-obe.outbound.protection.outlook.com)
+	id 1sjEw8-0000000EhmE-0FuS;
+	Wed, 28 Aug 2024 09:25:56 +0000
+Received: from omta034.useast.a.cloudfilter.net ([44.202.169.33])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sjEgE-0000000EeNv-0fZq;
-	Wed, 28 Aug 2024 09:09:31 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=DQDdMR6jAiMfIyCVUI7M5DVZv7u1ZZo3IcO2VoAgowAJb2CpziHhVsbdybx8CTJlu+J1nRIqLRCGnRv9Bop0UMVntg/LJ4CHSnFSOPwE95tV8Xw7rQVRg7betqNvVaASH9GD7XY/naWBRgmamPJ5h6Xq50RTfstV1cMzzcjqTFi+Gp3om+A4OqH/R8iaxfxDKXSPncOSY+Mt2Nc89aDhSOy6rCu99aOpXBZrL97kOLgnZrozI/Be/vzyA6bURWxk6c+NQyJ2Dwl5qm7kemZ9UZsgBHIQN6ZgKzXcrV2RWIFYGJd+0oWntBL8ixwVb1kEgZYRqrUY1Dry6wTKbH++FQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=ZgRXmecMfcOQltINsYE862DPHZKPEg2H8QOg0cnx/9M=;
- b=bQBax/ZzNLyJPWr/1fKJVd7Rtvc3Fkac+ZU7/mVQvZMrly9UH+9tOAiLjJv5951zR7e0zn0yLqwRsQDE2yRaxTaPn1TrShDW8gETOvc8OcHiDmurVfAlfTbxZ/f8Fc3MnoeNFl5KhzhJPHbmBqWlCP8G0EnN5L5j4EM991hPciNxthJ8o+Fs3RnZwTQmyvho62ObZ/NxZ0CzZGp6xZgfQC8rEP4KYz0vjWnLbFadBaUkeClrzAeS8hewiOmn4Ce6reVTrpHC9IY/1wEdnsqsRLT+W07ktfKgKFS+EUse20PKBrl8FDdIM9TkUCAXdEFBEZmAlqXplwYy8GFdeQWRrg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=wesion.com; dmarc=pass action=none header.from=wesion.com;
- dkim=pass header.d=wesion.com; arc=none
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=wesion.com;
-Received: from TYZPR03MB7001.apcprd03.prod.outlook.com (2603:1096:400:26a::14)
- by SEYPR03MB6674.apcprd03.prod.outlook.com (2603:1096:101:6b::8) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7897.25; Wed, 28 Aug
- 2024 09:09:22 +0000
-Received: from TYZPR03MB7001.apcprd03.prod.outlook.com
- ([fe80::78dd:5e68:1a9c:36c0]) by TYZPR03MB7001.apcprd03.prod.outlook.com
- ([fe80::78dd:5e68:1a9c:36c0%4]) with mapi id 15.20.7875.019; Wed, 28 Aug 2024
- 09:09:22 +0000
-Message-ID: <157bb276-aae2-488c-8163-367f69c944df@wesion.com>
-Date: Wed, 28 Aug 2024 17:09:18 +0800
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v13 0/2] Add Wi-Fi support for Khadas Edge2 and fallback
- compatible for Apple
-To: Arend van Spriel <arend.vanspriel@broadcom.com>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- Hector Martin <marcan@marcan.st>, Sven Peter <sven@svenpeter.dev>,
- Alyssa Rosenzweig <alyssa@rosenzweig.io>
-Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
- asahi@lists.linux.dev, Muhammed Efe Cetin <efectn@protonmail.com>
-References: <20240828-dts-v13-0-6bff9896d649@wesion.com>
- <7951482c-ee1e-45f4-8753-433a933321b6@broadcom.com>
-Content-Language: en-US
-From: Jacobe Zang <jacobe.zang@wesion.com>
-In-Reply-To: <7951482c-ee1e-45f4-8753-433a933321b6@broadcom.com>
-X-ClientProxiedBy: TYCP301CA0016.JPNP301.PROD.OUTLOOK.COM
- (2603:1096:400:381::17) To TYZPR03MB7001.apcprd03.prod.outlook.com
- (2603:1096:400:26a::14)
+	id 1sjEti-0000000EhDY-3Syc
+	for linux-rockchip@lists.infradead.org;
+	Wed, 28 Aug 2024 09:23:28 +0000
+Received: from eig-obgw-5008a.ext.cloudfilter.net ([10.0.29.246])
+	by cmsmtp with ESMTPS
+	id jDIRs6WjS1zuHjEtSsySfS; Wed, 28 Aug 2024 09:23:10 +0000
+Received: from md-in-79.webhostbox.net ([43.225.55.182])
+	by cmsmtp with ESMTPS
+	id jEtNsrIaln7yNjEtPsrLfS; Wed, 28 Aug 2024 09:23:08 +0000
+X-Authority-Analysis: v=2.4 cv=ePwVjmp1 c=1 sm=1 tr=0 ts=66ceec7c
+ a=LfuyaZh/8e9VOkaVZk0aRw==:117 a=kofhyyBXuK/oEhdxNjf66Q==:17
+ a=IkcTkHD0fZMA:10 a=yoJbH4e0A30A:10 a=-pn6D5nKLtMA:10 a=vU9dKmh3AAAA:8
+ a=M-OHScM7UXdo8wPXp2IA:9 a=QEXdDO2ut3YA:10 a=rsP06fVo5MYu2ilr0aT5:22
+ a=ZCPYImcxYIQFgLOT52_G:22
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=linumiz.com
+	; s=default; h=Content-Transfer-Encoding:Content-Type:In-Reply-To:From:
+	References:Cc:To:Subject:MIME-Version:Date:Message-ID:Sender:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+	List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=7MLyh0ZMj/waRkEMqu5NvgdgV0+LWDWuoIenoixpKGw=; b=l2gyZteWv7EYdzX/4or9dLknID
+	RGoc9pGyxup2y0WQL0LOCFxAwDcJT6z145RenV3kVY4TT9/cXoQYHu4TztYLqo6wpoFfv8HiLOh2h
+	B9bqQoAhbyQWcjwmfIGTfHakVJFKSPNUut76T9i6QxRkPK2ARorZWRyvxrEe0PLSHsCw94eB7Fdbi
+	GXdbT0sIeBapRRyJYFn6j+ObD/Yoih/cXdwPJ9A2PQRzngGoczHALepITGf7opJ2MKYTipvdoFJdK
+	e6r6STKaBCZWBFCODAblZJAasuSlQ8IdxiDcmm+wlvKRMnUBDH02HARr32cKNXTaKFbUo6OxTEQdb
+	gzwgc8BQ==;
+Received: from [122.165.245.213] (port=38254 helo=[192.168.1.106])
+	by md-in-79.webhostbox.net with esmtpsa  (TLS1.2) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.96.2)
+	(envelope-from <karthikeyan@linumiz.com>)
+	id 1sjEtM-002IZN-1L;
+	Wed, 28 Aug 2024 14:53:04 +0530
+Message-ID: <207109b6-0b07-45dd-8143-f6e07cc427d8@linumiz.com>
+Date: Wed, 28 Aug 2024 14:53:01 +0530
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: TYZPR03MB7001:EE_|SEYPR03MB6674:EE_
-X-MS-Office365-Filtering-Correlation-Id: 125f1b4f-8c5c-4f5b-dab1-08dcc7411b1a
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|7416014|376014|366016|1800799024;
-X-Microsoft-Antispam-Message-Info: =?utf-8?B?ZVlNdzRUWHlQNVpWeCtCK05oTTVTVUlHR2lMYUpGZmlYeS9yWUdmZ1hHbm41?=
- =?utf-8?B?emdTeDc4NFIwTVNSMUZNT1pxdUY1b0FYbDdBQ0REWVU2WDFRcGVGZ24waTJB?=
- =?utf-8?B?WGFGemFwMWFqcHBWQnZlanVQSG8zYVdLNWJMSnMvTENuVXpzazdMTDc4c2ND?=
- =?utf-8?B?Y1BCLzhsSm5hRnVGRnBYVnIrdUY0Q0k4S3V5YzBnaHIzTkZnS2duODZiRjRj?=
- =?utf-8?B?NkdoOG1MV1VZZ0xMeVBEN1V1djh6TlUwTzdTeEk1VmhxcHhMQWhRcFVzdWtV?=
- =?utf-8?B?RVc0TFJBTGdFYmhBVktzVjN3QXpJRkt4Z2xmdC81N1ZYU3liZWx6QjlwWTk0?=
- =?utf-8?B?MG9PZSt6VGUzMStjZDZseUtWMGYzSGpKNkszUFJ4ZVNOUlhUNWVBNkY2T3cr?=
- =?utf-8?B?Z0MyM2FvWVFYTURnMTJWakNpdE95QjNpQTNaN1J2OGg1ZHorU3QwRzJwTUc0?=
- =?utf-8?B?dkh3RzNjNEllQTdnS2hTODVKb3FpYmhtU0pDV1V3aW5LTjdDRStMcHpvdnA5?=
- =?utf-8?B?SDZWdUhMY0ZWNWFrSDJtOVkxaFZlMjBOQzBzVU1jMXFnK1pvdFhrR3hwZzNR?=
- =?utf-8?B?SGpoK0dVYTY0NUphcHZmSnZzN2lBVlRwSExjeG5UUThKcCtiREYvckF2YkJD?=
- =?utf-8?B?V3B3a1JrZGk4WnNvYjZLYkE5dWhscHd5bXRFd0RQN21ZRlNIeFoySm5yVm0v?=
- =?utf-8?B?R3BGeExTL21HT0VoWWxucXJSU1JoQmNQN0dRMEtCWE50RmJiaEEyb0VBS3Ji?=
- =?utf-8?B?ZnpjNjBzaXc4Q1UyRlc3b2RobFlHelZZSkRqdDRPQUFkQytoclZWNHNmNEF6?=
- =?utf-8?B?UGtFdUFSTTU5OTJkenBHUjVmTXV5LytWbjJPS3VpTSsyVU5wc1MwRnV2aGJ2?=
- =?utf-8?B?YVR6d2wrT09rd1ZWU2p1Rlp0SDNRS2RwVjNWOXdYYW13cGplbWw4bGVFeDdY?=
- =?utf-8?B?ODZtQjBwWHhudGEyTkZXMy9BTWlkbXI2aE9vdUt2S21YbHVLUjNqeWZjdWYw?=
- =?utf-8?B?NGlzS1JLc1gxd3ExWDVBTDZVZWVta2twMHI4ZXpTOUhLUklWMjdUL1c5Q2xw?=
- =?utf-8?B?UmlSSFdiUXJRcVFuWFlKanZKQjVvNlJnUWlQZWplK0V2MnlJdDR6aVkxdWdw?=
- =?utf-8?B?bHVuRk1yWDkyUmNnbUNBRGh2S2pSUm9kU1F5QTlnb3U1WVVXQWFVOXBGcU9L?=
- =?utf-8?B?QkgwMW1ZMjdYanZEbVpNT3h1cFZtZ2tmbnFOanpwNkVQTGVSUTRQWkhyemZN?=
- =?utf-8?B?dVNUSkhiWUhzWGNGaUVZSUNEV2VaQXFobFlIUWpLSVNVb1ZFTEw1Z3J3Zk1O?=
- =?utf-8?B?TGVYUHJtZUhaQmZIaHdUTjc4OVIxTXZGOU9HQ3F6b01rNmRUNEk0eSt5V2V6?=
- =?utf-8?B?UmtPZG1xN0Z4dUZUSmFFcmhTNmtBNE5pdlhGbCtoOHFOQVR2WDBXYk1DblpY?=
- =?utf-8?B?dktBeUJRRlQ0TElvaGVKWTQ2S2RMVDlUSjBFLzlFTHZVV0lkcHA1SlN5T0xC?=
- =?utf-8?B?TkZ3YmhxRm9YVE1ZQVNIcllOa3MrNUxSVmhEZXl6TkdxZ2VpMEhuOU9RZTY0?=
- =?utf-8?B?Q3dJcW5YK2hFcDhUdzVkR0JkKzI4VDRFM3cxY2JaSkx5WHRPbGZIVlN1ejkv?=
- =?utf-8?B?VlgveTU4MlkzNVlBMWIwMUFvZ3k2QURzV1FGNmc4N2NtQzMydVpDQld2cTBi?=
- =?utf-8?B?UVcrRThyR1FSTC9xelp5TkVLTmhkM3k2MDhHSWo0VW5jeXFLam50cTN5eS9I?=
- =?utf-8?B?bmJWT04wSDVaaWd6TXJJa1dwK2czdElSckd3a3ExUk1xZ2p0Q2VpdDRHVjAz?=
- =?utf-8?B?SWVmTVBlZ2Z2Z0NGQ2FhQT09?=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:TYZPR03MB7001.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(7416014)(376014)(366016)(1800799024);DIR:OUT;SFP:1102;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?eDRIRDd4RXBvM05Dbm1hVVNab1VicFpVMTdwY09QSW12RXZzTU9uQnM4dDlr?=
- =?utf-8?B?RmlZckJWWlFwVVN6ZHppNGgyUmtxZTJNRzRhMGRUVG9waDBGVEU4elp1dmNF?=
- =?utf-8?B?dksrQThpcnhhWGNjRFdRVkFDSHBiR2cwMnFVSDhSckY0VnRWRjcyUWNTdlFS?=
- =?utf-8?B?VkYxSlg2V1h3TFNLYlBYRE5uNFlVS2tFbFlyR1I2emRWeDNKVHpsSnVlOHIr?=
- =?utf-8?B?WFlOaXdvZFBZTGFISTRnOFNLSzNFMmd1RUFueGIwMFJ5c0hrNWg1SDd2b0R4?=
- =?utf-8?B?UGRoQmRsK0t2ZXp0a3RLb1RZTUp2MVNodmV5bUI1MkhYSm5LbzFqYS9taUF2?=
- =?utf-8?B?amRySVdUcjNla1g2dkdiaGJtNVZ0MnkvYm5SaHpCNG8xUk95Q3hjbHV3WlFW?=
- =?utf-8?B?S0tVVGRtM3UwSEpMeTBSRUJIYkNzYWdTb0k1anJDRktWYjVUSStUODkxL3Nj?=
- =?utf-8?B?MlpvanJ2aHl2Q2hYY2dpN3JqWEpTaHcreGovNkh2TVlIQTR3aStrNnlzS244?=
- =?utf-8?B?em1EbkhFUUNXNkhZcVFETEU3UWtsQ2Y3cE5jUC9vdGVvR0RpMy9ISGpjbFRt?=
- =?utf-8?B?V1I0SGppaStGYmxONnFJMWRoMjRvbG1UdzgxbzBJNkl3dmtJbVY5WThtRTN0?=
- =?utf-8?B?ZWRGY2lhUkFhS2lKTy92QURlbndCSjhYZkhMVWxhSlN4VGFwRG9iWi9aejla?=
- =?utf-8?B?WlQyQkY5SUZBM2ZieWI4MUtaQzF6Z2ovbHZCMnJwM3VWWXNRTzh3bmxXWTdJ?=
- =?utf-8?B?VEliaE0yY1p1ZjZoMDd5azRGRlhkdVhZc0ZRcHl0T0RNWkFnWndLWW8wYWhV?=
- =?utf-8?B?RE9tand6Nk9ZVWZZYldUVmdiaE45TG9jY0dkWE9xdjdvSUhGSkE2MmFaTk1a?=
- =?utf-8?B?NGdXSUVtREozc0JPT05obmVaVWxzSGV2Y3Z4RzYxMXpEUytraUsyVW9TNGFZ?=
- =?utf-8?B?b2FhdU0zZ3BUclB5L09XRmpBQ0pDcElMMVZvMFNXTUNIbXJXTFA4Q3RxWGFY?=
- =?utf-8?B?YURUSUdmQ0RmN3BXYllDRGIrUnJ2TWk4ZHBzLzBQS2pySnlpVGNFZWRpL0ZS?=
- =?utf-8?B?OGM3bnp2cHVMR3lPTGoyeldWY2FuZUo5SDZqVWV6aDF4bHZKRXcvL3JzSFY5?=
- =?utf-8?B?VVEzaWppOFltUlJhRERxYVBLOWkySGxkVDVNbEFZVE4zbDQwcnQ4VHJRd2dC?=
- =?utf-8?B?eUFSZ09QbDdWdFZlS0RHVHg2OWhsaERhaFV6YUNUM0VmbDNybGhSWTNaWVph?=
- =?utf-8?B?QXRuVEFSSThhSUxUZ3FTSWRWdWluSTRqaEVFR1lXaXQvT3dVQ1RFditrNVlS?=
- =?utf-8?B?MWZxQnVhaFpiZ1BjckF1dU9MVFFTa3AxUFF3T1pDUFMwN3BmQXA5ZzIwckpi?=
- =?utf-8?B?ZERJU0x3cTcyZnJxVEtnVncxOXFOY1BscGEybGNtOHNFZnNnWEVVRVk3UGEz?=
- =?utf-8?B?NzRGSUY4R1V2Y0hMTis0bUh5UWNrZHBNd0xPeElEdGFVQWQzd29qa1pJeDh0?=
- =?utf-8?B?R1ExM3d6eEw0dEh0VHVjcURMQ0M4Rk9jRzZZM1poUThoOVhGdCtUajJIdnRH?=
- =?utf-8?B?ZTVWQVJ2emdWL0dvOWtkdXMzaFVycURHcjdVa2pteDJmRG5nRnJxdGVrTXVZ?=
- =?utf-8?B?QWFlT3grSlRWMERydGpvTURmclM3NFJTdTBRWi9CU3JMR0owYmFrakloVzF5?=
- =?utf-8?B?Vk9ja3cvNzZwVnJGdUJEa1UrVTl6OTE3YWtDcDRpTXI1d0hoQ2s2WjB3OU5R?=
- =?utf-8?B?cXR5K3FHNWlvd0dKRDBjaVgyeWo0ZnZOdUIwZjZWdnpGRGUyVEZUbHVDdWMx?=
- =?utf-8?B?YktMclFCbE1taUQ0aGllRHFOYktTQzVpMDcxcGpWQVJKQkhYMzhaK2ZSMnBO?=
- =?utf-8?B?MC9YM1hXR3hzMWJ5SERQSVcranljV00zS3d2MDJ4WE9oN0NEdkdvRElxdHpG?=
- =?utf-8?B?MmN2Rm9kVWtiWm9SZXZNMllYK1JJRTNpRWt3TnBlNDV5Q3lJZmpWOTVDWFlY?=
- =?utf-8?B?eVFja3dxVkltRktleUp4MnBmUjJaSFF6QlhhY2gwWU5PRFBWTUU3b3A5cTBB?=
- =?utf-8?B?TnFJZ3EzK25EZUZVcDk1RHNwVVFVc1liUFRtTzRlN1F2QUtFYVpSNitHVVdr?=
- =?utf-8?Q?/cvP+b6DPSCtHiY0FtrqPGdjr?=
-X-OriginatorOrg: wesion.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 125f1b4f-8c5c-4f5b-dab1-08dcc7411b1a
-X-MS-Exchange-CrossTenant-AuthSource: TYZPR03MB7001.apcprd03.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 28 Aug 2024 09:09:22.1974
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 2dc3bd76-7ac2-4780-a5b7-6c6cc6b5af9b
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: WXvbQyaYdKFRGxF3KFIpiqrSrOIEh3SG0kyx2gmDPV33+wET9qsTFqEgS+TwZTvktwmXgJpzzsmrbqiazce51Q==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SEYPR03MB6674
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 7/8] dt-bindings: arm: rockchip: Add Relfor Saib
+To: Krzysztof Kozlowski <krzk@kernel.org>, Conor Dooley <conor@kernel.org>
+Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
+ heiko@sntech.de, alexandre.belloni@bootlin.com, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-rtc@vger.kernel.org
+References: <20240823153528.3863993-1-karthikeyan@linumiz.com>
+ <20240823153528.3863993-8-karthikeyan@linumiz.com>
+ <20240823-lark-regime-0d3ab4215d69@spud>
+ <a5d4f421-5120-4421-944e-d39d67e482bb@linumiz.com>
+ <9537c866-cddc-4958-86a8-d097982067cd@kernel.org>
+Content-Language: en-US
+From: karthikeyan <karthikeyan@linumiz.com>
+In-Reply-To: <9537c866-cddc-4958-86a8-d097982067cd@kernel.org>
+X-AntiAbuse: This header was added to track abuse, please include it with any abuse report
+X-AntiAbuse: Primary Hostname - md-in-79.webhostbox.net
+X-AntiAbuse: Original Domain - lists.infradead.org
+X-AntiAbuse: Originator/Caller UID/GID - [47 12] / [47 12]
+X-AntiAbuse: Sender Address Domain - linumiz.com
+X-BWhitelist: no
+X-Source-IP: 122.165.245.213
+X-Source-L: No
+X-Exim-ID: 1sjEtM-002IZN-1L
+X-Source: 
+X-Source-Args: 
+X-Source-Dir: 
+X-Source-Sender: ([192.168.1.106]) [122.165.245.213]:38254
+X-Source-Auth: karthikeyan@linumiz.com
+X-Email-Count: 5
+X-Org: HG=dishared_whb_net_legacy;ORG=directi;
+X-Source-Cap: bGludW1jbWM7aG9zdGdhdG9yO21kLWluLTc5LndlYmhvc3Rib3gubmV0
+X-Local-Domain: yes
+X-CMAE-Envelope: MS4xfJppBVYmFSwTPmuK89pJPpvn5HE61MRHRQPc4ofxbrt07eiUUtt+o4VWc8cQwvy4V+ChaLdMfuv8A5H5oKypoPlt0ANEuUBk6GLk+CwVOL9D8HQUjJL8
+ kV2dQLdqAgOqO8m39EPBr5pJt0IvmMz8eS+xIbMUF/bNMXvKjP+mLqLUVwjZbt5OFGPzYsb0DmqgCF7EPwCQ7DgABmIAMdBtsrHfOnj2OmqvjkNjC4BYJOYH
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240828_020930_222689_9064D542 
-X-CRM114-Status: GOOD (  12.26  )
+X-CRM114-CacheID: sfid-20240828_022326_948254_A6AD0C47 
+X-CRM114-Status: GOOD (  13.80  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -169,24 +108,65 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-CgpPbiAyMDI0LzgvMjggMTY6NTUsIEFyZW5kIHZhbiBTcHJpZWwgd3JvdGU6Cj4gT24gOC8yOC8y
-MDI0IDEwOjQ1IEFNLCBKYWNvYmUgWmFuZyB3cm90ZToKPj4gQWRkIGJhc2ljIFdpLUZpIHN1cHBv
-cnQgb24gS2hhZGFzIEVkZ2UyLiBXaXJlbGVzcyBkcml2ZXIgbmVlZCB0byBjaGVjayAKPj4gImJy
-Y20sYmNtNDMyOS1mbWFjIgo+PiBjb21wYXRpYmxlIHNvIGFkZCBpdCB0byBBcHBsZSdzIGRldmlj
-ZXMuCj4gCj4gRGlkIG5vdCByZWNlaXZlIFtQQVRDSCB2MTMgMi8yXS4gSSBkb24ndCBmb2xsb3cg
-ZXZlcnkga2VybmVsIGxpc3QuIE1heWJlIAo+IGdvb2QgdG8gYWRkIGxpbnV4LXdpcmVsZXNzIGxp
-c3Q/CgpKdXN0IG5vdyBpbiB5b3VyIHJlcGx5IHNhaWQgdGhlIGNvbXBhdGlibGUgc2hvdWxkIG5v
-dCBiZSBhZGRlZC4gU28gMi8yIApwYXRjaCBpcyBhbHNvIGRyb3BwZWQuIE1heWJlIHRoZSBwYXRj
-aCBpcyBhYm91dCBEVFMsIHNvIGI0IGRpZG4ndCAKaW5jbHVkZSBsaW51eC13aXJlbGVzcywgbmVl
-ZCB0byBiZSBhZGRlZCBtYW51YWxseS4KCj4gCj4gUmVnYXJkcywKPiBBcmVuZAo+IAo+PiBTaWdu
-ZWQtb2ZmLWJ5OiBKYWNvYmUgWmFuZyA8amFjb2JlLnphbmdAd2VzaW9uLmNvbT4KPj4gLS0tCj4+
-IENoYW5nZXMgaW4gdjEzOgo+PiDCoCAtIENoYW5nZSBwYXRjaCAyLzIgYXJndW1lbnQgZnJvbSBk
-cml2ZXIgdG8gYmluZGluZ3MuCgotLSAKQmVzdCBSZWdhcmRzCkphY29iZQoKCl9fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxp
-bmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5p
-bmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+
+
+On 8/26/24 14:03, Krzysztof Kozlowski wrote:
+> On 24/08/2024 14:48, karthikeyan wrote:
+>> On 8/23/24 21:51, Conor Dooley wrote:
+>>> On Fri, Aug 23, 2024 at 09:05:27PM +0530, Karthikeyan Krishnasamy wrote:
+>>>> Add devicetree binding documentation for Relfor Saib
+>>>> board which uses Rockchip RV1109 SoC
+>>>>
+>>>> Signed-off-by: Karthikeyan Krishnasamy <karthikeyan@linumiz.com>
+>>>> ---
+>>>>    Documentation/devicetree/bindings/arm/rockchip.yaml | 6 ++++++
+>>>>    1 file changed, 6 insertions(+)
+>>>>
+>>>> diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
+>>>> index 1ef09fbfdfaf..29f7e09ae443 100644
+>>>> --- a/Documentation/devicetree/bindings/arm/rockchip.yaml
+>>>> +++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
+>>>> @@ -848,6 +848,12 @@ properties:
+>>>>                  - radxa,zero-3w
+>>>>              - const: rockchip,rk3566
+>>>>    
+>>>> +      - description: Relfor SAIB board
+>>>> +        items:
+>>>> +          - const: relfor,saib
+>>>> +          - enum:
+>>>> +              - rockchip,rv1109
+>>>
+>>> This does not make sense to me. Why do you have an enum for the SoC
+>>> model, implying that this SAIB board would have more than one possible
+>>> SoC? I'd expect to see - const: rockvhip,rv1109
+>>>
+>> There is an upcoming version of SAIB board based on Rockchip RV1103.
+> 
+> Still wrong form multiple points of view:
+> 1. Not logical, we never expect such entry in top level bindings,
+> 2. Same board or different? If same, how is it possible to have two
+> different SoCs (not modules!) in the same board? These are different
+> boards. Or maybe this uses some SoM, but your commit msg explained
+> nothing about this.
+> 
+> You have entire commit msg to explain the hardware. Use it, so you don't
+> get such questions.
+> 
+> The code above: NAK
+It's my mistake, previously my understanding about this binding was 
+wrong. I will change it in v2 patch.>
+> Best regards,
+> Krzysztof
+> 
+Thanks,
+Karthikeyan
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
