@@ -4,61 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E7217C636DF
-	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Aug 2024 16:19:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 42B65C636EA
+	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Aug 2024 17:02:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Cc:From:References:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Date:To:Cc:From:Subject:References:
+	In-Reply-To:MIME-Version:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=QmOHQjs7wU6dKuCHRnb4I5EeiV594TX0DPCEsQ4lyeY=; b=ahZaCJNciGaYDo
-	KBnHHSyTp4zLPRuDXF2B8VLr86zTQjG0nzTO4QMi/7WqdIYUwz+yCcvUo0mES6VvYDBBlFY80UiRM
-	iBquttlINtChB4x64q18NsvlLNLt7Tiw+XzYZIS6Rkr6VBc5UD6CgTzAwcegk0wObz3/HFPwc8T4V
-	m1X8xZzNfA+8zVeDOLJE7Nz/ya/R8XxagyKSg43Aw71EPCOtwMu4P+EZNiApgI2PRlD+J0l5Y5toN
-	/423bk0xCzoTIYa2gZKx+prMQmk97UQNRKn5zu129NU8kWe4YFU8IDvlQBi55JTrnlc7eYjpn5Cme
-	5wUKcM1fMotYAceWTRLA==;
+	List-Owner; bh=rdwLw/Kj+juqUKXX3AqWAebXzlmCbfy6uIGN/B6jEqE=; b=j6uLpW6+dIh6bs
+	gGjVaHmGxwhX22ZbyZnDu3cfHShtGwjAPsCc3WDPOllMmnEX3H0OujHaCPuA6jI4gZm2xBSnKlkUa
+	fK0G9jovqy9t3Q8qgcq5rd0ftHEqEC3/tsYZwV5Ypym/U6ykGSouk7xEIJHEYHMJ9yhDlAP/Hqvuz
+	LEop9cylNto/EDbAKcEPCQtE3TROrN86CtJh2tz0VVVNqzyzZWy5VjnXncFKEY9StJPQIO21xsgle
+	BRlB9ndaxNOVkZZC+p+6jWEUWMw2hFLwtz9soEh0a7Fcho3llR+5FhFF3odR4P2SmCVE7GgoQ2L4a
+	qFTI59EUcFcaQHZqtmlw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sjLNs-0000000GAMA-0TGZ;
-	Wed, 28 Aug 2024 16:19:00 +0000
-Received: from [129.204.178.38] (helo=classfun.cn)
-	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sjLN2-0000000G9kA-0n3L;
-	Wed, 28 Aug 2024 16:18:09 +0000
-Received: from [192.168.0.160] (unknown [14.153.79.170])
-	(Authenticated sender: bigfoot)
-	by classfun.cn (Postfix) with ESMTPSA id 33DC8789E7;
-	Thu, 29 Aug 2024 00:16:02 +0800 (CST)
-DKIM-Filter: OpenDKIM Filter v2.11.0 classfun.cn 33DC8789E7
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=classfun.cn;
-	s=default; t=1724861763;
-	bh=6K8wd3nD9WLSsOwW9XksbhVbocZ+D0rpe/Hdv2t4fOg=;
-	h=Date:Subject:To:References:From:Cc:In-Reply-To:From;
-	b=gks/6HOQV81U32M4YIzHwfFzcxWsICyHwEYbTCylEzPt847v3Pqfo4iWNKohiF/v2
-	 fg26KbTD26Y8E/bg4/i8SR9mF/0OjQjpfTJ+mUsIQciojbHfbYs30NTi1d0FAUYl6V
-	 kYrJp9qTpldeIHYk8p9hluNDJt+8tvvXg8czotbk=
-Message-ID: <8be71b44-403d-47e2-b148-09ef9f1cf050@classfun.cn>
-Date: Thu, 29 Aug 2024 00:17:05 +0800
+	id 1sjM3j-0000000GHgi-07nj;
+	Wed, 28 Aug 2024 17:02:15 +0000
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
+	id 1sjM1s-0000000GH9p-2i9g;
+	Wed, 28 Aug 2024 17:00:22 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id 89FEDA414F1;
+	Wed, 28 Aug 2024 17:00:12 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C3B98C4CEDA;
+	Wed, 28 Aug 2024 17:00:18 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1724864418;
+	bh=wvcCw/u2DHmQjZ+lBFZsEG5m3ALmQ5p1JIzRH0qd2OY=;
+	h=In-Reply-To:References:Subject:From:Cc:To:Date:From;
+	b=YXJ/6JlS49eKre5/7JLOUjrfR2hvDTzcLLYUdHxEG51KRx369KPbzsP27VUzIVKuy
+	 CUJf5q3YAe7O3XIDhuew9We81iY6C0xrfPGCz8ZDDu9qzBO3ZHopPQxVgzsZk5OpK4
+	 DPD5SU22ZUuXmXbREb85PpvPY/b0G1fv664vdzHu9NatA18kmK+YyblqSpod2PjNYu
+	 NnzirXjAtxU7e7bUoxYb5Uxe3jVDf2QKYnSgswYULp2UkiWZZb+5pciHzrz/goGi4E
+	 lyPvgQhF7OiIG/H9SrHl5NtWRdxRLP2Melm25mxupRtN+26v4szyx2l/M8lYQaLd7j
+	 uMxMk2BZvtBtw==
+Message-ID: <4a441f73cea283e694465d5a7c4bef6d.sboyd@kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [v2,3/3] arm64: dts: rockchip: add dts for LCKFB Taishan Pi
- RK3566
-To: Heiko Stuebner <heiko@sntech.de>, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org
-References: <20240826110300.735350-1-bigfoot@classfun.cn>
- <172485421376.1511809.16668781813371034474.b4-ty@sntech.de>
-Content-Language: en-US
-From: Junhao Xie <bigfoot@classfun.cn>
-Cc: linux-kernel@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>,
- Jonas Karlman <jonas@kwiboo.se>, Chukun Pan <amadeus@jmu.edu.cn>,
- FUKAUMI Naoki <naoki@radxa.com>, Dragan Simic <dsimic@manjaro.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Rob Herring <robh@kernel.org>,
- linux-rockchip@lists.infradead.org, Junhao Xie <bigfoot@classfun.cn>
-In-Reply-To: <172485421376.1511809.16668781813371034474.b4-ty@sntech.de>
+In-Reply-To: <20240818173014.122073-1-krzysztof.kozlowski@linaro.org>
+References: <20240818173014.122073-1-krzysztof.kozlowski@linaro.org>
+Subject: Re: [PATCH 1/5] dt-bindings: clock: baikal,bt1-ccu-div: add top-level constraints
+From: Stephen Boyd <sboyd@kernel.org>
+Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+To: Alexandre Torgue <alexandre.torgue@foss.st.com>, Charles Keepax <ckeepax@opensource.cirrus.com>, Conor Dooley <conor+dt@kernel.org>, Elaine Zhang <zhangqing@rock-chips.com>, Gabriel Fernandez <gabriel.fernandez@foss.st.com>, Geert Uytterhoeven <geert+renesas@glider.be>, Heiko Stuebner <heiko@sntech.de>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, Magnus Damm <magnus.damm@gmail.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, Michael Turquette <mturquette@baylibre.com>, Richard Fitzgerald <rf@opensource.cirrus.com>, Rob Herring <robh@kernel.org>, Serge Semin <fancer.lancer@gmail.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mips@vger.kernel.org, linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-stm32@st-md-mailman.stormreply.com, patches@opensource.cirrus.com
+Date: Wed, 28 Aug 2024 10:00:16 -0700
+User-Agent: alot/0.10
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240828_091808_435493_BEFD9F2C 
-X-CRM114-Status: GOOD (  14.07  )
+X-CRM114-CacheID: sfid-20240828_100020_782019_759DB686 
+X-CRM114-Status: UNSURE (   7.20  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,51 +71,16 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 2024/8/28 23:14, Heiko Stuebner wrote:
-> On Mon, 26 Aug 2024 19:02:26 +0800, Junhao Xie wrote:
->> Add dts for LCKFB Taishan Pi.
->> Working IO:
->> * UART
->> * RGB LED
->> * AP6212 WiFi
->> * AP6212 Bluetooth
->> * SD Card
->> * eMMC
->> * HDMI
->> * USB Type-C
->> * USB Type-A
->>
->> [...]
+Quoting Krzysztof Kozlowski (2024-08-18 10:30:10)
+> Properties with variable number of items per each device are expected to
+> have widest constraints in top-level "properties:" block and further
+> customized (narrowed) in "if:then:".  Add missing top-level constraints
+> for clocks and clock-names.
 > 
-> Applied, thanks!
-> 
-> [1/1] arm64: dts: rockchip: add dts for LCKFB Taishan Pi RK3566
->       commit: 251e5ade9ba43f44f60713310f89e0f4495a2088
-> 
-> 
-> It is customary to re-send the whole series when doing a v2.
-> Replacing only single patches confuses both people and tooling.
-> 
-> But no worries for this time, I found and picked the correct version
-> I hope ;-) .
-> 
-> I did sort some more properties and nodes [0], so maybe take a look to
-> make sure I did not break anything.
-> 
-> 
-> [0] There are sorting guidelines in
-> https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/Documentation/devicetree/bindings/dts-coding-style.rst
-> 
-> 
-> Best regards,
+> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+> ---
 
-Hi Heiko,
-
-Thank you for merging the patch and sorting the details!
-I will make sure to reduce mistakes in future patch submissions.
-
-Best regards,
-Junhao
+Applied to clk-next
 
 _______________________________________________
 Linux-rockchip mailing list
