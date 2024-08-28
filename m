@@ -4,86 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5C762C5AE5A
-	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Aug 2024 15:44:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3400AC5AE5A
+	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Aug 2024 15:44:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
 	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
 	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=xcNVI1tGV5JdedaIbJBkMibksZJyflrw0PWrkH+6/u0=; b=sNhsRLzlFhxlmi9lK3bHA+D2nU
-	YbyEq2SCp2N00aZ/ggMDi2xTnWRRDijd5NVCnyalyhqlXGMqfJLDinNbe61DYJw+2kenXNa6AWsbm
-	0g19eErlCb3cSl4a53e7z3kO0LWVQyYz5z/HoKh6CICxo0+QcDc7umUata6OH3mjU0WeU5hHQYHRb
-	pb98Mq0Tf1LpWSblngCS6X2pE7VmGV+cUGocTmF4/HGCnIobQwwoIhVOCp4Zc3hdjhNQr66Pi1o/L
-	opFadi8rfL56yYeqEXaiqx17vcGbArc1tRZB5/jGjPj5pL+U4IM/bN6DXlc2X8jMJ7M5dif+Jh1HV
-	Xc9vt+hA==;
+	bh=Kyf0CVk5yBQOxfS/gTl7JzHJKqi27mKwn84n9qDWWAQ=; b=AJj6nUTTLKAi2F3OLsNjafVcLy
+	Pui1tEEYqRqAt/GEOK2RR2esDbkjTgUj+LGgefM/E1f+fo+fsCCaSuFG8EDhJHaAEl3ONDdyd7VmZ
+	3l45UfZ7zxVA6ALosSyVtrPfs9q5CqZKX5I8QPEBwloXdmnOw74kVpucs74OrQBndiF2NrRm0pnk/
+	NosDkJ54OPF2AAgK2emuZ1KbQYm8zbxXDeDtbMPj4byIhWOf9s1g4jxC85sCloPRbGlCO1iyZ0BJz
+	WhTzqBm0NDmziQMgFNJ45P04WZgNEu94hF8OOs1qqyCDVIsNcjUVEdSUxwpPC2G6mtjjRAfo4rkoF
+	pXM6LFjA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sjKqR-0000000G2rt-0eL7;
-	Wed, 28 Aug 2024 15:44:27 +0000
-Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
+	id 1sjKqn-0000000G3AE-2M7i;
+	Wed, 28 Aug 2024 15:44:49 +0000
+Received: from a7-49.smtp-out.eu-west-1.amazonses.com ([54.240.7.49])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sjKa2-0000000FyJh-1iDx;
-	Wed, 28 Aug 2024 15:27:37 +0000
-Received: by mail-wr1-x42f.google.com with SMTP id ffacd0b85a97d-371941bbfb0so4033461f8f.0;
-        Wed, 28 Aug 2024 08:27:28 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1724858848; x=1725463648; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=7d72c/mj/2Z6FiVdpOBNTFT01VdBmf1RNvsZEcgNCnA=;
-        b=i5DJtMEmVpohGirj6WBFhyEjCx8Iy48c+A7YJlg4+cfsAFeKlBmfDdMAYI4Oh/kO7C
-         4lVtNgtAatZtJtYl7fJmgPyz/LEhlKUn+5+JYZdpT8TBwtu9Agh+AyKmZgT5bGoIKq5C
-         Q5sdwWbRoZ4qmdBz79r775JOwDXKJy3ZG/e8D8lVnI0w/Cl1i5nj7vUEPFjLczuKgF/b
-         YfPP2jLaZUzM5u3xmLNT8S9EApkK69gTrCj9NKA/4erakuTnbJLPQALSLCgpYTwg6/Zj
-         MVj1eMi5b69LGnbHpU5kvJv7r5NRLLajtRBwbXOxRT8EmYtfpcB9KwnwNKVkuRkb96gW
-         hfKg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1724858848; x=1725463648;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=7d72c/mj/2Z6FiVdpOBNTFT01VdBmf1RNvsZEcgNCnA=;
-        b=LSaLbpZ+aQxzWcg9ndEwj8KLDF5zcUNlXdsIItYLjMRVWSkblPWtZsPMjyMmRVOyZ3
-         qExu7gQI6owrqYp4+EhMKIrLn40Wj6JwB4hXbDPRvFqk+jkltLXOU8K7tsR0JUFJX+NN
-         F8VT4nUgOzn80vK8bcKA6MkkE5WJ5/xDCKype1N7rgzV9uTZCcRmTcUt2CnGf6IKO+0f
-         WU4uOoKmtpWnPFNpezmBJHhl4R2EZxEkT4KCMyiSPSFDpYT9A3TT7OTshLJXAg9tZJFX
-         EC9ZSl7hlq0NFF/E9qCR7mZPltzN+UY3oEOVdJb6xN2XMkzhsGxF7CYukFZN1m/VDLVB
-         0UOA==
-X-Forwarded-Encrypted: i=1; AJvYcCUqKInh+TLUcEicS+pJCW7qWwhVKi/7aYiIOs5/hoZf1gBmLkDNMOBpdoYKqP9KqF2q8rVFZeiZ9/74v6SBri0=@lists.infradead.org, AJvYcCVdFFFZPdUfc4HnuV26wp7vGihpGvvTFLWFrWiXp3UC9Tz6WeZqvbSqtrJAcZBVzr1iOGRM7h26T40h85Hp31GG@lists.infradead.org
-X-Gm-Message-State: AOJu0YxT0PP4zytwLRKFb3ae6p7WnLnUu2PmsWgmRzQWSO8g6pMTey5W
-	xX5p9Ji9L8/8i1ld8v7HQiRmYwH1ddMyWtl4tJR0WuzOkruYlahS
-X-Google-Smtp-Source: AGHT+IFy+N6MNpikAMD3IJYGiP5Mfu8DbpT3WuOqB9zdjdgMg/vD1umE1XlYBlEzFehtYhZBgfMtDQ==
-X-Received: by 2002:adf:a3dd:0:b0:371:7e73:de6e with SMTP id ffacd0b85a97d-3749685b56fmr1596718f8f.52.1724858847009;
-        Wed, 28 Aug 2024 08:27:27 -0700 (PDT)
-Received: from orome (p200300e41f29d300f22f74fffe1f3a53.dip0.t-ipconnect.de. [2003:e4:1f29:d300:f22f:74ff:fe1f:3a53])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3749b238cf7sm81389f8f.33.2024.08.28.08.27.25
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 28 Aug 2024 08:27:26 -0700 (PDT)
-Date: Wed, 28 Aug 2024 17:27:24 +0200
-From: Thierry Reding <thierry.reding@gmail.com>
-To: Lu Baolu <baolu.lu@linux.intel.com>
-Cc: Karol Herbst <kherbst@redhat.com>, Lyude Paul <lyude@redhat.com>, 
-	Danilo Krummrich <dakr@redhat.com>, David Airlie <airlied@gmail.com>, 
-	Daniel Vetter <daniel@ffwll.ch>, Jonathan Hunter <jonathanh@nvidia.com>, 
-	Sandy Huang <hjc@rock-chips.com>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
-	Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
-	Mikko Perttunen <mperttunen@nvidia.com>, Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>, 
-	Robin Murphy <robin.murphy@arm.com>, Jason Gunthorpe <jgg@ziepe.ca>, 
-	Kevin Tian <kevin.tian@intel.com>, dri-devel@lists.freedesktop.org, nouveau@lists.freedesktop.org, 
-	linux-tegra@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org, linux-media@vger.kernel.org, iommu@lists.linux.dev, 
-	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH 3/3] drm/tegra: Remove call to iommu_domain_alloc()
-Message-ID: <qyvyd2ftebjlgmzyayfvxsqa64c4wgx7keix3a6eexdspbvawy@a5ffnm5h5tgp>
-References: <20240812071034.9443-1-baolu.lu@linux.intel.com>
- <20240812071034.9443-3-baolu.lu@linux.intel.com>
+	id 1sjKfS-0000000FzqK-0ynE
+	for linux-rockchip@lists.infradead.org;
+	Wed, 28 Aug 2024 15:33:25 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=4232tfv5ebdrjdwkr5zzm7kytdkokgug; d=collabora.com; t=1724859182;
+	h=Date:From:To:Cc:Subject:Message-ID:References:MIME-Version:Content-Type:In-Reply-To;
+	bh=AwgQiywBprddxXWa1R2Zf7a6ihYSwX0jXoJo1g6heMQ=;
+	b=ftp3as7m7Fvw0/4dG2MSlasTRY5MYkun+spDAh2rsVdThmaHHvF0gJWteOmkBudg
+	l+f41DTvtjjD1vvSTuMYLminUixigKLveciLX00xyZPy19ponye7LidWaNb9hndbgdj
+	lga/VnTPsWZm7nQSCvs7RV5JMbngYujf9vCSIncVJMA5n9lR/5ONXiOSPozeMy8nsPk
+	UfJxLFM1AfvUP1XooFswowgjmPjNZKmCgJULO3U16Vh7dZcj+jOSpsBc4LjIRhJ813w
+	owdNEv6CjcvuFQuqiPKmH+GEdcOGhlwTeXmZ+CbJUaMuFSAbTJcOpvPgIM9f047jiBo
+	lXKRndwGeA==
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=uku4taia5b5tsbglxyj6zym32efj7xqv; d=amazonses.com; t=1724859182;
+	h=Date:From:To:Cc:Subject:Message-ID:References:MIME-Version:Content-Type:In-Reply-To:Feedback-ID;
+	bh=AwgQiywBprddxXWa1R2Zf7a6ihYSwX0jXoJo1g6heMQ=;
+	b=FwSMTMLGx8b63sAOkuMBfBhAOTJogDgNll5QJ6WOhyrshPixfD4CppGX+DHQLxfk
+	TdQoaZjGGMJOPpvPK/IEPDybbF6jeoq5H2QjeCmMw4XXzyGlEy8vdnssfdhxCXMqDpZ
+	Q7UQP9qKojQVqDB3I/oFxSVOomsJamickcF0evPE=
+Date: Wed, 28 Aug 2024 15:33:02 +0000
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+To: FUKAUMI Naoki <naoki@radxa.com>
+Cc: Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH] arm64: dts: rockchip: remove unnecessary properties for
+ Radxa ROCK 5A
+Message-ID: <01020191999e6e7b-7a435847-00b0-4dd0-8fd6-5a8b41c36f40-000000@eu-west-1.amazonses.com>
+References: <20240826075130.546-1-naoki@radxa.com>
+ <172485421377.1511809.2663736313893585918.b4-ty@sntech.de>
 MIME-Version: 1.0
-In-Reply-To: <20240812071034.9443-3-baolu.lu@linux.intel.com>
+In-Reply-To: <172485421377.1511809.2663736313893585918.b4-ty@sntech.de>
+Feedback-ID: ::1.eu-west-1.YpP9ZbxnARFfy3Cb5pfsLd/pdsXBCNK0KEM7HforL4k=:AmazonSES
+X-SES-Outgoing: 2024.08.28-54.240.7.49
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240828_082730_471307_521EF8B3 
-X-CRM114-Status: GOOD (  21.48  )
+X-CRM114-CacheID: sfid-20240828_083306_489174_BF3859C2 
+X-CRM114-Status: GOOD (  10.88  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,92 +71,71 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============7887300838857033352=="
+Content-Type: multipart/mixed; boundary="===============4951486394151240046=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
---===============7887300838857033352==
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="fslg44mz7bzr7agv"
+--===============4951486394151240046==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="wdutnbnbppbii6tx"
 Content-Disposition: inline
 
 
---fslg44mz7bzr7agv
+--wdutnbnbppbii6tx
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On Mon, Aug 12, 2024 at 03:10:34PM GMT, Lu Baolu wrote:
-> Commit <17de3f5fdd35> ("iommu: Retire bus ops") removes iommu ops from
-> the bus structure. The iommu subsystem no longer relies on bus for
-> operations. So iommu_domain_alloc() interface is no longer relevant.
+Hi,
+
+On Wed, Aug 28, 2024 at 05:14:14PM GMT, Heiko Stuebner wrote:
+> On Mon, 26 Aug 2024 16:51:29 +0900, FUKAUMI Naoki wrote:
+> > There is no "on-board WLAN/BT chip" on Radxa ROCK 5A. remove related
+> > properties.
 >=20
-> Normally, iommu_paging_domain_alloc() could be a replacement for
-> iommu_domain_alloc() if the caller has the right device for IOMMU API
-> use. Unfortunately, this is not the case for this driver.
+> Applied, thanks!
 >=20
-> Iterate the devices on the platform bus and find a suitable device
-> whose device DMA is translated by an IOMMU. Then use this device to
-> allocate an iommu domain. The iommu subsystem prevents domains
-> allocated by one iommu driver from being attached to devices managed
-> by any different iommu driver.
->=20
-> Signed-off-by: Lu Baolu <baolu.lu@linux.intel.com>
-> Link: https://lore.kernel.org/r/20240610085555.88197-20-baolu.lu@linux.in=
-tel.com
-> ---
->  drivers/gpu/drm/tegra/drm.c | 34 +++++++++++++++++++++++++---------
->  1 file changed, 25 insertions(+), 9 deletions(-)
+> [1/1] arm64: dts: rockchip: remove unnecessary properties for Radxa ROCK =
+5A
+>       commit: b8ac0cf405c2092decc5cc102ed3a2d5d3200ab4
 
-Actually I think we can just do something like this:
+Oops, good find. I didn't notice this feature did not make it into
+the final ROCK 5A. I have a pre-production version of this board
+(which does have a WLAN/BT chip).
 
---- >8 ---
-diff --git a/drivers/gpu/drm/tegra/drm.c b/drivers/gpu/drm/tegra/drm.c
-index d9f0728c3afd..d35e411d536b 100644
---- a/drivers/gpu/drm/tegra/drm.c
-+++ b/drivers/gpu/drm/tegra/drm.c
-@@ -1150,7 +1150,7 @@ static int host1x_drm_probe(struct host1x_device *dev)
- 	}
-=20
- 	if (host1x_drm_wants_iommu(dev) && iommu_present(&platform_bus_type)) {
--		tegra->domain =3D iommu_domain_alloc(&platform_bus_type);
-+		tegra->domain =3D iommu_paging_domain_alloc(dev->dev.parent);
- 		if (!tegra->domain) {
- 			err =3D -ENOMEM;
- 			goto free;
---- >8 ---
+I did notice that the M.2 slot was changed between my version and
+the one being sold, that's why I never send PCIe patches. That might
+be something for you to look into Naoki?
 
-That refers to the physical device that the host1x_device virtual device
-was instantiated from and is a common parent to all physical devices
-that are part of the virtual device.
+Greetings,
 
-Thierry
+-- Sebastian
 
---fslg44mz7bzr7agv
+--wdutnbnbppbii6tx
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iQIzBAABCAAdFiEEiOrDCAFJzPfAjcif3SOs138+s6EFAmbPQdkACgkQ3SOs138+
-s6Faag/+PLNW+D2IJ1ANTAMAHn0fybn2aGa6fRFPkVgUQSXQP4OlfAdV1W2+DKPi
-CSLmOHisUapqMwyMZECKEkXHkM7+i7Snhz+D6gHCMx7YWFQiLGi0j9KZfT3kfX5V
-tOIVJXrEAcJZN9htxoPZ842Z5QrrzTNgVkvhmC2lhqA6sjy3BbyK8TgncUVpceMC
-wPCVwjnNyJZUxK/MZgyj5OywXC9emVXY5Y0WgjJ14D1KNPScAsSCLKbIvAS5Pku8
-8K0m4Dzv4+WtNRhr42OVrtji9VJwnrjVgJZXuGgJC7aQVDFbghM9rQ2NnaHAztOK
-EL+9DKRDLXo+MwQmvqSWTkY1OEd0Y2cJsagqS9363Q5Xau7Iwrxa2vAXgXUwkWyP
-/Z4cZYzatMr+CF+165NbtQYlJlRqBpW8kDslxGR1DT1NhNLbpE6y0FKaBp9YWXhA
-U8AkaTSeeuO96M7c9jr2sLyHIxIYzMPvsC5vvw44NQRty78DyLp9wE90r0Z954C+
-6DJMnKQIsoa+rCnof94BhK9ThweuwyWWMc/7755EWJoUo2g8VVyDei6m2GBMj5zT
-kkkzVeWz8F1cV3zDn8aa0hYje3tzVdvChHSMXHU44wRHSD6xaoI9KgxehV6TYlCI
-G3/NyFMo6sIP/I5hnEpQmI3pF5641WaJSYeocgjLIRESADr7+Dk=
-=Ka+K
+iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmbPQyoACgkQ2O7X88g7
++pr+ihAAg2lM+2s0vEurXWj+6VlIXmMAdnEqob6G3zn0Gd3STjUlx0agIzUpyV2i
+q2u5+ASiy0OD3mletP7z1NE0c/B0qW5SIUPmaeOYDvh5YBBtdfirrQR6CB+Lo/Re
+b2Ji3HWqDP4XPBXZKV3lKcCkvUY43cCmlm6WzVRmzA4yzVXdZHV6wcmXYJBUbNhY
+QtwvLimkSF5ezqFD439XwtCw4YGl4pkOuiQF9ZMgxB6bDLvZXuOD3UY/uS1B2KlY
+GzRlbI85AD5HWTUOznLYYxnxcB43941XiNB1CUP78+SBUCAG6jZ5TR09KWLxKlLf
+7ecNSGrqa7K+K0VfUSVGj66LywQnks7h+R+1PNNHnhlpgIfAbja8wFQUzKTX6+xW
+izFZMCJiSLzHLH5IkZFXrfCdw8J8kWsFwThY9yPq6P0j4kp2Og/IxWzjDuHkaMMA
+2DQIQh4+ug4FRiZEb2hjmfNrBN9f0OGZxu8Ys/eRCa+QAZLlSza5s3aN6SCPmjlx
+JlIQdMiCOpQlCbccy1sx2OumKJ0p4PwlJG8yr2zEbB2oxhIzB/GJsUAL+vXGVC29
+qqUDSyTreIgDt2Lku3GI5sEycJkPeWqOZieCDRaYHHSY2R9uFJnO2qSx7QJQNiCI
+O5A2aPhYG+ooP2OE87DDRJyT2jXFFxOw5LkiosOCICCmafs4K+c=
+=U1yA
 -----END PGP SIGNATURE-----
 
---fslg44mz7bzr7agv--
+--wdutnbnbppbii6tx--
 
 
---===============7887300838857033352==
+--===============4951486394151240046==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -191,5 +146,5 @@ Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
---===============7887300838857033352==--
+--===============4951486394151240046==--
 
