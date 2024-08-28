@@ -4,78 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 25E16C54FAA
-	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Aug 2024 13:26:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E5325C54FAA
+	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Aug 2024 13:44:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ONJwkw5NjQ6k8SSjO0wkomCkZJ4czCtW+6sj9FrqIk8=; b=b0sEL4CjKEDssM
-	Beo1DLFeHD/wiZNuiExGob3rq17Lcmn6jXjd+7JGDyS51Dv++3NezgE0BjYjrotv/u9rNrZI1C01U
-	Z3O9dkXnca84+oXoeRb4KO3pY2+WSGn6CasyLSH2pBPgu1K8JeSEp1skTeLwcVUYOQia1sXYvyXey
-	Tiqhs9UDbijhGp61RlmlZ5savFzT70ijSMaV8I3MSAv/h/TiMW84+Wss7kGsU9m5rPlTT0fXuw4AA
-	Ffb+Q+ttKYPUZH88LX7XccGUY1kF1aG4Ln8InTGUMG1oZM56/2L/Y60XZA5hNpRqLIYKdt7LjA7XS
-	5SkO2d7XA8UwbfuEzsSQ==;
+	List-Owner; bh=03dyKYl6FyK0L6NOxA8ngTu3bgkWSpApYPOErZiePaQ=; b=cdGrjVv/2NSU4z
+	z7JI7osjyCNBhHbalaAomfO6IEqSqSgJm+vXy/Nu1nse1j+sREJ1OVacPtmI1ozWDkHBlCseMbs9t
+	0r0lZJ4OiYF/43ehTaaM6DrwTOHEYu9p1CmbDFQAG3W2QVSFxiL3uO1obU/RwcBjd+qh6Ls8liqLi
+	C6cVGCMWAEpZshWc5vUCs/16BKRzojGPL6FG1CFuZsQdtjdmTsCjTfw72qnPehIqGXdj1RcM13iuX
+	k/axxsCLuUo9n9n/v1qp8c+L/nZSEwAuh+5qRMPgCkBxf6FKiPzAnHCt186a/mpg4q0wzgcXs+oaC
+	1AlxBcc0sO10MF1FjsIw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sjIgV-0000000FWL4-0Uo1;
-	Wed, 28 Aug 2024 13:26:03 +0000
-Received: from mail-lj1-x229.google.com ([2a00:1450:4864:20::229])
+	id 1sjIyF-0000000FZbU-33YI;
+	Wed, 28 Aug 2024 13:44:23 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sjIfe-0000000FWCU-1wFW;
-	Wed, 28 Aug 2024 13:25:12 +0000
-Received: by mail-lj1-x229.google.com with SMTP id 38308e7fff4ca-2f4f2868783so63417691fa.2;
-        Wed, 28 Aug 2024 06:25:09 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1724851508; x=1725456308; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=IgiiWmkaONZMDrv95lSjLISp29W4kqOAF1MsY3+Ck9Q=;
-        b=Yyh5IjnZIHntA8Qh8nZQ9TCGAY1oY2FHYPAqoGeI2cWRFCdVcXmLAEHGYqIc1iO0rI
-         R8ZjiXpRbPkWjzsbFpCzwPogvOkYXa8GrLx4kbAvt52nZ4ZaicgWJNIBLNLAlKXhB4iu
-         eenTpcPhQhPNkEh7yXWSeP8H9Ag5CLHhi04cA+XEsPOHM9OWk0kOeFFG6zkDiqjUYv61
-         QmQRzj55MBeG067tSxeX04l1JN6TGtc3nOElKyPZMoTZRYZO5jlfN5Yf2Q6hfpcLH8QM
-         797oJagjhU2N7usPC4PhtFP+73O8ugsyTYx1pzMzOWVmhNr9K/hcQLLNSZy7+7k0d9M5
-         s4Yw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1724851508; x=1725456308;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=IgiiWmkaONZMDrv95lSjLISp29W4kqOAF1MsY3+Ck9Q=;
-        b=RVhF/AXTEdJMx+VXtqPlUGrgobu5ajIQqwYJSCSHO8Fk65Qx3M/BbdUJxNz1lCQomK
-         1TyQHvlPWpUyFnHQwYmZcgs9L6pgILXX8+c4YcffitkcKMjT9OlZfYaRJZrXxCGa8RTa
-         N4mgf9KpkJWMohXamNfgm0B7ZAfE1+tzLLkA4yd5+p/BH6Heaff5JA8IWALBjdCNtOxM
-         rDaUz1lE09sBA4pen/AGEEcV+DDO+UADCzidE9JA7EC2QPN3NSilR1m3dJf5RH7ZSlyB
-         g4pcAgL/wtTowqs9qxpXq2RttYQXnM9gohtoVi4twAzJkp7Z5TX7J6ZfSYzu0bqoDPLf
-         N23g==
-X-Forwarded-Encrypted: i=1; AJvYcCUkKjZcEgIWVGnUay5RgG4MY5G1zxVI0k4DHNOZEdZ5Y0nJGjUxGUND10Iv8oqTAnlbzu5FBIS2TEMffPU8Qf19@lists.infradead.org, AJvYcCWAux9Mk4+vvG8RQv/2vA/3BiwES6ipqSZ8NwpzzOIGJoJBBAwDF8uF3v56GypbNHQ519BOzl8+rPKRhZYuWJw=@lists.infradead.org
-X-Gm-Message-State: AOJu0YxN75kAAEDHJsf6RQ1NCO8cY7sA3v/AXW1Mp41Dd/dH3Bz0+HXD
-	CpeJnN1I1+EAi2HvNNZO3BNba45EZJgS084kSie+KrwLaiTnNn8rBvDGRmGrSC8hqs1E45NVMvk
-	EaSewfAudhBSr3bkSzpjN3y8JDpOZ8OxDWWY=
-X-Google-Smtp-Source: AGHT+IGUdU+h+hht4AnIJHIpk5GDpGgevmNBw32u6Cg0ojQjMizUfieIlJnFQWDOIjZW9gSubMvP7BelF8hDq6Rw/2I=
-X-Received: by 2002:a2e:80a:0:b0:2f3:e7cb:ee37 with SMTP id
- 38308e7fff4ca-2f55b64108cmr13324471fa.8.1724851507882; Wed, 28 Aug 2024
- 06:25:07 -0700 (PDT)
-MIME-Version: 1.0
+	id 1sjIvQ-0000000FZ5Z-3aPP;
+	Wed, 28 Aug 2024 13:43:29 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+	List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=qUUiaCfBLXZWpJdappx4+njgqnXxefIpho9blRI4Pes=; b=h0mGQKeUHlQIzvXxOw2pBhnXnp
+	1gkRnQcgSpBgLRM91xDWAdbouRh+oqwwTl0pRZMjtkidxWkkdlHbym4+zv0vanCYCyAeYpzZMezF/
+	IWhrGWqZoOaoIA9mEFfl9dpfMNmjfBHfon0hmHYmuCBg40OjjA3WdeqJZBgYkjIPT8y/hkCUwCkIk
+	xMi4a5KnL8Yg7h0GsAr+YWrY7/TqGF3wt9pz5376t0vKzCr5Od12SYu/B55lZEOa1BfdWoQkIHWxG
+	2GOOVfMngUSpq1Im2QF2UhWxsQyC+8qArm++5HOahS2BxYwzrXFCB9263I6nvaLXsLoRX9YLwqqFo
+	//iudiqg==;
+Received: from i5e8616cd.versanet.de ([94.134.22.205] helo=diego.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1sjIvL-0005dr-8m; Wed, 28 Aug 2024 15:41:23 +0200
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+To: Jonathan Liu <net147@gmail.com>
+Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, FUKAUMI Naoki <naoki@radxa.com>,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v2] arm64: dts: rockchip: Enable RK809 audio codec for Radxa ROCK
+ 4C+
+Date: Wed, 28 Aug 2024 15:42:35 +0200
+Message-ID: <2576985.vzjCzTo3RI@diego>
+In-Reply-To: <CANwerB0NUFyJ1egYNEAnhdqSyBTq41cSKKC0bAbKudZAPx8UfA@mail.gmail.com>
 References: <20240828074755.1320692-1-net147@gmail.com> <2502361.uoxibFcf9D@diego>
-In-Reply-To: <2502361.uoxibFcf9D@diego>
-From: Jonathan Liu <net147@gmail.com>
-Date: Wed, 28 Aug 2024 23:24:56 +1000
-Message-ID: <CANwerB0NUFyJ1egYNEAnhdqSyBTq41cSKKC0bAbKudZAPx8UfA@mail.gmail.com>
-Subject: Re: [PATCH v2] arm64: dts: rockchip: Enable RK809 audio codec for
- Radxa ROCK 4C+
-To: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>
-Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
-	Conor Dooley <conor+dt@kernel.org>, FUKAUMI Naoki <naoki@radxa.com>, devicetree@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
-	linux-kernel@vger.kernel.org
+ <CANwerB0NUFyJ1egYNEAnhdqSyBTq41cSKKC0bAbKudZAPx8UfA@mail.gmail.com>
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240828_062510_527054_63AE5FA1 
-X-CRM114-Status: GOOD (  14.98  )
+X-CRM114-CacheID: sfid-20240828_064129_034884_B4A96610 
+X-CRM114-Status: GOOD (  21.35  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,28 +71,51 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGkgSGVpa28sCgpPbiBXZWQsIDI4IEF1ZyAyMDI0IGF0IDIyOjU5LCBIZWlrbyBTdMO8Ym5lciA8
-aGVpa29Ac250ZWNoLmRlPiB3cm90ZToKPiBBbSBNaXR0d29jaCwgMjguIEF1Z3VzdCAyMDI0LCAw
-OTo0Nzo1MyBDRVNUIHNjaHJpZWIgSm9uYXRoYW4gTGl1Ogo+ID4gVGhpcyBhZGRzIHRoZSBuZWNl
-c3NhcnkgZGV2aWNlIHRyZWUgY2hhbmdlcyB0byBlbmFibGUgYW5hbG9nIGF1ZGlvCj4gPiBvdXRw
-dXQgZm9yIHRoZSAzLjUgbW0gVFJTIGhlYWRwaG9uZSBqYWNrIG9uIHRoZSBSYWR4YSBST0NLIDRD
-KyB3aXRoCj4gPiBpdHMgUks4MDkgYXVkaW8gY29kZWMuCj4gPgo+ID4gU2lnbmVkLW9mZi1ieTog
-Sm9uYXRoYW4gTGl1IDxuZXQxNDdAZ21haWwuY29tPgo+Cj4gYXMgaXQgbG9va3MgbGlrZSB5b3Ug
-aGF2ZSBvbmUgb2YgdGhvc2UgYm9hcmRzLCBjb3VsZCBJIHBvc3NpYmx5IGFzIHlvdQo+IHRvIHRh
-a2UgYSBsb29rIGF0IHRoZSB2ZGRfY3B1X2IgYW5kIHZkZF9ncHUgbm9kZXM/Cj4KPiBJIHNlZSAo
-YW5kIGRldmljZXRyZWUgY2hlY2sgcmVwb3J0cyBpdCB0b28pIGEgcGluY3RybC0wIGZvciB0aGUg
-dnNlbC1ncGlvCj4gd2l0aG91dCBhY2NvbXBhbnlpbmcgcGluY3RybC1uYW1lcy4KPgo+IENvdWxk
-IHlvdSBjaGVjayBpZiB0aGluZ3MgZmFpbCBpZiB5b3UgZWl0aGVyIGFkZCBwaW5jdHJsLW5hbWVz
-IG9yIHJlbW92ZQo+IHRoZSBwaW5jdHJsLTAgZW50cnk/CgpJIHRyaWVkIGJvdGggYnV0IG5laXRo
-ZXIgcmVzdWx0ZWQgaW4gYW55IGNoYW5nZSB0byB0aGUgd2FybmluZ3MgaW4gZHRic19jaGVjay4K
-UmV2ZXJ0aW5nIG15IGNoYW5nZSBhbHNvIHJlc3VsdHMgaW4gdGhlIHNhbWUgd2FybmluZ3Mgc28g
-SSBkb24ndCB0aGluawppdCBpcyByZWxhdGVkIHRvIG15IGNoYW5nZS4KClJlZ2FyZHMsCkpvbmF0
-aGFuCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51
-eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9y
-ZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tj
-aGlwCg==
+Hi Jonathan,
+
+Am Mittwoch, 28. August 2024, 15:24:56 CEST schrieb Jonathan Liu:
+> On Wed, 28 Aug 2024 at 22:59, Heiko St=FCbner <heiko@sntech.de> wrote:
+> > Am Mittwoch, 28. August 2024, 09:47:53 CEST schrieb Jonathan Liu:
+> > > This adds the necessary device tree changes to enable analog audio
+> > > output for the 3.5 mm TRS headphone jack on the Radxa ROCK 4C+ with
+> > > its RK809 audio codec.
+> > >
+> > > Signed-off-by: Jonathan Liu <net147@gmail.com>
+> >
+> > as it looks like you have one of those boards, could I possibly as you
+> > to take a look at the vdd_cpu_b and vdd_gpu nodes?
+> >
+> > I see (and devicetree check reports it too) a pinctrl-0 for the vsel-gp=
+io
+> > without accompanying pinctrl-names.
+> >
+> > Could you check if things fail if you either add pinctrl-names or remove
+> > the pinctrl-0 entry?
+> =
+
+> I tried both but neither resulted in any change to the warnings in dtbs_c=
+heck.
+> Reverting my change also results in the same warnings so I don't think
+> it is related to my change.
+
+I was more aiming at a functional test on the board :-) .
+
+You are correct in that this is not related to your change, I was just
+seeing someone with the hardware.
+
+I.e. while running dtbs check here I saw those regulator nodes
+and didn't want to change stuff without being able to test them.
+
+Heiko
+
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
