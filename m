@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 670CCC5B557
-	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Aug 2024 15:42:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 77046C5B55C
+	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Aug 2024 15:42:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=8UuJiP7xXw8Ce66Cxlt6GYWY6lk410tkqJchZK2U6Z8=; b=34hyLjIkMKKfqq
-	/ersFBBfPC5GbdK1SLH1+V4kktvY56JD1nCuiso+aDk+TM+cF2a1ql3W2Oi1srLbmab6QOVl0UUd8
-	6RcBKP6bibh8uq7+Ic3kfHaGktjOJLdGdnBztcug64WdtswHJtdpCaAwyd6cXYRrg8z3H0IKq46Ub
-	i2Rc6m484aQwCemztRNM1KegnN4u0thRQTgbn55lsf2+f3YHmFa0AwmQK/wFhMYD+d4BzBATOPbPn
-	K9PMgIMS8L9rBwFHDEc/XZrXVO70zRQMQWhlmUlSj1IHxzQXyOg38Yx2MX7thQQD7uqXspXtbVwnu
-	HXsw/m1Qik4pF8FhAhuw==;
+	List-Owner; bh=e6RL6m/6VLY3DA4ETkLbRNKDPGi5zII/yllWGYOc0Hw=; b=RneXmZseJwm0XS
+	Hjtwl5/7x5GiMXLiscBwmEt2pwo+qFIwJ3FWEYY+TDyiI+Dhb25bGnQGU7/GjXUn2Vrse5KfZcRUb
+	EOQvSqdXIubL2rWfO0zW/SU2d2OD1i1KUn8OrtRyi+wh06nn2b08rm31gtDohWoKuAUi2VAHM29C9
+	o0spdLJX/QxN5aURaI2GOskH+mLOp9KJjsCT+2/vvaKA7l5Soi2JCl3GmmYeiFLj/htuut41sY0rF
+	EKCCZDZiIY01d8oFQYKJIc6kshcSCFheXvOQF3nn4YMkkQsNVs5o/GYN5GkuKaIaCbiON3z+WoccH
+	z7TQzQeQX0mDG8zFU4Ug==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sjKoF-0000000G0yn-46LB;
-	Wed, 28 Aug 2024 15:42:11 +0000
-Received: from a7-48.smtp-out.eu-west-1.amazonses.com ([54.240.7.48])
+	id 1sjKoI-0000000G10l-0rFB;
+	Wed, 28 Aug 2024 15:42:14 +0000
+Received: from a7-44.smtp-out.eu-west-1.amazonses.com ([54.240.7.44])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sjKKI-0000000Ftpc-3HIn;
-	Wed, 28 Aug 2024 15:11:16 +0000
+	id 1sjKKS-0000000FtrF-2QiR;
+	Wed, 28 Aug 2024 15:11:26 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
-	s=4232tfv5ebdrjdwkr5zzm7kytdkokgug; d=collabora.com; t=1724857870;
+	s=4232tfv5ebdrjdwkr5zzm7kytdkokgug; d=collabora.com; t=1724857880;
 	h=From:To:Cc:Subject:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding;
-	bh=eroRuymFGct5tFtXZVXe7idGbNt35wDtyZN4XFBz5uE=;
-	b=W3yqJkwJwHPHVL4GSI7k6IHF7UJYmSc3oVEA7RdN+O802iM2xjDQTxX3D4pJBKVc
-	/vIKxNIuz9qj+TCBRYQprFI0o2WywIo2v5UYuCwMWvYEVSngnNg8+5oC019N93fXmKv
-	wO/T0dLVzEU4Ws0tNu44SoNoJspBfMF8RQf6mYmwNvoLpWhYqcr6jOI+7ZKCydOus38
-	FfqM4QLRGa6lYEzQOMwfyGj/rgV46IotyPMYgL0KWmIxD6LPSTm9NS182URK0Z9+QFk
-	2Z49fu+z7UhjY5DyIaUhS/zkWbnfG16/9VgFmRPMsfJmm3z4JZa9AeUSNSgK0aoPGzr
-	sa/cfjVzdQ==
+	bh=3Mxy4AinXYBybrCx2Yls+Re1Ra8Op+cXhIbIKTJWLD8=;
+	b=F6gTDs7EE5PBv3yey2HBvWil3Ii+IfTD9WpdiYgD++cw6whv63oFBF2lN9i74yPN
+	CmBCepzrMy8iK6+T++JAyJOS2YoRgcoOi6U/ZGzTJ19hNZfzIFS13gY8hhfYrNeag+D
+	F5Liu4m1DXsFL7CzqI9/7EOBrcI5WcfwRfKspjuzBxfT+e7jD/nDLktRdeeVAUhMgNG
+	jUTzc+AcXQ98abwSnDyxXacaF04OZW92Qf2G4p9Z55UT94M0AP4Y9GyB/asFL/q24eW
+	uWzg0IAn7JomRcBbjEWQXJZmZNtgblPt9H4mFbMRd522PEopwRmdAFWnnTy6LkTSMZK
+	6pytuo4L4A==
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
-	s=uku4taia5b5tsbglxyj6zym32efj7xqv; d=amazonses.com; t=1724857870;
+	s=uku4taia5b5tsbglxyj6zym32efj7xqv; d=amazonses.com; t=1724857880;
 	h=From:To:Cc:Subject:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Feedback-ID;
-	bh=eroRuymFGct5tFtXZVXe7idGbNt35wDtyZN4XFBz5uE=;
-	b=Qqhp2RHbMKQXAHR/mfAKEC39MC5TYvkszk/xEhU1lHT9DU3TPkgorOJvVJwNQ9Hc
-	nVrEIVy8I4m86OaV0QKnYXBp60QJiNZejzY9/pVcS7fV2+TDc6yyd+Ghpxujldqg22B
-	TEEkxXF+gouDasw8wlusRgBe3NDvRiGoBMjA3iTI=
+	bh=3Mxy4AinXYBybrCx2Yls+Re1Ra8Op+cXhIbIKTJWLD8=;
+	b=T7SN8tEOYLyEeLtLECRIjXEWWO4jxTMwG7tJcSh/AZ0QZzAm/SRSiF7oA3ecfpu+
+	dK8r3jbEvaVioU3rfhebtR8dNV0KFV0VPc5gb536tUtIzt3tkKHwlzQUazGt1nSW1vB
+	3Vk3dme+ebOMj2/bu/C/ydnLITodOcBjkHXYoMKs=
 From: Detlev Casanova <detlev.casanova@collabora.com>
 To: linux-kernel@vger.kernel.org
 Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
@@ -77,18 +77,18 @@ Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
 	linux-serial@vger.kernel.org, linux-spi@vger.kernel.org, 
 	linux-watchdog@vger.kernel.org, kernel@collabora.com, 
 	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Subject: [PATCH v3 07/11] dt-bindings: gpu: Add rockchip,rk3576-mali compatible
-Date: Wed, 28 Aug 2024 15:11:10 +0000
-Message-ID: <01020191998a6891-a1f28a77-c585-472d-b42b-32a878679304-000000@eu-west-1.amazonses.com>
+Subject: [PATCH v3 09/11] spi: dt-bindings: Add rockchip,rk3576-spi compatible
+Date: Wed, 28 Aug 2024 15:11:20 +0000
+Message-ID: <01020191998a8e9b-7b1e3358-d895-4ba9-9204-8b0ea3cb28c5-000000@eu-west-1.amazonses.com>
 X-Mailer: git-send-email 2.46.0
 In-Reply-To: <20240828151028.41255-1-detlev.casanova@collabora.com>
 References: <20240828151028.41255-1-detlev.casanova@collabora.com>
 MIME-Version: 1.0
 Feedback-ID: ::1.eu-west-1.YpP9ZbxnARFfy3Cb5pfsLd/pdsXBCNK0KEM7HforL4k=:AmazonSES
-X-SES-Outgoing: 2024.08.28-54.240.7.48
+X-SES-Outgoing: 2024.08.28-54.240.7.44
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240828_081114_979475_F9F3C059 
-X-CRM114-Status: UNSURE (   9.38  )
+X-CRM114-CacheID: sfid-20240828_081124_780241_CE2C9997 
+X-CRM114-Status: UNSURE (   9.06  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -106,27 +106,26 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The rk3576 SoC has an ARM Mali G52 MC3 GPU, that is compatible with
-arm,mali-bifrost.
+It is compatible with the rockchip,rk3066-spi SPI core.
 
 Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
 Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 ---
- Documentation/devicetree/bindings/gpu/arm,mali-bifrost.yaml | 1 +
+ Documentation/devicetree/bindings/spi/spi-rockchip.yaml | 1 +
  1 file changed, 1 insertion(+)
 
-diff --git a/Documentation/devicetree/bindings/gpu/arm,mali-bifrost.yaml b/Documentation/devicetree/bindings/gpu/arm,mali-bifrost.yaml
-index 278399adc550..735c7f06c24e 100644
---- a/Documentation/devicetree/bindings/gpu/arm,mali-bifrost.yaml
-+++ b/Documentation/devicetree/bindings/gpu/arm,mali-bifrost.yaml
-@@ -26,6 +26,7 @@ properties:
-               - renesas,r9a07g054-mali
-               - rockchip,px30-mali
-               - rockchip,rk3568-mali
-+              - rockchip,rk3576-mali
-           - const: arm,mali-bifrost # Mali Bifrost GPU model/revision is fully discoverable
-       - items:
-           - enum:
+diff --git a/Documentation/devicetree/bindings/spi/spi-rockchip.yaml b/Documentation/devicetree/bindings/spi/spi-rockchip.yaml
+index e4941e9212d1..46d9d6ee0923 100644
+--- a/Documentation/devicetree/bindings/spi/spi-rockchip.yaml
++++ b/Documentation/devicetree/bindings/spi/spi-rockchip.yaml
+@@ -35,6 +35,7 @@ properties:
+               - rockchip,rk3368-spi
+               - rockchip,rk3399-spi
+               - rockchip,rk3568-spi
++              - rockchip,rk3576-spi
+               - rockchip,rk3588-spi
+               - rockchip,rv1126-spi
+           - const: rockchip,rk3066-spi
 -- 
 2.46.0
 
