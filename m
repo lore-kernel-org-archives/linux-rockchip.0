@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C58BFC54FAA
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7D555C54FAD
 	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Aug 2024 12:58:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,19 +12,20 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=CA/iALm+rmIfb0Inxbw35j9/wNU+hMI8IQQteaRzzKw=; b=vduzN+z1hJEqUJ
-	p0PS04AG/A0kJ2ex9NZX9R3Pv/iLvabRXR48Ux5dIszPU5qCYbGxlf9Y5KggF8YyF8n9fWhPKfHuS
-	bnrfJ3Aexr3AS+8/7elIiHGCD8ujL51IkJLj4lTiJD5utVNFgI9gQMl+1hfnqoKt/v+h2et0d0szD
-	oYcaWZSs49qa/5zezSAZFBdIZndAPtAeSTZngZLe5VQRi4vhjS1uNy1xt51FCj6dC3WFvG/PNByoM
-	XwvjH9C7pA9RAvW1HJjiwcc73zRXgWT/4j9lPDYeNNV4NT+5/g1rJVfL8Jh0qPHxJV5OW29ZT8yAN
-	iLKDh34jxdVNFQrhFrtg==;
+	List-Owner; bh=FebOkg+SoBlG10bzoY9nON1+eEBWLnP5ie1PAM6CE8c=; b=HESHNrHFIXB+PB
+	B0iLweRWb5qPWd4KGxW4ZvS/p5BZLe3SbXZA9Q6Byq37ssevMPosXmOTWhBLS5rVtTFZq7d+Jn+uV
+	J84iCpbNgQea2IzGL6WNWv3bNulVPvl47k1KRfy+7qqUyCGiY+HWOvUHvkSiMrLzwNZEnVu2gg5Xy
+	U4YXpRrEVGO15ocxZst31/j4ybHjXFAg2jdIhh6Nde1prhYH7YeEO1yRIG5VJdM+m+k+JuWsfLqU6
+	+6TF6eIeHBD30kJeuWk9AYRnLaXlHqd1Y0pRD3TepAAPqq180XIj80gN74/HJhuLjzO2i2IpH4SaA
+	DKhTBjmP0TEFKeemRvCw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sjIFY-0000000FQWb-2aW4;
-	Wed, 28 Aug 2024 12:58:12 +0000
+	id 1sjIFZ-0000000FQWv-01OB;
+	Wed, 28 Aug 2024 12:58:13 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sjIDv-0000000FPws-04v1;
+	id 1sjIDv-0000000FPwo-04ba
+	for linux-rockchip@lists.infradead.org;
 	Wed, 28 Aug 2024 12:56:32 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
@@ -32,39 +33,39 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
 	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=KRJdnybl7IHbrPfCbf0p/UNsAWFxCeqGC4Mko0BsWAE=; b=T5uwzijtI+WSiADmTXJavU0O8i
-	OzLaxBL7vq06GDedNqm5TW6DL3QV0w9dHRbyUHe5MYOdfuWQWDUHdkdlk3NKwhQNY+Hxeal3A/amM
-	+8/ubwZj8JgjCSO3o4up0YSMSXvradCm3Qy9g8A3JOXJkSUbXO/mx6tBxm7Xo2gZ6WM+Eu/e3ZFQ8
-	dXPAR4Dkdru5Qqmm4E5jotLwNFq04AsvWlA01onOqY24MVNM4BH12fjfeR1JllM9BWUkic67yTSlq
-	QoP4Pr3cX7uGTXOIn56uugOC7uwFeOg5trGgpZRvRJg4YfWFMhz2iOkzlXLlA1ZGyABZoQLWSnNDU
-	izuq1Ysw==;
+	bh=3bMNu3lJFboLmoxcd2f5D0OI0rHEumBUEVx3ifZtn4c=; b=q4cO08WvKwTqslAfyp5DyrgBQk
+	107GUj52R78ifmj2wVr54IUNCgh0FSUN4wfmjHyn11shzJpHaiXJ68VTzp0NJq6e59tZoqC0Qrmlt
+	F8LsFgUW2vp0C/o9SflYzOQYylYf7JBKY8Q0M+zkw4aClYOoXASDiJoZ/rnjgVPsHRNQurzB8fP/n
+	kIktOdhjJcSfOJPomC1cWrUiIKg9mUCT+Pnha2q/9cnWPXJcOiJvemwwi+tJ4HfGkjdYDIhL18iii
+	Ka36d2jPaDsar+tYIpGIfkEdj0QJBPBixlXgN2KWKsA+2ZbBOiv8fB/VEzEozV/iENARLkZJ2w4wF
+	pRmimk8w==;
 Received: from i5e8616cd.versanet.de ([94.134.22.205] helo=phil.lan)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1sjIDr-0005MB-SI; Wed, 28 Aug 2024 14:56:27 +0200
+	id 1sjIDs-0005MB-Dj; Wed, 28 Aug 2024 14:56:28 +0200
 From: Heiko Stuebner <heiko@sntech.de>
-To: Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Jonathan Liu <net147@gmail.com>,
-	Conor Dooley <conor+dt@kernel.org>
+To: Sebastian Reichel <sebastian.reichel@collabora.com>
 Cc: Heiko Stuebner <heiko@sntech.de>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
-	FUKAUMI Naoki <naoki@radxa.com>,
-	devicetree@vger.kernel.org
-Subject: Re: [PATCH v2] arm64: dts: rockchip: Enable RK809 audio codec for Radxa ROCK 4C+
-Date: Wed, 28 Aug 2024 14:56:23 +0200
-Message-ID: <172484978177.1499193.15230984745564646842.b4-ty@sntech.de>
+	linux-rockchip@lists.infradead.org,
+	Rob Herring <robh@kernel.org>,
+	Jianfeng Liu <liujianfeng1994@gmail.com>,
+	kernel@collabora.com,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	devicetree@vger.kernel.org,
+	Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>,
+	Conor Dooley <conor+dt@kernel.org>
+Subject: Re: [PATCH v8 0/2] RK3588 VEPU121/VPU121 support
+Date: Wed, 28 Aug 2024 14:56:24 +0200
+Message-ID: <172484978176.1499193.8850818524012540505.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20240828074755.1320692-1-net147@gmail.com>
-References: <20240828074755.1320692-1-net147@gmail.com>
+In-Reply-To: <20240827181206.147617-1-sebastian.reichel@collabora.com>
+References: <20240827181206.147617-1-sebastian.reichel@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240828_055631_135391_106D294D 
-X-CRM114-Status: UNSURE (   8.99  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240828_055631_112841_5DD980D1 
+X-CRM114-Status: GOOD (  11.32  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,17 +82,25 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, 28 Aug 2024 17:47:53 +1000, Jonathan Liu wrote:
-> This adds the necessary device tree changes to enable analog audio
-> output for the 3.5 mm TRS headphone jack on the Radxa ROCK 4C+ with
-> its RK809 audio codec.
+On Tue, 27 Aug 2024 20:10:19 +0200, Sebastian Reichel wrote:
+> This enables support for Hantro in the RK3588 base devicetree. Sebastian Fricke
+> send the pull request for the driver/binding changes for 6.12 some hours ago:
 > 
+> https://lore.kernel.org/all/20240827133315.qlmwdvwmghidayzy@basti-XPS-13-9310/
 > 
+> Changes since PATCHv7:
+>  * Dropped patches 1-4 (merged to media tree)
+>  * Rebased DT patches to use rk3588-base.dtsi instead of rk3588s.dtsi
+>  * Dropped a bunch of people from Cc since the media side is done
+> 
+> [...]
 
 Applied, thanks!
 
-[1/1] arm64: dts: rockchip: Enable RK809 audio codec for Radxa ROCK 4C+
-      commit: 174c306321355d8a189b8f01fcc3f897ba13f227
+[1/2] arm64: dts: rockchip: Add VEPU121 to RK3588
+      commit: cc0a05865cd5ff2a12479ab85093ed203af10520
+[2/2] arm64: dts: rockchip: Add VPU121 support for RK3588
+      commit: 6166b1c0084e059af539c93a9d48afe44220dbef
 
 Best regards,
 -- 
