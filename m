@@ -4,62 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E5325C54FAA
-	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Aug 2024 13:44:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E6987C54FAA
+	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Aug 2024 14:00:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=03dyKYl6FyK0L6NOxA8ngTu3bgkWSpApYPOErZiePaQ=; b=cdGrjVv/2NSU4z
-	z7JI7osjyCNBhHbalaAomfO6IEqSqSgJm+vXy/Nu1nse1j+sREJ1OVacPtmI1ozWDkHBlCseMbs9t
-	0r0lZJ4OiYF/43ehTaaM6DrwTOHEYu9p1CmbDFQAG3W2QVSFxiL3uO1obU/RwcBjd+qh6Ls8liqLi
-	C6cVGCMWAEpZshWc5vUCs/16BKRzojGPL6FG1CFuZsQdtjdmTsCjTfw72qnPehIqGXdj1RcM13iuX
-	k/axxsCLuUo9n9n/v1qp8c+L/nZSEwAuh+5qRMPgCkBxf6FKiPzAnHCt186a/mpg4q0wzgcXs+oaC
-	1AlxBcc0sO10MF1FjsIw==;
+	List-Owner; bh=SqOBLhhVKREa8j/bDoUwFCnlBdvVyQDBSV2keMs395A=; b=b6nEVP9cGmBEU0
+	zfG1kIM5qYwJOK9lbVF8rlRfL6Pj6/jq99Wijapw4S/EiuNByzqLGCi1xe3acrjIOL6WX4T9rF3+C
+	JIDpCzuR5EEfSIPKe/I9/Vr7lrIZQM+XrYjVIcPiIMiwSmlGni2ktzgUsvqno4gwMoh6KS05dHZbp
+	zSGtCw0QuClKoYvUpqM+RygLcPv+bgLSNWcahlQF40m7zlqcTGovIvZgFQwn1YDgoNO07ODWIBJX4
+	I9Rkb4H3mo37yLYmRkrxJsBZAihklN0ReIxj0rfHkE9DVoqOVU2sSmfGCJHE9UNmWuI2Jjr4WFRPR
+	pMv+He8ItMpERdEGjx1g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sjIyF-0000000FZbU-33YI;
-	Wed, 28 Aug 2024 13:44:23 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1sjJE2-0000000FdhL-12W2;
+	Wed, 28 Aug 2024 14:00:42 +0000
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sjIvQ-0000000FZ5Z-3aPP;
-	Wed, 28 Aug 2024 13:43:29 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
-	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=qUUiaCfBLXZWpJdappx4+njgqnXxefIpho9blRI4Pes=; b=h0mGQKeUHlQIzvXxOw2pBhnXnp
-	1gkRnQcgSpBgLRM91xDWAdbouRh+oqwwTl0pRZMjtkidxWkkdlHbym4+zv0vanCYCyAeYpzZMezF/
-	IWhrGWqZoOaoIA9mEFfl9dpfMNmjfBHfon0hmHYmuCBg40OjjA3WdeqJZBgYkjIPT8y/hkCUwCkIk
-	xMi4a5KnL8Yg7h0GsAr+YWrY7/TqGF3wt9pz5376t0vKzCr5Od12SYu/B55lZEOa1BfdWoQkIHWxG
-	2GOOVfMngUSpq1Im2QF2UhWxsQyC+8qArm++5HOahS2BxYwzrXFCB9263I6nvaLXsLoRX9YLwqqFo
-	//iudiqg==;
-Received: from i5e8616cd.versanet.de ([94.134.22.205] helo=diego.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1sjIvL-0005dr-8m; Wed, 28 Aug 2024 15:41:23 +0200
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: Jonathan Liu <net147@gmail.com>
-Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, FUKAUMI Naoki <naoki@radxa.com>,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v2] arm64: dts: rockchip: Enable RK809 audio codec for Radxa ROCK
- 4C+
-Date: Wed, 28 Aug 2024 15:42:35 +0200
-Message-ID: <2576985.vzjCzTo3RI@diego>
-In-Reply-To: <CANwerB0NUFyJ1egYNEAnhdqSyBTq41cSKKC0bAbKudZAPx8UfA@mail.gmail.com>
-References: <20240828074755.1320692-1-net147@gmail.com> <2502361.uoxibFcf9D@diego>
- <CANwerB0NUFyJ1egYNEAnhdqSyBTq41cSKKC0bAbKudZAPx8UfA@mail.gmail.com>
+	id 1sjJAw-0000000Fcvz-1MFo;
+	Wed, 28 Aug 2024 13:57:33 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sin.source.kernel.org (Postfix) with ESMTP id 6CB42CE1835;
+	Wed, 28 Aug 2024 13:57:28 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 678A7C567CD;
+	Wed, 28 Aug 2024 13:37:35 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1724852255;
+	bh=KohNPqr7ETWS1kn2mut3vxJ3dYAgefPzIWcOnMsMYbc=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=INzfTGWQgjSGxFUugGU75A1T0mwNFfF4fX90FT9O9cVaM393Ulvdi7uKyrdJFcvR2
+	 y5Ws07VOxJcysms6pYzTxxvUTFTGKd30OTX3pP60KprUDd/KMOW8rJCA/DgJiYfmOx
+	 6VE6QCTavp1L2aYIKnEkiHioIvSC6UXsY4wtvBggunCVe4BUfUhRu8s6IfEzdZGSBg
+	 TfXuzu/NLeYjM+SsZ4lpxsm/aTtFUlOQrvX295diXSCVvWzwB3Mk3JlHJ/WPv/5IoT
+	 sG8W1XDrqxuzPMtavBl0lLsnw91y8Kv19uBxzphElOfLEIPL4kwjbsl9otSMINvgpf
+	 OY8SUCl+tntzw==
+Date: Wed, 28 Aug 2024 08:37:33 -0500
+From: Rob Herring <robh@kernel.org>
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: mturquette@baylibre.com, sboyd@kernel.org, krzk+dt@kernel.org,
+	conor+dt@kernel.org, linux-clk@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH v3 1/5] dt-bindings: clocks: add binding for
+ gated-fixed-clocks
+Message-ID: <20240828133733.GA3650798-robh@kernel.org>
+References: <20240828101503.1478491-1-heiko@sntech.de>
+ <20240828101503.1478491-2-heiko@sntech.de>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20240828101503.1478491-2-heiko@sntech.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240828_064129_034884_B4A96610 
-X-CRM114-Status: GOOD (  21.35  )
+X-CRM114-CacheID: sfid-20240828_065730_844221_F0B37464 
+X-CRM114-Status: GOOD (  22.70  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,49 +71,101 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Jonathan,
+On Wed, Aug 28, 2024 at 12:14:59PM +0200, Heiko Stuebner wrote:
+> In contrast to fixed clocks that are described as ungateable, boards
+> sometimes use additional oscillators for things like PCIe reference
+> clocks, that need actual supplies to get enabled and enable-gpios to be
+> toggled for them to work.
+> 
+> This adds a binding for such oscillators that are not configurable
+> themself, but need to handle supplies for them to work.
+> 
+> In schematics they often can be seen as
+> 
+>          ----------------
+> Enable - | 100MHz,3.3V, | - VDD
+>          |    3225      |
+>    GND - |              | - OUT
+>          ----------------
+> 
+> or similar. The enable pin might be separate but can also just be tied
+> to the vdd supply, hence it is optional in the binding.
+> 
+> Signed-off-by: Heiko Stuebner <heiko@sntech.de>
+> ---
+>  .../bindings/clock/gated-fixed-clock.yaml     | 49 +++++++++++++++++++
+>  1 file changed, 49 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/clock/gated-fixed-clock.yaml
+> 
+> diff --git a/Documentation/devicetree/bindings/clock/gated-fixed-clock.yaml b/Documentation/devicetree/bindings/clock/gated-fixed-clock.yaml
+> new file mode 100644
+> index 000000000000..76d264770d35
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/clock/gated-fixed-clock.yaml
+> @@ -0,0 +1,49 @@
+> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/clock/gated-fixed-clock.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: Gated Fixed clock
+> +
+> +maintainers:
+> +  - Heiko Stuebner <heiko@sntech.de>
+> +
+> +properties:
+> +  compatible:
+> +    const: gated-fixed-clock
+> +
+> +  "#clock-cells":
+> +    const: 0
+> +
+> +  clock-frequency: true
+> +
+> +  clock-output-names:
+> +    maxItems: 1
+> +
+> +  enable-gpios:
+> +    description:
+> +      Contains a single GPIO specifier for the GPIO that enables and disables
+> +      the oscillator.
+> +    maxItems: 1
+> +
+> +  vdd-supply:
+> +    description: handle of the regulator that provides the supply voltage
+> +
+> +required:
+> +  - compatible
+> +  - "#clock-cells"
+> +  - clock-frequency
+> +  - vdd-supply
+> +
+> +additionalProperties: false
+> +
+> +examples:
+> +  - |
+> +    voltage-oscillator {
 
-Am Mittwoch, 28. August 2024, 15:24:56 CEST schrieb Jonathan Liu:
-> On Wed, 28 Aug 2024 at 22:59, Heiko St=FCbner <heiko@sntech.de> wrote:
-> > Am Mittwoch, 28. August 2024, 09:47:53 CEST schrieb Jonathan Liu:
-> > > This adds the necessary device tree changes to enable analog audio
-> > > output for the 3.5 mm TRS headphone jack on the Radxa ROCK 4C+ with
-> > > its RK809 audio codec.
-> > >
-> > > Signed-off-by: Jonathan Liu <net147@gmail.com>
-> >
-> > as it looks like you have one of those boards, could I possibly as you
-> > to take a look at the vdd_cpu_b and vdd_gpu nodes?
-> >
-> > I see (and devicetree check reports it too) a pinctrl-0 for the vsel-gp=
-io
-> > without accompanying pinctrl-names.
-> >
-> > Could you check if things fail if you either add pinctrl-names or remove
-> > the pinctrl-0 entry?
-> =
+clock-1000000000
 
-> I tried both but neither resulted in any change to the warnings in dtbs_c=
-heck.
-> Reverting my change also results in the same warnings so I don't think
-> it is related to my change.
-
-I was more aiming at a functional test on the board :-) .
-
-You are correct in that this is not related to your change, I was just
-seeing someone with the hardware.
-
-I.e. while running dtbs check here I saw those regulator nodes
-and didn't want to change stuff without being able to test them.
-
-Heiko
+Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
 
 
+> +      compatible = "gated-fixed-clock";
+> +      #clock-cells = <0>;
+> +      clock-frequency = <1000000000>;
+> +      vdd-supply = <&reg_vdd>;
+> +    };
+> +...
+> -- 
+> 2.43.0
+> 
 
 _______________________________________________
 Linux-rockchip mailing list
