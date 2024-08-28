@@ -4,109 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 29E89C54E71
-	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Aug 2024 10:29:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 83672C54ED1
+	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Aug 2024 11:38:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=LkeK1nwUSfLX+Ear9iA3ZPp+Wo4AaT1mOr/cIIGpj4c=; b=o/sJjQkOsrcJJH
-	drG6m9Un9Gc4MOP89E9L28G0QhxK2hHIszKTfBLBLT5mvluYUT71fq6lAQuxwrYebWIa675xCO+84
-	NXasvHbf/0iUKFpxnd60iQZhAMYG8vzxyYbbMDppM59+xT9w2MV2P822BH5nPub51FV9h9RnNQeUl
-	df1/6J81wDa7Nvz+fd2ANLYhXi3Wi9fsztNczOZkk7U+6GvgCFboZWUzQ/PpEmmMswmfxaQ1XoLvd
-	LeDeG5kJZ95C3kXTG5fN8VRai8Piec8UklebkN1kb6qbGcgw5bt71umpGH44otCzTHlpHxtHOtCI8
-	cJZJd0wbM2YtEOlib+wg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:References:To:From:Subject:Cc:Message-Id:Date:Mime-Version:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=chJH3W0UVgXPR7MYHHQglRwoQlhOBYHSX4AuWXhm7G4=; b=Qvis3KRkVfyMxL1OJeBT+4vGv8
+	GkrgErbpCfX0fOKJyDhtioEg+uoxCANgxCXnigtyOMC17DH49iKy3M7eqqbv2ipA0I+EomHuQG1VL
+	wfbTsqSpxGEZy6g9XvdyVn24gsnA7AHiMT1UH/0X9fLlGNJ3hDwl/ywoLzotSmPChDfjlRN+bWNYX
+	Z4yhRmCupRiNbfcYXxjylgLawfu1O5inI+3pcHzooddA597AhJ78mf570tQJTx5JdENukdQLuoQDS
+	1YNhglxLPXSAPZMtzZlStSYqILaeK4cRniCCzEUFTnAvBudDDoRn4d6NtiFhapPieFbrlg8TvmJZi
+	3RgQH4vg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sjFvG-0000000ExME-1PKb;
-	Wed, 28 Aug 2024 10:29:06 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1sjH0P-0000000FAv9-3y76;
+	Wed, 28 Aug 2024 11:38:29 +0000
+Received: from out-181.mta1.migadu.com ([2001:41d0:203:375::b5])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sjFtg-0000000Ewr5-25ny;
-	Wed, 28 Aug 2024 10:27:30 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 864D7A434BD;
-	Wed, 28 Aug 2024 10:27:20 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id EF946C8403B;
-	Wed, 28 Aug 2024 09:08:36 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1724836121;
-	bh=T9+UPkiHdOSPmSX/60spyttQMin9/8OW+10mi+SdMFM=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=frlLQMiWouw88VzoZNjJZV2KjpobUVwczNzvsO56jI8Im8umluEi/+GyFzYwkm4wJ
-	 xG7Sc+4fw+JuRxqHNftuJ12rrEWHkhsyg+/ht+WmmLLQ31+F0rYQcR9gCW6nTC4ywT
-	 HAKHMxLJnO+EtwtDt1CohL42Fk2UNriNvQ05Hodk2uAOpZk01Ns7e9bLTJ31GzBiEg
-	 Wxo4igQk+XVGWVAE8kib9dRbr5MPZaDeGeGjb1ax1h/44H+YTw1llVioPpdB92VkGk
-	 01jQwgWkdIVMter6fL5ByFiBd+MweXaa7jQT9va4d/oVIwd4XqXzAtoDEtsZuOvvcN
-	 ket4RQAPtwODQ==
-Message-ID: <9180e80b-f464-4a84-8c58-35383beec637@kernel.org>
-Date: Wed, 28 Aug 2024 11:08:34 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v12 2/2] arm64: dts: apple: add "brcm,bcm4329-fmac"
- fallback compatible
-To: Jacobe Zang <jacobe.zang@wesion.com>, marcan@marcan.st,
- sven@svenpeter.dev, alyssa@rosenzweig.io, robh@kernel.org, heiko@sntech.de,
- krzk+dt@kernel.org
-Cc: linux-rockchip@lists.infradead.org, dsimic@manjaro.org,
- conor+dt@kernel.org, asahi@lists.linux.dev,
- linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, nick@khadas.com
-References: <20240828033953.967649-1-jacobe.zang@wesion.com>
- <20240828033953.967649-3-jacobe.zang@wesion.com>
- <22aaf58a-da71-44c7-acd7-f3e70b91cdfd@kernel.org>
- <c5047173-d569-42d4-9676-4679100da118@wesion.com>
-From: Krzysztof Kozlowski <krzk@kernel.org>
-Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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 fv0=
-In-Reply-To: <c5047173-d569-42d4-9676-4679100da118@wesion.com>
+	id 1sjGzZ-0000000FAi0-14Zy
+	for linux-rockchip@lists.infradead.org;
+	Wed, 28 Aug 2024 11:37:39 +0000
+Mime-Version: 1.0
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow.org; s=key1;
+	t=1724845051;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=Rt23x+Z3I8iukH4ZIcW8lmeAjhdTehSaRhcHPHwj+BA=;
+	b=E5Nr5HWwMY8ydf5lboDmLryWqYnrHUY4fv7b3Hxv4L3UE584qjhFefqNT62Zpxx0mnEGZk
+	q5Yo4RVp4ohCMKA+lNu7EC9my5lkbPhOXRxVXcMAt/oAEKz3n4zA+3VarwvsgjdvHHAaRY
+	Il35luGF4np0tKyHBBRVKzKExcA1Sm7dOKGY2BOZAG/lSWLoKUbGE2M95RTbC1a9QZch9m
+	8jzWo56nXQBt3mt2pkdwJb8jY1Lp+RobBBfyKugM6TKzvRvDfkvt3XtwZ8iVNwJYLoue9K
+	PEEMN2e432Mh856s55h2N5Kj4Y/vzXWP3lrdDu3+dzbWxQKpS6gsTmuxM/JHTA==
+Date: Wed, 28 Aug 2024 13:37:22 +0200
+Message-Id: <D3RIJDLW8QYE.1HYYTUUBD1H5M@cknow.org>
+Cc: <robh@kernel.org>, <krzk+dt@kernel.org>, <conor+dt@kernel.org>,
+ <linux-clk@vger.kernel.org>, <devicetree@vger.kernel.org>,
+ <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-rockchip@lists.infradead.org>
+Subject: Re: [PATCH v3 2/5] clk: clk-gpio: update documentation for
+ gpio-gate clock
+X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
+From: "Diederik de Haas" <didi.debian@cknow.org>
+To: "Heiko Stuebner" <heiko@sntech.de>, <mturquette@baylibre.com>,
+ <sboyd@kernel.org>
+References: <20240828101503.1478491-1-heiko@sntech.de>
+ <20240828101503.1478491-3-heiko@sntech.de>
+In-Reply-To: <20240828101503.1478491-3-heiko@sntech.de>
+X-Migadu-Flow: FLOW_OUT
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240828_032728_670212_197CF38B 
-X-CRM114-Status: GOOD (  18.29  )
+X-CRM114-CacheID: sfid-20240828_043737_843420_9FC778B5 
+X-CRM114-Status: UNSURE (   8.16  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -118,71 +70,54 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============5517508420435218330=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 28/08/2024 08:13, Jacobe Zang wrote:
-> 
-> 
-> On 2024/8/28 13:56, Krzysztof Kozlowski wrote:
->> On 28/08/2024 05:39, Jacobe Zang wrote:
->>> Broadcom driver need to check "brcm,bcm4329-fmac" compatible. Before
->>
->> What for?
->>
-> 
-> It matches the changes in the other series that I sent.
+--===============5517508420435218330==
+Content-Type: multipart/signed;
+ boundary=8176c0910110b2751c496c935bb6f58df2d108ac65f75328a6bb1174599f;
+ micalg=pgp-sha256; protocol="application/pgp-signature"
 
-Commit msg did not explain this at all. Anyway, then bindings should
-provide proper rationale without referring to "driver" as the reason.
+--8176c0910110b2751c496c935bb6f58df2d108ac65f75328a6bb1174599f
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=UTF-8
 
-> 
->>> PCIe devices used PCI ID as base compabile so add it as fallback
->>> compatible to pass the check.
->>>
->>> Signed-off-by: Jacobe Zang <jacobe.zang@wesion.com>
->>> ---
->>>   arch/arm64/boot/dts/apple/t8103-jxxx.dtsi | 2 +-
->>>   arch/arm64/boot/dts/apple/t8112-j413.dts  | 2 +-
->>>   arch/arm64/boot/dts/apple/t8112-j493.dts  | 2 +-
->>>   3 files changed, 3 insertions(+), 3 deletions(-)
->>>
->>> diff --git a/arch/arm64/boot/dts/apple/t8103-jxxx.dtsi b/arch/arm64/boot/dts/apple/t8103-jxxx.dtsi
->>> index 5988a4eb6efaa..4b021626d4692 100644
->>> --- a/arch/arm64/boot/dts/apple/t8103-jxxx.dtsi
->>> +++ b/arch/arm64/boot/dts/apple/t8103-jxxx.dtsi
->>> @@ -72,7 +72,7 @@ hpm1: usb-pd@3f {
->>>   &port00 {
->>>   	bus-range = <1 1>;
->>>   	wifi0: network@0,0 {
->>> -		compatible = "pci14e4,4425";
->>> +		compatible = "pci14e4,4425", "brcm,bcm4329-fmac";
->>
->> So devices are not compatible, but your argument is that driver needs to
->> do something here? That's not enough.
->>
-> Before this change, the check of "brcm,bcm4329-fmac" compatible is set 
-> at the end of probe function for SDIO devices which need IRQ. But after 
-> this change I set it to the top as the first check. So I add this 
-> fallback compatible to the Apple's DTS.
+On Wed Aug 28, 2024 at 12:15 PM CEST, Heiko Stuebner wrote:
+> The main documentation block seems to be from a time before the driver
+> handled sleeping and non-sleeping gpios and which that change it seems
 
-You are not listening, I think, and still keep talking about driver. It
-has nothing to do. Fix your driver.
+s/which/with/ ?
 
-> 
-> Oh..I got what you mean. Maybe my commit message is not clearly. It is 
-> no need to mention driver in it. Because the intent of adding the 
-> "brcm,bcm4329-fmac" compatible is to conform to the bindings.
+> updating the doc was overlooked. So do that now.
+>
+> Signed-off-by: Heiko Stuebner <heiko@sntech.de>
 
-Explain the hardware, not the driver. DTS represents hardware, not drivers.
 
-Best regards,
-Krzysztof
+--8176c0910110b2751c496c935bb6f58df2d108ac65f75328a6bb1174599f
+Content-Type: application/pgp-signature; name="signature.asc"
 
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYIAB0WIQT1sUPBYsyGmi4usy/XblvOeH7bbgUCZs8L9AAKCRDXblvOeH7b
+bv4UAP9DMhUi5AxRybS8zex8A36FmbWrDyUmxWT81dQ5DLnq3wD/XM+7U9lbgS2g
+Ai6Vjn85KETcvxvY+0MI3D/hSyLylg8=
+=vX1l
+-----END PGP SIGNATURE-----
+
+--8176c0910110b2751c496c935bb6f58df2d108ac65f75328a6bb1174599f--
+
+
+--===============5517508420435218330==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============5517508420435218330==--
+
