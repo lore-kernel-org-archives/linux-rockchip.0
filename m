@@ -4,65 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2827DC54E71
-	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Aug 2024 10:23:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1FFCAC54E93
+	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Aug 2024 10:25:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=jtQX57p8K5SGoZtkSVjzZTmw8n8zPLciNWRv29NbJJ0=; b=sP7KFaxSt3oxPZ
-	oFOUBr24jTuLsEbYgmzhqdNCkkGrxRELNRgp3+71zg4mnGMDm7umBlK1KJRenyohN1BYXBAeITUS4
-	q14ZdYzSvoPEsVGP5duDhN9sjjyJJSu6O9URAUCd2km0oTdtETK4fQMPo2f3VmoZemnqOn+Bm0rlG
-	vW9DPwG7CHuXdV+1CUSZDdVt45AFsEj0yNJQZYRqVe5/qYENjlWB6F0G2PEwCyVLjiamuSceRjU6k
-	OlyFcT6mDr1WWQqlTR1KOmfa5LuSk1ppeUGAzupNCHFQk/gKoLm6TmMgF5V1TDLPpXd6lY6aRf03u
-	6Hq78ftQbwRjEeyWg0hA==;
+	List-Owner; bh=sfhx/zZxhTiVhusqy/VaQV1+kzgZPYbcZrm7ZMF9uQg=; b=M5PahYzTQ47aDZ
+	Tjf2G85O03g00J+AoCTvkbb6Z5Edl2hpZ/IIwoVCSwuwj2ZxmBMxz5157kJD0XYscQpYX0hmcQFiD
+	OcTg9zUjKiPByPoEKsN+TANo0JfrCTJpdGZ5H39CLRr0W8/4kHaDHEyW82GPNBZRJrIV7vKMSVVmW
+	sQ/kLsPuLLega3vY+IVWpJblx+kHzoh7Mvo4uwVARQBh0b/fXcVf8/iWtG7KKm4OEe/4KRZUlFTic
+	ex9okaIKv2OWhbAXGOw8p7j60D14kqRZIzJzfFC43QwOeDKu0qVq4hGDHaKSAHT792a8gm6P4JFnX
+	V8Mz5evONp/Cs/VnocZQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sjFpv-0000000EvYN-22sl;
-	Wed, 28 Aug 2024 10:23:35 +0000
+	id 1sjFsA-0000000EwMT-2eIz;
+	Wed, 28 Aug 2024 10:25:54 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sjFpr-0000000EvWF-3uZB;
-	Wed, 28 Aug 2024 10:23:33 +0000
+	id 1sjFrF-0000000Ew2n-3pnj;
+	Wed, 28 Aug 2024 10:24:59 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
 	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=aFQK/ZLIDbeLUcGWGrZVvPLgm/ml3PTfZm4/e+yiKXc=; b=0FTAnkuq+zHry0MHA3HaPY0gHg
-	jEqvz5OWzxRwj3v6Bpvrz99N2hOXjox1zDzA+fsuX30tst99rscyOChpM2vRkYIGhksA9fPbUfoX4
-	5luES/5Ns6CW1i0Jy84FETYYSuDCsFuMlC9naAXZh2a4XwffugZa+mlRCZ/QjAarmXET0L9vT+0hP
-	87JAr8GgjJ6y+vX6H8mULY4q/2eWV78eU3R2rHm45R8NovJ5p0qS+XoKgLi6A4pQuxZ7lMWMn7HnO
-	sXtlJTCdbtJOPVAjvsd+B28qHqvkZzMyZvZnf4Co0u2Dbb7qqo/pq8eyZkrpWx0tqxN9DFCCAlupW
-	RD06O70g==;
-Received: from i5e8616cd.versanet.de ([94.134.22.205] helo=diego.localnet)
+	bh=O/BM3QttQXByMfJAW9hhalkO4P+GBm0Hu1hMTokbCmQ=; b=cbGAVQgiJ1ZEIKB3qtK8gJt2D0
+	K0B+fmIIgbVMsPHk2AkGQinZ714LfcnupGLNHLlbQU81I56ABT7VN4HbS5dGcogBZTLbi/AP2mdM+
+	vwSrA/TO5K+uhaYoS4tWPLXN8WicPn94alWf97Pv2L2tJVj6joZ2LMr+sUeOxKPHAj9vlFN1kLrzK
+	R1JLB9fYSl60fZd93OvgvwiXBUQwIG4taL1+CSe62ewrCAuH58XugaDtDHufM9Gdcu2e2Mr9IxSvd
+	v3rgbkxnC3NieMNMTjbOzTbm7r24Fv3YPKFrHqIVRh5pB1F/WfXmEgIyUTtY9xOFr4BjUQgZjFuaQ
+	40IGlfVg==;
+Received: from i5e8616cd.versanet.de ([94.134.22.205] helo=phil.lan)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1sjFpo-0004U0-GI; Wed, 28 Aug 2024 12:23:28 +0200
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: Alex Bee <knaerzche@gmail.com>
-Cc: Philipp Zabel <p.zabel@pengutronix.de>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- linux-media@vger.kernel.org, Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
- linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
- Rob Herring <robh@kernel.org>, Mauro Carvalho Chehab <mchehab@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>
+	id 1sjFrB-0004Up-BN; Wed, 28 Aug 2024 12:24:53 +0200
+From: Heiko Stuebner <heiko@sntech.de>
+To: Conor Dooley <conor+dt@kernel.org>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+	Alex Bee <knaerzche@gmail.com>,
+	Philipp Zabel <p.zabel@pengutronix.de>
+Cc: Heiko Stuebner <heiko@sntech.de>,
+	linux-media@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-rockchip@lists.infradead.org
 Subject: Re: (subset) [PATCH 0/3] Add VPU support for RK3128
-Date: Wed, 28 Aug 2024 12:24:38 +0200
-Message-ID: <14376251.lVVuGzaMjS@diego>
-In-Reply-To: <8a5f1856-823b-4cf7-a9fa-1dc6b9b54cd2@gmail.com>
+Date: Wed, 28 Aug 2024 12:24:49 +0200
+Message-ID: <172484065905.1479647.10986779548768332833.b4-ty@sntech.de>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20240523185633.71355-1-knaerzche@gmail.com>
 References: <20240523185633.71355-1-knaerzche@gmail.com>
- <171690893336.1899981.5081114224300578276.b4-ty@sntech.de>
- <8a5f1856-823b-4cf7-a9fa-1dc6b9b54cd2@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240828_032332_019308_4F2EE131 
-X-CRM114-Status: GOOD (  18.39  )
+X-CRM114-CacheID: sfid-20240828_032457_974055_44585C1D 
+X-CRM114-Status: GOOD (  12.21  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,44 +83,30 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Am Sonntag, 4. August 2024, 18:42:13 CEST schrieb Alex Bee:
-> Hi Heiko
+On Thu, 23 May 2024 20:56:30 +0200, Alex Bee wrote:
+> Similar to most Rockchip SoCs RK312x have hantro G1 based decoder and a
+> hantro H1 based encoder with attached iommu.
 > 
-> Am 28.05.24 um 17:09 schrieb Heiko Stuebner:
-> > On Thu, 23 May 2024 20:56:30 +0200, Alex Bee wrote:
-> >> Similar to most Rockchip SoCs RK312x have hantro G1 based decoder and a
-> >> hantro H1 based encoder with attached iommu.
-> >>
-> >> The existing drivers can be used as-is.
-> >>
-> >> Fluster scores:
-> >>    - FFmpeg:
-> >>      - H.264: 127/135
-> >>      - VP8:    59/61
-> >>    - GStreamer:
-> >>      - H.264: 129/135
-> >>      - VP8:    59/61
-> >>
-> >> [...]
-> > Applied, thanks!
-> >
-> > [2/3] soc: rockchip: grf: Set RK3128's vpu main clock
-> >        commit: b465223129f951d110e633a305085bd8430d7df0
-> I just noticed this patch didn't make it in 6.11-rc1. While it's not really
-> important for this patch as the media mainainters didn't manage to apply
-> the vpu bindings patch for 6.11 anyways, it looks like all commits of your
-> v6.11-armsoc/drivers aren't merged. I still haven't fully understand how
-> the SoC tree *really* works, but I couldn't find a PR for this branch [0].
+> The existing drivers can be used as-is.
+> 
+> Fluster scores:
+>   - FFmpeg:
+>     - H.264: 127/135
+>     - VP8:    59/61
+>   - GStreamer:
+>     - H.264: 129/135
+>     - VP8:    59/61
+> 
+> [...]
 
-That was me actually forgetting that branch :-( .
+Applied, thanks!
 
-With the rk3128 vpu-binding getting merged today, I just moved that
-onwards to 6.12 too. I guess this time I shouln't forget ;-)
+[3/3] ARM: dts: rockchip: Add vpu nodes for RK3128
+      commit: fc5aa1ba77c78c17d2c1ddb94e7aca3f4f32efcf
 
-
-Heiko
-
-
+Best regards,
+-- 
+Heiko Stuebner <heiko@sntech.de>
 
 _______________________________________________
 Linux-rockchip mailing list
