@@ -4,82 +4,168 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 388B0C5472D
-	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Aug 2024 07:49:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DAD4BC5472D
+	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Aug 2024 08:00:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=LTAPmUGw+mXS/G+wSb/qlA1eaowrttZyRatvEFBiUWY=; b=DB68Z55elb7KRg
-	C2bIB4pGcxpaWZE1CF/OZ/Y5vZxldpXbaP/OQb14G/X7tfKM/1Z8o+hnKp/insuSodQBqafz0yNzX
-	ZVPEJs5wGtaVxPCHGyBUQyZawwhJ//rUU9FD12qcSuyd8c/MXXgqEOiZH/CaUDXr9kmt5t1EYSbMd
-	97phzU5d1uQ8R1xGNjXr2GLydL72+RoLXyHv9CPbvXxrXnkjoUbpfBxo74uH4xImWvu8pcsvgDnxX
-	a+gNQGea2K18JcGHnn7jG4+7rn5AYQh0DaBlYAqG4AGCWswze90+lxL/eB1MrqY6M7NyUM+DsNBGI
-	m8hlehLf6IQMq8pquHvA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Cc:To:In-Reply-To:
+	References:Message-Id:Subject:Date:From:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=FplxNN81gbs70F6jtp7y7++sTPRryVgh1Ml7BIYMjPY=; b=BE/MCWf/18dXX2OtRSDf7uUdLH
+	TSVu9+DO+KIuQ4CODca3glckM11utp0wKvWXlQricBMOFMOx6/orr8XbVl0WZgG2odzzrxPoMOkoa
+	qfvJztL8kIMl5NlnEjQYPdiMVt/u0vKE/F4EHP8tLSbe80zhGYxwMlIWGBD6wyq2fPVXSbeMQoZGG
+	QLcRogwC1Rkyx1ob46EGfok1nWTLUIOQMYZl/NZwq6iVP1O/cfXSN+JF5SKyyYB1UzrvQ1D9PwbvR
+	B2sSSogsixQSbdLE1vljOhmd5enPg+3KQziUesQ+rRHjlxIaoBBgefRwWtFl0MS0xAu54ILxAwd5j
+	AqQDjCmA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sjDQI-0000000ENJJ-42nt;
-	Wed, 28 Aug 2024 07:48:58 +0000
-Received: from mail-pl1-x629.google.com ([2607:f8b0:4864:20::629])
+	id 1sjDb8-0000000ER7y-2nHC;
+	Wed, 28 Aug 2024 08:00:10 +0000
+Received: from mail-tyzapc01on20716.outbound.protection.outlook.com ([2a01:111:f403:2011::716] helo=APC01-TYZ-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sjDPN-0000000EMwN-2VJx;
-	Wed, 28 Aug 2024 07:48:02 +0000
-Received: by mail-pl1-x629.google.com with SMTP id d9443c01a7336-201e64607a5so45930465ad.2;
-        Wed, 28 Aug 2024 00:48:00 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1724831280; x=1725436080; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=3OBjUgc9cFXkg83mO7IC2sZvH5LHYp7bAGQMEXhE0sI=;
-        b=WchuAejGu0fWqZ2NifJDCe1Spq1JYa9ZVdYadHJXM7eWc7+uPFJj66pBRIDPGK3Yqg
-         rXHMn3lB3SCOytBZA96QGUqbUwWGI30MNvHXo8ZXypl5X68rvnnsfzvJ2dOFr1tCSyPQ
-         PwVZaqVtC9hbrw6LzKEas7qUfnw20irs292R7bD0ak0oHhAxOzwKvcvCSCGbj3B2rdCM
-         o3o+YXYHIVsUVlkj8TfmRd/9dHp9sa2VSWDtDwNtAFD0yFSn+L0DZy9HBxAkgv9fNDKR
-         UCcyS2PgYL8Hae+3cUIhB3Is5nxCUNc8KD7NRnYy0qMrdpVAOutVQzHApuVIzCdt7pP5
-         zJ7g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1724831280; x=1725436080;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=3OBjUgc9cFXkg83mO7IC2sZvH5LHYp7bAGQMEXhE0sI=;
-        b=NtCY0K8khKHZHCNCHWACoQk+RYhYalTcmCMdc1q8e/tzChEw1E2bH8+IcisEjq6pDj
-         dOKQPDCJniNkNeBmH4sdUbzYtgSBaQJqxXrfwKzH1e+xwsChMqPaWB5fuQbL81435lB8
-         +O8k3HmVdJVPRU6W8NfLHOTvH9Gy0uguJpp/xcnUtDjYP6tbXROr6MU+DD/ZSDuISTPM
-         W1WFyO8NXICmVgl8YO8F3Xs5O57HzCmhzlipKj/ZaUgb9uYEzU0so8jd62V4LJ2Hiw+s
-         MW4neh8eLTEEr5Hdob/LdnHd8Mjnl/zhQvqynPwBavIkE+k+my+Ux4kVi+kScgvVvImf
-         MrHw==
-X-Forwarded-Encrypted: i=1; AJvYcCVZuSMFtWIMJUDZ9kffj/SJvAxrvayuu2hfuPKzKkyvExdcDmEgMzyuNdZYCwfknBoROsDrZr47eylDlvjGPAE=@lists.infradead.org, AJvYcCXANgyxWJo9aocR/DFPhIMIe/KPNCb8hm9gZVXz0JTeolE9SGmySJ00f5Du7BHqsbaPlPSPW6y3nXyVwYhTxOJV@lists.infradead.org
-X-Gm-Message-State: AOJu0Yzwk4WP35ByW8JdN3RjTkkNnDhMaimdujF+tfjxKqkHKl52TgCB
-	WSVripRtbCWk1WZmYf3FtV74IQ5UGiJkSR++r7J3du3gpcgLeo2d
-X-Google-Smtp-Source: AGHT+IH4XeViWXkMvG8J+jECU/21Cp/grJ7rcyxe62j91h8/4LmdvTzWeJPBzN3n0Nxnqnd+vHgcvw==
-X-Received: by 2002:a17:902:fac3:b0:201:e65b:500b with SMTP id d9443c01a7336-2039e534282mr140849695ad.63.1724831280169;
-        Wed, 28 Aug 2024 00:48:00 -0700 (PDT)
-Received: from 167-179-157-192.a7b39d.syd.nbn.aussiebb.net (167-179-157-192.a7b39d.syd.nbn.aussiebb.net. [167.179.157.192])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2038557f59bsm94081575ad.97.2024.08.28.00.47.59
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 28 Aug 2024 00:47:59 -0700 (PDT)
-From: Jonathan Liu <net147@gmail.com>
-To: Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>
-Cc: FUKAUMI Naoki <naoki@radxa.com>,
-	Jonathan Liu <net147@gmail.com>,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH v2] arm64: dts: rockchip: Enable RK809 audio codec for Radxa ROCK 4C+
-Date: Wed, 28 Aug 2024 17:47:53 +1000
-Message-ID: <20240828074755.1320692-1-net147@gmail.com>
-X-Mailer: git-send-email 2.46.0
+	id 1sjDa7-0000000EQl6-1Dc0;
+	Wed, 28 Aug 2024 07:59:09 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=R1Zs4uY5LA8RPl6IOXdoywYkSLTteTuFPIX4BvNt2GP5S0v+RnXFuLjvep5QhgbHRGSYPFWeQVxTFKrJK8zdW/lfxvhdtbm3WZw2iGW0h+H/0vL1HskiVihSibJnuzOHh3Rqrk4JsV6NZqgu+Nm2Ov6iFBJRysMnLOzFVleNfk9407+tPH+ubqwDrBxI8kUYhvt8gA7/OMuJxg9hJO6iniwpPrGzBjlXatgFf1cHdPhjX2XsjMp4txZ9nQrXn5nNSeDGdYSAVWYRjnEuQw0SqsU2/C4NE6q5QIUoPbQO0Oj2nlhGM/Sp014ToV/zQ4o3q8hz80MEM8wcgYhzmGIVwg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=/ehvlQURtyKhPbgpC86U5gspzkOdWuy/BF52NJA+Rqs=;
+ b=gbDzDbqcSPRVe6KYMNyksYieJurczyHW2TSbugO0q+eRo4Ze9g6KXLxFAwWgqkhfcLlwa0UTSOEtY2dFp+EOIpyuv8hDBWzKWjpsCz16+QCwFO6aT6Wysxpu8riHwibvqaYhrGQX+5WxEqEXS+/jtJlbXhJQZ1JKbZR++OfArb1TwVlrv3Tswf+P5tnV5VLU2ZQU7AGC1MdZmFFrqijtIJvKgs6oDuPyC0sg109DIdPiuRQ5xeRwrTbaorBKYSR0vWwBGSobeRWlJIRwd2+DjTJhHVPfAvdBmeO2GTZZZc52qBULjbBz6btgUJAIyiIk5HZ/1RzJNwszMXQva2ZBCw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=wesion.com; dmarc=pass action=none header.from=wesion.com;
+ dkim=pass header.d=wesion.com; arc=none
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=wesion.com;
+Received: from TYZPR03MB7001.apcprd03.prod.outlook.com (2603:1096:400:26a::14)
+ by SEYPR03MB8765.apcprd03.prod.outlook.com (2603:1096:101:20e::8) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7897.26; Wed, 28 Aug
+ 2024 07:59:01 +0000
+Received: from TYZPR03MB7001.apcprd03.prod.outlook.com
+ ([fe80::78dd:5e68:1a9c:36c0]) by TYZPR03MB7001.apcprd03.prod.outlook.com
+ ([fe80::78dd:5e68:1a9c:36c0%4]) with mapi id 15.20.7875.019; Wed, 28 Aug 2024
+ 07:59:01 +0000
+From: Jacobe Zang <jacobe.zang@wesion.com>
+Date: Wed, 28 Aug 2024 15:58:49 +0800
+Subject: [PATCH v12 1/2] arm64: dts: rockchip: Add AP6275P wireless support
+ to Khadas Edge 2
+Message-Id: <20240828-dts-v12-1-80b6f240f67f@wesion.com>
+References: <20240828-dts-v12-0-80b6f240f67f@wesion.com>
+In-Reply-To: <20240828-dts-v12-0-80b6f240f67f@wesion.com>
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+ Hector Martin <marcan@marcan.st>, Sven Peter <sven@svenpeter.dev>, 
+ Alyssa Rosenzweig <alyssa@rosenzweig.io>
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ asahi@lists.linux.dev, Jacobe Zang <jacobe.zang@wesion.com>, 
+ Muhammed Efe Cetin <efectn@protonmail.com>, 
+ Arend van Spriel <arend.vanspriel@broadcom.com>
+X-Mailer: b4 0.14.1
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1724831937; l=1327;
+ i=jacobe.zang@wesion.com; s=20240828; h=from:subject:message-id;
+ bh=KW5MeIG/M5nvcsKi414Zrtbcsoco1mY3Ri3vJRZ5wRk=;
+ b=MQ6ukrQzR8gsNw1eL9p0HxaWTQ2FtHmyCsE6VvJzn4ZOpCfCtT1duaaBKacW9dUisxEzbZy4/
+ 9e0031Bms5uCPCawEQ67KNK7YIywV9MN5J9/ECoB0WnICzrlVbfzlbK
+X-Developer-Key: i=jacobe.zang@wesion.com; a=ed25519;
+ pk=CkP5TjIqHSwHJwZXTGtadoXZucYvakXcO3HjbR6FoeU=
+X-ClientProxiedBy: SG2PR04CA0187.apcprd04.prod.outlook.com
+ (2603:1096:4:14::25) To TYZPR03MB7001.apcprd03.prod.outlook.com
+ (2603:1096:400:26a::14)
 MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: TYZPR03MB7001:EE_|SEYPR03MB8765:EE_
+X-MS-Office365-Filtering-Correlation-Id: 6d42a038-3839-4337-32ec-08dcc7374795
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|1800799024|366016|376014|52116014|7416014|38350700014;
+X-Microsoft-Antispam-Message-Info: =?utf-8?B?UlptMkhwYnREUkNXbUNQdUFjcEJSdGhDSGFnSlFPVHJObXpFUzBnZnIxUmpk?=
+ =?utf-8?B?V0tZRStjMEhXR1ZPdmVRajZITGNPbWZPVVc2UGgzeldXekhyVW83L3RUa1Av?=
+ =?utf-8?B?T3plaXhpTExZOE1TZ1g5RnVZS3FEWW04UUNDUm0wVHd3SUxQazNDb2lvOHVV?=
+ =?utf-8?B?LzNWUE5qZzdCaFVNVnJHem51dnNSR3RFRms3VUVrMDVMSGU0c2liei9kRnBV?=
+ =?utf-8?B?bDB2OUtsOG9DYUIzRjREeXI0V29udWlkbmZkTTBNZnJHeGsyNkkrai9obkdo?=
+ =?utf-8?B?Y2NVTi9tdFRjMzVna1VrbDJud2k1cktrdXh3WTRLM0I1dElZQk5vVSsyUkFE?=
+ =?utf-8?B?TUVvbnpaK21ENWQrSE1SYkVOOERaOEhvZHVSMWRqM05qTTk3MjU3eVAvWW15?=
+ =?utf-8?B?dDJDMmozL1VKUldTSFJtMGE4TXR0dmRIa01pZ0ZweWxacHF4aE53VDdEelpR?=
+ =?utf-8?B?WmJmZys5WCtLbXhjU0EvbWpXSTI1TWFGRVg3TmZ4RE1rSG01aXVRcDl0TURR?=
+ =?utf-8?B?VWpLR3B2aVJHY0VudC9sY08wZVBOeHFkaG5PSDR6bzdYaE4xUVZmVE5DYmFQ?=
+ =?utf-8?B?dW1aYTEzdEtiQ3QwMnhsNEc2ZENDQm1XTDJPL083UGVYMUw2RzlIelM5eWxB?=
+ =?utf-8?B?U2pNYkE0c3Vsb0FGYlVFb2R0V3c5RGF3d0tQaDNEVktjZk03ZWFxL0k1dWF3?=
+ =?utf-8?B?VlVDOFZ3Ris5TWRXcW9wU3R1V1ZvZmNxekpYdDdYVk43NG9jOTlBNTYweC9s?=
+ =?utf-8?B?c3Q4dFRiQi8wMXdFUUJoZGh1a2RWazZVSjVra0lDNFZnY1VLQVptdzhFQTk0?=
+ =?utf-8?B?RHdHNDdpK2JZekp3OWllMDN1eWRuZFFGVmN4QzFObWpyWE12dWFPeEFrTEs1?=
+ =?utf-8?B?TVFQZXNnVkd6c1FKZ21WMDBjbEZpcWt4VktSQXlUS2d2MEMzMnBPRVVodmRR?=
+ =?utf-8?B?MkV4N2ozNEpyZmJDaHgyS1BqYnRuaUNid0hkVklFS1BBREhVWTV2YTE2ZlpT?=
+ =?utf-8?B?TkJiRnlvZExvVXk0QjhOR2tFdFVLY3dsSUZEaHh5eWlmMFFwRlIvQlhCeFU0?=
+ =?utf-8?B?b2EyeGM3MVJCdzdWNTlRVzBjVVI5Yk43b3M5am9tenNiRUJxVGpVSTJNckw3?=
+ =?utf-8?B?enMzQk9BVnpXcDVzMzJHZTdyVCs2SzdaN01HYm9DcGxjQkNaamhobzU1VXM2?=
+ =?utf-8?B?THh5S1c2T1R4ZDlVcmJBblZ6Tm5pVU1HRzhWUTNacjR1RFFMSVJ2YzFBTkE2?=
+ =?utf-8?B?bi9FQ2dSZWtQMlpLRG9CVkVrSnc0ZitNOTl2N2Y2Nk96eVZHSVlUS00xbDJ4?=
+ =?utf-8?B?aDJRYVBwYnErUkxhb1ZpT3N4R01YdGZNRSswV3ZuMkhSRHY3a2xNcFJXMGdo?=
+ =?utf-8?B?djhwRm9wU0JhcXpjdkUvaXhIdmxqQW9hallwS3VTQ3BzY2FCSHByR2xCNWdz?=
+ =?utf-8?B?dWdwMC9PNWgyYWNpUTZWSEFSMFRZd3RSMFlYNFEwUGJoUFB3aGFEK3pVSjlI?=
+ =?utf-8?B?cHdjR0M0RGExWmlxdlg2d0tqVUtzT0tXdC9IejRLOEpPWjJVZWRTVVhVY3p0?=
+ =?utf-8?B?dVl4RU8yL1lPYm9XVFZ3VXpWWEtsSzRzQlNoNnRGdUlmSUpjMGI4ZDhXbndT?=
+ =?utf-8?B?S05ZZ0NyU0xzZlA3TjNiSWJycVg5V2ZCbUVBYXNZZkdmaExZbGY0WFhIYUFx?=
+ =?utf-8?B?WHFDbnhJMmpldWIzMHZRNFI2RHlKU1NvRUVJM1kxTGJCYnA0UFhRWUZBMUpn?=
+ =?utf-8?B?YnZlZ2w3VGQzRkthVUdwMFZSQmlJSFE0MjlmeVF4WDh1Zy9Rb1didUlKU0Vx?=
+ =?utf-8?B?ejUyQ3FkUG0rMTVGcVpHSk1oM1pMSU84eVdrN0I4bUJxdkV5QS9DQjRoOUcv?=
+ =?utf-8?B?TG1UeWV2aW9UZ0d0ZEJ1RTBoRW5ONTZJU0l3ZnpqbDM3S3c9PQ==?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:TYZPR03MB7001.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(1800799024)(366016)(376014)(52116014)(7416014)(38350700014);DIR:OUT;SFP:1102;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?RktRaTIrRjNlV3QvbTVicWc0eC8xT3Y4QzdEYkdHS3c0SmtIaHFpKzA3WlFL?=
+ =?utf-8?B?NmlDejFkdi9DTlFQS2orTTNsMUJmeXVNOUUzZmhXNDRPbXIvcm1uNmZZek9M?=
+ =?utf-8?B?dzR4U1ZRdzlVcUlNaklPVXhDUTM2OE0zUDRib0JxVlVOb2sxQ2VXZG1vekhE?=
+ =?utf-8?B?ZXhQVFduR2lUV0V0YVJoTHBqb1BiRlRodE9zTDZkSklXcWQ5UHpTNjU2ZGll?=
+ =?utf-8?B?SkdJaDdSckI4Ty91NDF5MzhTeWlXdUthK3BSaDlReGNnaDEvR2U5MDROOVc3?=
+ =?utf-8?B?NzhiUmhSbDgwengwOHFYWVoxZGplY29oSktvY3QwNHVidTRUdWRNTFRPSUtH?=
+ =?utf-8?B?U3NsblFnOXAySVdwS1JmYU5wdVBabUFvYlliZnhNa0xGMjAvZ0t4VjZsZ1VU?=
+ =?utf-8?B?Z3dVNzFXZnFsb2gxNVFwNXJpMmUwcXlEVzlGdS9DNUZFK0pIU2JYbWZYRjdi?=
+ =?utf-8?B?WS9ockhXUHBiY1FrZG1MVkNheGhtKytWN1FJK29OMjJWMkt2Ti81V3Q0TFo4?=
+ =?utf-8?B?Y25sa0FNeDczaExoUHczbStvSG1STDNwUXA1cm5xbURRa3R0ekcvdzFYMXlE?=
+ =?utf-8?B?c0pBZFh5TlROVDNaY2tVeGRyYWYyWFY0TWs3SldVcGErci9LRzhzY0YwTlYw?=
+ =?utf-8?B?T25Fa3Yzd2hKRDhVbXo1M2xrbXFhY3NMT0pGZks4dXlHTzZsRS9ZRUZ0VWow?=
+ =?utf-8?B?eXhFbEVES3BablZ5M0Z2RHdIZzBVeU8zZXpwT0l2cHFtcGlhbnRqbmI1Ri9U?=
+ =?utf-8?B?SHZHQzhRSWpwMmpYbkt6WUFld2JiYmpoaCtCT0hqQlBpbDF1bkkxODBkRWNG?=
+ =?utf-8?B?M09RaDArQkJDeTJhdFZ5Rm52OE42WkZiSE5oTTFqbWtERldiQ0Z1RlVaN2Zm?=
+ =?utf-8?B?Mkk3ZDJlM09ldmVwNXpYOTc0T3Y1USs1MSttTytXa1lmNUVVTFlLbDBoZTZ1?=
+ =?utf-8?B?VUV1WDYrT0xkRkxsbzhOeVBrY3Z3SkY1bVFSYkY2ZTFKTHFqd01QV3c3aWh5?=
+ =?utf-8?B?QTV2b0ZndjBjd2ZCbks4NldXZm5ibFdTUjM1UG5wREZVVFZYTldPcHVYb0k3?=
+ =?utf-8?B?NitOYVNNL0dDcno3V05XQ1VaRTdTQXlXMmROcmVNRmttbldxVDhxYnY0S3Zt?=
+ =?utf-8?B?SGQwd1V1NVZmcXhPazh1Rk03ZDlIQzdyeE9IUzdIYTJhYzN0Q2NYczY0d0xr?=
+ =?utf-8?B?bytpZW05R09CandSUnB4ZlRVVTBaZkRoTEU5TzgvMVVHWTc5OXVzVWJLSis4?=
+ =?utf-8?B?OWdWTUNRcDFHMzJiZkhZWWxSTjBjNGJlVW1UbHVpeXdOSlBqSGRrZzR0Q2VD?=
+ =?utf-8?B?SmI0WWFNWU9Hcmx1SmtaQ3dTeFN5dnpuZCtuYlVqRE1KTzlIN2dzR3BIOWZ3?=
+ =?utf-8?B?ZTM5VEhFRDhyNHk1T1JWRGNCMlNiWVpENDlaM2U3YUVpc2pWdVlJUFNpYlNB?=
+ =?utf-8?B?NTFnaTh2cGxrUHA1U0h6bm42RDNyL2RJZTB0N29IZlIrRDRPVFc5ckVpeFNB?=
+ =?utf-8?B?dUp2TVl1Y0ZueUQ5TGFCeXJsTHYybEZ1ZDFZek83Nk1qR2Y1QmxoM01XbjJN?=
+ =?utf-8?B?dDdJc2RjM00wTXVWLzZFY0FKVEZKNElkN3Yxc1lUR3hYTTJlUmlJS0VqVVU0?=
+ =?utf-8?B?dktxM0I1cytXNU9EMHFKOE5pNGEzZGN5bFhsVDdaSEpsVzlhRi9IbE9XdFlI?=
+ =?utf-8?B?WC9jQXd0NGdWZ0xlNGIxeGdtTEpYWmhIMkc1cXVZNDROUGVMTW5ZU1BQL2U3?=
+ =?utf-8?B?RmNlUDU2YzFaWEs1Z1h6RmhZejJRV0llaGIyc09NQzFadEtRUnBvYmh0WlU1?=
+ =?utf-8?B?ZERMdFFUNkJpZlNsbGZmUEVLMjFwd1FnbXBxWDRiRVM2Z1NOQzF0OFJrQU02?=
+ =?utf-8?B?V244QzQ3QW11WGJHQ1RFd1piakxsbHIzejFMbDd2QXVyK1FHQWhVekRGbGJz?=
+ =?utf-8?B?TEZoczFuZzdSbDdGTXNNTllBWVQzby84TDFRc1NwM0dpMDBTTTlhWnNQYUFv?=
+ =?utf-8?B?ZG5MeUFIaElBRTVLTjdmZEZyaURueEdNWHlQc2pyWGxtdThhZW56blJXY0RK?=
+ =?utf-8?B?TXdzSnh5OTdqdEgwQkxVMXFkTGYwdGRUNWQ4MlBHYjZzVXY4N0pXYUNURkhM?=
+ =?utf-8?Q?jXTucOhDxR4LQP/MGqtha/RXn?=
+X-OriginatorOrg: wesion.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 6d42a038-3839-4337-32ec-08dcc7374795
+X-MS-Exchange-CrossTenant-AuthSource: TYZPR03MB7001.apcprd03.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 28 Aug 2024 07:59:01.8649
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 2dc3bd76-7ac2-4780-a5b7-6c6cc6b5af9b
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: +YmBHYZRuuZvOLy2Dhd9G69Wc4Fl4p8upkH6caoKIA+hQZ6xBCzvlPqO4/an2WTd0/PIdmZG3oDWoc5RNpA4ww==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SEYPR03MB8765
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240828_004801_654290_AE1759E2 
-X-CRM114-Status: GOOD (  11.34  )
+X-CRM114-CacheID: sfid-20240828_005907_367778_DDE86BB8 
+X-CRM114-Status: GOOD (  10.35  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,98 +182,48 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This adds the necessary device tree changes to enable analog audio
-output for the 3.5 mm TRS headphone jack on the Radxa ROCK 4C+ with
-its RK809 audio codec.
+Khadas Edge2 uses the PCI-e Ampak AP6275P 2T2R Wi-Fi 6 module. The
+pcie@0 node can be used as Bridge1, so the wifi@0 node is used as a
+device under the Bridge1.
 
-Signed-off-by: Jonathan Liu <net147@gmail.com>
+Co-developed-by: Muhammed Efe Cetin <efectn@protonmail.com>
+Signed-off-by: Muhammed Efe Cetin <efectn@protonmail.com>
+Reviewed-by: Arend van Spriel <arend.vanspriel@broadcom.com>
+Signed-off-by: Jacobe Zang <jacobe.zang@wesion.com>
 ---
- .../boot/dts/rockchip/rk3399-rock-4c-plus.dts | 46 ++++++++++++++++++-
- 1 file changed, 45 insertions(+), 1 deletion(-)
+ arch/arm64/boot/dts/rockchip/rk3588s-khadas-edge2.dts | 16 ++++++++++++++++
+ 1 file changed, 16 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rock-4c-plus.dts b/arch/arm64/boot/dts/rockchip/rk3399-rock-4c-plus.dts
-index d4b4dced3e39..14453b286446 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-rock-4c-plus.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-rock-4c-plus.dts
-@@ -52,6 +52,21 @@ led-1 {
- 		};
- 	};
- 
-+	rk809-sound {
-+		compatible = "simple-audio-card";
-+		simple-audio-card,format = "i2s";
-+		simple-audio-card,name = "Analog RK809";
-+		simple-audio-card,mclk-fs = <256>;
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-khadas-edge2.dts b/arch/arm64/boot/dts/rockchip/rk3588s-khadas-edge2.dts
+index dbddfc3bb4641..3d0f55c123d92 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588s-khadas-edge2.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3588s-khadas-edge2.dts
+@@ -283,6 +283,22 @@ &pcie2x1l2 {
+ 	reset-gpios = <&gpio3 RK_PD1 GPIO_ACTIVE_HIGH>;
+ 	vpcie3v3-supply = <&vcc3v3_pcie_wl>;
+ 	status = "okay";
 +
-+		simple-audio-card,cpu {
-+			sound-dai = <&i2s0>;
-+		};
++	pcie@0,0 {
++		reg = <0x400000 0 0 0 0>;
++		#address-cells = <3>;
++		#size-cells = <2>;
++		ranges;
++		device_type = "pci";
++		bus-range = <0x40 0x4f>;
 +
-+		simple-audio-card,codec {
-+			sound-dai = <&rk809>;
++		wifi: wifi@0,0 {
++			compatible = "pci14e4,449d", "brcm,bcm4329-fmac";
++			reg = <0x410000 0 0 0 0>;
++			clocks = <&hym8563>;
++			clock-names = "lpo";
 +		};
 +	};
-+
- 	sdio_pwrseq: sdio-pwrseq {
- 		compatible = "mmc-pwrseq-simple";
- 		clocks = <&rk809 1>;
-@@ -200,10 +215,13 @@ rk809: pmic@20 {
- 		interrupt-parent = <&gpio1>;
- 		interrupts = <RK_PC5 IRQ_TYPE_LEVEL_LOW>;
- 		#clock-cells = <1>;
-+		clock-names = "mclk";
-+		clocks = <&cru SCLK_I2S_8CH_OUT>;
- 		clock-output-names = "rk808-clkout1", "rk808-clkout2";
- 		pinctrl-names = "default";
--		pinctrl-0 = <&pmic_int_l>;
-+		pinctrl-0 = <&pmic_int_l>, <&i2s_8ch_mclk>;
- 		rockchip,system-power-controller;
-+		#sound-dai-cells = <0>;
- 		wakeup-source;
- 
- 		vcc1-supply = <&vcc5v0_sys>;
-@@ -445,6 +463,10 @@ &i2c3 {
- 	status = "okay";
  };
  
-+&i2s0 {
-+	status = "okay";
-+};
-+
- &i2s2 {
- 	status = "okay";
- };
-@@ -472,6 +494,28 @@ bt_wake_l: bt-wake-l {
- 		};
- 	};
- 
-+	i2s0 {
-+		i2s0_8ch_bus: i2s0-8ch-bus {
-+			rockchip,pins =
-+				<3 RK_PD0 1 &pcfg_pull_none>,
-+				<3 RK_PD2 1 &pcfg_pull_none>,
-+				<3 RK_PD3 1 &pcfg_pull_none>,
-+				<3 RK_PD7 1 &pcfg_pull_none>;
-+		};
-+
-+		i2s0_8ch_bus_bclk_off: i2s0-8ch-bus-bclk-off {
-+			rockchip,pins =
-+				<3 RK_PD0 RK_FUNC_GPIO &pcfg_pull_none>,
-+				<3 RK_PD2 1 &pcfg_pull_none>,
-+				<3 RK_PD3 1 &pcfg_pull_none>,
-+				<3 RK_PD7 1 &pcfg_pull_none>;
-+		};
-+
-+		i2s_8ch_mclk: i2s-8ch-mclk {
-+			rockchip,pins = <4 RK_PA0 1 &pcfg_pull_none>;
-+		};
-+	};
-+
- 	leds {
- 		user_led1: user-led1 {
- 			rockchip,pins = <3 RK_PD4 RK_FUNC_GPIO &pcfg_pull_none>;
+ &pwm11 {
+
 -- 
-2.46.0
+2.34.1
 
 
 _______________________________________________
