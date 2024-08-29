@@ -4,61 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9F22DC83F17
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7A0E0C83F15
 	for <linux-rockchip@archiver.kernel.org>; Thu, 29 Aug 2024 13:22:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=RLeLy6Z3LzsjrktqcocLapsv6F7samhV48L8FaqhROQ=; b=Rh/J9O+yw6wkWM
-	MawyJ2swVLqKqVPs98vrJMO6/LPbkrJ7gx2BVKVVaYm38vJBu9ji/FDCBcFW8uCu8zG0rl1oIk73k
-	9w4eNe9DTAW0CgMpLHvd8ZeK87Os8seIlqtipLqO7T2DzgaitmCDa3lC9P49CY8usW0elqaUTL4jT
-	VK+UafrKDfzehNjn3BG05Pjpv2ZWmQn9BlTCnlTjJPaxX+f5C6uaYmkXlzuH7BLaiUycjVjI+HLqU
-	V6njalhBgtCRnljTE5hmOhWy0v83gHwJznlXgJ5AbkpHTn8sAyupJFUOkHdYkxvTGwb0miUV/hg5u
-	xTK6cuTrgL7r398IvjLQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=J0VO7xCfxXgF4h5NQNhdYzxgGINuYbyZf4KB0Aqxofc=; b=gRAQs+pblCImhK
+	WUOxuouuoUWmo4LEthMPqb49wbgBUS10W7f5qS8w/VH0lOFKv92QMXhCtDtI1JY85ui4B1RoAjUUq
+	HvM5X6T5XRbDZoZNocwIXC+Bky2BTN5ahwVjVQWQA01tkwZZlKFXSWrn1CLIG/xd4qaN0Mm9aqruS
+	ZG+A77lpZFodn/qCH/W3F7e9q6M2NJxFpikFRR0lO02+TfPcZTBHcS82PPnnPxrUEKpLPaJCH0eXs
+	U1sohSohulEstkrv/0cSn0zKTFbbkUtc/2b/ITqDQyj/o7G8Fxfo2JeuWDdy/2dMLf8j/kQlKGji7
+	g57fpdKwbrT2cN+Wct/Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sjf6A-000000028hW-1APi;
+	id 1sjf6A-000000028iE-3WVQ;
 	Thu, 29 Aug 2024 13:22:02 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sjf5G-000000028Vb-2nax;
+	id 1sjf5E-000000028Uj-3q5N;
 	Thu, 29 Aug 2024 13:21:09 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Transfer-Encoding:MIME-Version:References:
-	In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+	s=gloria202408; h=Content-Transfer-Encoding:MIME-Version:Message-ID:Date:
+	Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
 	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=Uel2mVUmH/WOIAa067Q3w0IU839A2xFd601zVHRwGqU=; b=ICZsVjTN9sr1TP2vOxGF5YxhEc
-	9Jhvsei4+cOnu1KE/bUgYRyWWyIsV5UcGseG2w49bXX6msryp6HT4ToazqrvHgeBSwo43ITRUeHdq
-	lz2BTb4SqXYvkmh8X9ikMvu4VMIX4q1RYd5Od+L220VXInjs7Y0aPYnsJKr4ECNdo8fKlDHSz0u+5
-	pMFMP26u5HrDRb/qYaZQqrjKdz7vIGKH9EtjX+FuLo1Kjp9cSvizasDHEh0Je2O7+OJ9vwdWilVG0
-	xqNVLx2/GgA9pYjMPFpdexJx7HeKLFURJe6WXcGhFqcGpF2QmEzu/2y9vpfZBdpnShbfgFFiFcFAi
-	RM2OOeSQ==;
+	bh=brmcxwtAotg+1xovsMTzeCOtgzWWgY3Zhg/CvQpmqMQ=; b=MUHGcSA5xNYCeaC2HmsuK8Kwb9
+	70WABBaZhj7Tyg0Va92k2owPk8NU25kDcXfH3QKFc0zRrwG3UsqOX7myCL51DFsct0voMJogelvlx
+	iRVwWcG+r/lK4v0hd1Gv241MoWmWqDLiXVYNP0tk3LwigXzm2LKmvRxNPDPHuGjwJdM7MxTjdtgjh
+	APrjl+yKT7pCr7FBLroT23tR6dZsU9MTID5vT6a5zh35H+jvyeL1c0iS7Y3kp1K0gtL3ovp8wCYJb
+	jRv5ce/YxBpKm/Tfu59gu/FXB0WHuZedo2BYrrd0hg9f8DAfrBkg4Hr29ZZLnpweF/k9hH4u/R+Qx
+	Gy/2i4xA==;
 Received: from i5e861916.versanet.de ([94.134.25.22] helo=phil.lan)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1sjf5E-0004Es-Rj; Thu, 29 Aug 2024 15:21:04 +0200
+	id 1sjf5C-0004Es-57; Thu, 29 Aug 2024 15:21:02 +0200
 From: Heiko Stuebner <heiko@sntech.de>
 To: heiko@sntech.de
 Cc: marcin.juszkiewicz@linaro.org,
 	didi.debian@cknow.org,
 	linux-rockchip@lists.infradead.org,
 	linux-arm-kernel@lists.infradead.org
-Subject: [PATCH 2/3] arm64: dts: rockchip: drop unsupported regulator property from NanoPC-T6
-Date: Thu, 29 Aug 2024 15:20:59 +0200
-Message-ID: <20240829132100.1723127-3-heiko@sntech.de>
+Subject: [PATCH 0/3] Some fixes for issues found by dtbs check
+Date: Thu, 29 Aug 2024 15:20:57 +0200
+Message-ID: <20240829132100.1723127-1-heiko@sntech.de>
 X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20240829132100.1723127-1-heiko@sntech.de>
-References: <20240829132100.1723127-1-heiko@sntech.de>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240829_062106_730049_883D5D46 
-X-CRM114-Status: GOOD (  10.74  )
+X-CRM114-CacheID: sfid-20240829_062104_995064_A9106BAD 
+X-CRM114-Status: UNSURE (   8.31  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,26 +74,32 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-regulator-init-microvolt is used in the vendor-kernel, but not part
-of the specification.
+There two additional warnings remaining, hopefully I can motivate someone
+to look into them:
 
-Signed-off-by: Heiko Stuebner <heiko@sntech.de>
----
- arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dtsi | 1 -
- 1 file changed, 1 deletion(-)
+_build-arm64/arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dtb:
+    codec@1b: Unevaluated properties are not allowed 
+    ('assigned-clock-rates', 'assigned-clocks', 'clock-names', 'clocks', 'port' were unexpected)
+        from schema $id: http://devicetree.org/schemas/sound/realtek,rt5616.yaml#
+_build-arm64/arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dtb:
+    sound: 'simple-audio-card,hp-pin-name' does not match any of the regexes:
+    '^simple-audio-card,codec(@[0-9a-f]+)?$',
+    '^simple-audio-card,cpu(@[0-9a-f]+)?$',
+    '^simple-audio-card,dai-link(@[0-9a-f]+)?$',
+    '^simple-audio-card,plat(@[0-9a-f]+)?$', 'pinctrl-[0-9]+'
+        from schema $id: http://devicetree.org/schemas/sound/simple-card.yaml#
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dtsi
-index 066b964a7ea8..94a1c83a322d 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dtsi
-@@ -735,7 +735,6 @@ vdd_vdenc_s0: vdd_vdenc_mem_s0: dcdc-reg4 {
- 				regulator-boot-on;
- 				regulator-min-microvolt = <550000>;
- 				regulator-max-microvolt = <950000>;
--				regulator-init-microvolt = <750000>;
- 				regulator-ramp-delay = <12500>;
- 				regulator-name = "vdd_vdenc_s0";
- 
+Heiko Stuebner (3):
+  arm64: dts: rockchip: use correct fcs,suspend-voltage-selector on
+    NanoPC-T6
+  arm64: dts: rockchip: drop unsupported regulator property from
+    NanoPC-T6
+  arm64: dts: rockchip: drop unsupported regulator-property from
+    NanoPC-T6
+
+ arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dtsi | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
+
 -- 
 2.43.0
 
