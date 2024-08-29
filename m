@@ -4,66 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 523F5C87FC3
-	for <linux-rockchip@archiver.kernel.org>; Thu, 29 Aug 2024 16:59:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7A011C87FCF
+	for <linux-rockchip@archiver.kernel.org>; Thu, 29 Aug 2024 18:31:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:
+	Subject:To:From:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=LVaCtHRhp4Ao84z9TS0mNKMiCqxydPYmEkpdXMAnUw0=; b=DhahzoOW1dvynq
-	wODf4qlcOpXirwqYSxkdDHQJxtBqcnMaZmHYcdRcjoRxwrt8C0UBQtuyXETwnQS+G3NJ4bw0wTWw9
-	6xt+w2eZC4qzPqMjzGfi7MeqT6o7UgBlGBhAl8E6dUjOesW3wD1I2SJIq9hNs2o16+aCAC4tDbQ5Q
-	ofEipYQEMqMkY0cHtIfDQEgVVqCjM8PAqgvqZW0dc/7Cgpgi/cgnsBdoe4liytt6rk8yAoCtZTluI
-	8ANiKQXMI0j7GOagLhkvm1HSrXubDxGuxNfcR41RZBUj1vPX2oEdT2Z0fOPGgwlDXcFCxqPFB3e2+
-	n4IOGx6AzRD8KNwMJyQg==;
+	List-Owner; bh=+Xl/ZsL15wx8zluGHsHltuWUDX50SyBR9LdcXFNbf6I=; b=XuDIa/dc8fvc1w
+	LR5/tGMTgtZtZTDyN1F418eLCDVlDJqxowY7ToR5qOoFRE8GzcP+1uWtG7tV2awefIE+rmeiaE+x0
+	64oPCrvK45H79cdgAAxs+62Eix5WcUktmwoDLdUYBTkHwy0wAx5WagV+eWF+eiWqBw/x/YoFCIBYT
+	EwkZZSI+lt4d/Bq2uXIFo95h7n012QyOLTPhJVTT7mhmArvuUUy4FS/yispUZx4sEPcYFp7fZ990i
+	/5jjKC8yIRgNAaSABuwDQ/oEYXX2TXCIgI8HtnaO+pJTYgYjYRz1C2WUUH55oMoq2NuDhOS1JwjbQ
+	XTzcizOmeAoQ0DFfuCeA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sjiUt-00000002wY4-0Rqk;
-	Thu, 29 Aug 2024 16:59:47 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1sjjvo-00000003BXK-2zAM;
+	Thu, 29 Aug 2024 18:31:40 +0000
+Received: from hz-hc-03.sysprovider.com ([185.250.202.102])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sjiUq-00000002wXC-1atR
+	id 1sjjvn-00000003BWC-05XV
 	for linux-rockchip@lists.infradead.org;
-	Thu, 29 Aug 2024 16:59:46 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1724950781;
-	bh=jC0Ih0RsWMxQyauAHR0Kk/LIzSjf9fHkPJzL1gcEs/o=;
-	h=From:To:Cc:Subject:Date:From;
-	b=qjva+bfRaR2i1mVhXNcWL2ScQvPvnOTkY9MvzONRULs1NpMZmNWRXu2RGEmpLRIt0
-	 bpPkZgNFdx47KvXY1T6AHQEWAxCsMhjWGESYyMEV8OF5McFsvusMO7Wl1G37i7CWxY
-	 pkC8zQ3mKwt1pvT7eDbAMd7LVYu6nvVOptaEFi9IH6PPBMBFR4vgPJC+8oNbxYI6sG
-	 zKWj0qTebohaWOaUy7aIPGlqnDJ/lMKypB8Wy/5xM0aQSmmvuxWSerz6lbW+ac64W3
-	 LbwSXZV91XK2r571XiznugbwwxT3qvbaxmsdCLqZ+RsJYdEEtCWNOvhQYzfka1oEqO
-	 BgbgRCaM1XfBA==
-Received: from jupiter.universe (dyndsl-091-248-213-095.ewe-ip-backbone.de [91.248.213.95])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: sre)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 2015617E0E81;
-	Thu, 29 Aug 2024 18:59:41 +0200 (CEST)
-Received: by jupiter.universe (Postfix, from userid 1000)
-	id CAB754800A4; Thu, 29 Aug 2024 18:59:40 +0200 (CEST)
-From: Sebastian Reichel <sebastian.reichel@collabora.com>
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	linux-clk@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	Sebastian Reichel <sebastian.reichel@collabora.com>,
-	kernel@collabora.com
-Subject: [PATCH v1 1/1] dt-bindings: clock: remove assigned-clock* from rk3588 cru binding
-Date: Thu, 29 Aug 2024 18:58:05 +0200
-Message-ID: <20240829165933.55926-1-sebastian.reichel@collabora.com>
-X-Mailer: git-send-email 2.45.2
+	Thu, 29 Aug 2024 18:31:40 +0000
+Received: from [178.215.236.220]
+	by hz-hc-03.sysprovider.com with esmtp (Exim 4.96-58-g4e9ed49f8)
+	(envelope-from <defensoriasag@outlook.com>)
+	id 1sjjvk-0005Of-1R
+	for linux-rockchip@lists.infradead.org;
+	Thu, 29 Aug 2024 20:31:36 +0200
+From: Sr. Roy Kessier <marketing@neteris.com>
+To: linux-rockchip@lists.infradead.org
+Subject: =?UTF-8?B?U2VociBnZWVocnRlciBFbXBmw6RuZ2VyOg==?=
+Date: 29 Aug 2024 11:31:36 -0700
+Message-ID: <20240829113136.90C960F2C86076BC@neteris.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240829_095944_585763_0F68C492 
-X-CRM114-Status: UNSURE (   7.70  )
+X-CRM114-CacheID: sfid-20240829_113139_203021_41EEF79A 
+X-CRM114-Status: UNSURE (   0.39  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -76,41 +54,36 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Reply-To: roykessier@yandex.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-These properties are automatically taken over from the common clock
-schema:
-
-https://github.com/devicetree-org/dt-schema/blob/main/dtschema/schemas/clock/clock.yaml
-
-Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
----
- .../devicetree/bindings/clock/rockchip,rk3588-cru.yaml        | 4 ----
- 1 file changed, 4 deletions(-)
-
-diff --git a/Documentation/devicetree/bindings/clock/rockchip,rk3588-cru.yaml b/Documentation/devicetree/bindings/clock/rockchip,rk3588-cru.yaml
-index 74cd3f3f229a..4ff175c4992b 100644
---- a/Documentation/devicetree/bindings/clock/rockchip,rk3588-cru.yaml
-+++ b/Documentation/devicetree/bindings/clock/rockchip,rk3588-cru.yaml
-@@ -42,10 +42,6 @@ properties:
-       - const: xin24m
-       - const: xin32k
- 
--  assigned-clocks: true
--
--  assigned-clock-rates: true
--
-   rockchip,grf:
-     $ref: /schemas/types.yaml#/definitions/phandle
-     description: >
--- 
-2.45.2
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+U2VociBnZWVocnRlciBFbXBmw6RuZ2VyOgoKRGllIEV1cm9ww6Rpc2NoZSBJbnZlc3RpdGlvbnNi
+YW5rIGluIEx1eGVtYnVyZyB1bmQgZGVyIApJbnRlcm5hdGlvbmFsZSBXw6RocnVuZ3Nmb25kcyAo
+SVdGKSBoYWJlbiB1bnMgYmVhdWZ0cmFndCwgZGllIApVcnNhY2hlIGbDvHIgZGllIFZlcnrDtmdl
+cnVuZyBiZWkgZGVyIEF1c3phaGx1bmcgaWhyZXIgZ2VzZXR6bGljaCAKZ2VuZWhtaWd0ZW4gTWl0
+dGVsIHp1IHVudGVyc3VjaGVuLgoKVW5zZXJlIFVudGVyc3VjaHVuZyBlcmdhYiwgZGFzcyBzZWlu
+ZSBaYWhsdW5nIGF1ZmdydW5kIGtvcnJ1cHRlciAKQmFua2FuZ2VzdGVsbHRlIHZlcnrDtmdlcnQg
+d3VyZGUsIGRpZSB2ZXJzdWNodGVuLCBzZWluIEdlbGQgYXVmIApzZWluZSBQcml2YXRrb250ZW4g
+YmVpIEFCQU5DQSB1bXp1bGVpdGVuLiBVbSBkaWVzZSBBcnQgdm9uIApiZXRyw7xnZXJpc2NoZW4g
+QWt0aXZpdMOkdGVuIHp1IHZlcmhpbmRlcm4sIGhhYmVuIHdpciBlaW5lIApWZXJlaW5iYXJ1bmcg
+bWl0IGRlciBFdXJvcMOkaXNjaGVuIEludmVzdGl0aW9uc2JhbmsgdW5kIGRlbSBJV0YgCnp1ciBW
+ZXJ3YWx0dW5nIHVuZCDDnGJlcndhY2h1bmcgSWhyZXIgWmFobHVuZy4gRsO8ciBJaHJlIFphaGx1
+bmcgCmhhYmVuIHdpciBkYWhlciB2b24gTUZZIGVpbmUgdW53aWRlcnJ1ZmxpY2hlIFphaGx1bmdz
+Z2FyYW50aWUgCmVyaGFsdGVuLgoKV2lyIGZyZXVlbiB1bnMsIElobmVuIG1pdHRlaWxlbiB6dSBr
+w7ZubmVuLCBkYXNzIGRpZSBFdXJvcMOkaXNjaGUgCkludmVzdGl0aW9uc2JhbmsgYmVzY2hsb3Nz
+ZW4gaGF0LCBJaG5lbiBkZW4gQmV0cmFnIHZvbiAKMy41MDAuMDAwLDAwIEVVUiB6dXLDvGNrenVl
+cnN0YXR0ZW4gdW5kIGlobiBwZXIgQmFua8O8YmVyd2Vpc3VuZyAKZGlyZWt0IGF1ZiBJaHIgQmFu
+a2tvbnRvIHp1IMO8YmVyd2Vpc2VuLgoKVW0gZWluZW4gcmVpYnVuZ3Nsb3NlbiB1bmQgcHJvYmxl
+bWxvc2VuIFphaGx1bmdzdm9yZ2FuZyB6dSAKZ2V3w6RocmxlaXN0ZW4sIGtvbnRha3RpZXJlbiBT
+aWUgYml0dGUgdW5zZXJlbiBWZXJ0cmV0ZXIsIEhlcnJuIApSb3kgS2Vzc2llciwgdW50ZXIgZGVy
+IGZvbGdlbmRlbiBFLU1haWwtQWRyZXNzZToKRS1NYWlsOiByb3lrZXNzaWVyQHlhbmRleC5jb20K
+CkJpdHRlIHRlaWxlbiBTaWUgdW5zIGF1Y2ggSWhyZSBXaGF0c0FwcC1OdW1tZXIgbWl0LCB1bSBk
+aWUgCktvbW11bmlrYXRpb24genUgZXJsZWljaHRlcm4uCgpWaWVsZW4gRGFuayBmw7xyIElocmUg
+QXVmbWVya3NhbWtlaXQgaW4gZGllc2VyIEFuZ2VsZWdlbmhlaXQuCgpBdWZyaWNodGlnLApIZXJy
+IFJveSBLZXNzaWVyCnJveWtlc3NpZXJAeWFuZGV4LmNvbQoKX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0Ckxp
+bnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5v
+cmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
