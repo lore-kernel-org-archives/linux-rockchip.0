@@ -4,87 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 01972C83F07
-	for <linux-rockchip@archiver.kernel.org>; Thu, 29 Aug 2024 11:52:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F17E2C7EE33
+	for <linux-rockchip@archiver.kernel.org>; Thu, 29 Aug 2024 11:56:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=/GreEcwhOWGKsxjNSUXsrN7ESCqcAG6XxV8dAwZ7MOo=; b=a0LLnXHl9Pzqoe
-	O1ULK2rTSi3RGNn2DfXR1am8cptUvKGaj/c7uf+vMUupyCwQPA3gjB+1w/0dq9pQ9fK7mAv+03+NH
-	+GLCHyuEZmU+/Ih6xxXA29cueLIIONl2zGD8f5PoXrIwATe6WHcQKFqRPSt3PK5VeTG/tEDF9+KxV
-	G4hQGmjmfbvuO21K5er9R+rQzakQdIsvOJtOAv2snKY59/9l7rC+7iR6t7A6yZFLEteJzW/pbF0lw
-	nXt5sgSrc0+i6057ltz7A7f8JRV31CfZXTNA3CMYGk0QoIM9hIqy2m618K5jm6mXu50BROak44xkw
-	NkRQsk2xD4RLUMJjs9Iw==;
+	List-Owner; bh=y/1An6oKUkuQ9veXD9EspP3OAMlc57hyYFLql/Xa6l8=; b=uQOUkbpFRmqUnB
+	zF5CiDLgS/FGgxcKW/wUtBkufPej/kQAYK88D8ZIszggKJg392EYFEKJGitxWqdgE67gG8DP2E55h
+	DEI6UOAzFoC/xPBN+3LPcPTozoeXofzRJVi/+lsT0r+6tjiyi26Q8fhqhLe+D3zBVAc4jsZ90Rii4
+	NI2R6qJSuI0U4hTwV20dpLEePZ07YlIMjhbnsDd9x/4kbQi7syXky4yelUKphbrnEYoTOIJx2Vfza
+	g4Kdmd8kIbI66LANNfBwE8GXG1+E3BoKp2crlLfkT8XSPodpNQSRepXCsJdxvWfyzYb9h6WCsNMdr
+	eWWgqe8folYhcfFtmJgw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sjdhB-00000001oS0-36sW;
-	Thu, 29 Aug 2024 11:52:09 +0000
+	id 1sjdl6-00000001pBy-3NOV;
+	Thu, 29 Aug 2024 11:56:12 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sjdh8-00000001oRU-3BNz;
-	Thu, 29 Aug 2024 11:52:07 +0000
+	id 1sjdkd-00000001p2v-3YgS;
+	Thu, 29 Aug 2024 11:55:45 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
 	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=tLZ8vmFpkVpu4IvhBOz9UunW+WpkV/nZjcZ3qim3VmY=; b=BSFNf44C7QcZSYJ3IeF8hDavGL
-	JZ2YxBEDZGmxXUbx3qel7FKJU1TY9i8zVYc76pwv0N7eQ9qa7NP52WVNYJwgUkQStsCdWI4HLn7ba
-	DIwnks4ACBQA7N093a3FzyGXHK+XAaGvKjROcPDnV9uNEYCHdJT/iuBidO48dBWxChgcGFJMG2C9b
-	eyObsZF5sdPuLdHcnbCrDbCQ/rZP1nsmxyOt87KlJWycQAEjBfaklEReRjJTglG3/bfjAoKzUE0CT
-	MVE7W3kPCOLwqYLTMu45+pbGExipmw9U93rcXS7Djc/lWaBtmTwJhU6P3BkMAdK5qMhoWG0fhGfhe
-	y7YmOsDQ==;
-Received: from i5e861916.versanet.de ([94.134.25.22] helo=diego.localnet)
+	bh=09k5tGRHsX1lPAzdVjGE3UyjwnS3VL8JaqpnFiQJWMk=; b=N6Y8pbLpYqVMpm3S/cLI1Ugkkm
+	f3w7juzI9/Dall0G7YTOR/zRPJxONg6czYbBbAjTDstBDZWgSJ/qJlCP/1w6ypFViva++G0l/Pt3m
+	A1K3egH+uk88yc7TUac4dQ2CJVrRsCny1smQv0QNtSQzF7TOHM8AHccUPvUMP7YbWlENDtsMpT1Ca
+	GhZLFM8/WIdNjvt2khMCpa06verSAKZX7aXUpJY5JjgZNC6XFeuxJi+j2H7qZM16zZeGLYjkYkAs9
+	7q+hpa7YHlmgTnFQjtEHme/stEA3VpqJLb2p5QJvDz9XK0DOa9N6HNbAV61IfyzIiUJoi+H6fMeTy
+	Aek48RCg==;
+Received: from i5e861916.versanet.de ([94.134.25.22] helo=phil.lan)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1sjdgT-0003bn-Pb; Thu, 29 Aug 2024 13:51:25 +0200
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: Detlev Casanova <detlev.casanova@collabora.com>,
- Guenter Roeck <linux@roeck-us.net>
-Cc: linux-kernel@vger.kernel.org, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>,
- Andi Shyti <andi.shyti@kernel.org>, Jonathan Cameron <jic23@kernel.org>,
- Lars-Peter Clausen <lars@metafoo.de>, Lee Jones <lee@kernel.org>,
- Ulf Hansson <ulf.hansson@linaro.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Jiri Slaby <jirislaby@kernel.org>, Mark Brown <broonie@kernel.org>,
- Wim Van Sebroeck <wim@linux-watchdog.org>,
- Chris Morgan <macromorgan@hotmail.com>, Jonas Karlman <jonas@kwiboo.se>,
- Tim Lunn <tim@feathertop.org>, Chukun Pan <amadeus@jmu.edu.cn>,
- Andy Yan <andyshrk@163.com>, Muhammed Efe Cetin <efectn@protonmail.com>,
- Jagan Teki <jagan@edgeble.ai>, Dragan Simic <dsimic@manjaro.org>,
- Ondrej Jirman <megi@xff.cz>, Michael Riesch <michael.riesch@wolfvision.net>,
- Jimmy Hon <honyuenkwun@gmail.com>, Alexey Charkov <alchark@gmail.com>,
- Elon Zhang <zhangzj@rock-chips.com>, Elaine Zhang <zhangqing@rock-chips.com>,
- Yifeng Zhao <yifeng.zhao@rock-chips.com>,
- Finley Xiao <finley.xiao@rock-chips.com>, Liang Chen <cl@rock-chips.com>,
- Jisheng Zhang <jszhang@kernel.org>, Jamie Iles <jamie@jamieiles.com>,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org,
- linux-i2c@vger.kernel.org, linux-iio@vger.kernel.org,
- linux-mmc@vger.kernel.org, linux-serial@vger.kernel.org,
- linux-spi@vger.kernel.org, linux-watchdog@vger.kernel.org,
- kernel@collabora.com
-Subject: Re: [PATCH v2 09/12] dt-bindings: watchdog: Add rockchip,rk3576-wdt
- compatible
-Date: Thu, 29 Aug 2024 13:52:37 +0200
-Message-ID: <61607306.matp6XCIr4@diego>
-In-Reply-To: <5254cf14-65d1-4ffa-a1fb-265a51dda37d@roeck-us.net>
-References: <20240823150057.56141-1-detlev.casanova@collabora.com>
- <3262963.l52yBJDM9G@diego>
- <5254cf14-65d1-4ffa-a1fb-265a51dda37d@roeck-us.net>
+	id 1sjdkc-0003fK-8k; Thu, 29 Aug 2024 13:55:42 +0200
+From: Heiko Stuebner <heiko@sntech.de>
+To: Conor Dooley <conor+dt@kernel.org>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+Cc: Heiko Stuebner <heiko@sntech.de>,
+	linux-rockchip@lists.infradead.org,
+	Conor Dooley <conor@kernel.org>,
+	linux-arm-kernel@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	kernel@collabora.com,
+	linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v2 0/2] Fix compatibles for RK3588 VO{0,1}_GRF
+Date: Thu, 29 Aug 2024 13:55:32 +0200
+Message-ID: <172493252602.1711002.13468063682788889129.b4-ty@sntech.de>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20240828-rk3588-vo-grf-compat-v2-0-4db2f791593f@collabora.com>
+References: <20240828-rk3588-vo-grf-compat-v2-0-4db2f791593f@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240829_045206_817589_F313A169 
-X-CRM114-Status: GOOD (  21.72  )
+X-CRM114-CacheID: sfid-20240829_045543_908679_C875436C 
+X-CRM114-Status: UNSURE (   8.99  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,58 +77,32 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Guenter,
+On Wed, 28 Aug 2024 15:40:07 +0300, Cristian Ciocaltea wrote:
+> As Conor noticed recently [1], RK3588 VO0 & VO1 GRFs incorrectly share
+> the compatible string, since they are not identical (though quite
+> similar in terms of layout).
+> 
+> Provide dedicated compatible strings, as a follow-up.
+> 
+> [1] https://lore.kernel.org/lkml/20240821-stretch-scam-09d7adc08a4c@spud/
+> 
+> [...]
 
-Am Dienstag, 27. August 2024, 21:38:35 CEST schrieb Guenter Roeck:
-> On 8/27/24 00:20, Heiko St=FCbner wrote:
-> > Am Samstag, 24. August 2024, 18:44:29 CEST schrieb Guenter Roeck:
-> >> On Fri, Aug 23, 2024 at 10:52:36AM -0400, Detlev Casanova wrote:
-> >>> It is compatible with the other rockchip SoCs.
-> >>>
-> >>> Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
-> >>
-> >> Acked-by: Guenter Roeck <linux@roeck-us.net>
-> > =
+Applied, thanks!
 
-> > For my understanding, does this Ack mean you expect the patch to go in
-> > with the other patches?
-> > =
+[1/2] dt-bindings: soc: rockchip: Fix compatibles for RK3588 VO{0,1}_GRF
+      commit: 11746c33909b082cb3b2183dd4164eb8bdcfc3df
+[2/2] arm64: dts: rockchip: Fix compatibles for RK3588 VO{0,1}_GRF
+      commit: 5956ee09c8254273c587b07f5b4d42da59a0325c
 
-> Yes
-> =
-
-> > Because in theory this patch could also be picked and go through the
-> > watchdog tree, similar to how the saradc binding went into the
-> > iio tree already.
-> > =
-
-> =
-
-> I thought it was all supposed to be pushed together.
-
-I think at this point the rk3576 has still quite a number of separate
-pieces. A series for clocks, one for mmc and I think there are more.
-
-So for stuff that is obvious, like the saradc compatible Jonathan already,
-picked or this watchdog compatible, a strategy of "someone picks the
-individual" patch also is helpful, because it reduces the number of pieces
-on the "chess board" ;-) .
-
-
-So I guess both ways (wdt binding getting applied, or me just applying it
-with the rest) are doable and we'll just follow what you feel comfortable
-with doing.
-
-Heiko
-
-
-
-
+Best regards,
+-- 
+Heiko Stuebner <heiko@sntech.de>
 
 _______________________________________________
 Linux-rockchip mailing list
