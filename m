@@ -4,85 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 66493CA0EED
-	for <linux-rockchip@archiver.kernel.org>; Fri, 30 Aug 2024 08:32:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6E5EDCA0FFF
+	for <linux-rockchip@archiver.kernel.org>; Fri, 30 Aug 2024 15:15:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
-	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=IDD3egXnb+5r6v8+u3lCLgLPuV+xyVTF0dbfdWGJ27E=; b=N8Y0vpWR5P+fHq
-	QG1UhliAij6Dy/SNv/eqn7hursGgwqnvyLPGoSkHvfyR5qz4MJ8c7RvQGOCKt6SOt6rUs+iy6C8wo
-	54yCXwxiN6U5VC0mESQR/e5PglJMkxnohFgC1cwhWyHTrI1rzhiYcB6JvDF8u/xTGJsCT4exhCzF7
-	41+hqpRAHrQXLJ0QCNfraK0hILQU69hbfx4AhdO0CMLu8smUjWxpKmGuRngCxPD6GWBmfC//eQAnF
-	cvNea9+eJ1HLvGSUQaDdrrC62Ls1xhJ7Pd4y9IOSBeEEf+TtD0agHgRmCG+nodu7mpXvR7jtDmgr0
-	DX0UcBDHPARgBbuAQfcw==;
+	List-Owner; bh=d6G/JPeLLTO8nvLOb/baRzMsOA2gZ5hrVTEzmyIE2gk=; b=CLKZZU8X0Q3BY0
+	SpQlWbp8jL6pP5f338Qps/qIgkWaxHxBUfIU/dOVlbfCHzdSR0FSnlZJ0CbJXLrZZgEH8fTGgYmiI
+	pnnjrnxa1lDJv0j+mI80k8Ptw+7ed3Q5a1qpyv3mhthJq/9ybwmr8MKIjpyLaPQe9c6iF/C+S8vZG
+	/ud+AAjROUIbc0hhn5ThtWSjRA9qtaby20Y7MU6BjcQl+jvij/qGDkCHmusGQC2QSpiZfl/PGT8Fi
+	3scHzFqFDWCwD22HUvt8Q06kfuy+JzMM369n+ZNevsZ0D5OasFY6kNdNQ5v1xGbx7mFcUAvCUWrEI
+	yfiYd8DrasP6yDQrIX6w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sjx3Y-00000005N4Z-0zkB;
-	Fri, 30 Aug 2024 08:32:32 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1sk3Kw-00000006k3H-1U5a;
+	Fri, 30 Aug 2024 15:14:54 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sjx1O-00000005MWU-1g4O;
-	Fri, 30 Aug 2024 08:30:19 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 708D1A44209;
-	Fri, 30 Aug 2024 08:30:10 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D1355C4CEC2;
-	Fri, 30 Aug 2024 08:30:08 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1725006617;
-	bh=+qWkkkxG743ImM/aahK9UM7XRQPRK07QH/l7Lrn/2g4=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=n87VcqIld4h3oj7jmm7RfOPl4zckDOEs8srTmVTODlJPFoBWJTdLkpxKb/TTrDPNI
-	 RpHdWXpgebIFMc/qPmm4qzLIU/IUXikZBg9fEljw5P/AOGdNBkoPI9gH5NVY29Dhxj
-	 0X1uhyjUZT+Aui4Sd6KyzejiYNza+LZ5CXen9SIXDTegOWyX/nTpdat55CRq0o5GTY
-	 kwc8M8dElgz1oXzLOA1CYsDOeadPufbX+4woWWT7nRP10Yqzc9IYsRuD24HA4Io+QG
-	 F5nYBaRSeP36LV/Z3WWPzyZZZEr6rtTbrq62Rxt/JKgxUcvItsy5MM3zN18fyGINmP
-	 7xquAQuP5GK1g==
-From: Lee Jones <lee@kernel.org>
-To: linux-kernel@vger.kernel.org, 
- Detlev Casanova <detlev.casanova@collabora.com>
-Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
- David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>, 
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
- Andi Shyti <andi.shyti@kernel.org>, Lee Jones <lee@kernel.org>, 
- Ulf Hansson <ulf.hansson@linaro.org>, 
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
- Jiri Slaby <jirislaby@kernel.org>, Mark Brown <broonie@kernel.org>, 
- Wim Van Sebroeck <wim@linux-watchdog.org>, 
- Guenter Roeck <linux@roeck-us.net>, Chris Morgan <macromorgan@hotmail.com>, 
- Jonas Karlman <jonas@kwiboo.se>, Tim Lunn <tim@feathertop.org>, 
- Chukun Pan <amadeus@jmu.edu.cn>, Muhammed Efe Cetin <efectn@protonmail.com>, 
- Andy Yan <andyshrk@163.com>, Jagan Teki <jagan@edgeble.ai>, 
- Dragan Simic <dsimic@manjaro.org>, Ondrej Jirman <megi@xff.cz>, 
- Jimmy Hon <honyuenkwun@gmail.com>, Elon Zhang <zhangzj@rock-chips.com>, 
- Finley Xiao <finley.xiao@rock-chips.com>, 
- Elaine Zhang <zhangqing@rock-chips.com>, Liang Chen <cl@rock-chips.com>, 
- Yifeng Zhao <yifeng.zhao@rock-chips.com>, 
- Jisheng Zhang <jszhang@kernel.org>, Jamie Iles <jamie@jamieiles.com>, 
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org, 
- linux-i2c@vger.kernel.org, linux-mmc@vger.kernel.org, 
- linux-serial@vger.kernel.org, linux-spi@vger.kernel.org, 
- linux-watchdog@vger.kernel.org, kernel@collabora.com, 
- Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <01020191998a2fd4-4d7b091c-9c4c-4067-b8d9-fe7482074d6d-000000@eu-west-1.amazonses.com>
-References: <20240828151028.41255-1-detlev.casanova@collabora.com>
- <01020191998a2fd4-4d7b091c-9c4c-4067-b8d9-fe7482074d6d-000000@eu-west-1.amazonses.com>
-Subject: Re: (subset) [PATCH v3 04/11] dt-bindings: mfd: syscon: Add rk3576
- QoS register compatible
-Message-Id: <172500660860.97285.13837050366813522297.b4-ty@kernel.org>
-Date: Fri, 30 Aug 2024 09:30:08 +0100
+	id 1sk3JQ-00000006jpy-3DXq
+	for linux-rockchip@lists.infradead.org;
+	Fri, 30 Aug 2024 15:13:22 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+	List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=mKoAUCPLIx2u8bDuKHDW2AwZSGh12y/DJxrGx1xVQAs=; b=X79uT/JWFVwscl4U2i8M02fhoP
+	kD3xNG8y1qE0GGmzAvTBZepPRr8LTp2O8vaC5ebYelXYmImEXCSoDzhqyC3e1rcrUZVON8gVYMcYq
+	OGajtNQ7E0qM1dJJxLWQSARZ528qEu/IupAKSC5d4lmEOhMrGZfhDxwYRhNAt45GWHyebuAcaXexC
+	MQHwrlxWafQYd0Szhsuv9UNczv8ud539gs4rkBtfQ9pMcEi0uG8eHkvlg4ob+WllA2acKrvpPMZY2
+	ZFbLh8L83boy2B+9urT+fIWN1hUYU4AXaFPlucJ66N8GdK+GQM5TpXtphWeC+IkO1WJgXpIqSpFDh
+	EdYTC1ZQ==;
+Received: from i5e861921.versanet.de ([94.134.25.33] helo=phil.lan)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1sk3JG-0004MP-Iy; Fri, 30 Aug 2024 17:13:10 +0200
+From: Heiko Stuebner <heiko@sntech.de>
+To: Sebastian Reichel <sebastian.reichel@collabora.com>,
+	Stephen Boyd <sboyd@kernel.org>,
+	linux-clk@vger.kernel.org,
+	Michael Turquette <mturquette@baylibre.com>,
+	Detlev Casanova <detlev.casanova@collabora.com>
+Cc: Heiko Stuebner <heiko@sntech.de>,
+	andy.yan@rock-chips.com,
+	Michal Tomek <mtdev79b@gmail.com>,
+	huangtao@rock-chips.com,
+	Elaine Zhang <zhangqing@rock-chips.com>,
+	linux-rockchip@lists.infradead.org,
+	Chad LeClair <leclair@gmail.com>,
+	Rob Herring <robh+dt@kernel.org>,
+	devicetree@vger.kernel.org,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Kever Yang <kever.yang@rock-chips.com>,
+	kernel@collabora.com,
+	Ilya K <me@0upti.me>
+Subject: Re: (subset) [PATCH v9 0/7] rockchip: clk: add GATE_LINK support
+Date: Fri, 30 Aug 2024 17:13:05 +0200
+Message-ID: <172503062006.1956268.2661371879547817382.b4-ty@sntech.de>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20240325193609.237182-1-sebastian.reichel@collabora.com>
+References: <20240325193609.237182-1-sebastian.reichel@collabora.com>
 MIME-Version: 1.0
-X-Mailer: b4 0.13.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240830_013018_530616_21ADE599 
-X-CRM114-Status: UNSURE (   6.55  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240830_081320_849696_E65CB719 
+X-CRM114-Status: GOOD (  13.95  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,16 +85,46 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gV2VkLCAyOCBBdWcgMjAyNCAxNToxMDo1NSArMDAwMCwgRGV0bGV2IENhc2Fub3ZhIHdyb3Rl
-Ogo+IERvY3VtZW50IHJrMzU3NiBjb21wYXRpYmxlIGZvciBRb1MgcmVnaXN0ZXJzLgo+IAo+IAoK
-QXBwbGllZCwgdGhhbmtzIQoKWzA0LzExXSBkdC1iaW5kaW5nczogbWZkOiBzeXNjb246IEFkZCBy
-azM1NzYgUW9TIHJlZ2lzdGVyIGNvbXBhdGlibGUKICAgICAgICBjb21taXQ6IDJmOTcwOWI4NTQx
-ZGM3NDIyMzU3NDNkMTliOGE2ZTJiYWEyZTgxZDQKCi0tCkxlZSBKb25lcyBb5p2O55C85pavXQoK
-Cl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJv
-Y2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0
-dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+On Mon, 25 Mar 2024 20:33:31 +0100, Sebastian Reichel wrote:
+> This implements proper GATE_LINK support following the suggestion from Stephen
+> Boyd to use clk PM operations by creating MFD dynamically. This required some
+> restructuring, since CLK_OF_DECLARE() is called before devices are available.
+> 
+> Apart from improved power consumption, this fixes the runtime errors from the
+> pmdomain driver (failed to set idle on domain '%s').
+> 
+> [...]
+
+Applied, thanks!
+
+[1/7] clk: rockchip: rk3588: drop unused code
+      commit: 2e7b3daa8cb1ebd17e6a7f417ef5e6553203035c
+
+@Detlev: I think the rk3576 driver I added days ago, might also want
+that change? Can you take a look please?
+[I don't have rk3576 hardware, so can't check myself ;-) ]
+
+
+[5/7] clk: rockchip: fix error for unknown clocks
+      commit: 12fd64babaca4dc09d072f63eda76ba44119816a
+
+I've added a fixes that to that, looks like overlooked that issue
+way back in 2014 ... pure nostalgia.
+
+
+Anyway, rest of the series hopefully later today.
+
+
+Best regards,
+-- 
+Heiko Stuebner <heiko@sntech.de>
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
