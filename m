@@ -4,59 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8785FCA0FE8
-	for <linux-rockchip@archiver.kernel.org>; Fri, 30 Aug 2024 19:35:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 68CD7CA0FE8
+	for <linux-rockchip@archiver.kernel.org>; Fri, 30 Aug 2024 19:36:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=x6aqCH5ZXD5sJRISVkV7HSct3AaVNQ/AD0OjPMYedJg=; b=32/kp2LCOpLURy
-	WAnq5CWAbOUXz3E2dLUIpJeoMGGFJqgHF2ugKVpua8K5PcWOC5bL5yB+m+sDo9F6EzLS3j+KuMJV6
-	YCgxcq2MkFX7Kade49Jc4yw/yqZHaXp78YTc3wars6lrPw6iKPS02pn40wCNsSbebXv4GXHaJOrK2
-	ThOWv8qELaUP1nzl09lclQADu0JhfcXeUMZkVH/epHMa8rHAQpYzYvY9X7DnsH0+duAOvcw4uzSu4
-	tosfSsL7tWJZE2KhTIOAgq8jIgrbkk6DP7V/fQZgJnNTyCHk4HmkyBItXsh6/U6O4TDfd3Ce+yOah
-	r4i2cKsiVQkJHA2cW8MA==;
+	List-Owner; bh=GLAD3VLq29XY0VFTIHdCztNx2y4U6yRyB0b+26dIPqg=; b=JPhUg2GGysF5r3
+	eSdnVR4qaamq6ROY5nhnME362u6b1WAS9fMoFzib0DB5+qyiymIy+ncS/XV9rULDlSJWQUmPdZl8k
+	B4nQnUUJsbcrQpE3/AV0o4f1IchmjtPc4U4GDz9P/Hk40aQQEsjF8pCKAAU/K9+9jw24cCeAM6cGe
+	vtg6tmPBReddQBJIojWcyWy3++1M1CqqxpQ7dTlLacHZumXiJk/HDbZCpUP40R3qMQi/qlmvIDuaA
+	xty3LrH8XtapaqSsfKwvcM1S8YqQrc6s0JCXFqHp2uzO+1rhe2A1UuTp9LwUjlBuRCmH4tSOINDdb
+	lS2uPhzzOIZRToVYJjMw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sk7Ok-00000007UaJ-0yFd;
-	Fri, 30 Aug 2024 19:35:06 +0000
+	id 1sk7QO-00000007Un7-35MU;
+	Fri, 30 Aug 2024 19:36:48 +0000
 Received: from metis.whiteo.stw.pengutronix.de ([185.203.201.7])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sk7Gx-00000007RQR-0xUu
+	id 1sk7Gx-00000007RQT-0g1I
 	for linux-rockchip@lists.infradead.org;
-	Fri, 30 Aug 2024 19:27:06 +0000
+	Fri, 30 Aug 2024 19:27:07 +0000
 Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
 	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
 	(Exim 4.92)
 	(envelope-from <mkl@pengutronix.de>)
-	id 1sk7Gu-0006EU-8t
+	id 1sk7Gu-0006En-Gl
 	for linux-rockchip@lists.infradead.org; Fri, 30 Aug 2024 21:27:00 +0200
 Received: from [2a0a:edc0:0:b01:1d::7b] (helo=bjornoya.blackshift.org)
 	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <mkl@pengutronix.de>)
-	id 1sk7Gn-004Dj7-Tn
-	for linux-rockchip@lists.infradead.org; Fri, 30 Aug 2024 21:26:53 +0200
+	id 1sk7Go-004Djc-51
+	for linux-rockchip@lists.infradead.org; Fri, 30 Aug 2024 21:26:54 +0200
 Received: from dspam.blackshift.org (localhost [127.0.0.1])
-	by bjornoya.blackshift.org (Postfix) with SMTP id 76FD332E1C0
+	by bjornoya.blackshift.org (Postfix) with SMTP id AD6DC32E1C7
 	for <linux-rockchip@lists.infradead.org>; Fri, 30 Aug 2024 19:26:53 +0000 (UTC)
 Received: from hardanger.blackshift.org (unknown [172.20.34.65])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(Client did not present a certificate)
-	by bjornoya.blackshift.org (Postfix) with ESMTPS id AA29232E0FD;
+	by bjornoya.blackshift.org (Postfix) with ESMTPS id E4CD332E104;
 	Fri, 30 Aug 2024 19:26:46 +0000 (UTC)
 Received: from [172.20.34.65] (localhost [::1])
-	by hardanger.blackshift.org (OpenSMTPD) with ESMTP id ec69a17b;
+	by hardanger.blackshift.org (OpenSMTPD) with ESMTP id b61f5efc;
 	Fri, 30 Aug 2024 19:26:45 +0000 (UTC)
 From: Marc Kleine-Budde <mkl@pengutronix.de>
-Date: Fri, 30 Aug 2024 21:26:04 +0200
-Subject: [PATCH can-next v3 07/20] can: rockchip_canfd: add support for
- rk3568v3
+Date: Fri, 30 Aug 2024 21:26:06 +0200
+Subject: [PATCH can-next v3 09/20] can: rockchip_canfd:
+ rkcanfd_handle_rx_int_one(): implement workaround for erratum 5: check for
+ empty FIFO
 MIME-Version: 1.0
-Message-Id: <20240830-rockchip-canfd-v3-7-d426266453fa@pengutronix.de>
+Message-Id: <20240830-rockchip-canfd-v3-9-d426266453fa@pengutronix.de>
 References: <20240830-rockchip-canfd-v3-0-d426266453fa@pengutronix.de>
 In-Reply-To: <20240830-rockchip-canfd-v3-0-d426266453fa@pengutronix.de>
 To: kernel@pengutronix.de, Vincent Mailhol <mailhol.vincent@wanadoo.fr>, 
@@ -72,15 +73,15 @@ Cc: Simon Horman <horms@kernel.org>, linux-can@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
  linux-kernel@vger.kernel.org, Marc Kleine-Budde <mkl@pengutronix.de>
 X-Mailer: b4 0.15-dev-99b12
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2430; i=mkl@pengutronix.de;
- h=from:subject:message-id; bh=gHcn4OZDSX+A/OQCPXVw5Njr3d5BhPC3JSMfqT4fihA=;
- b=owEBbQGS/pANAwAKASg4oj56LbxvAcsmYgBm0hzgTN/nn4L8IxlLVyeswobJnPMW7kpp2fMql
- IMKxHzbLnSJATMEAAEKAB0WIQRQQLqG4LYE3Sm8Pl8oOKI+ei28bwUCZtIc4AAKCRAoOKI+ei28
- b2mVB/4se9H/tExfU14wiMJK1hvhyPR7kwXQF9faq8pnDmbr4CVsq5FSeUAjtmDTftqgLh6DWpt
- M8lgpAR5Ui3g2a+jR+iWEpvPbKlS4tjumk6y6Tiyw25pcnDUx4pDrqF1VIO6syYsZpD+09wuCP9
- pyEygU9Fezl3KhWI6LvK8FPB1E+5Qdf8e9E5u1YKuZVsE94sNUTA5jUGCAAymS9v1vUl5gojABE
- bUVcn00AHkShAUtfX+73UMRLd+Cmo0RbeagCyd/6mVU5hm9wK5HXosd0ut2MynVRZR8SLAJD1ep
- /xJuTlUSBfNWztAo5ycPeSmlwzXFC0HxwkSkvxDN85YdDGpx
+X-Developer-Signature: v=1; a=openpgp-sha256; l=3961; i=mkl@pengutronix.de;
+ h=from:subject:message-id; bh=E348lbl4YjxRw525OqHE19nd+KpH5SOYoX/5CzKjCIs=;
+ b=owEBbQGS/pANAwAKASg4oj56LbxvAcsmYgBm0hzjloGg0f2UNxy13GCu3jaj+LSpm7mkIVe7l
+ IEZGscLCFOJATMEAAEKAB0WIQRQQLqG4LYE3Sm8Pl8oOKI+ei28bwUCZtIc4wAKCRAoOKI+ei28
+ bwBVCACMJJjhVmIxP8iia/ptcUA+kYYM/nIVcgTbAKT21nUJMZbIJfrvMCB4h4m/Int42mdlJIO
+ P5IheSxRNTiOligfmFbAui1Cuq5TSInCDBNi/0Yqux8v9mrPst/rEaFTofUr+daI+sAq+DPmYCP
+ opcM0UrSAotFaYDaUT8hl3Y6mQ45L9xosoveXJUcYQFCCoSZzxxiiF2zl20dl65vTl01Jj1q+42
+ Vxkj9xu6r/oaQLVapd2oJuj4l4ynimNEiqGY3TYX2zjghfek69QefKbVOIiXXwTCowRDIEAZ/RR
+ SIFsDLRNzCgZdGuabj/bOr+VnvY4mOqjJwC+XhWYsdHawL01
 X-Developer-Key: i=mkl@pengutronix.de; a=openpgp;
  fpr=C1400BA0B3989E6FBC7D5B5C2B5EE211C58AEA54
 X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
@@ -88,8 +89,8 @@ X-SA-Exim-Mail-From: mkl@pengutronix.de
 X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
 X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240830_122703_326133_04D5FEB1 
-X-CRM114-Status: GOOD (  14.58  )
+X-CRM114-CacheID: sfid-20240830_122703_262182_D61B2980 
+X-CRM114-Status: GOOD (  19.06  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,70 +107,105 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add the support for the rk3568v3 SoC, the CAN-FD IP core has 7
-documented errata.
+The rk3568 CAN-FD errata sheet as of Tue 07 Nov 2023 11:25:31 +08:00
+says:
+
+| Erratum 5: Counters related to the TXFIFO and RXFIFO exhibit
+| abnormal counting behavior.
+|
+| Due to a bug in the cross-asynchronous logic of the enable signals
+| for rx_fifo_cnt and txe_fifo_frame_cnt counters, the counts of these
+| two counters become inaccurate. This issue has resulted in the
+| inability to use the TXFIFO and RXFIFO functions.
+
+The errata sheet mentioned above states that only the rk3568v2 is
+affected by this erratum, but tests with the rk3568v2 and rk3568v3
+show that the RX_FIFO_CNT is sometimes too high. This leads to CAN
+frames being read from the FIFO, which is then already empty.
+
+Further tests on the rk3568v2 and rk3568v3 show that in this
+situation (i.e. empty FIFO) all elements of the FIFO
+header (frameinfo, id, ts) contain the same data.
+
+On the rk3568v2 and rk3568v3, this problem only occurs extremely
+rarely with the standard clock of 300 MHz, but almost immediately at
+80 MHz.
+
+To workaround this problem, check for empty FIFO with
+rkcanfd_fifo_header_empty() in rkcanfd_handle_rx_int_one() and exit
+early.
 
 Signed-off-by: Marc Kleine-Budde <mkl@pengutronix.de>
 ---
- drivers/net/can/rockchip/rockchip_canfd-core.c | 20 ++++++++++++++++++++
- drivers/net/can/rockchip/rockchip_canfd.h      |  1 +
- 2 files changed, 21 insertions(+)
+ drivers/net/can/rockchip/rockchip_canfd-rx.c | 14 ++++++++++++++
+ drivers/net/can/rockchip/rockchip_canfd.h    | 22 ++++++++++++++++++++++
+ 2 files changed, 36 insertions(+)
 
-diff --git a/drivers/net/can/rockchip/rockchip_canfd-core.c b/drivers/net/can/rockchip/rockchip_canfd-core.c
-index 61de6f89cf16..40911bb63623 100644
---- a/drivers/net/can/rockchip/rockchip_canfd-core.c
-+++ b/drivers/net/can/rockchip/rockchip_canfd-core.c
-@@ -35,11 +35,28 @@ static const struct rkcanfd_devtype_data rkcanfd_devtype_data_rk3568v2 = {
- 		RKCANFD_QUIRK_CANFD_BROKEN,
- };
+diff --git a/drivers/net/can/rockchip/rockchip_canfd-rx.c b/drivers/net/can/rockchip/rockchip_canfd-rx.c
+index 5398aff0d180..609282359bca 100644
+--- a/drivers/net/can/rockchip/rockchip_canfd-rx.c
++++ b/drivers/net/can/rockchip/rockchip_canfd-rx.c
+@@ -47,6 +47,16 @@ rkcanfd_fifo_header_to_cfd_header(const struct rkcanfd_priv *priv,
+ 	return len + cfd->len;
+ }
  
-+/* The rk3568 CAN-FD errata sheet as of Tue 07 Nov 2023 11:25:31 +08:00
-+ * states that only the rk3568v2 is affected by erratum 5, but tests
-+ * with the rk3568v2 and rk3568v3 show that the RX_FIFO_CNT is
-+ * sometimes too high. In contrast to the errata sheet mark rk3568v3
-+ * as effected by erratum 5, too.
-+ */
-+static const struct rkcanfd_devtype_data rkcanfd_devtype_data_rk3568v3 = {
-+	.model = RKCANFD_MODEL_RK3568V3,
-+	.quirks = RKCANFD_QUIRK_RK3568_ERRATUM_1 | RKCANFD_QUIRK_RK3568_ERRATUM_2 |
-+		RKCANFD_QUIRK_RK3568_ERRATUM_5 | RKCANFD_QUIRK_RK3568_ERRATUM_7 |
-+		RKCANFD_QUIRK_RK3568_ERRATUM_8 | RKCANFD_QUIRK_RK3568_ERRATUM_10 |
-+		RKCANFD_QUIRK_RK3568_ERRATUM_11 | RKCANFD_QUIRK_RK3568_ERRATUM_12 |
-+		RKCANFD_QUIRK_CANFD_BROKEN,
-+};
++static inline bool
++rkcanfd_fifo_header_empty(const struct rkcanfd_fifo_header *header)
++{
++	/* Erratum 5: If the FIFO is empty, we read the same value for
++	 * all elements.
++	 */
++	return header->frameinfo == header->id &&
++		header->frameinfo == header->ts;
++}
 +
- static const char *__rkcanfd_get_model_str(enum rkcanfd_model model)
+ static int rkcanfd_handle_rx_int_one(struct rkcanfd_priv *priv)
  {
- 	switch (model) {
- 	case RKCANFD_MODEL_RK3568V2:
- 		return "rk3568v2";
-+	case RKCANFD_MODEL_RK3568V3:
-+		return "rk3568v3";
- 	}
+ 	struct net_device_stats *stats = &priv->ndev->stats;
+@@ -63,6 +73,10 @@ static int rkcanfd_handle_rx_int_one(struct rkcanfd_priv *priv)
+ 	rkcanfd_read_rep(priv, RKCANFD_REG_RX_FIFO_RDATA,
+ 			 cfd->data, sizeof(cfd->data));
  
- 	return "<unknown>";
-@@ -764,6 +781,9 @@ static const struct of_device_id rkcanfd_of_match[] = {
- 	{
- 		.compatible = "rockchip,rk3568v2-canfd",
- 		.data = &rkcanfd_devtype_data_rk3568v2,
-+	}, {
-+		.compatible = "rockchip,rk3568v3-canfd",
-+		.data = &rkcanfd_devtype_data_rk3568v3,
- 	}, {
- 		/* sentinel */
- 	},
++	/* Erratum 5: Counters for TXEFIFO and RXFIFO may be wrong */
++	if (rkcanfd_fifo_header_empty(header))
++		return 0;
++
+ 	len = rkcanfd_fifo_header_to_cfd_header(priv, header, cfd);
+ 
+ 	/* Drop any received CAN-FD frames if CAN-FD mode is not
 diff --git a/drivers/net/can/rockchip/rockchip_canfd.h b/drivers/net/can/rockchip/rockchip_canfd.h
-index 7321027534fb..9b446331fbd0 100644
+index 3dafb5e68dc5..c775e75a2740 100644
 --- a/drivers/net/can/rockchip/rockchip_canfd.h
 +++ b/drivers/net/can/rockchip/rockchip_canfd.h
-@@ -372,6 +372,7 @@
+@@ -315,6 +315,28 @@
  
- enum rkcanfd_model {
- 	RKCANFD_MODEL_RK3568V2 = 0x35682,
-+	RKCANFD_MODEL_RK3568V3 = 0x35683,
- };
+ /* Erratum 5: Counters related to the TXFIFO and RXFIFO exhibit
+  * abnormal counting behavior.
++ *
++ * The rk3568 CAN-FD errata sheet as of Tue 07 Nov 2023 11:25:31 +08:00
++ * states that only the rk3568v2 is affected by this erratum, but
++ * tests with the rk3568v2 and rk3568v3 show that the RX_FIFO_CNT is
++ * sometimes too high. This leads to CAN frames being read from the
++ * FIFO, which is then already empty.
++ *
++ * Further tests on the rk3568v2 and rk3568v3 show that in this
++ * situation (i.e. empty FIFO) all elements of the FIFO header
++ * (frameinfo, id, ts) contain the same data.
++ *
++ * On the rk3568v2 and rk3568v3, this problem only occurs extremely
++ * rarely with the standard clock of 300 MHz, but almost immediately
++ * at 80 MHz.
++ *
++ * To workaround this problem, check for empty FIFO with
++ * rkcanfd_fifo_header_empty() in rkcanfd_handle_rx_int_one() and exit
++ * early.
++ *
++ * To reproduce:
++ * assigned-clocks = <&cru CLK_CANx>;
++ * assigned-clock-rates = <80000000>;
+  */
+ #define RKCANFD_QUIRK_RK3568_ERRATUM_5 BIT(4)
  
- struct rkcanfd_devtype_data {
 
 -- 
 2.45.2
