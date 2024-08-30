@@ -4,91 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D0E12CA1004
-	for <linux-rockchip@archiver.kernel.org>; Fri, 30 Aug 2024 15:34:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C8FAACA1009
+	for <linux-rockchip@archiver.kernel.org>; Fri, 30 Aug 2024 16:30:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=nJnYEpE892V4MntKIPKLua7L/8W7Fvt27SvK8dQQ440=; b=SEgxQwcHoeqsJ2
-	L+iWRo4xcRZESO4bfWkcq8dt7dQPMvMK2xYOrvAZn5BAG66io8AZlWpo1It1FPEhrSrXfoiVDijRi
-	868JeErMox+yl7yfzehaCgQBAhfXd0h1KReWmyKfzOwOwuLWQiCecQhH34uFO6wIbghNhr1rvz6IN
-	u87G8c0LqVP+PQbFHPqV1bv4/sZoUNHLV59zspXWleMyRTBduRWOffy1DQlBh2Y0AU6umBHBR0uDi
-	bGDsXNgQuGHBADy9W9Bc2eYEURPMtvMfLRaLjGXaUntR/eCUy/7iWnSQ3X+RLEDzPWTCFbdn3xFGD
-	77aoVuV4LYxHERRCYXBA==;
+	List-Owner; bh=mvW0I+hXetSaDn0jdeYfZOLkC3W2EkeTRXecLx4KJd0=; b=FbnE0iy5TXAGny
+	Ea/AgK8MNsUE3yL1c6qdM9DQFbEoRvK4ZXiGQRjubHiY9qM04hn2wMz9lyzNrKyUN9wMlO2HwTiP/
+	tSsOR7Fk45mEfn4ES51hliVwwc5xI63pdSLBAlm+LKDW/oXc6YTBIeQ3PYQhm1HZqzLbd9KB9J3K2
+	1ER+f/xOUox4SyMq1Yy7K69AUfKh2Zsx6QBYFxaYpbPp1bpXT0ip8mYDTvigPSIpgGvofzKJLQOSW
+	K6+KVWuNSL7RG9AFNEA8Uu+rGMX3ExFxIEp5I10xzYf/UKrN3wSSmNBFv9CKW2HytOqcU8kQhS7Ey
+	taxOxHBPwKQJHge1OQLA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sk3dS-00000006pf0-3yua;
-	Fri, 30 Aug 2024 15:34:02 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1sk4WP-000000071aS-0uK3;
+	Fri, 30 Aug 2024 16:30:49 +0000
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sk3dH-00000006pb1-1Asw;
-	Fri, 30 Aug 2024 15:33:51 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
-	:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-Type:Content-ID:Content-Description;
-	bh=gRLVDlLtYtEHFRW+z5u3RzqQq8Otkw4nKdbnkHz4B9k=; b=P3cg65vBdVCOU7BmT6ocV53Ync
-	0/0SwzkjcdpJqP5e2jlX7g7Y1B/t9oZQF3RmoipcVpnjNfluSrprC1foFCPM2SdUQBOG3aBvmSdF7
-	5Y82ixZy+xd9EHB0yHBg+qnTkwHMDvn0HgdhgSfck5Zcz8Jlsui8XDhLAF2PV2tZUsgOjdlDM07Jm
-	oxysDeywFiX61Ip+geLI0gtcEeoSpGqIQ6vRxItrLl66wHVV5+4AluHX4ICE2nqNT4bX6tUAUdKBT
-	XPpBLJrwYB+joyWRigBO1OdArKlZwbugH6P1KDB4WCMjRq6YiBIOU9hAngqje0WhK0J0vCwKlmiG2
-	l+gnzpcw==;
-Received: from mail-io1-xd30.google.com ([2607:f8b0:4864:20::d30])
-	by desiato.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sk3dC-0000000Bhmz-3QnZ;
-	Fri, 30 Aug 2024 15:33:49 +0000
-Received: by mail-io1-xd30.google.com with SMTP id ca18e2360f4ac-82a1dadc2d2so75805639f.1;
-        Fri, 30 Aug 2024 08:33:45 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1725032023; x=1725636823; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=gRLVDlLtYtEHFRW+z5u3RzqQq8Otkw4nKdbnkHz4B9k=;
-        b=aOPpLU5j+hw/u9vZcez729O2nq1/Qj+p+hXHVQbWZqgnKFgmGZeoblLl04DdPNLS5A
-         s+rmwpqB0kk1eVJYrBIN9Q4Q6g04xOwGLu1Cv1kPdJ2PZUviogIKMSgyCP6tgM3CPGhG
-         bFpCI7L4LlLVgdM/HBmQpQisRgsl2SKOy49xQKzJlDJKC9uzzXbXX+y4R7wweUht0/qL
-         I7cuxkBKGfKhhqod19/5dR183aFaA3i0A+b2QNXGZAzJweQxFN7p+j0CjVk3ToCszBpd
-         rq4SD08Op6tlfYp2Me0Bir48F8OLATOgcC7HgmrGodGBfLMiAOn/rn1sIHkHvlWUW5Me
-         kVEg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1725032023; x=1725636823;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=gRLVDlLtYtEHFRW+z5u3RzqQq8Otkw4nKdbnkHz4B9k=;
-        b=fzII7bNDjRcEaQrJ+Oaa16Uvzh5777ivdlma8NDsmQPHftAhhyPm9Oyri8ZTOFg8FS
-         bvsTVqaaEv2q7DK0gEy8E7Tpo3QQbUFOeGWseyoGqAjcbdZrbm2jWqm9OAXcEyj4WmCh
-         Z9zTmYxVsXPN6NWeIlr5fOn4VGkYVpWIramkjEcU9oyLa93lsCcBy54zeN2t37Za9lwF
-         YMKdYSN5qJiQc305aHVElAchp5LSGTJuhMXGULaFuA+577Rlu3OE/Cxp84SiJ4i/ZV+2
-         M0uyJQWq4lh8gobJuLtkh7F7WKK6qcp365pkPxtNovlGpXSUyDDmJ6BtdUk68DphzanN
-         TDVQ==
-X-Forwarded-Encrypted: i=1; AJvYcCVSqbwZuSotnSXJtx0ra4YMYCxT+oFQU0QaL2smeiqfoPjp7bTaqa+GGTidqvybLHJGrbk5iiuv3mVGYIYWbms=@lists.infradead.org, AJvYcCXZB0IWoRp/SUFwG7vn1gYiSngUX5ff4tfV/OTpQybIk4KjLUOnKeVCwxi1qfSV+wVf8VzJ6FLwehzHykNUDktT@lists.infradead.org
-X-Gm-Message-State: AOJu0YxOya3Df8mXBtubZlOQAMjDQSGi3va8UWgvv6iWR2s0SUWQtHcT
-	FYqZQ0XpiXTT/WpyZ7y/H0wejPq8f/TCJfp4hu88aVJOqQBPXo+H
-X-Google-Smtp-Source: AGHT+IG2cWkWM/nBFDX7DVTMBeL0INFhcJoxGS1vmbMD0g+wj0qZPDln60G5qlg6TvjRsKkG7WqZgQ==
-X-Received: by 2002:a05:6602:6d0f:b0:824:d9d1:e67b with SMTP id ca18e2360f4ac-82a110478d8mr615310639f.8.1725032023266;
-        Fri, 30 Aug 2024 08:33:43 -0700 (PDT)
-Received: from localhost.localdomain (174-20-195-90.mpls.qwest.net. [174.20.195.90])
-        by smtp.gmail.com with ESMTPSA id 8926c6da1cb9f-4ced2e96209sm781045173.91.2024.08.30.08.33.38
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 30 Aug 2024 08:33:42 -0700 (PDT)
-From: Shimrra Shai <shimrrashai@gmail.com>
-To: shimrrashai@gmail.com
-Subject: Re: [PATCH v5? 0/6] Tweaked basic Synopsys DW HDMI QP TX driver for Rockchip RK3588
-Date: Fri, 30 Aug 2024 10:33:29 -0500
-Message-ID: <20240830153329.9170-1-shimrrashai@gmail.com>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20240830152132.8894-1-shimrrashai@gmail.com>
-References: <20240830152132.8894-1-shimrrashai@gmail.com>
+	id 1sk4WL-000000071Yj-391J
+	for linux-rockchip@lists.infradead.org;
+	Fri, 30 Aug 2024 16:30:47 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id D06C2A44B3A;
+	Fri, 30 Aug 2024 16:30:37 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 319FBC4CECA;
+	Fri, 30 Aug 2024 16:30:44 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1725035444;
+	bh=qCzga63KeKGmhvUCRSLeRGpmKyn6xKlZmu6N8oyL0m4=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=DrxWumWSVwLYlagAu2K/NmFbfGMjx5te98wy5Qth7GqZEgf6kjjpyCaVAUC0ezljE
+	 AA6DHBSsm3Eqlz2PS6mWkAApCYuWaLdP0TDmPCqNLFc/FlOOQ8ebKEXJKQATkRJmUW
+	 hfsOTjwXhDUfc7ZHfeW/RwGRXA0QZePcaE+oFSAZwFr5pafkl8FgBYdeLOIcWH6jAn
+	 h4u4GUF7mhLLlsq3JHto358x2bh9SYeGetfK3oUsWdddjT3cySqI4Wxny0mW0dh5Nl
+	 dm4LMdr7o9+T4GKiaE7Ca83Lgm4HZq7CXFWS9EXtC3t22j+IxGbfSw9RVCAdD66UQj
+	 qmB3a+FlV2mrQ==
+Date: Fri, 30 Aug 2024 11:30:42 -0500
+From: Rob Herring <robh@kernel.org>
+To: Chris Morgan <macroalpha82@gmail.com>
+Cc: linux-pm@vger.kernel.org, linux-rockchip@lists.infradead.org,
+	devicetree@vger.kernel.org, broonie@kernel.org, lgirdwood@gmail.com,
+	sre@kernel.org, heiko@sntech.de, conor+dt@kernel.org,
+	krzk+dt@kernel.org, lee@kernel.org,
+	Chris Morgan <macromorgan@hotmail.com>
+Subject: Re: [RFC 1/5] dt-bindings: mfd: ti,bq25703a: Add TI BQ25703A Charger
+Message-ID: <20240830163042.GA319200-robh@kernel.org>
+References: <20240829213102.448047-1-macroalpha82@gmail.com>
+ <20240829213102.448047-2-macroalpha82@gmail.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20240829213102.448047-2-macroalpha82@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240830_163347_017961_27A4850A 
-X-CRM114-Status: UNSURE (   5.19  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240830_093045_941876_6EF8F78B 
+X-CRM114-Status: GOOD (  20.18  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,16 +71,206 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: algea.cao@rock-chips.com, heiko@sntech.de, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, Laurent.pinchart@ideasonboard.com, andrzej.hajda@intel.com, airlied@gmail.com, robh@kernel.org, rfoss@kernel.org, jernej.skrabec@gmail.com, linux-rockchip@lists.infradead.org, ldearquer@gmail.com, devicetree@vger.kernel.org, conor+dt@kernel.org, tzimmermann@suse.de, jonas@kwiboo.se, s.hauer@pengutronix.de, aarnoud@me.com, maarten.lankhorst@linux.intel.com, mripard@kernel.org, markyao0591@gmail.com, linux-arm-kernel@lists.infradead.org, neil.armstrong@linaro.org, hjc@rock-chips.com, daniel@ffwll.ch, andy.yan@rock-chips.com, krzk+dt@kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Geez, my email system seems to have screwed up this submission by
-duplicate-sending messages for some reason. Just FYI.
+On Thu, Aug 29, 2024 at 04:30:58PM -0500, Chris Morgan wrote:
+> From: Chris Morgan <macromorgan@hotmail.com>
+> 
+> Document the Texas instruments BQ25703 series of charger managers/
+> buck/boost regulators.
+> 
+> Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
+> ---
+>  .../devicetree/bindings/mfd/ti,bq25703a.yaml  | 143 ++++++++++++++++++
+>  1 file changed, 143 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/mfd/ti,bq25703a.yaml
+> 
+> diff --git a/Documentation/devicetree/bindings/mfd/ti,bq25703a.yaml b/Documentation/devicetree/bindings/mfd/ti,bq25703a.yaml
+> new file mode 100644
+> index 000000000000..e555aa60f9ad
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/mfd/ti,bq25703a.yaml
+> @@ -0,0 +1,143 @@
+> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/mfd/ti,bq25703a.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: BQ25703 Charger Manager/Buck/Boost Converter
 
-Shimrra
+BQ25703A?
+
+> +
+> +maintainers:
+> +  - Chris Morgan <macromorgan@hotmail.com>
+> +
+> +properties:
+> +  compatible:
+> +    const: ti,bq25703a
+> +
+> +  reg:
+> +    const: 0x6b
+> +    description: I2C slave address
+
+Drop description.
+
+> +
+> +  interrupts:
+> +    maxItems: 1
+> +
+> +  power-supplies:
+> +    description:
+> +      phandle of the power supply that provides input power
+> +    $ref: /schemas/types.yaml#/definitions/phandle
+
+Already has a type. You need a reference to power-supply.yaml at the 
+top level and 'maxItems: 1' here.
+
+> +
+> +  ti,charge-current:
+> +    description:
+> +      maximum current to apply to charging the battery
+> +    minimum: 0
+> +    maximum: 8128000
+> +    $ref: /schemas/types.yaml#/definitions/uint32
+
+I guess this is copied from other TI parts, but really this should move 
+to a property with a unit suffix. Or these shared properties moved to a 
+shared schema so we aren't redefining the type multiple times.
+
+Same for the others here.
+
+> +
+> +  ti,current-limit:
+> +    description:
+> +      maximum total input current allowed
+> +    minimum: 50000
+> +    maximum: 6400000
+> +    default: 3250000
+> +    $ref: /schemas/types.yaml#/definitions/uint32
+> +
+> +  ti,max-charge-voltage:
+> +    description:
+> +      maximum voltage to apply to charging the battery
+> +    minimum: 1024000
+> +    maximum: 19200000
+> +    $ref: /schemas/types.yaml#/definitions/uint32
+> +
+> +  ti,minimum-sys-voltage:
+> +    description:
+> +      minimum system voltage while on battery power, with default value
+> +      depending based on cell configuration
+> +    minimum: 1024000
+> +    maximum: 16128000
+> +    default:
+> +      enum: [3584000, 6144000, 9216000, 16128000]
+> +    $ref: /schemas/types.yaml#/definitions/uint32
+> +
+> +  regulators:
+> +    type: object
+> +    additionalProperties: false
+> +    description:
+> +      Boost converter regulator output of bq257xx
+
+Doesn't this apply to "usb-otg-vbus"?
+
+Really, only one regulator, so you don't need a container node.
+
+> +
+> +    properties:
+> +      "usb-otg-vbus":
+
+Don't need quotes.
+
+> +        type: object
+> +        $ref: /schemas/regulator/regulator.yaml
+> +
+> +        properties:
+> +          regulator-name: true
+> +          regulator-min-microamp:
+> +            minimum: 0
+> +            maximum: 6350000
+> +          regulator-max-microamp:
+> +            minimum: 0
+> +            maximum: 6350000
+> +          regulator-min-microvolt:
+> +            minimum: 4480000
+> +            maximum: 20800000
+> +          regulator-max-microvolt:
+> +            minimum: 4480000
+> +            maximum: 20800000
+> +          enable-gpios:
+> +            description:
+> +              The BQ25703 may require both a register write and a GPIO
+> +              toggle to enable the boost regulator.
+> +
+> +        additionalProperties: true
+
+Nope.
+
+> +
+> +        required:
+> +          - regulator-name
+> +          - regulator-min-microamp
+> +          - regulator-max-microamp
+> +          - regulator-min-microvolt
+> +          - regulator-max-microvolt
+> +
+> +additionalProperties: false
+> +
+> +required:
+> +  - compatible
+> +  - reg
+> +  - power-supplies
+> +  - ti,charge-current
+> +  - ti,current-limit
+> +  - ti,max-charge-voltage
+> +  - ti,minimum-sys-voltage
+> +
+> +examples:
+> +  - |
+> +    #include <dt-bindings/gpio/gpio.h>
+> +    #include <dt-bindings/interrupt-controller/irq.h>
+> +    #include <dt-bindings/pinctrl/rockchip.h>
+> +    i2c {
+> +        #address-cells = <1>;
+> +        #size-cells = <0>;
+> +
+> +        bq25703: bq25703@6b {
+
+charger@6b
+
+> +            compatible = "ti,bq25703a";
+> +            reg = <0x6b>;
+> +            interrupt-parent = <&gpio0>;
+> +            interrupts = <RK_PD5 IRQ_TYPE_LEVEL_LOW>;
+> +            power-supplies = <&fusb302>;
+> +            ti,charge-current = <2500000>;
+> +            ti,current-limit = <5000000>;
+> +            ti,max-charge-voltage = <8750000>;
+> +            ti,minimum-sys-voltage = <7400000>;
+> +
+> +            regulators {
+> +                usb_otg_vbus: usb-otg-vbus {
+> +                    enable-gpios = <&gpio4 RK_PA6 GPIO_ACTIVE_HIGH>;
+> +                    regulator-max-microamp = <960000>;
+> +                    regulator-max-microvolt = <5088000>;
+> +                    regulator-min-microamp = <512000>;
+> +                    regulator-min-microvolt = <4992000>;
+> +                    regulator-name = "usb_otg_vbus";
+> +                };
+> +            };
+> +        };
+> +    };
+> +
+> +...
+> -- 
+> 2.34.1
+> 
 
 _______________________________________________
 Linux-rockchip mailing list
