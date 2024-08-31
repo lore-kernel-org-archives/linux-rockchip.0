@@ -4,61 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4EFC9C5474C
-	for <linux-rockchip@archiver.kernel.org>; Sat, 31 Aug 2024 06:47:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E3182CA100B
+	for <linux-rockchip@archiver.kernel.org>; Sat, 31 Aug 2024 06:48:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=xi0dMJEf1sq+3R5XTUVjOBTYcUMHeLG3fcLH+Cr++GI=; b=oNe9ZasFdd+jRE
-	PmEzc0nUFsd0+Qfjo38Cy8h8auNB/6ybNR14PLtcH8Giunm6oF9ozvi9+RZa8EelW82YwcQ7+IWtx
-	WG6JLjcDu4fVAPHLvmNHMTdQ2tEnf59iSZ8OpSvzwks5L5HSQST9ncSR3us5sX83vSWRspNf0yXS4
-	6F19kmDJTm/fO49zbPCrmsXLx85PmNgi9fi3lyZmwANI9NUEoOxTAGk32ESrCmSHHV60rmntfKw9c
-	b65PcKVreKhTjTMpzUIVG8YOdvgI7bqYhA60vam0q0CaiNmhEzeeX4zwjXbbaVLKz+cjXaOA6Ye5x
-	YAtyXCWxOKIpc52vWLWQ==;
+	List-Owner; bh=PiAlfGLqnKu3mi8kxSDF3oAMlVWAQswjqFsGPj0OXsk=; b=1GPdpcQZHeTTD5
+	CpMpmjo7r+7DV4Mn4/L8sYMT2ED4ee7SnucYvpjRXGdMGs4HIgyl59PxoxJRjyflLYpe1qO7tG8/2
+	0hoDwK1dkrqmldvu3cC4TLKh6zePGnRWkuwWc5zoH8Z1OM3G4S01lGWlApB6x65+M03ZWsxyvoEVX
+	dmuk4u5M0e/PUHxE/mNYPV+50PBaiyWVSbWBtK4rCo4eZLGWx/b/cfquhGlL5kQTwxL32MS3WefAn
+	qg9eT0SlE06NyfnRZWrUUaZG3VBiklVYG05FTWLlMXiZKmhwXlOrlnre9XJBgvKcHQqIfgIfsJEQA
+	d6gTsBnzRVfyUKTIT3nA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1skHt4-00000008lVh-2DYo;
-	Sat, 31 Aug 2024 06:47:06 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1skHuD-00000008lgL-2Q88;
+	Sat, 31 Aug 2024 06:48:17 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1skHsB-00000008lQe-441g;
-	Sat, 31 Aug 2024 06:46:13 +0000
+	id 1skHtK-00000008lYX-16Zf;
+	Sat, 31 Aug 2024 06:47:23 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 67E715C0FA2;
-	Sat, 31 Aug 2024 06:46:07 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 70F53C4CEC0;
-	Sat, 31 Aug 2024 06:46:09 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id B98985C0FA2;
+	Sat, 31 Aug 2024 06:47:17 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id DD3F6C4CEC0;
+	Sat, 31 Aug 2024 06:47:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1725086770;
-	bh=l2jou5gDuVOK2MJ6YWN4pUYK/5rodsX1qUxEIqwkgiU=;
+	s=k20201202; t=1725086840;
+	bh=Et5Cq7kAHvz43U+nAgZLLbiNmcg5TzrrTQ+EIuj+/ng=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=iwdKosgVc5yv7KtGwauq12ALxXr3Mk2ZWhPvJ98iuwLnf4SESz8OLZx5A6LyerWMV
-	 LlTL0vtjbZLHtvvSgbYjXfUEStZDsrid2Uf4cuawv6pi51NFb3iA5ZMohJSRhseAmu
-	 2eyUofNjs/2i4aOgHmwx1Fv8UOkRsf9tVQsFNtF27BFEJpbbQx/kKQaqEjwrubsp8h
-	 NjCGGZGC2xP5PtX1pEkcZwzVumvkaqX9LfHS+4Z+UTaZDHnBS0m9lrN6EHiTRSdrxj
-	 l6tNy9vTr1r5lL7X/TTjormqGiqzjG6wifGrfv0hC4+YNp4SR8BeOnEgDKzANV5YN4
-	 C+ORcN3ZkiuCQ==
-Date: Sat, 31 Aug 2024 08:46:06 +0200
+	b=JbMTZi2dZXoc4gUBkH2LIzUu0qMyp6BLn0qXOcYqqX4H37IfqGOeWyMKmTB8m3YId
+	 fBjdTnHHtwwMSZwAzKaI1r1qNc9g0s6hBtkZDuKpxMTgXWnm0dXw1Fqm+e/UrrRn5i
+	 UIx0ktHwav72cZea1jw9TBktotIkGihtgCDNy1SXFgmqIbdwWGPzGCkm5cS3Ku5D5T
+	 Xz3chnqL39/HDKtK5ixCHidzBoZHpHJu3nsPbe0aaIl3xBlmFvl0CHFYc8m+/OX1eX
+	 hUDbyvvFq0AtYppc3sMWTq57km64FXzmBQanqDa+SMZOqCk1SkZI+5oI29RCtMBuxA
+	 Uja80LencGpbw==
+Date: Sat, 31 Aug 2024 08:47:16 +0200
 From: Krzysztof Kozlowski <krzk@kernel.org>
 To: Heiko Stuebner <heiko@sntech.de>
 Cc: lgirdwood@gmail.com, broonie@kernel.org, robh@kernel.org, 
 	krzk+dt@kernel.org, conor+dt@kernel.org, marcin.juszkiewicz@linaro.org, 
 	linux-sound@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
 	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH 1/3] ASoC: dt-bindings: realtek,rt5616: document mclk
- clock
-Message-ID: <dpzc22opbwxxygc23jrgouxoowzganqq6f3iyq5nexuggcfd6u@rozvo3eyvwwq>
+Subject: Re: [PATCH 2/3] ASoC: dt-bindings: realtek,rt5616: Document audio
+ graph port
+Message-ID: <vpxg63mj43dmqrwxrzfugtsc5xx5wfzvthrjuf5wfjkcdarltl@cnvgi4co6hwj>
 References: <20240830203819.1972536-1-heiko@sntech.de>
- <20240830203819.1972536-2-heiko@sntech.de>
+ <20240830203819.1972536-3-heiko@sntech.de>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20240830203819.1972536-2-heiko@sntech.de>
+In-Reply-To: <20240830203819.1972536-3-heiko@sntech.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240830_234612_084536_7EEB678E 
-X-CRM114-Status: GOOD (  11.70  )
+X-CRM114-CacheID: sfid-20240830_234722_393327_9C924F6A 
+X-CRM114-Status: GOOD (  11.82  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,17 +75,20 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, Aug 30, 2024 at 10:38:17PM +0200, Heiko Stuebner wrote:
-> Both devicetrees and driver implementation already use the specified mclk
-> in the field, so at least document the clock too, similarly to other
-> Realtek codec.
+On Fri, Aug 30, 2024 at 10:38:18PM +0200, Heiko Stuebner wrote:
+> The codec can be used in conjunction with an audio-graph-card to provide
+> an endpoint for binding with the other side of the audio link.
 > 
-> This has the nice additional effect of getting rid of dtbscheck warning.
+> Document the 'port' property that is used for this to prevent
+> dtbscheck errors like:
+> 
+>     rockchip/rk3588-nanopc-t6-lts.dtb: codec@1b: Unevaluated properties are not allowed ('port' was unexpected)
+>         from schema $id: http://devicetree.org/schemas/sound/realtek,rt5616.yaml#
 > 
 > Signed-off-by: Heiko Stuebner <heiko@sntech.de>
 > ---
->  .../devicetree/bindings/sound/realtek,rt5616.yaml         | 8 ++++++++
->  1 file changed, 8 insertions(+)
+>  Documentation/devicetree/bindings/sound/realtek,rt5616.yaml | 4 ++++
+>  1 file changed, 4 insertions(+)
 
 Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
