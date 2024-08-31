@@ -4,71 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 66B83CA100B
-	for <linux-rockchip@archiver.kernel.org>; Sat, 31 Aug 2024 06:17:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4EFC9C5474C
+	for <linux-rockchip@archiver.kernel.org>; Sat, 31 Aug 2024 06:47:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Y1sPwhR4IenglxOtaYvw2gg3PkjAzm2FTltImLx+N8U=; b=EqiZ+lVmdIYksb
-	pz3P/OkID2nPDlXWEGfGdlosNswffoiO06fhup+7AkCvi2szOYhW3qn8Y4mfbGcFAIcNaij75kQfU
-	EQCgXPaoSKELt1F3XasorR/yJPRpIWxiBmykPMShPsD6yBFc8H2sHN2jT3usEYZw14ZLvGcvDYhFM
-	M61Y8Js9wzMKGhwTxhWvS2bMzGtn7JpGh1FO04IUq8yibDDBUO4hkdRt4Z9Ns+F3mBFiwUBE/A8/X
-	jbmt+cruKL57iV1iYXWpFK97FUXa9AUKdjADgAhVeut25eCEqqHIY5YPHnPhx56L60d4K1vUXppZ+
-	aEfQlWAMhAln6ZhCVUgQ==;
+	List-Owner; bh=xi0dMJEf1sq+3R5XTUVjOBTYcUMHeLG3fcLH+Cr++GI=; b=oNe9ZasFdd+jRE
+	PmEzc0nUFsd0+Qfjo38Cy8h8auNB/6ybNR14PLtcH8Giunm6oF9ozvi9+RZa8EelW82YwcQ7+IWtx
+	WG6JLjcDu4fVAPHLvmNHMTdQ2tEnf59iSZ8OpSvzwks5L5HSQST9ncSR3us5sX83vSWRspNf0yXS4
+	6F19kmDJTm/fO49zbPCrmsXLx85PmNgi9fi3lyZmwANI9NUEoOxTAGk32ESrCmSHHV60rmntfKw9c
+	b65PcKVreKhTjTMpzUIVG8YOdvgI7bqYhA60vam0q0CaiNmhEzeeX4zwjXbbaVLKz+cjXaOA6Ye5x
+	YAtyXCWxOKIpc52vWLWQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1skHQO-00000008hBX-1r5v;
-	Sat, 31 Aug 2024 06:17:28 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1skHt4-00000008lVh-2DYo;
+	Sat, 31 Aug 2024 06:47:06 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1skHPU-00000008h4s-0zcH;
-	Sat, 31 Aug 2024 06:16:33 +0000
+	id 1skHsB-00000008lQe-441g;
+	Sat, 31 Aug 2024 06:46:13 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 9C4D35C4426;
-	Sat, 31 Aug 2024 06:16:27 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 69E5DC4CEC0;
-	Sat, 31 Aug 2024 06:16:29 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 67E715C0FA2;
+	Sat, 31 Aug 2024 06:46:07 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 70F53C4CEC0;
+	Sat, 31 Aug 2024 06:46:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1725084990;
-	bh=Itrc34IYAY3xn9/wCabZCczGxzpgNo8B22FkQ32dCTM=;
+	s=k20201202; t=1725086770;
+	bh=l2jou5gDuVOK2MJ6YWN4pUYK/5rodsX1qUxEIqwkgiU=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=rfvl9omSqu1jEcX+TQ5OzZmzSgYejtsE5EMIJfBBcgCcsNGvYEIz2Ljwd/f+bf4ak
-	 XS3MgHGGQ+W6ed050cNvRCggcLUDoqIdJqn+pOIbaI2XBbJooz1l2v0gD+fJie5kh5
-	 ATqIZG10O2ewOmXNEi0tQqW4lXg6XBoalcb3MJpTms2hKefa+6OYecfZjj1y4+vW2Y
-	 zar0ZQ6y+5oClQCl2nBXdpEo3KdUfXVJ44bSikR/QDJMFM67tQ9mCT7aZeSihcpg1J
-	 Iz6Xqtubv8sfhMnwyxLzJN3vgFM6HWf9vrs3e6pJ/gW7mDQu3IZcWP44L+jEzdzDoq
-	 Iw5OY4LHLRxiQ==
-Date: Sat, 31 Aug 2024 08:16:26 +0200
+	b=iwdKosgVc5yv7KtGwauq12ALxXr3Mk2ZWhPvJ98iuwLnf4SESz8OLZx5A6LyerWMV
+	 LlTL0vtjbZLHtvvSgbYjXfUEStZDsrid2Uf4cuawv6pi51NFb3iA5ZMohJSRhseAmu
+	 2eyUofNjs/2i4aOgHmwx1Fv8UOkRsf9tVQsFNtF27BFEJpbbQx/kKQaqEjwrubsp8h
+	 NjCGGZGC2xP5PtX1pEkcZwzVumvkaqX9LfHS+4Z+UTaZDHnBS0m9lrN6EHiTRSdrxj
+	 l6tNy9vTr1r5lL7X/TTjormqGiqzjG6wifGrfv0hC4+YNp4SR8BeOnEgDKzANV5YN4
+	 C+ORcN3ZkiuCQ==
+Date: Sat, 31 Aug 2024 08:46:06 +0200
 From: Krzysztof Kozlowski <krzk@kernel.org>
-To: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Cc: Andrzej Hajda <andrzej.hajda@intel.com>, 
-	Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
-	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Jonas Karlman <jonas@kwiboo.se>, 
-	Jernej Skrabec <jernej.skrabec@gmail.com>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
-	Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
-	David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>, 
-	Sandy Huang <hjc@rock-chips.com>, Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, 
-	Andy Yan <andy.yan@rock-chips.com>, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Mark Yao <markyao0591@gmail.com>, Sascha Hauer <s.hauer@pengutronix.de>, 
-	dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, 
-	kernel@collabora.com, Alexandre ARNOUD <aarnoud@me.com>, 
-	Luis de Arquer <ldearquer@gmail.com>
-Subject: Re: [PATCH v5 1/4] dt-bindings: display: bridge: Add schema for
- Synopsys DW HDMI QP TX IP
-Message-ID: <57wj2vwjv7eehlix2bmvbm3z4agv5fsyp6vmwwqzotkdsadx7n@azqg2kkaeuxz>
-References: <20240831-b4-rk3588-bridge-upstream-v5-0-9503bece0136@collabora.com>
- <20240831-b4-rk3588-bridge-upstream-v5-1-9503bece0136@collabora.com>
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: lgirdwood@gmail.com, broonie@kernel.org, robh@kernel.org, 
+	krzk+dt@kernel.org, conor+dt@kernel.org, marcin.juszkiewicz@linaro.org, 
+	linux-sound@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH 1/3] ASoC: dt-bindings: realtek,rt5616: document mclk
+ clock
+Message-ID: <dpzc22opbwxxygc23jrgouxoowzganqq6f3iyq5nexuggcfd6u@rozvo3eyvwwq>
+References: <20240830203819.1972536-1-heiko@sntech.de>
+ <20240830203819.1972536-2-heiko@sntech.de>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20240831-b4-rk3588-bridge-upstream-v5-1-9503bece0136@collabora.com>
+In-Reply-To: <20240830203819.1972536-2-heiko@sntech.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240830_231632_436656_88D85E2C 
-X-CRM114-Status: GOOD (  19.12  )
+X-CRM114-CacheID: sfid-20240830_234612_084536_7EEB678E 
+X-CRM114-Status: GOOD (  11.70  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,94 +75,19 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Sat, Aug 31, 2024 at 12:55:29AM +0300, Cristian Ciocaltea wrote:
-> Add dt-binding schema containing the common properties for the Synopsys
-> DesignWare HDMI QP TX controller.
+On Fri, Aug 30, 2024 at 10:38:17PM +0200, Heiko Stuebner wrote:
+> Both devicetrees and driver implementation already use the specified mclk
+> in the field, so at least document the clock too, similarly to other
+> Realtek codec.
 > 
-> Note this is not a full dt-binding specification, but is meant to be
-> referenced by platform-specific bindings for this IP core.
+> This has the nice additional effect of getting rid of dtbscheck warning.
 > 
-> Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+> Signed-off-by: Heiko Stuebner <heiko@sntech.de>
 > ---
->  .../display/bridge/synopsys,dw-hdmi-qp.yaml        | 88 ++++++++++++++++++++++
->  1 file changed, 88 insertions(+)
-> 
-> diff --git a/Documentation/devicetree/bindings/display/bridge/synopsys,dw-hdmi-qp.yaml b/Documentation/devicetree/bindings/display/bridge/synopsys,dw-hdmi-qp.yaml
-> new file mode 100644
-> index 000000000000..771f7fba6c50
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/display/bridge/synopsys,dw-hdmi-qp.yaml
-> @@ -0,0 +1,88 @@
-> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/display/bridge/synopsys,dw-hdmi-qp.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: Common Properties for Synopsys DesignWare HDMI QP TX Controller IP
-> +
-> +maintainers:
-> +  - Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-> +
-> +description: |
-> +  The Synopsys DesignWare HDMI 2.1 Quad-Pixel (QP) TX Controller IP core
-> +  supports the following features, among others:
-> +
-> +  * Fixed Rate Link (FRL)
-> +  * Display Stream Compression (DSC)
-> +  * 4K@120Hz and 8K@60Hz video modes
-> +  * Variable Refresh Rate (VRR) including Quick Media Switching (QMS)
-> +  * Fast Vactive (FVA)
-> +  * SCDC I2C DDC access
-> +  * Multi-stream audio
-> +  * Enhanced Audio Return Channel (EARC)
-> +
-> +  Note this is not a full dt-binding specification, but is meant to be
-> +  referenced by platform-specific bindings for this IP core.
-> +
-> +properties:
-> +  reg:
-> +    maxItems: 1
-> +
-> +  clocks:
-> +    minItems: 4
-> +    maxItems: 6
-> +    items:
-> +      - description: Peripheral/APB bus clock
-> +      - description: EARC RX biphase clock
-> +      - description: Reference clock
-> +      - description: Audio interface clock
-> +    additionalItems: true
+>  .../devicetree/bindings/sound/realtek,rt5616.yaml         | 8 ++++++++
+>  1 file changed, 8 insertions(+)
 
-What is the usefulness of all this? How can you even be sure that each
-implementation of this core will have exactly these clocks?
-
-
-> +
-> +  clock-names:
-> +    minItems: 4
-> +    maxItems: 6
-> +    items:
-> +      - const: pclk
-> +      - const: earc
-> +      - const: ref
-> +      - const: aud
-> +    additionalItems: true
-> +
-> +  interrupts:
-> +    minItems: 4
-> +    maxItems: 5
-> +    items:
-> +      - description: AVP Unit interrupt
-> +      - description: CEC interrupt
-> +      - description: eARC RX interrupt
-> +      - description: Main Unit interrupt
-
-If these are real pins, then this seems more possible, but
-additionalItems does not make me happy.
-
-I don't see much value in this schema and I am afraid even enforcing
-clock and interrupt names won't work for the second or third user.
+Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
 Best regards,
 Krzysztof
