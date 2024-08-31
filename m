@@ -4,75 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 576B8CD13D8
-	for <linux-rockchip@archiver.kernel.org>; Sat, 31 Aug 2024 13:58:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 55673CD1297
+	for <linux-rockchip@archiver.kernel.org>; Sat, 31 Aug 2024 18:25:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Mkk8FASYmK2y40jGk9fufu3H9OaJLtimfHgJuDTAH7I=; b=zeW1bnDF5u7p7A
-	PrYMK6mQJXSD79mKxcoB3pNJwPQEfFx9BbPelMV1VHXEJeofApVsB9h1NTVuhBysjxt8qpPb6PJH6
-	g85/z0So5/hee1Osp6ufKTGJ3wpiB4kBcNgaQnqVSOf00UScnJY3KsK4ebprJET9V/5HUbCml6kbd
-	BkM0Phm00IFfzzuKiG+E2JSoXtM+mitAJoYczXcqNVsFO1hTPhyaRj8jfwmENpsr9kUTG3pkV+X3O
-	7seCl4k+gf0ADxC6x33ZctrUAeFKA/GmnIQ5KBANg+h3YtSoYAsLCDeQmF4kiOE7LqWTxo3oI5suH
-	bbquEOfA5WzTuZ4J6Sbw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=AAbtMv0+NiRdlDro1XlvRKr1ARbQfxqjGxA0m48Vcj0=; b=fIzFagoClKIhLw
+	hTzUT5WPkk/q8eydDoYqpKdwjxuYtTaNwiFRN4U54XyZ2MJalTya8EWZo5uOlqK6+e7ivyJ4OIBuq
+	DOmL1+Hk4GQcq7AHBN0bM6AxlwHeq+aGetQXd+ZDKss6QcgKWTidmrI2/CKhtsiVJGsyzQ08KiBRc
+	W9j1gVZNW7zUp+tei0NHjB93Z5P7auTUNHrHQ4Ma7+gkIqD9FpJgbLY1wM+LxM4fGs+CfEXAPySVJ
+	h3uYHiK+cSqR9D4YZuZr5mHUE/s/5jPX7yOlKHV1D2AIngWI3zG3NcNjc6UfmvWfUSt13uX7JPmlT
+	W9an2qTThztGNa3Tk30w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1skOcc-00000009SHM-0CfR;
-	Sat, 31 Aug 2024 13:58:34 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1skSmU-00000009p0X-3FQs;
+	Sat, 31 Aug 2024 18:25:02 +0000
+Received: from mail-pj1-x1035.google.com ([2607:f8b0:4864:20::1035])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1skObi-00000009S7R-0kRe;
-	Sat, 31 Aug 2024 13:57:39 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
-	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=xVas2nbtwjp9aJsPq4W6cm0leZn3Xl11wuSo0LagmYc=; b=d+SgYgIaeWmE5w0q11SZJGy9SX
-	/27jGu9sSm0xKIhHODE5vwQ0ivyRJQTLcaFDiUJ4/0BadsaeNdpmYrC+ORJ4R2GzCRMgPoagqJYIc
-	GToc1c2K1VcZQIUJuby0zA22v/qr647yFhtjhi1o5Hm6ydrPFhCQv+j5rK85Nsn8GTj3JQbFuzjpS
-	vV1tm+3v+x1k+oX/JsGQPIMadW7Vq4bqazMfxX/Tv1SvUH6N5H7fr7nRfR97d7c8p5Z5eTc/u8Iyf
-	nleqaHazP2U1/QrmMucudPHdwl38+Dpp3aoRtDtD+pfiJtJV0aceKNIkqasxeo3P9kMj+KtMIbwQO
-	mWNzwBzQ==;
-Received: from i53875be3.versanet.de ([83.135.91.227] helo=diego.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1skOb9-0003xk-5H; Sat, 31 Aug 2024 15:57:03 +0200
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>,
- Krzysztof Kozlowski <krzk@kernel.org>
-Cc: Andrzej Hajda <andrzej.hajda@intel.com>,
- Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>,
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
- Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>,
- Sandy Huang <hjc@rock-chips.com>, Andy Yan <andy.yan@rock-chips.com>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Mark Yao <markyao0591@gmail.com>,
- Sascha Hauer <s.hauer@pengutronix.de>, dri-devel@lists.freedesktop.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
- kernel@collabora.com, Alexandre ARNOUD <aarnoud@me.com>,
- Luis de Arquer <ldearquer@gmail.com>
-Subject: Re: [PATCH v5 1/4] dt-bindings: display: bridge: Add schema for Synopsys DW
- HDMI QP TX IP
-Date: Sat, 31 Aug 2024 15:58:31 +0200
-Message-ID: <10210346.L8ug28u51p@diego>
-In-Reply-To: <57wj2vwjv7eehlix2bmvbm3z4agv5fsyp6vmwwqzotkdsadx7n@azqg2kkaeuxz>
-References: <20240831-b4-rk3588-bridge-upstream-v5-0-9503bece0136@collabora.com>
- <20240831-b4-rk3588-bridge-upstream-v5-1-9503bece0136@collabora.com>
- <57wj2vwjv7eehlix2bmvbm3z4agv5fsyp6vmwwqzotkdsadx7n@azqg2kkaeuxz>
+	id 1skSmS-00000009ozp-1vOy;
+	Sat, 31 Aug 2024 18:25:01 +0000
+Received: by mail-pj1-x1035.google.com with SMTP id 98e67ed59e1d1-2d88a8c66b7so35045a91.1;
+        Sat, 31 Aug 2024 11:24:59 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1725128699; x=1725733499; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=8DhX/kaFZeCTg+YwZd6U7tYPU4NZdXw1PzKarghSqxA=;
+        b=PbBwTwJqJZCzED77FIy5pBL91qkHafA78BiBn06xDmD2rkv6fOgiUxXy1Oslfblgvy
+         1UNeWpgb2tbi+NZxZEmBPbbgo31Med7D+E4P2W0Cea5S/30DG+u+7o+HUgwHBGwh6i8s
+         WchSyZXECZVzBP4k8OSjTC4NKE4a1feXb+0OFSGXX8jdw6fshNLnLfyr0KyrgABxm0nb
+         SjDtJAlbRvwxb661PtMH+rEfMgypN/XcdVvVp3AAxzog90XxSSXgz4AuRb3vCqwA+kAs
+         LHeHXl8PouRWeaXiOoovEaU0R0ORVmFA1mc4hqYT3ItrrDmmZI23rKija3TnRz3swM0y
+         0HLg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1725128699; x=1725733499;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=8DhX/kaFZeCTg+YwZd6U7tYPU4NZdXw1PzKarghSqxA=;
+        b=pUABuUzKfWUKLA8CycWzOrRcOoWcOEVKIZ9Hv0Gta8p5gcXfL8j55F0/R+aX4FXzhk
+         JoBSyfiAKRbgBTeohUN1Gkfra6fQ615PK5WX0AEx50zTL6ESAIHBVtKec1CgWvEkvEOg
+         EdZ6Cf4zdef679Tsof2fUh/t37wDb3Uyt3m85WFcmp4BpmecMddPPhAV6FFddfam2czA
+         CcbSz9Pg6w37Ua/zgHglSe4WqxUhGzVGpbdZi6ORuB+IetqxdMvQTBw14q9VZSgA9z6s
+         r3De466Lrq+oubIhB5+RxBE2tAnrg9l5Txs8qvEYl+NYkh/+XOHVvbuw7h8LGVHtqLT7
+         l4+w==
+X-Forwarded-Encrypted: i=1; AJvYcCVAyzCBytTyNcMvP5beA6x94tyZwMTK5gpTiQLMq5H3fUVgqOrrOVZL61b+n5Kq1hJ0kZTHI9HH6S2yzeX2orzF@lists.infradead.org
+X-Gm-Message-State: AOJu0Yz/IldGjS/IV0oWWyZYIW15lVQaSSFaFs1g0IS+t7D6DZ06PcFM
+	DtDKlSNMHV3MqJ/lnyF8tDQTuuHExL7VXO3rgLkKVnxvPty11FcpgS0KYw==
+X-Google-Smtp-Source: AGHT+IG5caGJp3kbJu0q1H7IeKVEyQQ0/VkfM/U6HyNtpT+EQPNfyxzSIWN5x86SGzgyTJfYp1ncfA==
+X-Received: by 2002:a17:90b:3a50:b0:2c8:e8ed:8a33 with SMTP id 98e67ed59e1d1-2d86b8819demr3430149a91.4.1725128698323;
+        Sat, 31 Aug 2024 11:24:58 -0700 (PDT)
+Received: from localhost.localdomain ([221.220.134.146])
+        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-2d8b2725332sm553855a91.34.2024.08.31.11.24.55
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sat, 31 Aug 2024 11:24:57 -0700 (PDT)
+From: Jianfeng Liu <liujianfeng1994@gmail.com>
+To: linux-rockchip@lists.infradead.org
+Cc: Heiko Stuebner <heiko@sntech.de>,
+	Diederik de Haas <didi.debian@cknow.org>,
+	Jianfeng Liu <liujianfeng1994@gmail.com>,
+	Stephen Rothwell <sfr@canb.auug.org.au>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	Rob Herring <robh@kernel.org>,
+	linux-arm-kernel@lists.infradead.org
+Subject: [PATCH v3 0/1] media: rockchip: rga: Add rk3588 support
+Date: Sun,  1 Sep 2024 02:24:23 +0800
+Message-Id: <20240831182424.758816-1-liujianfeng1994@gmail.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240831_065738_291037_1A3DB6AB 
-X-CRM114-Status: GOOD (  18.87  )
+X-CRM114-CacheID: sfid-20240831_112500_517881_A620D6DC 
+X-CRM114-Status: UNSURE (   8.28  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,87 +98,23 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi,
+This enables support for rga2 in the RK3588 base devicetree.
+Dt-binding of rockchip,rk3588-rga is already merged to v6.11.
 
-Am Samstag, 31. August 2024, 08:16:26 CEST schrieb Krzysztof Kozlowski:
-> On Sat, Aug 31, 2024 at 12:55:29AM +0300, Cristian Ciocaltea wrote:
+Changes in v3:
+- Rebase commit to next-20240830
 
-> > +  clocks:
-> > +    minItems: 4
-> > +    maxItems: 6
-> > +    items:
-> > +      - description: Peripheral/APB bus clock
-> > +      - description: EARC RX biphase clock
-> > +      - description: Reference clock
-> > +      - description: Audio interface clock
-> > +    additionalItems: true
-> 
-> What is the usefulness of all this? How can you even be sure that each
-> implementation of this core will have exactly these clocks?
->
-> > +
-> > +  clock-names:
-> > +    minItems: 4
-> > +    maxItems: 6
-> > +    items:
-> > +      - const: pclk
-> > +      - const: earc
-> > +      - const: ref
-> > +      - const: aud
-> > +    additionalItems: true
-> > +
-> > +  interrupts:
-> > +    minItems: 4
-> > +    maxItems: 5
-> > +    items:
-> > +      - description: AVP Unit interrupt
-> > +      - description: CEC interrupt
-> > +      - description: eARC RX interrupt
-> > +      - description: Main Unit interrupt
-> 
-> If these are real pins, then this seems more possible, but
-> additionalItems does not make me happy.
+Changes in v2:
+- Sort node by bus-address based on next-20240604
 
-So while not "pins", the interrupts are separately specified in the
-SoC's list of interrupts in the GIC:
+Jianfeng Liu (1):
+  arm64: dts: rockchip: Add RGA2 support to rk3588
 
-RK3588 has:
+ arch/arm64/boot/dts/rockchip/rk3588-base.dtsi | 11 +++++++++++
+ 1 file changed, 11 insertions(+)
 
-201  irq_hdmitx0_oavp
-202  irq_hdmitx0_ocec
-203  irq_hdmitx0_oearcrx
-204  irq_hdmitx0_omain
-392  irq_hdmitx0_hpd
-
-and another set of all of them for hdmitx1
-
-and RK3576 using the same hdmi IP has:
-
-370  irq_hdmitx_oavp
-371  irq_hdmitx_ocec
-372  irq_hdmitx_oearcrx
-373  irq_hdmitx_omain
-399  irq_hdmitx_hpd
-
-so I guess the fifth interrupt is meant to be the hotplug?
-Though I guess this should be specificed in the name-list too.
-
-From the SoC's manual it looks like the controller is set up from
-different modules.
-Like AVP is the audio-video-packet-module, there is a Main and CEC Module
-as well as a eARC RX controller inside. I'd guess it might be possible
-other SoC vendors could leave out specific modules?
-
-
-TL;DR I think those clocks and interrupts are dependent on how the
-IP core was synthesized, so for now I'd think we can only guarantee
-that they are true for rk3588 and rk3576.
-
-So I guess they should move to the rockchip-specific part of the binding
-until we have more hdmi-qp controllers in the field?
-
-Heiko
-
+-- 
+2.34.1
 
 
 _______________________________________________
