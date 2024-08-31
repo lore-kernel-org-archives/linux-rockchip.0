@@ -4,81 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0C2DDCA101A
-	for <linux-rockchip@archiver.kernel.org>; Fri, 30 Aug 2024 22:22:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 78189CA101E
+	for <linux-rockchip@archiver.kernel.org>; Sat, 31 Aug 2024 02:06:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=QnWvwg+bDIf169eZ/V5FrI+pZBPDGl7pAawq8Hu150o=; b=qRx/cdKC55czuW
-	ZXrW2qkCBNZpTG/DABet8ksRsEl0MgxJ8ck8+9r2Weac1+JrUvqp/1DXYl2LStqMAWI8vpqP3rIEx
-	aNe65YqRECBvcVB28/mjSYo5z2UgW36yxJcNvqk3V0iejqpZ/prWZgR4xz67aEiAxeR+7KQXdawzX
-	1rKOQE8PebWXmD/YrxRco/OdzzUI75Sq4jm3rTFthv7462/ez6qd3mGByaJFEj7C0yXYD4sjQakXW
-	SG4yvjv81klfoyNVI1JZ7Mirobb0izjBYiN7qwVjdZYrReG2faD0zwa3crpmXE7+oZ5POjuW1Vsc6
-	zMZZYHEY/OQqYJ/7NW5A==;
+	List-Owner; bh=xLOgG25wxNQpbdQiRMBHnTpT6QsBQvay3xf2lLdZVeo=; b=1vmlFMdNfjcCUT
+	rpcijHxFAFMi7XH4tK84MjxrepELyRY6klcCSV8uDgWpBJpJUQptHFmiHLKfDZhpRSEj47mbBBhmV
+	ewvhRmsybbmdGykxgnGZbe3nYF0m9Acg/mbAkVhQbWPYTYntPgQbD9YV09wouooBuu+jd+w6DYqr2
+	jIS7mF0uCh/ML336Vx88gAEmvIWKl61GOWB0TjEK3GZ7Gn+E7Tv73iIuW9v2Lg9YIJdNFVkuUAlou
+	75r/9YhRGAU6dY3DU9Tyx08WQZAAcr2Llyg/PbEWJjBMxE20fjER5fIMOHTTvVHxt59BPV2V8dJyO
+	LQjn+w92ccTJzP+kITLg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1skA0p-00000007r0U-1EjN;
-	Fri, 30 Aug 2024 22:22:35 +0000
-Received: from sender4-op-o12.zoho.com ([136.143.188.12])
+	id 1skDVQ-00000008HtO-3rYS;
+	Sat, 31 Aug 2024 02:06:24 +0000
+Received: from szxga04-in.huawei.com ([45.249.212.190])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1skA0l-00000007qzu-42Nj;
-	Fri, 30 Aug 2024 22:22:33 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1725056517; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=VP8/aryapCMCOF1SvDqoG+mRd3WtRhCLgjOtagvUQv3gqKX4nVkiuEvUgItXy/JgzrdG3C5lJxhaCzEFhCN9V2fPKpzRLSqDac2xAP6Bs9VpQuoldASU00MihKa733wg54HZlQi6dH9O0yjl5DTZqDLownvRG3jYFfyQ4JwpHHw=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1725056517; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=LhR+kXGC+DFHGvsEu1DDE6tCIMiI45kjz9hxbZ3s88o=; 
-	b=OHX6tglUjZBxq6KskH5aloVBl/7MZVJGxFkVt83NERgb20gLMVjBDUECe1g53MSgXD1ofJUCXTWs9xoGXYd4IG10yS3JTp/nn63ANpsMMXAXWFa3a5CeIqj/DME/Zq0A22S0OIyhg8WonQpkORQycXgUzBDx1l8i9F6Ka3d3+PQ=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=cristian.ciocaltea@collabora.com;
-	dmarc=pass header.from=<cristian.ciocaltea@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1725056517;
-	s=zohomail; d=collabora.com; i=cristian.ciocaltea@collabora.com;
-	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
-	bh=LhR+kXGC+DFHGvsEu1DDE6tCIMiI45kjz9hxbZ3s88o=;
-	b=ft7x5kfX3ak042gww8Zh/AvfQWRO3NFXaFPMO99JnFMaRWRXu0K0NgTlk+aX4t/c
-	5h6Wjxh83wq2oxv5xioutYFwnVetxj1ZXfwqzmWCxrsq2oNLsYfeGUYpCzKLsBc85fQ
-	N40NdU5mslkZ/wmUBzKgqD58Ro1Gtdi3G9LRZPIU=
-Received: by mx.zohomail.com with SMTPS id 1725056516094200.5079858589844;
-	Fri, 30 Aug 2024 15:21:56 -0700 (PDT)
-Message-ID: <34422b7a-ce70-445d-a574-60ac36322119@collabora.com>
-Date: Sat, 31 Aug 2024 01:21:48 +0300
+	id 1skDUW-00000008HfX-0HSj;
+	Sat, 31 Aug 2024 02:05:30 +0000
+Received: from mail.maildlp.com (unknown [172.19.88.234])
+	by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4WwdWy5b4Sz20nGk;
+	Sat, 31 Aug 2024 10:00:30 +0800 (CST)
+Received: from kwepemd500012.china.huawei.com (unknown [7.221.188.25])
+	by mail.maildlp.com (Postfix) with ESMTPS id 0BFFB140109;
+	Sat, 31 Aug 2024 10:05:23 +0800 (CST)
+Received: from huawei.com (10.90.53.73) by kwepemd500012.china.huawei.com
+ (7.221.188.25) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1258.34; Sat, 31 Aug
+ 2024 10:05:21 +0800
+From: Li Zetao <lizetao1@huawei.com>
+To: <florian.fainelli@broadcom.com>, <andrew@lunn.ch>, <olteanv@gmail.com>,
+	<davem@davemloft.net>, <edumazet@google.com>, <kuba@kernel.org>,
+	<pabeni@redhat.com>, <wens@csie.org>, <jernej.skrabec@gmail.com>,
+	<samuel@sholland.org>, <heiko@sntech.de>, <yisen.zhuang@huawei.com>,
+	<salil.mehta@huawei.com>, <hauke@hauke-m.de>, <alexandre.torgue@foss.st.com>,
+	<joabreu@synopsys.com>, <mcoquelin.stm32@gmail.com>, <wellslutw@gmail.com>,
+	<radhey.shyam.pandey@amd.com>, <michal.simek@amd.com>,
+	<ajay.kathat@microchip.com>, <claudiu.beznea@tuxon.dev>, <kvalo@kernel.org>,
+	<lizetao1@huawei.com>, <u.kleine-koenig@pengutronix.de>,
+	<jacky_chou@aspeedtech.com>
+CC: <netdev@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-sunxi@lists.linux.dev>, <linux-rockchip@lists.infradead.org>,
+	<linux-stm32@st-md-mailman.stormreply.com>, <linux-wireless@vger.kernel.org>
+Subject: [PATCH net-next 05/12] net: ftgmac100: Convert using devm_clk_get_enabled() in ftgmac100_setup_clk()
+Date: Sat, 31 Aug 2024 10:13:27 +0800
+Message-ID: <20240831021334.1907921-6-lizetao1@huawei.com>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20240831021334.1907921-1-lizetao1@huawei.com>
+References: <20240831021334.1907921-1-lizetao1@huawei.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 2/4] drm/bridge: synopsys: Add DW HDMI QP TX Controller
- support library
-To: Maxime Ripard <mripard@kernel.org>
-Cc: Andrzej Hajda <andrzej.hajda@intel.com>,
- Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>,
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
- Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>,
- Daniel Vetter <daniel@ffwll.ch>, Sandy Huang <hjc@rock-chips.com>,
- =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>,
- Andy Yan <andy.yan@rock-chips.com>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Mark Yao <markyao0591@gmail.com>,
- Sascha Hauer <s.hauer@pengutronix.de>, dri-devel@lists.freedesktop.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
- kernel@collabora.com, Alexandre ARNOUD <aarnoud@me.com>,
- Luis de Arquer <ldearquer@gmail.com>, Algea Cao <algea.cao@rock-chips.com>
-References: <20240819-b4-rk3588-bridge-upstream-v4-0-6417c72a2749@collabora.com>
- <20240819-b4-rk3588-bridge-upstream-v4-2-6417c72a2749@collabora.com>
- <20240827-armored-magnificent-badger-ffb025@houat>
-Content-Language: en-US
-From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-In-Reply-To: <20240827-armored-magnificent-badger-ffb025@houat>
-X-ZohoMailClient: External
+X-Originating-IP: [10.90.53.73]
+X-ClientProxiedBy: dggems703-chm.china.huawei.com (10.3.19.180) To
+ kwepemd500012.china.huawei.com (7.221.188.25)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240830_152232_089461_A716416D 
-X-CRM114-Status: GOOD (  15.58  )
+X-CRM114-CacheID: sfid-20240830_190528_625153_73E0F8B3 
+X-CRM114-Status: GOOD (  14.30  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,58 +79,94 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 8/27/24 11:58 AM, Maxime Ripard wrote:
-> On Mon, Aug 19, 2024 at 01:29:29AM GMT, Cristian Ciocaltea wrote:
->> +static irqreturn_t dw_hdmi_qp_main_hardirq(int irq, void *dev_id)
->> +{
->> +	struct dw_hdmi_qp *hdmi = dev_id;
->> +	struct dw_hdmi_qp_i2c *i2c = hdmi->i2c;
->> +	u32 stat;
->> +
->> +	stat = dw_hdmi_qp_read(hdmi, MAINUNIT_1_INT_STATUS);
->> +
->> +	i2c->stat = stat & (I2CM_OP_DONE_IRQ | I2CM_READ_REQUEST_IRQ |
->> +			    I2CM_NACK_RCVD_IRQ);
->> +
->> +	if (i2c->stat) {
->> +		dw_hdmi_qp_write(hdmi, i2c->stat, MAINUNIT_1_INT_CLEAR);
->> +		complete(&i2c->cmp);
->> +	}
->> +
->> +	if (stat)
->> +		return IRQ_HANDLED;
->> +
->> +	return IRQ_NONE;
->> +}
-> 
-> If the scrambler is enabled, you need to deal with hotplug. On hotplug,
-> the monitor will drop its TMDS ratio and scrambling status, but the
-> driver will keep assuming it's been programmed.
-> 
-> If you don't have a way to deal with hotplug yet, then I'd suggest to
-> just drop the scrambler setup for now.
+Use devm_clk_get_enabled() instead of devm_clk_get() +
+clk_prepare_enable(), which can make the clk consistent with the device
+life cycle and reduce the risk of unreleased clk resources. Since the
+device framework has automatically released the clk resource, there is
+no need to execute clk_disable_unprepare(clk) on the error path, drop
+the cleanup_clk label, and the original error process can return directly.
 
-Thanks for the heads up!
+Signed-off-by: Li Zetao <lizetao1@huawei.com>
+---
+ drivers/net/ethernet/faraday/ftgmac100.c | 27 ++++++------------------
+ 1 file changed, 7 insertions(+), 20 deletions(-)
 
-HPD is partially handled by the RK platform driver, which makes use of
-drm_helper_hpd_irq_event(). Since the bridge sets DRM_BRIDGE_OP_DETECT
-flag, the dw_hdmi_qp_bridge_detect() callback gets executed, which in turn
-verifies the PHY status via ->read_hpd() implemented as
-dw_hdmi_qp_rk3588_read_hpd() in the platform driver.
-
-During my testing so far it worked reliably when switching displays with
-different capabilities.  I don't have a 4K@60Hz display at the moment, but
-used the HDMI RX port on the Rock 5B board in a loopback connection to
-verify this mode, which triggered the high TMDS clock ratio and scrambling
-setup as well.
-
-I just submitted v5 [1] where I reworked a bit the scrambling handling,
-which allowed for some code simplification.
-
-[1] https://lore.kernel.org/lkml/20240831-b4-rk3588-bridge-upstream-v5-0-9503bece0136@collabora.com/
-
-Regards,
-Cristian
+diff --git a/drivers/net/ethernet/faraday/ftgmac100.c b/drivers/net/ethernet/faraday/ftgmac100.c
+index 4c546c3aef0f..eb57c822c5ac 100644
+--- a/drivers/net/ethernet/faraday/ftgmac100.c
++++ b/drivers/net/ethernet/faraday/ftgmac100.c
+@@ -1752,13 +1752,10 @@ static int ftgmac100_setup_clk(struct ftgmac100 *priv)
+ 	struct clk *clk;
+ 	int rc;
+ 
+-	clk = devm_clk_get(priv->dev, NULL /* MACCLK */);
++	clk = devm_clk_get_enabled(priv->dev, NULL /* MACCLK */);
+ 	if (IS_ERR(clk))
+ 		return PTR_ERR(clk);
+ 	priv->clk = clk;
+-	rc = clk_prepare_enable(priv->clk);
+-	if (rc)
+-		return rc;
+ 
+ 	/* Aspeed specifies a 100MHz clock is required for up to
+ 	 * 1000Mbit link speeds. As NCSI is limited to 100Mbit, 25MHz
+@@ -1767,21 +1764,17 @@ static int ftgmac100_setup_clk(struct ftgmac100 *priv)
+ 	rc = clk_set_rate(priv->clk, priv->use_ncsi ? FTGMAC_25MHZ :
+ 			  FTGMAC_100MHZ);
+ 	if (rc)
+-		goto cleanup_clk;
++		return rc;
+ 
+ 	/* RCLK is for RMII, typically used for NCSI. Optional because it's not
+ 	 * necessary if it's the AST2400 MAC, or the MAC is configured for
+ 	 * RGMII, or the controller is not an ASPEED-based controller.
+ 	 */
+-	priv->rclk = devm_clk_get_optional(priv->dev, "RCLK");
+-	rc = clk_prepare_enable(priv->rclk);
+-	if (!rc)
+-		return 0;
++	priv->rclk = devm_clk_get_optional_enabled(priv->dev, "RCLK");
++	if (IS_ERR(priv->rclk))
++		return PTR_ERR(priv->rclk);
+ 
+-cleanup_clk:
+-	clk_disable_unprepare(priv->clk);
+-
+-	return rc;
++	return 0;
+ }
+ 
+ static bool ftgmac100_has_child_node(struct device_node *np, const char *name)
+@@ -1996,16 +1989,13 @@ static int ftgmac100_probe(struct platform_device *pdev)
+ 	err = register_netdev(netdev);
+ 	if (err) {
+ 		dev_err(&pdev->dev, "Failed to register netdev\n");
+-		goto err_register_netdev;
++		goto err_phy_connect;
+ 	}
+ 
+ 	netdev_info(netdev, "irq %d, mapped at %p\n", netdev->irq, priv->base);
+ 
+ 	return 0;
+ 
+-err_register_netdev:
+-	clk_disable_unprepare(priv->rclk);
+-	clk_disable_unprepare(priv->clk);
+ err_phy_connect:
+ 	ftgmac100_phy_disconnect(netdev);
+ err_ncsi_dev:
+@@ -2034,9 +2024,6 @@ static void ftgmac100_remove(struct platform_device *pdev)
+ 		ncsi_unregister_dev(priv->ndev);
+ 	unregister_netdev(netdev);
+ 
+-	clk_disable_unprepare(priv->rclk);
+-	clk_disable_unprepare(priv->clk);
+-
+ 	/* There's a small chance the reset task will have been re-queued,
+ 	 * during stop, make sure it's gone before we free the structure.
+ 	 */
+-- 
+2.34.1
 
 
 _______________________________________________
