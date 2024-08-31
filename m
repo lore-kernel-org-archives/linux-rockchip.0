@@ -4,52 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 99549CA101C
-	for <linux-rockchip@archiver.kernel.org>; Sat, 31 Aug 2024 11:12:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 74FCECD1293
+	for <linux-rockchip@archiver.kernel.org>; Sat, 31 Aug 2024 11:13:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:
 	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=X6hzSyGnVhEiIw4XhPWYyF3PQrTm426tBwIssX6MKVI=; b=A3Rdbcgrv8ToUI
-	HAIQe5KSZnvhWcsrkNsdJhOfCZiVtPFzEaQ1z8IlIf0Fe35c4F1I90wkO1DZitE4wV88b4MpEo3WT
-	HaFUf2782PMlO3lC67aPewuBej8mHZ3JW6aufuLKYfsTmhEhop30eTpjLkhzCI5CRmQpkkLT2E//4
-	CeWGGbK2VoMQO6Q6y7VpeZMY0JjmmYz1NP6B9dMoZqq76O++T5bKL6nlJXqVbHyKg+7hwTj2f1AuO
-	CZtG+qdyLNYQp4Rj7o7CHt3JaBhZVKjrbnv+Mifu2EY8iIF8nw5EkenPKBJ4uEpjqYG2qqht6qSMH
-	kGRSa5AlYXfGJo5dJDlg==;
+	List-Owner; bh=7ra1+joaE/gqCYZAmnM/qdtTfku76vGRx2s2gpha7BM=; b=l3xS5NUCpyeifu
+	EjSJYnAeqY5dCXX/Rhb0Gh1zZy7FeI65ys6U3FX1sdRI4UdhcRMk0o+XZ/W5b1zIHQeYxEuslUFnX
+	TwZZoJ3JRNZ4AFB0K0AzFOaNOBPtvrTbxM9x8oqVvpDVDQ0El9i+Jh2+xwGpnNiR9iJDi5Bc0podh
+	vn4pDEqWgClqE8aiLf7twX0nSt3XkeFlNUBkUsA2O5OuOHsaZVKrIN2XBxVMQfxYbSdrxtHMGVyMv
+	q6zUet7oTqnNl6nA9E2HuP9A1TkKw+H8Hx1FvMk8XKorW5UxAP57p9bNwiy9sf74WfOGA7sioJZHA
+	/zr1xW1hKMS7qvzll+Bg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1skM2J-00000009CBd-3Snu;
-	Sat, 31 Aug 2024 11:12:55 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1skM3D-00000009CWp-2oxh;
+	Sat, 31 Aug 2024 11:13:51 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1skM19-00000009BuP-04vi;
-	Sat, 31 Aug 2024 11:11:44 +0000
+	id 1skM1S-00000009Byk-1cvk;
+	Sat, 31 Aug 2024 11:12:03 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 8DDCEA4015B;
-	Sat, 31 Aug 2024 11:11:34 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8F339C4CEC0;
-	Sat, 31 Aug 2024 11:11:32 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 61CE85C3F69;
+	Sat, 31 Aug 2024 11:11:57 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 39648C4CEC0;
+	Sat, 31 Aug 2024 11:11:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1725102701;
-	bh=0WHLlaTK0otUlK19e3QVW/qXCLqjQ01sSWCsFRz8/Xk=;
+	s=k20201202; t=1725102720;
+	bh=6Tc7RsbCHU6apA/esYfyd/F8YwR9o2cw7PHhVhzyfsg=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=DR/MBBFeng0PaL2RepRnjZVDwGjh6Af9EZ5muuxcRA7RLMYCIxlOxezh3QX85CZWc
-	 TN/7eYCAG1viiPO4TUZ3nBhiXRS2ZA7KPAMlvYpUWFxhzYFlxP7jzxYvj7u3c4+rbq
-	 XEbjguJLXcKfC7EtOKsoZSf77pkqf4OfY/TH6Q9VdJIr4kloterZjSgMEZPTXSX+n6
-	 pt6p23RQkX7PXSCKF/UTW0mczRBOy/jk7EsmaEqGkSu0JZaCBg8/y2e9gUiBnbDiZp
-	 ZOJgVJ2rwyClP1SolZw3j5gqlHnlRzxoIQZIEg0LCYpQFvgZC7NvWJvwvWez6OvaWF
-	 8s/SmKbF075+w==
-Message-ID: <df0d9cdf-0fc5-440d-997d-9e1a786dc8b5@kernel.org>
-Date: Sat, 31 Aug 2024 13:11:29 +0200
+	b=j8vhu9tb9t3HUYiyXLBxHRfkFdTHbYpgE2+YYuJzZvdpz0ksQaDZCszdSN/ZXnYY+
+	 Xzm2SxUr1mc8ktUBqtUIXUxNVXlMJXWAwBetO9Wwy2hn5YZMUoYsWabb1WRBLxNSTV
+	 f6n7TID2x37moy85Cw/9+EGug1tdaonpeKxur6DrlAgjsvo2uydFOFpM92E3Xs245+
+	 D/Mzgr2c9o4qg/t/fLU2WznLOrYXBJ8lXCWIMl3CgiGtwFJ/Ei3Np1FXFgdL0zNCnD
+	 rmvUzbaAXQ0Yjtv3pHBqJ6EFDg3lqlAEy51t5BXnt51l278UU72kNcMY24XH1i2Zub
+	 DbCFoqbhvPK7g==
+Message-ID: <c4145009-b9ae-40b3-b550-cdb90ddc39eb@kernel.org>
+Date: Sat, 31 Aug 2024 13:11:49 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5? 3/6] dt-bindings: display: bridge: Add schema for
- Synopsys DW HDMI QP TX IP
+Subject: Re: [PATCH v5? 4/6] dt-bindings: soc: rockchip: Document VO0/1 GRF
+ compatible string changes
 To: Shimrra Shai <shimrrashai@gmail.com>
 References: <20240830152132.8894-1-shimrrashai@gmail.com>
- <20240830152825.9053-1-shimrrashai@gmail.com>
+ <20240830152840.9066-1-shimrrashai@gmail.com>
 From: Krzysztof Kozlowski <krzk@kernel.org>
 Content-Language: en-US
 Autocrypt: addr=krzk@kernel.org; keydata=
@@ -95,10 +95,10 @@ Autocrypt: addr=krzk@kernel.org; keydata=
  uZwJCLykjad45hsWcOGk3OcaAGQS6NDlfhM6O9aYNwGL6tGt/6BkRikNOs7VDEa4/HlbaSJo
  7FgndGw1kWmkeL6oQh7wBvYll2buKod4qYntmNKEicoHGU+x91Gcan8mCoqhJkbqrL7+nXG2
  5Q/GS5M9RFWS+nYyJh+c3OcfKqVcZQNANItt7+ULzdNJuhvTRRdC3g9hmCEuNSr+CLMdnRBY fv0=
-In-Reply-To: <20240830152825.9053-1-shimrrashai@gmail.com>
+In-Reply-To: <20240830152840.9066-1-shimrrashai@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240831_041143_214541_045F5B93 
-X-CRM114-Status: UNSURE (   5.50  )
+X-CRM114-CacheID: sfid-20240831_041202_620307_F4CCE393 
+X-CRM114-Status: UNSURE (   7.11  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -118,13 +118,20 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 On 30/08/2024 17:28, Shimrra Shai wrote:
-> diff --git a/Documentation/devicetree/bindings/display/bridge/synopsys,dw-hdmi-qp.yaml b/Documentation/devicetree/bindings/display/bridge/synopsys,dw-hdmi-qp.yaml
-> new file mode 100644
-> index 000000000..141899ba2
+> diff --git a/Documentation/devicetree/bindings/soc/rockchip/grf.yaml b/Documentation/devicetree/bindings/soc/rockchip/grf.yaml
+> index 78c6d5b64..8fd539125 100644
+> --- a/Documentation/devicetree/bindings/soc/rockchip/grf.yaml
+> +++ b/Documentation/devicetree/bindings/soc/rockchip/grf.yaml
+> @@ -31,7 +31,8 @@ properties:
+>                - rockchip,rk3588-pcie3-pipe-grf
+>                - rockchip,rk3588-usb-grf
+>                - rockchip,rk3588-usbdpphy-grf
+> -              - rockchip,rk3588-vo-grf
+> +              - rockchip,rk3588-vo0-grf
+> +              - rockchip,rk3588-vo1-grf
+>                - rockchip,rk3588-vop-grf
 
-What is this? Where is proper message?
-
-Why are you sending someone's else work duplicating entire review effort?
+NAK, this does not make any sense. Just random code changes...
 
 Best regards,
 Krzysztof
