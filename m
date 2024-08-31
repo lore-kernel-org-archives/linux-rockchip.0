@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A1050CD13D9
-	for <linux-rockchip@archiver.kernel.org>; Sat, 31 Aug 2024 20:59:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 980D1CD13DF
+	for <linux-rockchip@archiver.kernel.org>; Sat, 31 Aug 2024 21:06:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
 	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
 	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=inRgbpCVZap6AxBBFzpHWn3TDTzuiqCnu9hNRvufIaM=; b=wK9PBgnGHMyU6rRGdeOlCi5XPP
-	mocE0INsn0FfHtmoscrEDr1q/ASrTgAfRVa9N0EKUMifKFpliXmX3GvhSbZGS93QtvT5IoBlK5W9C
-	Pu1GxH6jOu1jgNjil3Bolh7B1jLnA1ecVGXydUxWwl7FJM4iRD3Y4KLrsSiao95wL3uvMI7niEwzg
-	b9xLalQxLY7hFxtmNjcCFJJZU6fHpC+vxRe0JvF6eQpxG2w7EAr8yYLHdkcsNQSuKUncaU8ndkSBx
-	udJj7ZyEZcs2Xchm6uEb2IcfgBm32GSnNZIT8cQszgJaRoR0Msw1fkd5e0E2SWRHJu6XiL+hp+PYf
-	ABnTw/Ig==;
+	bh=aEKt3laXRNQ3lS0ILwj985Wirs4hM7gWezC8tZ24B9Y=; b=0+ODjmtE073uLoovJMCMz231QM
+	Za90BpdkzkqlERUijqEqL01vP66+i82HCL+TNG84ofn6WtOZVAZSJ9vb+FDfVrGexbbc6RRLbtbuI
+	Kgj6UirUXykkkb5O9h3otWf5jzhhnUsEG04QfhU7/TqnXneLDUkLATrumIFlmJYGWwW0aOt9wwwsQ
+	QW92TZcoO/SkmyQ0ur7ZnZpErftpqx7lZMIk4crsFQpAjKSWc9s1phnXneoRobXDWEIZzJEK1m8Fj
+	jJisHChsm+SyduLrFBHJiUsPOPadmC8tP0hsjKke3+I031870fMLhtKqJEHtFHhVsX9Z61IIlSSQK
+	j3LTGtEQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1skVBS-0000000A5NX-3Yno;
-	Sat, 31 Aug 2024 20:58:58 +0000
+	id 1skVIP-0000000A66b-3t4C;
+	Sat, 31 Aug 2024 21:06:09 +0000
 Received: from zeus03.de ([194.117.254.33] helo=mail.zeus03.de)
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1skVAW-0000000A5DF-3488
+	id 1skVHW-0000000A5zA-10Ku
 	for linux-rockchip@lists.infradead.org;
-	Sat, 31 Aug 2024 20:58:03 +0000
+	Sat, 31 Aug 2024 21:05:16 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
 	sang-engineering.com; h=date:from:to:cc:subject:message-id
-	:references:mime-version:content-type:in-reply-to; s=k1; bh=zNLm
-	AJnyx71Pfq582arlmL8j4PFld3o+5DDO21ix+4Y=; b=QRR6qaVUCK9erdhPo/Kn
-	RM4MzI8VO1I5PIhMNETeU36cX7bmnK3ex8VQVNcx1YJirWFENkhTy/kkHs1oZfdq
-	xJDpjgfENgK7e0KZsUobD0Z4TL/EicgbE9lngHrinfNy72RKisf4crSE+9Hec9jY
-	dt3pJcNXldbjhL6rKMlug5rkW1pCat7yh3hfkoaFbfnFWc46CxzyRV0D90rGH1ju
-	3nOx4C6NiM76+vUp1/eoScCerB2ro1m6bpO7fyzC38UDvcKRSkXR0h3lDzAX0dNP
-	kPNI+wDnc7P9fjWA5xRdfqR5/gdS5bkfSGw+obJxiEN4uigZ1Yg0+d8lQyuJXObC
-	Vw==
-Received: (qmail 3635973 invoked from network); 31 Aug 2024 22:57:53 +0200
-Received: by mail.zeus03.de with ESMTPSA (TLS_AES_256_GCM_SHA384 encrypted, authenticated); 31 Aug 2024 22:57:53 +0200
-X-UD-Smtp-Session: l3s3148p1@KE0j9gAh43xtKnBL
-Date: Sat, 31 Aug 2024 22:57:53 +0200
+	:references:mime-version:content-type:in-reply-to; s=k1; bh=vdy9
+	irpsNcTTyDq7ZzNHqsgF4Q1XutSFwTkVDozkiZY=; b=IyoTcNnyXOX2oCMoZn09
+	nvbdCEWf+efnAswEsH1SVCHYRuTbAqsfsYP7mxGtOOU/W2RtLvS4Ql2/4u2LxO0H
+	R5pxF3LMastWQ2Bl+15WgUPfL4YVUqPKGEiLcK4aAHRNbgygwmLIrSmVv97XyiMB
+	mUYPBSWlpZGDXWkc5jElWQUuIKknmqtbtEJm/CJl9rLTaJDBagZ7ebTpZRCDcncr
+	ORwl/Iok0sZSGhHP6ROFpvGLaQMOLEbeAb6sCUMMo+21nQ5SGYbGqXDWbY77GpCG
+	e6K0HbncBPAPgdVTjKi4zDngWdrds4kAVDEAm+IgTqF9EnuePOHbUz81wmRBN/jc
+	BQ==
+Received: (qmail 3637232 invoked from network); 31 Aug 2024 23:05:11 +0200
+Received: by mail.zeus03.de with ESMTPSA (TLS_AES_256_GCM_SHA384 encrypted, authenticated); 31 Aug 2024 23:05:11 +0200
+X-UD-Smtp-Session: l3s3148p1@1bE8EAEhEU5tKnBL
+Date: Sat, 31 Aug 2024 23:05:11 +0200
 From: Wolfram Sang <wsa+renesas@sang-engineering.com>
 To: Farouk Bouabid <farouk.bouabid@cherry.de>
 Cc: Andi Shyti <andi.shyti@kernel.org>, Rob Herring <robh@kernel.org>,
@@ -53,9 +53,8 @@ Cc: Andi Shyti <andi.shyti@kernel.org>, Rob Herring <robh@kernel.org>,
 	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
 	linux-hwmon@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH v6 2/8] i2c: muxes: add support for tsd,mule-i2c
- multiplexer
-Message-ID: <ZtOD0e3ZBnabdK34@shikoro>
+Subject: Re: [PATCH v6 1/8] dt-bindings: i2c: add support for tsd,mule-i2c-mux
+Message-ID: <ZtOFh5ooDARtYa-n@shikoro>
 Mail-Followup-To: Wolfram Sang <wsa+renesas@sang-engineering.com>,
 	Farouk Bouabid <farouk.bouabid@cherry.de>,
 	Andi Shyti <andi.shyti@kernel.org>, Rob Herring <robh@kernel.org>,
@@ -69,12 +68,13 @@ Mail-Followup-To: Wolfram Sang <wsa+renesas@sang-engineering.com>,
 	linux-hwmon@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org
 References: <20240725-dev-mule-i2c-mux-v6-0-f9f6d7b60fb2@cherry.de>
- <20240725-dev-mule-i2c-mux-v6-2-f9f6d7b60fb2@cherry.de>
+ <20240725-dev-mule-i2c-mux-v6-1-f9f6d7b60fb2@cherry.de>
 MIME-Version: 1.0
-In-Reply-To: <20240725-dev-mule-i2c-mux-v6-2-f9f6d7b60fb2@cherry.de>
+In-Reply-To: <20240725-dev-mule-i2c-mux-v6-1-f9f6d7b60fb2@cherry.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240831_135801_679980_5DEEAA9C 
-X-CRM114-Status: GOOD (  19.82  )
+X-CRM114-CacheID: sfid-20240831_140514_641963_8DABDDD5 
+X-CRM114-Status: UNSURE (   9.53  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,113 +86,58 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============5675157472636425754=="
+Content-Type: multipart/mixed; boundary="===============6190303062849065087=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
---===============5675157472636425754==
+--===============6190303062849065087==
 Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="dpR/Rm59Kxtb9gux"
+	protocol="application/pgp-signature"; boundary="QboA3ZjoP/b+0a3w"
 Content-Disposition: inline
 
 
---dpR/Rm59Kxtb9gux
+--QboA3ZjoP/b+0a3w
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-Hi,
-
-On Thu, Jul 25, 2024 at 03:27:48PM +0200, Farouk Bouabid wrote:
+On Thu, Jul 25, 2024 at 03:27:47PM +0200, Farouk Bouabid wrote:
 > Theobroma Systems Mule is an MCU that emulates a set of I2C devices,
-> among which an amc6821 and devices that are reachable through an I2C-mux.
-> The devices on the mux can be selected by writing the appropriate device
-> number to an I2C config register (amc6821 reg 0xff).
+> among which devices that are reachable through an I2C-mux. The devices
+> on the mux can be selected by writing the appropriate device number to
+> an I2C config register.
 >=20
-> This driver is expected to be probed as a platform device with amc6821
-> as its parent i2c device.
->=20
-> Add support for the mule-i2c-mux platform driver. The amc6821 driver
-> support for the mux will be added in a later commit.
+> Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
+> Signed-off-by: Farouk Bouabid <farouk.bouabid@cherry.de>
 
-Seems like DT maintainers are happy with the approach. From the I2C
-perspective, this seems suitable as well. Just a few minor comments. Can
-be fixed incrementally, from my POV. But basically:
-
-Reviewed-by: Wolfram Sang <wsa+renesas@sang-engineering.com>
+Acked-by: Wolfram Sang <wsa+renesas@sang-engineering.com>
 
 
-> +static inline int __mux_select(struct regmap *regmap, u32 dev)
-> +{
-> +	return regmap_write(regmap, MUX_CONFIG_REG, dev);
-> +}
-
-Does this really need to be a seperate function? I'd vote for merging it
-into 'mux_select'. Also the __-prefix often means unlocked versions of
-some call, so it is also a bit misleading.
-
-> +static int mule_i2c_mux_probe(struct platform_device *pdev)
-> +{
-> +	struct device *mux_dev =3D &pdev->dev;
-> +	struct mule_i2c_reg_mux *priv;
-> +	struct i2c_client *client;
-> +	struct i2c_mux_core *muxc;
-> +	struct device_node *dev;
-> +	unsigned int readback;
-> +	int ndev, ret;
-> +	bool old_fw;
-> +
-> +	/* Count devices on the mux */
-> +	ndev =3D of_get_child_count(mux_dev->of_node);
-> +	dev_dbg(mux_dev, "%d devices on the mux\n", ndev);
-> +
-> +	client =3D to_i2c_client(mux_dev->parent);
-> +
-> +	muxc =3D i2c_mux_alloc(client->adapter, mux_dev, ndev, sizeof(*priv),
-> +			     I2C_MUX_LOCKED, mux_select, mux_deselect);
-> +	if (!muxc)
-> +		return dev_err_probe(mux_dev, -ENOMEM,
-> +				     "Failed to allocate mux struct\n");
-
-alloc_functions usually print something when failing.
-
-> +		ret =3D i2c_mux_add_adapter(muxc, 0, reg);
-> +		if (ret)
-> +			return dev_err_probe(mux_dev, ret,
-> +					     "Failed to add i2c mux adapter %d\n", reg);
-
-The 'add_adapter' functions for sure print something when failing.
-
-Thanks!
-
-   Wolfram
-
-
---dpR/Rm59Kxtb9gux
+--QboA3ZjoP/b+0a3w
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iQIzBAABCgAdFiEEOZGx6rniZ1Gk92RdFA3kzBSgKbYFAmbTg8kACgkQFA3kzBSg
-Kbal7A/+PM4jZgxWTav2ZDGWds/ujnuVdXWpyfQu+IY/MpQVfmm2dqNa8Ru9RZW8
-+RWhVE9EGt18HBsFki7E701Xv9ZwIy925OBGEk/UZEY4z5cjCPpQwCbKTjAy2+LR
-LzDJQ3a1lMShSYyjUHFPdmglAOKcVbk1sBBXUnRVAYrgyXpzmn2XHpro+qLc7VPP
-Xz+qyZfh4hgMFzThbY++4zk6PhH9fz34KDrDOJX8oToWLr84D+ItcXH2hFg2+fi8
-Du0jIGP+zuhbXvaIkldW7yEjQllEXZXySUoVirgx1IRM9eO4Kgrmu35aUrKCMyOp
-2KhKskdPlXDhL0IMYmUtdK3BFo3gqFC0KXNEFaSswdNCt8776BDKQnpCV+78mpTu
-UOIHvYSLrSH2iWGlVJxsMwbT8Y22ty6/XmiRt0kVl2TqbfYIth42zQFjq26XPAOi
-Ku6eQteE5AJs/098KcZpCICiJgOW/AfvuwGwRHu/5G3lUcHSr0EHGhk9TKrewA7w
-n6li/coMHaRt3v5UORaTJ9MopLSW/HNsWg/vm0IKMbQV7KElKd/hELnb7t6PY+46
-i3dIgp3DTSAqjJIJA3VpQCqI6ZptLBt7Me0yhQe50uznOp2jykz+1bfVat5eCuZ9
-r9tgtViUP8BXvjc+yqvaXtnF73dhazVyP4vUasuyhghGYbMwHG0=
-=ems9
+iQIzBAABCgAdFiEEOZGx6rniZ1Gk92RdFA3kzBSgKbYFAmbThYYACgkQFA3kzBSg
+KbY5Sg//ceGQvqvVmSu+8f+frAs/yQN52m3m1nE4lVbRnHNKmRxFCArx2Fy522yk
+KmK+P10Als0D9IJIV4eHOyGxPPQgU0X/hRw0CjzFwVa7gVh8vEvFRJImBNMEfu9Z
+fYDTKdlXy+Bn33homk0bXumxAK1bzMClmRQtd43XQPvhhuoQ8E+a/kOqHyZ0pe3t
+bOhsWJ43HNQkbxooqfDadc/WIEjX/QSFts63zwQ8FRGC7jcG436dXoi2ZIvyhokL
+WmaHWjLYxJIgpSi9XD5iEKcQSShC1nXH7Z+z6iJNoJm5qEun6DzpTyQfTEsOGiiV
+ZKWNgYYdg6sftOL0iN8YuV0EOg9mL2u3qldxrJ4XNmZ/4CRzDokdh01qUYkPPYAp
+X4bjISpDNWaFqVuwZtG85EMQ/JfsjuhAetIDfjqBo5iNfpfy0fo1q3TEoLT9tYg0
+JHRooxxBPvXplMeTzSjk568jAy+mwhzi2ByGENy5SnpGQQmrH435rRaSfrcLFrgm
+BDy4Ym2hdwButcHUd9PqlRpohOQrZKT4R3CyPmJkgyrOpQSAOlhZzPzbyyVafpTy
+FBe3918uwk8V1bh9HTL0IlkDVGMbXqRsJTudpLHi6pvi8lxGrAwZeKoICPf5UAZc
+dlTK8Qn6sALes3NFX91ZLxpgFBIBLq0nhYD/DJiRoi6c6GenGdY=
+=rzhb
 -----END PGP SIGNATURE-----
 
---dpR/Rm59Kxtb9gux--
+--QboA3ZjoP/b+0a3w--
 
 
---===============5675157472636425754==
+--===============6190303062849065087==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -203,5 +148,5 @@ Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
---===============5675157472636425754==--
+--===============6190303062849065087==--
 
