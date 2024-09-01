@@ -4,106 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AE348C54FC6
-	for <linux-rockchip@archiver.kernel.org>; Sun,  1 Sep 2024 11:37:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7BE34CA101E
+	for <linux-rockchip@archiver.kernel.org>; Sun,  1 Sep 2024 12:33:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:Cc:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=xSVlSRP5Mg/GPZJAZf7tMsdeOs4csHuMsw2rU5uDjfQ=; b=1bTRXYRe4ydscP
-	mmfr5ovYRKchBweurzk4InBfCszZfX77wDwDZhHbcuMrLGKZWvTRvoICYORcBCZLuM7qvLvB5ebAz
-	8ibgNT+sV1RtbjmJzvYjy+vqkiNyWTUMdpoI/DRplVf1mxSPSLjr4HiyUU3U4HNuoBXpX4nPlqGo8
-	cdtAJ189wBp7rQwC7xSDzMEu6O1xmohVmaJB4EDBk/8fA8XOa+tg2k2iDegunXARLKXQy9tf6vrXX
-	3hXeM8mGsUSQgcolfo31VjKcy/xFtizZYgKAVBiYh4Mp23hasExDpE958pjZ6ROcgIOD0V2EreKs/
-	oSb2wxQwSjl4slpHOpAA==;
+	List-Owner; bh=x3LzIG2r2P3y7KvVWTkDYIMxaeCo4wW12Zn6g7R+WGE=; b=jxTdwzFFrzvilW
+	Up9p9zd8KHUn/46P3z5GupAjDKAA7wQl9b4p7F6sjTNxUjIacSr1wzaKoluMvboZF0by9m7eSNymH
+	4ZbQYg2eGV0Tje4RINejAzOjLZgdVOWcb3sQKTpk/8SqOIm3nlnkqZy2nIUCysIpWZVHgper37+LI
+	n0wqPtAwhgLsjdOHOzqzRl8935FxGCLMOE7wgKsoGJUt9EXmJhsooE3B7+lwuxwkhP/KN8HRCklwc
+	Nfccedgp2dcWf6vPPzjGdRvzffcymomJAOgxVNFbe8Ze5MD00k1Avo2iFkCBVPvagsD1TJlfqmFB1
+	j+DlqkeFjbqg3zS0dyzw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1skita-0000000BPgO-1KoN;
-	Sun, 01 Sep 2024 11:37:26 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1skjlR-0000000BcvP-4A3I;
+	Sun, 01 Sep 2024 12:33:05 +0000
+Received: from mgamail.intel.com ([192.198.163.12])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1skish-0000000BPb5-0XWW;
-	Sun, 01 Sep 2024 11:36:33 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 18340A40E62;
-	Sun,  1 Sep 2024 11:36:23 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id BC49CC4CEC3;
-	Sun,  1 Sep 2024 11:36:25 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1725190589;
-	bh=V5Q7CYxk43HU+OjNK+wNBc9xV/BKh77WImilNA5Kgf0=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=KTOCzO9/uAE1YySldH6x7XhDDVU/jFQZUeZyGiYwDBlyLZhsvz2ZIQlGM66oDf2Mc
-	 +UFxMmv4qTVShFHsO3tSSOgUJdugFst36T3GMW2nBKXdnPic+1BL7vPWVV3xb4kVBz
-	 3s9YvYwI+32VVDhZiPHP5DxcrOOs/sY78hMNrvjZ4nBc2ZzYOm3Fz0QiTBKaiJHeX4
-	 Erz38i0KF0H2fABOK2qyhhnAV1pC+YVJE8VOfAPIwiAXiQJ6Muca5VPO4elnv4BB9o
-	 c9EkkzSOgGId8YN+bzOi2p5jhz5690PqwY/jtXE3ULbNf0ZWwgeN4OXYxGzW6v7IO9
-	 XMMbXJbSUtW/w==
-Message-ID: <3dc6d1b4-9217-40fa-ad03-0bfdbd02c8d8@kernel.org>
-Date: Sun, 1 Sep 2024 13:36:23 +0200
+	id 1skjXB-0000000BXNl-095p;
+	Sun, 01 Sep 2024 12:18:22 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1725193101; x=1756729101;
+  h=message-id:date:mime-version:cc:subject:to:references:
+   from:in-reply-to:content-transfer-encoding;
+  bh=7/QB0KtM8B4HpCGa2zOGQwulKoPIrKDzA21NTiK6nDQ=;
+  b=mfuRtzq11QB+5UiJCDtP94j8IYE8BY704pchQAc8f29qmSI1JQ1B0M/e
+   EiHk/6Wg+0i78/m85xIszDvmKh2Dn1uhR/vvCcBILj4yR3lgqePVWBukT
+   5bH4zrylgndL2qaA47WNb+vvyEc9LUW3gqXXj3+TU5TaT3kMli814EvEK
+   3EfOvxi+wd2JSc/UXPcPKtW+eZAjg5urDEVLyxQ4OLMFUNgZWCCYEqx5K
+   01/66T1c4w56IW6nq4wjfSUbTtJL7Yf33pw6axdZmBQpc3sAPqQ5c2CRF
+   5EcR7jFbKwZlOBWqpUdGz//nqkdk2bOcfQSGXPc3528oTxXhvkPS/nRmR
+   Q==;
+X-CSE-ConnectionGUID: tV7LeM3wQcKo5AqSG9Hbjg==
+X-CSE-MsgGUID: 0EkTfVZlREyCKKnGZRVVqw==
+X-IronPort-AV: E=McAfee;i="6700,10204,11181"; a="27655072"
+X-IronPort-AV: E=Sophos;i="6.10,193,1719903600"; 
+   d="scan'208";a="27655072"
+Received: from orviesa006.jf.intel.com ([10.64.159.146])
+  by fmvoesa106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 01 Sep 2024 05:18:21 -0700
+X-CSE-ConnectionGUID: g8VwmCVNS2+7h8Z4f5k2qg==
+X-CSE-MsgGUID: AfsLNis4Qr+b2Wrpi+N8nQ==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.10,193,1719903600"; 
+   d="scan'208";a="64699177"
+Received: from blu2-mobl.ccr.corp.intel.com (HELO [10.124.240.228]) ([10.124.240.228])
+  by orviesa006-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 01 Sep 2024 05:18:14 -0700
+Message-ID: <fd0257de-ce1a-40f3-a0b6-2f0c7dcee896@linux.intel.com>
+Date: Sun, 1 Sep 2024 20:18:11 +0800
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/2] dt-bindings: arm: rockchip: Add Hardkernel ODROID-M2
-To: Jonas Karlman <jonas@kwiboo.se>, Heiko Stuebner <heiko@sntech.de>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>
-Cc: Dongjin Kim <tobetter@gmail.com>, linux-rockchip@lists.infradead.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org
-References: <20240901112020.3224704-1-jonas@kwiboo.se>
- <20240901112020.3224704-2-jonas@kwiboo.se>
-From: Krzysztof Kozlowski <krzk@kernel.org>
+Cc: baolu.lu@linux.intel.com, Karol Herbst <kherbst@redhat.com>,
+ Lyude Paul <lyude@redhat.com>, Danilo Krummrich <dakr@redhat.com>,
+ David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>,
+ Jonathan Hunter <jonathanh@nvidia.com>, Sandy Huang <hjc@rock-chips.com>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ Mikko Perttunen <mperttunen@nvidia.com>, Joerg Roedel <joro@8bytes.org>,
+ Will Deacon <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>,
+ Jason Gunthorpe <jgg@ziepe.ca>, Kevin Tian <kevin.tian@intel.com>,
+ dri-devel@lists.freedesktop.org, nouveau@lists.freedesktop.org,
+ linux-tegra@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-media@vger.kernel.org,
+ iommu@lists.linux.dev, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH 3/3] drm/tegra: Remove call to iommu_domain_alloc()
+To: Thierry Reding <thierry.reding@gmail.com>
+References: <20240812071034.9443-1-baolu.lu@linux.intel.com>
+ <20240812071034.9443-3-baolu.lu@linux.intel.com>
+ <qyvyd2ftebjlgmzyayfvxsqa64c4wgx7keix3a6eexdspbvawy@a5ffnm5h5tgp>
 Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- xsFNBFVDQq4BEAC6KeLOfFsAvFMBsrCrJ2bCalhPv5+KQF2PS2+iwZI8BpRZoV+Bd5kWvN79
- cFgcqTTuNHjAvxtUG8pQgGTHAObYs6xeYJtjUH0ZX6ndJ33FJYf5V3yXqqjcZ30FgHzJCFUu
- JMp7PSyMPzpUXfU12yfcRYVEMQrmplNZssmYhiTeVicuOOypWugZKVLGNm0IweVCaZ/DJDIH
- gNbpvVwjcKYrx85m9cBVEBUGaQP6AT7qlVCkrf50v8bofSIyVa2xmubbAwwFA1oxoOusjPIE
- J3iadrwpFvsZjF5uHAKS+7wHLoW9hVzOnLbX6ajk5Hf8Pb1m+VH/E8bPBNNYKkfTtypTDUCj
- NYcd27tjnXfG+SDs/EXNUAIRefCyvaRG7oRYF3Ec+2RgQDRnmmjCjoQNbFrJvJkFHlPeHaeS
- BosGY+XWKydnmsfY7SSnjAzLUGAFhLd/XDVpb1Een2XucPpKvt9ORF+48gy12FA5GduRLhQU
- vK4tU7ojoem/G23PcowM1CwPurC8sAVsQb9KmwTGh7rVz3ks3w/zfGBy3+WmLg++C2Wct6nM
- Pd8/6CBVjEWqD06/RjI2AnjIq5fSEH/BIfXXfC68nMp9BZoy3So4ZsbOlBmtAPvMYX6U8VwD
- TNeBxJu5Ex0Izf1NV9CzC3nNaFUYOY8KfN01X5SExAoVTr09ewARAQABzSVLcnp5c3p0b2Yg
- S296bG93c2tpIDxrcnprQGtlcm5lbC5vcmc+wsGVBBMBCgA/AhsDBgsJCAcDAgYVCAIJCgsE
- FgIDAQIeAQIXgBYhBJvQfg4MUfjVlne3VBuTQ307QWKbBQJgPO8PBQkUX63hAAoJEBuTQ307
- QWKbBn8P+QFxwl7pDsAKR1InemMAmuykCHl+XgC0LDqrsWhAH5TYeTVXGSyDsuZjHvj+FRP+
- gZaEIYSw2Yf0e91U9HXo3RYhEwSmxUQ4Fjhc9qAwGKVPQf6YuQ5yy6pzI8brcKmHHOGrB3tP
- /MODPt81M1zpograAC2WTDzkICfHKj8LpXp45PylD99J9q0Y+gb04CG5/wXs+1hJy/dz0tYy
- iua4nCuSRbxnSHKBS5vvjosWWjWQXsRKd+zzXp6kfRHHpzJkhRwF6ArXi4XnQ+REnoTfM5Fk
- VmVmSQ3yFKKePEzoIriT1b2sXO0g5QXOAvFqB65LZjXG9jGJoVG6ZJrUV1MVK8vamKoVbUEe
- 0NlLl/tX96HLowHHoKhxEsbFzGzKiFLh7hyboTpy2whdonkDxpnv/H8wE9M3VW/fPgnL2nPe
- xaBLqyHxy9hA9JrZvxg3IQ61x7rtBWBUQPmEaK0azW+l3ysiNpBhISkZrsW3ZUdknWu87nh6
- eTB7mR7xBcVxnomxWwJI4B0wuMwCPdgbV6YDUKCuSgRMUEiVry10xd9KLypR9Vfyn1AhROrq
- AubRPVeJBf9zR5UW1trJNfwVt3XmbHX50HCcHdEdCKiT9O+FiEcahIaWh9lihvO0ci0TtVGZ
- MCEtaCE80Q3Ma9RdHYB3uVF930jwquplFLNF+IBCn5JRzsFNBFVDXDQBEADNkrQYSREUL4D3
- Gws46JEoZ9HEQOKtkrwjrzlw/tCmqVzERRPvz2Xg8n7+HRCrgqnodIYoUh5WsU84N03KlLue
- MNsWLJBvBaubYN4JuJIdRr4dS4oyF1/fQAQPHh8Thpiz0SAZFx6iWKB7Qrz3OrGCjTPcW6ei
- OMheesVS5hxietSmlin+SilmIAPZHx7n242u6kdHOh+/SyLImKn/dh9RzatVpUKbv34eP1wA
- GldWsRxbf3WP9pFNObSzI/Bo3kA89Xx2rO2roC+Gq4LeHvo7ptzcLcrqaHUAcZ3CgFG88CnA
- 6z6lBZn0WyewEcPOPdcUB2Q7D/NiUY+HDiV99rAYPJztjeTrBSTnHeSBPb+qn5ZZGQwIdUW9
- YegxWKvXXHTwB5eMzo/RB6vffwqcnHDoe0q7VgzRRZJwpi6aMIXLfeWZ5Wrwaw2zldFuO4Dt
- 91pFzBSOIpeMtfgb/Pfe/a1WJ/GgaIRIBE+NUqckM+3zJHGmVPqJP/h2Iwv6nw8U+7Yyl6gU
- BLHFTg2hYnLFJI4Xjg+AX1hHFVKmvl3VBHIsBv0oDcsQWXqY+NaFahT0lRPjYtrTa1v3tem/
- JoFzZ4B0p27K+qQCF2R96hVvuEyjzBmdq2esyE6zIqftdo4MOJho8uctOiWbwNNq2U9pPWmu
- 4vXVFBYIGmpyNPYzRm0QPwARAQABwsF8BBgBCgAmAhsMFiEEm9B+DgxR+NWWd7dUG5NDfTtB
- YpsFAmA872oFCRRflLYACgkQG5NDfTtBYpvScw/9GrqBrVLuJoJ52qBBKUBDo4E+5fU1bjt0
- Gv0nh/hNJuecuRY6aemU6HOPNc2t8QHMSvwbSF+Vp9ZkOvrM36yUOufctoqON+wXrliEY0J4
- ksR89ZILRRAold9Mh0YDqEJc1HmuxYLJ7lnbLYH1oui8bLbMBM8S2Uo9RKqV2GROLi44enVt
- vdrDvo+CxKj2K+d4cleCNiz5qbTxPUW/cgkwG0lJc4I4sso7l4XMDKn95c7JtNsuzqKvhEVS
- oic5by3fbUnuI0cemeizF4QdtX2uQxrP7RwHFBd+YUia7zCcz0//rv6FZmAxWZGy5arNl6Vm
- lQqNo7/Poh8WWfRS+xegBxc6hBXahpyUKphAKYkah+m+I0QToCfnGKnPqyYIMDEHCS/RfqA5
- t8F+O56+oyLBAeWX7XcmyM6TGeVfb+OZVMJnZzK0s2VYAuI0Rl87FBFYgULdgqKV7R7WHzwD
- uZwJCLykjad45hsWcOGk3OcaAGQS6NDlfhM6O9aYNwGL6tGt/6BkRikNOs7VDEa4/HlbaSJo
- 7FgndGw1kWmkeL6oQh7wBvYll2buKod4qYntmNKEicoHGU+x91Gcan8mCoqhJkbqrL7+nXG2
- 5Q/GS5M9RFWS+nYyJh+c3OcfKqVcZQNANItt7+ULzdNJuhvTRRdC3g9hmCEuNSr+CLMdnRBY fv0=
-In-Reply-To: <20240901112020.3224704-2-jonas@kwiboo.se>
+From: Baolu Lu <baolu.lu@linux.intel.com>
+In-Reply-To: <qyvyd2ftebjlgmzyayfvxsqa64c4wgx7keix3a6eexdspbvawy@a5ffnm5h5tgp>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240901_043631_338824_364D8A06 
-X-CRM114-Status: UNSURE (   7.21  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240901_051821_151462_8CFDD2E2 
+X-CRM114-Status: GOOD (  21.41  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -115,26 +92,58 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 01/09/2024 13:20, Jonas Karlman wrote:
-> The Hardkernel ODROID-M2 is a single-board computer based on Rockchip
-> RK3588S2 SoC. It features e.g. 8/16 GB LPDDR5 RAM, 64 GB eMMC, SD-card,
-> GbE LAN, HDMI 2.0, M.2 NVMe and USB 2.0/3.0/Type-C.
+On 2024/8/28 23:27, Thierry Reding wrote:
+> On Mon, Aug 12, 2024 at 03:10:34PM GMT, Lu Baolu wrote:
+>> Commit <17de3f5fdd35> ("iommu: Retire bus ops") removes iommu ops from
+>> the bus structure. The iommu subsystem no longer relies on bus for
+>> operations. So iommu_domain_alloc() interface is no longer relevant.
+>>
+>> Normally, iommu_paging_domain_alloc() could be a replacement for
+>> iommu_domain_alloc() if the caller has the right device for IOMMU API
+>> use. Unfortunately, this is not the case for this driver.
+>>
+>> Iterate the devices on the platform bus and find a suitable device
+>> whose device DMA is translated by an IOMMU. Then use this device to
+>> allocate an iommu domain. The iommu subsystem prevents domains
+>> allocated by one iommu driver from being attached to devices managed
+>> by any different iommu driver.
+>>
+>> Signed-off-by: Lu Baolu<baolu.lu@linux.intel.com>
+>> Link:https://lore.kernel.org/r/20240610085555.88197-20-baolu.lu@linux.intel.com
+>> ---
+>>   drivers/gpu/drm/tegra/drm.c | 34 +++++++++++++++++++++++++---------
+>>   1 file changed, 25 insertions(+), 9 deletions(-)
+> Actually I think we can just do something like this:
 > 
-> Add devicetree binding documentation for the Hardkernel ODROID-M2 board.
+> --- >8 ---
+> diff --git a/drivers/gpu/drm/tegra/drm.c b/drivers/gpu/drm/tegra/drm.c
+> index d9f0728c3afd..d35e411d536b 100644
+> --- a/drivers/gpu/drm/tegra/drm.c
+> +++ b/drivers/gpu/drm/tegra/drm.c
+> @@ -1150,7 +1150,7 @@ static int host1x_drm_probe(struct host1x_device *dev)
+>   	}
+>   
+>   	if (host1x_drm_wants_iommu(dev) && iommu_present(&platform_bus_type)) {
+> -		tegra->domain = iommu_domain_alloc(&platform_bus_type);
+> +		tegra->domain = iommu_paging_domain_alloc(dev->dev.parent);
+>   		if (!tegra->domain) {
+>   			err = -ENOMEM;
+>   			goto free;
+> --- >8 ---
 > 
-> Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
-> ---
+> That refers to the physical device that the host1x_device virtual device
+> was instantiated from and is a common parent to all physical devices
+> that are part of the virtual device.
 
-Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Yes, this is really what we want. I will update the patch series later.
 
-Best regards,
-Krzysztof
-
+Thanks,
+baolu
 
 _______________________________________________
 Linux-rockchip mailing list
