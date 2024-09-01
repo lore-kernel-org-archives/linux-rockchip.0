@@ -4,56 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6DEE9CA101E
-	for <linux-rockchip@archiver.kernel.org>; Sun,  1 Sep 2024 22:11:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 732EDCA101E
+	for <linux-rockchip@archiver.kernel.org>; Sun,  1 Sep 2024 22:12:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=WE+s1c2DLi6oqSybjzuTLqx+QHd3oRQW7VHrA2nPbZ0=; b=rpZCT0Q3WZjo37
-	Rq+HzIgS1L4CcRz0gYFrjERS1G8A3SB6gjBcqF6EuNKKEipw+TrxISSm8TqBdn32NE/n9Ei0TQDFY
-	Kp8CHPOOvWIXujQRprSMfD62Ia9n8+jSVfovMl2HrQzBEUvLgLO0/pJ72orZtgNVhjzQrTsO1xApP
-	yPRqoQoEyPt6d9n+QQFI9e8bEyGn2wB4tZXqTpTLpm+t/J9/oXeG6C5EWQqDEl27QH56Y/zvjtOEb
-	EG85rTED0dbxjZIazEhItYMGj9abg6oLLDv+C8gHEOF8ZGh64EasoYXxzG8lfPQUHO8cT+r32fL6z
-	Fm/ZlkXdee14y/lHtKeA==;
+	List-Owner; bh=uUXEYX/0PA3aYbwS//vppr7DqhgkGEi+DgNj1p1P6VM=; b=DT1+kzcCV+XTwU
+	3nrxhk5uBOSpMDj+Uy4yrkVVMZ5FvYLvw20psCtv3WqsQNbVxq+U+2479/8y7dkGaji/K4MZ/he8E
+	2siQjgPOoQhkxrzqfO1cu6PQhfyfqenqKYujIdJ7zg0XRumUS2CErqQlhBjknLSnkChvjsQugfAme
+	U6SeHttkCiXOcq3P+7cx6Tb6Ws4aO443y2+nDXQ1TX1c8syeOwaarC2nSWf/zM228d2sDp/Cw93sO
+	zSz8o/67kpITIozxb40KO7JS4Ad0iS3bTIMGM3yfO6ny/rd+fo8HXorm9izlWCxrdm8EkxXykKcM+
+	aM3mepG4HeAdMUaTot8w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sksnX-0000000CQH6-44NU;
-	Sun, 01 Sep 2024 22:11:51 +0000
+	id 1sksoP-0000000CQQc-2OV5;
+	Sun, 01 Sep 2024 22:12:45 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sksn8-0000000CQFJ-39eu;
-	Sun, 01 Sep 2024 22:11:28 +0000
+	id 1sksno-0000000CQMF-17Qy;
+	Sun, 01 Sep 2024 22:12:09 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
 	Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-ID:
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
 	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=YJsQp1ZYdLAQCSxiJPBr4/irOtv5k9nFOSCxmP27BZE=; b=jrMTr9PQXSReXh6Bg5ek4EF42A
-	2wfpL0HNThQbEs5bYro2OGTroSoh2If04CCgrlQ8pB76DQdp5afMsX9FsSIBcI3mQ+p6gVarDX1J0
-	m/6R/cKqv0SkUDRHaxgKHBa/qMJcyheJDYmoM2seyuHltUWAOPSwuf98NeROldb2y8JcE93PAIJ6G
-	G9x7MkKLlFY832ERVgGJn/Db2nuTIST16wEUcRK932PuNxzZNk+LlloVOK6+gvSHCQDU4Phfj8otQ
-	1rhMnekpd4H5grhbxzSAzIQLiWTslGLxgscN/+TuuKtKK/OSiupI701JvYhIl19jdlFvW3fAaB14G
-	LCrsMAMw==;
+	bh=En7lqAj3vsMOX67XHj3kouTnwszC8SPDX3RQFxwtRmc=; b=PJKhBNofZ4oQSJG9OxIi8DFHp7
+	RqFFkwaVRnhlw9NKf11yOglDWKr3vBV1d4rXp9UmaQmawPh7CypnJVaLFKWo8IpwpSTPbq+jhVMq0
+	vLrKckoFIUWGQ5BfcPul8reyYyiMR1nU9WGNuNVUufxrDchEbB+3dSguvBz8wSgfrdHVSOrCGxLU+
+	D+Zqcz5wo8w+zSTKct2UyalUKOAPt39CxZHv/c8iwPiyDSunPPo6PwhdNtHuHq+r2ZDT0NaKSiaXP
+	qp5ikGX+yIer0wFSbxT0NT5OPHU/XEeZ8CppKBz/1AmKAXScLmhqm6+buPczT6bTDjWd6RN5kXIFZ
+	pv4VyuWw==;
 Received: from i5e860d0f.versanet.de ([94.134.13.15] helo=diego.localnet)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1sksn7-0006hT-Dy; Mon, 02 Sep 2024 00:11:25 +0200
+	id 1sksnm-0006hp-VC; Mon, 02 Sep 2024 00:12:07 +0200
 From: Heiko Stuebner <heiko@sntech.de>
 To: arm@kernel.org
 Cc: soc@kernel.org, linux-rockchip@lists.infradead.org,
  linux-arm-kernel@lists.infradead.org
-Subject: [GIT PULL] Rockchip dts32 changes for 6.12 #1
-Date: Mon, 02 Sep 2024 00:12:59 +0200
-Message-ID: <3405397.RL5eaSpR8r@diego>
+Subject: [GIT PULL] Rockchip driver changes for 6.12 #1
+Date: Mon, 02 Sep 2024 00:13:40 +0200
+Message-ID: <23316481.ssLaC8jLEa@diego>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240901_151126_833597_C158C323 
-X-CRM114-Status: GOOD (  10.60  )
+X-CRM114-CacheID: sfid-20240901_151208_336178_04CD8622 
+X-CRM114-Status: UNSURE (   8.88  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,30 +77,35 @@ The following changes since commit 8400291e289ee6b2bf9779ff1c83a291501f017b:
 
 are available in the Git repository at:
 
-  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v6.12-rockchip-dts32-1
+  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v6.12-rockchip-drivers-1
 
-for you to fetch changes up to 0296f20c72d23f41ca0ccd64eb849e9ef1aa8977:
+for you to fetch changes up to e1aaecacfa135cd264a0db331d3ab8b2a04a54a3:
 
-  ARM: dts: rockchip: Do not describe unexisting DAC device on rv1108-elgin-r1 (2024-08-29 19:37:00 +0200)
+  soc: rockchip: grf: Add rk3576 default GRF values (2024-08-23 12:33:58 +0200)
 
 ----------------------------------------------------------------
-spidev on the elgin-r1 got a real compatible, the rk3128 could enable its
-VPU for video decoding and the rk3128 sfc node can use the clock constant
-now after the merge-window.
+rk3308 io-domains, and some default settings for bits in the general
+register files for rk3128 and the new rk3576 soc.
 
 ----------------------------------------------------------------
 Alex Bee (1):
-      ARM: dts: rockchip: Add vpu nodes for RK3128
+      soc: rockchip: grf: Set RK3128's vpu main clock
 
-Fabio Estevam (1):
-      ARM: dts: rockchip: Do not describe unexisting DAC device on rv1108-elgin-r1
+David Wu (1):
+      soc: rockchip: io-domain: Add RK3308 IO voltage domains
 
-Heiko Stuebner (1):
-      ARM: dts: rockchip: use constant for HCLK_SFC on rk3128
+Detlev Casanova (2):
+      dt-bindings: soc: rockchip: Add rk3576 syscon compatibles
+      soc: rockchip: grf: Add rk3576 default GRF values
 
- arch/arm/boot/dts/rockchip/rk3128.dtsi         | 26 +++++++++++++++++++++++++-
- arch/arm/boot/dts/rockchip/rv1108-elgin-r1.dts |  4 ++--
- 2 files changed, 27 insertions(+), 3 deletions(-)
+Jonas Karlman (1):
+      dt-bindings: power: rockchip: Document RK3308 IO voltage domains
+
+ .../bindings/power/rockchip-io-domain.yaml         | 24 +++++++++++++
+ .../devicetree/bindings/soc/rockchip/grf.yaml      | 16 +++++++++
+ drivers/soc/rockchip/grf.c                         | 32 ++++++++++++++++-
+ drivers/soc/rockchip/io-domain.c                   | 40 ++++++++++++++++++++++
+ 4 files changed, 111 insertions(+), 1 deletion(-)
 
 
 
