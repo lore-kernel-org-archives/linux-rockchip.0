@@ -4,83 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5F1A9C54FC6
-	for <linux-rockchip@archiver.kernel.org>; Sun,  1 Sep 2024 18:39:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3565ACA101E
+	for <linux-rockchip@archiver.kernel.org>; Sun,  1 Sep 2024 21:37:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=cEGVsGNyk4MxCBdHGXUMECVAmmJyO6ddFW1F9ZJFEFM=; b=CFuP2WkNePGT5R
-	6qL+1XXQoF8Tj+0b0xZ3tYUR4dtE4BcKwyup6SvrQjdoSGdD13BdUDUfN594Jm8vEhWFwuoziiviN
-	MqGbE0HbDEl/2Uy+oL2h+dxupxLawGVnMEkkZfBPbXSfsWNVP+h/IGum0MlyCoEYLycPn0/6Hr1VW
-	11vZx0+PyQQU8cQpMxlfmfMDwVyN0BM3vuYOT0nPtTXox5Bqht7TwRGioQsblGVJkaanAG/L1laM1
-	if9U2nmDzw7aXrQOb/EOtK5b79u0GdxheUWXYrmUXZ3de1ea2NyBkaE6U5HollV29Nmj1OwxGaKCw
-	au0b4t6ZhWBDJnBdbH2Q==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=sUxE1hHER1JRNYneYgbpcrCMoLcwjbcdGf4qSQC966A=; b=2mhUOJ/4+rqaN5
+	iBDjCg2g0EVzgqFPsuYBYUjzPAoHhKnJhSdZJ1QFTqybflEK4yj/9e/UvSx0CkK+uTwBvTzRPtQHS
+	jbPs7qqDxWZQvF1agSmxB/7+hR3bgPdALNfBTZrg+sPK4CvRsFoKVljmm8UZto+//Hv1o5QpMAjwc
+	/TScz9YwxeoOFULgKzXstQX4fAdi8JSj2MnOMqUeePANbpgJGmrWtUATf6S5eDblMMZkhDHUo6JPP
+	BXJ53+4/SYxgxYWMZP5RbWS8b41vSZDXcR319b5X7uP1gVIZYBOCByR8eo50j7Jb8+Q6irtmacQ0v
+	QrbbMPn9Z6NuHhhW6pbg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1skpTj-0000000C9GO-2JXY;
-	Sun, 01 Sep 2024 18:39:11 +0000
-Received: from mail-pl1-x62f.google.com ([2607:f8b0:4864:20::62f])
+	id 1sksGN-0000000CN1j-3CYC;
+	Sun, 01 Sep 2024 21:37:35 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1skpOw-0000000C8MI-3rWR;
-	Sun, 01 Sep 2024 18:34:16 +0000
-Received: by mail-pl1-x62f.google.com with SMTP id d9443c01a7336-20551e2f1f8so7970965ad.2;
-        Sun, 01 Sep 2024 11:34:14 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1725215654; x=1725820454; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=VLCyRC657hgOtTBOAgAwcacwSzgshdziSy5VI8t2Gq0=;
-        b=N+ibu1wqR5m/JbmcN9Mm8LqitngXtOvc4j1NV88X9MhWf2Vl79FrlKjy5aUycrBNwY
-         250KYXph8wEVGqrI/87eCGxyxw+C3zMlQoULwcmoEtF+robHSlugTMomEzordyKfSozs
-         IAK3bCBtYcDzPELN9o640z529Q0SFggfgn2Xb8M0xfO4s3jrmTlPTULofKO1bjLaAUXt
-         1hiQt8kc+rnyPQ1orxBB/S0b9ghbT8ViUnctirmCntgaM2a/Tx7QmLaU0pJPF+UdlT6u
-         w2E2PN0ygJoz1yHh5Hq6tSgcJeXhIM9ZhpcHSvtRrNaD//jCICfVJmWWS5fx7ZA+TZdn
-         1fsg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1725215654; x=1725820454;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=VLCyRC657hgOtTBOAgAwcacwSzgshdziSy5VI8t2Gq0=;
-        b=Swl65DxCnbsALS2bLAAALM9/ZkcYMaPqG44K45bwCC1Wh0sn6izRV43HpJYBSBGZ5b
-         paZL1Ecupe7VX7047bMtv8stKmY0Nmt9PT9UaN5BP+XetYg5zboLTJYpVmwUnMqyxEkv
-         XmKAtndhvGihgCsUhBVObi3pJ2iihh17AOHn8RmsFdsfpxuD9RLvNQmu/njxHRrmiXpa
-         w9GL8d1vr2WkVmVDWmFuDKE7Twstq2RB8ivzKeDAWIBEf3kUCWgxqcsYDcniZ9kMAq9q
-         PAq8mJGs3m4dEerLXEwOpjDp7qSC3sJfC1j1i0/LDtXlGDPBM9ARy1FLk/VGMBr/KHRn
-         4JXQ==
-X-Forwarded-Encrypted: i=1; AJvYcCUEQ1wueve5XaPz2FLPhd05xrqKTt4x8zwHKiIAf9/BSvm6zK2VvVa1TXFcuuPvy/ZgxVQWgjCKx4SXgTlNIp0=@lists.infradead.org, AJvYcCUa/WjrKwJm8aQUfXTR4qbLcEqhjZ6pkdnXPrpMLTkj1PM2+NC0b3hs4a97GMp2m0a5xWHSgkpE66g2eYMP8Ke6@lists.infradead.org, AJvYcCXx64MVvGBWN7HFFhLQOHQucW1G9NzW8qCCAadwP3///wLgQcHgM+P5Bjo6ebzVNetJhQeyPNoK/8dj@lists.infradead.org
-X-Gm-Message-State: AOJu0YwPv2mwVzxhZs70/dtsKq+6SZWQ5medtLmvUaXPLvX7HdQo1r1N
-	mevlnvdprPKnv2r2DvrNNddyQeEKWrOKmN23qcSI22v/SbpqaDJw
-X-Google-Smtp-Source: AGHT+IE0DF0h8dNkgogZ/U5Ym66OZuvgg8ZiSDLJNUPCI1HaXLR9hpfBmfxTQjfDGWPLFLoNSdDjfw==
-X-Received: by 2002:a17:902:ced2:b0:1fd:791d:1437 with SMTP id d9443c01a7336-2058417b1d9mr426515ad.6.1725215653750;
-        Sun, 01 Sep 2024 11:34:13 -0700 (PDT)
-Received: from localhost.localdomain ([113.30.217.222])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-20559b793f8sm16262405ad.15.2024.09.01.11.34.10
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 01 Sep 2024 11:34:13 -0700 (PDT)
-From: Anand Moon <linux.amoon@gmail.com>
-To: Vinod Koul <vkoul@kernel.org>,
-	Kishon Vijay Abraham I <kishon@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>
-Cc: Anand Moon <linux.amoon@gmail.com>,
-	linux-phy@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH v5 6/6] phy: rockchip-pcie: Use regmap_read_poll_timeout for PCIe reference clk PLL status
-Date: Mon,  2 Sep 2024 00:02:13 +0530
-Message-ID: <20240901183221.240361-7-linux.amoon@gmail.com>
-X-Mailer: git-send-email 2.44.0
-In-Reply-To: <20240901183221.240361-1-linux.amoon@gmail.com>
-References: <20240901183221.240361-1-linux.amoon@gmail.com>
+	id 1sksGK-0000000CN0v-1DI8;
+	Sun, 01 Sep 2024 21:37:33 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
+	List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=snnfLF0zX/k6vqmUSCiyJxmlQT9GI+pf+ndg4Yy93Ck=; b=Yp1HZvUftrRvWQHkgMFySa/8Eb
+	rG2N8y7Mb7wR8wV40Q9Gpud1O63UcJOFQG7wAwjspq1AOkQhCvnhVZbOen8vUtDEqEZDPRR3W0PVc
+	zNq+BjOfsvfAomDTwOF/QBbz2Y+CTafnKJqvLteJPyqUXz+d4coQ481LUPLLu7Ycamq9AT5hLPZvt
+	bA+nUMeCdYsO7HeaVBSLiGeVouZguFzzBtBLLjMrdaN0bo3doDnn9Lf0CR8XHG0V1ru0tGY74voEw
+	ZFIP9MtgkI9spangP1HsY0unzx9bYw4DHzTE9LQfHj2PcFGTjVlhjmHOgrUCozG6CAS7dSAUUefkz
+	GJGTBLNg==;
+Received: from i5e860d0f.versanet.de ([94.134.13.15] helo=diego.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1sksGG-0006Y1-LE; Sun, 01 Sep 2024 23:37:28 +0200
+From: Heiko Stuebner <heiko@sntech.de>
+To: arm@kernel.org
+Cc: soc@kernel.org, linux-rockchip@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org
+Subject: [GIT PULL] Rockchip dts fixes for 6.11
+Date: Sun, 01 Sep 2024 23:39:02 +0200
+Message-ID: <7602696.A5hrfCrGMc@diego>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240901_113415_063796_A717D6BD 
-X-CRM114-Status: GOOD (  13.12  )
+X-CRM114-CacheID: sfid-20240901_143732_385316_0B8CA57A 
+X-CRM114-Status: GOOD (  11.33  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,108 +70,58 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Replace open-coded phy PCIe reference clk PLL status polling with
-regmap_read_poll_timeout API. This change simplifies the code without
-altering functionality.
+Hi Arnd, Kevin, Olof,
 
-Signed-off-by: Anand Moon <linux.amoon@gmail.com>
----
-v5: New patch in this seriese
----
- drivers/phy/rockchip/phy-rockchip-pcie.c | 56 +++++++-----------------
- 1 file changed, 15 insertions(+), 41 deletions(-)
+please find a below a collection of fixes for the current release 6.11
+cycle.
 
-diff --git a/drivers/phy/rockchip/phy-rockchip-pcie.c b/drivers/phy/rockchip/phy-rockchip-pcie.c
-index a1b4b0323e9d..2c4d6f68f02a 100644
---- a/drivers/phy/rockchip/phy-rockchip-pcie.c
-+++ b/drivers/phy/rockchip/phy-rockchip-pcie.c
-@@ -162,7 +162,6 @@ static int rockchip_pcie_phy_power_on(struct phy *phy)
- 	struct rockchip_pcie_phy *rk_phy = to_pcie_phy(inst);
- 	int err = 0;
- 	u32 status;
--	unsigned long timeout;
- 
- 	mutex_lock(&rk_phy->pcie_mutex);
- 
-@@ -191,21 +190,11 @@ static int rockchip_pcie_phy_power_on(struct phy *phy)
- 	 * so we make it large enough here. And we use loop-break
- 	 * method which should not be harmful.
- 	 */
--	timeout = jiffies + msecs_to_jiffies(1000);
--
--	err = -EINVAL;
--	while (time_before(jiffies, timeout)) {
--		regmap_read(rk_phy->reg_base,
--			    rk_phy->phy_data->pcie_status,
--			    &status);
--		if (status & PHY_PLL_LOCKED) {
--			dev_dbg(&phy->dev, "pll locked!\n");
--			err = 0;
--			break;
--		}
--		msleep(20);
--	}
--
-+	err = regmap_read_poll_timeout(rk_phy->reg_base,
-+				       rk_phy->phy_data->pcie_status,
-+				       status,
-+				       status & PHY_PLL_LOCKED,
-+				       200, 100000);
- 	if (err) {
- 		dev_err(&phy->dev, "pll lock timeout!\n");
- 		goto err_pll_lock;
-@@ -214,19 +203,11 @@ static int rockchip_pcie_phy_power_on(struct phy *phy)
- 	phy_wr_cfg(rk_phy, PHY_CFG_CLK_TEST, PHY_CFG_SEPE_RATE);
- 	phy_wr_cfg(rk_phy, PHY_CFG_CLK_SCC, PHY_CFG_PLL_100M);
- 
--	err = -ETIMEDOUT;
--	while (time_before(jiffies, timeout)) {
--		regmap_read(rk_phy->reg_base,
--			    rk_phy->phy_data->pcie_status,
--			    &status);
--		if (!(status & PHY_PLL_OUTPUT)) {
--			dev_dbg(&phy->dev, "pll output enable done!\n");
--			err = 0;
--			break;
--		}
--		msleep(20);
--	}
--
-+	err = regmap_read_poll_timeout(rk_phy->reg_base,
-+				       rk_phy->phy_data->pcie_status,
-+				       status,
-+				       !(status & PHY_PLL_OUTPUT),
-+				       200, 100000);
- 	if (err) {
- 		dev_err(&phy->dev, "pll output enable timeout!\n");
- 		goto err_pll_lock;
-@@ -236,19 +217,12 @@ static int rockchip_pcie_phy_power_on(struct phy *phy)
- 		     HIWORD_UPDATE(PHY_CFG_PLL_LOCK,
- 				   PHY_CFG_ADDR_MASK,
- 				   PHY_CFG_ADDR_SHIFT));
--	err = -EINVAL;
--	while (time_before(jiffies, timeout)) {
--		regmap_read(rk_phy->reg_base,
--			    rk_phy->phy_data->pcie_status,
--			    &status);
--		if (status & PHY_PLL_LOCKED) {
--			dev_dbg(&phy->dev, "pll relocked!\n");
--			err = 0;
--			break;
--		}
--		msleep(20);
--	}
- 
-+	err = regmap_read_poll_timeout(rk_phy->reg_base,
-+				       rk_phy->phy_data->pcie_status,
-+				       status,
-+				       status & PHY_PLL_LOCKED,
-+				       200, 100000);
- 	if (err) {
- 		dev_err(&phy->dev, "pll relock timeout!\n");
- 		goto err_pll_lock;
--- 
-2.44.0
+Please pull
+
+Thanks
+Heiko
+
+
+The following changes since commit 8400291e289ee6b2bf9779ff1c83a291501f017b:
+
+  Linux 6.11-rc1 (2024-07-28 14:19:55 -0700)
+
+are available in the Git repository at:
+
+  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v6.11-rockchip-dtsfixes
+
+for you to fetch changes up to 5956ee09c8254273c587b07f5b4d42da59a0325c:
+
+  arm64: dts: rockchip: Fix compatibles for RK3588 VO{0,1}_GRF (2024-08-29 13:54:33 +0200)
+
+----------------------------------------------------------------
+A number of pin fixes for Puma, Rock-Pi-E and rk356x, and as it turns
+out the VO0 and VO1 general register files are not identical as suggested
+by their original compatible. As there are no users of those yet,
+everybody agreed that we should fix the compatibles.
+
+----------------------------------------------------------------
+Alexander Shiyan (1):
+      arm64: dts: rockchip: Remove broken tsadc pinctrl binding for rk356x
+
+Cristian Ciocaltea (2):
+      dt-bindings: soc: rockchip: Fix compatibles for RK3588 VO{0,1}_GRF
+      arm64: dts: rockchip: Fix compatibles for RK3588 VO{0,1}_GRF
+
+FUKAUMI Naoki (1):
+      arm64: dts: rockchip: fix PMIC interrupt pin in pinctrl for ROCK Pi E
+
+Quentin Schulz (2):
+      arm64: dts: rockchip: fix eMMC/SPI corruption when audio has been used on RK3399 Puma
+      arm64: dts: rockchip: override BIOS_DISABLE signal via GPIO hog on RK3399 Puma
+
+ .../devicetree/bindings/soc/rockchip/grf.yaml      | 10 +++++-
+ arch/arm64/boot/dts/rockchip/rk3328-rock-pi-e.dts  |  2 +-
+ arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi      | 36 ++++++++++++++++++++--
+ arch/arm64/boot/dts/rockchip/rk356x.dtsi           |  7 ++---
+ arch/arm64/boot/dts/rockchip/rk3588-base.dtsi      |  6 ++--
+ 5 files changed, 49 insertions(+), 12 deletions(-)
+
+
 
 
 _______________________________________________
