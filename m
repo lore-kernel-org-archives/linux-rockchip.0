@@ -4,81 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 19C75CD13DF
-	for <linux-rockchip@archiver.kernel.org>; Sat, 31 Aug 2024 22:02:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9A2D5C54FC6
+	for <linux-rockchip@archiver.kernel.org>; Sun,  1 Sep 2024 06:42:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Message-ID:MIME-Version:References:
+	In-Reply-To:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=2Nb1AjxXdqKXNztmXZA2UEfuCVGuuh/yWMB6ZT0fh+E=; b=BFO25vc7jeFjvc
-	CSnIqR97UPYEqu5fGwZzGeyfduhNYOjjqt7WXuPMw1wTSE7KwUaVS/c9VKISRujPiBIQNI1wAqFPX
-	LpIGkkcWKBJmZM5sffcrvU2sRtncs8Sm2F4eFehZSwefx/0BV8nRNmQsOfbOMOZVOaYjFe0ibLmAr
-	yU8TvBWNBq2RhA9ha3FlvN47I5iNJul1QAs+wk4NUUwSTfVy25yB7yF4GFhnnZ2zYfpN9j21w430W
-	3dyYf13Ho4fgMKI6mUbZfly773fTttynLSG/Q+D9g2NPLNgr+8O8YLuVQ5B9mC3v7fWFfZWiDPO4K
-	KLYqW/np2C/PSHxe5mFg==;
+	List-Owner; bh=ZhoTWv84EeUp3cojxFt8eM7UOTjR3jJ0ZAc3n52URCM=; b=pJbDikvEPkOKqH
+	Vr45tD+gqSuTZvTD4N4WUI6xLa6MdyAVBlzOQ1gSOVU3FepHKm69b30tL+zjT4TAAdDuxLbX7u5gX
+	+5/sFKggm680swdsKBbENaN9fIF6l4yTOvlaohZJTClUnvX14x2gY/ujKLOMmv58gGxiqIsQrnUNv
+	ih5KernPS+XG7argOP0nfmb5am8AMHZuSud1c7bBtnMPrMmVjyCnmGbd32j8A1A8kIl3jUQ9POc65
+	pLxFdb2gHt4ladvHljpLEj9+QfDiPfSJmNwujHx5EAsPcFT1HSvwrE2xBrSznwWASiUDjt9ez+tUq
+	JBQ666oM7efY+j1BYI1Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1skWAM-0000000ACDo-3PEA;
-	Sat, 31 Aug 2024 22:01:54 +0000
-Received: from sender4-op-o12.zoho.com ([136.143.188.12])
-	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1skWAI-0000000ACD9-3px8;
-	Sat, 31 Aug 2024 22:01:52 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1725141681; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=YJC0IM6EDgPDzLvDckxoIcBqgR6n30kKdUjUbcFtokSlhJFzItzX4Wmf72rI22YX+ViXmBz1fYdRgAG7UmB2jhcHcQD/DnOv9Sco88+T3K1+tXzfOiRAp3DbMhOhuEnC49g5bEPmutShormVudN6APQKFwmlrPmQoRFn2CGU3ms=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1725141681; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=5HcjGo3CfrQc/zNUykd6XyQdr0Oc6HLR18XH+J1x8Zo=; 
-	b=mwQbKkVwc5ftc/FnMAb4KLCMN13Z1YQZVE+aICgdqUC7lFFGXzm2DPkLPpcN8fcqfjKYjUPXNP4Zu+pjyO9UPCfc5UmC5SR6oDrL8iZS1yfIHCvQK95q89dH2qAb98W4dWQGuA++eFJxu3ce90/HpziJb6fxYfuxk8Osus2mr6o=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=cristian.ciocaltea@collabora.com;
-	dmarc=pass header.from=<cristian.ciocaltea@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1725141681;
-	s=zohomail; d=collabora.com; i=cristian.ciocaltea@collabora.com;
-	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
-	bh=5HcjGo3CfrQc/zNUykd6XyQdr0Oc6HLR18XH+J1x8Zo=;
-	b=NaPVYIjENLO2r9rKWk2pCDmB7GVZYvZY4HeilwXSUDXO0cfsc96VdXN60608E8wu
-	t4AnRSFdula4ct5mgfjix5QyIHgmPogVAG8LBuMUcTDEOC75BIrC4pyJYP8hRu/rCQ5
-	/a9pA+FJUeagea1A+tF59BMhyZQz/Kf2Lc1ubyJw=
-Received: by mx.zohomail.com with SMTPS id 1725141679538558.0126608579487;
-	Sat, 31 Aug 2024 15:01:19 -0700 (PDT)
-Message-ID: <5ea24ad3-7faa-4a59-ba10-d43b32b3b40e@collabora.com>
-Date: Sun, 1 Sep 2024 01:01:12 +0300
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 3/4] dt-bindings: display: rockchip: Add schema for
- RK3588 HDMI TX Controller
-To: Krzysztof Kozlowski <krzk@kernel.org>
-Cc: Andrzej Hajda <andrzej.hajda@intel.com>,
- Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>,
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
- Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>,
- Sandy Huang <hjc@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?=
- <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Mark Yao <markyao0591@gmail.com>,
- Sascha Hauer <s.hauer@pengutronix.de>, dri-devel@lists.freedesktop.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
- kernel@collabora.com, Alexandre ARNOUD <aarnoud@me.com>,
- Luis de Arquer <ldearquer@gmail.com>
+	id 1skeHn-0000000B3id-3VJ2;
+	Sun, 01 Sep 2024 06:42:07 +0000
+Received: from m16.mail.163.com ([220.197.31.5])
+	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
+	id 1skeGt-0000000B3ej-36HF;
+	Sun, 01 Sep 2024 06:41:13 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
+	s=s110527; h=Date:From:Subject:Content-Type:MIME-Version:
+	Message-ID; bh=Q5ie0SU+rwJ8jZQS1JdOylihEKeHaFZ4ykRjrQITKug=; b=l
+	3vcwnRoBWRUzCkGn/19gO5ySTDgk9W04z8Ei5qzntoESm9m3SLeXlxEpfBMYv4zs
+	SL/225Q302prANSPQ9MEA23OuZd1aIphORJNsADyne8KNqXYU1a+PyU19Ms3QBDi
+	XwFTZXRRdj2VOcEdMuF0x7LVgQ8ve56z3PFqGV+jOk=
+Received: from andyshrk$163.com ( [58.22.7.114] ) by
+ ajax-webmail-wmsvr-40-139 (Coremail) ; Sun, 1 Sep 2024 14:40:11 +0800 (CST)
+X-Originating-IP: [58.22.7.114]
+Date: Sun, 1 Sep 2024 14:40:11 +0800 (CST)
+From: "Andy Yan" <andyshrk@163.com>
+To: "Cristian Ciocaltea" <cristian.ciocaltea@collabora.com>
+Cc: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
+	"Krzysztof Kozlowski" <krzk@kernel.org>, 
+	"Andrzej Hajda" <andrzej.hajda@intel.com>, 
+	"Neil Armstrong" <neil.armstrong@linaro.org>, 
+	"Robert Foss" <rfoss@kernel.org>, 
+	"Laurent Pinchart" <Laurent.pinchart@ideasonboard.com>, 
+	"Jonas Karlman" <jonas@kwiboo.se>, 
+	"Jernej Skrabec" <jernej.skrabec@gmail.com>, 
+	"Maarten Lankhorst" <maarten.lankhorst@linux.intel.com>, 
+	"Maxime Ripard" <mripard@kernel.org>, 
+	"Thomas Zimmermann" <tzimmermann@suse.de>, 
+	"David Airlie" <airlied@gmail.com>, 
+	"Daniel Vetter" <daniel@ffwll.ch>, 
+	"Sandy Huang" <hjc@rock-chips.com>, 
+	"Andy Yan" <andy.yan@rock-chips.com>, 
+	"Rob Herring" <robh@kernel.org>, 
+	"Krzysztof Kozlowski" <krzk+dt@kernel.org>, 
+	"Conor Dooley" <conor+dt@kernel.org>, 
+	"Mark Yao" <markyao0591@gmail.com>, 
+	"Sascha Hauer" <s.hauer@pengutronix.de>, 
+	dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, 
+	linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, 
+	kernel@collabora.com, "Alexandre ARNOUD" <aarnoud@me.com>, 
+	"Luis de Arquer" <ldearquer@gmail.com>
+Subject: Re:Re: [PATCH v5 1/4] dt-bindings: display: bridge: Add schema for
+ Synopsys DW HDMI QP TX IP
+X-Priority: 3
+X-Mailer: Coremail Webmail Server Version XT5.0.14 build 20240801(9da12a7b)
+ Copyright (c) 2002-2024 www.mailtech.cn 163com
+In-Reply-To: <aee7b364-39df-4eb4-a823-4e734f104982@collabora.com>
 References: <20240831-b4-rk3588-bridge-upstream-v5-0-9503bece0136@collabora.com>
- <20240831-b4-rk3588-bridge-upstream-v5-3-9503bece0136@collabora.com>
- <myiu2nmyzysjnuvy4jnahket2go5kq4qs7pdhb7rznrp5pwilj@d55nh7qdenhj>
-From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Content-Language: en-US
-In-Reply-To: <myiu2nmyzysjnuvy4jnahket2go5kq4qs7pdhb7rznrp5pwilj@d55nh7qdenhj>
-X-ZohoMailClient: External
+ <20240831-b4-rk3588-bridge-upstream-v5-1-9503bece0136@collabora.com>
+ <57wj2vwjv7eehlix2bmvbm3z4agv5fsyp6vmwwqzotkdsadx7n@azqg2kkaeuxz>
+ <10210346.L8ug28u51p@diego>
+ <aee7b364-39df-4eb4-a823-4e734f104982@collabora.com>
+X-NTES-SC: AL_Qu2ZB/2cvUAq5yKcYekZnEobh+Y5UcK2s/ki2YFXN5k0iSXP6y49RXxAF1DJy86vNx+nsxutfgFs+9V0RJlGc6mmbkMBNI9l1TypHVSjQ64B
+MIME-Version: 1.0
+Message-ID: <610d9bc3.159c.191ac5005f5.Coremail.andyshrk@163.com>
+X-Coremail-Locale: zh_CN
+X-CM-TRANSID: _____wD3f6dLDNRmuANTAA--.37424W
+X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/xtbB0gpNXmWX0FcfugACsZ
+X-Coremail-Antispam: 1U5529EdanIXcx71UUUUU7vcSsGvfC2KfnxnUU==
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240831_150150_992946_DBB8D4B5 
-X-CRM114-Status: GOOD (  14.35  )
+X-CRM114-CacheID: sfid-20240831_234112_165073_88092C8C 
+X-CRM114-Status: GOOD (  16.53  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,203 +95,68 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 8/31/24 9:13 AM, Krzysztof Kozlowski wrote:
-> On Sat, Aug 31, 2024 at 12:55:31AM +0300, Cristian Ciocaltea wrote:
->> Rockchip RK3588 SoC integrates the Synopsys DesignWare HDMI 2.1
->> Quad-Pixel (QP) TX controller IP.
->>
->> Since this is a new IP block, quite different from those used in the
->> previous generations of Rockchip SoCs, add a dedicated binding file.
->>
->> Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
->> ---
->>  .../rockchip/rockchip,rk3588-dw-hdmi-qp.yaml       | 166 +++++++++++++++++++++
->>  1 file changed, 166 insertions(+)
->>
->> diff --git a/Documentation/devicetree/bindings/display/rockchip/rockchip,rk3588-dw-hdmi-qp.yaml b/Documentation/devicetree/bindings/display/rockchip/rockchip,rk3588-dw-hdmi-qp.yaml
->> new file mode 100644
->> index 000000000000..d2919ff6aa23
->> --- /dev/null
->> +++ b/Documentation/devicetree/bindings/display/rockchip/rockchip,rk3588-dw-hdmi-qp.yaml
->> @@ -0,0 +1,166 @@
->> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
->> +%YAML 1.2
->> +---
->> +$id: http://devicetree.org/schemas/display/rockchip/rockchip,rk3588-dw-hdmi-qp.yaml#
->> +$schema: http://devicetree.org/meta-schemas/core.yaml#
->> +
->> +title: Rockchip DW HDMI QP TX Encoder
->> +
->> +maintainers:
->> +  - Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
->> +
->> +description:
->> +  Rockchip RK3588 SoC integrates the Synopsys DesignWare HDMI QP TX controller
->> +  IP and a HDMI/eDP TX Combo PHY based on a Samsung IP block.
->> +
->> +allOf:
->> +  - $ref: /schemas/display/bridge/synopsys,dw-hdmi-qp.yaml#
->> +  - $ref: /schemas/sound/dai-common.yaml#
->> +
->> +properties:
->> +  compatible:
->> +    enum:
->> +      - rockchip,rk3588-dw-hdmi-qp
->> +
->> +  clocks:
->> +    items:
->> +      - {}
->> +      - {}
->> +      - {}
->> +      - {}
->> +      - description: TMDS/FRL link clock
->> +      - description: Video datapath clock
-> 
-> Please define all clocks.
-
-The other clocks are defined in the common binding, should we reiterate
-them?
-
->> +
->> +  clock-names:
->> +    items:
->> +      - {}
->> +      - {}
->> +      - {}
->> +      - {}
->> +      - enum: [hdp, hclk_vo1]
->> +      - const: hclk_vo1
->> +
->> +  interrupts:
->> +    items:
->> +      - {}
->> +      - {}
->> +      - {}
->> +      - {}
->> +      - description: HPD interrupt
->> +
->> +  interrupt-names:
->> +    items:
->> +      - {}
->> +      - {}
->> +      - {}
->> +      - {}
->> +      - const: hpd
->> +
->> +  phys:
->> +    maxItems: 1
->> +    description: The HDMI/eDP PHY.
->> +
->> +  phy-names:
->> +    const: hdmi
-> 
-> Drop phy-names, not really useful if it copies the name of the block.
-
-Sure, will drop it.
-
->> +
->> +  power-domains:
->> +    maxItems: 1
->> +
->> +  resets:
->> +    minItems: 2
->> +    maxItems: 2
->> +
->> +  reset-names:
->> +    items:
->> +      - const: ref
->> +      - const: hdp
->> +
->> +  "#sound-dai-cells":
->> +    const: 0
->> +
->> +  rockchip,grf:
->> +    $ref: /schemas/types.yaml#/definitions/phandle
->> +    description:
->> +      Some HDMI QP related data is accessed through SYS GRF regs.
->> +
->> +  rockchip,vo-grf:
->> +    $ref: /schemas/types.yaml#/definitions/phandle
->> +    description:
->> +      Additional HDMI QP related data is accessed through VO GRF regs.
->> +
->> +required:
->> +  - compatible
->> +  - reg
->> +  - clocks
->> +  - clock-names
->> +  - interrupts
->> +  - interrupt-names
->> +  - phys
->> +  - phy-names
->> +  - ports
->> +  - resets
->> +  - reset-names
->> +  - rockchip,grf
->> +  - rockchip,vo-grf
->> +
->> +unevaluatedProperties: false
->> +
->> +examples:
->> +  - |
->> +    #include <dt-bindings/clock/rockchip,rk3588-cru.h>
->> +    #include <dt-bindings/interrupt-controller/arm-gic.h>
->> +    #include <dt-bindings/interrupt-controller/irq.h>
->> +    #include <dt-bindings/power/rk3588-power.h>
->> +    #include <dt-bindings/reset/rockchip,rk3588-cru.h>
->> +
->> +    soc {
->> +      #address-cells = <2>;
->> +      #size-cells = <2>;
->> +
->> +      hdmi@fde80000 {
->> +        compatible = "rockchip,rk3588-dw-hdmi-qp";
->> +        reg = <0x0 0xfde80000 0x0 0x20000>;
->> +        clocks = <&cru PCLK_HDMITX0>,
->> +                 <&cru CLK_HDMITX0_EARC>,
->> +                 <&cru CLK_HDMITX0_REF>,
->> +                 <&cru MCLK_I2S5_8CH_TX>,
->> +                 <&cru CLK_HDMIHDP0>,
->> +                 <&cru HCLK_VO1>;
->> +        clock-names = "pclk", "earc", "ref", "aud", "hdp", "hclk_vo1";
->> +        interrupts = <GIC_SPI 169 IRQ_TYPE_LEVEL_HIGH 0>,
->> +                     <GIC_SPI 170 IRQ_TYPE_LEVEL_HIGH 0>,
->> +                     <GIC_SPI 171 IRQ_TYPE_LEVEL_HIGH 0>,
->> +                     <GIC_SPI 172 IRQ_TYPE_LEVEL_HIGH 0>,
->> +                     <GIC_SPI 360 IRQ_TYPE_LEVEL_HIGH 0>;
->> +        interrupt-names = "avp", "cec", "earc", "main", "hpd";
->> +        phys = <&hdptxphy_hdmi0>;
->> +        phy-names = "hdmi";
->> +        power-domains = <&power RK3588_PD_VO1>;
->> +        resets = <&cru SRST_HDMITX0_REF>, <&cru SRST_HDMIHDP0>;
->> +        reset-names = "ref", "hdp";
->> +        rockchip,grf = <&sys_grf>;
->> +        rockchip,vo-grf = <&vo1_grf>;
->> +        #sound-dai-cells = <0>;
->> +
->> +        ports {
->> +          #address-cells = <1>;
->> +          #size-cells = <0>;
->> +
->> +          port@0 {
->> +            reg = <0>;
->> +
->> +            hdmi0_in_vp0: endpoint {
->> +                remote-endpoint = <&vp0_out_hdmi0>;
-> 
-> Messed indentation.
-
-Ups, somehow I missed this..
-
-Thanks for reviewing,
-Cristian
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+Ckhp77yMCgrlnKggMjAyNC0wOS0wMSAwNTo1MzozOe+8jCJDcmlzdGlhbiBDaW9jYWx0ZWEiIDxj
+cmlzdGlhbi5jaW9jYWx0ZWFAY29sbGFib3JhLmNvbT4g5YaZ6YGT77yaCj5PbiA4LzMxLzI0IDQ6
+NTggUE0sIEhlaWtvIFN0w7xibmVyIHdyb3RlOgo+PiBIaSwKPj4gCj4+IEFtIFNhbXN0YWcsIDMx
+LiBBdWd1c3QgMjAyNCwgMDg6MTY6MjYgQ0VTVCBzY2hyaWViIEtyenlzenRvZiBLb3psb3dza2k6
+Cj4+PiBPbiBTYXQsIEF1ZyAzMSwgMjAyNCBhdCAxMjo1NToyOUFNICswMzAwLCBDcmlzdGlhbiBD
+aW9jYWx0ZWEgd3JvdGU6Cj4+IAo+Pj4+ICsgIGNsb2NrczoKPj4+PiArICAgIG1pbkl0ZW1zOiA0
+Cj4+Pj4gKyAgICBtYXhJdGVtczogNgo+Pj4+ICsgICAgaXRlbXM6Cj4+Pj4gKyAgICAgIC0gZGVz
+Y3JpcHRpb246IFBlcmlwaGVyYWwvQVBCIGJ1cyBjbG9jawo+Pj4+ICsgICAgICAtIGRlc2NyaXB0
+aW9uOiBFQVJDIFJYIGJpcGhhc2UgY2xvY2sKPj4+PiArICAgICAgLSBkZXNjcmlwdGlvbjogUmVm
+ZXJlbmNlIGNsb2NrCj4+Pj4gKyAgICAgIC0gZGVzY3JpcHRpb246IEF1ZGlvIGludGVyZmFjZSBj
+bG9jawo+Pj4+ICsgICAgYWRkaXRpb25hbEl0ZW1zOiB0cnVlCj4+Pgo+Pj4gV2hhdCBpcyB0aGUg
+dXNlZnVsbmVzcyBvZiBhbGwgdGhpcz8gSG93IGNhbiB5b3UgZXZlbiBiZSBzdXJlIHRoYXQgZWFj
+aAo+Pj4gaW1wbGVtZW50YXRpb24gb2YgdGhpcyBjb3JlIHdpbGwgaGF2ZSBleGFjdGx5IHRoZXNl
+IGNsb2Nrcz8KPj4+Cj4+Pj4gKwo+Pj4+ICsgIGNsb2NrLW5hbWVzOgo+Pj4+ICsgICAgbWluSXRl
+bXM6IDQKPj4+PiArICAgIG1heEl0ZW1zOiA2Cj4+Pj4gKyAgICBpdGVtczoKPj4+PiArICAgICAg
+LSBjb25zdDogcGNsawo+Pj4+ICsgICAgICAtIGNvbnN0OiBlYXJjCj4+Pj4gKyAgICAgIC0gY29u
+c3Q6IHJlZgo+Pj4+ICsgICAgICAtIGNvbnN0OiBhdWQKPj4+PiArICAgIGFkZGl0aW9uYWxJdGVt
+czogdHJ1ZQo+Pj4+ICsKPj4+PiArICBpbnRlcnJ1cHRzOgo+Pj4+ICsgICAgbWluSXRlbXM6IDQK
+Pj4+PiArICAgIG1heEl0ZW1zOiA1Cj4+Pj4gKyAgICBpdGVtczoKPj4+PiArICAgICAgLSBkZXNj
+cmlwdGlvbjogQVZQIFVuaXQgaW50ZXJydXB0Cj4+Pj4gKyAgICAgIC0gZGVzY3JpcHRpb246IENF
+QyBpbnRlcnJ1cHQKPj4+PiArICAgICAgLSBkZXNjcmlwdGlvbjogZUFSQyBSWCBpbnRlcnJ1cHQK
+Pj4+PiArICAgICAgLSBkZXNjcmlwdGlvbjogTWFpbiBVbml0IGludGVycnVwdAo+Pj4KPj4+IElm
+IHRoZXNlIGFyZSByZWFsIHBpbnMsIHRoZW4gdGhpcyBzZWVtcyBtb3JlIHBvc3NpYmxlLCBidXQK
+Pj4+IGFkZGl0aW9uYWxJdGVtcyBkb2VzIG5vdCBtYWtlIG1lIGhhcHB5Lgo+PiAKPj4gU28gd2hp
+bGUgbm90ICJwaW5zIiwgdGhlIGludGVycnVwdHMgYXJlIHNlcGFyYXRlbHkgc3BlY2lmaWVkIGlu
+IHRoZQo+PiBTb0MncyBsaXN0IG9mIGludGVycnVwdHMgaW4gdGhlIEdJQzoKPj4gCj4+IFJLMzU4
+OCBoYXM6Cj4+IAo+PiAyMDEgIGlycV9oZG1pdHgwX29hdnAKPj4gMjAyICBpcnFfaGRtaXR4MF9v
+Y2VjCj4+IDIwMyAgaXJxX2hkbWl0eDBfb2VhcmNyeAo+PiAyMDQgIGlycV9oZG1pdHgwX29tYWlu
+Cj4+IDM5MiAgaXJxX2hkbWl0eDBfaHBkCj4+IAo+PiBhbmQgYW5vdGhlciBzZXQgb2YgYWxsIG9m
+IHRoZW0gZm9yIGhkbWl0eDEKPj4gCj4+IGFuZCBSSzM1NzYgdXNpbmcgdGhlIHNhbWUgaGRtaSBJ
+UCBoYXM6Cj4+IAo+PiAzNzAgIGlycV9oZG1pdHhfb2F2cAo+PiAzNzEgIGlycV9oZG1pdHhfb2Nl
+Ywo+PiAzNzIgIGlycV9oZG1pdHhfb2VhcmNyeAo+PiAzNzMgIGlycV9oZG1pdHhfb21haW4KPj4g
+Mzk5ICBpcnFfaGRtaXR4X2hwZAoKVGhlIGZpcnN0IGZvdXIgaW50ZXJydXB0cyBhcmUgZXhwb3J0
+IGZyb20gdGhlIERXLUhETUktUVAgSVAgY29yZeOAggpUaGUgZmlmdGggSFBEIGludGVycnVwdHMg
+aXMgYSByb2NrY2hpcCBkZXNpZ27jgIIKCj4+IAo+PiBzbyBJIGd1ZXNzIHRoZSBmaWZ0aCBpbnRl
+cnJ1cHQgaXMgbWVhbnQgdG8gYmUgdGhlIGhvdHBsdWc/Cj4KPlllcCwgdGhhdCdzIGZvciB0aGUg
+aG90cGx1ZyBkZXRlY3Rpb24uCj4KPj4gVGhvdWdoIEkgZ3Vlc3MgdGhpcyBzaG91bGQgYmUgc3Bl
+Y2lmaWNlZCBpbiB0aGUgbmFtZS1saXN0IHRvby4KPgo+TXkgdW5kZXJzdGFuZGluZyBmcm9tIEFu
+ZHkgd2FzIHRoYXQgSFBEIGludGVycnVwdCBpcyBSb2NrY2hpcCBwbGF0Zm9ybQo+c3BlY2lmaWMs
+IGhlbmNlIEkgbWFkZSBpdCBwYXJ0IG9mIHJvY2tjaGlwLHJrMzU4OC1kdy1oZG1pLXFwLnlhbWwu
+Cj4KPj4gRnJvbSB0aGUgU29DJ3MgbWFudWFsIGl0IGxvb2tzIGxpa2UgdGhlIGNvbnRyb2xsZXIg
+aXMgc2V0IHVwIGZyb20KPj4gZGlmZmVyZW50IG1vZHVsZXMuCj4+IExpa2UgQVZQIGlzIHRoZSBh
+dWRpby12aWRlby1wYWNrZXQtbW9kdWxlLCB0aGVyZSBpcyBhIE1haW4gYW5kIENFQyBNb2R1bGUK
+Pj4gYXMgd2VsbCBhcyBhIGVBUkMgUlggY29udHJvbGxlciBpbnNpZGUuIEknZCBndWVzcyBpdCBt
+aWdodCBiZSBwb3NzaWJsZQo+PiBvdGhlciBTb0MgdmVuZG9ycyBjb3VsZCBsZWF2ZSBvdXQgc3Bl
+Y2lmaWMgbW9kdWxlcz8KPj4gCj4+IAo+PiBUTDtEUiBJIHRoaW5rIHRob3NlIGNsb2NrcyBhbmQg
+aW50ZXJydXB0cyBhcmUgZGVwZW5kZW50IG9uIGhvdyB0aGUKPj4gSVAgY29yZSB3YXMgc3ludGhl
+c2l6ZWQsIHNvIGZvciBub3cgSSdkIHRoaW5rIHdlIGNhbiBvbmx5IGd1YXJhbnRlZQo+PiB0aGF0
+IHRoZXkgYXJlIHRydWUgZm9yIHJrMzU4OCBhbmQgcmszNTc2Lgo+PiAKPj4gU28gSSBndWVzcyB0
+aGV5IHNob3VsZCBtb3ZlIHRvIHRoZSByb2NrY2hpcC1zcGVjaWZpYyBwYXJ0IG9mIHRoZSBiaW5k
+aW5nCj4+IHVudGlsIHdlIGhhdmUgbW9yZSBoZG1pLXFwIGNvbnRyb2xsZXJzIGluIHRoZSBmaWVs
+ZD8KPgo+SWYgdGhhdCdzIHRoZSBjYXNlLCB0aGVuIHdlIHNob3VsZCBzaW1wbHkgZHJvcCB0aGUg
+Y29tbW9uIGJpbmRpbmcKPmFsdG9nZXRoZXIgZm9yIG5vdy4KPgo+VGhhbmtzLAo+Q3Jpc3RpYW4K
+Pgo+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KPkxpbnV4
+LXJvY2tjaGlwIG1haWxpbmcgbGlzdAo+TGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9y
+Zwo+aHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2Nr
+Y2hpcApfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51
+eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9y
+ZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tj
+aGlwCg==
