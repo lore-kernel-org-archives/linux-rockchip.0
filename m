@@ -4,83 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 55329CA0ED3
-	for <linux-rockchip@archiver.kernel.org>; Mon,  2 Sep 2024 21:13:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2684DC54FC6
+	for <linux-rockchip@archiver.kernel.org>; Mon,  2 Sep 2024 22:15:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=KuAEhLZCFeoudoSRk5+Nv7aTRuTQUHVjodPSa5RWsEs=; b=fOi0Y+kCA8g5W0
-	TLy92xl1ga64+H8k0bh8z5gFxn4L21CRGRqxXmPb9wA3VzQg1X1J0vpk0U7pFPCZ+eiHDpeOUvjAz
-	1+MFDZhJetpArlsG5+7fzyjclPteu3qYx4AXrXDATkiQ2q7PnvCb399WeOt0yjsI4CuNDkjmALoa9
-	rRcws+yOli0SMilNyAdvcZZGvWoEhW92q+av95WD2V5fTpcOznvBBCG4xny3QeCg1coNbbgWDyyYN
-	eY5GQvK8hbj7H7oyvxyvKFlDGrojwM20kuyWSrE2gjjTWezumgJWc+jPrOaTLQu4g8XoJCWj+Befj
-	x5+Addadt5qVoZDTluJg==;
+	List-Owner; bh=veACmNLd8NRRnCNTjobsmQP4Fqd4jADdWQcDeInvbZU=; b=UeETNHQhJnFKp3
+	7RIrotObQR6TGgxCQn9f/TQr/kSkNF8b0F6K1dGXx6J0YLkls9kIzou0AYOTkwrFfjUS8ldvnU1uo
+	IW7FTiBW5EycrWXO0MG6bTaJVbRniNveMbpZbrq9JJH0RL2FF54+T7TgT778PBvzriV9lt3Fh1v7m
+	3lUNCl+u/sfRRHufV45gUYmz9Bpf21h6UNGbvrx2r09pBJ3ER+uQG+S1OBg8xv+v5W20L8nCExDpE
+	2GGVFGTYH3AQ68YX+D2gidtbPJrMOs5ZAS+1g4lJeFu/aVQeiue3qo2kS2X+lJl1M6qNUSVSSoZSu
+	ob9O5MyiT74OzZWpTNew==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1slEMl-0000000FZFe-3AoY;
-	Mon, 02 Sep 2024 21:13:39 +0000
+	id 1slFKi-0000000FeFi-2G2a;
+	Mon, 02 Sep 2024 22:15:36 +0000
 Received: from sender3-op-o19.zoho.com ([136.143.184.19])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1slELv-0000000FZ68-106M;
-	Mon, 02 Sep 2024 21:12:48 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1725311533; cv=none; 
+	id 1slFKf-0000000FeFH-1k12;
+	Mon, 02 Sep 2024 22:15:35 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1725315292; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=JwAKCfgdatJkOj+LpW6Ekfn324S4piCedRCyzcE3OihQ52UM3hR04c6dURjvhz0mvqCHAh2q7TFiOsMvsps8jPK8C9AeC5SO0jyrrluM/ELIrj/j2ajamuoBCXYikopmWUeIh9LyrKiXCGiAKcqV8pos47rR/CDYIchX5pIs6iU=
+	b=SQpuusukbpN6JVHx9Vp3GmqH3RMB9VT4zhStc/T0Kjuf6/jpeY8F3w/YP4rjHG9NBe2Xk3AxtYQzLx7ctSBrvWS3lMoZvZFZjkgBZeOWv/Ok2eVfWI7gU3awl/jaWcWjbjKUzTgtKfRpE6kxA4n5CqQIgyX5rCCjMoxVpCGTvTA=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1725311533; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=gcEMGv0FHpr9nNpZ/Gd7YBKiaJiXZ1zN6+bJa53L2CY=; 
-	b=ei+qCc4NjAw/WmxNzbGYXPc53dO+llpzmDkXRd3tOUSvprAOSkIMx0CdEBKrymrFMKhhbhHeJNdHMDHZmWBcxQC7cQYO1oz9qt25H/lXcrqzNmXI8vBLfFKLEmdTuHEJD2+O7cCxEBCjE7Do+9+q21jP+iuR4evwxO60Bht5mcc=
+	t=1725315292; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=QDNIvKtrO8pIYCbZxhaqDHVt24NXNrWagRGRYHJHozM=; 
+	b=BwlnaS+p845Tv3Ms99pwrryj6c//3S95iWRU+qHu31RkWOb1TOOLYXul4jBsVCecT4EugEOJUQkDkt4b9FRNbvvxcx2Mf3IdlzeVHbADl4eVxC4W8RI/E1zWTo3fTfV39J3iB9f6xEcNyZbUAvumPhP0fn/6pcR5E7j70lfGyfo=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=collabora.com;
 	spf=pass  smtp.mailfrom=cristian.ciocaltea@collabora.com;
 	dmarc=pass header.from=<cristian.ciocaltea@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1725311533;
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1725315292;
 	s=zohomail; d=collabora.com; i=cristian.ciocaltea@collabora.com;
 	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
-	bh=gcEMGv0FHpr9nNpZ/Gd7YBKiaJiXZ1zN6+bJa53L2CY=;
-	b=kDv/6r5gyxkyU9MDc6BAPTO89AvtwgPqAhRwO7Hnk9p3rAulIJEVMA+Av0DHG4MI
-	6vkXDc+5X9MyQoBzbFP9+IVSaLbfKYulR29gc/KWMvQkU6kxXlurxK091YcXWH6s9rB
-	3zAMs5y9MOLWK8tZOwikhRKyQ7Pf8pdUDD04vk4w=
-Received: by mx.zohomail.com with SMTPS id 1725311530551764.3736823391141;
-	Mon, 2 Sep 2024 14:12:10 -0700 (PDT)
-Message-ID: <6e20410a-a24d-4454-8577-2cff65319a2a@collabora.com>
-Date: Tue, 3 Sep 2024 00:12:02 +0300
+	bh=QDNIvKtrO8pIYCbZxhaqDHVt24NXNrWagRGRYHJHozM=;
+	b=fECWOFVLFmmzV1WR2D/aPVwqiIbnjZi+FsoTTLknC2nX6xgeTVWzxj+2g0Mg0qJO
+	kAFC0WfOX+FroleSd1Fa0P/pi4LJ0wW2vlAn+Yg6yl52BJfW2LGAqOPVyigvW5REgLv
+	g1TEx9waorek+ZWIuX7hpi/l0505b5e4suDsIQPQ=
+Received: by mx.zohomail.com with SMTPS id 1725315290251290.71260809194837;
+	Mon, 2 Sep 2024 15:14:50 -0700 (PDT)
+Message-ID: <eb9f2d20-9b51-45e1-bf32-504267747f06@collabora.com>
+Date: Tue, 3 Sep 2024 01:14:42 +0300
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 2/4] drm/bridge: synopsys: Add DW HDMI QP TX Controller
- support library
-To: Maxime Ripard <mripard@kernel.org>
-Cc: Andrzej Hajda <andrzej.hajda@intel.com>,
- Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>,
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
- Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>,
- Daniel Vetter <daniel@ffwll.ch>, Sandy Huang <hjc@rock-chips.com>,
- =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>,
- Andy Yan <andy.yan@rock-chips.com>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Mark Yao <markyao0591@gmail.com>,
- Sascha Hauer <s.hauer@pengutronix.de>, dri-devel@lists.freedesktop.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
- kernel@collabora.com, Alexandre ARNOUD <aarnoud@me.com>,
- Luis de Arquer <ldearquer@gmail.com>, Algea Cao <algea.cao@rock-chips.com>
-References: <20240819-b4-rk3588-bridge-upstream-v4-0-6417c72a2749@collabora.com>
- <20240819-b4-rk3588-bridge-upstream-v4-2-6417c72a2749@collabora.com>
- <20240827-armored-magnificent-badger-ffb025@houat>
- <34422b7a-ce70-445d-a574-60ac36322119@collabora.com>
- <20240902-turtle-of-major-glory-efb4e8@houat>
-From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+Subject: Re: [PATCH v5 3/4] dt-bindings: display: rockchip: Add schema for
+ RK3588 HDMI TX Controller
+To: Shimrra Shai <shimrrashai@gmail.com>
+Cc: Laurent.pinchart@ideasonboard.com, aarnoud@me.com, airlied@gmail.com,
+ andrzej.hajda@intel.com, andy.yan@rock-chips.com, conor+dt@kernel.org,
+ daniel@ffwll.ch, devicetree@vger.kernel.org,
+ dri-devel@lists.freedesktop.org, heiko@sntech.de, hjc@rock-chips.com,
+ jernej.skrabec@gmail.com, jonas@kwiboo.se, kernel@collabora.com,
+ krzk+dt@kernel.org, krzk@kernel.org, ldearquer@gmail.com,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, maarten.lankhorst@linux.intel.com,
+ markyao0591@gmail.com, mripard@kernel.org, neil.armstrong@linaro.org,
+ rfoss@kernel.org, robh@kernel.org, s.hauer@pengutronix.de,
+ tzimmermann@suse.de
+References: <5ea24ad3-7faa-4a59-ba10-d43b32b3b40e@collabora.com>
+ <20240902010948.3654-1-shimrrashai@gmail.com>
 Content-Language: en-US
-In-Reply-To: <20240902-turtle-of-major-glory-efb4e8@houat>
+From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+In-Reply-To: <20240902010948.3654-1-shimrrashai@gmail.com>
 X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240902_141247_337403_4C143521 
-X-CRM114-Status: GOOD (  20.74  )
+X-CRM114-CacheID: sfid-20240902_151533_518545_4F97BD55 
+X-CRM114-Status: GOOD (  19.26  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,77 +89,60 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 9/2/24 10:36 AM, Maxime Ripard wrote:
-> On Sat, Aug 31, 2024 at 01:21:48AM GMT, Cristian Ciocaltea wrote:
->> On 8/27/24 11:58 AM, Maxime Ripard wrote:
->>> On Mon, Aug 19, 2024 at 01:29:29AM GMT, Cristian Ciocaltea wrote:
->>>> +static irqreturn_t dw_hdmi_qp_main_hardirq(int irq, void *dev_id)
->>>> +{
->>>> +	struct dw_hdmi_qp *hdmi = dev_id;
->>>> +	struct dw_hdmi_qp_i2c *i2c = hdmi->i2c;
->>>> +	u32 stat;
->>>> +
->>>> +	stat = dw_hdmi_qp_read(hdmi, MAINUNIT_1_INT_STATUS);
->>>> +
->>>> +	i2c->stat = stat & (I2CM_OP_DONE_IRQ | I2CM_READ_REQUEST_IRQ |
->>>> +			    I2CM_NACK_RCVD_IRQ);
->>>> +
->>>> +	if (i2c->stat) {
->>>> +		dw_hdmi_qp_write(hdmi, i2c->stat, MAINUNIT_1_INT_CLEAR);
->>>> +		complete(&i2c->cmp);
->>>> +	}
->>>> +
->>>> +	if (stat)
->>>> +		return IRQ_HANDLED;
->>>> +
->>>> +	return IRQ_NONE;
->>>> +}
+On 9/2/24 4:09 AM, Shimrra Shai wrote:
+> Cristian Ciocaltea wrote:
+>> On 8/31/24 9:13 AM, Krzysztof Kozlowski wrote:
 >>>
->>> If the scrambler is enabled, you need to deal with hotplug. On hotplug,
->>> the monitor will drop its TMDS ratio and scrambling status, but the
->>> driver will keep assuming it's been programmed.
->>>
->>> If you don't have a way to deal with hotplug yet, then I'd suggest to
->>> just drop the scrambler setup for now.
+>>> Please define all clocks.
 >>
->> Thanks for the heads up!
->>
->> HPD is partially handled by the RK platform driver, which makes use of
->> drm_helper_hpd_irq_event(). Since the bridge sets DRM_BRIDGE_OP_DETECT
->> flag, the dw_hdmi_qp_bridge_detect() callback gets executed, which in turn
->> verifies the PHY status via ->read_hpd() implemented as
->> dw_hdmi_qp_rk3588_read_hpd() in the platform driver.
+>> The other clocks are defined in the common binding, should we reiterate
+>> them?
 > 
-> It's not only about hotplug detection, it's also about what happens
-> after you've detected a disconnection / reconnection.
+> I would suggest yes, they should be reduplicated, if only to maintain
+> consistency with all the other docs. A grep through the bridge docs
+> shows that there are virtually none which use a "{}" placeholder like
+> this. 
+
+Are you sure about that?  This is precisely the approach followed by the
+upstream DW HDMI TX controller binding [1].  Moreover, I've already pointed this
+out in [2].
+
+> While it seems kind of like one might worry about "don't
+> repeat yourself" syndrome, keep in mind this is not code, but human-
+> used documentation. Having all the information available at a glance
+> would seem to be the most convenient to the end (developer) user, so
+> they aren't having to toggle between two separate files. 
+
+I think that's pretty subjective to be stated as a general rule, e.g. I don't
+have any problem toggling between multiple files as I regularly keep over 50
+files opened in my IDE.  Personally, I'd always go for the slightly less 
+readable approach if I can avoid duplicating content.
+
+I'd suggest to follow the whole thread [2], as this topic has been already
+discussed.
+
+> Of course
+> there may be some questions regarding docs becoming out of sync, but
+> *ideally* we don't want to break backward compatibility with device
+> trees (esp. given how I am imagining firmware integration to work on
+> these platforms, as the RK3588 is at at least low-end desktop-grade
+> performance and UEFI packages have already been built for it), though
+> of course that doesn't mean adding new options is off the table.
 > 
-> The framework expects to keep the current mode as is, despite the
-> monitor not being setup to use the scrambler anymore, and the display
-> remains black.
+> (FWIW, this is what I did in my now-withdrawn-at-your-request
+> re-submission; I reduplicated the bindings as it seemed that's what
+> others here were pushing for and thus that felt like the quickest way
+> to get this important driver approved.)
 
-AFAICS, the ->atomic_enable() callback is always invoked upon
-reconnection, hence the scrambler gets properly (re)enabled via
-dw_hdmi_qp_setup().
+This is not really a blocker for the series.  Please remember to be patient
+while involved (one way or another) in the upstreaming process, as maintainers
+need time to review *all* the patches.  This might be very important for you,
+but there are, usually, tons of other way more important things the maintainers
+need to handle in parallel.
 
->> During my testing so far it worked reliably when switching displays with
->> different capabilities.  I don't have a 4K@60Hz display at the moment, but
->> used the HDMI RX port on the Rock 5B board in a loopback connection to
->> verify this mode, which triggered the high TMDS clock ratio and scrambling
->> setup as well.
-> 
-> How did you test exactly?
+[1] https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-hdmi.yaml#n46
+[2] https://lore.kernel.org/lkml/ec84bc0b-c4c2-4735-9f34-52bc3a852aaf@collabora.com/
 
-I initially tested with Sway/wlroots having an app running
-(eglgears_wayland) while unplugging/replugging the HDMI connectors in
-every possible sequence I could think of (e.g. several times per
-display, switching to a different one, repeating, switching again, etc).
-
-I've just retested the whole stuff with Weston and confirm it works as
-expected, i.e. no black screen (or bad capture stream for the 4K@60Hz
-case) after any of the reconnections.
-
-Regards,
-Cristian
 
 _______________________________________________
 Linux-rockchip mailing list
