@@ -4,73 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D8E5FCD13CF
-	for <linux-rockchip@archiver.kernel.org>; Mon,  2 Sep 2024 16:47:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 55329CA0ED3
+	for <linux-rockchip@archiver.kernel.org>; Mon,  2 Sep 2024 21:13:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:In-Reply-To:
-	Date:References:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=zrJm+XQEF+ACUOwumFZHYliVb/sqkprYQKk2nf+GNOI=; b=u4LbJfP1y5cfPC
-	YmNQQOn9p9CLMyOvvyODdhU1YK2YIbn9rGJWs31Iz74Jx451A2T97RtAcmwWVazbK7O6TiGSvA9ky
-	INsqqLJUBxxiKl1pdShjk5FktcdJk3ihip8B6WheJ8ZDumi4FYSVAlvhefspi0X+yUppl1i4+r/Vj
-	RuQxAvu/7WtCaKwg4KmQ3SfEa8jwgMUBUshcOWJ9DrhMnlK0fk2FPyfBHjGPxuIcnMjWkqV/Kl+vZ
-	z775XEDSZNErcWkIK5FOCyMdo+duEZYGvU8NMshXnOQ/7Z7GFCCScodP2cQ+gZid+HrQCDnAlGIyq
-	rF49U5Ebab8unw1IHtjA==;
+	List-Owner; bh=KuAEhLZCFeoudoSRk5+Nv7aTRuTQUHVjodPSa5RWsEs=; b=fOi0Y+kCA8g5W0
+	TLy92xl1ga64+H8k0bh8z5gFxn4L21CRGRqxXmPb9wA3VzQg1X1J0vpk0U7pFPCZ+eiHDpeOUvjAz
+	1+MFDZhJetpArlsG5+7fzyjclPteu3qYx4AXrXDATkiQ2q7PnvCb399WeOt0yjsI4CuNDkjmALoa9
+	rRcws+yOli0SMilNyAdvcZZGvWoEhW92q+av95WD2V5fTpcOznvBBCG4xny3QeCg1coNbbgWDyyYN
+	eY5GQvK8hbj7H7oyvxyvKFlDGrojwM20kuyWSrE2gjjTWezumgJWc+jPrOaTLQu4g8XoJCWj+Befj
+	x5+Addadt5qVoZDTluJg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1slADc-0000000F4xr-0Q6T;
-	Mon, 02 Sep 2024 16:47:56 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1slEMl-0000000FZFe-3AoY;
+	Mon, 02 Sep 2024 21:13:39 +0000
+Received: from sender3-op-o19.zoho.com ([136.143.184.19])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1slA50-0000000F2lC-1NAW;
-	Mon, 02 Sep 2024 16:39:03 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id E10035C589C;
-	Mon,  2 Sep 2024 16:38:57 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id AD0BFC4CEC2;
-	Mon,  2 Sep 2024 16:38:54 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1725295141;
-	bh=THOWirjnif2PCoJgyUp+GH1dq/VbXAjyaMqmMGMYEYY=;
-	h=From:To:Cc:Subject:References:Date:In-Reply-To:From;
-	b=LZYQXRGGQMR4i8GrOz6Nvk9Mte2YR2JtOQ1HrrFs5dAU8NvnvkHkaLwCyexWjYdts
-	 ubDoH6lTtoo3lJ3OMooT1HxkdZbjY2OsIB0QGT+ktHIytZ698mxNnQSS8fPTDY28G0
-	 5iLvTPev/gqdUwsbixADfRCPPrbNp+3GDl8hm+nImdtoSaWa86BcbY+6Ei0RES8iLl
-	 AOAwElrHsMcPFBvhvaafng1q0jE4Zz3SNXjQ9ZSUpJjLV86fRRbNj1QLcKXHOUcSMx
-	 k95sFsMmx4WARbzCI8l80Ur743CDSkT9rtMZLfnPR3DkVwewHV8LU00ZRabUpGsRS/
-	 frSCIn8VVw79Q==
-From: Kalle Valo <kvalo@kernel.org>
-To: Li Zetao <lizetao1@huawei.com>
-Cc: <florian.fainelli@broadcom.com>,  <andrew@lunn.ch>,
-  <olteanv@gmail.com>,  <davem@davemloft.net>,  <edumazet@google.com>,
-  <kuba@kernel.org>,  <pabeni@redhat.com>,  <wens@csie.org>,
-  <jernej.skrabec@gmail.com>,  <samuel@sholland.org>,  <heiko@sntech.de>,
-  <yisen.zhuang@huawei.com>,  <salil.mehta@huawei.com>,
-  <hauke@hauke-m.de>,  <alexandre.torgue@foss.st.com>,
-  <joabreu@synopsys.com>,  <mcoquelin.stm32@gmail.com>,
-  <wellslutw@gmail.com>,  <radhey.shyam.pandey@amd.com>,
-  <michal.simek@amd.com>,  <ajay.kathat@microchip.com>,
-  <claudiu.beznea@tuxon.dev>,  <u.kleine-koenig@pengutronix.de>,
-  <jacky_chou@aspeedtech.com>,  <netdev@vger.kernel.org>,
-  <linux-arm-kernel@lists.infradead.org>,  <linux-sunxi@lists.linux.dev>,
-  <linux-rockchip@lists.infradead.org>,
-  <linux-stm32@st-md-mailman.stormreply.com>,
-  <linux-wireless@vger.kernel.org>
-Subject: Re: [PATCH net-next 11/12] wifi: wilc1000: Convert using
- devm_clk_get_optional_enabled() in wilc_sdio_probe()
-References: <20240831021334.1907921-1-lizetao1@huawei.com>
-	<20240831021334.1907921-12-lizetao1@huawei.com>
-Date: Mon, 02 Sep 2024 19:38:53 +0300
-In-Reply-To: <20240831021334.1907921-12-lizetao1@huawei.com> (Li Zetao's
-	message of "Sat, 31 Aug 2024 10:13:33 +0800")
-Message-ID: <87a5gqko2q.fsf@kernel.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/28.2 (gnu/linux)
+	id 1slELv-0000000FZ68-106M;
+	Mon, 02 Sep 2024 21:12:48 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1725311533; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=JwAKCfgdatJkOj+LpW6Ekfn324S4piCedRCyzcE3OihQ52UM3hR04c6dURjvhz0mvqCHAh2q7TFiOsMvsps8jPK8C9AeC5SO0jyrrluM/ELIrj/j2ajamuoBCXYikopmWUeIh9LyrKiXCGiAKcqV8pos47rR/CDYIchX5pIs6iU=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1725311533; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=gcEMGv0FHpr9nNpZ/Gd7YBKiaJiXZ1zN6+bJa53L2CY=; 
+	b=ei+qCc4NjAw/WmxNzbGYXPc53dO+llpzmDkXRd3tOUSvprAOSkIMx0CdEBKrymrFMKhhbhHeJNdHMDHZmWBcxQC7cQYO1oz9qt25H/lXcrqzNmXI8vBLfFKLEmdTuHEJD2+O7cCxEBCjE7Do+9+q21jP+iuR4evwxO60Bht5mcc=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=cristian.ciocaltea@collabora.com;
+	dmarc=pass header.from=<cristian.ciocaltea@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1725311533;
+	s=zohomail; d=collabora.com; i=cristian.ciocaltea@collabora.com;
+	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
+	bh=gcEMGv0FHpr9nNpZ/Gd7YBKiaJiXZ1zN6+bJa53L2CY=;
+	b=kDv/6r5gyxkyU9MDc6BAPTO89AvtwgPqAhRwO7Hnk9p3rAulIJEVMA+Av0DHG4MI
+	6vkXDc+5X9MyQoBzbFP9+IVSaLbfKYulR29gc/KWMvQkU6kxXlurxK091YcXWH6s9rB
+	3zAMs5y9MOLWK8tZOwikhRKyQ7Pf8pdUDD04vk4w=
+Received: by mx.zohomail.com with SMTPS id 1725311530551764.3736823391141;
+	Mon, 2 Sep 2024 14:12:10 -0700 (PDT)
+Message-ID: <6e20410a-a24d-4454-8577-2cff65319a2a@collabora.com>
+Date: Tue, 3 Sep 2024 00:12:02 +0300
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v4 2/4] drm/bridge: synopsys: Add DW HDMI QP TX Controller
+ support library
+To: Maxime Ripard <mripard@kernel.org>
+Cc: Andrzej Hajda <andrzej.hajda@intel.com>,
+ Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>,
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+ Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>,
+ Daniel Vetter <daniel@ffwll.ch>, Sandy Huang <hjc@rock-chips.com>,
+ =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>,
+ Andy Yan <andy.yan@rock-chips.com>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Mark Yao <markyao0591@gmail.com>,
+ Sascha Hauer <s.hauer@pengutronix.de>, dri-devel@lists.freedesktop.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
+ kernel@collabora.com, Alexandre ARNOUD <aarnoud@me.com>,
+ Luis de Arquer <ldearquer@gmail.com>, Algea Cao <algea.cao@rock-chips.com>
+References: <20240819-b4-rk3588-bridge-upstream-v4-0-6417c72a2749@collabora.com>
+ <20240819-b4-rk3588-bridge-upstream-v4-2-6417c72a2749@collabora.com>
+ <20240827-armored-magnificent-badger-ffb025@houat>
+ <34422b7a-ce70-445d-a574-60ac36322119@collabora.com>
+ <20240902-turtle-of-major-glory-efb4e8@houat>
+From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+Content-Language: en-US
+In-Reply-To: <20240902-turtle-of-major-glory-efb4e8@houat>
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240902_093902_457692_B77C2BCD 
-X-CRM114-Status: GOOD (  11.57  )
+X-CRM114-CacheID: sfid-20240902_141247_337403_4C143521 
+X-CRM114-Status: GOOD (  20.74  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,29 +97,77 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Li Zetao <lizetao1@huawei.com> writes:
+On 9/2/24 10:36 AM, Maxime Ripard wrote:
+> On Sat, Aug 31, 2024 at 01:21:48AM GMT, Cristian Ciocaltea wrote:
+>> On 8/27/24 11:58 AM, Maxime Ripard wrote:
+>>> On Mon, Aug 19, 2024 at 01:29:29AM GMT, Cristian Ciocaltea wrote:
+>>>> +static irqreturn_t dw_hdmi_qp_main_hardirq(int irq, void *dev_id)
+>>>> +{
+>>>> +	struct dw_hdmi_qp *hdmi = dev_id;
+>>>> +	struct dw_hdmi_qp_i2c *i2c = hdmi->i2c;
+>>>> +	u32 stat;
+>>>> +
+>>>> +	stat = dw_hdmi_qp_read(hdmi, MAINUNIT_1_INT_STATUS);
+>>>> +
+>>>> +	i2c->stat = stat & (I2CM_OP_DONE_IRQ | I2CM_READ_REQUEST_IRQ |
+>>>> +			    I2CM_NACK_RCVD_IRQ);
+>>>> +
+>>>> +	if (i2c->stat) {
+>>>> +		dw_hdmi_qp_write(hdmi, i2c->stat, MAINUNIT_1_INT_CLEAR);
+>>>> +		complete(&i2c->cmp);
+>>>> +	}
+>>>> +
+>>>> +	if (stat)
+>>>> +		return IRQ_HANDLED;
+>>>> +
+>>>> +	return IRQ_NONE;
+>>>> +}
+>>>
+>>> If the scrambler is enabled, you need to deal with hotplug. On hotplug,
+>>> the monitor will drop its TMDS ratio and scrambling status, but the
+>>> driver will keep assuming it's been programmed.
+>>>
+>>> If you don't have a way to deal with hotplug yet, then I'd suggest to
+>>> just drop the scrambler setup for now.
+>>
+>> Thanks for the heads up!
+>>
+>> HPD is partially handled by the RK platform driver, which makes use of
+>> drm_helper_hpd_irq_event(). Since the bridge sets DRM_BRIDGE_OP_DETECT
+>> flag, the dw_hdmi_qp_bridge_detect() callback gets executed, which in turn
+>> verifies the PHY status via ->read_hpd() implemented as
+>> dw_hdmi_qp_rk3588_read_hpd() in the platform driver.
+> 
+> It's not only about hotplug detection, it's also about what happens
+> after you've detected a disconnection / reconnection.
+> 
+> The framework expects to keep the current mode as is, despite the
+> monitor not being setup to use the scrambler anymore, and the display
+> remains black.
 
-> Use devm_clk_get_optional_enabled() instead of devm_clk_get_optional() +
-> clk_prepare_enable(), which can make the clk consistent with the device
-> life cycle and reduce the risk of unreleased clk resources. Since the
-> device framework has automatically released the clk resource, there is
-> no need to execute clk_disable_unprepare(clk) on the error path, drop
-> the clk_disable_unprepare label, and the original error process can change
-> to dispose_irq.
->
-> Signed-off-by: Li Zetao <lizetao1@huawei.com>
-> ---
->  drivers/net/wireless/microchip/wilc1000/sdio.c | 10 +++-------
->  1 file changed, 3 insertions(+), 7 deletions(-)
+AFAICS, the ->atomic_enable() callback is always invoked upon
+reconnection, hence the scrambler gets properly (re)enabled via
+dw_hdmi_qp_setup().
 
-wifi patches (patches 11 and 12) go via wireless-next, please submit
-those separately.
+>> During my testing so far it worked reliably when switching displays with
+>> different capabilities.  I don't have a 4K@60Hz display at the moment, but
+>> used the HDMI RX port on the Rock 5B board in a loopback connection to
+>> verify this mode, which triggered the high TMDS clock ratio and scrambling
+>> setup as well.
+> 
+> How did you test exactly?
 
--- 
-https://patchwork.kernel.org/project/linux-wireless/list/
+I initially tested with Sway/wlroots having an app running
+(eglgears_wayland) while unplugging/replugging the HDMI connectors in
+every possible sequence I could think of (e.g. several times per
+display, switching to a different one, repeating, switching again, etc).
 
-https://wireless.wiki.kernel.org/en/developers/documentation/submittingpatches
-https://docs.kernel.org/process/submitting-patches.html
+I've just retested the whole stuff with Weston and confirm it works as
+expected, i.e. no black screen (or bad capture stream for the 4K@60Hz
+case) after any of the reconnections.
+
+Regards,
+Cristian
 
 _______________________________________________
 Linux-rockchip mailing list
