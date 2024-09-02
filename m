@@ -4,92 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D8611C54FC6
-	for <linux-rockchip@archiver.kernel.org>; Mon,  2 Sep 2024 01:54:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 68ED1CA0ED3
+	for <linux-rockchip@archiver.kernel.org>; Mon,  2 Sep 2024 03:29:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=9wJs4o6m6pvjzJTlc+QxvHpp1fQYAsCRyyRNEcY8LX4=; b=y/PB/rrNc3wxL1
-	OB6rhKyzmjPGInUUMP8E41IfJIQpwDnEf7qnKeV1S4dv6fsOuFE/ftRKDwugb/csZwno5HIHbkHCI
-	7zs5p7AHvGX/ixSo9Blpyqzbe30kYrhwdDZnryYWscpxU9jaOt+8Z5yNFTcVRSIkblbJHDyWILfL4
-	xlDxvwJMFn+Zac36nrm2HK8CUI5J2ydpVaCFiMLWy9nHQLYl5RzE+fV2FAewq4SYul1vWAJMfYF63
-	vsB6BuEYFXGKmbwg3rgzC9lubs35ApDd5EZiJ3zmo5dOTPUSvHO2D72BWAZaRlSZnjsJtKtj8anrL
-	ESq8jfAUSQJG+T9sN37Q==;
+	List-Owner; bh=Nt6rxwmYt1GTo5HF6i7tSfPl0RKc2FEgr4XvVtIm7g8=; b=Sni6QhObKWtb3y
+	lWw8Ps/M1v+aFtX4a1BFUdDrM6t/3xkTW01ZOFCjuOv9w4LFHZSS2EK9MN74gxneOzEz7W+8Z12Xz
+	QucJyACHEbkyS51A/t621wHSVlss+lN/cV4Rdq2e3tJPM/KxjNimwzY1C1CVhAcxYHLyysYng/4LN
+	8lsyTm+yVtr27ocAaDm6a0O19/hCwUQb3RqdW/WYo3vO3tnN9yn9otZLWb4JS/oZjL1tFdGq9j2Vx
+	5WwsIjE7WzsbZlIJrKVi0ZoMMCfYZUvOjUa6fC7/kcC8ackw3uKyoI/I43PZiicvDJdEQWEeT8xaB
+	+G+vim5E0mtN7+rK3lTA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1skwH9-0000000Ci6V-3mHl;
-	Mon, 02 Sep 2024 01:54:39 +0000
-Received: from mgamail.intel.com ([192.198.163.8])
+	id 1skxkd-0000000Cqlb-3gmY;
+	Mon, 02 Sep 2024 03:29:11 +0000
+Received: from mail-lf1-x12d.google.com ([2a00:1450:4864:20::12d])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1skwDx-0000000ChO7-34zr;
-	Mon, 02 Sep 2024 01:51:22 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1725241881; x=1756777881;
-  h=from:to:cc:subject:date:message-id:in-reply-to:
-   references:mime-version:content-transfer-encoding;
-  bh=eNOviPAyOZhMOAzv2QCrEMyisdMbFcDCq2iEBrdz3QQ=;
-  b=a2qhPCqymG5uS3xjrGfXogCU228VfFHaDMDmUXokoLPnGr69QjWnpX1N
-   xEapCxXRACKVS27nUhmqu5I/bJ4jSuWWXKJsuBsO+MRLD9Idqq7UlQSAE
-   S2M9gaheyXIXxmGSYl8I+HND1emYiOsETuzzekLrB5wJqbLPdE1v0DPZ+
-   iAP3r0zmN1oA6AD18k/XAKuoOqjp+taC2GjBWXB2O3JQr14Z1DlVs1BER
-   6WBTm+euJFP7T9+3Cj5WucYyZdqI+Z6J8ay0tIz52EjbvSt5cpNqqXCj8
-   H2GTD6151fTnYC/801o8Jjn4H1DHciIl50GdW+kL3cd4vq5rg+rv7sjE8
-   w==;
-X-CSE-ConnectionGUID: Na5bXVO1RRy7yAyLJvRDgg==
-X-CSE-MsgGUID: x253zL23S2O7Ljq/q2gPTA==
-X-IronPort-AV: E=McAfee;i="6700,10204,11182"; a="41307705"
-X-IronPort-AV: E=Sophos;i="6.10,194,1719903600"; 
-   d="scan'208";a="41307705"
-Received: from orviesa006.jf.intel.com ([10.64.159.146])
-  by fmvoesa102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 01 Sep 2024 18:51:21 -0700
-X-CSE-ConnectionGUID: 29OEIk5/RfmpO23cXnBNZA==
-X-CSE-MsgGUID: ON9C07fzS3iCg+btlHUEUA==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.10,194,1719903600"; 
-   d="scan'208";a="64817693"
-Received: from allen-box.sh.intel.com ([10.239.159.127])
-  by orviesa006.jf.intel.com with ESMTP; 01 Sep 2024 18:51:15 -0700
-From: Lu Baolu <baolu.lu@linux.intel.com>
-To: Karol Herbst <kherbst@redhat.com>,
-	Lyude Paul <lyude@redhat.com>,
-	Danilo Krummrich <dakr@redhat.com>,
-	David Airlie <airlied@gmail.com>,
-	Daniel Vetter <daniel@ffwll.ch>,
-	Thierry Reding <thierry.reding@gmail.com>,
-	Jonathan Hunter <jonathanh@nvidia.com>,
-	Sandy Huang <hjc@rock-chips.com>,
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	Mikko Perttunen <mperttunen@nvidia.com>,
-	Joerg Roedel <joro@8bytes.org>,
-	Will Deacon <will@kernel.org>,
-	Robin Murphy <robin.murphy@arm.com>,
-	Jason Gunthorpe <jgg@ziepe.ca>,
-	Kevin Tian <kevin.tian@intel.com>
-Cc: dri-devel@lists.freedesktop.org,
-	nouveau@lists.freedesktop.org,
-	linux-tegra@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-media@vger.kernel.org,
-	iommu@lists.linux.dev,
-	linux-kernel@vger.kernel.org,
-	Lu Baolu <baolu.lu@linux.intel.com>
-Subject: [PATCH v2 3/3] drm/tegra: Use iommu_paging_domain_alloc()
-Date: Mon,  2 Sep 2024 09:47:00 +0800
-Message-Id: <20240902014700.66095-4-baolu.lu@linux.intel.com>
+	id 1skxkb-0000000CqkZ-3mdM
+	for linux-rockchip@lists.infradead.org;
+	Mon, 02 Sep 2024 03:29:11 +0000
+Received: by mail-lf1-x12d.google.com with SMTP id 2adb3069b0e04-5334a8a1b07so4527185e87.1
+        for <linux-rockchip@lists.infradead.org>; Sun, 01 Sep 2024 20:29:09 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1725247747; x=1725852547; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=kZ8Kyw2e1+QozojRrFDcDx8PFcwtm6OlHzJ3wldkNZo=;
+        b=RZcN5ax8rIc6DX1OoHlXp8MN1AgsHHRqATYedSKwrL+An5HTiMqqNbMFUA3C8JY6AE
+         ly0NX11SYDbW9dvAA96Eq4ivvSGcnaGIDk7CEBxhcgwlAA7fjbRfQtEY2DXq02v1vWMn
+         O5Zwk3ko1Dhz7/HHgL1phDeaR6DQo+KGJ+hY/7MSHqDCy88XIAM8xG63EnyjtUHwvUm/
+         ymT3IIrhsJrpoM0ANx6dWjI9m0Pl9UgoLwuJkJmJFcO2vEjQ3/oenZh8e+c9cvD7KXNj
+         JOmn8K5gswtuexcVbmHhF2eVFkXLkBekimla/VOgNYSUfg4HTb6MTJL6xiYm7seWUbDZ
+         SR7g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1725247747; x=1725852547;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=kZ8Kyw2e1+QozojRrFDcDx8PFcwtm6OlHzJ3wldkNZo=;
+        b=KVvT3LOZrsZP4ehQnjzJCVwcv0mz71SYOkHkQSBQYW6sW0hg00oRXANWmRIF6zN11X
+         uhrgiYx86ghfLIa5if35IX7Do69JvWnx78pPtM9MdKd5MO6pCCTuc537pak2XgPINgf8
+         SJZRGgH9Ba/NAd4bRO0EEEUwXIwxT8TA7q1qwHT2KR/Xxz9TjiNuA1rS9yLSbMMCi/qx
+         C5emLzkK6rCV6F4pTAXq7TH1Y53UTi59P0B2ft+Ng9y2lJO5/yNYpC23aF1dptEyQwGk
+         EaNFhRXHou17ed3BdcChEaZCdNXxEy+ngDdmv7T0+I1aPfPfDHNmVzpJ4nyegFHS9rO7
+         9g1Q==
+X-Forwarded-Encrypted: i=1; AJvYcCXhkGxEyVyoBJiqyZp3OrOb1gFxa/oY/8aXyw6hOglVRxIjP3FYJmPUCftHvMezCo9Sl3nkt0tactaXyeOfzQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxI2VtrUnlRF2jUAOLK0hM9/q/Tq7xbXNym4GfHMpgsgjx49RC8
+	UDAlwUT4xsshzrpy6tC48aGsGRHgnsiPZ8KEr7nGxH5GkxRXAjPgXnfoS6xK
+X-Google-Smtp-Source: AGHT+IH6pWcc579dQxY1WnGo6872shwSHYeFq9Vs+MWwrKpCrO/wEHhVz05VtRsQzKiWINfkPDepWw==
+X-Received: by 2002:a05:6512:3191:b0:52c:e4cf:4f31 with SMTP id 2adb3069b0e04-53546bc01a4mr6285507e87.49.1725247746858;
+        Sun, 01 Sep 2024 20:29:06 -0700 (PDT)
+Received: from U19.ag.local (static.187.76.181.135.clients.your-server.de. [135.181.76.187])
+        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-5354084eb16sm1419820e87.274.2024.09.01.20.29.05
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 01 Sep 2024 20:29:05 -0700 (PDT)
+From: Alibek Omarov <a1ba.omarov@gmail.com>
+To: mkl@pengutronix.de,
+	linux-rockchip@lists.infradead.org
+Cc: Alibek Omarov <a1ba.omarov@gmail.com>
+Subject: Re: [can-next,v3,00/20] can: rockchip_canfd: add support for CAN-FD IP core found on Rockchip RK3568
+Date: Mon,  2 Sep 2024 06:28:37 +0300
+Message-Id: <20240902032837.1513090-1-a1ba.omarov@gmail.com>
 X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20240902014700.66095-1-baolu.lu@linux.intel.com>
-References: <20240902014700.66095-1-baolu.lu@linux.intel.com>
+In-Reply-To: <20240830-rockchip-canfd-v3-0-d426266453fa@pengutronix.de>
+References: <20240830-rockchip-canfd-v3-0-d426266453fa@pengutronix.de>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240901_185121_807672_EDD27994 
-X-CRM114-Status: GOOD (  13.54  )
+X-CRM114-CacheID: sfid-20240901_202909_960824_4542B1E8 
+X-CRM114-Status: UNSURE (   6.12  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,47 +94,19 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Commit <17de3f5fdd35> ("iommu: Retire bus ops") removes iommu ops from
-the bus structure. The iommu subsystem no longer relies on bus for
-operations. So iommu_domain_alloc() interface is no longer relevant.
+>The IP core is a bit complicated and has several documented errata.
+>The driver is added in several stages, first the base driver including
+>the RX-path. Then several workarounds for errata and the TX-path, and
+>finally features like hardware time stamping, loop-back mode and
+>bus error reporting.
 
-Replace iommu_domain_alloc() with iommu_paging_domain_alloc() which takes
-the physical device from which the host1x_device virtual device was
-instantiated. This physical device is a common parent to all physical
-devices that are part of the virtual device.
+We've tried this on v2, with a custom board with Radxa CM3I connected and
+it's even more stable than BSP driver we backported ourselves.
 
-Suggested-by: Thierry Reding <thierry.reding@gmail.com>
-Signed-off-by: Lu Baolu <baolu.lu@linux.intel.com>
----
- drivers/gpu/drm/tegra/drm.c | 5 +++--
- 1 file changed, 3 insertions(+), 2 deletions(-)
+Tested-by: Alibek Omarov <a1ba.omarov@gmail.com>
 
-diff --git a/drivers/gpu/drm/tegra/drm.c b/drivers/gpu/drm/tegra/drm.c
-index 03d1c76aec2d..d79c76a287f2 100644
---- a/drivers/gpu/drm/tegra/drm.c
-+++ b/drivers/gpu/drm/tegra/drm.c
-@@ -1135,6 +1135,7 @@ static bool host1x_drm_wants_iommu(struct host1x_device *dev)
- 
- static int host1x_drm_probe(struct host1x_device *dev)
- {
-+	struct device *dma_dev = dev->dev.parent;
- 	struct tegra_drm *tegra;
- 	struct drm_device *drm;
- 	int err;
-@@ -1149,8 +1150,8 @@ static int host1x_drm_probe(struct host1x_device *dev)
- 		goto put;
- 	}
- 
--	if (host1x_drm_wants_iommu(dev) && iommu_present(&platform_bus_type)) {
--		tegra->domain = iommu_domain_alloc(&platform_bus_type);
-+	if (host1x_drm_wants_iommu(dev) && device_iommu_mapped(dma_dev)) {
-+		tegra->domain = iommu_paging_domain_alloc(dma_dev);
- 		if (!tegra->domain) {
- 			err = -ENOMEM;
- 			goto free;
--- 
-2.34.1
-
+Cheers,
+Alibek.
 
 _______________________________________________
 Linux-rockchip mailing list
