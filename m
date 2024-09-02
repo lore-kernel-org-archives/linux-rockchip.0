@@ -4,104 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50378CA101E
-	for <linux-rockchip@archiver.kernel.org>; Mon,  2 Sep 2024 01:11:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D7DDCCA101E
+	for <linux-rockchip@archiver.kernel.org>; Mon,  2 Sep 2024 01:52:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=fvanmhqVk7zMGNQJYL056rPfpfe2L2a5Tn1Jkyov/mQ=; b=eiAkc9O6D92xCs
-	JAI23LgUKTrAJhXJkcVeWc9oYLmo4WSuS0aYS3TmTh+m2K1/Dw/C2Ehb3JY6KURrT0v13gWgPkfXl
-	gAkQrTv+S7b8kzOjyaC59GGyQMGnZ9GEqT6Naz4wgne2dR+waxBayUxCKwur23R5BYgYwCEdtf3os
-	3LqvQqAwcMWqYvPhAsblM8cU6iRyOPUnFVsWdhOG/Q7WZIJ/NoReBFJAiAsNdNJuEUGh2tngUwY6B
-	z0wNlMgqIP7yIPiu3cqJ05ifMYJf/jKny4ECXxHrxsP0pbwa5b6yuUdsZw6iabvMX2WL77iTamaJv
-	TUzFzyHvVScgwrbO8GUg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=u1+cx7nM5qkDCzahMq2bnYlIrY9XhtoVyJvEBfTagVY=; b=UHxZWVNMGaNK3m
+	fslaeVz1/eK+7hfMYX1Iak+6acRn5+bn9WBg3ypcR9Qh1CdLsAw70e+ce8Vu2jfvhi0Aq/On9Rr9B
+	aqWqystysz1mLtcDdiMhMCCInHOCCgF6p34yjRiLW1mc0gjjpKa0C/1OqUMO0B39j6bwSKFu+E7tm
+	eu0g/CEAE4ygGUwEAmQsD4nspo8WP7474HG+CYEpSjMFcjsaa0u1EpMW6IXG3p7yGTJhaeNQU1eFi
+	9gqsZBwMyT36g4feqf3pRKJmknErIyaygtzpZt+jDmUhD2bxN9MycC/kulH8jkgKtTgRTfWF/jLwU
+	jg89+YhY145WP9ogt1aw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1skvbF-0000000CdhM-1uO5;
-	Mon, 02 Sep 2024 01:11:21 +0000
-Received: from mail-io1-xd36.google.com ([2607:f8b0:4864:20::d36])
+	id 1skwEb-0000000ChZI-0lhE;
+	Mon, 02 Sep 2024 01:52:01 +0000
+Received: from mgamail.intel.com ([192.198.163.8])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1skvaJ-0000000CdUA-2RIH;
-	Mon, 02 Sep 2024 01:10:24 +0000
-Received: by mail-io1-xd36.google.com with SMTP id ca18e2360f4ac-82a3022be9eso88509839f.3;
-        Sun, 01 Sep 2024 18:10:22 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1725239422; x=1725844222; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=E4gzV92PxZE+qFNA+RekwmEuIebSetmvmkFXMiYp3PY=;
-        b=Cja3I9sk2O5bT/v/1FrJnGNaiAIija+9C14Q5y0ir9pb7qL3PwH8tnTRHYfZTpdcC6
-         wxzO/yIIoR4G+wHcfmfigy/bgZ2hWL5eQv728L3M/18noWzcyH1Q6uiOJ4YN2L3rmpjb
-         14fEZfYsy4h0d/ph2I9JLFoU2azAdOpZET/iFKWAMJGhdFzPDsNV4JLnsbSlZiWF4xwI
-         kGnpGej78re0r4MUWY83YepPScMtswmjqIx4Q8Lhyews+VPSGqsJb02VbPuXVZ+6yY2o
-         W6TDmqlBx0nS1JwQ55jVlO53GGcxdEBgGSKL9owdp/qdxBmV15+ojeAph8LBo5q3VT0s
-         4h2g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1725239422; x=1725844222;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=E4gzV92PxZE+qFNA+RekwmEuIebSetmvmkFXMiYp3PY=;
-        b=r6CSF9ngmWkFc+nOct/5jPB1vbbqarV6a40iwrE7FFLX7grHVn4XCU5ANc4u7bTf6q
-         /jEpO3gLe3IA5wW3DJiNNi+MRlPO/fiOF0RGXpfu+ASVJwEnMwx4Dbjw+RIZiHPQgZUF
-         RdugXTB4Mcfgcvlg7drajlqgszkRkNlUG0sITgSDoBi8brJRkBM3WJCDdvFlU1OhgKpJ
-         hnznexSQqoxZainw7uH38KeXLBs+izq1hBjI2W3p+5HCGPD7NHHElbwNaEJJwMHmkb8h
-         1dtNnvO+1trL7fvTbljo6TXJfXz9OTFnpkWx1PMTmRyDMEtTsr8EfljdYTA37NWhKzcO
-         sJ0Q==
-X-Forwarded-Encrypted: i=1; AJvYcCXNlYB6I09K3dv29AnCfLOe2k9gJMekHpEEhgH/vgsLQZAozcB5S2yZo9mFum5VqcM7Awf28E+koAOHVtgIGdim@lists.infradead.org, AJvYcCXX7ysHxjARq5ukI9ZfHDFEEYy+fJo1aunm+Zh+Gh3dnbKUqFwMs8tnbRCflIR811iO/LJhKCDQyki7/qw5Dnc=@lists.infradead.org
-X-Gm-Message-State: AOJu0YyN7zcDKQqydtUuoJFYCavjjmjKPsywhrBji/9Rw9O+ws/aiVuh
-	rqZR9RrlmtFw/wxSzb7S3eaaThYVViNqYrgEvWw36zEEdsKgS2SD
-X-Google-Smtp-Source: AGHT+IFyhMM0xDEm3decKqdzpa8ZS+bTABQJ0zYWbmUuOdCfCFThXfgY07/epTd0Cp/ktdQ+h6vMgg==
-X-Received: by 2002:a05:6e02:194d:b0:397:6dfc:993a with SMTP id e9e14a558f8ab-39f4e11924fmr65501285ab.21.1725239421925;
-        Sun, 01 Sep 2024 18:10:21 -0700 (PDT)
-Received: from localhost.localdomain (174-20-195-90.mpls.qwest.net. [174.20.195.90])
-        by smtp.gmail.com with ESMTPSA id e9e14a558f8ab-39f552cd162sm9103755ab.17.2024.09.01.18.10.16
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 01 Sep 2024 18:10:21 -0700 (PDT)
-From: Shimrra Shai <shimrrashai@gmail.com>
-To: cristian.ciocaltea@collabora.com
-Cc: Laurent.pinchart@ideasonboard.com,
-	aarnoud@me.com,
-	airlied@gmail.com,
-	andrzej.hajda@intel.com,
-	andy.yan@rock-chips.com,
-	conor+dt@kernel.org,
-	daniel@ffwll.ch,
-	devicetree@vger.kernel.org,
-	dri-devel@lists.freedesktop.org,
-	heiko@sntech.de,
-	hjc@rock-chips.com,
-	jernej.skrabec@gmail.com,
-	jonas@kwiboo.se,
-	kernel@collabora.com,
-	krzk+dt@kernel.org,
-	krzk@kernel.org,
-	ldearquer@gmail.com,
+	id 1skwDf-0000000ChEq-3D68;
+	Mon, 02 Sep 2024 01:51:05 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1725241863; x=1756777863;
+  h=from:to:cc:subject:date:message-id:mime-version:
+   content-transfer-encoding;
+  bh=aBpacNPMohRcwSsOR11sSC5U39gBhwta0pqjN6fSZyw=;
+  b=dUoPApqn81mj36O+4LACZwoMUxUi/Hb0HAaS0H6O1Mc/3VaNtKqRTcwt
+   0ASlX2IC9QYuyOVMRaPWp3Os+UJGfd07vV6GxI3SI4PUNH2sEFjf2wGnM
+   o51tDMRh2kLARZlUwh8WC029XHOy/ZIBbhqjTXHeEnO6nVM+Dohp98Pdb
+   5+fvSokRFy79BPVjX1a2jT4Uat9rPhsuobSYqzgizCL9PQVfSv5sK38G6
+   ly5FTPx4P+/++h2hTwWsXrLkfZ5OQnuJ52bMdaIrKTQAD9VFcoBk4+tFp
+   DhrntiJhgp6N8QJwYJpzMGt+rif33G8dUbZZNjMA9lNOi6koHcyS24YsE
+   g==;
+X-CSE-ConnectionGUID: l0Z+QDrwTk29gbQZNtnsCA==
+X-CSE-MsgGUID: p08PoZsOSOibmMFf73momg==
+X-IronPort-AV: E=McAfee;i="6700,10204,11182"; a="41307651"
+X-IronPort-AV: E=Sophos;i="6.10,194,1719903600"; 
+   d="scan'208";a="41307651"
+Received: from orviesa006.jf.intel.com ([10.64.159.146])
+  by fmvoesa102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 01 Sep 2024 18:51:01 -0700
+X-CSE-ConnectionGUID: IRhh+f7nQQCcc3lrV/qkew==
+X-CSE-MsgGUID: V2HiG/ObQqC4xEN2WrNWAA==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.10,194,1719903600"; 
+   d="scan'208";a="64817612"
+Received: from allen-box.sh.intel.com ([10.239.159.127])
+  by orviesa006.jf.intel.com with ESMTP; 01 Sep 2024 18:50:55 -0700
+From: Lu Baolu <baolu.lu@linux.intel.com>
+To: Karol Herbst <kherbst@redhat.com>,
+	Lyude Paul <lyude@redhat.com>,
+	Danilo Krummrich <dakr@redhat.com>,
+	David Airlie <airlied@gmail.com>,
+	Daniel Vetter <daniel@ffwll.ch>,
+	Thierry Reding <thierry.reding@gmail.com>,
+	Jonathan Hunter <jonathanh@nvidia.com>,
+	Sandy Huang <hjc@rock-chips.com>,
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Maxime Ripard <mripard@kernel.org>,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	Mikko Perttunen <mperttunen@nvidia.com>,
+	Joerg Roedel <joro@8bytes.org>,
+	Will Deacon <will@kernel.org>,
+	Robin Murphy <robin.murphy@arm.com>,
+	Jason Gunthorpe <jgg@ziepe.ca>,
+	Kevin Tian <kevin.tian@intel.com>
+Cc: dri-devel@lists.freedesktop.org,
+	nouveau@lists.freedesktop.org,
+	linux-tegra@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
-	maarten.lankhorst@linux.intel.com,
-	markyao0591@gmail.com,
-	mripard@kernel.org,
-	neil.armstrong@linaro.org,
-	rfoss@kernel.org,
-	robh@kernel.org,
-	s.hauer@pengutronix.de,
-	tzimmermann@suse.de
-Subject: Re: Re: [PATCH v5 3/4] dt-bindings: display: rockchip: Add schema for RK3588 HDMI TX Controller
-Date: Sun,  1 Sep 2024 20:09:48 -0500
-Message-ID: <20240902010948.3654-1-shimrrashai@gmail.com>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <5ea24ad3-7faa-4a59-ba10-d43b32b3b40e@collabora.com>
-References: <5ea24ad3-7faa-4a59-ba10-d43b32b3b40e@collabora.com>
+	linux-media@vger.kernel.org,
+	iommu@lists.linux.dev,
+	linux-kernel@vger.kernel.org,
+	Lu Baolu <baolu.lu@linux.intel.com>
+Subject: [PATCH v2 0/3] drm: Use iommu_paging_domain_alloc()
+Date: Mon,  2 Sep 2024 09:46:57 +0800
+Message-Id: <20240902014700.66095-1-baolu.lu@linux.intel.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240901_181023_640637_E7E73725 
-X-CRM114-Status: GOOD (  13.42  )
+X-CRM114-CacheID: sfid-20240901_185103_834209_4D6D5D6A 
+X-CRM114-Status: UNSURE (   9.99  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -118,35 +105,43 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Cristian Ciocaltea wrote:
-> On 8/31/24 9:13 AM, Krzysztof Kozlowski wrote:
-> >
-> > Please define all clocks.
->
-> The other clocks are defined in the common binding, should we reiterate
-> them?
+Commit <17de3f5fdd35> ("iommu: Retire bus ops") removes iommu ops from
+the bus structure. The iommu subsystem no longer relies on bus for
+operations. So iommu_domain_alloc() interface is no longer relevant.
 
-I would suggest yes, they should be reduplicated, if only to maintain
-consistency with all the other docs. A grep through the bridge docs
-shows that there are virtually none which use a "{}" placeholder like
-this. While it seems kind of like one might worry about "don't
-repeat yourself" syndrome, keep in mind this is not code, but human-
-used documentation. Having all the information available at a glance
-would seem to be the most convenient to the end (developer) user, so
-they aren't having to toggle between two separate files. Of course
-there may be some questions regarding docs becoming out of sync, but
-*ideally* we don't want to break backward compatibility with device
-trees (esp. given how I am imagining firmware integration to work on
-these platforms, as the RK3588 is at at least low-end desktop-grade
-performance and UEFI packages have already been built for it), though
-of course that doesn't mean adding new options is off the table.
+A new helper named iommu_paging_domain_alloc() was introduced in the
+iommu subsystem as a replacement of iommu_domain_alloc(). This helper
+relies on the device for IOMMU API use instead of the bus.
 
-(FWIW, this is what I did in my now-withdrawn-at-your-request
-re-submission; I reduplicated the bindings as it seemed that's what
-others here were pushing for and thus that felt like the quickest way
-to get this important driver approved.)
+The replacement work started from this series:
 
-- Shimrra Shai
+https://lore.kernel.org/linux-iommu/20240610085555.88197-1-baolu.lu@linux.intel.com/
+
+Several patches have already been merged into the mainline kernel, but
+we've decided to route all remaining ones through the subsystem tree.
+
+Change log:
+v2:
+ - Patch 3/3: use dev->dev.parent as the input for
+   iommu_paging_domain_alloc(), suggested by Thierry Reding.
+   https://lore.kernel.org/linux-iommu/qyvyd2ftebjlgmzyayfvxsqa64c4wgx7keix3a6eexdspbvawy@a5ffnm5h5tgp/
+
+v1:
+ - https://lore.kernel.org/linux-iommu/20240812071034.9443-1-baolu.lu@linux.intel.com/
+
+Lu Baolu (3):
+  drm/nouveau/tegra: Use iommu_paging_domain_alloc()
+  drm/rockchip: Use iommu_paging_domain_alloc()
+  drm/tegra: Use iommu_paging_domain_alloc()
+
+ drivers/gpu/drm/nouveau/nvkm/engine/device/tegra.c |  4 ++--
+ drivers/gpu/drm/rockchip/rockchip_drm_drv.c        | 10 +++++++---
+ drivers/gpu/drm/tegra/drm.c                        |  5 +++--
+ 3 files changed, 12 insertions(+), 7 deletions(-)
+
+-- 
+2.34.1
+
 
 _______________________________________________
 Linux-rockchip mailing list
