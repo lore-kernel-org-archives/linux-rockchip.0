@@ -4,116 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5236BCD342C
-	for <linux-rockchip@archiver.kernel.org>; Tue,  3 Sep 2024 11:02:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7F655CD3420
+	for <linux-rockchip@archiver.kernel.org>; Tue,  3 Sep 2024 12:13:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=mtkEeJ1kxQkdtiOjbfO/LeIDSSXSDMSOUAFTAGNx6E4=; b=gCNk4uojTjMy1m
-	iH9ZoPxTq7JXXUstfd5wgZRE7oWO1x5cG9s6CtjJh9gCxDI3a4LRKaEgTg/CNIpSN9kp582CG/JB3
-	7S8MuX1AE77M3LN09JPTJpw+ATwvkGjVYJK3B9dvNLhJ0LWLkTtTU4lfyRFPS93Qqt8sZiS27SNAc
-	8kiy2GaYrt6qhH9RtyjzQMpDHr/UDztX/w+KUAvRb09zVmp+o2YkrYVIq2smiyO06rN2GBE7vUPhm
-	QYsSAzVDutU4xZYbeFK6+RQJUUYcQYXFgwdQvFGw5a7b38SlAmahB6iuavJ5UOpXeSseYMQDpv5tB
-	bzkY2FvxtVj46+ATRQ+g==;
+	List-Owner; bh=4sYO5omu0AHLcOM+lKQ2dybJZh1KbHNLz69+UcPnWlw=; b=WQZPthR5ugo2+S
+	UyexPFIEx3kgV1m60dDRVbeFoswGa3pEYCJWDpe42f/fteQN0Dyxl8yuIu326HTOt8oAHDH94oarW
+	Ik3IzkIVM4x6tM+rc/Oj/mc9wtnCMYovjqkMVQuBmwPBdFNDo4G3Y4TbrHfxxlJBkh1e5U/qCP5p1
+	L0ON/UrN1Gw3vanE5sjBHY39hvyYK0UXVGsyfgCa7bDYKc6nAJApgfF3gus9BoOAuRxiN3YGGUCqJ
+	stqzQAPikCqtnGbo/89bpMzVYOQP138j277zBa0zM5b8VqrkzU6sha1s1N9CAUf7hsrXZUyJWCJXx
+	5CMg7gcR9a7+G0V6SzfA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1slRIi-0000000HSW1-499p;
-	Tue, 03 Sep 2024 11:02:20 +0000
-Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
+	id 1slSPg-000000005i5-0E9I;
+	Tue, 03 Sep 2024 12:13:36 +0000
+Received: from mail-yb1-xb2a.google.com ([2607:f8b0:4864:20::b2a])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1slRDt-0000000HRQW-0Btu
-	for linux-rockchip@bombadil.infradead.org;
-	Tue, 03 Sep 2024 10:57:21 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=casper.20170209; h=Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-Type:Content-ID:Content-Description;
-	bh=BwUrh3OEJTRjFnN467OIIFRLN9Mzt3dNQvLn8JSBJpI=; b=hXnLUOP5EWHajoCN7AO+I+93KB
-	k4oHjrwK1Y1RnTLGZY8k6ZUcSORXfekIIL2R1i/Q90/8qLHveahKg7O6cfhJ4aZ1vEK4cIgr/pgWR
-	FqaDHxwAeRIXrwYFY8Wr4uIgZwLNT1OPPyAsSJ4aOil3njEpOafL1EVZqlTJJhJfGT1eiFEBt9mb+
-	wdJT0OHxw0E1UP1r+V3wUh+05DfOyuMoERtADYnHDlqj3vMVS/hBWIrh4s0JEZi02kL60rUOJVBy8
-	DJ5I7hLxPWpmg+hwSa94+7sB6HZXRT/HbepQ9s69iEvMsBjYyc6kFgrnKwwGG10ugXsmUIULXbqWV
-	QAA3OLlA==;
-Received: from omta040.useast.a.cloudfilter.net ([44.202.169.39])
-	by casper.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1slRDp-000000086tq-2HGE
+	id 1slSMb-0000000056X-2ecd
 	for linux-rockchip@lists.infradead.org;
-	Tue, 03 Sep 2024 10:57:19 +0000
-Received: from eig-obgw-6002a.ext.cloudfilter.net ([10.0.30.222])
-	by cmsmtp with ESMTPS
-	id l9Hfs0MrvnNFGlR9qsUNkj; Tue, 03 Sep 2024 10:53:11 +0000
-Received: from md-in-79.webhostbox.net ([43.225.55.182])
-	by cmsmtp with ESMTPS
-	id lR9nsgUJuX56wlR9psZMZA; Tue, 03 Sep 2024 10:53:10 +0000
-X-Authority-Analysis: v=2.4 cv=MY6nuI/f c=1 sm=1 tr=0 ts=66d6ea96
- a=LfuyaZh/8e9VOkaVZk0aRw==:117 a=kofhyyBXuK/oEhdxNjf66Q==:17
- a=EaEq8P2WXUwA:10 a=-pn6D5nKLtMA:10 a=ARcrkP6DAAAA:8 a=vU9dKmh3AAAA:8
- a=L4MHaItcyTsGJ2lxC4sA:9 a=HWcd8CIpyGgXnveeQW_Z:22 a=rsP06fVo5MYu2ilr0aT5:22
- a=ZCPYImcxYIQFgLOT52_G:22
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=linumiz.com
-	; s=default; h=Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
-	List-Post:List-Owner:List-Archive;
-	bh=BwUrh3OEJTRjFnN467OIIFRLN9Mzt3dNQvLn8JSBJpI=; b=lbo7s2WslKLYXiYgL2f8BxCRqi
-	GWmGdzOJbLzKUHjlBZ/UHlSfaP6l17LSoJIAxhU/0OPj8NJS1opKDBHSqZLyG/l0C+6peasbWEuko
-	2Nwzs70RDMXEJQZ/Su99J5NItlALuVetlAGEdEdJ+V9TmE3ucYU1Qp9z9hqqs6oPRJISkRWhct0pZ
-	EM/im0bYbDNgbtCuchM1UKNTL53hi5E57zj1vrLCeo5klTCiLWvezyFqbuSXmZl76Q2apne7x3khw
-	LFnyc1xEWHUuay5hBq0QcdVTGc3as9nMCUZRzZ9WYNIf3qP73/uojyBtJyF6DuQWeMnfC0SAev/OB
-	7P/Z+ETA==;
-Received: from [122.165.245.213] (port=41440 helo=localhost.localdomain)
-	by md-in-79.webhostbox.net with esmtpsa  (TLS1.2) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.96.2)
-	(envelope-from <karthikeyan@linumiz.com>)
-	id 1slR9m-000Elu-17;
-	Tue, 03 Sep 2024 16:23:06 +0530
-From: Karthikeyan Krishnasamy <karthikeyan@linumiz.com>
-To: robh@kernel.org,
-	krzk+dt@kernel.org,
-	conor+dt@kernel.org,
-	heiko@sntech.de,
-	alexandre.belloni@bootlin.com
-Cc: devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-rtc@vger.kernel.org,
-	Karthikeyan Krishnasamy <karthikeyan@linumiz.com>
-Subject: [PATCH v2 6/8] dt-bindings: vendor-prefixes: Add Relfor labs
-Date: Tue,  3 Sep 2024 16:22:43 +0530
-Message-Id: <20240903105245.715899-7-karthikeyan@linumiz.com>
-X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20240903105245.715899-1-karthikeyan@linumiz.com>
-References: <20240903105245.715899-1-karthikeyan@linumiz.com>
+	Tue, 03 Sep 2024 12:10:27 +0000
+Received: by mail-yb1-xb2a.google.com with SMTP id 3f1490d57ef6-e03caab48a2so4012737276.1
+        for <linux-rockchip@lists.infradead.org>; Tue, 03 Sep 2024 05:10:25 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1725365424; x=1725970224; darn=lists.infradead.org;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=4An20D90YPhjOzkwF+Hg8QYD3SJoIXYWy8cZWiHm4HE=;
+        b=bkXDHl3S7D0HYlJc1mI5FkPWfuOoC6DDj0BKwdI8qfkjxurQetAPAPBOWGH6EsaJR0
+         UNa5KYTCkWGH9pJwKIfzV+BM4EYY7DXqSkLCcwU4sb763l4YeY6NKFQmyhrrXSNP02qs
+         +36+byFt1l6aC0hAy+Zokm8/x6v3VDsOxcVsf68LlYXoLvENMJMgfTZR6SY/WZkZfPjT
+         Ovn1sRSKXdvwmKFMOv6dpa/1/pPFhLD8KEb+5gGh4pVYKVbKR0iDO8Rg4K/KiW0pObmm
+         l58w4uZz9vX/6dFMoqRdSgcOxK9DBWLXzTVRh0CvmLUh+oc7DQiHiKzTVCbrboUhzL0d
+         HTfw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1725365424; x=1725970224;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=4An20D90YPhjOzkwF+Hg8QYD3SJoIXYWy8cZWiHm4HE=;
+        b=YLOI6pTaY2PnMpx+hhPhGs8yYFqDDJYj2x8ZVpRDvxsC9WuBJj0yv7eTRnfLnWHMWg
+         y7bB7N7zbKCTOzEXvbenKiH6JhN4g61fAzwxrDoScrIIDp+C1XXqiI0JGolVlTbIuGha
+         T82nOBJD18GiTAl9uzfmfT4r430GeivWzT6V7fnFEndGr6QgxT1Sbn+HH7oSUvcXa82L
+         /aRg7rneiqNIv5uWvMO8GjdZOrTyyarCPJ6S16szPKdKTsXhSGSaIpi9H1Y+3bSCYk4G
+         udoclMUk8p3ZU7tXkO4RjI3iNPpAWL0mwNjqQfw2Ygtj4c5T+EaUlCjqcLCnhRQrkozp
+         R8sg==
+X-Forwarded-Encrypted: i=1; AJvYcCXu8RHmuc5vvUTcbQmRihV/wpgZq2Tj6YzMXstGK1XuvkQL1drATe4qo1kgain2zl6NByItvdl0087jP3dLyA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwrSwURmMt5Fh/Nil5n9M9xGenGzWvgSfySRv0NDtu4Bh02K7qi
+	GGKlA5bFxlMuFQ+DR2Olp/mzbZN9OnfkGm/2jWsr/KT1uc5ThFgGCdz3VWzWqRNGzganBCDdvYD
+	vo0CJLIou/JWN3NP3Nm4Xt972DFcFS+rxe1k7ZQ==
+X-Google-Smtp-Source: AGHT+IFX1MKd7/CniZfZMCZVstNgR+E8MEOhVGOhXHV1ehVIWPMeYpmWq3hGrzVCf5n6CzgXPAzIGrO6KiCqLNwVX0w=
+X-Received: by 2002:a05:6902:1002:b0:e03:c692:c8b5 with SMTP id
+ 3f1490d57ef6-e1a7a1d20camr11923156276.19.1725365424176; Tue, 03 Sep 2024
+ 05:10:24 -0700 (PDT)
 MIME-Version: 1.0
-X-AntiAbuse: This header was added to track abuse, please include it with any abuse report
-X-AntiAbuse: Primary Hostname - md-in-79.webhostbox.net
-X-AntiAbuse: Original Domain - lists.infradead.org
-X-AntiAbuse: Originator/Caller UID/GID - [47 12] / [47 12]
-X-AntiAbuse: Sender Address Domain - linumiz.com
-X-BWhitelist: no
-X-Source-IP: 122.165.245.213
-X-Source-L: No
-X-Exim-ID: 1slR9m-000Elu-17
-X-Source: 
-X-Source-Args: 
-X-Source-Dir: 
-X-Source-Sender: (localhost.localdomain) [122.165.245.213]:41440
-X-Source-Auth: karthikeyan@linumiz.com
-X-Email-Count: 64
-X-Org: HG=dishared_whb_net_legacy;ORG=directi;
-X-Source-Cap: bGludW1jbWM7aG9zdGdhdG9yO21kLWluLTc5LndlYmhvc3Rib3gubmV0
-X-Local-Domain: yes
-X-CMAE-Envelope: MS4xfDJYauc0PX8ATD73m5kpTZyEbrmvGg/FOfelCV+EwTvODj8g8zb/Dn7sKUqBnSEYiErQhRvx8nCGsqlEMspO5dB1B4Su8J0DQlt7kOw3T04NVLdBZJ5H
- JHH7p+2v+x45evQPz0Ct0GxAxVRcqhPuN37yA8yC5qm+EB2TJ7UjzKvNTyXw7LYRlnU689i18KUfM6VDUOWV//dxFIEel/DfhGmyJU1Wh5VrXR8HgBP3bRw1
+References: <20240828151028.41255-1-detlev.casanova@collabora.com> <01020191998a55a9-697c3a2c-237e-49bb-b3dd-45762198d74f-000000@eu-west-1.amazonses.com>
+In-Reply-To: <01020191998a55a9-697c3a2c-237e-49bb-b3dd-45762198d74f-000000@eu-west-1.amazonses.com>
+From: Ulf Hansson <ulf.hansson@linaro.org>
+Date: Tue, 3 Sep 2024 14:09:47 +0200
+Message-ID: <CAPDyKFoJoqwNTKvpK93QtK1wA9vzVUTzCrP32s_HEZcrujN2Mg@mail.gmail.com>
+Subject: Re: [PATCH v3 06/11] dt-bindings: mmc: Add support for rk3576 eMMC
+To: Detlev Casanova <detlev.casanova@collabora.com>
+Cc: linux-kernel@vger.kernel.org, Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Heiko Stuebner <heiko@sntech.de>, David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>, 
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, 
+	Thomas Zimmermann <tzimmermann@suse.de>, Andi Shyti <andi.shyti@kernel.org>, Lee Jones <lee@kernel.org>, 
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Jiri Slaby <jirislaby@kernel.org>, 
+	Mark Brown <broonie@kernel.org>, Wim Van Sebroeck <wim@linux-watchdog.org>, 
+	Guenter Roeck <linux@roeck-us.net>, Chris Morgan <macromorgan@hotmail.com>, 
+	Jonas Karlman <jonas@kwiboo.se>, Tim Lunn <tim@feathertop.org>, Chukun Pan <amadeus@jmu.edu.cn>, 
+	Muhammed Efe Cetin <efectn@protonmail.com>, Andy Yan <andyshrk@163.com>, Jagan Teki <jagan@edgeble.ai>, 
+	Dragan Simic <dsimic@manjaro.org>, Ondrej Jirman <megi@xff.cz>, Jimmy Hon <honyuenkwun@gmail.com>, 
+	Elon Zhang <zhangzj@rock-chips.com>, Finley Xiao <finley.xiao@rock-chips.com>, 
+	Elaine Zhang <zhangqing@rock-chips.com>, Liang Chen <cl@rock-chips.com>, 
+	Yifeng Zhao <yifeng.zhao@rock-chips.com>, Jisheng Zhang <jszhang@kernel.org>, 
+	Jamie Iles <jamie@jamieiles.com>, devicetree@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+	dri-devel@lists.freedesktop.org, linux-i2c@vger.kernel.org, 
+	linux-mmc@vger.kernel.org, linux-serial@vger.kernel.org, 
+	linux-spi@vger.kernel.org, linux-watchdog@vger.kernel.org, 
+	kernel@collabora.com, Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240903_115717_670033_7CB1EDB0 
-X-CRM114-Status: UNSURE (   4.20  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240903_051025_732871_714928CF 
+X-CRM114-Status: GOOD (  19.53  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -130,35 +107,112 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add Relfor Labs Pvt. Ltd. vendor prefixes
-https://www.relfor.com/
+On Wed, 28 Aug 2024 at 17:11, Detlev Casanova
+<detlev.casanova@collabora.com> wrote:
+>
+> The device is compatible with rk3588, so add an entry for the 2
+> compatibles together.
+>
+> The rk3576 device has a power-domain that needs to be on for the eMMC to
+> be used. Add it as a requirement.
+>
+> Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
+> Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
-Signed-off-by: Karthikeyan Krishnasamy <karthikeyan@linumiz.com>
----
+This one doesn't apply as I have other changes queued up.
 
-Notes:
-    v2:
-    - No change
+Can you please re-base and post a new version based upon
+git.kernel.org/pub/scm/linux/kernel/git/ulfh/mmc.git next.
 
- Documentation/devicetree/bindings/vendor-prefixes.yaml | 2 ++
- 1 file changed, 2 insertions(+)
+Kind regards
+Uffe
 
-diff --git a/Documentation/devicetree/bindings/vendor-prefixes.yaml b/Documentation/devicetree/bindings/vendor-prefixes.yaml
-index a70ce43b3dc0..7d10ac7d6800 100644
---- a/Documentation/devicetree/bindings/vendor-prefixes.yaml
-+++ b/Documentation/devicetree/bindings/vendor-prefixes.yaml
-@@ -1220,6 +1220,8 @@ patternProperties:
-     description: Unisoc Communications, Inc.
-   "^realtek,.*":
-     description: Realtek Semiconductor Corp.
-+  "^relfor,.*":
-+    description: Relfor Labs Pvt. Ltd.
-   "^remarkable,.*":
-     description: reMarkable AS
-   "^renesas,.*":
--- 
-2.39.2
-
+> ---
+>  .../bindings/mmc/snps,dwcmshc-sdhci.yaml      | 38 +++++++++++++------
+>  1 file changed, 26 insertions(+), 12 deletions(-)
+>
+> diff --git a/Documentation/devicetree/bindings/mmc/snps,dwcmshc-sdhci.yaml b/Documentation/devicetree/bindings/mmc/snps,dwcmshc-sdhci.yaml
+> index 4d3031d9965f..aff8106ec361 100644
+> --- a/Documentation/devicetree/bindings/mmc/snps,dwcmshc-sdhci.yaml
+> +++ b/Documentation/devicetree/bindings/mmc/snps,dwcmshc-sdhci.yaml
+> @@ -10,18 +10,19 @@ maintainers:
+>    - Ulf Hansson <ulf.hansson@linaro.org>
+>    - Jisheng Zhang <Jisheng.Zhang@synaptics.com>
+>
+> -allOf:
+> -  - $ref: mmc-controller.yaml#
+> -
+>  properties:
+>    compatible:
+> -    enum:
+> -      - rockchip,rk3568-dwcmshc
+> -      - rockchip,rk3588-dwcmshc
+> -      - snps,dwcmshc-sdhci
+> -      - sophgo,cv1800b-dwcmshc
+> -      - sophgo,sg2002-dwcmshc
+> -      - thead,th1520-dwcmshc
+> +    oneOf:
+> +      - items:
+> +          - const: rockchip,rk3576-dwcmshc
+> +          - const: rockchip,rk3588-dwcmshc
+> +      - enum:
+> +          - rockchip,rk3568-dwcmshc
+> +          - rockchip,rk3588-dwcmshc
+> +          - snps,dwcmshc-sdhci
+> +          - sophgo,cv1800b-dwcmshc
+> +          - sophgo,sg2002-dwcmshc
+> +          - thead,th1520-dwcmshc
+>
+>    reg:
+>      maxItems: 1
+> @@ -38,7 +39,6 @@ properties:
+>        - description: block clock for rockchip specified
+>        - description: timer clock for rockchip specified
+>
+> -
+>    clock-names:
+>      minItems: 1
+>      items:
+> @@ -48,6 +48,9 @@ properties:
+>        - const: block
+>        - const: timer
+>
+> +  power-domains:
+> +    maxItems: 1
+> +
+>    resets:
+>      maxItems: 5
+>
+> @@ -63,7 +66,6 @@ properties:
+>      description: Specify the number of delay for tx sampling.
+>      $ref: /schemas/types.yaml#/definitions/uint8
+>
+> -
+>  required:
+>    - compatible
+>    - reg
+> @@ -71,6 +73,18 @@ required:
+>    - clocks
+>    - clock-names
+>
+> +allOf:
+> +  - $ref: mmc-controller.yaml#
+> +  - if:
+> +      properties:
+> +        compatible:
+> +          contains:
+> +            const: rockchip,rk3576-dwcmshc
+> +    then:
+> +      properties:
+> +        power-domains:
+> +          minItems: 1
+> +
+>  unevaluatedProperties: false
+>
+>  examples:
+> --
+> 2.46.0
+>
 
 _______________________________________________
 Linux-rockchip mailing list
