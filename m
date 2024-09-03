@@ -4,60 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6A932CD3448
-	for <linux-rockchip@archiver.kernel.org>; Tue,  3 Sep 2024 16:21:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 14949CD37A9
+	for <linux-rockchip@archiver.kernel.org>; Tue,  3 Sep 2024 16:21:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=DhwZ9szePslfO+3ptxuhRGoBwfI0fpKX6YHD9cE0EKY=; b=xlCVw9/JOlPBRD
-	86DVO2Gs3hifVv1OKfQZhLXMg37duqe+TQwQPd6nr+hoUqWDvbCPvNrjCFTjlbEGlZjgRc5KwaRzO
-	4pICKT079hv6/PQ5NyknhS2pmUquo8C5az9uHIcARqO8EYYoniL4NEAnXkiQPyh7/5/0DF4gTqaQy
-	e4KPc8rT9auLC8ZZzDclWJujAYU5UQq4lU0vFVYRcsyvjVM6k/eGNEMQtZqkZbmckCtGRNCWEXIxq
-	UaJWyAJ8xdjXHeZZTjbChDeR+YcyGJnvdKpe1qSP88iWGhtr3OnIJlePoQoEzKJtYK1EFF1Qeocaj
-	d7JQNx2Nvzaqd95oMbRA==;
+	List-Owner; bh=mOe60MBCpKSdr0CRp4y+A5H36eIBtOwcU5dF78ZumeI=; b=ZFULGckEOMgRYJ
+	nccEgY11z7ydwgwJcfUivHmMq8CNxm54AGBH83h0+/LMCBerazJVpbyrxX5uD63lNEQe0+qg6Km4D
+	Ad1M5DuQZQzlmPyXBHsZ521cDkIiie4fCl9F24EV/XsRSItRe8oWOG/GdzMbnC5OEJkba82tWGZmP
+	v3sum9rGLPEAk0bKTywsiBQnRUmsV4z4bbobHUvdXfzuD+xpVIbys6YKVl8l0LzzELr9ixdN0MelK
+	AoxeRb4NsBlAsNOhp1SG4D3wP8Fz9rJRqY3ZPt3W2a/Al1kzGJzHFbv21gg+oehdk1IgsqbCDs6ca
+	wxq6+KO3V2wKCvZ68ZeA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1slWHg-000000014cz-0maT;
-	Tue, 03 Sep 2024 16:21:36 +0000
-Received: from mgamail.intel.com ([192.198.163.13])
+	id 1slWHi-000000014eB-0N0w;
+	Tue, 03 Sep 2024 16:21:38 +0000
+Received: from mgamail.intel.com ([198.175.65.10])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1slVxb-00000000zjs-1gel;
-	Tue, 03 Sep 2024 16:00:52 +0000
+	id 1slW0h-000000010Yf-3XRH;
+	Tue, 03 Sep 2024 16:04:05 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1725379251; x=1756915251;
+  t=1725379444; x=1756915444;
   h=date:from:to:cc:subject:message-id:references:
    mime-version:in-reply-to;
-  bh=Oew8IDhF6NxnCQa2ei5kdBgarOsXjY6eAd6r7gRPK/Q=;
-  b=DIrxv1s3JrRH2NHzYSvXJIwegsz2hlydRotPuc81/MtKGAztdvSbGXTY
-   YLavmebQPdgB2k+UiCbQf2O2J0Yb5+65L2oSlZRjRUtQ9F4n4dRY/qUx2
-   C3ZGJWp5vH+xbF8sFYbQMuP0LSatfvWRldUwULUJI03wxewNlXRrnhsF+
-   t6MwQ3jenrXexyieFA8KiWSk/ZfoJFCunW1GGJrUh/Q5K0JGsLphuiR05
-   /Pzvq9q/G18HwBfJrHpHyp0v6DAWUlDHrWjuzWnr3NntrZJrpHsDGHIms
-   JsE4d1HBTY0whWREaXQL7JDh0dbuqWPC5jqYSSH+23fCQ6pSR7sd1GAx3
-   w==;
-X-CSE-ConnectionGUID: xxRiQElmQQ+5XgpjYXX+9g==
-X-CSE-MsgGUID: Cp35lBvtTUiWadITtWL3WA==
-X-IronPort-AV: E=McAfee;i="6700,10204,11184"; a="26905830"
+  bh=Mc0S8w2RG3QSElgGbwBKLQz1QJN0TSNiZ8BtMzE0Kmk=;
+  b=juPaKx2bKNPnpePglOJnXeSjqlA9cfcaWyUhCOsOxw/Op8xMd5hD/P3z
+   NCAuvD5qJQYuVbYegqiSFOOHpi1cLoDUk7Knil4qxJCWp2XiMVfrpe9GY
+   xmennlw+B16AkfWQB7mNn2djNqcyGusMNtX7XXf6vxX/mxHKfvpuD9uoW
+   pDgbAu5vDfr8ydv9nc1NRU1YC5xDrF2ITccYFhPSv4JdJRbm2DweR/sXc
+   QmRZt4i4atHi+mVusoBlRpL1nCW5fzXZrYl2loNVg7GpjQjPiURwQqIuS
+   unRT9vHc+keViEMxu2QEmNMks7yHD8Co0BNubVVPyLN5E9GV8kpbOk7Tx
+   g==;
+X-CSE-ConnectionGUID: 3PATRDN5QQeDuDYossjVZA==
+X-CSE-MsgGUID: EPcqo/OmQhSqcqUh2D2ksw==
+X-IronPort-AV: E=McAfee;i="6700,10204,11184"; a="41461126"
 X-IronPort-AV: E=Sophos;i="6.10,199,1719903600"; 
-   d="scan'208";a="26905830"
-Received: from fmviesa007.fm.intel.com ([10.60.135.147])
-  by fmvoesa107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 03 Sep 2024 09:00:48 -0700
-X-CSE-ConnectionGUID: HO7fN3G2SHekqfXha2S5Ig==
-X-CSE-MsgGUID: N914ntmLSau3alqs+hN68w==
+   d="scan'208";a="41461126"
+Received: from fmviesa010.fm.intel.com ([10.60.135.150])
+  by orvoesa102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 03 Sep 2024 09:04:03 -0700
+X-CSE-ConnectionGUID: eqId1xXRQWu/QFPJA3nZiQ==
+X-CSE-MsgGUID: iakGxm0qQqWKfafTWs3oxw==
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="6.10,199,1719903600"; 
-   d="scan'208";a="64630668"
+   d="scan'208";a="65179232"
 Received: from smile.fi.intel.com ([10.237.72.54])
-  by fmviesa007.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 03 Sep 2024 09:00:45 -0700
+  by fmviesa010.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 03 Sep 2024 09:03:59 -0700
 Received: from andy by smile.fi.intel.com with local (Exim 4.98)
 	(envelope-from <andriy.shevchenko@linux.intel.com>)
-	id 1slVxT-00000004lIG-1JOJ;
-	Tue, 03 Sep 2024 19:00:43 +0300
-Date: Tue, 3 Sep 2024 19:00:43 +0300
+	id 1slW0M-00000004lL1-1ez1;
+	Tue, 03 Sep 2024 19:03:42 +0300
+Date: Tue, 3 Sep 2024 19:03:42 +0300
 From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 To: Ye Zhang <ye.zhang@rock-chips.com>
 Cc: linus.walleij@linaro.org, brgl@bgdev.pl, heiko@sntech.de,
@@ -66,16 +66,18 @@ Cc: linus.walleij@linaro.org, brgl@bgdev.pl, heiko@sntech.de,
 	mika.westerberg@linux.intel.com, tao.huang@rock-chips.com,
 	finley.xiao@rock-chips.com, tim.chen@rock-chips.com,
 	elaine.zhang@rock-chips.com
-Subject: Re: [PATCH v3 00/12] gpio: rockchip: Update the GPIO driver
-Message-ID: <Ztcyq2lb1YS43ncV@smile.fi.intel.com>
+Subject: Re: [PATCH v3 08/12] gpio: rockchip: explan the format of the GPIO
+ version ID
+Message-ID: <ZtczXu-gnbwBp01w@smile.fi.intel.com>
 References: <20240903073649.237362-1-ye.zhang@rock-chips.com>
+ <20240903073649.237362-9-ye.zhang@rock-chips.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20240903073649.237362-1-ye.zhang@rock-chips.com>
+In-Reply-To: <20240903073649.237362-9-ye.zhang@rock-chips.com>
 Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240903_090051_491578_8FB6EC80 
-X-CRM114-Status: UNSURE (   9.24  )
+X-CRM114-CacheID: sfid-20240903_090404_046467_B210D8C9 
+X-CRM114-Status: UNSURE (   9.06  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -93,14 +95,19 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, Sep 03, 2024 at 03:36:37PM +0800, Ye Zhang wrote:
-> GPIO driver support acpi and new version, set input direction in
-> irq_request_resources, fix division error and debounce config error.
+On Tue, Sep 03, 2024 at 03:36:45PM +0800, Ye Zhang wrote:
+> Remove redundant comments and provide a detailed explanation of the
+> GPIO version ID.
 
-Looking at patch 7 it seems the new feature has been barely tested.
-First of all, I recommend to split out the real fixes for now and send them
-separately while working on the rest. Second, perform better bisectability
-(both compile and run time) and overall test coverage in different scenarios.
+"explain" in the Subject.
+
+Suggested-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+(and maybe others)
+
+Reviewed-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+
+Bart, I think this one is good to go (with spelling fix). And it makes these
+values to be described which looks like a win to me.
 
 -- 
 With Best Regards,
