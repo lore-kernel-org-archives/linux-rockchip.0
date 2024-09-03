@@ -4,53 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CA428CD342E
-	for <linux-rockchip@archiver.kernel.org>; Tue,  3 Sep 2024 08:03:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B2BE3CD13CF
+	for <linux-rockchip@archiver.kernel.org>; Tue,  3 Sep 2024 08:10:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Subject:To:From:Date:
-	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
-	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=qj2X2sIa48yj4P9Ny33qOR+6sEKieGJ8e30b1y8a/mU=; b=rtXx1h+FX69zdh
-	+PnJ5o4KiunTGQkK8mceKAQFWWxlzKw3bCi0UKQTSViRibVH40xd8hBWyTOx9qEGb3Gz4Uw1vjq7K
-	KhcNnm2YoyCN0vJnVNPhFnLqmLG1UGEOFEq82b7Di9/yE3yD8pcOUFpjDOEoHmDCNWu1CjE2R6g8f
-	JaqvvRRhUlbvT+hnda+yDFefl/60Qqu6PCyWlS5bkdRWb6nmFZ94EbClBvcmPb9RVGICUzD6imT5S
-	juup5xlLvzWqjelrkt5aEMEQO9V3uB3s9E/jSUW8NPVkjdhGHMATundj+S9Z4T8osmtdVH8pkqQct
-	KAlU//HC6F4hqSPT9kCQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=LRuNvA+c7Eo7dEkszu3MTkfi0eMKq2euD5H8hdLNk0I=; b=b4vCiBVOhv0jP/G0aCOLwRx5wk
+	ly+SSSm5vjbksD3MW6MklY0WW8o3gtGP3AFa9wwHfV8RknwcxGWwgsLSpQtMHJQ5LT3og4Lx21zPZ
+	qmJbFVxvci0L/QyihEZgZeiLAehbsWQwWvEYKLhAgfmtl6/6bBTUqIZ4D/PYPTz/IMsaQ+yFrYDxp
+	cYbxXva/rQO0epWOKtxHR/F1LaPhUi9eLqKAK7YrhK//e3PzVOOvGolx8prm2mwgqE4Q8nNxf5Orh
+	zxVtPPfbQxMKlGhwT5un9n4PGC6d2TmFhqhYIRZj0KfBPlQYZoSd8WN0A7wgZ8xGUS8bZu2MqBBhR
+	JBdhRzuw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1slOVQ-0000000Gozm-2Slz;
-	Tue, 03 Sep 2024 08:03:16 +0000
-Received: from mail.synergyflux.pl ([51.38.99.212])
+	id 1slOc5-0000000GqD8-241a;
+	Tue, 03 Sep 2024 08:10:09 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1slOVM-0000000Gow1-3SeV
-	for linux-rockchip@lists.infradead.org;
-	Tue, 03 Sep 2024 08:03:15 +0000
-Received: by mail.synergyflux.pl (Postfix, from userid 1002)
-	id B166A258F4; Tue,  3 Sep 2024 10:01:09 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=synergyflux.pl;
-	s=mail; t=1725350482;
-	bh=n9RRp8MlabRDJBtJNro49Rmci90RtotaZYZ8+xo6WI4=;
-	h=Date:From:To:Subject:From;
-	b=PsBcISDbrRnMl9gedgeAzxLL6wvBW3gT3oML8S/KjzQLQUYaSCoSwQbEgQ+vlaI0v
-	 ufJhNldCoQrZgEVTokT0jYUwu/1XnVOfL1itrT8CvUtgX7zBXVhH4OZ+2vxgLoHYxx
-	 KOiRNXnYCUMeig5yD0Vr8Bs4I5X12+Z14xpttf8knu5FTzT2bzXDeHnUWXgc2KTDfb
-	 yYBhhF5WRF8mKqGNHtuhceoaaEWDSbiipOrX3wLCjFv7hfSkwiTnX1Qu5UyJHfqH3s
-	 ksfaPf8m+QaE04Vw4aJNCjpIzKGYmS6y90RaSnEjeKtw5s+Evn7+p0+v+8l7Cy79bE
-	 JAILCauutxa0w==
-Received: by mail.synergyflux.pl for <linux-rockchip@lists.infradead.org>; Tue,  3 Sep 2024 08:00:42 GMT
-Message-ID: <20240903084500-0.1.dp.3gdj1.0.dea6zq6cmi@synergyflux.pl>
-Date: Tue,  3 Sep 2024 08:00:42 GMT
-From: =?UTF-8?Q?"Konrad_Zieli=C5=84ski_"?= <konrad.zielinski@synergyflux.pl>
-To: <linux-rockchip@lists.infradead.org>
-Subject: Instalacja pv
-X-Mailer: mail.synergyflux.pl
+	id 1slOb8-0000000Gq0C-1otg;
+	Tue, 03 Sep 2024 08:09:12 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id B5B5D5C5776;
+	Tue,  3 Sep 2024 08:09:05 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 48C52C4CEC5;
+	Tue,  3 Sep 2024 08:09:08 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1725350948;
+	bh=TbqJLpMF0XWfw9iBgitkWAPhHwKfcmKdJuvN+p4cqg0=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=nELPphkKRLsS5HSNEQ5yWbd92Ozfba9oki8Y9Vry2iUrRdtIUXpiHE7lT6Nb4WQY0
+	 Galwr+I/rUVcJKYVgUM4/hjz7GkauaAHPodvUTFZQzglnIk3ykzZ7zQCQstK7C1Y6x
+	 rTIHZFODSgVUM+LolPAoWcAjpVgq3X7cksMRyx3xcvMWdwCKftcv9Ew3My4r0LbkyS
+	 fBHozh+TGAjCQKDu4/L1XcgRkTfub/BRj8buGxB/jHx9u5OQdNXw7ueQY54Aj/8Ni0
+	 HlGGgrZitu0YKXsHkb3SXwWhuW/NJ/V0CuZfrXz7oCrmhnZRl0DPdpJxcoMhFRXTU5
+	 kH60m5Fu0EUsQ==
+Date: Tue, 3 Sep 2024 10:09:06 +0200
+From: Maxime Ripard <mripard@kernel.org>
+To: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+Cc: Andrzej Hajda <andrzej.hajda@intel.com>, 
+	Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
+	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Jonas Karlman <jonas@kwiboo.se>, 
+	Jernej Skrabec <jernej.skrabec@gmail.com>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, 
+	Daniel Vetter <daniel@ffwll.ch>, Sandy Huang <hjc@rock-chips.com>, 
+	Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>, 
+	Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+	Conor Dooley <conor+dt@kernel.org>, Mark Yao <markyao0591@gmail.com>, 
+	Sascha Hauer <s.hauer@pengutronix.de>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, 
+	kernel@collabora.com, Alexandre ARNOUD <aarnoud@me.com>, 
+	Luis de Arquer <ldearquer@gmail.com>, Algea Cao <algea.cao@rock-chips.com>
+Subject: Re: [PATCH v4 2/4] drm/bridge: synopsys: Add DW HDMI QP TX
+ Controller support library
+Message-ID: <20240903-archetypal-soft-wildebeest-b5ea68@houat>
+References: <20240819-b4-rk3588-bridge-upstream-v4-0-6417c72a2749@collabora.com>
+ <20240819-b4-rk3588-bridge-upstream-v4-2-6417c72a2749@collabora.com>
+ <20240827-armored-magnificent-badger-ffb025@houat>
+ <34422b7a-ce70-445d-a574-60ac36322119@collabora.com>
+ <20240902-turtle-of-major-glory-efb4e8@houat>
+ <6e20410a-a24d-4454-8577-2cff65319a2a@collabora.com>
 MIME-Version: 1.0
+In-Reply-To: <6e20410a-a24d-4454-8577-2cff65319a2a@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240903_010313_109115_B3121BA6 
-X-CRM114-Status: UNSURE (   0.88  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240903_010910_634650_2268CFD5 
+X-CRM114-Status: GOOD (  31.41  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -62,19 +82,134 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: multipart/mixed; boundary="===============4730527461634659928=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-RHppZcWEIGRvYnJ5LAoKY3p5IHPEhSBQYcWEc3R3byBvdHdhcmNpIG5hIG5pZXpvYm93acSFenVq
-xIVjxIUgcm96bW93xJkgbmEgdGVtYXQgZm90b3dvbHRhaWtpPwoKSmFrbyBmaXJtYSBzcGVjamFs
-aXp1asSFY2Egc2nEmSB3IGluc3RhbGFjamkgaSBzZXJ3aXNpZSBuYWpsZXBzenljaCBqYWtvxZtj
-aW93byBwYW5lbGkgc8WCb25lY3pueWNoIG5hIHJ5bmt1IGNoY2lhxYJieW0gcHJ6ZWRzdGF3acSH
-IHByb3BvenljasSZLCBqYWvEhSB3c3DDs2xuaWUgeiB6ZXNwb8WCZW0gcHJ6eWdvdG93YWxpxZtt
-eSBkbGEgUGHFhHN0d2Egb2JpZWt0dS4KCkLEmWTEmSB3ZHppxJljem55IHphIHdpYWRvbW/Fm8SH
-IG9kIFBhxYRzdHdhIGN6eSBtb8W8ZW15IHBvcm96bWF3aWHEhy4KCgpQb3pkcmF3aWFtCktvbnJh
-ZCBaaWVsacWEc2tpIAoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmlu
-ZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9s
-aW51eC1yb2NrY2hpcAo=
+
+--===============4730527461634659928==
+Content-Type: multipart/signed; micalg=pgp-sha384;
+	protocol="application/pgp-signature"; boundary="u6nfncdlj65oeoqx"
+Content-Disposition: inline
+
+
+--u6nfncdlj65oeoqx
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Tue, Sep 03, 2024 at 12:12:02AM GMT, Cristian Ciocaltea wrote:
+> On 9/2/24 10:36 AM, Maxime Ripard wrote:
+> > On Sat, Aug 31, 2024 at 01:21:48AM GMT, Cristian Ciocaltea wrote:
+> >> On 8/27/24 11:58 AM, Maxime Ripard wrote:
+> >>> On Mon, Aug 19, 2024 at 01:29:29AM GMT, Cristian Ciocaltea wrote:
+> >>>> +static irqreturn_t dw_hdmi_qp_main_hardirq(int irq, void *dev_id)
+> >>>> +{
+> >>>> +	struct dw_hdmi_qp *hdmi =3D dev_id;
+> >>>> +	struct dw_hdmi_qp_i2c *i2c =3D hdmi->i2c;
+> >>>> +	u32 stat;
+> >>>> +
+> >>>> +	stat =3D dw_hdmi_qp_read(hdmi, MAINUNIT_1_INT_STATUS);
+> >>>> +
+> >>>> +	i2c->stat =3D stat & (I2CM_OP_DONE_IRQ | I2CM_READ_REQUEST_IRQ |
+> >>>> +			    I2CM_NACK_RCVD_IRQ);
+> >>>> +
+> >>>> +	if (i2c->stat) {
+> >>>> +		dw_hdmi_qp_write(hdmi, i2c->stat, MAINUNIT_1_INT_CLEAR);
+> >>>> +		complete(&i2c->cmp);
+> >>>> +	}
+> >>>> +
+> >>>> +	if (stat)
+> >>>> +		return IRQ_HANDLED;
+> >>>> +
+> >>>> +	return IRQ_NONE;
+> >>>> +}
+> >>>
+> >>> If the scrambler is enabled, you need to deal with hotplug. On hotplu=
+g,
+> >>> the monitor will drop its TMDS ratio and scrambling status, but the
+> >>> driver will keep assuming it's been programmed.
+> >>>
+> >>> If you don't have a way to deal with hotplug yet, then I'd suggest to
+> >>> just drop the scrambler setup for now.
+> >>
+> >> Thanks for the heads up!
+> >>
+> >> HPD is partially handled by the RK platform driver, which makes use of
+> >> drm_helper_hpd_irq_event(). Since the bridge sets DRM_BRIDGE_OP_DETECT
+> >> flag, the dw_hdmi_qp_bridge_detect() callback gets executed, which in =
+turn
+> >> verifies the PHY status via ->read_hpd() implemented as
+> >> dw_hdmi_qp_rk3588_read_hpd() in the platform driver.
+> >=20
+> > It's not only about hotplug detection, it's also about what happens
+> > after you've detected a disconnection / reconnection.
+> >=20
+> > The framework expects to keep the current mode as is, despite the
+> > monitor not being setup to use the scrambler anymore, and the display
+> > remains black.
+>=20
+> AFAICS, the ->atomic_enable() callback is always invoked upon
+> reconnection, hence the scrambler gets properly (re)enabled via
+> dw_hdmi_qp_setup().
+
+No, it's not.
+
+> >> During my testing so far it worked reliably when switching displays wi=
+th
+> >> different capabilities.  I don't have a 4K@60Hz display at the moment,=
+ but
+> >> used the HDMI RX port on the Rock 5B board in a loopback connection to
+> >> verify this mode, which triggered the high TMDS clock ratio and scramb=
+ling
+> >> setup as well.
+> >=20
+> > How did you test exactly?
+>=20
+> I initially tested with Sway/wlroots having an app running
+> (eglgears_wayland) while unplugging/replugging the HDMI connectors in
+> every possible sequence I could think of (e.g. several times per
+> display, switching to a different one, repeating, switching again, etc).
+>=20
+> I've just retested the whole stuff with Weston and confirm it works as
+> expected, i.e. no black screen (or bad capture stream for the 4K@60Hz
+> case) after any of the reconnections.
+
+Then I guess both sway and weston handle uevent and will change the
+connector mode on reconnection.
+
+It's not mandatory, and others will just not bother and still expect the
+output to work.
+
+I guess the easier you can test this with is modetest.
+
+Maxime
+
+--u6nfncdlj65oeoqx
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iJUEABMJAB0WIQTkHFbLp4ejekA/qfgnX84Zoj2+dgUCZtbEHAAKCRAnX84Zoj2+
+dub0AYD0Bik1Z1shXpdUCtIQQK7qy/5wlAsZL3p3sO9HNoDd5B/N9090NF138Duw
+JWODhtABgJVad/VI2n0akz4qsN+7f3oCFehQNCxGLwAVW4o6i+6mdm0zoZl5IBuz
+Wwu/9lx0cw==
+=RMT3
+-----END PGP SIGNATURE-----
+
+--u6nfncdlj65oeoqx--
+
+
+--===============4730527461634659928==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============4730527461634659928==--
+
