@@ -4,72 +4,109 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D71AACD3420
-	for <linux-rockchip@archiver.kernel.org>; Tue,  3 Sep 2024 09:22:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E1A3ECD13CF
+	for <linux-rockchip@archiver.kernel.org>; Tue,  3 Sep 2024 09:29:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=DVpCSM/wdvK2TI01UyET/65dtEfZZiMcqNi+A1/FJUM=; b=T0P1lhwZvqbqlyOuHPg2CMCjtz
-	qrFLrYYV0y32MQ7mUQ5miHl/3sQL+CGfc29t4doDH6+xgkKwfR0Lw4hEnzJy1+EztbGQ90vDHy9EC
-	K6klGHgMaF/xhNYQzvt4n5CgNG9SUqzfgNLuAKnYQ4+jIibrhPrYveyrX238ZqNiMmzShmtez4DDo
-	YZKrVAgqyK+HP7Wq+8+RK1ZAszSrx0CAd5z9Gb3V+8JaWY/xiuaCCp8kh4jjWD/Odbs2Pjjz3NkX/
-	Q2hj6TTH4CZ4Ijqc4KD9AGd7mbcRUr8+cG6rzsQO9Mjf5MdI+KLH17Bw6vITZKTlN+dlQxV5tXhI1
-	+flmqY6g==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
+	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=5fRG/eeKq2i49l71QHxfng0/PscQbVllZG3nXjm7N44=; b=zOZqmpjPA04A8p
+	egFm9WLv6mJI+g7YSjDXaeH1A7eIZx7tfU5GusGPXcSnwcX/DHOraRbh0d5yNPOFMfQnXuWhkaHLn
+	EJuIVJ0b7M/PZODXY5uveJTsF554AiUvl3jZCyQoCWxFoWc/WFPvRbbf+kCiozlM96SItO6qmqRAO
+	n1yhg1LAV3IE9qe4HB93h6aD99glgIJUHtE5MPp/xsS3n03aB0L9jYfQD0x8jOI19OpDPU9BGTeQ5
+	cAEIwmofYQwSEvr0CBZCf+CnfYxcNc+cKyJ7Sb79j4sOvIOzrEEK7LhqvJGS/Ki77D2XprjBBnOPf
+	1AWmL0Ooj1iNN0IeM+LQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1slPjZ-0000000H7Em-4253;
-	Tue, 03 Sep 2024 09:21:57 +0000
-Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
+	id 1slPql-0000000H9JT-2QHO;
+	Tue, 03 Sep 2024 09:29:23 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1slPg8-0000000H6XJ-3FFc
+	id 1slPkL-0000000H7Sk-1Bqi
+	for linux-rockchip@bombadil.infradead.org;
+	Tue, 03 Sep 2024 09:22:45 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
+	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	From:Sender:Reply-To:Content-ID:Content-Description;
+	bh=d1mNsQfi9iF2ebwvaVX52BFOzSMByOwiv4Xigwo6BRs=; b=af+tBlNgHwR/3FsrvzwuG7sjja
+	dV7Usb+ijP6jeDUU9G09JO5tRCJGIPtvHwjkphy0IObpyrQquRdQokl8/m5npQOGW2xS2uM8wuc//
+	1v/Hd/OyWQWwRISjcEt0BICL4NNJ+yeTAFtBtlizP8BxGUShddk7KYYOFcKt79T/dXeBhrRC7WJIA
+	uO+u9AdubjBRvh60AhZQG7pWovJ1G20N4mr06yePhNXinVW7anhOsGykn44MR1yzsEK3VifN3cZpR
+	ZXjn4bFBEuAUCnycYDW4YhRUyN7c4UsrAR9pigl9wI6L4JgT9dCV1OagomCQlIJUcJlfZ7fJLqCxL
+	UMsN7Bfw==;
+Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
+	by desiato.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
+	id 1slPkH-0000000CIZj-30nl
 	for linux-rockchip@lists.infradead.org;
-	Tue, 03 Sep 2024 09:18:26 +0000
+	Tue, 03 Sep 2024 09:22:43 +0000
 Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
 	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
 	(Exim 4.92)
 	(envelope-from <mkl@pengutronix.de>)
-	id 1slPfn-00075B-Qy; Tue, 03 Sep 2024 11:18:03 +0200
+	id 1slPk6-0000Zf-7r
+	for linux-rockchip@lists.infradead.org; Tue, 03 Sep 2024 11:22:30 +0200
 Received: from [2a0a:edc0:0:b01:1d::7b] (helo=bjornoya.blackshift.org)
 	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <mkl@pengutronix.de>)
-	id 1slPfk-0059Cr-LY; Tue, 03 Sep 2024 11:18:00 +0200
-Received: from pengutronix.de (pd9e5994e.dip0.t-ipconnect.de [217.229.153.78])
+	id 1slPk5-0059KV-M8
+	for linux-rockchip@lists.infradead.org; Tue, 03 Sep 2024 11:22:29 +0200
+Received: from dspam.blackshift.org (localhost [127.0.0.1])
+	by bjornoya.blackshift.org (Postfix) with SMTP id 5CA9D331061
+	for <linux-rockchip@lists.infradead.org>; Tue, 03 Sep 2024 09:22:29 +0000 (UTC)
+Received: from hardanger.blackshift.org (unknown [172.20.34.65])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(Client did not present a certificate)
-	(Authenticated sender: mkl-all@blackshift.org)
-	by smtp.blackshift.org (Postfix) with ESMTPSA id 46253331004;
-	Tue, 03 Sep 2024 09:18:00 +0000 (UTC)
-Date: Tue, 3 Sep 2024 11:17:59 +0200
+	by bjornoya.blackshift.org (Postfix) with ESMTPS id E782F331020;
+	Tue, 03 Sep 2024 09:22:26 +0000 (UTC)
+Received: from [172.20.34.65] (localhost [::1])
+	by hardanger.blackshift.org (OpenSMTPD) with ESMTP id 549b4e1c;
+	Tue, 3 Sep 2024 09:22:26 +0000 (UTC)
 From: Marc Kleine-Budde <mkl@pengutronix.de>
-To: Krzysztof Kozlowski <krzk@kernel.org>
-Cc: kernel@pengutronix.de, Vincent Mailhol <mailhol.vincent@wanadoo.fr>, 
-	"David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Heiko Stuebner <heiko@sntech.de>, Philipp Zabel <p.zabel@pengutronix.de>, 
-	Elaine Zhang <zhangqing@rock-chips.com>, David Jander <david.jander@protonic.nl>, 
-	Simon Horman <horms@kernel.org>, linux-can@vger.kernel.org, netdev@vger.kernel.org, 
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, David Jander <david@protonic.nl>
-Subject: Re: [PATCH can-next v3 00/20] can: rockchip_canfd: add support for
- CAN-FD IP core found on Rockchip RK3568
-Message-ID: <20240903-neat-vivacious-leopard-14cb09-mkl@pengutronix.de>
-References: <20240830-rockchip-canfd-v3-0-d426266453fa@pengutronix.de>
- <ecj2sv7xhmu6plfnrq4ezejn3d43cl5mwutvkwh4u2bqcmna3k@2jykwgizuxmb>
+Date: Tue, 03 Sep 2024 11:21:44 +0200
+Subject: [PATCH can-next v4 02/20] arm64: dts: rockchip: add CAN-FD
+ controller nodes to rk3568
 MIME-Version: 1.0
-In-Reply-To: <ecj2sv7xhmu6plfnrq4ezejn3d43cl5mwutvkwh4u2bqcmna3k@2jykwgizuxmb>
+Message-Id: <20240903-rockchip-canfd-v4-2-1dc3f3f32856@pengutronix.de>
+References: <20240903-rockchip-canfd-v4-0-1dc3f3f32856@pengutronix.de>
+In-Reply-To: <20240903-rockchip-canfd-v4-0-1dc3f3f32856@pengutronix.de>
+To: kernel@pengutronix.de, Alibek Omarov <a1ba.omarov@gmail.com>, 
+ Vincent Mailhol <mailhol.vincent@wanadoo.fr>, 
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+ Philipp Zabel <p.zabel@pengutronix.de>, 
+ Elaine Zhang <zhangqing@rock-chips.com>, 
+ David Jander <david.jander@protonic.nl>
+Cc: Simon Horman <horms@kernel.org>, linux-can@vger.kernel.org, 
+ netdev@vger.kernel.org, devicetree@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+ linux-kernel@vger.kernel.org, Marc Kleine-Budde <mkl@pengutronix.de>, 
+ David Jander <david@protonic.nl>
+X-Mailer: b4 0.15-dev-99b12
+X-Developer-Signature: v=1; a=openpgp-sha256; l=2054; i=mkl@pengutronix.de;
+ h=from:subject:message-id; bh=NCZZ2jduquRgobxOQsZuTZ9M3tcNYg9AjFnUiZ6RQRE=;
+ b=owEBbQGS/pANAwAKASg4oj56LbxvAcsmYgBm1tU2JO73A/3swZ+d0DogVrcbod6w+ozbdNWoK
+ 1HbDpcTWmeJATMEAAEKAB0WIQRQQLqG4LYE3Sm8Pl8oOKI+ei28bwUCZtbVNgAKCRAoOKI+ei28
+ bz6JB/sGmoD+WYnjhZa/OrLp3eQyofDDQxpWWimX0/kjEwYZyzNRGMsvn9sTpZoA3m60QmLx4Uu
+ Hy32sRpb1KnGBzkJ+UiOZBD6vYMoJDQqmDasiTPRhmzRwdcyR7A80SPeY6VDG3W2JSQ26SJbcXN
+ VVyRizslmPRE9bvMmKiF7BJjdNXoz7dLsBlq6PDNLhtLphlXhW4aFV+XoH+fjU+vO9O+cm4/TPp
+ VLP5eqYKNojPy4k9ZwZeA/1aOQkAvLDO2Hb8KNAy/ugspwILsXy2rwWzaUNQnJUD9Vf0qcfViWw
+ 9n6dFY2JH01wAWuhgYAzlZp7jov3uPZeSbwI9kl4DjMkd0fg
+X-Developer-Key: i=mkl@pengutronix.de; a=openpgp;
+ fpr=C1400BA0B3989E6FBC7D5B5C2B5EE211C58AEA54
 X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
 X-SA-Exim-Mail-From: mkl@pengutronix.de
 X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
 X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240903_021824_823058_2B36CA5E 
-X-CRM114-Status: GOOD (  22.50  )
+X-CRM114-CacheID: sfid-20240903_102242_300412_FA20AA0F 
+X-CRM114-Status: GOOD (  12.06  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,84 +118,79 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============4757320300046295324=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+From: David Jander <david@protonic.nl>
 
---===============4757320300046295324==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="mb3fsyqhiocnajmm"
-Content-Disposition: inline
+Add nodes to the rk3568 devicetree to support the CAN-FD controllers.
+
+Signed-off-by: David Jander <david@protonic.nl>
+Tested-by: Alibek Omarov <a1ba.omarov@gmail.com>
+Signed-off-by: Marc Kleine-Budde <mkl@pengutronix.de>
+---
+ arch/arm64/boot/dts/rockchip/rk3568.dtsi | 39 ++++++++++++++++++++++++++++++++
+ 1 file changed, 39 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3568.dtsi b/arch/arm64/boot/dts/rockchip/rk3568.dtsi
+index f1be76a54ceb..70847556627d 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3568.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3568.dtsi
+@@ -213,6 +213,45 @@ gmac0_mtl_tx_setup: tx-queues-config {
+ 		};
+ 	};
+ 
++	can0: can@fe570000 {
++		compatible = "rockchip,rk3568v2-canfd";
++		reg = <0x0 0xfe570000 0x0 0x1000>;
++		interrupts = <GIC_SPI 1 IRQ_TYPE_LEVEL_HIGH>;
++		clocks = <&cru CLK_CAN0>, <&cru PCLK_CAN0>;
++		clock-names = "baud", "pclk";
++		resets = <&cru SRST_CAN0>, <&cru SRST_P_CAN0>;
++		reset-names = "core", "apb";
++		pinctrl-names = "default";
++		pinctrl-0 = <&can0m0_pins>;
++		status = "disabled";
++	};
++
++	can1: can@fe580000 {
++		compatible = "rockchip,rk3568v2-canfd";
++		reg = <0x0 0xfe580000 0x0 0x1000>;
++		interrupts = <GIC_SPI 2 IRQ_TYPE_LEVEL_HIGH>;
++		clocks = <&cru CLK_CAN1>, <&cru PCLK_CAN1>;
++		clock-names = "baud", "pclk";
++		resets = <&cru SRST_CAN1>, <&cru SRST_P_CAN1>;
++		reset-names = "core", "apb";
++		pinctrl-names = "default";
++		pinctrl-0 = <&can1m0_pins>;
++		status = "disabled";
++	};
++
++	can2: can@fe590000 {
++		compatible = "rockchip,rk3568v2-canfd";
++		reg = <0x0 0xfe590000 0x0 0x1000>;
++		interrupts = <GIC_SPI 3 IRQ_TYPE_LEVEL_HIGH>;
++		clocks = <&cru CLK_CAN2>, <&cru PCLK_CAN2>;
++		clock-names = "baud", "pclk";
++		resets = <&cru SRST_CAN2>, <&cru SRST_P_CAN2>;
++		reset-names = "core", "apb";
++		pinctrl-names = "default";
++		pinctrl-0 = <&can2m0_pins>;
++		status = "disabled";
++	};
++
+ 	combphy0: phy@fe820000 {
+ 		compatible = "rockchip,rk3568-naneng-combphy";
+ 		reg = <0x0 0xfe820000 0x0 0x100>;
+
+-- 
+2.45.2
 
 
---mb3fsyqhiocnajmm
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On 31.08.2024 08:02:00, Krzysztof Kozlowski wrote:
-> On Fri, Aug 30, 2024 at 09:25:57PM +0200, Marc Kleine-Budde wrote:
-> > This series adds support for the CAN-FD IP core found on the Rockchip
-> > RK3568.
-> >=20
-> > The IP core is a bit complicated and has several documented errata.
-> > The driver is added in several stages, first the base driver including
-> > the RX-path. Then several workarounds for errata and the TX-path, and
-> > finally features like hardware time stamping, loop-back mode and
-> > bus error reporting.
-> >=20
-> > regards,
-> > Marc
-> >=20
-> > Signed-off-by: Marc Kleine-Budde <mkl@pengutronix.de>
-> > ---
-> > Changes in v3:
-> > - dt-bindings: renamed file to rockchip,rk3568-canfd.yaml (thanks Rob)
-> > - dt-bindings: reworked compatibles (thanks Rob)
->=20
-> You never tested the patch before sending.
-
-Well yes, I forgot one of the tests. It seems I need to set up more
-dt-bindings to get used to it. I will send a new series.
-
-regards,
-Marc
-
---=20
-Pengutronix e.K.                 | Marc Kleine-Budde          |
-Embedded Linux                   | https://www.pengutronix.de |
-Vertretung N=C3=BCrnberg              | Phone: +49-5121-206917-129 |
-Amtsgericht Hildesheim, HRA 2686 | Fax:   +49-5121-206917-9   |
-
---mb3fsyqhiocnajmm
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEUEC6huC2BN0pvD5fKDiiPnotvG8FAmbW1EUACgkQKDiiPnot
-vG9v3Af/SSPdXXJCW2ijU8NHVAAS03fECznVQ6XNHAyYOrbjgINxQ3DN+p7ez6+4
-Y5qtbmg8zMV880CEhwj/1aFHpfxjSC0BrCNyqRhucX4KTkn9PmFW33w2gTVrmibY
-+OAV7PmoYEXyYl3BOlnvfT09zPfvpvQy5eh7BXKJrDCtZB2V14ZjBwJGKZJU/vmR
-8fEAueEDlRvJ2UY0YJOFjWqlddilH4CVULGaBibxgqVPwb97S5dkBHtE3GcKvvvc
-3NgZbYSx86I2nUV5vtu0emjJq7pkyRxsl+7MclRykO4yCzgeHLPTdh1T+BRRfbuU
-chZX7VYl4l73VrmXNF7/1wtBl+NKCw==
-=cG0j
------END PGP SIGNATURE-----
-
---mb3fsyqhiocnajmm--
-
-
---===============4757320300046295324==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============4757320300046295324==--
-
