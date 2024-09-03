@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B2BE3CD13CF
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6E941CD3427
 	for <linux-rockchip@archiver.kernel.org>; Tue,  3 Sep 2024 08:10:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
@@ -12,65 +12,79 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
 	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
 	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=LRuNvA+c7Eo7dEkszu3MTkfi0eMKq2euD5H8hdLNk0I=; b=b4vCiBVOhv0jP/G0aCOLwRx5wk
-	ly+SSSm5vjbksD3MW6MklY0WW8o3gtGP3AFa9wwHfV8RknwcxGWwgsLSpQtMHJQ5LT3og4Lx21zPZ
-	qmJbFVxvci0L/QyihEZgZeiLAehbsWQwWvEYKLhAgfmtl6/6bBTUqIZ4D/PYPTz/IMsaQ+yFrYDxp
-	cYbxXva/rQO0epWOKtxHR/F1LaPhUi9eLqKAK7YrhK//e3PzVOOvGolx8prm2mwgqE4Q8nNxf5Orh
-	zxVtPPfbQxMKlGhwT5un9n4PGC6d2TmFhqhYIRZj0KfBPlQYZoSd8WN0A7wgZ8xGUS8bZu2MqBBhR
-	JBdhRzuw==;
+	bh=eOsyDM+T4w9NbYzytfWbJ7UzD3WjNjp5yg99Ocf7LDM=; b=JlHDn/lsl6e/9tJwUOL5nOICxZ
+	STbOFA53OPQJhUYtzs7lc/z6Pr3D+sPkdXph6pxcJmhJok9fWs0qGKaBDzZL4APLSyK/NCM+TsgeJ
+	xSLetiRUdIFQlCYuFEQqRfOXaIUKNN4tJgKfI3l3jNquD3ojcS4Ay2UnK5BW1xOJTfm/TJiUGxnlI
+	xgfmDIs09e8hFU62hvkvqVZgX7JOHXQW6AziuZxj7yvbFwhofyOfqv8gTrTrIG2OaC63R3QLm1FWd
+	3kDGJ3dXEy978rXFhAUoIFf4RO87r5guEWQPpAJlsBIiZlKdutzEKQSWkp/al7JpVAibdZN3DBAec
+	wNLhuQIA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1slOc5-0000000GqD8-241a;
+	id 1slOc5-0000000GqDL-3fqf;
 	Tue, 03 Sep 2024 08:10:09 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+Received: from mail-lf1-x12b.google.com ([2a00:1450:4864:20::12b])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1slOb8-0000000Gq0C-1otg;
-	Tue, 03 Sep 2024 08:09:12 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id B5B5D5C5776;
-	Tue,  3 Sep 2024 08:09:05 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 48C52C4CEC5;
-	Tue,  3 Sep 2024 08:09:08 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1725350948;
-	bh=TbqJLpMF0XWfw9iBgitkWAPhHwKfcmKdJuvN+p4cqg0=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=nELPphkKRLsS5HSNEQ5yWbd92Ozfba9oki8Y9Vry2iUrRdtIUXpiHE7lT6Nb4WQY0
-	 Galwr+I/rUVcJKYVgUM4/hjz7GkauaAHPodvUTFZQzglnIk3ykzZ7zQCQstK7C1Y6x
-	 rTIHZFODSgVUM+LolPAoWcAjpVgq3X7cksMRyx3xcvMWdwCKftcv9Ew3My4r0LbkyS
-	 fBHozh+TGAjCQKDu4/L1XcgRkTfub/BRj8buGxB/jHx9u5OQdNXw7ueQY54Aj/8Ni0
-	 HlGGgrZitu0YKXsHkb3SXwWhuW/NJ/V0CuZfrXz7oCrmhnZRl0DPdpJxcoMhFRXTU5
-	 kH60m5Fu0EUsQ==
-Date: Tue, 3 Sep 2024 10:09:06 +0200
-From: Maxime Ripard <mripard@kernel.org>
-To: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Cc: Andrzej Hajda <andrzej.hajda@intel.com>, 
-	Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
-	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Jonas Karlman <jonas@kwiboo.se>, 
-	Jernej Skrabec <jernej.skrabec@gmail.com>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
-	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, 
-	Daniel Vetter <daniel@ffwll.ch>, Sandy Huang <hjc@rock-chips.com>, 
-	Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>, 
-	Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
-	Conor Dooley <conor+dt@kernel.org>, Mark Yao <markyao0591@gmail.com>, 
-	Sascha Hauer <s.hauer@pengutronix.de>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, 
-	kernel@collabora.com, Alexandre ARNOUD <aarnoud@me.com>, 
-	Luis de Arquer <ldearquer@gmail.com>, Algea Cao <algea.cao@rock-chips.com>
-Subject: Re: [PATCH v4 2/4] drm/bridge: synopsys: Add DW HDMI QP TX
- Controller support library
-Message-ID: <20240903-archetypal-soft-wildebeest-b5ea68@houat>
-References: <20240819-b4-rk3588-bridge-upstream-v4-0-6417c72a2749@collabora.com>
- <20240819-b4-rk3588-bridge-upstream-v4-2-6417c72a2749@collabora.com>
- <20240827-armored-magnificent-badger-ffb025@houat>
- <34422b7a-ce70-445d-a574-60ac36322119@collabora.com>
- <20240902-turtle-of-major-glory-efb4e8@houat>
- <6e20410a-a24d-4454-8577-2cff65319a2a@collabora.com>
+	id 1slObh-0000000Gq7T-2J7s
+	for linux-rockchip@lists.infradead.org;
+	Tue, 03 Sep 2024 08:09:47 +0000
+Received: by mail-lf1-x12b.google.com with SMTP id 2adb3069b0e04-533496017f8so6737309e87.0
+        for <linux-rockchip@lists.infradead.org>; Tue, 03 Sep 2024 01:09:44 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1725350983; x=1725955783; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=DEGxfQbmvQ7ocJLBpc0e2cOp9yeV28k7sarvQaoPLOE=;
+        b=imkAD5yTEMjH6Bdv/XBkUMKWLjS60hU8MOUva3G+qud4Sz9AAzzxlGFMCv5bkgxWea
+         4RwWbGcswudLOALDdGEVznp2q96YavNZRnLA2hT0jn/4aKJ4JTwR5+jnDdkdG91OPh9I
+         +F3mLucYlK8vKzbYmTTHsJXBOP0N1yf9+0n8mSEGEF0vZyEGWGYPKBOLY52zOzG2MWhZ
+         rbuENtcbMXEUARGsHKSXMz21FHnqFf9UOtZlaXu6LkULxhkT7eiXlnGvjRlRUdcDo1uX
+         lIPXW/5DZYxOq3Rwx4H+z64GyJzsoKuq1pRq1fHwp24mdIK9FPyIpEKc/i2wRuKcj5Sj
+         DDXg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1725350983; x=1725955783;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=DEGxfQbmvQ7ocJLBpc0e2cOp9yeV28k7sarvQaoPLOE=;
+        b=n9fUjwQ2keEyro1s9Utzio6ihAXpcnjaH8nPxgBbmUx76vu6JE8f01BaoIDIQDe2YU
+         czzacBs1BecgEDbdzhbNL5FKSi+ow/Rdrq+YAI8XJUxhj91YOcwqPfuRd6Ho8WhnEuNE
+         GxJnF449I+mB5AN82/DCsO+n5LmNxbAFiZBzBZjciY24C8+nxShtG2/SjIwfxck5CR3l
+         gIUyQ9U4GXHnFMny4O1reX17Jn2ETOvkZRDb82xzaIevgoNaTU/bRG7DUwmK87FgyI8x
+         uBtbQNZ209jdgdEYCWr6uXsm+AGt9FR86UpkFmf1bZlQO3O9wucq80n0DtNDX4ixUwrl
+         7Q0Q==
+X-Forwarded-Encrypted: i=1; AJvYcCWmLddvnx4S0gjRbhOl5uT3ft6ybf6iN/naUAuFV8csc28/NR7i1wCCLqArTI1EenLlAC5f1eU+8IqbuqAFhA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxQ58XIrb41z6F6yjInj5xZshERhTlh4bTJFkQaj/B/zZO9+HEg
+	XfCfFoBVkWxjILMpxYUpNQXg4EPc2Lwr02X8QHyPqaMLKpDnY/9CS9yJPAPS41s=
+X-Google-Smtp-Source: AGHT+IFYKyym0YuUdTDq7DecK3lEk0OE1VtjFf04ZMXnGn6KhugpgO6dUgJJH2bhiMsBfP+cs+oWvQ==
+X-Received: by 2002:a05:6512:3c81:b0:52e:a7a6:ed7f with SMTP id 2adb3069b0e04-53546bbdf6amr6618557e87.60.1725350983003;
+        Tue, 03 Sep 2024 01:09:43 -0700 (PDT)
+Received: from localhost (p5dc68f76.dip0.t-ipconnect.de. [93.198.143.118])
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a8988feb9f7sm649600166b.42.2024.09.03.01.09.42
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 03 Sep 2024 01:09:42 -0700 (PDT)
+Date: Tue, 3 Sep 2024 10:09:41 +0200
+From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@baylibre.com>
+To: Li Zetao <lizetao1@huawei.com>
+Cc: florian.fainelli@broadcom.com, andrew@lunn.ch, olteanv@gmail.com, 
+	davem@davemloft.net, edumazet@google.com, kuba@kernel.org, pabeni@redhat.com, 
+	wens@csie.org, jernej.skrabec@gmail.com, samuel@sholland.org, heiko@sntech.de, 
+	yisen.zhuang@huawei.com, salil.mehta@huawei.com, hauke@hauke-m.de, 
+	alexandre.torgue@foss.st.com, joabreu@synopsys.com, mcoquelin.stm32@gmail.com, 
+	wellslutw@gmail.com, radhey.shyam.pandey@amd.com, michal.simek@amd.com, 
+	ajay.kathat@microchip.com, claudiu.beznea@tuxon.dev, kvalo@kernel.org, 
+	jacky_chou@aspeedtech.com, netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-sunxi@lists.linux.dev, linux-rockchip@lists.infradead.org, 
+	linux-stm32@st-md-mailman.stormreply.com, linux-wireless@vger.kernel.org
+Subject: Re: [PATCH net-next 05/12] net: ftgmac100: Convert using
+ devm_clk_get_enabled() in ftgmac100_setup_clk()
+Message-ID: <nyfm5mxrrvfeu7s25qzjxbatvgnppq7exmca3sccmm6lz7nxan@xxsdgcrueoen>
+References: <20240831021334.1907921-1-lizetao1@huawei.com>
+ <20240831021334.1907921-6-lizetao1@huawei.com>
 MIME-Version: 1.0
-In-Reply-To: <6e20410a-a24d-4454-8577-2cff65319a2a@collabora.com>
+In-Reply-To: <20240831021334.1907921-6-lizetao1@huawei.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240903_010910_634650_2268CFD5 
-X-CRM114-Status: GOOD (  31.41  )
+X-CRM114-CacheID: sfid-20240903_010945_620177_140FC802 
+X-CRM114-Status: GOOD (  28.55  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,125 +96,152 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============4730527461634659928=="
+Content-Type: multipart/mixed; boundary="===============4560415379200160588=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
---===============4730527461634659928==
-Content-Type: multipart/signed; micalg=pgp-sha384;
-	protocol="application/pgp-signature"; boundary="u6nfncdlj65oeoqx"
+--===============4560415379200160588==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="pq2mmaq7abqtyo6k"
 Content-Disposition: inline
 
 
---u6nfncdlj65oeoqx
+--pq2mmaq7abqtyo6k
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On Tue, Sep 03, 2024 at 12:12:02AM GMT, Cristian Ciocaltea wrote:
-> On 9/2/24 10:36 AM, Maxime Ripard wrote:
-> > On Sat, Aug 31, 2024 at 01:21:48AM GMT, Cristian Ciocaltea wrote:
-> >> On 8/27/24 11:58 AM, Maxime Ripard wrote:
-> >>> On Mon, Aug 19, 2024 at 01:29:29AM GMT, Cristian Ciocaltea wrote:
-> >>>> +static irqreturn_t dw_hdmi_qp_main_hardirq(int irq, void *dev_id)
-> >>>> +{
-> >>>> +	struct dw_hdmi_qp *hdmi =3D dev_id;
-> >>>> +	struct dw_hdmi_qp_i2c *i2c =3D hdmi->i2c;
-> >>>> +	u32 stat;
-> >>>> +
-> >>>> +	stat =3D dw_hdmi_qp_read(hdmi, MAINUNIT_1_INT_STATUS);
-> >>>> +
-> >>>> +	i2c->stat =3D stat & (I2CM_OP_DONE_IRQ | I2CM_READ_REQUEST_IRQ |
-> >>>> +			    I2CM_NACK_RCVD_IRQ);
-> >>>> +
-> >>>> +	if (i2c->stat) {
-> >>>> +		dw_hdmi_qp_write(hdmi, i2c->stat, MAINUNIT_1_INT_CLEAR);
-> >>>> +		complete(&i2c->cmp);
-> >>>> +	}
-> >>>> +
-> >>>> +	if (stat)
-> >>>> +		return IRQ_HANDLED;
-> >>>> +
-> >>>> +	return IRQ_NONE;
-> >>>> +}
-> >>>
-> >>> If the scrambler is enabled, you need to deal with hotplug. On hotplu=
-g,
-> >>> the monitor will drop its TMDS ratio and scrambling status, but the
-> >>> driver will keep assuming it's been programmed.
-> >>>
-> >>> If you don't have a way to deal with hotplug yet, then I'd suggest to
-> >>> just drop the scrambler setup for now.
-> >>
-> >> Thanks for the heads up!
-> >>
-> >> HPD is partially handled by the RK platform driver, which makes use of
-> >> drm_helper_hpd_irq_event(). Since the bridge sets DRM_BRIDGE_OP_DETECT
-> >> flag, the dw_hdmi_qp_bridge_detect() callback gets executed, which in =
-turn
-> >> verifies the PHY status via ->read_hpd() implemented as
-> >> dw_hdmi_qp_rk3588_read_hpd() in the platform driver.
-> >=20
-> > It's not only about hotplug detection, it's also about what happens
-> > after you've detected a disconnection / reconnection.
-> >=20
-> > The framework expects to keep the current mode as is, despite the
-> > monitor not being setup to use the scrambler anymore, and the display
-> > remains black.
+Hello,
+
+On Sat, Aug 31, 2024 at 10:13:27AM +0800, Li Zetao wrote:
+> Use devm_clk_get_enabled() instead of devm_clk_get() +
+> clk_prepare_enable(), which can make the clk consistent with the device
+> life cycle and reduce the risk of unreleased clk resources. Since the
+> device framework has automatically released the clk resource, there is
+> no need to execute clk_disable_unprepare(clk) on the error path, drop
+> the cleanup_clk label, and the original error process can return directly.
 >=20
-> AFAICS, the ->atomic_enable() callback is always invoked upon
-> reconnection, hence the scrambler gets properly (re)enabled via
-> dw_hdmi_qp_setup().
-
-No, it's not.
-
-> >> During my testing so far it worked reliably when switching displays wi=
-th
-> >> different capabilities.  I don't have a 4K@60Hz display at the moment,=
- but
-> >> used the HDMI RX port on the Rock 5B board in a loopback connection to
-> >> verify this mode, which triggered the high TMDS clock ratio and scramb=
-ling
-> >> setup as well.
-> >=20
-> > How did you test exactly?
+> Signed-off-by: Li Zetao <lizetao1@huawei.com>
+> ---
+>  drivers/net/ethernet/faraday/ftgmac100.c | 27 ++++++------------------
+>  1 file changed, 7 insertions(+), 20 deletions(-)
 >=20
-> I initially tested with Sway/wlroots having an app running
-> (eglgears_wayland) while unplugging/replugging the HDMI connectors in
-> every possible sequence I could think of (e.g. several times per
-> display, switching to a different one, repeating, switching again, etc).
->=20
-> I've just retested the whole stuff with Weston and confirm it works as
-> expected, i.e. no black screen (or bad capture stream for the 4K@60Hz
-> case) after any of the reconnections.
+> diff --git a/drivers/net/ethernet/faraday/ftgmac100.c b/drivers/net/ether=
+net/faraday/ftgmac100.c
+> index 4c546c3aef0f..eb57c822c5ac 100644
+> --- a/drivers/net/ethernet/faraday/ftgmac100.c
+> +++ b/drivers/net/ethernet/faraday/ftgmac100.c
+> @@ -1752,13 +1752,10 @@ static int ftgmac100_setup_clk(struct ftgmac100 *=
+priv)
+>  	struct clk *clk;
+>  	int rc;
+> =20
+> -	clk =3D devm_clk_get(priv->dev, NULL /* MACCLK */);
+> +	clk =3D devm_clk_get_enabled(priv->dev, NULL /* MACCLK */);
+>  	if (IS_ERR(clk))
+>  		return PTR_ERR(clk);
+>  	priv->clk =3D clk;
+> -	rc =3D clk_prepare_enable(priv->clk);
+> -	if (rc)
+> -		return rc;
+> =20
+>  	/* Aspeed specifies a 100MHz clock is required for up to
+>  	 * 1000Mbit link speeds. As NCSI is limited to 100Mbit, 25MHz
+> @@ -1767,21 +1764,17 @@ static int ftgmac100_setup_clk(struct ftgmac100 *=
+priv)
+>  	rc =3D clk_set_rate(priv->clk, priv->use_ncsi ? FTGMAC_25MHZ :
+>  			  FTGMAC_100MHZ);
+>  	if (rc)
+> -		goto cleanup_clk;
+> +		return rc;
+> =20
+>  	/* RCLK is for RMII, typically used for NCSI. Optional because it's not
+>  	 * necessary if it's the AST2400 MAC, or the MAC is configured for
+>  	 * RGMII, or the controller is not an ASPEED-based controller.
+>  	 */
+> -	priv->rclk =3D devm_clk_get_optional(priv->dev, "RCLK");
+> -	rc =3D clk_prepare_enable(priv->rclk);
+> -	if (!rc)
+> -		return 0;
+> +	priv->rclk =3D devm_clk_get_optional_enabled(priv->dev, "RCLK");
+> +	if (IS_ERR(priv->rclk))
+> +		return PTR_ERR(priv->rclk);
+> =20
+> -cleanup_clk:
+> -	clk_disable_unprepare(priv->clk);
+> -
+> -	return rc;
+> +	return 0;
 
-Then I guess both sway and weston handle uevent and will change the
-connector mode on reconnection.
+You're changing semantics here. Before your patch ftgmac100_setup_clk()
+was left with priv->clk disabled; now you keep it enabled.
 
-It's not mandatory, and others will just not bother and still expect the
-output to work.
+Further note that there is a bug here, because in ftgmac100_probe()
+(i.e. the caller of ftgmac100_setup_clk())
+clk_disable_unprepare(priv->clk) is called in the error path.
+(I only looked quickly, so I might have missed a detail.)
 
-I guess the easier you can test this with is modetest.
+So while your patch is an improvement for clock enable/disable
+balancing, it might regress on power consumption.
 
-Maxime
+>  }
+> =20
+>  static bool ftgmac100_has_child_node(struct device_node *np, const char =
+*name)
+> @@ -1996,16 +1989,13 @@ static int ftgmac100_probe(struct platform_device=
+ *pdev)
+>  	err =3D register_netdev(netdev);
+>  	if (err) {
+>  		dev_err(&pdev->dev, "Failed to register netdev\n");
+> -		goto err_register_netdev;
+> +		goto err_phy_connect;
+>  	}
+> =20
+>  	netdev_info(netdev, "irq %d, mapped at %p\n", netdev->irq, priv->base);
+> =20
+>  	return 0;
+> =20
+> -err_register_netdev:
+> -	clk_disable_unprepare(priv->rclk);
+> -	clk_disable_unprepare(priv->clk);
+>  err_phy_connect:
+>  	ftgmac100_phy_disconnect(netdev);
+>  err_ncsi_dev:
+> @@ -2034,9 +2024,6 @@ static void ftgmac100_remove(struct platform_device=
+ *pdev)
+>  		ncsi_unregister_dev(priv->ndev);
+>  	unregister_netdev(netdev);
+> =20
+> -	clk_disable_unprepare(priv->rclk);
+> -	clk_disable_unprepare(priv->clk);
+> -
+>  	/* There's a small chance the reset task will have been re-queued,
+>  	 * during stop, make sure it's gone before we free the structure.
+>  	 */
 
---u6nfncdlj65oeoqx
+Best regards
+Uwe
+
+--pq2mmaq7abqtyo6k
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iJUEABMJAB0WIQTkHFbLp4ejekA/qfgnX84Zoj2+dgUCZtbEHAAKCRAnX84Zoj2+
-dub0AYD0Bik1Z1shXpdUCtIQQK7qy/5wlAsZL3p3sO9HNoDd5B/N9090NF138Duw
-JWODhtABgJVad/VI2n0akz4qsN+7f3oCFehQNCxGLwAVW4o6i+6mdm0zoZl5IBuz
-Wwu/9lx0cw==
-=RMT3
+iQEzBAABCgAdFiEEP4GsaTp6HlmJrf7Tj4D7WH0S/k4FAmbWxEIACgkQj4D7WH0S
+/k6TJAf/W0v6Vj052O0cQyhSYINBBv+sQ3nGD2cYN9LDziAoSbDf3PwBT94aietu
+gEoZvEGnvfzGCHrHLRszB/l6AIW7FxiMo0V+zz66sZS/9h/4hmtifwLWFnGieXDf
+T4Pj1jlkN0LB30u8Weay3UEPbLD9qsDFiHNisjQ164GhANBLtMuI1HkNtmEz/96z
+kd9zkwXSIbpKN64wLAfEctAZq6+UX74/6cdaEc6CtrdC8Ipv6cQqfjsedO7YfVRu
+7IgXK4ashAN8mOti5j66/tm48sDXkxsfjNEAE5xp3ei6+HB61uLmcSKb1XMDXLnP
+JDkq0K28JtDXWQyiLytwTQvbzx80mw==
+=PiiM
 -----END PGP SIGNATURE-----
 
---u6nfncdlj65oeoqx--
+--pq2mmaq7abqtyo6k--
 
 
---===============4730527461634659928==
+--===============4560415379200160588==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -211,5 +252,5 @@ Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
---===============4730527461634659928==--
+--===============4560415379200160588==--
 
