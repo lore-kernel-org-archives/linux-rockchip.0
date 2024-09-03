@@ -4,81 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EC574CD3448
-	for <linux-rockchip@archiver.kernel.org>; Tue,  3 Sep 2024 16:22:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 14422CD3448
+	for <linux-rockchip@archiver.kernel.org>; Tue,  3 Sep 2024 16:51:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=UQf/tv5ct4LMrbipfpi18CgHfuyJCgNxi391e51AplA=; b=eoZV9+fEoIuwUy
-	5w5tyav5iFryBa4jiBdymW0Dm4R14yax/wfH87orpLTSNUbdzpjk44le/csUd4PW3KGGE057QgQ82
-	6jbQ6SSdogy9H5QCC7z3KXChmKGgVhuOIxhrDGP2nP6irzmfDrVc1P6HxVkesRsyW7aEgFYSOBztc
-	YJObOD9d7k1rDlkxXH2ct5hCLSh8o5LTA7KVsjVEnbxzfT532l8L/l46j0GJPJWy23CfGtOZKc3GX
-	7GLqbmZku2qF56+qUOUohz/OdhlSpTrQ9xB/lZF6jRxudbTdoGxdgAUjy5DGo+9nm8vM8YAfdSHTP
-	9jv9JowLNOM+Y5JGJiwQ==;
+	List-Owner; bh=a+mqVoVcc3oBeTW06VzNmYz44zLT8Msi+iE4o4Bu07Q=; b=Xosx405on1m9Uu
+	91OBTXmpa4KZTvANJV4Thk/T9fXpbLwPR6zVkvBbOz7LMpyP4UG5O7ocJdd226Faa4y6cjKWwQOL7
+	gxNDWxk8O8vwN8SPImd8I2GcHmFCPLgDtNykPIDpjpnmTIA83wfA/NjN7NaGZ/Zwm4HveFSYxHtAM
+	NBRHgwGs34ZP8WRibdKuq33i7mbzcptiNK0mFIsKAHC5++DvOKlXbD3dkghnniB65H9Qtn07A6IuK
+	1oU32Jo+wGknLMKxVWq3duGb43nAcG7YqmCYgnG2JwqzEO9UX/tyn+fJ3KH8B3AbShUKxdrpZ6XZr
+	egaj8JexHLyorhQkP2DQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1slWI8-0000000152Z-40Nt;
-	Tue, 03 Sep 2024 16:22:04 +0000
-Received: from mgamail.intel.com ([198.175.65.13])
+	id 1slWkn-00000001CNS-130E;
+	Tue, 03 Sep 2024 16:51:41 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1slW7a-000000012PI-1J5I;
-	Tue, 03 Sep 2024 16:11:11 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1725379870; x=1756915870;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=23UJof+bw4z17P2EuEFVPPtXB7zf9hg2doA/jFPekec=;
-  b=kJAUHpzRVWRyQRpTnMRKlK7y1728IP5prMIjHHNKHtUcohHYrdDJDedP
-   KQb0le2OxaMdTexDb0Nqv4gE/1pIoVdIXwfc2p3Uo+7Ti6nm2/jLp4c5I
-   /mwPt4pD7fqf+UlMzMwuqCRo7gP4jhERwGK3azUiY2q8WtI/sutSJwMAH
-   1+dVPQQ3vh8UoYs2J/jy+ji13T+pzT0lMvIPLUX0cCkhHtbY9ZqQQA+JY
-   MWm6xS0ukzK9Zv0tJsY8WYx17fuAoyqtYtW43K19hz/d+3/74wWyLEGxQ
-   01+2HROE5h3Kb2Yd0dZ7MYMUwzM3bgRNQ5MzyZSOjbiBzawZ0UFWDZAvZ
-   w==;
-X-CSE-ConnectionGUID: dL80aSHrTVygXs81m+TqQA==
-X-CSE-MsgGUID: Uv+gzMtHSMipbzcXFCpZgw==
-X-IronPort-AV: E=McAfee;i="6700,10204,11184"; a="35147606"
-X-IronPort-AV: E=Sophos;i="6.10,199,1719903600"; 
-   d="scan'208";a="35147606"
-Received: from fmviesa004.fm.intel.com ([10.60.135.144])
-  by orvoesa105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 03 Sep 2024 09:11:09 -0700
-X-CSE-ConnectionGUID: iiiYSyOkTkSWL/6RgAW03w==
-X-CSE-MsgGUID: xmCnEEbvQOKNkRB36feE1Q==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.10,199,1719903600"; 
-   d="scan'208";a="69585899"
-Received: from smile.fi.intel.com ([10.237.72.54])
-  by fmviesa004.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 03 Sep 2024 09:11:06 -0700
-Received: from andy by smile.fi.intel.com with local (Exim 4.98)
-	(envelope-from <andriy.shevchenko@linux.intel.com>)
-	id 1slW6l-00000004lR0-24Yh;
-	Tue, 03 Sep 2024 19:10:19 +0300
-Date: Tue, 3 Sep 2024 19:10:05 +0300
-From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-To: Ye Zhang <ye.zhang@rock-chips.com>
-Cc: linus.walleij@linaro.org, brgl@bgdev.pl, heiko@sntech.de,
-	linux-gpio@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
-	mika.westerberg@linux.intel.com, tao.huang@rock-chips.com,
-	finley.xiao@rock-chips.com, tim.chen@rock-chips.com,
-	elaine.zhang@rock-chips.com
-Subject: Re: [PATCH v3 12/12] gpio: rockchip: replace mutex_lock() with
- guard()
-Message-ID: <Ztc03cbpPjPZatoL@smile.fi.intel.com>
-References: <20240903073649.237362-1-ye.zhang@rock-chips.com>
- <20240903073649.237362-13-ye.zhang@rock-chips.com>
+	id 1slWgc-00000001BXf-0Yos;
+	Tue, 03 Sep 2024 16:48:56 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 9783E5C587C;
+	Tue,  3 Sep 2024 16:47:17 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 26C5AC4CEC4;
+	Tue,  3 Sep 2024 16:47:20 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1725382040;
+	bh=5IBLt3q/BfuZsMvLmbLqTsdzGnY8HAd/pkHhflhyo9o=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=lLY1YqOn8wZTCeG/iOr1exXWmCjUhmI/EZYB5SeESLR6Ef62Kb2YHJweKIZwpLkKb
+	 z7DImi45xWjWmBSi5T7OK4n+B8HdTX1ch5M8+NKqv4dqdsrUAefoH2IVnwBrAXhYKn
+	 SkPkRhlyxcxwFV48sB60DN0uMBfYiyFtO+kRawL5sLV94+lQcIybBzdcdyp0m2dOap
+	 2MAEbDo5v+wetkXjqiN7F2pXw3+sIxENEdASv3YGEI0eG/6Fc3oSmeVFbl/ulUpyA5
+	 bjE0lgynAFAuBhkxELFRmzYLrhzauSdHb/IK3MW/Yh8O5hZ+jQpYGHr0YCnkx9CzHW
+	 RZOZZPp2ow2iQ==
+Date: Tue, 3 Sep 2024 18:47:17 +0200
+From: Andi Shyti <andi.shyti@kernel.org>
+To: Detlev Casanova <detlev.casanova@collabora.com>
+Cc: linux-kernel@vger.kernel.org, Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Heiko Stuebner <heiko@sntech.de>, David Airlie <airlied@gmail.com>, 
+	Daniel Vetter <daniel@ffwll.ch>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+	Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Jiri Slaby <jirislaby@kernel.org>, 
+	Mark Brown <broonie@kernel.org>, Wim Van Sebroeck <wim@linux-watchdog.org>, 
+	Guenter Roeck <linux@roeck-us.net>, Chris Morgan <macromorgan@hotmail.com>, 
+	Jonas Karlman <jonas@kwiboo.se>, Tim Lunn <tim@feathertop.org>, Andy Yan <andyshrk@163.com>, 
+	Muhammed Efe Cetin <efectn@protonmail.com>, Jagan Teki <jagan@edgeble.ai>, Dragan Simic <dsimic@manjaro.org>, 
+	Ondrej Jirman <megi@xff.cz>, Michael Riesch <michael.riesch@wolfvision.net>, 
+	Jimmy Hon <honyuenkwun@gmail.com>, Elon Zhang <zhangzj@rock-chips.com>, 
+	Alexey Charkov <alchark@gmail.com>, Elaine Zhang <zhangqing@rock-chips.com>, 
+	Yifeng Zhao <yifeng.zhao@rock-chips.com>, Finley Xiao <finley.xiao@rock-chips.com>, 
+	Liang Chen <cl@rock-chips.com>, Jamie Iles <jamie@jamieiles.com>, devicetree@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+	dri-devel@lists.freedesktop.org, linux-i2c@vger.kernel.org, linux-serial@vger.kernel.org, 
+	linux-spi@vger.kernel.org, linux-watchdog@vger.kernel.org, kernel@collabora.com, 
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Subject: Re: [PATCH v4 3/9] dt-bindings: i2c: i2c-rk3x: Add rk3576 compatible
+Message-ID: <ycbhqmkwz2hirnvp6j47kz3cxnli3db3i5ah76gngrezs5ww2r@57x2gxnr5hyk>
+References: <20240903152308.13565-1-detlev.casanova@collabora.com>
+ <20240903152308.13565-4-detlev.casanova@collabora.com>
+ <bnpwnuhikwkqyf3jos67qwywhfge3vm6tfmlfitypd5k62jzdn@fri4swkl2zbq>
+ <12506188.O9o76ZdvQC@bootstrap>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20240903073649.237362-13-ye.zhang@rock-chips.com>
-Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
+In-Reply-To: <12506188.O9o76ZdvQC@bootstrap>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240903_091110_514411_28598325 
-X-CRM114-Status: UNSURE (   9.88  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240903_094722_327901_5856E451 
+X-CRM114-Status: GOOD (  22.66  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,39 +91,65 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, Sep 03, 2024 at 03:36:49PM +0800, Ye Zhang wrote:
-> Replacing mutex_lock with guard() simplifies the code and helps avoid
+Hi,
 
-mutex_lock()
+On Tue, Sep 03, 2024 at 11:59:34AM GMT, Detlev Casanova wrote:
+> On Tuesday, 3 September 2024 11:46:00 EDT Andi Shyti wrote:
+> > Hi,
+> > 
+> > On Tue, Sep 03, 2024 at 11:22:33AM GMT, Detlev Casanova wrote:
+> > > Just like RK356x and RK3588, RK3576 is compatible to the existing
+> > > rk3399 binding.
+> > > 
+> > > Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
+> > > Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+> > > Acked-by: Heiko Stuebner <heiko@sntech.de>
+> > 
+> > I will apply this after 1 and 2 have been merged.
+> 
+> Sure, although it is not really dependent on 1 and 2.
 
-avoiding
+yes, but I want to be sure that everything is coming in.
 
-> deadlocks.
+> > BTW, who is maintaining rockchip.yaml?
+> 
+> Heiko Stuebner is the maintainer of Rockchip SoC support.
 
-...
+I would guess so, but I think we should also add the entry to
+the maintainer's file :-)
 
-> --- a/drivers/gpio/gpio-rockchip.c
-> +++ b/drivers/gpio/gpio-rockchip.c
+Thanks,
+Andi
 
-+ cleanup.h
-
-...
-
->  	}
-> -	mutex_lock(&bank->deferred_lock);
-> +	guard(mutex)(&bank->deferred_lock);
-
-Make it surrounded by blank lines.
-
-> +	ret = rockchip_get_bank_data(bank);
-> +	if (ret)
-> +		goto err_disabled_clk;
-
--- 
-With Best Regards,
-Andy Shevchenko
-
-
+> > Thanks,
+> > Andi
+> > 
+> > > ---
+> > > 
+> > >  Documentation/devicetree/bindings/i2c/i2c-rk3x.yaml | 1 +
+> > >  1 file changed, 1 insertion(+)
+> > > 
+> > > diff --git a/Documentation/devicetree/bindings/i2c/i2c-rk3x.yaml
+> > > b/Documentation/devicetree/bindings/i2c/i2c-rk3x.yaml index
+> > > 82b9d6682297..a9dae5b52f28 100644
+> > > --- a/Documentation/devicetree/bindings/i2c/i2c-rk3x.yaml
+> > > +++ b/Documentation/devicetree/bindings/i2c/i2c-rk3x.yaml
+> > > 
+> > > @@ -38,6 +38,7 @@ properties:
+> > >                - rockchip,rk3308-i2c
+> > >                - rockchip,rk3328-i2c
+> > >                - rockchip,rk3568-i2c
+> > > 
+> > > +              - rockchip,rk3576-i2c
+> > > 
+> > >                - rockchip,rk3588-i2c
+> > >                - rockchip,rv1126-i2c
+> > >            
+> > >            - const: rockchip,rk3399-i2c
+> 
+> 
+> 
+> 
 
 _______________________________________________
 Linux-rockchip mailing list
