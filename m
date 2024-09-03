@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7C5C3CD343E
-	for <linux-rockchip@archiver.kernel.org>; Tue,  3 Sep 2024 15:25:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E3B5DCD343E
+	for <linux-rockchip@archiver.kernel.org>; Tue,  3 Sep 2024 15:26:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=yBup9ppidNgyRrk8Kv3aj827+81M9y5y/96+50kNW8k=; b=grOBDePsG4ifWM
-	6o3rm97BXB82QmdhkLYw4CIBmFtefuqJsysSNZ8pp4L3Gekb748tQANmqjCUphHO418G7AEzRFoHn
-	mawNGnT8OvDTCHc33/FLLvvTFJVZTW1+AXZ6AybKt67zibuN2VjsP6ryjtbD5iqwZXOFadjgOtOhc
-	hYXtpDPU3CBAfWVzAuAnpowSVq8V2HwaQrjsduAQ7HDHY08fX9tw36s25vg+sk4duAqvBOxyI7bDw
-	sDRUwCDWiUUoqzeA0JPj24Ct4FeApAp+4HbiV9eVJdKApr3Mp3WBdkF1ZHUouVp1ctefszsnnkiL9
-	Xl+zyy0UzOXXWdayGKBQ==;
+	List-Owner; bh=WlzNTey89ZMQBnegDsJLrY/gwWEcUiGB0LVvjcYrHMg=; b=VP98frkwjOQlwn
+	bIcv0Z0PjYpLv1CyHWq8KDUaerlSc01PfDOPE0uwB1aZyApLLvwsw64mSoZUcsqCnZHnFo5oC1LpX
+	EODSSPkpOX/UIOmzTuxAsHBrO3EmY3byGtnVbSvkApz14AlVHg7OdpWlPIgHyjqp9XfKscoN+saFr
+	bWlT3RDcmUc/+YXpysu1vCVM/N90x+Qr0Q2A5PrJHDsEpbSswlJOf6nino0OhZUR2gzCpNezWFg8j
+	LZeIQ1/YVMevMdsGF8cK+kKqLXoC5DoGYAnoRpWt8G5/6OOZSXSrTZ5HX8Vja442PAJXUvUMEVC+4
+	+81DaI0VTeg7LFSsX7Vw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1slVPM-00000000q0m-1XwK;
-	Tue, 03 Sep 2024 15:25:28 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1slVQL-00000000qOU-34aZ;
+	Tue, 03 Sep 2024 15:26:29 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1slVNO-00000000pB3-0qZD;
-	Tue, 03 Sep 2024 15:23:27 +0000
+	id 1slVNU-00000000pCf-0RVG;
+	Tue, 03 Sep 2024 15:23:33 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1725377004;
-	bh=f0D3qZRNJKjZ4ZItDHDKxzlfX2zSfpN5blcJ2RQ0XJo=;
+	s=mail; t=1725377009;
+	bh=IyIiAOZwHngz0sn8kGrxdHkaHK6p3xqpx6CKa/ulcSM=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=AMD9PPu/OGMlGzKoQ6XXCGTcfrkyWGaHS95Rw5CVsBTegIUzbby8Ffo+rG+dF459O
-	 dK7k1Fd8kicvlJbqaM081WHgiJsVonMxiT4rIc0Yx0i+AqwhaLsjuCMR3wKUvpdqkG
-	 eea8fl9yzULRVEMx0kSJAtjpZ+/HZBIkUjJigVahoWvqZFFMJynS4LRPFNwuV3SId4
-	 cSdlJX2WsqVxLQirQfC/bGWXxcAJ0Ty3JnkO+tipP0Uwf+EwSgNk7EgtAt05mA9DMO
-	 V7NeLT4FbKZ9bA8g9elFCCIENfTF0HvRVSgzAXoeGQulocv+r1TSiieBJJrJ0OkbRt
-	 YfeMbrXj+Jsdg==
+	b=jweGpU98XgiNI6wYB3vTNGnmYUWN6K6tpMu29F/5svEP5C70nSAlLfSO+hqwzmr4V
+	 6LmNf8BBnIlFVTFqdPAL8sMkFtvxCAtPkRM00k+4fRvAxetVoQMGJCPYj4khpqjyiZ
+	 h/17OAqVzwbbOUbv+cz3YXylPc/sBvJA7y7pZeSi6fiWaVA8czA11FBqJzMtCgUbK6
+	 w3tX/cbZc8XXgEGj04SBsrZc1cB91+1dvkenTK+6q/cxYU2mcCjBYSW1QE2Dr4VJsk
+	 hibfJy/AOkoGwuEwUyEVRdPuBSJhYvpZ6tUoJll3VrIbIR9AZNJB8Pa910Zq8mDqKz
+	 fYlsYMQuHnOVA==
 Received: from bootstrap.mtl.collabora.ca (mtl.collabora.ca [66.171.169.34])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: detlev)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id EA64F17E10C1;
-	Tue,  3 Sep 2024 17:23:19 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id ED1CC17E10CB;
+	Tue,  3 Sep 2024 17:23:24 +0200 (CEST)
 From: Detlev Casanova <detlev.casanova@collabora.com>
 To: linux-kernel@vger.kernel.org
 Cc: Rob Herring <robh@kernel.org>,
@@ -88,17 +88,16 @@ Cc: Rob Herring <robh@kernel.org>,
 	linux-watchdog@vger.kernel.org,
 	kernel@collabora.com,
 	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Subject: [PATCH v4 1/9] dt-bindings: arm: rockchip: Add ArmSoM Sige 5
-Date: Tue,  3 Sep 2024 11:22:31 -0400
-Message-ID: <20240903152308.13565-2-detlev.casanova@collabora.com>
+Subject: [PATCH v4 2/9] dt-bindings: arm: rockchip: Add rk3576 compatible string to pmu.yaml
+Date: Tue,  3 Sep 2024 11:22:32 -0400
+Message-ID: <20240903152308.13565-3-detlev.casanova@collabora.com>
 X-Mailer: git-send-email 2.46.0
 In-Reply-To: <20240903152308.13565-1-detlev.casanova@collabora.com>
 References: <20240903152308.13565-1-detlev.casanova@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240903_082326_425132_921CB41C 
-X-CRM114-Status: UNSURE (   9.94  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240903_082332_308871_02D64572 
+X-CRM114-Status: GOOD (  10.71  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -115,30 +114,34 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add devicetree binding for the ArmSoM Sige 5 board.
+Add the compatible for the pmu mfd on rk3576.
 
 Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
-Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 ---
- Documentation/devicetree/bindings/arm/rockchip.yaml | 5 +++++
- 1 file changed, 5 insertions(+)
+ Documentation/devicetree/bindings/arm/rockchip/pmu.yaml | 2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
-index 1ef09fbfdfaf..c3449d964659 100644
---- a/Documentation/devicetree/bindings/arm/rockchip.yaml
-+++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
-@@ -49,6 +49,11 @@ properties:
-               - anbernic,rg-arc-s
-           - const: rockchip,rk3566
+diff --git a/Documentation/devicetree/bindings/arm/rockchip/pmu.yaml b/Documentation/devicetree/bindings/arm/rockchip/pmu.yaml
+index b79c81cd9f0e..932f981265cc 100644
+--- a/Documentation/devicetree/bindings/arm/rockchip/pmu.yaml
++++ b/Documentation/devicetree/bindings/arm/rockchip/pmu.yaml
+@@ -26,6 +26,7 @@ select:
+           - rockchip,rk3368-pmu
+           - rockchip,rk3399-pmu
+           - rockchip,rk3568-pmu
++          - rockchip,rk3576-pmu
+           - rockchip,rk3588-pmu
+           - rockchip,rv1126-pmu
  
-+      - description: ArmSoM Sige5 board
-+        items:
-+          - const: armsom,sige5
-+          - const: rockchip,rk3576
-+
-       - description: ArmSoM Sige7 board
-         items:
-           - const: armsom,sige7
+@@ -43,6 +44,7 @@ properties:
+           - rockchip,rk3368-pmu
+           - rockchip,rk3399-pmu
+           - rockchip,rk3568-pmu
++          - rockchip,rk3576-pmu
+           - rockchip,rk3588-pmu
+           - rockchip,rv1126-pmu
+       - const: syscon
 -- 
 2.46.0
 
