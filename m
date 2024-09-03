@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 771C8CD3420
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C41ECCD3427
 	for <linux-rockchip@archiver.kernel.org>; Tue,  3 Sep 2024 09:39:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,66 +12,67 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=sLcSFlmNLB8bkS6XwLFzySZIB7LzYO4qoYJr4LSZxoU=; b=QLMkhBfu8stkJJ
-	ZXelh//HuVNlCZvDeJghqpVS5dqztuB9npEDrLfCsHXf1Awmy/1Ow/SZdy6nAfS15WibRXdb7k2KC
-	Xu5PyTo62oeqUtfa1DpjgDny2p8d+opa1lrrepzU6rCq692i1GT2wRxocvASkUVxqE1OtnZyJUqQK
-	x2P6wUYHS2e+c5An14OMRjHfyPyhbeVe4I3ApDqJsditVjURExNUOF8BYUoU8gsgrmdhQ6mkE7gRs
-	eOCztBX2QtlhWybEk1ynES6WbC4+2zM67dVG2hLzRtFcnItouWlT+q8yPziSIRpkJUIe49qskKp6+
-	O5F26BnLorFU0PV6Rpmg==;
+	List-Owner; bh=ahFwRYF1L4+bQjekBRLowMqc+VK9Xi7RUsKyCiPwcWI=; b=XGDopIvSnv+ePt
+	vnFclQMpm0UJHZLbe+JkKtyB+7we1voTLIOoIEtmnK4gQ9fyiAn0IR0+iRd/n2sJXDl1JtNPsqBmg
+	gHf4qvRfkT33k44vi11JjyLBrnz7lT8HjeB32WYD6tYpp3BRJuqoQ2FAmVeAwOiJBJkpoArNnpYpP
+	dTa12EGWxqYzIL+k1L0sBo+/4heDhXq/9czgIQKlKSfYVdgMkDLfeUPPJ/Wi3KePwgp6I37LLzfyv
+	fxTtUewZEpWiW8JTlBWTACR7UoTysz/KUhMs/pgra7yhDT35BaGurFxTgJocBjlWxWxu4t+RpmQgB
+	rPRiBQJQmPp7FS68gwrg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1slQ06-0000000HCZI-0Zf8;
+	id 1slQ06-0000000HCZn-3AHJ;
 	Tue, 03 Sep 2024 09:39:02 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1slPkU-0000000H7Ys-1Bs1
+	id 1slPkU-0000000H7Yr-1ET7
 	for linux-rockchip@bombadil.infradead.org;
 	Tue, 03 Sep 2024 09:22:54 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
 	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Sender:Reply-To:Content-ID:Content-Description;
-	bh=nrq8OSQh3CJrIG39da9gZGo1yc4vfcZdxlheYyStSxM=; b=NuYa/MVBAnQtXigtA9Cy+ubPmM
-	GNc/Hs+E4dSRxUIesVyMbY3CvwkBi5FgxLbf4tFX+Gl5h8SR35InYm+evNN/Evd9NKxkv7BO7NBVV
-	OXjwuuADCSG+lsVUcNq/QHEzMigqWhiVIaIYUvWinDuuq1ss65Mx3QXDBJPr79sYB8UvVlhsKHj8y
-	lfnskRBD8iccUHlH8/AAefRPZd+F9W6XPO5bFZRjImJaVXrglZzTchLjALoKqgd/+gm7XphBZ2Onl
-	c9JE4avWrli/Fp8wpIBq2rmOEP9xV6xVCwh4peK92o6UimO91XZ6mCWZObwb/DvDShWNuhgYNBfDK
-	y9ILGzOw==;
+	bh=4GTsj+/6I+4aRzJauq9YUMpgA1HZJq8pEaLGWrwrm8A=; b=A3NM2b1T4QOjLJ9FnuXt5Um9fn
+	ve+EQDgNU7sgyfeGJ8pqbu1EN43j/aFeilZ2arANT+UbaV0zf9RMTJ/U8ANir7FfmA6DdsAI7o+iL
+	Ce0vbGRc+iitgldaDr6Ey/uBYv6Mq8ZrL62Tsrk72R9TZQ+O61qpWURW3MiapotARab1btmakt0dp
+	hjmCDif79kyJ9bswxmZXy0vAQ8QL9D8Z24Fke9ba5zBAxfjcqEGdw1/Fk+REqjf2FAmt/ezxLn8GK
+	Antt1+cPVH2JcpgZJIU225UamExYND0UGBX6aYOOBCgnmIHcWiYhGYXZv6MRzLZvH42Xky2NDSwoP
+	wEX8ABMw==;
 Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
 	by desiato.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1slPkP-0000000CIe0-1XTv
+	id 1slPkO-0000000CIdo-1f57
 	for linux-rockchip@lists.infradead.org;
 	Tue, 03 Sep 2024 09:22:53 +0000
 Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
 	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
 	(Exim 4.92)
 	(envelope-from <mkl@pengutronix.de>)
-	id 1slPkM-0000xR-GP
-	for linux-rockchip@lists.infradead.org; Tue, 03 Sep 2024 11:22:46 +0200
+	id 1slPkI-0000nr-DX
+	for linux-rockchip@lists.infradead.org; Tue, 03 Sep 2024 11:22:42 +0200
 Received: from [2a0a:edc0:0:b01:1d::7b] (helo=bjornoya.blackshift.org)
 	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <mkl@pengutronix.de>)
-	id 1slPkG-0059aR-KK
-	for linux-rockchip@lists.infradead.org; Tue, 03 Sep 2024 11:22:40 +0200
+	id 1slPkB-0059SM-ES
+	for linux-rockchip@lists.infradead.org; Tue, 03 Sep 2024 11:22:35 +0200
 Received: from dspam.blackshift.org (localhost [127.0.0.1])
-	by bjornoya.blackshift.org (Postfix) with SMTP id 43ECE3311F4
-	for <linux-rockchip@lists.infradead.org>; Tue, 03 Sep 2024 09:22:40 +0000 (UTC)
+	by bjornoya.blackshift.org (Postfix) with SMTP id F1A0A331107
+	for <linux-rockchip@lists.infradead.org>; Tue, 03 Sep 2024 09:22:34 +0000 (UTC)
 Received: from hardanger.blackshift.org (unknown [172.20.34.65])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(Client did not present a certificate)
-	by bjornoya.blackshift.org (Postfix) with ESMTPS id 910AB33104E;
-	Tue, 03 Sep 2024 09:22:28 +0000 (UTC)
+	by bjornoya.blackshift.org (Postfix) with ESMTPS id BDBD0331034;
+	Tue, 03 Sep 2024 09:22:27 +0000 (UTC)
 Received: from [172.20.34.65] (localhost [::1])
-	by hardanger.blackshift.org (OpenSMTPD) with ESMTP id 05c965a7;
+	by hardanger.blackshift.org (OpenSMTPD) with ESMTP id 880eff45;
 	Tue, 3 Sep 2024 09:22:26 +0000 (UTC)
 From: Marc Kleine-Budde <mkl@pengutronix.de>
-Date: Tue, 03 Sep 2024 11:21:59 +0200
-Subject: [PATCH can-next v4 17/20] can: rockchip_canfd: enable full TX-FIFO
- depth of 2
+Date: Tue, 03 Sep 2024 11:21:51 +0200
+Subject: [PATCH can-next v4 09/20] can: rockchip_canfd:
+ rkcanfd_handle_rx_int_one(): implement workaround for erratum 5: check for
+ empty FIFO
 MIME-Version: 1.0
-Message-Id: <20240903-rockchip-canfd-v4-17-1dc3f3f32856@pengutronix.de>
+Message-Id: <20240903-rockchip-canfd-v4-9-1dc3f3f32856@pengutronix.de>
 References: <20240903-rockchip-canfd-v4-0-1dc3f3f32856@pengutronix.de>
 In-Reply-To: <20240903-rockchip-canfd-v4-0-1dc3f3f32856@pengutronix.de>
 To: kernel@pengutronix.de, Alibek Omarov <a1ba.omarov@gmail.com>, 
@@ -88,15 +89,15 @@ Cc: Simon Horman <horms@kernel.org>, linux-can@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
  linux-kernel@vger.kernel.org, Marc Kleine-Budde <mkl@pengutronix.de>
 X-Mailer: b4 0.15-dev-99b12
-X-Developer-Signature: v=1; a=openpgp-sha256; l=879; i=mkl@pengutronix.de;
- h=from:subject:message-id; bh=Rb+DPh6I1pIZR5OwMWvyyqc8QfjnlVzZzpFMC3B2FWI=;
- b=owEBbQGS/pANAwAKASg4oj56LbxvAcsmYgBm1tVMBeFSFmOa6zI4gd+z+CgPmODOkUkNzsxbx
- wWia+lv1ImJATMEAAEKAB0WIQRQQLqG4LYE3Sm8Pl8oOKI+ei28bwUCZtbVTAAKCRAoOKI+ei28
- b3h4B/wMzCZveqIFUd3Ln0diZ+eV2pI3Ak5fKS4j5/eaeMiQSbS4fDLMxl+HdEDoXA0mqf1CGXI
- 5byvf8TafkEKEBMBH2kYDrgRc6OlQRxFcQVeTLlsAkp3g6GIlBKTtC9J6RtrKjyPsVxxOrZ0BeH
- 2u1uuDhwwjeJLbq8BkmmsS50QgUg9remfMhLOscPp0ABokHPu8P8RTB7MQaGDwb1roIW0PsE3eb
- LRAbtO+3djse9CHqDEN0sOwzWGcHgB1mbTE/FPGdY5tNYkQn0s6IoWZCCtHGy/H2CjLG8ybTfSF
- hFmq/OvIRiEVypRP8tMP3VAMLMohm3H5faHhob3TyIj0+L7Z
+X-Developer-Signature: v=1; a=openpgp-sha256; l=4011; i=mkl@pengutronix.de;
+ h=from:subject:message-id; bh=gTvq7gHTXf9S/cqPeCfVe7J+meaf29zJX+AvP7bOZn8=;
+ b=owGbwMvMwMWoYbHIrkp3Tz7jabUkhrRrVx1C3zf47j+Un93z8L7WgniZZTO2iBTebszfPdXsy
+ faLMs92dDIaszAwcjHIiimyBDjsanuwjeWu5h67eJhBrEwgUxi4OAVgIkK72P+XZnJ/9Ym7z792
+ 4tv2e857cn+q7NE2irubpO7R/mlpi2XNggWyEfu/Kb7mqHOwD+HLYPaXOto/1+ZiU3dtkEfF9Jw
+ vQu6fHVSauf/X5R7T3xzj8r7jqtlVETmvvDWuufcWbzrINbU/sb9mjrpExOKoRwV9X1Xa2ySVcy
+ 1z1qtUC6/XEP6wnmWDx5nknY5Wy/YUHF33dIqC2Ptm7sX9CbxMbo7bDZOVelqDYhc3zmw4/EJ0S
+ k22g960ro9dO9syKhieHMjqZM0zbOxRqwuo/MD2InZfifPSszLRd75OquuWahF8LHb4ndqGIKvb
+ 6o1nr194/6J3q9+pJnm5sJf3r21492ZfpY7mhqk63PGXAA==
 X-Developer-Key: i=mkl@pengutronix.de; a=openpgp;
  fpr=C1400BA0B3989E6FBC7D5B5C2B5EE211C58AEA54
 X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
@@ -104,8 +105,8 @@ X-SA-Exim-Mail-From: mkl@pengutronix.de
 X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
 X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240903_102249_930171_4A2B1319 
-X-CRM114-Status: GOOD (  12.96  )
+X-CRM114-CacheID: sfid-20240903_102249_270396_6FAC334C 
+X-CRM114-Status: GOOD (  19.77  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -122,28 +123,105 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The previous commit prepared the TX path to make use of the full
-TX-FIFO depth as much as possible. Increase the available TX-FIFO
-depth to the hardware maximum of 2.
+The rk3568 CAN-FD errata sheet as of Tue 07 Nov 2023 11:25:31 +08:00
+says:
+
+| Erratum 5: Counters related to the TXFIFO and RXFIFO exhibit
+| abnormal counting behavior.
+|
+| Due to a bug in the cross-asynchronous logic of the enable signals
+| for rx_fifo_cnt and txe_fifo_frame_cnt counters, the counts of these
+| two counters become inaccurate. This issue has resulted in the
+| inability to use the TXFIFO and RXFIFO functions.
+
+The errata sheet mentioned above states that only the rk3568v2 is
+affected by this erratum, but tests with the rk3568v2 and rk3568v3
+show that the RX_FIFO_CNT is sometimes too high. This leads to CAN
+frames being read from the FIFO, which is then already empty.
+
+Further tests on the rk3568v2 and rk3568v3 show that in this
+situation (i.e. empty FIFO) all elements of the FIFO
+header (frameinfo, id, ts) contain the same data.
+
+On the rk3568v2 and rk3568v3, this problem only occurs extremely
+rarely with the standard clock of 300 MHz, but almost immediately at
+80 MHz.
+
+To workaround this problem, check for empty FIFO with
+rkcanfd_fifo_header_empty() in rkcanfd_handle_rx_int_one() and exit
+early.
 
 Tested-by: Alibek Omarov <a1ba.omarov@gmail.com>
 Signed-off-by: Marc Kleine-Budde <mkl@pengutronix.de>
 ---
- drivers/net/can/rockchip/rockchip_canfd.h | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/net/can/rockchip/rockchip_canfd-rx.c | 14 ++++++++++++++
+ drivers/net/can/rockchip/rockchip_canfd.h    | 22 ++++++++++++++++++++++
+ 2 files changed, 36 insertions(+)
 
+diff --git a/drivers/net/can/rockchip/rockchip_canfd-rx.c b/drivers/net/can/rockchip/rockchip_canfd-rx.c
+index 5398aff0d180..609282359bca 100644
+--- a/drivers/net/can/rockchip/rockchip_canfd-rx.c
++++ b/drivers/net/can/rockchip/rockchip_canfd-rx.c
+@@ -47,6 +47,16 @@ rkcanfd_fifo_header_to_cfd_header(const struct rkcanfd_priv *priv,
+ 	return len + cfd->len;
+ }
+ 
++static inline bool
++rkcanfd_fifo_header_empty(const struct rkcanfd_fifo_header *header)
++{
++	/* Erratum 5: If the FIFO is empty, we read the same value for
++	 * all elements.
++	 */
++	return header->frameinfo == header->id &&
++		header->frameinfo == header->ts;
++}
++
+ static int rkcanfd_handle_rx_int_one(struct rkcanfd_priv *priv)
+ {
+ 	struct net_device_stats *stats = &priv->ndev->stats;
+@@ -63,6 +73,10 @@ static int rkcanfd_handle_rx_int_one(struct rkcanfd_priv *priv)
+ 	rkcanfd_read_rep(priv, RKCANFD_REG_RX_FIFO_RDATA,
+ 			 cfd->data, sizeof(cfd->data));
+ 
++	/* Erratum 5: Counters for TXEFIFO and RXFIFO may be wrong */
++	if (rkcanfd_fifo_header_empty(header))
++		return 0;
++
+ 	len = rkcanfd_fifo_header_to_cfd_header(priv, header, cfd);
+ 
+ 	/* Drop any received CAN-FD frames if CAN-FD mode is not
 diff --git a/drivers/net/can/rockchip/rockchip_canfd.h b/drivers/net/can/rockchip/rockchip_canfd.h
-index 37d90400429f..6be2865ec95a 100644
+index 3dafb5e68dc5..c775e75a2740 100644
 --- a/drivers/net/can/rockchip/rockchip_canfd.h
 +++ b/drivers/net/can/rockchip/rockchip_canfd.h
-@@ -288,7 +288,7 @@
+@@ -315,6 +315,28 @@
  
- #define DEVICE_NAME "rockchip_canfd"
- #define RKCANFD_NAPI_WEIGHT 32
--#define RKCANFD_TXFIFO_DEPTH 1
-+#define RKCANFD_TXFIFO_DEPTH 2
- #define RKCANFD_TX_STOP_THRESHOLD 1
- #define RKCANFD_TX_START_THRESHOLD 1
+ /* Erratum 5: Counters related to the TXFIFO and RXFIFO exhibit
+  * abnormal counting behavior.
++ *
++ * The rk3568 CAN-FD errata sheet as of Tue 07 Nov 2023 11:25:31 +08:00
++ * states that only the rk3568v2 is affected by this erratum, but
++ * tests with the rk3568v2 and rk3568v3 show that the RX_FIFO_CNT is
++ * sometimes too high. This leads to CAN frames being read from the
++ * FIFO, which is then already empty.
++ *
++ * Further tests on the rk3568v2 and rk3568v3 show that in this
++ * situation (i.e. empty FIFO) all elements of the FIFO header
++ * (frameinfo, id, ts) contain the same data.
++ *
++ * On the rk3568v2 and rk3568v3, this problem only occurs extremely
++ * rarely with the standard clock of 300 MHz, but almost immediately
++ * at 80 MHz.
++ *
++ * To workaround this problem, check for empty FIFO with
++ * rkcanfd_fifo_header_empty() in rkcanfd_handle_rx_int_one() and exit
++ * early.
++ *
++ * To reproduce:
++ * assigned-clocks = <&cru CLK_CANx>;
++ * assigned-clock-rates = <80000000>;
+  */
+ #define RKCANFD_QUIRK_RK3568_ERRATUM_5 BIT(4)
  
 
 -- 
