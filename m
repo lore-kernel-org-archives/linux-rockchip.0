@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1CC26CD342A
-	for <linux-rockchip@archiver.kernel.org>; Tue,  3 Sep 2024 15:29:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9E2FDCD343E
+	for <linux-rockchip@archiver.kernel.org>; Tue,  3 Sep 2024 15:30:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=awaz3QW47EbfkDVEnn8D27ncCqt/5b7VX3gLMuz+ef4=; b=skKxD5pA7a0mzZ
-	WwlaFu8hi+J9l99ItORUdJQl50PJuCgpWVTDR+iFIX3bCu2NjRmJJlzL0g6eSlMuj9MjujG9D8IjI
-	2Qzu5kwrL4MUeKhEWDjafoRRT2sqUz95t9P+lGa8QpJf/JvriRzb+JR3w3QrbiYJ/OEBdd9Y8Yn+Q
-	xZD8FU6JmtcKVwWW1D8yNAedXY3hKv5xQiQFfnyGDq80YDCHplAlVZOyGB4bIow3cOSDosttB01mR
-	OrnYVV0wQFW/IWmVrt3M5PyGHVnGGzBr77yXelALIuDATQa0f1tQqXerL92Nx5pxrIjb0z74rgQOx
-	rfHcfCaK8MdaN8JNN+kw==;
+	List-Owner; bh=8UuJiP7xXw8Ce66Cxlt6GYWY6lk410tkqJchZK2U6Z8=; b=hv6/9LjZwzNMbi
+	Aj8ClHVymIyr5OEUUzHLchWSr9ACus00YyNDyLrEudpYJ8GJvb2YqhhOKbHXOylg+zuEFhbNw1NOK
+	jC7ZbMpjB+n0cIYUsylbOYpZ7qKn+/+LA532Vk4pt6M4FECWR9ytFE+w7sbnQSt1t0gk3lHwc/pbV
+	gpip0rN0Ns+WxEWtHt29/2nIPkiebrnI1mPytzlFLA5J6v4mz74B2Nrp7DoOTorgiPERqyL4K3ZXZ
+	wCvPWfp1XRhWLK+LptrmZ9pdLpY60aA+yYyutHI5gWTWi8XNstQ1Hc0uG7KMwU7BSghbsi79K4hi8
+	XCQiFl6nCs5s4ZLtI++g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1slVT5-00000000rRv-0MPV;
-	Tue, 03 Sep 2024 15:29:19 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1slVTz-00000000rjo-18kw;
+	Tue, 03 Sep 2024 15:30:15 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1slVNd-00000000pH3-0cD2;
-	Tue, 03 Sep 2024 15:23:42 +0000
+	id 1slVNi-00000000pIr-0NQY;
+	Tue, 03 Sep 2024 15:23:47 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1725377019;
-	bh=+z4DNLofnJ+4TntmnJnx8/LI+3LWZKrJMGa2MghZgVM=;
+	s=mail; t=1725377024;
+	bh=eroRuymFGct5tFtXZVXe7idGbNt35wDtyZN4XFBz5uE=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=NIcGJqzNqPNfNttE35KQnhZQWGAd+uvUWJluAOJYkIdOVglu4XiM3uySb0PvFNKRF
-	 o1g1Ti7Ccaq8W4CvmD0W6qVbiEvSh9ZRLK5BbojqfXG6DAy5RjW9ojw+VbeFmB2pYf
-	 udGffj2veKae6YK+fFRMP+otsbw3VA/gXGkyJNvLn9oV00Jz7bVVUfGFpKG2skgt57
-	 v96jf9Tb2Sy7WwRtxBBCt9LRs1BXGtHGqoZKkCdU9M6PvMk2kLt8zTW8SpLE0lPUQ3
-	 lNzdA/GDCcN57XhVS1qveL3IznpCeR6WuIi6TqVLXO/IsqGU0qNsBryzdVAaT/nT67
-	 balOcs4MRCbRg==
+	b=fvVm1tVI70KXncHRGg4SCAGQnZ82PUcZWgGHf4otU/XvzHGlAS+L6aNXHv44m6iJA
+	 fXkABVXhEpwGZonme34ewkRevhYX/XHEqbCAOkBfsH5hRnLx+bolNeD8exN8/Gc6vQ
+	 +o+z8DJQSgEV24zpnTAtNjdCOcgNEt6zg2LZjgvci0P+QekwgvrLEdbxZZIjsQYENS
+	 ni+NPWEkyGNdgneFxWYzJptLKB9EQWMsYE7tPLkEZQjoPHgJ0PnK519COYlNmzWqOn
+	 egS6aTtHc+oUwA3CDH6zSlVpRVwS/yp/rWwo29+CXjKIMrrPy5Bp0vjcLJgJ2ulCXG
+	 mOwxm39TpoMEg==
 Received: from bootstrap.mtl.collabora.ca (mtl.collabora.ca [66.171.169.34])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: detlev)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id F243B17E10D0;
-	Tue,  3 Sep 2024 17:23:34 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 0118317E10D3;
+	Tue,  3 Sep 2024 17:23:39 +0200 (CEST)
 From: Detlev Casanova <detlev.casanova@collabora.com>
 To: linux-kernel@vger.kernel.org
 Cc: Rob Herring <robh@kernel.org>,
@@ -88,17 +88,16 @@ Cc: Rob Herring <robh@kernel.org>,
 	linux-watchdog@vger.kernel.org,
 	kernel@collabora.com,
 	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Subject: [PATCH v4 4/9] dt-bindings: serial: snps-dw-apb-uart: Add Rockchip RK3576
-Date: Tue,  3 Sep 2024 11:22:34 -0400
-Message-ID: <20240903152308.13565-5-detlev.casanova@collabora.com>
+Subject: [PATCH v4 5/9] dt-bindings: gpu: Add rockchip,rk3576-mali compatible
+Date: Tue,  3 Sep 2024 11:22:35 -0400
+Message-ID: <20240903152308.13565-6-detlev.casanova@collabora.com>
 X-Mailer: git-send-email 2.46.0
 In-Reply-To: <20240903152308.13565-1-detlev.casanova@collabora.com>
 References: <20240903152308.13565-1-detlev.casanova@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240903_082341_354339_786BDF54 
-X-CRM114-Status: UNSURE (   9.60  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240903_082346_319260_034EF65A 
+X-CRM114-Status: GOOD (  10.28  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -115,27 +114,27 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add a Rockchip RK3576 compatible.
+The rk3576 SoC has an ARM Mali G52 MC3 GPU, that is compatible with
+arm,mali-bifrost.
 
 Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
 Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Acked-by: Heiko Stuebner <heiko@sntech.de>
 ---
- Documentation/devicetree/bindings/serial/snps-dw-apb-uart.yaml | 1 +
+ Documentation/devicetree/bindings/gpu/arm,mali-bifrost.yaml | 1 +
  1 file changed, 1 insertion(+)
 
-diff --git a/Documentation/devicetree/bindings/serial/snps-dw-apb-uart.yaml b/Documentation/devicetree/bindings/serial/snps-dw-apb-uart.yaml
-index 4cdb0dcaccf3..cfcfd7a6b78f 100644
---- a/Documentation/devicetree/bindings/serial/snps-dw-apb-uart.yaml
-+++ b/Documentation/devicetree/bindings/serial/snps-dw-apb-uart.yaml
-@@ -49,6 +49,7 @@ properties:
-               - rockchip,rk3368-uart
-               - rockchip,rk3399-uart
-               - rockchip,rk3568-uart
-+              - rockchip,rk3576-uart
-               - rockchip,rk3588-uart
-               - rockchip,rv1108-uart
-               - rockchip,rv1126-uart
+diff --git a/Documentation/devicetree/bindings/gpu/arm,mali-bifrost.yaml b/Documentation/devicetree/bindings/gpu/arm,mali-bifrost.yaml
+index 278399adc550..735c7f06c24e 100644
+--- a/Documentation/devicetree/bindings/gpu/arm,mali-bifrost.yaml
++++ b/Documentation/devicetree/bindings/gpu/arm,mali-bifrost.yaml
+@@ -26,6 +26,7 @@ properties:
+               - renesas,r9a07g054-mali
+               - rockchip,px30-mali
+               - rockchip,rk3568-mali
++              - rockchip,rk3576-mali
+           - const: arm,mali-bifrost # Mali Bifrost GPU model/revision is fully discoverable
+       - items:
+           - enum:
 -- 
 2.46.0
 
