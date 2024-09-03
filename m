@@ -4,44 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 418A2CD342E
-	for <linux-rockchip@archiver.kernel.org>; Tue,  3 Sep 2024 07:36:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8E7C4CD342E
+	for <linux-rockchip@archiver.kernel.org>; Tue,  3 Sep 2024 07:38:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=IauQCTnoUYa1Y7yhWb2WWvmFKtMON9aB+75PorkNbhU=; b=dKM25fn0Ftm0DF
-	QNm6NASRc24efbYWE7fEP0qS1/2EGB6aQJ3MZ1RwT9z7BN0IRWB+i35Tvv+Q3q4eaYch1eR7ocRO5
-	O39UtW8ZAYCP2rxEUxON2rhnmk87lCc8B7N44GpIa9iQG/Q6GkFwhGxMUehKxcC1tW4lUP1K5MDlR
-	Mi2uzgf/JAr5kbDu9F3Gyp2r+I5XfYQfhVZyWMnZi38ZG7RFHWvXYGG8867fUiyq+85Os6Q7TIB1g
-	MpovqzkPRJ5LYRJWhYgYB7tbLYSO+dW295JPZSmwwhqzdkgtf2gTxKHV80c13kImOT6pkOhca5/6P
-	a1BY4+v1QH/26WbR4Pgw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=mwQ+avCzeamshHkuM1bVmfNwxV5XakDYKm1raK7nOZo=; b=RnShEg7EkZ4c6o
+	dwl8YvjokjYdkIX79mnVkpTKFBUaHHGyHQM9XoTP5A8QmbD8qMx3ts9ccYDt5ada2LNA670EKCFwG
+	/ymQndhTJpzDh9EZjSSz6cibcVdOSBnUtSr1gaPqkbv0faKC5n3l1B+XPaOlRRg4dW2vx6EZ8yuGJ
+	FOHN5HiJslJy0Xl1tap5fD3FxOqZbUdgRgNw8gVqb//tHBBJshhDK0otRd/KXICriimbiRutee1WV
+	b+/3YB35V9IcHr1igGXAdylvL0jdKKozhCzz4qYsc2Xe83lTvi/WjR8LEbTqzfFAxLSrZRxDxQyiG
+	DRESIrp++Wji8WAVSg6w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1slO57-0000000Gi3S-2lYv;
-	Tue, 03 Sep 2024 07:36:05 +0000
-Received: from sakura.naobsd.org ([160.16.200.221] helo=mail.naobsd.org)
+	id 1slO7A-0000000GiYZ-2CN7;
+	Tue, 03 Sep 2024 07:38:12 +0000
+Received: from mail-m6039.netease.com ([210.79.60.39])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1slO53-0000000Gi2N-3XZo
-	for linux-rockchip@lists.infradead.org;
-	Tue, 03 Sep 2024 07:36:04 +0000
-Received: from secure.fukaumi.org ([10.0.0.2])
-	by mail.naobsd.org (8.14.4/8.14.4/Debian-4.1ubuntu1.1) with ESMTP id 4837Zrq1017155;
-	Tue, 3 Sep 2024 16:35:54 +0900
-From: FUKAUMI Naoki <naoki@radxa.com>
-To: heiko@sntech.de
-Cc: chris.obbard@collabora.com, linux-rockchip@lists.infradead.org,
-        FUKAUMI Naoki <naoki@radxa.com>
-Subject: [PATCH] arm64: dts: rockchip: remove duplicate nodes from dts for ROCK 4SE
-Date: Tue,  3 Sep 2024 16:35:44 +0900
-Message-ID: <20240903073544.2161-1-naoki@radxa.com>
-X-Mailer: git-send-email 2.43.0
+	id 1slO6P-0000000GiKH-41dx;
+	Tue, 03 Sep 2024 07:37:28 +0000
+DKIM-Signature: a=rsa-sha256;
+	b=YUPQenCZLsF1LQYjiZQWJFdQfS1EbqjWN9BC3pkl+b59EEc0AKT9zaaK7QXHnMHeqUzze+eoOwnlkAqs3jDvg5zZnnJDON97rw+/PW3ylHjHJokBVdssjTAvtTZg577oVMxSeiwG3Y8OiNFv7MDV4UU8oKSGDO0E1ehlRtRUBxM=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=aKIFSG7psQm1vWjapk5w2XfwNBNv7IDfrqqRzIJzccQ=;
+	h=date:mime-version:subject:message-id:from;
+Received: from rockchip.. (unknown [58.22.7.114])
+	by smtp.qiye.163.com (Hmail) with ESMTPA id B04CA7E06F3;
+	Tue,  3 Sep 2024 15:37:04 +0800 (CST)
+From: Ye Zhang <ye.zhang@rock-chips.com>
+To: Ye Zhang <ye.zhang@rock-chips.com>,
+	linus.walleij@linaro.org,
+	brgl@bgdev.pl,
+	heiko@sntech.de,
+	linux-gpio@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org
+Cc: linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	mika.westerberg@linux.intel.com,
+	andriy.shevchenko@linux.intel.com,
+	tao.huang@rock-chips.com,
+	finley.xiao@rock-chips.com,
+	tim.chen@rock-chips.com,
+	elaine.zhang@rock-chips.com
+Subject: [PATCH v3 02/12] gpio: rockchip: release reference to device node
+Date: Tue,  3 Sep 2024 15:36:39 +0800
+Message-Id: <20240903073649.237362-3-ye.zhang@rock-chips.com>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20240903073649.237362-1-ye.zhang@rock-chips.com>
+References: <20240903073649.237362-1-ye.zhang@rock-chips.com>
 MIME-Version: 1.0
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGRhNQ1ZIQ0lITEweQxpKTE5WFRQJFh
+	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSUhCSE
+	NVSktLVUpCS0tZBg++
+X-HM-Tid: 0a91b6d0d68609cfkunmb04ca7e06f3
+X-HM-MType: 1
+X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6NRg6Sxw5AjI3GklWPBMRFRlI
+	UQsaCjVVSlVKTElOSE9CS0lOQkpLVTMWGhIXVQIeVQETGhUcOwkUGBBWGBMSCwhVGBQWRVlXWRIL
+	WUFZTkNVSUlVTFVKSk9ZV1kIAVlBSUhNSzcG
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240903_003602_115221_8B3C0467 
-X-CRM114-Status: UNSURE (   6.92  )
+X-CRM114-CacheID: sfid-20240903_003726_640777_8D68F98A 
+X-CRM114-Status: UNSURE (   7.99  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -59,50 +84,30 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-these nodes just define same properties in rk3399-rock-pi-4.dtsi.
-remove them from rk3399-rock-4se.dts.
+Added a call to of_node_put(pctlnp) in rockchip_gpio_probe to properly
+release the reference to the device node, improving memory management
+and preventing potential leaks.
 
-sha256sum rk3399-rock-4se.dtb generates same hash value before/after
-this change.
-
-Fixes: 86a0e14a82ea ("arm64: dts: rockchip: Add Radxa ROCK 4SE")
-Signed-off-by: FUKAUMI Naoki <naoki@radxa.com>
+Fixes: 936ee2675eee ("gpio/rockchip: add driver for rockchip gpio")
+Signed-off-by: Ye Zhang <ye.zhang@rock-chips.com>
 ---
- arch/arm64/boot/dts/rockchip/rk3399-rock-4se.dts | 15 ---------------
- 1 file changed, 15 deletions(-)
+ drivers/gpio/gpio-rockchip.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rock-4se.dts b/arch/arm64/boot/dts/rockchip/rk3399-rock-4se.dts
-index 9dd26150c369..a8b8d4acc337 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-rock-4se.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-rock-4se.dts
-@@ -17,14 +17,6 @@ aliases {
- 	};
- };
+diff --git a/drivers/gpio/gpio-rockchip.c b/drivers/gpio/gpio-rockchip.c
+index 712258224eb3..5f60162baaeb 100644
+--- a/drivers/gpio/gpio-rockchip.c
++++ b/drivers/gpio/gpio-rockchip.c
+@@ -715,6 +715,7 @@ static int rockchip_gpio_probe(struct platform_device *pdev)
+ 		return -ENODEV;
  
--&pinctrl {
--	usb2 {
--		vcc5v0_host_en: vcc5v0-host-en {
--			rockchip,pins = <4 RK_PD1 RK_FUNC_GPIO &pcfg_pull_none>;
--		};
--	};
--};
--
- &sdio0 {
- 	status = "okay";
+ 	pctldev = of_pinctrl_get(pctlnp);
++	of_node_put(pctlnp);
+ 	if (!pctldev)
+ 		return -EPROBE_DEFER;
  
-@@ -56,10 +48,3 @@ bluetooth {
- 		vddio-supply = <&vcc_1v8>;
- 	};
- };
--
--&vcc5v0_host {
--	enable-active-high;
--	gpio = <&gpio4 RK_PD1 GPIO_ACTIVE_HIGH>;
--	pinctrl-names = "default";
--	pinctrl-0 = <&vcc5v0_host_en>;
--};
 -- 
-2.43.0
+2.34.1
 
 
 _______________________________________________
