@@ -4,60 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CAE7BCD3439
-	for <linux-rockchip@archiver.kernel.org>; Tue,  3 Sep 2024 14:30:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5E3F3CD343D
+	for <linux-rockchip@archiver.kernel.org>; Tue,  3 Sep 2024 14:47:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:References:
-	In-Reply-To:Cc:To:From:MIME-Version:Date:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=cEfSoDYw80kUK6MGpw/FqfRDwq28I5gHwHv0B/60g5w=; b=HllbaHzSV8C2tv8ppCr9ejF5b2
-	/syeA03WOvPTbDqY9Tb9u184brp6oVb8yqFzjS1vHiHPTgknDZrT6A2EpIuk1YYHiBES+CeP+tAMM
-	Vk1y7BW/KJrXsoyyA/++LWKBEXOtaQYguujCNdKKq5+YLc6HGMrHK2yzLUwlcOenfAhjya3xChwQE
-	BCtRzJTRfSjZp7V4ANgI4vOwDSYrTC8umcg+oOfH8Cpr/M1F5cq0XE4sk72NzsVyg2KYdPqusvYJt
-	roQNR2o3tclVfq/+of2V/x6oWTdFgEui2Ri2LhAOagqnYKg9SQysHZiqKWfTI/ZtkFydF4HnlRvQd
-	fV6H5ZvQ==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=LYnQX3p2lwcQDjjrd5HQizNWZpuI4xVj8DCyQqgp5Z8=; b=EXo5z2b8/aVm+Q
+	YY9UW7Qj+wwYw47dbFw5qUwcW6QrNdqdFCRZHeGRQWGxHJrGMBZzB9WRpmUei7rO2clTf/fQw4Km6
+	VQM8HgJdBVkQvK82ClflC46Us5CoERs5PqMO8WD9aHqfnvyUZPiUitDsRoyrpJA4mJYiwEwq/kIFH
+	18UrkOJxEJ/Rr64CAnesSqPdCUaQymdNt4nPdLx/eN7H1Tlm39/qslKM7sU22pGuAXu6paSCl9jGC
+	zg2kkz9XJcH1gTcR6xDM30rz/bA0AKA3WGjWmQz6GqIXPRWoYcHQ0LYIILFJ4c6WzBMY2PNF1gpwl
+	q/AFe41+KZ9E+z33ztUA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1slUXt-00000000aUq-0jVd;
-	Tue, 03 Sep 2024 14:30:13 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1slUoB-00000000eiR-0Q0L;
+	Tue, 03 Sep 2024 14:47:03 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1slUUU-00000000Z4g-0oon;
-	Tue, 03 Sep 2024 14:26:44 +0000
+	id 1slUmu-00000000eF8-1OGi;
+	Tue, 03 Sep 2024 14:45:46 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 821CA5C5878;
-	Tue,  3 Sep 2024 14:26:37 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 664ABC4CEC7;
-	Tue,  3 Sep 2024 14:26:40 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 1E6A45C5844;
+	Tue,  3 Sep 2024 14:45:40 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 153E1C4CEC7;
+	Tue,  3 Sep 2024 14:45:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1725373600;
-	bh=oepubW5xCjnomthQWrM+V31kgGapv4R6djjQTRdai7g=;
-	h=Date:From:To:Cc:In-Reply-To:References:Subject:From;
-	b=RZNl6SxOy3lRIAGl0KBzxJnXKwr/4wIqks5ps/W01gjbCvPlsC2X8eu6OWOutjYhV
-	 a+64ojJLBCLo8FSYCIYdtle3x1ox0YzNE5bE1HWjeWk2lm/hURdSDw1RVjXxbSN5Vf
-	 QgA+YgGZvVlQvdKUk0pkpjbfoDNnapuY/SJxs+VEgw5KjRzniQB+zrrOuuenWd+C9K
-	 wHbx/B1cDFpwoZhymfQNfTn4K8e9PoS9frP+Zqb3ed6UJpDcfusewTF7HKAl5clCUB
-	 Ws9k6f1Hy2NxC60GUF8jmo0a4d6QyUgx150NYL5koZkBI7RRC10lwLWM33MR9cmuXo
-	 CoH4/tk/jeXeg==
-Date: Tue, 03 Sep 2024 09:26:39 -0500
+	s=k20201202; t=1725374743;
+	bh=iSDAPXcfXfi99MJkJaU478Nz0GEXXstJ4Q3Am5fSk+U=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=uFwX5QNs7hy9CFQx6BrFceUzU381Ex4ft3CHyRWKb6VMideDik8I7r4S8s8J5edC0
+	 XYs8gbnz1hRDvGh0qgbsnlpyPexKgxqGiULFprJHMC/zJh1HwWswe1AmSn0buV4GSo
+	 v5o5XiS/456Dr7W9EP7C8ZlOF09s/p/Fjfeh7exl/OTvIMrtwoENk018lBrPgfhBEz
+	 oW8iWpC/Z27HPBAr/kzJkTbHLeMuk6V1EG5bF2Ljgckd0okY05AXfI9ymzbVWRS67w
+	 FyWwI1S4a8WOHuU7+jemqYWUWxzRST1rKdonquAkpwaxR7rwt3neLL4c2+wQfqIDhw
+	 lC4KDofd7NYQw==
+Date: Tue, 3 Sep 2024 09:45:42 -0500
+From: Rob Herring <robh@kernel.org>
+To: Karthikeyan Krishnasamy <karthikeyan@linumiz.com>
+Cc: krzk+dt@kernel.org, conor+dt@kernel.org, heiko@sntech.de,
+	alexandre.belloni@bootlin.com, devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+	linux-rtc@vger.kernel.org
+Subject: Re: [PATCH v2 5/8] dt-bindings: rtc: microcrystal,rv3028: add
+ clock-cells property
+Message-ID: <20240903144542.GA985263-robh@kernel.org>
+References: <20240903105245.715899-1-karthikeyan@linumiz.com>
+ <20240903105245.715899-6-karthikeyan@linumiz.com>
 MIME-Version: 1.0
-From: "Rob Herring (Arm)" <robh@kernel.org>
-To: Jonas Karlman <jonas@kwiboo.se>
-Cc: Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org, 
- Heiko Stuebner <heiko@sntech.de>, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, 
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Dongjin Kim <tobetter@gmail.com>, 
- linux-rockchip@lists.infradead.org
-In-Reply-To: <20240901112020.3224704-1-jonas@kwiboo.se>
-References: <20240901112020.3224704-1-jonas@kwiboo.se>
-Message-Id: <172537334390.873091.5239461386156277757.robh@kernel.org>
-Subject: Re: [PATCH 0/2] arm64: dts: rockchip: Add Hardkernel ODROID-M2
+Content-Disposition: inline
+In-Reply-To: <20240903105245.715899-6-karthikeyan@linumiz.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240903_072642_584079_4F9843E9 
-X-CRM114-Status: GOOD (  17.35  )
+X-CRM114-CacheID: sfid-20240903_074544_492700_808CA103 
+X-CRM114-Status: GOOD (  13.90  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,79 +76,42 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+On Tue, Sep 03, 2024 at 04:22:42PM +0530, Karthikeyan Krishnasamy wrote:
+> consume clkout from rv3028 rtc which is able to provide
+> different clock frequency upon configuration
 
-On Sun, 01 Sep 2024 11:20:13 +0000, Jonas Karlman wrote:
-> This series add initial support for the Hardkernel ODROID-M2 board.
+Please write complete sentences.
+
+The subject is wrong. There is no such property 'clock-cells'.
+
 > 
-> The Hardkernel ODROID-M2 is a single-board computer based on Rockchip
-> RK3588S2 SoC. It features e.g. 8/16 GB LPDDR5 RAM, 64 GB eMMC, SD-card,
-> GbE LAN, HDMI 2.0, M.2 NVMe and USB 2.0/3.0/Type-C.
+> Signed-off-by: Karthikeyan Krishnasamy <karthikeyan@linumiz.com>
+> ---
 > 
-> Schematics for ODROID-M2 can be found at:
-> https://wiki.odroid.com/_media/odroid-m2/hardware/m2_main_rev1.0_240611.pdf
+> Notes:
+>     v2:
+>     - fix commit message subject
 > 
-> The device tree was created based on the schematics with regulator
-> voltage values adjusted to closer match vendor downstream device tree.
+>  Documentation/devicetree/bindings/rtc/microcrystal,rv3028.yaml | 3 +++
+>  1 file changed, 3 insertions(+)
 > 
-> Testing was done booting into Linux using mainline U-Boot from [1],
-> a test build of mainline U-Boot for ODROID-M2 can be found at [2].
+> diff --git a/Documentation/devicetree/bindings/rtc/microcrystal,rv3028.yaml b/Documentation/devicetree/bindings/rtc/microcrystal,rv3028.yaml
+> index 5ade5dfad048..cda8ad7c1203 100644
+> --- a/Documentation/devicetree/bindings/rtc/microcrystal,rv3028.yaml
+> +++ b/Documentation/devicetree/bindings/rtc/microcrystal,rv3028.yaml
+> @@ -22,6 +22,9 @@ properties:
+>    interrupts:
+>      maxItems: 1
+>  
+> +  "#clock-cells":
+> +    const: 0
+> +
+>    trickle-resistor-ohms:
+>      enum:
+>        - 3000
+> -- 
+> 2.39.2
 > 
-> U-Boot patches will be sent once DT reach the devicetree-rebasing tree.
-> 
-> [1] https://github.com/Kwiboo/u-boot-rockchip/commits/rk3xxx-2024.10/
-> [2] https://github.com/Kwiboo/u-boot-build/actions/runs/10653436524
-> 
-> Jonas Karlman (2):
->   dt-bindings: arm: rockchip: Add Hardkernel ODROID-M2
->   arm64: dts: rockchip: Add Hardkernel ODROID-M2
-> 
->  .../devicetree/bindings/arm/rockchip.yaml     |   5 +
->  arch/arm64/boot/dts/rockchip/Makefile         |   1 +
->  .../boot/dts/rockchip/rk3588s-odroid-m2.dts   | 903 ++++++++++++++++++
->  3 files changed, 909 insertions(+)
->  create mode 100644 arch/arm64/boot/dts/rockchip/rk3588s-odroid-m2.dts
-> 
-> --
-> 2.46.0
-> 
-> 
-> 
-
-
-My bot found new DTB warnings on the .dts files added or changed in this
-series.
-
-Some warnings may be from an existing SoC .dtsi. Or perhaps the warnings
-are fixed by another series. Ultimately, it is up to the platform
-maintainer whether these warnings are acceptable or not. No need to reply
-unless the platform maintainer has comments.
-
-If you already ran DT checks and didn't see these error(s), then
-make sure dt-schema is up to date:
-
-  pip3 install dtschema --upgrade
-
-
-New warnings running 'make CHECK_DTBS=y rockchip/rk3588s-odroid-m2.dtb' for 20240901112020.3224704-1-jonas@kwiboo.se:
-
-arch/arm64/boot/dts/rockchip/rk3588s-odroid-m2.dtb: video-codec@fdb50000: compatible: 'oneOf' conditional failed, one must be fixed:
-	['rockchip,rk3588-vpu121', 'rockchip,rk3568-vpu'] is too long
-	'rockchip,rk3588-vpu121' is not one of ['rockchip,rk3036-vpu', 'rockchip,rk3066-vpu', 'rockchip,rk3288-vpu', 'rockchip,rk3328-vpu', 'rockchip,rk3399-vpu', 'rockchip,px30-vpu', 'rockchip,rk3568-vpu', 'rockchip,rk3588-av1-vpu']
-	'rockchip,rk3188-vpu' was expected
-	'rockchip,rk3228-vpu' was expected
-	'rockchip,rk3066-vpu' was expected
-	'rockchip,rk3399-vpu' was expected
-	from schema $id: http://devicetree.org/schemas/media/rockchip-vpu.yaml#
-arch/arm64/boot/dts/rockchip/rk3588s-odroid-m2.dtb: /video-codec@fdb50000: failed to match any schema with compatible: ['rockchip,rk3588-vpu121', 'rockchip,rk3568-vpu']
-arch/arm64/boot/dts/rockchip/rk3588s-odroid-m2.dtb: /video-codec@fdba0000: failed to match any schema with compatible: ['rockchip,rk3588-vepu121']
-arch/arm64/boot/dts/rockchip/rk3588s-odroid-m2.dtb: /video-codec@fdba4000: failed to match any schema with compatible: ['rockchip,rk3588-vepu121']
-arch/arm64/boot/dts/rockchip/rk3588s-odroid-m2.dtb: /video-codec@fdba8000: failed to match any schema with compatible: ['rockchip,rk3588-vepu121']
-arch/arm64/boot/dts/rockchip/rk3588s-odroid-m2.dtb: /video-codec@fdbac000: failed to match any schema with compatible: ['rockchip,rk3588-vepu121']
-
-
-
-
-
 
 _______________________________________________
 Linux-rockchip mailing list
