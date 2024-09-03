@@ -4,75 +4,129 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2684DC54FC6
-	for <linux-rockchip@archiver.kernel.org>; Mon,  2 Sep 2024 22:15:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 98A9FCA0ED3
+	for <linux-rockchip@archiver.kernel.org>; Tue,  3 Sep 2024 02:02:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=veACmNLd8NRRnCNTjobsmQP4Fqd4jADdWQcDeInvbZU=; b=UeETNHQhJnFKp3
-	7RIrotObQR6TGgxCQn9f/TQr/kSkNF8b0F6K1dGXx6J0YLkls9kIzou0AYOTkwrFfjUS8ldvnU1uo
-	IW7FTiBW5EycrWXO0MG6bTaJVbRniNveMbpZbrq9JJH0RL2FF54+T7TgT778PBvzriV9lt3Fh1v7m
-	3lUNCl+u/sfRRHufV45gUYmz9Bpf21h6UNGbvrx2r09pBJ3ER+uQG+S1OBg8xv+v5W20L8nCExDpE
-	2GGVFGTYH3AQ68YX+D2gidtbPJrMOs5ZAS+1g4lJeFu/aVQeiue3qo2kS2X+lJl1M6qNUSVSSoZSu
-	ob9O5MyiT74OzZWpTNew==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
+	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=JELQgafXL32VEUygrrucplEJhBz/oX4fOQ5QtVHOGSE=; b=ZwTQKjn+ToYG50
+	iZ9i/kpp+LdOOZI3nKt8a1FHFUYNNEAxOvX+gJYbohS7ctzMzBFsIfTj4f3baptor4t1sEnVzDrsz
+	UsCXehpTWf+SQB4o7ilhk3GfGtV8kV0DQczRJ8ZLEmjcYnmChjx2yQiqPEIiIQgvgiT3+p1L2Szxu
+	8MQlRXZ5JfMow+p+YuZOAByfs7u3ndMTWKYa8rkhJuctotRRXfI+bpbzYQjlHpH6O1GbgLxmGC7em
+	+gmTdwJEgm8pbp6KCudW9D+06bGqvNjGkfTrtnfLmDolkpFqfEuuapGZr/fcazGqd/GyrgEIRF6s4
+	+9JaZ/buEx+P6wfLDPkg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1slFKi-0000000FeFi-2G2a;
-	Mon, 02 Sep 2024 22:15:36 +0000
-Received: from sender3-op-o19.zoho.com ([136.143.184.19])
+	id 1slIs1-0000000G0aF-08QJ;
+	Tue, 03 Sep 2024 02:02:13 +0000
+Received: from mail-lj1-x230.google.com ([2a00:1450:4864:20::230])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1slFKf-0000000FeFH-1k12;
-	Mon, 02 Sep 2024 22:15:35 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1725315292; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=SQpuusukbpN6JVHx9Vp3GmqH3RMB9VT4zhStc/T0Kjuf6/jpeY8F3w/YP4rjHG9NBe2Xk3AxtYQzLx7ctSBrvWS3lMoZvZFZjkgBZeOWv/Ok2eVfWI7gU3awl/jaWcWjbjKUzTgtKfRpE6kxA4n5CqQIgyX5rCCjMoxVpCGTvTA=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1725315292; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=QDNIvKtrO8pIYCbZxhaqDHVt24NXNrWagRGRYHJHozM=; 
-	b=BwlnaS+p845Tv3Ms99pwrryj6c//3S95iWRU+qHu31RkWOb1TOOLYXul4jBsVCecT4EugEOJUQkDkt4b9FRNbvvxcx2Mf3IdlzeVHbADl4eVxC4W8RI/E1zWTo3fTfV39J3iB9f6xEcNyZbUAvumPhP0fn/6pcR5E7j70lfGyfo=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=cristian.ciocaltea@collabora.com;
-	dmarc=pass header.from=<cristian.ciocaltea@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1725315292;
-	s=zohomail; d=collabora.com; i=cristian.ciocaltea@collabora.com;
-	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
-	bh=QDNIvKtrO8pIYCbZxhaqDHVt24NXNrWagRGRYHJHozM=;
-	b=fECWOFVLFmmzV1WR2D/aPVwqiIbnjZi+FsoTTLknC2nX6xgeTVWzxj+2g0Mg0qJO
-	kAFC0WfOX+FroleSd1Fa0P/pi4LJ0wW2vlAn+Yg6yl52BJfW2LGAqOPVyigvW5REgLv
-	g1TEx9waorek+ZWIuX7hpi/l0505b5e4suDsIQPQ=
-Received: by mx.zohomail.com with SMTPS id 1725315290251290.71260809194837;
-	Mon, 2 Sep 2024 15:14:50 -0700 (PDT)
-Message-ID: <eb9f2d20-9b51-45e1-bf32-504267747f06@collabora.com>
-Date: Tue, 3 Sep 2024 01:14:42 +0300
+	id 1slIrt-0000000G0U0-40qD
+	for linux-rockchip@lists.infradead.org;
+	Tue, 03 Sep 2024 02:02:10 +0000
+Received: by mail-lj1-x230.google.com with SMTP id 38308e7fff4ca-2f3f25a1713so56972371fa.2
+        for <linux-rockchip@lists.infradead.org>; Mon, 02 Sep 2024 19:02:05 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1725328924; x=1725933724; darn=lists.infradead.org;
+        h=cc:to:content-transfer-encoding:mime-version:message-id:date
+         :subject:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=Jaon4WakhCpB6iL+hPLr96orgJfk9v1/Fqkvo3LCw0o=;
+        b=GmJy917T70K0JZJg32klOp3N6w/+fgRnbiLnBtgUmlE+3T5gFSatBWZyYywta0CyIK
+         qBxPKPlUcMikZ+X6x7gHsvI38sIJjNNAsnuarO2S5k0ovBm6PygZOkp0Ay70R9Yx8tB3
+         Acp5Rle+2jwPrg0hH+86jsj3/5ikTiI3NpGOYNc2d6f/vdK/0EpGdm1HgiTUZ+EC/iG0
+         gnQG3eeL3EIRTMuJs9Z4EkJQxy4dDxyl1DCnNQaWFVi5bQ6r4QyABNY6pEpi7ZHryrej
+         Ja7ySBZjHxojrs556EbT4aF5WJ2C5ivj4XWKZxEXPkvZ9ho3KgTf2iUpQIXRXYRXjQ1k
+         tB0w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1725328924; x=1725933724;
+        h=cc:to:content-transfer-encoding:mime-version:message-id:date
+         :subject:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=Jaon4WakhCpB6iL+hPLr96orgJfk9v1/Fqkvo3LCw0o=;
+        b=MkkjayOkQ9iMAgWqmG8Pkshjh1KUhZaDN6Uerz/JLdN1IreV8qMkgUFJnqWh73pp9K
+         +0Snzdf2/SeI00vVU6XGpi7fcmJAHX6xy6/czNPn0FpPy1p9qdhKA8TnsElm/9wnMde7
+         MYL3YVEjCVJG2+V3syE5C6B7F/s0uXFT3d9MPUHsdjtQUOyBjbprOKo0bcytYy6wCTDh
+         64ayo+SRa+RH7K2Vzq403KLUy1+T91OvRKUp4VRJZ5z7oqSyK7XB9IT5oOlEVMXrr3/H
+         yofJUuMPqONoWaOtj4X2DJTnT5/EZLRB9ShEKrTgHaoY5gESxgjfFa7x5c6Li+Ge4tu2
+         Mcaw==
+X-Forwarded-Encrypted: i=1; AJvYcCVDbsat2Y1/cj99bZLYB+iu6lEK6Wwz/71WojwlqlbEQtKSz4d/306EY6NFUeH3KHP/eQl8GEIQz542fGXEOQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzhZ1qGUd1zc8i8PJo1zynC7xLfSaa5Iyhd5Thlvs4abpxjioxL
+	sVWTLO8jsRPZl1Goc9SjEg0MwFgooCicy+pGo9uM+aeFTkRIc0VlUbv/yHgWvKg=
+X-Google-Smtp-Source: AGHT+IH2ddOPWpP9vOPua5bV93XUii65ilyuJnbCbqXryT6U4fN0EdmF5ySMd7clEDi4r6Z/lY2Rhw==
+X-Received: by 2002:a2e:4c09:0:b0:2ef:290e:4a39 with SMTP id 38308e7fff4ca-2f626bbbd74mr47016851fa.35.1725328922705;
+        Mon, 02 Sep 2024 19:02:02 -0700 (PDT)
+Received: from umbar.lan ([192.130.178.90])
+        by smtp.gmail.com with ESMTPSA id 38308e7fff4ca-2f614ed15a5sm20827761fa.8.2024.09.02.19.02.01
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 02 Sep 2024 19:02:01 -0700 (PDT)
+From: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
+Subject: [PATCH v5 0/3] drm: fix two issues related to HDMI Connector
+ implementation
+Date: Tue, 03 Sep 2024 05:01:55 +0300
+Message-Id: <20240903-drm-bridge-connector-fix-hdmi-reset-v5-0-daebde6d9857@linaro.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 3/4] dt-bindings: display: rockchip: Add schema for
- RK3588 HDMI TX Controller
-To: Shimrra Shai <shimrrashai@gmail.com>
-Cc: Laurent.pinchart@ideasonboard.com, aarnoud@me.com, airlied@gmail.com,
- andrzej.hajda@intel.com, andy.yan@rock-chips.com, conor+dt@kernel.org,
- daniel@ffwll.ch, devicetree@vger.kernel.org,
- dri-devel@lists.freedesktop.org, heiko@sntech.de, hjc@rock-chips.com,
- jernej.skrabec@gmail.com, jonas@kwiboo.se, kernel@collabora.com,
- krzk+dt@kernel.org, krzk@kernel.org, ldearquer@gmail.com,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-rockchip@lists.infradead.org, maarten.lankhorst@linux.intel.com,
- markyao0591@gmail.com, mripard@kernel.org, neil.armstrong@linaro.org,
- rfoss@kernel.org, robh@kernel.org, s.hauer@pengutronix.de,
- tzimmermann@suse.de
-References: <5ea24ad3-7faa-4a59-ba10-d43b32b3b40e@collabora.com>
- <20240902010948.3654-1-shimrrashai@gmail.com>
-Content-Language: en-US
-From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-In-Reply-To: <20240902010948.3654-1-shimrrashai@gmail.com>
-X-ZohoMailClient: External
+X-B4-Tracking: v=1; b=H4sIABNu1mYC/53NTW7CMBAF4KsgrzvIHk9C3BX3QF0Ye0IsFbuyU
+ QRCuXsHNi1iQ7t88/O9q2pcEzf1vrqqynNqqWQJ3dtKhcnnA0OKkhVqJN2jhViPsK8pyiaUnDm
+ cSoUxnWGKxwSVG59ABx56P+rOeq9E+qosF/eW3YfkKTX5utxLZ3Ob/s2fDWggw25wFEPksP1M2
+ deyLvWgbgUz/gNFQYfO6UjkDAZ+Qu0PutH4GmoFNbjXbA1S8PSE0i/UdK+hJGhvuCezCWN07gF
+ dluUbDBv28dYBAAA=
+To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
+ David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>, 
+ Andrzej Hajda <andrzej.hajda@intel.com>, 
+ Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
+ Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
+ Laurentiu Palcu <laurentiu.palcu@oss.nxp.com>, 
+ Lucas Stach <l.stach@pengutronix.de>, Shawn Guo <shawnguo@kernel.org>, 
+ Sascha Hauer <s.hauer@pengutronix.de>, 
+ Pengutronix Kernel Team <kernel@pengutronix.de>, 
+ Fabio Estevam <festevam@gmail.com>, Paul Cercueil <paul@crapouillou.net>, 
+ Anitha Chrisanthus <anitha.chrisanthus@intel.com>, 
+ Edmund Dea <edmund.j.dea@intel.com>, 
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
+ Philipp Zabel <p.zabel@pengutronix.de>, Kevin Hilman <khilman@baylibre.com>, 
+ Jerome Brunet <jbrunet@baylibre.com>, 
+ Martin Blumenstingl <martin.blumenstingl@googlemail.com>, 
+ Rob Clark <robdclark@gmail.com>, Abhinav Kumar <quic_abhinavk@quicinc.com>, 
+ Sean Paul <sean@poorly.run>, Marijn Suijten <marijn.suijten@somainline.org>, 
+ Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>, 
+ Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>, 
+ Biju Das <biju.das.jz@bp.renesas.com>, 
+ Geert Uytterhoeven <geert+renesas@glider.be>, 
+ Sandy Huang <hjc@rock-chips.com>, 
+ =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
+ Andy Yan <andy.yan@rock-chips.com>, 
+ Thierry Reding <thierry.reding@gmail.com>, 
+ Mikko Perttunen <mperttunen@nvidia.com>, 
+ Jonathan Hunter <jonathanh@nvidia.com>, Jyri Sarha <jyri.sarha@iki.fi>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
+ imx@lists.linux.dev, linux-arm-kernel@lists.infradead.org, 
+ linux-mips@vger.kernel.org, linux-mediatek@lists.infradead.org, 
+ linux-amlogic@lists.infradead.org, linux-arm-msm@vger.kernel.org, 
+ freedreno@lists.freedesktop.org, linux-renesas-soc@vger.kernel.org, 
+ linux-rockchip@lists.infradead.org, linux-tegra@vger.kernel.org
+X-Mailer: b4 0.14.0
+X-Developer-Signature: v=1; a=openpgp-sha256; l=3353;
+ i=dmitry.baryshkov@linaro.org; h=from:subject:message-id;
+ bh=EYI46Bz/nggRktCfUc4nuXKd2sUlD/7bxU6zar/vXO0=;
+ b=owEBbQGS/pANAwAKAYs8ij4CKSjVAcsmYgBm1m4YRSvsImJpHuC/wcLa1DcZOPuYqAiynu6nD
+ hrSfiRv7eOJATMEAAEKAB0WIQRMcISVXLJjVvC4lX+LPIo+Aiko1QUCZtZuGAAKCRCLPIo+Aiko
+ 1T8VB/4laRhXOUULaJ+JMQI12xMPUKXQH5ph8rJNcS9B/gmLgbcPLgMhO/fJS4iK0YjhNZoPI0W
+ NJ70iNUleeMx0GBlB+RyVJuS/d1SFgtPXp/jx2RDS0Wm21hPh/X3Fm1nEQ2eqX6oz939nxLb2g1
+ hrjPMsp+fy/DoJp+WyPqy/YwSqHBZlcYwPUPH1mctmZwJC1GkTrajvdYFKB188SS/N9bztPoBUy
+ kG2weWvQkMNcYmSOjnh5gEtxQ6gHkWX2ve9pRhaVXOiHiWkM0q1mHZF6HXhCeGTAAhhiSv/+N17
+ PRBvnlt91b/RQK3b1NoB53F/rapRdYsKJEf9cpwjn7/ZFhmz
+X-Developer-Key: i=dmitry.baryshkov@linaro.org; a=openpgp;
+ fpr=8F88381DD5C873E4AE487DA5199BF1243632046A
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240902_151533_518545_4F97BD55 
-X-CRM114-Status: GOOD (  19.26  )
+X-CRM114-CacheID: sfid-20240902_190206_244457_CF74F3BD 
+X-CRM114-Status: GOOD (  11.26  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,59 +143,75 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 9/2/24 4:09 AM, Shimrra Shai wrote:
-> Cristian Ciocaltea wrote:
->> On 8/31/24 9:13 AM, Krzysztof Kozlowski wrote:
->>>
->>> Please define all clocks.
->>
->> The other clocks are defined in the common binding, should we reiterate
->> them?
-> 
-> I would suggest yes, they should be reduplicated, if only to maintain
-> consistency with all the other docs. A grep through the bridge docs
-> shows that there are virtually none which use a "{}" placeholder like
-> this. 
+Running IGT tests on Qualcomm Dragonboard820c uncovered two issues with
+the HDMI Connector implementation and with its integration into the
+drm_bridge_connector. Fix those issues.
 
-Are you sure about that?  This is precisely the approach followed by the
-upstream DW HDMI TX controller binding [1].  Moreover, I've already pointed this
-out in [2].
+Note, I'm not fully satisfied with the drm_bridge_connector move. Maybe
+it's better to add drm_bridge_funcs::connector_reset() and call it from
+__drm_atomic_helper_connector_reset().
 
-> While it seems kind of like one might worry about "don't
-> repeat yourself" syndrome, keep in mind this is not code, but human-
-> used documentation. Having all the information available at a glance
-> would seem to be the most convenient to the end (developer) user, so
-> they aren't having to toggle between two separate files. 
+Depends on https://lore.kernel.org/dri-devel/20240704-panel-sw43408-fix-v6-1-3ea1c94bbb9b@linaro.org
 
-I think that's pretty subjective to be stated as a general rule, e.g. I don't
-have any problem toggling between multiple files as I regularly keep over 50
-files opened in my IDE.  Personally, I'd always go for the slightly less 
-readable approach if I can avoid duplicating content.
+Signed-off-by: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
+---
+Changes in v5:
+- Rebased on top of drm-misc-next
+- Dropped the DRM_MODE_PROP_IMMUTABLE patches, replaced with the IGT
+  patch.
+- Link to v4: https://lore.kernel.org/r/20240715-drm-bridge-connector-fix-hdmi-reset-v4-0-61e6417cfd99@linaro.org
 
-I'd suggest to follow the whole thread [2], as this topic has been already
-discussed.
+Changes in v4:
+- Fixed DRM_MODE_PROP_IMMUTABLE to use MUST in the single-value clause (Maxime)
+- Rebased on top of DRM_DSC_HELPERS patch
+- Removed 'depends on DRM_DISPLAY_HELPER' (Maxime)
+- Link to v3: https://lore.kernel.org/r/20240702-drm-bridge-connector-fix-hdmi-reset-v3-0-12b0e3124ca4@linaro.org
 
-> Of course
-> there may be some questions regarding docs becoming out of sync, but
-> *ideally* we don't want to break backward compatibility with device
-> trees (esp. given how I am imagining firmware integration to work on
-> these platforms, as the RK3588 is at at least low-end desktop-grade
-> performance and UEFI packages have already been built for it), though
-> of course that doesn't mean adding new options is off the table.
-> 
-> (FWIW, this is what I did in my now-withdrawn-at-your-request
-> re-submission; I reduplicated the bindings as it seemed that's what
-> others here were pushing for and thus that felt like the quickest way
-> to get this important driver approved.)
+Changes in v3:
+- Document the DRM_MODE_PROP_IMMUTABLE requirements currently exposed
+  only via IGT tests (Maxime).
+- Move drm_bridge_connector to drm_display_helper.
+- Link to v2: https://lore.kernel.org/r/20240623-drm-bridge-connector-fix-hdmi-reset-v2-0-8590d44912ce@linaro.org
 
-This is not really a blocker for the series.  Please remember to be patient
-while involved (one way or another) in the upstreaming process, as maintainers
-need time to review *all* the patches.  This might be very important for you,
-but there are, usually, tons of other way more important things the maintainers
-need to handle in parallel.
+Changes in v2:
+- Actually pass the flags to drm_property_create_range().
+- Link to v1: https://lore.kernel.org/r/20240623-drm-bridge-connector-fix-hdmi-reset-v1-0-41e9894dcdec@linaro.org
 
-[1] https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-hdmi.yaml#n46
-[2] https://lore.kernel.org/lkml/ec84bc0b-c4c2-4735-9f34-52bc3a852aaf@collabora.com/
+---
+Dmitry Baryshkov (3):
+      drm/display: stop depending on DRM_DISPLAY_HELPER
+      drm/bridge-connector: move to DRM_DISPLAY_HELPER module
+      drm/bridge-connector: reset the HDMI connector state
+
+ MAINTAINERS                                        |  2 +-
+ drivers/gpu/drm/Makefile                           |  1 -
+ drivers/gpu/drm/bridge/Kconfig                     |  1 +
+ drivers/gpu/drm/display/Kconfig                    | 25 ++++++++++++----------
+ drivers/gpu/drm/display/Makefile                   |  2 ++
+ .../gpu/drm/{ => display}/drm_bridge_connector.c   | 13 ++++++++++-
+ drivers/gpu/drm/imx/dcss/Kconfig                   |  2 ++
+ drivers/gpu/drm/imx/lcdc/Kconfig                   |  2 ++
+ drivers/gpu/drm/ingenic/Kconfig                    |  2 ++
+ drivers/gpu/drm/kmb/Kconfig                        |  2 ++
+ drivers/gpu/drm/mediatek/Kconfig                   |  2 ++
+ drivers/gpu/drm/meson/Kconfig                      |  2 ++
+ drivers/gpu/drm/msm/Kconfig                        |  1 +
+ drivers/gpu/drm/omapdrm/Kconfig                    |  2 ++
+ drivers/gpu/drm/renesas/rcar-du/Kconfig            |  2 ++
+ drivers/gpu/drm/renesas/rz-du/Kconfig              |  2 ++
+ drivers/gpu/drm/renesas/shmobile/Kconfig           |  2 ++
+ drivers/gpu/drm/rockchip/Kconfig                   |  4 ++++
+ drivers/gpu/drm/tegra/Kconfig                      |  1 +
+ drivers/gpu/drm/tidss/Kconfig                      |  2 ++
+ drivers/gpu/drm/xlnx/Kconfig                       |  1 +
+ 21 files changed, 59 insertions(+), 14 deletions(-)
+---
+base-commit: ca097d4d94d808409386fde414370900cc41adad
+change-id: 20240623-drm-bridge-connector-fix-hdmi-reset-0ce86af053aa
+
+Best regards,
+-- 
+Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
 
 
 _______________________________________________
