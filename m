@@ -4,67 +4,99 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E9420CD13CF
-	for <linux-rockchip@archiver.kernel.org>; Tue,  3 Sep 2024 10:53:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 87F14CD3420
+	for <linux-rockchip@archiver.kernel.org>; Tue,  3 Sep 2024 10:54:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:CC:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=dh1VXBX/0lRhamMaBX01B99BUWgGFTBr/ft2EsHDEVY=; b=0dPUvvhRCguc04
-	L0PCLcJY5I94B8SARifw8tLbyCLb69lHsSP/lOa9Isuv/sO87mJi6pUvS6/5GN9g5UFC7dlK4RENr
-	0zlOgfBWlQvLXUyQ5lB4/7NvHFE/QrvRoS4jKCyQXsnNQ0n7/4XnkKjEF9n3Puzmqh/0rMbVeZt8C
-	w31VD1Fumf7D9r6dEFXCo0PXf+Kfy95kVYuP9Girt0VbsU9dopCulkiaMSFF8QBGxbhMNuotw0k49
-	gc0/0GtdljhI4aV1v1qAHfgAV2B+UrZF004r4DZM+aTFQY71k/nasa1iEyImumHTlmF3SV2VV3sr5
-	cFrDEzpp/X0FRnDxm0hA==;
+	List-Owner; bh=L35b6Ru7NHFQttTcLPtwRzIei6Kv28H5cmba+6VADIo=; b=04BSzK1xdIlXtx
+	X4jIXlUMtbckgLqdoMWB4f99FMRmuplI1L4J29sh8UGhLGJCqXw7WQv++GJjkX3EyatESQSWGeZX5
+	Ua8FeTSenQbn0+oTGcpuxTolzTB/QgR5jNxZ2buTL8cvsKpDXdhLSm9RPzhsOh+4xCaLrldJjcLPy
+	IS+0wxxoeGsAspb+A2xomyx1WpKbwLjX+qq5X2gsxjN7qZV5xcFZh6ZNi3wrdUg1YCTcIIn+V3xRo
+	jKkkxCfrd7/n2So9ZImdPuL8rsJtPUiJ6xsGVU8iwn5VcxTuPHabCL7MYSUg6vrLZQqyRBeLBeCVc
+	xfpnTkqEvNJ8bzpgH4OQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1slRAZ-0000000HQIj-2Fgm;
-	Tue, 03 Sep 2024 10:53:55 +0000
-Received: from szxga08-in.huawei.com ([45.249.212.255])
+	id 1slRBS-0000000HQbi-06tI;
+	Tue, 03 Sep 2024 10:54:50 +0000
+Received: from omta36.uswest2.a.cloudfilter.net ([35.89.44.35])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1slR9d-0000000HQ5i-0Isu;
-	Tue, 03 Sep 2024 10:52:58 +0000
-Received: from mail.maildlp.com (unknown [172.19.162.254])
-	by szxga08-in.huawei.com (SkyGuard) with ESMTP id 4Wyj9k0Zx5z145xm;
-	Tue,  3 Sep 2024 18:51:54 +0800 (CST)
-Received: from kwepemd500012.china.huawei.com (unknown [7.221.188.25])
-	by mail.maildlp.com (Postfix) with ESMTPS id 262C31800FE;
-	Tue,  3 Sep 2024 18:52:50 +0800 (CST)
-Received: from [10.67.111.176] (10.67.111.176) by
- kwepemd500012.china.huawei.com (7.221.188.25) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1258.34; Tue, 3 Sep 2024 18:52:49 +0800
-Message-ID: <021d4b46-a559-4047-a6ca-98e30fd3e6b3@huawei.com>
-Date: Tue, 3 Sep 2024 18:52:48 +0800
+	id 1slR9z-0000000HQ84-248P
+	for linux-rockchip@lists.infradead.org;
+	Tue, 03 Sep 2024 10:53:22 +0000
+Received: from eig-obgw-6010a.ext.cloudfilter.net ([10.0.30.248])
+	by cmsmtp with ESMTPS
+	id lJPwsuKdtqvuolR9lsFU5v; Tue, 03 Sep 2024 10:53:05 +0000
+Received: from md-in-79.webhostbox.net ([43.225.55.182])
+	by cmsmtp with ESMTPS
+	id lR9hsJ7CU2GFYlR9isRlv5; Tue, 03 Sep 2024 10:53:03 +0000
+X-Authority-Analysis: v=2.4 cv=GKAOEPNK c=1 sm=1 tr=0 ts=66d6ea8f
+ a=LfuyaZh/8e9VOkaVZk0aRw==:117 a=kofhyyBXuK/oEhdxNjf66Q==:17
+ a=EaEq8P2WXUwA:10 a=-pn6D5nKLtMA:10 a=vU9dKmh3AAAA:8 a=IUsOfeiScPouXSuZ-WoA:9
+ a=rsP06fVo5MYu2ilr0aT5:22 a=ZCPYImcxYIQFgLOT52_G:22
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=linumiz.com
+	; s=default; h=Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
+	List-Post:List-Owner:List-Archive;
+	bh=RDY88ra94JBb+IuiAIyKiYCW1DH2SA5E50yh/vMkXuw=; b=EiUcFSm2grXFwHQyuGWeu/Ntmy
+	Pci/WR+to7JAHf38OpkLoY9kHBkuT3PMLqhcr0ewOi/zZDBNl1urlDqsnbUEU5WhQ3XfTtqukp55H
+	o6NOCXT/rD6NyqkbWU5Yodf5iHHZrsaL5h/o0zB4vdSdHI5SKr9ObL/djqxh5q0F1VkiHT76tYIUn
+	GWSlDT+uV0RoaLhqCmXp8CP1wI5RpCIfyhcbDPQe6P1r9Dg1JrA1zBVf75jwGKqpg1sBkDxYGpt/w
+	/T5uQlQTDWpMWHvLG+pgp9qGt8uXUhs/IrgmqZdhFSEuy4AjISFyB/kAtcKdncLnXKgFjH+dYYXMn
+	y1RFBmBg==;
+Received: from [122.165.245.213] (port=41440 helo=localhost.localdomain)
+	by md-in-79.webhostbox.net with esmtpsa  (TLS1.2) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.96.2)
+	(envelope-from <karthikeyan@linumiz.com>)
+	id 1slR9e-000Elu-1q;
+	Tue, 03 Sep 2024 16:22:58 +0530
+From: Karthikeyan Krishnasamy <karthikeyan@linumiz.com>
+To: robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
+	heiko@sntech.de,
+	alexandre.belloni@bootlin.com
+Cc: devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-rtc@vger.kernel.org,
+	Karthikeyan Krishnasamy <karthikeyan@linumiz.com>
+Subject: [PATCH v2 1/8] ARM: dts: rockchip: Add i2c3 node for RV1126
+Date: Tue,  3 Sep 2024 16:22:38 +0530
+Message-Id: <20240903105245.715899-2-karthikeyan@linumiz.com>
+X-Mailer: git-send-email 2.39.2
+In-Reply-To: <20240903105245.715899-1-karthikeyan@linumiz.com>
+References: <20240903105245.715899-1-karthikeyan@linumiz.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH net-next 11/12] wifi: wilc1000: Convert using
- devm_clk_get_optional_enabled() in wilc_sdio_probe()
-To: Kalle Valo <kvalo@kernel.org>
-CC: <florian.fainelli@broadcom.com>, <andrew@lunn.ch>, <olteanv@gmail.com>,
-	<davem@davemloft.net>, <edumazet@google.com>, <kuba@kernel.org>,
-	<pabeni@redhat.com>, <wens@csie.org>, <jernej.skrabec@gmail.com>,
-	<samuel@sholland.org>, <heiko@sntech.de>, <yisen.zhuang@huawei.com>,
-	<salil.mehta@huawei.com>, <hauke@hauke-m.de>, <alexandre.torgue@foss.st.com>,
-	<joabreu@synopsys.com>, <mcoquelin.stm32@gmail.com>, <wellslutw@gmail.com>,
-	<radhey.shyam.pandey@amd.com>, <michal.simek@amd.com>,
-	<ajay.kathat@microchip.com>, <claudiu.beznea@tuxon.dev>,
-	<u.kleine-koenig@pengutronix.de>, <jacky_chou@aspeedtech.com>,
-	<netdev@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-sunxi@lists.linux.dev>, <linux-rockchip@lists.infradead.org>,
-	<linux-stm32@st-md-mailman.stormreply.com>, <linux-wireless@vger.kernel.org>
-References: <20240831021334.1907921-1-lizetao1@huawei.com>
- <20240831021334.1907921-12-lizetao1@huawei.com> <87a5gqko2q.fsf@kernel.org>
-From: Li Zetao <lizetao1@huawei.com>
-In-Reply-To: <87a5gqko2q.fsf@kernel.org>
-X-Originating-IP: [10.67.111.176]
-X-ClientProxiedBy: dggpeml500005.china.huawei.com (7.185.36.59) To
- kwepemd500012.china.huawei.com (7.221.188.25)
+X-AntiAbuse: This header was added to track abuse, please include it with any abuse report
+X-AntiAbuse: Primary Hostname - md-in-79.webhostbox.net
+X-AntiAbuse: Original Domain - lists.infradead.org
+X-AntiAbuse: Originator/Caller UID/GID - [47 12] / [47 12]
+X-AntiAbuse: Sender Address Domain - linumiz.com
+X-BWhitelist: no
+X-Source-IP: 122.165.245.213
+X-Source-L: No
+X-Exim-ID: 1slR9e-000Elu-1q
+X-Source: 
+X-Source-Args: 
+X-Source-Dir: 
+X-Source-Sender: (localhost.localdomain) [122.165.245.213]:41440
+X-Source-Auth: karthikeyan@linumiz.com
+X-Email-Count: 14
+X-Org: HG=dishared_whb_net_legacy;ORG=directi;
+X-Source-Cap: bGludW1jbWM7aG9zdGdhdG9yO21kLWluLTc5LndlYmhvc3Rib3gubmV0
+X-Local-Domain: yes
+X-CMAE-Envelope: MS4xfGqaLGNVp6pbricSf38Uc8g+yLBrloFjLytYf6HSdEzKza2xbodUZTjg1cyOXlGE5Hkypan3JU+gPKvUdpcWSCTCKGxJRL5zmD9wdxe+t08PzofAm6Xd
+ YcdrOmX4k7HroyiYE1+kfqClskgAuZZkwzbMubZXHmj/1bIJcRrD7joSgeaUX3YKHcBtzcS9qfhqlK2Q+9bT03FiMLMTDG9cKXGPXaXNe4i+B8F17Zz1+c2g
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240903_035257_395281_8CE44B4F 
-X-CRM114-Status: UNSURE (   8.19  )
+X-CRM114-CacheID: sfid-20240903_035319_594061_86F6ECE6 
+X-CRM114-Status: UNSURE (   7.34  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -77,27 +109,99 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGksCgrlnKggMjAyNC85LzMgMDozOCwgS2FsbGUgVmFsbyDlhpnpgZM6Cj4gTGkgWmV0YW8gPGxp
-emV0YW8xQGh1YXdlaS5jb20+IHdyaXRlczoKPiAKPj4gVXNlIGRldm1fY2xrX2dldF9vcHRpb25h
-bF9lbmFibGVkKCkgaW5zdGVhZCBvZiBkZXZtX2Nsa19nZXRfb3B0aW9uYWwoKSArCj4+IGNsa19w
-cmVwYXJlX2VuYWJsZSgpLCB3aGljaCBjYW4gbWFrZSB0aGUgY2xrIGNvbnNpc3RlbnQgd2l0aCB0
-aGUgZGV2aWNlCj4+IGxpZmUgY3ljbGUgYW5kIHJlZHVjZSB0aGUgcmlzayBvZiB1bnJlbGVhc2Vk
-IGNsayByZXNvdXJjZXMuIFNpbmNlIHRoZQo+PiBkZXZpY2UgZnJhbWV3b3JrIGhhcyBhdXRvbWF0
-aWNhbGx5IHJlbGVhc2VkIHRoZSBjbGsgcmVzb3VyY2UsIHRoZXJlIGlzCj4+IG5vIG5lZWQgdG8g
-ZXhlY3V0ZSBjbGtfZGlzYWJsZV91bnByZXBhcmUoY2xrKSBvbiB0aGUgZXJyb3IgcGF0aCwgZHJv
-cAo+PiB0aGUgY2xrX2Rpc2FibGVfdW5wcmVwYXJlIGxhYmVsLCBhbmQgdGhlIG9yaWdpbmFsIGVy
-cm9yIHByb2Nlc3MgY2FuIGNoYW5nZQo+PiB0byBkaXNwb3NlX2lycS4KPj4KPj4gU2lnbmVkLW9m
-Zi1ieTogTGkgWmV0YW8gPGxpemV0YW8xQGh1YXdlaS5jb20+Cj4+IC0tLQo+PiAgIGRyaXZlcnMv
-bmV0L3dpcmVsZXNzL21pY3JvY2hpcC93aWxjMTAwMC9zZGlvLmMgfCAxMCArKystLS0tLS0tCj4+
-ICAgMSBmaWxlIGNoYW5nZWQsIDMgaW5zZXJ0aW9ucygrKSwgNyBkZWxldGlvbnMoLSkKPiAKPiB3
-aWZpIHBhdGNoZXMgKHBhdGNoZXMgMTEgYW5kIDEyKSBnbyB2aWEgd2lyZWxlc3MtbmV4dCwgcGxl
-YXNlIHN1Ym1pdAo+IHRob3NlIHNlcGFyYXRlbHkuCk9rLCBJIHdpbGwgcmVzZW5kIHRob3NlIHNl
-cGFyYXRlbHkuCj4gCgpUaGFua3MsCkxpIFpldGFvLgoKX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4
-LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcv
-bWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+Add i2c3 node and possible pinctrl for Rockchip RV1126
+
+Signed-off-by: Karthikeyan Krishnasamy <karthikeyan@linumiz.com>
+---
+
+Notes:
+    v2:
+    - No change
+
+ .../arm/boot/dts/rockchip/rv1126-pinctrl.dtsi | 26 +++++++++++++++++++
+ arch/arm/boot/dts/rockchip/rv1126.dtsi        | 15 +++++++++++
+ 2 files changed, 41 insertions(+)
+
+diff --git a/arch/arm/boot/dts/rockchip/rv1126-pinctrl.dtsi b/arch/arm/boot/dts/rockchip/rv1126-pinctrl.dtsi
+index 06b1d7f2d858..be666b25b830 100644
+--- a/arch/arm/boot/dts/rockchip/rv1126-pinctrl.dtsi
++++ b/arch/arm/boot/dts/rockchip/rv1126-pinctrl.dtsi
+@@ -97,6 +97,32 @@ i2c2_xfer: i2c2-xfer {
+ 				<0 RK_PC3 1 &pcfg_pull_none_drv_level_0_smt>;
+ 		};
+ 	};
++	i2c3 {
++		/omit-if-no-ref/
++		i2c3m0_xfer: i2c3m0-xfer {
++			rockchip,pins =
++				/* i2c3_scl_m0 */
++				<3 RK_PA4 5 &pcfg_pull_none>,
++				/* i2c3_sda_m0 */
++				<3 RK_PA5 5 &pcfg_pull_none>;
++		};
++		/omit-if-no-ref/
++		i2c3m1_xfer: i2c3m1-xfer {
++			rockchip,pins =
++				/* i2c3_scl_m1 */
++				<2 RK_PD4 7 &pcfg_pull_none>,
++				/* i2c3_sda_m1 */
++				<2 RK_PD5 7 &pcfg_pull_none>;
++		};
++		/omit-if-no-ref/
++		i2c3m2_xfer: i2c3m2-xfer {
++			rockchip,pins =
++				/* i2c3_scl_m2 */
++				<1 RK_PD6 3 &pcfg_pull_none>,
++				/* i2c3_sda_m2 */
++				<1 RK_PD7 3 &pcfg_pull_none>;
++		};
++	};
+ 	pwm2 {
+ 		/omit-if-no-ref/
+ 		pwm2m0_pins: pwm2m0-pins {
+diff --git a/arch/arm/boot/dts/rockchip/rv1126.dtsi b/arch/arm/boot/dts/rockchip/rv1126.dtsi
+index bb603cae13df..59de848c9a83 100644
+--- a/arch/arm/boot/dts/rockchip/rv1126.dtsi
++++ b/arch/arm/boot/dts/rockchip/rv1126.dtsi
+@@ -22,6 +22,7 @@ / {
+ 	aliases {
+ 		i2c0 = &i2c0;
+ 		i2c2 = &i2c2;
++		i2c3 = &i2c3;
+ 		serial0 = &uart0;
+ 		serial1 = &uart1;
+ 		serial2 = &uart2;
+@@ -308,6 +309,20 @@ dmac: dma-controller@ff4e0000 {
+ 		clock-names = "apb_pclk";
+ 	};
+ 
++	i2c3: i2c@ff520000 {
++		compatible = "rockchip,rv1126-i2c", "rockchip,rk3399-i2c";
++		reg = <0xff520000 0x1000>;
++		interrupts = <GIC_SPI 7 IRQ_TYPE_LEVEL_HIGH>;
++		clocks = <&cru CLK_I2C3>, <&cru PCLK_I2C3>;
++		clock-names = "i2c", "pclk";
++		pinctrl-names = "default";
++		pinctrl-0 = <&i2c3m0_xfer>;
++		#address-cells = <1>;
++		#size-cells = <0>;
++		status = "disabled";
++		rockchip,grf = <&pmugrf>;
++	};
++
+ 	pwm11: pwm@ff550030 {
+ 		compatible = "rockchip,rv1126-pwm", "rockchip,rk3328-pwm";
+ 		reg = <0xff550030 0x10>;
+-- 
+2.39.2
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
