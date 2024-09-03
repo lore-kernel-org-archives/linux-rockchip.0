@@ -4,49 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B2618CD342D
-	for <linux-rockchip@archiver.kernel.org>; Tue,  3 Sep 2024 12:59:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B661CCD342E
+	for <linux-rockchip@archiver.kernel.org>; Tue,  3 Sep 2024 13:00:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=xW53ZX3swz0BXctFTAe4+ZYVDBjxIIPlbq7fAY/CCJM=; b=bSY/4uOcpwTdxd
-	9sy2uQeXIF4N+Za5aHb0ibFs8Kiv++KwpxTR4yplP126Sc4ON41imi5ygFYiQhzqYIqZ45TcsDOn9
-	Qoz6RrLxpNhBAT94vG1fAdNL8OZuUyenKl592/e0/cYXJReeXHTYiRjRCWDoPz4NcBylr3kwXaaCl
-	/9rFE1ueAIHJgSSFy/SK84UTrRb2OPrREuvs1NnhShBcDm3Hv8ccgAzZm3O8At/HLEXgKUYptYIef
-	XGjOrM9p9SLCgWa1RHw0ZXrtXGrr2mwigaAl9iLItQZdIOk2lFxevmv/QIpBMhPGehnVZd5VUQxa3
-	toh4Rk2YbLtQnV9wZ9yg==;
+	List-Owner; bh=Jwj4csdBVgtOIJpN3eJZstFYrJdglEFjGaU9eCP/hLM=; b=SZATRV0vqOCP8h
+	yFGgJpO8mEblYEtd7sg8LHAO/AImJgw92dpi6q8YArahRB2qJwwivTXIKpF3dUh5GNZVDqjjapZHt
+	w0o1kXGuVzT/sQgypAWutUn5qkgFxwCz6j6n1jwFyRt8SpH9SL2SA8faKBdhRcgCjuxnzckp8HoJF
+	4vfYhybcQKC/+Fl3K60YxW1MJRaXe3qnTSVSGvCKykuMrMR+j93iMIRqDnU8DhtsEzUsBjjiEYSMr
+	VwNRS4gLM3WRj/h8FXJu1IhC5C+EQTLqvksFBt7wC8PL5NNI6RQKRAggDN29wEyOQeEU4Vqmw2pqM
+	yaUgnPUxtOdgIHc047ng==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1slT8I-00000000H15-2eKr;
-	Tue, 03 Sep 2024 12:59:42 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1slT9E-00000000HJr-1CRt;
+	Tue, 03 Sep 2024 13:00:40 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1slT0Z-00000000FT3-3c1B;
-	Tue, 03 Sep 2024 12:51:45 +0000
+	id 1slT0h-00000000FUc-0T76;
+	Tue, 03 Sep 2024 12:51:52 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id C2EBB5C57D0;
-	Tue,  3 Sep 2024 12:51:39 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2B222C4CEC7;
-	Tue,  3 Sep 2024 12:51:38 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id BD9F65C5899;
+	Tue,  3 Sep 2024 12:51:46 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B26D8C4CEC8;
+	Tue,  3 Sep 2024 12:51:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1725367902;
-	bh=WdD25MY3O6Qs8Wn8SHi5GZCMGF2zWhsiSNgJz1FNdlk=;
+	s=k20201202; t=1725367909;
+	bh=O1/2050F39XQfvPLXCTizegImM8YWOlhzXwUWl0cmGc=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=Ho05xSgrslgH6U5HNgp6vpWqSUk/WVhmkmjsugYTKHzqzIBlCI4ElvZMqqaKfsjKD
-	 3+e5C7WYX8plsmfpS4ky/W856coAoUtGT9hk7JdETFksQLoYkNeqCcxErgl4jLJsnr
-	 AEyqE6dH60SbauS4nG61ssY0+MF4KcFpr/bURozju5q5Mvf6/0MOZWosnG7DcF9LVw
-	 vCRgkclYbsuDcrfMxU4VwhwDqSbeF7J9sG9KSIGcGB/G3vbY3ihnGQ/easLhXH+rzq
-	 No+YP4IAS49c8i9o3wWcdYINWK7PmeE84kjZ9LFVnJXwWzQns+NuQqjz92DMiibGLg
-	 wNyeAi69ke+5Q==
-Message-ID: <e1513eb7-4ac5-4703-b4ff-2791908f1ec8@kernel.org>
-Date: Tue, 3 Sep 2024 14:51:35 +0200
+	b=UVC0b0NQj7rgTFak72/K9eNJK53Q/LY20+pdBaml/kH3932/NnVhKhTs2pwDi49mP
+	 37DpJeBWYNWqe8gIfuoVVB0nYjYID0ZJPxuY/01jDlqgcDSkkOkpdxKPWEYkTRRTEm
+	 7r4P4BmCHGVgyAH28hoc5UIoyBtz/2R95vJXgcrjYQ83gVK18S73YmvwAlkAo9kIur
+	 w6PVeG5Q05GIgwWqxrf0ISdswgNBBQxTJPB5jxb79iH4lOztZT34D+E1Up3oBxBYao
+	 gleCTnUrHgUsMxH9XQGGNAvADbVYuO66wCq1tRN9YdsB4vaWONy8KNZTkAiGti2bjR
+	 2QZms2dkKEAmQ==
+Message-ID: <558d6214-b408-484c-992e-bbb58ffd161b@kernel.org>
+Date: Tue, 3 Sep 2024 14:51:43 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 5/8] dt-bindings: rtc: microcrystal,rv3028: add
- clock-cells property
+Subject: Re: [PATCH v2 6/8] dt-bindings: vendor-prefixes: Add Relfor labs
 To: Karthikeyan Krishnasamy <karthikeyan@linumiz.com>, robh@kernel.org,
  krzk+dt@kernel.org, conor+dt@kernel.org, heiko@sntech.de,
  alexandre.belloni@bootlin.com
@@ -54,7 +53,7 @@ Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
  linux-rtc@vger.kernel.org
 References: <20240903105245.715899-1-karthikeyan@linumiz.com>
- <20240903105245.715899-6-karthikeyan@linumiz.com>
+ <20240903105245.715899-7-karthikeyan@linumiz.com>
 From: Krzysztof Kozlowski <krzk@kernel.org>
 Content-Language: en-US
 Autocrypt: addr=krzk@kernel.org; keydata=
@@ -100,10 +99,10 @@ Autocrypt: addr=krzk@kernel.org; keydata=
  uZwJCLykjad45hsWcOGk3OcaAGQS6NDlfhM6O9aYNwGL6tGt/6BkRikNOs7VDEa4/HlbaSJo
  7FgndGw1kWmkeL6oQh7wBvYll2buKod4qYntmNKEicoHGU+x91Gcan8mCoqhJkbqrL7+nXG2
  5Q/GS5M9RFWS+nYyJh+c3OcfKqVcZQNANItt7+ULzdNJuhvTRRdC3g9hmCEuNSr+CLMdnRBY fv0=
-In-Reply-To: <20240903105245.715899-6-karthikeyan@linumiz.com>
+In-Reply-To: <20240903105245.715899-7-karthikeyan@linumiz.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240903_055144_046183_8F7DE0F8 
-X-CRM114-Status: GOOD (  11.73  )
+X-CRM114-CacheID: sfid-20240903_055151_321540_C5C0B21B 
+X-CRM114-Status: GOOD (  10.85  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -121,15 +120,12 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 On 03/09/2024 12:52, Karthikeyan Krishnasamy wrote:
-> consume clkout from rv3028 rtc which is able to provide
-> different clock frequency upon configuration
+> Add Relfor Labs Pvt. Ltd. vendor prefixes
+> https://www.relfor.com/
 > 
 > Signed-off-by: Karthikeyan Krishnasamy <karthikeyan@linumiz.com>
 > ---
 > 
-> Notes:
->     v2:
->     - fix commit message subject
 
 <form letter>
 This is a friendly reminder during the review process.
