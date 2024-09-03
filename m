@@ -4,72 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BCA57CD3420
-	for <linux-rockchip@archiver.kernel.org>; Tue,  3 Sep 2024 02:02:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9A198CD342E
+	for <linux-rockchip@archiver.kernel.org>; Tue,  3 Sep 2024 02:02:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=eD2KXDHm8mYuTaJvJPKi93j4adnJAoxH/0Js9ceHx4U=; b=W3x45RxwTy6Nfm
-	qPTzzGgc8FG5Xno/x0tKlb61qWR8E3PM55gFWuSmV6lwFLX+3Z6Yh1Fl/56NnFc2yAFbJdug2thP5
-	mUzdHw9o2S8XIcjG5Ht7utz03sWPvHtUjdOnqKSnUkrZv1/2bUkQH1KZWokPzSWRlDCyA44jvB4zg
-	4KXWYi5dESSAEnhSm8RA8OGKf1zi1NvTGKGD3N0SuRX7rh37DiQXaNxD7565BjRFcuRVDlxqth4e+
-	Lzfu6fOkHP4GH1O61MPvZh2/WkQWqHplkEHRhSXAPJ8bPeWct7SUrUUDca4k0FMrX75MVEAyMbVtA
-	nsxXZ8ipCxzKCCwtdw/A==;
+	List-Owner; bh=QZVnje3CiXDhqBUN71Yjmu+Vx27nk6NYNWyboim6HRw=; b=tuOoP2kV9lBiyw
+	gw/8Kl+dgUlek1fqKGvlScQpCj7DepnspGK8yXF7imwOMeCKW19whv8dZhChwdqjtHoFAvbUp4E3R
+	55RxhWWKAHqwe+vsyeeaE7vV3PqH73VCeuo3FWQnu5Xm5N0Z+ke73f7Zcn+91ETVZyNH2tlFlAdYo
+	3e7/R/yfKGZATEA3AVZFtFpxIxUIUh3l8b8GqzYMSYvlqiCHubWocIkL0TSqQkD3fZ5L1QkVt+iO4
+	ldLnk3USKLq8VZKdrGJVO09eNxPIVbdladHnMoUIbTkAmaYaonRl4S69qQEitwcr8jdp3rghydl7c
+	jcOWlIKjIPKZK/OLCtwQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1slIs6-0000000G0ez-2qVT;
-	Tue, 03 Sep 2024 02:02:18 +0000
-Received: from mail-lj1-x236.google.com ([2a00:1450:4864:20::236])
+	id 1slIs9-0000000G0h3-31M3;
+	Tue, 03 Sep 2024 02:02:21 +0000
+Received: from mail-lj1-x233.google.com ([2a00:1450:4864:20::233])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1slIrw-0000000G0W6-2hFs
+	id 1slIrw-0000000G0VK-43rn
 	for linux-rockchip@lists.infradead.org;
-	Tue, 03 Sep 2024 02:02:13 +0000
-Received: by mail-lj1-x236.google.com with SMTP id 38308e7fff4ca-2f504652853so53479281fa.0
-        for <linux-rockchip@lists.infradead.org>; Mon, 02 Sep 2024 19:02:08 -0700 (PDT)
+	Tue, 03 Sep 2024 02:02:14 +0000
+Received: by mail-lj1-x233.google.com with SMTP id 38308e7fff4ca-2f3ffc7841dso44546491fa.0
+        for <linux-rockchip@lists.infradead.org>; Mon, 02 Sep 2024 19:02:07 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google; t=1725328926; x=1725933726; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=UpzQw9LNt+SDHOumdIx/cD2vW3Vk+Ggm6Q+ZCEu5Pho=;
-        b=KWG2nRT4E0AWT7m2zCty4O5VThhMbLEZrqAYWA4A+2so3V/c6PICdcCS5rjC5kIe0O
-         Cqi0AYxI2pZJzWIana5r5SPtjFso6i9ptdKPYYX+e0MneVKw8bLRJwjJK26dXdKFgyjW
-         ZzPcZMhvUzmFlgPh3pb0RDRbecj0mU2Q7NfQTB4xILtl+J3eX5dKGsm8FRfqWuJ+uss3
-         tX2avkAMRm8YFns0A9Vt+HNffibMauj8X8zuYj0+8xBEF/LCjUKltpBS5mxqWLRWCDS/
-         FH6wgsXbAAes7Ym0e/U0FulwcafciNsiz3bv+jxlIKztQCG9QT85fAZ8CbRf47R55Q9b
-         uDtw==
+        bh=kuDiUUeOXHyePUkATAqMzosvFvUGjVShWzWv3I0BgWE=;
+        b=vEtvt/oYrE1oJreu+2rOPxhcf0BzrmJbhN6mtuurkRjbO7gb2g833qVktAzJyBq7aR
+         zdkLdgvxOXN3RwjbYnPKDLOQankFX0TAG7gbumOelnYDVPG29XfETmxKg5VIpFoXIVU4
+         j2O4SJSr0S5r/NeIdvWqUzSM2b4/dwIyf5zdJsfhCZQ04bc3K7T3AkDj+zB2NC+Zf3WC
+         23KYZb52Exa62PmUlxCI0wrhNLzjuIQtegZ+wGfMNc7/MwgQctr36EYfZuvNXUdMQpH2
+         jAG65ylg8jHdUDgKfdtVKHGNtwTzrYMX6b3y5IEaPIlSfAaJdQTcI7pflsSizjAeDj+1
+         gCWg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20230601; t=1725328926; x=1725933726;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=UpzQw9LNt+SDHOumdIx/cD2vW3Vk+Ggm6Q+ZCEu5Pho=;
-        b=O+i6KJIMapbQ4oWEPMiOxj6UgrPSDgjMOZFROoQpld7Zr4Epih0mpbKn6wzMHBBLUh
-         fVm5lmcvqy2ph9RIc0C1uD6rB4iatsdmMy/b8+4HowzVIBmZoHc6frfjs3DzUpDjjjXQ
-         NfnIuru3gEh6nI3uz2Wc2OWPAmxSvR5JqThS4LYXTHyi5GczEtm+VLXaeEEQOPCyusrH
-         iaI12Q4174TPT9syt7rv9QdhF5qyX6ZX07eHA+oBAiSgkVLHw1JC+OD/RknPiWP2+qBB
-         pk9ehbK5JXxt4QJQ5o87447wrhhtY1BEEpjKMrBO+wADj1emS4V4/tOKhq3SyCljWkuW
-         L7KA==
-X-Forwarded-Encrypted: i=1; AJvYcCXUNojuWePLB8Oj+20G1emhawyNA1tlAlJ/4ZAK4SND4YontGyNqJH/WrdK2PoKeg5ZWKTZu1Ms80duoZrtdA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwOr1c3oy2gnDaTz7Zi4yBbleVu4579lxqXTgclw0TqVYGFn/d0
-	fOjCYa8e9DurPc5+YgeQIeMVbhePn53RbE4LpV9ihJx+kbP8AR/L/bGF8psOMVTZH2OOLfLJoQD
-	2
-X-Google-Smtp-Source: AGHT+IF8v8eYKKb2eQMr0Hsc2qs48UsPP7HLkrE86Dm+WJr2IzV/yR9tjZDK7rnfHNsBM4q2M+EhlA==
-X-Received: by 2002:a05:651c:19a9:b0:2ef:296d:1dda with SMTP id 38308e7fff4ca-2f61e025871mr77730561fa.1.1725328925919;
-        Mon, 02 Sep 2024 19:02:05 -0700 (PDT)
+        bh=kuDiUUeOXHyePUkATAqMzosvFvUGjVShWzWv3I0BgWE=;
+        b=pVB6o4GwDhnS1eWf92hxkcrqgDyH9mm1ttMTb7tT3I7EbG3AXxHI6Ux2lWDx7o3Lfr
+         ohQCaUSK/07TCRDNdEiWsT0aO/15bwxoAfBFBrhnAMNUGkpGRwejyHbofWFMe8f+DCOW
+         5/GDCD5kw68W/AjtptY8i8ktYFfWq5MMTt0upFKyX6K8R+64GFNNmFEjy7kuigXL1tZz
+         oqQpWMBJXW5z4F/fyJrQUtdDx9wsx8uC7jNr8MvL3Ux67ftR4z2bLmUxqjV/zXLX3Lcj
+         z5aUz05PA0U6JehopxEYoXF5azlB7Y1abFvzfBQ2UyCrdScauQ3eAXXGI4C1hjP2ty5u
+         gM1g==
+X-Forwarded-Encrypted: i=1; AJvYcCWtugDYfinN9QdbX2oFhRLf9DidEOhntu0tNaZChsI0yC9vrQccT4PTPOWp+u0zHWo9PcspG3yjyvTBfza0Xg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwCDOq4mB4WEf3Zbnw4EwBW0Bju5AL/gyMapgUUvGOq1WEyw8gO
+	GMF0PkHjKfARRZTfGXiNjxVHBDQ5mmu3Y/frvtgB2BJdSFxbEJbYs+FcashELz0=
+X-Google-Smtp-Source: AGHT+IFWhS1oYYAVacz2ydRhPkLwJEpZU3w+Ve0zSJGvTGxUh12Lt/6JCcXmIdkMLU3430tF4F0SAg==
+X-Received: by 2002:a2e:4e1a:0:b0:2ef:2344:deec with SMTP id 38308e7fff4ca-2f64449a4cfmr8822041fa.45.1725328924812;
+        Mon, 02 Sep 2024 19:02:04 -0700 (PDT)
 Received: from umbar.lan ([192.130.178.90])
-        by smtp.gmail.com with ESMTPSA id 38308e7fff4ca-2f614ed15a5sm20827761fa.8.2024.09.02.19.02.04
+        by smtp.gmail.com with ESMTPSA id 38308e7fff4ca-2f614ed15a5sm20827761fa.8.2024.09.02.19.02.03
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 02 Sep 2024 19:02:05 -0700 (PDT)
+        Mon, 02 Sep 2024 19:02:04 -0700 (PDT)
 From: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
-Date: Tue, 03 Sep 2024 05:01:58 +0300
-Subject: [PATCH v5 3/3] drm/bridge-connector: reset the HDMI connector
- state
+Date: Tue, 03 Sep 2024 05:01:57 +0300
+Subject: [PATCH v5 2/3] drm/bridge-connector: move to DRM_DISPLAY_HELPER
+ module
 MIME-Version: 1.0
-Message-Id: <20240903-drm-bridge-connector-fix-hdmi-reset-v5-3-daebde6d9857@linaro.org>
+Message-Id: <20240903-drm-bridge-connector-fix-hdmi-reset-v5-2-daebde6d9857@linaro.org>
 References: <20240903-drm-bridge-connector-fix-hdmi-reset-v5-0-daebde6d9857@linaro.org>
 In-Reply-To: <20240903-drm-bridge-connector-fix-hdmi-reset-v5-0-daebde6d9857@linaro.org>
 To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
@@ -111,21 +110,21 @@ Cc: dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
  freedreno@lists.freedesktop.org, linux-renesas-soc@vger.kernel.org, 
  linux-rockchip@lists.infradead.org, linux-tegra@vger.kernel.org
 X-Mailer: b4 0.14.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2407;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=11764;
  i=dmitry.baryshkov@linaro.org; h=from:subject:message-id;
- bh=/mT5/AR35rbIDoBCMIT6yhd22qoLCIO/78RuGNtcQT0=;
- b=owGbwMvMwMXYbdNlx6SpcZXxtFoSQ9q1PMnqI1KVspetFZi3Gl8JEpLtUs6+nOiyV+WlRKv/7
- tQfLsWdjMYsDIxcDLJiiiw+BS1TYzYlh33YMbUeZhArE8gUBi5OAZhIbif7PxXBmk0v/1w+d0WT
- 71S6XpXL7jLtn4avhQsSLjYWFpWlNFyaLt3N/iGnatKcwkMCu7O/rjFqCDz8KJc5ufCiQ8KledW
- /uRseHIiy8MxMVvnEyeb7WHv1FZfUhPk9i/cUHg/6HX76mM8Wtf6ERceePG1tVaz5/H9DQNLcGZ
- y6Llcc8p0+KzalN0T9jE0QmaB78cCR07q69f850w4GJ+7JZ4t78CCmYvZnNaPsssesT1P7DzTWz
- mNsNlHTrT7mds9yCbu/axEfR516y5TjmctOSC///F7oMUO36NtU1kIT+YKzleddOzbMTjo2R/KQ
- K/f8d0nnXwQH3rwSL3mk4NsGjQcrfrHr8a45VH/B/RMXAA==
+ bh=u0qb3bEY05HUAox2PHoKFXF0Np7w89XwqKfDLq37bxI=;
+ b=owEBbQGS/pANAwAKAYs8ij4CKSjVAcsmYgBm1m4Z7OHdzXgI7iKlcHjqUN1VR0kFSbKsUb9xt
+ 64KU0cK57CJATMEAAEKAB0WIQRMcISVXLJjVvC4lX+LPIo+Aiko1QUCZtZuGQAKCRCLPIo+Aiko
+ 1XJxCACzrWSdBNy2/qY7LdD1PvMrMfsyOSN2E6Ghfhb14Rxou6tRcAKvNUFF3OhkpFPjH3aJgkR
+ 17lAll1SxKb+66j5Iv+bYkZR/xOwoHu9+WYoFNZJUT4RMtmvumXufsiDAwmExOfP1wQy6s8dl5B
+ cMZWPB50tQg0hnjD488zR5FhhIWL2mgv46oIKpPh/hxXrFIhAAj5jppb8R5TrnNLiqCPZND7+GK
+ KdJgtt/GmFMwZiwLZqDUe1sk6ypGlya/NdnOBlZjkNeJmy756ceI24/EOSg4x4k9YE5Ri1k+Y5x
+ lq8giCFLD8RuzBDBt7T3e8c9Pg7M/0XU+eo/uaMZF4nVoEgn
 X-Developer-Key: i=dmitry.baryshkov@linaro.org; a=openpgp;
  fpr=8F88381DD5C873E4AE487DA5199BF1243632046A
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240902_190208_774124_F46C7640 
-X-CRM114-Status: GOOD (  13.37  )
+X-CRM114-CacheID: sfid-20240902_190209_168487_01256C2E 
+X-CRM114-Status: GOOD (  14.99  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -142,64 +141,308 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On HDMI connectors which use drm_bridge_connector and DRM_BRIDGE_OP_HDMI
-IGT chokes on the max_bpc property in several kms_properties tests due
-to the drm_bridge_connector failing to reset HDMI-related
-properties.
+drm_bridge_connector is a "leaf" driver, belonging to the display
+helper, rather than the "CRTC" drm_kms_helper module. Move the driver
+to the drm/display and add necessary Kconfig selection clauses.
 
-Call __drm_atomic_helper_connector_hdmi_reset() if the
-drm_bridge_connector has bridge_hdmi.
-
-It is impossible to call this function from HDMI bridges, none of the
-bridge callbacks correspond to the drm_connector_funcs::reset().
-
-Fixes: 6b4468b0c6ba ("drm/bridge-connector: implement glue code for HDMI connector")
-Reviewed-by: Maxime Ripard <mripard@kernel.org>
+Suggested-by: Maxime Ripard <mripard@kernel.org>
 Acked-by: Maxime Ripard <mripard@kernel.org>
-Reviewed-by: Abhinav Kumar <quic_abhinavk@quicinc.com>
 Signed-off-by: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
 ---
- drivers/gpu/drm/display/Kconfig                |  1 +
- drivers/gpu/drm/display/drm_bridge_connector.c | 13 ++++++++++++-
- 2 files changed, 13 insertions(+), 1 deletion(-)
+ MAINTAINERS                                          | 2 +-
+ drivers/gpu/drm/Makefile                             | 1 -
+ drivers/gpu/drm/bridge/Kconfig                       | 1 +
+ drivers/gpu/drm/display/Kconfig                      | 5 +++++
+ drivers/gpu/drm/display/Makefile                     | 2 ++
+ drivers/gpu/drm/{ => display}/drm_bridge_connector.c | 0
+ drivers/gpu/drm/imx/dcss/Kconfig                     | 2 ++
+ drivers/gpu/drm/imx/lcdc/Kconfig                     | 2 ++
+ drivers/gpu/drm/ingenic/Kconfig                      | 2 ++
+ drivers/gpu/drm/kmb/Kconfig                          | 2 ++
+ drivers/gpu/drm/mediatek/Kconfig                     | 2 ++
+ drivers/gpu/drm/meson/Kconfig                        | 2 ++
+ drivers/gpu/drm/msm/Kconfig                          | 1 +
+ drivers/gpu/drm/omapdrm/Kconfig                      | 2 ++
+ drivers/gpu/drm/renesas/rcar-du/Kconfig              | 2 ++
+ drivers/gpu/drm/renesas/rz-du/Kconfig                | 2 ++
+ drivers/gpu/drm/renesas/shmobile/Kconfig             | 2 ++
+ drivers/gpu/drm/rockchip/Kconfig                     | 4 ++++
+ drivers/gpu/drm/tegra/Kconfig                        | 1 +
+ drivers/gpu/drm/tidss/Kconfig                        | 2 ++
+ drivers/gpu/drm/xlnx/Kconfig                         | 1 +
+ 21 files changed, 38 insertions(+), 2 deletions(-)
 
+diff --git a/MAINTAINERS b/MAINTAINERS
+index a38754d1cc86..6b152eae4f5f 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -7463,8 +7463,8 @@ S:	Maintained
+ T:	git https://gitlab.freedesktop.org/drm/misc/kernel.git
+ F:	Documentation/devicetree/bindings/display/bridge/
+ F:	drivers/gpu/drm/bridge/
++F:	drivers/gpu/drm/display/drm_bridge_connector.c
+ F:	drivers/gpu/drm/drm_bridge.c
+-F:	drivers/gpu/drm/drm_bridge_connector.c
+ F:	include/drm/drm_bridge.h
+ F:	include/drm/drm_bridge_connector.h
+ 
+diff --git a/drivers/gpu/drm/Makefile b/drivers/gpu/drm/Makefile
+index c62339b89d46..784229d4504d 100644
+--- a/drivers/gpu/drm/Makefile
++++ b/drivers/gpu/drm/Makefile
+@@ -129,7 +129,6 @@ obj-$(CONFIG_DRM_TTM_HELPER) += drm_ttm_helper.o
+ drm_kms_helper-y := \
+ 	drm_atomic_helper.o \
+ 	drm_atomic_state_helper.o \
+-	drm_bridge_connector.o \
+ 	drm_crtc_helper.o \
+ 	drm_damage_helper.o \
+ 	drm_encoder_slave.o \
+diff --git a/drivers/gpu/drm/bridge/Kconfig b/drivers/gpu/drm/bridge/Kconfig
+index c621be1a99a8..3eb955333c80 100644
+--- a/drivers/gpu/drm/bridge/Kconfig
++++ b/drivers/gpu/drm/bridge/Kconfig
+@@ -390,6 +390,7 @@ config DRM_TI_SN65DSI86
+ 	depends on OF
+ 	select DRM_DISPLAY_DP_HELPER
+ 	select DRM_DISPLAY_HELPER
++	select DRM_BRIDGE_CONNECTOR
+ 	select DRM_KMS_HELPER
+ 	select REGMAP_I2C
+ 	select DRM_PANEL
 diff --git a/drivers/gpu/drm/display/Kconfig b/drivers/gpu/drm/display/Kconfig
-index 8c174ceb0c4d..3763649ba251 100644
+index 9c2da1e48b75..8c174ceb0c4d 100644
 --- a/drivers/gpu/drm/display/Kconfig
 +++ b/drivers/gpu/drm/display/Kconfig
-@@ -15,6 +15,7 @@ if DRM_DISPLAY_HELPER
+@@ -13,6 +13,11 @@ config DRM_DISPLAY_HELPER
  
- config DRM_BRIDGE_CONNECTOR
- 	bool
-+	select DRM_DISPLAY_HDMI_STATE_HELPER
+ if DRM_DISPLAY_HELPER
+ 
++config DRM_BRIDGE_CONNECTOR
++	bool
++	help
++	  DRM connector implementation terminating DRM bridge chains.
++
+ config DRM_DISPLAY_DP_AUX_CEC
+ 	bool "Enable DisplayPort CEC-Tunneling-over-AUX HDMI support"
+ 	select DRM_DISPLAY_DP_HELPER
+diff --git a/drivers/gpu/drm/display/Makefile b/drivers/gpu/drm/display/Makefile
+index a023f72fa139..629c834c3192 100644
+--- a/drivers/gpu/drm/display/Makefile
++++ b/drivers/gpu/drm/display/Makefile
+@@ -3,6 +3,8 @@
+ obj-$(CONFIG_DRM_DISPLAY_DP_AUX_BUS) += drm_dp_aux_bus.o
+ 
+ drm_display_helper-y := drm_display_helper_mod.o
++drm_display_helper-$(CONFIG_DRM_BRIDGE_CONNECTOR) += \
++	drm_bridge_connector.o
+ drm_display_helper-$(CONFIG_DRM_DISPLAY_DP_HELPER) += \
+ 	drm_dp_dual_mode_helper.o \
+ 	drm_dp_helper.o \
+diff --git a/drivers/gpu/drm/drm_bridge_connector.c b/drivers/gpu/drm/display/drm_bridge_connector.c
+similarity index 100%
+rename from drivers/gpu/drm/drm_bridge_connector.c
+rename to drivers/gpu/drm/display/drm_bridge_connector.c
+diff --git a/drivers/gpu/drm/imx/dcss/Kconfig b/drivers/gpu/drm/imx/dcss/Kconfig
+index 3ffc061d392b..59e3b6a1dff0 100644
+--- a/drivers/gpu/drm/imx/dcss/Kconfig
++++ b/drivers/gpu/drm/imx/dcss/Kconfig
+@@ -2,6 +2,8 @@ config DRM_IMX_DCSS
+ 	tristate "i.MX8MQ DCSS"
+ 	select IMX_IRQSTEER
+ 	select DRM_KMS_HELPER
++	select DRM_DISPLAY_HELPER
++	select DRM_BRIDGE_CONNECTOR
+ 	select DRM_GEM_DMA_HELPER
+ 	select VIDEOMODE_HELPERS
+ 	depends on DRM && ARCH_MXC && ARM64
+diff --git a/drivers/gpu/drm/imx/lcdc/Kconfig b/drivers/gpu/drm/imx/lcdc/Kconfig
+index 7e57922bbd9d..9c28bb0f4662 100644
+--- a/drivers/gpu/drm/imx/lcdc/Kconfig
++++ b/drivers/gpu/drm/imx/lcdc/Kconfig
+@@ -3,5 +3,7 @@ config DRM_IMX_LCDC
+       depends on DRM && (ARCH_MXC || COMPILE_TEST)
+       select DRM_GEM_DMA_HELPER
+       select DRM_KMS_HELPER
++      select DRM_DISPLAY_HELPER
++      select DRM_BRIDGE_CONNECTOR
+       help
+         Found on i.MX1, i.MX21, i.MX25 and i.MX27.
+diff --git a/drivers/gpu/drm/ingenic/Kconfig b/drivers/gpu/drm/ingenic/Kconfig
+index 3db117c5edd9..8cd7b750dffe 100644
+--- a/drivers/gpu/drm/ingenic/Kconfig
++++ b/drivers/gpu/drm/ingenic/Kconfig
+@@ -8,6 +8,8 @@ config DRM_INGENIC
+ 	select DRM_BRIDGE
+ 	select DRM_PANEL_BRIDGE
+ 	select DRM_KMS_HELPER
++	select DRM_DISPLAY_HELPER
++	select DRM_BRIDGE_CONNECTOR
+ 	select DRM_GEM_DMA_HELPER
+ 	select REGMAP
+ 	select REGMAP_MMIO
+diff --git a/drivers/gpu/drm/kmb/Kconfig b/drivers/gpu/drm/kmb/Kconfig
+index fd011367db1d..e5ae3ec52392 100644
+--- a/drivers/gpu/drm/kmb/Kconfig
++++ b/drivers/gpu/drm/kmb/Kconfig
+@@ -3,6 +3,8 @@ config DRM_KMB_DISPLAY
+ 	depends on DRM
+ 	depends on ARCH_KEEMBAY || COMPILE_TEST
+ 	select DRM_KMS_HELPER
++	select DRM_DISPLAY_HELPER
++	select DRM_BRIDGE_CONNECTOR
+ 	select DRM_GEM_DMA_HELPER
+ 	select DRM_MIPI_DSI
  	help
- 	  DRM connector implementation terminating DRM bridge chains.
- 
-diff --git a/drivers/gpu/drm/display/drm_bridge_connector.c b/drivers/gpu/drm/display/drm_bridge_connector.c
-index a4fbf1eb7ac5..3da5b8bf8259 100644
---- a/drivers/gpu/drm/display/drm_bridge_connector.c
-+++ b/drivers/gpu/drm/display/drm_bridge_connector.c
-@@ -216,8 +216,19 @@ static void drm_bridge_connector_debugfs_init(struct drm_connector *connector,
- 	}
- }
- 
-+static void drm_bridge_connector_reset(struct drm_connector *connector)
-+{
-+	struct drm_bridge_connector *bridge_connector =
-+		to_drm_bridge_connector(connector);
-+
-+	drm_atomic_helper_connector_reset(connector);
-+	if (bridge_connector->bridge_hdmi)
-+		__drm_atomic_helper_connector_hdmi_reset(connector,
-+							 connector->state);
-+}
-+
- static const struct drm_connector_funcs drm_bridge_connector_funcs = {
--	.reset = drm_atomic_helper_connector_reset,
-+	.reset = drm_bridge_connector_reset,
- 	.detect = drm_bridge_connector_detect,
- 	.fill_modes = drm_helper_probe_single_connector_modes,
- 	.atomic_duplicate_state = drm_atomic_helper_connector_duplicate_state,
+diff --git a/drivers/gpu/drm/mediatek/Kconfig b/drivers/gpu/drm/mediatek/Kconfig
+index d6449ebae838..417ac8c9af41 100644
+--- a/drivers/gpu/drm/mediatek/Kconfig
++++ b/drivers/gpu/drm/mediatek/Kconfig
+@@ -9,6 +9,8 @@ config DRM_MEDIATEK
+ 	depends on MTK_MMSYS
+ 	select DRM_GEM_DMA_HELPER if DRM_FBDEV_EMULATION
+ 	select DRM_KMS_HELPER
++	select DRM_DISPLAY_HELPER
++	select DRM_BRIDGE_CONNECTOR
+ 	select DRM_MIPI_DSI
+ 	select DRM_PANEL
+ 	select MEMORY
+diff --git a/drivers/gpu/drm/meson/Kconfig b/drivers/gpu/drm/meson/Kconfig
+index 615fdd0ce41b..2544756538cc 100644
+--- a/drivers/gpu/drm/meson/Kconfig
++++ b/drivers/gpu/drm/meson/Kconfig
+@@ -4,6 +4,8 @@ config DRM_MESON
+ 	depends on DRM && OF && (ARM || ARM64)
+ 	depends on ARCH_MESON || COMPILE_TEST
+ 	select DRM_KMS_HELPER
++	select DRM_DISPLAY_HELPER
++	select DRM_BRIDGE_CONNECTOR
+ 	select DRM_GEM_DMA_HELPER
+ 	select DRM_DISPLAY_CONNECTOR
+ 	select VIDEOMODE_HELPERS
+diff --git a/drivers/gpu/drm/msm/Kconfig b/drivers/gpu/drm/msm/Kconfig
+index 420385c47193..94d3ed4f7761 100644
+--- a/drivers/gpu/drm/msm/Kconfig
++++ b/drivers/gpu/drm/msm/Kconfig
+@@ -17,6 +17,7 @@ config DRM_MSM
+ 	select DRM_DISPLAY_DP_AUX_BUS
+ 	select DRM_DISPLAY_DP_HELPER
+ 	select DRM_DISPLAY_HELPER
++	select DRM_BRIDGE_CONNECTOR
+ 	select DRM_EXEC
+ 	select DRM_KMS_HELPER
+ 	select DRM_PANEL
+diff --git a/drivers/gpu/drm/omapdrm/Kconfig b/drivers/gpu/drm/omapdrm/Kconfig
+index 64e440a2649b..fbd9af758581 100644
+--- a/drivers/gpu/drm/omapdrm/Kconfig
++++ b/drivers/gpu/drm/omapdrm/Kconfig
+@@ -5,6 +5,8 @@ config DRM_OMAP
+ 	depends on DRM && OF
+ 	depends on ARCH_OMAP2PLUS || (COMPILE_TEST && PAGE_SIZE_LESS_THAN_64KB)
+ 	select DRM_KMS_HELPER
++	select DRM_DISPLAY_HELPER
++	select DRM_BRIDGE_CONNECTOR
+ 	select FB_DMAMEM_HELPERS_DEFERRED if DRM_FBDEV_EMULATION
+ 	select VIDEOMODE_HELPERS
+ 	select HDMI
+diff --git a/drivers/gpu/drm/renesas/rcar-du/Kconfig b/drivers/gpu/drm/renesas/rcar-du/Kconfig
+index be86ecb9f559..e1f41468a9a6 100644
+--- a/drivers/gpu/drm/renesas/rcar-du/Kconfig
++++ b/drivers/gpu/drm/renesas/rcar-du/Kconfig
+@@ -5,6 +5,8 @@ config DRM_RCAR_DU
+ 	depends on ARM || ARM64 || COMPILE_TEST
+ 	depends on ARCH_RENESAS || COMPILE_TEST
+ 	select DRM_KMS_HELPER
++	select DRM_DISPLAY_HELPER
++	select DRM_BRIDGE_CONNECTOR
+ 	select DRM_GEM_DMA_HELPER
+ 	select VIDEOMODE_HELPERS
+ 	help
+diff --git a/drivers/gpu/drm/renesas/rz-du/Kconfig b/drivers/gpu/drm/renesas/rz-du/Kconfig
+index 8ec14271ebba..89bdb598e0ae 100644
+--- a/drivers/gpu/drm/renesas/rz-du/Kconfig
++++ b/drivers/gpu/drm/renesas/rz-du/Kconfig
+@@ -6,6 +6,8 @@ config DRM_RZG2L_DU
+ 	depends on VIDEO_RENESAS_VSP1
+ 	select DRM_GEM_DMA_HELPER
+ 	select DRM_KMS_HELPER
++	select DRM_DISPLAY_HELPER
++	select DRM_BRIDGE_CONNECTOR
+ 	select VIDEOMODE_HELPERS
+ 	help
+ 	  Choose this option if you have an RZ/G2L alike chipset.
+diff --git a/drivers/gpu/drm/renesas/shmobile/Kconfig b/drivers/gpu/drm/renesas/shmobile/Kconfig
+index 027220b8fe1c..c329ab8a7a8b 100644
+--- a/drivers/gpu/drm/renesas/shmobile/Kconfig
++++ b/drivers/gpu/drm/renesas/shmobile/Kconfig
+@@ -5,6 +5,8 @@ config DRM_SHMOBILE
+ 	depends on ARCH_RENESAS || ARCH_SHMOBILE || COMPILE_TEST
+ 	select BACKLIGHT_CLASS_DEVICE
+ 	select DRM_KMS_HELPER
++	select DRM_DISPLAY_HELPER
++	select DRM_BRIDGE_CONNECTOR
+ 	select DRM_GEM_DMA_HELPER
+ 	select VIDEOMODE_HELPERS
+ 	help
+diff --git a/drivers/gpu/drm/rockchip/Kconfig b/drivers/gpu/drm/rockchip/Kconfig
+index 7df875e38517..23c49e91f1cc 100644
+--- a/drivers/gpu/drm/rockchip/Kconfig
++++ b/drivers/gpu/drm/rockchip/Kconfig
+@@ -86,6 +86,8 @@ config ROCKCHIP_LVDS
+ 	bool "Rockchip LVDS support"
+ 	depends on DRM_ROCKCHIP
+ 	depends on PINCTRL && OF
++	select DRM_DISPLAY_HELPER
++	select DRM_BRIDGE_CONNECTOR
+ 	help
+ 	  Choose this option to enable support for Rockchip LVDS controllers.
+ 	  Rockchip rk3288 SoC has LVDS TX Controller can be used, and it
+@@ -96,6 +98,8 @@ config ROCKCHIP_RGB
+ 	bool "Rockchip RGB support"
+ 	depends on DRM_ROCKCHIP
+ 	depends on PINCTRL
++	select DRM_DISPLAY_HELPER
++	select DRM_BRIDGE_CONNECTOR
+ 	help
+ 	  Choose this option to enable support for Rockchip RGB output.
+ 	  Some Rockchip CRTCs, like rv1108, can directly output parallel
+diff --git a/drivers/gpu/drm/tegra/Kconfig b/drivers/gpu/drm/tegra/Kconfig
+index 782f51d3044a..e688d8104652 100644
+--- a/drivers/gpu/drm/tegra/Kconfig
++++ b/drivers/gpu/drm/tegra/Kconfig
+@@ -8,6 +8,7 @@ config DRM_TEGRA
+ 	select DRM_DISPLAY_DP_HELPER
+ 	select DRM_DISPLAY_HDMI_HELPER
+ 	select DRM_DISPLAY_HELPER
++	select DRM_BRIDGE_CONNECTOR
+ 	select DRM_DISPLAY_DP_AUX_BUS
+ 	select DRM_KMS_HELPER
+ 	select DRM_MIPI_DSI
+diff --git a/drivers/gpu/drm/tidss/Kconfig b/drivers/gpu/drm/tidss/Kconfig
+index 378600806167..2385c56493b9 100644
+--- a/drivers/gpu/drm/tidss/Kconfig
++++ b/drivers/gpu/drm/tidss/Kconfig
+@@ -3,6 +3,8 @@ config DRM_TIDSS
+ 	depends on DRM && OF
+ 	depends on ARM || ARM64 || COMPILE_TEST
+ 	select DRM_KMS_HELPER
++	select DRM_DISPLAY_HELPER
++	select DRM_BRIDGE_CONNECTOR
+ 	select DRM_GEM_DMA_HELPER
+ 	help
+ 	  The TI Keystone family SoCs introduced a new generation of
+diff --git a/drivers/gpu/drm/xlnx/Kconfig b/drivers/gpu/drm/xlnx/Kconfig
+index 68ee897de9d7..626e5ac4c33d 100644
+--- a/drivers/gpu/drm/xlnx/Kconfig
++++ b/drivers/gpu/drm/xlnx/Kconfig
+@@ -8,6 +8,7 @@ config DRM_ZYNQMP_DPSUB
+ 	select DMA_ENGINE
+ 	select DRM_DISPLAY_DP_HELPER
+ 	select DRM_DISPLAY_HELPER
++	select DRM_BRIDGE_CONNECTOR
+ 	select DRM_GEM_DMA_HELPER
+ 	select DRM_KMS_HELPER
+ 	select GENERIC_PHY
 
 -- 
 2.39.2
