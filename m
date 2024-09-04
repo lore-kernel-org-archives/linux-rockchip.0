@@ -4,57 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0AEC9CD3431
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A37B6CD4849
 	for <linux-rockchip@archiver.kernel.org>; Wed,  4 Sep 2024 12:05:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=92yI1Tt9b/v9HHDFtu9/WjKjldEA73c9scVwjWt17lE=; b=RoUjwxs8HbQbfk
-	YSCGyVJcN9CyX0UdWX9SjVoxGx8EPB/BUGusziqYJiZnrUO65XZVuEelsvOqz4Qg7SSx3OzNJ6A50
-	8zjgD4N1DAUzsEDvfMi+4DJX85u51+Ru6hx/xSVYsP0M9xyR5XcpIPgPnDWoZ1nczHeYJU/JO4uZK
-	xG6DKNezoL2IeP8xzRQIz+Sf8TBRRasBfjDAmpuW2kLNBNgutJ28bVBJ2wEuf+r+gmkYiE1+7yieN
-	BaYrIP8JQ1EHQXA3N93bByLdgYl52IPDx6FeId2+BHsYThHtC7QSmYRUIgsWI+dSDLXKZ8sKs3OJC
-	wBCDHifn8GU2SOCMlxXQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=UGBaXq+Vm+BG6+Ad2FKQycytAP2CtBCyLgWBNU8ILG4=; b=YmQ+3+pNHv8qLv
+	HkBRL/p+rvE029onf2kenIvKD4frTXWInT1nhKex6f+i2IU6ldbzULfvUx8JfDYlth8D4ODgbRELQ
+	76kPv1Uu57e3yM4nW4fIMr4TGtgf/FMDbTNPDoy7jK0cXGybwBYJNKIiAydbf8g3UkPDnMNroh3Hm
+	18leWVVuCTDfKc2xXUsZCqL2z3a2/vmTxWRNqKV1DBbNOUwAcDqz3dgg7zz6dB5CnMyThY1M66NxI
+	gqVCh8zVNv38l6Hrohy8ZWlXSPftRIsRIHmdQ6SVyjqS89SblxEWdLlrrbm1x9Kdppj0rCyheVjG5
+	f2PMNq1dZjc6kKSl4HdA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1slolD-00000004HDc-2qDF;
-	Wed, 04 Sep 2024 12:05:19 +0000
-Received: from m16.mail.163.com ([117.135.210.3])
+	id 1slolF-00000004HFL-224k;
+	Wed, 04 Sep 2024 12:05:21 +0000
+Received: from m16.mail.163.com ([117.135.210.5])
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sloj9-00000004GUo-3A9m
+	id 1slojA-00000004GUs-0h7o
 	for linux-rockchip@lists.infradead.org;
 	Wed, 04 Sep 2024 12:03:16 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=From:Subject:Date:Message-Id:MIME-Version; bh=9fRsj
-	w+Sks6gwqJ//wKIDO4W+WIKhepxV6zCWKyTe6A=; b=SILabZtgHAfgnJxvMLy31
-	rcuntR0rjxXpKsUssy6r2qwruELK2hOj0qijBfr4EeJHM03dCwF9yWPysepOXYWz
-	a/E72bJP7nSdBT+JILPTfBzZRNC29NSeHYOqBPMLplJut6xrR601cioDwvVgY6MT
-	xTfKVlGk/1zroWVL7mDxsU=
+	s=s110527; h=From:Subject:Date:Message-Id:MIME-Version; bh=Pox9q
+	DQ86t18rogfI7aGKkiX3ROJpF4gTG4iFYPl5Og=; b=l1FPea8SzzM9Y5ECYKdc/
+	fJ8H8bthWBycnKgg1kv94fYoYm2GbgYn4XViTdUXL4bfJkRRD9WVWK9V06rTZFwt
+	2dmLSNt691kO97SoPOz+88kuqhmG8WbgHhKUiQyf3VcRczrKQGvw3g+dCp8h12Y9
+	sGw4GbRneWfagi1utAHVEc=
 Received: from ProDesk.. (unknown [58.22.7.114])
-	by gzga-smtp-mta-g3-0 (Coremail) with SMTP id _____wA3HxFgTNhmiRMZCA--.50872S8;
-	Wed, 04 Sep 2024 20:02:50 +0800 (CST)
+	by gzga-smtp-mta-g3-0 (Coremail) with SMTP id _____wA3HxFgTNhmiRMZCA--.50872S2;
+	Wed, 04 Sep 2024 20:02:44 +0800 (CST)
 From: Andy Yan <andyshrk@163.com>
 To: detlev.casanova@collabora.com
-Subject: [PATCH v2 06/11] drm/rockchip: vop2: Register the primary plane and overlay plane separately
-Date: Wed,  4 Sep 2024 20:02:33 +0800
-Message-Id: <20240904120238.3856782-7-andyshrk@163.com>
+Subject: [PATCH v2 00/11] VOP Support for rk3576
+Date: Wed,  4 Sep 2024 20:02:27 +0800
+Message-Id: <20240904120238.3856782-1-andyshrk@163.com>
 X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20240904120238.3856782-1-andyshrk@163.com>
-References: <20240904120238.3856782-1-andyshrk@163.com>
 MIME-Version: 1.0
-X-CM-TRANSID: _____wA3HxFgTNhmiRMZCA--.50872S8
-X-Coremail-Antispam: 1Uf129KBjvJXoWxGFWxtw4ktw1xJr45Jw4DCFg_yoWrWFy3pa
-	13ta90yr17WF42gry8AF4UAFWYyan2ka17Cr45Jw1a9348Kr93urs8KFn8AF1ruFnrua4a
-	kFW3K39Y9FWjgr7anT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07jscTPUUUUU=
+X-CM-TRANSID: _____wA3HxFgTNhmiRMZCA--.50872S2
+X-Coremail-Antispam: 1Uf129KBjvJXoW7AFyDArW5Aw18tFy8XF1UWrg_yoW8AF43pw
+	s8ua43XrW8CFy2qrn7tws8CrWrtwnayayxKw4fG3W3Jw1IyF9rGr9xuFn8ZrZxtF1xZa1U
+	Crs8KayUGF4Ivr7anT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07UMHqxUUUUU=
 X-Originating-IP: [58.22.7.114]
-X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/xtbB0g5QXmWX0KXmJgABsU
+X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/1tbiqQdQXmVOCpvzKwAAsC
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240904_050312_239202_936B52EC 
-X-CRM114-Status: GOOD (  15.26  )
+X-CRM114-CacheID: sfid-20240904_050312_654445_810CE5BC 
+X-CRM114-Status: UNSURE (   9.53  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,155 +73,48 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Andy Yan <andy.yan@rock-chips.com>
 
-In the upcoming VOP of rk3576, a Window cannot attach to all Video Ports,
-so make sure all VP find it's suitable primary plane, then register the
-remain windows as overlay plane will make code easier.
 
-Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
----
+Thanks for the basic work from Collabora, I can bringup a HDMI
+display out on rk3576.
 
-(no changes since v1)
+The hdmi depends on WIP patch from Cristian[0]
 
- drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 98 ++++++++++++--------
- 1 file changed, 59 insertions(+), 39 deletions(-)
+I test it with a 1080P/4K HDMI output with modetest and weston output.
 
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-index f32cfb25063f..8e1c3203e8e8 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-@@ -2014,22 +2014,27 @@ static int vop2_plane_init(struct vop2 *vop2, struct vop2_win *win,
- 	return 0;
- }
- 
--static struct vop2_video_port *find_vp_without_primary(struct vop2 *vop2)
-+/*
-+ * On RK3566 these windows don't have an independent
-+ * framebuffer. They can only share/mirror the framebuffer
-+ * with smart0, esmart0 and cluster0 respectively.
-+ */
-+static bool vop2_is_mirror_win(struct vop2_win *win)
- {
--	int i;
--
--	for (i = 0; i < vop2->data->nr_vps; i++) {
--		struct vop2_video_port *vp = &vop2->vps[i];
--
--		if (!vp->crtc.port)
--			continue;
--		if (vp->primary_plane)
--			continue;
-+	struct vop2 *vop2 = win->vop2;
- 
--		return vp;
-+	if (vop2->data->soc_id == 3566) {
-+		switch (win->data->phys_id) {
-+		case ROCKCHIP_VOP2_SMART1:
-+		case ROCKCHIP_VOP2_ESMART1:
-+		case ROCKCHIP_VOP2_CLUSTER1:
-+			return true;
-+		default:
-+			return false;
-+		}
-+	} else {
-+		return false;
- 	}
--
--	return NULL;
- }
- 
- static int vop2_create_crtcs(struct vop2 *vop2)
-@@ -2040,7 +2045,9 @@ static int vop2_create_crtcs(struct vop2 *vop2)
- 	struct drm_plane *plane;
- 	struct device_node *port;
- 	struct vop2_video_port *vp;
--	int i, nvp, nvps = 0;
-+	struct vop2_win *win;
-+	u32 possible_crtcs;
-+	int i, j, nvp, nvps = 0;
- 	int ret;
- 
- 	for (i = 0; i < vop2_data->nr_vps; i++) {
-@@ -2079,42 +2086,55 @@ static int vop2_create_crtcs(struct vop2 *vop2)
- 	}
- 
- 	nvp = 0;
--	for (i = 0; i < vop2->registered_num_wins; i++) {
--		struct vop2_win *win = &vop2->win[i];
--		u32 possible_crtcs = 0;
--
--		if (vop2->data->soc_id == 3566) {
--			/*
--			 * On RK3566 these windows don't have an independent
--			 * framebuffer. They share the framebuffer with smart0,
--			 * esmart0 and cluster0 respectively.
--			 */
--			switch (win->data->phys_id) {
--			case ROCKCHIP_VOP2_SMART1:
--			case ROCKCHIP_VOP2_ESMART1:
--			case ROCKCHIP_VOP2_CLUSTER1:
-+	/* Register a primary plane for every crtc */
-+	for (i = 0; i < vop2_data->nr_vps; i++) {
-+		vp = &vop2->vps[i];
-+
-+		if (!vp->crtc.port)
-+			continue;
-+
-+		for (j = 0; j < vop2->registered_num_wins; j++) {
-+			win = &vop2->win[j];
-+
-+			/* Aready registered as primary plane */
-+			if (win->base.type == DRM_PLANE_TYPE_PRIMARY)
-+				continue;
-+
-+			if (vop2_is_mirror_win(win))
- 				continue;
--			}
--		}
- 
--		if (win->type == DRM_PLANE_TYPE_PRIMARY) {
--			vp = find_vp_without_primary(vop2);
--			if (vp) {
-+			if (win->type == DRM_PLANE_TYPE_PRIMARY) {
- 				possible_crtcs = BIT(nvp);
- 				vp->primary_plane = win;
-+				ret = vop2_plane_init(vop2, win, possible_crtcs);
-+				if (ret) {
-+					drm_err(vop2->drm, "failed to init primary plane %s: %d\n",
-+						win->data->name, ret);
-+					return ret;
-+				}
- 				nvp++;
--			} else {
--				/* change the unused primary window to overlay window */
--				win->type = DRM_PLANE_TYPE_OVERLAY;
-+				break;
- 			}
- 		}
-+	}
-+
-+	/* Register all unused window as overlay plane */
-+	for (i = 0; i < vop2->registered_num_wins; i++) {
-+		win = &vop2->win[i];
-+
-+		/* Aready registered as primary plane */
-+		if (win->base.type == DRM_PLANE_TYPE_PRIMARY)
-+			continue;
-+
-+		if (vop2_is_mirror_win(win))
-+			continue;
- 
--		if (win->type == DRM_PLANE_TYPE_OVERLAY)
--			possible_crtcs = (1 << nvps) - 1;
-+		win->type = DRM_PLANE_TYPE_OVERLAY;
- 
-+		possible_crtcs = (1 << nvps) - 1;
- 		ret = vop2_plane_init(vop2, win, possible_crtcs);
- 		if (ret) {
--			drm_err(vop2->drm, "failed to init plane %s: %d\n",
-+			drm_err(vop2->drm, "failed to init overlay plane %s: %d\n",
- 				win->data->name, ret);
- 			return ret;
- 		}
+If there are some one want to have a try, I have a tree here[1]
+[0]https://lore.kernel.org/lkml/20240819-b4-rk3588-bridge-upstream-v4-0-6417c72a2749@collabora.com/
+[1]https://github.com/andyshrk/linux/tree/rk3576-vop2-upstream-v2
+
+Changes in v2:
+- split it from main patch add support for rk3576
+- Add platform specific callback
+- Introduce vop hardware version
+- Add dt bindings
+- Add platform specific callback
+
+Andy Yan (11):
+  drm/rockchip: vop2: Add debugfs support
+  drm/rockchip: vop2: Support for different layer selet configuration
+    between VPs
+  drm/rockchip: vop2: Support 32x8 superblock afbc
+  drm/rockchip: vop2: Add platform specific callback
+  drm/rockchip: vop2: Introduce vop hardware version
+  drm/rockchip: vop2: Register the primary plane and overlay plane
+    separately
+  drm/rockchip: vop2: Set plane possible crtcs by possible vp mask
+  drm/rockchip: vop2: Add uv swap for cluster window
+  dt-bindings: display: vop2: Add rk3576 support
+  drm/rockchip: vop2: Add support for rk3576
+  phy: phy-rockchip-samsung-hdptx: Don't request
+    RST_PHY/RST_ROPLL/RST_LCPLL
+
+ .../display/rockchip/rockchip-vop2.yaml       |    1 +
+ drivers/gpu/drm/rockchip/rockchip_drm_vop2.c  | 1560 ++++---------
+ drivers/gpu/drm/rockchip/rockchip_drm_vop2.h  |  274 ++-
+ drivers/gpu/drm/rockchip/rockchip_vop2_reg.c  | 1989 ++++++++++++++++-
+ .../phy/rockchip/phy-rockchip-samsung-hdptx.c |   17 +-
+ 5 files changed, 2701 insertions(+), 1140 deletions(-)
+
 -- 
 2.34.1
 
