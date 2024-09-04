@@ -4,62 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B6D43CD4853
-	for <linux-rockchip@archiver.kernel.org>; Wed,  4 Sep 2024 17:27:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9254CCD4847
+	for <linux-rockchip@archiver.kernel.org>; Wed,  4 Sep 2024 18:34:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=xHPGdNN+f5EZWU6L3JikF4hSr38KxZ6ozvZohbYOAWQ=; b=BQmP5VL9VZ4Vot
-	pReYxHC0nW9zI/StAXYUQXxiZgmDiZUb2/FbMtM4zcVkPV2zn5tl0eBjIUTK4JYbg77fw42oK0GDQ
-	55friuQYKyUhMOEWvZ9eiJc3O16d3jyYVb1vOvNnVl4jIsUumA13a6JXkLaXWk2P7gl1JojOr0ZAb
-	7cJEFP3UYE+2/1ugIMy9O/8SPX8FVznRqr+dMiFMQkwo/eAiCZK92enHQ2MNvv0nrxb6JFyv5DMBv
-	ZPHcxB/jNvOzAez61sp+WX/PIYx1z4Rpzm05JANUN0kJ+tBzQGJg4S6iZW95kNookal/vV932LMg/
-	JtCmjfyf4UFoPjN6CM0Q==;
+	List-Owner; bh=xxAThOWcsA9eloYJa7IYWCMT2RKWSOUcAhPlluhigUY=; b=X1hfMiHyNKMZnq
+	3WTfkrhjo6VxkzBToK3WocFAMs2Jx0jS8l12ycUQGYumHNKJKTqryeNIy4LwF/zqjCTAgyI84D1XE
+	97bCEa+zXPJaxBFs3n2mB/7vVuryR0PCuOEqI86khI4S9CZ8/rXkpjfCbo1VHq8OxKkZlXL0TZ6C0
+	Khd36CoCASs6dsC4jt30CVkL5aEKflF+I4UqycqsVPUf18+TDTBOfJMJPAtWScyauajxjT1T3zQLu
+	thMDPP+muN0Kvj6FzqKU9WITgAzZlM5XODxAGyMm0F11ijt73s0HFBP9yYXykIUQBtMvx0OLxwAsF
+	2BCo40N1sqohvEneIVSw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sltmm-00000005SQJ-0JFj;
-	Wed, 04 Sep 2024 17:27:16 +0000
-Received: from vps0.lunn.ch ([156.67.10.101])
+	id 1slupY-00000005cbV-2MfU;
+	Wed, 04 Sep 2024 18:34:12 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sltlp-00000005SHr-1jRS;
-	Wed, 04 Sep 2024 17:26:18 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
-	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
-	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
-	bh=Ny9mMZi9RGxeGZieQNyEsixXAXSWfxLduJAIPK++NZs=; b=26oqz/YjW8hGY0Zjw7tlQmVYlO
-	lvdOdNESVddlfTk0kR/S/y7UtNH4vgeWFdvmTKhLOb1F+TZqKmvulivjT+NMJrx7peE/nLIzyVgJn
-	IKg/1yZsyzmsgQdnLG5t9FA0FEpZSyN/xJJXn5YylD2qOyZ6tVlGmkv3oooHxqWMuYKw=;
-Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
-	(envelope-from <andrew@lunn.ch>)
-	id 1sltlT-006aaf-CC; Wed, 04 Sep 2024 19:25:55 +0200
-Date: Wed, 4 Sep 2024 19:25:55 +0200
-From: Andrew Lunn <andrew@lunn.ch>
-To: Junhao Xie <bigfoot@classfun.cn>
-Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>, Jonas Karlman <jonas@kwiboo.se>,
-	Chukun Pan <amadeus@jmu.edu.cn>, FUKAUMI Naoki <naoki@radxa.com>,
-	Dragan Simic <dsimic@manjaro.org>,
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH 3/3] arm64: dts: rockchip: add dts for Ariaboard
- Photonicat RK3568
-Message-ID: <6030542f-070d-4d76-9a5a-fbfc6bd433e6@lunn.ch>
-References: <20240904111456.87089-1-bigfoot@classfun.cn>
- <20240904111456.87089-4-bigfoot@classfun.cn>
+	id 1slumZ-00000005cBX-3TGA
+	for linux-rockchip@lists.infradead.org;
+	Wed, 04 Sep 2024 18:31:11 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+	List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=xsW9D7s+rJVWyLcLEN/1kF7Bbwks90r9TRq+eX/cAvA=; b=lvwIowpVS4eylft5U3wylFoti+
+	qOFMajAAdbhp8/CmajqEcSyNzlVNqBn3DxnIAbvZKDDhAwBnViCNQq0yG+lYieK6qWeherYKltgTE
+	V16P8DNDXlMURTbPJk8/d0CR0nfAHdzxmvHFLUpwjazuMuahKAkVWIIj2lntfHq54K4uC9r8PmyBC
+	BrGUvOOzI+xRKD7VkR2XdWUNEsxsoWXl4Qir2mR3uqEkmueRxAPx6iWbI9nk0bc8OTW+cTVsT1zxQ
+	nH1xCaDA0Mf7HcHy4oGSlGIgZg1ld7+K7Ez3iwRrW7xyMWJQjJq8t6wUjwJEU3Edn5qga7/8mwHtT
+	WG1ltHmw==;
+Received: from i5e860d0f.versanet.de ([94.134.13.15] helo=diego.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1slumW-0002DJ-RZ; Wed, 04 Sep 2024 20:31:04 +0200
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+To: FUKAUMI Naoki <naoki@radxa.com>
+Cc: michael.riesch@wolfvision.net, linux-rockchip@lists.infradead.org,
+ FUKAUMI Naoki <naoki@radxa.com>
+Subject: Re: [PATCH] arm64: dts: rockchip: add workaround for microSD card detection
+ on Radxa ROCK 3A
+Date: Wed, 04 Sep 2024 20:32:54 +0200
+Message-ID: <2471069.n97fhnxGW3@diego>
+In-Reply-To: <20240903085551.568-1-naoki@radxa.com>
+References: <20240903085551.568-1-naoki@radxa.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20240904111456.87089-4-bigfoot@classfun.cn>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240904_102617_468801_A20B2F29 
-X-CRM114-Status: UNSURE (   8.65  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240904_113107_932923_EC656934 
+X-CRM114-Status: GOOD (  18.62  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,34 +74,62 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-> +&gmac1 {
-> +	assigned-clocks = <&cru SCLK_GMAC1_RX_TX>, <&cru SCLK_GMAC1>;
-> +	assigned-clock-parents = <&cru SCLK_GMAC1_RGMII_SPEED>;
-> +	assigned-clock-rates = <0>, <125000000>;
-> +	clock_in_out = "output";
-> +	phy-handle = <&rgmii_phy1>;
-> +	phy-mode = "rgmii";
-> +	phy-supply = <&vcc_3v3>;
-> +	pinctrl-names = "default";
-> +	pinctrl-0 = <&gmac1m1_miim
-> +		     &gmac1m1_tx_bus2
-> +		     &gmac1m1_rx_bus2
-> +		     &gmac1m1_rgmii_clk
-> +		     &gmac1m1_rgmii_bus>;
-> +	snps,reset-gpio = <&gpio4 RK_PC0 GPIO_ACTIVE_LOW>;
-> +	snps,reset-active-low;
-> +	snps,reset-delays-us = <0 20000 100000>;
-> +	tx_delay = <0x38>;
-> +	rx_delay = <0x15>;
-> +	status = "okay";
+Hi,
 
-This has been discussed a few times. You should be using phy-mode
-rgmii-id.
+Am Dienstag, 3. September 2024, 10:55:50 CEST schrieb FUKAUMI Naoki:
+> Radxa ROCK 3A doesn't detect microSD card insertion/removal correctly.
+> it happens from Linux v5.19 to v6.11-rc6.
+> 
+> add workaround (broken-cd property) to make CD work.
+> 
+> Fixes: 22a442e6586c ("arm64: dts: rockchip: add basic dts for the radxa rock3 model a")
+> Signed-off-by: FUKAUMI Naoki <naoki@radxa.com>
 
-arch/arm/boot/dts/rockchip/rk3288-phycore-som.dtsi is i think also a
-YT8521SC.
+before going for such drastic measures as broken-cd, can you describe how
+you checked the card insert/removal ?
 
-	Andrew
+
+I.e. in the dts node below we have both cd-gpios as well as the sdmmc0_det
+pinctrl which would set the pinfunc 1 ... the hw-based card detect and
+possibly override the cd-gpios?
+
+What happens if you just remove the sdmmc0_det and keep the cd-gpios
+property? 
+
+Also, what does cat /sys/kernel/debug/gpio report after that change
+with inserted and removed cards?
+
+
+Heiko
+
+> ---
+>  arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+> 
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts b/arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts
+> index 59f1403b4fa5..89599258ef9c 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts
+> +++ b/arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts
+> @@ -722,12 +722,12 @@ &sdhci {
+>  };
+>  
+>  &sdmmc0 {
+> +	broken-cd;
+>  	bus-width = <4>;
+>  	cap-sd-highspeed;
+> -	cd-gpios = <&gpio0 RK_PA4 GPIO_ACTIVE_LOW>;
+>  	disable-wp;
+>  	pinctrl-names = "default";
+> -	pinctrl-0 = <&sdmmc0_bus4 &sdmmc0_clk &sdmmc0_cmd &sdmmc0_det>;
+> +	pinctrl-0 = <&sdmmc0_bus4 &sdmmc0_clk &sdmmc0_cmd>;
+>  	sd-uhs-sdr50;
+>  	vmmc-supply = <&vcc3v3_sd>;
+>  	vqmmc-supply = <&vccio_sd>;
+> 
+
+
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
