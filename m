@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2BF21CD3431
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5C141CD484C
 	for <linux-rockchip@archiver.kernel.org>; Wed,  4 Sep 2024 08:29:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,51 +12,51 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=U7bubdsGtkAnqEA5yXAP2GAmfSZxlpgmLhxSzHNMQdw=; b=Ue4goE+cWxn1q3
-	i3H6nIT972CQXfyPQI5FpbbHiD7/Dfs58maLUXlyufYJLLsjPjk1L/dPuFoDh4fxP6r6NZEY7fi0n
-	GDYWAuPXbP5z94Yqe+ygxvnelXy2hQRJ5MezbzvlEknU2pHlItUHqgSr34BUcfy9p31IAKWGksODc
-	yJtPx5XOghHkl68cBvTkahrf7ZXPS8gejLtcG5S67+e8QIZjGXrrk55xFJ00CZxeI0KOxCYu+paTs
-	9s7vGz3G/b7Clg/Pj7qTzEl6+4i+zz4w2wqQpGgbAyI+j/DMptIEp6DpiFLsvKgxcrwVMVUtW74Ih
-	fAopgi4qpoRAbGBZOiIg==;
+	List-Owner; bh=Xlq4FzXSxsTbEh6XVb7hXFs7uRGcCfudDNLRN8ZR9BM=; b=uzJCqMJyD6vytk
+	m61o8xiGXnhY/UBDqbXfZYQU17rlZuw1kETtZ7LhLZRWL11jflny7UmRG8H1+R6MrkKWzcWlKH3dV
+	/ZFDX13uJarWdXsSLUC/fIYnzFyvSWMxKQLWHg0d0ssgUYaE7dB5UjFufNVp/vQtCnOZXdNJ56V8d
+	D1asU+HgTvSrtJsYk3f4eDv43/BC9p8aijO529+S+vzEYipZpdxV0LqXwckblXGQVKQq9YH24Fnq4
+	EmaCzIvmU6HqJnyzPzQJUlq9UAo8h61oSpqe0MMEjszSynXFGctvZ18LjP+VM0Mr/BL3cENNhFcN5
+	+mbJB053Av6lFdkprSqA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sllOd-00000003PRZ-3cy2;
-	Wed, 04 Sep 2024 08:29:47 +0000
+	id 1sllOf-00000003PSx-1Qta;
+	Wed, 04 Sep 2024 08:29:49 +0000
 Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sll9B-00000003KoL-1X92
+	id 1sll9D-00000003Kpw-306K
 	for linux-rockchip@lists.infradead.org;
-	Wed, 04 Sep 2024 08:13:52 +0000
+	Wed, 04 Sep 2024 08:13:53 +0000
 Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
 	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
 	(Exim 4.92)
 	(envelope-from <mkl@pengutronix.de>)
-	id 1sll99-0007xS-3s
-	for linux-rockchip@lists.infradead.org; Wed, 04 Sep 2024 10:13:47 +0200
+	id 1sll9C-00087L-BM
+	for linux-rockchip@lists.infradead.org; Wed, 04 Sep 2024 10:13:50 +0200
 Received: from [2a0a:edc0:0:b01:1d::7b] (helo=bjornoya.blackshift.org)
 	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <mkl@pengutronix.de>)
-	id 1sll8y-005P1m-5b
-	for linux-rockchip@lists.infradead.org; Wed, 04 Sep 2024 10:13:36 +0200
+	id 1sll98-005P9J-6h
+	for linux-rockchip@lists.infradead.org; Wed, 04 Sep 2024 10:13:46 +0200
 Received: from dspam.blackshift.org (localhost [127.0.0.1])
-	by bjornoya.blackshift.org (Postfix) with SMTP id CAADC3320ED
-	for <linux-rockchip@lists.infradead.org>; Wed, 04 Sep 2024 08:13:35 +0000 (UTC)
+	by bjornoya.blackshift.org (Postfix) with SMTP id 0685433202D
+	for <linux-rockchip@lists.infradead.org>; Wed, 04 Sep 2024 08:13:29 +0000 (UTC)
 Received: from hardanger.blackshift.org (unknown [172.20.34.65])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(Client did not present a certificate)
-	by bjornoya.blackshift.org (Postfix) with ESMTPS id 169DC331F8C;
-	Wed, 04 Sep 2024 08:13:24 +0000 (UTC)
+	by bjornoya.blackshift.org (Postfix) with ESMTPS id 818C6331F5F;
+	Wed, 04 Sep 2024 08:13:22 +0000 (UTC)
 Received: from [172.20.34.65] (localhost [::1])
-	by hardanger.blackshift.org (OpenSMTPD) with ESMTP id 22c7e15c;
+	by hardanger.blackshift.org (OpenSMTPD) with ESMTP id e055f60d;
 	Wed, 4 Sep 2024 08:13:20 +0000 (UTC)
 From: Marc Kleine-Budde <mkl@pengutronix.de>
-Date: Wed, 04 Sep 2024 10:13:04 +0200
-Subject: [PATCH can-next v5 20/20] can: rockchip_canfd: add support for
- CAN_CTRLMODE_BERR_REPORTING
+Date: Wed, 04 Sep 2024 10:12:52 +0200
+Subject: [PATCH can-next v5 08/20] can: rockchip_canfd: add notes about
+ known issues
 MIME-Version: 1.0
-Message-Id: <20240904-rockchip-canfd-v5-20-8ae22bcb27cc@pengutronix.de>
+Message-Id: <20240904-rockchip-canfd-v5-8-8ae22bcb27cc@pengutronix.de>
 References: <20240904-rockchip-canfd-v5-0-8ae22bcb27cc@pengutronix.de>
 In-Reply-To: <20240904-rockchip-canfd-v5-0-8ae22bcb27cc@pengutronix.de>
 To: kernel@pengutronix.de, Alibek Omarov <a1ba.omarov@gmail.com>, 
@@ -73,15 +73,15 @@ Cc: Simon Horman <horms@kernel.org>, linux-can@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
  linux-kernel@vger.kernel.org, Marc Kleine-Budde <mkl@pengutronix.de>
 X-Mailer: b4 0.15-dev-99b12
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2401; i=mkl@pengutronix.de;
- h=from:subject:message-id; bh=xBf38Ut6AgnO7QgvTyCBnMcJKvzVlajQK72PcBHWEdY=;
- b=owEBbQGS/pANAwAKASg4oj56LbxvAcsmYgBm2BafrLAzuXgHOioZ3Mmb696oK9t5SonNrQ9m+
- NKXlBGHS2SJATMEAAEKAB0WIQRQQLqG4LYE3Sm8Pl8oOKI+ei28bwUCZtgWnwAKCRAoOKI+ei28
- bysRB/0ThDndzsZQabu4VQlBp82sDn8MKeEPqx/IEbzyBqwX8WifbaV+VA/wUkmxTXueaJi3n/T
- OUOucEI0lQI3CuQUKhrKseqEKpXWSHw1RTtiWXQCb5m5fXymySAE4LRL6APx7NraaULfLuyODV7
- 6Vs1IzQT5DzfkorceYkYUo0K8u06cGOpb87EnTZ6I+pLW1z1WIxa9ptfzRyVpFRDbKxj9wR98JA
- SMPggVWW4oj7fFcWJLPoZdg6mpNsaK1HBqhfZXPLj1IwEGJMLnmAFB7MafATP6tevX9K77KEWii
- jZVw113ULNG5QXXfc8olFPA2XTK0Ikl9PeyB+npNbLf77UuW
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1269; i=mkl@pengutronix.de;
+ h=from:subject:message-id; bh=dZ/z0OYSJdLd/zc3tGmB/s4VwJfdIqUEsJyC51U0B6w=;
+ b=owEBbQGS/pANAwAKASg4oj56LbxvAcsmYgBm2BaNEzeW8uZs77H+SsMDfxG94xtKf/kNf0aVo
+ ICPHmwrwQaJATMEAAEKAB0WIQRQQLqG4LYE3Sm8Pl8oOKI+ei28bwUCZtgWjQAKCRAoOKI+ei28
+ b0RkB/9G44XDclMwUAXnWqCYsa4nu7L1v0MRrki8nV0Qu6ZM2K6pTNUQGEqC8JmDpoDo5pKrnTE
+ RST64p01oLw5UJMxGmuLPlXQKSI7BwMDJTqCEQWQvg/3QOi7swWGSO0YL3XJfHNhBk+zIwMh+it
+ UlSDztQL8Gthg/WqJsoLZYB0Lp3QIuW02L/y/oKqYbzCsMQ+SGtcs0d1TN9F1nUAvT87YPWrtOt
+ ziiDr9xCGkfjEQairdC3IkgZ/0ulU6EpDbaIE/eIROWH36BE2zqQUbt3iKZFbbTxhsDC8KkAoc1
+ pyOCi9hjZKQZ2+LGOIvdR17vgmt4eKUONGQpgoCMSgeeR4IE
 X-Developer-Key: i=mkl@pengutronix.de; a=openpgp;
  fpr=C1400BA0B3989E6FBC7D5B5C2B5EE211C58AEA54
 X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
@@ -89,8 +89,8 @@ X-SA-Exim-Mail-From: mkl@pengutronix.de
 X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
 X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240904_011349_483357_A6719243 
-X-CRM114-Status: GOOD (  16.53  )
+X-CRM114-CacheID: sfid-20240904_011351_895554_A8323F20 
+X-CRM114-Status: GOOD (  11.41  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,65 +107,46 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add support for Bus Error Reporting.
+Even the rk3568v3 has some known issues. Document them together with a
+reproducer.
 
 Tested-by: Alibek Omarov <a1ba.omarov@gmail.com>
 Signed-off-by: Marc Kleine-Budde <mkl@pengutronix.de>
 ---
- drivers/net/can/rockchip/rockchip_canfd-core.c | 25 +++++++++++++++++--------
- 1 file changed, 17 insertions(+), 8 deletions(-)
+ drivers/net/can/rockchip/rockchip_canfd.h | 20 ++++++++++++++++++++
+ 1 file changed, 20 insertions(+)
 
-diff --git a/drivers/net/can/rockchip/rockchip_canfd-core.c b/drivers/net/can/rockchip/rockchip_canfd-core.c
-index 8853f6a135da..6883153e8fc1 100644
---- a/drivers/net/can/rockchip/rockchip_canfd-core.c
-+++ b/drivers/net/can/rockchip/rockchip_canfd-core.c
-@@ -293,6 +293,12 @@ static void rkcanfd_chip_start(struct rkcanfd_priv *priv)
- 		RKCANFD_REG_INT_OVERLOAD_INT |
- 		RKCANFD_REG_INT_TX_FINISH_INT;
+diff --git a/drivers/net/can/rockchip/rockchip_canfd.h b/drivers/net/can/rockchip/rockchip_canfd.h
+index 9b446331fbd0..3dafb5e68dc5 100644
+--- a/drivers/net/can/rockchip/rockchip_canfd.h
++++ b/drivers/net/can/rockchip/rockchip_canfd.h
+@@ -370,6 +370,26 @@
+  */
+ #define RKCANFD_QUIRK_CANFD_BROKEN BIT(12)
  
-+	/* Do not mask the bus error interrupt if the bus error
-+	 * reporting is requested.
-+	 */
-+	if (!(priv->can.ctrlmode & CAN_CTRLMODE_BERR_REPORTING))
-+		priv->reg_int_mask_default |= RKCANFD_REG_INT_ERROR_INT;
++/* known issues with rk3568v3:
++ *
++ * - Overload situation during high bus load
++ *   To reproduce:
++ *   host:
++ *     # add a 2nd CAN adapter to the CAN bus
++ *     cangen can0 -I 1 -Li -Di -p10 -g 0.3
++ *     cansequence -rve
++ *   DUT:
++ *     cangen can0 -I2 -L1 -Di -p10 -c10 -g 1 -e
++ *     cansequence -rv -i 1
++ *
++ * - TX starvation after repeated Bus-Off
++ *   To reproduce:
++ *   host:
++ *     sleep 3 && cangen can0 -I2 -Li -Di -p10 -g 0.0
++ *   DUT:
++ *     cangen can0 -I2 -Li -Di -p10 -g 0.05
++ */
 +
- 	memset(&priv->bec, 0x0, sizeof(priv->bec));
- 
- 	rkcanfd_chip_fifo_setup(priv);
-@@ -533,14 +539,16 @@ static int rkcanfd_handle_error_int(struct rkcanfd_priv *priv)
- 	if (!reg_ec)
- 		return 0;
- 
--	skb = rkcanfd_alloc_can_err_skb(priv, &cf, &timestamp);
--	if (cf) {
--		struct can_berr_counter bec;
-+	if (priv->can.ctrlmode & CAN_CTRLMODE_BERR_REPORTING) {
-+		skb = rkcanfd_alloc_can_err_skb(priv, &cf, &timestamp);
-+		if (cf) {
-+			struct can_berr_counter bec;
- 
--		rkcanfd_get_berr_counter_corrected(priv, &bec);
--		cf->can_id |= CAN_ERR_PROT | CAN_ERR_BUSERROR | CAN_ERR_CNT;
--		cf->data[6] = bec.txerr;
--		cf->data[7] = bec.rxerr;
-+			rkcanfd_get_berr_counter_corrected(priv, &bec);
-+			cf->can_id |= CAN_ERR_PROT | CAN_ERR_BUSERROR | CAN_ERR_CNT;
-+			cf->data[6] = bec.txerr;
-+			cf->data[7] = bec.rxerr;
-+		}
- 	}
- 
- 	rkcanfd_handle_error_int_reg_ec(priv, cf, reg_ec);
-@@ -899,7 +907,8 @@ static int rkcanfd_probe(struct platform_device *pdev)
- 	priv->can.clock.freq = clk_get_rate(priv->clks[0].clk);
- 	priv->can.bittiming_const = &rkcanfd_bittiming_const;
- 	priv->can.data_bittiming_const = &rkcanfd_data_bittiming_const;
--	priv->can.ctrlmode_supported = CAN_CTRLMODE_LOOPBACK;
-+	priv->can.ctrlmode_supported = CAN_CTRLMODE_LOOPBACK |
-+		CAN_CTRLMODE_BERR_REPORTING;
- 	if (!(priv->devtype_data.quirks & RKCANFD_QUIRK_CANFD_BROKEN))
- 		priv->can.ctrlmode_supported |= CAN_CTRLMODE_FD;
- 	priv->can.do_set_mode = rkcanfd_set_mode;
+ enum rkcanfd_model {
+ 	RKCANFD_MODEL_RK3568V2 = 0x35682,
+ 	RKCANFD_MODEL_RK3568V3 = 0x35683,
 
 -- 
 2.45.2
