@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 361E2CD3431
-	for <linux-rockchip@archiver.kernel.org>; Wed,  4 Sep 2024 09:22:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7B53CCD3431
+	for <linux-rockchip@archiver.kernel.org>; Wed,  4 Sep 2024 09:22:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=QifwohxJ7Dn0GHbHS8PPD3E6jIgEfaD7SfC/Gv5tekc=; b=z1h9NC22x7I3y1
-	KFbN8nquNTVG4Bs2hB6XlCSK/dlmZBguNXUtrVUHGTnNWmHiluRN6q+G5fEeRgXLwUjLXBg0RKzIc
-	Ee9iTdltz4b4nkay/AeQuI2JA40p3lO05XcwD2zvgmfjC59mFTaE3gaSHVTCqTUPnCAjcxJb2pftA
-	5YLRU7ys7i9JugNCaPczp+HKBU6rHQm4uhOYhhNtFIvE2Xj62DgsCafmM6ZWca13j14Lk3gIjfjMt
-	LXi4OseIc7gXmFXWWQI2d+06qu7bdLt/rXDVdluMcgEj8qlSMOS+vmCzwA3HZoAgk5AxJLkepw7Gl
-	odoJLsjcYgbkeO+gIvug==;
+	List-Owner; bh=U2h9Jowl1hqpDMWUqYTj/4Kikbxl+fV5nyPslxyiZNE=; b=LG+J7qw4KxH0PG
+	kpH7tJoqPHRxKALBj/nJ2uOHu1Nw2AfdyzBSuJ3xpep1vnGII5iZo3e237F3BO6X24fK3TsDdhkIC
+	GaT18RtXu/C+UTlSlKAxkufGDy2BeN9KkZ0BVNQEe1GFk+eH/nxtlyCT7WCIFs/MR771VQVoYYoCu
+	pMtBHQk22RtlXGuIXHcdjdo+BGzXfz8AuRfJzYrPa5fCNg2UI7k3cLa9NxUzPSdTdBEAZMUt0LugB
+	4xjNpJT3hngY96TSmbTcm3U6w4OlDutPNEIdMwppO/p9cgPeDnxTcwNH5Y2ElED259oNfQGooFsQg
+	F/1OkjHTdaSk+VNeP8+Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1slmDT-00000003eOn-1dDJ;
-	Wed, 04 Sep 2024 09:22:19 +0000
+	id 1slmDp-00000003eVK-1MA9;
+	Wed, 04 Sep 2024 09:22:41 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sllgA-00000003VP9-1J09;
-	Wed, 04 Sep 2024 08:47:55 +0000
+	id 1sllhZ-00000003VpM-2MY7;
+	Wed, 04 Sep 2024 08:49:23 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
 	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=qoFZgLgVnrovJxCSL6kRla7wvSjvRIxlgDdGXEy63CU=; b=x876MY7lZBy2oep5/nnHQ1se95
-	sQMt37m36ZHal0a5GYHe0u04Sl4A4XCuAA+Kec0o8Xyg8dqTib8mYGWs3DEG13gDG3fxXICD+eyjv
-	j/BeqqnvkNiArF0pNd0fVtcHSw9pJGLNHF1tmCMATcPJ5cUwJwXauBko6vN4DW5T98OiQoEkgIz9L
-	YGecHiN3NHPKb/RclmaS7HSrNUzmPznYAEEuVtLiY5gwDuJ/MEvTuJrXNkPFNgE5FFI22UW4/X9om
-	ed4r6R9rqkzOEaxzRjf6vDqb1p+Q+btQrkM5KNjHbOE6YVPJT/KAMDVlAD8oJW3KnyPvy/15EdO2W
-	vkpzTkNg==;
+	bh=64Jy7Anr49mmXZNGV3iO4Xkyk9gN0bNX/x2F4h/amIA=; b=XI+3BHKkmeSYSxudJttkjn+QY6
+	0lgJBVa1nlNtFNhR+YTCrDl8ZAI+5S3SdHjveyAcb6bYLic7L2rQjEs0w7ZiCJEECh3IB2i4h1et/
+	Oy9dGhztMKznM9Xu8t6vmjxZBvO9vuL7ZL3sh0uvKAYHnIJK+YsxkHpnYlcFB2ABh36nQNkXg8DVC
+	+Wh1SMHzCVZcJzjrZ31V3E073ho0JuSs3Ok1Dsj4vkSkgJePSe5izJQrKlyv3YQyLiNa9JEhpxM9X
+	K76Sdl+OhPnw5STBApwkKNzT385Vt96fb6CBdlxVI5v4g+8fsob2CpSBN7k5neckjtwvUpWQphIyc
+	GqW+39iA==;
 Received: from i5e860d0f.versanet.de ([94.134.13.15] helo=diego.localnet)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1sllfr-0006XQ-9V; Wed, 04 Sep 2024 10:47:35 +0200
+	id 1sllhQ-0006YS-QX; Wed, 04 Sep 2024 10:49:12 +0200
 From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
 To: kernel@pengutronix.de, Alibek Omarov <a1ba.omarov@gmail.com>,
  Vincent Mailhol <mailhol.vincent@wanadoo.fr>,
@@ -56,19 +56,19 @@ To: kernel@pengutronix.de, Alibek Omarov <a1ba.omarov@gmail.com>,
 Cc: Simon Horman <horms@kernel.org>, linux-can@vger.kernel.org,
  netdev@vger.kernel.org, devicetree@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org, Marc Kleine-Budde <mkl@pengutronix.de>
-Subject: Re: [PATCH can-next v5 01/20] dt-bindings: can: rockchip_canfd: add rockchip
- CAN-FD controller
-Date: Wed, 04 Sep 2024 10:49:19 +0200
-Message-ID: <4326989.Fh7cpCN91P@diego>
-In-Reply-To: <20240904-rockchip-canfd-v5-1-8ae22bcb27cc@pengutronix.de>
+ linux-kernel@vger.kernel.org, Marc Kleine-Budde <mkl@pengutronix.de>,
+ David Jander <david@protonic.nl>
+Subject: Re: [PATCH can-next v5 02/20] arm64: dts: rockchip: add CAN-FD controller
+ nodes to rk3568
+Date: Wed, 04 Sep 2024 10:50:57 +0200
+Message-ID: <3673727.WbyNdk4fJJ@diego>
+In-Reply-To: <20240904-rockchip-canfd-v5-2-8ae22bcb27cc@pengutronix.de>
 References: <20240904-rockchip-canfd-v5-0-8ae22bcb27cc@pengutronix.de>
- <20240904-rockchip-canfd-v5-1-8ae22bcb27cc@pengutronix.de>
+ <20240904-rockchip-canfd-v5-2-8ae22bcb27cc@pengutronix.de>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240904_014754_416136_7EFFC2D4 
-X-CRM114-Status: UNSURE (   9.92  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240904_014921_647672_A6355C13 
+X-CRM114-Status: GOOD (  11.62  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,13 +85,13 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Am Mittwoch, 4. September 2024, 10:12:45 CEST schrieb Marc Kleine-Budde:
-> Add documentation for the rockchip rk3568 CAN-FD controller.
+Am Mittwoch, 4. September 2024, 10:12:46 CEST schrieb Marc Kleine-Budde:
+> From: David Jander <david@protonic.nl>
 > 
-> Co-developed-by: Elaine Zhang <zhangqing@rock-chips.com>
-> Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
+> Add nodes to the rk3568 devicetree to support the CAN-FD controllers.
+> 
+> Signed-off-by: David Jander <david@protonic.nl>
 > Tested-by: Alibek Omarov <a1ba.omarov@gmail.com>
-> Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
 > Signed-off-by: Marc Kleine-Budde <mkl@pengutronix.de>
 
 Reviewed-by: Heiko Stuebner <heiko@sntech.de>
