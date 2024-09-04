@@ -4,59 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 71719CD37B6
-	for <linux-rockchip@archiver.kernel.org>; Wed,  4 Sep 2024 08:29:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A9262CA0ED3
+	for <linux-rockchip@archiver.kernel.org>; Wed,  4 Sep 2024 08:29:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=sLcSFlmNLB8bkS6XwLFzySZIB7LzYO4qoYJr4LSZxoU=; b=my9L+/Mc89Qwav
-	wGTBSkPAQ95Pxp821AXjecIz8ei7wUg09Cm7d1wjOkyLkbfRT1+LVueeN1IbA+hJAoUTf+dlnPXbT
-	bbakfWRtzx3IIT7E7DfRk0LABPzwS9hdcmnZE5efPlBIS2Awl/CUt0TfC67KZGLhWitei6A8y6Q6q
-	+QLGDJKGLpojvzvL4R8O3FSQhEBvayX/FoDdt21Jbau8A01KwyYwE3WkmFIziBErKuA3i1TW+O9FB
-	/teUiqDEhVU6MnIfnaovmieoX/wo8JGls+OlTQPSh/PCrJUU+dS/nfmHCAn7+X3VgvFdAxHr511bG
-	raY4ONUbjaABBUmXKeJw==;
+	List-Owner; bh=7vQ7L7v1UIGcWp/Q7KlkQdJhiuqrtp8JKVVM662Rjsg=; b=xPuHiFuCJX77fc
+	J21ijBjPOs2BNy54OPQKHPEu+dGwVQVI7NHCi/PqkWAB0rD+NIJ3r5faBaryWWW4M9duL4D4qX4vl
+	Su6xZfbUJKCsdBrUGN36vsZvuVPrzI46q0KoI5OCIo53r8Aho+fxXOT2f0mUib0r1iCw0hGNlteys
+	bYO6w1XUuDLq627xaKfNd0DAQY3kUfw8hVs/Ywdxd1G9V58xhCMR+38fFsoSTsfRGnchljl88hBND
+	eRezIaVqCX5++ok0Zvei7VrE+tVOIZOk3j//N1h4xfCGB8MLMYrycZYbt0wnTfpdTIwJhTUBeqV04
+	hCozW65xd3ahrusKihVA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sllOe-00000003PRt-1LYk;
-	Wed, 04 Sep 2024 08:29:48 +0000
+	id 1sllOd-00000003PRD-1uwb;
+	Wed, 04 Sep 2024 08:29:47 +0000
 Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sll9B-00000003KoM-1cSz
+	id 1sll9A-00000003Kn7-1VNw
 	for linux-rockchip@lists.infradead.org;
-	Wed, 04 Sep 2024 08:13:53 +0000
+	Wed, 04 Sep 2024 08:13:52 +0000
 Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
 	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
 	(Exim 4.92)
 	(envelope-from <mkl@pengutronix.de>)
-	id 1sll99-0007zC-IY
-	for linux-rockchip@lists.infradead.org; Wed, 04 Sep 2024 10:13:47 +0200
+	id 1sll98-0007xa-59
+	for linux-rockchip@lists.infradead.org; Wed, 04 Sep 2024 10:13:46 +0200
 Received: from [2a0a:edc0:0:b01:1d::7b] (helo=bjornoya.blackshift.org)
 	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <mkl@pengutronix.de>)
-	id 1sll93-005P7b-Gr
-	for linux-rockchip@lists.infradead.org; Wed, 04 Sep 2024 10:13:41 +0200
+	id 1sll8y-005P1g-1b
+	for linux-rockchip@lists.infradead.org; Wed, 04 Sep 2024 10:13:36 +0200
 Received: from dspam.blackshift.org (localhost [127.0.0.1])
-	by bjornoya.blackshift.org (Postfix) with SMTP id 3517A332133
-	for <linux-rockchip@lists.infradead.org>; Wed, 04 Sep 2024 08:13:41 +0000 (UTC)
+	by bjornoya.blackshift.org (Postfix) with SMTP id B3D403320E9
+	for <linux-rockchip@lists.infradead.org>; Wed, 04 Sep 2024 08:13:35 +0000 (UTC)
 Received: from hardanger.blackshift.org (unknown [172.20.34.65])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(Client did not present a certificate)
-	by bjornoya.blackshift.org (Postfix) with ESMTPS id AAAFB331F80;
+	by bjornoya.blackshift.org (Postfix) with ESMTPS id CB8B6331F85;
 	Wed, 04 Sep 2024 08:13:23 +0000 (UTC)
 Received: from [172.20.34.65] (localhost [::1])
-	by hardanger.blackshift.org (OpenSMTPD) with ESMTP id e6ea4fa5;
+	by hardanger.blackshift.org (OpenSMTPD) with ESMTP id c25fbb3b;
 	Wed, 4 Sep 2024 08:13:20 +0000 (UTC)
 From: Marc Kleine-Budde <mkl@pengutronix.de>
-Date: Wed, 04 Sep 2024 10:13:01 +0200
-Subject: [PATCH can-next v5 17/20] can: rockchip_canfd: enable full TX-FIFO
- depth of 2
+Date: Wed, 04 Sep 2024 10:13:02 +0200
+Subject: [PATCH can-next v5 18/20] can: rockchip_canfd: add hardware
+ timestamping support
 MIME-Version: 1.0
-Message-Id: <20240904-rockchip-canfd-v5-17-8ae22bcb27cc@pengutronix.de>
+Message-Id: <20240904-rockchip-canfd-v5-18-8ae22bcb27cc@pengutronix.de>
 References: <20240904-rockchip-canfd-v5-0-8ae22bcb27cc@pengutronix.de>
 In-Reply-To: <20240904-rockchip-canfd-v5-0-8ae22bcb27cc@pengutronix.de>
 To: kernel@pengutronix.de, Alibek Omarov <a1ba.omarov@gmail.com>, 
@@ -73,15 +73,15 @@ Cc: Simon Horman <horms@kernel.org>, linux-can@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
  linux-kernel@vger.kernel.org, Marc Kleine-Budde <mkl@pengutronix.de>
 X-Mailer: b4 0.15-dev-99b12
-X-Developer-Signature: v=1; a=openpgp-sha256; l=879; i=mkl@pengutronix.de;
- h=from:subject:message-id; bh=Rb+DPh6I1pIZR5OwMWvyyqc8QfjnlVzZzpFMC3B2FWI=;
- b=owEBbQGS/pANAwAKASg4oj56LbxvAcsmYgBm2Baa9Yf0fCxin2ZXtp3E0KOMrjKP17dCPUqD7
- RxC4kNYcE2JATMEAAEKAB0WIQRQQLqG4LYE3Sm8Pl8oOKI+ei28bwUCZtgWmgAKCRAoOKI+ei28
- bypHCACGvzXBm5xaLbC+jTRhI7Bitk+lQObU8e+CZ1jAQRr+XrC7qHXZnbPFKyo9FVpXpJ/VLQD
- 5nBjeDwQGROij0e8xIwXePnKZwoz7+ZszhJOZ5+keqYTzFq4XRfHDLGKD74xlP/9pjSqH53oRg0
- wR/gJaxkaIYpvQuZqZB3NkteuLV+6rpJga5X5hb3/Z8Jg4Zxu+6fJ4iCd8KI5BuoNcuI8vq4FrI
- DM4aCwPBANArneaHJ4zefOQdBi7Z8loxhmH7ooMa0GsH0iiP7ITuwP2v8M1hEpgXfIXBaIpsrVX
- 2ZFyv+Fl0ovCMr9Tt9rP8cIFfihc1aWRsioXRHz1GnBMumau
+X-Developer-Signature: v=1; a=openpgp-sha256; l=9096; i=mkl@pengutronix.de;
+ h=from:subject:message-id; bh=/JO+PvnMxzZFgnAZSwj7BCppPSNDN75gmjjcvJE1G/U=;
+ b=owEBbQGS/pANAwAKASg4oj56LbxvAcsmYgBm2BacWS2opNZl4hzh8H2oH4Un9n9XNo5egStpc
+ dK9q6MGaraJATMEAAEKAB0WIQRQQLqG4LYE3Sm8Pl8oOKI+ei28bwUCZtgWnAAKCRAoOKI+ei28
+ b/YuCACUarH84kmxRWLFZA8hiQQe3hxujMaqn1zQjTcBdGCAlQoUdpVUo4HUYg4fb82MA6fVifD
+ HfVyHbGbkC6pRlA4qfFDZVcDZQLf33qW0vk/Lk0iasJRLyVFQgcdLy7kaqxByvK5eDiBCfQrCoX
+ 5JLCKdNYEKzYvIIRuoy9ivhB4ROUrdteRGYrncgC+MevxOHAhiDZfjdCEG9O2PS5h0cPSyvA5ji
+ AqpW3Lus+pHhYYSks3vxM9KIp+MlBn4vSboKQ+6xLkBVTwZAgjHoijhIQjEY64WbgkGzb5BkvEC
+ llSdKCgIQ/ZuGWjEGTOXph5tjU1RCfK7zjUPplk86s9gM9HC
 X-Developer-Key: i=mkl@pengutronix.de; a=openpgp;
  fpr=C1400BA0B3989E6FBC7D5B5C2B5EE211C58AEA54
 X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
@@ -89,8 +89,8 @@ X-SA-Exim-Mail-From: mkl@pengutronix.de
 X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
 X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240904_011349_517261_0A4170C3 
-X-CRM114-Status: GOOD (  12.54  )
+X-CRM114-CacheID: sfid-20240904_011348_575168_2AEF9202 
+X-CRM114-Status: GOOD (  21.26  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,29 +107,252 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The previous commit prepared the TX path to make use of the full
-TX-FIFO depth as much as possible. Increase the available TX-FIFO
-depth to the hardware maximum of 2.
+Add support for hardware based timestamping.
 
 Tested-by: Alibek Omarov <a1ba.omarov@gmail.com>
 Signed-off-by: Marc Kleine-Budde <mkl@pengutronix.de>
 ---
- drivers/net/can/rockchip/rockchip_canfd.h | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/net/can/rockchip/rockchip_canfd-core.c     |  6 ++
+ drivers/net/can/rockchip/rockchip_canfd-ethtool.c  |  2 +-
+ drivers/net/can/rockchip/rockchip_canfd-rx.c       |  1 +
+ .../net/can/rockchip/rockchip_canfd-timestamp.c    | 94 +++++++++++++++++++++-
+ drivers/net/can/rockchip/rockchip_canfd-tx.c       |  4 +
+ drivers/net/can/rockchip/rockchip_canfd.h          | 11 +++
+ 6 files changed, 115 insertions(+), 3 deletions(-)
 
+diff --git a/drivers/net/can/rockchip/rockchip_canfd-core.c b/drivers/net/can/rockchip/rockchip_canfd-core.c
+index 4db552bfc4db..015623314e88 100644
+--- a/drivers/net/can/rockchip/rockchip_canfd-core.c
++++ b/drivers/net/can/rockchip/rockchip_canfd-core.c
+@@ -292,6 +292,8 @@ static void rkcanfd_chip_start(struct rkcanfd_priv *priv)
+ 
+ 	rkcanfd_chip_fifo_setup(priv);
+ 	rkcanfd_timestamp_init(priv);
++	rkcanfd_timestamp_start(priv);
++
+ 	rkcanfd_set_bittiming(priv);
+ 
+ 	rkcanfd_chip_interrupts_disable(priv);
+@@ -315,6 +317,7 @@ static void rkcanfd_chip_stop(struct rkcanfd_priv *priv, const enum can_state st
+ {
+ 	priv->can.state = state;
+ 
++	rkcanfd_timestamp_stop(priv);
+ 	__rkcanfd_chip_stop(priv, state);
+ }
+ 
+@@ -322,6 +325,7 @@ static void rkcanfd_chip_stop_sync(struct rkcanfd_priv *priv, const enum can_sta
+ {
+ 	priv->can.state = state;
+ 
++	rkcanfd_timestamp_stop_sync(priv);
+ 	__rkcanfd_chip_stop(priv, state);
+ }
+ 
+@@ -353,6 +357,8 @@ rkcanfd_alloc_can_err_skb(struct rkcanfd_priv *priv,
+ 	*timestamp = rkcanfd_get_timestamp(priv);
+ 
+ 	skb = alloc_can_err_skb(priv->ndev, cf);
++	if (skb)
++		rkcanfd_skb_set_timestamp(priv, skb, *timestamp);
+ 
+ 	return skb;
+ }
+diff --git a/drivers/net/can/rockchip/rockchip_canfd-ethtool.c b/drivers/net/can/rockchip/rockchip_canfd-ethtool.c
+index 0084f37b2b9f..5aeeef64a67a 100644
+--- a/drivers/net/can/rockchip/rockchip_canfd-ethtool.c
++++ b/drivers/net/can/rockchip/rockchip_canfd-ethtool.c
+@@ -59,7 +59,7 @@ rkcanfd_ethtool_get_ethtool_stats(struct net_device *ndev,
+ }
+ 
+ static const struct ethtool_ops rkcanfd_ethtool_ops = {
+-	.get_ts_info = ethtool_op_get_ts_info,
++	.get_ts_info = can_ethtool_op_get_ts_info_hwts,
+ 	.get_strings = rkcanfd_ethtool_get_strings,
+ 	.get_sset_count = rkcanfd_ethtool_get_sset_count,
+ 	.get_ethtool_stats = rkcanfd_ethtool_get_ethtool_stats,
+diff --git a/drivers/net/can/rockchip/rockchip_canfd-rx.c b/drivers/net/can/rockchip/rockchip_canfd-rx.c
+index bacef5e5dc39..d862116840eb 100644
+--- a/drivers/net/can/rockchip/rockchip_canfd-rx.c
++++ b/drivers/net/can/rockchip/rockchip_canfd-rx.c
+@@ -267,6 +267,7 @@ static int rkcanfd_handle_rx_int_one(struct rkcanfd_priv *priv)
+ 	}
+ 
+ 	memcpy(skb_cfd, cfd, len);
++	rkcanfd_skb_set_timestamp(priv, skb, header->ts);
+ 
+ 	err = can_rx_offload_queue_timestamp(&priv->offload, skb, header->ts);
+ 	if (err)
+diff --git a/drivers/net/can/rockchip/rockchip_canfd-timestamp.c b/drivers/net/can/rockchip/rockchip_canfd-timestamp.c
+index 9301b3ceceb0..81cccc5fd838 100644
+--- a/drivers/net/can/rockchip/rockchip_canfd-timestamp.c
++++ b/drivers/net/can/rockchip/rockchip_canfd-timestamp.c
+@@ -4,12 +4,102 @@
+ //               Marc Kleine-Budde <kernel@pengutronix.de>
+ //
+ 
++#include <linux/clocksource.h>
++
+ #include "rockchip_canfd.h"
+ 
++static u64 rkcanfd_timestamp_read(const struct cyclecounter *cc)
++{
++	const struct rkcanfd_priv *priv = container_of(cc, struct rkcanfd_priv, cc);
++
++	return rkcanfd_get_timestamp(priv);
++}
++
++void rkcanfd_skb_set_timestamp(const struct rkcanfd_priv *priv,
++			       struct sk_buff *skb, const u32 timestamp)
++{
++	struct skb_shared_hwtstamps *hwtstamps = skb_hwtstamps(skb);
++	u64 ns;
++
++	ns = timecounter_cyc2time(&priv->tc, timestamp);
++
++	hwtstamps->hwtstamp = ns_to_ktime(ns);
++}
++
++static void rkcanfd_timestamp_work(struct work_struct *work)
++{
++	const struct delayed_work *delayed_work = to_delayed_work(work);
++	struct rkcanfd_priv *priv;
++
++	priv = container_of(delayed_work, struct rkcanfd_priv, timestamp);
++	timecounter_read(&priv->tc);
++
++	schedule_delayed_work(&priv->timestamp, priv->work_delay_jiffies);
++}
++
+ void rkcanfd_timestamp_init(struct rkcanfd_priv *priv)
+ {
+-	u32 reg;
++	const struct can_bittiming *dbt = &priv->can.data_bittiming;
++	const struct can_bittiming *bt = &priv->can.bittiming;
++	struct cyclecounter *cc = &priv->cc;
++	u32 bitrate, div, reg, rate;
++	u64 work_delay_ns;
++	u64 max_cycles;
+ 
+-	reg = RKCANFD_REG_TIMESTAMP_CTRL_TIME_BASE_COUNTER_ENABLE;
++	/* At the standard clock rate of 300Mhz on the rk3658, the 32
++	 * bit timer overflows every 14s. This means that we have to
++	 * poll it quite often to avoid missing a wrap around.
++	 *
++	 * Divide it down to a reasonable rate, at least twice the bit
++	 * rate.
++	 */
++	bitrate = max(bt->bitrate, dbt->bitrate);
++	div = min(DIV_ROUND_UP(priv->can.clock.freq, bitrate * 2),
++		  FIELD_MAX(RKCANFD_REG_TIMESTAMP_CTRL_TIME_BASE_COUNTER_PRESCALE) + 1);
++
++	reg = FIELD_PREP(RKCANFD_REG_TIMESTAMP_CTRL_TIME_BASE_COUNTER_PRESCALE,
++			 div - 1) |
++		RKCANFD_REG_TIMESTAMP_CTRL_TIME_BASE_COUNTER_ENABLE;
+ 	rkcanfd_write(priv, RKCANFD_REG_TIMESTAMP_CTRL, reg);
++
++	cc->read = rkcanfd_timestamp_read;
++	cc->mask = CYCLECOUNTER_MASK(32);
++
++	rate = priv->can.clock.freq / div;
++	clocks_calc_mult_shift(&cc->mult, &cc->shift, rate, NSEC_PER_SEC,
++			       RKCANFD_TIMESTAMP_WORK_MAX_DELAY_SEC);
++
++	max_cycles = div_u64(ULLONG_MAX, cc->mult);
++	max_cycles = min(max_cycles, cc->mask);
++	work_delay_ns = clocksource_cyc2ns(max_cycles, cc->mult, cc->shift) / 3;
++	priv->work_delay_jiffies = nsecs_to_jiffies(work_delay_ns);
++	INIT_DELAYED_WORK(&priv->timestamp, rkcanfd_timestamp_work);
++
++	netdev_dbg(priv->ndev, "clock=%lu.%02luMHz bitrate=%lu.%02luMBit/s div=%u rate=%lu.%02luMHz mult=%u shift=%u delay=%lus\n",
++		   priv->can.clock.freq / MEGA,
++		   priv->can.clock.freq % MEGA / KILO / 10,
++		   bitrate / MEGA,
++		   bitrate % MEGA / KILO / 100,
++		   div,
++		   rate / MEGA,
++		   rate % MEGA / KILO / 10,
++		   cc->mult, cc->shift,
++		   priv->work_delay_jiffies / HZ);
++}
++
++void rkcanfd_timestamp_start(struct rkcanfd_priv *priv)
++{
++	timecounter_init(&priv->tc, &priv->cc, ktime_get_real_ns());
++
++	schedule_delayed_work(&priv->timestamp, priv->work_delay_jiffies);
++}
++
++void rkcanfd_timestamp_stop(struct rkcanfd_priv *priv)
++{
++	cancel_delayed_work(&priv->timestamp);
++}
++
++void rkcanfd_timestamp_stop_sync(struct rkcanfd_priv *priv)
++{
++	cancel_delayed_work_sync(&priv->timestamp);
+ }
+diff --git a/drivers/net/can/rockchip/rockchip_canfd-tx.c b/drivers/net/can/rockchip/rockchip_canfd-tx.c
+index d10da548ba71..f954f38b955f 100644
+--- a/drivers/net/can/rockchip/rockchip_canfd-tx.c
++++ b/drivers/net/can/rockchip/rockchip_canfd-tx.c
+@@ -145,8 +145,10 @@ void rkcanfd_handle_tx_done_one(struct rkcanfd_priv *priv, const u32 ts,
+ {
+ 	struct net_device_stats *stats = &priv->ndev->stats;
+ 	unsigned int tx_tail;
++	struct sk_buff *skb;
+ 
+ 	tx_tail = rkcanfd_get_tx_tail(priv);
++	skb = priv->can.echo_skb[tx_tail];
+ 
+ 	/* Manual handling of CAN Bus Error counters. See
+ 	 * rkcanfd_get_corrected_berr_counter() for detailed
+@@ -155,6 +157,8 @@ void rkcanfd_handle_tx_done_one(struct rkcanfd_priv *priv, const u32 ts,
+ 	if (priv->bec.txerr)
+ 		priv->bec.txerr--;
+ 
++	if (skb)
++		rkcanfd_skb_set_timestamp(priv, skb, ts);
+ 	stats->tx_bytes +=
+ 		can_rx_offload_get_echo_skb_queue_timestamp(&priv->offload,
+ 							    tx_tail, ts,
 diff --git a/drivers/net/can/rockchip/rockchip_canfd.h b/drivers/net/can/rockchip/rockchip_canfd.h
-index 37d90400429f..6be2865ec95a 100644
+index 6be2865ec95a..3efd7f174e14 100644
 --- a/drivers/net/can/rockchip/rockchip_canfd.h
 +++ b/drivers/net/can/rockchip/rockchip_canfd.h
-@@ -288,7 +288,7 @@
+@@ -15,6 +15,7 @@
+ #include <linux/netdevice.h>
+ #include <linux/reset.h>
+ #include <linux/skbuff.h>
++#include <linux/timecounter.h>
+ #include <linux/types.h>
+ #include <linux/u64_stats_sync.h>
+ #include <linux/units.h>
+@@ -469,6 +470,11 @@ struct rkcanfd_priv {
+ 	u32 reg_int_mask_default;
+ 	struct rkcanfd_devtype_data devtype_data;
  
- #define DEVICE_NAME "rockchip_canfd"
- #define RKCANFD_NAPI_WEIGHT 32
--#define RKCANFD_TXFIFO_DEPTH 1
-+#define RKCANFD_TXFIFO_DEPTH 2
- #define RKCANFD_TX_STOP_THRESHOLD 1
- #define RKCANFD_TX_START_THRESHOLD 1
++	struct cyclecounter cc;
++	struct timecounter tc;
++	struct delayed_work timestamp;
++	unsigned long work_delay_jiffies;
++
+ 	struct can_berr_counter bec;
  
+ 	struct rkcanfd_stats stats;
+@@ -531,7 +537,12 @@ void rkcanfd_ethtool_init(struct rkcanfd_priv *priv);
+ 
+ int rkcanfd_handle_rx_int(struct rkcanfd_priv *priv);
+ 
++void rkcanfd_skb_set_timestamp(const struct rkcanfd_priv *priv,
++			       struct sk_buff *skb, const u32 timestamp);
+ void rkcanfd_timestamp_init(struct rkcanfd_priv *priv);
++void rkcanfd_timestamp_start(struct rkcanfd_priv *priv);
++void rkcanfd_timestamp_stop(struct rkcanfd_priv *priv);
++void rkcanfd_timestamp_stop_sync(struct rkcanfd_priv *priv);
+ 
+ unsigned int rkcanfd_get_effective_tx_free(const struct rkcanfd_priv *priv);
+ void rkcanfd_xmit_retry(struct rkcanfd_priv *priv);
 
 -- 
 2.45.2
