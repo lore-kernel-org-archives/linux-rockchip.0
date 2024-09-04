@@ -4,107 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 746F7CD3431
-	for <linux-rockchip@archiver.kernel.org>; Wed,  4 Sep 2024 11:56:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A73E2CD37B4
+	for <linux-rockchip@archiver.kernel.org>; Wed,  4 Sep 2024 12:05:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ymc3S4kWybLzdTHGRa5I45IhmoEdJX7qLx1MpHu8KyQ=; b=MX0ozefRSNVwnN
-	OU8dFgysi7Unc0P4bFBvqbEEuGpVeNXFU2p4cP4FuA3JkUNLzhsi+oM4cfDuzA1C8zN80iiYy4vnY
-	wldbd04eP9V9dxNsrRnUZlR/XDXnOJeboUX4ML+VNtdpRM4l958uz2nlE2Gu5dCnu7bcsVdLpZAtK
-	dxtGFunU2fRblZKmgYd6PWz84FQ+JkrAWZ6GpTo2p47lUiJW+VZwOIh2qhcvkxEA3f0NG2gCHjl40
-	Sm7Fc8jg7neMxj2JMUdlz+ZO1V08jQk66sQSGBrRbUJvSKhN7RxxvJkG6gAYyAQr+3fT9o0AbY9cG
-	onAsKHzBPQOm4EPWI8Mg==;
+	List-Owner; bh=hHZ4gdfXDxCkrlw7lA4619MSXYsVAmuV0NuZ+9oSl3s=; b=Zlcka6G0QFspO0
+	nULHLnsUNC98VYVqzHqslKtYo31HXFWldx9mKnWFW2wUJeFWEGZFKaDHe33KHXXCx1G7VWHUiZE4V
+	NsKRQmf1hGU8PZD/SVdvbR4Y8S+QMV6rhO+0i2cgHSu0Q8hBCTknwy80qftfDf09qvCOkexYzZ0BR
+	9Yq7SuMasgYAa5fuxDCIKAYnHzl4Y3eiuKmkBrArHz1BSn2hH6ycRdevaAOyPRZ4fMQTc5v+ph4Vw
+	mpN9NZ2NX8fLsAKoqxBPhjNh5ajWBssPzgztF0siMr1QK1f16DmlH8Uq2FQOQ0irX3ZtZzenn+D7Q
+	axco6aS0IDa5se0xraeQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1slocX-00000004FYD-2dCp;
-	Wed, 04 Sep 2024 11:56:21 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
-	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sloJ9-00000004B9Q-3jtb;
-	Wed, 04 Sep 2024 11:36:21 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 7FEBB5C5790;
-	Wed,  4 Sep 2024 11:36:15 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E5ADDC4CEC6;
-	Wed,  4 Sep 2024 11:36:15 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1725449778;
-	bh=aIkvQ6aDWDDFkglpEsv1aNO4RDi8qjv3MXP0Jwl8MXQ=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=S4jhTQgRXLJPhaSOuO9Vg/CGTVzi6SjuSGDdOAboJ7BIH72iN9A7fKpmg+y/xs8uY
-	 kX50CnOOiznKZwW4CJ+pfvKoBsLHBe015TpB5PYlnbugGTBrUmqmPop4XF6qTNEVlP
-	 FwvcrUgaH/Y90sfCL6HTqeHTYEF8ZoBq/qkAS/eYWHPOmmt071iwceSIVZ50neS4Ri
-	 LrrfosDI/uCi7yg90rJNZZc/xe7m4jfkdLL9CYYlMx8KTQu4o03it0jGmrHZTjRLVH
-	 a3dE3auV9N8Sv6o/kBzDGJSqtxZF3nEou4JGXAc4ydSv8uy/Ez4N8WK9bhP/YLUED2
-	 RsjDh14wCXSVg==
-Message-ID: <6036772d-3c82-4b9b-9684-653d1a65d284@kernel.org>
-Date: Wed, 4 Sep 2024 13:36:14 +0200
+	id 1slol4-00000004H4b-383M;
+	Wed, 04 Sep 2024 12:05:10 +0000
+Received: from m16.mail.163.com ([117.135.210.3])
+	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
+	id 1sloj8-00000004GUH-38Bg
+	for linux-rockchip@lists.infradead.org;
+	Wed, 04 Sep 2024 12:03:12 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
+	s=s110527; h=From:Subject:Date:Message-Id:MIME-Version; bh=M1QKT
+	NQpk3AJnRUVpFtwnoS6CV+5zNobj1gYTC1w0YY=; b=NCdUCw8AASbbrP3hOckDS
+	n3dmBpjRmHg2M85j5v6jdZSrlV8kNeb0d9/T5+pjnDN48M6mZ1BNmBdEdJSJGF35
+	bvtUrwXhldROvgaqVEuvMWq5o6jESrkLJWUKNOxXCjc/uHfhTP2+jj9pZKmTecld
+	TEpFjRRwup3fgcQD5n6D+U=
+Received: from ProDesk.. (unknown [58.22.7.114])
+	by gzga-smtp-mta-g3-0 (Coremail) with SMTP id _____wA3HxFgTNhmiRMZCA--.50872S10;
+	Wed, 04 Sep 2024 20:02:52 +0800 (CST)
+From: Andy Yan <andyshrk@163.com>
+To: detlev.casanova@collabora.com
+Subject: [PATCH v2 08/11] drm/rockchip: vop2: Add uv swap for cluster window
+Date: Wed,  4 Sep 2024 20:02:35 +0800
+Message-Id: <20240904120238.3856782-9-andyshrk@163.com>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20240904120238.3856782-1-andyshrk@163.com>
+References: <20240904120238.3856782-1-andyshrk@163.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 2/3] dt-bindings: arm: rockchip: Add Ariaboard Photonicat
- RK3568
-To: Junhao Xie <bigfoot@classfun.cn>, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org
-Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- Jonas Karlman <jonas@kwiboo.se>, Chukun Pan <amadeus@jmu.edu.cn>,
- FUKAUMI Naoki <naoki@radxa.com>, Dragan Simic <dsimic@manjaro.org>,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-References: <20240904111456.87089-1-bigfoot@classfun.cn>
- <20240904111456.87089-3-bigfoot@classfun.cn>
-From: Krzysztof Kozlowski <krzk@kernel.org>
-Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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 fv0=
-In-Reply-To: <20240904111456.87089-3-bigfoot@classfun.cn>
+X-CM-TRANSID: _____wA3HxFgTNhmiRMZCA--.50872S10
+X-Coremail-Antispam: 1Uf129KBjvJXoW7tFW8Ww1kAF4UAw47JFy7ZFb_yoW8Gr4kpw
+	43ZrWq9r45Kw4Iq34kJFW5ZFWfCwnxKayxZws7tw109ry3KFyDK3Z0kFWUArnFya12ka17
+	tFn3A3y7ZF4jvrJanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07jsF4iUUUUU=
+X-Originating-IP: [58.22.7.114]
+X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/xtbB0gxQXmWX0KXl7wAAsd
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240904_043620_102198_C45BB421 
-X-CRM114-Status: GOOD (  12.16  )
+X-CRM114-CacheID: sfid-20240904_050311_198359_59092E13 
+X-CRM114-Status: UNSURE (   9.87  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -116,37 +67,48 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Cc: devicetree@vger.kernel.org, heiko@sntech.de, robh@kernel.org, dri-devel@lists.freedesktop.org, hjc@rock-chips.com, mripard@kernel.org, sebastian.reichel@collabora.com, linux-rockchip@lists.infradead.org, sjoerd@collabora.com, Andy Yan <andy.yan@rock-chips.com>, krzk+dt@kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 04/09/2024 13:14, Junhao Xie wrote:
-> This documents Ariaboard Photonicat which is a router based on the
-> RK3568 SoC.
-> 
-> Signed-off-by: Junhao Xie <bigfoot@classfun.cn>
-> ---
->  Documentation/devicetree/bindings/arm/rockchip.yaml | 5 +++++
->  1 file changed, 5 insertions(+)
-> 
-> diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
-> index 1ef09fbfdfaf..b2c83c9b287a 100644
-> --- a/Documentation/devicetree/bindings/arm/rockchip.yaml
-> +++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
-> @@ -49,6 +49,11 @@ properties:
->                - anbernic,rg-arc-s
->            - const: rockchip,rk3566
->  
-> +      - description: Ariaboard Photonicat RK3568
+From: Andy Yan <andy.yan@rock-chips.com>
 
-And here is Ariaboard, not Shanghai Novotech. You have entire commit msg
-to give some sort of context for such unusual things.
+The Cluster windows of upcoming VOP on rk3576 also support
+linear YUV support, we need to set uv swap bit for it.
 
+As the VOP2_WIN_UV_SWA register defined on rk3568/rk3588 is
+0xffffffff, so this register will not be touched on these
+two platforms.
 
+Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
+---
 
-Best regards,
-Krzysztof
+(no changes since v1)
+
+ drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
+
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+index df8194697a58..d0b763b0dd6c 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+@@ -1274,10 +1274,8 @@ static void vop2_plane_atomic_update(struct drm_plane *plane,
+ 
+ 	rb_swap = vop2_win_rb_swap(fb->format->format);
+ 	vop2_win_write(win, VOP2_WIN_RB_SWAP, rb_swap);
+-	if (!vop2_cluster_window(win)) {
+-		uv_swap = vop2_win_uv_swap(fb->format->format);
+-		vop2_win_write(win, VOP2_WIN_UV_SWAP, uv_swap);
+-	}
++	uv_swap = vop2_win_uv_swap(fb->format->format);
++	vop2_win_write(win, VOP2_WIN_UV_SWAP, uv_swap);
+ 
+ 	if (fb->format->is_yuv) {
+ 		vop2_win_write(win, VOP2_WIN_UV_VIR, DIV_ROUND_UP(fb->pitches[1], 4));
+-- 
+2.34.1
 
 
 _______________________________________________
