@@ -4,71 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C2361CD4853
-	for <linux-rockchip@archiver.kernel.org>; Wed,  4 Sep 2024 16:43:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B6D43CD4853
+	for <linux-rockchip@archiver.kernel.org>; Wed,  4 Sep 2024 17:27:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=DRbyOcHe2HwymfBKHUpTuYTbHbPEuvei58E589f3dGk=; b=ZS/oAscpukY9HK
-	MMsXQ3hXwME6pE2pZN2vQmjs+GVARMVr0liisaiz4Gv0hzkBoEBBRVDu/83IEFHJdXTv+qc5f/GGP
-	4Yd0aQGOAyaDoF99nEZDye7/l2q4EBk/IV6aTrQLnJD5Ghc26cXVJJtZR/DHmY5FuqclX73dCHGEx
-	lGl0mpteTqdXnLrGpozPRYi9FOFdJeIlpv8m4VRR3Wtoaebv6jh8TXIrdlZziwtbbuqXMhRtengt8
-	6IYmCJr5oHfBtj6mV99qv1vG69gdWmSINxuAfj2U1v9QWglc/igLyg14WhLwWgUsd+HWMMlwVMu0e
-	7pDmnPUY56ks2AQVlLMA==;
+	List-Owner; bh=xHPGdNN+f5EZWU6L3JikF4hSr38KxZ6ozvZohbYOAWQ=; b=BQmP5VL9VZ4Vot
+	pReYxHC0nW9zI/StAXYUQXxiZgmDiZUb2/FbMtM4zcVkPV2zn5tl0eBjIUTK4JYbg77fw42oK0GDQ
+	55friuQYKyUhMOEWvZ9eiJc3O16d3jyYVb1vOvNnVl4jIsUumA13a6JXkLaXWk2P7gl1JojOr0ZAb
+	7cJEFP3UYE+2/1ugIMy9O/8SPX8FVznRqr+dMiFMQkwo/eAiCZK92enHQ2MNvv0nrxb6JFyv5DMBv
+	ZPHcxB/jNvOzAez61sp+WX/PIYx1z4Rpzm05JANUN0kJ+tBzQGJg4S6iZW95kNookal/vV932LMg/
+	JtCmjfyf4UFoPjN6CM0Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1slt6F-00000005JGK-2omp;
-	Wed, 04 Sep 2024 16:43:19 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1sltmm-00000005SQJ-0JFj;
+	Wed, 04 Sep 2024 17:27:16 +0000
+Received: from vps0.lunn.ch ([156.67.10.101])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1slt5H-00000005J7m-3bhy;
-	Wed, 04 Sep 2024 16:42:21 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
-	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=sORX5VEgoe509ZQr0SKamAFfSHB60pe6cyvvjB5IGZs=; b=GurltbUt/g0trnYK49OGBqD1RI
-	STz36H4cL4V5IouRnNPrCGcVHJHwewfTFwcX+EVl/4fOFJ5SlxOR8/sX5eC5bYaauRQGRHglFo9Op
-	4ShSM5z4ku0O7FzwpYrBqXN9st0mk5yGJf3sT5YvJVpYoIvI04UUETbPnNnkR5DV9imQNtVoJ3m3h
-	xUx6V9hWgtzaR0O1wirONGoxagQa3RdXhAZm43FQu1reRp3ZtJNLH8GxnGtv9RhF01gnDDMY2ndZa
-	iQpm79kW5XUoJdi8adciOrPWrn8PMtXuERXqPOY0Rpwfjs1gwc8drkm/HWqEA3CFlB0MvCAQ8Vjm8
-	mUjTGtZg==;
-Received: from i5e860d0f.versanet.de ([94.134.13.15] helo=diego.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1slt52-0001UH-Nt; Wed, 04 Sep 2024 18:42:04 +0200
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: Marc Kleine-Budde <mkl@pengutronix.de>
-Cc: kernel@pengutronix.de, Alibek Omarov <a1ba.omarov@gmail.com>,
- Vincent Mailhol <mailhol.vincent@wanadoo.fr>,
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>,
- Elaine Zhang <zhangqing@rock-chips.com>,
- David Jander <david.jander@protonic.nl>, Simon Horman <horms@kernel.org>,
- linux-can@vger.kernel.org, netdev@vger.kernel.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
- David Jander <david@protonic.nl>
-Subject: Re: [PATCH can-next v5 00/20] can: rockchip_canfd: add support for CAN-FD IP
- core found on Rockchip RK3568
-Date: Wed, 04 Sep 2024 18:43:52 +0200
-Message-ID: <4091366.iTQEcLzFEP@diego>
-In-Reply-To: <20240904-imposing-determined-mayfly-ba6402-mkl@pengutronix.de>
-References: <20240904-rockchip-canfd-v5-0-8ae22bcb27cc@pengutronix.de>
- <86274585.BzKH3j3Lxt@diego>
- <20240904-imposing-determined-mayfly-ba6402-mkl@pengutronix.de>
+	id 1sltlp-00000005SHr-1jRS;
+	Wed, 04 Sep 2024 17:26:18 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
+	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
+	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
+	bh=Ny9mMZi9RGxeGZieQNyEsixXAXSWfxLduJAIPK++NZs=; b=26oqz/YjW8hGY0Zjw7tlQmVYlO
+	lvdOdNESVddlfTk0kR/S/y7UtNH4vgeWFdvmTKhLOb1F+TZqKmvulivjT+NMJrx7peE/nLIzyVgJn
+	IKg/1yZsyzmsgQdnLG5t9FA0FEpZSyN/xJJXn5YylD2qOyZ6tVlGmkv3oooHxqWMuYKw=;
+Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
+	(envelope-from <andrew@lunn.ch>)
+	id 1sltlT-006aaf-CC; Wed, 04 Sep 2024 19:25:55 +0200
+Date: Wed, 4 Sep 2024 19:25:55 +0200
+From: Andrew Lunn <andrew@lunn.ch>
+To: Junhao Xie <bigfoot@classfun.cn>
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>, Jonas Karlman <jonas@kwiboo.se>,
+	Chukun Pan <amadeus@jmu.edu.cn>, FUKAUMI Naoki <naoki@radxa.com>,
+	Dragan Simic <dsimic@manjaro.org>,
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH 3/3] arm64: dts: rockchip: add dts for Ariaboard
+ Photonicat RK3568
+Message-ID: <6030542f-070d-4d76-9a5a-fbfc6bd433e6@lunn.ch>
+References: <20240904111456.87089-1-bigfoot@classfun.cn>
+ <20240904111456.87089-4-bigfoot@classfun.cn>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20240904111456.87089-4-bigfoot@classfun.cn>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240904_094219_937665_C5B9AF74 
-X-CRM114-Status: GOOD (  15.42  )
+X-CRM114-CacheID: sfid-20240904_102617_468801_A20B2F29 
+X-CRM114-Status: UNSURE (   8.65  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,39 +71,39 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Am Mittwoch, 4. September 2024, 17:10:08 CEST schrieb Marc Kleine-Budde:
-> On 04.09.2024 10:55:21, Heiko St=FCbner wrote:
-> [...]
-> > How/when are you planning on applying stuff?
-> > =
+> +&gmac1 {
+> +	assigned-clocks = <&cru SCLK_GMAC1_RX_TX>, <&cru SCLK_GMAC1>;
+> +	assigned-clock-parents = <&cru SCLK_GMAC1_RGMII_SPEED>;
+> +	assigned-clock-rates = <0>, <125000000>;
+> +	clock_in_out = "output";
+> +	phy-handle = <&rgmii_phy1>;
+> +	phy-mode = "rgmii";
+> +	phy-supply = <&vcc_3v3>;
+> +	pinctrl-names = "default";
+> +	pinctrl-0 = <&gmac1m1_miim
+> +		     &gmac1m1_tx_bus2
+> +		     &gmac1m1_rx_bus2
+> +		     &gmac1m1_rgmii_clk
+> +		     &gmac1m1_rgmii_bus>;
+> +	snps,reset-gpio = <&gpio4 RK_PC0 GPIO_ACTIVE_LOW>;
+> +	snps,reset-active-low;
+> +	snps,reset-delays-us = <0 20000 100000>;
+> +	tx_delay = <0x38>;
+> +	rx_delay = <0x15>;
+> +	status = "okay";
 
-> > I.e. if you're going to apply things still for 6.12, you could simply t=
-ake
-> > the whole series if the dts patches still apply to your tree ;-)
-> =
+This has been discussed a few times. You should be using phy-mode
+rgmii-id.
 
-> The DTS changes should not go via any driver subsystem upstream, so
-> here's a dedicated PR:
-> =
+arch/arm/boot/dts/rockchip/rk3288-phycore-som.dtsi is i think also a
+YT8521SC.
 
-> https://patch.msgid.link/20240904-rk3568-canfd-v1-0-73bda5fb4e03@pengutro=
-nix.de
-
-I wasn't on Cc for the pull-request so I'll probably not get a notification
-when it gets merged?
-
-So if you see your PR with the binding and driver getting merged to
-next-next, can you provide a ping please?
-
-Thanks a lot
-Heiko
-
-
+	Andrew
 
 _______________________________________________
 Linux-rockchip mailing list
