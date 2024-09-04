@@ -4,61 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0FD53CD3431
-	for <linux-rockchip@archiver.kernel.org>; Wed,  4 Sep 2024 08:16:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 05BDDCD4847
+	for <linux-rockchip@archiver.kernel.org>; Wed,  4 Sep 2024 08:16:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
-	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=5fRG/eeKq2i49l71QHxfng0/PscQbVllZG3nXjm7N44=; b=Op6Q44P1UDk4Bk
-	oFsL9kpS3ce+MSUJJHmAwnZ6SJHqp4ipqMBo4uC6bKtfONRk6YuXY63WGpd0FJUNoFKcvntLazv1t
-	5jpqD5XiFFZYP96J1A/U8G8VhSLWLcoV/8j1VX1XcNji/yYv63m+JEEY3O5qXPAvAAAXUVG76TPZY
-	iMIL0s+DGNp88lX6nIql/OjOu5hG+mNqp6X6QNTyTmc7k46kSj7gxO6oec3kyjuN2xddeepEhC+84
-	VF5++fdCYAXbLRqhGddJCQSCLjpLKfaVJTLSeXYHbZymLH5olvcAMbRkW3p8vP7sVqVRA2vjo2PPr
-	dtm/nF5pVnuEpw/B9MLQ==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
+	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=cOLgQAo7pqbNzqmdY2Xge5iOMoYz1S5Jgv+HOY9yjIE=; b=duQMz8kstbvJUQ
+	mwzG7OkMLpBL/3z/qZJ16UX81TDc4cCz0kLJHYNNk59hIjbwzFr5PkSqH6QnFokJx0AoibBmhsvV5
+	ckFBTmzyqCsmw4QlqubP04zye8V6xuTOymrNCGdz5rh1KycClINan5WsUdgB4enwyjQrhtPJCm2YC
+	wFae+Ou4Avlpfn3ujIB31QRkNBaGT9mtdvfVyjmH86OuT/RvBTKd7KsfFQVfJLg3QFVk7SQmGQQKT
+	cv7Qw2soJTPGHR5Mu9x4BMSma63ZQddw5TTNqsasaALlipCFF9P3PpyJf1PrtB4EnkfETK/470Sr+
+	dHas/tgWqGX0uRGkro1A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sllBk-00000003LWR-18bK;
+	id 1sllBk-00000003LWg-355Y;
 	Wed, 04 Sep 2024 08:16:28 +0000
 Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sll8o-00000003Kcj-1udq
+	id 1sll8o-00000003Kcf-0KlU
 	for linux-rockchip@lists.infradead.org;
 	Wed, 04 Sep 2024 08:13:29 +0000
 Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
 	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
 	(Exim 4.92)
 	(envelope-from <mkl@pengutronix.de>)
-	id 1sll8n-0007Pc-96
-	for linux-rockchip@lists.infradead.org; Wed, 04 Sep 2024 10:13:25 +0200
+	id 1sll8m-0007Om-TV
+	for linux-rockchip@lists.infradead.org; Wed, 04 Sep 2024 10:13:24 +0200
 Received: from [2a0a:edc0:0:b01:1d::7b] (helo=bjornoya.blackshift.org)
 	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <mkl@pengutronix.de>)
-	id 1sll8m-005Ojw-Lb
+	id 1sll8m-005OjY-BU
 	for linux-rockchip@lists.infradead.org; Wed, 04 Sep 2024 10:13:24 +0200
 Received: from dspam.blackshift.org (localhost [127.0.0.1])
-	by bjornoya.blackshift.org (Postfix) with SMTP id 46A05331F8F
-	for <linux-rockchip@lists.infradead.org>; Wed, 04 Sep 2024 08:13:24 +0000 (UTC)
+	by bjornoya.blackshift.org (Postfix) with SMTP id 095B9331F89
+	for <linux-rockchip@lists.infradead.org>; Wed, 04 Sep 2024 08:13:23 +0000 (UTC)
 Received: from hardanger.blackshift.org (unknown [172.20.34.65])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(Client did not present a certificate)
-	by bjornoya.blackshift.org (Postfix) with ESMTPS id B9D20331F4E;
+	by bjornoya.blackshift.org (Postfix) with ESMTPS id 84DBA331F4B;
 	Wed, 04 Sep 2024 08:13:21 +0000 (UTC)
 Received: from [172.20.34.65] (localhost [::1])
-	by hardanger.blackshift.org (OpenSMTPD) with ESMTP id 939d5f93;
+	by hardanger.blackshift.org (OpenSMTPD) with ESMTP id d08ac60a;
 	Wed, 4 Sep 2024 08:13:20 +0000 (UTC)
 From: Marc Kleine-Budde <mkl@pengutronix.de>
-Date: Wed, 04 Sep 2024 10:12:46 +0200
-Subject: [PATCH can-next v5 02/20] arm64: dts: rockchip: add CAN-FD
- controller nodes to rk3568
+Subject: [PATCH can-next v5 00/20] can: rockchip_canfd: add support for
+ CAN-FD IP core found on Rockchip RK3568
+Date: Wed, 04 Sep 2024 10:12:44 +0200
+Message-Id: <20240904-rockchip-canfd-v5-0-8ae22bcb27cc@pengutronix.de>
 MIME-Version: 1.0
-Message-Id: <20240904-rockchip-canfd-v5-2-8ae22bcb27cc@pengutronix.de>
-References: <20240904-rockchip-canfd-v5-0-8ae22bcb27cc@pengutronix.de>
-In-Reply-To: <20240904-rockchip-canfd-v5-0-8ae22bcb27cc@pengutronix.de>
+X-B4-Tracking: v=1; b=H4sIAHwW2GYC/3XNQYrDMAwF0KsUr8fFlmw36ar3KLNIZLkxA05w0
+ pBScvfxZNOBtGj1+dLTU4ycI4/ifHiKzHMcY59KsF8HQV2TbiyjL1mAAqNOUMvc0w91cZDUpOC
+ lAUQ66aCInChHQ+YQlw28irIiEy+T+C5NF8epz4/t06y3/hM6a6lkaDRYFbxrGS8Dp9t9yn2Ky
+ 9Hz5s3wz0C9M6AYvnbKkG1Ny9VbA19GhWpn4J9hwIFzxmJo3hrmZdQKd4YphvaEoQxU1u2MdV1
+ /AatLCIGHAQAA
 To: kernel@pengutronix.de, Alibek Omarov <a1ba.omarov@gmail.com>, 
  Vincent Mailhol <mailhol.vincent@wanadoo.fr>, 
  "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
@@ -74,15 +77,15 @@ Cc: Simon Horman <horms@kernel.org>, linux-can@vger.kernel.org,
  linux-kernel@vger.kernel.org, Marc Kleine-Budde <mkl@pengutronix.de>, 
  David Jander <david@protonic.nl>
 X-Mailer: b4 0.15-dev-99b12
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2054; i=mkl@pengutronix.de;
- h=from:subject:message-id; bh=NCZZ2jduquRgobxOQsZuTZ9M3tcNYg9AjFnUiZ6RQRE=;
- b=owGbwMvMwMWoYbHIrkp3Tz7jabUkhrQbYq0yxSrZitvO2D/faFc5f2rvVVFdga3O8zhf8twJE
- fxUc7+2k9GYhYGRi0FWTJElwGFX24NtLHc199jFwwxiZQKZwsDFKQAT2d7M/t99r8BDawEpvoRC
- xtTUW90pvOffvoyZ5Lb4UtzS/aw9/0W5SlIW6Rr9syjQU3Xpuh979aXtnv6D87pK5samiZ1/w5Q
- 4N+WP9W9RzUjB9413c4NDJxnZ8/scvJzg2Msmc4f/yC0Z/lyWmLTv3tde3bFq/ZzNfGHrHcU6vn
- UbDxdHWHz3lyk65nnOxGeXlYVqG0PxMQOL2pqXm5yCDhdzRufeS1sqkiDyxcRaxW/DosYzc9+sz
- 7aYXSKQ9vjg1HC9zlA15v+zd2kF8K4TmOiy/PLUkj3K6UdcLHMKzVKCbYTuHLQ9J3d444GLG73t
- WBK/sbxezTQ/IbLWTNWsTdo0cx5b2mOpEPU4SdPTTIcB
+X-Developer-Signature: v=1; a=openpgp-sha256; l=4654; i=mkl@pengutronix.de;
+ h=from:subject:message-id; bh=duMAzSx3zxVVMczxRw39IYMJhca9+AMRHhj+0T0+g+g=;
+ b=owEBbQGS/pANAwAKASg4oj56LbxvAcsmYgBm2BaBx65953NsHT7vSpWYvxoN16JCIdAT29FHw
+ qk2mHyN1gKJATMEAAEKAB0WIQRQQLqG4LYE3Sm8Pl8oOKI+ei28bwUCZtgWgQAKCRAoOKI+ei28
+ b5DjB/40D1AL/GUM5srz14BeftH8sfSRPk/R4lm1UOPuy8zQok9h7OVoYc4X9FxwSw3riYHUSBq
+ bY557sJqZOCpfiuB0UXj2PfmuMWFU6XI90yTe/YfM5C5CgWV+QbL4TWYz0EEd+vWZLLEsKihGgB
+ cWfVikkbsj+xawunZwYtRoETygiuJzgmavWWrJoenOyeqvNHBBGCERJPlBMyyZNBvXdDnmCgX8y
+ zLruXV/O26B2d/+sQZRAZB/zlmo0yim18/u1cI33JXtLKzpIqVwtprv5Q1Eso7byNTG3KaGgf7Q
+ Qy1kGDBeucLpVOIyYyShKlMwFKW3JeJFIzqaor4vmNZ6/4mn
 X-Developer-Key: i=mkl@pengutronix.de; a=openpgp;
  fpr=C1400BA0B3989E6FBC7D5B5C2B5EE211C58AEA54
 X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
@@ -90,8 +93,8 @@ X-SA-Exim-Mail-From: mkl@pengutronix.de
 X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
 X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240904_011326_541916_23379305 
-X-CRM114-Status: GOOD (  11.46  )
+X-CRM114-CacheID: sfid-20240904_011326_360950_EC24F147 
+X-CRM114-Status: GOOD (  14.74  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,70 +111,100 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: David Jander <david@protonic.nl>
+This series adds support for the CAN-FD IP core found on the Rockchip
+RK3568.
 
-Add nodes to the rk3568 devicetree to support the CAN-FD controllers.
+The IP core is a bit complicated and has several documented errata.
+The driver is added in several stages, first the base driver including
+the RX-path. Then several workarounds for errata and the TX-path, and
+finally features like hardware time stamping, loop-back mode and
+bus error reporting.
 
-Signed-off-by: David Jander <david@protonic.nl>
-Tested-by: Alibek Omarov <a1ba.omarov@gmail.com>
+regards,
+Marc
+
 Signed-off-by: Marc Kleine-Budde <mkl@pengutronix.de>
 ---
- arch/arm64/boot/dts/rockchip/rk3568.dtsi | 39 ++++++++++++++++++++++++++++++++
- 1 file changed, 39 insertions(+)
+Changes in v5:
+- MAINTAINERS: fix dt-bindings filename (also noted by kernel test robot <lkp@intel.com>)
+- dt-bindings: added Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
+- Link to v4: https://patch.msgid.link/20240903-rockchip-canfd-v4-0-1dc3f3f32856@pengutronix.de
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3568.dtsi b/arch/arm64/boot/dts/rockchip/rk3568.dtsi
-index f1be76a54ceb..70847556627d 100644
---- a/arch/arm64/boot/dts/rockchip/rk3568.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3568.dtsi
-@@ -213,6 +213,45 @@ gmac0_mtl_tx_setup: tx-queues-config {
- 		};
- 	};
- 
-+	can0: can@fe570000 {
-+		compatible = "rockchip,rk3568v2-canfd";
-+		reg = <0x0 0xfe570000 0x0 0x1000>;
-+		interrupts = <GIC_SPI 1 IRQ_TYPE_LEVEL_HIGH>;
-+		clocks = <&cru CLK_CAN0>, <&cru PCLK_CAN0>;
-+		clock-names = "baud", "pclk";
-+		resets = <&cru SRST_CAN0>, <&cru SRST_P_CAN0>;
-+		reset-names = "core", "apb";
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&can0m0_pins>;
-+		status = "disabled";
-+	};
-+
-+	can1: can@fe580000 {
-+		compatible = "rockchip,rk3568v2-canfd";
-+		reg = <0x0 0xfe580000 0x0 0x1000>;
-+		interrupts = <GIC_SPI 2 IRQ_TYPE_LEVEL_HIGH>;
-+		clocks = <&cru CLK_CAN1>, <&cru PCLK_CAN1>;
-+		clock-names = "baud", "pclk";
-+		resets = <&cru SRST_CAN1>, <&cru SRST_P_CAN1>;
-+		reset-names = "core", "apb";
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&can1m0_pins>;
-+		status = "disabled";
-+	};
-+
-+	can2: can@fe590000 {
-+		compatible = "rockchip,rk3568v2-canfd";
-+		reg = <0x0 0xfe590000 0x0 0x1000>;
-+		interrupts = <GIC_SPI 3 IRQ_TYPE_LEVEL_HIGH>;
-+		clocks = <&cru CLK_CAN2>, <&cru PCLK_CAN2>;
-+		clock-names = "baud", "pclk";
-+		resets = <&cru SRST_CAN2>, <&cru SRST_P_CAN2>;
-+		reset-names = "core", "apb";
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&can2m0_pins>;
-+		status = "disabled";
-+	};
-+
- 	combphy0: phy@fe820000 {
- 		compatible = "rockchip,rk3568-naneng-combphy";
- 		reg = <0x0 0xfe820000 0x0 0x100>;
+Changes in v4:
+- dt-bindings: renamed to rockchip,rk3568v2-canfd.yaml to match the
+  first compatible
+- dt-bindings: fix "$id" in yaml (thanks Rob's bot)
+- all: add Tested-by: Alibek Omarov <a1ba.omarov@gmail.com>
+- Link to v3: https://patch.msgid.link/20240830-rockchip-canfd-v3-0-d426266453fa@pengutronix.de
 
+Changes in v3:
+- dt-bindings: renamed file to rockchip,rk3568-canfd.yaml (thanks Rob)
+- dt-bindings: reworked compatibles (thanks Rob)
+- Link to v2: https://lore.kernel.org/all/20240731-rockchip-canfd-v2-0-d9604c5b4be8@pengutronix.de
+
+Changes in v2:
+- dt-bindings: remove redundant words from subject and patch
+  description (thanks Rob)
+- dt-bindings: clean up clock- and reset-names (thanks Rob)
+- base driver: add missing bitfield.h header
+- base driver: rkcanfd_handle_rx_int_one(): initialize header to avoid
+  uninitialzied variable warning on m68k
+- base driver: rkcanfd_get_berr_counter_raw(): don't add assigned only
+  variable (bec_raw), move to 14/20 (thanks Simon)
+- CAN-FD frame equal check + TX-path: squash, to avoid unused
+  functions (thanks Simon)
+- TX-path: rkcanfd_handle_tx_done_one(): don't add assigned only
+  variable (skb), move to 18/20 (thanks Simon)
+- HW-timetamping: add missing timecounter.h header (thanks Simon)
+- Link to v1: https://lore.kernel.org/all/20240729-rockchip-canfd-v1-0-fa1250fd6be3@pengutronix.de
+
+---
+David Jander (2):
+      arm64: dts: rockchip: add CAN-FD controller nodes to rk3568
+      arm64: dts: rockchip: mecsbc: add CAN0 and CAN1 interfaces
+
+Marc Kleine-Budde (18):
+      dt-bindings: can: rockchip_canfd: add rockchip CAN-FD controller
+      can: rockchip_canfd: add driver for Rockchip CAN-FD controller
+      can: rockchip_canfd: add quirks for errata workarounds
+      can: rockchip_canfd: add quirk for broken CAN-FD support
+      can: rockchip_canfd: add support for rk3568v3
+      can: rockchip_canfd: add notes about known issues
+      can: rockchip_canfd: rkcanfd_handle_rx_int_one(): implement workaround for erratum 5: check for empty FIFO
+      can: rockchip_canfd: rkcanfd_register_done(): add warning for erratum 5
+      can: rockchip_canfd: add TX PATH
+      can: rockchip_canfd: implement workaround for erratum 6
+      can: rockchip_canfd: implement workaround for erratum 12
+      can: rockchip_canfd: rkcanfd_get_berr_counter_corrected(): work around broken {RX,TX}ERRORCNT register
+      can: rockchip_canfd: add stats support for errata workarounds
+      can: rockchip_canfd: prepare to use full TX-FIFO depth
+      can: rockchip_canfd: enable full TX-FIFO depth of 2
+      can: rockchip_canfd: add hardware timestamping support
+      can: rockchip_canfd: add support for CAN_CTRLMODE_LOOPBACK
+      can: rockchip_canfd: add support for CAN_CTRLMODE_BERR_REPORTING
+
+ .../bindings/net/can/rockchip,rk3568v2-canfd.yaml  |  74 ++
+ MAINTAINERS                                        |   8 +
+ arch/arm64/boot/dts/rockchip/rk3568-mecsbc.dts     |  14 +
+ arch/arm64/boot/dts/rockchip/rk3568.dtsi           |  39 +
+ drivers/net/can/Kconfig                            |   1 +
+ drivers/net/can/Makefile                           |   1 +
+ drivers/net/can/rockchip/Kconfig                   |   9 +
+ drivers/net/can/rockchip/Makefile                  |  10 +
+ drivers/net/can/rockchip/rockchip_canfd-core.c     | 969 +++++++++++++++++++++
+ drivers/net/can/rockchip/rockchip_canfd-ethtool.c  |  73 ++
+ drivers/net/can/rockchip/rockchip_canfd-rx.c       | 299 +++++++
+ .../net/can/rockchip/rockchip_canfd-timestamp.c    | 105 +++
+ drivers/net/can/rockchip/rockchip_canfd-tx.c       | 167 ++++
+ drivers/net/can/rockchip/rockchip_canfd.h          | 553 ++++++++++++
+ 14 files changed, 2322 insertions(+)
+---
+base-commit: 3d4d0fa4fc32f03f615bbf0ac384de06ce0005f5
+change-id: 20240729-rockchip-canfd-4233c71f0cc6
+
+Best regards,
 -- 
-2.45.2
+Marc Kleine-Budde <mkl@pengutronix.de>
 
 
 
