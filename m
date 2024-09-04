@@ -4,57 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 14DE4CD4849
-	for <linux-rockchip@archiver.kernel.org>; Wed,  4 Sep 2024 12:05:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A7011CD3431
+	for <linux-rockchip@archiver.kernel.org>; Wed,  4 Sep 2024 12:07:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=GFKvIxJLo0mROhthYPs6GDDJDe97IgXNxZC7nHCEREo=; b=AVSeYAKx3WcEpg
-	FSBHSD5PmPHYQgyLbmOU/JKXtmm370JScoNuYgssM2KtuvI83tZAst/6dg8AWvDG306DMV1uRD2rk
-	jJ21YHAk45Kc2mPC4XiwM6UA9yyHzb57VH1rdmK/pt2NuZyFs/QqBa37mZP0YRfUHgFxvRc01FEA4
-	4G1ao2va7pgObl0SLPR2ufs/bh5Cqh02T/bnlZLYhi8Jn3UMIlsDr7rvWZtRe5HhmVlOIf5PDFbwL
-	O2o6VsTfj2zG/cgbwhxvoZEn94JoGn9BHbJSTmRfIJx/fdNZ+1RID/vldhO7iiIQoWsgGWGRS8QoI
-	shG1w/JCihgeZaY9Ee3A==;
+	List-Owner; bh=SyyApiMQor65pk3HclJ1EfQC8RmZNAuDhX4a7ISyJc0=; b=GjzCbbjxTWpETB
+	at+Rz91UcEOkPY6ZWyRjI2Bwv0scX2vxbYKXfvtEsSNB+bCtm4j0YEBy0DzxiYvFGMJPJ6CM6TDJA
+	xZCSua0clsB1QzlqG6Ga5RuGXUVJNJEuxhKgIvmYZjXHw1LQIk1Kyw2R70V5j042fvkjaVddCEdDj
+	AF/D0zh/TcYJ9L9JjHOyZjlYQBQUSse12Rw7nUJp3iW4SnwJfw0Rl3b4TjMJrKZRCgsxBU/rhZp5b
+	YkxcLuWXaWxRYYZXLofLlOv2Ylul8sSJuL8wVRniCS07WOFclIJE7CJLbxCzS7x6RUDkCKjIrTuF8
+	EJ3+ixD9StN30VLqbVeg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1slolT-00000004HTW-345f;
-	Wed, 04 Sep 2024 12:05:35 +0000
-Received: from m16.mail.163.com ([220.197.31.3])
+	id 1slonk-00000004IUH-1bHS;
+	Wed, 04 Sep 2024 12:07:56 +0000
+Received: from m16.mail.163.com ([117.135.210.2])
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1slojF-00000004GZG-20uc
+	id 1slomK-00000004I0I-043S
 	for linux-rockchip@lists.infradead.org;
-	Wed, 04 Sep 2024 12:03:24 +0000
+	Wed, 04 Sep 2024 12:06:41 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=From:Subject:Date:Message-Id:MIME-Version; bh=eOlzr
-	5jJL3MTEm/Vc4+/hnVKWdwqlKdTsqgbDyuwulw=; b=kWVj110aCS9Meuguw447l
-	m1ZaMliOtfdSOkl0s1/yyZtgGb0DIJMwU8AFIdwPwnI2tAllVHIp2ybfItnhVz5c
-	kr2uPswhoaXgbIDloFA4kDPI4Vw/3n8P17cDfK3CtN4A9IoDL00S7AQO30rEeVtT
-	6wVgKiQfHc+muNHZrnzZMU=
+	s=s110527; h=From:Subject:Date:Message-Id:MIME-Version; bh=gnWpQ
+	Q0es1j6wqTqNq5nsoDjbZcQfpWYlZPLSBASRj0=; b=aJhgyadGykkRLCVW/TSdn
+	3oSdHLDIZlyei1DHmM7Wup8J+9lqYYZ8jnvSkUse7tGZwX6g/f0mKd12D/SUTRSn
+	5hayR3SIocfUCXqSk1xEDTjuhPPkXy5lhsOi8pMW/go6RJRLy8hGsGbc0wO8JqHg
+	QyDpzyYJYy/rhavoSalgjM=
 Received: from ProDesk.. (unknown [58.22.7.114])
-	by gzga-smtp-mta-g3-0 (Coremail) with SMTP id _____wA3HxFgTNhmiRMZCA--.50872S9;
-	Wed, 04 Sep 2024 20:02:51 +0800 (CST)
+	by gzga-smtp-mta-g2-2 (Coremail) with SMTP id _____wC3vwgsTdhmkS0vFg--.47088S2;
+	Wed, 04 Sep 2024 20:06:08 +0800 (CST)
 From: Andy Yan <andyshrk@163.com>
 To: detlev.casanova@collabora.com
-Subject: [PATCH v2 07/11] drm/rockchip: vop2: Set plane possible crtcs by possible vp mask
-Date: Wed,  4 Sep 2024 20:02:34 +0800
-Message-Id: <20240904120238.3856782-8-andyshrk@163.com>
+Subject: [PATCH v2 11/11] phy: phy-rockchip-samsung-hdptx: Don't request RST_PHY/RST_ROPLL/RST_LCPLL
+Date: Wed,  4 Sep 2024 20:06:03 +0800
+Message-Id: <20240904120603.3857169-1-andyshrk@163.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20240904120238.3856782-1-andyshrk@163.com>
 References: <20240904120238.3856782-1-andyshrk@163.com>
 MIME-Version: 1.0
-X-CM-TRANSID: _____wA3HxFgTNhmiRMZCA--.50872S9
-X-Coremail-Antispam: 1Uf129KBjvJXoWxtrW8JFWkXF43Zr17tw45GFg_yoWxtr45pa
-	yxZr9xWF43Cr4agry7Ja98uFyak3sxAw4a93ZrKFsrKr15Kry7Wr1UK3Z8Cr1DWFy8Zr1j
-	vw4avryDur17tFJanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07jsF4iUUUUU=
+X-CM-TRANSID: _____wC3vwgsTdhmkS0vFg--.47088S2
+X-Coremail-Antispam: 1Uf129KBjvJXoW7Kr15Cw4xCF47Kr1rZr1DWrg_yoW8tFy5pF
+	s3CF47JrWqgFn8Wa1UKFn8CFW8JF9IqF1YqFs3Z3Wxtr1xArWDuryfuF95Xr1DJrW2qayF
+	kw4xtFWfu3W2vwUanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07UKNtsUUUUU=
 X-Originating-IP: [58.22.7.114]
-X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/xtbB0g5QXmWX0KXmJgAAsV
+X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/xtbB0hFQXmWX0KX1NAAAsL
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240904_050318_039378_1B68CE51 
-X-CRM114-Status: GOOD (  14.04  )
+X-CRM114-CacheID: sfid-20240904_050629_113298_AFA6EF3A 
+X-CRM114-Status: UNSURE (   9.84  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,184 +75,73 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Andy Yan <andy.yan@rock-chips.com>
 
-In the upcoming VOP of rk3576, a window cannot attach to all Video
-Ports, we introduce a possible_vp_mask for every window to indicate
-which Video Ports this window can attach to.
+RST_PHY/RST_ROPLL/RST_LCPLL are used for debug only,
+and there are not exported on rk3576.
 
 Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
 ---
 
 (no changes since v1)
 
- drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 18 +++++++++++++++++-
- drivers/gpu/drm/rockchip/rockchip_drm_vop2.h |  1 +
- drivers/gpu/drm/rockchip/rockchip_vop2_reg.c | 14 ++++++++++++++
- 3 files changed, 32 insertions(+), 1 deletion(-)
+ .../phy/rockchip/phy-rockchip-samsung-hdptx.c   | 17 +----------------
+ 1 file changed, 1 insertion(+), 16 deletions(-)
 
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-index 8e1c3203e8e8..df8194697a58 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-@@ -2100,6 +2100,10 @@ static int vop2_create_crtcs(struct vop2 *vop2)
- 			if (win->base.type == DRM_PLANE_TYPE_PRIMARY)
- 				continue;
+diff --git a/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c b/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
+index 946c01210ac8..f3f03914bf78 100644
+--- a/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
++++ b/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
+@@ -252,13 +252,10 @@ struct ropll_config {
+ };
  
-+			/* If this win can not attached to this VP */
-+			if (!(win->data->possible_vp_mask & BIT(vp->id)))
-+				continue;
-+
- 			if (vop2_is_mirror_win(win))
- 				continue;
+ enum rk_hdptx_reset {
+-	RST_PHY = 0,
+-	RST_APB,
++	RST_APB = 0,
+ 	RST_INIT,
+ 	RST_CMN,
+ 	RST_LANE,
+-	RST_ROPLL,
+-	RST_LCPLL,
+ 	RST_MAX
+ };
  
-@@ -2131,7 +2135,19 @@ static int vop2_create_crtcs(struct vop2 *vop2)
+@@ -655,11 +652,6 @@ static void rk_hdptx_phy_disable(struct rk_hdptx_phy *hdptx)
+ {
+ 	u32 val;
  
- 		win->type = DRM_PLANE_TYPE_OVERLAY;
+-	/* reset phy and apb, or phy locked flag may keep 1 */
+-	reset_control_assert(hdptx->rsts[RST_PHY].rstc);
+-	usleep_range(20, 30);
+-	reset_control_deassert(hdptx->rsts[RST_PHY].rstc);
+-
+ 	reset_control_assert(hdptx->rsts[RST_APB].rstc);
+ 	usleep_range(20, 30);
+ 	reset_control_deassert(hdptx->rsts[RST_APB].rstc);
+@@ -780,10 +772,6 @@ static int rk_hdptx_ropll_tmds_cmn_config(struct rk_hdptx_phy *hdptx,
  
--		possible_crtcs = (1 << nvps) - 1;
-+		possible_crtcs = 0;
-+		nvp = 0;
-+		for (j = 0; j < vop2_data->nr_vps; j++) {
-+			vp = &vop2->vps[j];
-+
-+			if (!vp->crtc.port)
-+				continue;
-+
-+			if (win->data->possible_vp_mask & BIT(vp->id))
-+				possible_crtcs |= BIT(nvp);
-+			nvp++;
-+		}
-+
- 		ret = vop2_plane_init(vop2, win, possible_crtcs);
- 		if (ret) {
- 			drm_err(vop2->drm, "failed to init overlay plane %s: %d\n",
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h
-index 871d9bcd1d80..064167afebf4 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h
-@@ -164,6 +164,7 @@ struct vop2_win_data {
- 	unsigned int phys_id;
+ 	rk_hdptx_pre_power_up(hdptx);
  
- 	u32 base;
-+	u32 possible_vp_mask;
- 	enum drm_plane_type type;
+-	reset_control_assert(hdptx->rsts[RST_ROPLL].rstc);
+-	usleep_range(20, 30);
+-	reset_control_deassert(hdptx->rsts[RST_ROPLL].rstc);
+-
+ 	rk_hdptx_multi_reg_write(hdptx, rk_hdtpx_common_cmn_init_seq);
+ 	rk_hdptx_multi_reg_write(hdptx, rk_hdtpx_tmds_cmn_init_seq);
  
- 	u32 nformats;
-diff --git a/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c b/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
-index a8a129892977..48cd29399df4 100644
---- a/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
-@@ -339,6 +339,7 @@ static const struct vop2_win_data rk3568_vop_win_data[] = {
- 		.name = "Smart0-win0",
- 		.phys_id = ROCKCHIP_VOP2_SMART0,
- 		.base = 0x1c00,
-+		.possible_vp_mask = BIT(0) | BIT(1) | BIT(2),
- 		.formats = formats_smart,
- 		.nformats = ARRAY_SIZE(formats_smart),
- 		.format_modifiers = format_modifiers,
-@@ -352,6 +353,7 @@ static const struct vop2_win_data rk3568_vop_win_data[] = {
- 	}, {
- 		.name = "Smart1-win0",
- 		.phys_id = ROCKCHIP_VOP2_SMART1,
-+		.possible_vp_mask = BIT(0) | BIT(1) | BIT(2),
- 		.formats = formats_smart,
- 		.nformats = ARRAY_SIZE(formats_smart),
- 		.format_modifiers = format_modifiers,
-@@ -365,6 +367,7 @@ static const struct vop2_win_data rk3568_vop_win_data[] = {
- 	}, {
- 		.name = "Esmart1-win0",
- 		.phys_id = ROCKCHIP_VOP2_ESMART1,
-+		.possible_vp_mask = BIT(0) | BIT(1) | BIT(2),
- 		.formats = formats_rk356x_esmart,
- 		.nformats = ARRAY_SIZE(formats_rk356x_esmart),
- 		.format_modifiers = format_modifiers,
-@@ -378,6 +381,7 @@ static const struct vop2_win_data rk3568_vop_win_data[] = {
- 	}, {
- 		.name = "Esmart0-win0",
- 		.phys_id = ROCKCHIP_VOP2_ESMART0,
-+		.possible_vp_mask = BIT(0) | BIT(1) | BIT(2),
- 		.formats = formats_rk356x_esmart,
- 		.nformats = ARRAY_SIZE(formats_rk356x_esmart),
- 		.format_modifiers = format_modifiers,
-@@ -392,6 +396,7 @@ static const struct vop2_win_data rk3568_vop_win_data[] = {
- 		.name = "Cluster0-win0",
- 		.phys_id = ROCKCHIP_VOP2_CLUSTER0,
- 		.base = 0x1000,
-+		.possible_vp_mask = BIT(0) | BIT(1) | BIT(2),
- 		.formats = formats_cluster,
- 		.nformats = ARRAY_SIZE(formats_cluster),
- 		.format_modifiers = format_modifiers_afbc,
-@@ -407,6 +412,7 @@ static const struct vop2_win_data rk3568_vop_win_data[] = {
- 		.name = "Cluster1-win0",
- 		.phys_id = ROCKCHIP_VOP2_CLUSTER1,
- 		.base = 0x1200,
-+		.possible_vp_mask = BIT(0) | BIT(1) | BIT(2),
- 		.formats = formats_cluster,
- 		.nformats = ARRAY_SIZE(formats_cluster),
- 		.format_modifiers = format_modifiers_afbc,
-@@ -572,6 +578,7 @@ static const struct vop2_win_data rk3588_vop_win_data[] = {
- 		.name = "Cluster0-win0",
- 		.phys_id = ROCKCHIP_VOP2_CLUSTER0,
- 		.base = 0x1000,
-+		.possible_vp_mask = BIT(0) | BIT(1) | BIT(2) | BIT(3),
- 		.formats = formats_cluster,
- 		.nformats = ARRAY_SIZE(formats_cluster),
- 		.format_modifiers = format_modifiers_afbc,
-@@ -587,6 +594,7 @@ static const struct vop2_win_data rk3588_vop_win_data[] = {
- 		.name = "Cluster1-win0",
- 		.phys_id = ROCKCHIP_VOP2_CLUSTER1,
- 		.base = 0x1200,
-+		.possible_vp_mask = BIT(0) | BIT(1) | BIT(2) | BIT(3),
- 		.formats = formats_cluster,
- 		.nformats = ARRAY_SIZE(formats_cluster),
- 		.format_modifiers = format_modifiers_afbc,
-@@ -602,6 +610,7 @@ static const struct vop2_win_data rk3588_vop_win_data[] = {
- 		.name = "Cluster2-win0",
- 		.phys_id = ROCKCHIP_VOP2_CLUSTER2,
- 		.base = 0x1400,
-+		.possible_vp_mask = BIT(0) | BIT(1) | BIT(2) | BIT(3),
- 		.formats = formats_cluster,
- 		.nformats = ARRAY_SIZE(formats_cluster),
- 		.format_modifiers = format_modifiers_afbc,
-@@ -617,6 +626,7 @@ static const struct vop2_win_data rk3588_vop_win_data[] = {
- 		.name = "Cluster3-win0",
- 		.phys_id = ROCKCHIP_VOP2_CLUSTER3,
- 		.base = 0x1600,
-+		.possible_vp_mask = BIT(0) | BIT(1) | BIT(2) | BIT(3),
- 		.formats = formats_cluster,
- 		.nformats = ARRAY_SIZE(formats_cluster),
- 		.format_modifiers = format_modifiers_afbc,
-@@ -631,6 +641,7 @@ static const struct vop2_win_data rk3588_vop_win_data[] = {
- 	}, {
- 		.name = "Esmart0-win0",
- 		.phys_id = ROCKCHIP_VOP2_ESMART0,
-+		.possible_vp_mask = BIT(0) | BIT(1) | BIT(2) | BIT(3),
- 		.formats = formats_esmart,
- 		.nformats = ARRAY_SIZE(formats_esmart),
- 		.format_modifiers = format_modifiers,
-@@ -644,6 +655,7 @@ static const struct vop2_win_data rk3588_vop_win_data[] = {
- 	}, {
- 		.name = "Esmart1-win0",
- 		.phys_id = ROCKCHIP_VOP2_ESMART1,
-+		.possible_vp_mask = BIT(0) | BIT(1) | BIT(2) | BIT(3),
- 		.formats = formats_esmart,
- 		.nformats = ARRAY_SIZE(formats_esmart),
- 		.format_modifiers = format_modifiers,
-@@ -658,6 +670,7 @@ static const struct vop2_win_data rk3588_vop_win_data[] = {
- 		.name = "Esmart2-win0",
- 		.phys_id = ROCKCHIP_VOP2_ESMART2,
- 		.base = 0x1c00,
-+		.possible_vp_mask = BIT(0) | BIT(1) | BIT(2) | BIT(3),
- 		.formats = formats_esmart,
- 		.nformats = ARRAY_SIZE(formats_esmart),
- 		.format_modifiers = format_modifiers,
-@@ -670,6 +683,7 @@ static const struct vop2_win_data rk3588_vop_win_data[] = {
- 	}, {
- 		.name = "Esmart3-win0",
- 		.phys_id = ROCKCHIP_VOP2_ESMART3,
-+		.possible_vp_mask = BIT(0) | BIT(1) | BIT(2) | BIT(3),
- 		.formats = formats_esmart,
- 		.nformats = ARRAY_SIZE(formats_esmart),
- 		.format_modifiers = format_modifiers,
+@@ -958,13 +946,10 @@ static int rk_hdptx_phy_probe(struct platform_device *pdev)
+ 		return dev_err_probe(dev, PTR_ERR(hdptx->regmap),
+ 				     "Failed to init regmap\n");
+ 
+-	hdptx->rsts[RST_PHY].id = "phy";
+ 	hdptx->rsts[RST_APB].id = "apb";
+ 	hdptx->rsts[RST_INIT].id = "init";
+ 	hdptx->rsts[RST_CMN].id = "cmn";
+ 	hdptx->rsts[RST_LANE].id = "lane";
+-	hdptx->rsts[RST_ROPLL].id = "ropll";
+-	hdptx->rsts[RST_LCPLL].id = "lcpll";
+ 
+ 	ret = devm_reset_control_bulk_get_exclusive(dev, RST_MAX, hdptx->rsts);
+ 	if (ret)
 -- 
 2.34.1
 
