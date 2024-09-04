@@ -4,109 +4,169 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4236ACA0ED3
-	for <linux-rockchip@archiver.kernel.org>; Wed,  4 Sep 2024 08:32:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9D3DCCA0ED3
+	for <linux-rockchip@archiver.kernel.org>; Wed,  4 Sep 2024 08:54:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
-	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ahFwRYF1L4+bQjekBRLowMqc+VK9Xi7RUsKyCiPwcWI=; b=nfr61otfB8avks
-	2nw0V0fIYeI6yhtegpbTflf0+FNkHWF5PNN6tsMBw5MTOeu7PMDUAzul0vSVxePqMGOOfxQMIAij7
-	jZRlItqO4M8qzSwoH5lr1FL2JaaGFZI8FEhP7MoG/ZNY4BYBXMTGDi7NKrWaG2YZn68TxAyrzAQ4d
-	tTdc4EcAb5YI9oJCEVRAUX0GQvqBhWazV+k8Ghm+gDn3TRGlmGOBxlz0hmBJuHLkXqRPJKyIbt6Gr
-	nM4PirxyjOG6Ey4kRwWmpMO584OD2ojMwp+LdXgzANhNlOBZCtFr4AHXIGqyHjZFWJMfyvumVBq+A
-	zN2KOTGksgEZ6v5SOFiA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:From:References:Cc:To:
+	Subject:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=pkDM4B6VDzi/jJfP29MG3S+8oHgGwHv4TZqUDu/TkPE=; b=ENU8JF0jZNLGhCj7yE2G0G8Wmr
+	8xpzqDo8hVZD9M+QI+UhoGabML4vtreJUFYPpmAWc7TxTI0XXk1cAbx9+/v+VifnpwbQSLXYRnkFO
+	vAJ6lG6NPteR0JghQy0As637qhc1COcNstulRJdP2ML48oZYu05SUK7jriUId1+6Upff0Vu1M0ig9
+	6K/VeNBoscnD8+NplnBj7uuEps08bjcS5e2WqrzZw8qNiusiFyfyXcKePmvYdR6Q/DwlMu8hxUZ5w
+	AF52N/9hqWCVz4khl8An80ItElORiUV1KIBAg2tZ3XdJ29Vdb3jIceje/gNjDslDir5Aed+9C8LK/
+	Jy/T1beQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sllRZ-00000003QBU-0nk0;
-	Wed, 04 Sep 2024 08:32:49 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1sllmU-00000003XGk-1Ia0;
+	Wed, 04 Sep 2024 08:54:26 +0000
+Received: from mail-northeuropeazlp170120003.outbound.protection.outlook.com ([2a01:111:f403:c200::3] helo=DU2PR03CU002.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sll9I-00000003KsO-3lcG
-	for linux-rockchip@bombadil.infradead.org;
-	Wed, 04 Sep 2024 08:13:57 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
-	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Sender:Reply-To:Content-ID:Content-Description;
-	bh=4GTsj+/6I+4aRzJauq9YUMpgA1HZJq8pEaLGWrwrm8A=; b=CvT5nIf2RFaIQZSAg2HlQ3NupO
-	F5i8hR+ulRwzSrDLrwIINYSkp3y3alEtIxA6yG8RQPZYVIcNjz7dGj5tg3me3DmZySX36KlRmqiTh
-	Y8sOt/dkCVCzqIUYOefNjm9V8MqPQTgGevmpYp+KjpFIc/l6g7aIKomGZLyKLSAv4dKgfV2O5KWiR
-	K5XyUCd/dQ2pO35o8C6Tsuyu1hkK4Qh543BeebVs42KZ0lXSQLJTfCXd0bIZyn+Fk+H4B+sEyjkyx
-	d3i6xfA5PEOuf2PeP32h9lXsQ4cHIQ/R89P5iE7jNZSXbPsSTKu3a16fnUgukUtyri1RNkUUwFkoV
-	xTAHwmgQ==;
-Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
-	by desiato.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1sll94-00000000Al0-0CJz
-	for linux-rockchip@lists.infradead.org;
-	Wed, 04 Sep 2024 08:13:46 +0000
-Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
-	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
-	(Exim 4.92)
-	(envelope-from <mkl@pengutronix.de>)
-	id 1sll8y-0007dM-Li
-	for linux-rockchip@lists.infradead.org; Wed, 04 Sep 2024 10:13:36 +0200
-Received: from [2a0a:edc0:0:b01:1d::7b] (helo=bjornoya.blackshift.org)
-	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <mkl@pengutronix.de>)
-	id 1sll8s-005OsR-L7
-	for linux-rockchip@lists.infradead.org; Wed, 04 Sep 2024 10:13:30 +0200
-Received: from dspam.blackshift.org (localhost [127.0.0.1])
-	by bjornoya.blackshift.org (Postfix) with SMTP id 2389A332031
-	for <linux-rockchip@lists.infradead.org>; Wed, 04 Sep 2024 08:13:30 +0000 (UTC)
-Received: from hardanger.blackshift.org (unknown [172.20.34.65])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(Client did not present a certificate)
-	by bjornoya.blackshift.org (Postfix) with ESMTPS id A0714331F63;
-	Wed, 04 Sep 2024 08:13:22 +0000 (UTC)
-Received: from [172.20.34.65] (localhost [::1])
-	by hardanger.blackshift.org (OpenSMTPD) with ESMTP id ffdfeab7;
-	Wed, 4 Sep 2024 08:13:20 +0000 (UTC)
-From: Marc Kleine-Budde <mkl@pengutronix.de>
-Date: Wed, 04 Sep 2024 10:12:53 +0200
-Subject: [PATCH can-next v5 09/20] can: rockchip_canfd:
- rkcanfd_handle_rx_int_one(): implement workaround for erratum 5: check for
- empty FIFO
+	id 1sllUR-00000003R8s-1wyq;
+	Wed, 04 Sep 2024 08:35:50 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=POH98gKtyI83K0RQBGCZI2kkBGbcJDb/pQQ/gnCJW9/yCoXgzBapyoWbLYWx4wH0RK0bM+MaA+hc5VFzaUIw2X0tCfBL7e7ScmzHjFqIGe0tb1RRgO7L1sB8TwsSG+lAdUp4odbBsCmq1CTOAJ4WWFZrDrCYcvbq156Oo2V2XGOqFMZd6kVMWSSmPNdxjSg363HCJXXEsBdLjbjDVAavZYvCZEBo2qp8tW9oWTpO8yrDY5yrBSROGb5kcfsYsdUCbGRsZxwXKP3UJhzZzLEHr1vBMbbyTWzwWawtJZEzd6/e0JYMLV4kWEDeVG5FIz7FSTIDFFuOrFslulrPkFzIlQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=5QNkXGXj9tOd8uIhAHr199jXTNhbUKAr796LTa/XfMc=;
+ b=HLc6qCd9qzDwJpPJgQMwP4Lm92gSpeMD/zTtyZ2bQxg2mw6Y2dVP+XEuxh1fYco1SlR5wZ940a71pl+FiST3/4zk71GcLjp1OSov8TcnBxxlfdkrq5sRRr6SL/tRzf1Q6h4vw+hJMmDrClZwDIEvAxY4w4LD5qrvJ5IueS1jkat6fI0iZuPskXjABA43E0M5c80tzW/Z0D1i0X3iY1cfL9MIu8KRahG+mwCM2HqzJzqQliDALqLF/MlszOtb+bsctJNOGVVegCXGVr4SStr6Enh7wCl6QxcntGC862C/B/UObu+F1uNkqpsTaFklsvoxvRMrv2fC9ieEXVewPuBumw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=cherry.de; dmarc=pass action=none header.from=cherry.de;
+ dkim=pass header.d=cherry.de; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cherry.de;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=5QNkXGXj9tOd8uIhAHr199jXTNhbUKAr796LTa/XfMc=;
+ b=DcrnkS7V6SC7u73T4J/KGm1SZxaM6dmmwg3MzCK9IM5HRnj3xyFQlEfUGCaqjlaMmDyvcb5FRPHaf7NTMElD19ZeZwPsHZtnmnF5d6GSFXSxEp46CJ3SajRfbSA/dabReTRX6DQetGwuszUY923Aw74WSfZMaJ56cbrTTiJ/xWA=
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=cherry.de;
+Received: from DU0PR04MB9562.eurprd04.prod.outlook.com (2603:10a6:10:321::10)
+ by VI1PR04MB7005.eurprd04.prod.outlook.com (2603:10a6:803:136::9) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7918.25; Wed, 4 Sep
+ 2024 08:35:36 +0000
+Received: from DU0PR04MB9562.eurprd04.prod.outlook.com
+ ([fe80::ad4d:8d53:1663:d181]) by DU0PR04MB9562.eurprd04.prod.outlook.com
+ ([fe80::ad4d:8d53:1663:d181%6]) with mapi id 15.20.7918.020; Wed, 4 Sep 2024
+ 08:35:36 +0000
+Message-ID: <45c51083-ee63-45e7-b8d4-3822213530f4@cherry.de>
+Date: Wed, 4 Sep 2024 10:35:33 +0200
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v7 2/8] i2c: muxes: add support for tsd,mule-i2c
+ multiplexer
+To: Andi Shyti <andi.shyti@kernel.org>
+Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Quentin Schulz
+ <quentin.schulz@cherry.de>, Peter Rosin <peda@axentia.se>,
+ Jean Delvare <jdelvare@suse.com>, Guenter Roeck <linux@roeck-us.net>,
+ Heiko Stuebner <heiko@sntech.de>, linux-i2c@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-hwmon@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org,
+ Wolfram Sang <wsa+renesas@sang-engineering.com>
+References: <20240902-dev-mule-i2c-mux-v7-0-bf7b8f5385ed@cherry.de>
+ <20240902-dev-mule-i2c-mux-v7-2-bf7b8f5385ed@cherry.de>
+ <fvk5u2j7wu7pjrlpbbnggp3vhopotctu2vr3fh77kl2icrvnyt@tukh2ytkiwdz>
+Content-Language: en-US
+From: Farouk Bouabid <farouk.bouabid@cherry.de>
+In-Reply-To: <fvk5u2j7wu7pjrlpbbnggp3vhopotctu2vr3fh77kl2icrvnyt@tukh2ytkiwdz>
+X-ClientProxiedBy: BE1P281CA0195.DEUP281.PROD.OUTLOOK.COM
+ (2603:10a6:b10:8d::12) To DU0PR04MB9562.eurprd04.prod.outlook.com
+ (2603:10a6:10:321::10)
 MIME-Version: 1.0
-Message-Id: <20240904-rockchip-canfd-v5-9-8ae22bcb27cc@pengutronix.de>
-References: <20240904-rockchip-canfd-v5-0-8ae22bcb27cc@pengutronix.de>
-In-Reply-To: <20240904-rockchip-canfd-v5-0-8ae22bcb27cc@pengutronix.de>
-To: kernel@pengutronix.de, Alibek Omarov <a1ba.omarov@gmail.com>, 
- Vincent Mailhol <mailhol.vincent@wanadoo.fr>, 
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
- Philipp Zabel <p.zabel@pengutronix.de>, 
- Elaine Zhang <zhangqing@rock-chips.com>, 
- David Jander <david.jander@protonic.nl>
-Cc: Simon Horman <horms@kernel.org>, linux-can@vger.kernel.org, 
- netdev@vger.kernel.org, devicetree@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
- linux-kernel@vger.kernel.org, Marc Kleine-Budde <mkl@pengutronix.de>
-X-Mailer: b4 0.15-dev-99b12
-X-Developer-Signature: v=1; a=openpgp-sha256; l=4011; i=mkl@pengutronix.de;
- h=from:subject:message-id; bh=gTvq7gHTXf9S/cqPeCfVe7J+meaf29zJX+AvP7bOZn8=;
- b=owEBbQGS/pANAwAKASg4oj56LbxvAcsmYgBm2BaPeIrctjvtuUXSNHX0rSrSlIEBYZOETZXt1
- lLz7HKt4zaJATMEAAEKAB0WIQRQQLqG4LYE3Sm8Pl8oOKI+ei28bwUCZtgWjwAKCRAoOKI+ei28
- b6rkB/9vXJFKAya63M40ICu1SrKQooaTP3GWEI/RpH/tvQoBuUsR+GJNynz5Yvjarh4SXZZ4MNl
- MTNGp84YPOR1wvZy9GL4sHzGSGecx8oK7Xm8yTH5s2zKP5IgrsU7uEvwwd9wNFVCttKPV/u5tsM
- uuEL0oBYboZUOyiHUi66MUBnuD51rV+c/ME/2Djt7T2+r1tlHrTlsamFEOwt02GlMYc2nWpzHXI
- Ok6fDC/TDxYRz/VjVsWoX4wcoC/3G/TfMB1rlDg6tBexWhhzXA3p0AI5HVVGTpNFV1tg08xWry0
- pctZeBACTze1KHocrIhyvyGRONtGJ6naZZ5z5eeSLMYJ3rGh
-X-Developer-Key: i=mkl@pengutronix.de; a=openpgp;
- fpr=C1400BA0B3989E6FBC7D5B5C2B5EE211C58AEA54
-X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
-X-SA-Exim-Mail-From: mkl@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: DU0PR04MB9562:EE_|VI1PR04MB7005:EE_
+X-MS-Office365-Filtering-Correlation-Id: 691af26c-7b94-46e6-8744-08dcccbc8c6a
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|366016|7416014|376014|1800799024;
+X-Microsoft-Antispam-Message-Info: =?utf-8?B?T1hFNGIvQnA3bjIxcmNjaEZlSTVnRUFFLzV3ZTRIdjY4SDYrcHV2a0hHSktK?=
+ =?utf-8?B?YzVFOXVHenNOR0tmaEQ4Yldsc2xRbUxRTnl4aFJMZXRmYzJFMDZFK005VnFZ?=
+ =?utf-8?B?UFhXY1MyYlYxbmtpRG1wQ0s5b052V05zYjU0Z01uYkVnTG9TTVVldStNYXRp?=
+ =?utf-8?B?akpoZFp0ZUk5SkNvTngwZFJPNldqL21xTkNZcFFIRlVZa2xud25Sa0RQVTlB?=
+ =?utf-8?B?ZTlwcjNVRlpRZkkwVnI3K3UwaFB1NDdFd1FJSEVMOWg5QmdneWVvVm5VNlZJ?=
+ =?utf-8?B?UmRTWHI1TE9iS1JqZjljeitPL1BFc1Qwalk0Y1B1cW5mdVdQZlByVHpBWk96?=
+ =?utf-8?B?NkZiTlVZZDBzL1JMM2tDdkgzWUF3WnN6OGNyLzF3Ui9FYjNpdldNTkUrM2Y1?=
+ =?utf-8?B?TWZweVJkNlpDaVNRZW9ic2pWclVaVmZORUZlYlY2eVpwcjJrbnkzRnhSd2c5?=
+ =?utf-8?B?bWo1cGJwN0hUUmZ1YUQ1cmFuMytlaVQ5OHhDZkpLL08wWGttOHU2d3FmelJh?=
+ =?utf-8?B?V0dUd3BJWDNjQmk5THppcWlPcnFWamxkTHZrY0tGOEpqeUFUUVE0VDRWMmlW?=
+ =?utf-8?B?dHFKc1RjeFBGdlRQeGFTWnJOa3NDcEEyNzA3TkZsZHRDYytMck1Ld2FsdkJM?=
+ =?utf-8?B?SE1DK21PVjVmbEViK0RqV3RSM0lidEVtczRkMW5vVno4MGR1a2ZzaW5xRDJa?=
+ =?utf-8?B?SUsvSWtla0I2MnNrS213aTYyZHJGbkJlSUQ2REl1cFczbjNYT2pxR1N1cElN?=
+ =?utf-8?B?LzRnbGxCMFM2bVh4RjhGSDIzWVdiVFlzdUtqclBIQU5jZGdNa0FCeFNua3Av?=
+ =?utf-8?B?Ui9DeU9haFhDcUdQQkQrWW9TcWRsRUEvY1dER0F1M0FodEVJcnU5QVpGckh3?=
+ =?utf-8?B?YUFFbTR3UWVKaFMwRXFzY3dUSVJzdGQrNkNuYTdZc1YyaUhhS0IzL056YWs3?=
+ =?utf-8?B?MlZvRXZwUksyQzBDTlg2c21pM0djb2pIN3pSQTQ4S2dhQUFEZnRJbTc3aVlR?=
+ =?utf-8?B?TFhTZzYwMWJFOTFiZktsUG9NTjhLb25ZaGdzZzl0TEpJS2V6QlpLeUkvM01E?=
+ =?utf-8?B?OU8zYUhRSGZjeURUU2pBQjAyeUE3TlByUzIxTmd0SW50V1BxcWh4KzAyajYz?=
+ =?utf-8?B?cFJIVGJQelFRRGcvZDRvWWdwdzdjYVgrT3M4ZGFrWmdQa0tHNUI1V3JZd2Nh?=
+ =?utf-8?B?dStIeG1VSjRFZGRUTVU3TURXZHlMbGFjdGprMHllMmQrZFRvendubVB4Nngz?=
+ =?utf-8?B?ZGlJTHFuZjRxWjY5VDFYRldPKzA2amlKaFVEM0pUUktOYkNEMEZVeGNlSU9K?=
+ =?utf-8?B?RFQ3RFlnOVlFdHBtcUk0allyOFJHT1JXWWxPQjJFOUZSVTlXQWpZNXpmZnFM?=
+ =?utf-8?B?Tnp6cHV3d3pWb0NvZ1JzVHBIc2JtSGhiZWhqUk9TdXdKQU83WW9VaWN3T2hY?=
+ =?utf-8?B?ZUpJR3ZHaEE4SFB3MXlQVmh5OW45dkxNL3JIK2pPMjltdnVZZXlMTWd5WWZo?=
+ =?utf-8?B?V0FpWUl4V2VmSGxZVU55Y2t0ek9ZR3plVmNrMXJzV3dPTXVEWWhyY05JNEpu?=
+ =?utf-8?B?V2QwWkVFTHByM3BCUnFjUElrZGJrVUlzdzZsbWg5SEJ3WVh3ekZKTTl0YUtl?=
+ =?utf-8?B?cmQ4SGJqYWNBayt3ZEYvdFUreHVIWWIrUzB1M203TzE3b0VCN1hOWVcwVGJT?=
+ =?utf-8?B?QiswZCtiVmh1eWl1MFpUSDhLOXVzNkNiQTN2OWZ2dSt1RW1lVCt6TzFhUUox?=
+ =?utf-8?B?cHJmeERpZm9aOUNaQ0xadnpWM1VtOFp3T2xBeGp1RmwyNmhtZXdURTdFRWdx?=
+ =?utf-8?B?Q0o0dHNQb2N0SWFlcTBVUT09?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:DU0PR04MB9562.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(366016)(7416014)(376014)(1800799024);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?MndvTXFtakl6RkcxZjN6RlRNeDVDVUV6RHBhQlpBcFFNZXdIU1JkNEtieGdX?=
+ =?utf-8?B?akEyTU1KeGJRaTBTTnUvVkJIWUNneWk2RERXM0JwK3BwTmJLd2JXR0VwU01T?=
+ =?utf-8?B?RTB6L3dWMVY1ck10MlBobmdPSkhvSWZ2dW9VRGV2UVRVSkFHR0gxTmxTQWh2?=
+ =?utf-8?B?SUYzcFgrZDVIZFlWdzRZT0pqdU5ZRDJoN2tpQXY2OGM3UWs1VTNMNFIzaDNr?=
+ =?utf-8?B?ZDNTbUkxRG9mV0U3c0dCSkxvWWpSNDJzR2Q2RDdwRWF6dGFSM2pNazVOcHRQ?=
+ =?utf-8?B?RXFFMVl6bFAyaFFsaytlaG9ZeWJ0bjF2Q3pqSDd1ZDF2c01GMnNOSkU1T2xE?=
+ =?utf-8?B?WFpPTWhibmdLNk9tSCsxWUNEV0lBZEEwN1NaV2lqR01PMDJOOGl5RWhGeWFH?=
+ =?utf-8?B?L2xPNXlnb24wMm9NamRsdzh4SmRVOXZ1cDM0L1hKVFVSZDZNUlJuQnYzcXpl?=
+ =?utf-8?B?dFhBUFVHak5mQnd5OXlyMFhCZms3MVE2NjBOUVViSStaR0RrSGxUaEErc2hl?=
+ =?utf-8?B?anVGVDZUZFdBbkpCNUxBWitEUnJLZ3YwZHhTNzUvYXR4dXF3S0FleW8wMUkx?=
+ =?utf-8?B?UGdzL0hCRFVPWW1nSHZMZ25jeEhRMnpmZVRnZ1ZGeGxPN0F6U1VVQ2dBUUZV?=
+ =?utf-8?B?MEg1Ukx5cnJMQW9jMWQzK1BMVWhWRUtkNGkwNUlyT3djZlVjMko4blJ5SFR1?=
+ =?utf-8?B?eW82aGdha2hhWEZEaWU1UVF3alZmd0FmYitwc3NkRVVIR2dEa0l2NmhjQ3NU?=
+ =?utf-8?B?MStvU0NUQnd6YnJ5dndKdUVoZUNKQXVWN2J1NmRkVDNHYVhyam1yRUVWd25N?=
+ =?utf-8?B?Ym41cmNkdzNROWhqTFJDbnc1WDRZR3hZdzJSdFB1V3ljOS80clYwSHZIUGhN?=
+ =?utf-8?B?OWFUNXRRWXllMXpwMEFaemFzWjVFTWR2bTVsYlhmOFUzMUtYdGNFb0hSMXhN?=
+ =?utf-8?B?NGIwejRsa3VaaklhbXo0SEViQkZBOE5zcUI2SHlrVHpTU0VzRmdlNjVvdHh2?=
+ =?utf-8?B?eTV2SkRVMnRjaVFpK2lHY3V3QTBPeEIvYkhHWEpYVmFOTTU4UEIvSVNhL3lm?=
+ =?utf-8?B?eW9PM0ZJdGl4d1VCSm9QTklQa0c0blduc0JIdXNSSWhqbWYzZjRENE9Uc00v?=
+ =?utf-8?B?QUdJc2twYmdrUFNxcU1KYlZtTGlWR2E2Qlc3RkJjTENIY2YxUnR1MW8xSTFk?=
+ =?utf-8?B?NGlsNjVadWxuOXVVZkFOaUlDcElMTE81QVF6S3RwYnF4Y25mYjlXNG4remN4?=
+ =?utf-8?B?U1dIamhHTGFMR3BvbXVKQ09tSmVENSs2R3hsQU85dUlrZU5ja0xCRVRKV2o2?=
+ =?utf-8?B?YkVDWjBVRFQ3V010SzZlc0JWSjlpS29ROW4zbVIrT1BWb1d6WHRzLzNoTU9Q?=
+ =?utf-8?B?elFtUnhoN1lQTEZXRVRtMjcrNkRKR3RPb2ZLT3hxd3VncitpZTJ4MlZNc29v?=
+ =?utf-8?B?SjVabVFidUNGVHpweVp2K0lXdkJrYTBWeFRFNmU5ZjBFaFd1dTJkWk5JdXJZ?=
+ =?utf-8?B?ZXhsREluMU5lYmRWcEpwSXRtQTNDa1JUcEsxc213N2JBYU56elZBcFEyNWh3?=
+ =?utf-8?B?M1BxcDRNZFhvL0xLMDREWjVRS1FZZFl1Y2pvRWpRRk5jZEUrcmc1VnlMalNl?=
+ =?utf-8?B?a0RaZkpXcGhmY2dpWGZIUVEwb3JCTDFJZGhrWkRDeEd2VytoQW82R0RjclZE?=
+ =?utf-8?B?cmZVeW1ocVJ4c1VuNUY4ZGFZTHgvTTdmeURPbmJZNnNLdEhqd2hPdjNoMGJa?=
+ =?utf-8?B?UDhlVStYNUR2UTFjV0l1bnVCU1hNQmpKYytWSHo1a2QvZG4vVVVYL1JyVWdv?=
+ =?utf-8?B?Zk9TbWk0N01kMHorZWJnN3JEcU5uWnhSbll1UFBka2xYKzlwd3U3NFU4SjhE?=
+ =?utf-8?B?a3BEYmxSNW9lNDF5SmZ1aSswNzFYaTUzNkdPajhzaUpZY3U2QzFxZ0N2bmdi?=
+ =?utf-8?B?MndGT2FIaDZEVThYN3pDZlFrbDFLRHhucjAzWFhML29DdjJGMkpVR2Z2MnJO?=
+ =?utf-8?B?Vld4RW5JTzRFKzdyVExnVFJ2bTE2OThhQXdtallEdzlmMnh2bVVGYjlUdXNK?=
+ =?utf-8?B?cW12NUtuMG4xYkkyS3AzV0Z2eVp2RzV5eTdJRzk0R2ZJcjNlZ0ZmQmxwdXly?=
+ =?utf-8?B?Z2Vza0tsVHFsY2wvYWYwcWtUMFRrYWVGT3N5bHFBQTIzT1pwQ3p0dzVobm1Q?=
+ =?utf-8?B?ZHc9PQ==?=
+X-OriginatorOrg: cherry.de
+X-MS-Exchange-CrossTenant-Network-Message-Id: 691af26c-7b94-46e6-8744-08dcccbc8c6a
+X-MS-Exchange-CrossTenant-AuthSource: DU0PR04MB9562.eurprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 04 Sep 2024 08:35:36.2877
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 5e0e1b52-21b5-4e7b-83bb-514ec460677e
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: MNM6gyk+p5EepyvD5N+HpeevED694bzlFJM0/Czyi3pAaTLTCZzr2lR9wbvkTvmPmvpAVKK8BZ3eS2MCCPtootvR/IiSh1C2lDWALPXMGhE=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: VI1PR04MB7005
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240904_091342_469099_515A641F 
-X-CRM114-Status: GOOD (  19.35  )
+X-CRM114-CacheID: sfid-20240904_013547_580735_F106A489 
+X-CRM114-Status: GOOD (  11.93  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -118,115 +178,55 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The rk3568 CAN-FD errata sheet as of Tue 07 Nov 2023 11:25:31 +08:00
-says:
+Hi Andi,
 
-| Erratum 5: Counters related to the TXFIFO and RXFIFO exhibit
-| abnormal counting behavior.
-|
-| Due to a bug in the cross-asynchronous logic of the enable signals
-| for rx_fifo_cnt and txe_fifo_frame_cnt counters, the counts of these
-| two counters become inaccurate. This issue has resulted in the
-| inability to use the TXFIFO and RXFIFO functions.
+On 03.09.24 17:13, Andi Shyti wrote:
 
-The errata sheet mentioned above states that only the rk3568v2 is
-affected by this erratum, but tests with the rk3568v2 and rk3568v3
-show that the RX_FIFO_CNT is sometimes too high. This leads to CAN
-frames being read from the FIFO, which is then already empty.
+[...]
 
-Further tests on the rk3568v2 and rk3568v3 show that in this
-situation (i.e. empty FIFO) all elements of the FIFO
-header (frameinfo, id, ts) contain the same data.
+>> +	/* Create device adapters */
+>> +	for_each_child_of_node(mux_dev->of_node, dev) {
+>> +		u32 reg;
+>> +
+>> +		ret = of_property_read_u32(dev, "reg", &reg);
+>> +		if (ret)
+>> +			return dev_err_probe(mux_dev, ret,
+>> +					     "No reg property found for %s\n",
+>> +					     of_node_full_name(dev));
+>> +
+>> +		if (old_fw && reg != 0) {
+>> +			dev_warn(mux_dev,
+>> +				 "Mux is not supported, please update Mule FW\n");
+>> +			continue;
+>> +		}
+>> +
+>> +		ret = mux_select(muxc, reg);
+>> +		if (ret) {
+>> +			dev_warn(mux_dev,
+>> +				 "Device %d not supported, please update Mule FW\n", reg);
+>> +			continue;
+>> +		}
+>> +
+>> +		ret = i2c_mux_add_adapter(muxc, 0, reg);
+>> +		if (ret)
+>> +			return ret;
+> do we need to delete the adapters we added in previous cycles?
+>
 
-On the rk3568v2 and rk3568v3, this problem only occurs extremely
-rarely with the standard clock of 300 MHz, but almost immediately at
-80 MHz.
+We calldevm_action_or_reset() before the loop to add adapter-removal to 
+the error path. I think that does the job
 
-To workaround this problem, check for empty FIFO with
-rkcanfd_fifo_header_empty() in rkcanfd_handle_rx_int_one() and exit
-early.
+for us or am I missing something ?
 
-Tested-by: Alibek Omarov <a1ba.omarov@gmail.com>
-Signed-off-by: Marc Kleine-Budde <mkl@pengutronix.de>
----
- drivers/net/can/rockchip/rockchip_canfd-rx.c | 14 ++++++++++++++
- drivers/net/can/rockchip/rockchip_canfd.h    | 22 ++++++++++++++++++++++
- 2 files changed, 36 insertions(+)
 
-diff --git a/drivers/net/can/rockchip/rockchip_canfd-rx.c b/drivers/net/can/rockchip/rockchip_canfd-rx.c
-index 5398aff0d180..609282359bca 100644
---- a/drivers/net/can/rockchip/rockchip_canfd-rx.c
-+++ b/drivers/net/can/rockchip/rockchip_canfd-rx.c
-@@ -47,6 +47,16 @@ rkcanfd_fifo_header_to_cfd_header(const struct rkcanfd_priv *priv,
- 	return len + cfd->len;
- }
- 
-+static inline bool
-+rkcanfd_fifo_header_empty(const struct rkcanfd_fifo_header *header)
-+{
-+	/* Erratum 5: If the FIFO is empty, we read the same value for
-+	 * all elements.
-+	 */
-+	return header->frameinfo == header->id &&
-+		header->frameinfo == header->ts;
-+}
-+
- static int rkcanfd_handle_rx_int_one(struct rkcanfd_priv *priv)
- {
- 	struct net_device_stats *stats = &priv->ndev->stats;
-@@ -63,6 +73,10 @@ static int rkcanfd_handle_rx_int_one(struct rkcanfd_priv *priv)
- 	rkcanfd_read_rep(priv, RKCANFD_REG_RX_FIFO_RDATA,
- 			 cfd->data, sizeof(cfd->data));
- 
-+	/* Erratum 5: Counters for TXEFIFO and RXFIFO may be wrong */
-+	if (rkcanfd_fifo_header_empty(header))
-+		return 0;
-+
- 	len = rkcanfd_fifo_header_to_cfd_header(priv, header, cfd);
- 
- 	/* Drop any received CAN-FD frames if CAN-FD mode is not
-diff --git a/drivers/net/can/rockchip/rockchip_canfd.h b/drivers/net/can/rockchip/rockchip_canfd.h
-index 3dafb5e68dc5..c775e75a2740 100644
---- a/drivers/net/can/rockchip/rockchip_canfd.h
-+++ b/drivers/net/can/rockchip/rockchip_canfd.h
-@@ -315,6 +315,28 @@
- 
- /* Erratum 5: Counters related to the TXFIFO and RXFIFO exhibit
-  * abnormal counting behavior.
-+ *
-+ * The rk3568 CAN-FD errata sheet as of Tue 07 Nov 2023 11:25:31 +08:00
-+ * states that only the rk3568v2 is affected by this erratum, but
-+ * tests with the rk3568v2 and rk3568v3 show that the RX_FIFO_CNT is
-+ * sometimes too high. This leads to CAN frames being read from the
-+ * FIFO, which is then already empty.
-+ *
-+ * Further tests on the rk3568v2 and rk3568v3 show that in this
-+ * situation (i.e. empty FIFO) all elements of the FIFO header
-+ * (frameinfo, id, ts) contain the same data.
-+ *
-+ * On the rk3568v2 and rk3568v3, this problem only occurs extremely
-+ * rarely with the standard clock of 300 MHz, but almost immediately
-+ * at 80 MHz.
-+ *
-+ * To workaround this problem, check for empty FIFO with
-+ * rkcanfd_fifo_header_empty() in rkcanfd_handle_rx_int_one() and exit
-+ * early.
-+ *
-+ * To reproduce:
-+ * assigned-clocks = <&cru CLK_CANx>;
-+ * assigned-clock-rates = <80000000>;
-  */
- #define RKCANFD_QUIRK_RK3568_ERRATUM_5 BIT(4)
- 
+Thanks,
 
--- 
-2.45.2
-
+Farouk
 
 
 _______________________________________________
