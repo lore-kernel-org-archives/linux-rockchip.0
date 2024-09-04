@@ -4,80 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AAFC8CD37A7
-	for <linux-rockchip@archiver.kernel.org>; Tue,  3 Sep 2024 23:48:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2EC97CD37BC
+	for <linux-rockchip@archiver.kernel.org>; Wed,  4 Sep 2024 01:28:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
-	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:CC:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=z94KsBB68nM4ymJBLbntviSdE0zRqj+mE1jl0ySW0HM=; b=17ZX6kBvooSS+4
-	W2CjlwiOQGU9H82ovgvTdlfxogE0nD0ZjMC+OoalVHsZdmvJikVgtHPYTgWtMiStON7SyVs8yLT73
-	nt6bvGwSlluB86VJgwlu/bHaVs6klpD/ZnZ1vzQeKVrTVqEySeX19wXiEeTFRSd+ovNQSc/mk2SRI
-	PuuUfD+8q2FpY9KkVy8Er/8ZxZgthx8mbqBshjglmQkruwCWxq9l99mK04g2IJJN4t01HI8Lr8RGU
-	J23Sb/hB2iDMal0xM9hcWvoaQN7zHGVInUnXijDdKl80nNTVbadZzJBhdV3fCKFwx2OKRBxBGXPsi
-	sNsyH7Um9uBzwl+ukVoA==;
+	List-Owner; bh=jqpvxELc2iHXx8vkuakeKVjXh99KdZbGPhvSlBYe9hY=; b=HkipS9ary45R2J
+	0n/CioCac7a9PCMeRgcVBnsRNF5vIWViv0j7sY9jIrWojO52mIThKttSRzWdbONGDXfeexfYARpz8
+	mKS2TF5DLCF3m3FlCvoimW53aR8ppuDtLfixT1nPviKnkofguVk73FQ98CQWpW3eWLQCA3FeiUepg
+	ijPLDS7pJ84aJJfL4kqxqFal+Sis0Im3/BSSgK2+EbWZgDNJwcU0S7R8iuYPeQNxRomw12DsQ6K2+
+	e0o5LrP+oaPBgdb7oXi+oyln7sKNgBPw/5DloSlKXnWidCzZQRUzhJ3qWA1eSiOUD/kzT4aAjp/Qq
+	Zq3hJ7WIg70q/5AsUBAg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sldFt-00000002KHJ-1R8X;
-	Tue, 03 Sep 2024 23:48:13 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1sleof-00000002U5j-4ANd;
+	Wed, 04 Sep 2024 01:28:13 +0000
+Received: from szxga03-in.huawei.com ([45.249.212.189])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sldEw-00000002KC4-44us;
-	Tue, 03 Sep 2024 23:47:16 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 4657C5C431F;
-	Tue,  3 Sep 2024 23:47:10 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 859A5C4CEC4;
-	Tue,  3 Sep 2024 23:47:05 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1725407233;
-	bh=syaECrjJE2kWIzyuFy7TOxjEg6HYnVTBHVpPWpttYog=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=SlGVn1gk0SxFfz9vigWKHLcKXUV+23WJ7CIDd+c5uNzmpaf/aZYK6uOZS1RQPZ/tN
-	 hQAVvb7MUldFyVb+I8H/aVa0F0p/oXV57TJMzSkPiXPhNsHT0VyDv7Fq2vOzlwo8sv
-	 HgQqYW2QhnGvPTTSKpFWy0CzYUO4QYjBdp7CIlttpKI+eGcmKCH/HzGZl2JFbrvw4/
-	 z6kd40ug/0TAokbkgyjxRGpHmB8AZaQdNHCB9WRH4Pqf+dS8ltl2Nt1Bw0ASUMYh6d
-	 AczG4sJoKR9q/H1wnI3Po2kKgG9E0V/iaqkfydnJsBTHWSdVcfyvOyVeVhqXY6QOwp
-	 vK/zpfWFdlylA==
-From: Mark Brown <broonie@kernel.org>
-To: linux-kernel@vger.kernel.org, 
- Detlev Casanova <detlev.casanova@collabora.com>
-Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
- David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>, 
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
- Andi Shyti <andi.shyti@kernel.org>, 
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
- Jiri Slaby <jirislaby@kernel.org>, 
- Wim Van Sebroeck <wim@linux-watchdog.org>, 
- Guenter Roeck <linux@roeck-us.net>, Chris Morgan <macromorgan@hotmail.com>, 
- Jonas Karlman <jonas@kwiboo.se>, Tim Lunn <tim@feathertop.org>, 
- Andy Yan <andyshrk@163.com>, Muhammed Efe Cetin <efectn@protonmail.com>, 
- Jagan Teki <jagan@edgeble.ai>, Dragan Simic <dsimic@manjaro.org>, 
- Ondrej Jirman <megi@xff.cz>, Michael Riesch <michael.riesch@wolfvision.net>, 
- Jimmy Hon <honyuenkwun@gmail.com>, Elon Zhang <zhangzj@rock-chips.com>, 
- Alexey Charkov <alchark@gmail.com>, Elaine Zhang <zhangqing@rock-chips.com>, 
- Yifeng Zhao <yifeng.zhao@rock-chips.com>, 
- Finley Xiao <finley.xiao@rock-chips.com>, Liang Chen <cl@rock-chips.com>, 
- Jamie Iles <jamie@jamieiles.com>, devicetree@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
- dri-devel@lists.freedesktop.org, linux-i2c@vger.kernel.org, 
- linux-serial@vger.kernel.org, linux-spi@vger.kernel.org, 
- linux-watchdog@vger.kernel.org, kernel@collabora.com
-In-Reply-To: <20240903152308.13565-1-detlev.casanova@collabora.com>
-References: <20240903152308.13565-1-detlev.casanova@collabora.com>
-Subject: Re: (subset) [PATCH v4 0/9] Add device tree for ArmSoM Sige 5
- board
-Message-Id: <172540722527.175332.15576202732090473513.b4-ty@kernel.org>
-Date: Wed, 04 Sep 2024 00:47:05 +0100
+	id 1slenk-00000002TpZ-1wKl;
+	Wed, 04 Sep 2024 01:27:18 +0000
+Received: from mail.maildlp.com (unknown [172.19.88.105])
+	by szxga03-in.huawei.com (SkyGuard) with ESMTP id 4Wz4Tv11ddz69LX;
+	Wed,  4 Sep 2024 09:22:11 +0800 (CST)
+Received: from kwepemd500012.china.huawei.com (unknown [7.221.188.25])
+	by mail.maildlp.com (Postfix) with ESMTPS id 35A5D140158;
+	Wed,  4 Sep 2024 09:27:08 +0800 (CST)
+Received: from [10.67.111.176] (10.67.111.176) by
+ kwepemd500012.china.huawei.com (7.221.188.25) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1258.34; Wed, 4 Sep 2024 09:27:07 +0800
+Message-ID: <b4f6e9ae-bda8-4496-82a7-de70004e2f29@huawei.com>
+Date: Wed, 4 Sep 2024 09:27:06 +0800
 MIME-Version: 1.0
-X-Mailer: b4 0.15-dev-99b12
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH net-next 09/12] net: ethernet: sunplus: Convert using
+ devm_clk_get_enabled() in spl2sw_probe()
+To: Jakub Kicinski <kuba@kernel.org>
+CC: <florian.fainelli@broadcom.com>, <andrew@lunn.ch>, <olteanv@gmail.com>,
+	<davem@davemloft.net>, <edumazet@google.com>, <pabeni@redhat.com>,
+	<wens@csie.org>, <jernej.skrabec@gmail.com>, <samuel@sholland.org>,
+	<heiko@sntech.de>, <yisen.zhuang@huawei.com>, <salil.mehta@huawei.com>,
+	<hauke@hauke-m.de>, <alexandre.torgue@foss.st.com>, <joabreu@synopsys.com>,
+	<mcoquelin.stm32@gmail.com>, <wellslutw@gmail.com>,
+	<radhey.shyam.pandey@amd.com>, <michal.simek@amd.com>,
+	<ajay.kathat@microchip.com>, <claudiu.beznea@tuxon.dev>, <kvalo@kernel.org>,
+	<u.kleine-koenig@pengutronix.de>, <jacky_chou@aspeedtech.com>,
+	<netdev@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-sunxi@lists.linux.dev>, <linux-rockchip@lists.infradead.org>,
+	<linux-stm32@st-md-mailman.stormreply.com>, <linux-wireless@vger.kernel.org>
+References: <20240831021334.1907921-1-lizetao1@huawei.com>
+ <20240831021334.1907921-10-lizetao1@huawei.com>
+ <20240903151649.1b466145@kernel.org>
+From: Li Zetao <lizetao1@huawei.com>
+In-Reply-To: <20240903151649.1b466145@kernel.org>
+X-Originating-IP: [10.67.111.176]
+X-ClientProxiedBy: dggpeml100007.china.huawei.com (7.185.36.28) To
+ kwepemd500012.china.huawei.com (7.221.188.25)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240903_164715_155368_CF45AEF3 
-X-CRM114-Status: GOOD (  15.32  )
+X-CRM114-CacheID: sfid-20240903_182716_747455_1A676A07 
+X-CRM114-Status: UNSURE (   4.76  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,53 +78,20 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, 03 Sep 2024 11:22:30 -0400, Detlev Casanova wrote:
-> Add the rk3576-armsom-sige5 device tree as well as its rk3576.dtsi base
-> and pinctrl information in rk3576-pinctrl.dtsi.
-> 
-> The other commits add DT bindings documentation for the devices that
-> already work with the current corresponding drivers.
-> 
-> Note that as is, the rockchip gpio driver needs the gpio nodes
-> to be children of the pinctrl node, even though this is deprecated.
-> 
-> [...]
-
-Applied to
-
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/spi.git for-next
-
-Thanks!
-
-[7/9] spi: dt-bindings: Add rockchip,rk3576-spi compatible
-      commit: b0cdf9cc089525da330919d1bcd3b92655aaa621
-
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
-
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGksCgrlnKggMjAyNC85LzQgNjoxNiwgSmFrdWIgS2ljaW5za2kg5YaZ6YGTOgo+IE9uIFNhdCwg
+MzEgQXVnIDIwMjQgMTA6MTM6MzEgKzA4MDAgTGkgWmV0YW8gd3JvdGU6Cj4+ICsJY29tbS0+Y2xr
+ID0gZGV2bV9jbGtfZ2V0X2VuYWJsZWQoJnBkZXYtPmRldiwgTlVMTCk7Cj4gCj4gWW91IGNhbiBy
+ZW1vdmUgY2xrIGZyb20gdGhlIGRyaXZlciBzdHJ1Y3Qgbm93LgpJIGRvbuKAmXQgcXVpdGUgdW5k
+ZXJzdGFuZCB3aHkgY2xrIGNhbiBiZSByZW1vdmVkIGZyb20gdGhlIGRyaXZlciBzdHJ1Y3QsIApt
+YXliZSBJIG1pc3NlZCBzb21lIGltcG9ydGFudCBkaXNjdXNzaW9uIGluZm9ybWF0aW9uIGluIHRo
+ZSBjb21tdW5pdHksIApwbGVhc2UgbGV0IG1lIGtub3csIHRoYW5rIHlvdS4KPiBQbGVhc2UgY2hl
+Y2sgaWYgdGhlIHNhbWUgYXBwbGllcyB0byBvdGhlciBwYXRjaGVzLgoKVGhhbmtzLApMaSBaZXRh
+by4KCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4
+LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3Jn
+Cmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2No
+aXAK
