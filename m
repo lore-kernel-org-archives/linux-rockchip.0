@@ -4,61 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 90753CA0ED3
-	for <linux-rockchip@archiver.kernel.org>; Wed,  4 Sep 2024 14:09:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B2D3DCD484C
+	for <linux-rockchip@archiver.kernel.org>; Wed,  4 Sep 2024 14:09:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
-	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=nt60HOxcjYh60BSQIQO906U+MjPb5QtCHgQwOZYz9jE=; b=eQIEQmcQr15MCR
-	KoT9hXs/AKp1REPrg5UFefq7y6FDMBtd+HHh8T/iC05n3TL+sTKEIztI35sS/Lj3it6coX7yt7VtI
-	mzSvofVW/uby6YYjLWiiCHaWxUVx6u9qIYTeiXtrGbQe+NivDowgdETy3KGRnp4BtwEHXIdFVhzX5
-	lk8h4dNKY81gZFm6OAnAR+KA0Rac6r8MTer90lNGpQS10QRDn6pSC21mosakzgNpRdPxcRzNXHJ73
-	vIlWQk2CZzF2Jgkkvf+twgS2ZJLhHZouHNd2x6rra/QTakCoNPpzy/yhtMIP9XaDr7O3VynhLq2vZ
-	cdUo+NkZxm5XBPtkYZFA==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
+	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=s9iw6vvoFdvocb/8VfuMgMdHh2q0VwxnXwnwimmrLRs=; b=f4IDu2mhBqVrU3
+	gO/ec946J+1fDnM7EZ0B5kBNsyKdVXzO1V8AuSVe4C+1SY8ig+AMRvrGL2mfPvlyRjxiB+QVxeCGR
+	Q6GhNTMYw+PagNP6E3OFRMLRDgUlCZLGjDzpYb4jfCQUG6QOKEQL/2c3PLR4QDYeYpIP/R8vB47No
+	yZoSIe4Tr+ytCGjKWv0NC6Pjr+hOC8sH/d7WR0y1svlnDTVA6sxgTdS4lxM44V+TQIDbyU5j/9nya
+	a4JX1HWW4sNhwHvE1bBZvhAOBIGQBYBYIKpoLTPjOPhzcqt6hr4CZOxpXJPAYN1vHBEM1uErksnSu
+	U92HU0HraktQVJcwGmhQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1slqhB-00000004hiV-0mVG;
-	Wed, 04 Sep 2024 14:09:17 +0000
+	id 1slqhC-00000004hil-0n1L;
+	Wed, 04 Sep 2024 14:09:18 +0000
 Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1slqgA-00000004hRr-1Sre
+	id 1slqgA-00000004hRq-1Sch
 	for linux-rockchip@lists.infradead.org;
-	Wed, 04 Sep 2024 14:08:18 +0000
+	Wed, 04 Sep 2024 14:08:19 +0000
 Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
 	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
 	(Exim 4.92)
 	(envelope-from <mkl@pengutronix.de>)
-	id 1slqg8-00037M-RS
+	id 1slqg8-00037H-PR
 	for linux-rockchip@lists.infradead.org; Wed, 04 Sep 2024 16:08:12 +0200
 Received: from [2a0a:edc0:0:b01:1d::7b] (helo=bjornoya.blackshift.org)
 	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <mkl@pengutronix.de>)
-	id 1slqg8-005TRH-Dd
+	id 1slqg8-005TRB-Br
 	for linux-rockchip@lists.infradead.org; Wed, 04 Sep 2024 16:08:12 +0200
 Received: from dspam.blackshift.org (localhost [127.0.0.1])
-	by bjornoya.blackshift.org (Postfix) with SMTP id 1707933296E
+	by bjornoya.blackshift.org (Postfix) with SMTP id 0F33B33296D
 	for <linux-rockchip@lists.infradead.org>; Wed, 04 Sep 2024 14:08:12 +0000 (UTC)
 Received: from hardanger.blackshift.org (unknown [172.20.34.65])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(Client did not present a certificate)
-	by bjornoya.blackshift.org (Postfix) with ESMTPS id 744AC33295B;
+	by bjornoya.blackshift.org (Postfix) with ESMTPS id 8F9D533295C;
 	Wed, 04 Sep 2024 14:08:10 +0000 (UTC)
 Received: from [172.20.34.65] (localhost [::1])
-	by hardanger.blackshift.org (OpenSMTPD) with ESMTP id efa89c82;
+	by hardanger.blackshift.org (OpenSMTPD) with ESMTP id 3ce2d151;
 	Wed, 4 Sep 2024 14:08:09 +0000 (UTC)
 From: Marc Kleine-Budde <mkl@pengutronix.de>
-Subject: [PATCH 0/2] arm64: dts: rockchip: rk3568: add CAN-FD controller
-Date: Wed, 04 Sep 2024 16:07:55 +0200
-Message-Id: <20240904-rk3568-canfd-v1-0-73bda5fb4e03@pengutronix.de>
+Date: Wed, 04 Sep 2024 16:07:56 +0200
+Subject: [PATCH 1/2] arm64: dts: rockchip: add CAN-FD controller nodes to
+ rk3568
 MIME-Version: 1.0
-X-B4-Tracking: v=1; b=H4sIALtp2GYC/6tWKk4tykwtVrJSqFYqSi3LLM7MzwNyDHUUlJIzE
- vPSU3UzU4B8JSMDIxMDSwMT3aJsY1MzC93kxLy0FF1T40RTM6PE1DQDszQloJaCotS0zAqwcdG
- xtbUA3n1WF14AAAA=
+Message-Id: <20240904-rk3568-canfd-v1-1-73bda5fb4e03@pengutronix.de>
+References: <20240904-rk3568-canfd-v1-0-73bda5fb4e03@pengutronix.de>
+In-Reply-To: <20240904-rk3568-canfd-v1-0-73bda5fb4e03@pengutronix.de>
 To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
  Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
 Cc: kernel@pengutronix.de, David Jander <david@protonic.nl>, 
@@ -66,15 +66,15 @@ Cc: kernel@pengutronix.de, David Jander <david@protonic.nl>,
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
  linux-kernel@vger.kernel.org, Marc Kleine-Budde <mkl@pengutronix.de>
 X-Mailer: b4 0.15-dev-99b12
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1337; i=mkl@pengutronix.de;
- h=from:subject:message-id; bh=kd9E40PQBFEWrTjYdxm/EiNgkyAQn3UseBk97RlZljA=;
- b=owEBbQGS/pANAwAKASg4oj56LbxvAcsmYgBm2GnFxpWKaInvtdWH/pDwe0TPVCSfLmYkktUa/
- G64Np4mB16JATMEAAEKAB0WIQRQQLqG4LYE3Sm8Pl8oOKI+ei28bwUCZthpxQAKCRAoOKI+ei28
- bxc1B/9Xhh40JT5rXUQwzROGWVPCn8HbwD6tU+C0mluTt1awCG6CpnaSCUyTIMwwrQ3ASng2WRk
- xTYZu20Jf7Y0bj/wEFWK6hzCuptxeva3n2Mp/0FUx8bw94U8yR6gcflLTgRwGaUFnnyYzNiWp1i
- aNXEYI6ccnoT4E+9oZbUgHMni22hAg30cfo00L3E7009MzRVch/JQhMWM0EET2oJgVjsY9/jd2a
- qOQt3snn2qujw21cd20jJVC4vB3UpmfS5eYPODLBtBWSdTRhWI4tsFk9I4PG+eV+Dyhhiq7/IYN
- VjyG2qc5V2SZ+fpCAb/LAldGXXqiU4labSxCRi5m3PwbwiUO
+X-Developer-Signature: v=1; a=openpgp-sha256; l=2101; i=mkl@pengutronix.de;
+ h=from:subject:message-id; bh=mLPR1zGXVnjB2N2bISb4TFs5apjtEEhJMNJGp9vu6nc=;
+ b=owEBbQGS/pANAwAKASg4oj56LbxvAcsmYgBm2GnGNBWUQk/h40XoNXjLGPfVB4Ovbi1oScTNr
+ CP5AK1gKceJATMEAAEKAB0WIQRQQLqG4LYE3Sm8Pl8oOKI+ei28bwUCZthpxgAKCRAoOKI+ei28
+ b4RLCACIbCCsCd/p3yWQnQZs/wzRk+UTMOyEUV/gi2kA2zCf0abjWnWBAdhY618U4KZoswQo4yl
+ DP3sk0nRCx8SW63jojqS8lUQxS4DrkPq+ZVW4iXAUG8IESeYMJSt6O42yAZ9Do8NlGBhxKZ/gge
+ aCGKXYi2NwoFVeNW2QnPuipq3zpkHSrh1+pLaWioDiHzbA2NMgto2AO53vwsXEM4Lj4LXhq6jeO
+ 7aRR0KWvEYWg/gGk69orYGDf4Nl0pBvI9Ao9g5m2ToulXWEdnDiCrvVyTZS8/sfvW3PN2BOdAoO
+ J4qGmJFPAXRkodV40NbCoB+SO17uKv3UBXkbklepcruFruSK
 X-Developer-Key: i=mkl@pengutronix.de; a=openpgp;
  fpr=C1400BA0B3989E6FBC7D5B5C2B5EE211C58AEA54
 X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
@@ -82,9 +82,8 @@ X-SA-Exim-Mail-From: mkl@pengutronix.de
 X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
 X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240904_070814_467290_E3289A5E 
-X-CRM114-Status: UNSURE (   9.29  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240904_070814_499908_9B5910B7 
+X-CRM114-Status: GOOD (  11.21  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,42 +100,71 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This series first adds the CAN-FD controllers nodes to the rk3568
-devicetree, then it enables the CAN-FD controllers on the
-rk3568-mecsbc board.
+From: David Jander <david@protonic.nl>
 
-The DT bindings for this series are going upstream via
-can-next/net-next into v6.12 with this PR:
+Add nodes to the rk3568 devicetree to support the CAN-FD controllers.
 
-| https://patch.msgid.link/all/20240904130256.1965582-1-mkl@pengutronix.de
-
-So when applied to v6.12-armsoc/dts64 this series produces checkpatch
-warnings about undocumented DT compatible strings. Maybe we have to
-postpone this series a bit.
-
+Signed-off-by: David Jander <david@protonic.nl>
+Tested-by: Alibek Omarov <a1ba.omarov@gmail.com>
+Reviewed-by: Heiko Stuebner <heiko@sntech.de>
 Signed-off-by: Marc Kleine-Budde <mkl@pengutronix.de>
 ---
-Changes:
-- rk3568-mecsbc: fixed order of phandles (thanks Heiko)
-- These Patches were previously part of another series and have now
-  been spun off.
-- Link to previous version: https://patch.msgid.link/20240904-rockchip-canfd-v5-0-8ae22bcb27cc@pengutronix.de
+ arch/arm64/boot/dts/rockchip/rk3568.dtsi | 39 ++++++++++++++++++++++++++++++++
+ 1 file changed, 39 insertions(+)
 
----
-David Jander (2):
-      arm64: dts: rockchip: add CAN-FD controller nodes to rk3568
-      arm64: dts: rockchip: mecsbc: add CAN0 and CAN1 interfaces
+diff --git a/arch/arm64/boot/dts/rockchip/rk3568.dtsi b/arch/arm64/boot/dts/rockchip/rk3568.dtsi
+index 2a6ca20e607f..0946310e8c12 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3568.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3568.dtsi
+@@ -213,6 +213,45 @@ gmac0_mtl_tx_setup: tx-queues-config {
+ 		};
+ 	};
+ 
++	can0: can@fe570000 {
++		compatible = "rockchip,rk3568v2-canfd";
++		reg = <0x0 0xfe570000 0x0 0x1000>;
++		interrupts = <GIC_SPI 1 IRQ_TYPE_LEVEL_HIGH>;
++		clocks = <&cru CLK_CAN0>, <&cru PCLK_CAN0>;
++		clock-names = "baud", "pclk";
++		resets = <&cru SRST_CAN0>, <&cru SRST_P_CAN0>;
++		reset-names = "core", "apb";
++		pinctrl-names = "default";
++		pinctrl-0 = <&can0m0_pins>;
++		status = "disabled";
++	};
++
++	can1: can@fe580000 {
++		compatible = "rockchip,rk3568v2-canfd";
++		reg = <0x0 0xfe580000 0x0 0x1000>;
++		interrupts = <GIC_SPI 2 IRQ_TYPE_LEVEL_HIGH>;
++		clocks = <&cru CLK_CAN1>, <&cru PCLK_CAN1>;
++		clock-names = "baud", "pclk";
++		resets = <&cru SRST_CAN1>, <&cru SRST_P_CAN1>;
++		reset-names = "core", "apb";
++		pinctrl-names = "default";
++		pinctrl-0 = <&can1m0_pins>;
++		status = "disabled";
++	};
++
++	can2: can@fe590000 {
++		compatible = "rockchip,rk3568v2-canfd";
++		reg = <0x0 0xfe590000 0x0 0x1000>;
++		interrupts = <GIC_SPI 3 IRQ_TYPE_LEVEL_HIGH>;
++		clocks = <&cru CLK_CAN2>, <&cru PCLK_CAN2>;
++		clock-names = "baud", "pclk";
++		resets = <&cru SRST_CAN2>, <&cru SRST_P_CAN2>;
++		reset-names = "core", "apb";
++		pinctrl-names = "default";
++		pinctrl-0 = <&can2m0_pins>;
++		status = "disabled";
++	};
++
+ 	combphy0: phy@fe820000 {
+ 		compatible = "rockchip,rk3568-naneng-combphy";
+ 		reg = <0x0 0xfe820000 0x0 0x100>;
 
- arch/arm64/boot/dts/rockchip/rk3568-mecsbc.dts | 14 +++++++++
- arch/arm64/boot/dts/rockchip/rk3568.dtsi       | 39 ++++++++++++++++++++++++++
- 2 files changed, 53 insertions(+)
----
-base-commit: 78d500329b65217c45422ac0adf5c030783d3e58
-change-id: 20240904-rk3568-canfd-53a562aef06f
-
-Best regards,
 -- 
-Marc Kleine-Budde <mkl@pengutronix.de>
+2.45.2
 
 
 
