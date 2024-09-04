@@ -4,60 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2E2CECD3431
-	for <linux-rockchip@archiver.kernel.org>; Wed,  4 Sep 2024 13:30:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4FDD3CA0ED3
+	for <linux-rockchip@archiver.kernel.org>; Wed,  4 Sep 2024 13:36:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=qa/Sjk0O57P5Upb3WvEsf3Fpm0UCfIdb5PF8PZeuI84=; b=wuEpKgP6QAVXsm
-	9eE6Gpgaj1a4F690OthZAHb/tM7Wbu6wUVoNaWaL1Tm6HjHwWv9VA57UMdKOLelKpdFyrlO80o/wg
-	mNJZyFhK42VzFW2HotsCvycdILK61azEgqAPUvNqlf7tnpWoVHtK8gCeJ3wqAq6lz7cSbSJ73nP6s
-	Yw0QIiC07kz/FKSQ9YfBRcZZ1bOoO0KpyYVUBVrMmUazAc95cq/ooZT01jCTarFOZUYUZiA6vTPaN
-	Lgprf1OyWWpo3eOs426YoFZ2xDE/K6775OPiCKMQo02LZwq8TWSIeraZ6Cj/pMTh7l7i647WhtqaB
-	+i6k/KR35tXp9Qp5+0dA==;
+	List-Owner; bh=PEw9rnPPdO7MR2/tKaY9M/qnhc6KX5UjejRY/RCEz7o=; b=ZPhtI6WawPwKk3
+	dVJB0Z33SRYRWKw4QE4FXKYxZ+WwD+Is+YAztXEoBto8RreR09m8V3Mfxa1/YMDjW6+HU7k5ACjiH
+	GbC/HELN2nV/QnClIZImhgIQ9IC+LhSlxRjwBv3TPRkzKnjSqpUZrvl46qiHaamR1g8WARGZfj8vE
+	5AHBq1iFIHnjj4raHtsNHa0hj1U7Vwk1kozRxqMy5Sffrek05xEsYvenGs1UVPdVyachmBV+HhcpP
+	arRQuZXTjJ/ZjJNXX+QJR3x4e2ckxb4YwqWI3MoNBgpaEdIVFnoAuerDTpb/tas0nY75Y6N0nrxKo
+	EKAXI/JaXMIvohh+XyWw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1slq5K-00000004Yv7-2j04;
-	Wed, 04 Sep 2024 13:30:10 +0000
+	id 1slqBP-00000004ZpK-1NLW;
+	Wed, 04 Sep 2024 13:36:27 +0000
 Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1slq4M-00000004YjS-2cjx;
-	Wed, 04 Sep 2024 13:29:12 +0000
+	id 1slqBM-00000004ZoB-0s33
+	for linux-rockchip@lists.infradead.org;
+	Wed, 04 Sep 2024 13:36:25 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id A1F865C1082;
-	Wed,  4 Sep 2024 13:29:05 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 648D5C4CEC2;
-	Wed,  4 Sep 2024 13:29:04 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 0B86A5C5769;
+	Wed,  4 Sep 2024 13:36:20 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 42ECBC4CEC6;
+	Wed,  4 Sep 2024 13:36:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1725456548;
-	bh=pB4IJtC8E2/PPZkXHjRfsoD2HoTi/FWu1c480YZGCTw=;
+	s=k20201202; t=1725456983;
+	bh=EzcEOhlPYx4lpeiPOu0oZZYEY3bTuGC3xMbZcjDcNYQ=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=J8vPKjmH9zIS5l///kgnQ93IvmozRBW2QaARk5JqkQB1u7LX/GNl/AUC/QCzUBPfx
-	 0JXZMydz1xxwKzF7pVMOLefwSSjesoQ9AaJ44TEWigHKR7PRga7ouUrCC3FW2IO9o3
-	 qLQZyPUhhdXjzw98KeweRLaYVRNj1/+FCm4aAjW5drfcu73xyktjMyo9vOejtvAxhx
-	 jiCC8kPth4fsqAUvlthXQNS7d6mAB5On3/IdZIjbZisexi/lXySqqxO7hdDUlU46h3
-	 lmSjA33AZ6of1v6sD0JoJvK/bwJqvZchIjKIg5xZCrVqx3V9VCEqxsF1I4WFHOCS1Z
-	 BJdD/HCnFMkCg==
-Message-ID: <c2390181-d736-4691-9bb1-0383c506bb1b@kernel.org>
-Date: Wed, 4 Sep 2024 15:29:00 +0200
+	b=LnugFP+G9AEVppVzJzDCzToB4zM6/EJUP3lWgI16w/5dATZNJHPCgEg1Um6uTekjP
+	 0hCmxKYeidrVDpst6FdilhgzoBpa7UFCaRnR6XQPqwZzkT7blf9xn/4Sn+T0yUarCE
+	 +C8GqRkG76N7kKIEtYIX7YufiG4A44EQm3bTvwqWS0bMqklXkrF+y2oKj5sF1nFrr/
+	 renw8IxF6s15mHl1gJLPGhNpeX7OI9ftxb6LdI5y0BmmjHR1fphqMCcusA79v0EK00
+	 /ZfU0IbYBjMUvO35jQ5ooQ24xHEttkhG9fU8I3kHmRDxeV4e+c4CxwpJCu09oQcn9J
+	 sNetwEUmgUMfQ==
+Message-ID: <c3445a6c-aca1-470c-bdd9-06e23ad14253@kernel.org>
+Date: Wed, 4 Sep 2024 15:36:15 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/3] dt-bindings: vendor-prefixes: Add Shanghai Novotech
- Ariaboard
-To: Junhao Xie <bigfoot@classfun.cn>
-Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- Jonas Karlman <jonas@kwiboo.se>, Chukun Pan <amadeus@jmu.edu.cn>,
- FUKAUMI Naoki <naoki@radxa.com>, Dragan Simic <dsimic@manjaro.org>,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-References: <20240904111456.87089-1-bigfoot@classfun.cn>
- <20240904111456.87089-2-bigfoot@classfun.cn>
- <b9e5389f-8492-425e-bc15-35ea55c0e3b5@kernel.org>
- <2ec7de72-8560-430c-a6b6-5ef7ad5f5e00@classfun.cn>
+Subject: Re: [PATCH v2 09/11] dt-bindings: display: vop2: Add rk3576 support
+To: Andy Yan <andyshrk@163.com>, detlev.casanova@collabora.com
+References: <20240904120238.3856782-1-andyshrk@163.com>
+ <20240904120238.3856782-10-andyshrk@163.com>
 From: Krzysztof Kozlowski <krzk@kernel.org>
 Content-Language: en-US
 Autocrypt: addr=krzk@kernel.org; keydata=
@@ -103,10 +95,10 @@ Autocrypt: addr=krzk@kernel.org; keydata=
  uZwJCLykjad45hsWcOGk3OcaAGQS6NDlfhM6O9aYNwGL6tGt/6BkRikNOs7VDEa4/HlbaSJo
  7FgndGw1kWmkeL6oQh7wBvYll2buKod4qYntmNKEicoHGU+x91Gcan8mCoqhJkbqrL7+nXG2
  5Q/GS5M9RFWS+nYyJh+c3OcfKqVcZQNANItt7+ULzdNJuhvTRRdC3g9hmCEuNSr+CLMdnRBY fv0=
-In-Reply-To: <2ec7de72-8560-430c-a6b6-5ef7ad5f5e00@classfun.cn>
+In-Reply-To: <20240904120238.3856782-10-andyshrk@163.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240904_062910_788560_2CBFB031 
-X-CRM114-Status: GOOD (  13.76  )
+X-CRM114-CacheID: sfid-20240904_063624_370573_611B0532 
+X-CRM114-Status: GOOD (  11.39  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -118,51 +110,38 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Cc: devicetree@vger.kernel.org, heiko@sntech.de, robh@kernel.org, dri-devel@lists.freedesktop.org, hjc@rock-chips.com, mripard@kernel.org, sebastian.reichel@collabora.com, linux-rockchip@lists.infradead.org, sjoerd@collabora.com, Andy Yan <andy.yan@rock-chips.com>, krzk+dt@kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 04/09/2024 14:14, Junhao Xie wrote:
-> On 2024/9/4 19:35, Krzysztof Kozlowski wrote:
->> On 04/09/2024 13:14, Junhao Xie wrote:
->>> Add an entry for Shanghai Novotech Ariaboard (https://ariaboard.com/)
->>>
->>> Signed-off-by: Junhao Xie <bigfoot@classfun.cn>
->>> ---
->>>  Documentation/devicetree/bindings/vendor-prefixes.yaml | 2 ++
->>>  1 file changed, 2 insertions(+)
->>>
->>> diff --git a/Documentation/devicetree/bindings/vendor-prefixes.yaml b/Documentation/devicetree/bindings/vendor-prefixes.yaml
->>> index a70ce43b3dc0..58d1a2e8b212 100644
->>> --- a/Documentation/devicetree/bindings/vendor-prefixes.yaml
->>> +++ b/Documentation/devicetree/bindings/vendor-prefixes.yaml
->>> @@ -145,6 +145,8 @@ patternProperties:
->>>      description: Arctic Sand
->>>    "^arcx,.*":
->>>      description: arcx Inc. / Archronix Inc.
->>> +  "^ariaboard,.*":
->>> +    description: Shanghai Novotech Co., Ltd.
->>
->> This is confusing. Prefix is entirely different than company name. I
->> would expect prefix like shanghainovotech.
->>
->> Best regards,
->> Krzysztof
->>
+On 04/09/2024 14:02, Andy Yan wrote:
+> From: Andy Yan <andy.yan@rock-chips.com>
 > 
-> Thank you for your reply.
-> Ariaboard is a subsidiary of Shanghai Novotech, maybe it would
-> be better to change description to "Ariaboard"?
+> Add vop found on rk3576.
 > 
-> Shanghai Novotech: https://shanghainovotech.com/
-> Ariaboard: https://ariaboard.com/
+> Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
+> 
+> ---
+> 
+> Changes in v2:
+> - Add dt bindings
+> 
+>  .../devicetree/bindings/display/rockchip/rockchip-vop2.yaml      | 1 +
+>  1 file changed, 1 insertion(+)
+> 
+> diff --git a/Documentation/devicetree/bindings/display/rockchip/rockchip-vop2.yaml b/Documentation/devicetree/bindings/display/rockchip/rockchip-vop2.yaml
+> index 2531726af306..23b2371aea46 100644
+> --- a/Documentation/devicetree/bindings/display/rockchip/rockchip-vop2.yaml
+> +++ b/Documentation/devicetree/bindings/display/rockchip/rockchip-vop2.yaml
+> @@ -21,6 +21,7 @@ properties:
+>        - rockchip,rk3566-vop
+>        - rockchip,rk3568-vop
+>        - rockchip,rk3588-vop
+> +      - rockchip,rk3576-vop
 
-This does not sound like subsidiary but just name of the board family or
-product family. Their about page suggests "affiliation" but all contact
-points are for Shanghai Novotech.
-
-I am fine with ariaboard prefix, but please provide context in commit msg.
+Keep things ordered. Same applies to your other patches.
 
 Best regards,
 Krzysztof
