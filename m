@@ -4,111 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 76FA8CD37B4
-	for <linux-rockchip@archiver.kernel.org>; Wed,  4 Sep 2024 14:27:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5C556CD4853
+	for <linux-rockchip@archiver.kernel.org>; Wed,  4 Sep 2024 15:11:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=pATozv+nARVAIgJFTDVwt7AB00L+xI0NFOyPYjuDAao=; b=QWkdgntbL3VP9W
-	DDCnlvEpEAJ6UPi+t0SQdv+npvFVJH6iNofn7/nMnjytVV6YlD2gHZPFJh5JnoHfOlGdmmdIpjYse
-	HvDFa+Yfo+cV+LiZHtEUjOeV8ZMqNPY1F7GVBDhCASIMWvfnCmdJFzsg7TUYLyQTScD+TnQhAOLcw
-	sKl8JoljDjHiDHpLhPb7HMBrzDeZnef1DIYxA/3FLbeghXtuAQ9PfWKIuEUbf9yG+C4RBfj9fRKD9
-	yp1oGgUxCDE+k3rxfS9rC8vRs73JHvJTOujcEIKGvdn9naogLTQ9zHZx0DAFE6cMoHnr0l9q8UPFR
-	87FqW+oAHgTDa2C/wD5A==;
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=tRnhP4uoBmRERDNyQ6Vy2hmT9aYe1YwbJwHb0fEWKzU=; b=fetK29YIjlBE81EGUanR/GJsFa
+	OdKzh1Zg4phq70W6zNlw9dgHEME7qqXZSbGRKzAbOUQYoQG15en42p4Q1MNI/4iHzGR4SBLYp5/qB
+	iHPedJB0DXyO/M+ADho4N9TUuBNa3Gt3f1AFsHuwVmpIZCQARlKJVnfSxNAZ25kf5RJN/ar4jPkJE
+	V9Mzj6LlBASpew6qgJQCuv7dq+HaB5c+b09ZBXgGqZx8f7AwdnP29R2nm1m6y3TemZvIEPhMjMJXX
+	fnfoMLkcj0IJTmiARxnJ4kbFayqyQNVwRlTVQx5ssj5/DR8zBeKzrF0SA5P/81jsS5nSCqyCOUXJ/
+	uDosQRbg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1slqyr-00000004miz-34Fo;
-	Wed, 04 Sep 2024 14:27:33 +0000
+	id 1slrfL-00000004wah-03Mn;
+	Wed, 04 Sep 2024 15:11:27 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1slqwn-00000004mH7-2Xst
+	id 1slrf4-00000004wWn-0fgL
 	for linux-rockchip@bombadil.infradead.org;
-	Wed, 04 Sep 2024 14:25:25 +0000
+	Wed, 04 Sep 2024 15:11:10 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
-	:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:Message-ID:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=n9N1T1b3GYjcRtNdTA0eRt+BVdBxLA/iS8Tvd/9BiNg=; b=IrfoRmAF5ohylc4IIH7ecLwNOu
-	6lslUEhAwTn9mnaxWA1ak13sNjtxyaLXkyadwUuqQoR2XC3dFOO0LTRpuv49bHpy1tWFHUic4y17g
-	Ztw/9auhya1sDp1ZSEsj5HNry8V1qVd+46XQRE9q4j0ISph+6O5t/T2EAggXu8ZXbDm0PwMUQmqCB
-	688axlxvo9ZtWHM2vksNbSaBTTiBtXpCvY8BtzZwluhkCRR1utDcf7WU30jvImhKgOvgd5VAWDsWs
-	Xy5Td4RUGBKa9WusFFPwq4r7LlENHSZfhGWUmY/amXWhar0xWBcRSQAm0dllrQJhM2GH9EGmGQ4N9
-	jJcn0LHw==;
-Received: from omta38.uswest2.a.cloudfilter.net ([35.89.44.37])
+	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description;
+	bh=5cNzc8pxd2HoYOG8sEHavMMlv9cZxQLWudz41TjULl0=; b=jg1gvBCaXPFIkfxgQHHjzytWrK
+	0X2oSI8zlngOXqD3iHJ1b2dc/hIzGRNkCFyozbf3tBnad2kdTfbYKSpBOsUqmHcu6uuSCAlL1ACqH
+	siZE6KWJqI8snW8TEc7T4a5wzvQ7ZSw4VDG6JXKF3MsnZ14CmUyTaxkXHAw3oaKWbkuxCVsJ/8B6E
+	RVdJ6HfvjdkWiU56kVKXUdRCfZCaDhpo+epxdeagLWPN80CaMZ5fu0rACplKDRCOR7+1Ijv70CQxy
+	YuHIbQm2QbeghsJJhCtHXufZML9j9TLZm4O6pcKN1mtSNENj4d+2Ksdkmn0Ruc8smfZsQHc0l4Qab
+	kCxB+dWQ==;
+Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
 	by desiato.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1slqwj-00000000FJ4-3vrh
+	id 1slreQ-00000000Gzf-3F9g
 	for linux-rockchip@lists.infradead.org;
-	Wed, 04 Sep 2024 14:25:24 +0000
-Received: from eig-obgw-5004a.ext.cloudfilter.net ([10.0.29.221])
-	by cmsmtp with ESMTPS
-	id lYNFsb6XEumtXlqvEsSI3t; Wed, 04 Sep 2024 14:23:48 +0000
-Received: from md-in-79.webhostbox.net ([43.225.55.182])
-	by cmsmtp with ESMTPS
-	id lqvAspTM80vWTlqvBsEvFk; Wed, 04 Sep 2024 14:23:46 +0000
-X-Authority-Analysis: v=2.4 cv=ffZmyFQF c=1 sm=1 tr=0 ts=66d86d72
- a=LfuyaZh/8e9VOkaVZk0aRw==:117 a=kofhyyBXuK/oEhdxNjf66Q==:17
- a=IkcTkHD0fZMA:10 a=EaEq8P2WXUwA:10 a=-pn6D5nKLtMA:10 a=VwQbUJbxAAAA:8
- a=CDJ--hqRtXxyQu1MzM8A:9 a=QEXdDO2ut3YA:10 a=ZCPYImcxYIQFgLOT52_G:22
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=linumiz.com
-	; s=default; h=Content-Transfer-Encoding:Content-Type:In-Reply-To:From:
-	References:Cc:To:Subject:MIME-Version:Date:Message-ID:Sender:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
-	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=n9N1T1b3GYjcRtNdTA0eRt+BVdBxLA/iS8Tvd/9BiNg=; b=TTG5uyMGqpvP6hbpopOPtqgQYs
-	cnPjiMnM6MOsyRTDhg1Z6dGFL4C29Kq4yCHyz1grE8dHjgmcLKkPCZ7/RBPiarQhT9rwseT/l0c4g
-	Kj8zLuoyGys2GZIaRgCyE0FQnBcy3ufuB3vhuroQoUUA7HYe+v704KDRCedK3+l8i3M+BQddExODZ
-	tNqMs6s2/8JQWhVxFDAa0ddfLsZG4lbeY54qBne0+PPeki4fmdOqSPMZbaGr9dai+L9no7UuLijDt
-	EbhAEjiQDNi7dLcVrtuD68bENOpjc5SXgCR9QUzr0hiwrJSd8EuMSpJMtgqDBbNdErzBWFK41aFj6
-	QH/0ORRQ==;
-Received: from [122.165.245.213] (port=53602 helo=[192.168.1.106])
-	by md-in-79.webhostbox.net with esmtpsa  (TLS1.2) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.96.2)
-	(envelope-from <karthikeyan@linumiz.com>)
-	id 1slqv9-003mnG-0R;
-	Wed, 04 Sep 2024 19:53:43 +0530
-Message-ID: <5023c87c-993f-4264-b950-5a47edd5e9d0@linumiz.com>
-Date: Wed, 4 Sep 2024 19:53:39 +0530
+	Wed, 04 Sep 2024 15:10:47 +0000
+Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
+	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+	(Exim 4.92)
+	(envelope-from <mkl@pengutronix.de>)
+	id 1slre8-0005tl-7h; Wed, 04 Sep 2024 17:10:12 +0200
+Received: from [2a0a:edc0:0:b01:1d::7b] (helo=bjornoya.blackshift.org)
+	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <mkl@pengutronix.de>)
+	id 1slre4-005TzF-TK; Wed, 04 Sep 2024 17:10:08 +0200
+Received: from pengutronix.de (pd9e5994e.dip0.t-ipconnect.de [217.229.153.78])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(Client did not present a certificate)
+	(Authenticated sender: mkl-all@blackshift.org)
+	by smtp.blackshift.org (Postfix) with ESMTPSA id 6C417332A4A;
+	Wed, 04 Sep 2024 15:10:08 +0000 (UTC)
+Date: Wed, 4 Sep 2024 17:10:08 +0200
+From: Marc Kleine-Budde <mkl@pengutronix.de>
+To: Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>
+Cc: kernel@pengutronix.de, Alibek Omarov <a1ba.omarov@gmail.com>, 
+	Vincent Mailhol <mailhol.vincent@wanadoo.fr>, "David S. Miller" <davem@davemloft.net>, 
+	Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, 
+	Paolo Abeni <pabeni@redhat.com>, Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Philipp Zabel <p.zabel@pengutronix.de>, Elaine Zhang <zhangqing@rock-chips.com>, 
+	David Jander <david.jander@protonic.nl>, Simon Horman <horms@kernel.org>, linux-can@vger.kernel.org, 
+	netdev@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, David Jander <david@protonic.nl>
+Subject: Re: [PATCH can-next v5 00/20] can: rockchip_canfd: add support for
+ CAN-FD IP core found on Rockchip RK3568
+Message-ID: <20240904-imposing-determined-mayfly-ba6402-mkl@pengutronix.de>
+References: <20240904-rockchip-canfd-v5-0-8ae22bcb27cc@pengutronix.de>
+ <86274585.BzKH3j3Lxt@diego>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: (subset) [PATCH v2 0/8] Add support Relfor Saib board which is
- based on Rockchip RV1109 SoC
-To: Heiko Stuebner <heiko@sntech.de>, conor+dt@kernel.org, robh@kernel.org,
- krzk+dt@kernel.org, alexandre.belloni@bootlin.com
-Cc: devicetree@vger.kernel.org, linux-rtc@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-rockchip@lists.infradead.org
-References: <20240903105245.715899-1-karthikeyan@linumiz.com>
- <172544170317.2587256.1675013741817340842.b4-ty@sntech.de>
-Content-Language: en-US
-From: karthikeyan <karthikeyan@linumiz.com>
-In-Reply-To: <172544170317.2587256.1675013741817340842.b4-ty@sntech.de>
-X-AntiAbuse: This header was added to track abuse, please include it with any abuse report
-X-AntiAbuse: Primary Hostname - md-in-79.webhostbox.net
-X-AntiAbuse: Original Domain - lists.infradead.org
-X-AntiAbuse: Originator/Caller UID/GID - [47 12] / [47 12]
-X-AntiAbuse: Sender Address Domain - linumiz.com
-X-BWhitelist: no
-X-Source-IP: 122.165.245.213
-X-Source-L: No
-X-Exim-ID: 1slqv9-003mnG-0R
-X-Source: 
-X-Source-Args: 
-X-Source-Dir: 
-X-Source-Sender: ([192.168.1.106]) [122.165.245.213]:53602
-X-Source-Auth: karthikeyan@linumiz.com
-X-Email-Count: 21
-X-Org: HG=dishared_whb_net_legacy;ORG=directi;
-X-Source-Cap: bGludW1jbWM7aG9zdGdhdG9yO21kLWluLTc5LndlYmhvc3Rib3gubmV0
-X-Local-Domain: yes
-X-CMAE-Envelope: MS4xfKYOD2XYPZ2GPg29/EpqVhIGBQktkOz1WlHIggwr3NtwaWsa6Q5SnHUWXKpA3jras+xo8L0weGWoImEuNy4Pi2g1O0Z6UIJOOp1A+L+KxzR9yWDv6AZx
- SVag2fjpyiteJ6Pcu69kqav9uUSmg0r7YQVZrtb8fGWiBKBkUvkPCXKh98lYSFQXgXDzYrnIfi3jWVa73A12hI4G1/SsMl0SwjcwU7hhpB11pfnWeq8cli74
+In-Reply-To: <86274585.BzKH3j3Lxt@diego>
+X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
+X-SA-Exim-Mail-From: mkl@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240904_152522_310472_297F2A8F 
-X-CRM114-Status: GOOD (  11.83  )
+X-CRM114-CacheID: sfid-20240904_161045_128203_1102F6F2 
+X-CRM114-Status: GOOD (  13.63  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -120,55 +96,72 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: multipart/mixed; boundary="===============2234377429195156227=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
+--===============2234377429195156227==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="izku447zxf4ptlhk"
+Content-Disposition: inline
 
-On 9/4/24 14:54, Heiko Stuebner wrote:
-> On Tue, 3 Sep 2024 16:22:37 +0530, Karthikeyan Krishnasamy wrote:
->> Rockchip RV1109 is compatible with Rockchip RV1126.
->> In this series, adding required missing peripheral in
->> RV1126 and its pin mux.
->>
->> Relfor Saib board is equipped with 1GB of RAM and 4GB of eMMC
->> Pheripherals like Bluetooth 4.2, Wifi 5G, audio-codec,
->> ir transmitter and receiver, etc
->>
->> [...]
-> 
-> Applied, thanks!
-> 
-> [1/8] ARM: dts: rockchip: Add i2c3 node for RV1126
->        commit: 15db79e0bdcb883f0d7a678fe8701a270467a339
-> [2/8] ARM: dts: rockchip: Add i2s0 node for RV1126
->        commit: 212cda94739b1644e38ef4f588bb580c12feb9a7
-> [3/8] ARM: dts: rockchip: Add pwm node for RV1126
->        commit: 898eb75f443eaf6cb46facf52fc337fbdbdca079
-> 
-> 
-> This means I applied a part of your series and you don't need to
-> resubmit the patches mentioned above in a next submission.
-> 
-> 
-> I re-sorted some properties and nodes according the alphabetical
-> sorting we use. Please see
-> 
-> https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/Documentation/devicetree/bindings/dts-coding-style.rst
-> 
-> for the details.
-> 
-> 
-> Best regards,
 
-Thanks, i will updated the other patches in next version.
+--izku447zxf4ptlhk
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Best Regards,
-Karthikeyan
+On 04.09.2024 10:55:21, Heiko St=C3=BCbner wrote:
+[...]
+> How/when are you planning on applying stuff?
+>=20
+> I.e. if you're going to apply things still for 6.12, you could simply take
+> the whole series if the dts patches still apply to your tree ;-)
+
+The DTS changes should not go via any driver subsystem upstream, so
+here's a dedicated PR:
+
+https://patch.msgid.link/20240904-rk3568-canfd-v1-0-73bda5fb4e03@pengutroni=
+x.de
+
+regards,
+Marc
+
+--=20
+Pengutronix e.K.                 | Marc Kleine-Budde          |
+Embedded Linux                   | https://www.pengutronix.de |
+Vertretung N=C3=BCrnberg              | Phone: +49-5121-206917-129 |
+Amtsgericht Hildesheim, HRA 2686 | Fax:   +49-5121-206917-9   |
+
+--izku447zxf4ptlhk
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEUEC6huC2BN0pvD5fKDiiPnotvG8FAmbYeE0ACgkQKDiiPnot
+vG/NCggAhHZEOGnOwc1rPZrwVIaf2Vk/TKCuDRfTsGiUyyxbdDW+wuoYfftH2EBc
+oHFMu3yMYRK83BqZJkyoXOoqdJaxbYnn5Km4uAx6/6mZBRDVecl+NzZajLFOd8Zr
+4jAn4NyJobWCkbYqTUF10RKpQXPOMqvP3DmZ0Mo+6Z1fSYRKKCYUXXBkQ/nOyo+7
+Kk4ZhppEJA5EPKCn8uflLkypS/y9VqAY22LhIX3t/PlJKU1/H2wuHxOZxsMSac+x
++VZEdQPeqCYzmkZH0Fab6GLhBWQJcRpubtTMFm28J/DjSg3RI+SiOuQjLgwsjIAu
+JdlEyGYVRhVLmtPifpYaHUK1YMdLkA==
+=o39j
+-----END PGP SIGNATURE-----
+
+--izku447zxf4ptlhk--
+
+
+--===============2234377429195156227==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============2234377429195156227==--
+
