@@ -4,62 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 45D11CD5BA3
-	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Sep 2024 10:01:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B843BCD5BA3
+	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Sep 2024 10:16:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=J+Iw9o//gzpUxuP1S2dcCK2xbx8sdgEGym9mc7iva7Y=; b=1Q3XFSVDz6nCav
-	zwCisXvuajzG4YzHYEpum0XztMFdeCPcxSK51FVjS/AQmsceNwXixV1sH42VJxSQz8AzYSKGVL2kK
-	9byKJR6lzjfizo3pKlqFMUCtXGZyi8dqhTXcZ3XeWuxBEhpHSww7sWlpOqKnlur1P5IW9gsBYhlSq
-	FJc2cxVeRm0LUIQM79rViU8EjOj9V4jL6jSO0ZuiV2KAICxhjAlR7Sqwtm8LF0n1bdbHTgfymogxf
-	DVbdPcyTBDk6p/Ek2TPqA7cVSa187J3ICN4eMmr9oSawreQuDchP6QbX0fkA0kT0FdHQ5QKrRgJO5
-	nYJfsjM9+n9qzQf7ETBw==;
+	List-Owner; bh=tOc5k/Hpq8Qz9RBHImpBoDk3wLE7tZnK0zwuORbyo5A=; b=bzU8tV8NbEmazA
+	3UiILDSdUIt88e3EDgN5TKbS6trZhS/Dfury4QWA6w/R+AEZxP/LXTLWvTWr8IF4Db1QotSkvZpnI
+	KQlWDByVAiBYmgghfoxbd4nVmCJqsIkDqg7LxLabdJYu43okutCR2sWH5AzI/3XbhQXK5PQD3ub5b
+	xusGR8C4rWYuHJ/AjVsXcs/DnSVacfu8MyYPe0/ltJzyfLZq7AsE6CcZ4ZpPIdOeIIvfE4mepk+DT
+	29OmyrP7fMgX3dezGwgHufZocrJZfz+oziGUF0ZnVUD5/FTYIqzcOMbw08UWOBflynpCloRjJ8rnB
+	q2wjNyQYQdW1RCdFRsDw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sm9J3-00000007sWn-0YKF;
-	Thu, 05 Sep 2024 10:01:37 +0000
-Received: from mail-m49197.qiye.163.com ([45.254.49.197])
+	id 1sm9Xi-00000007uiY-3zen;
+	Thu, 05 Sep 2024 10:16:46 +0000
+Received: from mail-yb1-xb32.google.com ([2607:f8b0:4864:20::b32])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sm9Iz-00000007sUl-256P;
-	Thu, 05 Sep 2024 10:01:35 +0000
-Received: from amadeus-Vostro-3710.lan (unknown [119.122.212.181])
-	by smtp.qiye.163.com (Hmail) with ESMTPA id CD08A7E01C6;
-	Thu,  5 Sep 2024 18:01:03 +0800 (CST)
-From: Chukun Pan <amadeus@jmu.edu.cn>
-To: bigfoot@classfun.cn
-Cc: amadeus@jmu.edu.cn,
-	conor+dt@kernel.org,
-	devicetree@vger.kernel.org,
-	dsimic@manjaro.org,
-	heiko@sntech.de,
-	jonas@kwiboo.se,
-	krzk+dt@kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH 3/3] arm64: dts: rockchip: add dts for Ariaboard Photonicat RK3568
-Date: Thu,  5 Sep 2024 18:01:00 +0800
-Message-Id: <20240905100100.348444-1-amadeus@jmu.edu.cn>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <010a9c5e-205b-40b9-9655-9e168b2def97@classfun.cn>
-References: <010a9c5e-205b-40b9-9655-9e168b2def97@classfun.cn>
+	id 1sm9XZ-00000007ug7-114T
+	for linux-rockchip@lists.infradead.org;
+	Thu, 05 Sep 2024 10:16:44 +0000
+Received: by mail-yb1-xb32.google.com with SMTP id 3f1490d57ef6-e1d0e1bffc8so699989276.1
+        for <linux-rockchip@lists.infradead.org>; Thu, 05 Sep 2024 03:16:36 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=fooishbar.org; s=google; t=1725531395; x=1726136195; darn=lists.infradead.org;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=xd6tRDcBI6nT0vpG0+47dCoixHmT48y9ZIC4bv5qVFY=;
+        b=EJ9SEMg9clSRO1Fo/N2fGGtaxql7c1gP8U5IbbYXW4iCCpxThVyu/bAgTke6pu8Ods
+         g6RmJmqah15ZK4LvUItQRqslZGujjmMec1ukv0yf0C6jfIHRZd6ZW3JyWefTk6KYjvaK
+         1MwmNBjFZXZ2Qb7VxPGG0nobfEW/YpWa3dGzYZbeFOFX0fL7K0jaVTDNP0C0/mnkzbWW
+         JH23Tpqi2vGaNEBneDZ0A6rK4kn4KT8fmEASJGnp6lPHIJlRUJGjYq097IgYrBONhr8+
+         u0SzcoYccb/6Qt46Jl3d82DYMk+exBBExPQLBHTZCUs+RGPeuqqLSpw0zRJiExPDvGN2
+         FN2w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1725531395; x=1726136195;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=xd6tRDcBI6nT0vpG0+47dCoixHmT48y9ZIC4bv5qVFY=;
+        b=FI6MvbSifMsF1H3R9Kfz0UUHC8RGM1AmnrGZYogc/qaQouSvlt7eSPYBPnUnOBU9LI
+         dlHI22VeZMZeKhMRSgHvFSESNEHCQIhwkUHb3D/KCCKSNInq/Af5H0MBvW176a3WKrQR
+         NYOEunyHbzbArI40e2A3kSCpvbDKxOBVyTI/JgcrRI8k+32sUD4icajEyZ8QE4Tkd8qE
+         gw30lTH/TkZakRG6c0I3vxdD185Ia07r1Uozv/HO53/DWnT4QcPVrJGZrsxz64gswN7Q
+         fIL58L/4+1usfLRqP0CtzZZW+kikR86CyQc/l49RVZzNPo2EdoBPVbu/Us4KQqElLxJR
+         FFMg==
+X-Forwarded-Encrypted: i=1; AJvYcCU/WYR826VbeGJL4T2nu6oHEpM8AQpVmyEDVpIxvWxjg6LIaO3u9dxZqLP3fml+sdENLLaD9F96MjbtbABKbg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwYDNK8Ck9NXBTmL31eZ6pfsbqHU+BN2jXD3vxI3e4xrLZUHfjq
+	3ozGKEx/k8S7lS025IQHNP1A5Otnmkll4q9Q0hbQfwNKX9NRde6otEn9l0Q9GmNUf7NoRBadekS
+	e9DTMXultNfezBArEYdzT/nCgbdmiMs12xyAGdg==
+X-Google-Smtp-Source: AGHT+IHOAa2WnFWM0m3QmtHGwmSzixacJsCBpWRBvguStq1YD37bVLj0/P6F5Iapvjw7xs8jP/X43ydPbq380G1rQQ4=
+X-Received: by 2002:a05:6902:1547:b0:e1d:1b8a:ac4 with SMTP id
+ 3f1490d57ef6-e1d1b8a0cbemr3960625276.11.1725531395247; Thu, 05 Sep 2024
+ 03:16:35 -0700 (PDT)
 MIME-Version: 1.0
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWS1ZQUlXWQ8JGhUIEh9ZQVkaSExCVkNJGExPSk8dTU5IT1YeHw5VEwETFhoSFy
-	QUDg9ZV1kYEgtZQVlKSkJVSklJVUlKSVVKQ0pZV1kWGg8SFR0UWUFZT0tIVUpLSEpMTElVSktLVU
-	pCS0tZBg++
-X-HM-Tid: 0a91c1a15f7303a2kunmcd08a7e01c6
-X-HM-MType: 10
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6PEk6ASo5DDIxSjopQzQMFxVN
-	GEwKCS9VSlVKTElOTkhLT01PTk5LVTMWGhIXVRoWGh8eDgg7ERYOVR4fDlUYFUVZV1kSC1lBWUpK
-	QlVKSUlVSUpJVUpDSllXWQgBWUFJSU5DNwY+
+References: <20240905093935.2780632-1-vignesh.raman@collabora.com>
+In-Reply-To: <20240905093935.2780632-1-vignesh.raman@collabora.com>
+From: Daniel Stone <daniel@fooishbar.org>
+Date: Thu, 5 Sep 2024 11:16:23 +0100
+Message-ID: <CAPj87rPCctE=iJKfQXR-PJdUHR+5f-t2bRA5Daq2fzUTNekzcg@mail.gmail.com>
+Subject: Re: [PATCH v1] drm/ci: uprev IGT and deqp-runner
+To: Vignesh Raman <vignesh.raman@collabora.com>
+Cc: dri-devel@lists.freedesktop.org, daniels@collabora.com, 
+	helen.koike@collabora.com, airlied@gmail.com, daniel@ffwll.ch, 
+	robdclark@gmail.com, guilherme.gallo@collabora.com, 
+	sergi.blanch.torne@collabora.com, deborah.brouwer@collabora.com, 
+	linux-mediatek@lists.infradead.org, linux-amlogic@lists.infradead.org, 
+	linux-rockchip@lists.infradead.org, amd-gfx@lists.freedesktop.org, 
+	linux-arm-msm@vger.kernel.org, intel-gfx@lists.freedesktop.org, 
+	virtualization@lists.linux.dev, linux-kernel@vger.kernel.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240905_030133_764758_72C397CF 
-X-CRM114-Status: UNSURE (   8.29  )
+X-CRM114-CacheID: sfid-20240905_031637_779397_3E5D52F4 
+X-CRM114-Status: UNSURE (   6.07  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -77,48 +96,14 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Junhao,
+Hi Vignesh,
 
->>> +	vcc5v0_usb_modem: regulator-5v0-vcc-usb-modem {
->> 
->> Are you sure this regulator is 5v?
->> 
->
-> It should actually be 3.3V, I will fix it and rename
-> to vcc3v3_usb_modem
+On Thu, 5 Sept 2024 at 10:41, Vignesh Raman <vignesh.raman@collabora.com> wrote:
+> Uprev IGT to the latest version and deqp-runner
+> to v0.20.0. Also update expectation files.
 
-I prefer vcc3v3_rf or vcc3v3_ngff,
-this is closer to the schematics.
-
->>> +	pinctrl-names = "default";
->>> +	pinctrl-0 = <&pcie30x2m1_pins>;
->> 
->> These are actually pcie30x1m0_pins.
->
-> pcie30x1m0_pins seems to conflict with sdmmc0,
-> I changed it to pcie30x1m1_pins
-
-This is obviously incorrect. I didn't notice that
-your pinctrl for sdmmc0 is wrong.
-(Because the cd pin are different)
-The sdmmc0 node should be like this:
-
-&sdmmc0 {
-	bus-width = <4>;
-	cap-sd-highspeed;
-	cd-gpios = <&gpio0 RK_PB5 GPIO_ACTIVE_LOW>;
-	disable-wp;
-	no-1-8-v;
-	pinctrl-names = "default";
-	pinctrl-0 = <&sdmmc0_bus4 &sdmmc0_clk &sdmmc0_cmd>;
-	vmmc-supply = <&vcc3v3_sd>;
-	vqmmc-supply = <&vcc_3v3>;
-	status = "okay";
-};
-
--- 
-2.25.1
-
+Thanks! This is:
+Reviewed-by: Daniel Stone <daniels@collabora.com>
 
 _______________________________________________
 Linux-rockchip mailing list
