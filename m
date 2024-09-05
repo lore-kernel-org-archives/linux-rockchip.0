@@ -4,62 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CD4C1CD4F5F
-	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Sep 2024 09:15:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 67B45CD4F5F
+	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Sep 2024 09:19:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Cc:From:References:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=CgKZwm0K99+1nBGM/HKKRWw/pdmutd/V1aqeeospZ6s=; b=OP5+77JWzdVBhb
-	0kKUzUbdxvnQBcUYfeqPXZgRkKJyvCDyP0sVI3AT6gU2zbzrap9/hNcHbnv4isXBkFB8Y1G1PGGCk
-	99x4CUJ/YlgDgHxAZfZ6NUGFbjrSRwFy+z8s4DaaFCNiE4Hm8jITiFTFAg6iyc6/T43sPnkUBAmW7
-	/5FVzMMn0R9pAaJKNEDmNOd0giYqsjWrs0+XD7mRwHM1QBsRmH8DskYG2CrZpvX7NHl8AtiK+/gaM
-	ACzmS9gE3GtLATCkZDZNndg5R/+wo4r6VBi68gVnHtYFGeJDxhEE4rZfWeis6G5rGe+N6P3LZn09e
-	kxM7l8/lQsZBGYz0UvIw==;
+	List-Owner; bh=iR9MDfl5Dr1+5fH/dilNS0/uerBbg3S7IYREYObQWxA=; b=s7fz+xR5GN63oI
+	zzlQIyGo21PYW6gZP8Ow9T2i3FpkjheuF7nqJe7VLpltm59Jlf8pFNYiR6E4EB4J8+LncJ8luBZt4
+	nmhnAgnMXWZ1tZxh3tKoatrp4uqwYQNToMpf+k3Non8KpVuF8IeRwrOpq2MAPxmaZBHdaY8OPxltQ
+	3qs4MSbUI6VQFybF8YIeDX3tRLA+Dhmdx0MBQCZn0aGtyRDFVHcPGJV1xJ0Ho3Iu1nCC06lcSxFcw
+	JRJ3bkKgBOCoqYVUD4IUL4wwvoHGd0ECVNWgJHrdEfNFyksPpc1qnC3EcVVUi5XzWDdBuvmKKEMSS
+	qqQAQAnR3oHSJYkQYO9g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sm8ah-00000007iaJ-2Lq8;
-	Thu, 05 Sep 2024 09:15:47 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
-	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sm8ZP-00000007iIj-1nT0;
-	Thu, 05 Sep 2024 09:14:28 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
-	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=426bdfUS0yLzDDEMRETm4lejCxOLDPe8UCSeDV1MoL0=; b=1vIOUHBjgZCq8hx63cc2Udhyy+
-	McKNgrN3AQWLiLTMtL529ntG8aDRIPk+dYEZ9wtaezfhCOTArigkBDks9dhD7oHzvJVD7JZDBWtsr
-	/NvPIxMNcC/E+zdHcfAHFwyytt0lfXsJjcdhjuHAOwSnIO8CtTQ32vWFwc5kwixtLpn/+DeyQhul5
-	LGp+2Ui1h9p/+koB7j/2cjOyHm3UsWeYAMaAff2R6ht+1/7kqeLz+e1ocXHUl/cwIcWASGaQj5VSP
-	12JmoLs1EvhLz3chIZpyn1drpkkeWHq90SZF61vnENNqiW/LDNnHFXhakifqcyVpSth24GZwK4RZJ
-	KOjOkDMA==;
-Received: from i5e860d0f.versanet.de ([94.134.13.15] helo=diego.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1sm8ZE-0008Be-6j; Thu, 05 Sep 2024 11:14:16 +0200
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: linux-rockchip@lists.infradead.org, linux-phy@lists.infradead.org,
- Dragan Simic <dsimic@manjaro.org>
-Cc: vkoul@kernel.org, kishon@kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v3 3/3] phy: phy-rockchip-inno-usb2: Use dev_err_probe() in the
- probe path
-Date: Thu, 05 Sep 2024 11:16:08 +0200
-Message-ID: <3681742.qqrk5fENW1@diego>
-In-Reply-To: <d4ccd9fc278fb46ea868406bf77811ee507f0e4e.1725524803.git.dsimic@manjaro.org>
-References: <cover.1725524802.git.dsimic@manjaro.org>
- <d4ccd9fc278fb46ea868406bf77811ee507f0e4e.1725524803.git.dsimic@manjaro.org>
+	id 1sm8ds-00000007jni-1LNU;
+	Thu, 05 Sep 2024 09:19:04 +0000
+Received: from [129.204.178.38] (helo=classfun.cn)
+	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
+	id 1sm8bQ-00000007j0F-0koH;
+	Thu, 05 Sep 2024 09:16:35 +0000
+Received: from [192.168.0.160] (unknown [14.155.100.110])
+	(Authenticated sender: bigfoot)
+	by classfun.cn (Postfix) with ESMTPSA id 09625789EC;
+	Thu,  5 Sep 2024 17:16:21 +0800 (CST)
+DKIM-Filter: OpenDKIM Filter v2.11.0 classfun.cn 09625789EC
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=classfun.cn;
+	s=default; t=1725527783;
+	bh=ke2XF0xsg9GelOC16/EoyH6BBkHyFP+ObV61vAzVb0M=;
+	h=Date:Subject:To:References:From:Cc:In-Reply-To:From;
+	b=QFXaWlQPLabeJN60N9sDnMULE/Coewl/FV37MFmAZ/QeQPP6cbklBCVj+lPZMFqJT
+	 HDOLH8TjYU2pczhX0UFluoJWaV/AmBd13GssEfIZG0X8Ne9IhgxQ2ArTP9weinqyLr
+	 ZgaOr4tD9SPcJ8NYenbd0cVWmXP8AgyzR+iKX1tc=
+Message-ID: <010a9c5e-205b-40b9-9655-9e168b2def97@classfun.cn>
+Date: Thu, 5 Sep 2024 17:17:38 +0800
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 3/3] arm64: dts: rockchip: add dts for Ariaboard
+ Photonicat RK3568
+To: Chukun Pan <amadeus@jmu.edu.cn>
+References: <20240904111456.87089-4-bigfoot@classfun.cn>
+ <20240905034009.28124-1-amadeus@jmu.edu.cn>
+Content-Language: en-US
+From: Junhao Xie <bigfoot@classfun.cn>
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ Jonas Karlman <jonas@kwiboo.se>, Chukun Pan <amadeus@jmu.edu.cn>,
+ FUKAUMI Naoki <naoki@radxa.com>, Dragan Simic <dsimic@manjaro.org>,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+ Junhao Xie <bigfoot@classfun.cn>
+In-Reply-To: <20240905034009.28124-1-amadeus@jmu.edu.cn>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240905_021427_520204_18316E45 
-X-CRM114-Status: UNSURE (   8.20  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240905_021633_069521_9F2B1460 
+X-CRM114-Status: GOOD (  19.93  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,15 +76,189 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Am Donnerstag, 5. September 2024, 10:28:24 CEST schrieb Dragan Simic:
-> Improve error handling in the probe path by using function dev_err_probe()
-> instead of function dev_err(), where appropriate.
+On 2024/9/5 11:40, Chukun Pan wrote:
+> Hi Junhao,
 > 
-> Signed-off-by: Dragan Simic <dsimic@manjaro.org>
+>> ...
+>> --- /dev/null
+>> +++ b/arch/arm64/boot/dts/rockchip/rk3568-ariaboard-photonicat.dts
+> 
+> This should be 'rk3568-photonicat.dts',
+> e.g. "Radxa ROCK 3A" -> rk3568-rock-3a.dts
+> 
+>> ...
+>> +	model = "Ariaboard Photonicat RK3568";
+>> +	compatible = "ariaboard,photonicat", "rockchip,rk3568";
+> 
+> The official model name does not include 'RK3568'.
 
-Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+I will rename it.
 
+> 
+>> ...
+>> +	firmware {
+>> +		optee: optee {
+>> +			compatible = "linaro,optee-tz";
+>> +			method = "smc";
+>> +		};
+>> +	};
+>> +
+>> ...
+>> +	reserved-memory {
+>> +		#address-cells = <2>;
+>> +		#size-cells = <2>;
+>> +		ranges;
+>> +
+>> +		ramoops: ramoops@110000 {
+>> +			compatible = "ramoops";
+>> +			reg = <0 0x110000 0 0xf0000>;
+>> +			console-size = <0x80000>;
+>> +			ftrace-size = <0x00000>;
+>> +			pmsg-size = <0x50000>;
+>> +			record-size = <0x20000>;
+>> +		};
+>> +	};
+> 
+> Maybe these can be moved to rk356x.dtsi?
 
+Yes, I will split them.
+
+> 
+>> ...
+>> +	vcca1v8: regulator-1v8-vcca {
+> 
+> schematics: VCCA_1V8
+> 
+>> ...
+> +	vcc3v3_pcie: regulator-3v3-vcc-pcie {
+> +		compatible = "regulator-fixed";
+> +		enable-active-high;
+> +		gpios = <&gpio0 RK_PA6 GPIO_ACTIVE_HIGH>;
+> +		pinctrl-names = "default";
+> +		pinctrl-0 = <&pcie_enable_h>;
+> 
+> schematics: pcie_pwren_h
+> vcc_syson -> vcc3v3_pi6c
+> vcc_syson -> vcc3v3_pcie
+> 
+>> +		regulator-always-on;
+>> +		regulator-boot-on;
+> 
+> No need.
+> 
+>> ...
+>> +	vcc5v0_sys: regulator-5v0-vcc-sys {
+> 
+> There is no vcc5v0_sys, but vcc_syson.
+> 
+> vcc_syson (5v) -> vcc3v3_sys
+> vcc_sysin (5v) - (mcu) -> vcc_syson
+> vccin_5v -> vcc_sysin
+> 
+>> ...
+>> +	vcc5v0_usb_host: regulator-5v0-vcc-usb-host {
+> 
+> schematics: VCC5V0_USB30_OTG0 and usb_host_pwren_h
+> It's a little weird, but that's what they're calling it.
+> Also: VCCIN_5V -> VCC5V0_USB30_OTG0
+> 
+>> ...
+>> +	vcc5v0_usb_modem: regulator-5v0-vcc-usb-modem {
+> 
+> Are you sure this regulator is 5v?
+> 
+
+It should actually be 3.3V, I will fix it and rename to vcc3v3_usb_modem
+
+> 
+>> ...
+>> +	vdda0v9: regulator-0v9-vdda {
+> 
+> schematics: VDDA_0V9
+> 
+>> +	wifi_pwrseq: wifi-pwrseq {
+>> +		compatible = "mmc-pwrseq-simple";
+>> +		pinctrl-names = "default";
+>> +		pinctrl-0 = <&wifi_enable_h>;
+> 
+> schematics: wifi_reg_on_h
+> Also you need to enable the clk:
+> 
+> 		clocks = <&pmucru CLK_RTC_32K>;
+> 		clock-names = "ext_clock";
+> 		pinctrl-names = "default";
+> 		pinctrl-0 = <&wifi_reg_on_h &clk32k_out1>;
+> 
+>> +		post-power-on-delay-ms = <200>;
+>> +		reset-gpios = <&gpio2 RK_PB1 GPIO_ACTIVE_LOW>;
+>> +	};
+> 
+>> ...
+>> +&pcie30phy {
+>> +	phy-supply = <&vcc3v3_pcie>;
+> 
+> phy-supply = <&vcc3v3_pi6c>;
+
+I will change it to vcc3v3_pi6c.
+But there seems to be a warning here, maybe phy-supply is missing in rockchip,pcie3-phy.yaml?
+
+/tmp/build/arch/arm64/boot/dts/rockchip/rk3568-photonicat.dtb: phy@fe8c0000: 'phy-supply' does not match any of the regexes: 'pinctrl-[0-9]+'
+        from schema $id: http://devicetree.org/schemas/phy/rockchip,pcie3-phy.yaml#
+
+> 
+>> ...
+>> +&pcie3x2 {
+>> +	max-link-speed = <1>;
+>> +	num-lanes = <1>;
+>> +	pinctrl-names = "default";
+>> +	pinctrl-0 = <&pcie30x2m1_pins>;
+> 
+> These are actually pcie30x1m0_pins.
+
+pcie30x1m0_pins seems to conflict with sdmmc0, I changed it to pcie30x1m1_pins
+
+> 
+>> ...
+>> +&pmugrf {
+>> +	reboot-mode {
+> 
+> Maybe these can be moved to rk356x.dtsi?
+> 
+>> ...
+>> +&sdhci {
+> 
+> Missing mmc-hs200-1_8v;
+> 
+[...]> 
+> ath10k does not need compatible.
+
+I will remove them
+
+> 
+>> ...
+>> +&uart1 {
+>> ...
+>> +		clocks = <&pmucru CLK_RTC_32K>;
+>> +		enable-gpios = <&gpio2 RK_PB7 GPIO_ACTIVE_HIGH>;
+>> +		pinctrl-names = "default";
+>> +		pinctrl-0 = <&bt_enable_h>;
+> 
+> schematics: bt_reg_on_h
+> Missing clock-names = "lpo";
+
+When I add clocks-name, check_dtbs gives me a warning
+
+/tmp/build/arch/arm64/boot/dts/rockchip/rk3568-photonicat.dtb: bluetooth: 'clock-names' does not match any of the regexes: 'pinctrl-[0-9]+'
+        from schema $id: http://devicetree.org/schemas/net/bluetooth/qualcomm-bluetooth.yaml#
+
+Maybe clock-name is missing in qualcomm-bluetooth.yaml?
+
+> 
+
+Thanks for your review, I will fix all problems in PATCH v2.
+
+Best regards,
+Junhao
 
 _______________________________________________
 Linux-rockchip mailing list
