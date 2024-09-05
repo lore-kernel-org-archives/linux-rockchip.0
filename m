@@ -4,64 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AE6D6CD5BA9
-	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Sep 2024 11:16:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 46785CD5BAA
+	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Sep 2024 11:35:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Cc:From:References:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=zCcbumwPluG/ngilKoAf1J5d2QfCsbd7w5+4ZkYaYMA=; b=z9onvL7SXib4pO
-	9Gn+f/hKcvoNQfytAtO2HWjW+N79cIIRtxdUnVKGp5R445+h6ejyKkg2lXVjoIAKp9UFhd4aVIbSm
-	H/s2XqrTbK2SS7IgXbUD8y9gVwxkh4cZieYUmweGUKo1m7cdDfZcCBaXJoRhr6ZWshymmae4Sjkh+
-	rszIa28ah/AgT8xp4ZjJQIIPbsgrOtc+M4jaA6ClpQRqVYc6kvB+/jLLxOCSn4DQl34pyDWRttzEO
-	Eqh6pWktkCW7+1pxY+FZQP2EEqbD2lArttCqDzry+BTof4cLUo8lS/10WooBaRqcAb+CVfJ29hspl
-	ZgRC0UizMr5GfHK6/1+w==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=bbsfbefFFbvrxYPnb1G0OuPcObm9b8Z8wJ8Nqhnybag=; b=xOpTs+LZ3NXiC8
+	UnnK+nrq9lku3DDPAsseU99rB19rk4LacLFRHyMBLqA/F+rEOqo9D/apL/BuX3zyV1yy057HFH5rY
+	fZQPM9FetZkyG8jv+/whVSUPMSpr5DGCzd0IKGynJOAAJnYLganLOvHTPFqOo1fdkhOV9orSBMCrT
+	l49XVNrgMl8sM+TQ8FRqJpxc0fFB5G0GI8k63hsWi1jMVB2khcqEvV6Shq2U8NOJ1AnqWkXgiXZQj
+	sBsC3hXfBlYYTT/Nrmdj6BOCfV54rBC9N2fQqxjye8GPc9Q3WZfzINtfeNjatlbdNICzInUWJmqHs
+	IGzWyLuYKRkH2e4rXh2w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1smATj-0000000861a-1SGW;
-	Thu, 05 Sep 2024 11:16:43 +0000
-Received: from [129.204.178.38] (helo=classfun.cn)
-	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1smASk-000000085vF-2BU4;
-	Thu, 05 Sep 2024 11:15:44 +0000
-Received: from [192.168.0.160] (unknown [14.155.100.110])
-	(Authenticated sender: bigfoot)
-	by classfun.cn (Postfix) with ESMTPSA id 7DB03789F0;
-	Thu,  5 Sep 2024 19:15:37 +0800 (CST)
-DKIM-Filter: OpenDKIM Filter v2.11.0 classfun.cn 7DB03789F0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=classfun.cn;
-	s=default; t=1725534938;
-	bh=JOGaZj39lzFUsnVmb+9NOSEKsjbRLstbQxPE3JMJV+0=;
-	h=Date:Subject:To:References:From:Cc:In-Reply-To:From;
-	b=VxUTqFwxyboQDUWWIUMv5fOWPIfy9DxQC8xpIlawOx6NZOtz2frHITCp6UXGLmDrA
-	 te+s86iIiNUkqjG8TFna6ln51ncTWioR8I7Oygw8qbudwAh/xqdlsg7mQklbv9dqlY
-	 d6QeCoVPD/EPmCX3finH+YZpNvlJ38em01XLXql0=
-Message-ID: <1e189c70-e677-453d-9e31-6637196c2b5c@classfun.cn>
-Date: Thu, 5 Sep 2024 19:17:03 +0800
+	id 1smAmD-000000088gR-3iZ1;
+	Thu, 05 Sep 2024 11:35:49 +0000
+Received: from mail.manjaro.org ([116.203.91.91])
+	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
+	id 1smAj2-000000087rX-0epV;
+	Thu, 05 Sep 2024 11:32:33 +0000
+From: Dragan Simic <dsimic@manjaro.org>
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
+	t=1725535949;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=MITZUtkw5bagB0eVerd/j8Yzb+fVQlvaPcZds1xrZjs=;
+	b=kw16o/JKlg5aGkXHHhhG/ITTlNiWvRjaihOKX5D3/SmPXrmaTcP0xsYTJ93b8yTd5iDKWV
+	GN+sqCUIuV8VZOPPQxFamoBWhiVocioLwOiAygfY5NFtEpJwwz7VEfynjeGBFOA2U5Bwna
+	VP3Ppa9xhu/2IsEL2Oy1st0XivEfx5TAIW0dqn1l4x0mYQ/wl67mLESlZ9pJm2P5ezyWQJ
+	FaTb0YAG6m3LSx1/kZ328AJ/cr/bf3KQ68K6QLxmMIYkIrNg9S9d6gDJpyl5khC4jY0dDC
+	9HZBwTiimAv54ojebZqvJlK0PxmzDHKBhuLRHkkWaVNdqlwcbtS4JwLey+7FMQ==
+To: linux-rockchip@lists.infradead.org
+Cc: heiko@sntech.de,
+	linux-arm-kernel@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
+	linux-kernel@vger.kernel.org,
+	Diederik de Haas <didi.debian@cknow.org>
+Subject: [PATCH] arm64: dts: rockchip: Add a few aliases to the PineTab2 dtsi
+Date: Thu,  5 Sep 2024 13:32:19 +0200
+Message-Id: <987e68d1c5e9a0cc56d730aec87246aa5ab8ea14.1725535770.git.dsimic@manjaro.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 3/3] arm64: dts: rockchip: add dts for Ariaboard
- Photonicat RK3568
-To: Andrew Lunn <andrew@lunn.ch>
-References: <20240904111456.87089-1-bigfoot@classfun.cn>
- <20240904111456.87089-4-bigfoot@classfun.cn>
- <6030542f-070d-4d76-9a5a-fbfc6bd433e6@lunn.ch>
-Content-Language: en-US
-From: Junhao Xie <bigfoot@classfun.cn>
-Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- Jonas Karlman <jonas@kwiboo.se>, Chukun Pan <amadeus@jmu.edu.cn>,
- FUKAUMI Naoki <naoki@radxa.com>, Dragan Simic <dsimic@manjaro.org>,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
- Junhao Xie <bigfoot@classfun.cn>
-In-Reply-To: <6030542f-070d-4d76-9a5a-fbfc6bd433e6@lunn.ch>
+Authentication-Results: ORIGINATING;
+	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240905_041542_988695_7091BEC7 
-X-CRM114-Status: UNSURE (   8.80  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240905_043232_675773_C14F5AD4 
+X-CRM114-Status: GOOD (  13.29  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,24 +72,90 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 2024/9/5 01:25, Andrew Lunn wrote:
->> +&gmac1 {
-[...]
-> This has been discussed a few times. You should be using phy-mode
-> rgmii-id.
+Sprinkle a few commonly used aliases onto the PineTab2 dtsi file, to improve
+its readability a bit, to make it easier to refer to the actual nodes later,
+if needed, and to add a bit more detail to some of the labels.
 
-After I changed phy-mode to rgmii-id, it seemed to work,
-but it didn't transmit any data.
-Maybe I made a mistake or should I continue to use phy-mode rgmii?
+No functional changes are introduced, which was validated by decompiling and
+comparing all affected board dtb files before and after these changes.  When
+compared with the decompiled original dtb files, some of the phandles in the
+updated dtb files have different values, and the updated dtb files contain
+some additional phandles and additional symbols that come from the introduced
+aliases, but they still effectively remain the same as the originals.
 
-> arch/arm/boot/dts/rockchip/rk3288-phycore-som.dtsi is i think also a
-> YT8521SC.
+Suggested-by: Diederik de Haas <didi.debian@cknow.org>
+Signed-off-by: Dragan Simic <dsimic@manjaro.org>
+---
 
-According to commit message and some pictures,
-rk3288-phycore-som is using TI DP83867 PHY?
+Notes:
+    This patch wasn't tested on a PineTab2 before it was submitted to the
+    mailing list, because I don't have that device, but Diederik has already
+    agreed to test this patch on his PineTab2 and provide feedback.
 
-Best regards,
-Junhao
+ arch/arm64/boot/dts/rockchip/rk3566-pinetab2.dtsi | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3566-pinetab2.dtsi b/arch/arm64/boot/dts/rockchip/rk3566-pinetab2.dtsi
+index db40281eafbe..04d98715ae6e 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3566-pinetab2.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3566-pinetab2.dtsi
+@@ -41,7 +41,7 @@ button-vol-down {
+ 		};
+ 	};
+ 
+-	backlight: backlight {
++	backlight: backlight-dsi {
+ 		compatible = "pwm-backlight";
+ 		pwms = <&pwm4 0 25000 0>;
+ 		brightness-levels = <20 220>;
+@@ -551,20 +551,20 @@ regulator-state-mem {
+ 			};
+ 		};
+ 
+-		charger {
++		rk817_charger: charger {
+ 			monitored-battery = <&battery>;
+ 			rockchip,resistor-sense-micro-ohms = <10000>;
+ 			rockchip,sleep-enter-current-microamp = <300000>;
+ 			rockchip,sleep-filter-current-microamp = <100000>;
+ 		};
+ 	};
+ };
+ 
+ &i2c1 {
+ 	clock-frequency = <400000>;
+ 	status = "okay";
+ 
+-	touchscreen@5d {
++	touchscreen: touchscreen@5d {
+ 		compatible = "goodix,gt911";
+ 		reg = <0x5d>;
+ 		interrupt-parent = <&gpio0>;
+@@ -583,13 +583,13 @@ &i2c2 {
+ 	pinctrl-0 = <&i2c2m1_xfer>;
+ 	status = "okay";
+ 
+-	vcm@c {
++	vcm: vcm@c {
+ 		compatible = "dongwoon,dw9714";
+ 		reg = <0x0c>;
+ 		vcc-supply = <&vcc1v8_dvp>;
+ 	};
+ 
+-	camera@36 {
++	camerab: camera@36 {
+ 		compatible = "ovti,ov5648";
+ 		reg = <0x36>;
+ 		pinctrl-names = "default";
+@@ -619,7 +619,7 @@ &i2c5 {
+ 	clock-frequency = <400000>;
+ 	status = "okay";
+ 
+-	accelerometer@18 {
++	accelerometer: accelerometer@18 {
+ 		compatible = "silan,sc7a20";
+ 		reg = <0x18>;
+ 		interrupt-parent = <&gpio3>;
 
 _______________________________________________
 Linux-rockchip mailing list
