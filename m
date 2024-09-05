@@ -4,74 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A34CFCD4F4D
-	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Sep 2024 06:20:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8B00DCD4F4D
+	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Sep 2024 07:11:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=poAWpl2NvPJgfNL1bnAAOFpudT4EtK+s73kO2tZBzKs=; b=a972uoXlYyOtd161JJHXJxrP6e
-	sgXTdXnEqBiyjWUaylYuoHQpgiXyk0gvtH4pd+KbXImYWV7v5UPVcmJb/i1BBovTmy2RdcIns5W3G
-	nLv+PI0XbTwrFqNXQsnyzkt7uXCiOj0bThEOc9sWKhzAuRJ56/2i67v7NYlow0SzqjkiyhoojrnvB
-	HUTmCWB3eQkW4I9GFyC/3Yv1qGt9igz/oXphsULHuwfC8/W5bDhlYCwIKrxMug18TRlHiiH1AzBFn
-	WFXhPs+WN6QGf6L3rHlJeuNUoOEJD4+5x3EeGhZlmEEkuhSKXl5uGbLVOhstSiUPUY13eLIsPYgQI
-	HmRMuouw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=VB/zN5I9lm045TTYod4sPBeY9MQ5O6pc+4L++xcTkO8=; b=qtHsZUvJmDc7rV
+	wG6/YqHahiFMeNKDu0/nuoPpSfqXtKi+xHEt/QIDJRSxes8FNeHhZSk7h1KSMBrZI6ajZWXqfBfpZ
+	4aIrqBw/0MIllPsedg0Hsx4Xz+54UfaY9V6gyvWQHYZhdCWhTEwlZ/eUwEWVPBLZQUKqji10LRLLL
+	KtLUPIHBtpFCvTOiY8+iN0hoCzWiPtjDzPjYPmp4tpaROkKDALQEQ9u/8ymIGEnO2gS0KrndjpbaP
+	lceDVtUj1pX7RCA1Q7cUQPVvJZAAlbgYI23Z5XSUmqXQq+SbgjZmNIeqPJPFpIEKivLwR6m2qPbUB
+	wiB7/DHCL/nztdnfcLUQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sm5r8-000000079Mf-0oLV;
-	Thu, 05 Sep 2024 06:20:34 +0000
+	id 1sm6eJ-00000007Jz6-3ngx;
+	Thu, 05 Sep 2024 07:11:24 +0000
 Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sm5q9-000000079B5-3htA
+	id 1sm6eG-00000007Jxa-3lcJ
 	for linux-rockchip@lists.infradead.org;
-	Thu, 05 Sep 2024 06:19:35 +0000
+	Thu, 05 Sep 2024 07:11:22 +0000
 Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
 	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
 	(Exim 4.92)
-	(envelope-from <mkl@pengutronix.de>)
-	id 1sm5pq-0007Na-VN; Thu, 05 Sep 2024 08:19:14 +0200
-Received: from [2a0a:edc0:0:b01:1d::7b] (helo=bjornoya.blackshift.org)
+	(envelope-from <sha@pengutronix.de>)
+	id 1sm6dw-0002sW-V8; Thu, 05 Sep 2024 09:11:00 +0200
+Received: from [2a0a:edc0:2:b01:1d::c5] (helo=pty.whiteo.stw.pengutronix.de)
 	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
-	(envelope-from <mkl@pengutronix.de>)
-	id 1sm5po-005dZX-2p; Thu, 05 Sep 2024 08:19:12 +0200
-Received: from pengutronix.de (pd9e5994e.dip0.t-ipconnect.de [217.229.153.78])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(Client did not present a certificate)
-	(Authenticated sender: mkl-all@blackshift.org)
-	by smtp.blackshift.org (Postfix) with ESMTPSA id AC96E33307A;
-	Thu, 05 Sep 2024 06:19:11 +0000 (UTC)
-Date: Thu, 5 Sep 2024 08:19:10 +0200
-From: Marc Kleine-Budde <mkl@pengutronix.de>
-To: Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>
-Cc: kernel@pengutronix.de, Alibek Omarov <a1ba.omarov@gmail.com>, 
-	Vincent Mailhol <mailhol.vincent@wanadoo.fr>, "David S. Miller" <davem@davemloft.net>, 
-	Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, 
-	Paolo Abeni <pabeni@redhat.com>, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Philipp Zabel <p.zabel@pengutronix.de>, Elaine Zhang <zhangqing@rock-chips.com>, 
-	David Jander <david.jander@protonic.nl>, Simon Horman <horms@kernel.org>, linux-can@vger.kernel.org, 
-	netdev@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, David Jander <david@protonic.nl>
-Subject: Re: [PATCH can-next v5 00/20] can: rockchip_canfd: add support for
- CAN-FD IP core found on Rockchip RK3568
-Message-ID: <20240905-galago-of-unmatched-development-cc97ac-mkl@pengutronix.de>
-References: <20240904-rockchip-canfd-v5-0-8ae22bcb27cc@pengutronix.de>
- <86274585.BzKH3j3Lxt@diego>
- <20240904-imposing-determined-mayfly-ba6402-mkl@pengutronix.de>
- <4091366.iTQEcLzFEP@diego>
+	(envelope-from <sha@pengutronix.de>)
+	id 1sm6dt-005e23-37; Thu, 05 Sep 2024 09:10:57 +0200
+Received: from sha by pty.whiteo.stw.pengutronix.de with local (Exim 4.96)
+	(envelope-from <sha@pengutronix.de>)
+	id 1sm6ds-0085D2-38;
+	Thu, 05 Sep 2024 09:10:56 +0200
+Date: Thu, 5 Sep 2024 09:10:56 +0200
+From: Sascha Hauer <s.hauer@pengutronix.de>
+To: Andy Yan <andyshrk@163.com>
+Subject: Re: [PATCH v2 05/11] drm/rockchip: vop2: Introduce vop hardware
+ version
+Message-ID: <ZtlZgKcDQFF_WnCn@pengutronix.de>
+References: <20240904120238.3856782-1-andyshrk@163.com>
+ <20240904120238.3856782-6-andyshrk@163.com>
 MIME-Version: 1.0
-In-Reply-To: <4091366.iTQEcLzFEP@diego>
+Content-Disposition: inline
+In-Reply-To: <20240904120238.3856782-6-andyshrk@163.com>
+X-Sent-From: Pengutronix Hildesheim
+X-URL: http://www.pengutronix.de/
+X-Accept-Language: de,en
+X-Accept-Content-Type: text/plain
 X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
-X-SA-Exim-Mail-From: mkl@pengutronix.de
+X-SA-Exim-Mail-From: sha@pengutronix.de
 X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
 X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240904_231933_930452_2938B057 
-X-CRM114-Status: GOOD (  19.09  )
+X-CRM114-CacheID: sfid-20240905_001120_945601_A3150337 
+X-CRM114-Status: GOOD (  28.92  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,86 +74,74 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============7202801432027138155=="
+Cc: detlev.casanova@collabora.com, heiko@sntech.de, devicetree@vger.kernel.org, dri-devel@lists.freedesktop.org, hjc@rock-chips.com, mripard@kernel.org, sebastian.reichel@collabora.com, linux-rockchip@lists.infradead.org, sjoerd@collabora.com, Andy Yan <andy.yan@rock-chips.com>, krzk+dt@kernel.org, robh@kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Hi Andy,
 
---===============7202801432027138155==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="jb2uxtxhgm4xkjdb"
-Content-Disposition: inline
+On Wed, Sep 04, 2024 at 08:02:32PM +0800, Andy Yan wrote:
+> From: Andy Yan <andy.yan@rock-chips.com>
+> 
+> There is a version number hardcoded in the VOP VERSION_INFO
+> register, and the version number increments sequentially based
+> on the production order of the SOC.
+> 
+> So using this version number to distinguish different VOP features
+> will simplify the code.
+> 
+> Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
+> 
+> ---
+> 
+> Changes in v2:
+> - Introduce vop hardware version
+> 
+>  drivers/gpu/drm/rockchip/rockchip_drm_vop2.c |  7 ++++---
+>  drivers/gpu/drm/rockchip/rockchip_drm_vop2.h | 11 +++++++++++
+>  drivers/gpu/drm/rockchip/rockchip_vop2_reg.c |  3 +++
+>  3 files changed, 18 insertions(+), 3 deletions(-)
+> 
+> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h
+> index 9b269f6e576e..871d9bcd1d80 100644
+> --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h
+> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h
+> @@ -13,6 +13,15 @@
+>  #include "rockchip_drm_drv.h"
+>  #include "rockchip_drm_vop.h"
+>  
+> +#define VOP2_VERSION(major, minor, build)	((major) << 24 | (minor) << 16 | (build))
+> +
+> +/* The new SOC VOP version is bigger than the old */
+> +#define VOP_VERSION_RK3568	VOP2_VERSION(0x40, 0x15, 0x8023)
+> +#define VOP_VERSION_RK3588	VOP2_VERSION(0x40, 0x17, 0x6786)
+> +#define VOP_VERSION_RK3528	VOP2_VERSION(0x50, 0x17, 0x1263)
+> +#define VOP_VERSION_RK3562	VOP2_VERSION(0x50, 0x17, 0x4350)
+> +#define VOP_VERSION_RK3576	VOP2_VERSION(0x50, 0x19, 0x9765)
 
+What about the RK3566? Does it have the same version code as the RK3568?
 
---jb2uxtxhgm4xkjdb
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+This new version field replaces the soc_id mechanism we had before to
+99%. You keep the soc_id around just for distinguishing between RK3566
+and RK3568. It would be nice to fully replace it.
 
-On 04.09.2024 18:43:52, Heiko St=C3=BCbner wrote:
-> Am Mittwoch, 4. September 2024, 17:10:08 CEST schrieb Marc Kleine-Budde:
-> > On 04.09.2024 10:55:21, Heiko St=C3=BCbner wrote:
-> > [...]
-> > > How/when are you planning on applying stuff?
-> > >=20
-> > > I.e. if you're going to apply things still for 6.12, you could simply=
- take
-> > > the whole series if the dts patches still apply to your tree ;-)
-> >=20
-> > The DTS changes should not go via any driver subsystem upstream, so
-> > here's a dedicated PR:
-> >=20
-> > https://patch.msgid.link/20240904-rk3568-canfd-v1-0-73bda5fb4e03@pengut=
-ronix.de
->=20
-> I wasn't on Cc for the pull-request so I'll probably not get a notificati=
-on
-> when it gets merged?
->=20
-> So if you see your PR with the binding and driver getting merged to
-> next-next, can you provide a ping please?
-  ^^^^^^^^^
-  net-next?
+I see that the VOP_VERSION_RK* numbers are the same as found in the
+VOP2_SYS_VERSION_INF registers. On the other hand you never read the
+value from the register which make the VOP_VERSION_RK* just arbitrary
+numbers. Wouldn't it be possible to make something up for RK3566, like
+VOP2_VERSION(0x40, 0x15, 0x8022) to get rid of the soc_id thingy?
 
-Will do.
+Sascha
 
-regards,
-Marc
-
---=20
-Pengutronix e.K.                 | Marc Kleine-Budde          |
-Embedded Linux                   | https://www.pengutronix.de |
-Vertretung N=C3=BCrnberg              | Phone: +49-5121-206917-129 |
-Amtsgericht Hildesheim, HRA 2686 | Fax:   +49-5121-206917-9   |
-
---jb2uxtxhgm4xkjdb
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEUEC6huC2BN0pvD5fKDiiPnotvG8FAmbZTVsACgkQKDiiPnot
-vG96tQf/SxmDdp97bb66tXlUCf9x3X4Dory7Liw54EAzczBg1ycKNhJJojalvMoP
-aDuJOZ2Zmh3ho31TiRZ2oYkEvW11tK8Ep5/EBNGP2vergWFxZLe0+h+NLN93CXxB
-9gfLvz4AA0SwE+MdgPuK0TUwjDcl7tX0kRFzMWyuV+K9ARq9FRv7LzXZwaTEauYU
-+Yx/jrkm2Z3RHGIr85yhS//6/KeS9G8Nzd9D3k9cBfZVMgRbWr2W8bR5ebNkB02w
-U2HUuaOwbGIsQDTDoC+7m72hMOdkrdSneMDvI0Ww4PFeml+KmSNr9s3uc8J5uTWi
-9liZ+iO4DMqQ80xIfnjQutSg8Ww33Q==
-=y7mx
------END PGP SIGNATURE-----
-
---jb2uxtxhgm4xkjdb--
-
-
---===============7202801432027138155==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+-- 
+Pengutronix e.K.                           |                             |
+Steuerwalder Str. 21                       | http://www.pengutronix.de/  |
+31137 Hildesheim, Germany                  | Phone: +49-5121-206917-0    |
+Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============7202801432027138155==--
-
