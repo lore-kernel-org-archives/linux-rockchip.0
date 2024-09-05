@@ -4,62 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C19FACD5BC8
-	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Sep 2024 14:06:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 05E67CD5BC8
+	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Sep 2024 14:13:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=iu83eT4nOHR6MUQIfTqYvIQsDsl6dvvEhXapyVMuPCk=; b=D7USJahyqOHWsP
-	qz9pqIcB7HxiEM2O2sWZE4dJxDwyvqO/MfnNK22zjZ1YFtAeKqwg2Uib1s2M+ImgQfvkRAtk066KS
-	agRw/aszPCGdYwuCyYf8gnLZVE5dXQo2lxjpOrL7H6mRiCjxasLpgWRR3XCxesosSSz4IYY8UaUpe
-	aQ3HCtwSDTv0q5NLdTfNPGDpsq1w0klj6olpeTcjfScRWYWR8Cyvm9VnrBCok8KdkXobRFAU5pl90
-	G30G1H35Q/HdqHpgKzF0Lvr6lMh6C6eRkGOcROiVJzYARpjs12l0xWpEGQuWBg4m08eyiGsjln5U7
-	qYGcEkfRaXhHU5xXMnsQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=lyJgl3sYpwME5vGh4pN2q/8nZAP4WgU/eBeLOTFoqMU=; b=Kb6F/XeQ8X6TqV/T8w1wwbudYC
+	MAJhB/M7kO17oIf8MHaVo49Vl7y3/5wEyId4vE8hhghojBH9LqEjU6XpdD2gaQ8qbTwa4+glCCMbo
+	Ej5i/iVm+pSiY14tsYeSqvs+iXVDQXAZ+3bOIQw9zqDFwqcYDLfWiFGsYwb+8bZXZavHf88LomOyn
+	gEFRhzk0aQh+vLnlzRTdf3UYfvEUpW9DMryjEmZaDbFxy/N+T1xRnUIEYHz3IoNSpO9QO1wzkipPV
+	jqccJY1MDH0Z3q7x9YV5h3tGKuWIxlaULEV+HPZoBmWH5RfDc0a26CrmA7rhc16hv4TOvAEhZ6Ajn
+	V0JK8f6g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1smD7p-00000008df0-1UTY;
-	Thu, 05 Sep 2024 14:06:17 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1smDEQ-00000008ej4-2LoZ;
+	Thu, 05 Sep 2024 14:13:06 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1smD7l-00000008dcZ-3Zm3;
-	Thu, 05 Sep 2024 14:06:15 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
-	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=GUXEpp2c2ARyLgOrUAyoNaSPEKrwdOLv9hGqE+A2ciI=; b=UTx7jycsYBnCRh+5njyIXgy5FC
-	4XsU61PAuQ92AXKdGzHoAdP+7Ihixls/mxk5nAmSDHnACwdBRKb/3P3kPyOLxwNu7L2/uPSEoTIkw
-	aGdZjMPmzKrjLTppnDlt7SVhyZsQSOaP7cr4/hZHSi3Ouau9rDce+d2kEt66vltXOAO8pVqEUj6Ra
-	lDKgJT+b+GbxdLyEQw1Rn3/ShNCYBj0MD93G4uvFo01s8jC+P1rgUrk9OSfTBZBusr+zcMg/s1XWh
-	KvbeU5kIWwEmFn3Dv/IsK74Ae1ypTYFAM1BRUyKHJMqF8GP7rGtkHJVoCgUmdWkIVqCbT0OEZiZK/
-	PrN9vO2A==;
-Received: from i5e860d0f.versanet.de ([94.134.13.15] helo=diego.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1smD7i-000225-N9; Thu, 05 Sep 2024 16:06:10 +0200
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: Krzysztof Kozlowski <krzk@kernel.org>, Dragan Simic <dsimic@manjaro.org>,
- linux-rockchip@lists.infradead.org, Diederik de Haas <didi.debian@cknow.org>
-Cc: linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org,
- robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
- linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] arm64: dts: rockchip: Add a few aliases to the PineTab2 dtsi
-Date: Thu, 05 Sep 2024 16:08:05 +0200
-Message-ID: <2089090.o4kTbAZ4gJ@diego>
-In-Reply-To: <D3YCHAOLOU6W.3B8MJYAYWOEGK@cknow.org>
-References: <987e68d1c5e9a0cc56d730aec87246aa5ab8ea14.1725535770.git.dsimic@manjaro.org>
- <c820085c-a4f4-4d03-9df8-733a79e911c0@kernel.org>
- <D3YCHAOLOU6W.3B8MJYAYWOEGK@cknow.org>
+	id 1smDDR-00000008ea5-0xK9;
+	Thu, 05 Sep 2024 14:12:06 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 0602D5C5BA3;
+	Thu,  5 Sep 2024 14:12:01 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8636AC4CEC3;
+	Thu,  5 Sep 2024 14:12:02 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1725545524;
+	bh=LiM18QQ8KZAdWmtS108wtpHVsXHV+blPnGP7wyjLLYc=;
+	h=Date:From:To:List-Id:Cc:Subject:References:In-Reply-To:From;
+	b=bnZMJDNihQFag3NjCVTfjamz2+EUvxUgZm+SQaw/xpWFUyXpOZEBCHamNfLshtGug
+	 /XnxEG/2u4ODiNWmiP3C5yB0TkoT+uINqmybvGTNeP9eXckdiNBp2C9bCl0yh/8IO8
+	 5z/Yt8apcKsBP5JyOv5FuoiXoLShM573HjQaV6lBM/yFpVE0lhppXBnr8Nj3yIi2q3
+	 lvwNXvGUlF/Q4ZRiZmYH5/HCWXkGzHqSQYOoEDJNgHv4DvL5T9GWBA7At8F6qCOEwr
+	 C/ms3hT/ttBHItLRnFbhv1tFxl5i03U3XZahbkOYyVuJppQVSR0W1cLcFy1aGHwgiM
+	 S4YJCnnD9LZhw==
+Date: Thu, 5 Sep 2024 15:11:59 +0100
+From: Mark Brown <broonie@kernel.org>
+To: Arnd Bergmann <arnd@arndb.de>
+Cc: Damien FLETY <damien@flety.net>, Olof Johansson <olof@lixom.net>,
+	Heiko Stuebner <heiko@sntech.de>,
+	linux-rockchip@lists.infradead.org,
+	"soc@kernel.org" <soc@kernel.org>,
+	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+Subject: Re: PATCH: Turing RK1 DTB Fan
+Message-ID: <d966c347-6cc3-4cb1-b8d5-33c37f693a21@sirena.org.uk>
+References: <bZF0liAaH-7lJuzf_4iIfAWAgwYauu7IpIJMMpY7BT8mZXiKZFZ797Sa9gONDEt2wIFlLd4l10qSfs44ZAiBJ7_c3yvAFci4kuOdeYy7ZQU=@flety.net>
+ <CBBY-R4n8r7s8-gRkQLEWfFmBE-2ncks_UUQnnajujY-KYz4Xug2rwDI_pOZYLBi2d3qy-gP9c4l0i61ptlm39t_wscyvJPVV5CTlsdm-as=@flety.net>
+ <52a52558-2f7a-41ca-a0ee-98ef4eca3e6e@app.fastmail.com>
 MIME-Version: 1.0
+In-Reply-To: <52a52558-2f7a-41ca-a0ee-98ef4eca3e6e@app.fastmail.com>
+X-Cookie: The horror... the horror!
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240905_070613_953514_11359364 
-X-CRM114-Status: GOOD (  26.02  )
+X-CRM114-CacheID: sfid-20240905_071205_344407_EF708F54 
+X-CRM114-Status: GOOD (  10.16  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,53 +71,59 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============0349168972854175954=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Am Donnerstag, 5. September 2024, 14:21:12 CEST schrieb Diederik de Haas:
-> On Thu Sep 5, 2024 at 1:39 PM CEST, Krzysztof Kozlowski wrote:
-> > On 05/09/2024 13:32, Dragan Simic wrote:
-> > > Sprinkle a few commonly used aliases onto the PineTab2 dtsi file, to improve
-> > > its readability a bit, to make it easier to refer to the actual nodes later,
-> > > if needed, and to add a bit more detail to some of the labels.
-> > > 
-> > > Suggested-by: Diederik de Haas <didi.debian@cknow.org>
-> > > Signed-off-by: Dragan Simic <dsimic@manjaro.org>
-> >
-> > Unused aliases do not improve readability, so for me this change is
-> > making code worse without valid reason.
-> 
-> This came forth by a question from me to Dragan about a patch for
-> another board which doesn't have a charger defined at all (yet).
-> I actually have that patch (but not the HW) for a while (~1.5 year)
-> now and I had used `rk817_charger: charger` for that, probably because
-> I saw that being used everywhere else.
-> 
-> Then I compared it to the PineTab2 and noticed it had only `charger`, so
-> I asked "What should I use? With or without the alias?"
-> In this case the inconsistency is causing confusion (with me).
-> 
-> So: What should be used for that other/new board(s)?
 
-As Krzysztof said, having a phandle that is never going to be used is
-somewhat pointless.
-
-Having a phandle defined for a node does not hurt anything, so having
-some in a board dts is not catastrophically bad, but there is no reason
-to add or remove unused ones for no reason - especially as it affects
-git blame .
-
-So in short, if you see an unused phandle in a dts _patch_, just point it
-out in review.
+--===============0349168972854175954==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="4yUVLDQtxfzSSGWT"
+Content-Disposition: inline
 
 
-Heiko
+--4yUVLDQtxfzSSGWT
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+
+On Thu, Sep 05, 2024 at 01:23:34PM +0000, Arnd Bergmann wrote:
+
+> - Use 'git send-email' to send the patch in a form that can
+>   be applied from the mailing list.
+
+There's another tool 'b4' which does this too, plus wrapping some other
+technical bits of the upstreaming process:
+
+   https://b4.docs.kernel.org/en/latest/
+
+--4yUVLDQtxfzSSGWT
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmbZvC8ACgkQJNaLcl1U
+h9C1Lgf8CXzL/OxY4rM8auy+qZrwePpfNccMQKLqt6qZj5W0NPkggd/r6Mrr9J4Q
+rKIKF7FAjD3TtQfVl3UyAqU19msTcG+9TSZBjQFr7OXT4hcvxdpzlMA97vcRyoh+
+fogu+4rT4KcnBiURQHqtKTUWwVqQRBJZGaveNL1MqEMt6eVzkwFHN5bhr23EPOk5
+s3+bbSQELNWV8NrFGR8f2nXLriv3VWqk3YnWuNhEZj0UosVgAkQslgvgVwVHyzHT
++dWgfT1aMC/DihaTHc21PYkZtqp6+v+qQDzafEnIrcUKziJ2C/irFa9CuHlxIIY9
+c6j+TksJ4fqLmbgFxiqQBHr1KZtPcQ==
+=Bity
+-----END PGP SIGNATURE-----
+
+--4yUVLDQtxfzSSGWT--
 
 
+--===============0349168972854175954==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============0349168972854175954==--
+
