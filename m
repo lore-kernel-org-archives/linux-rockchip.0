@@ -4,62 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 05E67CD5BC8
-	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Sep 2024 14:13:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0EF53CD5BC9
+	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Sep 2024 14:49:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=lyJgl3sYpwME5vGh4pN2q/8nZAP4WgU/eBeLOTFoqMU=; b=Kb6F/XeQ8X6TqV/T8w1wwbudYC
-	MAJhB/M7kO17oIf8MHaVo49Vl7y3/5wEyId4vE8hhghojBH9LqEjU6XpdD2gaQ8qbTwa4+glCCMbo
-	Ej5i/iVm+pSiY14tsYeSqvs+iXVDQXAZ+3bOIQw9zqDFwqcYDLfWiFGsYwb+8bZXZavHf88LomOyn
-	gEFRhzk0aQh+vLnlzRTdf3UYfvEUpW9DMryjEmZaDbFxy/N+T1xRnUIEYHz3IoNSpO9QO1wzkipPV
-	jqccJY1MDH0Z3q7x9YV5h3tGKuWIxlaULEV+HPZoBmWH5RfDc0a26CrmA7rhc16hv4TOvAEhZ6Ajn
-	V0JK8f6g==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=Us/OG9MZsnAWKPWX5HmyQZ/yGpZgLbLOOxZoGq19MPU=; b=t9BQzqudqYdhbZ
+	0t5V9Pu+5q66z25XqJ7WJM7jO1/5Tz0POoEVPMl0yJzD1+Nt9cMD6vP3VXmiA2nq8Z5uWQLTfl9y9
+	kjZgdj7n17ex4aMEl67sBaqaMJyRoK6xgCYBipabAL7R+dUx55UWmvGIDeHrL1FfP+2mDAPokdopc
+	+ZXQmNzKOc51ZDTdJjT08XBjmd47OfnWvaleyw+tBLv8hzQ+sQIufJ7ctFyM/qQokv1yVXgVmTUPW
+	XAMfKFVnr4lmKJMyvdtoTRvUeyxu9/BnwHIE9AwQbB6ML6aJdF0dmoxQCVDm8RjX2E+7jsKyeuNiP
+	z8k8uOBE0rVPcdXPUk/w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1smDEQ-00000008ej4-2LoZ;
-	Thu, 05 Sep 2024 14:13:06 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1smDnp-00000008n4U-2XlY;
+	Thu, 05 Sep 2024 14:49:41 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1smDDR-00000008ea5-0xK9;
-	Thu, 05 Sep 2024 14:12:06 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 0602D5C5BA3;
-	Thu,  5 Sep 2024 14:12:01 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8636AC4CEC3;
-	Thu,  5 Sep 2024 14:12:02 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1725545524;
-	bh=LiM18QQ8KZAdWmtS108wtpHVsXHV+blPnGP7wyjLLYc=;
-	h=Date:From:To:List-Id:Cc:Subject:References:In-Reply-To:From;
-	b=bnZMJDNihQFag3NjCVTfjamz2+EUvxUgZm+SQaw/xpWFUyXpOZEBCHamNfLshtGug
-	 /XnxEG/2u4ODiNWmiP3C5yB0TkoT+uINqmybvGTNeP9eXckdiNBp2C9bCl0yh/8IO8
-	 5z/Yt8apcKsBP5JyOv5FuoiXoLShM573HjQaV6lBM/yFpVE0lhppXBnr8Nj3yIi2q3
-	 lvwNXvGUlF/Q4ZRiZmYH5/HCWXkGzHqSQYOoEDJNgHv4DvL5T9GWBA7At8F6qCOEwr
-	 C/ms3hT/ttBHItLRnFbhv1tFxl5i03U3XZahbkOYyVuJppQVSR0W1cLcFy1aGHwgiM
-	 S4YJCnnD9LZhw==
-Date: Thu, 5 Sep 2024 15:11:59 +0100
-From: Mark Brown <broonie@kernel.org>
-To: Arnd Bergmann <arnd@arndb.de>
-Cc: Damien FLETY <damien@flety.net>, Olof Johansson <olof@lixom.net>,
-	Heiko Stuebner <heiko@sntech.de>,
-	linux-rockchip@lists.infradead.org,
-	"soc@kernel.org" <soc@kernel.org>,
-	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
-Subject: Re: PATCH: Turing RK1 DTB Fan
-Message-ID: <d966c347-6cc3-4cb1-b8d5-33c37f693a21@sirena.org.uk>
-References: <bZF0liAaH-7lJuzf_4iIfAWAgwYauu7IpIJMMpY7BT8mZXiKZFZ797Sa9gONDEt2wIFlLd4l10qSfs44ZAiBJ7_c3yvAFci4kuOdeYy7ZQU=@flety.net>
- <CBBY-R4n8r7s8-gRkQLEWfFmBE-2ncks_UUQnnajujY-KYz4Xug2rwDI_pOZYLBi2d3qy-gP9c4l0i61ptlm39t_wscyvJPVV5CTlsdm-as=@flety.net>
- <52a52558-2f7a-41ca-a0ee-98ef4eca3e6e@app.fastmail.com>
+	id 1smDmr-00000008mvY-00kd;
+	Thu, 05 Sep 2024 14:48:42 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+	List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=Z9IgYD/2bP3HwiWDe9m6U4cOpfzwTsOumgc5N6zAYJA=; b=w/b4diqw5J8ZIWZLi5djL0KZax
+	oYskcatg6UJKVdLpBuSCCoPxb857ufeJN9eshcmsi68J/7ptbzWk043BsCHcRZ+oXflAwquP5rcoA
+	MV40is1liBi9d8axQSJHuIhypek6r9Lvz4WU8t+VItpygoIB3Qrdq4VKamWkE7HBi7vMET96xV0oC
+	yyF4mAvu0ThWEjYfLULsTtkVHc3A6s7wx5yRnUz9WjN0FdjUpRdKbQ0bD/gnSFwMp9guoDc2fL3HW
+	4iE5WgDR4IijnID5sLC2t6JfrtyLyvB2hFOMLYI26aTLd/qZk5RdFq5LFYVTydBQ05sXM6fHcZQsu
+	0P35Q/gw==;
+Received: from i5e860d0f.versanet.de ([94.134.13.15] helo=diego.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1smDmd-0002HD-Hx; Thu, 05 Sep 2024 16:48:27 +0200
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+To: Lee Jones <lee@kernel.org>
+Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
+ jdelvare@suse.com, linux@roeck-us.net, dmitry.torokhov@gmail.com,
+ pavel@ucw.cz, ukleinek@debian.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-hwmon@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-input@vger.kernel.org, linux-leds@vger.kernel.org
+Subject: Re: [PATCH v6 3/7] leds: add driver for LEDs from qnap-mcu devices
+Date: Thu, 05 Sep 2024 16:50:22 +0200
+Message-ID: <3627679.ZzFAyJQhcr@diego>
+In-Reply-To: <20240829162705.GR6858@google.com>
+References: <20240825203235.1122198-1-heiko@sntech.de>
+ <20240825203235.1122198-4-heiko@sntech.de> <20240829162705.GR6858@google.com>
 MIME-Version: 1.0
-In-Reply-To: <52a52558-2f7a-41ca-a0ee-98ef4eca3e6e@app.fastmail.com>
-X-Cookie: The horror... the horror!
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240905_071205_344407_EF708F54 
-X-CRM114-Status: GOOD (  10.16  )
+X-CRM114-CacheID: sfid-20240905_074841_076577_C150680E 
+X-CRM114-Status: GOOD (  25.72  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,59 +72,105 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============0349168972854175954=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Am Donnerstag, 29. August 2024, 18:27:05 CEST schrieben Sie:
+> On Sun, 25 Aug 2024, Heiko Stuebner wrote:
+> 
+> > This adds a driver that connects to the qnap-mcu mfd driver and provides
+> > access to the LEDs on it.
+> > 
+> > Signed-off-by: Heiko Stuebner <heiko@sntech.de>
 
---===============0349168972854175954==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="4yUVLDQtxfzSSGWT"
-Content-Disposition: inline
+[...]
 
+> > +{
+> > +	struct qnap_mcu_err_led *err_led = cdev_to_qnap_mcu_err_led(led_cdev);
+> > +	u8 cmd[] = { 0x40, 0x52, 0x30 + err_led->num, 0x30 };
+> 
+> Really not fan of these magic values being used raw like this.
 
---4yUVLDQtxfzSSGWT
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Me neither, I tried my luck with QNAP support to get some sort of
+documentation on what these magic characters mean, and it did
+even get up to some "product team" but ultimately they decided
+against providing any help.
 
-On Thu, Sep 05, 2024 at 01:23:34PM +0000, Arnd Bergmann wrote:
-
-> - Use 'git send-email' to send the patch in a form that can
->   be applied from the mailing list.
-
-There's another tool 'b4' which does this too, plus wrapping some other
-technical bits of the upstreaming process:
-
-   https://b4.docs.kernel.org/en/latest/
-
---4yUVLDQtxfzSSGWT
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmbZvC8ACgkQJNaLcl1U
-h9C1Lgf8CXzL/OxY4rM8auy+qZrwePpfNccMQKLqt6qZj5W0NPkggd/r6Mrr9J4Q
-rKIKF7FAjD3TtQfVl3UyAqU19msTcG+9TSZBjQFr7OXT4hcvxdpzlMA97vcRyoh+
-fogu+4rT4KcnBiURQHqtKTUWwVqQRBJZGaveNL1MqEMt6eVzkwFHN5bhr23EPOk5
-s3+bbSQELNWV8NrFGR8f2nXLriv3VWqk3YnWuNhEZj0UosVgAkQslgvgVwVHyzHT
-+dWgfT1aMC/DihaTHc21PYkZtqp6+v+qQDzafEnIrcUKziJ2C/irFa9CuHlxIIY9
-c6j+TksJ4fqLmbgFxiqQBHr1KZtPcQ==
-=Bity
------END PGP SIGNATURE-----
-
---4yUVLDQtxfzSSGWT--
+But ok, if it makes you feel more at ease, I'll switch to at least
+replaying ascii-values where possible :-) .
 
 
---===============0349168972854175954==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+> > +static int qnap_mcu_err_led_blink_set(struct led_classdev *led_cdev,
+> > +				      unsigned long *delay_on,
+> > +				      unsigned long *delay_off)
+> > +{
+> > +	struct qnap_mcu_err_led *err_led = cdev_to_qnap_mcu_err_led(led_cdev);
+> > +	u8 cmd[] = { 0x40, 0x52, 0x30 + err_led->num, 0x30 };
+> > +
+> > +	/* LED is off, nothing to do */
+> > +	if (err_led->mode == QNAP_MCU_ERR_LED_OFF)
+> > +		return 0;
+> > +
+> > +	if (*delay_on < 500) {
+> 
+> Setting delay_on based on the current value of delay_on sounds sketchy.
+
+As far as I understood the API, the parameter should indicated the wanted
+blink time, while the function then should set in those variables the delay
+the driver actually set.
+
+So if the delay_on is < 500, select the fast blink mode, which is this
+100/100 variant and for everything >= 500 the slow blink mode.
+
+I.e. you set the trigger to "timer" and this creates the delay_on and
+delay_off sysfs files, where you put you wish into and can read the
+actually set delays out of.
+
+
+> > +		*delay_on = 100;
+> > +		*delay_off = 100;
+> > +		err_led->mode = QNAP_MCU_ERR_LED_BLINK_FAST;
+> > +	} else {
+> > +		*delay_on = 500;
+> > +		*delay_off = 500;
+> > +		err_led->mode = QNAP_MCU_ERR_LED_BLINK_SLOW;
+> > +	}
+> 
+> How do you change from a fast to a slow blinking LED and back again?
+
+echo timer > /sys/class/leds/hdd4:red:status/trigger
+## creates delay_on + delay_off sysfs files
+
+echo 150 > /sys/class/leds/hdd4:red:status/delay_on
+cat /sys/class/leds/hdd4:red:status/delay_on --> 100
+
+echo 250 > /sys/class/leds/hdd4:red:status/delay_on
+cat /sys/class/leds/hdd4:red:status/delay_on --> 100
+
+## switch to slow blink
+
+echo 500 > /sys/class/leds/hdd4:red:status/delay_on
+cat /sys/class/leds/hdd4:red:status/delay_on --> 500
+
+echo 600 > /sys/class/leds/hdd4:red:status/delay_on
+cat /sys/class/leds/hdd4:red:status/delay_on --> 500
+
+## switch to fast blink again
+
+echo 150 > /sys/class/leds/hdd4:red:status/delay_on
+cat /sys/class/leds/hdd4:red:status/delay_on --> 100
+
+echo heartbeat > /sys/class/leds/hdd4:red:status/trigger
+## removes the delay_on + delay_off files again
+
+
+Heiko
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============0349168972854175954==--
-
