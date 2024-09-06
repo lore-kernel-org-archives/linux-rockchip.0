@@ -4,56 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B284CE6FE4B
-	for <linux-rockchip@archiver.kernel.org>; Fri,  6 Sep 2024 23:03:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D9BA1E6FE4B
+	for <linux-rockchip@archiver.kernel.org>; Fri,  6 Sep 2024 23:18:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Date:To:Cc:From:Subject:References:
-	In-Reply-To:MIME-Version:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:CC:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=GPXjZ4uxyzSdoQRmIoJS3E1ks1xBKHmgq0FPEW6bbR4=; b=i9bnWggbIS5VW9
-	mXYIknVLH2lWuVIaKy4nD/ufhJa6xJnUuW1CyyPBsSfAQCW9I/vubBkleTxKtfTlrycTSA9hvtOCB
-	UMmanTUYe3luSLtVvsvI0/MQQg9bvZJDZOcvXZbAgKns8x5H/fPF+ierF/ftYknxp89DG+/IwRrNl
-	fOh32USzWxzZf5T0yMQaEXva81MxaIrzxPI/aAw1NBUh/PC2idrpnYhqf852XnyJIlMLePRF+44a6
-	BQP6UdEhZgp3LF7HdIf68oOmpU/+AsIJkRinunBqlEwqLGgZiDUKsnmr+5XG/aTUf1zDGTqFV7lDO
-	Hd3fsXpHgL5uPWAaWc9Q==;
+	List-Owner; bh=hsR33k/Z/1YgpMFIZuYERH79WvjJZ+d0dN8bfbDo7bk=; b=w3vRv669oPp6iE
+	/AjhCfWsoM1Ertf++Jg5eMwzxONcRheINp14oADoOjyTiTpgWtq4jGHkTGCCwVAbbl66Xe3Rt5HnC
+	kaZ+TM+KYVu9n/VELJJnzj73Oqv3Tg0iqYEflFZvtwLmyJzjXQuooWbif55lh39hU2qekvvvXShQp
+	zZIopZMu4vFs7n75mIHaNYBLbgnYThjtiV8UmUmLVf98P1gSAkrV3fOI4dEPhzdqYMZUIzvBryVQb
+	z1BCwkOqquVTW/vw7fC3Y+/BDAgBATYmTqvX39LUkC1+9v0+Xq+jPs6CWLpS61Ik3Oje+NQddM9yG
+	K9d303FD0JD160nQ2nWQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1smhz1-0000000DpN7-0Q38;
-	Fri, 06 Sep 2024 23:03:15 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1smiDU-0000000DqhK-49AJ;
+	Fri, 06 Sep 2024 23:18:12 +0000
+Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1smhy0-0000000DpDp-0aZG;
-	Fri, 06 Sep 2024 23:02:13 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id D5000A410E7;
-	Fri,  6 Sep 2024 23:02:03 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id BF4F0C4CEC5;
-	Fri,  6 Sep 2024 23:02:10 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1725663730;
-	bh=ldflI04Ts9BSmUuRhFXFjpTFI7d5OrKXMZDtQeiJu+k=;
-	h=In-Reply-To:References:Subject:From:Cc:To:Date:From;
-	b=oHUoICWtCtwGqLgYdGmyD7Ju3yflh55yITURS00j6N3pfj4WeVnawdt9gwXlExhRb
-	 nQVWElBJa+7LSNjsiIAQD4ZefcamFbwjfAwhOWd9Jj8i87bsfTsOYqpen2scJEpV+x
-	 it6MlCsWeQT6Fdq4SDovdESx8h7eHxHHcen8GNoMYES1fVfMFgU6zxbWD0t67j2/hk
-	 vkPNaf75x/KQpJtrSvwO7mwaaVc+rxjqjVpB5d7TtmI3DHjq8DqlVJgXoduUptF9FJ
-	 GNA8D5JDHOZVD0T4j6sJZAuCX8DqzuFLCShteQN2d7ouZcg4oHOYAvk79vgi8GHDkh
-	 65bUcAV0YtX4A==
-Message-ID: <91eca16a2453514123e8ffd5346297eb.sboyd@kernel.org>
+	id 1smiDS-0000000DqgF-0L75;
+	Fri, 06 Sep 2024 23:18:11 +0000
+Received: from pps.filterd (m0279867.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 486La20Q021851;
+	Fri, 6 Sep 2024 23:17:35 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=
+	cc:content-transfer-encoding:content-type:date:from:in-reply-to
+	:message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
+	8hUy3HkO73n8a8kkpNa8JB3SE4UQn54cODui1RapG3E=; b=gPjr+MT7wInQfINa
+	RTmVGsvD5ouyNMbUcb//XbEFNDNR5h6d/CWaTAj04NEoY5Lb0n71/Sf0McS/Lcs9
+	WogDGji8t1UNn1CqfjETXQ2GXu+qmhGqccJTAaFZbhFlEBO8XI/RA25uP4FaaeDl
+	1SKgo65aCUZpgAVw3fRYo9R6MgHyCDgRaHs0iY03cNYh2w1DkkXqXXltFR5OPIrX
+	dPoPhXVHMS/B/VPsXJjAJJF94zb/zoDBTNz9uZ4sazWl3KCAvXe286t8Ll2Qhln0
+	SirwxnbuluhuuabVeymAlYxmmsvn8EsAPCRuT165kpRGBcF9miv/iypqjSNhM8LX
+	GOLf8g==
+Received: from nalasppmta03.qualcomm.com (Global_NAT1.qualcomm.com [129.46.96.20])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 41fhws3k06-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Fri, 06 Sep 2024 23:17:35 +0000 (GMT)
+Received: from nalasex01a.na.qualcomm.com (nalasex01a.na.qualcomm.com [10.47.209.196])
+	by NALASPPMTA03.qualcomm.com (8.18.1.2/8.18.1.2) with ESMTPS id 486NHXB8019247
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Fri, 6 Sep 2024 23:17:34 GMT
+Received: from [10.111.181.108] (10.49.16.6) by nalasex01a.na.qualcomm.com
+ (10.47.209.196) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.9; Fri, 6 Sep 2024
+ 16:17:32 -0700
+Message-ID: <6f3f79f2-5755-4286-98f6-9950e7e994c8@quicinc.com>
+Date: Fri, 6 Sep 2024 16:17:31 -0700
 MIME-Version: 1.0
-In-Reply-To: <5168975.haC6HkEk0m@diego>
-References: <20240828101503.1478491-1-heiko@sntech.de> <20240828101503.1478491-5-heiko@sntech.de> <9b92b5f03632e8793253ba75fc00f6e3.sboyd@kernel.org> <5168975.haC6HkEk0m@diego>
-Subject: Re: [PATCH v3 4/5] clk: clk-gpio: add driver for gated-fixed-clocks
-From: Stephen Boyd <sboyd@kernel.org>
-Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org, linux-clk@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
-To: Heiko =?utf-8?q?St=C3=BCbner?= <heiko@sntech.de>, mturquette@baylibre.com
-Date: Fri, 06 Sep 2024 16:02:08 -0700
-User-Agent: alot/0.10
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH net-next 00/12] net: Convert using
+ devm_clk_get_enabled()/devm_clk_get_optional_enabled()
+To: Li Zetao <lizetao1@huawei.com>, <florian.fainelli@broadcom.com>,
+        <andrew@lunn.ch>, <olteanv@gmail.com>, <davem@davemloft.net>,
+        <edumazet@google.com>, <kuba@kernel.org>, <pabeni@redhat.com>,
+        <wens@csie.org>, <jernej.skrabec@gmail.com>, <samuel@sholland.org>,
+        <heiko@sntech.de>, <yisen.zhuang@huawei.com>, <salil.mehta@huawei.com>,
+        <hauke@hauke-m.de>, <alexandre.torgue@foss.st.com>,
+        <joabreu@synopsys.com>, <mcoquelin.stm32@gmail.com>,
+        <wellslutw@gmail.com>, <radhey.shyam.pandey@amd.com>,
+        <michal.simek@amd.com>, <ajay.kathat@microchip.com>,
+        <claudiu.beznea@tuxon.dev>, <kvalo@kernel.org>,
+        <u.kleine-koenig@pengutronix.de>, <jacky_chou@aspeedtech.com>
+CC: <netdev@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+        <linux-sunxi@lists.linux.dev>, <linux-rockchip@lists.infradead.org>,
+        <linux-stm32@st-md-mailman.stormreply.com>,
+        <linux-wireless@vger.kernel.org>
+References: <20240831021334.1907921-1-lizetao1@huawei.com>
+From: Jeff Johnson <quic_jjohnson@quicinc.com>
+Content-Language: en-US
+In-Reply-To: <20240831021334.1907921-1-lizetao1@huawei.com>
+X-Originating-IP: [10.49.16.6]
+X-ClientProxiedBy: nalasex01c.na.qualcomm.com (10.47.97.35) To
+ nalasex01a.na.qualcomm.com (10.47.209.196)
+X-QCInternal: smtphost
+X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
+X-Proofpoint-ORIG-GUID: U38JrxGFfwZBLXAiBMSQPWd5WdbUh_11
+X-Proofpoint-GUID: U38JrxGFfwZBLXAiBMSQPWd5WdbUh_11
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1039,Hydra:6.0.680,FMLib:17.12.60.29
+ definitions=2024-09-06_08,2024-09-06_01,2024-09-02_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 malwarescore=0 spamscore=0
+ impostorscore=0 mlxlogscore=849 adultscore=0 bulkscore=0 clxscore=1011
+ suspectscore=0 lowpriorityscore=0 phishscore=0 priorityscore=1501
+ mlxscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.19.0-2408220000 definitions=main-2409060173
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240906_160212_264273_3F00B3F4 
-X-CRM114-Status: GOOD (  10.08  )
+X-CRM114-CacheID: sfid-20240906_161810_231403_04B51D80 
+X-CRM114-Status: GOOD (  12.99  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -65,25 +105,43 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-UXVvdGluZyBIZWlrbyBTdMO8Ym5lciAoMjAyNC0wOS0wNSAxNTo0ODozNSkKPiBBbSBNaXR0d29j
-aCwgMjguIEF1Z3VzdCAyMDI0LCAyMDozMDo1MSBDRVNUIHNjaHJpZWIgU3RlcGhlbiBCb3lkOgo+
-ID4gUXVvdGluZyBIZWlrbyBTdHVlYm5lciAoMjAyNC0wOC0yOCAwMzoxNTowMikKPiAKPiBbbGVh
-dmluZyBvdXQgYWxsIHRoZSAid2lsbCBmaXgiIHBhcnRzIDotKSBdCj4gCj4gPiA+ICtzdGF0aWMg
-c3RydWN0IHBsYXRmb3JtX2RyaXZlciBnYXRlZF9maXhlZF9jbGtfZHJpdmVyID0gewo+ID4gPiAr
-ICAgICAgIC5wcm9iZSAgICAgICAgICA9IGNsa19nYXRlZF9maXhlZF9wcm9iZSwKPiA+ID4gKyAg
-ICAgICAuZHJpdmVyICAgICAgICAgPSB7Cj4gPiA+ICsgICAgICAgICAgICAgICAubmFtZSAgID0g
-ImdhdGVkLWZpeGVkLWNsayIsCj4gPiA+ICsgICAgICAgICAgICAgICAub2ZfbWF0Y2hfdGFibGUg
-PSBnYXRlZF9maXhlZF9jbGtfbWF0Y2hfdGFibGUsCj4gPiA+ICsgICAgICAgfSwKPiA+ID4gK307
-Cj4gPiA+ICtidWlsdGluX3BsYXRmb3JtX2RyaXZlcihnYXRlZF9maXhlZF9jbGtfZHJpdmVyKTsK
-PiA+IAo+ID4gVGhlIGNvbW1lbnQgYWJvdmUgYnVpbHRpbl9wbGF0Zm9ybV9kcml2ZXIgc2F5cyAi
-RWFjaCBkcml2ZXIgbWF5IG9ubHkgdXNlCj4gPiB0aGlzIG1hY3JvIG9uY2UiLiBTZWVtcyB0aGF0
-IHdlIG5lZWQgdG8gZXhwYW5kIHRoZSBtYWNyby4KPiAKPiBlYWNoIF9kcml2ZXJfLCBub3QgZWFj
-aCBmaWxlIGlzIHRoZSBpbXBvcnRhbnQgcG9pbnQgSSB0aGluay4KCk9rIQoKX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGlu
-ZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmlu
-ZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+On 8/30/2024 7:13 PM, Li Zetao wrote:
+> There are many examples[1][2] of clk resource leakage in LTS. The
+> reason is that developers need to maintain the allocation and release
+> of clk resources themselves, but this will increase the burden on
+> developers. Using the API related to devm_clk_get_*_enable ensures
+> that the life cycle of clk is consistent with that of the device,
+> reducing the risk of unreleased resources like clk.
+> 
+> Several other developers are also working on converting to more
+> secure interfaces, and this patch set is in principle the same as
+> theirs.
+
+...
+
+>  drivers/net/dsa/bcm_sf2.c                     | 28 ++----
+>  drivers/net/ethernet/allwinner/sun4i-emac.c   | 13 +--
+>  drivers/net/ethernet/arc/emac_rockchip.c      | 34 ++-----
+>  drivers/net/ethernet/ethoc.c                  | 18 ++--
+>  drivers/net/ethernet/faraday/ftgmac100.c      | 27 ++---
+>  drivers/net/ethernet/hisilicon/hisi_femac.c   | 17 +---
+>  drivers/net/ethernet/lantiq_xrx200.c          | 17 +---
+>  .../stmicro/stmmac/dwmac-dwc-qos-eth.c        | 98 ++++---------------
+>  drivers/net/ethernet/sunplus/spl2sw_driver.c  | 18 +---
+>  .../net/ethernet/xilinx/xilinx_axienet_main.c | 15 +--
+>  .../net/wireless/microchip/wilc1000/sdio.c    | 10 +-
+>  drivers/net/wireless/microchip/wilc1000/spi.c |  5 +-
+
+note the wifi driver changes go through the wireless tree and not the net tree
+so those should be split out separately
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
