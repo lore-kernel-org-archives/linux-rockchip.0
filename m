@@ -4,50 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E6008CE7B18
-	for <linux-rockchip@archiver.kernel.org>; Fri,  6 Sep 2024 13:51:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 18223CE7B1A
+	for <linux-rockchip@archiver.kernel.org>; Fri,  6 Sep 2024 13:55:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:Cc:References:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=alW1zCa0CW200DDVWShUPBiWielpr32kPi1SDC9st3g=; b=uqU9K4LAooxQh3
-	pwnlwv939ZKj0rLWclz0T/IwbO98JjjswTSYwsxRP/qa17MoLus6n8ayVXSyaxJSX0y5HKWVwWoFj
-	Q/eaauR0lxC207Mhv98rZqVlNAVn3k6flT8twRM8w17o56v8Jvm/S0u/qgmOUgcNGFq1gbf6z9cHB
-	+gzdiD40ZFt0ssFAWBQyedfVJSEWKwnJ3poNIjYdTMsanBpfG7l2i7hCZPoaqIbTu0VK9tlvUU7Zg
-	HeBhTagYSQaD5pAz+yVdsPvBnStFTu0ZE0R2+MswyinonO1wFtGAa94oT+z75EhUrqM4YzuQDxbtK
-	qzzi/N7N6Pr7DZBWrl+g==;
+	List-Owner; bh=xOeY0H2vdUF176XKwGzNTWatAGZ0nVWwmImi9tlFtsA=; b=gZnOf4hFn99ESN
+	Ns2/pNdHUHu9R8nC1MVVPf98SWaoFw3hca1zYOXJIgrECtWXI4Yh8UdoRrTap442p4DRw5l7BVl/4
+	rALChgO3dV30xzfs+f5Wi6o/7NJMxDG5FEcQNw4f9aCecgcWJi5bVKA9QsaPLlY1HO8wuEd+dUwwH
+	KiatX3J3LW3xFd/OBWkSWPN54+Gl6uX1QTBpqY+15IbC93FQhFPlGHaHtV7GDlCkGYPM8ql1qJSIK
+	Et4TQdiMJdpV3lAoTcxMFMFmvW/u+gkA667X4+QJRbiPlF3kg+fMIkKBTHrnde+62rpkp+7CgE75w
+	RQc0GrKL+bQMYHjyFEqg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1smZMi-0000000CPn0-3A5E;
-	Fri, 06 Sep 2024 13:51:08 +0000
+	id 1smZRK-0000000CQhd-0IcH;
+	Fri, 06 Sep 2024 13:55:54 +0000
 Received: from [129.204.178.38] (helo=classfun.cn)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1smZK9-0000000CPMo-1p8b;
-	Fri, 06 Sep 2024 13:48:30 +0000
+	id 1smZQI-0000000CQPR-34Um;
+	Fri, 06 Sep 2024 13:54:52 +0000
 Received: from [192.168.0.160] (unknown [14.155.100.110])
 	(Authenticated sender: bigfoot)
-	by classfun.cn (Postfix) with ESMTPSA id 87A39789F3;
-	Fri,  6 Sep 2024 21:48:25 +0800 (CST)
-DKIM-Filter: OpenDKIM Filter v2.11.0 classfun.cn 87A39789F3
+	by classfun.cn (Postfix) with ESMTPSA id EFF35789F3;
+	Fri,  6 Sep 2024 21:54:45 +0800 (CST)
+DKIM-Filter: OpenDKIM Filter v2.11.0 classfun.cn EFF35789F3
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=classfun.cn;
-	s=default; t=1725630506;
-	bh=naamg7UNm6mx3z8yDA7GqJbR3zn2wb64TfuOIljta10=;
+	s=default; t=1725630887;
+	bh=wOZLoc1VDKIe8bHEaqWxsCpDohRt7GpQMLR8FChOFow=;
 	h=Date:Subject:To:References:Cc:From:In-Reply-To:From;
-	b=n0RKf9b/BT9pj0TqQuZAJCtA+K9QdxCzyNV2W+mW02toJQh7G1JEjiqdtQto5j+QZ
-	 z3U8LTHHqrtkvIKGlcR1XEsiqaGremCMy13hGmd7uhkTIGoEifo+PeGrMzy8GMcy/d
-	 BZez3KgmN0sFed3e726VlCfDBh5NFNzJ5o8toZtc=
-Message-ID: <e1f98265-ab75-45fe-a7a9-8e65cc13908e@classfun.cn>
-Date: Fri, 6 Sep 2024 21:49:53 +0800
+	b=oFbfivdU+ElB44kvOY6XvYwCFSDnQNjpRzm2FrujSuqG6ussWcxw5uhFcUFEaKuLR
+	 caSzTX9D8F6qgZfXAYDJt1iUdiSjIom4SDFREXOGu50ZLm4gwNf1PT1Pzrn9btM5yt
+	 miy2/8z6PcYDo72ELgtkFoqo2pVMcWu9y6rJRGAo=
+Message-ID: <c1312339-60be-4625-a33d-c558ad529aaf@classfun.cn>
+Date: Fri, 6 Sep 2024 21:56:13 +0800
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 6/9] hwmon: Add support for Photonicat PMU board
- temperature sensor
-To: Guenter Roeck <linux@roeck-us.net>
+Subject: Re: [PATCH 9/9] arm64: dts: rockchip: add Photonicat PMU support for
+ Ariaboard Photonicat
+To: Krzysztof Kozlowski <krzk@kernel.org>
 References: <20240906093630.2428329-1-bigfoot@classfun.cn>
- <20240906093630.2428329-7-bigfoot@classfun.cn>
- <a33633be-800c-4ca0-9d1e-f190e23384d5@roeck-us.net>
+ <20240906093630.2428329-10-bigfoot@classfun.cn>
+ <5c8b066c-6e61-44c1-b99d-4ae1a2313033@kernel.org>
 Content-Language: en-US
 Cc: devicetree@vger.kernel.org, linux-hwmon@vger.kernel.org,
  linux-kernel@vger.kernel.org, linux-leds@vger.kernel.org,
@@ -62,10 +62,10 @@ Cc: devicetree@vger.kernel.org, linux-hwmon@vger.kernel.org,
  Wim Van Sebroeck <wim@linux-watchdog.org>, Heiko Stuebner <heiko@sntech.de>,
  Chukun Pan <amadeus@jmu.edu.cn>, Junhao Xie <bigfoot@classfun.cn>
 From: Junhao Xie <bigfoot@classfun.cn>
-In-Reply-To: <a33633be-800c-4ca0-9d1e-f190e23384d5@roeck-us.net>
+In-Reply-To: <5c8b066c-6e61-44c1-b99d-4ae1a2313033@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240906_064829_657815_6D67B06F 
-X-CRM114-Status: GOOD (  13.24  )
+X-CRM114-CacheID: sfid-20240906_065450_974987_D811409D 
+X-CRM114-Status: GOOD (  10.82  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,32 +77,47 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gMjAyNC85LzYgMTk6NDEsIEd1ZW50ZXIgUm9lY2sgd3JvdGU6Cj4gT24gOS82LzI0IDAyOjM2
-LCBKdW5oYW8gWGllIHdyb3RlOgo+PiBQaG90b25pY2F0IFBNVSBNQ1Ugd2lsbCBzZW5kIHN0YXR1
-cyByZXBvcnRzIHJlZ3VsYXJseSwKPj4gaW5jbHVkaW5nIGJvYXJkIHRlbXBlcmF0dXJlLgo+Pgo+
-IAo+IFRoaXMgaXMgbm90IGFuIGFwcHJvcHJpYXRlIGRlc2NyaXB0aW9uLgoKSSB3aWxsIGNoYW5n
-ZSB0byBhIGJldHRlciBkZXNjcmlwdGlvbi4KCj4gCj4+IFNpZ25lZC1vZmYtYnk6IEp1bmhhbyBY
-aWUgPGJpZ2Zvb3RAY2xhc3NmdW4uY24+Cj4+IC0tLQo+PiDCoCBkcml2ZXJzL2h3bW9uL0tjb25m
-aWfCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIHzCoCAxMCArKysKPj4gwqAgZHJpdmVycy9od21vbi9N
-YWtlZmlsZcKgwqDCoMKgwqDCoMKgwqDCoMKgIHzCoMKgIDEgKwo+PiDCoCBkcml2ZXJzL2h3bW9u
-L3Bob3RvbmljYXQtaHdtb24uYyB8IDEyOSArKysrKysrKysrKysrKysrKysrKysrKysrKysrKysr
-Cj4gCj4gRG9jdW1lbnRhdGlvbiBtaXNzaW5nLgoKRG9lcyBpdCBuZWVkIHRvIGJlIHBsYWNlZCBp
-biBEb2N1bWVudGF0aW9uL2h3bW9uL3Bob3RvbmljYXQtaHdtb24ucnN0PwoKPiAKPj4gK3N0YXRp
-YyBpbnQgcGNhdF9od21vbl9wcm9iZShzdHJ1Y3QgcGxhdGZvcm1fZGV2aWNlICpwZGV2KQo+PiAr
-ewo+IC4uLgo+PiArwqDCoMKgIGRldl9pbmZvKGRldiwgIkJvYXJkIFRlbXByYXR1cmU6ICVkIGRl
-Z3Jlc3MgQ1xuIiwgaHdtb24tPnRlbXBlcmF0dXJlKTsKPj4gKwo+IAo+IFVuYWNjZXB0YWJsZSAo
-bWlzc3BlbGxlZCkgbm9pc2UuCj4gCj4+ICvCoMKgwqAgaHdtb24tPmh3bW9uID0gZGV2bV9od21v
-bl9kZXZpY2VfcmVnaXN0ZXJfd2l0aF9ncm91cHMoCj4+ICvCoMKgwqDCoMKgwqDCoCBkZXYsIGxh
-YmVsLCBod21vbiwgcGNhdF9wbXVfdGVtcF9ncm91cHMpOwo+PiArCj4gCj4gUGxlYXNlIHVzZSB0
-aGUgd2l0aF9pbmZvIEFQSS4gSSBhbSBub3QgZ29pbmcgdG8gcmV2aWV3IHRoZSBjb2RlIGJlY2F1
-c2UKPiBpdCB3aWxsIG5lZWQgdG8gYmUgY29tcGxldGVseSByZXdyaXR0ZW4uCj4gCj4gR3VlbnRl
-cgo+IAoKVGhhbmtzIGZvciB5b3VyIHJldmlldywgSSB3aWxsIHJld3JpdGUgdGhpcyBkcml2ZXIh
-CgpCZXN0IHJlZ2FyZHMsCkp1bmhhbwoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlw
-QGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9s
-aXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+On 2024/9/6 17:53, Krzysztof Kozlowski wrote:
+> On 06/09/2024 11:36, Junhao Xie wrote:
+>> This commit adds support for Photonicat power management MCU on
+>> Ariaboard Photonicat.
+>>
+[...]
+>> +
+>> +		pcat_pmu_battery: supply-battery {
+> 
+> Drop unused labels. Everywhere. You are not making the code more readable.
+
+I will remove them.
+
+> 
+>> +			compatible = "ariaboard,photonicat-pmu-supply";
+>> +			label = "battery";
+>> +			monitored-battery = <&battery>;
+>> +			power-supplies = <&pcat_pmu_charger>;
+> 
+> Why do you reference internal design of the device as DTS? You cannot
+> have here other power supply, can you?
+
+I mistakenly thought power_supply_am_i_supplied() required power-supplies
+property, it actually does not, I will remove it.
+
+> 
+> Best regards,
+> Krzysztof
+> 
+
+Thanks for your review, I will fix all problems in next version!
+
+Best regards,
+Junhao
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
