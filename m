@@ -4,81 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 93BDDCE7AA6
-	for <linux-rockchip@archiver.kernel.org>; Fri,  6 Sep 2024 01:26:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E77A1CE7AB1
+	for <linux-rockchip@archiver.kernel.org>; Fri,  6 Sep 2024 03:51:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=7vkMapXJtXRsyok58sDNZPRO258EE948o8jK0LHUFb0=; b=me2o1Y1Ki089ly
-	lGD6zPFzV+nr1VRyZ0jKbS+eRkgKcrYqySYZikyeTIgThTW1FocfzKoiDTV8vUuw4jFBz7bMTzTqd
-	o2hw0QZtwPdYPYY+50auYPiTz0Y4Tqidr1vt78qE0T/GjB9pLHLePEVQw/UQcVrJ23cwZuZ5/H9li
-	uGKtNrPhdUcvpvqci+KgxGvuYh5PajgyNQCHhWs8siqKX4Uu996PpRwyropLP48ONqI1CllLUZc/z
-	EfXRhLFm6DsPweoFk07MzQFUNxnC22LW9uQgIiNrWbrPLs7qDtgyIY25ktoPensfQpt/vq4Ij0Ooz
-	YC0QwktjZIoWmkiKI6cQ==;
+	List-Owner; bh=XDgGSgZ6r50UISOGUFAg9TjOazPazYGNdxYsYmVLoSk=; b=3ivfcg5zZKvM7x
+	FMkCZPvMr8DZtxnzC4rtKDyQt+e8XXpCZuEfYuHk0Ac5eTEgv0AVx9n8p5EJj/19d31Iey3tgx7Gw
+	R7SOGwHsZA3P+VUbCJHEmtbWs5A5qIs3XFoKJlA+UWWQ8/36w5PO0/w9XTSja8GCirSy2ylfAqhza
+	FgEsjO8Ua2j496WjJZWg0GnwlIkxchpsvQ7oklGLGeBYftp5u5piBlygtIS0zyk4f/u+sOFeNeDpS
+	y26YEjxz5PzaYIVeIYwo1d4I8ENEv1t+1+XdtwwQaWLNK3cF18QJ3oy5N2tyWHdubFNwBkdBCuyeV
+	lNi3vhdnHpQ9RnkI09Vg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1smNkS-0000000AHtx-3akv;
-	Fri, 06 Sep 2024 01:26:53 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1smQ05-0000000AZBr-0cei;
+	Fri, 06 Sep 2024 03:51:09 +0000
+Received: from mail-m25475.xmail.ntesmail.com ([103.129.254.75])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1smNjT-0000000AHn2-1KzA;
-	Fri, 06 Sep 2024 01:25:53 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1725585949;
-	bh=twD2+guI6vGmeVSCxuwshV4bdnrlz1eKgsdVK6G0nz8=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=I0z8MhFot0zBmV2E1zZE4VX6eHdN1ywxA7go0CGWS0kueNouEbeZyAX5hE4S4RRwy
-	 VHnrMk8pkVCJBWWcqh4HHkmujEfYaLP60JVpF4pBCTBl4w42FpMRpdVxlcWwmkeC1E
-	 sS0Klb/CKczuQqsfnlFk2KI+87zMeCCk97kAUzU0dROm+UjmZhMM5TOLgE8fy5+Nwx
-	 RlIIHyxnnS+jszl+f0krWB9vCk1ys3/RR8FGDEkb+bIZOKQSn3G1TFEhfpRt/Rym8g
-	 aNCmk5lGJQIVL4KwAlvNNMqmC1khf4uDATgN3bqDOxkZN1PRjBkvvGelHKzgu6sS6f
-	 xjYnqt815ISjQ==
-Received: from [192.168.1.90] (unknown [188.27.55.48])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 9289417E0E95;
-	Fri,  6 Sep 2024 03:25:48 +0200 (CEST)
-Message-ID: <fa265088-5bf4-420f-9456-44051f913164@collabora.com>
-Date: Fri, 6 Sep 2024 04:25:48 +0300
+	id 1smQ00-0000000AZAs-2gXv;
+	Fri, 06 Sep 2024 03:51:08 +0000
+Received: from amadeus-Vostro-3710.lan (unknown [IPV6:240e:3b3:2c00:3b50::1])
+	by smtp.qiye.163.com (Hmail) with ESMTPA id 40DED7E0172;
+	Fri,  6 Sep 2024 11:50:24 +0800 (CST)
+From: Chukun Pan <amadeus@jmu.edu.cn>
+To: bigfoot@classfun.cn
+Cc: amadeus@jmu.edu.cn,
+	andrew@lunn.ch,
+	conor+dt@kernel.org,
+	devicetree@vger.kernel.org,
+	dsimic@manjaro.org,
+	heiko@sntech.de,
+	jonas@kwiboo.se,
+	krzk+dt@kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH 3/3] arm64: dts: rockchip: add dts for Ariaboard Photonicat RK3568
+Date: Fri,  6 Sep 2024 11:50:18 +0800
+Message-Id: <20240906035018.33211-1-amadeus@jmu.edu.cn>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <fd4fc7a0-7def-4f91-a64c-71689ff71d1c@classfun.cn>
+References: <fd4fc7a0-7def-4f91-a64c-71689ff71d1c@classfun.cn>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 2/4] drm/bridge: synopsys: Add DW HDMI QP TX Controller
- support library
-To: Maxime Ripard <mripard@kernel.org>
-Cc: Andrzej Hajda <andrzej.hajda@intel.com>,
- Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>,
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
- Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>,
- Daniel Vetter <daniel@ffwll.ch>, Sandy Huang <hjc@rock-chips.com>,
- =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>,
- Andy Yan <andy.yan@rock-chips.com>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Mark Yao <markyao0591@gmail.com>,
- Sascha Hauer <s.hauer@pengutronix.de>, dri-devel@lists.freedesktop.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
- kernel@collabora.com, Alexandre ARNOUD <aarnoud@me.com>,
- Luis de Arquer <ldearquer@gmail.com>, Algea Cao <algea.cao@rock-chips.com>
-References: <20240819-b4-rk3588-bridge-upstream-v4-0-6417c72a2749@collabora.com>
- <20240819-b4-rk3588-bridge-upstream-v4-2-6417c72a2749@collabora.com>
- <20240827-armored-magnificent-badger-ffb025@houat>
- <34422b7a-ce70-445d-a574-60ac36322119@collabora.com>
- <20240902-turtle-of-major-glory-efb4e8@houat>
- <6e20410a-a24d-4454-8577-2cff65319a2a@collabora.com>
- <20240903-archetypal-soft-wildebeest-b5ea68@houat>
-From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20240903-archetypal-soft-wildebeest-b5ea68@houat>
+X-HM-Spam-Status: e1kfGhgUHx5ZQUtXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFITzdXWS1ZQUlXWQ8JGhUIEh9ZQVkZGh9IVkwdThhITBhNSxlKQ1YeHw5VEwETFhoSFy
+	QUDg9ZV1kYEgtZQVlJT0seQUgZSEFJGEtLQUgZTktBQUpZV1kWGg8SFR0UWUFZS1VLVUtVS1kG
+X-HM-Tid: 0a91c574623003a2kunm40ded7e0172
+X-HM-MType: 10
+X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6Oio6Sgw6MDI5DT9NLSkaLUgo
+	GEIaChlVSlVKTElOTkJPTUlOSUhMVTMWGhIXVRoWGh8eDgg7ERYOVR4fDlUYFUVZV1kSC1lBWUlP
+	Sx5BSBlIQUkYS0tBSBlOS0FBSllXWQgBWUFKTExINwY+
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240905_182551_549964_C139090C 
-X-CRM114-Status: GOOD (  22.14  )
+X-CRM114-CacheID: sfid-20240905_205104_907472_5A27ED60 
+X-CRM114-Status: UNSURE (   6.07  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,94 +77,20 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 9/3/24 11:09 AM, Maxime Ripard wrote:
-> On Tue, Sep 03, 2024 at 12:12:02AM GMT, Cristian Ciocaltea wrote:
->> On 9/2/24 10:36 AM, Maxime Ripard wrote:
->>> On Sat, Aug 31, 2024 at 01:21:48AM GMT, Cristian Ciocaltea wrote:
->>>> On 8/27/24 11:58 AM, Maxime Ripard wrote:
->>>>> On Mon, Aug 19, 2024 at 01:29:29AM GMT, Cristian Ciocaltea wrote:
->>>>>> +static irqreturn_t dw_hdmi_qp_main_hardirq(int irq, void *dev_id)
->>>>>> +{
->>>>>> +	struct dw_hdmi_qp *hdmi = dev_id;
->>>>>> +	struct dw_hdmi_qp_i2c *i2c = hdmi->i2c;
->>>>>> +	u32 stat;
->>>>>> +
->>>>>> +	stat = dw_hdmi_qp_read(hdmi, MAINUNIT_1_INT_STATUS);
->>>>>> +
->>>>>> +	i2c->stat = stat & (I2CM_OP_DONE_IRQ | I2CM_READ_REQUEST_IRQ |
->>>>>> +			    I2CM_NACK_RCVD_IRQ);
->>>>>> +
->>>>>> +	if (i2c->stat) {
->>>>>> +		dw_hdmi_qp_write(hdmi, i2c->stat, MAINUNIT_1_INT_CLEAR);
->>>>>> +		complete(&i2c->cmp);
->>>>>> +	}
->>>>>> +
->>>>>> +	if (stat)
->>>>>> +		return IRQ_HANDLED;
->>>>>> +
->>>>>> +	return IRQ_NONE;
->>>>>> +}
->>>>>
->>>>> If the scrambler is enabled, you need to deal with hotplug. On hotplug,
->>>>> the monitor will drop its TMDS ratio and scrambling status, but the
->>>>> driver will keep assuming it's been programmed.
->>>>>
->>>>> If you don't have a way to deal with hotplug yet, then I'd suggest to
->>>>> just drop the scrambler setup for now.
->>>>
->>>> Thanks for the heads up!
->>>>
->>>> HPD is partially handled by the RK platform driver, which makes use of
->>>> drm_helper_hpd_irq_event(). Since the bridge sets DRM_BRIDGE_OP_DETECT
->>>> flag, the dw_hdmi_qp_bridge_detect() callback gets executed, which in turn
->>>> verifies the PHY status via ->read_hpd() implemented as
->>>> dw_hdmi_qp_rk3588_read_hpd() in the platform driver.
->>>
->>> It's not only about hotplug detection, it's also about what happens
->>> after you've detected a disconnection / reconnection.
->>>
->>> The framework expects to keep the current mode as is, despite the
->>> monitor not being setup to use the scrambler anymore, and the display
->>> remains black.
->>
->> AFAICS, the ->atomic_enable() callback is always invoked upon
->> reconnection, hence the scrambler gets properly (re)enabled via
->> dw_hdmi_qp_setup().
-> 
-> No, it's not.
-> 
->>>> During my testing so far it worked reliably when switching displays with
->>>> different capabilities.  I don't have a 4K@60Hz display at the moment, but
->>>> used the HDMI RX port on the Rock 5B board in a loopback connection to
->>>> verify this mode, which triggered the high TMDS clock ratio and scrambling
->>>> setup as well.
->>>
->>> How did you test exactly?
->>
->> I initially tested with Sway/wlroots having an app running
->> (eglgears_wayland) while unplugging/replugging the HDMI connectors in
->> every possible sequence I could think of (e.g. several times per
->> display, switching to a different one, repeating, switching again, etc).
->>
->> I've just retested the whole stuff with Weston and confirm it works as
->> expected, i.e. no black screen (or bad capture stream for the 4K@60Hz
->> case) after any of the reconnections.
-> 
-> Then I guess both sway and weston handle uevent and will change the
-> connector mode on reconnection.
-> 
-> It's not mandatory, and others will just not bother and still expect the
-> output to work.
-> 
-> I guess the easier you can test this with is modetest.
+Hi Junhao,
 
-Indeed, modetest doesn't trigger a mode change on reconnection.
-This is handled now in v6:
+> I have tried rgmii-id with tx_delay/rx_delay 0x38/0x15, or 0x0/0x0,
+> or directly removed tx_delay/rx_delay, they all didn't transmit data.
+>
+> I saw in dwmac-rk.c that when using rgmii-id, the tx_delay/rx_delay
+> properties in dt are ignored?
 
-https://lore.kernel.org/all/20240906-b4-rk3588-bridge-upstream-v6-0-a3128fb103eb@collabora.com/
+When using rgmii-id mode, tx_delay and rx_delay can be removed directly.
+But you need to test whether the rx/tx-internal-delay-ps is appropriate.
 
-Thanks,
-Cristian
+-- 
+2.25.1
+
 
 _______________________________________________
 Linux-rockchip mailing list
