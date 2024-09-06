@@ -4,40 +4,40 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9B19ECE7AFD
-	for <linux-rockchip@archiver.kernel.org>; Fri,  6 Sep 2024 09:49:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BE147CE7AFB
+	for <linux-rockchip@archiver.kernel.org>; Fri,  6 Sep 2024 09:50:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=h4ME8hz2JBxdtOTXuZsaaQhl7dqnjA9a6hiC30ZaECk=; b=l3F+SN9tIzWqhk
-	2P6sV6IQk3UfSr8ZYhNFayhR1y6hVWJbat/aAIGWQcq85OWFOX1C7I8osMICG3W62K2QK7oPNqsOi
-	HzfKlofCCERlSQr5QzsMUlfc5vBRd/am9bg+pjB+dp9OgCFwF3GtxoUeZo1ePwUY375Juu/Qz39Wh
-	l8p7MORXmPtFAyiEwNP/7t5pA7FhRtf5dnfEEt6YHGuZicKCEcUrVi/Qk9vts0fJNKmkCzlOQiq0s
-	soYzJ78lTv7XmJIC5BALlkq+T/bSzDBiiG5E3GarHCvUoVlAzJ03y2tVMP+52+O3kNqGLNuXNblBH
-	3r4+u/xYSo3FcSPSHQtg==;
+	List-Owner; bh=1odPILI9JH02+biky78RaZ+0LfnxwAVdIZvG3O0Uqwg=; b=IVanxJG0ax4Ms5
+	sQGSTfmof2mpxqcMiRyq+ttwOhvX9ZNaZDhqPzLTVPmMe379Mq+eRop43XmCWsgpPj9hSmC5lGtoG
+	/3yGj6a083txQ9bJmCGuiNvVjCk63KQ/kDekoMUUuc+0mRZ9rSsbl7YVo9LJSBJ/S5A0wufh9gTx1
+	tGsWBUk6v0j00sycGsgXimn4SQhLGHW9SOsD/x92Hc+jkPIYH4H2QZCFPSMI2rXjzs9xwoWuUQb9e
+	2deuWstbs2zkaR8EpWgNBTjaFfyagmc7paCGoNjQLZfvVJTwTbLWrVd38pq2zyvHDOfyNbby+1+rg
+	Je6J8eKpAWkyNoeJwftQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1smVbC-0000000BbbT-4B5X;
-	Fri, 06 Sep 2024 09:49:51 +0000
+	id 1smVcA-0000000Bbpq-1Zgi;
+	Fri, 06 Sep 2024 09:50:50 +0000
 Received: from [129.204.178.38] (helo=classfun.cn)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1smVPo-0000000BXhr-3UZ1;
-	Fri, 06 Sep 2024 09:38:06 +0000
+	id 1smVPp-0000000BXh4-2XE8;
+	Fri, 06 Sep 2024 09:38:07 +0000
 Received: from bigfoot-server-storage.classfun.cn (unknown [124.72.163.35])
 	(Authenticated sender: bigfoot)
-	by classfun.cn (Postfix) with ESMTPSA id B3C5D78A02;
-	Fri,  6 Sep 2024 17:38:02 +0800 (CST)
-DKIM-Filter: OpenDKIM Filter v2.11.0 classfun.cn B3C5D78A02
+	by classfun.cn (Postfix) with ESMTPSA id 0936078A03;
+	Fri,  6 Sep 2024 17:38:03 +0800 (CST)
+DKIM-Filter: OpenDKIM Filter v2.11.0 classfun.cn 0936078A03
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=classfun.cn;
-	s=default; t=1725615483;
-	bh=3fj9fXkYleTJYptBPBvXwCMXMvOIbLFaP6j3BmqOLtk=;
+	s=default; t=1725615485;
+	bh=YQ6dfBwyAAugUzhApDOCUWBWXXsLha14N6rXzvxlRLk=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=BfqGFyaKumeaYXXyrsXsWjRLF1sghwIn2qHbSI9Wav4S3+yxBbcHILiBfHtrRVV2g
-	 twU0W3nZRr2obcng0mY0A0MtkQyWThkUawMclMuoMeBw9pI4BLQnZ3+ji1gojDv84a
-	 aZVE1Hpnv7+lKQshKPVzRWwgVJnS5aAQAsp3Nv50=
+	b=C/7qhqBMMoDhCuEwhTLpqO9/NNtx+QAbpHZ7XlBHXQWF4DIAIBfmvqYEDnM13mLS/
+	 gZm8AuWipJ5pawuqbs+SgbHRhXKnRjZSaobhnenwK5+RlA/O36OtQG2ehZIbBN3E7A
+	 uIFDYxeC7RFBXtzOoYPgsNvR8AUS61D3OgtdMuLU=
 From: Junhao Xie <bigfoot@classfun.cn>
 To: devicetree@vger.kernel.org,
 	linux-hwmon@vger.kernel.org,
@@ -61,16 +61,16 @@ Cc: Jean Delvare <jdelvare@suse.com>,
 	Heiko Stuebner <heiko@sntech.de>,
 	Chukun Pan <amadeus@jmu.edu.cn>,
 	Junhao Xie <bigfoot@classfun.cn>
-Subject: [PATCH 4/9] power: supply: photonicat-supply: Add Photonicat PMU battery and charger
-Date: Fri,  6 Sep 2024 17:36:25 +0800
-Message-ID: <20240906093630.2428329-5-bigfoot@classfun.cn>
+Subject: [PATCH 5/9] rtc: Add Photonicat PMU real-time clock
+Date: Fri,  6 Sep 2024 17:36:26 +0800
+Message-ID: <20240906093630.2428329-6-bigfoot@classfun.cn>
 X-Mailer: git-send-email 2.46.0
 In-Reply-To: <20240906093630.2428329-1-bigfoot@classfun.cn>
 References: <20240906093630.2428329-1-bigfoot@classfun.cn>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240906_023805_069140_CC3CA123 
-X-CRM114-Status: GOOD (  22.53  )
+X-CRM114-CacheID: sfid-20240906_023805_887191_894A7C52 
+X-CRM114-Status: GOOD (  22.21  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,307 +87,249 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Photonicat PMU supports battery and charger power supply.
-The MCU only provides voltage meter.
+Photonicat PMU MCU will send status reports regularly,
+including the MCU RTC date time.
+
+Use command 0x09 to update the RTC date time of MCU.
 
 Signed-off-by: Junhao Xie <bigfoot@classfun.cn>
 ---
- drivers/power/supply/Kconfig             |  12 ++
- drivers/power/supply/Makefile            |   1 +
- drivers/power/supply/photonicat-supply.c | 250 +++++++++++++++++++++++
- 3 files changed, 263 insertions(+)
- create mode 100644 drivers/power/supply/photonicat-supply.c
+ drivers/rtc/Kconfig          |  12 +++
+ drivers/rtc/Makefile         |   1 +
+ drivers/rtc/rtc-photonicat.c | 190 +++++++++++++++++++++++++++++++++++
+ 3 files changed, 203 insertions(+)
+ create mode 100644 drivers/rtc/rtc-photonicat.c
 
-diff --git a/drivers/power/supply/Kconfig b/drivers/power/supply/Kconfig
-index bcfa63fb9f1e..4d2fcf568810 100644
---- a/drivers/power/supply/Kconfig
-+++ b/drivers/power/supply/Kconfig
-@@ -455,6 +455,18 @@ config CHARGER_PCF50633
- 	help
- 	  Say Y to include support for NXP PCF50633 Main Battery Charger.
+diff --git a/drivers/rtc/Kconfig b/drivers/rtc/Kconfig
+index 2a95b05982ad..3403ba3f5643 100644
+--- a/drivers/rtc/Kconfig
++++ b/drivers/rtc/Kconfig
+@@ -516,6 +516,18 @@ config RTC_DRV_PCF8583
+ 	  This driver can also be built as a module. If so, the module
+ 	  will be called rtc-pcf8583.
  
-+config PHOTONICAT_POWER
-+	tristate "Photonicat PMU power supply driver"
++config RTC_DRV_PHOTONICAT_PMU
++	tristate "Photonicat PMU RTC"
 +	depends on MFD_PHOTONICAT_PMU
 +	help
-+	  Photonicat PMU supports battery and charger power supply.
-+	  The MCU only provides voltage meter.
++	  Photonicat PMU MCU will send status reports regularly,
++	  including the MCU RTC date time.
 +
-+	  Say Y here to enable support for Photonicat PMU power supply.
++	  If you say yes here you get support for the Photonicat PMU RTC.
 +
-+	  This driver can also be built as a module. If so, the module will be
-+	  called photonicat-supply.
++	  This driver can also be built as a module. If so, the module
++	  will be called rtc-photonicat.
 +
- config BATTERY_RX51
- 	tristate "Nokia RX-51 (N900) battery driver"
- 	depends on TWL4030_MADC
-diff --git a/drivers/power/supply/Makefile b/drivers/power/supply/Makefile
-index 8dcb41545317..81ada9bb6438 100644
---- a/drivers/power/supply/Makefile
-+++ b/drivers/power/supply/Makefile
-@@ -63,6 +63,7 @@ obj-$(CONFIG_CHARGER_RT9471)	+= rt9471.o
- obj-$(CONFIG_BATTERY_TWL4030_MADC)	+= twl4030_madc_battery.o
- obj-$(CONFIG_CHARGER_88PM860X)	+= 88pm860x_charger.o
- obj-$(CONFIG_CHARGER_PCF50633)	+= pcf50633-charger.o
-+obj-$(CONFIG_PHOTONICAT_POWER)	+= photonicat-supply.o
- obj-$(CONFIG_BATTERY_RX51)	+= rx51_battery.o
- obj-$(CONFIG_AB8500_BM)		+= ab8500_bmdata.o ab8500_charger.o ab8500_fg.o ab8500_btemp.o ab8500_chargalg.o
- obj-$(CONFIG_CHARGER_CPCAP)	+= cpcap-charger.o
-diff --git a/drivers/power/supply/photonicat-supply.c b/drivers/power/supply/photonicat-supply.c
+ config RTC_DRV_M41T80
+ 	tristate "ST M41T62/65/M41T80/81/82/83/84/85/87 and compatible"
+ 	help
+diff --git a/drivers/rtc/Makefile b/drivers/rtc/Makefile
+index 3004e372f25f..f050a134da1f 100644
+--- a/drivers/rtc/Makefile
++++ b/drivers/rtc/Makefile
+@@ -129,6 +129,7 @@ obj-$(CONFIG_RTC_DRV_PCF8523)	+= rtc-pcf8523.o
+ obj-$(CONFIG_RTC_DRV_PCF85363)	+= rtc-pcf85363.o
+ obj-$(CONFIG_RTC_DRV_PCF8563)	+= rtc-pcf8563.o
+ obj-$(CONFIG_RTC_DRV_PCF8583)	+= rtc-pcf8583.o
++obj-$(CONFIG_RTC_DRV_PHOTONICAT_PMU)	+= rtc-photonicat.o
+ obj-$(CONFIG_RTC_DRV_PIC32)	+= rtc-pic32.o
+ obj-$(CONFIG_RTC_DRV_PL030)	+= rtc-pl030.o
+ obj-$(CONFIG_RTC_DRV_PL031)	+= rtc-pl031.o
+diff --git a/drivers/rtc/rtc-photonicat.c b/drivers/rtc/rtc-photonicat.c
 new file mode 100644
-index 000000000000..e6861a3904fe
+index 000000000000..2e3115fb5c38
 --- /dev/null
-+++ b/drivers/power/supply/photonicat-supply.c
-@@ -0,0 +1,250 @@
++++ b/drivers/rtc/rtc-photonicat.c
+@@ -0,0 +1,190 @@
 +// SPDX-License-Identifier: GPL-2.0-only
 +/*
 + * Copyright (c) 2024 Junhao Xie <bigfoot@classfun.cn>
 + */
 +
-+#include <linux/module.h>
++#include <linux/kernel.h>
 +#include <linux/mfd/photonicat-pmu.h>
-+#include <linux/notifier.h>
++#include <linux/module.h>
 +#include <linux/of.h>
 +#include <linux/platform_device.h>
-+#include <linux/power_supply.h>
++#include <linux/rtc.h>
 +
-+enum pcat_supply_type {
-+	PCAT_SUPPLY_BATTERY,
-+	PCAT_SUPPLY_CHARGER,
-+};
++struct pcat_data_cmd_startup {
++	struct pcat_data_cmd_date_time time;
++	union {
++		u8 value;
++		struct {
++			bool year : 1;
++			bool month : 1;
++			bool day : 1;
++			bool hour : 1;
++			bool minute : 1;
++			bool second : 1;
++		} __packed;
++	} match;
++} __packed;
 +
-+struct pcat_supply {
++struct pcat_rtc {
 +	struct device *dev;
 +	struct pcat_pmu *pmu;
 +	struct notifier_block nb;
-+	struct power_supply *psy;
-+	struct power_supply_desc desc;
-+	struct power_supply_battery_info *bat_info;
-+	enum pcat_supply_type type;
-+	u16 supply_microvolt;
++	struct rtc_device *rtc;
++	struct pcat_data_cmd_date_time time;
 +	struct completion initial_report;
 +};
 +
-+static int pcat_pmu_get_capacity(struct pcat_supply *supply)
++static bool pcat_time_to_rtc_time(const struct pcat_data_cmd_date_time *time,
++				  struct rtc_time *tm)
 +{
-+	int uv;
++	if (time->second >= 60 || time->minute >= 60 || time->hour >= 24 ||
++	    time->day <= 0 || time->day > 31 || time->month <= 0 ||
++	    time->month > 12 || time->year < 1900 || time->year > 9999)
++		return false;
 +
-+	if (supply->type != PCAT_SUPPLY_BATTERY)
-+		return 0;
-+	uv = supply->supply_microvolt * 1000;
++	tm->tm_sec = time->second;
++	tm->tm_min = time->minute;
++	tm->tm_hour = time->hour;
++	tm->tm_mday = time->day;
++	tm->tm_mon = time->month - 1;
++	tm->tm_year = time->year - 1900;
++	tm->tm_yday = rtc_year_days(tm->tm_mday, tm->tm_mon, time->year);
++	tm->tm_wday = ((time->year * (365 % 7)) + ((time->year - 1) / 4) -
++		       ((time->year - 1) / 100) + ((time->year - 1) / 400) +
++		       tm->tm_yday) % 7;
 +
-+	return power_supply_batinfo_ocv2cap(supply->bat_info, uv, 20);
++	return true;
 +}
 +
-+static int pcat_pmu_get_energy(struct pcat_supply *supply)
++static void pcat_time_from_rtc_time(struct pcat_data_cmd_date_time *time,
++				    const struct rtc_time *tm)
 +{
-+	int capacity;
-+
-+	if (supply->type != PCAT_SUPPLY_BATTERY)
-+		return 0;
-+	capacity = pcat_pmu_get_capacity(supply);
-+	if (capacity < 0)
-+		return 0;
-+
-+	return supply->bat_info->energy_full_design_uwh / 100 * capacity;
++	time->year = tm->tm_year + 1900;
++	time->month = tm->tm_mon + 1;
++	time->day = tm->tm_mday;
++	time->hour = tm->tm_hour;
++	time->minute = tm->tm_min;
++	time->second = tm->tm_sec;
 +}
 +
-+static int pcat_pmu_get_status(struct pcat_supply *supply)
++static int pcat_rtc_read_time(struct device *dev, struct rtc_time *tm)
 +{
-+	if (supply->type != PCAT_SUPPLY_BATTERY)
-+		return 0;
++	struct pcat_rtc *rtc = dev_get_drvdata(dev);
 +
-+	if (pcat_pmu_get_capacity(supply) < 100) {
-+		if (power_supply_am_i_supplied(supply->psy))
-+			return POWER_SUPPLY_STATUS_CHARGING;
-+		else
-+			return POWER_SUPPLY_STATUS_DISCHARGING;
-+	}
-+
-+	return POWER_SUPPLY_STATUS_FULL;
-+}
-+
-+static int pcat_pmu_get_supply_property(struct power_supply *psy,
-+					enum power_supply_property psp,
-+					union power_supply_propval *val)
-+{
-+	struct pcat_supply *supply = power_supply_get_drvdata(psy);
-+
-+	switch (psp) {
-+	case POWER_SUPPLY_PROP_CAPACITY:
-+		val->intval = pcat_pmu_get_capacity(supply);
-+		break;
-+	case POWER_SUPPLY_PROP_ONLINE:
-+		val->intval = supply->supply_microvolt > 1000;
-+		break;
-+	case POWER_SUPPLY_PROP_ENERGY_FULL:
-+		val->intval = supply->bat_info->energy_full_design_uwh;
-+		break;
-+	case POWER_SUPPLY_PROP_ENERGY_NOW:
-+		val->intval = pcat_pmu_get_energy(supply);
-+		break;
-+	case POWER_SUPPLY_PROP_STATUS:
-+		val->intval = pcat_pmu_get_status(supply);
-+		break;
-+	case POWER_SUPPLY_PROP_VOLTAGE_MAX:
-+		val->intval = supply->bat_info->voltage_max_design_uv;
-+		break;
-+	case POWER_SUPPLY_PROP_VOLTAGE_MIN:
-+		val->intval = supply->bat_info->voltage_min_design_uv;
-+		break;
-+	case POWER_SUPPLY_PROP_VOLTAGE_NOW:
-+		val->intval = supply->supply_microvolt * 1000;
-+		break;
-+	default:
++	memset(tm, 0, sizeof(*tm));
++	if (!pcat_time_to_rtc_time(&rtc->time, tm))
 +		return -EINVAL;
-+	}
++
 +	return 0;
 +}
 +
-+static enum power_supply_property pcat_charger_props[] = {
-+	POWER_SUPPLY_PROP_VOLTAGE_NOW,
-+	POWER_SUPPLY_PROP_ONLINE,
-+};
-+
-+static enum power_supply_property pcat_battery_props[] = {
-+	POWER_SUPPLY_PROP_CAPACITY,
-+	POWER_SUPPLY_PROP_ENERGY_FULL,
-+	POWER_SUPPLY_PROP_ENERGY_NOW,
-+	POWER_SUPPLY_PROP_STATUS,
-+	POWER_SUPPLY_PROP_VOLTAGE_MAX,
-+	POWER_SUPPLY_PROP_VOLTAGE_MIN,
-+	POWER_SUPPLY_PROP_VOLTAGE_NOW,
-+};
-+
-+static int pcat_supply_notify(struct notifier_block *nb, unsigned long action,
-+			      void *data)
++static int pcat_rtc_set_time(struct device *dev, struct rtc_time *tm)
 +{
-+	struct pcat_supply *supply = container_of(nb, struct pcat_supply, nb);
++	int ret;
++	struct pcat_rtc *rtc = dev_get_drvdata(dev);
++	struct pcat_data_cmd_date_time time;
++
++	pcat_time_from_rtc_time(&time, tm);
++
++	ret = pcat_pmu_write_data(rtc->pmu, PCAT_CMD_DATE_TIME_SYNC,
++				  &time, sizeof(time));
++	if (ret)
++		return ret;
++
++	memcpy(&rtc->time, &time, sizeof(rtc->time));
++
++	return 0;
++}
++
++static const struct rtc_class_ops pcat_rtc_ops = {
++	.read_time = pcat_rtc_read_time,
++	.set_time = pcat_rtc_set_time,
++};
++
++static int pcat_rtc_notify(struct notifier_block *nb, unsigned long action,
++			   void *data)
++{
++	struct pcat_rtc *rtc = container_of(nb, struct pcat_rtc, nb);
 +	struct pcat_data_cmd_status *status = pcat_data_get_data(data);
 +
 +	if (action != PCAT_CMD_STATUS_REPORT)
 +		return NOTIFY_DONE;
 +
-+	switch (supply->type) {
-+	case PCAT_SUPPLY_BATTERY:
-+		supply->supply_microvolt = status->battery_microvolt;
-+		break;
-+	case PCAT_SUPPLY_CHARGER:
-+		supply->supply_microvolt = status->charger_microvolt;
-+		break;
-+	}
-+
-+	complete(&supply->initial_report);
++	memcpy(&rtc->time, &status->time, sizeof(rtc->time));
++	complete(&rtc->initial_report);
 +
 +	return NOTIFY_DONE;
 +}
 +
-+static int pcat_supply_probe(struct platform_device *pdev)
++static int pcat_rtc_probe(struct platform_device *pdev)
 +{
-+	int ret;
-+	const char *label;
-+	const char *supply_type;
 +	struct device *dev = &pdev->dev;
-+	struct pcat_supply *supply;
-+	struct power_supply_config psy_cfg = {};
++	struct pcat_rtc *rtc;
++	int ret;
 +
-+	supply = devm_kzalloc(dev, sizeof(*supply), GFP_KERNEL);
-+	if (!supply)
++	rtc = devm_kzalloc(&pdev->dev, sizeof(*rtc), GFP_KERNEL);
++	if (!rtc)
 +		return -ENOMEM;
 +
-+	supply->dev = dev;
-+	supply->pmu = dev_get_drvdata(dev->parent);
-+	supply->nb.notifier_call = pcat_supply_notify;
-+	init_completion(&supply->initial_report);
-+	psy_cfg.drv_data = supply;
-+	psy_cfg.of_node = dev->of_node;
-+	platform_set_drvdata(pdev, supply);
++	rtc->dev = dev;
++	rtc->pmu = dev_get_drvdata(dev->parent);
++	rtc->nb.notifier_call = pcat_rtc_notify;
++	init_completion(&rtc->initial_report);
++	platform_set_drvdata(pdev, rtc);
 +
-+	ret = of_property_read_string(dev->of_node, "type", &supply_type);
-+	if (ret)
-+		return dev_err_probe(dev, ret, "No supply type property\n");
-+
-+	ret = of_property_read_string(dev->of_node, "label", &label);
-+	if (ret)
-+		return dev_err_probe(dev, ret, "No label property\n");
-+
-+	if (!strcmp(supply_type, "battery")) {
-+		supply->type = PCAT_SUPPLY_BATTERY;
-+		supply->desc.type = POWER_SUPPLY_TYPE_BATTERY;
-+		supply->desc.properties = pcat_battery_props;
-+		supply->desc.num_properties = ARRAY_SIZE(pcat_battery_props);
-+	} else if (!strcmp(supply_type, "charger")) {
-+		supply->type = PCAT_SUPPLY_CHARGER;
-+		supply->desc.type = POWER_SUPPLY_TYPE_MAINS;
-+		supply->desc.properties = pcat_charger_props;
-+		supply->desc.num_properties = ARRAY_SIZE(pcat_charger_props);
-+	} else
-+		return dev_err_probe(dev, -EINVAL, "Unknown supply type %s\n",
-+				     supply_type);
-+
-+	ret = pcat_pmu_register_notify(supply->pmu, &supply->nb);
++	ret = pcat_pmu_register_notify(rtc->pmu, &rtc->nb);
 +	if (ret)
 +		return ret;
 +
-+	if (!wait_for_completion_timeout(&supply->initial_report,
++	if (!wait_for_completion_timeout(&rtc->initial_report,
 +					 msecs_to_jiffies(3000))) {
 +		ret = dev_err_probe(dev, -ETIMEDOUT,
 +				    "timeout waiting for initial report\n");
 +		goto error;
 +	}
 +
-+	dev_info(dev, "Voltage: %u mV\n", supply->supply_microvolt);
++	dev_info(dev, "RTC Time: %04d/%02d/%02d %02d:%02d:%02d\n",
++		 rtc->time.year, rtc->time.month, rtc->time.day, rtc->time.hour,
++		 rtc->time.minute, rtc->time.second);
 +
-+	supply->desc.name = label;
-+	supply->desc.get_property = pcat_pmu_get_supply_property;
-+
-+	supply->psy = devm_power_supply_register(dev, &supply->desc, &psy_cfg);
-+	if (IS_ERR(supply->psy)) {
-+		ret = PTR_ERR(supply->psy);
-+		dev_err_probe(dev, ret, "Failed to register supply\n");
++	rtc->rtc = devm_rtc_device_register(&pdev->dev, "pcat-rtc",
++					    &pcat_rtc_ops, THIS_MODULE);
++	if (IS_ERR(rtc->rtc)) {
++		ret = PTR_ERR(rtc->rtc);
++		dev_err_probe(&pdev->dev, ret,
++			      "Failed to register RTC device\n");
 +		goto error;
-+	}
-+
-+	if (supply->type == PCAT_SUPPLY_BATTERY) {
-+		ret = power_supply_get_battery_info(supply->psy,
-+						    &supply->bat_info);
-+		if (ret) {
-+			dev_err_probe(dev, ret, "Unable to get battery info\n");
-+			goto error;
-+		}
 +	}
 +
 +	return 0;
 +error:
-+	pcat_pmu_unregister_notify(supply->pmu, &supply->nb);
++	pcat_pmu_unregister_notify(rtc->pmu, &rtc->nb);
 +	return ret;
 +}
 +
-+static void pcat_supply_remove(struct platform_device *pdev)
++static void pcat_rtc_remove(struct platform_device *pdev)
 +{
-+	struct pcat_supply *supply = platform_get_drvdata(pdev);
++	struct pcat_rtc *rtc = platform_get_drvdata(pdev);
 +
-+	pcat_pmu_unregister_notify(supply->pmu, &supply->nb);
++	pcat_pmu_unregister_notify(rtc->pmu, &rtc->nb);
 +}
 +
-+static const struct of_device_id pcat_supply_dt_ids[] = {
-+	{ .compatible = "ariaboard,photonicat-pmu-supply", },
++static const struct of_device_id pcat_rtc_dt_ids[] = {
++	{ .compatible = "ariaboard,photonicat-pmu-rtc", },
 +	{ /* sentinel */ }
 +};
-+MODULE_DEVICE_TABLE(of, pcat_supply_dt_ids);
++MODULE_DEVICE_TABLE(of, pcat_rtc_dt_ids);
 +
-+static struct platform_driver pcat_supply_driver = {
++static struct platform_driver pcat_rtc_driver = {
 +	.driver = {
-+		.name = "photonicat-supply",
-+		.of_match_table = pcat_supply_dt_ids,
++		.name = "rtc-photonicat",
++		.of_match_table = pcat_rtc_dt_ids,
 +	},
-+	.probe = pcat_supply_probe,
-+	.remove = pcat_supply_remove,
++	.probe = pcat_rtc_probe,
++	.remove = pcat_rtc_remove,
 +};
-+module_platform_driver(pcat_supply_driver);
++module_platform_driver(pcat_rtc_driver);
 +
 +MODULE_AUTHOR("Junhao Xie <bigfoot@classfun.cn>");
-+MODULE_DESCRIPTION("Photonicat PMU Power Supply");
++MODULE_DESCRIPTION("Photonicat PMU RTC");
 +MODULE_LICENSE("GPL");
 -- 
 2.46.0
