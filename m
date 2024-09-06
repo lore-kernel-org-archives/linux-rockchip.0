@@ -4,70 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 45887CE7AA3
-	for <linux-rockchip@archiver.kernel.org>; Fri,  6 Sep 2024 11:55:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 66133CE7AA3
+	for <linux-rockchip@archiver.kernel.org>; Fri,  6 Sep 2024 12:46:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
 	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=nC2KVVcMfI2gtNybu4XJykRNsjJlsBghu/5VK0i3vN0=; b=A1Lj/bhve9lbrU
-	9yu608b5BgXtwMAQxGNO3U4hAb2zOKBW5gGrcDrj6mIwp7YQWVMWISQ2PIpdCE8ZlKXNTvWu0dGnN
-	u78mGIlVtpu/BC6M2tzBwLmCkidv7gl0F+8lYvfdh+N4lCX4njCJ/D+sfat65wQSu1Lo1TluLDQnz
-	3S+8uj10d+KNuaLGFmTUpYL4qlWL5gRwEvoz1fA3ESRWo2hSELNWSG0R9H7xjGxBn+psUeaUn1arZ
-	NPAPUEbZhi3FTIU3xcTLJYkaEOuzB6hiZ43YzZJmIgzMTTi4vInwlzrxZI93rPD9e4bvCClHXAzOU
-	TFHWRIUOv2YRWrynNbwg==;
+	List-Owner; bh=tg3BYT74rcKRY9FsmD7fw5l/w9dpDiAKxaXlLE3YZ5o=; b=AMZGhGYQ8c9aU6
+	7po8fkt4i9aon0q+2Jk55/yzGrRbt7eK0n/G/FX+J1fqYuu5AwmFg6SRKZHmLaeh6spstzpHi90GQ
+	nWUgtQIiMwp+FH8yz4Dh4DCBwpp098O7ySB8wTc5LzDl1MmD3+kHqX7ZPWDm89r1XP9yMC4+kEB15
+	6r2jyzlqf7K2kPV2OExiOwna0dCt+Hwk/5Nc/Y7JcAcUj4bcUzdAanubHHAleQWCn+F1EIWkWuOUY
+	ZvTxNK/DRR9ethZmFJVUPoTMYOgrw7iiBqUyvbrGPRZsrE7eJB7YQkZq3sfDHNlisaLVekiQQ2g1L
+	+DYUQLe8S5MduGP8y0vw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1smXYI-0000000C4NW-11Qm;
-	Fri, 06 Sep 2024 11:54:58 +0000
-Received: from mail-pl1-x62b.google.com ([2607:f8b0:4864:20::62b])
+	id 1smYLx-0000000CD0J-2FIP;
+	Fri, 06 Sep 2024 12:46:17 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1smXVa-0000000C3Zl-2vVS;
-	Fri, 06 Sep 2024 11:52:12 +0000
-Received: by mail-pl1-x62b.google.com with SMTP id d9443c01a7336-206aee4073cso18375045ad.1;
-        Fri, 06 Sep 2024 04:52:09 -0700 (PDT)
+	id 1smXL2-0000000C1MS-3HIn;
+	Fri, 06 Sep 2024 11:41:16 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
+	:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:Message-ID:
+	Sender:Reply-To:Content-ID:Content-Description;
+	bh=nSE4UbmLPT89Bj18HP/jHu8JFDfgkM64ZTAP/BuhzBM=; b=Uz+zBynHL9KW+CqfL/JayjSnCI
+	agbcCh448/5cRh3b+g7LCtF6e4Pgjy6AM45+qUswTtzIUskASZWZ+7XNh/PWXRTGrWUK8NK7PkG6C
+	vQgPppqDl0fJKcAtpSyL8JyKFAz30dvjOYq2Q/og7URMsk119nATV0mFGJDCbmeAgnEz0WFVMPX2X
+	rL5CPMSDw6NBDy95NXBTdJC85KvJMGynRUJHZJ6+WsJZ1NxcQbsQ8CAKa2fMHA4uT07mXDzdbqGF3
+	ITnrmakWuOBcidDuv/HSxF6KxVaHxCMqkH0fYr2mkccPbKiFhNehmsmRmod6NHFyKpq+rNj4mrfy6
+	WjTPlYIA==;
+Received: from mail-pg1-x52f.google.com ([2607:f8b0:4864:20::52f])
+	by desiato.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
+	id 1smXKy-00000000eT1-27Gs;
+	Fri, 06 Sep 2024 11:41:15 +0000
+Received: by mail-pg1-x52f.google.com with SMTP id 41be03b00d2f7-7d4f6d8c1eeso1483471a12.1;
+        Fri, 06 Sep 2024 04:41:10 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1725623529; x=1726228329; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1725622869; x=1726227669; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:autocrypt:from
          :content-language:references:cc:to:subject:user-agent:mime-version
          :date:message-id:sender:from:to:cc:subject:date:message-id:reply-to;
-        bh=AbePJzZ4hGsbaWWD+/pwowfJhv2yPuQVjdwZ6CxA4rE=;
-        b=eKfUffuzg5/1koysGrOk6FderwAM/imLWGzcrgwYmHUNfH/ol9iE3tkzPkk6I/3kFX
-         NmKWE5e2QS1Ob/gju93GZ7PB1maGtSkSGAaYDAyi/6RLu5RO/Ut3f+uoci+uZefTQBqL
-         NyNRuCZDMrSWPgTIXtOJ4WmxDI9meYCI/8VdLBy7Mbp8CwKQPg8LHi5R6QWMR4Yj0jIU
-         fAD4HcubbRTEGvLDgMn9FMi1e2O8qqwg/+PBrJpLZwR/2RR58SrSYscwFRq5RHNNHHgV
-         U+BBAVsGPMu+iyTs39UG9mk80h2UWZCQJ9wdDRulz3tarTDtoRyOecPq9rYiVBlvqfNX
-         4FCw==
+        bh=nSE4UbmLPT89Bj18HP/jHu8JFDfgkM64ZTAP/BuhzBM=;
+        b=VZoG7oQvU06K981GfgIscAyu7puCievaPREF93BIfbvn5ubpHmTG/q7RIHWRreL/Ib
+         yklPIoUn/S2ZTUgoNPKpKQ+k/dEzsVFP+blVLDnP9ceHO+tKLatbTvDklughY+c2P3pF
+         OwmJcnUssYIzsBsLkWisUOQDgEnIYldAMOqXGVxgtMrMZzgYBbzjpI1alZxrsA7EyMJi
+         ZU2G+UCizviy/P/frJGp+e88WPNVIjdUfFXBDHclzuaTNtHjqBYg4XDFbXxLlc8HPH93
+         SHBbJ7DRWNxSQ7nAVYZYWlIkZ0RIqVBWQJUus2PMs+OrKN3PX0BtlA5zW3BGCGjJzRwM
+         EGQQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1725623529; x=1726228329;
+        d=1e100.net; s=20230601; t=1725622869; x=1726227669;
         h=content-transfer-encoding:in-reply-to:autocrypt:from
          :content-language:references:cc:to:subject:user-agent:mime-version
          :date:message-id:sender:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=AbePJzZ4hGsbaWWD+/pwowfJhv2yPuQVjdwZ6CxA4rE=;
-        b=SydXuM1zL37MknjEEwu3K4Cu1YNvNtcHeKtTByAtdFsoHQySAPS7YfJ+6751OE0IlL
-         eKHuWbSs9xwwqxEdUmDiI7IOpSxcR/zTzssFj26qPrE0jtlHZSZdpbeiRl1yDnWkxrV/
-         41Lka+ESOuI2XBNhQiZ0OUaDeOK0pvgI7Rk+OJ2uxCAMQ7Pibhq4om5YaPFmRma9vnBt
-         GaSNZSZrY2/AkWib1XrEixpPcbUHZgKEMC4cflj9bgTwj1H0wR7tRFBJ4PqSEcctOVKf
-         EHWyG/1kW+37rhS3GVoUtXxsckRPt1Czv9R9rVpc+3LzBzn87aqQZFvhZTYSHy6xj8ku
-         tRFA==
-X-Forwarded-Encrypted: i=1; AJvYcCVUS0bm5KpimBEKcmuIv0C5GH7bSnTtmFvI3BenFQhsLe9K3NDPXgCgfkO80Yns7tRGdgt652DFaXqiIc6/v84=@lists.infradead.org, AJvYcCXJNInL8BlIRm3osZXCPOz7DcXLh8lPR99/Ni4KW5JLK0460ntmB41+blC9WKjZ4swS47a/TLxjVdx7MQf1L9TG@lists.infradead.org
-X-Gm-Message-State: AOJu0YzF1YFZL8HvKgKiTGp2vdg5Ujurok81C13jkTBkMUSLlgowa7E1
-	xsVdfsOd3S5DjrcYLqoYl+VBY6tF9/d1H36wgD1LWRaM6izLJO0RcKeqdw==
-X-Google-Smtp-Source: AGHT+IH2ACJaY497j/cAt58YuWZEVIFDwipHir1KSNdb3rlbkQHRrJGC/0C5GCJko/BHyw7CX/ljVg==
-X-Received: by 2002:a17:902:f610:b0:205:eec:5755 with SMTP id d9443c01a7336-206f0526051mr33079225ad.23.1725623528999;
-        Fri, 06 Sep 2024 04:52:08 -0700 (PDT)
+        bh=nSE4UbmLPT89Bj18HP/jHu8JFDfgkM64ZTAP/BuhzBM=;
+        b=uIu3AULOXTyu8UnBA1+1iLQpFTJZNb6MT9ZZjjUuibWdO2KAKTlfxU78dlqNHz95eZ
+         2+db5xOcd8Yz6tB37sekzeR+rC82BYE70qATnINzui5RPyouQwl8dV9McHjkDAOt3DpN
+         me00eJg8hO/gsaKSqX8cfaIJqZm0bZxUvf0HYFZ+oa9WQbFaOLxz4arPJwSTSwqtYw/5
+         VRw82H489tNvt8rAfldgMGbD/+qMvOjcsB4QzZHSra0jvM8IDJTZh6xcAQyRYp6VDe+Q
+         xsNW+NI/74j9ZdqCG72aZ2HhXTz5lauLioPYwhJhEoz2/DMZPhxKtTulgNTMCkNsD+TY
+         2s5w==
+X-Forwarded-Encrypted: i=1; AJvYcCVmuH8bKYLDqCQXkyU4VT6B0MB2TezkGqJZxDnDRk3E/sc3YL661vRmjNgJd+VVE/s5/ytH+0CmuyahXVKdPPM=@lists.infradead.org, AJvYcCW/A/KZ2xmg1YL0UNkw000XdIpBp4CTtyf1JwpsfUOqbCg22nCNj9lIYVSOs+MjTKT/RIOxhhanxnDtAN5IW6qh@lists.infradead.org
+X-Gm-Message-State: AOJu0Yx58sLxPUuQNP17iM2y3f+hkn6oP7bqZDFAG06REPVjGXCJ1Kb3
+	xftsv4tED1j7jVxUGeuVqAu4tNq9oUK/bFs6P2HKSaHApCIMNukF
+X-Google-Smtp-Source: AGHT+IG8+NKJVVHmU7dMZkptp8cuB6+8HX7Zzy6Yj7AiC4L2InjShBKLgIME0ueterTApmKVtZTUtg==
+X-Received: by 2002:a17:90b:4ace:b0:2c9:6a38:54e4 with SMTP id 98e67ed59e1d1-2dad51bfdd9mr2390340a91.41.1725622868829;
+        Fri, 06 Sep 2024 04:41:08 -0700 (PDT)
 Received: from ?IPV6:2600:1700:e321:62f0:329c:23ff:fee3:9d7c? ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-206aea37f1dsm41834555ad.125.2024.09.06.04.52.06
+        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-2dadbfeebaasm1334056a91.10.2024.09.06.04.41.06
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 06 Sep 2024 04:52:08 -0700 (PDT)
-Message-ID: <8e2cecbe-aa48-4e84-93cc-8c028c5e649e@roeck-us.net>
-Date: Fri, 6 Sep 2024 04:52:06 -0700
+        Fri, 06 Sep 2024 04:41:07 -0700 (PDT)
+Message-ID: <a33633be-800c-4ca0-9d1e-f190e23384d5@roeck-us.net>
+Date: Fri, 6 Sep 2024 04:41:05 -0700
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 3/9] watchdog: Add Photonicat PMU watchdog driver
+Subject: Re: [PATCH 6/9] hwmon: Add support for Photonicat PMU board
+ temperature sensor
 To: Junhao Xie <bigfoot@classfun.cn>, devicetree@vger.kernel.org,
  linux-hwmon@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-leds@vger.kernel.org, linux-pm@vger.kernel.org,
@@ -81,7 +96,7 @@ Cc: Jean Delvare <jdelvare@suse.com>, Rob Herring <robh@kernel.org>,
  Wim Van Sebroeck <wim@linux-watchdog.org>, Heiko Stuebner <heiko@sntech.de>,
  Chukun Pan <amadeus@jmu.edu.cn>
 References: <20240906093630.2428329-1-bigfoot@classfun.cn>
- <20240906093630.2428329-4-bigfoot@classfun.cn>
+ <20240906093630.2428329-7-bigfoot@classfun.cn>
 Content-Language: en-US
 From: Guenter Roeck <linux@roeck-us.net>
 Autocrypt: addr=linux@roeck-us.net; keydata=
@@ -127,10 +142,10 @@ Autocrypt: addr=linux@roeck-us.net; keydata=
  WkRwrSuCn7UG+qVWZeKEsFKFOkynOs3pVbcbq1pxbhk3TRWCGRU5JolI4ohy/7JV1TVbjiDI
  HP/aVnm6NC8of26P40Pg8EdAhajZnHHjA7FrJXsy3cyIGqvg9os4rNkUWmrCfLLsZDHD8FnU
  mDW4+i+XlNFUPUYMrIKi9joBhu18ssf5i5Q=
-In-Reply-To: <20240906093630.2428329-4-bigfoot@classfun.cn>
+In-Reply-To: <20240906093630.2428329-7-bigfoot@classfun.cn>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240906_045210_908068_9E70054B 
-X-CRM114-Status: GOOD (  32.84  )
+X-CRM114-CacheID: sfid-20240906_124113_173002_A0DDCBFD 
+X-CRM114-Status: GOOD (  11.04  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -148,206 +163,36 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 On 9/6/24 02:36, Junhao Xie wrote:
-> This driver provides access to Photonicat PMU watchdog functionality.
+> Photonicat PMU MCU will send status reports regularly,
+> including board temperature.
 > 
+
+This is not an appropriate description.
+
 > Signed-off-by: Junhao Xie <bigfoot@classfun.cn>
 > ---
->   drivers/watchdog/Kconfig          |  12 +++
->   drivers/watchdog/Makefile         |   1 +
->   drivers/watchdog/photonicat-wdt.c | 124 ++++++++++++++++++++++++++++++
->   3 files changed, 137 insertions(+)
->   create mode 100644 drivers/watchdog/photonicat-wdt.c
-> 
-> diff --git a/drivers/watchdog/Kconfig b/drivers/watchdog/Kconfig
-> index bae1d97cce89..4094216a1c09 100644
-> --- a/drivers/watchdog/Kconfig
-> +++ b/drivers/watchdog/Kconfig
-> @@ -300,6 +300,18 @@ config MENZ069_WATCHDOG
->   	  This driver can also be built as a module. If so the module
->   	  will be called menz069_wdt.
->   
-> +config PHOTONICAT_PMU_WDT
-> +	tristate "Photonicat PMU Watchdog"
-> +	depends on MFD_PHOTONICAT_PMU
-> +	select WATCHDOG_CORE
-> +	help
-> +	  This driver provides access to Photonicat PMU watchdog functionality.
-> +
-> +	  Say Y here to include support for the Photonicat PMU Watchdog.
-> +
-> +	  This driver can also be built as a module. If so the module
-> +	  will be called photonicat-wdt.
-> +
->   config WDAT_WDT
->   	tristate "ACPI Watchdog Action Table (WDAT)"
->   	depends on ACPI
-> diff --git a/drivers/watchdog/Makefile b/drivers/watchdog/Makefile
-> index b51030f035a6..14375af84039 100644
-> --- a/drivers/watchdog/Makefile
-> +++ b/drivers/watchdog/Makefile
-> @@ -234,6 +234,7 @@ obj-$(CONFIG_ZIIRAVE_WATCHDOG) += ziirave_wdt.o
->   obj-$(CONFIG_SOFT_WATCHDOG) += softdog.o
->   obj-$(CONFIG_MENF21BMC_WATCHDOG) += menf21bmc_wdt.o
->   obj-$(CONFIG_MENZ069_WATCHDOG) += menz69_wdt.o
-> +obj-$(CONFIG_PHOTONICAT_PMU_WDT) += photonicat-wdt.o
->   obj-$(CONFIG_RAVE_SP_WATCHDOG) += rave-sp-wdt.o
->   obj-$(CONFIG_STPMIC1_WATCHDOG) += stpmic1_wdt.o
->   obj-$(CONFIG_SL28CPLD_WATCHDOG) += sl28cpld_wdt.o
-> diff --git a/drivers/watchdog/photonicat-wdt.c b/drivers/watchdog/photonicat-wdt.c
-> new file mode 100644
-> index 000000000000..1e758fcfb49f
-> --- /dev/null
-> +++ b/drivers/watchdog/photonicat-wdt.c
-> @@ -0,0 +1,124 @@
-> +// SPDX-License-Identifier: GPL-2.0-only
-> +/*
-> + * Copyright (c) 2024 Junhao Xie <bigfoot@classfun.cn>
-> + */
-> +
-> +#include <linux/mfd/photonicat-pmu.h>
-> +#include <linux/module.h>
-> +#include <linux/of.h>
-> +#include <linux/platform_device.h>
-> +#include <linux/watchdog.h>
-> +
-> +struct pcat_watchdog {
-> +	struct device *dev;
+>   drivers/hwmon/Kconfig            |  10 +++
+>   drivers/hwmon/Makefile           |   1 +
+>   drivers/hwmon/photonicat-hwmon.c | 129 +++++++++++++++++++++++++++++++
 
-I don't see what this is used for.
+Documentation missing.
 
-> +	struct pcat_pmu *pmu;
-> +	struct watchdog_device wdd;
-> +	u8 timeout;
-> +	bool started;
-> +};
-> +
-> +static const struct watchdog_info pcat_wdt_info = {
-> +	.options = WDIOF_SETTIMEOUT | WDIOF_KEEPALIVEPING | WDIOF_MAGICCLOSE,
-> +	.identity = "Photonicat PMU Watchdog",
-> +};
-> +
-> +static int pcat_wdt_setup(struct pcat_watchdog *data, int timeout)
+> +static int pcat_hwmon_probe(struct platform_device *pdev)
 > +{
-> +	int ret;
-> +	u8 time = 0;
+...
+> +	dev_info(dev, "Board Temprature: %d degress C\n", hwmon->temperature);
+> +
 
-Unnecessary initialization.
+Unacceptable (misspelled) noise.
 
-> +	u8 times[3] = { 60, 60, 0 };
+> +	hwmon->hwmon = devm_hwmon_device_register_with_groups(
+> +		dev, label, hwmon, pcat_pmu_temp_groups);
 > +
-> +	time = MIN(255, MAX(0, timeout));
-> +
-> +	ret = pcat_pmu_write_data(data->pmu, PCAT_CMD_WATCHDOG_TIMEOUT_SET,
-> +				  times, sizeof(times));
 
-Where does this actually send the timeout to the chip ?
+Please use the with_info API. I am not going to review the code because
+it will need to be completely rewritten.
 
-> +	if (!ret)
-> +		data->started = timeout != 0;
-> +
-> +	return ret;
-> +}
-> +
-> +static int pcat_wdt_start(struct watchdog_device *wdev)
-> +{
-> +	struct pcat_watchdog *data = watchdog_get_drvdata(wdev);
-> +
-> +	return pcat_wdt_setup(data, data->timeout);
-> +}
-> +
-> +static int pcat_wdt_stop(struct watchdog_device *wdev)
-> +{
-> +	struct pcat_watchdog *data = watchdog_get_drvdata(wdev);
-> +
-> +	return pcat_wdt_setup(data, 0);
-> +}
-> +
-> +static int pcat_wdt_ping(struct watchdog_device *wdev)
-> +{
-> +	struct pcat_watchdog *data = watchdog_get_drvdata(wdev);
-> +
-> +	return pcat_pmu_send(data->pmu, PCAT_CMD_HEARTBEAT, NULL, 0);
-> +}
-> +
-> +static int pcat_wdt_set_timeout(struct watchdog_device *wdev, unsigned int val)
-> +{
-> +	int ret = 0;
-> +	struct pcat_watchdog *data = watchdog_get_drvdata(wdev);
-> +
-> +	data->timeout = val;
-
-This needs to store 'timeout' in wdev. Storing it locally is unnecessary.
-
-> +	if (data->started)
-> +		ret = pcat_wdt_setup(data, data->timeout);
-
-This is misleading because it would permit setting the timeout to
-0 when the watchdog isn't running, and then when the watchdog is started
-it would not really start it. The code should not use a local "started"
-variable but call watchdog_active(). It should also not accept "0"
-as a valid timeout.
-
-> +
-> +	return ret;
-> +}
-> +
-> +static const struct watchdog_ops pcat_wdt_ops = {
-> +	.owner = THIS_MODULE,
-> +	.start = pcat_wdt_start,
-> +	.stop = pcat_wdt_stop,
-> +	.ping = pcat_wdt_ping,
-> +	.set_timeout = pcat_wdt_set_timeout,
-> +};
-> +
-> +static int pcat_watchdog_probe(struct platform_device *pdev)
-> +{
-> +	struct device *dev = &pdev->dev;
-> +	struct pcat_watchdog *watchdog;
-> +
-> +	watchdog = devm_kzalloc(dev, sizeof(*watchdog), GFP_KERNEL);
-> +	if (!watchdog)
-> +		return -ENOMEM;
-> +
-> +	watchdog->dev = dev;
-> +	watchdog->pmu = dev_get_drvdata(dev->parent);
-> +	watchdog->wdd.info = &pcat_wdt_info;
-> +	watchdog->wdd.ops = &pcat_wdt_ops;
-> +	watchdog->wdd.timeout = 60;
-> +	watchdog->wdd.max_timeout = U8_MAX;
-> +	watchdog->wdd.min_timeout = 0;
-
-This effectively lets the user ... kind of ... stop the watchdog
-by setting the timeout to 0. This is not acceptable.
-
-> +	watchdog->wdd.parent = dev;
-> +
-> +	watchdog_stop_on_reboot(&watchdog->wdd);
-> +	watchdog_set_drvdata(&watchdog->wdd, watchdog);
-> +	platform_set_drvdata(pdev, watchdog);
-> +
-No watchdog_init_timeout() ?
-
-> +	return devm_watchdog_register_device(dev, &watchdog->wdd);
-> +}
-> +
-> +static const struct of_device_id pcat_watchdog_dt_ids[] = {
-> +	{ .compatible = "ariaboard,photonicat-pmu-watchdog", },
-> +	{ /* sentinel */ }
-> +};
-> +MODULE_DEVICE_TABLE(of, pcat_watchdog_dt_ids);
-> +
-> +static struct platform_driver pcat_watchdog_driver = {
-> +	.driver = {
-> +		.name = "photonicat-watchdog",
-> +		.of_match_table = pcat_watchdog_dt_ids,
-> +	},
-> +	.probe = pcat_watchdog_probe,
-> +};
-> +module_platform_driver(pcat_watchdog_driver);
-> +
-> +MODULE_AUTHOR("Junhao Xie <bigfoot@classfun.cn>");
-> +MODULE_DESCRIPTION("Photonicat PMU watchdog");
-> +MODULE_LICENSE("GPL");
+Guenter
 
 
 _______________________________________________
