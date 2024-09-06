@@ -4,40 +4,40 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 82FC6CE7AFB
-	for <linux-rockchip@archiver.kernel.org>; Fri,  6 Sep 2024 09:53:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 92DFFCE7AFD
+	for <linux-rockchip@archiver.kernel.org>; Fri,  6 Sep 2024 09:54:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=lMCH4GDcNefx62EkFUVASVcZD09BaFjGCfo16UF+zCE=; b=xua16rZv0ijgIA
-	uFebMDotB++/I6eN7SfXGPHLIUe8u6AQFwMhHX35FpVsyUGH4qDmJsVLJNBPekViIvulb3iSzD30e
-	M6p9NkKNNDw9VJtegWnh1pb7dzv15vYghSSeD6MxLLflT50ygcAe3tpTnMu5DyHfUOm2DtJYlPWmL
-	HTFgaP9J2RnC/l1b+IVUMn4mtyDx7rkzuPdL507/4Yzzs8/ri/iafhemjqQy+M5e8iMQAl5QGQpKj
-	ZZytaT3vyEt5NJ4obqZem/1A3wNlgJt2tIibQiebrYnCd55TNbxmCa5TAzsHZeGXkgdRfe/z1V3qX
-	SHnz6i4GiNuY0TElVyRw==;
+	List-Owner; bh=3d8b6diYxKmP4j7BZWlCH+L/QkWhO6VCl3Q7ZxJJqtE=; b=hZSkixbASA958B
+	CevfdkjMo+LchLqkYIOiWaWUT4VYP2y+qrbMhBzVQ6GtWqMjW8M8lXE6UynP2dfCldc7U4h1yD2qt
+	CPB7gvkCmOl+8DAjhW5sK9vmmbvF+GpYy9sKttHnPRiQEKYr5S2gRKrT0ilG6BNtTWBNPZxoT2g7X
+	IPYLt+iFCnX0IQ+VFX+Pv0E+LeAQOLMJ8sSzwYPYgb9Gg7KN1odIeAlqjVnUNmHR+HOrF4w0vhYbk
+	LZoBvSqiwDLC5Yk75CByW+g9G7/2L+m3+eNi9UidvynMurNQG7XyD4DB0ey4OI3oaqcOTXBJxpqIy
+	70qMwGSD+Y7DVFuUT8Yg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1smVf5-0000000Bcln-2cyk;
-	Fri, 06 Sep 2024 09:53:51 +0000
+	id 1smVg4-0000000Bd8x-2418;
+	Fri, 06 Sep 2024 09:54:52 +0000
 Received: from [129.204.178.38] (helo=classfun.cn)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1smVPt-0000000BXhM-1uPl;
-	Fri, 06 Sep 2024 09:38:11 +0000
+	id 1smVPu-0000000BXhr-3CtX;
+	Fri, 06 Sep 2024 09:38:12 +0000
 Received: from bigfoot-server-storage.classfun.cn (unknown [124.72.163.35])
 	(Authenticated sender: bigfoot)
-	by classfun.cn (Postfix) with ESMTPSA id D5E1178A07;
-	Fri,  6 Sep 2024 17:38:07 +0800 (CST)
-DKIM-Filter: OpenDKIM Filter v2.11.0 classfun.cn D5E1178A07
+	by classfun.cn (Postfix) with ESMTPSA id 2A15B78A09;
+	Fri,  6 Sep 2024 17:38:09 +0800 (CST)
+DKIM-Filter: OpenDKIM Filter v2.11.0 classfun.cn 2A15B78A09
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=classfun.cn;
-	s=default; t=1725615489;
-	bh=m8dxvhMC6YUlGGu5mJJ8C2gZHWhyqRgNP3I24IzqQ6g=;
+	s=default; t=1725615490;
+	bh=4iXFbTgHyY6K8dz+IW7PQ4SZIPOZ8q/AqB9y9MhNIP0=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=PdJQYn8C9lujRQHKpzNHQWRkSJufh/rYtMcxEXrSrDhQlWv6WTC+c1RplrRJTOj68
-	 duz7c/GpZ9/jV96+4ujkVJDe50TOzoK4X5G2NjLrutUj34ZhymWaKYU/mrvMLHfJMD
-	 Oj/TvaWE+gGs4Eilj+ylCKUtnudfd0IYu91ulLMg=
+	b=kr3p73MJl49h2aPllRV/YPwy6pXv5KGKkqdhVZdd+1776nSl5X5Tvpa7REribPuQX
+	 YpoNrobXRwV3TsUoVLcL0kigvpzc9iAeFbQ87KrUmFrLC6jDf4ipJIizmJGTf+KU/2
+	 KMbwaTMxEN6jTXFFheGNHlimR7FYTiod26Ky/yn4=
 From: Junhao Xie <bigfoot@classfun.cn>
 To: devicetree@vger.kernel.org,
 	linux-hwmon@vger.kernel.org,
@@ -61,16 +61,17 @@ Cc: Jean Delvare <jdelvare@suse.com>,
 	Heiko Stuebner <heiko@sntech.de>,
 	Chukun Pan <amadeus@jmu.edu.cn>,
 	Junhao Xie <bigfoot@classfun.cn>
-Subject: [PATCH 8/9] dt-bindings: Add documentation for Photonicat PMU
-Date: Fri,  6 Sep 2024 17:36:29 +0800
-Message-ID: <20240906093630.2428329-9-bigfoot@classfun.cn>
+Subject: [PATCH 9/9] arm64: dts: rockchip: add Photonicat PMU support for Ariaboard Photonicat
+Date: Fri,  6 Sep 2024 17:36:30 +0800
+Message-ID: <20240906093630.2428329-10-bigfoot@classfun.cn>
 X-Mailer: git-send-email 2.46.0
 In-Reply-To: <20240906093630.2428329-1-bigfoot@classfun.cn>
 References: <20240906093630.2428329-1-bigfoot@classfun.cn>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240906_023809_733059_2B0835F4 
-X-CRM114-Status: GOOD (  13.30  )
+X-CRM114-CacheID: sfid-20240906_023811_099939_BA67D2D0 
+X-CRM114-Status: UNSURE (   9.02  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,420 +88,68 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add device tree binding documentation for Photonicat PMU MFD, LEDs,
-hardware monitor, power off, power supply, real-time clock watchdog.
+This commit adds support for Photonicat power management MCU on
+Ariaboard Photonicat.
 
 Signed-off-by: Junhao Xie <bigfoot@classfun.cn>
 ---
- .../hwmon/ariaboard,photonicat-pmu-hwmon.yaml |  40 +++++++
- .../leds/ariaboard,photonicat-pmu-leds.yaml   |  41 +++++++
- .../mfd/ariaboard,photonicat-pmu.yaml         | 107 ++++++++++++++++++
- .../ariaboard,photonicat-pmu-poweroff.yaml    |  34 ++++++
- .../ariaboard,photonicat-pmu-supply.yaml      |  55 +++++++++
- .../rtc/ariaboard,photonicat-pmu-rtc.yaml     |  37 ++++++
- .../ariaboard,photonicat-pmu-watchdog.yaml    |  37 ++++++
- 7 files changed, 351 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/hwmon/ariaboard,photonicat-pmu-hwmon.yaml
- create mode 100644 Documentation/devicetree/bindings/leds/ariaboard,photonicat-pmu-leds.yaml
- create mode 100644 Documentation/devicetree/bindings/mfd/ariaboard,photonicat-pmu.yaml
- create mode 100644 Documentation/devicetree/bindings/power/reset/ariaboard,photonicat-pmu-poweroff.yaml
- create mode 100644 Documentation/devicetree/bindings/power/supply/ariaboard,photonicat-pmu-supply.yaml
- create mode 100644 Documentation/devicetree/bindings/rtc/ariaboard,photonicat-pmu-rtc.yaml
- create mode 100644 Documentation/devicetree/bindings/watchdog/ariaboard,photonicat-pmu-watchdog.yaml
+ .../boot/dts/rockchip/rk3568-photonicat.dts   | 43 +++++++++++++++++++
+ 1 file changed, 43 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/hwmon/ariaboard,photonicat-pmu-hwmon.yaml b/Documentation/devicetree/bindings/hwmon/ariaboard,photonicat-pmu-hwmon.yaml
-new file mode 100644
-index 000000000000..c9b1bab20c31
---- /dev/null
-+++ b/Documentation/devicetree/bindings/hwmon/ariaboard,photonicat-pmu-hwmon.yaml
-@@ -0,0 +1,40 @@
-+# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/hwmon/ariaboard,photonicat-pmu-hwmon.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: Photonicat PMU Hardware Monitor
-+
-+maintainers:
-+  - Junhao Xie <bigfoot@classfun.cn>
-+
-+description:
-+  Board temperature sensor on the Photonicat PMU MCU
-+
-+properties:
-+  compatible:
-+    const: ariaboard,photonicat-pmu-hwmon
-+
-+  label:
-+    $ref: /schemas/types.yaml#/definitions/string
-+    description: Label for hwmon device
-+
-+required:
-+  - compatible
-+  - label
-+
-+additionalProperties: false
-+
-+examples:
-+  - |
-+      serial {
-+          mcu {
-+              compatible = "ariaboard,photonicat-pmu";
-+
-+              hwmon {
-+                  compatible = "ariaboard,photonicat-pmu-hwmon";
-+                  label = "pcat_board";
-+              };
-+          };
-+      };
-diff --git a/Documentation/devicetree/bindings/leds/ariaboard,photonicat-pmu-leds.yaml b/Documentation/devicetree/bindings/leds/ariaboard,photonicat-pmu-leds.yaml
-new file mode 100644
-index 000000000000..6ccb0e691b09
---- /dev/null
-+++ b/Documentation/devicetree/bindings/leds/ariaboard,photonicat-pmu-leds.yaml
-@@ -0,0 +1,41 @@
-+# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/leds/ariaboard,photonicat-pmu-leds.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: Photonicat PMU LEDs
-+
-+maintainers:
-+  - Junhao Xie <bigfoot@classfun.cn>
-+
-+description:
-+  LEDs on the Photonicat PMU MCU
-+
-+allOf:
-+  - $ref: common.yaml#
-+
-+properties:
-+  compatible:
-+    const: ariaboard,photonicat-pmu-leds
-+
-+  label: true
-+
-+required:
-+  - compatible
-+  - label
-+
-+additionalProperties: false
-+
-+examples:
-+  - |
-+      serial {
-+          mcu {
-+              compatible = "ariaboard,photonicat-pmu";
-+
-+              leds-status {
-+                  compatible = "ariaboard,photonicat-pmu-leds";
-+                  label = "net-status";
-+              };
-+          };
-+      };
-diff --git a/Documentation/devicetree/bindings/mfd/ariaboard,photonicat-pmu.yaml b/Documentation/devicetree/bindings/mfd/ariaboard,photonicat-pmu.yaml
-new file mode 100644
-index 000000000000..df16d9507821
---- /dev/null
-+++ b/Documentation/devicetree/bindings/mfd/ariaboard,photonicat-pmu.yaml
-@@ -0,0 +1,107 @@
-+# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/mfd/ariaboard,photonicat-pmu.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: Ariaboard Photonicat PMU
-+
-+maintainers:
-+  - Junhao Xie <bigfoot@classfun.cn>
-+
-+description:
-+  Driver for the Power Management MCU in the Ariaboard Photonicat,
-+  which provides battery and charger power supply, real-time clock,
-+  watchdog, hardware shutdown.
-+
-+properties:
-+  compatible:
-+    const: ariaboard,photonicat-pmu
-+
-+  current-speed:
-+    $ref: /schemas/types.yaml#/definitions/uint32
-+    default: 115200
-+    description: PMU Serial baudrate
-+
-+  local-address:
-+    $ref: /schemas/types.yaml#/definitions/uint32
-+    minimum: 1
-+    maximum: 127
-+    default: 1
-+    description: CPU board address
-+
-+  remote-address:
-+    $ref: /schemas/types.yaml#/definitions/uint32
-+    minimum: 1
-+    maximum: 127
-+    default: 1
-+    description: PMU board address
-+
-+  hwmon:
-+    $ref: /schemas/hwmon/ariaboard,photonicat-pmu-hwmon.yaml
-+
-+  poweroff:
-+    $ref: /schemas/power/reset/ariaboard,photonicat-pmu-poweroff.yaml
-+
-+  rtc:
-+    $ref: /schemas/rtc/ariaboard,photonicat-pmu-rtc.yaml
-+
-+  watchdog:
-+    $ref: /schemas/watchdog/ariaboard,photonicat-pmu-watchdog.yaml
-+
-+patternProperties:
-+  '^leds-(status)':
-+    $ref: /schemas/leds/ariaboard,photonicat-pmu-leds.yaml
-+
-+  '^supply-(battery|charger)$':
-+    $ref: /schemas/power/supply/ariaboard,photonicat-pmu-supply.yaml
-+
-+required:
-+  - compatible
-+
-+additionalProperties: false
-+
-+examples:
-+  - |
-+      serial {
-+          photonicat-pmu {
-+              compatible = "ariaboard,photonicat-pmu";
-+              current-speed = <115200>;
-+              local-address = <1>;
-+              remote-address = <1>;
-+
-+              supply-battery {
-+                  compatible = "ariaboard,photonicat-pmu-supply";
-+                  label = "battery";
-+                  type = "battery";
-+              };
-+
-+              supply-charger {
-+                  compatible = "ariaboard,photonicat-pmu-supply";
-+                  label = "charger";
-+                  type = "charger";
-+              };
-+
-+              hwmon {
-+                  compatible = "ariaboard,photonicat-pmu-hwmon";
-+                  label = "pcat_board";
-+              };
-+
-+              leds-status {
-+                  compatible = "ariaboard,photonicat-pmu-leds";
-+                  label = "net-status";
-+              };
-+
-+              poweroff {
-+                  compatible = "ariaboard,photonicat-pmu-poweroff";
-+              };
-+
-+              rtc {
-+                  compatible = "ariaboard,photonicat-pmu-rtc";
-+              };
-+
-+              watchdog {
-+                  compatible = "ariaboard,photonicat-pmu-watchdog";
-+              };
-+          };
-+      };
-diff --git a/Documentation/devicetree/bindings/power/reset/ariaboard,photonicat-pmu-poweroff.yaml b/Documentation/devicetree/bindings/power/reset/ariaboard,photonicat-pmu-poweroff.yaml
-new file mode 100644
-index 000000000000..cfb6c043aa8d
---- /dev/null
-+++ b/Documentation/devicetree/bindings/power/reset/ariaboard,photonicat-pmu-poweroff.yaml
-@@ -0,0 +1,34 @@
-+# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/power/reset/ariaboard,photonicat-pmu-poweroff.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: Photonicat PMU Real-time clock
-+
-+maintainers:
-+  - Junhao Xie <bigfoot@classfun.cn>
-+
-+description:
-+  Poweroff on the Photonicat PMU MCU
-+
-+properties:
-+  compatible:
-+    const: ariaboard,photonicat-pmu-poweroff
-+
-+required:
-+  - compatible
-+
-+additionalProperties: false
-+
-+examples:
-+  - |
-+      serial {
-+          mcu {
-+              compatible = "ariaboard,photonicat-pmu";
-+
-+              poweroff {
-+                  compatible = "ariaboard,photonicat-pmu-poweroff";
-+              };
-+          };
-+      };
-diff --git a/Documentation/devicetree/bindings/power/supply/ariaboard,photonicat-pmu-supply.yaml b/Documentation/devicetree/bindings/power/supply/ariaboard,photonicat-pmu-supply.yaml
-new file mode 100644
-index 000000000000..73b1c3564c58
---- /dev/null
-+++ b/Documentation/devicetree/bindings/power/supply/ariaboard,photonicat-pmu-supply.yaml
-@@ -0,0 +1,55 @@
-+# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/power/supply/ariaboard,photonicat-pmu-supply.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: Photonicat PMU Power supply
-+
-+maintainers:
-+  - Junhao Xie <bigfoot@classfun.cn>
-+
-+description:
-+  Power supply on the Photonicat PMU MCU
-+
-+allOf:
-+  - $ref: power-supply.yaml#
-+
-+properties:
-+  compatible:
-+    const: ariaboard,photonicat-pmu-supply
-+
-+  label:
-+    $ref: /schemas/types.yaml#/definitions/string
-+    description: Label for power supply device
-+
-+  type:
-+    $ref: /schemas/types.yaml#/definitions/string
-+    enum:
-+      - battery
-+      - charger
-+    description: Photonicat power supply type
-+
-+  power-supplies: true
-+  monitored-battery: true
-+
-+required:
-+  - compatible
-+  - label
-+  - type
-+
-+additionalProperties: false
-+
-+examples:
-+  - |
-+      serial {
-+          mcu {
-+              compatible = "ariaboard,photonicat-pmu";
-+
-+              supply-charger {
-+                  compatible = "ariaboard,photonicat-pmu-supply";
-+                  label = "charger";
-+                  type = "charger";
-+              };
-+          };
-+      };
-diff --git a/Documentation/devicetree/bindings/rtc/ariaboard,photonicat-pmu-rtc.yaml b/Documentation/devicetree/bindings/rtc/ariaboard,photonicat-pmu-rtc.yaml
-new file mode 100644
-index 000000000000..05f3c3768dbf
---- /dev/null
-+++ b/Documentation/devicetree/bindings/rtc/ariaboard,photonicat-pmu-rtc.yaml
-@@ -0,0 +1,37 @@
-+# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/rtc/ariaboard,photonicat-pmu-rtc.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: Photonicat PMU Real-time clock
-+
-+maintainers:
-+  - Junhao Xie <bigfoot@classfun.cn>
-+
-+description:
-+  Real-time clock on the Photonicat PMU MCU
-+
-+allOf:
-+  - $ref: rtc.yaml#
-+
-+properties:
-+  compatible:
-+    const: ariaboard,photonicat-pmu-rtc
-+
-+required:
-+  - compatible
-+
-+additionalProperties: false
-+
-+examples:
-+  - |
-+      serial {
-+          mcu {
-+              compatible = "ariaboard,photonicat-pmu";
-+
-+              rtc {
-+                  compatible = "ariaboard,photonicat-pmu-rtc";
-+              };
-+          };
-+      };
-diff --git a/Documentation/devicetree/bindings/watchdog/ariaboard,photonicat-pmu-watchdog.yaml b/Documentation/devicetree/bindings/watchdog/ariaboard,photonicat-pmu-watchdog.yaml
-new file mode 100644
-index 000000000000..91bc6adea9a7
---- /dev/null
-+++ b/Documentation/devicetree/bindings/watchdog/ariaboard,photonicat-pmu-watchdog.yaml
-@@ -0,0 +1,37 @@
-+# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/watchdog/ariaboard,photonicat-pmu-watchdog.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: Photonicat PMU Watchdog
-+
-+maintainers:
-+  - Junhao Xie <bigfoot@classfun.cn>
-+
-+description:
-+  Watchdog on the Photonicat PMU MCU
-+
-+allOf:
-+  - $ref: watchdog.yaml#
-+
-+properties:
-+  compatible:
-+    const: ariaboard,photonicat-pmu-watchdog
-+
-+required:
-+  - compatible
-+
-+additionalProperties: false
-+
-+examples:
-+  - |
-+      serial {
-+          mcu {
-+              compatible = "ariaboard,photonicat-pmu";
-+
-+              watchdog {
-+                  compatible = "ariaboard,photonicat-pmu-watchdog";
-+              };
-+          };
-+      };
+diff --git a/arch/arm64/boot/dts/rockchip/rk3568-photonicat.dts b/arch/arm64/boot/dts/rockchip/rk3568-photonicat.dts
+index 2fe403cd61cb..597275702408 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3568-photonicat.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3568-photonicat.dts
+@@ -513,6 +513,49 @@ &uart4 {
+ 	dma-names = "tx", "rx";
+ 	status = "okay";
+ 	/* Onboard power management MCU */
++
++	pcat_pmu: mcu {
++		compatible = "ariaboard,photonicat-pmu";
++		current-speed = <115200>;
++		local-address = <1>;
++		remote-address = <1>;
++
++		pcat_pmu_battery: supply-battery {
++			compatible = "ariaboard,photonicat-pmu-supply";
++			label = "battery";
++			monitored-battery = <&battery>;
++			power-supplies = <&pcat_pmu_charger>;
++			type = "battery";
++		};
++
++		pcat_pmu_charger: supply-charger {
++			compatible = "ariaboard,photonicat-pmu-supply";
++			label = "charger";
++			type = "charger";
++		};
++
++		pcat_pmu_hwmon: hwmon {
++			compatible = "ariaboard,photonicat-pmu-hwmon";
++			label = "pcat_board";
++		};
++
++		pcat_pmu_leds_status: leds-status {
++			compatible = "ariaboard,photonicat-pmu-leds";
++			label = "net-status";
++		};
++
++		pcat_pmu_poweroff: poweroff {
++			compatible = "ariaboard,photonicat-pmu-poweroff";
++		};
++
++		pcat_pmu_rtc: rtc {
++			compatible = "ariaboard,photonicat-pmu-rtc";
++		};
++
++		pcat_pmu_watchdog: watchdog {
++			compatible = "ariaboard,photonicat-pmu-watchdog";
++		};
++	};
+ };
+ 
+ &usb_host0_xhci {
 -- 
 2.46.0
 
