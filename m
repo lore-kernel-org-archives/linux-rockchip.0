@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0D42CCE7B04
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7745AE6FE47
 	for <linux-rockchip@archiver.kernel.org>; Sat,  7 Sep 2024 03:09:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,30 +12,30 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=bEqEzQfImG4mZSeDNZzTEjbRNO7hU/Pad2p6TEcjLFc=; b=jj4yNSI7+nKC+M
-	B3kIcjbxmMx+iaEb264YNcvuGko+SwU9Wnk5PwW7V4H2an+Xh9vFkaza8Nh4m6Kj2m8IpDPxET3ia
-	cYnapGKTn1ZgD3xqBRxzvlXK/EuKX1s9uwzP18AQ+pJ+YvzPLKkDCUQqC4xyEPr9aFW/Jx1DPgMsX
-	jVnHwAiu7NR0wCsth9xM84g00UtGPSCMtHLn29rV8FpThzcK6AUzFFw9kAYOOSXhGOtr5Z4/KZuNb
-	ZJB0E8YNtHmPkDZ61Ac0puTtE6APVEeDFvGmrdWShWf7s+9Vn3PnVo6GxAiYSxroHTUMLtloiopqr
-	CYpNBRa7gz6R238YWEHA==;
+	List-Owner; bh=zInPn/Gfgn4m4+01Zz2HWLYHr5v72DMxIXu1hHw436Y=; b=1Xa9beEY5dEJmV
+	YWt06h9ignQHXZUVLTyuIUTpoXqK3vjPcsIl+IRvszGWo/89WYPKewPg88pNOYeuyIBn/NO08gdW2
+	fA0DZ1Q+662CtWJGAugOq/QJxciciILrtLMYY/Le/l1xsnkDCZH5xmqQ7FecFrYEGbT57sylQGUx/
+	5VBXL0DJa3PRoPM7f1ie6fRl8mGLW64d5/45RlFzleLoYtbDmPLWsKG5fsv9T4ABbHuhqEx/pURI5
+	PAxp6IgR3Mjy+mroRiQ3g+treOG6K9P69BKw3KVQmVFZhXAGe6BYNolscbLCr3W1R2uk4Fh3xJ/bF
+	bWqc3o/wLNHmycEfk/cw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1smlpN-0000000EAzo-1JZs;
+	id 1smlpN-0000000EB04-33H0;
 	Sat, 07 Sep 2024 03:09:33 +0000
-Received: from szxga02-in.huawei.com ([45.249.212.188])
+Received: from szxga07-in.huawei.com ([45.249.212.35])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1smlhY-0000000E9UC-2imf;
+	id 1smlhY-0000000E9UG-2wMd;
 	Sat, 07 Sep 2024 03:01:32 +0000
-Received: from mail.maildlp.com (unknown [172.19.88.105])
-	by szxga02-in.huawei.com (SkyGuard) with ESMTP id 4X0yVh19smzpVVL;
-	Sat,  7 Sep 2024 10:59:24 +0800 (CST)
+Received: from mail.maildlp.com (unknown [172.19.88.214])
+	by szxga07-in.huawei.com (SkyGuard) with ESMTP id 4X0yXV32zwz1S9mZ;
+	Sat,  7 Sep 2024 11:00:58 +0800 (CST)
 Received: from kwepemd500012.china.huawei.com (unknown [7.221.188.25])
-	by mail.maildlp.com (Postfix) with ESMTPS id D335E1402C8;
-	Sat,  7 Sep 2024 11:01:20 +0800 (CST)
+	by mail.maildlp.com (Postfix) with ESMTPS id C24471A016C;
+	Sat,  7 Sep 2024 11:01:22 +0800 (CST)
 Received: from huawei.com (10.90.53.73) by kwepemd500012.china.huawei.com
  (7.221.188.25) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1258.34; Sat, 7 Sep
- 2024 11:01:19 +0800
+ 2024 11:01:21 +0800
 From: Li Zetao <lizetao1@huawei.com>
 To: <mchehab@kernel.org>, <davem@davemloft.net>, <edumazet@google.com>,
 	<kuba@kernel.org>, <pabeni@redhat.com>, <wens@csie.org>,
@@ -53,9 +53,9 @@ CC: <linux-media@vger.kernel.org>, <netdev@vger.kernel.org>,
 	<linux-rockchip@lists.infradead.org>,
 	<linux-stm32@st-md-mailman.stormreply.com>,
 	<platform-driver-x86@vger.kernel.org>
-Subject: [PATCH -next v2] platform/olpc: Remove redundant null pointer checks in olpc_ec_setup_debugfs()
-Date: Sat, 7 Sep 2024 11:09:59 +0800
-Message-ID: <20240907031009.3591057-2-lizetao1@huawei.com>
+Subject: [PATCH net-next v2 02/10] net: ethernet: Convert using devm_clk_get_enabled() in emac_probe()
+Date: Sat, 7 Sep 2024 11:10:01 +0800
+Message-ID: <20240907031009.3591057-4-lizetao1@huawei.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20240907031009.3591057-1-lizetao1@huawei.com>
 References: <20240907031009.3591057-1-lizetao1@huawei.com>
@@ -64,9 +64,8 @@ X-Originating-IP: [10.90.53.73]
 X-ClientProxiedBy: dggems701-chm.china.huawei.com (10.3.19.178) To
  kwepemd500012.china.huawei.com (7.221.188.25)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240906_200129_569682_75B104E4 
-X-CRM114-Status: UNSURE (   7.20  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240906_200129_934002_64FABB10 
+X-CRM114-Status: GOOD (  10.94  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,34 +82,65 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Since the debugfs_create_dir() never returns a null pointer, checking
-the return value for a null pointer is redundant. Since
-debugfs_create_file() can deal with a ERR_PTR() style pointer, drop
-the check.
+Use devm_clk_get_enabled() instead of devm_clk_get() +
+clk_prepare_enable(), which can make the clk consistent with the device
+life cycle and reduce the risk of unreleased clk resources. Since the
+device framework has automatically released the clk resource, there is
+no need to execute clk_disable_unprepare(clk) on the error path, drop
+the out_clk_disable_unprepare label, and the original error process can
+changed to the out_dispose_mapping error path.
 
 Signed-off-by: Li Zetao <lizetao1@huawei.com>
 ---
-v1 -> v2:
-v1:
-https://lore.kernel.org/all/20240903143714.2004947-1-lizetao1@huawei.com/
+ drivers/net/ethernet/allwinner/sun4i-emac.c | 13 ++-----------
+ 1 file changed, 2 insertions(+), 11 deletions(-)
 
- drivers/platform/olpc/olpc-ec.c | 3 ---
- 1 file changed, 3 deletions(-)
-
-diff --git a/drivers/platform/olpc/olpc-ec.c b/drivers/platform/olpc/olpc-ec.c
-index 921520475ff6..48e9861bb571 100644
---- a/drivers/platform/olpc/olpc-ec.c
-+++ b/drivers/platform/olpc/olpc-ec.c
-@@ -332,9 +332,6 @@ static struct dentry *olpc_ec_setup_debugfs(void)
- 	struct dentry *dbgfs_dir;
+diff --git a/drivers/net/ethernet/allwinner/sun4i-emac.c b/drivers/net/ethernet/allwinner/sun4i-emac.c
+index d761c08fe5c1..8f42501729b7 100644
+--- a/drivers/net/ethernet/allwinner/sun4i-emac.c
++++ b/drivers/net/ethernet/allwinner/sun4i-emac.c
+@@ -1005,22 +1005,16 @@ static int emac_probe(struct platform_device *pdev)
+ 	if (emac_configure_dma(db))
+ 		netdev_info(ndev, "configure dma failed. disable dma.\n");
  
- 	dbgfs_dir = debugfs_create_dir("olpc-ec", NULL);
--	if (IS_ERR_OR_NULL(dbgfs_dir))
--		return NULL;
+-	db->clk = devm_clk_get(&pdev->dev, NULL);
++	db->clk = devm_clk_get_enabled(&pdev->dev, NULL);
+ 	if (IS_ERR(db->clk)) {
+ 		ret = PTR_ERR(db->clk);
+ 		goto out_dispose_mapping;
+ 	}
+ 
+-	ret = clk_prepare_enable(db->clk);
+-	if (ret) {
+-		dev_err(&pdev->dev, "Error couldn't enable clock (%d)\n", ret);
+-		goto out_dispose_mapping;
+-	}
 -
- 	debugfs_create_file("cmd", 0600, dbgfs_dir, NULL, &ec_dbgfs_ops);
+ 	ret = sunxi_sram_claim(&pdev->dev);
+ 	if (ret) {
+ 		dev_err(&pdev->dev, "Error couldn't map SRAM to device\n");
+-		goto out_clk_disable_unprepare;
++		goto out_dispose_mapping;
+ 	}
  
- 	return dbgfs_dir;
+ 	db->phy_node = of_parse_phandle(np, "phy-handle", 0);
+@@ -1068,8 +1062,6 @@ static int emac_probe(struct platform_device *pdev)
+ 
+ out_release_sram:
+ 	sunxi_sram_release(&pdev->dev);
+-out_clk_disable_unprepare:
+-	clk_disable_unprepare(db->clk);
+ out_dispose_mapping:
+ 	irq_dispose_mapping(ndev->irq);
+ 	dma_release_channel(db->rx_chan);
+@@ -1095,7 +1087,6 @@ static void emac_remove(struct platform_device *pdev)
+ 
+ 	unregister_netdev(ndev);
+ 	sunxi_sram_release(&pdev->dev);
+-	clk_disable_unprepare(db->clk);
+ 	irq_dispose_mapping(ndev->irq);
+ 	iounmap(db->membase);
+ 	free_netdev(ndev);
 -- 
 2.34.1
 
