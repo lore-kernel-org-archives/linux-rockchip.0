@@ -4,42 +4,42 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 88FE5EB64C5
-	for <linux-rockchip@archiver.kernel.org>; Sat,  7 Sep 2024 14:35:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 07FBBEB64CA
+	for <linux-rockchip@archiver.kernel.org>; Sat,  7 Sep 2024 14:47:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=M+HdwGbwRk8tXVarHm0WwLwaCdAtmebsqQP8rG8T8Yg=; b=W7q7fmLAyRwAgb
-	FL1xl2bdjuoD3+pP2j199OKKlEKIsKvBxquLBzKzqrwpj2SGwLjvsd8CDeEvFk6ZHUNKJczcZPrMe
-	Evev6Hng8iFKz8KLbthJE+uAW27cw96+kvS1ljMYv9jsOQBRVBnVajxlA6sxJBjZMBsfi4XEicswy
-	VsfXGUTZPH/Taj5R8KgeLRdrQ2H9Cp1pEtlSWtelYJsv5xH+SE4dljf9BTbOrRiYIRNf2ZMBb0+Hv
-	HdReb6GrnI1GQm//zR1BhqXLRjWl4yi7k1/l4sEBflDKhoCnl5zxuCIQFp/KjOtgQZRB9oSf4Hv46
-	SRYIFSwfTo2nOSWRbpjg==;
+	List-Owner; bh=U4J1hAfhjuzw/PKook5xQUel3Swq5x7fC7MvPOB6qrk=; b=ahNxsW1ErY6UMD
+	0qoI0YOzSSMYFcLlh9d4AEjP38GAHtZE6/oVbllpudatObpiSP4SWLY3vqDrSb38rStGB6Sf8W6fR
+	VBOiFIwWGeTFAq+9EohCE4s4M5lQIk6X447InERYP3Q2rFSfqNyqDO/ZEg9+d0fdpm7V4GI4fAGEZ
+	/MppvqbbVN2VrbiSXZNcg7YQI1V90STu+tTjtg5ui1jCllnax4n53tp0s6h3Kcd9bczPOLrQjZOVj
+	EpUz0bnq8y1pwy2aeh1MWO2zIq1IMG+NGYukl0EANhUnJ6CiPx1gIM2+qOe90sg6DWElnvdMQnWJ9
+	uc0P4w0J3QM70ugNBNfA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1smwWl-0000000F9lV-03XZ;
-	Sat, 07 Sep 2024 14:35:03 +0000
+	id 1smwj9-0000000FAer-4AJD;
+	Sat, 07 Sep 2024 14:47:51 +0000
 Received: from [129.204.178.38] (helo=classfun.cn)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1smwVj-0000000F9e8-3jPG;
-	Sat, 07 Sep 2024 14:34:01 +0000
+	id 1smwi8-0000000FAYV-3k42;
+	Sat, 07 Sep 2024 14:46:51 +0000
 Received: from [192.168.0.160] (unknown [14.155.100.110])
 	(Authenticated sender: bigfoot)
-	by classfun.cn (Postfix) with ESMTPSA id 2278778A01;
-	Sat,  7 Sep 2024 22:33:56 +0800 (CST)
-DKIM-Filter: OpenDKIM Filter v2.11.0 classfun.cn 2278778A01
+	by classfun.cn (Postfix) with ESMTPSA id 0FEC078A04;
+	Sat,  7 Sep 2024 22:46:45 +0800 (CST)
+DKIM-Filter: OpenDKIM Filter v2.11.0 classfun.cn 0FEC078A04
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=classfun.cn;
-	s=default; t=1725719638;
-	bh=gG2BH1+dXG7ZoJOt2ZX2FJLzrZcgshauVLlXVmZq6sM=;
+	s=default; t=1725720405;
+	bh=vEtoINhe3YqLp5wK8FdsELDTQbLLzWqrW7RhTNgkRsE=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=DSNlpm8Vqtpho/RR7/MrKCNIEHFUFwwo/5l+BjIiUEgoS/ohM5XFx/jEygmd6VrWX
-	 Ficq4hrX/KNy045+dpBwYrC5HAtq1+QfDxuRCBmvXQ8b82WTjXTLr797wpeVzIyaVz
-	 0LwzUe5E6XCPOlgoplXM/RpP0R2GK63DfSfLnJsU=
-Message-ID: <43918eda-c4e8-471a-9de4-ea72bb090803@classfun.cn>
-Date: Sat, 7 Sep 2024 22:33:55 +0800
+	b=n8Hp9Z5I/WAxnS8iFA49TGS8ykMLsm9KqxVy18PU2SezXNKHTVWXySMyCtaJ53mg1
+	 1YCUaNGuArthbZ8+SgcaTpf9kuLqLvaNUctnJP4ysI84mZraFdWDO3FuvOCP9fkoH9
+	 xto2kSiaBr1njBrrCmT4EzHp6O1DKqANgjewI5JY=
+Message-ID: <9051dba0-0483-43dc-9e5d-d19500c019b9@classfun.cn>
+Date: Sat, 7 Sep 2024 22:46:29 +0800
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH 1/9] mfd: Add driver for Photonicat power management MCU
@@ -56,15 +56,15 @@ Cc: LKML <linux-kernel@vger.kernel.org>,
  Jean Delvare <jdelvare@suse.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
  Lee Jones <lee@kernel.org>, Pavel Machek <pavel@ucw.cz>,
  Rob Herring <robh@kernel.org>, Sebastian Reichel <sre@kernel.org>,
- Wim Van Sebroeck <wim@linux-watchdog.org>
+ Wim Van Sebroeck <wim@linux-watchdog.org>, Junhao Xie <bigfoot@classfun.cn>
 References: <20240906093630.2428329-2-bigfoot@classfun.cn>
- <de5c9c27-56fa-4163-98e1-9a98400d2408@web.de>
+ <d79dbfae-d50b-45e5-b430-be8106bbb03c@web.de>
 Content-Language: en-US
 From: Junhao Xie <bigfoot@classfun.cn>
-In-Reply-To: <de5c9c27-56fa-4163-98e1-9a98400d2408@web.de>
+In-Reply-To: <d79dbfae-d50b-45e5-b430-be8106bbb03c@web.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240907_073400_105858_4B481B5C 
-X-CRM114-Status: UNSURE (   5.96  )
+X-CRM114-CacheID: sfid-20240907_074649_664833_812A80F4 
+X-CRM114-Status: UNSURE (   8.44  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -82,15 +82,25 @@ Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gMjAyNC85LzcgMTY6NDQsIE1hcmt1cyBFbGZyaW5nIHdyb3RlOgo+IOKApgo+PiArKysgYi9p
-bmNsdWRlL2xpbnV4L21mZC9waG90b25pY2F0LXBtdS5oCj4+IEBAIC0wLDAgKzEsODYgQEAKPiDi
-gKYKPj4gKyNpZm5kZWYgX1BIT1RPTklDQVRfUE1VX0gKPj4gKyNkZWZpbmUgX1BIT1RPTklDQVRf
-UE1VX0gKPiDigKYKPiAKPiBJIHN1Z2dlc3QgdG8gb21pdCBsZWFkaW5nIHVuZGVyc2NvcmVzIGZy
-b20gc3VjaCBpZGVudGlmaWVycy4KPiBodHRwczovL3dpa2kuc2VpLmNtdS5lZHUvY29uZmx1ZW5j
-ZS9kaXNwbGF5L2MvRENMMzctQy4rRG8rbm90K2RlY2xhcmUrb3IrZGVmaW5lK2ErcmVzZXJ2ZWQr
-aWRlbnRpZmllcgo+IAo+IFJlZ2FyZHMsCj4gTWFya3VzCgpUaGFua3MgZm9yIHlvdXIgc3VnZ2Vz
-dGlvbiwgZG9lcyB0aGlzIGxvb2sgYmV0dGVyPwojaWZuZGVmIE1GRF9QSE9UT05JQ0FUX1BNVV9I
-CiNkZWZpbmUgTUZEX1BIT1RPTklDQVRfUE1VX0gKCkJlc3QgcmVnYXJkcywKSnVuaGFvCgpfX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hp
-cCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8v
-bGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+T24gMjAyNC85LzcgMTY6MTAsIE1hcmt1cyBFbGZyaW5nIHdyb3RlOgo+IOKApgo+PiArKysgYi9k
+cml2ZXJzL21mZC9waG90b25pY2F0LXBtdS5jCj4+IEBAIC0wLDAgKzEsNTAxIEBACj4g4oCmCj4+
+ICtpbnQgcGNhdF9wbXVfZXhlY3V0ZShzdHJ1Y3QgcGNhdF9yZXF1ZXN0ICpyZXF1ZXN0KQo+PiAr
+ewo+IOKApgo+IAo+IFVuZGVyIHdoaWNoIGNpcmN1bXN0YW5jZXMgd291bGQgeW91IGJlY29tZSBp
+bnRlcmVzdGVkIHRvIGFwcGx5IHN0YXRlbWVudHMKPiBsaWtlIHRoZSBmb2xsb3dpbmc/Cj4gCj4g
+Cj4+ICsJbXV0ZXhfbG9jaygmcG11LT5yZXBseV9sb2NrKTsKPj4gKwlpZiAocmVxdWVzdC0+ZnJh
+bWVfaWQgPT0gMCkKPj4gKwkJcmVxdWVzdC0+ZnJhbWVfaWQgPSBhdG9taWNfaW5jX3JldHVybigm
+cG11LT5mcmFtZSk7Cj4+ICsJcG11LT5yZXBseSA9IHJlcXVlc3Q7Cj4+ICsJbXV0ZXhfdW5sb2Nr
+KCZwbXUtPnJlcGx5X2xvY2spOwo+IOKApgo+IAo+IEEpIGd1YXJkKG11dGV4KSgmcG11LT5yZXBs
+eV9sb2NrKTsKPiAgICBodHRwczovL2VsaXhpci5ib290bGluLmNvbS9saW51eC92Ni4xMS1yYzYv
+c291cmNlL2luY2x1ZGUvbGludXgvbXV0ZXguaCNMMTk2Cj4gCj4gCj4gCj4+ICsJCXNwaW5fbG9j
+a19pcnFzYXZlKCZwbXUtPmJ1c19sb2NrLCBmbGFncyk7Cj4+ICsJCXJldCA9IHBjYXRfcG11X3Jh
+d193cml0ZShwbXUsIHJlcXVlc3QtPmZyYW1lX2lkLCByZXEtPmNtZCwKPj4gKwkJCQkJIHRydWUs
+IHJlcS0+ZGF0YSwgcmVxLT5zaXplKTsKPj4gKwkJc3Bpbl91bmxvY2tfaXJxcmVzdG9yZSgmcG11
+LT5idXNfbG9jaywgZmxhZ3MpOwo+IOKApgo+IAo+IEIpIGd1YXJkKHNwaW5sb2NrX2lycXNhdmUp
+KCZwbXUtPmJ1c19sb2NrKTsKPiAgICBodHRwczovL2VsaXhpci5ib290bGluLmNvbS9saW51eC92
+Ni4xMS1yYzYvc291cmNlL2luY2x1ZGUvbGludXgvc3BpbmxvY2suaCNMNTcyCj4gCj4gCj4gUmVn
+YXJkcywKPiBNYXJrdXMKClRoYW5rcyBmb3IgeW91ciBzdWdnZXN0aW9ucywgSSB3aWxsIHRyeSB0
+aGVzZSBzdGF0ZW1lbnRzLgoKQmVzdCByZWdhcmRzLApKdW5oYW8KCl9fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlz
+dApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRl
+YWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
