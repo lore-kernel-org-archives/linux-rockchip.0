@@ -4,38 +4,38 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1BE58CE7B04
-	for <linux-rockchip@archiver.kernel.org>; Sat,  7 Sep 2024 03:10:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A6B1CE6FE47
+	for <linux-rockchip@archiver.kernel.org>; Sat,  7 Sep 2024 03:11:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=le8HlbDqus96LbVs1H8Weqg7ERCtCK7dLI6xq7W95mg=; b=CmtGVbJpfuNhta
-	JodNUf66MpjTgP7ocR4CLSbT1eMwpqxrNjUs8T18LcBMibVOeMpiYda1mQwJDX1gZcOjdnB8isVc1
-	UqLwvjk9JmIGD0FhF45mnMReE1OND9TqbdpVw13Z+l8yuMAyqwhS6PDcxeYiuvWyPTPUQsEQB+Xos
-	dmGUML70NLykv/TUzyWUFC/CWBPybG4RVxwbGtO3EnS1Ycj0IwZ9gHDqo/e9L4GVHAh33eq3JgvLC
-	hq6uAZYcBSmr1N22ZaeBNPsutGl/giMFDYVV75sTMnFBwHsddpPUWfVLJTEvSgp/uW01aCHkdn/yw
-	KAXXnXkqyiLCBxFehfOA==;
+	List-Owner; bh=Qa7MZUL8ySZWkSsAdPMYJlbAd0pA1aapavxFSHad/Js=; b=W0MKikkDNtCiNs
+	z8jy8kvbIred1lqhtPUkOXLeOjTgwXUeA1J1x+50bmlfpcZPEnEfRHRMDEhi9RHbOVzNVilgAyfA5
+	Jddzkjsi9aruEthyraxDpshcmrtswtrV/zhUOWNgicUKT84sCTGnN6WWJC+xMSFvfU1BPJGMnPR5Q
+	/o4gVq+vEy9jRv7YIrU/PJbz4irzWW78Cidie8vlEC2wQywtWmllhxf0sx6h7FqdHF9Gm0cSdQiMZ
+	ujEQCjNv9buRPg4JCyJDKrfiQTQeBraUTuC/QadZ1t2oy13rvloKJgK0d/evQA0hEJJgEGfQVjIxq
+	OK5bhSjKK7iq1tA28iCA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1smlqL-0000000EBB4-13cT;
-	Sat, 07 Sep 2024 03:10:33 +0000
-Received: from szxga02-in.huawei.com ([45.249.212.188])
+	id 1smlrT-0000000EBgP-1Jmv;
+	Sat, 07 Sep 2024 03:11:43 +0000
+Received: from szxga03-in.huawei.com ([45.249.212.189])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1smlha-0000000E9Uy-2hIt;
-	Sat, 07 Sep 2024 03:01:34 +0000
-Received: from mail.maildlp.com (unknown [172.19.163.252])
-	by szxga02-in.huawei.com (SkyGuard) with ESMTP id 4X0yVp5msjzpVXD;
-	Sat,  7 Sep 2024 10:59:30 +0800 (CST)
-Received: from kwepemd500012.china.huawei.com (unknown [7.221.188.25])
-	by mail.maildlp.com (Postfix) with ESMTPS id 7BCF51800CF;
+	id 1smlhc-0000000E9XB-04o5;
+	Sat, 07 Sep 2024 03:01:36 +0000
+Received: from mail.maildlp.com (unknown [172.19.162.254])
+	by szxga03-in.huawei.com (SkyGuard) with ESMTP id 4X0yY400BHz69LM;
 	Sat,  7 Sep 2024 11:01:27 +0800 (CST)
+Received: from kwepemd500012.china.huawei.com (unknown [7.221.188.25])
+	by mail.maildlp.com (Postfix) with ESMTPS id 6B0421800F2;
+	Sat,  7 Sep 2024 11:01:29 +0800 (CST)
 Received: from huawei.com (10.90.53.73) by kwepemd500012.china.huawei.com
  (7.221.188.25) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1258.34; Sat, 7 Sep
- 2024 11:01:26 +0800
+ 2024 11:01:28 +0800
 From: Li Zetao <lizetao1@huawei.com>
 To: <mchehab@kernel.org>, <davem@davemloft.net>, <edumazet@google.com>,
 	<kuba@kernel.org>, <pabeni@redhat.com>, <wens@csie.org>,
@@ -53,9 +53,9 @@ CC: <linux-media@vger.kernel.org>, <netdev@vger.kernel.org>,
 	<linux-rockchip@lists.infradead.org>,
 	<linux-stm32@st-md-mailman.stormreply.com>,
 	<platform-driver-x86@vger.kernel.org>
-Subject: [PATCH net-next v2 07/10] net: lantiq_xrx200: Convert using devm_clk_get_enabled() in xrx200_probe()
-Date: Sat, 7 Sep 2024 11:10:06 +0800
-Message-ID: <20240907031009.3591057-9-lizetao1@huawei.com>
+Subject: [PATCH net-next v2 09/10] net: ethernet: sunplus: Convert using devm_clk_get_enabled() in spl2sw_probe()
+Date: Sat, 7 Sep 2024 11:10:08 +0800
+Message-ID: <20240907031009.3591057-11-lizetao1@huawei.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20240907031009.3591057-1-lizetao1@huawei.com>
 References: <20240907031009.3591057-1-lizetao1@huawei.com>
@@ -64,8 +64,8 @@ X-Originating-IP: [10.90.53.73]
 X-ClientProxiedBy: dggems701-chm.china.huawei.com (10.3.19.178) To
  kwepemd500012.china.huawei.com (7.221.188.25)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240906_200131_372803_B29A2B24 
-X-CRM114-Status: GOOD (  12.46  )
+X-CRM114-CacheID: sfid-20240906_200132_728603_155CB15C 
+X-CRM114-Status: GOOD (  14.32  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,66 +87,120 @@ clk_prepare_enable(), which can make the clk consistent with the device
 life cycle and reduce the risk of unreleased clk resources. Since the
 device framework has automatically released the clk resource, there is
 no need to execute clk_disable_unprepare(clk) on the error path, drop
-the err_unprepare_clk label, and the original error process can change to
-the err_uninit_dma error path. Some comments have also been adjusted.
+the out_clk_disable label, and the original error process can return
+directly. Some comments have also been adjusted.
+
+After this modification , it is no longer necessary to use clk, so delete
+the clk member of the spl2sw_common structure.
 
 Signed-off-by: Li Zetao <lizetao1@huawei.com>
 ---
- drivers/net/ethernet/lantiq_xrx200.c | 17 +++--------------
- 1 file changed, 3 insertions(+), 14 deletions(-)
+v1 -> v2: Delete the clk member of the spl2sw_common structure
+v1:
+https://lore.kernel.org/all/20240831021334.1907921-10-lizetao1@huawei.com/
 
-diff --git a/drivers/net/ethernet/lantiq_xrx200.c b/drivers/net/ethernet/lantiq_xrx200.c
-index 07904a528f21..976748551643 100644
---- a/drivers/net/ethernet/lantiq_xrx200.c
-+++ b/drivers/net/ethernet/lantiq_xrx200.c
-@@ -589,8 +589,8 @@ static int xrx200_probe(struct platform_device *pdev)
- 	if (priv->chan_tx.dma.irq < 0)
- 		return -ENOENT;
+ drivers/net/ethernet/sunplus/spl2sw_define.h |  1 -
+ drivers/net/ethernet/sunplus/spl2sw_driver.c | 25 +++++++-------------
+ 2 files changed, 9 insertions(+), 17 deletions(-)
+
+diff --git a/drivers/net/ethernet/sunplus/spl2sw_define.h b/drivers/net/ethernet/sunplus/spl2sw_define.h
+index acc6c1228ebc..6318eccc6c4e 100644
+--- a/drivers/net/ethernet/sunplus/spl2sw_define.h
++++ b/drivers/net/ethernet/sunplus/spl2sw_define.h
+@@ -224,7 +224,6 @@ struct spl2sw_common {
  
--	/* get the clock */
--	priv->clk = devm_clk_get(dev, NULL);
-+	/* get the clock and enable clock gate */
-+	priv->clk = devm_clk_get_enabled(dev, NULL);
- 	if (IS_ERR(priv->clk)) {
- 		dev_err(dev, "failed to get clock\n");
- 		return PTR_ERR(priv->clk);
-@@ -605,11 +605,6 @@ static int xrx200_probe(struct platform_device *pdev)
- 	if (err)
- 		return err;
+ 	struct platform_device *pdev;
+ 	struct reset_control *rstc;
+-	struct clk *clk;
  
--	/* enable clock gate */
--	err = clk_prepare_enable(priv->clk);
--	if (err)
--		goto err_uninit_dma;
--
- 	/* set IPG to 12 */
- 	xrx200_pmac_mask(priv, PMAC_RX_IPG_MASK, 0xb, PMAC_RX_IPG);
+ 	void *desc_base;
+ 	dma_addr_t desc_dma;
+diff --git a/drivers/net/ethernet/sunplus/spl2sw_driver.c b/drivers/net/ethernet/sunplus/spl2sw_driver.c
+index 391a1bc7f446..887da05bc204 100644
+--- a/drivers/net/ethernet/sunplus/spl2sw_driver.c
++++ b/drivers/net/ethernet/sunplus/spl2sw_driver.c
+@@ -327,6 +327,7 @@ static int spl2sw_probe(struct platform_device *pdev)
+ 	struct net_device *ndev;
+ 	struct spl2sw_mac *mac;
+ 	u8 mac_addr[ETH_ALEN];
++	struct clk *clk;
+ 	int irq, i, ret;
  
-@@ -628,13 +623,10 @@ static int xrx200_probe(struct platform_device *pdev)
+ 	if (platform_get_drvdata(pdev))
+@@ -355,12 +356,12 @@ static int spl2sw_probe(struct platform_device *pdev)
+ 		return ret;
+ 	irq = ret;
  
- 	err = register_netdev(net_dev);
- 	if (err)
--		goto err_unprepare_clk;
-+		goto err_uninit_dma;
+-	/* Get clock controller. */
+-	comm->clk = devm_clk_get(&pdev->dev, NULL);
+-	if (IS_ERR(comm->clk)) {
+-		dev_err_probe(&pdev->dev, PTR_ERR(comm->clk),
++	/* Get and enable clock controller. */
++	clk = devm_clk_get_enabled(&pdev->dev, NULL);
++	if (IS_ERR(clk)) {
++		dev_err_probe(&pdev->dev, PTR_ERR(clk),
+ 			      "Failed to retrieve clock controller!\n");
+-		return PTR_ERR(comm->clk);
++		return PTR_ERR(clk);
+ 	}
  
- 	return 0;
+ 	/* Get reset controller. */
+@@ -371,10 +372,6 @@ static int spl2sw_probe(struct platform_device *pdev)
+ 		return PTR_ERR(comm->rstc);
+ 	}
  
--err_unprepare_clk:
--	clk_disable_unprepare(priv->clk);
--
- err_uninit_dma:
- 	xrx200_hw_cleanup(priv);
+-	/* Enable clock. */
+-	ret = clk_prepare_enable(comm->clk);
+-	if (ret)
+-		return ret;
+ 	udelay(1);
  
-@@ -654,9 +646,6 @@ static void xrx200_remove(struct platform_device *pdev)
- 	/* remove the actual device */
- 	unregister_netdev(net_dev);
+ 	/* Reset MAC */
+@@ -388,7 +385,7 @@ static int spl2sw_probe(struct platform_device *pdev)
+ 			       dev_name(&pdev->dev), comm);
+ 	if (ret) {
+ 		dev_err(&pdev->dev, "Failed to request irq #%d!\n", irq);
+-		goto out_clk_disable;
++		return ret;
+ 	}
  
--	/* release the clock */
--	clk_disable_unprepare(priv->clk);
--
- 	/* shut down hardware */
- 	xrx200_hw_cleanup(priv);
+ 	/* Initialize TX and RX descriptors. */
+@@ -396,7 +393,7 @@ static int spl2sw_probe(struct platform_device *pdev)
+ 	if (ret) {
+ 		dev_err(&pdev->dev, "Fail to initialize mac descriptors!\n");
+ 		spl2sw_descs_free(comm);
+-		goto out_clk_disable;
++		return ret;
+ 	}
+ 
+ 	/* Initialize MAC. */
+@@ -406,7 +403,7 @@ static int spl2sw_probe(struct platform_device *pdev)
+ 	ret = spl2sw_mdio_init(comm);
+ 	if (ret) {
+ 		dev_err(&pdev->dev, "Failed to initialize mdio bus!\n");
+-		goto out_clk_disable;
++		return ret;
+ 	}
+ 
+ 	/* Get child node ethernet-ports. */
+@@ -506,8 +503,6 @@ static int spl2sw_probe(struct platform_device *pdev)
+ out_free_mdio:
+ 	spl2sw_mdio_remove(comm);
+ 
+-out_clk_disable:
+-	clk_disable_unprepare(comm->clk);
+ 	return ret;
  }
+ 
+@@ -536,8 +531,6 @@ static void spl2sw_remove(struct platform_device *pdev)
+ 	netif_napi_del(&comm->tx_napi);
+ 
+ 	spl2sw_mdio_remove(comm);
+-
+-	clk_disable_unprepare(comm->clk);
+ }
+ 
+ static const struct of_device_id spl2sw_of_match[] = {
 -- 
 2.34.1
 
