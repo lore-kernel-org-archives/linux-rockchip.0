@@ -4,38 +4,38 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E6B71CD4846
-	for <linux-rockchip@archiver.kernel.org>; Sat,  7 Sep 2024 03:25:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 56B0CCD4846
+	for <linux-rockchip@archiver.kernel.org>; Sat,  7 Sep 2024 03:26:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Qa7MZUL8ySZWkSsAdPMYJlbAd0pA1aapavxFSHad/Js=; b=Ak8vP66alv4FKu
-	7Cg48445w7ccoiCjsi17BxSLvW1/TdD6DjrEfFQ4yshtzLyXIVEylXdhtZoD4EfYXsnEp0DDFJVki
-	JqtJSrNElTE4BeiZCj5/fJnwFi6hq15RSMjFAiw3haRo9KWZwRxa6XgkHI4JKzWVqK6amRWQkFJCp
-	7hOC+H7XQ4+fvtp5fuN6NwdtgeamRBS5jVnQPMQISJR6WEZHwywVYndK7uIc13GiY3GUuB6nxDao7
-	Ck42Vgf+Ub2D5dHkh7s4O2FCA6bmHpE6SkLsw0AqNii/H6jXWiFnJgOeRWZCsqGPLxDf2I3pgVMfw
-	d4CVVPLJ1DKFh1pJVRMQ==;
+	List-Owner; bh=fv+rmCK3O7FOUSBXNGNQAD9N9zvK5u5MFpSuJ3UPCTI=; b=mTTPa2Mtl0ye0P
+	1gYyXr1lmQshitM8BZk3CFnG4CuCk47SGKVf1jzpZ+QO3C9wI8EFkrWkX25XlyZMGTBiiU1OtJIwg
+	S1Wrl/Xuct3It/AyqkPhHAXhx4RYZCxH9n/wV9/IMdgmqlvJA+AABdZRKUEi7NDKWucNlUmBRV7A4
+	6wqT5RS4s2oiz7mNsOLJslj3siUYUrRG1M+of6K7KZuyycVK/xKJMO3kwfVzQhT5Jkoxhb23MCCob
+	xOTslbx/aJSxKeIZWhF6PGYbEou7gyyjcqjyxh7HuHuBhgRm1SWHX71kxqFXaqIYLva+jf/pEs12u
+	Q78v2cF8TlA0mn6nK29A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1smm56-0000000EENe-0nOv;
-	Sat, 07 Sep 2024 03:25:48 +0000
-Received: from szxga03-in.huawei.com ([45.249.212.189])
+	id 1smm63-0000000EEY2-0xIB;
+	Sat, 07 Sep 2024 03:26:47 +0000
+Received: from szxga08-in.huawei.com ([45.249.212.255])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1smlqc-0000000EBKr-387m;
-	Sat, 07 Sep 2024 03:10:54 +0000
-Received: from mail.maildlp.com (unknown [172.19.163.252])
-	by szxga03-in.huawei.com (SkyGuard) with ESMTP id 4X0yln13H6z69WR;
-	Sat,  7 Sep 2024 11:10:45 +0800 (CST)
+	id 1smlqe-0000000EBKU-3f3q;
+	Sat, 07 Sep 2024 03:10:56 +0000
+Received: from mail.maildlp.com (unknown [172.19.88.105])
+	by szxga08-in.huawei.com (SkyGuard) with ESMTP id 4X0ykY4WdMz1BHxN;
+	Sat,  7 Sep 2024 11:09:41 +0800 (CST)
 Received: from kwepemd500012.china.huawei.com (unknown [7.221.188.25])
-	by mail.maildlp.com (Postfix) with ESMTPS id 90FCB1800CF;
-	Sat,  7 Sep 2024 11:10:46 +0800 (CST)
+	by mail.maildlp.com (Postfix) with ESMTPS id 892C11402C8;
+	Sat,  7 Sep 2024 11:10:42 +0800 (CST)
 Received: from huawei.com (10.90.53.73) by kwepemd500012.china.huawei.com
  (7.221.188.25) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1258.34; Sat, 7 Sep
- 2024 11:10:45 +0800
+ 2024 11:10:41 +0800
 From: Li Zetao <lizetao1@huawei.com>
 To: <mchehab@kernel.org>, <florian.fainelli@broadcom.com>, <andrew@lunn.ch>,
 	<olteanv@gmail.com>, <davem@davemloft.net>, <edumazet@google.com>,
@@ -54,9 +54,9 @@ CC: <linux-media@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
 	<linux-sunxi@lists.linux.dev>, <linux-rockchip@lists.infradead.org>,
 	<linux-stm32@st-md-mailman.stormreply.com>,
 	<platform-driver-x86@vger.kernel.org>
-Subject: [PATCH net-next v2 09/10] net: ethernet: sunplus: Convert using devm_clk_get_enabled() in spl2sw_probe()
-Date: Sat, 7 Sep 2024 11:19:25 +0800
-Message-ID: <20240907031926.3591353-10-lizetao1@huawei.com>
+Subject: [PATCH net-next v2 05/10] net: ftgmac100: Convert using devm_clk_get_enabled() in ftgmac100_setup_clk()
+Date: Sat, 7 Sep 2024 11:19:21 +0800
+Message-ID: <20240907031926.3591353-6-lizetao1@huawei.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20240907031926.3591353-1-lizetao1@huawei.com>
 References: <20240907031926.3591353-1-lizetao1@huawei.com>
@@ -65,7 +65,7 @@ X-Originating-IP: [10.90.53.73]
 X-ClientProxiedBy: dggems702-chm.china.huawei.com (10.3.19.179) To
  kwepemd500012.china.huawei.com (7.221.188.25)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240906_201051_551988_1EAF62C8 
+X-CRM114-CacheID: sfid-20240906_201054_632285_7EF46286 
 X-CRM114-Status: GOOD (  14.52  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -88,120 +88,93 @@ clk_prepare_enable(), which can make the clk consistent with the device
 life cycle and reduce the risk of unreleased clk resources. Since the
 device framework has automatically released the clk resource, there is
 no need to execute clk_disable_unprepare(clk) on the error path, drop
-the out_clk_disable label, and the original error process can return
-directly. Some comments have also been adjusted.
+the cleanup_clk label, and the original error process can return directly.
 
-After this modification , it is no longer necessary to use clk, so delete
-the clk member of the spl2sw_common structure.
+It turns out that checking the return value of clk_prepare_enable is a bit
+counter-intuitive. Here use PTR_ERR_OR_ZERO to make it more intuitive.
 
 Signed-off-by: Li Zetao <lizetao1@huawei.com>
 ---
-v1 -> v2: Delete the clk member of the spl2sw_common structure
+v1 -> v2: Optimize return value checking and add commit information for easy
+understanding
 v1:
-https://lore.kernel.org/all/20240831021334.1907921-10-lizetao1@huawei.com/
+https://lore.kernel.org/all/20240831021334.1907921-6-lizetao1@huawei.com/
 
- drivers/net/ethernet/sunplus/spl2sw_define.h |  1 -
- drivers/net/ethernet/sunplus/spl2sw_driver.c | 25 +++++++-------------
- 2 files changed, 9 insertions(+), 17 deletions(-)
+ drivers/net/ethernet/faraday/ftgmac100.c | 26 +++++-------------------
+ 1 file changed, 5 insertions(+), 21 deletions(-)
 
-diff --git a/drivers/net/ethernet/sunplus/spl2sw_define.h b/drivers/net/ethernet/sunplus/spl2sw_define.h
-index acc6c1228ebc..6318eccc6c4e 100644
---- a/drivers/net/ethernet/sunplus/spl2sw_define.h
-+++ b/drivers/net/ethernet/sunplus/spl2sw_define.h
-@@ -224,7 +224,6 @@ struct spl2sw_common {
+diff --git a/drivers/net/ethernet/faraday/ftgmac100.c b/drivers/net/ethernet/faraday/ftgmac100.c
+index f3cc14cc757d..f2911507d7b8 100644
+--- a/drivers/net/ethernet/faraday/ftgmac100.c
++++ b/drivers/net/ethernet/faraday/ftgmac100.c
+@@ -1767,13 +1767,10 @@ static int ftgmac100_setup_clk(struct ftgmac100 *priv)
+ 	struct clk *clk;
+ 	int rc;
  
- 	struct platform_device *pdev;
- 	struct reset_control *rstc;
--	struct clk *clk;
+-	clk = devm_clk_get(priv->dev, NULL /* MACCLK */);
++	clk = devm_clk_get_enabled(priv->dev, NULL /* MACCLK */);
+ 	if (IS_ERR(clk))
+ 		return PTR_ERR(clk);
+ 	priv->clk = clk;
+-	rc = clk_prepare_enable(priv->clk);
+-	if (rc)
+-		return rc;
  
- 	void *desc_base;
- 	dma_addr_t desc_dma;
-diff --git a/drivers/net/ethernet/sunplus/spl2sw_driver.c b/drivers/net/ethernet/sunplus/spl2sw_driver.c
-index 391a1bc7f446..887da05bc204 100644
---- a/drivers/net/ethernet/sunplus/spl2sw_driver.c
-+++ b/drivers/net/ethernet/sunplus/spl2sw_driver.c
-@@ -327,6 +327,7 @@ static int spl2sw_probe(struct platform_device *pdev)
- 	struct net_device *ndev;
- 	struct spl2sw_mac *mac;
- 	u8 mac_addr[ETH_ALEN];
-+	struct clk *clk;
- 	int irq, i, ret;
+ 	/* Aspeed specifies a 100MHz clock is required for up to
+ 	 * 1000Mbit link speeds. As NCSI is limited to 100Mbit, 25MHz
+@@ -1782,21 +1779,14 @@ static int ftgmac100_setup_clk(struct ftgmac100 *priv)
+ 	rc = clk_set_rate(priv->clk, priv->use_ncsi ? FTGMAC_25MHZ :
+ 			  FTGMAC_100MHZ);
+ 	if (rc)
+-		goto cleanup_clk;
++		return rc;
  
- 	if (platform_get_drvdata(pdev))
-@@ -355,12 +356,12 @@ static int spl2sw_probe(struct platform_device *pdev)
- 		return ret;
- 	irq = ret;
- 
--	/* Get clock controller. */
--	comm->clk = devm_clk_get(&pdev->dev, NULL);
--	if (IS_ERR(comm->clk)) {
--		dev_err_probe(&pdev->dev, PTR_ERR(comm->clk),
-+	/* Get and enable clock controller. */
-+	clk = devm_clk_get_enabled(&pdev->dev, NULL);
-+	if (IS_ERR(clk)) {
-+		dev_err_probe(&pdev->dev, PTR_ERR(clk),
- 			      "Failed to retrieve clock controller!\n");
--		return PTR_ERR(comm->clk);
-+		return PTR_ERR(clk);
- 	}
- 
- 	/* Get reset controller. */
-@@ -371,10 +372,6 @@ static int spl2sw_probe(struct platform_device *pdev)
- 		return PTR_ERR(comm->rstc);
- 	}
- 
--	/* Enable clock. */
--	ret = clk_prepare_enable(comm->clk);
--	if (ret)
--		return ret;
- 	udelay(1);
- 
- 	/* Reset MAC */
-@@ -388,7 +385,7 @@ static int spl2sw_probe(struct platform_device *pdev)
- 			       dev_name(&pdev->dev), comm);
- 	if (ret) {
- 		dev_err(&pdev->dev, "Failed to request irq #%d!\n", irq);
--		goto out_clk_disable;
-+		return ret;
- 	}
- 
- 	/* Initialize TX and RX descriptors. */
-@@ -396,7 +393,7 @@ static int spl2sw_probe(struct platform_device *pdev)
- 	if (ret) {
- 		dev_err(&pdev->dev, "Fail to initialize mac descriptors!\n");
- 		spl2sw_descs_free(comm);
--		goto out_clk_disable;
-+		return ret;
- 	}
- 
- 	/* Initialize MAC. */
-@@ -406,7 +403,7 @@ static int spl2sw_probe(struct platform_device *pdev)
- 	ret = spl2sw_mdio_init(comm);
- 	if (ret) {
- 		dev_err(&pdev->dev, "Failed to initialize mdio bus!\n");
--		goto out_clk_disable;
-+		return ret;
- 	}
- 
- 	/* Get child node ethernet-ports. */
-@@ -506,8 +503,6 @@ static int spl2sw_probe(struct platform_device *pdev)
- out_free_mdio:
- 	spl2sw_mdio_remove(comm);
- 
--out_clk_disable:
--	clk_disable_unprepare(comm->clk);
- 	return ret;
- }
- 
-@@ -536,8 +531,6 @@ static void spl2sw_remove(struct platform_device *pdev)
- 	netif_napi_del(&comm->tx_napi);
- 
- 	spl2sw_mdio_remove(comm);
+ 	/* RCLK is for RMII, typically used for NCSI. Optional because it's not
+ 	 * necessary if it's the AST2400 MAC, or the MAC is configured for
+ 	 * RGMII, or the controller is not an ASPEED-based controller.
+ 	 */
+-	priv->rclk = devm_clk_get_optional(priv->dev, "RCLK");
+-	rc = clk_prepare_enable(priv->rclk);
+-	if (!rc)
+-		return 0;
 -
--	clk_disable_unprepare(comm->clk);
+-cleanup_clk:
+-	clk_disable_unprepare(priv->clk);
+-
+-	return rc;
++	priv->rclk = devm_clk_get_optional_enabled(priv->dev, "RCLK");
++	return PTR_ERR_OR_ZERO(priv->rclk);
  }
  
- static const struct of_device_id spl2sw_of_match[] = {
+ static bool ftgmac100_has_child_node(struct device_node *np, const char *name)
+@@ -2020,16 +2010,13 @@ static int ftgmac100_probe(struct platform_device *pdev)
+ 	err = register_netdev(netdev);
+ 	if (err) {
+ 		dev_err(&pdev->dev, "Failed to register netdev\n");
+-		goto err_register_netdev;
++		goto err_phy_connect;
+ 	}
+ 
+ 	netdev_info(netdev, "irq %d, mapped at %p\n", netdev->irq, priv->base);
+ 
+ 	return 0;
+ 
+-err_register_netdev:
+-	clk_disable_unprepare(priv->rclk);
+-	clk_disable_unprepare(priv->clk);
+ err_phy_connect:
+ 	ftgmac100_phy_disconnect(netdev);
+ err_ncsi_dev:
+@@ -2058,9 +2045,6 @@ static void ftgmac100_remove(struct platform_device *pdev)
+ 		ncsi_unregister_dev(priv->ndev);
+ 	unregister_netdev(netdev);
+ 
+-	clk_disable_unprepare(priv->rclk);
+-	clk_disable_unprepare(priv->clk);
+-
+ 	/* There's a small chance the reset task will have been re-queued,
+ 	 * during stop, make sure it's gone before we free the structure.
+ 	 */
 -- 
 2.34.1
 
