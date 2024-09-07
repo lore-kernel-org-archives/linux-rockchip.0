@@ -4,38 +4,38 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B2BEBE6FE47
-	for <linux-rockchip@archiver.kernel.org>; Sat,  7 Sep 2024 03:23:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 688D9CD4846
+	for <linux-rockchip@archiver.kernel.org>; Sat,  7 Sep 2024 03:24:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=le8HlbDqus96LbVs1H8Weqg7ERCtCK7dLI6xq7W95mg=; b=nVdkGIULbm9nWb
-	hzobytiavJGrqdOK7qBoD05eWyVEAfDfKGmtlUJp2+SvaomG3VnYhOug287Pvu2UauSsUet+fZ8Li
-	eGJLU4aoIsJLmrLZ1Fm+ClJbnbb/NhtYGcFirvIT0PwO/sH6uizEEogvbmB9nVpE18AsaaG2uYBn1
-	AWOv4Oi7GYcBDMTl7ybyAmrustOptv7uwnr5AQ9gkWzPhyizefjDErKHYxed/krJ7+iiO1QEz/+Pi
-	L1kHhe773yO1dF4ZhiFbwdQxCAA6zOSmVpbgUa2vCupBZzUzHSs8ivPbsjbqqQYWdpOAUvRvGohd4
-	LXtoKiZI0jOGjunhQoaA==;
+	List-Owner; bh=eUxNM0LcJuym0Han3qJYru+hZqTWz7DdcNIaBaDGugw=; b=nSQ4hv0A4H+PyO
+	eRH244fepdnlso2cda9YPCwdxOUDaK3ZvLRLYqEl3WoPb2EhSVy/Icxv3ZllVGJvsCGQlZ1Enjqpa
+	hCH8kGXRytNHY8PwMg+e91sDjuz21lzqrhn1kg+C1uzrWTJoUE+YuVrM8fGgpDAmgbWFK+7iKH466
+	dvk9nHLz2o2V94Y9MBQOlElSsTcQS7SKNaUk9Vb1KJBeD8Bf7AEQvLPn3WUYIFjxMHe42wpiX6q28
+	KUZAmJpp31XXeKIjEJBuVdMQiKehKOSED7Pj7EPR0Be5pk+EOPHpWSNPpJC/VdcT1Jn5/3+1IiYOM
+	liLJucmCdIfwMu443Wng==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1smm3B-0000000EE5F-1hiJ;
-	Sat, 07 Sep 2024 03:23:49 +0000
-Received: from szxga05-in.huawei.com ([45.249.212.191])
+	id 1smm49-0000000EEFL-1DsC;
+	Sat, 07 Sep 2024 03:24:49 +0000
+Received: from szxga06-in.huawei.com ([45.249.212.32])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1smlqa-0000000EBIj-3dT3;
+	id 1smlqc-0000000EBKs-0Gr0;
 	Sat, 07 Sep 2024 03:10:53 +0000
-Received: from mail.maildlp.com (unknown [172.19.163.44])
-	by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4X0ylK04f0z1j80G;
-	Sat,  7 Sep 2024 11:10:21 +0800 (CST)
+Received: from mail.maildlp.com (unknown [172.19.88.214])
+	by szxga06-in.huawei.com (SkyGuard) with ESMTP id 4X0yjT4WHVz1xwt7;
+	Sat,  7 Sep 2024 11:08:45 +0800 (CST)
 Received: from kwepemd500012.china.huawei.com (unknown [7.221.188.25])
-	by mail.maildlp.com (Postfix) with ESMTPS id 96AEE14011F;
-	Sat,  7 Sep 2024 11:10:44 +0800 (CST)
+	by mail.maildlp.com (Postfix) with ESMTPS id 9151D1A016C;
+	Sat,  7 Sep 2024 11:10:47 +0800 (CST)
 Received: from huawei.com (10.90.53.73) by kwepemd500012.china.huawei.com
  (7.221.188.25) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1258.34; Sat, 7 Sep
- 2024 11:10:43 +0800
+ 2024 11:10:46 +0800
 From: Li Zetao <lizetao1@huawei.com>
 To: <mchehab@kernel.org>, <florian.fainelli@broadcom.com>, <andrew@lunn.ch>,
 	<olteanv@gmail.com>, <davem@davemloft.net>, <edumazet@google.com>,
@@ -54,9 +54,9 @@ CC: <linux-media@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
 	<linux-sunxi@lists.linux.dev>, <linux-rockchip@lists.infradead.org>,
 	<linux-stm32@st-md-mailman.stormreply.com>,
 	<platform-driver-x86@vger.kernel.org>
-Subject: [PATCH net-next v2 07/10] net: lantiq_xrx200: Convert using devm_clk_get_enabled() in xrx200_probe()
-Date: Sat, 7 Sep 2024 11:19:23 +0800
-Message-ID: <20240907031926.3591353-8-lizetao1@huawei.com>
+Subject: [PATCH net-next v2 10/10] net: xilinx: axienet: Convert using devm_clk_get_optional_enabled() in axienet_probe()
+Date: Sat, 7 Sep 2024 11:19:26 +0800
+Message-ID: <20240907031926.3591353-11-lizetao1@huawei.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20240907031926.3591353-1-lizetao1@huawei.com>
 References: <20240907031926.3591353-1-lizetao1@huawei.com>
@@ -65,8 +65,8 @@ X-Originating-IP: [10.90.53.73]
 X-ClientProxiedBy: dggems702-chm.china.huawei.com (10.3.19.179) To
  kwepemd500012.china.huawei.com (7.221.188.25)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240906_201049_598999_FE249FA2 
-X-CRM114-Status: GOOD (  12.76  )
+X-CRM114-CacheID: sfid-20240906_201050_729108_32F36036 
+X-CRM114-Status: GOOD (  10.87  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,70 +83,64 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Use devm_clk_get_enabled() instead of devm_clk_get() +
+Use devm_clk_get_optional_enabled() instead of devm_clk_get_optional() +
 clk_prepare_enable(), which can make the clk consistent with the device
 life cycle and reduce the risk of unreleased clk resources. Since the
 device framework has automatically released the clk resource, there is
-no need to execute clk_disable_unprepare(clk) on the error path, drop
-the err_unprepare_clk label, and the original error process can change to
-the err_uninit_dma error path. Some comments have also been adjusted.
+no need to execute clk_disable_unprepare(clk) on the error path.
 
+Reviewed-by: Radhey Shyam Pandey <radhey.shyam.pandey@amd.com>
 Signed-off-by: Li Zetao <lizetao1@huawei.com>
 ---
- drivers/net/ethernet/lantiq_xrx200.c | 17 +++--------------
- 1 file changed, 3 insertions(+), 14 deletions(-)
+ drivers/net/ethernet/xilinx/xilinx_axienet_main.c | 15 ++++-----------
+ 1 file changed, 4 insertions(+), 11 deletions(-)
 
-diff --git a/drivers/net/ethernet/lantiq_xrx200.c b/drivers/net/ethernet/lantiq_xrx200.c
-index 07904a528f21..976748551643 100644
---- a/drivers/net/ethernet/lantiq_xrx200.c
-+++ b/drivers/net/ethernet/lantiq_xrx200.c
-@@ -589,8 +589,8 @@ static int xrx200_probe(struct platform_device *pdev)
- 	if (priv->chan_tx.dma.irq < 0)
- 		return -ENOENT;
+diff --git a/drivers/net/ethernet/xilinx/xilinx_axienet_main.c b/drivers/net/ethernet/xilinx/xilinx_axienet_main.c
+index 374dff70ef0d..87c5dcec2325 100644
+--- a/drivers/net/ethernet/xilinx/xilinx_axienet_main.c
++++ b/drivers/net/ethernet/xilinx/xilinx_axienet_main.c
+@@ -2592,22 +2592,17 @@ static int axienet_probe(struct platform_device *pdev)
+ 	seqcount_mutex_init(&lp->hw_stats_seqcount, &lp->stats_lock);
+ 	INIT_DEFERRABLE_WORK(&lp->stats_work, axienet_refresh_stats);
  
--	/* get the clock */
--	priv->clk = devm_clk_get(dev, NULL);
-+	/* get the clock and enable clock gate */
-+	priv->clk = devm_clk_get_enabled(dev, NULL);
- 	if (IS_ERR(priv->clk)) {
- 		dev_err(dev, "failed to get clock\n");
- 		return PTR_ERR(priv->clk);
-@@ -605,11 +605,6 @@ static int xrx200_probe(struct platform_device *pdev)
- 	if (err)
- 		return err;
+-	lp->axi_clk = devm_clk_get_optional(&pdev->dev, "s_axi_lite_clk");
+-	if (!lp->axi_clk) {
++	lp->axi_clk = devm_clk_get_optional_enabled(&pdev->dev, "s_axi_lite_clk");
++	if (!lp->axi_clk)
+ 		/* For backward compatibility, if named AXI clock is not present,
+ 		 * treat the first clock specified as the AXI clock.
+ 		 */
+-		lp->axi_clk = devm_clk_get_optional(&pdev->dev, NULL);
+-	}
++		lp->axi_clk = devm_clk_get_optional_enabled(&pdev->dev, NULL);
++
+ 	if (IS_ERR(lp->axi_clk)) {
+ 		ret = PTR_ERR(lp->axi_clk);
+ 		goto free_netdev;
+ 	}
+-	ret = clk_prepare_enable(lp->axi_clk);
+-	if (ret) {
+-		dev_err(&pdev->dev, "Unable to enable AXI clock: %d\n", ret);
+-		goto free_netdev;
+-	}
  
--	/* enable clock gate */
--	err = clk_prepare_enable(priv->clk);
--	if (err)
--		goto err_uninit_dma;
--
- 	/* set IPG to 12 */
- 	xrx200_pmac_mask(priv, PMAC_RX_IPG_MASK, 0xb, PMAC_RX_IPG);
+ 	lp->misc_clks[0].id = "axis_clk";
+ 	lp->misc_clks[1].id = "ref_clk";
+@@ -2923,7 +2918,6 @@ static int axienet_probe(struct platform_device *pdev)
+ 		axienet_mdio_teardown(lp);
+ cleanup_clk:
+ 	clk_bulk_disable_unprepare(XAE_NUM_MISC_CLOCKS, lp->misc_clks);
+-	clk_disable_unprepare(lp->axi_clk);
  
-@@ -628,13 +623,10 @@ static int xrx200_probe(struct platform_device *pdev)
+ free_netdev:
+ 	free_netdev(ndev);
+@@ -2947,7 +2941,6 @@ static void axienet_remove(struct platform_device *pdev)
+ 	axienet_mdio_teardown(lp);
  
- 	err = register_netdev(net_dev);
- 	if (err)
--		goto err_unprepare_clk;
-+		goto err_uninit_dma;
+ 	clk_bulk_disable_unprepare(XAE_NUM_MISC_CLOCKS, lp->misc_clks);
+-	clk_disable_unprepare(lp->axi_clk);
  
- 	return 0;
- 
--err_unprepare_clk:
--	clk_disable_unprepare(priv->clk);
--
- err_uninit_dma:
- 	xrx200_hw_cleanup(priv);
- 
-@@ -654,9 +646,6 @@ static void xrx200_remove(struct platform_device *pdev)
- 	/* remove the actual device */
- 	unregister_netdev(net_dev);
- 
--	/* release the clock */
--	clk_disable_unprepare(priv->clk);
--
- 	/* shut down hardware */
- 	xrx200_hw_cleanup(priv);
+ 	free_netdev(ndev);
  }
 -- 
 2.34.1
