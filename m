@@ -4,38 +4,38 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E66F5E6FE47
-	for <linux-rockchip@archiver.kernel.org>; Sat,  7 Sep 2024 03:04:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BA12CCE7B04
+	for <linux-rockchip@archiver.kernel.org>; Sat,  7 Sep 2024 03:05:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=fuo/gGJKimE7Kuha060Sr4IXLDTtc4faPtc0zFb19m4=; b=u6ybZ7HFo9iMTG
-	2XA+8CJR+ww6ylcP60vDVSJoIwVhCAZvvjQoE7k8diSeAfCLFTAQDaW6PZsWAQL8WfTGrRcOKeJm3
-	QwYjBIN03Xq24gU6goSxLQHGVSXeC3Voy8Rojl/0XduqYrz1bl5onGmtIw4Bqj8d/062f1mVxlkcI
-	kglWDSzGbixVzT7hDxXaZbq3oxgMaopcnE2E6qwtWgnfdihVjy+kUosReS50WfIV7Vv8B7pfD5Hia
-	+atN8U5FmmGl7lrHExSMAeQraFdfrnO07ZyH6BmAMu+7P4TXFN94mLw1NZ5KJVak2bndcziiptDZc
-	blOn84ACp43lX8ZwKyVw==;
+	List-Owner; bh=xXjUmZ1nFPtV0TCvkaEU5dGH0HhaOKp1slXum4M2CQ0=; b=xyqg78x1DdeQbi
+	yVSrpOBt26s+IElV9eh24HIG0lvB2YP5OovpC1xiRoULYWLoRM1DxkTRX2XQ/3ts2jcAceVGfVGrW
+	6sLgTpflgksdCXPSW7zJV3npPla/vnAvFuGkr6CmSFFl2/2cgqCANwzV2CdHZyYXRMMnyi859rLFu
+	NE5G4MenwYY9/gFQ0Q/9ldzKhFDIHATKk6XQXVaRZef6yFQAXa8XEElf1nrgCVN79G1LKFLGiZEAg
+	7ngRoIU35wuXbcmGmDtQDIRvcaLS0UYHPl+ZfkyXRu8XbDkIiHRXy3zAQsxPyKWQojYFPupKm0YUT
+	eDWXBT805b2wCL2IM+QQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1smlkc-0000000EAK9-2OE0;
-	Sat, 07 Sep 2024 03:04:38 +0000
-Received: from szxga07-in.huawei.com ([45.249.212.35])
+	id 1smllZ-0000000EASQ-2tCA;
+	Sat, 07 Sep 2024 03:05:37 +0000
+Received: from szxga06-in.huawei.com ([45.249.212.32])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1smlhY-0000000E9Uf-2mgu;
-	Sat, 07 Sep 2024 03:01:30 +0000
-Received: from mail.maildlp.com (unknown [172.19.88.234])
-	by szxga07-in.huawei.com (SkyGuard) with ESMTP id 4X0yXZ1PbNz1S9r3;
-	Sat,  7 Sep 2024 11:01:02 +0800 (CST)
+	id 1smlhY-0000000E9UE-3TeX;
+	Sat, 07 Sep 2024 03:01:31 +0000
+Received: from mail.maildlp.com (unknown [172.19.88.163])
+	by szxga06-in.huawei.com (SkyGuard) with ESMTP id 4X0yVf5Dq0z1xwtx;
+	Sat,  7 Sep 2024 10:59:22 +0800 (CST)
 Received: from kwepemd500012.china.huawei.com (unknown [7.221.188.25])
-	by mail.maildlp.com (Postfix) with ESMTPS id 894471400CF;
-	Sat,  7 Sep 2024 11:01:26 +0800 (CST)
+	by mail.maildlp.com (Postfix) with ESMTPS id A8586180041;
+	Sat,  7 Sep 2024 11:01:24 +0800 (CST)
 Received: from huawei.com (10.90.53.73) by kwepemd500012.china.huawei.com
  (7.221.188.25) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1258.34; Sat, 7 Sep
- 2024 11:01:25 +0800
+ 2024 11:01:23 +0800
 From: Li Zetao <lizetao1@huawei.com>
 To: <mchehab@kernel.org>, <davem@davemloft.net>, <edumazet@google.com>,
 	<kuba@kernel.org>, <pabeni@redhat.com>, <wens@csie.org>,
@@ -53,9 +53,9 @@ CC: <linux-media@vger.kernel.org>, <netdev@vger.kernel.org>,
 	<linux-rockchip@lists.infradead.org>,
 	<linux-stm32@st-md-mailman.stormreply.com>,
 	<platform-driver-x86@vger.kernel.org>
-Subject: [PATCH net-next v2 06/10] net: ethernet: hisilicon: Convert using devm_clk_get_enabled() in hisi_femac_drv_probe()
-Date: Sat, 7 Sep 2024 11:10:05 +0800
-Message-ID: <20240907031009.3591057-8-lizetao1@huawei.com>
+Subject: [PATCH net-next v2 04/10] net: ethernet: ethoc: Convert using devm_clk_get_enabled() in ethoc_probe()
+Date: Sat, 7 Sep 2024 11:10:03 +0800
+Message-ID: <20240907031009.3591057-6-lizetao1@huawei.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20240907031009.3591057-1-lizetao1@huawei.com>
 References: <20240907031009.3591057-1-lizetao1@huawei.com>
@@ -64,8 +64,8 @@ X-Originating-IP: [10.90.53.73]
 X-ClientProxiedBy: dggems701-chm.china.huawei.com (10.3.19.178) To
  kwepemd500012.china.huawei.com (7.221.188.25)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240906_200129_243509_49F7CEB0 
-X-CRM114-Status: GOOD (  10.29  )
+X-CRM114-CacheID: sfid-20240906_200129_442914_F383B032 
+X-CRM114-Status: GOOD (  11.33  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,79 +87,73 @@ clk_prepare_enable(), which can make the clk consistent with the device
 life cycle and reduce the risk of unreleased clk resources. Since the
 device framework has automatically released the clk resource, there is
 no need to execute clk_disable_unprepare(clk) on the error path, drop
-the out_disable_clk label, and the original error process can change to
-the out_free_netdev error path.
+the free2 label, and the meaning of the free3 label is not clear, Changing
+it to free_mdiobus will make it more understandable.
 
 Signed-off-by: Li Zetao <lizetao1@huawei.com>
 ---
- drivers/net/ethernet/hisilicon/hisi_femac.c | 17 ++++-------------
- 1 file changed, 4 insertions(+), 13 deletions(-)
+ drivers/net/ethernet/ethoc.c | 18 ++++++------------
+ 1 file changed, 6 insertions(+), 12 deletions(-)
 
-diff --git a/drivers/net/ethernet/hisilicon/hisi_femac.c b/drivers/net/ethernet/hisilicon/hisi_femac.c
-index 2406263c9dd3..ffb6f4751d8b 100644
---- a/drivers/net/ethernet/hisilicon/hisi_femac.c
-+++ b/drivers/net/ethernet/hisilicon/hisi_femac.c
-@@ -797,23 +797,17 @@ static int hisi_femac_drv_probe(struct platform_device *pdev)
- 		goto out_free_netdev;
+diff --git a/drivers/net/ethernet/ethoc.c b/drivers/net/ethernet/ethoc.c
+index ad41c9019018..1a56e20cb679 100644
+--- a/drivers/net/ethernet/ethoc.c
++++ b/drivers/net/ethernet/ethoc.c
+@@ -1172,13 +1172,10 @@ static int ethoc_probe(struct platform_device *pdev)
+ 
+ 	/* Allow the platform setup code to adjust MII management bus clock. */
+ 	if (!eth_clkfreq) {
+-		struct clk *clk = devm_clk_get(&pdev->dev, NULL);
++		priv->clk = devm_clk_get_enabled(&pdev->dev, NULL);
+ 
+-		if (!IS_ERR(clk)) {
+-			priv->clk = clk;
+-			clk_prepare_enable(clk);
+-			eth_clkfreq = clk_get_rate(clk);
+-		}
++		if (!IS_ERR(priv->clk))
++			eth_clkfreq = clk_get_rate(priv->clk);
+ 	}
+ 	if (eth_clkfreq) {
+ 		u32 clkdiv = MIIMODER_CLKDIV(eth_clkfreq / 2500000 + 1);
+@@ -1195,7 +1192,7 @@ static int ethoc_probe(struct platform_device *pdev)
+ 	priv->mdio = mdiobus_alloc();
+ 	if (!priv->mdio) {
+ 		ret = -ENOMEM;
+-		goto free2;
++		goto free;
  	}
  
--	priv->clk = devm_clk_get(&pdev->dev, NULL);
-+	priv->clk = devm_clk_get_enabled(&pdev->dev, NULL);
- 	if (IS_ERR(priv->clk)) {
- 		dev_err(dev, "failed to get clk\n");
- 		ret = -ENODEV;
- 		goto out_free_netdev;
+ 	priv->mdio->name = "ethoc-mdio";
+@@ -1208,7 +1205,7 @@ static int ethoc_probe(struct platform_device *pdev)
+ 	ret = mdiobus_register(priv->mdio);
+ 	if (ret) {
+ 		dev_err(&netdev->dev, "failed to register MDIO bus\n");
+-		goto free3;
++		goto free_mdiobus;
  	}
  
--	ret = clk_prepare_enable(priv->clk);
--	if (ret) {
--		dev_err(dev, "failed to enable clk %d\n", ret);
--		goto out_free_netdev;
--	}
--
- 	priv->mac_rst = devm_reset_control_get(dev, "mac");
- 	if (IS_ERR(priv->mac_rst)) {
- 		ret = PTR_ERR(priv->mac_rst);
--		goto out_disable_clk;
-+		goto out_free_netdev;
- 	}
- 	hisi_femac_core_reset(priv);
- 
-@@ -826,7 +820,7 @@ static int hisi_femac_drv_probe(struct platform_device *pdev)
- 						 priv->phy_reset_delays,
- 						 DELAYS_NUM);
- 		if (ret)
--			goto out_disable_clk;
-+			goto out_free_netdev;
- 		hisi_femac_phy_reset(priv);
- 	}
- 
-@@ -834,7 +828,7 @@ static int hisi_femac_drv_probe(struct platform_device *pdev)
- 	if (!phy) {
- 		dev_err(dev, "connect to PHY failed!\n");
- 		ret = -ENODEV;
--		goto out_disable_clk;
-+		goto out_free_netdev;
- 	}
- 
- 	phy_attached_print(phy, "phy_id=0x%.8lx, phy_mode=%s\n",
-@@ -885,8 +879,6 @@ static int hisi_femac_drv_probe(struct platform_device *pdev)
- out_disconnect_phy:
+ 	ret = ethoc_mdio_probe(netdev);
+@@ -1240,10 +1237,8 @@ static int ethoc_probe(struct platform_device *pdev)
  	netif_napi_del(&priv->napi);
- 	phy_disconnect(phy);
--out_disable_clk:
+ error:
+ 	mdiobus_unregister(priv->mdio);
+-free3:
++free_mdiobus:
+ 	mdiobus_free(priv->mdio);
+-free2:
 -	clk_disable_unprepare(priv->clk);
- out_free_netdev:
- 	free_netdev(ndev);
- 
-@@ -902,7 +894,6 @@ static void hisi_femac_drv_remove(struct platform_device *pdev)
- 	unregister_netdev(ndev);
- 
- 	phy_disconnect(ndev->phydev);
--	clk_disable_unprepare(priv->clk);
- 	free_netdev(ndev);
- }
- 
+ free:
+ 	free_netdev(netdev);
+ out:
+@@ -1267,7 +1262,6 @@ static void ethoc_remove(struct platform_device *pdev)
+ 			mdiobus_unregister(priv->mdio);
+ 			mdiobus_free(priv->mdio);
+ 		}
+-		clk_disable_unprepare(priv->clk);
+ 		unregister_netdev(netdev);
+ 		free_netdev(netdev);
+ 	}
 -- 
 2.34.1
 
