@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7D7F7CD4F4C
-	for <linux-rockchip@archiver.kernel.org>; Sun,  8 Sep 2024 21:13:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 509D4CD4F4C
+	for <linux-rockchip@archiver.kernel.org>; Sun,  8 Sep 2024 21:14:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=48RBK1Pvz+s54NqAMIAWjU/UUA9YrqKrFnUGEynEpZs=; b=BPgne0HN/bsrsl
-	y456NWPCg8GfqF+c95yqFmP0sjDah4VIECLEVXOc3ciir/rv8Oanv5u11WIFotdUyA9zJOBOSp+0G
-	myhRSbWxIbcQHZUGtYlral77pxVozUNWSGMfPNeXG8/DyAf5iXcFQckPdZNVKNUTO5jYSfeSkc4Aa
-	NZN7cuj+nSKRw9TvbkSDisz5TsHfsEIoMvERMOxS4VAdWbJ3Y5mABjPJcR4sVdTnnTsOixSPiqWG+
-	DbM/4ZjB1sXQn64ByWo2CxW06RFq2c6ShOtki10I1dP+rcLwOtFpMRiku9Fc5bzr3T2/B6KcmBzrI
-	pPO/7Sq8+QvtQAkK7bag==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=/bIp0eSX3fYi32Na4Kek+f31MacANlcDe0O+fVeRxfY=; b=4YUHlp90hokEZP
+	d9CxpDxGejRAetxxFK5Rr1fxf0RdXKsFyfafPqDOfYX/+8gtUw5Gd0XKnsbupoFGhPWsVUPHXTrDZ
+	kKTO/yXv6nvjiP8CCjzV82LZtPzRtveqH7IMh6XUU6ihdZ/ZbfWpiRtoGp8YF/AAP6sW5vD9m2b2K
+	IdwrKg3PkLT8awc8MJJ1RvSeXkH94Q4GRmE5ucmzFxrbjhxd5PMvkwsxZwq0KTVNzyJoB2VQ/5xiV
+	Lln075f4KmgTgF7rnGCf0OsqWvQkNkQ5v1O5Z5ioEHMrtoTZSD/4oJDogYHKSny2MCI/C5XOOipgv
+	bRYiaSH2Yl8f79KgcPcw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1snPDP-0000000HTqk-1Fi3;
-	Sun, 08 Sep 2024 21:12:59 +0000
+	id 1snPEN-0000000HU0Z-28HL;
+	Sun, 08 Sep 2024 21:13:59 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1snPAM-0000000HSyf-2zMa;
-	Sun, 08 Sep 2024 21:09:53 +0000
+	id 1snPAM-0000000HSyl-31Yg;
+	Sun, 08 Sep 2024 21:09:54 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Transfer-Encoding:MIME-Version:References:
-	In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+	s=gloria202408; h=Content-Transfer-Encoding:MIME-Version:Message-ID:Date:
+	Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
 	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=AODWEsE73iZy3ftOFUVpepawKaVLM9NWi8usTPEPRhw=; b=YBbXd5wGMQvFJ78L7z+1sRxDbj
-	lj8ky7GrcW/R8EGhM6SOQe+1YOUnnfUSAemNtm4Hq1xsa15A816rSSH0kk/qWszTu5rJCXhwRSOkO
-	NeHevL5NpBoay96RCGWudg1Z45AkXFxkZ+WZPRNH+IzXC3VqoHPB+3H1BCQN4n/2q2QyBCBZYKEGa
-	gdLwY99LziS6ERU8zhOh7g4vDNAJTHDCZwgUuibqdeTh6iRxkm10SSJfK8j+ni7wiQLPVC82cg8C+
-	KIm2ieNa2Ju72daIBrPau+b7ZDvr8JaInc4p9gEzB0ZiSxJAyLKF9/iH1B5E6xJX8dam384YJTFn3
-	05713NZg==;
+	bh=bJYmi9c9oz6tm2pyzXmgxUUZvpQmzK+TNH7qhaJHuP4=; b=nxes8+Mgd1KylK6uEjYsusu31I
+	NX+wkjgMwadO2am6zoSRtvJtFs/e2I70OooJHgTIQCJc7Yfl5tgFVpoUslKegImmDcKAVvWT7i10Y
+	9nF0miCzg1xB+PlbrEHLPHp6sqxwhYRJY8oykOw3SHC5W9JuMQLIPyU6FIFeWD1ANAlSdbnX7lnu4
+	le4J30MmN0b8iWCS8P9kI+sLk0msBiHgwcSWnXTAW25ZKff6eQoMkbVLTb3uOR2s0djSN766CC5vT
+	5jWNstERwHC5CzBfAru+jRxMtNvlXN+T99G3xi7D5IJ6fh31i5Ap1iP2PJUstBsL4RIRHnZsYk1ss
+	Wz6I04UQ==;
 Received: from i5e8616cc.versanet.de ([94.134.22.204] helo=phil.lan)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1snPA1-0003s9-W8; Sun, 08 Sep 2024 23:09:30 +0200
+	id 1snPA0-0003s9-8T; Sun, 08 Sep 2024 23:09:28 +0200
 From: Heiko Stuebner <heiko@sntech.de>
 To: lee@kernel.org,
 	jikos@kernel.org,
@@ -66,16 +66,14 @@ Cc: robh@kernel.org,
 	linux-iio@vger.kernel.org,
 	linux-leds@vger.kernel.org,
 	Heiko Stuebner <heiko@sntech.de>
-Subject: [PATCH v8 2/9] mfd: core: make platform_data pointer const in struct mfd_cell
-Date: Sun,  8 Sep 2024 23:07:56 +0200
-Message-ID: <20240908210803.3339919-3-heiko@sntech.de>
+Subject: [PATCH v8 0/9] Drivers to support the MCU on QNAP NAS devices
+Date: Sun,  8 Sep 2024 23:07:54 +0200
+Message-ID: <20240908210803.3339919-1-heiko@sntech.de>
 X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20240908210803.3339919-1-heiko@sntech.de>
-References: <20240908210803.3339919-1-heiko@sntech.de>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240908_140950_786875_B41F6AB4 
-X-CRM114-Status: GOOD (  16.07  )
+X-CRM114-CacheID: sfid-20240908_140950_796104_7D3B3331 
+X-CRM114-Status: GOOD (  26.89  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,36 +90,171 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The content of the platform_data of a struct mfd_cell is simply passed on
-to the platform_device_add_data() call in mfd_add_device() .
+This implements a set of drivers for the MCU used on QNAP NAS devices.
 
-platform_device_add_data() already handles the data behind that pointer
-as const and also uses kmemdup to create a copy of the data before
-handing that copy over to the newly created platform-device,
-so there is no reason to not extend this to struct mfd_cell, as the old
-copy in the mfd_cell will be stale anyway.
+Of course no documentation for the serial protocol is available, so
+thankfully QNAP has a tool on their rescue-inird to talk to the MCU and
+I found interceptty [0] to listen to what goes over the serial connection.
 
-This allows to pass structs gathered from of_device_get_match_data()
-as platform-data to sub-devices - which is retrieved as const already.
+In general it looks like there are two different generations in general,
+an "EC" device and now this "MCU" - referenced in the strings of the
+userspace handlers for those devices.
 
-Signed-off-by: Heiko Stuebner <heiko@sntech.de>
----
- include/linux/mfd/core.h | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+For the MCU "SPEC3" and "SPEC4" are listed which is configured in
+the model.conf of the device. When setting the value from SPEC4 to
+SPEC3 on my TS433, the supported commands change, but the command
+interface stays the same and especially the version command is the
+same.
 
-diff --git a/include/linux/mfd/core.h b/include/linux/mfd/core.h
-index e8bcad641d8c..faeea7abd688 100644
---- a/include/linux/mfd/core.h
-+++ b/include/linux/mfd/core.h
-@@ -72,7 +72,7 @@ struct mfd_cell {
- 	int			(*resume)(struct platform_device *dev);
- 
- 	/* platform data passed to the sub devices drivers */
--	void			*platform_data;
-+	const void		*platform_data;
- 	size_t			pdata_size;
- 
- 	/* Matches ACPI */
+The binding also does not expose any interals of the device that
+might change, so hopefully there shouldn't be big roadblocks to
+support different devices, apart from possibly adapting the commands.
+
+
+changes in v8:
+- patch for hid-sensor hub to not do wonky stuff with an old
+  platform-data copy
+  I hope my reading of the situation is correct here, but that
+  initial platform_data really seemed wrong
+
+mfd:
+- flush serial before writing a new command
+- wait for send to complete before starting the receive wait-timeout
+- set expected length to 0 directly when the reply is complete
+  not after leaving the receive callback
+
+
+changes in v7:
+- use ASCII representation in commands where possible instead of hex vals
+- drop get_variant function and use mfd platform-data instead
+
+mfd:
+- a lot of style improvements
+
+leds:
+- name variables better (value -> brightness, num -> num_err_led)
+- handle preservation of blink mode more effectively
+- snprintf -> scnprintf
+- drop duplicate "failed to register ... LED" messages
+
+
+changes in v6:
+- format mcu commands arrays in single lines (Lee)
+
+mfd:
+- drop obsolete remain kdoc for the removed
+  reply_lock (kernel test robot)
+
+
+changes in v5:
+binding:
+- add Conor's Reviewed-by
+
+mfd:
+Address comments from Lee
+- improve commit message
+- improve Kconfig help text
+- sort headers alphabetical
+- style and spelling improvements
+- constants for magic numbers
+- drop reply assignment, the mcu only replies to commands sent to it,
+  so there should only ever be one command in fligth.
+
+hwmon:
+Add Acked-by from Guenter and address some remarks
+  - don't allow empty fan subnode
+  - use num var directly when getting cooling levels, without using ret
+    intermediate
+  - use dev_err_probe in thermal init function
+
+
+changes in v4:
+binding:
+- move cooling properties into a fan subnode and reference
+  fan-common.yaml (Rob)
+- dropped Krzysztof's Ack because of this
+
+mfd:
+- use correct format-string for size_t (kernel test robot)
+
+input:
+- added Dmitry's Ack
+
+hwmon:
+- adapted to fan-subnode when reading cooling properties
+- dropped Guenter's Ack because of this
+
+
+changes in v3:
+mfd
+- use correct power-off priority: default
+- constify the cmd-data array in command functions (Dmitry)
+
+leds:
+- don't point to temporary buffers for cdev->name (Florian Eckert)
+
+hwmon:
+- use clamp_val(), don't try to reimplement (Guenter)
+- add Guenter's Ack
+
+input:
+address Dmitry's comments
+- constify some cmd arrays
+- add input-close callback to cancel beep worker
+- drop initial input event report
+
+
+changes in v2:
+binding:
+- rename to qnap,ts433-mcu.yaml (Krzysztof)
+- drop "preserve formatting" indicator (Krzysztof)
+- add Krzysztof's Review tag
+
+mfd:
+- fix checkpatch --strict CHECKs
+- add a MAINTAINERS entry for all qnap-mcu-parts
+
+
+Heiko Stuebner (9):
+  HID: hid-sensor-hub: don't use stale platform-data on remove
+  mfd: core: make platform_data pointer const in struct mfd_cell
+  dt-bindings: mfd: add binding for qnap,ts433-mcu devices
+  mfd: add base driver for qnap-mcu devices
+  leds: add driver for LEDs from qnap-mcu devices
+  Input: add driver for the input part of qnap-mcu devices
+  hwmon: add driver for the hwmon parts of qnap-mcu devices
+  arm64: dts: rockchip: hook up the MCU on the QNAP TS433
+  arm64: dts: rockchip: set hdd led labels on qnap-ts433
+
+ .../bindings/mfd/qnap,ts433-mcu.yaml          |  42 ++
+ Documentation/hwmon/index.rst                 |   1 +
+ Documentation/hwmon/qnap-mcu-hwmon.rst        |  27 ++
+ MAINTAINERS                                   |   9 +
+ .../boot/dts/rockchip/rk3568-qnap-ts433.dts   |  61 +++
+ drivers/hid/hid-sensor-hub.c                  |  21 +-
+ drivers/hwmon/Kconfig                         |  12 +
+ drivers/hwmon/Makefile                        |   1 +
+ drivers/hwmon/qnap-mcu-hwmon.c                | 364 ++++++++++++++++++
+ drivers/input/misc/Kconfig                    |  12 +
+ drivers/input/misc/Makefile                   |   1 +
+ drivers/input/misc/qnap-mcu-input.c           | 153 ++++++++
+ drivers/leds/Kconfig                          |  11 +
+ drivers/leds/Makefile                         |   1 +
+ drivers/leds/leds-qnap-mcu.c                  | 227 +++++++++++
+ drivers/mfd/Kconfig                           |  13 +
+ drivers/mfd/Makefile                          |   2 +
+ drivers/mfd/qnap-mcu.c                        | 332 ++++++++++++++++
+ include/linux/mfd/core.h                      |   2 +-
+ include/linux/mfd/qnap-mcu.h                  |  26 ++
+ 20 files changed, 1310 insertions(+), 8 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/mfd/qnap,ts433-mcu.yaml
+ create mode 100644 Documentation/hwmon/qnap-mcu-hwmon.rst
+ create mode 100644 drivers/hwmon/qnap-mcu-hwmon.c
+ create mode 100644 drivers/input/misc/qnap-mcu-input.c
+ create mode 100644 drivers/leds/leds-qnap-mcu.c
+ create mode 100644 drivers/mfd/qnap-mcu.c
+ create mode 100644 include/linux/mfd/qnap-mcu.h
+
 -- 
 2.43.0
 
