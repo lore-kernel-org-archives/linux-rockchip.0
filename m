@@ -4,38 +4,38 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 27627E6FE49
-	for <linux-rockchip@archiver.kernel.org>; Sun,  8 Sep 2024 13:29:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F38A9CD4F4C
+	for <linux-rockchip@archiver.kernel.org>; Sun,  8 Sep 2024 13:29:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=OQA3bVrDwWf+czwVt8Zp7hUvtRIAGsRGIgXDvZqG+cI=; b=En3XFytw2oBefK
-	xoviYbHxNeciyAOGt0DC1mPJDC98qxhVX+7iTfomFUPiWjnPuDe6cyw5D/8FhbgJez+W66K7uOeP6
-	FMvkxY+c4ADo9o2yXyPmtjYzl1GVgkRr1nGZDpz+s4q7xT55Z305o1YTEOSrLdIhRawH0tz1Nu16K
-	Lo13S2Nlm0GfA5xRmxiwBQ8aD0YcZXslayP5zbQOhe2H71EM1Gtqtsg2BKJFe1Mzd0VtspXexfC5b
-	osa+2Z0ZdGNmRIZhNSw+LvDUL7SfG2CRuBtqcMh3avgeJB0n2/pdtRC4ydzpQ9FpSZnfBlfWFLv87
-	362xSqVHIbWKXd2olfww==;
+	List-Owner; bh=9AgOzxhy4pMCKbjw7gaBKtGVIYsc8QGJQLlY2llmoBc=; b=wkLN0OaTILQkNe
+	9OFowHCpH9sEXbNKN4n0LLgkt9uAhxhPxyYjw+WCkbk1BUyunmOHqla6B2A3Ln4b5PY72OHCPL1hA
+	+x2WbmjW+sNLYpij9LYiIfEACvmreR6dji1fOA4PFUwymYbDpOyfkCnSLi8TzXks+RPtYY/RsoMtA
+	1MMePeOlz4ANLP3VWlB0ow124nwb+VyRLBQ8fbkhlb31pBS5Sxp4qnKC+XunlR8VNTfuTJWADm5vs
+	2ziIflma+2JWNxVZZlA4RIk+UNAJ4NArTn8uW1uE9NPqjsaOWiKF6HSpQF7G/rYuwS6FD+RF+/dfP
+	MOqYUSTK+q/JaZyz2fMw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1snHyW-0000000Gpyw-03G5;
-	Sun, 08 Sep 2024 13:29:08 +0000
+	id 1snHyZ-0000000Gq0v-2PUq;
+	Sun, 08 Sep 2024 13:29:11 +0000
 Received: from smtp.forwardemail.net ([207.246.76.47])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1snHyT-0000000Gpw5-0W1c
+	id 1snHyW-0000000Gpyd-1jFk
 	for linux-rockchip@lists.infradead.org;
-	Sun, 08 Sep 2024 13:29:06 +0000
+	Sun, 08 Sep 2024 13:29:10 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
  h=Content-Transfer-Encoding: MIME-Version: References: In-Reply-To:
  Message-ID: Date: Subject: Cc: To: From; q=dns/txt; s=fe-e1b5cab7be;
- t=1725802119; bh=Kv653550ZAaYWcH77Mo8Hgi73sCYCuyVNLs67561gpQ=;
- b=MeyI+Xr9e5DGYFdF8X8Zcctpz8J3Ytfvis5MqM/5+ASyyuVckg0YITWoqFKtg6WNLzBTktxN6
- rhAVUyzVuEio18nugu8UT+SwCXqrJPjdHWrrE2ByjdbP7CL4wNe2vo8Ar3qrCNxUoaLpVZIU58C
- jeSlopzkOszghoA2RE605iS0Vq5ySTe+2DfDQiyKfzUMcD+xtXDjS2FVDED61O0atDmyaRmJdbp
- t+rdVkUb23eqTykIunpkyFg0lkPHBq6EjKhLD0phhN+Jx1e03sZjoWciYcRjQR0AluA7DL1N9/u
- /kPEMlmTZjnlKnTevrlbJaAIQS4aXxV16ihCgB6YolXQ==
+ t=1725802125; bh=NEOQIls6G9LJG/5aOQ8hTffhHkvDHnR+iX1UstZb2no=;
+ b=0iP8J8nD/rILYwFBix8TzvShoVcSRLTnUGN6fEs8TvmwxxZhPolnc59u+IUtdBU9x89GfH2k0
+ GaDp3dDaPe2q86zMyRGjeTcO4DRDEfEUy3VeA6j1+gKJ5dONSHfqZfLv6RDixW5RbM2PUeHN/rS
+ slSCb32najPQct1tqVUNwRbXpJTNu9NFnXL75R12/KBlO2xD+pHjWDMF5eI8MoM7BDdmLmritGT
+ ocSiecPCNzn/XiUAoi4SvljBA2pJhiACuK83H2d/wVFVERk/fqx3JwKeQUYvdD0U0alMeRu3XGp
+ Necs7nDguOlHAitsxfjoh0M2+7/iy641aEImlyGDj2lw==
 From: Jonas Karlman <jonas@kwiboo.se>
 To: Andrzej Hajda <andrzej.hajda@intel.com>,
 	Neil Armstrong <neil.armstrong@linaro.org>,
@@ -47,17 +47,16 @@ To: Andrzej Hajda <andrzej.hajda@intel.com>,
 	Simona Vetter <simona@ffwll.ch>,
 	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
 	Jonas Karlman <jonas@kwiboo.se>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Lucas Stach <l.stach@pengutronix.de>
+	Jernej Skrabec <jernej.skrabec@gmail.com>
 Cc: Christian Hewitt <christianshewitt@gmail.com>,
 	Diederik de Haas <didi.debian@cknow.org>,
 	Christopher Obbard <chris.obbard@collabora.com>,
 	dri-devel@lists.freedesktop.org,
 	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org
-Subject: [PATCH v2 02/10] drm: bridge: dw_hdmi: Only notify connected status on HPD interrupt
-Date: Sun,  8 Sep 2024 13:28:04 +0000
-Message-ID: <20240908132823.3308029-3-jonas@kwiboo.se>
+Subject: [PATCH v2 03/10] drm: bridge: dw_hdmi: Call poweron/poweroff from atomic enable/disable
+Date: Sun,  8 Sep 2024 13:28:05 +0000
+Message-ID: <20240908132823.3308029-4-jonas@kwiboo.se>
 X-Mailer: git-send-email 2.46.0
 In-Reply-To: <20240908132823.3308029-1-jonas@kwiboo.se>
 References: <20240908132823.3308029-1-jonas@kwiboo.se>
@@ -68,10 +67,10 @@ X-Complaints-To: abuse@forwardemail.net
 X-ForwardEmail-Version: 0.4.40
 X-ForwardEmail-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
  207.246.76.47
-X-ForwardEmail-ID: 66dda6873c9877b459587918
+X-ForwardEmail-ID: 66dda68b3c9877b45958792c
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240908_062905_517149_2D5F556E 
-X-CRM114-Status: GOOD (  11.18  )
+X-CRM114-CacheID: sfid-20240908_062908_638982_623DC98D 
+X-CRM114-Status: GOOD (  12.26  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,36 +87,109 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-drm_helper_hpd_irq_event() and drm_bridge_hpd_notify() may incorrectly
-be called with a connected status when HPD is high and RX sense is
-changed. This typically happen when the HDMI cable is unplugged, shortly
-before the HPD is changed to low.
+Change to only call poweron/poweroff from atomic_enable/atomic_disable
+ops instead of trying to be clever by keeping a bridge_is_on state and
+poweron/off in the hotplug irq handler.
 
-Fix this by only notify connected status on the HPD interrupt when HPD
-is going high, not on the RX sense interrupt when RX sense is changed.
+The bridge is already enabled/disabled depending on connection state
+with the call to drm_helper_hpd_irq_event() in hotplug irq handler.
 
-Fixes: da09daf88108 ("drm: bridge: dw_hdmi: only trigger hotplug event on link change")
+A benefit of this is that drm mode_config mutex is always held at
+poweron/off, something that may reduce the need for our own mutex.
+
 Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
 ---
-v2: New patch
+v2: Update commit message
 ---
- drivers/gpu/drm/bridge/synopsys/dw-hdmi.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ drivers/gpu/drm/bridge/synopsys/dw-hdmi.c | 33 ++---------------------
+ 1 file changed, 2 insertions(+), 31 deletions(-)
 
 diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
-index 9e7f86a0bf5c..055fc9848df4 100644
+index 055fc9848df4..5b67640b1d0a 100644
 --- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
 +++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
-@@ -3123,7 +3123,8 @@ static irqreturn_t dw_hdmi_irq(int irq, void *dev_id)
- 			mutex_unlock(&hdmi->cec_notifier_mutex);
- 		}
+@@ -169,7 +169,6 @@ struct dw_hdmi {
+ 	enum drm_connector_force force;	/* mutex-protected force state */
+ 	struct drm_connector *curr_conn;/* current connector (only valid when !disabled) */
+ 	bool disabled;			/* DRM has disabled our bridge */
+-	bool bridge_is_on;		/* indicates the bridge is on */
+ 	bool rxsense;			/* rxsense state */
+ 	u8 phy_mask;			/* desired phy int mask settings */
+ 	u8 mc_clkdis;			/* clock disable register */
+@@ -2382,8 +2381,6 @@ static void initialize_hdmi_ih_mutes(struct dw_hdmi *hdmi)
  
--		if (phy_stat & HDMI_PHY_HPD)
-+		if ((intr_stat & HDMI_IH_PHY_STAT0_HPD) &&
-+		    (phy_stat & HDMI_PHY_HPD))
- 			status = connector_status_connected;
+ static void dw_hdmi_poweron(struct dw_hdmi *hdmi)
+ {
+-	hdmi->bridge_is_on = true;
+-
+ 	/*
+ 	 * The curr_conn field is guaranteed to be valid here, as this function
+ 	 * is only be called when !hdmi->disabled.
+@@ -2397,30 +2394,6 @@ static void dw_hdmi_poweroff(struct dw_hdmi *hdmi)
+ 		hdmi->phy.ops->disable(hdmi, hdmi->phy.data);
+ 		hdmi->phy.enabled = false;
+ 	}
+-
+-	hdmi->bridge_is_on = false;
+-}
+-
+-static void dw_hdmi_update_power(struct dw_hdmi *hdmi)
+-{
+-	int force = hdmi->force;
+-
+-	if (hdmi->disabled) {
+-		force = DRM_FORCE_OFF;
+-	} else if (force == DRM_FORCE_UNSPECIFIED) {
+-		if (hdmi->rxsense)
+-			force = DRM_FORCE_ON;
+-		else
+-			force = DRM_FORCE_OFF;
+-	}
+-
+-	if (force == DRM_FORCE_OFF) {
+-		if (hdmi->bridge_is_on)
+-			dw_hdmi_poweroff(hdmi);
+-	} else {
+-		if (!hdmi->bridge_is_on)
+-			dw_hdmi_poweron(hdmi);
+-	}
+ }
  
- 		if (!(phy_stat & (HDMI_PHY_HPD | HDMI_PHY_RX_SENSE)))
+ /*
+@@ -2545,7 +2518,6 @@ static void dw_hdmi_connector_force(struct drm_connector *connector)
+ 
+ 	mutex_lock(&hdmi->mutex);
+ 	hdmi->force = connector->force;
+-	dw_hdmi_update_power(hdmi);
+ 	dw_hdmi_update_phy_mask(hdmi);
+ 	mutex_unlock(&hdmi->mutex);
+ }
+@@ -2954,7 +2926,7 @@ static void dw_hdmi_bridge_atomic_disable(struct drm_bridge *bridge,
+ 	mutex_lock(&hdmi->mutex);
+ 	hdmi->disabled = true;
+ 	hdmi->curr_conn = NULL;
+-	dw_hdmi_update_power(hdmi);
++	dw_hdmi_poweroff(hdmi);
+ 	dw_hdmi_update_phy_mask(hdmi);
+ 	handle_plugged_change(hdmi, false);
+ 	mutex_unlock(&hdmi->mutex);
+@@ -2973,7 +2945,7 @@ static void dw_hdmi_bridge_atomic_enable(struct drm_bridge *bridge,
+ 	mutex_lock(&hdmi->mutex);
+ 	hdmi->disabled = false;
+ 	hdmi->curr_conn = connector;
+-	dw_hdmi_update_power(hdmi);
++	dw_hdmi_poweron(hdmi);
+ 	dw_hdmi_update_phy_mask(hdmi);
+ 	handle_plugged_change(hdmi, true);
+ 	mutex_unlock(&hdmi->mutex);
+@@ -3072,7 +3044,6 @@ void dw_hdmi_setup_rx_sense(struct dw_hdmi *hdmi, bool hpd, bool rx_sense)
+ 		if (hpd)
+ 			hdmi->rxsense = true;
+ 
+-		dw_hdmi_update_power(hdmi);
+ 		dw_hdmi_update_phy_mask(hdmi);
+ 	}
+ 	mutex_unlock(&hdmi->mutex);
 -- 
 2.46.0
 
