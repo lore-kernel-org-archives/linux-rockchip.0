@@ -4,65 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 78EB6CD4F4C
-	for <linux-rockchip@archiver.kernel.org>; Sun,  8 Sep 2024 08:15:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E8A90CD4F4C
+	for <linux-rockchip@archiver.kernel.org>; Sun,  8 Sep 2024 08:16:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=z92yNHihonPOgeeE8Ns+rovkxZD8Y7dfjwIsmiUo2+4=; b=tDbHTOUzUAgpqR
-	JLel7h+PvfsezwNbHsTrAkJ8le2ZnAP7BBevD/hJExb7yh2p0h4OhuPXPV038U65yn9wOzDqD4Q8U
-	yx5KZM1iuv4OB92eITSU1PWiM/BOJH0b0MnUHLFqes9w3q4VQkBpI6zs89efUJPTv//WZ/UtQAnUL
-	Cohv2j0O8tkByXIJUVotO97/uPiRPM73wD5CbWjEjTAlVjfyY4IqjltfnGRv7IMj+aJNsCdAeYTGU
-	tsfYjm5RIolNMk32Us7+WgMC2J4AhuiF3BTR6LJWky2PyjrF4315IllZNuz72VKmtRJ/oOVdNSnt0
-	2shg6md/64yfqMiMl1fw==;
+	List-Owner; bh=Y6zsbSMxbnY8Dzyz+sFlpWME6ElDiHPOlcc7Xgjjcyw=; b=Y3uwOMBwIzOJOZ
+	rMrIoKkPHJXoRQR/WvCYIhFDNoR5yYU9wbK0nBfUn8pEGO/Mw7ZZfqbRYt03e1F4vH3Gh96WQ3ZTx
+	9Rmddan27eDF8AlIdKg7JCakJl7mnG1vewWr4DBDFZp1VpzSq9yEO3z1cZ6UEKe8w8ecfr2ztvoo2
+	F8aD2nNki0Ke3PicEb6fbAHCOs0keq/19k6vQA62XpcrRYqqKxm08h20Cj/rpS66vysllGdXGlBcB
+	8JPJ0TFlkYXnvj7idvv2BZuwKrR+gS/Rw6PR+GkjwbaNdSnVrWcS7zwvvT1uz4t6ONzrpkcknH5P9
+	3sRPKvBxqUSNJ0HvINwQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1snD4d-0000000GNJJ-11GH;
-	Sun, 08 Sep 2024 08:15:07 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1snD5a-0000000GNRR-3KBI;
+	Sun, 08 Sep 2024 08:16:06 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1snD3b-0000000GN9L-2fCb;
-	Sun, 08 Sep 2024 08:14:05 +0000
+	id 1snD4F-0000000GNEY-3N9M;
+	Sun, 08 Sep 2024 08:14:45 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id E3A855C3A42;
-	Sun,  8 Sep 2024 08:13:58 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id DA59EC4CEC3;
-	Sun,  8 Sep 2024 08:13:55 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id E0938A41550;
+	Sun,  8 Sep 2024 08:14:33 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4BE45C4CEC3;
+	Sun,  8 Sep 2024 08:14:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1725783242;
-	bh=lk3y3r9rCVBETAKY3ZTOr+TpiAyeqn8OZ0JuF1RrzBI=;
+	s=k20201202; t=1725783281;
+	bh=cgiJhlr4nnR/uILZjD9whNKFrbDvLlZZ6dEmFKExB/Q=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=Pclr3fWNCXyFvmnW7/dKCy75j6qc38ImoqMgkG1VKgZVu6ir2YWdCkVJSGVutF1h/
-	 7Z+pwlL/HL/pO4puQt6uGk82kbye2biFWZIrjSePMKFNcsbfa+g6MnFuOZmf8H8kn6
-	 dpcReWjafb+rcFGUdGNfJiG4fWSQl5WDZrVyOlS2ff/4PynEeBYETKI5QLRr3nDGKz
-	 SGDB8SWqQPaheNsS3Dz8Dmi38VmBnYZpC4IMPsqyPbK5gS+b1UYOecahBx7RRATE/A
-	 X4v+f2smG7vP0Yl3N7iJsRwJe8dHCqG3TE8liCxab+JXSE0Av8gOonotjfxgPPsqYZ
-	 Xt8yru/lucckw==
-Message-ID: <77d41268-30e3-48a5-b611-40f586586ffb@kernel.org>
-Date: Sun, 8 Sep 2024 10:13:53 +0200
+	b=nUdtfPnGu6eTeN6unjA6pZxdWG/XS9XZFUQrb7gEbB3broTXlo6bDA/15QWSthRnk
+	 XH/+22uS6otXO9wBz+DCq+HqW09kyO7PYKcGiWCGv0nVqPSW+RCSVq58IHBNqD58H8
+	 VOKuEN55UGhxEmrghl7kpeoCNZRE83dtiVfExkrItThBpi4teZOabqcTsjDGw7XwvW
+	 +IfUMlo5YaC7UdDidVlQCGMSjd8zOH7IxUQNkVtofyzeoh1RdMqzrGUpxayFK7tAqp
+	 yg3aLD7C+tPOw2XAAzFcDI1cbIWqXW3/svnxllISQqnzZnjcIItNhThZaviF0W46GX
+	 Wat38rKxm16ZQ==
+Message-ID: <917ac8d8-a483-422c-a408-cdd44793e910@kernel.org>
+Date: Sun, 8 Sep 2024 10:14:33 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 8/9] dt-bindings: Add documentation for Photonicat PMU
-To: Junhao Xie <bigfoot@classfun.cn>
-Cc: devicetree@vger.kernel.org, linux-hwmon@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-leds@vger.kernel.org,
+Subject: Re: [PATCH 1/9] mfd: Add driver for Photonicat power management MCU
+To: Junhao Xie <bigfoot@classfun.cn>, devicetree@vger.kernel.org,
+ linux-hwmon@vger.kernel.org, linux-leds@vger.kernel.org,
  linux-pm@vger.kernel.org, linux-rtc@vger.kernel.org,
  linux-watchdog@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, Jean Delvare <jdelvare@suse.com>,
- Guenter Roeck <linux@roeck-us.net>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>,
- "\"Conor Dooley,\"," <conor+dt@kernel.org>, Pavel Machek <pavel@ucw.cz>,
- Lee Jones <lee@kernel.org>, Sebastian Reichel <sre@kernel.org>,
+ linux-rockchip@lists.infradead.org
+Cc: LKML <linux-kernel@vger.kernel.org>,
  Alexandre Belloni <alexandre.belloni@bootlin.com>,
- Wim Van Sebroeck <wim@linux-watchdog.org>, Heiko Stuebner <heiko@sntech.de>,
- Chukun Pan <amadeus@jmu.edu.cn>
-References: <20240906093630.2428329-1-bigfoot@classfun.cn>
- <20240906093630.2428329-9-bigfoot@classfun.cn>
- <dbc6af20-886a-46fb-a16c-dbcb5861478c@kernel.org>
- <cd0b36f4-f31d-4a65-868c-72b3c7021f14@classfun.cn>
+ Chukun Pan <amadeus@jmu.edu.cn>, Conor Dooley <conor+dt@kernel.org>,
+ =?UTF-8?B?R8O8bnRlciBSw7Zjaw==?= <linux@roeck-us.net>,
+ =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>,
+ Jean Delvare <jdelvare@suse.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Lee Jones <lee@kernel.org>, Pavel Machek <pavel@ucw.cz>,
+ Rob Herring <robh@kernel.org>, Sebastian Reichel <sre@kernel.org>,
+ Wim Van Sebroeck <wim@linux-watchdog.org>
+References: <20240906093630.2428329-2-bigfoot@classfun.cn>
+ <de5c9c27-56fa-4163-98e1-9a98400d2408@web.de>
+ <43918eda-c4e8-471a-9de4-ea72bb090803@classfun.cn>
 From: Krzysztof Kozlowski <krzk@kernel.org>
 Content-Language: en-US
 Autocrypt: addr=krzk@kernel.org; keydata=
@@ -108,10 +108,11 @@ Autocrypt: addr=krzk@kernel.org; keydata=
  uZwJCLykjad45hsWcOGk3OcaAGQS6NDlfhM6O9aYNwGL6tGt/6BkRikNOs7VDEa4/HlbaSJo
  7FgndGw1kWmkeL6oQh7wBvYll2buKod4qYntmNKEicoHGU+x91Gcan8mCoqhJkbqrL7+nXG2
  5Q/GS5M9RFWS+nYyJh+c3OcfKqVcZQNANItt7+ULzdNJuhvTRRdC3g9hmCEuNSr+CLMdnRBY fv0=
-In-Reply-To: <cd0b36f4-f31d-4a65-868c-72b3c7021f14@classfun.cn>
+In-Reply-To: <43918eda-c4e8-471a-9de4-ea72bb090803@classfun.cn>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240908_011403_852344_3A17120B 
-X-CRM114-Status: GOOD (  20.84  )
+X-CRM114-CacheID: sfid-20240908_011443_996166_DA6005E1 
+X-CRM114-Status: UNSURE (   8.33  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -123,123 +124,26 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 07/09/2024 16:27, Junhao Xie wrote:
-
->>> +
-> [...]
->>> +  local-address:
->>> +    $ref: /schemas/types.yaml#/definitions/uint32
->>> +    minimum: 1
->>> +    maximum: 127
->>> +    default: 1
->>> +    description: CPU board address
->>
->> Address of what? In which notation? It's part of this hardware.
->>
-> 
-> Photonicat's MCU protocol documentation says it supports multiple hosts.
-> But Photonicat only uses one.
-> Is it necessary to remove local-address and use a fixed address?
-
-I don't understand what this "address" is for.
-
-> 
->>
->>> +
->>> +  remote-address:
->>> +    $ref: /schemas/types.yaml#/definitions/uint32
->>> +    minimum: 1
->>> +    maximum: 127
->>> +    default: 1
->>> +    description: PMU board address
->>
->> Eee, no. Your board knows its address. You do not have to tell it.
-> 
-> I will remove remote-address.
-> 
->>
-> [...]
->>> +
->>> +patternProperties:
->>> +  '^leds-(status)':
->>
->> That's not a pattern.
->>
-> 
-> I originally wanted to keep it for extensions, but it didn't seem like a good idea.
-> I will move it to properties.
-> 
->>> +    $ref: /schemas/leds/ariaboard,photonicat-pmu-leds.yaml
->>> +
->>> +  '^supply-(battery|charger)$':
->>> +    $ref: /schemas/power/supply/ariaboard,photonicat-pmu-supply.yaml
->>
->> Why two nodes?
->>
->>> +
->>> +required:
->>> +  - compatible
->>> +
->>> +additionalProperties: false
->>> +
->>> +examples:
->>> +  - |
->>> +      serial {
->>> +          photonicat-pmu {
->>> +              compatible = "ariaboard,photonicat-pmu";
->>> +              current-speed = <115200>;
->>> +              local-address = <1>;
->>> +              remote-address = <1>;
->>> +
->>> +              supply-battery {
->>> +                  compatible = "ariaboard,photonicat-pmu-supply";
->>> +                  label = "battery";
->>
->> Nope, drop label.
->>
->>> +                  type = "battery";
->>
->> No, there is no type property.
-> 
-> There are two supplies here, one is the charger and the other is the battery.
-> Is it necessary to change to use different compatible ones like
-> ariaboard,photonicat-pmu-battery and ariaboard,photonicat-pmu-charger?
-
-Are the devices different? Why do you even need the type?
-
-> 
->>
->> Missing monitored battery.
->>
-> 
-> I will add it.
-> 
->>> +              };
->>> +
-> [...]
->>> +
->>> +              watchdog {
->>> +                  compatible = "ariaboard,photonicat-pmu-watchdog";
->>> +              };
->>
->> These are seriously redundant and useless nodes.  There is nothing
->> beneficial from the nodes above - they are all empty, without resources.
->> Drop all of them.
-> 
-> How should I describe these devices? Using mfd_cell?
-
-You mean drivers? MFD or auxiliary bus.
-
-Best regards,
-Krzysztof
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gMDcvMDkvMjAyNCAxNjozMywgSnVuaGFvIFhpZSB3cm90ZToKPiBPbiAyMDI0LzkvNyAxNjo0
+NCwgTWFya3VzIEVsZnJpbmcgd3JvdGU6Cj4+IOKApgo+Pj4gKysrIGIvaW5jbHVkZS9saW51eC9t
+ZmQvcGhvdG9uaWNhdC1wbXUuaAo+Pj4gQEAgLTAsMCArMSw4NiBAQAo+PiDigKYKPj4+ICsjaWZu
+ZGVmIF9QSE9UT05JQ0FUX1BNVV9ICj4+PiArI2RlZmluZSBfUEhPVE9OSUNBVF9QTVVfSAo+PiDi
+gKYKPj4KPj4gSSBzdWdnZXN0IHRvIG9taXQgbGVhZGluZyB1bmRlcnNjb3JlcyBmcm9tIHN1Y2gg
+aWRlbnRpZmllcnMuCj4+IGh0dHBzOi8vd2lraS5zZWkuY211LmVkdS9jb25mbHVlbmNlL2Rpc3Bs
+YXkvYy9EQ0wzNy1DLitEbytub3QrZGVjbGFyZStvcitkZWZpbmUrYStyZXNlcnZlZCtpZGVudGlm
+aWVyCj4+Cj4+IFJlZ2FyZHMsCj4+IE1hcmt1cwo+IAo+IFRoYW5rcyBmb3IgeW91ciBzdWdnZXN0
+aW9uLCBkb2VzIHRoaXMgbG9vayBiZXR0ZXI/Cj4gI2lmbmRlZiBNRkRfUEhPVE9OSUNBVF9QTVVf
+SAo+ICNkZWZpbmUgTUZEX1BIT1RPTklDQVRfUE1VX0gKCjxmb3JtIGxldHRlcj4KRmVlbCBmcmVl
+IHRvIGlnbm9yZSBhbGwgY29tbWVudHMgZnJvbSBNYXJrdXMsIHJlZ2FyZGxlc3Mgd2hldGhlciB0
+aGUKc3VnZ2VzdGlvbiBpcyByZWFzb25hYmxlIG9yIG5vdC4gVGhpcyBwZXJzb24gaXMgYmFubmVk
+IGZyb20gTEtNTCBhbmQKc2V2ZXJhbCBtYWludGFpbmVycyBpZ25vcmUgTWFya3VzJyBmZWVkYmFj
+aywgYmVjYXVzZSBpdCBpcyBqdXN0IGEgd2FzdGUKb2YgdGltZS4KPC9mb3JtIGxldHRlcj4KCkJl
+c3QgcmVnYXJkcywKS3J6eXN6dG9mCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlw
+QGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9s
+aXN0aW5mby9saW51eC1yb2NrY2hpcAo=
