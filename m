@@ -4,78 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ECC81CD4F4C
-	for <linux-rockchip@archiver.kernel.org>; Sun,  8 Sep 2024 21:20:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 30411CD4F4C
+	for <linux-rockchip@archiver.kernel.org>; Sun,  8 Sep 2024 21:51:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=wMwzUjgxXZyd4wjzzyGnT5XqmRfMzeOiuEqIXv1flj0=; b=2egrd/r8fMpTaU
-	TwL2A3HT0Mv8/d2jUijAZwWlswF5YdGEM4nL0cHy8QZreviwDRjloFh+1HcQ1TLjxAyLdub5XBeqW
-	Bx5tZENh/bwYYZzGTOn2QRbqA1KRqTZJmAgyBaTyiiSErdYflth1N8bDlqHj+T0Muu6GVMKsfoMIB
-	gnqwRyCFmqqEIeewQy4pN23LSzjf/eMV978BbjtinSWHM2rajrZIEo4dg26IXlT2RSjRE7jFeAfWB
-	/84tK3IUW8wKgrkw/+u2iB2AhjQ2IJvxnW48FSwDU0i/CBTklRwrNuOBTl89JYZeV0t/aHALQgnZK
-	/uajBTuE4iMi+yG5tV1Q==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=7Gvt2dnWh8rlKDOLEg4l5CN/TCryb/84D/ZerEIszKQ=; b=AzlIWnzmPNFEbO
+	lYmMiNggONr+raU+2NShR8fcBfVo1zxsWGzSQkgYPQ6k/neC3N6mLRsvxRX8VQXGiT+B/U+cf6jXF
+	sRVoq9+Ti07qJQmJb+ns1FL7Kp9jqUlIspqeWCXylfva+mvDcPpo6EIshSznzzUV23Y5vK/2oo2RY
+	xwO8eZ+l2FbJXdr9by4md/EJBFxuZNvACZ8wM84kxiWoiOxtwx4n75QGJ62UG2BZUySVey8jjAwvd
+	/8VdtsnvcLdE8UKaBgId5UCdGXiErNxjX0bYEOlnzqNyTKZ7xU4EytN2EyWLcgiN1FLLeQR5rBaUc
+	QHmqLYH6r2S05zZOkUgA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1snPK8-0000000HUln-1swL;
-	Sun, 08 Sep 2024 21:19:56 +0000
+	id 1snPo9-0000000HX0z-1a0h;
+	Sun, 08 Sep 2024 21:50:57 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1snPAT-0000000HT2E-2EKu;
-	Sun, 08 Sep 2024 21:09:59 +0000
+	id 1snPn0-0000000HWsR-1sPw
+	for linux-rockchip@lists.infradead.org;
+	Sun, 08 Sep 2024 21:49:48 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Transfer-Encoding:MIME-Version:References:
-	In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
 	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=3/4HHY3ghqW2KMcl0RzKPKCyl8MwdumKgzeU1PdzKSc=; b=ldvIzexodOw88hwxfyAi95f6xn
-	Ui7G5zkp1SVZ6j7WJdUuM3iHD610PYcejCol5da3+QBe1wZJ/P4BMTvqC1wqZ4LJUyBfG2tVnDEwu
-	A19DpOVjQM6vN0foicKUT+nUjL1A8eH3A0goGdcPRxhqffbZK0rmIxcD2a/sg5AnKMEgOX5fye93U
-	Z2h3KZhSOSJy6NbcLe5szwHXORbrQuuXws3S8h3R8adPRgBObrjFz1mT5CcAfSrktTSM/5XfBbzli
-	gjswITNBWwXTYRo2s+NdwqQRm2blB3ZQu+0AciPp6iDwgon9MZMnC6OTFAreapSHeHeE5nOtEfS19
-	S9jyzzMQ==;
-Received: from i5e8616cc.versanet.de ([94.134.22.204] helo=phil.lan)
+	bh=O+1lGf+egLrWXX0JMaceIaPCe6zCuqwFkQ/tynXfCvo=; b=f/NJvp6lU6SW7rzkFmZMXUCApn
+	OHUZV3Umn2Jfq5Ek+MVIFX/XtAXcW/60v88c2ZyqNBgthqjPMeayfSChMj90tNA5DsEeNMab0JLRG
+	/XC8IuZOqUto/EQWLfna1c2/4mx1uB81r1P3Tcd3ouqdj4gqtL9mWQwOgH3q46yreSEE6b0L4la4W
+	XO3csrSLLwZfQH8C3q9cp70N74NPswzi1bUdJGhdoDK+LeDYb5OW5O+OnXR0ehbX8xRZ+SFwfSoh4
+	XYBR4x9/qG1F8G/zk+/93tJ+JT91uqA7B0G1o7qQuqnS9xWZQiyWbS4ZessKLY0Y6EpcGStD3kYIh
+	8HJRPu2w==;
+Received: from i5e8616cc.versanet.de ([94.134.22.204] helo=diego.localnet)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1snPA1-0003s9-47; Sun, 08 Sep 2024 23:09:29 +0200
+	id 1snPmv-0004Go-VE; Sun, 08 Sep 2024 23:49:42 +0200
 From: Heiko Stuebner <heiko@sntech.de>
-To: lee@kernel.org,
-	jikos@kernel.org,
-	jic23@kernel.org
-Cc: robh@kernel.org,
-	krzk+dt@kernel.org,
-	conor+dt@kernel.org,
-	jdelvare@suse.com,
-	linux@roeck-us.net,
-	srinivas.pandruvada@linux.intel.com,
-	bentiss@kernel.org,
-	dmitry.torokhov@gmail.com,
-	pavel@ucw.cz,
-	ukleinek@debian.org,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-hwmon@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-input@vger.kernel.org,
-	linux-iio@vger.kernel.org,
-	linux-leds@vger.kernel.org,
-	Heiko Stuebner <heiko@sntech.de>
-Subject: [PATCH v8 1/9] HID: hid-sensor-hub: don't use stale platform-data on remove
-Date: Sun,  8 Sep 2024 23:07:55 +0200
-Message-ID: <20240908210803.3339919-2-heiko@sntech.de>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20240908210803.3339919-1-heiko@sntech.de>
-References: <20240908210803.3339919-1-heiko@sntech.de>
+To: mturquette@baylibre.com, Stephen Boyd <sboyd@kernel.org>
+Cc: linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org
+Subject: [GIT PULL] Rockchip clock changes for 6.12 #1
+Date: Sun, 08 Sep 2024 23:51:56 +0200
+Message-ID: <2436757.DCRlREXTYf@diego>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240908_140957_593591_9F23513C 
-X-CRM114-Status: GOOD (  18.03  )
+X-CRM114-CacheID: sfid-20240908_144946_524726_E5446CED 
+X-CRM114-Status: GOOD (  13.19  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,78 +70,103 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The hid-sensor-hub creates the individual device structs and transfers them
-to the created mfd platform-devices via the platform_data in the mfd_cell.
+Hi Mike, Stephen,
 
-Before commit e651a1da442a ("HID: hid-sensor-hub: Allow parallel synchronous reads")
-the sensor-hub was managing access centrally, with one "completion" in the
-hub's data structure, which needed to be finished on removal at the latest.
+please find below a pull-request with some Rockchip clock changes for 6.12
 
-The mentioned commit then moved this central management to each hid sensor
-device, resulting on a completion in each struct hid_sensor_hub_device.
-The remove procedure was adapted to go through all sensor devices and
-finish any pending "completion".
+Please pull.
 
-What this didn't take into account was, platform_device_add_data() that is
-used by mfd_add{_hotplug}_devices() does a kmemdup on the submitted
-platform-data. So the data the platform-device gets is a copy of the
-original data, meaning that the device worked on a different completion
-than what sensor_hub_remove() currently wants to access.
+Thanks
+Heiko
 
-To fix that, use device_for_each_child() to go through each child-device
-similar to how mfd_remove_devices() unregisters the devices later and
-with that get the live platform_data to finalize the correct completion.
 
-Fixes: e651a1da442a ("HID: hid-sensor-hub: Allow parallel synchronous reads")
-Signed-off-by: Heiko Stuebner <heiko@sntech.de>
----
- drivers/hid/hid-sensor-hub.c | 21 ++++++++++++++-------
- 1 file changed, 14 insertions(+), 7 deletions(-)
+The following changes since commit 8400291e289ee6b2bf9779ff1c83a291501f017b:
 
-diff --git a/drivers/hid/hid-sensor-hub.c b/drivers/hid/hid-sensor-hub.c
-index 26e93a331a51..3cd00afa453a 100644
---- a/drivers/hid/hid-sensor-hub.c
-+++ b/drivers/hid/hid-sensor-hub.c
-@@ -730,23 +730,30 @@ static int sensor_hub_probe(struct hid_device *hdev,
- 	return ret;
- }
- 
-+static int sensor_hub_finalize_pending_fn(struct device *dev, void *data)
-+{
-+	struct hid_sensor_hub_device *hsdev = dev->platform_data;
-+
-+	if (hsdev->pending.status)
-+		complete(&hsdev->pending.ready);
-+
-+	return 0;
-+}
-+
- static void sensor_hub_remove(struct hid_device *hdev)
- {
- 	struct sensor_hub_data *data = hid_get_drvdata(hdev);
- 	unsigned long flags;
--	int i;
- 
- 	hid_dbg(hdev, " hardware removed\n");
- 	hid_hw_close(hdev);
- 	hid_hw_stop(hdev);
-+
- 	spin_lock_irqsave(&data->lock, flags);
--	for (i = 0; i < data->hid_sensor_client_cnt; ++i) {
--		struct hid_sensor_hub_device *hsdev =
--			data->hid_sensor_hub_client_devs[i].platform_data;
--		if (hsdev->pending.status)
--			complete(&hsdev->pending.ready);
--	}
-+	device_for_each_child(&hdev->dev, NULL,
-+			      sensor_hub_finalize_pending_fn);
- 	spin_unlock_irqrestore(&data->lock, flags);
-+
- 	mfd_remove_devices(&hdev->dev);
- 	mutex_destroy(&data->mutex);
- }
--- 
-2.43.0
+  Linux 6.11-rc1 (2024-07-28 14:19:55 -0700)
+
+are available in the Git repository at:
+
+  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v6.12-rockchip-clk1
+
+for you to fetch changes up to 12fd64babaca4dc09d072f63eda76ba44119816a:
+
+  clk: rockchip: fix error for unknown clocks (2024-08-30 16:59:24 +0200)
+
+----------------------------------------------------------------
+Getting rid of the rest of CLK_NR_CLKS defines that reported the
+the max number of clocks, but should never have been part of the
+devicetree binding header.
+New clock controller driver for the rk3576.
+And some fixes for rk3228 and rk3588.
+
+----------------------------------------------------------------
+Alexander Shiyan (1):
+      clk: rockchip: rk3588: Fix 32k clock name for pmu_24m_32k_100m_src_p
+
+Detlev Casanova (1):
+      dt-bindings: clock, reset: Add support for rk3576
+
+Elaine Zhang (2):
+      clk: rockchip: Add new pll type pll_rk3588_ddr
+      clk: rockchip: Add clock controller for the RK3576
+
+Johan Jonker (9):
+      clk: rockchip: px30: Drop CLK_NR_CLKS CLKPMU_NR_CLKS usage
+      clk: rockchip: rk3036: Drop CLK_NR_CLKS usage
+      clk: rockchip: rk3228: Drop CLK_NR_CLKS usage
+      clk: rockchip: rk3288: Drop CLK_NR_CLKS usage
+      clk: rockchip: rk3308: Drop CLK_NR_CLKS usage
+      clk: rockchip: rk3328: Drop CLK_NR_CLKS usage
+      clk: rockchip: rk3368: Drop CLK_NR_CLKS usage
+      clk: rockchip: rk3399: Drop CLK_NR_CLKS CLKPMU_NR_CLKS usage
+      dt-bindings: clock: rockchip: remove CLK_NR_CLKS and CLKPMU_NR_CLKS
+
+Jonas Karlman (1):
+      clk: rockchip: Set parent rate for DCLK_VOP clock on RK3228
+
+Krzysztof Kozlowski (1):
+      dt-bindings: clock: rockchip,rk3588-cru: drop unneeded assigned-clocks
+
+Sebastian Reichel (2):
+      clk: rockchip: rk3588: drop unused code
+      clk: rockchip: fix error for unknown clocks
+
+ .../bindings/clock/rockchip,rk3576-cru.yaml        |   56 +
+ .../bindings/clock/rockchip,rk3588-cru.yaml        |    4 -
+ drivers/clk/rockchip/Kconfig                       |    7 +
+ drivers/clk/rockchip/Makefile                      |    1 +
+ drivers/clk/rockchip/clk-pll.c                     |    6 +-
+ drivers/clk/rockchip/clk-px30.c                    |   10 +-
+ drivers/clk/rockchip/clk-rk3036.c                  |    5 +-
+ drivers/clk/rockchip/clk-rk3228.c                  |    7 +-
+ drivers/clk/rockchip/clk-rk3288.c                  |    5 +-
+ drivers/clk/rockchip/clk-rk3308.c                  |    5 +-
+ drivers/clk/rockchip/clk-rk3328.c                  |    5 +-
+ drivers/clk/rockchip/clk-rk3368.c                  |    5 +-
+ drivers/clk/rockchip/clk-rk3399.c                  |   10 +-
+ drivers/clk/rockchip/clk-rk3576.c                  | 1820 ++++++++++++++++++++
+ drivers/clk/rockchip/clk-rk3588.c                  |   42 +-
+ drivers/clk/rockchip/clk.c                         |    3 +-
+ drivers/clk/rockchip/clk.h                         |   54 +
+ drivers/clk/rockchip/rst-rk3576.c                  |  651 +++++++
+ include/dt-bindings/clock/px30-cru.h               |    4 -
+ include/dt-bindings/clock/rk3036-cru.h             |    2 -
+ include/dt-bindings/clock/rk3228-cru.h             |    2 -
+ include/dt-bindings/clock/rk3288-cru.h             |    2 -
+ include/dt-bindings/clock/rk3308-cru.h             |    2 -
+ include/dt-bindings/clock/rk3328-cru.h             |    2 -
+ include/dt-bindings/clock/rk3368-cru.h             |    2 -
+ include/dt-bindings/clock/rk3399-cru.h             |    4 -
+ include/dt-bindings/clock/rockchip,rk3576-cru.h    |  592 +++++++
+ include/dt-bindings/reset/rockchip,rk3576-cru.h    |  564 ++++++
+ 28 files changed, 3794 insertions(+), 78 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/clock/rockchip,rk3576-cru.yaml
+ create mode 100644 drivers/clk/rockchip/clk-rk3576.c
+ create mode 100644 drivers/clk/rockchip/rst-rk3576.c
+ create mode 100644 include/dt-bindings/clock/rockchip,rk3576-cru.h
+ create mode 100644 include/dt-bindings/reset/rockchip,rk3576-cru.h
+
+
 
 
 _______________________________________________
