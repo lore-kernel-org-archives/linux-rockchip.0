@@ -4,38 +4,38 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EECDBCD4F4C
-	for <linux-rockchip@archiver.kernel.org>; Sun,  8 Sep 2024 13:28:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 27627E6FE49
+	for <linux-rockchip@archiver.kernel.org>; Sun,  8 Sep 2024 13:29:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=fW8YMun5VfSOoNBObQCwzhLXthbp+MfJGRQndRPVmLA=; b=CMmcsIKc2pujPv
-	4PbYfipwnPnd/AY94WsXA6TMby4SpPH5HkbOpjyBPxPv/OTvk1W0V6PpdOTKPRIMx7TqSjo0Sws29
-	hvSs/94+LscXlVB1qW/huV0xWWtgMvMAddidCB+randztiVgkUlV9zVT3sJ7cGGWl59JETE0A/woK
-	b/vinUQY5xIdkh0TGwg/1CaPQEaD3ONudhmr02GVhsF1JxRJ4iMwxi7SZqcGPZsBxPC86yVn0Wjkg
-	Y7qFoE3I+1IxdRTEKwjcCokX+MD3YZidUF2JKdqWFZNuRIGEuBKHf0aHkTA1eOS/y5fgl3hKua2PF
-	b0Hq8vlU/x1h5Lbn18LQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=OQA3bVrDwWf+czwVt8Zp7hUvtRIAGsRGIgXDvZqG+cI=; b=En3XFytw2oBefK
+	xoviYbHxNeciyAOGt0DC1mPJDC98qxhVX+7iTfomFUPiWjnPuDe6cyw5D/8FhbgJez+W66K7uOeP6
+	FMvkxY+c4ADo9o2yXyPmtjYzl1GVgkRr1nGZDpz+s4q7xT55Z305o1YTEOSrLdIhRawH0tz1Nu16K
+	Lo13S2Nlm0GfA5xRmxiwBQ8aD0YcZXslayP5zbQOhe2H71EM1Gtqtsg2BKJFe1Mzd0VtspXexfC5b
+	osa+2Z0ZdGNmRIZhNSw+LvDUL7SfG2CRuBtqcMh3avgeJB0n2/pdtRC4ydzpQ9FpSZnfBlfWFLv87
+	362xSqVHIbWKXd2olfww==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1snHyJ-0000000Gpsi-2OUW;
-	Sun, 08 Sep 2024 13:28:55 +0000
-Received: from smtp.forwardemail.net ([149.28.215.223])
+	id 1snHyW-0000000Gpyw-03G5;
+	Sun, 08 Sep 2024 13:29:08 +0000
+Received: from smtp.forwardemail.net ([207.246.76.47])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1snHyE-0000000GppH-1a6q
+	id 1snHyT-0000000Gpw5-0W1c
 	for linux-rockchip@lists.infradead.org;
-	Sun, 08 Sep 2024 13:28:52 +0000
+	Sun, 08 Sep 2024 13:29:06 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
- h=Content-Transfer-Encoding: MIME-Version: Message-ID: Date: Subject: Cc:
- To: From; q=dns/txt; s=fe-e1b5cab7be; t=1725802110;
- bh=GBZtSa7NV3xr9PArtmtkDJNem8kQ3e2llQ47ktafnlQ=;
- b=QbzNxNnwSbAb4TQ0yFDTzC/y6DCt00xusYXBD0R775cQFANiwsAxdsWUidwdgFnVI/q9VQAHb
- ecYAQkXR8UTg+RAoSPT39McuBqkm2XuMiEI6O8WMWJH7WT6VuTsSIMbVGeUKjPoqBWmxcRi5ZgP
- og27kIcMHxUjoxSfvSDRTfuBm6sY8wb+ttpc95L4LkPekY9rRqPb29dw6vIqMiBMFW2GGtoZoNt
- GS7xC0b94GAvEcaHrB65JqOK1rl0snStDeHcUwnY1/KHZAGUfJPToHdc6lSrEDQF0sdBm86uMk0
- uD315y37RqcRausvaNHsn+kHR2g2ipfTSt6MTiCsxOqg==
+ h=Content-Transfer-Encoding: MIME-Version: References: In-Reply-To:
+ Message-ID: Date: Subject: Cc: To: From; q=dns/txt; s=fe-e1b5cab7be;
+ t=1725802119; bh=Kv653550ZAaYWcH77Mo8Hgi73sCYCuyVNLs67561gpQ=;
+ b=MeyI+Xr9e5DGYFdF8X8Zcctpz8J3Ytfvis5MqM/5+ASyyuVckg0YITWoqFKtg6WNLzBTktxN6
+ rhAVUyzVuEio18nugu8UT+SwCXqrJPjdHWrrE2ByjdbP7CL4wNe2vo8Ar3qrCNxUoaLpVZIU58C
+ jeSlopzkOszghoA2RE605iS0Vq5ySTe+2DfDQiyKfzUMcD+xtXDjS2FVDED61O0atDmyaRmJdbp
+ t+rdVkUb23eqTykIunpkyFg0lkPHBq6EjKhLD0phhN+Jx1e03sZjoWciYcRjQR0AluA7DL1N9/u
+ /kPEMlmTZjnlKnTevrlbJaAIQS4aXxV16ihCgB6YolXQ==
 From: Jonas Karlman <jonas@kwiboo.se>
 To: Andrzej Hajda <andrzej.hajda@intel.com>,
 	Neil Armstrong <neil.armstrong@linaro.org>,
@@ -44,32 +44,34 @@ To: Andrzej Hajda <andrzej.hajda@intel.com>,
 	Maxime Ripard <mripard@kernel.org>,
 	Thomas Zimmermann <tzimmermann@suse.de>,
 	David Airlie <airlied@gmail.com>,
-	Simona Vetter <simona@ffwll.ch>
-Cc: Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+	Simona Vetter <simona@ffwll.ch>,
+	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+	Jonas Karlman <jonas@kwiboo.se>,
 	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Christian Hewitt <christianshewitt@gmail.com>,
+	Lucas Stach <l.stach@pengutronix.de>
+Cc: Christian Hewitt <christianshewitt@gmail.com>,
 	Diederik de Haas <didi.debian@cknow.org>,
 	Christopher Obbard <chris.obbard@collabora.com>,
 	dri-devel@lists.freedesktop.org,
 	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Jonas Karlman <jonas@kwiboo.se>
-Subject: [PATCH v2 00/10] drm: bridge: dw_hdmi: Misc enable/disable, CEC and EDID cleanup
-Date: Sun,  8 Sep 2024 13:28:02 +0000
-Message-ID: <20240908132823.3308029-1-jonas@kwiboo.se>
+	linux-kernel@vger.kernel.org
+Subject: [PATCH v2 02/10] drm: bridge: dw_hdmi: Only notify connected status on HPD interrupt
+Date: Sun,  8 Sep 2024 13:28:04 +0000
+Message-ID: <20240908132823.3308029-3-jonas@kwiboo.se>
 X-Mailer: git-send-email 2.46.0
+In-Reply-To: <20240908132823.3308029-1-jonas@kwiboo.se>
+References: <20240908132823.3308029-1-jonas@kwiboo.se>
 MIME-Version: 1.0
 X-Report-Abuse-To: abuse@forwardemail.net
 X-Report-Abuse: abuse@forwardemail.net
 X-Complaints-To: abuse@forwardemail.net
 X-ForwardEmail-Version: 0.4.40
 X-ForwardEmail-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
- 149.28.215.223
-X-ForwardEmail-ID: 66dda67e3c9877b4595878e3
+ 207.246.76.47
+X-ForwardEmail-ID: 66dda6873c9877b459587918
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240908_062850_768205_96EBA569 
-X-CRM114-Status: UNSURE (   7.79  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240908_062905_517149_2D5F556E 
+X-CRM114-Status: GOOD (  11.18  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,41 +88,36 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This series ensure poweron/poweroff and CEC phys addr invalidation is
-happening under drm mode_config mutex lock, and also ensure EDID is
-updated (when the dw-hdmi connector is used) after a hotplug pulse.
+drm_helper_hpd_irq_event() and drm_bridge_hpd_notify() may incorrectly
+be called with a connected status when HPD is high and RX sense is
+changed. This typically happen when the HDMI cable is unplugged, shortly
+before the HPD is changed to low.
 
-These changes has mainly been tested on Rockchip devices together with a
-series [1] that add HDMI 2.0 4K@60Hz support to RK3228, RK3328, RK3399
-and RK3568.
+Fix this by only notify connected status on the HPD interrupt when HPD
+is going high, not on the RX sense interrupt when RX sense is changed.
 
-Rockchip use the dw-hdmi connector so this should also be validated with
-a driver that use the bridge connector.
+Fixes: da09daf88108 ("drm: bridge: dw_hdmi: only trigger hotplug event on link change")
+Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
+---
+v2: New patch
+---
+ drivers/gpu/drm/bridge/synopsys/dw-hdmi.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-Changes in v2:
-- Add patch to disable scrambler feature when not supported
-- Add patch to only notify connected status on HPD interrupt
-- Update commit messages
-- Collect r-b tags
-- Rebased on next-20240906
-
-[1] https://lore.kernel.org/r/20240615170417.3134517-1-jonas@kwiboo.se/
-
-Jonas Karlman (10):
-  drm: bridge: dw_hdmi: Disable scrambler feature when not supported
-  drm: bridge: dw_hdmi: Only notify connected status on HPD interrupt
-  drm: bridge: dw_hdmi: Call poweron/poweroff from atomic enable/disable
-  drm: bridge: dw_hdmi: Use passed mode instead of stored previous_mode
-  drm: bridge: dw_hdmi: Fold poweron and setup functions
-  drm: bridge: dw_hdmi: Remove previous_mode and mode_set
-  drm: bridge: dw_hdmi: Invalidate CEC phys addr from connector detect
-  drm: bridge: dw_hdmi: Remove cec_notifier_mutex
-  drm: bridge: dw_hdmi: Update EDID during hotplug processing
-  drm: bridge: dw_hdmi: Use display_info is_hdmi and has_audio
-
- drivers/gpu/drm/bridge/synopsys/dw-hdmi.c | 150 +++++++---------------
- 1 file changed, 43 insertions(+), 107 deletions(-)
-
+diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
+index 9e7f86a0bf5c..055fc9848df4 100644
+--- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
++++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
+@@ -3123,7 +3123,8 @@ static irqreturn_t dw_hdmi_irq(int irq, void *dev_id)
+ 			mutex_unlock(&hdmi->cec_notifier_mutex);
+ 		}
+ 
+-		if (phy_stat & HDMI_PHY_HPD)
++		if ((intr_stat & HDMI_IH_PHY_STAT0_HPD) &&
++		    (phy_stat & HDMI_PHY_HPD))
+ 			status = connector_status_connected;
+ 
+ 		if (!(phy_stat & (HDMI_PHY_HPD | HDMI_PHY_RX_SENSE)))
 -- 
 2.46.0
 
