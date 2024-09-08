@@ -4,38 +4,38 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 904B7CD4F4C
-	for <linux-rockchip@archiver.kernel.org>; Sun,  8 Sep 2024 13:29:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3B7BECD4F4C
+	for <linux-rockchip@archiver.kernel.org>; Sun,  8 Sep 2024 13:29:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=v6EqJGEBvozuRJUxn4mJfJuRoJEO9nb67/LpxxQlqXA=; b=mvt1/HEMrOBC9s
-	qxhQZNpvyr3ZgvH2POGBbetUAeeRQw58QBEwtl7/PcOTRTrtdQff1/VprDvbZOKJ1xhiA2pQubZcA
-	7uanOl/hurgda+B7JEOPsZDbdRwcILlU24x9s3AvhBV/+HCxtCMZAli3SZPsT7kuRfDuQWBhYgXhv
-	Kqh1VF35L0Xt0+t+NDfy1Lw4G+NKSUVGUZR0zCq9FH9n4CewO+ozsQnc3EAUDW2cpumnmu1KI+COS
-	P244TU/BnXrZkIDPsj0B+XFryCgWPTl9TNIhvrS/HFi0kjDOpGvcAazjRvfFefGYcGAWn3jU9jeQf
-	HJXb1iLUolozCjS4FiyA==;
+	List-Owner; bh=/ZPfuuen5MzvcNWq+W5pTqct3prBJ9X0AYu7xLRl+E0=; b=dyz76+gEeD2dI/
+	Siw+4IBgSp7R+Cvf1wRRDUsyWxbNDpsFTRpAIKIDiqiJFFFOF6u2nGZpi/io+tA4DFFTFl9PvsHJz
+	u3pwvoFherSJLg8FeySS9lmoGjZuZv79Ur2n73FCK7OqNIyjD2rYF7VBKmn+1BfojvlzzFTHg0aPK
+	MK+O/uXXXZz45IajzxCRHjjOWNnViCU4sP+V2aQKT4Sv1NDMsR30QMS0+7R0eWm7ZItza+5Egt2Y9
+	aCAHKBfYgqtK+IfJwL+ad0vzOMoV0djIxkjNAebObXMJ5d6e3nEVf+DmhqucHQUnfDwyt+pPeiXCB
+	P9DEtvLQVY91LANCnHKw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1snHyw-0000000GqKt-2JOQ;
-	Sun, 08 Sep 2024 13:29:34 +0000
+	id 1snHyz-0000000GqP8-38JH;
+	Sun, 08 Sep 2024 13:29:37 +0000
 Received: from smtp.forwardemail.net ([149.28.215.223])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1snHyr-0000000GqFe-2eTh
+	id 1snHyv-0000000GqJ6-29HI
 	for linux-rockchip@lists.infradead.org;
-	Sun, 08 Sep 2024 13:29:31 +0000
+	Sun, 08 Sep 2024 13:29:35 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
  h=Content-Transfer-Encoding: MIME-Version: References: In-Reply-To:
  Message-ID: Date: Subject: Cc: To: From; q=dns/txt; s=fe-e1b5cab7be;
- t=1725802151; bh=TuhVKe3weOntTsfCsjZn+CLnTcjzMkqTe8icEx7g6YU=;
- b=XtqTRQ8JtADF5rAoc9u22pLFnF/8lC4syVJBR++Yj5/iNfTgYsCyxzaTxeFpIqlCxA99JWJA8
- pKoKi2hBGilRZtk+ZUJdrwgRKJkH0BKFIg2MhoCgA16YTXFFsQLHPcQBBHSfbx102aust5S5UWQ
- PPxAGgKFfMZ2mEmHVTlw3WYpKAksJwygSgHuQi3PSZywPGgL1czaRaAZjVJMiVl6SD1y8HSA5dh
- AQNGkkJjy3TGFWbzVKRpzzWV3OO41qWQXAd60C8stYGQjj0H8olj8VCxA3nzEI0WKxm9IVV+dgx
- XGSV4bF6w3BChDFAUas0M63V5orjkz054Umye1XSkJfA==
+ t=1725802156; bh=PP2Q5FqW/bN+deyQX3i1184rCXMWlxXESw9UhvzQYVs=;
+ b=G6QUvcBFgWWyHpZGH137Ht0yhKDVAU313ONpBmYC1FzNVoJyo1ca/BR2NtA6vfj3/dh/fq8zd
+ eRLd1Ei7ZYlKnplSs4E0cDLoJWWYgSs5Mj/Xt3zd08C2e1x9VvBq3P2CrzNakSZn+CxQkDSPJ/L
+ iXXWUrP8ACEAdq238tfVsv+VOkXXWEQ1T5fkWLJDcZyPSr/geSFHs+dDJuwSJkCUh2oCodTgkK5
+ xBEkDxotiD38PoZ82rSPN1I7ENbAYpisRp8xqcKyeKdCbjCMW+w4KZwGKB1xjNriAt63CNJ/UeO
+ ITqvdJvvxNgy11KMWeZ5L2s7FZi1rXHDveoX5VGVrRhQ==
 From: Jonas Karlman <jonas@kwiboo.se>
 To: Andrzej Hajda <andrzej.hajda@intel.com>,
 	Neil Armstrong <neil.armstrong@linaro.org>,
@@ -54,9 +54,9 @@ Cc: Christian Hewitt <christianshewitt@gmail.com>,
 	dri-devel@lists.freedesktop.org,
 	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org
-Subject: [PATCH v2 08/10] drm: bridge: dw_hdmi: Remove cec_notifier_mutex
-Date: Sun,  8 Sep 2024 13:28:10 +0000
-Message-ID: <20240908132823.3308029-9-jonas@kwiboo.se>
+Subject: [PATCH v2 10/10] drm: bridge: dw_hdmi: Use display_info is_hdmi and has_audio
+Date: Sun,  8 Sep 2024 13:28:12 +0000
+Message-ID: <20240908132823.3308029-11-jonas@kwiboo.se>
 X-Mailer: git-send-email 2.46.0
 In-Reply-To: <20240908132823.3308029-1-jonas@kwiboo.se>
 References: <20240908132823.3308029-1-jonas@kwiboo.se>
@@ -67,11 +67,10 @@ X-Complaints-To: abuse@forwardemail.net
 X-ForwardEmail-Version: 0.4.40
 X-ForwardEmail-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
  149.28.215.223
-X-ForwardEmail-ID: 66dda6a23c9877b45958799d
+X-ForwardEmail-ID: 66dda6ab3c9877b4595879ca
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240908_062930_252934_B9321769 
-X-CRM114-Status: UNSURE (   9.65  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240908_062933_630810_3C743A3A 
+X-CRM114-Status: GOOD (  13.49  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,71 +87,120 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-With CEC phys addr invalidation moved away from the irq handler there is
-no longer a need for cec_notifier_mutex, remove it.
+drm_edid_connector_update() is being called from bridge connector ops
+and from detect and get_modes ops for dw-hdmi connector.
+
+Change to use is_hdmi and has_audio from display_info directly instead
+of keeping our own state in sink_is_hdmi and sink_has_audio.
+
+Also remove the old and unused edid struct member and related define.
 
 Reviewed-by: Neil Armstrong <neil.armstrong@linaro.org>
 Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
 ---
 v2: Collect r-b tag
 ---
- drivers/gpu/drm/bridge/synopsys/dw-hdmi.c | 11 +----------
- 1 file changed, 1 insertion(+), 10 deletions(-)
+ drivers/gpu/drm/bridge/synopsys/dw-hdmi.c | 32 ++++-------------------
+ 1 file changed, 5 insertions(+), 27 deletions(-)
 
 diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
-index 8ec97babd334..c19307120909 100644
+index 7bd9f895f03f..b9a1304b740c 100644
 --- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
 +++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
-@@ -186,7 +186,6 @@ struct dw_hdmi {
- 	void (*enable_audio)(struct dw_hdmi *hdmi);
- 	void (*disable_audio)(struct dw_hdmi *hdmi);
+@@ -43,8 +43,6 @@
+ #define DDC_CI_ADDR		0x37
+ #define DDC_SEGMENT_ADDR	0x30
  
--	struct mutex cec_notifier_mutex;
- 	struct cec_notifier *cec_notifier;
+-#define HDMI_EDID_LEN		512
+-
+ /* DW-HDMI Controller >= 0x200a are at least compliant with SCDC version 1 */
+ #define SCDC_MIN_SOURCE_VERSION	0x1
  
- 	hdmi_codec_plugged_cb plugged_cb;
-@@ -2458,11 +2457,8 @@ dw_hdmi_connector_detect(struct drm_connector *connector, bool force)
+@@ -145,8 +143,6 @@ struct dw_hdmi {
  
- 	status = dw_hdmi_detect(hdmi);
+ 	int vic;
  
--	if (status == connector_status_disconnected) {
--		mutex_lock(&hdmi->cec_notifier_mutex);
-+	if (status == connector_status_disconnected)
- 		cec_notifier_phys_addr_invalidate(hdmi->cec_notifier);
--		mutex_unlock(&hdmi->cec_notifier_mutex);
--	}
+-	u8 edid[HDMI_EDID_LEN];
+-
+ 	struct {
+ 		const struct dw_hdmi_phy_ops *ops;
+ 		const char *name;
+@@ -156,8 +152,6 @@ struct dw_hdmi {
  
- 	return status;
- }
-@@ -2576,9 +2572,7 @@ static int dw_hdmi_connector_create(struct dw_hdmi *hdmi)
- 	if (!notifier)
- 		return -ENOMEM;
+ 	struct i2c_adapter *ddc;
+ 	void __iomem *regs;
+-	bool sink_is_hdmi;
+-	bool sink_has_audio;
  
--	mutex_lock(&hdmi->cec_notifier_mutex);
- 	hdmi->cec_notifier = notifier;
--	mutex_unlock(&hdmi->cec_notifier_mutex);
+ 	struct pinctrl *pinctrl;
+ 	struct pinctrl_state *default_state;
+@@ -2038,7 +2032,7 @@ static void hdmi_av_composer(struct dw_hdmi *hdmi,
+ 		HDMI_FC_INVIDCONF_IN_I_P_INTERLACED :
+ 		HDMI_FC_INVIDCONF_IN_I_P_PROGRESSIVE;
  
- 	return 0;
- }
-@@ -2876,10 +2870,8 @@ static void dw_hdmi_bridge_detach(struct drm_bridge *bridge)
+-	inv_val |= hdmi->sink_is_hdmi ?
++	inv_val |= display->is_hdmi ?
+ 		HDMI_FC_INVIDCONF_DVI_MODEZ_HDMI_MODE :
+ 		HDMI_FC_INVIDCONF_DVI_MODEZ_DVI_MODE;
+ 
+@@ -2274,7 +2268,7 @@ static int dw_hdmi_poweron(struct dw_hdmi *hdmi,
+ 	if (hdmi->hdmi_data.enc_out_bus_format == MEDIA_BUS_FMT_FIXED)
+ 		hdmi->hdmi_data.enc_out_bus_format = MEDIA_BUS_FMT_RGB888_1X24;
+ 
+-	hdmi->hdmi_data.rgb_limited_range = hdmi->sink_is_hdmi &&
++	hdmi->hdmi_data.rgb_limited_range = display->is_hdmi &&
+ 		drm_default_rgb_quant_range(mode) ==
+ 		HDMI_QUANTIZATION_RANGE_LIMITED;
+ 
+@@ -2294,7 +2288,7 @@ static int dw_hdmi_poweron(struct dw_hdmi *hdmi,
+ 	/* HDMI Initialization Step B.3 */
+ 	dw_hdmi_enable_video_path(hdmi);
+ 
+-	if (hdmi->sink_has_audio) {
++	if (display->has_audio) {
+ 		dev_dbg(hdmi->dev, "sink has audio support\n");
+ 
+ 		/* HDMI Initialization Step E - Configure audio */
+@@ -2303,7 +2297,7 @@ static int dw_hdmi_poweron(struct dw_hdmi *hdmi,
+ 	}
+ 
+ 	/* not for DVI mode */
+-	if (hdmi->sink_is_hdmi) {
++	if (display->is_hdmi) {
+ 		dev_dbg(hdmi->dev, "%s HDMI mode\n", __func__);
+ 
+ 		/* HDMI Initialization Step F - Configure AVI InfoFrame */
+@@ -2417,29 +2411,13 @@ static const struct drm_edid *dw_hdmi_edid_read(struct dw_hdmi *hdmi,
+ 						struct drm_connector *connector)
  {
- 	struct dw_hdmi *hdmi = bridge->driver_private;
+ 	const struct drm_edid *drm_edid;
+-	const struct edid *edid;
  
--	mutex_lock(&hdmi->cec_notifier_mutex);
- 	cec_notifier_conn_unregister(hdmi->cec_notifier);
- 	hdmi->cec_notifier = NULL;
--	mutex_unlock(&hdmi->cec_notifier_mutex);
+ 	if (!hdmi->ddc)
+ 		return NULL;
+ 
+ 	drm_edid = drm_edid_read_ddc(connector, hdmi->ddc);
+-	if (!drm_edid) {
++	if (!drm_edid)
+ 		dev_dbg(hdmi->dev, "failed to get edid\n");
+-		return NULL;
+-	}
+-
+-	/*
+-	 * FIXME: This should use connector->display_info.is_hdmi and
+-	 * connector->display_info.has_audio from a path that has read the EDID
+-	 * and called drm_edid_connector_update().
+-	 */
+-	edid = drm_edid_raw(drm_edid);
+-
+-	dev_dbg(hdmi->dev, "got edid: width[%d] x height[%d]\n",
+-		edid->width_cm, edid->height_cm);
+-
+-	hdmi->sink_is_hdmi = drm_detect_hdmi_monitor(edid);
+-	hdmi->sink_has_audio = drm_detect_monitor_audio(edid);
+ 
+ 	return drm_edid;
  }
- 
- static enum drm_mode_status
-@@ -3304,7 +3296,6 @@ struct dw_hdmi *dw_hdmi_probe(struct platform_device *pdev,
- 
- 	mutex_init(&hdmi->mutex);
- 	mutex_init(&hdmi->audio_mutex);
--	mutex_init(&hdmi->cec_notifier_mutex);
- 	spin_lock_init(&hdmi->audio_lock);
- 
- 	ret = dw_hdmi_parse_dt(hdmi);
 -- 
 2.46.0
 
