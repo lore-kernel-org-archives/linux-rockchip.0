@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 42955ECE579
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BA94FECE57B
 	for <linux-rockchip@archiver.kernel.org>; Sun,  8 Sep 2024 15:02:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,30 +12,30 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=2v9ZmNk+e2x2etTKuY+RAShDiXH+TFF2tMYJaRN27rc=; b=DT2G07r6BAa4d0
-	DUFWoZHTt7F+u0kRA9X1KwxwduOxIQB9L1GCvxbShxx7Jj5/siAOdFiixIZzuT7B19S9eoDicDsU1
-	wKTW+63+N1DGXM00+LqWb7hbYp+GMTxO0MMizYxZTt+zVSWUZLv2eH+NTvN66fPn8NtxcdqDnNBoh
-	vUoeRP286oJQaoL5Uid9e4Vf+dWegUm86j9EBvMbi1+FEfgXoktKSFojdaSHOgDJmVuHvr0XW6Ou9
-	z1IOMuH1P8yrcg4rBMBXAvWdYNPBlupPxpfUqiSt4HWv75zCRAd3MBuXqq9uPZSQNBT+SlsibMGw6
-	Tk8zLwlx0vAo3zBLTHBw==;
+	List-Owner; bh=fyM+AsO+Xtew5WTn2uFw8q9VLd5nBXWICQbczfY5M5E=; b=zPx5kH+C+s7ANc
+	rYRvi/07B32dPKERum2tLlLLat5JQVEuyDy4I4kfIZKQHih/vAC55vape07qBoFuw7uz2PIXRbJ27
+	XnU1nHlyAEBckYA+RndyAw3OeQGCOLEkaY+3jyHSmiFNXbpceKzzec7dMij8kOUE5hzfzwG6hU71R
+	LimtQEDuuYIMoFRWUwZ7m5dxtt0lPqW3k/EzeAhD/gCQuI/rExKMVT5NpZiTny//5tJggPOsTsCMI
+	xDXuUv3+Kl7e6XWIuQA2eIOT4ujUKSuPKiSMS3cS+IOxBN281Cip0s8b3ReMIcph/LDYjC+OkCzFz
+	1o/Px4pVew0vfaZYbZaA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1snJQK-0000000H0GL-1wRl;
-	Sun, 08 Sep 2024 15:01:56 +0000
+	id 1snJQL-0000000H0H3-2fZi;
+	Sun, 08 Sep 2024 15:01:57 +0000
 Received: from smtp.forwardemail.net ([149.28.215.223])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1snJKc-0000000GzE1-0ShO
+	id 1snJKh-0000000GzH4-0oaQ
 	for linux-rockchip@lists.infradead.org;
-	Sun, 08 Sep 2024 14:56:05 +0000
+	Sun, 08 Sep 2024 14:56:08 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
  h=Content-Transfer-Encoding: MIME-Version: References: In-Reply-To:
  Message-ID: Date: Subject: Cc: To: From; q=dns/txt; s=fe-e1b5cab7be;
- t=1725807342; bh=A4vnwoL7sstjHcuswUpS2YQ16w3NXCb74wI/o3dGYlM=;
- b=A81/VitDk6OBeV1JkUiwkQvaKl+bP+0pqYrpGtawKzezpJCM6Fqme6h4nPutEC2x96PDYylrR
- gks2UUfCb09b/JSzrjYISQb2wSAI56HYi8cUy3F5BEhFI/gV4Xef1Wy6pmz48z7qZDOKUrKSvRx
- OTH9pr8Xmw5xNhLrRdYWEo4uNi0u95LCEVU/Fb/qbkr4XDrLMseZ0AX/rX5KdZ+ikaD0ACuH28e
- x0MnWyAwManFhlJAKKJM7LVdgqCVes8QAWbo8H+LShdgaIPsqC+1gfJVAxYlTcfX88B1a5S8Fgk
- t7ss59+vbxz9ZPmznjjUb9vc+uuObdXzBMZrXQzptDdg==
+ t=1725807352; bh=Fen8SXObvKui+EcVpqkgeahn1KAOdYtBUTto1YpsJkY=;
+ b=m5w1Uc0EeJDeC8pY9mEZGT+8uLPtvOHjxBvWrFo7oXfen30wNWXyRXtKQ2KTcWdmeFsmPsjbY
+ iyKSEUAZkXkU+YOFZkTZzjyJ85ybHQi+pls3GRgyRaEm7S4+TzaPvxIqNG8SzNo9OAd3s4Hd/ql
+ v2GXx+LxPcBrdcfOI6Ln1klzhkOGb7LJi1SlQFUv0Ucsgh0YpyhYoZvrcdi06I+FlkAX1qXceKe
+ Yz5omvgvyPkBsiFTWP57yurqi3nfRr6j5ERcqpKI2/5rQWMNeEXnqvW1GZDjgAjRF5fnf3RmLNH
+ C59wRK93UqFi8h5SnYBvvOuXAPw6ssz3VW3XfyA7pd0g==
 From: Jonas Karlman <jonas@kwiboo.se>
 To: Heiko Stuebner <heiko@sntech.de>,
 	Sandy Huang <hjc@rock-chips.com>,
@@ -50,12 +50,10 @@ Cc: Diederik de Haas <didi.debian@cknow.org>,
 	linux-rockchip@lists.infradead.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
-	Jonas Karlman <jonas@kwiboo.se>,
-	Douglas Anderson <dianders@chromium.org>,
-	Yakir Yang <ykk@rock-chips.com>
-Subject: [PATCH v2 5/7] drm/rockchip: dw_hdmi: Use auto-generated tables
-Date: Sun,  8 Sep 2024 14:55:02 +0000
-Message-ID: <20240908145511.3331451-6-jonas@kwiboo.se>
+	Jonas Karlman <jonas@kwiboo.se>
+Subject: [PATCH v2 7/7] drm/rockchip: Load crtc devices in preferred order
+Date: Sun,  8 Sep 2024 14:55:04 +0000
+Message-ID: <20240908145511.3331451-8-jonas@kwiboo.se>
 X-Mailer: git-send-email 2.46.0
 In-Reply-To: <20240908145511.3331451-1-jonas@kwiboo.se>
 References: <20240908145511.3331451-1-jonas@kwiboo.se>
@@ -66,10 +64,10 @@ X-Complaints-To: abuse@forwardemail.net
 X-ForwardEmail-Version: 0.4.40
 X-ForwardEmail-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
  149.28.215.223
-X-ForwardEmail-ID: 66ddbaec3c9877b459588eeb
+X-ForwardEmail-ID: 66ddbaf53c9877b459588f11
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240908_075602_530917_C92CB5D4 
-X-CRM114-Status: GOOD (  13.11  )
+X-CRM114-CacheID: sfid-20240908_075607_377813_F4DA2512 
+X-CRM114-Status: GOOD (  13.06  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,179 +84,62 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Douglas Anderson <dianders@chromium.org>
+On RK3399 the VOPL is loaded before VOPB and get registered as crtc-0.
+However, on RK3288 and PX30 VOPB is gets registered as crtc-0 instead of
+VOPL.
 
-The previous tables for mpll_cfg and curr_ctrl were created using the
-20-pages of example settings provided by the PHY vendor.  Those
-example settings weren't particularly dense, so there were places
-where we were guessing what the settings would be for 10-bit and
-12-bit (not that we use those anyway).  It was also always a lot of
-extra work every time we wanted to add a new clock rate since we had
-to cross-reference several tables.
+With VOPL registered as crtc-0 the kernel kms client is not able to
+enable 4K display modes for console use on RK3399.
 
-In <https://crrev.com/c/285855> I've gone through the work to figure
-out how to generate this table automatically.  Let's now use the
-automatically generated table and then we'll never need to look at it
-again.
+Load VOPB before VOPL to help kernel kms client make use of 4K display
+modes for console use on RK3399.
 
-We only support 8-bit mode right now and only support a small number
-of clock rates and I've verified that the only 8-bit rate that was
-affected was 148.5.  That mode appears to have been wrong in the old
-table.
-
-Signed-off-by: Douglas Anderson <dianders@chromium.org>
-Signed-off-by: Yakir Yang <ykk@rock-chips.com>
 Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
 ---
 v2: No change
 ---
- drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c | 104 ++++++++++----------
- 1 file changed, 53 insertions(+), 51 deletions(-)
+ drivers/gpu/drm/rockchip/rockchip_drm_drv.c | 23 +++++++++++++++++++++
+ 1 file changed, 23 insertions(+)
 
-diff --git a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
-index a050a65af8f2..090d8c0f306f 100644
---- a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
-+++ b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
-@@ -92,74 +92,70 @@ static struct rockchip_hdmi *to_rockchip_hdmi(struct drm_encoder *encoder)
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_drv.c b/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
+index 44d769d9234d..b84451d59187 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
+@@ -354,11 +354,34 @@ static void rockchip_drm_match_remove(struct device *dev)
+ 		device_link_del(link);
+ }
  
- static const struct dw_hdmi_mpll_config rockchip_mpll_cfg[] = {
- 	{
--		27000000, {
--			{ 0x00b3, 0x0000},
--			{ 0x2153, 0x0000},
--			{ 0x40f3, 0x0000}
-+		30666000, {
-+			{ 0x00b3, 0x0000 },
-+			{ 0x2153, 0x0000 },
-+			{ 0x40f3, 0x0000 },
- 		},
- 	}, {
--		36000000, {
--			{ 0x00b3, 0x0000},
--			{ 0x2153, 0x0000},
--			{ 0x40f3, 0x0000}
-+		36800000, {
-+			{ 0x00b3, 0x0000 },
-+			{ 0x2153, 0x0000 },
-+			{ 0x40a2, 0x0001 },
- 		},
- 	}, {
--		40000000, {
--			{ 0x00b3, 0x0000},
--			{ 0x2153, 0x0000},
--			{ 0x40f3, 0x0000}
-+		46000000, {
-+			{ 0x00b3, 0x0000 },
-+			{ 0x2142, 0x0001 },
-+			{ 0x40a2, 0x0001 },
- 		},
- 	}, {
--		54000000, {
--			{ 0x0072, 0x0001},
--			{ 0x2142, 0x0001},
--			{ 0x40a2, 0x0001},
-+		61333000, {
-+			{ 0x0072, 0x0001 },
-+			{ 0x2142, 0x0001 },
-+			{ 0x40a2, 0x0001 },
- 		},
- 	}, {
--		65000000, {
--			{ 0x0072, 0x0001},
--			{ 0x2142, 0x0001},
--			{ 0x40a2, 0x0001},
-+		73600000, {
-+			{ 0x0072, 0x0001 },
-+			{ 0x2142, 0x0001 },
-+			{ 0x4061, 0x0002 },
- 		},
- 	}, {
--		66000000, {
--			{ 0x013e, 0x0003},
--			{ 0x217e, 0x0002},
--			{ 0x4061, 0x0002}
-+		92000000, {
-+			{ 0x0072, 0x0001 },
-+			{ 0x2145, 0x0002 },
-+			{ 0x4061, 0x0002 },
- 		},
- 	}, {
--		74250000, {
--			{ 0x0072, 0x0001},
--			{ 0x2145, 0x0002},
--			{ 0x4061, 0x0002}
-+		122666000, {
-+			{ 0x0051, 0x0002 },
-+			{ 0x2145, 0x0002 },
-+			{ 0x4061, 0x0002 },
- 		},
- 	}, {
--		83500000, {
--			{ 0x0072, 0x0001},
-+		147200000, {
-+			{ 0x0051, 0x0002 },
-+			{ 0x2145, 0x0002 },
-+			{ 0x4064, 0x0003 },
- 		},
- 	}, {
--		108000000, {
--			{ 0x0051, 0x0002},
--			{ 0x2145, 0x0002},
--			{ 0x4061, 0x0002}
-+		184000000, {
-+			{ 0x0051, 0x0002 },
-+			{ 0x214c, 0x0003 },
-+			{ 0x4064, 0x0003 },
- 		},
- 	}, {
--		106500000, {
--			{ 0x0051, 0x0002},
--			{ 0x2145, 0x0002},
--			{ 0x4061, 0x0002}
--		},
--	}, {
--		146250000, {
--			{ 0x0051, 0x0002},
--			{ 0x2145, 0x0002},
--			{ 0x4061, 0x0002}
-+		226666000, {
-+			{ 0x0040, 0x0003 },
-+			{ 0x214c, 0x0003 },
-+			{ 0x4064, 0x0003 },
- 		},
- 	}, {
--		148500000, {
--			{ 0x0051, 0x0003},
--			{ 0x214c, 0x0003},
--			{ 0x4064, 0x0003}
-+		272000000, {
-+			{ 0x0040, 0x0003 },
-+			{ 0x214c, 0x0003 },
-+			{ 0x5a64, 0x0003 },
- 		},
- 	}, {
- 		340000000, {
-@@ -167,11 +163,17 @@ static const struct dw_hdmi_mpll_config rockchip_mpll_cfg[] = {
- 			{ 0x3b4c, 0x0003 },
- 			{ 0x5a64, 0x0003 },
- 		},
-+	}, {
-+		600000000, {
-+			{ 0x1a40, 0x0003 },
-+			{ 0x3b4c, 0x0003 },
-+			{ 0x5a64, 0x0003 },
-+		},
- 	}, {
- 		~0UL, {
--			{ 0x00a0, 0x000a },
--			{ 0x2001, 0x000f },
--			{ 0x4002, 0x000f },
-+			{ 0x0000, 0x0000 },
-+			{ 0x0000, 0x0000 },
-+			{ 0x0000, 0x0000 },
- 		},
- 	}
- };
++/* list of preferred vop devices */
++static const char *const rockchip_drm_match_preferred[] = {
++	"rockchip,rk3399-vop-big",
++	NULL,
++};
++
+ static struct component_match *rockchip_drm_match_add(struct device *dev)
+ {
+ 	struct component_match *match = NULL;
++	struct device_node *port;
+ 	int i;
+ 
++	/* add preferred vop device match before adding driver device matches */
++	for (i = 0; ; i++) {
++		port = of_parse_phandle(dev->of_node, "ports", i);
++		if (!port)
++			break;
++
++		if (of_device_is_available(port->parent) &&
++		    of_device_compatible_match(port->parent,
++					       rockchip_drm_match_preferred))
++			drm_of_component_match_add(dev, &match,
++						   component_compare_of,
++						   port->parent);
++
++		of_node_put(port);
++	}
++
+ 	for (i = 0; i < num_rockchip_sub_drivers; i++) {
+ 		struct platform_driver *drv = rockchip_sub_drivers[i];
+ 		struct device *p = NULL, *d;
 -- 
 2.46.0
 
