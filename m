@@ -4,27 +4,41 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B826DE6FE49
-	for <linux-rockchip@archiver.kernel.org>; Sun,  8 Sep 2024 21:16:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 75EADE6FE49
+	for <linux-rockchip@archiver.kernel.org>; Sun,  8 Sep 2024 21:18:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Q4wQPbnAlJMtSYvELGj9xLx2VDXi7cQaSnPgOE+UDbI=; b=04VV46cr71u5NX
-	0fXrS+3DCgKIJmLcuTcygAudcL7bcpxCiXR/NdEi3d9KUtpENyDkFKfGusp101Kxx2kye3f1bigDk
-	EKx7RoVCxnweKJkZmI8NCiEv8cijE7aeHJko+T/bJB+wwOnmyEtvs2VJU5dd7yUi0/A8HUwmvTfcO
-	hyfppTReqeU6MnENmJMMq9yIIQ1kR0P/lWD36SHGCSFBsJvefdPVZwxGZuoAaLPLIfMmJSMx2JSB1
-	C06c+iwxEvMxT+uZNcjF8cONRVt4mN/YO7DfOxi6qzNr/oBtdsMBuoUrJ1LkkgxKKdWvSk5xn6g2i
-	h20fZeuG48L08DqOmlpw==;
+	List-Owner; bh=hm73hk2topP2rXTIOwHB7ikhHMhW9R2PJ2V5+6SyBy8=; b=bYo8oKcXWReUB7
+	5Hn/L5BGbI6D7sqgXo++wzEZ4Fnd76kzQ+MTQQpySydNuHGnytAj7yLknRgZLMr7ONqq7l3cwYKm6
+	1i+L/TQ9gjwMHeJ6WqVTjFx8AsycK4t5BlCHR2ilGTtkZmZV8FV5D05z2nkYIwqs25LxQ1jHOL2Dt
+	uue4EthS2iuxjyvRxZYyHbvPxc7aijuiGojcU/Wdj2bmdFWmCmjUydIuW+BD6BVhGi2T0QmWVXN0Z
+	7h9FgPcnategBCIUPxIbw/8ds+DaP1mqDNGT4WHAba+vrNGpomFyQYanuRQhuPhT5vp2CovLbQKvS
+	N3zy7BxwyDE2tXDN2nzA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1snPGI-0000000HUIJ-3BnB;
-	Sun, 08 Sep 2024 21:15:58 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1snPIE-0000000HUWs-0e7W;
+	Sun, 08 Sep 2024 21:17:58 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1snPAM-0000000HSyk-2veB;
+	id 1snPAS-0000000HT1u-1s2C;
+	Sun, 08 Sep 2024 21:09:56 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
+	:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-Type:Content-ID:Content-Description;
+	bh=0sY7qUYmdAIirG1Qu66FGCdht5zSpuS9Ftaq1XOfp0I=; b=SadkcZt4lvHZVouMxwF6YDqRp9
+	4SJABqIJCrPEfEWfo9cu4TyoOVZbgwBzt/5k+HPZs/9o2XcstC75aGLNOTWtn9ynisgOSw3mhRw1A
+	ZF9MHHB7o2kayHuw7iw4dmYIiw49Kkw6gvRl4gBw1n49nip2jvIgAm9TA1zQ8lZGZ6WBkxW3my1XM
+	pjwSjS4U+uiL/el9xqvmIzWyIzIkLE2ZirPODERCvqEbW1YrNwLgm4W3GsU8yof+HAfSrcAHLbrA5
+	3Q/MJyOGHJU6VP6SmFbPoG4zJvfpzw2wpLkki+LFobYLfzUF6DfEKCxdN5+/En6it5cJilkIOiqh9
+	FnsRvLAQ==;
+Received: from gloria.sntech.de ([185.11.138.130])
+	by desiato.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
+	id 1snPAP-00000000H5f-0W8l;
 	Sun, 08 Sep 2024 21:09:55 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Transfer-Encoding:MIME-Version:References:
@@ -32,17 +46,17 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
 	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=q1jpFbe8UJlfuFdvluwPG8fKnNdFZmBXVzuyZQAcBU0=; b=2uWcj+fSeC3gcEwnxueXgjo0si
-	Z3hkjgc4JZ0ZdQi6FYCFmDU1+Nv/5yQK7ScViFakuhTZu+D2GzRMq0vg0xBtkw3tc/II49bUcg3df
-	6f09+FSg4iDFa9dRssvhusUL3rsmNNEi/AUUj6EE0B9jsJtBUU2HfgUvff1l17LxvlnxQf2E1G8WN
-	ZuJy3/T1KNISHP21A27l86XKZNYErHsyPPNsSYBILehyY34QrpWVKw+spe1kyq5K0HnUHLF8muwAQ
-	ovVnCMHuVElR3a8PJzSN+Gaz/xlZ/K72xbZz8dx/L78piG/xDHe52h6YHTKEqwZKTD+fsqIAMRsSD
-	rQcD5sNA==;
+	bh=0sY7qUYmdAIirG1Qu66FGCdht5zSpuS9Ftaq1XOfp0I=; b=PzxP6n56y6/mwiCCPGqiXXXAao
+	9hVX3/P4h6kzW8I4nsRe1tWGY9+Y7YghiyclKkT9TeDyUu7Z8AnKiaI0YnLZxmsOUbz9tLHUFVGL5
+	ucQPYgyZMLigrkz1l/DYpxYjfGD/cuKOV9UJEvMl4MUmcJDKvg8PAMyDZ0wdfH0A8x3MhAbEz27cS
+	BUDaaLfGLsNz6OVfssD55iBDMAltf2BfB0qDhLX8Eogbf7QLGE2nBy6DKH4N6QxLUHpP2kkoj2Lig
+	H1zGYi3t61N9dBCIUjqs4pP7IBi58eRCRb7/6E1UxCZJ6YVMtYJwSOtMvy3dCWsxsOzOqjQF/Pfoh
+	oFVUyFDQ==;
 Received: from i5e8616cc.versanet.de ([94.134.22.204] helo=phil.lan)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1snPA7-0003s9-U9; Sun, 08 Sep 2024 23:09:35 +0200
+	id 1snPA5-0003s9-EA; Sun, 08 Sep 2024 23:09:33 +0200
 From: Heiko Stuebner <heiko@sntech.de>
 To: lee@kernel.org,
 	jikos@kernel.org,
@@ -66,16 +80,16 @@ Cc: robh@kernel.org,
 	linux-iio@vger.kernel.org,
 	linux-leds@vger.kernel.org,
 	Heiko Stuebner <heiko@sntech.de>
-Subject: [PATCH v8 9/9] arm64: dts: rockchip: set hdd led labels on qnap-ts433
-Date: Sun,  8 Sep 2024 23:08:03 +0200
-Message-ID: <20240908210803.3339919-10-heiko@sntech.de>
+Subject: [PATCH v8 6/9] Input: add driver for the input part of qnap-mcu devices
+Date: Sun,  8 Sep 2024 23:08:00 +0200
+Message-ID: <20240908210803.3339919-7-heiko@sntech.de>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20240908210803.3339919-1-heiko@sntech.de>
 References: <20240908210803.3339919-1-heiko@sntech.de>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240908_140950_748698_458EB125 
-X-CRM114-Status: GOOD (  11.62  )
+X-CRM114-CacheID: sfid-20240908_220953_300600_6DC17CB6 
+X-CRM114-Status: GOOD (  29.08  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,51 +106,228 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The automatically generated names for the LEDs from color and function
-do not match nicely for the 4 hdds, so set them manually per the label
-property to also match the LEDs generated from the MCU.
+The MCU controls the power-button and beeper, so expose them as input
+device. There is of course no interrupt line, so the status of the
+power-button needs to be polled. To generate an event the power-button
+also needs to be held for 1-2 seconds, so the polling interval does
+not need to be overly fast.
 
+Acked-by: Dmitry Torokhov <dmitry.torokhov@gmail.com>
 Signed-off-by: Heiko Stuebner <heiko@sntech.de>
 ---
- arch/arm64/boot/dts/rockchip/rk3568-qnap-ts433.dts | 4 ++++
- 1 file changed, 4 insertions(+)
+ MAINTAINERS                         |   1 +
+ drivers/input/misc/Kconfig          |  12 +++
+ drivers/input/misc/Makefile         |   1 +
+ drivers/input/misc/qnap-mcu-input.c | 153 ++++++++++++++++++++++++++++
+ 4 files changed, 167 insertions(+)
+ create mode 100644 drivers/input/misc/qnap-mcu-input.c
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3568-qnap-ts433.dts b/arch/arm64/boot/dts/rockchip/rk3568-qnap-ts433.dts
-index 4bc5f5691d45..7bd32d230ad2 100644
---- a/arch/arm64/boot/dts/rockchip/rk3568-qnap-ts433.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3568-qnap-ts433.dts
-@@ -50,6 +50,7 @@ led-0 {
- 			color = <LED_COLOR_ID_GREEN>;
- 			function = LED_FUNCTION_DISK;
- 			gpios = <&gpio1 RK_PD5 GPIO_ACTIVE_LOW>;
-+			label = "hdd1:green:disk";
- 			linux,default-trigger = "disk-activity";
- 			pinctrl-names = "default";
- 			pinctrl-0 = <&hdd1_led_pin>;
-@@ -59,6 +60,7 @@ led-1 {
- 			color = <LED_COLOR_ID_GREEN>;
- 			function = LED_FUNCTION_DISK;
- 			gpios = <&gpio1 RK_PD6 GPIO_ACTIVE_LOW>;
-+			label = "hdd2:green:disk";
- 			linux,default-trigger = "disk-activity";
- 			pinctrl-names = "default";
- 			pinctrl-0 = <&hdd2_led_pin>;
-@@ -68,6 +70,7 @@ led-2 {
- 			color = <LED_COLOR_ID_GREEN>;
- 			function = LED_FUNCTION_DISK;
- 			gpios = <&gpio1 RK_PD7 GPIO_ACTIVE_LOW>;
-+			label = "hdd3:green:disk";
- 			linux,default-trigger = "disk-activity";
- 			pinctrl-names = "default";
- 			pinctrl-0 = <&hdd3_led_pin>;
-@@ -77,6 +80,7 @@ led-3 {
- 			color = <LED_COLOR_ID_GREEN>;
- 			function = LED_FUNCTION_DISK;
- 			gpios = <&gpio2 RK_PA0 GPIO_ACTIVE_LOW>;
-+			label = "hdd4:green:disk";
- 			linux,default-trigger = "disk-activity";
- 			pinctrl-names = "default";
- 			pinctrl-0 = <&hdd4_led_pin>;
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 943905cbcf62..cc5ef91d019e 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -18682,6 +18682,7 @@ F:	drivers/media/tuners/qm1d1c0042*
+ QNAP MCU DRIVER
+ M:	Heiko Stuebner <heiko@sntech.de>
+ S:	Maintained
++F:	drivers/input/misc/qnap-mcu-input.c
+ F:	drivers/leds/leds-qnap-mcu.c
+ F:	drivers/mfd/qnap-mcu.c
+ F:	include/linux/qnap-mcu.h
+diff --git a/drivers/input/misc/Kconfig b/drivers/input/misc/Kconfig
+index 6a852c76331b..13d135257e06 100644
+--- a/drivers/input/misc/Kconfig
++++ b/drivers/input/misc/Kconfig
+@@ -917,6 +917,18 @@ config INPUT_HISI_POWERKEY
+ 	  To compile this driver as a module, choose M here: the
+ 	  module will be called hisi_powerkey.
+ 
++config INPUT_QNAP_MCU
++	tristate "Input Support for QNAP MCU controllers"
++	depends on MFD_QNAP_MCU
++	help
++	  This option enables support for input elements available on
++	  embedded controllers used in QNAP NAS devices.
++
++	  This includes a polled power-button as well as a beeper.
++
++	  To compile this driver as a module, choose M here: the
++	  module will be called qnap-mcu-input.
++
+ config INPUT_RAVE_SP_PWRBUTTON
+ 	tristate "RAVE SP Power button Driver"
+ 	depends on RAVE_SP_CORE
+diff --git a/drivers/input/misc/Makefile b/drivers/input/misc/Makefile
+index 4f7f736831ba..6d91804d0a6f 100644
+--- a/drivers/input/misc/Makefile
++++ b/drivers/input/misc/Makefile
+@@ -68,6 +68,7 @@ obj-$(CONFIG_INPUT_PMIC8XXX_PWRKEY)	+= pmic8xxx-pwrkey.o
+ obj-$(CONFIG_INPUT_POWERMATE)		+= powermate.o
+ obj-$(CONFIG_INPUT_PWM_BEEPER)		+= pwm-beeper.o
+ obj-$(CONFIG_INPUT_PWM_VIBRA)		+= pwm-vibra.o
++obj-$(CONFIG_INPUT_QNAP_MCU)		+= qnap-mcu-input.o
+ obj-$(CONFIG_INPUT_RAVE_SP_PWRBUTTON)	+= rave-sp-pwrbutton.o
+ obj-$(CONFIG_INPUT_RB532_BUTTON)	+= rb532_button.o
+ obj-$(CONFIG_INPUT_REGULATOR_HAPTIC)	+= regulator-haptic.o
+diff --git a/drivers/input/misc/qnap-mcu-input.c b/drivers/input/misc/qnap-mcu-input.c
+new file mode 100644
+index 000000000000..76e62f0816c1
+--- /dev/null
++++ b/drivers/input/misc/qnap-mcu-input.c
+@@ -0,0 +1,153 @@
++// SPDX-License-Identifier: GPL-2.0-only
++
++/*
++ * Driver for input events on QNAP-MCUs
++ *
++ * Copyright (C) 2024 Heiko Stuebner <heiko@sntech.de>
++ */
++
++#include <linux/input.h>
++#include <linux/mfd/qnap-mcu.h>
++#include <linux/module.h>
++#include <linux/platform_device.h>
++#include <linux/slab.h>
++#include <uapi/linux/input-event-codes.h>
++
++/*
++ * The power-key needs to be pressed for a while to create an event,
++ * so there is no use for overly frequent polling.
++ */
++#define POLL_INTERVAL		500
++
++struct qnap_mcu_input_dev {
++	struct input_dev *input;
++	struct qnap_mcu *mcu;
++	struct device *dev;
++
++	struct work_struct beep_work;
++	int beep_type;
++};
++
++static void qnap_mcu_input_poll(struct input_dev *input)
++{
++	struct qnap_mcu_input_dev *idev = input_get_drvdata(input);
++	static const u8 cmd[] = { '@', 'C', 'V' };
++	u8 reply[4];
++	int state, ret;
++
++	/* poll the power button */
++	ret = qnap_mcu_exec(idev->mcu, cmd, sizeof(cmd), reply, sizeof(reply));
++	if (ret)
++		return;
++
++	/* First bytes must mirror the sent command */
++	if (memcmp(cmd, reply, sizeof(cmd))) {
++		dev_err(idev->dev, "malformed data received\n");
++		return;
++	}
++
++	state = reply[3] - 0x30;
++	input_event(input, EV_KEY, KEY_POWER, state);
++	input_sync(input);
++}
++
++static void qnap_mcu_input_beeper_work(struct work_struct *work)
++{
++	struct qnap_mcu_input_dev *idev =
++		container_of(work, struct qnap_mcu_input_dev, beep_work);
++	const u8 cmd[] = { '@', 'C', (idev->beep_type == SND_TONE) ? '3' : '2' };
++
++	qnap_mcu_exec_with_ack(idev->mcu, cmd, sizeof(cmd));
++}
++
++static int qnap_mcu_input_event(struct input_dev *input, unsigned int type,
++				unsigned int code, int value)
++{
++	struct qnap_mcu_input_dev *idev = input_get_drvdata(input);
++
++	if (type != EV_SND || (code != SND_BELL && code != SND_TONE))
++		return -EOPNOTSUPP;
++
++	if (value < 0)
++		return -EINVAL;
++
++	/* beep runtime is determined by the MCU */
++	if (value == 0)
++		return 0;
++
++	/* Schedule work to actually turn the beeper on */
++	idev->beep_type = code;
++	schedule_work(&idev->beep_work);
++
++	return 0;
++}
++
++static void qnap_mcu_input_close(struct input_dev *input)
++{
++	struct qnap_mcu_input_dev *idev = input_get_drvdata(input);
++
++	cancel_work_sync(&idev->beep_work);
++}
++
++static int qnap_mcu_input_probe(struct platform_device *pdev)
++{
++	struct qnap_mcu *mcu = dev_get_drvdata(pdev->dev.parent);
++	struct qnap_mcu_input_dev *idev;
++	struct device *dev = &pdev->dev;
++	struct input_dev *input;
++	int ret;
++
++	idev = devm_kzalloc(dev, sizeof(*idev), GFP_KERNEL);
++	if (!idev)
++		return -ENOMEM;
++
++	input = devm_input_allocate_device(dev);
++	if (!input)
++		return dev_err_probe(dev, -ENOMEM, "no memory for input device\n");
++
++	idev->input = input;
++	idev->dev = dev;
++	idev->mcu = mcu;
++
++	input_set_drvdata(input, idev);
++
++	input->name		= "qnap-mcu";
++	input->phys		= "qnap-mcu-input/input0";
++	input->id.bustype	= BUS_HOST;
++	input->id.vendor	= 0x0001;
++	input->id.product	= 0x0001;
++	input->id.version	= 0x0100;
++	input->event		= qnap_mcu_input_event;
++	input->close		= qnap_mcu_input_close;
++
++	input_set_capability(input, EV_KEY, KEY_POWER);
++	input_set_capability(input, EV_SND, SND_BELL);
++	input_set_capability(input, EV_SND, SND_TONE);
++
++	INIT_WORK(&idev->beep_work, qnap_mcu_input_beeper_work);
++
++	ret = input_setup_polling(input, qnap_mcu_input_poll);
++	if (ret)
++		return dev_err_probe(dev, ret, "unable to set up polling\n");
++
++	input_set_poll_interval(input, POLL_INTERVAL);
++
++	ret = input_register_device(input);
++	if (ret)
++		return dev_err_probe(dev, ret, "unable to register input device\n");
++
++	return 0;
++}
++
++static struct platform_driver qnap_mcu_input_driver = {
++	.probe = qnap_mcu_input_probe,
++	.driver = {
++		.name = "qnap-mcu-input",
++	},
++};
++module_platform_driver(qnap_mcu_input_driver);
++
++MODULE_ALIAS("platform:qnap-mcu-input");
++MODULE_AUTHOR("Heiko Stuebner <heiko@sntech.de>");
++MODULE_DESCRIPTION("QNAP MCU input driver");
++MODULE_LICENSE("GPL");
 -- 
 2.43.0
 
