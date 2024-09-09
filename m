@@ -4,67 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 15B4BECE579
-	for <linux-rockchip@archiver.kernel.org>; Mon,  9 Sep 2024 15:29:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 939C0ECE577
+	for <linux-rockchip@archiver.kernel.org>; Mon,  9 Sep 2024 16:26:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=APvuSuXswh3q8pyNKRxnyGgp1ik6RZR2Ze61+OPjy2s=; b=kiVKhJ2swLL2K/
-	0th8UzwzDl1zIkHwQ4kNrbkGWTbV+0e4nkfg2Klm6qCAkh6rdYqGQs6AaiGZytVEEUcY/qtkne3Gm
-	bc2Ndu5jgvI4gWc25PMcu6ncKwl0o29qpurOQXH3cQvUe+9pG64nbTbKWanoBZRHNVIlTFR2rN/pQ
-	gEw/iqNeNnzxYwOaAVPtOhFaQIiNfrAt7l+foDi3vLHLCDvqhMb8BFrGyi0J2NtxdtFMR8uBpPhq4
-	9GmJhE8s6HJ0q/7Jy5CTOxzd/7ueiAbdJqMmpukiA7LnIOyfq1cYywsjlJ2j75S8bPO6qWAXMt041
-	IIS/OSzX3m9h0Fps8keA==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:MIME-Version:Subject:
+	Date:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=sjkL0YsD3SfPI0Xdz9mBJ6gWGtyGlBHbcgG4H/G2Itc=; b=Y8jKzKsPKDdH8o
+	ROOQ389f9TXuAG/BceSLvHfX1VzLjoGsxlgYZKWCxyriJ7fwvQJRts0MOYzf7l6vVMCBhTcQt4QLz
+	WfHoYfUuNk7nw1QknbogWbdE2Nv8Yt2Jt1FMZga1D8UcFUOjux8QehRb7//3tk9JizQtvHj//5iQO
+	btlDi/vzxfmTo0kOmzqliDCWbCYHCZDUuzjNOwehZCrOjTcrDI0De43fG6N2xjymNy0AJ4QFa5q+P
+	eJDhgDVY3eQCZsl2JR1/dHc+b8tGcfZG9mr7OttrkXwpNqq/pD1UzglnBu2DtdoUhjkV7gOROpEy5
+	eEVCyWKBlJh3KDNEk2Kg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sngK7-00000002TML-3Gm6;
-	Mon, 09 Sep 2024 15:29:03 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1snhDf-00000002eoY-24Jf;
+	Mon, 09 Sep 2024 16:26:27 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sngIm-00000002T4m-2uGy;
-	Mon, 09 Sep 2024 15:27:42 +0000
+	id 1snhBm-00000002eEg-42UT;
+	Mon, 09 Sep 2024 16:24:32 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 2654D5C0200;
-	Mon,  9 Sep 2024 15:27:36 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 39236C4CEC5;
-	Mon,  9 Sep 2024 15:27:38 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id 8D6DAA416AA;
+	Mon,  9 Sep 2024 16:24:22 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E1663C4CEC5;
+	Mon,  9 Sep 2024 16:24:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1725895659;
-	bh=bkf0FPBXI9ffG3pgzuSvrT/omg9CfDr3n4aP+Ydrft0=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=frarv78YKu9T5tWlwTYmYfDLTkkR7U+/3o3Bys2C8DHmqmwnP4kfag/9hBM0O6KKb
-	 vi8KkYkqHU0/rO3NfdLgBNfSvQn+wCs5aU8S9P0amI9KEzw8g4LA+2oyjmn7D5DUzc
-	 a3imUOStMdC8AjO7RcUwiMzy/thY2xWuSP58mQV/URkEBNxTRkH+q064e38N/OMvr3
-	 vkfZ7g+Ra0Vqu6XMBBfCPKFch3Wj0aRX18jYGIDvHSRksO16P04xaekzRINf7BDyEk
-	 bOe1CKZDUGTvf2eCM50SHbgSL79CrZUEYkm4geGBjscqV0GNiE17Kaewgcfq1jH2j/
-	 Rx5H/UvGwxmDg==
-Date: Mon, 9 Sep 2024 08:27:36 -0700
+	s=k20201202; t=1725899069;
+	bh=Z9KQaBMYa5sFKDVDG6vipFDugxmhAcXo+x7jIXMTm4k=;
+	h=From:Date:Subject:To:Cc:From;
+	b=nUFhMo1aVL0SZ26zu0BGprNSrg8esC9sKfr9Uhd9jg/awvZA907m1qU8mpnp64FFm
+	 ouQ7SY4t02QysCMRIwsc3Cvli6U6OYOyLAxkZWPaNs6rR6BSzK+EFOgjzsCuNcb1mk
+	 iLa0Q24Qk0dtrmGSlpQ0ezEsY9QySiqVvrvKN0H6QZhsqbgYns7JovokeAGHke5K+x
+	 Zav3hP4vtBFKiBC/8WC14H+TB4So04Mywvw8c42k4LRs2OOdkaFK/V7rBu8Y6Wxg8K
+	 unbMZg831bE/l0fBQX+VI6xlGGfX60RaxpFqjXeQdtQ1HKkLeBAbCNVvp5TygqfUhY
+	 Tp3ICMpAeku0Q==
 From: Nathan Chancellor <nathan@kernel.org>
-To: Marc Kleine-Budde <mkl@pengutronix.de>
-Cc: Simon Horman <horms@kernel.org>, kernel@pengutronix.de,
-	Vincent Mailhol <mailhol.vincent@wanadoo.fr>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Heiko Stuebner <heiko@sntech.de>, linux-can@vger.kernel.org,
-	netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, llvm@lists.linux.dev,
-	patches@lists.linux.dev
-Subject: Re: [PATCH] can: rockchip_canfd: fix return type of
- rkcanfd_start_xmit()
-Message-ID: <20240909152736.GA1406978@thelio-3990X>
-References: <20240906-rockchip-canfd-wifpts-v1-1-b1398da865b7@kernel.org>
- <20240909084448.GU2097826@kernel.org>
- <20240909-arcane-practical-petrel-015d24-mkl@pengutronix.de>
+Date: Mon, 09 Sep 2024 09:24:25 -0700
+Subject: [PATCH net-next] can: rockchip_canfd: Use div_s64() in
+ rkcanfd_timestamp_init()
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20240909-arcane-practical-petrel-015d24-mkl@pengutronix.de>
+Message-Id: <20240909-rockchip-canfd-clang-div-libcall-v1-1-c6037ea0bb2b@kernel.org>
+X-B4-Tracking: v=1; b=H4sIADgh32YC/x2NQQqDMBAAvyJ7diFqKKRfKR6SzaYuDaskIoL4d
+ 0OPA8PMBZWLcIV3d0HhQ6qs2mDoO6DF65dRYmMYzWiNMw7LSj9aZEPymiJSbhJGOTBLIJ8zBu/
+ Sa3B2siFBy2yFk5z/xQeUd1Q+d5jv+wFsvFrEfAAAAA==
+X-Change-ID: 20240909-rockchip-canfd-clang-div-libcall-ba9f619434bf
+To: Marc Kleine-Budde <mkl@pengutronix.de>, kernel@pengutronix.de, 
+ Vincent Mailhol <mailhol.vincent@wanadoo.fr>, 
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
+ Heiko Stuebner <heiko@sntech.de>
+Cc: linux-can@vger.kernel.org, netdev@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+ llvm@lists.linux.dev, patches@lists.linux.dev, 
+ Nathan Chancellor <nathan@kernel.org>
+X-Mailer: b4 0.15-dev
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1692; i=nathan@kernel.org;
+ h=from:subject:message-id; bh=Z9KQaBMYa5sFKDVDG6vipFDugxmhAcXo+x7jIXMTm4k=;
+ b=owGbwMvMwCUmm602sfCA1DTG02pJDGn3FW0upoUKl7aqfFFYZn1Cp+1punwQ75573+3fRvc8n
+ lCamsbRUcrCIMbFICumyFL9WPW4oeGcs4w3Tk2CmcPKBDKEgYtTACYS4cHwP/MzDy/DIpdboSzX
+ v/7dbybqzzFHbs7kO2aK7/8Ia4btb2X4n/BILDIvXeTg6i9OOXuMgt9enXpGUawva6FZ2/kE4QJ
+ dZgA=
+X-Developer-Key: i=nathan@kernel.org; a=openpgp;
+ fpr=2437CB76E544CB6AB3D9DFD399739260CB6CB716
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240909_082740_796737_BD9C0660 
-X-CRM114-Status: GOOD (  16.08  )
+X-CRM114-CacheID: sfid-20240909_092431_193068_B56E42E4 
+X-CRM114-Status: GOOD (  10.35  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,33 +88,45 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Marc,
+When building with clang for a 32-bit target, such as arm, a libcall is
+generated when dividing the result of clocksource_cyc2ns(), which
+returns a signed 64-bit integer:
 
-On Mon, Sep 09, 2024 at 10:57:06AM +0200, Marc Kleine-Budde wrote:
-> On 09.09.2024 09:44:48, Simon Horman wrote:
-> > On Fri, Sep 06, 2024 at 01:26:41PM -0700, Nathan Chancellor wrote:
-> > >   drivers/net/can/rockchip/rockchip_canfd-core.c:770:20: error: incompatible function pointer types initializing 'netdev_tx_t (*)(struct sk_buff *, struct net_device *)' (aka 'enum netdev_tx (*)(struct sk_buff *, struct net_device *)') with an expression of type 'int (struct sk_buff *, struct net_device *)' [-Werror,-Wincompatible-function-pointer-types-strict]
-> > >     770 |         .ndo_start_xmit = rkcanfd_start_xmit,
-> > >         |                           ^~~~~~~~~~~~~~~~~~
-...
-> FTR: the default clang in Debian unstable, clang-16.0.6 doesn't support
-> this. With clang-20 from experimental it works, haven't checked older
-> versions, though.
+  ERROR: modpost: "__aeabi_ldivmod" [drivers/net/can/rockchip/rockchip_canfd.ko] undefined!
 
-Hmmm, interesting, the patch that added
--Wincompatible-function-pointer-types-strict was added in LLVM 16, so it
-should work for 16.0.6...
+Use div_s64() to avoid generating the libcall.
 
-https://github.com/llvm/llvm-project/commits/41ce74e6e983f523d44d3a80be5ae778c35df85a
+Fixes: 4e1a18bab124 ("can: rockchip_canfd: add hardware timestamping support")
+Signed-off-by: Nathan Chancellor <nathan@kernel.org>
+---
+This does not happen with GCC, likely because it implements
+optimizations for division by a constant that clang does not implement.
+---
+ drivers/net/can/rockchip/rockchip_canfd-timestamp.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-I don't have easy access to Debian at the moment so I can double check
-it later. I would like to get this turned on for the whole kernel soon
-but there is still one subsystem that has several instances that I have
-not been able to workaround at this point so I've just stuck to adding
-it via KCFLAGS when testing.
+diff --git a/drivers/net/can/rockchip/rockchip_canfd-timestamp.c b/drivers/net/can/rockchip/rockchip_canfd-timestamp.c
+index 81cccc5fd8384ee1fec919077db48632f0fe7cc2..4ca01d385ffffdeec964b7fd954d8ba3ba3a1381 100644
+--- a/drivers/net/can/rockchip/rockchip_canfd-timestamp.c
++++ b/drivers/net/can/rockchip/rockchip_canfd-timestamp.c
+@@ -71,7 +71,7 @@ void rkcanfd_timestamp_init(struct rkcanfd_priv *priv)
+ 
+ 	max_cycles = div_u64(ULLONG_MAX, cc->mult);
+ 	max_cycles = min(max_cycles, cc->mask);
+-	work_delay_ns = clocksource_cyc2ns(max_cycles, cc->mult, cc->shift) / 3;
++	work_delay_ns = div_s64(clocksource_cyc2ns(max_cycles, cc->mult, cc->shift), 3);
+ 	priv->work_delay_jiffies = nsecs_to_jiffies(work_delay_ns);
+ 	INIT_DELAYED_WORK(&priv->timestamp, rkcanfd_timestamp_work);
+ 
 
-Cheers,
-Nathan
+---
+base-commit: bfba7bc8b7c2c100b76edb3a646fdce256392129
+change-id: 20240909-rockchip-canfd-clang-div-libcall-ba9f619434bf
+
+Best regards,
+-- 
+Nathan Chancellor <nathan@kernel.org>
+
 
 _______________________________________________
 Linux-rockchip mailing list
