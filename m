@@ -4,67 +4,118 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2879DECE579
-	for <linux-rockchip@archiver.kernel.org>; Mon,  9 Sep 2024 11:00:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 41D0BECE57E
+	for <linux-rockchip@archiver.kernel.org>; Mon,  9 Sep 2024 13:17:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=2E8n/TrLVWikBO7hD+7/YLl98MGirKGcW5BSBXPs0jA=; b=Bbey2QwfbqepdMJM5DnQGzEcbH
-	Vt+4d1CSBTOA2TTUhFn3FyIt5jCiHN1BAO/YEVBDM8XO478jDkvNsnOVrjegFUlGjPWF6LGR3h9uz
-	PmsP+G5x7BOruvPZYNqhGLK4iSgucU3MRUAe3Xr5wfrFRYvD+GUfok29M+TYRKZfpcae0XLLMsv/4
-	+yrSBiEa03x1aVqROT7B4QGxv2NQ1ksPP9VqPVMoCF6Xidf/RGwN6nr46KWFfay6aBeEjOrAuL+E8
-	qLmyt+OMl9QC8jCMaa+Kb5kNE4t+2VkxrfEIaczUlTefspfEzBxCnJW3tc+HQ+TExtCPprBXQpGMg
-	Mt6ETOiQ==;
+	Content-Transfer-Encoding:Reply-To:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To:Subject:
+	From:MIME-Version:Date:Message-ID:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=8/ech5NHXC9kSoeDV2+/s24M6w8A/EW8sLQh63Og5x0=; b=4E32wzQj+uV5eUjvUqG2ii2s40
+	BUvvsbAeqFcIeE5h8QpSmv2d34ZzqJUU+cvtbTAISYCK1K+uBW6gU8de7IqDtloH/iFkWFFFcayVK
+	Sb7+LYJOROAmW40kMyRbAr+oSZy1a9KlWSBYomPc/TC+SH+EQmMLwkwXg/WcTH+mXt2HXa5w4kxRw
+	8Bc1XsolDrO4jhcETajE0xFWtSRFEuSxnpNRKKalwff0RqmZx7I7R1j3BHS2JJ/Th1CEtqg1hV8LC
+	XAA4aZjWjEKhuoxzu+bX9Q6YcA+WaMDEFsAMnui7eghXYDeL7/F1FTTtMLI5u6Q/rSR/QyjX9/0X8
+	mTQmuu0A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1snc83-00000001acf-0cxF;
-	Mon, 09 Sep 2024 11:00:19 +0000
-Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
+	id 1sneGP-000000021n3-2JOR;
+	Mon, 09 Sep 2024 13:17:05 +0000
+Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1snaxC-00000001NSr-01q8
+	id 1sneEr-000000021QX-14mH
 	for linux-rockchip@lists.infradead.org;
-	Mon, 09 Sep 2024 09:45:13 +0000
-Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
-	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
-	(Exim 4.92)
-	(envelope-from <mkl@pengutronix.de>)
-	id 1snax1-0002Uv-3i; Mon, 09 Sep 2024 11:44:51 +0200
-Received: from [2a0a:edc0:0:b01:1d::7b] (helo=bjornoya.blackshift.org)
-	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <mkl@pengutronix.de>)
-	id 1snax0-006cVw-05; Mon, 09 Sep 2024 11:44:50 +0200
-Received: from pengutronix.de (pd9e595f8.dip0.t-ipconnect.de [217.229.149.248])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(Client did not present a certificate)
-	(Authenticated sender: mkl-all@blackshift.org)
-	by smtp.blackshift.org (Postfix) with ESMTPSA id 9FD24336781;
-	Mon, 09 Sep 2024 09:44:49 +0000 (UTC)
-Date: Mon, 9 Sep 2024 11:44:49 +0200
-From: Marc Kleine-Budde <mkl@pengutronix.de>
-To: Arnd Bergmann <arnd@kernel.org>
-Cc: Vincent Mailhol <mailhol.vincent@wanadoo.fr>, 
-	Arnd Bergmann <arnd@arndb.de>, kernel@pengutronix.de, "David S. Miller" <davem@davemloft.net>, 
-	Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, 
-	Paolo Abeni <pabeni@redhat.com>, Heiko Stuebner <heiko@sntech.de>, linux-can@vger.kernel.org, 
-	netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] can: rockchip_canfd: avoids 64-bit division
-Message-ID: <20240909-dark-seahorse-of-support-b2206a-mkl@pengutronix.de>
-References: <20240909112119.249479-1-arnd@kernel.org>
+	Mon, 09 Sep 2024 13:15:30 +0000
+Received: by mail-wr1-x429.google.com with SMTP id ffacd0b85a97d-374bb08d011so2501993f8f.3
+        for <linux-rockchip@lists.infradead.org>; Mon, 09 Sep 2024 06:15:28 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1725887728; x=1726492528; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:organization:autocrypt
+         :content-language:references:cc:to:subject:reply-to:from:user-agent
+         :mime-version:date:message-id:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=B95ObHJpdojG5xYgPYvRks8MDbQVxroVTSkoySW7Ido=;
+        b=swcteDjWwaDDsRciAqfQ/Ov+Glnw35/9EPWXdfekMBX59ek7XGHEZwcwi71Et5mw+d
+         KBItMvT87fSDTBw66keqc1V6AhgQI5S7WeTw94RCkUbRcjsU+exOXCgLlKULIFKWls71
+         9oS5fpof/rYuA+7DuIdAMxbPZMddYZUa3CkqTQF2IobqYicr6zSI7rsJlI+0ayIWB40g
+         zhcyMtZ8SQjcUJxxP+6Q5vOL4JNEX9fSonD03xaXgWLkesZDF8RudXemtdwIhtOVJLdR
+         kc6+hzoPvCS8cobCryYd9QxundaznzUVG8+veJvXc2n1/pj5OGZi/HYiK8apu6btZr+v
+         PNhA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1725887728; x=1726492528;
+        h=content-transfer-encoding:in-reply-to:organization:autocrypt
+         :content-language:references:cc:to:subject:reply-to:from:user-agent
+         :mime-version:date:message-id:x-gm-message-state:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=B95ObHJpdojG5xYgPYvRks8MDbQVxroVTSkoySW7Ido=;
+        b=mLJEwGadDIYGR3P98nxtGHD0ULkN0ZWnz6jKVoBOWuNGuSId/QnBlcEJouvEwGnFGc
+         6yjKFXO7yzcs+wC2JoYNwBA0s7Kf08Twsvp2PlxVec9zKDcRj5nXwc3S6ojw5X+s2WwA
+         E9jZY+J/jmZQ6zG5jvxWnbaU0sDhCd7mg4d8JMdIbMEuflofm0VvDS8usGqZZK9KYyNK
+         lxsOHEdwC2bSnCpCLFqWmWJzs5TUGhP5ivR6pe9afOiwPNiqvZ5sDdNqFOmDzhIZ2XTy
+         47KgDw0z6Wpbb36zvUB4gQ2YdskY7IJevWyz+6DkW55BevSN35PYvazdIS/MTfX+SLfU
+         ivVQ==
+X-Forwarded-Encrypted: i=1; AJvYcCV1vzt3UX5moq6wuHkTNVrPMBspYtP8dgKIGjnpwyUeUmyrtdrDBUe/s006wJnsBLAlFerTu3DXYekvj/oGMQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzXmltr9TL9/ENTtt8OVPK1hzvY4gAGiD4cRxQNdMetvw74Ulfq
+	g68NWX87CbftMaMuyNVmo5154N+VAXo8eFelpndf3MlonYWv434pOX//lvzFYwQ=
+X-Google-Smtp-Source: AGHT+IEU43fgBZkJDiu5N74vNjtuUNPxSdgWTgzbyhk1oykhQZa3fOmHlH6jxK/DCxOHnZ+0No77XA==
+X-Received: by 2002:adf:f74b:0:b0:36b:b297:1419 with SMTP id ffacd0b85a97d-378895ca68dmr7209193f8f.20.1725887726980;
+        Mon, 09 Sep 2024 06:15:26 -0700 (PDT)
+Received: from ?IPV6:2a01:e0a:982:cbb0:63a3:6883:a358:b850? ([2a01:e0a:982:cbb0:63a3:6883:a358:b850])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-378956653d1sm6002863f8f.33.2024.09.09.06.15.26
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 09 Sep 2024 06:15:26 -0700 (PDT)
+Message-ID: <8cdfa4f1-3acd-4839-a490-9152174e3136@linaro.org>
+Date: Mon, 9 Sep 2024 15:15:25 +0200
 MIME-Version: 1.0
-In-Reply-To: <20240909112119.249479-1-arnd@kernel.org>
-X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
-X-SA-Exim-Mail-From: mkl@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
+User-Agent: Mozilla Thunderbird
+From: Neil Armstrong <neil.armstrong@linaro.org>
+Subject: Re: [PATCH v2 01/10] drm: bridge: dw_hdmi: Disable scrambler feature
+ when not supported
+To: Jonas Karlman <jonas@kwiboo.se>, Andrzej Hajda <andrzej.hajda@intel.com>,
+ Robert Foss <rfoss@kernel.org>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+ Jernej Skrabec <jernej.skrabec@gmail.com>
+Cc: Christian Hewitt <christianshewitt@gmail.com>,
+ Diederik de Haas <didi.debian@cknow.org>,
+ Christopher Obbard <chris.obbard@collabora.com>,
+ dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+References: <20240908132823.3308029-1-jonas@kwiboo.se>
+ <20240908132823.3308029-2-jonas@kwiboo.se>
+Content-Language: en-US, fr
+Autocrypt: addr=neil.armstrong@linaro.org; keydata=
+ xsBNBE1ZBs8BCAD78xVLsXPwV/2qQx2FaO/7mhWL0Qodw8UcQJnkrWmgTFRobtTWxuRx8WWP
+ GTjuhvbleoQ5Cxjr+v+1ARGCH46MxFP5DwauzPekwJUD5QKZlaw/bURTLmS2id5wWi3lqVH4
+ BVF2WzvGyyeV1o4RTCYDnZ9VLLylJ9bneEaIs/7cjCEbipGGFlfIML3sfqnIvMAxIMZrvcl9
+ qPV2k+KQ7q+aXavU5W+yLNn7QtXUB530Zlk/d2ETgzQ5FLYYnUDAaRl+8JUTjc0CNOTpCeik
+ 80TZcE6f8M76Xa6yU8VcNko94Ck7iB4vj70q76P/J7kt98hklrr85/3NU3oti3nrIHmHABEB
+ AAHNKk5laWwgQXJtc3Ryb25nIDxuZWlsLmFybXN0cm9uZ0BsaW5hcm8ub3JnPsLAkQQTAQoA
+ OwIbIwULCQgHAwUVCgkICwUWAgMBAAIeAQIXgBYhBInsPQWERiF0UPIoSBaat7Gkz/iuBQJk
+ Q5wSAhkBAAoJEBaat7Gkz/iuyhMIANiD94qDtUTJRfEW6GwXmtKWwl/mvqQtaTtZID2dos04
+ YqBbshiJbejgVJjy+HODcNUIKBB3PSLaln4ltdsV73SBcwUNdzebfKspAQunCM22Mn6FBIxQ
+ GizsMLcP/0FX4en9NaKGfK6ZdKK6kN1GR9YffMJd2P08EO8mHowmSRe/ExAODhAs9W7XXExw
+ UNCY4pVJyRPpEhv373vvff60bHxc1k/FF9WaPscMt7hlkbFLUs85kHtQAmr8pV5Hy9ezsSRa
+ GzJmiVclkPc2BY592IGBXRDQ38urXeM4nfhhvqA50b/nAEXc6FzqgXqDkEIwR66/Gbp0t3+r
+ yQzpKRyQif3OwE0ETVkGzwEIALyKDN/OGURaHBVzwjgYq+ZtifvekdrSNl8TIDH8g1xicBYp
+ QTbPn6bbSZbdvfeQPNCcD4/EhXZuhQXMcoJsQQQnO4vwVULmPGgtGf8PVc7dxKOeta+qUh6+
+ SRh3vIcAUFHDT3f/Zdspz+e2E0hPV2hiSvICLk11qO6cyJE13zeNFoeY3ggrKY+IzbFomIZY
+ 4yG6xI99NIPEVE9lNBXBKIlewIyVlkOaYvJWSV+p5gdJXOvScNN1epm5YHmf9aE2ZjnqZGoM
+ Mtsyw18YoX9BqMFInxqYQQ3j/HpVgTSvmo5ea5qQDDUaCsaTf8UeDcwYOtgI8iL4oHcsGtUX
+ oUk33HEAEQEAAcLAXwQYAQIACQUCTVkGzwIbDAAKCRAWmrexpM/4rrXiB/sGbkQ6itMrAIfn
+ M7IbRuiSZS1unlySUVYu3SD6YBYnNi3G5EpbwfBNuT3H8//rVvtOFK4OD8cRYkxXRQmTvqa3
+ 3eDIHu/zr1HMKErm+2SD6PO9umRef8V82o2oaCLvf4WeIssFjwB0b6a12opuRP7yo3E3gTCS
+ KmbUuLv1CtxKQF+fUV1cVaTPMyT25Od+RC1K+iOR0F54oUJvJeq7fUzbn/KdlhA8XPGzwGRy
+ 4zcsPWvwnXgfe5tk680fEKZVwOZKIEuJC3v+/yZpQzDvGYJvbyix0lHnrCzq43WefRHI5XTT
+ QbM0WUIBIcGmq38+OgUsMYu4NzLu7uZFAcmp6h8g
+Organization: Linaro
+In-Reply-To: <20240908132823.3308029-2-jonas@kwiboo.se>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240909_024502_250202_C6D574B2 
-X-CRM114-Status: GOOD (  14.06  )
+X-CRM114-CacheID: sfid-20240909_061529_351228_228DB2E8 
+X-CRM114-Status: GOOD (  16.80  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,84 +127,49 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============0761293615880594382=="
+Reply-To: neil.armstrong@linaro.org
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+On 08/09/2024 15:28, Jonas Karlman wrote:
+> The scrambler feature can be left enabled when hotplugging from a sink
+> and mode that require scrambling to a sink that does not support SCDC or
+> scrambling.
+> 
+> Typically a blank screen or 'no signal' message can be observed after
+> using a HDMI 2.0 4K@60Hz mode and then hotplugging to a sink that only
+> support HDMI 1.4.
+> 
+> Fix this by disabling the scrambler feature when SCDC is not supported.
+> 
+> Fixes: 264fce6cc2c1 ("drm/bridge: dw-hdmi: Add SCDC and TMDS Scrambling support")
+> Reported-by: Christopher Obbard <chris.obbard@collabora.com>
+> Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
+> ---
+> v2: New patch
+> ---
+>   drivers/gpu/drm/bridge/synopsys/dw-hdmi.c | 2 ++
+>   1 file changed, 2 insertions(+)
+> 
+> diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
+> index 0031f3c54882..9e7f86a0bf5c 100644
+> --- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
+> +++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
+> @@ -2117,6 +2117,8 @@ static void hdmi_av_composer(struct dw_hdmi *hdmi,
+>   				    HDMI_MC_SWRSTZ);
+>   			drm_scdc_set_scrambling(hdmi->curr_conn, 0);
+>   		}
+> +	} else if (hdmi->version >= 0x200a) {
+> +		hdmi_writeb(hdmi, 0, HDMI_FC_SCRAMBLER_CTRL);
+>   	}
+>   
+>   	/* Set up horizontal active pixel width */
 
---===============0761293615880594382==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="vw4xxvfo7kzbvp2i"
-Content-Disposition: inline
-
-
---vw4xxvfo7kzbvp2i
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On 09.09.2024 11:21:04, Arnd Bergmann wrote:
-> From: Arnd Bergmann <arnd@arndb.de>
->=20
-> The new driver fails to build on some 32-bit configurations:
->=20
-> arm-linux-gnueabi-ld: drivers/net/can/rockchip/rockchip_canfd-timestamp.o=
-: in function `rkcanfd_timestamp_init':
-> rockchip_canfd-timestamp.c:(.text+0x14a): undefined reference to `__aeabi=
-_ldivmod'
->=20
-> Rework the delay calculation to only require a single 64-bit
-> division.
->=20
-> Fixes: 4e1a18bab124 ("can: rockchip_canfd: add hardware timestamping supp=
-ort")
-> Signed-off-by: Arnd Bergmann <arnd@arndb.de>
-
-I've already send a PR which replaces the division by div_u64(), so not
-as elaborate as yours:
-
-| https://lore.kernel.org/all/20240909-can-rockchip_canfd-fix-64-bit-divisi=
-on-v1-1-2748d9422b00@pengutronix.de/
-
-I'll port your patch on top of mine and include it in my next PR.
-
-regards,
-Marc
-
---=20
-Pengutronix e.K.                 | Marc Kleine-Budde          |
-Embedded Linux                   | https://www.pengutronix.de |
-Vertretung N=C3=BCrnberg              | Phone: +49-5121-206917-129 |
-Amtsgericht Hildesheim, HRA 2686 | Fax:   +49-5121-206917-9   |
-
---vw4xxvfo7kzbvp2i
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEUEC6huC2BN0pvD5fKDiiPnotvG8FAmbew44ACgkQKDiiPnot
-vG9qfAf8CTk2RmeHPrfJav3PuBHG1Q2oYZqWnA01UAaihzEzI66cuAwP2jpOtInE
-epFUOo/Lj3yG/Qpt5dpcs1coQmN1LrVengCjQlX0KCtZtRLOCv29UULyus8dPrqt
-5zYCXeAtAe6XL9ou90Wo3gkaVldVQ2xndwBmq0Cd4XI5hxpj88rHQcpHiNpQAE8J
-bEyNLPgchY7prDi3elH255rFWfRhIdXHztM/HqRj1d/P6Rp3O1gEnpAL6YjO1gf4
-bsV1Z64Hci2aZFCzuy5fMy1SHCwLu65LuBwvrHBMO8zMRW2eyuBvto2p22kriLTv
-gmjDucroH7Sd9tffjRJQeU5MmMeTKg==
-=93jr
------END PGP SIGNATURE-----
-
---vw4xxvfo7kzbvp2i--
-
-
---===============0761293615880594382==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+Reviewed-by: Neil Armstrong <neil.armstrong@linaro.org>
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============0761293615880594382==--
-
