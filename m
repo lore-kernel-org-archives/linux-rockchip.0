@@ -4,103 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BA4A1ECE579
-	for <linux-rockchip@archiver.kernel.org>; Mon,  9 Sep 2024 14:01:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 815DDECE57A
+	for <linux-rockchip@archiver.kernel.org>; Mon,  9 Sep 2024 14:24:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=iJs7FHYNMoRLgEjfLNsg4J9LbWLkB3Dx9oGw8vkCA78=; b=TLTI3ysI+Npm9V
-	I4JSvq1QeEOHQPEd729j8+N114+ZiMwfL8Ba2NlITFBp8gKyU1RxV25MnkjwnIxFWEakGLIZrjkXq
-	4O6lQ0GR3HCTyOlVcbEV1gteRvOQ0LycCRQN1k95azn5a8sO8xFyuPBLALtX7u7i4b4uyny5i376O
-	vWU2djsWwiMPSpgVgcYyO+b99AmL3OxKLyOW3PhHDttfrTNPTC3xTf9VCwtmVHcxqHLZDCm5faEXn
-	ppuBJW3KmAbHviJLcb/vOyzqXU4PJG/3Rl+MvjZF13bQWQ8e6Ei6tceCj1CDtTb+qW/i+7LNp6046
-	CEo5vRQrAaD5QziQsKjw==;
+	List-Owner; bh=bzJKCeZhjX0GjvlsbfUCb9EDFGwwq729BkdkImG623c=; b=MguszoNSTGK9DC
+	Xg49arVA/gIZarkfo3qmA/KDzHWFP5zB4CHBeYJOaa8NojBWjuj7hyG3KA6ffaZtcErVuisfnjQAk
+	nkI2YsdNLuw6an0B5xii0qdE/WPakF/jmPARG8V5x5WI+/+ItSuUKvaPJyb/vfZoRYPT7hYGstd9V
+	G0mRFsP5Ado+hE2XjThJtmnncQhW0cIHZ0ay3UzgLP6bGkmllLMFvYoo0YFN64VRWiagDwb3O01rL
+	6offD8YV5ZHXRvgLHYu+ROrO6E5OhxXJkUHRfFgaiw0DMDY18phxd2i15lRzTUKoDhuWlH6Q3xkfk
+	wanvsE75pBUTSl9YtDPw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1snexZ-00000002Bft-1kpr;
-	Mon, 09 Sep 2024 14:01:41 +0000
-Received: from mail-qk1-x731.google.com ([2607:f8b0:4864:20::731])
+	id 1snfJe-00000002GW5-1fTc;
+	Mon, 09 Sep 2024 14:24:30 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sneo9-000000028hU-0Afl
-	for linux-rockchip@lists.infradead.org;
-	Mon, 09 Sep 2024 13:51:59 +0000
-Received: by mail-qk1-x731.google.com with SMTP id af79cd13be357-7a9ac2d50ffso154498985a.1
-        for <linux-rockchip@lists.infradead.org>; Mon, 09 Sep 2024 06:51:56 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=ziepe.ca; s=google; t=1725889914; x=1726494714; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=yj7+HNUhZ42zQ7e1zqARXsVl9jwOBImumTxZ0tEXKC0=;
-        b=iyqpCuI/EaZsRMQXC8QmqndGT2EV0tN61R5huUuZoff1bKFBuWGuW2qrnSPagKC6P1
-         8eibdGKECHQZW6umxneWPfGGTaoEQtDA43IV5q6gQg5qrmvunsSlt1aqPOg21eg9FZzI
-         XLOm4atod2JisOy0x8avKqQvdClb5hztLAq4eplC2wmOTzuKaNav34nOrfxcmqgtFKfb
-         FgdAKIwGHf99V8lJyNs9jwUIAw0uhj8SKgGsHPkJvedwUlCmrqk5IQraLLKISVJsMdyD
-         5/wL2Eay+L/XoQI3GXlYg9r+lgDEfCGE5oHSwoWxHppz3VjEPiwfAPgb78c4YedGBzqh
-         IuCg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1725889914; x=1726494714;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=yj7+HNUhZ42zQ7e1zqARXsVl9jwOBImumTxZ0tEXKC0=;
-        b=DaNpH+yX3bLQKMqaDavP4zh+5SV0OUI6q+PLfjm4SbQr3kpxiQsH+/yO334s7WqBZo
-         gYdtABhHzqDozi9OqBPlHSFl095mPBia/TWV/W4B01Vr6fG5pqd9StBAQKjvVXAjdLsk
-         S7cIBQhWDjvjqSbMn/GL7fKM5Xj5+zSJ8nrGasSIrJssWEMVnVf+mUH0LFgFJpna9Sx9
-         Ht43N6YVUqC/Rj7oda3I617GzvfxiZGVMRdFpqow5hXCoecYNBp+O2wsCeDT2CV0SaKN
-         +B/ZY3FwzgT6TRp7ebVMSPNegKM4UtlWNub96+ALorZTvc8urxakzxTB6Rn1Uc7IJ2ZJ
-         F7BQ==
-X-Forwarded-Encrypted: i=1; AJvYcCX6R5Cy9s70RhG3Gv0tPwONpR00m0vdK1xDjmJCxeaeDuYVWvsBSmp9kxR++qSAzjCTDTiQnpWT6nT7AtBKZw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwVwW4w5JmGNjZJx9oKYa4Se8FNltCI1m+MdPkvFmGqciKfQnJL
-	KsOOAoX2RZ2rEFwW69QmXEmU1YllJhDTDg089qiAzOq4D49ESiuNB8nAp9UmQSk=
-X-Google-Smtp-Source: AGHT+IE32skbFpKLVZQvvKRGIbOT+Lk4glz9hLQYid2tc58+roSuuIWcYGTezpJn4PsYDlHvh90irg==
-X-Received: by 2002:a05:620a:24d3:b0:7a9:b80b:81e with SMTP id af79cd13be357-7a9b80b0f7dmr521832985a.10.1725889914151;
-        Mon, 09 Sep 2024 06:51:54 -0700 (PDT)
-Received: from ziepe.ca (hlfxns017vw-142-68-80-239.dhcp-dynamic.fibreop.ns.bellaliant.net. [142.68.80.239])
-        by smtp.gmail.com with ESMTPSA id 6a1803df08f44-6c5343295f7sm20958506d6.21.2024.09.09.06.51.53
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 09 Sep 2024 06:51:53 -0700 (PDT)
-Received: from jgg by wakko with local (Exim 4.95)
-	(envelope-from <jgg@ziepe.ca>)
-	id 1sneo4-000es1-U3;
-	Mon, 09 Sep 2024 10:51:52 -0300
-Date: Mon, 9 Sep 2024 10:51:52 -0300
-From: Jason Gunthorpe <jgg@ziepe.ca>
-To: Lyude Paul <lyude@redhat.com>
-Cc: David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>,
-	Lu Baolu <baolu.lu@linux.intel.com>,
-	Karol Herbst <kherbst@redhat.com>,
-	Danilo Krummrich <dakr@redhat.com>,
-	Thierry Reding <thierry.reding@gmail.com>,
-	Jonathan Hunter <jonathanh@nvidia.com>,
-	Sandy Huang <hjc@rock-chips.com>,
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	Mikko Perttunen <mperttunen@nvidia.com>,
-	Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>,
-	Robin Murphy <robin.murphy@arm.com>,
-	Kevin Tian <kevin.tian@intel.com>, dri-devel@lists.freedesktop.org,
-	nouveau@lists.freedesktop.org, linux-tegra@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-media@vger.kernel.org,
-	iommu@lists.linux.dev, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v2 1/3] drm/nouveau/tegra: Use iommu_paging_domain_alloc()
-Message-ID: <20240909135152.GA105117@ziepe.ca>
-References: <20240902014700.66095-1-baolu.lu@linux.intel.com>
- <20240902014700.66095-2-baolu.lu@linux.intel.com>
- <a43c31da6a6989874eb0998dc937d7a611ec542c.camel@redhat.com>
- <20240905132459.GG1909087@ziepe.ca>
- <243808ad949823a0d64cd785ed05a375ccdba096.camel@redhat.com>
+	id 1snfIa-00000002GHd-3xv2;
+	Mon, 09 Sep 2024 14:23:26 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id A9D6C5C0162;
+	Mon,  9 Sep 2024 14:23:20 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 393C7C4CEC5;
+	Mon,  9 Sep 2024 14:23:21 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1725891803;
+	bh=kQNUgMMqW2iwr2oAKBhQG32X6tXltITcAFqjMRNSyXY=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=dl4odoGPDk3MUUCdQbLXfEPlxfKbjDQqtUOJTe8U98J/G9P2r8gXGTZXfSYYTsL3N
+	 cAdEhvX1DpuXRcPSap7JPkXhorFohALU/HXJuz2bPHMhc4Ad46QelmSa+7TyHlarVY
+	 kog9TVkgf9YPD1EGbID8ky1iZlPi0PvOAv3zVAu2wfcICLivIuJzbNC9J4C7Od0qRj
+	 xZScqLoBUTWa+PO35n8Zo0U9L+K7jNV7tw+hiOoSNBM4Z3nCUzg7zu5a6qbXKvfyx+
+	 /4cUvFwNs5G/qVka1SseRhMSXn21yUTPzVzILhqjeVPuTUiDLAVyyTufxQinQ0n5+x
+	 juKE6cM8j8x4w==
+Date: Mon, 9 Sep 2024 15:23:18 +0100
+From: Simon Horman <horms@kernel.org>
+To: Marc Kleine-Budde <mkl@pengutronix.de>
+Cc: kernel@pengutronix.de, Vincent Mailhol <mailhol.vincent@wanadoo.fr>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Heiko Stuebner <heiko@sntech.de>, linux-can@vger.kernel.org,
+	netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+	kernel test robot <lkp@intel.com>
+Subject: Re: [PATCH] can: rockchip_canfd: rkcanfd_timestamp_init(): fix 64
+ bit division on 32 bit platforms
+Message-ID: <20240909142318.GW2097826@kernel.org>
+References: <20240909-can-rockchip_canfd-fix-64-bit-division-v1-1-2748d9422b00@pengutronix.de>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <243808ad949823a0d64cd785ed05a375ccdba096.camel@redhat.com>
+In-Reply-To: <20240909-can-rockchip_canfd-fix-64-bit-division-v1-1-2748d9422b00@pengutronix.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240909_065157_273831_37862454 
-X-CRM114-Status: UNSURE (   9.17  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240909_072325_070271_8AB91355 
+X-CRM114-Status: GOOD (  12.23  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -117,14 +78,24 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, Sep 05, 2024 at 12:26:31PM -0400, Lyude Paul wrote:
-> I did take the one patch - but I'm happy to push the others to drm-misc
-> (provided they all get reviewed. 2/3 seems to be reviewed already but not 3/3)
+On Mon, Sep 09, 2024 at 08:21:49AM +0200, Marc Kleine-Budde wrote:
+> On some 32-bit platforms (at least on parisc), the compiler generates
+> a call to __divdi3() from the u32 by 3 division in
+> rkcanfd_timestamp_init(), which results in the following linker
+> error:
+> 
+> | ERROR: modpost: "__divdi3" [drivers/net/can/rockchip/rockchip_canfd.ko] undefined!
+> 
+> As this code doesn't run in the hot path, a 64 bit by 32 bit division
+> is OK, even on 32 bit platforms. Use an explicit call to div_u64() to
+> fix linking.
+> 
+> Reported-by: kernel test robot <lkp@intel.com>
+> Closes: https://lore.kernel.org/oe-kbuild-all/202409072304.lCQWyNLU-lkp@intel.com/
+> Signed-off-by: Marc Kleine-Budde <mkl@pengutronix.de>
 
-The whole series is acked now, can you pick it up please?
+Reviewed-by: Simon Horman <horms@kernel.org>
 
-Thanks,
-Jason
 
 _______________________________________________
 Linux-rockchip mailing list
