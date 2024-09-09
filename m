@@ -4,56 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F0D40ECE58B
-	for <linux-rockchip@archiver.kernel.org>; Mon,  9 Sep 2024 21:11:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0F94FECE589
+	for <linux-rockchip@archiver.kernel.org>; Mon,  9 Sep 2024 22:33:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Date:To:Cc:From:Subject:References:
-	In-Reply-To:MIME-Version:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=F3NgKMze00m+9tqRUgLz4qrtkxqKtbnhtPwylcAHeO8=; b=rjBoFRPDJTt62z
-	0Oc2gfccPQyh2ONWTtCe8yoRxaHmYFd66q7Wz3cTEo/JlbRBgk0NimhdAFphvGD/pSMD+535K7DnF
-	ZmM9cMeBPwpZfBFI3087SoXEOEewi+/ogk5RoH17chECFmuZd/tyKe64+Aliv7ib/bO+f8r6+aHGt
-	T7bwnTf+o/uM3oSjmvl8a+nAZyF2S2olqDqRFMboBFPz7yvW0UrVtAjHpjIuOgFocENdSGo04dTXV
-	4fpiST9Q1r6B/OzhFXQXNeAJevtZ+/0FnoM9HCDY3zDGHmkd+m+NIsTJR8iUtJc6Jl+GjV1mZ+NMC
-	sJqMv4jPUd/WDN1afK4w==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=ROSHtmI5GjTcqnN6XSstdbDidUjBFZiw33J6I9KQmvU=; b=gasI8JvvIT3DtB
+	Ot6vNpGCJ7b7q5ZFXCo5D6dvwtxmB1MXOkXfZD+5q1wT1VF3ctsvVDZnGDlyABuDUvYJv5Jh5ZqlN
+	vG2xCxTbA8csuDy1qyjQzrsb2kIknVcvTSLYpat0/rbh+njUMFVHBRalCWQ54Db4HPlDueIsBTrIQ
+	+d9g1QL2U1QH7i+sEsZLiQ+xmWI7NrEwoszZVrKpRc1qatAxx7MwcI86ZTDsM1LoaGYCDC0KH2bTE
+	ujaI5m2j4mSwIvgbRC/SUBiZ0LkTvJe6IzrEh+jwUd52B2u3ANCIxifYIyKofcIgV5EgXiatX7yeO
+	wPrognqPUiUAaIAjUUrA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1snlfj-00000003Kdw-0fRr;
-	Mon, 09 Sep 2024 21:11:43 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1snmwS-00000003U30-0xZa;
+	Mon, 09 Sep 2024 22:33:04 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1snleg-00000003KXE-3KfE;
-	Mon, 09 Sep 2024 21:10:40 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 6D979A43E05;
-	Mon,  9 Sep 2024 21:10:30 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7133AC4CEC5;
-	Mon,  9 Sep 2024 21:10:37 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1725916237;
-	bh=MrtANQVha9P9Lvw9CKpcpRx9xPN484pTQpV1GPE55pg=;
-	h=In-Reply-To:References:Subject:From:Cc:To:Date:From;
-	b=c4h6DKHmlCr0T/qOShqLVJP/Kvyd2M5/1qtoReBDD/dRwJfzgbmcqVRXvHd8T+Ilq
-	 xz8XHZYVxeN0SAy/WS28yczlCiCUHivOWFGRxR6fSLVxApWDA1wZKe/dwPyvT2cbkm
-	 361kZB3x+A5ucP6YIV/PgLamWC4Eb5OAXFqlkEbsf6gh27rnZ/MIRxqbSvAEa0K6Pj
-	 F4LdOAiwo5evOLOELkhoU0dIfH9qrjlnjXuFsIfm8/QtjmFKqKRRHU/GzMfK2f9dPq
-	 3lcBEW2ene9zeFGRHaozo7puHbqGVxEyDUgyHFbiOD5WRigj9jM3GMjyRovP9K/GzL
-	 Vt8v1wP2i321A==
-Message-ID: <a487389540a0dd6c981257b4939c001a.sboyd@kernel.org>
+	id 1snmvR-00000003Tx8-0s1R;
+	Mon, 09 Sep 2024 22:32:02 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Transfer-Encoding:MIME-Version:Message-ID:Date:
+	Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
+	List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=Hx2KsAtNeN8lDjIIK64wYqeEJzRRQwAj00bZ+1+RjZs=; b=jr2qIQ4FOwzUMcKX+WHC7m7qA9
+	rkuwY6L5L3grjP0BSFnMTz1K+3IY5Uu454r+cUCb7YGG3h0SKlKWOGYEgJHtGwJaKSNdstl2TXCBX
+	qN31O9UOy5VtBJFgiweUofkjswF0o/DuLvOe7KnpmNTlO8YjtY3etEUqKCxWDtgDrtmnV9QQYs/m4
+	UytYFKq/J4sHjFw9ghDdQ7zfxa6h4bzfLqoOsXUmkWt3+/jqvuBUhVVM0nZFfXaqhJKXB/1+A0ZhT
+	Fb/eMU27oOAox/JOSXoBcDgWCd1I4lZ9/DOWORESx7OIbeziPX+4DERybzqMoS+BFQcikkKQFPdOZ
+	sW0xonmw==;
+Received: from i53875a02.versanet.de ([83.135.90.2] helo=phil.lan)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1snmvJ-00064D-7q; Tue, 10 Sep 2024 00:31:53 +0200
+From: Heiko Stuebner <heiko@sntech.de>
+To: mturquette@baylibre.com,
+	sboyd@kernel.org
+Cc: robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
+	heiko@sntech.de,
+	detlev.casanova@collabora.com,
+	linux-clk@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH] dt-bindings: clock, reset: fix top-comment indentation rk3576 headers
+Date: Tue, 10 Sep 2024 00:31:49 +0200
+Message-ID: <20240909223149.85364-1-heiko@sntech.de>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-In-Reply-To: <20240909121116.254036-1-arnd@kernel.org>
-References: <20240909121116.254036-1-arnd@kernel.org>
-Subject: Re: [PATCH] clk: rockchip: remove unused mclk_pdm0_p/pdm0_p definitions
-From: Stephen Boyd <sboyd@kernel.org>
-Cc: Arnd Bergmann <arnd@arndb.de>, Elaine Zhang <zhangqing@rock-chips.com>, YouMin Chen <cym@rock-chips.com>, Detlev Casanova <detlev.casanova@collabora.com>, Sugar Zhang <sugar.zhang@rock-chips.com>, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-To: Arnd Bergmann <arnd@kernel.org>, Heiko Stuebner <heiko@sntech.de>, Michael Turquette <mturquette@baylibre.com>
-Date: Mon, 09 Sep 2024 14:10:35 -0700
-User-Agent: alot/0.10
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240909_141038_922486_7E0D2276 
-X-CRM114-Status: GOOD (  12.14  )
+X-CRM114-CacheID: sfid-20240909_153201_288303_F46EA72D 
+X-CRM114-Status: GOOD (  10.98  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,34 +80,63 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Quoting Arnd Bergmann (2024-09-09 05:11:05)
-> From: Arnd Bergmann <arnd@arndb.de>
-> 
-> When -Wunused-const-variable is enabled (not the default),
-> there is a warning about two definitions in this file:
-> 
-> In file included from drivers/clk/rockchip/clk-rk3576.c:14:
-> drivers/clk/rockchip/clk-rk3576.c:334:7: error: 'mclk_pdm0_p' defined but not used [-Werror=unused-const-variable=]
->   334 | PNAME(mclk_pdm0_p)                      = { "mclk_pdm0_src_top", "xin24m" };
->       |       ^~~~~~~~~~~
-> drivers/clk/rockchip/clk.h:564:43: note: in definition of macro 'PNAME'
->   564 | #define PNAME(x) static const char *const x[] __initconst
->       |                                           ^
-> drivers/clk/rockchip/clk-rk3576.c:333:7: error: 'pdm0_p' defined but not used [-Werror=unused-const-variable=]
->   333 | PNAME(pdm0_p)                           = { "clk_pdm0_src_top", "xin24m" };
->       |       ^~~~~~
-> drivers/clk/rockchip/clk.h:564:43: note: in definition of macro 'PNAME'
->   564 | #define PNAME(x) static const char *const x[] __initconst
->       |                                           ^
-> 
-> Remove them for the moment. If they are needed later, they can
-> be added back at that point.
-> 
-> Fixes: cc40f5baa91b ("clk: rockchip: Add clock controller for the RK3576")
-> Signed-off-by: Arnd Bergmann <arnd@arndb.de>
-> ---
+Block comments should align the * on each line, as checkpatch rightfully
+pointed out, so fix that style issue on the newly added rk3576 headers.
 
-Applied to clk-next
+Fixes: 49c04453db81 ("dt-bindings: clock, reset: Add support for rk3576")
+Signed-off-by: Heiko Stuebner <heiko@sntech.de>
+---
+ include/dt-bindings/clock/rockchip,rk3576-cru.h | 12 ++++++------
+ include/dt-bindings/reset/rockchip,rk3576-cru.h | 12 ++++++------
+ 2 files changed, 12 insertions(+), 12 deletions(-)
+
+diff --git a/include/dt-bindings/clock/rockchip,rk3576-cru.h b/include/dt-bindings/clock/rockchip,rk3576-cru.h
+index a2933021be89..25aed298ac2c 100644
+--- a/include/dt-bindings/clock/rockchip,rk3576-cru.h
++++ b/include/dt-bindings/clock/rockchip,rk3576-cru.h
+@@ -1,11 +1,11 @@
+ /* SPDX-License-Identifier: (GPL-2.0 OR MIT) */
+ /*
+-* Copyright (c) 2023 Rockchip Electronics Co. Ltd.
+-* Copyright (c) 2024 Collabora Ltd.
+-*
+-* Author: Elaine Zhang <zhangqing@rock-chips.com>
+-* Author: Detlev Casanova <detlev.casanova@collabora.com>
+-*/
++ * Copyright (c) 2023 Rockchip Electronics Co. Ltd.
++ * Copyright (c) 2024 Collabora Ltd.
++ *
++ * Author: Elaine Zhang <zhangqing@rock-chips.com>
++ * Author: Detlev Casanova <detlev.casanova@collabora.com>
++ */
+ 
+ #ifndef _DT_BINDINGS_CLK_ROCKCHIP_RK3576_H
+ #define _DT_BINDINGS_CLK_ROCKCHIP_RK3576_H
+diff --git a/include/dt-bindings/reset/rockchip,rk3576-cru.h b/include/dt-bindings/reset/rockchip,rk3576-cru.h
+index 291fec0ecba0..ae856906f3a3 100644
+--- a/include/dt-bindings/reset/rockchip,rk3576-cru.h
++++ b/include/dt-bindings/reset/rockchip,rk3576-cru.h
+@@ -1,11 +1,11 @@
+ /* SPDX-License-Identifier: (GPL-2.0 OR MIT) */
+ /*
+-* Copyright (c) 2023 Rockchip Electronics Co. Ltd.
+-* Copyright (c) 2024 Collabora Ltd.
+-*
+-* Author: Elaine Zhang <zhangqing@rock-chips.com>
+-* Author: Detlev Casanova <detlev.casanova@collabora.com>
+-*/
++ * Copyright (c) 2023 Rockchip Electronics Co. Ltd.
++ * Copyright (c) 2024 Collabora Ltd.
++ *
++ * Author: Elaine Zhang <zhangqing@rock-chips.com>
++ * Author: Detlev Casanova <detlev.casanova@collabora.com>
++ */
+ 
+ #ifndef _DT_BINDINGS_RESET_ROCKCHIP_RK3576_H
+ #define _DT_BINDINGS_RESET_ROCKCHIP_RK3576_H
+-- 
+2.43.0
+
 
 _______________________________________________
 Linux-rockchip mailing list
