@@ -4,63 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9A092EB64DE
-	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Sep 2024 14:10:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6685AEB64DE
+	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Sep 2024 14:18:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=jjDGNHkqB7adC7jUCYDtnxUrd37VYOpQc5VU+QaMcO0=; b=PxFKwj70+/2Lx7
-	CMCoUMoRNnU3oiX7c/p5DKt9tuPz1dsWaFX8NocpNJ8iHQL/6PfRKMQGrEMtT335WE4N3YE5cvXtg
-	JGFBXO1YlFNqXHdw6ESPE0DKmqmD71Ut1OmJs7v5WK9FwpVZWQYouufBowRfbifhzsDi5Zz0hktlC
-	+Mn32LyXaYKpgljW8LnOHn5j2iiI84LYr5BATPYTiTd439iUz4grCJ3YvdVgUNbSnJ5efU8qblOYT
-	roTDzkP+ZUnZ1M1iWZoBzHAtMN/fCOBspcFu4tnFdY0GdDukg0qq23U9hTLTRXYfH2/PHztBpSTcd
-	KLeGK6ZThGwQ4qlMenUA==;
+	List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:References:
+	In-Reply-To:Cc:To:From:MIME-Version:Date:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=2F5fW5bJf/IyG2hje7Fq3oKkzQIA8Mj2Wt3lGi8QCM0=; b=fFldI1qCxc9zgHuE3VwZzcg4W3
+	QXjqYuOTvJYbk0u3mZtMOwnND6mFKZUwD6BtLNUmuYYqisKi7oqk9MuHBbEka6QT3bGa7Ex+ISd2/
+	G0IOoDjjhrn/iw5VZTJPbwldlWis8bKqciVxJ8BQASJWerEfXJwbf7ia+eWE38GXdCgDVq4c5C+Sr
+	JKPP8EwS6cZVoNm+EOaCcWceP2suVXXe2Y8GSCXATMHR4ka+z581WD42KKhAfFJMjTgcF76qzq/OR
+	EI3QTAPmq1MbiaK3nkn5mLPpIFLFRIvYx4r4yQsBKkUycAWW8SwMOsSwQUAkjHsR1r5lrt57k6+IJ
+	I2+QWdAA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1so1ZQ-00000005olb-0mBC;
-	Tue, 10 Sep 2024 14:10:16 +0000
-Received: from a7-39.smtp-out.eu-west-1.amazonses.com ([54.240.7.39])
+	id 1so1hF-00000005qRf-2emA;
+	Tue, 10 Sep 2024 14:18:21 +0000
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1so1ZN-00000005okf-0Faw;
-	Tue, 10 Sep 2024 14:10:14 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
-	s=4232tfv5ebdrjdwkr5zzm7kytdkokgug; d=collabora.com; t=1725977409;
-	h=From:To:Cc:Subject:Date:Message-ID:MIME-Version:Content-Transfer-Encoding;
-	bh=Z6iH79IgsccM8IOZRV23HWvG93x+QmrBBT16l/5gsWA=;
-	b=fVlZggUzw2ijGcBqwn6vADrylP0/eRVI76LUhJW/JpZvEvUwVKJCzO+dcZz25UtL
-	ieeJX+WF9PNxe88iatPPi+18t3DqPExQaY84Z//2wEklFMCPn4JSIbMWjRgJU5BGTj4
-	lYUm/yQ+4PaPnN3YAJm1lgBPUSGpWdEUrA5i7Zzrgltq9p3Hz9a8g6LwGQQGeQx4VV8
-	SLpxvhNv8d9sdqOMzcascdfIZzEH1nzaKtWvqG7WnOWx9N5wMgKs1FnnhQuZ69UwMmm
-	lceS9iAJWlir1Now9ivEOEiS1CJfYVjrl8UrYjVupO9YDm26Iid27iqiyoqwNTFvzLP
-	PqZJKE1QoA==
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
-	s=uku4taia5b5tsbglxyj6zym32efj7xqv; d=amazonses.com; t=1725977409;
-	h=From:To:Cc:Subject:Date:Message-ID:MIME-Version:Content-Transfer-Encoding:Feedback-ID;
-	bh=Z6iH79IgsccM8IOZRV23HWvG93x+QmrBBT16l/5gsWA=;
-	b=OsvjldKn2qGKdbq8pISK3lGIR9WQ/JA6gBFgH/pVjR3hUquoUzzqGW6uDo9Fa8VQ
-	cVA/AUqKJT6R5H2Hty7gHc+v7mb8SASg/hqHmgeAWGhxADq7QxcwzpFniC1C2jkr3Bb
-	lY8XDb753k5TTiA1Yn6N5z9CzmUSIL3lONv77dnM=
-From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-To: ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de, 
-	mchehab@kernel.org, heiko@sntech.de, hverkuil-cisco@xs4all.nl
-Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	kernel@collabora.com, 
-	Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: [PATCH] media: verisilicon: av1: Fix reference video buffer pointer assignment
-Date: Tue, 10 Sep 2024 14:10:09 +0000
-Message-ID: <01020191dc45365b-26b103cd-153a-4b74-a663-ed7beecc1713-000000@eu-west-1.amazonses.com>
-X-Mailer: git-send-email 2.43.0
+	id 1so1eD-00000005pdF-26Zm;
+	Tue, 10 Sep 2024 14:15:15 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id CF4F2A4486A;
+	Tue, 10 Sep 2024 14:15:04 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id EB4D2C4CED0;
+	Tue, 10 Sep 2024 14:15:11 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1725977712;
+	bh=D9wCXUH6EHNFkoCXW6xHD/3H2QQ1E3dncGMC+EQoPrw=;
+	h=Date:From:To:Cc:In-Reply-To:References:Subject:From;
+	b=byP36he8QtLLM7MQmE01OnnmZis9rGdU4JJt/aKur//gbNBk1IezoOt+JUwpNFyAB
+	 2hdc5K1s+Q40Et0jB3L9L7ef3qtyUKoeqEsCFM/gwVqZQL9Yrv2LjfH0uB29HUxsHX
+	 EunEuBr4WV/6AGetUHIkFq7uhPqy9+X6lwot/jS/fNlL76YK0NeaqSiGuS1af3v1fZ
+	 4s/3C+gEVJ7ivlxW6vVst+4E+RRC4+v41Eopo5qYYREUmcPprRl2vmNq/IKAtNR8GI
+	 ujd/+pblnYm5lah4yG7GkE98HNFGmPLIJiLwgjuXmtBo6GvsDPg0GV2ebtF1fdooHX
+	 7P6hhNTBgmwiQ==
+Date: Tue, 10 Sep 2024 09:15:11 -0500
 MIME-Version: 1.0
-Feedback-ID: ::1.eu-west-1.YpP9ZbxnARFfy3Cb5pfsLd/pdsXBCNK0KEM7HforL4k=:AmazonSES
-X-SES-Outgoing: 2024.09.10-54.240.7.39
+From: "Rob Herring (Arm)" <robh@kernel.org>
+To: Damon Ding <damon.ding@rock-chips.com>
+Cc: sebastian.reichel@collabora.com, krzk+dt@kernel.org, 
+ devicetree@vger.kernel.org, megi@xff.cz, linux-rockchip@lists.infradead.org, 
+ efectn@protonmail.com, jonas@kwiboo.se, tim@feathertop.org, heiko@sntech.de, 
+ macromorgan@hotmail.com, linux-arm-kernel@lists.infradead.org, 
+ andyshrk@163.com, jagan@edgeble.ai, conor+dt@kernel.org, 
+ linux-kernel@vger.kernel.org, dsimic@manjaro.org, knaerzche@gmail.com, 
+ alchark@gmail.com, boris.brezillon@collabora.com
+In-Reply-To: <20240910124055.3981648-1-damon.ding@rock-chips.com>
+References: <20240910124055.3981648-1-damon.ding@rock-chips.com>
+Message-Id: <172597760954.3917281.2039520203138306566.robh@kernel.org>
+Subject: Re: [PATCH v2 0/2] Add support for RK3588S Evaluation board
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240910_071013_302539_5B9A773F 
-X-CRM114-Status: UNSURE (   7.65  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240910_071514_015057_B860A876 
+X-CRM114-Status: GOOD (  15.86  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,31 +76,82 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Always get new destination buffer for reference frame because nothing
-garanty the one set previously is still valid or unused.
 
-Fixes: 727a400686a2 ("media: verisilicon: Add Rockchip AV1 decoder")
-Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
----
- .../media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c    | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+On Tue, 10 Sep 2024 20:40:53 +0800, Damon Ding wrote:
+> Specification:
+> - Rockchip RK3588S
+> - RK806-2x2pcs + DiscretePower
+> - eMMC5.1 + SPI Flash
+> - Micro SD Card3.0
+> - 1 x Typec3.0 + 2 x USB2 HOST
+> - 1 x 1Lane PCIE2.0 Connector(RC Mode)
+> - Headphone output
+> - Array Key(MENU/VOL+/VOL-/ESC), Reset, Power on/off Key
+> - 6 x SARADC
+> 
+> Damon Ding (2):
+>   dt-bindings: arm: rockchip: Add rk3588s evb1 board
+>   arm64: dts: rockchip: Add support for rk3588s evb1 board
+> 
+> Changes in v2:
+> - rename amplifier nodes to amplifier-headphone and amplifier-speaker
+> - sort audio and backlight nodes by node name
+> - format names of regulator nodes to regulator-*
+> - add CPU/memory regulator coupling
+> - fix "VOP-" to "VOL-" in commit message
+> - remove bootargs property in chosen node
+> 
+>  .../devicetree/bindings/arm/rockchip.yaml     |    5 +
+>  arch/arm64/boot/dts/rockchip/Makefile         |    1 +
+>  .../boot/dts/rockchip/rk3588s-evb1-v10.dts    | 1131 +++++++++++++++++
+>  3 files changed, 1137 insertions(+)
+>  create mode 100644 arch/arm64/boot/dts/rockchip/rk3588s-evb1-v10.dts
+> 
+> --
+> 2.34.1
+> 
+> 
+> 
 
-diff --git a/drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c b/drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c
-index 372dfcd0fcd9..2b9a1047479c 100644
---- a/drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c
-+++ b/drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c
-@@ -161,8 +161,7 @@ static int rockchip_vpu981_av1_dec_frame_ref(struct hantro_ctx *ctx,
- 		av1_dec->frame_refs[i].timestamp = timestamp;
- 		av1_dec->frame_refs[i].frame_type = frame->frame_type;
- 		av1_dec->frame_refs[i].order_hint = frame->order_hint;
--		if (!av1_dec->frame_refs[i].vb2_ref)
--			av1_dec->frame_refs[i].vb2_ref = hantro_get_dst_buf(ctx);
-+		av1_dec->frame_refs[i].vb2_ref = hantro_get_dst_buf(ctx);
- 
- 		for (j = 0; j < V4L2_AV1_TOTAL_REFS_PER_FRAME; j++)
- 			av1_dec->frame_refs[i].order_hints[j] = frame->order_hints[j];
--- 
-2.43.0
+
+My bot found new DTB warnings on the .dts files added or changed in this
+series.
+
+Some warnings may be from an existing SoC .dtsi. Or perhaps the warnings
+are fixed by another series. Ultimately, it is up to the platform
+maintainer whether these warnings are acceptable or not. No need to reply
+unless the platform maintainer has comments.
+
+If you already ran DT checks and didn't see these error(s), then
+make sure dt-schema is up to date:
+
+  pip3 install dtschema --upgrade
+
+
+New warnings running 'make CHECK_DTBS=y rockchip/rk3588s-evb1-v10.dtb' for 20240910124055.3981648-1-damon.ding@rock-chips.com:
+
+arch/arm64/boot/dts/rockchip/rk3588s-evb1-v10.dtb: pcie@fe190000: Unevaluated properties are not allowed ('rockchip,skip-scan-in-resume' was unexpected)
+	from schema $id: http://devicetree.org/schemas/pci/rockchip-dw-pcie.yaml#
+arch/arm64/boot/dts/rockchip/rk3588s-evb1-v10.dtb: pmic@1: regulators:dcdc-reg1: Unevaluated properties are not allowed ('regulator-init-microvolt' was unexpected)
+	from schema $id: http://devicetree.org/schemas/mfd/rockchip,rk806.yaml#
+arch/arm64/boot/dts/rockchip/rk3588s-evb1-v10.dtb: pmic@1: regulators:dcdc-reg2: Unevaluated properties are not allowed ('regulator-init-microvolt' was unexpected)
+	from schema $id: http://devicetree.org/schemas/mfd/rockchip,rk806.yaml#
+arch/arm64/boot/dts/rockchip/rk3588s-evb1-v10.dtb: pmic@1: regulators:dcdc-reg3: Unevaluated properties are not allowed ('regulator-init-microvolt' was unexpected)
+	from schema $id: http://devicetree.org/schemas/mfd/rockchip,rk806.yaml#
+arch/arm64/boot/dts/rockchip/rk3588s-evb1-v10.dtb: pmic@1: regulators:dcdc-reg5: Unevaluated properties are not allowed ('regulator-init-microvolt' was unexpected)
+	from schema $id: http://devicetree.org/schemas/mfd/rockchip,rk806.yaml#
+arch/arm64/boot/dts/rockchip/rk3588s-evb1-v10.dtb: pmic@1: regulators:dcdc-reg6: Unevaluated properties are not allowed ('regulator-init-microvolt' was unexpected)
+	from schema $id: http://devicetree.org/schemas/mfd/rockchip,rk806.yaml#
+arch/arm64/boot/dts/rockchip/rk3588s-evb1-v10.dtb: pmic@1: regulators:dcdc-reg8: Unevaluated properties are not allowed ('regulator-init-microvolt' was unexpected)
+	from schema $id: http://devicetree.org/schemas/mfd/rockchip,rk806.yaml#
+arch/arm64/boot/dts/rockchip/rk3588s-evb1-v10.dtb: pmic@1: Unevaluated properties are not allowed ('regulators' was unexpected)
+	from schema $id: http://devicetree.org/schemas/mfd/rockchip,rk806.yaml#
+arch/arm64/boot/dts/rockchip/rk3588s-evb1-v10.dtb: phy@fed80000: 'svid' does not match any of the regexes: 'pinctrl-[0-9]+'
+	from schema $id: http://devicetree.org/schemas/phy/phy-rockchip-usbdp.yaml#
+
+
+
+
 
 
 _______________________________________________
