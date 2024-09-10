@@ -4,83 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 77410EDE9B0
-	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Sep 2024 19:44:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A8ABDEE01E8
+	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Sep 2024 20:48:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:Cc:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=guPHL+ORJepEg+unVihd7jh8aQioI32vuSc9ZKSnbfQ=; b=BitGNoXzUjmyNe
-	sUebZ0m1DSXXoyh0Mu8FF42kuFArZcPb+xpA78IWP356D5GvhNVXl8yRSUfEm9ntCXnd1ma0mEFfp
-	kbASA6or87++kRalP/p+wa3jACrH3CclcWWZK+8R+gUuPfsogEqrYVYRDgTvWVgrLEJN6pZtjLUqX
-	dW6+2qtNcRRLP76TWRYmRSuWzM1aOsMVaRSBKB64KrTD2Nzn7eyAP24s4gW/mzHG9yDKwqQD4N33Z
-	Xa2YRbX7b8NLy2BO716vpjPRSudZUBkCkO1u7RqIUwTMrz830hicuYE77lUDnbS7lTQs/gAWjO2UU
-	PuYNPsVbugzCSVpvyx9w==;
+	List-Owner; bh=zd5pHy6MY6EA+++kkEt3pZQP+YHpT0FvkLwuB2FYgLI=; b=ARtF3V1DvRQa1d
+	wmv8t+p6Lx3v9DRpYkHydye6EFfT+ooFkqoCtz1vz0s+QD5uaOWuvfTySPVO4Dh6ecjJHEHjAsgwy
+	+px92fb5shcl9yPfAza86jjofHi6PvQqwqqX2UoMPPDKKEc5A/TBV77Rpffwdh5A83kyoqTp7vLde
+	sraf2RJlPsDhwmXai+VYOh1KFpGLAykTm9ApEb+ZGzKLJ6PaOtzHraGQJTy927mCHrTo/Dg0rWnxO
+	rSBOcj7yqoVysixZYLaxoKly7eDk7pnNx/giSmTVRZw8AOUqWojplDLG+zKL1MrDMeMolM6SASODW
+	ipw1Z21XqxBMQeUL/aSQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1so6nG-00000006wc0-1G7i;
-	Tue, 10 Sep 2024 19:44:54 +0000
-Received: from mail-vs1-xe2e.google.com ([2607:f8b0:4864:20::e2e])
+	id 1so7mY-0000000765j-1IxL;
+	Tue, 10 Sep 2024 20:48:14 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1so6nD-00000006wb9-2lIC
-	for linux-rockchip@lists.infradead.org;
-	Tue, 10 Sep 2024 19:44:53 +0000
-Received: by mail-vs1-xe2e.google.com with SMTP id ada2fe7eead31-49bd45cfe38so393748137.1
-        for <linux-rockchip@lists.infradead.org>; Tue, 10 Sep 2024 12:44:50 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=ndufresne-ca.20230601.gappssmtp.com; s=20230601; t=1725997489; x=1726602289; darn=lists.infradead.org;
-        h=mime-version:user-agent:content-transfer-encoding:references
-         :in-reply-to:date:cc:to:from:subject:message-id:from:to:cc:subject
-         :date:message-id:reply-to;
-        bh=paDdDLZuWPg2gJJW4B+S1cFVaWCPfU31jT9c47Deq1c=;
-        b=BlGAKhUYK3qysWGKLd2Qyf9orYy4BB/iU5F6HsL5ZaMZqEMrudhZ+TzvkF5q5X4p+k
-         FTZVshTFk81PSIQiMtHMfAkgDg/jBWQ/unMzMMgZ1SO12nw7y5wmgr2wooW4I4egxTXb
-         Aao2XEy+wN7P5bu792wLkjKshZ1FFXEEmkE0F9rnQm/pE2pKA1/sW/o0q1eBnTYfUg0b
-         4LjMydI/gkkHFJTTND6ZEAWaBlf/rLe9hopU6v7nEPIEMfyFlGT00123O0wkPz7Mipov
-         P/99htoluVHnuA/AKNedFlOCefb1NPRteeugMUJoQJfySjYkiOvO482TKvYllzl7du8d
-         dGgQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1725997489; x=1726602289;
-        h=mime-version:user-agent:content-transfer-encoding:references
-         :in-reply-to:date:cc:to:from:subject:message-id:x-gm-message-state
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=paDdDLZuWPg2gJJW4B+S1cFVaWCPfU31jT9c47Deq1c=;
-        b=UQstRUNbN/bPkpmRT6ATvMMdO9gWC/eVNqaiLd7VtSlRhVxlaJh00ND4Q/pwKVXm0i
-         SYDcjd+jbek2exKsjcVqjTI9wSZS1Fk1nakCaKRZlmKuzfqTzSwU5SKzSLPMQ7VKbLDu
-         EH/xmw1DRS63hehTJ9VnjyHMSVkfIy96GFLliD+F9FrLMHvdGYb0UWSSSxqg0I0S0AYG
-         VIrhKj5wLwCFcjEdW0AFiQbQinJB1T7QMum+8oQ7JFtUHwVd/LFW1uQ5TTVSj7JLK0bR
-         cHedweheMt1BpJZaGYci68qs7MLGIdnXBVmHXFSlZwjw6NP6ITABHJe1pThLcm3QS2BH
-         Utiw==
-X-Forwarded-Encrypted: i=1; AJvYcCVa4T9Znp/hlMNACOZ/kWfsYtaXzIWxRPeJ96mm7zNMIt2cJn44+UWukkU7zgUy91eIQrpKFte++sY59N8A3g==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwowMo7p1P4OtPmKV9fAkAfdGmXsRnEyxyx0Sqv2otbBkAgbtpK
-	HEjyrLUGG/o9Rb8HBh+Yg1vVWagmzKUsTgPvM9cgAWzCTm57GaVIdD/2/zzKVGk=
-X-Google-Smtp-Source: AGHT+IFg9JLqxdW3sXfJRhqrKXQcUosatQMw8YzACBm6eCw99hRxZNZ+Q4Fu0IP4u78spQSl2exOIw==
-X-Received: by 2002:a05:6102:d86:b0:493:d3ec:76e5 with SMTP id ada2fe7eead31-49c2423d34bmr1186558137.18.1725997489510;
-        Tue, 10 Sep 2024 12:44:49 -0700 (PDT)
-Received: from nicolas-tpx395.lan ([2606:6d00:17:9cac::580])
-        by smtp.gmail.com with ESMTPSA id 6a1803df08f44-6c53432dee3sm33173866d6.8.2024.09.10.12.44.48
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 10 Sep 2024 12:44:49 -0700 (PDT)
-Message-ID: <10f107089cf679bcabd03e49fc469bb89518deeb.camel@ndufresne.ca>
-Subject: Re: [PATCH] media: verisilicon: av1: Fix reference video buffer
- pointer assignment
-From: Nicolas Dufresne <nicolas@ndufresne.ca>
-To: Benjamin Gaignard <benjamin.gaignard@collabora.com>, 
-	ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de, mchehab@kernel.org, 
-	heiko@sntech.de, hverkuil-cisco@xs4all.nl
-Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	kernel@collabora.com
-Date: Tue, 10 Sep 2024 15:44:47 -0400
-In-Reply-To: <01020191dc45365b-26b103cd-153a-4b74-a663-ed7beecc1713-000000@eu-west-1.amazonses.com>
-References: <01020191dc45365b-26b103cd-153a-4b74-a663-ed7beecc1713-000000@eu-west-1.amazonses.com>
-User-Agent: Evolution 3.52.4 (3.52.4-1.fc40) 
+	id 1so7lV-000000075yf-1E9e;
+	Tue, 10 Sep 2024 20:47:11 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+	List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=4IUESHg9VSQTyLHvh/dHsE6E0uVA9BycG+I/FS++rd0=; b=zZBH1J/tBMuY5ZXPwORRtkAvGr
+	oEbkSD6neigw9qAJRHSWNx/gYavOcn28UNrJb5EJy+Q8dpa8fnNnzgf3kxXkeDQ/IfbCNYMZi/vdE
+	xzh25TRX73SmY0HCpeGD7DB5vKR/Mvt83tSVAlDgXBA52GoiV3wBujXUPyD4Sjo3ig0kX6cOXuqKt
+	y8RqBU8AOMInhEnR8CouEfpEK0HLKUqGRQzS/5Ph7kIiFAJjy9mzg0E8IvzxIyteMshV6k+t4Il/K
+	NuW9cdGDI4VLkuKRbgrqKmRC59HqnrjI4w22IxaIcRWaIg0wNNB37mkN0a6Vpyz16BRaKVvxC/3sB
+	75HiS6gA==;
+Received: from i53875a02.versanet.de ([83.135.90.2] helo=diego.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1so7ky-00009S-MO; Tue, 10 Sep 2024 22:46:36 +0200
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+To: Andrzej Hajda <andrzej.hajda@intel.com>,
+ Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>,
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+ Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>,
+ Sandy Huang <hjc@rock-chips.com>, Andy Yan <andy.yan@rock-chips.com>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Mark Yao <markyao0591@gmail.com>,
+ Sascha Hauer <s.hauer@pengutronix.de>,
+ Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+Cc: dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ devicetree@vger.kernel.org, kernel@collabora.com,
+ Alexandre ARNOUD <aarnoud@me.com>, Luis de Arquer <ldearquer@gmail.com>,
+ Algea Cao <algea.cao@rock-chips.com>
+Subject: Re: [PATCH v6 3/3] drm/rockchip: Add basic RK3588 HDMI output support
+Date: Tue, 10 Sep 2024 22:49:05 +0200
+Message-ID: <26154114.p16igRAIYV@diego>
+In-Reply-To: <1796743.esFFXGZ24q@diego>
+References: <20240906-b4-rk3588-bridge-upstream-v6-0-a3128fb103eb@collabora.com>
+ <324b12ea-805a-499c-909d-3723f0bca7cb@collabora.com>
+ <1796743.esFFXGZ24q@diego>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240910_124451_960234_0F6697EE 
-X-CRM114-Status: GOOD (  13.25  )
+X-CRM114-CacheID: sfid-20240910_134709_762061_AF8AB68B 
+X-CRM114-Status: GOOD (  26.69  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,39 +83,141 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGksCgpMZSBtYXJkaSAxMCBzZXB0ZW1icmUgMjAyNCDDoCAxNDoxMCArMDAwMCwgQmVuamFtaW4g
-R2FpZ25hcmQgYSDDqWNyaXTCoDoKPiBBbHdheXMgZ2V0IG5ldyBkZXN0aW5hdGlvbiBidWZmZXIg
-Zm9yIHJlZmVyZW5jZSBmcmFtZSBiZWNhdXNlIG5vdGhpbmcKPiBnYXJhbnR5IHRoZSBvbmUgc2V0
-IHByZXZpb3VzbHkgaXMgc3RpbGwgdmFsaWQgb3IgdW51c2VkLgoKTWluZCBkb2N1bWVudGluZyBo
-ZXJlIHdoaWNoIHRlc3RzIGdvdCBmaXhlZCB3aXRoIHRoaXMgY2hhbmdlID8KCj4gCj4gRml4ZXM6
-IDcyN2E0MDA2ODZhMiAoIm1lZGlhOiB2ZXJpc2lsaWNvbjogQWRkIFJvY2tjaGlwIEFWMSBkZWNv
-ZGVyIikKPiBTaWduZWQtb2ZmLWJ5OiBCZW5qYW1pbiBHYWlnbmFyZCA8YmVuamFtaW4uZ2FpZ25h
-cmRAY29sbGFib3JhLmNvbT4KPiAtLS0KPiAgLi4uL21lZGlhL3BsYXRmb3JtL3ZlcmlzaWxpY29u
-L3JvY2tjaGlwX3ZwdTk4MV9od19hdjFfZGVjLmMgICAgfCAzICstLQo+ICAxIGZpbGUgY2hhbmdl
-ZCwgMSBpbnNlcnRpb24oKyksIDIgZGVsZXRpb25zKC0pCj4gCj4gZGlmZiAtLWdpdCBhL2RyaXZl
-cnMvbWVkaWEvcGxhdGZvcm0vdmVyaXNpbGljb24vcm9ja2NoaXBfdnB1OTgxX2h3X2F2MV9kZWMu
-YyBiL2RyaXZlcnMvbWVkaWEvcGxhdGZvcm0vdmVyaXNpbGljb24vcm9ja2NoaXBfdnB1OTgxX2h3
-X2F2MV9kZWMuYwo+IGluZGV4IDM3MmRmY2QwZmNkOS4uMmI5YTEwNDc0NzljIDEwMDY0NAo+IC0t
-LSBhL2RyaXZlcnMvbWVkaWEvcGxhdGZvcm0vdmVyaXNpbGljb24vcm9ja2NoaXBfdnB1OTgxX2h3
-X2F2MV9kZWMuYwo+ICsrKyBiL2RyaXZlcnMvbWVkaWEvcGxhdGZvcm0vdmVyaXNpbGljb24vcm9j
-a2NoaXBfdnB1OTgxX2h3X2F2MV9kZWMuYwo+IEBAIC0xNjEsOCArMTYxLDcgQEAgc3RhdGljIGlu
-dCByb2NrY2hpcF92cHU5ODFfYXYxX2RlY19mcmFtZV9yZWYoc3RydWN0IGhhbnRyb19jdHggKmN0
-eCwKPiAgCQlhdjFfZGVjLT5mcmFtZV9yZWZzW2ldLnRpbWVzdGFtcCA9IHRpbWVzdGFtcDsKPiAg
-CQlhdjFfZGVjLT5mcmFtZV9yZWZzW2ldLmZyYW1lX3R5cGUgPSBmcmFtZS0+ZnJhbWVfdHlwZTsK
-PiAgCQlhdjFfZGVjLT5mcmFtZV9yZWZzW2ldLm9yZGVyX2hpbnQgPSBmcmFtZS0+b3JkZXJfaGlu
-dDsKPiAtCQlpZiAoIWF2MV9kZWMtPmZyYW1lX3JlZnNbaV0udmIyX3JlZikKPiAtCQkJYXYxX2Rl
-Yy0+ZnJhbWVfcmVmc1tpXS52YjJfcmVmID0gaGFudHJvX2dldF9kc3RfYnVmKGN0eCk7Cj4gKwkJ
-YXYxX2RlYy0+ZnJhbWVfcmVmc1tpXS52YjJfcmVmID0gaGFudHJvX2dldF9kc3RfYnVmKGN0eCk7
-CgpHb29kIGNhdGNoLCB3b3VsZCBzdGlsbCBiZSBuaWNlIHRvIGltcHJvdmUgdGhlIGNvbW1pdCBt
-ZXNzYWdlLgoKUmV2aWV3ZWQtYnk6IE5pY29sYXMgRHVmcmVzbmUgPG5pY29sYXMuZHVmcmVzbmVA
-Y29sbGFib3JhLmNvbT4KCj4gIAo+ICAJCWZvciAoaiA9IDA7IGogPCBWNEwyX0FWMV9UT1RBTF9S
-RUZTX1BFUl9GUkFNRTsgaisrKQo+ICAJCQlhdjFfZGVjLT5mcmFtZV9yZWZzW2ldLm9yZGVyX2hp
-bnRzW2pdID0gZnJhbWUtPm9yZGVyX2hpbnRzW2pdOwoKCl9fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51
-eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3Jn
-L21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+Am Dienstag, 10. September 2024, 18:39:54 CEST schrieb Heiko St=FCbner:
+> Am Dienstag, 10. September 2024, 17:41:42 CEST schrieb Cristian Ciocaltea:
+> > On 9/10/24 6:21 PM, Heiko St=FCbner wrote:
+> > > Am Dienstag, 10. September 2024, 17:07:57 CEST schrieb Heiko St=FCbne=
+r:
+> > >> Am Freitag, 6. September 2024, 03:17:42 CEST schrieb Cristian Ciocal=
+tea:
+> > >>> The RK3588 SoC family integrates the newer Synopsys DesignWare HDMI=
+ 2.1
+> > >>> Quad-Pixel (QP) TX controller IP and a HDMI/eDP TX Combo PHY based =
+on a
+> > >>> Samsung IP block.
+> > >>>
+> > >>> Add just the basic support for now, i.e. RGB output up to 4K@60Hz,
+> > >>> without audio, CEC or any of the HDMI 2.1 specific features.
+> > >>>
+> > >>> Co-developed-by: Algea Cao <algea.cao@rock-chips.com>
+> > >>> Signed-off-by: Algea Cao <algea.cao@rock-chips.com>
+> > >>> Tested-by: Heiko Stuebner <heiko@sntech.de>
+> > >>> Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+> > >>
+> > >> I had switched from the v3 to this v6 in my playground-kernel today,
+> > >> with v3 I've never seen those, but now with v6 I have gotten multiple
+> > >> times:
+> > >>
+> > >> [  805.730608] Internal error: synchronous external abort: 000000009=
+6000010 [#1] PREEMPT SMP
+> > >> [  805.739764] Modules linked in: snd_soc_simple_card crct10dif_ce s=
+nd_soc_simple_card_utils panthor drm_gpuvm drm_exec fuse
+> > >> [  805.752031] CPU: 3 UID: 0 PID: 775 Comm: Xorg Not tainted 6.11.0-=
+rc7-00099-g459302f1f908-dirty #934
+> > >> [  805.762143] Hardware name: Theobroma Systems RK3588-Q7 SoM on Hai=
+kou devkit (DT)
+> > >> [  805.770407] pstate: 204000c9 (nzCv daIF +PAN -UAO -TCO -DIT -SSBS=
+ BTYPE=3D--)
+> > >> [  805.778186] pc : regmap_mmio_read32le+0x8/0x20
+> > >> [  805.783155] lr : regmap_mmio_read+0x44/0x70
+> > >> [  805.787828] sp : ffff80008293b830
+> > >> [  805.791516] x29: ffff80008293b830 x28: ffff80008293bce8 x27: ffff=
+0001f20ab080
+> > >> [  805.799495] x26: ffff800081139500 x25: 0000000000000000 x24: 0000=
+000000000010
+> > >> [  805.807472] x23: 0000000000000000 x22: ffff0001f5a4b400 x21: ffff=
+80008293b8c4
+> > >> [  805.815450] x20: 0000000000000968 x19: ffff0001f5a27a80 x18: 0000=
+000000000070
+> > >> [  805.823428] x17: 0002441400000005 x16: 000004650441043c x15: 0438=
+000008980804
+> > >> [  805.831406] x14: 07d8089807800780 x13: 0438000008980804 x12: ffff=
+800081133630
+> > >> [  805.839384] x11: 0002441400000005 x10: 000004650441043c x9 : ffff=
+800081a59000
+> > >> [  805.847361] x8 : 07d8089807800780 x7 : 0000000000000000 x6 : ffff=
+0001f5b453c0
+> > >> [  805.855339] x5 : ffff800080750dc0 x4 : 0000000000000968 x3 : 0000=
+000000000968
+> > >> [  805.863316] x2 : ffff800080751520 x1 : 0000000000000968 x0 : ffff=
+800083b20968
+> > >> [  805.871294] Call trace:
+> > >> [  805.874012]  regmap_mmio_read32le+0x8/0x20
+> > >> [  805.878588]  _regmap_bus_reg_read+0x6c/0xac
+> > >> [  805.883262]  _regmap_read+0x60/0xd8
+> > >> [  805.887159]  _regmap_update_bits+0xf4/0x140
+> > >> [  805.891832]  regmap_update_bits_base+0x64/0xa0
+> > >> [  805.896797]  dw_hdmi_qp_bridge_atomic_enable+0x134/0x220
+> > >> [  805.902734]  drm_atomic_bridge_chain_enable+0x54/0xc8
+> > >> [  805.908380]  drm_atomic_helper_commit_modeset_enables+0x194/0x280
+> > >> [  805.915190]  drm_atomic_helper_commit_tail_rpm+0x50/0xa0
+> > >> [  805.921125]  commit_tail+0xa0/0x1a0
+> > >> [  805.925021]  drm_atomic_helper_commit+0x17c/0x1b0
+> > >> [  805.930276]  drm_atomic_commit+0xb8/0x100
+> > >> [  805.934754]  drm_atomic_connector_commit_dpms+0xe0/0x110
+> > >> [  805.940690]  drm_mode_obj_set_property_ioctl+0x1c0/0x420
+> > >> [  805.946626]  drm_connector_property_set_ioctl+0x3c/0x68
+> > >> [  805.952465]  drm_ioctl_kernel+0xc0/0x130
+> > >> [  805.956846]  drm_ioctl+0x214/0x4a0
+> > >> [  805.960643]  __arm64_sys_ioctl+0xac/0xf8
+> > >> [  805.965025]  invoke_syscall+0x48/0x104
+> > >> [  805.969214]  el0_svc_common.constprop.0+0x40/0xe0
+> > >> [  805.974470]  do_el0_svc+0x1c/0x28
+> > >> [  805.978171]  el0_svc+0x34/0xe0
+> > >> [  805.981582]  el0t_64_sync_handler+0x120/0x12c
+> > >> [  805.986449]  el0t_64_sync+0x190/0x194
+> > >> [  805.990540] Code: d503201f d503201f f9400000 8b214000 (b9400000)
+> > >>
+> > >> I guess that might be some clocking issue?
+> > > =
+
+> > > Forgot to add, this happens when the display has blanked and then is
+> > > supposed to unblank again.
+> > =
+
+> > Hmm, I've never encountered this while testing with my v6.11-rc1 based
+> > tree.  What is your current kernel base?  Did you change it while
+> > switching from v3 to v6?
+> > =
+
+> > I'll rebase my tree onto latest linux-next and see if I can reproduce.
+> =
+
+> The setup is 6.11-rc7 with your hdmi series + my wip dsi + X11 running
+> on top.
+> =
+
+> At some point after being idle a while this blanks the display, which will
+> probably turn off clocks and such. After moving the mouse or just
+> doing anything else that unblanks the display, that splat happens.
+> =
+
+> Apart from updating mesa from 24.2.0 to 24.2.2 I haven't changed
+> anything in my test-setup so far.
+
+So now I've re-tested all :-) ... test scenario was that I reverted the v6
+patches and then applied the older versions (and fixed up the dts if
+needed wrt the vo{1}-grf thing). So now really only the hdmi driver
+changed. So I booted, waited for the display to blank and hit reboot
+on the serial console:
+
+- v3 console output turned back on and rebooted fine
+- v4 console output turned back on and rebooted fine
+- v5 hit the error from above
+- v6 hit the error from above
+
+So something between v4 and v5 seems to cause the hickup.
+
+
+
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
