@@ -4,47 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 15B09EDE99A
-	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Sep 2024 15:36:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0A47DEDE99A
+	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Sep 2024 15:49:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=vhkyHkD3Su0jPHjUuw1vW21Bdp8ztuTc8F4Z0HfqTVw=; b=3cKLXRIPiQgp6N
-	8uQy1VMt2gM4S8rtPOZgnGxISheiIXq5HIBqDwcWwAyMeJ0zGBge4fcUY5DZawO7ZpyGPWZDvmtim
-	TW7FLO2Kd5nHbwchnyXWE7WKeMQ2KNmMkVjDIr340al5p4kFOQPYv3oNpGu9TnIedGnUiLfZogovU
-	9YH/7Quws0hzCy9VToYGWrzLzbEslA9A4oiQaQ37xFAPskdlqdX2dBBqqL9MvSlitF5rbmpwmJRgM
-	+pQyFVLwSdOVMPhfmttC45Z8fyxWxOTuQ7hVSTLG2s3uRh/lpUxRenr5UrUQMJ9jBiYIX5YSwzNTg
-	ePGVLNh6Vx7Qd5x/XQKw==;
+	List-Owner; bh=bwX+Jcs1V4mnIFsV4tki9wxgWpbNT50iVZqIVun57Sg=; b=S29vRFL6r0je5H
+	JWYRZ7khJjaQtzOwKq7HWhJUFFOq8xzzYtf6UfacgrRetdenTR02OwK3uXN2+9J06GJa6xpYqRO2M
+	O+sBBBOMirBK+kiJ9uG26RvVXeyfAnQRH2Q5KGU8VU0auNxz5HhI9M7GGNSDqJtVq6AqEaX9251I5
+	VDI9y9GAd7xb5C52Iyma8sK+zql7ylyI/F0a2wnOjLHu369ro2DJnUV1GsFQqvVU5/IyNsCQpFx/9
+	FPIs/3ZoXhbHj8LE9F6LN+1PFGvZoRWyM6zGxE9np8WMOn/BgjZINSwTrxyTwVmhLzMIsCeDkC+Km
+	KL09wtnUjzJ/pH/6whiQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1so2v3-000000068nF-1MWn;
-	Tue, 10 Sep 2024 15:36:41 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1so37f-00000006Dvt-2HL6;
+	Tue, 10 Sep 2024 15:49:43 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1so2eQ-000000063NR-1y85;
-	Tue, 10 Sep 2024 15:19:38 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
-	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=OHTaPFU7IxdysyuX/tN5EzMTydhIoay+K+w5Wew1vlA=; b=bQZuqxW3egMUmeGk2K3dn2mgUk
-	q3z7m1ypz51hUzQgzkUHrTUpWt87uhkuU1OnJJ7etrwMpzri+/kULWEqoqwUKNHEBk/0d1ZzUxcDT
-	wqXjn/kTM8kryz9l14qJmPu8l9DG5I6szJnMuyZATk0cP364QUbVXTlznzOJ6O/77yNSkhGFpuEpq
-	VZj0zVumkA2nWca9W34f8xR0Y09m3uAE6zg5VpxqlfWG4DesKKmrheyYiupz9rHdoe5CZU/ex1nve
-	ybZzNk2gc+4B19S2EeNAA2WN420714viUaqfPd4MKyZoEezfjNxYiVTLjOQ/oIRJO1Zi8oy8ixKgd
-	hHEo5Fsw==;
-Received: from i53875a02.versanet.de ([83.135.90.2] helo=diego.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1so2dx-0005bU-1b; Tue, 10 Sep 2024 17:19:01 +0200
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: Andrzej Hajda <andrzej.hajda@intel.com>,
+	id 1so2zy-00000006AtX-2mPX;
+	Tue, 10 Sep 2024 15:41:48 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1725982904;
+	bh=0B1PDY3GCupfeN+oTs51y74KV9zPbrTetLqMbCSteDQ=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=lhIA/mW+1/LsTKLcV8vmZtyf+2GHfDpxcuGkMFlIj8n/D1VIiLjuWBdOftjlb7tRR
+	 VfhwtBXGmJnL/Wcp0zaFVUEGB4qvy91T1mR/7iMqqsa7rgLS8mMgk2fleXF9Z5z3DU
+	 SXY1XOd7GIDAmrLZuXGP96Wb59yw2OI+Md6Gr6b0SldkSGpQrQtIMPF6egTAgVNBDK
+	 eOOKAX34RIQ0HvSRGkhc5pZHb1rSqoLs2UDdJ+wcSXyiUVAVvP517sEpa6m9TctYLG
+	 n3THdc/CFDgm9ZcegfRA1HFjq3Du/fF0F25sIEpPRrYTQhlI8Ve7UV0BU+l3KfqrHj
+	 VAes9eaUbqMqw==
+Received: from [192.168.1.90] (unknown [188.27.55.48])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: cristicc)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 7DDC717E35CB;
+	Tue, 10 Sep 2024 17:41:43 +0200 (CEST)
+Message-ID: <324b12ea-805a-499c-909d-3723f0bca7cb@collabora.com>
+Date: Tue, 10 Sep 2024 18:41:42 +0300
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v6 3/3] drm/rockchip: Add basic RK3588 HDMI output support
+To: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>,
+ Andrzej Hajda <andrzej.hajda@intel.com>,
  Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>,
  Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
  Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
@@ -54,24 +59,21 @@ To: Andrzej Hajda <andrzej.hajda@intel.com>,
  Sandy Huang <hjc@rock-chips.com>, Andy Yan <andy.yan@rock-chips.com>,
  Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
  Conor Dooley <conor+dt@kernel.org>, Mark Yao <markyao0591@gmail.com>,
- Sascha Hauer <s.hauer@pengutronix.de>,
- Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+ Sascha Hauer <s.hauer@pengutronix.de>
 Cc: dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
  devicetree@vger.kernel.org, kernel@collabora.com,
  Alexandre ARNOUD <aarnoud@me.com>, Luis de Arquer <ldearquer@gmail.com>,
  Algea Cao <algea.cao@rock-chips.com>
-Subject: Re: [PATCH v6 3/3] drm/rockchip: Add basic RK3588 HDMI output support
-Date: Tue, 10 Sep 2024 17:21:27 +0200
-Message-ID: <1899262.u6TykanW85@diego>
-In-Reply-To: <1785617.Ii9rTq9gLj@diego>
 References: <20240906-b4-rk3588-bridge-upstream-v6-0-a3128fb103eb@collabora.com>
  <20240906-b4-rk3588-bridge-upstream-v6-3-a3128fb103eb@collabora.com>
- <1785617.Ii9rTq9gLj@diego>
-MIME-Version: 1.0
+ <1785617.Ii9rTq9gLj@diego> <1899262.u6TykanW85@diego>
+From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+Content-Language: en-US
+In-Reply-To: <1899262.u6TykanW85@diego>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240910_081930_632096_0893373F 
-X-CRM114-Status: GOOD (  15.49  )
+X-CRM114-CacheID: sfid-20240910_084146_883681_C159A615 
+X-CRM114-Status: GOOD (  12.66  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,104 +85,85 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Am Dienstag, 10. September 2024, 17:07:57 CEST schrieb Heiko St=FCbner:
-> Am Freitag, 6. September 2024, 03:17:42 CEST schrieb Cristian Ciocaltea:
-> > The RK3588 SoC family integrates the newer Synopsys DesignWare HDMI 2.1
-> > Quad-Pixel (QP) TX controller IP and a HDMI/eDP TX Combo PHY based on a
-> > Samsung IP block.
-> > =
-
-> > Add just the basic support for now, i.e. RGB output up to 4K@60Hz,
-> > without audio, CEC or any of the HDMI 2.1 specific features.
-> > =
-
-> > Co-developed-by: Algea Cao <algea.cao@rock-chips.com>
-> > Signed-off-by: Algea Cao <algea.cao@rock-chips.com>
-> > Tested-by: Heiko Stuebner <heiko@sntech.de>
-> > Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-> =
-
-> I had switched from the v3 to this v6 in my playground-kernel today,
-> with v3 I've never seen those, but now with v6 I have gotten multiple
-> times:
-> =
-
-> [  805.730608] Internal error: synchronous external abort: 00000000960000=
-10 [#1] PREEMPT SMP
-> [  805.739764] Modules linked in: snd_soc_simple_card crct10dif_ce snd_so=
-c_simple_card_utils panthor drm_gpuvm drm_exec fuse
-> [  805.752031] CPU: 3 UID: 0 PID: 775 Comm: Xorg Not tainted 6.11.0-rc7-0=
-0099-g459302f1f908-dirty #934
-> [  805.762143] Hardware name: Theobroma Systems RK3588-Q7 SoM on Haikou d=
-evkit (DT)
-> [  805.770407] pstate: 204000c9 (nzCv daIF +PAN -UAO -TCO -DIT -SSBS BTYP=
-E=3D--)
-> [  805.778186] pc : regmap_mmio_read32le+0x8/0x20
-> [  805.783155] lr : regmap_mmio_read+0x44/0x70
-> [  805.787828] sp : ffff80008293b830
-> [  805.791516] x29: ffff80008293b830 x28: ffff80008293bce8 x27: ffff0001f=
-20ab080
-> [  805.799495] x26: ffff800081139500 x25: 0000000000000000 x24: 000000000=
-0000010
-> [  805.807472] x23: 0000000000000000 x22: ffff0001f5a4b400 x21: ffff80008=
-293b8c4
-> [  805.815450] x20: 0000000000000968 x19: ffff0001f5a27a80 x18: 000000000=
-0000070
-> [  805.823428] x17: 0002441400000005 x16: 000004650441043c x15: 043800000=
-8980804
-> [  805.831406] x14: 07d8089807800780 x13: 0438000008980804 x12: ffff80008=
-1133630
-> [  805.839384] x11: 0002441400000005 x10: 000004650441043c x9 : ffff80008=
-1a59000
-> [  805.847361] x8 : 07d8089807800780 x7 : 0000000000000000 x6 : ffff0001f=
-5b453c0
-> [  805.855339] x5 : ffff800080750dc0 x4 : 0000000000000968 x3 : 000000000=
-0000968
-> [  805.863316] x2 : ffff800080751520 x1 : 0000000000000968 x0 : ffff80008=
-3b20968
-> [  805.871294] Call trace:
-> [  805.874012]  regmap_mmio_read32le+0x8/0x20
-> [  805.878588]  _regmap_bus_reg_read+0x6c/0xac
-> [  805.883262]  _regmap_read+0x60/0xd8
-> [  805.887159]  _regmap_update_bits+0xf4/0x140
-> [  805.891832]  regmap_update_bits_base+0x64/0xa0
-> [  805.896797]  dw_hdmi_qp_bridge_atomic_enable+0x134/0x220
-> [  805.902734]  drm_atomic_bridge_chain_enable+0x54/0xc8
-> [  805.908380]  drm_atomic_helper_commit_modeset_enables+0x194/0x280
-> [  805.915190]  drm_atomic_helper_commit_tail_rpm+0x50/0xa0
-> [  805.921125]  commit_tail+0xa0/0x1a0
-> [  805.925021]  drm_atomic_helper_commit+0x17c/0x1b0
-> [  805.930276]  drm_atomic_commit+0xb8/0x100
-> [  805.934754]  drm_atomic_connector_commit_dpms+0xe0/0x110
-> [  805.940690]  drm_mode_obj_set_property_ioctl+0x1c0/0x420
-> [  805.946626]  drm_connector_property_set_ioctl+0x3c/0x68
-> [  805.952465]  drm_ioctl_kernel+0xc0/0x130
-> [  805.956846]  drm_ioctl+0x214/0x4a0
-> [  805.960643]  __arm64_sys_ioctl+0xac/0xf8
-> [  805.965025]  invoke_syscall+0x48/0x104
-> [  805.969214]  el0_svc_common.constprop.0+0x40/0xe0
-> [  805.974470]  do_el0_svc+0x1c/0x28
-> [  805.978171]  el0_svc+0x34/0xe0
-> [  805.981582]  el0t_64_sync_handler+0x120/0x12c
-> [  805.986449]  el0t_64_sync+0x190/0x194
-> [  805.990540] Code: d503201f d503201f f9400000 8b214000 (b9400000)
-> =
-
-> I guess that might be some clocking issue?
-
-Forgot to add, this happens when the display has blanked and then is
-supposed to unblank again.
-
-Heiko
-
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gOS8xMC8yNCA2OjIxIFBNLCBIZWlrbyBTdMO8Ym5lciB3cm90ZToKPiBBbSBEaWVuc3RhZywg
+MTAuIFNlcHRlbWJlciAyMDI0LCAxNzowNzo1NyBDRVNUIHNjaHJpZWIgSGVpa28gU3TDvGJuZXI6
+Cj4+IEFtIEZyZWl0YWcsIDYuIFNlcHRlbWJlciAyMDI0LCAwMzoxNzo0MiBDRVNUIHNjaHJpZWIg
+Q3Jpc3RpYW4gQ2lvY2FsdGVhOgo+Pj4gVGhlIFJLMzU4OCBTb0MgZmFtaWx5IGludGVncmF0ZXMg
+dGhlIG5ld2VyIFN5bm9wc3lzIERlc2lnbldhcmUgSERNSSAyLjEKPj4+IFF1YWQtUGl4ZWwgKFFQ
+KSBUWCBjb250cm9sbGVyIElQIGFuZCBhIEhETUkvZURQIFRYIENvbWJvIFBIWSBiYXNlZCBvbiBh
+Cj4+PiBTYW1zdW5nIElQIGJsb2NrLgo+Pj4KPj4+IEFkZCBqdXN0IHRoZSBiYXNpYyBzdXBwb3J0
+IGZvciBub3csIGkuZS4gUkdCIG91dHB1dCB1cCB0byA0S0A2MEh6LAo+Pj4gd2l0aG91dCBhdWRp
+bywgQ0VDIG9yIGFueSBvZiB0aGUgSERNSSAyLjEgc3BlY2lmaWMgZmVhdHVyZXMuCj4+Pgo+Pj4g
+Q28tZGV2ZWxvcGVkLWJ5OiBBbGdlYSBDYW8gPGFsZ2VhLmNhb0Byb2NrLWNoaXBzLmNvbT4KPj4+
+IFNpZ25lZC1vZmYtYnk6IEFsZ2VhIENhbyA8YWxnZWEuY2FvQHJvY2stY2hpcHMuY29tPgo+Pj4g
+VGVzdGVkLWJ5OiBIZWlrbyBTdHVlYm5lciA8aGVpa29Ac250ZWNoLmRlPgo+Pj4gU2lnbmVkLW9m
+Zi1ieTogQ3Jpc3RpYW4gQ2lvY2FsdGVhIDxjcmlzdGlhbi5jaW9jYWx0ZWFAY29sbGFib3JhLmNv
+bT4KPj4KPj4gSSBoYWQgc3dpdGNoZWQgZnJvbSB0aGUgdjMgdG8gdGhpcyB2NiBpbiBteSBwbGF5
+Z3JvdW5kLWtlcm5lbCB0b2RheSwKPj4gd2l0aCB2MyBJJ3ZlIG5ldmVyIHNlZW4gdGhvc2UsIGJ1
+dCBub3cgd2l0aCB2NiBJIGhhdmUgZ290dGVuIG11bHRpcGxlCj4+IHRpbWVzOgo+Pgo+PiBbICA4
+MDUuNzMwNjA4XSBJbnRlcm5hbCBlcnJvcjogc3luY2hyb25vdXMgZXh0ZXJuYWwgYWJvcnQ6IDAw
+MDAwMDAwOTYwMDAwMTAgWyMxXSBQUkVFTVBUIFNNUAo+PiBbICA4MDUuNzM5NzY0XSBNb2R1bGVz
+IGxpbmtlZCBpbjogc25kX3NvY19zaW1wbGVfY2FyZCBjcmN0MTBkaWZfY2Ugc25kX3NvY19zaW1w
+bGVfY2FyZF91dGlscyBwYW50aG9yIGRybV9ncHV2bSBkcm1fZXhlYyBmdXNlCj4+IFsgIDgwNS43
+NTIwMzFdIENQVTogMyBVSUQ6IDAgUElEOiA3NzUgQ29tbTogWG9yZyBOb3QgdGFpbnRlZCA2LjEx
+LjAtcmM3LTAwMDk5LWc0NTkzMDJmMWY5MDgtZGlydHkgIzkzNAo+PiBbICA4MDUuNzYyMTQzXSBI
+YXJkd2FyZSBuYW1lOiBUaGVvYnJvbWEgU3lzdGVtcyBSSzM1ODgtUTcgU29NIG9uIEhhaWtvdSBk
+ZXZraXQgKERUKQo+PiBbICA4MDUuNzcwNDA3XSBwc3RhdGU6IDIwNDAwMGM5IChuekN2IGRhSUYg
+K1BBTiAtVUFPIC1UQ08gLURJVCAtU1NCUyBCVFlQRT0tLSkKPj4gWyAgODA1Ljc3ODE4Nl0gcGMg
+OiByZWdtYXBfbW1pb19yZWFkMzJsZSsweDgvMHgyMAo+PiBbICA4MDUuNzgzMTU1XSBsciA6IHJl
+Z21hcF9tbWlvX3JlYWQrMHg0NC8weDcwCj4+IFsgIDgwNS43ODc4MjhdIHNwIDogZmZmZjgwMDA4
+MjkzYjgzMAo+PiBbICA4MDUuNzkxNTE2XSB4Mjk6IGZmZmY4MDAwODI5M2I4MzAgeDI4OiBmZmZm
+ODAwMDgyOTNiY2U4IHgyNzogZmZmZjAwMDFmMjBhYjA4MAo+PiBbICA4MDUuNzk5NDk1XSB4MjY6
+IGZmZmY4MDAwODExMzk1MDAgeDI1OiAwMDAwMDAwMDAwMDAwMDAwIHgyNDogMDAwMDAwMDAwMDAw
+MDAxMAo+PiBbICA4MDUuODA3NDcyXSB4MjM6IDAwMDAwMDAwMDAwMDAwMDAgeDIyOiBmZmZmMDAw
+MWY1YTRiNDAwIHgyMTogZmZmZjgwMDA4MjkzYjhjNAo+PiBbICA4MDUuODE1NDUwXSB4MjA6IDAw
+MDAwMDAwMDAwMDA5NjggeDE5OiBmZmZmMDAwMWY1YTI3YTgwIHgxODogMDAwMDAwMDAwMDAwMDA3
+MAo+PiBbICA4MDUuODIzNDI4XSB4MTc6IDAwMDI0NDE0MDAwMDAwMDUgeDE2OiAwMDAwMDQ2NTA0
+NDEwNDNjIHgxNTogMDQzODAwMDAwODk4MDgwNAo+PiBbICA4MDUuODMxNDA2XSB4MTQ6IDA3ZDgw
+ODk4MDc4MDA3ODAgeDEzOiAwNDM4MDAwMDA4OTgwODA0IHgxMjogZmZmZjgwMDA4MTEzMzYzMAo+
+PiBbICA4MDUuODM5Mzg0XSB4MTE6IDAwMDI0NDE0MDAwMDAwMDUgeDEwOiAwMDAwMDQ2NTA0NDEw
+NDNjIHg5IDogZmZmZjgwMDA4MWE1OTAwMAo+PiBbICA4MDUuODQ3MzYxXSB4OCA6IDA3ZDgwODk4
+MDc4MDA3ODAgeDcgOiAwMDAwMDAwMDAwMDAwMDAwIHg2IDogZmZmZjAwMDFmNWI0NTNjMAo+PiBb
+ICA4MDUuODU1MzM5XSB4NSA6IGZmZmY4MDAwODA3NTBkYzAgeDQgOiAwMDAwMDAwMDAwMDAwOTY4
+IHgzIDogMDAwMDAwMDAwMDAwMDk2OAo+PiBbICA4MDUuODYzMzE2XSB4MiA6IGZmZmY4MDAwODA3
+NTE1MjAgeDEgOiAwMDAwMDAwMDAwMDAwOTY4IHgwIDogZmZmZjgwMDA4M2IyMDk2OAo+PiBbICA4
+MDUuODcxMjk0XSBDYWxsIHRyYWNlOgo+PiBbICA4MDUuODc0MDEyXSAgcmVnbWFwX21taW9fcmVh
+ZDMybGUrMHg4LzB4MjAKPj4gWyAgODA1Ljg3ODU4OF0gIF9yZWdtYXBfYnVzX3JlZ19yZWFkKzB4
+NmMvMHhhYwo+PiBbICA4MDUuODgzMjYyXSAgX3JlZ21hcF9yZWFkKzB4NjAvMHhkOAo+PiBbICA4
+MDUuODg3MTU5XSAgX3JlZ21hcF91cGRhdGVfYml0cysweGY0LzB4MTQwCj4+IFsgIDgwNS44OTE4
+MzJdICByZWdtYXBfdXBkYXRlX2JpdHNfYmFzZSsweDY0LzB4YTAKPj4gWyAgODA1Ljg5Njc5N10g
+IGR3X2hkbWlfcXBfYnJpZGdlX2F0b21pY19lbmFibGUrMHgxMzQvMHgyMjAKPj4gWyAgODA1Ljkw
+MjczNF0gIGRybV9hdG9taWNfYnJpZGdlX2NoYWluX2VuYWJsZSsweDU0LzB4YzgKPj4gWyAgODA1
+LjkwODM4MF0gIGRybV9hdG9taWNfaGVscGVyX2NvbW1pdF9tb2Rlc2V0X2VuYWJsZXMrMHgxOTQv
+MHgyODAKPj4gWyAgODA1LjkxNTE5MF0gIGRybV9hdG9taWNfaGVscGVyX2NvbW1pdF90YWlsX3Jw
+bSsweDUwLzB4YTAKPj4gWyAgODA1LjkyMTEyNV0gIGNvbW1pdF90YWlsKzB4YTAvMHgxYTAKPj4g
+WyAgODA1LjkyNTAyMV0gIGRybV9hdG9taWNfaGVscGVyX2NvbW1pdCsweDE3Yy8weDFiMAo+PiBb
+ICA4MDUuOTMwMjc2XSAgZHJtX2F0b21pY19jb21taXQrMHhiOC8weDEwMAo+PiBbICA4MDUuOTM0
+NzU0XSAgZHJtX2F0b21pY19jb25uZWN0b3JfY29tbWl0X2RwbXMrMHhlMC8weDExMAo+PiBbICA4
+MDUuOTQwNjkwXSAgZHJtX21vZGVfb2JqX3NldF9wcm9wZXJ0eV9pb2N0bCsweDFjMC8weDQyMAo+
+PiBbICA4MDUuOTQ2NjI2XSAgZHJtX2Nvbm5lY3Rvcl9wcm9wZXJ0eV9zZXRfaW9jdGwrMHgzYy8w
+eDY4Cj4+IFsgIDgwNS45NTI0NjVdICBkcm1faW9jdGxfa2VybmVsKzB4YzAvMHgxMzAKPj4gWyAg
+ODA1Ljk1Njg0Nl0gIGRybV9pb2N0bCsweDIxNC8weDRhMAo+PiBbICA4MDUuOTYwNjQzXSAgX19h
+cm02NF9zeXNfaW9jdGwrMHhhYy8weGY4Cj4+IFsgIDgwNS45NjUwMjVdICBpbnZva2Vfc3lzY2Fs
+bCsweDQ4LzB4MTA0Cj4+IFsgIDgwNS45NjkyMTRdICBlbDBfc3ZjX2NvbW1vbi5jb25zdHByb3Au
+MCsweDQwLzB4ZTAKPj4gWyAgODA1Ljk3NDQ3MF0gIGRvX2VsMF9zdmMrMHgxYy8weDI4Cj4+IFsg
+IDgwNS45NzgxNzFdICBlbDBfc3ZjKzB4MzQvMHhlMAo+PiBbICA4MDUuOTgxNTgyXSAgZWwwdF82
+NF9zeW5jX2hhbmRsZXIrMHgxMjAvMHgxMmMKPj4gWyAgODA1Ljk4NjQ0OV0gIGVsMHRfNjRfc3lu
+YysweDE5MC8weDE5NAo+PiBbICA4MDUuOTkwNTQwXSBDb2RlOiBkNTAzMjAxZiBkNTAzMjAxZiBm
+OTQwMDAwMCA4YjIxNDAwMCAoYjk0MDAwMDApCj4+Cj4+IEkgZ3Vlc3MgdGhhdCBtaWdodCBiZSBz
+b21lIGNsb2NraW5nIGlzc3VlPwo+IAo+IEZvcmdvdCB0byBhZGQsIHRoaXMgaGFwcGVucyB3aGVu
+IHRoZSBkaXNwbGF5IGhhcyBibGFua2VkIGFuZCB0aGVuIGlzCj4gc3VwcG9zZWQgdG8gdW5ibGFu
+ayBhZ2Fpbi4KCkhtbSwgSSd2ZSBuZXZlciBlbmNvdW50ZXJlZCB0aGlzIHdoaWxlIHRlc3Rpbmcg
+d2l0aCBteSB2Ni4xMS1yYzEgYmFzZWQKdHJlZS4gIFdoYXQgaXMgeW91ciBjdXJyZW50IGtlcm5l
+bCBiYXNlPyAgRGlkIHlvdSBjaGFuZ2UgaXQgd2hpbGUKc3dpdGNoaW5nIGZyb20gdjMgdG8gdjY/
+CgpJJ2xsIHJlYmFzZSBteSB0cmVlIG9udG8gbGF0ZXN0IGxpbnV4LW5leHQgYW5kIHNlZSBpZiBJ
+IGNhbiByZXByb2R1Y2UuCgpUaGFua3MgZm9yIHJlcG9ydGluZyB0aGlzIQoKUmVnYXJkcywKQ3Jp
+c3RpYW4KCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxp
+bnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQu
+b3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9j
+a2NoaXAK
