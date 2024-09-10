@@ -4,48 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3F551EDE9AF
-	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Sep 2024 18:05:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B2BC0EDE9AE
+	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Sep 2024 18:05:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=DdZiZXg9EXYU85mo7GYvTS+VxF34a0jXYQv8fjkmd0g=; b=Def5/UNsvaQ7xR
-	BPNkCN823CN44W4u2erVGq25Qwd9zDFWNzrOkntRcIFFswLI+JqDBKLIjtq5p4zkDPAWvFuAcQPIm
-	bEPA980eAKZRHUULD/eLTFJ5jwJHnff91iHjmoRj012PCOS1swkAguBvAutJWff/T6UPvVEKxyIAq
-	7EPQs9qLfTlIIW3EuTGJLnHYTx3/rtma7siZE6Dgef1i3YfDSq4kKAyD2Ag4X9CKEMiIa/FWPNJV7
-	v7r1t6Po3DfuT50ntN7PqBIofsgQdUWENJLtrf/KU0xyNVRigjNIBQ9OgdxhwGKUc35xQ1qcOkaPQ
-	V9hpXp4gSAUQD9wEzggg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=UdsjWTXbmVti8Q5EOK2QF7SQEemgycpVHgvmbg/SSfM=; b=Go15sQTlqxkSBe
+	+zM/nnUxVkJ5MTRlR/2ravyNua18CRrpf7kGJ0EtBMBuOVSctjwLhpXikhxq4AihlhREFdZYj/icE
+	g9hUpKKfFM7Dj6dhDdedl2uLODbkB5KMsxjwHsTHZNYrhT2ip7IXOa2SGC0YhvJwCd0SACqz+kB0s
+	xXaTdardphgKz7snX8IfdV/aNiPhPJhtBvIMTeqIo6vI45RYa74zbnxqf/mvbZ0NPql+am3SAj1GB
+	nwI00jq68p2zjagEtrZOaYVbVtnGjU2Ql2uucJHioXkWto5DEykYHnr22LMo5a8loy5ouwJgXpU1T
+	AOGMsEDR9TdkyhdaMOUw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1so5FF-00000006h9N-0uVd;
-	Tue, 10 Sep 2024 18:05:41 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
-	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1so5F8-00000006h5n-1DUp
-	for linux-rockchip@lists.infradead.org;
+	id 1so5FB-00000006h8P-44J8;
 	Tue, 10 Sep 2024 18:05:37 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
+	id 1so5F8-00000006h5k-12iq
+	for linux-rockchip@lists.infradead.org;
+	Tue, 10 Sep 2024 18:05:36 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1725991532;
-	bh=Je1FHMLQZVb6pynDmX5z0/KiXmKexwWWB6JfVjr/pn0=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=aQ3LBe254vT0U9W9y2BvvsOx/vlsWxT1qwH5pDak0czgIj8EHaW+ETvwW3FUCy8iL
-	 AuPhed8aEjCYrg6NnSsqc2ecq2u8KZxIgvI6uobpCfVrNLHuGEemfHbckgyL6tL4Sa
-	 8u/2hB8H3GQlD6cwEIiDJS+auTz6Ez6Jp7PTkO+5UQpyMUGVx2TWKGHRJExZV2hpdU
-	 FZ43YG5BQhnRtHzmuXAgpo1O0W5DmWhVpiQxw8O8hfLGCU47teEyWperRHj9fM8UpS
-	 HIU6NSubjhpXppNuvSKNdZewRAeSU+Uk475rgrR8Xs1rpTKApTDTGqlIQikLyBCfJs
-	 P8467nPtVK4UQ==
+	s=mail; t=1725991531;
+	bh=kEZ+U8Z66xptCiF1McdzJy5YJA7WQzf6RD2McVh/daI=;
+	h=From:To:Cc:Subject:Date:From;
+	b=V/aW2UEbOfT4WTlIRZdoHx0XfdQEDeYDPfs0w+9lizFejRIZqyLfx6NXtB7AxtQjN
+	 R1HNiEklDd5l5HQ8eD8m/KXyEmFnl2s+j1aRSZtkItVFx4awBuS6WQVnCw+6I50k2x
+	 hQ28dchLe/7joasDbNXMgCxT4229ACEwrJNTC1z1MKbJ+42R860z+n3/EABOisHfJg
+	 EIxlDDGB0kmaXFm9hRNF7RIvzbYR14h3wCGf112WwTsjm8KWuWWjrIzWzsZG1Gl+jo
+	 p9pUXl4bK8Yu/pZuEYdiZSBlEt3ulmw8+DgkHsxq3Pd52A3DWbJsf6o31VnAL9Q2IO
+	 07t53l8DYNDaQ==
 Received: from jupiter.universe (dyndsl-091-248-215-127.ewe-ip-backbone.de [91.248.215.127])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: sre)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id D465617E35FF;
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id D039D17E35F8;
 	Tue, 10 Sep 2024 20:05:31 +0200 (CEST)
 Received: by jupiter.universe (Postfix, from userid 1000)
-	id 900774800F6; Tue, 10 Sep 2024 20:05:31 +0200 (CEST)
+	id 8B0324800EA; Tue, 10 Sep 2024 20:05:31 +0200 (CEST)
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
 To: Rob Herring <robh@kernel.org>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
@@ -61,16 +61,14 @@ Cc: Elaine Zhang <zhangqing@rock-chips.com>,
 	linux-pm@vger.kernel.org,
 	Sebastian Reichel <sebastian.reichel@collabora.com>,
 	kernel@collabora.com
-Subject: [PATCH v1 3/6] pmdomain: rockchip: reduce indention in rockchip_pd_power
-Date: Tue, 10 Sep 2024 19:57:12 +0200
-Message-ID: <20240910180530.47194-4-sebastian.reichel@collabora.com>
+Subject: [PATCH v1 0/6] Fix RK3588 GPU domain
+Date: Tue, 10 Sep 2024 19:57:09 +0200
+Message-ID: <20240910180530.47194-1-sebastian.reichel@collabora.com>
 X-Mailer: git-send-email 2.45.2
-In-Reply-To: <20240910180530.47194-1-sebastian.reichel@collabora.com>
-References: <20240910180530.47194-1-sebastian.reichel@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240910_110534_544675_79AB26E4 
-X-CRM114-Status: GOOD (  14.17  )
+X-CRM114-CacheID: sfid-20240910_110534_509477_2A933F53 
+X-CRM114-Status: GOOD (  16.33  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,80 +85,60 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Rework the logic, so that the function exits early when the
-power domain state is already correct to reduce code indention.
+Hi,
 
-No functional change intended.
+I got a report, that the Linux kernel crashes on Rock 5B when the panthor
+driver is loaded late after booting. The crash starts with the following
+shortened error print:
 
-Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
----
- drivers/pmdomain/rockchip/pm-domains.c | 45 +++++++++++++-------------
- 1 file changed, 23 insertions(+), 22 deletions(-)
+rockchip-pm-domain fd8d8000.power-management:power-controller: failed to set domain 'gpu', val=0
+rockchip-pm-domain fd8d8000.power-management:power-controller: failed to get ack on domain 'gpu', val=0xa9fff
+SError Interrupt on CPU4, code 0x00000000be000411 -- SError
 
-diff --git a/drivers/pmdomain/rockchip/pm-domains.c b/drivers/pmdomain/rockchip/pm-domains.c
-index 5e5291dedd28..663d390faaeb 100644
---- a/drivers/pmdomain/rockchip/pm-domains.c
-+++ b/drivers/pmdomain/rockchip/pm-domains.c
-@@ -537,36 +537,37 @@ static int rockchip_pd_power(struct rockchip_pm_domain *pd, bool power_on)
- 
- 	guard(mutex)(&pmu->mutex);
- 
--	if (rockchip_pmu_domain_is_on(pd) != power_on) {
--		ret = clk_bulk_enable(pd->num_clks, pd->clks);
--		if (ret < 0) {
--			dev_err(pmu->dev, "failed to enable clocks\n");
--			return ret;
--		}
-+	if (rockchip_pmu_domain_is_on(pd) == power_on)
-+		return 0;
- 
--		if (!power_on) {
--			rockchip_pmu_save_qos(pd);
-+	ret = clk_bulk_enable(pd->num_clks, pd->clks);
-+	if (ret < 0) {
-+		dev_err(pmu->dev, "failed to enable clocks\n");
-+		return ret;
-+	}
- 
--			/* if powering down, idle request to NIU first */
--			rockchip_pmu_set_idle_request(pd, true);
--		}
-+	if (!power_on) {
-+		rockchip_pmu_save_qos(pd);
- 
--		ret = rockchip_do_pmu_set_power_domain(pd, power_on);
--		if (ret < 0) {
--			clk_bulk_disable(pd->num_clks, pd->clks);
--			return ret;
--		}
-+		/* if powering down, idle request to NIU first */
-+		rockchip_pmu_set_idle_request(pd, true);
-+	}
- 
--		if (power_on) {
--			/* if powering up, leave idle mode */
--			rockchip_pmu_set_idle_request(pd, false);
-+	ret = rockchip_do_pmu_set_power_domain(pd, power_on);
-+	if (ret < 0) {
-+		clk_bulk_disable(pd->num_clks, pd->clks);
-+		return ret;
-+	}
- 
--			rockchip_pmu_restore_qos(pd);
--		}
-+	if (power_on) {
-+		/* if powering up, leave idle mode */
-+		rockchip_pmu_set_idle_request(pd, false);
- 
--		clk_bulk_disable(pd->num_clks, pd->clks);
-+		rockchip_pmu_restore_qos(pd);
- 	}
- 
-+	clk_bulk_disable(pd->num_clks, pd->clks);
-+
- 	return 0;
- }
- 
+This series first does some cleanups in the Rockchip power domain
+driver and changes the driver, so that it no longer tries to continue
+when it fails to enable a domain. This gets rid of the SError interrupt
+and long backtraces. But the kernel still hangs when it fails to enable
+a power domain. I have not done further analysis to check if that can
+be avoided.
+
+Last but not least this provides a fix for the GPU power domain failing
+to get enabled - after some testing from my side it seems to require the
+GPU voltage supply to be enabled.
+
+I'm not really happy about the hack to get a regulator for a sub-node
+in the 5th patch, which I took over from the Mediatek driver. But to
+get things going and open a discussion around it I thought it would be
+best to send a first version as soon as possible.
+
+Greetings,
+
+-- Sebastian
+Sebastian Reichel (6):
+  pmdomain: rockchip: forward rockchip_do_pmu_set_power_domain errors
+  pmdomain: rockchip: cleanup mutex handling in rockchip_pd_power
+  pmdomain: rockchip: reduce indention in rockchip_pd_power
+  dt-bindings: power: rockchip: add regulator support
+  pmdomain: rockchip: add regulator support
+  arm64: dts: rockchip: Add GPU power domain regulator dependency for
+    RK3588
+
+ .../power/rockchip,power-controller.yaml      |   3 +
+ .../boot/dts/rockchip/rk3588-armsom-sige7.dts |   4 +
+ arch/arm64/boot/dts/rockchip/rk3588-base.dtsi |   2 +-
+ .../boot/dts/rockchip/rk3588-coolpi-cm5.dtsi  |   4 +
+ .../rockchip/rk3588-friendlyelec-cm3588.dtsi  |   4 +
+ .../arm64/boot/dts/rockchip/rk3588-jaguar.dts |   4 +
+ .../boot/dts/rockchip/rk3588-ok3588-c.dts     |   4 +
+ .../boot/dts/rockchip/rk3588-rock-5-itx.dts   |   4 +
+ .../boot/dts/rockchip/rk3588-rock-5b.dts      |   4 +
+ .../arm64/boot/dts/rockchip/rk3588-tiger.dtsi |   4 +
+ .../boot/dts/rockchip/rk3588s-coolpi-4b.dts   |   4 +
+ .../dts/rockchip/rk3588s-khadas-edge2.dts     |   4 +
+ .../boot/dts/rockchip/rk3588s-orangepi-5.dts  |   4 +
+ drivers/pmdomain/rockchip/pm-domains.c        | 130 +++++++++++++-----
+ 14 files changed, 144 insertions(+), 35 deletions(-)
+
 -- 
 2.45.2
 
