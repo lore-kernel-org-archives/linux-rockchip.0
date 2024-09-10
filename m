@@ -4,78 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 944BEEDE99F
-	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Sep 2024 15:55:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B4C47EDE99A
+	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Sep 2024 16:45:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=nCoe/sZWY8pxge4HyO2gKs4JelweQwXASIjmS6fEUes=; b=uIAdk95ZbMkmlu
-	Icgu5bi+DsKec1nr0sAZukOdzTftl44zohcksQB5L+gGJTNqyQ5gDPJCIb7LppZSyGvDO92QNHJ2i
-	wn4eZBrugpJW8SnIGolRs6jPWy2lY2CCRnZO8lMUQs5xOidYvCciFcJb044IxUqTtDaCA+5u4tTgf
-	hKcdedlAXhTSbOKJx1kU7UOePCR8uL1Kjx93HeF+/fNT7EsWrzRIKCiGQWgq/9Z8A3cvtkmCIMHzl
-	BLaltiw7WEEE4CycSkqr4W/y5FhhKQGy0/0ieKSnMvYVBbe2w044I1W1w5WCwlSw0mW4WdK3Nal1r
-	C213ZTuEy9dyhh3NJhaw==;
+	List-Owner; bh=O3r7dmIZaW95+cDBSfqOA6jrPL7hebaaelS6fjGQGyk=; b=cnytF/30/H/noa
+	SruhqwVN5JXpQ+JhzWPVxj+biiRkAIOAk134aj67+s8TI6b3ocjVC67zjv7fgVZKGl9oMhce8OgrJ
+	8Jtkb57kDK6af9ETuPiO/ssh1VmzDbbBd9waE0a2zR1qT4NnBTTL8GzV1vSLLvNFnBN8HPQpPweYP
+	Vg67snQjIwrwk2lNLbx/GN0Ha4s4gSxu/ACW8fB3BlntjOYDp7n/b09UHFZc57Z9HGxQTEH4sd5Hq
+	zfIvuNvhLGIsh+S1zQfZDvTn2M49a6SflpPbIvACn085e/dGkrZqJdCJfn7vOd8or2GoglKWtL1HJ
+	osyTp7ZaUoIvJtT29jgA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1so3Cm-00000006F4b-2bTH;
-	Tue, 10 Sep 2024 15:55:00 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1so3zh-00000006PFs-1oiG;
+	Tue, 10 Sep 2024 16:45:33 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1so3AU-00000006EUu-3jZp;
-	Tue, 10 Sep 2024 15:52:40 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1725983557;
-	bh=VqVYu4N/Tf1UtM3sawFVKjYsdrOcwFFbjlE2c3Q5n6o=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=eQguQaDhVq678MgrPKfPcNoIMM+tkkuOFHGC4Nfix43E7Oqd4JTJqZUW3043HaUQG
-	 brN2zMOxEQ3YE8qsp8XT8qjaxfA0cPPhVj8mE+aPqHARpYIhuBv95ZYVNOJeN9JTIK
-	 8rxZ1EjcGMV0Ui7aHnw6oltLy99/yrWBpYKKvue3LZ9cTlX4TGsN0iS6ab8lG4xB+a
-	 45uzTdAnunuUvTjqO+unl/H+VH802SJaVkurGGZ2oB/abHUN2tctLqmN6tBxbkEzGT
-	 aCxBdWj+tSvxBaN3Dtj74F7fRp23DVaapGtixCj6b9zk7xbvOrmcLlm4QeLSmOuwHh
-	 TcOWGrZ9IzLsA==
-Received: from [192.168.1.90] (unknown [188.27.55.48])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 3B9FA17E12D3;
-	Tue, 10 Sep 2024 17:52:36 +0200 (CEST)
-Message-ID: <ae4db880-d64c-446b-bbf8-954b7bebca83@collabora.com>
-Date: Tue, 10 Sep 2024 18:52:35 +0300
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 2/4] drm/bridge: synopsys: Add DW HDMI QP TX Controller
- support library
-To: Markus Elfring <Markus.Elfring@web.de>,
- Algea Cao <algea.cao@rock-chips.com>, dri-devel@lists.freedesktop.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, kernel@collabora.com,
- Andrzej Hajda <andrzej.hajda@intel.com>, Andy Yan <andy.yan@rock-chips.com>,
- Conor Dooley <conor+dt@kernel.org>, Daniel Vetter <daniel@ffwll.ch>,
- David Airlie <airlied@gmail.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?=
- <heiko@sntech.de>, Jernej Skrabec <jernej.skrabec@gmail.com>,
- Jonas Karlman <jonas@kwiboo.se>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+	id 1so3sJ-00000006Mex-0Osx;
+	Tue, 10 Sep 2024 16:37:56 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+	List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=yUa3TLnRUIgVIBOiAVf2d1Rp6JcumIEXWfBSjgDQ8Oo=; b=Xo9nJXF74V8gMBzUmSZ96XzpCK
+	V0luRgiAHN4MhSDj3P4e1VklMl3LrZbtIMcu9GaUgOTfoAPWDwM6qi1drgoaGCHQ4cA+J8+k5laru
+	x9YzXc4fUUgUxklnMScdN8rOnwpO71QhSLcVmJFN1abK/+s1J3P07CmnCPOonerecZmgp2F8DnHrs
+	7hxEKSbGdolTzLgxa3tIva67RUfXrKNEMv1g00kvM/rWbIw1VbVpES0GYLcMnBkj7zykPD7Dgo7F3
+	QHwzx9Nn/bb3N7LMdoqin1ExRbaWTCvISmQ78ddHn3zgiIs9HsQzzdbsCxJhITo86Xq78ZaIRjb9c
+	gpRUd6zA==;
+Received: from i53875a02.versanet.de ([83.135.90.2] helo=diego.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1so3rr-0006Fs-F9; Tue, 10 Sep 2024 18:37:27 +0200
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+To: Andrzej Hajda <andrzej.hajda@intel.com>,
+ Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>,
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+ Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
  Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Mark Yao <markyao0591@gmail.com>, Maxime Ripard <mripard@kernel.org>,
- Neil Armstrong <neil.armstrong@linaro.org>, Rob Herring <robh@kernel.org>,
- Robert Foss <rfoss@kernel.org>, Sandy Huang <hjc@rock-chips.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>,
+ Sandy Huang <hjc@rock-chips.com>, Andy Yan <andy.yan@rock-chips.com>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Mark Yao <markyao0591@gmail.com>,
  Sascha Hauer <s.hauer@pengutronix.de>,
- Thomas Zimmermann <tzimmermann@suse.de>
-Cc: LKML <linux-kernel@vger.kernel.org>, Alexandre Arnoud <aarnoud@me.com>,
- Luis de Arquer <ldearquer@gmail.com>
-References: <20240831-b4-rk3588-bridge-upstream-v5-2-9503bece0136@collabora.com>
- <ab8a17d0-9505-4e81-b5ec-4a3025c48245@web.de>
-From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Content-Language: en-US
-In-Reply-To: <ab8a17d0-9505-4e81-b5ec-4a3025c48245@web.de>
+ Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+Cc: dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ devicetree@vger.kernel.org, kernel@collabora.com,
+ Alexandre ARNOUD <aarnoud@me.com>, Luis de Arquer <ldearquer@gmail.com>,
+ Algea Cao <algea.cao@rock-chips.com>
+Subject: Re: [PATCH v6 3/3] drm/rockchip: Add basic RK3588 HDMI output support
+Date: Tue, 10 Sep 2024 18:39:54 +0200
+Message-ID: <1796743.esFFXGZ24q@diego>
+In-Reply-To: <324b12ea-805a-499c-909d-3723f0bca7cb@collabora.com>
+References: <20240906-b4-rk3588-bridge-upstream-v6-0-a3128fb103eb@collabora.com>
+ <1899262.u6TykanW85@diego>
+ <324b12ea-805a-499c-909d-3723f0bca7cb@collabora.com>
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240910_085239_113848_20873089 
-X-CRM114-Status: UNSURE (   8.75  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240910_093755_206734_A6234127 
+X-CRM114-Status: GOOD (  21.51  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,24 +83,121 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gOS84LzI0IDEyOjExIFBNLCBNYXJrdXMgRWxmcmluZyB3cm90ZToKPiDigKYKPj4gKysrIGIv
-ZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9zeW5vcHN5cy9kdy1oZG1pLXFwLmMKPj4gQEAgLTAsMCAr
-MSw3MDggQEAKPiDigKYKPj4gK3N0YXRpYyBpbnQgZHdfaGRtaV9xcF9pMmNfeGZlcihzdHJ1Y3Qg
-aTJjX2FkYXB0ZXIgKmFkYXAsCj4+ICsJCQkgICAgICAgc3RydWN0IGkyY19tc2cgKm1zZ3MsIGlu
-dCBudW0pCj4+ICt7Cj4g4oCmCj4+ICsJbXV0ZXhfbG9jaygmaTJjLT5sb2NrKTsKPiDigKYKPj4g
-Kwlkd19oZG1pX3FwX21vZChoZG1pLCAwLCBJMkNNX09QX0RPTkVfTUFTS19OIHwgSTJDTV9OQUNL
-X1JDVkRfTUFTS19OLAo+PiArCQkgICAgICAgTUFJTlVOSVRfMV9JTlRfTUFTS19OKTsKPj4gKwo+
-PiArCW11dGV4X3VubG9jaygmaTJjLT5sb2NrKTsKPj4gKwo+PiArCXJldHVybiByZXQ7Cj4+ICt9
-Cj4g4oCmCj4gCj4gVW5kZXIgd2hpY2ggY2lyY3Vtc3RhbmNlcyB3b3VsZCB5b3UgYmVjb21lIGlu
-dGVyZXN0ZWQgdG8gYXBwbHkgYSBzdGF0ZW1lbnQKPiBsaWtlIOKAnGd1YXJkKG11dGV4KSgmaTJj
-LT5sb2NrKTvigJ0/Cj4gaHR0cHM6Ly9lbGl4aXIuYm9vdGxpbi5jb20vbGludXgvdjYuMTEtcmM2
-L3NvdXJjZS9pbmNsdWRlL2xpbnV4L211dGV4LmgjTDE5NgoKQXBwbGllZCBmb3IgdGhlIHVwY29t
-aW5nIHY3LgoKVGhhbmtzLApDcmlzdGlhbgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tj
-aGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1h
-bi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+Am Dienstag, 10. September 2024, 17:41:42 CEST schrieb Cristian Ciocaltea:
+> On 9/10/24 6:21 PM, Heiko St=FCbner wrote:
+> > Am Dienstag, 10. September 2024, 17:07:57 CEST schrieb Heiko St=FCbner:
+> >> Am Freitag, 6. September 2024, 03:17:42 CEST schrieb Cristian Ciocalte=
+a:
+> >>> The RK3588 SoC family integrates the newer Synopsys DesignWare HDMI 2=
+.1
+> >>> Quad-Pixel (QP) TX controller IP and a HDMI/eDP TX Combo PHY based on=
+ a
+> >>> Samsung IP block.
+> >>>
+> >>> Add just the basic support for now, i.e. RGB output up to 4K@60Hz,
+> >>> without audio, CEC or any of the HDMI 2.1 specific features.
+> >>>
+> >>> Co-developed-by: Algea Cao <algea.cao@rock-chips.com>
+> >>> Signed-off-by: Algea Cao <algea.cao@rock-chips.com>
+> >>> Tested-by: Heiko Stuebner <heiko@sntech.de>
+> >>> Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+> >>
+> >> I had switched from the v3 to this v6 in my playground-kernel today,
+> >> with v3 I've never seen those, but now with v6 I have gotten multiple
+> >> times:
+> >>
+> >> [  805.730608] Internal error: synchronous external abort: 00000000960=
+00010 [#1] PREEMPT SMP
+> >> [  805.739764] Modules linked in: snd_soc_simple_card crct10dif_ce snd=
+_soc_simple_card_utils panthor drm_gpuvm drm_exec fuse
+> >> [  805.752031] CPU: 3 UID: 0 PID: 775 Comm: Xorg Not tainted 6.11.0-rc=
+7-00099-g459302f1f908-dirty #934
+> >> [  805.762143] Hardware name: Theobroma Systems RK3588-Q7 SoM on Haiko=
+u devkit (DT)
+> >> [  805.770407] pstate: 204000c9 (nzCv daIF +PAN -UAO -TCO -DIT -SSBS B=
+TYPE=3D--)
+> >> [  805.778186] pc : regmap_mmio_read32le+0x8/0x20
+> >> [  805.783155] lr : regmap_mmio_read+0x44/0x70
+> >> [  805.787828] sp : ffff80008293b830
+> >> [  805.791516] x29: ffff80008293b830 x28: ffff80008293bce8 x27: ffff00=
+01f20ab080
+> >> [  805.799495] x26: ffff800081139500 x25: 0000000000000000 x24: 000000=
+0000000010
+> >> [  805.807472] x23: 0000000000000000 x22: ffff0001f5a4b400 x21: ffff80=
+008293b8c4
+> >> [  805.815450] x20: 0000000000000968 x19: ffff0001f5a27a80 x18: 000000=
+0000000070
+> >> [  805.823428] x17: 0002441400000005 x16: 000004650441043c x15: 043800=
+0008980804
+> >> [  805.831406] x14: 07d8089807800780 x13: 0438000008980804 x12: ffff80=
+0081133630
+> >> [  805.839384] x11: 0002441400000005 x10: 000004650441043c x9 : ffff80=
+0081a59000
+> >> [  805.847361] x8 : 07d8089807800780 x7 : 0000000000000000 x6 : ffff00=
+01f5b453c0
+> >> [  805.855339] x5 : ffff800080750dc0 x4 : 0000000000000968 x3 : 000000=
+0000000968
+> >> [  805.863316] x2 : ffff800080751520 x1 : 0000000000000968 x0 : ffff80=
+0083b20968
+> >> [  805.871294] Call trace:
+> >> [  805.874012]  regmap_mmio_read32le+0x8/0x20
+> >> [  805.878588]  _regmap_bus_reg_read+0x6c/0xac
+> >> [  805.883262]  _regmap_read+0x60/0xd8
+> >> [  805.887159]  _regmap_update_bits+0xf4/0x140
+> >> [  805.891832]  regmap_update_bits_base+0x64/0xa0
+> >> [  805.896797]  dw_hdmi_qp_bridge_atomic_enable+0x134/0x220
+> >> [  805.902734]  drm_atomic_bridge_chain_enable+0x54/0xc8
+> >> [  805.908380]  drm_atomic_helper_commit_modeset_enables+0x194/0x280
+> >> [  805.915190]  drm_atomic_helper_commit_tail_rpm+0x50/0xa0
+> >> [  805.921125]  commit_tail+0xa0/0x1a0
+> >> [  805.925021]  drm_atomic_helper_commit+0x17c/0x1b0
+> >> [  805.930276]  drm_atomic_commit+0xb8/0x100
+> >> [  805.934754]  drm_atomic_connector_commit_dpms+0xe0/0x110
+> >> [  805.940690]  drm_mode_obj_set_property_ioctl+0x1c0/0x420
+> >> [  805.946626]  drm_connector_property_set_ioctl+0x3c/0x68
+> >> [  805.952465]  drm_ioctl_kernel+0xc0/0x130
+> >> [  805.956846]  drm_ioctl+0x214/0x4a0
+> >> [  805.960643]  __arm64_sys_ioctl+0xac/0xf8
+> >> [  805.965025]  invoke_syscall+0x48/0x104
+> >> [  805.969214]  el0_svc_common.constprop.0+0x40/0xe0
+> >> [  805.974470]  do_el0_svc+0x1c/0x28
+> >> [  805.978171]  el0_svc+0x34/0xe0
+> >> [  805.981582]  el0t_64_sync_handler+0x120/0x12c
+> >> [  805.986449]  el0t_64_sync+0x190/0x194
+> >> [  805.990540] Code: d503201f d503201f f9400000 8b214000 (b9400000)
+> >>
+> >> I guess that might be some clocking issue?
+> > =
+
+> > Forgot to add, this happens when the display has blanked and then is
+> > supposed to unblank again.
+> =
+
+> Hmm, I've never encountered this while testing with my v6.11-rc1 based
+> tree.  What is your current kernel base?  Did you change it while
+> switching from v3 to v6?
+> =
+
+> I'll rebase my tree onto latest linux-next and see if I can reproduce.
+
+The setup is 6.11-rc7 with your hdmi series + my wip dsi + X11 running
+on top.
+
+At some point after being idle a while this blanks the display, which will
+probably turn off clocks and such. After moving the mouse or just
+doing anything else that unblanks the display, that splat happens.
+
+Apart from updating mesa from 24.2.0 to 24.2.2 I haven't changed
+anything in my test-setup so far.
+
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
