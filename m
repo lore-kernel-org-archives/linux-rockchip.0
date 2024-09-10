@@ -4,48 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B2BC0EDE9AE
-	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Sep 2024 18:05:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 947CFEDE9AB
+	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Sep 2024 18:05:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=UdsjWTXbmVti8Q5EOK2QF7SQEemgycpVHgvmbg/SSfM=; b=Go15sQTlqxkSBe
-	+zM/nnUxVkJ5MTRlR/2ravyNua18CRrpf7kGJ0EtBMBuOVSctjwLhpXikhxq4AihlhREFdZYj/icE
-	g9hUpKKfFM7Dj6dhDdedl2uLODbkB5KMsxjwHsTHZNYrhT2ip7IXOa2SGC0YhvJwCd0SACqz+kB0s
-	xXaTdardphgKz7snX8IfdV/aNiPhPJhtBvIMTeqIo6vI45RYa74zbnxqf/mvbZ0NPql+am3SAj1GB
-	nwI00jq68p2zjagEtrZOaYVbVtnGjU2Ql2uucJHioXkWto5DEykYHnr22LMo5a8loy5ouwJgXpU1T
-	AOGMsEDR9TdkyhdaMOUw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=9kRROU9iEa5pJU4CMtyP9U6z9NePdZnZgSzFPhN4fpk=; b=SyGOrEB5KlazW2
+	Zvz0ouZluhVUxgxfEdGjj2XRajAormf+dhUAJOFc9i72kHU8ldLCloE0RP/teQe/hRirnePRDUTmS
+	mJgvCon8q4B315FjY1gQ/1bsEXii7s4Ld83EAtB9USou0v2sHXKgOrtQJZNipnyTgjqcF02TP0o9T
+	fzqepFaVu0qMF61QDHyb9HKH8vEyR7HjBsQka3h8LtYYX2103wZGXckzIsViXJTN2vLgK597vgHyU
+	oQUbCAYRqdMDIj/gbLiIjrh6lP4SC8rMvokhLBOqsLxFMZlLWGz4Y9DanoB/XiIFrzoFWSKkrXzqF
+	qoYXqHL+aWhmUXNkIcfA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1so5FB-00000006h8P-44J8;
-	Tue, 10 Sep 2024 18:05:37 +0000
+	id 1so5FH-00000006hAn-0557;
+	Tue, 10 Sep 2024 18:05:43 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1so5F8-00000006h5k-12iq
+	id 1so5FB-00000006h7d-1j5E
 	for linux-rockchip@lists.infradead.org;
-	Tue, 10 Sep 2024 18:05:36 +0000
+	Tue, 10 Sep 2024 18:05:39 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1725991531;
-	bh=kEZ+U8Z66xptCiF1McdzJy5YJA7WQzf6RD2McVh/daI=;
-	h=From:To:Cc:Subject:Date:From;
-	b=V/aW2UEbOfT4WTlIRZdoHx0XfdQEDeYDPfs0w+9lizFejRIZqyLfx6NXtB7AxtQjN
-	 R1HNiEklDd5l5HQ8eD8m/KXyEmFnl2s+j1aRSZtkItVFx4awBuS6WQVnCw+6I50k2x
-	 hQ28dchLe/7joasDbNXMgCxT4229ACEwrJNTC1z1MKbJ+42R860z+n3/EABOisHfJg
-	 EIxlDDGB0kmaXFm9hRNF7RIvzbYR14h3wCGf112WwTsjm8KWuWWjrIzWzsZG1Gl+jo
-	 p9pUXl4bK8Yu/pZuEYdiZSBlEt3ulmw8+DgkHsxq3Pd52A3DWbJsf6o31VnAL9Q2IO
-	 07t53l8DYNDaQ==
+	s=mail; t=1725991532;
+	bh=TfEQ0e/TZzz/N5j2kw3vCDQnPXPvuDJwAkPceMp2rKY=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=M8XpCSe1QYXBmMA+yRiI0tCENnO5kMj9oO+2oSh70RevifXgsqdu/L57bUZt44VNe
+	 /eDJ4Vvf8Qoel4QfS5jStA6STSTu98WRjOatvaLp9Su50yrKFlsJLgZrT4EoYrIWK4
+	 y96/xgB/lXz4fzhE9XAVfwQ95EPEq8mQ3UPB+rDcctN2QiTS5e0B0V0HQEroroCNoc
+	 6OlyBb+7dOqH/2EPbM7uzLebC3FbdmF283KnxFnEefFbftPR/M7R/CQ2AsPEOjbk4x
+	 Pup7Sc4WprQ8DvyMcp55a7Nw+Oto4cPW2cYpiKgC5IkJmG3g+aMogxD5RBZpSoH3L6
+	 ydeoSozA5TvNA==
 Received: from jupiter.universe (dyndsl-091-248-215-127.ewe-ip-backbone.de [91.248.215.127])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: sre)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id D039D17E35F8;
-	Tue, 10 Sep 2024 20:05:31 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 15A1317E3600;
+	Tue, 10 Sep 2024 20:05:32 +0200 (CEST)
 Received: by jupiter.universe (Postfix, from userid 1000)
-	id 8B0324800EA; Tue, 10 Sep 2024 20:05:31 +0200 (CEST)
+	id 939474800FF; Tue, 10 Sep 2024 20:05:31 +0200 (CEST)
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
 To: Rob Herring <robh@kernel.org>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
@@ -61,14 +61,16 @@ Cc: Elaine Zhang <zhangqing@rock-chips.com>,
 	linux-pm@vger.kernel.org,
 	Sebastian Reichel <sebastian.reichel@collabora.com>,
 	kernel@collabora.com
-Subject: [PATCH v1 0/6] Fix RK3588 GPU domain
-Date: Tue, 10 Sep 2024 19:57:09 +0200
-Message-ID: <20240910180530.47194-1-sebastian.reichel@collabora.com>
+Subject: [PATCH v1 5/6] pmdomain: rockchip: add regulator support
+Date: Tue, 10 Sep 2024 19:57:14 +0200
+Message-ID: <20240910180530.47194-6-sebastian.reichel@collabora.com>
 X-Mailer: git-send-email 2.45.2
+In-Reply-To: <20240910180530.47194-1-sebastian.reichel@collabora.com>
+References: <20240910180530.47194-1-sebastian.reichel@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240910_110534_509477_2A933F53 
-X-CRM114-Status: GOOD (  16.33  )
+X-CRM114-CacheID: sfid-20240910_110537_651894_756959E4 
+X-CRM114-Status: GOOD (  19.67  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,60 +87,122 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi,
+Some power domains require extra voltages to be applied. For example
+trying to enable the GPU domain on RK3588 fails when the SoC does not
+have VDD GPU enabled.
 
-I got a report, that the Linux kernel crashes on Rock 5B when the panthor
-driver is loaded late after booting. The crash starts with the following
-shortened error print:
+The solution to temporarily change the device's device tree node has
+been taken over from the Mediatek power domain driver.
 
-rockchip-pm-domain fd8d8000.power-management:power-controller: failed to set domain 'gpu', val=0
-rockchip-pm-domain fd8d8000.power-management:power-controller: failed to get ack on domain 'gpu', val=0xa9fff
-SError Interrupt on CPU4, code 0x00000000be000411 -- SError
+The regulator is not acquired at probe time, since that creates circular
+dependencies. The power domain driver must be probed early, since SoC
+peripherals need it. Regulators on the other hand depend on SoC
+peripherals like SPI, I2C or GPIO.
 
-This series first does some cleanups in the Rockchip power domain
-driver and changes the driver, so that it no longer tries to continue
-when it fails to enable a domain. This gets rid of the SError interrupt
-and long backtraces. But the kernel still hangs when it fails to enable
-a power domain. I have not done further analysis to check if that can
-be avoided.
+Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+---
+ drivers/pmdomain/rockchip/pm-domains.c | 57 +++++++++++++++++++++++++-
+ 1 file changed, 55 insertions(+), 2 deletions(-)
 
-Last but not least this provides a fix for the GPU power domain failing
-to get enabled - after some testing from my side it seems to require the
-GPU voltage supply to be enabled.
-
-I'm not really happy about the hack to get a regulator for a sub-node
-in the 5th patch, which I took over from the Mediatek driver. But to
-get things going and open a discussion around it I thought it would be
-best to send a first version as soon as possible.
-
-Greetings,
-
--- Sebastian
-Sebastian Reichel (6):
-  pmdomain: rockchip: forward rockchip_do_pmu_set_power_domain errors
-  pmdomain: rockchip: cleanup mutex handling in rockchip_pd_power
-  pmdomain: rockchip: reduce indention in rockchip_pd_power
-  dt-bindings: power: rockchip: add regulator support
-  pmdomain: rockchip: add regulator support
-  arm64: dts: rockchip: Add GPU power domain regulator dependency for
-    RK3588
-
- .../power/rockchip,power-controller.yaml      |   3 +
- .../boot/dts/rockchip/rk3588-armsom-sige7.dts |   4 +
- arch/arm64/boot/dts/rockchip/rk3588-base.dtsi |   2 +-
- .../boot/dts/rockchip/rk3588-coolpi-cm5.dtsi  |   4 +
- .../rockchip/rk3588-friendlyelec-cm3588.dtsi  |   4 +
- .../arm64/boot/dts/rockchip/rk3588-jaguar.dts |   4 +
- .../boot/dts/rockchip/rk3588-ok3588-c.dts     |   4 +
- .../boot/dts/rockchip/rk3588-rock-5-itx.dts   |   4 +
- .../boot/dts/rockchip/rk3588-rock-5b.dts      |   4 +
- .../arm64/boot/dts/rockchip/rk3588-tiger.dtsi |   4 +
- .../boot/dts/rockchip/rk3588s-coolpi-4b.dts   |   4 +
- .../dts/rockchip/rk3588s-khadas-edge2.dts     |   4 +
- .../boot/dts/rockchip/rk3588s-orangepi-5.dts  |   4 +
- drivers/pmdomain/rockchip/pm-domains.c        | 130 +++++++++++++-----
- 14 files changed, 144 insertions(+), 35 deletions(-)
-
+diff --git a/drivers/pmdomain/rockchip/pm-domains.c b/drivers/pmdomain/rockchip/pm-domains.c
+index 663d390faaeb..ae6990897928 100644
+--- a/drivers/pmdomain/rockchip/pm-domains.c
++++ b/drivers/pmdomain/rockchip/pm-domains.c
+@@ -18,6 +18,7 @@
+ #include <linux/of_clk.h>
+ #include <linux/clk.h>
+ #include <linux/regmap.h>
++#include <linux/regulator/consumer.h>
+ #include <linux/mfd/syscon.h>
+ #include <soc/rockchip/pm_domains.h>
+ #include <dt-bindings/power/px30-power.h>
+@@ -89,6 +90,8 @@ struct rockchip_pm_domain {
+ 	u32 *qos_save_regs[MAX_QOS_REGS_NUM];
+ 	int num_clks;
+ 	struct clk_bulk_data *clks;
++	struct device_node *node;
++	struct regulator *supply;
+ };
+ 
+ struct rockchip_pmu {
+@@ -571,18 +574,67 @@ static int rockchip_pd_power(struct rockchip_pm_domain *pd, bool power_on)
+ 	return 0;
+ }
+ 
++static int rockchip_pd_regulator_disable(struct rockchip_pm_domain *pd)
++{
++	return pd->supply ? regulator_disable(pd->supply) : 0;
++}
++
++
++static int rockchip_pd_regulator_enable(struct rockchip_pm_domain *pd)
++{
++	struct rockchip_pmu *pmu = pd->pmu;
++	struct device_node *main_node;
++
++	if (!pd->supply) {
++		/*
++		 * Find regulator in current power domain node.
++		 * devm_regulator_get() finds regulator in a node and its child
++		 * node, so set of_node to current power domain node then change
++		 * back to original node after regulator is found for current
++		 * power domain node.
++		 */
++		main_node = pmu->dev->of_node;
++		pmu->dev->of_node = pd->node;
++		pd->supply = devm_regulator_get(pmu->dev, "domain");
++		pmu->dev->of_node = main_node;
++		if (IS_ERR(pd->supply)) {
++			pd->supply = NULL;
++			return 0;
++		}
++	}
++
++	return regulator_enable(pd->supply);
++}
++
+ static int rockchip_pd_power_on(struct generic_pm_domain *domain)
+ {
+ 	struct rockchip_pm_domain *pd = to_rockchip_pd(domain);
++	int ret;
++
++	ret = rockchip_pd_regulator_enable(pd);
++	if (ret) {
++		dev_err(pd->pmu->dev, "Failed to enable supply: %d\n", ret);
++		return ret;
++	}
+ 
+-	return rockchip_pd_power(pd, true);
++	ret = rockchip_pd_power(pd, true);
++	if (ret)
++		rockchip_pd_regulator_disable(pd);
++
++	return ret;
+ }
+ 
+ static int rockchip_pd_power_off(struct generic_pm_domain *domain)
+ {
+ 	struct rockchip_pm_domain *pd = to_rockchip_pd(domain);
++	int ret;
+ 
+-	return rockchip_pd_power(pd, false);
++	ret = rockchip_pd_power(pd, false);
++	if (ret)
++		return ret;
++
++	rockchip_pd_regulator_disable(pd);
++	return ret;
+ }
+ 
+ static int rockchip_pd_attach_dev(struct generic_pm_domain *genpd,
+@@ -663,6 +715,7 @@ static int rockchip_pm_add_one_domain(struct rockchip_pmu *pmu,
+ 
+ 	pd->info = pd_info;
+ 	pd->pmu = pmu;
++	pd->node = node;
+ 
+ 	pd->num_clks = of_clk_get_parent_count(node);
+ 	if (pd->num_clks > 0) {
 -- 
 2.45.2
 
