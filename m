@@ -4,90 +4,100 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 09BA9EE4998
-	for <linux-rockchip@archiver.kernel.org>; Wed, 11 Sep 2024 12:04:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2B115EE499D
+	for <linux-rockchip@archiver.kernel.org>; Wed, 11 Sep 2024 12:27:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:Subject:References:Cc:
-	To:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=EO41ep4tKt5RN+5eeMOxgwlX2+7Qrv7o3hso0IW7JYo=; b=ZgQc3/ALroZoAw
-	Ui6rh1mTFTlzztm+4GO1a9ZapZKy2ckf746PNQKlWy2a9xqE0HJG2nR1V7OVzdXbFfZZDq7fub7x8
-	TxYjQCfCgZh3qmMwXhVYm7hfa+SC5f2JuQeDmfvqZu+AZ8/t3YmJQ+sbkTZExMeNs4uGGLGwkiU9e
-	fip+7iyfc4Ng5b1pw0P5oG0QpbdXPISQrCtqRXjmcbo4KDO4gnAQaMJrZ14SUs6TtNM58hFWmgkVa
-	8eJuPEl7onai4H21/k0SHnnWwodStEf2+Y+7OUf6VhqPHwPCL893jVjQytWo3Ss4maz6oA7yVd6PV
-	Jcn7BJCV8qFYU7y3M5UA==;
+	List-Owner; bh=hO4Zgt7iyqvXTGYf08Cb2410MmP6RvkItXiTdPVkbvY=; b=Pv6OwNFyjgqVFx
+	deEH3GdELKjSL2rgwbFkyPyM+nw6YqgHQC+mkN2hV6+H3PGAxVvCRboNC1pWRNefAYOCCIrZHmcN1
+	Tc/h67iH4neayndTRI1+fcwoYcR6xFh2tGa5H2C6MxAruFlXOfypack2fwB5/kDou7qnvucUO8irO
+	Z6xc9KzZREfS0QqV2zn5IMIIwqO7jNmKbByTdCTmW+zQ0MrrSd0iOyLu4/fBbBleG1pISsOPliWz2
+	lVfxFIaZzQtRT3okl8rMLYP8bbNSI6JWv2WCCUJG00CL32KVFCrb3humQi6rpTFDXmTBw5XamqALZ
+	Yk7iIXr9/3RNFPqGOceg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1soM5K-00000009OuH-363x;
-	Wed, 11 Sep 2024 12:04:34 +0000
-Received: from mout.web.de ([212.227.15.14])
+	id 1soMRg-00000009T86-1iIr;
+	Wed, 11 Sep 2024 12:27:40 +0000
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1soM48-00000009OYY-1RMR;
-	Wed, 11 Sep 2024 12:03:22 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=web.de;
-	s=s29768273; t=1726056179; x=1726660979; i=markus.elfring@web.de;
-	bh=to/dI+U8c82M6OElNphf9TFg4NuIv4FJo3rnED38GM0=;
-	h=X-UI-Sender-Class:Message-ID:Date:MIME-Version:To:Cc:References:
-	 Subject:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:
-	 cc:content-transfer-encoding:content-type:date:from:message-id:
-	 mime-version:reply-to:subject:to;
-	b=Hco7YKrUwUPLHLTI+twaLWbzmwXkV0mINsS6UdWH0Ao4XcME4uYbNUftJ3kU1pHV
-	 3TnV+338SIWsnrYLfBGOePElSld13/qNvlJzwiGtQ3iGlpC+H7hbOvZM7TyhO7fll
-	 j6Igv1gKAJbFpN3QKa0DoYV8pdLnS8gvG7G0jL1s1BVle1excKCC5rDKt/mV5bfOz
-	 uvSA1U51+g6XacpRV91OjjW5OTJibj9W/f6N4h3/N6zkoGazT0xycNsGIfmfsW0ZA
-	 q7TFkNuWXMuarFC58jEqaiUmN3y9MLvljDU9RCR47gd9+K6X1cWrd2Up2l+TQ8H9R
-	 y8sK5w41dgaVC01TgA==
-X-UI-Sender-Class: 814a7b36-bfc1-4dae-8640-3722d8ec6cd6
-Received: from [192.168.178.21] ([94.31.86.95]) by smtp.web.de (mrweb005
- [213.165.67.108]) with ESMTPSA (Nemesis) id 1Mq182-1sBDbl0Two-00cfwJ; Wed, 11
- Sep 2024 14:02:59 +0200
-Message-ID: <ba285b99-96a6-4fbf-b72e-b264a300ce6f@web.de>
-Date: Wed, 11 Sep 2024 14:02:56 +0200
+	id 1soMLA-00000009S1u-229Q
+	for linux-rockchip@lists.infradead.org;
+	Wed, 11 Sep 2024 12:20:58 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1726057253;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=n3lZx7MOn0cvUlutwjGz/taR5dti/49PxN0KWJf8nvQ=;
+	b=htt+uc7FawBknmj+/gAVNMAaOSOMhA65rcwT+vA1p+iYQx+z+Gch/R1+20hzjPkrTyo2mL
+	cESKq6w3H9WafGaFuOYfGdagRI1rIt7ZQVBDP4ATsLGpwhILR9TE6hScqaC4e1wQB3TAEf
+	HcwNwNoh4rPLM+wEfJPaiN/R3sNTshI=
+Received: from mail-ej1-f72.google.com (mail-ej1-f72.google.com
+ [209.85.218.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-416-83M-Uzf1NUOTdu9Tv2W2gA-1; Wed, 11 Sep 2024 08:20:52 -0400
+X-MC-Unique: 83M-Uzf1NUOTdu9Tv2W2gA-1
+Received: by mail-ej1-f72.google.com with SMTP id a640c23a62f3a-a870f3a65a0so484399966b.0
+        for <linux-rockchip@lists.infradead.org>; Wed, 11 Sep 2024 05:20:51 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1726057251; x=1726662051;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=n3lZx7MOn0cvUlutwjGz/taR5dti/49PxN0KWJf8nvQ=;
+        b=fbPzy1r1uRUSUAeg95MxMeZKf+Q1ZQF+CJ5i+YdESTT/hmueYbx9Kh0dYu422F73wh
+         cBCguBM68x8ak4jXYdKnP4I11XpLbsHDNK5Uh//6YctpoOZqy7UVl8ivsA7mU8SE8U78
+         WCwHnwy6wradsEg2zeq92VG/HN7qAlCTY2U+W1i9TVuYBi8ajthWReu1/pSteTghQ4qw
+         gA/u8KL78eH+BOLWWXErNE8AhMOBxbTEOtnXVAcuXXzSfNXiB20iD18ddq/YYdPAJxux
+         Xy6HZMko+ugeBK5g8cR6NSauchPnASs1/9mpeb81hdwO74tlVpo9RHKllARhff7SuKGQ
+         T1+A==
+X-Forwarded-Encrypted: i=1; AJvYcCVMg+5wzTpVyVQGjv+d4IakR9Wz4VT6RVBx1CjvsEx/ES+/mjoLYlcPV/XnFihTLN+uBCsaTjXjp6kHwwJuMw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YymyDikKHVSlWGze51LwX/YIpvS3dB43iLowwC29NxTzBOWUn7j
+	D1tHEaSwaORoTjTqgS28tZUV8N0YyPl1fcRNtQ3TX0izs+DWMTGzYkyl+ndtN5AhmjDzGnIP2nA
+	XHEV+qiHwGHLcjdZr7UTtTnaH5wzKEEAwQCIUPm9IF2QYtPd1JkVSIi7+9xh6zCzUiOWLPw==
+X-Received: by 2002:a17:907:c27:b0:a7a:9a78:4b5a with SMTP id a640c23a62f3a-a8ffad9da29mr446885466b.52.1726057250865;
+        Wed, 11 Sep 2024 05:20:50 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IEse7/q3fks/g38TDGilxuqdMvvKGvYQPRWSe7VE2frNIQ+csBboiwxRmv/9sL6IOGSSY5V2w==
+X-Received: by 2002:a17:907:c27:b0:a7a:9a78:4b5a with SMTP id a640c23a62f3a-a8ffad9da29mr446880566b.52.1726057250314;
+        Wed, 11 Sep 2024 05:20:50 -0700 (PDT)
+Received: from ?IPV6:2001:1c00:c32:7800:5bfa:a036:83f0:f9ec? (2001-1c00-0c32-7800-5bfa-a036-83f0-f9ec.cable.dynamic.v6.ziggo.nl. [2001:1c00:c32:7800:5bfa:a036:83f0:f9ec])
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a8d259c76e2sm605309766b.79.2024.09.11.05.20.49
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 11 Sep 2024 05:20:49 -0700 (PDT)
+Message-ID: <1d0478b2-efdf-4c1f-bf2c-a5cb2214168c@redhat.com>
+Date: Wed, 11 Sep 2024 14:20:48 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-To: Tomeu Vizoso <tomeu@tomeuvizoso.net>, linux-media@vger.kernel.org,
- devicetree@vger.kernel.org, dri-devel@lists.freedesktop.org,
- iommu@lists.linux.dev, linaro-mm-sig@lists.linaro.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- =?UTF-8?Q?Christian_K=C3=B6nig?= <christian.koenig@amd.com>,
- Conor Dooley <conor+dt@kernel.org>, Daniel Vetter <daniel@ffwll.ch>,
- David Airlie <airlied@gmail.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?=
- <heiko@sntech.de>, =?UTF-8?B?SsO2cmcgUsO2ZGVs?= <joro@8bytes.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Oded Gabbay <ogabbay@kernel.org>,
- Philipp Zabel <p.zabel@pengutronix.de>, Rob Herring <robh@kernel.org>,
- Robin Murphy <robin.murphy@arm.com>, Sumit Semwal <sumit.semwal@linaro.org>,
- Thomas Zimmermann <tzimmermann@suse.de>, Will Deacon <will@kernel.org>
-Cc: LKML <linux-kernel@vger.kernel.org>
-References: <20240612-6-10-rocket-v1-8-060e48eea250@tomeuvizoso.net>
-Subject: Re: [PATCH 8/9] accel/rocket: Add job submission IOCTL
-Content-Language: en-GB
-From: Markus Elfring <Markus.Elfring@web.de>
-In-Reply-To: <20240612-6-10-rocket-v1-8-060e48eea250@tomeuvizoso.net>
-X-Provags-ID: V03:K1:gBOc2VelSGYN7vMulw3gUfHiDfi7Fce6hUGRA3ig0e7CkPk7ctW
- 02fliq1YqKL5NKGvp3rgm2vGCmn6B7aS1N/nr+h0YbeeRcbBWnwr7+rO2Hwhq057gL31eNi
- LR1cvkK0e+qFvnrh0GnTB7rpMSh2/emhZOdJ2z2xi7Ae1r7gPW55kJ+Yp8MMxUhxUlDXyUk
- vYuXx5zKe7w6f1ZlWKmSg==
-UI-OutboundReport: notjunk:1;M01:P0:kwUCKjmSRow=;GXfTPl9KFQxzuxjHbnw0svEf0G3
- Uctcq9Kr/ho6Y0LyjZNPPDYlzYjtlry3asr8W82jx14bpGu3jCx2WlCJNwLO0/RybxYvHtqyt
- 0eJR2xvpk1mD3BfD6ES4G4nPghEA0Xe0VmyS/bOP3h7e5ccgwFG6rh5+NcRay3ifHOEpc2dJq
- 3lz97Wz4Jwb+bX9qUxV2p21EKo0fk/MGTTw+ic/kF7yL3Hj0qMX55emMFpldoG2w1wb3XZSas
- NTbXmQfGKosykNVgoNLaRCy92S00vVSewSAIGc7NLaQksiPebe2x0I0CrEBOSyFKCiJ1lRKHs
- sXoJDShFfVErAk+ftvVPr/5f+uwSALx5Rn4ga/tYXitIuOicPsv9lctt2RJvUUeu7CopQY/J7
- x3Gm3cmwjHVs4GpfTV5F3yUxpiX6gHTwl420nPg98AEQKnlw+9G56/eEv/UOYcHYRq3Plq8xo
- 3BzcllAiZYFg/2VEUN85RXJ8nvHYIV6O2UPR0dIeVS97RQfqr5ZDQ58q/KjOl2l2TTgvLYDwo
- 9z08q7kvWwjdKsZp7dfTFcdDRsL54w4z7bFZ9Pri6T9YrKUSbIdKGaElp2z7CW+1e4YP0L3Zz
- RkpV3P0IioN2RRARyS9Q4KgwspVFg+nS7lYw/QAgc2hYLa4ve7+kGrWH+XeYK99OXePLIThWj
- oIhQy4AkUaIfiAw2vIr5HWObE/R3WDhulqPh2xWizhETqAPkKZJbRPr6v/yopUUdtUnQB9Kwg
- 3id6Oi229ubAiXjr8QtfEw3lsksciZSnl8UuBNhEEOYXyXsNd/B84HnV1Z6/QUqaoKJRztkHQ
- Al0RJc+9fpFxCgs5ckOfnE1w==
+Subject: Re: [PATCH -next v2] platform/olpc: Remove redundant null pointer
+ checks in olpc_ec_setup_debugfs()
+To: Li Zetao <lizetao1@huawei.com>, mchehab@kernel.org, davem@davemloft.net,
+ edumazet@google.com, kuba@kernel.org, pabeni@redhat.com, wens@csie.org,
+ jernej.skrabec@gmail.com, samuel@sholland.org, heiko@sntech.de,
+ yisen.zhuang@huawei.com, salil.mehta@huawei.com, hauke@hauke-m.de,
+ alexandre.torgue@foss.st.com, joabreu@synopsys.com,
+ mcoquelin.stm32@gmail.com, wellslutw@gmail.com, radhey.shyam.pandey@amd.com,
+ michal.simek@amd.com, ilpo.jarvinen@linux.intel.com, ruanjinjie@huawei.com,
+ hverkuil-cisco@xs4all.nl, u.kleine-koenig@pengutronix.de,
+ jacky_chou@aspeedtech.com, jacob.e.keller@intel.com
+Cc: linux-media@vger.kernel.org, netdev@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-sunxi@lists.linux.dev,
+ linux-rockchip@lists.infradead.org,
+ linux-stm32@st-md-mailman.stormreply.com, platform-driver-x86@vger.kernel.org
+References: <20240907031009.3591057-1-lizetao1@huawei.com>
+ <20240907031009.3591057-2-lizetao1@huawei.com>
+From: Hans de Goede <hdegoede@redhat.com>
+In-Reply-To: <20240907031009.3591057-2-lizetao1@huawei.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US, nl
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240911_050320_690167_AB85DEE3 
-X-CRM114-Status: UNSURE (   4.73  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240911_052056_641630_878CCF1A 
+X-CRM114-Status: GOOD (  15.96  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,17 +109,65 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-4oCmCj4gKysrIGIvZHJpdmVycy9hY2NlbC9yb2NrZXQvcm9ja2V0X2pvYi5oCj4gQEAgLTAsMCAr
-MSw0OSBAQArigKYKPiArI2lmbmRlZiBfX1JPQ0tFVF9KT0JfSF9fCj4gKyNkZWZpbmUgX19ST0NL
-RVRfSk9CX0hfXwrigKYKCkkgc3VnZ2VzdCB0byBvbWl0IGxlYWRpbmcgdW5kZXJzY29yZXMgZnJv
-bSBzdWNoIGlkZW50aWZpZXJzLgpodHRwczovL3dpa2kuc2VpLmNtdS5lZHUvY29uZmx1ZW5jZS9k
-aXNwbGF5L2MvRENMMzctQy4rRG8rbm90K2RlY2xhcmUrb3IrZGVmaW5lK2ErcmVzZXJ2ZWQraWRl
-bnRpZmllcgoKUmVnYXJkcywKTWFya3VzCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2No
-aXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFu
-L2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+Hi,
+
+On 9/7/24 5:09 AM, Li Zetao wrote:
+> Since the debugfs_create_dir() never returns a null pointer, checking
+> the return value for a null pointer is redundant. Since
+> debugfs_create_file() can deal with a ERR_PTR() style pointer, drop
+> the check.
+> 
+> Signed-off-by: Li Zetao <lizetao1@huawei.com>
+
+Thank you for your patch, I've applied this patch to my review-hans 
+branch:
+https://git.kernel.org/pub/scm/linux/kernel/git/pdx86/platform-drivers-x86.git/log/?h=review-hans
+
+Note it will show up in my review-hans branch once I've pushed my
+local branch there, which might take a while.
+
+Once I've run some tests on this branch the patches there will be
+added to the platform-drivers-x86/for-next branch and eventually
+will be included in the pdx86 pull-request to Linus for the next
+merge-window.
+
+Regards,
+
+Hans
+
+
+
+
+> ---
+> v1 -> v2:
+> v1:
+> https://lore.kernel.org/all/20240903143714.2004947-1-lizetao1@huawei.com/
+> 
+>  drivers/platform/olpc/olpc-ec.c | 3 ---
+>  1 file changed, 3 deletions(-)
+> 
+> diff --git a/drivers/platform/olpc/olpc-ec.c b/drivers/platform/olpc/olpc-ec.c
+> index 921520475ff6..48e9861bb571 100644
+> --- a/drivers/platform/olpc/olpc-ec.c
+> +++ b/drivers/platform/olpc/olpc-ec.c
+> @@ -332,9 +332,6 @@ static struct dentry *olpc_ec_setup_debugfs(void)
+>  	struct dentry *dbgfs_dir;
+>  
+>  	dbgfs_dir = debugfs_create_dir("olpc-ec", NULL);
+> -	if (IS_ERR_OR_NULL(dbgfs_dir))
+> -		return NULL;
+> -
+>  	debugfs_create_file("cmd", 0600, dbgfs_dir, NULL, &ec_dbgfs_ops);
+>  
+>  	return dbgfs_dir;
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
