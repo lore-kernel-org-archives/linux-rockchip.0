@@ -4,100 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2B115EE499D
-	for <linux-rockchip@archiver.kernel.org>; Wed, 11 Sep 2024 12:27:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9226DEE499F
+	for <linux-rockchip@archiver.kernel.org>; Wed, 11 Sep 2024 12:29:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=hO4Zgt7iyqvXTGYf08Cb2410MmP6RvkItXiTdPVkbvY=; b=Pv6OwNFyjgqVFx
-	deEH3GdELKjSL2rgwbFkyPyM+nw6YqgHQC+mkN2hV6+H3PGAxVvCRboNC1pWRNefAYOCCIrZHmcN1
-	Tc/h67iH4neayndTRI1+fcwoYcR6xFh2tGa5H2C6MxAruFlXOfypack2fwB5/kDou7qnvucUO8irO
-	Z6xc9KzZREfS0QqV2zn5IMIIwqO7jNmKbByTdCTmW+zQ0MrrSd0iOyLu4/fBbBleG1pISsOPliWz2
-	lVfxFIaZzQtRT3okl8rMLYP8bbNSI6JWv2WCCUJG00CL32KVFCrb3humQi6rpTFDXmTBw5XamqALZ
-	Yk7iIXr9/3RNFPqGOceg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=bb+vHfnLWxRFRsz+K2O6NDe4z8YgG+5kGFAe/JRayAM=; b=0VatPZR0tcB+nc
+	Dakth7baF8GnsmmgYyOvRgrXudz76tlYTfuSpB7tt5qYYLZwNnvdMcZAdYwcW62f+VGVmurVSLAW+
+	TarO1J01OWHuZ8hWE/KbVveT6X2wE84q57H+mbpOHCpQ2pKERKU4iTHgWf36xDajuDMy4Bpt8IWdY
+	KvHnxQXIM2/Pmjhy7zgfvoRlU+9eB3khRejIjQrhTNqAbEd0utEyMGsRMbxu8mfngFqb9vbdsWXE2
+	XL2ngHtmHbECr2K/CHr8owiK/+sSPVKGY2DOMUMrfIdhYBiQxcbKX2TehqKnfILWpOdkUVwcODOZ2
+	SytnOgDboDnAxy9geQzw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1soMRg-00000009T86-1iIr;
-	Wed, 11 Sep 2024 12:27:40 +0000
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
-	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1soMLA-00000009S1u-229Q
-	for linux-rockchip@lists.infradead.org;
-	Wed, 11 Sep 2024 12:20:58 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1726057253;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=n3lZx7MOn0cvUlutwjGz/taR5dti/49PxN0KWJf8nvQ=;
-	b=htt+uc7FawBknmj+/gAVNMAaOSOMhA65rcwT+vA1p+iYQx+z+Gch/R1+20hzjPkrTyo2mL
-	cESKq6w3H9WafGaFuOYfGdagRI1rIt7ZQVBDP4ATsLGpwhILR9TE6hScqaC4e1wQB3TAEf
-	HcwNwNoh4rPLM+wEfJPaiN/R3sNTshI=
-Received: from mail-ej1-f72.google.com (mail-ej1-f72.google.com
- [209.85.218.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-416-83M-Uzf1NUOTdu9Tv2W2gA-1; Wed, 11 Sep 2024 08:20:52 -0400
-X-MC-Unique: 83M-Uzf1NUOTdu9Tv2W2gA-1
-Received: by mail-ej1-f72.google.com with SMTP id a640c23a62f3a-a870f3a65a0so484399966b.0
-        for <linux-rockchip@lists.infradead.org>; Wed, 11 Sep 2024 05:20:51 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1726057251; x=1726662051;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=n3lZx7MOn0cvUlutwjGz/taR5dti/49PxN0KWJf8nvQ=;
-        b=fbPzy1r1uRUSUAeg95MxMeZKf+Q1ZQF+CJ5i+YdESTT/hmueYbx9Kh0dYu422F73wh
-         cBCguBM68x8ak4jXYdKnP4I11XpLbsHDNK5Uh//6YctpoOZqy7UVl8ivsA7mU8SE8U78
-         WCwHnwy6wradsEg2zeq92VG/HN7qAlCTY2U+W1i9TVuYBi8ajthWReu1/pSteTghQ4qw
-         gA/u8KL78eH+BOLWWXErNE8AhMOBxbTEOtnXVAcuXXzSfNXiB20iD18ddq/YYdPAJxux
-         Xy6HZMko+ugeBK5g8cR6NSauchPnASs1/9mpeb81hdwO74tlVpo9RHKllARhff7SuKGQ
-         T1+A==
-X-Forwarded-Encrypted: i=1; AJvYcCVMg+5wzTpVyVQGjv+d4IakR9Wz4VT6RVBx1CjvsEx/ES+/mjoLYlcPV/XnFihTLN+uBCsaTjXjp6kHwwJuMw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YymyDikKHVSlWGze51LwX/YIpvS3dB43iLowwC29NxTzBOWUn7j
-	D1tHEaSwaORoTjTqgS28tZUV8N0YyPl1fcRNtQ3TX0izs+DWMTGzYkyl+ndtN5AhmjDzGnIP2nA
-	XHEV+qiHwGHLcjdZr7UTtTnaH5wzKEEAwQCIUPm9IF2QYtPd1JkVSIi7+9xh6zCzUiOWLPw==
-X-Received: by 2002:a17:907:c27:b0:a7a:9a78:4b5a with SMTP id a640c23a62f3a-a8ffad9da29mr446885466b.52.1726057250865;
-        Wed, 11 Sep 2024 05:20:50 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IEse7/q3fks/g38TDGilxuqdMvvKGvYQPRWSe7VE2frNIQ+csBboiwxRmv/9sL6IOGSSY5V2w==
-X-Received: by 2002:a17:907:c27:b0:a7a:9a78:4b5a with SMTP id a640c23a62f3a-a8ffad9da29mr446880566b.52.1726057250314;
-        Wed, 11 Sep 2024 05:20:50 -0700 (PDT)
-Received: from ?IPV6:2001:1c00:c32:7800:5bfa:a036:83f0:f9ec? (2001-1c00-0c32-7800-5bfa-a036-83f0-f9ec.cable.dynamic.v6.ziggo.nl. [2001:1c00:c32:7800:5bfa:a036:83f0:f9ec])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a8d259c76e2sm605309766b.79.2024.09.11.05.20.49
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 11 Sep 2024 05:20:49 -0700 (PDT)
-Message-ID: <1d0478b2-efdf-4c1f-bf2c-a5cb2214168c@redhat.com>
-Date: Wed, 11 Sep 2024 14:20:48 +0200
+	id 1soMTr-00000009U0a-1PCP;
+	Wed, 11 Sep 2024 12:29:55 +0000
+Received: from [129.204.178.38] (helo=classfun.cn)
+	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
+	id 1soMSn-00000009Tgm-08k4;
+	Wed, 11 Sep 2024 12:28:50 +0000
+Received: from bigfoot-server-storage.classfun.cn (unknown [124.72.163.173])
+	(Authenticated sender: bigfoot)
+	by classfun.cn (Postfix) with ESMTPSA id D806678906;
+	Wed, 11 Sep 2024 20:28:37 +0800 (CST)
+DKIM-Filter: OpenDKIM Filter v2.11.0 classfun.cn D806678906
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=classfun.cn;
+	s=default; t=1726057722;
+	bh=84RhzK7ckLC2VZH9E5EktRcm76BXvzf4lS+tQumGGhY=;
+	h=From:To:Cc:Subject:Date:From;
+	b=Svz5UkDhInjSesuI1QpGpTdb90UvxkZhY9KLpoL1u4PyeroG1IfbVM/wX2sJnO+0F
+	 vPTK6mQqo4OpBrbalaF1aP/3bvRqsmXrcmNxCsCXXE5afLGXwFo4+DrWdZy40adLlb
+	 DVwA9sVmVzieEr1Zh4w5H5MAmuU4KSrzvB/yQraw=
+From: Junhao Xie <bigfoot@classfun.cn>
+To: devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org
+Cc: Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Jonas Karlman <jonas@kwiboo.se>,
+	Chukun Pan <amadeus@jmu.edu.cn>,
+	Junhao Xie <bigfoot@classfun.cn>,
+	FUKAUMI Naoki <naoki@radxa.com>,
+	Dragan Simic <dsimic@manjaro.org>,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH v3 0/3] Add support for Ariaboard Photonicat RK3568
+Date: Wed, 11 Sep 2024 20:28:07 +0800
+Message-ID: <20240911122809.1789778-2-bigfoot@classfun.cn>
+X-Mailer: git-send-email 2.46.0
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH -next v2] platform/olpc: Remove redundant null pointer
- checks in olpc_ec_setup_debugfs()
-To: Li Zetao <lizetao1@huawei.com>, mchehab@kernel.org, davem@davemloft.net,
- edumazet@google.com, kuba@kernel.org, pabeni@redhat.com, wens@csie.org,
- jernej.skrabec@gmail.com, samuel@sholland.org, heiko@sntech.de,
- yisen.zhuang@huawei.com, salil.mehta@huawei.com, hauke@hauke-m.de,
- alexandre.torgue@foss.st.com, joabreu@synopsys.com,
- mcoquelin.stm32@gmail.com, wellslutw@gmail.com, radhey.shyam.pandey@amd.com,
- michal.simek@amd.com, ilpo.jarvinen@linux.intel.com, ruanjinjie@huawei.com,
- hverkuil-cisco@xs4all.nl, u.kleine-koenig@pengutronix.de,
- jacky_chou@aspeedtech.com, jacob.e.keller@intel.com
-Cc: linux-media@vger.kernel.org, netdev@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-sunxi@lists.linux.dev,
- linux-rockchip@lists.infradead.org,
- linux-stm32@st-md-mailman.stormreply.com, platform-driver-x86@vger.kernel.org
-References: <20240907031009.3591057-1-lizetao1@huawei.com>
- <20240907031009.3591057-2-lizetao1@huawei.com>
-From: Hans de Goede <hdegoede@redhat.com>
-In-Reply-To: <20240907031009.3591057-2-lizetao1@huawei.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US, nl
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240911_052056_641630_878CCF1A 
-X-CRM114-Status: GOOD (  15.96  )
+X-CRM114-CacheID: sfid-20240911_052849_497798_F8B4F568 
+X-CRM114-Status: UNSURE (   9.99  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -114,57 +77,47 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi,
+Add dts for Ariaboard Photonicat RK3568.
 
-On 9/7/24 5:09 AM, Li Zetao wrote:
-> Since the debugfs_create_dir() never returns a null pointer, checking
-> the return value for a null pointer is redundant. Since
-> debugfs_create_file() can deal with a ERR_PTR() style pointer, drop
-> the check.
-> 
-> Signed-off-by: Li Zetao <lizetao1@huawei.com>
+This series bring support for:
+* Debug UART
+* SDIO QCA9377 WiFi and Bluetooth
+* M.2 E-Key PCIe WiFi and Bluetooth
+* M.2 B-Key USB Modem WWAN
+* Ethernet WAN Port
+* MicroSD Card slot
+* eMMC
+* HDMI Output
+* Mali GPU
+* USB Type-A
 
-Thank you for your patch, I've applied this patch to my review-hans 
-branch:
-https://git.kernel.org/pub/scm/linux/kernel/git/pdx86/platform-drivers-x86.git/log/?h=review-hans
+Changed from v1:
+- move some general nodes (firmware, ramoops, reboot-mode) to rk356x.dtsi
+- gmac1 change to phy-mode rgmii-id
+- corrected some regulator to be closer to schematics
+- rename rk3568-ariaboard-photonicat.dts to rk3568-photonicat.dts
+https://lore.kernel.org/lkml/20240904111456.87089-1-bigfoot@classfun.cn/
 
-Note it will show up in my review-hans branch once I've pushed my
-local branch there, which might take a while.
+Changed from v2:
+- remove unused headers
+- corrected some regulator to be closer to schematics
+- remove usb_host1_ohci, usb_host1_ehci, usb2phy1_host that have no connection
+https://lore.kernel.org/lkml/20240906045706.1004813-1-bigfoot@classfun.cn/
 
-Once I've run some tests on this branch the patches there will be
-added to the platform-drivers-x86/for-next branch and eventually
-will be included in the pdx86 pull-request to Linus for the next
-merge-window.
+Junhao Xie (3):
+  dt-bindings: vendor-prefixes: Add prefix for Ariaboard
+  dt-bindings: arm: rockchip: Add Ariaboard Photonicat RK3568
+  arm64: dts: rockchip: add dts for Ariaboard Photonicat RK3568
 
-Regards,
+ .../devicetree/bindings/arm/rockchip.yaml     |   5 +
+ .../devicetree/bindings/vendor-prefixes.yaml  |   2 +
+ arch/arm64/boot/dts/rockchip/Makefile         |   1 +
+ .../boot/dts/rockchip/rk3568-photonicat.dts   | 586 ++++++++++++++++++
+ 4 files changed, 594 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3568-photonicat.dts
 
-Hans
-
-
-
-
-> ---
-> v1 -> v2:
-> v1:
-> https://lore.kernel.org/all/20240903143714.2004947-1-lizetao1@huawei.com/
-> 
->  drivers/platform/olpc/olpc-ec.c | 3 ---
->  1 file changed, 3 deletions(-)
-> 
-> diff --git a/drivers/platform/olpc/olpc-ec.c b/drivers/platform/olpc/olpc-ec.c
-> index 921520475ff6..48e9861bb571 100644
-> --- a/drivers/platform/olpc/olpc-ec.c
-> +++ b/drivers/platform/olpc/olpc-ec.c
-> @@ -332,9 +332,6 @@ static struct dentry *olpc_ec_setup_debugfs(void)
->  	struct dentry *dbgfs_dir;
->  
->  	dbgfs_dir = debugfs_create_dir("olpc-ec", NULL);
-> -	if (IS_ERR_OR_NULL(dbgfs_dir))
-> -		return NULL;
-> -
->  	debugfs_create_file("cmd", 0600, dbgfs_dir, NULL, &ec_dbgfs_ops);
->  
->  	return dbgfs_dir;
+-- 
+2.46.0
 
 
 _______________________________________________
