@@ -4,68 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2E78DEE0219
-	for <linux-rockchip@archiver.kernel.org>; Wed, 11 Sep 2024 08:38:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EA751EE021C
+	for <linux-rockchip@archiver.kernel.org>; Wed, 11 Sep 2024 08:46:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
+	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=p1QNbghCKDk2T2Qms7mvrtnRH1HpnQnpSW/q9/9stPs=; b=V2Npiry1I0f9iY
-	VsFNDkAW667YpWoJ18CXTWy0jol5netjinxCSIJav3Tcq1AiEA7Yag/4MeTHb6T2N79g4LwYV70sI
-	XwGxeNJ8IWcVGnF2Nl6wr4C00CboxWhd2WIe3EJWKJ8du+lowBzEeQ74lhHnsjeTjCn7Xc+GuAfc3
-	vly1z1p8T9uKIlNdW0eFQoAbLdnjPVUJZ2xJEUAIbs6F0ipv+3FSxMJkZaBK09ALQcPwkVuh2Zsje
-	3z8dSA3XTvXI5NE6zO1kD44VlqVaIgMPC+crC0FKh4nCGqbm4QD6lNfH7ZnY5Tmip0cpbc3Ir4ze/
-	nmFmIHY+eO2ATiA4I8cg==;
+	List-Owner; bh=68ABUg3vekYasGT36WjkNiHHOf6JqFuuSZ3jtLnhabg=; b=HJfBZJkh3tAJPE
+	EhBWCX8oBdU8k4Snm0gDG83Qmf7k/mxUwKQ3u7VLPTsv7EolZ+4YLsmdG0fDWSFxUIfP6M72CYELH
+	ubLSovp8uYupxTo3jcUAUKaVdgvAr2c+KC0nslKwmrgyxqNz5QTMny8G68xGoAGl8CQeqkUvTq8B+
+	hRtHr/J5+fTcmFM5hB66aKPx9kYELlQ1K0LRW0k6eZEyhk5hZntmHyr49sX3X7/aLAe/kCsS7jEnn
+	TCz6sapcvQV5vQX+ar4MuQidVrOB5Gs2GWBs0F9H34nBgK5PFjwD8shY+rlsWSJqgdGRacvGjA1ve
+	nYb7hmHxr6SBqWjoKdng==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1soIru-00000008hQx-36Rf;
-	Wed, 11 Sep 2024 08:38:30 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1soIzo-00000008k99-0ogy;
+	Wed, 11 Sep 2024 08:46:40 +0000
+Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1soIq1-00000008gQ0-0JZ4;
-	Wed, 11 Sep 2024 08:36:34 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1726043782; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=TIDGdcdMMfBpc3GHbU4HsJZjhc84rJnvMihZNDhRlLz0ZnDlnRBbV3jBBVzHA8tSwthmFj6xJquZAd0Fr0OhsPPMh5cPIry7w9oZMNuzcT0gg8Cj88I2qpQCYBdLsJiz8tKi5HSMKdIfG86DRhLil1ptb6wV+BDX2CdbNFqIsIM=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1726043782; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=mT3ADEMXwV/Ibk5Ee+fwaO68r9xxRfMHx8SLf6Y/bbY=; 
-	b=bG7/b18qTJfrInI0H64mfKIG3XrP9/+zBZ9NwrjVWWbRM/yvFCt8W37AjVlYe2Lmi16/3iLFKBjLOzTJy8boBYjpcdHNBsAtYcY/kqnphah7P/twS/uYxu9gnbtBG01gVaXsH8XucatAq4Ho3jboGcA1zklsmWrfxdYa0NKjWTg=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=benjamin.gaignard@collabora.com;
-	dmarc=pass header.from=<benjamin.gaignard@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1726043782;
-	s=zohomail; d=collabora.com; i=benjamin.gaignard@collabora.com;
-	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
-	bh=mT3ADEMXwV/Ibk5Ee+fwaO68r9xxRfMHx8SLf6Y/bbY=;
-	b=ThBWrKYLX5PZ30+1eyNiC+HqemAmvx0PJ6nvsfCKx71okggGmjGioItyiudqEuXJ
-	1bV39Fm/MsFwdlI7SBqIl15mqZD2hqUTnA5gmpwZ19j3x+QeAeMMUqVXnqCL3ld1xom
-	UdHqI7gjZZm2w8ia/INBZ9g9LDRrFHhShXeFEr7Y=
-Received: by mx.zohomail.com with SMTPS id 1726043780360437.0100803082877;
-	Wed, 11 Sep 2024 01:36:20 -0700 (PDT)
-Message-ID: <6c6e00fd-334c-41ae-963c-eeffb368b727@collabora.com>
-Date: Wed, 11 Sep 2024 10:36:16 +0200
+	id 1soIyk-00000008jtx-1jfr
+	for linux-rockchip@lists.infradead.org;
+	Wed, 11 Sep 2024 08:45:36 +0000
+Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
+	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+	(Exim 4.92)
+	(envelope-from <mkl@pengutronix.de>)
+	id 1soIyj-0002bh-AU
+	for linux-rockchip@lists.infradead.org; Wed, 11 Sep 2024 10:45:33 +0200
+Received: from [2a0a:edc0:0:b01:1d::7b] (helo=bjornoya.blackshift.org)
+	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <mkl@pengutronix.de>)
+	id 1soIyi-0075z5-Se
+	for linux-rockchip@lists.infradead.org; Wed, 11 Sep 2024 10:45:32 +0200
+Received: from dspam.blackshift.org (localhost [127.0.0.1])
+	by bjornoya.blackshift.org (Postfix) with SMTP id 8D2F1338148
+	for <linux-rockchip@lists.infradead.org>; Wed, 11 Sep 2024 08:45:32 +0000 (UTC)
+Received: from hardanger.blackshift.org (unknown [172.20.34.65])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(Client did not present a certificate)
+	by bjornoya.blackshift.org (Postfix) with ESMTPS id 115B2338137;
+	Wed, 11 Sep 2024 08:45:31 +0000 (UTC)
+Received: from [172.20.34.65] (localhost [::1])
+	by hardanger.blackshift.org (OpenSMTPD) with ESMTP id 0a04ff54;
+	Wed, 11 Sep 2024 08:45:30 +0000 (UTC)
+From: Marc Kleine-Budde <mkl@pengutronix.de>
+Date: Wed, 11 Sep 2024 10:45:25 +0200
+Subject: [PATCH can-next 1/2] can: rockchip_canfd:
+ rkcanfd_timestamp_init(): rework delay calculation
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] media: verisilicon: av1: Fix reference video buffer
- pointer assignment
-To: Nicolas Dufresne <nicolas@ndufresne.ca>, ezequiel@vanguardiasur.com.ar,
- p.zabel@pengutronix.de, mchehab@kernel.org, heiko@sntech.de,
- hverkuil-cisco@xs4all.nl
-Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- kernel@collabora.com
-References: <01020191dc45365b-26b103cd-153a-4b74-a663-ed7beecc1713-000000@eu-west-1.amazonses.com>
- <10f107089cf679bcabd03e49fc469bb89518deeb.camel@ndufresne.ca>
-Content-Language: en-US
-From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-In-Reply-To: <10f107089cf679bcabd03e49fc469bb89518deeb.camel@ndufresne.ca>
+Message-Id: <20240911-can-rockchip_canfd-fixes-v1-1-5ce385b5ab10@pengutronix.de>
+References: <20240911-can-rockchip_canfd-fixes-v1-0-5ce385b5ab10@pengutronix.de>
+In-Reply-To: <20240911-can-rockchip_canfd-fixes-v1-0-5ce385b5ab10@pengutronix.de>
+To: kernel@pengutronix.de, Vincent Mailhol <mailhol.vincent@wanadoo.fr>, 
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
+ Heiko Stuebner <heiko@sntech.de>
+Cc: linux-can@vger.kernel.org, netdev@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+ linux-kernel@vger.kernel.org, Marc Kleine-Budde <mkl@pengutronix.de>, 
+ Arnd Bergmann <arnd@arndb.de>
+X-Mailer: b4 0.15-dev-88a27
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1358; i=mkl@pengutronix.de;
+ h=from:subject:message-id; bh=9WfFS70YrDr2qrfetTrD2fcBkV55eVvJHa3bbG4uxs8=;
+ b=owEBbQGS/pANAwAKASg4oj56LbxvAcsmYgBm4VinquE+Tws44QEClswYLm8kNwf80a6ISQYBA
+ mPD6Zr1Ds+JATMEAAEKAB0WIQRQQLqG4LYE3Sm8Pl8oOKI+ei28bwUCZuFYpwAKCRAoOKI+ei28
+ b0oAB/4g5Iqh2BWMbyXjya4wJb266mMCniZpg89eUuNb1jSWxUfSFVOkqdif+aLiaQ+MPiY/2fS
+ oR1lDkgLs5zbSMwZgK5GnPgDtS7ziBYK20IdVE8Li5COjb8Wti/36hW6bPvRJ/1KMuDvJkZMD+m
+ vnUP8O+8KBEBzp4YqgWSKb+XKgMt2ETWuoZscN6J7rWDrHmaavJCTBq82TpKUCVyoFW3Hn17Q+K
+ xR0Z/LtOibuy+X3SuQd1ogL4z7Hf5jVtNwrjxlfmpaKYIseJCBEJMFM9r/MBmS/3lhvKnvmNHKu
+ f818F71y4FhIkTCQZvzbuqrlRxGBdgGQI5MpiUfuV8aVUW1S
+X-Developer-Key: i=mkl@pengutronix.de; a=openpgp;
+ fpr=C1400BA0B3989E6FBC7D5B5C2B5EE211C58AEA54
+X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
+X-SA-Exim-Mail-From: mkl@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240911_013633_209204_130978B5 
-X-CRM114-Status: GOOD (  10.97  )
+X-CRM114-CacheID: sfid-20240911_014534_504407_C430335D 
+X-CRM114-Status: GOOD (  11.89  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,44 +97,44 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-CkxlIDEwLzA5LzIwMjQgw6AgMjE6NDQsIE5pY29sYXMgRHVmcmVzbmUgYSDDqWNyaXTCoDoKPiBI
-aSwKPgo+IExlIG1hcmRpIDEwIHNlcHRlbWJyZSAyMDI0IMOgIDE0OjEwICswMDAwLCBCZW5qYW1p
-biBHYWlnbmFyZCBhIMOpY3JpdMKgOgo+PiBBbHdheXMgZ2V0IG5ldyBkZXN0aW5hdGlvbiBidWZm
-ZXIgZm9yIHJlZmVyZW5jZSBmcmFtZSBiZWNhdXNlIG5vdGhpbmcKPj4gZ2FyYW50eSB0aGUgb25l
-IHNldCBwcmV2aW91c2x5IGlzIHN0aWxsIHZhbGlkIG9yIHVudXNlZC4KPiBNaW5kIGRvY3VtZW50
-aW5nIGhlcmUgd2hpY2ggdGVzdHMgZ290IGZpeGVkIHdpdGggdGhpcyBjaGFuZ2UgPwoKT25seSBv
-bmUgZnJvbSBjaHJvbWl1bSB0ZXN0IHN1aXRlOgpodHRwczovL2Nocm9taXVtLmdvb2dsZXNvdXJj
-ZS5jb20vY2hyb21pdW0vc3JjL21lZGlhLysvcmVmcy9oZWFkcy9tYWluL3Rlc3QvZGF0YS90ZXN0
-LTI1ZnBzLmF2MS5pdmYKCkZsdXN0ZXIgQVYxIHNjb3JlIHJlbWFpbnMgdW5jaGFuZ2VkLgoKPgo+
-PiBGaXhlczogNzI3YTQwMDY4NmEyICgibWVkaWE6IHZlcmlzaWxpY29uOiBBZGQgUm9ja2NoaXAg
-QVYxIGRlY29kZXIiKQo+PiBTaWduZWQtb2ZmLWJ5OiBCZW5qYW1pbiBHYWlnbmFyZCA8YmVuamFt
-aW4uZ2FpZ25hcmRAY29sbGFib3JhLmNvbT4KPj4gLS0tCj4+ICAgLi4uL21lZGlhL3BsYXRmb3Jt
-L3ZlcmlzaWxpY29uL3JvY2tjaGlwX3ZwdTk4MV9od19hdjFfZGVjLmMgICAgfCAzICstLQo+PiAg
-IDEgZmlsZSBjaGFuZ2VkLCAxIGluc2VydGlvbigrKSwgMiBkZWxldGlvbnMoLSkKPj4KPj4gZGlm
-ZiAtLWdpdCBhL2RyaXZlcnMvbWVkaWEvcGxhdGZvcm0vdmVyaXNpbGljb24vcm9ja2NoaXBfdnB1
-OTgxX2h3X2F2MV9kZWMuYyBiL2RyaXZlcnMvbWVkaWEvcGxhdGZvcm0vdmVyaXNpbGljb24vcm9j
-a2NoaXBfdnB1OTgxX2h3X2F2MV9kZWMuYwo+PiBpbmRleCAzNzJkZmNkMGZjZDkuLjJiOWExMDQ3
-NDc5YyAxMDA2NDQKPj4gLS0tIGEvZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS92ZXJpc2lsaWNvbi9y
-b2NrY2hpcF92cHU5ODFfaHdfYXYxX2RlYy5jCj4+ICsrKyBiL2RyaXZlcnMvbWVkaWEvcGxhdGZv
-cm0vdmVyaXNpbGljb24vcm9ja2NoaXBfdnB1OTgxX2h3X2F2MV9kZWMuYwo+PiBAQCAtMTYxLDgg
-KzE2MSw3IEBAIHN0YXRpYyBpbnQgcm9ja2NoaXBfdnB1OTgxX2F2MV9kZWNfZnJhbWVfcmVmKHN0
-cnVjdCBoYW50cm9fY3R4ICpjdHgsCj4+ICAgCQlhdjFfZGVjLT5mcmFtZV9yZWZzW2ldLnRpbWVz
-dGFtcCA9IHRpbWVzdGFtcDsKPj4gICAJCWF2MV9kZWMtPmZyYW1lX3JlZnNbaV0uZnJhbWVfdHlw
-ZSA9IGZyYW1lLT5mcmFtZV90eXBlOwo+PiAgIAkJYXYxX2RlYy0+ZnJhbWVfcmVmc1tpXS5vcmRl
-cl9oaW50ID0gZnJhbWUtPm9yZGVyX2hpbnQ7Cj4+IC0JCWlmICghYXYxX2RlYy0+ZnJhbWVfcmVm
-c1tpXS52YjJfcmVmKQo+PiAtCQkJYXYxX2RlYy0+ZnJhbWVfcmVmc1tpXS52YjJfcmVmID0gaGFu
-dHJvX2dldF9kc3RfYnVmKGN0eCk7Cj4+ICsJCWF2MV9kZWMtPmZyYW1lX3JlZnNbaV0udmIyX3Jl
-ZiA9IGhhbnRyb19nZXRfZHN0X2J1ZihjdHgpOwo+IEdvb2QgY2F0Y2gsIHdvdWxkIHN0aWxsIGJl
-IG5pY2UgdG8gaW1wcm92ZSB0aGUgY29tbWl0IG1lc3NhZ2UuCj4KPiBSZXZpZXdlZC1ieTogTmlj
-b2xhcyBEdWZyZXNuZSA8bmljb2xhcy5kdWZyZXNuZUBjb2xsYWJvcmEuY29tPgo+Cj4+ICAgCj4+
-ICAgCQlmb3IgKGogPSAwOyBqIDwgVjRMMl9BVjFfVE9UQUxfUkVGU19QRVJfRlJBTUU7IGorKykK
-Pj4gICAJCQlhdjFfZGVjLT5mcmFtZV9yZWZzW2ldLm9yZGVyX2hpbnRzW2pdID0gZnJhbWUtPm9y
-ZGVyX2hpbnRzW2pdOwo+CgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMu
-aW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZv
-L2xpbnV4LXJvY2tjaGlwCg==
+From: Arnd Bergmann <arnd@arndb.de>
+
+Rework the delay calculation to only require a single 64-bit division.
+
+Signed-off-by: Arnd Bergmann <arnd@arndb.de>
+[mkl: port to on-top of existing 32-bit division fix]
+Signed-off-by: Marc Kleine-Budde <mkl@pengutronix.de>
+---
+ drivers/net/can/rockchip/rockchip_canfd-timestamp.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/net/can/rockchip/rockchip_canfd-timestamp.c b/drivers/net/can/rockchip/rockchip_canfd-timestamp.c
+index fb1a8f4e62172b06570b95e6f32c4c0f70fe1ea7..43d4b572181215c50dda9d4f8cdb2d22b7938b38 100644
+--- a/drivers/net/can/rockchip/rockchip_canfd-timestamp.c
++++ b/drivers/net/can/rockchip/rockchip_canfd-timestamp.c
+@@ -71,8 +71,8 @@ void rkcanfd_timestamp_init(struct rkcanfd_priv *priv)
+ 
+ 	max_cycles = div_u64(ULLONG_MAX, cc->mult);
+ 	max_cycles = min(max_cycles, cc->mask);
+-	work_delay_ns = div_u64(clocksource_cyc2ns(max_cycles, cc->mult, cc->shift), 3);
+-	priv->work_delay_jiffies = nsecs_to_jiffies(work_delay_ns);
++	work_delay_ns = clocksource_cyc2ns(max_cycles, cc->mult, cc->shift);
++	priv->work_delay_jiffies = div_u64(work_delay_ns, 3u * NSEC_PER_SEC / HZ);
+ 	INIT_DELAYED_WORK(&priv->timestamp, rkcanfd_timestamp_work);
+ 
+ 	netdev_dbg(priv->ndev, "clock=%lu.%02luMHz bitrate=%lu.%02luMBit/s div=%u rate=%lu.%02luMHz mult=%u shift=%u delay=%lus\n",
+
+-- 
+2.45.2
+
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
