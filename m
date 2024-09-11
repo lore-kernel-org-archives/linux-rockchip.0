@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6A54FEE49B8
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 94B04EE49B9
 	for <linux-rockchip@archiver.kernel.org>; Wed, 11 Sep 2024 14:21:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,44 +12,44 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=KW2YOREhW8T/5qAUpOUyfOXzmDkYb4NyWQcB/RmuIv0=; b=g31hv7iXERVB6A
-	kVL/dy2rRNl258LybyepaSzyr38fXv9eegB5Eg5YaiA20FuG8ByNUGTGxRPria+O4jNS1GPuM3Qcf
-	WomWaCL2JcZN6LOanz/DAbozQtkMTAlvS3W6shzyMYmSnVsrmSRke3lqxWh6iju5UAc+0T9tIxL3o
-	2wC683VCtBxII8a+nLx9YdPqJspofAPBgE4N1cUrKAfuX1I/XWN5hNiK/VBWcactvjLAlTQUBPYQY
-	/KdjUxcTRmqpGCvXkKPrRm24ZGU8OsYcbtbu4Dex7VfbzO9kNbjLw/KcblsCX3vA2oAVGg0HKtwJJ
-	NKuZPpdzNAvELQGgSj2w==;
+	List-Owner; bh=pXverxxa1Cy0CqUX22WAv8fUqXgLBWqY0ugUvtmXlEE=; b=CI7JJtQArUEVC9
+	RuUz/GeasANe8kLPVhdTkRArWn6m1F/GMQvDbyO3eHvZFrrI9M1QAD1z/UGP+o5J9Iz1QiS26eisi
+	VoMLiS44v7aGpbDhiHV1eUYQWW3ulEUjo2OAm6LRt/ibY8t1CT5DW1xhkTUGQd/xgmacfU0x1pxfj
+	t0WdRnKIgXr8MXqB6WudKta40607ZeWvy0YPiMoytAyoIANxk/pVVEuyn3tNTzE+1U4CbDmHj2yQZ
+	26FezsUCOND+vntqY8ukSx9L6fwjoBHakxBcu7TWlots2w+x1pd0nxZkeevw/pp5PxkiWcLfYBoe3
+	2LodTCgplp51vJIiXqUQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1soOE9-00000009sY6-0mDE;
-	Wed, 11 Sep 2024 14:21:49 +0000
+	id 1soOEA-00000009sZB-3TZp;
+	Wed, 11 Sep 2024 14:21:50 +0000
 Received: from mx07-00178001.pphosted.com ([185.132.182.106])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1soNlQ-00000009mKC-0vnY
+	id 1soNlu-00000009mgP-1I34
 	for linux-rockchip@lists.infradead.org;
-	Wed, 11 Sep 2024 13:52:13 +0000
-Received: from pps.filterd (m0241204.ppops.net [127.0.0.1])
-	by mx07-00178001.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 48B8oOqa007343;
-	Wed, 11 Sep 2024 15:51:37 +0200
+	Wed, 11 Sep 2024 13:52:39 +0000
+Received: from pps.filterd (m0288072.ppops.net [127.0.0.1])
+	by mx07-00178001.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 48BALUbe005722;
+	Wed, 11 Sep 2024 15:52:29 +0200
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=foss.st.com; h=
 	cc:content-transfer-encoding:content-type:date:from:in-reply-to
 	:message-id:mime-version:references:subject:to; s=selector1; bh=
-	14gR+MCsBOivysdEUAEkA0MzfErSkPe5fIcIjROePWs=; b=xkObBTgKLxefMuuu
-	yeOsvcerwQVyrZ15rJiZAUvLc0A8KLaJ9DeCsnvtc8BLjZlXzz90XLH0sadv1EZ5
-	nQgSufU8nnKONbBqGZ9xtGFiRdPAx5DmuHrzyeW1/E3NDdE8JiV36WDZXXb/hbuT
-	KUk+4JCrQCa5+a5aC9xmn/cBYah+4E2af64hQ5cEGRElcWP8KlqDOiU/7Qwo5Yjw
-	eNq7ycx+Z/sddWQlTpq8Uj/JHwBEjAztESdTtaZ0a/QHIOBYxh6aDmmsTB1MG8+/
-	1vMnI33aDJy2sEX2udOaMf44+4GBOayvJB5TLC1qF7Bw0tO0FYsGsDKEpdtfQpRL
-	jVOE4w==
+	A8c+AY+qNssnoCfN0gZ6jZd2oPaxif5QtDT69HbwCEA=; b=W0hTDX/67HYbz70c
+	mUJAZJltZcRY4co1wK6bvrv0Ar8Qnbq5kf+q/MYrXzQ9Zn3k6lq7nIaSEewkZWlp
+	IUKXR8Jb3mKD6NpBbElGV/2Qctsu2DYs8J8YgjRsij03N/phG3tWkpQPEq0dqyB/
+	Pb30tJsfKZjLT5TCovpjg6ma2NmvQAcn9GNxDM196GUpejB15rGaAF/erJX+z73H
+	6/rphJyfJxRvY/nAy2pRgOAYAxhi5lTe8tvnfmAHGUDWpSgXBP4QEuOE9LFiq2/H
+	OHfHDQFB/9f8wFnu8N6NQw31E8Mf3VPKvnW8uFtkcGwxfTJP0R39YOGs9cEWxV2a
+	aLhCGQ==
 Received: from beta.dmz-ap.st.com (beta.dmz-ap.st.com [138.198.100.35])
-	by mx07-00178001.pphosted.com (PPS) with ESMTPS id 41gyeh7d6w-1
+	by mx07-00178001.pphosted.com (PPS) with ESMTPS id 41gy7sfgr3-1
 	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Wed, 11 Sep 2024 15:51:37 +0200 (MEST)
+	Wed, 11 Sep 2024 15:52:29 +0200 (MEST)
 Received: from euls16034.sgp.st.com (euls16034.sgp.st.com [10.75.44.20])
-	by beta.dmz-ap.st.com (STMicroelectronics) with ESMTP id 0F1924004C;
-	Wed, 11 Sep 2024 15:50:14 +0200 (CEST)
+	by beta.dmz-ap.st.com (STMicroelectronics) with ESMTP id A50944005B;
+	Wed, 11 Sep 2024 15:51:10 +0200 (CEST)
 Received: from Webmail-eu.st.com (shfdag1node1.st.com [10.75.129.69])
-	by euls16034.sgp.st.com (STMicroelectronics) with ESMTP id 81FC5231534;
-	Wed, 11 Sep 2024 15:50:14 +0200 (CEST)
+	by euls16034.sgp.st.com (STMicroelectronics) with ESMTP id 460C6231537;
+	Wed, 11 Sep 2024 15:50:15 +0200 (CEST)
 Received: from localhost (10.48.86.208) by SHFDAG1NODE1.st.com (10.75.129.69)
  with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.37; Wed, 11 Sep
@@ -73,9 +73,9 @@ To: Mauro Carvalho Chehab <mchehab@kernel.org>,
         <linux-rockchip@lists.infradead.org>,
         <linux-stm32@st-md-mailman.stormreply.com>
 CC: Hugues Fruchet <hugues.fruchet@foss.st.com>
-Subject: [PATCH 1/2] media: uapi: add WebP VP8 frame flag
-Date: Wed, 11 Sep 2024 15:50:10 +0200
-Message-ID: <20240911135011.161217-2-hugues.fruchet@foss.st.com>
+Subject: [PATCH 2/2] media: verisilicon: add WebP decoding support
+Date: Wed, 11 Sep 2024 15:50:11 +0200
+Message-ID: <20240911135011.161217-3-hugues.fruchet@foss.st.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20240911135011.161217-1-hugues.fruchet@foss.st.com>
 References: <20240911135011.161217-1-hugues.fruchet@foss.st.com>
@@ -87,8 +87,8 @@ X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1039,Hydra:6.0.680,FMLib:17.12.60.29
  definitions=2024-09-06_09,2024-09-06_01,2024-09-02_01
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240911_065208_596741_A541FF6C 
-X-CRM114-Status: GOOD (  10.67  )
+X-CRM114-CacheID: sfid-20240911_065238_664656_EE0CA8D9 
+X-CRM114-Status: GOOD (  10.60  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,40 +105,51 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add a flag indicating that VP8 bitstream is a WebP picture.
+Add WebP picture decoding support to VP8 stateless decoder.
 
 Signed-off-by: Hugues Fruchet <hugues.fruchet@foss.st.com>
 ---
- .../userspace-api/media/v4l/ext-ctrls-codec-stateless.rst      | 3 +++
- include/uapi/linux/v4l2-controls.h                             | 1 +
- 2 files changed, 4 insertions(+)
+ drivers/media/platform/verisilicon/hantro_g1_regs.h    | 1 +
+ drivers/media/platform/verisilicon/hantro_g1_vp8_dec.c | 7 +++++++
+ 2 files changed, 8 insertions(+)
 
-diff --git a/Documentation/userspace-api/media/v4l/ext-ctrls-codec-stateless.rst b/Documentation/userspace-api/media/v4l/ext-ctrls-codec-stateless.rst
-index 0da635691fdc..bb08aacddc9c 100644
---- a/Documentation/userspace-api/media/v4l/ext-ctrls-codec-stateless.rst
-+++ b/Documentation/userspace-api/media/v4l/ext-ctrls-codec-stateless.rst
-@@ -1062,6 +1062,9 @@ FWHT Flags
-     * - ``V4L2_VP8_FRAME_FLAG_SIGN_BIAS_ALT``
-       - 0x20
-       - Sign of motion vectors when the alt frame is referenced.
-+    * - ``V4L2_VP8_FRAME_FLAG_WEBP``
-+      - 0x40
-+      - Indicates that this frame is a WebP picture.
+diff --git a/drivers/media/platform/verisilicon/hantro_g1_regs.h b/drivers/media/platform/verisilicon/hantro_g1_regs.h
+index c623b3b0be18..e7d4db788e57 100644
+--- a/drivers/media/platform/verisilicon/hantro_g1_regs.h
++++ b/drivers/media/platform/verisilicon/hantro_g1_regs.h
+@@ -232,6 +232,7 @@
+ #define     G1_REG_DEC_CTRL7_DCT7_START_BIT(x)		(((x) & 0x3f) << 0)
+ #define G1_REG_ADDR_STR					0x030
+ #define G1_REG_ADDR_DST					0x034
++#define G1_REG_ADDR_DST_CHROMA				0x038
+ #define G1_REG_ADDR_REF(i)				(0x038 + ((i) * 0x4))
+ #define     G1_REG_ADDR_REF_FIELD_E			BIT(1)
+ #define     G1_REG_ADDR_REF_TOPC_E			BIT(0)
+diff --git a/drivers/media/platform/verisilicon/hantro_g1_vp8_dec.c b/drivers/media/platform/verisilicon/hantro_g1_vp8_dec.c
+index 851eb67f19f5..c6a7584b716a 100644
+--- a/drivers/media/platform/verisilicon/hantro_g1_vp8_dec.c
++++ b/drivers/media/platform/verisilicon/hantro_g1_vp8_dec.c
+@@ -427,6 +427,11 @@ static void cfg_buffers(struct hantro_ctx *ctx,
  
- .. c:type:: v4l2_vp8_entropy_coder_state
+ 	dst_dma = hantro_get_dec_buf_addr(ctx, &vb2_dst->vb2_buf);
+ 	vdpu_write_relaxed(vpu, dst_dma, G1_REG_ADDR_DST);
++
++	if (hdr->flags & V4L2_VP8_FRAME_FLAG_WEBP)
++		vdpu_write_relaxed(vpu, dst_dma +
++				   ctx->dst_fmt.height * ctx->dst_fmt.width,
++				   G1_REG_ADDR_DST_CHROMA);
+ }
  
-diff --git a/include/uapi/linux/v4l2-controls.h b/include/uapi/linux/v4l2-controls.h
-index 974fd254e573..e41b62f2cb2b 100644
---- a/include/uapi/linux/v4l2-controls.h
-+++ b/include/uapi/linux/v4l2-controls.h
-@@ -1897,6 +1897,7 @@ struct v4l2_vp8_entropy_coder_state {
- #define V4L2_VP8_FRAME_FLAG_MB_NO_SKIP_COEFF	0x08
- #define V4L2_VP8_FRAME_FLAG_SIGN_BIAS_GOLDEN	0x10
- #define V4L2_VP8_FRAME_FLAG_SIGN_BIAS_ALT	0x20
-+#define V4L2_VP8_FRAME_FLAG_WEBP		0x40
+ int hantro_g1_vp8_dec_run(struct hantro_ctx *ctx)
+@@ -471,6 +476,8 @@ int hantro_g1_vp8_dec_run(struct hantro_ctx *ctx)
+ 		reg |= G1_REG_DEC_CTRL0_SKIP_MODE;
+ 	if (hdr->lf.level == 0)
+ 		reg |= G1_REG_DEC_CTRL0_FILTERING_DIS;
++	if (hdr->flags & V4L2_VP8_FRAME_FLAG_WEBP)
++		reg |= G1_REG_DEC_CTRL0_WEBP_E;
+ 	vdpu_write_relaxed(vpu, reg, G1_REG_DEC_CTRL0);
  
- #define V4L2_VP8_FRAME_IS_KEY_FRAME(hdr) \
- 	(!!((hdr)->flags & V4L2_VP8_FRAME_FLAG_KEY_FRAME))
+ 	/* Frame dimensions */
 -- 
 2.25.1
 
