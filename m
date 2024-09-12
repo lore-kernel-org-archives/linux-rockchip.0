@@ -4,70 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EA29EEE6452
-	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Sep 2024 06:44:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A3E1BEE6454
+	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Sep 2024 07:30:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Message-ID:MIME-Version:References:
-	In-Reply-To:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=tNwBW/iqfp67TV9O6muyeVTrj5+U/3+mTL8AP2MJsqw=; b=ZDJ7Nu+RKQbYYn
-	1qLhHT6EOeOxp0bDv3Wc/yRp8cFXBeZ1d7rtWfRjezpkZvyazRsS4cGHF5R08fDmCU3VlH3VcPq6a
-	/4JnQ4u1y/T36KvnG3nDIHDKI4XDcpqIV6mvXeuT2KO2+Wqo4TvMieLMLNUXZV6CY0VJ14Ipe8fE8
-	N63NT8oDDmyZA+jcczau4xzKTBZa4hEpl1pK09nUcWsTeiRAYCvvXKOjNB1646SIZPA13tvATeAQ0
-	Q91RYeGIu+jz9CuftsdNE/GnvQZTl/41KLGmXcKjl9M2lUAdKAVVBM68NfvHsfO1BaIVichWJczNg
-	zlCLZ+mXeAlHrpaeqF1Q==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=NnECqOspCBH+PtEozhFvh8sFuIRnfCWoYKgteec7RTI=; b=KhKi8HxeNTZaV5
+	JUjSfxKEnX386KMZAh5D1ld2s75cqjOAkA+duofkZBHS7f0hmdjiQVjNtD/Xph6VM1cTe/mBgrSo4
+	UxeKHZyjdgSxalDxbo9zHrO3utd1huCJYCHrLHVxauYXmkNkGW35VvrsMYN2/t8+QsL8bYGLY3lu7
+	bBevtat7i+9dS5ZWC0P6/pYDQAyPkkawdSDl3jolfHx5SSosWnF7rkSMkyHcdmpCB55B8c68H5+pS
+	qCdcEnGyLCGY2rnbDVBeatOTkn1yDjF6iBTwy3rIqCVC4OFvzACFosvexjcGURvJ8XzVJlnS/WQWe
+	mTady1KXjQzaL9JJF4OQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sodZM-0000000C3ov-45Z4;
-	Thu, 12 Sep 2024 06:44:45 +0000
-Received: from m16.mail.163.com ([220.197.31.2])
-	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sodZI-0000000C3l4-2qd4
-	for linux-rockchip@lists.infradead.org;
-	Thu, 12 Sep 2024 06:44:42 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=Date:From:Subject:Content-Type:MIME-Version:
-	Message-ID; bh=NSwbv3RzHztwGPofv8zYBn4+43JFyZKE9ZUFMN8oMh4=; b=H
-	nW07QICKXXut+YBsNqTjAUIFJk7IOEZnb/oYIBT+OLIBG/M5hj1YhVqW7+plXLKp
-	WbbJSugLri166py19CGEVjhKXPaKUY/T8SN2WMd/t5l6EJ+XnpeExaTkkvloFxiX
-	B7d84LVqW9CbUXTekuTFpkLRmDbj/fJ5UhGiNXiXm0=
-Received: from andyshrk$163.com ( [58.22.7.114] ) by
- ajax-webmail-wmsvr-40-118 (Coremail) ; Thu, 12 Sep 2024 14:44:11 +0800
- (CST)
-X-Originating-IP: [58.22.7.114]
-Date: Thu, 12 Sep 2024 14:44:11 +0800 (CST)
-From: "Andy Yan" <andyshrk@163.com>
-To: "Diederik de Haas" <didi.debian@cknow.org>
-Cc: "Sascha Hauer" <s.hauer@pengutronix.de>, detlev.casanova@collabora.com, 
-	heiko@sntech.de, devicetree@vger.kernel.org, 
-	dri-devel@lists.freedesktop.org, hjc@rock-chips.com, 
-	mripard@kernel.org, sebastian.reichel@collabora.com, 
-	linux-rockchip@lists.infradead.org, sjoerd@collabora.com, 
-	"Andy Yan" <andy.yan@rock-chips.com>, krzk+dt@kernel.org, 
-	robh@kernel.org
-Subject: Re:Re: [PATCH v2 05/11] drm/rockchip: vop2: Introduce vop hardware
- version
-X-Priority: 3
-X-Mailer: Coremail Webmail Server Version XT5.0.14 build 20240801(9da12a7b)
- Copyright (c) 2002-2024 www.mailtech.cn 163com
-In-Reply-To: <D41NH5VO0A7T.26F04WDY1UTCR@cknow.org>
-References: <20240904120238.3856782-1-andyshrk@163.com>
- <20240904120238.3856782-6-andyshrk@163.com>
- <ZtlZgKcDQFF_WnCn@pengutronix.de>
- <2326e2ea.8264.191c13bab93.Coremail.andyshrk@163.com>
- <Zt68U6hnPA0KrxXB@pengutronix.de> <D41NH5VO0A7T.26F04WDY1UTCR@cknow.org>
-X-NTES-SC: AL_Qu2ZBP2ZvEwu5yGZYOkZnEobh+Y5UcK2s/ki2YFXN5k0qCTV5jkBWWZDIkXN6NmkFCKFqQG+fRRj0uF4R4BKeJxW9ZfBu/1qh3H8Yn4m2E6B
+	id 1soeHU-0000000CAjs-0nJo;
+	Thu, 12 Sep 2024 07:30:20 +0000
+Received: from mail-m49206.qiye.163.com ([45.254.49.206])
+	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
+	id 1soeE1-0000000CA9h-2mfo;
+	Thu, 12 Sep 2024 07:26:47 +0000
+DKIM-Signature: a=rsa-sha256;
+	b=emeihT/A1S3qEp2p88WokDWPh3qpTY20t0wwpIypbwJb9ZX3DZuSfN14eKoaWE2ji0FCZUhPQrreWv29xzqBmu4j4XYCfRPcGo/jU1Uw3ePlDWOVcAYvUh4DuK59Y0Ktotu6HyOIPetE79uoRw/PMVU93OQZ37EGBA0pBORqd6E=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=3A7Xdz2lLn+EifRk1ghow9aL8DdOLauW53N67ioG3Hg=;
+	h=date:mime-version:subject:message-id:from;
+Received: from localhost.localdomain (unknown [58.22.7.114])
+	by smtp.qiye.163.com (Hmail) with ESMTPA id 271FB900D34;
+	Thu, 12 Sep 2024 15:26:23 +0800 (CST)
+From: Kever Yang <kever.yang@rock-chips.com>
+To: heiko@sntech.de
+Cc: linux-rockchip@lists.infradead.org,
+	Kever Yang <kever.yang@rock-chips.com>,
+	Jaehoon Chung <jh80.chung@samsung.com>,
+	Ulf Hansson <ulf.hansson@linaro.org>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-mmc@vger.kernel.org
+Subject: [PATCH] mmc: dw_mmc: rockchip: Keep controller working for card detect
+Date: Thu, 12 Sep 2024 15:26:14 +0800
+Message-Id: <20240912152538.1.I858c2a0bf83606c8b59ba1ab6944978a398d2ac5@changeid>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-Message-ID: <56a02879.5ff0.191e4f9a2ef.Coremail.andyshrk@163.com>
-X-Coremail-Locale: zh_CN
-X-CM-TRANSID: _____wD3H2i7jeJmxCURAA--.1379W
-X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/1tbiMxpYXmXAnzzHHwABsw
-X-Coremail-Antispam: 1U5529EdanIXcx71UUUUU7vcSsGvfC2KfnxnUU==
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGkkeTVYYTBoaGE9DSEsfHhpWFRQJFh
+	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
+	hVSktLVUpCS0tZBg++
+X-HM-Tid: 0a91e520475303a3kunm271fb900d34
+X-HM-MType: 1
+X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6Ogw6Nyo6ITI1PywJTjUvNBMx
+	Ai9PCSpVSlVKTElNSklOQkNPS0tPVTMWGhIXVRAeDR4JVQIaFRw7CRQYEFYYExILCFUYFBZFWVdZ
+	EgtZQVlOQ1VJSVVMVUpKT1lXWQgBWUFISkNCNwY+
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240911_234441_066093_790B28F9 
-X-CRM114-Status: GOOD (  24.95  )
+X-CRM114-CacheID: sfid-20240912_002646_212190_F4350738 
+X-CRM114-Status: GOOD (  11.64  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,69 +70,80 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-CgpIaSDvvIwKQXQgMjAyNC0wOS0wOSAxNzozNjoxNCwgIkRpZWRlcmlrIGRlIEhhYXMiIDxkaWRp
-LmRlYmlhbkBja25vdy5vcmc+IHdyb3RlOgo+T24gTW9uIFNlcCA5LCAyMDI0IGF0IDExOjEzIEFN
-IENFU1QsIFNhc2NoYSBIYXVlciB3cm90ZToKPj4gT24gVGh1LCBTZXAgMDUsIDIwMjQgYXQgMDQ6
-MDk6NThQTSArMDgwMCwgQW5keSBZYW4gd3JvdGU6Cj4+ID4gIEF0IDIwMjQtMDktMDUgMTU6MTA6
-NTYsICJTYXNjaGEgSGF1ZXIiIDxzLmhhdWVyQHBlbmd1dHJvbml4LmRlPiB3cm90ZToKPj4gPiAg
-Pk9uIFdlZCwgU2VwIDA0LCAyMDI0IGF0IDA4OjAyOjMyUE0gKzA4MDAsIEFuZHkgWWFuIHdyb3Rl
-Ogo+PiA+ICA+PiBGcm9tOiBBbmR5IFlhbiA8YW5keS55YW5Acm9jay1jaGlwcy5jb20+Cj4+ID4g
-ID4+Cj4+ID4gID4+IFRoZXJlIGlzIGEgdmVyc2lvbiBudW1iZXIgaGFyZGNvZGVkIGluIHRoZSBW
-T1AgVkVSU0lPTl9JTkZPCj4+ID4gID4+IHJlZ2lzdGVyLCBhbmQgdGhlIHZlcnNpb24gbnVtYmVy
-IGluY3JlbWVudHMgc2VxdWVudGlhbGx5IGJhc2VkCj4+ID4gID4+IG9uIHRoZSBwcm9kdWN0aW9u
-IG9yZGVyIG9mIHRoZSBTT0MuCj4+ID4gID4+Cj4+ID4gID4+IFNvIHVzaW5nIHRoaXMgdmVyc2lv
-biBudW1iZXIgdG8gZGlzdGluZ3Vpc2ggZGlmZmVyZW50IFZPUCBmZWF0dXJlcwo+PiA+ICA+PiB3
-aWxsIHNpbXBsaWZ5IHRoZSBjb2RlLgo+PiA+ICA+Pgo+PiA+ICA+PiBTaWduZWQtb2ZmLWJ5OiBB
-bmR5IFlhbiA8YW5keS55YW5Acm9jay1jaGlwcy5jb20+Cj4+ID4gID4+Cj4+ID4gID4+IC0tLQo+
-PiA+ICA+Pgo+PiA+ICA+PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3Jv
-Y2tjaGlwX2RybV92b3AyLmggYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJt
-X3ZvcDIuaAo+PiA+ICA+PiBpbmRleCA5YjI2OWY2ZTU3NmUuLjg3MWQ5YmNkMWQ4MCAxMDA2NDQK
-Pj4gPiAgPj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3Ay
-LmgKPj4gPiAgPj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92
-b3AyLmgKPj4gPiAgPj4gQEAgLTEzLDYgKzEzLDE1IEBACj4+ID4gID4+ICAjaW5jbHVkZSAicm9j
-a2NoaXBfZHJtX2Rydi5oIgo+PiA+ICA+PiAgI2luY2x1ZGUgInJvY2tjaGlwX2RybV92b3AuaCIK
-Pj4gPiAgPj4KPj4gPiAgPj4gKyNkZWZpbmUgVk9QMl9WRVJTSU9OKG1ham9yLCBtaW5vciwgYnVp
-bGQpICAgICAoKG1ham9yKSA8PCAyNCB8IChtaW5vcikgPDwgMTYgfCAoYnVpbGQpKQo+PiA+ICA+
-PiArCj4+ID4gID4+ICsvKiBUaGUgbmV3IFNPQyBWT1AgdmVyc2lvbiBpcyBiaWdnZXIgdGhhbiB0
-aGUgb2xkICovCj4+ID4gID4+ICsjZGVmaW5lIFZPUF9WRVJTSU9OX1JLMzU2OCAgICBWT1AyX1ZF
-UlNJT04oMHg0MCwgMHgxNSwgMHg4MDIzKQo+PiA+ICA+PiArI2RlZmluZSBWT1BfVkVSU0lPTl9S
-SzM1ODggICAgVk9QMl9WRVJTSU9OKDB4NDAsIDB4MTcsIDB4Njc4NikKPj4gPiAgPj4gKyNkZWZp
-bmUgVk9QX1ZFUlNJT05fUkszNTI4ICAgIFZPUDJfVkVSU0lPTigweDUwLCAweDE3LCAweDEyNjMp
-Cj4+ID4gID4+ICsjZGVmaW5lIFZPUF9WRVJTSU9OX1JLMzU2MiAgICBWT1AyX1ZFUlNJT04oMHg1
-MCwgMHgxNywgMHg0MzUwKQo+PiA+ICA+PiArI2RlZmluZSBWT1BfVkVSU0lPTl9SSzM1NzYgICAg
-Vk9QMl9WRVJTSU9OKDB4NTAsIDB4MTksIDB4OTc2NSkKPj4gPiAgPgo+PiA+ICA+V2hhdCBhYm91
-dCB0aGUgUkszNTY2PyBEb2VzIGl0IGhhdmUgdGhlIHNhbWUgdmVyc2lvbiBjb2RlIGFzIHRoZSBS
-SzM1Njg/Cj4+ID4gID4KPj4gPiAgPlRoaXMgbmV3IHZlcnNpb24gZmllbGQgcmVwbGFjZXMgdGhl
-IHNvY19pZCBtZWNoYW5pc20gd2UgaGFkIGJlZm9yZSB0bwo+PiA+ICA+OTklLiBZb3Uga2VlcCB0
-aGUgc29jX2lkIGFyb3VuZCBqdXN0IGZvciBkaXN0aW5ndWlzaGluZyBiZXR3ZWVuIFJLMzU2Ngo+
-PiA+ICA+YW5kIFJLMzU2OC4gSXQgd291bGQgYmUgbmljZSB0byBmdWxseSByZXBsYWNlIGl0Lgo+
-PiA+ICA+Cj4+ID4gID5JIHNlZSB0aGF0IHRoZSBWT1BfVkVSU0lPTl9SSyogbnVtYmVycyBhcmUg
-dGhlIHNhbWUgYXMgZm91bmQgaW4gdGhlCj4+ID4gID5WT1AyX1NZU19WRVJTSU9OX0lORiByZWdp
-c3RlcnMuIE9uIHRoZSBvdGhlciBoYW5kIHlvdSBuZXZlciByZWFkIHRoZQo+PiA+ICA+dmFsdWUg
-ZnJvbSB0aGUgcmVnaXN0ZXIgd2hpY2ggbWFrZSB0aGUgVk9QX1ZFUlNJT05fUksqIGp1c3QgYXJi
-aXRyYXJ5Cj4+ID4gID5udW1iZXJzLiBXb3VsZG4ndCBpdCBiZSBwb3NzaWJsZSB0byBtYWtlIHNv
-bWV0aGluZyB1cCBmb3IgUkszNTY2LCBsaWtlCj4+ID4gID5WT1AyX1ZFUlNJT04oMHg0MCwgMHgx
-NSwgMHg4MDIyKSB0byBnZXQgcmlkIG9mIHRoZSBzb2NfaWQgdGhpbmd5Pwo+PiA+ICBZZXPvvIxS
-SzM1NjYgYW5kIFJLMzU2OCBzaGFyZSB0aGUgc2FtZSBWT1AgSVAgYmxvY2vvvIwgc28gdGhlIHZl
-cnNpb24gY29kZSBhdCBWRVJTSU9OX1JFR0lTVEVSIGlzCj4+ID4gIHRoZSBzYW1lLCB0aGUgZGlm
-ZmVyZW5jZSBiZXR3ZWVuIHJrMzU2OCBhbmQgcmszMzU2NiBhcmUgaW50cm9kdWNlZCBhdCBzb2Mg
-SW50ZWdyYXRpb27jgIIKPj4gPiAgU28gaSB3b3VsZCBzdGlsbCBsaWtlIHRvIGtlZXAgdGhlIHNv
-Y19pZCB0byAgaGFuZGxlIHNpdHVhdGlvbiBsaWtlIHRoaXPjgIJBcyB3ZSBhbHdheXMgaGF2ZSBz
-dWNoICBjYXVzZe+8jCBvbmUKPj4gPiAgc2FtZSBJUCBibG9ja++8jCBidXQgdGhlcmUgYXJlIHNv
-bWUgc3VidGxlIGRpZmZlcmVuY2VzIGluIGZlYXR1cmVzIGFjcm9zcyBkaWZmZXJlbnQgU09Dcy4K
-Pj4KPj4gRmluZSB3aXRoIG1lLiBZb3UgY291bGQgbGVhdmUgYSBjb21tZW50IGluIHRoZSBjb2Rl
-IG9yIGNvbW1pdAo+PiBtZXNzYWdlIHRoYXQgZXhwbGFpbnMgd2h5IHdlIG5lZWQgYm90aC4KPgo+
-QWxzbyAob3IgZXNwZWNpYWxseT8pIGFkZCB0aGF0IHRvIHRoZSBjb21taXQgbWVzc2FnZSBvZiBw
-YXRjaCA2IG9mIHRoaXMKPnNlcmllcy4gUGF0Y2ggNidzIGNvbW1pdCBtZXNzYWdlIHRhbGtzIGFi
-b3V0IFJLMzU3NiB3aGlsZSBpdCBjaGFuZ2VzCj5jb2RlIHJlbGF0ZWQgdG8gUkszNTY2IGFuZCBJ
-ICh0b28/KSB0aG91Z2h0IHRoYXQgbm90IHVzaW5nIFZPUF9WRVJTSU9OCgo+d2FzIGFuIG92ZXJz
-aWdodCwgd2hpbGUgaXQgdHVybnMgb3V0IHRvIGJlIGRlbGliZXJhdGUuCgoKT0vvvIwgd2lsbCBk
-byBpbiB2My4+Cj5DaGVlcnMsCj4gIERpZWRlcmlrCl9fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1y
-b2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21h
-aWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+In order to make the SD card hotplug working we need the card detect
+function logic inside the controller always working. The runtime PM will
+gate the clock and the power domain, which stops controller working when
+no data transfer happen.
+
+So lets skip enable runtime PM when the card needs to detected by the
+controller and the card is removable.
+
+Signed-off-by: Kever Yang <kever.yang@rock-chips.com>
+---
+
+ drivers/mmc/host/dw_mmc-rockchip.c | 23 +++++++++++++++++------
+ 1 file changed, 17 insertions(+), 6 deletions(-)
+
+diff --git a/drivers/mmc/host/dw_mmc-rockchip.c b/drivers/mmc/host/dw_mmc-rockchip.c
+index b07190ba4b7a..df91205f9cd3 100644
+--- a/drivers/mmc/host/dw_mmc-rockchip.c
++++ b/drivers/mmc/host/dw_mmc-rockchip.c
+@@ -345,28 +345,39 @@ static int dw_mci_rockchip_probe(struct platform_device *pdev)
+ 	const struct dw_mci_drv_data *drv_data;
+ 	const struct of_device_id *match;
+ 	int ret;
++	bool use_rpm = true;
+ 
+ 	if (!pdev->dev.of_node)
+ 		return -ENODEV;
+ 
++	if (!device_property_read_bool(&pdev->dev, "non-removable") &&
++	     !device_property_read_bool(&pdev->dev, "cd-gpios"))
++		use_rpm = false;
++
+ 	match = of_match_node(dw_mci_rockchip_match, pdev->dev.of_node);
+ 	drv_data = match->data;
+ 
+ 	pm_runtime_get_noresume(&pdev->dev);
+ 	pm_runtime_set_active(&pdev->dev);
+-	pm_runtime_enable(&pdev->dev);
+-	pm_runtime_set_autosuspend_delay(&pdev->dev, 50);
+-	pm_runtime_use_autosuspend(&pdev->dev);
++
++	if (use_rpm) {
++		pm_runtime_enable(&pdev->dev);
++		pm_runtime_set_autosuspend_delay(&pdev->dev, 50);
++		pm_runtime_use_autosuspend(&pdev->dev);
++	}
+ 
+ 	ret = dw_mci_pltfm_register(pdev, drv_data);
+ 	if (ret) {
+-		pm_runtime_disable(&pdev->dev);
+-		pm_runtime_set_suspended(&pdev->dev);
++		if (use_rpm) {
++			pm_runtime_disable(&pdev->dev);
++			pm_runtime_set_suspended(&pdev->dev);
++		}
+ 		pm_runtime_put_noidle(&pdev->dev);
+ 		return ret;
+ 	}
+ 
+-	pm_runtime_put_autosuspend(&pdev->dev);
++	if (use_rpm)
++		pm_runtime_put_autosuspend(&pdev->dev);
+ 
+ 	return 0;
+ }
+-- 
+2.25.1
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
