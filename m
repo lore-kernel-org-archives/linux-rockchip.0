@@ -4,95 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 090C3EE6426
-	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Sep 2024 02:58:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3D279EE57C7
+	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Sep 2024 06:42:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Message-ID:MIME-Version:References:
+	In-Reply-To:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=kiJiPrbzHBsy10u67lDa2UFXVN5RS1E8SQhYpTYvmIQ=; b=xMeQHEtIrdUZ+L
-	HXm7JNpjxmg5OQ5at0GwOeP30S+OcFqtQ9tyEfU7HHF/cfr0LA24WGkU4sh0TTYnp8KObMcmWY/HL
-	jKLejdvqMqiSzHjsLNiv/MR2cJ0jQFBrjBnqcwtQpFwQz9O/UVBJGoW9vOFbDQMiCtb77rhgOCTGH
-	KUPUXVkEyBWp+rpSgIqqGGKXLJqnc9Noi4K7XO+FE0G79c1969+d644mZHQP/dKZY/s4PFXSRNPuT
-	qo5Nt+Acew1fwDiF9Q6Wzsue8KhSDL02bCTeVtieOEozL2hFc1xdg/Gy+7KuCz2NLe7Q5IgCxAiru
-	i5Q0bFRJVN/4YEj2idZw==;
+	List-Owner; bh=nQsU1mZ3z0os/RUU8nezqpEPJSapU7nO3Ar3QjSE3Fw=; b=wpJu5hJcJEkG7Y
+	3Ka2XY9yJ/n/d8i4Hsoi/C+qhVz2ceVFXHczwaVeHjRgq1vm/2in9knjI6Ur8bRjvtoHTkQEG88P7
+	J6nx82JRM8pqnUWCMoDRRl13pJ6qYyqjKIsOsJOoTv3GwgFUXmyosuNmYbJhsRL0fkohGPU4iaXPW
+	HQR1MpaN447KX695EMEwoSPIufndps1UmrjQVb/V/gjb2EvBulpEG4BzYbbiUMfmX+DUBalD+etS+
+	SVsjfs6v15b9fCYZUJl4Yna1K8gPeVfEtvvmhWvaDdo82zWrGOOy+EY7Unm4+/84+sRjOaumAwslX
+	h/kugXyNsRWqguc2jpUw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1soa2f-0000000Bgxv-2XIK;
-	Thu, 12 Sep 2024 02:58:45 +0000
-Received: from mail-pg1-x534.google.com ([2607:f8b0:4864:20::534])
-	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1soZwX-0000000BfJe-23ut;
-	Thu, 12 Sep 2024 02:52:26 +0000
-Received: by mail-pg1-x534.google.com with SMTP id 41be03b00d2f7-7db19de6346so343377a12.2;
-        Wed, 11 Sep 2024 19:52:25 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1726109544; x=1726714344; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=CbhfTGrSMvC/tgmYMhKvFdZrItzTEJ4tenHm4R5TGCQ=;
-        b=EWzeh11XjOrbiKgVHi17bAMHZ1SCc821bcSUZDoUB3R81JGdKMJ3cap3Iniqb6z3SN
-         N1P4bP5doQBk1VpMLAhJZlTp4kz1L7TmRopV5nuB/WnjcHmaMYo3lf6u4rAhYUI9nyJ4
-         dlnTCgr0x5aP93spQzxN0sw9thW4riR5oLh69RCG7SD9dHkqn+uaRxjpGageycvwyuGb
-         E+ksukaGjMzQb9J8xtxHsgfC9r84lHeYO9Lsh9e5Qvf91/bD756UPweeupc3aBXm+rTT
-         8yOh+d/IpczF6bcSbV1UN7/K2GOPKp0JBS9EF/MQC+NcRG6kudM4gQDduSbJYJvTkZdS
-         yMgw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1726109544; x=1726714344;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=CbhfTGrSMvC/tgmYMhKvFdZrItzTEJ4tenHm4R5TGCQ=;
-        b=lQNVVpUGOWtxYPR1eib80dWJmQJFnbN1XwHJ7/LPTZKoVkdhWpiAVtkYGePcwRq5JV
-         Zdg7XohEMmp8u0hW6ZeLhr/4yn4vXjuBB11LBXcybuWyHqYSBJ8sqdXqNq8iohyS+U6j
-         7xVB2HVjj261uUtgasOLIzCWXO9/ReoZmiUyUonqC5boN9XWXWgcJLKVBXd3qahVYify
-         fkw8FLUiOUfqEczNhqxWpHbDYlprPXJSK+Zvrt/9BJ6wBMlZKJJmIqZmKyvu94TgjRC8
-         lMQDHsOI5zks2t8LOfjYBUCAbp4syQMorKWD9XsIzIK6D9QRM6mUK8iprbCPXWVEDO99
-         pVFg==
-X-Forwarded-Encrypted: i=1; AJvYcCUPDxjvYkfpy2bSr5ONs5x9/Sig1gPVW97VKw8eiDetBxh2xv62KBAsipZKXAY1s8zAggYkI7oyxogWlfFAjYwA@lists.infradead.org, AJvYcCWD2DmV/xOXGkElowfA+jZqrYqsmsZofzrFpqZF2RJaMbrPdviNaS9Xx6fj6HfyEu4A8XR7AytBC7x7yTL3HY0=@lists.infradead.org
-X-Gm-Message-State: AOJu0YxoygrbFIT9bB3EfQU7VUWcKihXUXexjgadYR7ZvF0loV8l2snJ
-	3WE5jBd4tIbQlfUbua8Noi0jEpZjpZY2zdNXvoulnV4zSgTQ44p9
-X-Google-Smtp-Source: AGHT+IF8HeK6/BQhqecMhAqWlKM4X8CDT4o85XrqfS2zkOCm7oxs5tX2NJUPbSqU54VIZ5nGAuvpIg==
-X-Received: by 2002:a05:6a20:d50c:b0:1cf:2513:89f6 with SMTP id adf61e73a8af0-1cf76239981mr1446471637.41.1726109544283;
-        Wed, 11 Sep 2024 19:52:24 -0700 (PDT)
-Received: from luna.turtle.lan ([2601:1c2:c184:dc00::315])
-        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-7db1fbbf877sm569023a12.50.2024.09.11.19.52.22
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 11 Sep 2024 19:52:23 -0700 (PDT)
-From: Sam Edwards <cfsworks@gmail.com>
-X-Google-Original-From: Sam Edwards <CFSworks@gmail.com>
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Ondrej Jirman <megi@xff.cz>,
-	Chris Morgan <macromorgan@hotmail.com>,
-	Alex Zhao <zzc@rock-chips.com>,
-	Dragan Simic <dsimic@manjaro.org>,
-	FUKAUMI Naoki <naoki@radxa.com>,
-	Sebastian Reichel <sebastian.reichel@collabora.com>,
-	Jing Luo <jing@jing.rocks>,
-	Kever Yang <kever.yang@rock-chips.com>,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	=?UTF-8?q?Daniel=20Kukie=C5=82a?= <daniel@kukiela.pl>,
-	Joshua Riek <jjriek@verizon.net>,
-	Sam Edwards <CFSworks@gmail.com>
-Subject: [PATCH 5/5] arm64: dts: rockchip: Enable GPU on Turing RK1
-Date: Wed, 11 Sep 2024 19:50:34 -0700
-Message-ID: <20240912025034.180233-6-CFSworks@gmail.com>
-X-Mailer: git-send-email 2.44.2
-In-Reply-To: <20240912025034.180233-1-CFSworks@gmail.com>
-References: <20240912025034.180233-1-CFSworks@gmail.com>
+	id 1sodWf-0000000C2v9-114W;
+	Thu, 12 Sep 2024 06:41:57 +0000
+Received: from m16.mail.163.com ([117.135.210.5])
+	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
+	id 1sodWb-0000000C2rK-3F7i
+	for linux-rockchip@lists.infradead.org;
+	Thu, 12 Sep 2024 06:41:55 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
+	s=s110527; h=Date:From:Subject:Content-Type:MIME-Version:
+	Message-ID; bh=FFRjaMOtcYlD0wIUizy+EZiyL6J8CSdmavsjt1qDwcg=; b=C
+	jzBAntaDuHSbAKJXznDcTfw+uXRFhGlC/UTbTlW2tYDnCZLvqcE75/s1+uMd0oVs
+	F5qZ3uPUVo1eENJ5vkcx9bHB4Dq6h7WoFBNumjRjbMjSunNll8b/Lr4/f22Bnest
+	IupSRki/tXPyy2Lw3dD+QrsYZOzNaoVNsXsu9koHVc=
+Received: from andyshrk$163.com ( [58.22.7.114] ) by
+ ajax-webmail-wmsvr-40-118 (Coremail) ; Thu, 12 Sep 2024 14:41:21 +0800
+ (CST)
+X-Originating-IP: [58.22.7.114]
+Date: Thu, 12 Sep 2024 14:41:21 +0800 (CST)
+From: "Andy Yan" <andyshrk@163.com>
+To: "Sascha Hauer" <s.hauer@pengutronix.de>
+Cc: detlev.casanova@collabora.com, heiko@sntech.de, devicetree@vger.kernel.org, 
+	dri-devel@lists.freedesktop.org, hjc@rock-chips.com, 
+	mripard@kernel.org, sebastian.reichel@collabora.com, 
+	linux-rockchip@lists.infradead.org, sjoerd@collabora.com, 
+	"Andy Yan" <andy.yan@rock-chips.com>, krzk+dt@kernel.org, 
+	robh@kernel.org
+Subject: Re:Re: Re: [PATCH v2 05/11] drm/rockchip: vop2: Introduce vop
+ hardware version
+X-Priority: 3
+X-Mailer: Coremail Webmail Server Version XT5.0.14 build 20240801(9da12a7b)
+ Copyright (c) 2002-2024 www.mailtech.cn 163com
+In-Reply-To: <Zt68U6hnPA0KrxXB@pengutronix.de>
+References: <20240904120238.3856782-1-andyshrk@163.com>
+ <20240904120238.3856782-6-andyshrk@163.com>
+ <ZtlZgKcDQFF_WnCn@pengutronix.de>
+ <2326e2ea.8264.191c13bab93.Coremail.andyshrk@163.com>
+ <Zt68U6hnPA0KrxXB@pengutronix.de>
+X-NTES-SC: AL_Qu2ZBP2ZvEoj5yCcY+kZnEobh+Y5UcK2s/ki2YFXN5k0qCTV5jkBWWZDIkXN6NmkFCKFqQG+fRRj0uF4R4BKeJzeNCP6GltchfDWnMbcFzKh
 MIME-Version: 1.0
+Message-ID: <79e6fb46.5f06.191e4f70a9a.Coremail.andyshrk@163.com>
+X-Coremail-Locale: zh_CN
+X-CM-TRANSID: _____wD333wRjeJmESERAA--.1054W
+X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/1tbiMxlYXmXAnzy82AABsP
+X-Coremail-Antispam: 1U5529EdanIXcx71UUUUU7vcSsGvfC2KfnxnUU==
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240911_195225_560560_7E0E1529 
-X-CRM114-Status: GOOD (  18.78  )
+X-CRM114-CacheID: sfid-20240911_234154_212555_220D7468 
+X-CRM114-Status: GOOD (  26.07  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,89 +78,84 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Enable the Mali GPU in the Turing RK1.
-
-This patch also sets the external GPU voltage regulator in the RK806-1
-to "always-on" because it is necessary for this regulator to be active
-when enabling the GPU power domain or the kernel will fail with:
-
-rockchip-pm-domain fd8d8000.power-management:power-controller: \
-    failed to set domain 'gpu', val=0
-rockchip-pm-domain fd8d8000.power-management:power-controller: \
-    failed to get ack on domain 'gpu', val=0x1bffff
-
-...followed by a panic when it attempts to access unavailable QoS
-registers.
-
-Since there is currently no `domain-supply` or similar to express this
-dependency, the only way to ensure that the regulator is never off when
-the GPU power domain is brought up is to ensure that the regulator is
-never off.
-
-Signed-off-by: Sam Edwards <CFSworks@gmail.com>
-
----
-
-Hi list,
-
-This particular patch will probably need to be revisited once something
-like [1] lands. I'm completely unable to get the GPU up and running
-without some kind of solution to the power dependency issue, but it's
-possible that this is because I'm just particularly unlucky in the
-timing department.
-
-Cheers,
-Sam
-
-[1]: https://lore.kernel.org/lkml/20240910180530.47194-7-sebastian.reichel@collabora.com/T/
----
- .../boot/dts/rockchip/rk3588-turing-rk1.dtsi     | 16 ++++++++++++++++
- 1 file changed, 16 insertions(+)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-turing-rk1.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-turing-rk1.dtsi
-index 6036c4fe6727..dedfb9ede4a3 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-turing-rk1.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-turing-rk1.dtsi
-@@ -116,6 +116,11 @@ &gmac1_rgmii_clk
- 	status = "okay";
- };
- 
-+&gpu {
-+	mali-supply = <&vdd_gpu_s0>;
-+	status = "okay";
-+};
-+
- &i2c0 {
- 	pinctrl-names = "default";
- 	pinctrl-0 = <&i2c0m2_xfer>;
-@@ -386,6 +391,17 @@ rk806_dvs3_null: dvs3-null-pins {
- 
- 		regulators {
- 			vdd_gpu_s0: vdd_gpu_mem_s0: dcdc-reg1 {
-+				/*
-+				 * RK3588's GPU power domain cannot be enabled
-+				 * without this regulator active, but it
-+				 * doesn't have to be on when the GPU PD is
-+				 * disabled.  Because the PD binding does not
-+				 * currently allow us to express this
-+				 * relationship, we have no choice but to do
-+				 * this instead:
-+				 */
-+				regulator-always-on;
-+
- 				regulator-boot-on;
- 				regulator-min-microvolt = <550000>;
- 				regulator-max-microvolt = <950000>;
--- 
-2.44.2
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+CgpIaSBTYXNjaGHvvIwKQXQgMjAyNC0wOS0wOSAxNzoxMzo1NSwgIlNhc2NoYSBIYXVlciIgPHMu
+aGF1ZXJAcGVuZ3V0cm9uaXguZGU+IHdyb3RlOgo+T24gVGh1LCBTZXAgMDUsIDIwMjQgYXQgMDQ6
+MDk6NThQTSArMDgwMCwgQW5keSBZYW4gd3JvdGU6Cj4+ICAgIEhpIFNhc2NoYSwKPj4gCj4+ICBB
+dCAyMDI0LTA5LTA1IDE1OjEwOjU2LCAiU2FzY2hhIEhhdWVyIiA8cy5oYXVlckBwZW5ndXRyb25p
+eC5kZT4gd3JvdGU6Cj4+ICA+SGkgQW5keSwKPj4gID4KPj4gID5PbiBXZWQsIFNlcCAwNCwgMjAy
+NCBhdCAwODowMjozMlBNICswODAwLCBBbmR5IFlhbiB3cm90ZToKPj4gID4+IEZyb206IEFuZHkg
+WWFuIDxhbmR5LnlhbkByb2NrLWNoaXBzLmNvbT4KPj4gID4+Cj4+ICA+PiBUaGVyZSBpcyBhIHZl
+cnNpb24gbnVtYmVyIGhhcmRjb2RlZCBpbiB0aGUgVk9QIFZFUlNJT05fSU5GTwo+PiAgPj4gcmVn
+aXN0ZXIsIGFuZCB0aGUgdmVyc2lvbiBudW1iZXIgaW5jcmVtZW50cyBzZXF1ZW50aWFsbHkgYmFz
+ZWQKPj4gID4+IG9uIHRoZSBwcm9kdWN0aW9uIG9yZGVyIG9mIHRoZSBTT0MuCj4+ICA+Pgo+PiAg
+Pj4gU28gdXNpbmcgdGhpcyB2ZXJzaW9uIG51bWJlciB0byBkaXN0aW5ndWlzaCBkaWZmZXJlbnQg
+Vk9QIGZlYXR1cmVzCj4+ICA+PiB3aWxsIHNpbXBsaWZ5IHRoZSBjb2RlLgo+PiAgPj4KPj4gID4+
+IFNpZ25lZC1vZmYtYnk6IEFuZHkgWWFuIDxhbmR5LnlhbkByb2NrLWNoaXBzLmNvbT4KPj4gID4+
+Cj4+ICA+PiAtLS0KPj4gID4+Cj4+ICA+PiBDaGFuZ2VzIGluIHYyOgo+PiAgPj4gLSBJbnRyb2R1
+Y2Ugdm9wIGhhcmR3YXJlIHZlcnNpb24KPj4gID4+Cj4+ICA+PiAgZHJpdmVycy9ncHUvZHJtL3Jv
+Y2tjaGlwL3JvY2tjaGlwX2RybV92b3AyLmMgfCAgNyArKysrLS0tCj4+ICA+PiAgZHJpdmVycy9n
+cHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AyLmggfCAxMSArKysrKysrKysrKwo+PiAg
+Pj4gIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF92b3AyX3JlZy5jIHwgIDMgKysr
+Cj4+ICA+PiAgMyBmaWxlcyBjaGFuZ2VkLCAxOCBpbnNlcnRpb25zKCspLCAzIGRlbGV0aW9ucygt
+KQo+PiAgPj4KPj4gID4+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9j
+a2NoaXBfZHJtX3ZvcDIuaCBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1f
+dm9wMi5oCj4+ICA+PiBpbmRleCA5YjI2OWY2ZTU3NmUuLjg3MWQ5YmNkMWQ4MCAxMDA2NDQKPj4g
+ID4+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wMi5oCj4+
+ICA+PiArKysgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcDIuaAo+
+PiAgPj4gQEAgLTEzLDYgKzEzLDE1IEBACj4+ICA+PiAgI2luY2x1ZGUgInJvY2tjaGlwX2RybV9k
+cnYuaCIKPj4gID4+ICAjaW5jbHVkZSAicm9ja2NoaXBfZHJtX3ZvcC5oIgo+PiAgPj4KPj4gID4+
+ICsjZGVmaW5lIFZPUDJfVkVSU0lPTihtYWpvciwgbWlub3IsIGJ1aWxkKSAgICAgKChtYWpvcikg
+PDwgMjQgfCAobWlub3IpIDw8IDE2IHwgKGJ1aWxkKSkKPj4gID4+ICsKPj4gID4+ICsvKiBUaGUg
+bmV3IFNPQyBWT1AgdmVyc2lvbiBpcyBiaWdnZXIgdGhhbiB0aGUgb2xkICovCj4+ICA+PiArI2Rl
+ZmluZSBWT1BfVkVSU0lPTl9SSzM1NjggICAgVk9QMl9WRVJTSU9OKDB4NDAsIDB4MTUsIDB4ODAy
+MykKPj4gID4+ICsjZGVmaW5lIFZPUF9WRVJTSU9OX1JLMzU4OCAgICBWT1AyX1ZFUlNJT04oMHg0
+MCwgMHgxNywgMHg2Nzg2KQo+PiAgPj4gKyNkZWZpbmUgVk9QX1ZFUlNJT05fUkszNTI4ICAgIFZP
+UDJfVkVSU0lPTigweDUwLCAweDE3LCAweDEyNjMpCj4+ICA+PiArI2RlZmluZSBWT1BfVkVSU0lP
+Tl9SSzM1NjIgICAgVk9QMl9WRVJTSU9OKDB4NTAsIDB4MTcsIDB4NDM1MCkKPj4gID4+ICsjZGVm
+aW5lIFZPUF9WRVJTSU9OX1JLMzU3NiAgICBWT1AyX1ZFUlNJT04oMHg1MCwgMHgxOSwgMHg5NzY1
+KQo+PiAgPgo+PiAgPldoYXQgYWJvdXQgdGhlIFJLMzU2Nj8gRG9lcyBpdCBoYXZlIHRoZSBzYW1l
+IHZlcnNpb24gY29kZSBhcyB0aGUgUkszNTY4Pwo+PiAgPgo+PiAgPlRoaXMgbmV3IHZlcnNpb24g
+ZmllbGQgcmVwbGFjZXMgdGhlIHNvY19pZCBtZWNoYW5pc20gd2UgaGFkIGJlZm9yZSB0bwo+PiAg
+Pjk5JS4gWW91IGtlZXAgdGhlIHNvY19pZCBhcm91bmQganVzdCBmb3IgZGlzdGluZ3Vpc2hpbmcg
+YmV0d2VlbiBSSzM1NjYKPj4gID5hbmQgUkszNTY4LiBJdCB3b3VsZCBiZSBuaWNlIHRvIGZ1bGx5
+IHJlcGxhY2UgaXQuCj4+ICA+Cj4+ICA+SSBzZWUgdGhhdCB0aGUgVk9QX1ZFUlNJT05fUksqIG51
+bWJlcnMgYXJlIHRoZSBzYW1lIGFzIGZvdW5kIGluIHRoZQo+PiAgPlZPUDJfU1lTX1ZFUlNJT05f
+SU5GIHJlZ2lzdGVycy4gT24gdGhlIG90aGVyIGhhbmQgeW91IG5ldmVyIHJlYWQgdGhlCj4+ICA+
+dmFsdWUgZnJvbSB0aGUgcmVnaXN0ZXIgd2hpY2ggbWFrZSB0aGUgVk9QX1ZFUlNJT05fUksqIGp1
+c3QgYXJiaXRyYXJ5Cj4+ICA+bnVtYmVycy4gV291bGRuJ3QgaXQgYmUgcG9zc2libGUgdG8gbWFr
+ZSBzb21ldGhpbmcgdXAgZm9yIFJLMzU2NiwgbGlrZQo+PiAgPlZPUDJfVkVSU0lPTigweDQwLCAw
+eDE1LCAweDgwMjIpIHRvIGdldCByaWQgb2YgdGhlIHNvY19pZCB0aGluZ3k/Cj4+ICBZZXPvvIxS
+SzM1NjYgYW5kIFJLMzU2OCBzaGFyZSB0aGUgc2FtZSBWT1AgSVAgYmxvY2vvvIwgc28gdGhlIHZl
+cnNpb24gY29kZSBhdCBWRVJTSU9OX1JFR0lTVEVSIGlzCj4+ICB0aGUgc2FtZSwgdGhlIGRpZmZl
+cmVuY2UgYmV0d2VlbiByazM1NjggYW5kIHJrMzM1NjYgYXJlIGludHJvZHVjZWQgYXQgc29jIElu
+dGVncmF0aW9u44CCCj4+ICBTbyBpIHdvdWxkIHN0aWxsIGxpa2UgdG8ga2VlcCB0aGUgc29jX2lk
+IHRvICBoYW5kbGUgc2l0dWF0aW9uIGxpa2UgdGhpc+OAgkFzIHdlIGFsd2F5cyBoYXZlIHN1Y2gg
+IGNhdXNl77yMIG9uZQo+PiAgc2FtZSBJUCBibG9ja++8jCBidXQgdGhlcmUgYXJlIHNvbWUgc3Vi
+dGxlIGRpZmZlcmVuY2VzIGluIGZlYXR1cmVzIGFjcm9zcyBkaWZmZXJlbnQgU09Dcy4KPgo+Rmlu
+ZSB3aXRoIG1lLiBZb3UgY291bGQgbGVhdmUgYSBjb21tZW50IGluIHRoZSBjb2RlIG9yIGNvbW1p
+dAoKPm1lc3NhZ2UgdGhhdCBleHBsYWlucyB3aHkgd2UgbmVlZCBib3RoLgoKCk9r77yMIHdpbGwg
+YWRkIGluIFYzLj4KPj4gIEkgaGF2ZSBjb25zaWRlcmVkIHJlYWRpbmcgdGhlIHZlcnNpb24gcmVn
+aXN0ZXIgZGlyZWN0bHksIGJ1dCBJIGhhdmVuJ3QgZm91bmQgYSBzdWl0YWJsZSBtZXRob2QgeWV0
+Lgo+Cj5Zb3UgY291bGQgY2hlY2sgdGhlIGV4cGVjdGVkIHZlcnNpb24gZnJvbSB0aGUgZHJpdmVy
+IGRhdGEgYWdhaW5zdAo+dGhlIHJlZ2lzdGVyIHZhbHVlLCBidXQgdGhhdCB3b3VsZCBvbmx5IGJl
+IGFuIGFkZGl0aW9uYWwgc2FuaXR5IGNoZWNrLgoKPk5vdCBzdXJlIGlmIGl0J3Mgd29ydGggaXQu
+CgoKSSB0aGluayB3ZSBjYW4gYWRkIGEgY2hlY2sgbGlrZSB0aGF0IHRvIG1ha2Ugc3VyZSB0aGUg
+dmVyc2lvbiBjb2RlIG1hdGNocyB0aGUKcmVhbCByZWdpc3RlciB2YWx1Ze+8jHJhdGhlciB0aGFu
+IGJlaW5nIGFuIGFyYml0cmFyaWx5IGNyZWF0ZWQgdmFsdWUuCj5TYXNjaGEKPgo+LS0gCj5QZW5n
+dXRyb25peCBlLksuICAgICAgICAgICAgICAgICAgICAgICAgICAgfCAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgfAo+U3RldWVyd2FsZGVyIFN0ci4gMjEgICAgICAgICAgICAgICAgICAgICAg
+IHwgaHR0cDovL3d3dy5wZW5ndXRyb25peC5kZS8gIHwKPjMxMTM3IEhpbGRlc2hlaW0sIEdlcm1h
+bnkgICAgICAgICAgICAgICAgICB8IFBob25lOiArNDktNTEyMS0yMDY5MTctMCAgICB8Cj5BbXRz
+Z2VyaWNodCBIaWxkZXNoZWltLCBIUkEgMjY4NiAgICAgICAgICAgfCBGYXg6ICAgKzQ5LTUxMjEt
+MjA2OTE3LTU1NTUgfAo+Cj5fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fXwo+TGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0Cj5MaW51eC1yb2NrY2hpcEBsaXN0
+cy5pbmZyYWRlYWQub3JnCj5odHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3Rp
+bmZvL2xpbnV4LXJvY2tjaGlwCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0
+cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGlu
+Zm8vbGludXgtcm9ja2NoaXAK
