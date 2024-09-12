@@ -4,61 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EA17FEED607
-	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Sep 2024 13:35:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BEE21EED606
+	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Sep 2024 13:54:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=WdghkE0Q+f3P9vpsNTNEXULSgugyCyfVQXv/tuhsB/I=; b=Yzm0M7yFW9Bfdm
-	ouZSUyLdSv6b1IIW2sYgk4X9R+lJ7+0yL1M17vzHwk26oy48POfGVwDwr9Z85NzD94XQ/lZQY2Gb3
-	x+v0GZ1AObuNdrsmVA0tNbL7ASqUfH6XcB4i8Yqm3FzQwwNaDapXnRra1jShBkMwVhLVyPmT6n8K/
-	ZK8GQMN8wY2yePvV0hKOfiAKhqfrKUw4o2En5AsmPCk8ux489dj9JNv9QcHLxCqIJdlqAS9QVO5eL
-	R2tfZcJ8uNo+7+ocxg01083jaCaPCk5oJ79JE2VEiZ0ZRLNncnZA/MFhu04BnbJ4NNIJZf+CNV2QL
-	EDtILCOfiEDRheDjGJog==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=YuJWEPkLGTc8uepCI+JYGzN3JhX2CTZT4xjwVXFucR4=; b=yIoYRYGg2U4xot
+	SoViPgp9tw9Cq2IiPUbJLO5vVjb8vHcT/BFhP7WLVejXDeuqTNxYnfoQlQX5pB8s/x2GCflQYcFI7
+	5Q2H6zX5Rz/C/LJZWpBtIq38VjjGHFX4Xd2Xw9xPWr7r+bN1wufBLHg2MX3IKThBAIAcc2ctctcwo
+	nw4KSkAbtshVhBdHNnZO/YUjUAeyKrKJ6EL5+2gT45qMVFWkD55ERZGyJWybzB6hFnIQ647IEJRKu
+	x8GbB0CRNoOj2u9u+qkSHyycoyaZd+JWvN2rkfXi4tWJnuNsVWpiuQBIyvt/l0bu+mvV9veJs45uG
+	aEbt+BvqdDxtgV1ceNbw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sojyc-0000000DDns-07Lq;
-	Thu, 12 Sep 2024 13:35:14 +0000
-Received: from layka.disroot.org ([178.21.23.139])
-	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sojwf-0000000DDMs-3tW5;
-	Thu, 12 Sep 2024 13:33:15 +0000
-Received: from localhost (localhost [127.0.0.1])
-	by disroot.org (Postfix) with ESMTP id 7821D415A6;
-	Thu, 12 Sep 2024 15:33:10 +0200 (CEST)
-X-Virus-Scanned: SPAM Filter at disroot.org
-Received: from layka.disroot.org ([127.0.0.1])
-	by localhost (disroot.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id sCzmfGIyV1SI; Thu, 12 Sep 2024 15:33:09 +0200 (CEST)
-From: Yao Zi <ziyao@disroot.org>
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=disroot.org; s=mail;
-	t=1726147989; bh=sSx55JSXBPmJajPAqiQ992oJNfQ2IRvppQcIcT6BETs=;
-	h=From:To:Cc:Subject:Date;
-	b=PPTJoxPUworTGmi4YX2ryyYOdS7aV7cYjTOsF7EI8BIWsO1hXIuqqVmUJkCiJgr+j
-	 HrkbW3e4OmfZC7osP9GDwKM40kfEIRwaQEi1YsW04GD0ktQVFBJM9gAtWw5U3uAMXo
-	 MwsVnE2bvqig5e6kaa7VDCymkGIlvBZAKw15HBjwGz5I0MdjpSoCo8J8uBqapSIMrz
-	 gpEci9gz1jr6wtQYg+DF7+4LNJ6JzZhzJ340i0HXNzaYGx3WTGneclLQuSXLfvIKW1
-	 GOBH+DiERQs0++JevyRtbv/u4rZ7lKjffNlZdzf/ZXDNRVMh/HKsTCoBxJbISVybHv
-	 2zHS2UenRFMQQ==
-To: Michael Turquette <mturquette@baylibre.com>,
-	Stephen Boyd <sboyd@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Sebastian Reichel <sebastian.reichel@collabora.com>
-Cc: linux-clk@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Yao Zi <ziyao@disroot.org>
-Subject: [PATCH] clk: rockchip: fix finding of maximum clock ID
-Date: Thu, 12 Sep 2024 13:32:05 +0000
-Message-ID: <20240912133204.29089-2-ziyao@disroot.org>
+	id 1sokHc-0000000DGqW-1XL0;
+	Thu, 12 Sep 2024 13:54:52 +0000
+Received: from [129.204.178.38] (helo=classfun.cn)
+	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
+	id 1sokGW-0000000DGbG-0oBr;
+	Thu, 12 Sep 2024 13:53:46 +0000
+Received: from [192.168.0.160] (unknown [220.162.71.16])
+	(Authenticated sender: bigfoot)
+	by classfun.cn (Postfix) with ESMTPSA id C8CB67892D;
+	Thu, 12 Sep 2024 21:53:36 +0800 (CST)
+DKIM-Filter: OpenDKIM Filter v2.11.0 classfun.cn C8CB67892D
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=classfun.cn;
+	s=default; t=1726149220;
+	bh=8k+BLzuxKweSdS2kHP5jwMhPOyQcKLoWB7/Tll4vowk=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=jMv9AlFS5pRapyqCNfhgyF8Pebj4dX5KrWC/pluelM2Uhs0FLVzCq6Fjjkhb4qvRL
+	 1YfEzKmy7G+htbk1fkcEeOrOUDzkib8XVegr/gbQXa8alO/9a4jLrpTMfM+P3p42jR
+	 7hSQp91HHJ09+/pStfGAKBWgYFfr/mTgxBZnhy08=
+Message-ID: <1a7d017a-8317-462b-8698-03cc7099a74f@classfun.cn>
+Date: Thu, 12 Sep 2024 21:53:42 +0800
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 3/3] arm64: dts: rockchip: add dts for Ariaboard
+ Photonicat RK3568
+To: Chukun Pan <amadeus@jmu.edu.cn>
+Cc: conor+dt@kernel.org, devicetree@vger.kernel.org, dsimic@manjaro.org,
+ heiko@sntech.de, jonas@kwiboo.se, krzk+dt@kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, Junhao Xie <bigfoot@classfun.cn>
+References: <20240911122809.1789778-5-bigfoot@classfun.cn>
+ <20240912023018.23986-1-amadeus@jmu.edu.cn>
+Content-Language: en-US
+From: Junhao Xie <bigfoot@classfun.cn>
+In-Reply-To: <20240912023018.23986-1-amadeus@jmu.edu.cn>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240912_063314_396782_71376D01 
-X-CRM114-Status: GOOD (  10.31  )
+X-CRM114-CacheID: sfid-20240912_065344_657587_B4943BF2 
+X-CRM114-Status: UNSURE (   9.42  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,31 +74,53 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-If an ID of a branch's child is greater than current maximum, we should
-set new maximum to the child's ID, instead of its parent's.
+On 2024/9/12 10:30, Chukun Pan wrote:
+> Hi Junhao,
+> 
+>> ...
+>> --- /dev/null
+>> +++ b/arch/arm64/boot/dts/rockchip/rk3568-photonicat.dts
+>> ...
+> 
+>> +	rfkill-modem {
+>> +		compatible = "rfkill-gpio";
+>> +		label = "M.2 USB Modem";
+>> +		radio-type = "wwan";
+>> +		reset-gpios = <&gpio0 RK_PB0 GPIO_ACTIVE_LOW>;
+>> +		shutdown-gpios = <&gpio4 RK_PC4 GPIO_ACTIVE_HIGH>;
+>> +	};
+> 
+> gpio0 RK_PB0 conflicts with xin32k, please add:
+> 
+> &xin32k {
+> 	pinctrl-names = "default";
+> 	pinctrl-0 = <&clk32k_out1>;
+> };
 
-Fixes: 2dc66a5ab2c6 ("clk: rockchip: rk3588: fix CLK_NR_CLKS usage")
-Signed-off-by: Yao Zi <ziyao@disroot.org>
----
- drivers/clk/rockchip/clk.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+I added it and it currently works fine
 
-diff --git a/drivers/clk/rockchip/clk.c b/drivers/clk/rockchip/clk.c
-index 73d2cbdc716b..0972e9f87470 100644
---- a/drivers/clk/rockchip/clk.c
-+++ b/drivers/clk/rockchip/clk.c
-@@ -439,7 +439,7 @@ unsigned long rockchip_clk_find_max_clk_id(struct rockchip_clk_branch *list,
- 		if (list->id > max)
- 			max = list->id;
- 		if (list->child && list->child->id > max)
--			max = list->id;
-+			max = list->child->id;
- 	}
- 
- 	return max;
--- 
-2.46.0
+> 
+>> +	vccin_5v: regulator-5v0-vcc-in {
+>> +	vcc_sysin: regulator-5v0-vcc-sysin {
+>> +	vcc_syson: regulator-5v0-vcc-syson {
+>> +	vcc5v0_usb30_otg0: regulator-5v0-vcc-usb-host {
+> 
+> obviously (
 
+I seem to have misunderstood the rules in dt-bindings before.
+The following looks better:
+
+vcc5v0_usb30_otg0: regulator-vcc5v0-usb30-otg0 {
+vccin_5v: regulator-vccin-5v {
+vcc_sysin: regulator-vcc-sysin {
+vcc_syson: regulator-vcc-syson {
+
+> 
+
+Thanks for your review, I will fix all problems in next version!
+
+Best regards,
+Junhao
 
 _______________________________________________
 Linux-rockchip mailing list
