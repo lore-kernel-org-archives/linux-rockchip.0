@@ -4,95 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 71919EE57F8
-	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Sep 2024 12:36:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 240F4EE57F8
+	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Sep 2024 12:43:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:MIME-Version:
-	Date:Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=QnCB1MmuYoWPs3DK3WoWO2Z7x6bm/roqCirMFr/EHzs=; b=TbsMxf4yET5xHalzjDRZ52Jz0f
-	69ROVRaGS4JupWomD7kno7fEErfP9y74qE0lH2crvyk0IG8Wo3usBIczLEJVAs5a85gtCrZi1/j8n
-	GeLIvrE6KMHxy+A5p9CkOXdKHRi4ZNXIjLpgYiUTB2vZsNm/AvZSRFcJrCIT1jM4Qq1QbAlS4SR2s
-	wxX6nEQvg/9m4CXgTXGkKuz04NQ6vb0OMxHbaIff5uHcQCzDiidr1rv/CfPJfGRMIcSyfEQucuSqo
-	K0DO/iaRFZBmCp5noIpbe3nQKMd01uXA3obqKA4Om4QtsLN4r9HGc1ePXxw5ulFcXjuYIr4y5J4+D
-	WN3qjJ4g==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=WCqOgzPFV1lQk9q7NtjmYbc9X5jGqkeS1kn4OfpaQ7c=; b=BvGPG4ATkg3l1A
+	3BIZgEGGagF1D4GGBOxvIAn0uG6yYhtDgaisf7VR10m4PZWMzkeraRPZ2PWTenY4LVf52la8oeNlO
+	TgdYrc8PwPUsRI+t0bxbgDTduGMXDaZrhZ7DJ2FzSsXPiMXKY7zrPTVpm/H0091zMiT9Bgh9RyAgD
+	mZqMStnl9hB2xRswQGqNa/gH5X9D0wOtU54o1xsdCNF49bXqG+ThbCjYMy9lQcAyTaE2tEe+ALIzF
+	yCi4vQd4Qe9lClZiNLU2bfRTfPVCbplzNvP0f33L9FbxW06LJ70lMb+/QssV/EU/No7/RQH5FOLm2
+	oToAQwuK2xqRwGRTBmJQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1soj3g-0000000D3db-3lPm;
-	Thu, 12 Sep 2024 12:36:24 +0000
-Received: from mx08-00178001.pphosted.com ([91.207.212.93] helo=mx07-00178001.pphosted.com)
+	id 1sojAx-0000000D4Ue-3PIF;
+	Thu, 12 Sep 2024 12:43:55 +0000
+Received: from relay3-d.mail.gandi.net ([2001:4b98:dc4:8::223])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1soj3a-0000000D3cl-33xy
-	for linux-rockchip@lists.infradead.org;
-	Thu, 12 Sep 2024 12:36:22 +0000
-Received: from pps.filterd (m0046661.ppops.net [127.0.0.1])
-	by mx07-00178001.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 48C9XnPZ002414;
-	Thu, 12 Sep 2024 14:36:09 +0200
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=foss.st.com; h=
-	content-transfer-encoding:content-type:date:from:in-reply-to
-	:message-id:mime-version:references:subject:to; s=selector1; bh=
-	ycOodbDvrhisx/5OptdgsTR2uHOjLnY6oXa5ZUn9Ewk=; b=Nlf+ARJfan7qvNcb
-	wKVmVHjIjlPE/OfQkt/x0tPUVrVc01CZD/nD1x/z0K88NJB9IYu2B8bexiQhqytm
-	apcdr+HAidJPid4giMBZlfsI++fIwgMAuho4nBq+6zEgLbzDOtisqTKe7eQcxELO
-	SZl4MGZ63X/LuKq4Jd4BeftUCAhgXiJfND07sGHUGTPRm/50dozk48ZQuTs0Pb69
-	ed0ZLdHeQVTosEIK7b3Ua9bPY6Zq6MoGRAU3IOEsuf3KFKhttMFzexx+GcbBjNoL
-	Ea54M6iiPL/gZok/R137I9XT7v5pSw2DPq/zrMOqbizMXUyAfLSSnyA7VoO2wDpO
-	8Vyydg==
-Received: from beta.dmz-ap.st.com (beta.dmz-ap.st.com [138.198.100.35])
-	by mx07-00178001.pphosted.com (PPS) with ESMTPS id 41gyaakyu1-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Thu, 12 Sep 2024 14:36:09 +0200 (MEST)
-Received: from euls16034.sgp.st.com (euls16034.sgp.st.com [10.75.44.20])
-	by beta.dmz-ap.st.com (STMicroelectronics) with ESMTP id AC36D4004C;
-	Thu, 12 Sep 2024 14:34:49 +0200 (CEST)
-Received: from Webmail-eu.st.com (shfdag1node1.st.com [10.75.129.69])
-	by euls16034.sgp.st.com (STMicroelectronics) with ESMTP id 0198B269E16;
-	Thu, 12 Sep 2024 14:32:43 +0200 (CEST)
-Received: from [10.48.86.208] (10.48.86.208) by SHFDAG1NODE1.st.com
- (10.75.129.69) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.37; Thu, 12 Sep
- 2024 14:32:42 +0200
-Message-ID: <7869d6b4-6b6e-4fb6-95d9-bbe497caeceb@foss.st.com>
-Date: Thu, 12 Sep 2024 14:32:41 +0200
+	id 1soj9s-0000000D4In-2Ea1;
+	Thu, 12 Sep 2024 12:42:50 +0000
+Received: by mail.gandi.net (Postfix) with ESMTPSA id A83C760010;
+	Thu, 12 Sep 2024 12:42:37 +0000 (UTC)
+From: walker@interruptlabs.ca
+To: dsimic@manjaro.org
+Cc: airlied@gmail.com,
+	andy.yan@rock-chips.com,
+	daniel@ffwll.ch,
+	dri-devel@lists.freedesktop.org,
+	heiko@sntech.de,
+	hjc@rock-chips.com,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	maarten.lankhorst@linux.intel.com,
+	mripard@kernel.org,
+	tzimmermann@suse.de
+Subject: Re: [PATCH] drm/rockchip: cdn-dp: Remove redundant workarounds for firmware loading
+Date: Thu, 12 Sep 2024 14:42:34 +0200
+Message-ID: <20240912124234.58864-1-walker@interruptlabs.ca>
+X-Mailer: git-send-email 2.42.0
+In-Reply-To: <9b7a9e9b88ad8c7489ee1b4c70b8751eeb5cf6f9.1720049413.git.dsimic@manjaro.org>
+References: <9b7a9e9b88ad8c7489ee1b4c70b8751eeb5cf6f9.1720049413.git.dsimic@manjaro.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/2] media: uapi: add WebP VP8 frame flag
-To: Nicolas Dufresne <nicolas.dufresne@collabora.com>,
-        Mauro Carvalho Chehab
-	<mchehab@kernel.org>,
-        Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
-        Philipp Zabel <p.zabel@pengutronix.de>,
-        Hans Verkuil
-	<hverkuil-cisco@xs4all.nl>,
-        Fritz Koenig <frkoenig@chromium.org>,
-        Sebastian
- Fricke <sebastian.fricke@collabora.com>,
-        Daniel Almeida
-	<daniel.almeida@collabora.com>,
-        Andrzej Pietrasiewicz
-	<andrzej.p@collabora.com>,
-        Benjamin Gaignard
-	<benjamin.gaignard@collabora.com>,
-        <linux-media@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-        <linux-rockchip@lists.infradead.org>,
-        <linux-stm32@st-md-mailman.stormreply.com>
-References: <20240911135011.161217-1-hugues.fruchet@foss.st.com>
- <20240911135011.161217-2-hugues.fruchet@foss.st.com>
- <01020191e212f333-703af7d0-fc68-4f47-b55c-6c0c3de6708a-000000@eu-west-1.amazonses.com>
-Content-Language: en-US
-From: Hugues FRUCHET <hugues.fruchet@foss.st.com>
-In-Reply-To: <01020191e212f333-703af7d0-fc68-4f47-b55c-6c0c3de6708a-000000@eu-west-1.amazonses.com>
-X-Originating-IP: [10.48.86.208]
-X-ClientProxiedBy: SHFCAS1NODE2.st.com (10.75.129.73) To SHFDAG1NODE1.st.com
- (10.75.129.69)
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1039,Hydra:6.0.680,FMLib:17.12.60.29
- definitions=2024-09-06_09,2024-09-06_01,2024-09-02_01
+X-GND-Sasl: walker@interruptlabs.ca
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240912_053621_102883_5EAAA230 
-X-CRM114-Status: GOOD (  18.46  )
+X-CRM114-CacheID: sfid-20240912_054248_876602_BF24BBE6 
+X-CRM114-Status: UNSURE (   9.29  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,62 +65,59 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGkgTmljb2xhcywKClRoYW5rcyBmb3IgcmV2aWV3aW5nLgoKT24gOS8xMS8yNCAxOToxMiwgTmlj
-b2xhcyBEdWZyZXNuZSB3cm90ZToKPiBIaSBIdWd1ZXMsCj4gCj4gTGUgbWVyY3JlZGkgMTEgc2Vw
-dGVtYnJlIDIwMjQgw6AgMTU6NTAgKzAyMDAsIEh1Z3VlcyBGcnVjaGV0IGEgw6ljcml0wqA6Cj4+
-IEFkZCBhIGZsYWcgaW5kaWNhdGluZyB0aGF0IFZQOCBiaXRzdHJlYW0gaXMgYSBXZWJQIHBpY3R1
-cmUuCj4gCj4gU291bmRzIGxpa2UgdGhlcmUgc2hvdWxkIGJlIHNvbWUgY29kZSBjaGFuZ2VzIGlu
-IEdTdHJlYW1lciB0aGF0IHlvdSBoYXZlbid0Cj4gZGlzY2xvc2VkLiBNaW5kIHNoYXJpbmcgaG93
-IHRoaXMgbmV3IHVBUEkgaXMgdXNlZCA/IEkgd291bGQgYWxzbyBleHBlY3QgdGhpcwo+IGNvbW1p
-dCBtZXNzYWdlIHRvIGdpdmUgbW9yZSBpbnNpZ2h0IG9uIHdoYXQgaXMgc3BlY2lhbCBhYm91dCBX
-ZWJQIHRoYXQgbWFrZXMKPiB0aGlzIGZsYWcgcmVxdWlyZWQuCgoKR1N0cmVhbWVyIGNoYW5nZXMg
-aGVyZToKaHR0cHM6Ly9naXRsYWIuZnJlZWRlc2t0b3Aub3JnL2dzdHJlYW1lci9nc3RyZWFtZXIv
-LS9jb21taXQvMTM4ZWNmYWM1NGNlODViMjczYTI2ZmY2ZjBmZWZlMzk5OGY4ZDQzNj9tZXJnZV9y
-ZXF1ZXN0X2lpZD03NTA1CgpWZXJpc2lsaWNvbiBkYXRhc2hlZXQgaXMgbm90IGV4cGxpY2l0IG9u
-IHdoeSBXZWJQIG11c3QgYmUgc2lnbmFsZWQgdG8gCmhhcmR3YXJlIGJ1dCBXZWJQIGRlY29kaW5n
-IGZhaWxzIGlmIG5vdC4KU2VlbXMgdG8gbWUgdGhhdCBzdWNoIGEgc2ltcGxlIGFkZGl0aW9uIG9u
-IGFuIGFscmVhZHkgZXhpc3RpbmcgZmxhZyBpcyAKc29tZXRoaW5nIGFjY2VwdGFibGUgYW5kIHBy
-ZWZlcmFibGUgdG8gdGhlIGRldmVsb3BtZW50IG9mIGEgbmV3IGNvbXBsZXRlIAp1QVBJIGZvciBX
-ZWJQIGRlY29kaW5nLgoKPiAKPiBJIHdvdWxkIGFsc28gbmVlZCBzb21lIG1vcmUgQVBJIG9yIGRv
-Y3VtZW50YXRpb24gdGhhdCBleHBsYWluIGhvdyB3ZSBjYW4KPiBkaWZmZXJlbnRpYXRlIGEgdXBz
-dHJlYW0gZGVjb2RlciB0aGF0IGlzIGNhcGFibGUgb2YgV2ViUCBkZWNvZGluZyBmcm9tIG9uZSB0
-aGF0Cj4gZG9lcyBub3QuIEkgd29uZGVyIGlmIGl0IHdvdWxkIG5vdCBoYXZlIGJlZW4gYmV0dGVy
-IHRvIGRlZmluZSBhIG5ldyBmb3JtYXQgPwo+IFRoYXQgYmVpbmcgc2FpZCwgSSBoYXZlbid0IGxv
-b2tlZCBhdCBhbGwgaW4gdGhlIHNwZWNpZmljYXRpb24gYW5kIG9ubHkgcmVseSBvbgo+IHlvdXIg
-Y292ZXIgbGV0dGVyIGFuZCBwYXRjaCBzZXJpZXMuCj4gCj4gTmljb2xhcwoKCj4gCj4+Cj4+IFNp
-Z25lZC1vZmYtYnk6IEh1Z3VlcyBGcnVjaGV0IDxodWd1ZXMuZnJ1Y2hldEBmb3NzLnN0LmNvbT4K
-Pj4gLS0tCj4+ICAgLi4uL3VzZXJzcGFjZS1hcGkvbWVkaWEvdjRsL2V4dC1jdHJscy1jb2RlYy1z
-dGF0ZWxlc3MucnN0ICAgICAgfCAzICsrKwo+PiAgIGluY2x1ZGUvdWFwaS9saW51eC92NGwyLWNv
-bnRyb2xzLmggICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwgMSArCj4+ICAgMiBmaWxlcyBj
-aGFuZ2VkLCA0IGluc2VydGlvbnMoKykKPj4KPj4gZGlmZiAtLWdpdCBhL0RvY3VtZW50YXRpb24v
-dXNlcnNwYWNlLWFwaS9tZWRpYS92NGwvZXh0LWN0cmxzLWNvZGVjLXN0YXRlbGVzcy5yc3QgYi9E
-b2N1bWVudGF0aW9uL3VzZXJzcGFjZS1hcGkvbWVkaWEvdjRsL2V4dC1jdHJscy1jb2RlYy1zdGF0
-ZWxlc3MucnN0Cj4+IGluZGV4IDBkYTYzNTY5MWZkYy4uYmIwOGFhY2RkYzljIDEwMDY0NAo+PiAt
-LS0gYS9Eb2N1bWVudGF0aW9uL3VzZXJzcGFjZS1hcGkvbWVkaWEvdjRsL2V4dC1jdHJscy1jb2Rl
-Yy1zdGF0ZWxlc3MucnN0Cj4+ICsrKyBiL0RvY3VtZW50YXRpb24vdXNlcnNwYWNlLWFwaS9tZWRp
-YS92NGwvZXh0LWN0cmxzLWNvZGVjLXN0YXRlbGVzcy5yc3QKPj4gQEAgLTEwNjIsNiArMTA2Miw5
-IEBAIEZXSFQgRmxhZ3MKPj4gICAgICAgKiAtIGBgVjRMMl9WUDhfRlJBTUVfRkxBR19TSUdOX0JJ
-QVNfQUxUYGAKPj4gICAgICAgICAtIDB4MjAKPj4gICAgICAgICAtIFNpZ24gb2YgbW90aW9uIHZl
-Y3RvcnMgd2hlbiB0aGUgYWx0IGZyYW1lIGlzIHJlZmVyZW5jZWQuCj4+ICsgICAgKiAtIGBgVjRM
-Ml9WUDhfRlJBTUVfRkxBR19XRUJQYGAKPj4gKyAgICAgIC0gMHg0MAo+PiArICAgICAgLSBJbmRp
-Y2F0ZXMgdGhhdCB0aGlzIGZyYW1lIGlzIGEgV2ViUCBwaWN0dXJlLgo+PiAgIAo+PiAgIC4uIGM6
-dHlwZTo6IHY0bDJfdnA4X2VudHJvcHlfY29kZXJfc3RhdGUKPj4gICAKPj4gZGlmZiAtLWdpdCBh
-L2luY2x1ZGUvdWFwaS9saW51eC92NGwyLWNvbnRyb2xzLmggYi9pbmNsdWRlL3VhcGkvbGludXgv
-djRsMi1jb250cm9scy5oCj4+IGluZGV4IDk3NGZkMjU0ZTU3My4uZTQxYjYyZjJjYjJiIDEwMDY0
-NAo+PiAtLS0gYS9pbmNsdWRlL3VhcGkvbGludXgvdjRsMi1jb250cm9scy5oCj4+ICsrKyBiL2lu
-Y2x1ZGUvdWFwaS9saW51eC92NGwyLWNvbnRyb2xzLmgKPj4gQEAgLTE4OTcsNiArMTg5Nyw3IEBA
-IHN0cnVjdCB2NGwyX3ZwOF9lbnRyb3B5X2NvZGVyX3N0YXRlIHsKPj4gICAjZGVmaW5lIFY0TDJf
-VlA4X0ZSQU1FX0ZMQUdfTUJfTk9fU0tJUF9DT0VGRgkweDA4Cj4+ICAgI2RlZmluZSBWNEwyX1ZQ
-OF9GUkFNRV9GTEFHX1NJR05fQklBU19HT0xERU4JMHgxMAo+PiAgICNkZWZpbmUgVjRMMl9WUDhf
-RlJBTUVfRkxBR19TSUdOX0JJQVNfQUxUCTB4MjAKPj4gKyNkZWZpbmUgVjRMMl9WUDhfRlJBTUVf
-RkxBR19XRUJQCQkweDQwCj4+ICAgCj4+ICAgI2RlZmluZSBWNEwyX1ZQOF9GUkFNRV9JU19LRVlf
-RlJBTUUoaGRyKSBcCj4+ICAgCSghISgoaGRyKS0+ZmxhZ3MgJiBWNEwyX1ZQOF9GUkFNRV9GTEFH
-X0tFWV9GUkFNRSkpCj4gCgpCUiwKSHVndWVzLgoKX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJv
-Y2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFp
-bG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+I'm having issues relevant to this thread. I want to build my rtl8723ds driver into the kernel. When fw_loader tries to load rtw8723d_fw.bin, my sysfs isn't mounted. Ideally, I don't have to use the driver as a module, use initramfs, or build the firmware into the kernel. Please let me know if I can do anything to help with the efforts.
+
+[    0.193910] gpio gpiochip1: Static allocation of GPIO base is deprecated, use dynamic allocation.
+[    0.196848] sun8i-a33-pinctrl 1c20800.pinctrl: initialized sunXi PIO driver
+[    0.197475] sun8i-a33-pinctrl 1c20800.pinctrl: supply vcc-pb not found, using dummy regulator
+[    0.198599] printk: legacy console [ttyS0] disabled
+[    0.219380] 1c28000.serial: ttyS0 at MMIO 0x1c28000 (irq = 142, base_baud = 1500000) is a U6_16550A
+[    0.226341] printk: legacy console [ttyS0] enabled
+[    1.158740] sun8i-a33-pinctrl 1c20800.pinctrl: supply vcc-pg not found, using dummy regulator
+[    1.189006] 1c28400.serial: ttyS1 at MMIO 0x1c28400 (irq = 143, base_baud = 1500000) is a U6_16550A
+[    1.204192] cfg80211: Loading compiled-in X.509 certificates for regulatory database
+[    1.205291] sun8i-a33-pinctrl 1c20800.pinctrl: supply vcc-pf not found, using dummy regulator
+[    1.220994] Loaded X.509 cert 'sforshee: 00b28ddf47aef9cea7'
+[    1.227118] sunxi-mmc 1c10000.mmc: allocated mmc-pwrseq
+[    1.231759] Loaded X.509 cert 'wens: 61c038651aabdcf94bd0ac7ff06c7248db18c600'
+[    1.239605] clk: Disabling unused clocks
+[    1.240126] sunxi-mmc 1c0f000.mmc: Got CD GPIO
+[    1.243767] ALSA device list:
+[    1.250965]   No soundcards found.
+[    1.255508] platform regulatory.0: Direct firmware load for regulatory.db failed with error -2
+[    1.257835] sunxi-mmc 1c10000.mmc: initialized, max. request size: 16384 KB
+[6 [    1.273169] sunxi-mmc 1c0f000.mmc: initialized, max. request size: 16384 KB
+[    1.280679] Waiting for root device /dev/mmcblk1p1...
+[    1.285837] sunxi-mmc 1c10000.mmc: card claims to support voltages below defined range
+[    1.304227] mmc0: new high speed SDIO card at address 0001
+[    1.312047] rtw_8723ds mmc0:0001:1: Direct firmware load for rtw88/rtw8723d_fw.bin failed with error -2
+[    1.321568] rtw_8723ds mmc0:0001:1: failed to request firmware
+[    1.330441] mmc1: host does not support reading read-only switch, assuming write-enable
+[    1.334030] rtw_8723ds mmc0:0001:1: failed to load firmware
+[    1.343207] mmc1: new high speed SDHC card at address aaaa
+[    1.344048] rtw_8723ds mmc0:0001:1: failed to setup chip efuse info
+[    1.351159] mmcblk1: mmc1:aaaa SC32G 29.7 GiB
+[    1.355846] rtw_8723ds mmc0:0001:1: failed to setup chip information
+[    1.366892] rtw_8723ds mmc0:0001:1: probe with driver rtw_8723ds failed with error -22
+[    1.367560]  mmcblk1: p1
+[    1.434987] EXT4-fs (mmcblk1p1): orphan cleanup on readonly fs
+[    1.443377] EXT4-fs (mmcblk1p1): mounted filesystem c5551457-88e0-47ae-9094-06babfcdeded ro with ordered data mode. Quota mode: disabled.
+[    1.455974] VFS: Mounted root (ext4 filesystem) readonly on device 179:1.
+[    1.465835] devtmpfs: mounted
+[    1.470605] Freeing unused kernel image (initmem) memory: 1024K
+[    1.476798] Run /sbin/init as init process
+[    1.781051] EXT4-fs (mmcblk1p1): re-mounted c5551457-88e0-47ae-9094-06babfcdeded r/w. Quota mode: disabled.
+
+Thanks,
+
+Walker
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
