@@ -4,64 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4A59CEE6426
-	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Sep 2024 02:56:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 64081EE6426
+	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Sep 2024 02:57:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=jSQ8Tcj5z707Oza8uZLyLJ+vexhL21Ew/ChdZjX9/tQ=; b=mwAPZOgPXXei8G
-	ZZwWlmNY3S5jMc2evJrOZ+lC6sfhne8+cf9utrTvOxuC7Swq+g+JpkefgugwHIZJne0JV9YaMYvpw
-	R8o7wjewY9jySYVrrIfyiUgxHFw1uAHGtAT1I4uG1Kv66gK3a24QCr5Mi1WT5B12zcm2cuJVx6I/A
-	9kXXd5rg2wXAdteYfcGdPVJAQZjnYcAiIjUGV1hWWcU61NsMtv9yIbm9aY5im+o4e4+uZ9NxQa47C
-	DBSa2KABHCiaz5+R3HJ6u74CULFMC46TQLJzrHuc3g4FkcDCjbTtfAQq2wFeyX1ZhiVHrPIaZ6Buo
-	72vk836JCR4y3GLSelgQ==;
+	List-Owner; bh=+XOtgxGeT/PhbgWPAIORxCiMiye1GyWQmFsdUMlPYfo=; b=zxW5PCuczkOVcT
+	LK0msmAoq+1wVg/cYeOZzwixHgF/4mAp/IlDEk8CikEzMUZB81zKx0aUeG9gAZuB5omHWLFUAP1JW
+	B85nZCwub/t1WfaLv+3avHf/mW9e2UfxinDnBA6vWkz2r+7mOFbRStT2TUnm3AJBVAQ2wY9X/iIYr
+	TcOXd1SFlD03F6PqOhUMTIKkh/sdzlRkGBvh1x3C62QrkI18At8yghuWjqiwwQgT34nd6hIlCt0lv
+	ASG6PL+67ToIJB9HJ9KWls5RoIcfBtniAQFzR2Fgi1ItiQcGLkQ3LeTdz/ZtesIwasj1mo/EKspX3
+	Pwvb+jGu8yWxiaUGjHug==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1soa0b-0000000BgJa-0je6;
-	Thu, 12 Sep 2024 02:56:37 +0000
+	id 1soa1d-0000000Bgcx-2Uga;
+	Thu, 12 Sep 2024 02:57:41 +0000
 Received: from mail-pg1-x531.google.com ([2607:f8b0:4864:20::531])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1soZwT-0000000BfIK-3ZVh;
-	Thu, 12 Sep 2024 02:52:23 +0000
-Received: by mail-pg1-x531.google.com with SMTP id 41be03b00d2f7-7c3e1081804so272457a12.3;
-        Wed, 11 Sep 2024 19:52:21 -0700 (PDT)
+	id 1soZwV-0000000BfIt-1omK;
+	Thu, 12 Sep 2024 02:52:24 +0000
+Received: by mail-pg1-x531.google.com with SMTP id 41be03b00d2f7-7db19de6346so343353a12.2;
+        Wed, 11 Sep 2024 19:52:23 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1726109541; x=1726714341; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1726109543; x=1726714343; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=lTLH1fwbTqdCfrwZp0L80p0RJpAcuj1IYnPdAurgWzI=;
-        b=Upo2CIbDlVR2+9ClC4zS7d8vusOeoHQ8hO4aykUVsOHMzdir7klvfIejkx5RNgPzSW
-         nMLUh9oW5FSa3s+LDZYYbxIyW+xH8bwrWs5IKisDv++DhjkY3GnVDvfqwHRuEhKM4HiR
-         9os26S/HN7TxRs+BXHYoPccjjzlcoH7f3kcJ7YhKLcNNFujLgHyFJHXN+kNAvmlJD/on
-         ZVNh4kFv9006CDDsDycILJyfuQoGSsR3zS3DeIIO3MQ0osbbF3Bn9HveCSR8vzxBG5hr
-         gG95nDIJ1Nr/arNAPbXGfpMmXTgXheFqPUUrdmbNF+1cB6UxksW1N+OuPtegwRyr2bMa
-         goHQ==
+        bh=UFtA1zNl0EVlgDNkgP1T2Lcb30Px4NHbKM0hs5oTZwI=;
+        b=e5oITDbVi2oQUaa5gJSuWsJWLyMw6cFxd8JNdue7Xe5zTXLWZtoYBnjAi5lzrjrvTD
+         EjNdUoD+7qxLYSErjSeR/3UvCATHkwtNZmWV4l9eHxKUpoDoZlFfB9w2c/lNtZUcdaI9
+         bO6QeB5d4FJPnwiXdlwakJESsEChckc4A1hckj7FnwArY8XKpW8I4RQOSwumjMcvFrkE
+         6qL6nFz6+SSEiTKtRtqCVkTpoidR+K7GwCLpPlt799/6OEHGncDg2iA/7dfhYqBCFO/T
+         15fKtQxcrXQVg6TLMUwKO6wSs/P+5QcI0WfHio7ZQ/XQ7ZALPdq4u137qQJJFXW2H59u
+         ml0g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1726109541; x=1726714341;
+        d=1e100.net; s=20230601; t=1726109543; x=1726714343;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=lTLH1fwbTqdCfrwZp0L80p0RJpAcuj1IYnPdAurgWzI=;
-        b=U8sTF4WqjRluEOSE1ZiJMTzvCeDS7Em4Uep7vAxL2zT2Iu+ddlOhydJstYQQG/iW7G
-         YJ/oQ65/h5LKTdoNixm1VOTwa6AFaJCkOinb0DZTMOfZ6TUGrjsRfGcPVR6WAhFrbUBz
-         ORF2hqVs7en+zi9fcsFhoVAItaSqp9wf+oeNXQrFoDgsWwHPf3YSF5QIevKc007SSsHH
-         TFrx/wacbib7Wc5KMTD8BIXUHpNTPA0Kq8/JZiqtOi3YoUOGRgCouQL7HnBW0j8G7puh
-         UJ/HtLCIQJe0ejjvVrOdRwliBoWaJUEcDJmUmfy75t3Ijt3uiISR3DS/wiQ/3h0BHS0u
-         BOug==
-X-Forwarded-Encrypted: i=1; AJvYcCUrSQPb2yr7XQqE7kWtI6nDjJYLvT3qfVssVvSYZZmUI3rRHqK013LRkY3fxhrpDc2U90XWJJ+gnUlYxjOVD+8=@lists.infradead.org, AJvYcCXiw3lMknkzZiKn0Z6lsKBRP0I6/0xrnn/Vz1oNAUl53xzryq49ZJPVNzDLFU+z9amvhAhR40QVyGc/AAC08+0h@lists.infradead.org
-X-Gm-Message-State: AOJu0YxUiay8Xy4jRxO2lzsQrxB9yx7ZLw54ocp8xH7Bi5G99cvtObCh
-	U5ZeoAzuP5HRSkqQgm34sO1Tuc2K3KZqfIYJ/y58f9pM8MX9tTzb
-X-Google-Smtp-Source: AGHT+IE4pgAMpAAF0j5qIkNUhLayqNKxMnq6pu3b8huQcVGkx2rCVOsWcbdufVpuBI8i32PPDllUZw==
-X-Received: by 2002:a05:6a20:b71c:b0:1cf:e5e5:263d with SMTP id adf61e73a8af0-1cfe5e526e2mr7224637.35.1726109541031;
-        Wed, 11 Sep 2024 19:52:21 -0700 (PDT)
+        bh=UFtA1zNl0EVlgDNkgP1T2Lcb30Px4NHbKM0hs5oTZwI=;
+        b=Ut/yeMX04kJhIc0GFm8v7nVo6RDJdZSil2EeHjroEI7O1+PjWAamIOAV+c2kxiB2Hr
+         F10WAf9g2gHb0Zbi06YMjsCzVtU6dqMW+3n+DjQAamnay7kGaFyRt4qocQlY8m+xmiW4
+         V0ZLPvcfDUMip+PoPNtCV/iVBaDaRyGop5foLncwWbmnxCzGOwonaCzoQorTlWNmPc3s
+         2NGx2OMokGr8HFRuUZmV5XIksWaiYgWhWgyjC04sHu1WkdqVh6v0AtbUcUBw7LsxPSd/
+         BStUXjW3sseCAekhipJdlqoajp3r4Y7sLA5rhn3ENOATMH9IBiWoAbu49508gov1qsGQ
+         Gq7Q==
+X-Forwarded-Encrypted: i=1; AJvYcCV6OXSIFb7GNr3ICBecp6v1qs+TAFf1tutoXJ0EOY3go/ir+0NuTH7O/4LbUqQniHkhor1nwUIMV7LXDCnvfZY=@lists.infradead.org, AJvYcCVZs+VRLxyozRg4O1pwxPGQ7N7zTH7x5eukgcIQar4GDw1E0S0BJtIs9GVQ37oxwrkQDqwreqXvsGUEEOmKK2Cb@lists.infradead.org
+X-Gm-Message-State: AOJu0YwN8I6+ZQLCaqPJ7U33Wb54p+VoqsG1UjOm7u4AJOJuE7gmmkyi
+	/j70/DkprExQRVZz6K0RiOYlUxAojRynF6HnKkwo8dC31dopqd0b
+X-Google-Smtp-Source: AGHT+IForzEpWW/rjBRT7z81T61S+onZhDsyAet84xKc8CSzbJ3Vaqylg0VDpVe4V9IaQ398uZeILw==
+X-Received: by 2002:a05:6a21:710a:b0:1cf:2fe2:a74c with SMTP id adf61e73a8af0-1cf761e58camr1685065637.31.1726109542572;
+        Wed, 11 Sep 2024 19:52:22 -0700 (PDT)
 Received: from luna.turtle.lan ([2601:1c2:c184:dc00::315])
-        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-7db1fbbf877sm569023a12.50.2024.09.11.19.52.19
+        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-7db1fbbf877sm569023a12.50.2024.09.11.19.52.21
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 11 Sep 2024 19:52:20 -0700 (PDT)
+        Wed, 11 Sep 2024 19:52:21 -0700 (PDT)
 From: Sam Edwards <cfsworks@gmail.com>
 X-Google-Original-From: Sam Edwards <CFSworks@gmail.com>
 To: Heiko Stuebner <heiko@sntech.de>
@@ -82,18 +82,17 @@ Cc: Rob Herring <robh@kernel.org>,
 	linux-kernel@vger.kernel.org,
 	=?UTF-8?q?Daniel=20Kukie=C5=82a?= <daniel@kukiela.pl>,
 	Joshua Riek <jjriek@verizon.net>,
-	Sam Edwards <CFSworks@gmail.com>,
-	soxrok2212 <soxrok2212@gmail.com>
-Subject: [PATCH 3/5] arm64: dts: rockchip: Enable automatic fan control on Turing RK1
-Date: Wed, 11 Sep 2024 19:50:32 -0700
-Message-ID: <20240912025034.180233-4-CFSworks@gmail.com>
+	Sam Edwards <CFSworks@gmail.com>
+Subject: [PATCH 4/5] arm64: dts: rockchip: Enable all 3 USBs on Turing RK1
+Date: Wed, 11 Sep 2024 19:50:33 -0700
+Message-ID: <20240912025034.180233-5-CFSworks@gmail.com>
 X-Mailer: git-send-email 2.44.2
 In-Reply-To: <20240912025034.180233-1-CFSworks@gmail.com>
 References: <20240912025034.180233-1-CFSworks@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240911_195221_916404_8B2E0EF0 
-X-CRM114-Status: GOOD (  11.77  )
+X-CRM114-CacheID: sfid-20240911_195223_499910_DF3543A9 
+X-CRM114-Status: GOOD (  17.42  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -110,84 +109,99 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This patch adds thermal trip points and cooling maps to the Turing RK1
-in order to enable automatic control of the external PWM fan. The fan is
-not active below 45C, as the heatsink alone can generally keep the chip
-in this temperature region at idle load. This cooling profile errs on
-the side of quietness, since the RK1 is commonly deployed in a Turing
-Pi 2 clusterboard alongside three others, with additional cooling
-provided at the chassis level.
+The Turing RK1 contains 3 different USBs:
+- USB0: USB 2.0, OTG
+- USB1: USB 3.0, host
+- USB2: USB 2.0, host
 
-Helped-by: soxrok2212 <soxrok2212@gmail.com>
+This patch activates the necessary DT nodes to enable all 3 buses.
+
+Future work will be needed on USB0: it is not USB 3.0, but Linux creates
+an unused USB 3.0 root hub and the controller also requires that USBDP0
+be powered up. However, it is possible to remove this dependency. By
+either patching the xHCI driver to ignore the enumerated USB 3.0 port or
+setting usb3otg0_host_num_u3_port=0 in the GRF to stop the controller
+from enumerating a USB 3.0 port in the first place, neither Linux nor
+the controller will expect USB 3.0 capability, and USBDP0 can then
+safely be removed from the `phys` property.
+
 Signed-off-by: Sam Edwards <CFSworks@gmail.com>
 ---
- .../boot/dts/rockchip/rk3588-turing-rk1.dtsi  | 53 +++++++++++++++++++
- 1 file changed, 53 insertions(+)
+ .../boot/dts/rockchip/rk3588-turing-rk1.dtsi  | 64 +++++++++++++++++++
+ 1 file changed, 64 insertions(+)
 
 diff --git a/arch/arm64/boot/dts/rockchip/rk3588-turing-rk1.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-turing-rk1.dtsi
-index 9bcb5acdea54..f6a12fe12d45 100644
+index f6a12fe12d45..6036c4fe6727 100644
 --- a/arch/arm64/boot/dts/rockchip/rk3588-turing-rk1.dtsi
 +++ b/arch/arm64/boot/dts/rockchip/rk3588-turing-rk1.dtsi
-@@ -208,6 +208,59 @@ rgmii_phy: ethernet-phy@1 {
- 	};
+@@ -666,3 +666,67 @@ &uart9 {
+ 	pinctrl-0 = <&uart9m0_xfer>;
+ 	status = "okay";
  };
- 
-+&package_thermal {
-+	trips {
-+		package_active1: trip-active1 {
-+			temperature = <45000>;
-+			hysteresis = <5000>;
-+			type = "active";
-+		};
-+		package_active2: trip-active2 {
-+			temperature = <50000>;
-+			hysteresis = <5000>;
-+			type = "active";
-+		};
-+		package_active3: trip-active3 {
-+			temperature = <60000>;
-+			hysteresis = <5000>;
-+			type = "active";
-+		};
-+		package_active4: trip-active4 {
-+			temperature = <70000>;
-+			hysteresis = <5000>;
-+			type = "active";
-+		};
-+		package_active5: trip-active5 {
-+			temperature = <80000>;
-+			hysteresis = <5000>;
-+			type = "active";
-+		};
-+	};
 +
-+	cooling-maps {
-+		map1 {
-+			trip = <&package_active1>;
-+			cooling-device = <&fan 1 1>;
-+		};
-+		map2 {
-+			trip = <&package_active2>;
-+			cooling-device = <&fan 2 2>;
-+		};
-+		map3 {
-+			trip = <&package_active3>;
-+			cooling-device = <&fan 3 3>;
-+		};
-+		map4 {
-+			trip = <&package_active4>;
-+			cooling-device = <&fan 4 4>;
-+		};
-+		map5 {
-+			trip = <&package_active5>;
-+			cooling-device = <&fan 5 5>;
-+		};
-+	};
++/* USB 0: USB 2.0 only, OTG-capable */
++&u2phy0 {
++	status = "okay";
 +};
 +
- &pcie2x1l1 {
- 	linux,pci-domain = <1>;
- 	pinctrl-names = "default";
++&u2phy0_otg {
++	status = "okay";
++};
++
++&usbdp_phy0 {
++	/*
++	 * TODO: On the RK1, USBDP0 drives the DisplayPort pins, and is not
++	 * involved in this USB2-only bus.  However, if the USB3 port is
++	 * enabled in the xHCI below, the controller will expect this PHY to be
++	 * powered up and holding RX_STATUS idle, or else it will generate an
++	 * endless stream of CSC events whenever a device is plugged in.  Until
++	 * there is a way to communicate to usb_host0_xhci that it doesn't have
++	 * a USB3 port, we have no choice but to power up USBDP0.
++	 */
++	status = "okay";
++};
++
++&usb_host0_xhci {
++	extcon = <&u2phy0>;
++	maximum-speed = "high-speed";
++	status = "okay";
++};
++
++/* USB 1: USB 3.0, host only */
++&u2phy1 {
++	status = "okay";
++};
++
++&u2phy1_otg {
++	status = "okay";
++};
++
++&usbdp_phy1 {
++	status = "okay";
++};
++
++&usb_host1_xhci {
++	extcon = <&u2phy1>;
++	dr_mode = "host";
++	status = "okay";
++};
++
++/* USB 2: USB 2.0, host only */
++&u2phy2 {
++	status = "okay";
++};
++
++&u2phy2_host {
++	status = "okay";
++};
++
++&usb_host0_ehci {
++	status = "okay";
++};
++
++&usb_host0_ohci {
++	status = "okay";
++};
 -- 
 2.44.2
 
