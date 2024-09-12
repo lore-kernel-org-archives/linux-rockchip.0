@@ -4,64 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 11C2AEE57FD
-	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Sep 2024 02:55:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4A59CEE6426
+	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Sep 2024 02:56:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=mtNkDny71BUuujouDwBC5HINhOUfPVeFbsRzUOEOvPQ=; b=SLX+/YXldfidPv
-	b5vmCEObj6yFgefRoWyKtufx1uiLtHGr2hPVV3RPcEOO6QN+9bo7SgQIyMTusgQEo0AIFulGqnaM6
-	F2T5s6xB6byRRucOatY7edneSNpIZCtsDGnauCS127BLBUZsqAEsB7G3/EX2JjFllOAdUvA6x5BHn
-	ow/mxveVXjoHGAS74YHnn4/4BlJ59+2T4BBP/TrjuqqXEFBrDqhbk0/CbENkj++emMRueQeihbikO
-	/jUAX7rl1G50wYXceET2DTZFZ7UWiOwxYQP5ISGHvCeO+76W5WD3IKOg+GBG6A207uT73m2TJMUli
-	Fpsq0oHVidNCE+VuA16w==;
+	List-Owner; bh=jSQ8Tcj5z707Oza8uZLyLJ+vexhL21Ew/ChdZjX9/tQ=; b=mwAPZOgPXXei8G
+	ZZwWlmNY3S5jMc2evJrOZ+lC6sfhne8+cf9utrTvOxuC7Swq+g+JpkefgugwHIZJne0JV9YaMYvpw
+	R8o7wjewY9jySYVrrIfyiUgxHFw1uAHGtAT1I4uG1Kv66gK3a24QCr5Mi1WT5B12zcm2cuJVx6I/A
+	9kXXd5rg2wXAdteYfcGdPVJAQZjnYcAiIjUGV1hWWcU61NsMtv9yIbm9aY5im+o4e4+uZ9NxQa47C
+	DBSa2KABHCiaz5+R3HJ6u74CULFMC46TQLJzrHuc3g4FkcDCjbTtfAQq2wFeyX1ZhiVHrPIaZ6Buo
+	72vk836JCR4y3GLSelgQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1soZza-0000000Bg4h-0uaw;
-	Thu, 12 Sep 2024 02:55:34 +0000
-Received: from mail-pf1-x42a.google.com ([2607:f8b0:4864:20::42a])
+	id 1soa0b-0000000BgJa-0je6;
+	Thu, 12 Sep 2024 02:56:37 +0000
+Received: from mail-pg1-x531.google.com ([2607:f8b0:4864:20::531])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1soZwS-0000000BfHe-3wyM;
-	Thu, 12 Sep 2024 02:52:22 +0000
-Received: by mail-pf1-x42a.google.com with SMTP id d2e1a72fcca58-718816be6cbso348530b3a.1;
-        Wed, 11 Sep 2024 19:52:20 -0700 (PDT)
+	id 1soZwT-0000000BfIK-3ZVh;
+	Thu, 12 Sep 2024 02:52:23 +0000
+Received: by mail-pg1-x531.google.com with SMTP id 41be03b00d2f7-7c3e1081804so272457a12.3;
+        Wed, 11 Sep 2024 19:52:21 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1726109540; x=1726714340; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1726109541; x=1726714341; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=W/6wDT038m9pyQEZyE3iR606xVa5WMw7igyQP4+54lQ=;
-        b=UPqLlFyJalZS3ihclH2p3TJG07wACEeETEVdkbVmW7oRYBhWuuWvUJP8Z5d2YR89/2
-         vQC+vcJIKw0yt9KDi/jmSCZMbtYNbhmJrSEu6LBKKSItR/Kn3pxpU/sNhBCtTJcI65Vq
-         hKU4KJw0bJ3Xbpcd3H1Ats/nu3q3hTcJEWij3Hz49iVp7OcbU2cvsknskNlsJxtlumkL
-         nUzdapPjVzS5CmW0QeVliyg+pe9HLYRlj7Blumnlyjczcn5pAaCcCUDge25V2jLbffkS
-         gN9/5ouGIJS3XO/RMxoddeMOOv+02hZc8C/t9CP8m7i36NdtH8x5xtY9dV0nh7EfESK+
-         9vsw==
+        bh=lTLH1fwbTqdCfrwZp0L80p0RJpAcuj1IYnPdAurgWzI=;
+        b=Upo2CIbDlVR2+9ClC4zS7d8vusOeoHQ8hO4aykUVsOHMzdir7klvfIejkx5RNgPzSW
+         nMLUh9oW5FSa3s+LDZYYbxIyW+xH8bwrWs5IKisDv++DhjkY3GnVDvfqwHRuEhKM4HiR
+         9os26S/HN7TxRs+BXHYoPccjjzlcoH7f3kcJ7YhKLcNNFujLgHyFJHXN+kNAvmlJD/on
+         ZVNh4kFv9006CDDsDycILJyfuQoGSsR3zS3DeIIO3MQ0osbbF3Bn9HveCSR8vzxBG5hr
+         gG95nDIJ1Nr/arNAPbXGfpMmXTgXheFqPUUrdmbNF+1cB6UxksW1N+OuPtegwRyr2bMa
+         goHQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1726109540; x=1726714340;
+        d=1e100.net; s=20230601; t=1726109541; x=1726714341;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=W/6wDT038m9pyQEZyE3iR606xVa5WMw7igyQP4+54lQ=;
-        b=Z8L8wK7WyzEyyNKIUsIM9ibtbI8zIhnmRoikgGqw+L7bQ6yuvZjg6AOfQYhTTr2Vrb
-         MF6lC6aXn4uI78CqREHW3sBMqZb9ps+hNUtnyKw612OEzAk/AW/SKR2pZ0Jxkb/sKcF0
-         zNh48rDshnS06Uil5MJJFBcwxbALrT5PsfR2CgFRfr1dH3tV84Dh/JHrtE5cIk0IwG1l
-         aQxNN/kHnwNfrKxXfjkN6TNYXnFPVEwpqM9BYVDxCJOH8d5o0gXBmG8yzDCUSrPjrMc8
-         j5ZF6O1l2taLXdUGYCCSKHr2dmrJ+YTsnC+AZ6iztrW2mmaNHG7TnWVoVcOU/JAQ3atb
-         ZMKA==
-X-Forwarded-Encrypted: i=1; AJvYcCV5KOe3vMYbiPa5ZmEyme+Wx7lZeYpfN83g6jbAFzx0Yk30xF26KI6aj4qXGgeDktPn8djF+1a5s/kLIXytDp8=@lists.infradead.org, AJvYcCW+4nqr5oMWwK3GbxCXDeOtsQCkLLZ6CCTWWqpffcaROU70m9qE9vd9bkGUdendiw29vz3ZtrxxegVcQu0kWREp@lists.infradead.org
-X-Gm-Message-State: AOJu0YyNuc4zdaMaAfpE1K8zmfLA9v0Pj+OIWUtcoJPJSMP6p6r23Sb5
-	LbMKAyIu3gYT9cN7zoxJ+V1Gc1KivKR2wv5Um9/hYZn40egT1Hsr
-X-Google-Smtp-Source: AGHT+IELhmT8jSB9hWx2Rf1023+9YJ/U1SxinpSC0yVn1Ef2izwy2byLH1DNDEpEymLKs/BYyn8Tmg==
-X-Received: by 2002:a05:6a00:1ace:b0:717:93d7:166f with SMTP id d2e1a72fcca58-719261fb2c4mr2073246b3a.20.1726109539684;
-        Wed, 11 Sep 2024 19:52:19 -0700 (PDT)
+        bh=lTLH1fwbTqdCfrwZp0L80p0RJpAcuj1IYnPdAurgWzI=;
+        b=U8sTF4WqjRluEOSE1ZiJMTzvCeDS7Em4Uep7vAxL2zT2Iu+ddlOhydJstYQQG/iW7G
+         YJ/oQ65/h5LKTdoNixm1VOTwa6AFaJCkOinb0DZTMOfZ6TUGrjsRfGcPVR6WAhFrbUBz
+         ORF2hqVs7en+zi9fcsFhoVAItaSqp9wf+oeNXQrFoDgsWwHPf3YSF5QIevKc007SSsHH
+         TFrx/wacbib7Wc5KMTD8BIXUHpNTPA0Kq8/JZiqtOi3YoUOGRgCouQL7HnBW0j8G7puh
+         UJ/HtLCIQJe0ejjvVrOdRwliBoWaJUEcDJmUmfy75t3Ijt3uiISR3DS/wiQ/3h0BHS0u
+         BOug==
+X-Forwarded-Encrypted: i=1; AJvYcCUrSQPb2yr7XQqE7kWtI6nDjJYLvT3qfVssVvSYZZmUI3rRHqK013LRkY3fxhrpDc2U90XWJJ+gnUlYxjOVD+8=@lists.infradead.org, AJvYcCXiw3lMknkzZiKn0Z6lsKBRP0I6/0xrnn/Vz1oNAUl53xzryq49ZJPVNzDLFU+z9amvhAhR40QVyGc/AAC08+0h@lists.infradead.org
+X-Gm-Message-State: AOJu0YxUiay8Xy4jRxO2lzsQrxB9yx7ZLw54ocp8xH7Bi5G99cvtObCh
+	U5ZeoAzuP5HRSkqQgm34sO1Tuc2K3KZqfIYJ/y58f9pM8MX9tTzb
+X-Google-Smtp-Source: AGHT+IE4pgAMpAAF0j5qIkNUhLayqNKxMnq6pu3b8huQcVGkx2rCVOsWcbdufVpuBI8i32PPDllUZw==
+X-Received: by 2002:a05:6a20:b71c:b0:1cf:e5e5:263d with SMTP id adf61e73a8af0-1cfe5e526e2mr7224637.35.1726109541031;
+        Wed, 11 Sep 2024 19:52:21 -0700 (PDT)
 Received: from luna.turtle.lan ([2601:1c2:c184:dc00::315])
-        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-7db1fbbf877sm569023a12.50.2024.09.11.19.52.18
+        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-7db1fbbf877sm569023a12.50.2024.09.11.19.52.19
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 11 Sep 2024 19:52:18 -0700 (PDT)
+        Wed, 11 Sep 2024 19:52:20 -0700 (PDT)
 From: Sam Edwards <cfsworks@gmail.com>
 X-Google-Original-From: Sam Edwards <CFSworks@gmail.com>
 To: Heiko Stuebner <heiko@sntech.de>
@@ -83,17 +83,17 @@ Cc: Rob Herring <robh@kernel.org>,
 	=?UTF-8?q?Daniel=20Kukie=C5=82a?= <daniel@kukiela.pl>,
 	Joshua Riek <jjriek@verizon.net>,
 	Sam Edwards <CFSworks@gmail.com>,
-	Jonathan Bennett <jbennett@incomsystems.biz>
-Subject: [PATCH 2/5] arm64: dts: rockchip: Fix Turing RK1 PCIe3 hang
-Date: Wed, 11 Sep 2024 19:50:31 -0700
-Message-ID: <20240912025034.180233-3-CFSworks@gmail.com>
+	soxrok2212 <soxrok2212@gmail.com>
+Subject: [PATCH 3/5] arm64: dts: rockchip: Enable automatic fan control on Turing RK1
+Date: Wed, 11 Sep 2024 19:50:32 -0700
+Message-ID: <20240912025034.180233-4-CFSworks@gmail.com>
 X-Mailer: git-send-email 2.44.2
 In-Reply-To: <20240912025034.180233-1-CFSworks@gmail.com>
 References: <20240912025034.180233-1-CFSworks@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240911_195221_006271_E243DB7E 
-X-CRM114-Status: GOOD (  15.23  )
+X-CRM114-CacheID: sfid-20240911_195221_916404_8B2E0EF0 
+X-CRM114-Status: GOOD (  11.77  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -110,53 +110,84 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The PCIe 3 PHY in the RK3588 requires a running external reference clock
-for both external bus transfers and some internal PIPE operations.
-Without this clock, the PCIe3 controller fails to initialize and ignores
-DBI transactions indefinitely, which stalls the Linux boot process.
+This patch adds thermal trip points and cooling maps to the Turing RK1
+in order to enable automatic control of the external PWM fan. The fan is
+not active below 45C, as the heatsink alone can generally keep the chip
+in this temperature region at idle load. This cooling profile errs on
+the side of quietness, since the RK1 is commonly deployed in a Turing
+Pi 2 clusterboard alongside three others, with additional cooling
+provided at the chassis level.
 
-On most RK3588 boards, this is evidently not an issue. But on some "SoM"
-designs (Turing RK1, Mixtile Core 3588E, ArmSoM AIM7, to name a few),
-this clock is only provided when the CLKREQ# signal is asserted.
-
-The PCIe 3 PHY generates the CLKREQ# signal when it knows it needs the
-reference clock for proper operation. Unfortunately, the current DT for
-Turing RK1 does not mux out these low-speed signals, resulting in broken
-boots and potentially other issues.
-
-This patch, following the previous one that split up the PCIe pinctrls,
-resolves this problem for Turing RK1 by explicitly muxing all of the
-signals needed for PCIe 2 and 3 support.
-
-Cc: Jonathan Bennett <jbennett@incomsystems.biz>
-Fixes: 2806a69f3f ("arm64: dts: rockchip: Add Turing RK1 SoM support")
+Helped-by: soxrok2212 <soxrok2212@gmail.com>
 Signed-off-by: Sam Edwards <CFSworks@gmail.com>
 ---
- arch/arm64/boot/dts/rockchip/rk3588-turing-rk1.dtsi | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ .../boot/dts/rockchip/rk3588-turing-rk1.dtsi  | 53 +++++++++++++++++++
+ 1 file changed, 53 insertions(+)
 
 diff --git a/arch/arm64/boot/dts/rockchip/rk3588-turing-rk1.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-turing-rk1.dtsi
-index dbaa94ca69f4..9bcb5acdea54 100644
+index 9bcb5acdea54..f6a12fe12d45 100644
 --- a/arch/arm64/boot/dts/rockchip/rk3588-turing-rk1.dtsi
 +++ b/arch/arm64/boot/dts/rockchip/rk3588-turing-rk1.dtsi
-@@ -211,7 +211,7 @@ rgmii_phy: ethernet-phy@1 {
+@@ -208,6 +208,59 @@ rgmii_phy: ethernet-phy@1 {
+ 	};
+ };
+ 
++&package_thermal {
++	trips {
++		package_active1: trip-active1 {
++			temperature = <45000>;
++			hysteresis = <5000>;
++			type = "active";
++		};
++		package_active2: trip-active2 {
++			temperature = <50000>;
++			hysteresis = <5000>;
++			type = "active";
++		};
++		package_active3: trip-active3 {
++			temperature = <60000>;
++			hysteresis = <5000>;
++			type = "active";
++		};
++		package_active4: trip-active4 {
++			temperature = <70000>;
++			hysteresis = <5000>;
++			type = "active";
++		};
++		package_active5: trip-active5 {
++			temperature = <80000>;
++			hysteresis = <5000>;
++			type = "active";
++		};
++	};
++
++	cooling-maps {
++		map1 {
++			trip = <&package_active1>;
++			cooling-device = <&fan 1 1>;
++		};
++		map2 {
++			trip = <&package_active2>;
++			cooling-device = <&fan 2 2>;
++		};
++		map3 {
++			trip = <&package_active3>;
++			cooling-device = <&fan 3 3>;
++		};
++		map4 {
++			trip = <&package_active4>;
++			cooling-device = <&fan 4 4>;
++		};
++		map5 {
++			trip = <&package_active5>;
++			cooling-device = <&fan 5 5>;
++		};
++	};
++};
++
  &pcie2x1l1 {
  	linux,pci-domain = <1>;
  	pinctrl-names = "default";
--	pinctrl-0 = <&pcie2_reset>;
-+	pinctrl-0 = <&pcie2_reset>, <&pcie30x1m1_0_clkreqn>, <&pcie30x1m1_0_waken>;
- 	reset-gpios = <&gpio4 RK_PA2 GPIO_ACTIVE_HIGH>;
- 	status = "okay";
- };
-@@ -223,7 +223,7 @@ &pcie30phy {
- &pcie3x4 {
- 	linux,pci-domain = <0>;
- 	pinctrl-names = "default";
--	pinctrl-0 = <&pcie3_reset>;
-+	pinctrl-0 = <&pcie3_reset>, <&pcie30x4m1_clkreqn>, <&pcie30x4m1_waken>;
- 	reset-gpios = <&gpio4 RK_PB6 GPIO_ACTIVE_HIGH>;
- 	vpcie3v3-supply = <&vcc3v3_pcie30>;
- 	status = "okay";
 -- 
 2.44.2
 
