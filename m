@@ -4,78 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D864AFA3748
-	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Sep 2024 12:07:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BA456FA3748
+	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Sep 2024 12:08:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=76FYKyawLHedXJ/ji69n8Xa4knNWPnm8MYU2GjPWq78=; b=e+fh5ufVVaVXb5
-	xBl2jRaLMORDSLjFbXuO+YET6F9p6nzGn2pWJpuCXCPMeioq0ym/IW6axfXgFAhPSauzMFRC69+AF
-	dYPHfNDvOsl1pIA5bWq9njPxS7m7o8dRnB5hcLrE5G4ZsSj+FKYmSaiM3XDv2wG+plj69el9K12DL
-	SgWA0kEJt/AuhUcw4Uw5TLX5KDWeVgr0v3Y9zXcybfjEiq7LZufKF3PK0F18pAuknBIdOugntpfTU
-	njZueYRyiWsMaRfjiDCs9ZGnduJzE6YsPOjMZS1Cfh1a9Loz61t/d/dblNALXEAlQn7Is47LqHCqC
-	CunQyc6wx3PXFk3T6ppA==;
+	List-Owner; bh=dSPxI40YwnPDDsMpX1NRwlPSNevbsjLZLRktHdCEeKs=; b=BCHSho9KgFmhPN
+	KcR8peocImMMBRzOrSlmqDnZB1XI0MvikdkBHLZ9IhMoEXbKyjhiWmrMeDcPFszNJ9vBHklHTnZrc
+	9JydMdun+qnta8cg3IQGwQgON+wmCDG3NZh7oenO1aM2bzfnQhHVotNqqcitHPW2RkIPIKuJxi6xE
+	Z0OZbTLk8GnhHZ1J9ugaM7gXTuF1VI25ynGvM8wRtXEF7pf7xwdyRIfCHBjEQM22rslLS0oIJJ4A5
+	G5wOaIVMenX/H5y3Jzbx9oIKriVyY6hhYbtxW2ir9h/0Ekw9kY2tu18YvkUK/PMm1UO2NKBv1/7PQ
+	0s/ExnHFovKhShc4ZyZw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sp55V-0000000Fpl8-2B2K;
-	Fri, 13 Sep 2024 12:07:45 +0000
-Received: from mail-yb1-xb29.google.com ([2607:f8b0:4864:20::b29])
+	id 1sp56W-0000000FpvV-2GYY;
+	Fri, 13 Sep 2024 12:08:48 +0000
+Received: from mail-m155101.qiye.163.com ([101.71.155.101])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sp50Z-0000000ForR-3sum
+	id 1sp546-0000000FpXt-3E6k
 	for linux-rockchip@lists.infradead.org;
-	Fri, 13 Sep 2024 12:02:41 +0000
-Received: by mail-yb1-xb29.google.com with SMTP id 3f1490d57ef6-e05f25fb96eso840796276.1
-        for <linux-rockchip@lists.infradead.org>; Fri, 13 Sep 2024 05:02:39 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1726228958; x=1726833758; darn=lists.infradead.org;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=2EMotPu+SsnYPYZCxsQEhILLifcL+u+4RLDmrhDotzQ=;
-        b=NWq2fgd6YxJ/2/NEkdt3AGeOCU7z7ucpYQbtPQGgriA/mK3qrdKGC6GpY0EJpDF7oV
-         sBgBC3Ar0hxQlDmubN0Ekl4LzarDLDsbPy5dn0NXeYpwevQSdMRsERNgN6yRI8Qs2Vc9
-         bK+rVyRAxaiUOTRPTeeGVVN0ALazdmDmojnn3pLWXJ2PbMr9yNUoFTfkqINq2/aqC0IY
-         76GyWi1n6ccashUQWGfAioBNAk/vK47hPSDq9p765apMtV9vARMcV1gxromSve6ue4xc
-         g2kP28Q8nT0SN2wRJ5X0asw+77rhfPGyHQquFxAfMzg+BKfa8DdsH2NIIGXhXOBUfxaR
-         3Pog==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1726228958; x=1726833758;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=2EMotPu+SsnYPYZCxsQEhILLifcL+u+4RLDmrhDotzQ=;
-        b=ekXDF1ZNy0gZi4AeRmsLiHzRk5bsqSeMj5SFvEbz03zUKIr6PrNTlFlhGxMabW5vW5
-         NOPcWLbMLGsxO25P2nb4lVX0G0WgK0HY/A6vU8SGa89yY3znR8sQGwVQprrCNMrXxVUU
-         iHz8Vst8Cm/6rj7kpdgLrxef486kyNg9AP/9IyFCFREeNBGHzwFx6gNMgZeRKEyE6RTt
-         uie7vfc4YzXx6mmG1k6D/X47jl6Nj90ffK4mqp6462IEXAdeSmMFxAj565q15gmI5mHs
-         M+HT1DrwclKczbAEuLVeXfFBW1CNsM1UcxdvYEzCgrFcCkIJ6jeCPmNMN0kUtXnrlIgi
-         hsvg==
-X-Forwarded-Encrypted: i=1; AJvYcCVTKLM/7B9sxsUWaRWIe8iLy3RuqdW4NAzufhUYixqrEoxzrCGLwMgJ6M9tpYr20HlGQ3eZZyh/jDOG6F4Ssg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzKDtuxtJHJQQ2MvLjjpGvlgcZSpsHXLUxpLAajFL9STckKu/O8
-	ouEm808U4v6iWQw1/2dDaBGUY+vFS187yig9TUETSbDjc3O4ZVqgZtGT1FGpTkyc83Gkz+dH7wT
-	UZ6hdl0IkCclOZwtGKXmHbcCYCXCuxLLHhcNI5A==
-X-Google-Smtp-Source: AGHT+IEmYliY4E2folPA6tK9YT9mUZYVhyxJSAMt263ZcnxuojEhH8f9gYxBDVwC3jIeAmLM93D4nNjDl4YbjAmXemg=
-X-Received: by 2002:a05:690c:3343:b0:6db:98ad:86a with SMTP id
- 00721157ae682-6dbcc593989mr21037947b3.40.1726228958446; Fri, 13 Sep 2024
- 05:02:38 -0700 (PDT)
+	Fri, 13 Sep 2024 12:06:20 +0000
+Received: from amadeus-Vostro-3710.lan (unknown [IPV6:240e:3b0:2c20:c1a2:70cb:9846:e2cf:32fb])
+	by smtp.qiye.163.com (Hmail) with ESMTPA id 3C93F7E0213;
+	Fri, 13 Sep 2024 20:06:11 +0800 (CST)
+From: Chukun Pan <amadeus@jmu.edu.cn>
+To: naoki@radxa.com
+Cc: amadeus@jmu.edu.cn,
+	heiko@sntech.de,
+	linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH] arm64: dts: rockchip: fix PCIe regulators for Radxa ROCK 3A
+Date: Fri, 13 Sep 2024 20:06:09 +0800
+Message-Id: <20240913120609.126289-1-amadeus@jmu.edu.cn>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <B89055F5BFF2A869+2229c131-01b7-4e96-8b81-9533b995da5d@radxa.com>
+References: <B89055F5BFF2A869+2229c131-01b7-4e96-8b81-9533b995da5d@radxa.com>
 MIME-Version: 1.0
-References: <20240829202732.75961-1-detlev.casanova@collabora.com>
-In-Reply-To: <20240829202732.75961-1-detlev.casanova@collabora.com>
-From: Ulf Hansson <ulf.hansson@linaro.org>
-Date: Fri, 13 Sep 2024 14:02:02 +0200
-Message-ID: <CAPDyKFr8x3B9dmz1fOCOpovhN8CC=187Rtjc+cTEFKN3=U9OmQ@mail.gmail.com>
-Subject: Re: [PATCH 0/2] pmdomain: rockchip: Add gating support for rk3576
-To: Detlev Casanova <detlev.casanova@collabora.com>
-Cc: linux-kernel@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>, 
-	Geert Uytterhoeven <geert+renesas@glider.be>, Linus Walleij <linus.walleij@linaro.org>, 
-	Finley Xiao <finley.xiao@rock-chips.com>, Rob Herring <robh@kernel.org>, linux-pm@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
-	kernel@collabora.com
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFITzdXWS1ZQUlXWQ8JGhUIEh9ZQVlCHkpJVhgZQklMHxhLTUMZSFYeHw5VEwETFhoSFy
+	QUDg9ZV1kYEgtZQVlJT0seQUgZS0FJGElLQRhKGklBTEsYGUFCQ09NQR5JGB1BSEkdGVlXWRYaDx
+	IVHRRZQVlPS0hVSktISkxNTVVKS0tVSkJLS1kG
+X-HM-Tid: 0a91eb46cc8503a2kunm3c93f7e0213
+X-HM-MType: 10
+X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6PlE6Kjo5ODI8ER86CighOS9D
+	URoaCyhVSlVKTElNSUlCSkxKQ09CVTMWGhIXVRoWGh8eDgg7ERYOVR4fDlUYFUVZV1kSC1lBWUlP
+	Sx5BSBlLQUkYSUtBGEoaSUFMSxgZQUJDT01BHkkYHUFISR0ZWVdZCAFZQUpJSkk3Bg++
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240913_050239_986322_B903AB35 
-X-CRM114-Status: GOOD (  11.36  )
+X-CRM114-CacheID: sfid-20240913_050618_994597_BF79BBD5 
+X-CRM114-Status: UNSURE (   4.86  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,28 +71,18 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, 29 Aug 2024 at 22:26, Detlev Casanova
-<detlev.casanova@collabora.com> wrote:
->
-> The rk3576 SoC needs to ungate power domains before it can manipulate
-> their status.
->
-> This makes to to ungate the PM, changes the status, and gate it again.
->
-> Detlev.
->
-> Detlev Casanova (2):
->   pmdomain: rockchip: Add gating support
->   pmdomain: rockchip: Add gating masks for rk3576
->
->  drivers/pmdomain/rockchip/pm-domains.c | 87 +++++++++++++++++++-------
->  1 file changed, 66 insertions(+), 21 deletions(-)
->
+> btw, how do you think about pcie30_avdd0v9 and pcie30_avdd1v8?
+> as far as I can see, it's unused.
 
-The series applied for next, thanks!
+The schematic notes that PCIe uses VDDA_0V9 and VCCA_1V8,
+so they can be removed.
 
-Kind regards
-Uffe
+Thanks,
+Chukun
+
+-- 
+2.25.1
+
 
 _______________________________________________
 Linux-rockchip mailing list
