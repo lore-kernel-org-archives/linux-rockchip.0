@@ -4,56 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C7622FA3722
-	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Sep 2024 07:20:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 980E5FA3728
+	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Sep 2024 07:57:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=QeAvNlKEe6SLOT0z2HqLndtKIx+iE03MUjlNm0O4/PE=; b=F9RFatgq6n8Kry
-	v88MjpPT+O0b/Wg1XEFSi8ejrIJJxJJ0GJUVxQlQB2Xe45aFQhbr1ciuebNQ2ywB/tz97Pj4KfGM5
-	pmFqzB2eatSonO4Mjyohe1xfUHxjl/nb007mbKfDwcbswV4RioxYBtteKRbMkioEXLjlKaSZJdDlT
-	DLwsRiFUsPvF0PK7Et3xs760jT96KVDBj6Gk0Tso2j2mB/ENzorFrnrP6Z2D8xToTUX3m0UYdD8Xz
-	YxKpC2PBrNc75OLhICobpxBQNP8N4j765nfGnQ9oF8Cj1dFPvyEH1X8dNsZyvD1xa3EBHUsVgF49M
-	L0Y0aTRm49CWs8l18B3Q==;
+	List-Owner; bh=RiEG0j6DGMsUPfbWlWGL6qeaupaR9KWSQUJE5NbKRyA=; b=T2CxPW07fI3EXE
+	uWEx0t06/4TUWs2aclmRsqz4wSzsZLGoafP1heQRPwn6opcgpETUKYlVs1/7l1Ui23w8c3VpXt7zb
+	xtV9pdedEZwxtTFyYVwkwNccz4JHOfj5hjckwqrmyTu0ZehvKblNt0/MKbeO2xnoiX41PSKN+0lPI
+	oe1VHp4kOOdZlbBxnujhfTBZ6avxW6j8N+uQXcPXTlWZ+LhKDXNTighO46V65wVeTNjpl9AxuYfBB
+	56ReCRIqyQOmF0laWVuTWExb7yJPTaLcdd9cKlks8FzgzRIFaJpiLNZO0h42K4IB4VuN7zqOBoM/k
+	ZvAI/fGtyaff3tWTFE9g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sp0bf-0000000F8Z8-2M4E;
-	Fri, 13 Sep 2024 07:20:39 +0000
-Received: from mail-m609.netease.com ([210.79.60.9])
+	id 1sp1Ar-0000000FFCr-0RQo;
+	Fri, 13 Sep 2024 07:57:01 +0000
+Received: from smtpbgau2.qq.com ([54.206.34.216])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sp0bc-0000000F8Yf-31La
+	id 1sp14R-0000000FELQ-1kx8
 	for linux-rockchip@lists.infradead.org;
-	Fri, 13 Sep 2024 07:20:38 +0000
-Received: from amadeus-Vostro-3710.lan (unknown [IPV6:240e:3b0:2c20:c1a2:70cb:9846:e2cf:32fb])
-	by smtp.qiye.163.com (Hmail) with ESMTPA id 215DF7E01F2;
-	Fri, 13 Sep 2024 15:20:31 +0800 (CST)
-From: Chukun Pan <amadeus@jmu.edu.cn>
-To: naoki@radxa.com
-Cc: heiko@sntech.de,
-	linux-rockchip@lists.infradead.org,
-	Chukun Pan <amadeus@jmu.edu.cn>
-Subject: Re: [PATCH] arm64: dts: rockchip: remove cd-gpios property in sdmmc0 for Radxa E25
-Date: Fri, 13 Sep 2024 15:20:28 +0800
-Message-Id: <20240913072028.61391-1-amadeus@jmu.edu.cn>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20240903080938.913-1-naoki@radxa.com>
-References: <20240903080938.913-1-naoki@radxa.com>
+	Fri, 13 Sep 2024 07:50:25 +0000
+X-QQ-mid: bizesmtp90t1726213802tvikuj7n
+X-QQ-Originating-IP: mjQAQDWhyoFpaqdBsYdWAknrECX/wfuYA1BesQyoNBo=
+Received: from [192.168.159.131] ( [106.150.157.243])
+	by bizesmtp.qq.com (ESMTP) with 
+	id ; Fri, 13 Sep 2024 15:50:00 +0800 (CST)
+X-QQ-SSF: 0000000000000000000000000000000
+X-QQ-GoodBg: 0
+X-BIZMAIL-ID: 16816694279015642197
+Message-ID: <73DCFBBC05FFFF33+a1ef649f-3506-4009-82c8-611df6c07d86@radxa.com>
+Date: Fri, 13 Sep 2024 16:50:00 +0900
 MIME-Version: 1.0
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWS1ZQUlXWQ8JGhUIEh9ZQVkZTU0fVkNCSUxMTRhDHRpIHVYeHw5VEwETFhoSFy
-	QUDg9ZV1kYEgtZQVlJT0seQUgZS0FJGElLQRhKGklBTEsYGUFCQ09NQR5JGB1BSEkdGVlXWRYaDx
-	IVHRRZQVlPS0hVSktISk5MSVVKS0tVSkJLS1kG
-X-HM-Tid: 0a91ea41431203a2kunm215df7e01f2
-X-HM-MType: 10
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6OTo6PDo*DzIwHRgVEThJDjox
-	NSxPFENVSlVKTElNSUpJS0hKTE9MVTMWGhIXVRoWGh8eDgg7ERYOVR4fDlUYFUVZV1kSC1lBWUlP
-	Sx5BSBlLQUkYSUtBGEoaSUFMSxgZQUJDT01BHkkYHUFISR0ZWVdZCAFZQUpPTU83Bg++
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] arm64: dts: rockchip: fix PCIe regulators for Radxa ROCK
+ 3A
+To: Chukun Pan <amadeus@jmu.edu.cn>
+Cc: heiko@sntech.de, linux-rockchip@lists.infradead.org
+References: <DBE2633C9C284F67+3d59ded2-665f-4640-826d-4e2ec88b5d51@radxa.com>
+ <20240913070204.57661-1-amadeus@jmu.edu.cn>
+Content-Language: en-US
+From: FUKAUMI Naoki <naoki@radxa.com>
+In-Reply-To: <20240913070204.57661-1-amadeus@jmu.edu.cn>
+X-QQ-SENDSIZE: 520
+Feedback-ID: bizesmtp:radxa.com:qybglogicsvrgz:qybglogicsvrgz8a-1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240913_002036_981030_565D7BCD 
-X-CRM114-Status: UNSURE (   3.87  )
+X-CRM114-CacheID: sfid-20240913_005023_859320_A76DE48F 
+X-CRM114-Status: UNSURE (   6.93  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -66,33 +65,49 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-> -	cd-gpios = <&gpio0 RK_PA4 GPIO_ACTIVE_LOW>;
-> -	/* Also used in pcie30x1_clkreqnm0 */
->  	disable-wp;
->  	pinctrl-names = "default";
-> -	pinctrl-0 = <&sdmmc0_bus4 &sdmmc0_clk &sdmmc0_cmd>;
-> +	pinctrl-0 = <&sdmmc0_bus4 &sdmmc0_clk &sdmmc0_cmd &sdmmc0_det>;
+hi,
 
-The sdmmc0_det pin conflicts with pcie30x1_clkreqnm0.
-The pcie30x1m0_pins contains pcie30x1_clkreqnm0.
-That's why I wrote it this way.
+On 9/13/24 16:02, Chukun Pan wrote:
+>> arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts:656.32-664.5: ERROR
+>> (duplicate_label): /pinctrl/pcie/pcie20m1-pins: Duplicate label
+>> 'pcie20m1_pins' on /pinctrl/pcie/pcie20m1-pins and
+>> /pinctrl/pcie20/pcie20m1-pins
+>>
+>> we need gpio pin for reset.
 
-&pcie3x1 {
-	num-lanes = <1>;
-	pinctrl-names = "default";
-	pinctrl-0 = <&pcie30x1m0_pins>;
+sorry, "U-Boot need gpio pin"
 
-Thanks,
-Chukun
+> Can't it work just written like this?
+> 
+> &pcie2x1 {
+> 	pinctrl-names = "default";
+> 	pinctrl-0 = <&pcie20m1_pins>;
+> 	reset-gpios = <&gpio3 RK_PC1 GPIO_ACTIVE_HIGH>;
+> 	vpcie3v3-supply = <&vcc3v3_pcie>;
+> 	status = "okay";
+> };
+> 
+> If not, please overwrite the pinctrl:
+> 
+> 	pcie20 {
+> 		pcie20m1_pins: pcie20m1-pins {
 
--- 
-2.25.1
+I didn't know how to overwrite it. thank you.
 
+Best regards,
+
+--
+FUKAUMI Naoki
+Radxa Computer (Shenzhen) Co., Ltd.
+
+> Thanks,
+> Chukun
+> 
 
 _______________________________________________
 Linux-rockchip mailing list
