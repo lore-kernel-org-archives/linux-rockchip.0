@@ -4,74 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2B1D6FA372B
-	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Sep 2024 08:08:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6CF9DFA372B
+	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Sep 2024 08:09:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:Reply-To:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To:Subject:
 	From:MIME-Version:Date:Message-ID:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=fGPDWgtpaPxtcKxfqkF1KnhI0h8CuTELkAoP+4jSkAE=; b=iG//a0wsJwXgCqGb0XIt6Zcr95
-	aSIRjUKdel0CIAqXI32bDRqIQbXCveWQK/BxwQNwjeGwISvYMOVe1ac90/4iSE/Wt0vDWrEc6qeKu
-	csi6CQrfd04g727CYESTIPzhoPkQPZC5Aun2TD5Me5TAVP5H571g3pyQNwA2Z1v35yvQBmaMWX6Kn
-	ckxioouKAFuwsd1nVQSMACMwzzV1Nwq1T8uKg0QMXbKv/XMYMr2L4hVh60HNBBbk6DH8eMO71UP1N
-	z3L1KxNN03rG72P1FKd1+kvc3wYmMYBQ/rFoQQtAhXu16LJY++mjvHrlBtKIVOsvQ/kDTMiTbdl1J
-	cA6SiW+g==;
+	bh=AGxNrAv4D3BIzxY+HjEHziYbpCgMmjvLf8beBAzThBw=; b=ChUoZoVG3L7I0wi4MwgpqG+CE1
+	xR4ol/SaZ5dVkmzTpvpLcZbV2425Zhc5Vh0aTkf5CUn7uPFB82cw2hgwOsj7YTzghXwb/A4krTxeK
+	wAaSQ/UY74g72QMGqQWt5VkgmATu6NxjxOW0xhsKXnxE+zMV+8t1lAbGt5oZR4gO+QV/Lf7moUTgL
+	z3VLvFYHGryfCqZ0JHxzZDInfi/Ji3GSWbI5FGAiSQE0Wsr8yT206jcC+pIyJTOKpVYTlUIXKOGOr
+	Kkw+ZYOB9I1kdeNSnb3ZkUSXwK5lr9zZskuBgo4PXVDF5AAvVwW7a/iMADsWwRHK0gaHc7l8lPZHZ
+	K6kSWP0Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sp1Lh-0000000FIB6-3FKi;
-	Fri, 13 Sep 2024 08:08:13 +0000
-Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
+	id 1sp1Mk-0000000FIMI-3E4h;
+	Fri, 13 Sep 2024 08:09:18 +0000
+Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sp1IX-0000000FHPg-07A1
+	id 1sp1JT-0000000FHav-3cw8
 	for linux-rockchip@lists.infradead.org;
-	Fri, 13 Sep 2024 08:04:58 +0000
-Received: by mail-wm1-x334.google.com with SMTP id 5b1f17b1804b1-42bbffe38e6so14913055e9.0
-        for <linux-rockchip@lists.infradead.org>; Fri, 13 Sep 2024 01:04:56 -0700 (PDT)
+	Fri, 13 Sep 2024 08:05:57 +0000
+Received: by mail-wr1-x430.google.com with SMTP id ffacd0b85a97d-374c1120a32so1286569f8f.1
+        for <linux-rockchip@lists.infradead.org>; Fri, 13 Sep 2024 01:05:55 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1726214695; x=1726819495; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1726214754; x=1726819554; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:organization:autocrypt
          :content-language:references:cc:to:subject:reply-to:from:user-agent
          :mime-version:date:message-id:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=tN0f5KnLz0Fgv6Uw4PEqovbRdCu6k+vdYOILHvBPqH8=;
-        b=xaExewPr2+7+3pUk1moKdM1sWekGCk6IGLc4oIzMhEgHrI7PqMfx7/8bgYfbplwDkB
-         9ceGlo/6SqvZxQfI3aWO88hg3RVKBsKkQjwSwpucdKtTROewpEEx9ckwqQv4s4jzFzB0
-         RJC4MwpF3h9CLqqlErwPHp38gAo5yFTd1rQJ8VUVKfssV3eqhYyEqfcXDNspK1iz8nd5
-         7Jpo17JWpmgppfTFss8gMog9PFcoGlFf6Dd5EnDCUxVZdDrDMCzkq9PCh/2ucWliBDm4
-         rS5X6GlUthc5bh5wlVT+M1P2sQ8ZYm+g2UBxAGrR0sBiPKJAptKugeX79oLYsDCRpT6A
-         E9vw==
+        bh=YpaBa3rXzcmPvmVGwgNwO7QYicep+zX2dSIy24NgTYE=;
+        b=U/+3mVrgQ+vEq2iDonJDNMDZ1Io+RY3fqPfOZaIH4/1Q8o2gcsT/tzlSpQH5PJ4eqD
+         0vTxG4h5nEETK6YdBAPD7w0RonrNtNCYBiP7YsvR8JQ6syCPFaYYQlr2d60YmIPuc4Al
+         PkR0ArWmTgZG+H80dVWwjMzebo1ylJLbzf3RieQp2xa85+kzV7RQAIJ9U51wFeKGR513
+         7Z8naUK6FjtBwxP3nUT/0vk4c+IBX/QBCeVyxuYs42WidkMvLeCaf+R2/FRnh/A307Fw
+         FlHpnyiKO6aCOL+nb2xQY4Jwn2nILNDbuanZhVHyWDZZASYNth7io6SSTabm7jeJg+w5
+         ue5g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1726214695; x=1726819495;
+        d=1e100.net; s=20230601; t=1726214754; x=1726819554;
         h=content-transfer-encoding:in-reply-to:organization:autocrypt
          :content-language:references:cc:to:subject:reply-to:from:user-agent
          :mime-version:date:message-id:x-gm-message-state:from:to:cc:subject
          :date:message-id:reply-to;
-        bh=tN0f5KnLz0Fgv6Uw4PEqovbRdCu6k+vdYOILHvBPqH8=;
-        b=XAuzod0FIJcMadbHtsCF/HjC9e6CusY1nwNyBmMCKgUoeSGllrSrSod1mk+JRGl94p
-         RaETGeiTDr40akAe6KPF2YzT6Q5wDCxmv20xQqhcYXJIcoxz3e3G0H73v0YpO6/WA45z
-         2z6wTv0/2hFRQ410rl3kK7kzdbDriH+6s6Q2cqmUspmOqonSpncWUwyA1YUna2UFT8S6
-         SeJ4ANgycF33bsLN5NjbIBh7Fk7hqWaIIZmxWhPmrh3wTyWHuZwCzXXLwNGQ500wF0Pd
-         4S396Ddv6xA8jST9Ro4RgM829M+FOLDvF8KwKHf617g3zOHC86a8BtNevSXqeRuipRpf
-         bbhQ==
-X-Forwarded-Encrypted: i=1; AJvYcCX81TqRC16w5Tyv4wn2mVQK/CD+Pe5hhb3s+2CZc09cQgGZATB8Q/I4zGY2LJCS85lT5igmV8n+ZTL/mX/YUQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yx7o5iZcX7t4n4VzuChJU0rRzQeMhEuc7BqAtV4ZTYwuTOYyp7o
-	krxvs3HLOjDyIANn5XZzvuGYdxKR1K4nL/fSuMvdiW2EwAnSBWRXt7vz7zEmCrw=
-X-Google-Smtp-Source: AGHT+IE+/EPYZj8Jxd7YCIShYfXbXYbbomxByU1YjyiDIlF9V+tx4J8IWT7k674TkMxeicqzdjvskg==
-X-Received: by 2002:a05:600c:3b1d:b0:42a:a6aa:4135 with SMTP id 5b1f17b1804b1-42cdb53fab7mr35348055e9.20.1726214694972;
-        Fri, 13 Sep 2024 01:04:54 -0700 (PDT)
+        bh=YpaBa3rXzcmPvmVGwgNwO7QYicep+zX2dSIy24NgTYE=;
+        b=CrHGyUExv252FdRFWOil3EAV0LhpdC9RymbiI94Lg1Jo2FVAVsD53FzTjcXSOHeemP
+         rxX/Dhi7D7ftbtySeyroMH8uBN5in1zt26dVa386uLtDv1BF7hNbt1vuLxUaQXb8kww2
+         VppDNxjuVnWM3fU6luJlvuEr9mjhTauMRW9d+5/u8hHEDM4B9vzWnyG/DCiJ14Te3XX+
+         p1XmmREshohr2pBXiQxAZAd5GDo4QC0BDmcsehi3WBJneyVj9uFTjD4TjopBOgeglXlh
+         ZDWX2lF7tGTdmyOJjog78iGAJqzVqOWOJ2BzuNPJGVLv7Ln2jw83DB2ii2i14pUeVDgR
+         /4rg==
+X-Forwarded-Encrypted: i=1; AJvYcCUVX3GgidqafrzUmQujLQHYBRAAVh0jROMTiCwaKlKdLPWUfZ1ZmiXOKCSUU6eD5RLyHZlpcY0uOJP0mu7sDw==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yx7cC8uf0qT86NHx1b4L6SfEPk7UmU27wy3JKWJu67JdC5yDhnq
+	xpi+rWhYCUl+EIAOmVPDb7Z/Fauq5IrcsKpac8UMcSUHfORgZHbJBlPJi/IJUrg=
+X-Google-Smtp-Source: AGHT+IFL22svDjzCRrUXs2QqC+xPgNTUGDJOJrl+aZeS9c8hKYkQUJ+F4J7YvEpATOxHxMm5RmaV9w==
+X-Received: by 2002:adf:efca:0:b0:371:9362:c286 with SMTP id ffacd0b85a97d-378c2cd3ee8mr3375083f8f.4.1726214753750;
+        Fri, 13 Sep 2024 01:05:53 -0700 (PDT)
 Received: from [192.168.7.202] ([212.114.21.58])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-42d9b181ecasm14927755e9.43.2024.09.13.01.04.53
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3789564a1a0sm16047177f8f.23.2024.09.13.01.05.52
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 13 Sep 2024 01:04:54 -0700 (PDT)
-Message-ID: <b28e86f1-3730-4739-9499-24bed32c16b9@linaro.org>
-Date: Fri, 13 Sep 2024 10:04:53 +0200
+        Fri, 13 Sep 2024 01:05:53 -0700 (PDT)
+Message-ID: <8a7da0a7-1234-4343-8538-9f7230024ca7@linaro.org>
+Date: Fri, 13 Sep 2024 10:05:52 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 From: Neil Armstrong <neil.armstrong@linaro.org>
-Subject: Re: [PATCH v2 04/10] drm: bridge: dw_hdmi: Use passed mode instead of
- stored previous_mode
+Subject: Re: [PATCH v2 03/10] drm: bridge: dw_hdmi: Call poweron/poweroff from
+ atomic enable/disable
 To: Jonas Karlman <jonas@kwiboo.se>, Andrzej Hajda <andrzej.hajda@intel.com>,
  Robert Foss <rfoss@kernel.org>,
  Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
@@ -85,7 +85,7 @@ Cc: Christian Hewitt <christianshewitt@gmail.com>,
  dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org,
  linux-kernel@vger.kernel.org
 References: <20240908132823.3308029-1-jonas@kwiboo.se>
- <20240908132823.3308029-5-jonas@kwiboo.se>
+ <20240908132823.3308029-4-jonas@kwiboo.se>
 Content-Language: en-US, fr
 Autocrypt: addr=neil.armstrong@linaro.org; keydata=
  xsBNBE1ZBs8BCAD78xVLsXPwV/2qQx2FaO/7mhWL0Qodw8UcQJnkrWmgTFRobtTWxuRx8WWP
@@ -112,10 +112,10 @@ Autocrypt: addr=neil.armstrong@linaro.org; keydata=
  4zcsPWvwnXgfe5tk680fEKZVwOZKIEuJC3v+/yZpQzDvGYJvbyix0lHnrCzq43WefRHI5XTT
  QbM0WUIBIcGmq38+OgUsMYu4NzLu7uZFAcmp6h8g
 Organization: Linaro
-In-Reply-To: <20240908132823.3308029-5-jonas@kwiboo.se>
+In-Reply-To: <20240908132823.3308029-4-jonas@kwiboo.se>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240913_010457_107277_24458799 
-X-CRM114-Status: GOOD (  14.16  )
+X-CRM114-CacheID: sfid-20240913_010555_944091_62C53C6D 
+X-CRM114-Status: GOOD (  20.08  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -134,46 +134,109 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 On 08/09/2024 15:28, Jonas Karlman wrote:
-> Use the passed mode instead of mixing use of passed mode and the stored
-> previous_mode. The passed mode is currenly always the previous_mode.
+> Change to only call poweron/poweroff from atomic_enable/atomic_disable
+> ops instead of trying to be clever by keeping a bridge_is_on state and
+> poweron/off in the hotplug irq handler.
 > 
-> Also fix a small typo and add a variable to help shorten a code line.
+> The bridge is already enabled/disabled depending on connection state
+> with the call to drm_helper_hpd_irq_event() in hotplug irq handler.
+> 
+> A benefit of this is that drm mode_config mutex is always held at
+> poweron/off, something that may reduce the need for our own mutex.
 > 
 > Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
 > ---
-> v2: Update commit message, s/type/typo/
+> v2: Update commit message
 > ---
->   drivers/gpu/drm/bridge/synopsys/dw-hdmi.c | 9 ++++-----
->   1 file changed, 4 insertions(+), 5 deletions(-)
+>   drivers/gpu/drm/bridge/synopsys/dw-hdmi.c | 33 ++---------------------
+>   1 file changed, 2 insertions(+), 31 deletions(-)
 > 
 > diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
-> index 5b67640b1d0a..87fb6fd5cffd 100644
+> index 055fc9848df4..5b67640b1d0a 100644
 > --- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
 > +++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
-> @@ -2240,6 +2240,7 @@ static int dw_hdmi_setup(struct dw_hdmi *hdmi,
->   			 const struct drm_connector *connector,
->   			 const struct drm_display_mode *mode)
+> @@ -169,7 +169,6 @@ struct dw_hdmi {
+>   	enum drm_connector_force force;	/* mutex-protected force state */
+>   	struct drm_connector *curr_conn;/* current connector (only valid when !disabled) */
+>   	bool disabled;			/* DRM has disabled our bridge */
+> -	bool bridge_is_on;		/* indicates the bridge is on */
+>   	bool rxsense;			/* rxsense state */
+>   	u8 phy_mask;			/* desired phy int mask settings */
+>   	u8 mc_clkdis;			/* clock disable register */
+> @@ -2382,8 +2381,6 @@ static void initialize_hdmi_ih_mutes(struct dw_hdmi *hdmi)
+>   
+>   static void dw_hdmi_poweron(struct dw_hdmi *hdmi)
 >   {
-> +	const struct drm_display_info *display = &connector->display_info;
->   	int ret;
+> -	hdmi->bridge_is_on = true;
+> -
+>   	/*
+>   	 * The curr_conn field is guaranteed to be valid here, as this function
+>   	 * is only be called when !hdmi->disabled.
+> @@ -2397,30 +2394,6 @@ static void dw_hdmi_poweroff(struct dw_hdmi *hdmi)
+>   		hdmi->phy.ops->disable(hdmi, hdmi->phy.data);
+>   		hdmi->phy.enabled = false;
+>   	}
+> -
+> -	hdmi->bridge_is_on = false;
+> -}
+> -
+> -static void dw_hdmi_update_power(struct dw_hdmi *hdmi)
+> -{
+> -	int force = hdmi->force;
+> -
+> -	if (hdmi->disabled) {
+> -		force = DRM_FORCE_OFF;
+> -	} else if (force == DRM_FORCE_UNSPECIFIED) {
+> -		if (hdmi->rxsense)
+> -			force = DRM_FORCE_ON;
+> -		else
+> -			force = DRM_FORCE_OFF;
+> -	}
+> -
+> -	if (force == DRM_FORCE_OFF) {
+> -		if (hdmi->bridge_is_on)
+> -			dw_hdmi_poweroff(hdmi);
+> -	} else {
+> -		if (!hdmi->bridge_is_on)
+> -			dw_hdmi_poweron(hdmi);
+> -	}
+>   }
 >   
->   	hdmi_disable_overflow_interrupts(hdmi);
-> @@ -2285,12 +2286,10 @@ static int dw_hdmi_setup(struct dw_hdmi *hdmi,
->   	hdmi->hdmi_data.video_mode.mdataenablepolarity = true;
+>   /*
+> @@ -2545,7 +2518,6 @@ static void dw_hdmi_connector_force(struct drm_connector *connector)
 >   
->   	/* HDMI Initialization Step B.1 */
-> -	hdmi_av_composer(hdmi, &connector->display_info, mode);
-> +	hdmi_av_composer(hdmi, display, mode);
+>   	mutex_lock(&hdmi->mutex);
+>   	hdmi->force = connector->force;
+> -	dw_hdmi_update_power(hdmi);
+>   	dw_hdmi_update_phy_mask(hdmi);
+>   	mutex_unlock(&hdmi->mutex);
+>   }
+> @@ -2954,7 +2926,7 @@ static void dw_hdmi_bridge_atomic_disable(struct drm_bridge *bridge,
+>   	mutex_lock(&hdmi->mutex);
+>   	hdmi->disabled = true;
+>   	hdmi->curr_conn = NULL;
+> -	dw_hdmi_update_power(hdmi);
+> +	dw_hdmi_poweroff(hdmi);
+>   	dw_hdmi_update_phy_mask(hdmi);
+>   	handle_plugged_change(hdmi, false);
+>   	mutex_unlock(&hdmi->mutex);
+> @@ -2973,7 +2945,7 @@ static void dw_hdmi_bridge_atomic_enable(struct drm_bridge *bridge,
+>   	mutex_lock(&hdmi->mutex);
+>   	hdmi->disabled = false;
+>   	hdmi->curr_conn = connector;
+> -	dw_hdmi_update_power(hdmi);
+> +	dw_hdmi_poweron(hdmi);
+>   	dw_hdmi_update_phy_mask(hdmi);
+>   	handle_plugged_change(hdmi, true);
+>   	mutex_unlock(&hdmi->mutex);
+> @@ -3072,7 +3044,6 @@ void dw_hdmi_setup_rx_sense(struct dw_hdmi *hdmi, bool hpd, bool rx_sense)
+>   		if (hpd)
+>   			hdmi->rxsense = true;
 >   
-> -	/* HDMI Initializateion Step B.2 */
-> -	ret = hdmi->phy.ops->init(hdmi, hdmi->phy.data,
-> -				  &connector->display_info,
-> -				  &hdmi->previous_mode);
-> +	/* HDMI Initialization Step B.2 */
-> +	ret = hdmi->phy.ops->init(hdmi, hdmi->phy.data, display, mode);
->   	if (ret)
->   		return ret;
->   	hdmi->phy.enabled = true;
+> -		dw_hdmi_update_power(hdmi);
+>   		dw_hdmi_update_phy_mask(hdmi);
+>   	}
+>   	mutex_unlock(&hdmi->mutex);
 
 Reviewed-by: Neil Armstrong <neil.armstrong@linaro.org>
 
