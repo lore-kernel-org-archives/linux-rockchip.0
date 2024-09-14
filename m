@@ -4,40 +4,40 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 16B0DC021A0
-	for <linux-rockchip@archiver.kernel.org>; Sat, 14 Sep 2024 14:58:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2FD8BC0219F
+	for <linux-rockchip@archiver.kernel.org>; Sat, 14 Sep 2024 15:00:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=dXKXHSFKXIMtNRQiQfnQg/XqNdfFQQOVWn/2PAm7fMQ=; b=GXcIKYp2KFpZCq
-	J4qm5PpBqryFZARP/hnkXK3TG07z8BW25ojJldokCpKBJ/ar9ctTfyRnTgNPxNXWpWi9Sz0CoOedc
-	iYEmsFEiu60n7BV7dloOvSPjeMIE13VFBv3Ps7Kg681Nq1lKoWik15kO74PaDKq29NqVmWGzebPtg
-	rNDKJiTnrOzldSjFpM8cq4iDbmuKwAZNxsw4bzCiO9KO4CslBmrNymufHsjDgrg5+cl99MLgsObOW
-	JXKPCH1eLFWUAlSU7OnFGcaKccvEelVeP+me2qt4yc9ybWFB8gGaMTio9E8R47vFN9X6er6BO4H0V
-	y9K1uxCxjXtj+dkepzEg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=jKhwyiD1KflT8IS+uSz/QeHbekfEqpuZtdmxuq5KcOg=; b=eOZKP8CtTDknrE
+	eRu5SAtQD/Ef6PEdV146KSpgASCD6wny+Dyl9IfMIhVIv+VvyjHLKXwmDIYnw48EZsDR8fbYl5IZ4
+	zk1HaGpLjP1BadhrnV7ITFIEvO3uizNYQW2dI6HAkkmJB4iNutiQjY0Ne2iMM8E8qBYOeifLs3Wip
+	Hyh7kNxVN16XM6smFpr8piIvYtSBn6MIjfVGUNdPTYZL4vkRhRyCosDu8CokifHMrk9SD2rJgH6kk
+	4p2yYRCVkSN6TCH43fRdW84KwJlzKgnNtECjiIvuOvk55IdwIoQ9GvOeKtuxHVoXTWS/mgSFnxqj2
+	VVLJR9gcNH1KiVzu5jnA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1spUEA-00000000po4-1phK;
-	Sat, 14 Sep 2024 14:58:22 +0000
+	id 1spUGG-00000000qA7-1r72;
+	Sat, 14 Sep 2024 15:00:32 +0000
 Received: from [129.204.178.38] (helo=classfun.cn)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1spUC0-00000000pTp-3rtn;
-	Sat, 14 Sep 2024 14:56:10 +0000
+	id 1spUC2-00000000pU7-0ByV;
+	Sat, 14 Sep 2024 14:56:12 +0000
 Received: from bigfoot-server-storage.classfun.cn (unknown [124.72.163.122])
 	(Authenticated sender: bigfoot)
-	by classfun.cn (Postfix) with ESMTPSA id 6EAB878924;
-	Sat, 14 Sep 2024 22:55:57 +0800 (CST)
-DKIM-Filter: OpenDKIM Filter v2.11.0 classfun.cn 6EAB878924
+	by classfun.cn (Postfix) with ESMTPSA id A7DF3789E0;
+	Sat, 14 Sep 2024 22:56:03 +0800 (CST)
+DKIM-Filter: OpenDKIM Filter v2.11.0 classfun.cn A7DF3789E0
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=classfun.cn;
-	s=default; t=1726325762;
-	bh=SfYTR+8D3/OmwL+5x/MWEePx9/+uyPzD/SMFZc+PqOw=;
-	h=From:To:Cc:Subject:Date:From;
-	b=RnPLg1fZgaldrjVyjx7yFB78k5yh/d3j3k6keO8pR/YLfp4TlNHtmDgz6Eb6yv9Ex
-	 h62BTRacDWky0I3Ncxj2391l2bmbNo2VJo0KQx3Mv0W3eHvWsfT1YLkUnOmjpQ4LoS
-	 FT9ylt2UJpcWXd+4uHM6UwOOL1eA36EcOGwuJ9pM=
+	s=default; t=1726325764;
+	bh=lRER49IU2r+IDAkeANEnbgPaU7VQG0ThpFJyDhD3UTc=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=V+2k1ms5UMmefM+geGYeYZO+fYHmmzGyqDOsjdZEC0sDV3ToXnh0TComQxRfrz0kf
+	 iz5ix40YG7uWPOooQFsB7D34VKLTijs4lcsnDMFXTpc+mviFYYrMBq/onkAk1ivAOS
+	 NmTJEO77jHY9eRjS15hujq6FqOg8o1yNBt/osavs=
 From: Junhao Xie <bigfoot@classfun.cn>
 To: devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org
@@ -52,14 +52,16 @@ Cc: Rob Herring <robh@kernel.org>,
 	Dragan Simic <dsimic@manjaro.org>,
 	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org
-Subject: [PATCH v4 0/3] Add support for Ariaboard Photonicat RK3568
-Date: Sat, 14 Sep 2024 22:55:46 +0800
-Message-ID: <20240914145549.879936-1-bigfoot@classfun.cn>
+Subject: [PATCH v4 2/3] dt-bindings: arm: rockchip: Add Ariaboard Photonicat RK3568
+Date: Sat, 14 Sep 2024 22:55:48 +0800
+Message-ID: <20240914145549.879936-3-bigfoot@classfun.cn>
 X-Mailer: git-send-email 2.46.0
+In-Reply-To: <20240914145549.879936-1-bigfoot@classfun.cn>
+References: <20240914145549.879936-1-bigfoot@classfun.cn>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240914_075609_314390_B0F5C459 
-X-CRM114-Status: UNSURE (   9.67  )
+X-CRM114-CacheID: sfid-20240914_075610_369403_2E9B230A 
+X-CRM114-Status: UNSURE (   7.62  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -77,50 +79,32 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add dts for Ariaboard Photonicat RK3568.
+This documents Ariaboard Photonicat which is a router based on RK3568 SoC.
 
-This series bring support for:
-* Debug UART
-* SDIO QCA9377 WiFi and Bluetooth
-* M.2 E-Key PCIe WiFi and Bluetooth
-* M.2 B-Key USB Modem WWAN
-* Ethernet WAN Port
-* MicroSD Card slot
-* eMMC
-* HDMI Output
-* Mali GPU
-* USB Type-A
+Link: https://ariaboard.com/
+Link: https://photonicat.com/
 
-Changed from v1:
-- move some general nodes (firmware, ramoops, reboot-mode) to rk356x.dtsi
-- gmac1 change to phy-mode rgmii-id
-- corrected some regulator to be closer to schematics
-- rename rk3568-ariaboard-photonicat.dts to rk3568-photonicat.dts
-https://lore.kernel.org/lkml/20240904111456.87089-1-bigfoot@classfun.cn/
+Signed-off-by: Junhao Xie <bigfoot@classfun.cn>
+---
+ Documentation/devicetree/bindings/arm/rockchip.yaml | 5 +++++
+ 1 file changed, 5 insertions(+)
 
-Changed from v2:
-- remove unused headers
-- corrected some regulator to be closer to schematics
-- remove usb_host1_ohci, usb_host1_ehci, usb2phy1_host that have no connection
-https://lore.kernel.org/lkml/20240906045706.1004813-1-bigfoot@classfun.cn/
-
-Changed from v3:
-- corrected some regulator to be closer to schematics
-- changed to using clk32k_out1 in xin32k
-https://lore.kernel.org/lkml/20240911122809.1789778-2-bigfoot@classfun.cn/
-
-Junhao Xie (3):
-  dt-bindings: vendor-prefixes: Add prefix for Ariaboard
-  dt-bindings: arm: rockchip: Add Ariaboard Photonicat RK3568
-  arm64: dts: rockchip: add dts for Ariaboard Photonicat RK3568
-
- .../devicetree/bindings/arm/rockchip.yaml     |   5 +
- .../devicetree/bindings/vendor-prefixes.yaml  |   2 +
- arch/arm64/boot/dts/rockchip/Makefile         |   1 +
- .../boot/dts/rockchip/rk3568-photonicat.dts   | 591 ++++++++++++++++++
- 4 files changed, 599 insertions(+)
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3568-photonicat.dts
-
+diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
+index 1ef09fbfdfaf..c35541b56175 100644
+--- a/Documentation/devicetree/bindings/arm/rockchip.yaml
++++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
+@@ -49,6 +49,11 @@ properties:
+               - anbernic,rg-arc-s
+           - const: rockchip,rk3566
+ 
++      - description: Ariaboard Photonicat
++        items:
++          - const: ariaboard,photonicat
++          - const: rockchip,rk3568
++
+       - description: ArmSoM Sige7 board
+         items:
+           - const: armsom,sige7
 -- 
 2.46.0
 
