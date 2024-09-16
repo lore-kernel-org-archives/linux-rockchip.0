@@ -4,46 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8D6F5C3ABBB
-	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Sep 2024 01:41:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 75A32C3ABA2
+	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Sep 2024 07:33:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=V6ld2G9xEuWOvnUgSN8pH9rTIceaNjs4Scsrp6MiDPg=; b=2/kMmWZTozwL3G
-	nifMiGa91lOhYVwUdviSoFc3qIS5/BckA0k5HdGZ4iALbDmlaAj8lN98F8P8hvubMyeJR6I87BM2e
-	71Y69xjcejukOC4DIYbzdIRTrZWp3O5FZUO/qC5IW/XAvUE82EKjKsLfbsHGRTTfn45il4191g14M
-	iVQwisMoAJ7lYfUkJenFMw0YJwKsEJ/RIWwJIlIJg0q8hkA7PF5bh6cxs5jMilDlJ9jGh4ZN4rXRf
-	hv+bvHE1P3HN3cGNnrJlHe2v5h8LHVIe27PBbWgHtusBAkYDK8cF+P7Djijf9IUCHmpBSyE7VWJBM
-	b+G/bkYahjWv7rpq+0VQ==;
+	List-Owner; bh=FKk9VcIesS4bBHBhNjsNHOvVyC2Fn3N9Xz4mkLz2z5U=; b=j0SwHSC9RMqgj8
+	kJpNsAK5pGXb7jmAFULp0e8QxXRv14OoxCVO1IxS6I0wcPn76+nuYsSkgdPe6Yg+ATEbnXYa/Y4+R
+	N+8cStvQ5RCJWr1XjQLFPMI0sH1F0lr2POIX7bvlifWpoiPByN63NnUAQZPce+d89E/dJDfSlGvmy
+	o6dVZsaOytaQwLMbz/YRkvINvA3hdK5X70banFhUuAwVvVk5zV5KDdVgj/FyZ0CeMIA0xZs1UUTAj
+	gFdM0yjD5/yhjn8MZC7kBZIJC+l3/ObOxUIK4fb9QYrki+8gRP9/Mgn0XP7wss2C4E60h6lOFTgvx
+	yoy/Llmf7MBw8IyCtOFw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1sq0jl-00000002uhA-0scJ;
-	Mon, 16 Sep 2024 01:41:09 +0000
-Received: from sakura.naobsd.org ([160.16.200.221] helo=mail.naobsd.org)
+	id 1sq6EO-00000003Ju8-2YXw;
+	Mon, 16 Sep 2024 07:33:08 +0000
+Received: from layka.disroot.org ([178.21.23.139])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1sq0jh-00000002ugU-3oLV
-	for linux-rockchip@lists.infradead.org;
-	Mon, 16 Sep 2024 01:41:07 +0000
-Received: from secure.fukaumi.org ([10.0.0.2])
-	by mail.naobsd.org (8.14.4/8.14.4/Debian-4.1ubuntu1.1) with ESMTP id 48G1emaa026265;
-	Mon, 16 Sep 2024 10:40:51 +0900
-From: FUKAUMI Naoki <naoki@radxa.com>
-To: heiko@sntech.de
-Cc: amadeus@jmu.edu.cn, kever.yang@rock-chips.com, jonas@kwiboo.se,
-        linux-rockchip@lists.infradead.org, FUKAUMI Naoki <naoki@radxa.com>
-Subject: [PATCH v3 2/2] arm64: dts: rockchip: make PCIe3 (M.2 M key) work for Radxa ROCK 3A
-Date: Mon, 16 Sep 2024 10:40:39 +0900
-Message-ID: <20240916014039.1918-2-naoki@radxa.com>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20240916014039.1918-1-naoki@radxa.com>
-References: <20240916014039.1918-1-naoki@radxa.com>
+	id 1sq6DI-00000003JmB-01lr;
+	Mon, 16 Sep 2024 07:32:01 +0000
+Received: from mail01.disroot.lan (localhost [127.0.0.1])
+	by disroot.org (Postfix) with ESMTP id 2184123C92;
+	Mon, 16 Sep 2024 09:31:55 +0200 (CEST)
+X-Virus-Scanned: SPAM Filter at disroot.org
+Received: from layka.disroot.org ([127.0.0.1])
+ by localhost (disroot.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id Ra5D3m98mpsN; Mon, 16 Sep 2024 09:31:54 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=disroot.org; s=mail;
+	t=1726471914; bh=2bTZu7joD1ImKzjNsHvEHaAk+oEt0DZuYQsH7FNuClA=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=IetheAX8+p3M6gP7pLTOWuWhvl9kGjnfZOauuxwVXDSJ2zICGrOQMVR3BaMxODbaY
+	 u+xU3gOx5GNQnZ3b+bhIswcJb230xPFXAqgtbj838ED5OHo/0pXoCUrPt4HxVRXCtX
+	 J0hQFjPBnoFqAmNgDur4NAd3w3NZkEh4d5LJJjW8ShKjrYj1uqdXg006qk5Sktk6o6
+	 KsdtTCTaZ+kXmch5EqHSpyb7kcUY8VQ+K+ueZkkLnBsROFMcYo3ZL5Dfh+HLa+b/Zj
+	 IYVQ80HlUWPFcyWo8507eVn6FV5ynA8L2vmfrLCP85QRRfwfFJAIh+48qO9dXuF9db
+	 0FfYZ5BOeL9iw==
+Date: Mon, 16 Sep 2024 07:31:25 +0000
+From: Yao Zi <ziyao@disroot.org>
+To: Sebastian Reichel <sebastian.reichel@collabora.com>,
+	Heiko Stuebner <heiko@sntech.de>
+Cc: Michael Turquette <mturquette@baylibre.com>,
+	Stephen Boyd <sboyd@kernel.org>, linux-clk@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH] clk: rockchip: fix finding of maximum clock ID
+Message-ID: <Zufezf_lr7GlYm6u@pineapple>
+References: <20240912133204.29089-2-ziyao@disroot.org>
+ <fmfvorsje7fjto3c4bwyqxsa6xrs234xlse4whcsu3ebm3lrvs@oyppckftaeok>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <fmfvorsje7fjto3c4bwyqxsa6xrs234xlse4whcsu3ebm3lrvs@oyppckftaeok>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240915_184106_181860_D4D2724C 
-X-CRM114-Status: GOOD (  10.67  )
+X-CRM114-CacheID: sfid-20240916_003200_486713_093D045A 
+X-CRM114-Status: GOOD (  13.70  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -60,117 +76,38 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-on Radxa ROCK 3A, GPIO0_D4 is used to enable both pi6c PCIe clock
-generator and "vcc3v3_pcie" regulator (PCIe3 M.2 M key connector).
+On Sat, Sep 14, 2024 at 08:48:53AM +0200, Sebastian Reichel wrote:
+> Hi,
+> 
+> On Thu, Sep 12, 2024 at 01:32:05PM GMT, Yao Zi wrote:
+> > If an ID of a branch's child is greater than current maximum, we should
+> > set new maximum to the child's ID, instead of its parent's.
+> > 
+> > Fixes: 2dc66a5ab2c6 ("clk: rockchip: rk3588: fix CLK_NR_CLKS usage")
+> > Signed-off-by: Yao Zi <ziyao@disroot.org>
+> > ---
+> 
+> Reviewed-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+> 
+> oops, good catch. Note, that the function returns the correct value
+> for RK3588, since the clocks with the highest IDs are of GATE_LINK
+> type and do not have their child field set.
 
-since pi6c needs to be enabled before using PCIe3, GPIO0_D4 need to be
-controlled by "vcc3v3_pi6c_03" regulator. then, make "vcc3v3_pi6c_03"
-vin-supply for "vcc3v3_pcie30x1".
+yes, but it does hit me when working for rk3528 clock controller unit.
 
-also, "pcie30_avdd0v9" and "pcie30_avdd1v8" are unused. remove them.
+> I have not checked all
+> the Rockchip SoCs converted for 6.12, so I suggest sending this as
+> fixes material for 6.12.
 
-Fixes: 0522cd811220 ("arm64: dts: rockchip: Add PCIe v3 nodes to rock-3a")
-Signed-off-by: FUKAUMI Naoki <naoki@radxa.com>
----
-Changes in v3:
-- fix pinctrl just for reset pin as GPIO
-Changes in v2:
-- split patches for PCIe2 and PCIe3
-- change regulator name from "vcc3v3_pcie" to "vcc3v3_pcie30x1"
-- add comment for vin-supply of "vcc3v3_pcie30x1" regulator
-- remove unused "pcie30_avdd0v9" and "pcie30_avdd1v8"
-- fix pinctrl node name to overwrite rk3568-pinctrl.dtsi
----
- .../boot/dts/rockchip/rk3568-rock-3a.dts      | 45 +++++++------------
- 1 file changed, 15 insertions(+), 30 deletions(-)
+I have done a rough check and think no code in 6.11 release is affected.
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts b/arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts
-index f94cbddf0f0c2..6b3f3ee7f22c7 100644
---- a/arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts
-@@ -86,29 +86,13 @@ vcc12v_dcin: vcc12v-dcin-regulator {
- 		regulator-boot-on;
- 	};
- 
--	pcie30_avdd0v9: pcie30-avdd0v9-regulator {
--		compatible = "regulator-fixed";
--		regulator-name = "pcie30_avdd0v9";
--		regulator-always-on;
--		regulator-boot-on;
--		regulator-min-microvolt = <900000>;
--		regulator-max-microvolt = <900000>;
--		vin-supply = <&vcc3v3_sys>;
--	};
--
--	pcie30_avdd1v8: pcie30-avdd1v8-regulator {
--		compatible = "regulator-fixed";
--		regulator-name = "pcie30_avdd1v8";
--		regulator-always-on;
--		regulator-boot-on;
--		regulator-min-microvolt = <1800000>;
--		regulator-max-microvolt = <1800000>;
--		vin-supply = <&vcc3v3_sys>;
--	};
--
- 	/* pi6c pcie clock generator */
- 	vcc3v3_pi6c_03: vcc3v3-pi6c-03-regulator {
- 		compatible = "regulator-fixed";
-+		enable-active-high;
-+		gpios = <&gpio0 RK_PD4 GPIO_ACTIVE_HIGH>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&pcie_pwren_h>;
- 		regulator-name = "vcc3v3_pi6c_03";
- 		regulator-always-on;
- 		regulator-boot-on;
-@@ -117,16 +101,13 @@ vcc3v3_pi6c_03: vcc3v3-pi6c-03-regulator {
- 		vin-supply = <&vcc5v0_sys>;
- 	};
- 
--	vcc3v3_pcie: vcc3v3-pcie-regulator {
-+	/* actually fed by vcc5v0_sys, dependent on pi6c clock generator */
-+	vcc3v3_pcie30x1: vcc3v3-pcie30x1-regulator {
- 		compatible = "regulator-fixed";
--		enable-active-high;
--		gpios = <&gpio0 RK_PD4 GPIO_ACTIVE_HIGH>;
--		pinctrl-names = "default";
--		pinctrl-0 = <&pcie_enable_h>;
--		regulator-name = "vcc3v3_pcie";
-+		regulator-name = "vcc3v3_pcie30x1";
- 		regulator-min-microvolt = <3300000>;
- 		regulator-max-microvolt = <3300000>;
--		vin-supply = <&vcc5v0_sys>;
-+		vin-supply = <&vcc3v3_pi6c_03>;
- 	};
- 
- 	vcc3v3_sys: vcc3v3-sys-regulator {
-@@ -615,9 +596,9 @@ &pcie30phy {
- 
- &pcie3x2 {
- 	pinctrl-names = "default";
--	pinctrl-0 = <&pcie30x2m1_pins>;
-+	pinctrl-0 = <&pcie30x2_perstn_m1>;
- 	reset-gpios = <&gpio2 RK_PD6 GPIO_ACTIVE_HIGH>;
--	vpcie3v3-supply = <&vcc3v3_pcie>;
-+	vpcie3v3-supply = <&vcc3v3_pcie30x1>;
- 	status = "okay";
- };
- 
-@@ -657,7 +638,11 @@ pcie20_perstn_m1: pcie20-perstn-m1 {
- 			rockchip,pins = <3 RK_PC1 RK_FUNC_GPIO &pcfg_pull_none>;
- 		};
- 
--		pcie_enable_h: pcie-enable-h {
-+		pcie30x2_perstn_m1: pcie30x2-perstn-m1 {
-+			rockchip,pins = <2 RK_PD6 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+
-+		pcie_pwren_h: pcie-pwren-h {
- 			rockchip,pins = <0 RK_PD4 RK_FUNC_GPIO &pcfg_pull_none>;
- 		};
- 	};
--- 
-2.43.0
+> 
+> Greetings,
+> 
+> -- Sebastian
 
+Cheers,
+Yao Zi
 
 _______________________________________________
 Linux-rockchip mailing list
