@@ -4,64 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0F964C3ABA2
-	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Sep 2024 14:35:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D39CEC3ABB2
+	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Sep 2024 15:46:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ExbOZhgyFDrSpjZxVTL6W6uheLN/q0bgDM8vpQP46b8=; b=JnKP1TzMJqQPNC
-	Zz7+FNWqdQxqCS4T+9pr/OdtFbq9f3wOw0zvmcSTYPwF9rJvHd9ib3esBGzGPDXo4XAEu92zwcYTh
-	GEPy49k0EfLPH+21kceSfEFXPZBhnPHe2Jqsia6jqvmjchbfWWiPgY+UwutLB9O2SZk0awJ7WPk8N
-	Sv4iaugTI58MRfcKubnOJypHBGs/pHIO/9pIYzK99Cf1XMaIyz+9eNKYmATmiS/rkK0Jw7i0DrIzt
-	re7vAPyrrsUCREj3LVmks5RUFlU4irrvKMux8LA+efVsh4++acE21pIgHD52VLBaypeLxiRodufXL
-	scgcANfjsOA715TK+3Cw==;
+	List-Owner; bh=qRLBH+IJFP1SdKSrLYzWjENuNOkaQ8YmSImhDe5uqhE=; b=aXKKzC6tahU/nM
+	NjDpp5pEQFGwRSF7BTef1+S/EiqnzpJ98Bhg2yYXoU1UQRdexjyeWf/cHLxq33mSpU8JHah6DfEy0
+	hivWDfx1qppUdg/TjOWV3tVZt5RosxnO0JiD9oYKwHvj3i2i2ZVAS2ZRgOafXhW7SDzhk6x8h5lt4
+	HqES8M04pSupcwDWGPdDTwz7YOaiMBq7lCgAsaz7y5hmPxOartUOah/ErYmZFwijLFnC+nNHcJmu2
+	t8UAfLjOAkmonEaSpjiIEVuXGQcXGUx2ok170su5HPxg90NBMbfUhgx4chzJu6aJuUdp+YI1kW1XA
+	iOshK623uah6c06EyEnA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1sqCoy-00000004EG3-3AfZ;
-	Mon, 16 Sep 2024 14:35:20 +0000
-Received: from relay5-d.mail.gandi.net ([2001:4b98:dc4:8::225])
+	id 1sqDvc-00000004NrW-4AbN;
+	Mon, 16 Sep 2024 15:46:16 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1sqCns-00000004E3b-1q17;
-	Mon, 16 Sep 2024 14:34:14 +0000
-Received: by mail.gandi.net (Postfix) with ESMTPSA id 60B061C0011;
-	Mon, 16 Sep 2024 14:34:08 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=gm1;
-	t=1726497249;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=BdKDr+vXYYA/wATEJlbHZYT7+pvHpBt+R944tF/F0e4=;
-	b=DNwbSC7ZqzEfhLNKVcASBnUIKBD8CqyrXlmVOKH0oyw2yofmmmy08dJ8IQvZP/gojRd0R5
-	7BclSh4nQE/dh5U/ZWsXmTrn/cRJx67LBU2hpPqea7udDnt5d5MalLaQwQIaGLJT/gwK3t
-	0qu7zB7AYIo02uKXRoGqW93KnpLt7CdoOuKNarvltglPOQJNwzReb0bdcQyDTLSg2pwwK0
-	Gb7VSR6Hfw0fsXuGcrvujO9ESLnip68+TWLztfreQz1q46oc4OBD7WW8meulsFZ0gYo68R
-	wd/l9IJtFygPqiBERJOsSKEuilF9FjGgW5/9brRNgDkRaz7aqrlg+CpvSj9lsg==
-Date: Mon, 16 Sep 2024 16:34:07 +0200
-From: Alexandre Belloni <alexandre.belloni@bootlin.com>
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: Karthikeyan Krishnasamy <karthikeyan@linumiz.com>, robh@kernel.org,
-	krzk+dt@kernel.org, conor+dt@kernel.org, devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
-	linux-rtc@vger.kernel.org,
-	Conor Dooley <conor.dooley@microchip.com>
-Subject: Re: [PATCH v3 3/6] dt-bindings: rtc: microcrystal,rv3028: add
- #clock-cells property
-Message-ID: <20240916143407734d133c@mail.local>
-References: <20240912142451.2952633-1-karthikeyan@linumiz.com>
- <20240912142451.2952633-4-karthikeyan@linumiz.com>
- <202409161237568b626ad7@mail.local>
- <2955009.e9J7NaK4W3@phil>
+	id 1sqDvZ-00000004NqF-0Miq
+	for linux-rockchip@lists.infradead.org;
+	Mon, 16 Sep 2024 15:46:15 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1726501560; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=LhiurA48EpisqqZ0he4yr2KgWvnbjwYiwvuJUJKoKw8l0u1SB8eyiBBxKPkxNV8FML7eg4D1PIzpipMu9EepsQTdTg2WwKeC7BqKF0duEomoKPxO3JUCyBk9ogYubmglcaRtacUJBNEan+covTsDFeRlPwDnqk+wKfBgu/IHxRA=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1726501560; h=Content-Type:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=TjwJ4FDCdt734YAQPc/f2Tm44fHky68i9g69jZnst8o=; 
+	b=NVgsKp+phprM340tifR6Zf3HfXSd538n2mMpf7Sxn6fAIffRkLWIYGQN9jlW23AKrhsaPvOLNo6ejG+M2zty3vQ3lSbfKvs2+Z7nI/SKZ5dyVYmzTtgcrXEdp26E6nFDuzVZ0jMTIWH6bw8pGwFeGCHf+FrsGaXQIrbUIY+xtUM=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=adrian.larumbe@collabora.com;
+	dmarc=pass header.from=<adrian.larumbe@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1726501560;
+	s=zohomail; d=collabora.com; i=adrian.larumbe@collabora.com;
+	h=Date:Date:From:From:To:To:Cc:Cc:Subject:Subject:Message-ID:References:MIME-Version:Content-Type:In-Reply-To:Message-Id:Reply-To;
+	bh=TjwJ4FDCdt734YAQPc/f2Tm44fHky68i9g69jZnst8o=;
+	b=ExslBwo1iemmyAQusGX7f+Lik0IfWnvNj5sSWaHLMNfZLT4izEgdzeJz0q32dVay
+	rr75PHSqPl+d0E0T44hrj9w4M1b+9sX65K0gzIzL+zyLhbqZMSv8pZ3SFGTk8VlAJ5O
+	TEQrqAzvlbAwcGeLw2Y3z0ONKvTVbr6WVFx6a9J4=
+Received: by mx.zohomail.com with SMTPS id 1726501557780427.4745003950086;
+	Mon, 16 Sep 2024 08:45:57 -0700 (PDT)
+Date: Mon, 16 Sep 2024 16:45:53 +0100
+From: =?utf-8?B?QWRyacOhbiBNYXJ0w61uZXo=?= Larumbe <adrian.larumbe@collabora.com>
+To: Sebastian Reichel <sebastian.reichel@collabora.com>
+Cc: Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Heiko Stuebner <heiko@sntech.de>, Ulf Hansson <ulf.hansson@linaro.org>, 
+	Elaine Zhang <zhangqing@rock-chips.com>, Boris Brezillon <boris.brezillon@collabora.com>, 
+	devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	linux-pm@vger.kernel.org, kernel@collabora.com
+Subject: Re: [PATCH v1 0/6] Fix RK3588 GPU domain
+Message-ID: <36ddjlsivqd4kzxckegxvjfuddkhigj5kjt3gurossfaihbddv@3stp2dnidusn>
+References: <20240910180530.47194-1-sebastian.reichel@collabora.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <2955009.e9J7NaK4W3@phil>
-X-GND-Sasl: alexandre.belloni@bootlin.com
+In-Reply-To: <20240910180530.47194-1-sebastian.reichel@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240916_073412_701123_5881EDB8 
-X-CRM114-Status: GOOD (  11.90  )
+X-CRM114-CacheID: sfid-20240916_084613_255401_08B44159 
+X-CRM114-Status: GOOD (  25.15  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,31 +81,71 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 16/09/2024 16:26:23+0200, Heiko Stuebner wrote:
-> Hi Alexandre,
-> 
-> Am Montag, 16. September 2024, 14:37:56 CEST schrieb Alexandre Belloni:
-> > On 12/09/2024 19:54:48+0530, Karthikeyan Krishnasamy wrote:
-> > > RV3028 RTC has a clock out features, the clk out can be
-> > > controlled using clkout register, to consume the clock out
-> > > from rv3028 '#clock-cells' property is added.
-> > > 
-> > > Acked-by: Conor Dooley <conor.dooley@microchip.com>
-> > Acked-by: Alexandre Belloni <alexandre.belloni@bootlin.com>
-> 
-> just for my understanding, does this mean that you expect this change
-> to get applied together with the others?
-> 
-> No preference, just making sure I understand :-)
+Hi, Sebastian, thanks for the patches.
 
-i was actually wondering how this was going to get applied. I guess that
-if you are planning to take the rest, you can also apply this one.
+I've tested it on a Rockchip 5b board and now I can reload the driver at any time.
 
+Tested-by: Adrian Larumbe <adrian.larumbe@collabora.com>
 
--- 
-Alexandre Belloni, co-owner and COO, Bootlin
-Embedded Linux and Kernel engineering
-https://bootlin.com
+On 10.09.2024 19:57, Sebastian Reichel wrote:
+> Hi,
+> 
+> I got a report, that the Linux kernel crashes on Rock 5B when the panthor
+> driver is loaded late after booting. The crash starts with the following
+> shortened error print:
+> 
+> rockchip-pm-domain fd8d8000.power-management:power-controller: failed to set domain 'gpu', val=0
+> rockchip-pm-domain fd8d8000.power-management:power-controller: failed to get ack on domain 'gpu', val=0xa9fff
+> SError Interrupt on CPU4, code 0x00000000be000411 -- SError
+> 
+> This series first does some cleanups in the Rockchip power domain
+> driver and changes the driver, so that it no longer tries to continue
+> when it fails to enable a domain. This gets rid of the SError interrupt
+> and long backtraces. But the kernel still hangs when it fails to enable
+> a power domain. I have not done further analysis to check if that can
+> be avoided.
+> 
+> Last but not least this provides a fix for the GPU power domain failing
+> to get enabled - after some testing from my side it seems to require the
+> GPU voltage supply to be enabled.
+> 
+> I'm not really happy about the hack to get a regulator for a sub-node
+> in the 5th patch, which I took over from the Mediatek driver. But to
+> get things going and open a discussion around it I thought it would be
+> best to send a first version as soon as possible.
+> 
+> Greetings,
+> 
+> -- Sebastian
+> Sebastian Reichel (6):
+>   pmdomain: rockchip: forward rockchip_do_pmu_set_power_domain errors
+>   pmdomain: rockchip: cleanup mutex handling in rockchip_pd_power
+>   pmdomain: rockchip: reduce indention in rockchip_pd_power
+>   dt-bindings: power: rockchip: add regulator support
+>   pmdomain: rockchip: add regulator support
+>   arm64: dts: rockchip: Add GPU power domain regulator dependency for
+>     RK3588
+> 
+>  .../power/rockchip,power-controller.yaml      |   3 +
+>  .../boot/dts/rockchip/rk3588-armsom-sige7.dts |   4 +
+>  arch/arm64/boot/dts/rockchip/rk3588-base.dtsi |   2 +-
+>  .../boot/dts/rockchip/rk3588-coolpi-cm5.dtsi  |   4 +
+>  .../rockchip/rk3588-friendlyelec-cm3588.dtsi  |   4 +
+>  .../arm64/boot/dts/rockchip/rk3588-jaguar.dts |   4 +
+>  .../boot/dts/rockchip/rk3588-ok3588-c.dts     |   4 +
+>  .../boot/dts/rockchip/rk3588-rock-5-itx.dts   |   4 +
+>  .../boot/dts/rockchip/rk3588-rock-5b.dts      |   4 +
+>  .../arm64/boot/dts/rockchip/rk3588-tiger.dtsi |   4 +
+>  .../boot/dts/rockchip/rk3588s-coolpi-4b.dts   |   4 +
+>  .../dts/rockchip/rk3588s-khadas-edge2.dts     |   4 +
+>  .../boot/dts/rockchip/rk3588s-orangepi-5.dts  |   4 +
+>  drivers/pmdomain/rockchip/pm-domains.c        | 130 +++++++++++++-----
+>  14 files changed, 144 insertions(+), 35 deletions(-)
+> 
+> -- 
+> 2.45.2
+
+Adrian Larumbe
 
 _______________________________________________
 Linux-rockchip mailing list
