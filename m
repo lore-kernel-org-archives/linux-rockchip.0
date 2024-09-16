@@ -4,61 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4F141C3ABA2
-	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Sep 2024 17:21:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AADB0C3ABB2
+	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Sep 2024 17:40:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:References:
-	In-Reply-To:Cc:To:From:MIME-Version:Date:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=TcfvZllCxygOoEIZ2YJUrHHBjb8YtOBcqMdVIYh7hwE=; b=k+f4yt9jYyGa8eatYtvXRLN+Ka
-	Xp9CjaTu2wD+qgcokg4LiLtpgv3njR8B01u75q3YvU1V5RSso31o0FVhVdtyNtRBX+zQmtmFFuiGN
-	mGwMiRKj7Lq61K+FAQxXrCVGJ/SJPU+ucHhHbtKFSKIFF7zr2xki7WcefbEH0adLhAnljRrAEUfBs
-	q/hJ2Oj8amlteKhl7koTI0F9d2FSb7XPvnk8p9ImIrM6KuGBsAZWKvtlW2lMGKktKnQ1NUg0pkK4T
-	+gRvg8uZ0HRJp25A9Xjs9wOTtC6KVFn28B3WoThdVMWZwxXe0kvOg7m8nKB3KvzkZdNwEleIKVSr9
-	mRqpQPAQ==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=g2N1+GR15JBuoPUZV7CEVvLgL14QwrowS9x5TgwTFOs=; b=1EGUYOgVbQN+rc
+	MvcIEQip+YiCLn7gg3HLHXEkCHvAzqoyzZ77AWrnYfsLaZ9bx807csQn6MDM6hXOYWXXcg8uKtJxZ
+	0BMo/HxR4T31IZ6xwMAby/idByW2V9sWZTdOhV/zJPspojqsVuEBGXHHZvhmtxv6a+xk/N31fp4m3
+	lVuCZ4Hc69CdImTnCe2ulCy9ubza7EoT+Dz42Ou5ytIqHMRqGZuJIeDS+1NaY6QnY11oLn3VnKiDG
+	OmwvUsV6Hpe7APnE+tcc4E7Pp5Mn/0YXs0cFGtuky+a5Kx/bbtDCWtwma4F21GZhqdiw/uuIm0JzK
+	yxOeXMJNXY5Rj1QID5SQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1sqFPV-00000004a8S-3AHc;
-	Mon, 16 Sep 2024 17:21:13 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1sqFiI-00000004cDd-4BR3;
+	Mon, 16 Sep 2024 17:40:39 +0000
+Received: from layka.disroot.org ([178.21.23.139])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1sqFOO-00000004Zs3-05JR;
-	Mon, 16 Sep 2024 17:20:05 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id CB353A41027;
-	Mon, 16 Sep 2024 17:19:54 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 282EDC4CECE;
-	Mon, 16 Sep 2024 17:20:02 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1726507202;
-	bh=q8jH/tCM/02nnPIQUIKKALFAKRzpchr3Wq/CmcgK6Uk=;
-	h=Date:From:To:Cc:In-Reply-To:References:Subject:From;
-	b=Tw5HAmM/KvrQlu4KEnchoaGMTIl/YH9NIxVcY24iFpaXTTgOH5X0jqwUfL9qXUIbt
-	 6BDroZrsuw/8cOuHWattSf1+VXVGTsNZXkRGh8bkPOlVfs6qRM4DOc+Bcgawftg9wr
-	 d57Y3C7lxz6Z0eSYB8kXxMASqqbDKAVGDlyRvaVXwLD0jcxISH7N+3limxr+M0ESee
-	 3bj+8iKvEkl5AXi2QraO8PdOTnPl1fCkoygWhBbM5CNyofN7A49UNeJj4fo6aDD+cr
-	 H1Fu19hN9QnqS4z5bSZlmfPEzEIVqLiiDbkuCvjH+6Lcw2iNKZbGrgazz4Qbo4Nnon
-	 yP3nvA5AwzWDQ==
-Date: Mon, 16 Sep 2024 12:20:01 -0500
+	id 1sqFhB-00000004c4y-2s94;
+	Mon, 16 Sep 2024 17:39:31 +0000
+Received: from mail01.disroot.lan (localhost [127.0.0.1])
+	by disroot.org (Postfix) with ESMTP id 8B2A923D79;
+	Mon, 16 Sep 2024 19:39:26 +0200 (CEST)
+X-Virus-Scanned: SPAM Filter at disroot.org
+Received: from layka.disroot.org ([127.0.0.1])
+ by localhost (disroot.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id yp1IwWCoYNUG; Mon, 16 Sep 2024 19:39:25 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=disroot.org; s=mail;
+	t=1726508365; bh=4uA3yvxhGcyJm/hRudJ642pDYzrgInwohFwQ2QiPijI=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=KbPSoLkPaT3Iyig84kQNoT1JHhpRH+vTj6BvS7EgQY1vQK7XqFz1xeb1apY3hjexY
+	 OdpKeTOVNNk09a5Q62gq4sqks4/HFDhsBxmShdzpl8jGDhPXTFYI+qDIcS21zl969O
+	 5owirBiEt9Aq/T8CYBSgsGJIYachaUBOsQXUlbmVgko51YTTzkMApXxEBxxLz4etBp
+	 pkMSwuh6f31vVPoW1u8QCG3m5XsjEUk4KZjjXh8pAFTHhlVkLO8EtNyKdFezL3z/Pj
+	 TMsRu4rEdG5H/XFiotaGsiVsLxVFz504S7mthCkyh6UTI73fjJf4aYBOR61pW5m719
+	 c2pKS//7sgVsw==
+Date: Mon, 16 Sep 2024 17:38:56 +0000
+From: Yao Zi <ziyao@disroot.org>
+To: Conor Dooley <conor@kernel.org>
+Cc: Heiko Stuebner <heiko@sntech.de>, Conor Dooley <conor+dt@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Rob Herring <robh@kernel.org>,
+	Michael Turquette <mturquette@baylibre.com>,
+	Stephen Boyd <sboyd@kernel.org>, linux-clk@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+	devicetree@vger.kernel.org
+Subject: Re: Possible misleading information in rockchip,rk3588-cru.yaml
+Message-ID: <ZuhtMHgx8XlZaayp@pineapple>
+References: <ZuIJgiN2xp6oPrHD@pineapple>
+ <20240916-neuron-surfer-32db6440e1ad@spud>
 MIME-Version: 1.0
-From: "Rob Herring (Arm)" <robh@kernel.org>
-To: Junhao Xie <bigfoot@classfun.cn>
-Cc: linux-kernel@vger.kernel.org, Dragan Simic <dsimic@manjaro.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Krzysztof Kozlowski <krzk+dt@kernel.org>, devicetree@vger.kernel.org, 
- FUKAUMI Naoki <naoki@radxa.com>, Heiko Stuebner <heiko@sntech.de>, 
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
- Jonas Karlman <jonas@kwiboo.se>, Chukun Pan <amadeus@jmu.edu.cn>
-In-Reply-To: <20240914145549.879936-1-bigfoot@classfun.cn>
-References: <20240914145549.879936-1-bigfoot@classfun.cn>
-Message-Id: <172650686232.806717.8798874791894473916.robh@kernel.org>
-Subject: Re: [PATCH v4 0/3] Add support for Ariaboard Photonicat RK3568
+Content-Disposition: inline
+In-Reply-To: <20240916-neuron-surfer-32db6440e1ad@spud>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240916_102004_215821_CC836906 
-X-CRM114-Status: GOOD (  16.99  )
+X-CRM114-CacheID: sfid-20240916_103930_152629_37F3CA58 
+X-CRM114-Status: GOOD (  19.81  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,86 +79,43 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-
-On Sat, 14 Sep 2024 22:55:46 +0800, Junhao Xie wrote:
-> Add dts for Ariaboard Photonicat RK3568.
+On Mon, Sep 16, 2024 at 05:33:49PM +0100, Conor Dooley wrote:
+> On Wed, Sep 11, 2024 at 09:20:02PM +0000, Yao Zi wrote:
+> > Hi,
+> > 
+> > rockchip,rk3588-cru.yaml, dt-binding for RK3588 clock and reset module,
+> > contains description of customized property "rockchip,grf",
+> > 
+> >   rockchip,grf:
+> >     $ref: /schemas/types.yaml#/definitions/phandle
+> >     description: >
+> >       phandle to the syscon managing the "general register files". It is
+> >       used for GRF muxes, if missing any muxes present in the GRF will
+> >       not be available.
+> > 
+> > But after doing some searching, I found that clk-rk3588.c actually
+> > defines no clock hardware with MUXGRF type. This is also true in in the
+> > vendor code[1], it seems there is actually no GRF mux on RK3588
+> > platform.
 > 
-> This series bring support for:
-> * Debug UART
-> * SDIO QCA9377 WiFi and Bluetooth
-> * M.2 E-Key PCIe WiFi and Bluetooth
-> * M.2 B-Key USB Modem WWAN
-> * Ethernet WAN Port
-> * MicroSD Card slot
-> * eMMC
-> * HDMI Output
-> * Mali GPU
-> * USB Type-A
-> 
-> Changed from v1:
-> - move some general nodes (firmware, ramoops, reboot-mode) to rk356x.dtsi
-> - gmac1 change to phy-mode rgmii-id
-> - corrected some regulator to be closer to schematics
-> - rename rk3568-ariaboard-photonicat.dts to rk3568-photonicat.dts
-> https://lore.kernel.org/lkml/20240904111456.87089-1-bigfoot@classfun.cn/
-> 
-> Changed from v2:
-> - remove unused headers
-> - corrected some regulator to be closer to schematics
-> - remove usb_host1_ohci, usb_host1_ehci, usb2phy1_host that have no connection
-> https://lore.kernel.org/lkml/20240906045706.1004813-1-bigfoot@classfun.cn/
-> 
-> Changed from v3:
-> - corrected some regulator to be closer to schematics
-> - changed to using clk32k_out1 in xin32k
-> https://lore.kernel.org/lkml/20240911122809.1789778-2-bigfoot@classfun.cn/
-> 
-> Junhao Xie (3):
->   dt-bindings: vendor-prefixes: Add prefix for Ariaboard
->   dt-bindings: arm: rockchip: Add Ariaboard Photonicat RK3568
->   arm64: dts: rockchip: add dts for Ariaboard Photonicat RK3568
-> 
->  .../devicetree/bindings/arm/rockchip.yaml     |   5 +
->  .../devicetree/bindings/vendor-prefixes.yaml  |   2 +
->  arch/arm64/boot/dts/rockchip/Makefile         |   1 +
->  .../boot/dts/rockchip/rk3568-photonicat.dts   | 591 ++++++++++++++++++
->  4 files changed, 599 insertions(+)
->  create mode 100644 arch/arm64/boot/dts/rockchip/rk3568-photonicat.dts
-> 
-> --
-> 2.46.0
-> 
-> 
-> 
+> Have you been able to check the datasheet/register map for this piece of
+> hardware? Does it have a grf register region?
+> Wouldn't be surprised if it didn't, and the cause of it being in the
+> binding was nothing more than copy-paste.
 
+Have checked a public datasheet[1], RK3588 does have corresponding grf
+region and there are only clock related bits in PHP_GRF_CLK_CON1[2].
 
-My bot found new DTB warnings on the .dts files added or changed in this
-series.
+But these gmac clocks bits are used in dwmac-rk GMAC driver[3]
+internally, out of the common clock driver, rk3588-cru. So I don't think
+the CRU needs access to the grf by design.
 
-Some warnings may be from an existing SoC .dtsi. Or perhaps the warnings
-are fixed by another series. Ultimately, it is up to the platform
-maintainer whether these warnings are acceptable or not. No need to reply
-unless the platform maintainer has comments.
+Best regards,
+Yao Zi
 
-If you already ran DT checks and didn't see these error(s), then
-make sure dt-schema is up to date:
-
-  pip3 install dtschema --upgrade
-
-
-New warnings running 'make CHECK_DTBS=y rockchip/rk3568-photonicat.dtb' for 20240914145549.879936-1-bigfoot@classfun.cn:
-
-arch/arm64/boot/dts/rockchip/rk3568-photonicat.dtb: bluetooth: 'clock-names' does not match any of the regexes: 'pinctrl-[0-9]+'
-	from schema $id: http://devicetree.org/schemas/net/bluetooth/qualcomm-bluetooth.yaml#
-arch/arm64/boot/dts/rockchip/rk3568-photonicat.dtb: phy@fe8c0000: 'phy-supply' does not match any of the regexes: 'pinctrl-[0-9]+'
-	from schema $id: http://devicetree.org/schemas/phy/rockchip,pcie3-phy.yaml#
-arch/arm64/boot/dts/rockchip/rk3568-photonicat.dtb: rfkill-modem: 'reset-gpios' does not match any of the regexes: 'pinctrl-[0-9]+'
-	from schema $id: http://devicetree.org/schemas/net/rfkill-gpio.yaml#
-
-
-
-
-
+[1]: https://github.com/FanX-Tek/rk3588-TRM-and-Datasheet/blob/master/Rockchip%20RK3588%20TRM%20V1.0-Part1-20220309.pdf
+[2]: Page 836 in [1]
+[3]: net/ethernet/stmicro/stmmac/dwmac-rk.c:1132
 
 _______________________________________________
 Linux-rockchip mailing list
