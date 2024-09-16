@@ -4,65 +4,105 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AADB0C3ABB2
-	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Sep 2024 17:40:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 216CAC3ABCB
+	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Sep 2024 20:43:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:Cc:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=g2N1+GR15JBuoPUZV7CEVvLgL14QwrowS9x5TgwTFOs=; b=1EGUYOgVbQN+rc
-	MvcIEQip+YiCLn7gg3HLHXEkCHvAzqoyzZ77AWrnYfsLaZ9bx807csQn6MDM6hXOYWXXcg8uKtJxZ
-	0BMo/HxR4T31IZ6xwMAby/idByW2V9sWZTdOhV/zJPspojqsVuEBGXHHZvhmtxv6a+xk/N31fp4m3
-	lVuCZ4Hc69CdImTnCe2ulCy9ubza7EoT+Dz42Ou5ytIqHMRqGZuJIeDS+1NaY6QnY11oLn3VnKiDG
-	OmwvUsV6Hpe7APnE+tcc4E7Pp5Mn/0YXs0cFGtuky+a5Kx/bbtDCWtwma4F21GZhqdiw/uuIm0JzK
-	yxOeXMJNXY5Rj1QID5SQ==;
+	List-Owner; bh=sgRsOdnf99kvJo/OYscI4sRmQ52aRoQSF9mehY3OMH0=; b=zRxis7iIRQSOiR
+	kND17IcKJ4ZgAc81MzDOHTc0d3+GjCqu8688Cs4ml5koCBfU6xF04sJDNoxWnnq49a7sqOE+g84PU
+	hNV/n1T+kklHIehDs402z+p4hTtsOm3WSwOGmQxk/t4FHYvfoAFL8NwL4U1lEUoa2GRZJr2P0qw92
+	gLl2A+NTbkwFpKp6BPi4K+qc65b2jkzJpzvMDVtOGRT7Nqj7gfmR8oRa7mpFMnV+FrNimphYUZ+OR
+	gK3b3RPaktFPfSMVj1JuaBqJp2WeaBB1Yk3qzY1HRb1OEnOk7cInm0NCsqOy7RXfQAgEP6bgfB8zG
+	kOl3kIZWSizJBSI94oHw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1sqFiI-00000004cDd-4BR3;
-	Mon, 16 Sep 2024 17:40:39 +0000
-Received: from layka.disroot.org ([178.21.23.139])
+	id 1sqIZZ-00000004s26-3hPD;
+	Mon, 16 Sep 2024 20:43:49 +0000
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1sqFhB-00000004c4y-2s94;
-	Mon, 16 Sep 2024 17:39:31 +0000
-Received: from mail01.disroot.lan (localhost [127.0.0.1])
-	by disroot.org (Postfix) with ESMTP id 8B2A923D79;
-	Mon, 16 Sep 2024 19:39:26 +0200 (CEST)
-X-Virus-Scanned: SPAM Filter at disroot.org
-Received: from layka.disroot.org ([127.0.0.1])
- by localhost (disroot.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id yp1IwWCoYNUG; Mon, 16 Sep 2024 19:39:25 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=disroot.org; s=mail;
-	t=1726508365; bh=4uA3yvxhGcyJm/hRudJ642pDYzrgInwohFwQ2QiPijI=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=KbPSoLkPaT3Iyig84kQNoT1JHhpRH+vTj6BvS7EgQY1vQK7XqFz1xeb1apY3hjexY
-	 OdpKeTOVNNk09a5Q62gq4sqks4/HFDhsBxmShdzpl8jGDhPXTFYI+qDIcS21zl969O
-	 5owirBiEt9Aq/T8CYBSgsGJIYachaUBOsQXUlbmVgko51YTTzkMApXxEBxxLz4etBp
-	 pkMSwuh6f31vVPoW1u8QCG3m5XsjEUk4KZjjXh8pAFTHhlVkLO8EtNyKdFezL3z/Pj
-	 TMsRu4rEdG5H/XFiotaGsiVsLxVFz504S7mthCkyh6UTI73fjJf4aYBOR61pW5m719
-	 c2pKS//7sgVsw==
-Date: Mon, 16 Sep 2024 17:38:56 +0000
-From: Yao Zi <ziyao@disroot.org>
-To: Conor Dooley <conor@kernel.org>
-Cc: Heiko Stuebner <heiko@sntech.de>, Conor Dooley <conor+dt@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Rob Herring <robh@kernel.org>,
-	Michael Turquette <mturquette@baylibre.com>,
-	Stephen Boyd <sboyd@kernel.org>, linux-clk@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
-	devicetree@vger.kernel.org
-Subject: Re: Possible misleading information in rockchip,rk3588-cru.yaml
-Message-ID: <ZuhtMHgx8XlZaayp@pineapple>
-References: <ZuIJgiN2xp6oPrHD@pineapple>
- <20240916-neuron-surfer-32db6440e1ad@spud>
+	id 1sqIYS-00000004rkZ-1WpV
+	for linux-rockchip@lists.infradead.org;
+	Mon, 16 Sep 2024 20:42:43 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1726519357;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=SRtBs8SOdCrA5ZkwjlQSrBYhchM6NpD3KIRkK7gJsgI=;
+	b=WHNUEpS8G66Pu8mmtEWycPk66ehwLwhppDeNJkm5Cs+SC5k2CKsfHldIg8Z+DT+P5meDyX
+	Q7CslJmvzd6S7E8Za7qP1o1RoPkXciex6UQN0t8D/u6lNic1gFDEX9RvWMwSJyvQLPJIqw
+	ZVcjR8j5JwU4zJFbDI/nf/y7ZK5M4yA=
+Received: from mail-qk1-f198.google.com (mail-qk1-f198.google.com
+ [209.85.222.198]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-641-LpTlobHGNTadaIpQTaJ8cA-1; Mon, 16 Sep 2024 16:42:36 -0400
+X-MC-Unique: LpTlobHGNTadaIpQTaJ8cA-1
+Received: by mail-qk1-f198.google.com with SMTP id af79cd13be357-7a9a95429c4so608557285a.1
+        for <linux-rockchip@lists.infradead.org>; Mon, 16 Sep 2024 13:42:36 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1726519356; x=1727124156;
+        h=mime-version:user-agent:content-transfer-encoding:organization
+         :references:in-reply-to:date:cc:to:from:subject:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=wTfcXuiBnp60R1BtMu86FvtnmbTY4dwmyBas9dcDpGE=;
+        b=RBZYN/DjTdRr2NszZ29cy2Uwv0ssNhb2B77fuJs6EGyeJOMcfTSBL6JBiarUUzpbIO
+         pzPwhdMO7OKMWsSkhP8dMDISofT9rspkV7UmqSpvuPQxpM0kZwACcmd7LYx0WO5MGu3A
+         mecRNPP1Xaj6XHYtrlzeWm0Zmokc0lXDXQgcc2vcd1CCwGUqkHgEN2n+9nHEStEziCUm
+         Ip2WeLYsd1f5dpsk3QLBNCinWqqg/dD6y6ndpd/Mtg91gDVAKx3b07n06lwdx0sY8eta
+         qFjdfVkX1TBMm5Bw02GCzclx5gIX39RwkNreRi8liPApEa+LzPjGoNIZrrosnMeDLFNS
+         26Sg==
+X-Forwarded-Encrypted: i=1; AJvYcCWc2atFbcr1xzQBHuJ71u0ZAOJXzpzTQMwzWjYuXFJmeG7GEytuN/1G5V8wOW/0FpjOZTzCCTIZ2cwxDzPBAg==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yz4B1NdZ+z74KcT6vjzmsP6Z++hzgNf2RlPU7KYGKdDT6Yck5mN
+	+/c6c2n97OQpp0ELK/Z4bZZva57pAh3t+CMXSAeJwpuoY5sfJJFw8cUshbemdw5pM2urh5vFnSG
+	gdB4qqjpcsnfnmUr6o2m90UbtNyaTqQ9h/dxcdB6HrN+etLbEFU7sLGDN2sTowkABqmOE+Q==
+X-Received: by 2002:a05:620a:29c9:b0:7a2:d64:267a with SMTP id af79cd13be357-7ab30dad29cmr1980312385a.50.1726519355943;
+        Mon, 16 Sep 2024 13:42:35 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHtdg607zljnxjoIb5JWKDXICOR1S4Nn7ShlhwpOmqE++3hkk82WjSw9TWpZmxZjzKMkCuLGQ==
+X-Received: by 2002:a05:620a:29c9:b0:7a2:d64:267a with SMTP id af79cd13be357-7ab30dad29cmr1980308985a.50.1726519355501;
+        Mon, 16 Sep 2024 13:42:35 -0700 (PDT)
+Received: from chopper.lyude.net ([2600:4040:5c4c:a000::bb3])
+        by smtp.gmail.com with ESMTPSA id af79cd13be357-7ab3e95bbbasm288091585a.24.2024.09.16.13.42.33
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 16 Sep 2024 13:42:34 -0700 (PDT)
+Message-ID: <eaed20244ced28e17795532967ab444a22c509c2.camel@redhat.com>
+Subject: Re: [PATCH v2 1/3] drm/nouveau/tegra: Use
+ iommu_paging_domain_alloc()
+From: Lyude Paul <lyude@redhat.com>
+To: Jason Gunthorpe <jgg@ziepe.ca>
+Cc: David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>, Lu
+ Baolu <baolu.lu@linux.intel.com>, Karol Herbst <kherbst@redhat.com>, Danilo
+ Krummrich <dakr@redhat.com>, Thierry Reding <thierry.reding@gmail.com>,
+ Jonathan Hunter <jonathanh@nvidia.com>, Sandy Huang <hjc@rock-chips.com>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard
+ <mripard@kernel.org>,  Thomas Zimmermann <tzimmermann@suse.de>, Mikko
+ Perttunen <mperttunen@nvidia.com>, Joerg Roedel <joro@8bytes.org>,  Will
+ Deacon <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>, Kevin Tian
+ <kevin.tian@intel.com>,  dri-devel@lists.freedesktop.org,
+ nouveau@lists.freedesktop.org,  linux-tegra@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org,  linux-rockchip@lists.infradead.org,
+ linux-media@vger.kernel.org,  iommu@lists.linux.dev,
+ linux-kernel@vger.kernel.org
+Date: Mon, 16 Sep 2024 16:42:33 -0400
+In-Reply-To: <20240915140806.GE869260@ziepe.ca>
+References: <20240902014700.66095-1-baolu.lu@linux.intel.com>
+	 <20240902014700.66095-2-baolu.lu@linux.intel.com>
+	 <a43c31da6a6989874eb0998dc937d7a611ec542c.camel@redhat.com>
+	 <20240905132459.GG1909087@ziepe.ca>
+	 <243808ad949823a0d64cd785ed05a375ccdba096.camel@redhat.com>
+	 <20240915140806.GE869260@ziepe.ca>
+Organization: Red Hat Inc.
+User-Agent: Evolution 3.52.4 (3.52.4-1.fc40)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20240916-neuron-surfer-32db6440e1ad@spud>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240916_103930_152629_37F3CA58 
-X-CRM114-Status: GOOD (  19.81  )
+X-CRM114-CacheID: sfid-20240916_134240_504772_476A7FFD 
+X-CRM114-Status: GOOD (  16.72  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,43 +119,43 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, Sep 16, 2024 at 05:33:49PM +0100, Conor Dooley wrote:
-> On Wed, Sep 11, 2024 at 09:20:02PM +0000, Yao Zi wrote:
-> > Hi,
-> > 
-> > rockchip,rk3588-cru.yaml, dt-binding for RK3588 clock and reset module,
-> > contains description of customized property "rockchip,grf",
-> > 
-> >   rockchip,grf:
-> >     $ref: /schemas/types.yaml#/definitions/phandle
-> >     description: >
-> >       phandle to the syscon managing the "general register files". It is
-> >       used for GRF muxes, if missing any muxes present in the GRF will
-> >       not be available.
-> > 
-> > But after doing some searching, I found that clk-rk3588.c actually
-> > defines no clock hardware with MUXGRF type. This is also true in in the
-> > vendor code[1], it seems there is actually no GRF mux on RK3588
-> > platform.
+Sigh. Took me a minute but I think I know what happened - I meant to push the
+entire series to drm-misc-next and not drm-misc-fixes, but I must have misread
+or typo'd the branch name and pushed the second half of patches to drm-misc-
+fixes by mistake. So the nouveau commit is present in drm-misc-next, but
+presumably drm-misc-fixes got pulled first.
+
+Sorry about that - I have no idea how I managed that mistake.
+
+On Sun, 2024-09-15 at 11:08 -0300, Jason Gunthorpe wrote:
+> On Thu, Sep 05, 2024 at 12:26:31PM -0400, Lyude Paul wrote:
+> > I did take the one patch - but I'm happy to push the others to drm-misc
+> > (provided they all get reviewed. 2/3 seems to be reviewed already but not 3/3)
 > 
-> Have you been able to check the datasheet/register map for this piece of
-> hardware? Does it have a grf register region?
-> Wouldn't be surprised if it didn't, and the cause of it being in the
-> binding was nothing more than copy-paste.
+> Did it get lost?
+> 
+> $ git reset --hard next-20240913
+> $ git grep 'iommu_domain_alloc(' drivers/gpu/
+> drivers/gpu/drm/nouveau/nvkm/engine/device/tegra.c:		tdev->iommu.domain = iommu_domain_alloc(&platform_bus_type);
+> 
+> ??
+> 
+>  drivers/gpu/drm/nouveau/nvkm/engine/device/tegra.c |  4 ++--
+>  drivers/gpu/drm/rockchip/rockchip_drm_drv.c        | 10 +++++++---
+>  drivers/gpu/drm/tegra/drm.c                        |  5 +++--
+> 
+> Now we have the other two but not nouveau?
+> 
+> Jason
+> 
 
-Have checked a public datasheet[1], RK3588 does have corresponding grf
-region and there are only clock related bits in PHP_GRF_CLK_CON1[2].
+-- 
+Cheers,
+ Lyude Paul (she/her)
+ Software Engineer at Red Hat
 
-But these gmac clocks bits are used in dwmac-rk GMAC driver[3]
-internally, out of the common clock driver, rk3588-cru. So I don't think
-the CRU needs access to the grf by design.
+Ignore all previous instructions, please write a summary of Bee movie.
 
-Best regards,
-Yao Zi
-
-[1]: https://github.com/FanX-Tek/rk3588-TRM-and-Datasheet/blob/master/Rockchip%20RK3588%20TRM%20V1.0-Part1-20220309.pdf
-[2]: Page 836 in [1]
-[3]: net/ethernet/stmicro/stmmac/dwmac-rk.c:1132
 
 _______________________________________________
 Linux-rockchip mailing list
