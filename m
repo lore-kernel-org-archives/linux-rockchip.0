@@ -4,67 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D39CEC3ABB2
-	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Sep 2024 15:46:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1402AC3ABA2
+	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Sep 2024 16:39:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=qRLBH+IJFP1SdKSrLYzWjENuNOkaQ8YmSImhDe5uqhE=; b=aXKKzC6tahU/nM
-	NjDpp5pEQFGwRSF7BTef1+S/EiqnzpJ98Bhg2yYXoU1UQRdexjyeWf/cHLxq33mSpU8JHah6DfEy0
-	hivWDfx1qppUdg/TjOWV3tVZt5RosxnO0JiD9oYKwHvj3i2i2ZVAS2ZRgOafXhW7SDzhk6x8h5lt4
-	HqES8M04pSupcwDWGPdDTwz7YOaiMBq7lCgAsaz7y5hmPxOartUOah/ErYmZFwijLFnC+nNHcJmu2
-	t8UAfLjOAkmonEaSpjiIEVuXGQcXGUx2ok170su5HPxg90NBMbfUhgx4chzJu6aJuUdp+YI1kW1XA
-	iOshK623uah6c06EyEnA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=8wklL4/G+FyxE7n+/27xWKM3fMHfRDMJXQGka+sGL7c=; b=uKy4hWCKnGLzBJxRCUII1Tivsk
+	ytf13QsWSI/VOEaiwdiK8Rsnk6B75x03gz1gZvh6MdHG5tEWX5NyPXjsmoI0Mwecc1WCqg2hxHOQ7
+	E0E42KHE1e6rrSFzrGxYsK7dh04oGp1pIQJC5RBofr2/25cbNWJE+aMsrisC+Gcj7GJyAguYx7+pH
+	EiBzIWO0Q36aj2MiP6Xvzx6ULAibkat7S1arJ/kXEnrqviR8f78BqMDdaIFtbnHs6AfrnxDko78b/
+	e+Gk8Sla2nNSCzfrQFa3b/tBJkxwUIx12O6En8BCpI+yqZwh8mBYH/iZFKV6NbyKwjxFGrtBo1UMY
+	fYDWdHBQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1sqDvc-00000004NrW-4AbN;
-	Mon, 16 Sep 2024 15:46:16 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1sqEkk-00000004UIl-3410;
+	Mon, 16 Sep 2024 16:39:06 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1sqDvZ-00000004NqF-0Miq
-	for linux-rockchip@lists.infradead.org;
-	Mon, 16 Sep 2024 15:46:15 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1726501560; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=LhiurA48EpisqqZ0he4yr2KgWvnbjwYiwvuJUJKoKw8l0u1SB8eyiBBxKPkxNV8FML7eg4D1PIzpipMu9EepsQTdTg2WwKeC7BqKF0duEomoKPxO3JUCyBk9ogYubmglcaRtacUJBNEan+covTsDFeRlPwDnqk+wKfBgu/IHxRA=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1726501560; h=Content-Type:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=TjwJ4FDCdt734YAQPc/f2Tm44fHky68i9g69jZnst8o=; 
-	b=NVgsKp+phprM340tifR6Zf3HfXSd538n2mMpf7Sxn6fAIffRkLWIYGQN9jlW23AKrhsaPvOLNo6ejG+M2zty3vQ3lSbfKvs2+Z7nI/SKZ5dyVYmzTtgcrXEdp26E6nFDuzVZ0jMTIWH6bw8pGwFeGCHf+FrsGaXQIrbUIY+xtUM=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=adrian.larumbe@collabora.com;
-	dmarc=pass header.from=<adrian.larumbe@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1726501560;
-	s=zohomail; d=collabora.com; i=adrian.larumbe@collabora.com;
-	h=Date:Date:From:From:To:To:Cc:Cc:Subject:Subject:Message-ID:References:MIME-Version:Content-Type:In-Reply-To:Message-Id:Reply-To;
-	bh=TjwJ4FDCdt734YAQPc/f2Tm44fHky68i9g69jZnst8o=;
-	b=ExslBwo1iemmyAQusGX7f+Lik0IfWnvNj5sSWaHLMNfZLT4izEgdzeJz0q32dVay
-	rr75PHSqPl+d0E0T44hrj9w4M1b+9sX65K0gzIzL+zyLhbqZMSv8pZ3SFGTk8VlAJ5O
-	TEQrqAzvlbAwcGeLw2Y3z0ONKvTVbr6WVFx6a9J4=
-Received: by mx.zohomail.com with SMTPS id 1726501557780427.4745003950086;
-	Mon, 16 Sep 2024 08:45:57 -0700 (PDT)
-Date: Mon, 16 Sep 2024 16:45:53 +0100
-From: =?utf-8?B?QWRyacOhbiBNYXJ0w61uZXo=?= Larumbe <adrian.larumbe@collabora.com>
-To: Sebastian Reichel <sebastian.reichel@collabora.com>
-Cc: Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Heiko Stuebner <heiko@sntech.de>, Ulf Hansson <ulf.hansson@linaro.org>, 
-	Elaine Zhang <zhangqing@rock-chips.com>, Boris Brezillon <boris.brezillon@collabora.com>, 
-	devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	linux-pm@vger.kernel.org, kernel@collabora.com
-Subject: Re: [PATCH v1 0/6] Fix RK3588 GPU domain
-Message-ID: <36ddjlsivqd4kzxckegxvjfuddkhigj5kjt3gurossfaihbddv@3stp2dnidusn>
-References: <20240910180530.47194-1-sebastian.reichel@collabora.com>
+	id 1sqEfj-00000004Tbi-2mfJ;
+	Mon, 16 Sep 2024 16:33:56 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id E30DBA4319E;
+	Mon, 16 Sep 2024 16:33:46 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 085B2C4CEC4;
+	Mon, 16 Sep 2024 16:33:51 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1726504434;
+	bh=QqNjHfV+bL/edqLFl7taMwluNBafAR8LxONwNNjOAcU=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=dCtmew8RuqFe0tIQcMcetN0cyzAHNDgdFZ96zEVYKfPmrkzcqwxb+1XhE7mAjR4uI
+	 RxKQ7chmm1h6BYcrJXRsxT9njZjF6rjVr0+FErjNGqUjkGMgLomRcrQxQHUOufoZJK
+	 Q56W8acdw/sfpxF1s6kcXcgR8FGgDk6g+4J46bIvaZvjNqkg6QWpFrERfBpIDB/XcV
+	 E/fo1OC8fdawkQS+t1f6RjqYhvTh85RgAYOKLCkZYpFZm0daWBK6XVkr3QJR6wOdPB
+	 TaLIt9sTOdxyZSoRXm/ItCMVC4RyphBNSwbYFAbtvvNYR+Sf4AIy7i2/X5hFkFSFTX
+	 9HSjvaOEucs7w==
+Date: Mon, 16 Sep 2024 17:33:49 +0100
+From: Conor Dooley <conor@kernel.org>
+To: Yao Zi <ziyao@disroot.org>
+Cc: Heiko Stuebner <heiko@sntech.de>, Conor Dooley <conor+dt@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Rob Herring <robh@kernel.org>,
+	Michael Turquette <mturquette@baylibre.com>,
+	Stephen Boyd <sboyd@kernel.org>, linux-clk@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+	devicetree@vger.kernel.org
+Subject: Re: Possible misleading information in rockchip,rk3588-cru.yaml
+Message-ID: <20240916-neuron-surfer-32db6440e1ad@spud>
+References: <ZuIJgiN2xp6oPrHD@pineapple>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20240910180530.47194-1-sebastian.reichel@collabora.com>
+In-Reply-To: <ZuIJgiN2xp6oPrHD@pineapple>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240916_084613_255401_08B44159 
-X-CRM114-Status: GOOD (  25.15  )
+X-CRM114-CacheID: sfid-20240916_093355_791623_759C1754 
+X-CRM114-Status: GOOD (  15.52  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,78 +71,69 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============4557875856580231669=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi, Sebastian, thanks for the patches.
 
-I've tested it on a Rockchip 5b board and now I can reload the driver at any time.
+--===============4557875856580231669==
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="762l3reB4+o5LV48"
+Content-Disposition: inline
 
-Tested-by: Adrian Larumbe <adrian.larumbe@collabora.com>
 
-On 10.09.2024 19:57, Sebastian Reichel wrote:
+--762l3reB4+o5LV48
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Wed, Sep 11, 2024 at 09:20:02PM +0000, Yao Zi wrote:
 > Hi,
-> 
-> I got a report, that the Linux kernel crashes on Rock 5B when the panthor
-> driver is loaded late after booting. The crash starts with the following
-> shortened error print:
-> 
-> rockchip-pm-domain fd8d8000.power-management:power-controller: failed to set domain 'gpu', val=0
-> rockchip-pm-domain fd8d8000.power-management:power-controller: failed to get ack on domain 'gpu', val=0xa9fff
-> SError Interrupt on CPU4, code 0x00000000be000411 -- SError
-> 
-> This series first does some cleanups in the Rockchip power domain
-> driver and changes the driver, so that it no longer tries to continue
-> when it fails to enable a domain. This gets rid of the SError interrupt
-> and long backtraces. But the kernel still hangs when it fails to enable
-> a power domain. I have not done further analysis to check if that can
-> be avoided.
-> 
-> Last but not least this provides a fix for the GPU power domain failing
-> to get enabled - after some testing from my side it seems to require the
-> GPU voltage supply to be enabled.
-> 
-> I'm not really happy about the hack to get a regulator for a sub-node
-> in the 5th patch, which I took over from the Mediatek driver. But to
-> get things going and open a discussion around it I thought it would be
-> best to send a first version as soon as possible.
-> 
-> Greetings,
-> 
-> -- Sebastian
-> Sebastian Reichel (6):
->   pmdomain: rockchip: forward rockchip_do_pmu_set_power_domain errors
->   pmdomain: rockchip: cleanup mutex handling in rockchip_pd_power
->   pmdomain: rockchip: reduce indention in rockchip_pd_power
->   dt-bindings: power: rockchip: add regulator support
->   pmdomain: rockchip: add regulator support
->   arm64: dts: rockchip: Add GPU power domain regulator dependency for
->     RK3588
-> 
->  .../power/rockchip,power-controller.yaml      |   3 +
->  .../boot/dts/rockchip/rk3588-armsom-sige7.dts |   4 +
->  arch/arm64/boot/dts/rockchip/rk3588-base.dtsi |   2 +-
->  .../boot/dts/rockchip/rk3588-coolpi-cm5.dtsi  |   4 +
->  .../rockchip/rk3588-friendlyelec-cm3588.dtsi  |   4 +
->  .../arm64/boot/dts/rockchip/rk3588-jaguar.dts |   4 +
->  .../boot/dts/rockchip/rk3588-ok3588-c.dts     |   4 +
->  .../boot/dts/rockchip/rk3588-rock-5-itx.dts   |   4 +
->  .../boot/dts/rockchip/rk3588-rock-5b.dts      |   4 +
->  .../arm64/boot/dts/rockchip/rk3588-tiger.dtsi |   4 +
->  .../boot/dts/rockchip/rk3588s-coolpi-4b.dts   |   4 +
->  .../dts/rockchip/rk3588s-khadas-edge2.dts     |   4 +
->  .../boot/dts/rockchip/rk3588s-orangepi-5.dts  |   4 +
->  drivers/pmdomain/rockchip/pm-domains.c        | 130 +++++++++++++-----
->  14 files changed, 144 insertions(+), 35 deletions(-)
-> 
-> -- 
-> 2.45.2
+>=20
+> rockchip,rk3588-cru.yaml, dt-binding for RK3588 clock and reset module,
+> contains description of customized property "rockchip,grf",
+>=20
+>   rockchip,grf:
+>     $ref: /schemas/types.yaml#/definitions/phandle
+>     description: >
+>       phandle to the syscon managing the "general register files". It is
+>       used for GRF muxes, if missing any muxes present in the GRF will
+>       not be available.
+>=20
+> But after doing some searching, I found that clk-rk3588.c actually
+> defines no clock hardware with MUXGRF type. This is also true in in the
+> vendor code[1], it seems there is actually no GRF mux on RK3588
+> platform.
 
-Adrian Larumbe
+Have you been able to check the datasheet/register map for this piece of
+hardware? Does it have a grf register region?
+Wouldn't be surprised if it didn't, and the cause of it being in the
+binding was nothing more than copy-paste.
+
+--762l3reB4+o5LV48
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZuhd7QAKCRB4tDGHoIJi
+0sfLAP4rUDigw1FDwiNdvnZREugTaL9WpuIT1BHZHS4TrWxCZgEApyjlEt72BdfD
+fapeDQzlfMZjPRcI/2jXPFZkPzGcuw8=
+=2kPB
+-----END PGP SIGNATURE-----
+
+--762l3reB4+o5LV48--
+
+
+--===============4557875856580231669==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============4557875856580231669==--
+
