@@ -4,63 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 06C73C3ABB2
-	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Sep 2024 22:39:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 54DA8CAC59E
+	for <linux-rockchip@archiver.kernel.org>; Tue, 17 Sep 2024 20:16:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=VejrtB8BrUuty7cxYs9szFZ6/3A6p4m2rEe/yvzQ8Ig=; b=Dz12yF5GHuUUhd
-	164h+z7vEasH9MomrBdCmI9O5gNjaR9ZzSWCE2byUIYkmqMLypIST/4xb68K5pJ1emuJb1QZan9Lw
-	Sol9vOxZzXmZYS02CnTCReVOkD2ReSch3iUwuLPbN9zNF+b/Px0kqFkAY6zkmwdAvdJNroFHkagEn
-	J223nxXE+6VHUPqEHA3nLEtkWvyZjSwL2GElj0G8twZaT8Ki2pHqJhHOzOet/Nwf0nwTjNNjTZa6r
-	uyLAtqnAaK/unERnS2S9v3BlzEvtI+hWHBRHJzcYIXcPdKxiZEkSwKkvmpn0XbRdAtSzfnz6i9IPb
-	OeMVus77aXjXRsxh40aw==;
+	List-Owner; bh=swvBCCsEurhZQxk3+qxIqYTiXVaWCa/ssGHyXPFOoZ4=; b=Z8P6771Mw0P8zd
+	coJIhPwpKrlUtl3nO759NFEaL7+He4ooakKQK4FB5flmHOL/a6+lwhvVWNLWea0Skml1b3yHAOvrX
+	rFCrRjZOdCaRDmRHKXBplnk5ivrTj/4s505cd51Jo/z5thVN6X6qd9HfcuVZUa/e3bBP10rOIcqJT
+	MdiSi2a2y46o+YL2K05ASbsBWkAp9aSs7ZSindT0plRGq2qUPXGpuPfIxGRFVei1KvXK0Dsb/L7DN
+	nExQhY6ZZ2LZnLJIolwb1z+TkRzuU5pELKCx7lOE7kQihAm0ApmwjcM5GW0y7zzcumJok8H5QB9ma
+	2oD+A6E2n4g66JLPWXcQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1sqKNp-000000050nN-1vXy;
-	Mon, 16 Sep 2024 22:39:49 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1sqecS-00000006qQY-07m6;
+	Tue, 17 Sep 2024 20:16:16 +0000
+Received: from layka.disroot.org ([178.21.23.139])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1sqKMj-000000050iU-0bhY;
-	Mon, 16 Sep 2024 22:38:42 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
-	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=zFh+9m6bFt3yYPy5J3eOxOrUjNZGpq4euBHAABmwVps=; b=k0zO8q7SKxTLeYly004Mi7yqY3
-	glGoj/l8uUO8qwaZmuBCnf3/NFouVzClQcl6FTauS3dwHQoDqKl5tkGVNS0V/GSumMVCOhOis4A0S
-	3Ko82rO0PR3BBecXgQCGvBY0HrmYVPp8AYeA9956gOSETARzKRuK/Bke5wNIs9A5SaBgVpWZfMhiz
-	yceYTgliTGaepu0/VcmFDV7Szm3UCmwyQBRVOKgUjcr1BYg34BYjOfDGyz+er6xe20QmPB5uLi015
-	4HuuRINmzNF2c9vI6M42Q22lCDsZGx+3pOGZL2ZGXbkkPx0ju4P0f76I2KqnOThn0gkUn+U2oLt+e
-	offU7DUA==;
-Received: from [213.164.25.30] (helo=phil.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1sqKMa-0003Pj-Mf; Tue, 17 Sep 2024 00:38:32 +0200
-From: Heiko Stuebner <heiko@sntech.de>
-To: Alexandre Belloni <alexandre.belloni@bootlin.com>
-Cc: Karthikeyan Krishnasamy <karthikeyan@linumiz.com>, robh@kernel.org,
- krzk+dt@kernel.org, conor+dt@kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-rtc@vger.kernel.org,
- Conor Dooley <conor.dooley@microchip.com>
-Subject: Re: [PATCH v3 3/6] dt-bindings: rtc: microcrystal,rv3028: add #clock-cells
- property
-Date: Tue, 17 Sep 2024 00:38:30 +0200
-Message-ID: <8425812.T7Z3S40VBb@phil>
-In-Reply-To: <20240916143407734d133c@mail.local>
-References: <20240912142451.2952633-1-karthikeyan@linumiz.com> <2955009.e9J7NaK4W3@phil>
- <20240916143407734d133c@mail.local>
+	id 1sqebJ-00000006qEi-1MEa;
+	Tue, 17 Sep 2024 20:15:07 +0000
+Received: from mail01.disroot.lan (localhost [127.0.0.1])
+	by disroot.org (Postfix) with ESMTP id D9E282004E;
+	Tue, 17 Sep 2024 22:14:59 +0200 (CEST)
+X-Virus-Scanned: SPAM Filter at disroot.org
+Received: from layka.disroot.org ([127.0.0.1])
+ by localhost (disroot.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id Z5SgtwYYZVmj; Tue, 17 Sep 2024 22:14:58 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=disroot.org; s=mail;
+	t=1726604098; bh=81iSzbOqnhSne0ktuF01wg+nnD9mtVaFvoeVj8EBkw8=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=Th5+iAsGerByToyw4NuXu8K47DlwvEDYpiK0yxRx5l/RxP8eRTk9Tm/L/5lcBEv99
+	 y3um4swxXKfFj5++rSau/mlVnzW2SqcbI4TWoNO2VDtzgNWtmtTlAyfZ8WZDDARLlk
+	 njS39OGvoKPoyXdQ8nsieeU/tpVdGWrTp1PdtAJ/Cuw0wtP9+CWySSTKqzWZdY3Qy3
+	 Dlf5vTvHGhqBWP8LK9KMyRlPhE0/CGUAopEuf2GseFQiB86ZAGDFg7Qt2LcWr5n1sP
+	 i1rVOELPo+x6mIj5Tfaoj2l7RcZ7YAEo2Yom9g51I1QImo6U12IAJzDuR8vkB9T2mX
+	 nsMCVFH3CzB7A==
+Date: Tue, 17 Sep 2024 20:14:36 +0000
+From: Yao Zi <ziyao@disroot.org>
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Jiri Slaby <jirislaby@kernel.org>,
+	Chris Morgan <macromorgan@hotmail.com>,
+	Jonas Karlman <jonas@kwiboo.se>, Tim Lunn <tim@feathertop.org>,
+	Andy Yan <andyshrk@163.com>,
+	Muhammed Efe Cetin <efectn@protonmail.com>,
+	Jagan Teki <jagan@edgeble.ai>, Dragan Simic <dsimic@manjaro.org>,
+	Ondrej Jirman <megi@xff.cz>, devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+	linux-serial@vger.kernel.org
+Cc: Celeste Liu <CoelacanthusHex@gmail.com>
+Subject: Re: [PATCH v4 0/4] Add initial support for Rockchip RK3528 SoC
+Message-ID: <ZunjLMQGEcES2zIV@pineapple>
+References: <20240829092705.6241-1-ziyao@disroot.org>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20240829092705.6241-1-ziyao@disroot.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240916_153841_237371_2F914056 
-X-CRM114-Status: GOOD (  18.31  )
+X-CRM114-CacheID: sfid-20240917_131505_811917_D9AC223C 
+X-CRM114-Status: GOOD (  19.69  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,39 +84,57 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Am Montag, 16. September 2024, 16:34:07 CEST schrieb Alexandre Belloni:
-> On 16/09/2024 16:26:23+0200, Heiko Stuebner wrote:
-> > Hi Alexandre,
-> > 
-> > Am Montag, 16. September 2024, 14:37:56 CEST schrieb Alexandre Belloni:
-> > > On 12/09/2024 19:54:48+0530, Karthikeyan Krishnasamy wrote:
-> > > > RV3028 RTC has a clock out features, the clk out can be
-> > > > controlled using clkout register, to consume the clock out
-> > > > from rv3028 '#clock-cells' property is added.
-> > > > 
-> > > > Acked-by: Conor Dooley <conor.dooley@microchip.com>
-> > > Acked-by: Alexandre Belloni <alexandre.belloni@bootlin.com>
-> > 
-> > just for my understanding, does this mean that you expect this change
-> > to get applied together with the others?
-> > 
-> > No preference, just making sure I understand :-)
+On Thu, Aug 29, 2024 at 09:27:01AM +0000, Yao Zi wrote:
+> Rockchip RK3528 is a quad-core ARM Cortex-A53 SoC designed for
+> multimedia application. This series add a basic device tree with CPU,
+> interrupts and UART nodes for it and is able to boot into a kernel with
+> only UART console.
 > 
-> i was actually wondering how this was going to get applied. I guess that
-> if you are planning to take the rest, you can also apply this one.
+> Has been tested on Radxa E20C board[1] with vendor U-boot, successfully
+> booted into initramfs with this log[2].
+> 
+> [1]: https://docs.radxa.com/en/e/e20c
+> [2]: https://gist.github.com/ziyao233/b74523a1e3e8bf36286a572e008ca319
+> 
+> Changed from v3:
+> - move mmio devices into soc node
+> https://lore.kernel.org/all/20240814155014.18097-1-ziyao@disroot.org/
+> 
+> Changed from v2:
+> - fix fixed-clock nodename
+> https://lore.kernel.org/all/20240811140725.64866-1-ziyao@disroot.org/
+> 
+> Changed from v1:
+> - fix stdout-path
+> - style improvements
+> https://lore.kernel.org/all/20240803125510.4699-2-ziyao@disroot.org/
+> 
+> Yao Zi (4):
+>   dt-bindings: serial: snps-dw-apb-uart: Document Rockchip RK3528
+>   dt-bindings: arm: rockchip: Add Radxa E20C board
+>   arm64: dts: rockchip: Add base DT for rk3528 SoC
+>   arm64: dts: rockchip: Add Radxa e20c board
+> 
+>  .../devicetree/bindings/arm/rockchip.yaml     |   5 +
+>  .../bindings/serial/snps-dw-apb-uart.yaml     |   1 +
+>  arch/arm64/boot/dts/rockchip/Makefile         |   1 +
+>  .../boot/dts/rockchip/rk3528-radxa-e20c.dts   |  22 ++
+>  arch/arm64/boot/dts/rockchip/rk3528.dtsi      | 189 ++++++++++++++++++
+>  5 files changed, 218 insertions(+)
+>  create mode 100644 arch/arm64/boot/dts/rockchip/rk3528-radxa-e20c.dts
+>  create mode 100644 arch/arm64/boot/dts/rockchip/rk3528.dtsi
+> 
+> -- 
+> 2.46.0
+> 
 
-so we were both wondering the same thing :-) .
+Ping on this thread. Is it possible to get this merged in v6.12? Or
+anything else I need to do?
 
-For some other watchdog binding Guenter suggested the binding patch
-to go with the rest, so I wanted to make sure your Ack meant the same.
+Thanks for your time.
 
-But of course I'm also fine/happy with you just picking up this rtc
-binding patch for the rtc tree :-)
-
-Heiko
-
-
-
+Best regards,
+Yao Zi
 
 _______________________________________________
 Linux-rockchip mailing list
