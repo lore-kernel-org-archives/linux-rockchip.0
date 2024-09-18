@@ -4,62 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 52968CAC5B2
-	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Sep 2024 02:20:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A0056CAC5AE
+	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Sep 2024 05:43:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=RvhBlua5ry8AIVC9eK/YpY/A4GIRe8QNIyYsYUVbeM8=; b=uUGZ9u3LF+jV7d
-	0hv2o15WqDTMD9VZzhUZBxSQpqYAXcOxBUQ1nB/3SR9ymo5kM+rPWJQX9V1ScKpA8ZvZZRy36SL/f
-	9PbmWL0Q7xIl1KBqsO/X4SnYptr2SyieA2V9U4P3fIPO5xsaaj9qQc5S/Ecflz2fG+q4zXxuBtJPX
-	/Rb87phPBz1qRkolvO9XCUQX+zodwc1T/ZcJ+tvc4AVYZadqL3WAso88V3EwwfEiLbi8hQm99nb1s
-	Q9+4kY244hWYt7/smT4m4hUKs9W9EBqW0OwXSOv44l0QVvr48eV8UoD7EV7EBsJMA15FwGglTnOd/
-	t34IXnxxbxx692DOBdPg==;
+	List-Owner; bh=Icv6greoyG9WxFyc3kcW2ukIQV2ILTjxf7dEwaLXYd0=; b=2NA1DuiHz3QHvI
+	GH3DsR7MxeX9Uuf1OBGio/mMyPaMmCDLUBDOCLZ3DbxYIHBG0mEyGHBS53o9sQNBVN70zg0G4Y3T1
+	BYRMIbmNx1nudzRUzZ3pybEblljdjqNTVt6ZhypZ3llDIuw//0uzIjVhuoXkB2f+tyUp3iY+tf4eZ
+	Asprw1UG8UxEHwx/6AoC4Jwn02EnAEJGuuXy7cgGYSu9b+qMOE3gFAdOX0X8rOZ9f3Urr+BU2+U5G
+	TNzOwj2EOd+4Hw94oiwHczs3J9aGOIFfZJMcv2OWkxTlTERfulzDxGDSMqcgTD8BiLuQlukfJ6RCK
+	bIm8WHtcxUfK9cK77cKA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1sqkJ0-00000007JTQ-0Lp3;
-	Wed, 18 Sep 2024 02:20:34 +0000
-Received: from mail-m49198.qiye.163.com ([45.254.49.198])
+	id 1sqnSm-00000007UJY-1rgZ;
+	Wed, 18 Sep 2024 05:42:52 +0000
+Received: from smtpbguseast3.qq.com ([54.243.244.52])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1sqkIx-00000007JSd-0w3w;
-	Wed, 18 Sep 2024 02:20:32 +0000
-Received: from amadeus-Vostro-3710.lan (unknown [IPV6:240e:3b3:2c00:2bd0::1])
-	by smtp.qiye.163.com (Hmail) with ESMTPA id B1ADE7E0149;
-	Wed, 18 Sep 2024 10:20:08 +0800 (CST)
-From: Chukun Pan <amadeus@jmu.edu.cn>
-To: bigfoot@classfun.cn
-Cc: amadeus@jmu.edu.cn,
-	conor+dt@kernel.org,
-	devicetree@vger.kernel.org,
-	dsimic@manjaro.org,
-	heiko@sntech.de,
-	jonas@kwiboo.se,
-	krzk+dt@kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH v3 3/3] arm64: dts: rockchip: add dts for Ariaboard Photonicat RK3568
-Date: Wed, 18 Sep 2024 10:20:05 +0800
-Message-Id: <20240918022005.487551-1-amadeus@jmu.edu.cn>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <1a7d017a-8317-462b-8698-03cc7099a74f@classfun.cn>
-References: <1a7d017a-8317-462b-8698-03cc7099a74f@classfun.cn>
+	id 1sqnSi-00000007UI1-3fRO
+	for linux-rockchip@lists.infradead.org;
+	Wed, 18 Sep 2024 05:42:50 +0000
+X-QQ-mid: bizesmtpip3t1726638152t612xs2
+X-QQ-Originating-IP: IUWXV2PxHOluGDantpJ83uhm/DZ/VLPGllmzA8Ut3BY=
+Received: from [IPV6:240f:10b:7440:1:fcdb:81be ( [localhost])
+	by bizesmtp.qq.com (ESMTP) with 
+	id ; Wed, 18 Sep 2024 13:42:28 +0800 (CST)
+X-QQ-SSF: 0000000000000000000000000000000
+X-QQ-GoodBg: 0
+X-BIZMAIL-ID: 16164053558485138980
+Message-ID: <C295552EB2D8F3B1+a5cf5631-9faf-4fea-87d7-ea66e532b867@radxa.com>
+Date: Wed, 18 Sep 2024 14:42:27 +0900
 MIME-Version: 1.0
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWS1ZQUlXWQ8JGhUIEh9ZQVlCSBpOVktCTE0ZQ08dSxpDGFYeHw5VEwETFhoSFy
-	QUDg9ZV1kYEgtZQVlJT0seQUgZSEFJGEtLQUkZH0tBQUpZV1kWGg8SFR0UWUFZT0tIVUpLSUJDQ0
-	xVSktLVUtZBg++
-X-HM-Tid: 0a9202ee0f9b03a2kunmb1ade7e0149
-X-HM-MType: 10
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6Pgw6Qzo4TDI5EQpMEjUQKigJ
-	PgkwCSNVSlVKTElNTUlNS0tCTk5CVTMWGhIXVRoWGh8eDgg7ERYOVR4fDlUYFUVZV1kSC1lBWUlP
-	Sx5BSBlIQUkYS0tBSRkfS0FBSllXWQgBWUFKTktMNwY+
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] arm64: dts: rockchip: remove cd-gpios property in sdmmc0
+ for Radxa E25
+To: Chukun Pan <amadeus@jmu.edu.cn>
+Cc: heiko@sntech.de, linux-rockchip@lists.infradead.org
+References: <AC9279A68EEE724E+253b27d6-e954-44ba-ab42-e8257ae9a2bb@radxa.com>
+ <20240918020016.472157-1-amadeus@jmu.edu.cn>
+Content-Language: en-US
+From: FUKAUMI Naoki <naoki@radxa.com>
+In-Reply-To: <20240918020016.472157-1-amadeus@jmu.edu.cn>
+X-QQ-SENDSIZE: 520
+Feedback-ID: bizesmtpip:radxa.com:qybglogicsvrgz:qybglogicsvrgz8a-1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240917_192031_470436_78470CDE 
-X-CRM114-Status: UNSURE (   4.91  )
+X-CRM114-CacheID: sfid-20240917_224249_498887_27A40C7A 
+X-CRM114-Status: UNSURE (   7.40  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -72,22 +65,33 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-> I seem to have misunderstood the rules in dt-bindings before.
-> The following looks better:
+Hi,
 
-Please also update other regulators to unify the naming.
+On 9/18/24 11:00, Chukun Pan wrote:
+>> pcie30x1_clkreqnm0 is unused[1], so it can be used for sdmmc0.
+> 
+> Please update the pinctrl of pcie3x1 node first to avoid conflicts.
 
-Thanks,
-Chukun
+I see. I will add it as first patch of this series.
 
--- 
-2.25.1
+> Btw I don't think this commit needs a fixes tag.
 
+sure.
+
+Best regards,
+
+--
+FUKAUMI Naoki
+Radxa Computer (Shenzhen) Co., Ltd.
+
+> Thanks,
+> Chukun
+> 
 
 _______________________________________________
 Linux-rockchip mailing list
