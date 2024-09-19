@@ -4,75 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9BEA7CF3963
-	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Sep 2024 19:27:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E961CCF396C
+	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Sep 2024 20:35:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=S9U/BCc+lC2xlomhHFGbsBlakNZE0dlfJ6NraavCBK4=; b=icwZbAOKQ3EW7MfZK81sMERICA
-	twOgo1ukV/Oy7y7jcUdfM3G5wrzwCOZIMIdr06R8qWfdFaFcdj9G3oiEhAxvEMGpemsroLT5SX+dE
-	B/zCPCtKUKInIKxON2KFNO8vOQytlREBf1LWtgxMhJciwrAsGUcnzKzUm+BE1F9ck1Mrj44UkIi7j
-	k1KQ4Xk9p6MmSSY3FMleQ1wAxGczS5jqwg1lNVF2V9mT4/rJxmJoDZm/w+XVA8EZVL8clp7MA8nRR
-	g5FzVNvdcbPAC/eEU/pMsfpeE/FgR/EBhiTPoaoTqF2PCjfooaVn8n9TErxwJyq9MkGhK/Qa7oa12
-	hNiK0Ssw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=fjSftuGjIzp/4zYsmZKaHpUu7UOVSCCPf/iQZ41yNcg=; b=3TtdVaZBxTjEJ0
+	V0PCtgsShQtQx3Z20MbgZI0fSHfoYzXF468K9SYiIbzed6raM9qOehNMmS/BOJv4MQcDsMd+qUX7A
+	XnIf8ddq4n4Pn/Q5pYfTPbTNXxHznJb0Wji1KS4c9v87/e3zBJ/RKgWz5M/QP7aWGI+i4AmsRaKlF
+	aZo0hB9J9GBKxP8A4/Wag53qAlUnIk+fgVrT+ODAwTKnc2kJsnIEqQJOKT65zZjbPTJHD5npz1nDn
+	6/zu+Hv1gLDHifxJcl3zIohlotStF2BWrhC9es78bA8+ur6OBCLzR3fWreutrY9bUWmmI33wu0G2K
+	qfK34ejmBsC9VOavZT9A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1srMoY-0000000AucN-2j4Z;
-	Thu, 19 Sep 2024 19:27:42 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1srNrt-0000000Ayum-1Rn7;
+	Thu, 19 Sep 2024 20:35:13 +0000
+Received: from smtp.forwardemail.net ([149.28.215.223])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1srMoW-0000000Aubu-0Cv7
+	id 1srNrp-0000000AytT-3rt9
 	for linux-rockchip@lists.infradead.org;
-	Thu, 19 Sep 2024 19:27:41 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1726774046; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=gzUFKT1zZHbHP8nrXYFQSeK/Vbu95YHXygfLOyzh7xLvaS+kfB4wbx7xPFlCub3gcfSEVOV+gb1jAd4z3YCyXyaaaMgRJeeLYjDWGYm1Qc03X19kr1YChlB9U8mZhbyNv/UQ8GRvrL/eIft9KpVGH6enO/Ar+IH21aGflvFqlWg=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1726774046; h=Content-Type:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=t4Ne6sfF33Z90OyTmpxA9lLW1DDECmfnMlVBavSL5ic=; 
-	b=ipzXPtcdqeWebG+eqHH0DMV6ZnEIBxSP4DKIKEkSVEDO435h2ibNSrpjCYffUYGkQx3Z1aLp7YArZuwxew4/LtGjBCiv7qySAPT1qIfiPpR2pGv5n8XZHe36JOaU8I4YVnEbrM/98Cov5/H9f6JJzhGzal3i47/5Z5etbrJ3blE=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=sebastian.reichel@collabora.com;
-	dmarc=pass header.from=<sebastian.reichel@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1726774046;
-	s=zohomail; d=collabora.com; i=sebastian.reichel@collabora.com;
-	h=Date:Date:From:From:To:To:Cc:Cc:Subject:Subject:Message-ID:References:MIME-Version:Content-Type:In-Reply-To:Message-Id:Reply-To;
-	bh=t4Ne6sfF33Z90OyTmpxA9lLW1DDECmfnMlVBavSL5ic=;
-	b=boxTSPfrtotkdSf8bMksmMn/hm2KakSAkiCoWXnsGwZZxhVlxlbNwcY4zmfbtW0U
-	zWipuumOiMSwc5x2E510uzqFaxClI7zwIiMr1L6ubMeeoE1FN+keULZZ7pIGqfz+fYG
-	vX8EOjOkteMYJzqcXO8Qy6jVGQWLEPWUkiUPjJyA=
-Received: by mx.zohomail.com with SMTPS id 1726774044357158.77599800361543;
-	Thu, 19 Sep 2024 12:27:24 -0700 (PDT)
-Received: by mercury (Postfix, from userid 1000)
-	id BC5CE106031C; Thu, 19 Sep 2024 21:27:17 +0200 (CEST)
-Date: Thu, 19 Sep 2024 21:27:17 +0200
-From: Sebastian Reichel <sebastian.reichel@collabora.com>
-To: Jonas Karlman <jonas@kwiboo.se>
-Cc: Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Heiko Stuebner <heiko@sntech.de>, Ulf Hansson <ulf.hansson@linaro.org>, 
-	Elaine Zhang <zhangqing@rock-chips.com>, 
-	=?utf-8?B?QWRyacOhbiBNYXJ0w61uZXo=?= Larumbe <adrian.larumbe@collabora.com>, Boris Brezillon <boris.brezillon@collabora.com>, 
-	Chen-Yu Tsai <wens@csie.org>, devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org, 
-	linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org, kernel@collabora.com
-Subject: Re: [PATCH v2 6/6] arm64: dts: rockchip: Add GPU power domain
- regulator dependency for RK3588
-Message-ID: <zvzrjkacazxbv4cjxcnihv4rb2t3tu2zjd6zkny63ygfifpz7i@j4saijws5rcp>
-References: <20240919091834.83572-1-sebastian.reichel@collabora.com>
- <20240919091834.83572-7-sebastian.reichel@collabora.com>
- <a4d94eab-8543-45e1-b657-fa7f12470538@kwiboo.se>
+	Thu, 19 Sep 2024 20:35:11 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
+ h=Content-Transfer-Encoding: Content-Type: In-Reply-To: From: References:
+ Cc: To: Subject: MIME-Version: Date: Message-ID; q=dns/txt;
+ s=fe-e1b5cab7be; t=1726778091;
+ bh=zz0FhRzCqVonO5BnvIqXHA8hVDwCov/EtnoRwJVPDww=;
+ b=m707pfNklfj/F8bhdreoIYRnK6174Bsmox46pbvtGF+gFGVjCH6xcUJuOyK/ZIVso23Z+1X+m
+ W8TlEP0LE067dPNfiu0Bj5gLqO8RSDmILIRlW03DNqnDwb5Hmcs1YvrPwINgO6gnrNfgcZ0OHMQ
+ nW94IXG8eoC3CKG2KIXK9FZCEWhMU0PRkWN58ZCBK+jzKQ5k1qsBe9PoaumAZNPiHSeWcD/+VPU
+ U8+gYLkvGGJawYU7CdRrzeAaGwZK9PSEzO6w9a6O7YL2/TIHkLMTGcl7Y15VRBuq6wai0bcn5Bf
+ 4eFpFaMXqEho5m61UR1zNR3QVvCRf4QjEsqzGUEKHaqQ==
+Message-ID: <0dcb03be-dae1-4dcb-84d8-6ec204eab6ba@kwiboo.se>
+Date: Thu, 19 Sep 2024 22:34:38 +0200
 MIME-Version: 1.0
-In-Reply-To: <a4d94eab-8543-45e1-b657-fa7f12470538@kwiboo.se>
-X-Zoho-Virus-Status: 1
-X-Zoho-AV-Stamp: zmail-av-1.3.1/223.982.64
-X-ZohoMailClient: External
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 09/10] drm: bridge: dw_hdmi: Update EDID during hotplug
+ processing
+To: neil.armstrong@linaro.org
+Cc: Andrzej Hajda <andrzej.hajda@intel.com>, Robert Foss <rfoss@kernel.org>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+ Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Christian Hewitt <christianshewitt@gmail.com>,
+ Diederik de Haas <didi.debian@cknow.org>, dri-devel@lists.freedesktop.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+References: <20240908132823.3308029-1-jonas@kwiboo.se>
+ <20240908132823.3308029-10-jonas@kwiboo.se>
+ <4bc6a5e6-f2cf-43ab-8555-4f8aaf9f2cd0@linaro.org>
+Content-Language: en-US
+From: Jonas Karlman <jonas@kwiboo.se>
+In-Reply-To: <4bc6a5e6-f2cf-43ab-8555-4f8aaf9f2cd0@linaro.org>
+X-Report-Abuse-To: abuse@forwardemail.net
+X-Report-Abuse: abuse@forwardemail.net
+X-Complaints-To: abuse@forwardemail.net
+X-ForwardEmail-Version: 0.4.40
+X-ForwardEmail-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
+ 149.28.215.223
+X-ForwardEmail-ID: 66ec8ae664435c8d6510ab67
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240919_122740_165753_C4216413 
-X-CRM114-Status: GOOD (  29.14  )
+X-CRM114-CacheID: sfid-20240919_133510_005582_8E690764 
+X-CRM114-Status: GOOD (  14.80  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,129 +80,79 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============0374697030558248682=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Hi Neil,
 
---===============0374697030558248682==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="qcskwoh6fbt5qu6y"
-Content-Disposition: inline
+On 2024-09-13 10:02, Neil Armstrong wrote:
+> On 08/09/2024 15:28, Jonas Karlman wrote:
+>> Update successfully read EDID during hotplug processing to ensure the
+>> connector diplay_info is always up-to-date.
+>>
+>> Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
+>> ---
+>> v2: No change
+>> ---
+>>   drivers/gpu/drm/bridge/synopsys/dw-hdmi.c | 12 ++++++++++++
+>>   1 file changed, 12 insertions(+)
+>>
+>> diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
+>> index c19307120909..7bd9f895f03f 100644
+>> --- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
+>> +++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
+>> @@ -2457,6 +2457,18 @@ dw_hdmi_connector_detect(struct drm_connector *connector, bool force)
+>>   
+>>   	status = dw_hdmi_detect(hdmi);
+>>   
+>> +	/* Update EDID during hotplug processing (force=false) */
+>> +	if (status == connector_status_connected && !force) {
+>> +		const struct drm_edid *drm_edid;
+>> +
+>> +		drm_edid = dw_hdmi_edid_read(hdmi, connector);
+>> +		if (drm_edid)
+>> +			drm_edid_connector_update(connector, drm_edid);
+>> +		cec_notifier_set_phys_addr(hdmi->cec_notifier,
+>> +			connector->display_info.source_physical_address);
+>> +		drm_edid_free(drm_edid);
+>> +	}
+>> +
+>>   	if (status == connector_status_disconnected)
+>>   		cec_notifier_phys_addr_invalidate(hdmi->cec_notifier);
+>>   
+> 
+> I wonder why we should read edid at each dw_hdmi_connector_detect() call,
+> AFAIK it should only be when we have HPD pulses
 
+That is what this change intends to help do.
 
---qcskwoh6fbt5qu6y
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+As stated in the short comment EDID is only updated at HPD processing,
+i.e. when force=false. To be on the safe side EDID is also only updated
+here when connected and EDID could be read.
 
-Hi,
+drm_helper_probe_detect() is called with force=true in the
+fill_modes/get_modes call path that is triggered by userspace
+or the kernel kms client.
 
-On Thu, Sep 19, 2024 at 01:33:25PM GMT, Jonas Karlman wrote:
-> On 2024-09-19 11:12, Sebastian Reichel wrote:
-> > Enabling the GPU power domain requires that the GPU regulator is
-> > enabled. The regulator is enabled at boot time, but automatically
-> > gets disabled when there are no users.
-> >=20
-> > If the GPU driver is not probed at boot time or rebound while
-> > the system is running the system will try to enable the power
-> > domain before the regulator is enabled resulting in a failure
-> > hanging the whole system. Avoid this by adding an explicit
-> > dependency.
-> >=20
-> > Reported-by: Adri=E1n Mart=EDnez Larumbe <adrian.larumbe@collabora.com>
-> > Tested-by: Adrian Larumbe <adrian.larumbe@collabora.com> # On Rock 5B
-> > Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
-> > ---
-> >  arch/arm64/boot/dts/rockchip/rk3588-armsom-sige7.dts         | 4 ++++
-> >  arch/arm64/boot/dts/rockchip/rk3588-base.dtsi                | 2 +-
-> >  arch/arm64/boot/dts/rockchip/rk3588-coolpi-cm5.dtsi          | 4 ++++
-> >  arch/arm64/boot/dts/rockchip/rk3588-friendlyelec-cm3588.dtsi | 4 ++++
-> >  arch/arm64/boot/dts/rockchip/rk3588-jaguar.dts               | 4 ++++
-> >  arch/arm64/boot/dts/rockchip/rk3588-ok3588-c.dts             | 4 ++++
-> >  arch/arm64/boot/dts/rockchip/rk3588-rock-5-itx.dts           | 4 ++++
-> >  arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts              | 4 ++++
-> >  arch/arm64/boot/dts/rockchip/rk3588-tiger.dtsi               | 4 ++++
-> >  arch/arm64/boot/dts/rockchip/rk3588s-coolpi-4b.dts           | 4 ++++
-> >  arch/arm64/boot/dts/rockchip/rk3588s-khadas-edge2.dts        | 4 ++++
-> >  arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5.dts          | 4 ++++
-> >  12 files changed, 45 insertions(+), 1 deletion(-)
->=20
-> Any reason why following rk3588 DTs was not updated?
->=20
-> rk3588-evb1-v10.dts
-> rk3588-quartzpro64.dts
+After a HPD interrupt the call to drm_helper_hpd_irq_event() will call
+check_connector_changed() that in turn calls drm_helper_probe_detect()
+with force=false to check/detect if connector status has changed. It is
+in this call chain the EDID may be read and updated in this detect ops.
 
-These two I skipped initially, since they have the GPU regulators
-always enabled due to the coupling. I'm not 100% sure if the GPU
-or the GPU-MEM regulator (or both) are required for the GPU power
-domain.
+Reading EDID here at HPD processing may not be fully needed, however it
+help kernel keep the internal EDID state in better sync with sink when
+userspace does not act on the HOTPLUG=1 uevent.
 
-> rk3588-nanopc-t6.dtsi
-> rk3588s-gameforce-ace.dts
-> rk3588s-odroid-m2.dts
+Regards,
+Jonas
 
-=2E.. And these I missed, since they are new.
+> 
+> Neil
 
-I don't have enough time to prepare a v3 before my vacation.
-Note, that not describing the regulator just keeps the current
-behaviour.
-
-> I also expect we may need to define domain-supply for the npu on
-> rk3588 and also both gpu and npu on rk356x in a future series.
-
-Yes, I already discussed that in Vienna with Heiko and Tomeu. The
-binding change also allows adding a regulator to the NPU power
-domain.
-
-> Similar freeze issue has been observed on rk356x when booting vendor
-> kernel with npu support enabled using mainline U-Boot and DT [1].
->=20
-> To work around that issue on rk356x the npu regulator could be changed
-> to always-on/boot-on to get past the kernel freeze [2].
->=20
-> [1] https://github.com/armbian/build/pull/7025#issuecomment-2291067748
-> [2] https://github.com/Kwiboo/u-boot-rockchip/commit/da31da4b68f858f54364=
-a21b0dd00fef2ab0d0d6
-
-Yes, that looks like the same issue and I guess the changes to the Rockchip
-power-domain driver should also work for rk356x. I don't have one, though.
-
--- Sebastian
-
---qcskwoh6fbt5qu6y
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmbsexIACgkQ2O7X88g7
-+ppTJxAAkEXAcW4m8OiEyvh+R+umb7431j7PO5cBpN3NM+cGmUD+ARwYE4yCH5Mi
-lqLf72szC73KnWPS5Eu9mhCEFBIrhNmEVrQM69ibmlHyihhZh2CO3X2wDV+UAm79
-ZyJ+OP71kvCHndjSNEXILKxXAyoARczvn+tbFICz3di3S+UXlqs1s3NnzGvjjBlo
-GwxkCx5JwIKsdc3FOe5Mtj3Lw08lCF3qxJTXxT9anF/2h055IJco8diIsGlAAXy7
-LnCQkpgZZBLKeJFhFeuMV7lJgjGK0bsymHl6P8dzXSIZtXBLbMRTXql8qunv4cUY
-hkVH0V6iduGVdcj/uZEpoOAAXqFQE+1UVA8Bsyf69/o3806iUzR3Z2zJk7CdZgu3
-3PUw/fpgDmFpMI7nIIH2GY6Q5+4yssZb0nd6kzCepIf41dQWAXAvvq3bBCjRz0cw
-eOP/BIZYEFwRSOu0YL+EQ7ae4kQ/j05sFMCBRFRGUB4uoLZbKWSos/SRt0DWTNQv
-N97DxGJmjfxH/zSxExgLqebsV1KZd6Frg4G7Nzp4XgW8hghoqPe+0YvQVNMLRfq7
-Y+y67lrBNCnEfnGv+mIU+cDWaH1NDlPAz1Zfjb8jdBOizYJjfohFdOyRNWc6RVh1
-i8kJklC2dA/K95e/LTU+1bPYFnnrycmrvFKrjECNmIGRAuRIz6Q=
-=nKZO
------END PGP SIGNATURE-----
-
---qcskwoh6fbt5qu6y--
-
-
---===============0374697030558248682==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============0374697030558248682==--
-
