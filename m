@@ -4,72 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4401DCE8D61
-	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Sep 2024 09:06:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E5EF8CE8D61
+	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Sep 2024 09:11:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=c4Rkz8dpVI2GEYgIx+XPDvScTePHSRoaf0jPiiiaewQ=; b=olW13BMj5+eFDVP0TgkrN/qbvA
-	1YC7aDgH3hbVLd24Dkj2zVS5kTTC7F+6ntpEm9KQnlbjvS5B7Mro7/mntm1kAGpu3pjVk8gMOQ3a/
-	3bhhVynjtookWRm5QZkPiqgDsuGM6Jn2oV0Wfnu2eYilq7AXqn6Nx0vQ5pYazNXxPqgXqZUcuspAI
-	U0QOz+gsXUwkYswbw/KQw3j1+7a1v/apc9Eux4/bajs/q3FEMpcgLLpsFtax+dsGAzochocWh8Uz/
-	KntVxWeoOsnIogZ3C4dZl279GKGylrEiKoiFf5Oiy6vZX6PnNHdoQV/Lbdo0JlUbSkg8Eh0x84MEo
-	8fyJH2sA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=nsGPHUamZUkmYWoQ50kdHouHi8mP8XT5aik88v57Sek=; b=U5f8ju5u1Ai3y6
+	1vH8DHVivlx8O1h7KCF7VxG/0dkA679tK24tvKNr7PR+2H0RGa/S8uWUaGntFf5iMmS66a8DJx2m+
+	+1QlQ73E7DhpmNLGh3Y7dyiXCV0MMjlg0PesA/sj28RqzG7k90NfbmP4MXvU7mIyPSYAfe9Cr0NDq
+	t5zHws9QQ3mS2R5JcDO0E2xC1nG6zUXoXnxw5cT9ajQZBLHla4D7P+GyfV09sSX946CzgSwBOArTE
+	pCmqBTN7JPLrc5Vg705IeCZc01TL2ANKKJ5+hsVGzGeGVCURDI12vIsmZeDY3N11YTJpUadrgesxR
+	OwiePLXZ3B0aTyP9rl2A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1srD7d-00000009s23-3oPT;
-	Thu, 19 Sep 2024 09:06:45 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1srDCa-00000009sYW-1eWm;
+	Thu, 19 Sep 2024 09:11:52 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1srD7a-00000009s16-1otj
+	id 1srDCX-00000009sWl-1i9N
 	for linux-rockchip@lists.infradead.org;
-	Thu, 19 Sep 2024 09:06:44 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1726736744; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=WjG2BOdH75Al6lv/8HNX+J4MZwf54noq6XT02LOFdOST4yvSHm7s95wvHBehc1ibo3irRiz3EWoRQEfwJhJ7u9CeVpnhvL7MTS5K2mYQfVTSH3SXdAG35+ZRgae8HPAaioQEvJy2l3iE527Jc2Trwe+kFkT66DgUIjRkZaSYpO0=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1726736744; h=Content-Type:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=WIyPR9I7SW6Am8W2Xo7ZAkLcKedMPAaJoNrnX9TxwDI=; 
-	b=IX+AgYHmn9h0/JFMcQSb76kpnvvprbj+30Z/H7NWsE6UCw8CilmwCNIXi+zYyi5O0EwTEHF7dWTtTgeutdXSbgyO0GTcO5G+N5JbeljfaBuCKRLmu4urFbgkZFA7CX1S9zkT7mbMBtGO1RF80yyiAQysRRuT46Z63hmBrJwYLUo=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=sebastian.reichel@collabora.com;
-	dmarc=pass header.from=<sebastian.reichel@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1726736744;
-	s=zohomail; d=collabora.com; i=sebastian.reichel@collabora.com;
-	h=Date:Date:From:From:To:To:Cc:Cc:Subject:Subject:Message-ID:References:MIME-Version:Content-Type:In-Reply-To:Message-Id:Reply-To;
-	bh=WIyPR9I7SW6Am8W2Xo7ZAkLcKedMPAaJoNrnX9TxwDI=;
-	b=aP0e28+9MF1DAD9w61R9zdYhgHkXUjJgjquFdB9epwQpmoan9kk060se3CanuevN
-	gsKRjfRHKDNUukrlUk6TAVHjDo8/aLBau64DRYxp1VAeWihDccx0PvsOsXTxDubD0Ky
-	tYRiunm+tSWSE5RV/g6BCsqF+yTAIof8Vyj8OOew=
-Received: by mx.zohomail.com with SMTPS id 1726736742399817.1293742983563;
-	Thu, 19 Sep 2024 02:05:42 -0700 (PDT)
-Received: by mercury (Postfix, from userid 1000)
-	id 3C03B106031C; Thu, 19 Sep 2024 11:05:35 +0200 (CEST)
-Date: Thu, 19 Sep 2024 11:05:35 +0200
+	Thu, 19 Sep 2024 09:11:51 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1726737107;
+	bh=BaPtmF4mb/PCEA1E8pZgHwKNM3whMXBtZlS+CX4xCQI=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=B/pHl/yqcNVg/mNCYsguhElGGApOy3M+GdqA6M6DCSz/hjvaZxJBK6fuj6XNwh8Fo
+	 iRvWLYnKNoMyxVga/fxW05mjeEptCYQj5KIwYzoVmUQSRJyaCgzwz9a9Su3MPBX4Fq
+	 Z99bzWifDzVVwYy4etfGRTC9IlVqsqU1fCykJ2shOuS1dCfa2j0kp2TncRflXvXtSE
+	 0AqMWXj0qqSHwXgYBpwuiIQ0O0IJipfzRkvE2yW3yXjAWvSx2CoMkIUkX12rpjznYa
+	 G1W0I4ihYaLI1fMZ+79aDF2Iwtav05BfO98NKZGe59feDQQmAFGIZAoy0JpFN6ybwM
+	 8BT+CpbcuNYrg==
+Received: from jupiter.universe (dyndsl-091-248-208-160.ewe-ip-backbone.de [91.248.208.160])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: sre)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 6ED8B17E1080;
+	Thu, 19 Sep 2024 11:11:47 +0200 (CEST)
+Received: by jupiter.universe (Postfix, from userid 1000)
+	id 26FCB480086; Thu, 19 Sep 2024 11:11:47 +0200 (CEST)
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
-To: Ulf Hansson <ulf.hansson@linaro.org>
-Cc: Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Heiko Stuebner <heiko@sntech.de>, Elaine Zhang <zhangqing@rock-chips.com>, 
-	=?utf-8?B?QWRyacOhbiBNYXJ0w61uZXo=?= Larumbe <adrian.larumbe@collabora.com>, Boris Brezillon <boris.brezillon@collabora.com>, 
-	devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	linux-pm@vger.kernel.org, kernel@collabora.com
-Subject: Re: [PATCH v1 0/6] Fix RK3588 GPU domain
-Message-ID: <vh5gsouseahs6ddauzevcdtcjutl35dcyoc5cv4pvn56lyyilv@rekmpklpbbyh>
-References: <20240910180530.47194-1-sebastian.reichel@collabora.com>
- <CAPDyKFoMyGUagDdjdaBJXL_OEgewQjCeJcBBK+2PFk=vd+kjRg@mail.gmail.com>
+To: Michael Turquette <mturquette@baylibre.com>,
+	Stephen Boyd <sboyd@kernel.org>,
+	linux-clk@vger.kernel.org
+Cc: Elaine Zhang <zhangqing@rock-chips.com>,
+	Kever Yang <kever.yang@rock-chips.com>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	huangtao@rock-chips.com,
+	andy.yan@rock-chips.com,
+	Michal Tomek <mtdev79b@gmail.com>,
+	Ilya K <me@0upti.me>,
+	Chad LeClair <leclair@gmail.com>,
+	devicetree@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	Sebastian Reichel <sebastian.reichel@collabora.com>,
+	kernel@collabora.com
+Subject: [PATCH v11 4/5] clk: rockchip: implement linked gate clock support
+Date: Thu, 19 Sep 2024 11:09:47 +0200
+Message-ID: <20240919091129.83500-5-sebastian.reichel@collabora.com>
+X-Mailer: git-send-email 2.45.2
+In-Reply-To: <20240919091129.83500-1-sebastian.reichel@collabora.com>
+References: <20240919091129.83500-1-sebastian.reichel@collabora.com>
 MIME-Version: 1.0
-In-Reply-To: <CAPDyKFoMyGUagDdjdaBJXL_OEgewQjCeJcBBK+2PFk=vd+kjRg@mail.gmail.com>
-X-Zoho-Virus-Status: 1
-X-Zoho-AV-Stamp: zmail-av-1.3.1/223.982.64
-X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240919_020642_581170_AECE78C4 
-X-CRM114-Status: GOOD (  30.05  )
+X-CRM114-CacheID: sfid-20240919_021149_666237_9BD3550F 
+X-CRM114-Status: GOOD (  33.38  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,105 +86,334 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============5208635406497992587=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Recent Rockchip SoCs have a new hardware block called Native Interface
+Unit (NIU), which gates clocks to devices behind them. These clock
+gates will only have a running output clock when all of the following
+conditions are met:
 
---===============5208635406497992587==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="2ey5cyrmazej6g4l"
-Content-Disposition: inline
+1. the parent clock is enabled
+2. the enable bit is set correctly
+3. the linked clock is enabled
 
+To handle them this code registers them as a normal gate type clock,
+which takes care of condition 1 + 2. The linked clock is handled by
+using runtime PM clocks. Handling it via runtime PM requires setting
+up a struct device for each of these clocks with a driver attached
+to use the correct runtime PM operations. Thus the complete handling
+of these clocks has been moved into its own driver.
 
---2ey5cyrmazej6g4l
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+---
+ drivers/clk/rockchip/Makefile     |  1 +
+ drivers/clk/rockchip/clk-rk3588.c | 23 +--------
+ drivers/clk/rockchip/clk.c        | 52 +++++++++++++++++++
+ drivers/clk/rockchip/clk.h        | 25 +++++++++
+ drivers/clk/rockchip/gate-link.c  | 85 +++++++++++++++++++++++++++++++
+ 5 files changed, 165 insertions(+), 21 deletions(-)
+ create mode 100644 drivers/clk/rockchip/gate-link.c
 
-Hi,
+diff --git a/drivers/clk/rockchip/Makefile b/drivers/clk/rockchip/Makefile
+index 36894f6a7022..179be95c6ffb 100644
+--- a/drivers/clk/rockchip/Makefile
++++ b/drivers/clk/rockchip/Makefile
+@@ -13,6 +13,7 @@ clk-rockchip-y += clk-inverter.o
+ clk-rockchip-y += clk-mmc-phase.o
+ clk-rockchip-y += clk-muxgrf.o
+ clk-rockchip-y += clk-ddr.o
++clk-rockchip-y += gate-link.o
+ clk-rockchip-$(CONFIG_RESET_CONTROLLER) += softrst.o
+ 
+ obj-$(CONFIG_CLK_PX30)          += clk-px30.o
+diff --git a/drivers/clk/rockchip/clk-rk3588.c b/drivers/clk/rockchip/clk-rk3588.c
+index b707105573d2..4d85ae615e15 100644
+--- a/drivers/clk/rockchip/clk-rk3588.c
++++ b/drivers/clk/rockchip/clk-rk3588.c
+@@ -12,25 +12,6 @@
+ #include <dt-bindings/clock/rockchip,rk3588-cru.h>
+ #include "clk.h"
+ 
+-/*
+- * Recent Rockchip SoCs have a new hardware block called Native Interface
+- * Unit (NIU), which gates clocks to devices behind them. These effectively
+- * need two parent clocks.
+- *
+- * Downstream enables the linked clock via runtime PM whenever the gate is
+- * enabled. This implementation uses separate clock nodes for each of the
+- * linked gate clocks, which leaks parts of the clock tree into DT.
+- *
+- * The GATE_LINK macro instead takes the second parent via 'linkname', but
+- * ignores the information. Once the clock framework is ready to handle it, the
+- * information should be passed on here. But since these clocks are required to
+- * access multiple relevant IP blocks, such as PCIe or USB, we mark all linked
+- * clocks critical until a better solution is available. This will waste some
+- * power, but avoids leaking implementation details into DT or hanging the
+- * system.
+- */
+-#define GATE_LINK(_id, cname, pname, linkedclk, f, o, b, gf) \
+-	GATE(_id, cname, pname, f, o, b, gf)
+ #define RK3588_LINKED_CLK		CLK_IS_CRITICAL
+ 
+ 
+@@ -2513,8 +2494,8 @@ static int clk_rk3588_probe(struct platform_device *pdev)
+ 	struct device *dev = &pdev->dev;
+ 	struct device_node *np = dev->of_node;
+ 
+-	rockchip_clk_register_branches(ctx, rk3588_clk_branches,
+-				       ARRAY_SIZE(rk3588_clk_branches));
++	rockchip_clk_register_late_branches(dev, ctx, rk3588_clk_branches,
++					    ARRAY_SIZE(rk3588_clk_branches));
+ 
+ 	rockchip_clk_finalize(ctx);
+ 
+diff --git a/drivers/clk/rockchip/clk.c b/drivers/clk/rockchip/clk.c
+index b87ca1e8c540..f0d76d62382c 100644
+--- a/drivers/clk/rockchip/clk.c
++++ b/drivers/clk/rockchip/clk.c
+@@ -19,6 +19,7 @@
+ #include <linux/clk-provider.h>
+ #include <linux/io.h>
+ #include <linux/mfd/syscon.h>
++#include <linux/platform_device.h>
+ #include <linux/regmap.h>
+ #include <linux/reboot.h>
+ 
+@@ -467,6 +468,29 @@ unsigned long rockchip_clk_find_max_clk_id(struct rockchip_clk_branch *list,
+ }
+ EXPORT_SYMBOL_GPL(rockchip_clk_find_max_clk_id);
+ 
++static struct platform_device *rockchip_clk_register_gate_link(
++		struct device *parent_dev,
++		struct rockchip_clk_provider *ctx,
++		struct rockchip_clk_branch *clkbr)
++{
++	struct rockchip_gate_link_platdata gate_link_pdata = {
++		.ctx = ctx,
++		.clkbr = clkbr,
++	};
++
++	struct platform_device_info pdevinfo = {
++		.parent = parent_dev,
++		.name = "rockchip-gate-link-clk",
++		.id = clkbr->id,
++		.fwnode = dev_fwnode(parent_dev),
++		.of_node_reused = true,
++		.data = &gate_link_pdata,
++		.size_data = sizeof(gate_link_pdata),
++	};
++
++	return platform_device_register_full(&pdevinfo);
++}
++
+ void rockchip_clk_register_branches(struct rockchip_clk_provider *ctx,
+ 				    struct rockchip_clk_branch *list,
+ 				    unsigned int nr_clk)
+@@ -592,6 +616,9 @@ void rockchip_clk_register_branches(struct rockchip_clk_provider *ctx,
+ 				list->div_width, list->div_flags,
+ 				ctx->reg_base, &ctx->lock);
+ 			break;
++		case branch_linked_gate:
++			/* must be registered late, fall-through for error message */
++			break;
+ 		}
+ 
+ 		/* none of the cases above matched */
+@@ -612,6 +639,31 @@ void rockchip_clk_register_branches(struct rockchip_clk_provider *ctx,
+ }
+ EXPORT_SYMBOL_GPL(rockchip_clk_register_branches);
+ 
++void rockchip_clk_register_late_branches(struct device *dev,
++					 struct rockchip_clk_provider *ctx,
++					 struct rockchip_clk_branch *list,
++					 unsigned int nr_clk)
++{
++	unsigned int idx;
++
++	for (idx = 0; idx < nr_clk; idx++, list++) {
++		struct platform_device *pdev = NULL;
++
++		switch (list->branch_type) {
++		case branch_linked_gate:
++			pdev = rockchip_clk_register_gate_link(dev, ctx, list);
++			break;
++		default:
++			dev_err(dev, "unknown clock type %d\n", list->branch_type);
++			break;
++		}
++
++		if (!pdev)
++			dev_err(dev, "failed to register device for clock %s\n", list->name);
++	}
++}
++EXPORT_SYMBOL_GPL(rockchip_clk_register_late_branches);
++
+ void rockchip_clk_register_armclk(struct rockchip_clk_provider *ctx,
+ 				  unsigned int lookup_id,
+ 				  const char *name, const char *const *parent_names,
+diff --git a/drivers/clk/rockchip/clk.h b/drivers/clk/rockchip/clk.h
+index 3dc5fb9bac4f..3fb620f8dd57 100644
+--- a/drivers/clk/rockchip/clk.h
++++ b/drivers/clk/rockchip/clk.h
+@@ -517,6 +517,7 @@ enum rockchip_clk_branch_type {
+ 	branch_divider,
+ 	branch_fraction_divider,
+ 	branch_gate,
++	branch_linked_gate,
+ 	branch_mmc,
+ 	branch_inverter,
+ 	branch_factor,
+@@ -544,6 +545,7 @@ struct rockchip_clk_branch {
+ 	int				gate_offset;
+ 	u8				gate_shift;
+ 	u8				gate_flags;
++	unsigned int			linked_clk_id;
+ 	struct rockchip_clk_branch	*child;
+ };
+ 
+@@ -842,6 +844,20 @@ struct rockchip_clk_branch {
+ 		.gate_flags	= gf,				\
+ 	}
+ 
++#define GATE_LINK(_id, cname, pname, linkedclk, f, o, b, gf)	\
++	{							\
++		.id		= _id,				\
++		.branch_type	= branch_linked_gate,		\
++		.name		= cname,			\
++		.parent_names	= (const char *[]){ pname },	\
++		.linked_clk_id	= linkedclk,			\
++		.num_parents	= 1,				\
++		.flags		= f,				\
++		.gate_offset	= o,				\
++		.gate_shift	= b,				\
++		.gate_flags	= gf,				\
++	}
++
+ #define MMC(_id, cname, pname, offset, shift)			\
+ 	{							\
+ 		.id		= _id,				\
+@@ -981,6 +997,11 @@ static inline void rockchip_clk_set_lookup(struct rockchip_clk_provider *ctx,
+ 	ctx->clk_data.clks[id] = clk;
+ }
+ 
++struct rockchip_gate_link_platdata {
++	struct rockchip_clk_provider *ctx;
++	struct rockchip_clk_branch *clkbr;
++};
++
+ struct rockchip_clk_provider *rockchip_clk_init(struct device_node *np,
+ 			void __iomem *base, unsigned long nr_clks);
+ struct rockchip_clk_provider *rockchip_clk_init_early(struct device_node *np,
+@@ -993,6 +1014,10 @@ unsigned long rockchip_clk_find_max_clk_id(struct rockchip_clk_branch *list,
+ void rockchip_clk_register_branches(struct rockchip_clk_provider *ctx,
+ 				    struct rockchip_clk_branch *list,
+ 				    unsigned int nr_clk);
++void rockchip_clk_register_late_branches(struct device *dev,
++					 struct rockchip_clk_provider *ctx,
++					 struct rockchip_clk_branch *list,
++					 unsigned int nr_clk);
+ void rockchip_clk_register_plls(struct rockchip_clk_provider *ctx,
+ 				struct rockchip_pll_clock *pll_list,
+ 				unsigned int nr_pll, int grf_lock_offset);
+diff --git a/drivers/clk/rockchip/gate-link.c b/drivers/clk/rockchip/gate-link.c
+new file mode 100644
+index 000000000000..cd0f7a2d30ab
+--- /dev/null
++++ b/drivers/clk/rockchip/gate-link.c
+@@ -0,0 +1,85 @@
++// SPDX-License-Identifier: GPL-2.0-or-later
++/*
++ * Copyright (c) 2024 Collabora Ltd.
++ * Author: Sebastian Reichel <sebastian.reichel@collabora.com>
++ */
++
++#include <linux/clk.h>
++#include <linux/platform_device.h>
++#include <linux/pm_clock.h>
++#include <linux/pm_runtime.h>
++#include <linux/property.h>
++#include "clk.h"
++
++static int rk_clk_gate_link_register(struct device *dev,
++				     struct rockchip_clk_provider *ctx,
++				     struct rockchip_clk_branch *clkbr)
++{
++	unsigned long flags = clkbr->flags | CLK_SET_RATE_PARENT;
++	struct clk *clk;
++
++	clk = clk_register_gate(dev, clkbr->name, clkbr->parent_names[0],
++				flags, ctx->reg_base + clkbr->gate_offset,
++				clkbr->gate_shift, clkbr->gate_flags,
++				&ctx->lock);
++
++	if (IS_ERR(clk))
++		return PTR_ERR(clk);
++
++	rockchip_clk_set_lookup(ctx, clk, clkbr->id);
++	return 0;
++}
++
++static int rk_clk_gate_link_probe(struct platform_device *pdev)
++{
++	struct rockchip_gate_link_platdata *pdata;
++	struct device *dev = &pdev->dev;
++	struct clk *linked_clk;
++	int ret;
++
++	pdata = dev_get_platdata(dev);
++	if (!pdata)
++		return dev_err_probe(dev, -ENODEV, "missing platform data");
++
++	ret = devm_pm_runtime_enable(dev);
++	if (ret)
++		return ret;
++
++	ret = devm_pm_clk_create(dev);
++	if (ret)
++		return ret;
++
++	linked_clk = rockchip_clk_get_lookup(pdata->ctx, pdata->clkbr->linked_clk_id);
++	ret = pm_clk_add_clk(dev, linked_clk);
++	if (ret)
++		return ret;
++
++	ret = rk_clk_gate_link_register(dev, pdata->ctx, pdata->clkbr);
++	if (ret)
++		goto err;
++
++	return 0;
++
++err:
++	pm_clk_remove_clk(dev, linked_clk);
++	return ret;
++}
++
++static const struct dev_pm_ops rk_clk_gate_link_pm_ops = {
++	SET_RUNTIME_PM_OPS(pm_clk_suspend, pm_clk_resume, NULL)
++};
++
++static struct platform_driver rk_clk_gate_link_driver = {
++	.probe		= rk_clk_gate_link_probe,
++	.driver		= {
++		.name	= "rockchip-gate-link-clk",
++		.pm = &rk_clk_gate_link_pm_ops,
++		.suppress_bind_attrs = true,
++	},
++};
++
++static int __init rk_clk_gate_link_drv_register(void)
++{
++	return platform_driver_register(&rk_clk_gate_link_driver);
++}
++core_initcall(rk_clk_gate_link_drv_register);
+-- 
+2.45.2
 
-On Fri, Sep 13, 2024 at 01:59:10PM GMT, Ulf Hansson wrote:
-> On Tue, 10 Sept 2024 at 20:05, Sebastian Reichel
-> <sebastian.reichel@collabora.com> wrote:
-> > I got a report, that the Linux kernel crashes on Rock 5B when the panth=
-or
-> > driver is loaded late after booting. The crash starts with the following
-> > shortened error print:
-> >
-> > rockchip-pm-domain fd8d8000.power-management:power-controller: failed t=
-o set domain 'gpu', val=3D0
-> > rockchip-pm-domain fd8d8000.power-management:power-controller: failed t=
-o get ack on domain 'gpu', val=3D0xa9fff
-> > SError Interrupt on CPU4, code 0x00000000be000411 -- SError
-> >
-> > This series first does some cleanups in the Rockchip power domain
-> > driver and changes the driver, so that it no longer tries to continue
-> > when it fails to enable a domain. This gets rid of the SError interrupt
-> > and long backtraces. But the kernel still hangs when it fails to enable
-> > a power domain. I have not done further analysis to check if that can
-> > be avoided.
-> >
-> > Last but not least this provides a fix for the GPU power domain failing
-> > to get enabled - after some testing from my side it seems to require the
-> > GPU voltage supply to be enabled.
-> >
-> > I'm not really happy about the hack to get a regulator for a sub-node
-> > in the 5th patch, which I took over from the Mediatek driver. But to
-> > get things going and open a discussion around it I thought it would be
-> > best to send a first version as soon as possible.
->=20
-> That creates a circular dependency from the fw_devlink point of view.
-
-Yes.
-
-> I assume that isn't a problem and fw_devlink takes care of this, so
-> the GPU power domain still can probe?
-
-This has been tested on Radxa Rock 5B and RK3588 EVB1. It properly
-probes the GPU power domain and fixes late probing of the GPU driver :)
-
-> Other than this, I think this looks okay to me.
-
-I will send a V2 with the minor things pointed out.
-
-Greetings,
-
--- Sebastian
-
---2ey5cyrmazej6g4l
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmbr6VsACgkQ2O7X88g7
-+prM1A//Tz6tsfCtFAfD+esskzA7MDO9OW+icEYWp1LK1xBvIu+Sx9kB+ggKKHar
-q09BTcQD+NSweJfBeabKpIScdmw4YRpMkbpqkGKQkQOYuy2h5udtt6g8nUrvbfIG
-BtCo3N1VELMevzo1bW2uYafy2HLqH9rBTUS9kRRxXTfUyYKSwRnmmxrgrhiZJjGx
-nrBPWVbj5HouXNoa2X4yuFs3XNG9MP3FkuFBFNZnKb6hcFCv6IApWvrJ71ESUivD
-JJjDDKcy3yoVzRxb/AvA49WpCefKi/L2ilOOlZQswtLbLjxJ0ED+3nsHCxDA4RDU
-6imPttrxcuEn+bKb8URAYGuxgK110w3TvaBY260JRaPS8EfiI8b439riBllY8aHv
-ydpVBNdpvVaT/qG2RvLntsYlk+vx0M+nGRQCFJ4N+JudicQWmHuExncL8qBe8XiL
-or6gVTsgmcZ9t3EiC8K/9d+S+icu0utnCDwyEV00byRbxKTrSBeZ2y+FUeEZLUSP
-GmpniTJtQ2QkF3afhJZaN/57qZchTg4HmedHlFmqHEBuoh/U1LGG/SDcjiWnKmvp
-DL6WYLIshIEAb1edyPmO/y/PdSUolodr2oeJhD9tFul8wC+eAirXa70AlOsS+EHH
-wHVJ9BXeOfwEornBUsr41u7LDkCnAcX43WBKVobwDIWltnHXW3I=
-=mFbG
------END PGP SIGNATURE-----
-
---2ey5cyrmazej6g4l--
-
-
---===============5208635406497992587==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============5208635406497992587==--
-
