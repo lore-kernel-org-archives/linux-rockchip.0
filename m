@@ -4,62 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 44B0DCE8D52
-	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Sep 2024 07:39:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4401DCE8D61
+	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Sep 2024 09:06:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
 	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
 	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=DDu8Z4YsCvk9NeJ1dlCanoYd+sjPTqtlYyFSOjoKmSI=; b=PvEyfCNsC9UUUFCpr/srUKaemA
-	tT+lx372wLXiLiPWOs9CFW6ljC8QEIWNuR8XNVlXPFQud83NInNeWIdmQ1zVM3ueN9t1XFAQq8WlN
-	fTkGhhbVq24mOLyk+9o+iy49+MNxjtryhKY6SQRH48sgUZ+CA5rSxwurlW1aTQTU3DJ+mxSkxa0uC
-	SzyADqaJm9jlK/sG1sN/tGresUuDfJ7DMn6QvdDVAoe7iDsKZAbRWgXJYiarNbhnNjIcRVXndFOQe
-	PmcusTrNLXJfhCxI7+1AQoSBOxIojePQ5w1nKdzoyi8C98m29847lu/zeHimj2jKWpsvakC3cTWYU
-	fa45ylfQ==;
+	bh=c4Rkz8dpVI2GEYgIx+XPDvScTePHSRoaf0jPiiiaewQ=; b=olW13BMj5+eFDVP0TgkrN/qbvA
+	1YC7aDgH3hbVLd24Dkj2zVS5kTTC7F+6ntpEm9KQnlbjvS5B7Mro7/mntm1kAGpu3pjVk8gMOQ3a/
+	3bhhVynjtookWRm5QZkPiqgDsuGM6Jn2oV0Wfnu2eYilq7AXqn6Nx0vQ5pYazNXxPqgXqZUcuspAI
+	U0QOz+gsXUwkYswbw/KQw3j1+7a1v/apc9Eux4/bajs/q3FEMpcgLLpsFtax+dsGAzochocWh8Uz/
+	KntVxWeoOsnIogZ3C4dZl279GKGylrEiKoiFf5Oiy6vZX6PnNHdoQV/Lbdo0JlUbSkg8Eh0x84MEo
+	8fyJH2sA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1srBl4-00000009fhT-13G9;
-	Thu, 19 Sep 2024 07:39:22 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1srD7d-00000009s23-3oPT;
+	Thu, 19 Sep 2024 09:06:45 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1srBjv-00000009fZD-1laC;
-	Thu, 19 Sep 2024 07:38:12 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 35B8A5C5C31;
-	Thu, 19 Sep 2024 07:38:06 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7240BC4CEC4;
-	Thu, 19 Sep 2024 07:38:07 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1726731489;
-	bh=b/TvnlGUozolDpF9ubAiqQ9D9AtRZIsO8cTp8d7NLAI=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=Rzqo9i4HBub0UQQHqadkJlXlK0XP9ECaGqwUY0yaN8d8LOwnmKpkYdangf7hN1xu+
-	 QRzVbLI/4PEi3VNE5sE1YBs6p7Jm4P8F58Rq9EHGU7AkQoduyi0iArzmi7Hnjq3XiK
-	 hFCkBrWgzmMYgDq9bzpssEf/lm9OPeKfaiscMYEq+VXawTAJALx5kbRPXQoufEcRNn
-	 JMUTYET0JEzX2h5z0Mnm/IF3UQajTGGrIx7qALDmQsmmgw/KadWfD+x4OFOu7/uLp6
-	 8at4eriadMSHwrv91mXIR2sIFvRYddM6afiH6RjZrt2MWBPO3DACngcxT4UCUcJ+vN
-	 Uw4SWerwhDi1A==
-Date: Thu, 19 Sep 2024 08:38:14 +0100
-From: Conor Dooley <conor@kernel.org>
-To: Jianfeng Liu <liujianfeng1994@gmail.com>
-Cc: linux-rockchip@lists.infradead.org,
-	Stephen Rothwell <sfr@canb.auug.org.au>,
-	Rob Herring <robh@kernel.org>, linux-kernel@vger.kernel.org,
-	Heiko Stuebner <heiko@sntech.de>,
-	Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>
-Subject: Re: [PATCH 1/3] dt-bindings: arm: rockchip: Add ArmSoM LM7 SoM
-Message-ID: <20240919-wikipedia-hamster-22ae9f9d8dd0@squawk>
-References: <20240918165008.169917-1-liujianfeng1994@gmail.com>
- <20240918165008.169917-2-liujianfeng1994@gmail.com>
+	id 1srD7a-00000009s16-1otj
+	for linux-rockchip@lists.infradead.org;
+	Thu, 19 Sep 2024 09:06:44 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1726736744; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=WjG2BOdH75Al6lv/8HNX+J4MZwf54noq6XT02LOFdOST4yvSHm7s95wvHBehc1ibo3irRiz3EWoRQEfwJhJ7u9CeVpnhvL7MTS5K2mYQfVTSH3SXdAG35+ZRgae8HPAaioQEvJy2l3iE527Jc2Trwe+kFkT66DgUIjRkZaSYpO0=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1726736744; h=Content-Type:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=WIyPR9I7SW6Am8W2Xo7ZAkLcKedMPAaJoNrnX9TxwDI=; 
+	b=IX+AgYHmn9h0/JFMcQSb76kpnvvprbj+30Z/H7NWsE6UCw8CilmwCNIXi+zYyi5O0EwTEHF7dWTtTgeutdXSbgyO0GTcO5G+N5JbeljfaBuCKRLmu4urFbgkZFA7CX1S9zkT7mbMBtGO1RF80yyiAQysRRuT46Z63hmBrJwYLUo=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=sebastian.reichel@collabora.com;
+	dmarc=pass header.from=<sebastian.reichel@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1726736744;
+	s=zohomail; d=collabora.com; i=sebastian.reichel@collabora.com;
+	h=Date:Date:From:From:To:To:Cc:Cc:Subject:Subject:Message-ID:References:MIME-Version:Content-Type:In-Reply-To:Message-Id:Reply-To;
+	bh=WIyPR9I7SW6Am8W2Xo7ZAkLcKedMPAaJoNrnX9TxwDI=;
+	b=aP0e28+9MF1DAD9w61R9zdYhgHkXUjJgjquFdB9epwQpmoan9kk060se3CanuevN
+	gsKRjfRHKDNUukrlUk6TAVHjDo8/aLBau64DRYxp1VAeWihDccx0PvsOsXTxDubD0Ky
+	tYRiunm+tSWSE5RV/g6BCsqF+yTAIof8Vyj8OOew=
+Received: by mx.zohomail.com with SMTPS id 1726736742399817.1293742983563;
+	Thu, 19 Sep 2024 02:05:42 -0700 (PDT)
+Received: by mercury (Postfix, from userid 1000)
+	id 3C03B106031C; Thu, 19 Sep 2024 11:05:35 +0200 (CEST)
+Date: Thu, 19 Sep 2024 11:05:35 +0200
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+To: Ulf Hansson <ulf.hansson@linaro.org>
+Cc: Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Heiko Stuebner <heiko@sntech.de>, Elaine Zhang <zhangqing@rock-chips.com>, 
+	=?utf-8?B?QWRyacOhbiBNYXJ0w61uZXo=?= Larumbe <adrian.larumbe@collabora.com>, Boris Brezillon <boris.brezillon@collabora.com>, 
+	devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	linux-pm@vger.kernel.org, kernel@collabora.com
+Subject: Re: [PATCH v1 0/6] Fix RK3588 GPU domain
+Message-ID: <vh5gsouseahs6ddauzevcdtcjutl35dcyoc5cv4pvn56lyyilv@rekmpklpbbyh>
+References: <20240910180530.47194-1-sebastian.reichel@collabora.com>
+ <CAPDyKFoMyGUagDdjdaBJXL_OEgewQjCeJcBBK+2PFk=vd+kjRg@mail.gmail.com>
 MIME-Version: 1.0
-In-Reply-To: <20240918165008.169917-2-liujianfeng1994@gmail.com>
+In-Reply-To: <CAPDyKFoMyGUagDdjdaBJXL_OEgewQjCeJcBBK+2PFk=vd+kjRg@mail.gmail.com>
+X-Zoho-Virus-Status: 1
+X-Zoho-AV-Stamp: zmail-av-1.3.1/223.982.64
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240919_003811_550709_4473D165 
-X-CRM114-Status: GOOD (  11.30  )
+X-CRM114-CacheID: sfid-20240919_020642_581170_AECE78C4 
+X-CRM114-Status: GOOD (  30.05  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,52 +81,96 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============5500013297653435521=="
+Content-Type: multipart/mixed; boundary="===============5208635406497992587=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
---===============5500013297653435521==
+--===============5208635406497992587==
 Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="YWWdApAqxAOp6MrL"
+	protocol="application/pgp-signature"; boundary="2ey5cyrmazej6g4l"
 Content-Disposition: inline
 
 
---YWWdApAqxAOp6MrL
+--2ey5cyrmazej6g4l
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On Thu, Sep 19, 2024 at 12:50:06AM +0800, Jianfeng Liu wrote:
-> LM7 is an System on Module made by ArmSoM based on Rockchip RK3588.
-> This SoM is used by W3 Board.
->=20
-> LM7 features:
-> - Rockchip RK3588
-> - LPDDR4x 4/8/16/32 GB
-> - eMMC 16/32/64/128 GB
->=20
-> Add devicetree binding for ArmSoM LM7 SoM.
->=20
-> Signed-off-by: Jianfeng Liu <liujianfeng1994@gmail.com>
+Hi,
 
-Acked-by: Conor Dooley <conor.dooley@microchip.com>
+On Fri, Sep 13, 2024 at 01:59:10PM GMT, Ulf Hansson wrote:
+> On Tue, 10 Sept 2024 at 20:05, Sebastian Reichel
+> <sebastian.reichel@collabora.com> wrote:
+> > I got a report, that the Linux kernel crashes on Rock 5B when the panth=
+or
+> > driver is loaded late after booting. The crash starts with the following
+> > shortened error print:
+> >
+> > rockchip-pm-domain fd8d8000.power-management:power-controller: failed t=
+o set domain 'gpu', val=3D0
+> > rockchip-pm-domain fd8d8000.power-management:power-controller: failed t=
+o get ack on domain 'gpu', val=3D0xa9fff
+> > SError Interrupt on CPU4, code 0x00000000be000411 -- SError
+> >
+> > This series first does some cleanups in the Rockchip power domain
+> > driver and changes the driver, so that it no longer tries to continue
+> > when it fails to enable a domain. This gets rid of the SError interrupt
+> > and long backtraces. But the kernel still hangs when it fails to enable
+> > a power domain. I have not done further analysis to check if that can
+> > be avoided.
+> >
+> > Last but not least this provides a fix for the GPU power domain failing
+> > to get enabled - after some testing from my side it seems to require the
+> > GPU voltage supply to be enabled.
+> >
+> > I'm not really happy about the hack to get a regulator for a sub-node
+> > in the 5th patch, which I took over from the Mediatek driver. But to
+> > get things going and open a discussion around it I thought it would be
+> > best to send a first version as soon as possible.
+>=20
+> That creates a circular dependency from the fw_devlink point of view.
 
---YWWdApAqxAOp6MrL
+Yes.
+
+> I assume that isn't a problem and fw_devlink takes care of this, so
+> the GPU power domain still can probe?
+
+This has been tested on Radxa Rock 5B and RK3588 EVB1. It properly
+probes the GPU power domain and fixes late probing of the GPU driver :)
+
+> Other than this, I think this looks okay to me.
+
+I will send a V2 with the minor things pointed out.
+
+Greetings,
+
+-- Sebastian
+
+--2ey5cyrmazej6g4l
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEARYKAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZuvU4wAKCRB4tDGHoIJi
-0qzVAP4u/Ml6aPzDt2IXu/YTG+KwhPAvvDW9jFJWvja8pA8ndwEA8hdLvljuYsLA
-qjo8XeWEgIIm0GDO4q2SQ6yd1MGSZQQ=
-=4dhv
+iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmbr6VsACgkQ2O7X88g7
++prM1A//Tz6tsfCtFAfD+esskzA7MDO9OW+icEYWp1LK1xBvIu+Sx9kB+ggKKHar
+q09BTcQD+NSweJfBeabKpIScdmw4YRpMkbpqkGKQkQOYuy2h5udtt6g8nUrvbfIG
+BtCo3N1VELMevzo1bW2uYafy2HLqH9rBTUS9kRRxXTfUyYKSwRnmmxrgrhiZJjGx
+nrBPWVbj5HouXNoa2X4yuFs3XNG9MP3FkuFBFNZnKb6hcFCv6IApWvrJ71ESUivD
+JJjDDKcy3yoVzRxb/AvA49WpCefKi/L2ilOOlZQswtLbLjxJ0ED+3nsHCxDA4RDU
+6imPttrxcuEn+bKb8URAYGuxgK110w3TvaBY260JRaPS8EfiI8b439riBllY8aHv
+ydpVBNdpvVaT/qG2RvLntsYlk+vx0M+nGRQCFJ4N+JudicQWmHuExncL8qBe8XiL
+or6gVTsgmcZ9t3EiC8K/9d+S+icu0utnCDwyEV00byRbxKTrSBeZ2y+FUeEZLUSP
+GmpniTJtQ2QkF3afhJZaN/57qZchTg4HmedHlFmqHEBuoh/U1LGG/SDcjiWnKmvp
+DL6WYLIshIEAb1edyPmO/y/PdSUolodr2oeJhD9tFul8wC+eAirXa70AlOsS+EHH
+wHVJ9BXeOfwEornBUsr41u7LDkCnAcX43WBKVobwDIWltnHXW3I=
+=mFbG
 -----END PGP SIGNATURE-----
 
---YWWdApAqxAOp6MrL--
+--2ey5cyrmazej6g4l--
 
 
---===============5500013297653435521==
+--===============5208635406497992587==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -127,5 +181,5 @@ Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
---===============5500013297653435521==--
+--===============5208635406497992587==--
 
