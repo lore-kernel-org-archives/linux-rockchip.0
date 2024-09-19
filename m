@@ -4,74 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 19ADBCE8D62
-	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Sep 2024 09:18:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CEF74CE8D78
+	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Sep 2024 10:47:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ikpS46aPCJkmHTKNClqHmbqOCwXRUDZpcoy5JhNYZGI=; b=CFuquE0xMSp7Es
-	3Fw0t4a6UM6Qg+CN/u+c3VzVY0CyCX4tc0GvxpvDiobWL/nb7pNSfPFJoXu1RasWcXGFigRIK/BSp
-	zlHFXkSrYK/3OpIN7CAFwzal6moq7AGEUmEv0La9//mVk6W6ANyuhOUR/PmyfcSu1DTDHiEqkBSci
-	LmCYfxnupfTfh6RKPUCKVz57aOTRv6stloFcLNFvWX/fZwEd8JXPIcSg/8nAnVD1dY/3Gu7ZHAKu9
-	ZAaTJzAr0iDuUE8K2QQoUUcZy3gqiuZc3s9Jl+P0I+tqBDpfjOFqNUk2iueygGGfwzUEt8WOmLaLc
-	mXCJV/VaZ4ceMpa0st3w==;
+	List-Owner; bh=h/XxA1GDWKZsP4A8MJ0ZGxoTqNCrCHFmqpXtEm5R8k0=; b=Xa2hqUop90MFj+
+	VNWFIP5Ei1M86y5FfvAd+UYqBxY+Ts4kZydDAJriEnmYdUMl5sf+DzJs7c6dwn9SxbtFqYxnGJ0kU
+	yYg2QIsrjH2xTEtfB9xvGGxcXDU4C7mCqa37WsmVuwHZejgDXAQOrrZGGlsNh6Pv+SHq40oerwkHU
+	B5VJ+xFRcXi3tJIdg4TjSUUYgdowxw6/Y8g8Vi8TNKB/8cmvHY1j+TGHtusdn681LRkh8xH0vyxaX
+	NTrLzTnMcQsxgulvzBbEDombZBa9SKr7+i26d7JOHROOsA04XfuZOyGGD+IWeI5Jj/L2VMK0MyHcw
+	ka46Hyr7yV9mYw4gvsYA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1srDJL-00000009u1s-01nW;
-	Thu, 19 Sep 2024 09:18:51 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1srEgq-0000000A5OJ-2LyQ;
+	Thu, 19 Sep 2024 10:47:12 +0000
+Received: from layka.disroot.org ([178.21.23.139])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1srDJB-00000009tuk-1OjV
-	for linux-rockchip@lists.infradead.org;
-	Thu, 19 Sep 2024 09:18:43 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1726737516;
-	bh=5X2JcD6nxPTdz5lMfErMebNbQNrki2yIYXCau8/4xYY=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=XQ0Mwkmk5GWH0Rq6ltYmTNoJC6Hwcm7PQjj+VB0c5RIm6hSfZxnIfCzQuSBij7HvB
-	 7JS6h047lXbzKvXkwks9j9vfBF97HoBcKHHaMXb9YVxii30KTcZ6iqDEm3CVAISMaU
-	 LNz4SViNLTbTjasgJNbVTYqYHVvFPze3l3G9/Qj51FJ/8nKfgfwRSTZbS2c4A864Tz
-	 JYek4jlRgaI5yug+H18LC3RClfrx3toHzDBFV11WGEsLuidblth1NWkgWYRi0fhrlq
-	 1RxgdfjZITTfFvzxaBAvIAYmy6HryNmSSMoQ22IwjPMISxfbC9ZKeWEDNTVoeHm6n6
-	 gkR0/Jm+lWSqg==
-Received: from jupiter.universe (dyndsl-091-248-208-160.ewe-ip-backbone.de [91.248.208.160])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: sre)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id B8DD417E10AF;
-	Thu, 19 Sep 2024 11:18:36 +0200 (CEST)
-Received: by jupiter.universe (Postfix, from userid 1000)
-	id 5FA46480088; Thu, 19 Sep 2024 11:18:36 +0200 (CEST)
-From: Sebastian Reichel <sebastian.reichel@collabora.com>
-To: Rob Herring <robh@kernel.org>,
+	id 1srEek-0000000A5Ah-3sr6;
+	Thu, 19 Sep 2024 10:45:08 +0000
+Received: from mail01.disroot.lan (localhost [127.0.0.1])
+	by disroot.org (Postfix) with ESMTP id 2CE6523D13;
+	Thu, 19 Sep 2024 12:44:58 +0200 (CEST)
+X-Virus-Scanned: SPAM Filter at disroot.org
+Received: from layka.disroot.org ([127.0.0.1])
+ by localhost (disroot.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id Qw0S_KiD1mf1; Thu, 19 Sep 2024 12:44:57 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=disroot.org; s=mail;
+	t=1726742697; bh=/os8jdsvZNjZzBQqTEH9zSBE9KS0uwILd2ijRnbkvU8=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=DNFeORec4f+AS0c8WR+mK9+oKWcxhMjeHXEgkhzRaIFpxvXFdDbniCgSzkNxfPLpf
+	 3fotaflPhH4vQv46nLUVoPuPdMxNflI0okssfRLCA71T/G393xnQ5IzmDNEJBJGT11
+	 QQ8rsOgeRoPemOYd34UP5N3hMQMzgWqDCv4uaHaG42TQnOCfjQWAUguWayIj7LuedM
+	 BTobRFh35Pfrh3V3sN/7M1s4QID0o6lDA/QhQOTh7lVEdIwRtGS/YxNm3MTG4V8rHU
+	 Pv0Bk0XTzAt5no+nIJVTykqWX4MBFHKH+WHIwr0XSquJF2s1t4RdcMCQRm8GjS1M5M
+	 M6HABXoLsluGg==
+Date: Thu, 19 Sep 2024 10:44:25 +0000
+From: Yao Zi <ziyao@disroot.org>
+To: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh@kernel.org>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
 	Conor Dooley <conor+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Ulf Hansson <ulf.hansson@linaro.org>
-Cc: Elaine Zhang <zhangqing@rock-chips.com>,
-	=?UTF-8?q?Adri=C3=A1n=20Mart=C3=ADnez=20Larumbe?= <adrian.larumbe@collabora.com>,
-	Boris Brezillon <boris.brezillon@collabora.com>,
-	Chen-Yu Tsai <wens@csie.org>,
-	devicetree@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-pm@vger.kernel.org,
-	Sebastian Reichel <sebastian.reichel@collabora.com>,
-	kernel@collabora.com
-Subject: [PATCH v2 5/6] pmdomain: rockchip: add regulator support
-Date: Thu, 19 Sep 2024 11:12:46 +0200
-Message-ID: <20240919091834.83572-6-sebastian.reichel@collabora.com>
-X-Mailer: git-send-email 2.45.2
-In-Reply-To: <20240919091834.83572-1-sebastian.reichel@collabora.com>
-References: <20240919091834.83572-1-sebastian.reichel@collabora.com>
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Jiri Slaby <jirislaby@kernel.org>,
+	Chris Morgan <macromorgan@hotmail.com>,
+	Jonas Karlman <jonas@kwiboo.se>, Tim Lunn <tim@feathertop.org>,
+	Andy Yan <andyshrk@163.com>,
+	Muhammed Efe Cetin <efectn@protonmail.com>,
+	Jagan Teki <jagan@edgeble.ai>, Dragan Simic <dsimic@manjaro.org>,
+	Ondrej Jirman <megi@xff.cz>, devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+	linux-serial@vger.kernel.org
+Cc: Celeste Liu <CoelacanthusHex@gmail.com>
+Subject: Re: [PATCH v4 0/4] Add initial support for Rockchip RK3528 SoC
+Message-ID: <ZuwAiaCF6hCr7Fa2@pineapple>
+References: <20240829092705.6241-1-ziyao@disroot.org>
+ <ZunjLMQGEcES2zIV@pineapple>
+ <23655990.6Emhk5qWAg@phil>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <23655990.6Emhk5qWAg@phil>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240919_021841_659735_2C385F53 
-X-CRM114-Status: GOOD (  20.66  )
+X-CRM114-CacheID: sfid-20240919_034503_441637_5B1D151C 
+X-CRM114-Status: GOOD (  30.88  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,126 +86,51 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Some power domains require extra voltages to be applied. For example
-trying to enable the GPU domain on RK3588 fails when the SoC does not
-have VDD GPU enabled.
+On Wed, Sep 18, 2024 at 01:13:25AM +0200, Heiko Stuebner wrote:
+> Hey,
+> 
+> Am Dienstag, 17. September 2024, 22:14:36 CEST schrieb Yao Zi:
+> > On Thu, Aug 29, 2024 at 09:27:01AM +0000, Yao Zi wrote:
+> > > Rockchip RK3528 is a quad-core ARM Cortex-A53 SoC designed for
+> > > multimedia application. This series add a basic device tree with CPU,
+> > > interrupts and UART nodes for it and is able to boot into a kernel with
+> > > only UART console.
+> > > 
+> > > Has been tested on Radxa E20C board[1] with vendor U-boot, successfully
+> > > booted into initramfs with this log[2].
+> 
+> > Ping on this thread. Is it possible to get this merged in v6.12? Or
+> > anything else I need to do?
+> 
+> sadly nope. From a timeline point of view things should ideally be in the
+> Rockchip tree by -rc6 . Which then move to the soc tree and from there
+> to Linus' tree.
+> 
+> There is this rule that all new development for a -rc1 kernel should be
+> present in linux-next _before_ the merge-window opens.
+> 
+> The thing we need to figure out for your series is the uart binding,
+> because that _should_ go through the tree handling serial drivers.
+> Greg is in your cc list but with the amount of mail he gets, I don't
+> think he has single-parts of patch series on his radar.
+> 
+> So I guess the easiest way would be to send the uart-binding from patch 1
+> as a completely separate patch with adapted Cc list, so that it's obvious
+> this should go through the serial tree.
 
-The solution to temporarily change the device's device tree node has
-been taken over from the Mediatek power domain driver.
+Will do it, thanks for the suggestion.
 
-The regulator is not acquired at probe time, since that creates circular
-dependencies. The power domain driver must be probed early, since SoC
-peripherals need it. Regulators on the other hand depend on SoC
-peripherals like SPI, I2C or GPIO.
+> From talking with Collabora people today at the Open Source Summit, it
+> seems that's also their plan for the rk3576 that is stuck at a similar
+> state.
+> 
+> 
+> Hope that helps a bit to explain
 
-Reviewed-by: Heiko Stuebner <heiko@sntech.de>
-Tested-by: Adrian Larumbe <adrian.larumbe@collabora.com> # On Rock 5B
-Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
----
- drivers/pmdomain/rockchip/pm-domains.c | 56 +++++++++++++++++++++++++-
- 1 file changed, 54 insertions(+), 2 deletions(-)
+Thanks for your reply.
 
-diff --git a/drivers/pmdomain/rockchip/pm-domains.c b/drivers/pmdomain/rockchip/pm-domains.c
-index 663d390faaeb..4bc17b588419 100644
---- a/drivers/pmdomain/rockchip/pm-domains.c
-+++ b/drivers/pmdomain/rockchip/pm-domains.c
-@@ -18,6 +18,7 @@
- #include <linux/of_clk.h>
- #include <linux/clk.h>
- #include <linux/regmap.h>
-+#include <linux/regulator/consumer.h>
- #include <linux/mfd/syscon.h>
- #include <soc/rockchip/pm_domains.h>
- #include <dt-bindings/power/px30-power.h>
-@@ -89,6 +90,8 @@ struct rockchip_pm_domain {
- 	u32 *qos_save_regs[MAX_QOS_REGS_NUM];
- 	int num_clks;
- 	struct clk_bulk_data *clks;
-+	struct device_node *node;
-+	struct regulator *supply;
- };
- 
- struct rockchip_pmu {
-@@ -571,18 +574,66 @@ static int rockchip_pd_power(struct rockchip_pm_domain *pd, bool power_on)
- 	return 0;
- }
- 
-+static int rockchip_pd_regulator_disable(struct rockchip_pm_domain *pd)
-+{
-+	return pd->supply ? regulator_disable(pd->supply) : 0;
-+}
-+
-+static int rockchip_pd_regulator_enable(struct rockchip_pm_domain *pd)
-+{
-+	struct rockchip_pmu *pmu = pd->pmu;
-+	struct device_node *main_node;
-+
-+	if (!pd->supply) {
-+		/*
-+		 * Find regulator in current power domain node.
-+		 * devm_regulator_get() finds regulator in a node and its child
-+		 * node, so set of_node to current power domain node then change
-+		 * back to original node after regulator is found for current
-+		 * power domain node.
-+		 */
-+		main_node = pmu->dev->of_node;
-+		pmu->dev->of_node = pd->node;
-+		pd->supply = devm_regulator_get(pmu->dev, "domain");
-+		pmu->dev->of_node = main_node;
-+		if (IS_ERR(pd->supply)) {
-+			pd->supply = NULL;
-+			return 0;
-+		}
-+	}
-+
-+	return regulator_enable(pd->supply);
-+}
-+
- static int rockchip_pd_power_on(struct generic_pm_domain *domain)
- {
- 	struct rockchip_pm_domain *pd = to_rockchip_pd(domain);
-+	int ret;
-+
-+	ret = rockchip_pd_regulator_enable(pd);
-+	if (ret) {
-+		dev_err(pd->pmu->dev, "Failed to enable supply: %d\n", ret);
-+		return ret;
-+	}
- 
--	return rockchip_pd_power(pd, true);
-+	ret = rockchip_pd_power(pd, true);
-+	if (ret)
-+		rockchip_pd_regulator_disable(pd);
-+
-+	return ret;
- }
- 
- static int rockchip_pd_power_off(struct generic_pm_domain *domain)
- {
- 	struct rockchip_pm_domain *pd = to_rockchip_pd(domain);
-+	int ret;
- 
--	return rockchip_pd_power(pd, false);
-+	ret = rockchip_pd_power(pd, false);
-+	if (ret)
-+		return ret;
-+
-+	rockchip_pd_regulator_disable(pd);
-+	return ret;
- }
- 
- static int rockchip_pd_attach_dev(struct generic_pm_domain *genpd,
-@@ -663,6 +714,7 @@ static int rockchip_pm_add_one_domain(struct rockchip_pmu *pmu,
- 
- 	pd->info = pd_info;
- 	pd->pmu = pmu;
-+	pd->node = node;
- 
- 	pd->num_clks = of_clk_get_parent_count(node);
- 	if (pd->num_clks > 0) {
--- 
-2.45.2
-
+Cheers,
+Yao Zi
 
 _______________________________________________
 Linux-rockchip mailing list
