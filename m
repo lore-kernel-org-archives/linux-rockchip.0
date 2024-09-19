@@ -4,48 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 09A0FCE8D62
-	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Sep 2024 09:18:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1B63DCE8D5F
+	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Sep 2024 09:18:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=C5YznUTlyPV5hFq5FmoRN+toPBFxOpZ/y42ZxG5irXA=; b=33wjLHGWQHhMvI
-	E9fCnqeE1uGtnwbKonmu0DGs1cw9U3zoub5TZNi6SIJZoFxzr4d1v3HLlQ2YaLqyRS8IIignYjO3h
-	HTQTjduvN7nWpPP7zCrwVwoWurzHPqHENndM07oUA6HS48nx1RNgoZctIBAoL1tVrM+Yw2rndH0Do
-	H+QnR4GDbF2BuGM/sRQSo3uonA2nu0HEC2BxSJ+qJW6oj6juQVwt9sjVvB/AlHqTK8SRLzNTKGHzU
-	n772ZRB2sWU3KMeXeRayjO/UjhVZ1JFgC20J3XV3BkbQhn5UPa8l6d6iAynwud7Wgfgks7P/fa89e
-	u9NxSK5+ohnVbf0Sim5Q==;
+	List-Owner; bh=yU2CVwIzfxYaXABDxqFGXcukqxkiQ+goRJKSm7jne3o=; b=ez5j7I2KM4Abyu
+	IJm3oRKEKD8DSL3zU+V+fxFsBWZtLPTc0a9WRLm20h1wNEkKmR+9tIRrkG5mWPMfoKC+UdbFukrMS
+	I6RK3dfKpDpXIUUz+QfwMpF+GcRf4DTCDVIdsHdRdBBYbBe1V5MSxqCq/nkhiATf+NiAISl6NWgyu
+	LggBbAP6mvwboSgyFsDYS+iUw/3r/ejTPCgzOSAAKC7gd94aJJiJooKzrWiVW31PkdZMez0ovOi+o
+	SYo8V6WP78REaNwxqHmekEpzsUAzNmzEjgMaDQ/z2TEu7Q7sBI79z+sovfOtE3c3uPJgdfGJL4Xa9
+	tMCsjhpCkFFU/h7xtizw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1srDJA-00000009tuq-2WJt;
-	Thu, 19 Sep 2024 09:18:40 +0000
+	id 1srDJD-00000009twG-14v7;
+	Thu, 19 Sep 2024 09:18:43 +0000
 Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1srDJ8-00000009tt2-1Vfw
+	id 1srDJ8-00000009tt4-1Voi
 	for linux-rockchip@lists.infradead.org;
-	Thu, 19 Sep 2024 09:18:39 +0000
+	Thu, 19 Sep 2024 09:18:40 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
 	s=mail; t=1726737516;
-	bh=bJez817c2m5RLP6sWTa3KX8AZeuQ47sU7hDMIpxChwE=;
+	bh=QrWsVp0O3acriip4USpkmSpsqOVLVMd3IZ179rzxzbI=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=AIZoFIXjW8ogoEzg/z2qwQqgL19CBRs3kb9WY+L0e6aT2s/HVWr7DMNspYzf66ZQG
-	 /D7Rg09y8+C8ox0jlXX5j31IX66EZhaN9xX8iLLNZHBZAUc125U+/D1S/Wej9Mz1vZ
-	 gzJlPJZbSZ8/N3U9462xMDDQBx9aTWSrNh8WHBGs8dPbNkHOhrceWzC45IBLwFb/vF
-	 sDI1xDjQ0kAga5iJHrwL9m3etTqZotKSpkafb/7wpmCG7TcXxDnNs9R8nw8SocDSN0
-	 a8y8PN1k22E+B5BsSnSfQWGZg3sBzuAdY1kyoeOIFYuQJgEOjX95RoIyb24tnjIkYS
-	 GioQsugI0thWQ==
+	b=nX2d0KxKVHyJVZbo2V53bBjuzcXznsevjWqf7ehrlfLkvc/G+6qW4IJ7MRivWW67Z
+	 K5HUaxwtPXnQd6wGRxtUG/YmuBaAIM4fqEGnH6jijOCDj/ZrUGuhKB0g032Z6vJp6Z
+	 J9O4DGLl9+zeBKbrjN/spdWRu6ytbn3VKPqsdlZ1G9cN2xZc+Su97m1PZYVMFO8r4w
+	 l4PzdZd1XQKRPeKJ+7nVR3EXgMZD7Rg6UJYEp463+ydVRt0njzgaGL7oDd1lf5Pj+h
+	 HdDgmEhMpnO5RvDdtuAeo65581oX/hz86nhHRXC0RVoJxM5oi7OFIdap9PuY7UZ8W0
+	 nYEL9MCjFgRvQ==
 Received: from jupiter.universe (dyndsl-091-248-208-160.ewe-ip-backbone.de [91.248.208.160])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: sre)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 86D6217E1091;
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 8C84917E10AB;
 	Thu, 19 Sep 2024 11:18:36 +0200 (CEST)
 Received: by jupiter.universe (Postfix, from userid 1000)
-	id 5DE28480086; Thu, 19 Sep 2024 11:18:36 +0200 (CEST)
+	id 5A37A480084; Thu, 19 Sep 2024 11:18:36 +0200 (CEST)
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
 To: Rob Herring <robh@kernel.org>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
@@ -62,16 +62,16 @@ Cc: Elaine Zhang <zhangqing@rock-chips.com>,
 	linux-pm@vger.kernel.org,
 	Sebastian Reichel <sebastian.reichel@collabora.com>,
 	kernel@collabora.com
-Subject: [PATCH v2 4/6] dt-bindings: power: rockchip: add regulator support
-Date: Thu, 19 Sep 2024 11:12:45 +0200
-Message-ID: <20240919091834.83572-5-sebastian.reichel@collabora.com>
+Subject: [PATCH v2 2/6] pmdomain: rockchip: forward rockchip_do_pmu_set_power_domain errors
+Date: Thu, 19 Sep 2024 11:12:43 +0200
+Message-ID: <20240919091834.83572-3-sebastian.reichel@collabora.com>
 X-Mailer: git-send-email 2.45.2
 In-Reply-To: <20240919091834.83572-1-sebastian.reichel@collabora.com>
 References: <20240919091834.83572-1-sebastian.reichel@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240919_021838_569504_027FF01D 
-X-CRM114-Status: GOOD (  12.13  )
+X-CRM114-CacheID: sfid-20240919_021838_571348_93D310F0 
+X-CRM114-Status: GOOD (  17.97  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,34 +88,90 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add optional support for a voltage supply required to enable a
-power domain. The binding follows the way it is handled by the
-Mediatek binding to keep things consistent.
+Currently rockchip_do_pmu_set_power_domain prints a warning if there
+have been errors turning on the power domain, but it does not return
+any errors and rockchip_pd_power() tries to continue setting up the
+QOS registers. This usually results in accessing unpowered registers,
+which triggers an SError and a full system hang.
 
-This will initially be used by the RK3588 GPU power domain, which
-fails to be enabled when the GPU regulator is not enabled.
+This improves the error handling by forwarding the error to avoid
+kernel panics.
 
 Reviewed-by: Heiko Stuebner <heiko@sntech.de>
-Acked-by: Rob Herring (Arm) <robh@kernel.org>
+Tested-by: Adrian Larumbe <adrian.larumbe@collabora.com> # On Rock 5B
 Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 ---
- .../devicetree/bindings/power/rockchip,power-controller.yaml   | 3 +++
- 1 file changed, 3 insertions(+)
+ drivers/pmdomain/rockchip/pm-domains.c | 34 +++++++++++++++++---------
+ 1 file changed, 22 insertions(+), 12 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/power/rockchip,power-controller.yaml b/Documentation/devicetree/bindings/power/rockchip,power-controller.yaml
-index 0d5e999a58f1..0b4c5b174812 100644
---- a/Documentation/devicetree/bindings/power/rockchip,power-controller.yaml
-+++ b/Documentation/devicetree/bindings/power/rockchip,power-controller.yaml
-@@ -131,6 +131,9 @@ $defs:
-           A number of phandles to clocks that need to be enabled
-           while power domain switches state.
+diff --git a/drivers/pmdomain/rockchip/pm-domains.c b/drivers/pmdomain/rockchip/pm-domains.c
+index 4f7021f47261..5e5291dedd28 100644
+--- a/drivers/pmdomain/rockchip/pm-domains.c
++++ b/drivers/pmdomain/rockchip/pm-domains.c
+@@ -488,16 +488,17 @@ static int rockchip_pmu_domain_mem_reset(struct rockchip_pm_domain *pd)
+ 	return ret;
+ }
  
-+      domain-supply:
-+        description: domain regulator supply.
+-static void rockchip_do_pmu_set_power_domain(struct rockchip_pm_domain *pd,
+-					     bool on)
++static int rockchip_do_pmu_set_power_domain(struct rockchip_pm_domain *pd,
++					    bool on)
+ {
+ 	struct rockchip_pmu *pmu = pd->pmu;
+ 	struct generic_pm_domain *genpd = &pd->genpd;
+ 	u32 pd_pwr_offset = pd->info->pwr_offset;
+ 	bool is_on, is_mem_on = false;
++	int ret;
+ 
+ 	if (pd->info->pwr_mask == 0)
+-		return;
++		return 0;
+ 
+ 	if (on && pd->info->mem_status_mask)
+ 		is_mem_on = rockchip_pmu_domain_is_mem_on(pd);
+@@ -512,16 +513,21 @@ static void rockchip_do_pmu_set_power_domain(struct rockchip_pm_domain *pd,
+ 
+ 	wmb();
+ 
+-	if (is_mem_on && rockchip_pmu_domain_mem_reset(pd))
+-		return;
++	if (is_mem_on) {
++		ret = rockchip_pmu_domain_mem_reset(pd);
++		if (ret)
++			return ret;
++	}
+ 
+-	if (readx_poll_timeout_atomic(rockchip_pmu_domain_is_on, pd, is_on,
+-				      is_on == on, 0, 10000)) {
+-		dev_err(pmu->dev,
+-			"failed to set domain '%s', val=%d\n",
+-			genpd->name, is_on);
+-		return;
++	ret = readx_poll_timeout_atomic(rockchip_pmu_domain_is_on, pd, is_on,
++					is_on == on, 0, 10000);
++	if (ret) {
++		dev_err(pmu->dev, "failed to set domain '%s' %s, val=%d\n",
++			genpd->name, on ? "on" : "off", is_on);
++		return ret;
+ 	}
 +
-       pm_qos:
-         $ref: /schemas/types.yaml#/definitions/phandle-array
-         items:
++	return 0;
+ }
+ 
+ static int rockchip_pd_power(struct rockchip_pm_domain *pd, bool power_on)
+@@ -545,7 +551,11 @@ static int rockchip_pd_power(struct rockchip_pm_domain *pd, bool power_on)
+ 			rockchip_pmu_set_idle_request(pd, true);
+ 		}
+ 
+-		rockchip_do_pmu_set_power_domain(pd, power_on);
++		ret = rockchip_do_pmu_set_power_domain(pd, power_on);
++		if (ret < 0) {
++			clk_bulk_disable(pd->num_clks, pd->clks);
++			return ret;
++		}
+ 
+ 		if (power_on) {
+ 			/* if powering up, leave idle mode */
 -- 
 2.45.2
 
