@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6964CCF9C5B
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 127DECF9C68
 	for <linux-rockchip@archiver.kernel.org>; Sat, 21 Sep 2024 22:24:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,30 +12,30 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=MXZ12mTscVCiY9jvGDdDNX4/uDQVK65NeJsF5eV40jQ=; b=S1B1FLHF0kW0Wy
-	iVmpr3EYxoN0243gwGGtJTuq7b7mqDGQ7dWpHB4/E1j4YvxfoD/OdfqnnI64HS9GNoy7Skn3vXPGy
-	Vo6cPzoJmnP6mWSimwK51OPZC/GQacVeK7i8pIy8+BMQiS98LMQJPJqYSqDrNDS1bKo/M93+QHQ28
-	hPjXHxtCQ9WQbJSQliZZtRqe1icGN613VCPsORyi24ThoxVZGsntFiQX+Fn+Ln2u8NT7xQL11vBVa
-	66N0f7b+7fiXGfO+IDh2PyuMDAAhcT3EFmKZzix3r1soMACF53I79QGNwoqkFvBwW5mCdT8ATJZ0Z
-	cBQRaXB89+TJxi87DWsg==;
+	List-Owner; bh=MlDtdjSLAVVLjRM/abz78kQY4b5CkN1GhnPOwVekSPk=; b=dIp1yZo9jdtrYh
+	lBolyfVl3JX7/thfy3da11OUCZIfu3mzPjsMEUKXRThV4Ziot7dqsG/aZuzjCdrzaB4Er04l8CRAW
+	ePKY0XjIi+8VuIf+tzxg69m4nFo8Ex+iQBAWfgzzj6axgkQPYVRQ0HD0188H/jhttBygClDxX2gyO
+	bpuou5FzazTu+n9z5vujjOy3gACQLQMANT6GFJPSk66FeBSXq9G8VQm9COb2CwXxyAw9xxhit4eZu
+	ZbiWbXvjNrIgCi2DLKIAz63V5LW1GsMDZhpA1Bbolkv21htuY6GGYxuTTzZmDM3iu4rwbPUSNmrOx
+	c2ku8ZMiWO/Nu5G+QzAA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1ss8Wn-0000000ELvb-3FWP;
+	id 1ss8Wn-0000000ELv7-0690;
 	Sat, 21 Sep 2024 22:24:33 +0000
 Received: from smtp.forwardemail.net ([207.246.76.47])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1ss8TT-0000000ELRp-1NNc
+	id 1ss8TR-0000000ELQT-2kjj
 	for linux-rockchip@lists.infradead.org;
 	Sat, 21 Sep 2024 22:21:10 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
  h=Content-Transfer-Encoding: MIME-Version: References: In-Reply-To:
  Message-ID: Date: Subject: Cc: To: From; q=dns/txt; s=fe-e1b5cab7be;
- t=1726957252; bh=8XVidTJxe1Ijnds0MNBHEWFnH2eEKvVTfDWt1cqAA5Q=;
- b=sX6GAVKnIhbByF5a0w2D3pfJpJS0QMar9ShPqOlepKOoNlTSd9B5t71Is4cLwO49fVp3g9xRl
- 8GGOgyCEb+Zmbf5OqPBb3l+YdRH5TufOXIIzuVIV78bdoXSyAHd9e0nKXxMOlxGT6iTE/dwif+w
- yj8eUjOqQlIcO5z1AFytaEQXcSwlakSOSJApJKVv56Y6flGZKZ+jit4hDcNTw+Puc6ihCyh2998
- 1BbWEpuS/r0qUrbixizgO3tNR7hyELhUPT6hG5HrCuY62nbiphNTLvKQ8lHkHVxYK1TPIhaBEfT
- Q/4S6d3v+ngk6USufMkTjOdqImE71Efsb9WnTkfgwFOQ==
+ t=1726957241; bh=83YVW5OYUCMyv+K4hF+rZLCGivVi+6ztPahHaGSzq38=;
+ b=KAyi3mxcuaykdnHyb/UcXZwcOTQhrHtUXCiA3t2a6b+m6FCoVYmLQLRSj41xFiYCpsqFZjVCq
+ Bs2HLZl1byfOqRM+DEMs8F+h7KFdrwTE6NIgtpjclzLVVJbSUnkGq+k6jnhar0kKaoyT6cQoBjS
+ e1wk35rqqCadBcwggWnFBJP+vctxOBgaYII6l/NPPuRtqrI4fmWQ2CeiHEr7jfgJY/fLoBUHNtH
+ gXdGgAcusIulsjpIqBsUWCdjdNhFYD6U7cNiWJ+PFUYwQ/0g+mnrohFiUhGHs9//iqn5q4/uTP4
+ 3D226GaR2jzNj7BBQB7tMliyh0glhJ4w3MPwE8g4dr0A==
 From: Jonas Karlman <jonas@kwiboo.se>
 To: Rob Herring <robh@kernel.org>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
@@ -54,9 +54,9 @@ Cc: linux-rockchip@lists.infradead.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	Jonas Karlman <jonas@kwiboo.se>
-Subject: [PATCH 3/3] drm/rockchip: vop: Split rk3288-vop into big and lit
-Date: Sat, 21 Sep 2024 22:20:03 +0000
-Message-ID: <20240921222007.2301868-4-jonas@kwiboo.se>
+Subject: [PATCH 1/3] dt-bindings: display: rockchip-vop: Split rk3288-vop into big and lit
+Date: Sat, 21 Sep 2024 22:20:01 +0000
+Message-ID: <20240921222007.2301868-2-jonas@kwiboo.se>
 X-Mailer: git-send-email 2.46.1
 In-Reply-To: <20240921222007.2301868-1-jonas@kwiboo.se>
 References: <20240921222007.2301868-1-jonas@kwiboo.se>
@@ -67,10 +67,11 @@ X-Complaints-To: abuse@forwardemail.net
 X-ForwardEmail-Version: 0.4.40
 X-ForwardEmail-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
  207.246.76.47
-X-ForwardEmail-ID: 66ef46c318c10b4d4a165d2b
+X-ForwardEmail-ID: 66ef46b718c10b4d4a165d05
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240921_152107_677265_0399272A 
-X-CRM114-Status: GOOD (  12.80  )
+X-CRM114-CacheID: sfid-20240921_152106_014901_2631BE87 
+X-CRM114-Status: UNSURE (   7.34  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,71 +92,60 @@ The Rockchip RK3288 SoC contain two different Visual Output Processor
 (VOP) blocks, VOP_BIG and VOP_LIT. The VOP blocks support different max
 output resolution, 3840x2160 and 2560x1600.
 
-Add support for the compatible used to differentiate between VOP_BIG and
-VOP_LIT, support for the old compatible is kept for compatibility with
-older device tree.
+Add compatible to differentiate between the two VOP blocks.
 
 Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
 ---
- drivers/gpu/drm/rockchip/rockchip_vop_reg.c | 27 +++++++++++++++------
- 1 file changed, 20 insertions(+), 7 deletions(-)
+ .../display/rockchip/rockchip-vop.yaml        | 36 +++++++++++--------
+ 1 file changed, 21 insertions(+), 15 deletions(-)
 
-diff --git a/drivers/gpu/drm/rockchip/rockchip_vop_reg.c b/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
-index e2c6ba26f437..978db93cda33 100644
---- a/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
-@@ -762,7 +762,7 @@ static const struct vop_intr rk3288_vop_intr = {
- 	.clear = VOP_REG(RK3288_INTR_CTRL0, 0xf, 8),
- };
+diff --git a/Documentation/devicetree/bindings/display/rockchip/rockchip-vop.yaml b/Documentation/devicetree/bindings/display/rockchip/rockchip-vop.yaml
+index b339b7e708c6..ce4169b030af 100644
+--- a/Documentation/devicetree/bindings/display/rockchip/rockchip-vop.yaml
++++ b/Documentation/devicetree/bindings/display/rockchip/rockchip-vop.yaml
+@@ -17,21 +17,27 @@ maintainers:
  
--static const struct vop_data rk3288_vop = {
-+static const struct vop_data rk3288_vop_big = {
- 	.version = VOP_VERSION(3, 1),
- 	.feature = VOP_FEATURE_OUTPUT_RGB10,
- 	.intr = &rk3288_vop_intr,
-@@ -772,14 +772,22 @@ static const struct vop_data rk3288_vop = {
- 	.win = rk3288_vop_win_data,
- 	.win_size = ARRAY_SIZE(rk3288_vop_win_data),
- 	.lut_size = 1024,
--	/*
--	 * This is the maximum resolution for the VOPB, the VOPL can only do
--	 * 2560x1600, but we can't distinguish them as they have the same
--	 * compatible.
--	 */
- 	.max_output = { 3840, 2160 },
- };
+ properties:
+   compatible:
+-    enum:
+-      - rockchip,px30-vop-big
+-      - rockchip,px30-vop-lit
+-      - rockchip,rk3036-vop
+-      - rockchip,rk3066-vop
+-      - rockchip,rk3126-vop
+-      - rockchip,rk3188-vop
+-      - rockchip,rk3228-vop
+-      - rockchip,rk3288-vop
+-      - rockchip,rk3328-vop
+-      - rockchip,rk3366-vop
+-      - rockchip,rk3368-vop
+-      - rockchip,rk3399-vop-big
+-      - rockchip,rk3399-vop-lit
+-      - rockchip,rv1126-vop
++    oneOf:
++      - items:
++          - enum:
++              - rockchip,rk3288-vop-big
++              - rockchip,rk3288-vop-lit
++          - const: rockchip,rk3288-vop
++      - enum:
++          - rockchip,px30-vop-big
++          - rockchip,px30-vop-lit
++          - rockchip,rk3036-vop
++          - rockchip,rk3066-vop
++          - rockchip,rk3126-vop
++          - rockchip,rk3188-vop
++          - rockchip,rk3228-vop
++          - rockchip,rk3288-vop
++          - rockchip,rk3328-vop
++          - rockchip,rk3366-vop
++          - rockchip,rk3368-vop
++          - rockchip,rk3399-vop-big
++          - rockchip,rk3399-vop-lit
++          - rockchip,rv1126-vop
  
-+static const struct vop_data rk3288_vop_lit = {
-+	.version = VOP_VERSION(3, 1),
-+	.feature = VOP_FEATURE_OUTPUT_RGB10,
-+	.intr = &rk3288_vop_intr,
-+	.common = &rk3288_common,
-+	.modeset = &rk3288_modeset,
-+	.output = &rk3288_output,
-+	.win = rk3288_vop_win_data,
-+	.win_size = ARRAY_SIZE(rk3288_vop_win_data),
-+	.lut_size = 1024,
-+	.max_output = { 2560, 1600 },
-+};
-+
- static const int rk3368_vop_intrs[] = {
- 	FS_INTR,
- 	0, 0,
-@@ -1245,8 +1253,13 @@ static const struct of_device_id vop_driver_dt_match[] = {
- 	  .data = &rk3066_vop },
- 	{ .compatible = "rockchip,rk3188-vop",
- 	  .data = &rk3188_vop },
-+	{ .compatible = "rockchip,rk3288-vop-big",
-+	  .data = &rk3288_vop_big },
-+	{ .compatible = "rockchip,rk3288-vop-lit",
-+	  .data = &rk3288_vop_lit },
-+	/* rockchip,rk3288-vop kept for backward compatibility */
- 	{ .compatible = "rockchip,rk3288-vop",
--	  .data = &rk3288_vop },
-+	  .data = &rk3288_vop_big },
- 	{ .compatible = "rockchip,rk3368-vop",
- 	  .data = &rk3368_vop },
- 	{ .compatible = "rockchip,rk3366-vop",
+   reg:
+     minItems: 1
 -- 
 2.46.1
 
