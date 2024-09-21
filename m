@@ -4,63 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 182DBCF9C68
-	for <linux-rockchip@archiver.kernel.org>; Sat, 21 Sep 2024 21:44:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 323F1CF9C68
+	for <linux-rockchip@archiver.kernel.org>; Sat, 21 Sep 2024 22:23:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
-	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=uXxMWPEDE9jK315WlJRjeXoEbPBaIJxX/2C+Ee+MLaw=; b=OztOudUpoou0Qmeb4ZsNX+RLJp
-	GfIJVAvH5oObBl0e12bQokxOAQ11uBRb24GaCsAmq9RAgThks9hBR1gxS1+YtCF+uEgvyx43dYN6v
-	sAJ/MuR8NA2/tOWYEG0GgrXqSfr5BmXQcL5VP7QMfDJTLmuA9GiTxVnnSg9YajAqVGw0T8od5A/RB
-	2a84j05ZGUztaqaSI4pvBHAFlCZNKjsbmQxJbh8Un/uXZb6wYgE1Rshn4WmrNK5jwfQskLniMUv7H
-	MOkYPtLo0DS9JrfUWByEohq+s9HazodUUEcIDjr6qCCJpNY51NZD6/J4+W95fMHgw5pZXUt4GnJgv
-	hNX38DlA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=M82BnWuqP5k/M08Id+qCug0BevUyF7d4FcxCmFinvlA=; b=L+nfwEqZ2a1D/F
+	A71fRialcwjguG1o4LlrVNNabj+ulD35BRd+wZtnuOM+tMG7sY4Sn1ShrDiX3oo3l9hodXlbbwte4
+	nwwwimwT4TICyXVDGWe+NMVGCbS2O6ujuj8BB6NFyP3Cenmu8tnLGAgCPyMbiAQ7zQu+Pw5ehYMum
+	aNxI8G1OEiHlPgf85EibkZqZMnZzg8uRd48zMCfB2NR7+q4FFjnjCSu+3JPR6a86ECYwBKcG1Akfn
+	SXKAFsj1FQeJPSEs4qecu3RVD+AcDjoR5lNTNiEQHipIS7X/cdbdMw11UT4tJWzCNs6Qlq6jrP6Jv
+	gdkrvItsxHzfv8KlK0tw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1ss7tU-0000000EIhv-26zP;
-	Sat, 21 Sep 2024 21:43:56 +0000
-Received: from mail.manjaro.org ([116.203.91.91])
+	id 1ss8Vi-0000000ELnu-2Q3E;
+	Sat, 21 Sep 2024 22:23:26 +0000
+Received: from smtp.forwardemail.net ([207.246.76.47])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1ss7sM-0000000EIVH-1jrC;
-	Sat, 21 Sep 2024 21:42:48 +0000
+	id 1ss8TR-0000000ELQR-2PCi
+	for linux-rockchip@lists.infradead.org;
+	Sat, 21 Sep 2024 22:21:09 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
+ h=Content-Transfer-Encoding: MIME-Version: References: In-Reply-To:
+ Message-ID: Date: Subject: Cc: To: From; q=dns/txt; s=fe-e1b5cab7be;
+ t=1726957246; bh=q4HGnQgfycy2AHtw5GfrgdiaBd9jGsGqRiZpjBBUbHw=;
+ b=uQOZd3jysDFSkaUze5WIN/0cEfwZHt2UeyM8cszJYuDpN9jMxjIhkAYfxrGxQWar/MiqiYnml
+ S57QTZnmF3JUPqlIDBw1WYMrQ7c/aU+sUzZVVkKJE4CZXTDoCAEaII1C1o5CVy43kCnmmeTjJMH
+ /8Ca6ExY1wua2Ggthv8CCYbShOJeL9iEoNjE+ui/ocQYeLNshyRjADFL/d5rveOHKpVNdw81d/7
+ qxpT7RBxVWP1qc1J+b6R/Cp2TojDmhmWoDgsUOg/CsyKjCo+ovrcOdmTv+rkv7ee4QeF0CydNDq
+ XGaL1JDAsvU6/5xTotMz2zsjr73QZIHxtlpUBlE2UFzw==
+From: Jonas Karlman <jonas@kwiboo.se>
+To: Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Sandy Huang <hjc@rock-chips.com>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Andy Yan <andy.yan@rock-chips.com>,
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Maxime Ripard <mripard@kernel.org>,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	David Airlie <airlied@gmail.com>,
+	Simona Vetter <simona@ffwll.ch>
+Cc: linux-rockchip@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	dri-devel@lists.freedesktop.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Jonas Karlman <jonas@kwiboo.se>
+Subject: [PATCH 2/3] ARM: dts: rockchip: Split rk3288-vop into big and lit
+Date: Sat, 21 Sep 2024 22:20:02 +0000
+Message-ID: <20240921222007.2301868-3-jonas@kwiboo.se>
+X-Mailer: git-send-email 2.46.1
+In-Reply-To: <20240921222007.2301868-1-jonas@kwiboo.se>
+References: <20240921222007.2301868-1-jonas@kwiboo.se>
 MIME-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
-	t=1726954964;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=+uMN5w6qYS2BUoqj10TXa1/0/97pCNoqt/rmAX2GPAo=;
-	b=bXZon0CEaBK6v6rzxU5YRfCFhLhOOwREJFeHmkWn7lduwYxSWtn2lAFcrOmfCS3bciGYbk
-	pMd/4I3Lg8oP50TVKstEVU6tGTLBsQ1BXAa/PPCDYmbdE1HcYM5stO3A8OOUT/IpTV/rl/
-	clHx+rU1bt++AGbwb+x8LlHIFv+4/eouASANroc9R7gjhYfWyeB28axdPItPbb4Rk4QKti
-	9HG8G1/zvxLl7OESAeDw1IpLhnqUm3n500p1iauva2FmVvp92mDuuSACR/GoFXJ6p0jvXe
-	1VgK1qWwW8zUeWeyToAGgM5OqTAS9JKYY4xNjH2KnWeWtt1SJSvu3Y8s846HjQ==
-Date: Sat, 21 Sep 2024 23:42:43 +0200
-From: Dragan Simic <dsimic@manjaro.org>
-To: Florian Klink <flokli@flokli.de>
-Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- Sebastian Reichel <sebastian.reichel@collabora.com>, Kever Yang
- <kever.yang@rock-chips.com>, =?UTF-8?Q?Tam=C3=A1s_Sz=C5=B1cs?=
- <tszucs@protonmail.ch>, FUKAUMI Naoki <naoki@radxa.com>, Muhammed Efe Cetin
- <efectn@protonmail.com>, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] arm64: dts: rockchip: enable automatic fan control on
- Orange Pi 5+
-In-Reply-To: <20240921183810.225322-1-flokli@flokli.de>
-References: <20240921183810.225322-1-flokli@flokli.de>
-Message-ID: <d90eae7de77a77f023d995c4cc5d6c42@manjaro.org>
-X-Sender: dsimic@manjaro.org
-Authentication-Results: ORIGINATING;
-	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
+X-Report-Abuse-To: abuse@forwardemail.net
+X-Report-Abuse: abuse@forwardemail.net
+X-Complaints-To: abuse@forwardemail.net
+X-ForwardEmail-Version: 0.4.40
+X-ForwardEmail-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
+ 207.246.76.47
+X-ForwardEmail-ID: 66ef46bd18c10b4d4a165d17
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240921_144246_780507_1AD401EC 
-X-CRM114-Status: GOOD (  17.21  )
+X-CRM114-CacheID: sfid-20240921_152105_900699_2B5F6CF0 
+X-CRM114-Status: GOOD (  10.22  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,84 +82,48 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello Florian,
+The Rockchip RK3288 SoC contain two different Visual Output Processor
+(VOP) blocks, VOP_BIG and VOP_LIT. The VOP blocks support different max
+output resolution, 3840x2160 and 2560x1600.
 
-Thanks for the patch.  Please, see a comment below.
+Change compatible to differentiate between VOP_BIG and VOP_LIT, the old
+compatible is kept for backward compatibility.
 
-On 2024-09-21 20:38, Florian Klink wrote:
-> This links the PWM fan on Orange Pi 5+ as an active cooling device
-> managed automatically by the thermal subsystem, with a target SoC
-> temperature of 65C and a minimum-spin interval from 55C to 65C to
-> ensure airflow when the system gets warm.
-> 
-> This is pretty much the same as '4a152231b050 ("arm64: dts: rockchip:
-> enable automatic fan control on Rock 5B")', except for the Orange Pi
-> 5+ board.
-> 
-> Signed-off-by: Florian Klink <flokli@flokli.de>
-> ---
->  .../dts/rockchip/rk3588-orangepi-5-plus.dts   | 30 +++++++++++++++++++
->  1 file changed, 30 insertions(+)
-> 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-plus.dts
-> b/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-plus.dts
-> index e74871491ef5..8569e862b6ee 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-plus.dts
-> +++ b/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-plus.dts
-> @@ -351,6 +351,36 @@ &i2s2m0_sdi
->  	status = "okay";
->  };
-> 
-> +&package_thermal {
-> +	polling-delay = <1000>;
-> +
-> +	trips {
-> +		package_fan0: package-fan0 {
-> +			temperature = <55000>;
-> +			hysteresis = <2000>;
-> +			type = "active";
-> +		};
-> +
-> +		package_fan1: package-fan1 {
-> +			temperature = <65000>;
-> +			hysteresis = <2000>;
-> +			type = "active";
-> +		};
-> +	};
-> +
-> +	cooling-maps {
-> +		map1 {
-> +			trip = <&package_fan0>;
-> +			cooling-device = <&fan THERMAL_NO_LIMIT 1>;
-> +		};
-> +
-> +		map2 {
-> +			trip = <&package_fan1>;
-> +			cooling-device = <&fan 2 THERMAL_NO_LIMIT>;
-> +		};
+Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
+---
+ arch/arm/boot/dts/rockchip/rk3288.dtsi | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-These two cooling maps should be named map0 and map1 instead, i.e.
-their numbering shoud start from zero, because there are no package
-cooling maps in the parent dtsi file(s).
+diff --git a/arch/arm/boot/dts/rockchip/rk3288.dtsi b/arch/arm/boot/dts/rockchip/rk3288.dtsi
+index 3f1d640afafa..db4a258551f4 100644
+--- a/arch/arm/boot/dts/rockchip/rk3288.dtsi
++++ b/arch/arm/boot/dts/rockchip/rk3288.dtsi
+@@ -1026,7 +1026,7 @@ rga: rga@ff920000 {
+ 	};
+ 
+ 	vopb: vop@ff930000 {
+-		compatible = "rockchip,rk3288-vop";
++		compatible = "rockchip,rk3288-vop-big", "rockchip,rk3288-vop";
+ 		reg = <0x0 0xff930000 0x0 0x19c>, <0x0 0xff931000 0x0 0x1000>;
+ 		interrupts = <GIC_SPI 15 IRQ_TYPE_LEVEL_HIGH>;
+ 		clocks = <&cru ACLK_VOP0>, <&cru DCLK_VOP0>, <&cru HCLK_VOP0>;
+@@ -1075,7 +1075,7 @@ vopb_mmu: iommu@ff930300 {
+ 	};
+ 
+ 	vopl: vop@ff940000 {
+-		compatible = "rockchip,rk3288-vop";
++		compatible = "rockchip,rk3288-vop-lit", "rockchip,rk3288-vop";
+ 		reg = <0x0 0xff940000 0x0 0x19c>, <0x0 0xff941000 0x0 0x1000>;
+ 		interrupts = <GIC_SPI 16 IRQ_TYPE_LEVEL_HIGH>;
+ 		clocks = <&cru ACLK_VOP1>, <&cru DCLK_VOP1>, <&cru HCLK_VOP1>;
+-- 
+2.46.1
 
-Having them named map1 and map2 in rk3588-rock-5b.dts was a small
-mistake that slipped by somehow, and I've already submitted a small
-patch [1] that fixes that mistake.
-
-[1] 
-https://lore.kernel.org/linux-rockchip/335ecd5841ab55f333e17bb391d0e1264fac257b.1726954592.git.dsimic@manjaro.org/T/#u
-
-> +	};
-> +};
-> +
->  /* phy1 - M.KEY socket */
->  &pcie2x1l0 {
->  	reset-gpios = <&gpio4 RK_PA5 GPIO_ACTIVE_HIGH>;
 
 _______________________________________________
 Linux-rockchip mailing list
