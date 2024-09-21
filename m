@@ -4,59 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 32FAFCF9C5B
-	for <linux-rockchip@archiver.kernel.org>; Sat, 21 Sep 2024 21:40:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 182DBCF9C68
+	for <linux-rockchip@archiver.kernel.org>; Sat, 21 Sep 2024 21:44:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=ydDZWd2KS1FsDtPRg5ZXJ2f08hWSh9vGZVLMVTZCtvs=; b=Z+d6hruQ++U/xk
-	/Q+OZZuyN2m7tb8SPlSK7vwnKeStzRRcSDx8zEYwTVWDTlnefpiAd4opHazYyNitmOkZ17Hjj7alG
-	OjlBFjnzMJit73rYKBx2NFUnRWT6hyDWbFIreAscDvAGgoBla7J+HFKTZZ0BxXtxUb0MWhcpOED5w
-	dDy40puP3Y8DvWDYZGaCEmzCcqIHnMyi7NJf9r3zLrg2SpQUYp+ufV1k7Wbj49E56r2VD64/BtbT2
-	whDT3xpOqraNNHPPWFW3q0NJs4+6chmSZbCxCliQ+t7MIXsn6iq+SowZu424YPaXG9YtpHUbf1SPQ
-	FmWNayJVaaqwZZJAQBqw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
+	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=uXxMWPEDE9jK315WlJRjeXoEbPBaIJxX/2C+Ee+MLaw=; b=OztOudUpoou0Qmeb4ZsNX+RLJp
+	GfIJVAvH5oObBl0e12bQokxOAQ11uBRb24GaCsAmq9RAgThks9hBR1gxS1+YtCF+uEgvyx43dYN6v
+	sAJ/MuR8NA2/tOWYEG0GgrXqSfr5BmXQcL5VP7QMfDJTLmuA9GiTxVnnSg9YajAqVGw0T8od5A/RB
+	2a84j05ZGUztaqaSI4pvBHAFlCZNKjsbmQxJbh8Un/uXZb6wYgE1Rshn4WmrNK5jwfQskLniMUv7H
+	MOkYPtLo0DS9JrfUWByEohq+s9HazodUUEcIDjr6qCCJpNY51NZD6/J4+W95fMHgw5pZXUt4GnJgv
+	hNX38DlA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1ss7qF-0000000EIJi-48Vi;
-	Sat, 21 Sep 2024 21:40:35 +0000
+	id 1ss7tU-0000000EIhv-26zP;
+	Sat, 21 Sep 2024 21:43:56 +0000
 Received: from mail.manjaro.org ([116.203.91.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1ss7oy-0000000EI25-23T0;
-	Sat, 21 Sep 2024 21:39:19 +0000
-From: Dragan Simic <dsimic@manjaro.org>
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
-	t=1726954753;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding;
-	bh=aK8KbRwCvuQHz3K5ucCXTTuDlPUMyQ/ggvKNYCR3JcM=;
-	b=QBXhJMEch4SLR9LAsabdISlPq+wxxOxyvNxom8tqrZWy+AyEUyzJlHhZPU+hqMgMGSVjVm
-	X61iJYA3awBeRoVaUhcu6JEhPpDnPivTjIyWG9ueCg05CuhRT7IhhJ9wojWnv/Qp5ZUwJn
-	mIB6MUWRudUDy3r6Vqeq3lm2L2QJT1WGiPWmZ0Tjtkq2f5Pq7zDTp1rgIXQxntTgS1F7kb
-	tENRJQCgZYtkaE1dJBWMaVlxxwFBUuEQ8XuNqijbK+o9vUtWyZ/FW6VK0zxKlz8K6mxh1F
-	9FJiKbOwHKlFCwoCS6cx05DEBTu1KGktpTDvNbU7V1cPUtgocf4FRG7u8hzTgw==
-To: linux-rockchip@lists.infradead.org
-Cc: heiko@sntech.de,
-	linux-arm-kernel@lists.infradead.org,
-	devicetree@vger.kernel.org,
-	robh@kernel.org,
-	krzk+dt@kernel.org,
-	conor+dt@kernel.org,
-	linux-kernel@vger.kernel.org,
-	alchark@gmail.com
-Subject: [PATCH] arm64: dts: rockchip: Start cooling maps numbering from zero on ROCK 5B
-Date: Sat, 21 Sep 2024 23:39:05 +0200
-Message-Id: <335ecd5841ab55f333e17bb391d0e1264fac257b.1726954592.git.dsimic@manjaro.org>
+	id 1ss7sM-0000000EIVH-1jrC;
+	Sat, 21 Sep 2024 21:42:48 +0000
 MIME-Version: 1.0
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
+	t=1726954964;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=+uMN5w6qYS2BUoqj10TXa1/0/97pCNoqt/rmAX2GPAo=;
+	b=bXZon0CEaBK6v6rzxU5YRfCFhLhOOwREJFeHmkWn7lduwYxSWtn2lAFcrOmfCS3bciGYbk
+	pMd/4I3Lg8oP50TVKstEVU6tGTLBsQ1BXAa/PPCDYmbdE1HcYM5stO3A8OOUT/IpTV/rl/
+	clHx+rU1bt++AGbwb+x8LlHIFv+4/eouASANroc9R7gjhYfWyeB28axdPItPbb4Rk4QKti
+	9HG8G1/zvxLl7OESAeDw1IpLhnqUm3n500p1iauva2FmVvp92mDuuSACR/GoFXJ6p0jvXe
+	1VgK1qWwW8zUeWeyToAGgM5OqTAS9JKYY4xNjH2KnWeWtt1SJSvu3Y8s846HjQ==
+Date: Sat, 21 Sep 2024 23:42:43 +0200
+From: Dragan Simic <dsimic@manjaro.org>
+To: Florian Klink <flokli@flokli.de>
+Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ Sebastian Reichel <sebastian.reichel@collabora.com>, Kever Yang
+ <kever.yang@rock-chips.com>, =?UTF-8?Q?Tam=C3=A1s_Sz=C5=B1cs?=
+ <tszucs@protonmail.ch>, FUKAUMI Naoki <naoki@radxa.com>, Muhammed Efe Cetin
+ <efectn@protonmail.com>, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+Subject: Re: [PATCH] arm64: dts: rockchip: enable automatic fan control on
+ Orange Pi 5+
+In-Reply-To: <20240921183810.225322-1-flokli@flokli.de>
+References: <20240921183810.225322-1-flokli@flokli.de>
+Message-ID: <d90eae7de77a77f023d995c4cc5d6c42@manjaro.org>
+X-Sender: dsimic@manjaro.org
 Authentication-Results: ORIGINATING;
 	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240921_143917_036389_2E4F5405 
-X-CRM114-Status: UNSURE (   8.73  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240921_144246_780507_1AD401EC 
+X-CRM114-Status: GOOD (  17.21  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,41 +72,84 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The package cooling maps for the Radxa ROCK 5B were mistakenly named map1
-and map2.  Their numbering should start from zero instead, because there are
-no package cooling maps defined in the parent RK3588 SoC dtsi file, so let's
-rename these cooling maps to map0 and map1.
+Hello Florian,
 
-Fixes: 4a152231b050 ("arm64: dts: rockchip: enable automatic fan control on Rock 5B")
-Signed-off-by: Dragan Simic <dsimic@manjaro.org>
----
- arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+Thanks for the patch.  Please, see a comment below.
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
-index 966bbc582d89..6bd06e46a101 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
-@@ -304,12 +304,12 @@ package_fan1: package-fan1 {
- 	};
- 
- 	cooling-maps {
--		map1 {
-+		map0 {
- 			trip = <&package_fan0>;
- 			cooling-device = <&fan THERMAL_NO_LIMIT 1>;
- 		};
- 
--		map2 {
-+		map1 {
- 			trip = <&package_fan1>;
- 			cooling-device = <&fan 2 THERMAL_NO_LIMIT>;
- 		};
+On 2024-09-21 20:38, Florian Klink wrote:
+> This links the PWM fan on Orange Pi 5+ as an active cooling device
+> managed automatically by the thermal subsystem, with a target SoC
+> temperature of 65C and a minimum-spin interval from 55C to 65C to
+> ensure airflow when the system gets warm.
+> 
+> This is pretty much the same as '4a152231b050 ("arm64: dts: rockchip:
+> enable automatic fan control on Rock 5B")', except for the Orange Pi
+> 5+ board.
+> 
+> Signed-off-by: Florian Klink <flokli@flokli.de>
+> ---
+>  .../dts/rockchip/rk3588-orangepi-5-plus.dts   | 30 +++++++++++++++++++
+>  1 file changed, 30 insertions(+)
+> 
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-plus.dts
+> b/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-plus.dts
+> index e74871491ef5..8569e862b6ee 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-plus.dts
+> +++ b/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-plus.dts
+> @@ -351,6 +351,36 @@ &i2s2m0_sdi
+>  	status = "okay";
+>  };
+> 
+> +&package_thermal {
+> +	polling-delay = <1000>;
+> +
+> +	trips {
+> +		package_fan0: package-fan0 {
+> +			temperature = <55000>;
+> +			hysteresis = <2000>;
+> +			type = "active";
+> +		};
+> +
+> +		package_fan1: package-fan1 {
+> +			temperature = <65000>;
+> +			hysteresis = <2000>;
+> +			type = "active";
+> +		};
+> +	};
+> +
+> +	cooling-maps {
+> +		map1 {
+> +			trip = <&package_fan0>;
+> +			cooling-device = <&fan THERMAL_NO_LIMIT 1>;
+> +		};
+> +
+> +		map2 {
+> +			trip = <&package_fan1>;
+> +			cooling-device = <&fan 2 THERMAL_NO_LIMIT>;
+> +		};
+
+These two cooling maps should be named map0 and map1 instead, i.e.
+their numbering shoud start from zero, because there are no package
+cooling maps in the parent dtsi file(s).
+
+Having them named map1 and map2 in rk3588-rock-5b.dts was a small
+mistake that slipped by somehow, and I've already submitted a small
+patch [1] that fixes that mistake.
+
+[1] 
+https://lore.kernel.org/linux-rockchip/335ecd5841ab55f333e17bb391d0e1264fac257b.1726954592.git.dsimic@manjaro.org/T/#u
+
+> +	};
+> +};
+> +
+>  /* phy1 - M.KEY socket */
+>  &pcie2x1l0 {
+>  	reset-gpios = <&gpio4 RK_PA5 GPIO_ACTIVE_HIGH>;
 
 _______________________________________________
 Linux-rockchip mailing list
