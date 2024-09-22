@@ -4,61 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A9B90CF9C64
-	for <linux-rockchip@archiver.kernel.org>; Sun, 22 Sep 2024 10:33:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4DC58CF9C64
+	for <linux-rockchip@archiver.kernel.org>; Sun, 22 Sep 2024 10:52:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:References:From:Subject:Cc:To:Message-Id:Date:Mime-Version:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=tDwP9Hz0MCA/SvUPVvnp2iyworHBkGLTDkilPE3LnD0=; b=r9pqjS9UQ+Xah2jaIRfsPCDLjA
-	J7FVsvpYRN5zd8FqdFgZhprk8AZanRgZ5oD6c+qdslxkwBeP57pkt65Xi4EGZWUsQ+7rFqyWO2AO3
-	5HmQSrPXSd+KWhb2SOk3qT7f3YJp+O7Mtc1zoGr1rWFXZPY/RxOrdlvSGbkUc5xFFRxAOObSbK8MC
-	47Q0vDe8AF2dxFQvRK+e9YH5bmQoyTYwrfkVE2ffV54zRhv2AqHJ4UEYkd3IJmF7DOgej8r2lQ8Il
-	2e7Ed7kprHyFIIvSCJwL5Exc0nJvmTv54l2vhMN9DYqtlGvh+S8LwP/qXzF7mGNpoh24c8eZ+SFl4
-	fjEgDdjA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=Cq1AXwJUrq/jX28NVp8C3E59u3DetOSSzQCpNY+A3gw=; b=ccbAkkPrujkF+T
+	aPBnEBj1yggTLx3x0MHnOgFDjzAL5/nYTq/R7/v3fqpz2v10Q7n0h4IsgVFlUkQGoqk8lrHoG03f4
+	equZu4LGUbN8GBzXQgSqFY2+0dC3IO6D7JTGDMYPnxd3OtbFSnTXZakqN1wH1eXZ8DdClODpl7Bhi
+	I4m6BNf/A7/QgxGGb2/HjuGa5ALV4e1WFNoK8wXIb8yO2mBHmE9Teupbw8KqqWwEjM1gsCkKnyu7J
+	KYzkrZWR7DXZKBdUTQf+PV3XQJyV44mYmoDC3WSj0xcFlC2x/OADNhuf4Ly7VvxVgn9MGc7feo2RP
+	fpwnDN1KiK2U+lo8VcsQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1ssJu8-0000000EzVg-0U3m;
-	Sun, 22 Sep 2024 10:33:24 +0000
-Received: from out-185.mta0.migadu.com ([91.218.175.185])
+	id 1ssKCU-0000000F0up-3Wiw;
+	Sun, 22 Sep 2024 10:52:22 +0000
+Received: from mail-pf1-x42b.google.com ([2607:f8b0:4864:20::42b])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1ssJu4-0000000EzUh-1exR
-	for linux-rockchip@lists.infradead.org;
-	Sun, 22 Sep 2024 10:33:22 +0000
-Mime-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow.org; s=key1;
-	t=1727001195;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=rh5mxOysEWdlr7zB3dIq9Xe2btAHsCpup+ruaFZk4EM=;
-	b=KhKdHH4ObK+KAa3ylcl/wZq36CKLW9XGQbMTs3L/PVLTKtzN6mah6aJfCG38zpVnZ9+WWU
-	FN9Yu0Uj7sgJ7XXprTjbI6UVwNg5ynCR49Xon30JpoX3Pxd/H16jLNAZjzSA9ERIyqS5Qr
-	CledCoNU9+F591nNaaPK/hIx5LBdCDNLDxO/HLUEkmD4RTm6EOdcNuxs9Y2atEyUD1lIWx
-	BsooqPkyy/7oHJbcCdkfIJ4YWK+wlfinkjt7sOSXt22w1uRBqecWy0Mt9YeQHONeYEtB95
-	OGSa+w1znwU/9ks2KwjbP9CZgwfMUwuASQshHjGt3NgnA2w1dMNLr63HdNHLDQ==
-Date: Sun, 22 Sep 2024 12:33:05 +0200
-Message-Id: <D4CQTRYUPQHL.1Y42CT0P8ZOWQ@cknow.org>
-To: "Andy Yan" <andyshrk@163.com>, <heiko@sntech.de>
-Cc: <hjc@rock-chips.com>, <krzk+dt@kernel.org>, <robh@kernel.org>,
- <conor+dt@kernel.org>, <s.hauer@pengutronix.de>,
- <devicetree@vger.kernel.org>, <dri-devel@lists.freedesktop.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
- <linux-rockchip@lists.infradead.org>, <derek.foreman@collabora.com>,
- <minhuadotchen@gmail.com>, <detlev.casanova@collabora.com>, "Andy Yan"
- <andy.yan@rock-chips.com>
+	id 1ssKBM-0000000F0no-1vsR;
+	Sun, 22 Sep 2024 10:51:14 +0000
+Received: by mail-pf1-x42b.google.com with SMTP id d2e1a72fcca58-7198de684a7so2639801b3a.2;
+        Sun, 22 Sep 2024 03:51:12 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1727002271; x=1727607071; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=VfaKNPUCoZktFoxA7ex47D6NTps/yVQORN1Hk0vnOKM=;
+        b=Cwes9vHrd5z1Rqys804bK/iHxkYNICySaFuYVsbuBSxl3/nTOottcgz9vvinQQV7LX
+         1/+y21bpxqluK5rUNJpuweF1oGdJE0H0Q4Dxw1HRayyeZL0KyGg5CFq3blh8Wh1lnoWI
+         +M57O8c3oUiA/QQprG9qdbU6x6xnfOyKTNqNLUZixtehPEeRvnkxzYswn0jhR2M+gabH
+         owK26OGENz4nRm6EoSVWsrDizw6Xc26RNcpS9/cTjrNWRIsvCN+Av6YYV1dprQBwhyBE
+         6XkGgnyJK27JlKLinNh3+VDIQ3Wmvm/mMbZrxlFFPhyrZyPmMG+/wVW0ilKXt35T/CQg
+         AFqg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1727002271; x=1727607071;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=VfaKNPUCoZktFoxA7ex47D6NTps/yVQORN1Hk0vnOKM=;
+        b=r/MnoaLeTbyGlhjhMG9D3vFhrf+USZeC5wG+jqZtIVeINA4wY19V9rKhOjv8cuX/Vw
+         c9/zyJDa7bJrIYTelO6eIDCdfNNZEczaD/8Gc5AZkPkgqQTaRnPnQ59sB/B8Pjr1e5si
+         aon+EK49gspbtEKDdK0MMtYbqJ6JoXXV8hU6EJCFYqKOoIkb5IE9/Z335hZTAifxwkwu
+         hGCrZfdZS4VnAe8pRolCa3IaqOgZBI3h6eADXPyYwRP3ldbTch9kZ4RXJSq5J+Pa3LnL
+         VneSORXZG6+9rft0bIya6tJ4ipT1wOP6GpmL2RbNRrmPm6X8atQhJSZyGWiCVDNUVVjD
+         SEoA==
+X-Forwarded-Encrypted: i=1; AJvYcCUGnBylfqwpORSg+aXVho/+zwAV6W4jod1qA/u/yKqdJSCg+qIsv/Zu7B5JGLFoQ2KvSokWv1uB1pt5wz6wjV0=@lists.infradead.org, AJvYcCXm6mrgT1nI1JHsTKDSs1nbT6imnCrn0shcT7het5D8JYeZq85qiemGdsGNlyMbUIF0ind1wlgIpoMQ811tPVk3@lists.infradead.org
+X-Gm-Message-State: AOJu0Yw/z5AZYtqm6vr5orMA/6nuKDrAABsZSNZsasLXeNaD//xPg8CS
+	E/l5t76xKBokiyLL60qYgYjmSJoqKUgKEGSxFa/90OutTPSbvOEM
+X-Google-Smtp-Source: AGHT+IGRjH0l99ssN+QztozL46uT4nQHpNyyqkPhdTF07mheLJ1v7yxUTrAsF65SBGlcz3QAtmY5qg==
+X-Received: by 2002:a05:6a00:1818:b0:717:81b3:4c7a with SMTP id d2e1a72fcca58-7199cebcaa9mr13621819b3a.24.1727002271429;
+        Sun, 22 Sep 2024 03:51:11 -0700 (PDT)
+Received: from localhost.localdomain (42-73-147-23.emome-ip.hinet.net. [42.73.147.23])
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-71944b7afaesm12300497b3a.130.2024.09.22.03.51.07
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 22 Sep 2024 03:51:11 -0700 (PDT)
+From: Min-Hua Chen <minhuadotchen@gmail.com>
+To: didi.debian@cknow.org
+Cc: andy.yan@rock-chips.com,
+	andyshrk@163.com,
+	conor+dt@kernel.org,
+	derek.foreman@collabora.com,
+	detlev.casanova@collabora.com,
+	devicetree@vger.kernel.org,
+	dri-devel@lists.freedesktop.org,
+	heiko@sntech.de,
+	hjc@rock-chips.com,
+	krzk+dt@kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	minhuadotchen@gmail.com,
+	robh@kernel.org,
+	s.hauer@pengutronix.de
 Subject: Re: [PATCH v3 06/15] drm/rockchip: vop2: include rockchip_drm_drv.h
-X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
-From: "Diederik de Haas" <didi.debian@cknow.org>
-References: <20240920081626.6433-1-andyshrk@163.com>
- <20240920082122.6742-1-andyshrk@163.com>
-In-Reply-To: <20240920082122.6742-1-andyshrk@163.com>
-X-Migadu-Flow: FLOW_OUT
+Date: Sun, 22 Sep 2024 18:50:45 +0800
+Message-ID: <20240922105045.157612-1-minhuadotchen@gmail.com>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <D4CQTRYUPQHL.1Y42CT0P8ZOWQ@cknow.org>
+References: <D4CQTRYUPQHL.1Y42CT0P8ZOWQ@cknow.org>
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240922_033321_334226_674AB232 
-X-CRM114-Status: GOOD (  16.38  )
+X-CRM114-CacheID: sfid-20240922_035113_221690_C8475944 
+X-CRM114-Status: UNSURE (   8.98  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,106 +102,28 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============6175796374598215763=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
---===============6175796374598215763==
-Content-Type: multipart/signed;
- boundary=cf4d01d20a3b9d5a9a49968868fe9e6d1f0f8308e15edb5bdb79c6fb1446;
- micalg=pgp-sha256; protocol="application/pgp-signature"
+Hi,
 
---cf4d01d20a3b9d5a9a49968868fe9e6d1f0f8308e15edb5bdb79c6fb1446
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain; charset=UTF-8
+> Maybe ``From: Min-Hua Chen <minhuadotchen@gmail.com>``?
+> 
+> It's very minor and Min-Hua gave their 'Reviewed-by' tag to your patch,
+> but they found the problem and I thought it was just for practical
+> reasons you made it part of this patch set.
 
-On Fri Sep 20, 2024 at 10:21 AM CEST, Andy Yan wrote:
-> From: Andy Yan <andy.yan@rock-chips.com>
+Yes, you're right. The reason I reply this patch is that I am not
+sure if I have to do this.
 
-Maybe ``From: Min-Hua Chen <minhuadotchen@gmail.com>``?
+Please ignore my mail and sorry about the noise.
 
-It's very minor and Min-Hua gave their 'Reviewed-by' tag to your patch,
-but they found the problem and I thought it was just for practical
-reasons you made it part of this patch set.
-
-> Move rockchip_drm_drv.h in rockchip_drm_vop2.h to fix the follow
-> sparse warning:
->
-> ARCH=3Darm64 LLVM=3D1 make C=3D1 CF=3D'-fdiagnostic-prefix -D__CHECK_ENDI=
-AN__'
-> mrproper defconfig all  -j12
->
-> drivers/gpu/drm/rockchip/rockchip_vop2_reg.c:502:24: sparse:
-> warning: symbol 'vop2_platform_driver' was not declared. Should it
-> be static?
->
-> It is also beneficial for the upcoming support for rk3576.
->
-> Fixes: 604be85547ce ("drm/rockchip: Add VOP2 driver")
-> Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
-> Signed-off-by: Min-Hua Chen <minhuadotchen@gmail.com>
->
-> ---
->
-> Changes in v3:
-> - Split it from 10/15, as it fix a exiting compile warning.
->
->  drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 1 -
->  drivers/gpu/drm/rockchip/rockchip_drm_vop2.h | 1 +
->  2 files changed, 1 insertion(+), 1 deletion(-)
->
-> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/d=
-rm/rockchip/rockchip_drm_vop2.c
-> index 4776a227e62c..a7f9f88869a6 100644
-> --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-> @@ -35,7 +35,6 @@
->  #include <uapi/linux/videodev2.h>
->  #include <dt-bindings/soc/rockchip,vop2.h>
-> =20
-> -#include "rockchip_drm_drv.h"
->  #include "rockchip_drm_gem.h"
->  #include "rockchip_drm_vop2.h"
->  #include "rockchip_rgb.h"
-> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h b/drivers/gpu/d=
-rm/rockchip/rockchip_drm_vop2.h
-> index 59cd6b933bfb..bc001f715847 100644
-> --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h
-> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h
-> @@ -9,6 +9,7 @@
-> =20
->  #include <linux/regmap.h>
->  #include <drm/drm_modes.h>
-> +#include "rockchip_drm_drv.h"
->  #include "rockchip_drm_vop.h"
-> =20
->  #define VOP2_VP_FEATURE_OUTPUT_10BIT        BIT(0)
-
-
---cf4d01d20a3b9d5a9a49968868fe9e6d1f0f8308e15edb5bdb79c6fb1446
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYIAB0WIQT1sUPBYsyGmi4usy/XblvOeH7bbgUCZu/yZAAKCRDXblvOeH7b
-bhyOAQCgfugbYkLTEQoVYnYjY2LIP0tmj3SFSFrsw3hSRtqOHwD/cMGxEu1QU1Nj
-DLQj4kuQxg314p3e5CtjLIAFUNlzLQI=
-=a3i5
------END PGP SIGNATURE-----
-
---cf4d01d20a3b9d5a9a49968868fe9e6d1f0f8308e15edb5bdb79c6fb1446--
-
-
---===============6175796374598215763==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+thanks,
+Min-Hua
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============6175796374598215763==--
-
