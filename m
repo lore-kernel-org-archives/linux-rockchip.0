@@ -4,92 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 33381CF9C6F
-	for <linux-rockchip@archiver.kernel.org>; Mon, 23 Sep 2024 07:50:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B8FCACF9C5B
+	for <linux-rockchip@archiver.kernel.org>; Mon, 23 Sep 2024 08:21:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:Subject:References:Cc:To:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=4LkrxdyFshVtyrsVdruIa49d7qpe/hpeJHUJz1ndjkU=; b=DZu+Nq7zS0c2Kh
-	rWEEfFCyJl3XrYvwb0NI0NPL3gKGQhOKupTCIe2193c4s2Nxs3XQjamzWBJjGx5heuCw1KG876Nh6
-	h+DlVaDvBLFD9KBcGBJCxgCGMguzQOCXWbu8HDwFF2vzGGVMhOULAJuxoWCnAppcl5ttegW7SWCyn
-	nTc3HcV3rOM+gVvMAe4UOzDmYnl/upFneden4GEWjIRkXt1s2ZsfkcImX+LLFDPFwvfoJkCvUizgG
-	cykhBw84oXUG/XhZPm7a6RoTYVah7npUh9WkPmbuP/DwBpiBjYaUdleQvw9SbUYNwKeOI2I96FbV0
-	w8MsHh0LbnuvEEFVliqA==;
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=prlHl3/IqTBZRqLHV5EYJeSaepZSm19/ztWSodgt1Js=; b=vijb2oEPesVJcGKISkipkj2kXm
+	uKKOgHEob91CVCMGP5YBvemC3/XFhUqTnTWLkhqLfg4nK5v7c0ynH9dFCo19EFK4dkzO6SupML4uC
+	plXNSuC110Lc1Pe76zeZcOrgzA9F3SVnPlxsOgPV1cY2xhi7R8cjoYGgvHJW2QNPxuTFvZdXy6c+d
+	rk1qZ2gUK8PGimfh7QO85fV/al8uRnkLuB1Y2HhhhjcGIU/XBTxQ3PfyURZbYuwhwxukb/5AsafkO
+	9f4LlnRw80d2gtKVzj9jbDJOPI3sOoYIzB6y0YCJeLEICJVICyP+h+SBGD0pY4CxL9DOpekAWOOEq
+	246QHl4w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1ssdpY-0000000GZOc-216H;
-	Mon, 23 Sep 2024 07:50:00 +0000
-Received: from relay-b03.edpnet.be ([212.71.1.220])
+	id 1sseJe-0000000GeiE-14tz;
+	Mon, 23 Sep 2024 08:21:06 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1ssdpU-0000000GZNG-3W3Y
-	for linux-rockchip@lists.infradead.org;
-	Mon, 23 Sep 2024 07:49:58 +0000
-X-ASG-Debug-ID: 1727077782-24639c1dae10993b0001-fBy1Pp
-Received: from [192.168.177.53] (94.105.112.108.dyn.edpnet.net [94.105.112.108]) by relay-b03.edpnet.be with ESMTP id DvKqFEDaGp8HfWqk; Mon, 23 Sep 2024 09:49:42 +0200 (CEST)
-X-Barracuda-Envelope-From: janpieter.sollie@kabelmail.de
-X-Barracuda-Effective-Source-IP: 94.105.112.108.dyn.edpnet.net[94.105.112.108]
-X-Barracuda-Apparent-Source-IP: 94.105.112.108
-Message-ID: <ef2f6e41-bf9e-470e-a416-fda7ce5d8a51@kabelmail.de>
-Date: Mon, 23 Sep 2024 09:48:54 +0200
+	id 1sseIV-0000000GeY0-0JIC;
+	Mon, 23 Sep 2024 08:19:56 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 4B5325C5816;
+	Mon, 23 Sep 2024 08:19:46 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3CEB1C4CEC4;
+	Mon, 23 Sep 2024 08:19:49 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1727079589;
+	bh=gQ1xXXNFSQ0hMp/hqA4GAQ7kD/mpS6i/zp2Gmw3vPRw=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=LeYVMNc/c1PpcDq/PGTNH8EeH683lhQ22/Ye7Wa4pPsxVuDDsLY7Q9JyzQS1As9ys
+	 1FxD65e/lBiV5VktoD0dv2pZ7FLgoeIFKJEwS9agXwshH7aqAKWq63ZP+UjytmPKLu
+	 yAIQUsTNGCMG1aQpwo4+9E1W77uhKT3AXbPHR4683BNeokwEgHhRfR2eHDuZoIv+nH
+	 WB483aJV+y58kgAC0/JTULv4RpA1WkJEg+q+q2T6+pLYIygf3JBmgW7xmVAplusijv
+	 wrTGbbhIB55EzaYYVnuIWO5abH1Uweoc6XHXEdDjVa2BsDSfs8pb/9aWkxwrnz6+mn
+	 A7DeNA4vO15LA==
+Date: Mon, 23 Sep 2024 10:19:46 +0200
+From: Maxime Ripard <mripard@kernel.org>
+To: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+Cc: Andrzej Hajda <andrzej.hajda@intel.com>, 
+	Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
+	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Jonas Karlman <jonas@kwiboo.se>, 
+	Jernej Skrabec <jernej.skrabec@gmail.com>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, 
+	Daniel Vetter <daniel@ffwll.ch>, Sandy Huang <hjc@rock-chips.com>, 
+	Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>, 
+	Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+	Conor Dooley <conor+dt@kernel.org>, Mark Yao <markyao0591@gmail.com>, 
+	Sascha Hauer <s.hauer@pengutronix.de>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, 
+	kernel@collabora.com, Alexandre ARNOUD <aarnoud@me.com>, 
+	Luis de Arquer <ldearquer@gmail.com>, Algea Cao <algea.cao@rock-chips.com>
+Subject: Re: [PATCH v6 1/3] drm/bridge: synopsys: Add DW HDMI QP TX
+ Controller support library
+Message-ID: <20240923-spirited-wealthy-pelican-4e15dc@penduick>
+References: <20240906-b4-rk3588-bridge-upstream-v6-0-a3128fb103eb@collabora.com>
+ <20240906-b4-rk3588-bridge-upstream-v6-1-a3128fb103eb@collabora.com>
+ <20240909-horned-congenial-curassow-ebc5fa@houat>
+ <f8b17995-ce53-45ab-8e68-c7087dbc9786@collabora.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-To: linux.amoon@gmail.com
-Cc: Jason@zx2c4.com, clabbe@baylibre.com, heiko@sntech.de,
- herbert@gondor.apana.org.au, hl@rock-chips.com,
- linux-crypto@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-rockchip@lists.infradead.org, mike.rudenko@gmail.com,
- robin.murphy@arm.com, shawn.lin@rock-chips.com, troy.lin@rock-chips.com,
- ty@wevs.org
-References: <CANAwSgTTzZOwBaR9zjJ5VMpxm5BydtW6rB2S7jg+dnoX8hAoWg@mail.gmail.com>
-Subject: Re: [PATCH] hw_random: rockchip: import driver from vendor tree
-Content-Language: nl
-X-ASG-Orig-Subj: Re: [PATCH] hw_random: rockchip: import driver from vendor tree
-From: Janpieter Sollie <janpieter.sollie@kabelmail.de>
-Autocrypt: addr=janpieter.sollie@kabelmail.de; keydata=
- xsBNBFhRXM0BCADnifwYnfbhQtJso1eeT+fjEDJh8OY5rwfvAbOhHyy003MJ82svXPmM/hUS
- C6hZjkE4kR7k2O2r+Ev6abRSlM6s6rJ/ZftmwOA7E8vdSkrFDNqRYL7P18+Iq/jM/t/6lsZv
- O+YcjF/gGmzfOCZ5AByQyLGmh5ZI3vpqJarXskrfi1QiZFeCG4H5WpMInml6NzeTpwFMdJaM
- JCr3BwnCyR+zeev7ROEWyVRcsj8ufW8ZLOrML9Q5QVjH7tkwzoedOc5UMv80uTaA5YaC1GcZ
- 57dAna6S1KWy5zx8VaHwXBwbXhDHWvZP318um2BxeTZbl21yXJrUMbYpaoLJzA5ZaoCFABEB
- AAHNMEphbnBpZXRlciBTb2xsaWUgPGphbnBpZXRlci5zb2xsaWVAa2FiZWxtYWlsLmRlPsLA
- pwQTAQgAUQIbIwULCQgHAgYVCgkICwIEFgIDAQIeAQIXgAUJD6DYHRYhBGBBYpsrUd7LDG6r
- UrFUjEUPH5JbBQJlAXcQEhhoa3A6Ly9wZ3AubWl0LmVkdQAKCRCxVIxFDx+SW3oXB/9A4g3v
- /Mq6uZlBDWBrQ98AFhlkRLwI2mDiNOlP4zJlejqt8S2GvCvhiQAtXV0BSl42sHo9Uxda8sZM
- d1eOU+oPexaK9iryCEYvOj+IK+n/rR8kyH5P7lzdpHIKYGtZ2y2NtpEuIA9A28MvliGjutJ2
- QIAdUaO1GdFVHXvHConuXvBfpmJsBhJeVfoTdzrTlloFTloCC+00a6Q6ndGnwzQQVgfgzRtq
- +x3O8smVnzsHb7Wu25+sbJl55GONAqyxuRmAF8IB4HAQ9gjgiCxTfjhCt9rhXQgPlT8EAuKT
- 9MohNtqpXXZFpuQUYRMEqpM7mPfbm4L8fXiPv/szVM0ZIwVCzsBNBFhRXM0BCAD2fJkCQE6L
- UjUpVltzXjxeRTNQK/W3PC1i3EsjHFSJT04MY12zmXWI0ItNqnRaB2c/X/rtWTuYazSsgQTQ
- P/qZSts2890GD51y3BAw443rN0plVp4dX6JG/p3V0ha7rXwFjn4Hzgt4IDJSVuNa9nGEceId
- qTnvZO+F4ukgzV2YVAUWcuDowCBDfRm3yU0GU3rxOHfBTpYwljqFWbGqijsTjF1/Le4ULF+q
- HUQqwTDY1ijpxRCIeu46WoQEf5Dv0aTIwOJgPK8229uRDHlHhMPvXpqtBYKwQ/rOCz7EfITD
- lPsHhjnqR+mjeLy7tK/qIyaE7A8HTdoxYoYhAR+AqylRABEBAAHCwHwEGAEIACYCGwwWIQRg
- QWKbK1Heywxuq1KxVIxFDx+SWwUCXowzcAUJD6DYIwAKCRCxVIxFDx+SW1J3CADK79k3T1La
- jEHZGkxWPoAuixN8F6pf7hnofoR2KFkMbQk+9WYfiGsOcZwJjiUyQgiaSZcdz6QGkGPDjfLL
- iNDKvGGGAgRT99ruA4uyfAXjObbrMp8VGr0fI6eRF3nWuh5Rk4W2DY/wjaygA0FJ/vpw8XFs
- 9NycYvk7yPcXW29N6/56TIc1I7SxmsEzwriGxvuRNZBzuNsEvdgzkF0kTL4nMhH/olPFW1+f
- 2Y0kA3aAa1ZyjzHsgDUBSKyv35MJRxPLkLK4I/5DisNfjfygE/gvSh+Iss+ZqtZhYzR9oA6k
- mg7rIQaHeVNOBwFsmkHmXDmH5beCJsgB6hwxiQAUaOaO
-In-Reply-To: <CANAwSgTTzZOwBaR9zjJ5VMpxm5BydtW6rB2S7jg+dnoX8hAoWg@mail.gmail.com>
-X-Barracuda-Connect: 94.105.112.108.dyn.edpnet.net[94.105.112.108]
-X-Barracuda-Start-Time: 1727077782
-X-Barracuda-URL: https://212.71.1.220:443/cgi-mod/mark.cgi
-X-Virus-Scanned: by bsmtpd at edpnet.be
-X-Barracuda-Scan-Msg-Size: 1745
-X-Barracuda-BRTS-Status: 1
-X-Barracuda-Spam-Score: 0.00
-X-Barracuda-Spam-Status: No, SCORE=0.00 using global scores of TAG_LEVEL=1000.0 QUARANTINE_LEVEL=1000.0 KILL_LEVEL=7.0 tests=
-X-Barracuda-Spam-Report: Code version 3.2, rules version 3.2.3.130843
-	Rule breakdown below
-	 pts rule name              description
-	---- ---------------------- --------------------------------------------------
+In-Reply-To: <f8b17995-ce53-45ab-8e68-c7087dbc9786@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240923_004957_044353_DE1223ED 
-X-CRM114-Status: UNSURE (   7.66  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240923_011955_220933_3661C344 
+X-CRM114-Status: GOOD (  24.62  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,42 +80,100 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: multipart/mixed; boundary="===============3672517959982402033=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-CkhpIGV2ZXJ5Ym9keSwKCklzIHRoZXJlIGFueSBjaGFuY2UgdGhpcyByYW5kb20gZHJpdmVyIHdp
-bGwgYmUgdXBzdHJlYW1lZD8KSSdtIHVzaW5nIGl0IGluc3RlYWQgb2YgdGhlIGJ1aWx0LWluIGNy
-eXB0byBkcml2ZXIgKHJrMzMyOC1jcnlwdG8pLCBhcyB0aGlzIGNyeXB0byBkcml2ZXIgc2hvd2Vk
-IAp0aGUgZm9sbG93aW5nOgoKPiBbICDCoMKgwqA5LjI3MDU0OV0gcmszMjg4LWNyeXB0byBmZjA2
-MDAwMC5jcnlwdG86IHdpbGwgcnVuIHJlcXVlc3RzIHB1bXAgd2l0aCByZWFsdGltZSBwcmlvcml0
-eQo+IFsgIMKgwqDCoDkuMjcwNjg3XSByazMyODgtY3J5cHRvIGZmMDYwMDAwLmNyeXB0bzogUmVn
-aXN0ZXIgZWNiKGFlcykgYXMgZWNiLWFlcy1yawo+IFsgIMKgwqDCoDkuMjcwODA4XSByazMyODgt
-Y3J5cHRvIGZmMDYwMDAwLmNyeXB0bzogUmVnaXN0ZXIgY2JjKGFlcykgYXMgY2JjLWFlcy1yawo+
-IFsgIMKgwqDCoDkuMjcwODMxXSByazMyODgtY3J5cHRvIGZmMDYwMDAwLmNyeXB0bzogUmVnaXN0
-ZXIgZWNiKGRlcykgYXMgZWNiLWRlcy1yawo+IFsgIMKgwqDCoDkuMjcwODQ4XSByazMyODgtY3J5
-cHRvIGZmMDYwMDAwLmNyeXB0bzogUmVnaXN0ZXIgY2JjKGRlcykgYXMgY2JjLWRlcy1yawo+IFsg
-IMKgwqDCoDkuMjcwODY0XSByazMyODgtY3J5cHRvIGZmMDYwMDAwLmNyeXB0bzogUmVnaXN0ZXIg
-ZWNiKGRlczNfZWRlKSBhcyBlY2ItZGVzMy1lZGUtcmsKPiBbICDCoMKgwqA5LjI3MDg4MF0gcmsz
-Mjg4LWNyeXB0byBmZjA2MDAwMC5jcnlwdG86IFJlZ2lzdGVyIGNiYyhkZXMzX2VkZSkgYXMgY2Jj
-LWRlczMtZWRlLXJrCj4gWyAgwqDCoMKgOS4yNzA4OTZdIHJrMzI4OC1jcnlwdG8gZmYwNjAwMDAu
-Y3J5cHRvOiBSZWdpc3RlciBzaGExIGFzIHJrLXNoYTEKPiBbICDCoMKgwqA5LjI3MDkxNV0gcmsz
-Mjg4LWNyeXB0byBmZjA2MDAwMC5jcnlwdG86IFJlZ2lzdGVyIHNoYTI1NiBhcyByay1zaGEyNTYK
-PiBbICDCoMKgwqA5LjI3MDkzMl0gcmszMjg4LWNyeXB0byBmZjA2MDAwMC5jcnlwdG86IFJlZ2lz
-dGVyIG1kNSBhcyByay1tZDUKCnNvIHRoZSBvcHRpb25zIGhlcmUgYXJlIHByZXR0eSB1c2VsZXNz
-OgpzdGFuZGFyZCB0bHMgLyBzc2ggKGt0bHMgYW55b25lPykgYWxtb3N0IG5ldmVyIHVzZXMgZWNi
-IG9yIGNiYyBjaXBoZXJzLCBhbmQgYWJvdXQgZGVzIC4uLiB5ZWFoLCAKd29uJ3QgZGlnIGludG8g
-dGhhdCBvbmUuCkkgdGhpbmsgYSByazMzMjggZGV2aWNlIHdpbGwgYWN0dWFsbHkgYmVuZWZpdCBt
-b3JlIGZyb20gYSBlbnRyb3B5IHNvdXJjZSAoZXZlbiBpZiBpdCdzIG5vdCAKaGlnaC1xdWFsaXR5
-KSB0aGFuIGZyb20gc2hhMS8yNTYgd2hpY2ggYXJlIGFsbW9zdCBhbHdheXMgY292ZXJlZCBieSBh
-cm12OCBjcnlwdG8gZXh0ZW5zaW9ucy4KSSB0cmllZCB0aGlzIHBhdGNoIChhbmQgZGlzYWJsZWQg
-dGhlIGNyeXB0byBkZXZpY2UgaW4gZHRzKSwgaXQgd29ya3MuCk9mZiBjb3Vyc2UgdGhlcmUgYXJl
-IEZJUFMgZmFpbHVyZXMsIGJ1dCB0aGUgdXNlciBlbXBsb3lpbmcgYSByazMzMjggYm9hcmQgcHJv
-YmFibHkga25vd3MgdGhpcyBpcyAKbm90IGEgaGlnaC1zZWN1cml0eSBkZXZpY2UuCgpBbnkgY2hh
-bmNlcyBoZXJlPyBhcHBseWluZyB0aGUgcGF0Y2ggb24gNi42LjQ4IChldmVuIHdpdGggY2xhbmcg
-dGhpbkxUTykgd29ya3MgZmxhd2xlc3NseS4KCmtpbmQgcmVnYXJkcywKCkphbnBpZXRlciBTb2xs
-aWUKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4
-LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3Jn
-Cmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2No
-aXAK
+
+--===============3672517959982402033==
+Content-Type: multipart/signed; micalg=pgp-sha384;
+	protocol="application/pgp-signature"; boundary="bjmxjjuhmv2zdjhq"
+Content-Disposition: inline
+
+
+--bjmxjjuhmv2zdjhq
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Sat, Sep 14, 2024 at 10:12:29PM GMT, Cristian Ciocaltea wrote:
+> Hi Maxime,
+>=20
+> On 9/9/24 6:13 PM, Maxime Ripard wrote:
+> > Hi,
+> >=20
+> > On Fri, Sep 06, 2024 at 04:17:40AM GMT, Cristian Ciocaltea wrote:
+> >> +static enum drm_connector_status
+> >> +dw_hdmi_qp_bridge_detect(struct drm_bridge *bridge)
+> >> +{
+> >> +	struct dw_hdmi_qp *hdmi =3D bridge->driver_private;
+> >> +	enum drm_connector_status status;
+> >> +
+> >> +	status =3D hdmi->phy.ops->read_hpd(hdmi, hdmi->phy.data);
+> >> +
+> >> +	dev_dbg(hdmi->dev, "%s conn=3D%d scramb=3D%d\n", __func__,
+> >> +		status =3D=3D connector_status_connected, hdmi->scramb_enabled);
+> >> +
+> >> +	if (hdmi->scramb_enabled) {
+> >> +		cancel_delayed_work_sync(&hdmi->scramb_work);
+> >> +
+> >> +		if (status =3D=3D connector_status_connected)
+> >> +			dw_hdmi_qp_check_and_set_scramb(hdmi);
+> >> +	}
+> >> +
+> >> +	return status;
+> >> +}
+> >=20
+> > Unfortunately, that won't work. The HDMI Spec has (HDMI 2.0, Section
+> > 6.1.3.1 - Scrambling Control):
+> >=20
+> > The minimum time period between the write to the Scrambling_Enable bit,
+> > and the transmission of a scrambled video signal is not specified;
+> > however the Source shall not begin transmission of a scrambled video
+> > signal before writing a 1 to the Scrambling_Enable bit. The maximum time
+> > period between the write to the Scrambling_Enable bit and the
+> > transmission of a scrambled video signal shall be 100 ms.
+> >=20
+> > So you need to disable the output and enable it again.
+> >=20
+> > vc4 does just that, you can have a look here:
+> > https://elixir.bootlin.com/linux/v6.10.9/source/drivers/gpu/drm/vc4/vc4=
+_hdmi.c#L410
+>=20
+> Thanks for all the details and references!
+>=20
+> Unfortunately I had to drop the scrambling setup for now [1], as I
+> encountered some issues while attempting to get this implemented as
+> suggested.  Will get back to this and submit it separately when done.
+
+Yeah, I think that's the best way forward for now :)
+
+Maxime
+--bjmxjjuhmv2zdjhq
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iJUEABMJAB0WIQTkHFbLp4ejekA/qfgnX84Zoj2+dgUCZvEkmgAKCRAnX84Zoj2+
+dtqIAYCEGRZltZdX05vOCUhg+bOJmCXtzlvHsgM0R0lqKkF47Ts4/UIXsS4SIBrh
+GzywXicBfA+E1AnqXzojQFvunTAvhnbNDmkORCYsD6W+6g1tpbLD2aeqkSlYNen/
+ghfb0s5gfA==
+=WJBj
+-----END PGP SIGNATURE-----
+
+--bjmxjjuhmv2zdjhq--
+
+
+--===============3672517959982402033==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============3672517959982402033==--
+
