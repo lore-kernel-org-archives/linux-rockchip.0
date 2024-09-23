@@ -4,71 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B8FCACF9C5B
-	for <linux-rockchip@archiver.kernel.org>; Mon, 23 Sep 2024 08:21:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2D9EDCF9C6F
+	for <linux-rockchip@archiver.kernel.org>; Mon, 23 Sep 2024 09:03:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=prlHl3/IqTBZRqLHV5EYJeSaepZSm19/ztWSodgt1Js=; b=vijb2oEPesVJcGKISkipkj2kXm
-	uKKOgHEob91CVCMGP5YBvemC3/XFhUqTnTWLkhqLfg4nK5v7c0ynH9dFCo19EFK4dkzO6SupML4uC
-	plXNSuC110Lc1Pe76zeZcOrgzA9F3SVnPlxsOgPV1cY2xhi7R8cjoYGgvHJW2QNPxuTFvZdXy6c+d
-	rk1qZ2gUK8PGimfh7QO85fV/al8uRnkLuB1Y2HhhhjcGIU/XBTxQ3PfyURZbYuwhwxukb/5AsafkO
-	9f4LlnRw80d2gtKVzj9jbDJOPI3sOoYIzB6y0YCJeLEICJVICyP+h+SBGD0pY4CxL9DOpekAWOOEq
-	246QHl4w==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=VYJoyExwqvqWSartvByob0uz0bkIM+wr/42KHpGVQck=; b=0Fm9Bvg8vvdKLE
+	2lN5cUITPwwTedEvcLHSksJ2B8l+H6rkdlCZsOfUOcYAGbTRIqKOw6bc/n4PQujHpqk3lf1gK/Kcv
+	eckp+WSvYSfnMo1o5qXiKdMNQs+Nij7ROaKGsKBJoYpvfsyvStXCa7KsX3fqBhuqz6F1a4h/77muC
+	xpc8R/QdrhV/zrdisMCWcJkjp1Fa+fh1J1uzJPFv2ETckte0IgL+iu09sZuzF56EX6FTld/vbIHOy
+	LRg/DpbfmG1ptXcrwxid2EjWyWlN5Fk3jUWvRNDKnTtnhgIvRhrXHYv8j/5dnyEo9jsOELR9WDxgj
+	00FNJrXq9JJloiA38+YQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1sseJe-0000000GeiE-14tz;
-	Mon, 23 Sep 2024 08:21:06 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1sseyh-0000000Gkmo-18fq;
+	Mon, 23 Sep 2024 09:03:31 +0000
+Received: from smtp.forwardemail.net ([149.28.215.223])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1sseIV-0000000GeY0-0JIC;
-	Mon, 23 Sep 2024 08:19:56 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 4B5325C5816;
-	Mon, 23 Sep 2024 08:19:46 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3CEB1C4CEC4;
-	Mon, 23 Sep 2024 08:19:49 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1727079589;
-	bh=gQ1xXXNFSQ0hMp/hqA4GAQ7kD/mpS6i/zp2Gmw3vPRw=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=LeYVMNc/c1PpcDq/PGTNH8EeH683lhQ22/Ye7Wa4pPsxVuDDsLY7Q9JyzQS1As9ys
-	 1FxD65e/lBiV5VktoD0dv2pZ7FLgoeIFKJEwS9agXwshH7aqAKWq63ZP+UjytmPKLu
-	 yAIQUsTNGCMG1aQpwo4+9E1W77uhKT3AXbPHR4683BNeokwEgHhRfR2eHDuZoIv+nH
-	 WB483aJV+y58kgAC0/JTULv4RpA1WkJEg+q+q2T6+pLYIygf3JBmgW7xmVAplusijv
-	 wrTGbbhIB55EzaYYVnuIWO5abH1Uweoc6XHXEdDjVa2BsDSfs8pb/9aWkxwrnz6+mn
-	 A7DeNA4vO15LA==
-Date: Mon, 23 Sep 2024 10:19:46 +0200
-From: Maxime Ripard <mripard@kernel.org>
-To: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Cc: Andrzej Hajda <andrzej.hajda@intel.com>, 
-	Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
-	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Jonas Karlman <jonas@kwiboo.se>, 
-	Jernej Skrabec <jernej.skrabec@gmail.com>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
-	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, 
-	Daniel Vetter <daniel@ffwll.ch>, Sandy Huang <hjc@rock-chips.com>, 
-	Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>, 
-	Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
-	Conor Dooley <conor+dt@kernel.org>, Mark Yao <markyao0591@gmail.com>, 
-	Sascha Hauer <s.hauer@pengutronix.de>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, 
-	kernel@collabora.com, Alexandre ARNOUD <aarnoud@me.com>, 
-	Luis de Arquer <ldearquer@gmail.com>, Algea Cao <algea.cao@rock-chips.com>
-Subject: Re: [PATCH v6 1/3] drm/bridge: synopsys: Add DW HDMI QP TX
- Controller support library
-Message-ID: <20240923-spirited-wealthy-pelican-4e15dc@penduick>
-References: <20240906-b4-rk3588-bridge-upstream-v6-0-a3128fb103eb@collabora.com>
- <20240906-b4-rk3588-bridge-upstream-v6-1-a3128fb103eb@collabora.com>
- <20240909-horned-congenial-curassow-ebc5fa@houat>
- <f8b17995-ce53-45ab-8e68-c7087dbc9786@collabora.com>
+	id 1ssexZ-0000000GkZ8-0k1a
+	for linux-rockchip@lists.infradead.org;
+	Mon, 23 Sep 2024 09:02:22 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
+ h=Content-Transfer-Encoding: Content-Type: In-Reply-To: From: References:
+ Cc: To: Subject: MIME-Version: Date: Message-ID; q=dns/txt;
+ s=fe-e1b5cab7be; t=1727082114;
+ bh=dAioT3wyKoxKPb4pl0VnZgSZEzeLXfNhVBSyVYoz4/0=;
+ b=Hysf7U3YxI865sEBGvagGJPqg9VNA7vSOUdbz38j0G0zewmPNLmQcjKVNDJ1SRJZPIPi9wl1c
+ dhYHIkPcZ1qn57QVVtf8EN1UUw+BNowX2pQiKEQdP6sTRPJ1vGE2r/gryM2K58AiUzhfz+2hEhU
+ NLYSkt2gxy9xILjjTjDYHW7fzNoBN9WZ3EjqQRQMF82erBbqaFQ4+3QgxKpqrGxnx/F7VffYvDv
+ RyzPohNKSt9uOL6d6oDdVtCkqNGL3sfIqXCQEGoe504Qr+yORXR7gJR8kU+5k1GnI4QsTXRA8oY
+ BE8nY9XTIZprU48arVZZKYZ+ZLTpDI+r5q1rringFy6g==
+Message-ID: <26ed8563-b6d6-4e72-91a9-f4d5946cef8f@kwiboo.se>
+Date: Mon, 23 Sep 2024 11:01:42 +0200
 MIME-Version: 1.0
-In-Reply-To: <f8b17995-ce53-45ab-8e68-c7087dbc9786@collabora.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 3/3] drm/rockchip: vop: Split rk3288-vop into big and lit
+To: Krzysztof Kozlowski <krzk@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>
+Cc: Rob Herring <robh@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
+ Sandy Huang <hjc@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>,
+ Andy Yan <andy.yan@rock-chips.com>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+ linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
+ dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+References: <20240921222007.2301868-1-jonas@kwiboo.se>
+ <20240921222007.2301868-4-jonas@kwiboo.se>
+ <c6821033-57be-4d10-9e37-935f7748570e@kernel.org>
+Content-Language: en-US
+From: Jonas Karlman <jonas@kwiboo.se>
+In-Reply-To: <c6821033-57be-4d10-9e37-935f7748570e@kernel.org>
+X-Report-Abuse-To: abuse@forwardemail.net
+X-Report-Abuse: abuse@forwardemail.net
+X-Complaints-To: abuse@forwardemail.net
+X-ForwardEmail-Version: 0.4.40
+X-ForwardEmail-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
+ 149.28.215.223
+X-ForwardEmail-ID: 66f12e7e53a7abd54c98a970
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240923_011955_220933_3661C344 
-X-CRM114-Status: GOOD (  24.62  )
+X-CRM114-CacheID: sfid-20240923_020221_265746_9F594D3E 
+X-CRM114-Status: GOOD (  17.37  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,100 +80,103 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============3672517959982402033=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Hi Krzysztof,
 
---===============3672517959982402033==
-Content-Type: multipart/signed; micalg=pgp-sha384;
-	protocol="application/pgp-signature"; boundary="bjmxjjuhmv2zdjhq"
-Content-Disposition: inline
+On 2024-09-22 10:15, Krzysztof Kozlowski wrote:
+> On 22/09/2024 00:20, Jonas Karlman wrote:
+>> The Rockchip RK3288 SoC contain two different Visual Output Processor
+>> (VOP) blocks, VOP_BIG and VOP_LIT. The VOP blocks support different max
+>> output resolution, 3840x2160 and 2560x1600.
+>>
+>> Add support for the compatible used to differentiate between VOP_BIG and
+>> VOP_LIT, support for the old compatible is kept for compatibility with
+>> older device tree.
+>>
+>> Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
+>> ---
+>>  drivers/gpu/drm/rockchip/rockchip_vop_reg.c | 27 +++++++++++++++------
+>>  1 file changed, 20 insertions(+), 7 deletions(-)
+>>
+>> diff --git a/drivers/gpu/drm/rockchip/rockchip_vop_reg.c b/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
+>> index e2c6ba26f437..978db93cda33 100644
+>> --- a/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
+>> +++ b/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
+>> @@ -762,7 +762,7 @@ static const struct vop_intr rk3288_vop_intr = {
+>>  	.clear = VOP_REG(RK3288_INTR_CTRL0, 0xf, 8),
+>>  };
+>>  
+>> -static const struct vop_data rk3288_vop = {
+>> +static const struct vop_data rk3288_vop_big = {
+>>  	.version = VOP_VERSION(3, 1),
+>>  	.feature = VOP_FEATURE_OUTPUT_RGB10,
+>>  	.intr = &rk3288_vop_intr,
+>> @@ -772,14 +772,22 @@ static const struct vop_data rk3288_vop = {
+>>  	.win = rk3288_vop_win_data,
+>>  	.win_size = ARRAY_SIZE(rk3288_vop_win_data),
+>>  	.lut_size = 1024,
+>> -	/*
+>> -	 * This is the maximum resolution for the VOPB, the VOPL can only do
+>> -	 * 2560x1600, but we can't distinguish them as they have the same
+>> -	 * compatible.
+>> -	 */
+>>  	.max_output = { 3840, 2160 },
+>>  };
+>>  
+>> +static const struct vop_data rk3288_vop_lit = {
+>> +	.version = VOP_VERSION(3, 1),
+>> +	.feature = VOP_FEATURE_OUTPUT_RGB10,
+>> +	.intr = &rk3288_vop_intr,
+>> +	.common = &rk3288_common,
+>> +	.modeset = &rk3288_modeset,
+>> +	.output = &rk3288_output,
+>> +	.win = rk3288_vop_win_data,
+>> +	.win_size = ARRAY_SIZE(rk3288_vop_win_data),
+>> +	.lut_size = 1024,
+>> +	.max_output = { 2560, 1600 },
+>> +};
+>> +
+>>  static const int rk3368_vop_intrs[] = {
+>>  	FS_INTR,
+>>  	0, 0,
+>> @@ -1245,8 +1253,13 @@ static const struct of_device_id vop_driver_dt_match[] = {
+>>  	  .data = &rk3066_vop },
+>>  	{ .compatible = "rockchip,rk3188-vop",
+>>  	  .data = &rk3188_vop },
+>> +	{ .compatible = "rockchip,rk3288-vop-big",
+>> +	  .data = &rk3288_vop_big },
+> 
+> Hm... that's not really needed. Instead of having three compatibles, you
+> could keep "rk3288-vop" as big and then my comment on bindings patch
+> could be ignored (you keep the compatible).
 
+Thanks, I guess that just adding a new compatible for vop-lit should be
+enough.
 
---bjmxjjuhmv2zdjhq
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+VOP_BIG: rockchip,rk3288-vop
+VOP_LIT: rockchip,rk3288-vop-lit, rockchip,rk3288-vop
 
-On Sat, Sep 14, 2024 at 10:12:29PM GMT, Cristian Ciocaltea wrote:
-> Hi Maxime,
->=20
-> On 9/9/24 6:13 PM, Maxime Ripard wrote:
-> > Hi,
-> >=20
-> > On Fri, Sep 06, 2024 at 04:17:40AM GMT, Cristian Ciocaltea wrote:
-> >> +static enum drm_connector_status
-> >> +dw_hdmi_qp_bridge_detect(struct drm_bridge *bridge)
-> >> +{
-> >> +	struct dw_hdmi_qp *hdmi =3D bridge->driver_private;
-> >> +	enum drm_connector_status status;
-> >> +
-> >> +	status =3D hdmi->phy.ops->read_hpd(hdmi, hdmi->phy.data);
-> >> +
-> >> +	dev_dbg(hdmi->dev, "%s conn=3D%d scramb=3D%d\n", __func__,
-> >> +		status =3D=3D connector_status_connected, hdmi->scramb_enabled);
-> >> +
-> >> +	if (hdmi->scramb_enabled) {
-> >> +		cancel_delayed_work_sync(&hdmi->scramb_work);
-> >> +
-> >> +		if (status =3D=3D connector_status_connected)
-> >> +			dw_hdmi_qp_check_and_set_scramb(hdmi);
-> >> +	}
-> >> +
-> >> +	return status;
-> >> +}
-> >=20
-> > Unfortunately, that won't work. The HDMI Spec has (HDMI 2.0, Section
-> > 6.1.3.1 - Scrambling Control):
-> >=20
-> > The minimum time period between the write to the Scrambling_Enable bit,
-> > and the transmission of a scrambled video signal is not specified;
-> > however the Source shall not begin transmission of a scrambled video
-> > signal before writing a 1 to the Scrambling_Enable bit. The maximum time
-> > period between the write to the Scrambling_Enable bit and the
-> > transmission of a scrambled video signal shall be 100 ms.
-> >=20
-> > So you need to disable the output and enable it again.
-> >=20
-> > vc4 does just that, you can have a look here:
-> > https://elixir.bootlin.com/linux/v6.10.9/source/drivers/gpu/drm/vc4/vc4=
-_hdmi.c#L410
->=20
-> Thanks for all the details and references!
->=20
-> Unfortunately I had to drop the scrambling setup for now [1], as I
-> encountered some issues while attempting to get this implemented as
-> suggested.  Will get back to this and submit it separately when done.
+That should ensure backward/forward compatibility with any mix of
+old/new boot-firmware, DTs and kernels.
 
-Yeah, I think that's the best way forward for now :)
+Will change to use that in v2.
 
-Maxime
---bjmxjjuhmv2zdjhq
-Content-Type: application/pgp-signature; name="signature.asc"
+Regards,
+Jonas
 
------BEGIN PGP SIGNATURE-----
+> 
+> 
+> 
+> Best regards,
+> Krzysztof
+> 
 
-iJUEABMJAB0WIQTkHFbLp4ejekA/qfgnX84Zoj2+dgUCZvEkmgAKCRAnX84Zoj2+
-dtqIAYCEGRZltZdX05vOCUhg+bOJmCXtzlvHsgM0R0lqKkF47Ts4/UIXsS4SIBrh
-GzywXicBfA+E1AnqXzojQFvunTAvhnbNDmkORCYsD6W+6g1tpbLD2aeqkSlYNen/
-ghfb0s5gfA==
-=WJBj
------END PGP SIGNATURE-----
-
---bjmxjjuhmv2zdjhq--
-
-
---===============3672517959982402033==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============3672517959982402033==--
-
