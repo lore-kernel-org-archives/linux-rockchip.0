@@ -4,111 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 169FACF9C6F
-	for <linux-rockchip@archiver.kernel.org>; Mon, 23 Sep 2024 15:44:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A2BBBCF9C72
+	for <linux-rockchip@archiver.kernel.org>; Mon, 23 Sep 2024 16:42:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=9pyjSfFCcyFVYshaxQe0l8TSnOLkxpgMrokIbdyotk0=; b=ZnG+uO51ASQx7W
-	OZxfNdtaZlSqfhIUlbrszNTKLOtObh9CN9taEz7LI/iBLCWSmX7511NGk6SEibq6AkjASKLJs2oka
-	L4IK+3HdY5rfTZKekTiwaboSbir354EZ68XFfT27t4ExpZKquiZ3QMGd+7Xls6+pHqHVaTgTru4fg
-	Y4oQPeEbgsIgP3i/Vu9INla78LEcFpW6cOR1dd0S/sruJ33Ag77xunrMn90Wb3OMSgRHmHPOC7BD0
-	GRObuAaP531mI4aeY6choVeiKuiQ78Oob93ahqpu/630CIZohdTZpPUN2yeKMZTBXQs9D1eCAhoeI
-	hOrgIyPYy1tEcAuAZCFw==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:MIME-Version:Subject:
+	Date:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=iB0Hm+3P7CIqFyh5+qsdAL56canIgYwzYkZpwapst/U=; b=RTl48urxFWVCq9
+	aZftDdHs3iZeRg22A3CcxCaihUFhqG+AFjKGmKlqp5OdwfQBonvMluJoiqtThZbON4i3vmh4FJtmG
+	VgpXYBp8Dfc4cQijkeXjxQ2+pDh14qp0DlZcr/Wi8s54olPPKU8bBUZcZ5zMCtKAMXvKV7WtIsKSc
+	xSuyPy3OlnYmQ4OR4iD5YACdnEChj8GykZCoJY+VNm9IWuQzNknUBQ0HEKVwkk1NL5NhxhdxSNnCl
+	yohRDgql5Y7FLRuOfO1lUQqDzkJ5Htz5Cmjy6D4FY2/Q/iIeuYsEm1LoxRTUZNBpQTfubGug6R8NN
+	4LgUoWVLen01S79IgeVw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1sslEq-0000000HXPF-0a9N;
-	Mon, 23 Sep 2024 15:44:36 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1ssm8O-000000003OI-1rQN;
+	Mon, 23 Sep 2024 16:42:00 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1sslDg-0000000HXGt-0snq;
-	Mon, 23 Sep 2024 15:43:25 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 33124A4212A;
-	Mon, 23 Sep 2024 15:43:15 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 659E7C4CEC4;
-	Mon, 23 Sep 2024 15:43:17 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1727106202;
-	bh=mABUhkH2kzNPjrHcQ/f8Gpo5mmF7TL7/jd56zHXY2/I=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=bbyVJVzPyyeH9xX0OsfZssIuN3l68I/AN2jTroJxEgb/uP6K0zPR/UUiZk2K5sC+6
-	 gTcpaYXDbHdWVCz19JMqslljC2K18skT14QCBleSpRBIkJeram0MxXUjdt4rKkTmz/
-	 l+j5KZztcZcGK2k9ke1MfiDyAFqdgcx6lmJd3R46qqSDbQXCJMNIioP9JRq7kIvrwr
-	 amqqBE8lNHbybIdQA7K2DnM+jQ6jn69t/+wgURK51Yjs6VtRWgqJpUsVA+zFZ4qVjO
-	 jv9VwRkIr78O06OO3A16IxrZnR36iKbM2kV8KvRK6uO0u3M3M9C2QMvnub3SJj2j67
-	 VEJzQihlWKyZg==
-Message-ID: <7dfc70fa-6076-4bd0-a9d1-2477a5a088e8@kernel.org>
-Date: Mon, 23 Sep 2024 17:43:14 +0200
+	id 1ssm7E-000000003JD-2Uqf;
+	Mon, 23 Sep 2024 16:40:50 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1727109645;
+	bh=uj6nS9/Qqyl5x+LHHnU01IA4P1bnKBhIiYwrpVYWxeE=;
+	h=From:Date:Subject:To:Cc:From;
+	b=OPwmuXILF1yS8XPJ7fuAMpcBG2cDzPBI/TRsZUG40KAXD7y+DIxoXlQbyQVUx1HOH
+	 KfVg6Z6NyKq+4kAn/bh2aVCs2A2/xBz1heTLjV4BwHCtt3/eKZmvIk4ji0u7X4p36O
+	 Kt92JtLJP2ucLYZ9JUjX6TVaxUU/PxfYFE6+8pf/0Op3hUvcaINjbE+EsVOykhJUY+
+	 TsRk1ukfmw82Gi01XW6mod3siN/nxSbMEHxm4zIopiR7SumFP0Ow2ioQ2X70ZSg/E4
+	 p+17XapppP/Amx33GS7Xi8x3JklJ4YHnKdWCI4KBT1RXO6rFPteVfjUk+bp7XuTn2s
+	 VlAuZCouvHJxg==
+Received: from localhost (unknown [5.14.149.6])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: cristicc)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 8972A17E3600;
+	Mon, 23 Sep 2024 18:40:44 +0200 (CEST)
+From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+Date: Mon, 23 Sep 2024 19:40:16 +0300
+Subject: [PATCH] phy: phy-rockchip-samsung-hdptx: Depend on
+ CONFIG_COMMON_CLK
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 3/3] drm/rockchip: vop: Split rk3288-vop into big and lit
-To: Jonas Karlman <jonas@kwiboo.se>, Krzysztof Kozlowski <krzk+dt@kernel.org>
-Cc: Rob Herring <robh@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
- Sandy Huang <hjc@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>,
- Andy Yan <andy.yan@rock-chips.com>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
- linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
- dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org
-References: <20240921222007.2301868-1-jonas@kwiboo.se>
- <20240921222007.2301868-4-jonas@kwiboo.se>
- <c6821033-57be-4d10-9e37-935f7748570e@kernel.org>
- <26ed8563-b6d6-4e72-91a9-f4d5946cef8f@kwiboo.se>
-From: Krzysztof Kozlowski <krzk@kernel.org>
-Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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 fv0=
-In-Reply-To: <26ed8563-b6d6-4e72-91a9-f4d5946cef8f@kwiboo.se>
+Message-Id: <20240923-sam-hdptx-link-fix-v1-1-8d10d7456305@collabora.com>
+X-B4-Tracking: v=1; b=H4sIAO+Z8WYC/x2M0QpAMBRAf0X32a0ZGX5FHsYubpi1SWr5d8vjO
+ XVOhECeKUCXRfB0c+DTJijyDKZV24WQTWKQQlailSUGfeBq3PXgznbDmR+cZK0apagcCw0pdJ6
+ S/qf98L4f1Iocl2QAAAA=
+To: Vinod Koul <vkoul@kernel.org>, 
+ Kishon Vijay Abraham I <kishon@kernel.org>, 
+ Heiko Stuebner <heiko@sntech.de>
+Cc: kernel@collabora.com, linux-phy@lists.infradead.org, 
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+ linux-kernel@vger.kernel.org, kernel test robot <lkp@intel.com>
+X-Mailer: b4 0.14.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240923_084324_515264_C3904FC3 
-X-CRM114-Status: GOOD (  12.23  )
+X-CRM114-CacheID: sfid-20240923_094048_849581_DB5C2929 
+X-CRM114-Status: UNSURE (   7.75  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -125,34 +79,40 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 23/09/2024 11:01, Jonas Karlman wrote:
->>>  	0, 0,
->>> @@ -1245,8 +1253,13 @@ static const struct of_device_id vop_driver_dt_match[] = {
->>>  	  .data = &rk3066_vop },
->>>  	{ .compatible = "rockchip,rk3188-vop",
->>>  	  .data = &rk3188_vop },
->>> +	{ .compatible = "rockchip,rk3288-vop-big",
->>> +	  .data = &rk3288_vop_big },
->>
->> Hm... that's not really needed. Instead of having three compatibles, you
->> could keep "rk3288-vop" as big and then my comment on bindings patch
->> could be ignored (you keep the compatible).
-> 
-> Thanks, I guess that just adding a new compatible for vop-lit should be
-> enough.
-> 
-> VOP_BIG: rockchip,rk3288-vop
-> VOP_LIT: rockchip,rk3288-vop-lit, rockchip,rk3288-vop
-> 
-> That should ensure backward/forward compatibility with any mix of
-> old/new boot-firmware, DTs and kernels.
-> 
-> Will change to use that in v2.
+Ensure CONFIG_PHY_ROCKCHIP_SAMSUNG_HDPTX depends on CONFIG_COMMON_CLK to
+fix the following link errors when compile testing some random kernel
+configurations:
 
-Yes, thanks.
+  m68k-linux-ld: drivers/phy/rockchip/phy-rockchip-samsung-hdptx.o: in function `rk_hdptx_phy_clk_register':
+  drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c:1031:(.text+0x470): undefined reference to `__clk_get_name'
+  m68k-linux-ld: drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c:1036:(.text+0x4ba): undefined reference to `devm_clk_hw_register'
+  m68k-linux-ld: drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c:1040:(.text+0x4d2): undefined reference to `of_clk_hw_simple_get'
+  m68k-linux-ld: drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c:1040:(.text+0x4da): undefined reference to `devm_of_clk_add_hw_provider'
 
-Best regards,
-Krzysztof
+Fixes: c4b09c562086 ("phy: phy-rockchip-samsung-hdptx: Add clock provider support")
+Reported-by: kernel test robot <lkp@intel.com>
+Closes: https://lore.kernel.org/oe-kbuild-all/202409180305.53PXymZn-lkp@intel.com/
+Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+---
+ drivers/phy/rockchip/Kconfig | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/drivers/phy/rockchip/Kconfig b/drivers/phy/rockchip/Kconfig
+index 490263375057..2f7a05f21dc5 100644
+--- a/drivers/phy/rockchip/Kconfig
++++ b/drivers/phy/rockchip/Kconfig
+@@ -86,6 +86,7 @@ config PHY_ROCKCHIP_PCIE
+ config PHY_ROCKCHIP_SAMSUNG_HDPTX
+ 	tristate "Rockchip Samsung HDMI/eDP Combo PHY driver"
+ 	depends on (ARCH_ROCKCHIP || COMPILE_TEST) && OF
++	depends on COMMON_CLK
+ 	depends on HAS_IOMEM
+ 	select GENERIC_PHY
+ 	select MFD_SYSCON
+
+---
+base-commit: 5acd9952f95fb4b7da6d09a3be39195a80845eb6
+change-id: 20240923-sam-hdptx-link-fix-c267877e3b1a
 
 
 _______________________________________________
