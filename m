@@ -4,70 +4,105 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 90D8ECF9C6E
-	for <linux-rockchip@archiver.kernel.org>; Mon, 23 Sep 2024 02:55:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C5705CF9C70
+	for <linux-rockchip@archiver.kernel.org>; Mon, 23 Sep 2024 06:59:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=1ucOSzb/CUttY7ZUYamjsFHMXnToWGdfCdkEZztj4Rk=; b=rBozFjC/NsgXK/
-	GiIjaZ0wQ3KS4LbAFUU97EAfLhiIpv0+uy7Lri/ahPRfFjT8pUQdAv9/rpOmhZMrjjohgHIvo8ReA
-	sFxa72g3lYgZ9goSig5ZXpPSpyPiedAi8zauHVvBAQkyjavELnvjSPMOsvSp3nyfJDWWQQASplU8T
-	I18OaHULImV0qzAFxoRGf1vJj2kkHPHE7wdVlngIwOp9yAafx4/2ItlNxkX5rL7WufCjhT0hv2QNb
-	JkDKAxncwj7XAEiw0nIvWm9feMo3wdHwwNabA3oSO78HKyHOekw4j4QKRVbvsdkmaBwtRJVclQk/3
-	PfLxAuE9NseJhVUVtjZw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=lwjlFuigEP5BmKx//O0V6YkIKcR2S/a9p2UG4L0EOgM=; b=MFodf000i2pJ6m
+	hLN2mlDt2PcyWQsM2lertf3WMRUxZW/eYVT5J2uLarYYVuZI4xRT7mkOL1hPZRj8pPyr8B1OVWj4K
+	sB9hMh/f+RW8cjLNvzzVd3SGgAq0c3my5087lrgBDW66FE17njbRU6BplF1fS0rOCMu7QZv8tVAav
+	kdyY6tcbNoD51JxUax0hoMXwW09IQuG6HxNbKmwK2QPheuAxnz0Vzt94y6RM0g1V5DiBOr6xE4L3r
+	WwzFdmdG4/m6CgdzpqerLom7TlgBd9502iOQoXAd8wOolqwlbb5vBYzniiSkvsbRgnkqZHzINmQ+u
+	H07HuMKCAcYmmbPVHWSQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1ssZE1-0000000GBIF-2utc;
-	Mon, 23 Sep 2024 02:54:57 +0000
-Received: from mail-m3270.qiye.163.com ([220.197.32.70])
+	id 1ssd2o-0000000GTie-1I4R;
+	Mon, 23 Sep 2024 06:59:38 +0000
+Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1ssZCt-0000000GBA2-3aZz;
-	Mon, 23 Sep 2024 02:53:49 +0000
-DKIM-Signature: a=rsa-sha256;
-	b=PXdc+IFIF0xl7+4V9LxN1xTDy8Wkn6RIIKP5IYU4mds1kXPbZ59ZC1U5hlZWo6kx3+UacoBJKb+LuFUiWdDPXGUwz/2viop2rxLtHojKqlflkK/wGjG6DAQXqW3v+FxdKMb6qKHUnCQ2zEKg0ViCo2EFCeojO4tRZwz1LoseNPc=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
-	bh=Vdc2KpUMmypK3eU7Bn8uLwDjcs/Uz7rXwakbbKIWpCQ=;
-	h=date:mime-version:subject:message-id:from;
-Received: from localhost.localdomain (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTPA id CEDDB9004A9;
-	Mon, 23 Sep 2024 10:53:28 +0800 (CST)
-From: Frank Wang <frank.wang@rock-chips.com>
-To: vkoul@kernel.org,
-	kishon@kernel.org,
+	id 1ssd0T-0000000GSsR-3Ewb;
+	Mon, 23 Sep 2024 06:57:15 +0000
+Received: by mail-wm1-x336.google.com with SMTP id 5b1f17b1804b1-42cacabd2e0so32566425e9.3;
+        Sun, 22 Sep 2024 23:57:12 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1727074631; x=1727679431; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=x1wki6dsaUIM0F2ljp9bI4/97eSPYVmCpcisfkoT7og=;
+        b=b/iz1ZJ1o4QN3UsWoGbiK2HGeEeQFxVI7h8/gkHW0EOhkwMruGeFVx66t8cs4UvTZ7
+         t/vL5zfyRyNlR8iKuQMOo3+SHKzGTeN/7lnOif9aGve5f//we+E4pmZj4uN/ufl4jMnK
+         +Yue0STz/jos91PripY+LBBVA6vASmFnpXpkZgkJCtL/6NJP69WOAZdmEJvLwH/hW5My
+         vvhwXvP1+ZJiae1nAXVdD3DMsOwZ3ysK2f1jHIW/WPyFZzxBGBoEqyGIY9gXGysxPR/N
+         O3tdou5Rm7DrudF2G18d/F7C2Q3Z03nT20KpK70cYObPzDutf2VaOwLlN8n8BLiOVwWx
+         gdEQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1727074631; x=1727679431;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=x1wki6dsaUIM0F2ljp9bI4/97eSPYVmCpcisfkoT7og=;
+        b=VldYH+/yTDnu+KlFkeqb+8Lb9h52WyuQS4g/O71rQikwq1oeTrRjlZpaEK34xVF6O1
+         ZfbUHV90JMb66Iq4n9AZ/b41P8luZmFVYRb1EFwHGZ/mPs8z8+NZKtDhWDfd/tzbfcx0
+         eEmjS3Av6QhaENg0yYOvXzuv6gFiWa5j36TvCbe1n1tpESDMJ9YVfDLrNmrFkAMPSx93
+         uZ4f2iEtmu8tGbej9PRLWqfa+GT2LxrlEDuWto+K1qdXlAjBYvKp69mabzbbe8HhFaCr
+         DY50jK+BQ4xsH1LQkt9K25DdcsMaaH1QT7ypRvqxg1dRtO/MF8y4UrdODTAe4t/PbWBs
+         dGaQ==
+X-Forwarded-Encrypted: i=1; AJvYcCUEuLUrCwCaZHXfoUnSJ8O51wnUYOlOOP+KjSkzRfeOwLvQqXuBn0WKFMwmzB72zjC/XaoR5EH764zdDNKM81E=@lists.infradead.org, AJvYcCVqGUCm/BVphyNC1HeF35wF34wUGqVFgOzqQl0eMQtKADi7O/4o0kbkRuwNhiHN4ziQsZns1lE8ciFiap9z2GI4@lists.infradead.org
+X-Gm-Message-State: AOJu0YxHwPKWjgx54fvw1xJVKcnxqNgGpFEvR65/gq8oZX39OCkhCJiw
+	CM8h9JoQiNfa6g/rlzLoXw1q1Gp0X6QGpne8362xG/9VY015y3ni
+X-Google-Smtp-Source: AGHT+IHIgE7f67yXgd4ONohcI6zzAIE5+E8I/pn+MGyKGxfuSRqRogyaRmhG8t6jaukPRskeGHwd3A==
+X-Received: by 2002:a05:6000:1544:b0:36b:a2bb:b374 with SMTP id ffacd0b85a97d-37a4239878dmr8105206f8f.52.1727074631161;
+        Sun, 22 Sep 2024 23:57:11 -0700 (PDT)
+Received: from localhost.localdomain (201.red-88-10-59.dynamicip.rima-tde.net. [88.10.59.201])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-378e78002a4sm23885617f8f.78.2024.09.22.23.57.08
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 22 Sep 2024 23:57:09 -0700 (PDT)
+From: Sergio Paracuellos <sergio.paracuellos@gmail.com>
+To: linux-pci@vger.kernel.org
+Cc: vigneshr@ti.com,
+	s-vadapalli@ti.com,
+	lpieralisi@kernel.org,
+	kw@linux.com,
+	manivannan.sadhasivam@linaro.org,
 	robh@kernel.org,
-	krzk+dt@kernel.org,
-	conor+dt@kernel.org,
-	heiko@sntech.de
-Cc: linux-phy@lists.infradead.org,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
+	bhelgaas@google.com,
+	jingoohan1@gmail.com,
+	krzk@kernel.org,
+	alim.akhtar@samsung.com,
+	shawn.guo@linaro.org,
+	songxiaowei@hisilicon.com,
+	marek.vasut+renesas@gmail.com,
+	yoshihiro.shimoda.uh@renesas.com,
+	thierry.reding@gmail.com,
+	jonathanh@nvidia.com,
+	thomas.petazzoni@bootlin.com,
+	pali@kernel.org,
+	florian.fainelli@broadcom.com,
+	angelogioacchino.delregno@collabora.com,
+	ryder.lee@mediatek.com,
+	heiko@sntech.de,
+	kevin.xie@starfivetech.com,
+	kishon@kernel.org,
+	dlemoal@kernel.org,
+	shawn.lin@rock-chips.com,
 	linux-rockchip@lists.infradead.org,
-	william.wu@rock-chips.com,
-	tim.chen@rock-chips.com,
-	wmc@rock-chips.com,
-	Frank Wang <frank.wang@rock-chips.com>
-Subject: [RESEND PATCH 2/2] phy: rockchip: inno-usb2: Add usb2 phys support for rk3576
-Date: Mon, 23 Sep 2024 10:53:26 +0800
-Message-ID: <20240923025326.10467-2-frank.wang@rock-chips.com>
-X-Mailer: git-send-email 2.45.2
-In-Reply-To: <20240923025326.10467-1-frank.wang@rock-chips.com>
-References: <20240923025326.10467-1-frank.wang@rock-chips.com>
+	linux-tegra@vger.kernel.org,
+	linux-samsung-soc@vger.kernel.org,
+	linux-omap@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH] PCI: controller: Switch back to struct platform_driver::remove()
+Date: Mon, 23 Sep 2024 08:57:06 +0200
+Message-Id: <20240923065706.728769-1-sergio.paracuellos@gmail.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQh4dS1YZTEkaHhpNQh0aTUtWFRQJFh
-	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSUhCSE
-	NVSktLVUpCS0tZBg++
-X-HM-Tid: 0a921ccc628903a3kunmceddb9004a9
-X-HM-MType: 1
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6K006EQw6LDIzP08OE1YDLhdK
-	Og8aCk9VSlVKTElMS01LS0pLSU5PVTMWGhIXVR0JGhUQVQwaFRw7CRQYEFYYExILCFUYFBZFWVdZ
-	EgtZQVlOQ1VJSVVMVUpKT1lXWQgBWUFCSEhLNwY+
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240922_195348_133872_6073EE70 
-X-CRM114-Status: GOOD (  18.18  )
+X-CRM114-CacheID: sfid-20240922_235713_841844_F287439C 
+X-CRM114-Status: GOOD (  14.82  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,233 +119,370 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: William Wu <william.wu@rock-chips.com>
+After commit 0edb555a65d1 ("platform: Make platform_driver::remove()
+return void") .remove() is (again) the right callback to implement for
+platform drivers.
 
-The RK3576 SoC has two independent USB2.0 PHYs, and
-each PHY has one port.
+Convert all PCI controller drivers to use .remove(), with the eventual goal
+to drop struct platform_driver::remove_new(). As .remove() and .remove_new()
+have the same prototypes, conversion is done by just changing the structure
+member name in the driver initializer.
 
-Signed-off-by: William Wu <william.wu@rock-chips.com>
-Signed-off-by: Frank Wang <frank.wang@rock-chips.com>
+Signed-off-by: Sergio Paracuellos <sergio.paracuellos@gmail.com>
 ---
- drivers/phy/rockchip/phy-rockchip-inno-usb2.c | 131 ++++++++++++++++--
- 1 file changed, 123 insertions(+), 8 deletions(-)
+ drivers/pci/controller/cadence/pci-j721e.c   | 2 +-
+ drivers/pci/controller/dwc/pci-exynos.c      | 2 +-
+ drivers/pci/controller/dwc/pci-keystone.c    | 2 +-
+ drivers/pci/controller/dwc/pcie-bt1.c        | 2 +-
+ drivers/pci/controller/dwc/pcie-histb.c      | 2 +-
+ drivers/pci/controller/dwc/pcie-intel-gw.c   | 2 +-
+ drivers/pci/controller/dwc/pcie-kirin.c      | 2 +-
+ drivers/pci/controller/dwc/pcie-qcom-ep.c    | 2 +-
+ drivers/pci/controller/dwc/pcie-rcar-gen4.c  | 2 +-
+ drivers/pci/controller/dwc/pcie-tegra194.c   | 2 +-
+ drivers/pci/controller/pci-aardvark.c        | 2 +-
+ drivers/pci/controller/pci-host-generic.c    | 2 +-
+ drivers/pci/controller/pci-mvebu.c           | 2 +-
+ drivers/pci/controller/pci-tegra.c           | 2 +-
+ drivers/pci/controller/pci-xgene-msi.c       | 2 +-
+ drivers/pci/controller/pcie-altera-msi.c     | 2 +-
+ drivers/pci/controller/pcie-altera.c         | 2 +-
+ drivers/pci/controller/pcie-brcmstb.c        | 2 +-
+ drivers/pci/controller/pcie-hisi-error.c     | 2 +-
+ drivers/pci/controller/pcie-iproc-platform.c | 2 +-
+ drivers/pci/controller/pcie-mediatek-gen3.c  | 2 +-
+ drivers/pci/controller/pcie-mediatek.c       | 2 +-
+ drivers/pci/controller/pcie-mt7621.c         | 2 +-
+ drivers/pci/controller/pcie-rockchip-host.c  | 2 +-
+ drivers/pci/controller/plda/pcie-starfive.c  | 2 +-
+ 25 files changed, 25 insertions(+), 25 deletions(-)
 
-diff --git a/drivers/phy/rockchip/phy-rockchip-inno-usb2.c b/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
-index 4f71373ae6e1a..51ca16cbb86cb 100644
---- a/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
-+++ b/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
-@@ -229,9 +229,10 @@ struct rockchip_usb2phy_port {
-  * @dev: pointer to device.
-  * @grf: General Register Files regmap.
-  * @usbgrf: USB General Register Files regmap.
-- * @clk: clock struct of phy input clk.
-+ * @clks: array of phy input clocks.
-  * @clk480m: clock struct of phy output clk.
-  * @clk480m_hw: clock struct of phy output clk management.
-+ * @num_clks: number of phy input clocks.
-  * @phy_reset: phy reset control.
-  * @chg_state: states involved in USB charger detection.
-  * @chg_type: USB charger types.
-@@ -246,9 +247,10 @@ struct rockchip_usb2phy {
- 	struct device	*dev;
- 	struct regmap	*grf;
- 	struct regmap	*usbgrf;
--	struct clk	*clk;
-+	struct clk_bulk_data	*clks;
- 	struct clk	*clk480m;
- 	struct clk_hw	clk480m_hw;
-+	int			num_clks;
- 	struct reset_control	*phy_reset;
- 	enum usb_chg_state	chg_state;
- 	enum power_supply_type	chg_type;
-@@ -376,6 +378,7 @@ rockchip_usb2phy_clk480m_register(struct rockchip_usb2phy *rphy)
- {
- 	struct device_node *node = rphy->dev->of_node;
- 	struct clk_init_data init;
-+	struct clk *refclk = of_clk_get_by_name(node, "phyclk");
- 	const char *clk_name;
- 	int ret = 0;
+diff --git a/drivers/pci/controller/cadence/pci-j721e.c b/drivers/pci/controller/cadence/pci-j721e.c
+index 85718246016b..b9c534e9eb0a 100644
+--- a/drivers/pci/controller/cadence/pci-j721e.c
++++ b/drivers/pci/controller/cadence/pci-j721e.c
+@@ -591,7 +591,7 @@ static void j721e_pcie_remove(struct platform_device *pdev)
  
-@@ -386,8 +389,8 @@ rockchip_usb2phy_clk480m_register(struct rockchip_usb2phy *rphy)
- 	/* optional override of the clockname */
- 	of_property_read_string(node, "clock-output-names", &init.name);
+ static struct platform_driver j721e_pcie_driver = {
+ 	.probe  = j721e_pcie_probe,
+-	.remove_new = j721e_pcie_remove,
++	.remove = j721e_pcie_remove,
+ 	.driver = {
+ 		.name	= "j721e-pcie",
+ 		.of_match_table = of_j721e_pcie_match,
+diff --git a/drivers/pci/controller/dwc/pci-exynos.c b/drivers/pci/controller/dwc/pci-exynos.c
+index fa45da28a218..6a830166d37f 100644
+--- a/drivers/pci/controller/dwc/pci-exynos.c
++++ b/drivers/pci/controller/dwc/pci-exynos.c
+@@ -383,7 +383,7 @@ static const struct of_device_id exynos_pcie_of_match[] = {
  
--	if (rphy->clk) {
--		clk_name = __clk_get_name(rphy->clk);
-+	if (!IS_ERR(refclk)) {
-+		clk_name = __clk_get_name(refclk);
- 		init.parent_names = &clk_name;
- 		init.num_parents = 1;
- 	} else {
-@@ -1406,22 +1409,29 @@ static int rockchip_usb2phy_probe(struct platform_device *pdev)
- 	if (IS_ERR(rphy->phy_reset))
- 		return PTR_ERR(rphy->phy_reset);
+ static struct platform_driver exynos_pcie_driver = {
+ 	.probe		= exynos_pcie_probe,
+-	.remove_new	= exynos_pcie_remove,
++	.remove		= exynos_pcie_remove,
+ 	.driver = {
+ 		.name	= "exynos-pcie",
+ 		.of_match_table = exynos_pcie_of_match,
+diff --git a/drivers/pci/controller/dwc/pci-keystone.c b/drivers/pci/controller/dwc/pci-keystone.c
+index 52c6420ae200..9e87d6e29afe 100644
+--- a/drivers/pci/controller/dwc/pci-keystone.c
++++ b/drivers/pci/controller/dwc/pci-keystone.c
+@@ -1370,7 +1370,7 @@ static void ks_pcie_remove(struct platform_device *pdev)
  
--	rphy->clk = devm_clk_get_optional_enabled(dev, "phyclk");
--	if (IS_ERR(rphy->clk)) {
--		return dev_err_probe(&pdev->dev, PTR_ERR(rphy->clk),
-+	ret = devm_clk_bulk_get_all(dev, &rphy->clks);
-+	if (ret == -EPROBE_DEFER) {
-+		return dev_err_probe(&pdev->dev, -EPROBE_DEFER,
- 				     "failed to get phyclk\n");
- 	}
+ static struct platform_driver ks_pcie_driver = {
+ 	.probe  = ks_pcie_probe,
+-	.remove_new = ks_pcie_remove,
++	.remove = ks_pcie_remove,
+ 	.driver = {
+ 		.name	= "keystone-pcie",
+ 		.of_match_table = ks_pcie_of_match,
+diff --git a/drivers/pci/controller/dwc/pcie-bt1.c b/drivers/pci/controller/dwc/pcie-bt1.c
+index 76d0ddea8007..1340edc18d12 100644
+--- a/drivers/pci/controller/dwc/pcie-bt1.c
++++ b/drivers/pci/controller/dwc/pcie-bt1.c
+@@ -632,7 +632,7 @@ MODULE_DEVICE_TABLE(of, bt1_pcie_of_match);
  
-+	/* Clocks are optional */
-+	rphy->num_clks = ret < 0 ? 0 : ret;
-+
- 	ret = rockchip_usb2phy_clk480m_register(rphy);
- 	if (ret) {
- 		dev_err(dev, "failed to register 480m output clock\n");
- 		return ret;
- 	}
+ static struct platform_driver bt1_pcie_driver = {
+ 	.probe = bt1_pcie_probe,
+-	.remove_new = bt1_pcie_remove,
++	.remove = bt1_pcie_remove,
+ 	.driver = {
+ 		.name	= "bt1-pcie",
+ 		.of_match_table = bt1_pcie_of_match,
+diff --git a/drivers/pci/controller/dwc/pcie-histb.c b/drivers/pci/controller/dwc/pcie-histb.c
+index 7a11c618b9d9..615a0e3e6d7e 100644
+--- a/drivers/pci/controller/dwc/pcie-histb.c
++++ b/drivers/pci/controller/dwc/pcie-histb.c
+@@ -439,7 +439,7 @@ MODULE_DEVICE_TABLE(of, histb_pcie_of_match);
  
-+	ret = clk_bulk_prepare_enable(rphy->num_clks, rphy->clks);
-+	if (ret)
-+		return ret;
-+
- 	if (rphy->phy_cfg->phy_tuning) {
- 		ret = rphy->phy_cfg->phy_tuning(rphy);
- 		if (ret)
--			return ret;
-+			goto disable_clks;
- 	}
+ static struct platform_driver histb_pcie_platform_driver = {
+ 	.probe	= histb_pcie_probe,
+-	.remove_new = histb_pcie_remove,
++	.remove = histb_pcie_remove,
+ 	.driver = {
+ 		.name = "histb-pcie",
+ 		.of_match_table = histb_pcie_of_match,
+diff --git a/drivers/pci/controller/dwc/pcie-intel-gw.c b/drivers/pci/controller/dwc/pcie-intel-gw.c
+index acbe4f6d3291..177d23aa6180 100644
+--- a/drivers/pci/controller/dwc/pcie-intel-gw.c
++++ b/drivers/pci/controller/dwc/pcie-intel-gw.c
+@@ -443,7 +443,7 @@ static const struct of_device_id of_intel_pcie_match[] = {
  
- 	index = 0;
-@@ -1484,6 +1494,8 @@ static int rockchip_usb2phy_probe(struct platform_device *pdev)
+ static struct platform_driver intel_pcie_driver = {
+ 	.probe = intel_pcie_probe,
+-	.remove_new = intel_pcie_remove,
++	.remove = intel_pcie_remove,
+ 	.driver = {
+ 		.name = "intel-gw-pcie",
+ 		.of_match_table = of_intel_pcie_match,
+diff --git a/drivers/pci/controller/dwc/pcie-kirin.c b/drivers/pci/controller/dwc/pcie-kirin.c
+index 0a29136491b8..8a86c636a645 100644
+--- a/drivers/pci/controller/dwc/pcie-kirin.c
++++ b/drivers/pci/controller/dwc/pcie-kirin.c
+@@ -769,7 +769,7 @@ static int kirin_pcie_probe(struct platform_device *pdev)
  
- put_child:
- 	of_node_put(child_np);
-+disable_clks:
-+	clk_bulk_disable_unprepare(rphy->num_clks, rphy->clks);
- 	return ret;
- }
+ static struct platform_driver kirin_pcie_driver = {
+ 	.probe			= kirin_pcie_probe,
+-	.remove_new		= kirin_pcie_remove,
++	.remove			= kirin_pcie_remove,
+ 	.driver			= {
+ 		.name			= "kirin-pcie",
+ 		.of_match_table		= kirin_pcie_match,
+diff --git a/drivers/pci/controller/dwc/pcie-qcom-ep.c b/drivers/pci/controller/dwc/pcie-qcom-ep.c
+index a9b263f749b6..74742cdefa7e 100644
+--- a/drivers/pci/controller/dwc/pcie-qcom-ep.c
++++ b/drivers/pci/controller/dwc/pcie-qcom-ep.c
+@@ -926,7 +926,7 @@ MODULE_DEVICE_TABLE(of, qcom_pcie_ep_match);
  
-@@ -1495,6 +1507,30 @@ static int rk3128_usb2phy_tuning(struct rockchip_usb2phy *rphy)
- 				BIT(2) << BIT_WRITEABLE_SHIFT | 0);
- }
+ static struct platform_driver qcom_pcie_ep_driver = {
+ 	.probe	= qcom_pcie_ep_probe,
+-	.remove_new = qcom_pcie_ep_remove,
++	.remove = qcom_pcie_ep_remove,
+ 	.driver	= {
+ 		.name = "qcom-pcie-ep",
+ 		.of_match_table	= qcom_pcie_ep_match,
+diff --git a/drivers/pci/controller/dwc/pcie-rcar-gen4.c b/drivers/pci/controller/dwc/pcie-rcar-gen4.c
+index f0f3ebd1a033..c9b2765ab9ab 100644
+--- a/drivers/pci/controller/dwc/pcie-rcar-gen4.c
++++ b/drivers/pci/controller/dwc/pcie-rcar-gen4.c
+@@ -770,7 +770,7 @@ static struct platform_driver rcar_gen4_pcie_driver = {
+ 		.probe_type = PROBE_PREFER_ASYNCHRONOUS,
+ 	},
+ 	.probe = rcar_gen4_pcie_probe,
+-	.remove_new = rcar_gen4_pcie_remove,
++	.remove = rcar_gen4_pcie_remove,
+ };
+ module_platform_driver(rcar_gen4_pcie_driver);
  
-+static int rk3576_usb2phy_tuning(struct rockchip_usb2phy *rphy)
-+{
-+	int ret;
-+	u32 reg = rphy->phy_cfg->reg;
-+
-+	/* Deassert SIDDQ to power on analog block */
-+	ret = regmap_write(rphy->grf, reg + 0x0010, GENMASK(29, 29) | 0x0000);
-+	if (ret)
-+		return ret;
-+
-+	/* Do reset after exit IDDQ mode */
-+	ret = rockchip_usb2phy_reset(rphy);
-+	if (ret)
-+		return ret;
-+
-+	/* HS DC Voltage Level Adjustment 4'b1001 : +5.89% */
-+	ret |= regmap_write(rphy->grf, reg + 0x000c, GENMASK(27, 24) | 0x0900);
-+
-+	/* HS Transmitter Pre-Emphasis Current Control 2'b10 : 2x */
-+	ret |= regmap_write(rphy->grf, reg + 0x0010, GENMASK(20, 19) | 0x0010);
-+
-+	return ret;
-+}
-+
- static int rk3588_usb2phy_tuning(struct rockchip_usb2phy *rphy)
- {
- 	int ret;
-@@ -1923,6 +1959,84 @@ static const struct rockchip_usb2phy_cfg rk3568_phy_cfgs[] = {
- 	{ /* sentinel */ }
+diff --git a/drivers/pci/controller/dwc/pcie-tegra194.c b/drivers/pci/controller/dwc/pcie-tegra194.c
+index 4bf7b433417a..77675bee4aa8 100644
+--- a/drivers/pci/controller/dwc/pcie-tegra194.c
++++ b/drivers/pci/controller/dwc/pcie-tegra194.c
+@@ -2498,7 +2498,7 @@ static const struct dev_pm_ops tegra_pcie_dw_pm_ops = {
+ 
+ static struct platform_driver tegra_pcie_dw_driver = {
+ 	.probe = tegra_pcie_dw_probe,
+-	.remove_new = tegra_pcie_dw_remove,
++	.remove = tegra_pcie_dw_remove,
+ 	.shutdown = tegra_pcie_dw_shutdown,
+ 	.driver = {
+ 		.name	= "tegra194-pcie",
+diff --git a/drivers/pci/controller/pci-aardvark.c b/drivers/pci/controller/pci-aardvark.c
+index 8b3e1a079cf3..815cdfcf79f9 100644
+--- a/drivers/pci/controller/pci-aardvark.c
++++ b/drivers/pci/controller/pci-aardvark.c
+@@ -2002,7 +2002,7 @@ static struct platform_driver advk_pcie_driver = {
+ 		.of_match_table = advk_pcie_of_match_table,
+ 	},
+ 	.probe = advk_pcie_probe,
+-	.remove_new = advk_pcie_remove,
++	.remove = advk_pcie_remove,
+ };
+ module_platform_driver(advk_pcie_driver);
+ 
+diff --git a/drivers/pci/controller/pci-host-generic.c b/drivers/pci/controller/pci-host-generic.c
+index 5f06f94db7b1..4051b9b61dac 100644
+--- a/drivers/pci/controller/pci-host-generic.c
++++ b/drivers/pci/controller/pci-host-generic.c
+@@ -82,7 +82,7 @@ static struct platform_driver gen_pci_driver = {
+ 		.of_match_table = gen_pci_of_match,
+ 	},
+ 	.probe = pci_host_common_probe,
+-	.remove_new = pci_host_common_remove,
++	.remove = pci_host_common_remove,
+ };
+ module_platform_driver(gen_pci_driver);
+ 
+diff --git a/drivers/pci/controller/pci-mvebu.c b/drivers/pci/controller/pci-mvebu.c
+index 29fe09c99e7d..46d3afe1d308 100644
+--- a/drivers/pci/controller/pci-mvebu.c
++++ b/drivers/pci/controller/pci-mvebu.c
+@@ -1727,7 +1727,7 @@ static struct platform_driver mvebu_pcie_driver = {
+ 		.pm = &mvebu_pcie_pm_ops,
+ 	},
+ 	.probe = mvebu_pcie_probe,
+-	.remove_new = mvebu_pcie_remove,
++	.remove = mvebu_pcie_remove,
+ };
+ module_platform_driver(mvebu_pcie_driver);
+ 
+diff --git a/drivers/pci/controller/pci-tegra.c b/drivers/pci/controller/pci-tegra.c
+index 038d974a318e..42a5ce412cc0 100644
+--- a/drivers/pci/controller/pci-tegra.c
++++ b/drivers/pci/controller/pci-tegra.c
+@@ -2806,6 +2806,6 @@ static struct platform_driver tegra_pcie_driver = {
+ 		.pm = &tegra_pcie_pm_ops,
+ 	},
+ 	.probe = tegra_pcie_probe,
+-	.remove_new = tegra_pcie_remove,
++	.remove = tegra_pcie_remove,
+ };
+ module_platform_driver(tegra_pcie_driver);
+diff --git a/drivers/pci/controller/pci-xgene-msi.c b/drivers/pci/controller/pci-xgene-msi.c
+index 3ce38dfd0d29..88c0977bc41a 100644
+--- a/drivers/pci/controller/pci-xgene-msi.c
++++ b/drivers/pci/controller/pci-xgene-msi.c
+@@ -518,7 +518,7 @@ static struct platform_driver xgene_msi_driver = {
+ 		.of_match_table = xgene_msi_match_table,
+ 	},
+ 	.probe = xgene_msi_probe,
+-	.remove_new = xgene_msi_remove,
++	.remove = xgene_msi_remove,
  };
  
-+static const struct rockchip_usb2phy_cfg rk3576_phy_cfgs[] = {
-+	{
-+		.reg = 0x0,
-+		.num_ports	= 1,
-+		.phy_tuning	= rk3576_usb2phy_tuning,
-+		.clkout_ctl	= { 0x0008, 0, 0, 1, 0 },
-+		.port_cfgs	= {
-+			[USB2PHY_PORT_OTG] = {
-+				.phy_sus	= { 0x0000, 8, 0, 0, 0x1d1 },
-+				.bvalid_det_en	= { 0x00c0, 1, 1, 0, 1 },
-+				.bvalid_det_st	= { 0x00c4, 1, 1, 0, 1 },
-+				.bvalid_det_clr = { 0x00c8, 1, 1, 0, 1 },
-+				.ls_det_en	= { 0x00c0, 0, 0, 0, 1 },
-+				.ls_det_st	= { 0x00c4, 0, 0, 0, 1 },
-+				.ls_det_clr	= { 0x00c8, 0, 0, 0, 1 },
-+				.disfall_en	= { 0x00c0, 6, 6, 0, 1 },
-+				.disfall_st	= { 0x00c4, 6, 6, 0, 1 },
-+				.disfall_clr	= { 0x00c8, 6, 6, 0, 1 },
-+				.disrise_en	= { 0x00c0, 5, 5, 0, 1 },
-+				.disrise_st	= { 0x00c4, 5, 5, 0, 1 },
-+				.disrise_clr	= { 0x00c8, 5, 5, 0, 1 },
-+				.utmi_avalid	= { 0x0080, 1, 1, 0, 1 },
-+				.utmi_bvalid	= { 0x0080, 0, 0, 0, 1 },
-+				.utmi_ls	= { 0x0080, 5, 4, 0, 1 },
-+			}
-+		},
-+		.chg_det = {
-+			.cp_det		= { 0x0080, 8, 8, 0, 1 },
-+			.dcp_det	= { 0x0080, 8, 8, 0, 1 },
-+			.dp_det		= { 0x0080, 9, 9, 1, 0 },
-+			.idm_sink_en	= { 0x0010, 5, 5, 1, 0 },
-+			.idp_sink_en	= { 0x0010, 5, 5, 0, 1 },
-+			.idp_src_en	= { 0x0010, 14, 14, 0, 1 },
-+			.rdm_pdwn_en	= { 0x0010, 14, 14, 0, 1 },
-+			.vdm_src_en	= { 0x0010, 7, 6, 0, 3 },
-+			.vdp_src_en	= { 0x0010, 7, 6, 0, 3 },
-+		},
-+	},
-+	{
-+		.reg = 0x2000,
-+		.num_ports	= 1,
-+		.phy_tuning	= rk3576_usb2phy_tuning,
-+		.clkout_ctl	= { 0x2008, 0, 0, 1, 0 },
-+		.port_cfgs	= {
-+			[USB2PHY_PORT_OTG] = {
-+				.phy_sus	= { 0x2000, 8, 0, 0, 0x1d1 },
-+				.bvalid_det_en	= { 0x20c0, 1, 1, 0, 1 },
-+				.bvalid_det_st	= { 0x20c4, 1, 1, 0, 1 },
-+				.bvalid_det_clr = { 0x20c8, 1, 1, 0, 1 },
-+				.ls_det_en	= { 0x20c0, 0, 0, 0, 1 },
-+				.ls_det_st	= { 0x20c4, 0, 0, 0, 1 },
-+				.ls_det_clr	= { 0x20c8, 0, 0, 0, 1 },
-+				.disfall_en	= { 0x20c0, 6, 6, 0, 1 },
-+				.disfall_st	= { 0x20c4, 6, 6, 0, 1 },
-+				.disfall_clr	= { 0x20c8, 6, 6, 0, 1 },
-+				.disrise_en	= { 0x20c0, 5, 5, 0, 1 },
-+				.disrise_st	= { 0x20c4, 5, 5, 0, 1 },
-+				.disrise_clr	= { 0x20c8, 5, 5, 0, 1 },
-+				.utmi_avalid	= { 0x2080, 1, 1, 0, 1 },
-+				.utmi_bvalid	= { 0x2080, 0, 0, 0, 1 },
-+				.utmi_ls	= { 0x2080, 5, 4, 0, 1 },
-+			}
-+		},
-+		.chg_det = {
-+			.cp_det		= { 0x2080, 8, 8, 0, 1 },
-+			.dcp_det	= { 0x2080, 8, 8, 0, 1 },
-+			.dp_det		= { 0x2080, 9, 9, 1, 0 },
-+			.idm_sink_en	= { 0x2010, 5, 5, 1, 0 },
-+			.idp_sink_en	= { 0x2010, 5, 5, 0, 1 },
-+			.idp_src_en	= { 0x2010, 14, 14, 0, 1 },
-+			.rdm_pdwn_en	= { 0x2010, 14, 14, 0, 1 },
-+			.vdm_src_en	= { 0x2010, 7, 6, 0, 3 },
-+			.vdp_src_en	= { 0x2010, 7, 6, 0, 3 },
-+		},
-+	},
-+	{ /* sentinel */ }
-+};
-+
- static const struct rockchip_usb2phy_cfg rk3588_phy_cfgs[] = {
- 	{
- 		.reg = 0x0000,
-@@ -2094,6 +2208,7 @@ static const struct of_device_id rockchip_usb2phy_dt_match[] = {
- 	{ .compatible = "rockchip,rk3366-usb2phy", .data = &rk3366_phy_cfgs },
- 	{ .compatible = "rockchip,rk3399-usb2phy", .data = &rk3399_phy_cfgs },
- 	{ .compatible = "rockchip,rk3568-usb2phy", .data = &rk3568_phy_cfgs },
-+	{ .compatible = "rockchip,rk3576-usb2phy", .data = &rk3576_phy_cfgs },
- 	{ .compatible = "rockchip,rk3588-usb2phy", .data = &rk3588_phy_cfgs },
- 	{ .compatible = "rockchip,rv1108-usb2phy", .data = &rv1108_phy_cfgs },
- 	{}
+ static int __init xgene_pcie_msi_init(void)
+diff --git a/drivers/pci/controller/pcie-altera-msi.c b/drivers/pci/controller/pcie-altera-msi.c
+index 16336a525c16..318736171d63 100644
+--- a/drivers/pci/controller/pcie-altera-msi.c
++++ b/drivers/pci/controller/pcie-altera-msi.c
+@@ -274,7 +274,7 @@ static struct platform_driver altera_msi_driver = {
+ 		.of_match_table = altera_msi_of_match,
+ 	},
+ 	.probe = altera_msi_probe,
+-	.remove_new = altera_msi_remove,
++	.remove = altera_msi_remove,
+ };
+ 
+ static int __init altera_msi_init(void)
+diff --git a/drivers/pci/controller/pcie-altera.c b/drivers/pci/controller/pcie-altera.c
+index ef73baefaeb9..b921bbb4de80 100644
+--- a/drivers/pci/controller/pcie-altera.c
++++ b/drivers/pci/controller/pcie-altera.c
+@@ -817,7 +817,7 @@ static void altera_pcie_remove(struct platform_device *pdev)
+ 
+ static struct platform_driver altera_pcie_driver = {
+ 	.probe		= altera_pcie_probe,
+-	.remove_new	= altera_pcie_remove,
++	.remove	= altera_pcie_remove,
+ 	.driver = {
+ 		.name	= "altera-pcie",
+ 		.of_match_table = altera_pcie_of_match,
+diff --git a/drivers/pci/controller/pcie-brcmstb.c b/drivers/pci/controller/pcie-brcmstb.c
+index c08683febdd4..470c48b4aaa6 100644
+--- a/drivers/pci/controller/pcie-brcmstb.c
++++ b/drivers/pci/controller/pcie-brcmstb.c
+@@ -1690,7 +1690,7 @@ static const struct dev_pm_ops brcm_pcie_pm_ops = {
+ 
+ static struct platform_driver brcm_pcie_driver = {
+ 	.probe = brcm_pcie_probe,
+-	.remove_new = brcm_pcie_remove,
++	.remove = brcm_pcie_remove,
+ 	.driver = {
+ 		.name = "brcm-pcie",
+ 		.of_match_table = brcm_pcie_match,
+diff --git a/drivers/pci/controller/pcie-hisi-error.c b/drivers/pci/controller/pcie-hisi-error.c
+index ad9d5ffcd9e3..cb5fcfe032d1 100644
+--- a/drivers/pci/controller/pcie-hisi-error.c
++++ b/drivers/pci/controller/pcie-hisi-error.c
+@@ -317,7 +317,7 @@ static struct platform_driver hisi_pcie_error_handler_driver = {
+ 		.acpi_match_table = hisi_pcie_acpi_match,
+ 	},
+ 	.probe		= hisi_pcie_error_handler_probe,
+-	.remove_new	= hisi_pcie_error_handler_remove,
++	.remove	= hisi_pcie_error_handler_remove,
+ };
+ module_platform_driver(hisi_pcie_error_handler_driver);
+ 
+diff --git a/drivers/pci/controller/pcie-iproc-platform.c b/drivers/pci/controller/pcie-iproc-platform.c
+index 4e6aa882a567..0cb78c583c7e 100644
+--- a/drivers/pci/controller/pcie-iproc-platform.c
++++ b/drivers/pci/controller/pcie-iproc-platform.c
+@@ -134,7 +134,7 @@ static struct platform_driver iproc_pltfm_pcie_driver = {
+ 		.of_match_table = of_match_ptr(iproc_pcie_of_match_table),
+ 	},
+ 	.probe = iproc_pltfm_pcie_probe,
+-	.remove_new = iproc_pltfm_pcie_remove,
++	.remove = iproc_pltfm_pcie_remove,
+ 	.shutdown = iproc_pltfm_pcie_shutdown,
+ };
+ module_platform_driver(iproc_pltfm_pcie_driver);
+diff --git a/drivers/pci/controller/pcie-mediatek-gen3.c b/drivers/pci/controller/pcie-mediatek-gen3.c
+index b7e8e24f6a40..ebef1be0d168 100644
+--- a/drivers/pci/controller/pcie-mediatek-gen3.c
++++ b/drivers/pci/controller/pcie-mediatek-gen3.c
+@@ -1082,7 +1082,7 @@ MODULE_DEVICE_TABLE(of, mtk_pcie_of_match);
+ 
+ static struct platform_driver mtk_pcie_driver = {
+ 	.probe = mtk_pcie_probe,
+-	.remove_new = mtk_pcie_remove,
++	.remove = mtk_pcie_remove,
+ 	.driver = {
+ 		.name = "mtk-pcie-gen3",
+ 		.of_match_table = mtk_pcie_of_match,
+diff --git a/drivers/pci/controller/pcie-mediatek.c b/drivers/pci/controller/pcie-mediatek.c
+index 7fc0d7709b7f..f571de8de283 100644
+--- a/drivers/pci/controller/pcie-mediatek.c
++++ b/drivers/pci/controller/pcie-mediatek.c
+@@ -1243,7 +1243,7 @@ MODULE_DEVICE_TABLE(of, mtk_pcie_ids);
+ 
+ static struct platform_driver mtk_pcie_driver = {
+ 	.probe = mtk_pcie_probe,
+-	.remove_new = mtk_pcie_remove,
++	.remove = mtk_pcie_remove,
+ 	.driver = {
+ 		.name = "mtk-pcie",
+ 		.of_match_table = mtk_pcie_ids,
+diff --git a/drivers/pci/controller/pcie-mt7621.c b/drivers/pci/controller/pcie-mt7621.c
+index 9b4754a45515..776caa0b1011 100644
+--- a/drivers/pci/controller/pcie-mt7621.c
++++ b/drivers/pci/controller/pcie-mt7621.c
+@@ -541,7 +541,7 @@ MODULE_DEVICE_TABLE(of, mt7621_pcie_ids);
+ 
+ static struct platform_driver mt7621_pcie_driver = {
+ 	.probe = mt7621_pcie_probe,
+-	.remove_new = mt7621_pcie_remove,
++	.remove = mt7621_pcie_remove,
+ 	.driver = {
+ 		.name = "mt7621-pci",
+ 		.of_match_table = mt7621_pcie_ids,
+diff --git a/drivers/pci/controller/pcie-rockchip-host.c b/drivers/pci/controller/pcie-rockchip-host.c
+index cbec71114825..06cdb68f0920 100644
+--- a/drivers/pci/controller/pcie-rockchip-host.c
++++ b/drivers/pci/controller/pcie-rockchip-host.c
+@@ -1050,7 +1050,7 @@ static struct platform_driver rockchip_pcie_driver = {
+ 		.pm = &rockchip_pcie_pm_ops,
+ 	},
+ 	.probe = rockchip_pcie_probe,
+-	.remove_new = rockchip_pcie_remove,
++	.remove = rockchip_pcie_remove,
+ };
+ module_platform_driver(rockchip_pcie_driver);
+ 
+diff --git a/drivers/pci/controller/plda/pcie-starfive.c b/drivers/pci/controller/plda/pcie-starfive.c
+index c9933ecf6833..0567ec373a3e 100644
+--- a/drivers/pci/controller/plda/pcie-starfive.c
++++ b/drivers/pci/controller/plda/pcie-starfive.c
+@@ -480,7 +480,7 @@ static struct platform_driver starfive_pcie_driver = {
+ 		.pm = pm_sleep_ptr(&starfive_pcie_pm_ops),
+ 	},
+ 	.probe = starfive_pcie_probe,
+-	.remove_new = starfive_pcie_remove,
++	.remove = starfive_pcie_remove,
+ };
+ module_platform_driver(starfive_pcie_driver);
+ 
 -- 
-2.45.2
+2.25.1
 
 
 _______________________________________________
