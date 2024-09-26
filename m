@@ -4,160 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 24A4ACDE003
-	for <linux-rockchip@archiver.kernel.org>; Thu, 26 Sep 2024 13:24:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 49B17CDE009
+	for <linux-rockchip@archiver.kernel.org>; Thu, 26 Sep 2024 13:49:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:From:References:Cc:To:
-	Subject:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=HJ0GBtYdpcP9lQm+yqlKIKYdqSWfS0xwYB2+XjzUozk=; b=cxb1HjFwl1zYobOn4H0auAnr9/
-	FDOhjxMcY8IsY2bbvHvWr2xYUaFIHAB/KmFGdJVKkUMOjhwVAS2R+QUS0FmykAKZN89TbBYi9zL7G
-	/rAiBAZpQHpSBX8wEPeONucPXB0s/o1xvutT0ZYSmCi6u7jmQA0Smd3pliTd6kCKFl/+xIfFwK9QB
-	vQGxi/fT7i9yQKHKv4QQNwq0WJeT3Ty7dROI9BBBi9I43oCPWpkCLw664okSjG7HfPlYM6rUwUTJw
-	jp0R5Mqp6u6EjoGVv9q0K64QgRsd9Vq1db9eiXfNIROL+OVe+94C1mK1JeXnSwTj3O7XPx65xaLnG
-	YYFAfpeA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=kpUJ7HyrZ0hoPLG88UHTs6pcZFzirHZoIq79Ta6TNSo=; b=rXUgRNnTyCc7ta
+	1BY4xmT5TMUsWyG3Cvvosq+u6Y7VVzNvPQOo/NMapgEfs/qQtGGvPne4W8BbXaMsv1DX9oDOusKA3
+	qm6MdMFU3aLUql69JMuw2DpkPSoddWSzZa3y1m1ZRcCXhicJOsEdxlmJTZr7V1cyms603HPA+CZxI
+	OldbsmqUGBPurFMfz+D/2wcPk/I8LifxkboepuhPiQuDt5H2riP8VtINd2zKqUjXGRovS2MGKMVTL
+	62lt7nB5jtOii+IJ55YPIkUYHog+zezPbTSnRuPZ6tP9NvXutYgOfkGlnNnClHEzJOt5YJh+a+bYc
+	38nXKRfqP+GzGQGIWODw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1stoTt-00000008SQk-13p5;
-	Thu, 26 Sep 2024 13:24:29 +0000
-Received: from mail-westeuropeazlp170100000.outbound.protection.outlook.com ([2a01:111:f403:c201::] helo=AM0PR83CU005.outbound.protection.outlook.com)
+	id 1storY-00000008Uu6-1ACG;
+	Thu, 26 Sep 2024 13:48:56 +0000
+Received: from xavier.telenet-ops.be ([2a02:1800:120:4::f00:14])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1stoTq-00000008SPG-3rVi
+	id 1storT-00000008Urh-0uFB
 	for linux-rockchip@lists.infradead.org;
-	Thu, 26 Sep 2024 13:24:28 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=lAVtQLAxIzYOXnyMYOh4qqRhhEnS0TPfBmnEcHaCYeUpH8WoC4QFOb8usYMltiOl6WhnHYsWN1qumiX0b2zjFS35LGOmoDADuxWLItwgnxQMM+ji+niRLvH5TPqH0dUTSOkJgc0dDabIXGyxO6+sSLOCWN81XKWfxz9zzfUp4hfKhAaUJ3vy+NJtpZfFXsb3Rh/AqehpetzWLHm94vbDV/0seBIcov4nwl9flNJZSa4tIw2CObHoe2G3FdDSUgqKkAmLV/pY6BEZQ/xp6uwst3Ws/pIrzqCy48y8R1XJT9DR7+OTNzKWvOaAjH0zcDYWJQni248kWyRYBnN5SywVhw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=qOjxMfnROhx3hkUrh3ixB7iWQE98sdnn/RyVTTFuP6M=;
- b=BVgIuzjY0Fp/yhjQVQ4CqmGcWYRVpkNsUOiocL8h+Effp9juzfkIzSYdbYmEwYeU+IvF2U8ezgCwNevX6ma6doEYZCcPWbrVNJ8t8aQ6E4eEZXjbMNaZ+0wEjOx4A/+3rqkgvASwwnY49Cg357HvXYeVzGA+XA1PdiSHhjxGoHgNa0Osuuwhwc7GngWDY3IgN43/0NsvlgT4mkCecaYK93w2iHRAOHuHw91wYJFcN1+imdE6cbvaRe/4UIPFmpqpBgIKzMiJQHCIGkVQp5KbBLHWaQdIdzKYe+7aq9G8X51LBvANhpcpd2J2Rp1eI7ET0ID7cbR2l2o2irBMdVJczw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=cherry.de; dmarc=pass action=none header.from=cherry.de;
- dkim=pass header.d=cherry.de; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cherry.de;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=qOjxMfnROhx3hkUrh3ixB7iWQE98sdnn/RyVTTFuP6M=;
- b=PaK2SFbVeJk4AWcPmbytFp+mo6vUJNFVzJGT5i+7rYXMQaJR9tuczsIFekdX59VpMqed7zaxi8U6igGNXaYhkZ4tYnHap0kEOdx6CYN7yWOm96Z6kkwFh3F575MPnp4ZEwPBsSTHz9AkDG0fx4VSyY8Ximmrveg6Q73PPkhyyT8=
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=cherry.de;
-Received: from AM9PR04MB8906.eurprd04.prod.outlook.com (2603:10a6:20b:409::9)
- by GV1PR04MB9101.eurprd04.prod.outlook.com (2603:10a6:150:20::12) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7982.27; Thu, 26 Sep
- 2024 13:24:04 +0000
-Received: from AM9PR04MB8906.eurprd04.prod.outlook.com
- ([fe80::d379:5378:b1:cea]) by AM9PR04MB8906.eurprd04.prod.outlook.com
- ([fe80::d379:5378:b1:cea%2]) with mapi id 15.20.7918.024; Thu, 26 Sep 2024
- 13:24:04 +0000
-Message-ID: <050724b3-aed6-41d3-b2b4-18b90fbf0ad3@cherry.de>
-Date: Thu, 26 Sep 2024 15:24:03 +0200
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2] arm64: dts: rockchip: add attiny_rst_gate to Ringneck
-To: Jakob Unterwurzacher <jakobunt@gmail.com>
-Cc: heiko@sntech.de, linux-kernel@vger.kernel.org,
- linux-rockchip@lists.infradead.org,
- Jakob Unterwurzacher <jakob.unterwurzacher@cherry.de>
-References: <69f79284-b52e-496e-a286-d7e5ce3d90ce@cherry.de>
- <20240926132028.21910-1-jakob.unterwurzacher@cherry.de>
-Content-Language: en-US
-From: Quentin Schulz <quentin.schulz@cherry.de>
-In-Reply-To: <20240926132028.21910-1-jakob.unterwurzacher@cherry.de>
-X-ClientProxiedBy: FR0P281CA0209.DEUP281.PROD.OUTLOOK.COM
- (2603:10a6:d10:ad::6) To AM9PR04MB8906.eurprd04.prod.outlook.com
- (2603:10a6:20b:409::9)
+	Thu, 26 Sep 2024 13:48:53 +0000
+Received: from ramsan.of.borg ([IPv6:2a02:1810:ac12:ed80:7bd9:a854:38c6:ce04])
+	by xavier.telenet-ops.be with cmsmtp
+	id H1oj2D0013fTnLU011ojmy; Thu, 26 Sep 2024 15:48:45 +0200
+Received: from rox.of.borg ([192.168.97.57])
+	by ramsan.of.borg with esmtp (Exim 4.95)
+	(envelope-from <geert@linux-m68k.org>)
+	id 1storF-000bca-Qr;
+	Thu, 26 Sep 2024 15:48:42 +0200
+Received: from geert by rox.of.borg with local (Exim 4.95)
+	(envelope-from <geert@linux-m68k.org>)
+	id 1storK-001yEg-QI;
+	Thu, 26 Sep 2024 15:48:42 +0200
+From: Geert Uytterhoeven <geert+renesas@glider.be>
+To: Heiko Stuebner <heiko@sntech.de>,
+	Andy Yan <andyshrk@163.com>,
+	Jacob Chen <jacob-chen@iotwrt.com>
+Cc: linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	Geert Uytterhoeven <geert+renesas@glider.be>
+Subject: [PATCH 1/2] arm64: dts: rockchip: rk3399-eaidk-610: Fix rt5651 compatible value
+Date: Thu, 26 Sep 2024 15:48:40 +0200
+Message-Id: <a9877b8b1bd0de279d2ec8294d5be14587203a82.1727358193.git.geert+renesas@glider.be>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <cover.1727358193.git.geert+renesas@glider.be>
+References: <cover.1727358193.git.geert+renesas@glider.be>
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: AM9PR04MB8906:EE_|GV1PR04MB9101:EE_
-X-MS-Office365-Filtering-Correlation-Id: 418a807e-de5b-454f-9838-08dcde2e7e2f
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|1800799024|376014|366016;
-X-Microsoft-Antispam-Message-Info: =?utf-8?B?bk5VQjJHNkZIUUZNcWh5NU01aTJNMERWdi9ndnFFZ2EwRzlacWtBOGQrdVI0?=
- =?utf-8?B?ZURmRzJqTDJnYmFXeFNPOWJLcm5NMk5NUjVxSU5XUjVoQk1GSzYxT3Vrb3Z6?=
- =?utf-8?B?ODhSZ3pHZGVvaW1XL3YxZWQ1eWlWZlpoTWx6aGU4bUhyT2pjK0dNLzd6ZlpV?=
- =?utf-8?B?RGQ3SW5GdWVRUklyNDZHZlFudHhXaWZIOGhsMXZCc3V5WDlDakg4ZmRuNC9U?=
- =?utf-8?B?MTJibGMxbDZrT1JLa3ljSkNNZTlhWUhBbmNsdGNBTDY2M1J6bHVyN0YwVEht?=
- =?utf-8?B?WnZzVXRNdnVHT0c1M0NtU2t0U3ZZbVhaV0NoUHNvd3N4YWZpQlY3VTJOSjZX?=
- =?utf-8?B?Wm1zQUNvQ3dEamc2MmlQS3dna21qZVpWbTMxTk45Tk0yUEg1Rm5zY3BSeVFF?=
- =?utf-8?B?bnRxSGRHK0tzd09wRnpTZk1hdG9yMVZDS2s0YjJyU1dBT0xXTC9GVmkyZ0ZG?=
- =?utf-8?B?UDNFQ0R4Yys3WTdWQWdSNzRaWXVFQkpiYy8wc2RqS1hiQ0RaTXYrY2l1VnBI?=
- =?utf-8?B?Q2tsbTJjd20wcXR5T1VVL2lxdUc0OENXVUt3Wlo4aHF4ZVpWandJaXFSSmo5?=
- =?utf-8?B?azFvTlN2WTA4azR5MnUwYm1ybU1NY281Ly91bUk0WGNLTVlZc2xuSXV1UDJu?=
- =?utf-8?B?NlYvR081MFNFN2RjMDczR2I5Q2FEemlSai95Z05hN2Vyb0orejFTQmo2M3VH?=
- =?utf-8?B?M2dUQkRONndCWEViWDJCeXVnT3c5NTlyKzg2UnMvZ1ZXeEg3NDZSeVEwTEcy?=
- =?utf-8?B?bktGSGUrTjFyOWdaWXNUWEplb0RZMk9nUmMvK3JDNlc4bng2UktnQnprS3Y1?=
- =?utf-8?B?S05jbEVRSEdTS2FRMDBPUVZmWVFYR2lsZnU2dVJtdHJ0R1NKNUhVeVMxdklu?=
- =?utf-8?B?UjRaVTVuajYwNVFTT05uTGVqTmRVNkMyelVLa3VQOXV1Z3hYOWF6SE5wdUlw?=
- =?utf-8?B?T05OQjV4RGRDU1ZxaVgxQzBYUHhNb3EyYTlpRDZVSlUvc0JhK1NYTlBWcnZL?=
- =?utf-8?B?ZllaS2N4UUVRWXd6a3J5NzJwcTY0TUpybDZpS0lqWlVOL3FSNWZ0aFNJZ2dn?=
- =?utf-8?B?UUQ4dmptb1AyWjkzejBxRSt5cmpSVWVQemxOZExjTmI2b0x3VW56Tm5LdU9q?=
- =?utf-8?B?Qzltc01rbENkeWYzcWVXTTR4VkhhcVQwYjhoWitYR0tWVk5RZFVtL3o5OVls?=
- =?utf-8?B?TUJiM2JtL1RJNjAzVElZR09WcGh5T1FLcnNwZDd4STdnUFoyUUdzTFV0QjlZ?=
- =?utf-8?B?dDNsRWtPVkJlR2pxZ0haZ3ArM3NqQUk3VzBJSGtDRE15RzVsVllzQ0dRWHFx?=
- =?utf-8?B?YnJmS0gyUm90N1paUUNwWWptaFZwekt3Q1l4SXhaUU83MjBLS2w4ZjFVVnp5?=
- =?utf-8?B?c3RwUmc1bGZOZmtjMGxaODk0Mk9VeW9mZ3Z6Y1E5c0Y1QlRzaERUb2N2K2pO?=
- =?utf-8?B?WXdSdEN5eDc0dnkwSDNoMzJHSEsydWkzeFBqaVNrUkloQTNtYVhUbkMrbU13?=
- =?utf-8?B?SEZBblRLQ0VWMk9tTlhTalRLL2REaVN6SHRUQWZtVWtuWi94V21YRFN5cGNL?=
- =?utf-8?B?WWxVdkFGSlUvR3JweFcrSkV0K09YMDd2YUVnYlNEaFM1YVUxWUNUZ1BtRUNM?=
- =?utf-8?B?a0ZhNVc0YVdFcUFZNUJKaGVvZzFmTXhtTC91MlRFMmMrOW1Ia2NBQnFHakZC?=
- =?utf-8?B?UFZwTmhCQ2RxUWJmSEtmdnkrVmhrWnFFMUx2OFFHU0JVZ0VaY2M5V0lRPT0=?=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:AM9PR04MB8906.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(1800799024)(376014)(366016);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?dC9adkU3RFEvK09YdW1nOVZRaDl6cUI3S0p5SGxHM25Kb2M5T3FUcGxqeU84?=
- =?utf-8?B?MFM0cWc2THN4VXRqMWdLZzg4OTY1c0hJWmFlbkxENGphMWJUMU9RL0RNMnV5?=
- =?utf-8?B?OTJBK1AxTXV2UEJWZTNmcWVrb3k4QThLYmE5KzdQUlFkN0VtTWY3em5sRnJw?=
- =?utf-8?B?dzBjdVVrVENaRkJ0U3l4MGZBRTRiY2cvdGtwaFhTcFJIb0ROQitqU1Jqa0dH?=
- =?utf-8?B?cXBzV2dFRHJnNVpiK3N0R21lMkNLam1YOEE4aXRTQjVmYys4TU1XaXBjS1N4?=
- =?utf-8?B?SjdIdVdiRXpFS1JXcU9EQ3BST3ZhV2hRVTlsQUpHNGF3Q1pjYkpPUTc0VmNR?=
- =?utf-8?B?WDFSdk1UMlliOVl4eEI2a1o3VTNIbFJRVDBRMDJoRzJyNzB4Q25maHd0V0FB?=
- =?utf-8?B?dzVyTlZtcWVoTWpjR1dvdllvU0pHV0I0STc3dFRlYlpzeGlzZkpaQXFPeGt0?=
- =?utf-8?B?RDJhbXFELzdHNkJYR1pLMk4vdDN6SjF5V2tsNzY1d2JaYm1TTU1iZVVwellF?=
- =?utf-8?B?cHJqdHpYLzIxUFRob0QwNkdDQzRXbGRIbmc4eVBob2NQU0JnSnUyQldidnd4?=
- =?utf-8?B?dUlNaUJzVm9ZeGtQUGxtbTN1T3BIVWIybVZQOXJ3aldyTUVaek1JRVlTenhj?=
- =?utf-8?B?U1R0bHExQmRLN2FjMVN0ZTBZUE5QR0NXNStOMW1sNnpIM2hZS3MwYyswRmNS?=
- =?utf-8?B?cEFKbmQwdXBwSm9ESUVWTlY3WVAwMktWaEtMUEtBZGkrakl5SnRNM29FSnJm?=
- =?utf-8?B?Y1VKVzdwa0RUVmx3c3dJUnY0dGQyYU8zK3gvdXhMS1k2ZmllakVTV1ZRTnc2?=
- =?utf-8?B?N29OOGpDSVo3NVYvdE5TTnA3UGZNNHNUZzBabURXZ01xamt0SW9wc2R3KzN2?=
- =?utf-8?B?QlZBMSt6em1mVEpYQlhxMDYzSWhwN2xoRHZnWUF4Tm5wYTVlNzVuUlM5QjVY?=
- =?utf-8?B?SU1SekhVU2JvSzVzczcwclhaK1NqTEdKbUVxQTlMWUpaN2NzcXZpQ214T2pR?=
- =?utf-8?B?YzJsemEzNW5STnM1emdON2FUaHZnQzRuR0VBdWdZWjBZNk00cTZVdHJVVW1M?=
- =?utf-8?B?QjNEOCtNMUM5a25pcFhPTFF2aFlrWmQ2TUR0cUlIemdFUGZIcHhuYjZQSDJi?=
- =?utf-8?B?QU5jRTZEQ1M5aTNLT0hsbW9SQW0xbysvNnliUEhWa1dxWld6MVVuN1VNSEJo?=
- =?utf-8?B?ZEhDY3VYM1E2ajJVQTZzOTd5VzdTOFhCK1FHeXBZVm9LS0RjMktQRThiSFFV?=
- =?utf-8?B?c1R5aE15NlNHUUR0QW9NVG5qeUR2MDl4NjVoUGxGaHhxZ2Q3bnlrK1E2UWla?=
- =?utf-8?B?cUNqTlpldVkyNWF2S0FPaENRVHdNSTdDaUJSazdYTHgzZnRES2pwSmJ1R01C?=
- =?utf-8?B?ZVJ0cW1rVzRKRjdHNEdJRWg5eEdmRitWWWZhckpKbFdqc24ySGpwK2dtS1RQ?=
- =?utf-8?B?bjhhRno5UkxzSm9ucWw4dkt6ZTRIM0pLbFdFMVdsQ1RqVEdJWUxxc3N2aktJ?=
- =?utf-8?B?cndGQncxRTBJTmc4N3JzSUpFZXJDN29EdGNmUXhycXpEY056Wjg1MC84NUZ4?=
- =?utf-8?B?dTlTV1h5RG1YWnptTXh0cnkvd3d3eTlrZUVXWS9PNnR0Ung4RkxqMVg3Kzlo?=
- =?utf-8?B?VDFZVm14cG9KbXVPWjM3Vy82M0k0STJldUN0cWxYTjRYcXlVYUhKb0NUeVM1?=
- =?utf-8?B?VFlac2gxbmliUVVXazhmZVBXeWhzOWJHOHZ4T095YWFkeGlHL2RNSzl4TmZU?=
- =?utf-8?B?dWpSMEsybk5CZlhhMjBoRXlqL2Vtcms4NlBrWWxzZUZEcmE0QUVjNTRMd1Rz?=
- =?utf-8?B?NmNOU2x5ZFA2RDBFVlhwaWdsYU8vQXB1d0FUVElqMVIyUTFqd2ZnVklDaDU0?=
- =?utf-8?B?RGJ1U2tHM3VqYWRwUlh1Tk55V0VYZG5URlh1cDEzMzE5UkdPV1RYbVhHWit6?=
- =?utf-8?B?d0tUU0s1aG9mbjN4VStsUzVOWUlneTJ3dVNuY2UxZ3pIaTBaNmxjbDdTTUVJ?=
- =?utf-8?B?aVRMaGc0U3ByampCVXl2bWNrczdMc0FLT3FMbjh2dTJWMjc5SkhDTnk3eGpt?=
- =?utf-8?B?MzBMdkVFQU1KcUFuWXlaNm4wV1FUTm81WkpQSXl5ajJIMUw5alZkeG1FdFVq?=
- =?utf-8?B?bGV0VlAxUjd2M0dGaWxEVlhlY2lVTG5QUzRyUjlHS3E2UFpBWDJ0K2d3bFFp?=
- =?utf-8?B?N1E9PQ==?=
-X-OriginatorOrg: cherry.de
-X-MS-Exchange-CrossTenant-Network-Message-Id: 418a807e-de5b-454f-9838-08dcde2e7e2f
-X-MS-Exchange-CrossTenant-AuthSource: AM9PR04MB8906.eurprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 26 Sep 2024 13:24:04.7763
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 5e0e1b52-21b5-4e7b-83bb-514ec460677e
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: /1TLEcWzxm2Q+2hefGqR+ztTYdhQsMgHLIHjWT/RMFPwWNqt+YCQNKiTAUEEnnm1c+X6mCTT2RgG4YfclNFKn2vvxnMUb8nF6Dkc8/eMacI=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: GV1PR04MB9101
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240926_062426_986867_5B96F22C 
-X-CRM114-Status: GOOD (  11.25  )
+X-CRM114-CacheID: sfid-20240926_064851_616941_E43F17AA 
+X-CRM114-Status: GOOD (  10.61  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -169,39 +68,37 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Jakob,
+There are no DT bindings and driver support for a "rockchip,rt5651"
+codec.  Replace "rockchip,rt5651" by "realtek,rt5651", which matches the
+"simple-audio-card,name" property in the "rt5651-sound" node.
 
-On 9/26/24 3:20 PM, Jakob Unterwurzacher wrote:
-> Ringneck v1.4 can contain (placement option) an on-board ATtiny
-> microcontroller instead of an STM32. In normal operation, this
-> is transparent to the software, as both microcontrollers emulate
-> the same ICs (amc6821 and isl1208).
-> 
-> For flashing the ATtiny, the SWITCH_REG1 regulator of the board's PMIC is
-> used to enable the ATtiny UPDI debug interface. If the STM32 is placed, or if
-> we are running on an older Ringneck revision, SWITCH_REG1 is not connected
-> and has no effect.
-> 
-> Add attiny-updi-gate-regulator so userspace can control it via sysfs
-> (needs CONFIG_REGULATOR_USERSPACE_CONSUMER):
-> 
->    echo enabled > /sys/devices/platform/attiny-updi-gate-regulator/state
-> 
-> Signed-off-by: Jakob Unterwurzacher <jakob.unterwurzacher@cherry.de>
-> Tested-by: Quentin Schulz <quentin.schulz@cherry.de>
+Fixes: 904f983256fdd24b ("arm64: dts: rockchip: Add dts for a rk3399 based board EAIDK-610")
+Signed-off-by: Geert Uytterhoeven <geert+renesas@glider.be>
+---
+ arch/arm64/boot/dts/rockchip/rk3399-eaidk-610.dts | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Reviewed-by: Quentin Schulz <quentin.schulz@cherry.de>
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-eaidk-610.dts b/arch/arm64/boot/dts/rockchip/rk3399-eaidk-610.dts
+index 1489eb32e266a748..4feb78797982baa5 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-eaidk-610.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3399-eaidk-610.dts
+@@ -541,7 +541,7 @@ &i2c1 {
+ 	status = "okay";
+ 
+ 	rt5651: audio-codec@1a {
+-		compatible = "rockchip,rt5651";
++		compatible = "realtek,rt5651";
+ 		reg = <0x1a>;
+ 		clocks = <&cru SCLK_I2S_8CH_OUT>;
+ 		clock-names = "mclk";
+-- 
+2.34.1
 
-This is a candidate for backporting to stable branches as well I assume, 
-@Heiko?
-
-Thanks!
-Quentin
 
 _______________________________________________
 Linux-rockchip mailing list
