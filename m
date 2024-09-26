@@ -4,62 +4,161 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0459CCCF9E9
-	for <linux-rockchip@archiver.kernel.org>; Thu, 26 Sep 2024 10:55:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D0173CCF9E9
+	for <linux-rockchip@archiver.kernel.org>; Thu, 26 Sep 2024 11:24:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=JWLZzU3L+Rj4GNFMAqcv9yduc7gPmWQglg90TN6jZMo=; b=nSRXhKlu7srKGi
-	Sx9Ov+FVLBRfnRyO7c6BJ69qOicQ6oqaRmF4ydpxJlP9kpO/UwwyyiBz4eGAZQjGcNJ0HwQWCLJXa
-	fjEIXBxYo9NHK6KyHLDxbEWTXirv6A9P1LCMUJogmXUd7/g8Ev+zrUGxVW+PUNoGkjgUO85RNUtaD
-	ct/VDQnBDlJJ+CY5xfdZ6NXecPSwsIOJTq19tApnadFzk3zpRlGiGhFybFw0jImohIeUODSKAC3KB
-	k0VrzuHya8EsAVnF3pDWVirgpl1xLSZRWcPHku+ATcAmozSWGTWP4onqWKFIX9l4kOeEw7TuqjCCO
-	6yTsLn71PUlz30ivc6wg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:From:References:Cc:To:
+	Subject:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=cM+Bt0TGYRPSFguUFrB6W0ATNymtOqffcRBAdamW3NU=; b=JpaN4A4UUl/gnjQ9JfP4EsJYom
+	KCXRzp7Q/ixt26xfKbOJV2TQU4JTT1AxXikvMHyB1pmBXi52lUdjo/RTOk5kYj4jEWaVhHgkXoHhm
+	e+BzqxkdeDsK6gKpcrIA+pHdMqrH3pNSoqRvktSg/KXmMNPXwZ1bj2jHNrw7TnCtR0UkVxl3Zn0or
+	AGHFLEvqZVb4Eh7lMsJrE9i2e3W79IbG7gUwYKNwjbm7wEly5HfbBkwXq6InOtqDz2e39iUngPVw9
+	whurTi1XG6dlMh6XhbASSGMj3PF3+o4iNncFDzbeZ0/MK5ipkVbVBQjxSL4I0t2QOkHp/HmAWWSpp
+	SFpo3wCg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1stm9J-000000088xZ-00GF;
-	Thu, 26 Sep 2024 10:55:05 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1stmbe-00000008Ea4-43iO;
+	Thu, 26 Sep 2024 11:24:23 +0000
+Received: from mail-am0eur02on20616.outbound.protection.outlook.com ([2a01:111:f403:2606::616] helo=EUR02-AM0-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1stm3A-000000087kU-2ELg;
-	Thu, 26 Sep 2024 10:48:46 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
-	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=ZXkf1wTdQhc/mYJKrKkTTXfk+s8Dy/Zc2oNs+XEaIEY=; b=JRhBS/GNZFIjJaYKgT9LpIVjGR
-	Q9hFSbGvviFL+Zz5W355wtych5DzSBE2HiGSl+g+puZoiepARAau0zZEETJ7Sqn6uk7wbiBO3MvRC
-	P8PnUkUOUP142QZ9bS42bZ2Po51jpUZ+ryW+ghO3vnbk6MJN5gByaZQQtzu0O/cHDu2NN+bbYOrWc
-	WH02heJDAZtBUJI2byDL29nDsERDMfGOaXG3Pcu8c5YI5fTxbCAfvKVThr/RLsAVT2DVSaxIbmDOf
-	GENzq2Of53KrmyTZ8Jp/7E8EVn+pT9+M3LvQxa+pGgBgHr7wFf4DwiFSDzl3t2Rtgmoh9WDelnq2q
-	4f3Ea9QA==;
-Received: from 85-160-70-253.reb.o2.cz ([85.160.70.253] helo=phil.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1stm34-0002XP-12; Thu, 26 Sep 2024 12:48:38 +0200
-From: Heiko Stuebner <heiko@sntech.de>
-To: vkoul@kernel.org, kishon@kernel.org, robh@kernel.org, krzk+dt@kernel.org,
- conor+dt@kernel.org, Frank Wang <frawang.cn@gmail.com>
-Cc: linux-phy@lists.infradead.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-rockchip@lists.infradead.org, william.wu@rock-chips.com,
- tim.chen@rock-chips.com, frank.wang@rock-chips.com
-Subject: Re: [PATCH v3 2/2] phy: rockchip: inno-usb2: Add usb2 phys support for rk3576
-Date: Thu, 26 Sep 2024 12:48:36 +0200
-Message-ID: <10867555.aFP6jjVeTY@phil>
-In-Reply-To: <20240926103223.29538-2-frawang.cn@gmail.com>
-References: <20240926103223.29538-1-frawang.cn@gmail.com>
- <20240926103223.29538-2-frawang.cn@gmail.com>
+	id 1stmbb-00000008EWw-3M1z
+	for linux-rockchip@lists.infradead.org;
+	Thu, 26 Sep 2024 11:24:22 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=VGPko6ycbH10H40RB1xh99SufWmaOGNHFkN6/OkBG0Qfo4PY9bAA/4642EJ+KlINV9kIuZuEMvQA1rZi1rR2/3XRhEhr5btvNdBbwR347QaKkaIeSADzO9ZppbaQEl/htC/VCqvGB2NQK4JojxiFodZ1I8s4McRE1rwS6DlKsfsV8aTK/xz0/TZa3td+n+24DQ8Lx+yOhYjOv7s697thlLYnHUhQHNPlb/x8i2mynAUYxazCwzb3Az7+9R/xSJGpjTGRCHXf1j5U/9c0W6jdNtbKU5AhP0KVbUzKWTIqUc4Dx82KSISxB+JRu5tsCQyPsRCO/dRRy9QQpYk9O05m0A==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=kgcwMcJAgBew8lbvNwAUBazjrJJukD4LVaTSYXiBIdk=;
+ b=U9xAWMjMEoDY1gnAYghJ0xosSq1JSIbbbggF+t7ay395HtEaaJchVu7mmDc5Xv7Zo5vgzIanu3uz1a1LWZ9VYvU7prdRF7nS17QESgXxBtTSTuodG1t35PoDTROINi+Kl2/24FXdGjXAKsMPUwkvKXqkZI15yq3SUkg0IYCDJ4EBP85ELglENXNEZCPizyMHxPNdxYuNN7tDQM1Njw/gcBgwDAZOGhyJczexzLikJLien4PNjgFAwym+7/Za4TIp8k1aRmjZmovjA9p8Jhk8kIzZmuDMbC6qbWth4q2IbQ1ACF6ZHC6tRlOblx1qWfu2E4beG6daIsC9qQei076E3g==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=cherry.de; dmarc=pass action=none header.from=cherry.de;
+ dkim=pass header.d=cherry.de; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cherry.de;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=kgcwMcJAgBew8lbvNwAUBazjrJJukD4LVaTSYXiBIdk=;
+ b=XmxDQ/OOvRb2TmAfBUUROrk1VbTuJNK70QsFOXrTZTsQRVwLDKgv1bAQaKgZ6mbySGAyNaUpe4G+b8qALmQfIIYwG4jIceGQ8MgnWU/mmUbxFkNZHQWb2tmlJjl5XlkBTL046WghYmu+dLJcT46Qc7F5yYHppazcTAoImEIx6tU=
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=cherry.de;
+Received: from AM9PR04MB8906.eurprd04.prod.outlook.com (2603:10a6:20b:409::9)
+ by GV1PR04MB9085.eurprd04.prod.outlook.com (2603:10a6:150:20::10) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7982.28; Thu, 26 Sep
+ 2024 11:24:03 +0000
+Received: from AM9PR04MB8906.eurprd04.prod.outlook.com
+ ([fe80::d379:5378:b1:cea]) by AM9PR04MB8906.eurprd04.prod.outlook.com
+ ([fe80::d379:5378:b1:cea%2]) with mapi id 15.20.7918.024; Thu, 26 Sep 2024
+ 11:24:03 +0000
+Message-ID: <69f79284-b52e-496e-a286-d7e5ce3d90ce@cherry.de>
+Date: Thu, 26 Sep 2024 13:24:02 +0200
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] arm64: dts: rockchip: add attiny_rst_gate to Ringneck
+To: Jakob Unterwurzacher <jakobunt@gmail.com>,
+ linux-rockchip@lists.infradead.org
+Cc: Heiko Stuebner <heiko@sntech.de>,
+ jakob.unterwurzacher@theobroma-systems.com, linux-kernel@vger.kernel.org
+References: <20240201124427.279986-1-jakob.unterwurzacher@theobroma-systems.com>
+Content-Language: en-US
+From: Quentin Schulz <quentin.schulz@cherry.de>
+In-Reply-To: <20240201124427.279986-1-jakob.unterwurzacher@theobroma-systems.com>
+X-ClientProxiedBy: WA2P291CA0008.POLP291.PROD.OUTLOOK.COM
+ (2603:10a6:1d0:1e::21) To AM9PR04MB8906.eurprd04.prod.outlook.com
+ (2603:10a6:20b:409::9)
 MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: AM9PR04MB8906:EE_|GV1PR04MB9085:EE_
+X-MS-Office365-Filtering-Correlation-Id: 0c7b02f7-e5f8-483e-2470-08dcde1db9d2
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|1800799024|376014|366016;
+X-Microsoft-Antispam-Message-Info: =?utf-8?B?cG4zK0EzbnEraktrL2xNMVhhLzRUWmlvazR6ZEpsbERCd2ltbGNKSjJ4K2pY?=
+ =?utf-8?B?ZXBCQkZxWCtYbkNNN0RxWFFsVithZmxPWnFPNVVXUlpPT0RuTU5lZ2xPR28r?=
+ =?utf-8?B?aWFGb2RBTHI5dFcvZHJaRjV2K2tGUGFVeWFBbGg0K2ZqdllkQ3YzRmxVUDVW?=
+ =?utf-8?B?SXRXVzViLzdaWXVnSUxXRlorcnZCdnE2OENuY0pTanJRRWZWMHhyOWZMS1FT?=
+ =?utf-8?B?YndrN1VnNzBja3hFYUdtSzBNSHdTZmNpMjRFODNuQWNCVmVPZE5HNHBGeGtR?=
+ =?utf-8?B?SVJ4S2JUWlpDRWp1Y1hianV4RE53SDdmWVBWYWJIQXU0WEF3elM0MEpKWlZG?=
+ =?utf-8?B?Y2ExZ3BGdHZCeWczMldMUzBubkpWRC9hMDBmQUh2dDd3ZHlTMjM2RlFlbjF2?=
+ =?utf-8?B?MG1OSVZjcjBnYWgwNGtOUWFXM0tVRW41UDA2ZFVpZVJiY09aSkI2bm1ROHBB?=
+ =?utf-8?B?eWhQMk9KYUxDUHFCbjc0RjRpdHlramlHU1Z6enMrK1pWb2I3OWVvblVRUFh2?=
+ =?utf-8?B?aTdDallDMk5rK2IwTVE0bFlhVmpQUjU0bUkvdTU0dmZKU2Y2NkhNQTdwYkhs?=
+ =?utf-8?B?dzlHOHJraTlLeWJxSW9XaFIwY21KSHAyeU5JM3RlK2l5d2FGeFJNZmhZeEl1?=
+ =?utf-8?B?cVFqd1c3ai9iQnFXTU1idTNjSTZ2UkxYaHpBN29QcGJ0MXR6VFVJTWpjTDdj?=
+ =?utf-8?B?aUlOK2pwUmpXVVhwbkZMaHBCdzhqZ0ZtNldEdXJmeXBpWWNCT3FjMTl1Ylhq?=
+ =?utf-8?B?NS9LS3VOcVVWSGxncE9lVDBjODN5cFlBM2tuUmZjekpWelZIT2EyWVN4alZn?=
+ =?utf-8?B?UGpqaktmcDJMeCtFRkROY0pkaVBHZXo0L0hvdVlwS2VVYjZyamhGdHNESkd6?=
+ =?utf-8?B?TWVPejRWa08rdGVkblRzTG5RNlpsd28rOGc2dmJmRXp3MXpZU0hvVGZVR2tp?=
+ =?utf-8?B?Qlk4bU5EaTNnVkZja1lMMVAzcFg0V2FWZGNqVmUxdlBidUVnTlN6ejBhbWRO?=
+ =?utf-8?B?eXJwQ0MvTGRyMWR5dHBMUGlESGYrakpRU2tJTFZiYUJ1RWttbk1WdjE3R2Ew?=
+ =?utf-8?B?ZndEd09TOGFUN05NTTZZVlVNak54NEFHWE54RlVaeThoWGhUazJEVmZLb1Vz?=
+ =?utf-8?B?Q3ROUjBHZ3REcUcvb01jUnZFc0ZqY1JFci9BbU5EcWhEUkIxeTdqVXpEK1pH?=
+ =?utf-8?B?cXRadUlLSHBpelVueWtMNGZXdFlieFBqTlpmdUN2b1ZrNDFKZ1FsYTRheEtK?=
+ =?utf-8?B?ZWhJMEE0RktNK2trMWVhTjB1Y2VPVk5Zek9rZW5ieHNwekJ2YVNoZ1pUSnpr?=
+ =?utf-8?B?QldwbnF1a0l6RmtnQ0F1ZEJiTkFtVmp0VGYwRzZqTE5tQ0J4TGZrMENSNFV1?=
+ =?utf-8?B?L3ZqazY5T2FWRlZsbitSQW54c2liWE5PQllLcmtzMVN4ZWdsZzVXTUU2TGFS?=
+ =?utf-8?B?Wk1CZ3dKenJub3k3WW1ZL1Z1NXl1LzE4WXU3ZTR5QW8yeEh5YXlFVzhXM0Uw?=
+ =?utf-8?B?NUYvYk1EdkY2Q2k1MmNYWXNRYnlIdGF2REhrV25jdktJakk3ODNoODVuQTB1?=
+ =?utf-8?B?UjZRUnhTb0E3TmhmWGgvb0Vvc2lVczFtV0tuR1RuOHhkR0tsYzJFYkVmR3Zh?=
+ =?utf-8?B?SXBlaytYQlJaTFYxZ3d4NTNyOHhMWHNPd2RIZGs5RFFyT1RIM0ovTWI2OGJX?=
+ =?utf-8?B?UVFnY0ROZ1k1ZW1IS0s3b2Y0RnI2YXRDbjRaUFJmdFdpVUJyZXlVV1dnaVJM?=
+ =?utf-8?B?b1RoVzBjdjFjR1JHM0cxUEEwdzZrSGxPSFFTOFdMdVVyZkJ5a0dNY2FucUtD?=
+ =?utf-8?B?Sk1uM0VtSEJzMGR3ejVzdz09?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:AM9PR04MB8906.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(1800799024)(376014)(366016);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?OEVUUWNEa1V2RHZXcGs3TG1yOFNVbFZkaitBVWRsaTEra3lXUzN5S2NiK1k1?=
+ =?utf-8?B?aXBwUXFKS2ZCRmN2T2pVWE9WV2JOZlhhUlB0OXkrUXNBV01IS2s1Tk9tbDNR?=
+ =?utf-8?B?cGh6OC9VS0xObFkrU3BIcm1LRTBveDN6YStlZ2s3TlZPdXdyam5aRzFkWktk?=
+ =?utf-8?B?Yy9oR085aEtCSUMrRUloR1pLZ01HZ0o0ckZ1T3FBd2lkV3QveThoNFJMTEVL?=
+ =?utf-8?B?a3VhRVo4Q3NENHkvczZzUERkcXdTbzhxaFVJaUtVcUdNSjdqZStzKy9DTWRz?=
+ =?utf-8?B?SzZxUWpkd1ZBMjYwYjd5bTdENGxSNHVOQTJ1ZSs0dmlWVG82Smg3dEROdUls?=
+ =?utf-8?B?SlQrdDJWcFpBUmx4T0x0dWo0dUE5bmlkMkcvbWh4eXA0Syt4dzZid01JdWtO?=
+ =?utf-8?B?NkNBdnZ2U2MrMU0xTnk4Y3hZa0NtOTJZM0NQR3BWQ2N0cENKejc4TDJ1QStJ?=
+ =?utf-8?B?Q242d0FZdW5CV0x4cUFRZWk0aVBack9uZi9PRVRyZSs0b2xGNytZSDRSSlds?=
+ =?utf-8?B?a1V0MW81S0RLSjI3Ukc5WVZmODMrZEtlZGNJKytZTFlaTWlkZnlXYWd0QTdy?=
+ =?utf-8?B?ekg2amdLemhkQ0EraWI2bkZmWGNYRTF5di9rVGpTV1FoSHFiTVpnUm4zWFF1?=
+ =?utf-8?B?SEVJd2RaYkc3amJFY2ttMXRIK1AzMFA3UlF5WW4wdktud0ZqeGFoRWV0NXJw?=
+ =?utf-8?B?SmJ6b1NvQ0hCM0ZPMlBRS0tkV2JmSVF0bldrVzNGZDRSblNhUzhZb1F3MDFF?=
+ =?utf-8?B?aXFGZzNBdWhNelFHOVNHdit6SVlnNWVsdXRmeFhRVWYzZ0F2ZFdQTEZ6eGRH?=
+ =?utf-8?B?dnZZYXl3SlpXTTJncnRLUXVwR1lWVUdZbDJiT2R1OXMxOG1WdXY3a3BTUC9Z?=
+ =?utf-8?B?NFBtRlJmSE1wc0ZKWjJlOGhoUGpWODVUTFlISFNYVmxuS050UWFWQ1FnY2R2?=
+ =?utf-8?B?bEl5dVdURWNVdHJGbWtEU2E2eU1WcnI4TWpCQStiUFJtWHUzWXJKL1d0d2Ja?=
+ =?utf-8?B?K0pRR0x5VW5PNGw3VVFvMTBxY1dzYWtmamRmdkY1aHl0Z3F4ci9zUDVIaWVo?=
+ =?utf-8?B?eHN5V0VhVlc1cks4SzEwaUlUUCtleGRwNDhpamwxTmFYT2JiaGU2K2xkUC9n?=
+ =?utf-8?B?eDRjcG9rdkc2NlFWM0ZHNDZBQ1VHT0g2bkJ4TkpRYjZub2lNaFVFbU9QMUJ6?=
+ =?utf-8?B?dnZGSVhrQWpaSGtJWlFQQkd6a2M5QTV0TGdWMmh0V1N0cUppbE1pUkJxeER6?=
+ =?utf-8?B?NC9XUlF2d1VGSDRURGhwRnI5dDltWVF4U3JzYzF4dGR1bGR6b2FRUjlDVzRC?=
+ =?utf-8?B?VFVLcG9FeWtCK2R2L0lHamhJMDYwYjBSMS8weHA1RDB2elVjODNEdVMyZ0F0?=
+ =?utf-8?B?MXYzRW4yZnVZbXB2czlQOFlrSFE2WUtSRDB4b3lCazFyazhHazZZbFRQMXpE?=
+ =?utf-8?B?WlNLcWUzVU1ndjBodG56QU11M0dXeGNEOERwZHpQaWV3dzJFMHF1d3dQNHAr?=
+ =?utf-8?B?WjJVbXV1ZWc4SzJ2RzJMU2pNcGdxMHlaZEIzMzRVVTl1bHJ5TGo2My9nWVBw?=
+ =?utf-8?B?OWVxM0RqUnpUS3hmOGdyRmNBdXFZVVg2ZVhtNFU2YWZibVhodFZvNXBZSVZN?=
+ =?utf-8?B?R3d1TFQ4NTI5Q2Fiak9zNFRmbGJ0VGNGNnYwQnRIVUFRSC9UeDFqejQ3RGhY?=
+ =?utf-8?B?UWtGeS8rUTJPQ08wN1FZUksyVmtsK29SWktCZXdtWlhFT0d3WjhSUDNhNmZo?=
+ =?utf-8?B?Y3dFNmV4dVZLRGJtZEovM0lmS2FyQzdta1I3UUNYUk9jTTJCeC9TYTR4MnBw?=
+ =?utf-8?B?ZC9NR1loMk03bTcvUHRUYkZNQWcvL0NocnhEMTBWU1gzWFpaR29KRWFwTEZk?=
+ =?utf-8?B?ZUtoRFlkMEU3eGhkamlBUjdXeldUK0IvdWE2Y0pYVnArMFBmSC9uQjF2UGtT?=
+ =?utf-8?B?anVwcFdFMllybjRiWGFLaUlIcmZvb0xHaHEva29TQ2QzK2JsSUpTRm03NE1V?=
+ =?utf-8?B?cS9vVjczMTFjWVFyMEFvZzMrNzhJa1gyeEJuZmNvWmRsaW1zWjlpU2g2NkVL?=
+ =?utf-8?B?Ryt3cENXSFgxL0ZQQWZjQndscWNadE1UNHRWWndKWnl6VVhnbmZiUndueU9k?=
+ =?utf-8?B?aUZ6L2hLbDNYb2RjZDZhOTltb08xKzZ4eUVDcUxpbEYxWmYvckFoQkNjelI5?=
+ =?utf-8?B?ZEE9PQ==?=
+X-OriginatorOrg: cherry.de
+X-MS-Exchange-CrossTenant-Network-Message-Id: 0c7b02f7-e5f8-483e-2470-08dcde1db9d2
+X-MS-Exchange-CrossTenant-AuthSource: AM9PR04MB8906.eurprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 26 Sep 2024 11:24:03.5955
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 5e0e1b52-21b5-4e7b-83bb-514ec460677e
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: G5X9aW+jCXLTsMhvKg+87Z3JcHDlKyGrdmucMAACbg83bqhHuaRjYcgWA+H1QOm4deB5eKo2JoOg3zwABzb0O8VzQfUDrj0ln5HI3wDz3X4=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: GV1PR04MB9085
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240926_034844_913691_345F05AC 
-X-CRM114-Status: GOOD (  36.85  )
+X-CRM114-CacheID: sfid-20240926_042420_291838_E57F835E 
+X-CRM114-Status: GOOD (  22.03  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,286 +170,76 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Am Donnerstag, 26. September 2024, 12:32:23 CEST schrieb Frank Wang:
-> From: William Wu <william.wu@rock-chips.com>
+Hi Jakob,
+
+On 2/1/24 1:44 PM, Jakob Unterwurzacher wrote:
+> Ringneck v1.4 can contain (placement option) an on-board ATtiny
+> microcontroller instead of an STM32. In normal operation, this
+> is transparent to the software, as both microcontrollers emulate
+> the same ICs (amc6821 and isl1208).
 > 
-> The RK3576 SoC has two independent USB2.0 PHYs, and each PHY has
-> one port.
+> For flashing the ATtiny, the SWITCH_REG1 regulator of the board's PMIC is
+> used to enable the ATtiny UPDI debug interface. If the STM32 is placed, or if
+> we are running on an older Ringneck revision, SWITCH_REG1 is not connected
+> and has no effect.
 > 
-> This change also converts the clock management from single to bulk
-> as some Rockchip SoCs (e.g RK3576) have more than one clock.
+> Add attiny-updi-gate-regulator so userspace can control it via sysfs:
 > 
-> Signed-off-by: William Wu <william.wu@rock-chips.com>
-> Signed-off-by: Frank Wang <frank.wang@rock-chips.com>
+>    echo enabled > /sys/devices/platform/attiny-updi-gate-regulator/state
+> 
+
+CONFIG_REGULATOR_USERSPACE_CONSUMER needs to be enabled for this to 
+work. Just putting this here as I had forgotten and was wondering why 
+this sysfs file wasn't available to me :)
+
+> Signed-off-by: Jakob Unterwurzacher <jakob.unterwurzacher@theobroma-systems.com>
+
+I finally have access to some HW to test this, and therefore can give my:
+
+Tested-by: Quentin Schulz <quentin.schulz@cherry.de>
+
 > ---
-> Changelog:
-> v3:
->  - amend the commit log adds clocks converting.
->  - retrieve the clock by "clks.id" in *_clk480m_register() function.
+>   arch/arm64/boot/dts/rockchip/px30-ringneck.dtsi | 12 ++++++++++++
+>   1 file changed, 12 insertions(+)
 > 
-> v2:
->  - no changes.
-> v1:
->  - https://patchwork.kernel.org/project/linux-phy/patch/20240923025326.10467-2-frank.wang@rock-chips.com/
-> 
->  drivers/phy/rockchip/phy-rockchip-inno-usb2.c | 139 +++++++++++++++++-
->  1 file changed, 131 insertions(+), 8 deletions(-)
-> 
-> diff --git a/drivers/phy/rockchip/phy-rockchip-inno-usb2.c b/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
-> index 4f71373ae6e1..642c7857c5ae 100644
-> --- a/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
-> +++ b/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
-> @@ -229,9 +229,10 @@ struct rockchip_usb2phy_port {
->   * @dev: pointer to device.
->   * @grf: General Register Files regmap.
->   * @usbgrf: USB General Register Files regmap.
-> - * @clk: clock struct of phy input clk.
-> + * @clks: array of phy input clocks.
->   * @clk480m: clock struct of phy output clk.
->   * @clk480m_hw: clock struct of phy output clk management.
-> + * @num_clks: number of phy input clocks.
->   * @phy_reset: phy reset control.
->   * @chg_state: states involved in USB charger detection.
->   * @chg_type: USB charger types.
-> @@ -246,9 +247,10 @@ struct rockchip_usb2phy {
->  	struct device	*dev;
->  	struct regmap	*grf;
->  	struct regmap	*usbgrf;
-> -	struct clk	*clk;
-> +	struct clk_bulk_data	*clks;
->  	struct clk	*clk480m;
->  	struct clk_hw	clk480m_hw;
-> +	int			num_clks;
->  	struct reset_control	*phy_reset;
->  	enum usb_chg_state	chg_state;
->  	enum power_supply_type	chg_type;
-> @@ -376,7 +378,9 @@ rockchip_usb2phy_clk480m_register(struct rockchip_usb2phy *rphy)
->  {
->  	struct device_node *node = rphy->dev->of_node;
->  	struct clk_init_data init;
-> +	struct clk *refclk = NULL;
->  	const char *clk_name;
-> +	int i;
->  	int ret = 0;
->  
->  	init.flags = 0;
-> @@ -386,8 +390,15 @@ rockchip_usb2phy_clk480m_register(struct rockchip_usb2phy *rphy)
->  	/* optional override of the clockname */
->  	of_property_read_string(node, "clock-output-names", &init.name);
->  
-> -	if (rphy->clk) {
-> -		clk_name = __clk_get_name(rphy->clk);
-> +	for (i = 0; i < rphy->num_clks; i++) {
-> +		if (!strncmp(rphy->clks[i].id, "phyclk", 6)) {
-> +			refclk = rphy->clks[i].clk;
-> +			break;
-> +		}
-> +	}
+> diff --git a/arch/arm64/boot/dts/rockchip/px30-ringneck.dtsi b/arch/arm64/boot/dts/rockchip/px30-ringneck.dtsi
+> index dec29a75d361..1f7f4b2ea66a 100644
+> --- a/arch/arm64/boot/dts/rockchip/px30-ringneck.dtsi
+> +++ b/arch/arm64/boot/dts/rockchip/px30-ringneck.dtsi
+> @@ -15,6 +15,12 @@ aliases {
+>   		rtc1 = &rk809;
+>   	};
+>   
+> +	/* allows userspace to control the gate of the ATtiny UPDI pass FET via sysfs */
+> +	attiny-updi-gate-regulator {
+> +		compatible = "regulator-output";
+> +		vout-supply = <&vg_attiny_updi>;
+> +	};
 > +
-> +	if (!IS_ERR(refclk)) {
-> +		clk_name = __clk_get_name(refclk);
->  		init.parent_names = &clk_name;
->  		init.num_parents = 1;
->  	} else {
-> @@ -1406,22 +1417,29 @@ static int rockchip_usb2phy_probe(struct platform_device *pdev)
->  	if (IS_ERR(rphy->phy_reset))
->  		return PTR_ERR(rphy->phy_reset);
->  
-> -	rphy->clk = devm_clk_get_optional_enabled(dev, "phyclk");
-> -	if (IS_ERR(rphy->clk)) {
-> -		return dev_err_probe(&pdev->dev, PTR_ERR(rphy->clk),
-> +	ret = devm_clk_bulk_get_all(dev, &rphy->clks);
-> +	if (ret == -EPROBE_DEFER) {
-> +		return dev_err_probe(&pdev->dev, -EPROBE_DEFER,
->  				     "failed to get phyclk\n");
->  	}
->  
-> +	/* Clocks are optional */
-> +	rphy->num_clks = ret < 0 ? 0 : ret;
-> +
->  	ret = rockchip_usb2phy_clk480m_register(rphy);
->  	if (ret) {
->  		dev_err(dev, "failed to register 480m output clock\n");
->  		return ret;
->  	}
->  
-> +	ret = clk_bulk_prepare_enable(rphy->num_clks, rphy->clks);
-> +	if (ret)
-> +		return ret;
-> +
+>   	emmc_pwrseq: emmc-pwrseq {
+>   		compatible = "mmc-pwrseq-emmc";
+>   		pinctrl-0 = <&emmc_reset>;
+> @@ -146,6 +152,7 @@ rk809: pmic@20 {
+>   		vcc5-supply = <&vcc_3v3>;
+>   		vcc6-supply = <&vcc_3v3>;
+>   		vcc7-supply = <&vcc_3v3>;
+> +		vcc8-supply = <&vcc5v0_sys>;
 
-Do you actually need that separate enable step?
-There exists devm_clk_bulk_get_all_enable() 
+According to the schematics, vcc8 is routed to SWITCH_REG2 and not 
+SWITCH_REG1, which is fed vcc9. Even more so, vcc8 on the PMIC isn't 
+actually routed.
 
-https://elixir.bootlin.com/linux/v6.11/source/include/linux/clk.h#L511
+I therefore think we can simply remove this line here.
 
-which you could use above. Especially as otherwise you'd need a remove
-callback to disable the clock on driver unbind?
+@Jakob, do you agree? Can you send a v2 if so?
 
-
->  	if (rphy->phy_cfg->phy_tuning) {
->  		ret = rphy->phy_cfg->phy_tuning(rphy);
->  		if (ret)
-> -			return ret;
-> +			goto disable_clks;
->  	}
->  
->  	index = 0;
-> @@ -1484,6 +1502,8 @@ static int rockchip_usb2phy_probe(struct platform_device *pdev)
->  
->  put_child:
->  	of_node_put(child_np);
-> +disable_clks:
-> +	clk_bulk_disable_unprepare(rphy->num_clks, rphy->clks);
->  	return ret;
->  }
->  
-> @@ -1495,6 +1515,30 @@ static int rk3128_usb2phy_tuning(struct rockchip_usb2phy *rphy)
->  				BIT(2) << BIT_WRITEABLE_SHIFT | 0);
->  }
-
-
-I still maintain, that this maybe should be two separate patches.
-And you even seem to have nice "cut-here" in it ;-)
-
-The code above converts the driver to use clk_bulk to handle
-multiple clocks for controller variants needing it.
-
-
-And the code below adds the rk3576-specific data to the driver.
-
-
-
-> +static int rk3576_usb2phy_tuning(struct rockchip_usb2phy *rphy)
-> +{
-> +	int ret;
-> +	u32 reg = rphy->phy_cfg->reg;
-> +
-> +	/* Deassert SIDDQ to power on analog block */
-> +	ret = regmap_write(rphy->grf, reg + 0x0010, GENMASK(29, 29) | 0x0000);
-> +	if (ret)
-> +		return ret;
-> +
-> +	/* Do reset after exit IDDQ mode */
-> +	ret = rockchip_usb2phy_reset(rphy);
-> +	if (ret)
-> +		return ret;
-> +
-> +	/* HS DC Voltage Level Adjustment 4'b1001 : +5.89% */
-> +	ret |= regmap_write(rphy->grf, reg + 0x000c, GENMASK(27, 24) | 0x0900);
-> +
-> +	/* HS Transmitter Pre-Emphasis Current Control 2'b10 : 2x */
-> +	ret |= regmap_write(rphy->grf, reg + 0x0010, GENMASK(20, 19) | 0x0010);
-> +
-> +	return ret;
-> +}
-> +
->  static int rk3588_usb2phy_tuning(struct rockchip_usb2phy *rphy)
->  {
->  	int ret;
-> @@ -1923,6 +1967,84 @@ static const struct rockchip_usb2phy_cfg rk3568_phy_cfgs[] = {
->  	{ /* sentinel */ }
->  };
->  
-> +static const struct rockchip_usb2phy_cfg rk3576_phy_cfgs[] = {
-> +	{
-> +		.reg = 0x0,
-> +		.num_ports	= 1,
-> +		.phy_tuning	= rk3576_usb2phy_tuning,
-> +		.clkout_ctl	= { 0x0008, 0, 0, 1, 0 },
-> +		.port_cfgs	= {
-> +			[USB2PHY_PORT_OTG] = {
-> +				.phy_sus	= { 0x0000, 8, 0, 0, 0x1d1 },
-> +				.bvalid_det_en	= { 0x00c0, 1, 1, 0, 1 },
-> +				.bvalid_det_st	= { 0x00c4, 1, 1, 0, 1 },
-> +				.bvalid_det_clr = { 0x00c8, 1, 1, 0, 1 },
-> +				.ls_det_en	= { 0x00c0, 0, 0, 0, 1 },
-> +				.ls_det_st	= { 0x00c4, 0, 0, 0, 1 },
-> +				.ls_det_clr	= { 0x00c8, 0, 0, 0, 1 },
-> +				.disfall_en	= { 0x00c0, 6, 6, 0, 1 },
-> +				.disfall_st	= { 0x00c4, 6, 6, 0, 1 },
-> +				.disfall_clr	= { 0x00c8, 6, 6, 0, 1 },
-> +				.disrise_en	= { 0x00c0, 5, 5, 0, 1 },
-> +				.disrise_st	= { 0x00c4, 5, 5, 0, 1 },
-> +				.disrise_clr	= { 0x00c8, 5, 5, 0, 1 },
-> +				.utmi_avalid	= { 0x0080, 1, 1, 0, 1 },
-> +				.utmi_bvalid	= { 0x0080, 0, 0, 0, 1 },
-> +				.utmi_ls	= { 0x0080, 5, 4, 0, 1 },
-> +			}
-> +		},
-> +		.chg_det = {
-> +			.cp_det		= { 0x0080, 8, 8, 0, 1 },
-> +			.dcp_det	= { 0x0080, 8, 8, 0, 1 },
-> +			.dp_det		= { 0x0080, 9, 9, 1, 0 },
-> +			.idm_sink_en	= { 0x0010, 5, 5, 1, 0 },
-> +			.idp_sink_en	= { 0x0010, 5, 5, 0, 1 },
-> +			.idp_src_en	= { 0x0010, 14, 14, 0, 1 },
-> +			.rdm_pdwn_en	= { 0x0010, 14, 14, 0, 1 },
-> +			.vdm_src_en	= { 0x0010, 7, 6, 0, 3 },
-> +			.vdp_src_en	= { 0x0010, 7, 6, 0, 3 },
-> +		},
-> +	},
-> +	{
-> +		.reg = 0x2000,
-> +		.num_ports	= 1,
-> +		.phy_tuning	= rk3576_usb2phy_tuning,
-> +		.clkout_ctl	= { 0x2008, 0, 0, 1, 0 },
-> +		.port_cfgs	= {
-> +			[USB2PHY_PORT_OTG] = {
-> +				.phy_sus	= { 0x2000, 8, 0, 0, 0x1d1 },
-> +				.bvalid_det_en	= { 0x20c0, 1, 1, 0, 1 },
-> +				.bvalid_det_st	= { 0x20c4, 1, 1, 0, 1 },
-> +				.bvalid_det_clr = { 0x20c8, 1, 1, 0, 1 },
-> +				.ls_det_en	= { 0x20c0, 0, 0, 0, 1 },
-> +				.ls_det_st	= { 0x20c4, 0, 0, 0, 1 },
-> +				.ls_det_clr	= { 0x20c8, 0, 0, 0, 1 },
-> +				.disfall_en	= { 0x20c0, 6, 6, 0, 1 },
-> +				.disfall_st	= { 0x20c4, 6, 6, 0, 1 },
-> +				.disfall_clr	= { 0x20c8, 6, 6, 0, 1 },
-> +				.disrise_en	= { 0x20c0, 5, 5, 0, 1 },
-> +				.disrise_st	= { 0x20c4, 5, 5, 0, 1 },
-> +				.disrise_clr	= { 0x20c8, 5, 5, 0, 1 },
-> +				.utmi_avalid	= { 0x2080, 1, 1, 0, 1 },
-> +				.utmi_bvalid	= { 0x2080, 0, 0, 0, 1 },
-> +				.utmi_ls	= { 0x2080, 5, 4, 0, 1 },
-> +			}
-> +		},
-> +		.chg_det = {
-> +			.cp_det		= { 0x2080, 8, 8, 0, 1 },
-> +			.dcp_det	= { 0x2080, 8, 8, 0, 1 },
-> +			.dp_det		= { 0x2080, 9, 9, 1, 0 },
-> +			.idm_sink_en	= { 0x2010, 5, 5, 1, 0 },
-> +			.idp_sink_en	= { 0x2010, 5, 5, 0, 1 },
-> +			.idp_src_en	= { 0x2010, 14, 14, 0, 1 },
-> +			.rdm_pdwn_en	= { 0x2010, 14, 14, 0, 1 },
-> +			.vdm_src_en	= { 0x2010, 7, 6, 0, 3 },
-> +			.vdp_src_en	= { 0x2010, 7, 6, 0, 3 },
-> +		},
-> +	},
-> +	{ /* sentinel */ }
-> +};
-> +
->  static const struct rockchip_usb2phy_cfg rk3588_phy_cfgs[] = {
->  	{
->  		.reg = 0x0000,
-> @@ -2094,6 +2216,7 @@ static const struct of_device_id rockchip_usb2phy_dt_match[] = {
->  	{ .compatible = "rockchip,rk3366-usb2phy", .data = &rk3366_phy_cfgs },
->  	{ .compatible = "rockchip,rk3399-usb2phy", .data = &rk3399_phy_cfgs },
->  	{ .compatible = "rockchip,rk3568-usb2phy", .data = &rk3568_phy_cfgs },
-> +	{ .compatible = "rockchip,rk3576-usb2phy", .data = &rk3576_phy_cfgs },
->  	{ .compatible = "rockchip,rk3588-usb2phy", .data = &rk3588_phy_cfgs },
->  	{ .compatible = "rockchip,rv1108-usb2phy", .data = &rv1108_phy_cfgs },
->  	{}
-> 
-
-
-
-
+Cheers,
+Quentin
 
 _______________________________________________
 Linux-rockchip mailing list
