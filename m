@@ -4,161 +4,163 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D0173CCF9E9
-	for <linux-rockchip@archiver.kernel.org>; Thu, 26 Sep 2024 11:24:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2D6A1CF58C8
+	for <linux-rockchip@archiver.kernel.org>; Thu, 26 Sep 2024 12:36:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:From:References:Cc:To:
 	Subject:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=cM+Bt0TGYRPSFguUFrB6W0ATNymtOqffcRBAdamW3NU=; b=JpaN4A4UUl/gnjQ9JfP4EsJYom
-	KCXRzp7Q/ixt26xfKbOJV2TQU4JTT1AxXikvMHyB1pmBXi52lUdjo/RTOk5kYj4jEWaVhHgkXoHhm
-	e+BzqxkdeDsK6gKpcrIA+pHdMqrH3pNSoqRvktSg/KXmMNPXwZ1bj2jHNrw7TnCtR0UkVxl3Zn0or
-	AGHFLEvqZVb4Eh7lMsJrE9i2e3W79IbG7gUwYKNwjbm7wEly5HfbBkwXq6InOtqDz2e39iUngPVw9
-	whurTi1XG6dlMh6XhbASSGMj3PF3+o4iNncFDzbeZ0/MK5ipkVbVBQjxSL4I0t2QOkHp/HmAWWSpp
-	SFpo3wCg==;
+	bh=OsKUQN3cpzzN1m57BjBeHDMFHqCtCH3I10LViSWwRj8=; b=ynTvm0wb9CLAJI0/Jm2B4sLl1D
+	rVHwzuVI69bZUIwi75Lw/DXjE2E15B+7rqlY1FaI1QCt5DRJ7fziBCtMS3Rg6t9vuyUYnDE3iam+d
+	mv0NbZyEwmFTv2dlGJVRnNUWb/nCoeYIBqGZOr5FBPlhQolEphuT1ZOojdw4Q4PE73Q1qqRwgta+D
+	OnYRbZo9qqb4dmhWC+wD1NXBbtkgtCKAlSMxXZ7weleS4QVTnb7BDC6tNKUIO2oVANuoEOXTf/86A
+	lqSO/XJpHeagh8GNiPY+66LWpNa03quy1lZZUK+N8N8c8jBC0+ktwatr2aqwSrs1gC5+p55TegSKs
+	fd9F43vw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1stmbe-00000008Ea4-43iO;
-	Thu, 26 Sep 2024 11:24:23 +0000
-Received: from mail-am0eur02on20616.outbound.protection.outlook.com ([2a01:111:f403:2606::616] helo=EUR02-AM0-obe.outbound.protection.outlook.com)
+	id 1stniw-00000008MBc-10Eu;
+	Thu, 26 Sep 2024 12:35:58 +0000
+Received: from mail-northeuropeazlp170110001.outbound.protection.outlook.com ([2a01:111:f403:c200::1] helo=DB3PR0202CU003.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1stmbb-00000008EWw-3M1z
-	for linux-rockchip@lists.infradead.org;
-	Thu, 26 Sep 2024 11:24:22 +0000
+	id 1stnhj-00000008Lz7-0HKE;
+	Thu, 26 Sep 2024 12:34:45 +0000
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=VGPko6ycbH10H40RB1xh99SufWmaOGNHFkN6/OkBG0Qfo4PY9bAA/4642EJ+KlINV9kIuZuEMvQA1rZi1rR2/3XRhEhr5btvNdBbwR347QaKkaIeSADzO9ZppbaQEl/htC/VCqvGB2NQK4JojxiFodZ1I8s4McRE1rwS6DlKsfsV8aTK/xz0/TZa3td+n+24DQ8Lx+yOhYjOv7s697thlLYnHUhQHNPlb/x8i2mynAUYxazCwzb3Az7+9R/xSJGpjTGRCHXf1j5U/9c0W6jdNtbKU5AhP0KVbUzKWTIqUc4Dx82KSISxB+JRu5tsCQyPsRCO/dRRy9QQpYk9O05m0A==
+ b=Zbvm47XY1yAy1qziOgEQnqsXf+sbJIRQN1n/dGiWxvpn0V6wFpSa7EfDF3u8320YaAR5XCDJWen3zrxx19OqQ2FJB6sYwMD9Pr0nb9jFkIagnEm9qyLHohjVqXubd85qS7YIQeSUOUAhWHoZinY5QBuhJRZouxOTM7rTEOOj6n6CrDriihbSDp/h6lv6U6KTxGTk75buCugWAuGBbbhWde7JalxB/LE8Idl0Ey7u2CZABHdnmF3KMZJEW9KfPGCqdtzURxivF00XBsid3BGSDjan8WbjmSc9QoCld7rzg12EFg7Yn50cq3EUY5rsSvhEnWj5eQWsFcWHsb+m7IXLmQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
  s=arcselector10001;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=kgcwMcJAgBew8lbvNwAUBazjrJJukD4LVaTSYXiBIdk=;
- b=U9xAWMjMEoDY1gnAYghJ0xosSq1JSIbbbggF+t7ay395HtEaaJchVu7mmDc5Xv7Zo5vgzIanu3uz1a1LWZ9VYvU7prdRF7nS17QESgXxBtTSTuodG1t35PoDTROINi+Kl2/24FXdGjXAKsMPUwkvKXqkZI15yq3SUkg0IYCDJ4EBP85ELglENXNEZCPizyMHxPNdxYuNN7tDQM1Njw/gcBgwDAZOGhyJczexzLikJLien4PNjgFAwym+7/Za4TIp8k1aRmjZmovjA9p8Jhk8kIzZmuDMbC6qbWth4q2IbQ1ACF6ZHC6tRlOblx1qWfu2E4beG6daIsC9qQei076E3g==
+ bh=0778x4w0cNRfMp0K5W5u7xF3lz9XJ7NaKEIlaaHnR2I=;
+ b=YVQc0zVLWL51h4IwwlwFWchHVxUyThK8ACp3Zx7YRpUHMou+oaZYNMn2/jSicUmCXiKRrUz3K4hbCyTQZu/GWFHssht9myWJM0A9BcOSZFtYpOwOt03gNHQ7ha65X6yqEUQac3xS3eXrpGd+AuGVObnjbvcdZlu2146d7ySj3pFnY50qcD0tfgB5FFwbL1DL302RYizaFp2vpZ+gijbyPSbpvgN+M7aUg5U59/myqzmlIaM2Zv7zy6OboGDaaZR7ppyuR2ZIjlPihkOMut8bABGj5WgxavKLlg90fUW+kVjgwN4rXhT2dBT0uUL/QuY1+kEBihWGpTeB0Jd0YbESSw==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=cherry.de; dmarc=pass action=none header.from=cherry.de;
  dkim=pass header.d=cherry.de; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cherry.de;
  s=selector1;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=kgcwMcJAgBew8lbvNwAUBazjrJJukD4LVaTSYXiBIdk=;
- b=XmxDQ/OOvRb2TmAfBUUROrk1VbTuJNK70QsFOXrTZTsQRVwLDKgv1bAQaKgZ6mbySGAyNaUpe4G+b8qALmQfIIYwG4jIceGQ8MgnWU/mmUbxFkNZHQWb2tmlJjl5XlkBTL046WghYmu+dLJcT46Qc7F5yYHppazcTAoImEIx6tU=
+ bh=0778x4w0cNRfMp0K5W5u7xF3lz9XJ7NaKEIlaaHnR2I=;
+ b=Zm9mwgVZ/4bvrdtT5DPWptxYF1H06MJssBUc7q9GI6PIqzjztCe5kXelfmdqo6impDHHsLfh8tDgBf045pmutUrtOX7uhsAtxK84c5SrHtvZrEBAPiwoeCbuT4LYbX8CXpGFVzgV2h++ROnYaFEKOzlLdDGdeM6/wBoWWFq32Gg=
 Authentication-Results: dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=cherry.de;
 Received: from AM9PR04MB8906.eurprd04.prod.outlook.com (2603:10a6:20b:409::9)
- by GV1PR04MB9085.eurprd04.prod.outlook.com (2603:10a6:150:20::10) with
+ by DB8PR04MB7017.eurprd04.prod.outlook.com (2603:10a6:10:123::20) with
  Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7982.28; Thu, 26 Sep
- 2024 11:24:03 +0000
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7982.27; Thu, 26 Sep
+ 2024 12:34:32 +0000
 Received: from AM9PR04MB8906.eurprd04.prod.outlook.com
  ([fe80::d379:5378:b1:cea]) by AM9PR04MB8906.eurprd04.prod.outlook.com
  ([fe80::d379:5378:b1:cea%2]) with mapi id 15.20.7918.024; Thu, 26 Sep 2024
- 11:24:03 +0000
-Message-ID: <69f79284-b52e-496e-a286-d7e5ce3d90ce@cherry.de>
-Date: Thu, 26 Sep 2024 13:24:02 +0200
+ 12:34:32 +0000
+Message-ID: <54c49375-cb2a-40fe-abcd-fc56c04d0c53@cherry.de>
+Date: Thu, 26 Sep 2024 14:34:30 +0200
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] arm64: dts: rockchip: add attiny_rst_gate to Ringneck
-To: Jakob Unterwurzacher <jakobunt@gmail.com>,
- linux-rockchip@lists.infradead.org
-Cc: Heiko Stuebner <heiko@sntech.de>,
- jakob.unterwurzacher@theobroma-systems.com, linux-kernel@vger.kernel.org
-References: <20240201124427.279986-1-jakob.unterwurzacher@theobroma-systems.com>
+Subject: Re: [PATCH] arm64: dts: rockchip: Add power button for RK3399 Puma
+To: Daniel Semkowicz <dse@thaumatec.com>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
+Cc: Dragan Simic <dsimic@manjaro.org>,
+ Farouk Bouabid <farouk.bouabid@theobroma-systems.com>,
+ Quentin Schulz <quentin.schulz@theobroma-systems.com>,
+ Vahe Grigoryan <vahe.grigoryan@theobroma-systems.com>,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org
+References: <20240925072945.18757-1-dse@thaumatec.com>
 Content-Language: en-US
 From: Quentin Schulz <quentin.schulz@cherry.de>
-In-Reply-To: <20240201124427.279986-1-jakob.unterwurzacher@theobroma-systems.com>
-X-ClientProxiedBy: WA2P291CA0008.POLP291.PROD.OUTLOOK.COM
- (2603:10a6:1d0:1e::21) To AM9PR04MB8906.eurprd04.prod.outlook.com
- (2603:10a6:20b:409::9)
+In-Reply-To: <20240925072945.18757-1-dse@thaumatec.com>
+X-ClientProxiedBy: FRYP281CA0012.DEUP281.PROD.OUTLOOK.COM (2603:10a6:d10::22)
+ To AM9PR04MB8906.eurprd04.prod.outlook.com (2603:10a6:20b:409::9)
 MIME-Version: 1.0
 X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: AM9PR04MB8906:EE_|GV1PR04MB9085:EE_
-X-MS-Office365-Filtering-Correlation-Id: 0c7b02f7-e5f8-483e-2470-08dcde1db9d2
+X-MS-TrafficTypeDiagnostic: AM9PR04MB8906:EE_|DB8PR04MB7017:EE_
+X-MS-Office365-Filtering-Correlation-Id: 9cea9638-ef97-47b5-c849-08dcde279246
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|1800799024|376014|366016;
-X-Microsoft-Antispam-Message-Info: =?utf-8?B?cG4zK0EzbnEraktrL2xNMVhhLzRUWmlvazR6ZEpsbERCd2ltbGNKSjJ4K2pY?=
- =?utf-8?B?ZXBCQkZxWCtYbkNNN0RxWFFsVithZmxPWnFPNVVXUlpPT0RuTU5lZ2xPR28r?=
- =?utf-8?B?aWFGb2RBTHI5dFcvZHJaRjV2K2tGUGFVeWFBbGg0K2ZqdllkQ3YzRmxVUDVW?=
- =?utf-8?B?SXRXVzViLzdaWXVnSUxXRlorcnZCdnE2OENuY0pTanJRRWZWMHhyOWZMS1FT?=
- =?utf-8?B?YndrN1VnNzBja3hFYUdtSzBNSHdTZmNpMjRFODNuQWNCVmVPZE5HNHBGeGtR?=
- =?utf-8?B?SVJ4S2JUWlpDRWp1Y1hianV4RE53SDdmWVBWYWJIQXU0WEF3elM0MEpKWlZG?=
- =?utf-8?B?Y2ExZ3BGdHZCeWczMldMUzBubkpWRC9hMDBmQUh2dDd3ZHlTMjM2RlFlbjF2?=
- =?utf-8?B?MG1OSVZjcjBnYWgwNGtOUWFXM0tVRW41UDA2ZFVpZVJiY09aSkI2bm1ROHBB?=
- =?utf-8?B?eWhQMk9KYUxDUHFCbjc0RjRpdHlramlHU1Z6enMrK1pWb2I3OWVvblVRUFh2?=
- =?utf-8?B?aTdDallDMk5rK2IwTVE0bFlhVmpQUjU0bUkvdTU0dmZKU2Y2NkhNQTdwYkhs?=
- =?utf-8?B?dzlHOHJraTlLeWJxSW9XaFIwY21KSHAyeU5JM3RlK2l5d2FGeFJNZmhZeEl1?=
- =?utf-8?B?cVFqd1c3ai9iQnFXTU1idTNjSTZ2UkxYaHpBN29QcGJ0MXR6VFVJTWpjTDdj?=
- =?utf-8?B?aUlOK2pwUmpXVVhwbkZMaHBCdzhqZ0ZtNldEdXJmeXBpWWNCT3FjMTl1Ylhq?=
- =?utf-8?B?NS9LS3VOcVVWSGxncE9lVDBjODN5cFlBM2tuUmZjekpWelZIT2EyWVN4alZn?=
- =?utf-8?B?UGpqaktmcDJMeCtFRkROY0pkaVBHZXo0L0hvdVlwS2VVYjZyamhGdHNESkd6?=
- =?utf-8?B?TWVPejRWa08rdGVkblRzTG5RNlpsd28rOGc2dmJmRXp3MXpZU0hvVGZVR2tp?=
- =?utf-8?B?Qlk4bU5EaTNnVkZja1lMMVAzcFg0V2FWZGNqVmUxdlBidUVnTlN6ejBhbWRO?=
- =?utf-8?B?eXJwQ0MvTGRyMWR5dHBMUGlESGYrakpRU2tJTFZiYUJ1RWttbk1WdjE3R2Ew?=
- =?utf-8?B?ZndEd09TOGFUN05NTTZZVlVNak54NEFHWE54RlVaeThoWGhUazJEVmZLb1Vz?=
- =?utf-8?B?Q3ROUjBHZ3REcUcvb01jUnZFc0ZqY1JFci9BbU5EcWhEUkIxeTdqVXpEK1pH?=
- =?utf-8?B?cXRadUlLSHBpelVueWtMNGZXdFlieFBqTlpmdUN2b1ZrNDFKZ1FsYTRheEtK?=
- =?utf-8?B?ZWhJMEE0RktNK2trMWVhTjB1Y2VPVk5Zek9rZW5ieHNwekJ2YVNoZ1pUSnpr?=
- =?utf-8?B?QldwbnF1a0l6RmtnQ0F1ZEJiTkFtVmp0VGYwRzZqTE5tQ0J4TGZrMENSNFV1?=
- =?utf-8?B?L3ZqazY5T2FWRlZsbitSQW54c2liWE5PQllLcmtzMVN4ZWdsZzVXTUU2TGFS?=
- =?utf-8?B?Wk1CZ3dKenJub3k3WW1ZL1Z1NXl1LzE4WXU3ZTR5QW8yeEh5YXlFVzhXM0Uw?=
- =?utf-8?B?NUYvYk1EdkY2Q2k1MmNYWXNRYnlIdGF2REhrV25jdktJakk3ODNoODVuQTB1?=
- =?utf-8?B?UjZRUnhTb0E3TmhmWGgvb0Vvc2lVczFtV0tuR1RuOHhkR0tsYzJFYkVmR3Zh?=
- =?utf-8?B?SXBlaytYQlJaTFYxZ3d4NTNyOHhMWHNPd2RIZGs5RFFyT1RIM0ovTWI2OGJX?=
- =?utf-8?B?UVFnY0ROZ1k1ZW1IS0s3b2Y0RnI2YXRDbjRaUFJmdFdpVUJyZXlVV1dnaVJM?=
- =?utf-8?B?b1RoVzBjdjFjR1JHM0cxUEEwdzZrSGxPSFFTOFdMdVVyZkJ5a0dNY2FucUtD?=
- =?utf-8?B?Sk1uM0VtSEJzMGR3ejVzdz09?=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:AM9PR04MB8906.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(1800799024)(376014)(366016);DIR:OUT;SFP:1101;
+X-Microsoft-Antispam: BCL:0;ARA:13230040|376014|366016|7416014|1800799024;
+X-Microsoft-Antispam-Message-Info: =?utf-8?B?ZDdWbzZ4WDFSNDB6Mit0OW5DdytpYWxURW9tSnpHMmxSUkM5TFVqK1p1VkFL?=
+ =?utf-8?B?cU1JQm4xb2NFd0dtTFVCdWFXREZhN01hRmNrQXVBaVZtcEd5b01pU2RyYllI?=
+ =?utf-8?B?SU0xWWs4VTNWZitJYVZJT2RiSnU0NFM2ZmY3M0RvY0QxUmR5THNDVEpLYmJE?=
+ =?utf-8?B?VHExZXdKcnVOVXB6TStUWCtpWlNNN2NuNnVYakUxcktIQ3B2WDhyaFhCUVh3?=
+ =?utf-8?B?a0Nod1lZWDdLcmJySVVMU3pyRHdkWllNY1hnT0NYU3grRThRRE92R2tIUDJs?=
+ =?utf-8?B?Q1VMNGZUTTFRVE5VUy9PU2lyTW1kbmlxK3VCc29NYlhVcXY3SVJFS2JLSHR6?=
+ =?utf-8?B?UFZTUjJ4bnNQVFF5cVpXbFdwK2xNSFVZbm5wT1luMWFDV2ZsVlo5NDFlaFNz?=
+ =?utf-8?B?aXc1Wm5LeVVWRDlWREE3bU9kMzkxVWtVUUlGUitkWXE5RUkwL2tYWlJncmlV?=
+ =?utf-8?B?dXVEQjEwUGtEdWQrbzUvOVorRnhMTmtDdkVzaUp0anNLQk80SU1CeFUvUk1Y?=
+ =?utf-8?B?cmFiVkpveUJOUWNxa2xjVzMrSjMxNXg4TDhXWjFSWUFMT0x1bFBuUkRkWkdE?=
+ =?utf-8?B?eUFkeHhwSWFBaGlSSzNPZzEwaGs4VDdkaktySEhOYzFXSUNtNnNlY2lmSTZU?=
+ =?utf-8?B?RXFzTFBXOEhuSkt1OFNlTnNvTkpJc0dlY2ZXTGwxUS84d1kvb015VG5VcEVC?=
+ =?utf-8?B?aDc1SVB5djN6UmNVK2lWd0hsMDNiRnhScWlMTC9yUDBBT3BKYmdvWFBWZnFF?=
+ =?utf-8?B?NE9ZWVlOSUVBdG1rWUV4WmFDcTBVN2x0ZUM1ZkpMNjg2NU16aE9NK3N6M0Ns?=
+ =?utf-8?B?NjN6UGhkcmhCREM2TjAyRy8yRStIZDNtaHFIV2plSWZXVVY2Q0k4OGZSNHdm?=
+ =?utf-8?B?KzlxbmxFV0w1eVVweEJReFZzVVBlRGQzUUNidkIyeXZFODNBd2xzZFF0dGdB?=
+ =?utf-8?B?TFpkV2Zkc1RLaTl3NkRMY0JIY3RmNEJVRjF5VWR4RjZHZ3JDTGZjVmU3V0tB?=
+ =?utf-8?B?Ym42SS80cm9pa29vT09sWGFQZ080WFMzWUtiZEVnellxN0p4TGFLRVVNOWls?=
+ =?utf-8?B?U3M4UCtYZnJMYk0xS3FseGI3OFdYSTZHTVF4UzVUNmlxbDEzZDlxdzlRbHBK?=
+ =?utf-8?B?YXY3dENnYjNnU3hUMklGWlgyWGV4SFN5eE5IaHFNbE5YdFhrQ0FTWWcyMktO?=
+ =?utf-8?B?VHYwemI5cHg4bkhoOWZqYWtBNDhmb3lwT2gxOEhnaHZxY2tpVjNUTjVacFVy?=
+ =?utf-8?B?SWNYSkVNMkZMbFl3aU9Td0VjbEY4bkFMR0kxVkVSK0NubEJHcXJ2M0F4YzRa?=
+ =?utf-8?B?MlNnd0EzY2dXTGRyR28rUjNTaVd2cUFHeHpGb3VHaTRqZzlUWHZIRFRNRUR5?=
+ =?utf-8?B?djZnMkxNSlBXSDAvTXh1YnVzUFhCbThBK2ZhTE43Y2w1K3NwQWFDUmZzTUJi?=
+ =?utf-8?B?NGxMcklIVkNLUDZvRmZOWWdQQ0x6SG03ei9LdXB1RzRDSVNoV1VVZWgvUENL?=
+ =?utf-8?B?ZmoyZG9wQ1FKVEl0eGFxN2hZLzUzV0drZGhvYmREZHQvM2xRZUU2ek1sQThI?=
+ =?utf-8?B?RC9pcDFNNjhrdzRhdDk5L2wyQnpsWXFxbmJ1OTZIWmV1UWxsb01VNzdFWlJZ?=
+ =?utf-8?B?WnpTNnhHRmMwYzYxc1FWclJkR0RBTW5EZFo0MnlrWmF1dWpjNFZ3YUlpT2d6?=
+ =?utf-8?B?NjBoOTBaWDFPeEk2NGJxM0FBaUFsMzYrZWtwTkZaaEpFb1A2WFgzMXhnbytT?=
+ =?utf-8?Q?V4CzGfXkX4cnYM2054=3D?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:AM9PR04MB8906.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(376014)(366016)(7416014)(1800799024);DIR:OUT;SFP:1101;
 X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?OEVUUWNEa1V2RHZXcGs3TG1yOFNVbFZkaitBVWRsaTEra3lXUzN5S2NiK1k1?=
- =?utf-8?B?aXBwUXFKS2ZCRmN2T2pVWE9WV2JOZlhhUlB0OXkrUXNBV01IS2s1Tk9tbDNR?=
- =?utf-8?B?cGh6OC9VS0xObFkrU3BIcm1LRTBveDN6YStlZ2s3TlZPdXdyam5aRzFkWktk?=
- =?utf-8?B?Yy9oR085aEtCSUMrRUloR1pLZ01HZ0o0ckZ1T3FBd2lkV3QveThoNFJMTEVL?=
- =?utf-8?B?a3VhRVo4Q3NENHkvczZzUERkcXdTbzhxaFVJaUtVcUdNSjdqZStzKy9DTWRz?=
- =?utf-8?B?SzZxUWpkd1ZBMjYwYjd5bTdENGxSNHVOQTJ1ZSs0dmlWVG82Smg3dEROdUls?=
- =?utf-8?B?SlQrdDJWcFpBUmx4T0x0dWo0dUE5bmlkMkcvbWh4eXA0Syt4dzZid01JdWtO?=
- =?utf-8?B?NkNBdnZ2U2MrMU0xTnk4Y3hZa0NtOTJZM0NQR3BWQ2N0cENKejc4TDJ1QStJ?=
- =?utf-8?B?Q242d0FZdW5CV0x4cUFRZWk0aVBack9uZi9PRVRyZSs0b2xGNytZSDRSSlds?=
- =?utf-8?B?a1V0MW81S0RLSjI3Ukc5WVZmODMrZEtlZGNJKytZTFlaTWlkZnlXYWd0QTdy?=
- =?utf-8?B?ekg2amdLemhkQ0EraWI2bkZmWGNYRTF5di9rVGpTV1FoSHFiTVpnUm4zWFF1?=
- =?utf-8?B?SEVJd2RaYkc3amJFY2ttMXRIK1AzMFA3UlF5WW4wdktud0ZqeGFoRWV0NXJw?=
- =?utf-8?B?SmJ6b1NvQ0hCM0ZPMlBRS0tkV2JmSVF0bldrVzNGZDRSblNhUzhZb1F3MDFF?=
- =?utf-8?B?aXFGZzNBdWhNelFHOVNHdit6SVlnNWVsdXRmeFhRVWYzZ0F2ZFdQTEZ6eGRH?=
- =?utf-8?B?dnZZYXl3SlpXTTJncnRLUXVwR1lWVUdZbDJiT2R1OXMxOG1WdXY3a3BTUC9Z?=
- =?utf-8?B?NFBtRlJmSE1wc0ZKWjJlOGhoUGpWODVUTFlISFNYVmxuS050UWFWQ1FnY2R2?=
- =?utf-8?B?bEl5dVdURWNVdHJGbWtEU2E2eU1WcnI4TWpCQStiUFJtWHUzWXJKL1d0d2Ja?=
- =?utf-8?B?K0pRR0x5VW5PNGw3VVFvMTBxY1dzYWtmamRmdkY1aHl0Z3F4ci9zUDVIaWVo?=
- =?utf-8?B?eHN5V0VhVlc1cks4SzEwaUlUUCtleGRwNDhpamwxTmFYT2JiaGU2K2xkUC9n?=
- =?utf-8?B?eDRjcG9rdkc2NlFWM0ZHNDZBQ1VHT0g2bkJ4TkpRYjZub2lNaFVFbU9QMUJ6?=
- =?utf-8?B?dnZGSVhrQWpaSGtJWlFQQkd6a2M5QTV0TGdWMmh0V1N0cUppbE1pUkJxeER6?=
- =?utf-8?B?NC9XUlF2d1VGSDRURGhwRnI5dDltWVF4U3JzYzF4dGR1bGR6b2FRUjlDVzRC?=
- =?utf-8?B?VFVLcG9FeWtCK2R2L0lHamhJMDYwYjBSMS8weHA1RDB2elVjODNEdVMyZ0F0?=
- =?utf-8?B?MXYzRW4yZnVZbXB2czlQOFlrSFE2WUtSRDB4b3lCazFyazhHazZZbFRQMXpE?=
- =?utf-8?B?WlNLcWUzVU1ndjBodG56QU11M0dXeGNEOERwZHpQaWV3dzJFMHF1d3dQNHAr?=
- =?utf-8?B?WjJVbXV1ZWc4SzJ2RzJMU2pNcGdxMHlaZEIzMzRVVTl1bHJ5TGo2My9nWVBw?=
- =?utf-8?B?OWVxM0RqUnpUS3hmOGdyRmNBdXFZVVg2ZVhtNFU2YWZibVhodFZvNXBZSVZN?=
- =?utf-8?B?R3d1TFQ4NTI5Q2Fiak9zNFRmbGJ0VGNGNnYwQnRIVUFRSC9UeDFqejQ3RGhY?=
- =?utf-8?B?UWtGeS8rUTJPQ08wN1FZUksyVmtsK29SWktCZXdtWlhFT0d3WjhSUDNhNmZo?=
- =?utf-8?B?Y3dFNmV4dVZLRGJtZEovM0lmS2FyQzdta1I3UUNYUk9jTTJCeC9TYTR4MnBw?=
- =?utf-8?B?ZC9NR1loMk03bTcvUHRUYkZNQWcvL0NocnhEMTBWU1gzWFpaR29KRWFwTEZk?=
- =?utf-8?B?ZUtoRFlkMEU3eGhkamlBUjdXeldUK0IvdWE2Y0pYVnArMFBmSC9uQjF2UGtT?=
- =?utf-8?B?anVwcFdFMllybjRiWGFLaUlIcmZvb0xHaHEva29TQ2QzK2JsSUpTRm03NE1V?=
- =?utf-8?B?cS9vVjczMTFjWVFyMEFvZzMrNzhJa1gyeEJuZmNvWmRsaW1zWjlpU2g2NkVL?=
- =?utf-8?B?Ryt3cENXSFgxL0ZQQWZjQndscWNadE1UNHRWWndKWnl6VVhnbmZiUndueU9k?=
- =?utf-8?B?aUZ6L2hLbDNYb2RjZDZhOTltb08xKzZ4eUVDcUxpbEYxWmYvckFoQkNjelI5?=
- =?utf-8?B?ZEE9PQ==?=
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?RmlPTHdKNmZ3Ylh0R2RQN2VxUUxhTDl4MWswTS9DaHoydnhJN2U0U1A3YTB1?=
+ =?utf-8?B?Nnk3V2czeW42R3NDV2poYyszTWxLbVh1WjJPTDMrSlovZWhpOWJQTjQ0QTVT?=
+ =?utf-8?B?SFRmU1FZNUdPR2RmcHhEeVlJQ1N5R2VxcXN1N1g0UEg1Tjh1bVNZUjRWQ1Zs?=
+ =?utf-8?B?VlNGcWxKMW1pdCtsQUpjY2NybWNIMy9OZm95MDhMYjNlaFRwZE56N0p2b2Jz?=
+ =?utf-8?B?M0Z2eEVvckFONnIxazVtUHVGVmdmbGpRdmc5RnVjSzFEL0xRNFNTU3BrMVds?=
+ =?utf-8?B?ZnJzV0ZiSFIreElNT0o3dXJuaE93aHVlMFpSbFA2enRPMExDWS9TalpoR1F2?=
+ =?utf-8?B?RFN4MUVUNG9INncraVVTcWErK3hqWWFuOHBNOXlIR0lPRzJ5UVpNdGdrN2xw?=
+ =?utf-8?B?R0FldWtuWlZiUjkydndMNHA0KzVlb1AwWVFSZjN1NSs1MFBSOUJnYVh6ekpy?=
+ =?utf-8?B?a2h3S25Vb1VYTjkrSWxsaHpUV0RPSWJqMmt0NjZwS2IzMjZpa05wOHdITzZq?=
+ =?utf-8?B?RVFVYXVNUTQrZVl0NERJQlZzRXpUTENITFNqb0hYemNJTlBKV2R1aFBhUFhX?=
+ =?utf-8?B?WkRhSkp4QnI3ZEY4d250aWxVckR5NW1xTlU1MDltUTJrVUNTT0N3THlCTWZE?=
+ =?utf-8?B?NnpQSWZSTVJkWGtXREhITmdYaTIyNXZvZk4xZ2VKbmFDZ2lIS1I3bDV0T2lR?=
+ =?utf-8?B?OTlCR1NGTTg0UmM0ZDlOZ3Fla3BxKzJwY2wvV1g1a0JGM3BLQXUvNmxLaDRU?=
+ =?utf-8?B?ZXhUM2lkRjh1ZUlERkg5ek83YTdacXNmTENNQVhYV1ZKVmlnWEZleG5ZQUJO?=
+ =?utf-8?B?RWlCRkR6UjY1VXVlSHJzTHdjZ2pXamFERW4wRlNhK3Q2YTRhM21Oc1JIM2Z6?=
+ =?utf-8?B?TlE2aVViSStjL1BNV0htam1vS0IrREhmRHpuOXgwMFU4Uzk1anlhcFA2dE53?=
+ =?utf-8?B?TXd6MXVoUDFiZ0FiNzdRQXlPSWpZekUzOG15U3VsMmR2dS9yUWkyNUdBdFRC?=
+ =?utf-8?B?N0pIbGc0bVI5U3hxSWg4b3FJQU41eUZtN2dacEVFMXFiaENsK0lxK0FPTUFC?=
+ =?utf-8?B?Z1l1dGlIcFpXRk9OMzNOcTc5NlJPdjhDUUlyMVRtQVp6Sy9Ubm9jMGNNVldO?=
+ =?utf-8?B?a0V5alpTSnErUklhbS9tRWkyL212d3NzYWZTV3hzTlF2dWtScDZaUWhDVUli?=
+ =?utf-8?B?OHJQMnRURVVvYTJqcDZWaGRvRjIzRnI3Y1ZJWUhhbU0vZ3MzOU9GQlZWTWhW?=
+ =?utf-8?B?SmwzZmVIL1NtbFFPQXhhbEdwQldIbGtZMGJYMjVlVitTU2lNdEs5K2I2ZEQ0?=
+ =?utf-8?B?cm1lVm5sRGNTb2Q1OTV0bFV0ejBva2N3MTl6QldsYW1SdEY5MkdyUFkrdjNy?=
+ =?utf-8?B?cG1QYmRkUEJ4ZjlYaU5GTlhhUk9Db1hPSkJEZjRrT05TdUhtdlVlbmJTUlg3?=
+ =?utf-8?B?UkxpMmRQemc0S1ozcTBYa1JQbkVLT0JGZkg3TXlwM1JrZUZxZUpDd0EzaXJV?=
+ =?utf-8?B?SS8zZXg5eTFrV1VEUVR1SHJ3eHNORWZ4UWUyVFVaQVlJU21RVkl0MXFRTWll?=
+ =?utf-8?B?STRtUEEwcHIrL2NNMCtlaHZFODZpelQzb083SFp5V0N6bFVQbDNXNUZPWVdU?=
+ =?utf-8?B?eVVqVE5JTGJjU05BZXZPWXlLS0c3alVKOFpqV1FWK2JVOFp3cUEwMjh0dndm?=
+ =?utf-8?B?dzV6anY3Rno1Y016TDc4MklNdlhKTzF3aG91c2UvUmlJYU4za0dyMDlXK21V?=
+ =?utf-8?B?RXhIVWg2NlhSZzJmaXA2Sm5kdTB5QnRiU3JLczNuNzY5eXd6Y3BrMEhjcGxi?=
+ =?utf-8?B?WklydFoyRDM2YVhhTkpxYjlWZnZKSHQxNlhqejVoOE1HdUQvUU1OWHBhRk1k?=
+ =?utf-8?B?UVUwN0VIZGkrVmc1RGd1d0ZZZ0tsSUQ5clRPaGFDWHpZdUZ0cHQ3UGNuRnVX?=
+ =?utf-8?B?a1JTUjhaYldjVHVjRVRlOVBRZkk3TmVUdHBIKzNHODZGUEtwaEI2ZFFldWJG?=
+ =?utf-8?B?OTFvWUQ3QzBVZk5MRzVqZXhzdERsclRLY21pTTQ2YzhOREF6Y2lBNkV4Mlpm?=
+ =?utf-8?B?VU8wL3RCYnFrUENzQVdmOVp4dVVvWnhQeUdLeFZZUml2Z2sreGpkMTk3c2Q3?=
+ =?utf-8?B?d2tPTGcxSWdDLzI0NnQ1eCtOYnlHdHhVeWFkQUJOM1c1NkY5ZXhINUVRdlY3?=
+ =?utf-8?B?WUE9PQ==?=
 X-OriginatorOrg: cherry.de
-X-MS-Exchange-CrossTenant-Network-Message-Id: 0c7b02f7-e5f8-483e-2470-08dcde1db9d2
+X-MS-Exchange-CrossTenant-Network-Message-Id: 9cea9638-ef97-47b5-c849-08dcde279246
 X-MS-Exchange-CrossTenant-AuthSource: AM9PR04MB8906.eurprd04.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 26 Sep 2024 11:24:03.5955
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 26 Sep 2024 12:34:32.0916
  (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
 X-MS-Exchange-CrossTenant-Id: 5e0e1b52-21b5-4e7b-83bb-514ec460677e
 X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: G5X9aW+jCXLTsMhvKg+87Z3JcHDlKyGrdmucMAACbg83bqhHuaRjYcgWA+H1QOm4deB5eKo2JoOg3zwABzb0O8VzQfUDrj0ln5HI3wDz3X4=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: GV1PR04MB9085
+X-MS-Exchange-CrossTenant-UserPrincipalName: qYaGoWr/Gafq/xGD95DMTy7AuGgpKOp2dfmdw69+S3joKn9idZbNEdX19RdxHRdFdo2du/+1pHjeG7L2Xa0oVSOoWAcbxzjNEWWr16TV7GU=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DB8PR04MB7017
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240926_042420_291838_E57F835E 
-X-CRM114-Status: GOOD (  22.03  )
+X-CRM114-CacheID: sfid-20240926_053443_520215_1D9046B0 
+X-CRM114-Status: GOOD (  24.42  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -175,71 +177,123 @@ Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Jakob,
+Hi Daniel,
 
-On 2/1/24 1:44 PM, Jakob Unterwurzacher wrote:
-> Ringneck v1.4 can contain (placement option) an on-board ATtiny
-> microcontroller instead of an STM32. In normal operation, this
-> is transparent to the software, as both microcontrollers emulate
-> the same ICs (amc6821 and isl1208).
+On 9/25/24 9:28 AM, Daniel Semkowicz wrote:
+> There is a PWRBTN# input pin exposed on a Q7 connector. The pin
+> is routed to a GPIO0_A1 through a diode. Q7 specification describes
+> the PWRBTN# pin as a Power Button signal.
+> Configure the pin as KEY_POWER, so it can function as power button and
+> trigger device shutdown.
+> Add the pin definition to RK3399 Puma dts, so it can be reused
+> by derived platforms, but keep it disabled by default.
 > 
-> For flashing the ATtiny, the SWITCH_REG1 regulator of the board's PMIC is
-> used to enable the ATtiny UPDI debug interface. If the STM32 is placed, or if
-> we are running on an older Ringneck revision, SWITCH_REG1 is not connected
-> and has no effect.
+> Enable the power button input on Haikou development board.
 > 
-> Add attiny-updi-gate-regulator so userspace can control it via sysfs:
-> 
->    echo enabled > /sys/devices/platform/attiny-updi-gate-regulator/state
-> 
+> Signed-off-by: Daniel Semkowicz <dse@thaumatec.com>
 
-CONFIG_REGULATOR_USERSPACE_CONSUMER needs to be enabled for this to 
-work. Just putting this here as I had forgotten and was wondering why 
-this sysfs file wasn't available to me :)
-
-> Signed-off-by: Jakob Unterwurzacher <jakob.unterwurzacher@theobroma-systems.com>
-
-I finally have access to some HW to test this, and therefore can give my:
+This works, thanks.
 
 Tested-by: Quentin Schulz <quentin.schulz@cherry.de>
 
-> ---
->   arch/arm64/boot/dts/rockchip/px30-ringneck.dtsi | 12 ++++++++++++
->   1 file changed, 12 insertions(+)
-> 
-> diff --git a/arch/arm64/boot/dts/rockchip/px30-ringneck.dtsi b/arch/arm64/boot/dts/rockchip/px30-ringneck.dtsi
-> index dec29a75d361..1f7f4b2ea66a 100644
-> --- a/arch/arm64/boot/dts/rockchip/px30-ringneck.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/px30-ringneck.dtsi
-> @@ -15,6 +15,12 @@ aliases {
->   		rtc1 = &rk809;
->   	};
->   
-> +	/* allows userspace to control the gate of the ATtiny UPDI pass FET via sysfs */
-> +	attiny-updi-gate-regulator {
-> +		compatible = "regulator-output";
-> +		vout-supply = <&vg_attiny_updi>;
-> +	};
-> +
->   	emmc_pwrseq: emmc-pwrseq {
->   		compatible = "mmc-pwrseq-emmc";
->   		pinctrl-0 = <&emmc_reset>;
-> @@ -146,6 +152,7 @@ rk809: pmic@20 {
->   		vcc5-supply = <&vcc_3v3>;
->   		vcc6-supply = <&vcc_3v3>;
->   		vcc7-supply = <&vcc_3v3>;
-> +		vcc8-supply = <&vcc5v0_sys>;
+Now I have some questions I wasn't able to answer myself, maybe someone 
+can provide some feedback on those :)
 
-According to the schematics, vcc8 is routed to SWITCH_REG2 and not 
-SWITCH_REG1, which is fed vcc9. Even more so, vcc8 on the PMIC isn't 
-actually routed.
+We already have a gpio-keys for buttons on Haikou, c.f. 
+https://elixir.bootlin.com/linux/v6.11/source/arch/arm64/boot/dts/rockchip/rk3399-puma-haikou.dts#L22. 
+Those signals are directly routed to the SoM and follow the Qseven standard.
 
-I therefore think we can simply remove this line here.
+The same applies to PWRBTN# signal.
 
-@Jakob, do you agree? Can you send a v2 if so?
+However, here we have one gpio-keys for PWRBTN# in Puma DTSI and one 
+gpio-keys for the buttons and sliders on Haikou devkit in Haikou DTS.
+
+I'm a bit undecided on where this should go.
+
+Having all button/slider signals following the Qseven standard in Puma 
+DTSI and enable the gpio-keys only in the devkit would make sense to me, 
+so that other baseboards could easily make use of it. However, things 
+get complicated if the baseboard manufacturer decides to only implement 
+**some** of the signals, for which we then need to remove some nodes 
+from gpio-keys (and pinctrl entries) since gpio-keys doesn't check the 
+"status" property in its child nodes (though that could be fixed). At 
+which point, it's not entirely clear if having it in Puma DTSI is 
+actually beneficial.
+
+Someone has an opinion/recommendation on that?
 
 Cheers,
 Quentin
+
+> ---
+> 
+>   .../boot/dts/rockchip/rk3399-puma-haikou.dts  |  4 ++++
+>   arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi | 22 +++++++++++++++++++
+>   2 files changed, 26 insertions(+)
+> 
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3399-puma-haikou.dts b/arch/arm64/boot/dts/rockchip/rk3399-puma-haikou.dts
+> index f6f15946579e..0999026b16d0 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3399-puma-haikou.dts
+> +++ b/arch/arm64/boot/dts/rockchip/rk3399-puma-haikou.dts
+> @@ -143,6 +143,10 @@ vddd_codec: vddd-codec {
+>   	};
+>   };
+>   
+> +&gpio_key_power {
+> +	status = "okay";
+> +};
+> +
+>   &hdmi {
+>   	ddc-i2c-bus = <&i2c3>;
+>   	status = "okay";
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi
+> index 650b1ba9c192..389ffe604e74 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi
+> +++ b/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi
+> @@ -3,6 +3,7 @@
+>    * Copyright (c) 2017 Theobroma Systems Design und Consulting GmbH
+>    */
+>   
+> +#include <dt-bindings/input/input.h>
+>   #include <dt-bindings/pwm/pwm.h>
+>   #include "rk3399.dtsi"
+>   
+> @@ -39,6 +40,19 @@ clkin_gmac: external-gmac-clock {
+>   		#clock-cells = <0>;
+>   	};
+>   
+> +	gpio_key_power: gpio-key-power {
+> +		compatible = "gpio-keys";
+> +		pinctrl-0 = <&pwrbtn_pin>;
+> +		pinctrl-names = "default";
+> +		status = "disabled";
+> +
+> +		button-pwrbtn-n {
+> +			gpios = <&gpio0 RK_PA1 GPIO_ACTIVE_LOW>;
+> +			label = "PWRBTN#";
+> +			linux,code = <KEY_POWER>;
+> +		};
+> +	};
+> +
+>   	vcc1v2_phy: vcc1v2-phy {
+>   		compatible = "regulator-fixed";
+>   		regulator-name = "vcc1v2_phy";
+> @@ -475,6 +489,14 @@ &pinctrl {
+>   	pinctrl-names = "default";
+>   	pinctrl-0 = <&q7_thermal_pin &bios_disable_override_hog_pin>;
+>   
+> +	buttons {
+> +		pwrbtn_pin: pwrbtn-pin {
+> +			rockchip,pins =
+> +				/* PWRBTN# */
+> +				<0 RK_PA1 RK_FUNC_GPIO &pcfg_pull_up>;
+> +		};
+> +	};
+> +
+>   	gpios {
+>   		bios_disable_override_hog_pin: bios-disable-override-hog-pin {
+>   			rockchip,pins =
+
 
 _______________________________________________
 Linux-rockchip mailing list
