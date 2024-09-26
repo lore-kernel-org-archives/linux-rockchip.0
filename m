@@ -4,68 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BFF9ACCFA13
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 00D75CCFA15
 	for <linux-rockchip@archiver.kernel.org>; Thu, 26 Sep 2024 09:04:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Iu9Lq2IA+M2w+cRB5sOCd0WP3HdsoEXT67gaVThlqPw=; b=GD2N6ywgVI1KoM
-	iwMo9tT8roPhcMGFahPqVfYQlzMxGnsKO85KziQ338Au5vIBO0ynE5uGRsvvkepKTzg976PMijSeO
-	wcV0vTT9s646oufql2KF9pXrioYd35SNI9bfuqlNbWOVIhXSWb6eHv91uKN8zcb9acfwMM17mIkGb
-	Rh4vR8oCPFDZQmpN3j9raA5XEmYwaeb9tIIIGtoG0mQI/j8Txqb6VXyHOG4k6HJOZ/QbkLZArZjyK
-	qI1JdOu0be5IXlXRgKSXNKZYB8PuwY5qU3lcUcYDqfvv5/mkXDGKthVhXrmdqFPr5gD12+6P1aZZI
-	WxrzLbWCgDZ3kpOElaxg==;
+	List-Owner; bh=BG3oh4RGvW0Mq2MMC9aOj/kW9SYQ2v0SND18FajAN98=; b=W1+hWytsADyAyc
+	YNCWQzNlHB7S03uETJ/w0Ekr4fw2oMu4AGOMevavMMfdvySLupUDs6HlEUb9NqTvOzFi+ToEWNdhd
+	K9PU0dX13JlL8d7BI6YPzsI3+Z1XDCxHAFR67Y9EEGRzeiq3FNzUtZlLjBODNbh/8DUIyeVj6OAJF
+	H3t5HK+fTI+znyRFpVPi/ICKP4e7wqX7nyx77hmIx2FFXU03EL3RhEd3aJfTQOQvj6ewgf3GytU5z
+	C1ParHUyC7f+c4uU6A5K0EVSUGrH37NTNfGDjTL7TaZPKxakhYVNNhZQkokknga7rxbsBvOcgM7za
+	x2lxurNr9rFlrFRr7SLQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1stkQV-00000007nhI-3lGs;
-	Thu, 26 Sep 2024 09:04:43 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1stkQW-00000007nhQ-1S4b;
+	Thu, 26 Sep 2024 09:04:44 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1stk9z-00000007kGp-2N2S;
-	Thu, 26 Sep 2024 08:47:41 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1727340457;
-	bh=Vvzgd1LgiFFFjFTb0+aUplSVjTmllj9XrlLOmFGWpvw=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=W7qGOs/WXTcXx3RVTvEB2eSz0bFlxfIYGcY9VZKLpS7wzZyyKhJEQKdhfCBCZWKv9
-	 9M5yQ2aIMD9mnlwpL3oETbnJqGqSCa7DWtGW9smRY1pQ9sA2H6SXCxDrGePgnGnV6B
-	 G7LV/i6hn/yhLeyBfU5SgJw4bZrVOAfBb/FVNK2qn08z9tV1PotXjmwBrJxNjvEv+O
-	 C0DoHfqKT8zEw7l+OIobUsRFyHZTP5RgvXDTRAmsqOnK8I+f4QN33YFAnmdJL8ykb+
-	 X8sROyY544rjCZ5yvcOvQdlCNze3jQuNlxypIAGUuOIi+k4iULFsbHZFUgYhmh4Qn/
-	 sPYjix2VxY4Vg==
-Received: from [192.168.50.250] (unknown [171.76.80.165])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: vignesh)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 50E1317E1048;
-	Thu, 26 Sep 2024 10:47:34 +0200 (CEST)
-Message-ID: <9470f582-7873-42c6-b5a5-35f841e4f693@collabora.com>
-Date: Thu, 26 Sep 2024 14:17:04 +0530
+	id 1stkAQ-00000007kPl-2KOZ;
+	Thu, 26 Sep 2024 08:48:07 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+	List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=r7Psuo5wLjW5qDjj4cW4p0k9wjcIcrFjFZh9XT4IWKc=; b=s1kD5Zj9ZV+D6q3RCSz0reepXW
+	AAjinTmt/yMIiUfKOvfGGDWWz8aP5rjx6emWa1xsQWx5prhKCvTsDYuyqLcTOj70uQq2OeWRM1kS4
+	apv1TFrDlp3jnEM+9XBQkFqqQUKBl1tiN5N0eK4drmVtEuXPnJQi+n36PltVfz7kZ/KImQISzEzyC
+	I2DwxfkbgV6mmqs1RQxskhphC/mLGYRPX9tUy1Qrs7yJ1i6PTfiza42h35drXL2oUJSYY1ZfQOEdR
+	FORCpayp5FBT1lYBHsBU44I6JcQB0mZ94iIuYACLFiNqibHOuhB2wPBNV519nMGp2jRkkR3mYmUOe
+	zFYpBgmA==;
+Received: from 85-160-70-253.reb.o2.cz ([85.160.70.253] helo=phil.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1stkAO-0001nb-Hi; Thu, 26 Sep 2024 10:48:04 +0200
+From: Heiko Stuebner <heiko@sntech.de>
+To: Dragan Simic <dsimic@manjaro.org>
+Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, robh@kernel.org,
+ krzk+dt@kernel.org, conor+dt@kernel.org, stable@vger.kernel.org
+Subject: Re: [PATCH] arm64: dts: rockchip: Move L3 cache under CPUs in RK356x SoC dtsi
+Date: Thu, 26 Sep 2024 10:48:03 +0200
+Message-ID: <2007608.CrzyxZ31qj@phil>
+In-Reply-To: <57d360d73054d1bad8566e3fe0ee1921@manjaro.org>
+References: <da07c30302cdb032dbda434438f89692a6cb0a2d.1727336728.git.dsimic@manjaro.org>
+ <3938446.fW5hKsROvD@phil> <57d360d73054d1bad8566e3fe0ee1921@manjaro.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2] docs/gpu: ci: update flake tests requirements
-To: Maxime Ripard <mripard@kernel.org>
-Cc: dri-devel@lists.freedesktop.org, daniels@collabora.com,
- helen.koike@collabora.com, airlied@gmail.com, daniel@ffwll.ch,
- robdclark@gmail.com, guilherme.gallo@collabora.com,
- sergi.blanch.torne@collabora.com, deborah.brouwer@collabora.com,
- dmitry.baryshkov@linaro.org, rodrigo.vivi@intel.com,
- linux-mediatek@lists.infradead.org, linux-amlogic@lists.infradead.org,
- linux-rockchip@lists.infradead.org, amd-gfx@lists.freedesktop.org,
- linux-arm-msm@vger.kernel.org, intel-gfx@lists.freedesktop.org,
- virtualization@lists.linux.dev, linux-kernel@vger.kernel.org
-References: <20240926070653.1773597-1-vignesh.raman@collabora.com>
- <20240926-athletic-gregarious-markhor-cc78ac@houat>
-Content-Language: en-US
-From: Vignesh Raman <vignesh.raman@collabora.com>
-In-Reply-To: <20240926-athletic-gregarious-markhor-cc78ac@houat>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240926_014739_793453_1147538A 
-X-CRM114-Status: GOOD (  17.92  )
+X-CRM114-CacheID: sfid-20240926_014806_633312_7C183477 
+X-CRM114-Status: GOOD (  24.92  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,74 +69,51 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Maxime,
-
-On 26/09/24 12:56, Maxime Ripard wrote:
-> On Thu, Sep 26, 2024 at 12:36:49PM GMT, Vignesh Raman wrote:
->> Update the documentation to require linking to a relevant GitLab
->> issue for each new flake entry instead of an email report. Added
->> specific GitLab issue URLs for i915, xe and other drivers.
->>
->> Signed-off-by: Vignesh Raman <vignesh.raman@collabora.com>
->> ---
->>
->> v2:
->> - Add gitlab issue link for msm driver.
->>
->> ---
->>   Documentation/gpu/automated_testing.rst | 16 +++++++++++-----
->>   1 file changed, 11 insertions(+), 5 deletions(-)
->>
->> diff --git a/Documentation/gpu/automated_testing.rst b/Documentation/gpu/automated_testing.rst
->> index 2d5a28866afe..f918fe56f2b0 100644
->> --- a/Documentation/gpu/automated_testing.rst
->> +++ b/Documentation/gpu/automated_testing.rst
->> @@ -67,20 +67,26 @@ Lists the tests that for a given driver on a specific hardware revision are
->>   known to behave unreliably. These tests won't cause a job to fail regardless of
->>   the result. They will still be run.
->>   
->> -Each new flake entry must be associated with a link to the email reporting the
->> -bug to the author of the affected driver, the board name or Device Tree name of
->> -the board, the first kernel version affected, the IGT version used for tests,
->> -and an approximation of the failure rate.
->> +Each new flake entry must include a link to the relevant GitLab issue, the board
->> +name or Device Tree name, the first kernel version affected, the IGT version used
->> +for tests and an approximation of the failure rate.
->>   
->>   They should be provided under the following format::
->>   
->> -  # Bug Report: $LORE_OR_PATCHWORK_URL
->> +  # Bug Report: $GITLAB_ISSUE
->>     # Board Name: broken-board.dtb
->>     # Linux Version: 6.6-rc1
->>     # IGT Version: 1.28-gd2af13d9f
->>     # Failure Rate: 100
->>     flaky-test
->>   
->> +The GitLab issue must include the logs and the pipeline link. Use the appropriate
->> +link below to create an issue.
->> +https://gitlab.freedesktop.org/drm/i915/kernel/-/issues for i915 driver
->> +https://gitlab.freedesktop.org/drm/xe/kernel/-/issues for xe driver
->> +https://gitlab.freedesktop.org/drm/msm/-/issues for msm driver
->> +https://gitlab.freedesktop.org/drm/misc/kernel/-/issues for other drivers
->> +
+Am Donnerstag, 26. September 2024, 10:32:17 CEST schrieb Dragan Simic:
+> Hello Heiko,
 > 
-> I can't comment for the others, but drm-misc at least still requires
-> reporting issues by mail, so, no, sorry, we can't switch to gitlab only
-> for now.
+> On 2024-09-26 10:24, Heiko Stuebner wrote:
+> > Am Donnerstag, 26. September 2024, 09:49:18 CEST schrieb Dragan Simic:
+> >> Move the "l3_cache" node under the "cpus" node in the dtsi file for 
+> >> Rockchip
+> >> RK356x SoCs.  There's no need for this cache node to be at the higher 
+> >> level.
+> >> 
+> >> Fixes: 8612169a05c5 ("arm64: dts: rockchip: Add cache information to 
+> >> the SoC dtsi for RK356x")
+> >> Cc: stable@vger.kernel.org
+> > 
+> > I think the commit message needs a bit more rationale on why this is a
+> > stable-worthy fix. Because from the move and commit message it reads
+> > like a styling choice ;-) .
+> > 
+> > I do agree that it makes more sense as child of cpus, but the commit
+> > message should also elaborate on why that would matter for stable.
+> 
+> Thanks for your feedback!  Perhaps it would be the best to simply drop 
+> the
+> submission to stable kernels...  Believe it or not, :) I spent a fair 
+> amount
+> of time deliberating over the submission to stable, but now I think it's
+> simply better to omit that and not increase the amount of patches that 
+> go
+> into stable unnecessary.
+> 
+> Would you like me to send the v2 with no Cc to stable, or would you 
+> prefer
+> to drop that line yourself?
 
-In https://gitlab.freedesktop.org/drm/ we have xe, i915, msm, nouveau, 
-and amd (only for issues). In drm-ci we test i915, msm and amd.
-So I will add GitLab links for these and for other drivers use email 
-reporting. I will reword this section. Thanks.
+I'm hopeful that I'll remember to drop it :-), so I guess no need
+to resend for that.
 
-Regards,
-Vignesh
+Heiko
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
