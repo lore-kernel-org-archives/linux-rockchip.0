@@ -4,59 +4,106 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0A03DCDE009
-	for <linux-rockchip@archiver.kernel.org>; Thu, 26 Sep 2024 13:51:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4EAA9CDE00D
+	for <linux-rockchip@archiver.kernel.org>; Thu, 26 Sep 2024 14:20:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=i8qAqzjcI37ZD7kxQEd0q6j9y7qajP5mSIe7ntDF7Dk=; b=KstPy4tIDjx5Ql
-	KLCZWWWnApg6tZrdU2/4LoaZPwuJcf4OTjRWx8tihXS9xqTgXj54KMFiMG4/AIbOhrPlStipb0kNu
-	W0shIgxNLOFEgE9tN9WFjL9m92/+n8SFEIkWEPywSH8NjJKgmRqwXaahTR2kVJmB5jYdhxIKG6j//
-	tFHaJmjLwZ1eaykcESRBWbolN8g8L2OxNOafzvc56sT1ToOpeIBdRPCiYQF3JxMsh6SpC0fJjzpbT
-	r2Ikk84ElNupC/7v2G8mFY8Oevv6tPNIyTDpHV4r8LpMsPOesFu1ZmTeY1KTVpzFelRFTYGsR2PZX
-	LhbYkV8zoRebt/x9sW8Q==;
+	List-Owner; bh=f1H94Qb57odXxMRJVOQV7f75qDK7rUlbFrXtfPgEOpk=; b=GTfqlndbsf50jl
+	rFSYpINUjhX5M8oZU1NHmX+em4XDKQR5EyAxo4Twfytkp7xDjJXHEf/JSyrtcGzHL415Ft7Nv7tCw
+	DcRmTq9tTsnutSUiKVHcPZG0y6GIfnhIsPU3VkMpXqbXnqeJSfqQRifqdZ4uAQXMCFUXPwV967drp
+	0hF138MoVjCX9ZfXFPII1LAcKvY1JbJ2HtvGW2jFpC9a5w5WlvrGQjoF4178+OrNfNLKoCZC9C++A
+	B8fdK9BydZG5s8CUWOeV+J0u5FxLn+Vxr2xBk4T3Sa4YGQixjvFLY9szJxByMqjE3QgrDY5dammJx
+	VC2oh8+wFHpFq8LvNFow==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1stotp-00000008VCu-1Khb;
-	Thu, 26 Sep 2024 13:51:17 +0000
-Received: from laurent.telenet-ops.be ([2a02:1800:110:4::f00:19])
+	id 1stpMN-00000008ZXT-1ejK;
+	Thu, 26 Sep 2024 14:20:47 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1storU-00000008Urs-28LB
-	for linux-rockchip@lists.infradead.org;
-	Thu, 26 Sep 2024 13:48:55 +0000
-Received: from ramsan.of.borg ([IPv6:2a02:1810:ac12:ed80:7bd9:a854:38c6:ce04])
-	by laurent.telenet-ops.be with cmsmtp
-	id H1oj2D0023fTnLU011oj8N; Thu, 26 Sep 2024 15:48:46 +0200
-Received: from rox.of.borg ([192.168.97.57])
-	by ramsan.of.borg with esmtp (Exim 4.95)
-	(envelope-from <geert@linux-m68k.org>)
-	id 1storF-000bcb-RT;
-	Thu, 26 Sep 2024 15:48:42 +0200
-Received: from geert by rox.of.borg with local (Exim 4.95)
-	(envelope-from <geert@linux-m68k.org>)
-	id 1storK-001yEj-S2;
-	Thu, 26 Sep 2024 15:48:42 +0200
-From: Geert Uytterhoeven <geert+renesas@glider.be>
-To: Heiko Stuebner <heiko@sntech.de>,
-	Andy Yan <andyshrk@163.com>,
-	Jacob Chen <jacob-chen@iotwrt.com>
-Cc: linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	devicetree@vger.kernel.org,
-	Geert Uytterhoeven <geert+renesas@glider.be>
-Subject: [PATCH 2/2] arm64: dts: rockchip: rk3399-sapphire-excavator: Fix rt5651 compatible value
-Date: Thu, 26 Sep 2024 15:48:41 +0200
-Message-Id: <abc6c89811b3911785601d6d590483eacb145102.1727358193.git.geert+renesas@glider.be>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <cover.1727358193.git.geert+renesas@glider.be>
-References: <cover.1727358193.git.geert+renesas@glider.be>
+	id 1stpL6-00000008ZBa-1pSt;
+	Thu, 26 Sep 2024 14:19:29 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 39E6E5C58B1;
+	Thu, 26 Sep 2024 14:19:21 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id EC56AC4CEC5;
+	Thu, 26 Sep 2024 14:19:20 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1727360364;
+	bh=izRirnwVfcU42w8P8QN8q8VeO8s+xxq5pb9Tz8iXW80=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=Rozoj+NmEvJ4hJYK9ZX1aMs3PbND8HKXAnVxIt7SJb+UQlg3JJ6toK3Nmz3nn5on9
+	 9nc/4/fcVg03liBOLCFPcYrHcnmhzUn04SRLvx95vm52otPxD6I7bzy+BIeqCV52i0
+	 e13fCMCmn5W2+cradz0AYFg+/CajEJrP81NfPKXqip/zL0JgycSyO+47azRMNa9VOE
+	 lwv5y0rY4Zr7MDcm1u2A5j2qv/mnpUIXNnZu3aHDHjRQUFYPw7X5psufS2irfirEzD
+	 D5tGJ6HMKwSeYRnhskmAMGROe7XlQPxq6wzhSLSYcv6EoRpvsPruRl1DO81ELZW94F
+	 Ob7H7AC5UYD8w==
+Message-ID: <ed829240-d4f7-471f-84f6-3509f87f11a1@kernel.org>
+Date: Thu, 26 Sep 2024 16:19:19 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 1/2] dt-bindings: phy: rockchip,inno-usb2phy: add
+ rk3576
+To: Frank Wang <frawang.cn@gmail.com>, vkoul@kernel.org, kishon@kernel.org,
+ robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org, heiko@sntech.de
+Cc: linux-phy@lists.infradead.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, william.wu@rock-chips.com,
+ tim.chen@rock-chips.com, frank.wang@rock-chips.com
+References: <20240926103223.29538-1-frawang.cn@gmail.com>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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 fv0=
+In-Reply-To: <20240926103223.29538-1-frawang.cn@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240926_064852_708149_80BE22E2 
-X-CRM114-Status: GOOD (  10.59  )
+X-CRM114-CacheID: sfid-20240926_071928_669740_D6B325DD 
+X-CRM114-Status: UNSURE (   4.40  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,31 +120,24 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-There are no DT bindings and driver support for a "rockchip,rt5651"
-codec.  Replace "rockchip,rt5651" by "realtek,rt5651", which matches the
-"simple-audio-card,name" property in the "rt5651-sound" node.
+On 26/09/2024 12:32, Frank Wang wrote:
+> +  - if:
+> +      properties:
+> +        compatible:
+> +          contains:
+> +            enum:
+> +              - rockchip,rk3576-usb2phy
+> +    then:
+> +      properties:
+> +        clocks:
+> +          minItems: 3
+> +          maxItems: 3
 
-Fixes: 0a3c78e251b3a266 ("arm64: dts: rockchip: Add support for rk3399 excavator main board")
-Signed-off-by: Geert Uytterhoeven <geert+renesas@glider.be>
----
- arch/arm64/boot/dts/rockchip/rk3399-sapphire-excavator.dts | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Read one more time the example I gave you. Top-level constraints are
+saying max one clock.
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-sapphire-excavator.dts b/arch/arm64/boot/dts/rockchip/rk3399-sapphire-excavator.dts
-index dbec2b7173a0b677..31ea3d0182c062ef 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-sapphire-excavator.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-sapphire-excavator.dts
-@@ -163,7 +163,7 @@ &i2c1 {
- 	status = "okay";
- 
- 	rt5651: rt5651@1a {
--		compatible = "rockchip,rt5651";
-+		compatible = "realtek,rt5651";
- 		reg = <0x1a>;
- 		clocks = <&cru SCLK_I2S_8CH_OUT>;
- 		clock-names = "mclk";
--- 
-2.34.1
+Best regards,
+Krzysztof
 
 
 _______________________________________________
