@@ -4,40 +4,41 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 83564CCF9E9
-	for <linux-rockchip@archiver.kernel.org>; Thu, 26 Sep 2024 08:51:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E14B7CCFA13
+	for <linux-rockchip@archiver.kernel.org>; Thu, 26 Sep 2024 08:51:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=yX4qM5l8AihAfjoP105Bk3+XWP79K3+x+HbgrfGsdjU=; b=Ph82OTb09mBOpZ
-	/7b8BjDmS6d5+wwVf0QNkhUo0H8h8q+kWB1L3zXOwLBGubn2OyPgI8jGJIfIjhEOtY8p3RQUqFHFL
-	F8hpOD8LPdiMfqV5dMcdktuDsXrPHP+eLT8pGjAdm7DNY974eRJpJ8ckClTTyM6f7h5uR8qjTkRAS
-	WWfxHYWEhLhk6wRSrBneWDl8C9EKzBBnL5+npF1USM/t1/X8VatCwAnbRF1xOAifg81324l2NzrRo
-	HWdSpqpPl0ruvInko3vjqbAnLOWT5IJFBj8La0q+URn7RZo09z7+FlGWSaiH/JrbcjVNZXUE1ESft
-	5vuDnKHg5d5xGEX44CzQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=FBBF6xlG+nyURWLI9I8LX/i+D05pAfeijhLcDboaOUA=; b=kh+0G5gZFvHYRs
+	DX5+YI/xjvnFkgNx/opOQ09mSweC/WX+w9ptZMpelTv7bAU3BTMIN00YtM/rGmXwRfS1UqHVPJlav
+	2wVIqZy6lM5+ChTBKZqiwPToQDdtzFps4/ua5HPvgLa3zPyrfWWIEZSyRqLgAwxrenIcEeud3x5QO
+	+6cHhHDIYzXk/a/R63w2yQLrP1KhXrnYCtN3whRTfBUiY4SUDPJyWl6mChU7WnOx6+RstWoXa8y7u
+	U8+6vhYXRgmOeJpsDwaDI2QfjMUny6swNpho4UECojfmC64DyZB9/j2lnkVeuqStZO7ONduP2KItr
+	OcqnvI3+pGXDNaFyAnhQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1stkDA-00000007l5B-2Otr;
-	Thu, 26 Sep 2024 08:50:56 +0000
+	id 1stkDL-00000007l9B-0we4;
+	Thu, 26 Sep 2024 08:51:07 +0000
 Received: from mail.manjaro.org ([116.203.91.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1stk14-00000007iFt-0vw2;
-	Thu, 26 Sep 2024 08:38:27 +0000
+	id 1stk14-00000007iG0-3K0x;
+	Thu, 26 Sep 2024 08:38:28 +0000
 From: Dragan Simic <dsimic@manjaro.org>
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
-	t=1727339904;
+	t=1727339905;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding;
-	bh=JyVuCIrRcBjtbj1uJvQkCOOG4PUr556iRdy/26xsPOc=;
-	b=MwEgWUG0W8rwROkafIYlJAMV08BIxbtgZPgy9jX2TbDoeWO8T2YyLkT6YYYytGsy/ZjuMG
-	5l1IeHVIH87u54SXF2Iqs6v5igxprjFF9k7cm7sTo4Ut3DZwUDlIflzM6PVveGfAbVp7PP
-	QHbKXTWWG8xOWYESmu7cBO4Yc6Kb+iMx0LW5ZHqZ+HOR3Bp2pB3WCUKZcApgH0dkDKJjlb
-	W6Zk2EoEMtaYQmtcVTfGvF3/AqNu89KwDqSfU4x2s5zV+n10IuGA7H0FwpZLpz9VY6wR6y
-	T2O1r3aRKwyTlmQ1SpSQcK2NsvCJFK9qwFLX2lQ3+tjwfdybLeOTdulwTW1H8g==
+	 to:to:cc:cc:mime-version:mime-version:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=L5klnkF4wtonDE46Lon77oxl2lTvUoZwDONtF/BOYTw=;
+	b=pDAK9tDtR9WtDecPc3W/VNrNtqCwWWrkrDJ12x6+2fVENUODvgXXjkuvzJAuqmsmd/LME6
+	kKgoecpybZSlqmXe+W5WrS5blD9cDzqSQV1IDtK2QCg21BeUPhc6HC8kPObjYe6J0XkShx
+	MY8Tqw0JApIXXzEkhT/BOcklgveK3qpwn1h47/6+g4lc32ILfeGd19q3UjZedsQh4DicQU
+	WOoU18Jhy1tsfDqrhlARCimM08GcwVNwzCpHh9k4lQUWVCNEtv7uIvb4Cw7IF0FkRIy7IB
+	BUhPFX1SWX7/XSkG1TrvwcyQt4ZoaW0UA3R55Fv1ogEkzknvy2384+7P0ZYzuQ==
 To: linux-spi@vger.kernel.org,
 	linux-rockchip@lists.infradead.org
 Cc: broonie@kernel.org,
@@ -45,16 +46,17 @@ Cc: broonie@kernel.org,
 	oss@helene.moe,
 	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org
-Subject: [PATCH 0/5] Improve error handling in Rockchip SPI drivers
-Date: Thu, 26 Sep 2024 10:38:11 +0200
-Message-Id: <cover.1727337732.git.dsimic@manjaro.org>
+Subject: [PATCH 1/5] spi: rockchip: Perform trivial code cleanups
+Date: Thu, 26 Sep 2024 10:38:12 +0200
+Message-Id: <663ec6bb472ab83bb5824a09d11b36ef20a43fc7.1727337732.git.dsimic@manjaro.org>
+In-Reply-To: <cover.1727337732.git.dsimic@manjaro.org>
+References: <cover.1727337732.git.dsimic@manjaro.org>
 MIME-Version: 1.0
 Authentication-Results: ORIGINATING;
 	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240926_013826_426375_20A5F129 
-X-CRM114-Status: UNSURE (   6.30  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240926_013827_139784_BF95E4B3 
+X-CRM114-Status: GOOD (  13.66  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,23 +73,96 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This is a small series that improves error handling in the probe path
-of the Rockchip SPI drivers, by using dev_err_probe() properly in multiple
-places.  It also removes one unnecessary check of a function return value,
-and performs a bunch of small, rather trivial code cleanups, to make the
-code neater and a bit easier to read.
+Perform a few trivial code cleanups, to obey the reverse Christmas tree rule,
+to avoid unnecessary line wrapping by using the 100-column width better, to
+actually obey the 100-column width in one case, and to make the way a couple
+of wrapped function arguments are indented a bit more readable.
 
-Dragan Simic (5):
-  spi: rockchip: Perform trivial code cleanups
-  spi: rockchip-sfc: Perform trivial code cleanups
-  spi: rockchip: Don't check for failed get_fifo_len()
-  spi: rockchip: Use dev_err_probe() in the probe path
-  spi: rockchip-sfc: Use dev_err_probe() in the probe path
+No intended functional changes are introduced by these code cleanups.
 
- drivers/spi/spi-rockchip-sfc.c | 21 +++++--------
- drivers/spi/spi-rockchip.c     | 57 ++++++++++++++--------------------
- 2 files changed, 32 insertions(+), 46 deletions(-)
+Signed-off-by: Dragan Simic <dsimic@manjaro.org>
+---
+ drivers/spi/spi-rockchip.c | 27 ++++++++++++---------------
+ 1 file changed, 12 insertions(+), 15 deletions(-)
 
+diff --git a/drivers/spi/spi-rockchip.c b/drivers/spi/spi-rockchip.c
+index e1ecd96c7858..81f2a966c124 100644
+--- a/drivers/spi/spi-rockchip.c
++++ b/drivers/spi/spi-rockchip.c
+@@ -742,34 +742,32 @@ static int rockchip_spi_setup(struct spi_device *spi)
+ 
+ static int rockchip_spi_probe(struct platform_device *pdev)
+ {
+-	int ret;
+-	struct rockchip_spi *rs;
++	struct device_node *np = pdev->dev.of_node;
+ 	struct spi_controller *ctlr;
++	struct rockchip_spi *rs;
+ 	struct resource *mem;
+-	struct device_node *np = pdev->dev.of_node;
+ 	u32 rsd_nsecs, num_cs;
+ 	bool target_mode;
++	int ret;
+ 
+ 	target_mode = of_property_read_bool(np, "spi-slave");
+ 
+ 	if (target_mode)
+-		ctlr = spi_alloc_target(&pdev->dev,
+-				sizeof(struct rockchip_spi));
++		ctlr = spi_alloc_target(&pdev->dev, sizeof(struct rockchip_spi));
+ 	else
+-		ctlr = spi_alloc_host(&pdev->dev,
+-				sizeof(struct rockchip_spi));
++		ctlr = spi_alloc_host(&pdev->dev, sizeof(struct rockchip_spi));
+ 
+ 	if (!ctlr)
+ 		return -ENOMEM;
+ 
+ 	platform_set_drvdata(pdev, ctlr);
+ 
+ 	rs = spi_controller_get_devdata(ctlr);
+ 
+ 	/* Get basic io resource and map it */
+ 	rs->regs = devm_platform_get_and_ioremap_resource(pdev, 0, &mem);
+ 	if (IS_ERR(rs->regs)) {
+-		ret =  PTR_ERR(rs->regs);
++		ret = PTR_ERR(rs->regs);
+ 		goto err_put_ctlr;
+ 	}
+ 
+@@ -794,26 +792,25 @@ static int rockchip_spi_probe(struct platform_device *pdev)
+ 		goto err_put_ctlr;
+ 
+ 	ret = devm_request_threaded_irq(&pdev->dev, ret, rockchip_spi_isr, NULL,
+-			IRQF_ONESHOT, dev_name(&pdev->dev), ctlr);
++					IRQF_ONESHOT, dev_name(&pdev->dev), ctlr);
+ 	if (ret)
+ 		goto err_put_ctlr;
+ 
+ 	rs->dev = &pdev->dev;
+ 	rs->freq = clk_get_rate(rs->spiclk);
+ 
+ 	if (!of_property_read_u32(pdev->dev.of_node, "rx-sample-delay-ns",
+ 				  &rsd_nsecs)) {
+ 		/* rx sample delay is expressed in parent clock cycles (max 3) */
+-		u32 rsd = DIV_ROUND_CLOSEST(rsd_nsecs * (rs->freq >> 8),
+-				1000000000 >> 8);
++		u32 rsd = DIV_ROUND_CLOSEST(rsd_nsecs * (rs->freq >> 8), 1000000000 >> 8);
+ 		if (!rsd) {
+ 			dev_warn(rs->dev, "%u Hz are too slow to express %u ns delay\n",
+-					rs->freq, rsd_nsecs);
++				 rs->freq, rsd_nsecs);
+ 		} else if (rsd > CR0_RSD_MAX) {
+ 			rsd = CR0_RSD_MAX;
+-			dev_warn(rs->dev, "%u Hz are too fast to express %u ns delay, clamping at %u ns\n",
+-					rs->freq, rsd_nsecs,
+-					CR0_RSD_MAX * 1000000000U / rs->freq);
++			dev_warn(rs->dev,
++				 "%u Hz are too fast to express %u ns delay, clamping at %u ns\n",
++				 rs->freq, rsd_nsecs, CR0_RSD_MAX * 1000000000U / rs->freq);
+ 		}
+ 		rs->rsd = rsd;
+ 	}
 
 _______________________________________________
 Linux-rockchip mailing list
