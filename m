@@ -4,58 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0B939CDD1A4
-	for <linux-rockchip@archiver.kernel.org>; Fri, 27 Sep 2024 12:57:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 57AE0CDD1A6
+	for <linux-rockchip@archiver.kernel.org>; Fri, 27 Sep 2024 12:57:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=c5TlyY2bZRySckYTCjiM2muNUbyYNuFHdKQrGWBfElo=; b=KWxW4K1TefA1ee
-	F66fqvs4Sde32S5AIu458QgXS0GuNXqKg3GA1OoExedYUUXMHdHj/FsEXhteSzdOnnEPXHtNOKiHg
-	pX4Y5OCYguf4xZcdyn5yxTIMEyJ2c/wvedKwvoSX74BDBZX7nlEUFSe8ZDHmowEM2u9gricp2q40V
-	4YhfvGXV2anl/ytkrMmcJfkjD72yvO+FZ/A4sVVP6CKZnUNlTKLHf+TwIDsTDkFacHodK4oYAIdDQ
-	zihuvIc54sOHC3nBXvETVaNkrxYDuEf6ZV2PbzeXlAUJz2jF4THVcjK1gpWiUUUwv4FyE91amjmvX
-	KaNbv//p9frOyFz0GZIA==;
+	List-Owner; bh=IsZDy5gv90UM0Gj/S+TRpX7+5fA7b/FhOfL9m2w51Vw=; b=E0fG18ee2ASS1U
+	MASpKiQr39ukaBmVgORnRGillcyXkph0ppg+P7vbxwzurDu538spbRG2Qd0a5PMNh8RPo9ZY9O0Iq
+	2TqT87ntnO+DIBscZWeIa2JpnnX3ONa/kEn/fYgPm2LfiH/YLNQnuJ3bb+HE1ch1N/geo4t+dfA6S
+	U/GERgTjYKIwUtwPpFE1go6tMkaI33tmxHu9HcUGEktH0H5IwVKQPJDyZnp7hbofm2XHdMJOsqdzW
+	f02LLLWeiXnf0/gKaYKtJ1n+jkBprXYCIzUh7/EngSKG/Ten9gNRmE6xLNDU6HxFeBOArFweB8hGp
+	oxXxCaEp8BKcAppYk2bQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1suAXU-0000000BBMK-1RLv;
-	Fri, 27 Sep 2024 12:57:40 +0000
+	id 1suAXT-0000000BBMF-48z4;
+	Fri, 27 Sep 2024 12:57:39 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1suAJb-0000000B7S9-35uE
+	id 1suAJX-0000000B7OB-2UG4
 	for linux-rockchip@bombadil.infradead.org;
-	Fri, 27 Sep 2024 12:43:20 +0000
+	Fri, 27 Sep 2024 12:43:15 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
 	:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
 	Content-Type:Content-ID:Content-Description;
-	bh=Ol7EcFctgsV1DDn4JfM/1hWKENsxgVGXLG6zLsLuV3c=; b=DZIdBnzHdqrK2pKk0WIBzUcxWz
-	d1NRHK+NYa461YSSnyxhliI70KEZlhBRvccvxJMyLrmN/tqpkIMv1Nrb3ffLP9/BXOzfkhV5EAYMM
-	3An6MkVvxEICCPVjIxakB5Fgx2Vz2xXMR9sBU8gbAr/9o7iUJoZA895jn83uzPmg7MOX1hchrkq/9
-	/3ud04F7WVS0SpZMhS6AEOKNp+pFrxi2afW+hcgIZfd4sBDzN2A9KBMH3nGfJ6A/mzJEsxj6xs7L/
-	Gt9XyYADH1w0NIZ4eG7lFlVa+hI6n8pOOi5uS2x5dTJw7A/Hhdka5Sjpw0n6F6kexCwAZdQzpFEz+
-	pbVvqL5Q==;
-Received: from gauss.telenet-ops.be ([195.130.132.49])
+	bh=iDIsAwKZVHiVkHRPHnLoc0igoRvck38/kdLZbYWCEAY=; b=SCMGl+81wU4uretQYsC2eX/+pc
+	m9Xew4Yd6vcx2mGH7k+F18WyaISFbjvLAiLXs85DD13u1YCmHd/YQZ9onxVDeScsUnDSt8MQ2WArl
+	RJreyrtuAs0inHjxeQatrj8mUotDpVnzj8dG25528fIWE03ycKxMSwEJ4wvHxXH3xdw07ZlzjG7ER
+	NOpsWLCdv5bmVAuZdekIIIfLP0d5aetgKz7LVbrx6jnU/IQPUH5eImOY/+hJaxyn+bjpGAOvic5WU
+	MY1771YZeSdWEoFMi86nrRgFtIS/U8WT5DOqnTTqUGS0AZa2gnFTep0f18tauWClUbLtR42dnICk6
+	DmN0fyFg==;
+Received: from riemann.telenet-ops.be ([2a02:1800:110:4::f00:10])
 	by desiato.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1suAJX-00000002LRw-3IbN
+	id 1suAJR-00000002LPO-1yag
 	for linux-rockchip@lists.infradead.org;
-	Fri, 27 Sep 2024 12:43:18 +0000
-Received: from baptiste.telenet-ops.be (baptiste.telenet-ops.be [IPv6:2a02:1800:120:4::f00:13])
-	by gauss.telenet-ops.be (Postfix) with ESMTPS id 4XFVVw0KQZz4xNDh
+	Fri, 27 Sep 2024 12:43:14 +0000
+Received: from andre.telenet-ops.be (andre.telenet-ops.be [IPv6:2a02:1800:120:4::f00:15])
+	by riemann.telenet-ops.be (Postfix) with ESMTPS id 4XFVVw0RZ0z4xQ0f
 	for <linux-rockchip@lists.infradead.org>; Fri, 27 Sep 2024 14:43:04 +0200 (CEST)
 Received: from ramsan.of.borg ([IPv6:2a02:1810:ac12:ed80:b47d:fd74:3975:15b7])
-	by baptiste.telenet-ops.be with cmsmtp
-	id HQic2D00G3BfLyr01Qicjv; Fri, 27 Sep 2024 14:43:02 +0200
+	by andre.telenet-ops.be with cmsmtp
+	id HQic2D0053BfLyr01Qicif; Fri, 27 Sep 2024 14:43:02 +0200
 Received: from rox.of.borg ([192.168.97.57])
 	by ramsan.of.borg with esmtp (Exim 4.95)
 	(envelope-from <geert@linux-m68k.org>)
-	id 1suAIj-000fPp-H7;
+	id 1suAIj-000fQB-JD;
 	Fri, 27 Sep 2024 14:42:31 +0200
 Received: from geert by rox.of.borg with local (Exim 4.95)
 	(envelope-from <geert@linux-m68k.org>)
-	id 1suAIp-008IDs-1v;
+	id 1suAIp-008IED-5c;
 	Fri, 27 Sep 2024 14:42:31 +0200
 From: Geert Uytterhoeven <geert+renesas@glider.be>
 To: Liam Girdwood <lgirdwood@gmail.com>,
@@ -93,16 +93,16 @@ Cc: linux-sound@vger.kernel.org,
 	linuxppc-dev@lists.ozlabs.org,
 	linux-kernel@vger.kernel.org,
 	Geert Uytterhoeven <geert+renesas@glider.be>
-Subject: [PATCH treewide 06/11] arm64: dts: rockchip: Switch to simple-audio-card,hp-det-gpios
-Date: Fri, 27 Sep 2024 14:42:21 +0200
-Message-Id: <c976b09c6048564737321cf91c3f97b9da5dbfe8.1727438777.git.geert+renesas@glider.be>
+Subject: [PATCH treewide 10/11] ARM: dts: nxp: imx: Switch to {hp,mic}-det-gpios
+Date: Fri, 27 Sep 2024 14:42:25 +0200
+Message-Id: <7ff1bfb73a6d6fc71f3d751dbb7133b045853f64.1727438777.git.geert+renesas@glider.be>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <cover.1727438777.git.geert+renesas@glider.be>
 References: <cover.1727438777.git.geert+renesas@glider.be>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240927_134316_735994_3F0292B1 
-X-CRM114-Status: GOOD (  10.67  )
+X-CRM114-CacheID: sfid-20240927_134309_847301_92395311 
+X-CRM114-Status: GOOD (  10.88  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -119,307 +119,103 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Replace the deprecated "simple-audio-card,hp-det-gpio" property by
-"simple-audio-card,hp-det-gpios" in Simple Audio Card device nodes.
+Replace the deprecated "hp-det-gpio" and "mic-det-gpio" properties by
+"hp-det-gpios" resp. "mic-det-gpios" in Freescale Generic ASoC Sound
+Card device nodes.
 
 Signed-off-by: Geert Uytterhoeven <geert+renesas@glider.be>
 ---
- arch/arm64/boot/dts/rockchip/rk3326-anbernic-rg351m.dtsi        | 2 +-
- arch/arm64/boot/dts/rockchip/rk3326-gameforce-chi.dts           | 2 +-
- arch/arm64/boot/dts/rockchip/rk3326-odroid-go.dtsi              | 2 +-
- arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts            | 2 +-
- arch/arm64/boot/dts/rockchip/rk3399-roc-pc-plus.dts             | 2 +-
- arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg-arc.dtsi        | 2 +-
- arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg353p.dts         | 2 +-
- arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg353ps.dts        | 2 +-
- arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg353v.dts         | 2 +-
- arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg353vs.dts        | 2 +-
- arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg503.dts          | 2 +-
- arch/arm64/boot/dts/rockchip/rk3566-pinetab2.dtsi               | 2 +-
- arch/arm64/boot/dts/rockchip/rk3566-powkiddy-x55.dts            | 2 +-
- arch/arm64/boot/dts/rockchip/rk3568-odroid-m1.dts               | 2 +-
- arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dts                | 2 +-
- arch/arm64/boot/dts/rockchip/rk3588-friendlyelec-cm3588-nas.dts | 2 +-
- arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dtsi              | 2 +-
- arch/arm64/boot/dts/rockchip/rk3588-ok3588-c.dts                | 2 +-
- arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-plus.dts         | 2 +-
- arch/arm64/boot/dts/rockchip/rk3588-quartzpro64.dts             | 2 +-
- arch/arm64/boot/dts/rockchip/rk3588s-gameforce-ace.dts          | 2 +-
- 21 files changed, 21 insertions(+), 21 deletions(-)
+This has a run-time dependency on "ASoC: fsl-asoc-card: Add missing
+handling of {hp,mic}-dt-gpios".
+---
+ arch/arm/boot/dts/nxp/imx/imx6qdl-sabresd.dtsi  | 4 ++--
+ arch/arm/boot/dts/nxp/imx/imx6sl-evk.dts        | 2 +-
+ arch/arm/boot/dts/nxp/imx/imx6sll-evk.dts       | 2 +-
+ arch/arm/boot/dts/nxp/imx/imx6sx-sdb.dtsi       | 2 +-
+ arch/arm/boot/dts/nxp/imx/imx6ul-14x14-evk.dtsi | 2 +-
+ arch/arm/boot/dts/nxp/imx/imx7d-sdb.dts         | 2 +-
+ 6 files changed, 7 insertions(+), 7 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3326-anbernic-rg351m.dtsi b/arch/arm64/boot/dts/rockchip/rk3326-anbernic-rg351m.dtsi
-index b6d041dbed94af85..9caf9dc13b230af7 100644
---- a/arch/arm64/boot/dts/rockchip/rk3326-anbernic-rg351m.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3326-anbernic-rg351m.dtsi
-@@ -49,7 +49,7 @@ rk817-sound {
- 		compatible = "simple-audio-card";
- 		simple-audio-card,name = "rk817_int";
- 		simple-audio-card,format = "i2s";
--		simple-audio-card,hp-det-gpio = <&gpio2 RK_PC6 GPIO_ACTIVE_HIGH>;
-+		simple-audio-card,hp-det-gpios = <&gpio2 RK_PC6 GPIO_ACTIVE_HIGH>;
- 		simple-audio-card,mclk-fs = <256>;
- 		simple-audio-card,widgets =
- 			"Microphone", "Mic Jack",
-diff --git a/arch/arm64/boot/dts/rockchip/rk3326-gameforce-chi.dts b/arch/arm64/boot/dts/rockchip/rk3326-gameforce-chi.dts
-index 579261b3a474b9ba..08ed5b95bb6def21 100644
---- a/arch/arm64/boot/dts/rockchip/rk3326-gameforce-chi.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3326-gameforce-chi.dts
-@@ -245,7 +245,7 @@ sound {
- 		simple-audio-card,name = "rk817_ext";
- 		simple-audio-card,aux-devs = <&spk_amp>;
- 		simple-audio-card,format = "i2s";
--		simple-audio-card,hp-det-gpio = <&gpio2 RK_PC6 GPIO_ACTIVE_HIGH>;
-+		simple-audio-card,hp-det-gpios = <&gpio2 RK_PC6 GPIO_ACTIVE_HIGH>;
- 		simple-audio-card,mclk-fs = <256>;
- 		simple-audio-card,widgets =
- 			"Microphone", "Mic Jack",
-diff --git a/arch/arm64/boot/dts/rockchip/rk3326-odroid-go.dtsi b/arch/arm64/boot/dts/rockchip/rk3326-odroid-go.dtsi
-index 80fc53c807a42c09..f585b46ceaf31fac 100644
---- a/arch/arm64/boot/dts/rockchip/rk3326-odroid-go.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3326-odroid-go.dtsi
-@@ -144,7 +144,7 @@ rk817-sound {
- 		compatible = "simple-audio-card";
- 		simple-audio-card,name = "rk817_int";
- 		simple-audio-card,format = "i2s";
--		simple-audio-card,hp-det-gpio = <&gpio2 RK_PC6 GPIO_ACTIVE_HIGH>;
-+		simple-audio-card,hp-det-gpios = <&gpio2 RK_PC6 GPIO_ACTIVE_HIGH>;
- 		simple-audio-card,mclk-fs = <256>;
- 		simple-audio-card,widgets =
- 			"Microphone", "Mic Jack",
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts b/arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts
-index a5a7e374bc59478e..1b075072e8e8c17a 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts
-@@ -150,7 +150,7 @@ es8316-sound {
- 			"Speaker", "Speaker Amplifier OUTL",
- 			"Speaker", "Speaker Amplifier OUTR";
+diff --git a/arch/arm/boot/dts/nxp/imx/imx6qdl-sabresd.dtsi b/arch/arm/boot/dts/nxp/imx/imx6qdl-sabresd.dtsi
+index 8f4f5fba68cc5f4f..86a86dc370c4a9fb 100644
+--- a/arch/arm/boot/dts/nxp/imx/imx6qdl-sabresd.dtsi
++++ b/arch/arm/boot/dts/nxp/imx/imx6qdl-sabresd.dtsi
+@@ -113,8 +113,8 @@ sound {
+ 			"DMICDAT", "DMIC";
+ 		mux-int-port = <2>;
+ 		mux-ext-port = <3>;
+-		hp-det-gpio = <&gpio7 8 GPIO_ACTIVE_LOW>;
+-		mic-det-gpio = <&gpio1 9 GPIO_ACTIVE_LOW>;
++		hp-det-gpios = <&gpio7 8 GPIO_ACTIVE_LOW>;
++		mic-det-gpios = <&gpio1 9 GPIO_ACTIVE_LOW>;
+ 	};
  
--		simple-audio-card,hp-det-gpio = <&gpio0 RK_PB0 GPIO_ACTIVE_HIGH>;
-+		simple-audio-card,hp-det-gpios = <&gpio0 RK_PB0 GPIO_ACTIVE_HIGH>;
- 		simple-audio-card,aux-devs = <&speaker_amp>;
- 		simple-audio-card,pin-switches = "Speaker";
+ 	backlight_lvds: backlight-lvds {
+diff --git a/arch/arm/boot/dts/nxp/imx/imx6sl-evk.dts b/arch/arm/boot/dts/nxp/imx/imx6sl-evk.dts
+index 7c899291ab0dada4..542d633651f24575 100644
+--- a/arch/arm/boot/dts/nxp/imx/imx6sl-evk.dts
++++ b/arch/arm/boot/dts/nxp/imx/imx6sl-evk.dts
+@@ -108,7 +108,7 @@ sound {
+ 			"IN3R", "AMIC";
+ 		mux-int-port = <2>;
+ 		mux-ext-port = <3>;
+-		hp-det-gpio = <&gpio4 19 GPIO_ACTIVE_LOW>;
++		hp-det-gpios = <&gpio4 19 GPIO_ACTIVE_LOW>;
+ 	};
  
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-roc-pc-plus.dts b/arch/arm64/boot/dts/rockchip/rk3399-roc-pc-plus.dts
-index 7ba1c28f70a9a86b..2c41e017f4f402e9 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-roc-pc-plus.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-roc-pc-plus.dts
-@@ -51,7 +51,7 @@ es8388-sound {
- 			"Headphone Amp INR", "ROUT2",
- 			"Headphones", "Headphone Amp OUTL",
- 			"Headphones", "Headphone Amp OUTR";
--		simple-audio-card,hp-det-gpio = <&gpio2 RK_PA6 GPIO_ACTIVE_HIGH>;
-+		simple-audio-card,hp-det-gpios = <&gpio2 RK_PA6 GPIO_ACTIVE_HIGH>;
- 		simple-audio-card,aux-devs = <&headphones_amp>;
- 		simple-audio-card,pin-switches = "Headphones";
+ 	panel {
+diff --git a/arch/arm/boot/dts/nxp/imx/imx6sll-evk.dts b/arch/arm/boot/dts/nxp/imx/imx6sll-evk.dts
+index febc2dd9967de69e..c5383158e25c959b 100644
+--- a/arch/arm/boot/dts/nxp/imx/imx6sll-evk.dts
++++ b/arch/arm/boot/dts/nxp/imx/imx6sll-evk.dts
+@@ -157,7 +157,7 @@ sound {
+ 			"IN3R", "AMIC";
+ 		mux-int-port = <2>;
+ 		mux-ext-port = <3>;
+-		hp-det-gpio = <&gpio4 24 GPIO_ACTIVE_LOW>;
++		hp-det-gpios = <&gpio4 24 GPIO_ACTIVE_LOW>;
+ 	};
+ };
  
-diff --git a/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg-arc.dtsi b/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg-arc.dtsi
-index a4a60e4a53d43106..0aa2694552ae5ed1 100644
---- a/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg-arc.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg-arc.dtsi
-@@ -41,7 +41,7 @@ sound {
- 		simple-audio-card,name = "rk817_ext";
- 		simple-audio-card,aux-devs = <&spk_amp>;
- 		simple-audio-card,format = "i2s";
--		simple-audio-card,hp-det-gpio = <&gpio4 RK_PC6 GPIO_ACTIVE_HIGH>;
-+		simple-audio-card,hp-det-gpios = <&gpio4 RK_PC6 GPIO_ACTIVE_HIGH>;
- 		simple-audio-card,mclk-fs = <256>;
- 		simple-audio-card,widgets =
- 			"Microphone", "Mic Jack",
-diff --git a/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg353p.dts b/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg353p.dts
-index a73cf30801ec7f33..6f12a9e83cd6787e 100644
---- a/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg353p.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg353p.dts
-@@ -43,7 +43,7 @@ sound {
- 		simple-audio-card,name = "rk817_ext";
- 		simple-audio-card,aux-devs = <&spk_amp>;
- 		simple-audio-card,format = "i2s";
--		simple-audio-card,hp-det-gpio = <&gpio4 RK_PC6 GPIO_ACTIVE_HIGH>;
-+		simple-audio-card,hp-det-gpios = <&gpio4 RK_PC6 GPIO_ACTIVE_HIGH>;
- 		simple-audio-card,mclk-fs = <256>;
- 		simple-audio-card,widgets =
- 			"Microphone", "Mic Jack",
-diff --git a/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg353ps.dts b/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg353ps.dts
-index ca5284e4807d80b2..4fb712fe918c968e 100644
---- a/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg353ps.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg353ps.dts
-@@ -42,7 +42,7 @@ sound {
- 		simple-audio-card,name = "rk817_ext";
- 		simple-audio-card,aux-devs = <&spk_amp>;
- 		simple-audio-card,format = "i2s";
--		simple-audio-card,hp-det-gpio = <&gpio4 RK_PC6 GPIO_ACTIVE_HIGH>;
-+		simple-audio-card,hp-det-gpios = <&gpio4 RK_PC6 GPIO_ACTIVE_HIGH>;
- 		simple-audio-card,mclk-fs = <256>;
- 		simple-audio-card,widgets =
- 			"Microphone", "Mic Jack",
-diff --git a/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg353v.dts b/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg353v.dts
-index e9954a33e8cd31f2..2ea7007b41b86c6b 100644
---- a/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg353v.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg353v.dts
-@@ -42,7 +42,7 @@ sound {
- 		compatible = "simple-audio-card";
- 		simple-audio-card,name = "rk817_int";
- 		simple-audio-card,format = "i2s";
--		simple-audio-card,hp-det-gpio = <&gpio4 RK_PC6 GPIO_ACTIVE_HIGH>;
-+		simple-audio-card,hp-det-gpios = <&gpio4 RK_PC6 GPIO_ACTIVE_HIGH>;
- 		simple-audio-card,mclk-fs = <256>;
- 		simple-audio-card,widgets =
- 			"Microphone", "Mic Jack",
-diff --git a/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg353vs.dts b/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg353vs.dts
-index 90da43855d1cbc54..5a30e3918c044144 100644
---- a/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg353vs.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg353vs.dts
-@@ -41,7 +41,7 @@ sound {
- 		compatible = "simple-audio-card";
- 		simple-audio-card,name = "rk817_int";
- 		simple-audio-card,format = "i2s";
--		simple-audio-card,hp-det-gpio = <&gpio4 RK_PC6 GPIO_ACTIVE_HIGH>;
-+		simple-audio-card,hp-det-gpios = <&gpio4 RK_PC6 GPIO_ACTIVE_HIGH>;
- 		simple-audio-card,mclk-fs = <256>;
- 		simple-audio-card,widgets =
- 			"Microphone", "Mic Jack",
-diff --git a/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg503.dts b/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg503.dts
-index 74cf313e06355570..4dcc0ea4cf0f02d2 100644
---- a/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg503.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg503.dts
-@@ -132,7 +132,7 @@ sound {
- 		simple-audio-card,name = "rk817_ext";
- 		simple-audio-card,aux-devs = <&spk_amp>;
- 		simple-audio-card,format = "i2s";
--		simple-audio-card,hp-det-gpio = <&gpio4 RK_PC6 GPIO_ACTIVE_HIGH>;
-+		simple-audio-card,hp-det-gpios = <&gpio4 RK_PC6 GPIO_ACTIVE_HIGH>;
- 		simple-audio-card,mclk-fs = <256>;
- 		simple-audio-card,widgets =
- 			"Microphone", "Mic Jack",
-diff --git a/arch/arm64/boot/dts/rockchip/rk3566-pinetab2.dtsi b/arch/arm64/boot/dts/rockchip/rk3566-pinetab2.dtsi
-index db40281eafbe5d45..d3709efd242e91ef 100644
---- a/arch/arm64/boot/dts/rockchip/rk3566-pinetab2.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3566-pinetab2.dtsi
-@@ -121,7 +121,7 @@ rk817-sound {
- 			"Internal Speakers", "Speaker Amplifier OUTR",
- 			"Speaker Amplifier INL", "HPOL",
- 			"Speaker Amplifier INR", "HPOR";
--		simple-audio-card,hp-det-gpio = <&gpio4 RK_PC6 GPIO_ACTIVE_LOW>;
-+		simple-audio-card,hp-det-gpios = <&gpio4 RK_PC6 GPIO_ACTIVE_LOW>;
- 		simple-audio-card,aux-devs = <&speaker_amp>;
- 		simple-audio-card,pin-switches = "Internal Speakers";
+diff --git a/arch/arm/boot/dts/nxp/imx/imx6sx-sdb.dtsi b/arch/arm/boot/dts/nxp/imx/imx6sx-sdb.dtsi
+index 277a6e039045b575..ddd01b6dee5a9976 100644
+--- a/arch/arm/boot/dts/nxp/imx/imx6sx-sdb.dtsi
++++ b/arch/arm/boot/dts/nxp/imx/imx6sx-sdb.dtsi
+@@ -167,7 +167,7 @@ sound {
+ 			"IN3R", "AMIC";
+ 		mux-int-port = <2>;
+ 		mux-ext-port = <6>;
+-		hp-det-gpio = <&gpio1 17 GPIO_ACTIVE_LOW>;
++		hp-det-gpios = <&gpio1 17 GPIO_ACTIVE_LOW>;
+ 	};
  
-diff --git a/arch/arm64/boot/dts/rockchip/rk3566-powkiddy-x55.dts b/arch/arm64/boot/dts/rockchip/rk3566-powkiddy-x55.dts
-index 5a648db41f355e87..e274f7bf9dfb3dd9 100644
---- a/arch/arm64/boot/dts/rockchip/rk3566-powkiddy-x55.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3566-powkiddy-x55.dts
-@@ -269,7 +269,7 @@ sound {
- 		simple-audio-card,name = "rk817_ext";
- 		simple-audio-card,aux-devs = <&spk_amp>;
- 		simple-audio-card,format = "i2s";
--		simple-audio-card,hp-det-gpio = <&gpio4 RK_PC6 GPIO_ACTIVE_HIGH>;
-+		simple-audio-card,hp-det-gpios = <&gpio4 RK_PC6 GPIO_ACTIVE_HIGH>;
- 		simple-audio-card,mclk-fs = <256>;
- 		simple-audio-card,widgets =
- 			"Microphone", "Mic Jack",
-diff --git a/arch/arm64/boot/dts/rockchip/rk3568-odroid-m1.dts b/arch/arm64/boot/dts/rockchip/rk3568-odroid-m1.dts
-index 6a02db4f073f296f..6f2533f29e8823fb 100644
---- a/arch/arm64/boot/dts/rockchip/rk3568-odroid-m1.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3568-odroid-m1.dts
-@@ -84,7 +84,7 @@ rk809-sound {
- 		pinctrl-0 = <&hp_det_pin>;
- 		simple-audio-card,name = "Analog RK817";
- 		simple-audio-card,format = "i2s";
--		simple-audio-card,hp-det-gpio = <&gpio0 RK_PB0 GPIO_ACTIVE_HIGH>;
-+		simple-audio-card,hp-det-gpios = <&gpio0 RK_PB0 GPIO_ACTIVE_HIGH>;
- 		simple-audio-card,mclk-fs = <256>;
- 		simple-audio-card,widgets =
- 			"Headphone", "Headphones",
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dts b/arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dts
-index 00f660d50127f75e..df44dbc394ca54fa 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dts
-@@ -66,7 +66,7 @@ analog-sound {
- 		simple-audio-card,bitclock-master = <&masterdai>;
- 		simple-audio-card,format = "i2s";
- 		simple-audio-card,frame-master = <&masterdai>;
--		simple-audio-card,hp-det-gpio = <&gpio1 RK_PD5 GPIO_ACTIVE_LOW>;
-+		simple-audio-card,hp-det-gpios = <&gpio1 RK_PD5 GPIO_ACTIVE_LOW>;
- 		simple-audio-card,mclk-fs = <256>;
- 		simple-audio-card,pin-switches = "Headphones", "Speaker";
- 		simple-audio-card,routing =
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-friendlyelec-cm3588-nas.dts b/arch/arm64/boot/dts/rockchip/rk3588-friendlyelec-cm3588-nas.dts
-index 83103e4c7216fdef..411007cb8118a58e 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-friendlyelec-cm3588-nas.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-friendlyelec-cm3588-nas.dts
-@@ -38,7 +38,7 @@ analog-sound {
- 		pinctrl-0 = <&headphone_detect>;
- 
- 		simple-audio-card,format = "i2s";
--		simple-audio-card,hp-det-gpio = <&gpio1 RK_PC4 GPIO_ACTIVE_LOW>;
-+		simple-audio-card,hp-det-gpios = <&gpio1 RK_PC4 GPIO_ACTIVE_LOW>;
- 		simple-audio-card,mclk-fs = <256>;
- 		simple-audio-card,name = "realtek,rt5616-codec";
- 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dtsi
-index fc131789b4c32721..560eeb56c804cc86 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dtsi
-@@ -75,7 +75,7 @@ sound {
- 		simple-audio-card,format = "i2s";
- 		simple-audio-card,mclk-fs = <256>;
- 
--		simple-audio-card,hp-det-gpio = <&gpio1 RK_PC4 GPIO_ACTIVE_LOW>;
-+		simple-audio-card,hp-det-gpios = <&gpio1 RK_PC4 GPIO_ACTIVE_LOW>;
- 
- 		simple-audio-card,widgets =
- 			"Headphone", "Headphones",
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-ok3588-c.dts b/arch/arm64/boot/dts/rockchip/rk3588-ok3588-c.dts
-index c2a08bdf09e83977..b8c33052cd00fcd0 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-ok3588-c.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-ok3588-c.dts
-@@ -75,7 +75,7 @@ sound {
- 		simple-audio-card,bitclock-master = <&masterdai>;
- 		simple-audio-card,format = "i2s";
- 		simple-audio-card,frame-master = <&masterdai>;
--		simple-audio-card,hp-det-gpio = <&gpio1 RK_PB2 GPIO_ACTIVE_HIGH>;
-+		simple-audio-card,hp-det-gpios = <&gpio1 RK_PB2 GPIO_ACTIVE_HIGH>;
- 		simple-audio-card,mclk-fs = <256>;
- 		simple-audio-card,pin-switches = "Headphones", "Speaker";
- 		simple-audio-card,widgets =
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-plus.dts b/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-plus.dts
-index c3a6812cc93a2f90..805cf53b1ead6fa2 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-plus.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-plus.dts
-@@ -120,7 +120,7 @@ sound {
- 		simple-audio-card,aux-devs = <&speaker_amp>, <&headphone_amp>;
- 		simple-audio-card,format = "i2s";
- 		simple-audio-card,mclk-fs = <256>;
--		simple-audio-card,hp-det-gpio = <&gpio1 RK_PD3 GPIO_ACTIVE_LOW>;
-+		simple-audio-card,hp-det-gpios = <&gpio1 RK_PD3 GPIO_ACTIVE_LOW>;
- 		simple-audio-card,bitclock-master = <&daicpu>;
- 		simple-audio-card,frame-master = <&daicpu>;
- 		/*TODO: SARADC_IN3 is used as MIC detection / key input */
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-quartzpro64.dts b/arch/arm64/boot/dts/rockchip/rk3588-quartzpro64.dts
-index e4a20cda65ed63f4..50c7a5e9af1904b8 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-quartzpro64.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-quartzpro64.dts
-@@ -104,7 +104,7 @@ sound {
- 		simple-audio-card,aux-devs = <&speaker_amp>, <&headphone_amp>;
- 		simple-audio-card,format = "i2s";
- 		simple-audio-card,mclk-fs = <256>;
--		simple-audio-card,hp-det-gpio = <&gpio1 RK_PD5 GPIO_ACTIVE_LOW>;
-+		simple-audio-card,hp-det-gpios = <&gpio1 RK_PD5 GPIO_ACTIVE_LOW>;
- 		simple-audio-card,bitclock-master = <&daicpu>;
- 		simple-audio-card,frame-master = <&daicpu>;
- 		/* SARADC_IN3 is used as MIC detection / key input */
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-gameforce-ace.dts b/arch/arm64/boot/dts/rockchip/rk3588s-gameforce-ace.dts
-index 467f69594089bf1f..cd9ad440f7298b37 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588s-gameforce-ace.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588s-gameforce-ace.dts
-@@ -122,7 +122,7 @@ analog-sound {
- 		simple-audio-card,bitclock-master = <&masterdai>;
- 		simple-audio-card,format = "i2s";
- 		simple-audio-card,frame-master = <&masterdai>;
--		simple-audio-card,hp-det-gpio = <&gpio3 RK_PA6 GPIO_ACTIVE_LOW>;
-+		simple-audio-card,hp-det-gpios = <&gpio3 RK_PA6 GPIO_ACTIVE_LOW>;
- 		simple-audio-card,mclk-fs = <256>;
- 		simple-audio-card,name = "rockchip,es8388-codec";
- 		simple-audio-card,pin-switches = "Headphones", "Speaker";
+ 	panel {
+diff --git a/arch/arm/boot/dts/nxp/imx/imx6ul-14x14-evk.dtsi b/arch/arm/boot/dts/nxp/imx/imx6ul-14x14-evk.dtsi
+index b74ee8948a781762..0e839bbfea082140 100644
+--- a/arch/arm/boot/dts/nxp/imx/imx6ul-14x14-evk.dtsi
++++ b/arch/arm/boot/dts/nxp/imx/imx6ul-14x14-evk.dtsi
+@@ -68,7 +68,7 @@ sound-wm8960 {
+ 		audio-cpu = <&sai2>;
+ 		audio-codec = <&codec>;
+ 		audio-asrc = <&asrc>;
+-		hp-det-gpio = <&gpio5 4 0>;
++		hp-det-gpios = <&gpio5 4 0>;
+ 		audio-routing =
+ 			"Headphone Jack", "HP_L",
+ 			"Headphone Jack", "HP_R",
+diff --git a/arch/arm/boot/dts/nxp/imx/imx7d-sdb.dts b/arch/arm/boot/dts/nxp/imx/imx7d-sdb.dts
+index f712537fca161ab9..6cde84636900bb00 100644
+--- a/arch/arm/boot/dts/nxp/imx/imx7d-sdb.dts
++++ b/arch/arm/boot/dts/nxp/imx/imx7d-sdb.dts
+@@ -169,7 +169,7 @@ sound {
+ 		model = "wm8960-audio";
+ 		audio-cpu = <&sai1>;
+ 		audio-codec = <&codec>;
+-		hp-det-gpio = <&gpio2 28 GPIO_ACTIVE_HIGH>;
++		hp-det-gpios = <&gpio2 28 GPIO_ACTIVE_HIGH>;
+ 		audio-routing =
+ 			"Headphone Jack", "HP_L",
+ 			"Headphone Jack", "HP_R",
 -- 
 2.34.1
 
