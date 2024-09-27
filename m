@@ -4,105 +4,121 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 57AE0CDD1A6
-	for <linux-rockchip@archiver.kernel.org>; Fri, 27 Sep 2024 12:57:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 021A9CDD1A8
+	for <linux-rockchip@archiver.kernel.org>; Fri, 27 Sep 2024 13:00:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=IsZDy5gv90UM0Gj/S+TRpX7+5fA7b/FhOfL9m2w51Vw=; b=E0fG18ee2ASS1U
-	MASpKiQr39ukaBmVgORnRGillcyXkph0ppg+P7vbxwzurDu538spbRG2Qd0a5PMNh8RPo9ZY9O0Iq
-	2TqT87ntnO+DIBscZWeIa2JpnnX3ONa/kEn/fYgPm2LfiH/YLNQnuJ3bb+HE1ch1N/geo4t+dfA6S
-	U/GERgTjYKIwUtwPpFE1go6tMkaI33tmxHu9HcUGEktH0H5IwVKQPJDyZnp7hbofm2XHdMJOsqdzW
-	f02LLLWeiXnf0/gKaYKtJ1n+jkBprXYCIzUh7/EngSKG/Ten9gNRmE6xLNDU6HxFeBOArFweB8hGp
-	oxXxCaEp8BKcAppYk2bQ==;
+	List-Owner; bh=H0o3LHS0yYu20lsU+uK6FQdYadOooLdUoYuftVlN2k0=; b=LkkxNF0mt5XHGz
+	OdtOiXL60VjoPp2dLsc2X+aPZS0OUEFayIYs4Dr7yxCYOJKw1xCqNSDXyw6husAyRqPktogY2K3lF
+	t0NitwlIws1RkFxqjYjsyFSHPltjJMlz5Ntzpg7Lj5Myt49Ki+sNmxwcyMHPGNXOk1G7/CSyjeCKD
+	+kKoPWEierTK/mDiDZ9Pyc6/rE6MKHsUXg0MO8gw0S9PUjEJiQPpgGZEdn8lngvn+FxFbBmJXGWlM
+	s2HEGSQ3BQlWX57wRwE6ZxdaAsYA1bRlpDpyWWO3v5YuNZA+36lYEOp3+RVswoe+oUxuqvUlaP31F
+	HcNjbdBh45fV8GKpV59A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1suAXT-0000000BBMF-48z4;
-	Fri, 27 Sep 2024 12:57:39 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1suAZq-0000000BC0g-1z0W;
+	Fri, 27 Sep 2024 13:00:06 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1suAJX-0000000B7OB-2UG4
-	for linux-rockchip@bombadil.infradead.org;
-	Fri, 27 Sep 2024 12:43:15 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
-	:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-Type:Content-ID:Content-Description;
-	bh=iDIsAwKZVHiVkHRPHnLoc0igoRvck38/kdLZbYWCEAY=; b=SCMGl+81wU4uretQYsC2eX/+pc
-	m9Xew4Yd6vcx2mGH7k+F18WyaISFbjvLAiLXs85DD13u1YCmHd/YQZ9onxVDeScsUnDSt8MQ2WArl
-	RJreyrtuAs0inHjxeQatrj8mUotDpVnzj8dG25528fIWE03ycKxMSwEJ4wvHxXH3xdw07ZlzjG7ER
-	NOpsWLCdv5bmVAuZdekIIIfLP0d5aetgKz7LVbrx6jnU/IQPUH5eImOY/+hJaxyn+bjpGAOvic5WU
-	MY1771YZeSdWEoFMi86nrRgFtIS/U8WT5DOqnTTqUGS0AZa2gnFTep0f18tauWClUbLtR42dnICk6
-	DmN0fyFg==;
-Received: from riemann.telenet-ops.be ([2a02:1800:110:4::f00:10])
-	by desiato.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1suAJR-00000002LPO-1yag
-	for linux-rockchip@lists.infradead.org;
-	Fri, 27 Sep 2024 12:43:14 +0000
-Received: from andre.telenet-ops.be (andre.telenet-ops.be [IPv6:2a02:1800:120:4::f00:15])
-	by riemann.telenet-ops.be (Postfix) with ESMTPS id 4XFVVw0RZ0z4xQ0f
-	for <linux-rockchip@lists.infradead.org>; Fri, 27 Sep 2024 14:43:04 +0200 (CEST)
-Received: from ramsan.of.borg ([IPv6:2a02:1810:ac12:ed80:b47d:fd74:3975:15b7])
-	by andre.telenet-ops.be with cmsmtp
-	id HQic2D0053BfLyr01Qicif; Fri, 27 Sep 2024 14:43:02 +0200
-Received: from rox.of.borg ([192.168.97.57])
-	by ramsan.of.borg with esmtp (Exim 4.95)
-	(envelope-from <geert@linux-m68k.org>)
-	id 1suAIj-000fQB-JD;
-	Fri, 27 Sep 2024 14:42:31 +0200
-Received: from geert by rox.of.borg with local (Exim 4.95)
-	(envelope-from <geert@linux-m68k.org>)
-	id 1suAIp-008IED-5c;
-	Fri, 27 Sep 2024 14:42:31 +0200
-From: Geert Uytterhoeven <geert+renesas@glider.be>
-To: Liam Girdwood <lgirdwood@gmail.com>,
-	Mark Brown <broonie@kernel.org>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Lubomir Rintel <lkundrak@v3.sk>,
-	Shawn Guo <shawnguo@kernel.org>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Pengutronix Kernel Team <kernel@pengutronix.de>,
-	Fabio Estevam <festevam@gmail.com>,
-	Magnus Damm <magnus.damm@gmail.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
-	Masami Hiramatsu <mhiramat@kernel.org>,
-	Paul Cercueil <paul@crapouillou.net>,
-	Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
-	Shengjiu Wang <shengjiu.wang@gmail.com>,
-	Xiubo Li <Xiubo.Lee@gmail.com>,
-	Nicolin Chen <nicoleotsuka@gmail.com>,
-	Jaroslav Kysela <perex@perex.cz>,
-	Takashi Iwai <tiwai@suse.com>,
-	Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>,
-	Adrien Grassein <adrien.grassein@gmail.com>,
-	Adam Ford <aford173@gmail.com>
-Cc: linux-sound@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	imx@lists.linux.dev,
-	linux-renesas-soc@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	linux-mips@vger.kernel.org,
-	alsa-devel@alsa-project.org,
-	linuxppc-dev@lists.ozlabs.org,
-	linux-kernel@vger.kernel.org,
-	Geert Uytterhoeven <geert+renesas@glider.be>
-Subject: [PATCH treewide 10/11] ARM: dts: nxp: imx: Switch to {hp,mic}-det-gpios
-Date: Fri, 27 Sep 2024 14:42:25 +0200
-Message-Id: <7ff1bfb73a6d6fc71f3d751dbb7133b045853f64.1727438777.git.geert+renesas@glider.be>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <cover.1727438777.git.geert+renesas@glider.be>
-References: <cover.1727438777.git.geert+renesas@glider.be>
+	id 1suAPx-0000000B9Sh-08ZF;
+	Fri, 27 Sep 2024 12:50:03 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 4C5645C5709;
+	Fri, 27 Sep 2024 12:49:48 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D4C8AC4CEC4;
+	Fri, 27 Sep 2024 12:49:43 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1727441392;
+	bh=MCRmT1tGikliogFhH3yZwzjHEvydH6PJYBw/yBG7KAg=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=flDQBek5H0nrQVY2wzHF5fik3K/4q+/JtPLkVU9sbL6EWn6/r7q+gvRm0DugHHuiG
+	 CZnSvpxLuIt+X0XsHK4sWBy96+X6UJEk/FUI8mQ8Q7Vg9Lhy/TFGuJgFxGzSbxfCEV
+	 BwrwwXeI12yfItXhaa9bwctvBLAMZNcf51V/S5uZwARtM4r9iz/Fw/E3a1pj9vS3ps
+	 SFTtbHR8PcoIcJ8J3py05ocTf7gHbobcfw//4QZJSaqIt/Vn23sAvLXZVpKv/Mvm/e
+	 bPrRSEeq8uJ4ky0rHgyWW2olf+V969wY+0tW2TtbOTaUOFEIBEFUeb7MJHotuDhdqt
+	 hVSNDv1Yja76g==
+Message-ID: <baf065b7-c164-42c8-b4d0-c81653a71ef8@kernel.org>
+Date: Fri, 27 Sep 2024 14:49:41 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH treewide 01/11] ASoC: fsl-asoc-card: Add missing handling
+ of {hp,mic}-dt-gpios
+To: Geert Uytterhoeven <geert+renesas@glider.be>,
+ Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Lubomir Rintel <lkundrak@v3.sk>,
+ Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Fabio Estevam <festevam@gmail.com>, Magnus Damm <magnus.damm@gmail.com>,
+ Heiko Stuebner <heiko@sntech.de>,
+ Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
+ Masami Hiramatsu <mhiramat@kernel.org>, Paul Cercueil
+ <paul@crapouillou.net>, Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
+ Shengjiu Wang <shengjiu.wang@gmail.com>, Xiubo Li <Xiubo.Lee@gmail.com>,
+ Nicolin Chen <nicoleotsuka@gmail.com>, Jaroslav Kysela <perex@perex.cz>,
+ Takashi Iwai <tiwai@suse.com>,
+ Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>,
+ Adrien Grassein <adrien.grassein@gmail.com>, Adam Ford <aford173@gmail.com>
+Cc: linux-sound@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, imx@lists.linux.dev,
+ linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ linux-mips@vger.kernel.org, alsa-devel@alsa-project.org,
+ linuxppc-dev@lists.ozlabs.org, linux-kernel@vger.kernel.org
+References: <cover.1727438777.git.geert+renesas@glider.be>
+ <dbcb5bfea005a468ec6dc38374fe6d02bc693c22.1727438777.git.geert+renesas@glider.be>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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 fv0=
+In-Reply-To: <dbcb5bfea005a468ec6dc38374fe6d02bc693c22.1727438777.git.geert+renesas@glider.be>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240927_134309_847301_92395311 
-X-CRM114-Status: GOOD (  10.88  )
+X-CRM114-CacheID: sfid-20240927_054953_243938_FEC21533 
+X-CRM114-Status: GOOD (  10.21  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -119,105 +135,27 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Replace the deprecated "hp-det-gpio" and "mic-det-gpio" properties by
-"hp-det-gpios" resp. "mic-det-gpios" in Freescale Generic ASoC Sound
-Card device nodes.
+On 27/09/2024 14:42, Geert Uytterhoeven wrote:
+> The DT bindings deprecated the "hp-det-gpio" and "mic-det-gpio"
+> properties in favor of "hp-det-gpios" and "mic-det-gpios", but the
+> driver was never updated to support the latter.
+> 
+> Even before, there existed users of "hp-det-gpios" and "mic-det-gpios".
+> While this may have been handled fine by the ASoC core, this was missed
+> by the Freescale-specific part.
+> 
+> Fixes: 4189b54220e5af15 ("ASoC: dt-bindings: fsl-asoc-card: convert to YAML")
+> Fixes: 40ba2eda0a7b727f ("arm64: dts: imx8mm-nitrogen-r2: add audio")
+> Signed-off-by: Geert Uytterhoeven <geert+renesas@glider.be>
+> ---
+> Noticed accidentally.
+> Compile-tested only.
 
-Signed-off-by: Geert Uytterhoeven <geert+renesas@glider.be>
----
-This has a run-time dependency on "ASoC: fsl-asoc-card: Add missing
-handling of {hp,mic}-dt-gpios".
----
- arch/arm/boot/dts/nxp/imx/imx6qdl-sabresd.dtsi  | 4 ++--
- arch/arm/boot/dts/nxp/imx/imx6sl-evk.dts        | 2 +-
- arch/arm/boot/dts/nxp/imx/imx6sll-evk.dts       | 2 +-
- arch/arm/boot/dts/nxp/imx/imx6sx-sdb.dtsi       | 2 +-
- arch/arm/boot/dts/nxp/imx/imx6ul-14x14-evk.dtsi | 2 +-
- arch/arm/boot/dts/nxp/imx/imx7d-sdb.dts         | 2 +-
- 6 files changed, 7 insertions(+), 7 deletions(-)
 
-diff --git a/arch/arm/boot/dts/nxp/imx/imx6qdl-sabresd.dtsi b/arch/arm/boot/dts/nxp/imx/imx6qdl-sabresd.dtsi
-index 8f4f5fba68cc5f4f..86a86dc370c4a9fb 100644
---- a/arch/arm/boot/dts/nxp/imx/imx6qdl-sabresd.dtsi
-+++ b/arch/arm/boot/dts/nxp/imx/imx6qdl-sabresd.dtsi
-@@ -113,8 +113,8 @@ sound {
- 			"DMICDAT", "DMIC";
- 		mux-int-port = <2>;
- 		mux-ext-port = <3>;
--		hp-det-gpio = <&gpio7 8 GPIO_ACTIVE_LOW>;
--		mic-det-gpio = <&gpio1 9 GPIO_ACTIVE_LOW>;
-+		hp-det-gpios = <&gpio7 8 GPIO_ACTIVE_LOW>;
-+		mic-det-gpios = <&gpio1 9 GPIO_ACTIVE_LOW>;
- 	};
- 
- 	backlight_lvds: backlight-lvds {
-diff --git a/arch/arm/boot/dts/nxp/imx/imx6sl-evk.dts b/arch/arm/boot/dts/nxp/imx/imx6sl-evk.dts
-index 7c899291ab0dada4..542d633651f24575 100644
---- a/arch/arm/boot/dts/nxp/imx/imx6sl-evk.dts
-+++ b/arch/arm/boot/dts/nxp/imx/imx6sl-evk.dts
-@@ -108,7 +108,7 @@ sound {
- 			"IN3R", "AMIC";
- 		mux-int-port = <2>;
- 		mux-ext-port = <3>;
--		hp-det-gpio = <&gpio4 19 GPIO_ACTIVE_LOW>;
-+		hp-det-gpios = <&gpio4 19 GPIO_ACTIVE_LOW>;
- 	};
- 
- 	panel {
-diff --git a/arch/arm/boot/dts/nxp/imx/imx6sll-evk.dts b/arch/arm/boot/dts/nxp/imx/imx6sll-evk.dts
-index febc2dd9967de69e..c5383158e25c959b 100644
---- a/arch/arm/boot/dts/nxp/imx/imx6sll-evk.dts
-+++ b/arch/arm/boot/dts/nxp/imx/imx6sll-evk.dts
-@@ -157,7 +157,7 @@ sound {
- 			"IN3R", "AMIC";
- 		mux-int-port = <2>;
- 		mux-ext-port = <3>;
--		hp-det-gpio = <&gpio4 24 GPIO_ACTIVE_LOW>;
-+		hp-det-gpios = <&gpio4 24 GPIO_ACTIVE_LOW>;
- 	};
- };
- 
-diff --git a/arch/arm/boot/dts/nxp/imx/imx6sx-sdb.dtsi b/arch/arm/boot/dts/nxp/imx/imx6sx-sdb.dtsi
-index 277a6e039045b575..ddd01b6dee5a9976 100644
---- a/arch/arm/boot/dts/nxp/imx/imx6sx-sdb.dtsi
-+++ b/arch/arm/boot/dts/nxp/imx/imx6sx-sdb.dtsi
-@@ -167,7 +167,7 @@ sound {
- 			"IN3R", "AMIC";
- 		mux-int-port = <2>;
- 		mux-ext-port = <6>;
--		hp-det-gpio = <&gpio1 17 GPIO_ACTIVE_LOW>;
-+		hp-det-gpios = <&gpio1 17 GPIO_ACTIVE_LOW>;
- 	};
- 
- 	panel {
-diff --git a/arch/arm/boot/dts/nxp/imx/imx6ul-14x14-evk.dtsi b/arch/arm/boot/dts/nxp/imx/imx6ul-14x14-evk.dtsi
-index b74ee8948a781762..0e839bbfea082140 100644
---- a/arch/arm/boot/dts/nxp/imx/imx6ul-14x14-evk.dtsi
-+++ b/arch/arm/boot/dts/nxp/imx/imx6ul-14x14-evk.dtsi
-@@ -68,7 +68,7 @@ sound-wm8960 {
- 		audio-cpu = <&sai2>;
- 		audio-codec = <&codec>;
- 		audio-asrc = <&asrc>;
--		hp-det-gpio = <&gpio5 4 0>;
-+		hp-det-gpios = <&gpio5 4 0>;
- 		audio-routing =
- 			"Headphone Jack", "HP_L",
- 			"Headphone Jack", "HP_R",
-diff --git a/arch/arm/boot/dts/nxp/imx/imx7d-sdb.dts b/arch/arm/boot/dts/nxp/imx/imx7d-sdb.dts
-index f712537fca161ab9..6cde84636900bb00 100644
---- a/arch/arm/boot/dts/nxp/imx/imx7d-sdb.dts
-+++ b/arch/arm/boot/dts/nxp/imx/imx7d-sdb.dts
-@@ -169,7 +169,7 @@ sound {
- 		model = "wm8960-audio";
- 		audio-cpu = <&sai1>;
- 		audio-codec = <&codec>;
--		hp-det-gpio = <&gpio2 28 GPIO_ACTIVE_HIGH>;
-+		hp-det-gpios = <&gpio2 28 GPIO_ACTIVE_HIGH>;
- 		audio-routing =
- 			"Headphone Jack", "HP_L",
- 			"Headphone Jack", "HP_R",
--- 
-2.34.1
+Reviewed-by: Krzysztof Kozlowski <krzk@kernel.org>
+
+Best regards,
+Krzysztof
 
 
 _______________________________________________
