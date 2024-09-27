@@ -4,49 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 816BFCDD1A4
-	for <linux-rockchip@archiver.kernel.org>; Fri, 27 Sep 2024 13:04:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CF7D8CDD1A8
+	for <linux-rockchip@archiver.kernel.org>; Fri, 27 Sep 2024 13:06:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=GuST77N2eSRca0J9L7OJszgm/xf+qapYUD5XNyCBcA4=; b=iRl1drTl2xGs4t
-	4n1eDTiN8yidKwXoEUR6uM03/9DNzjyYYUC5FLcAlgkmy1ty0tkQJ1ZppzNMCNEbHIRleOvzcqSNQ
-	QljjHjCBFZmb6Owyq75zEWjBH1A1ti91uXcNZtEpN/j3oMsKaHSj6QORUdVR0BVMSxc2aluBa0JDF
-	5EQJds1fHZnaNBzNYnrDOODId8L77NRhi3Tck/o6fd+2BlImasjOXAYHaBtxk94PBEzCxEB3kylrS
-	GATWPgA0H3ky4loHa/iMVQB6bfRAra3/Y6iVTrKcipmhgRLGzfcdu+rWd6r1rMJJOte8cXF74hyFf
-	guxADS7OxXVz091aTPIQ==;
+	List-Owner; bh=eHYaMuZ+mPKD+JkViSBJxIBxvVwqUQcMhXuXEDunU48=; b=yQOB0dAz8iDtcF
+	Y6RuhXqf4jjrDFcZNC64kjIwqjPt0ZRF6Jm8prHWUeRjRWi8Kj3Veh5x7tYVdtPFThbzwyKAdMvfR
+	S9Tcl3mzP9zVhpBBqecp06habqsnzUgvMxA6Qle69SouVubWM+ZwXjlPLjOfpemZeu/OKGPsZt3+V
+	gQn0AhU1hlZz1/o6MsI8w8N4l/vM0Js7XxVb/qdR18E5eYLJOUn4hUQQzew8zqVcDQ7XNKqeDT/53
+	OWxP2eTHbQQ1bLdO2CFn4j95/BuKleWaJ0DVTyha6JNuZVZjb3g5Nv/E5iL6ptpUJXRruwd2To/0A
+	ed5fsSD/7/SNclGT/IZg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1suAeT-0000000BDB8-19n2;
-	Fri, 27 Sep 2024 13:04:53 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1suAfc-0000000BDQ8-3wVB;
+	Fri, 27 Sep 2024 13:06:04 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1suAUm-0000000BAio-1DHT;
-	Fri, 27 Sep 2024 12:55:36 +0000
+	id 1suAWn-0000000BBE6-25So;
+	Fri, 27 Sep 2024 12:56:57 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
+	:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:Message-ID:
+	Sender:Reply-To:Content-ID:Content-Description;
+	bh=RcS+vlbUqFkKRel7Ld7nhE/N7jjGmQp1hu5qV6CyYlc=; b=neZ7pmrcKcJu5aSgacsDxd1Tg3
+	fWkaFLIjLIA6Nxg8CmaWbL/MpN8hA5vshr92yL7++zk+krsQkfu/H3LjwJGBF5MeYKCN7iuqVwqIT
+	SeEDUhkQDOJKDWZMY3gtfRZ6QLBeuj+TXeocbak0IWUcHdmgfvSdP4zhxHRXfTRoJuUJjdWzq8B0k
+	wjhsu3rpZpZod97fsjhZSc9/aukgasGR2fjHj7E7XVGNn/ECmAL0Ym2cSzkg0s97fEK9DiPTqvYIP
+	GxTkoQXFziGv9Elk5WC6QQh+vHI7fRNAOPVEqRNRwDEVPwx+uLYs6Ppkbny+4F0bC6Bjntshz1cuw
+	Z0qwD0ew==;
+Received: from dfw.source.kernel.org ([139.178.84.217])
+	by desiato.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
+	id 1suAWk-00000002LvG-0nkJ;
+	Fri, 27 Sep 2024 12:56:56 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 20FAC5C0378;
-	Fri, 27 Sep 2024 12:54:47 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8C919C4CEC4;
-	Fri, 27 Sep 2024 12:54:42 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 571F45C5A34;
+	Fri, 27 Sep 2024 12:56:47 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8B535C4CEC4;
+	Fri, 27 Sep 2024 12:56:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1727441690;
-	bh=2lM4ESPs/GevDvI0aUnv8ehDSrCmvMn+wGS5v06qRRY=;
+	s=k20201202; t=1727441811;
+	bh=wK3MLDP3hW0cynD+DWMyY0deUf7g+0vOrHq3Fjg44/I=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=L4F2ocV58UMWzCVsvm8W7H7SStgQA3oFfi8DdVpeyraqoUqeiWJ8s9RN5jY6XSyvb
-	 6Q2hOTGJH25huN2dBpzOroaGdrMEzZQFGaxXH8C0jsF2/8/a7ZS/HBuQv96xyNYvK2
-	 YTJKiXyHpMylk2uEl0UzbJze33Vr6nsTxX0flphmH+OeYhWheDK6bY4rN9sFI8ShA3
-	 OsJVwrI6KVLnntsyteyAodyK/TpiU2yZRaIPDeMT9neLkYOsj3oVBnC0uU0KfZOTKt
-	 pJQMHXUc0pdVVBAgLPfCYm3Ps7Gp5N8oZjYrRwLfuEy9G0+vT1s8Mn+cWz51U37NDP
-	 6pwiYY9FBo3MQ==
-Message-ID: <6437e1b4-20cb-4808-b79b-6120476d435b@kernel.org>
-Date: Fri, 27 Sep 2024 14:54:40 +0200
+	b=Sfezg91KwXQ3SLpWDGk9+iZ4VyVcuwapRNiUP8bkDDmF1gJqp0RT5LJfqY2sBEA/F
+	 gHsQuOsdboOOmGP+AtwbiZ3DBmMJSTr21JJH9Ng23D7przGr54fVarLRZZXhj9fqox
+	 2rGlbIFTdAuKwObZB+0M8RCaHVeucyhXJeipAviMaZwKXMlmwkvBbF+ltH3tYKe+XL
+	 aaVEuTJtt/PlVIzpZxLekqh0P8c98pnV0SIHQmnIM9+dh7XfpYEZrbDPLtwlcLHSpV
+	 liHGD94RcO+znCut6UbEEqFMnfY6zP3yfACGPfgw3Fq+HnLr0FzLR58TjnTKmHDZab
+	 smQyaVSBOva7A==
+Message-ID: <0bd21761-a81f-494a-9934-877f24b7fe0a@kernel.org>
+Date: Fri, 27 Sep 2024 14:56:40 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH treewide 03/11] ARM: dts: marvell: mmp2-olpc-xo-1-75:
- Switch to {hp,mic}-det-gpios
+Subject: Re: [PATCH treewide 05/11] arm64: dts: renesas: beacon-renesom:
+ Switch to mic-det-gpios
 To: Geert Uytterhoeven <geert+renesas@glider.be>,
  Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
  Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
@@ -69,9 +83,9 @@ Cc: linux-sound@vger.kernel.org, devicetree@vger.kernel.org,
  linux-mips@vger.kernel.org, alsa-devel@alsa-project.org,
  linuxppc-dev@lists.ozlabs.org, linux-kernel@vger.kernel.org
 References: <cover.1727438777.git.geert+renesas@glider.be>
- <7b4d7d735189fb346175a95e29db33f01c8cf93d.1727438777.git.geert+renesas@glider.be>
-From: Krzysztof Kozlowski <krzk@kernel.org>
+ <750d6ac7911aef9a461dca6d07e5c1fab6211ecb.1727438777.git.geert+renesas@glider.be>
 Content-Language: en-US
+From: Krzysztof Kozlowski <krzk@kernel.org>
 Autocrypt: addr=krzk@kernel.org; keydata=
  xsFNBFVDQq4BEAC6KeLOfFsAvFMBsrCrJ2bCalhPv5+KQF2PS2+iwZI8BpRZoV+Bd5kWvN79
  cFgcqTTuNHjAvxtUG8pQgGTHAObYs6xeYJtjUH0ZX6ndJ33FJYf5V3yXqqjcZ30FgHzJCFUu
@@ -115,10 +129,11 @@ Autocrypt: addr=krzk@kernel.org; keydata=
  uZwJCLykjad45hsWcOGk3OcaAGQS6NDlfhM6O9aYNwGL6tGt/6BkRikNOs7VDEa4/HlbaSJo
  7FgndGw1kWmkeL6oQh7wBvYll2buKod4qYntmNKEicoHGU+x91Gcan8mCoqhJkbqrL7+nXG2
  5Q/GS5M9RFWS+nYyJh+c3OcfKqVcZQNANItt7+ULzdNJuhvTRRdC3g9hmCEuNSr+CLMdnRBY fv0=
-In-Reply-To: <7b4d7d735189fb346175a95e29db33f01c8cf93d.1727438777.git.geert+renesas@glider.be>
+In-Reply-To: <750d6ac7911aef9a461dca6d07e5c1fab6211ecb.1727438777.git.geert+renesas@glider.be>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240927_055452_457415_5306E0F2 
-X-CRM114-Status: GOOD (  10.63  )
+X-CRM114-CacheID: sfid-20240927_135654_681498_2BFE66E5 
+X-CRM114-Status: UNSURE (   9.25  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -136,18 +151,13 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 On 27/09/2024 14:42, Geert Uytterhoeven wrote:
-> Replace the deprecated "hp-det-gpio" and "mic-det-gpio" properties by
-> "hp-det-gpios" resp. "mic-det-gpios" in Audio Graph Card device nodes.
+> Replace the deprecated "mic-det-gpio" property by "mic-det-gpios" in
+> Audio Graph Card device nodes.
 > 
 > Signed-off-by: Geert Uytterhoeven <geert+renesas@glider.be>
 > ---
->  arch/arm/boot/dts/marvell/mmp2-olpc-xo-1-75.dts | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
-
-I think the non-Freescale DTS could be split to indicate there is no
-real dependency. Only Freescale DTS will be affected, thus should be
-taken at least with one cycle break.
-
+>  arch/arm64/boot/dts/renesas/beacon-renesom-baseboard.dtsi | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 
 Reviewed-by: Krzysztof Kozlowski <krzk@kernel.org>
 
