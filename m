@@ -4,62 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3E8D5CDD1A8
-	for <linux-rockchip@archiver.kernel.org>; Fri, 27 Sep 2024 13:08:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BBD3CCDD1A8
+	for <linux-rockchip@archiver.kernel.org>; Fri, 27 Sep 2024 13:09:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=eB5YiiHXshqW4CN9GLcyvgeAJQO+3sg6Fl6O3d53WbU=; b=f+maS2sl+abS82
-	/3fn1sJEtCbMywN7a1Krn0ElUowYHA3HvQCDXMOWZ1amMeGESNgogiXWPWVeXkA8Ow5eNyCxt73z+
-	dUCT2C6Nb0WdS2t0ERpeFkxHP4tUHUI7AsaFP0Z+0RMn4lkSdftNiUrKl8BiQCd7eDi+UtNaCENcq
-	+WXiMx27bXNGTxSdbHrqRPRF9C/Acl25ASVT98Ea1YYXixAdT8BnugsazFcB7dahg19a1w8CWhLbw
-	nR0kAs4pYdTATwXw1TwrG+nafEAThhDw1tZXbewqp9+KYtkXyF4omRKrXRrtw1gnmDaSs1whGEezY
-	R2GyqHP2IHtKE7k0fnVQ==;
+	List-Owner; bh=c6ks7D/aP6FWCrTk6oZio+WCo54PFiHuVVFyDmgIkUk=; b=iSY4TceyPp/dHz
+	lyJbZvX+R5mpym3Lf+OPgWxWtsWEfoipOa8mkgACSiSX6bsNrfyDg/KqD3SbvZz1PXqLvnB5UFAht
+	LvidBHb4iTTP59fkzhh5VugidG6gD50D7MTjwy/285Q+wslGGyGe0GSmtS5jxcVZJN9xYPWXrOXUh
+	B4PE+m2GmUGQQB6ygPOhM5p75/t4szROhJ/grZgmgnOHLdyBj4YZrmj659KSbU178hBosALAGuB4N
+	wYlwu6NuSi+Spmo50aL6wZoOExsCABG0b6zLYUAz/LOEXgpnY3IA90R4nBhWNbWqFWyA21i4+R2jk
+	lASQ0wR92FpAe3R3araw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1suAhv-0000000BDug-0Qlg;
-	Fri, 27 Sep 2024 13:08:27 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1suAj4-0000000BEB2-1RsU;
+	Fri, 27 Sep 2024 13:09:38 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1suAYZ-0000000BBfj-10Xj;
-	Fri, 27 Sep 2024 12:58:47 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
-	:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:Message-ID:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=YlttvwUI2kOedcwctghyO3qGJ7Ww9INdO9f0+pUC7GE=; b=FAWDsFPd+ZTOInTUsGOsDvalgV
-	lZHNDfJWDnQK3vvc3Lmk5ca8yD2clKMrHL2N1G3cZe8MsiKj/SPcaFU4aMUMwvkg0TdcoMLMTppyg
-	ivCZs2P0D4y+WXunyOmFHse2RvEY7JMnDXge4ReGvuiWQWLL0Uev0xgiwv9VtbeyZS5TdC7q2S/Ax
-	g3XJr6DLF5fpiDuosBj2B1/UeZWXHlopG4U1bBcNOrou6zIiCufil8PmVsyoyJqUkBqoCy3qV5JwN
-	WBGcfFgknoriNUIumBVkBVGRxsCgWc11Bx1s/BMHRaFe5jZ+hjzvmzzmjg0svP+mLcFGlwiuCZmYk
-	RLpbm/Sg==;
-Received: from nyc.source.kernel.org ([147.75.193.91])
-	by desiato.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1suAYV-00000002MDc-0b1N;
-	Fri, 27 Sep 2024 12:58:45 +0000
+	id 1suAX7-0000000BBHy-1Foi;
+	Fri, 27 Sep 2024 12:58:59 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 8AE97A452DE;
-	Fri, 27 Sep 2024 12:58:33 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2096FC4CEC4;
-	Fri, 27 Sep 2024 12:58:33 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 6FA195C56E3;
+	Fri, 27 Sep 2024 12:57:12 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B9ED5C4CEC4;
+	Fri, 27 Sep 2024 12:57:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1727441921;
-	bh=ThOGsAC897mAjTVFOnXYfj72JoKDcjnwuB5ZDYoObJ8=;
+	s=k20201202; t=1727441836;
+	bh=QiNzvn0TuODS2ZvqbWpmYPXWY9RuHsmeZZZwjB4QXzc=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=Vj8+eZzTMj1Qfq5HPUpkQ9Dpq8+Mae+kmweTcqt21nT3rCMLao9tPRhlTIJ8Yc4Gj
-	 arewTLjnUnoxgbYQsuvxWIl8DAl4a7ITVo9hzfVYtCeu3yYoJFrLhunGOVbG7otDUo
-	 Sz62L2ogyDKARc5K+VEaTHICVmrSrjGcr1C4cjgl1FQsKIzOHJxu57pxUyR35p0RB8
-	 IQiY6vrxOuaNgOP/38+AZTwj0GgdRPlngr7RLokzd/GBBtOdBfV88QGo4u2EkMfux6
-	 kfZ0Mq+kWyc+CPW1dmvWZe4KRS22AQiUjW1fiBUeSl6cWYslWRLYfzyTM5Ia6X4Fv0
-	 WzIACXSmMzjyQ==
-Message-ID: <ec1b2700-ed30-4c83-85c2-55f1be97c2b5@kernel.org>
-Date: Fri, 27 Sep 2024 14:58:32 +0200
+	b=XnNgIoWv4/sktca59ijPGMAGkMRxlLh6zQdb3owRn3vkMBCiioEX7QXmrCvvQbkhX
+	 V/YQClq2b3tL/AtAygnQ1p4a3WB86cDqxXpu40JJys3TGEzUkbZ12EcTbyL99xKLxG
+	 8zIzMfma5K/1VI14S32CCdMn8Ni2fZRDElF2fp2I1rNxT9HnotqZ6BEdjWjWCF59LX
+	 ibpu/zvMp+BTLfH9xwAKswjTc7PA2GFod0A7NrOSUbzBEtgnWbMlJ+XNkgQHRHqXFw
+	 TfnJtuqyx5FOoBMy1w4IFZ2yKqWaXz6/k7nbMEumdo5o1wvM2Q3OeOYGlMsyMF/mve
+	 YeGOFHGSdl2Vw==
+Message-ID: <15bcfe87-df09-419a-af25-0822cf2dbc02@kernel.org>
+Date: Fri, 27 Sep 2024 14:57:07 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH treewide 09/11] mips: dts: ingenic: Switch to
+Subject: Re: [PATCH treewide 06/11] arm64: dts: rockchip: Switch to
  simple-audio-card,hp-det-gpios
 To: Geert Uytterhoeven <geert+renesas@glider.be>,
  Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
@@ -83,7 +69,7 @@ Cc: linux-sound@vger.kernel.org, devicetree@vger.kernel.org,
  linux-mips@vger.kernel.org, alsa-devel@alsa-project.org,
  linuxppc-dev@lists.ozlabs.org, linux-kernel@vger.kernel.org
 References: <cover.1727438777.git.geert+renesas@glider.be>
- <0466c746d6276842d6993fae41efb315188e1f3f.1727438777.git.geert+renesas@glider.be>
+ <c976b09c6048564737321cf91c3f97b9da5dbfe8.1727438777.git.geert+renesas@glider.be>
 From: Krzysztof Kozlowski <krzk@kernel.org>
 Content-Language: en-US
 Autocrypt: addr=krzk@kernel.org; keydata=
@@ -129,10 +115,10 @@ Autocrypt: addr=krzk@kernel.org; keydata=
  uZwJCLykjad45hsWcOGk3OcaAGQS6NDlfhM6O9aYNwGL6tGt/6BkRikNOs7VDEa4/HlbaSJo
  7FgndGw1kWmkeL6oQh7wBvYll2buKod4qYntmNKEicoHGU+x91Gcan8mCoqhJkbqrL7+nXG2
  5Q/GS5M9RFWS+nYyJh+c3OcfKqVcZQNANItt7+ULzdNJuhvTRRdC3g9hmCEuNSr+CLMdnRBY fv0=
-In-Reply-To: <0466c746d6276842d6993fae41efb315188e1f3f.1727438777.git.geert+renesas@glider.be>
+In-Reply-To: <c976b09c6048564737321cf91c3f97b9da5dbfe8.1727438777.git.geert+renesas@glider.be>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240927_135843_826037_69FC2BCD 
-X-CRM114-Status: UNSURE (   6.68  )
+X-CRM114-CacheID: sfid-20240927_055717_505327_416B94E1 
+X-CRM114-Status: UNSURE (   6.72  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -155,7 +141,6 @@ On 27/09/2024 14:42, Geert Uytterhoeven wrote:
 > "simple-audio-card,hp-det-gpios" in Simple Audio Card device nodes.
 > 
 > Signed-off-by: Geert Uytterhoeven <geert+renesas@glider.be>
-> ---
 
 Reviewed-by: Krzysztof Kozlowski <krzk@kernel.org>
 
