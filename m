@@ -4,40 +4,40 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 05C37CDD1A1
-	for <linux-rockchip@archiver.kernel.org>; Fri, 27 Sep 2024 12:48:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 26BA2CDD1A0
+	for <linux-rockchip@archiver.kernel.org>; Fri, 27 Sep 2024 12:51:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=z3HV3QwSCsaHsZ3BTxzcZbcp7FaljCdLGwKUNn5C7do=; b=qabzG00EH15HMF
-	Bgv1rk8atwEiqCdgpfdpM3Myw46TpRARN4sL+6Yn6wIwmg2IPibZsKo0rVqtVIY1kBdlc1I19LLLI
-	B+bNZVIGF8hUUdvqfsrZfjD9Ryia37fZbE8mZjRaWUkqvi7NT9PrCzDscLJThpg0E/W5moQ7IcYnK
-	UHjS7PFGnw5wO/DBaVR6j3Fy30aCwnqEH4woced1NkNV339XJ2E2gjKTzELkhd/HoRXGkOJJ73v09
-	EbHRTrOcrKX1SwcKc0Z4kUkB/0vCmBAOCQupxZ410xkE8Fjlbvs2PfEWX0vk6RtpHyt9QV68nRObD
-	hheTwnPNa+A4KJk+d7wQ==;
+	List-Owner; bh=/uXbysJ65FEkbIpUtkxdZ83GcwbDQSp7qDlmqGcnRsA=; b=W9oXMlaiKEvgQa
+	YZ1F5A24ko7MIQi8VS9ziFWjDCkzQCPLyyxKbAJC0PU7xnigF6bE4A6PtMVncdq8lPCkwYOCJkgOW
+	YcJ2mjD96DCp47LG9+IwJQyJrYN0Wnxb3Lgix8yr2+Hnhlr47XlRjDnmHJk9oFye2XiQytWCNr/54
+	AGixFqCaRMn1We0I7SY0BiWLJ95GXfyJhWq3bDLaUTlCNxRl3vtZGsj2HcDbXdTcjWTfV/+mIsaIA
+	zD0yysEwV8ZNfIpevSdrYIaeuc+2XddOQTP+1PVvqgSstPYRo20Nlg/C6o+UNU7EqQ8J9mT8kJDQz
+	BB32Oqt65ksgU2AIKKwQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1suAOB-0000000B94V-1Cf5;
-	Fri, 27 Sep 2024 12:48:03 +0000
-Received: from baptiste.telenet-ops.be ([2a02:1800:120:4::f00:13])
+	id 1suARf-0000000B9qz-2foL;
+	Fri, 27 Sep 2024 12:51:39 +0000
+Received: from michel.telenet-ops.be ([2a02:1800:110:4::f00:18])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1suAJP-0000000B7FG-0zZ9
+	id 1suAJP-0000000B7FC-0yTP
 	for linux-rockchip@lists.infradead.org;
-	Fri, 27 Sep 2024 12:43:10 +0000
+	Fri, 27 Sep 2024 12:43:12 +0000
 Received: from ramsan.of.borg ([IPv6:2a02:1810:ac12:ed80:b47d:fd74:3975:15b7])
-	by baptiste.telenet-ops.be with cmsmtp
-	id HQic2D00D3BfLyr01Qicjt; Fri, 27 Sep 2024 14:43:02 +0200
+	by michel.telenet-ops.be with cmsmtp
+	id HQic2D00L3BfLyr06Qicqj; Fri, 27 Sep 2024 14:43:02 +0200
 Received: from rox.of.borg ([192.168.97.57])
 	by ramsan.of.borg with esmtp (Exim 4.95)
 	(envelope-from <geert@linux-m68k.org>)
-	id 1suAIj-000fPs-HD;
+	id 1suAIj-000fPv-HG;
 	Fri, 27 Sep 2024 14:42:31 +0200
 Received: from geert by rox.of.borg with local (Exim 4.95)
 	(envelope-from <geert@linux-m68k.org>)
-	id 1suAIo-008IDj-Vr;
+	id 1suAIo-008IDd-UI;
 	Fri, 27 Sep 2024 14:42:30 +0200
 From: Geert Uytterhoeven <geert+renesas@glider.be>
 To: Liam Girdwood <lgirdwood@gmail.com>,
@@ -75,16 +75,16 @@ Cc: linux-sound@vger.kernel.org,
 	linuxppc-dev@lists.ozlabs.org,
 	linux-kernel@vger.kernel.org,
 	Geert Uytterhoeven <geert+renesas@glider.be>
-Subject: [PATCH treewide 03/11] ARM: dts: marvell: mmp2-olpc-xo-1-75: Switch to {hp,mic}-det-gpios
-Date: Fri, 27 Sep 2024 14:42:18 +0200
-Message-Id: <7b4d7d735189fb346175a95e29db33f01c8cf93d.1727438777.git.geert+renesas@glider.be>
+Subject: [PATCH treewide 01/11] ASoC: fsl-asoc-card: Add missing handling of {hp,mic}-dt-gpios
+Date: Fri, 27 Sep 2024 14:42:16 +0200
+Message-Id: <dbcb5bfea005a468ec6dc38374fe6d02bc693c22.1727438777.git.geert+renesas@glider.be>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <cover.1727438777.git.geert+renesas@glider.be>
 References: <cover.1727438777.git.geert+renesas@glider.be>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240927_054307_611324_62C811F4 
-X-CRM114-Status: GOOD (  10.74  )
+X-CRM114-CacheID: sfid-20240927_054307_669352_8B0141D2 
+X-CRM114-Status: GOOD (  13.01  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,29 +101,56 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Replace the deprecated "hp-det-gpio" and "mic-det-gpio" properties by
-"hp-det-gpios" resp. "mic-det-gpios" in Audio Graph Card device nodes.
+The DT bindings deprecated the "hp-det-gpio" and "mic-det-gpio"
+properties in favor of "hp-det-gpios" and "mic-det-gpios", but the
+driver was never updated to support the latter.
 
+Even before, there existed users of "hp-det-gpios" and "mic-det-gpios".
+While this may have been handled fine by the ASoC core, this was missed
+by the Freescale-specific part.
+
+Fixes: 4189b54220e5af15 ("ASoC: dt-bindings: fsl-asoc-card: convert to YAML")
+Fixes: 40ba2eda0a7b727f ("arm64: dts: imx8mm-nitrogen-r2: add audio")
 Signed-off-by: Geert Uytterhoeven <geert+renesas@glider.be>
 ---
- arch/arm/boot/dts/marvell/mmp2-olpc-xo-1-75.dts | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+Noticed accidentally.
+Compile-tested only.
+---
+ sound/soc/fsl/fsl-asoc-card.c | 8 +++++---
+ 1 file changed, 5 insertions(+), 3 deletions(-)
 
-diff --git a/arch/arm/boot/dts/marvell/mmp2-olpc-xo-1-75.dts b/arch/arm/boot/dts/marvell/mmp2-olpc-xo-1-75.dts
-index 55ea87870af3e039..86c425b72fa711b5 100644
---- a/arch/arm/boot/dts/marvell/mmp2-olpc-xo-1-75.dts
-+++ b/arch/arm/boot/dts/marvell/mmp2-olpc-xo-1-75.dts
-@@ -113,8 +113,8 @@ sound-card {
- 			  "Headphones", "HPOR",
- 			  "MIC2", "Mic Jack";
- 		widgets = "Headphone", "Headphones", "Microphone", "Mic Jack";
--		hp-det-gpio = <&gpio 97 GPIO_ACTIVE_HIGH>;
--		mic-det-gpio = <&gpio 96 GPIO_ACTIVE_HIGH>;
-+		hp-det-gpios = <&gpio 97 GPIO_ACTIVE_HIGH>;
-+		mic-det-gpios = <&gpio 96 GPIO_ACTIVE_HIGH>;
- 	};
+diff --git a/sound/soc/fsl/fsl-asoc-card.c b/sound/soc/fsl/fsl-asoc-card.c
+index f6c3aeff0d8eafd7..a0c2ce84c32b1d06 100644
+--- a/sound/soc/fsl/fsl-asoc-card.c
++++ b/sound/soc/fsl/fsl-asoc-card.c
+@@ -1033,14 +1033,15 @@ static int fsl_asoc_card_probe(struct platform_device *pdev)
+ 	}
  
- 	soc {
+ 	/*
+-	 * Properties "hp-det-gpio" and "mic-det-gpio" are optional, and
++	 * Properties "hp-det-gpios" and "mic-det-gpios" are optional, and
+ 	 * simple_util_init_jack() uses these properties for creating
+ 	 * Headphone Jack and Microphone Jack.
+ 	 *
+ 	 * The notifier is initialized in snd_soc_card_jack_new(), then
+ 	 * snd_soc_jack_notifier_register can be called.
+ 	 */
+-	if (of_property_read_bool(np, "hp-det-gpio")) {
++	if (of_property_read_bool(np, "hp-det-gpios") ||
++	    of_property_read_bool(np, "hp-det-gpio") /* deprecated */) {
+ 		ret = simple_util_init_jack(&priv->card, &priv->hp_jack,
+ 					    1, NULL, "Headphone Jack");
+ 		if (ret)
+@@ -1049,7 +1050,8 @@ static int fsl_asoc_card_probe(struct platform_device *pdev)
+ 		snd_soc_jack_notifier_register(&priv->hp_jack.jack, &hp_jack_nb);
+ 	}
+ 
+-	if (of_property_read_bool(np, "mic-det-gpio")) {
++	if (of_property_read_bool(np, "mic-det-gpios") ||
++	    of_property_read_bool(np, "mic-det-gpio") /* deprecated */) {
+ 		ret = simple_util_init_jack(&priv->card, &priv->mic_jack,
+ 					    0, NULL, "Mic Jack");
+ 		if (ret)
 -- 
 2.34.1
 
