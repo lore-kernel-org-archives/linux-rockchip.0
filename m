@@ -4,76 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B9C21CF6496
-	for <linux-rockchip@archiver.kernel.org>; Sat, 28 Sep 2024 23:18:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AF3D6CF6491
+	for <linux-rockchip@archiver.kernel.org>; Sun, 29 Sep 2024 00:34:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=IcXddAylYd0JoOeSStu5Gn4ll5AUhsgB5TU+6vSUAKs=; b=qwG7bky5azIsRC
-	ssSLQj8yJuZAeZWdrUvwRmi+fRqssNDOASXAx0xz8aNMv6+e7+7nxSt4hTfraeQw2ujPTNPwPdqhb
-	aWzJTgIwO+g9EuDK4wZ7gnWosOr8P1xQB3cm4ynhxiMXUzaYMa0WVQXBDfkRsJr1n6xj7E/S0+Wql
-	u2Itx8uGUpqrmOocgJnqfGEm9sAH2Qj+hoBRktmeLR2QwHgG0sc6xBFNHRBQpk5JeluLrJEgPEg0E
-	OvZiZL0pyq2KlaZDK4CjDvKhgnTipjv+rKPG2tXbrDqaeZ+JsPJs7GNGsH0dKDSPzhjcmDX/QuLRR
-	IoS6xF4EHFYw/3ilxTPg==;
+	List-Owner; bh=ZcPnqAfH7SZo4L0Yra8BH3zVtcEgGAHIPSlmyEJ4hdU=; b=e+KTGqXxkIJlP3
+	xeYoMcJToeM5Is1H12DauDLFQxkC9cabH/DU6AhFmeHfeeQ0QLc2mcU7F/SrueyXVs2o8Hh9FezMD
+	LrXYP6D6fC2DQ2r5tHwB3NGDGCaZgMiUZgrPPubHc+0UzC8y8/vWGYdMA0LIQUzWMnLlhtiO7QZxK
+	FktNH5riqjWJbIlbNt7ZkQnQ5Ew4f9yX9gwqsGWnPGY6dtG3uA+fQABHbfQOpv7l6dIu9pQKXruyF
+	D8OEJ3IagRknYrpgM5d80cR38WlQZCjxM0JyQEZDVETz38XUZ6DHRXMrcwTdz51IUWrl6XtH78ytw
+	1kHGkNxVz9gAXn45u0+g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1sughf-0000000Dnni-45Dt;
-	Sat, 28 Sep 2024 23:18:19 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1suhtd-0000000DrSa-1vAs;
+	Sun, 29 Sep 2024 00:34:45 +0000
+Received: from smtp.forwardemail.net ([149.28.215.223])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1suggT-0000000Dnhz-1q5G;
-	Sat, 28 Sep 2024 23:17:07 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1727565422;
-	bh=h4DKK5Kn1M8Ox46FJ7S1xsMtXvsnUtHHTW79/6gY6PQ=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=OK9Ev3TJu62sEB1hX8w0VTmYS5wD1p/8k5yBJFbo5RVvzjOIUc/+ndcoXopVezomn
-	 W91Rtc0fuGjgMc2PRPKtobg5wtdwyUjcQiqLPh3HUA2/oaUPL2R6aSPsKoqr+jCx3q
-	 XNRlyL0o6Mg+2HAT38PjbTV/WHMEUVnjjxPpdNv5hjTQFvJthwvXiZA2IwG15sbhTo
-	 L/2AnNKt+ZFacF4FlPOPnuYfmO31VmwN7b4S9twSwfL/imZz5C2tIJnOC1Yvz9Rju0
-	 Deoe6P7m+nOXG2tj1pfWOvm09rtkaNOVrSbXmvk/s95v1K0q735K7kIhkGAg3IVmGO
-	 FPaCWwOb8Jguw==
-Received: from [192.168.1.207] (100.121.120.78.rev.sfr.net [78.120.121.100])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id D4DA117E0DE9;
-	Sun, 29 Sep 2024 01:17:01 +0200 (CEST)
-Message-ID: <60bd659a-08d3-4e87-abff-a127101dbc18@collabora.com>
-Date: Sun, 29 Sep 2024 02:17:01 +0300
+	id 1suhta-0000000DrRS-1w9h
+	for linux-rockchip@lists.infradead.org;
+	Sun, 29 Sep 2024 00:34:43 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
+ h=Content-Transfer-Encoding: Content-Type: In-Reply-To: From: References:
+ Cc: To: Subject: MIME-Version: Date: Message-ID; q=dns/txt;
+ s=fe-e1b5cab7be; t=1727570071;
+ bh=xENoRDlaw7uEZQLQGR7uTWdX3LD1ukayJIDfRPDH3Vo=;
+ b=da9OAMN/U5XBUZyoZfiZdGSYTzXYwpNid04GT0SdGXMxYWmNAWJRxJmiIFDlrmZLsS0HCvuqy
+ rq1K0FfgrMY2xq+0UAMgTzf6wEB1R48Pk619RiGzud5pyVexqo3fGlDVMT07Gmbmb1gIS6PMMg1
+ 2kKbxWGYS3s5aA+PRaXVEMSCeOOgx5T3mNnK8n+57IB/pnBFG3/WUGe4A/4R2NUMa5PiVxUs2/0
+ lsRQ7wyDeGMJDGixJG88GMnrkvPTslTdb/c7LKYcycgFeDpyk0e18ABh1W0rF6WJ+cK6OQ+GW2Y
+ xF5zi2Aghx5rHt60Z8h+wbmqSXC1jG3uKmABXU636nTw==
+Message-ID: <83349da6-17bc-432d-badc-5946c42a53ed@kwiboo.se>
+Date: Sun, 29 Sep 2024 02:34:15 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v7 3/3] drm/rockchip: Add basic RK3588 HDMI output support
-To: Maxime Ripard <mripard@kernel.org>
-Cc: Andrzej Hajda <andrzej.hajda@intel.com>,
- Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>,
+Subject: Re: [PATCH v8 3/3] drm/rockchip: Add basic RK3588 HDMI output support
+To: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+Cc: dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ devicetree@vger.kernel.org, kernel@collabora.com,
+ Alexandre ARNOUD <aarnoud@me.com>, Luis de Arquer <ldearquer@gmail.com>,
+ Algea Cao <algea.cao@rock-chips.com>, Andrzej Hajda
+ <andrzej.hajda@intel.com>, Neil Armstrong <neil.armstrong@linaro.org>,
+ Robert Foss <rfoss@kernel.org>,
  Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
- Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Jernej Skrabec <jernej.skrabec@gmail.com>,
  Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>,
- Sandy Huang <hjc@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?=
- <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Mark Yao <markyao0591@gmail.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ David Airlie <airlied@gmail.com>, Sandy Huang <hjc@rock-chips.com>,
+ =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>,
+ Andy Yan <andy.yan@rock-chips.com>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Mark Yao <markyao0591@gmail.com>,
  Sascha Hauer <s.hauer@pengutronix.de>, Simona Vetter <simona@ffwll.ch>,
- Simona Vetter <simona.vetter@ffwll.ch>, dri-devel@lists.freedesktop.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
- kernel@collabora.com, Alexandre ARNOUD <aarnoud@me.com>,
- Luis de Arquer <ldearquer@gmail.com>, Algea Cao <algea.cao@rock-chips.com>
-References: <20240914-b4-rk3588-bridge-upstream-v7-0-2b1348137123@collabora.com>
- <20240914-b4-rk3588-bridge-upstream-v7-3-2b1348137123@collabora.com>
- <20240924-ubiquitous-festive-rabbit-55cdb0@houat>
+ Simona Vetter <simona.vetter@ffwll.ch>
+References: <20240929-b4-rk3588-bridge-upstream-v8-0-83538c2cc325@collabora.com>
+ <20240929-b4-rk3588-bridge-upstream-v8-3-83538c2cc325@collabora.com>
 Content-Language: en-US
-From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-In-Reply-To: <20240924-ubiquitous-festive-rabbit-55cdb0@houat>
+From: Jonas Karlman <jonas@kwiboo.se>
+In-Reply-To: <20240929-b4-rk3588-bridge-upstream-v8-3-83538c2cc325@collabora.com>
+X-Report-Abuse-To: abuse@forwardemail.net
+X-Report-Abuse: abuse@forwardemail.net
+X-Complaints-To: abuse@forwardemail.net
+X-ForwardEmail-Version: 0.4.40
+X-ForwardEmail-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
+ 149.28.215.223
+X-ForwardEmail-ID: 66f8a093ed0aa09774abf316
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240928_161705_836558_648E1B32 
-X-CRM114-Status: GOOD (  21.16  )
+X-CRM114-CacheID: sfid-20240928_173442_544845_F65F26AC 
+X-CRM114-Status: GOOD (  13.53  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,158 +92,75 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Maxime,
+Hi Cristian,
 
-On 9/24/24 5:02 PM, Maxime Ripard wrote:
-> Hi,
+On 2024-09-29 00:36, Cristian Ciocaltea wrote:
+> The RK3588 SoC family integrates the newer Synopsys DesignWare HDMI 2.1
+> Quad-Pixel (QP) TX controller IP and a HDMI/eDP TX Combo PHY based on a
+> Samsung IP block.
 > 
-> On Sat, Sep 14, 2024 at 09:56:53PM GMT, Cristian Ciocaltea wrote:
->> The RK3588 SoC family integrates the newer Synopsys DesignWare HDMI 2.1
->> Quad-Pixel (QP) TX controller IP and a HDMI/eDP TX Combo PHY based on a
->> Samsung IP block.
->>
->> Add just the basic support for now, i.e. RGB output up to 4K@60Hz,
->> without audio, CEC or any of the HDMI 2.1 specific features.
->>
->> Co-developed-by: Algea Cao <algea.cao@rock-chips.com>
->> Signed-off-by: Algea Cao <algea.cao@rock-chips.com>
->> Tested-by: Heiko Stuebner <heiko@sntech.de>
->> Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
->> ---
->>  drivers/gpu/drm/rockchip/Kconfig               |   9 +
->>  drivers/gpu/drm/rockchip/Makefile              |   1 +
->>  drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c | 436 +++++++++++++++++++++++++
->>  drivers/gpu/drm/rockchip/rockchip_drm_drv.c    |   2 +
->>  drivers/gpu/drm/rockchip/rockchip_drm_drv.h    |   1 +
->>  5 files changed, 449 insertions(+)
->>
->> diff --git a/drivers/gpu/drm/rockchip/Kconfig b/drivers/gpu/drm/rockchip/Kconfig
->> index 23c49e91f1cc..448fadd4ba15 100644
->> --- a/drivers/gpu/drm/rockchip/Kconfig
->> +++ b/drivers/gpu/drm/rockchip/Kconfig
->> @@ -8,6 +8,7 @@ config DRM_ROCKCHIP
->>  	select VIDEOMODE_HELPERS
->>  	select DRM_ANALOGIX_DP if ROCKCHIP_ANALOGIX_DP
->>  	select DRM_DW_HDMI if ROCKCHIP_DW_HDMI
->> +	select DRM_DW_HDMI_QP if ROCKCHIP_DW_HDMI_QP
->>  	select DRM_DW_MIPI_DSI if ROCKCHIP_DW_MIPI_DSI
->>  	select GENERIC_PHY if ROCKCHIP_DW_MIPI_DSI
->>  	select GENERIC_PHY_MIPI_DPHY if ROCKCHIP_DW_MIPI_DSI
->> @@ -63,6 +64,14 @@ config ROCKCHIP_DW_HDMI
->>  	  enable HDMI on RK3288 or RK3399 based SoC, you should select
->>  	  this option.
->>  
->> +config ROCKCHIP_DW_HDMI_QP
->> +	bool "Rockchip specific extensions for Synopsys DW HDMI QP"
->> +	select DRM_BRIDGE_CONNECTOR
->> +	help
->> +	  This selects support for Rockchip SoC specific extensions
->> +	  for the Synopsys DesignWare HDMI QP driver. If you want to
->> +	  enable HDMI on RK3588 based SoC, you should select this option.
->> +
->>  config ROCKCHIP_DW_MIPI_DSI
->>  	bool "Rockchip specific extensions for Synopsys DW MIPI DSI"
->>  	select GENERIC_PHY_MIPI_DPHY
->> diff --git a/drivers/gpu/drm/rockchip/Makefile b/drivers/gpu/drm/rockchip/Makefile
->> index 3ff7b21c0414..3eab662a5a1d 100644
->> --- a/drivers/gpu/drm/rockchip/Makefile
->> +++ b/drivers/gpu/drm/rockchip/Makefile
->> @@ -11,6 +11,7 @@ rockchipdrm-$(CONFIG_ROCKCHIP_VOP) += rockchip_drm_vop.o rockchip_vop_reg.o
->>  rockchipdrm-$(CONFIG_ROCKCHIP_ANALOGIX_DP) += analogix_dp-rockchip.o
->>  rockchipdrm-$(CONFIG_ROCKCHIP_CDN_DP) += cdn-dp-core.o cdn-dp-reg.o
->>  rockchipdrm-$(CONFIG_ROCKCHIP_DW_HDMI) += dw_hdmi-rockchip.o
->> +rockchipdrm-$(CONFIG_ROCKCHIP_DW_HDMI_QP) += dw_hdmi_qp-rockchip.o
->>  rockchipdrm-$(CONFIG_ROCKCHIP_DW_MIPI_DSI) += dw-mipi-dsi-rockchip.o
->>  rockchipdrm-$(CONFIG_ROCKCHIP_INNO_HDMI) += inno_hdmi.o
->>  rockchipdrm-$(CONFIG_ROCKCHIP_LVDS) += rockchip_lvds.o
->> diff --git a/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c b/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
->> new file mode 100644
->> index 000000000000..19d407c926bd
->> --- /dev/null
->> +++ b/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
->> @@ -0,0 +1,436 @@
->> +// SPDX-License-Identifier: GPL-2.0-or-later
->> +/*
->> + * Copyright (c) 2021-2022 Rockchip Electronics Co., Ltd.
->> + * Copyright (c) 2024 Collabora Ltd.
->> + *
->> + * Author: Algea Cao <algea.cao@rock-chips.com>
->> + * Author: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
->> + */
->> +
->> +#include <linux/clk.h>
->> +#include <linux/gpio/consumer.h>
->> +#include <linux/mfd/syscon.h>
->> +#include <linux/module.h>
->> +#include <linux/platform_device.h>
->> +#include <linux/phy/phy.h>
->> +#include <linux/regmap.h>
->> +#include <linux/workqueue.h>
->> +
->> +#include <drm/bridge/dw_hdmi_qp.h>
->> +#include <drm/drm_bridge_connector.h>
->> +#include <drm/drm_of.h>
->> +#include <drm/drm_probe_helper.h>
->> +#include <drm/drm_simple_kms_helper.h>
->> +
->> +#include "rockchip_drm_drv.h"
->> +
->> +#define RK3588_GRF_SOC_CON2		0x0308
->> +#define RK3588_HDMI0_HPD_INT_MSK	BIT(13)
->> +#define RK3588_HDMI0_HPD_INT_CLR	BIT(12)
->> +#define RK3588_GRF_SOC_CON7		0x031c
->> +#define RK3588_SET_HPD_PATH_MASK	GENMASK(13, 12)
->> +#define RK3588_GRF_SOC_STATUS1		0x0384
->> +#define RK3588_HDMI0_LEVEL_INT		BIT(16)
->> +#define RK3588_GRF_VO1_CON3		0x000c
->> +#define RK3588_SCLIN_MASK		BIT(9)
->> +#define RK3588_SDAIN_MASK		BIT(10)
->> +#define RK3588_MODE_MASK		BIT(11)
->> +#define RK3588_I2S_SEL_MASK		BIT(13)
->> +#define RK3588_GRF_VO1_CON9		0x0024
->> +#define RK3588_HDMI0_GRANT_SEL		BIT(10)
->> +
->> +#define HIWORD_UPDATE(val, mask)	((val) | (mask) << 16)
->> +
->> +struct rockchip_hdmi_qp {
->> +	struct device *dev;
->> +	struct regmap *regmap;
->> +	struct regmap *vo_regmap;
->> +	struct rockchip_encoder encoder;
->> +	struct clk *ref_clk;
->> +	struct dw_hdmi_qp *hdmi;
->> +	struct phy *phy;
->> +	struct gpio_desc *enable_gpio;
->> +	struct delayed_work hpd_work;
->> +};
->> +
->> +static struct rockchip_hdmi_qp *to_rockchip_hdmi_qp(struct drm_encoder *encoder)
->> +{
->> +	struct rockchip_encoder *rkencoder = to_rockchip_encoder(encoder);
->> +
->> +	return container_of(rkencoder, struct rockchip_hdmi_qp, encoder);
->> +}
->> +
->> +static void
->> +dw_hdmi_qp_rockchip_encoder_mode_set(struct drm_encoder *encoder,
->> +				     struct drm_display_mode *mode,
->> +				     struct drm_display_mode *adj_mode)
->> +{
->> +	struct rockchip_hdmi_qp *hdmi = to_rockchip_hdmi_qp(encoder);
->> +
->> +	clk_set_rate(hdmi->ref_clk, adj_mode->clock * 1000);
->> +}
+> Add just the basic support for now, i.e. RGB output up to 4K@60Hz,
+> without audio, CEC or any of the HDMI 2.1 specific features.
 > 
-> I'm not sure you can do that. mode_set can be called multiple times
-> while the connector is enabled. It would be better to drop the mode_set
-> implementation, and just put it in the encoder enable.
-I dropped this in v8 [1], as the ref_clk rate adjustment has been already 
-handled via the encoder enable.
+> Co-developed-by: Algea Cao <algea.cao@rock-chips.com>
+> Signed-off-by: Algea Cao <algea.cao@rock-chips.com>
+> Tested-by: Heiko Stuebner <heiko@sntech.de>
+> Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+> ---
+>  drivers/gpu/drm/rockchip/Kconfig               |   9 +
+>  drivers/gpu/drm/rockchip/Makefile              |   1 +
+>  drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c | 425 +++++++++++++++++++++++++
+>  drivers/gpu/drm/rockchip/rockchip_drm_drv.c    |   2 +
+>  drivers/gpu/drm/rockchip/rockchip_drm_drv.h    |   1 +
+>  5 files changed, 438 insertions(+)
+> 
 
-Thanks for the review,
-Cristian
+[snip]
 
-[1] https://lore.kernel.org/all/20240929-b4-rk3588-bridge-upstream-v8-0-83538c2cc325@collabora.com/
+> diff --git a/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c b/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
+> new file mode 100644
+> index 000000000000..6103d30d40fb
+
+[snip]
+
+> +static irqreturn_t dw_hdmi_qp_rk3588_irq(int irq, void *dev_id)
+> +{
+> +	struct rockchip_hdmi_qp *hdmi = dev_id;
+> +	u32 intr_stat, val;
+> +	int debounce_ms;
+> +
+> +	regmap_read(hdmi->regmap, RK3588_GRF_SOC_STATUS1, &intr_stat);
+> +	if (!intr_stat)
+> +		return IRQ_NONE;
+> +
+> +	val = HIWORD_UPDATE(RK3588_HDMI0_HPD_INT_CLR,
+> +			    RK3588_HDMI0_HPD_INT_CLR);
+> +	regmap_write(hdmi->regmap, RK3588_GRF_SOC_CON2, val);
+> +
+> +	debounce_ms = intr_stat & RK3588_HDMI0_LEVEL_INT ? 150 : 20;
+> +	mod_delayed_work(system_wq, &hdmi->hpd_work,
+> +			 msecs_to_jiffies(debounce_ms));
+
+If I am understanding this correctly this will wait for 150 ms after HPD
+goes high and 20 ms after HPD goes low to trigger the hpd_work.
+
+Would it not make more sense to be the other way around? In order to
+reduce unnecessary HOTPLUG=1 uevents from being triggered during short
+EDID refresh pulses? At least that is what I am playing around with for
+dw-hdmi.
+
+Regards,
+Jonas
+
+> +
+> +	val |= HIWORD_UPDATE(0, RK3588_HDMI0_HPD_INT_MSK);
+> +	regmap_write(hdmi->regmap, RK3588_GRF_SOC_CON2, val);
+> +
+> +	return IRQ_HANDLED;
+> +}
+
+[snip]
+
 
 _______________________________________________
 Linux-rockchip mailing list
