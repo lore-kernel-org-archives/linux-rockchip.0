@@ -4,78 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AF3D6CF6491
-	for <linux-rockchip@archiver.kernel.org>; Sun, 29 Sep 2024 00:34:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 260DACF6491
+	for <linux-rockchip@archiver.kernel.org>; Sun, 29 Sep 2024 01:40:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ZcPnqAfH7SZo4L0Yra8BH3zVtcEgGAHIPSlmyEJ4hdU=; b=e+KTGqXxkIJlP3
-	xeYoMcJToeM5Is1H12DauDLFQxkC9cabH/DU6AhFmeHfeeQ0QLc2mcU7F/SrueyXVs2o8Hh9FezMD
-	LrXYP6D6fC2DQ2r5tHwB3NGDGCaZgMiUZgrPPubHc+0UzC8y8/vWGYdMA0LIQUzWMnLlhtiO7QZxK
-	FktNH5riqjWJbIlbNt7ZkQnQ5Ew4f9yX9gwqsGWnPGY6dtG3uA+fQABHbfQOpv7l6dIu9pQKXruyF
-	D8OEJ3IagRknYrpgM5d80cR38WlQZCjxM0JyQEZDVETz38XUZ6DHRXMrcwTdz51IUWrl6XtH78ytw
-	1kHGkNxVz9gAXn45u0+g==;
+	List-Owner; bh=KV0WWDY3Jt5AXfu8hkrIqHk1KTQT/zw/6YDwPQoapRE=; b=Q20ySpJv9kD5WT
+	xcvM/ZZP86NtzERfPTalGsIGKa9nPHqGhhbqKVvOckFx3uuMRY2IzgCnp3jb0hvutTga0lMK/VloW
+	D4V30/JXwayNHiTws8KaaN262QfFedRURq3DTsbGLPrkrFg+vCfdq30qTgkYTxV2qSPQVmAp7UUqN
+	tKAfbI6PjSzY+zT++OQLatyvqy/owx/bRAX2heBlRZnKwwK6zr3RskV50dmEiaQuXOXVqF8q9lT99
+	dzCz5+4ntJoax7JFNKW8IBwNQNVzbSlUEQGEhZtoH+BsqoBHi3XFguJolNaramwPUXVOB38sz5NaR
+	9kIDX/y2ETls5pU3BKpg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1suhtd-0000000DrSa-1vAs;
-	Sun, 29 Sep 2024 00:34:45 +0000
-Received: from smtp.forwardemail.net ([149.28.215.223])
+	id 1suiv7-0000000DvIA-24qV;
+	Sun, 29 Sep 2024 01:40:21 +0000
+Received: from mgamail.intel.com ([192.198.163.11])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1suhta-0000000DrRS-1w9h
-	for linux-rockchip@lists.infradead.org;
-	Sun, 29 Sep 2024 00:34:43 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
- h=Content-Transfer-Encoding: Content-Type: In-Reply-To: From: References:
- Cc: To: Subject: MIME-Version: Date: Message-ID; q=dns/txt;
- s=fe-e1b5cab7be; t=1727570071;
- bh=xENoRDlaw7uEZQLQGR7uTWdX3LD1ukayJIDfRPDH3Vo=;
- b=da9OAMN/U5XBUZyoZfiZdGSYTzXYwpNid04GT0SdGXMxYWmNAWJRxJmiIFDlrmZLsS0HCvuqy
- rq1K0FfgrMY2xq+0UAMgTzf6wEB1R48Pk619RiGzud5pyVexqo3fGlDVMT07Gmbmb1gIS6PMMg1
- 2kKbxWGYS3s5aA+PRaXVEMSCeOOgx5T3mNnK8n+57IB/pnBFG3/WUGe4A/4R2NUMa5PiVxUs2/0
- lsRQ7wyDeGMJDGixJG88GMnrkvPTslTdb/c7LKYcycgFeDpyk0e18ABh1W0rF6WJ+cK6OQ+GW2Y
- xF5zi2Aghx5rHt60Z8h+wbmqSXC1jG3uKmABXU636nTw==
-Message-ID: <83349da6-17bc-432d-badc-5946c42a53ed@kwiboo.se>
-Date: Sun, 29 Sep 2024 02:34:15 +0200
+	id 1suiv3-0000000DvHc-2nx5;
+	Sun, 29 Sep 2024 01:40:19 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1727574018; x=1759110018;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=r8YEm82IiDRZTCkCh879m0xJ5xKM7guPvEFt/0AzZZk=;
+  b=XD0Ud17rGkVHWarRqXgVAo0Hvp+UL8Ssyg/i7Hfm27pXx4dTX++v8suG
+   sQxoQqMy2kuUhPrfMC4tKVQg88ajIHeFyUHyXAYWjeynS/IMFgIGSuI4k
+   TgFbEYe/I4+byyOFtUscJ0DkBkHia33nFgTt4B0CTbLGgbYQ6bRfqFm4Y
+   E7OCL1mZ8xKq4P5vKHFYmTaHef5pZ5tz9NZ4EsxRJKYQa9BHM/glkN/+s
+   1ooHhPRvNqbDOR3tuV/3eLQdhHMdHq5D7GZ8XHku06nequVSGgkoZSt49
+   I5rgrtS4pVsiwyYukd15PvwoPv9toZZrQgwhk5a1Ukt2f/5rBUndwMVzA
+   A==;
+X-CSE-ConnectionGUID: gJwOvx4jTPWliwk3/c013g==
+X-CSE-MsgGUID: hxWc8Wm5T9ehgtxtVN0Y/Q==
+X-IronPort-AV: E=McAfee;i="6700,10204,11209"; a="37267829"
+X-IronPort-AV: E=Sophos;i="6.11,162,1725346800"; 
+   d="scan'208";a="37267829"
+Received: from orviesa002.jf.intel.com ([10.64.159.142])
+  by fmvoesa105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 28 Sep 2024 18:40:11 -0700
+X-CSE-ConnectionGUID: lMzoxijmS/+sF1p2iiTmDA==
+X-CSE-MsgGUID: CcN8ldiURtmkZQOohAIF0g==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.11,162,1725346800"; 
+   d="scan'208";a="103702516"
+Received: from lkp-server01.sh.intel.com (HELO 53e96f405c61) ([10.239.97.150])
+  by orviesa002.jf.intel.com with ESMTP; 28 Sep 2024 18:40:08 -0700
+Received: from kbuild by 53e96f405c61 with local (Exim 4.96)
+	(envelope-from <lkp@intel.com>)
+	id 1suius-000Non-0T;
+	Sun, 29 Sep 2024 01:40:06 +0000
+Date: Sun, 29 Sep 2024 09:39:08 +0800
+From: kernel test robot <lkp@intel.com>
+To: Dragan Simic <dsimic@manjaro.org>, linux-spi@vger.kernel.org,
+	linux-rockchip@lists.infradead.org
+Cc: oe-kbuild-all@lists.linux.dev, broonie@kernel.org, heiko@sntech.de,
+	gregkh@linuxfoundation.org, rafael@kernel.org, oss@helene.moe,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v2 4/5] driver core: Add device probe log helper
+ dev_warn_probe()
+Message-ID: <202409290956.jwLrcN1S-lkp@intel.com>
+References: <2fd9a60e0efe906dc7a203cd652c8d0b7f932470.1727496560.git.dsimic@manjaro.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v8 3/3] drm/rockchip: Add basic RK3588 HDMI output support
-To: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Cc: dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- devicetree@vger.kernel.org, kernel@collabora.com,
- Alexandre ARNOUD <aarnoud@me.com>, Luis de Arquer <ldearquer@gmail.com>,
- Algea Cao <algea.cao@rock-chips.com>, Andrzej Hajda
- <andrzej.hajda@intel.com>, Neil Armstrong <neil.armstrong@linaro.org>,
- Robert Foss <rfoss@kernel.org>,
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
- Jernej Skrabec <jernej.skrabec@gmail.com>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- David Airlie <airlied@gmail.com>, Sandy Huang <hjc@rock-chips.com>,
- =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>,
- Andy Yan <andy.yan@rock-chips.com>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Mark Yao <markyao0591@gmail.com>,
- Sascha Hauer <s.hauer@pengutronix.de>, Simona Vetter <simona@ffwll.ch>,
- Simona Vetter <simona.vetter@ffwll.ch>
-References: <20240929-b4-rk3588-bridge-upstream-v8-0-83538c2cc325@collabora.com>
- <20240929-b4-rk3588-bridge-upstream-v8-3-83538c2cc325@collabora.com>
-Content-Language: en-US
-From: Jonas Karlman <jonas@kwiboo.se>
-In-Reply-To: <20240929-b4-rk3588-bridge-upstream-v8-3-83538c2cc325@collabora.com>
-X-Report-Abuse-To: abuse@forwardemail.net
-X-Report-Abuse: abuse@forwardemail.net
-X-Complaints-To: abuse@forwardemail.net
-X-ForwardEmail-Version: 0.4.40
-X-ForwardEmail-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
- 149.28.215.223
-X-ForwardEmail-ID: 66f8a093ed0aa09774abf316
+Content-Disposition: inline
+In-Reply-To: <2fd9a60e0efe906dc7a203cd652c8d0b7f932470.1727496560.git.dsimic@manjaro.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240928_173442_544845_F65F26AC 
-X-CRM114-Status: GOOD (  13.53  )
+X-CRM114-CacheID: sfid-20240928_184018_020238_729F40B5 
+X-CRM114-Status: GOOD (  15.20  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,75 +90,94 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Cristian,
+Hi Dragan,
 
-On 2024-09-29 00:36, Cristian Ciocaltea wrote:
-> The RK3588 SoC family integrates the newer Synopsys DesignWare HDMI 2.1
-> Quad-Pixel (QP) TX controller IP and a HDMI/eDP TX Combo PHY based on a
-> Samsung IP block.
-> 
-> Add just the basic support for now, i.e. RGB output up to 4K@60Hz,
-> without audio, CEC or any of the HDMI 2.1 specific features.
-> 
-> Co-developed-by: Algea Cao <algea.cao@rock-chips.com>
-> Signed-off-by: Algea Cao <algea.cao@rock-chips.com>
-> Tested-by: Heiko Stuebner <heiko@sntech.de>
-> Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-> ---
->  drivers/gpu/drm/rockchip/Kconfig               |   9 +
->  drivers/gpu/drm/rockchip/Makefile              |   1 +
->  drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c | 425 +++++++++++++++++++++++++
->  drivers/gpu/drm/rockchip/rockchip_drm_drv.c    |   2 +
->  drivers/gpu/drm/rockchip/rockchip_drm_drv.h    |   1 +
->  5 files changed, 438 insertions(+)
-> 
+kernel test robot noticed the following build warnings:
 
-[snip]
+[auto build test WARNING on rockchip/for-next]
+[also build test WARNING on broonie-spi/for-next driver-core/driver-core-testing driver-core/driver-core-next driver-core/driver-core-linus linus/master v6.11 next-20240927]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch#_base_tree_information]
 
-> diff --git a/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c b/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
-> new file mode 100644
-> index 000000000000..6103d30d40fb
+url:    https://github.com/intel-lab-lkp/linux/commits/Dragan-Simic/spi-rockchip-Perform-trivial-code-cleanups/20240928-121548
+base:   https://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git for-next
+patch link:    https://lore.kernel.org/r/2fd9a60e0efe906dc7a203cd652c8d0b7f932470.1727496560.git.dsimic%40manjaro.org
+patch subject: [PATCH v2 4/5] driver core: Add device probe log helper dev_warn_probe()
+config: openrisc-allnoconfig (https://download.01.org/0day-ci/archive/20240929/202409290956.jwLrcN1S-lkp@intel.com/config)
+compiler: or1k-linux-gcc (GCC) 14.1.0
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20240929/202409290956.jwLrcN1S-lkp@intel.com/reproduce)
 
-[snip]
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202409290956.jwLrcN1S-lkp@intel.com/
 
-> +static irqreturn_t dw_hdmi_qp_rk3588_irq(int irq, void *dev_id)
-> +{
-> +	struct rockchip_hdmi_qp *hdmi = dev_id;
-> +	u32 intr_stat, val;
-> +	int debounce_ms;
-> +
-> +	regmap_read(hdmi->regmap, RK3588_GRF_SOC_STATUS1, &intr_stat);
-> +	if (!intr_stat)
-> +		return IRQ_NONE;
-> +
-> +	val = HIWORD_UPDATE(RK3588_HDMI0_HPD_INT_CLR,
-> +			    RK3588_HDMI0_HPD_INT_CLR);
-> +	regmap_write(hdmi->regmap, RK3588_GRF_SOC_CON2, val);
-> +
-> +	debounce_ms = intr_stat & RK3588_HDMI0_LEVEL_INT ? 150 : 20;
-> +	mod_delayed_work(system_wq, &hdmi->hpd_work,
-> +			 msecs_to_jiffies(debounce_ms));
+All warnings (new ones prefixed by >>):
 
-If I am understanding this correctly this will wait for 150 ms after HPD
-goes high and 20 ms after HPD goes low to trigger the hpd_work.
+   drivers/base/core.c: In function 'dev_err_probe':
+>> drivers/base/core.c:5055:1: warning: control reaches end of non-void function [-Wreturn-type]
+    5055 | }
+         | ^
+   drivers/base/core.c: In function 'dev_warn_probe':
+   drivers/base/core.c:5101:1: warning: control reaches end of non-void function [-Wreturn-type]
+    5101 | }
+         | ^
 
-Would it not make more sense to be the other way around? In order to
-reduce unnecessary HOTPLUG=1 uevents from being triggered during short
-EDID refresh pulses? At least that is what I am playing around with for
-dw-hdmi.
 
-Regards,
-Jonas
+vim +5055 drivers/base/core.c
 
-> +
-> +	val |= HIWORD_UPDATE(0, RK3588_HDMI0_HPD_INT_MSK);
-> +	regmap_write(hdmi->regmap, RK3588_GRF_SOC_CON2, val);
-> +
-> +	return IRQ_HANDLED;
-> +}
+  5011	
+  5012	/**
+  5013	 * dev_err_probe - probe error check and log helper
+  5014	 * @dev: the pointer to the struct device
+  5015	 * @err: error value to test
+  5016	 * @fmt: printf-style format string
+  5017	 * @...: arguments as specified in the format string
+  5018	 *
+  5019	 * This helper implements common pattern present in probe functions for error
+  5020	 * checking: print debug or error message depending if the error value is
+  5021	 * -EPROBE_DEFER and propagate error upwards.
+  5022	 * In case of -EPROBE_DEFER it sets also defer probe reason, which can be
+  5023	 * checked later by reading devices_deferred debugfs attribute.
+  5024	 * It replaces the following code sequence::
+  5025	 *
+  5026	 * 	if (err != -EPROBE_DEFER)
+  5027	 * 		dev_err(dev, ...);
+  5028	 * 	else
+  5029	 * 		dev_dbg(dev, ...);
+  5030	 * 	return err;
+  5031	 *
+  5032	 * with::
+  5033	 *
+  5034	 * 	return dev_err_probe(dev, err, ...);
+  5035	 *
+  5036	 * Using this helper in your probe function is totally fine even if @err
+  5037	 * is known to never be -EPROBE_DEFER.
+  5038	 * The benefit compared to a normal dev_err() is the standardized format
+  5039	 * of the error code, which is emitted symbolically (i.e. you get "EAGAIN"
+  5040	 * instead of "-35"), and having the error code returned allows more
+  5041	 * compact error paths.
+  5042	 *
+  5043	 * Returns @err.
+  5044	 */
+  5045	int dev_err_probe(const struct device *dev, int err, const char *fmt, ...)
+  5046	{
+  5047		va_list args;
+  5048	
+  5049		va_start(args, fmt);
+  5050	
+  5051		/* Use dev_err() for logging when err doesn't equal -EPROBE_DEFER */
+  5052		dev_probe_failed(dev, err, true, fmt, args);
+  5053	
+  5054		va_end(args);
+> 5055	}
+  5056	EXPORT_SYMBOL_GPL(dev_err_probe);
+  5057	
 
-[snip]
-
+-- 
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
 
 _______________________________________________
 Linux-rockchip mailing list
