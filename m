@@ -4,70 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 66510CF6497
-	for <linux-rockchip@archiver.kernel.org>; Mon, 30 Sep 2024 07:46:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 345F5CF6497
+	for <linux-rockchip@archiver.kernel.org>; Mon, 30 Sep 2024 07:55:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=G2arGdO+AlOgxzaIsEs8VaQnbB3MwG0Vy77dbamqy3Q=; b=kYBU81h/J6I30/uvjMV9IdkrYl
-	mQmq+3/7LRGTbXaUD27RGML6G/epJ3py0Yk0cFH0C+jpk4B3PGabZZOyfN4AHHMMdYeTYJoWyCdse
-	VuMvedtq9TZPMTkJQuQiXnadWDxuibvOrX2QGDr86SxL+oXdo7iz66Ai27U9kxyz1Co8yTL1FwUY9
-	RrGZMT8z95sp7hKJT0Z4TEeXVYESB0aGg0Mdg8tm5geGtDi6ySiExmpf6dBnDSUJ5vUWfCTPkNWeo
-	35ydT8iMdeSaFZogYRXydfABg8aqNLW6RAZgs/DKo1j6gpEGzFlJPs3bJDrzmybUMVVhXYv9yvTcA
-	bLu+KJ3Q==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=HUCt+xZTInxrw53BIJZWWp/iKOdM6S6+KhWtIYfTTFI=; b=YlK4o9Yp85mPbw
+	T3m692SYPLEBO+Ia/1HBvpZWjqUEDAg6SXhdGczK4gZPcfTmV0DdacuzDU6nZG9t74tvBn4WILARt
+	flYJX2kpe1501fKmNxkSwUH10ERXH6PYtgNXc6XFOVxLkKGuXfN++Cy4rXE73Gk53pAYvGtiCo/IL
+	pDNcSUK5a7mKtENhMBsDo+SIq/pdpoVn5HkeWiEJOsgFRXLScenkjzUIUW/HPy107Wpjig5oB0PIQ
+	EhVJtnDGMywVnUwEcxC4OvUJeWJ8NMaBLzq+hxJblP7Ab2xz8ELvSfGC7p0KbrycCeopV+HMyj9/Y
+	uQ/Bxe6ZLoDpY4IgrNqw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1svB6h-0000000GDiH-2dI3;
-	Mon, 30 Sep 2024 07:46:11 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1svBFO-0000000GF3y-17CQ;
+	Mon, 30 Sep 2024 07:55:10 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1svB5S-0000000GDVf-2NgH;
-	Mon, 30 Sep 2024 07:44:56 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 9ABD15C4C5F;
-	Mon, 30 Sep 2024 07:44:49 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0200CC4CED5;
-	Mon, 30 Sep 2024 07:44:53 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1727682293;
-	bh=hNlNzwLvuBX9rwWnjO4/JPLaI48Tlz1qJu1m0jUpdr0=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=FQGExqGq2aPE3j4VEmerBOuBA9h+AxXSq37e0bOCBjl/je9eYV+/ykLoVah07BrfE
-	 GVpRcpdUYmGx0opBIcT2tWCB6liMeIfMnbp9hvKqEVhCOUSKPsY6PTVSyccnrg9A/b
-	 epH66JiWfAQKHua644mmkoe6mw3Dz6x/AycVgQtL3LrwSQCBCUfOLmnZEmqu+d0sb6
-	 oRO6cdYhak5DUXAaB2Z9mhBs+S7fFhG+kHPdBdQQsPNrkSrXcOT+m8DWXcJpkdoXvd
-	 hK/6T+Sw5oNLLUvsFF92/E6p6ySbhyAZ7EY/jTvMwGrthrH+QGhP9avQj6wNWreY2K
-	 ijU0JQ8Ec0hGA==
-Date: Mon, 30 Sep 2024 09:44:51 +0200
-From: Maxime Ripard <mripard@kernel.org>
-To: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Cc: Andrzej Hajda <andrzej.hajda@intel.com>, 
-	Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
-	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Jonas Karlman <jonas@kwiboo.se>, 
-	Jernej Skrabec <jernej.skrabec@gmail.com>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
-	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, 
-	Sandy Huang <hjc@rock-chips.com>, Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, 
-	Andy Yan <andy.yan@rock-chips.com>, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Mark Yao <markyao0591@gmail.com>, Sascha Hauer <s.hauer@pengutronix.de>, 
-	Simona Vetter <simona@ffwll.ch>, Simona Vetter <simona.vetter@ffwll.ch>, 
-	dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, 
-	kernel@collabora.com, Alexandre ARNOUD <aarnoud@me.com>, 
-	Luis de Arquer <ldearquer@gmail.com>, Algea Cao <algea.cao@rock-chips.com>
-Subject: Re: [PATCH v8 1/3] drm/bridge: synopsys: Add DW HDMI QP TX
- Controller support library
-Message-ID: <hax2zu7wlpucxllqapc5dzjirvrkanxkzdxtd2shu3tlc53t3m@ctpcuxifl3ds>
-References: <20240929-b4-rk3588-bridge-upstream-v8-0-83538c2cc325@collabora.com>
- <20240929-b4-rk3588-bridge-upstream-v8-1-83538c2cc325@collabora.com>
+	id 1svBFC-0000000GF0e-0PXN
+	for linux-rockchip@lists.infradead.org;
+	Mon, 30 Sep 2024 07:55:09 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+	List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=TJrcEaW6HT4SoDeeGrgXvKVgSSQglptoRfRJ+5BZeQs=; b=L+4+21w+05Mh3Y+/dKq6oGqy6/
+	Cy7719Xxxx+vqaAGFhPMBr6edFt1veot/+tcyZqMOwZg+r5EGuamfUcFc65k/ZBx0BvVVNoxfGxPz
+	tsDUDVm8ftp/2oldw4tplBhFJ9XcBBWK3ruM3UYerHxCeBhudfDq5AN/7IX2BgsKhOkLb6ae9n5bC
+	IbWCW9sr0NT+5b7UmiK9EOfKrSBJaesWXzx/WKFNrSwtKMcW4gtdqMiZcEh3MAlf+3fcAxq+dQRW+
+	fiD6A8rf+H9J68jQ6HhB5XO1ShL/+F2Y11FseiAskDUGke0SxtU8wfgBY85wPqHVp7GIxZPZCbXZm
+	/b8U3BrQ==;
+Received: from i5e861925.versanet.de ([94.134.25.37] helo=diego.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1svBF2-0003T3-Fe; Mon, 30 Sep 2024 09:54:48 +0200
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+To: FUKAUMI Naoki <naoki@radxa.com>
+Cc: linux-rockchip@lists.infradead.org, FUKAUMI Naoki <naoki@radxa.com>
+Subject: Re: [PATCH] arm64: dts: rockchip: fix pinctrl for pcie2x1l2 for Radxa ROCK 5A
+Date: Mon, 30 Sep 2024 09:54:47 +0200
+Message-ID: <2772744.mvXUDI8C0e@diego>
+In-Reply-To: <20240930022837.885-1-naoki@radxa.com>
+References: <20240930022837.885-1-naoki@radxa.com>
 MIME-Version: 1.0
-In-Reply-To: <20240929-b4-rk3588-bridge-upstream-v8-1-83538c2cc325@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240930_004454_744582_1CA6F93E 
-X-CRM114-Status: GOOD (  10.52  )
+X-CRM114-CacheID: sfid-20240930_005458_190657_D7A62701 
+X-CRM114-Status: GOOD (  17.35  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,66 +67,63 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============1978754550229472710=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Hi,
 
---===============1978754550229472710==
-Content-Type: multipart/signed; micalg=pgp-sha384;
-	protocol="application/pgp-signature"; boundary="s7gahhjnit22mlpj"
-Content-Disposition: inline
+Am Montag, 30. September 2024, 04:28:37 CEST schrieb FUKAUMI Naoki:
+> for pcie2x1l2, only pcie20x1_2_perstn_m0 is required.
+> fix pinctrl definitions for pcie2x1l2.
+
+I guess the other pins are used for something different?
+
+Not criticizing the change itself, but for a "fixes", I do expect some
+explanation, why the previous setting is _wrong_ .
 
 
---s7gahhjnit22mlpj
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Thanks
+Heiko
 
-On Sun, Sep 29, 2024 at 01:36:47AM GMT, Cristian Ciocaltea wrote:
-> +static enum drm_mode_status
-> +dw_hdmi_qp_bridge_mode_valid(struct drm_bridge *bridge,
-> +			     const struct drm_display_info *info,
-> +			     const struct drm_display_mode *mode)
-> +{
-> +	struct dw_hdmi_qp *hdmi = bridge->driver_private;
+> Fixes: b728d4c51f0c ("arm64: dts: rockchip: enable PCIe on M.2 E key for Radxa ROCK 5A")
+> Signed-off-by: FUKAUMI Naoki <naoki@radxa.com>
+> ---
+>  arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts | 6 +++++-
+>  1 file changed, 5 insertions(+), 1 deletion(-)
+> 
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts b/arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts
+> index 435355433bbd..1d7adece42a5 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts
+> +++ b/arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts
+> @@ -310,7 +310,7 @@ rgmii_phy1: ethernet-phy@1 {
+>  };
+>  
+>  &pcie2x1l2 {
+> -	pinctrl-0 = <&pcie20x1m0_pins>;
+> +	pinctrl-0 = <&pcie20x1_2_perstn_m0>;
+>  	pinctrl-names = "default";
+>  	reset-gpios = <&gpio3 RK_PD1 GPIO_ACTIVE_HIGH>;
+>  	vpcie3v3-supply = <&vcc3v3_wf>;
+> @@ -325,6 +325,10 @@ io_led: io-led {
+>  	};
+>  
+>  	pcie {
+> +		pcie20x1_2_perstn_m0: pcie20x1-2-perstn-m0 {
+> +			rockchip,pins = <3 RK_PD1 RK_FUNC_GPIO &pcfg_pull_none>;
+> +		};
 > +
-> +	if (mode->clock > HDMI14_MAX_TMDSCLK / 1000) {
-> +		dev_dbg(hdmi->dev, "Unsupported mode clock: %d\n", mode->clock);
-> +		return MODE_CLOCK_HIGH;
-> +	}
-
-Similarly, you should use drm_hdmi_compute_mode_clock here, with RGB and 8bpc
-
-Once fixed,
-Reviewed-by: Maxime Ripard <mripard@kernel.org>
-
-Maxime
-
---s7gahhjnit22mlpj
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iJUEABMJAB0WIQTkHFbLp4ejekA/qfgnX84Zoj2+dgUCZvpW8gAKCRAnX84Zoj2+
-dmA3AX9ZbkD3HSjUw8ZudFDWE7bSMD1N/4nblONlQVzDTPoRo/xUWVvxRifyIpHo
-n8eWlTcBfjfxBcgbXzYRvbh16CIBICTLF7N9txHbxgi0eIVoUlyBZm+LQF7eS823
-KwAALtJWVg==
-=VY2V
------END PGP SIGNATURE-----
-
---s7gahhjnit22mlpj--
+>  		pow_en: pow-en {
+>  			rockchip,pins = <0 RK_PC5 RK_FUNC_GPIO &pcfg_pull_none>;
+>  		};
+> 
 
 
---===============1978754550229472710==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============1978754550229472710==--
-
