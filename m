@@ -4,41 +4,41 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DFB50CEB2C2
-	for <linux-rockchip@archiver.kernel.org>; Mon, 30 Sep 2024 21:05:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4B2BFCEB2C1
+	for <linux-rockchip@archiver.kernel.org>; Mon, 30 Sep 2024 21:06:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=2Ch9m3aQ49nbJzEPZBZTEEC7MAIM778Zlqy1whXcsdE=; b=293MmLw7Aj+azF
-	JXTrB/4ti5wMeQCwiiECOlAAY8nb/ghaZUHTj8DoSr4Qc7FFrThD028ocktAKpjX6TTMSw2vc5oYj
-	6at/GDMJqfJJweN3Y7XalIx8hdI8BU/Q3dDmVH+B6oSBI6jAd0XMd0znr5NHOozs8nSe65X36uAkG
-	LYCKZAB6zgX3IkjPxff3H8+uQ4RBNHCmfSJPCzmc0KIPhmNi+JmYsr6NMAT3cbTRvO5m8zumOAXYA
-	E4ZEiZzZGs4OP0E+/Tys9j7zQX1IQCaL/bykeKOcs6Dkgs/orNiW6i7hVfMHhrHUYIeLv3gpYYVqT
-	cLQ2bfLrmCtY3bKeM6Yw==;
+	List-Owner; bh=98Esg/dgG5p/H8vDwE8fo/qF7xA1m1vPjN3QXZicuW0=; b=XbjFctXOeYUPAE
+	Ebq7O1CAc2gr8fK6aRaD3A1UTd2DaDa9sP7hTDZWNpfKW8lZoKttCMUDKdWSpHgarJw3byIckGC6q
+	aUWYZIdZcWdyzGUvhkW2zettoYpLE9hxgKQPKJj3XvDmnyXTpeXEXoS8jc+HRXjw8zXSnyTBc/TGx
+	FMnkCSHZqGBkgmh7UMvTGr00SNUHPlm7d2IfbclSCO2r5tbTRuQVv+i3if9sINOXnKqZ99P5R0Ehz
+	a4OhsCTCNy7H4bt9pOUOVAUvN3SdpCB+BwrB0WEksbgrQqDo/XRvyzVPnjXKh7o/4aZcV1kywQAmS
+	c9pxlvqzsUAaFZ9hXPLg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1svNZm-00000000qn7-300f;
-	Mon, 30 Sep 2024 21:05:02 +0000
+	id 1svNax-00000000qxK-0jU5;
+	Mon, 30 Sep 2024 21:06:15 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1svNWL-00000000qN3-1EEw;
+	id 1svNWL-00000000qN4-2gok;
 	Mon, 30 Sep 2024 21:01:29 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
 	:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
 	Content-Type:Content-ID:Content-Description;
-	bh=UWYPb9aYNvYbL5G5aJZMsIXhcXu36US452m2eFrHSwg=; b=H1uWZAEp2uv9evtXo+HiJgXk5K
-	xJ/6twiZIjLWnwdH2SbK1UlzUT/A8ONi6KnOqrWiztNZKVGcndFl8KL8Cf3N6QmWsxF8two/NY1cv
-	YUVfvRKblJRfjg8O8zsBWdrg1PgBnAw+y1OteKrvF6+1n4es/okFrhv91xc3elAEnePpKUJzPdPoH
-	+HgC+YaXnp8fr2W9svaToZWBjA/xmyQguPlEqHl8TsFggc0io+Vrv/fMDjoLV1RzHlmZ1BlyF5Q7o
-	yr2jygovefQ9R//Q4I3gWSH7+RxxN+kWIw6itPv4YKMGCscgv3lQQRVEjPlrzj6ceuMWk/CJm5jaX
-	t991YeJQ==;
+	bh=pPeZ3znnGy1N8EW6CoHIYSrcQNQ3Ue+r0TSpLlwZLZ4=; b=RDsHK2FNj8q86JfWduh6ZTfGJc
+	kcLXK9ee05LI2YVKy7oy9r5XYFf7cxlMAt7qEpkszafMRxwOmlUWWer6EMG4XX9fDMOc2hST4sTc3
+	qEAcOYxNgqKZ0cfQPvkApikwimWJqMvREPT3YD86mKhYelniEFD3i+Hu9MyGxoIa5mHXOhZqv5VD3
+	rvM8RBfW3xQtR8tU/rNf+I/Tign5D7XEc1X9XAN8HAVL6P7NouiyfPcrGJm6aD8OJIDR7sqou2uWf
+	uTyb3w69Lvp926HXMQUrJIzUPRjiTH7fc+16GUIa+9UDzvBatLXlbL1o5JyTcwI5igLI8aJU5eFRR
+	cyO86S7g==;
 Received: from gloria.sntech.de ([185.11.138.130])
 	by desiato.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1svNWH-00000002vCb-1nny;
+	id 1svNWH-00000002vCc-1nee;
 	Mon, 30 Sep 2024 21:01:27 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Transfer-Encoding:MIME-Version:References:
@@ -46,33 +46,33 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
 	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=UWYPb9aYNvYbL5G5aJZMsIXhcXu36US452m2eFrHSwg=; b=w9Lsls3h02AFnLSlqM/BMTPvme
-	BEvTCxNVSsKmaqIEcSoTBZpg4azMrtf5hGHFVVZfAhTWs8NdDA/kUVFOxIF2tP6rKvCcnmhGfPlXM
-	HBM7JrwVetOIBwyCDHGcpw22zztzYUUD9R0DA3AtxhSyaHE+QYjU4Yf8oKeDDUOckzCk6CpGVjlzU
-	lvgJKxaliCsVooW+jHYqoydGMHF26Lbihbw3z48pO2fVwcrzfRw3ZamQqecLlEjTEXoHhdGT0/03V
-	egyEESvlSdxHv4IbIb/A0z7u0U983Jzbz1Qtzo91qkC2bXnb+2AvAsENxQLx9XVN/XMDWzmaV7UGe
-	5ZcByXSQ==;
+	bh=pPeZ3znnGy1N8EW6CoHIYSrcQNQ3Ue+r0TSpLlwZLZ4=; b=LC5IAHmuRBkKJthQa19mwwhszl
+	a5VlIlYUzlj8rxdPieOppkgj6Eo9LzhJfGq4lQfU93vh7bKmi9++4OdWk9ldo7kIzPWgJuofSgPb4
+	rnFFBbKuVvlm7DyStAGOKNhKfwLknE55tEwaQ9aZfs7eLNFMrTDOfeQaMuOftRbRBo2eWam4Op77e
+	T1+AhsjlseOnPPIccxC/wfxulSEHChp9SP0JSdwOREJXxlAYBn96i2EQx4r2RDUfX0YIXMXj1Cbgl
+	0HQR39alU0gXNgArCdCik5V9OsJbaw5ZRb41dLiMKqsDd/HjP1oLP4lPOexlGbLUkB3NS3aplUMgL
+	1mCHHbmA==;
 Received: from i5e861925.versanet.de ([94.134.25.37] helo=phil.lan)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1svNWC-00087h-5W; Mon, 30 Sep 2024 23:01:20 +0200
+	id 1svNWC-00087h-Ed; Mon, 30 Sep 2024 23:01:20 +0200
 From: Heiko Stuebner <heiko@sntech.de>
 To: linux-rockchip@lists.infradead.org
 Cc: linux-arm-kernel@lists.infradead.org,
 	devicetree@vger.kernel.org,
 	Heiko Stuebner <heiko@sntech.de>,
-	Chris Morgan <macromorgan@hotmail.com>
-Subject: [PATCH 2/8] arm64: dts: rockchip: fix i2c2 pinctrl-names property on anbernic-rg353v
-Date: Mon, 30 Sep 2024 23:01:06 +0200
-Message-ID: <20240930210112.1993625-3-heiko@sntech.de>
+	Furkan Kardame <f.kardame@manjaro.org>
+Subject: [PATCH 3/8] arm64: dts: rockchip: Drop regulator-init-microvolt from rk3568-roc-pc
+Date: Mon, 30 Sep 2024 23:01:07 +0200
+Message-ID: <20240930210112.1993625-4-heiko@sntech.de>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20240930210112.1993625-1-heiko@sntech.de>
 References: <20240930210112.1993625-1-heiko@sntech.de>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240930_220125_770921_3D4F08E0 
-X-CRM114-Status: GOOD (  12.11  )
+X-CRM114-CacheID: sfid-20240930_220125_770921_D4896654 
+X-CRM114-Status: GOOD (  10.10  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,32 +89,44 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-We want to control pins, not beer mugs, so rename pintctrl-names to the
-expected inctrl-names.
+regulator-init-microvolt is not part of any regulator binding and is
+only used in the Rockchip vendor kernel. So drop it.
 
-This was not affecting functionality, because the i2c2 controller
-already had a set of pinctrl properties.
-
-Fixes: 1e141cf12726 ("arm64: dts: rockchip: add Anbernic RG353V and RG353VS")
-Cc: Chris Morgan <macromorgan@hotmail.com>
+Fixes: 007b4bb47f44 ("arm64: dts: rockchip: add dts for Firefly Station P2 aka rk3568-roc-pc")
+Cc: Furkan Kardame <f.kardame@manjaro.org>
 Signed-off-by: Heiko Stuebner <heiko@sntech.de>
 ---
- arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg353v.dts | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ arch/arm64/boot/dts/rockchip/rk3568-roc-pc.dts | 3 ---
+ 1 file changed, 3 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg353v.dts b/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg353v.dts
-index e9954a33e8cd..a79a5614bcc8 100644
---- a/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg353v.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg353v.dts
-@@ -79,7 +79,7 @@ button-r2 {
- };
+diff --git a/arch/arm64/boot/dts/rockchip/rk3568-roc-pc.dts b/arch/arm64/boot/dts/rockchip/rk3568-roc-pc.dts
+index e333449ead04..2fa89a0eeafc 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3568-roc-pc.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3568-roc-pc.dts
+@@ -272,7 +272,6 @@ vdd_logic: DCDC_REG1 {
+ 				regulator-name = "vdd_logic";
+ 				regulator-always-on;
+ 				regulator-boot-on;
+-				regulator-init-microvolt = <900000>;
+ 				regulator-initial-mode = <0x2>;
+ 				regulator-min-microvolt = <500000>;
+ 				regulator-max-microvolt = <1350000>;
+@@ -285,7 +284,6 @@ regulator-state-mem {
  
- &i2c2 {
--	pintctrl-names = "default";
-+	pinctrl-names = "default";
- 	pinctrl-0 = <&i2c2m1_xfer>;
- 	status = "okay";
+ 			vdd_gpu: DCDC_REG2 {
+ 				regulator-name = "vdd_gpu";
+-				regulator-init-microvolt = <900000>;
+ 				regulator-initial-mode = <0x2>;
+ 				regulator-min-microvolt = <500000>;
+ 				regulator-max-microvolt = <1350000>;
+@@ -309,7 +307,6 @@ regulator-state-mem {
  
+ 			vdd_npu: DCDC_REG4 {
+ 				regulator-name = "vdd_npu";
+-				regulator-init-microvolt = <900000>;
+ 				regulator-initial-mode = <0x2>;
+ 				regulator-min-microvolt = <500000>;
+ 				regulator-max-microvolt = <1350000>;
 -- 
 2.43.0
 
