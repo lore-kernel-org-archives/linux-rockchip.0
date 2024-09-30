@@ -4,78 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E204DCF6499
-	for <linux-rockchip@archiver.kernel.org>; Mon, 30 Sep 2024 11:05:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0C527CF6499
+	for <linux-rockchip@archiver.kernel.org>; Mon, 30 Sep 2024 12:15:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=kibspqntdZfJAacg/P9rsGKfO2NJLtt1s8RKNP2fIZQ=; b=Jfs+frnJYp22Lv
-	o+lYs3Nu6rq2GDEs+k6U1BsCoXT+iPwURlFuAsMnPMz3gXGFjlJI5DeIeSvNTD9RXW95riuBwuiH9
-	xUPGaiOf3+0r53D8wcq2s7zAC4TscBDD4x2TArNqKU0DnMAeZJNtY+ADmA3UAIcI3Q7jFDS12FKJs
-	MjWlQkdRetf+MjkroOFT7O5M3SBuSX49F0mU4+dk5g+R6g2ygpIwLYfslKZ0Gzv0Yh3fHwgwhVKEq
-	D0ISsfi9DCWoEFd35y1hkb0XFOgmiRJ3oeWhZTIwiO++QANYZVOb/9ZPNNY55V0rixXcJSnZODTzf
-	hPIkkRenxFq3yeLcJ5NA==;
+	List-Owner; bh=/Ph2F93IxkicW+0RR3PxM5im3cwaSavXdUfhdEYyQYQ=; b=E1jCiAyJPX0Ass
+	uAR/BcR+o6DIXLQ8tHDhHbV6omET4xS0l1J9TvmMwVlOo2MuO4+CgrrZLs5rlxV3QWJ1arAxOTXRr
+	gBj0I0cdhV3TMsFjq8ds6n746bNdJ7gmODLjU3OB3W9Ro6u4ugrSjRDNwbLJqAh8uBEeKIE2Qk/NL
+	H4Ww/wibmGP9mYvMO4F++qsInj6JwTeWjondDuNxM5mi9ZTXFryZERkOX9OAR1xiXGxCg/ttTkgVJ
+	jglLaRjElCPkviSop6q9YoKXwUVYBZjHJPlPFgbBkBDMVTDo9HOTou7G8Y2nn5Ixmo2H80OhGpHoD
+	89s2FCrIHN/yZ9c6tuMQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1svEDg-0000000GnHK-1ag5;
-	Mon, 30 Sep 2024 11:05:36 +0000
+	id 1svFJF-0000000GzHa-33VY;
+	Mon, 30 Sep 2024 12:15:25 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1svE4T-0000000GlRe-3JYl;
-	Mon, 30 Sep 2024 10:56:07 +0000
+	id 1svE80-0000000GmNV-3zI3;
+	Mon, 30 Sep 2024 10:59:46 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
 	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=4I9m5gG54Sm1ZQZRuUc8e4nrJvimsb06OLbvmpozwl0=; b=sW3SYXsX+oYNhLJeeaO6xVkhoJ
-	n24TUAnmxnVEVfCqyHTPIZ3cLV50ycj+FOCQ1WGss1NEBjxzuNu0eE2sMpw9NuRzc0P9qD+aJyiZg
-	dpJ0YGDMrsWdLmSPo2FpbXunA47Asd2HluRFyZ34k/PdarnaxnvZEJl4DdL2HLGnNCBupQc+JywOy
-	guMUHhewNPYMlVdvFdhuwbbj85f3ujFynngI6rBafQTdqjqj1UmmfAlXMGUloBD3BKqz2iaZBC2xe
-	eaUsJN/jexsmTD215w12/vbgs0Mnd5Q2uC3okFwYfC23ayxj12Ijp67cHitOrB6/k4KQEVSl6k6su
-	r0EC7knw==;
+	bh=s/tFBH3w644dH2BiF2kIdHGJ0YUc1jK2OUYdmfOhNhE=; b=cSN/3WpBNS/Bws30ayJ61/aJSc
+	16KqsPgoI4vZWbH9OoNggjy5Gm6BP5rJ91dciyOWBZGfra3dkk59GL37fHr7WA+YM1oo8HD6adRKz
+	4XFBPhMKXvFhQCb/a6AHSkdieM14WAs546AAPhN9+JDNh5kCdqD4G7BTbfbTNmdkK8+AgWJy/MwQD
+	5wDdTO8U2RZ5paS9DRuROBRu/zVkhwXFChW7PLlWhGUgxbEoCGiFj6iQ5uEgAA5R/IUgWEBhkJDQr
+	TlTxkonf9Sl7FpEYM5mECsB048Wl5KEvXlLAAerbIVeNfSEGv3u4GGBXa2gd769zA/u32jpshwk7A
+	X1lJ+ltw==;
 Received: from i5e861925.versanet.de ([94.134.25.37] helo=phil.lan)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1svE4D-0004Xd-DR; Mon, 30 Sep 2024 12:55:49 +0200
+	id 1svE4H-0004Xd-Ei; Mon, 30 Sep 2024 12:55:53 +0200
 From: Heiko Stuebner <heiko@sntech.de>
-To: Damon Ding <damon.ding@rock-chips.com>
+To: linux-rockchip@lists.infradead.org,
+	Jianfeng Liu <liujianfeng1994@gmail.com>
 Cc: Heiko Stuebner <heiko@sntech.de>,
-	alchark@gmail.com,
-	krzk+dt@kernel.org,
-	efectn@protonmail.com,
-	jonas@kwiboo.se,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Rob Herring <robh@kernel.org>,
 	linux-arm-kernel@lists.infradead.org,
-	conor+dt@kernel.org,
 	linux-kernel@vger.kernel.org,
-	andyshrk@163.com,
-	jagan@edgeble.ai,
 	devicetree@vger.kernel.org,
-	knaerzche@gmail.com,
-	boris.brezillon@collabora.com,
-	dsimic@manjaro.org,
-	megi@xff.cz,
-	sebastian.reichel@collabora.com,
-	robh@kernel.org,
-	linux-rockchip@lists.infradead.org,
-	macromorgan@hotmail.com,
-	tim@feathertop.org
-Subject: Re: [PATCH v5 0/2] Add support for RK3588S Evaluation board
-Date: Mon, 30 Sep 2024 12:55:34 +0200
-Message-ID: <172769365134.1880381.8272330238523830438.b4-ty@sntech.de>
+	Stephen Rothwell <sfr@canb.auug.org.au>,
+	Conor Dooley <conor+dt@kernel.org>
+Subject: Re: [PATCH 0/3] Add support for ArmSoM LM7 SoM
+Date: Mon, 30 Sep 2024 12:55:42 +0200
+Message-ID: <172769365132.1880381.4548404807222807004.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20240914095456.2347532-1-damon.ding@rock-chips.com>
-References: <20240914095456.2347532-1-damon.ding@rock-chips.com>
+In-Reply-To: <20240918165008.169917-1-liujianfeng1994@gmail.com>
+References: <20240918165008.169917-1-liujianfeng1994@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240930_035605_845995_EC07236D 
-X-CRM114-Status: UNSURE (   9.45  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240930_035945_028797_8DC9EE2A 
+X-CRM114-Status: GOOD (  11.44  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,25 +80,29 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Sat, 14 Sep 2024 17:54:54 +0800, Damon Ding wrote:
-> RK3588S EVB1 board features:
-> - Rockchip RK3588S
-> - PMIC: RK806-2x2pcs+DiscretePower
-> - RAM: LPDDR4/4x 2pcsx 32bit
-> - ROM: eMMC5.1+ SPI Falsh
+On Thu, 19 Sep 2024 00:50:05 +0800, Jianfeng Liu wrote:
+> This series add support for ArmSoM RK3588 based SoM and carrier board.
+> Devicetree is split into .dtsi (LM7 SoM) and .dts (W3 Board).
 > 
-> Damon Ding (2):
->   dt-bindings: arm: rockchip: Add RK3588S EVB1 board
->   arm64: dts: rockchip: Add RK3588S EVB1 board
+> Info of SoM and carrier board can be found at:
+> https://docs.armsom.org/armsom-lm7
+> https://docs.armsom.org/armsom-w3
 > 
 > [...]
 
 Applied, thanks!
 
-[1/2] dt-bindings: arm: rockchip: Add RK3588S EVB1 board
-      commit: fab49faebdfb0c3cdec6c70334e52f65343d130c
-[2/2] arm64: dts: rockchip: Add RK3588S EVB1 board
-      commit: 00c7fb3b8ab25c496931686860a09994c93c76e6
+[1/3] dt-bindings: arm: rockchip: Add ArmSoM LM7 SoM
+      commit: 7ad3206b822a69208a4ea47cc1f2cc69b120b513
+[2/3] arm64: dts: rockchip: Add ArmSoM LM7 SoM
+      commit: 4b6167b3a00fc0eab259484a052be6d53df9b827
+[3/3] arm64: dts: rockchip: Add ArmSoM W3 board
+      commit: 50c51bc28a7d7e7bb28b40ec3948ae73410bc2fc
+
+With some modifications:
+- convert underscore to dash in leds
+- some reordering
+
 
 Best regards,
 -- 
