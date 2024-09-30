@@ -4,75 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4B2BFCEB2C1
-	for <linux-rockchip@archiver.kernel.org>; Mon, 30 Sep 2024 21:06:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 52A41CEB2C2
+	for <linux-rockchip@archiver.kernel.org>; Mon, 30 Sep 2024 21:07:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=98Esg/dgG5p/H8vDwE8fo/qF7xA1m1vPjN3QXZicuW0=; b=XbjFctXOeYUPAE
-	Ebq7O1CAc2gr8fK6aRaD3A1UTd2DaDa9sP7hTDZWNpfKW8lZoKttCMUDKdWSpHgarJw3byIckGC6q
-	aUWYZIdZcWdyzGUvhkW2zettoYpLE9hxgKQPKJj3XvDmnyXTpeXEXoS8jc+HRXjw8zXSnyTBc/TGx
-	FMnkCSHZqGBkgmh7UMvTGr00SNUHPlm7d2IfbclSCO2r5tbTRuQVv+i3if9sINOXnKqZ99P5R0Ehz
-	a4OhsCTCNy7H4bt9pOUOVAUvN3SdpCB+BwrB0WEksbgrQqDo/XRvyzVPnjXKh7o/4aZcV1kywQAmS
-	c9pxlvqzsUAaFZ9hXPLg==;
+	List-Owner; bh=FjLkTL+vSsMdrQ/wgst9i+h2rKTWilEqHLoMhMiFtSo=; b=m2EqKYEybQwhSo
+	mzuWPihxggH0eNbwTokz7ZMfYyI0LjVpkv/oUgwlKEftLwauVZQOjPKfLt/7Q4x1L4ghsHI28bN/H
+	5Ne19ppQ87fnk+RCYiYbHr1tYHkXRVWifHlXFZf/32Ir9Mc+M7sSaGmw/Rga7kQKuJGdo6Uj/d1zR
+	lAywgO0R04Fw77TJ2maYsj7gEwJCN95b9qCDubWAuZak7Q2674/uoErK8jYkDy6ZnYjEe1Qp7ZhWA
+	8Fca8/cPnIq1NX4jpzcJ5f7oTafdTnEZa3PnBIJyGu9GUkYDe1jtdB9EfQCp8M16/s8BuCAz1HC76
+	W2Nledc66BqfsbZgXzyg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1svNax-00000000qxK-0jU5;
-	Mon, 30 Sep 2024 21:06:15 +0000
+	id 1svNc7-00000000r4G-3Khi;
+	Mon, 30 Sep 2024 21:07:27 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1svNWL-00000000qN4-2gok;
-	Mon, 30 Sep 2024 21:01:29 +0000
+	id 1svNWN-00000000qNe-0EFx;
+	Mon, 30 Sep 2024 21:01:31 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
 	:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
 	Content-Type:Content-ID:Content-Description;
-	bh=pPeZ3znnGy1N8EW6CoHIYSrcQNQ3Ue+r0TSpLlwZLZ4=; b=RDsHK2FNj8q86JfWduh6ZTfGJc
-	kcLXK9ee05LI2YVKy7oy9r5XYFf7cxlMAt7qEpkszafMRxwOmlUWWer6EMG4XX9fDMOc2hST4sTc3
-	qEAcOYxNgqKZ0cfQPvkApikwimWJqMvREPT3YD86mKhYelniEFD3i+Hu9MyGxoIa5mHXOhZqv5VD3
-	rvM8RBfW3xQtR8tU/rNf+I/Tign5D7XEc1X9XAN8HAVL6P7NouiyfPcrGJm6aD8OJIDR7sqou2uWf
-	uTyb3w69Lvp926HXMQUrJIzUPRjiTH7fc+16GUIa+9UDzvBatLXlbL1o5JyTcwI5igLI8aJU5eFRR
-	cyO86S7g==;
+	bh=4Lv3Kwynzpq1gYkAA3f1MJlappE0nwgEQR7axSKWxUE=; b=a6gnvmErzUW7dNyYtVrRVjXDbV
+	jUCJL/50ZYHMz7qOJgDRMrN7AoaAsvOt5m0ns2KfCqYf+jYG08aTYPulnd2OOWlWzs2WoNq8ZhhIR
+	cK8RXkFfQ/D7F7H2E8Nva7vK6yIHMVGeLw7PhLGVEG+f3TAPQpZvXgBGruBgdoLbhiYkIu9o/e53g
+	/jkO2diPUikKrCp3Mxe3B4+gf2x9huAcWOw3aDzc7I5HR30EhN+nAWYut8yAEddtJOkGRwLTwV26z
+	RVH6np9cX5ry481q6XxMt3UYGfgMQSEAsS7scBFJf6dtvx5WmND40eU0QkCI/S7sm9cLsaU0QqnpS
+	uBAk0+HA==;
 Received: from gloria.sntech.de ([185.11.138.130])
 	by desiato.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1svNWH-00000002vCc-1nee;
-	Mon, 30 Sep 2024 21:01:27 +0000
+	id 1svNWH-00000002vCg-1niN;
+	Mon, 30 Sep 2024 21:01:29 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Transfer-Encoding:MIME-Version:References:
 	In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
 	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=pPeZ3znnGy1N8EW6CoHIYSrcQNQ3Ue+r0TSpLlwZLZ4=; b=LC5IAHmuRBkKJthQa19mwwhszl
-	a5VlIlYUzlj8rxdPieOppkgj6Eo9LzhJfGq4lQfU93vh7bKmi9++4OdWk9ldo7kIzPWgJuofSgPb4
-	rnFFBbKuVvlm7DyStAGOKNhKfwLknE55tEwaQ9aZfs7eLNFMrTDOfeQaMuOftRbRBo2eWam4Op77e
-	T1+AhsjlseOnPPIccxC/wfxulSEHChp9SP0JSdwOREJXxlAYBn96i2EQx4r2RDUfX0YIXMXj1Cbgl
-	0HQR39alU0gXNgArCdCik5V9OsJbaw5ZRb41dLiMKqsDd/HjP1oLP4lPOexlGbLUkB3NS3aplUMgL
-	1mCHHbmA==;
+	bh=4Lv3Kwynzpq1gYkAA3f1MJlappE0nwgEQR7axSKWxUE=; b=DTw3tdHQKAZGnnqZCT7CYlTq9H
+	SKenGOw55chQNnxUCzDwfZmR2RNBdHaodX1EaLDInPEqBvls4baTQBlZgFDAar49rXRX6YSpQibdM
+	cvtx0NmJcQE3GlVhAemGho91YG9YwSGzIipBMdP4t1CuoRNmSLiNcqdOdxZn7XfRILlc9o4ZDr9YX
+	4kKGkhQmcKeK8GXDjMn5sMKDPEB4wEwMix1jjOK2l2boGd7Lz0DQZC5376UtzH8WuKkFO1LdE/8eZ
+	dQbaEzmcQcwJWJhYk6/zoas3q/hH1TRix5AL21Xh5GACZyIsYHO0nQ4FDFJJa581aLbRpMdUipHtu
+	8oRi5yqw==;
 Received: from i5e861925.versanet.de ([94.134.25.37] helo=phil.lan)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1svNWC-00087h-Ed; Mon, 30 Sep 2024 23:01:20 +0200
+	id 1svNWD-00087h-24; Mon, 30 Sep 2024 23:01:21 +0200
 From: Heiko Stuebner <heiko@sntech.de>
 To: linux-rockchip@lists.infradead.org
 Cc: linux-arm-kernel@lists.infradead.org,
 	devicetree@vger.kernel.org,
 	Heiko Stuebner <heiko@sntech.de>,
-	Furkan Kardame <f.kardame@manjaro.org>
-Subject: [PATCH 3/8] arm64: dts: rockchip: Drop regulator-init-microvolt from rk3568-roc-pc
-Date: Mon, 30 Sep 2024 23:01:07 +0200
-Message-ID: <20240930210112.1993625-4-heiko@sntech.de>
+	Andy Yan <andyshrk@163.com>
+Subject: [PATCH 5/8] arm64: dts: rockchip: Fix bluetooth properties on rk3566 box demo
+Date: Mon, 30 Sep 2024 23:01:09 +0200
+Message-ID: <20240930210112.1993625-6-heiko@sntech.de>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20240930210112.1993625-1-heiko@sntech.de>
 References: <20240930210112.1993625-1-heiko@sntech.de>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240930_220125_770921_D4896654 
-X-CRM114-Status: GOOD (  10.10  )
+X-CRM114-CacheID: sfid-20240930_220125_829020_2CF48368 
+X-CRM114-Status: GOOD (  12.25  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,44 +89,34 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-regulator-init-microvolt is not part of any regulator binding and is
-only used in the Rockchip vendor kernel. So drop it.
+The expected clock-name is different (ext_clock -> extclk) and the wakeup
+gpio properties are named differently when changing from vendor-tree to
+mainline. So fix those to match the binding.
 
-Fixes: 007b4bb47f44 ("arm64: dts: rockchip: add dts for Firefly Station P2 aka rk3568-roc-pc")
-Cc: Furkan Kardame <f.kardame@manjaro.org>
+Fixes: 2e0537b16b25 ("arm64: dts: rockchip: Add dts for rockchip rk3566 box demo board")
+Cc: Andy Yan <andyshrk@163.com>
 Signed-off-by: Heiko Stuebner <heiko@sntech.de>
 ---
- arch/arm64/boot/dts/rockchip/rk3568-roc-pc.dts | 3 ---
- 1 file changed, 3 deletions(-)
+ arch/arm64/boot/dts/rockchip/rk3566-box-demo.dts | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3568-roc-pc.dts b/arch/arm64/boot/dts/rockchip/rk3568-roc-pc.dts
-index e333449ead04..2fa89a0eeafc 100644
---- a/arch/arm64/boot/dts/rockchip/rk3568-roc-pc.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3568-roc-pc.dts
-@@ -272,7 +272,6 @@ vdd_logic: DCDC_REG1 {
- 				regulator-name = "vdd_logic";
- 				regulator-always-on;
- 				regulator-boot-on;
--				regulator-init-microvolt = <900000>;
- 				regulator-initial-mode = <0x2>;
- 				regulator-min-microvolt = <500000>;
- 				regulator-max-microvolt = <1350000>;
-@@ -285,7 +284,6 @@ regulator-state-mem {
- 
- 			vdd_gpu: DCDC_REG2 {
- 				regulator-name = "vdd_gpu";
--				regulator-init-microvolt = <900000>;
- 				regulator-initial-mode = <0x2>;
- 				regulator-min-microvolt = <500000>;
- 				regulator-max-microvolt = <1350000>;
-@@ -309,7 +307,6 @@ regulator-state-mem {
- 
- 			vdd_npu: DCDC_REG4 {
- 				regulator-name = "vdd_npu";
--				regulator-init-microvolt = <900000>;
- 				regulator-initial-mode = <0x2>;
- 				regulator-min-microvolt = <500000>;
- 				regulator-max-microvolt = <1350000>;
+diff --git a/arch/arm64/boot/dts/rockchip/rk3566-box-demo.dts b/arch/arm64/boot/dts/rockchip/rk3566-box-demo.dts
+index 0c18406e4c59..dd6fe964d618 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3566-box-demo.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3566-box-demo.dts
+@@ -449,9 +449,9 @@ &uart1 {
+ 	bluetooth {
+ 		compatible = "brcm,bcm43438-bt";
+ 		clocks = <&pmucru CLK_RTC_32K>;
+-		clock-names = "ext_clock";
+-		device-wake-gpios = <&gpio2 RK_PC1 GPIO_ACTIVE_HIGH>;
+-		host-wake-gpios = <&gpio2 RK_PC0 GPIO_ACTIVE_HIGH>;
++		clock-names = "extclk";
++		device-wakeup-gpios = <&gpio2 RK_PC1 GPIO_ACTIVE_HIGH>;
++		host-wakeup-gpios = <&gpio2 RK_PC0 GPIO_ACTIVE_HIGH>;
+ 		shutdown-gpios = <&gpio2 RK_PB7 GPIO_ACTIVE_HIGH>;
+ 		pinctrl-names = "default";
+ 		pinctrl-0 = <&bt_host_wake_l &bt_wake_l &bt_enable_h>;
 -- 
 2.43.0
 
