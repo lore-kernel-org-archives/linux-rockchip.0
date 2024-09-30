@@ -4,63 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 69E63CEB2CC
-	for <linux-rockchip@archiver.kernel.org>; Mon, 30 Sep 2024 22:56:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E192CCEB2CB
+	for <linux-rockchip@archiver.kernel.org>; Mon, 30 Sep 2024 23:52:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
+	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=WFddwCmeZ6XX58Pd/61tEzN7DPNQEkJTc7OTObNHiK8=; b=307hUDllm/1eWG
-	MC+Qug5BEid5TBvqfJN1HMdNSNUBPgYVuehGrMObKHajvQnXQP2Va04eM4ahPTdL7yznX0UfGVGg3
-	ydTji8Bd7HUO8C6UWYa0mPSsgmk8iGVzrDyVXzX4BmoTt9nBJ96nYhVN7/GQqcyj4UEpOIVR4iAU+
-	S8eO/gVH9Cs52una7jj2uN+gbNEmGhhGEKdc7N1pnmecViw3kriYF2Sn9OW4jBUZfShF25q+0Blfm
-	UW30wh9yzYXSIxuxa+mS3kEnScbgoWJCr8851en8NTyuBW4o1PtNg7oAGxVaUqwszdgW0Une943hp
-	Unvwl3hJcqqWUkGBXkxA==;
+	List-Owner; bh=C85qIvUfZbuye5Nbx/OWta/dYdnE4nql7y7uZWVivH8=; b=YJeADoplXOUzGl
+	/Dm/E4w001O7OocRE3Z277gL8u3X8zflYF83cYooNs10Z04OmDj+WUSZyeltrEkMEi8VLhrakc9a6
+	vCbA00OmfTxTFheE3+a9ddWpLkU3hhUngtWi8GNdeG9Tn9Mnam0mkSKsjtRBoH2T5R6JEUs8Tqglz
+	EI+61EKPqxIdTFvzX5TENV2fG0xLlcvySjNJoKQWdkk/GNAS75ibiExpdaUxEd3gAUZHP5tbBrUjS
+	S6ZqQZfrwYkkbbaeghsPh9DNjdXkjdGECiToC5yyn1/pVqc91KC7PPKx/b4LpTGXeeHzP2CzK5ea3
+	dm1iaQiLVrBuP0AtVdIg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1svPJF-000000014aE-0foK;
-	Mon, 30 Sep 2024 22:56:05 +0000
-Received: from smtp.forwardemail.net ([149.28.215.223])
+	id 1svQC2-00000001ARB-0fQi;
+	Mon, 30 Sep 2024 23:52:42 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1svPJ3-000000014Vm-1K98
-	for linux-rockchip@lists.infradead.org;
-	Mon, 30 Sep 2024 22:55:55 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
- h=Content-Transfer-Encoding: Content-Type: In-Reply-To: From: References:
- Cc: To: Subject: MIME-Version: Date: Message-ID; q=dns/txt;
- s=fe-e1b5cab7be; t=1727736949;
- bh=hsMxoXwTk/RkP26yz02KeEDGy8kidPGtiIRE4uvB8sU=;
- b=NXyV9Le5XfeL9Qwn0JcGQu1b0hl1NxCM7U8kx5zJmP1wn1ShmnUyJ3xRbCIIYtPco5wy5PpQ5
- NW3Gvb0Qi4qoE7ssholCFNHw09Gd9ZOWYdTFO+ww8+ACfznBya10i9liRyXaisIfEbwht+RwYT6
- 3DmFhWYcYfzb36sownlHVftJZwA706hJpmxmFzDEkDXoh1e1sPCZSm9tlO3anr5FZyzuJ+POwrQ
- A4E2nXr5ifFqdkQ1AAY077arOv1lnqKlANPllbfKccyjShibFMF4epXMESolM6MUqc2bFBUSbPV
- u3ba5huunQZYvZq6EpbIItxNxfgkYqrNhGkxAWc/BdnA==
-Message-ID: <605c8024-ada7-4f2e-b18e-8d5c3f1bf612@kwiboo.se>
-Date: Tue, 1 Oct 2024 00:55:42 +0200
+	id 1svQAo-00000001AJ9-2kXf;
+	Mon, 30 Sep 2024 23:51:28 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id A39A5A41B14;
+	Mon, 30 Sep 2024 23:51:17 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 71CB7C4CED0;
+	Mon, 30 Sep 2024 23:51:24 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1727740285;
+	bh=emCc3vhDE46ByrVx4QaFgAH7/jlJe0viJuSoIgQuEZA=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=IlIFyWjQDNj3hP0mSxeGZ17Hq0qJ1ABXPPKdxiLii6NUvbqLlGxL9lsdXRzb7PB3G
+	 YMaJMQ5EpO4AjRunm+WhmblqY9DJylbFDXPwNKqoE8jUg26gJhDp28gNtOkUnIqTo2
+	 h8Rcb6N5Yy+j3ZGWe2r4N+ww5rlKES2YMrgg5hY5HS86YhLhxm1e7tczQ0Kxq5dBIe
+	 a6qCof7cPxT7PWmZO8jGoXKsoHWfOy+ui7L98gIUVsR6bkRcQXSXnTMOtic3FBQcZu
+	 B1be5fdMPA4Agoq4Q4llJUDeCKWbaDrLbh5ZHPBxFcUNJ3XEjnNg/Lmo0jskUREcqz
+	 hvxo2q6Ndx9PA==
+From: Mark Brown <broonie@kernel.org>
+To: linux-spi@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+ Dragan Simic <dsimic@manjaro.org>
+Cc: heiko@sntech.de, oss@helene.moe, linux-arm-kernel@lists.infradead.org, 
+ linux-kernel@vger.kernel.org
+In-Reply-To: <cover.1727337732.git.dsimic@manjaro.org>
+References: <cover.1727337732.git.dsimic@manjaro.org>
+Subject: Re: (subset) [PATCH 0/5] Improve error handling in Rockchip SPI
+ drivers
+Message-Id: <172774028424.2264837.4595727034314147956.b4-ty@kernel.org>
+Date: Tue, 01 Oct 2024 00:51:24 +0100
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 3/8] arm64: dts: rockchip: Drop regulator-init-microvolt
- from rk3568-roc-pc
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- devicetree@vger.kernel.org, Furkan Kardame <f.kardame@manjaro.org>
-References: <20240930210112.1993625-1-heiko@sntech.de>
- <20240930210112.1993625-4-heiko@sntech.de>
-Content-Language: en-US
-From: Jonas Karlman <jonas@kwiboo.se>
-In-Reply-To: <20240930210112.1993625-4-heiko@sntech.de>
-X-Report-Abuse-To: abuse@forwardemail.net
-X-Report-Abuse: abuse@forwardemail.net
-X-Complaints-To: abuse@forwardemail.net
-X-ForwardEmail-Version: 0.4.40
-X-ForwardEmail-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
- 149.28.215.223
-X-ForwardEmail-ID: 66fb2c74265a09cbe12df5bf
+X-Mailer: b4 0.15-dev-99b12
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240930_155553_730728_0C6B7B99 
-X-CRM114-Status: GOOD (  12.44  )
+X-CRM114-CacheID: sfid-20240930_165126_794599_60316A9D 
+X-CRM114-Status: GOOD (  13.95  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,65 +73,53 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Heiko,
-
-On 2024-09-30 23:01, Heiko Stuebner wrote:
-> regulator-init-microvolt is not part of any regulator binding and is
-> only used in the Rockchip vendor kernel. So drop it.
-
-Mainline U-Boot is also a user of the regulator-init-microvolt prop,
-and use it to help configure an initial voltage on regulators during
-boot.
-
-Mostly useful for regulators that has different min / max voltage and
-is not enabled by default or set to an unexpected voltage on boot, e.g.
-the typical npu regulator on rk356x defaults to 0.5v, yet needs to be
-around 0.9v during npu probe.
-
-Maybe a better option would be to try add the init property to the Linux
-dt-bindning?
-
-https://source.denx.de/u-boot/u-boot/-/blob/master/doc/device-tree-bindings/regulator/regulator.txt#L40
-
-Regards,
-Jonas
-
+On Thu, 26 Sep 2024 10:38:11 +0200, Dragan Simic wrote:
+> This is a small series that improves error handling in the probe path
+> of the Rockchip SPI drivers, by using dev_err_probe() properly in multiple
+> places.  It also removes one unnecessary check of a function return value,
+> and performs a bunch of small, rather trivial code cleanups, to make the
+> code neater and a bit easier to read.
 > 
-> Fixes: 007b4bb47f44 ("arm64: dts: rockchip: add dts for Firefly Station P2 aka rk3568-roc-pc")
-> Cc: Furkan Kardame <f.kardame@manjaro.org>
-> Signed-off-by: Heiko Stuebner <heiko@sntech.de>
-> ---
->  arch/arm64/boot/dts/rockchip/rk3568-roc-pc.dts | 3 ---
->  1 file changed, 3 deletions(-)
+> Dragan Simic (5):
+>   spi: rockchip: Perform trivial code cleanups
+>   spi: rockchip-sfc: Perform trivial code cleanups
+>   spi: rockchip: Don't check for failed get_fifo_len()
+>   spi: rockchip: Use dev_err_probe() in the probe path
+>   spi: rockchip-sfc: Use dev_err_probe() in the probe path
 > 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3568-roc-pc.dts b/arch/arm64/boot/dts/rockchip/rk3568-roc-pc.dts
-> index e333449ead04..2fa89a0eeafc 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3568-roc-pc.dts
-> +++ b/arch/arm64/boot/dts/rockchip/rk3568-roc-pc.dts
-> @@ -272,7 +272,6 @@ vdd_logic: DCDC_REG1 {
->  				regulator-name = "vdd_logic";
->  				regulator-always-on;
->  				regulator-boot-on;
-> -				regulator-init-microvolt = <900000>;
->  				regulator-initial-mode = <0x2>;
->  				regulator-min-microvolt = <500000>;
->  				regulator-max-microvolt = <1350000>;
-> @@ -285,7 +284,6 @@ regulator-state-mem {
->  
->  			vdd_gpu: DCDC_REG2 {
->  				regulator-name = "vdd_gpu";
-> -				regulator-init-microvolt = <900000>;
->  				regulator-initial-mode = <0x2>;
->  				regulator-min-microvolt = <500000>;
->  				regulator-max-microvolt = <1350000>;
-> @@ -309,7 +307,6 @@ regulator-state-mem {
->  
->  			vdd_npu: DCDC_REG4 {
->  				regulator-name = "vdd_npu";
-> -				regulator-init-microvolt = <900000>;
->  				regulator-initial-mode = <0x2>;
->  				regulator-min-microvolt = <500000>;
->  				regulator-max-microvolt = <1350000>;
+> [...]
+
+Applied to
+
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/spi.git for-next
+
+Thanks!
+
+[1/5] spi: rockchip: Perform trivial code cleanups
+      commit: d87ec94e48dd2da27fbe948f2dc6c8fedc98fff4
+[2/5] spi: rockchip-sfc: Perform trivial code cleanups
+      commit: 6c510eac1528d8939bad8b6df72c7b23ffec8c25
+[5/5] spi: rockchip-sfc: Use dev_err_probe() in the probe path
+      commit: 1482c40b440fa58f956bc3e1ef3426e0cdbc09e0
+
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
 
 
 _______________________________________________
