@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E2343CF6497
-	for <linux-rockchip@archiver.kernel.org>; Mon, 30 Sep 2024 07:40:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 66510CF6497
+	for <linux-rockchip@archiver.kernel.org>; Mon, 30 Sep 2024 07:46:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
 	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
 	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=meeko5jupSF7jVJQSbQ1BjAqsZQml8uFlVs6UVsMnBc=; b=uXLr7k+Wd4NuA1x/8iINUbiGKh
-	X1W4Uin04IX5nZaz/mh75B937wuth010la+VODE9SO4nHXZR9aUQjxJG35r+iIudubrpvf///gMvl
-	+PKhXMob5X5k2xqlHYHsg07+xlEyt3YUM6Rq4T0hCoZXbYhYVuS7/NB3FeX0uwdIySwmyhIcKf2nx
-	CdKAAXlIQCeoZA1J7IkAINZ6Nf0vO1MqFIaCOaD+Y+ioT0s/qe0IJmwEkd0W0ieCerpn2PWeCGJXO
-	fdiM8CEHLfHHcId0QCNcTHQf0mABUOZXxVXx87nCKfdPlUJiUKhHCeN161zH+TCLDnaDv1O8YksLk
-	Vs6mh0wQ==;
+	bh=G2arGdO+AlOgxzaIsEs8VaQnbB3MwG0Vy77dbamqy3Q=; b=kYBU81h/J6I30/uvjMV9IdkrYl
+	mQmq+3/7LRGTbXaUD27RGML6G/epJ3py0Yk0cFH0C+jpk4B3PGabZZOyfN4AHHMMdYeTYJoWyCdse
+	VuMvedtq9TZPMTkJQuQiXnadWDxuibvOrX2QGDr86SxL+oXdo7iz66Ai27U9kxyz1Co8yTL1FwUY9
+	RrGZMT8z95sp7hKJT0Z4TEeXVYESB0aGg0Mdg8tm5geGtDi6ySiExmpf6dBnDSUJ5vUWfCTPkNWeo
+	35ydT8iMdeSaFZogYRXydfABg8aqNLW6RAZgs/DKo1j6gpEGzFlJPs3bJDrzmybUMVVhXYv9yvTcA
+	bLu+KJ3Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1svB1O-0000000GCwX-0EcM;
-	Mon, 30 Sep 2024 07:40:42 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1svB6h-0000000GDiH-2dI3;
+	Mon, 30 Sep 2024 07:46:11 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1svAww-0000000GCCy-1Bme;
-	Mon, 30 Sep 2024 07:36:07 +0000
+	id 1svB5S-0000000GDVf-2NgH;
+	Mon, 30 Sep 2024 07:44:56 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id E304DA41421;
-	Mon, 30 Sep 2024 07:35:56 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 62884C4CED1;
-	Mon, 30 Sep 2024 07:36:04 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 9ABD15C4C5F;
+	Mon, 30 Sep 2024 07:44:49 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0200CC4CED5;
+	Mon, 30 Sep 2024 07:44:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1727681764;
-	bh=UwQAYfkqO+7NbChaILjq1p3+O1Kla+UdCJwA5Zn+i+8=;
+	s=k20201202; t=1727682293;
+	bh=hNlNzwLvuBX9rwWnjO4/JPLaI48Tlz1qJu1m0jUpdr0=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=kHk8kVgBpj2ON88akPzrIYylMLUgkV1Q6RkC0c2RjwJt/BSIJ87fNshgke5fe46ZJ
-	 iYU3wwLz/69kaTz1omPQYJShXxSKJ4LGClpckh5sDkrdpInZCf3YgRU+SbKOqZvsiR
-	 C8Xn1I1qxQa3k4ka/MSTR4nRRXlhF4MWv/e9dyB59hX3KoXUv+1PtHykAslywsg2f3
-	 wahc09BFFjbHfGmM3aPRurHbNlQ4oR9cZ7P25Wgi5vuSanUHaYREnvBKycnR8Zmvil
-	 la5KA0V5/ykcedOKIHuFB+hwMBF9CU1svFkKdsScPnOzIYe/D2q8rWjlRlMB3VC/u5
-	 0fZ7wEnwu32FQ==
-Date: Mon, 30 Sep 2024 09:36:02 +0200
+	b=FQGExqGq2aPE3j4VEmerBOuBA9h+AxXSq37e0bOCBjl/je9eYV+/ykLoVah07BrfE
+	 GVpRcpdUYmGx0opBIcT2tWCB6liMeIfMnbp9hvKqEVhCOUSKPsY6PTVSyccnrg9A/b
+	 epH66JiWfAQKHua644mmkoe6mw3Dz6x/AycVgQtL3LrwSQCBCUfOLmnZEmqu+d0sb6
+	 oRO6cdYhak5DUXAaB2Z9mhBs+S7fFhG+kHPdBdQQsPNrkSrXcOT+m8DWXcJpkdoXvd
+	 hK/6T+Sw5oNLLUvsFF92/E6p6ySbhyAZ7EY/jTvMwGrthrH+QGhP9avQj6wNWreY2K
+	 ijU0JQ8Ec0hGA==
+Date: Mon, 30 Sep 2024 09:44:51 +0200
 From: Maxime Ripard <mripard@kernel.org>
 To: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 Cc: Andrzej Hajda <andrzej.hajda@intel.com>, 
@@ -58,15 +58,16 @@ Cc: Andrzej Hajda <andrzej.hajda@intel.com>,
 	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, 
 	kernel@collabora.com, Alexandre ARNOUD <aarnoud@me.com>, 
 	Luis de Arquer <ldearquer@gmail.com>, Algea Cao <algea.cao@rock-chips.com>
-Subject: Re: [PATCH v8 3/3] drm/rockchip: Add basic RK3588 HDMI output support
-Message-ID: <i2nsst5bvz2emy54r7ll5pi6uihnvdodkgewevumhrdrr7jr6a@uui3shhzhz2y>
+Subject: Re: [PATCH v8 1/3] drm/bridge: synopsys: Add DW HDMI QP TX
+ Controller support library
+Message-ID: <hax2zu7wlpucxllqapc5dzjirvrkanxkzdxtd2shu3tlc53t3m@ctpcuxifl3ds>
 References: <20240929-b4-rk3588-bridge-upstream-v8-0-83538c2cc325@collabora.com>
- <20240929-b4-rk3588-bridge-upstream-v8-3-83538c2cc325@collabora.com>
+ <20240929-b4-rk3588-bridge-upstream-v8-1-83538c2cc325@collabora.com>
 MIME-Version: 1.0
-In-Reply-To: <20240929-b4-rk3588-bridge-upstream-v8-3-83538c2cc325@collabora.com>
+In-Reply-To: <20240929-b4-rk3588-bridge-upstream-v8-1-83538c2cc325@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240930_003606_409376_D8BBF9C3 
-X-CRM114-Status: GOOD (  12.09  )
+X-CRM114-CacheID: sfid-20240930_004454_744582_1CA6F93E 
+X-CRM114-Status: GOOD (  10.52  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,61 +79,57 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============0560087803124543471=="
+Content-Type: multipart/mixed; boundary="===============1978754550229472710=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
---===============0560087803124543471==
+--===============1978754550229472710==
 Content-Type: multipart/signed; micalg=pgp-sha384;
-	protocol="application/pgp-signature"; boundary="7s67ya4tohfqd2w2"
+	protocol="application/pgp-signature"; boundary="s7gahhjnit22mlpj"
 Content-Disposition: inline
 
 
---7s67ya4tohfqd2w2
+--s7gahhjnit22mlpj
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 
-Hi,
-
-On Sun, Sep 29, 2024 at 01:36:49AM GMT, Cristian Ciocaltea wrote:
-> +static void dw_hdmi_qp_rockchip_encoder_enable(struct drm_encoder *encoder)
+On Sun, Sep 29, 2024 at 01:36:47AM GMT, Cristian Ciocaltea wrote:
+> +static enum drm_mode_status
+> +dw_hdmi_qp_bridge_mode_valid(struct drm_bridge *bridge,
+> +			     const struct drm_display_info *info,
+> +			     const struct drm_display_mode *mode)
 > +{
-> +	struct rockchip_hdmi_qp *hdmi = to_rockchip_hdmi_qp(encoder);
-> +	struct drm_crtc *crtc = encoder->crtc;
-> +	int rate;
+> +	struct dw_hdmi_qp *hdmi = bridge->driver_private;
 > +
-> +	/* Unconditionally switch to TMDS as FRL is not yet supported */
-> +	gpiod_set_value(hdmi->enable_gpio, 1);
-> +
-> +	if (crtc && crtc->state) {
-> +		clk_set_rate(hdmi->ref_clk,
-> +			     crtc->state->adjusted_mode.crtc_clock * 1000);
+> +	if (mode->clock > HDMI14_MAX_TMDSCLK / 1000) {
+> +		dev_dbg(hdmi->dev, "Unsupported mode clock: %d\n", mode->clock);
+> +		return MODE_CLOCK_HIGH;
+> +	}
 
-Sorry, I should have seen it in your previous version, but the rate here
-should be the TMDS character rate, not the pixel clock, right?
+Similarly, you should use drm_hdmi_compute_mode_clock here, with RGB and 8bpc
 
 Once fixed,
 Reviewed-by: Maxime Ripard <mripard@kernel.org>
 
 Maxime
 
---7s67ya4tohfqd2w2
+--s7gahhjnit22mlpj
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iJUEABMJAB0WIQTkHFbLp4ejekA/qfgnX84Zoj2+dgUCZvpU4QAKCRAnX84Zoj2+
-drrdAYDIR05FELJA0qfbce9Chdkrm4BQoxsM7sNZLCHRE9StuP0VWBJNhNidV5Ql
-k8L4akQBf2bEy3dcSYB6/4q5XJpS664ZDID1RP/TgfiVQJp8F+o0pEH1pevFglig
-lzo1uFYjqg==
-=sHau
+iJUEABMJAB0WIQTkHFbLp4ejekA/qfgnX84Zoj2+dgUCZvpW8gAKCRAnX84Zoj2+
+dmA3AX9ZbkD3HSjUw8ZudFDWE7bSMD1N/4nblONlQVzDTPoRo/xUWVvxRifyIpHo
+n8eWlTcBfjfxBcgbXzYRvbh16CIBICTLF7N9txHbxgi0eIVoUlyBZm+LQF7eS823
+KwAALtJWVg==
+=VY2V
 -----END PGP SIGNATURE-----
 
---7s67ya4tohfqd2w2--
+--s7gahhjnit22mlpj--
 
 
---===============0560087803124543471==
+--===============1978754550229472710==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -143,5 +140,5 @@ Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
---===============0560087803124543471==--
+--===============1978754550229472710==--
 
