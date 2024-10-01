@@ -4,101 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DEDFECEACC1
-	for <linux-rockchip@archiver.kernel.org>; Tue,  1 Oct 2024 13:49:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 167F2CEACC1
+	for <linux-rockchip@archiver.kernel.org>; Tue,  1 Oct 2024 13:50:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=S0dhSCqep0qk9vcPMCx4PPeAVEttG1ExjAB9e2Xjx1s=; b=iuZF/cK/qoJaxz
-	TtUtKcrd3X+cC74t38i67gP6TrveoGZU5D0NwNnyyaZye+vqca5kNwqun0YveNSzbM/ZlgTV/UDZr
-	GYNib/LbI9aZBpQkaGkEtUuBPxTc+CTrMBplJiinVLBMS1GP/sMNyi+VeHiw7YQHRhzCEI90w+mu1
-	QmagUIcdJFKnOBxYu46H33VS5JLmKtiOpADuZ2EZX7bkPZCwacyLlZ3pCcIMNrn4xGcdcnmqzocKj
-	Em+Jk4UELtxpUKaPjNBDTOA4dcgD3e64E5fLYc3WRLWaouha0uo88bC/iknx9dH9ssXWZsCcAiY2l
-	OnHGwJ2C8YcLr32w2dow==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To:From:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=SmDggbw3Q50gSdMPjfpTQn8IaVaGbmPJsX3L/5P9qC8=; b=ylSuJTGX4l7kuk
+	jfOEXzFl6COPckdTV5z0MSz2coyEjv95vpAQLDkQLqh4iy7GzmREohC99K2d/1rno/3Z1vjBsvQF/
+	foxFipvq+Ecf2pbjyfGi1scR6tUX7QSVHUCgbGEffK3azKZT+c2g/OJzzlR8QOla33/cmojQ8Hry7
+	ep4RZ36mDPkRxgoz9UIjcoskjlZRSS6c+LOR2Xjy7W6GB57ROfMNf9spIOqk+zpytpYZv79SvsSr3
+	XD8ZVZdBs9fJgCtFD3h0x/0suV8hV9qpDuygL4r+p93+vfZabz4DnvhdA6XOVonlKHDpb2XlGQT0E
+	JDxt6RJO2A0yFE38t9Kg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1svdFc-0000000305y-1Z1H;
-	Tue, 01 Oct 2024 13:49:16 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1svdH8-000000030Ml-1Olg;
+	Tue, 01 Oct 2024 13:50:50 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1svdER-00000002zuF-1bon
-	for linux-rockchip@bombadil.infradead.org;
-	Tue, 01 Oct 2024 13:48:03 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
-	:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
-	Content-Description:In-Reply-To:References;
-	bh=tAj/ZcJsteYyfCk2vYENrMCwftIRTgZfWUbq7u955gU=; b=c6TJk5Kbo3ZX49Feel2LPVesEt
-	tpVu9nTzrWRjtOF85F0AjaZoLTgnqWENgddc7hT7PTLExl96uEDqKhyaOMTkKUjstKx7CI4y3n2VR
-	zuZAabohul7Q+xY0ubUxjo9HsPAi9Zmx+6d21rk0J3XGxzuTOO3VGBd6Ef/T8aU+6Cle+NCbG9ysa
-	YvXARcVR77TfxTA8TmI+9Nqu7e3f51pHcDS/I+Psv22QEuZ3kveyJi7zeHz5bFI2XtcRNwobJhTQk
-	1wlPgCegnaY3dmfbZPTBbFfqXyiITW+hd9n0UMWPAZlE+iRB0pWUfIp21oNujgtxPfx+gRYSszzhs
-	aAKngvBQ==;
-Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629])
-	by desiato.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1svdEK-00000003878-3cei
-	for linux-rockchip@lists.infradead.org;
-	Tue, 01 Oct 2024 13:48:02 +0000
-Received: by mail-ej1-x629.google.com with SMTP id a640c23a62f3a-a8b155b5e9eso21007766b.1
-        for <linux-rockchip@lists.infradead.org>; Tue, 01 Oct 2024 06:47:54 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=thaumatec-com.20230601.gappssmtp.com; s=20230601; t=1727790473; x=1728395273; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=tAj/ZcJsteYyfCk2vYENrMCwftIRTgZfWUbq7u955gU=;
-        b=gyxKg6zJu0T8wFpSkEVpK3wDeIlXfM3jyWE5twfoA3N4xt3bb3QpJfpExNv8RZBrzw
-         2NwZKsT/Gp8v0HQueQCfvbJNkuVgARD5eXqE2aVPtJd/QxyNMLS2JkIv7hBnD7EJ9VNH
-         KBvzChQoZkDzwKMB7TPbHSnZVi+5xIcnUKAA9sOpeKtFbsaOiSXXrZ4rZkpWEmAKAY8P
-         /fKEFl2BlhM29VUxdLXVZH+YTuDrTb9GzTZGYMeratRf8s0lKtCroR6poyWGcIHbgKGe
-         S+DH6vjmue6wRd5klo++b5HFJkYGtn4PFuIScJaQf8fcyR4HFb+y2RvsLzHhHEFSL4mJ
-         TJsQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1727790473; x=1728395273;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=tAj/ZcJsteYyfCk2vYENrMCwftIRTgZfWUbq7u955gU=;
-        b=KKpEVMiEaripfHlT3Z9S/DSiu9c5J0CT+fwY1l6LLMoQApELyuq2nyc6UNcr2BMrua
-         gLbrOClVqx99WNg3cGpzYr5N4kp8zUs8dWGqOzv+eAvjjYkD2FsEPRbXw9uaRVjMKHl8
-         3WMsd+vy6vpXmGlldlJRv7Ne+W7zyO0rpy8f6QDwIigynblLV5ioxv66SYW7neVl7PTu
-         mBE2zka1MPmtr5pSPkF/QpYn9FLm3R77TxtxLj2zPRDt/UsrzBHo91QVCdpoxVLcciI7
-         RdBgS/j4ixpW2jC5hOLajQNhyNLKQGLsktw4x4lHRA1iLz/Mq3tsAoSq68BAf3TJFgIA
-         VLHg==
-X-Forwarded-Encrypted: i=1; AJvYcCWcg7Mn7PzQJTA++6VOsjY1tJXJHVGVWBaSLpBLzw3fmj1B2zs5pkAehmauq8W/BVeSGLmdcIOKzXrcCyI3IQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxNJvfwewoWes9r6yZxS/CRP1fRH8lI8e8eyzmVWW/FXJJ1hFiJ
-	P9TBPoeEC68var9RTeian46W2dvysxJkBO/RWl95OPIwI7mj7s5ytWTyZZ/kl9pSb9N37a2sp/O
-	syhYQLw==
-X-Google-Smtp-Source: AGHT+IH+MuAg6zAQWZk+ikg3Qoz0ip32Sj7sS0ZDEO60KFiCvlYuo67UTzu/A1PJsNONwI6GY//WlA==
-X-Received: by 2002:a17:907:6d20:b0:a8a:8c92:1c9c with SMTP id a640c23a62f3a-a93c4967869mr1500151266b.29.1727790473172;
-        Tue, 01 Oct 2024 06:47:53 -0700 (PDT)
-Received: from localhost.localdomain ([91.90.172.13])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a93c27cafc8sm715413666b.84.2024.10.01.06.47.52
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 01 Oct 2024 06:47:52 -0700 (PDT)
-From: Daniel Semkowicz <dse@thaumatec.com>
-To: Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>
-Cc: Daniel Semkowicz <dse@thaumatec.com>,
-	Farouk Bouabid <farouk.bouabid@theobroma-systems.com>,
-	Quentin Schulz <quentin.schulz@theobroma-systems.com>,
-	Vahe Grigoryan <vahe.grigoryan@theobroma-systems.com>,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-rockchip@lists.infradead.org
-Subject: [PATCH v2] arm64: dts: rockchip: Add power button for puma-haikou
-Date: Tue,  1 Oct 2024 15:46:32 +0200
-Message-ID: <20241001134741.210979-1-dse@thaumatec.com>
-X-Mailer: git-send-email 2.46.2
+	id 1svdH4-000000030KS-1iRk;
+	Tue, 01 Oct 2024 13:50:48 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1727790644;
+	bh=Wrdy0e1dz6T5uwCE6i2Zj6+AsBKQNypB0lnUzsj5xCI=;
+	h=Date:Subject:From:To:Cc:References:In-Reply-To:From;
+	b=YKqD4Ys/oGurqoWIOyx7Wn0hRTWDfyPPhsxJBv4liLaL79RWNITs6yYigoa9t0bYR
+	 apYOKXRQwcu6+xBYSMhtRzZYX8riNbY3jwGgx54B/mqtnC6ECCMjvF74G/KjKZbgVO
+	 RJzRdFANc0GPw4iUWTjgPb0VclImiN7kwj4rnOBg0+pqJjlWEITVsXj59SE2r7LUoj
+	 5BPDH1RBCLKq/QZ/2cqqNz0kemyYFg31AZl1ypfI77sHEXKV+OTQMPdPXhzsDquLmV
+	 MCPct2nkHj5eYZYOGgoLbN+JW1S3vLWHHoQv7M/X9CrsLunLU6HnxNWpHM5ZiXsYda
+	 Riy6fn3Jf9ZCg==
+Received: from [192.168.50.250] (unknown [171.76.80.165])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: vignesh)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 6F28B17E0FC0;
+	Tue,  1 Oct 2024 15:50:39 +0200 (CEST)
+Message-ID: <87fea8ea-fe9d-4114-b03c-7ec50a4be874@collabora.com>
+Date: Tue, 1 Oct 2024 19:20:35 +0530
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v4] docs/gpu: ci: update flake tests requirements
+From: Vignesh Raman <vignesh.raman@collabora.com>
+To: alexander.deucher@amd.com, christian.koenig@amd.com, Xinhui.Pan@amd.com,
+ amd-gfx@lists.freedesktop.org
+Cc: daniels@collabora.com, helen.koike@collabora.com, airlied@gmail.com,
+ daniel@ffwll.ch, robdclark@gmail.com, guilherme.gallo@collabora.com,
+ sergi.blanch.torne@collabora.com, deborah.brouwer@collabora.com,
+ dmitry.baryshkov@linaro.org, mripard@kernel.org, rodrigo.vivi@intel.com,
+ quic_abhinavk@quicinc.com, linux-mediatek@lists.infradead.org,
+ linux-amlogic@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-arm-msm@vger.kernel.org, intel-gfx@lists.freedesktop.org,
+ virtualization@lists.linux.dev, linux-kernel@vger.kernel.org,
+ dri-devel@lists.freedesktop.org
+References: <20240930095255.2071586-1-vignesh.raman@collabora.com>
+Content-Language: en-US
+In-Reply-To: <20240930095255.2071586-1-vignesh.raman@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241001_144756_940778_652FE651 
-X-CRM114-Status: GOOD (  12.58  )
+X-CRM114-CacheID: sfid-20241001_065046_685107_7822C6F7 
+X-CRM114-Status: GOOD (  18.07  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -110,56 +77,78 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-There is a PWRBTN# input pin exposed on a Q7 connector. The pin
-is routed to a GPIO0_A1 through a diode. Q7 specification describes
-the PWRBTN# pin as a Power Button signal.
-Configure the pin as KEY_POWER, so it can function as power button and
-trigger device shutdown.
+Hi amdgpu Maintainers,
 
-Signed-off-by: Daniel Semkowicz <dse@thaumatec.com>
----
+On 30/09/24 15:22, Vignesh Raman wrote:
+> Update the documentation to specify linking to a relevant GitLab
+> issue or email report for each new flake entry. Added specific
+> GitLab issue urls for amdgpu, i915, msm and xe driver.
+> 
+> Acked-by: Maxime Ripard <mripard@kernel.org>
+> Acked-by: Rodrigo Vivi <rodrigo.vivi@intel.com> #intel and xe
+> Acked-by: Abhinav Kumar <quic_abhinavk@quicinc.com> # msm
+> Acked-by: Dmitry Baryshkov <dmitry.baryshkov@linaro.org> # msm
+> Signed-off-by: Vignesh Raman <vignesh.raman@collabora.com>
+> ---
+> 
+> v2:
+> - Add gitlab issue link for msm driver.
+> 
+> v3:
+> - Update docs to specify we use email reporting or GitLab issues for flake entries.
+> 
+> v4:
+> - Add gitlab issue link for xe driver.
+> 
+> ---
+>   Documentation/gpu/automated_testing.rst | 14 ++++++++++----
+>   1 file changed, 10 insertions(+), 4 deletions(-)
+> 
+> diff --git a/Documentation/gpu/automated_testing.rst b/Documentation/gpu/automated_testing.rst
+> index 2d5a28866afe..6d7c6086034d 100644
+> --- a/Documentation/gpu/automated_testing.rst
+> +++ b/Documentation/gpu/automated_testing.rst
+> @@ -68,19 +68,25 @@ known to behave unreliably. These tests won't cause a job to fail regardless of
+>   the result. They will still be run.
+>   
+>   Each new flake entry must be associated with a link to the email reporting the
+> -bug to the author of the affected driver, the board name or Device Tree name of
+> -the board, the first kernel version affected, the IGT version used for tests,
+> -and an approximation of the failure rate.
+> +bug to the author of the affected driver or the relevant GitLab issue. The entry
+> +must also include the board name or Device Tree name, the first kernel version
+> +affected, the IGT version used for tests, and an approximation of the failure rate.
+>   
+>   They should be provided under the following format::
+>   
+> -  # Bug Report: $LORE_OR_PATCHWORK_URL
+> +  # Bug Report: $LORE_URL_OR_GITLAB_ISSUE
+>     # Board Name: broken-board.dtb
+>     # Linux Version: 6.6-rc1
+>     # IGT Version: 1.28-gd2af13d9f
+>     # Failure Rate: 100
+>     flaky-test
+>   
+> +Use the appropriate link below to create a GitLab issue:
+> +amdgpu driver: https://gitlab.freedesktop.org/drm/amd/-/issues
 
-Changes in v2:
-- Move button definition from puma to puma-haikou dts
+Please could you ack this patch. Thanks.
 
- arch/arm64/boot/dts/rockchip/rk3399-puma-haikou.dts | 8 ++++++++
- 1 file changed, 8 insertions(+)
+> +i915 driver: https://gitlab.freedesktop.org/drm/i915/kernel/-/issues
+> +msm driver: https://gitlab.freedesktop.org/drm/msm/-/issues
+> +xe driver: https://gitlab.freedesktop.org/drm/xe/kernel/-/issues
+> +
+>   drivers/gpu/drm/ci/${DRIVER_NAME}-${HW_REVISION}-skips.txt
+>   -----------------------------------------------------------
+>   
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-puma-haikou.dts b/arch/arm64/boot/dts/rockchip/rk3399-puma-haikou.dts
-index f6f15946579e..c04bb98a45e5 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-puma-haikou.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-puma-haikou.dts
-@@ -30,6 +30,12 @@ button-batlow-n {
- 			linux,code = <KEY_BATTERY>;
- 		};
- 
-+		button-pwrbtn-n {
-+			gpios = <&gpio0 RK_PA1 GPIO_ACTIVE_LOW>;
-+			label = "PWRBTN#";
-+			linux,code = <KEY_POWER>;
-+		};
-+
- 		button-slp-btn-n {
- 			gpios = <&gpio0 RK_PB3 GPIO_ACTIVE_LOW>;
- 			label = "SLP_BTN#";
-@@ -203,6 +209,8 @@ &pinctrl {
- 	buttons {
- 		haikou_keys_pin: haikou-keys-pin {
- 			rockchip,pins =
-+			  /* PWRBTN# */
-+			  <0 RK_PA1 RK_FUNC_GPIO &pcfg_pull_up>,
- 			  /* LID_BTN */
- 			  <0 RK_PA4 RK_FUNC_GPIO &pcfg_pull_up>,
- 			  /* BATLOW# */
--- 
-2.46.2
-
-
+Regards,
+Vignesh
 
 _______________________________________________
 Linux-rockchip mailing list
