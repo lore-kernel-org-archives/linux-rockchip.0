@@ -4,79 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2069ECEACDF
-	for <linux-rockchip@archiver.kernel.org>; Tue,  1 Oct 2024 15:49:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 89E17CEACD5
+	for <linux-rockchip@archiver.kernel.org>; Tue,  1 Oct 2024 15:52:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=ZnTG/Vw0cgpd9Dpi/A/GnGWGZs5YIxU2nZGQ8KxhqeI=; b=Azd7gTQNMvPzky
-	PqwWTZVKh69/gZTLDqEA9T5BLxGwo1yZXgpFGgOJ0kDW57ThWY04iBnVInshRnvRRWegeTZdNuNbt
-	QvyjH+2EAZpzZ2DEIDn0k3ZYUvmaHvyYPYxICPlZOolKjv85zKI7CDExnVzvpibDYciB53bP3riOk
-	W58ckHQFqm30mwflsBSjex177CDG4Si94oBCPFXrFYk8ifE4y7QE4VwgIwY9EGRF6Xn3PprCT5Lck
-	ykhIPJ3wmK0d99QsLV13Q+wY5ZkP0WQSNKMfQXmTucqz2yiaSzdNAphpQlml8MY8AJ4oKiyZkW4Y4
-	RS5Cvscyx7GCmQnHRjEA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=m3+ma/Z8RNSMdVJA8xnl4r9x/OYLhZN0h+6nO3Y/Q5k=; b=rrUKd6wupf0MlUKWq5+nY0WzN0
+	a1xCZyKjp6NfyvYWCKAKzIMgFDhP4ZgrlVHei3k62qVn6TxpvvRCECAQZ3KQGNXOR1sDP3NQGmkcc
+	4aik0jKW7/Fh/xfyKmgzlVx+4L8BEalWdNmUF6x4XST29IY8+FsNr48886y2X65REgiR6YjcFLAWm
+	U9mwPLkggDX2Jxk5EvofoIVu1Nj2rfJmhmFw8kiZRwN4Gvn7c5udARDntvMFGowZN1DoCfRaHH5JR
+	Ui05CQedw4fklbjHhAs1D3Pej2mzq8oA/VtgilIJJEp8g49GyCdSpskvJ+TIMrFkuUpEAWeSP7m7J
+	Si6zY7XQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1svf80-00000003OAD-1YBe;
-	Tue, 01 Oct 2024 15:49:32 +0000
-Received: from mail-oi1-x236.google.com ([2607:f8b0:4864:20::236])
+	id 1svfAr-00000003OlC-3otu;
+	Tue, 01 Oct 2024 15:52:30 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1svf1P-00000003McQ-2LfU
+	id 1svfAS-00000003Oh3-3BtL
 	for linux-rockchip@lists.infradead.org;
-	Tue, 01 Oct 2024 15:42:45 +0000
-Received: by mail-oi1-x236.google.com with SMTP id 5614622812f47-3e049185cfeso2126995b6e.1
-        for <linux-rockchip@lists.infradead.org>; Tue, 01 Oct 2024 08:42:42 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1727797361; x=1728402161; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=+aTQoAFuJz1zyLJojlJXvxUZfbLTbgOl8RgfLwHTN3w=;
-        b=fIKjyE8fjL5BDJ7FViIHOw3PfSqqRZnh+j0tzKflLTFY1O4sZ5B60l7UhTNRXF1IRB
-         SWZCkPIKyECmwvWGWcwMJ8c6qdO1x1FDMaD6LCtm+FHOLgTBPq+iQoiMKtu7NSoBu7bg
-         nwgrviF3EEztLkVr5B48TLT8pzegAvLKzBshDwL7LsZJdjD2Egoe8265MojZFZsTGoVg
-         1TY7lqRaZv8+eKuF2JcZzSH0g5j5JzeD26Tdgl2osmZQ54li4jNCxFTznmnprjjitEF7
-         gZuXGo0I6kUrIlzf21xqITZog/JmfpXoaPhetr/bTHwqZL+pqAb5LJr2GiyHDR+Pqi4e
-         1Ggw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1727797361; x=1728402161;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=+aTQoAFuJz1zyLJojlJXvxUZfbLTbgOl8RgfLwHTN3w=;
-        b=JVazhn+a71q9fQn12NgHJZSEahWoc79RIio2El27D0hTuGeyA1hasMjs8AjDGlXd8s
-         iF+II0mIGIP0BMhnz39oDj7g99uHDAusxIpLy67nik/cWc2kE+Y8E99WNVoKOd4aZxib
-         +uHidP+hJyEIKse35mkiGm0vIvpmV8bL4lbKK7eb48uG/ZwUuMn/kYwJw6rcb3CJaUFa
-         lBbNK9lkvGQbfXNRFk/PcewfhLId7Ouhi5W+D0eF5QtXjo+ds3Z5HTJcz1hs2wSrEv7I
-         Idvm3MIEYtcP6FcoayA75z2ax97dEylmgkgDy3Ru5zO/1g1q5w2IIG5sWBL+HaIYHY6N
-         arPA==
-X-Gm-Message-State: AOJu0YwsmCAmEqA6OszO3PkSMcED2tj3bu/mr5I25kE6QtRsE9+p5dUg
-	hZ9SGaj8N1Z+t/T2gwCvKGyAWJnkJzQ6aXTFyrjLi+BgTkAO+rUNkv/NCSS6
-X-Google-Smtp-Source: AGHT+IF1idztXvqQuOq83eYq7ncv9IXF1MC6zB0YgYdjXv5LvqmVsVWcYvGuurXlOwiQbf8pFrT8sw==
-X-Received: by 2002:a05:6808:2116:b0:3e0:41cb:fe5b with SMTP id 5614622812f47-3e3b4187609mr95275b6e.45.1727797361244;
-        Tue, 01 Oct 2024 08:42:41 -0700 (PDT)
-Received: from localhost.localdomain ([2600:1700:fb0:1bcf::54])
-        by smtp.gmail.com with ESMTPSA id 5614622812f47-3e3935c6293sm3120485b6e.53.2024.10.01.08.42.39
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 01 Oct 2024 08:42:39 -0700 (PDT)
-From: Chris Morgan <macroalpha82@gmail.com>
-To: linux-rockchip@lists.infradead.org
-Cc: devicetree@vger.kernel.org,
-	heiko@sntech.de,
-	conor+dt@kernel.org,
-	krzk+dt@kernel.org,
-	robh@kernel.org,
-	Chris Morgan <macromorgan@hotmail.com>
-Subject: [PATCH 0/2] Add Powkiddy RGB20SX
-Date: Tue,  1 Oct 2024 10:40:14 -0500
-Message-ID: <20241001154016.87386-1-macroalpha82@gmail.com>
-X-Mailer: git-send-email 2.43.0
+	Tue, 01 Oct 2024 15:52:05 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id B9DEA5C517B;
+	Tue,  1 Oct 2024 15:51:59 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B1E46C4CEC6;
+	Tue,  1 Oct 2024 15:52:01 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1727797923;
+	bh=eHk0oWQRmKLnCyq4uWxhOLN24jzHfHKT8qLLuqVRn7I=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=FAxyBVjnSHOI2haBVsptsCLqdttJ09JaBcF1MybnuEmLXzhuSqR4g8i4PF1akTuNs
+	 9YQdKagMDOzLo8QTvRekTsXMEtrZdpPzaEQ5XY4SIKfVF1E++E7BeMhkoFeHjKRjBY
+	 JljvGk/yzta3QJKy6K1ceHT6vm9pBCbM+yQaBMUKPGrfJFG9+gqkcOTcjsLR5lXqbn
+	 T7Px1Q1Gs1fUoyA9qhdfut2EsLuoG9j42bpbB4Hu8tdLWjflClft6X5OEANTFK/DhQ
+	 MXEZJQOCtMq5E4qGYhgGdY6ga724Y6+GnmfKNXBBnzqzK4bOwrSAFuAcUQFxxYjUyD
+	 0Y1oB/zcCEJyg==
+Date: Tue, 1 Oct 2024 16:51:59 +0100
+From: Conor Dooley <conor@kernel.org>
+To: Chris Morgan <macroalpha82@gmail.com>
+Cc: linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
+	heiko@sntech.de, conor+dt@kernel.org, krzk+dt@kernel.org,
+	robh@kernel.org, Chris Morgan <macromorgan@hotmail.com>
+Subject: Re: [PATCH 1/2] dt-bindings: arm: rockchip: Add Powkiddy RGB20SX
+Message-ID: <20241001-campsite-clerical-62974e98b124@spud>
+References: <20241001154016.87386-1-macroalpha82@gmail.com>
+ <20241001154016.87386-2-macroalpha82@gmail.com>
 MIME-Version: 1.0
+In-Reply-To: <20241001154016.87386-2-macroalpha82@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241001_084243_632285_B989819E 
-X-CRM114-Status: GOOD (  10.73  )
+X-CRM114-CacheID: sfid-20241001_085204_884454_35048457 
+X-CRM114-Status: UNSURE (   8.63  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,36 +69,55 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============8736052877796133750=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Chris Morgan <macromorgan@hotmail.com>
 
-Add support for the Powkiddy RGB20SX handheld gaming console. The
-device is mostly identical to the RGB30 but with a few key differences.
-Namely, the size of the battery and presense of a function button
-differ from the RGB30; these changes cannot be detected at runtime and
-necessitate a distinct devicetree.
+--===============8736052877796133750==
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="HwkeSh7CTGBJEZNJ"
+Content-Disposition: inline
 
-https://powkiddy.com/products/pre-sale-powkiddy-rgb20sx-handheld-game-console
 
-Chris Morgan (2):
-  dt-bindings: arm: rockchip: Add Powkiddy RGB20SX
-  arm64: dts: rockchip: Add Powkiddy RGB20SX
+--HwkeSh7CTGBJEZNJ
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
- .../devicetree/bindings/arm/rockchip.yaml     |  1 +
- arch/arm64/boot/dts/rockchip/Makefile         |  1 +
- .../dts/rockchip/rk3566-powkiddy-rgb20sx.dts  | 89 +++++++++++++++++++
- 3 files changed, 91 insertions(+)
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3566-powkiddy-rgb20sx.dts
+On Tue, Oct 01, 2024 at 10:40:15AM -0500, Chris Morgan wrote:
+> From: Chris Morgan <macromorgan@hotmail.com>
+>=20
+> Add devicetree binding for Powkiddy RGB20SX.
+>=20
+> Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
 
--- 
-2.43.0
+Acked-by: Conor Dooley <conor.dooley@microchip.com>
 
+--HwkeSh7CTGBJEZNJ
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZvwanwAKCRB4tDGHoIJi
+0pXKAQD1q5rY9P+HOAiBqeyGgHyN1E10vDpF1qwIFOrJFH9QLwD/fastHooWwtUs
+n4XTkdnuvr/t+Lf0f91/1Cp9zDDf4AI=
+=DlE2
+-----END PGP SIGNATURE-----
+
+--HwkeSh7CTGBJEZNJ--
+
+
+--===============8736052877796133750==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============8736052877796133750==--
+
