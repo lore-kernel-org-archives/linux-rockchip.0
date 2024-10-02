@@ -4,81 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F110ACF31B4
-	for <linux-rockchip@archiver.kernel.org>; Wed,  2 Oct 2024 11:13:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CA3B6CF31B5
+	for <linux-rockchip@archiver.kernel.org>; Wed,  2 Oct 2024 11:28:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=xqnwzWEjqw+EPvPOC9fkFajjw6pC8tusTSXexq0p7PA=; b=JCpsBXwnI8bGdU
-	DzwDQK06ZQ6G7+3IaBEidtvsek6f8H4IjNEIkAGfeNtvGkTdtZYa3vwqFEsU+kyJOxMSG62/oCK/f
-	ctolixcwxkNd8V9vSiGE5R6OpyiCiXUKWfWO8ebNL9FhUPKT4pgwkPin0/08E/eyKt31NjIlI+5vp
-	COQlHPRwWtopuCEmJW5Z5TIBgvQkOPl3MWpd41QWdA9pNDwXzIG+TEJy50/Cs8xcrVsdXHNHlZS2j
-	sSpEWFJeME36c6ZeuqWwwogKhprzQ4eP85Ppa9ENUcNcUoNdc4fKr+fc0qbfdsaDdkPl98HtcyVwf
-	ehKZo+8XW0eO79UB/dMw==;
+	List-Owner; bh=mQFXPc8eSmlRNRbzumEkW9NcWTICv5Pf0jqG7TXUuZY=; b=JNMMTmUC2n6dWE
+	JMTdfog+n4QGaRFwEzR598FNtKktrgAP9j/q5KiCuVBVfNaczXnd8nPe1omqnJ2p0Z2spOeaA+J39
+	NHd6Om87/suCB2V0qYGBaMSyX38athtW9cUxnwlifyT8GkyPnaitSZY5ME0xMvpjI7KhYRnlZ9ICm
+	FgbqVNa+vTrgjLuH6tYMjvkK6Orr/sJDKKaxzYENxPv31PUAPwtzTBUYXsnR+Q803AOvy4sjSC+v/
+	bUyxyw/BSNgI2g0ZyVEEQNFEU45fbhWNMfK19xAJoiyQOGbV8D7j7Ky/XebWXpX1jfPHgVEriW3BG
+	Zz82YEUyIvpd5hi25RBA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1svxIe-00000005cWs-0rnj;
-	Wed, 02 Oct 2024 11:13:44 +0000
-Received: from mail-yb1-xb2d.google.com ([2607:f8b0:4864:20::b2d])
+	id 1svxWd-00000005esS-3l0u;
+	Wed, 02 Oct 2024 11:28:11 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1svx5t-00000005aYw-0doc
+	id 1svxQA-00000005dUN-2yXo
 	for linux-rockchip@lists.infradead.org;
-	Wed, 02 Oct 2024 11:00:34 +0000
-Received: by mail-yb1-xb2d.google.com with SMTP id 3f1490d57ef6-e25cc9e94eeso5670726276.3
-        for <linux-rockchip@lists.infradead.org>; Wed, 02 Oct 2024 04:00:32 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1727866831; x=1728471631; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=lmcYZA7/wJjtWP/h4dJKihF0bgwj9/ex9+L3+MEoObU=;
-        b=FaZDvAxpjxbkk1FekPJJ1yRBuGaRZmChV6Oave4m8pnoZhVZZCzIsIRHlPyKoMjb68
-         Q+BD1xgVqUixxXU4LL9804YJJyN9QBsEJH7o1YpmIaZSl3uvbQe1gZIkq0dB0XmR/6Sc
-         OSeTGSBh2KPBjnmP9YhDPH4FHGe4GNmJ+pxNOG7PRYtQ/mA0R9xYonhY81Bt2FSbN2Aj
-         LSgGR/8IM5u/LT9wIMIigTgUmbz9WALV1ICLU4kXY1GE8nafI+LuRPiySXfBJcLoSkXw
-         urKy1wLarryNKRZ/SFhIl8YwBh93bzEZhg0SanDJms7JmELgw9rVnqTtNC9Zm1AGK1YO
-         hnHA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1727866831; x=1728471631;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=lmcYZA7/wJjtWP/h4dJKihF0bgwj9/ex9+L3+MEoObU=;
-        b=aNPtGO7VLOA7b8UrEPeD53eRlgQPI/m3xASB8ShNh+N+odh1KjkttRKeFViN5jGUsJ
-         FuLk0KCivnnNZJAH6+Ee4WATIVdeaVALIZU+h2j/cfbseTOrx/xFt0p9oCDZuaA6PDRO
-         C1LtUl6pFA+6KG4V1qEuBwaEhKsuCi3mc9pS2Czcd/XRJdkMnmL4qIMFQ+YROrkpkTHH
-         85pDGEmYB+gf1KOfMSca4mZKYPbsb9lE2j2X99ZtxNMQG0f27AOycDfHyPsviFz6IOiv
-         TXjjJhtSRbqP1mmS85Eg9LCaIWLlQ/2P8NDA0wiYbVdIeo81Z4p0S8Gam76w2lrDxbPc
-         DBQg==
-X-Forwarded-Encrypted: i=1; AJvYcCVi23GtGcY6OF2uQlpDwujxwBBxbw9lDYPKxEw/Ue8yBh5VDP2tDqU4YeveeKcjL2vMjjLZQ7n4wNLfPn8m2A==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzTXaHcCEYTjwzv9O75itdWk6CEzr5EzkgyvR+tUxBpEksAB9ga
-	EmETB0TqlDu8/xBR56RhWE3HsuCDe+nZffBI7MUDUuvofdj/Khyh8gxTUb71LkY4mV/mC0RA17c
-	hYTfOH5LxmB7DsO1GRaSv8OLJ0aDo50ECJPlJog==
-X-Google-Smtp-Source: AGHT+IH1/OYH7PyqLLC06P011jS8wjK1A2ttW2EVTz1YfQDhiNruQopqyDimOPKCVrbB2cqpzD/2bH9uqx4KuH6NPos=
-X-Received: by 2002:a05:6902:2182:b0:e26:5b7:9f95 with SMTP id
- 3f1490d57ef6-e263840f47bmr2076616276.35.1727866830962; Wed, 02 Oct 2024
- 04:00:30 -0700 (PDT)
+	Wed, 02 Oct 2024 11:21:32 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+	List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=8yQoGaDgxuxLfwZVgMTO9viyoYC2SUQOzfF3ILBG6Fo=; b=kqbJSc8FOievQf35zdCAhbv5JO
+	DnyJ5vh5Svh2dflMN8LrUfld6U41k9d41ohoWSTp09CMTTxa3Y7SoEyYMYbfXEoS47jxJmyWuyLa7
+	ih3ClUYnAhRsRqVtjrDJoQJ0bPNumUHGM2Fw2YDsfMxn0Ir0JD8/dif2L6GzUsaJIhHnJro7SElvk
+	WMAajm/gLC3HNzDQIFrt2CK3FKAs93eBumhKnaug/QWSaygOt4LpDryyeDsob2sWR0REF04Mm25y3
+	6cLwjDNQn/wOziX3k3BoHNkKPp+o+J7k4kpkxTHGb2o6KGeU1Mb1MkbJOn7wgqEEOI3H33plwY46I
+	h4JFgcDg==;
+Received: from i53875aa1.versanet.de ([83.135.90.161] helo=diego.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1svxQ6-0005rI-Sm; Wed, 02 Oct 2024 13:21:26 +0200
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+To: FUKAUMI Naoki <naoki@radxa.com>, Jonas Karlman <jonas@kwiboo.se>
+Cc: linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH v3] arm64: dts: rockchip: change pinctrl for pcie2x1l2 for Radxa
+ ROCK 5A
+Date: Wed, 02 Oct 2024 13:21:26 +0200
+Message-ID: <863960074.0ifERbkFSE@diego>
+In-Reply-To: <d33dc43d-ac90-41af-94c0-e4dd1bc0654f@kwiboo.se>
+References: <20241001235046.1710-1-naoki@radxa.com>
+ <d33dc43d-ac90-41af-94c0-e4dd1bc0654f@kwiboo.se>
 MIME-Version: 1.0
-References: <20240919091834.83572-1-sebastian.reichel@collabora.com>
-In-Reply-To: <20240919091834.83572-1-sebastian.reichel@collabora.com>
-From: Ulf Hansson <ulf.hansson@linaro.org>
-Date: Wed, 2 Oct 2024 12:59:55 +0200
-Message-ID: <CAPDyKFpWYnqLGdxXc4Wvt_3MNsYkCpRfTJMeUddZzpKTwnY4Rw@mail.gmail.com>
-Subject: Re: [PATCH v2 0/6] Fix RK3588 GPU domain
-To: Sebastian Reichel <sebastian.reichel@collabora.com>
-Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
-	Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
-	Elaine Zhang <zhangqing@rock-chips.com>, 
-	=?UTF-8?Q?Adri=C3=A1n_Mart=C3=ADnez_Larumbe?= <adrian.larumbe@collabora.com>, 
-	Boris Brezillon <boris.brezillon@collabora.com>, Chen-Yu Tsai <wens@csie.org>, 
-	devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org, 
-	linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org, kernel@collabora.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241002_040033_213001_9578D5F2 
-X-CRM114-Status: GOOD (  23.98  )
+X-CRM114-CacheID: sfid-20241002_042130_848887_32847495 
+X-CRM114-Status: GOOD (  22.35  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,44 +69,84 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gVGh1LCAxOSBTZXB0IDIwMjQgYXQgMTE6MTgsIFNlYmFzdGlhbiBSZWljaGVsCjxzZWJhc3Rp
-YW4ucmVpY2hlbEBjb2xsYWJvcmEuY29tPiB3cm90ZToKPgo+IEhpLAo+Cj4gSSBnb3QgYSByZXBv
-cnQsIHRoYXQgdGhlIExpbnV4IGtlcm5lbCBjcmFzaGVzIG9uIFJvY2sgNUIgd2hlbiB0aGUgcGFu
-dGhvcgo+IGRyaXZlciBpcyBsb2FkZWQgbGF0ZSBhZnRlciBib290aW5nLiBUaGUgY3Jhc2ggc3Rh
-cnRzIHdpdGggdGhlIGZvbGxvd2luZwo+IHNob3J0ZW5lZCBlcnJvciBwcmludDoKPgo+IHJvY2tj
-aGlwLXBtLWRvbWFpbiBmZDhkODAwMC5wb3dlci1tYW5hZ2VtZW50OnBvd2VyLWNvbnRyb2xsZXI6
-IGZhaWxlZCB0byBzZXQgZG9tYWluICdncHUnLCB2YWw9MAo+IHJvY2tjaGlwLXBtLWRvbWFpbiBm
-ZDhkODAwMC5wb3dlci1tYW5hZ2VtZW50OnBvd2VyLWNvbnRyb2xsZXI6IGZhaWxlZCB0byBnZXQg
-YWNrIG9uIGRvbWFpbiAnZ3B1JywgdmFsPTB4YTlmZmYKPiBTRXJyb3IgSW50ZXJydXB0IG9uIENQ
-VTQsIGNvZGUgMHgwMDAwMDAwMGJlMDAwNDExIC0tIFNFcnJvcgo+Cj4gVGhpcyBzZXJpZXMgZmly
-c3QgZG9lcyBzb21lIGNsZWFudXBzIGluIHRoZSBSb2NrY2hpcCBwb3dlciBkb21haW4KPiBkcml2
-ZXIgYW5kIGNoYW5nZXMgdGhlIGRyaXZlciwgc28gdGhhdCBpdCBubyBsb25nZXIgdHJpZXMgdG8g
-Y29udGludWUKPiB3aGVuIGl0IGZhaWxzIHRvIGVuYWJsZSBhIGRvbWFpbi4gVGhpcyBnZXRzIHJp
-ZCBvZiB0aGUgU0Vycm9yIGludGVycnVwdAo+IGFuZCBsb25nIGJhY2t0cmFjZXMuIEJ1dCB0aGUg
-a2VybmVsIHN0aWxsIGhhbmdzIHdoZW4gaXQgZmFpbHMgdG8gZW5hYmxlCj4gYSBwb3dlciBkb21h
-aW4uIEkgaGF2ZSBub3QgZG9uZSBmdXJ0aGVyIGFuYWx5c2lzIHRvIGNoZWNrIGlmIHRoYXQgY2Fu
-Cj4gYmUgYXZvaWRlZC4KPgo+IExhc3QgYnV0IG5vdCBsZWFzdCB0aGlzIHByb3ZpZGVzIGEgZml4
-IGZvciB0aGUgR1BVIHBvd2VyIGRvbWFpbiBmYWlsaW5nCj4gdG8gZ2V0IGVuYWJsZWQgLSBhZnRl
-ciBzb21lIHRlc3RpbmcgZnJvbSBteSBzaWRlIGl0IHNlZW1zIHRvIHJlcXVpcmUgdGhlCj4gR1BV
-IHZvbHRhZ2Ugc3VwcGx5IHRvIGJlIGVuYWJsZWQuCj4KPiBJJ20gbm90IHJlYWxseSBoYXBweSBh
-Ym91dCB0aGUgaGFjayB0byBnZXQgYSByZWd1bGF0b3IgZm9yIGEgc3ViLW5vZGUsCj4gd2hpY2gg
-SSB0b29rIG92ZXIgZnJvbSB0aGUgTWVkaWF0ZWsgZHJpdmVyLiBJIGRpc2N1c3NlZCB0aGlzIHdp
-dGgKPiBDaGVuLVl1IFRzYWkgYW5kIEhlaWtvIFN0w7xibmVyIGF0IE9TUyBFVSBhbmQgdGhlIHBs
-YW4gaXM6Cj4KPiAxLiBNZXJnZSBSb2NrY2hpcCBQTSBkb21haW4gZHJpdmVyIHdpdGggdGhpcyBo
-YWNrIGZvciBub3csIHNpbmNlIERSTSBDSQo+ICAgIHBlb3BsZSBuZWVkIGl0Cj4gMi4gQ2hlbi1Z
-dSB3aWxsIHdvcmsgb24gYSBzZXJpZXMsIHdoaWNoIGZpeGVzIHRoZSBoYWNrIGluIE1lZGlhdGVr
-IGJ5Cj4gICAgaW50cm9kdWNpbmcgYSBuZXcgZGV2bV9yZWd1bGF0b3JfZ2V0IGZ1bmN0aW9uIHRh
-a2luZyBhbiBEVCBub2RlIGFzCj4gICAgYWRkaXRpb25hbCBhcmd1bWVudAo+IDMuIFJvY2tjaGlw
-IFBNIGRvbWFpbiBsYXRlciB3aWxsIHN3aXRjaCB0byB0aGF0IG9uY2UgaXQgaGFzIGxhbmRlZAoK
-SSBoYXZlIGp1c3QgcXVldWVkIHVwIDIpIG9uIG15IG5leHQgYnJhbmNoLgoKTXkgc3VnZ2VzdGlv
-biBpcyB0byBza2lwIHRoZSBpbnRlcm1lZGlhdGUgc3RlcCBpbiAxKSBhbmQgZ28gZGlyZWN0bHkK
-Zm9yIDMpIGluc3RlYWQsIHVubGVzcyB5b3UgdGhpbmsgdGhlcmUgaXMgYSBwcm9ibGVtIHdpdGgg
-dGhhdCwgb2YKY291cnNlPwoKWy4uLl0KCktpbmQgcmVnYXJkcwpVZmZlCgpfX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5n
-IGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5m
-cmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+Am Mittwoch, 2. Oktober 2024, 12:50:29 CEST schrieb Jonas Karlman:
+> Hi,
+> 
+> On 2024-10-02 01:50, FUKAUMI Naoki wrote:
+> > for pcie2x1l2, only pcie20x1_2_perstn_m0 is required, and its function
+> > needs to be GPIO to avoid freeze at "pci enum" without PCIe device on
+> > u-boot.
+> > 
+> > change pinctrl definitions for pcie2x1l2. no functional change is
+> > intended on Linux kernel.
+> 
+> After the split and addition of pcie2_reset I think this patch is no
+> longer needed? The issue this patch tried to fix was already
+> fixed/changed in "arm64: dts: rockchip: Split up RK3588's PCIe pinctrls".
+> 
+> Looks like this now just rename pcie2_reset to pcie20x1_2_perstn_m0?
+
+and removes the other pinctrl states clkreqn and waken .
+
+In a previous version they mentioned that this somehow affects u-boot.
+
+But you're right, that renaming of the pinctrl reset entry should
+definitly not be in there.
+
+
+> > Signed-off-by: FUKAUMI Naoki <naoki@radxa.com>
+> > ---
+> > Changed in v3:
+> > - rebase on next/master
+> > Changed in v2:
+> > - reword commit message
+> > ---
+> >  arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts | 10 +++++-----
+> >  1 file changed, 5 insertions(+), 5 deletions(-)
+> > 
+> > diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts b/arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts
+> > index 87fce8d9a964..841ac9a30628 100644
+> > --- a/arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts
+> > +++ b/arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts
+> > @@ -310,7 +310,7 @@ rgmii_phy1: ethernet-phy@1 {
+> >  };
+> >  
+> >  &pcie2x1l2 {
+> > -	pinctrl-0 = <&pcie2_reset>, <&pcie20x1m0_clkreqn>, <&pcie20x1m0_waken>;
+> > +	pinctrl-0 = <&pcie20x1_2_perstn_m0>;
+> >  	pinctrl-names = "default";
+> >  	reset-gpios = <&gpio3 RK_PD1 GPIO_ACTIVE_HIGH>;
+> >  	vpcie3v3-supply = <&vcc3v3_wf>;
+> > @@ -325,12 +325,12 @@ io_led: io-led {
+> >  	};
+> >  
+> >  	pcie {
+> > -		pow_en: pow-en {
+> > -			rockchip,pins = <0 RK_PC5 RK_FUNC_GPIO &pcfg_pull_none>;
+> > +		pcie20x1_2_perstn_m0: pcie20x1-2-perstn-m0 {
+> > +			rockchip,pins = <3 RK_PD1 RK_FUNC_GPIO &pcfg_pull_none>;
+> >  		};
+> >  
+> > -		pcie2_reset: pcie2-reset {
+> > -			rockchip,pins = <3 RK_PD1 RK_FUNC_GPIO &pcfg_pull_none>;
+> > +		pow_en: pow-en {
+> > +			rockchip,pins = <0 RK_PC5 RK_FUNC_GPIO &pcfg_pull_none>;
+> >  		};
+> >  	};
+> >  
+> 
+> 
+
+
+
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
