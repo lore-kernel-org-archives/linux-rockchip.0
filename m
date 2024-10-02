@@ -4,63 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 483EECF31AE
-	for <linux-rockchip@archiver.kernel.org>; Wed,  2 Oct 2024 10:13:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7DBD6CF31AF
+	for <linux-rockchip@archiver.kernel.org>; Wed,  2 Oct 2024 10:23:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=hnSOaMeVHcNnZaNiKd+WZwzMWXlG05DYpgwzxbs+iIw=; b=s9XXEcVs1iDOIo
-	+1n7pfHSgE6VSFcu+e3AZkd1NJs3li1f2NI5Oy7Z+G7pYUj3sL/1hmaIGV7rwSmbNPNCQc6+UBMXd
-	D8PTeQhfnz/ySlicwsqIPiKOAJSGqbi6PZ/im8in9IzU3eut9X2a3WsuGKENNTYTAho0cDc3uG2Dg
-	MDJEAgOgmttMVlpzrl11kT/0uNX5p3JLJGP8GETMPOPBOGUiTFwfA0N1y9w2dlAXEDLCQReZ2H0Xh
-	HhCp7pvtpRxVRZ+19/IeIx2aGWTYdwQVB78sE5Tisc6scuhbIGwZ6gZluKJ5ZtB3x+oCknJuq3r64
-	KzXLeZ2yumIHVSnYQDXQ==;
+	List-Owner; bh=jLSzVSgCea7zSG/7/CQB9kQlzRtX2JV3NkaMtb0/mAk=; b=UAaPXir0xYrqy3
+	9SqFtk2ZwY+dv6WvoytOOK5ETEZFi/CEZsh9c9FOKb3IvWG16eB47E5f/V+ajl6jPgS9+uQxul1Sz
+	MMYggO0UeYLLqRaTiQM/n3wze9Hhoep+7z8yutuT6kA/y261QA359go2Ycel9yYHdpYJNoIXBoBCT
+	+CfkpRpP6Z6rYQ7uB0UqMIRI/bf9xBGP4CL24PVSrsQZkRxNfv6RjX02CRzdI6ZLI4dVUI8f6nN0/
+	dZpXeiu5aHo3+6ZrVDGXq4CJrWDhVe/ijKna1cNa98Y394AM1EYNnmOrTMeiSc3pjqPIUg2G8tzNc
+	Dq6EktmTsucW7xKn6kWw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1svwMP-00000005SRh-3Kca;
-	Wed, 02 Oct 2024 10:13:33 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1svwVv-00000005TfM-036K;
+	Wed, 02 Oct 2024 10:23:23 +0000
+Received: from layka.disroot.org ([178.21.23.139])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1svwLA-00000005SCY-1GI9;
-	Wed, 02 Oct 2024 10:12:17 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
-	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=JwhzVDZBNjGUfu++mGGFURZdzqhlb44Qh8znmFHlVD4=; b=X15MMLxHC2hJRWot0HCHmSPS8U
-	EZULsRX4yVnovppXgWmHJkK/fIwxZ/sjz6fnRas8Z6/e/Ls9NL0+8Hxib1mXWA/N5+/9Ho0a/si6b
-	ssRC8gxYzz/eQaldK3zoF0xlXZ2/K0r7M4J4xfiijtBF2Rp4Zq1xE395SGAC/iuAbI/Ap9Gsoehku
-	pv1sRprdMEYk+nypJeRWs8V8BKZCWy+tYDWxeAvLwWEGh9uDIfcoFtMy3uxxsQVnvF6kZhg3W6YZ5
-	ETWO+pSOkGlKB4JPaGxUZ0Ozf/vDFNxchzo/Tlvx1rF0cev/zNxoPiSFzrpG70zD7al0EWti1hQiO
-	aD3bJNWQ==;
-Received: from i53875aa1.versanet.de ([83.135.90.161] helo=diego.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1svwL6-0004tJ-Fk; Wed, 02 Oct 2024 12:12:12 +0200
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: Michael Turquette <mturquette@baylibre.com>,
- Stephen Boyd <sboyd@kernel.org>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
- Philipp Zabel <p.zabel@pengutronix.de>, Yao Zi <ziyao@disroot.org>
-Cc: linux-clk@vger.kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org, Celeste Liu <CoelacanthusHex@gmail.com>
-Subject: Re: [PATCH 4/8] clk: rockchip: Add PLL flag ROCKCHIP_PLL_FIXED_MODE
-Date: Wed, 02 Oct 2024 12:12:11 +0200
-Message-ID: <3798659.MHq7AAxBmi@diego>
-In-Reply-To: <Zv0blIPaF0Y2Pmn1@pineapple>
-References: <20241001042401.31903-2-ziyao@disroot.org> <8495918.NyiUUSuA9g@diego>
- <Zv0blIPaF0Y2Pmn1@pineapple>
+	id 1svwSo-00000005T44-2jNh;
+	Wed, 02 Oct 2024 10:20:12 +0000
+Received: from mail01.disroot.lan (localhost [127.0.0.1])
+	by disroot.org (Postfix) with ESMTP id 3114923D0C;
+	Wed,  2 Oct 2024 12:20:09 +0200 (CEST)
+X-Virus-Scanned: SPAM Filter at disroot.org
+Received: from layka.disroot.org ([127.0.0.1])
+ by localhost (disroot.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 3x9mbW7CcFki; Wed,  2 Oct 2024 12:20:08 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=disroot.org; s=mail;
+	t=1727864408; bh=v/SHaBe3azNycrMX3xW1hD4p/17jiqX7UnkDglACAuU=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=mkyWSGxUfC2oOU3psYN5YCbt3QbaFJddEq1Ypg0q2JvA8zooHmk0ptKXK2MSYDJUv
+	 VSE2afuV85JyyJ8fvStXw5/uJtaNadaigGITnfsmf/wa5JQ2YkMurGVvP1CdiBmjDW
+	 0jbuj4CAzPGA5NoQNLAFVB82SDK++eVBmL/L3Pikc7nnTxJQdn5dL/ZdbsKpU7hcMd
+	 gRwIIgo2WW3y8fn4LUHP7f1JFvolA4USCGPvPVy5pD3SwHH+fsu0q4TbXE53g3TwZr
+	 i/bcJEfq9IUtad4G8YS3ZUzJjsfup0Z4SB0nwRUOCYftWhgp6pBEs6pXfbVrlEtI8P
+	 q3snlL+imgJTg==
+Date: Wed, 2 Oct 2024 10:19:47 +0000
+From: Yao Zi <ziyao@disroot.org>
+To: Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>,
+	Krzysztof Kozlowski <krzk@kernel.org>
+Cc: Michael Turquette <mturquette@baylibre.com>,
+	Stephen Boyd <sboyd@kernel.org>, Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Philipp Zabel <p.zabel@pengutronix.de>, linux-clk@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+	Celeste Liu <CoelacanthusHex@gmail.com>
+Subject: Re: [PATCH 2/8] dt-bindings: reset: Add reset ID definition for
+ Rockchip RK3528
+Message-ID: <Zv0eQ0GofiaXxkB2@pineapple>
+References: <20241001042401.31903-2-ziyao@disroot.org>
+ <kg7lh6gafeegmljsygukhfjiztx5wbothngtxrcreccao3itpy@f4bxf4w346ky>
+ <Zv0YRkabzDTARc-L@pineapple>
+ <2647978.Lt9SDvczpP@diego>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <2647978.Lt9SDvczpP@diego>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241002_031216_362583_4BA59ACF 
-X-CRM114-Status: GOOD (  20.81  )
+X-CRM114-CacheID: sfid-20241002_032010_846595_31213374 
+X-CRM114-Status: GOOD (  14.62  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,44 +83,63 @@ Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Am Mittwoch, 2. Oktober 2024, 12:08:20 CEST schrieb Yao Zi:
-> On Wed, Oct 02, 2024 at 10:16:49AM +0200, Heiko St=FCbner wrote:
-> > Hi,
-> > =
-
-> > Am Dienstag, 1. Oktober 2024, 06:23:58 CEST schrieb Yao Zi:
-> > > RK3528 comes with a new PLL type, flagged by ROCKCHIP_PLL_FIXED_MODE,
-> > > which should operate in normal mode only. Add corresponding definition
-> > > and handle it in code.
+On Wed, Oct 02, 2024 at 12:07:06PM +0200, Heiko St=FCbner wrote:
+> Am Mittwoch, 2. Oktober 2024, 11:54:14 CEST schrieb Yao Zi:
+> > On Wed, Oct 02, 2024 at 08:31:53AM +0200, Krzysztof Kozlowski wrote:
+> > > On Tue, Oct 01, 2024 at 04:23:56AM +0000, Yao Zi wrote:
+> > > > +/*
+> > > > + * Copyright (c) 2022 Rockchip Electronics Co. Ltd.
+> > > > + * Copyright (c) 2024 Yao Zi <ziyao@disroot.org>
+> > > > + * Author: Joseph Chen <chenjh@rock-chips.com>
+> > > > + */
+> > > > +
+> > > > +#ifndef _DT_BINDINGS_RESET_ROCKCHIP_RK3528_H
+> > > > +#define _DT_BINDINGS_RESET_ROCKCHIP_RK3528_H
+> > > > +
+> > > > +// CRU_SOFTRST_CON03 (Offset: 0xA0C)
+> > > > +#define SRST_CORE0_PO			0x00000030
+> > > > +#define SRST_CORE1_PO			0x00000031
+> > > > +#define SRST_CORE2_PO			0x00000032
+> > > > +#define SRST_CORE3_PO			0x00000033
+> > > > +#define SRST_CORE0			0x00000034
+> > > > +#define SRST_CORE1			0x00000035
+> > > > +#define SRST_CORE2			0x00000036
+> > > > +#define SRST_CORE3			0x00000037
+> > > > +#define SRST_NL2			0x00000038
+> > > > +#define SRST_CORE_BIU			0x00000039
+> > > > +#define SRST_CORE_CRYPTO		0x0000003A
+> > > > +
+> > > > +// CRU_SOFTRST_CON05 (Offset: 0xA14)
+> > > > +#define SRST_P_DBG			0x0000005D
+> > > > +#define SRST_POT_DBG			0x0000005E
+> > > > +#define SRST_NT_DBG			0x0000005F
 > > > =
 
+> > > What are all these? Registers? Not a binding.
+> > > =
+
+> > > Binding constants are numerical values from 0, incremented by one,
 > > =
 
-> > More commit message would be nice ;-) .
+> > Do we have related documentation about this, or I just miss it?
 > =
 
-> Good idea.
+> here the value notation in hex format is very strange.
 > =
 
-> > It's the PPLL for the pcie controller that is specified in the manual to
-> > only work in normal mode. This is helpful for people reading along :-) .
-> > =
+> For reference have a look at the rk3576 and rk3588, which follow the style
+> recommendations.
 
-> > Heiko
-> =
+I have checked their implementation before sending the reply. Older
+Rockchip reset bindings, including this series, encoding register
+offsets and effective bits in IDs, resulting in the mess.
 
-> btw, for the documentation, is there any technical reference manual
-> of RK3528 available publicly? Please let me know if it's true, it will
-> be quite helpful to understand clock tree better :)
+In next revision, the new style will be adapted, just like rk3576/3588.
+But what I'm asking for is a generic style doc of writing dt-binding
+headers :)
 
-Sadly not. So far there hasn't been a "leak" yet and Rockchip also seems
-to have gotten more restrictive for whatever strange reason, so with my
-NDA I also only got part1 of the manual.
-
-
-Heiko
-
-
+Cheers,
+Yao Zi
 
 _______________________________________________
 Linux-rockchip mailing list
