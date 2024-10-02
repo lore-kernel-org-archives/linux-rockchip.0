@@ -4,192 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 24501CEB2E2
-	for <linux-rockchip@archiver.kernel.org>; Wed,  2 Oct 2024 18:50:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 931E4CF31B9
+	for <linux-rockchip@archiver.kernel.org>; Wed,  2 Oct 2024 19:39:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=3/SwwJ+DCkxHWNccqwXfyAFaerkSlWzlp/rXQ4TeT8k=; b=S9t4/hTXanZXE1
-	VNGwuzPooP2fwkav5Ze4oUQ3r8yQPGmwg6As2pHQVeymf4FI5nOXJurO3Qpc90Psp6NCvEwmVgf8u
-	XTmw7YyATCg4ptYio8f5aCPj/V9ZAC39GGkGz1HuG2UiAI9hkPItfByhx9N0HE4fKSPyAuSlGtXoV
-	I2MM1I+3S5N94xM2ieKTz90LRIHII1ucLvaeeL9cwXDxB2854wflWVLbHHHvNhOjBdPToTUO+wGBZ
-	bgw0InkA+5gFwUH2BuAljmxPt1Tea+df+GIcTFmIsPKepE3MEbJuai1N40wX3Dp0VQ9NnubBNaK05
-	NblvoQ/+kVLoEsJx00FA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:References:Cc:To:From:Subject:Message-Id:Date:Mime-Version:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=/CuPE0giiASZCyqXDpLvjq93DAcRoRhSgQBtBW9OHsI=; b=1Ej02v3Kl1Z6PW5+CCFGcK8r5G
+	IBv80BLjgFOnqBFcF2pm1TqcDyx7zWMFsP7/yKMSNN8j9eLVr/Gs8YOQbLpOiZOeAZafki2X3HW3K
+	o8EQHqKRucUd4upEiXN7XeDy3jjFwlp4cSreQe49cpQ6FEQ8tzTd/xtyMtIeviDpUqTFyXMEPAbZW
+	0kZTft2u0fktXsUBcGOJkbxfDul/w92FPkGD780b+F1Ic+HUMb7znBAmFiRejpd9jAU5clZYrO2NG
+	9CGdztxrs0hCKyS5EuRRcqu3miXesab6UJzIhf7uyAyCmWv/LwDWG5PjPaWR1XlmIMA6Ivqmvo88z
+	dXuSnrDg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1sw4Qm-00000007E72-075u;
-	Wed, 02 Oct 2024 18:50:36 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1sw5Bb-00000007K2C-2CMd;
+	Wed, 02 Oct 2024 19:38:59 +0000
+Received: from out-179.mta1.migadu.com ([95.215.58.179])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1sw4Qi-00000007E5R-3npy;
-	Wed, 02 Oct 2024 18:50:33 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=MIME-Version:Content-Transfer-Encoding
-	:Content-Type:In-Reply-To:References:Message-ID:Date:Subject:CC:To:From:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=/L7lfFeS8DrLKnP3vCVUaZm6SLPoTmqP5QJqwe407Vs=; b=W3Iut6YjL1y5VHjgJBkatmK0tG
-	a+GmfSM26kOagIzuiZxQ4oJWQEkbX73E7c0BN0+7TgJ55ptbdOpwMkjTuiPajIttEdT1I7ZIlByyG
-	gdp7iLyixH+eliBCrPci9EKxeVDEkY0zYB5g8qiLRY0yP6rNc1lLfOuT4+9E+TUpuxiqKyBD+1GuC
-	DEwru5CnTuSiJosK5+DCsMVEEejj/TZpQiaQZu+MOGezNDm69PvdT6SlzIZpqSAscalDrgwuHnT0n
-	BtzxxJiXqC5/y5YEiSX1LZ765Q8TSuRtCdjtG1BDmxUhFVV7WMSg4P1BdJWwOZB2vot0bSfGRQBS3
-	SqN8XtoQ==;
-Received: from mail-dm6nam10on20601.outbound.protection.outlook.com ([2a01:111:f403:2413::601] helo=NAM10-DM6-obe.outbound.protection.outlook.com)
-	by desiato.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1sw4Qe-00000003Z4O-3u7P;
-	Wed, 02 Oct 2024 18:50:31 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=UequFPs7Tn5Qwfb/kKnaSkHLl3x48MTW9GyLX5+EjTHd0ut3hylvQ1xAYixoSWNOxNVmMSAv/p8P3WoqaP/C4FM1KAb8u+kQB4TLZOFMyIATrnTNt8QqrnxmbDS4sPAmXmFRwVsnHtioeEhmCev/X4G6zl+eTLpDtHtk/V4DG0Y8f2RdRzOkF+E36+Si5iQBltkAYNj6JhSOY90O7NZqMFaQ16ckqEuEqAk1lE5vivLhCxdT5ApU49Mh1QAP+H1yeu8g1hJK/2joCcLBj4dxpkPTYg/UcyKtafktbmi/qDY5seamj7PkjYBsoK3/DFSwesoSlzAMVx9nZs7+ox5F8g==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=/L7lfFeS8DrLKnP3vCVUaZm6SLPoTmqP5QJqwe407Vs=;
- b=x2VEk8QJqHjebOE4SIz1RJQN/q1ravcS54IgLitCm+QQr2PdipPRa1GOaNpeMNZh+zM95S6NmYTjKqgq2v0Wtx6nr0AByiqiC6IuJBsaDCOENl7EFOwJxkQPeUURvNkEIDY320/iCZFBQmQzyiob/eDq8ptW7Lz3mkOuHmnD7i6MBsakH4u5tHdDJ3tfWs4pMkKjPXtbzhx8BoioxKNjEE3Du6epaYmaeOsgwEtsl+gE2SDtqnS0A+aIjtEbrhZn4SchcFExHUbsq0A04mFFB8AJFqXX9741YqLq5OgAzmtFpmvb3Tl/7t+I9BzSxLj6Ukjo/Z0SgRiP/TBjo6k5Kg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=amd.com; dmarc=pass action=none header.from=amd.com; dkim=pass
- header.d=amd.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=amd.com; s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=/L7lfFeS8DrLKnP3vCVUaZm6SLPoTmqP5QJqwe407Vs=;
- b=H7rjfJkWyBpjvnbP4f+IYYOF1XosDxoVY7ldqvJRgXai8Ws91OOWV1wzbd47Q1WsOCW0p4Xtj6BO9h7VnjRlHYakxmUazEJEhn47r5d3nczFNbNAMUG/1QDrH87KOFGg7QfMFm8nK+ARXkMJEjpFnajcP4NYTPz/2mBlCyFSHUQ=
-Received: from BL1PR12MB5144.namprd12.prod.outlook.com (2603:10b6:208:316::6)
- by DS0PR12MB7726.namprd12.prod.outlook.com (2603:10b6:8:130::6) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8026.16; Wed, 2 Oct
- 2024 18:50:15 +0000
-Received: from BL1PR12MB5144.namprd12.prod.outlook.com
- ([fe80::491a:cce3:e531:3c42]) by BL1PR12MB5144.namprd12.prod.outlook.com
- ([fe80::491a:cce3:e531:3c42%3]) with mapi id 15.20.8026.016; Wed, 2 Oct 2024
- 18:50:15 +0000
-From: "Deucher, Alexander" <Alexander.Deucher@amd.com>
-To: Vignesh Raman <vignesh.raman@collabora.com>, "Koenig, Christian"
-	<Christian.Koenig@amd.com>, "Pan, Xinhui" <Xinhui.Pan@amd.com>,
-	"amd-gfx@lists.freedesktop.org" <amd-gfx@lists.freedesktop.org>
-CC: "daniels@collabora.com" <daniels@collabora.com>,
-	"helen.koike@collabora.com" <helen.koike@collabora.com>, "airlied@gmail.com"
-	<airlied@gmail.com>, "daniel@ffwll.ch" <daniel@ffwll.ch>,
-	"robdclark@gmail.com" <robdclark@gmail.com>, "guilherme.gallo@collabora.com"
-	<guilherme.gallo@collabora.com>, "sergi.blanch.torne@collabora.com"
-	<sergi.blanch.torne@collabora.com>, "deborah.brouwer@collabora.com"
-	<deborah.brouwer@collabora.com>, "dmitry.baryshkov@linaro.org"
-	<dmitry.baryshkov@linaro.org>, "mripard@kernel.org" <mripard@kernel.org>,
-	"rodrigo.vivi@intel.com" <rodrigo.vivi@intel.com>,
-	"quic_abhinavk@quicinc.com" <quic_abhinavk@quicinc.com>,
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
-	"linux-amlogic@lists.infradead.org" <linux-amlogic@lists.infradead.org>,
-	"linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>,
-	"linux-arm-msm@vger.kernel.org" <linux-arm-msm@vger.kernel.org>,
-	"intel-gfx@lists.freedesktop.org" <intel-gfx@lists.freedesktop.org>,
-	"virtualization@lists.linux.dev" <virtualization@lists.linux.dev>,
-	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-	"dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>
-Subject: RE: [PATCH v4] docs/gpu: ci: update flake tests requirements
-Thread-Topic: [PATCH v4] docs/gpu: ci: update flake tests requirements
-Thread-Index: AQHbEx6VZq9NdGlJcES3XBOMhY5TvbJx64qAgAHl6LA=
-Date: Wed, 2 Oct 2024 18:50:15 +0000
-Message-ID: <BL1PR12MB5144DCE3B2511FAFB73AE77CF7702@BL1PR12MB5144.namprd12.prod.outlook.com>
-References: <20240930095255.2071586-1-vignesh.raman@collabora.com>
- <87fea8ea-fe9d-4114-b03c-7ec50a4be874@collabora.com>
-In-Reply-To: <87fea8ea-fe9d-4114-b03c-7ec50a4be874@collabora.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-msip_labels: MSIP_Label_f265efc6-e181-49d6-80f4-fae95cf838a0_ActionId=a60077be-fb78-4542-81b9-465ee21eecfe;MSIP_Label_f265efc6-e181-49d6-80f4-fae95cf838a0_ContentBits=0;MSIP_Label_f265efc6-e181-49d6-80f4-fae95cf838a0_Enabled=true;MSIP_Label_f265efc6-e181-49d6-80f4-fae95cf838a0_Method=Privileged;MSIP_Label_f265efc6-e181-49d6-80f4-fae95cf838a0_Name=Open
- Source;MSIP_Label_f265efc6-e181-49d6-80f4-fae95cf838a0_SetDate=2024-10-02T18:49:51Z;MSIP_Label_f265efc6-e181-49d6-80f4-fae95cf838a0_SiteId=3dd8961f-e488-4e60-8e11-a82d994e183d;
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=amd.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: BL1PR12MB5144:EE_|DS0PR12MB7726:EE_
-x-ms-office365-filtering-correlation-id: 5fb4f004-be11-4f46-4238-08dce3130dd7
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;ARA:13230040|376014|7416014|366016|1800799024|38070700018;
-x-microsoft-antispam-message-info: =?utf-8?B?bXVxdGFGN21oajgzOC9iMERlUW9lMnRuS1RUWmU5dzRYbkJaS1BraVhhSkVG?=
- =?utf-8?B?MXNRSS9CLytYZkRtSDI1Y2dsZDZMUUEraGlTQUN6aGhjTnJwMTdtNVJJL014?=
- =?utf-8?B?aHBpZ0ZzaHp6MitkeGo3eEw5SGhVS2lpUWw1NEJjY0RtR2JTVXR6anpMeHV0?=
- =?utf-8?B?MEJrWDhVOVFmdXV6cUpZV3AzUjJGZERwY2RrWGVQcDA3OXdBR1NSbEh3RExi?=
- =?utf-8?B?TjdQRTF0NndrWGwxMHhGR0tKWHUrWk4rWWRLKzF1RzJtTnkyZFV0MndtRjhn?=
- =?utf-8?B?Z0xIUUZaSmpzZENxeTJpZ1JGcDd0eC9OWWJuaWFSQ0dQMjExL3BxblFlYy9u?=
- =?utf-8?B?MEE1cTJJUkZKa3M1Z0xxNXRZQnFYaHJVN1NPcmRiQUYwOWhROEVxRTFGck9a?=
- =?utf-8?B?UzFmeUR6bERYYUoyaWJSVWgwQVNMbmkrMlVOa1o2bnBLVDVEN3RnYS9kWGhl?=
- =?utf-8?B?cENVcEJGL05wSDRvR25jY2IxamdyM0grZ0FZOU5JQ0cvT3NRUDdHUEFxNHBk?=
- =?utf-8?B?bkJiRmpObk04ODl1ekt6V21IaVZrUk4wLzRPcyt3VVNUMnJLVytQWDgrNzFU?=
- =?utf-8?B?MVNaVmNRZGJicjlPVFNUYlBKYTVtci8xbTRROUp4Z1FtZmRjRGtnMmJaNW9k?=
- =?utf-8?B?L055ODExZGxDMGRLVW92b2w0bkFYeGJ3ZVZJMU1HV3grQzV1SjFxK3VqM2Iy?=
- =?utf-8?B?M1ZPY1NmdytaY3RyY1d0RVNTTVp0K2wxZHkzbHQ1UlgvakNxcHNhRnFKSERk?=
- =?utf-8?B?Mmc2WW1aVUp3aXFnVVJubVlFRWg1NzlwdUtkbU5uZFM3NitqK3VRcUtvU2Mw?=
- =?utf-8?B?T0hjeDNTZmZHTk9yN2tzSDZWVDA0R1N6bGZtcU9mTEFwWGc2cjVIOWQ1RkFj?=
- =?utf-8?B?NTZxUUwwRjVURGV6dlFMQzdCUmxubE1ZcCtMS1piWVczeGptd2lGVGRjdS9M?=
- =?utf-8?B?aGpTWFhYMFhWOGtkMCttZUd6SCs1WDltemZGOVkwTDdNUmtMdjZPL3g0RzVy?=
- =?utf-8?B?SFQvMzBlN2Q0TGpxQVpjaVcwQ2N4aXVuYVZiQ3Q2bTJGSmloQkZtMU42Nldq?=
- =?utf-8?B?SW9Zd3hicTJ5dTU2VWF2L2tIbk5NU1Q1azNvdmlsQUg4RUdqekgvNk0xTDhk?=
- =?utf-8?B?ZCt3TnFXdGQ4L0JVSXVlcWV6ZXIydHJza3JpaE5rUkMzVVFKK0lsdFpjMVFE?=
- =?utf-8?B?K0txdlhvMGdCa2RwWTJNQ1NabFNsb2dIdWJROWpkYklORDYvbHBlNU9lU2Vw?=
- =?utf-8?B?eldlaWpSZEZTYk43L3JWNHBkVGJMb0s2cis3WE1lOUpyZXBacENzNmFVL2Uw?=
- =?utf-8?B?b0NSdTJXY1pUZEdBMWZGZElySmt3Q1E0bXNlWnZzaU5JNng5VUhicERWSkVD?=
- =?utf-8?B?R0RlMUZQUld5REttWXArajJpeGFsaE5Mb0luOGVGQmFqZWdtK3JpTXRETlhH?=
- =?utf-8?B?QjI1VUpJcktkUk1oWHQwMkRnNThuTGlqQWFMZkx3SHh6L255ZjZXb25qbklj?=
- =?utf-8?B?NHBsS0MwNVMyaWpwSmt4U1B5NTZTS0MrbVdZaWQ5ejdWM09jcEZrQTV0NXo4?=
- =?utf-8?B?NzZuNGtVM2NINk1Gc2hEYzY3R1pxY1NqejFPYUlIZWlpMmROTUlqODNvbVQv?=
- =?utf-8?B?aWlPRXpmZ1AxT3FBMVRhUVNrSHpxcXBndWJmNHNTZUFTVGo4YUxIMFVkT3FB?=
- =?utf-8?B?UkEwcDZwL09lMzlqRTBvMVJyelNBSVA5R0hWbk4xcXFtNzlHdUtuRzhxL2ov?=
- =?utf-8?Q?Np6tOBK6COMr1O4W/Y=3D?=
-x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:BL1PR12MB5144.namprd12.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(376014)(7416014)(366016)(1800799024)(38070700018);DIR:OUT;SFP:1101;
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?ZUhLSXo3anlqeFdjTVJvUG9ZRlVZYWM5am8veG93dURBOGlXY3llODBCZFQx?=
- =?utf-8?B?MlpKM0F4THhOMnExcFU5ZmJkOCt5VjJFYVRnUTlEazZUWFB1TGs0UUVVQ3VZ?=
- =?utf-8?B?RTYyRC8wSUxXa0NSTXVFQmlja2NVbEYrOVRUOEIrYXhoVzJXRzJwMEJJTW9h?=
- =?utf-8?B?d0NhYU1FVGJpVnhvT1FRbEgvSTJCOGhjalpJc2FsdkdOazJRdTdOZWtKSXZB?=
- =?utf-8?B?aXJOZ1k3WGVRQlJKZDV0akFSZUcwMFRUMUlZLzdzT1N2RnJnbmFENE14RDUw?=
- =?utf-8?B?YjVIZU5yM1lxNGdoZUVFYUhZZ296RVRWL0dGQ0FyakI1Qkp3QitCK01sYVE4?=
- =?utf-8?B?dStIZmNQa0x2bmxPaUI1V1NjRVV0V2RDMFI1S1JYSG1vWmNIQVJNejdOWkhw?=
- =?utf-8?B?ZXI3S1lNcVdhZllFK1FQRmdnWEFuZ0FQY1pwb1JyVzRPOTM0YkJ3TnU5STFq?=
- =?utf-8?B?bWFxaE5SZnUzTVdWbkFFbUFGZmRQM2UrZUZyaWNFc09tVGgzNWYyTUxQRWpj?=
- =?utf-8?B?QlZTWjBZS0k2OU5VSy9uenoreHFmOC9ZWTRlSW1xLzJMMEROeFNEa0tFYmtq?=
- =?utf-8?B?Nm5PbUgrUzBsY0hwdFJBOWlmbDZGdEZCekxDMnZKT3R2d2pvdHlPQzFDdzFH?=
- =?utf-8?B?dVZhUm4vUFg4NVg3QXJNR2NIQjhxdDQyQnZGQlBWc0d5RUNJYThON3g4eVJR?=
- =?utf-8?B?aEVvUGF0WGpsUk0zS3A2TUVZZXY3ZGNwMEtuR0x0a3JYU3JaeXFGWGgwQ3VZ?=
- =?utf-8?B?OUd3aFM0NytqS1hyZ2NDcHBJSWp1c0t6cElFOEtBdDdRUGpMQ3VjNTJoNG1r?=
- =?utf-8?B?Y045UHVaTHRmY25nNTNqNFpKZW1McURJVkFtY0VTSWZaNDVMZWVvekFRWGFQ?=
- =?utf-8?B?Yzluby9TbFB4TXZjMTRrdSs4UE9BWWxES05FS0dBWjQ3M3NONWVNTHlFU05R?=
- =?utf-8?B?cW1iYkhzQ21uUUZKR2xXNmJ6dnBuUmZ5ZHpteE5nWTRvUUdIWmU2K1diczJQ?=
- =?utf-8?B?TEQ5eWIrc3Zwdll5byszYU4rblNTc3IxT2l3aC9DdEtWQ2tSRWNKaXBQMlRX?=
- =?utf-8?B?MEF5N3NtaFlLRytWdlRUV3A0L3ptUGgvYk5uWWVoRjZJVlM2UzFZWXQveEhv?=
- =?utf-8?B?T2hmUXZQTFVhUjNSeW5XZ2RuQmNZaVgvRWNTSVdUVkQwN3EvMEQxYXkxNktB?=
- =?utf-8?B?V1Nqb3lGbHpBcE14NWg2bytqdDFPN0tiV3paOEc1Q3RaN0g0MjdoZGdlL3E2?=
- =?utf-8?B?aXM2S1VhN2FuSXVLa2FrRmZ6SWo5R3dKK1BVTlFwekpDaGVJUUxTdXQrYTN0?=
- =?utf-8?B?NW90WW5yV3dCU3lkeTB5Z0ZWZ1RNYThDY244NERRQ2NkbjAyQnJlbXMrcjNG?=
- =?utf-8?B?VUUwMEZ1R1FKUU05YUs5eU1DRzZQQ1BZaVBrTkJKbm1MUlh6TExBRnpvWS8y?=
- =?utf-8?B?Y1l4VUZ5Q1FCSWJkU2lXYlVKWkZ6Y3hvMmFhYlNJWmV5bGN4VWpaOUQ2YXNC?=
- =?utf-8?B?ZS9hWmxkRmRMNHNaaWc4bzlCVzBkTmFCOGV6TXQ0ZSs5ZTAvKzJmeW55dXFu?=
- =?utf-8?B?RnladDJ0bmNXbFgwNDF2NFNaMEtVWEJlUHA3dUNlcXIvQjMzamFFeGh3K2du?=
- =?utf-8?B?TWJJTFJLc1g3akZOK3F6SitIL1lzSHREdG5JTmZxOW9RdkMwRVBqdUEzUlhD?=
- =?utf-8?B?K0I5SFJvbE1lczh6Uk11dElHamNwVXo1Wm5GdElpUU01dUlCT3FvU2V5TXNn?=
- =?utf-8?B?M0RDQXk4Vk04cGZ4c1dFQXFrNEtrZDZ4eHRzdzhRWGV3cjFGOEV0aU5ORWlP?=
- =?utf-8?B?T3doaWFUd2M1QXpDOFdSZ25LZmlhekN3YVlIMlcxMEZ2c3lFMGcwR3RWaXlB?=
- =?utf-8?B?K2tNZ2hpcG5SZXF1YXRFejE2WEFBWGo5VS9la0M4alh2dTlITVpUUlJqWGFy?=
- =?utf-8?B?L2NTR2hlR0sxZ2pwbWxOSnRwS0d3NU4zbjE5RXovYzdVWlRTOFdMeGVsZXZ1?=
- =?utf-8?B?TnZWYzdLSjU5VGxHZjhvUXFzc2lxTzlZaUh4UWxjZVRmakI5TWlaVTFqcjJJ?=
- =?utf-8?B?RDVTV0ZiVHFwNVd0WVVKWDU0V3BUTHNXem55ekttc0IzVG9FZnM3T0hyVFhh?=
- =?utf-8?Q?FTPw=3D?=
-MIME-Version: 1.0
-X-OriginatorOrg: amd.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: BL1PR12MB5144.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 5fb4f004-be11-4f46-4238-08dce3130dd7
-X-MS-Exchange-CrossTenant-originalarrivaltime: 02 Oct 2024 18:50:15.5248
- (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 3dd8961f-e488-4e60-8e11-a82d994e183d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: BWQvWeO9mLJqzvS6bhgwQkgKuPcRLfrz6jer/GAoosQ5f+j/1KQubKJmlclTO9TAy02FJjfRhPhX7+gatK3lLg==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DS0PR12MB7726
+	id 1sw5BX-00000007K0U-2r7c
+	for linux-rockchip@lists.infradead.org;
+	Wed, 02 Oct 2024 19:38:58 +0000
+Mime-Version: 1.0
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow.org; s=key1;
+	t=1727897926;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=MAuXe0O3NSF994mavqo25iaQ8hQ/ha0f9ecg/g2gJWI=;
+	b=E8AN09LmfqrysbmhydRjpjdsAn3biTkK8f9dWRaCXFbaShjmP3vdUvdh7+NI9HN+hum8Gf
+	QY4b4gEe91QUQch3pkiuf+5JWq0gnLi8nlwXTxdy1sof7IPvY/6ozjTawKHjjm7tc7ulWi
+	2dQEeAtrJZzzPanAwI0ExrwkgT5QA/rAILkNY/XQ1hl0LxCMXAX6c8xbm7d96Tkfq5qVkb
+	lRXY5+7z6zzycuieL5viwoCDFR/G4objF8+DhMmbWn7oE6My5nDatFoAurdN/zfYGt7HVi
+	BPJ7jmdwrTrbde3C0l1ECyFc9Y7EC2xnJnpbv7v3A1cUV8aT0fx3REu9wFfJEw==
+Date: Wed, 02 Oct 2024 21:38:32 +0200
+Message-Id: <D4LKOUTND4C9.A02Z06OBACZE@cknow.org>
+Subject: Re: [PATCH v2 00/10] drm: bridge: dw_hdmi: Misc enable/disable, CEC
+ and EDID cleanup
+X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
+From: "Diederik de Haas" <didi.debian@cknow.org>
+To: "Laurent Pinchart" <Laurent.pinchart@ideasonboard.com>, "Jonas Karlman"
+ <jonas@kwiboo.se>, "Andrzej Hajda" <andrzej.hajda@intel.com>, "Neil
+ Armstrong" <neil.armstrong@linaro.org>, "Robert Foss" <rfoss@kernel.org>,
+ "Maarten Lankhorst" <maarten.lankhorst@linux.intel.com>, "Maxime Ripard"
+ <mripard@kernel.org>, "Thomas Zimmermann" <tzimmermann@suse.de>, "David
+ Airlie" <airlied@gmail.com>, "Simona Vetter" <simona@ffwll.ch>
+Cc: "Diederik de Haas" <didi.debian@cknow.org>, "Heiko Stuebner"
+ <heiko@sntech.de>, "Jernej Skrabec" <jernej.skrabec@gmail.com>, "Christian
+ Hewitt" <christianshewitt@gmail.com>, "Christopher Obbard"
+ <obbardc@gmail.com>, <dri-devel@lists.freedesktop.org>,
+ <linux-rockchip@lists.infradead.org>, <linux-kernel@vger.kernel.org>
+References: <20240908132823.3308029-1-jonas@kwiboo.se>
+ <D45C28ZF5US9.1BCL9HBVRERJB@cknow.org>
+In-Reply-To: <D45C28ZF5US9.1BCL9HBVRERJB@cknow.org>
+X-Migadu-Flow: FLOW_OUT
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241002_195029_376872_51ED79EE 
-X-CRM114-Status: GOOD (  23.78  )
+X-CRM114-CacheID: sfid-20241002_123856_142920_957B6E34 
+X-CRM114-Status: GOOD (  21.66  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -201,103 +74,112 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============1397549754541110393=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-[Public]
+--===============1397549754541110393==
+Content-Type: multipart/signed;
+ boundary=3a883e580afd625faf3965ca5225d4c2652f66b4a902790343c6692e64f8;
+ micalg=pgp-sha256; protocol="application/pgp-signature"
 
-> -----Original Message-----
-> From: Vignesh Raman <vignesh.raman@collabora.com>
-> Sent: Tuesday, October 1, 2024 9:51 AM
-> To: Deucher, Alexander <Alexander.Deucher@amd.com>; Koenig, Christian
-> <Christian.Koenig@amd.com>; Pan, Xinhui <Xinhui.Pan@amd.com>; amd-
-> gfx@lists.freedesktop.org
-> Cc: daniels@collabora.com; helen.koike@collabora.com; airlied@gmail.com;
-> daniel@ffwll.ch; robdclark@gmail.com; guilherme.gallo@collabora.com;
-> sergi.blanch.torne@collabora.com; deborah.brouwer@collabora.com;
-> dmitry.baryshkov@linaro.org; mripard@kernel.org; rodrigo.vivi@intel.com;
-> quic_abhinavk@quicinc.com; linux-mediatek@lists.infradead.org; linux-
-> amlogic@lists.infradead.org; linux-rockchip@lists.infradead.org; linux-arm-
-> msm@vger.kernel.org; intel-gfx@lists.freedesktop.org; virtualization@lists.linux.dev;
-> linux-kernel@vger.kernel.org; dri-devel@lists.freedesktop.org
-> Subject: Re: [PATCH v4] docs/gpu: ci: update flake tests requirements
->
-> Hi amdgpu Maintainers,
->
-> On 30/09/24 15:22, Vignesh Raman wrote:
-> > Update the documentation to specify linking to a relevant GitLab issue
-> > or email report for each new flake entry. Added specific GitLab issue
-> > urls for amdgpu, i915, msm and xe driver.
-> >
-> > Acked-by: Maxime Ripard <mripard@kernel.org>
-> > Acked-by: Rodrigo Vivi <rodrigo.vivi@intel.com> #intel and xe
-> > Acked-by: Abhinav Kumar <quic_abhinavk@quicinc.com> # msm
-> > Acked-by: Dmitry Baryshkov <dmitry.baryshkov@linaro.org> # msm
-> > Signed-off-by: Vignesh Raman <vignesh.raman@collabora.com>
-> > ---
-> >
-> > v2:
-> > - Add gitlab issue link for msm driver.
-> >
-> > v3:
-> > - Update docs to specify we use email reporting or GitLab issues for flake entries.
-> >
-> > v4:
-> > - Add gitlab issue link for xe driver.
-> >
-> > ---
-> >   Documentation/gpu/automated_testing.rst | 14 ++++++++++----
-> >   1 file changed, 10 insertions(+), 4 deletions(-)
-> >
-> > diff --git a/Documentation/gpu/automated_testing.rst
-> > b/Documentation/gpu/automated_testing.rst
-> > index 2d5a28866afe..6d7c6086034d 100644
-> > --- a/Documentation/gpu/automated_testing.rst
-> > +++ b/Documentation/gpu/automated_testing.rst
-> > @@ -68,19 +68,25 @@ known to behave unreliably. These tests won't cause a
-> job to fail regardless of
-> >   the result. They will still be run.
-> >
-> >   Each new flake entry must be associated with a link to the email
-> > reporting the -bug to the author of the affected driver, the board
-> > name or Device Tree name of -the board, the first kernel version
-> > affected, the IGT version used for tests, -and an approximation of the failure rate.
-> > +bug to the author of the affected driver or the relevant GitLab
-> > +issue. The entry must also include the board name or Device Tree
-> > +name, the first kernel version affected, the IGT version used for tests, and an
-> approximation of the failure rate.
-> >
-> >   They should be provided under the following format::
-> >
-> > -  # Bug Report: $LORE_OR_PATCHWORK_URL
-> > +  # Bug Report: $LORE_URL_OR_GITLAB_ISSUE
-> >     # Board Name: broken-board.dtb
-> >     # Linux Version: 6.6-rc1
-> >     # IGT Version: 1.28-gd2af13d9f
-> >     # Failure Rate: 100
-> >     flaky-test
-> >
-> > +Use the appropriate link below to create a GitLab issue:
-> > +amdgpu driver: https://gitlab.freedesktop.org/drm/amd/-/issues
->
-> Please could you ack this patch. Thanks.
+--3a883e580afd625faf3965ca5225d4c2652f66b4a902790343c6692e64f8
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=UTF-8
 
-Acked-by: Alex Deucher <alexander.deucher@amd.com>
+Hi Jonas and Laurent,
 
->
-> > +i915 driver: https://gitlab.freedesktop.org/drm/i915/kernel/-/issues
-> > +msm driver: https://gitlab.freedesktop.org/drm/msm/-/issues
-> > +xe driver: https://gitlab.freedesktop.org/drm/xe/kernel/-/issues
-> > +
-> >   drivers/gpu/drm/ci/${DRIVER_NAME}-${HW_REVISION}-skips.txt
-> >   -----------------------------------------------------------
+I may be showing my n00bness ... or I actually found something ...
+
+On Fri Sep 13, 2024 at 7:30 PM CEST, Diederik de Haas wrote:
+> On Sun Sep 8, 2024 at 3:28 PM CEST, Jonas Karlman wrote:
+> > This series ensure poweron/poweroff and CEC phys addr invalidation is
+> > happening under drm mode_config mutex lock, and also ensure EDID is
+> > updated (when the dw-hdmi connector is used) after a hotplug pulse.
 > >
+> > These changes has mainly been tested on Rockchip devices together with =
+a
+> > series [1] that add HDMI 2.0 4K@60Hz support to RK3228, RK3328, RK3399
+> > and RK3568.
 >
-> Regards,
-> Vignesh
+> I did some tests with this series (together with the 4K60Hz one).
+>
+> ...
+>
+> I then went on the HDMI-hot-plug-swap-test and connected it to my 1080p
+> monitor while the system was still online. That did not change the
+> output of the previous command. As my monitor doesn't support 4K it
+> seems to have chosen a 640p or 720p resolution.
+> IOW the letters were rather big. With enough output on the screen, it
+> went off the visible area, so all I could do then was 'blind' typing.
+>
+> If I booted up connected to the 1080p monitor then it reported a 1080p
+> resolution and when swapping to the 4K TV, it kept reporting that value
+> and displaying things in 1080p resolution, but ofc there were no
+> abnormal big letters or output falling off the screen this time.
+
+A DT validation on rk3328-rock64.dtb reported this:
+
+rockchip/rk3328-rock64.dtb: hdmi@ff3c0000: interrupts: [[0, 35, 4], [0, 71,=
+ 4]] is too long
+
+That's because `display/bridge/synopsys,dw-hdmi.yaml` dt-binding has
+interrupts : maxItems : 1
+
+and the rk3328.dtsi file has 2 interrupts in its hdmi node.
+
+Easiest solution is to just remove the 2nd one and that makes DT
+validation happy.
+
+Looking at the rk3328 TRM, I found these hdmi related interrupts:
+67  hdmi_intr
+103 hdmi_intr_wakeup
+
+Looking at the rk3399 TRM, I found these hdmi related interrupts:
+23  hdmi_irq
+24  hdmi_wakeup_irq
+
+Looking at the rk3568 TRM, I found these hdmi related interrupts:
+76  hdmi_wakeup
+77  hdmi
+
+So my thinking is:
+- what if the dt-binding is incorrect? (-> maxItems : 2?)
+- wakeup 'sounds like' Hot Plug Detection?
+
+which makes it relevant for this series and it could mean that the
+rk3399-base.dtsi and rk356x.dtsi are actually missing an interrupt
+definition in their DT files?
+
+Or I am completely talking nonsense, which is the most likely scenario.
+
+Cheers,
+  Diederik
+
+--3a883e580afd625faf3965ca5225d4c2652f66b4a902790343c6692e64f8
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYIAB0WIQT1sUPBYsyGmi4usy/XblvOeH7bbgUCZv2hPgAKCRDXblvOeH7b
+bmmrAQD2mW1+acc5OPHMteyhoxMRMFD4vmCP/MBBFkFjRlytFQD+IdxwUTVUb7/e
+RzIrjKLyw2w+vxRnrW5FZkj8vkS36QA=
+=SYHq
+-----END PGP SIGNATURE-----
+
+--3a883e580afd625faf3965ca5225d4c2652f66b4a902790343c6692e64f8--
+
+
+--===============1397549754541110393==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============1397549754541110393==--
+
