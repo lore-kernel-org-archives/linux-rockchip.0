@@ -4,103 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6F40ECF3194
-	for <linux-rockchip@archiver.kernel.org>; Wed,  2 Oct 2024 03:49:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A9939CF3195
+	for <linux-rockchip@archiver.kernel.org>; Wed,  2 Oct 2024 06:33:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=pqPK8O8O6HnlJsxw4Nr+bU5XjX+aw5MCEB6QNKaFbg4=; b=VrL7fmZu1hhX+a
-	nSEkVSxlCoq52LKnINPWkNQxdQkGxGJSuVQTpjZJAmfJJZB/D450Mm3NYH9pA8dTZGFzZWREvZJU7
-	4kfzREqxwe7ulCSonl/iLtg8nsg2lhwjGhkeUbu0ejQL8ZMmltPXSXngZZbciU3kpnp8oJaSjMAH2
-	tvtXbfdKJR9ehVhm/9dFKsnNfJ15QV0g0Mc//NLj+U6yrJs8Rlad3FHSo6/GQtVMmUNhtVMt+val6
-	auAk/QOgeTtBqoTS+Ynyh8CJcMCUAIsZpNvkdHn6sQ5oKv4JktSkfeoGxTBgUjkFo8l0j8MAPCJbo
-	WZ1CfVelu5hOYCjkMnMQ==;
+	List-Owner; bh=e1Y83l+vebwzdfqYNlaDP3iWydqcrRlI+Nn+vi/7Spo=; b=1YyUNKLPD90c/R
+	Es3wYcliL3s2dyisxydPRLNvCZF9YK7/RzCzFFqYyCPRfqYtjVH25CuF2AZrm4+kQDquTLnWQXP6L
+	VSq60z0KdrKVDD1GhpEhef4/0RWq+Oe/QP8P7Zf6t1r2Rd5iL1QM8gb5kajyyItlBDDERRWHpIHJ4
+	bngRcwCv8QCjnoyYlG1hPHnr112GcXpU/ZanNqoc1WzfAeKaMo9yS5J4mO4JU9dwk95tUqT6qNDRv
+	5ppR3DjELip9b/v8OeQw6x2GqWRGNP82J+NmcCql5VVkFJ4k//xEzZf4+JNrgmdkkvbVEUYOM/bPA
+	wZrXLEyyCzHkY4lbfEyQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1svqMQ-00000004j7f-3W7I;
-	Wed, 02 Oct 2024 03:49:10 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1svsvD-00000004wmW-3cDp;
+	Wed, 02 Oct 2024 06:33:15 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1svqMM-00000004j6h-3PjO;
-	Wed, 02 Oct 2024 03:49:08 +0000
+	id 1svsty-00000004wbe-1dYk;
+	Wed, 02 Oct 2024 06:31:59 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 8D0E0A4367E;
-	Wed,  2 Oct 2024 03:48:57 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 37384C4CED8;
-	Wed,  2 Oct 2024 03:49:05 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 53A4D5C5659;
+	Wed,  2 Oct 2024 06:31:53 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 772A8C4CEC5;
+	Wed,  2 Oct 2024 06:31:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1727840945;
-	bh=nAEKTIpBmymWLR+e+hBkypCfwSNJotZOEB0oMjBgW3A=;
-	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
-	b=Af2UjTVfNh6y+KURqioy4b8Bj7Yu5BpvrE0pOuTAaCdsWVGE8VQdAPbay4eP9DqPg
-	 vWMLCMNoxrjpq2dgf0Gkki5SuP7pwmk7jkH2meg7cuorJVxX/VF75raABEWvzkaMHi
-	 vhhxdgRpR3b7B5ke0UhpF0oO9c3sZ7F6qfo5LaAZzh2DiImZJl6yUno80Km9y1f2VX
-	 IIlH0yPKwIL8OBus0S8hdF72eqSA5xm2L3CztnHUgtzPMXEtvUhtadchDi41GC6Mt7
-	 Ca1gozPG5gv1ZiW5uDRIVS53lJA/EuDl2IF4CK5RlPgdKNeNXNE2aGU70QMIY0HzW0
-	 QHOaUeFAAHJ5A==
-Received: by mail-lf1-f41.google.com with SMTP id 2adb3069b0e04-5398e7dda5fso3508050e87.0;
-        Tue, 01 Oct 2024 20:49:05 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AJvYcCUP527V48VPJ4+P9bsq4+S0h61PPOQLSQOB+3fLQ3AxYZD062IlpO8XupGDmx+n3aWaWCBiO/DnfjUEC3RUEOU=@lists.infradead.org, AJvYcCV3tmX6tn19ikDAxiigLoUS3xmtxf7RiDdjfDyAL7vuUgvgBUolXY/eJm8SjBj6F5aX5vZnGcuK1OJIbuwgEos=@lists.infradead.org, AJvYcCVTDR6FbF/TVrAHWYGedAyJy51YMNprJL5isATLKCYjcDPH6db5Aa1t6qTqrWiFB7QtuILl8yOpUE8An5/w@lists.infradead.org, AJvYcCWIS+ZKrjsAkXLW+f0Phk0iVTGBHrbw4dV0u0UhkvmI2YGE9q7Z1VO9aioQdK2AE8GHQmiUWIIcdlhRndcXGn+jSg==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yxol8oc6hpRZUhpbxFm4w7IoU5azXx4BBRnFksjNxXxny9IKHT6
-	phoeiS9sgp+rpDZkob6mNxjCpAmvzRQryL2yIkb44aKtXKaCkDmkEpaY6BnT8Mc6IPKTlJtwJJN
-	n2yWBERc9yUVL+ncPEqElNNK49g==
-X-Google-Smtp-Source: AGHT+IEqtnQCtoRUlnvKJ/juvutRb8LD+WF2Ji1IL7egoXyMFlaAGJMVK219VrK0qM0doCIPbjzZD5sR9nPD1sht5+g=
-X-Received: by 2002:a05:6512:1113:b0:533:4638:df40 with SMTP id
- 2adb3069b0e04-539a067f65cmr743356e87.27.1727840943291; Tue, 01 Oct 2024
- 20:49:03 -0700 (PDT)
+	s=k20201202; t=1727850717;
+	bh=9mmW3A2mka4fNt/DPUrZkJU0+CpxJBPkqAKENYhBKAc=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=ncjxFHpx/tAa4VQQ8d79hb9t2wUz7dmGIZW2H4jvEE60uM3oQHdkcFfVTe1TXMvJl
+	 2Kl8Mah5jmcZB2bgz2anaOGDTzpe5K3iWEWJxWrxwQLaNWJzGjCj8O2di1Bj40TE/p
+	 TWzpfvThAKFGjkPLfzEr/om80Q12qI8DFW+cEuyCyH+Uf0biGtDyiGqDNy+T0kZeO5
+	 mfB+6Codfjz54tYG7w5wvSl37MdPP9eMgYVmtmIhXR/U870cZN5bNVY228Axq/LhlI
+	 XyaZkgyTpSdrruh3Mm5oVYvRzRVYHpA8FLBG/iip20UIX5NLYV362N//KSKc8lpZTn
+	 IzUS+iwXIPj4A==
+Date: Wed, 2 Oct 2024 08:31:53 +0200
+From: Krzysztof Kozlowski <krzk@kernel.org>
+To: Yao Zi <ziyao@disroot.org>
+Cc: Michael Turquette <mturquette@baylibre.com>, 
+	Stephen Boyd <sboyd@kernel.org>, Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Heiko Stuebner <heiko@sntech.de>, Philipp Zabel <p.zabel@pengutronix.de>, 
+	linux-clk@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	Celeste Liu <CoelacanthusHex@gmail.com>
+Subject: Re: [PATCH 2/8] dt-bindings: reset: Add reset ID definition for
+ Rockchip RK3528
+Message-ID: <kg7lh6gafeegmljsygukhfjiztx5wbothngtxrcreccao3itpy@f4bxf4w346ky>
+References: <20241001042401.31903-2-ziyao@disroot.org>
+ <20241001042401.31903-4-ziyao@disroot.org>
 MIME-Version: 1.0
-References: <20240930223550.353882-1-rosenp@gmail.com> <20240930223550.353882-3-rosenp@gmail.com>
-In-Reply-To: <20240930223550.353882-3-rosenp@gmail.com>
-From: Rob Herring <robh@kernel.org>
-Date: Tue, 1 Oct 2024 22:48:50 -0500
-X-Gmail-Original-Message-ID: <CAL_JsqKNMhUy3HUAanod27FnJAz35w7FLp7tp0Uo3SeVbG7EGw@mail.gmail.com>
-Message-ID: <CAL_JsqKNMhUy3HUAanod27FnJAz35w7FLp7tp0Uo3SeVbG7EGw@mail.gmail.com>
-Subject: Re: [PATCH 2/2] ARM: dts: assign reg to memory nodes
-To: Rosen Penev <rosenp@gmail.com>
-Cc: linux-arm-kernel@lists.infradead.org, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Chen-Yu Tsai <wens@csie.org>, 
-	Jernej Skrabec <jernej.skrabec@gmail.com>, Samuel Holland <samuel@sholland.org>, 
-	Antoine Tenart <atenart@kernel.org>, Neil Armstrong <neil.armstrong@linaro.org>, 
-	Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>, 
-	Martin Blumenstingl <martin.blumenstingl@googlemail.com>, 
-	Linus Walleij <linus.walleij@linaro.org>, Joel Stanley <joel@jms.id.au>, 
-	Andrew Jeffery <andrew@codeconstruct.com.au>, Jesper Nilsson <jesper.nilsson@axis.com>, 
-	Lars Persson <lars.persson@axis.com>, Florian Fainelli <florian.fainelli@broadcom.com>, 
-	Viresh Kumar <vireshk@kernel.org>, Shiraz Hashim <shiraz.linux.kernel@gmail.com>, 
-	"maintainer:SPEAR PLATFORM/CLOCK/PINCTRL SUPPORT" <soc@kernel.org>, Marek Vasut <marex@denx.de>, Jisheng Zhang <jszhang@kernel.org>, 
-	Bartosz Golaszewski <brgl@bgdev.pl>, David Lechner <david@lechnology.com>, Nishanth Menon <nm@ti.com>, 
-	Santosh Shilimkar <ssantosh@kernel.org>, Tony Lindgren <tony@atomide.com>, 
-	Enric Balletbo i Serra <eballetbo@gmail.com>, Javier Martinez Canillas <javier@dowhile0.org>, 
-	Alexey Charkov <alchark@gmail.com>, Denis Burkov <hitechshell@mail.ru>, Arnd Bergmann <arnd@arndb.de>, 
-	Stefan Wahren <wahrenst@gmx.net>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, 
-	Dave Stevenson <dave.stevenson@raspberrypi.com>, 
-	=?UTF-8?Q?Duje_Mihanovi=C4=87?= <duje.mihanovic@skole.hr>, 
-	Nicolas Chauvet <kwizart@gmail.com>, Tomasz Maciej Nowak <tmn505@gmail.com>, 
-	Robert Eckelmann <longnoserob@gmail.com>, 
-	"open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>, 
-	"open list:ARM/Allwinner sunXi SoC support" <linux-sunxi@lists.linux.dev>, open list <linux-kernel@vger.kernel.org>, 
-	"open list:ARM/Amlogic Meson SoC support" <linux-amlogic@lists.infradead.org>, 
-	"moderated list:ARM/ASPEED MACHINE SUPPORT" <linux-aspeed@lists.ozlabs.org>, 
-	"moderated list:BROADCOM BCM2711/BCM2835 ARM ARCHITECTURE" <linux-rpi-kernel@lists.infradead.org>, 
-	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, 
-	"moderated list:ARM/NUVOTON NPCM ARCHITECTURE" <openbmc@lists.ozlabs.org>, 
-	"open list:TEGRA ARCHITECTURE SUPPORT" <linux-tegra@vger.kernel.org>, 
-	"open list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE" <imx@lists.linux.dev>, 
-	"open list:TQ SYSTEMS BOARD & DRIVER SUPPORT" <linux@ew.tq-group.com>, 
-	"open list:DH ELECTRONICS IMX6 DHCOM/DHCOR BOARD SUPPORT" <kernel@dh-electronics.com>, 
-	"moderated list:ARM/STM32 ARCHITECTURE" <linux-stm32@st-md-mailman.stormreply.com>, 
-	"open list:ARM/QUALCOMM SUPPORT" <linux-arm-msm@vger.kernel.org>, 
-	"open list:ARM/RISC-V/RENESAS ARCHITECTURE" <linux-renesas-soc@vger.kernel.org>, 
-	"open list:ARM/Rockchip SoC support" <linux-rockchip@lists.infradead.org>, 
-	"open list:ARM/SAMSUNG S3C, S5P AND EXYNOS ARM ARCHITECTURES" <linux-samsung-soc@vger.kernel.org>, 
-	"open list:OMAP DEVICE TREE SUPPORT" <linux-omap@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <20241001042401.31903-4-ziyao@disroot.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241001_204907_007517_0FF9C58E 
-X-CRM114-Status: UNSURE (   9.61  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20241001_233158_566630_D2E2C0F3 
+X-CRM114-Status: GOOD (  15.61  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -112,16 +73,73 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gTW9uLCBTZXAgMzAsIDIwMjQgYXQgNTozNuKAr1BNIFJvc2VuIFBlbmV2IDxyb3NlbnBAZ21h
-aWwuY29tPiB3cm90ZToKPgo+IEZpeGVzIGR0YyB3YXJuaW5nczoKClVuZm9ydHVuYXRlbHkgd2Ug
-Y2Fubm90IG1ha2UgdGhpcyBjaGFuZ2UgdHJlZXdpZGUuIEFueSBwbGF0Zm9ybSB0aGF0CnJlbGll
-cyBvbiB0aGUgQVRBR1MgdG8gRFQgYm9vdGxvYWRlciBzdXBwb3J0IGluIHRoZSBrZXJuZWwKZGVj
-b21wcmVzc29yIGV4cGVjdHMgL21lbW9yeS4KClJvYgoKX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4
-LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcv
-bWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+On Tue, Oct 01, 2024 at 04:23:56AM +0000, Yao Zi wrote:
+> Similar to previous Rockchip generations, reset IDs for RK3528 SoC
+> are register offsets.
+> 
+> Signed-off-by: Yao Zi <ziyao@disroot.org>
+> ---
+>  .../dt-bindings/reset/rockchip,rk3528-cru.h   | 292 ++++++++++++++++++
+>  1 file changed, 292 insertions(+)
+>  create mode 100644 include/dt-bindings/reset/rockchip,rk3528-cru.h
+> 
+> diff --git a/include/dt-bindings/reset/rockchip,rk3528-cru.h b/include/dt-bindings/reset/rockchip,rk3528-cru.h
+> new file mode 100644
+> index 000000000000..1f8c0d38bb88
+> --- /dev/null
+> +++ b/include/dt-bindings/reset/rockchip,rk3528-cru.h
+> @@ -0,0 +1,292 @@
+> +/* SPDX-License-Identifier: (GPL-2.0-or-later OR MIT) */
+
+
+Wrong license, run checkpatch.
+
+Also, as Conor noted, this should eb squashed with device binding.
+
+> +/*
+> + * Copyright (c) 2022 Rockchip Electronics Co. Ltd.
+> + * Copyright (c) 2024 Yao Zi <ziyao@disroot.org>
+> + * Author: Joseph Chen <chenjh@rock-chips.com>
+> + */
+> +
+> +#ifndef _DT_BINDINGS_RESET_ROCKCHIP_RK3528_H
+> +#define _DT_BINDINGS_RESET_ROCKCHIP_RK3528_H
+> +
+> +// CRU_SOFTRST_CON03 (Offset: 0xA0C)
+> +#define SRST_CORE0_PO			0x00000030
+> +#define SRST_CORE1_PO			0x00000031
+> +#define SRST_CORE2_PO			0x00000032
+> +#define SRST_CORE3_PO			0x00000033
+> +#define SRST_CORE0			0x00000034
+> +#define SRST_CORE1			0x00000035
+> +#define SRST_CORE2			0x00000036
+> +#define SRST_CORE3			0x00000037
+> +#define SRST_NL2			0x00000038
+> +#define SRST_CORE_BIU			0x00000039
+> +#define SRST_CORE_CRYPTO		0x0000003A
+> +
+> +// CRU_SOFTRST_CON05 (Offset: 0xA14)
+> +#define SRST_P_DBG			0x0000005D
+> +#define SRST_POT_DBG			0x0000005E
+> +#define SRST_NT_DBG			0x0000005F
+
+What are all these? Registers? Not a binding.
+
+Binding constants are numerical values from 0, incremented by one,
+serving as abstraction layer between DTS and driver.
+
+None of these here are bindings.
+
+Best regards,
+Krzysztof
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
