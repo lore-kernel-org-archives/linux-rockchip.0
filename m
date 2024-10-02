@@ -4,68 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 13B7FCF31AF
-	for <linux-rockchip@archiver.kernel.org>; Wed,  2 Oct 2024 10:25:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C240BCF31B0
+	for <linux-rockchip@archiver.kernel.org>; Wed,  2 Oct 2024 10:31:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=SaGU1sQj0BoyrdN8QF5bzY60YZkTs2kwrWVcIb1OJk8=; b=2Uem9B1Xp8h6a1
-	qbiVBLocy6CD3VzYONubRB8R4cE7bsPA4MzjHHfygpr2yW+qWVipyhyXwSFxh2IfGLnB6d5UznKHZ
-	999JD/VV4AMP58sgHc96LAgTOivhBk7RG2oTPfYq1B0A3YU9hgsAfGsYooDe7xELZsOHlPERHePbD
-	PHzCYJSoLj5dp4xz/AtwjFatjx4TNgH7OMgTpea5GUxA6/a9ZIze4FV3ZAnhWSabb20UNVE8xWTJz
-	aO2+zCOEs5gPdHRKEm39mN7fStTeNO4Nd/4zyDRMOY3qRr/B17VFwpks6ARmQ61gaOVhiKFrp0aSX
-	iYhMrFly6FGO2Uh81Ffg==;
+	List-Owner; bh=2ieNQrbRz6dxoLxfhdiYoAY+9ZlDYGNkV7HdxaWqnx8=; b=sey1ZSY2QzxuZz
+	YiW4kBtTMumotYCPsuBdyIfUPBNhsJF+UI7NvQqXTM+XM8xAOGDPvjGtxnDj+yfLqOrY9HYVeTpkQ
+	7Ie1esToOnTiKLRoxa0F+6RPwzVs2tbkNvtRs50YQkTQvh4j3GWKRjCza+WSRJajOwOeeK130G2jS
+	lItYusf1fUQNXVhOTjb4VC0SWScCeDXolvTZz0UDd2z7JiKksqFJzsMKl1OpJE8KWvlfKFOYQ9z4o
+	r8PVJrfrQ1ZqMIIdSACojZdt+6kLlyx8iN3I3opAaL7d7xfvL3zcn0DUN/V8B8JZ51/kh2onH28B/
+	LGQPGPwTWjTUKh0gqLkA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1svwYK-00000005U3H-1Rjh;
-	Wed, 02 Oct 2024 10:25:52 +0000
-Received: from layka.disroot.org ([178.21.23.139])
+	id 1svwdg-00000005Uwh-1d8O;
+	Wed, 02 Oct 2024 10:31:24 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1svwVD-00000005TZJ-07Gn;
-	Wed, 02 Oct 2024 10:22:40 +0000
-Received: from mail01.disroot.lan (localhost [127.0.0.1])
-	by disroot.org (Postfix) with ESMTP id A677D23CB3;
-	Wed,  2 Oct 2024 12:22:37 +0200 (CEST)
-X-Virus-Scanned: SPAM Filter at disroot.org
-Received: from layka.disroot.org ([127.0.0.1])
- by localhost (disroot.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id JpG7VOy15MuO; Wed,  2 Oct 2024 12:22:37 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=disroot.org; s=mail;
-	t=1727864557; bh=mJKvs9FLRZJEhIPy4X5obYmCOTWrv4Y6lROopBRIP0U=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=ZAUbyOdmY1iWScCGppAp8saDjp7y/6eUmxNQjbT2zYu8/q+STLhhrCjb2J7gotCOk
-	 7aY3oWJuqtLAjs+jIQnqNjP49GsKu4jI8yWHKMk5bS8yiCn2Kl/VMABiBPDhuXka3H
-	 QMbFMNBfardQhG/pTgPFNy3inTf396+nbzZitoiMuN75kO3rJcGhiqUmm785U6PaxB
-	 nW4xm7PttncmUtKOOK+0FTbZttA8nWJo3szNesn1s68Y4YK+O/rLh6fyPYjyJj+eZ0
-	 jpWrZIRt4V8ZVs2VJMeTWeKxmYCGpn7isvCXFUA0thlmj3fNoXo44GP/1dsiwPsR5G
-	 DzuEwFqnAas2Q==
-Date: Wed, 2 Oct 2024 10:22:15 +0000
-From: Yao Zi <ziyao@disroot.org>
-To: Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>,
-	Michael Turquette <mturquette@baylibre.com>,
-	Stephen Boyd <sboyd@kernel.org>, Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	id 1svwdG-00000005Unz-1M6C;
+	Wed, 02 Oct 2024 10:30:59 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+	List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=3//ArMyAM4NiHtpiKRDuAx6xjbwlVI9LSZBKaxlzmK0=; b=ZsMsG1IlOoWAujfOOm2uNo26T5
+	EKfn5btZ3kvp4SnLI4gUdkaq9QZVhuZkZ6vdzRjFb6k8uoXx9VDf59/QBkYF/b2b6AUDdkx0K+iUQ
+	Dk+0sZNkQTo9kZmtfZXxXmp1alyvynEjDinPVrkoFa51SMB0wxLNPyso3MRBGL9H8eshW6NXlsCYb
+	QOP9PUysOJhFAGUgvPc4pKF8pMbq9EEq+H/V9ziT9g50qFGSsN4CRfTkqtZCxkAeAiK/aS/kjCPAQ
+	SIhApK8QQedHRSsPfqrT7q+Hw5AAOMKyr6B959JuHeidBQAN9JEvWHRJRidlnxvrTd/Dt1g0YRvfX
+	eDUrTdLQ==;
+Received: from i53875aa1.versanet.de ([83.135.90.161] helo=phil.lan)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1svwdB-00057r-OW; Wed, 02 Oct 2024 12:30:53 +0200
+From: Heiko Stuebner <heiko@sntech.de>
+To: Daniel Semkowicz <dse@thaumatec.com>,
+	Rob Herring <robh@kernel.org>,
 	Conor Dooley <conor+dt@kernel.org>,
-	Philipp Zabel <p.zabel@pengutronix.de>
-Cc: linux-clk@vger.kernel.org, devicetree@vger.kernel.org,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>
+Cc: Heiko Stuebner <heiko@sntech.de>,
+	devicetree@vger.kernel.org,
+	Farouk Bouabid <farouk.bouabid@theobroma-systems.com>,
+	Quentin Schulz <quentin.schulz@theobroma-systems.com>,
+	linux-kernel@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
-	Celeste Liu <CoelacanthusHex@gmail.com>
-Subject: Re: [PATCH 4/8] clk: rockchip: Add PLL flag ROCKCHIP_PLL_FIXED_MODE
-Message-ID: <Zv0e1_9AdNASLQMr@pineapple>
-References: <20241001042401.31903-2-ziyao@disroot.org>
- <8495918.NyiUUSuA9g@diego>
- <Zv0blIPaF0Y2Pmn1@pineapple>
- <3798659.MHq7AAxBmi@diego>
+	Vahe Grigoryan <vahe.grigoryan@theobroma-systems.com>
+Subject: Re: [PATCH v2] arm64: dts: rockchip: Add power button for puma-haikou
+Date: Wed,  2 Oct 2024 12:30:46 +0200
+Message-ID: <172786503304.2125927.13540422477665000891.b4-ty@sntech.de>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20241001134741.210979-1-dse@thaumatec.com>
+References: <20241001134741.210979-1-dse@thaumatec.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <3798659.MHq7AAxBmi@diego>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241002_032239_223240_E44263FF 
-X-CRM114-Status: GOOD (  11.46  )
+X-CRM114-CacheID: sfid-20241002_033058_380532_C4E2E46B 
+X-CRM114-Status: GOOD (  11.54  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,27 +77,29 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, Oct 02, 2024 at 12:12:11PM +0200, Heiko St=FCbner wrote:
-> Am Mittwoch, 2. Oktober 2024, 12:08:20 CEST schrieb Yao Zi:
-> > On Wed, Oct 02, 2024 at 10:16:49AM +0200, Heiko St=FCbner wrote:
-> > btw, for the documentation, is there any technical reference manual
-> > of RK3528 available publicly? Please let me know if it's true, it will
-> > be quite helpful to understand clock tree better :)
-> =
+On Tue, 1 Oct 2024 15:46:32 +0200, Daniel Semkowicz wrote:
+> There is a PWRBTN# input pin exposed on a Q7 connector. The pin
+> is routed to a GPIO0_A1 through a diode. Q7 specification describes
+> the PWRBTN# pin as a Power Button signal.
+> Configure the pin as KEY_POWER, so it can function as power button and
+> trigger device shutdown.
+> 
+> 
+> [...]
 
-> Sadly not. So far there hasn't been a "leak" yet and Rockchip also seems
-> to have gotten more restrictive for whatever strange reason, so with my
-> NDA I also only got part1 of the manual.
+Applied, thanks!
 
-Oops, sad but also much thanks.
+[1/1] arm64: dts: rockchip: Add power button for puma-haikou
+      commit: 52f21c63ed6ab7bc5d0ef310c15890ea6a6334c2
 
 Best regards,
-Yao Zi
+-- 
+Heiko Stuebner <heiko@sntech.de>
 
 _______________________________________________
 Linux-rockchip mailing list
