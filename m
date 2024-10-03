@@ -4,87 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DE252CF8574
-	for <linux-rockchip@archiver.kernel.org>; Thu,  3 Oct 2024 10:17:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CD3ABCF34A1
+	for <linux-rockchip@archiver.kernel.org>; Thu,  3 Oct 2024 12:24:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	In-Reply-To:References:To:From:Subject:Cc:Message-Id:Date:Mime-Version:
 	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
 	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Zr86CrQvo1xpOFBmUGTAuMBuymCV5CUSvWqTRYErohU=; b=cZ+XGgiOT/xb+kd5Glpy4xuAiU
-	aW86a+TdfnNJqN5KHLTSOF3EjuHHiXeSwr+s9HsNju1/fZ4yfqxBoxagSGiTOFNF+4VIMQ/2gZpYO
-	kA6xGt5R3eoM4SS1agBbjjahEoIOOHc4WEazdJP88cnJWetrQjCPIhSBkPfBOQhX4R9KZJjcDZp7C
-	IPpyZkZ4iRkuDj1n/LQisopLro2Xp/ts0mG0tUgBlUxDL3bR5m9O4ecYPSvpswA2O2RE8lPSfxHMT
-	XdSfwwbqHKH0S8iEbXd+PrwnTIe3WZah4K0AJ0qkTEE6OiQ3XHAHh7smBMm3rvMXWodjOl5OfiRdx
-	r4H17uGQ==;
+	bh=0Gj3+LsteqcHSAieC1Ak5VaxiGweuJAxZJqU2dABA7w=; b=MWa+1vLfvHyjUh79HPDbUQbTTi
+	xCLdmiCbOKRCW/2Tk6UtUKDMCQvUtfCN+Xt+iRNJNgzI1jWEzNBja+eXbwCyuP2SHgp/st1I6FxgW
+	/NTWMDg5e5C8HESKiEooJ8xtX7UHP0wZuj76CyukvgzlXpbBmGHhHFgFnsJaiBhRUwJ9k29iCxxdG
+	jMGKn/DMzEf0mlaW0fMsDmdHiRQ4FIk9Xrbts2uUBdkgeCWQmODPQqtWJCr3M4+STFXQew/U6TTvN
+	GJ+CgTsiDZa9HRL1w3ud7j61kQ0aU+jzr7n+8hWpdcEPFMn7ib4p3nvUfyNuyO1Ukiga/vaE30+VB
+	5YIU+7rQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1swIta-00000008lME-32gS;
-	Thu, 03 Oct 2024 10:17:18 +0000
-Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
+	id 1swKsH-000000090nK-2LKO;
+	Thu, 03 Oct 2024 12:24:05 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1swItV-00000008lLR-0uZb
+	id 1swKsF-000000090mx-2Xjj
+	for linux-rockchip@bombadil.infradead.org;
+	Thu, 03 Oct 2024 12:24:03 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=In-Reply-To:References:To:From:Subject
+	:Cc:Message-Id:Date:Content-Type:Mime-Version:Sender:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description;
+	bh=SIqwKiUhoG6a2uAv06BzwgNeY0A4xHveg1I2dddHC5k=; b=YQ8buqmpv41R3OMDkveHwB8W6o
+	sPo+zGWOVLVhKtVwmmhlK6+kqkOBUtJR8ElP7i+bOk+zTs18eF01voADGwQKPAv2hUds2RrLLBchB
+	jRgnLfxo+mSo732o7qt1TDOtq8zetVPNjtgKczWFw7280ov7zEemDNZTGz2hkrlZaM+efcNsYJdF4
+	594RtE3g/sFHGgP4kyPkS7yeChdFblhfdjPf5xhDPoXOTOk6QtUTB0oIi3SQBMpz/G6jbX8UHAtJU
+	1pJVdPg18Q/RvPhy0+rFt3pqdOfh5nZcEPywKQWhkhnUiA7eAnltLwLUK/asmMr88c1PF2Xmc7x6y
+	54jT7PKw==;
+Received: from out-184.mta0.migadu.com ([91.218.175.184])
+	by desiato.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
+	id 1swKsC-00000003gTX-1DJA
 	for linux-rockchip@lists.infradead.org;
-	Thu, 03 Oct 2024 10:17:15 +0000
-Received: by mail-wr1-x42f.google.com with SMTP id ffacd0b85a97d-37d00322446so808990f8f.2
-        for <linux-rockchip@lists.infradead.org>; Thu, 03 Oct 2024 03:17:12 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1727950631; x=1728555431; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=X3CFMCkPlNFPBBDKHQENI3Kp3uKPTlcHA9zYpwqdNTo=;
-        b=Uk7S5q5k2Vdr8D5NQXOmuajpsm0i0SSKWuD2Uep4zamFHIsWfONIZhA1kDq2I4cF4+
-         0Mj7AUprTxblAKooGDexvI8UOeDPAchxUvyjZRhwPbkWmsZZTbPNPIoH5QfW1XysbLt9
-         Z+hNcGddXBfJ2GxDIFJ8x7M5PZDDe21M/N2n/9JUEWMsiywIutbk9tsEXXjBtr9l7EEp
-         mcSUC97ol+FqgL9pqZ4u4sTFkU5RM958Jx+TzbJwdl5mm+XnRnFmQss+TSb6hExdxYQg
-         bnYFmBqkBdlMBxA+oeDUueNEq0Q6UVguq37BCPIaMVGoAc1njNjApGSefgqQtCdsDacj
-         8/FQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1727950631; x=1728555431;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=X3CFMCkPlNFPBBDKHQENI3Kp3uKPTlcHA9zYpwqdNTo=;
-        b=FdgH0GUuBTVHUi4EzvzPWIT4clmQHG1Ikrv2qzOf4HmdUV63ciG09VWn24OgbUmiw+
-         C5JVZpy+JPHK6AztRLXnhxO3Fv88hqxJjule/KOAoPnO4s6im7vX5+9rUJtYvniuZDri
-         bECa4FG6U5u1j2dUoRrET3hJWR5FyLB2hrUObukfw4aJat3uvjw6CEj04xcHYSWbnBvC
-         mOJC0bC9R474YyLIOhJDpXNLxytIY3B4pXNimblvQlFdPLPgYcbqTMOjCzdf2wr0cssY
-         8OT+Htvj8PdcKxtmyBJAwQAab282HD4kqDCug+Ka1eB+94mKOHrqcNRLtt20A+arOw/e
-         ahjg==
-X-Forwarded-Encrypted: i=1; AJvYcCXGhvhD4U6z4YLQS1ZAh+sWmZV5PM5XsPGSU3iWm1lXu5o7u+1agQUYDSLiflDpKS0G2tw580KpDTQ91GpnIA==@lists.infradead.org
-X-Gm-Message-State: AOJu0Ywplvx2lR86wLInGOqqg7hkQ8DAv4Z0/cPORZQitgqWCMWRRqo1
-	Sfm7jDkodfliZYVPJFHQVNNWMCeJFuU0FUeAc8qotIkRgY3t/HGzQ10hu79KRxQ=
-X-Google-Smtp-Source: AGHT+IG10io4/2iPPzCSOTsOgTsFJPkNq+meFNwXwQCTWyJqrNQMbEET7n04sD8jVgWyjUBfqMxSVw==
-X-Received: by 2002:a5d:5983:0:b0:378:a935:482 with SMTP id ffacd0b85a97d-37cfba1dc43mr5021696f8f.58.1727950630841;
-        Thu, 03 Oct 2024 03:17:10 -0700 (PDT)
-Received: from localhost ([2a02:8071:b783:6940:36f3:9aff:fec2:7e46])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-37d0822b878sm943889f8f.44.2024.10.03.03.17.09
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 03 Oct 2024 03:17:10 -0700 (PDT)
-Date: Thu, 3 Oct 2024 12:17:08 +0200
-From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@baylibre.com>
-To: Sergio Paracuellos <sergio.paracuellos@gmail.com>
-Cc: linux-pci@vger.kernel.org, vigneshr@ti.com, s-vadapalli@ti.com, 
-	lpieralisi@kernel.org, kw@linux.com, manivannan.sadhasivam@linaro.org, robh@kernel.org, 
-	bhelgaas@google.com, jingoohan1@gmail.com, krzk@kernel.org, alim.akhtar@samsung.com, 
-	shawn.guo@linaro.org, songxiaowei@hisilicon.com, marek.vasut+renesas@gmail.com, 
-	yoshihiro.shimoda.uh@renesas.com, thierry.reding@gmail.com, jonathanh@nvidia.com, 
-	thomas.petazzoni@bootlin.com, pali@kernel.org, florian.fainelli@broadcom.com, 
-	angelogioacchino.delregno@collabora.com, ryder.lee@mediatek.com, heiko@sntech.de, 
-	kevin.xie@starfivetech.com, kishon@kernel.org, dlemoal@kernel.org, shawn.lin@rock-chips.com, 
-	linux-rockchip@lists.infradead.org, linux-tegra@vger.kernel.org, linux-samsung-soc@vger.kernel.org, 
-	linux-omap@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] PCI: controller: Switch back to struct
- platform_driver::remove()
-Message-ID: <tdxrmmqyzcufupnwkdbg7lwgadizm7v3lxjirykijbml7x54ze@upbdzycdsilm>
-References: <20240923065706.728769-1-sergio.paracuellos@gmail.com>
-MIME-Version: 1.0
-In-Reply-To: <20240923065706.728769-1-sergio.paracuellos@gmail.com>
+	Thu, 03 Oct 2024 12:24:02 +0000
+Mime-Version: 1.0
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow.org; s=key1;
+	t=1727958227;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=SIqwKiUhoG6a2uAv06BzwgNeY0A4xHveg1I2dddHC5k=;
+	b=YelPOsBERiXUuI0N7YkwoBcpn+pBfJJqmsv41Pd9al0ZuwRfDkAfeTYUlVW0B6nFTRJ6VB
+	jF2aVigkNKahQzjyQzabKPofXDNeb5fsSqSNhulSl7P51hNhVanTnagxXvS10Dy7vmrN0U
+	HFGb5hrax1x7MVFNHWXlWXI/0L1jnhYCFp/1GUQy5ER7yr0Gd20PbaLnAXoJQlr9wZtf74
+	UpkcvKfNvta4B8QnUn27mo6e3hFd909oawnP7abXcCsWXNkVWy16KEzY/IKoyJA/HFQdnS
+	GkR1se40qV8wEKKw9q8U8goyGj1XZqTCIR/6rLy0Jod5O+hqF7ip0u2xLasAdg==
+Date: Thu, 03 Oct 2024 14:23:33 +0200
+Message-Id: <D4M62CEXA88M.2I1F9N6V18R3N@cknow.org>
+Cc: "Alex Bee" <knaerzche@gmail.com>, "Nicolas Dufresne"
+ <nicolas.dufresne@collabora.com>, "Benjamin Gaignard"
+ <benjamin.gaignard@collabora.com>, "Detlev Casanova"
+ <detlev.casanova@collabora.com>, "Dan Carpenter"
+ <dan.carpenter@linaro.org>, "Diederik de Haas" <didi.debian@cknow.org>,
+ <linux-media@vger.kernel.org>, <linux-rockchip@lists.infradead.org>,
+ <linux-staging@lists.linux.dev>, <linux-kernel@vger.kernel.org>
+Subject: Re: [PATCH v6 00/11] media: rkvdec: Add H.264 High 10 and 4:2:2
+ profile support
+X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
+From: "Diederik de Haas" <didi.debian@cknow.org>
+To: "Jonas Karlman" <jonas@kwiboo.se>, "Sebastian Fricke"
+ <sebastian.fricke@collabora.com>, "Ezequiel Garcia"
+ <ezequiel@vanguardiasur.com.ar>, "Mauro Carvalho Chehab"
+ <mchehab@kernel.org>
+References: <20240909192522.1076704-1-jonas@kwiboo.se>
+In-Reply-To: <20240909192522.1076704-1-jonas@kwiboo.se>
+X-Migadu-Flow: FLOW_OUT
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241003_031713_267494_83067222 
-X-CRM114-Status: GOOD (  18.31  )
+X-CRM114-CacheID: sfid-20241003_132400_417613_4BD7ED08 
+X-CRM114-Status: GOOD (  10.96  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,94 +88,97 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============5722755435970225411=="
+Content-Type: multipart/mixed; boundary="===============4610579571816270442=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+--===============4610579571816270442==
+Content-Type: multipart/signed;
+ boundary=341152132e471a78ee9810b312ec357e29c650715afc234660476caf54da;
+ micalg=pgp-sha256; protocol="application/pgp-signature"
 
---===============5722755435970225411==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="rjnidy7htz7yht65"
-Content-Disposition: inline
-
-
---rjnidy7htz7yht65
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+--341152132e471a78ee9810b312ec357e29c650715afc234660476caf54da
 Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=UTF-8
 
-Hello,
+On Mon Sep 9, 2024 at 9:24 PM CEST, Jonas Karlman wrote:
+> This series add H.264 High 10 and 4:2:2 profile support to the Rockchip
+> Video Decoder driver.
+> ...
+> Tested on a ROCK Pi 4 (RK3399) and Rock64 (RK3328):
+> ...
+>
+> Link to v1: https://lore.kernel.org/linux-media/20200701215616.30874-1-jo=
+nas@kwiboo.se/
+>
+> To fully runtime test this series you may need FFmpeg patches from [1]
+> and fluster patches from [2], this series is also available at [3].
 
-I found this patch in next as 712359cb5e9d9553c1383fc5005593aa1988efc4.
+I have been using this patch set and earlier version stemming all the
+way back to 2023-10-29 and with a patched ffmpeg and mpv ([1] but
+earlier versions before that) I have been enjoying HW accelerated
+playback on my Rock64 (rk3328) :-)
 
-While rebasing my patches with the same purpose I found that this patch
-handled the indention differently than I did for two files:
+So for the series, feel free to add my
 
-On Mon, Sep 23, 2024 at 08:57:06AM +0200, Sergio Paracuellos wrote:
-> diff --git a/drivers/pci/controller/pcie-altera.c b/drivers/pci/controlle=
-r/pcie-altera.c
-> index ef73baefaeb9..b921bbb4de80 100644
-> --- a/drivers/pci/controller/pcie-altera.c
-> +++ b/drivers/pci/controller/pcie-altera.c
-> @@ -817,7 +817,7 @@ static void altera_pcie_remove(struct platform_device=
- *pdev)
-> =20
->  static struct platform_driver altera_pcie_driver =3D {
->  	.probe		=3D altera_pcie_probe,
-> -	.remove_new	=3D altera_pcie_remove,
-> +	.remove	=3D altera_pcie_remove,
->  	.driver =3D {
->  		.name	=3D "altera-pcie",
->  		.of_match_table =3D altera_pcie_of_match,
+Tested-by: Diederik de Haas <didi.debian@cknow.org>
 
-here indention is inconsistent already before, I replaced the tabs after
-".probe" by a single space (and after .remove, too).
+[1] https://github.com/mpv-player/mpv/pull/14690
 
-> [...]
-> diff --git a/drivers/pci/controller/pcie-hisi-error.c b/drivers/pci/contr=
-oller/pcie-hisi-error.c
-> index ad9d5ffcd9e3..cb5fcfe032d1 100644
-> --- a/drivers/pci/controller/pcie-hisi-error.c
-> +++ b/drivers/pci/controller/pcie-hisi-error.c
-> @@ -317,7 +317,7 @@ static struct platform_driver hisi_pcie_error_handler=
-_driver =3D {
->  		.acpi_match_table =3D hisi_pcie_acpi_match,
->  	},
->  	.probe		=3D hisi_pcie_error_handler_probe,
-> -	.remove_new	=3D hisi_pcie_error_handler_remove,
-> +	.remove	=3D hisi_pcie_error_handler_remove,
->  };
->  module_platform_driver(hisi_pcie_error_handler_driver);
-> =20
+Cheers,
+  Diederik
 
-Here I added another tab after ".remove".
+> [1] https://github.com/Kwiboo/FFmpeg/commits/v4l2request-2024-v2-rkvdec/
+> [2] https://github.com/Kwiboo/fluster/commits/ffmpeg-v4l2request-rkvdec/
+> [3] https://github.com/Kwiboo/linux-rockchip/commits/linuxtv-rkvdec-high-=
+10-v6/
+> [4] https://gist.github.com/Kwiboo/f4ac15576b2c72887ae2bc5d58b5c865
+> [5] https://gist.github.com/Kwiboo/459a1c8f1dcb56e45dc7a7a29cc28adf
+>
+> Regards,
+> Jonas
+>
+> Alex Bee (1):
+>   media: rkvdec: h264: Don't hardcode SPS/PPS parameters
+>
+> Jonas Karlman (10):
+>   media: v4l2-common: Add helpers to calculate bytesperline and
+>     sizeimage
+>   media: v4l2: Add NV15 and NV20 pixel formats
+>   media: rkvdec: h264: Use bytesperline and buffer height as virstride
+>   media: rkvdec: Extract rkvdec_fill_decoded_pixfmt into helper
+>   media: rkvdec: Move rkvdec_reset_decoded_fmt helper
+>   media: rkvdec: Extract decoded format enumeration into helper
+>   media: rkvdec: Add image format concept
+>   media: rkvdec: Add get_image_fmt ops
+>   media: rkvdec: h264: Support High 10 and 4:2:2 profiles
+>   media: rkvdec: Fix enumerate frame sizes
+>
+>  .../media/v4l/pixfmt-yuv-planar.rst           | 128 ++++++++++
+>  drivers/media/v4l2-core/v4l2-common.c         |  80 +++---
+>  drivers/media/v4l2-core/v4l2-ioctl.c          |   2 +
+>  drivers/staging/media/rkvdec/rkvdec-h264.c    |  64 +++--
+>  drivers/staging/media/rkvdec/rkvdec.c         | 239 +++++++++++++-----
+>  drivers/staging/media/rkvdec/rkvdec.h         |  18 +-
+>  include/uapi/linux/videodev2.h                |   2 +
+>  7 files changed, 410 insertions(+), 123 deletions(-)
 
-> [...]
 
-Also the patch missed to adapt drivers/pci/controller/pcie-xilinx-nwl.c.
-
-Best regards
-Uwe
-
---rjnidy7htz7yht65
+--341152132e471a78ee9810b312ec357e29c650715afc234660476caf54da
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iQEzBAABCgAdFiEEP4GsaTp6HlmJrf7Tj4D7WH0S/k4FAmb+byEACgkQj4D7WH0S
-/k5tYgf+LuoIx6Lg09wpZPStrA8H7eKEFOTQopqan1vq3Ga6jIP3hndsyTFj6OZf
-nc+hpdGX44b/IU4C2JQ4NenmkkC42t67jkR3SW8CQN2RRdHsrnvepXnhMKCiLgn0
-SJ+/Bl7eILgeXc1xSnLAkJ2M5NHiOP0UoFS8NjHKT8SNjdB9YYxzCzmY8PWpVRhM
-ajzuoLPdluQecLTULOfNeSudy6WYTxUhBHBt09h+f8vnsLLM3H+1MU0EuZc9uWpk
-nup/NJchVsDCCB12+SLDlgr18pJQcdcKZc42wafxczvyPoapzW2sHRI+7iwONDdr
-ysFzK7ew968tXn9ZM/t00VMx6jmnNw==
-=OYC2
+iHUEABYIAB0WIQT1sUPBYsyGmi4usy/XblvOeH7bbgUCZv6MygAKCRDXblvOeH7b
+btePAP9ToufxZmhr2Lk3H7eoFfXNX6W5vCwP0nFLWmC9+8cVVQD9G8eUte6bu0b+
+A2j0SrvAl7VTKvbJcdcY6UFGpsaKLAk=
+=yXzH
 -----END PGP SIGNATURE-----
 
---rjnidy7htz7yht65--
+--341152132e471a78ee9810b312ec357e29c650715afc234660476caf54da--
 
 
---===============5722755435970225411==
+--===============4610579571816270442==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -194,5 +189,5 @@ Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
---===============5722755435970225411==--
+--===============4610579571816270442==--
 
