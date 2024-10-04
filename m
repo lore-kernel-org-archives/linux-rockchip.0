@@ -4,57 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 68F25CFA74C
-	for <linux-rockchip@archiver.kernel.org>; Fri,  4 Oct 2024 06:47:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C6D66CF8840
+	for <linux-rockchip@archiver.kernel.org>; Fri,  4 Oct 2024 17:37:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
-	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=DgCcHBSv8SzWqSq1UJMz7w2Thyl7QXa6EK2flcFEWMQ=; b=oK8/QoiaH29pKi6yR4AeyFw6OD
-	K1Jg6TRItsBFe9+hOLSu00qySE02BwS4/Sa+zI1Yi4n5O29Epr7rl0GDtvJ7Nek92dJqyJ4J5DGEK
-	VUKd9YGf/6XH8k40oFd42DUJpY2yEBgg+6LpTKy9N7N86W7Xs0lZ4jKHjfHTux1V/xK0FauSTXJcn
-	F3Y6GXNmzIZrThhEdC8ctCI3/RjbY/00+ktQA4omLW56kTMabDuWttFuGe0szVFIA/AwmNWtNf8XV
-	/8bLobiQx344Mb8k4wVg0W7+IH8RS5PSNSf9MQeAq8+Ja3PJM/JsUgS27sivlVHNLPJAEA8FcwBaA
-	tKA/ylcg==;
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=aS7TDmaprQek00jRXV7woq0lLQ8i+KpOEAJWohfu71U=; b=lyNVCypuzqLeah
+	XHj4UADK6nkUjfOLG3WtUjLjkBPKNq0EdzfzC0satjG/j7ZB/X+sZ1WsivgmkwGjZi4SdnSnYqccB
+	pgTzUAryXIbHan67HmAQZLOHF8HecnMkdSn2S1+KWoftZinWYZB6+VJmsVXcMZ0LgNaetD1Paxcfo
+	Tv2BoxasFcDNHqrvN2ZyjIDUe6c/lX9Y5gLik9BgUvDKwQvbTnF+XC2Ud3do+ugNRIX9pjt5GFUvX
+	oWAJeH+VGf3YjXNmZeUBCpigTVzjRTshprjnTYaJwRdssCl7ZWRf/muEqaNzC3n8ium5/AyFgrWv4
+	IE7NzCnnJkU+tPsLbjGw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1swc6K-0000000BAAE-1RiH;
-	Fri, 04 Oct 2024 06:47:44 +0000
-Received: from mail.manjaro.org ([2a01:4f8:c0c:51f3::1])
-	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1swc53-0000000BA2b-0RMH;
-	Fri, 04 Oct 2024 06:46:27 +0000
+	id 1swmEf-0000000DYC3-3XUD;
+	Fri, 04 Oct 2024 17:37:01 +0000
+Received: from foss.arm.com ([217.140.110.172])
+	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
+	id 1swmCj-0000000DXbJ-3CE8;
+	Fri, 04 Oct 2024 17:35:04 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 94FCA339;
+	Fri,  4 Oct 2024 10:35:28 -0700 (PDT)
+Received: from [10.1.196.40] (e121345-lin.cambridge.arm.com [10.1.196.40])
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id BD75C3F640;
+	Fri,  4 Oct 2024 10:34:57 -0700 (PDT)
+Message-ID: <69d06c04-cc8c-4435-a622-33d5dcd1fa24@arm.com>
+Date: Fri, 4 Oct 2024 18:34:33 +0100
 MIME-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
-	t=1728024380;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=sSHMcRc/7oJcjlVYuOOAXPpQW88U0Cjkb5Oc0Zij2G0=;
-	b=DiKthRHUZMmjw2bDMF2Obg/a47KqCGb17kjC5LcHKDr+8PDDrZKiSwKhvXzH1GGmeARFTl
-	1BbdW6LTiyr9HsZJ9/XwsVvd68HCHyIi/9sdAovCpo6w1R/NUc2btpV4hC6vQo6RYY7PUh
-	PHTWqN9aLcVWYqvP3rjMtEtc9mJGXB5L8vxdziiBRAwDcjyS5FwvaIOGTrNAZaYylkXicI
-	ZWpqtg0nBpU+c6BUKE8RZyrK0B6jMqqO3qJd2uq9row26EEiq+agpp0EJKFOpSLLOeMkqw
-	fP0vFCdbWM0IV68H9aw8Hw2j+N0gwBIzKkU5xTUkktwhTjYN/iTKA2tl8p7WsA==
-Date: Fri, 04 Oct 2024 08:46:19 +0200
-From: Dragan Simic <dsimic@manjaro.org>
-To: linux-rockchip@lists.infradead.org, linux-phy@lists.infradead.org
-Cc: vkoul@kernel.org, kishon@kernel.org, heiko@sntech.de,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v3 0/3] Improve error handling in Rockchip Inno USB 2.0
- PHY driver
-In-Reply-To: <cover.1725524802.git.dsimic@manjaro.org>
-References: <cover.1725524802.git.dsimic@manjaro.org>
-Message-ID: <71569a2773d88d13ca1cf4aa41b56496@manjaro.org>
-X-Sender: dsimic@manjaro.org
-Authentication-Results: ORIGINATING;
-	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] mmc: dw_mmc: rockchip: Keep controller working for card
+ detect
+To: Ulf Hansson <ulf.hansson@linaro.org>,
+ Kever Yang <kever.yang@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?=
+ <heiko@sntech.de>
+Cc: linux-rockchip@lists.infradead.org, Jaehoon Chung
+ <jh80.chung@samsung.com>, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-mmc@vger.kernel.org
+References: <20240912152538.1.I858c2a0bf83606c8b59ba1ab6944978a398d2ac5@changeid>
+ <4920950.GXAFRqVoOG@diego>
+ <CAPDyKFosf_+m9j8YgHa-PsC2SV8+Aou2O6bTbMfzGBpQ2sY8YA@mail.gmail.com>
+From: Robin Murphy <robin.murphy@arm.com>
+Content-Language: en-GB
+In-Reply-To: <CAPDyKFosf_+m9j8YgHa-PsC2SV8+Aou2O6bTbMfzGBpQ2sY8YA@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241003_234625_639327_317DBC9F 
-X-CRM114-Status: GOOD (  15.36  )
+X-CRM114-CacheID: sfid-20241004_103502_153246_EB95B247 
+X-CRM114-Status: GOOD (  17.41  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -66,55 +64,51 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello,
-
-On 2024-09-05 10:28, Dragan Simic wrote:
-> This is a small series that improves error handling in the probe path
-> of the Rockchip Innosilicon USB 2.0 PHY driver, by returning the actual
-> error code in one place and by using dev_err_probe() properly in 
-> multiple
-> places.  It also performs a bunch of small, rather trivial code 
-> cleanups,
-> to make the code neater and a bit easier to read.
-
-Just a brief reminder about this patch series...  Please let me know
-if something more is needed for these patches to be merged.
-
-> Changes in v3:
->   - Collected Reviewed-by tags from Heiko for patches 1/3 and 2/3
->   - Brought back one empty line as a separator of dissimilar operations
->     in patch 1/3, as suggested by Heiko [2]
->   - Dropped one backward conversion of dev_err_probe() to dev_err() in
->     patch 3/3, as suggested by Heiko, [3] and adjusted the summary and
->     description of patch 3/3 accordingly
-> 
-> Changes in v2:
->   - Expanded into a small series, after a suggestion from Heiko [1] to
->     use dev_err_probe(), because it all happens in the probe path
-> 
-> Link to v2:
-> https://lore.kernel.org/linux-phy/cover.1724225528.git.dsimic@manjaro.org/T/#u
-> Link to v1:
-> https://lore.kernel.org/linux-phy/5fa7796d71e2f46344e972bc98a54539f55b6109.1723551599.git.dsimic@manjaro.org/T/#u
-> 
-> [1] https://lore.kernel.org/linux-phy/4927264.xgNZFEDtJV@diego/
-> [2] https://lore.kernel.org/linux-phy/5307900.6fTUFtlzNn@diego/
-> [3] https://lore.kernel.org/linux-phy/6073817.31tnzDBltd@diego/
-> 
-> Dragan Simic (3):
->   phy: phy-rockchip-inno-usb2: Perform trivial code cleanups
->   phy: phy-rockchip-inno-usb2: Handle failed extcon allocation better
->   phy: phy-rockchip-inno-usb2: Use dev_err_probe() in the probe path
-> 
->  drivers/phy/rockchip/phy-rockchip-inno-usb2.c | 56 +++++++------------
->  1 file changed, 21 insertions(+), 35 deletions(-)
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gMDIvMTAvMjAyNCAxMDo1NSBwbSwgVWxmIEhhbnNzb24gd3JvdGU6Cj4gT24gU2F0LCAxNCBT
+ZXB0IDIwMjQgYXQgMTM6NTIsIEhlaWtvIFN0w7xibmVyIDxoZWlrb0BzbnRlY2guZGU+IHdyb3Rl
+Ogo+Pgo+PiBBbSBEb25uZXJzdGFnLCAxMi4gU2VwdGVtYmVyIDIwMjQsIDA5OjI2OjE0IENFU1Qg
+c2NocmllYiBLZXZlciBZYW5nOgo+Pj4gSW4gb3JkZXIgdG8gbWFrZSB0aGUgU0QgY2FyZCBob3Rw
+bHVnIHdvcmtpbmcgd2UgbmVlZCB0aGUgY2FyZCBkZXRlY3QKPj4+IGZ1bmN0aW9uIGxvZ2ljIGlu
+c2lkZSB0aGUgY29udHJvbGxlciBhbHdheXMgd29ya2luZy4gVGhlIHJ1bnRpbWUgUE0gd2lsbAo+
+Pj4gZ2F0ZSB0aGUgY2xvY2sgYW5kIHRoZSBwb3dlciBkb21haW4sIHdoaWNoIHN0b3BzIGNvbnRy
+b2xsZXIgd29ya2luZyB3aGVuCj4+PiBubyBkYXRhIHRyYW5zZmVyIGhhcHBlbi4KPj4+Cj4+PiBT
+byBsZXRzIHNraXAgZW5hYmxlIHJ1bnRpbWUgUE0gd2hlbiB0aGUgY2FyZCBuZWVkcyB0byBkZXRl
+Y3RlZCBieSB0aGUKPj4+IGNvbnRyb2xsZXIgYW5kIHRoZSBjYXJkIGlzIHJlbW92YWJsZS4KPj4+
+Cj4+PiBTaWduZWQtb2ZmLWJ5OiBLZXZlciBZYW5nIDxrZXZlci55YW5nQHJvY2stY2hpcHMuY29t
+Pgo+Pgo+PiBTbyBmb3IgdGhlIGNoYW5nZSBpdHNlbGYgdGhpcyBsb29rcyBnb29kLCBpLmUuIGl0
+IGZpeGVzIGFuIGlzc3VlIGZvciBiYW9yZHMgcmVseWluZwo+PiBvbiB0aGUgb24tY2hpcC1jYXJk
+LWRldGVjdC4KPj4KPj4KPj4gQnV0IGZvciBib2FyZHMgZG9pbmcgdGhhdCwgdGhlIGNvbnRyb2xs
+ZXIgd2lsbCBiZSBydW5uaW5nIF9hbGwgdGhlIHRpbWVfCj4+IGV2ZW4gaWYgdGhlcmUgaXMgbmV2
+ZXIgYW55IGNhcmQgaW5zZXJ0ZWQuCj4+Cj4+IFNvIHJlbHlpbmcgb24gdGhlIG9uLXNvYyBjYXJk
+LWRldGVjdCB3aWxsIGVmZmVjdGl2ZWx5IGluY3JlYXNlIHRoZSBwb3dlci0KPj4gY29uc3VtcHRp
+b24gb2YgdGhlIGJvYXJkIC0gZXZlbiBpdCBpdCdsbCBuZXZlciB1c2UgYW55IHNkLWNhcmQ/Cj4g
+Cj4gR29vZCBwb2ludCEgQSBiZXR0ZXIgb3B0aW9uIGlzIHRvIHVzZSBhIHBvbGxpbmcgYmFzZWQg
+bWVjaGFuaXNtIC0gYW5kCj4gd2UgaGF2ZSBNTUNfQ0FQX05FRURTX1BPTEwgZm9yIGV4YWN0bHkg
+dGhhdC4KPiAKPiBNb3Jlb3Zlciwgb24gRFQgYmFzZWQgcGxhdGZvcm1zIG9uZSBjYW4gZXZlbiB1
+c2UgdGhlICJicm9rZW4tY2QiCj4gcHJvcGVydHkgdG8gaW5kaWNhdGUgdGhpcy4KCkV4Y2VwdCB0
+aGF0IGdvZXMgZnVydGhlciB0aGFuIGlzIG5lZWRlZCBoZXJlLCBzaW5jZSBpdCB3b3VsZCBmYWxs
+IGJhY2sgCmVudGlyZWx5IHRvIHNvZnR3YXJlLWJhc2VkIHBvbGxpbmcgZm9yIGNhcmQgcHJlc2Vu
+Y2UuIEluIHRoaXMgY2FzZSB0aGUgCkNEIGZ1bmN0aW9uIGlzIG5vdCBicm9rZW4gaW4gdGVybXMg
+b2YgYWN0dWFsbHkgZGV0ZWN0aW5nIGEgY2FyZCwgaXQganVzdCAKZG9lc24ndCB3b3JrIHRvIHdh
+a2UgdGhlIGNvbnRyb2xsZXIgdXAgZnJvbSBzdXNwZW5kIGJlY2F1c2UgaXQgY2FuJ3QgCmZpcmUg
+aXRzIG93biBpbnRlcnJ1cHQgd2hpbGUgcG93ZXJlZCBvZmYuIEluIHByaW5jaXBsZSBhbGwgd2Ug
+c2hvdWxkIApyZXF1aXJlIGhlcmUgaXMgdG8gcGVyaW9kaWNhbGx5IHJlc3VtZS9zdXNwZW5kIHRo
+ZSBkZXZpY2UsIHRvIHByb3ZpZGUgYSAKd2luZG93IGZvciB0aGUgaW50ZXJydXB0IHRvIHdvcmsg
+YW5kIG5vcm1hbCBvcGVyYXRpb24gdG8gdGFrZSBvdmVyIGlmIAphcHByb3ByaWF0ZS4KCk9mIGNv
+dXJzZSB0aGUgcmVhbGx5IGNsZXZlciB3YXkgd291bGQgYmUgZm9yIHN1c3BlbmQgdG8gc3dpdGNo
+IHRoZSBwaW4gCmludG8gR1BJTyBtb2RlLCBhbmQgc2V0IHRoZSBHUElPIGludGVycnVwdCBhcyBh
+IHdha2V1cCB0byB0cmlnZ2VyIHJlc3VtZSAKYW5kIHN3aXRjaCBpdCBiYWNrIGFnYWluLCBidXQg
+cGVyaGFwcyB0aGF0J3MgYSBiaXQgdHJpY2t5IHdpdGhvdXQgCmV4cGxpY2l0IHBpbmN0cmwgc3Rh
+dGVzIGluIHRoZSBEVCA6LwoKVGhhbmtzLApSb2Jpbi4KCj4gCj4gWy4uLl0KPiAKPiBLaW5kIHJl
+Z2FyZHMKPiBVZmZlCj4gCj4gX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX18KPiBMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKPiBMaW51eC1yb2NrY2hpcEBs
+aXN0cy5pbmZyYWRlYWQub3JnCj4gaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9s
+aXN0aW5mby9saW51eC1yb2NrY2hpcAoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlw
+QGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9s
+aXN0aW5mby9saW51eC1yb2NrY2hpcAo=
