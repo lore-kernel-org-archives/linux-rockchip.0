@@ -4,69 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3EDE8CFB440
-	for <linux-rockchip@archiver.kernel.org>; Mon,  7 Oct 2024 10:02:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C9E78CFB441
+	for <linux-rockchip@archiver.kernel.org>; Mon,  7 Oct 2024 10:27:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=h0GcF99xJc+UO8MnyxOQvSCF3LxSt7x/XdAJgrT04FQ=; b=KbMPb0VNMEiUb9
-	zIoNkx3HRKKampZwdHcKxux5BWzOqPaCGlD8Vk4dgfgjTCYqOXFOOfPfLsQs8tvst5REzNhbfnPfO
-	LQFOBsLFmknjwMw+QFxD8o67ao2Uojrh4cLS3NWeES8RsfYok/57BFuZ8ph77bnulsGKcDcMBERvG
-	73JDq6Px/IkeEt13VZoLYr1ycc1iOUZ4Q5LZy0SiFpvyl6nIPQiiU+W0jlhYCCSKQ6S4YnvAtqBD5
-	JB9YD0qMpdDcTq895U2jv24t9vWwxLW5W3HOC+wvg4O4iIbavtkVdjTESYKOrTps0hzK5MHGyKIv/
-	xlzUeyAPuyI8RoYXdO0w==;
+	List-Owner; bh=CGsDyEechRknKremR0gB1gVNEgFnJXCj7Q2lmCAnlBo=; b=dGP68U42I+9byw
+	K9ziXB0MeqPW36gYc4lmufrd0D1TxW8mDaGcrvlP+7dEanyS8814HunsQjnS1qAxJShDj07pdXry5
+	PjA9g6HfrmWHfg8UjlrN/PaBjU6o3qrf8kxHxzZ/TsFqkNvLt7xTbpgaKaLkhGo6Z9nsdGUDpkrw2
+	SiLoAFNflea7RcMKF04uGQ1Sh7C1FL9dit6A3YntgcWsadXNixt/7EyQWSjoZu4pKmoI/vPhs2I1S
+	I35IqB4ntKSROYicXs74ggiLxre69QNIwZ2BtT5hndhDx1Ha+8KCyVgcYHHP2K7pQWid5qFtqEZ93
+	7WnHhUZ0ZL7emPPa6pkA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1sxkZQ-00000001zNA-254Z;
-	Mon, 07 Oct 2024 10:02:28 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1sxkxL-000000023DT-3845;
+	Mon, 07 Oct 2024 10:27:11 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1sxkZN-00000001zKx-1iNj
+	id 1sxkwJ-0000000231u-2Y8Y
 	for linux-rockchip@lists.infradead.org;
-	Mon, 07 Oct 2024 10:02:26 +0000
+	Mon, 07 Oct 2024 10:26:09 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 620765C5B9B;
-	Mon,  7 Oct 2024 10:02:20 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 02A76C4CECD;
-	Mon,  7 Oct 2024 10:02:20 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id C44C65C5CE5;
+	Mon,  7 Oct 2024 10:26:02 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C75E9C4CEC6;
+	Mon,  7 Oct 2024 10:26:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1728295344;
-	bh=gC8kwKS4o4dn68X8nIgu0t96ZK6t8rNnQHjcCJTC4vk=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=Ciazen3US+Hkutv+NLfNYb0iyvcKICwKcuw1Z3QvDhL7d0pkJ6BTWLDCDP9UjVRr/
-	 R0CfmKOdjWNqskRkxybJLmI59yPGg76XVDMaZDAW+bZ3rVNj6CwQInUbflJbfjtDmA
-	 9Nn2PyxayDcyJqWYsQjg2lU9NN8ROTvefXs1Ye8gJ/WrMxpcRJzZtv5rOVG6qvcTZm
-	 +XKl7sLScmzNWSfCPiKF090mJKZheUnGFP32YKKc/ReefYTfgZySZLFJIsikj1slYN
-	 5ntWTyJDA5Imt7NU4cD/MH1NTf8WCtx2QxN2ogOaFzX0Thx2HTyEC1+YG02DirxURk
-	 7wIktFyWtEvEw==
-Date: Mon, 7 Oct 2024 12:02:18 +0200
-From: Niklas Cassel <cassel@kernel.org>
-To: Damien Le Moal <dlemoal@kernel.org>
-Cc: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Kishon Vijay Abraham I <kishon@kernel.org>,
-	Shawn Lin <shawn.lin@rock-chips.com>,
-	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
-	Bjorn Helgaas <bhelgaas@google.com>,
-	Heiko Stuebner <heiko@sntech.de>, linux-pci@vger.kernel.org,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	Rick Wertenbroek <rick.wertenbroek@gmail.com>,
-	Wilfred Mallawa <wilfred.mallawa@wdc.com>
-Subject: Re: [PATCH v3 00/12]
-Message-ID: <ZwOxqvzBG4i_UGKc@ryzen>
-References: <20241007041218.157516-1-dlemoal@kernel.org>
+	s=k20201202; t=1728296766;
+	bh=x4sIbfqk5TN8dm10lhqSSvvMtyOM99SvhPSJNX174AA=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=j2XM1BIznolGgKKidb+9miWN3HrxXA9rORQ00/YAkhHRo5/LtgAMj9D7wrfwAYdDS
+	 8gep9GMl1HmnuSQ/BgzJcICM3Stcj+ipADazTFo/JAyUNl8qydYNWvmxkXHjZ5D+dM
+	 my+Os8TQ1sD0P/+BKGUjah9KKOKO+vADLHbEoKrsmR8q5Ze+LwXQAt/N8el2H3gmnD
+	 EZ+Jo1NVsl4Bbd6FkCeI3OjLJUCnmkE5wSK/ZLqjHrR4YL2luYPmntFtTlXw3/wkfX
+	 vD26cqRLq1+gnkBbEj1cdzC1KMuoYSXP5U6boO9pMe6j+mXR38jipBMotA0F44o9IH
+	 Wh81iNKEYU+DQ==
+Message-ID: <8296f547-7c09-48e0-82ac-49eb20e93d1d@kernel.org>
+Date: Mon, 7 Oct 2024 19:26:03 +0900
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20241007041218.157516-1-dlemoal@kernel.org>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 00/12]
+To: Niklas Cassel <cassel@kernel.org>
+Cc: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
+ Lorenzo Pieralisi <lpieralisi@kernel.org>,
+ Kishon Vijay Abraham I <kishon@kernel.org>,
+ Shawn Lin <shawn.lin@rock-chips.com>, =?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?=
+ <kw@linux.com>, Bjorn Helgaas <bhelgaas@google.com>,
+ Heiko Stuebner <heiko@sntech.de>, linux-pci@vger.kernel.org,
+ Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org,
+ linux-rockchip@lists.infradead.org,
+ Rick Wertenbroek <rick.wertenbroek@gmail.com>,
+ Wilfred Mallawa <wilfred.mallawa@wdc.com>
+References: <20241007041218.157516-1-dlemoal@kernel.org>
+ <ZwOxqvzBG4i_UGKc@ryzen>
+From: Damien Le Moal <dlemoal@kernel.org>
+Content-Language: en-US
+Organization: Western Digital Research
+In-Reply-To: <ZwOxqvzBG4i_UGKc@ryzen>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241007_030225_565307_B8853C3D 
-X-CRM114-Status: GOOD (  20.59  )
+X-CRM114-CacheID: sfid-20241007_032607_734305_58B9AAA0 
+X-CRM114-Status: GOOD (  11.36  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,75 +85,25 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, Oct 07, 2024 at 01:12:06PM +0900, Damien Le Moal wrote:
-> This patch series is the second part of the former version 2 of the
-> patch series "Improve PCI memory mapping API". This second part is split
-> out as it deals solely with the rockchip/rk3399 PCI endpoint controller
-> driver.
+On 10/7/24 19:02, Niklas Cassel wrote:
+> On Mon, Oct 07, 2024 at 01:12:06PM +0900, Damien Le Moal wrote:
+>> This patch series is the second part of the former version 2 of the
+>> patch series "Improve PCI memory mapping API". This second part is split
+>> out as it deals solely with the rockchip/rk3399 PCI endpoint controller
+>> driver.
+> 
+> Since this series depends on:
+> [1] https://lore.kernel.org/linux-pci/20241007040319.157412-1-dlemoal@kernel.org/
+> 
+> I think that you should have added a link to that series in this cover letter,
+> and more clearly state that this series depends on [1].
 
-Since this series depends on:
-[1] https://lore.kernel.org/linux-pci/20241007040319.157412-1-dlemoal@kernel.org/
+Indeed. I botched this cover letter :)
+Will fix it in v2.
 
-I think that you should have added a link to that series in this cover letter,
-and more clearly state that this series depends on [1].
-
-(Right now, someone might think that this series could be applied standalone.)
-
-
-Kind regards,
-Niklas
-
-
-> 
-> This series is organized as follows:
->  - Patch 1 fixes the rockchip ATU programming
->  - Patch 2, 3 and 4 introduce small code improvments
->  - Patch 5 implements the .map_align() operation to make the rk3399
->    endpoint controller driver fully functional
->  - Patch 6, 7 and 8 refactor the driver code to make it more readable
->  - Patch 9 introduces the .stop() endpoint controller operation to
->    correctly disable the endpopint controller after use
->  - Patch 10 improves link training
->  - Patch 11 and 12 implement handling of the #PERST signal
-> 
-> Changes from v2:
->  - Split the patch series
->  - Corrected patch 11 to add the missing "maxItem"
-> 
-> Changes from v1:
->  - Changed pci_epc_check_func() to pci_epc_function_is_valid() in patch
->    1.
->  - Removed patch "PCI: endpoint: Improve pci_epc_mem_alloc_addr()"
->    (former patch 2 of v1)
->  - Various typos cleanups all over. Also fixed some blank space
->    indentation.
->  - Added review tags
-> 
-> Damien Le Moal (11):
->   PCI: rockchip-ep: Fix address translation unit programming
->   PCI: rockchip-ep: Use a macro to define EP controller .align feature
->   PCI: rockchip-ep: Improve rockchip_pcie_ep_unmap_addr()
->   PCI: rockchip-ep: Improve rockchip_pcie_ep_map_addr()
->   PCI: rockchip-ep: Implement the .map_align() controller operation
->   PCI: rockchip-ep: Refactor rockchip_pcie_ep_probe() memory allocations
->   PCI: rockchip-ep: Refactor rockchip_pcie_ep_probe() MSI-X hiding
->   PCI: rockchip-ep: Refactor endpoint link training enable
->   PCI: rockship-ep: Introduce rockchip_pcie_ep_stop()
->   PCI: rockchip-ep: Improve link training
->   PCI: rockchip-ep: Handle PERST# signal in endpoint mode
-> 
-> Wilfred Mallawa (1):
->   dt-bindings: pci: rockchip,rk3399-pcie-ep: Add ep-gpios property
-> 
->  .../bindings/pci/rockchip,rk3399-pcie-ep.yaml |   4 +
->  drivers/pci/controller/pcie-rockchip-ep.c     | 392 +++++++++++++++---
->  drivers/pci/controller/pcie-rockchip.c        |  17 +-
->  drivers/pci/controller/pcie-rockchip.h        |  22 +
->  4 files changed, 358 insertions(+), 77 deletions(-)
-> 
-> -- 
-> 2.46.2
-> 
+-- 
+Damien Le Moal
+Western Digital Research
 
 _______________________________________________
 Linux-rockchip mailing list
