@@ -4,57 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D5B4DCFB446
-	for <linux-rockchip@archiver.kernel.org>; Mon,  7 Oct 2024 15:31:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 65C66CFB446
+	for <linux-rockchip@archiver.kernel.org>; Mon,  7 Oct 2024 15:50:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:References:To:From:Subject:Cc:Message-Id:Date:Mime-Version:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=KBduLhzAptrzG6ow2Pnn5uRIpZEGhV+BYVuQe82/5dM=; b=eH/dIFc9LXYXOLGlWm8AwtqQx0
-	N/rNQ68lx2/IRPqEOR9iTzAxB+YWOJUxwrOcwdPBb6H7NFWV3GYG0MK4QPuUWRjbfW2mL/77yBByS
-	98uMPowTZo5DEJWz3ZCQJImHhRQXoh5hi4vVVL2bdFYgjqlOAr+daMuqQ8puhs92LHsdeC+shy0Vf
-	s1whguEBKtPUzzSNvKOExVfMPi/MwK3KEW37eN9ZXK8na/0lf79hde79FBIgO4KW7a7zGHQ2MQiVg
-	u2iMJyP7FNTTfhDChnNZ2cJFpP0y8/3mn0OxBLM+hMFSTiVc3MtBgttq/jWe0LO9BWwsv1xTyO0L9
-	iJDvvUfA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
+	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=tRqMoG41FU4jXR2X2o3OVn7rPq7tyXYhR7Ag+qTCax4=; b=Natv1ZfUO4446u
+	KxGOB4pJ+1mSLs7kTOrgHGJ6wThEzQ+F/t9f9IAukDjYzjUJm5c4Fjyl0mENBMGlEmfwweor9+GQ/
+	3g1ZRns3DRXO4u4LI0RcTO9jbIzPIw5Axl5w9j+SKV9T3vccTN68YCmBHsd5EMAO2+onu/Eczz1o1
+	R8Dc1Kw1wrBxKz5IogV+ODhia4BINX+yL4U/n+HmhjRb/3OCOuRo20NWOvoJCusaY8lypYd1vvBDB
+	Y0kmxT69TV9rOszE+Bbu5s9nLiBkWwdbQmFT1oEmTjWH+iwkgg8KZrqQkUW1J7u/WiXJFGVqvhHRE
+	kUvy/C6MYlWA4Xsz/O9g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1sxphs-00000002xKV-2MV5;
-	Mon, 07 Oct 2024 15:31:32 +0000
-Received: from out-180.mta0.migadu.com ([2001:41d0:1004:224b::b4])
+	id 1sxq06-00000003228-0spU;
+	Mon, 07 Oct 2024 15:50:22 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1sxpdn-00000002vxR-2AFT
-	for linux-rockchip@lists.infradead.org;
-	Mon, 07 Oct 2024 15:27:31 +0000
-Mime-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow.org; s=key1;
-	t=1728314835;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=yAd5jiIqXKi0gbyJVYnCih0IIWJ9F3v+KMLrZ7QsIZE=;
-	b=IkcZZuPnzzcdR7ThUJ9tVZT+zIQrRONPJj80CtBSyx4Nka87PQmf3d7TTayDvGMhJOrRFW
-	3DKHJxFRfo1JUTRUgZ0kqzzEZcYwaiJiSuYyhsx/7EJRR62CI9f26xxZDTtfU0/NKH5i+e
-	cp9Sf380MPlQSfewQFJhY+z8wjUR+aQMnv1m3voejAsvrS6Dmk0upfSAV39BBhq8IE2vuk
-	nv8nxAOQVmqf4G7X++sLaIFPfyWyfVk0I4TmnONZ6+c8+vi/HMxcQipCqe2N35Fc1kAjue
-	lotU3ihC/mlozxlP+CpnvkcJYXhBGAWxV8s09/AwsJ5GW+DTSu6IRXc7gxJifQ==
-Date: Mon, 07 Oct 2024 17:27:12 +0200
-Message-Id: <D4POH599C91R.OQUBX190GASQ@cknow.org>
-Cc: <linux-arm-kernel@lists.infradead.org>, <devicetree@vger.kernel.org>,
- "Andy Yan" <andyshrk@163.com>, "Diederik de Haas" <didi.debian@cknow.org>
-Subject: Re: [PATCH 5/8] arm64: dts: rockchip: Fix bluetooth properties on
- rk3566 box demo
-X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
-From: "Diederik de Haas" <didi.debian@cknow.org>
-To: "Heiko Stuebner" <heiko@sntech.de>, <linux-rockchip@lists.infradead.org>
-References: <20240930210112.1993625-1-heiko@sntech.de>
- <20240930210112.1993625-6-heiko@sntech.de>
-In-Reply-To: <20240930210112.1993625-6-heiko@sntech.de>
-X-Migadu-Flow: FLOW_OUT
+	id 1sxpyl-000000031et-22nW;
+	Mon, 07 Oct 2024 15:49:01 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 8D8915C5C1B;
+	Mon,  7 Oct 2024 15:48:54 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 806ABC4CECF;
+	Mon,  7 Oct 2024 15:48:56 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1728316138;
+	bh=AmnZGoC6d9JOz7Nbe+RZvuUjltSac8yKHkvPAr+paMM=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=Dx525gKB/36rAxVVOUKDXn7PHyEgnKQMOOUP6Yqc965PrhHfL+nzYX8n8c7V/7/14
+	 qPphRKBLhYt0feXqHz1SinDI0oGjZy/A+ua6oGpNIfOhKwlTDb/zn3/JsbD4M6GYC0
+	 wk/vnweQW8aiq0IRs1qYlnRK17h3mYlJbocXiqp78xpuPxDxHWSY1S8pU10kVOrIlY
+	 GFW5+RXGiOORnfsnRsfM+KSulrqzgl5DZKpkwNGmMp+TN9+TJMM7iJHczYyizPurSQ
+	 2Adsy2R5+HSQf5YHmWp26fASq9gOf7yCw7jvXUfwsQdzhHb2q9/Am0yosLSCcDWc+o
+	 B0ZVzSph/zW1g==
+From: Vinod Koul <vkoul@kernel.org>
+To: linux-rockchip@lists.infradead.org, linux-phy@lists.infradead.org, 
+ Dragan Simic <dsimic@manjaro.org>
+Cc: kishon@kernel.org, heiko@sntech.de, 
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+In-Reply-To: <cover.1725524802.git.dsimic@manjaro.org>
+References: <cover.1725524802.git.dsimic@manjaro.org>
+Subject: Re: [PATCH v3 0/3] Improve error handling in Rockchip Inno USB 2.0
+ PHY driver
+Message-Id: <172831613615.134526.763385674253589863.b4-ty@kernel.org>
+Date: Mon, 07 Oct 2024 21:18:56 +0530
+MIME-Version: 1.0
+X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241007_082720_184668_E2A0C884 
-X-CRM114-Status: GOOD (  14.49  )
+X-CRM114-CacheID: sfid-20241007_084859_609389_BA107D67 
+X-CRM114-Status: GOOD (  11.03  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -66,84 +68,45 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============6298852809774203714=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
---===============6298852809774203714==
-Content-Type: multipart/signed;
- boundary=4d62d13e81e3eae288851ed4485f386e347fd7fa62a06ad0cf65806ae49b;
- micalg=pgp-sha256; protocol="application/pgp-signature"
 
---4d62d13e81e3eae288851ed4485f386e347fd7fa62a06ad0cf65806ae49b
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain; charset=UTF-8
+On Thu, 05 Sep 2024 10:28:21 +0200, Dragan Simic wrote:
+> This is a small series that improves error handling in the probe path
+> of the Rockchip Innosilicon USB 2.0 PHY driver, by returning the actual
+> error code in one place and by using dev_err_probe() properly in multiple
+> places.  It also performs a bunch of small, rather trivial code cleanups,
+> to make the code neater and a bit easier to read.
+> 
+> Changes in v3:
+>   - Collected Reviewed-by tags from Heiko for patches 1/3 and 2/3
+>   - Brought back one empty line as a separator of dissimilar operations
+>     in patch 1/3, as suggested by Heiko [2]
+>   - Dropped one backward conversion of dev_err_probe() to dev_err() in
+>     patch 3/3, as suggested by Heiko, [3] and adjusted the summary and
+>     description of patch 3/3 accordingly
+> 
+> [...]
 
-On Mon Sep 30, 2024 at 11:01 PM CEST, Heiko Stuebner wrote:
-> The expected clock-name is different (ext_clock -> extclk) and the wakeup
+Applied, thanks!
 
-According to "brcm,bluetooth.yaml", 'extclk' is deprecated in favor of
-'txco', so it seems better to use that?
-Same would be true for Rock960 boards (patch 6 of this series).
+[1/3] phy: phy-rockchip-inno-usb2: Perform trivial code cleanups
+      commit: 449d2a523a0c3ca8f4c993b8e37795c2aa174da6
+[2/3] phy: phy-rockchip-inno-usb2: Handle failed extcon allocation better
+      commit: 595ad7a336bf21f9d111a033820cd95d70343bd1
+[3/3] phy: phy-rockchip-inno-usb2: Use dev_err_probe() in the probe path
+      commit: 40452520850683f6771094ca218ff206d1fcb022
 
-Cheers,
-  Diederik
-
-> gpio properties are named differently when changing from vendor-tree to
-> mainline. So fix those to match the binding.
->
-> Fixes: 2e0537b16b25 ("arm64: dts: rockchip: Add dts for rockchip rk3566 b=
-ox demo board")
-> Cc: Andy Yan <andyshrk@163.com>
-> Signed-off-by: Heiko Stuebner <heiko@sntech.de>
-> ---
->  arch/arm64/boot/dts/rockchip/rk3566-box-demo.dts | 6 +++---
->  1 file changed, 3 insertions(+), 3 deletions(-)
->
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3566-box-demo.dts b/arch/arm6=
-4/boot/dts/rockchip/rk3566-box-demo.dts
-> index 0c18406e4c59..dd6fe964d618 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3566-box-demo.dts
-> +++ b/arch/arm64/boot/dts/rockchip/rk3566-box-demo.dts
-> @@ -449,9 +449,9 @@ &uart1 {
->  	bluetooth {
->  		compatible =3D "brcm,bcm43438-bt";
->  		clocks =3D <&pmucru CLK_RTC_32K>;
-> -		clock-names =3D "ext_clock";
-> -		device-wake-gpios =3D <&gpio2 RK_PC1 GPIO_ACTIVE_HIGH>;
-> -		host-wake-gpios =3D <&gpio2 RK_PC0 GPIO_ACTIVE_HIGH>;
-> +		clock-names =3D "extclk";
-> +		device-wakeup-gpios =3D <&gpio2 RK_PC1 GPIO_ACTIVE_HIGH>;
-> +		host-wakeup-gpios =3D <&gpio2 RK_PC0 GPIO_ACTIVE_HIGH>;
->  		shutdown-gpios =3D <&gpio2 RK_PB7 GPIO_ACTIVE_HIGH>;
->  		pinctrl-names =3D "default";
->  		pinctrl-0 =3D <&bt_host_wake_l &bt_wake_l &bt_enable_h>;
+Best regards,
+-- 
+~Vinod
 
 
---4d62d13e81e3eae288851ed4485f386e347fd7fa62a06ad0cf65806ae49b
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYIAB0WIQT1sUPBYsyGmi4usy/XblvOeH7bbgUCZwP90wAKCRDXblvOeH7b
-bpRMAQC3eQ6yx+yN6Dm6QDzVnmRER3bnxRIAL5osAxY+l7bFTgEAypLyCd90FYMN
-ZDgakZawAw1Q4nX2Z3uax8pzMr8y/gY=
-=FgA/
------END PGP SIGNATURE-----
-
---4d62d13e81e3eae288851ed4485f386e347fd7fa62a06ad0cf65806ae49b--
-
-
---===============6298852809774203714==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============6298852809774203714==--
-
