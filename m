@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 63170CFB440
-	for <linux-rockchip@archiver.kernel.org>; Mon,  7 Oct 2024 04:12:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B7AC1CFB440
+	for <linux-rockchip@archiver.kernel.org>; Mon,  7 Oct 2024 04:12:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Hhzfu1oiGZKlWbsuDwNQ4c26aeBjjGfeDEcJeyyTano=; b=GEOSKZ0NY7VbjX
-	Lu1xiEs9Qdd03+UhHfCqWQEKfjWcTPyEB5VwGsHECq5c9pQ2ngPXjo6hQMyJYF50lAWGp6gaApWuX
-	yKooUUs/b14mjFltsj7IlSmqt36xAndjqhk7jnhyP/3Hp+T0wz54iAcgsjVuKvLlfmvNhmN/MfAl4
-	wmugFG6l9lFODiyYSveXTdGRV9kUBlmWGDSYYTnmWzA1cETRiLcw4Mpwdq916LOqv+iuG9V1tb/y6
-	GosuFyuM2XmNgpcEVVS62P3JRWMcUC8Bc/khvFmZ3L3fMeFZlIgjDhNgXure+0Mb0zNCyKlT2d6y6
-	iE21llYWFpFm2+yoHfsQ==;
+	List-Owner; bh=NAcU77MfBLJeHBUFDFUoHOberFLYc48sTFdp4m5vtpk=; b=p/OKXg+u0vYwcf
+	2u9+YTUOhNrz7ifEAEQ6lzPZZ3SqRtqhlinVxpJxlvJMl20DMtDR10HVkSaCiDspFjTjPL4um/nJD
+	xQ4OPEHJgHp7ZjrOhAxOAhCF/SvdzwcUHC864dj+3GF5YgbeUz5FNMRtg/K0IQLasjXtsUjkN9Epe
+	7n0NgqYNWFlwLZmKtsJa5AsWS0t+D0bn7cb87xZqzlLQFgMLOBS9jUH8QCi7v9TF7vVchFenTGF97
+	RMkll8jX0Y5TFecmfGUBceubCKPEbEqPegiIriKBR1UiG4TSdPyKdMpW4ZbhAB7Ow+FfO/idgqNxS
+	IbEPnZG9NmlAgundowig==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1sxf6m-00000001CzE-35U9;
-	Mon, 07 Oct 2024 04:12:32 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1sxf6o-00000001D0o-1JFU;
+	Mon, 07 Oct 2024 04:12:34 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1sxf6k-00000001Cwr-0T49
+	id 1sxf6l-00000001CyL-3XtA
 	for linux-rockchip@lists.infradead.org;
-	Mon, 07 Oct 2024 04:12:31 +0000
+	Mon, 07 Oct 2024 04:12:33 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 9F9DCA414EC;
-	Mon,  7 Oct 2024 04:12:20 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 071A8C4CECF;
-	Mon,  7 Oct 2024 04:12:26 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 1FBC35C5A76;
+	Mon,  7 Oct 2024 04:12:27 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 33DA9C4CED0;
+	Mon,  7 Oct 2024 04:12:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1728274348;
-	bh=5w+3NShXDU/wbYOsiv93TvrG7kU2oPVW7277Gez3AR0=;
+	s=k20201202; t=1728274351;
+	bh=zktM0WskKmnp+ZKqC5RGFOFYiXLFR0gT3RgJ3fgJtgw=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=aGyv6GeaMtH/0srjMhy4Mx6yx8duOHHSMcfTtn/qwnmxj9s998T3LIdDSkxkV5+TF
-	 t1EgNx3ei6UFALwjjIgwzQ3gyDKf3iYZNwmffbNsZmmXHamU+FvxRKCvzhsr+LFcUQ
-	 HwtwJnzOJqLLKgLG3tHEAkdIdsGHi36VcFrp9Pg7xvXWvWznoGqRqskfsstJRFvSz5
-	 AG57q7IfebNRTF1kyUl6xkP1ALD4XwZHxB+VhSp4IWOLF9xfE8o0LZLJY2b65MSr8t
-	 bKOxD3k7+07mT3lFJEsIchHYVQa5VVR+uMjY6jNqBNtL/Uw632Aq51KL1bzF7ZhbVh
-	 JnKNRvprB/MrQ==
+	b=ucjKKuO++3JQEC0ULvO6hFfjlamLaP8cmEOOiLPwNkzBBpF4gRvuRE6DkQKBE5GdY
+	 YSMJaZkWIbPfMKVEmmQUI2I+++P6TQJjid4Faa8N+yLZk8vyqDKdMeyNhK02lu08J8
+	 69/WnS4Y6+SUZpbqvPs/OB/D9Owd3I0xA+63rGV45iXrdrxbf5h4XoOxkDyvGW2LIv
+	 7/CqsvCLo77L/WltZ1NXgsO8wsHiKssxEA3CUPVv2j81Lkxk+u3gRyn3e+NVXAU5v9
+	 fbjFMa3V1FyXMNTNDAtZmyukrLKul2TmGLp9uh2RWdDlDT3LCh5wgtshOSVAl0WPIZ
+	 omn2eDi4ZF4hg==
 From: Damien Le Moal <dlemoal@kernel.org>
 To: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
 	Lorenzo Pieralisi <lpieralisi@kernel.org>,
@@ -59,16 +59,17 @@ Cc: linux-rockchip@lists.infradead.org,
 	Rick Wertenbroek <rick.wertenbroek@gmail.com>,
 	Wilfred Mallawa <wilfred.mallawa@wdc.com>,
 	Niklas Cassel <cassel@kernel.org>
-Subject: [PATCH v3 03/12] PCI: rockchip-ep: Improve rockchip_pcie_ep_unmap_addr()
-Date: Mon,  7 Oct 2024 13:12:09 +0900
-Message-ID: <20241007041218.157516-4-dlemoal@kernel.org>
+Subject: [PATCH v3 04/12] PCI: rockchip-ep: Improve rockchip_pcie_ep_map_addr()
+Date: Mon,  7 Oct 2024 13:12:10 +0900
+Message-ID: <20241007041218.157516-5-dlemoal@kernel.org>
 X-Mailer: git-send-email 2.46.2
 In-Reply-To: <20241007041218.157516-1-dlemoal@kernel.org>
 References: <20241007041218.157516-1-dlemoal@kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241006_211230_238206_4CD1A9BE 
-X-CRM114-Status: GOOD (  12.05  )
+X-CRM114-CacheID: sfid-20241006_211231_949078_84FD3C71 
+X-CRM114-Status: UNSURE (   9.25  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,40 +86,28 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Damien Le Moal <damien.lemoal@opensource.wdc.com>
+Add a check to verify that the outbound region to be used for mapping an
+address is not already in use.
 
-There is no need to loop over all regions to find the memory window used
-to map an address. We can use rockchip_ob_region() to determine the
-region index, together with a check that the address passed as argument
-is the address used to create the mapping. Furthermore, the
-ob_region_map bitmap should also be checked to ensure that we are not
-attempting to unmap an address that is not mapped.
-
-Signed-off-by: Damien Le Moal <damien.lemoal@opensource.wdc.com>
+Signed-off-by: Damien Le Moal <dlemoal@kernel.org>
 ---
- drivers/pci/controller/pcie-rockchip-ep.c | 8 ++------
- 1 file changed, 2 insertions(+), 6 deletions(-)
+ drivers/pci/controller/pcie-rockchip-ep.c | 3 +++
+ 1 file changed, 3 insertions(+)
 
 diff --git a/drivers/pci/controller/pcie-rockchip-ep.c b/drivers/pci/controller/pcie-rockchip-ep.c
-index 5a07084fb7c4..89ebdf3e4737 100644
+index 89ebdf3e4737..edb84fb1ba39 100644
 --- a/drivers/pci/controller/pcie-rockchip-ep.c
 +++ b/drivers/pci/controller/pcie-rockchip-ep.c
-@@ -256,13 +256,9 @@ static void rockchip_pcie_ep_unmap_addr(struct pci_epc *epc, u8 fn, u8 vfn,
- {
- 	struct rockchip_pcie_ep *ep = epc_get_drvdata(epc);
- 	struct rockchip_pcie *rockchip = &ep->rockchip;
--	u32 r;
--
--	for (r = 0; r < ep->max_regions; r++)
--		if (ep->ob_addr[r] == addr)
--			break;
-+	u32 r = rockchip_ob_region(addr);
+@@ -243,6 +243,9 @@ static int rockchip_pcie_ep_map_addr(struct pci_epc *epc, u8 fn, u8 vfn,
+ 	struct rockchip_pcie *pcie = &ep->rockchip;
+ 	u32 r = rockchip_ob_region(addr);
  
--	if (r == ep->max_regions)
-+	if (addr != ep->ob_addr[r] || !test_bit(r, &ep->ob_region_map))
- 		return;
++	if (test_bit(r, &ep->ob_region_map))
++		return -EBUSY;
++
+ 	rockchip_pcie_prog_ep_ob_atu(pcie, fn, r, addr, pci_addr, size);
  
- 	rockchip_pcie_clear_ep_ob_atu(rockchip, r);
+ 	set_bit(r, &ep->ob_region_map);
 -- 
 2.46.2
 
