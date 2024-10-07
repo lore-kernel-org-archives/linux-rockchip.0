@@ -4,100 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3FB87CFB43F
-	for <linux-rockchip@archiver.kernel.org>; Mon,  7 Oct 2024 13:58:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8CCE4CFB441
+	for <linux-rockchip@archiver.kernel.org>; Mon,  7 Oct 2024 14:10:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To:From:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=XrtKPGF/o6FxB0xgPZZN68HfDpfOTgf2/aynV9izEKE=; b=0aB66p9uUyRflo
-	OPxbgpq5Yru+sBqTSyCTTWgIZPnJ9w/yzy5Gdhmd1eT+ab9vX+1sDCDG/jqnkmUq5tziakyp2IR/2
-	YB/WhJB7Fqq126/PKk8RxrX6txrbrkKaYiLg+ZTQIaSuE7In8C4bWqG2NQxu8QjImFafQu60bKral
-	vgcTWXhfvF3l2S+GEO/yHVRu+LDjbCSxD7icEKJ/0mUP5htZCwI7BfhA80axLGhjvoPbxGyX6w6+n
-	0RYUV7Yr30k2Z9FmHiHTIe096nnCKuXf0rt+sqf1Ctey6HKLyKS07I3fVoBnH/SMxCb8Ydaiw5MBD
-	Xxvoj4uGLFH29lqHXG3w==;
+	List-Owner; bh=pE1WiScRFdFAGgyuptHsYUphPag6xZyuFR773AMkgkk=; b=nn+OoGrXVqxkHW
+	pNUQmZdgH8S3KPeZKV5HlHDHY1A4W0BhSDnqGQ2JlTEICjkw1+TI2JUUBb8ngfB/gV3nUhjgjy/wz
+	5W+enSHwJFtdaHyl17ZAXPDjMGvEmrgLD0i9YXGPMQITjjK7GpTLO8le4pf3J3lrvAPN2pMRKaPLj
+	Y8uG0Dnf3n0yQuYeLwrdhD9V+hukpr2c0UMDHXGniPqP1FmX4ZUTf3+VdMfCq+7MHR7jxrGsm8FJV
+	TCLoqeohbJQwOTGGrab1BStHMriiCx8S3v7nZUkzJHTYG5pUrD9zwrN+jTO+VgL/ukTTit8fHEY/T
+	LTJ5dmwie5x2IgVzpv8w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1sxoFc-00000002bAx-26Iu;
-	Mon, 07 Oct 2024 13:58:16 +0000
-Received: from omta40.uswest2.a.cloudfilter.net ([35.89.44.39])
+	id 1sxoRM-00000002dso-2jfV;
+	Mon, 07 Oct 2024 14:10:24 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1sxoEn-00000002b1k-1uUa
-	for linux-rockchip@lists.infradead.org;
-	Mon, 07 Oct 2024 13:58:14 +0000
-Received: from eig-obgw-5004a.ext.cloudfilter.net ([10.0.29.221])
-	by cmsmtp with ESMTPS
-	id xULBswPeNvH7lxoEWskjrX; Mon, 07 Oct 2024 13:57:09 +0000
-Received: from md-in-79.webhostbox.net ([43.225.55.182])
-	by cmsmtp with ESMTPS
-	id xoETsTzjxWvXpxoEUszFCe; Mon, 07 Oct 2024 13:57:07 +0000
-X-Authority-Analysis: v=2.4 cv=LtdZyWdc c=1 sm=1 tr=0 ts=6703e8b3
- a=LfuyaZh/8e9VOkaVZk0aRw==:117 a=kofhyyBXuK/oEhdxNjf66Q==:17
- a=IkcTkHD0fZMA:10 a=DAUX931o1VcA:10 a=-pn6D5nKLtMA:10 a=vU9dKmh3AAAA:8
- a=KpWdpyGzixcpRlYuMWcA:9 a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10
- a=rsP06fVo5MYu2ilr0aT5:22 a=ZCPYImcxYIQFgLOT52_G:22
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=linumiz.com
-	; s=default; h=Content-Transfer-Encoding:Content-Type:In-Reply-To:References:
-	Cc:To:From:Subject:MIME-Version:Date:Message-ID:Sender:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
-	List-Post:List-Owner:List-Archive;
-	bh=Off8ca3Q8QoJ3XNFUGaDvWVL6Usji4QPjLFIyyxfzWQ=; b=lgJdqFNPc5I3BQUntvm/jLl8CC
-	LEM1XeCTXgDIcoW0wm/IhAE6kVF4k0HW0Ez4oG80HvZsNCQvdJfrlBNXzEYRRCPCUfwRRagCZV6hJ
-	YzO4AY/jYqeoI8J3eu8HrxwmqviF1OuxbLazzZ1CLUD+PGztUC4lUWaX+ECIuHwGv1kTsYmFf/4V4
-	Q6I3mjQM1v2/zZmsQeEaNhxKT1W6l7V47RYOoKgV8O2w5A9v/N1TvNGcOvykt5hKCj6F+kN6i7OCe
-	d6Y2mG2rd8/GLpP6vJXl1fp9mIUTQ1dGdDToGf/OZJaYjIYE0woskmqXabCEuo1JUEekzhwKPdsK5
-	sXmoxyVQ==;
-Received: from [122.165.245.213] (port=56716 helo=[192.168.1.106])
-	by md-in-79.webhostbox.net with esmtpsa  (TLS1.2) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.96.2)
-	(envelope-from <karthikeyan@linumiz.com>)
-	id 1sxoER-003Hi5-01;
-	Mon, 07 Oct 2024 19:27:03 +0530
-Message-ID: <37e26b46-2f6a-4db4-b003-59088ef1dcc1@linumiz.com>
-Date: Mon, 7 Oct 2024 19:26:58 +0530
+	id 1sxoLn-00000002cOc-2b1B;
+	Mon, 07 Oct 2024 14:04:41 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+	List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=DzguuGqpgpDEWTK10Pwmg4Td55x7gkXzdoaaK8vp4B0=; b=h+7LboR+xFiMm7PhXGimd0RLed
+	d9KeCZHCCsGJLq3O0N5MZ9OnGbU/97ZuaCcd0lmNjw6mzbzpQjj6C+Dor8o5yEuG/eyV2LI/WFlkH
+	jvhDnBz13sD+DbtD3wSuzj6ErfBWg7HrypsglrgcSiyRhWV+ylydeIOAoipMDIYhtnmpb/1ZAY/H3
+	0gFVuUS/DzbfOmqJqLWaRZeEoLe8N49gdwDuA5LQ+Vj389/M9obU7XOGp8GoAf2JGCZigp96X4bI5
+	S5iz/jNFcgzEuhtXZ+O/uzlUNx6B6YNAJ2u13QWTyHZbk7Wor7rPJJnqkN1X2pKRyhcDy7oOSQYeW
+	jV3Wznhw==;
+Received: from i5e860d18.versanet.de ([94.134.13.24] helo=diego.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1sxoLe-0000sG-Gr; Mon, 07 Oct 2024 16:04:30 +0200
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Diederik de Haas <didi.debian@cknow.org>
+Cc: Diederik de Haas <didi.debian@cknow.org>,
+ Dragan Simic <dsimic@manjaro.org>, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+Subject: Re: [PATCH 4/4] arm64: dts: rockchip: Fix reset-gpios prop on brcm BT nodes
+Date: Mon, 07 Oct 2024 16:04:29 +0200
+Message-ID: <12534438.O9o76ZdvQC@diego>
+In-Reply-To: <20241007105657.6203-6-didi.debian@cknow.org>
+References: <20241007105657.6203-2-didi.debian@cknow.org>
+ <20241007105657.6203-6-didi.debian@cknow.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 1/6] dt-bindings: watchdog: rockchip: Add
- rockchip,rv1126-wdt string
-From: karthikeyan <karthikeyan@linumiz.com>
-To: Heiko Stuebner <heiko@sntech.de>, robh@kernel.org, krzk+dt@kernel.org,
- conor+dt@kernel.org, alexandre.belloni@bootlin.com, wim@linux-watchdog.org,
- linux@roeck-us.net
-Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-rtc@vger.kernel.org, linux-watchdog@vger.kernel.org
-References: <20240912142451.2952633-1-karthikeyan@linumiz.com>
- <20240912142451.2952633-2-karthikeyan@linumiz.com> <2206048.Mh6RI2rZIc@phil>
- <ddca4051-0e83-4d39-8654-12210ffa5685@linumiz.com>
-Content-Language: en-US
-In-Reply-To: <ddca4051-0e83-4d39-8654-12210ffa5685@linumiz.com>
-X-AntiAbuse: This header was added to track abuse, please include it with any abuse report
-X-AntiAbuse: Primary Hostname - md-in-79.webhostbox.net
-X-AntiAbuse: Original Domain - lists.infradead.org
-X-AntiAbuse: Originator/Caller UID/GID - [47 12] / [47 12]
-X-AntiAbuse: Sender Address Domain - linumiz.com
-X-BWhitelist: no
-X-Source-IP: 122.165.245.213
-X-Source-L: No
-X-Exim-ID: 1sxoER-003Hi5-01
-X-Source: 
-X-Source-Args: 
-X-Source-Dir: 
-X-Source-Sender: ([192.168.1.106]) [122.165.245.213]:56716
-X-Source-Auth: karthikeyan@linumiz.com
-X-Email-Count: 4
-X-Org: HG=dishared_whb_net_legacy;ORG=directi;
-X-Source-Cap: bGludW1jbWM7aG9zdGdhdG9yO21kLWluLTc5LndlYmhvc3Rib3gubmV0
-X-Local-Domain: yes
-X-CMAE-Envelope: MS4xfJOye2PBdt0bUn6+aCpJWu3TyAzAWq/YX0+s8gXJTg9/aj3Ow8a1uYUqyhEvX2P+JEQbRathlpuxzk0Gciga2ztTcpDqercfuKg20tXVjIp/hU0tzph+
- ck6s3hVs3xT1V7RYqJ8mLKSATM9nMA2rZJ989wJI3rjbssQ9JoKY0LPW+sKYHa/6jnH/fwefyzNILWfqLZa7DmS/8fYqykhLnHoddMuXnUp8tTbuZ/7/SJjj
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241007_065725_731360_6A61BE80 
-X-CRM114-Status: UNSURE (   7.55  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20241007_070439_719002_9FF3A464 
+X-CRM114-Status: GOOD (  17.07  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,40 +71,72 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-CgpPbiA5LzE4LzI0IDEyOjU5LCBrYXJ0aGlrZXlhbiB3cm90ZToKPiAKPiAKPiBPbiA5LzE4LzI0
-IDA0OjQ2LCBIZWlrbyBTdHVlYm5lciB3cm90ZToKPj4gSGV5LAo+Pgo+PiBBbSBEb25uZXJzdGFn
-LCAxMi4gU2VwdGVtYmVyIDIwMjQsIDE2OjI0OjQ2IENFU1Qgc2NocmllYiBLYXJ0aGlrZXlhbiAK
-Pj4gS3Jpc2huYXNhbXk6Cj4+PiBBZGQgcm9ja2NoaXAscnYxMTI2LXdkdCBjb21wYXRpYmxlIHN0
-cmluZy4KPj4+Cj4+PiBTaWduZWQtb2ZmLWJ5OiBLYXJ0aGlrZXlhbiBLcmlzaG5hc2FteSA8a2Fy
-dGhpa2V5YW5AbGludW1pei5jb20+Cj4+Cj4+IEkgdGhpbmsgdGhpcyBwYXRjaCBtaXNzZXMgc29t
-ZSByZWNpcGllbnRzIGJlY2F1c2UgbmVpdGhlcgo+PiB0aGUgd2F0Y2hkb2cgbWFpbnRhaW5lcnMg
-bm9yIHRoZSB3YXRjaGRvZyBsaXN0IGlzIGluY2x1ZGVkLgo+Pgo+PiBXZSdsbCBuZWVkIGZvciB0
-aGVtIHRvIGF0IGxlYXN0IEFjayB0aGlzIHBhdGNoLCBzbyB0aGV5J2xsCj4+IG5lZWQgdG8gYmUg
-aW5jbHVkZWQuIFBsZWFzZSBjaGVjayB5b3VyIHNjcmlwdHMvZ2V0X21haW50YWluZXIucGwKPj4g
-Y2FsbAo+Pgo+Pgo+PiBUaGFua3MKPj4gSGVpa28KPj4KPiBBcG9sb2dpZXMgZm9yIG1pc3Npbmcg
-dGhlbS4gQWRkaW5nIHRoZW0gaW4gdGhpcyByZXBseSBtYWlsLgo+Pj4gLS0tCj4+Pgo+Pj4gTm90
-ZXM6Cj4+PiDCoMKgwqDCoCB2MzoKPj4+IMKgwqDCoMKgIC0gYWRkIHdhdGNoZG9nIGNvbXBhdGli
-bGUgc3RyaW5nCj4+Pgo+Pj4gwqAgRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL3dh
-dGNoZG9nL3NucHMsZHctd2R0LnlhbWwgfCAxICsKPj4+IMKgIDEgZmlsZSBjaGFuZ2VkLCAxIGlu
-c2VydGlvbigrKQo+Pj4KPj4+IGRpZmYgLS1naXQgCj4+PiBhL0RvY3VtZW50YXRpb24vZGV2aWNl
-dHJlZS9iaW5kaW5ncy93YXRjaGRvZy9zbnBzLGR3LXdkdC55YW1sIAo+Pj4gYi9Eb2N1bWVudGF0
-aW9uL2RldmljZXRyZWUvYmluZGluZ3Mvd2F0Y2hkb2cvc25wcyxkdy13ZHQueWFtbAo+Pj4gaW5k
-ZXggYzdhYWIwNDE4YTMyLi5iY2NkMjdhMWU0NzAgMTAwNjQ0Cj4+PiAtLS0gYS9Eb2N1bWVudGF0
-aW9uL2RldmljZXRyZWUvYmluZGluZ3Mvd2F0Y2hkb2cvc25wcyxkdy13ZHQueWFtbAo+Pj4gKysr
-IGIvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL3dhdGNoZG9nL3NucHMsZHctd2R0
-LnlhbWwKPj4+IEBAIC0zMSw2ICszMSw3IEBAIHByb3BlcnRpZXM6Cj4+PiDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqAgLSByb2NrY2hpcCxyazM1Njgtd2R0Cj4+PiDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqAgLSByb2NrY2hpcCxyazM1ODgtd2R0Cj4+PiDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqAgLSByb2NrY2hpcCxydjExMDgtd2R0Cj4+PiArwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqAgLSByb2NrY2hpcCxydjExMjYtd2R0Cj4+PiDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgIC0gY29uc3Q6IHNucHMsZHctd2R0Cj4+PiDCoMKgwqAgcmVnOgo+Pj4KPj4KPj4KPj4K
-Pj4KPiAKPiBCZXN0IFJlZ2FyZHMsCj4gS2FydGhpa2V5YW4KCkdlbnRsZSByZW1haW5kZXIuCgpC
-ZXN0IFJlZ2FyZHMsCkthcnRoaWtleWFuCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2No
-aXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFu
-L2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+Hey :-) ,
+
+Am Montag, 7. Oktober 2024, 12:28:19 CEST schrieb Diederik de Haas:
+> Except for some compatibles, the "brcm,bluetooth.yaml" binding doesn't
+> allow the 'reset-gpios' property, so replace the invalid ones with the
+> 'shutdown-gpios' property.
+
+this probably needs more explanation in the commit message, because
+by name I'd expect reset and shutdown being different functionalities.
+
+But for these cases, things should be good, simply because when looking
+at the bt_enable_h pinctrl, that pin really provides the shutdown
+functionality.
+
+
+Heiko
+
+
+> Signed-off-by: Diederik de Haas <didi.debian@cknow.org>
+> ---
+>  arch/arm64/boot/dts/rockchip/rk3566-pinenote.dtsi  | 2 +-
+>  arch/arm64/boot/dts/rockchip/rk3566-radxa-cm3.dtsi | 2 +-
+>  2 files changed, 2 insertions(+), 2 deletions(-)
+> 
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3566-pinenote.dtsi b/arch/arm64/boot/dts/rockchip/rk3566-pinenote.dtsi
+> index 7381bb751852..100a2774bbb5 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3566-pinenote.dtsi
+> +++ b/arch/arm64/boot/dts/rockchip/rk3566-pinenote.dtsi
+> @@ -686,9 +686,9 @@ bluetooth {
+>  		clock-names = "lpo";
+>  		device-wakeup-gpios = <&gpio0 RK_PC2 GPIO_ACTIVE_HIGH>;
+>  		host-wakeup-gpios = <&gpio0 RK_PC3 GPIO_ACTIVE_HIGH>;
+> -		reset-gpios = <&gpio0 RK_PC4 GPIO_ACTIVE_LOW>;
+>  		pinctrl-0 = <&bt_enable_h>, <&bt_host_wake_l>, <&bt_wake_h>;
+>  		pinctrl-names = "default";
+> +		shutdown-gpios = <&gpio0 RK_PC4 GPIO_ACTIVE_LOW>;
+>  		vbat-supply = <&vcc_wl>;
+>  		vddio-supply = <&vcca_1v8_pmu>;
+>  	};
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3566-radxa-cm3.dtsi b/arch/arm64/boot/dts/rockchip/rk3566-radxa-cm3.dtsi
+> index d09e6542e236..3e0cbfff96d8 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3566-radxa-cm3.dtsi
+> +++ b/arch/arm64/boot/dts/rockchip/rk3566-radxa-cm3.dtsi
+> @@ -402,9 +402,9 @@ bluetooth {
+>  		clock-names = "lpo";
+>  		device-wakeup-gpios = <&gpio2 RK_PB2 GPIO_ACTIVE_HIGH>;
+>  		host-wakeup-gpios = <&gpio2 RK_PB1 GPIO_ACTIVE_HIGH>;
+> -		reset-gpios = <&gpio2 RK_PC0 GPIO_ACTIVE_LOW>;
+>  		pinctrl-names = "default";
+>  		pinctrl-0 = <&bt_host_wake_h &bt_reg_on_h &bt_wake_host_h>;
+> +		shutdown-gpios = <&gpio2 RK_PC0 GPIO_ACTIVE_LOW>;
+>  		vbat-supply = <&vcc_3v3>;
+>  		vddio-supply = <&vcc_1v8>;
+>  	};
+> 
+
+
+
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
