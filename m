@@ -4,91 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 92572CFB43F
-	for <linux-rockchip@archiver.kernel.org>; Mon,  7 Oct 2024 08:21:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 91610CFB440
+	for <linux-rockchip@archiver.kernel.org>; Mon,  7 Oct 2024 08:44:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Date:To:From:Subject:Message-ID:Reply-To:Cc:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=1q5pz/k8c59k8vLF0OH6Rk6XKUwB7VbrhmZOW+R4VqQ=; b=1+OD8W1T7g88Zy
-	ZA6F/ky78Gexwk2oW960QLpyxE3/+tTKwXUQG9Og7F1S6mnFgaezwGTABjbTeuQ80oeISL/FsERcj
-	8gB3EaOqqZvYQXVrCMP4MUZhCJjo/eVjNMwuFay/dLhOdVlUbCKY8m4/WTRZkN4NA5w7lYLqYoM3g
-	hjbCQJ8BFMDUV4mvYuFbV0AVY61fjLNO4HnmRoKOfeuhUkJy70iWA/29yPbHeaSr6Le6a0047chpZ
-	y6EsoaZe675VInxxjOK06N+Hl54mBvp8HoYdMbpMRN1x3knfIWQjQXKfqdkckLqU6ED1Pa3lh7YIy
-	Yb0yd/hgphEvxXnzqylQ==;
+	List-Owner; bh=PFVTKwACRwII6sJ2XK5X7N69+9JCrdpXYmb57vrZIY8=; b=ZpZbCVPRKqD4lG
+	uJzRERR2cw4tBv/oxumDAUQyh7e7fOJX9m3m0zzte2imv/zND4LjzalNZIcGV7Xs3b21Kq6NEyOjf
+	2po9dpWxIiJlgz0ZYFQz/5noSW/eR/qZ9y1tv8+DYNvr6zUKAyfkhXlSqSG5mHbgiypE7rJt90FaS
+	ueI+DG4X5dYaWSgIwFRY+ljCrnCttxBLcec2IT2KoBu9bxLV2E3fwPxYmCSiHituyjSZ5v/os1Zwi
+	lOD9iTAGBkehJ/uBC7CrPWaUn1yLSPw2JXz6wVm4eO62IANYQgNU/xVTTZ7YUtRRxk7ENyiB0YggV
+	04nCIr05uzawmdSLP3fg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1sxj04-00000001kKo-0xeK;
-	Mon, 07 Oct 2024 08:21:52 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1sxjLj-00000001okY-0u7U;
+	Mon, 07 Oct 2024 08:44:15 +0000
+Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1sxikj-00000001hFr-0PAz;
-	Mon, 07 Oct 2024 08:06:02 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
-	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=ZkOxRoRypHAVQgVjyqb7heF/q9DLPK8SmPxFVAuphQI=; b=G/k1s40Ulb10wWe2CvPP9H8zku
-	QyoRAgzReOYMUcvY1lT5FklGPJb9trwS8HWM5iKC2m2ws7E5TBIouShElZ6rUqd7aL1NY7tFFpVKE
-	wqInKhrzG35pjz7jHf4OdIyFp3xZtpyrQXwDcYsiY6x/GxEZc2Jw5mZA5rcEBBcKbM2WHNg1Fdfs2
-	kNbk1NVQV/19IsFaacmsHaoCamjIA1H2jsOPU65USw0roLxH03+ZCKnQBXaVtJ7nLQr2BB8WSp9q/
-	pK0Qc7UupO3XNZW14pv9HT2V5bQRXcSXjTwLYdsqnGept/bPGsRtLZYkPMGkRaEsXJw7YIF5kf8hC
-	Rg1jWntw==;
-Received: from i5e860d18.versanet.de ([94.134.13.24] helo=phil.lan)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	id 1sxjLg-00000001ojT-1rDK
+	for linux-rockchip@lists.infradead.org;
+	Mon, 07 Oct 2024 08:44:13 +0000
+Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
+	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+	(Exim 4.92)
+	(envelope-from <p.zabel@pengutronix.de>)
+	id 1sxjLV-0000hz-NP; Mon, 07 Oct 2024 10:44:01 +0200
+Received: from [2a0a:edc0:0:900:1d::4e] (helo=lupine)
+	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1sxik7-0004Pv-F9; Mon, 07 Oct 2024 10:05:23 +0200
-From: Heiko Stuebner <heiko@sntech.de>
-To: Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
-	Geert Uytterhoeven <geert+renesas@glider.be>,
-	Shengjiu Wang <shengjiu.wang@gmail.com>,
-	Shawn Guo <shawnguo@kernel.org>,
-	Adam Ford <aford173@gmail.com>,
-	Rob Herring <robh@kernel.org>,
-	Xiubo Li <Xiubo.Lee@gmail.com>,
-	Adrien Grassein <adrien.grassein@gmail.com>,
-	Lubomir Rintel <lkundrak@v3.sk>,
-	Masami Hiramatsu <mhiramat@kernel.org>,
-	Magnus Damm <magnus.damm@gmail.com>,
-	Takashi Iwai <tiwai@suse.com>,
-	Jaroslav Kysela <perex@perex.cz>,
-	Nicolin Chen <nicoleotsuka@gmail.com>,
-	Fabio Estevam <festevam@gmail.com>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Pengutronix Kernel Team <kernel@pengutronix.de>,
-	Paul Cercueil <paul@crapouillou.net>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Liam Girdwood <lgirdwood@gmail.com>,
-	Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>,
-	Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Mark Brown <broonie@kernel.org>
-Cc: Heiko Stuebner <heiko@sntech.de>,
-	linux-sound@vger.kernel.org,
-	alsa-devel@alsa-project.org,
-	linux-kernel@vger.kernel.org,
-	linux-mips@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	imx@lists.linux.dev,
-	linux-renesas-soc@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linuxppc-dev@lists.ozlabs.org
-Subject: Re: (subset) [PATCH treewide 00/11] ASoC: Clean up {hp,mic}-det-gpio handling
-Date: Mon,  7 Oct 2024 10:05:20 +0200
-Message-ID: <172814935870.2376693.17979672250689687487.b4-ty@sntech.de>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <cover.1727438777.git.geert+renesas@glider.be>
-References: <cover.1727438777.git.geert+renesas@glider.be>
+	(envelope-from <p.zabel@pengutronix.de>)
+	id 1sxjLT-0005S8-Hz; Mon, 07 Oct 2024 10:43:59 +0200
+Received: from pza by lupine with local (Exim 4.96)
+	(envelope-from <p.zabel@pengutronix.de>)
+	id 1sxjLT-000Bl4-1Z;
+	Mon, 07 Oct 2024 10:43:59 +0200
+Message-ID: <64c560c483f09d90c788eb949890d00f3b94cc87.camel@pengutronix.de>
+Subject: Re: [PATCH v6 RESET 2/3] PCI: rockchip: Simplify reset control
+ handling by using reset_control_bulk*() function
+From: Philipp Zabel <p.zabel@pengutronix.de>
+To: Anand Moon <linux.amoon@gmail.com>, Shawn Lin
+ <shawn.lin@rock-chips.com>,  Lorenzo Pieralisi <lpieralisi@kernel.org>,
+ Krzysztof =?UTF-8?Q?Wilczy=C5=84ski?= <kw@linux.com>, Manivannan Sadhasivam
+ <manivannan.sadhasivam@linaro.org>, Rob Herring <robh@kernel.org>, Bjorn
+ Helgaas <bhelgaas@google.com>, Heiko Stuebner <heiko@sntech.de>, "open
+ list:PCIE DRIVER FOR ROCKCHIP" <linux-pci@vger.kernel.org>, "open list:PCIE
+ DRIVER FOR ROCKCHIP" <linux-rockchip@lists.infradead.org>,  "moderated
+ list:ARM/Rockchip SoC support" <linux-arm-kernel@lists.infradead.org>, open
+ list <linux-kernel@vger.kernel.org>
+Date: Mon, 07 Oct 2024 10:43:59 +0200
+In-Reply-To: <20241006182445.3713-3-linux.amoon@gmail.com>
+References: <20241006182445.3713-1-linux.amoon@gmail.com>
+	 <20241006182445.3713-3-linux.amoon@gmail.com>
+User-Agent: Evolution 3.46.4-2 
 MIME-Version: 1.0
+X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
+X-SA-Exim-Mail-From: p.zabel@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241007_010601_176535_45AD6A5A 
-X-CRM114-Status: GOOD (  12.29  )
+X-CRM114-CacheID: sfid-20241007_014412_504602_F9B5FADD 
+X-CRM114-Status: GOOD (  15.78  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,28 +83,59 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, 27 Sep 2024 14:42:15 +0200, Geert Uytterhoeven wrote:
-> 	Hi all,
+On So, 2024-10-06 at 23:54 +0530, Anand Moon wrote:
+> Refactor the reset control handling in the Rockchip PCIe driver,
+> introducing a more robust and efficient method for assert and
+> deassert reset controller using reset_control_bulk*() API. Using the
+> reset_control_bulk APIs, the reset handling for the core clocks reset
+> unit becomes much simpler.
 > 
-> The "gpio" suffix for GPIO consumers was deprecated a while ago, in
-> favor of the "gpios" suffix.  However, there are still several users of
-> the "hp-det-gpio" and "mic-det-gpio" properties, in DT bindings,
-> drivers, and DT source files.
+> Spilt the reset controller in two groups as pre the RK3399 TRM.
+> After power up, the software driver should de-assert the reset of PCIe PHY,
+> then wait the PLL locked by polling the status, if PLL
+> has locked, then can de-assert the rest reset simultaneously
+> driver need to De-assert the reset pins simultionaly.
 > 
-> [...]
+>   PIPE_RESET_N/MGMT_STICKY_RESET_N/MGMT_RESET_N/RESET_N.
+> 
+> Signed-off-by: Anand Moon <linux.amoon@gmail.com>
+> ---
+> V6: Add reason for the split of the RESET pins.
+> v5: Fix the De-assert reset core as per the TRM
+>     De-assert the PIPE_RESET_N/MGMT_STICKY_RESET_N/MGMT_RESET_N/RESET_N
+>     simultaneously.
+> v4: use dev_err_probe in error path.
+> v3: Fix typo in commit message, dropped reported by.
+> v2: Fix compilation error reported by Intel test robot
+>     fixed checkpatch warning
+> ---
+>  drivers/pci/controller/pcie-rockchip.c | 151 +++++--------------------
+>  drivers/pci/controller/pcie-rockchip.h |  26 +++--
+>  2 files changed, 49 insertions(+), 128 deletions(-)
+> 
+> diff --git a/drivers/pci/controller/pcie-rockchip.c b/drivers/pci/controller/pcie-rockchip.c
+> index 2777ef0cb599..87daa3288a01 100644
+> --- a/drivers/pci/controller/pcie-rockchip.c
+> +++ b/drivers/pci/controller/pcie-rockchip.c
+[...]
+> @@ -69,55 +69,23 @@ int rockchip_pcie_parse_dt(struct rockchip_pcie *rockchip)
+>  	if (rockchip->link_gen < 0 || rockchip->link_gen > 2)
+>  		rockchip->link_gen = 2;
+>  
+> -	rockchip->core_rst = devm_reset_control_get_exclusive(dev, "core");
+> -	rockchip->mgmt_rst = devm_reset_control_get_exclusive(dev, "mgmt");
+> -	rockchip->mgmt_sticky_rst = devm_reset_control_get_exclusive(dev,
+> -	rockchip->pipe_rst = devm_reset_control_get_exclusive(dev, "pipe");
+> -	rockchip->pm_rst = devm_reset_control_get_exclusive(dev, "pm");
+> +	err = devm_reset_control_bulk_get_optional_exclusive(dev,
+[...]
 
-Applied, thanks!
 
-[06/11] arm64: dts: rockchip: Switch to simple-audio-card,hp-det-gpios
-        commit: 7ac5c0a592f73fdc52393f6469ce8211ff3e771f
-[07/11] arm64: dts: rockchip: Switch to hp-det-gpios
-        commit: 3ca743f8a5b568dc5e5d5f1bab0298a4a43c2360
+Why are the reset controls optional now? The commit message doesn't
+mention this change.
 
-after the binding change from patch 02 got merged into the sound tree
-
-Best regards,
--- 
-Heiko Stuebner <heiko@sntech.de>
+regards
+Philipp
 
 _______________________________________________
 Linux-rockchip mailing list
