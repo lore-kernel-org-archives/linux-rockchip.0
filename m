@@ -4,80 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C67BCCFB43F
-	for <linux-rockchip@archiver.kernel.org>; Mon,  7 Oct 2024 09:51:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3EDE8CFB440
+	for <linux-rockchip@archiver.kernel.org>; Mon,  7 Oct 2024 10:02:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=0hE2fVcGLUED5RSmDuCm1PSdJxEhhFnstvU924JYvSw=; b=qdXmDdDA1b2jwi
-	av0SHK86fci1oSvdabLhaa7SuCrLSRJRCVot58NF3qsM6n+GiXws2AMouC8COtr3BIk26BDC50bjN
-	3xjja/Zdg7h61SYzq25yaxlMISGbrZPyK90ahHdju4OU0cpTqH5ZK5vCq9axSUevT2bGC5yJhKuVi
-	7HpuqMOpM87GyREDQ7Gl+l8fOWWwc9QkIFjpGGgezeGgAITY8TI5f+fH0LKohxO3sKUPsrfcJ7rIP
-	/Zp3DaFhtnxz0lMZAqH00Ks1lKs+g44UA6M2JFLLgNc6vecq7i1iarD9OCKiEE1R8S5B6LSlZDHDi
-	VH4jIQx0HPbTD/mon5rQ==;
+	List-Owner; bh=h0GcF99xJc+UO8MnyxOQvSCF3LxSt7x/XdAJgrT04FQ=; b=KbMPb0VNMEiUb9
+	zIoNkx3HRKKampZwdHcKxux5BWzOqPaCGlD8Vk4dgfgjTCYqOXFOOfPfLsQs8tvst5REzNhbfnPfO
+	LQFOBsLFmknjwMw+QFxD8o67ao2Uojrh4cLS3NWeES8RsfYok/57BFuZ8ph77bnulsGKcDcMBERvG
+	73JDq6Px/IkeEt13VZoLYr1ycc1iOUZ4Q5LZy0SiFpvyl6nIPQiiU+W0jlhYCCSKQ6S4YnvAtqBD5
+	JB9YD0qMpdDcTq895U2jv24t9vWwxLW5W3HOC+wvg4O4iIbavtkVdjTESYKOrTps0hzK5MHGyKIv/
+	xlzUeyAPuyI8RoYXdO0w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1sxkOY-00000001xhb-3584;
-	Mon, 07 Oct 2024 09:51:14 +0000
-Received: from mail-yw1-x1130.google.com ([2607:f8b0:4864:20::1130])
+	id 1sxkZQ-00000001zNA-254Z;
+	Mon, 07 Oct 2024 10:02:28 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1sxkNH-00000001xdR-34ue
+	id 1sxkZN-00000001zKx-1iNj
 	for linux-rockchip@lists.infradead.org;
-	Mon, 07 Oct 2024 09:49:56 +0000
-Received: by mail-yw1-x1130.google.com with SMTP id 00721157ae682-6e2ef9af517so7297547b3.1
-        for <linux-rockchip@lists.infradead.org>; Mon, 07 Oct 2024 02:49:54 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1728294593; x=1728899393; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=k8brDWLlZk0dTO8J46y2uPWyWt9rqKJ6ybBhtU5TnAA=;
-        b=D/AsuUPA6aR7/kGafyYesgSeAqFNcKH+9yDdLOfHFbDllumnET5u0rIMCF2Kc1QJyn
-         93dZLRhfkXaU/HPnc3NnvdP1p5WB3SsVDKiPKaZDE6N9GtCziW9PX2qqRyKqRHzboSeq
-         KCPxp9MjjrBbxumcqhRy5exegJH/zxClj2tlFNR6DxxxOQ8pxBihTHheDde4y36Z5bqr
-         lD9cNYd9ykXNZBIeFpv9i6f9R34NJ73JwALENw21mx2r0TLtbwk4c7BROotrBbrnuZiG
-         WwUvhoXk0C+LGzhtAPzRc5JrSsxAFS7FTnBTmTbxRjzI6m0e08fZu3PArOjPfkEjKn64
-         jeWg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1728294593; x=1728899393;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=k8brDWLlZk0dTO8J46y2uPWyWt9rqKJ6ybBhtU5TnAA=;
-        b=n7JZSdSSYrLyU1c1JTn/Ui+QAipXcSxrxoEKw7CYcNl2a8gJhUp0v1vulyMKBrNOsX
-         IXJ7EAJ1hX92coDnKQ5yKG3Alt1PH36BIP5aoA5ZS3Sefhu6hYPj558C1bXt6iIvhgJ7
-         A0FSdsVlwubjmZm3/fyEaJqhpy6Q0EeU6MYhzCqtpYYr69QgyP6bWAIQsa6huF+s+2EU
-         wIbj4DFx1SgdPaEUCGD7HWQ1lfkOS+hXC+E7oWkmfa7yFg4Q2AiN0YLVPkPBXewVZxP0
-         hbbMPuOQDTVqaczuQ6xNn/V7pATk6gF9CBXRBwYIlTnNDyFm68oYjpjEviR9yrRBaxFY
-         r/Ng==
-X-Forwarded-Encrypted: i=1; AJvYcCWhE0YoSA/PeinERA4p9eTrAYqtXH2VmL9EKk8Zrg9QQGssQEy6KTgIZ21YSKWxVGCIDFXsdtcJvp5z8Dse8g==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxOapd4zGpGEQND/bKzDEe6cXIpb8sJNXlLAKKNajmdoLb4fcLX
-	UUv8yQw5dScNJGNIzLTpyV0UmoXP+9Oh6QoWhXMWNeCq+jjze8n0h9J9D8x24uyfskyQ0VmJeC4
-	eom6vmzThTJR2IPkLbyq33W1vjK5t6aby0Ewoxw==
-X-Google-Smtp-Source: AGHT+IGSGgIFN4afz5XWgt9KmsO3+YZJnn8Ko+Z2HXn7fkNdGM2ZDBjhHypaK+quYOHT6jssiLjEWS446xsZEN9pFLg=
-X-Received: by 2002:a05:6902:20c4:b0:e28:6c15:ac6c with SMTP id
- 3f1490d57ef6-e289393a731mr7649236276.40.1728294593313; Mon, 07 Oct 2024
- 02:49:53 -0700 (PDT)
+	Mon, 07 Oct 2024 10:02:26 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 620765C5B9B;
+	Mon,  7 Oct 2024 10:02:20 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 02A76C4CECD;
+	Mon,  7 Oct 2024 10:02:20 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1728295344;
+	bh=gC8kwKS4o4dn68X8nIgu0t96ZK6t8rNnQHjcCJTC4vk=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=Ciazen3US+Hkutv+NLfNYb0iyvcKICwKcuw1Z3QvDhL7d0pkJ6BTWLDCDP9UjVRr/
+	 R0CfmKOdjWNqskRkxybJLmI59yPGg76XVDMaZDAW+bZ3rVNj6CwQInUbflJbfjtDmA
+	 9Nn2PyxayDcyJqWYsQjg2lU9NN8ROTvefXs1Ye8gJ/WrMxpcRJzZtv5rOVG6qvcTZm
+	 +XKl7sLScmzNWSfCPiKF090mJKZheUnGFP32YKKc/ReefYTfgZySZLFJIsikj1slYN
+	 5ntWTyJDA5Imt7NU4cD/MH1NTf8WCtx2QxN2ogOaFzX0Thx2HTyEC1+YG02DirxURk
+	 7wIktFyWtEvEw==
+Date: Mon, 7 Oct 2024 12:02:18 +0200
+From: Niklas Cassel <cassel@kernel.org>
+To: Damien Le Moal <dlemoal@kernel.org>
+Cc: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Kishon Vijay Abraham I <kishon@kernel.org>,
+	Shawn Lin <shawn.lin@rock-chips.com>,
+	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
+	Bjorn Helgaas <bhelgaas@google.com>,
+	Heiko Stuebner <heiko@sntech.de>, linux-pci@vger.kernel.org,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	Rick Wertenbroek <rick.wertenbroek@gmail.com>,
+	Wilfred Mallawa <wilfred.mallawa@wdc.com>
+Subject: Re: [PATCH v3 00/12]
+Message-ID: <ZwOxqvzBG4i_UGKc@ryzen>
+References: <20241007041218.157516-1-dlemoal@kernel.org>
 MIME-Version: 1.0
-References: <20240912152538.1.I858c2a0bf83606c8b59ba1ab6944978a398d2ac5@changeid>
- <4920950.GXAFRqVoOG@diego> <CAPDyKFosf_+m9j8YgHa-PsC2SV8+Aou2O6bTbMfzGBpQ2sY8YA@mail.gmail.com>
- <69d06c04-cc8c-4435-a622-33d5dcd1fa24@arm.com>
-In-Reply-To: <69d06c04-cc8c-4435-a622-33d5dcd1fa24@arm.com>
-From: Ulf Hansson <ulf.hansson@linaro.org>
-Date: Mon, 7 Oct 2024 11:49:17 +0200
-Message-ID: <CAPDyKFoU=AoQqXov_-qFo8xjEbiDAk9mtTtCR9HAYz_gg-bnzQ@mail.gmail.com>
-Subject: Re: [PATCH] mmc: dw_mmc: rockchip: Keep controller working for card detect
-To: Robin Murphy <robin.murphy@arm.com>
-Cc: Kever Yang <kever.yang@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
-	linux-rockchip@lists.infradead.org, Jaehoon Chung <jh80.chung@samsung.com>, 
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	linux-mmc@vger.kernel.org
+Content-Disposition: inline
+In-Reply-To: <20241007041218.157516-1-dlemoal@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241007_024955_778030_4E4DE648 
-X-CRM114-Status: GOOD (  23.39  )
+X-CRM114-CacheID: sfid-20241007_030225_565307_B8853C3D 
+X-CRM114-Status: GOOD (  20.59  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,55 +78,82 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gRnJpLCA0IE9jdCAyMDI0IGF0IDE5OjM0LCBSb2JpbiBNdXJwaHkgPHJvYmluLm11cnBoeUBh
-cm0uY29tPiB3cm90ZToKPgo+IE9uIDAyLzEwLzIwMjQgMTA6NTUgcG0sIFVsZiBIYW5zc29uIHdy
-b3RlOgo+ID4gT24gU2F0LCAxNCBTZXB0IDIwMjQgYXQgMTM6NTIsIEhlaWtvIFN0w7xibmVyIDxo
-ZWlrb0BzbnRlY2guZGU+IHdyb3RlOgo+ID4+Cj4gPj4gQW0gRG9ubmVyc3RhZywgMTIuIFNlcHRl
-bWJlciAyMDI0LCAwOToyNjoxNCBDRVNUIHNjaHJpZWIgS2V2ZXIgWWFuZzoKPiA+Pj4gSW4gb3Jk
-ZXIgdG8gbWFrZSB0aGUgU0QgY2FyZCBob3RwbHVnIHdvcmtpbmcgd2UgbmVlZCB0aGUgY2FyZCBk
-ZXRlY3QKPiA+Pj4gZnVuY3Rpb24gbG9naWMgaW5zaWRlIHRoZSBjb250cm9sbGVyIGFsd2F5cyB3
-b3JraW5nLiBUaGUgcnVudGltZSBQTSB3aWxsCj4gPj4+IGdhdGUgdGhlIGNsb2NrIGFuZCB0aGUg
-cG93ZXIgZG9tYWluLCB3aGljaCBzdG9wcyBjb250cm9sbGVyIHdvcmtpbmcgd2hlbgo+ID4+PiBu
-byBkYXRhIHRyYW5zZmVyIGhhcHBlbi4KPiA+Pj4KPiA+Pj4gU28gbGV0cyBza2lwIGVuYWJsZSBy
-dW50aW1lIFBNIHdoZW4gdGhlIGNhcmQgbmVlZHMgdG8gZGV0ZWN0ZWQgYnkgdGhlCj4gPj4+IGNv
-bnRyb2xsZXIgYW5kIHRoZSBjYXJkIGlzIHJlbW92YWJsZS4KPiA+Pj4KPiA+Pj4gU2lnbmVkLW9m
-Zi1ieTogS2V2ZXIgWWFuZyA8a2V2ZXIueWFuZ0Byb2NrLWNoaXBzLmNvbT4KPiA+Pgo+ID4+IFNv
-IGZvciB0aGUgY2hhbmdlIGl0c2VsZiB0aGlzIGxvb2tzIGdvb2QsIGkuZS4gaXQgZml4ZXMgYW4g
-aXNzdWUgZm9yIGJhb3JkcyByZWx5aW5nCj4gPj4gb24gdGhlIG9uLWNoaXAtY2FyZC1kZXRlY3Qu
-Cj4gPj4KPiA+Pgo+ID4+IEJ1dCBmb3IgYm9hcmRzIGRvaW5nIHRoYXQsIHRoZSBjb250cm9sbGVy
-IHdpbGwgYmUgcnVubmluZyBfYWxsIHRoZSB0aW1lXwo+ID4+IGV2ZW4gaWYgdGhlcmUgaXMgbmV2
-ZXIgYW55IGNhcmQgaW5zZXJ0ZWQuCj4gPj4KPiA+PiBTbyByZWx5aW5nIG9uIHRoZSBvbi1zb2Mg
-Y2FyZC1kZXRlY3Qgd2lsbCBlZmZlY3RpdmVseSBpbmNyZWFzZSB0aGUgcG93ZXItCj4gPj4gY29u
-c3VtcHRpb24gb2YgdGhlIGJvYXJkIC0gZXZlbiBpdCBpdCdsbCBuZXZlciB1c2UgYW55IHNkLWNh
-cmQ/Cj4gPgo+ID4gR29vZCBwb2ludCEgQSBiZXR0ZXIgb3B0aW9uIGlzIHRvIHVzZSBhIHBvbGxp
-bmcgYmFzZWQgbWVjaGFuaXNtIC0gYW5kCj4gPiB3ZSBoYXZlIE1NQ19DQVBfTkVFRFNfUE9MTCBm
-b3IgZXhhY3RseSB0aGF0Lgo+ID4KPiA+IE1vcmVvdmVyLCBvbiBEVCBiYXNlZCBwbGF0Zm9ybXMg
-b25lIGNhbiBldmVuIHVzZSB0aGUgImJyb2tlbi1jZCIKPiA+IHByb3BlcnR5IHRvIGluZGljYXRl
-IHRoaXMuCj4KPiBFeGNlcHQgdGhhdCBnb2VzIGZ1cnRoZXIgdGhhbiBpcyBuZWVkZWQgaGVyZSwg
-c2luY2UgaXQgd291bGQgZmFsbCBiYWNrCj4gZW50aXJlbHkgdG8gc29mdHdhcmUtYmFzZWQgcG9s
-bGluZyBmb3IgY2FyZCBwcmVzZW5jZS4gSW4gdGhpcyBjYXNlIHRoZQo+IENEIGZ1bmN0aW9uIGlz
-IG5vdCBicm9rZW4gaW4gdGVybXMgb2YgYWN0dWFsbHkgZGV0ZWN0aW5nIGEgY2FyZCwgaXQganVz
-dAo+IGRvZXNuJ3Qgd29yayB0byB3YWtlIHRoZSBjb250cm9sbGVyIHVwIGZyb20gc3VzcGVuZCBi
-ZWNhdXNlIGl0IGNhbid0Cj4gZmlyZSBpdHMgb3duIGludGVycnVwdCB3aGlsZSBwb3dlcmVkIG9m
-Zi4gSW4gcHJpbmNpcGxlIGFsbCB3ZSBzaG91bGQKPiByZXF1aXJlIGhlcmUgaXMgdG8gcGVyaW9k
-aWNhbGx5IHJlc3VtZS9zdXNwZW5kIHRoZSBkZXZpY2UsIHRvIHByb3ZpZGUgYQo+IHdpbmRvdyBm
-b3IgdGhlIGludGVycnVwdCB0byB3b3JrIGFuZCBub3JtYWwgb3BlcmF0aW9uIHRvIHRha2Ugb3Zl
-ciBpZgo+IGFwcHJvcHJpYXRlLgoKV2VsbCwgSSB3b3VsZCBub3Qgb2JqZWN0IGlmICJicm9rZW4t
-Y2QiIHdvdWxkIGJlIHVzZWQgZm9yIHRoaXMgY2FzZQp0b28uIEkgYmVsaWV2ZSBpdCBhbHJlYWR5
-IGlzLgoKQW5vdGhlciBvcHRpb24gd291bGQgYmUgdG8gbG9vayBhdCBhIGNvbXBhdGlibGUgc3Ry
-aW5nIGFuZCBzZXQKTU1DX0NBUF9ORUVEU19QT0xMIGJhc2VkIG9uIHRoYXQuCgo+Cj4gT2YgY291
-cnNlIHRoZSByZWFsbHkgY2xldmVyIHdheSB3b3VsZCBiZSBmb3Igc3VzcGVuZCB0byBzd2l0Y2gg
-dGhlIHBpbgo+IGludG8gR1BJTyBtb2RlLCBhbmQgc2V0IHRoZSBHUElPIGludGVycnVwdCBhcyBh
-IHdha2V1cCB0byB0cmlnZ2VyIHJlc3VtZQo+IGFuZCBzd2l0Y2ggaXQgYmFjayBhZ2FpbiwgYnV0
-IHBlcmhhcHMgdGhhdCdzIGEgYml0IHRyaWNreSB3aXRob3V0Cj4gZXhwbGljaXQgcGluY3RybCBz
-dGF0ZXMgaW4gdGhlIERUIDovCgpSaWdodC4gQSBkZWRpY2F0ZWQgR1BJTyBwaW4gZm9yIHRoZSBj
-YXJkIGRldGVjdCBpcyBjZXJ0YWlubHkgdGhlCnByZWZlcnJlZCBtZXRob2QsIGlmIHlvdSBjYXJl
-IGFib3V0IG5vdCB3YXN0aW5nIHBvd2VyLgoKS2luZCByZWdhcmRzClVmZmUKCl9fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxp
-bmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5p
-bmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+On Mon, Oct 07, 2024 at 01:12:06PM +0900, Damien Le Moal wrote:
+> This patch series is the second part of the former version 2 of the
+> patch series "Improve PCI memory mapping API". This second part is split
+> out as it deals solely with the rockchip/rk3399 PCI endpoint controller
+> driver.
+
+Since this series depends on:
+[1] https://lore.kernel.org/linux-pci/20241007040319.157412-1-dlemoal@kernel.org/
+
+I think that you should have added a link to that series in this cover letter,
+and more clearly state that this series depends on [1].
+
+(Right now, someone might think that this series could be applied standalone.)
+
+
+Kind regards,
+Niklas
+
+
+> 
+> This series is organized as follows:
+>  - Patch 1 fixes the rockchip ATU programming
+>  - Patch 2, 3 and 4 introduce small code improvments
+>  - Patch 5 implements the .map_align() operation to make the rk3399
+>    endpoint controller driver fully functional
+>  - Patch 6, 7 and 8 refactor the driver code to make it more readable
+>  - Patch 9 introduces the .stop() endpoint controller operation to
+>    correctly disable the endpopint controller after use
+>  - Patch 10 improves link training
+>  - Patch 11 and 12 implement handling of the #PERST signal
+> 
+> Changes from v2:
+>  - Split the patch series
+>  - Corrected patch 11 to add the missing "maxItem"
+> 
+> Changes from v1:
+>  - Changed pci_epc_check_func() to pci_epc_function_is_valid() in patch
+>    1.
+>  - Removed patch "PCI: endpoint: Improve pci_epc_mem_alloc_addr()"
+>    (former patch 2 of v1)
+>  - Various typos cleanups all over. Also fixed some blank space
+>    indentation.
+>  - Added review tags
+> 
+> Damien Le Moal (11):
+>   PCI: rockchip-ep: Fix address translation unit programming
+>   PCI: rockchip-ep: Use a macro to define EP controller .align feature
+>   PCI: rockchip-ep: Improve rockchip_pcie_ep_unmap_addr()
+>   PCI: rockchip-ep: Improve rockchip_pcie_ep_map_addr()
+>   PCI: rockchip-ep: Implement the .map_align() controller operation
+>   PCI: rockchip-ep: Refactor rockchip_pcie_ep_probe() memory allocations
+>   PCI: rockchip-ep: Refactor rockchip_pcie_ep_probe() MSI-X hiding
+>   PCI: rockchip-ep: Refactor endpoint link training enable
+>   PCI: rockship-ep: Introduce rockchip_pcie_ep_stop()
+>   PCI: rockchip-ep: Improve link training
+>   PCI: rockchip-ep: Handle PERST# signal in endpoint mode
+> 
+> Wilfred Mallawa (1):
+>   dt-bindings: pci: rockchip,rk3399-pcie-ep: Add ep-gpios property
+> 
+>  .../bindings/pci/rockchip,rk3399-pcie-ep.yaml |   4 +
+>  drivers/pci/controller/pcie-rockchip-ep.c     | 392 +++++++++++++++---
+>  drivers/pci/controller/pcie-rockchip.c        |  17 +-
+>  drivers/pci/controller/pcie-rockchip.h        |  22 +
+>  4 files changed, 358 insertions(+), 77 deletions(-)
+> 
+> -- 
+> 2.46.2
+> 
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
