@@ -4,60 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7C933CEF14A
-	for <linux-rockchip@archiver.kernel.org>; Tue,  8 Oct 2024 09:49:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 31DDBCEF14D
+	for <linux-rockchip@archiver.kernel.org>; Tue,  8 Oct 2024 10:55:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
-	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=d3l1W3qHHzLnRC/TkNlGptCYya/aEBRbpYL9GrCZW5o=; b=KhujTWXfIgYnuO
-	+6ZHikWUfRQ7NjX9yePuxdBneYQxP7r5h2GT7JATThbioR2DIqQwQUE0w8wzlReq68vMV2e71RRTN
-	y+els2WMhqWDo7leS6tCNJk3d6k7Q5vWgRczbUrqJWHW8obUzjt6BAILzJaBa/GPSb1/iRWniG2Ex
-	VXfEXpKrm3y+fU+XALgUbezb/i02tv21+NG7QFAe9B6U0Yry35kdatAih+Ik9bMMw8jweLmPhhbaf
-	cym7aQNTunN/LUJ12VsdN8Gf97sT806TphMDcftV/BSzuWsyIM7RRmkjcQH0PbhFpYKUGdp5RcoLn
-	wSJlZRlUyn1HOEVPNjxw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=lsAD0RycihX+Afn/KPmYjSTdfmBKfRDI1+XCupoYv48=; b=gfkZFvxDnXlB7j
+	eCO6OZXfCgzLAuLeSk/vLnJdjL5WgShAysETIQu1h9EfkdUubVvHstohH1yTeizlkUlRV1BP5MYpJ
+	DC2NsjpTqfWdk0SYJ9V48CtSiqmbU2hnedobb1Ky+ifiJs8qcvJ6Wa1EjXnKpM84eLwzU9FQpvmCI
+	9k0uEpkFCQ3fGIVJjQw1t1DbA1XzNcHxHL81xccvYsg1dx/+9le9m20QNS5pJtHgAGejCp9DRzxDW
+	8rf8RyQWP5OFFx9fxHkeLuTAeAy43qhWkVgYaKEkhK2Hciwj33/vM+GidlFfJfFHu7DqJmwi9ZP5x
+	uNkmKk0jkqKF9Sz6kAUQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1sy6qG-00000005N0f-2I3h;
-	Tue, 08 Oct 2024 09:49:20 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1sy7s8-00000005WNl-0vDm;
+	Tue, 08 Oct 2024 10:55:20 +0000
+Received: from out-178.mta1.migadu.com ([95.215.58.178])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1sy6ov-00000005Mld-3Yza;
-	Tue, 08 Oct 2024 09:47:59 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 4018EA4344C;
-	Tue,  8 Oct 2024 09:47:48 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 609F5C4CEC7;
-	Tue,  8 Oct 2024 09:47:53 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1728380876;
-	bh=ykHfEdBXhl1fXBnfbo9MF4au8+Teea347Ae9LYLabp4=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=mAfwGVMLzJiAlIHjTdcfj2bCS5f//Oq8LHfH9ojls6gbEYbHS65QLvHAbMg86EIEM
-	 XRKZBJkiPNsj49zMtC8YXY0tXnEZN5z3hLbGNDU0myId76zlo8R73AT2sYIelkIecO
-	 cn9V6hZF6+FTi3Pk+4UEtzbrT4s517yG1fGMriQtGMUscV88brG5RLMJC03DFy2Zvy
-	 8OxiPWOStuqDL0+OQUAiV1//nFo1ku699FxJE31Ua88KMeBZH5bLSrbZfZunwsyddy
-	 4CvKR78HoY/4Ux1Q9dnOQ5aYPu/FnV9DRVf7k9C4CQftkeLvaeJAKMQSVr8GUpXetN
-	 +0mDZBZDJlKVg==
-From: Mark Brown <broonie@kernel.org>
-To: lgirdwood@gmail.com, Heiko Stuebner <heiko@sntech.de>
-Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org, 
- linux-sound@vger.kernel.org, devicetree@vger.kernel.org, 
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-rockchip@lists.infradead.org
-In-Reply-To: <20241007205639.2477635-1-heiko@sntech.de>
-References: <20241007205639.2477635-1-heiko@sntech.de>
-Subject: Re: [PATCH v2] ASoC: dt-bindings: rockchip,rk3036-codec: convert
- to yaml
-Message-Id: <172838087307.2574699.1959235888192800827.b4-ty@kernel.org>
-Date: Tue, 08 Oct 2024 10:47:53 +0100
+	id 1sy7s4-00000005WMB-05dq
+	for linux-rockchip@lists.infradead.org;
+	Tue, 08 Oct 2024 10:55:18 +0000
+X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow.org; s=key1;
+	t=1728384912;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=AGz7VCfXaXG3LvRwq27Msjm5+K1AK3Eq82mj4eAkW6Q=;
+	b=Y/NbM2yml6SAoeDwHOd1GN/bYa2a3RWcQpati6LXD072IOFAPfEMH9caLPqAD9Mrj/gObo
+	ko9wYNMPeVOh2r6jKdW/0dAMqzy8TiQgH85ZNCogV7CxBJIC3kNF644oWiiwvFqLNkjPsd
+	6gl/a1c7aigMwXh2IMnc+v6zVz5rA7T7nVYhb8SyETAV/bM6KvAsI5LhSiIg155qSFxSJ1
+	RZ2Ug/RodUWESI7mt6xXD2mG6UgUFDd8tKBDK1g43t+WzODptvoSD0D3t1Lt/g/IYjSMmk
+	wuZ3Y1LB/+zS/NxVHGrAt0OxO274VZjmprD3MoR30HRqCr9IuOWENhjy0QreiA==
+From: Diederik de Haas <didi.debian@cknow.org>
+To: Heiko Stuebner <heiko@sntech.de>,
+	linux-rockchip@lists.infradead.org
+Cc: linux-arm-kernel@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Dragan Simic <dsimic@manjaro.org>,
+	Diederik de Haas <didi.debian@cknow.org>
+Subject: [PATCH v2 0/5] Drop deprecated 'rockchip' prefix from s-p-c PMIC property
+Date: Tue,  8 Oct 2024 12:48:00 +0200
+Message-ID: <20241008105450.20648-1-didi.debian@cknow.org>
 MIME-Version: 1.0
-X-Mailer: b4 0.15-dev-99b12
+X-Migadu-Flow: FLOW_OUT
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241008_024758_010717_B3467DF9 
-X-CRM114-Status: GOOD (  14.60  )
+X-CRM114-CacheID: sfid-20241008_035516_786564_F46C46CE 
+X-CRM114-Status: UNSURE (   4.62  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,45 +74,78 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, 07 Oct 2024 22:56:39 +0200, Heiko Stuebner wrote:
-> Convert the binding to yaml.
-> 
-> The codec seems to be from Innosilicon, but the compatible has ever only
-> been rockchip-based, as they sythesized the codec for the rk3036.
-> 
-> So the yaml file gets a name matching that compatible.
-> The only other notable change is the addition of the #sound-dai-cells
-> property, that is always required.
-> 
-> [...]
+Property 'rockchip,system-power-controller' was deprecated in commit
+961748bb1555 ("dt-bindings: mfd: rk8xx: Deprecate rockchip,system-power-controller")
 
-Applied to
+in the "rockchip,rk{805,808,809,817,818}.yaml" mtd bindings and its
+replacement is (just) 'system-power-controller'.
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
+Drop the 'rockchip,' prefix from the px30, rk33** and rk356x DT files
+which still used the deprecated variant.
 
-Thanks!
+Diederik de Haas (5):
+  arm64: dts: rockchip: px30: Drop rockchip prefix from s-p-c PMIC property
+  arm64: dts: rockchip: rk3328: Drop rockchip prefix from s-p-c PMIC property
+  arm64: dts: rockchip: rk3368: Drop rockchip prefix from s-p-c PMIC property
+  arm64: dts: rockchip: rk3399: Drop rockchip prefix from s-p-c PMIC property
+  arm64: dts: rockchip: rk356x: Drop rockchip prefix from s-p-c PMIC property
 
-[1/1] ASoC: dt-bindings: rockchip,rk3036-codec: convert to yaml
-      commit: 5cd575a87f141e438b3e062533bf0c6cc9eba99a
+ arch/arm64/boot/dts/rockchip/px30-engicam-px30-core.dtsi | 2 +-
+ arch/arm64/boot/dts/rockchip/px30-evb.dts                | 2 +-
+ arch/arm64/boot/dts/rockchip/px30-firefly-jd4-core.dtsi  | 2 +-
+ arch/arm64/boot/dts/rockchip/px30-ringneck.dtsi          | 2 +-
+ arch/arm64/boot/dts/rockchip/rk3328-a1.dts               | 2 +-
+ arch/arm64/boot/dts/rockchip/rk3328-evb.dts              | 2 +-
+ arch/arm64/boot/dts/rockchip/rk3328-nanopi-r2s.dts       | 2 +-
+ arch/arm64/boot/dts/rockchip/rk3328-orangepi-r1-plus.dts | 2 +-
+ arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts           | 2 +-
+ arch/arm64/boot/dts/rockchip/rk3328-rock-pi-e.dts        | 2 +-
+ arch/arm64/boot/dts/rockchip/rk3328-rock64.dts           | 2 +-
+ arch/arm64/boot/dts/rockchip/rk3368-geekbox.dts          | 2 +-
+ arch/arm64/boot/dts/rockchip/rk3368-lion.dtsi            | 2 +-
+ arch/arm64/boot/dts/rockchip/rk3368-px5-evb.dts          | 2 +-
+ arch/arm64/boot/dts/rockchip/rk3399-eaidk-610.dts        | 2 +-
+ arch/arm64/boot/dts/rockchip/rk3399-evb.dts              | 2 +-
+ arch/arm64/boot/dts/rockchip/rk3399-firefly.dts          | 2 +-
+ arch/arm64/boot/dts/rockchip/rk3399-hugsun-x99.dts       | 2 +-
+ arch/arm64/boot/dts/rockchip/rk3399-khadas-edge.dtsi     | 2 +-
+ arch/arm64/boot/dts/rockchip/rk3399-kobol-helios64.dts   | 2 +-
+ arch/arm64/boot/dts/rockchip/rk3399-leez-p710.dts        | 2 +-
+ arch/arm64/boot/dts/rockchip/rk3399-nanopi4.dtsi         | 2 +-
+ arch/arm64/boot/dts/rockchip/rk3399-orangepi.dts         | 2 +-
+ arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts     | 2 +-
+ arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts    | 2 +-
+ arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi            | 2 +-
+ arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi          | 2 +-
+ arch/arm64/boot/dts/rockchip/rk3399-rock-4c-plus.dts     | 2 +-
+ arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dtsi       | 2 +-
+ arch/arm64/boot/dts/rockchip/rk3399-rock960.dtsi         | 2 +-
+ arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dtsi       | 2 +-
+ arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi        | 2 +-
+ arch/arm64/boot/dts/rockchip/rk3399pro-vmarc-som.dtsi    | 2 +-
+ arch/arm64/boot/dts/rockchip/rk3566-lckfb-tspi.dts       | 2 +-
+ arch/arm64/boot/dts/rockchip/rk3566-lubancat-1.dts       | 2 +-
+ arch/arm64/boot/dts/rockchip/rk3566-pinenote.dtsi        | 2 +-
+ arch/arm64/boot/dts/rockchip/rk3566-pinetab2.dtsi        | 2 +-
+ arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts       | 2 +-
+ arch/arm64/boot/dts/rockchip/rk3566-quartz64-b.dts       | 2 +-
+ arch/arm64/boot/dts/rockchip/rk3566-radxa-cm3.dtsi       | 2 +-
+ arch/arm64/boot/dts/rockchip/rk3566-roc-pc.dts           | 2 +-
+ arch/arm64/boot/dts/rockchip/rk3566-soquartz.dtsi        | 2 +-
+ arch/arm64/boot/dts/rockchip/rk3568-bpi-r2-pro.dts       | 2 +-
+ arch/arm64/boot/dts/rockchip/rk3568-evb1-v10.dts         | 2 +-
+ arch/arm64/boot/dts/rockchip/rk3568-fastrhino-r66s.dtsi  | 2 +-
+ arch/arm64/boot/dts/rockchip/rk3568-lubancat-2.dts       | 2 +-
+ arch/arm64/boot/dts/rockchip/rk3568-nanopi-r5s.dtsi      | 2 +-
+ arch/arm64/boot/dts/rockchip/rk3568-odroid-m1.dts        | 2 +-
+ arch/arm64/boot/dts/rockchip/rk3568-radxa-cm3i.dtsi      | 2 +-
+ arch/arm64/boot/dts/rockchip/rk3568-roc-pc.dts           | 2 +-
+ arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts          | 2 +-
+ arch/arm64/boot/dts/rockchip/rk3568-wolfvision-pf5.dts   | 2 +-
+ 52 files changed, 52 insertions(+), 52 deletions(-)
 
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
-
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
+-- 
+2.45.2
 
 
 _______________________________________________
