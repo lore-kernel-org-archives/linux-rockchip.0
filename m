@@ -4,27 +4,27 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 67F7BCEF17E
-	for <linux-rockchip@archiver.kernel.org>; Tue,  8 Oct 2024 20:41:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6F754CEF17E
+	for <linux-rockchip@archiver.kernel.org>; Tue,  8 Oct 2024 20:42:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=1IM0OrzlMARCyTP/cKzBRYf+XaNpIXTDJQSS01m+dqc=; b=UFNebRcb+IkkRp
-	VmkoFqBCKaT2UNcK0FcxAQcJCqYbJYo3fH15TX5OfMdz7Pn2X189dy7Pe885zatqOzFWKam056v2z
-	JQvESY3zf7n6fdDjGgYVSSOP7Oja+fdjKfcDo6k5VMbNtsJqvQpPdgH2K28xtKDyOSN3pmFPz5doG
-	ojAm2nlS+l3rl/EEvYogG2IVtwrd4JMDPqJQWozCDyfAUyAnm/nwhtHjc7VkNvZlf4U8+ZnUosZDg
-	jwMPwvwTUH8LZLqTwfmahyBKqh7Af3hZ9FPVu5qDHdjsFTgG2thQckpQXUfEObKOnyp3GFgMp2hQb
-	Md9zB0iC2PZr96ifVoeA==;
+	List-Owner; bh=6v/7ZyJbzwMpYqaqQq1Ua3jwG7m8M8p8LFRSSVVKfzU=; b=jK1YAVd1C5qbnz
+	KotTQyepod1Yh4GASlFh8cIOjW775rKcfLIf8ScsQOmNHxBP175khvhlKYs/vPtS4uaWnlOtSpD07
+	P2UixfQRgdOLp07p1rOSdOrxpJE11kc3MCJjfpelH28RcghOXPX6J8mruP7gVa4mvDZKtLpccpx4/
+	9F1schel8NX/3+tp3EH7v+x4313R3t5RlCZ753lrS7XfGaazTzo9QApYhGh4YazRpV7yctIdqlAxe
+	YG3H4XNuWhL7uFAbsUEa0PRhQnVYmGsNwSTyPJnoX4sNH88BEo1U5gaGV9NXayDT2DpzDaDVbaB6C
+	8EJQ0mxH22dcwLSmOqrA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1syH1D-000000075Rs-0dE8;
-	Tue, 08 Oct 2024 20:41:19 +0000
+	id 1syH2T-000000075ey-471v;
+	Tue, 08 Oct 2024 20:42:37 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1syGzr-0000000759G-0r2r;
+	id 1syGzs-000000075AO-2GMD;
 	Tue, 08 Oct 2024 20:39:57 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Transfer-Encoding:MIME-Version:References:
@@ -32,33 +32,34 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
 	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=277QVKUgBZx9Kqmh10Kpiu8kjEqYEgwLRvpKlI61ue8=; b=o7h9IlgjVc1SIzTNCKVOgehWbk
-	xYBuL9RXaDHs+VW9PS7Hvn9QW/UIePNVYtyJIvrn8PT67J0IL1miaGCaoWdgfN6TkcStuFP40KVxV
-	3lQg5oTlOGxeG/Ekm7kLUnE5m4NbBL8w6y74XTdbiVMxZF5h321DE2kIEiZ+AmtFmMVVxZ6rbVP2+
-	8YVDf3qgN38u6F+DL+JGrlSMX/MPcNWxzhdv2EGqr/+VJ/kO0WynBGIkULRnlzo6Rw4+694OuGdBf
-	ipN8G4hNG/tjsjcds4ZFo0Q4pTBBr1KMSRmBv/3fTBEAq4jQn6sHgjJPjI9fbzYhl7YVzq41v6dPf
-	yi9joteg==;
+	bh=MkCaKskrO/nF9QQnRoBZ2O5aN148arkIhAAPWOoj440=; b=1svss9TRSdDFMG59J/YDEISSGa
+	DOGQzSUOW37901EZPDKCM/9xQFAX5VPyIMy6vaI4LXnXWnghjEOhf1hL2L1vtgRLWimAGucn7uuUE
+	6E7BQdgDGlA9I4Hi5kD0PF7zyM6ztcceO31pxSFfi0ab/yUFMyReIDcYXojRI/ljzDR1nIxREMoTf
+	ebWrnrPpu5EGL4mPsZEpDNeVaAR2IpWPEXsTUokPVPJfzvcoi8Hhl220yS/vzep/hkQEriz8RK8zT
+	Q9N4AJL2cfu3atZDdiVuIqZEyHBu/9tcdsjRO3UAcdl6SiWfH/tF223VN3VJ+etExe81tI/YJpPVV
+	lssjVf3A==;
 Received: from i53875ad9.versanet.de ([83.135.90.217] helo=phil.lan)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1syGzp-0007ua-TI; Tue, 08 Oct 2024 22:39:53 +0200
+	id 1syGzq-0007ua-7Q; Tue, 08 Oct 2024 22:39:54 +0200
 From: Heiko Stuebner <heiko@sntech.de>
 To: linux-rockchip@lists.infradead.org
 Cc: heiko@sntech.de,
 	linux-arm-kernel@lists.infradead.org,
 	devicetree@vger.kernel.org,
-	Chris Morgan <macromorgan@hotmail.com>
-Subject: [PATCH v2 01/14] arm64: dts: rockchip: fix i2c2 pinctrl-names property on anbernic-rg353p/v
-Date: Tue,  8 Oct 2024 22:39:27 +0200
-Message-ID: <20241008203940.2573684-2-heiko@sntech.de>
+	Furkan Kardame <f.kardame@manjaro.org>,
+	Elon Zhang <zhangzj@rock-chips.com>
+Subject: [PATCH v2 02/14] arm64: dts: rockchip: Drop regulator-init-microvolt from two boards
+Date: Tue,  8 Oct 2024 22:39:28 +0200
+Message-ID: <20241008203940.2573684-3-heiko@sntech.de>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20241008203940.2573684-1-heiko@sntech.de>
 References: <20241008203940.2573684-1-heiko@sntech.de>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241008_133955_268184_F167F749 
-X-CRM114-Status: GOOD (  12.02  )
+X-CRM114-CacheID: sfid-20241008_133956_602986_8FB756F2 
+X-CRM114-Status: GOOD (  12.40  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,48 +76,65 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-We want to control pins, not beer mugs, so rename pintctrl-names to the
-expected inctrl-names.
+rk3568-roc-pc and rk3588-toybrick-x0 re-introduced this property despite
+previous patches removing older instances already.
 
-This was not affecting functionality, because the i2c2 controller
-already had a set of pinctrl properties.
+regulator-init-microvolt is not part of any regulator binding and is
+only used in the Rockchip vendor kernel. So drop it.
 
-Fixes: 523adb553573 ("arm64: dts: rockchip: add Anbernic RG353P and RG503")
-Fixes: 1e141cf12726 ("arm64: dts: rockchip: add Anbernic RG353V and RG353VS")
-Cc: Chris Morgan <macromorgan@hotmail.com>
+It is used by u-boot in some places to setup initial regulator-state,
+but that should happen in the existing -u-boot devicetree additions.
+
+Fixes: 007b4bb47f44 ("arm64: dts: rockchip: add dts for Firefly Station P2 aka rk3568-roc-pc")
+Cc: Furkan Kardame <f.kardame@manjaro.org>
+Fixes: 8ffe365f8dc7 ("arm64: dts: rockchip: Add devicetree support for TB-RK3588X board")
+Cc: Elon Zhang <zhangzj@rock-chips.com>
 Signed-off-by: Heiko Stuebner <heiko@sntech.de>
-Acked-by: Chris Morgan <macromorgan@hotmail.com>
 ---
- arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg353p.dts | 2 +-
- arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg353v.dts | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
+ arch/arm64/boot/dts/rockchip/rk3568-roc-pc.dts      | 3 ---
+ arch/arm64/boot/dts/rockchip/rk3588-toybrick-x0.dts | 1 -
+ 2 files changed, 4 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg353p.dts b/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg353p.dts
-index a73cf30801ec..9816a4ed4599 100644
---- a/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg353p.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg353p.dts
-@@ -92,7 +92,7 @@ button-r2 {
- };
+diff --git a/arch/arm64/boot/dts/rockchip/rk3568-roc-pc.dts b/arch/arm64/boot/dts/rockchip/rk3568-roc-pc.dts
+index e333449ead04..2fa89a0eeafc 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3568-roc-pc.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3568-roc-pc.dts
+@@ -272,7 +272,6 @@ vdd_logic: DCDC_REG1 {
+ 				regulator-name = "vdd_logic";
+ 				regulator-always-on;
+ 				regulator-boot-on;
+-				regulator-init-microvolt = <900000>;
+ 				regulator-initial-mode = <0x2>;
+ 				regulator-min-microvolt = <500000>;
+ 				regulator-max-microvolt = <1350000>;
+@@ -285,7 +284,6 @@ regulator-state-mem {
  
- &i2c2 {
--	pintctrl-names = "default";
-+	pinctrl-names = "default";
- 	pinctrl-0 = <&i2c2m1_xfer>;
- 	status = "okay";
+ 			vdd_gpu: DCDC_REG2 {
+ 				regulator-name = "vdd_gpu";
+-				regulator-init-microvolt = <900000>;
+ 				regulator-initial-mode = <0x2>;
+ 				regulator-min-microvolt = <500000>;
+ 				regulator-max-microvolt = <1350000>;
+@@ -309,7 +307,6 @@ regulator-state-mem {
  
-diff --git a/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg353v.dts b/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg353v.dts
-index e9954a33e8cd..a79a5614bcc8 100644
---- a/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg353v.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg353v.dts
-@@ -79,7 +79,7 @@ button-r2 {
- };
+ 			vdd_npu: DCDC_REG4 {
+ 				regulator-name = "vdd_npu";
+-				regulator-init-microvolt = <900000>;
+ 				regulator-initial-mode = <0x2>;
+ 				regulator-min-microvolt = <500000>;
+ 				regulator-max-microvolt = <1350000>;
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588-toybrick-x0.dts b/arch/arm64/boot/dts/rockchip/rk3588-toybrick-x0.dts
+index d0021524e7f9..328dcb894ccb 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588-toybrick-x0.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3588-toybrick-x0.dts
+@@ -428,7 +428,6 @@ vdd_vdenc_s0: vdd_vdenc_mem_s0: dcdc-reg4 {
+ 				regulator-boot-on;
+ 				regulator-min-microvolt = <550000>;
+ 				regulator-max-microvolt = <950000>;
+-				regulator-init-microvolt = <750000>;
+ 				regulator-ramp-delay = <12500>;
  
- &i2c2 {
--	pintctrl-names = "default";
-+	pinctrl-names = "default";
- 	pinctrl-0 = <&i2c2m1_xfer>;
- 	status = "okay";
- 
+ 				regulator-state-mem {
 -- 
 2.43.0
 
