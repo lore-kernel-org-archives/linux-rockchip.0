@@ -4,59 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 620AFCEF173
-	for <linux-rockchip@archiver.kernel.org>; Tue,  8 Oct 2024 13:41:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E5A12CEF178
+	for <linux-rockchip@archiver.kernel.org>; Tue,  8 Oct 2024 13:41:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=dFnJfJ2y8Ned9Sg4XGgwqTH+9lTKqfJ5FDddH+nngw0=; b=DEt/Cu6KdDC9by
-	p68ywA1dHVl+dHto50CNTCWWEfom7RWEM3K8MnAxCqgIRj65Any2xUBqd7y/cKkoO2QjTwcCmCfTV
-	Mu4ibemD6KOFJlaf2Xkx9w0J4m4ZBZHNFUtpehFM8VtOBXZM8NT8N2NKj+6rfmynWgzJDCWROew62
-	g6sk8kK4dzc4aMQv3VKf+2lyoxwhjBYuSreBNqoE+7y+FMA8EjDNZ8NWSOElZmRScJfchnVe+CtLj
-	If6tTPQRfjAotaGXIO2WRnujZExImmmqvurcP+ZeBl3Wjnvbi3SCNA5NM4aEQsG/OLfGxsNABAEe2
-	LZIhNU2zxCppDSeyI4cA==;
+	List-Owner; bh=H8DJJpaph0DoXGse1/YSHv8X9DldsY+XRLc54ShcH4Q=; b=jpJ587zKZvcDah
+	dM5vm4n5SBklh7PpbcbeGX2hRHfBfqUmjaEf6SjUkF/WB4odOJIHdESxvBBwINUZIOrhCTyMkoXsF
+	/QdlxS2eb0C1zCPjAXA4QcOE9RSce4grsslMSxKvrKxtx8e/b9aqQcss56ulL5wcl3JG14a0iljPv
+	w7b9RgtGO6FLPp7y9e4nMPBvzD/reT/IMa9mjH/FtS+qXw2/+WkXexZEStzhyRI4FJgpyF+i0/CVu
+	vwJVqOKghTm31KPmHNYbPvk9Q5uWOxP3YOykEKbcI/W5MG3hyC8NBJ8jFSGGsFeTSpqpYeUbZT8zF
+	wCXnqiWOjlJVQ3MhqY2w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1syASX-0000000622z-2B4U;
-	Tue, 08 Oct 2024 13:41:05 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1syASY-0000000623e-2g32;
+	Tue, 08 Oct 2024 13:41:06 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1syAIz-00000005zrl-1REy;
-	Tue, 08 Oct 2024 13:31:14 +0000
+	id 1syAK1-0000000606e-3cLa
+	for linux-rockchip@lists.infradead.org;
+	Tue, 08 Oct 2024 13:32:20 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 0225FA4192E;
-	Tue,  8 Oct 2024 13:31:04 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C7D1DC4CECD;
-	Tue,  8 Oct 2024 13:31:11 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
-	s=korg; t=1728394272;
-	bh=Ka0LAzRHGohiEHtrGoJMIPegJU0CmUNQAZsdKWVj+98=;
+	by dfw.source.kernel.org (Postfix) with ESMTP id 101365C5C4C;
+	Tue,  8 Oct 2024 13:32:13 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 65D6CC4CEC7;
+	Tue,  8 Oct 2024 13:32:16 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1728394337;
+	bh=m3Dqaue9iMHe36I/93iGbTtg5g0XsNP1DjGguFYsNxE=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=h1e0UWeT9/XMcrLegnrhI+5IfBnv4BynAYs6MMbKA+8GjFI1xwdWlbvNA/EOk1wXj
-	 cMig09qVCflTAd1Qm91sxeFzoGixOFEPQNlkL24sTuMcqnjjibgl8xe0U5R2Hpfwdy
-	 12SpW74f5vKgrj9Bw4WdZIWt3cMj1WErrbWv8pOA=
-Date: Tue, 8 Oct 2024 15:22:29 +0200
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Mark Brown <broonie@kernel.org>
-Cc: Dragan Simic <dsimic@manjaro.org>, linux-spi@vger.kernel.org,
-	linux-rockchip@lists.infradead.org, heiko@sntech.de,
-	rafael@kernel.org, oss@helene.moe,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v3 4/5] driver core: Add device probe log helper
- dev_warn_probe()
-Message-ID: <2024100815-flaky-prelaunch-f5c0@gregkh>
-References: <cover.1727601608.git.dsimic@manjaro.org>
- <2be0a28538bb2a3d1bcc91e2ca1f2d0dc09146d9.1727601608.git.dsimic@manjaro.org>
- <ZwPvcFvK4l7JT1X9@finisterre.sirena.org.uk>
+	b=n3ffvz4MdASGCADyFqcOUDV3RAoKJ0UC0IMNe+xmXbpkLs55+uR3st3mH2w+0QqAC
+	 hUHLQrtNj2qlRYMakBl95BmzI+lL6m2y40hXK8ucPYmaJzgyaA1Yc/mpIFWZKBjp20
+	 WyqPeVRSvEDKZkyu2TskwsveLVsVNmo0VqrB0cNRngMIFX0fKMp7p0k16vCWzLNWor
+	 /PuXmwHHSDUdUGzMKvUJnEfA2BGYLvCbHn9ksdJ/dWY0C/0ZQskX39pusYBGtrIXzl
+	 cLegrKJm+fmX/OVgHwztKx+d7ukPh+ZLN8NomG57k10SZcEm74PevVZVu8UXc1k+eF
+	 iQRzPmLKmuNsg==
+Date: Tue, 8 Oct 2024 15:32:14 +0200
+From: Krzysztof Kozlowski <krzk@kernel.org>
+To: Shawn Lin <shawn.lin@rock-chips.com>
+Cc: Rob Herring <robh+dt@kernel.org>, 
+	"James E . J . Bottomley" <James.Bottomley@hansenpartnership.com>, "Martin K . Petersen" <martin.petersen@oracle.com>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Ulf Hansson <ulf.hansson@linaro.org>, Heiko Stuebner <heiko@sntech.de>, 
+	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, Alim Akhtar <alim.akhtar@samsung.com>, 
+	Avri Altman <avri.altman@wdc.com>, Bart Van Assche <bvanassche@acm.org>, 
+	YiFeng Zhao <zyf@rock-chips.com>, Liang Chen <cl@rock-chips.com>, linux-scsi@vger.kernel.org, 
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, 
+	linux-pm@vger.kernel.org
+Subject: Re: [PATCH v3 2/5] dt-bindings: ufs: Document Rockchip UFS host
+ controller
+Message-ID: <pthhldiu7mus3ehk2yndro5npyqaqdenru53daz34gx7vrizlp@ub7lgvoyiq6a>
+References: <1728368130-37213-1-git-send-email-shawn.lin@rock-chips.com>
+ <1728368130-37213-3-git-send-email-shawn.lin@rock-chips.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <ZwPvcFvK4l7JT1X9@finisterre.sirena.org.uk>
+In-Reply-To: <1728368130-37213-3-git-send-email-shawn.lin@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241008_063113_471335_4C343B32 
-X-CRM114-Status: GOOD (  15.20  )
+X-CRM114-CacheID: sfid-20241008_063217_976853_E6BC8E55 
+X-CRM114-Status: GOOD (  13.23  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,24 +81,51 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, Oct 07, 2024 at 03:25:52PM +0100, Mark Brown wrote:
-> On Sun, Sep 29, 2024 at 11:21:16AM +0200, Dragan Simic wrote:
-> > Some drivers can still provide their functionality to a certain extent even
-> > some of their resource acquisitions eventually fail.  In such cases, emitting
-> > errors isn't the desired action, but warnings should be emitted instead.
-> > 
-> > To solve this, introduce dev_warn_probe() as a new device probe log helper,
-> > which behaves identically as the already existing dev_err_probe(), while it
-> > produces warnings instead of errors.  The intended use is with the resources
-> > that are actually optional for a particular driver.
-> > 
-> > While there, copyedit the kerneldoc for dev_err_probe() a bit, to simplify
-> > its wording a bit, and reuse it as the kerneldoc for dev_warn_probe(), with
-> > the necessary wording adjustments, of course.
+On Tue, Oct 08, 2024 at 02:15:27PM +0800, Shawn Lin wrote:
+> Document Rockchip UFS host controller for RK3576 SoC.
 > 
-> Greg, this makes sense to me - are you OK with me applying it?
+> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+> 
+> ---
+> 
+> Changes in v3:
+> - rename the file to rockchip,rk3576-ufshc.yaml
+> - add description for reset-gpios
+> - use rockchip,rk3576-ufshc as compatible
 
-No objection from me, now sent a reviewed-by
+... 
+
+> +  power-domains:
+> +    maxItems: 1
+> +
+> +  resets:
+> +    maxItems: 4
+> +
+> +  reset-names:
+> +    items:
+> +      - const: biu
+> +      - const: sys
+> +      - const: ufs
+> +      - const: grf
+> +
+> +  reset-gpios:
+> +    maxItems: 1
+> +    description: |
+> +      GPIO specifiers for host to reset the device.
+
+Redundant description. I don't get why did you add it.... maybe we were
+confused by duplicating resets and GPIO, but then say here something
+useful not what the property name is already saying.
+
+E.g. Which pin is this? Active low/high? Resets which device - phy?
+memory?
+
+With proper description:
+
+Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+
+Best regards,
+Krzysztof
 
 
 _______________________________________________
