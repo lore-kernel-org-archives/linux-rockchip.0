@@ -4,58 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 971D7CEF174
-	for <linux-rockchip@archiver.kernel.org>; Tue,  8 Oct 2024 13:39:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 620AFCEF173
+	for <linux-rockchip@archiver.kernel.org>; Tue,  8 Oct 2024 13:41:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=fbfX6NuCElsLyNcjI7ahhr23Dcm/dILWLtWA3ZrBNro=; b=IA4Ay83JsPnk6G
-	JorEXHk5PDFPXwg0ogYA/cW/oRkoKwzMgV0BBr2b1as8RJBi7ATFRWaMgTWaqXqZv/fW80T8LFkkL
-	OfJM5PCRSVwQKOqYOIL1iO2dSpbO/Z01eeVcERHgyj3cw7dFo/D/cb9nB/WZshTwYdw1NATc4dTtR
-	emCChurziWXTJmbrDV3F4XNhpStb6eNOWp2qkZxC8UoN+YYPzhEEMQxMZtbfsUha4OhpQXwPUt5PS
-	dCa8cQsxiSjHvAzYU/Wv2XSoObU/kEeTt1YaChej+KHEbJmyThnhUd2Z5efI+D47SSdxJRX8UhwA/
-	Jyz2nmXK8N6BRCTMnxRQ==;
+	List-Owner; bh=dFnJfJ2y8Ned9Sg4XGgwqTH+9lTKqfJ5FDddH+nngw0=; b=DEt/Cu6KdDC9by
+	p68ywA1dHVl+dHto50CNTCWWEfom7RWEM3K8MnAxCqgIRj65Any2xUBqd7y/cKkoO2QjTwcCmCfTV
+	Mu4ibemD6KOFJlaf2Xkx9w0J4m4ZBZHNFUtpehFM8VtOBXZM8NT8N2NKj+6rfmynWgzJDCWROew62
+	g6sk8kK4dzc4aMQv3VKf+2lyoxwhjBYuSreBNqoE+7y+FMA8EjDNZ8NWSOElZmRScJfchnVe+CtLj
+	If6tTPQRfjAotaGXIO2WRnujZExImmmqvurcP+ZeBl3Wjnvbi3SCNA5NM4aEQsG/OLfGxsNABAEe2
+	LZIhNU2zxCppDSeyI4cA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1syARG-000000061iw-0fjv;
-	Tue, 08 Oct 2024 13:39:46 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1syASX-0000000622z-2B4U;
+	Tue, 08 Oct 2024 13:41:05 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1syAIv-00000005zqf-3Rkz;
-	Tue, 08 Oct 2024 13:31:11 +0000
+	id 1syAIz-00000005zrl-1REy;
+	Tue, 08 Oct 2024 13:31:14 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 7D439A41B4E;
-	Tue,  8 Oct 2024 13:31:00 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 578DEC4CEC7;
-	Tue,  8 Oct 2024 13:31:08 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id 0225FA4192E;
+	Tue,  8 Oct 2024 13:31:04 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C7D1DC4CECD;
+	Tue,  8 Oct 2024 13:31:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
-	s=korg; t=1728394268;
-	bh=VkLg4Yp5h3hnS3U7tHlCL7BPi28EBnRIH+jX7y/NtO8=;
+	s=korg; t=1728394272;
+	bh=Ka0LAzRHGohiEHtrGoJMIPegJU0CmUNQAZsdKWVj+98=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=XB+6xxLkxXBYLihVlaeUGOIejnMzteJexCwex7LhbfBEA+p+JagD3h+2IKHntLT9+
-	 iDp+CYQPIEe67QJDhxSTNBqoKNFSZTPYCWp0t2epWrmTUYVw679oYfkG4PNMGxlnDw
-	 f4J+nTLpA1Ic2lPrG1S+SZtRIOK4NftcR/8V7zJU=
-Date: Tue, 8 Oct 2024 15:22:00 +0200
+	b=h1e0UWeT9/XMcrLegnrhI+5IfBnv4BynAYs6MMbKA+8GjFI1xwdWlbvNA/EOk1wXj
+	 cMig09qVCflTAd1Qm91sxeFzoGixOFEPQNlkL24sTuMcqnjjibgl8xe0U5R2Hpfwdy
+	 12SpW74f5vKgrj9Bw4WdZIWt3cMj1WErrbWv8pOA=
+Date: Tue, 8 Oct 2024 15:22:29 +0200
 From: Greg KH <gregkh@linuxfoundation.org>
-To: Dragan Simic <dsimic@manjaro.org>
-Cc: linux-spi@vger.kernel.org, linux-rockchip@lists.infradead.org,
-	broonie@kernel.org, heiko@sntech.de, rafael@kernel.org,
-	oss@helene.moe, linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org
+To: Mark Brown <broonie@kernel.org>
+Cc: Dragan Simic <dsimic@manjaro.org>, linux-spi@vger.kernel.org,
+	linux-rockchip@lists.infradead.org, heiko@sntech.de,
+	rafael@kernel.org, oss@helene.moe,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
 Subject: Re: [PATCH v3 4/5] driver core: Add device probe log helper
  dev_warn_probe()
-Message-ID: <2024100852-esteemed-cosigner-a70e@gregkh>
+Message-ID: <2024100815-flaky-prelaunch-f5c0@gregkh>
 References: <cover.1727601608.git.dsimic@manjaro.org>
  <2be0a28538bb2a3d1bcc91e2ca1f2d0dc09146d9.1727601608.git.dsimic@manjaro.org>
+ <ZwPvcFvK4l7JT1X9@finisterre.sirena.org.uk>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <2be0a28538bb2a3d1bcc91e2ca1f2d0dc09146d9.1727601608.git.dsimic@manjaro.org>
+In-Reply-To: <ZwPvcFvK4l7JT1X9@finisterre.sirena.org.uk>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241008_063109_950235_90BB56F5 
-X-CRM114-Status: GOOD (  13.20  )
+X-CRM114-CacheID: sfid-20241008_063113_471335_4C343B32 
+X-CRM114-Status: GOOD (  15.20  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,28 +73,25 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Sun, Sep 29, 2024 at 11:21:16AM +0200, Dragan Simic wrote:
-> Some drivers can still provide their functionality to a certain extent even
-> some of their resource acquisitions eventually fail.  In such cases, emitting
-> errors isn't the desired action, but warnings should be emitted instead.
+On Mon, Oct 07, 2024 at 03:25:52PM +0100, Mark Brown wrote:
+> On Sun, Sep 29, 2024 at 11:21:16AM +0200, Dragan Simic wrote:
+> > Some drivers can still provide their functionality to a certain extent even
+> > some of their resource acquisitions eventually fail.  In such cases, emitting
+> > errors isn't the desired action, but warnings should be emitted instead.
+> > 
+> > To solve this, introduce dev_warn_probe() as a new device probe log helper,
+> > which behaves identically as the already existing dev_err_probe(), while it
+> > produces warnings instead of errors.  The intended use is with the resources
+> > that are actually optional for a particular driver.
+> > 
+> > While there, copyedit the kerneldoc for dev_err_probe() a bit, to simplify
+> > its wording a bit, and reuse it as the kerneldoc for dev_warn_probe(), with
+> > the necessary wording adjustments, of course.
 > 
-> To solve this, introduce dev_warn_probe() as a new device probe log helper,
-> which behaves identically as the already existing dev_err_probe(), while it
-> produces warnings instead of errors.  The intended use is with the resources
-> that are actually optional for a particular driver.
-> 
-> While there, copyedit the kerneldoc for dev_err_probe() a bit, to simplify
-> its wording a bit, and reuse it as the kerneldoc for dev_warn_probe(), with
-> the necessary wording adjustments, of course.
-> 
-> Signed-off-by: Dragan Simic <dsimic@manjaro.org>
-> ---
->  drivers/base/core.c        | 129 +++++++++++++++++++++++++++++--------
->  include/linux/dev_printk.h |   1 +
->  2 files changed, 102 insertions(+), 28 deletions(-)
+> Greg, this makes sense to me - are you OK with me applying it?
 
+No objection from me, now sent a reviewed-by
 
-Acked-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 
 _______________________________________________
 Linux-rockchip mailing list
