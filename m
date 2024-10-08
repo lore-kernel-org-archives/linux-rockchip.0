@@ -4,57 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7A64FCEFC41
-	for <linux-rockchip@archiver.kernel.org>; Tue,  8 Oct 2024 19:04:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B3505CEFC43
+	for <linux-rockchip@archiver.kernel.org>; Tue,  8 Oct 2024 19:14:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
-	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=CQh9wpiYWzosXnfDw52j25YIRALjBGbtV+f/qjoyduk=; b=T4IvHqSPAlDjWlxRCYaGTXRO4c
-	ENCiXLqom4uR+KusyvzjBAEAV5YPXAYwLVyXC8cR18FMRNPqnra3wp9KmMb5FaFOv4HUnAfLV6nNi
-	lqAm6j7zOJE4pYlOqhXEA80m/PhA+78dUBY2YpBqvqlluUn4ilM+TSFJsM16F0d2XzZcBI5K470Ct
-	7kvZzvPRO/tlMTFLPGU/Sns5QdmO/qEBm/0kANflj+Nyw3uPmsAHP6z9xCpEdEG1NMsiLYdI6OOQb
-	ezCefTvVNCaBJ7zfBecbvKq2B+hNdvMauucKvBIaTfp5EPYop7gykTJ4MR8479RMXEUOlTfz2+gpo
-	77JcqMew==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=9JPocOkLhc3GhNyW5NajFyf2+CPhirZ9mar9acsCxbA=; b=GHl61oJmJTmGOK
+	mKc4HYvAl+vPy+vKf0U8A+77HpeoLCQKUyPmYPQdz+Y+r2AR88lvW/y/f7ziviQIFvbilSvVoo6Qp
+	Gi4C4inWp0aVJPRj8hjIj+mOYujGCl24gI5w9wz06arh1dGhPgAY2k+w10SvggUZN2hVad3vNhWCO
+	kGS/JB+7dZz0MYbjoBFP9ykkLm8EIasXeF/QxHqi/PcTYeIT3JJY6EZ2rIM/ZN7B9TGO7XW/mosn6
+	cPvZXQKoVxRj/cbJXmzfrzxSj6J9HuGbg4q/bZz6/jAOgrrXn73ASHoZS15kpYctaRDlp2hjOoSEI
+	6iT/8O8hgK+hZJ63nBdg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1syFV8-00000006t1J-3BLr;
-	Tue, 08 Oct 2024 19:04:06 +0000
-Received: from mail.manjaro.org ([116.203.91.91])
+	id 1syFfA-00000006u4y-2kcv;
+	Tue, 08 Oct 2024 19:14:28 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1syFTo-00000006son-2IbC;
-	Tue, 08 Oct 2024 19:02:46 +0000
+	id 1syFdq-00000006ttu-2Zx1;
+	Tue, 08 Oct 2024 19:13:08 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+	List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=Pfemj97Szu5rqGkLgAB+jA3DEc9X/IUNSyYuIAE3eMs=; b=qLdXnwmeMYsXBHBHqAkQeyPNEz
+	UyzGtTaZkUy/Dlkz0BmXHiCvsVM+zF22z4IyeOncv4uB9IZI+LEC7Eiv7FK608fqjHOT5RonpjCsW
+	crXvPFx1JVvrBOcENkXDeOF2y4TOxItA1jfa+oAlkhKOpjDeq9EKGk5atI5bHK07ceN9nKTxudVoj
+	cF4eCuWro2ojKPlFkbz8HyRjFvSAsvpReJpWhlhuRsEo1cMJVUPOMUw9SwFtQ2ckPbm5si53Q33ky
+	5ETNbTJnyzA+91xDTM3eMlbT9Y+id+V8CuIVUP2Pl9KAFZfy8/yuQac3bif7PkF8A4e93FjLuDr3f
+	mdmopz/g==;
+Received: from i53875ad9.versanet.de ([83.135.90.217] helo=phil.lan)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1syFdk-0006jR-9B; Tue, 08 Oct 2024 21:13:00 +0200
+From: Heiko Stuebner <heiko@sntech.de>
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: linux-arm-kernel@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	robh@kernel.org,
+	linux-clk@vger.kernel.org,
+	jbx6244@gmail.com,
+	sboyd@kernel.org,
+	mturquette@baylibre.com,
+	linux-rockchip@lists.infradead.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org
+Subject: Re: [PATCH v2 0/3] rk3328 cru dt-binding conversion
+Date: Tue,  8 Oct 2024 21:12:57 +0200
+Message-ID: <172841476778.2559610.12687245532264895912.b4-ty@sntech.de>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20240930215001.1999212-1-heiko@sntech.de>
+References: <20240930215001.1999212-1-heiko@sntech.de>
 MIME-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
-	t=1728414158;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=ou+RnMev9fN370/zTQH8oJcFFqCmNNELD7WUwEdv1mY=;
-	b=p3My5eQ1j27ncSbGLhoBnsPkCGfACnKQRxJAKnhVb8JcUkqiI8P+meWMQi/bEhWJljx80G
-	5+xmPzljXDkj367vggIGDavAuVjO1wOEswiSU2g66qeFHRUDcdPtOh/8wvfJqeGhsjGN+r
-	gHiH1UQp9qwpQjbYyeVAJALKxPI4D44SIAHq7Al2+JbaZnIGnUIKCXBkRHt6Cz02zyU+x0
-	XuJhGQroYIpmVHMpdC7ExyXEuQgVDWqqgQwv6frVM8HRffX6NwlM6R84nhfH6l2RRSoKIJ
-	ie17E4YRlUIHhgL3QuPtWUtG6IVg+Ciweq6wwAt0/Tsij2miLb9GMhfsQkzbkA==
-Date: Tue, 08 Oct 2024 21:02:38 +0200
-From: Dragan Simic <dsimic@manjaro.org>
-To: linux-spi@vger.kernel.org, linux-rockchip@lists.infradead.org
-Cc: broonie@kernel.org, heiko@sntech.de, gregkh@linuxfoundation.org,
- rafael@kernel.org, oss@helene.moe, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] driver core: Fix a typo in __dev_probe_failed() comments
-In-Reply-To: <cec37f5568afaef8fca2d35bb01c90556ccbb4f4.1728408464.git.dsimic@manjaro.org>
-References: <cec37f5568afaef8fca2d35bb01c90556ccbb4f4.1728408464.git.dsimic@manjaro.org>
-Message-ID: <76254295771cb4ea5644f2ce4a30f0d7@manjaro.org>
-X-Sender: dsimic@manjaro.org
-Authentication-Results: ORIGINATING;
-	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241008_120244_765191_8B9DD64E 
-X-CRM114-Status: GOOD (  19.93  )
+X-CRM114-CacheID: sfid-20241008_121306_698157_1AFC3E47 
+X-CRM114-Status: GOOD (  11.59  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -66,57 +77,33 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 2024-10-08 19:29, Dragan Simic wrote:
-> Fix a small typo in one of the variable names found in the comment 
-> block
-> inside the __dev_probe_failed() function.
+On Mon, 30 Sep 2024 23:49:58 +0200, Heiko Stuebner wrote:
+> Johan already did the heavy lifting of converting the binding in [0].
+> The binding conversion itself already got a Reviewed-by from dt-people
+> only dropping the superfluous compatibles needed a bit more investigation.
 > 
-> Signed-off-by: Dragan Simic <dsimic@manjaro.org>
-> ---
+> So I did go through the mainline kernel and also the vendor kernel,
+> looking for any obscure usage.
 > 
-> Notes:
->     This is an incremental patch for the patch series [1] that's been 
-> already
->     merged, so it should be applied on top of the series.
-> 
->     [1] 
-> https://lore.kernel.org/linux-rockchip/cover.1727601608.git.dsimic@manjaro.org/T/#u
+> [...]
 
-Please disregard this patch, Mark will have both spotted typos [2]
-fixed by hand. [3]  Sorry for the noise.
+Applied, thanks!
 
-[2] 
-https://lore.kernel.org/linux-spi/e8cbbf877cc0e6838afd2d6de3b7bfa1@manjaro.org/
-[3] 
-https://lore.kernel.org/linux-spi/ZwVt9e44jc3CQaV1@finisterre.sirena.org.uk/
+[1/3] dt-bindings: clock: convert rockchip,rk3328-cru.txt to YAML
+      commit: 5011cc7ad9aeea98029385f8a0e81a0ebfc45bed
+[2/3] arm64: dts: rockchip: fix compatible string rk3328 cru node
+      commit: 17a50042b9f63f7c5e9d7f1d1a285387e2b2d955
+[3/3] arm64: rockchip: add clocks property to cru node rk3328
+      commit: bc639b0ff7a8121bd72954bf8354a81f074dbf42
 
->  drivers/base/core.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/drivers/base/core.c b/drivers/base/core.c
-> index 5f156a9a10a4..a84a7b952cfd 100644
-> --- a/drivers/base/core.c
-> +++ b/drivers/base/core.c
-> @@ -4989,7 +4989,7 @@ static void __dev_probe_failed(const struct
-> device *dev, int err, bool fatal,
->  	/*
->  	 * On x86_64 and possibly on other architectures, va_list is actually 
-> a
->  	 * size-1 array containing a structure.  As a result, function 
-> parameter
-> -	 * vargps decays from T[1] to T*, and &vargsp has type T** rather 
-> than
-> +	 * vargsp decays from T[1] to T*, and &vargsp has type T** rather 
-> than
->  	 * T(*)[1], which is expected by its assignment to vaf.va below.
->  	 *
->  	 * One standard way to solve this mess is by creating a copy in a 
-> local
+Best regards,
+-- 
+Heiko Stuebner <heiko@sntech.de>
 
 _______________________________________________
 Linux-rockchip mailing list
