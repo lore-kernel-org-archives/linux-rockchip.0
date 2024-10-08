@@ -4,74 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4CD6DCED273
-	for <linux-rockchip@archiver.kernel.org>; Tue,  8 Oct 2024 06:58:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7C933CEF14A
+	for <linux-rockchip@archiver.kernel.org>; Tue,  8 Oct 2024 09:49:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+FWdkj52SYRx0JkCL14MURgDvpm+zZEa5SYHDSnXHWY=; b=yuJmWvzok10jtSfP9yHO7kbwQz
-	j18awd3Q8GoXoEXIJFDMemruby1iQsx++IdfqIekZsNWCmiIMI4yvZYRJV0hOdxIHdQxihqmMnl6R
-	rN9lONxR8IrwcMixlqzz9Pdj5Oc3xRmb2iA1cyNF8tZXJKHMyqE1ZqIj2Xanztug2yiO8KSFrxafa
-	cx1uQw4qj3Fz56L9eIOon74ukNkgV5mGwgRc1zb7UbdlfUxGtFfRuBPFWsuXlEKsvio1GmW9wa0IX
-	bPMBUjap8O7rCvx5JbnCi/XNn4uMH3zjV46EzC6yjaTqtOenm90ltvHhumpHrL2tKvVDMaAJ/UzpF
-	m6CxVUZQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
+	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=d3l1W3qHHzLnRC/TkNlGptCYya/aEBRbpYL9GrCZW5o=; b=KhujTWXfIgYnuO
+	+6ZHikWUfRQ7NjX9yePuxdBneYQxP7r5h2GT7JATThbioR2DIqQwQUE0w8wzlReq68vMV2e71RRTN
+	y+els2WMhqWDo7leS6tCNJk3d6k7Q5vWgRczbUrqJWHW8obUzjt6BAILzJaBa/GPSb1/iRWniG2Ex
+	VXfEXpKrm3y+fU+XALgUbezb/i02tv21+NG7QFAe9B6U0Yry35kdatAih+Ik9bMMw8jweLmPhhbaf
+	cym7aQNTunN/LUJ12VsdN8Gf97sT806TphMDcftV/BSzuWsyIM7RRmkjcQH0PbhFpYKUGdp5RcoLn
+	wSJlZRlUyn1HOEVPNjxw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1sy4AQ-00000004j7O-0eCP;
-	Tue, 08 Oct 2024 06:57:58 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1sy6qG-00000005N0f-2I3h;
+	Tue, 08 Oct 2024 09:49:20 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1sy42f-00000004hqU-1d83
-	for linux-rockchip@lists.infradead.org;
-	Tue, 08 Oct 2024 06:49:58 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1728370189; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=bh4HNIbg5Fcq8eNLAOLMSl9RI+4o3/aV8idOB/6ywBAC4RSeiOgrAsmMlaP4iV0VDbczycu8R4r8njSfcpE22s/sBqCiTrZuA5oE/EY62FLUxuUaSdZUpCW8SdZHbahyO/2W3RwifjanU/amOEa2Nqlr7hBhADPP6XBH/9XIYFU=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1728370189; h=Content-Type:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=sCEoyT5KMorDTp8QnrHsYU3ukuwRrLXO2vus/h9d2nU=; 
-	b=BWR4hpkEV4dPjGSE69Ea9aMOSesXZzPO+NSHnqkreYknLLo20Y40OLk/kzPOQxhFarxLqOcaSlHnxvq23bQxTUXytrst5j+ziJzY1yJMZ9f6uIiiic575HE2fPMgWrd7+m0yXt2ecJ+apY18Lf9v46vIAlsUUBoz9AsWiCjAmUg=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=sebastian.fricke@collabora.com;
-	dmarc=pass header.from=<sebastian.fricke@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1728370189;
-	s=zohomail; d=collabora.com; i=sebastian.fricke@collabora.com;
-	h=Date:Date:From:From:To:To:Cc:Cc:Subject:Subject:Message-ID:References:MIME-Version:Content-Type:In-Reply-To:Message-Id:Reply-To;
-	bh=sCEoyT5KMorDTp8QnrHsYU3ukuwRrLXO2vus/h9d2nU=;
-	b=VshPRbejuP69vzee1z69RyBFWoP/Hcd0V7sbWeIA5knyCQJzWV7keHfk3Zu1fp0b
-	NAO4rxzBm9X2yL4xhpfC2wR2Qu4hftoRVrwDsBjAJ/0Eg8TLD/aD5EW4LJDL/L0MzWf
-	F4FaKnVPt+b+VEANn6bx3CmVPUTxvbbRaEQ2Pvsg=
-Received: by mx.zohomail.com with SMTPS id 1728370187989804.6563168192596;
-	Mon, 7 Oct 2024 23:49:47 -0700 (PDT)
-Date: Tue, 8 Oct 2024 08:49:44 +0200
-From: Sebastian Fricke <sebastian.fricke@collabora.com>
-To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-Cc: Jacopo Mondi <jacopo.mondi@ideasonboard.com>,
-	Dafna Hirschfeld <dafna@fastmail.com>,
-	"open list:ROCKCHIP ISP V1 DRIVER" <linux-media@vger.kernel.org>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	"open list:ROCKCHIP ISP V1 DRIVER" <linux-rockchip@lists.infradead.org>,
-	Adam Pigg <adam@piggz.co.uk>
-Subject: Re: [PATCH] media: rkisp1: Reduce min_queued_buffers to 1
-Message-ID: <20241008064944.ymiwk7mrowfnvltj@basti-XPS-13-9310>
-References: <20241007124225.63463-1-jacopo.mondi@ideasonboard.com>
- <20241007125730.yn6xinehhm73yqob@basti-XPS-13-9310>
- <20241007134734.GA7439@pendragon.ideasonboard.com>
- <20241007140501.2rvqu6rrgy26uwl5@basti-XPS-13-9310>
- <g75gbejsguk5jk46ppbfrfmul6ynp4ixo2tqv27445bwcyuagm@vjcoagkjj6pg>
- <20241007194939.GJ14766@pendragon.ideasonboard.com>
+	id 1sy6ov-00000005Mld-3Yza;
+	Tue, 08 Oct 2024 09:47:59 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id 4018EA4344C;
+	Tue,  8 Oct 2024 09:47:48 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 609F5C4CEC7;
+	Tue,  8 Oct 2024 09:47:53 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1728380876;
+	bh=ykHfEdBXhl1fXBnfbo9MF4au8+Teea347Ae9LYLabp4=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=mAfwGVMLzJiAlIHjTdcfj2bCS5f//Oq8LHfH9ojls6gbEYbHS65QLvHAbMg86EIEM
+	 XRKZBJkiPNsj49zMtC8YXY0tXnEZN5z3hLbGNDU0myId76zlo8R73AT2sYIelkIecO
+	 cn9V6hZF6+FTi3Pk+4UEtzbrT4s517yG1fGMriQtGMUscV88brG5RLMJC03DFy2Zvy
+	 8OxiPWOStuqDL0+OQUAiV1//nFo1ku699FxJE31Ua88KMeBZH5bLSrbZfZunwsyddy
+	 4CvKR78HoY/4Ux1Q9dnOQ5aYPu/FnV9DRVf7k9C4CQftkeLvaeJAKMQSVr8GUpXetN
+	 +0mDZBZDJlKVg==
+From: Mark Brown <broonie@kernel.org>
+To: lgirdwood@gmail.com, Heiko Stuebner <heiko@sntech.de>
+Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org, 
+ linux-sound@vger.kernel.org, devicetree@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org
+In-Reply-To: <20241007205639.2477635-1-heiko@sntech.de>
+References: <20241007205639.2477635-1-heiko@sntech.de>
+Subject: Re: [PATCH v2] ASoC: dt-bindings: rockchip,rk3036-codec: convert
+ to yaml
+Message-Id: <172838087307.2574699.1959235888192800827.b4-ty@kernel.org>
+Date: Tue, 08 Oct 2024 10:47:53 +0100
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20241007194939.GJ14766@pendragon.ideasonboard.com>
-X-ZohoMailClient: External
+X-Mailer: b4 0.15-dev-99b12
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241007_234957_483701_A49B8A0E 
-X-CRM114-Status: GOOD (  33.49  )
+X-CRM114-CacheID: sfid-20241008_024758_010717_B3467DF9 
+X-CRM114-Status: GOOD (  14.60  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,122 +69,51 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 07.10.2024 22:49, Laurent Pinchart wrote:
->On Mon, Oct 07, 2024 at 09:35:49PM +0200, Jacopo Mondi wrote:
->> Hi Sebastian,
->>
->> On Mon, Oct 07, 2024 at 04:05:01PM GMT, Sebastian Fricke wrote:
->> > On 07.10.2024 16:47, Laurent Pinchart wrote:
->> > > On Mon, Oct 07, 2024 at 02:57:30PM +0200, Sebastian Fricke wrote:
->> > > > Hey Jacopo,
->> > > >
->> > > > On 07.10.2024 14:42, Jacopo Mondi wrote:
->> > > > > There apparently is no reason to require 3 queued buffers to call
->> > > > > streamon() for the RkISP1 as the driver operates with a scratch buffer
->> > > > > where frames can be directed to if there's no available buffer provided
->> > > > > by userspace.
->> > > > >
->> > > > > Reduce the number of required buffers to 1 to allow applications to
->> > > > > operate with a single queued buffer.
->> > > > >
->> > > > > Tested with libcamera, by operating with a single capture a request. The
->> > > > > same request (and associated capture buffer) gets recycled once
->> > > > > completed. This of course causes a frame rate drop but doesn't hinder
->> > > > > operations.
->> > > > >
->> > > > > Signed-off-by: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
->> > > > > ---
->> > > > >
->> > > > > Adam,
->> > > > >    a few months ago you were exercizing your pinhole app with a single capture
->> > > > > request for StillCapture operations and you got the video device to hang because
->> > > > > no enough buffers where provided.
->> > > > >
->> > > > > This small change should be enough to unblock you. Could you maybe give it a
->> > > > > spin if you're still working on this ?
->> > > > >
->> > > > > Thanks
->> > > > >    j
->> > > > > ---
->> > > > >
->> > > > >  drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c | 4 +---
->> > > > >  1 file changed, 1 insertion(+), 3 deletions(-)
->> > > > >
->> > > > > diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
->> > > > > index 2bddb4fa8a5c..34adaecdee54 100644
->> > > > > --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
->> > > > > +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
->> > > > > @@ -35,8 +35,6 @@
->> > > > >  #define RKISP1_SP_DEV_NAME	RKISP1_DRIVER_NAME "_selfpath"
->> > > > >  #define RKISP1_MP_DEV_NAME	RKISP1_DRIVER_NAME "_mainpath"
->> > > > >
->> > > > > -#define RKISP1_MIN_BUFFERS_NEEDED 3
->> > > > > -
->> > > > >  enum rkisp1_plane {
->> > > > >  	RKISP1_PLANE_Y	= 0,
->> > > > >  	RKISP1_PLANE_CB	= 1,
->> > > > > @@ -1563,7 +1561,7 @@ static int rkisp1_register_capture(struct rkisp1_capture *cap)
->> > > > >  	q->ops = &rkisp1_vb2_ops;
->> > > > >  	q->mem_ops = &vb2_dma_contig_memops;
->> > > > >  	q->buf_struct_size = sizeof(struct rkisp1_buffer);
->> > > > > -	q->min_queued_buffers = RKISP1_MIN_BUFFERS_NEEDED;
->> > > >
->> > > > It looks like RKISP1_MIN_BUFFERS_NEEDED is used only here, so can you
->> > > > remove the define as well?
->> > >
->> > > Isn't that exactly what this patch is doing ?
->> >
->> > Oh *facepalm* ... I missed that please disregard ...
->> >
->> > but my question below remains whether to not just change the value.
->>
->> Do you mean
->>
->> -#define RKISP1_MIN_BUFFERS_NEEDED 3
->> +#define RKISP1_MIN_BUFFERS_NEEDED 1
->>
->> ?
->>
->> I would rather avoid defining a value used in a single place. If it
->> was some magic number a macro name would maybe help giving come
->> context, but considering this is assigned to min_queued_buffers it's
->> imho clear enough ?
->
->I find it clear enough, I prefer dropping the macro as you do in this
->patch.
+On Mon, 07 Oct 2024 22:56:39 +0200, Heiko Stuebner wrote:
+> Convert the binding to yaml.
+> 
+> The codec seems to be from Innosilicon, but the compatible has ever only
+> been rockchip-based, as they sythesized the codec for the rk3036.
+> 
+> So the yaml file gets a name matching that compatible.
+> The only other notable change is the addition of the #sound-dai-cells
+> property, that is always required.
+> 
+> [...]
 
-Sounds good.
+Applied to
 
->
->> > > > rg 'RKISP1_MIN_BUFFERS_NEEDED'
->> > > > drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
->> > > > 38:#define RKISP1_MIN_BUFFERS_NEEDED 3
->> > > > 1566:	q->min_queued_buffers = RKISP1_MIN_BUFFERS_NEEDED;
->> > > >
->> > > > Or maybe just change the value, but I am not sure whether this can be
->> > > > considered a magic value.
->> > > >
->> > > > > +	q->min_queued_buffers = 1;
->> > > > >  	q->timestamp_flags = V4L2_BUF_FLAG_TIMESTAMP_MONOTONIC;
->> > > > >  	q->lock = &node->vlock;
->> > > > >  	q->dev = cap->rkisp1->dev;
->
->-- 
->Regards,
->
->Laurent Pinchart
->
-Sebastian Fricke
-Consultant Software Engineer
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
 
-Collabora Ltd
-Platinum Building, St John's Innovation Park, Cambridge CB4 0DS, UK
-Registered in England & Wales no 5513718.
+Thanks!
+
+[1/1] ASoC: dt-bindings: rockchip,rk3036-codec: convert to yaml
+      commit: 5cd575a87f141e438b3e062533bf0c6cc9eba99a
+
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
+
 
 _______________________________________________
 Linux-rockchip mailing list
