@@ -4,56 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 346E8CF0449
-	for <linux-rockchip@archiver.kernel.org>; Wed,  9 Oct 2024 10:12:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BED76CEDD90
+	for <linux-rockchip@archiver.kernel.org>; Wed,  9 Oct 2024 13:15:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=9VefRqPhksoMv6UGEvN8Oh7rVY4cdPfnUxiA+ONxrww=; b=KaCzEPsy4gXr46
-	4g4xn6dBThF09Rjn6xH0qlFFXNSI5Tn9su+ZIrTex8KZQ8qV1nqdJ8UcBlErqir9ZN8T6oCS0AZv2
-	4z/E77oMzlovz9NIIt4MceokjVQ+QorbaqWsQIF1Nl+DoGFba8U4J1whY8g/56FnRsNY0SVqA5ZlS
-	Fv458P4f4anpQI7fQQy41KvAe+r9h6uAF7px4pque6Vro6JkFNmyOvhE4VqjuwNcdk8zzc9u7G5S/
-	/Sc7yoCnYeM0aypD9lLFuQUkz7FpKQB4ZlwX0kWDJaQWWtTWixNryKDJ2/yjkV4B2b2/wjp+612Yi
-	lyyYMJ32bvHuvFj/4Yrw==;
+	List-Owner; bh=+A+M2DlPt+tIhLQvE4U77rL/HBb6xrQlLPl6n/YNoew=; b=JYn/rx9Cgj3REV
+	a5ybhLzQijdxDVtjkwcb1u/VydkymqL4IdYVDcGVhDRwJrvcTVGMFClbxH/Uk0v4uC7ibWh+PBAJU
+	HApBG6zKwUAD69CpArgIxvVAqLiNvhvrXuAk2VIFtzK9g7ej5DWJC6Wpi+XZdt0E8/8krMjGRN0tt
+	M8Lt9yG9ufm+qndupaWv5vfMBv/mKTRJr3Ygq3WbQnerZ8yc9fdtPxhLPpUEP5ZXrGKJ7dW09MMoo
+	aGKgb5zWRgSZn3SzLV6B7qeaGTVhLrXG5zUtTTVP61zsw89xOlFjCL4FDHsXAJ4i5bXYEXcBZrbex
+	+PJEcjgWe3CCkwq6DzFg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1syTfe-00000008pHL-2cAc;
-	Wed, 09 Oct 2024 10:11:54 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
+	id 1syWXX-00000009MjW-0Yio;
+	Wed, 09 Oct 2024 13:15:43 +0000
+Received: from mail-yb1-xb2f.google.com ([2607:f8b0:4864:20::b2f])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1syTdC-00000008omy-0bFG
+	id 1syWXU-00000009Miy-0oJq
 	for linux-rockchip@lists.infradead.org;
-	Wed, 09 Oct 2024 10:09:23 +0000
-Received: from ideasonboard.com (mob-5-91-176-76.net.vodafone.it [5.91.176.76])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id B9ECB2EC;
-	Wed,  9 Oct 2024 12:07:41 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1728468462;
-	bh=R0deO1PuUCOsvLd+O2V7gIeSTjfe/xHeqe/OYbo8vuw=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=W4V6s/SDBU6ysOccsYfwmsSXFd8F7lZnxGQ5bqdeuXxzooZUJ0CgEVg+j8BkbTG1g
-	 9Xqs5/BHRXL49CCygl7ITPuwmGUHOkZ+QQUtLHZshGfu6VQLc5B9B5SDUmmhI3V4ok
-	 qJCzBJh1L7Vz/KkWU+brs8XD7RMttZR1Tlgn1j1o=
-Date: Wed, 9 Oct 2024 12:09:15 +0200
-From: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
-To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-Cc: Jacopo Mondi <jacopo.mondi@ideasonboard.com>, 
-	Dafna Hirschfeld <dafna@fastmail.com>, "open list:ROCKCHIP ISP V1 DRIVER" <linux-media@vger.kernel.org>, 
-	Mauro Carvalho Chehab <mchehab@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
-	"open list:ROCKCHIP ISP V1 DRIVER" <linux-rockchip@lists.infradead.org>, Adam Pigg <adam@piggz.co.uk>
-Subject: Re: [PATCH] media: rkisp1: Reduce min_queued_buffers to 1
-Message-ID: <as7oeoasnwxlkmpcnrt4v7zb7mbvm2rvwlehdcs34axv5whoyf@cheyd7cxtw7u>
-References: <20241007124225.63463-1-jacopo.mondi@ideasonboard.com>
- <20241007135532.GB6403@pendragon.ideasonboard.com>
+	Wed, 09 Oct 2024 13:15:41 +0000
+Received: by mail-yb1-xb2f.google.com with SMTP id 3f1490d57ef6-e03caab48a2so691287276.1
+        for <linux-rockchip@lists.infradead.org>; Wed, 09 Oct 2024 06:15:39 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1728479738; x=1729084538; darn=lists.infradead.org;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=X/BVh51Wei3dZ71+FMVXs9o7VKFoyrGm7h9GIR6kEtE=;
+        b=EAYV8z3rkA8/bEtb3M9r4IjNfz7cnunSqbWrlkNH57iV4LJ+nf8OOJD2MX2ttPVIRG
+         9Hy67+WFCqKkLGsDh5gOlaawFLupb254B47oOvmbHii8HftF7+UfmN5iqGVxM+M3HvDJ
+         BV/h36wV+rYeYICGWdkyF3vcTki/uMITqrQr8LTSo/eXn3Yss/8mXziiA8UeQnOZ+u/B
+         iAgUatZrrllWTAgRCeBW0tOw4sMTBYlOtsvyX0pzseWHYXTmgf6Bg0A0hUrscru8NgNb
+         gLMFrmmZIy8bzTNe+JjhKwkFCX8vgHMmXsPdCP66hbQATNFbV0QEt+b4vjkSlWhyIdFf
+         ndhw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1728479738; x=1729084538;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=X/BVh51Wei3dZ71+FMVXs9o7VKFoyrGm7h9GIR6kEtE=;
+        b=ew/Ps6f+jofkcUNRiDkgvWE7e0obYBRkislzFPqlXuRTKsxaTZB7437XJg0H34zufY
+         U/s3V102j1eX5xe24h3+TjmdIsZt6Zsbu/K9pVCPs6XVRty/ZGeLctEkVbF+GHgQomYE
+         3nufaNtspujzbUB+Umrcjs9CgZiKyYliz3wpBK26o11MRQDiZKx6yAvqYhe0r4rkmpOl
+         B4jl+Fn5gJSeAhtGFtd3q/c8Pe8IB4O5OXTORJhab8TT0rlfotivKWuwzqGI0H4+xPAX
+         +q9Q2Lhv7WdWkYQcnpnzstfuAEDJoi9qWPaW6/0vNFgWm3lSDAnkCdSoClIF6CRVoT8H
+         xSgg==
+X-Forwarded-Encrypted: i=1; AJvYcCWP87IWNbEuVKEGbvfobhpvf2eQEbLsnfoOWYNaNa19HudTX0VWRARsSWPJtqs6Wc2f6QLB6ZaF6piMz9nMXQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxsfNWHHh/PJM6DNcqXucwnpqGxys5n04UOAPH+n9qEuijlQORl
+	2cDWEKbwH/kPcsfwVGnoFXWxYd2d3B3guNqCHqNYOqnLpVGw7sUwz47OUCBzcn2fVcTTCaGMpU5
+	5WqGajFlhF9Iry7VcbNIo2kgC8NF6cTBH5Kp4jg==
+X-Google-Smtp-Source: AGHT+IHp9MRWyf8+0EngQ/HGstXTs67OY8NhmDANMfWbtr8KbjZARvSO50M8FTVHd6rQq5UIIfOKejL4W5ObG6+T/7A=
+X-Received: by 2002:a05:6902:18d3:b0:e0b:4cb6:ec53 with SMTP id
+ 3f1490d57ef6-e28fe348682mr1747706276.3.1728479738519; Wed, 09 Oct 2024
+ 06:15:38 -0700 (PDT)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20241007135532.GB6403@pendragon.ideasonboard.com>
+References: <1728368130-37213-1-git-send-email-shawn.lin@rock-chips.com> <1728368130-37213-6-git-send-email-shawn.lin@rock-chips.com>
+In-Reply-To: <1728368130-37213-6-git-send-email-shawn.lin@rock-chips.com>
+From: Ulf Hansson <ulf.hansson@linaro.org>
+Date: Wed, 9 Oct 2024 15:15:02 +0200
+Message-ID: <CAPDyKForpLcmkqruuTfD6kkJhp_4CKFABWRxFVYNskGL1tjO=w@mail.gmail.com>
+Subject: Re: [PATCH v3 5/5] scsi: ufs: rockchip: initial support for UFS
+To: Shawn Lin <shawn.lin@rock-chips.com>
+Cc: Rob Herring <robh+dt@kernel.org>, 
+	"James E . J . Bottomley" <James.Bottomley@hansenpartnership.com>, 
+	"Martin K . Petersen" <martin.petersen@oracle.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+	Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, Alim Akhtar <alim.akhtar@samsung.com>, 
+	Avri Altman <avri.altman@wdc.com>, Bart Van Assche <bvanassche@acm.org>, 
+	YiFeng Zhao <zyf@rock-chips.com>, Liang Chen <cl@rock-chips.com>, linux-scsi@vger.kernel.org, 
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	devicetree@vger.kernel.org, linux-pm@vger.kernel.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241009_030922_352626_1F6EB567 
-X-CRM114-Status: GOOD (  33.35  )
+X-CRM114-CacheID: sfid-20241009_061540_255799_9963C033 
+X-CRM114-Status: GOOD (  20.27  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,112 +96,106 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Laurent
+[...]
 
-On Mon, Oct 07, 2024 at 04:55:32PM GMT, Laurent Pinchart wrote:
-> Hi Jacopo,
->
-> Thank you for the patch.
->
-> On Mon, Oct 07, 2024 at 02:42:24PM +0200, Jacopo Mondi wrote:
-> > There apparently is no reason to require 3 queued buffers to call
-> > streamon() for the RkISP1 as the driver operates with a scratch buffer
-> > where frames can be directed to if there's no available buffer provided
-> > by userspace.
-> >
-> > Reduce the number of required buffers to 1 to allow applications to
-> > operate with a single queued buffer.
-> >
-> > Tested with libcamera, by operating with a single capture a request. The
->
-> s/capture a/capture/
->
-> > same request (and associated capture buffer) gets recycled once
-> > completed. This of course causes a frame rate drop but doesn't hinder
-> > operations.
-> >
-> > Signed-off-by: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
-> > ---
-> >
-> > Adam,
-> >    a few months ago you were exercizing your pinhole app with a single capture
-> > request for StillCapture operations and you got the video device to hang because
-> > no enough buffers where provided.
-> >
-> > This small change should be enough to unblock you. Could you maybe give it a
-> > spin if you're still working on this ?
-> >
-> > Thanks
-> >    j
-> > ---
-> >
-> >  drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c | 4 +---
-> >  1 file changed, 1 insertion(+), 3 deletions(-)
-> >
-> > diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
-> > index 2bddb4fa8a5c..34adaecdee54 100644
-> > --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
-> > +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
-> > @@ -35,8 +35,6 @@
-> >  #define RKISP1_SP_DEV_NAME	RKISP1_DRIVER_NAME "_selfpath"
-> >  #define RKISP1_MP_DEV_NAME	RKISP1_DRIVER_NAME "_mainpath"
-> >
-> > -#define RKISP1_MIN_BUFFERS_NEEDED 3
-> > -
-> >  enum rkisp1_plane {
-> >  	RKISP1_PLANE_Y	= 0,
-> >  	RKISP1_PLANE_CB	= 1,
-> > @@ -1563,7 +1561,7 @@ static int rkisp1_register_capture(struct rkisp1_capture *cap)
-> >  	q->ops = &rkisp1_vb2_ops;
-> >  	q->mem_ops = &vb2_dma_contig_memops;
-> >  	q->buf_struct_size = sizeof(struct rkisp1_buffer);
-> > -	q->min_queued_buffers = RKISP1_MIN_BUFFERS_NEEDED;
-> > +	q->min_queued_buffers = 1;
->
-> min_queued_buffers controls two things in vb2:
->
-> - It controls the minimum number of buffers that can be allocated, by
->   setting
->
->         if (q->min_reqbufs_allocation < q->min_queued_buffers + 1)
->                 q->min_reqbufs_allocation = q->min_queued_buffers + 1;
->
->   in vb2_core_queue_init(). Note that this ony impacts the
->   VIDIOC_REQBUFS ioctl, VIDIOC_CREATE_BUFS can still allocate a lower
->   number of buffers.
->
-> - It delays the .start_streaming() call until min_queued_buffers buffers
->   have been queued.
->
-> This patch brings a clear improvement as it allows operating with a
-> single buffer. Ideally though, it would be nice to set
-> min_queued_buffers to 0, so that .start_streaming() gets called
-> synchronously with VIDIOC_STREAMON. Otherwise stream start errors can be
-> reported later, at VIDIOC_QBUF time.
->
-> I expect going for 0 will require more changes in the driver, so I'm
-> fine merging this patch as-is as a first step.
+> +
+> +static int ufs_rockchip_runtime_suspend(struct device *dev)
+> +{
+> +       struct ufs_hba *hba = dev_get_drvdata(dev);
+> +       struct ufs_rockchip_host *host = ufshcd_get_variant(hba);
+> +       struct generic_pm_domain *genpd = pd_to_genpd(dev->pm_domain);
 
-Well well well, I tried setting it to 0 and not provide any buffer to
-the video device.
+pd_to_genpd() isn't safe to use like this. It's solely to be used by
+genpd provider drivers.
 
-I see the number of interrupts received from the rkisp1 driver
-increase with a frequency compatible with the frame rate, so it might
-be possible that things work without modifications.
+> +
+> +       clk_disable_unprepare(host->ref_out_clk);
+> +
+> +       /*
+> +        * Shouldn't power down if rpm_lvl is less than level 5.
 
-I'll keep digging
+Can you elaborate on why we must not power-off the power-domain when
+level is less than 5?
 
->
-> Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
->
-> >  	q->timestamp_flags = V4L2_BUF_FLAG_TIMESTAMP_MONOTONIC;
-> >  	q->lock = &node->vlock;
-> >  	q->dev = cap->rkisp1->dev;
->
-> --
-> Regards,
->
-> Laurent Pinchart
+What happens if we power-off anyway when the level is less than 5?
+
+> +        * This flag will be passed down to platform power-domain driver
+> +        * which has the final decision.
+> +        */
+> +       if (hba->rpm_lvl < UFS_PM_LVL_5)
+> +               genpd->flags |= GENPD_FLAG_RPM_ALWAYS_ON;
+> +       else
+> +               genpd->flags &= ~GENPD_FLAG_RPM_ALWAYS_ON;
+
+The genpd->flags is not supposed to be changed like this - and
+especially not from a genpd consumer driver.
+
+I am trying to understand a bit more of the use case here. Let's see
+if that helps me to potentially suggest an alternative approach.
+
+> +
+> +       return ufshcd_runtime_suspend(dev);
+> +}
+> +
+> +static int ufs_rockchip_runtime_resume(struct device *dev)
+> +{
+> +       struct ufs_hba *hba = dev_get_drvdata(dev);
+> +       struct ufs_rockchip_host *host = ufshcd_get_variant(hba);
+> +       int err;
+> +
+> +       err = clk_prepare_enable(host->ref_out_clk);
+> +       if (err) {
+> +               dev_err(hba->dev, "failed to enable ref out clock %d\n", err);
+> +               return err;
+> +       }
+> +
+> +       reset_control_assert(host->rst);
+> +       usleep_range(1, 2);
+> +       reset_control_deassert(host->rst);
+> +
+> +       return ufshcd_runtime_resume(dev);
+> +}
+> +
+> +static int ufs_rockchip_system_suspend(struct device *dev)
+> +{
+> +       struct ufs_hba *hba = dev_get_drvdata(dev);
+> +       struct ufs_rockchip_host *host = ufshcd_get_variant(hba);
+> +
+> +       /* Pass down desired spm_lvl to Firmware */
+> +       arm_smccc_smc(ROCKCHIP_SIP_SUSPEND_MODE, ROCKCHIP_SLEEP_PD_CONFIG,
+> +                       host->pd_id, hba->spm_lvl < 5 ? 1 : 0, 0, 0, 0, 0, NULL);
+
+Can you please elaborate on what goes on here? Is this turning off the
+power-domain that the dev is attached to - or what is actually
+happening?
+
+> +
+> +       return ufshcd_system_suspend(dev);
+> +}
+> +
+> +static const struct dev_pm_ops ufs_rockchip_pm_ops = {
+> +       SET_SYSTEM_SLEEP_PM_OPS(ufs_rockchip_system_suspend, ufshcd_system_resume)
+> +       SET_RUNTIME_PM_OPS(ufs_rockchip_runtime_suspend, ufs_rockchip_runtime_resume, NULL)
+> +       .prepare         = ufshcd_suspend_prepare,
+> +       .complete        = ufshcd_resume_complete,
+> +};
+> +
+> +static struct platform_driver ufs_rockchip_pltform = {
+> +       .probe = ufs_rockchip_probe,
+> +       .remove = ufs_rockchip_remove,
+> +       .driver = {
+> +               .name = "ufshcd-rockchip",
+> +               .pm = &ufs_rockchip_pm_ops,
+> +               .of_match_table = ufs_rockchip_of_match,
+> +       },
+> +};
+> +module_platform_driver(ufs_rockchip_pltform);
+> +
+
+[...]
+
+Kind regards
+Uffe
 
 _______________________________________________
 Linux-rockchip mailing list
