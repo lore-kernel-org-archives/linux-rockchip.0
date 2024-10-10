@@ -4,87 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E7CFECF07A2
-	for <linux-rockchip@archiver.kernel.org>; Thu, 10 Oct 2024 04:36:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7309BCF07BA
+	for <linux-rockchip@archiver.kernel.org>; Thu, 10 Oct 2024 07:47:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Bmo2jAyrtFj/jUJhg3s28JkXKVNVdk47/p+m/llGJ8g=; b=eZ7GTBZyeSTx4o
-	5+s03w9REZH1CFYhk0tLgIiAABu8OOYhgGHFJLhGukb1fzUE8iKRJHdA3j/DtbKGqAPds5IAm5EiS
-	EDM3Lxd+WuLwMQo59Ikkc4r3JEBCNf2JEQZkahb5IPHOelyrj8eR3b1zx/0Ok+kLa2oGIjVJt3gQJ
-	tN5o0eEcPeJLuDG/0HGktm0oD1hSTHy/lc8zBIhAeipwk2nZ2C5CS39ZmkF/f0XzHN0XZptQ0/2wf
-	Bc8uU8cwq61jkg5TFS9DFazVMg1YPeB1ZMPHjSwlXv57Ndbt9wQOUMwqKZIcrXqaafrQPVkxU14lW
-	zxUC80IuhvOpzdVoL6uw==;
+	List-Owner; bh=uudZUsnT23//KfnbyrEORY9X2ICFmQ99AsmYjgrK+es=; b=G1W+oraxW1AFQB
+	j7zkctlnf1NtsrRKQqxf1PUuGCrRmMr5hjeAnRdfzzhMpts1oa5UPu+CFgecMMYxBRyiyNJMNPTJ5
+	UHZqYugw9njgs/YH1OngJ2n5di0eJ8J/THNg9lR1IKq7Wa1soTFbTF4/qaGfTKYSJUG+qVmxm3Kyu
+	fdMMYDI6EWnC+ezrzH8cAHHC3M6EIkjvwv0nm00++0pmQSfV1oKFimth9GzXuqIubYKbOLlT1BOon
+	5bGe3gvQPayce6ywcacoVbJWFT8ob4ZqzGms+ZixHP/t1Dlmk/5Etow1pCkRa7r5UZ3yCx1iGwGeO
+	aQeQWlBn9aiHj1YW94sg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1sykuA-0000000BUad-1iDa;
-	Thu, 10 Oct 2024 04:36:02 +0000
-Received: from mgamail.intel.com ([192.198.163.7])
+	id 1syntH-0000000Brz6-2wDW;
+	Thu, 10 Oct 2024 07:47:19 +0000
+Received: from mail-il1-x132.google.com ([2607:f8b0:4864:20::132])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1syku6-0000000BUZr-3wu7
+	id 1synXz-0000000BpXy-2zuZ
 	for linux-rockchip@lists.infradead.org;
-	Thu, 10 Oct 2024 04:36:00 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1728534959; x=1760070959;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=P85mdDr+6ogvc7JrH7HIaL8upROhQg5PhLxmzsIJZTo=;
-  b=SVhek9zDOj7FQ78PkAR2D3HGDtnnU9T8UX8dfUYPzxay3tZEN7Hp1HAE
-   hxuuhVjzpF7vcbcX7RFMYTx8ePdVWT4yM8xspVxwq4cGCzse3YiHP9N19
-   WZEAWte02wPhisqSbaa8F8TNJUzLIFUbxma8ti3tOvSdpY3FlFo3+VtLo
-   aSDgwOEjD+NNTiFiCFyve19g2DImJKVJ0YXAZo2EaYTsA50m6IEEIxpA6
-   uh2hvGPgScY2Q/8hjm9pTKn/phJVUnK8A+WitzvB/hLCY46nUMfvnxxAU
-   3cKzEM+Hv1b3BSFY2CgBnkGm83vrn8zVpFonNfFzPF/1u5irf3rYZUxzX
-   A==;
-X-CSE-ConnectionGUID: 4Uig3oibTSCgVbopTVR69g==
-X-CSE-MsgGUID: CoO3R9amSBGaLDFZCazl6g==
-X-IronPort-AV: E=McAfee;i="6700,10204,11220"; a="53274705"
-X-IronPort-AV: E=Sophos;i="6.11,191,1725346800"; 
-   d="scan'208";a="53274705"
-Received: from orviesa009.jf.intel.com ([10.64.159.149])
-  by fmvoesa101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 09 Oct 2024 21:35:51 -0700
-X-CSE-ConnectionGUID: Kvf6ziAXT1Kw8s+mZR5MtA==
-X-CSE-MsgGUID: pH6/SfkPTI6TJOnBgJXu/w==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.11,191,1725346800"; 
-   d="scan'208";a="76403777"
-Received: from lkp-server01.sh.intel.com (HELO a48cf1aa22e8) ([10.239.97.150])
-  by orviesa009.jf.intel.com with ESMTP; 09 Oct 2024 21:35:48 -0700
-Received: from kbuild by a48cf1aa22e8 with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1syktt-000ABR-0T;
-	Thu, 10 Oct 2024 04:35:45 +0000
-Date: Thu, 10 Oct 2024 12:35:35 +0800
-From: kernel test robot <lkp@intel.com>
-To: Damien Le Moal <dlemoal@kernel.org>,
-	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Thu, 10 Oct 2024 07:25:29 +0000
+Received: by mail-il1-x132.google.com with SMTP id e9e14a558f8ab-3a340f9dd8aso3573205ab.2
+        for <linux-rockchip@lists.infradead.org>; Thu, 10 Oct 2024 00:25:19 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1728545119; x=1729149919; darn=lists.infradead.org;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=BO+u3ghty2SDKH2fR1oqf2j9fR+PWCSBsyfFPVtqMF8=;
+        b=zkEDaWo8/dMfF5JjA0Ovcw0IKm/ixWihbuE3IYdYMAnoHuKb3f07LwEZ6DeiPFNjEd
+         b1F3xrbgyAYOc+rKgyAMfYjfoBbQRYubD3PyYCqzZ72jspWnQdC/o6UfW1TV5w9gBARN
+         hFIUy9rUpCRgl5RA8C69heCLKXCwFCuOBTmPAwtLZiv11Wcue6J54wchNXufDsIK8Kys
+         hooObhgtBLKBytuiRDSF5uJKRLoDz2gTq8SNGP1vbagbYxvRLm/mp3MebaADZV1yEU6n
+         nw/hQICS+ERcAu6BQ8DYwpdJzJLF41kLZ9OEeFqS3B5Da7sWJ/k3Q+vnfjLc7lO2ZPSp
+         U7uw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1728545119; x=1729149919;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=BO+u3ghty2SDKH2fR1oqf2j9fR+PWCSBsyfFPVtqMF8=;
+        b=xHlM+zcD4YK9itghUGdN3xTe38cH2tPZxH9JfobrY31WrdRc+7VApJP5gBQV1RaVyd
+         sONRZzZlNg7xM5RGMbuCIY8t7sEItH3PdLt0jb/eKonL8y9VbCafMGLXqJxqVQuLPXKp
+         5kVW7mJvK96UGjK2iNn/0JVIwqca+Na7scYb4q3HCmkqkamj9tXgTm4oSg+lJuYSr1HV
+         PJwki6X+6ruftqOakCAR04B1ykoPpp1d27PETZH/A6+EX3pTY5gUmaHOCmWvajxoYHgp
+         ETvlvvx+ZGZp2zMF93tWxNJRB3Wx3tJ2gr2+sQzhu8Gh8hi971g58TK3B5TWtUGf5pTL
+         AePg==
+X-Forwarded-Encrypted: i=1; AJvYcCWRE1IXV6jxWxDG9PVLiSzkbwN63MKlk/hybeFfjTUzDDapU0u78jgYUOhJd4+KKKjhUrWamypVjw/s0ML46Q==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yyxf7LqhVtKAJauaedvI+sgpDvWfXFkRfyk0KyT0CA3Xf1yeydx
+	Dbn5ls9pYZjyAaGq15qKRoKjk/ysmWeZPmIsU4SZi5pwE2QWu4+A47SxgPOKhA==
+X-Google-Smtp-Source: AGHT+IGFCNg/ceeWHNg7TkO0QNW/H0HtnhU7s4ZYJ79wDwVdugpPuxIb48ke9Tn5c8L+FXGGlC1wtg==
+X-Received: by 2002:a05:6e02:1aa3:b0:3a0:a3cd:f239 with SMTP id e9e14a558f8ab-3a397cfc376mr56477995ab.8.1728545118678;
+        Thu, 10 Oct 2024 00:25:18 -0700 (PDT)
+Received: from thinkpad ([220.158.156.184])
+        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-7ea449596c8sm494289a12.71.2024.10.10.00.25.14
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 10 Oct 2024 00:25:18 -0700 (PDT)
+Date: Thu, 10 Oct 2024 12:55:12 +0530
+From: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
+To: Damien Le Moal <dlemoal@kernel.org>
+Cc: Lorenzo Pieralisi <lpieralisi@kernel.org>,
 	Kishon Vijay Abraham I <kishon@kernel.org>,
 	Shawn Lin <shawn.lin@rock-chips.com>,
 	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
-	Bjorn Helgaas <helgaas@kernel.org>,
+	Bjorn Helgaas <bhelgaas@google.com>,
 	Heiko Stuebner <heiko@sntech.de>, linux-pci@vger.kernel.org,
 	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org
-Cc: oe-kbuild-all@lists.linux.dev, linux-rockchip@lists.infradead.org,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
 	Rick Wertenbroek <rick.wertenbroek@gmail.com>,
 	Wilfred Mallawa <wilfred.mallawa@wdc.com>,
 	Niklas Cassel <cassel@kernel.org>
-Subject: Re: [PATCH v3 12/12] PCI: rockchip-ep: Handle PERST# signal in
- endpoint mode
-Message-ID: <202410101236.xqI8ZWNd-lkp@intel.com>
-References: <20241007041218.157516-13-dlemoal@kernel.org>
+Subject: Re: [PATCH v3 07/12] PCI: rockchip-ep: Refactor
+ rockchip_pcie_ep_probe() MSI-X hiding
+Message-ID: <20241010072512.f7e4kdqcfe5okcvg@thinkpad>
+References: <20241007041218.157516-1-dlemoal@kernel.org>
+ <20241007041218.157516-8-dlemoal@kernel.org>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20241007041218.157516-13-dlemoal@kernel.org>
+In-Reply-To: <20241007041218.157516-8-dlemoal@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241009_213559_032784_C1627B90 
-X-CRM114-Status: GOOD (  19.75  )
+X-CRM114-CacheID: sfid-20241010_002519_810124_45C0955A 
+X-CRM114-Status: GOOD (  24.92  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,221 +101,85 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Damien,
-
-kernel test robot noticed the following build errors:
-
-[auto build test ERROR on pci/next]
-[also build test ERROR on pci/for-linus mani-mhi/mhi-next linus/master v6.12-rc2 next-20241009]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
-
-url:    https://github.com/intel-lab-lkp/linux/commits/Damien-Le-Moal/PCI-rockchip-ep-Use-a-macro-to-define-EP-controller-align-feature/20241007-131224
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/pci/pci.git next
-patch link:    https://lore.kernel.org/r/20241007041218.157516-13-dlemoal%40kernel.org
-patch subject: [PATCH v3 12/12] PCI: rockchip-ep: Handle PERST# signal in endpoint mode
-config: sparc-allyesconfig (https://download.01.org/0day-ci/archive/20241010/202410101236.xqI8ZWNd-lkp@intel.com/config)
-compiler: sparc64-linux-gcc (GCC) 14.1.0
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20241010/202410101236.xqI8ZWNd-lkp@intel.com/reproduce)
-
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202410101236.xqI8ZWNd-lkp@intel.com/
-
-All errors (new ones prefixed by >>):
-
-         |                            ^~
-   drivers/pci/controller/pcie-rockchip-ep.c:255:44: error: invalid use of undefined type 'struct pci_epc_map'
-     255 |         map->map_ofst = map->pci_addr - map->map_pci_addr;
-         |                                            ^~
-   drivers/pci/controller/pcie-rockchip-ep.c:257:16: error: invalid use of undefined type 'struct pci_epc_map'
-     257 |         if (map->map_ofst + map->pci_size > SZ_1M)
-         |                ^~
-   drivers/pci/controller/pcie-rockchip-ep.c:257:32: error: invalid use of undefined type 'struct pci_epc_map'
-     257 |         if (map->map_ofst + map->pci_size > SZ_1M)
-         |                                ^~
-   drivers/pci/controller/pcie-rockchip-ep.c:258:20: error: invalid use of undefined type 'struct pci_epc_map'
-     258 |                 map->pci_size = SZ_1M - map->map_ofst;
-         |                    ^~
-   drivers/pci/controller/pcie-rockchip-ep.c:258:44: error: invalid use of undefined type 'struct pci_epc_map'
-     258 |                 map->pci_size = SZ_1M - map->map_ofst;
-         |                                            ^~
-   drivers/pci/controller/pcie-rockchip-ep.c:260:12: error: invalid use of undefined type 'struct pci_epc_map'
-     260 |         map->map_size = ALIGN(map->map_ofst + map->pci_size,
-         |            ^~
-   In file included from include/vdso/const.h:5,
-                    from include/linux/const.h:4,
-                    from include/uapi/linux/kernel.h:6,
-                    from include/linux/cache.h:5,
-                    from include/linux/time.h:5,
-                    from include/linux/stat.h:19,
-                    from include/linux/configfs.h:22,
-                    from drivers/pci/controller/pcie-rockchip-ep.c:11:
-   drivers/pci/controller/pcie-rockchip-ep.c:260:34: error: invalid use of undefined type 'struct pci_epc_map'
-     260 |         map->map_size = ALIGN(map->map_ofst + map->pci_size,
-         |                                  ^~
-   include/uapi/linux/const.h:49:44: note: in definition of macro '__ALIGN_KERNEL_MASK'
-      49 | #define __ALIGN_KERNEL_MASK(x, mask)    (((x) + (mask)) & ~(mask))
-         |                                            ^
-   include/linux/align.h:8:33: note: in expansion of macro '__ALIGN_KERNEL'
-       8 | #define ALIGN(x, a)             __ALIGN_KERNEL((x), (a))
-         |                                 ^~~~~~~~~~~~~~
-   drivers/pci/controller/pcie-rockchip-ep.c:260:25: note: in expansion of macro 'ALIGN'
-     260 |         map->map_size = ALIGN(map->map_ofst + map->pci_size,
-         |                         ^~~~~
-   drivers/pci/controller/pcie-rockchip-ep.c:260:50: error: invalid use of undefined type 'struct pci_epc_map'
-     260 |         map->map_size = ALIGN(map->map_ofst + map->pci_size,
-         |                                                  ^~
-   include/uapi/linux/const.h:49:44: note: in definition of macro '__ALIGN_KERNEL_MASK'
-      49 | #define __ALIGN_KERNEL_MASK(x, mask)    (((x) + (mask)) & ~(mask))
-         |                                            ^
-   include/linux/align.h:8:33: note: in expansion of macro '__ALIGN_KERNEL'
-       8 | #define ALIGN(x, a)             __ALIGN_KERNEL((x), (a))
-         |                                 ^~~~~~~~~~~~~~
-   drivers/pci/controller/pcie-rockchip-ep.c:260:25: note: in expansion of macro 'ALIGN'
-     260 |         map->map_size = ALIGN(map->map_ofst + map->pci_size,
-         |                         ^~~~~
-   drivers/pci/controller/pcie-rockchip-ep.c:260:34: error: invalid use of undefined type 'struct pci_epc_map'
-     260 |         map->map_size = ALIGN(map->map_ofst + map->pci_size,
-         |                                  ^~
-   include/uapi/linux/const.h:49:50: note: in definition of macro '__ALIGN_KERNEL_MASK'
-      49 | #define __ALIGN_KERNEL_MASK(x, mask)    (((x) + (mask)) & ~(mask))
-         |                                                  ^~~~
-   include/linux/align.h:8:33: note: in expansion of macro '__ALIGN_KERNEL'
-       8 | #define ALIGN(x, a)             __ALIGN_KERNEL((x), (a))
-         |                                 ^~~~~~~~~~~~~~
-   drivers/pci/controller/pcie-rockchip-ep.c:260:25: note: in expansion of macro 'ALIGN'
-     260 |         map->map_size = ALIGN(map->map_ofst + map->pci_size,
-         |                         ^~~~~
-   drivers/pci/controller/pcie-rockchip-ep.c:260:50: error: invalid use of undefined type 'struct pci_epc_map'
-     260 |         map->map_size = ALIGN(map->map_ofst + map->pci_size,
-         |                                                  ^~
-   include/uapi/linux/const.h:49:50: note: in definition of macro '__ALIGN_KERNEL_MASK'
-      49 | #define __ALIGN_KERNEL_MASK(x, mask)    (((x) + (mask)) & ~(mask))
-         |                                                  ^~~~
-   include/linux/align.h:8:33: note: in expansion of macro '__ALIGN_KERNEL'
-       8 | #define ALIGN(x, a)             __ALIGN_KERNEL((x), (a))
-         |                                 ^~~~~~~~~~~~~~
-   drivers/pci/controller/pcie-rockchip-ep.c:260:25: note: in expansion of macro 'ALIGN'
-     260 |         map->map_size = ALIGN(map->map_ofst + map->pci_size,
-         |                         ^~~~~
-   drivers/pci/controller/pcie-rockchip-ep.c:260:34: error: invalid use of undefined type 'struct pci_epc_map'
-     260 |         map->map_size = ALIGN(map->map_ofst + map->pci_size,
-         |                                  ^~
-   include/uapi/linux/const.h:49:61: note: in definition of macro '__ALIGN_KERNEL_MASK'
-      49 | #define __ALIGN_KERNEL_MASK(x, mask)    (((x) + (mask)) & ~(mask))
-         |                                                             ^~~~
-   include/linux/align.h:8:33: note: in expansion of macro '__ALIGN_KERNEL'
-       8 | #define ALIGN(x, a)             __ALIGN_KERNEL((x), (a))
-         |                                 ^~~~~~~~~~~~~~
-   drivers/pci/controller/pcie-rockchip-ep.c:260:25: note: in expansion of macro 'ALIGN'
-     260 |         map->map_size = ALIGN(map->map_ofst + map->pci_size,
-         |                         ^~~~~
-   drivers/pci/controller/pcie-rockchip-ep.c:260:50: error: invalid use of undefined type 'struct pci_epc_map'
-     260 |         map->map_size = ALIGN(map->map_ofst + map->pci_size,
-         |                                                  ^~
-   include/uapi/linux/const.h:49:61: note: in definition of macro '__ALIGN_KERNEL_MASK'
-      49 | #define __ALIGN_KERNEL_MASK(x, mask)    (((x) + (mask)) & ~(mask))
-         |                                                             ^~~~
-   include/linux/align.h:8:33: note: in expansion of macro '__ALIGN_KERNEL'
-       8 | #define ALIGN(x, a)             __ALIGN_KERNEL((x), (a))
-         |                                 ^~~~~~~~~~~~~~
-   drivers/pci/controller/pcie-rockchip-ep.c:260:25: note: in expansion of macro 'ALIGN'
-     260 |         map->map_size = ALIGN(map->map_ofst + map->pci_size,
-         |                         ^~~~~
-   drivers/pci/controller/pcie-rockchip-ep.c: In function 'rockchip_pcie_ep_perst_irq_thread':
->> drivers/pci/controller/pcie-rockchip-ep.c:631:9: error: implicit declaration of function 'irq_set_irq_type'; did you mean 'irq_set_irq_wake'? [-Wimplicit-function-declaration]
-     631 |         irq_set_irq_type(ep->perst_irq,
-         |         ^~~~~~~~~~~~~~~~
-         |         irq_set_irq_wake
-   drivers/pci/controller/pcie-rockchip-ep.c: In function 'rockchip_pcie_ep_setup_irq':
->> drivers/pci/controller/pcie-rockchip-ep.c:655:9: error: implicit declaration of function 'irq_set_status_flags' [-Wimplicit-function-declaration]
-     655 |         irq_set_status_flags(ep->perst_irq, IRQ_NOAUTOEN);
-         |         ^~~~~~~~~~~~~~~~~~~~
->> drivers/pci/controller/pcie-rockchip-ep.c:655:45: error: 'IRQ_NOAUTOEN' undeclared (first use in this function); did you mean 'IRQF_NO_AUTOEN'?
-     655 |         irq_set_status_flags(ep->perst_irq, IRQ_NOAUTOEN);
-         |                                             ^~~~~~~~~~~~
-         |                                             IRQF_NO_AUTOEN
-   drivers/pci/controller/pcie-rockchip-ep.c:655:45: note: each undeclared identifier is reported only once for each function it appears in
-   drivers/pci/controller/pcie-rockchip-ep.c: At top level:
-   drivers/pci/controller/pcie-rockchip-ep.c:685:10: error: 'const struct pci_epc_ops' has no member named 'map_align'
-     685 |         .map_align      = rockchip_pcie_ep_map_align,
-         |          ^~~~~~~~~
-   drivers/pci/controller/pcie-rockchip-ep.c:685:27: error: initialization of 'int (*)(struct pci_epc *, u8,  u8,  phys_addr_t,  u64,  size_t)' {aka 'int (*)(struct pci_epc *, unsigned char,  unsigned char,  long long unsigned int,  long long unsigned int,  long unsigned int)'} from incompatible pointer type 'int (*)(struct pci_epc *, u8,  u8,  struct pci_epc_map *)' {aka 'int (*)(struct pci_epc *, unsigned char,  unsigned char,  struct pci_epc_map *)'} [-Wincompatible-pointer-types]
-     685 |         .map_align      = rockchip_pcie_ep_map_align,
-         |                           ^~~~~~~~~~~~~~~~~~~~~~~~~~
-   drivers/pci/controller/pcie-rockchip-ep.c:685:27: note: (near initialization for 'rockchip_pcie_epc_ops.map_addr')
-   drivers/pci/controller/pcie-rockchip-ep.c:686:27: warning: initialized field overwritten [-Woverride-init]
-     686 |         .map_addr       = rockchip_pcie_ep_map_addr,
-         |                           ^~~~~~~~~~~~~~~~~~~~~~~~~
-   drivers/pci/controller/pcie-rockchip-ep.c:686:27: note: (near initialization for 'rockchip_pcie_epc_ops.map_addr')
-
-
-vim +631 drivers/pci/controller/pcie-rockchip-ep.c
-
-   618	
-   619	static irqreturn_t rockchip_pcie_ep_perst_irq_thread(int irq, void *data)
-   620	{
-   621		struct pci_epc *epc = data;
-   622		struct rockchip_pcie_ep *ep = epc_get_drvdata(epc);
-   623		struct rockchip_pcie *rockchip = &ep->rockchip;
-   624		u32 perst = gpiod_get_value(rockchip->ep_gpio);
-   625	
-   626		if (perst)
-   627			rockchip_pcie_ep_perst_assert(ep);
-   628		else
-   629			rockchip_pcie_ep_perst_deassert(ep);
-   630	
- > 631		irq_set_irq_type(ep->perst_irq,
-   632				 (perst ? IRQF_TRIGGER_HIGH : IRQF_TRIGGER_LOW));
-   633	
-   634		return IRQ_HANDLED;
-   635	}
-   636	
-   637	static int rockchip_pcie_ep_setup_irq(struct pci_epc *epc)
-   638	{
-   639		struct rockchip_pcie_ep *ep = epc_get_drvdata(epc);
-   640		struct rockchip_pcie *rockchip = &ep->rockchip;
-   641		struct device *dev = rockchip->dev;
-   642		int ret;
-   643	
-   644		if (!rockchip->ep_gpio)
-   645			return 0;
-   646	
-   647		/* PCIe reset interrupt */
-   648		ep->perst_irq = gpiod_to_irq(rockchip->ep_gpio);
-   649		if (ep->perst_irq < 0) {
-   650			dev_err(dev, "No corresponding IRQ for PERST GPIO\n");
-   651			return ep->perst_irq;
-   652		}
-   653	
-   654		ep->perst_asserted = true;
- > 655		irq_set_status_flags(ep->perst_irq, IRQ_NOAUTOEN);
-   656		ret = devm_request_threaded_irq(dev, ep->perst_irq, NULL,
-   657						rockchip_pcie_ep_perst_irq_thread,
-   658						IRQF_TRIGGER_HIGH | IRQF_ONESHOT,
-   659						"pcie-ep-perst", epc);
-   660		if (ret) {
-   661			dev_err(dev, "Request PERST GPIO IRQ failed %d\n", ret);
-   662			return ret;
-   663		}
-   664	
-   665		return 0;
-   666	}
-   667	
-
--- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gTW9uLCBPY3QgMDcsIDIwMjQgYXQgMDE6MTI6MTNQTSArMDkwMCwgRGFtaWVuIExlIE1vYWwg
+d3JvdGU6Cj4gTW92ZSB0aGUgY29kZSBpbiByb2NrY2hpcF9wY2llX2VwX3Byb2JlKCkgdG8gaGlk
+ZSB0aGUgTVNJLVggY2FwYWJpbGl0eQo+IHRvIGl0cyBvd24gZnVuY3Rpb24sIHJvY2tjaGlwX3Bj
+aWVfZXBfaGlkZV9tc2l4X2NhcCgpLiBObyBmdW5jdGlvbmFsCj4gY2hhbmdlcy4KPiAKPiBTaWdu
+ZWQtb2ZmLWJ5OiBEYW1pZW4gTGUgTW9hbCA8ZGxlbW9hbEBrZXJuZWwub3JnPgoKUmV2aWV3ZWQt
+Ynk6IE1hbml2YW5uYW4gU2FkaGFzaXZhbSA8bWFuaXZhbm5hbi5zYWRoYXNpdmFtQGxpbmFyby5v
+cmc+CgpCdHcsIGNhbiBzb21lb25lIGZyb20gUm9ja2NoaXAgY29uZmlybSBpZiB0aGlzIGhpZGlu
+ZyBpcyBuZWNlc3NhcnkgZm9yIGFsbCB0aGUKU29Dcz8gSXQgbG9va3MgdG8gbWUgbGlrZSBhbiBT
+b0MgcXVpcmsuCgotIE1hbmkKCj4gLS0tCj4gIGRyaXZlcnMvcGNpL2NvbnRyb2xsZXIvcGNpZS1y
+b2NrY2hpcC1lcC5jIHwgNTQgKysrKysrKysrKysrKy0tLS0tLS0tLS0KPiAgMSBmaWxlIGNoYW5n
+ZWQsIDMwIGluc2VydGlvbnMoKyksIDI0IGRlbGV0aW9ucygtKQo+IAo+IGRpZmYgLS1naXQgYS9k
+cml2ZXJzL3BjaS9jb250cm9sbGVyL3BjaWUtcm9ja2NoaXAtZXAuYyBiL2RyaXZlcnMvcGNpL2Nv
+bnRyb2xsZXIvcGNpZS1yb2NrY2hpcC1lcC5jCj4gaW5kZXggNTIzZTljZGZkMjQxLi43YTE3OThm
+Y2MyYWQgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9wY2kvY29udHJvbGxlci9wY2llLXJvY2tjaGlw
+LWVwLmMKPiArKysgYi9kcml2ZXJzL3BjaS9jb250cm9sbGVyL3BjaWUtcm9ja2NoaXAtZXAuYwo+
+IEBAIC01ODEsNiArNTgxLDM0IEBAIHN0YXRpYyB2b2lkIHJvY2tjaGlwX3BjaWVfZXBfcmVsZWFz
+ZV9yZXNvdXJjZXMoc3RydWN0IHJvY2tjaGlwX3BjaWVfZXAgKmVwKQo+ICAJcGNpX2VwY19tZW1f
+ZXhpdChlcC0+ZXBjKTsKPiAgfQo+ICAKPiArc3RhdGljIHZvaWQgcm9ja2NoaXBfcGNpZV9lcF9o
+aWRlX21zaXhfY2FwKHN0cnVjdCByb2NrY2hpcF9wY2llICpyb2NrY2hpcCkKPiArewo+ICsJdTMy
+IGNmZ19tc2ksIGNmZ19tc2l4X2NwOwo+ICsKPiArCS8qCj4gKwkgKiBNU0ktWCBpcyBub3Qgc3Vw
+cG9ydGVkIGJ1dCB0aGUgY29udHJvbGxlciBzdGlsbCBhZHZlcnRpc2VzIHRoZSBNU0ktWAo+ICsJ
+ICogY2FwYWJpbGl0eSBieSBkZWZhdWx0LCB3aGljaCBjYW4gbGVhZCB0byB0aGUgUm9vdCBDb21w
+bGV4IHNpZGUKPiArCSAqIGFsbG9jYXRpbmcgTVNJLVggdmVjdG9ycyB3aGljaCBjYW5ub3QgYmUg
+dXNlZC4gQXZvaWQgdGhpcyBieSBza2lwcGluZwo+ICsJICogdGhlIE1TSS1YIGNhcGFiaWxpdHkg
+ZW50cnkgaW4gdGhlIFBDSWUgY2FwYWJpbGl0aWVzIGxpbmtlZC1saXN0OiBnZXQKPiArCSAqIHRo
+ZSBuZXh0IHBvaW50ZXIgZnJvbSB0aGUgTVNJLVggZW50cnkgYW5kIHNldCB0aGF0IGluIHRoZSBN
+U0kKPiArCSAqIGNhcGFiaWxpdHkgZW50cnkgKHdoaWNoIGlzIHRoZSBwcmV2aW91cyBlbnRyeSku
+IFRoaXMgd2F5IHRoZSBNU0ktWAo+ICsJICogZW50cnkgaXMgc2tpcHBlZCAobGVmdCBvdXQgb2Yg
+dGhlIGxpbmtlZC1saXN0KSBhbmQgbm90IGFkdmVydGlzZWQuCj4gKwkgKi8KPiArCWNmZ19tc2kg
+PSByb2NrY2hpcF9wY2llX3JlYWQocm9ja2NoaXAsIFBDSUVfRVBfQ09ORklHX0JBU0UgKwo+ICsJ
+CQkJICAgICBST0NLQ0hJUF9QQ0lFX0VQX01TSV9DVFJMX1JFRyk7Cj4gKwo+ICsJY2ZnX21zaSAm
+PSB+Uk9DS0NISVBfUENJRV9FUF9NU0lfQ1AxX01BU0s7Cj4gKwo+ICsJY2ZnX21zaXhfY3AgPSBy
+b2NrY2hpcF9wY2llX3JlYWQocm9ja2NoaXAsIFBDSUVfRVBfQ09ORklHX0JBU0UgKwo+ICsJCQkJ
+CSBST0NLQ0hJUF9QQ0lFX0VQX01TSVhfQ0FQX1JFRykgJgo+ICsJCQkJCSBST0NLQ0hJUF9QQ0lF
+X0VQX01TSVhfQ0FQX0NQX01BU0s7Cj4gKwo+ICsJY2ZnX21zaSB8PSBjZmdfbXNpeF9jcDsKPiAr
+Cj4gKwlyb2NrY2hpcF9wY2llX3dyaXRlKHJvY2tjaGlwLCBjZmdfbXNpLAo+ICsJCQkgICAgUENJ
+RV9FUF9DT05GSUdfQkFTRSArIFJPQ0tDSElQX1BDSUVfRVBfTVNJX0NUUkxfUkVHKTsKPiArfQo+
+ICsKPiAgc3RhdGljIGludCByb2NrY2hpcF9wY2llX2VwX3Byb2JlKHN0cnVjdCBwbGF0Zm9ybV9k
+ZXZpY2UgKnBkZXYpCj4gIHsKPiAgCXN0cnVjdCBkZXZpY2UgKmRldiA9ICZwZGV2LT5kZXY7Cj4g
+QEAgLTU4OCw3ICs2MTYsNiBAQCBzdGF0aWMgaW50IHJvY2tjaGlwX3BjaWVfZXBfcHJvYmUoc3Ry
+dWN0IHBsYXRmb3JtX2RldmljZSAqcGRldikKPiAgCXN0cnVjdCByb2NrY2hpcF9wY2llICpyb2Nr
+Y2hpcDsKPiAgCXN0cnVjdCBwY2lfZXBjICplcGM7Cj4gIAlpbnQgZXJyOwo+IC0JdTMyIGNmZ19t
+c2ksIGNmZ19tc2l4X2NwOwo+ICAKPiAgCWVwID0gZGV2bV9remFsbG9jKGRldiwgc2l6ZW9mKCpl
+cCksIEdGUF9LRVJORUwpOwo+ICAJaWYgKCFlcCkKPiBAQCAtNjE5LDYgKzY0Niw4IEBAIHN0YXRp
+YyBpbnQgcm9ja2NoaXBfcGNpZV9lcF9wcm9iZShzdHJ1Y3QgcGxhdGZvcm1fZGV2aWNlICpwZGV2
+KQo+ICAJaWYgKGVycikKPiAgCQlnb3RvIGVycl9kaXNhYmxlX2Nsb2NrczsKPiAgCj4gKwlyb2Nr
+Y2hpcF9wY2llX2VwX2hpZGVfbXNpeF9jYXAocm9ja2NoaXApOwo+ICsKPiAgCS8qIEVzdGFibGlz
+aCB0aGUgbGluayBhdXRvbWF0aWNhbGx5ICovCj4gIAlyb2NrY2hpcF9wY2llX3dyaXRlKHJvY2tj
+aGlwLCBQQ0lFX0NMSUVOVF9MSU5LX1RSQUlOX0VOQUJMRSwKPiAgCQkJICAgIFBDSUVfQ0xJRU5U
+X0NPTkZJRyk7Cj4gQEAgLTYyNiwyOSArNjU1LDYgQEAgc3RhdGljIGludCByb2NrY2hpcF9wY2ll
+X2VwX3Byb2JlKHN0cnVjdCBwbGF0Zm9ybV9kZXZpY2UgKnBkZXYpCj4gIAkvKiBPbmx5IGVuYWJs
+ZSBmdW5jdGlvbiAwIGJ5IGRlZmF1bHQgKi8KPiAgCXJvY2tjaGlwX3BjaWVfd3JpdGUocm9ja2No
+aXAsIEJJVCgwKSwgUENJRV9DT1JFX1BIWV9GVU5DX0NGRyk7Cj4gIAo+IC0JLyoKPiAtCSAqIE1T
+SS1YIGlzIG5vdCBzdXBwb3J0ZWQgYnV0IHRoZSBjb250cm9sbGVyIHN0aWxsIGFkdmVydGlzZXMg
+dGhlIE1TSS1YCj4gLQkgKiBjYXBhYmlsaXR5IGJ5IGRlZmF1bHQsIHdoaWNoIGNhbiBsZWFkIHRv
+IHRoZSBSb290IENvbXBsZXggc2lkZQo+IC0JICogYWxsb2NhdGluZyBNU0ktWCB2ZWN0b3JzIHdo
+aWNoIGNhbm5vdCBiZSB1c2VkLiBBdm9pZCB0aGlzIGJ5IHNraXBwaW5nCj4gLQkgKiB0aGUgTVNJ
+LVggY2FwYWJpbGl0eSBlbnRyeSBpbiB0aGUgUENJZSBjYXBhYmlsaXRpZXMgbGlua2VkLWxpc3Q6
+IGdldAo+IC0JICogdGhlIG5leHQgcG9pbnRlciBmcm9tIHRoZSBNU0ktWCBlbnRyeSBhbmQgc2V0
+IHRoYXQgaW4gdGhlIE1TSQo+IC0JICogY2FwYWJpbGl0eSBlbnRyeSAod2hpY2ggaXMgdGhlIHBy
+ZXZpb3VzIGVudHJ5KS4gVGhpcyB3YXkgdGhlIE1TSS1YCj4gLQkgKiBlbnRyeSBpcyBza2lwcGVk
+IChsZWZ0IG91dCBvZiB0aGUgbGlua2VkLWxpc3QpIGFuZCBub3QgYWR2ZXJ0aXNlZC4KPiAtCSAq
+Lwo+IC0JY2ZnX21zaSA9IHJvY2tjaGlwX3BjaWVfcmVhZChyb2NrY2hpcCwgUENJRV9FUF9DT05G
+SUdfQkFTRSArCj4gLQkJCQkgICAgIFJPQ0tDSElQX1BDSUVfRVBfTVNJX0NUUkxfUkVHKTsKPiAt
+Cj4gLQljZmdfbXNpICY9IH5ST0NLQ0hJUF9QQ0lFX0VQX01TSV9DUDFfTUFTSzsKPiAtCj4gLQlj
+ZmdfbXNpeF9jcCA9IHJvY2tjaGlwX3BjaWVfcmVhZChyb2NrY2hpcCwgUENJRV9FUF9DT05GSUdf
+QkFTRSArCj4gLQkJCQkJIFJPQ0tDSElQX1BDSUVfRVBfTVNJWF9DQVBfUkVHKSAmCj4gLQkJCQkJ
+IFJPQ0tDSElQX1BDSUVfRVBfTVNJWF9DQVBfQ1BfTUFTSzsKPiAtCj4gLQljZmdfbXNpIHw9IGNm
+Z19tc2l4X2NwOwo+IC0KPiAtCXJvY2tjaGlwX3BjaWVfd3JpdGUocm9ja2NoaXAsIGNmZ19tc2ks
+Cj4gLQkJCSAgICBQQ0lFX0VQX0NPTkZJR19CQVNFICsgUk9DS0NISVBfUENJRV9FUF9NU0lfQ1RS
+TF9SRUcpOwo+IC0KPiAgCXJvY2tjaGlwX3BjaWVfd3JpdGUocm9ja2NoaXAsIFBDSUVfQ0xJRU5U
+X0NPTkZfRU5BQkxFLAo+ICAJCQkgICAgUENJRV9DTElFTlRfQ09ORklHKTsKPiAgCj4gLS0gCj4g
+Mi40Ni4yCj4gCgotLSAK4K6u4K6j4K6/4K614K6j4K+N4K6j4K6p4K+NIOCumuCupOCuvuCumuCu
+v+CuteCuruCvjQoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJh
+ZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51
+eC1yb2NrY2hpcAo=
