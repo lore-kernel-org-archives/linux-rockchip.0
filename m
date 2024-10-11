@@ -4,60 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1DC7CD2444F
-	for <linux-rockchip@archiver.kernel.org>; Thu, 10 Oct 2024 23:01:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 58092D2447F
+	for <linux-rockchip@archiver.kernel.org>; Fri, 11 Oct 2024 06:57:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=TfqaQL5BMZOq/Xj/0q5+nMoVxsuXQy47BMizPFtqp+E=; b=rbNXu7z4PmGL5m
-	uSYTPv5kSdgIXgpJh6O30BWdfJ3aFcW0LNnccH5o9n/tqYvv3SW379VyfryqiF01M0oMRP6e3bRtL
-	1G9vsQPmq5tp2FFWXfphFxH7uM5y/Dj0E2cGJfM6SpaUvLwwszEpj5D2k6hhtLa/h7xQyhMqY5fbT
-	s33NhDLBEzbhFhZwrfEc4xns2vNm0P6ItgpACOmaLoqigQYhM78xgyHkkxRGcZoYneo3fq4Kce9Ir
-	HRkToN5z+PWLji6PBmlTX6Q4j29TfxW5/kEh5DXLyHs8xeIUuCgAFe1ax+QD3ssusm3j3dpxxdKK+
-	AcceeM/DpBk1GojEWluw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=TjU2+ehGmoOjIDZI+f6u+jqnx00eiptFK6qpFqdT6Q8=; b=o720pbpvb0JqHT
+	+NQ+oHSNqFupLeoyOWyMpMSvKgI1fJufne36ltSr3QdPzwnVCn7hwokMUTKo8QFY82yJW2E6BVD22
+	X1fePqzkiP2j72f8aRXzDUJN501fk+hEaFXmZJ2EJh0aAe0N9WZlDF3o69v8MXYE+3+e3Y10HVMCo
+	FKNkaKy8qnNVnKEyKfPgid36co4YWBdYU5qBvj5GURF7DWJ+mPZwkTXdmVorRkb3ve9dUlgbUGNMB
+	5LF8uTf+logf3skAPAsamQ4R3vYUtEKpjdhca1iRDlYV96EysPLK10Aa1NPpujgq3gBGkWhYptoic
+	Kfe9PcBv3DHAkxV5e3cw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1sz2A8-0000000EcHq-35BX;
-	Thu, 10 Oct 2024 23:01:40 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1sz9aq-0000000FTAK-0GzL;
+	Fri, 11 Oct 2024 06:57:44 +0000
+Received: from mail-pf1-x429.google.com ([2607:f8b0:4864:20::429])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1syzlF-0000000EGOH-3Y8s;
-	Thu, 10 Oct 2024 20:27:51 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
-	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=Go6/Rxw5ULvp3qmcx0fF/STMX2ar8olqgjRJbUbDDyg=; b=kW/HUU/cDFp1FkijOAX7m7LuUJ
-	4VN/atXy4M2/v0mXCFiv3JY3jrWol7ibOyQn+ISfCC/Fvlo4cLwRDXNEscw0MFpxJILDXvSoVdvN+
-	GBi0Ddq8iHwUSp9BOGLIoo5id6XNgCyJGl6ROhfa9BJM7o7UQL3b+lIYRyO0G7knS65P2C1KSe6eC
-	8K7ZLnOhuPEFHlG8J7lmXV3Xpo89Kn8ZmpP/AudbF4dADx1Q77vRkNhJDFJ+IdEYjf8+ztc7uSKFG
-	x/lMoTaYUtzeIbqx78F/XAdH/0MflFYHLDDjBHnlUqIpb1nxHYVD8jaaW8W+hw/x8QRslV5nz0EaO
-	R38zJ5dA==;
-Received: from i53875b34.versanet.de ([83.135.91.52] helo=phil.lan)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1syzlE-0000lb-Bz; Thu, 10 Oct 2024 22:27:48 +0200
-From: Heiko Stuebner <heiko@sntech.de>
-To: Heiko Stuebner <heiko@sntech.de>,
-	linux-rockchip@lists.infradead.org
-Cc: devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org
-Subject: Re: [PATCH v2 00/14] Fixing some dtbscheck warnings
-Date: Thu, 10 Oct 2024 22:27:45 +0200
-Message-ID: <172859192264.2746127.9464366808978431094.b4-ty@sntech.de>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20241008203940.2573684-1-heiko@sntech.de>
-References: <20241008203940.2573684-1-heiko@sntech.de>
+	id 1sz9V7-0000000FS06-49AZ;
+	Fri, 11 Oct 2024 06:51:51 +0000
+Received: by mail-pf1-x429.google.com with SMTP id d2e1a72fcca58-71e269db566so99600b3a.3;
+        Thu, 10 Oct 2024 23:51:49 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1728629508; x=1729234308; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=vUd+ptjyv9QJ5lB7HGC0V0YSPXyHnn+kNuvjqh6RNSw=;
+        b=l+YNEGMk+K+Sd6+RNZjkBAElP+7O52DJ9zCxRTn3Dev0kRiR+Q4ov+V8O7OK+TY8ED
+         To4UfvNgjBz+61QZIZEWIcHCditOXVmXoKg5WSArzGkL7hwJqxVt6M3vw5LUCjTaOQ+y
+         Zxkw8VDJOI01//uJojGRY/oQejgM+Rh/utNHfh/Byos1Jr6nD7YTH0FpkCDXhKcG87Gr
+         +61j9OdkBsXfybFWZCBHAno1GVVNSrXvwRN88A6XxYQYf7YrWtZmiubNuCY6UzVEG83f
+         AO7jcig1cqegLEafCAMSWBppx6wAjdxNnCoZ/rkKaf7jPowPlR+KwnFLjOFbCwA4GaKn
+         NRnA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1728629508; x=1729234308;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=vUd+ptjyv9QJ5lB7HGC0V0YSPXyHnn+kNuvjqh6RNSw=;
+        b=VXQOs/GnEnXourtfQ5vQ6q3JpBS5JurimQV3RZy2t9Z02MYXKXStUYAwLzLscPTi+u
+         aEKTXfEHjhEkkmslTPQfGtcmqUDLHZLG+KbMnha28CK/vVoeZDPNQFq2D0BAYKjr3oAq
+         TUFby3ea3HnX7jp0N7mV1C/N1y1/F0IBJHSChxD75yxj0XLO1CU74NLcq6LKcRONEJfh
+         gVY+/Ni8VXqDQrQT4LpJcnNG/6hclPMrLABs+liKBel3j72QsTKIfOmym/LbUi4WMsVm
+         bAdgx0GNRn7jSP5Y0asOP8rs707YOrrcMGEGkbuMWhxN/U6BABvN8JdXvLEYZT2OIY44
+         s3WA==
+X-Forwarded-Encrypted: i=1; AJvYcCViImvJ05a3TChRC3ab68skflV2usXPyGJJ1E0jU/Uuu9druwh8FbJyrcVRHvbUJP8UIQsxrowhG9WHQKSYE4g=@lists.infradead.org, AJvYcCXEM5CoTG9QwNrn6AV/nrx4yyELxikg34v9iF8Ic0wNTiZ6BfNgSc48DLR/ptGIKgYFZ99xjZ1asjD9pRB8J4gY@lists.infradead.org
+X-Gm-Message-State: AOJu0Ywe1hePt/ZmuwbHJfKQVzdcYR7JKAjrptAqYutDoGRZg/7mDVYn
+	OAWTR2WraRsZRxvcGM7IwuTLLKWO28davCuXs3ExVmdWwho+4bLI
+X-Google-Smtp-Source: AGHT+IHjExOTWS+ut51FciTmYkVQWJwbGbZ+dp9P/ObMFftp08A8WqGSO9KFwxV+tjO4x0yePjh8LQ==
+X-Received: by 2002:a05:6a00:8594:b0:718:e49f:4185 with SMTP id d2e1a72fcca58-71e38126090mr1026885b3a.7.1728629508440;
+        Thu, 10 Oct 2024 23:51:48 -0700 (PDT)
+Received: from localhost.localdomain ([103.29.142.67])
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-71e2ab109e4sm2036099b3a.206.2024.10.10.23.51.44
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 10 Oct 2024 23:51:48 -0700 (PDT)
+From: Frank Wang <frawang.cn@gmail.com>
+To: vkoul@kernel.org,
+	kishon@kernel.org,
+	robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
+	heiko@sntech.de
+Cc: linux-phy@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	william.wu@rock-chips.com,
+	tim.chen@rock-chips.com,
+	Frank Wang <frank.wang@rock-chips.com>
+Subject: [PATCH v5 1/3] phy: rockchip: inno-usb2: convert clock management to bulk
+Date: Fri, 11 Oct 2024 14:51:38 +0800
+Message-Id: <20241011065140.19999-1-frawang.cn@gmail.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241010_132749_905359_42E87133 
-X-CRM114-Status: GOOD (  12.60  )
+X-CRM114-CacheID: sfid-20241010_235150_109238_6B977D4E 
+X-CRM114-Status: GOOD (  19.67  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,60 +100,131 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, 8 Oct 2024 22:39:26 +0200, Heiko Stuebner wrote:
-> Fixing dtbs-check warnings should be declared addictive, one starts
-> with one warning, then another one and then it's oh, I'll just fix
-> this "last" one over and over ;-)
-> 
-> We still have more, if others want to play too :-D .
-> 
-> changes in v2:
-> - more fixes
-> - use more appropriate txco clk for brcm bluetooth
-> 
-> [...]
+From: Frank Wang <frank.wang@rock-chips.com>
 
-Applied, thanks!
+Since some Rockchip SoCs (e.g RK3576) have more than one clock,
+this converts the clock management from single to bulk method to
+make the driver more flexible.
 
-[01/14] arm64: dts: rockchip: fix i2c2 pinctrl-names property on anbernic-rg353p/v
-        commit: f94b934336e30cebae75d4fbe04a2109a3c8fdec
-[02/14] arm64: dts: rockchip: Drop regulator-init-microvolt from two boards
-        commit: 98c3f4a2d61a29a53244ce45e50655140bd47afb
-[03/14] arm64: dts: rockchip: Fix bluetooth properties on rk3566 box demo
-        commit: 2fa98dcc8d3ea2ebbd9e6be778f8bb19231c28be
-[04/14] arm64: dts: rockchip: Fix bluetooth properties on Rock960 boards
-        commit: ea74528aaea5a1dfc8e3de09ef2af37530eca526
-[05/14] arm64: dts: rockchip: Remove undocumented supports-emmc property
-        commit: 1b670212ee3dd9d14c6d39a042dfe4ae79b49b4e
-[06/14] arm64: dts: rockchip: Remove #cooling-cells from fan on Theobroma boards
-        commit: 5ed96580568c4f79a0aff11a67f10b3e9229ba86
+Signed-off-by: Frank Wang <frank.wang@rock-chips.com>
+---
+Changelog:
+V5:
+ - use dev_err_probe() in clock enable error path in probe.
 
-        I've limited the commit to only lion now. Both Puma and Ringneck
-        loose their #cooling-cells property in the i2c-mux-conversion for
-        6.13 already and the undocumented property is in the boards so
-        long already, that it didn't make sense to cause extra merge
-        conflicts for this.
+v4:
+ - a new patch split from the [PATCH v3 2/2], suggestions from Heiko.
 
-[07/14] arm64: dts: rockchip: Fix LED triggers on rk3308-roc-cc
-        commit: 3a53a7187f41ec3db12cf4c2cb0db4ba87c2f3a1
-[08/14] arm64: dts: rockchip: remove num-slots property from rk3328-nanopi-r2s-plus
-        commit: b1f8d3b81d9289e171141a7120093ddefe7bd2f4
-[09/14] arm64: dts: rockchip: Remove 'enable-active-low' from two boards
-        commit: f4d29bebaa6118c1e51e8f1c21ce2b34f43e1479
-[10/14] arm64: dts: rockchip: remove orphaned pinctrl-names from pinephone pro
-        commit: 8fb9f4ee733c50cc9b6dce2313d1948d6229e804
-[11/14] ARM: dts: rockchip: fix rk3036 acodec node
-        commit: d015181e18070dc53c2dfdcfaa7441567cc990f1
-[12/14] ARM: dts: rockchip: drop grf reference from rk3036 hdmi
-        commit: a30ef8fa0e6d70fcf7e933a876a05bc9ca101472
-[13/14] ARM: dts: rockchip: Fix the spi controller on rk3036
-        commit: 34387c259d42c7e62aa046ffb982c710c8971418
-[14/14] ARM: dts: rockchip: Fix the realtek audio codec on rk3036-kylin
-        commit: 9f03220ac5717d19d71ae21c9020e4dd56f1efa7
+v1-v3:
+ - none
 
-Best regards,
+ drivers/phy/rockchip/phy-rockchip-inno-usb2.c | 45 +++++++++++++++----
+ 1 file changed, 37 insertions(+), 8 deletions(-)
+
+diff --git a/drivers/phy/rockchip/phy-rockchip-inno-usb2.c b/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
+index 6e5214862b8a3..f71266c27091e 100644
+--- a/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
++++ b/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
+@@ -229,9 +229,10 @@ struct rockchip_usb2phy_port {
+  * @dev: pointer to device.
+  * @grf: General Register Files regmap.
+  * @usbgrf: USB General Register Files regmap.
+- * @clk: clock struct of phy input clk.
++ * @clks: array of phy input clocks.
+  * @clk480m: clock struct of phy output clk.
+  * @clk480m_hw: clock struct of phy output clk management.
++ * @num_clks: number of phy input clocks.
+  * @phy_reset: phy reset control.
+  * @chg_state: states involved in USB charger detection.
+  * @chg_type: USB charger types.
+@@ -246,9 +247,10 @@ struct rockchip_usb2phy {
+ 	struct device	*dev;
+ 	struct regmap	*grf;
+ 	struct regmap	*usbgrf;
+-	struct clk	*clk;
++	struct clk_bulk_data	*clks;
+ 	struct clk	*clk480m;
+ 	struct clk_hw	clk480m_hw;
++	int			num_clks;
+ 	struct reset_control	*phy_reset;
+ 	enum usb_chg_state	chg_state;
+ 	enum power_supply_type	chg_type;
+@@ -310,6 +312,13 @@ static int rockchip_usb2phy_reset(struct rockchip_usb2phy *rphy)
+ 	return 0;
+ }
+ 
++static void rockchip_usb2phy_clk_bulk_disable(void *data)
++{
++	struct rockchip_usb2phy *rphy = data;
++
++	clk_bulk_disable_unprepare(rphy->num_clks, rphy->clks);
++}
++
+ static int rockchip_usb2phy_clk480m_prepare(struct clk_hw *hw)
+ {
+ 	struct rockchip_usb2phy *rphy =
+@@ -376,7 +385,9 @@ rockchip_usb2phy_clk480m_register(struct rockchip_usb2phy *rphy)
+ {
+ 	struct device_node *node = rphy->dev->of_node;
+ 	struct clk_init_data init;
++	struct clk *refclk = NULL;
+ 	const char *clk_name;
++	int i;
+ 	int ret = 0;
+ 
+ 	init.flags = 0;
+@@ -386,8 +397,15 @@ rockchip_usb2phy_clk480m_register(struct rockchip_usb2phy *rphy)
+ 	/* optional override of the clockname */
+ 	of_property_read_string(node, "clock-output-names", &init.name);
+ 
+-	if (rphy->clk) {
+-		clk_name = __clk_get_name(rphy->clk);
++	for (i = 0; i < rphy->num_clks; i++) {
++		if (!strncmp(rphy->clks[i].id, "phyclk", 6)) {
++			refclk = rphy->clks[i].clk;
++			break;
++		}
++	}
++
++	if (!IS_ERR(refclk)) {
++		clk_name = __clk_get_name(refclk);
+ 		init.parent_names = &clk_name;
+ 		init.num_parents = 1;
+ 	} else {
+@@ -1399,15 +1417,26 @@ static int rockchip_usb2phy_probe(struct platform_device *pdev)
+ 	if (IS_ERR(rphy->phy_reset))
+ 		return PTR_ERR(rphy->phy_reset);
+ 
+-	rphy->clk = devm_clk_get_optional_enabled(dev, "phyclk");
+-	if (IS_ERR(rphy->clk))
+-		return dev_err_probe(&pdev->dev, PTR_ERR(rphy->clk),
+-				     "failed to get phyclk\n");
++	ret = devm_clk_bulk_get_all(dev, &rphy->clks);
++	if (ret == -EPROBE_DEFER)
++		return dev_err_probe(&pdev->dev, -EPROBE_DEFER,
++				     "failed to get phy clock\n");
++
++	/* Clocks are optional */
++	rphy->num_clks = ret < 0 ? 0 : ret;
+ 
+ 	ret = rockchip_usb2phy_clk480m_register(rphy);
+ 	if (ret)
+ 		return dev_err_probe(dev, ret, "failed to register 480m output clock\n");
+ 
++	ret = clk_bulk_prepare_enable(rphy->num_clks, rphy->clks);
++	if (ret)
++		return dev_err_probe(dev, ret, "failed to enable phy clock\n");
++
++	ret = devm_add_action_or_reset(dev, rockchip_usb2phy_clk_bulk_disable, rphy);
++	if (ret)
++		return ret;
++
+ 	if (rphy->phy_cfg->phy_tuning) {
+ 		ret = rphy->phy_cfg->phy_tuning(rphy);
+ 		if (ret)
 -- 
-Heiko Stuebner <heiko@sntech.de>
+2.45.2
+
 
 _______________________________________________
 Linux-rockchip mailing list
