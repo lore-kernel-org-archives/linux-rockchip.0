@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0ADD0D0D788
-	for <linux-rockchip@archiver.kernel.org>; Fri, 11 Oct 2024 12:25:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2FC32D0D783
+	for <linux-rockchip@archiver.kernel.org>; Fri, 11 Oct 2024 12:25:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=EcDK0lPOVEdyNaJdF9TiZ8KwI6K8qzQBpiFg524sPS4=; b=w8ultsS7sPxGAD
-	UNFLyekTKgcIf28IOpYDeDMGjp1dI92vA3uyh5dP2Uq8NP/iImGbXcJ6Y2wPQb+r/+fcwlQAUYEUs
-	A7QzWe1pRHfk17s9CR4pMxpqdf1ZZuzxDcwYECQZoVXD927sVbkKzMvAbJEpuar7z89fIDoLpeazP
-	t/lykPnj08rEtRpU0kMz/Oxnj+jZi7yXme0B4jT2UrPN60EW/KhQLAxihTWermHEYpy42xEzIP/p1
-	NstBd+kGUGg0U05PnbgKw1dQvWJ6SqZAyXpMmdYQ01iKJLN4GADXsyQy9SxKhL0K7iejTfgAwKgDc
-	CLzDxRACmss6KQaBnZgw==;
+	List-Owner; bh=sbg2MTx6P9EPOBV/dKLRFGui1sLL6MR58pSxezITXro=; b=LUqKLTfQ4p0cMI
+	eR+qM53RhL+6Nq9lZt36s4cLVxRGiScPM9junMe1xb27NDSsUfYH2L39nwgdsIKx4U4Fe/bpVlc9w
+	ler2RcjpBFU52hZEHLgmOkhVpMU0EaBBhHozZSVyhesfOlvezu+IE/VaryvG33dvsrD7D7crTTSoK
+	agKIPLHwMTXSWVp3E6M4oHsBvRCQ09odJ6nIfZCmz6B+mW0rTfVheQjTSuQSdhxRY+7KpHedBoW7r
+	3p+RUk59OMnzQ5c5NHV0PZQYIRZ4V/7yUSm87V6y6ssRIHQc9RjMQXwLkhQSeSTBkHA0kE9lZwlp5
+	ef1KeTB00k3lk0/Jy9hQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1szEhd-0000000GHsD-1Wz1;
-	Fri, 11 Oct 2024 12:25:05 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1szEhc-0000000GHrd-2X80;
+	Fri, 11 Oct 2024 12:25:04 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1szEXD-0000000GFoJ-2BSp
+	id 1szEX8-0000000GFls-3itA
 	for linux-rockchip@lists.infradead.org;
-	Fri, 11 Oct 2024 12:14:21 +0000
+	Fri, 11 Oct 2024 12:14:16 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 1108BA43D7B;
-	Fri, 11 Oct 2024 12:14:10 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 73B74C4CECF;
-	Fri, 11 Oct 2024 12:14:16 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id 6B60BA42517;
+	Fri, 11 Oct 2024 12:14:05 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C76A1C4CECF;
+	Fri, 11 Oct 2024 12:14:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1728648858;
-	bh=pSHsBhnbjSj04jRr4dxkMJFuwUPFncYPKlMS7obkf/w=;
+	s=k20201202; t=1728648853;
+	bh=5hrJOQYC2viBOT0J3u4iqIZmFH2YCX8M3aVKEAlS5sk=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=KgxeAgujYv4rm3bDl1R7Fvbzoc4H5oYIlF+lb9GR4mtydmMCSGzyNNoYaNH1t4hOr
-	 scY43kZuCt1LoAfMyEFawxrNnVyWT83E/e6nYQqNM3iZUAfKVMNwQPAtuhDFpyJsdd
-	 KwNohLGhz2f8t6+aPTizVrlqGWTm3kFG4lpZyfTh4Hy+sfampwIG5JM2TCqYM/il7R
-	 W/gbiaTvbdJpD/uX+JPJ5WuChL86jif2LXZJho9zzgs8grIojVP608RIE3i7/x3EhZ
-	 97Cpq6+1YPClo/2yRnMJPePmA3ps5V5/z8o26AdMVvpLO1ZICRdr6YbHUHt9N+hkdK
-	 Vmt0lW3UO7d+Q==
+	b=ShdrACowAORidYLK6kAlXQl4GWZDxsdu1PSnZyULxgh2H/43yNGg7yQM2uBux0Knj
+	 fMEOCY6m+tFsk6Au9SkLfMiJYA/tkz+JFzi/t9xjeX7NUIAgojTIEfrWWxvrt4pSwg
+	 BSaJBmzK0k3K2Gh4gOu7cxqmmD1SSr2sGU6iAQQAeSetFVmPH7fQyXlv+QgnrLweiG
+	 bi1a2ira97KwRnTN+ZCQDqCKRNWLVeIQTxM1zCDLb+c1FQ2N/c3GyiQ5nPVAXENLOd
+	 QXdHWtaWK2mtFKPu2iZUC+d1hFh82fRYM2S7+yb5XE9r4uqjz/5DBqjVLZyVXk4JV7
+	 soXQmsdSTxCNA==
 From: Damien Le Moal <dlemoal@kernel.org>
 To: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
 	Lorenzo Pieralisi <lpieralisi@kernel.org>,
@@ -58,16 +58,16 @@ To: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
 Cc: linux-rockchip@lists.infradead.org,
 	Rick Wertenbroek <rick.wertenbroek@gmail.com>,
 	Niklas Cassel <cassel@kernel.org>
-Subject: [PATCH v4 03/12] PCI: rockchip-ep: Improve rockchip_pcie_ep_unmap_addr()
-Date: Fri, 11 Oct 2024 21:13:59 +0900
-Message-ID: <20241011121408.89890-4-dlemoal@kernel.org>
+Subject: [PATCH v4 01/12] PCI: rockchip-ep: Fix address translation unit programming
+Date: Fri, 11 Oct 2024 21:13:57 +0900
+Message-ID: <20241011121408.89890-2-dlemoal@kernel.org>
 X-Mailer: git-send-email 2.46.2
 In-Reply-To: <20241011121408.89890-1-dlemoal@kernel.org>
 References: <20241011121408.89890-1-dlemoal@kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241011_051419_677337_6070E6B1 
-X-CRM114-Status: GOOD (  11.71  )
+X-CRM114-CacheID: sfid-20241011_051415_101965_3A634ED3 
+X-CRM114-Status: GOOD (  14.57  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,40 +84,89 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Damien Le Moal <damien.lemoal@opensource.wdc.com>
+The rockchip PCIe endpoint controller handles PCIe transfers addresses
+by masking the lower bits of the programmed PCI address and using the
+same number of lower bits masked from the CPU address space used for the
+mapping. For a PCI mapping of <size> bytes starting from <pci_addr>,
+the number of bits masked is the number of address bits changing in the
+address range [pci_addr..pci_addr + size - 1].
 
-There is no need to loop over all regions to find the memory window used
-to map an address. We can use rockchip_ob_region() to determine the
-region index, together with a check that the address passed as argument
-is the address used to create the mapping. Furthermore, the
-ob_region_map bitmap should also be checked to ensure that we are not
-attempting to unmap an address that is not mapped.
+However, rockchip_pcie_prog_ep_ob_atu() calculates num_pass_bits only
+using the size of the mapping, resulting in an incorrect number of mask
+bits depending on the value of the PCI address to map.
 
-Signed-off-by: Damien Le Moal <damien.lemoal@opensource.wdc.com>
+Fix this by introducing the helper function
+rockchip_pcie_ep_ob_atu_num_bits() to correctly calculate the number of
+mask bits to use to program the address translation unit. The number of
+mask bits is calculated depending on both the PCI address and size of
+the mapping, and clamped between 8 and 20 using the macros
+ROCKCHIP_PCIE_AT_MIN_NUM_BITS and ROCKCHIP_PCIE_AT_MAX_NUM_BITS. As
+defined in the Rockchip RK3399 TRM V1.3 Part2, Sections 17.5.5.1.1 and
+17.6.8.2.1, this clamping is necessary because:
+1) The lower 8 bits of the PCI address to be mapped by the outbound
+   region are ignored. So a minimum of 8 address bits are needed and
+   imply that the PCI address must be aligned to 256.
+2) The outbound memory regions are 1MB in size. So while we can specify
+   up to 63-bits for the PCI address (num_bits filed uses bits 0 to 5 of
+   the outbound address region 0 register), we must limit the number of
+   valid address bits to 20 to match the memory window maximum size (1
+   << 20 = 1MB).
+
+Fixes: cf590b078391 ("PCI: rockchip: Add EP driver for Rockchip PCIe controller")
+Cc: stable@vger.kernel.org
+Signed-off-by: Damien Le Moal <dlemoal@kernel.org>
 ---
- drivers/pci/controller/pcie-rockchip-ep.c | 8 ++------
- 1 file changed, 2 insertions(+), 6 deletions(-)
+ drivers/pci/controller/pcie-rockchip-ep.c | 15 +++++++++++----
+ drivers/pci/controller/pcie-rockchip.h    |  4 ++++
+ 2 files changed, 15 insertions(+), 4 deletions(-)
 
 diff --git a/drivers/pci/controller/pcie-rockchip-ep.c b/drivers/pci/controller/pcie-rockchip-ep.c
-index 5a07084fb7c4..89ebdf3e4737 100644
+index 136274533656..27a7febb74e0 100644
 --- a/drivers/pci/controller/pcie-rockchip-ep.c
 +++ b/drivers/pci/controller/pcie-rockchip-ep.c
-@@ -256,13 +256,9 @@ static void rockchip_pcie_ep_unmap_addr(struct pci_epc *epc, u8 fn, u8 vfn,
+@@ -63,16 +63,23 @@ static void rockchip_pcie_clear_ep_ob_atu(struct rockchip_pcie *rockchip,
+ 			    ROCKCHIP_PCIE_AT_OB_REGION_DESC1(region));
+ }
+ 
++static int rockchip_pcie_ep_ob_atu_num_bits(struct rockchip_pcie *rockchip,
++					    u64 pci_addr, size_t size)
++{
++	int num_pass_bits = fls64(pci_addr ^ (pci_addr + size - 1));
++
++	return clamp(num_pass_bits, ROCKCHIP_PCIE_AT_MIN_NUM_BITS,
++		     ROCKCHIP_PCIE_AT_MAX_NUM_BITS);
++}
++
+ static void rockchip_pcie_prog_ep_ob_atu(struct rockchip_pcie *rockchip, u8 fn,
+ 					 u32 r, u64 cpu_addr, u64 pci_addr,
+ 					 size_t size)
  {
- 	struct rockchip_pcie_ep *ep = epc_get_drvdata(epc);
- 	struct rockchip_pcie *rockchip = &ep->rockchip;
--	u32 r;
+-	int num_pass_bits = fls64(size - 1);
++	int num_pass_bits =
++		rockchip_pcie_ep_ob_atu_num_bits(rockchip, pci_addr, size);
+ 	u32 addr0, addr1, desc0;
+ 
+-	if (num_pass_bits < 8)
+-		num_pass_bits = 8;
 -
--	for (r = 0; r < ep->max_regions; r++)
--		if (ep->ob_addr[r] == addr)
--			break;
-+	u32 r = rockchip_ob_region(addr);
- 
--	if (r == ep->max_regions)
-+	if (addr != ep->ob_addr[r] || !test_bit(r, &ep->ob_region_map))
- 		return;
- 
- 	rockchip_pcie_clear_ep_ob_atu(rockchip, r);
+ 	addr0 = ((num_pass_bits - 1) & PCIE_CORE_OB_REGION_ADDR0_NUM_BITS) |
+ 		(lower_32_bits(pci_addr) & PCIE_CORE_OB_REGION_ADDR0_LO_ADDR);
+ 	addr1 = upper_32_bits(pci_addr);
+diff --git a/drivers/pci/controller/pcie-rockchip.h b/drivers/pci/controller/pcie-rockchip.h
+index 6111de35f84c..15ee949f2485 100644
+--- a/drivers/pci/controller/pcie-rockchip.h
++++ b/drivers/pci/controller/pcie-rockchip.h
+@@ -245,6 +245,10 @@
+ 	(PCIE_EP_PF_CONFIG_REGS_BASE + (((fn) << 12) & GENMASK(19, 12)))
+ #define ROCKCHIP_PCIE_EP_VIRT_FUNC_BASE(fn) \
+ 	(PCIE_EP_PF_CONFIG_REGS_BASE + 0x10000 + (((fn) << 12) & GENMASK(19, 12)))
++
++#define ROCKCHIP_PCIE_AT_MIN_NUM_BITS  8
++#define ROCKCHIP_PCIE_AT_MAX_NUM_BITS  20
++
+ #define ROCKCHIP_PCIE_AT_IB_EP_FUNC_BAR_ADDR0(fn, bar) \
+ 	(PCIE_CORE_AXI_CONF_BASE + 0x0828 + (fn) * 0x0040 + (bar) * 0x0008)
+ #define ROCKCHIP_PCIE_AT_IB_EP_FUNC_BAR_ADDR1(fn, bar) \
 -- 
 2.47.0
 
