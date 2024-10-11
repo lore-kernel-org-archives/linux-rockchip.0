@@ -4,61 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9B1A1CFD30C
-	for <linux-rockchip@archiver.kernel.org>; Fri, 11 Oct 2024 10:12:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C9D46CFD37C
+	for <linux-rockchip@archiver.kernel.org>; Fri, 11 Oct 2024 12:25:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
-	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=n55QseYR2GJmD1cHsXjueTwYixwxfbDL38F6PqmaSws=; b=giEZObkR8oSr619X+Q3Jl2R128
-	1O5YC1S8IqiRb/bbpwWYFGzt5gveSAIPXXC3GbBqnvIWO4JDYTJZRdTefEiYNguXTrtH6WAVlBKjZ
-	y4/LqxAWuaxnMV3sNbaqwuEF7GxPIpm6um93AbXkxjyTyUl6DX8DKCursCdyRXZ3bNRVUbE0T6gt/
-	TYt0HaxgPnxRCieroTq8ElljGfLu58jC65gawnx02qak/UIvYy82Vgzs937KSkSRDibTquGDxJUvT
-	8Y+pYsZpmG1WvD95ypkuNfGWLWmGSMSemP+zXN14vmlj5yGZb5cE0Pbp3sqIWFbxFSnkORSFnT8wv
-	xDBk4G6g==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=aeh2f63YwG0wpgoYASfLN+CyttVh/x6pOexHxV1Zxec=; b=ajTrA9qIExrb5l
+	1LLCFsFfH4iuZNbxevIdj/qnowRmoQjYaUtNUo/N40OxaOS11wSLCWEKy1NDzXnlxXEP447zYtNRr
+	MUDNfSq1r2dRokiKXvscyk+jEzuYQBemapvrEVdnWo/Ff0vDhJSeYBJa0Typis+6AHGXLQI0Cw9F+
+	QGqhaVFdD2E31I0+PCS6k+dEDSE8Zh5a7v/4UT1o7VUAj4LEl922h4PluEihbq8ENtysplAMRUNys
+	efsZfvwyANTmtNf28KLiRBXZ55LuuWXNceA3pkOeZFxbRyza3wQCy9b29kWMGKJzgGjyAKWQoHdwy
+	GWloNHEhHu8Gm5njIb4g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1szCd2-0000000FvSs-32Za;
-	Fri, 11 Oct 2024 10:12:12 +0000
-Received: from mail.manjaro.org ([2a01:4f8:c0c:51f3::1])
+	id 1szEhc-0000000GHrZ-10M8;
+	Fri, 11 Oct 2024 12:25:04 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1szCae-0000000Fuz7-3CXY;
-	Fri, 11 Oct 2024 10:09:46 +0000
+	id 1szEX6-0000000GFl5-3c3C
+	for linux-rockchip@lists.infradead.org;
+	Fri, 11 Oct 2024 12:14:14 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id 19637A43D7B;
+	Fri, 11 Oct 2024 12:14:03 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 77999C4CEC3;
+	Fri, 11 Oct 2024 12:14:09 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1728648851;
+	bh=kd54sH6YhOnXIo+Km/qLp2CNCHxAoohftut1wYnFYkA=;
+	h=From:To:Cc:Subject:Date:From;
+	b=IG2E0WoEvJqxcUAcVv7v+asTeHVwM4c49eBztyYcm3w0sc4waRiB1fPn5c/1VbENl
+	 aUC2UzQ8g8A2YYQSrpRYyizf9JG0QUFjEteTADfPS7dZ7NviEG/jUaUB8Htr2aVy5z
+	 KPPGT9N1ZtoqiEjYkxs9+c97rcgFu7EwlXHmwpk0cfPnfNcv1FOnt5brbdAEHsyLNU
+	 Kkwf80MESHV4GgRsHgDZwcNUnqcO/+tfqPU0qO9vVb7E/0t6OF/i3DwMNqwN+Eknl6
+	 XTV+0zvUVmyfOMuUhwStPxPl6snRszjjqoZKYBVbl/7Iq/2wkWp1Aw8SMj3eqQ78pK
+	 f/x2ukcFEMAvQ==
+From: Damien Le Moal <dlemoal@kernel.org>
+To: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Kishon Vijay Abraham I <kishon@kernel.org>,
+	Shawn Lin <shawn.lin@rock-chips.com>,
+	=?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kw@linux.com>,
+	Bjorn Helgaas <bhelgaas@google.com>,
+	Heiko Stuebner <heiko@sntech.de>,
+	linux-pci@vger.kernel.org,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	devicetree@vger.kernel.org
+Cc: linux-rockchip@lists.infradead.org,
+	Rick Wertenbroek <rick.wertenbroek@gmail.com>,
+	Niklas Cassel <cassel@kernel.org>
+Subject: [PATCH v4 00/12] Fix and improve the Rockchip endpoint driver
+Date: Fri, 11 Oct 2024 21:13:56 +0900
+Message-ID: <20241011121408.89890-1-dlemoal@kernel.org>
+X-Mailer: git-send-email 2.46.2
 MIME-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
-	t=1728641382;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=SWU2UpgBCfCJMwy9JjQ8I9dxjTB9H0Tqnkcy1NXZygY=;
-	b=S7pgaULOwew5O7Z1ueadeyzswZQWrLWWkRRDEkhEwTIQHeMprTJlKAGBFoCfkfcX6u9lIj
-	C3zTQhoMe8J3FdXUD0JNHUR26HT6sz4NFsaugTLY5tgvmL8q54BFN2eAwbicfs5foExbum
-	m++VmXszaid2ZWBeFnWjJGrC0Ugw1a75gOLfgtUTLSKOr8cSX8O4f7gpdlJxqB8CWS6p7o
-	2qePQKKYAMgRydSr/MUODMBDM8FTdPIh0RsZIFZwbPZKLAK7AFXyD6rLEfgzSPmykFBZft
-	+/tXVT+5zHfesAnF84LdLiBhr+5k9DoE1AD/0eWgoWoX6R4oyzQUX3/S58oNYQ==
-Date: Fri, 11 Oct 2024 12:09:41 +0200
-From: Dragan Simic <dsimic@manjaro.org>
-To: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>
-Cc: Jonas Karlman <jonas@kwiboo.se>, linux-rockchip@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- devicetree@vger.kernel.org, robh@kernel.org, krzk+dt@kernel.org,
- conor+dt@kernel.org, stable@vger.kernel.org
-Subject: Re: [PATCH] arm64: dts: rockchip: Prevent thermal runaways in RK3308
- SoC dtsi
-In-Reply-To: <1831993.TLkxdtWsSY@diego>
-References: <d3e9dc4201d38894b09f3198368428153a3af1a4.1728555461.git.dsimic@manjaro.org>
- <86ff39fe-cc88-4cf4-a1ad-6398a74ceb11@kwiboo.se>
- <01e42e08965e58a337b9b531c10446fd@manjaro.org> <1831993.TLkxdtWsSY@diego>
-Message-ID: <7a189327fc87e594f4c7b8e5d745ebeb@manjaro.org>
-X-Sender: dsimic@manjaro.org
-Authentication-Results: ORIGINATING;
-	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241011_030945_130723_1D0CAE6D 
-X-CRM114-Status: GOOD (  29.94  )
+X-CRM114-CacheID: sfid-20241011_051413_070076_F6910684 
+X-CRM114-Status: GOOD (  12.24  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,93 +77,77 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGVsbG8gSGVpa28sCgpPbiAyMDI0LTEwLTExIDExOjU2LCBIZWlrbyBTdMO8Ym5lciB3cm90ZToK
-PiBBbSBGcmVpdGFnLCAxMS4gT2t0b2JlciAyMDI0LCAxMTowNDozOCBDRVNUIHNjaHJpZWIgRHJh
-Z2FuIFNpbWljOgo+PiBPbiAyMDI0LTEwLTExIDEwOjUyLCBKb25hcyBLYXJsbWFuIHdyb3RlOgo+
-PiA+IE9uIDIwMjQtMTAtMTAgMTI6MTksIERyYWdhbiBTaW1pYyB3cm90ZToKPj4gPj4gVW50aWwg
-dGhlIFRTQURDLCB0aGVybWFsIHpvbmVzLCB0aGVybWFsIHRyaXBzIGFuZCBjb29saW5nIG1hcHMg
-YXJlCj4+ID4+IGRlZmluZWQKPj4gPj4gaW4gdGhlIFJLMzMwOCBTb0MgZHRzaSwgbm9uZSBvZiB0
-aGUgQ1BVIE9QUHMgZXhjZXB0IHRoZSBzbG93ZXN0IG9uZQo+PiA+PiBtYXkgYmUKPj4gPj4gZW5h
-YmxlZCB1bmRlciBhbnkgY2lyY3Vtc3RhbmNlcy4gIEFsbG93aW5nIHRoZSBEVkZTIHRvIHNjYWxl
-IHRoZSBDUFUKPj4gPj4gY29yZXMKPj4gPj4gdXAgd2l0aG91dCBldmVuIGp1c3QgdGhlIGNyaXRp
-Y2FsIENQVSB0aGVybWFsIHRyaXAgaW4gcGxhY2UgY2FuIHJhdGhlcgo+PiA+PiBlYXNpbHkKPj4g
-Pj4gcmVzdWx0IGluIHRoZXJtYWwgcnVuYXdheXMgYW5kIGRhbWFnZWQgU29Dcywgd2hpY2ggaXMg
-YmFkLgo+PiA+Pgo+PiA+PiBUaHVzLCBsZWF2ZSBvbmx5IHRoZSBsb3dlc3QgYXZhaWxhYmxlIENQ
-VSBPUFAgZW5hYmxlZCBmb3Igbm93Lgo+PiA+Cj4+ID4gVGhpcyBmZWVsIGxpa2UgYSB2ZXJ5IGFn
-Z3Jlc3NpdmUgbGltaXRhdGlvbiwgdG8gb25seSBhbGxvdyB0aGUKPj4gPiBvcHAtc3VzcGVuZCBy
-YXRlLCB0aGF0IGlzIG5vdCBldmVuIHVzZWQgdW5kZXIgbm9ybWFsIGxvYWQuCj4+ID4KPj4gPiBJ
-IGxldCBteSBSb2NrIFBpIFMgYm9hcmQgd2l0aCBhIFJLMzMwOEIgdmFyaWFudCBydW4gInN0cmVz
-cyAtYyA4IiBmb3IKPj4gPiBhcm91bmQgMTAgaG91cnMgYW5kIHRoZSByZXBvcnRlZCB0ZW1wIG9u
-bHkgcmVhY2ggYXJvdW5kIDUwLTU1IGRlZyBjLAo+PiA+IGFtYmllbnQgdGVtcCBhcm91bmQgMjAg
-ZGVnIGMgYW5kIGJvYXJkIGxheWluZyBmbGF0IG9uIGEgdGFibGUgd2l0aG91dAo+PiA+IGFueSBl
-bmNsb3N1cmUgb3IgaGVhdCBzaW5rLgo+PiA+Cj4+ID4gVGhpcyB3YXMgcnVubmluZyB3aXRoIHBl
-cmZvcm1hbmNlIGFzIHNjYWxpbmdfZ292ZXJub3IgYW5kIGNwdSBydW5uaW5nCj4+ID4gdGhlIDEw
-MDgwMDAgb3BwLgo+PiAKPj4gVGhhbmtzIGZvciB0ZXN0aW5nIGFsbCB0aGF0ISAgVGhhdCdzIHZl
-cnkgbG93IENQVSB0ZW1wZXJhdHVyZSB1bmRlcgo+PiBzdHJlc3MgdGVzdGluZyBpbmRlZWQuICBN
-YXliZSB0aGUgY29vbGluZyBnZXRzIHdvcnNlIGFuZCB0aGUgQ1BVCj4+IHRlbXBlcmF0dXJlIGdv
-ZXMgaGlnaGVyIGlmIHRoZSBib2FyZCBpcyBpbnN0YWxsZWQgaW50byBzb21lIHNtYWxsCj4+IGVu
-Y2xvc3VyZSB3aXRoIG5vIG5hdHVyYWwgb3IgZm9yY2VkIGFpcmZsb3c/Cj4+IAo+PiA+IE1vc3Qg
-UkszMzA4IHZhcmlhbnRzIGRhdGFzaGVldHMgbGlzdCAxLjMgR0h6IGFzIG1heCByYXRlIGZvciBD
-UFUsCj4+ID4gdGhlIEstdmFyaWFudCBsaXN0cyAxLjIgR0h6LCBhbmQgdGhlIC1TLXZhcmlhbnRz
-IHNlZW0gdG8gaGF2ZSBib3RoCj4+ID4gcmVkdWNlZCB2b2x0YWdlIGFuZCBtYXggcmF0ZS4KPj4g
-Pgo+PiA+IFRoZSBPUFBzIGZvciB0aGlzIFNvQyBhbHJlYWR5IGxpbWl0cyBtYXggcmF0ZSB0byAx
-IEdIeiBhbmQgaXMgbW9yZSB0aGFuCj4+ID4gbGlrZWx5IGdvb2QgZW5vdWdoIHRvIG5vdCByZWFj
-aCB0aGUgbWF4IHRlbXBlcmF0dXJlIG9mIDExNS0xMjUgZGVnIGMgYXMKPj4gPiByYXRlZCBpbiBk
-YXRhc2hlZXRzIGFuZCB2ZW5kb3IgRFRzLgo+PiA+Cj4+ID4gQWRkaW5nIHRoZSB0c2FkYyBhbmQg
-dHJpcHMgKHNhbWUvc2ltaWxhciBhcyBweDMwKSB3aWxsIHByb2JhYmx5IGFsbG93Cj4+ID4gdXMK
-Pj4gPiB0byBhZGQvdXNlIHRoZSAibWlzc2luZyIgMS4yIGFuZCAxLjMgR0h6IE9QUHMuCj4+IAo+
-PiBXaXRoIHRoZXNlIGluc2lnaHRzLCBJIGFncmVlIHRoYXQgdGhlIHBhdGNoIG1pZ2h0IGhhdmUg
-YmVlbiBhIGJpdAo+PiB0b28gZXh0cmVtZSwgYnV0IGl0IGFsc28gcHJvbW90ZXMgZ29vZCBwcmFj
-dGljZXMgd2hlbiBpdCBjb21lcyB0bwo+PiB1cHN0cmVhbWluZy4gIFRoZSBnZW5lcmFsIHJ1bGUg
-aXMgbm90IHRvIGFkZCBDUFUgb3IgR1BVIE9QUHMgd2l0aAo+PiBubyBwcm9wZXIgdGhlcm1hbCBj
-b25maWd1cmF0aW9uIGFscmVhZHkgaW4gcGxhY2UuCj4+IAo+PiBUaGUgcGF0Y2ggaGFzIGFscmVh
-ZHkgYmVlbiBtZXJnZWQsIGFuZCBhcyBJIGFscmVhZHkgbm90ZWQsIFsxXSBJJ2xsCj4+IHRyeSB0
-byBpbXBsZW1lbnQsIHRlc3QgYW5kIHN1Ym1pdCB0aGUgcHJvcGVyIHRoZXJtYWwgY29uZmlndXJh
-dGlvbgo+PiBBU0FQLiAgSXQncyB1cCBIZWlrbyB0byBkZWNpZGUgd2hldGhlciB0byBkcm9wIHRo
-aXMgcGF0Y2ggb3Igbm90Lgo+IAo+IEhtbSwgaW50ZXJlc3RpbmcgcXVlc3Rpb24gOy0pIC4KPiAK
-PiBEcm9wcGluZyB0aGUgcGF0Y2ggaXMgb2YgY291cnNlIHN0aWxsIHBvc3NpYmxlIGFuZCBzbyBm
-YXIgd2UgaGF2ZW4ndAo+IGFjdHVhbGx5IHNlZW4gYW55b25lIHdpdGggcmVhbC13b3JsZCBwcm9i
-bGVtcy4KPiAKPiBBbmQgd2l0aCBKb25hcycgc3RyZXNzIHRlc3QsIGl0IGRvZXMgbG9vayBsaWtl
-IG5vYm9keSB3aWxsIGluIHRoZQo+IChob3BlZnVsbHkgc2hvcnQpIHRpbWUgdGlsbCB3ZSBoYXZl
-IHRoZXJtYWwgbWFuYWdlbWVudC4KPiAKPiBARHJhZ2FuLCBpZiB5b3UncmUgaW4gZmF2b3Igb2Yg
-dGhhdCBJJ2xsIGRyb3AgdGhlIHBhdGNoLgoKSSBob3BlIEknbGwgaGF2ZSB0aGUgcHJvcGVyIFJL
-MzMwOCB0aGVybWFsIGNvbmZpZ3VyYXRpb24gYXZhaWxhYmxlCmZvciB0aGUgNi4xNCBtZXJnZSB3
-aW5kb3csIGFsc28gd2l0aCBoaWdoZXIgT1BQcyBpbiBwbGFjZS4gIEtub3dpbmcKdGhhdCB3ZSd2
-ZSBzZWVtaW5nbHkgaGFkIG5vIFJLMzMwOCBTb0NzIHJlbGVhc2luZyB0aGUgbWFnaWMgc21va2UK
-KHlldD8gOiksIEkgdGhpbmsgd2UgY2FuIGtlZXAgdGhlIHN0YXR1cyBxdW8gZm9yIGEgY291cGxl
-IG9mIG1vbnRocwpvciBzbywgc28gbGV0J3MgZHJvcCB0aGlzIHBhdGNoLgoKVGhhbmtzIGFnYWlu
-IHRvIEpvbmFzIGZvciBhbGwgdGhlIHN0cmVzcyB0ZXN0aW5nIQoKPj4gWzFdCj4+IGh0dHBzOi8v
-bG9yZS5rZXJuZWwub3JnL2xpbnV4LXJvY2tjaGlwL2RmOTI3MTA0OThmNjZiY2I0NTgwY2IyY2Qx
-NTczZmIyQG1hbmphcm8ub3JnLwo+PiAKPj4gPj4gRml4ZXM6IDY5MTNjNDUyMzlmZCAoImFybTY0
-OiBkdHM6IHJvY2tjaGlwOiBBZGQgY29yZSBkdHMgZm9yIFJLMzMwOAo+PiA+PiBTT0MiKQo+PiA+
-PiBDYzogc3RhYmxlQHZnZXIua2VybmVsLm9yZwo+PiA+PiBTaWduZWQtb2ZmLWJ5OiBEcmFnYW4g
-U2ltaWMgPGRzaW1pY0BtYW5qYXJvLm9yZz4KPj4gPj4gLS0tCj4+ID4+ICBhcmNoL2FybTY0L2Jv
-b3QvZHRzL3JvY2tjaGlwL3JrMzMwOC5kdHNpIHwgMyArKysKPj4gPj4gIDEgZmlsZSBjaGFuZ2Vk
-LCAzIGluc2VydGlvbnMoKykKPj4gPj4KPj4gPj4gZGlmZiAtLWdpdCBhL2FyY2gvYXJtNjQvYm9v
-dC9kdHMvcm9ja2NoaXAvcmszMzA4LmR0c2kKPj4gPj4gYi9hcmNoL2FybTY0L2Jvb3QvZHRzL3Jv
-Y2tjaGlwL3JrMzMwOC5kdHNpCj4+ID4+IGluZGV4IDMxYzI1ZGUyZDY4OS4uYTc2OThlMWY2Yjll
-IDEwMDY0NAo+PiA+PiAtLS0gYS9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzMwOC5k
-dHNpCj4+ID4+ICsrKyBiL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszMzA4LmR0c2kK
-Pj4gPj4gQEAgLTEyMCwxNiArMTIwLDE5IEBAIG9wcC02MDAwMDAwMDAgewo+PiA+PiAgCQkJb3Bw
-LWh6ID0gL2JpdHMvIDY0IDw2MDAwMDAwMDA+Owo+PiA+PiAgCQkJb3BwLW1pY3Jvdm9sdCA9IDw5
-NTAwMDAgOTUwMDAwIDEzNDAwMDA+Owo+PiA+PiAgCQkJY2xvY2stbGF0ZW5jeS1ucyA9IDw0MDAw
-MD47Cj4+ID4+ICsJCQlzdGF0dXMgPSAiZGlzYWJsZWQiOwo+PiA+PiAgCQl9Owo+PiA+PiAgCQlv
-cHAtODE2MDAwMDAwIHsKPj4gPj4gIAkJCW9wcC1oeiA9IC9iaXRzLyA2NCA8ODE2MDAwMDAwPjsK
-Pj4gPj4gIAkJCW9wcC1taWNyb3ZvbHQgPSA8MTAyNTAwMCAxMDI1MDAwIDEzNDAwMDA+Owo+PiA+
-PiAgCQkJY2xvY2stbGF0ZW5jeS1ucyA9IDw0MDAwMD47Cj4+ID4+ICsJCQlzdGF0dXMgPSAiZGlz
-YWJsZWQiOwo+PiA+PiAgCQl9Owo+PiA+PiAgCQlvcHAtMTAwODAwMDAwMCB7Cj4+ID4+ICAJCQlv
-cHAtaHogPSAvYml0cy8gNjQgPDEwMDgwMDAwMDA+Owo+PiA+PiAgCQkJb3BwLW1pY3Jvdm9sdCA9
-IDwxMTI1MDAwIDExMjUwMDAgMTM0MDAwMD47Cj4+ID4+ICAJCQljbG9jay1sYXRlbmN5LW5zID0g
-PDQwMDAwPjsKPj4gPj4gKwkJCXN0YXR1cyA9ICJkaXNhYmxlZCI7Cj4+ID4+ICAJCX07Cj4+ID4+
-ICAJfTsKPj4gCj4gCj4gCj4gCj4gCj4gCj4gX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX18KPiBMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKPiBMaW51eC1y
-b2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCj4gaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcv
-bWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAoKX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4
-LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcv
-bWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+This patch series fix the PCI address mapping handling of the Rockchip
+endpoint driver, refactor some of its code, improves link training and
+adds handling of the #PERST signal.
+
+This series is organized as follows:
+ - Patch 1 fixes the rockchip ATU programming
+ - Patch 2, 3 and 4 introduce small code improvments
+ - Patch 5 implements the .get_mem_map() operation to make the RK3399
+   endpoint controller driver fully functional with the new
+   pci_epc_mem_map() function
+ - Patch 6, 7, 8 and 9 refactor the driver code to make it more readable
+ - Patch 10 introduces the .stop() endpoint controller operation to
+   correctly disable the endpopint controller after use
+ - Patch 11 improves link training
+ - Patch 12 implements handling of the #PERST signal
+
+This patch series depends on the PCI endpoint core patches from the
+V5 series "Improve PCI memory mapping API". The patches were tested
+using a Pine Rockpro64 board used as an endpoint with the test endpoint
+function driver and a prototype nvme endpoint function driver.
+
+Changes from v3:
+ - Addressed Mani's comments (see mailing list for details).
+ - Removed old patch 11 (dt-binding changes) and instead use in patch 12
+   the already defined reset_gpios property.
+ - Added patch 6
+ - Added review tags
+
+Changes from v2:
+ - Split the patch series
+ - Corrected patch 11 to add the missing "maxItem"
+
+Changes from v1:
+ - Changed pci_epc_check_func() to pci_epc_function_is_valid() in patch
+   1.
+ - Removed patch "PCI: endpoint: Improve pci_epc_mem_alloc_addr()"
+   (former patch 2 of v1)
+ - Various typos cleanups all over. Also fixed some blank space
+   indentation.
+ - Added review tags
+
+Damien Le Moal (12):
+  PCI: rockchip-ep: Fix address translation unit programming
+  PCI: rockchip-ep: Use a macro to define EP controller .align feature
+  PCI: rockchip-ep: Improve rockchip_pcie_ep_unmap_addr()
+  PCI: rockchip-ep: Improve rockchip_pcie_ep_map_addr()
+  PCI: rockchip-ep: Implement the pci_epc_ops::get_mem_map() operation
+  PCI: rockchip-ep: Rename rockchip_pcie_parse_ep_dt()
+  PCI: rockchip-ep: Refactor rockchip_pcie_ep_probe() memory allocations
+  PCI: rockchip-ep: Refactor rockchip_pcie_ep_probe() MSI-X hiding
+  PCI: rockchip-ep: Refactor endpoint link training enable
+  PCI: rockship-ep: Implement the pci_epc_ops::stop_link() operation
+  PCI: rockchip-ep: Improve link training
+  PCI: rockchip-ep: Handle PERST# signal in endpoint mode
+
+ drivers/pci/controller/pcie-rockchip-ep.c   | 408 ++++++++++++++++----
+ drivers/pci/controller/pcie-rockchip-host.c |   4 +-
+ drivers/pci/controller/pcie-rockchip.c      |  21 +-
+ drivers/pci/controller/pcie-rockchip.h      |  24 +-
+ 4 files changed, 370 insertions(+), 87 deletions(-)
+
+-- 
+2.47.0
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
