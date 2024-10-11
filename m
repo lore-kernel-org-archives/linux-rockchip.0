@@ -4,64 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 555D5D2447B
-	for <linux-rockchip@archiver.kernel.org>; Fri, 11 Oct 2024 06:59:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50A28D2447F
+	for <linux-rockchip@archiver.kernel.org>; Fri, 11 Oct 2024 07:00:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=38aGH161gx3v3U/e00s7FIe9a2W4nsuImnR0zZBZZGs=; b=zSaYzOHrOW5DHN
-	NkDi7P/xM/N/PQLLlXdeKBObKHbtMglfoIWvuTrsmjsfLiuav20aavLAwPKYkG+X5w4Pr9c+Jdbua
-	sYHltg1h/hK/4TLInaM5jYpPuugFvObMbfATNzRAO5uoMxEXERNyYmffsqNOwybHGD5wBNC80oyAW
-	LeyRg8CXU0wg1u5wZKe2xBdvZ9tkAPBkq0K5Npn5yFs0hx8dagSeY8UIwfWmdF20R0aujwJ2Oc3/I
-	wwdCiDJEsMwrHag2qrk5yNHdRq55CU+agWpLnTy12JyFzvyxwx9/X/dVhCmxWRNlHMRfkRu0CwFih
-	b9N7X6vRE52HLenpKuqQ==;
+	List-Owner; bh=t6954N3rKkcWLU+bSzK4nOBrvk4PQqHcatRa0jcke4c=; b=d4asxGfHGoXX5W
+	UDE2Jb3AuzFkmyttF6A+8/xKvqI60IdHkTYFMKJM3VU99ZfGJviAX8sWxwx3GYG9XhfazWghNEgyx
+	M6yUGnXB3sBnxvUuPkuNkHKBeRvnn6dopMY+0EY2RQ1LldOjsVhyfxZSo4G4YhZKGAoA08jv5vyiu
+	JXdmu+M88x6x0lBwlVeBaF9yyNeFxQLZlD6FfeeTHUJGvUny+h3E/ZcjAS+AW6fAbFOvAqPXslVr5
+	xNrge3WAFJSTLOHBKQSVvzUR5V0tnY0tXCTlCzR8qch1uP82yU1vY0mL+9wdjpj7UJSFJGRdY1AOc
+	Wj0blx18XPaiFbddJbxA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1sz9c9-0000000FTHF-0pJ3;
-	Fri, 11 Oct 2024 06:59:05 +0000
-Received: from mail-pf1-x42d.google.com ([2607:f8b0:4864:20::42d])
+	id 1sz9dW-0000000FTZf-0P5e;
+	Fri, 11 Oct 2024 07:00:30 +0000
+Received: from mail-pf1-x42c.google.com ([2607:f8b0:4864:20::42c])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1sz9VB-0000000FS1x-40Jf;
-	Fri, 11 Oct 2024 06:51:55 +0000
-Received: by mail-pf1-x42d.google.com with SMTP id d2e1a72fcca58-71df49bbc2fso159994b3a.1;
-        Thu, 10 Oct 2024 23:51:53 -0700 (PDT)
+	id 1sz9VG-0000000FS3e-0KI2;
+	Fri, 11 Oct 2024 06:51:59 +0000
+Received: by mail-pf1-x42c.google.com with SMTP id d2e1a72fcca58-71e01eff868so138961b3a.1;
+        Thu, 10 Oct 2024 23:51:57 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1728629513; x=1729234313; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1728629517; x=1729234317; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=EdDw79rH2ZZXFzCqs3bPN+dRZOAgzWUPfJIf5p7fl3c=;
-        b=hmSO4dAOMyWGDXFIQA3ST5Y+6Z9SsU6ON/3ovpolpbVEFjRM/2ajmkzYlEB3x2pxBT
-         eJE/joKmbkZGwLzkwYKWndaZVWkeWXJ6jK1XSzOztaVzUmicSPMgabjVR7P6m3LHm+1P
-         jOsFufsIaZG4eN4L/L4EsMZRdevfvHYnrScM6l6gMqROq+h7HUOpiH6N+O+UkkChDRe5
-         nqPtC3X3hVrEVhvvH+V63Z+jNklfeE/bWIoZJenlA1vQaIufeyfJqQWmwIPvcZ8TAT3q
-         n/vL1kLXQNoK6xzMXtee3ig4KrHpkw5aLFUqLjjzBdxMp0LAyADykuKi3uRtPEY11FU1
-         Nq1g==
+        bh=RoXrcFLiduR8K9NPSxdvgXuql0UA1hd/Qh6Orl6Z1QI=;
+        b=Z6irtxnbT1tFyAdZVVVP6DFl/GQ2ZFba/II//loH8zzz69Y/J9YGCDWytoMddkgRii
+         eiA5b/NB1AfgA+DFbOFSBqfwRaJonR1YPHAUouqTAtjGzj2MF2bB1p/H+Ueshpk7Y1kW
+         gk/VjeuyE2Pad0BCrvC6e0MDPt2y3PXu9Sctub+vCZXoRODNcF3wCa5y4mlB8G8ReQWl
+         80HlUOXdcjcV0s9pwaY6WEG/LiDR1b3/1Q+I788rk8b+9n4RA4XPtpUBYWDTWj0NuSz+
+         +zV/0bAgpysH+L/o5qqxjnbg2/y/WQ/u3oGpAtXgpYwqQF/+d5KQux6uSYh6J9OjZtNL
+         Ya9A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1728629513; x=1729234313;
+        d=1e100.net; s=20230601; t=1728629517; x=1729234317;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=EdDw79rH2ZZXFzCqs3bPN+dRZOAgzWUPfJIf5p7fl3c=;
-        b=gI4UQePCFlNEr3pGfTCtAWUv5MglbpG3eiU3tbS97AcqYOgcZlVXLM+wM3buWzacne
-         ORIyqXhn90KUE8WoP5/ZagSOym2Zn0fkj+bRHzTWeLZLJLjxjou3miRB7xfBHW2d/6P5
-         JKN9nsxAQX8izZIwa0ebdbfNdxcOIn/kvHY8Jl2jBecc9XkZNsj9QSmx09ApAOQWIIyB
-         IkPnVtSZ+XlpttmaIhUn30+642RWcefR3tJfBsd2xySd9yueOTN1dSD0EKdpBmDkA63N
-         Kp7lof4Oy5VilH7/JKU6Sv9Ieo6jtRhcxdnzstT0ip2ymUz8DCrqTb84NEmFxJ1f+6S2
-         4rgg==
-X-Forwarded-Encrypted: i=1; AJvYcCUMqiAZchG5JqhDiYYlUYI2v4mSTBGRkOU9fCfJRTE39uKEuvWm2yXTwvs2jIpencuE4QI5ZRY2bViKf0uQXQtW@lists.infradead.org, AJvYcCXtW/ITolf23qh7ZH3Ze2aw7mp+82sZu6371TB972nyUqUD9m96bFzusBlCvT0QNXO8cNBOoEcfoiUXcswXhVo=@lists.infradead.org
-X-Gm-Message-State: AOJu0YwnxlP+el6LT7bP+lNOjcNBdF960GN2gmAg/01V9lasY5huoofB
-	NWM9APs13aSzaA1u6y2EqWz9ZovyjzXeKpuRkdPsFKZjwq4CJc8E
-X-Google-Smtp-Source: AGHT+IEvzv0o+ss8gCY1Mp117fH1qmaJdW78qEOqQWOSBsVTBUkvz8aULfP30Jh+8lxMYgt+jtRYDg==
-X-Received: by 2002:a05:6a00:92a8:b0:71e:3b51:e84d with SMTP id d2e1a72fcca58-71e3b51ea63mr796027b3a.4.1728629512713;
-        Thu, 10 Oct 2024 23:51:52 -0700 (PDT)
+        bh=RoXrcFLiduR8K9NPSxdvgXuql0UA1hd/Qh6Orl6Z1QI=;
+        b=tQAB2DpQpX5KOGLqm1mnumkiQ/IPr1/6A3PekVUVyQfKM1E0LfP3jLx7ssJelBS0pH
+         m6jhcYXjhiHTCw3IpTtLeNJnlSz2sLRkvYbGuhXyHWP6LFRwfDEhCqRiQK2XjHh5Gxq3
+         uoiKVup818yVtfyVnjXovhGJhlKA/Je8NelDMHhR227fRa6rhT6FW9B6Mb6yd9rpc8xc
+         oZA1JA7vvqaMVxatAodcibk3aznYfS2o1WPUezrViUTgSXpy0MGkn5zhwJ7C/TggD4cZ
+         GletCWcKU7Z4oRkRv7nvK3eUoEowEW5b/bIC5EAlnB1PkeXtIp87gaSh17y4JiZhwXbs
+         V0GA==
+X-Forwarded-Encrypted: i=1; AJvYcCWWweOhNCcI3HlYW7RBEPsnFcFLDgBMQBE1aMLLhGFYyWT6ZaqcLlPpRrPewE8fJme7EfL3Tj3Tm2sAGVZDe8A=@lists.infradead.org, AJvYcCX/IM5+g1qNTBAVXr1jQtn2Sz8nhQ3rZThABcB5zDiICEvTEzxkYqQZF1UAaZQdjMy5o9Y301rPfnU+8QhYmTl4@lists.infradead.org
+X-Gm-Message-State: AOJu0YxCH90wiy0h4UryKg5K0fvy73fLljREJcwO49GEjkrS76AXurcx
+	WHTsbn30CGt2U2zec1nbJ+6mEQYFHajElUJArS1eENtilQyKEwJ0
+X-Google-Smtp-Source: AGHT+IE0a4raEMb1CKHZOr3RN/vfXnIURFS+NIbfrAYdekgJC1BrJeUqK/aGlnsCilzTxJ63p8IKRQ==
+X-Received: by 2002:a05:6a00:9453:b0:71d:f2d9:bd5d with SMTP id d2e1a72fcca58-71e380c5a41mr1100111b3a.7.1728629516958;
+        Thu, 10 Oct 2024 23:51:56 -0700 (PDT)
 Received: from localhost.localdomain ([103.29.142.67])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-71e2ab109e4sm2036099b3a.206.2024.10.10.23.51.48
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-71e2ab109e4sm2036099b3a.206.2024.10.10.23.51.53
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 10 Oct 2024 23:51:52 -0700 (PDT)
+        Thu, 10 Oct 2024 23:51:56 -0700 (PDT)
 From: Frank Wang <frawang.cn@gmail.com>
 To: vkoul@kernel.org,
 	kishon@kernel.org,
@@ -77,16 +77,16 @@ Cc: linux-phy@lists.infradead.org,
 	william.wu@rock-chips.com,
 	tim.chen@rock-chips.com,
 	Frank Wang <frank.wang@rock-chips.com>
-Subject: [PATCH v5 2/3] dt-bindings: phy: rockchip,inno-usb2phy: add rk3576
-Date: Fri, 11 Oct 2024 14:51:39 +0800
-Message-Id: <20241011065140.19999-2-frawang.cn@gmail.com>
+Subject: [PATCH v5 3/3] phy: rockchip: inno-usb2: Add usb2 phys support for rk3576
+Date: Fri, 11 Oct 2024 14:51:40 +0800
+Message-Id: <20241011065140.19999-3-frawang.cn@gmail.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20241011065140.19999-1-frawang.cn@gmail.com>
 References: <20241011065140.19999-1-frawang.cn@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241010_235154_030034_3A2C969E 
-X-CRM114-Status: GOOD (  11.38  )
+X-CRM114-CacheID: sfid-20241010_235158_147463_6DE7F81E 
+X-CRM114-Status: GOOD (  15.20  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,107 +103,163 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Frank Wang <frank.wang@rock-chips.com>
+From: William Wu <william.wu@rock-chips.com>
 
-Add compatible for the USB2 phy in the Rockchip RK3576 SoC.
+The RK3576 SoC has two independent USB2.0 PHYs, and each PHY has
+one port. This adds device specific data for it.
 
-This change also refactor the clocks list as there are new clocks
-adding used for the USB MMU in RK3576 SoC.
-
+Signed-off-by: William Wu <william.wu@rock-chips.com>
 Signed-off-by: Frank Wang <frank.wang@rock-chips.com>
 ---
 Changelog:
 v5:
- - move the clock-names item list to top-level property.
- - only defined minItems/maxItems in each if: then block.
+ - no changes.
 
 v4:
- - refactor the clocks list used if:then:
+ - split the bulk clock management as a new patch, and this just leave
+   adding rk3576-specific data.
 
 v3:
- - narrowed rk3576 clocks by compatible property.
+ - amend the commit log adds clocks converting.
+ - retrieve the clock by "clks.id" in *_clk480m_register() function.
 
 v2:
- - Categorize clock names by oneOf keyword.
+ - no changes.
 
 v1:
- - https://patchwork.kernel.org/project/linux-phy/patch/20240923025326.10467-1-frank.wang@rock-chips.com/
+ - https://patchwork.kernel.org/project/linux-phy/patch/20240923025326.10467-2-frank.wang@rock-chips.com/
 
- .../bindings/phy/rockchip,inno-usb2phy.yaml   | 45 ++++++++++++++++++-
- 1 file changed, 43 insertions(+), 2 deletions(-)
+ drivers/phy/rockchip/phy-rockchip-inno-usb2.c | 103 ++++++++++++++++++
+ 1 file changed, 103 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/phy/rockchip,inno-usb2phy.yaml b/Documentation/devicetree/bindings/phy/rockchip,inno-usb2phy.yaml
-index 5254413137c64..6a7ef556414ce 100644
---- a/Documentation/devicetree/bindings/phy/rockchip,inno-usb2phy.yaml
-+++ b/Documentation/devicetree/bindings/phy/rockchip,inno-usb2phy.yaml
-@@ -20,6 +20,7 @@ properties:
-       - rockchip,rk3366-usb2phy
-       - rockchip,rk3399-usb2phy
-       - rockchip,rk3568-usb2phy
-+      - rockchip,rk3576-usb2phy
-       - rockchip,rk3588-usb2phy
-       - rockchip,rv1108-usb2phy
+diff --git a/drivers/phy/rockchip/phy-rockchip-inno-usb2.c b/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
+index f71266c27091e..96f3d868a526f 100644
+--- a/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
++++ b/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
+@@ -1510,6 +1510,30 @@ static int rk3128_usb2phy_tuning(struct rockchip_usb2phy *rphy)
+ 				BIT(2) << BIT_WRITEABLE_SHIFT | 0);
+ }
  
-@@ -34,10 +35,15 @@ properties:
-     const: 0
- 
-   clocks:
--    maxItems: 1
-+    minItems: 1
-+    maxItems: 3
- 
-   clock-names:
--    const: phyclk
-+    minItems: 1
-+    items:
-+      - const: phyclk
-+      - const: aclk
-+      - const: aclk_slv
- 
-   assigned-clocks:
-     description:
-@@ -172,6 +178,41 @@ allOf:
-             - interrupts
-             - interrupt-names
- 
-+  - if:
-+      properties:
-+        compatible:
-+          contains:
-+            enum:
-+              - rockchip,px30-usb2phy
-+              - rockchip,rk3128-usb2phy
-+              - rockchip,rk3228-usb2phy
-+              - rockchip,rk3308-usb2phy
-+              - rockchip,rk3328-usb2phy
-+              - rockchip,rk3366-usb2phy
-+              - rockchip,rk3399-usb2phy
-+              - rockchip,rk3568-usb2phy
-+              - rockchip,rk3588-usb2phy
-+              - rockchip,rv1108-usb2phy
-+    then:
-+      properties:
-+        clocks:
-+          maxItems: 1
-+        clock-names:
-+          maxItems: 1
++static int rk3576_usb2phy_tuning(struct rockchip_usb2phy *rphy)
++{
++	int ret;
++	u32 reg = rphy->phy_cfg->reg;
 +
-+  - if:
-+      properties:
-+        compatible:
-+          contains:
-+            enum:
-+              - rockchip,rk3576-usb2phy
-+    then:
-+      properties:
-+        clocks:
-+          minItems: 3
-+        clock-names:
-+          minItems: 3
++	/* Deassert SIDDQ to power on analog block */
++	ret = regmap_write(rphy->grf, reg + 0x0010, GENMASK(29, 29) | 0x0000);
++	if (ret)
++		return ret;
 +
- additionalProperties: false
++	/* Do reset after exit IDDQ mode */
++	ret = rockchip_usb2phy_reset(rphy);
++	if (ret)
++		return ret;
++
++	/* HS DC Voltage Level Adjustment 4'b1001 : +5.89% */
++	ret |= regmap_write(rphy->grf, reg + 0x000c, GENMASK(27, 24) | 0x0900);
++
++	/* HS Transmitter Pre-Emphasis Current Control 2'b10 : 2x */
++	ret |= regmap_write(rphy->grf, reg + 0x0010, GENMASK(20, 19) | 0x0010);
++
++	return ret;
++}
++
+ static int rk3588_usb2phy_tuning(struct rockchip_usb2phy *rphy)
+ {
+ 	int ret;
+@@ -1938,6 +1962,84 @@ static const struct rockchip_usb2phy_cfg rk3568_phy_cfgs[] = {
+ 	{ /* sentinel */ }
+ };
  
- examples:
++static const struct rockchip_usb2phy_cfg rk3576_phy_cfgs[] = {
++	{
++		.reg = 0x0,
++		.num_ports	= 1,
++		.phy_tuning	= rk3576_usb2phy_tuning,
++		.clkout_ctl	= { 0x0008, 0, 0, 1, 0 },
++		.port_cfgs	= {
++			[USB2PHY_PORT_OTG] = {
++				.phy_sus	= { 0x0000, 8, 0, 0, 0x1d1 },
++				.bvalid_det_en	= { 0x00c0, 1, 1, 0, 1 },
++				.bvalid_det_st	= { 0x00c4, 1, 1, 0, 1 },
++				.bvalid_det_clr = { 0x00c8, 1, 1, 0, 1 },
++				.ls_det_en	= { 0x00c0, 0, 0, 0, 1 },
++				.ls_det_st	= { 0x00c4, 0, 0, 0, 1 },
++				.ls_det_clr	= { 0x00c8, 0, 0, 0, 1 },
++				.disfall_en	= { 0x00c0, 6, 6, 0, 1 },
++				.disfall_st	= { 0x00c4, 6, 6, 0, 1 },
++				.disfall_clr	= { 0x00c8, 6, 6, 0, 1 },
++				.disrise_en	= { 0x00c0, 5, 5, 0, 1 },
++				.disrise_st	= { 0x00c4, 5, 5, 0, 1 },
++				.disrise_clr	= { 0x00c8, 5, 5, 0, 1 },
++				.utmi_avalid	= { 0x0080, 1, 1, 0, 1 },
++				.utmi_bvalid	= { 0x0080, 0, 0, 0, 1 },
++				.utmi_ls	= { 0x0080, 5, 4, 0, 1 },
++			}
++		},
++		.chg_det = {
++			.cp_det		= { 0x0080, 8, 8, 0, 1 },
++			.dcp_det	= { 0x0080, 8, 8, 0, 1 },
++			.dp_det		= { 0x0080, 9, 9, 1, 0 },
++			.idm_sink_en	= { 0x0010, 5, 5, 1, 0 },
++			.idp_sink_en	= { 0x0010, 5, 5, 0, 1 },
++			.idp_src_en	= { 0x0010, 14, 14, 0, 1 },
++			.rdm_pdwn_en	= { 0x0010, 14, 14, 0, 1 },
++			.vdm_src_en	= { 0x0010, 7, 6, 0, 3 },
++			.vdp_src_en	= { 0x0010, 7, 6, 0, 3 },
++		},
++	},
++	{
++		.reg = 0x2000,
++		.num_ports	= 1,
++		.phy_tuning	= rk3576_usb2phy_tuning,
++		.clkout_ctl	= { 0x2008, 0, 0, 1, 0 },
++		.port_cfgs	= {
++			[USB2PHY_PORT_OTG] = {
++				.phy_sus	= { 0x2000, 8, 0, 0, 0x1d1 },
++				.bvalid_det_en	= { 0x20c0, 1, 1, 0, 1 },
++				.bvalid_det_st	= { 0x20c4, 1, 1, 0, 1 },
++				.bvalid_det_clr = { 0x20c8, 1, 1, 0, 1 },
++				.ls_det_en	= { 0x20c0, 0, 0, 0, 1 },
++				.ls_det_st	= { 0x20c4, 0, 0, 0, 1 },
++				.ls_det_clr	= { 0x20c8, 0, 0, 0, 1 },
++				.disfall_en	= { 0x20c0, 6, 6, 0, 1 },
++				.disfall_st	= { 0x20c4, 6, 6, 0, 1 },
++				.disfall_clr	= { 0x20c8, 6, 6, 0, 1 },
++				.disrise_en	= { 0x20c0, 5, 5, 0, 1 },
++				.disrise_st	= { 0x20c4, 5, 5, 0, 1 },
++				.disrise_clr	= { 0x20c8, 5, 5, 0, 1 },
++				.utmi_avalid	= { 0x2080, 1, 1, 0, 1 },
++				.utmi_bvalid	= { 0x2080, 0, 0, 0, 1 },
++				.utmi_ls	= { 0x2080, 5, 4, 0, 1 },
++			}
++		},
++		.chg_det = {
++			.cp_det		= { 0x2080, 8, 8, 0, 1 },
++			.dcp_det	= { 0x2080, 8, 8, 0, 1 },
++			.dp_det		= { 0x2080, 9, 9, 1, 0 },
++			.idm_sink_en	= { 0x2010, 5, 5, 1, 0 },
++			.idp_sink_en	= { 0x2010, 5, 5, 0, 1 },
++			.idp_src_en	= { 0x2010, 14, 14, 0, 1 },
++			.rdm_pdwn_en	= { 0x2010, 14, 14, 0, 1 },
++			.vdm_src_en	= { 0x2010, 7, 6, 0, 3 },
++			.vdp_src_en	= { 0x2010, 7, 6, 0, 3 },
++		},
++	},
++	{ /* sentinel */ }
++};
++
+ static const struct rockchip_usb2phy_cfg rk3588_phy_cfgs[] = {
+ 	{
+ 		.reg = 0x0000,
+@@ -2109,6 +2211,7 @@ static const struct of_device_id rockchip_usb2phy_dt_match[] = {
+ 	{ .compatible = "rockchip,rk3366-usb2phy", .data = &rk3366_phy_cfgs },
+ 	{ .compatible = "rockchip,rk3399-usb2phy", .data = &rk3399_phy_cfgs },
+ 	{ .compatible = "rockchip,rk3568-usb2phy", .data = &rk3568_phy_cfgs },
++	{ .compatible = "rockchip,rk3576-usb2phy", .data = &rk3576_phy_cfgs },
+ 	{ .compatible = "rockchip,rk3588-usb2phy", .data = &rk3588_phy_cfgs },
+ 	{ .compatible = "rockchip,rv1108-usb2phy", .data = &rv1108_phy_cfgs },
+ 	{}
 -- 
 2.45.2
 
