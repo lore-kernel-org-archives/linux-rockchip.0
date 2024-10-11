@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7F892D0D78D
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 92DFACFD37C
 	for <linux-rockchip@archiver.kernel.org>; Fri, 11 Oct 2024 12:25:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,36 +12,51 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=9mOF5JQtJxLHrjBR1ILMjAFxgrfIdhpsSur5MQbqh2I=; b=bP8ttwJlq/mslW
-	5Y7/qIMNLt9Dx0rgA1AUreTXWL23tZAfTOWd0ud9j3cat8PpYCbkK0iLU4IFze+pbJaeEJQ42uMVn
-	7UzJUD72IYToRn+5nqA4EQdfqaRMfvmnqCUJFMwLpXYmx5yLh87mtzs+13xJSB8kRpKQ0jtgzs6DO
-	r1cIg6wDMO0bDontHyxesgxfJK3cjsUy/7kXSrfuKiPx7LoIBD+kj7TTmbUeNEzFiJfd5VywBFzbj
-	iWKCUG0BkO5i9s/tj6fd1E7n2/N/+FsU4/Ypi8GESphk8CKtRL5PyeLIlio+QWeK3z1ciYQ675hD8
-	vX7oC+Xyf0Nh8509cuWA==;
+	List-Owner; bh=R9iyfXiADMyZgJL/vcd4PHKbPLC3LKfVYiLbpWHzkb4=; b=EmrEzYYHnDLleA
+	jBegAZlsstS/xKIN5dziOux2DqJVxygOrzYT7yFIWsSp80aUCn+5a2bPPqzSlEV4WhODTr3MgMWhi
+	ItC7NvKeUTk9WTZGBBYwOfXr5SCBFv63hJMvD7P/NNX5eYpNhDyV9jjSlcxUftAKpoCZyQKLnUPKV
+	MQuh6CLNzj3ePhQLldePqcFYdGZulpsP6cPPe0f7xKBHDgziZlBhLKlkNhLMsXs7PAU1pTWVicIAE
+	iW/KaxlK11hilacfVmiZe1ibxRFTCcMLh/r4MHxcR1AMAL0mb4AelJ9AWmTySbShZa0OIjoYQxRL+
+	+LMg+NF8yX1iSzGroVBA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1szEhf-0000000GHut-41gm;
+	id 1szEhf-0000000GHu2-1GQB;
 	Fri, 11 Oct 2024 12:25:07 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1szEXO-0000000GFuq-3Rp0
+	id 1szEXO-0000000GFui-1Tcz
+	for linux-rockchip@bombadil.infradead.org;
+	Fri, 11 Oct 2024 12:14:30 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
+	:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-Type:Content-ID:Content-Description;
+	bh=bEtnqczralUDjsiC87aP0Xxv4imUa0uP20kb2RbZMA8=; b=S3LW4XmYsSHL2gjSZ/BqxMgaWX
+	OPGY+AhpovE8Shi86AAC1tVYeI5fvuWpS8y0EM/wCxI4qVjx7XK/bYsSlSZIE1v2Vn199KHECvsqj
+	Ej1ct7dSbUk+EPjs82IU7pb3U71iFWtmqHvBf7AHyTTxyJpiizHo12fohaEbwQOSUmoWatHZyoZiB
+	vKYOTLwExed2MOCWOJ11A6FO/a1ZRdIdUtYm/G0KFQcaqEqZzHUuf2MMXJmtCnhxHt9EyjGy+3X2a
+	/L7MJsHaDihYFeJUGBIvvJ8rxEGxGvceBgHxXR18bb1GT7JLHEExVHDk7Uia9Ay5AnKtxhhSVN3Li
+	r23SrI1A==;
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	by desiato.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
+	id 1szEXL-00000005shT-0gqx
 	for linux-rockchip@lists.infradead.org;
-	Fri, 11 Oct 2024 12:14:32 +0000
+	Fri, 11 Oct 2024 12:14:29 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id F12CC5C58DC;
-	Fri, 11 Oct 2024 12:14:25 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0805BC4CECC;
-	Fri, 11 Oct 2024 12:14:27 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 0EB755C53A4;
+	Fri, 11 Oct 2024 12:14:19 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 17582C4CEC3;
+	Fri, 11 Oct 2024 12:14:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1728648870;
-	bh=phkoe2w+39avbp2Skc3MUl22NguytCAK8C36FRjZ2As=;
+	s=k20201202; t=1728648863;
+	bh=+4Bc0xzZLXrwNb1/pM0RMrx2qd49EVBLF+NCGJoqYr0=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=lnjkB1lWxak2H6bUtK2mrskR9irb3IiXc/444gXAI1bfUHSLXp9TO3Z6hBsvTjJDH
-	 8Bzf6kLSMtVPTs2tsg71prggTaDg5gCvxEMdfzwR7yRC2VJ8pCUvliH1flYdTnfuFM
-	 Gnm3c+G10Ooqsu4Tlk+WEA5wMY4FxY3v06G41Lc319HosDNJTuZOKU4mM3egx/L8hy
-	 hEYnhgFAgdfndhpU5eNMcACApdFTBzLoaZaBK8aDJYHDepNG7xT9FGWI7xkOxgZdzw
-	 ny6zUNWP4razHVhIrvf4AUemTldm7N4vIrFxAfg5/cxuMkytYNoK3aPdNbBERxcBum
-	 yXht/Db/OIp2Q==
+	b=Bd46q89CFRyb1dQbcXO056p9VS4DcMEVYrKlpMSsqmOFBLNtV3ARTmusCgnGkJ/na
+	 Wgj7gvZXmHlSetN3ict4qebQZvLXst6wyPpaGCrSh/kPccSZyxO4rP5fkiIy0/qq/O
+	 YclC59KDZkvcPcTlwqdp8O6zDJ57pYYc4xrqRGT+wXpaagi9lQ7H896fYeptnCkzRh
+	 5gF7w5fRJnrrHxHxjBYMvfFE3yzdWxuQcuwxalbWFyuBoP/9ngF0kmdaPQMjy2TkaH
+	 Tt5s/MWj2FmbOtn9xKGneTJcDFt1rXbbMYx02cbgAhPLP2wlGfE/+o5GLTVwzyiLdI
+	 5R8z4XoEDbiFw==
 From: Damien Le Moal <dlemoal@kernel.org>
 To: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
 	Lorenzo Pieralisi <lpieralisi@kernel.org>,
@@ -58,16 +73,16 @@ To: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
 Cc: linux-rockchip@lists.infradead.org,
 	Rick Wertenbroek <rick.wertenbroek@gmail.com>,
 	Niklas Cassel <cassel@kernel.org>
-Subject: [PATCH v4 08/12] PCI: rockchip-ep: Refactor rockchip_pcie_ep_probe() MSI-X hiding
-Date: Fri, 11 Oct 2024 21:14:04 +0900
-Message-ID: <20241011121408.89890-9-dlemoal@kernel.org>
+Subject: [PATCH v4 05/12] PCI: rockchip-ep: Implement the pci_epc_ops::get_mem_map() operation
+Date: Fri, 11 Oct 2024 21:14:01 +0900
+Message-ID: <20241011121408.89890-6-dlemoal@kernel.org>
 X-Mailer: git-send-email 2.46.2
 In-Reply-To: <20241011121408.89890-1-dlemoal@kernel.org>
 References: <20241011121408.89890-1-dlemoal@kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241011_051430_976534_3881A0CE 
-X-CRM114-Status: GOOD (  14.97  )
+X-CRM114-CacheID: sfid-20241011_131427_616530_1C7BEB0D 
+X-CRM114-Status: GOOD (  14.71  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,102 +99,89 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Move the code in rockchip_pcie_ep_probe() to hide the MSI-X capability
-to its own function, rockchip_pcie_ep_hide_broken_msix_cap().
-No functional changes.
+The rockchip PCIe endpoint controller handles PCIe transfers addresses
+by masking the lower bits of the programmed PCI address and using the
+same number of lower bits from the CPU address space used for the
+mapping. For a PCI mapping of size bytes starting from pci_addr, the
+number of bits masked is the number of address bits changing in the
+address range [pci_addr..pci_addr + size - 1], up to 20 bits, that is,
+up to 1MB mappings.
 
+This means that when preparing a PCI address mapping, an endpoint
+function driver must use an offset into the allocated controller
+memory region that is equal to the mask of the starting PCI address
+over rockchip_pcie_ep_ob_atu_num_bits() bits. This offset also
+determines the maximum size of the mapping given the starting PCI
+address and the fixed 1MB controller memory window size.
+
+Implement the ->get_mem_map() endpoint controller operation to allow the
+mapping alignment to be transparently handled by endpoint function
+drivers through the function pci_epc_mem_map().
+
+Co-developed-by: Rick Wertenbroek <rick.wertenbroek@gmail.com>
+Signed-off-by: Rick Wertenbroek <rick.wertenbroek@gmail.com>
 Signed-off-by: Damien Le Moal <dlemoal@kernel.org>
-Reviewed-by: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
 ---
- drivers/pci/controller/pcie-rockchip-ep.c | 54 +++++++++++++----------
- 1 file changed, 30 insertions(+), 24 deletions(-)
+ drivers/pci/controller/pcie-rockchip-ep.c | 22 ++++++++++++++++++++++
+ drivers/pci/controller/pcie-rockchip.h    |  5 +++++
+ 2 files changed, 27 insertions(+)
 
 diff --git a/drivers/pci/controller/pcie-rockchip-ep.c b/drivers/pci/controller/pcie-rockchip-ep.c
-index 3aef2aa609b6..2c8fd8ee327e 100644
+index edb84fb1ba39..c9c2bb72771f 100644
 --- a/drivers/pci/controller/pcie-rockchip-ep.c
 +++ b/drivers/pci/controller/pcie-rockchip-ep.c
-@@ -577,6 +577,34 @@ static void rockchip_pcie_ep_exit_ob_mem(struct rockchip_pcie_ep *ep)
- 	pci_epc_mem_exit(ep->epc);
+@@ -235,6 +235,27 @@ static inline u32 rockchip_ob_region(phys_addr_t addr)
+ 	return (addr >> ilog2(SZ_1M)) & 0x1f;
  }
  
-+static void rockchip_pcie_ep_hide_broken_msix_cap(struct rockchip_pcie *rockchip)
++static int rockchip_pcie_ep_get_mem_map(struct pci_epc *epc, u8 fn, u8 vfn,
++					struct pci_epc_map *map)
 +{
-+	u32 cfg_msi, cfg_msix_cp;
++	struct rockchip_pcie_ep *ep = epc_get_drvdata(epc);
++	int num_bits;
 +
-+	/*
-+	 * MSI-X is not supported but the controller still advertises the MSI-X
-+	 * capability by default, which can lead to the Root Complex side
-+	 * allocating MSI-X vectors which cannot be used. Avoid this by skipping
-+	 * the MSI-X capability entry in the PCIe capabilities linked-list: get
-+	 * the next pointer from the MSI-X entry and set that in the MSI
-+	 * capability entry (which is the previous entry). This way the MSI-X
-+	 * entry is skipped (left out of the linked-list) and not advertised.
-+	 */
-+	cfg_msi = rockchip_pcie_read(rockchip, PCIE_EP_CONFIG_BASE +
-+				     ROCKCHIP_PCIE_EP_MSI_CTRL_REG);
++	num_bits = rockchip_pcie_ep_ob_atu_num_bits(&ep->rockchip,
++						map->pci_addr, map->pci_size);
 +
-+	cfg_msi &= ~ROCKCHIP_PCIE_EP_MSI_CP1_MASK;
++	map->map_pci_addr = map->pci_addr & ~((1ULL << num_bits) - 1);
++	map->map_ofst = map->pci_addr - map->map_pci_addr;
 +
-+	cfg_msix_cp = rockchip_pcie_read(rockchip, PCIE_EP_CONFIG_BASE +
-+					 ROCKCHIP_PCIE_EP_MSIX_CAP_REG) &
-+					 ROCKCHIP_PCIE_EP_MSIX_CAP_CP_MASK;
++	if (map->map_ofst + map->pci_size > SZ_1M)
++		map->pci_size = SZ_1M - map->map_ofst;
 +
-+	cfg_msi |= cfg_msix_cp;
++	map->map_size = ALIGN(map->map_ofst + map->pci_size,
++			      ROCKCHIP_PCIE_AT_SIZE_ALIGN);
 +
-+	rockchip_pcie_write(rockchip, cfg_msi,
-+			    PCIE_EP_CONFIG_BASE + ROCKCHIP_PCIE_EP_MSI_CTRL_REG);
++	return 0;
 +}
 +
- static int rockchip_pcie_ep_probe(struct platform_device *pdev)
- {
- 	struct device *dev = &pdev->dev;
-@@ -584,7 +612,6 @@ static int rockchip_pcie_ep_probe(struct platform_device *pdev)
- 	struct rockchip_pcie *rockchip;
- 	struct pci_epc *epc;
- 	int err;
--	u32 cfg_msi, cfg_msix_cp;
- 
- 	ep = devm_kzalloc(dev, sizeof(*ep), GFP_KERNEL);
- 	if (!ep)
-@@ -619,6 +646,8 @@ static int rockchip_pcie_ep_probe(struct platform_device *pdev)
- 	if (err)
- 		goto err_disable_clocks;
- 
-+	rockchip_pcie_ep_hide_broken_msix_cap(rockchip);
+ static int rockchip_pcie_ep_map_addr(struct pci_epc *epc, u8 fn, u8 vfn,
+ 				     phys_addr_t addr, u64 pci_addr,
+ 				     size_t size)
+@@ -458,6 +479,7 @@ static const struct pci_epc_ops rockchip_pcie_epc_ops = {
+ 	.write_header	= rockchip_pcie_ep_write_header,
+ 	.set_bar	= rockchip_pcie_ep_set_bar,
+ 	.clear_bar	= rockchip_pcie_ep_clear_bar,
++	.get_mem_map	= rockchip_pcie_ep_get_mem_map,
+ 	.map_addr	= rockchip_pcie_ep_map_addr,
+ 	.unmap_addr	= rockchip_pcie_ep_unmap_addr,
+ 	.set_msi	= rockchip_pcie_ep_set_msi,
+diff --git a/drivers/pci/controller/pcie-rockchip.h b/drivers/pci/controller/pcie-rockchip.h
+index 02368ce9bd54..30398156095f 100644
+--- a/drivers/pci/controller/pcie-rockchip.h
++++ b/drivers/pci/controller/pcie-rockchip.h
+@@ -241,6 +241,11 @@
+ #define   ROCKCHIP_PCIE_EP_MSIX_CAP_CP_MASK		GENMASK(15, 8)
+ #define ROCKCHIP_PCIE_EP_DUMMY_IRQ_ADDR				0x1
+ #define ROCKCHIP_PCIE_EP_PCI_LEGACY_IRQ_ADDR		0x3
 +
- 	/* Establish the link automatically */
- 	rockchip_pcie_write(rockchip, PCIE_CLIENT_LINK_TRAIN_ENABLE,
- 			    PCIE_CLIENT_CONFIG);
-@@ -626,29 +655,6 @@ static int rockchip_pcie_ep_probe(struct platform_device *pdev)
- 	/* Only enable function 0 by default */
- 	rockchip_pcie_write(rockchip, BIT(0), PCIE_CORE_PHY_FUNC_CFG);
- 
--	/*
--	 * MSI-X is not supported but the controller still advertises the MSI-X
--	 * capability by default, which can lead to the Root Complex side
--	 * allocating MSI-X vectors which cannot be used. Avoid this by skipping
--	 * the MSI-X capability entry in the PCIe capabilities linked-list: get
--	 * the next pointer from the MSI-X entry and set that in the MSI
--	 * capability entry (which is the previous entry). This way the MSI-X
--	 * entry is skipped (left out of the linked-list) and not advertised.
--	 */
--	cfg_msi = rockchip_pcie_read(rockchip, PCIE_EP_CONFIG_BASE +
--				     ROCKCHIP_PCIE_EP_MSI_CTRL_REG);
--
--	cfg_msi &= ~ROCKCHIP_PCIE_EP_MSI_CP1_MASK;
--
--	cfg_msix_cp = rockchip_pcie_read(rockchip, PCIE_EP_CONFIG_BASE +
--					 ROCKCHIP_PCIE_EP_MSIX_CAP_REG) &
--					 ROCKCHIP_PCIE_EP_MSIX_CAP_CP_MASK;
--
--	cfg_msi |= cfg_msix_cp;
--
--	rockchip_pcie_write(rockchip, cfg_msi,
--			    PCIE_EP_CONFIG_BASE + ROCKCHIP_PCIE_EP_MSI_CTRL_REG);
--
- 	rockchip_pcie_write(rockchip, PCIE_CLIENT_CONF_ENABLE,
- 			    PCIE_CLIENT_CONFIG);
- 
++#define ROCKCHIP_PCIE_AT_MIN_NUM_BITS	8
++#define ROCKCHIP_PCIE_AT_MAX_NUM_BITS	20
++#define ROCKCHIP_PCIE_AT_SIZE_ALIGN	(1UL << ROCKCHIP_PCIE_AT_MIN_NUM_BITS)
++
+ #define ROCKCHIP_PCIE_EP_FUNC_BASE(fn) \
+ 	(PCIE_EP_PF_CONFIG_REGS_BASE + (((fn) << 12) & GENMASK(19, 12)))
+ #define ROCKCHIP_PCIE_EP_VIRT_FUNC_BASE(fn) \
 -- 
 2.47.0
 
