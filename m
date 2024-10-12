@@ -4,69 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A664FCF256B
-	for <linux-rockchip@archiver.kernel.org>; Sat, 12 Oct 2024 15:08:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5664CCF2570
+	for <linux-rockchip@archiver.kernel.org>; Sat, 12 Oct 2024 17:06:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To
-	:From:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=gbZ7wwsjZ2OcNMy1VRHIIiQwcRE6UgccbLepOQIqAtc=; b=FQUHmpQIDo26Xj
-	sOA6uNzuNPOsAI3ZvIxQ43M+Be5XmT7Jj9nec8J9weOpAn19NVBR07EtycPwewoQ7uITq2eohetaz
-	6AIYKyHArk6gAhPL/CFxDTY44UZlt9YbaVkLu84e2iicg49F9Sb+9OckVQbYie4YltDLX8IP0YTj/
-	dTOuqdqBuF+0k4F9KtHCpGkdlNGQ1G5y2IBK2WgUE79g45WzI+EBHJA8M0zd5GMrDJo1w3gJnqbsq
-	1l+dDy5PxL2zwY88B7ZwI9pY4qknNIOrHpASyPZ8SvEGcDJR/ECqe40M6rcOHzXV5lzC9kya68/PZ
-	Rb7qZrRtt8h3h53Y3a4g==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=uJMQhKlUnRPMfckrmUIS3Go2MoxKe2yR4KkYEFy/Fy8=; b=RJmREeRf0O1tRr
+	PeCf9jj5NGeR1u0iLDvpZyUGGGnf4/KsbQMwZwwSGk2j/d39ypQpBre0BgMgZfihoPlukZnBkoiAM
+	PRqZwLmGrkKYMVkQaki/swevUtyTi6q9cPWkP2cc01mFF+Yoqg0sTNW2eZJqincYEuEJjEkOZ67Pr
+	+0sFWaNKaiGNuKjFPdpoh6ISmQVF4Q8zLXTSPp7cfK9rSbKNomku0sUHQ9ol+5lJ/qChANs1J5TqJ
+	75GQndlQ+fZRp0SJK6Bd/wi8KElOWeQg+jHjTHaYO9+XK1d17lAXDi8V0VPvM1IiiJKdikfomZFMW
+	L+Jz7daJJjV7khAbyb6Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1szdj8-00000001PSZ-315t;
-	Sat, 12 Oct 2024 15:08:18 +0000
-Received: from sender-op-o13.zoho.jp ([103.163.153.3])
+	id 1szfZM-00000001Wqw-0QVz;
+	Sat, 12 Oct 2024 17:06:20 +0000
+Received: from mail.manjaro.org ([2a01:4f8:c0c:51f3::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1szdj4-00000001PQ2-1GRr
-	for linux-rockchip@lists.infradead.org;
-	Sat, 12 Oct 2024 15:08:16 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1728744775; cv=none; 
-	d=zohomail.jp; s=zohoarc; 
-	b=Zzm+URjoGLXBfTovPhH+R5B2Bgr6mmtsARdO0Vg878uGgFUXcYPBfDJWSzaJIKccIM3AjED5NQdAuso3+CQY3ze2TopUeiu2kDKu7UM/+rdfyac2GCUnPDHkc0jGG2IXNlaVeR6fFEP10NK56uQ0lehuMYBnYuzH98hluGSa3nE=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.jp; s=zohoarc; 
-	t=1728744775; h=Content-Type:Content-Transfer-Encoding:Date:Date:From:From:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To:Cc; 
-	bh=V8eyAh2bJ1OkL9xYzoz1XoFmppkwZzpwUdnmXEVIW4M=; 
-	b=0X4yrhGlbaFbsP3aanS96IKHBSaqFJuWw7JZW8S/LXdPWvYJ7duKEbULzNeh2sMveq+WJmHnI1dBaZ7aOq+B27vlOWTSBeTHv250g27H46KZJgwraoMa2CBjCXdTS5QnoixR4qhJIzImVIm43Aq+SUvZlX2KsJQkoGKz9DemXYU=
-ARC-Authentication-Results: i=1; mx.zohomail.jp;
-	dkim=pass  header.i=ej43rmo7c.com;
-	spf=pass  smtp.mailfrom=estersdeanexqnw974@ej43rmo7c.com;
-	dmarc=pass header.from=<estersdeanexqnw974@ej43rmo7c.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1728744775;
-	s=zmail; d=ej43rmo7c.com; i=estersdeanexqnw974@ej43rmo7c.com;
-	h=From:From:To:To:Subject:Subject:Date:Date:Message-ID:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To:Cc;
-	bh=V8eyAh2bJ1OkL9xYzoz1XoFmppkwZzpwUdnmXEVIW4M=;
-	b=fDtTzjUGH9S8n5CUgy45nk5pHbcXm/SOIZux8tqcZX7EsjEXHU+WGlUNzaCRMT0D
-	Fg8jBgzqlPmCb/Q55OWuTo5axUQDS1Rjs2/s7EoM+bRQkQ/QOJflC1WyKa0uWwtbnS8
-	ZTSXX0wIENSV0Xy5uYuVPxjU4ZatoNsuwZrVkpo4=
-Received: by mx.zoho.jp with SMTPS id 1728744772710944.7139810522478;
-	Sat, 12 Oct 2024 23:52:52 +0900 (JST)
-From: =?utf-8?Q?=E3=82=A2=E3=82=A4=E3=83=95=E3=83=AB=E6=A0=AA=E5=BC=8F=E4=BC=9A=E7=A4=BE?= <estersdeanexqnw974@ej43rmo7c.com>
-To: "=?utf-8?Q?linux-rockchip@lists.infradead.org?=" <linux-rockchip@lists.infradead.org>
-Subject: =?utf-8?Q?=E3=80=90=E3=82=A2=E3=82=A4=E3=83=95=E3=83=AB?=
-	=?utf-8?Q?=E3=80=91180=E6=97=A5=E9=96=93=E5=88=A9,=E6=81=AF?=
-	=?utf-8?Q?=E7=84=A1=E6=96=99=E3=82=B5=E4=B8=80=E3=83=93=E3=82=B9?=
-	=?utf-8?Q?=E3=81=AE=E6=9C=89=E5=8A=B9=E5=8C=96=E3=81=AE=E3=81=94?=
-	=?utf-8?Q?=E6=A1=88=E5=86=85?=
-Date: Sat, 12 Oct 2024 14:52:51 +0000
-Message-ID: <MBLBFBLGOFBKMPACKGCAKAOOIEGB.estersdeanexqnw974@ej43rmo7c.com>
+	id 1szfXq-00000001WWA-16W1;
+	Sat, 12 Oct 2024 17:04:48 +0000
+From: Dragan Simic <dsimic@manjaro.org>
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
+	t=1728752682;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=k33vTDitf06aKiwfNJDdOoAA6cwqjjJzaXvt5dYrR+I=;
+	b=Y8ZrFlzAV6x5lsKZAiY92mdpte82nlG5tKzWp2AuskhCf6b+l+epD8X811D6hA3RhAgxtW
+	uXcgbRAvGAwB95xJFmQvBnpQh8Uc2EcVXb5RJmR94sLMPuzw/TQA05jD1IyhI+ahnfTbb9
+	Jogs0U78QGMIBAaGrHa0fTcNiodLbFd7XpwOQww9uK7PpN9EtkTxUrP+lIIvqFWUQAydmN
+	XHGwfOoXPlWyYVijHLGl2hu7dXZxPmVF+PRPhVbVLiE9v1B+I1AufHs/Opm2Usd7toerO3
+	5EXsBKYbGyBXmF/rPTftPo3t15875n10wdw1JL6y9utEoOKVLOdSI2CtBgQNlg==
+To: linux-rockchip@lists.infradead.org
+Cc: heiko@sntech.de,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org
+Subject: [PATCH 1/3] arm64: dts: rockchip: Update CPU OPP voltages in RK356x SoC dtsi
+Date: Sat, 12 Oct 2024 19:04:34 +0200
+Message-Id: <2e1e100284b1edb470d6e7fde021a0f1779336c8.1728752527.git.dsimic@manjaro.org>
+In-Reply-To: <cover.1728752527.git.dsimic@manjaro.org>
+References: <cover.1728752527.git.dsimic@manjaro.org>
 MIME-Version: 1.0
-X-Priority: 3 (Normal)
-X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook IMO, Build 9.0.2416 (9.0.2911.0)
-Importance: Normal
-X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2900.2180
-X-ZohoMailClient: External
+Authentication-Results: ORIGINATING;
+	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241012_080814_799883_9F07E04F 
-X-CRM114-Status: UNSURE (  -1.41  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20241012_100446_992536_E9A04591 
+X-CRM114-Status: GOOD (  10.57  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,38 +69,101 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-5bmz57Sg44KI44KK44Ki44Kk44OV44Or44KS44GU5Yip55So44GE44Gf44Gg44GN44CB6Kqg44Gr
-44GC44KK44GM44Go44GG44GU44GV44GE44G+44GZ44CCDQrjgqLjgqTjg5Xjg6vmoKrlvI/kvJrn
-pL7jgafjga/jgIHmnJ/plpPpmZDlrprjga7kvJrlk6HnibnlhbjjgajjgZfjgaYxODDml6XplpPl
-iKnmga/nhKHmlpnjgrXkuIDjg5PjgrnjgpLjgZTnlKjmhI/jgYTjgZ/jgZfjgb7jgZfjgZ/jgIIN
-Ci0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tDQrkvJrlk6Hnibnlhbjjgq3jg6Pjg7Pj
-g5rjg7zjg7MNCuOBiuOCgeOBp+OBqOOBhuOBlOOBluOBhOOBvuOBme+8gQ0K44GT44Gu5bqm44CB
-44GK5a6i5qij44GvMTgw5pel6ZaT5Yip5oGv54Sh5paZ44K15LiA44OT44K544KS44GU5Yip55So
-44GE44Gf44Gg44GR44G+44GZ44CCDQrjgrXkuIDjg5PjgrnjgpLmnInlirnljJbjgZnjgovjgavj
-ga/jgIHku6XkuIvjga7jg6rjg7Pjgq/jgYvjgonjg63jgrDjgqTjg7PjgZfjgabjgIHnsKHljZjj
-garmiYvntprjgY3jgpLjgYrmuIjjgb7jgZvjgY/jgaDjgZXjgYTjgILjgZzjgbLjgIHjgZPjga7m
-qZ/kvJrjgavjgYrlvpfjgarjgrXkuIDjg5PjgrnjgpLjgZPmtLvnlKjjgY/jgaDjgZXjgYTjgIHk
-u4rjgZk8MTgw5pel6ZaT5Yip5oGv54Sh5paZ44K15LiA44OT44K544KS5pyJ5Yq55YyW44GZ44KL
-44CCDQotLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLQ0K44K15LiA44OT44K56Kmz57Sw
-OiBodHRwczovL252c21pLmNvbQ0KDQrliKnmga/nhKHmlpnmnJ/llY86MTgw5pel6ZaTDQrpgann
-lKjplovlp4vml6U65bu/5LiA44OT44K55pyJ5Yq55YyW5b6M44CB5qyh5Zue44Gu6L+U5riI5pel
-44GL44KJ6YGp55So44GV44KM44G+44GZ44CCDQoNCuips+e0sOaDheWgseOBr+OAgeW9k+ekvuOB
-ruOCpuOCqOODl+OCteOCpOODiOOBp+OCguOBlOeiuuiqjeOBhOOBn+OBoOOBkeOBvuOBmeOAgg0K
-5byV44GN57aa44GN44CB44Ki44Kk44OV44Or44Gu44K15LiA44OT44K544KS44GU5oSb6aGn6LOc
-44KK44G+44GZ44KI44GG44GK6aGY44GE55Sz44GX5LiK44GR44G+44GZ44CCDQotLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0NCuOBlOS4jeaYjueCueetieOBjOOBlOOBleOBhOOBvuOB
-l+OBn+OCieOAgeS4i+iomOOBruOCteODneS4gOODiOaDoeODreOBvuOBp+OBiuawl+i7veOBq+OB
-iuWVj+OBhOWQiOOCj+OBm+OBj+OBoOOBleOBhOOAgg0K44Ki44Kk44OV44Or5qCq5byP5Lya56S+
-IOWKm+OCueOCvzzkuIDjgrXjg53kuIDjg4gNCumbt+ipseeVquWPtzowMTIw5LiAMTA55LiANDM3
-DQrlj5fku5jmmYLplpM6OTowMH4xODowMCjlubPml6Xjga7jgb8pDQrjgqbjgqjjg5fjgrXjgqTj
-g4g644Ki44Kk44OV44Or5qCq5byP5Lya56S+DQpUNjAw5LiAODQyMCDkuqzpg73luILkuIvkuqzl
-jLrls7bkuLjpgJrkupTmnaHkuIrjgovpq5jnoILnlLozODHkuIAxDQpAIEFJRlVMIENPUlBPUkFU
-SU9OLiBBbGwgUmlnaHRzIFJlc2VydmVkLgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2Nr
-Y2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxt
-YW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+Update the lower/upper voltage limits and the exact voltages for the Rockchip
+RK356x CPU OPPs, using the most conservative values (i.e. the highest per-OPP
+voltages) found in the vendor kernel source. [1]
+
+Using the most conservative per-OPP voltages ensures reliable CPU operation
+regardless of the actual CPU binning, with the downside of possibly using
+a bit more power for the CPU cores than absolutely needed.
+
+Additionally, fill in the missing "clock-latency-ns" CPU OPP properties, using
+the values found in the vendor kernel source. [1]
+
+[1] https://raw.githubusercontent.com/rockchip-linux/kernel/f8b9431ee38ed561650be7092ab93f564598daa9/arch/arm64/boot/dts/rockchip/rk3568.dtsi
+
+Related-to: eb665b1c06bc ("arm64: dts: rockchip: Update GPU OPP voltages in RK356x SoC dtsi")
+Signed-off-by: Dragan Simic <dsimic@manjaro.org>
+---
+ arch/arm64/boot/dts/rockchip/rk3568.dtsi |  1 +
+ arch/arm64/boot/dts/rockchip/rk356x.dtsi | 18 ++++++++++++------
+ 2 files changed, 13 insertions(+), 6 deletions(-)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3568.dtsi b/arch/arm64/boot/dts/rockchip/rk3568.dtsi
+index 0946310e8c12..5c54898f6ed1 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3568.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3568.dtsi
+@@ -273,6 +273,7 @@ &cpu0_opp_table {
+ 	opp-1992000000 {
+ 		opp-hz = /bits/ 64 <1992000000>;
+ 		opp-microvolt = <1150000 1150000 1150000>;
++		clock-latency-ns = <40000>;
+ 	};
+ };
+ 
+diff --git a/arch/arm64/boot/dts/rockchip/rk356x.dtsi b/arch/arm64/boot/dts/rockchip/rk356x.dtsi
+index 0ee0ada6f0ab..534593f2ed0b 100644
+--- a/arch/arm64/boot/dts/rockchip/rk356x.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk356x.dtsi
+@@ -134,39 +134,45 @@ cpu0_opp_table: opp-table-0 {
+ 
+ 		opp-408000000 {
+ 			opp-hz = /bits/ 64 <408000000>;
+-			opp-microvolt = <900000 900000 1150000>;
++			opp-microvolt = <850000 850000 1150000>;
+ 			clock-latency-ns = <40000>;
+ 		};
+ 
+ 		opp-600000000 {
+ 			opp-hz = /bits/ 64 <600000000>;
+-			opp-microvolt = <900000 900000 1150000>;
++			opp-microvolt = <850000 850000 1150000>;
++			clock-latency-ns = <40000>;
+ 		};
+ 
+ 		opp-816000000 {
+ 			opp-hz = /bits/ 64 <816000000>;
+-			opp-microvolt = <900000 900000 1150000>;
++			opp-microvolt = <850000 850000 1150000>;
++			clock-latency-ns = <40000>;
+ 			opp-suspend;
+ 		};
+ 
+ 		opp-1104000000 {
+ 			opp-hz = /bits/ 64 <1104000000>;
+ 			opp-microvolt = <900000 900000 1150000>;
++			clock-latency-ns = <40000>;
+ 		};
+ 
+ 		opp-1416000000 {
+ 			opp-hz = /bits/ 64 <1416000000>;
+-			opp-microvolt = <900000 900000 1150000>;
++			opp-microvolt = <1025000 1025000 1150000>;
++			clock-latency-ns = <40000>;
+ 		};
+ 
+ 		opp-1608000000 {
+ 			opp-hz = /bits/ 64 <1608000000>;
+-			opp-microvolt = <975000 975000 1150000>;
++			opp-microvolt = <1100000 1100000 1150000>;
++			clock-latency-ns = <40000>;
+ 		};
+ 
+ 		opp-1800000000 {
+ 			opp-hz = /bits/ 64 <1800000000>;
+-			opp-microvolt = <1050000 1050000 1150000>;
++			opp-microvolt = <1150000 1150000 1150000>;
++			clock-latency-ns = <40000>;
+ 		};
+ 	};
+ 
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
