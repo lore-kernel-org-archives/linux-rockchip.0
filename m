@@ -4,85 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B6EC4D1A431
-	for <linux-rockchip@archiver.kernel.org>; Sat, 12 Oct 2024 07:28:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 699DFD1A442
+	for <linux-rockchip@archiver.kernel.org>; Sat, 12 Oct 2024 07:29:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=AX2FVbVSbLeDOMH9fAvpDpGuPW+93x8t0WzOVQrzh90=; b=IsJuw/iFc2xts6
-	TgTJhZbQ/ls13ZrFDf65A5yfWnyzfa0dmndLJREScokRLxOjrFe13aOlKpFCK2DDiK8DgjUolE0EI
-	Rk2TRDFRn+/StBD9xjH8kofwbZF9JM8KQzaW1gWiaTnD2Hngo/JiEF8sNyZoHeG5DC/QuLKaNCMqX
-	pvDr/gkNxiE4+a7hFTk4t4ar4ihw+EM8SlyFIpmlWkYEp0eQeE2NdUfMf/vU4e6+LmMghmRNWoWOk
-	vBuPbyzyctOZdL5cJXxZ6X1SQBAlUINCK+b2wY5jV4QNQVVJJ4wwq9mZ1iHMn/lJfd+62EtDM+Cex
-	sSDeIipZ8wirctHJXh/w==;
+	List-Owner; bh=/3E07pKgBrSIIThdMK8i/mTfIrdoJjcJp6JbnNuMn2I=; b=qfgnJunkhp1gdb
+	NUF4jsrFSi6hZSbJzb5Mzm3wjw+G9kl5aKf8o43iRAxN8gi28acPrQrKlLW4mk/+XRlvjlpRApNrY
+	vOf41GfqFwKLtbfslzzm6cFxRsqPt0osP/6+RidaPE5xAjkqcvMriYWEbbWz/5dcm/+KQ89hgFvQz
+	D69Rq6Aj8CHBWwqNJVM/gBbQDsDdLfBvVb06lB4fPhRsTt5tBtpOzHPW1CIDNEb1SyJaxTB9byJIy
+	aX51b4HbPeEZq14xZqJb7NfksCZ4/HfR0UbNlP+pbue1/Zb2+ZeJka7P2ErZsIFdGkgRyf3h0KFa5
+	I8sZCWw4GmA0FVvWeVsQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1szWXd-00000000i8d-1ca0;
-	Sat, 12 Oct 2024 07:27:57 +0000
-Received: from mail-pg1-x535.google.com ([2607:f8b0:4864:20::535])
+	id 1szWYy-00000000iG5-1Gic;
+	Sat, 12 Oct 2024 07:29:20 +0000
+Received: from mail-oa1-x36.google.com ([2001:4860:4864:20::36])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1szWPw-00000000h4L-1GyT;
-	Sat, 12 Oct 2024 07:20:01 +0000
-Received: by mail-pg1-x535.google.com with SMTP id 41be03b00d2f7-7e9f8d67df9so1984272a12.1;
-        Sat, 12 Oct 2024 00:19:59 -0700 (PDT)
+	id 1szWVN-00000000hjk-40vw;
+	Sat, 12 Oct 2024 07:25:39 +0000
+Received: by mail-oa1-x36.google.com with SMTP id 586e51a60fabf-288642376bcso1087992fac.1;
+        Sat, 12 Oct 2024 00:25:37 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1728717599; x=1729322399; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=tveNarpSwjlEhM4Qolz0xMrvg/75/UUwTA0pqhWJ0Mw=;
-        b=LL+pxCrE3cbplR7VNUitWXvjXinjz/BK7sryIsEwxJaYrLoE+Oqy+8R4jsM/RnFhX8
-         876vWcieSUpDj6X8Sld4UbiU7igO+EVNwG2ZFWHS7gj4yhDKSuWQwwJe3rn8a93+J3V6
-         pQDicXljzwh5+NAdiINjv05mzitBuf6xRyNUV+FGcH0tjXn/94DoOgIj8ogM44q7JqJJ
-         xi9OT+CvxJARV7hKid5S+ok0cAdx/ksrUibx0zEz/IG8T1g7Lbu80twTxZSJSmjczBko
-         Jq9Qjv6RiweR5fmZVgNG0DYF6+afFDZwh59GXDF45QqEuMgLHiTOZ5jpMjQ45gceCZcz
-         a6Gw==
+        d=gmail.com; s=20230601; t=1728717937; x=1729322737; darn=lists.infradead.org;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=qFJHXmWUByEds8clTC1LQB9D0Bv72AC54JwvOCu5Qpc=;
+        b=D1ftbZNFBSHb9GEWiPm7OHUxNHGvMhy+EiJMc9nfRD3UZnyVnyfYg3dopgne+CqoRF
+         4bI9GgExqRqPN5trkAkZS1GrhjN5euJx/OK4eHjgkQIaucn4TAJmtqF2oBIv++3bkioU
+         Z1xBzefXRX7Q/0qtel8wtshO1r5DcxsutJ4yn+kVWFMyNSCu4tjTSct1FXZ5V5tHRhXj
+         dyIpyomq/2jdRv92344oGQLSBskpLN5UrEg01DoxMZGdd52SdJajasLCxgWaU3P4EmdG
+         RZ4F6nzNNMI+hSjIHhuTFKEuiwgSeaxdB2BO8qv7TzNdf2g68sbcDAGzmZFDhf0NNd6i
+         EDUQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1728717599; x=1729322399;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=tveNarpSwjlEhM4Qolz0xMrvg/75/UUwTA0pqhWJ0Mw=;
-        b=LafPU5hMoDTvXpQJcmMITA+Rkv/pqqj55/0TO07FccE0rJ8BocJ7ym/xq+TjHy1WKv
-         nn+VJJGb5LrcraUAWVIkaghgR0IJtbPkS6na7lKcnJ+hqZQWpedo+GIzEJQU/Ou9VHQG
-         /1jnbm6hXUHo8elqDL0nA+OghqqF0BTLjzLaDN9HOOQ8K31Rvoc9qlxF/zIA5MNpCwI4
-         GXjvHZLEiPZKwx/ER1YZSpjpwf7+OSvOLIPRHGD3lEtTzkxDF4aeKTcZekStM9tMq6eL
-         kXZMeMdANDk+h2Fo0W3K50TMu9RwjvlLUyIoQwL887aklObUMns6h5rqIYlUeUPkTFni
-         9+kw==
-X-Forwarded-Encrypted: i=1; AJvYcCUretZNbHZDB79wgmszjX0+t6tBaUqRJu32FgYkiavrxZw5bLb/h+g7oNBgj90YDJlKpngW+Q8dd+Zk@lists.infradead.org, AJvYcCVmYoQnPOdBHrsgS8+ThBfGP95O6MiOVoTDYKqh/NYRCpLZ9Jbeh10SfDwdV3PIz+3BIkgnEGelF7w2QHlQr0xF@lists.infradead.org, AJvYcCXi1oHv4ClapYRjPZtxMdMBmkjEUllKcFt6MQxG8Ak64FBNDwBk9X1214NQaQFXoBy6vUHQO9VyJ2OpViAXb+4=@lists.infradead.org
-X-Gm-Message-State: AOJu0YxD77bPNQbgVMtLO9HPlRIMsfCfTTKfMLG37w5UvB5GGw8PA895
-	tpmoOR2WfhDq8+rRMVSXKEJLr3RI0hIHR8yjETZH0q4lKmHCG4Uq
-X-Google-Smtp-Source: AGHT+IHa+OOul8kkfcVe5xb551ye568I+GFpxdHlOz9EhP0OrqwzuVKv5lNmoyUlXuqKze6HkNM1TQ==
-X-Received: by 2002:a05:6a21:6e4b:b0:1cf:e5e4:d225 with SMTP id adf61e73a8af0-1d8bcfaa171mr6538150637.37.1728717599290;
-        Sat, 12 Oct 2024 00:19:59 -0700 (PDT)
-Received: from localhost.localdomain ([113.30.217.221])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-71e2aaba171sm3664620b3a.161.2024.10.12.00.19.56
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 12 Oct 2024 00:19:59 -0700 (PDT)
-From: Anand Moon <linux.amoon@gmail.com>
-To: Vinod Koul <vkoul@kernel.org>,
-	Kishon Vijay Abraham I <kishon@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	linux-phy@lists.infradead.org (open list:GENERIC PHY FRAMEWORK),
-	linux-arm-kernel@lists.infradead.org (moderated list:ARM/Rockchip SoC support),
-	linux-rockchip@lists.infradead.org (open list:ARM/Rockchip SoC support),
-	linux-kernel@vger.kernel.org (open list)
-Cc: Anand Moon <linux.amoon@gmail.com>,
-	Dan Carpenter <dan.carpenter@linaro.org>
-Subject: [PATCH v3 5/6] phy: rockchip-pcie: Refactor mutex handling in rockchip_pcie_phy_power_on()
-Date: Sat, 12 Oct 2024 12:49:07 +0530
-Message-ID: <20241012071919.3726-6-linux.amoon@gmail.com>
-X-Mailer: git-send-email 2.44.0
-In-Reply-To: <20241012071919.3726-1-linux.amoon@gmail.com>
-References: <20241012071919.3726-1-linux.amoon@gmail.com>
+        d=1e100.net; s=20230601; t=1728717937; x=1729322737;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=qFJHXmWUByEds8clTC1LQB9D0Bv72AC54JwvOCu5Qpc=;
+        b=n5Xu7VjsXq0wDfSuMq184QBcCk8EdsrOmXN3hC1W51CdCm/W5FAUen239k0OKlT3BT
+         Wz6d3FzImxnKwcxBhzFPRvEkgIPYUl9h3zDhEKiBuWrprwUeGb+Z8yydvGut02Rg8Ujo
+         NPAQWF7ig/GY4Y42h3DcanEAecgck+zQMRmSk+osOQJIuSud8pdIJynWBgB2fnZGCjgd
+         dfP9eowEb3figT7irzM2AiWT0IXlnvyPc0zmrZwUpfcGpzssQ3JZaAkVy+WYWsggxMcx
+         mOn5oQKMbqwhQJbI6ziuNDnIBVt4FD7PRFCyHek55KA93MI/uDUoxXiNkOJ6riCTldTc
+         8wJQ==
+X-Forwarded-Encrypted: i=1; AJvYcCVB5U90TR6D7UY0DkMcuNbKgMsfVAp74zwWkWVaQ3PKlgV4eqCxQp1O0cnQE+1n415NjJiqnOheCFs8MLXzKAv3@lists.infradead.org, AJvYcCWrOKza4YguC1whjdl5H2c85Qr+GW/lp089O3Md8XR/QuTf3o4bBDL+q5AiXXrIUdzJLGZ3f8jnHJKL45QFtZk=@lists.infradead.org
+X-Gm-Message-State: AOJu0YzZjxVV7D5XW09g1cZwFBgRz0jz6FXBwLZocpOtD4ZYK2OxaR8A
+	rCoUCSDeVms2bTzfqJGTMxauIX7TvKML1kuK+O/yLFc+nrbY0R/POiad0AgxnjXGVdz6NyrkWo5
+	KnIqlOECxOW0Ch+4Oiis9H4AULNk=
+X-Google-Smtp-Source: AGHT+IGxcoo7XIEg/2VGJljTTQoQCqCwZmD3zSNnB3DUpI3w85snogReGnHlzl7eFuZJLLQZl2U++xeT9L1aIakhcwc=
+X-Received: by 2002:a05:6870:d88e:b0:26c:5312:a145 with SMTP id
+ 586e51a60fabf-28887328507mr1145574fac.16.1728717936765; Sat, 12 Oct 2024
+ 00:25:36 -0700 (PDT)
 MIME-Version: 1.0
+References: <20241012050611.1908-1-linux.amoon@gmail.com> <20241012050611.1908-2-linux.amoon@gmail.com>
+ <20241012060847.6teuutvy2u2es2qw@thinkpad>
+In-Reply-To: <20241012060847.6teuutvy2u2es2qw@thinkpad>
+From: Anand Moon <linux.amoon@gmail.com>
+Date: Sat, 12 Oct 2024 12:55:20 +0530
+Message-ID: <CANAwSgQLi5zW4+95-ZRbpm05bzs8tjr2Sr-PpgMxTPAEzjSj9Q@mail.gmail.com>
+Subject: Re: [PATCH v7 1/3] PCI: rockchip: Simplify clock handling by using
+ clk_bulk*() function
+To: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
+Cc: Shawn Lin <shawn.lin@rock-chips.com>, Lorenzo Pieralisi <lpieralisi@kernel.org>, 
+	=?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?= <kw@linux.com>, 
+	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>, Heiko Stuebner <heiko@sntech.de>, 
+	Philipp Zabel <p.zabel@pengutronix.de>, 
+	"open list:PCIE DRIVER FOR ROCKCHIP" <linux-pci@vger.kernel.org>, 
+	"open list:PCIE DRIVER FOR ROCKCHIP" <linux-rockchip@lists.infradead.org>, 
+	"moderated list:ARM/Rockchip SoC support" <linux-arm-kernel@lists.infradead.org>, 
+	open list <linux-kernel@vger.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241012_002000_362622_DE4A4C32 
-X-CRM114-Status: GOOD (  13.26  )
+X-CRM114-CacheID: sfid-20241012_002538_025767_293BEEEA 
+X-CRM114-Status: GOOD (  16.97  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,64 +96,50 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Refactor the mutex handling in the rockchip_pcie_phy_power_on() function to
-improve code readability and maintainability. The goto statement has
-been removed, and the mutex_unlock call is now directly within the
-conditional block.
+Hi Manivannan,
 
-Return the result of reset_control_deassert() or regmap_read_poll_timeout()
-function, with 0 indicating success and an error code indicating failure.
+Thanks for your review comments.
 
-Signed-off-by: Anand Moon <linux.amoon@gmail.com>
----
-v3: New patch.
----
- drivers/phy/rockchip/phy-rockchip-pcie.c | 14 ++++++++------
- 1 file changed, 8 insertions(+), 6 deletions(-)
+On Sat, 12 Oct 2024 at 11:38, Manivannan Sadhasivam
+<manivannan.sadhasivam@linaro.org> wrote:
+>
+> On Sat, Oct 12, 2024 at 10:36:03AM +0530, Anand Moon wrote:
+> > Refactor the clock handling in the Rockchip PCIe driver,
+> > introducing a more robust and efficient method for enabling and
+> > disabling clocks using clk_bulk*() API. Using the clk_bulk APIs,
+>
+> I think I mentioned earlier to use impreative tone in commit messages.
+>
+I missed your point.
+> > the clock handling for the core clocks becomes much simpler.
+Will improve this. my focus is just I don't break the functionally.
+> >
+>
+> Could you please elaborate how? i.e., devm_clk_bulk_get_all() allows the driver
+> to get all clocks defined in the DT thereby removing the hardcoded clock names
+> in the driver.
+>
+Ok,  I will elaborate on this in the next version.
 
-diff --git a/drivers/phy/rockchip/phy-rockchip-pcie.c b/drivers/phy/rockchip/phy-rockchip-pcie.c
-index c84a3c209315..6dd014625226 100644
---- a/drivers/phy/rockchip/phy-rockchip-pcie.c
-+++ b/drivers/phy/rockchip/phy-rockchip-pcie.c
-@@ -163,13 +163,17 @@ static int rockchip_pcie_phy_power_on(struct phy *phy)
- 
- 	mutex_lock(&rk_phy->pcie_mutex);
- 
--	if (rk_phy->pwr_cnt++)
--		goto err_out;
-+	if (rk_phy->pwr_cnt++) {
-+		mutex_unlock(&rk_phy->pcie_mutex);
-+		return 0;
-+	}
- 
- 	err = reset_control_deassert(rk_phy->phy_rst);
- 	if (err) {
- 		dev_err(&phy->dev, "deassert phy_rst err %d\n", err);
--		goto err_pwr_cnt;
-+		rk_phy->pwr_cnt--;
-+		mutex_unlock(&rk_phy->pcie_mutex);
-+		return err;
- 	}
- 
- 	regmap_write(rk_phy->reg_base, rk_phy->phy_data->pcie_conf,
-@@ -226,13 +230,11 @@ static int rockchip_pcie_phy_power_on(struct phy *phy)
- 		goto err_pll_lock;
- 	}
- 
--err_out:
- 	mutex_unlock(&rk_phy->pcie_mutex);
--	return 0;
-+	return err;
- 
- err_pll_lock:
- 	reset_control_assert(rk_phy->phy_rst);
--err_pwr_cnt:
- 	rk_phy->pwr_cnt--;
- 	mutex_unlock(&rk_phy->pcie_mutex);
- 	return err;
--- 
-2.44.0
+> > - Replace devm_clk_get() with devm_clk_bulk_get_all().
+> > - Replace clk_prepare_enable() with clk_bulk_prepare_enable().
+> > - Replace clk_disable_unprepare() with clk_bulk_disable_unprepare().
+> >
+> > Signed-off-by: Anand Moon <linux.amoon@gmail.com>
+>
+> With above changes,
+>
+> Reviewed-by: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
+>
+> - Mani
 
+I will try to improve the next version.
+
+Thanks
+
+
+
+-Anand
 
 _______________________________________________
 Linux-rockchip mailing list
