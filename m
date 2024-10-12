@@ -4,64 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8DA3FD1A442
-	for <linux-rockchip@archiver.kernel.org>; Sat, 12 Oct 2024 07:25:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2BD2DD1A442
+	for <linux-rockchip@archiver.kernel.org>; Sat, 12 Oct 2024 07:26:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=SkcaWozzpj9MG4GmN3ugDXMc5NZgOdfnoW38SB++jZM=; b=i+fkI5ZjmWszgu
-	3zambFqHVzF2LPg/TvxoIDDPtArNhQRdrbquqSV/0ZT07yjr5F6H2t7XuSBKMwxhhh+s87syHcRMR
-	2mnjZ/k47CCw32oQDXixiy7AcLC8fkF/CGRMg1YUFQsHaI8AwMQ23Foy32IWhlroxpBThCiRVjhNJ
-	3nKCn1U8QxSxcXIL587hdcMxujYhjylv4S0BcreSFLBoBZkiRHSah/OVQ388G8wF69bZxmN51FRjT
-	ehxCxsGnbKbnM7oj2wUsXJVRu4KGAyMxUh0MtDrCMMpMyWKkIqhc/0SIYdUPcUwrsKXa8MD28mblI
-	XKxrktDz1dj0X4uPuxew==;
+	List-Owner; bh=durKsc+n0i8ULUm31keJ8jocer/xxYx9t0cnKMI/IWc=; b=NAZq21XVaqTa46
+	BNhCFOzhh5qUVO/YiYbjWYJu/z0l/gqIhFLFnnBjeh+O6v3ytEZSpCmeqDVNNRWCdrhghxCLNkBx1
+	2kkyTa1QJ+QCUCojr9FMyQWNIKsFOCrsCCSzky88j8EJBOt7QJfGJ933Pim/I5S2bq8JaFb20qeBH
+	+nx/tPI2+FnuhkI6VzWtjZuI7lLZiUyNZJmLSbBT0gitH9YxmFoITx1eUK6sMaX6QTU9VccKTDbo7
+	feWReT7PdOnMyND8Xfj4wzL1y2+JzDUtLnIeC5mL9rfsAYGMa0VBKkmc5sEABKNpAjmzCxKXIXIya
+	D31sAmFWC0iHGe3dEWJA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1szWUx-00000000hfE-1RW9;
-	Sat, 12 Oct 2024 07:25:11 +0000
-Received: from mail-pf1-x430.google.com ([2607:f8b0:4864:20::430])
+	id 1szWWH-00000000hvb-3koq;
+	Sat, 12 Oct 2024 07:26:33 +0000
+Received: from mail-pf1-x42b.google.com ([2607:f8b0:4864:20::42b])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1szWPm-00000000h1U-1RxX;
-	Sat, 12 Oct 2024 07:19:51 +0000
-Received: by mail-pf1-x430.google.com with SMTP id d2e1a72fcca58-71df2de4ed4so1851965b3a.0;
-        Sat, 12 Oct 2024 00:19:49 -0700 (PDT)
+	id 1szWPr-00000000h2k-1CuC;
+	Sat, 12 Oct 2024 07:19:56 +0000
+Received: by mail-pf1-x42b.google.com with SMTP id d2e1a72fcca58-71e52582d0bso84203b3a.3;
+        Sat, 12 Oct 2024 00:19:54 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1728717589; x=1729322389; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1728717594; x=1729322394; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=ei1bnltRJdZvKwzxVRf43H9d7hPRtvBawiK2S1vBv6g=;
-        b=Ykftc77yXuS9c4xpL75/HtNYgN5KQZ5IKTJi6pbO2QKtPKaUC7sCXXNDJqbx8kpg9p
-         KyacdC0hH5FBj7flJH0yTFllvzg1JhwQNYsLcYWevZ7cCrrPD4BCNwTjxdpNfPf3vGhE
-         Axo8Kg6DPgskjL1rV7ipW/0ZApNvREGj7vdlmFOqz6Pcqiq9MZz01a5cXmet/G/+D/Mw
-         SrWwPby7pF9xrWgSTcJQhtjVnAGYCMJnLEZpbvTLkwd18ji9WJsG0SXTxah08CPRN2rW
-         LLxVcRMjjdFLS2owT6INcQv0denoWTYtlKv7Oh4OcM6x5kg/B34X83t+AvbGI56IZiYe
-         q9Uw==
+        bh=97G2TijBo7TJKDwdLKVOfvTHrYI49lDUOlitVvXkVUE=;
+        b=PvWM4nLRksmA2KKeYRmejHQW8hLmAlX0Pt2t2KugITsaR25vWhql0t8/OZcDTzEpzK
+         RUskU9O8hY/qt5+Mv9XZlUuwqMz5xbDEiP3zReYFrJoXMM4Qq14VMM2A9VmWSnWqdrOV
+         SfNoimGh22gpxLJV4v3h/EhSXX+PDshrgUOcM/3yW9JSUR3EXbBaNKAaDR3EHffYWFxV
+         1cmzs25OOQhbXIkd/VI67LJuBCANsGfMjkQyPZB7kNvoK8A3+RYCVA4ooEUiJ1khjV9V
+         Qpy05UXea4E6tDvGVcx3xxKC1eQmt3yTRw/zU4Mebt/gYVMhQh3/9q5N6ISHe6iqRsq8
+         6A7Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1728717589; x=1729322389;
+        d=1e100.net; s=20230601; t=1728717594; x=1729322394;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=ei1bnltRJdZvKwzxVRf43H9d7hPRtvBawiK2S1vBv6g=;
-        b=qzzfH/iW10yyYFljQe27EtkwG+jGf47fskB8C9u2LaDiGkp5NJwWc8u1Iiz3HkXcED
-         75G4Cdv8frQgef7bBDGSgMM/pBa2UDf5wzBdUisKM3KTJ4ptBhdEjKOMXkic4KXRuHs7
-         ATIGz/FA9Tl2glfsg7QCDOVA3qbbx+g24mcaK0avRZ5IvMro66suKVgVDxRq2LI3B0d7
-         C6pu4KcMBJwVTfIKsaeRi5cnJODhS3HAqhM3X7l3PN35rxWsaPiJ/HWbaAxLsjBH/H2t
-         c/V+OOygORQGLN8cW98y4UZgkTshKQOqDee7NkUqocQglda3bWrDEcbPVDvixq/756UZ
-         0SgA==
-X-Forwarded-Encrypted: i=1; AJvYcCV2jYB6obWs7ya/PPhKvvewgfRRJVmRYsqOL1RSsb1dB5qc+ZKrctwrnA8LPzfMh9hVZJpklBumQOP0@lists.infradead.org, AJvYcCWRpyXeyMHAo7LRfsAQxWVdQ3QdBldSkycbZ/d0e90aflH+/P0jTMyhh37VCTT7rlr2P1CQ+koECjhqnWqhAZxm@lists.infradead.org, AJvYcCXSa9JgVLuccvGCcnQ57YBS8m91eiy66e31vLQBCdRNg9Qw7YyaKJHZcckfyvpttG1S8tfa50hfjLebQRnXRCg=@lists.infradead.org
-X-Gm-Message-State: AOJu0YwiqH8qoxTSuvO3qWS49fc3UGHJKnTyi3IJhsC7FvAC1+bZQ76U
-	JnRAERCom8m5ffD45x/aQkLwtEuKoE3pYAXS/vKDVuu9L0el/cZ9
-X-Google-Smtp-Source: AGHT+IGHNnL0hR5nCBDTCirZJfQbJMU9jdSi821rPi96/CgZugLrK7sJ+5WJuuelZIParpqlLGUGPw==
-X-Received: by 2002:aa7:8e5a:0:b0:71d:f240:ec5 with SMTP id d2e1a72fcca58-71e26effbf5mr14046534b3a.14.1728717589354;
-        Sat, 12 Oct 2024 00:19:49 -0700 (PDT)
+        bh=97G2TijBo7TJKDwdLKVOfvTHrYI49lDUOlitVvXkVUE=;
+        b=gd7P8j3I7XdtB13DCUAb8xHHcKj2/oKNHQGnPqWsD6BW/NOtjwb4o73RmeJTRYQs1N
+         K9yY7FtayOzyGZ2g+wX6wyGMUmkVlwjBV7cg7b2y6wDJGNF7L7Fn52FDmHzEu6WmmN6V
+         sjt1niup/CTIMzIPMhqol+lT8H5YtDuounp1vkVSha0hEask29F0xLjW6mmEtQzXygBg
+         n3eprKPy1H1MpR49vl5iM2ihAHBTZS0BgIMl/g6axry573YRBgveviVh/hfqo2gotexj
+         4LhUVN8HPuME6pvmzabDQdZfUGFSqno/x6Ii8DJ9ldYLDa/scfg3NDe5ddi4pVSZaH0s
+         47sQ==
+X-Forwarded-Encrypted: i=1; AJvYcCV4QDVpITZafXHuU06xuzX0VGCflYC4YI71Q4W2JR5kiSl0HCZRPqStzTovX/ARF9m3VD8xfLC12Oc2iiAD6/k=@lists.infradead.org, AJvYcCW1ZhCw+fdr4PCL8yMIeXt0Tx/KHqjFllhvfqawCHsJYHdFFkH8pc9L+RBAmQt7W7VwlJNU9psAf6Dera03jp6i@lists.infradead.org, AJvYcCXER+oaPEpR7HUC616RLiyXe+Zecbz0kRA5dc5B1ndK5Xj0iNw6soWd7GRp/OKvNcDNnlpot2GCDNiz@lists.infradead.org
+X-Gm-Message-State: AOJu0YzLGbPXGlDI2+t2lZR4ueF5MmsPs9PKxXDMy3GzA0hdRYOzYqgg
+	BJ2rYdQ9DMYJBJZxelIHKIQq2bHh3G32mX+IxvUQu7E9isu3Alv+
+X-Google-Smtp-Source: AGHT+IGQCNKpLK6KUs8VSkaJ0d7emmgc4XI8SJDHYeYoaej9YcBG4bftnc4g9GOFwvVQAzJ0Rkljkw==
+X-Received: by 2002:a05:6a00:189a:b0:71e:4655:59ce with SMTP id d2e1a72fcca58-71e4c03044cmr3762274b3a.0.1728717594320;
+        Sat, 12 Oct 2024 00:19:54 -0700 (PDT)
 Received: from localhost.localdomain ([113.30.217.221])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-71e2aaba171sm3664620b3a.161.2024.10.12.00.19.46
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-71e2aaba171sm3664620b3a.161.2024.10.12.00.19.51
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 12 Oct 2024 00:19:49 -0700 (PDT)
+        Sat, 12 Oct 2024 00:19:54 -0700 (PDT)
 From: Anand Moon <linux.amoon@gmail.com>
 To: Vinod Koul <vkoul@kernel.org>,
 	Kishon Vijay Abraham I <kishon@kernel.org>,
@@ -73,16 +73,16 @@ To: Vinod Koul <vkoul@kernel.org>,
 	linux-kernel@vger.kernel.org (open list)
 Cc: Anand Moon <linux.amoon@gmail.com>,
 	Dan Carpenter <dan.carpenter@linaro.org>
-Subject: [PATCH v3 3/6] phy: rockchip-pcie: Use regmap_read_poll_timeout() for PCIe reference clk PLL status
-Date: Sat, 12 Oct 2024 12:49:05 +0530
-Message-ID: <20241012071919.3726-4-linux.amoon@gmail.com>
+Subject: [PATCH v3 4/6] phy: rockchip-pcie: Refactor mutex handling in rockchip_pcie_phy_power_off()
+Date: Sat, 12 Oct 2024 12:49:06 +0530
+Message-ID: <20241012071919.3726-5-linux.amoon@gmail.com>
 X-Mailer: git-send-email 2.44.0
 In-Reply-To: <20241012071919.3726-1-linux.amoon@gmail.com>
 References: <20241012071919.3726-1-linux.amoon@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241012_001950_405757_1C8DCAC0 
-X-CRM114-Status: GOOD (  12.61  )
+X-CRM114-CacheID: sfid-20241012_001955_346263_FADB36A6 
+X-CRM114-Status: GOOD (  12.78  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,109 +99,64 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Replace open-coded phy PCIe reference clk PLL status polling with
-regmap_read_poll_timeout API. This change simplifies the code without
-altering functionality.
+Refactor the mutex handling in the rockchip_pcie_phy_power_off() function
+to improve code readability and maintainability. The goto statement has
+been removed, and the mutex_unlock call is now directly within the
+conditional block.
+
+Return the result of reset_control_assert() function, with 0 indicating
+success and an error code indicating failure
 
 Signed-off-by: Anand Moon <linux.amoon@gmail.com>
 ---
-v3: None.
-v2: Fix the subject, add the missing () in the function name,
-    Fix the typo reference
-v1: None.
+v3: New patch.
 ---
- drivers/phy/rockchip/phy-rockchip-pcie.c | 56 +++++++-----------------
- 1 file changed, 15 insertions(+), 41 deletions(-)
+ drivers/phy/rockchip/phy-rockchip-pcie.c | 26 +++++++++++-------------
+ 1 file changed, 12 insertions(+), 14 deletions(-)
 
 diff --git a/drivers/phy/rockchip/phy-rockchip-pcie.c b/drivers/phy/rockchip/phy-rockchip-pcie.c
-index b5b1b1a667b2..e60f24b0b363 100644
+index e60f24b0b363..c84a3c209315 100644
 --- a/drivers/phy/rockchip/phy-rockchip-pcie.c
 +++ b/drivers/phy/rockchip/phy-rockchip-pcie.c
-@@ -162,7 +162,6 @@ static int rockchip_pcie_phy_power_on(struct phy *phy)
- 	struct rockchip_pcie_phy *rk_phy = to_pcie_phy(inst);
- 	int err = 0;
- 	u32 status;
--	unsigned long timeout;
+@@ -132,26 +132,24 @@ static int rockchip_pcie_phy_power_off(struct phy *phy)
+ 				   PHY_LANE_IDLE_MASK,
+ 				   PHY_LANE_IDLE_A_SHIFT + inst->index));
  
- 	mutex_lock(&rk_phy->pcie_mutex);
+-	if (--rk_phy->pwr_cnt)
+-		goto err_out;
++	if (--rk_phy->pwr_cnt) {
++		mutex_unlock(&rk_phy->pcie_mutex);
++		return 0;
++	}
  
-@@ -191,21 +190,11 @@ static int rockchip_pcie_phy_power_on(struct phy *phy)
- 	 * so we make it large enough here. And we use loop-break
- 	 * method which should not be harmful.
- 	 */
--	timeout = jiffies + msecs_to_jiffies(1000);
--
--	err = -EINVAL;
--	while (time_before(jiffies, timeout)) {
--		regmap_read(rk_phy->reg_base,
--			    rk_phy->phy_data->pcie_status,
--			    &status);
--		if (status & PHY_PLL_LOCKED) {
--			dev_dbg(&phy->dev, "pll locked!\n");
--			err = 0;
--			break;
--		}
--		msleep(20);
--	}
--
-+	err = regmap_read_poll_timeout(rk_phy->reg_base,
-+				       rk_phy->phy_data->pcie_status,
-+				       status,
-+				       status & PHY_PLL_LOCKED,
-+				       200, 100000);
+ 	err = reset_control_assert(rk_phy->phy_rst);
  	if (err) {
- 		dev_err(&phy->dev, "pll lock timeout!\n");
- 		goto err_pll_lock;
-@@ -214,19 +203,11 @@ static int rockchip_pcie_phy_power_on(struct phy *phy)
- 	phy_wr_cfg(rk_phy, PHY_CFG_CLK_TEST, PHY_CFG_SEPE_RATE);
- 	phy_wr_cfg(rk_phy, PHY_CFG_CLK_SCC, PHY_CFG_PLL_100M);
+ 		dev_err(&phy->dev, "assert phy_rst err %d\n", err);
+-		goto err_restore;
++		rk_phy->pwr_cnt++;
++		regmap_write(rk_phy->reg_base,
++			     rk_phy->phy_data->pcie_laneoff,
++			     HIWORD_UPDATE(!PHY_LANE_IDLE_OFF,
++					   PHY_LANE_IDLE_MASK,
++					   PHY_LANE_IDLE_A_SHIFT + inst->index));
++		mutex_unlock(&rk_phy->pcie_mutex);
++		return err;
+ 	}
  
--	err = -ETIMEDOUT;
--	while (time_before(jiffies, timeout)) {
--		regmap_read(rk_phy->reg_base,
--			    rk_phy->phy_data->pcie_status,
--			    &status);
--		if (!(status & PHY_PLL_OUTPUT)) {
--			dev_dbg(&phy->dev, "pll output enable done!\n");
--			err = 0;
--			break;
--		}
--		msleep(20);
--	}
+-err_out:
+-	mutex_unlock(&rk_phy->pcie_mutex);
+-	return 0;
 -
-+	err = regmap_read_poll_timeout(rk_phy->reg_base,
-+				       rk_phy->phy_data->pcie_status,
-+				       status,
-+				       !(status & PHY_PLL_OUTPUT),
-+				       200, 100000);
- 	if (err) {
- 		dev_err(&phy->dev, "pll output enable timeout!\n");
- 		goto err_pll_lock;
-@@ -236,19 +217,12 @@ static int rockchip_pcie_phy_power_on(struct phy *phy)
- 		     HIWORD_UPDATE(PHY_CFG_PLL_LOCK,
- 				   PHY_CFG_ADDR_MASK,
- 				   PHY_CFG_ADDR_SHIFT));
--	err = -EINVAL;
--	while (time_before(jiffies, timeout)) {
--		regmap_read(rk_phy->reg_base,
--			    rk_phy->phy_data->pcie_status,
--			    &status);
--		if (status & PHY_PLL_LOCKED) {
--			dev_dbg(&phy->dev, "pll relocked!\n");
--			err = 0;
--			break;
--		}
--		msleep(20);
--	}
- 
-+	err = regmap_read_poll_timeout(rk_phy->reg_base,
-+				       rk_phy->phy_data->pcie_status,
-+				       status,
-+				       status & PHY_PLL_LOCKED,
-+				       200, 100000);
- 	if (err) {
- 		dev_err(&phy->dev, "pll relock timeout!\n");
- 		goto err_pll_lock;
+-err_restore:
+-	rk_phy->pwr_cnt++;
+-	regmap_write(rk_phy->reg_base,
+-		     rk_phy->phy_data->pcie_laneoff,
+-		     HIWORD_UPDATE(!PHY_LANE_IDLE_OFF,
+-				   PHY_LANE_IDLE_MASK,
+-				   PHY_LANE_IDLE_A_SHIFT + inst->index));
+ 	mutex_unlock(&rk_phy->pcie_mutex);
+ 	return err;
+ }
 -- 
 2.44.0
 
