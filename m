@@ -4,63 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4C96CCF2576
-	for <linux-rockchip@archiver.kernel.org>; Sun, 13 Oct 2024 18:22:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5801ECF2576
+	for <linux-rockchip@archiver.kernel.org>; Sun, 13 Oct 2024 20:00:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:To:From:Reply-To:Cc:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=wzSaF2JYN/9vLwGWROEzP88dnpQkcGDDPOcxc6tiNNc=; b=ncKUR9D2zBl1n6
-	BvuaS0T6HLEbiNgXtU36KZuR7mkc5rCtw3CcOSbAS2EXiOZJZXnEXfr00pJQr/ZAYn+sS5fhtoJxQ
-	TpxHLOs3jtRMJyO9RrWdHgVbtDpMEe0wNq0A5REriMD1l6hINYTfyxuifm8qfdRMXhU6gzUAfFJ9A
-	3ndFt95NHqS8sQCR8G6I4B4aiROf3T3wyof2nuewIRx861gomY8PCSUfGT+I1cPT/suzb2Xax1Q1T
-	3Z/t2TI3m5D51VYxxYuChzhSrf/EGN+bJ1O0iePm462rCSsdIW8RbDrwddcLVFGHWB/ajJFeaM2kC
-	ZSf18E2f/hlWHUSkZhfg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
+	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=PBLg2B1sfpC9wak5fqslacapK1yAPrQemuFQPbqpHo8=; b=S8dq7WS6LfW8jlpf9TvQg7Zos0
+	J2ENpRL5eSzXdvsDg0nrf4JeXjSrVPEo4eOj/hqwvKUkfCF2OxC3Uw1jY5rpnqpNQ/0rBUOfKZpiq
+	VQsorfG4uSOz5RuCjZJiheEjv/aP/3Roh8aIwxTMR8P5BWPmHXE3QPLamKS0kOCy4f6m0N01uwp9+
+	3cyHkDMENbBEX5ivK2rZnjhDK7p6Z5uP6bbCu4PCk88h6t3VA6rulJHWULeOKawUwEf62ZlNHZAWk
+	0keADCDnT2ygqzkg4XS7mL5x33pg77IHLDvuggNjzPkXvlN9ND6ti3WvImaw8En7YhlIjO9lnKIkt
+	/yMS60TQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t03Eo-000000032Wc-382p;
-	Sun, 13 Oct 2024 18:22:42 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1t04lC-000000039K4-3K9r;
+	Sun, 13 Oct 2024 20:00:14 +0000
+Received: from mail.manjaro.org ([2a01:4f8:c0c:51f3::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t03DQ-000000032Qt-1gqQ;
-	Sun, 13 Oct 2024 18:21:17 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:To:From:Sender:Reply-To:Cc:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
-	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=P95hhQv9EQTGpPqL3cZ9sFDz6v/d/ZsXagWbz/otrCs=; b=xYDjiaJAOFIhyaZwMcxn6Ta/WW
-	RP9ZRqWAiE34BWiUeYDeDT1g2MgRC36HODTaCwRHC5xZO/URi0N4AZnG0c4udP3pgVwdExrGEDLui
-	Yk4+glouMCI6szXes9wpTm5dQAXVUL9r9QScr0AlEJGyfLwXQK2kcRhkBsH2IbDHmdckjdeygtsVT
-	UsVsTcA47t9z1SJp+TKb3/Ic+I+0w6qtXl9VHSJZd7I5crmcwbZ6M9iqjRxvB6Ro79Wxu4TYn2k1Z
-	a417Ls3pl9qLHIBXd/1PaFUWvXBqoGQ91pOqwOTh3wz1+w9OOGjYMrLSE8bSi3cYjRDOZpCejyOvQ
-	jApfeTbQ==;
-Received: from i53875b34.versanet.de ([83.135.91.52] helo=diego.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1t03DA-0000r1-1Q; Sun, 13 Oct 2024 20:21:00 +0200
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Chris Morgan <macromorgan@hotmail.com>,
- Jonas Karlman <jonas@kwiboo.se>, Andy Yan <andyshrk@163.com>,
- Michael Riesch <michael.riesch@wolfvision.net>,
- Cenk Uluisik <cenk.uluisik@googlemail.com>, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org, Cenk Uluisik <cenk.uluisik@googlemail.com>
-Subject: Re: [PATCH] arm64: dts: rockchip: Add board device tree for
- rk3588-orangepi-5b
-Date: Sun, 13 Oct 2024 20:20:58 +0200
-Message-ID: <4956547.31r3eYUQgx@diego>
-In-Reply-To: <20241013155225.26259-1-cenk.uluisik@googlemail.com>
-References: <20241013155225.26259-1-cenk.uluisik@googlemail.com>
+	id 1t04jn-000000039Dx-0xoR;
+	Sun, 13 Oct 2024 19:58:49 +0000
 MIME-Version: 1.0
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
+	t=1728849522;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=NFjzkSGJ68/8aNuPbT1GRdATADanaYwLAEjat1mrxdo=;
+	b=Ou90+BeGk04Rs765b04PfD3xGuKAzayo2Vj5hq1h8cwtfQyjNwL0eSmxHBd7xTN52O0Tiu
+	W90wi9GbpFqcoYHpMpxeiBJ4UMLFp0VdkFUCsaPHKFLhB36shGndDAxaH1E6E/NJ0W/Ap2
+	xHUMOgiUCCU05+4asb+YdakQe24Bw5ct5qrU9M2NT2oKIXwphMDjgzjLowva3wmf3qrnUI
+	SwtMeKJHqlWXsUrFIlDPO33rFQNucVxiC8xD7HWwSwrhDYbRfRbvYUXzyL5Ed9KXmYaG6v
+	FDFq15Cv50F+60uhGHcO8QCn/khYxnrkYs8p0U2I4Rf7qEPpuA/2FAA4Cna2sA==
+Date: Sun, 13 Oct 2024 21:58:41 +0200
+From: Dragan Simic <dsimic@manjaro.org>
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: mturquette@baylibre.com, sboyd@kernel.org, robh@kernel.org,
+ krzk+dt@kernel.org, conor+dt@kernel.org, linux-clk@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH v4 0/5] Binding and driver for gated-fixed-clocks
+In-Reply-To: <20240906082511.2963890-1-heiko@sntech.de>
+References: <20240906082511.2963890-1-heiko@sntech.de>
+Message-ID: <3dd94272e827703c2a2a390fcbd9ff5b@manjaro.org>
+X-Sender: dsimic@manjaro.org
+Authentication-Results: ORIGINATING;
+	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241013_112116_498866_410D5112 
-X-CRM114-Status: GOOD (  20.94  )
+X-CRM114-CacheID: sfid-20241013_125847_901219_0EA9647F 
+X-CRM114-Status: GOOD (  26.87  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,96 +67,106 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi,
+Hello Heiko,
 
-Am Sonntag, 13. Oktober 2024, 17:52:18 CEST schrieb Cenk Uluisik:
-> Add initial support for OPi5b that includes support for USB2, PCIe2, Sata,
-> Sdmmc, SPI Flash, PMIC.
-
-Please describe in a better way what actually makes this board different
-from the original OrangePi 5.
-
-I.e. it does look like the 5b does have an emmc where the 5 does not.
-
-You also need a separate second patch to update
-	Documentation/devicetree/bindings/arm/rockchip.yaml
-
-You need to update the Xunlong Orange Pi 5 entry with an enum.
-Please see for example the orange-pi-3 entry on how that should look.
-
-
-> Signed-off-by: Cenk Uluisik <cenk.uluisik@googlemail.com>
-> ---
->  arch/arm64/boot/dts/rockchip/Makefile         |  1 +
->  .../boot/dts/rockchip/rk3588s-orangepi-5b.dts | 26 +++++++++++++++++++
->
->  2 files changed, 27 insertions(+)
->  create mode 100644 arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5b.dts
+On 2024-09-06 10:25, Heiko Stuebner wrote:
+> Rockchip boards with PCIe3 controllers inside the soc (rk3568, rk3588) 
+> have
+> external oscillators on the board to generate the needed 100MHz 
+> reference
+> clock the PCIe3 controller needs.
 > 
-> diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
-> index 09423070c992..45249ce15175 100644
-> --- a/arch/arm64/boot/dts/rockchip/Makefile
-> +++ b/arch/arm64/boot/dts/rockchip/Makefile
-> @@ -154,3 +154,4 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588s-nanopi-r6c.dtb
->  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588s-rock-5a.dtb
->  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588s-odroid-m2.dtb
->  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588s-orangepi-5.dtb
-> +dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588s-orangepi-5b.dtb
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5b.dts b/arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5b.dts
-> new file mode 100644
-> index 000000000000..107b65a5e7ea
-> --- /dev/null
-> +++ b/arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5b.dts
-> @@ -0,0 +1,26 @@
-> +// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
-> +
-> +/dts-v1/;
-> +
-> +#include "rk3588s-orangepi-5.dts"
+> Often these clock generators need supplies to be enabled to run.
+> 
+> Modelling this clock has taken a number of shapes:
+> - The rk3568 Rock-3a modelled the generator-regulator as "phy-supply" 
+> [0]
+>   &pcie30phy {
+>   	phy-supply = <&vcc3v3_pi6c_03>;
+>   	status = "okay";
+>   };
+>   which is of course not part of the binding
+> 
+> - On the Rock-5-ITX the supply of the clock generator is controlled by
+>   the same gpio as the regulator supplying the the port connected to 
+> the
+>   pcie30x4 controller, so if this controller probes first, both
+>   controllers will just run. But if the pcie30x2 controller probes 
+> first
+>   (which has a different supply), the controller will stall at the 
+> first
+>   dbi read.
+> 
+> There are other types too, where an 25MHz oscillator supplies a PLL
+> chip like the diodes,pi6c557 used on Theobroma Jaguar and Tiger boards.
+> 
+> As we established in v1 [1], these are essentially different types, so
+> this series attempts to solve the first case of "voltage controlled
+> oscillators" as Stephen called them.
+> 
+> With the discussion in v2, gated-fixed-clock was deemed one possible
+> nice naming, so I did go with that.
 
-Please don't include the board dts.
-Take a look for example at the rk3566-orangepi-3b on how to do this.
+Thanks, I find "gated-fixed-clock" a much better choice.
 
-I.e. you want a rk3588s-orangepi-5.dtsi which then gets included
-into both the original-5 as well as your 5b .
+> Stephen also suggested reusing more of clk-gpio to not re-implement the
+> gpio handling wrt. sleeping and non-sleeping gpios.
+> 
+> Though instead of exporting masses of structs and ops, 
+> gated-fixed-clock
+> is quite close to the other gpio-clocks, so I've put it into the 
+> clk-gpio
+> file.
 
+Just checking, what's the current state of this patch series?
+Would another review help with getting it accepted?
 
-> +
-> +/ {
-> +	model = "Xunlong Orange Pi 5B";
-> +	compatible = "rockchip,rk3588s-orangepi-5", "rockchip,rk3588";
-> +};
-> +
-> +&sdhci {
-> +	status = "okay";
-> +};
-> +
-> +&sfc {
-> +	status = "disabled";
-> +};
-> +
-> +&wireless_bluetooth {
-> +	status = "okay";
-> +};
-> +
-> +&wireless_wlan {
-> +	status = "okay";
-> +};
-
-both the wireless_bluetooth as well as the wireless_wlan phandles
-are not part of the orange pi 5 in mainline. So this probably doesn't
-even compile?
-
-
-Heiko
-
-
-
+> changes in v4:
+> - fix example node-name in binding (Rob)
+> - add Rob's and Conor's Reviewed-by
+> - which -> with in patch 2 message (Diederik)
+> - store rate as unsigned long (with a temporary u32 to make
+>   of_property_read_u32 happy) (Stephen)
+> - add static to struct clk_ops (Stephen)
+> - match table sentinel (Stephen)
+> - some formatting (Stephen)
+> 
+> changes in v3:
+> - rename to gated-fixed-clock (Conor)
+> - move into clk-gpio
+> - some tiny cleanups to the existing clk-gpio drivers
+> 
+> changes in v2:
+> - drop the Diodes PLLs for now, to get the first variant right
+> - rename stuff to voltage-oscillator / clk_vco as suggested by Stephen
+> - require vdd-supply in the binding
+> - enable-gpios stays optional, as they often are tied to vdd-supply
+> - drop deprecated elements that were left in from the fixed clock 
+> binding
+> 
+> [0] 
+> https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts#n605
+> [1] 
+> https://lore.kernel.org/linux-clk/b3c450a94bcb4ad0bc5b3c7ee8712cb8.sboyd@kernel.org/
+> 
+> Heiko Stuebner (5):
+>   dt-bindings: clocks: add binding for gated-fixed-clocks
+>   clk: clk-gpio: update documentation for gpio-gate clock
+>   clk: clk-gpio: use dev_err_probe for gpio-get failure
+>   clk: clk-gpio: add driver for gated-fixed-clocks
+>   arm64: dts: rockchip: fix the pcie refclock oscillator on Rock 5 ITX
+> 
+>  .../bindings/clock/gated-fixed-clock.yaml     |  49 +++++
+>  .../boot/dts/rockchip/rk3588-rock-5-itx.dts   |  38 +++-
+>  drivers/clk/clk-gpio.c                        | 206 ++++++++++++++++--
+>  3 files changed, 277 insertions(+), 16 deletions(-)
+>  create mode 100644
+> Documentation/devicetree/bindings/clock/gated-fixed-clock.yaml
 
 _______________________________________________
 Linux-rockchip mailing list
