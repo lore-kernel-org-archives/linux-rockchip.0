@@ -4,76 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8E17CCF259D
-	for <linux-rockchip@archiver.kernel.org>; Mon, 14 Oct 2024 04:40:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AD778CF259D
+	for <linux-rockchip@archiver.kernel.org>; Mon, 14 Oct 2024 04:46:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=qxtix0HYdzPgBaZdN2NMxytBcIPAeqMIBMyeqpC9Ds4=; b=OOGqdGTncs4D5c
-	MhIWVXGMp9FGcJjhubisqQeEYQ9DD+DDF7c9ap2+Ybh/aWg9r10LqRnaZMHHV3tQBLD0NqdrgXZ/t
-	4M6pJJsb9qY9ioBSb8+S3OwULPlr9b49cUVS29WXd06Pr6NLKgiUY64gVRugYjWnWfeGBMvFqKYZR
-	Q64H3MMslAhkcoDs+7SMbOoFVzlPq+lOra2vUNhl0FFjA1OLa3AxXSqL3kdFolp/Rdmyo3icmwMRw
-	96k3M9kjunPpqBi7SBARHQyXsLwXggkWyiZ3gYO0kXZUQWNrTHmt+/CQdBqths4QKxeL0IlD68kWm
-	1rLzr1DRbxTppjHuRbiQ==;
+	List-Owner; bh=Byu91V+3VpNW5JChxLnOc4WnfMu1QgwQF3iacN9/0Do=; b=td4o1874imq1ms
+	leTgQCS184Xx0msH/oybj3fcX55Zg1wE51bnUpuIo434rmnUq4LQTf8r7io4mJEOjKo043q73FdZS
+	yXU15Q9CIqV8eZU8gpA/fxqNn+YClGAXnXb1DvJgAfHtea5bPcPLKWYLgkCyNVk55g0d6M+Sp+vyc
+	gBi4mPSB/RWvFK3bIy07I7yBwEPdA9gIHyY08H03uqHd1LqclVFYsHcPDvjsIHaJGEDsxUW2drkUg
+	H9u656PPyV7VwwObi2f50dD6CPr0ORfJelbtwg/k+N29AxygHR7jnQ0mWBpAjnwpG3elFPQzyNkSQ
+	OCbzkzoj3dwfSjAZiJDg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t0Csp-00000003jUh-170M;
-	Mon, 14 Oct 2024 04:40:39 +0000
-Received: from smtpbgeu1.qq.com ([52.59.177.22])
+	id 1t0CyU-00000003jwA-3PWm;
+	Mon, 14 Oct 2024 04:46:30 +0000
+Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t0CrN-00000003jNb-1ZN3;
-	Mon, 14 Oct 2024 04:39:14 +0000
-X-QQ-mid: bizesmtpip4t1728880692tn6r7d7
-X-QQ-Originating-IP: EQSBChDx8AzRGfPF8zb2/7A9tODnohSmh1T0qLU6P6M=
-Received: from [IPV6:240f:10b:7440:1:5070:3965 ( [localhost])
-	by bizesmtp.qq.com (ESMTP) with 
-	id ; Mon, 14 Oct 2024 12:38:07 +0800 (CST)
-X-QQ-SSF: 0000000000000000000000000000000
-X-QQ-GoodBg: 0
-X-BIZMAIL-ID: 13288931529560564606
-Message-ID: <CE605641E53903DC+0f0ea6b2-9423-4aa2-ac9d-652a9ac5c237@radxa.com>
-Date: Mon, 14 Oct 2024 13:38:06 +0900
+	id 1t0Cx5-00000003jo0-2lKm;
+	Mon, 14 Oct 2024 04:45:05 +0000
+Received: by mail-wr1-x433.google.com with SMTP id ffacd0b85a97d-37d49ffaba6so2412955f8f.0;
+        Sun, 13 Oct 2024 21:45:03 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1728881102; x=1729485902; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=0UKeLghLjeCgQYXLcqszTN85GeABrzJa0W3ZVrL32nU=;
+        b=Nfs9M+I2PFHhtG/MYAaWsiT8azhrt2IoKOdC9LBtUTD8wuy34gebGm20l2NMZgMz1u
+         qjqJox1MOqNkMBY2mw5XdnrS9EBPq1bjD4MKOFbyjIpS24lEy/hhjCgt8XrDMFnu8H3I
+         QQPzkT8fycuh99lT/A6i6HXYzFZFR2qP6POt7FZEtRUibVUS8YlG91zlPqs9vi4A7cK0
+         ldvP3GNmGPMqUD2aqltKmy6XA8/K7QkZpKzSZVmkNlX108rZ7F2EM4WapnCve1f2zosY
+         b7GZynByBbzjoGvq8ER3n+TDnh+bKBYGECC0mMSkDtAcyUuuAtIVx8SRYmNkp1b+DEhb
+         4s5w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1728881102; x=1729485902;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=0UKeLghLjeCgQYXLcqszTN85GeABrzJa0W3ZVrL32nU=;
+        b=U6maqSbG3+kk9/fdz/DHg14bt9rSCnvKdqQytzeGV7MMr8pVy157srgNvkxEF52P2s
+         0ZiOiE29yDQErmuT4EKKZBXkdsYMBSEZjH2bpp6lkVj9mr7aWLTrT4MZfOLdX14jzKrR
+         d7QEp/nBW6t3XteqR04HFTyfvwnnHgySbj09qywd2yuasDtwpV4/Tuw7fbmnhV06NAPq
+         OcoxcW9QQ9n8jiYP488qDIGtbdp/Xn5n0uxjomXgju3KLj2tx4Fck/wXXQg1QaiPiFVE
+         Tm1ldTVI+k+21WKzaNY3OK41e8JyhWm7hS2K6pQ1Qcvm4Jb4a//7qGhdCteCj74U/tMe
+         LXyQ==
+X-Forwarded-Encrypted: i=1; AJvYcCWUkafIb9revIh+4Rm3hPa7BCMbcEwsjuuQcjvnsg6wn6En68eNVoTv1AhskZtOs09zzDy7K1SL5U2veAVn89A=@lists.infradead.org, AJvYcCXgGtsCjewYQJgIkPoF4cDZL4cyetrRiDhH+rFKeyRpxHuLiFPShy9ayVsJir2Chzj9OQfZoh+sCgJRcHLdTXlQ@lists.infradead.org
+X-Gm-Message-State: AOJu0Ywcg+41Pm0Xhg7y6nMKyjply/FETdnowZDx17rvlwwAxy5xMKYR
+	lQleWxz1sHOQvkF2H5TI/G2KqaA/EWDMbmhhGdgwpiotpgXj3tFZnyJx3gReZT3uFCxrm1OUR/P
+	yHhhXf2O8suNzCtu/iVFU0Dt2+H0=
+X-Google-Smtp-Source: AGHT+IGAK9ALbpvZxrD4MsOrzSNBBfXAkPN05nxOFAoxUQMJYEijL97sQKwLLbqOqimNKPU29nqDYewjzNuG70qqOc8=
+X-Received: by 2002:adf:fa8d:0:b0:37d:36f2:e2cb with SMTP id
+ ffacd0b85a97d-37d54debf9fmr7723606f8f.0.1728881101342; Sun, 13 Oct 2024
+ 21:45:01 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 3/3] arm64: dts: rockchip: Add new SoC dtsi for the
- RK3566T variant
-To: Dragan Simic <dsimic@manjaro.org>, linux-rockchip@lists.infradead.org
-Cc: heiko@sntech.de, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, robh@kernel.org,
- krzk+dt@kernel.org, conor+dt@kernel.org, TL Lim <tllim@pine64.org>,
- Marek Kraus <gamiee@pine64.org>, Tom Cubie <tom@radxa.com>,
- Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
- Jonas Karlman <jonas@kwiboo.se>
-References: <cover.1728752527.git.dsimic@manjaro.org>
- <95fc64aaf6d3ac7124926bcb0c664406b4e5fe3d.1728752527.git.dsimic@manjaro.org>
-Content-Language: en-US
-From: FUKAUMI Naoki <naoki@radxa.com>
-In-Reply-To: <95fc64aaf6d3ac7124926bcb0c664406b4e5fe3d.1728752527.git.dsimic@manjaro.org>
-X-QQ-SENDSIZE: 520
-Feedback-ID: bizesmtpip:radxa.com:qybglogicsvrgz:qybglogicsvrgz8a-1
-X-QQ-XMAILINFO: MIAHdi1iQo+zGLmod/lFAZ+sJWqjxNFjrzNKtQxpQ7Qh7sH0GnY9GFFW
-	clm2hQyONOPq5VUiS4aFX1PzeBy98EfISfbw8qB6RSgZiZ+ug+YF9hPC0mDgki5W6HxUnjc
-	SFpfj+wMvmi/6+2TY4gGK2G4KUHHc00ZuXF4h9C3WVgPkucW/2jt6qpOAJMteJqMRTONjUf
-	QNfmTmKYsD3Oc+H7qagEOmnqHxmpwvMPud+GA/iwZgUtvnFprNfXzQbF8ZTCWLwnY54KNEU
-	NCJKzhabdruv5SaZJ8ug1psplR0c3+7yyFb177vHjyDzEltrTfahmXuyh+C3R0sppdlINyE
-	E6Y8bfBZx4SJ37SDg/H1toGRjjVzS0SeX3BRNKfeCpaeSAWYOSj5EeaNXLDCG5zbaCWOtvu
-	wesH1zUZrhoOgQR6+nw7wTuM1+3fWskV4gLvK0uZjYX8erFPgHH5+PW17vM41QLerH4i1QS
-	oPwArPjO3tUNdVrIjl2hFqnP2VyzXcF/vKJTAU3puFMB9f2coNFQiDIZ2q3RqblGx9ZgLzM
-	RH78mTK8MH9rhdTvxS5eZe2ZW/M3jeFPjK/PX4lrWC+nzAXK0b9X4xIZQR/NAOGVPAiSMWM
-	MoCEMP4YgbMbFqnPvbTNn7RxpuTcNYPR9CynJNYacjf0xuLJkVwoZn/i8GFqU6fK/vEJw6i
-	P0O/7ZFHpcXCOTXOB6OnrvcbzAs4IoEhrqmm2nqZrJaMZaLd24oWkZyvV4iEHcQ4vBM2Xzy
-	CBtt26DnfH7mbCY7apBNy6Nmfko2Ha9rRB2yqTDqmsg4mkGn+RvimIbkp/UauBu95JC/lb2
-	+zF4s9iqODbezhTYdBih4aeOXErrvYmR1mV0nkC+aRQ0bUO7Up6NPfoPf+yVWjWE/0Lgf5N
-	5o03LfThyuuWbUhOzRxDJfmNLKFbbgRbMIHlHLIiUwPpve4MGG7DDL5dgqutgmwurfKrCg/
-	K1tmuC976qqrdvI0fWkm1u56GQWUiVE1+RQTG675aIc8fSQ==
-X-QQ-XMRINFO: NyFYKkN4Ny6FSmKK/uo/jdU=
-X-QQ-RECHKSPAM: 0
+References: <20241013213305.310844-1-cenk.uluisik@googlemail.com>
+In-Reply-To: <20241013213305.310844-1-cenk.uluisik@googlemail.com>
+From: Jimmy Hon <honyuenkwun@gmail.com>
+Date: Sun, 13 Oct 2024 23:44:50 -0500
+Message-ID: <CALWfF7L7mHV-MwsQLMmA4kx_trWCO4mn36ooyjc5fVq_DL4nzw@mail.gmail.com>
+Subject: Re: [PATCH V3 1/2] arm64: dts: rockchip: Add rk3588-orangepi-5b
+ device tree and refactor
+To: Cenk Uluisik <cenk.uluisik@googlemail.com>
+Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+	Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+	Chris Morgan <macromorgan@hotmail.com>, Jonas Karlman <jonas@kwiboo.se>, 
+	Michael Riesch <michael.riesch@wolfvision.net>, Andy Yan <andyshrk@163.com>, 
+	Dragan Simic <dsimic@manjaro.org>, Jing Luo <jing@jing.rocks>, devicetree@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+	linux-kernel@vger.kernel.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241013_213909_948676_F0028657 
-X-CRM114-Status: GOOD (  25.10  )
+X-CRM114-CacheID: sfid-20241013_214503_733292_135DC8AF 
+X-CRM114-Status: GOOD (  27.98  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,210 +90,114 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi,
-
-On 10/13/24 02:04, Dragan Simic wrote:
-> Add new SoC dtsi file for the RK3566T variant of the Rockchip RK3566 SoC.
-> The difference between the RK3566T variant and the "full-fat" RK3566 variant
-> is in fewer supported CPU and GPU OPPs on the RK3566T, and in the absence of
-> a functional NPU, which we currently don't have to worry about.
-> 
-> Examples of the boards based on the RK3566T include the Pine64 Quartz64 Zero
-> SBC, [2] the Radxa ROCK 3C and the Radxa ZERO 3E/3W SBCs.  Unfortunately,
-> Radxa doesn't mention the use of RK3566T officially, but its official SBC
-> specifications do state that the maximum frequency for the Cortex-A55 cores
-> on those SBCs is lower than the "full-fat" RK3566's 1.8 GHz, which makes
-> spotting the presence of the RK3566T SoC variant rather easy. [3][4][5]  An
-> additional, helpful cue is that Radxa handles the CPU and GPU OPPs for the
-> RK3566T variant separately in its downstream kernel. [6]
-> 
-> The CPU and GPU OPPs supported on the RK3566T SoC variant are taken from the
-> vendor kernel source, [1] which uses the values of the "opp-supported-hw" OPP
-> properties to determine which ones are supported on a particular SoC variant.
-> The actual values of the "opp-supported-hw" properties make it rather easy
-> to see what OPPs are supported on the RK3566T SoC variant, but that, rather
-> unfortunately, clashes with the maximum frequencies advertised officially
-> for the Cortex-A55 CPU cores on the above-mentioned SBCs. [2][3][4][5]  The
-> vendor kernel source indicates that the maximum frequency for the CPU cores
-> is 1.4 GHz, while the SBC specifications state that to be 1.6 GHz.  Unless
-> that discrepancy is resolved somehow, let's take the safe approach and use
-> the lower maximum frequency for the CPU cores.
-> 
-> Update the dts files of the currently supported RK3566T-based boards to use
-> the new SoC dtsi for the RK3566T variant.  This actually takes the CPU cores
-> and the GPUs found on these boards out of their earlier overclocks, but it
-> also means that the officially advertised specifications [2][3][4][5] of the
-> highest supported frequencies for the Cortex-A55 CPU cores on these boards
-> may actually be wrong, as already explained above.
-> 
-> The correctness of the introduced changes was validated by decompiling and
-> comparing all affected board dtb files before and after these changes.
-> 
-> [1] https://raw.githubusercontent.com/rockchip-linux/kernel/f8b9431ee38ed561650be7092ab93f564598daa9/arch/arm64/boot/dts/rockchip/rk3568.dtsi
-> [2] https://wiki.pine64.org/wiki/Quartz64
-> [3] https://dl.radxa.com/rock3/docs/hw/3c/radxa_rock3c_product_brief.pdf
-> [4] https://dl.radxa.com/zero3/docs/hw/3e/radxa_zero_3e_product_brief.pdf
-> [5] https://dl.radxa.com/zero3/docs/hw/3w/radxa_zero_3w_product_brief.pdf
-> [6] https://github.com/radxa/kernel/commit/2dfd51da472e7ebb5ef0d3db78f902454af826b8
-> 
-> Cc: TL Lim <tllim@pine64.org>
-> Cc: Marek Kraus <gamiee@pine64.org>
-> Cc: Tom Cubie <tom@radxa.com>
-> Cc: FUKAUMI Naoki <naoki@radxa.com>
-> Helped-by: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>
-> Helped-by: Jonas Karlman <jonas@kwiboo.se>
-> Signed-off-by: Dragan Simic <dsimic@manjaro.org>
-> ---
->   .../dts/rockchip/rk3566-radxa-zero-3.dtsi     |  2 +-
->   .../boot/dts/rockchip/rk3566-rock-3c.dts      |  2 +-
->   arch/arm64/boot/dts/rockchip/rk3566t.dtsi     | 90 +++++++++++++++++++
->   3 files changed, 92 insertions(+), 2 deletions(-)
->   create mode 100644 arch/arm64/boot/dts/rockchip/rk3566t.dtsi
-> 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3566-radxa-zero-3.dtsi b/arch/arm64/boot/dts/rockchip/rk3566-radxa-zero-3.dtsi
-> index de390d92c35e..1ee5d96a46a1 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3566-radxa-zero-3.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk3566-radxa-zero-3.dtsi
-> @@ -3,7 +3,7 @@
->   #include <dt-bindings/gpio/gpio.h>
->   #include <dt-bindings/leds/common.h>
->   #include <dt-bindings/soc/rockchip,vop2.h>
-> -#include "rk3566.dtsi"
-> +#include "rk3566t.dtsi"
-
-could you drop this change for now?
-
-We(Radxa) think we use RK3566.
-
-and vendor kernel[6] refers efuse value to determine it's -T or not.
-can you do similar way?
-
->   / {
->   	chosen {
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3566-rock-3c.dts b/arch/arm64/boot/dts/rockchip/rk3566-rock-3c.dts
-> index f2cc086e5001..9a8f4f774dbc 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3566-rock-3c.dts
-> +++ b/arch/arm64/boot/dts/rockchip/rk3566-rock-3c.dts
-> @@ -5,7 +5,7 @@
->   #include <dt-bindings/leds/common.h>
->   #include <dt-bindings/pinctrl/rockchip.h>
->   #include <dt-bindings/soc/rockchip,vop2.h>
-> -#include "rk3566.dtsi"
-> +#include "rk3566t.dtsi"
-
-same here.
-
-Best regards,
-
---
-FUKAUMI Naoki
-Radxa Computer (Shenzhen) Co., Ltd.
-
->   / {
->   	model = "Radxa ROCK 3C";
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3566t.dtsi b/arch/arm64/boot/dts/rockchip/rk3566t.dtsi
-> new file mode 100644
-> index 000000000000..cd89bd3b125b
-> --- /dev/null
-> +++ b/arch/arm64/boot/dts/rockchip/rk3566t.dtsi
-> @@ -0,0 +1,90 @@
-> +// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
-> +
-> +#include "rk3566-base.dtsi"
-> +
-> +/ {
-> +	cpu0_opp_table: opp-table-0 {
-> +		compatible = "operating-points-v2";
-> +		opp-shared;
-> +
-> +		opp-408000000 {
-> +			opp-hz = /bits/ 64 <408000000>;
-> +			opp-microvolt = <850000 850000 1150000>;
-> +			clock-latency-ns = <40000>;
-> +		};
-> +
-> +		opp-600000000 {
-> +			opp-hz = /bits/ 64 <600000000>;
-> +			opp-microvolt = <850000 850000 1150000>;
-> +			clock-latency-ns = <40000>;
-> +		};
-> +
-> +		opp-816000000 {
-> +			opp-hz = /bits/ 64 <816000000>;
-> +			opp-microvolt = <850000 850000 1150000>;
-> +			clock-latency-ns = <40000>;
-> +			opp-suspend;
-> +		};
-> +
-> +		opp-1104000000 {
-> +			opp-hz = /bits/ 64 <1104000000>;
-> +			opp-microvolt = <900000 900000 1150000>;
-> +			clock-latency-ns = <40000>;
-> +		};
-> +
-> +		opp-1416000000 {
-> +			opp-hz = /bits/ 64 <1416000000>;
-> +			opp-microvolt = <1025000 1025000 1150000>;
-> +			clock-latency-ns = <40000>;
-> +		};
-> +	};
-> +
-> +	gpu_opp_table: opp-table-1 {
-> +		compatible = "operating-points-v2";
-> +
-> +		opp-200000000 {
-> +			opp-hz = /bits/ 64 <200000000>;
-> +			opp-microvolt = <850000 850000 1000000>;
-> +		};
-> +
-> +		opp-300000000 {
-> +			opp-hz = /bits/ 64 <300000000>;
-> +			opp-microvolt = <850000 850000 1000000>;
-> +		};
-> +
-> +		opp-400000000 {
-> +			opp-hz = /bits/ 64 <400000000>;
-> +			opp-microvolt = <850000 850000 1000000>;
-> +		};
-> +
-> +		opp-600000000 {
-> +			opp-hz = /bits/ 64 <600000000>;
-> +			opp-microvolt = <900000 900000 1000000>;
-> +		};
-> +
-> +		opp-700000000 {
-> +			opp-hz = /bits/ 64 <700000000>;
-> +			opp-microvolt = <950000 950000 1000000>;
-> +		};
-> +	};
-> +};
-> +
-> +&cpu0 {
-> +	operating-points-v2 = <&cpu0_opp_table>;
-> +};
-> +
-> +&cpu1 {
-> +	operating-points-v2 = <&cpu0_opp_table>;
-> +};
-> +
-> +&cpu2 {
-> +	operating-points-v2 = <&cpu0_opp_table>;
-> +};
-> +
-> +&cpu3 {
-> +	operating-points-v2 = <&cpu0_opp_table>;
-> +};
-> +
-> +&gpu {
-> +	operating-points-v2 = <&gpu_opp_table>;
-> +};
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gU3VuLCBPY3QgMTMsIDIwMjQgYXQgNDozM+KAr1BNIENlbmsgVWx1aXNpawo8Y2Vuay51bHVp
+c2lrQGdvb2dsZW1haWwuY29tPiB3cm90ZToKPgo+IEltcGxlbWVudHMgYSBzbGlnaHRseSBtb2Rp
+ZmllZCByazM1ODhzLW9yYW5nZXBpLTViLmR0cyBmcm9tIHRoZSB2ZW5kb3IuCj4gVW5mb3J0dW5h
+dGVseSB0aGUgJndpcmVsZXNzX2JsdWV0b290aCBhbmQgJndpcmVsZXNzX3dsYW4gb3ZlcmxheXMg
+ZG9uJ3Qgc2VlbQo+IHRvIGNvbXBpbGUsIHNvIEkgcmVtb3ZlZCB0aGVtIGZvciBub3c6Cj4KPiBF
+cnJvcjogYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazM1ODhzLW9yYW5nZXBpLTViLmR0
+czoyMC4xLTIwIExhYmVsIG9yIHBhdGggd2lyZWxlc3NfYmx1ZXRvb3RoIG5vdCBmb3VuZAo+IEVy
+cm9yOiBhcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzU4OHMtb3JhbmdlcGktNWIuZHRz
+OjI0LjEtMTUgTGFiZWwgb3IgcGF0aCB3aXJlbGVzc193bGFuIG5vdCBmb3VuZAo+Cj4gQmlnZ2Vy
+IHBhcnRzIG9mIHRoZSByazM1ODhzLW9yYW5nZXBpLTUuZHRzIGZpbGUgd2VyZSBtb3ZlZCBpbnRv
+IGEgbmV3Cj4gcmszNTg4cy1vcmFuZ2VwaS01LmR0c2kgZmlsZSwgc28gdGhhdCBib3RoIGRldmlj
+ZSB0cmVlcyBmcm9tIHRoZSBvcmFuZ2VwaS01IGFuZCA1YiBpbmNsdWRlIGZyb20gaXQgYW5kIGF2
+b2lkIGluY2x1ZGluZyBmcm9tIHRoZSAuZHRzLgo+Cj4gSG93IGRvZXMgdGhpcyBib2FyZCBkaWZm
+ZXIgZnJvbSB0aGUgb3JpZ2luYWwgT3JhbmdlIFBpIDU/Cj4gICAtIGJ1aWx0aW4gZU1NQyBzdG9y
+YWdlCj4gICAtIG5vIFNQSSBOT1IgZmxhc2ggKHUtYm9vdCwgcHJlYm9vdCBldGMuIGluaXRpYXRl
+cyBmcm9tIHdpdGhpbiB0aGUgZU1NQwo+ICAgICBzdG9yYWdlKQo+ICAgLSBhcDYyNzVwIFdpZmkg
+bW9kdWxlIChsaWtlIHRoZSBPcmFuZ2UgUGkgNSBQbHVzKQo+ICAgLSBidWlsdGluIEJsdWVUb290
+aCBtb2R1bGUKPgo+IEJlc2lkZSB0aGF0IGV2ZXJ5dGhpbmcgaXMgZXhhY3RseSB0aGUgc2FtZSBh
+cyBmYXIgYXMgSSBrbm93LgoKQW5vdGhlciBkaWZmZXJlbmNlIGlzIHRoZSBPcmFuZ2UgUGkgNSBo
+YXMgYSBNLjIgTlZNZSBNLWtleSBQQ0kgMi4weDEKc2xvdCAoaG9va2VkIHRvIGNvbWJwaHkwX3Bz
+KSB3aGVyZWFzIHRoZSBPcmFuZ2UgUGkgNWIgdXNlcyBjb21icGh5MF9wcwpmb3IgdGhlIFdpRmku
+CkkgbWVudGlvbiB0aGlzIGJlY2F1c2UgdGhlIHZlbmRvciBrZXJuZWwgZGVmaW5lcyBlYWNoIGJv
+YXJkcyBwY2llMiBkaWZmZXJlbnRseQpodHRwczovL2dpdGh1Yi5jb20vb3JhbmdlcGkteHVubG9u
+Zy9saW51eC1vcmFuZ2VwaS9ibG9iL29yYW5nZS1waS02LjEtcmszNXh4L2FyY2gvYXJtNjQvYm9v
+dC9kdHMvcm9ja2NoaXAvcmszNTg4cy1vcmFuZ2VwaS01LmR0cyNMNDQxCmh0dHBzOi8vZ2l0aHVi
+LmNvbS9vcmFuZ2VwaS14dW5sb25nL2xpbnV4LW9yYW5nZXBpL2Jsb2Ivb3JhbmdlLXBpLTYuMS1y
+azM1eHgvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazM1ODhzLW9yYW5nZXBpLTViLmR0
+cyNMMzczCgpUaGUgT3JhbmdlIFBpIDUgd2l0aCB0aGUgTS4yIHNvY2tldCBoYXMgYSByZWd1bGF0
+b3IgZGVmaW5lZCBob29rZWQgdG8KIkdQSU8wX0M1IiAoaS5lLiBQQ0lFX1BXUkVOX0gpIHdoZXJl
+YXMgdGhlIE9yYW5nZSBQaSA1QiBoYXMgR1BJTzBfQzUKaG9va2VkIHRvIEJUX1dBS0VfSE9TVC4K
+Cj4gLS0tIGEvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazM1ODhzLW9yYW5nZXBpLTUu
+ZHRzCj4gKysrIGIvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazM1ODhzLW9yYW5nZXBp
+LTUuZHRzCj4gQEAgLTEsNzY2ICsxLDEwIEBACj4gLS8vIFNQRFgtTGljZW5zZS1JZGVudGlmaWVy
+OiAoR1BMLTIuMCsgT1IgTUlUKQo+IC0KCj4gLSAgICAgICB2Y2MzdjNfcGNpZTIwOiB2Y2MzdjMt
+cGNpZTIwLXJlZ3VsYXRvciB7Cj4gLSAgICAgICAgICAgICAgIGNvbXBhdGlibGUgPSAicmVndWxh
+dG9yLWZpeGVkIjsKPiAtICAgICAgICAgICAgICAgZW5hYmxlLWFjdGl2ZS1oaWdoOwo+IC0gICAg
+ICAgICAgICAgICBncGlvcyA9IDwmZ3BpbzAgUktfUEM1IEdQSU9fQUNUSVZFX0hJR0g+Owo+IC0g
+ICAgICAgICAgICAgICByZWd1bGF0b3ItbmFtZSA9ICJ2Y2MzdjNfcGNpZTIwIjsKPiAtICAgICAg
+ICAgICAgICAgcmVndWxhdG9yLWJvb3Qtb247Cj4gLSAgICAgICAgICAgICAgIHJlZ3VsYXRvci1t
+aW4tbWljcm92b2x0ID0gPDE4MDAwMDA+Owo+IC0gICAgICAgICAgICAgICByZWd1bGF0b3ItbWF4
+LW1pY3Jvdm9sdCA9IDwxODAwMDAwPjsKPiAtICAgICAgICAgICAgICAgc3RhcnR1cC1kZWxheS11
+cyA9IDw1MDAwMD47Cj4gLSAgICAgICAgICAgICAgIHZpbi1zdXBwbHkgPSA8JnZjYzV2MF9zeXM+
+Owo+IC0gICAgICAgfTsKQXMgbWVudGlvbmVkIGF0IHRoZSB0b3AsIHlvdSBtYXkgd2FudCB0byBv
+bmx5IGRlZmluZSB0aGlzIGluIHRoZQpPcmFuZ2UgUGkgNSBib2FyZCwgYW5kIGxlYXZlIGl0IG91
+dCBvZiB0aGUgT3JhbmdlIFBpIDVCIGJvYXJkLgoKPiAtJnBjaWUyeDFsMiB7Cj4gLSAgICAgICBy
+ZXNldC1ncGlvcyA9IDwmZ3BpbzMgUktfUEQxIEdQSU9fQUNUSVZFX0hJR0g+Owo+IC0gICAgICAg
+dnBjaWUzdjMtc3VwcGx5ID0gPCZ2Y2MzdjNfcGNpZTIwPjsKPiAtICAgICAgIHN0YXR1cyA9ICJv
+a2F5IjsKPiAtfTsKVGhlbiB0aGlzIGNhbiBiZSBkZWZpbmVkIGRpZmZlcmVudGx5IGJldHdlZW4g
+dGhlIE9yYW5nZSBQaSA1IHZzIE9yYW5nZSBQaSA1Yi4KCj4gZGlmZiAtLWdpdCBhL2FyY2gvYXJt
+NjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszNTg4cy1vcmFuZ2VwaS01LmR0cyBiL2FyY2gvYXJtNjQv
+Ym9vdC9kdHMvcm9ja2NoaXAvcmszNTg4cy1vcmFuZ2VwaS01LmR0c2kKPiBzaW1pbGFyaXR5IGlu
+ZGV4IDk5JQo+IGNvcHkgZnJvbSBhcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzU4OHMt
+b3JhbmdlcGktNS5kdHMKPiBjb3B5IHRvIGFyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmsz
+NTg4cy1vcmFuZ2VwaS01LmR0c2kKPiBpbmRleCBmZWVhNmIyMGE2YmYuLjczOWM0ZDlmNThlMCAx
+MDA2NDQKPiAtLS0gYS9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzU4OHMtb3Jhbmdl
+cGktNS5kdHMKPiArKysgYi9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzU4OHMtb3Jh
+bmdlcGktNS5kdHNpCj4gQEAgLTEwLDkgKzEwLDYgQEAKPiAgI2luY2x1ZGUgInJrMzU4OHMuZHRz
+aSIKPgo+ICAvIHsKPiAtICAgICAgIG1vZGVsID0gIlh1bmxvbmcgT3JhbmdlIFBpIDUiOwo+IC0g
+ICAgICAgY29tcGF0aWJsZSA9ICJ4dW5sb25nLG9yYW5nZXBpLTUiLCAicm9ja2NoaXAscmszNTg4
+cyI7Cj4gLQo+ICAgICAgICAgYWxpYXNlcyB7Cj4gICAgICAgICAgICAgICAgIGV0aGVybmV0MCA9
+ICZnbWFjMTsKPiAgICAgICAgICAgICAgICAgbW1jMCA9ICZzZG1tYzsKU2luY2UgdGhlIHNkaGNp
+IGlzIGVuYWJsZWQgZm9yIHRoZSBPcmFuZ2UgUGkgNWIsIGl0J2QgYmUgbmljZSB0byBhZGQKYW4g
+YWxpYXMgZm9yIGl0LgoKSGVpa28sIGNhbiB3ZSBjaGFuZ2UgdGhlIHNkbW1jIGFsaWFzIHRvIGJl
+IG1tYzEsIGFuZCBsZXQgdGhlIHNkaGNpIGJlCm1tYzA/IFRoYXQgd2F5IGl0J3MgY29uc2lzdGVu
+dCB3aXRoIGFsbCB0aGUgb3RoZXIgcmszNTg4IERUUz8gQSBjaGFuZ2UKbGlrZSB0aGlzIGNvdWxk
+IGJyZWFrIGV4aXN0aW5nIHVzZXJzIGlmIHRoZXkgY29kZWQgdXNpbmcgL2Rldi9tbWMwCmRldmlj
+ZSBmaWxlLgoKU2VlbXMgbGlrZSBpdCdzIG9ubHkgdGhlIE5hbm9QaSBhbmQgT3JhbmdlIFBpIDUg
+cmszNTg4IHRoYXQgdXNlIGEKZGlmZmVyZW50IGNvbnZlbnRpb24uIFRoZSBPcmFuZ2UgUGkgNSBQ
+bHVzIGlzIGNvbnNpc3RlbnQgd2l0aCB0aGUKb3RoZXIgcmszNTg4IGRldmljZSB0cmVlcy4KaHR0
+cHM6Ly9naXQua2VybmVsLm9yZy9wdWIvc2NtL2xpbnV4L2tlcm5lbC9naXQvdG9ydmFsZHMvbGlu
+dXguZ2l0L3RyZWUvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazM1ODgtb3JhbmdlcGkt
+NS1wbHVzLmR0cz9oPXY2LjExI24yMAoKVGhpcyBpcyB0aGUgbmV3IGRlZmF1bHQgdGhhdCByb2Nr
+Y2hpcCB3YW50cyB0byB1c2UuCmh0dHBzOi8vZ2l0aHViLmNvbS9vcmFuZ2VwaS14dW5sb25nL2xp
+bnV4LW9yYW5nZXBpL2NvbW1pdC9iY2U5MmQxNmIyMzBiOGU5M2MyODMxZmI3NzY4ODM5ZmQ3YmJh
+YjA0CgpPcmFuZ2UgUGkgZmxpcHBlZCBpdCBpbiB0aGVpciA1LjEwIGtlcm5lbC4KaHR0cHM6Ly9n
+aXRodWIuY29tL29yYW5nZXBpLXh1bmxvbmcvbGludXgtb3JhbmdlcGkvY29tbWl0LzdlNmMzMTYz
+YWE3ZTU4YjE5NzMwYWEyYWEyNTlmMWJiOTU3Y2JjYTAjZGlmZi0wYzdkZGQyZjIyMDkxMDA5Zjhl
+N2E0OTcwYWEyOTNiZmFlNDI1ZjI1ZDBmZTJjMTk0MThiODg2ZWM5ZWFiM2ZhCgo+IGRpZmYgLS1n
+aXQgYS9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzU4OHMtb3JhbmdlcGktNWIuZHRz
+IGIvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazM1ODhzLW9yYW5nZXBpLTViLmR0cwo+
+IG5ldyBmaWxlIG1vZGUgMTAwNjQ0Cj4gaW5kZXggMDAwMDAwMDAwMDAwLi4wNDkyMjdhZjAyNTIK
+PiAtLS0gL2Rldi9udWxsCj4gKysrIGIvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazM1
+ODhzLW9yYW5nZXBpLTViLmR0cwo+IEBAIC0wLDAgKzEsMTggQEAKPiArLy8gU1BEWC1MaWNlbnNl
+LUlkZW50aWZpZXI6IChHUEwtMi4wKyBPUiBNSVQpCj4gKwo+ICsvZHRzLXYxLzsKPiArCj4gKyNp
+bmNsdWRlICJyazM1ODhzLW9yYW5nZXBpLTUuZHRzaSIKPiArCj4gKy8gewo+ICsgICAgICAgbW9k
+ZWwgPSAiWHVubG9uZyBPcmFuZ2UgUGkgNUIiOwo+ICsgICAgICAgY29tcGF0aWJsZSA9ICJyb2Nr
+Y2hpcCxyazM1ODhzLW9yYW5nZXBpLTViIiwgInJvY2tjaGlwLHJrMzU4OCI7ClRoZSBzZWNvbmQg
+cGFydCBvZiB0aGUgY29tcGF0aWJsZSBzaG91bGQgYmUgInJvY2tjaGlwLHJrMzU4OHMiIHRvCm1h
+dGNoIHRoZSBiaW5kaW5nLgo+ICt9Owo+ICsKPiArJnNkaGNpIHsKPiArICAgICAgIHN0YXR1cyA9
+ICJva2F5IjsKPiArfTsKVGhlIG1haW5saW5lIGR0c2kgZG9lcyBub3QgaGF2ZSB0aGUgc2RoY2kg
+bm9kZSBlbGFib3JhdGVkIG9uIGZvciB0aGUKT3JhbmdlIFBpIDUgbGlrZSB0aGUgdmVuZG9yIGtl
+cm5lbCBkb2VzLiBEbyB5b3Ugd2FudCB0byBhZGQgaXQgdG8gdGhlCmNvbW1vbiBkdHNpPwpodHRw
+czovL2dpdGh1Yi5jb20vb3JhbmdlcGkteHVubG9uZy9saW51eC1vcmFuZ2VwaS9ibG9iL29yYW5n
+ZS1waS02LjEtcmszNXh4L2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszNTg4cy1vcmFu
+Z2VwaS5kdHNpI0w0NjEtTDQ3MApUaGUgT3JhbmdlIFBpIDUgUGx1cyBoYXMgYSBzaW1pbGFyIHNk
+aGNpIG5vZGUgZGVmaW5pdGlvbiBpbiBtYWlubGluZSBhdApodHRwczovL2dpdC5rZXJuZWwub3Jn
+L3B1Yi9zY20vbGludXgva2VybmVsL2dpdC90b3J2YWxkcy9saW51eC5naXQvdHJlZS9hcmNoL2Fy
+bTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzU4OC1vcmFuZ2VwaS01LXBsdXMuZHRzP2g9djYuMTEj
+bjQzMwo+ICsKPiArJnNmYyB7Cj4gKyAgICAgICBzdGF0dXMgPSAiZGlzYWJsZWQiOwo+ICt9OwpT
+aW5jZSB0aGUgc2ZjIGlzIGEgZGlmZmVyZW5jZSBiZXR3ZWVuIGJvYXJkIHZhcmlhbnRzLCB3b3Vs
+ZCBpdCBiZSBhCmJldHRlciBwcmFjdGljZSB0byBtYXJrIHRoZSBub2RlIGRpc2FibGVkIGluIHRo
+ZSBjb21tb24gZHRzaSwgYW5kIG1hcmsKaXQgZW5hYmxlZCBvbmx5IGluIHRoZSA1LmR0cz8KCj4g
+XCBObyBuZXdsaW5lIGF0IGVuZCBvZiBmaWxlCj4gLS0KPiAyLjQ2LjAKPgoKX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGlu
+ZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmlu
+ZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
