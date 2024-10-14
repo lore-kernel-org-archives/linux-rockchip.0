@@ -4,88 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BFD73D16275
-	for <linux-rockchip@archiver.kernel.org>; Mon, 14 Oct 2024 14:18:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 15ACFD1627E
+	for <linux-rockchip@archiver.kernel.org>; Mon, 14 Oct 2024 14:51:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=nNNIkwZWKC7phLwVw4BzJlmTyvNTRhMaaAat3cDHbEw=; b=qTDMCH7yeWEnGl
-	8/G5n4JaPFoRNip2zBdmENQVstHLu3kAL2NcxkH/ypQmGfCqvEPmVHr23FLDm7rlOW39UOoESBMFi
-	aPyJhJoi6G4XZq1raDBYXU51ny+86QVUKWMTvI8iTjPkNRb72ox6vKkwcX/bHJC/de5e2dlBcSbTW
-	EHHMoS8s+Zal/nJuyj7oG1xXJVUB8ZdtIhYOoM9IedA0lCisEW5aMJPE5T3LLmA8573RuG47fYJhC
-	6Tf2M709HfA6OkIkew1K9x1Rwdfj86JH8NpKpiQ/KysVIOT5GpR+hercXogn7y45N/914tKnpbUfr
-	s6iRJ85MCqe5ZIds4bVg==;
+	List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:References:
+	In-Reply-To:Cc:To:From:MIME-Version:Date:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=JgQnjXrBIEYRc0++UwUXv2Uhx8SV4nIa9u1qV6SUHmM=; b=jsPzvCoWB+WAca1WORvRrrx+iH
+	uioqXrMDBLA0M8Y9yHDmqKpJx4+00y+lDD9pNVyidYq8/5mTKfv/KVIv732sAA4PZTjciJx6tBL26
+	SXzuyn0DhYIJgke2w8qEtmslE9wCDhCsLCGwVHXCC7UF5X8kOVOkP3LMhsLSphQmVsg51YkkOb3I4
+	tXGgh5rwcCYsXuvLkH+3I3uOkDqTRHe/7lBcDsLuYCu0Ib+plabkSA4f9aZljGKF04FyKfdkBlIx3
+	7VSOwn9OdEjwNt2XReyOYfj2q2poFTIhTFGS/idFuRFURf1F4j4H7mtmmn3Y8dI+TLC41UIc9HAhf
+	pklXQMRw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t0LuG-00000005Rhe-44ei;
-	Mon, 14 Oct 2024 14:18:44 +0000
-Received: from mail-pg1-x536.google.com ([2607:f8b0:4864:20::536])
+	id 1t0MPQ-00000005Ya0-0duo;
+	Mon, 14 Oct 2024 14:50:56 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t0LV7-00000005MfV-1xPW;
-	Mon, 14 Oct 2024 13:52:46 +0000
-Received: by mail-pg1-x536.google.com with SMTP id 41be03b00d2f7-7e9e38dd5f1so3362995a12.0;
-        Mon, 14 Oct 2024 06:52:44 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1728913964; x=1729518764; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=Fse7R+jyfvmxQ04/zP3d7oNQrkd2ejgxhVtOLTVYKFA=;
-        b=KmSwg10NJynBpGhh4T/qNzWRByr8tT9VY43Tw3yQozXRVvPDY9IeHoZUMYecWHFAtg
-         3PqQ5zQvm9RKPwvep5/AAkZVKoqHxGlXVmQ6vayeSbLfK+A2hbDbXi/VTXWeWGcNlJGi
-         SdmnUddvG0VFgzXANwV5o86KStKIblXEaAfxmLHbLGsCtVa7TSKAyKsAm5iCwW849ZJk
-         Na72XvBjdQ3V6oImehhApoZJBtZd/g1bnXmMKhiKNJsqhzpsQdTFF2j55ASau6BSVRhq
-         ZZesWBoDeO/60PFCOpXPJzfQAxWco/5rNLD4j+JW6PqWh/8UmlsXoI4thfwZHw9hwiAN
-         ODNA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1728913964; x=1729518764;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=Fse7R+jyfvmxQ04/zP3d7oNQrkd2ejgxhVtOLTVYKFA=;
-        b=RIfqBIyXYYy7kUucGyu52KaNiiJNJVO5hbY0M5rRnqSNSCczrxcEPbpf1KEiWWvl2C
-         OCCIlvNwN6sOwvB5fOKVVRFRk54Lx7afBHJxHPFKutI0JxCjc0fVxVgeYPOP5BSBVayz
-         VaOAAZDGXzdcLPpXmr+6pJBX6CrZnKUjr4Kbv90xwJdYqhK6rFXTY2B+mf7Y1J9P+C/5
-         6GXxFp2z3v+PF1vCY9ByU6YRDaVBOv03scp23lnnTGziLiX/UbR+CgMvc6Wl2Z4lB13N
-         2qlMQiMLfCjCpkSeez7uBDKY7Dqqzblp6J5GaBRGI4CYnV93q+jcPSrD3oLmxqL9z1mZ
-         wgWg==
-X-Forwarded-Encrypted: i=1; AJvYcCUaFQ4Rcu8oHn0T6zvS8mZGh2PZ1azfCkUKZV2m6ULbeatrHgo4BsnNYOKNdEjUlduq/QkW0aICVnyeSY34v10=@lists.infradead.org, AJvYcCXDnvaz2XvDsCQz9gC8Aw01WCQ2s3ewAwtqx8icOdzyAHP/6Yfe0rYIQ2SWm1rTkXAY6tEEZBtpCj+Xj2vvbms3@lists.infradead.org
-X-Gm-Message-State: AOJu0Yxp1LmvZYJPXLTBPQYrOWlm5bewt60ibZLH7KKhKg/nub+WDZdt
-	2IMUSCv+xEb/g1iBcNKgZUE953RgDTvtgpPNVPXoQfAPYd3UQfX2
-X-Google-Smtp-Source: AGHT+IEUPGagVMOC9KCLecIWnezdM5vWHBTxQuVtaECFWLCdoXEIbPVt9GIICdlpAXiKjEaDRjzGCA==
-X-Received: by 2002:a05:6a20:2d22:b0:1cf:4fd9:61db with SMTP id adf61e73a8af0-1d8bcef1217mr20431553637.8.1728913964134;
-        Mon, 14 Oct 2024 06:52:44 -0700 (PDT)
-Received: from localhost.localdomain ([113.30.217.221])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-20c8c0e74d6sm66469135ad.166.2024.10.14.06.52.40
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 14 Oct 2024 06:52:43 -0700 (PDT)
-From: Anand Moon <linux.amoon@gmail.com>
-To: Shawn Lin <shawn.lin@rock-chips.com>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	=?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kw@linux.com>,
-	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
-	Rob Herring <robh@kernel.org>,
-	Bjorn Helgaas <bhelgaas@google.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	linux-pci@vger.kernel.org (open list:PCIE DRIVER FOR ROCKCHIP),
-	linux-rockchip@lists.infradead.org (open list:PCIE DRIVER FOR ROCKCHIP),
-	linux-arm-kernel@lists.infradead.org (moderated list:ARM/Rockchip SoC support),
-	linux-kernel@vger.kernel.org (open list)
-Cc: Anand Moon <linux.amoon@gmail.com>
-Subject: [PATCH v8 3/3] PCI: rockchip: Refactor rockchip_pcie_disable_clocks() function signature
-Date: Mon, 14 Oct 2024 19:22:04 +0530
-Message-ID: <20241014135210.224913-4-linux.amoon@gmail.com>
-X-Mailer: git-send-email 2.44.0
-In-Reply-To: <20241014135210.224913-1-linux.amoon@gmail.com>
-References: <20241014135210.224913-1-linux.amoon@gmail.com>
+	id 1t0LhU-00000005PTi-0OlM;
+	Mon, 14 Oct 2024 14:05:33 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 115355C57D8;
+	Mon, 14 Oct 2024 14:05:27 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 07BE5C4CEC3;
+	Mon, 14 Oct 2024 14:05:30 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1728914731;
+	bh=UR9QzHv4Tlg7eSv5ldrag2JVOWLwv94dSbZYXgs2ksU=;
+	h=Date:From:To:Cc:In-Reply-To:References:Subject:From;
+	b=c2Abom9pwOo7M9hucnFxshR0LFAqMccXdVJbY+51XHlhOIRIVXYfURw0W9DZkGLmx
+	 DVpKsnz1kc6twZG7MuX5BuCjV0pymh2GxrM2HPLjMs/bhelLMQs/x0Lcc5ZIPe2cFt
+	 ZUfKvTy/Fqw0ag2nVZN+6RDJSCl0/72vRuxiygyW30NVPksesxCxW1NHXb8iEtDziP
+	 q0b6uxtrV4052ZNNzdQy/mOc5NjGVv2wlFGk0YqqGa/z9xrkC4FIENaJEUJN/HHtTl
+	 OxpZfWnGTavRpk3xCbms6WW0iVEsl8+s6jj6jao+Rl0kW6f4UFFtSU4NYcCuM6JNkq
+	 WFbkkdDTuO+NA==
+Date: Mon, 14 Oct 2024 09:05:30 -0500
 MIME-Version: 1.0
+From: "Rob Herring (Arm)" <robh@kernel.org>
+To: Cenk Uluisik <cenk.uluisik@googlemail.com>
+Cc: Krzysztof Kozlowski <krzk+dt@kernel.org>, devicetree@vger.kernel.org, 
+ Heiko Stuebner <heiko@sntech.de>, Chris Morgan <macromorgan@hotmail.com>, 
+ Andy Yan <andyshrk@163.com>, Jagan Teki <jagan@edgeble.ai>, 
+ linux-arm-kernel@lists.infradead.org, Tim Lunn <tim@feathertop.org>, 
+ linux-rockchip@lists.infradead.org, Dragan Simic <dsimic@manjaro.org>, 
+ Jonas Karlman <jonas@kwiboo.se>, 
+ Michael Riesch <michael.riesch@wolfvision.net>, Jing Luo <jing@jing.rocks>, 
+ Conor Dooley <conor+dt@kernel.org>, linux-kernel@vger.kernel.org, 
+ Jimmy Hon <honyuenkwun@gmail.com>
+In-Reply-To: <20241014113026.78853-1-cenk.uluisik@googlemail.com>
+References: <20241014113026.78853-1-cenk.uluisik@googlemail.com>
+Message-Id: <172891445477.1127378.13874736914700071280.robh@kernel.org>
+Subject: Re: [PATCH v4 1/2] arm64: dts: rockchip: Add rk3588-orangepi-5b
+ device tree and refactor
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241014_065245_527815_CE93959D 
-X-CRM114-Status: GOOD (  14.63  )
+X-CRM114-CacheID: sfid-20241014_070532_250971_7E960264 
+X-CRM114-Status: GOOD (  20.58  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,56 +79,76 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Refactor the rockchip_pcie_disable_clocks() function to accept a
-struct rockchip_pcie pointer instead of a void pointer. This change
-improves type safety and code readability by explicitly specifying
-the expected data type.
 
-Reviewed-by: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
-Signed-off-by: Anand Moon <linux.amoon@gmail.com>
----
-v8: add add the missing () in the function name.
-v7: None
-v6: Fix the subject, add the missing () in the function name.
-v5: Fix the commit message and add r-b Manivannan.
-v4: None
-v3: None
-v2: No
----
- drivers/pci/controller/pcie-rockchip.c | 3 +--
- drivers/pci/controller/pcie-rockchip.h | 2 +-
- 2 files changed, 2 insertions(+), 3 deletions(-)
+On Mon, 14 Oct 2024 13:29:55 +0200, Cenk Uluisik wrote:
+> Implements a slightly modified rk3588s-orangepi-5b.dts
+> from the vendor. Unfortunately the &wireless_bluetooth
+> and &wireless_wlan are not implemented yet.
+> 
+> Bigger parts of the rk3588s-orangepi-5.dts file were
+> moved into a new rk3588s-orangepi-5.dtsi file, so
+> that both device trees from the orangepi-5 and 5b
+> include from it and avoid including from the .dts.
+> 
+> This changes the Orange Pi 5's sdmmc alias to be mmc1,
+> breaking existing users if they used the /dev/mmc0 device
+> file, so it's consistent with all the other rk3588 DTS,
+> which, is also the new default that rockchip wants to use.
+> https://github.com/orangepi-xunlong/linux-orangepi/commit/bce92d16b230b8e93c2831fb7768839fd7bbab04
+> Therefore also add the sdhc alias to be mmc0 on the
+> rk3588s-orangepi-5b.dts.
+> 
+> How does this board differ from the original Orange Pi 5?
+>   - the Orange Pi 5 has a M.2 NVMe M-key PCI 2.0x1
+>     slot (hooked to combphy0_ps) whereas the Orange Pi 5b uses combphy0_ps
+>     for the WiFi.
+>   - The Orange Pi 5 with the M.2 socket has a regulator defined hooked to
+>     "GPIO0_C5" (i.e. PCIE_PWREN_H) whereas the Orange Pi 5B has GPIO0_C5
+>     hooked to BT_WAKE_HOST.
+>   - builtin eMMC storage
+>   - no SPI NOR flash (u-boot, preboot etc. initiates
+>       from within the eMMC
+>       storage)
+>   - ap6275p Wifi module (like the Orange Pi 5 Plus)
+>   - builtin BlueTooth module
+> 
+> Signed-off-by: Cenk Uluisik <cenk.uluisik@googlemail.com>
+> ---
+>  arch/arm64/boot/dts/rockchip/Makefile         |   1 +
+>  .../boot/dts/rockchip/rk3588s-orangepi-5.dts  | 798 +-----------------
+>  ...orangepi-5.dts => rk3588s-orangepi-5.dtsi} |  36 +-
+>  .../boot/dts/rockchip/rk3588s-orangepi-5b.dts |  27 +
+>  4 files changed, 73 insertions(+), 789 deletions(-)
+>  rewrite arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5.dts (95%)
+>  copy arch/arm64/boot/dts/rockchip/{rk3588s-orangepi-5.dts => rk3588s-orangepi-5.dtsi} (96%)
+>  create mode 100644 arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5b.dts
+> 
 
-diff --git a/drivers/pci/controller/pcie-rockchip.c b/drivers/pci/controller/pcie-rockchip.c
-index 43d83c1f3196..eaaab7c11323 100644
---- a/drivers/pci/controller/pcie-rockchip.c
-+++ b/drivers/pci/controller/pcie-rockchip.c
-@@ -265,9 +265,8 @@ int rockchip_pcie_enable_clocks(struct rockchip_pcie *rockchip)
- }
- EXPORT_SYMBOL_GPL(rockchip_pcie_enable_clocks);
- 
--void rockchip_pcie_disable_clocks(void *data)
-+void rockchip_pcie_disable_clocks(struct rockchip_pcie *rockchip)
- {
--	struct rockchip_pcie *rockchip = data;
- 
- 	clk_bulk_disable_unprepare(rockchip->num_clks, rockchip->clks);
- }
-diff --git a/drivers/pci/controller/pcie-rockchip.h b/drivers/pci/controller/pcie-rockchip.h
-index cc667c73d42f..3c63166fdc17 100644
---- a/drivers/pci/controller/pcie-rockchip.h
-+++ b/drivers/pci/controller/pcie-rockchip.h
-@@ -347,7 +347,7 @@ int rockchip_pcie_init_port(struct rockchip_pcie *rockchip);
- int rockchip_pcie_get_phys(struct rockchip_pcie *rockchip);
- void rockchip_pcie_deinit_phys(struct rockchip_pcie *rockchip);
- int rockchip_pcie_enable_clocks(struct rockchip_pcie *rockchip);
--void rockchip_pcie_disable_clocks(void *data);
-+void rockchip_pcie_disable_clocks(struct rockchip_pcie *rockchip);
- void rockchip_pcie_cfg_configuration_accesses(
- 		struct rockchip_pcie *rockchip, u32 type);
- 
--- 
-2.44.0
+
+My bot found new DTB warnings on the .dts files added or changed in this
+series.
+
+Some warnings may be from an existing SoC .dtsi. Or perhaps the warnings
+are fixed by another series. Ultimately, it is up to the platform
+maintainer whether these warnings are acceptable or not. No need to reply
+unless the platform maintainer has comments.
+
+If you already ran DT checks and didn't see these error(s), then
+make sure dt-schema is up to date:
+
+  pip3 install dtschema --upgrade
+
+
+New warnings running 'make CHECK_DTBS=y rockchip/rk3588s-orangepi-5.dtb rockchip/rk3588s-orangepi-5b.dtb' for 20241014113026.78853-1-cenk.uluisik@googlemail.com:
+
+arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5b.dtb: gpio-func: leds-gpio: {'rockchip,pins': [[0, 2, 0, 245]], 'phandle': 253} is not of type 'array'
+	from schema $id: http://devicetree.org/schemas/gpio/gpio-consumer.yaml#
+arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5b.dtb: vcc-3v3-sd-s0-regulator: Unevaluated properties are not allowed ('enable-active-low' was unexpected)
+	from schema $id: http://devicetree.org/schemas/regulator/fixed-regulator.yaml#
+
+
+
+
 
 
 _______________________________________________
