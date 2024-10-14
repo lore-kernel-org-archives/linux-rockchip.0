@@ -4,93 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1557FCF2591
-	for <linux-rockchip@archiver.kernel.org>; Sun, 13 Oct 2024 21:54:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0C9ECCF2592
+	for <linux-rockchip@archiver.kernel.org>; Mon, 14 Oct 2024 02:06:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:To:From:Reply-To:Cc:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=IeF/or8+x0ZMiGRTG/cEMDbMvhknluskfbEYHeCnMbE=; b=i6T2oAZE864hMt
-	TJSTHYh1LDb89yyIZT2E0QDJaMSrpRe/Du1C8porlhhqKG1jfciIiuYowLGd/HQYocCgoJ02/bJU8
-	VbjIfop7lSvzRNP7Dd06FtG8EBNztKXuWTE/epvTZ8ykKOoYtd7H0vnxNg/491dHNWBH19CwdIFQX
-	Yv/3Yc35lOoNxQdanSoX75pCb9JtL4P2CHKtmdSaQuUV1b5PcoOPl1YyVc1580tuCxj/erbc2ybWR
-	2P3dJBFKs+TF74s3S9+4lwkVabcix9z5+SIntkc4ycAXKtvenNQ6Y9ABJ8VAt6Yaj+QhrOnKupRPB
-	mt4xLkZFtFaSO0WVP+sw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=5CPK/zlpoHnxR+NM2YALDSvfT5p6qEyMHDks0QcUbew=; b=irV2WDTSVZbBCK
+	noXry/b3P8V4lXYDeU2oVZldpIWETPKjJDfq0TS7DGWBoJJJLjwpOoaXCRrWMruFN9f0y6UJD2wRk
+	Vy5DZB7DCF12Rga4uGl+OoqOPTHRNSbq9b7t1VBEf7lG93EdhEGMLbEhM/8xubnkVZDZ1mMvxJEkI
+	J0CUUv9HedCjInjkzrMCk9WM87z9nbbUtKQl2jujtII1BkqBx1P/X+i7PYxMCLr2ZNXNrP9y6qiS1
+	tqbZ/KhxPGVYWxgR2yb/MkO61eugW8ojrbJ2lzGlSbRJpG/WYiPdLL6G4lSZ5KKXHAwxcqRlhd510
+	6+uFCeGMO4BUGBrI2w0A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t06Xz-00000003JX5-2KIP;
-	Sun, 13 Oct 2024 21:54:43 +0000
-Received: from mail-ej1-x62c.google.com ([2a00:1450:4864:20::62c])
+	id 1t0ATm-00000003WNe-22VT;
+	Mon, 14 Oct 2024 02:06:38 +0000
+Received: from mail-pl1-x62f.google.com ([2607:f8b0:4864:20::62f])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t06Do-00000003HG6-3SS9;
-	Sun, 13 Oct 2024 21:33:54 +0000
-Received: by mail-ej1-x62c.google.com with SMTP id a640c23a62f3a-a99d1b7b5f5so251364866b.0;
-        Sun, 13 Oct 2024 14:33:52 -0700 (PDT)
+	id 1t0AR5-00000003W11-3QYd;
+	Mon, 14 Oct 2024 02:03:53 +0000
+Received: by mail-pl1-x62f.google.com with SMTP id d9443c01a7336-20c78a10eb3so1557405ad.0;
+        Sun, 13 Oct 2024 19:03:50 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=googlemail.com; s=20230601; t=1728855231; x=1729460031; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=sytY2FNkkLBnOCAcfUv9hkr9CctUcl1zNo07NA/NCoo=;
-        b=WewYbhEejalgmoyfFzsP8B6z8s95zYTP3+0tUmbAEesElIXxa3z84Df4SQTkwb2KNU
-         C3A+5gwOZOtUIGUm6Sg1ZxJF88AKnNaOAbs/zsXfuEJ/Uz8lHOE+veDY1hbeDxIoOhGY
-         Y94GzrT4u6i7r7PJjmbdiT5/5Exi8kkHbdIzri0j+Wzj01Vpzu5tKCGkP81zt+fnmEKQ
-         wuANACubfEWJ9FwmHtgRfAj/vMF8v2IUwC72qDYtt4nzA2trFZ0Mluv+2jDeHN/hoCEq
-         D+m2bxV0ATxLXIZA+3xMIUNhC6T1E+rwEMT0fy+f+n7lfW0/qQ2HAN9a8qpSXzzPlRw7
-         F8DQ==
+        d=gmail.com; s=20230601; t=1728871430; x=1729476230; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=t8XtIqCB450e+VMFf/Ma1ifuCcLIUz75aLQRgCsC9As=;
+        b=RWx9PiikW/oo/+7XpntY1SdBoMJD0OMs4FnypB+JOv4bFOEEO0agJIJYugb+2rRbPZ
+         k3IxLHL07Kau2jVdSVOUwklK4hK047Bd6HwdoNj+BFK5Xr89QgsYVHBoMVROiJ9n4YxO
+         pJFvy064LvrT8ROOeTyek3Ox/xxU03mpjNKgQPIEuAvLjvGax+krcr6Kk5RKBi0rij75
+         SN/GsU6XOnIOL9+BYDB5WqqUJHvZzutwMApajfHbvkBwkuOb9DY8y1GcjzZ6FiRtmwOp
+         qxxBwH9oXG5qCXmzkkqvbWdYhecHh36Q97FCvOcbtnnd+DgiaOAJRG+PuQkokFJa4UqD
+         XMXw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1728855231; x=1729460031;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=sytY2FNkkLBnOCAcfUv9hkr9CctUcl1zNo07NA/NCoo=;
-        b=mhR3xnIMe1R8k8n0tRDj4OOCGSM/8NvEF9iwscv0QBmQCWDSsOiY/OYDLYYOS1ypnb
-         OE6PVhIRNUUW7uNLS2PDiXgs7RjkY0sB9wL18kYlBlQCiRIBZBcfRpPNL9qJKP4Dp9kf
-         goyvBEE+mP+BLdRq2SJgSI6f2yQdJcxPWvAVJrAf0jQmftg25duOu8gD9q87EwLk/BRV
-         DF9l4IVmt7YIzZQC/Hidnu/xTx7G3uOkiBihCqbHL7XOEaCghrSu1IuwYjY7sRVvjriv
-         fK5ogHg2qjHiQPA7D1hduCdXWRWokPrdZGfzTxl4Ii90zE+8HMqw26dyOKswYb2coUWD
-         1r6w==
-X-Forwarded-Encrypted: i=1; AJvYcCWfWDmgr0I5Pgc9QtRTD4TnGbUrUEsSrQ+AOkhg8NZP1ywbSyzsc+FylXDu5Tk4LCsTqrRD8uD6tA6pLQomS/4=@lists.infradead.org, AJvYcCXGKpObDGZlo6K956ZqwUMoZdHep8xKfQuBhrRJJpmJTGCwqOHUvDBWPhn3QV49VEdbIvwgwrY6wjHoRKQDWRmu@lists.infradead.org
-X-Gm-Message-State: AOJu0Yw3QxBoZIs+g1aSbWMn6ZPgV8plkaE3OZvV8Sxz3hkFK9QZeA2h
-	fju9R2Ip3Pb9U3qAepoIGYHznErD4x67LxG97XUrCPB+vYqSi9a0
-X-Google-Smtp-Source: AGHT+IG7ExnbcS3+M2fgUbQl6n1Tt8baiJ5a7KWvoXfWNem7QdFcbv71w/NQPB0td9aTVoU+aU5Jug==
-X-Received: by 2002:a17:907:7b95:b0:a9a:d2a:be39 with SMTP id a640c23a62f3a-a9a0d2ac035mr162886066b.25.1728855230903;
-        Sun, 13 Oct 2024 14:33:50 -0700 (PDT)
-Received: from localhost.localdomain ([2a02:908:1587:1e60:ba33:7ef4:2f9b:8303])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a99a80f2752sm492798166b.213.2024.10.13.14.33.50
+        d=1e100.net; s=20230601; t=1728871430; x=1729476230;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=t8XtIqCB450e+VMFf/Ma1ifuCcLIUz75aLQRgCsC9As=;
+        b=pm/32C6Hy6XOcK1Vjs8PtRfrXzWSAm1eQwnVapKdSf6N6tCobLwRYiq4E6qXue848B
+         koGbgnGMrf+Fl+HV4ac7z9/Lf+lD3zD0ApWeGiO9nS14LA6u52V5VMwtmKVkH13FN1aR
+         z4IewpxF44kBGHwRgi9+awNvsv7EWucQW0wW9y3BRVJwZ2BXhOKcsP45e4A6NXBfBf54
+         keCQE23pTKoUskdc6mRtyZEHwLKPOnwPFSu2N34Yamg5XWooDIHvupLN+iN/sZUdAX1z
+         YnQ3KirrLn20YfKOOxkwmvchJXNfwCiajvOF98QCu3pWIDNI6w2YaECmCqJgL0vq7U8M
+         ayLg==
+X-Forwarded-Encrypted: i=1; AJvYcCVDXACJSAdFm9AqcQygQbI2aYtog2rLQk/fFERd/mvYbgTmhbdN7g7th/e/hDxNRFsr+UXIUTUOYmcINZ8KVJI=@lists.infradead.org, AJvYcCWX23OfrijCJHE53h7leyIeD0jwhFNT8sAa8l0mXXSX6Qq2aX1KXuaKT7kkPpsR279AoSmzlvnMOobmXzTiOUo3@lists.infradead.org
+X-Gm-Message-State: AOJu0YzQezLvN4/GU56qJ3i9BkFad4gA9NSZF2kN97fAXn33zN2/DWvQ
+	+S9oTlPUJ9pmYOxPuTSQF3Qgsc9g24T6U6nzgrPkELDUzIxpl3b+
+X-Google-Smtp-Source: AGHT+IHKs+nDs/o7NtLyvmjRfk3RZ9OpnxvjxX2ffV/xeBEuv2cHhDtoH5EYcBK2N21UFloGOjqChg==
+X-Received: by 2002:a17:902:f549:b0:20c:ee32:7595 with SMTP id d9443c01a7336-20cee32779emr10437525ad.2.1728871430035;
+        Sun, 13 Oct 2024 19:03:50 -0700 (PDT)
+Received: from localhost.localdomain ([103.29.142.67])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-20c8bc1a59asm55794795ad.113.2024.10.13.19.03.45
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 13 Oct 2024 14:33:50 -0700 (PDT)
-From: Cenk Uluisik <cenk.uluisik@googlemail.com>
-To: Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Chris Morgan <macromorgan@hotmail.com>,
-	Dragan Simic <dsimic@manjaro.org>,
-	Jonas Karlman <jonas@kwiboo.se>,
-	Tim Lunn <tim@feathertop.org>,
-	Andy Yan <andyshrk@163.com>,
-	Jagan Teki <jagan@edgeble.ai>,
-	Michael Riesch <michael.riesch@wolfvision.net>,
-	Jimmy Hon <honyuenkwun@gmail.com>,
-	Cenk Uluisik <cenk.uluisik@googlemail.com>,
-	Jing Luo <jing@jing.rocks>,
+        Sun, 13 Oct 2024 19:03:49 -0700 (PDT)
+From: Frank Wang <frawang.cn@gmail.com>
+To: vkoul@kernel.org,
+	kishon@kernel.org,
+	robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
+	heiko@sntech.de
+Cc: linux-phy@lists.infradead.org,
 	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH V3 2/2] dt-bindings: arm: rockchip: Add Orange Pi 5b
-Date: Sun, 13 Oct 2024 23:32:37 +0200
-Message-ID: <20241013213305.310844-2-cenk.uluisik@googlemail.com>
-X-Mailer: git-send-email 2.46.0
-In-Reply-To: <20241013213305.310844-1-cenk.uluisik@googlemail.com>
-References: <20241013213305.310844-1-cenk.uluisik@googlemail.com>
+	william.wu@rock-chips.com,
+	tim.chen@rock-chips.com,
+	yubing.zhang@rock-chips.com,
+	Frank Wang <frank.wang@rock-chips.com>
+Subject: [PATCH 1/2] dt-bindings: phy: rockchip-usbdp: add rk3576
+Date: Mon, 14 Oct 2024 10:03:41 +0800
+Message-Id: <20241014020342.15974-1-frawang.cn@gmail.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241013_143352_878251_C3001626 
-X-CRM114-Status: GOOD (  12.08  )
+X-CRM114-CacheID: sfid-20241013_190351_903514_16BE83BF 
+X-CRM114-Status: UNSURE (   8.23  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,36 +102,29 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This commit adds the Xunlong Orange Pi 5b entry to the device tree
-bindings inside the Documentation folder. I know you said I
-should extend the Orange Pi 5 one with an enum, but I made a whole new
-entry, because looking at all the other entries, they also create new
-entries in a case "like this". I hope this is okay, or maybe I misunderstand something.
-Thank you in advance.
+From: Frank Wang <frank.wang@rock-chips.com>
 
-Signed-off-by: Cenk Uluisik <cenk.uluisik@googlemail.com>
+Add compatible for the USBDP phy in the Rockchip RK3576 SoC.
+
+Signed-off-by: Frank Wang <frank.wang@rock-chips.com>
 ---
- Documentation/devicetree/bindings/arm/rockchip.yaml | 5 +++++
- 1 file changed, 5 insertions(+)
+ Documentation/devicetree/bindings/phy/phy-rockchip-usbdp.yaml | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
-index 687823e58c22..130f6ccc1658 100644
---- a/Documentation/devicetree/bindings/arm/rockchip.yaml
-+++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
-@@ -1053,6 +1053,11 @@ properties:
-         items:
-           - const: xunlong,orangepi-5
-           - const: rockchip,rk3588s
-+      
-+      - description: Xunlong Orange Pi 5B
-+        items:
-+          - const: xunlong,orangepi-5b
-+          - const: rockchip,rk3588s
+diff --git a/Documentation/devicetree/bindings/phy/phy-rockchip-usbdp.yaml b/Documentation/devicetree/bindings/phy/phy-rockchip-usbdp.yaml
+index 1f1f8863b80d..b42f1272903d 100644
+--- a/Documentation/devicetree/bindings/phy/phy-rockchip-usbdp.yaml
++++ b/Documentation/devicetree/bindings/phy/phy-rockchip-usbdp.yaml
+@@ -13,6 +13,7 @@ maintainers:
+ properties:
+   compatible:
+     enum:
++      - rockchip,rk3576-usbdp-phy
+       - rockchip,rk3588-usbdp-phy
  
-       - description: Zkmagic A95X Z2
-         items:
+   reg:
 -- 
-2.46.0
+2.34.1
 
 
 _______________________________________________
