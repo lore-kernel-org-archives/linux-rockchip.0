@@ -4,63 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AF5BECFC500
-	for <linux-rockchip@archiver.kernel.org>; Mon, 14 Oct 2024 07:27:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E67D5CFC52F
+	for <linux-rockchip@archiver.kernel.org>; Mon, 14 Oct 2024 09:58:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=prZdQWAf9vsMMc0Sy2LlMzwvkQoalF9M+8vBs6y2XW4=; b=ecSfcV7MQ7bqfu
-	PE1XkyEJ6pQBSwaCR22IDENxjx8SdRyJFbjUDAraSw49dAi5grV2x8Xa1ntIa+34FJiCQA3sN74Mb
-	nmc0uTCPB74SvyZmuzSwrQVkY1GDd7PiAAYyKoxQtDf3J6gQpgqOGY0UZa8LwKFiZ1LGx9p9BK2Fo
-	mDfJkPxJhADcB5TeaLcDUjIkkhSX40shD+SaTrO/90oh6kkChrQXJA0kmWQSwjKYoDar3yzpXTvI+
-	Dom6WLyMmdlfvJRO+wYhP/jPWb+UmiCP40IjgYFGhsjuaGnk4ndrFY2iIzCo5q8VOn/WGTHhrimyZ
-	dJIaLaRg9aZzQeveRygA==;
+	List-Owner; bh=PgfzN+Upw/Jbwk/wxlu6AVTLpm3Q9wGx7uUs8kZ+gqM=; b=OqDgANbjYbxrPO
+	r4UWgj7uL7YcYq64xHUa1FRN8CHhjFMJmNOGhBdQmRDxSAAxxp9HsPMWatiIuFRU+G5YAcS20mtwc
+	KJ+EIgAFLAANMhqqL6G9OKn+61J/Huc4CpwMa3OhJV0HiCOUeWke25o28Cf5oo1FrS+BwLEavlEQW
+	AJyo7kdKopSfICGKn+p7ayMcPMz93jDDbfOGFe1yGli5nX1hCIOJhIMPG+ibU6zDXJXJB7KWlbWyh
+	vbu8YHQSewZkUCsoukG3sXt5ct1OZLp03VDOpTJJDgyScAKgXJTv5tIr7AATW98JUWb6bNUPzNolg
+	6TUoowbT0ffEbWIg08qw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t0FU3-000000043Oa-19om;
-	Mon, 14 Oct 2024 07:27:15 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1t0Hql-00000004cZP-2ekc;
+	Mon, 14 Oct 2024 09:58:51 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t0FSR-0000000435p-3o93;
-	Mon, 14 Oct 2024 07:25:37 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 25D9FA4142A;
-	Mon, 14 Oct 2024 07:25:26 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B8F8FC4CEC3;
-	Mon, 14 Oct 2024 07:25:33 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1728890734;
-	bh=630SvYBhr24ZHoxQA3bnVprNqH9zzbLIObPGLAZTqE8=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=ePnl1BlaY3WYALF6Prgh22s0VdMLxU874Zzun9kHdOatYzYN4wHDkVRtA5usIrb6d
-	 w69NwTm7Xh+WsBCsLn8pC9/r5xrs+/RneVsXhIOjOuGVDQQMi7rHhtXNPv3pBh5DIZ
-	 WjqLUJ3g2vK4tJIyjUFtNGpaRp/dV0ByFIqP41DR6SurPamaJVDs2ocqwSPfOZZ+0z
-	 DVVY5/vQ/u8rl4EuN3nQ0COSOSsr66SaQAu/Mu6tXiRs56ghMIt10Y7PRvX9UpUQx2
-	 yALZbgrSScG64Jg0hHlIVpteDH2XUh83xMDsqLuZPlNUN26c0bsgkYvYKeHVBmrB+U
-	 LVUi9q0jPMGqQ==
-Date: Mon, 14 Oct 2024 09:25:30 +0200
-From: Krzysztof Kozlowski <krzk@kernel.org>
-To: Cenk Uluisik <cenk.uluisik@googlemail.com>
-Cc: Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Heiko Stuebner <heiko@sntech.de>, Chris Morgan <macromorgan@hotmail.com>, 
-	Jonas Karlman <jonas@kwiboo.se>, Michael Riesch <michael.riesch@wolfvision.net>, 
-	Andy Yan <andyshrk@163.com>, Jimmy Hon <honyuenkwun@gmail.com>, 
-	Dragan Simic <dsimic@manjaro.org>, Jing Luo <jing@jing.rocks>, devicetree@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH V3 1/2] arm64: dts: rockchip: Add rk3588-orangepi-5b
- device tree and refactor
-Message-ID: <owh5aru62opaqeyjmcmhqeljafpql52rfhulfpptwp3vutgrgf@bol6fkrxt33q>
-References: <20241013213305.310844-1-cenk.uluisik@googlemail.com>
+	id 1t0HaK-00000004Z62-1y1N;
+	Mon, 14 Oct 2024 09:41:52 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
+	:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Sender:Reply-To:Content-ID:Content-Description;
+	bh=uLuSOnIKTDUr1b3Y37tkpjiPZ4FItYSw5P1gi506wlo=; b=DdqjH1Nv3cJo4lGVC5Cr9M9ugT
+	Pl1RUEXZEEFBW9+kR0W31NOi+Kg6DKIaGyj+L660Xw3/uNWo26Cwxgp7RNys+2BAXm/kmaEVga9PQ
+	FZJM9ZffatUXEjocR9Hzcmnh0nRHwsyy6OEf1Mf2e0ODC73bRtD0fyUBDev58qN00rYw5g5FPM8+O
+	24goYv6VuNRkcWIjiJaVei0LsxQqqghIKRjT6CjF6Q0T/vQLtMpJnsXi5k261KnwL5tc6IKAU0cgi
+	CpPdc0Sdd+XpPix1iJNwYxzmuVkJF55g1iWcZmXJ4IxejViCaGOBxrdeRKblgQfT8X2rNTHAlCEju
+	xgE04X7A==;
+Received: from gloria.sntech.de ([185.11.138.130])
+	by desiato.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
+	id 1t0HaH-00000006JMy-1KQU;
+	Mon, 14 Oct 2024 09:41:51 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+	List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=uLuSOnIKTDUr1b3Y37tkpjiPZ4FItYSw5P1gi506wlo=; b=YwdRrv5A8ufzJdVqzIeRcxOzXo
+	qW2QNkcmMiso/Z8yFOHhvo3lImCp5xKMEaWqvowPdATTRFRB3OVeQy3HS7/Cnl+iZWC94/ppF4pBp
+	kdlNq8xvMAGSbSJg53X6MDnspg5vIEpFJOAWuppnbVFipl009VCrj4IUBnEeGU1SLdOj9les/Fn1D
+	m1D/seHfdRN5sxA2/Rlrs/Gf0Mv/lDGY37t09OxUS4ztr0PX1C8ctJnmwU06uNkE6cUGs+LXzL7jq
+	HBH6MzFWUk7kM1OBP2yj9kx1tbK+vJQRpQNf4nknkAzTQms8yRuEdh8TXZtR38K1rzfE5xPBOGVRY
+	4zxSl1dw==;
+Received: from i53875b34.versanet.de ([83.135.91.52] helo=phil.lan)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1t0Ha5-0006uK-H9; Mon, 14 Oct 2024 11:41:37 +0200
+From: Heiko Stuebner <heiko@sntech.de>
+To: conor+dt@kernel.org,
+	Karthikeyan Krishnasamy <karthikeyan@linumiz.com>,
+	robh@kernel.org,
+	krzk+dt@kernel.org,
+	alexandre.belloni@bootlin.com
+Cc: Heiko Stuebner <heiko@sntech.de>,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	linux-rtc@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org
+Subject: Re: (subset) [PATCH v3 0/6] Add support Relfor Saib board which is based on Rockchip RV1109 SoC
+Date: Mon, 14 Oct 2024 11:41:34 +0200
+Message-ID: <172889888554.115816.9413952717396718584.b4-ty@sntech.de>
+X-Mailer: git-send-email 2.45.2
+In-Reply-To: <20240912142451.2952633-1-karthikeyan@linumiz.com>
+References: <20240912142451.2952633-1-karthikeyan@linumiz.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20241013213305.310844-1-cenk.uluisik@googlemail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241014_002536_102322_9ADCBF58 
-X-CRM114-Status: GOOD (  22.95  )
+X-CRM114-CacheID: sfid-20241014_104149_536823_31541689 
+X-CRM114-Status: GOOD (  10.28  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,104 +95,31 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Sun, Oct 13, 2024 at 11:32:36PM +0200, Cenk Uluisik wrote:
-> Implements a slightly modified rk3588s-orangepi-5b.dts from the vendor.
-> Unfortunately the &wireless_bluetooth and &wireless_wlan overlays don't seem
-> to compile, so I removed them for now:
+On Thu, 12 Sep 2024 19:54:45 +0530, Karthikeyan Krishnasamy wrote:
+> Rockchip RV1109 is compatible with Rockchip RV1126.
+> In this series, adding required missing peripheral in
+> RV1126 and its pin mux.
 > 
-> Error: arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5b.dts:20.1-20 Label or path wireless_bluetooth not found
-> Error: arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5b.dts:24.1-15 Label or path wireless_wlan not found
+> Relfor Saib board is equipped with 1GB of RAM and 4GB of eMMC
+> Pheripherals like Bluetooth 4.2, Wifi 5G, audio-codec,
+> ir transmitter and receiver, etc
 > 
-> Bigger parts of the rk3588s-orangepi-5.dts file were moved into a new
-> rk3588s-orangepi-5.dtsi file, so that both device trees from the orangepi-5 and 5b include from it and avoid including from the .dts.
-> 
-> How does this board differ from the original Orange Pi 5?
->   - builtin eMMC storage
->   - no SPI NOR flash (u-boot, preboot etc. initiates from within the eMMC
->     storage)
->   - ap6275p Wifi module (like the Orange Pi 5 Plus)
->   - builtin BlueTooth module
-> 
-> Beside that everything is exactly the same as far as I know.
-> 
-> Signed-off-by: Cenk Uluisik <cenk.uluisik@googlemail.com>
-> ---
->  arch/arm64/boot/dts/rockchip/Makefile         |   1 +
->  .../boot/dts/rockchip/rk3588s-orangepi-5.dts  | 776 +-----------------
->  ...orangepi-5.dts => rk3588s-orangepi-5.dtsi} |   5 +-
->  .../boot/dts/rockchip/rk3588s-orangepi-5b.dts |  18 +
->  4 files changed, 30 insertions(+), 770 deletions(-)
->  rewrite arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5.dts (99%)
->  copy arch/arm64/boot/dts/rockchip/{rk3588s-orangepi-5.dts => rk3588s-orangepi-5.dtsi} (99%)
->  create mode 100644 arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5b.dts
+> [...]
 
+Applied, thanks!
 
-> \ No newline at end of file
+[2/6] ARM: dts: rockchip: Add watchdog node for RV1126
+      commit: cbad02491459d64522852da07736ddc1f04cbaef
+[4/6] dt-bindings: vendor-prefixes: Add Relfor labs
+      commit: d0c9f9b848d0ee57e785c393cd4d618b5753e68d
+[5/6] dt-bindings: arm: rockchip: Add Relfor Saib
+      commit: c1386c02d5d457a1713c8e866102c4418a1c736c
+[6/6] ARM: dts: rockchip: Add Relfor Saib board
+      commit: bdb2696ac5786ed3f43520e700347fe2152ea199
 
-Hm?
-
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5.dts b/arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5.dtsi
-> similarity index 99%
-> copy from arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5.dts
-> copy to arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5.dtsi
-> index feea6b20a6bf..739c4d9f58e0 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5.dts
-> +++ b/arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5.dtsi
-> @@ -10,9 +10,6 @@
->  #include "rk3588s.dtsi"
->  
->  / {
-> -	model = "Xunlong Orange Pi 5";
-> -	compatible = "xunlong,orangepi-5", "rockchip,rk3588s";
-> -
->  	aliases {
->  		ethernet0 = &gmac1;
->  		mmc0 = &sdmmc;
-> @@ -763,4 +760,4 @@ &usb_host1_ohci {
->  
->  &usb_host2_xhci {
->  	status = "okay";
-> -};
-> +};
-> \ No newline at end of file
-
-And here
-
-
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5b.dts b/arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5b.dts
-> new file mode 100644
-> index 000000000000..049227af0252
-> --- /dev/null
-> +++ b/arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5b.dts
-> @@ -0,0 +1,18 @@
-> +// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
-> +
-> +/dts-v1/;
-> +
-> +#include "rk3588s-orangepi-5.dtsi"
-> +
-> +/ {
-> +	model = "Xunlong Orange Pi 5B";
-> +	compatible = "rockchip,rk3588s-orangepi-5b", "rockchip,rk3588";
-
-Bindings are before users.
-
-> +};
-> +
-> +&sdhci {
-> +	status = "okay";
-> +};
-> +
-> +&sfc {
-> +	status = "disabled";
-> +};
-> \ No newline at end of file
-
-Patch errors here and in other places.
-
-> -- 
-> 2.46.0
-> 
+Best regards,
+-- 
+Heiko Stuebner <heiko@sntech.de>
 
 _______________________________________________
 Linux-rockchip mailing list
