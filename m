@@ -4,62 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 67427CF2590
-	for <linux-rockchip@archiver.kernel.org>; Mon, 14 Oct 2024 03:58:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8E17CCF259D
+	for <linux-rockchip@archiver.kernel.org>; Mon, 14 Oct 2024 04:40:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
-	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=M8XysnVBu5vIh1uVVYqCyHzN6R6uVRpIeclK/zvPCOU=; b=nLgf6VdZ5SASvNxb5L7WADg1qx
-	Ic6xHEIji7g2J6qDHn3gD/YRMO2Q3cuRstn9KSZU2DtPrJ2/PDmAyjEYyM1lw7pBSAUndfwBBXAp9
-	8cPVr+jWWoSzYcmC0E48leZNOy7c9sIpZnqN44DbA2vslQqKDenuXjt9KAhMJUbjJMdjE1zYledfs
-	uRhfzY5gCVg8YRCbpiAIpdjAqdELUZ3D1FL2Cracr4VDfcvXBEVgJRgCEOqEkICV7D10hA5VcdGFQ
-	L/vRvBFe06gSlDUyWzT3ITQqcWx1csR6MX8Yeqjlmb/YfdAmSUVKb1rUcRLtRvworyhYD26az2FuB
-	W4HzgFYA==;
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=qxtix0HYdzPgBaZdN2NMxytBcIPAeqMIBMyeqpC9Ds4=; b=OOGqdGTncs4D5c
+	MhIWVXGMp9FGcJjhubisqQeEYQ9DD+DDF7c9ap2+Ybh/aWg9r10LqRnaZMHHV3tQBLD0NqdrgXZ/t
+	4M6pJJsb9qY9ioBSb8+S3OwULPlr9b49cUVS29WXd06Pr6NLKgiUY64gVRugYjWnWfeGBMvFqKYZR
+	Q64H3MMslAhkcoDs+7SMbOoFVzlPq+lOra2vUNhl0FFjA1OLa3AxXSqL3kdFolp/Rdmyo3icmwMRw
+	96k3M9kjunPpqBi7SBARHQyXsLwXggkWyiZ3gYO0kXZUQWNrTHmt+/CQdBqths4QKxeL0IlD68kWm
+	1rLzr1DRbxTppjHuRbiQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t0CDY-00000003ekX-1mqt;
-	Mon, 14 Oct 2024 03:58:00 +0000
-Received: from mail.manjaro.org ([2a01:4f8:c0c:51f3::1])
+	id 1t0Csp-00000003jUh-170M;
+	Mon, 14 Oct 2024 04:40:39 +0000
+Received: from smtpbgeu1.qq.com ([52.59.177.22])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t0CBG-00000003eUf-0cap;
-	Mon, 14 Oct 2024 03:55:39 +0000
+	id 1t0CrN-00000003jNb-1ZN3;
+	Mon, 14 Oct 2024 04:39:14 +0000
+X-QQ-mid: bizesmtpip4t1728880692tn6r7d7
+X-QQ-Originating-IP: EQSBChDx8AzRGfPF8zb2/7A9tODnohSmh1T0qLU6P6M=
+Received: from [IPV6:240f:10b:7440:1:5070:3965 ( [localhost])
+	by bizesmtp.qq.com (ESMTP) with 
+	id ; Mon, 14 Oct 2024 12:38:07 +0800 (CST)
+X-QQ-SSF: 0000000000000000000000000000000
+X-QQ-GoodBg: 0
+X-BIZMAIL-ID: 13288931529560564606
+Message-ID: <CE605641E53903DC+0f0ea6b2-9423-4aa2-ac9d-652a9ac5c237@radxa.com>
+Date: Mon, 14 Oct 2024 13:38:06 +0900
 MIME-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
-	t=1728878135;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=ItMiZaVUJ0tYf4/40QYBAawzSkFPdziZo/qhFOBrpDo=;
-	b=oVuhKd7xqOVNeJhH1Bo8XFhV3s8CO3nQZdTGL8ReHH6vPQn/dHnciebjLHtTjzCgBWgVWI
-	wI0xPTd8Jti6jnaz8j4uPMdHndOB4ptvPqCs4Iie84E+G7y6TOC8o6LTuU2DuVUD0mepPZ
-	q04IKUkfd7zALwYxT4ypRuNUV4F3aUStOUsroFAfv2Jt66oeDiIupOQCGL4Cw9Xb7pTL2g
-	GCVA+NOxI4cjbTNE+5ecEmkf1NMxMIi4aPRXfU4ckX/bRQdKMNCroocu1ueR3KtYbGhyUS
-	gRakWtvcRaGt320PFC4POraS2a/PvtgRLhrZlDaov8qtq3TH0zbjU+wCLqN2LQ==
-Date: Mon, 14 Oct 2024 05:55:35 +0200
-From: Dragan Simic <dsimic@manjaro.org>
-To: Frank Wang <frawang.cn@gmail.com>
-Cc: vkoul@kernel.org, kishon@kernel.org, robh@kernel.org,
- krzk+dt@kernel.org, conor+dt@kernel.org, heiko@sntech.de,
- linux-phy@lists.infradead.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-rockchip@lists.infradead.org, william.wu@rock-chips.com,
- tim.chen@rock-chips.com, yubing.zhang@rock-chips.com, Frank Wang
- <frank.wang@rock-chips.com>
-Subject: Re: [PATCH 2/2] phy: rockchip: usbdp: add rk3576 device match data
-In-Reply-To: <20241014020342.15974-2-frawang.cn@gmail.com>
-References: <20241014020342.15974-1-frawang.cn@gmail.com>
- <20241014020342.15974-2-frawang.cn@gmail.com>
-Message-ID: <127f7fb8d9608acb9541fc6c6dac2da9@manjaro.org>
-X-Sender: dsimic@manjaro.org
-Authentication-Results: ORIGINATING;
-	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 3/3] arm64: dts: rockchip: Add new SoC dtsi for the
+ RK3566T variant
+To: Dragan Simic <dsimic@manjaro.org>, linux-rockchip@lists.infradead.org
+Cc: heiko@sntech.de, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, robh@kernel.org,
+ krzk+dt@kernel.org, conor+dt@kernel.org, TL Lim <tllim@pine64.org>,
+ Marek Kraus <gamiee@pine64.org>, Tom Cubie <tom@radxa.com>,
+ Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
+ Jonas Karlman <jonas@kwiboo.se>
+References: <cover.1728752527.git.dsimic@manjaro.org>
+ <95fc64aaf6d3ac7124926bcb0c664406b4e5fe3d.1728752527.git.dsimic@manjaro.org>
+Content-Language: en-US
+From: FUKAUMI Naoki <naoki@radxa.com>
+In-Reply-To: <95fc64aaf6d3ac7124926bcb0c664406b4e5fe3d.1728752527.git.dsimic@manjaro.org>
+X-QQ-SENDSIZE: 520
+Feedback-ID: bizesmtpip:radxa.com:qybglogicsvrgz:qybglogicsvrgz8a-1
+X-QQ-XMAILINFO: MIAHdi1iQo+zGLmod/lFAZ+sJWqjxNFjrzNKtQxpQ7Qh7sH0GnY9GFFW
+	clm2hQyONOPq5VUiS4aFX1PzeBy98EfISfbw8qB6RSgZiZ+ug+YF9hPC0mDgki5W6HxUnjc
+	SFpfj+wMvmi/6+2TY4gGK2G4KUHHc00ZuXF4h9C3WVgPkucW/2jt6qpOAJMteJqMRTONjUf
+	QNfmTmKYsD3Oc+H7qagEOmnqHxmpwvMPud+GA/iwZgUtvnFprNfXzQbF8ZTCWLwnY54KNEU
+	NCJKzhabdruv5SaZJ8ug1psplR0c3+7yyFb177vHjyDzEltrTfahmXuyh+C3R0sppdlINyE
+	E6Y8bfBZx4SJ37SDg/H1toGRjjVzS0SeX3BRNKfeCpaeSAWYOSj5EeaNXLDCG5zbaCWOtvu
+	wesH1zUZrhoOgQR6+nw7wTuM1+3fWskV4gLvK0uZjYX8erFPgHH5+PW17vM41QLerH4i1QS
+	oPwArPjO3tUNdVrIjl2hFqnP2VyzXcF/vKJTAU3puFMB9f2coNFQiDIZ2q3RqblGx9ZgLzM
+	RH78mTK8MH9rhdTvxS5eZe2ZW/M3jeFPjK/PX4lrWC+nzAXK0b9X4xIZQR/NAOGVPAiSMWM
+	MoCEMP4YgbMbFqnPvbTNn7RxpuTcNYPR9CynJNYacjf0xuLJkVwoZn/i8GFqU6fK/vEJw6i
+	P0O/7ZFHpcXCOTXOB6OnrvcbzAs4IoEhrqmm2nqZrJaMZaLd24oWkZyvV4iEHcQ4vBM2Xzy
+	CBtt26DnfH7mbCY7apBNy6Nmfko2Ha9rRB2yqTDqmsg4mkGn+RvimIbkp/UauBu95JC/lb2
+	+zF4s9iqODbezhTYdBih4aeOXErrvYmR1mV0nkC+aRQ0bUO7Up6NPfoPf+yVWjWE/0Lgf5N
+	5o03LfThyuuWbUhOzRxDJfmNLKFbbgRbMIHlHLIiUwPpve4MGG7DDL5dgqutgmwurfKrCg/
+	K1tmuC976qqrdvI0fWkm1u56GQWUiVE1+RQTG675aIc8fSQ==
+X-QQ-XMRINFO: NyFYKkN4Ny6FSmKK/uo/jdU=
+X-QQ-RECHKSPAM: 0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241013_205538_527036_50477F91 
-X-CRM114-Status: GOOD (  11.94  )
+X-CRM114-CacheID: sfid-20241013_213909_948676_F0028657 
+X-CRM114-Status: GOOD (  25.10  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,87 +90,203 @@ Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello Frank,
+Hi,
 
-On 2024-10-14 04:03, Frank Wang wrote:
-> From: Frank Wang <frank.wang@rock-chips.com>
+On 10/13/24 02:04, Dragan Simic wrote:
+> Add new SoC dtsi file for the RK3566T variant of the Rockchip RK3566 SoC.
+> The difference between the RK3566T variant and the "full-fat" RK3566 variant
+> is in fewer supported CPU and GPU OPPs on the RK3566T, and in the absence of
+> a functional NPU, which we currently don't have to worry about.
 > 
-> This adds RK3576 device match data support.
+> Examples of the boards based on the RK3566T include the Pine64 Quartz64 Zero
+> SBC, [2] the Radxa ROCK 3C and the Radxa ZERO 3E/3W SBCs.  Unfortunately,
+> Radxa doesn't mention the use of RK3566T officially, but its official SBC
+> specifications do state that the maximum frequency for the Cortex-A55 cores
+> on those SBCs is lower than the "full-fat" RK3566's 1.8 GHz, which makes
+> spotting the presence of the RK3566T SoC variant rather easy. [3][4][5]  An
+> additional, helpful cue is that Radxa handles the CPU and GPU OPPs for the
+> RK3566T variant separately in its downstream kernel. [6]
 > 
-> Signed-off-by: Frank Wang <frank.wang@rock-chips.com>
-
-Looking good to me, thanks for the patch.  My focus was on
-making sure there are no possible regressions.
-
-Acked-by: Dragan Simic <dsimic@manjaro.org>
-
+> The CPU and GPU OPPs supported on the RK3566T SoC variant are taken from the
+> vendor kernel source, [1] which uses the values of the "opp-supported-hw" OPP
+> properties to determine which ones are supported on a particular SoC variant.
+> The actual values of the "opp-supported-hw" properties make it rather easy
+> to see what OPPs are supported on the RK3566T SoC variant, but that, rather
+> unfortunately, clashes with the maximum frequencies advertised officially
+> for the Cortex-A55 CPU cores on the above-mentioned SBCs. [2][3][4][5]  The
+> vendor kernel source indicates that the maximum frequency for the CPU cores
+> is 1.4 GHz, while the SBC specifications state that to be 1.6 GHz.  Unless
+> that discrepancy is resolved somehow, let's take the safe approach and use
+> the lower maximum frequency for the CPU cores.
+> 
+> Update the dts files of the currently supported RK3566T-based boards to use
+> the new SoC dtsi for the RK3566T variant.  This actually takes the CPU cores
+> and the GPUs found on these boards out of their earlier overclocks, but it
+> also means that the officially advertised specifications [2][3][4][5] of the
+> highest supported frequencies for the Cortex-A55 CPU cores on these boards
+> may actually be wrong, as already explained above.
+> 
+> The correctness of the introduced changes was validated by decompiling and
+> comparing all affected board dtb files before and after these changes.
+> 
+> [1] https://raw.githubusercontent.com/rockchip-linux/kernel/f8b9431ee38ed561650be7092ab93f564598daa9/arch/arm64/boot/dts/rockchip/rk3568.dtsi
+> [2] https://wiki.pine64.org/wiki/Quartz64
+> [3] https://dl.radxa.com/rock3/docs/hw/3c/radxa_rock3c_product_brief.pdf
+> [4] https://dl.radxa.com/zero3/docs/hw/3e/radxa_zero_3e_product_brief.pdf
+> [5] https://dl.radxa.com/zero3/docs/hw/3w/radxa_zero_3w_product_brief.pdf
+> [6] https://github.com/radxa/kernel/commit/2dfd51da472e7ebb5ef0d3db78f902454af826b8
+> 
+> Cc: TL Lim <tllim@pine64.org>
+> Cc: Marek Kraus <gamiee@pine64.org>
+> Cc: Tom Cubie <tom@radxa.com>
+> Cc: FUKAUMI Naoki <naoki@radxa.com>
+> Helped-by: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>
+> Helped-by: Jonas Karlman <jonas@kwiboo.se>
+> Signed-off-by: Dragan Simic <dsimic@manjaro.org>
 > ---
->  drivers/phy/rockchip/phy-rockchip-usbdp.c | 41 +++++++++++++++++++++++
->  1 file changed, 41 insertions(+)
+>   .../dts/rockchip/rk3566-radxa-zero-3.dtsi     |  2 +-
+>   .../boot/dts/rockchip/rk3566-rock-3c.dts      |  2 +-
+>   arch/arm64/boot/dts/rockchip/rk3566t.dtsi     | 90 +++++++++++++++++++
+>   3 files changed, 92 insertions(+), 2 deletions(-)
+>   create mode 100644 arch/arm64/boot/dts/rockchip/rk3566t.dtsi
 > 
-> diff --git a/drivers/phy/rockchip/phy-rockchip-usbdp.c
-> b/drivers/phy/rockchip/phy-rockchip-usbdp.c
-> index 2c51e5c62d3e..5b1e8a3806ed 100644
-> --- a/drivers/phy/rockchip/phy-rockchip-usbdp.c
-> +++ b/drivers/phy/rockchip/phy-rockchip-usbdp.c
-> @@ -1538,6 +1538,43 @@ static const char * const rk_udphy_rst_list[] = 
-> {
->  	"init", "cmn", "lane", "pcs_apb", "pma_apb"
->  };
-> 
-> +static const struct rk_udphy_cfg rk3576_udphy_cfgs = {
-> +	.num_phys = 1,
-> +	.phy_ids = { 0x2b010000 },
-> +	.num_rsts = ARRAY_SIZE(rk_udphy_rst_list),
-> +	.rst_list = rk_udphy_rst_list,
-> +	.grfcfg	= {
-> +		/* u2phy-grf */
-> +		.bvalid_phy_con		= RK_UDPHY_GEN_GRF_REG(0x0010, 1, 0, 0x2, 0x3),
-> +		.bvalid_grf_con		= RK_UDPHY_GEN_GRF_REG(0x0000, 15, 14, 0x1, 0x3),
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3566-radxa-zero-3.dtsi b/arch/arm64/boot/dts/rockchip/rk3566-radxa-zero-3.dtsi
+> index de390d92c35e..1ee5d96a46a1 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3566-radxa-zero-3.dtsi
+> +++ b/arch/arm64/boot/dts/rockchip/rk3566-radxa-zero-3.dtsi
+> @@ -3,7 +3,7 @@
+>   #include <dt-bindings/gpio/gpio.h>
+>   #include <dt-bindings/leds/common.h>
+>   #include <dt-bindings/soc/rockchip,vop2.h>
+> -#include "rk3566.dtsi"
+> +#include "rk3566t.dtsi"
+
+could you drop this change for now?
+
+We(Radxa) think we use RK3566.
+
+and vendor kernel[6] refers efuse value to determine it's -T or not.
+can you do similar way?
+
+>   / {
+>   	chosen {
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3566-rock-3c.dts b/arch/arm64/boot/dts/rockchip/rk3566-rock-3c.dts
+> index f2cc086e5001..9a8f4f774dbc 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3566-rock-3c.dts
+> +++ b/arch/arm64/boot/dts/rockchip/rk3566-rock-3c.dts
+> @@ -5,7 +5,7 @@
+>   #include <dt-bindings/leds/common.h>
+>   #include <dt-bindings/pinctrl/rockchip.h>
+>   #include <dt-bindings/soc/rockchip,vop2.h>
+> -#include "rk3566.dtsi"
+> +#include "rk3566t.dtsi"
+
+same here.
+
+Best regards,
+
+--
+FUKAUMI Naoki
+Radxa Computer (Shenzhen) Co., Ltd.
+
+>   / {
+>   	model = "Radxa ROCK 3C";
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3566t.dtsi b/arch/arm64/boot/dts/rockchip/rk3566t.dtsi
+> new file mode 100644
+> index 000000000000..cd89bd3b125b
+> --- /dev/null
+> +++ b/arch/arm64/boot/dts/rockchip/rk3566t.dtsi
+> @@ -0,0 +1,90 @@
+> +// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
 > +
-> +		/* usb-grf */
-> +		.usb3otg0_cfg		= RK_UDPHY_GEN_GRF_REG(0x0030, 15, 0, 0x1100, 
-> 0x0188),
+> +#include "rk3566-base.dtsi"
 > +
-> +		/* usbdpphy-grf */
-> +		.low_pwrn		= RK_UDPHY_GEN_GRF_REG(0x0004, 13, 13, 0, 1),
-> +		.rx_lfps		= RK_UDPHY_GEN_GRF_REG(0x0004, 14, 14, 0, 1),
-> +	},
-> +	.vogrfcfg = {
-> +		{
-> +			.hpd_trigger	= RK_UDPHY_GEN_GRF_REG(0x0000, 11, 10, 1, 3),
-> +			.dp_lane_reg    = 0x0000,
-> +		},
-> +	},
-> +	.dp_tx_ctrl_cfg = {
-> +		rk3588_dp_tx_drv_ctrl_rbr_hbr_typec,
-> +		rk3588_dp_tx_drv_ctrl_rbr_hbr_typec,
-> +		rk3588_dp_tx_drv_ctrl_hbr2,
-> +		rk3588_dp_tx_drv_ctrl_hbr3,
-> +	},
-> +	.dp_tx_ctrl_cfg_typec = {
-> +		rk3588_dp_tx_drv_ctrl_rbr_hbr_typec,
-> +		rk3588_dp_tx_drv_ctrl_rbr_hbr_typec,
-> +		rk3588_dp_tx_drv_ctrl_hbr2,
-> +		rk3588_dp_tx_drv_ctrl_hbr3,
-> +	},
+> +/ {
+> +	cpu0_opp_table: opp-table-0 {
+> +		compatible = "operating-points-v2";
+> +		opp-shared;
+> +
+> +		opp-408000000 {
+> +			opp-hz = /bits/ 64 <408000000>;
+> +			opp-microvolt = <850000 850000 1150000>;
+> +			clock-latency-ns = <40000>;
+> +		};
+> +
+> +		opp-600000000 {
+> +			opp-hz = /bits/ 64 <600000000>;
+> +			opp-microvolt = <850000 850000 1150000>;
+> +			clock-latency-ns = <40000>;
+> +		};
+> +
+> +		opp-816000000 {
+> +			opp-hz = /bits/ 64 <816000000>;
+> +			opp-microvolt = <850000 850000 1150000>;
+> +			clock-latency-ns = <40000>;
+> +			opp-suspend;
+> +		};
+> +
+> +		opp-1104000000 {
+> +			opp-hz = /bits/ 64 <1104000000>;
+> +			opp-microvolt = <900000 900000 1150000>;
+> +			clock-latency-ns = <40000>;
+> +		};
+> +
+> +		opp-1416000000 {
+> +			opp-hz = /bits/ 64 <1416000000>;
+> +			opp-microvolt = <1025000 1025000 1150000>;
+> +			clock-latency-ns = <40000>;
+> +		};
+> +	};
+> +
+> +	gpu_opp_table: opp-table-1 {
+> +		compatible = "operating-points-v2";
+> +
+> +		opp-200000000 {
+> +			opp-hz = /bits/ 64 <200000000>;
+> +			opp-microvolt = <850000 850000 1000000>;
+> +		};
+> +
+> +		opp-300000000 {
+> +			opp-hz = /bits/ 64 <300000000>;
+> +			opp-microvolt = <850000 850000 1000000>;
+> +		};
+> +
+> +		opp-400000000 {
+> +			opp-hz = /bits/ 64 <400000000>;
+> +			opp-microvolt = <850000 850000 1000000>;
+> +		};
+> +
+> +		opp-600000000 {
+> +			opp-hz = /bits/ 64 <600000000>;
+> +			opp-microvolt = <900000 900000 1000000>;
+> +		};
+> +
+> +		opp-700000000 {
+> +			opp-hz = /bits/ 64 <700000000>;
+> +			opp-microvolt = <950000 950000 1000000>;
+> +		};
+> +	};
 > +};
 > +
->  static const struct rk_udphy_cfg rk3588_udphy_cfgs = {
->  	.num_phys = 2,
->  	.phy_ids = {
-> @@ -1584,6 +1621,10 @@ static const struct rk_udphy_cfg 
-> rk3588_udphy_cfgs = {
->  };
-> 
->  static const struct of_device_id rk_udphy_dt_match[] = {
-> +	{
-> +		.compatible = "rockchip,rk3576-usbdp-phy",
-> +		.data = &rk3576_udphy_cfgs
-> +	},
->  	{
->  		.compatible = "rockchip,rk3588-usbdp-phy",
->  		.data = &rk3588_udphy_cfgs
+> +&cpu0 {
+> +	operating-points-v2 = <&cpu0_opp_table>;
+> +};
+> +
+> +&cpu1 {
+> +	operating-points-v2 = <&cpu0_opp_table>;
+> +};
+> +
+> +&cpu2 {
+> +	operating-points-v2 = <&cpu0_opp_table>;
+> +};
+> +
+> +&cpu3 {
+> +	operating-points-v2 = <&cpu0_opp_table>;
+> +};
+> +
+> +&gpu {
+> +	operating-points-v2 = <&gpu_opp_table>;
+> +};
 
 _______________________________________________
 Linux-rockchip mailing list
