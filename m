@@ -4,82 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DB651D18139
-	for <linux-rockchip@archiver.kernel.org>; Mon, 14 Oct 2024 17:42:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CBA58D1813B
+	for <linux-rockchip@archiver.kernel.org>; Mon, 14 Oct 2024 17:54:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=6UFTTI5TJ06uNNzSioshTpDbUsPOCUzys23/Pz4H+Ys=; b=HtUSngoSrL+E/t
-	p+rBx/1eC6VV7Tu8QM7IvQUMEkHMTQsxWWeLlbpVj5k9RmUD436K03agbkiQnygL0Krr/bHU4YBjU
-	vk9r7ktNOWYmDJCMeCrQsxxXmXZL35qhVcJbqtK6oVx4IoYD/Odok/R7EtYNzEg7FzZR3oTEmM1rl
-	LvFUqc+4ul8dJVOoYbtI07wyDgwkplDuBh7TFBHB8IzlWRjB3/RPRYLUfr69mo7o7yJ1UHZbWx30c
-	CiVrW0hj7J804C4ruLrBMgLvsXUG17cymXXlaHOityncPKfCiDsCaunK/u3USKFJep26GvEQnMVLu
-	vRw6RdsgLnbY685wFX2Q==;
+	List-Owner; bh=RFAwyWDV1hS3HCh5qH/n5TX0PZJMnE0y4dvz2GsU1Ac=; b=GsBXvXyC8D1X8L
+	1j9fokB0ZEpUaTIV0EwBFPQEn38LT7MyuPBz4EIAQvxS4Y6D+t8jNa1mHwXv3ZnrKLL00qI1CdPE5
+	IuZmq0hRPp3hXEJp7Pd3RjKQOKYo5EeuNpCUr2EWNq3hriyQaEcAUWT+hipOdxoYl+pU+aetYcAOE
+	jj3q99xF8NBFU00V5aXsVwvoViNt6C/h82IYm6b5LXwKNG6lNN8JueX+3tVryKOLdO1wHUWMbOYIf
+	FWWyfM+64gnlLUlM0/Zy6K70D+tRT5t54sZr17bbsyE8nojctJTRHNX54/uPdaBBp89z41BQxbxdS
+	sSLQAd67+ujhV0TK3LSQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t0P50-000000064oF-2Eom;
-	Mon, 14 Oct 2024 17:42:02 +0000
-Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
+	id 1t0PGX-000000066P6-022X;
+	Mon, 14 Oct 2024 17:53:57 +0000
+Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t0P2G-000000064Kd-30ke;
-	Mon, 14 Oct 2024 17:39:14 +0000
-Received: by mail-wr1-x42d.google.com with SMTP id ffacd0b85a97d-37d5038c653so2776693f8f.2;
-        Mon, 14 Oct 2024 10:39:12 -0700 (PDT)
+	id 1t0PF7-000000066JD-12jL;
+	Mon, 14 Oct 2024 17:52:30 +0000
+Received: by mail-wr1-x42c.google.com with SMTP id ffacd0b85a97d-37d58377339so3331767f8f.1;
+        Mon, 14 Oct 2024 10:52:28 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1728927551; x=1729532351; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1728928347; x=1729533147; darn=lists.infradead.org;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=Ex9dSK9Fr9Mrms2dZEi46OXusqhHyEOAsbZ50rRI7gk=;
-        b=bHyYSAv4lXeCd1mBJbl4/XyiadyPILwZHoQSHS341YzmF1CdNIpwN4aeBGQXBLalW5
-         XknaA7iFUsNgeNoRFGExikctygvj4Dprk8vjScXTe9WiH7pfxZsPyG6knOQcrMT0TC/7
-         HIZsJu7iIYtpdlUcL6V4k50c+qfpcQxC+27dDdZbUpnA0/ZZNT89hxcSo6L4ZofiC0MG
-         7EKeZiQyPJWxg+Y6XxVBEowopZ6qMDvfTxyyySgwBECbHPexOxenhCfvoWMPNqtQgObU
-         EjP8vsyuVy9pEGTWvxT2gVCCufXwnZ7PNQ9qTsTkZPBebUw6OZgsC11Nnx/NXRvXHMOl
-         xmTg==
+        bh=Ixu8D2HLAaDR+KK2uTRWPmXs/zMROzq2qZqU6zrIdcM=;
+        b=a+O3MF8YBJfPycwRHtuBPVBMgwNpGzGn9RGTLnm9qaVNY+bKcn33ckQhFmMfzMET9t
+         nU6B+iuTB9nv/ZS8JmpwOhkmqtcg+D1MLKpdsQ/X49bzOrZhfa7QHTFCOsJlp2H4F9s4
+         HmcPBRo4iIaeB1nRIZdmpp9qfN0S83BoyF+98yUXgOg7NV0m7TfnT14ki03MR1rKz2nA
+         J50Ae2U8p6fkxLSA72lqtCLVYXPlBWgA8JenIvvPrEfk6MV+E3HKeT2fAcaUGzx9SR5x
+         B0Fde3ZBZ+RTZTZGbZm6w0UiEExgXFIw+Sa5G7lyUkIBfW+xwik6lKkbyY44/57+QWe4
+         Hd7Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1728927551; x=1729532351;
+        d=1e100.net; s=20230601; t=1728928347; x=1729533147;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=Ex9dSK9Fr9Mrms2dZEi46OXusqhHyEOAsbZ50rRI7gk=;
-        b=C8My0Zi42mbyRERpKCjrT8F5DG/3otiTBmnkzzFJdHUEkJBAXP+dSeNnzBA0wOHTk4
-         YtS7zacBoHlOJpIwAJuyqUuurju4pfNTTLTHfT8t935uDXPLlyAtZg4MPP83mycmqwYp
-         +VDRr49tvPggM7bItwxUuLX9R23Tpsd4ZF3fiF6ZHI8Mmb3gJKbaMXWo1d09cYisfcDi
-         IcaRAezgIgx8aDmZluB6rSSrmLwc8W3lyjSfi7rK8PSVIlsAGX0fI+DJCIlu1wR0Jyk3
-         j4HPwI7xvfJzPiuQBEyrHDus12F0kKD2DxUo/1PkKUtOmBsDfpFurOTpeKzpQjzFQmw8
-         DQuw==
-X-Forwarded-Encrypted: i=1; AJvYcCUUM31G2Vi8pMObVH/AohXfulzgWtxwLCGq8+TrQNAhmUCoI7pneYpbCB7VpKjN0Cbsa8nhN5FT6O5cB7yxonaw@lists.infradead.org, AJvYcCXccl5sN2H3CZpJrFW0+RooScbgta2egHOLy39T4oftQNgQ73vPcvH/sK18ZO05+6yg/khnMkuDZpSXCdV3pjQ=@lists.infradead.org
-X-Gm-Message-State: AOJu0YwnnQjvRKWVhs4flbFZ3UfuA9Q4etBGfvd6P0JgrlkEPbA0djAb
-	pnh8e+8w9SD1eqoX+ev9CjIDwNhvvGrDZhAm5kESveGUAtxa8Yp54t56ziZdvVCzQ03y5uZKof+
-	Mtd4B1XWP/+/Cg7GDX+omqoA7v5A=
-X-Google-Smtp-Source: AGHT+IG8Ioyzz6mOTNODHp+6JGPrDIqTDoYoXcA8KANumMT330PJOmG1Ry29YovlxV6hBGItqkJAhM6agEIpW0+j5LI=
-X-Received: by 2002:adf:ea45:0:b0:37d:2e78:8875 with SMTP id
- ffacd0b85a97d-37d552ce636mr9080330f8f.56.1728927550932; Mon, 14 Oct 2024
- 10:39:10 -0700 (PDT)
+        bh=Ixu8D2HLAaDR+KK2uTRWPmXs/zMROzq2qZqU6zrIdcM=;
+        b=wELb0Oor8mM8OHVkBQT4oaDw5eZNPL5MpNvxucmMtN7+i/wjaPStZFW6sOArrI0k/s
+         7QpdjneY51i6MNQtnWjDTJgIWhEVHb7dKAXRolwzPzgRHc0TwuiUcUvTBZOFYcIzEIEw
+         6c12la7OVxuWpKILUAoP3vZspvioKmzIR3Bi/pPWSc/qkHpQBi1Pe4kjtsJW2s/YACsS
+         I1TenDgfI0u8Otls6EqVe0vdDRGSd/L3jN7UumGzVjho+2ffRkZrDWlHUrTaIsCf4ruZ
+         lAgpyy/HvB8RTaXcklbZ3YhDyhSCLirkI6tYhzsRV04ks6c970hr3vH4eXj1zDWmWKXX
+         MWjA==
+X-Forwarded-Encrypted: i=1; AJvYcCUfMGzkWX67ebwEKMYRQkGZ/tr9iBA2cDzunLzpAuzVZkz+u8UmTM3jwD4n17+8Xwnjb+YA5781uwQGtR1cfq8A@lists.infradead.org, AJvYcCXN9VcTRQmb6LVG0DrrCBl9aE2mPs2hBLUhyWQtrwTx4HFnrEPpYxLoSqKHGZp7iDK6kjCCcOLvb0YAkjSOIIc=@lists.infradead.org
+X-Gm-Message-State: AOJu0Yy8VO4TtxDfJxuYFY9Z/Gn8a0xFz0xukoKSkqnea7pw2IzcUVuX
+	zOuySQeqIQnSeNdPlYIU6b412Aq3rmjNSmP88RV2ypQp9XhyEGyxpFCtMV07mqJ7WPBqonqC1tz
+	OGYteZT6fabXs2env7OZMCj0YddE=
+X-Google-Smtp-Source: AGHT+IHQ4uC66x2exWQtJqcMfm+3DuKjElbNTUY2NreiU68UqRFKvhPazV9idyfCVDmIeWVZP+QCLAdUUM++GZehcl0=
+X-Received: by 2002:adf:b359:0:b0:37d:4c40:699 with SMTP id
+ ffacd0b85a97d-37d5ff25593mr8841523f8f.5.1728928347035; Mon, 14 Oct 2024
+ 10:52:27 -0700 (PDT)
 MIME-Version: 1.0
-References: <20241014113026.78853-1-cenk.uluisik@googlemail.com> <172891445477.1127378.13874736914700071280.robh@kernel.org>
-In-Reply-To: <172891445477.1127378.13874736914700071280.robh@kernel.org>
+References: <20241014113026.78853-1-cenk.uluisik@googlemail.com>
+In-Reply-To: <20241014113026.78853-1-cenk.uluisik@googlemail.com>
 From: Jimmy Hon <honyuenkwun@gmail.com>
-Date: Mon, 14 Oct 2024 12:38:59 -0500
-Message-ID: <CALWfF7JNcNi5Gs04V5arJQEw89MJKPy6oRDxh-jdtmo-oCAu0A@mail.gmail.com>
+Date: Mon, 14 Oct 2024 12:52:15 -0500
+Message-ID: <CALWfF7+b2zeUaB6N7DJVprvajNbvXmAn9wVUyVVt57D1oECwOA@mail.gmail.com>
 Subject: Re: [PATCH v4 1/2] arm64: dts: rockchip: Add rk3588-orangepi-5b
  device tree and refactor
 To: Cenk Uluisik <cenk.uluisik@googlemail.com>
-Cc: Krzysztof Kozlowski <krzk+dt@kernel.org>, devicetree@vger.kernel.org, 
-	Heiko Stuebner <heiko@sntech.de>, Chris Morgan <macromorgan@hotmail.com>, Andy Yan <andyshrk@163.com>, 
-	Jagan Teki <jagan@edgeble.ai>, linux-arm-kernel@lists.infradead.org, 
-	Tim Lunn <tim@feathertop.org>, linux-rockchip@lists.infradead.org, 
-	Dragan Simic <dsimic@manjaro.org>, Jonas Karlman <jonas@kwiboo.se>, 
-	Michael Riesch <michael.riesch@wolfvision.net>, Jing Luo <jing@jing.rocks>, 
-	Conor Dooley <conor+dt@kernel.org>, linux-kernel@vger.kernel.org, 
-	"Rob Herring (Arm)" <robh@kernel.org>
+Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+	Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+	Chris Morgan <macromorgan@hotmail.com>, Dragan Simic <dsimic@manjaro.org>, 
+	Jonas Karlman <jonas@kwiboo.se>, Tim Lunn <tim@feathertop.org>, Andy Yan <andyshrk@163.com>, 
+	Jagan Teki <jagan@edgeble.ai>, Michael Riesch <michael.riesch@wolfvision.net>, 
+	Jing Luo <jing@jing.rocks>, devicetree@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+	linux-kernel@vger.kernel.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241014_103912_779332_6B416B25 
-X-CRM114-Status: UNSURE (   9.50  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20241014_105229_309726_412CC26E 
+X-CRM114-Status: GOOD (  12.87  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,27 +95,46 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-> New warnings running 'make CHECK_DTBS=y rockchip/rk3588s-orangepi-5.dtb rockchip/rk3588s-orangepi-5b.dtb' for 20241014113026.78853-1-cenk.uluisik@googlemail.com:
->
-> arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5b.dtb: gpio-func: leds-gpio: {'rockchip,pins': [[0, 2, 0, 245]], 'phandle': 253} is not of type 'array'
->         from schema $id: http://devicetree.org/schemas/gpio/gpio-consumer.yaml#
-Regarding the "leds-gpio" warning, DTS checking script might not like
-that id. You could probably avoid it by naming it "green-led". Similar
-to what the Orange Pi 5 Plus does. This would be a separate bugfix
-commit before any of the other changes in this series.
+> +&sdhci {
+> +       bus-width = <8>;
+> +       no-sdio;
+> +       no-sd;
+> +       non-removable;
+> +       max-frequency = <200000000>;
+> +       mmc-hs400-1_8v;
+> +       mmc-hs400-enhanced-strobe;
+> +       status = "disabled";
+> +};
+This is good. SDHCI is disabled by default, so just the Orange Pi 5B
+board can enable it.
 
-> arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5b.dtb: vcc-3v3-sd-s0-regulator: Unevaluated properties are not allowed ('enable-active-low' was unexpected)
->         from schema $id: http://devicetree.org/schemas/regulator/fixed-regulator.yaml#
-The enable-active-low has already been addressed in
-https://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git/commit/?h=v6.12-armsoc/dtsfixes&id=f4d29bebaa6118c1e51e8f1c21ce2b34f43e1479
-So you can avoid the error if you start with v6.12-armsoc as your baseline.
+>  &sfc {
+>         pinctrl-names = "default";
+>         pinctrl-0 = <&fspim0_pins>;
+> -       status = "okay";
+> +       status = "disabled";
+This is good. SFC is disabled by default, so just the Orange Pi 5
+board can enable it.
 
-Regarding the "leds-gpio" warning, DTS checking script might not like
-that id. You could probably avoid it by naming it "green-led". Similar
-to what the Orange Pi 5 Plus does. This would be a separate bugfix
-commit before any of the other changes.
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5b.dts b/arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5b.dts
+> new file mode 100644
+> index 000000000000..55eee855cacc
+> --- /dev/null
+> +++ b/arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5b.dts
+> @@ -0,0 +1,27 @@
+> +
+> +&sfc {
+> +       status = "disabled";
+> +};
+Since this is disabled by default. So this is now redundant and should
+be removed.
 
-Jimmy
+> +
+> +&pcie2x1l2 {
+> +       reset-gpios = <&gpio3 RK_PD1 GPIO_ACTIVE_HIGH>;
+> +       status = "okay";
+> +};
+Do you want to defer this part for now, and include this with WiFi enablement?
 
 _______________________________________________
 Linux-rockchip mailing list
