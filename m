@@ -4,63 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C6985CFC26C
-	for <linux-rockchip@archiver.kernel.org>; Tue, 15 Oct 2024 06:17:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9079ECFC271
+	for <linux-rockchip@archiver.kernel.org>; Tue, 15 Oct 2024 06:20:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=fz5TNose8djyqn85wUK0gpuAc6snbgVoVIXUEf/zR7c=; b=P8xHRjZlPX3ktI
-	kXT3E/zMmd/Mg6+eYOIdnO1Aw2s2ImSNq82QpymH7fX7s7DwVg6GUqc3azoPsiHdoyPtUdlFTSplo
-	v2cbUOAv7EtHVl0C+HDPh/7bpqb7RcoSh8LN60hW/VANlTJf7gr6riTJejVT1oGUnepTGByLsByzM
-	6Wcx3rbSjfhwUoXf9EAW4NJOig2UeNg6ZPL4oVlu2iUHRkUGoB2NC4dP/XAbhAG7TdnE8tblqN6yv
-	cyYgvog6s/uVpRlDM0UGBmLVGXaMJnDeC5z48aXP6PPGwoSWuTZfI7/wou7fO6yRA6j4/xA4K6MPj
-	989z7N//Pt4bJABNhw8A==;
+	List-Owner; bh=12oJ8Dnfci7wk79pTUj2/xF7fG4TEpeQagtEoOFtUmI=; b=1a/BHAfOGyOZ9c
+	u0+CMY+g5DIYlB/mvX1QEfZbeO0t+L2q4Ll55bib0snep+PD3Gr+2cy+3KFERzbAYyZWz4yqXxDJ7
+	WlDpL/wegZmBJ/AGNkXF2MoSWBA38Uck4G3mcA2xJIlESKKkU/fKwiWAXTAV8L58Ayq8ic0hhbuRL
+	z+TfgICs0YdPTaTikVpTKuPDd7I5Y7kNKc73fAQDUTP9nXrmxf3s32GlFljJqTMKX9lRcEtsp7k+Q
+	iSgooP6V8dm5ushRDA+9zlzn5rZVe4ndsMjzQ0eDJWLpyuSwpk/xnSMwov9Iz6UQBGUWsz7v3kKam
+	nI4bvqQ2mP2CMTlDL65g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t0as5-00000007Bg2-3AK1;
-	Tue, 15 Oct 2024 06:17:29 +0000
+	id 1t0auh-00000007C0Q-3wLM;
+	Tue, 15 Oct 2024 06:20:11 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t0aqe-00000007BWf-1ax1;
-	Tue, 15 Oct 2024 06:16:01 +0000
+	id 1t0atG-00000007Bpk-1uwi;
+	Tue, 15 Oct 2024 06:18:43 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
 	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=EL6LxVKAABxO1KNYnS0+bzWx4sk+zoR4NNlkZV/B+Gw=; b=zQQGTXgIBJ61KEJTDmi9YhW+mi
-	I6VVOJZDZXk2JbBM283fyxK35/AOuuF3nOzh4HGd7f0cn5L9Av60GXpwpow04Y7+OZQRXrYN+U+TI
-	XwXILtWsMre1e3wfI1TukYQxKbLl5li5c6n3R3TQy+2No7O2od1CVNyQUFiA8eX/vL6UmVK17aYt1
-	w7b3xLRJz7phFlknZp5aj4kwiYYnWXJoyDFsC+oTckoFQACCF50EPo491m1kpx3BXE+0QQegGVzOi
-	JzgbZ2MFGJTx2K6oQBegJbr9u8kPTR9Yjihjyna2URbxu0WKnhmpU4mUL2a4q5PF/sRVim9dBdD2h
-	W921Ahvg==;
+	bh=JpaY+/UpnGaVq4x8TJTA0HpVZD8qxzs/9fsseqNkj9Q=; b=feUZKtsvuKh+yhuVqfh83v11HJ
+	sUYUknCAZz9taBlFZ4BQCV1EyhGahG5R/+TAZh65pOsue13dprVozCWU2xJ98rdlGM3Os15Sgj0Xx
+	AqIuzyc0eVBwE71rlwaeZm5qEbJb2qG5ZQ0LQx7N9yKrMJd2REMpwYGLNpcE5fn9QZFJN1o77Xm0H
+	lNDie8C1Uun12fI3fievMu3GsjzlOZpFjwOUS8PrLaM/ABP6lwBco61JSs1mMUs3KtL16OiTIlY7T
+	ZljHsbiI+ENNbw++Zc/LL+iOGEqf0VKiFEeNA5i2Ir08Rm3iO8mOK8cUpAeiMoSXHP9ioLDlBeEwm
+	B+DRkvYg==;
 Received: from i53875b34.versanet.de ([83.135.91.52] helo=diego.localnet)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1t0aqY-000713-Hd; Tue, 15 Oct 2024 08:15:54 +0200
+	id 1t0atB-00074Q-Jx; Tue, 15 Oct 2024 08:18:37 +0200
 From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
 To: vkoul@kernel.org, kishon@kernel.org, robh@kernel.org, krzk+dt@kernel.org,
  conor+dt@kernel.org, Frank Wang <frawang.cn@gmail.com>
 Cc: linux-phy@lists.infradead.org, devicetree@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
  linux-rockchip@lists.infradead.org, william.wu@rock-chips.com,
- tim.chen@rock-chips.com, Kever Yang <kever.yang@rock-chips.com>,
- Frank Wang <frank.wang@rock-chips.com>
-Subject: Re: [PATCH 2/2] phy: rockchip-naneng-combo: Support rk3576
-Date: Tue, 15 Oct 2024 08:15:53 +0200
-Message-ID: <1981070.PYKUYFuaPT@diego>
-In-Reply-To: <20241015013351.4884-2-frawang.cn@gmail.com>
-References: <20241015013351.4884-1-frawang.cn@gmail.com>
- <20241015013351.4884-2-frawang.cn@gmail.com>
+ tim.chen@rock-chips.com, Frank Wang <frank.wang@rock-chips.com>
+Subject: Re: [PATCH v5 1/3] phy: rockchip: inno-usb2: convert clock management to bulk
+Date: Tue, 15 Oct 2024 08:18:36 +0200
+Message-ID: <7721470.EvYhyI6sBW@diego>
+In-Reply-To: <20241011065140.19999-1-frawang.cn@gmail.com>
+References: <20241011065140.19999-1-frawang.cn@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241014_231600_603802_176A23D2 
-X-CRM114-Status: GOOD (  23.15  )
+X-CRM114-CacheID: sfid-20241014_231842_541566_B0107AA9 
+X-CRM114-Status: GOOD (  30.49  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,202 +75,136 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Frank,
-
-Am Dienstag, 15. Oktober 2024, 03:33:51 CEST schrieb Frank Wang:
-> From: Kever Yang <kever.yang@rock-chips.com>
+Am Freitag, 11. Oktober 2024, 08:51:38 CEST schrieb Frank Wang:
+> From: Frank Wang <frank.wang@rock-chips.com>
 > 
-> phy0: pcie, sata
-> phy1: pcie, sata, usb3
+> Since some Rockchip SoCs (e.g RK3576) have more than one clock,
+> this converts the clock management from single to bulk method to
+> make the driver more flexible.
 > 
-> Signed-off-by: Kever Yang <kever.yang@rock-chips.com>
-> Signed-off-by: William Wu <william.wu@rock-chips.com>
 > Signed-off-by: Frank Wang <frank.wang@rock-chips.com>
+
+thanks a lot for all the work you did on this
+
+Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+
 > ---
->  .../rockchip/phy-rockchip-naneng-combphy.c    | 202 ++++++++++++++++++
->  1 file changed, 202 insertions(+)
+> Changelog:
+> V5:
+>  - use dev_err_probe() in clock enable error path in probe.
 > 
-> diff --git a/drivers/phy/rockchip/phy-rockchip-naneng-combphy.c b/drivers/phy/rockchip/phy-rockchip-naneng-combphy.c
-> index 0a9989e41237..4c41317a8041 100644
-> --- a/drivers/phy/rockchip/phy-rockchip-naneng-combphy.c
-> +++ b/drivers/phy/rockchip/phy-rockchip-naneng-combphy.c
-> @@ -584,6 +585,203 @@ static const struct rockchip_combphy_cfg rk3568_combphy_cfgs = {
->  	.combphy_cfg	= rk3568_combphy_cfg,
->  };
+> v4:
+>  - a new patch split from the [PATCH v3 2/2], suggestions from Heiko.
+> 
+> v1-v3:
+>  - none
+> 
+>  drivers/phy/rockchip/phy-rockchip-inno-usb2.c | 45 +++++++++++++++----
+>  1 file changed, 37 insertions(+), 8 deletions(-)
+> 
+> diff --git a/drivers/phy/rockchip/phy-rockchip-inno-usb2.c b/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
+> index 6e5214862b8a3..f71266c27091e 100644
+> --- a/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
+> +++ b/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
+> @@ -229,9 +229,10 @@ struct rockchip_usb2phy_port {
+>   * @dev: pointer to device.
+>   * @grf: General Register Files regmap.
+>   * @usbgrf: USB General Register Files regmap.
+> - * @clk: clock struct of phy input clk.
+> + * @clks: array of phy input clocks.
+>   * @clk480m: clock struct of phy output clk.
+>   * @clk480m_hw: clock struct of phy output clk management.
+> + * @num_clks: number of phy input clocks.
+>   * @phy_reset: phy reset control.
+>   * @chg_state: states involved in USB charger detection.
+>   * @chg_type: USB charger types.
+> @@ -246,9 +247,10 @@ struct rockchip_usb2phy {
+>  	struct device	*dev;
+>  	struct regmap	*grf;
+>  	struct regmap	*usbgrf;
+> -	struct clk	*clk;
+> +	struct clk_bulk_data	*clks;
+>  	struct clk	*clk480m;
+>  	struct clk_hw	clk480m_hw;
+> +	int			num_clks;
+>  	struct reset_control	*phy_reset;
+>  	enum usb_chg_state	chg_state;
+>  	enum power_supply_type	chg_type;
+> @@ -310,6 +312,13 @@ static int rockchip_usb2phy_reset(struct rockchip_usb2phy *rphy)
+>  	return 0;
+>  }
 >  
-> +static int rk3576_combphy_cfg(struct rockchip_combphy_priv *priv)
+> +static void rockchip_usb2phy_clk_bulk_disable(void *data)
 > +{
-> +	const struct rockchip_combphy_grfcfg *cfg = priv->cfg->grfcfg;
-> +	unsigned long rate;
+> +	struct rockchip_usb2phy *rphy = data;
 > +
-> +	switch (priv->type) {
-> +	case PHY_TYPE_PCIE:
-> +		/* Set SSC downward spread spectrum */
-> +		rockchip_combphy_updatel(priv, GENMASK(5, 4), BIT(4), 0x7c);
-
-Can we get constants for those magic values please?
-
-The combophys for rk3568 and rk3588 do use actual constants to at least
-somewhat describe what happens, so it would be really nice for the rk3576
-to do this as well.
-
-Same for the rockchip_combphy_updatel and other writel calls below.
-
-
-> +		rockchip_combphy_param_write(priv->phy_grf, &cfg->con0_for_pcie, true);
-> +		rockchip_combphy_param_write(priv->phy_grf, &cfg->con1_for_pcie, true);
-> +		rockchip_combphy_param_write(priv->phy_grf, &cfg->con2_for_pcie, true);
-> +		rockchip_combphy_param_write(priv->phy_grf, &cfg->con3_for_pcie, true);
-> +		break;
-> +	case PHY_TYPE_USB3:
-> +		/* Set SSC downward spread spectrum */
-> +		rockchip_combphy_updatel(priv, GENMASK(5, 4), BIT(4), 0x7c);
-> +
-> +		/* Enable adaptive CTLE for USB3.0 Rx */
-> +		rockchip_combphy_updatel(priv, GENMASK(0, 0), BIT(0), 0x38);
-> +
-> +		/* Set PLL KVCO fine tuning signals */
-> +		rockchip_combphy_updatel(priv, GENMASK(4, 2), BIT(3), 0x80);
-> +
-> +		/* Set PLL LPF R1 to su_trim[10:7]=1001 */
-> +		writel(0x4, priv->mmio + (0xb << 2));
-> +
-> +		/* Set PLL input clock divider 1/2 */
-> +		rockchip_combphy_updatel(priv, GENMASK(7, 6), BIT(6), 0x14);
-> +
-> +		/* Set PLL loop divider */
-> +		writel(0x32, priv->mmio + (0x11 << 2));
-> +
-> +		/* Set PLL KVCO to min and set PLL charge pump current to max */
-> +		writel(0xf0, priv->mmio + (0xa << 2));
-> +
-> +		/* Set Rx squelch input filler bandwidth */
-> +		writel(0x0d, priv->mmio + (0x14 << 2));
-> +
-> +		rockchip_combphy_param_write(priv->phy_grf, &cfg->pipe_txcomp_sel, false);
-> +		rockchip_combphy_param_write(priv->phy_grf, &cfg->pipe_txelec_sel, false);
-> +		rockchip_combphy_param_write(priv->phy_grf, &cfg->usb_mode_set, true);
-> +		break;
-> +	case PHY_TYPE_SATA:
-> +		/* Enable adaptive CTLE for SATA Rx */
-> +		rockchip_combphy_updatel(priv, GENMASK(0, 0), BIT(0), 0x38);
-> +
-> +		/* Set tx_rterm = 50 ohm and rx_rterm = 43.5 ohm */
-> +		writel(0x8F, priv->mmio + (0x06 << 2));
-> +
-> +		rockchip_combphy_param_write(priv->phy_grf, &cfg->con0_for_sata, true);
-> +		rockchip_combphy_param_write(priv->phy_grf, &cfg->con1_for_sata, true);
-> +		rockchip_combphy_param_write(priv->phy_grf, &cfg->con2_for_sata, true);
-> +		rockchip_combphy_param_write(priv->phy_grf, &cfg->con3_for_sata, true);
-> +		rockchip_combphy_param_write(priv->pipe_grf, &cfg->pipe_con0_for_sata, true);
-> +		rockchip_combphy_param_write(priv->pipe_grf, &cfg->pipe_con1_for_sata, true);
-> +		break;
-> +	default:
-> +		dev_err(priv->dev, "incompatible PHY type\n");
-> +		return -EINVAL;
-> +	}
-> +
-> +	rate = clk_get_rate(priv->refclk);
-> +
-> +	switch (rate) {
-> +	case REF_CLOCK_24MHz:
-> +		rockchip_combphy_param_write(priv->phy_grf, &cfg->pipe_clk_24m, true);
-> +		if (priv->type == PHY_TYPE_USB3 || priv->type == PHY_TYPE_SATA) {
-> +			/* Set ssc_cnt[9:0]=0101111101 & 31.5KHz */
-> +			rockchip_combphy_updatel(priv, GENMASK(7, 6), BIT(6), 0xe << 2);
-> +
-> +			rockchip_combphy_updatel(priv, GENMASK(7, 0), 0x5f, 0xf << 2);
-> +		} else if (priv->type == PHY_TYPE_PCIE) {
-> +			/* PLL KVCO tuning fine */
-> +			rockchip_combphy_updatel(priv, GENMASK(4, 2), 0x4 << 2, 0x20 << 2);
-> +
-> +			/* Set up rx_trim */
-> +			writel(0x0, priv->mmio + (0x1b << 2));
-> +
-> +			/* Set up su_trim: T0_1 */
-> +			writel(0x90, priv->mmio + (0xa << 2));
-> +			writel(0x02, priv->mmio + (0xb << 2));
-> +			writel(0x57, priv->mmio + (0xd << 2));
-> +
-> +			writel(0x5f, priv->mmio + (0xf << 2));
-
-This does includes both the value as well as the register addresses,
-because a hex-value with a bit shift makes that even less readable.
-
-Thanks a lot
-Heiko
-
-
-> +		}
-> +		break;
-> +	case REF_CLOCK_25MHz:
-> +		rockchip_combphy_param_write(priv->phy_grf, &cfg->pipe_clk_25m, true);
-> +		break;
-> +	case REF_CLOCK_100MHz:
-> +		rockchip_combphy_param_write(priv->phy_grf, &cfg->pipe_clk_100m, true);
-> +		if (priv->type == PHY_TYPE_PCIE) {
-> +			/* gate_tx_pck_sel length select work for L1SS */
-> +			writel(0xc0, priv->mmio + 0x74);
-> +
-> +			/* PLL KVCO tuning fine */
-> +			rockchip_combphy_updatel(priv, GENMASK(4, 2), 0x4 << 2, 0x20 << 2);
-> +
-> +			/* Set up rx_trim: PLL LPF C1 85pf R1 1.25kohm */
-> +			writel(0x4c, priv->mmio + (0x1b << 2));
-> +
-> +			/* Set up su_trim: T3_P1 650mv */
-> +			writel(0x90, priv->mmio + (0xa << 2));
-> +			writel(0x43, priv->mmio + (0xb << 2));
-> +			writel(0x88, priv->mmio + (0xc << 2));
-> +			writel(0x56, priv->mmio + (0xd << 2));
-> +		} else if (priv->type == PHY_TYPE_SATA) {
-> +			/* downward spread spectrum +500ppm */
-> +			rockchip_combphy_updatel(priv, GENMASK(7, 4), 0x50, 0x1f << 2);
-> +
-> +			/* ssc ppm adjust to 3500ppm */
-> +			rockchip_combphy_updatel(priv, GENMASK(3, 0), 0x7, 0x9 << 2);
-> +		}
-> +		break;
-> +	default:
-> +		dev_err(priv->dev, "Unsupported rate: %lu\n", rate);
-> +		return -EINVAL;
-> +	}
-> +
-> +	if (priv->ext_refclk) {
-> +		rockchip_combphy_param_write(priv->phy_grf, &cfg->pipe_clk_ext, true);
-> +		if (priv->type == PHY_TYPE_PCIE && rate == REF_CLOCK_100MHz) {
-> +			writel(0x10, priv->mmio + (0x20 << 2));
-> +
-> +			writel(0x0c, priv->mmio + (0x1b << 2));
-> +
-> +			/* Set up su_trim: T3_P1 650mv */
-> +			writel(0x90, priv->mmio + (0xa << 2));
-> +			writel(0x43, priv->mmio + (0xb << 2));
-> +			writel(0x88, priv->mmio + (0xc << 2));
-> +			writel(0x56, priv->mmio + (0xd << 2));
-> +		}
-> +	}
-> +
-> +	if (priv->enable_ssc) {
-> +		rockchip_combphy_updatel(priv, GENMASK(4, 4), BIT(4), 0x7 << 2);
-> +
-> +		if (priv->type == PHY_TYPE_PCIE && rate == REF_CLOCK_24MHz) {
-> +			/* Xin24M T0_1 650mV */
-> +			writel(0x00, priv->mmio + (0x10 << 2));
-> +			writel(0x32, priv->mmio + (0x11 << 2));
-> +			writel(0x00, priv->mmio + (0x1b << 2));
-> +			writel(0x90, priv->mmio + (0x0a << 2));
-> +			writel(0x02, priv->mmio + (0x0b << 2));
-> +			writel(0x08, priv->mmio + (0x0c << 2));
-> +			writel(0x57, priv->mmio + (0x0d << 2));
-> +			writel(0x40, priv->mmio + (0x0e << 2));
-> +			writel(0x5f, priv->mmio + (0x0f << 2));
-> +			writel(0x10, priv->mmio + (0x20 << 2));
-> +		}
-> +	}
-> +
-> +	return 0;
+> +	clk_bulk_disable_unprepare(rphy->num_clks, rphy->clks);
 > +}
+> +
+>  static int rockchip_usb2phy_clk480m_prepare(struct clk_hw *hw)
+>  {
+>  	struct rockchip_usb2phy *rphy =
+> @@ -376,7 +385,9 @@ rockchip_usb2phy_clk480m_register(struct rockchip_usb2phy *rphy)
+>  {
+>  	struct device_node *node = rphy->dev->of_node;
+>  	struct clk_init_data init;
+> +	struct clk *refclk = NULL;
+>  	const char *clk_name;
+> +	int i;
+>  	int ret = 0;
+>  
+>  	init.flags = 0;
+> @@ -386,8 +397,15 @@ rockchip_usb2phy_clk480m_register(struct rockchip_usb2phy *rphy)
+>  	/* optional override of the clockname */
+>  	of_property_read_string(node, "clock-output-names", &init.name);
+>  
+> -	if (rphy->clk) {
+> -		clk_name = __clk_get_name(rphy->clk);
+> +	for (i = 0; i < rphy->num_clks; i++) {
+> +		if (!strncmp(rphy->clks[i].id, "phyclk", 6)) {
+> +			refclk = rphy->clks[i].clk;
+> +			break;
+> +		}
+> +	}
+> +
+> +	if (!IS_ERR(refclk)) {
+> +		clk_name = __clk_get_name(refclk);
+>  		init.parent_names = &clk_name;
+>  		init.num_parents = 1;
+>  	} else {
+> @@ -1399,15 +1417,26 @@ static int rockchip_usb2phy_probe(struct platform_device *pdev)
+>  	if (IS_ERR(rphy->phy_reset))
+>  		return PTR_ERR(rphy->phy_reset);
+>  
+> -	rphy->clk = devm_clk_get_optional_enabled(dev, "phyclk");
+> -	if (IS_ERR(rphy->clk))
+> -		return dev_err_probe(&pdev->dev, PTR_ERR(rphy->clk),
+> -				     "failed to get phyclk\n");
+> +	ret = devm_clk_bulk_get_all(dev, &rphy->clks);
+> +	if (ret == -EPROBE_DEFER)
+> +		return dev_err_probe(&pdev->dev, -EPROBE_DEFER,
+> +				     "failed to get phy clock\n");
+> +
+> +	/* Clocks are optional */
+> +	rphy->num_clks = ret < 0 ? 0 : ret;
+>  
+>  	ret = rockchip_usb2phy_clk480m_register(rphy);
+>  	if (ret)
+>  		return dev_err_probe(dev, ret, "failed to register 480m output clock\n");
+>  
+> +	ret = clk_bulk_prepare_enable(rphy->num_clks, rphy->clks);
+> +	if (ret)
+> +		return dev_err_probe(dev, ret, "failed to enable phy clock\n");
+> +
+> +	ret = devm_add_action_or_reset(dev, rockchip_usb2phy_clk_bulk_disable, rphy);
+> +	if (ret)
+> +		return ret;
+> +
+>  	if (rphy->phy_cfg->phy_tuning) {
+>  		ret = rphy->phy_cfg->phy_tuning(rphy);
+>  		if (ret)
+> 
+
 
 
 
