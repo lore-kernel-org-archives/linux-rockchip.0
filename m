@@ -4,63 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 87339D1F9C6
-	for <linux-rockchip@archiver.kernel.org>; Tue, 15 Oct 2024 20:04:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7E8ECD1F9C6
+	for <linux-rockchip@archiver.kernel.org>; Tue, 15 Oct 2024 20:14:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=WKOzMcPAQBTItAqsj8+jUmi8sv8BO0YT7YuldSePO8o=; b=SKzxyXMoPz1g7N
-	3YJmO8kg3FaVj1b6tm7uKpTWO9vdjxBVOh7q2VQrPgppGAx5dRe+skvw5tRPbSxruBCzcfUVwyvmq
-	TuJVVyKf3qikP6Eon2eLTIMuvzQ8fXqA/SFo2Z7cx+2wcfjrJk//nuQbhOP4iXjVHZ6nQ1owDUBCc
-	pGBoES2v7L1ia3xnhLkWEz5DN2OAd04vHhbYtH09Xzs1cnpGeg8ueVYvjubzACyvZ4HlEHseynQwT
-	mtI+1f2OBnlYqyKP1/Ctv3CDBTNxDKP+e1CqxPuBJXeL2f8c+d9MrnknTB7cyxsUr48kXMWiqAL2Q
-	6GxZTMcgYoam9CTmvNHA==;
+	List-Owner; bh=KFHgJtH3g6y6w7h4xtzSLQ1TVucZl4si8Kv842XiCvU=; b=Y0KaPqpDPVkq4a
+	snKWi9x/886B/qGdvq7Dk+vlPMYUE1xzuaNPqghXUZ2j+YH+H/pefQX7ErVxi5wCcRP3pjcZYUxGD
+	G2eRjZpucylDT9X+EByefyiFhTUWRFmdgyAxjL0ctmZKPPmDO2RpLpbzLU93tQwBDz5Nz6OYJuptH
+	O2sEkTMiqXD46EQyhqdSe4JDJ7VziSCv/f7DXRGcUuMbUIBPODACXQxwsxOcAYRpk5AcYqQVALWEg
+	D6htwTYRSkW9ZUuZ4fh9TwMabFNjVk7XfL2POH9Woz8ESykLb9bh16GncW9fwSa3to43HeHBMk/mD
+	9c4TYIdJCX2uwY9U3jXw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t0nmO-00000009TBS-0OPs;
-	Tue, 15 Oct 2024 20:04:28 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1t0nwU-00000009Um7-3UtI;
+	Tue, 15 Oct 2024 20:14:54 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t0niQ-00000009SH6-2Ii5;
-	Tue, 15 Oct 2024 20:00:23 +0000
+	id 1t0nv4-00000009UVC-0Zkw;
+	Tue, 15 Oct 2024 20:13:27 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 90C825C5B05;
-	Tue, 15 Oct 2024 20:00:17 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 85297C4CEC6;
-	Tue, 15 Oct 2024 20:00:21 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 417125C117A;
+	Tue, 15 Oct 2024 20:13:21 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2807DC4CEC6;
+	Tue, 15 Oct 2024 20:13:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1729022421;
-	bh=H43Rm70PtO4uEyIEBYzv7WvwKVBQ1nWE3T4ED/q/rA0=;
+	s=k20201202; t=1729023205;
+	bh=i6xUc2BLIxopI8JVWx6yrBevmVH88BaZ1U6j/GtsNaI=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=tSAEZSU07/j6rXtmzBlUT/cc5/vUNoDIg7kmzVuBdNBU2UzUJ4ZmEl9BW1JUPPLkQ
-	 KTOWMEocP7e4ZFfzIScIC0EoLdqOwyxirsAAhCtbvS5RXG6awM51MlfDM2qkyo1zm4
-	 DDBgRboB+tY+ShyNsbxFeUWiJqhVBBvEFMRcgIYpellFv3i7W61s/JhdQ4aUmBKXut
-	 DTEmu6wSTUUCnfpzSzcxDEzk9EXCJt8PBm1dorOpJnTvbSHHImyxkHywQtqOSb3l9y
-	 cggAUGMnWDC3CpUgge0JG495lukdK3tKwPxGLtc7jfdug4oBrhKHRV6bBKqJEKsZH6
-	 8JIK3YzQbWddg==
-Date: Tue, 15 Oct 2024 15:00:20 -0500
+	b=DPiYtKXpb7VReZQjPz4f5W7ppw/AqYRmw1kJOmBgklH9jFfoquXVrwjGzou4Nj+Cg
+	 NlbsyMuuT5mWw/zCjy1fQMxIfr2Ijop5jS5q77dnlmK9H7qKuBjvn4bzwWHpuhFjUL
+	 obT0/Mw7A7lDpaI4bu1Wl3AUZGqlDZbE8GDmkl2Rxjv02D/MDRyuruiUKBMOJ848zl
+	 SSGO2/rbRilAyJyprHzSik7OlTLKId4AM/XLVZYcEDwP092bWUHUmZf0Wx+0dOTCFT
+	 gGu1XHc6hEJ6xTfAx7o04/78twSM66dTc9Ixi82RFAxImYMT5CoI+VhrsSUYg7z5NQ
+	 Ugw/6lq+zBcTg==
+Date: Tue, 15 Oct 2024 15:13:24 -0500
 From: "Rob Herring (Arm)" <robh@kernel.org>
-To: Frank Wang <frawang.cn@gmail.com>
-Cc: kishon@kernel.org, vkoul@kernel.org, heiko@sntech.de,
-	yubing.zhang@rock-chips.com, linux-kernel@vger.kernel.org,
+To: Cenk Uluisik <cenk.uluisik@googlemail.com>
+Cc: Andy Yan <andyshrk@163.com>, Dragan Simic <dsimic@manjaro.org>,
+	Tim Lunn <tim@feathertop.org>, Jagan Teki <jagan@edgeble.ai>,
+	linux-arm-kernel@lists.infradead.org,
+	Jonas Karlman <jonas@kwiboo.se>, Jing Luo <jing@jing.rocks>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Chris Morgan <macromorgan@hotmail.com>,
+	Michael Riesch <michael.riesch@wolfvision.net>,
+	linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
-	Frank Wang <frank.wang@rock-chips.com>, devicetree@vger.kernel.org,
-	conor+dt@kernel.org, tim.chen@rock-chips.com,
-	william.wu@rock-chips.com, linux-phy@lists.infradead.org,
-	krzk+dt@kernel.org, linux-arm-kernel@lists.infradead.org
-Subject: Re: [PATCH 1/2] dt-bindings: phy: rockchip-usbdp: add rk3576
-Message-ID: <172902241945.1703112.6047940247854753283.robh@kernel.org>
-References: <20241014020342.15974-1-frawang.cn@gmail.com>
+	Jimmy Hon <honyuenkwun@gmail.com>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>
+Subject: Re: [PATCH v5 1/2] dt-bindings: arm: rockchip: Add Orange Pi 5b enum
+ to Orange Pi 5 entry
+Message-ID: <172902320363.1787838.552661206100007627.robh@kernel.org>
+References: <20241014180324.536702-1-cenk.uluisik@googlemail.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20241014020342.15974-1-frawang.cn@gmail.com>
+In-Reply-To: <20241014180324.536702-1-cenk.uluisik@googlemail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241015_130022_664056_4E2AE5B9 
-X-CRM114-Status: UNSURE (   8.39  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20241015_131326_239773_EA79DED8 
+X-CRM114-Status: GOOD (  14.71  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,18 +83,32 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
-On Mon, 14 Oct 2024 10:03:41 +0800, Frank Wang wrote:
-> From: Frank Wang <frank.wang@rock-chips.com>
+On Mon, 14 Oct 2024 20:02:52 +0200, Cenk Uluisik wrote:
+> This extends the Xunlong Orange Pi 5 device tree binding
+> with an enum for the Orange Pi 5b, which is implemented
+> before the device tree.
 > 
-> Add compatible for the USBDP phy in the Rockchip RK3576 SoC.
+> How does this board differ from the original Orange Pi 5?
+>   - the Orange Pi 5 has a M.2 NVMe M-key PCI 2.0x1
+>     slot (hooked to combphy0_ps) whereas the Orange Pi 5b uses combphy0_ps
+>     for the WiFi.
+>   - The Orange Pi 5 with the M.2 socket has a regulator defined hooked to
+>     "GPIO0_C5" (i.e. PCIE_PWREN_H) whereas the Orange Pi 5B has GPIO0_C5
+>     hooked to BT_WAKE_HOST.
+>   - builtin eMMC storage
+>   - no SPI NOR flash (u-boot, preboot etc. initiates
+>       from within the eMMC
+>       storage)
+>   - ap6275p Wifi module (like the Orange Pi 5 Plus)
+>   - builtin BlueTooth module
 > 
-> Signed-off-by: Frank Wang <frank.wang@rock-chips.com>
+> Signed-off-by: Cenk Uluisik <cenk.uluisik@googlemail.com>
 > ---
->  Documentation/devicetree/bindings/phy/phy-rockchip-usbdp.yaml | 1 +
->  1 file changed, 1 insertion(+)
+>  Documentation/devicetree/bindings/arm/rockchip.yaml | 4 +++-
+>  1 file changed, 3 insertions(+), 1 deletion(-)
 > 
 
-Acked-by: Rob Herring (Arm) <robh@kernel.org>
+Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
 
 
 _______________________________________________
