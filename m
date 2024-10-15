@@ -4,90 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8895DCFC501
-	for <linux-rockchip@archiver.kernel.org>; Tue, 15 Oct 2024 01:37:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3BBFCD18140
+	for <linux-rockchip@archiver.kernel.org>; Tue, 15 Oct 2024 03:01:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=6xioiROeP8qTzRaUqq4sEDFDplGyhnt58utFwaStPRM=; b=kHckiJ2gLNWbpD
-	gVkATUq9LGX6AbwNlFMqusXX+KDQ/KH5IEd1WAtuNu8H0vYRopDeTNH1y7Orw4A0HBgjkKKHwu4kQ
-	E4ZJbJua6tLll79j0vnbYxjV4lxn7G30he3H4tbzGv463Smj7Zg6mdDl19i7brZs/IXN6I7cx2DNj
-	CkyTL3rVcpxDsdKLV3A4IS9W84K/+IBkTF1nBy6jHNBPgO24kzaWr+WBYRSH2e4MArwJ7Xuewo2xW
-	00PoOKdGTFl4j5uR5lS8oH+U9CgvuDVlc63GzDVFrPmkANl35lE9se38cC/vLBQVz3LL/1Sv+U10T
-	qcfAMWF73ioclQSRfOeg==;
+	List-Owner; bh=nASDzt7bzXcW2Opu00+zJHtBZle92Dw2+VnEQsCzxd4=; b=YPXtmVwXhJYClX
+	Ltk9Tc7QJXxqxJQtmPgmXbe7MhHbm2FtN9VJbIHu/VXREe+LMgwrI+CvZ0jUjMR/Apu7cfYclxJeU
+	j5A0sFnNt/m5thWRuUZtuRNJZUMpJrfKmRnmhgL/OjFScF3jD5XV6jxaxcrOgOOL7BKSTHqPSAu5R
+	D3BS0g6QybarJ2LEoXx+/cnc9SNWgjJUnBhR47HgfEaXFmku7xk+f2f41I6U/I7wY8uC3RKk2XO/I
+	APlQobsB73CcHprXYy2wT63o4dqheaHPCrZ5ngu/C+cabk66sHmDT8edbGZI7VAKr2TO6T+U79xaj
+	PXNMYMCh6kwiPfhAUxWQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t0WUe-00000006nwu-2FzY;
-	Tue, 15 Oct 2024 01:37:00 +0000
-Received: from mail-pf1-x42e.google.com ([2607:f8b0:4864:20::42e])
+	id 1t0XoR-00000006wiQ-3RbB;
+	Tue, 15 Oct 2024 03:01:31 +0000
+Received: from mgamail.intel.com ([198.175.65.20])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t0WRp-00000006mzK-3Dyf;
-	Tue, 15 Oct 2024 01:34:07 +0000
-Received: by mail-pf1-x42e.google.com with SMTP id d2e1a72fcca58-71e5417f8d4so79298b3a.3;
-        Mon, 14 Oct 2024 18:34:05 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1728956045; x=1729560845; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=GH3A6vmgsIOEd/hbrPIWDSgafEN9K6GfNlaS75g6hkg=;
-        b=JCm+GzQsIsuL1spQHdwi2+EEePP9rluH71YSotlw9BqAPCw+PqJS+a8wOtE7laELx9
-         zjSi1H923h1HAKgs22yPPifp51TWcghe+4ND2+Io4yeGtEQ6OC+HD/LE6fzP2onbPNOt
-         49DeDgAnky8LRcTiv0m6/jKSdrvhSFIT+lpGMo2n3OFjFFxOxFL/bRnLOgTJDTqgX0Gk
-         3LN7ku4WKT208ZYlD7ga1g13RWiqJqoYHp1qvkj+AF9qTau9e7d9wHXpIU6dyyGKZrf3
-         bH1801/MAoWF0pUBcKfSUZvZ3JzVzpK98X0OHmwC9qOztFl2jWBKH8td2wisqqiFMjAO
-         trfg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1728956045; x=1729560845;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=GH3A6vmgsIOEd/hbrPIWDSgafEN9K6GfNlaS75g6hkg=;
-        b=ssm8ixmdi8K0fwKY+Y+O8HFmMY4fq/6/E6fxgki5/0P4xqMBcrwyYtzVTJroEQwwhC
-         zGJCq152qiNqoUq5ujxR2zdAplT13CWgnOGaEjUzceyGlVyj8XXt3c2qDRZ7jAwaPIAi
-         FyVU/M0iV3hkYWAz+JipaGs3CmVCP34muwA9Crl3AwmzI55wamlVixoCKCOchGGmRS9K
-         oHa4RuTUuo6d+GPr4IJjqeBY7H3M8ZGVdtVocs0RNEKcOZfIsZBl9LosvDQ/NG4YgVrF
-         UWJgfJfDkVtoIea9Bb3m6uy3WgwOxpCY1lfgVcNGAMmLwymg0t59YxsjqpiEM+zsWs/G
-         7WZA==
-X-Forwarded-Encrypted: i=1; AJvYcCWZ6vtEzEzMt7mF9YKJFOptjckjyAWxsoqVrZy4//FGctABsMr9S6Q/mO4pTMcVA+1kQwVSsg36476dd/Mcd8wu@lists.infradead.org, AJvYcCWlLFIq2fE60Xly4xoQektOmq+Ak+FE+An8+L8kvmoaKjtmwaDLAb6Rrb//6vxgvgiyAIXlHVa7JXp5Eg4X458=@lists.infradead.org
-X-Gm-Message-State: AOJu0Yz6Z/Sz7xwsEpIyUw0/66OQmLb4nZhXlkN3zlSJnm0UoEUACFmX
-	14/qbuGBnKDgJjG+Ok7NHKgpmDf35sg61ysi+bZA6xcRnG7KHrzd
-X-Google-Smtp-Source: AGHT+IENbE5VfJLTsH3qhdrga+goKQnThLNGc16l2GIKEVjDEiHa1fFBGByWr8papJ5EnN6tQKh//w==
-X-Received: by 2002:a05:6a00:198e:b0:71e:594c:a812 with SMTP id d2e1a72fcca58-71e594caa26mr4591504b3a.0.1728956044402;
-        Mon, 14 Oct 2024 18:34:04 -0700 (PDT)
-Received: from localhost.localdomain ([103.29.142.67])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-71e774a4243sm189713b3a.131.2024.10.14.18.34.00
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 14 Oct 2024 18:34:04 -0700 (PDT)
-From: Frank Wang <frawang.cn@gmail.com>
-To: vkoul@kernel.org,
-	kishon@kernel.org,
-	robh@kernel.org,
-	krzk+dt@kernel.org,
-	conor+dt@kernel.org,
-	heiko@sntech.de
-Cc: linux-phy@lists.infradead.org,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
+	id 1t0XoO-00000006whb-1SrY
+	for linux-rockchip@lists.infradead.org;
+	Tue, 15 Oct 2024 03:01:30 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1728961289; x=1760497289;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=ZDSJW6AZlrWrt8SKy6ggSRZZUMjPiGXUINlliwmwrnM=;
+  b=dnzTwQkFFbkAFIMBbaYZoRjeB7C/IkwlTT3OJ9lfBTQI74/2Nph6f3zs
+   UzOIQnS//VhaOA01roWzGmynPb6uH2NRtr0+UeJVHdpYnfY32TLAxMqvl
+   rcpEYEi69tx8f+mlBc7qFdlj7mJreaQbx5Giw2Ts46rFhmjYmkoxljUkC
+   6pjkSnDZ80G3IVj80q7wNPHKwjCWNfjYiO9TYZqDjQQMeo+Of9NQL6yII
+   vjo/yqJobDLOe46tcHFg9QbkmQfCeJUJymrQ9vP4usWda0jkwLggNHIl1
+   sDsN4VxK9JYps0hjB8mUXmwSDO97VNRoIT5spXua2rpo6brnGnTX/qQfL
+   w==;
+X-CSE-ConnectionGUID: vKPqSfYrRESgiokzDh7diw==
+X-CSE-MsgGUID: HdOkGmnVTvGkNcES1eEERg==
+X-IronPort-AV: E=McAfee;i="6700,10204,11222"; a="28121712"
+X-IronPort-AV: E=Sophos;i="6.11,199,1725346800"; 
+   d="scan'208";a="28121712"
+Received: from orviesa003.jf.intel.com ([10.64.159.143])
+  by orvoesa112.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 14 Oct 2024 20:01:28 -0700
+X-CSE-ConnectionGUID: pEkus2NrS1CjtBqHPyV6kg==
+X-CSE-MsgGUID: WaGLgJcASzWmsqvGzF096w==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.11,199,1725346800"; 
+   d="scan'208";a="82531736"
+Received: from lkp-server01.sh.intel.com (HELO a48cf1aa22e8) ([10.239.97.150])
+  by orviesa003.jf.intel.com with ESMTP; 14 Oct 2024 20:01:23 -0700
+Received: from kbuild by a48cf1aa22e8 with local (Exim 4.96)
+	(envelope-from <lkp@intel.com>)
+	id 1t0XoG-000HWL-1B;
+	Tue, 15 Oct 2024 03:01:20 +0000
+Date: Tue, 15 Oct 2024 11:01:02 +0800
+From: kernel test robot <lkp@intel.com>
+To: Damien Le Moal <dlemoal@kernel.org>,
+	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Kishon Vijay Abraham I <kishon@kernel.org>,
+	Shawn Lin <shawn.lin@rock-chips.com>,
+	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
+	Bjorn Helgaas <helgaas@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>, linux-pci@vger.kernel.org,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org
+Cc: llvm@lists.linux.dev, oe-kbuild-all@lists.linux.dev,
 	linux-rockchip@lists.infradead.org,
-	william.wu@rock-chips.com,
-	tim.chen@rock-chips.com,
-	Kever Yang <kever.yang@rock-chips.com>,
-	Frank Wang <frank.wang@rock-chips.com>
-Subject: [PATCH 2/2] phy: rockchip-naneng-combo: Support rk3576
-Date: Tue, 15 Oct 2024 09:33:51 +0800
-Message-Id: <20241015013351.4884-2-frawang.cn@gmail.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20241015013351.4884-1-frawang.cn@gmail.com>
-References: <20241015013351.4884-1-frawang.cn@gmail.com>
+	Rick Wertenbroek <rick.wertenbroek@gmail.com>,
+	Niklas Cassel <cassel@kernel.org>
+Subject: Re: [PATCH v4 12/12] PCI: rockchip-ep: Handle PERST# signal in
+ endpoint mode
+Message-ID: <202410151041.Hk5w4EL5-lkp@intel.com>
+References: <20241011121408.89890-13-dlemoal@kernel.org>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20241011121408.89890-13-dlemoal@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241014_183405_879124_C69A5285 
-X-CRM114-Status: GOOD (  15.21  )
+X-CRM114-CacheID: sfid-20241014_200128_514845_84B72B51 
+X-CRM114-Status: GOOD (  13.05  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,248 +101,173 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Kever Yang <kever.yang@rock-chips.com>
+Hi Damien,
 
-phy0: pcie, sata
-phy1: pcie, sata, usb3
+kernel test robot noticed the following build errors:
 
-Signed-off-by: Kever Yang <kever.yang@rock-chips.com>
-Signed-off-by: William Wu <william.wu@rock-chips.com>
-Signed-off-by: Frank Wang <frank.wang@rock-chips.com>
----
- .../rockchip/phy-rockchip-naneng-combphy.c    | 202 ++++++++++++++++++
- 1 file changed, 202 insertions(+)
+[auto build test ERROR on pci/next]
+[also build test ERROR on pci/for-linus mani-mhi/mhi-next linus/master v6.12-rc3 next-20241014]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch#_base_tree_information]
 
-diff --git a/drivers/phy/rockchip/phy-rockchip-naneng-combphy.c b/drivers/phy/rockchip/phy-rockchip-naneng-combphy.c
-index 0a9989e41237..4c41317a8041 100644
---- a/drivers/phy/rockchip/phy-rockchip-naneng-combphy.c
-+++ b/drivers/phy/rockchip/phy-rockchip-naneng-combphy.c
-@@ -98,6 +98,7 @@ struct rockchip_combphy_grfcfg {
- 	struct combphy_reg pipe_rxterm_set;
- 	struct combphy_reg pipe_txelec_set;
- 	struct combphy_reg pipe_txcomp_set;
-+	struct combphy_reg pipe_clk_24m;
- 	struct combphy_reg pipe_clk_25m;
- 	struct combphy_reg pipe_clk_100m;
- 	struct combphy_reg pipe_phymode_sel;
-@@ -584,6 +585,203 @@ static const struct rockchip_combphy_cfg rk3568_combphy_cfgs = {
- 	.combphy_cfg	= rk3568_combphy_cfg,
- };
- 
-+static int rk3576_combphy_cfg(struct rockchip_combphy_priv *priv)
-+{
-+	const struct rockchip_combphy_grfcfg *cfg = priv->cfg->grfcfg;
-+	unsigned long rate;
-+
-+	switch (priv->type) {
-+	case PHY_TYPE_PCIE:
-+		/* Set SSC downward spread spectrum */
-+		rockchip_combphy_updatel(priv, GENMASK(5, 4), BIT(4), 0x7c);
-+
-+		rockchip_combphy_param_write(priv->phy_grf, &cfg->con0_for_pcie, true);
-+		rockchip_combphy_param_write(priv->phy_grf, &cfg->con1_for_pcie, true);
-+		rockchip_combphy_param_write(priv->phy_grf, &cfg->con2_for_pcie, true);
-+		rockchip_combphy_param_write(priv->phy_grf, &cfg->con3_for_pcie, true);
-+		break;
-+	case PHY_TYPE_USB3:
-+		/* Set SSC downward spread spectrum */
-+		rockchip_combphy_updatel(priv, GENMASK(5, 4), BIT(4), 0x7c);
-+
-+		/* Enable adaptive CTLE for USB3.0 Rx */
-+		rockchip_combphy_updatel(priv, GENMASK(0, 0), BIT(0), 0x38);
-+
-+		/* Set PLL KVCO fine tuning signals */
-+		rockchip_combphy_updatel(priv, GENMASK(4, 2), BIT(3), 0x80);
-+
-+		/* Set PLL LPF R1 to su_trim[10:7]=1001 */
-+		writel(0x4, priv->mmio + (0xb << 2));
-+
-+		/* Set PLL input clock divider 1/2 */
-+		rockchip_combphy_updatel(priv, GENMASK(7, 6), BIT(6), 0x14);
-+
-+		/* Set PLL loop divider */
-+		writel(0x32, priv->mmio + (0x11 << 2));
-+
-+		/* Set PLL KVCO to min and set PLL charge pump current to max */
-+		writel(0xf0, priv->mmio + (0xa << 2));
-+
-+		/* Set Rx squelch input filler bandwidth */
-+		writel(0x0d, priv->mmio + (0x14 << 2));
-+
-+		rockchip_combphy_param_write(priv->phy_grf, &cfg->pipe_txcomp_sel, false);
-+		rockchip_combphy_param_write(priv->phy_grf, &cfg->pipe_txelec_sel, false);
-+		rockchip_combphy_param_write(priv->phy_grf, &cfg->usb_mode_set, true);
-+		break;
-+	case PHY_TYPE_SATA:
-+		/* Enable adaptive CTLE for SATA Rx */
-+		rockchip_combphy_updatel(priv, GENMASK(0, 0), BIT(0), 0x38);
-+
-+		/* Set tx_rterm = 50 ohm and rx_rterm = 43.5 ohm */
-+		writel(0x8F, priv->mmio + (0x06 << 2));
-+
-+		rockchip_combphy_param_write(priv->phy_grf, &cfg->con0_for_sata, true);
-+		rockchip_combphy_param_write(priv->phy_grf, &cfg->con1_for_sata, true);
-+		rockchip_combphy_param_write(priv->phy_grf, &cfg->con2_for_sata, true);
-+		rockchip_combphy_param_write(priv->phy_grf, &cfg->con3_for_sata, true);
-+		rockchip_combphy_param_write(priv->pipe_grf, &cfg->pipe_con0_for_sata, true);
-+		rockchip_combphy_param_write(priv->pipe_grf, &cfg->pipe_con1_for_sata, true);
-+		break;
-+	default:
-+		dev_err(priv->dev, "incompatible PHY type\n");
-+		return -EINVAL;
-+	}
-+
-+	rate = clk_get_rate(priv->refclk);
-+
-+	switch (rate) {
-+	case REF_CLOCK_24MHz:
-+		rockchip_combphy_param_write(priv->phy_grf, &cfg->pipe_clk_24m, true);
-+		if (priv->type == PHY_TYPE_USB3 || priv->type == PHY_TYPE_SATA) {
-+			/* Set ssc_cnt[9:0]=0101111101 & 31.5KHz */
-+			rockchip_combphy_updatel(priv, GENMASK(7, 6), BIT(6), 0xe << 2);
-+
-+			rockchip_combphy_updatel(priv, GENMASK(7, 0), 0x5f, 0xf << 2);
-+		} else if (priv->type == PHY_TYPE_PCIE) {
-+			/* PLL KVCO tuning fine */
-+			rockchip_combphy_updatel(priv, GENMASK(4, 2), 0x4 << 2, 0x20 << 2);
-+
-+			/* Set up rx_trim */
-+			writel(0x0, priv->mmio + (0x1b << 2));
-+
-+			/* Set up su_trim: T0_1 */
-+			writel(0x90, priv->mmio + (0xa << 2));
-+			writel(0x02, priv->mmio + (0xb << 2));
-+			writel(0x57, priv->mmio + (0xd << 2));
-+
-+			writel(0x5f, priv->mmio + (0xf << 2));
-+		}
-+		break;
-+	case REF_CLOCK_25MHz:
-+		rockchip_combphy_param_write(priv->phy_grf, &cfg->pipe_clk_25m, true);
-+		break;
-+	case REF_CLOCK_100MHz:
-+		rockchip_combphy_param_write(priv->phy_grf, &cfg->pipe_clk_100m, true);
-+		if (priv->type == PHY_TYPE_PCIE) {
-+			/* gate_tx_pck_sel length select work for L1SS */
-+			writel(0xc0, priv->mmio + 0x74);
-+
-+			/* PLL KVCO tuning fine */
-+			rockchip_combphy_updatel(priv, GENMASK(4, 2), 0x4 << 2, 0x20 << 2);
-+
-+			/* Set up rx_trim: PLL LPF C1 85pf R1 1.25kohm */
-+			writel(0x4c, priv->mmio + (0x1b << 2));
-+
-+			/* Set up su_trim: T3_P1 650mv */
-+			writel(0x90, priv->mmio + (0xa << 2));
-+			writel(0x43, priv->mmio + (0xb << 2));
-+			writel(0x88, priv->mmio + (0xc << 2));
-+			writel(0x56, priv->mmio + (0xd << 2));
-+		} else if (priv->type == PHY_TYPE_SATA) {
-+			/* downward spread spectrum +500ppm */
-+			rockchip_combphy_updatel(priv, GENMASK(7, 4), 0x50, 0x1f << 2);
-+
-+			/* ssc ppm adjust to 3500ppm */
-+			rockchip_combphy_updatel(priv, GENMASK(3, 0), 0x7, 0x9 << 2);
-+		}
-+		break;
-+	default:
-+		dev_err(priv->dev, "Unsupported rate: %lu\n", rate);
-+		return -EINVAL;
-+	}
-+
-+	if (priv->ext_refclk) {
-+		rockchip_combphy_param_write(priv->phy_grf, &cfg->pipe_clk_ext, true);
-+		if (priv->type == PHY_TYPE_PCIE && rate == REF_CLOCK_100MHz) {
-+			writel(0x10, priv->mmio + (0x20 << 2));
-+
-+			writel(0x0c, priv->mmio + (0x1b << 2));
-+
-+			/* Set up su_trim: T3_P1 650mv */
-+			writel(0x90, priv->mmio + (0xa << 2));
-+			writel(0x43, priv->mmio + (0xb << 2));
-+			writel(0x88, priv->mmio + (0xc << 2));
-+			writel(0x56, priv->mmio + (0xd << 2));
-+		}
-+	}
-+
-+	if (priv->enable_ssc) {
-+		rockchip_combphy_updatel(priv, GENMASK(4, 4), BIT(4), 0x7 << 2);
-+
-+		if (priv->type == PHY_TYPE_PCIE && rate == REF_CLOCK_24MHz) {
-+			/* Xin24M T0_1 650mV */
-+			writel(0x00, priv->mmio + (0x10 << 2));
-+			writel(0x32, priv->mmio + (0x11 << 2));
-+			writel(0x00, priv->mmio + (0x1b << 2));
-+			writel(0x90, priv->mmio + (0x0a << 2));
-+			writel(0x02, priv->mmio + (0x0b << 2));
-+			writel(0x08, priv->mmio + (0x0c << 2));
-+			writel(0x57, priv->mmio + (0x0d << 2));
-+			writel(0x40, priv->mmio + (0x0e << 2));
-+			writel(0x5f, priv->mmio + (0x0f << 2));
-+			writel(0x10, priv->mmio + (0x20 << 2));
-+		}
-+	}
-+
-+	return 0;
-+}
-+
-+static const struct rockchip_combphy_grfcfg rk3576_combphy_grfcfgs = {
-+	/* pipe-phy-grf */
-+	.pcie_mode_set		= { 0x0000, 5, 0, 0x00, 0x11 },
-+	.usb_mode_set		= { 0x0000, 5, 0, 0x00, 0x04 },
-+	.pipe_rxterm_set	= { 0x0000, 12, 12, 0x00, 0x01 },
-+	.pipe_txelec_set	= { 0x0004, 1, 1, 0x00, 0x01 },
-+	.pipe_txcomp_set	= { 0x0004, 4, 4, 0x00, 0x01 },
-+	.pipe_clk_24m		= { 0x0004, 14, 13, 0x00, 0x00 },
-+	.pipe_clk_25m		= { 0x0004, 14, 13, 0x00, 0x01 },
-+	.pipe_clk_100m		= { 0x0004, 14, 13, 0x00, 0x02 },
-+	.pipe_phymode_sel	= { 0x0008, 1, 1, 0x00, 0x01 },
-+	.pipe_rate_sel		= { 0x0008, 2, 2, 0x00, 0x01 },
-+	.pipe_rxterm_sel	= { 0x0008, 8, 8, 0x00, 0x01 },
-+	.pipe_txelec_sel	= { 0x0008, 12, 12, 0x00, 0x01 },
-+	.pipe_txcomp_sel	= { 0x0008, 15, 15, 0x00, 0x01 },
-+	.pipe_clk_ext		= { 0x000c, 9, 8, 0x02, 0x01 },
-+	.pipe_phy_status	= { 0x0034, 6, 6, 0x01, 0x00 },
-+	.con0_for_pcie		= { 0x0000, 15, 0, 0x00, 0x1000 },
-+	.con1_for_pcie		= { 0x0004, 15, 0, 0x00, 0x0000 },
-+	.con2_for_pcie		= { 0x0008, 15, 0, 0x00, 0x0101 },
-+	.con3_for_pcie		= { 0x000c, 15, 0, 0x00, 0x0200 },
-+	.con0_for_sata		= { 0x0000, 15, 0, 0x00, 0x0129 },
-+	.con1_for_sata		= { 0x0004, 15, 0, 0x00, 0x0000 },
-+	.con2_for_sata		= { 0x0008, 15, 0, 0x00, 0x80c1 },
-+	.con3_for_sata		= { 0x000c, 15, 0, 0x00, 0x0407 },
-+	/* php-grf */
-+	.pipe_con0_for_sata	= { 0x001C, 2, 0, 0x00, 0x2 },
-+	.pipe_con1_for_sata	= { 0x0020, 2, 0, 0x00, 0x2 },
-+};
-+
-+static const struct rockchip_combphy_cfg rk3576_combphy_cfgs = {
-+	.num_phys = 2,
-+	.phy_ids = {
-+		0x2b050000,
-+		0x2b060000
-+	},
-+	.grfcfg		= &rk3576_combphy_grfcfgs,
-+	.combphy_cfg	= rk3576_combphy_cfg,
-+};
-+
- static int rk3588_combphy_cfg(struct rockchip_combphy_priv *priv)
- {
- 	const struct rockchip_combphy_grfcfg *cfg = priv->cfg->grfcfg;
-@@ -775,6 +973,10 @@ static const struct of_device_id rockchip_combphy_of_match[] = {
- 		.compatible = "rockchip,rk3568-naneng-combphy",
- 		.data = &rk3568_combphy_cfgs,
- 	},
-+	{
-+		.compatible = "rockchip,rk3576-naneng-combphy",
-+		.data = &rk3576_combphy_cfgs,
-+	},
- 	{
- 		.compatible = "rockchip,rk3588-naneng-combphy",
- 		.data = &rk3588_combphy_cfgs,
+url:    https://github.com/intel-lab-lkp/linux/commits/Damien-Le-Moal/PCI-rockchip-ep-Fix-address-translation-unit-programming/20241011-201512
+base:   https://git.kernel.org/pub/scm/linux/kernel/git/pci/pci.git next
+patch link:    https://lore.kernel.org/r/20241011121408.89890-13-dlemoal%40kernel.org
+patch subject: [PATCH v4 12/12] PCI: rockchip-ep: Handle PERST# signal in endpoint mode
+config: i386-buildonly-randconfig-004-20241015 (https://download.01.org/0day-ci/archive/20241015/202410151041.Hk5w4EL5-lkp@intel.com/config)
+compiler: clang version 18.1.8 (https://github.com/llvm/llvm-project 3b5b5c1ec4a3095ab096dd780e84d7ab81f3d7ff)
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20241015/202410151041.Hk5w4EL5-lkp@intel.com/reproduce)
+
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202410151041.Hk5w4EL5-lkp@intel.com/
+
+All errors (new ones prefixed by >>):
+
+         |                                         ~~~^
+   drivers/pci/controller/pcie-rockchip-ep.c:246:13: note: forward declaration of 'struct pci_epc_map'
+     246 |                                         struct pci_epc_map *map)
+         |                                                ^
+   drivers/pci/controller/pcie-rockchip-ep.c:260:5: error: incomplete definition of type 'struct pci_epc_map'
+     260 |         map->map_size = ALIGN(map->map_ofst + map->pci_size,
+         |         ~~~^
+   drivers/pci/controller/pcie-rockchip-ep.c:246:13: note: forward declaration of 'struct pci_epc_map'
+     246 |                                         struct pci_epc_map *map)
+         |                                                ^
+   drivers/pci/controller/pcie-rockchip-ep.c:260:27: error: incomplete definition of type 'struct pci_epc_map'
+     260 |         map->map_size = ALIGN(map->map_ofst + map->pci_size,
+         |                               ~~~^
+   include/linux/align.h:8:38: note: expanded from macro 'ALIGN'
+       8 | #define ALIGN(x, a)             __ALIGN_KERNEL((x), (a))
+         |                                                 ^
+   include/uapi/linux/const.h:48:51: note: expanded from macro '__ALIGN_KERNEL'
+      48 | #define __ALIGN_KERNEL(x, a)            __ALIGN_KERNEL_MASK(x, (__typeof__(x))(a) - 1)
+         |                                                             ^
+   include/uapi/linux/const.h:49:41: note: expanded from macro '__ALIGN_KERNEL_MASK'
+      49 | #define __ALIGN_KERNEL_MASK(x, mask)    (((x) + (mask)) & ~(mask))
+         |                                            ^
+   drivers/pci/controller/pcie-rockchip-ep.c:246:13: note: forward declaration of 'struct pci_epc_map'
+     246 |                                         struct pci_epc_map *map)
+         |                                                ^
+   drivers/pci/controller/pcie-rockchip-ep.c:260:43: error: incomplete definition of type 'struct pci_epc_map'
+     260 |         map->map_size = ALIGN(map->map_ofst + map->pci_size,
+         |                                               ~~~^
+   include/linux/align.h:8:38: note: expanded from macro 'ALIGN'
+       8 | #define ALIGN(x, a)             __ALIGN_KERNEL((x), (a))
+         |                                                 ^
+   include/uapi/linux/const.h:48:51: note: expanded from macro '__ALIGN_KERNEL'
+      48 | #define __ALIGN_KERNEL(x, a)            __ALIGN_KERNEL_MASK(x, (__typeof__(x))(a) - 1)
+         |                                                             ^
+   include/uapi/linux/const.h:49:41: note: expanded from macro '__ALIGN_KERNEL_MASK'
+      49 | #define __ALIGN_KERNEL_MASK(x, mask)    (((x) + (mask)) & ~(mask))
+         |                                            ^
+   drivers/pci/controller/pcie-rockchip-ep.c:246:13: note: forward declaration of 'struct pci_epc_map'
+     246 |                                         struct pci_epc_map *map)
+         |                                                ^
+   drivers/pci/controller/pcie-rockchip-ep.c:260:27: error: incomplete definition of type 'struct pci_epc_map'
+     260 |         map->map_size = ALIGN(map->map_ofst + map->pci_size,
+         |                               ~~~^
+   include/linux/align.h:8:38: note: expanded from macro 'ALIGN'
+       8 | #define ALIGN(x, a)             __ALIGN_KERNEL((x), (a))
+         |                                                 ^
+   include/uapi/linux/const.h:48:66: note: expanded from macro '__ALIGN_KERNEL'
+      48 | #define __ALIGN_KERNEL(x, a)            __ALIGN_KERNEL_MASK(x, (__typeof__(x))(a) - 1)
+         |                                                                            ^
+   include/uapi/linux/const.h:49:47: note: expanded from macro '__ALIGN_KERNEL_MASK'
+      49 | #define __ALIGN_KERNEL_MASK(x, mask)    (((x) + (mask)) & ~(mask))
+         |                                                  ^~~~
+   drivers/pci/controller/pcie-rockchip-ep.c:246:13: note: forward declaration of 'struct pci_epc_map'
+     246 |                                         struct pci_epc_map *map)
+         |                                                ^
+   drivers/pci/controller/pcie-rockchip-ep.c:260:43: error: incomplete definition of type 'struct pci_epc_map'
+     260 |         map->map_size = ALIGN(map->map_ofst + map->pci_size,
+         |                                               ~~~^
+   include/linux/align.h:8:38: note: expanded from macro 'ALIGN'
+       8 | #define ALIGN(x, a)             __ALIGN_KERNEL((x), (a))
+         |                                                 ^
+   include/uapi/linux/const.h:48:66: note: expanded from macro '__ALIGN_KERNEL'
+      48 | #define __ALIGN_KERNEL(x, a)            __ALIGN_KERNEL_MASK(x, (__typeof__(x))(a) - 1)
+         |                                                                            ^
+   include/uapi/linux/const.h:49:47: note: expanded from macro '__ALIGN_KERNEL_MASK'
+      49 | #define __ALIGN_KERNEL_MASK(x, mask)    (((x) + (mask)) & ~(mask))
+         |                                                  ^~~~
+   drivers/pci/controller/pcie-rockchip-ep.c:246:13: note: forward declaration of 'struct pci_epc_map'
+     246 |                                         struct pci_epc_map *map)
+         |                                                ^
+   drivers/pci/controller/pcie-rockchip-ep.c:260:27: error: incomplete definition of type 'struct pci_epc_map'
+     260 |         map->map_size = ALIGN(map->map_ofst + map->pci_size,
+         |                               ~~~^
+   include/linux/align.h:8:38: note: expanded from macro 'ALIGN'
+       8 | #define ALIGN(x, a)             __ALIGN_KERNEL((x), (a))
+         |                                                 ^
+   include/uapi/linux/const.h:48:66: note: expanded from macro '__ALIGN_KERNEL'
+      48 | #define __ALIGN_KERNEL(x, a)            __ALIGN_KERNEL_MASK(x, (__typeof__(x))(a) - 1)
+         |                                                                            ^
+   include/uapi/linux/const.h:49:58: note: expanded from macro '__ALIGN_KERNEL_MASK'
+      49 | #define __ALIGN_KERNEL_MASK(x, mask)    (((x) + (mask)) & ~(mask))
+         |                                                             ^~~~
+   drivers/pci/controller/pcie-rockchip-ep.c:246:13: note: forward declaration of 'struct pci_epc_map'
+     246 |                                         struct pci_epc_map *map)
+         |                                                ^
+   drivers/pci/controller/pcie-rockchip-ep.c:260:43: error: incomplete definition of type 'struct pci_epc_map'
+     260 |         map->map_size = ALIGN(map->map_ofst + map->pci_size,
+         |                                               ~~~^
+   include/linux/align.h:8:38: note: expanded from macro 'ALIGN'
+       8 | #define ALIGN(x, a)             __ALIGN_KERNEL((x), (a))
+         |                                                 ^
+   include/uapi/linux/const.h:48:66: note: expanded from macro '__ALIGN_KERNEL'
+      48 | #define __ALIGN_KERNEL(x, a)            __ALIGN_KERNEL_MASK(x, (__typeof__(x))(a) - 1)
+         |                                                                            ^
+   include/uapi/linux/const.h:49:58: note: expanded from macro '__ALIGN_KERNEL_MASK'
+      49 | #define __ALIGN_KERNEL_MASK(x, mask)    (((x) + (mask)) & ~(mask))
+         |                                                             ^~~~
+   drivers/pci/controller/pcie-rockchip-ep.c:246:13: note: forward declaration of 'struct pci_epc_map'
+     246 |                                         struct pci_epc_map *map)
+         |                                                ^
+>> drivers/pci/controller/pcie-rockchip-ep.c:631:2: error: call to undeclared function 'irq_set_irq_type'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+     631 |         irq_set_irq_type(ep->perst_irq,
+         |         ^
+   drivers/pci/controller/pcie-rockchip-ep.c:631:2: note: did you mean 'irq_set_irq_wake'?
+   include/linux/interrupt.h:489:12: note: 'irq_set_irq_wake' declared here
+     489 | extern int irq_set_irq_wake(unsigned int irq, unsigned int on);
+         |            ^
+   fatal error: too many errors emitted, stopping now [-ferror-limit=]
+   1 warning and 20 errors generated.
+
+Kconfig warnings: (for reference only)
+   WARNING: unmet direct dependencies detected for MODVERSIONS
+   Depends on [n]: MODULES [=y] && !COMPILE_TEST [=y]
+   Selected by [y]:
+   - RANDSTRUCT_FULL [=y] && (CC_HAS_RANDSTRUCT [=y] || GCC_PLUGINS [=n]) && MODULES [=y]
+
+
+vim +/irq_set_irq_type +631 drivers/pci/controller/pcie-rockchip-ep.c
+
+   618	
+   619	static irqreturn_t rockchip_pcie_ep_perst_irq_thread(int irq, void *data)
+   620	{
+   621		struct pci_epc *epc = data;
+   622		struct rockchip_pcie_ep *ep = epc_get_drvdata(epc);
+   623		struct rockchip_pcie *rockchip = &ep->rockchip;
+   624		u32 perst = gpiod_get_value(rockchip->perst_gpio);
+   625	
+   626		if (perst)
+   627			rockchip_pcie_ep_perst_assert(ep);
+   628		else
+   629			rockchip_pcie_ep_perst_deassert(ep);
+   630	
+ > 631		irq_set_irq_type(ep->perst_irq,
+   632				 (perst ? IRQF_TRIGGER_HIGH : IRQF_TRIGGER_LOW));
+   633	
+   634		return IRQ_HANDLED;
+   635	}
+   636	
+
 -- 
-2.34.1
-
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
 
 _______________________________________________
 Linux-rockchip mailing list
