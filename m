@@ -4,66 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6FBADCFC263
-	for <linux-rockchip@archiver.kernel.org>; Tue, 15 Oct 2024 03:41:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8CD4CCFC267
+	for <linux-rockchip@archiver.kernel.org>; Tue, 15 Oct 2024 05:13:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Message-ID:MIME-Version:References:
-	In-Reply-To:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=obYEgluCnGuu0BV9c+4iAuhTDrqpqtpRK6qKsz2JUrc=; b=jGmCUx6WHC2hfg
-	RTC+MhU+idz7VsMEiR6wowW3O4vv3h54abCdFr+VpbYk7Rzce66gJiFhWXn+r29LXsg9Kz6I1/jjA
-	E9r0G2vJkswkiBEkhI28axvKWBg6zIgor+IVqTW/woo/cZx2z61aQjLWokPJOInPTNdM+GonqmEu7
-	DBJo5gFbAJKriVLUNSEeb6Zb2w/f5T7Rh69BQNghvgw/za+DdM7NrfVNpDJWZiDyERSHxoWTb6mw/
-	oH0gL7sMJwU9Ryb4kTNH7APcZQEFY0IbxAJ1yEcsbqafV6pHuYbZ6Hi9wBDBGxhj3nQDB5giVnjoX
-	n4s6U7U/MhSmkOkH6qlw==;
+	List-Owner; bh=gOIre+dYiDmzpglecd38QK8YA0trNDPMtT4qfRcuWWM=; b=abj+XOpK/DD9AC
+	TxKKb71NO8sIvLUL07n6+DaztEfNdc6SUNHfg5mBpPwntZ/yq6vTmfq91A62jtkehpWGKElN0vjG2
+	lIes1+0vuDgtHTLlwB57YwI/e7nCB3DqvlWSzYPWGvTkJswcnfTH4Ni394Jq+nEsSh6r8ViD5EgF8
+	uotAwJFpQqLugarrog24dnVWIWvtSIIEGEO+3AAVX0+BNvfYfrEbovHQLizuzV6ptJjGwqVPKRwg8
+	5k7cdVdqPIXnkQV5Z/glMmXYi4aQ7S9b2wM9UakhLPkF3BGdOnRgU20MoJTRm6hcjG58Z0PnHXlex
+	W/B+Y2m5pPVwyyCvYvvQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t0YQe-00000006zl7-41Pw;
-	Tue, 15 Oct 2024 03:41:00 +0000
-Received: from m16.mail.163.com ([117.135.210.4])
-	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t0YPD-00000006zaI-2Xqb;
-	Tue, 15 Oct 2024 03:39:33 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=Date:From:Subject:Content-Type:MIME-Version:
-	Message-ID; bh=YUUT/GHECURXTB/qCmFvKHfDzCj7orwuG5VBFdAb8KE=; b=a
-	J+f/+RV6vAXcY7PJ04jh5FM0tWNcOphM/saZj7pqkOfM0uenIAV8bUina8AjvQgg
-	f5/zeBJZKeUNrZPdiDf/C6kCbbogkg+CujUnKkFnny/+INb7RAWoHdtUz1g+XP30
-	IoMChMAUBhLG7/ezGhu9VbuKCyxDkNoHENaJtpziOM=
-Received: from andyshrk$163.com ( [58.22.7.114] ) by
- ajax-webmail-wmsvr-40-105 (Coremail) ; Tue, 15 Oct 2024 11:38:44 +0800
- (CST)
-X-Originating-IP: [58.22.7.114]
-Date: Tue, 15 Oct 2024 11:38:44 +0800 (CST)
-From: "Andy Yan" <andyshrk@163.com>
-To: "Piotr Zalewski" <pZ010001011111@proton.me>
-Cc: hjc@rock-chips.com, heiko@sntech.de, andy.yan@rock-chips.com, 
-	maarten.lankhorst@linux.intel.com, mripard@kernel.org, 
-	tzimmermann@suse.de, airlied@gmail.com, simona@ffwll.ch, 
-	dri-devel@lists.freedesktop.org, 
-	linux-arm-kernel@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	skhan@linuxfoundation.org, "Daniel Stone" <daniel@fooishbar.org>, 
-	"Dragan Simic" <dsimic@manjaro.org>, 
-	"Diederik de Haas" <didi.debian@cknow.org>
-Subject: Re:[PATCH v5] rockchip/drm: vop2: add support for gamma LUT
-X-Priority: 3
-X-Mailer: Coremail Webmail Server Version XT5.0.14 build 20240801(9da12a7b)
- Copyright (c) 2002-2024 www.mailtech.cn 163com
-In-Reply-To: <20241014222022.571819-4-pZ010001011111@proton.me>
-References: <20241014222022.571819-4-pZ010001011111@proton.me>
-X-NTES-SC: AL_Qu2ZCvWdvE0p4iSZbOkXn0kXhec2W8Czvvgg34JRP5k0tyTsxzgGbW9cHXjP+s6ULwOhoAi6XyNfxM5FYqxheYcHQWe88ugeMTHq27gcz/1M
+	id 1t0Zry-000000075c7-0T9d;
+	Tue, 15 Oct 2024 05:13:18 +0000
+Received: from mail-pf1-x432.google.com ([2607:f8b0:4864:20::432])
+	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
+	id 1t0ZqX-000000075Uz-1nq5
+	for linux-rockchip@lists.infradead.org;
+	Tue, 15 Oct 2024 05:11:50 +0000
+Received: by mail-pf1-x432.google.com with SMTP id d2e1a72fcca58-71e79f73aaeso41331b3a.3
+        for <linux-rockchip@lists.infradead.org>; Mon, 14 Oct 2024 22:11:48 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1728969108; x=1729573908; darn=lists.infradead.org;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=itcSJsJotSK/jcaVaV5tcZpuhtgwm01gUAjTOqSUyQM=;
+        b=vggdsVtMm9AdTQa8lOflb7MMjoQRFkyFw32jLYFZRYvktvLftdPVUsAv1ncFs0OVYr
+         slSN+Y9Ot1SBmMwKlB1VfxmDyRfOKCzHpNu/eu0+7ZXJGz6zZZ5StXPf6kpoEcN61s20
+         pYSWDMJ5w8XhJ5UBKYnFwYf0E2NSSw0FXUFBNWOlLrbZZYeW6PaYNusFJ9gpxskkQFUc
+         QWviqbU66MALSYTIaYs22JpbG5bFbMMBZOojR3PQgyeI/VQWDIAzEEA76bB5fwAvPp9E
+         HiCJj1xVyaljgfXaDn/8t0aIUCUHogtEP3/z8JEo6+cQMAMBP7ywjZyMfDSxkGEF+7eR
+         btFQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1728969108; x=1729573908;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=itcSJsJotSK/jcaVaV5tcZpuhtgwm01gUAjTOqSUyQM=;
+        b=rpdCb0o7YKw89ltJkfYO7LcaGQOtTUkoCXrKFzg49X/x8n9eVLTkMY0zeJ8PXQnujp
+         mX95ThNfh8gTjTQVZwVdE3bEWpXb83lFTQ9cYbn4mVlKz6olln8XoEuMMizrmriLxW9f
+         S1HiHeJewYp6JGzr1th2okjOjr3NRn9Q4nE7QIv+QfzpnOIlENK9gEjkhhMOf3nS1nPx
+         Z1uCXj31ISkBoGsqrKhpi0OGPUM2GZNd68z0D/Rfpt3zZSczRinjhCBKSvJKQlWaFn+S
+         58AxnclTpy2JZnN/c1NHjKpCxcmqvizMyCCv2uIT5bEJy2i+1PN3KuGfhqZ1Fevv+gM8
+         rGlw==
+X-Forwarded-Encrypted: i=1; AJvYcCW1N4vC9H+RTov/5UpQSSODknWNxAQ4JyTVMTInwNOMuRJFD0FTjVI/VGMvo9h8krdSXxGNZHwdFWctnuu1Sw==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yz0MSJxucvlE3469sZvvozY4WNRfYeGKmVpp/e2CHUUuOxZTtBE
+	OVVYCgo2osN0Ye3c9K3ETOdQqwK0rjEoxiDE7oBDkFjHzC+2H9EEsyYxhWlB1g==
+X-Google-Smtp-Source: AGHT+IGcczmm+9wAnSEP6Av3fDiqgeLou2z+jC7AbNImoY9K8bKikbyOt8wINuH5deg1mPWGxTr0NQ==
+X-Received: by 2002:a05:6a00:888:b0:71d:fd40:b484 with SMTP id d2e1a72fcca58-71e380c5033mr20946749b3a.24.1728969108206;
+        Mon, 14 Oct 2024 22:11:48 -0700 (PDT)
+Received: from thinkpad ([220.158.156.88])
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-71e7737185dsm450968b3a.16.2024.10.14.22.11.43
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 14 Oct 2024 22:11:47 -0700 (PDT)
+Date: Tue, 15 Oct 2024 10:41:41 +0530
+From: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
+To: Anand Moon <linux.amoon@gmail.com>
+Cc: Shawn Lin <shawn.lin@rock-chips.com>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
+	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	"open list:PCIE DRIVER FOR ROCKCHIP" <linux-pci@vger.kernel.org>,
+	"open list:PCIE DRIVER FOR ROCKCHIP" <linux-rockchip@lists.infradead.org>,
+	"moderated list:ARM/Rockchip SoC support" <linux-arm-kernel@lists.infradead.org>,
+	open list <linux-kernel@vger.kernel.org>
+Subject: Re: [PATCH v8 2/3] PCI: rockchip: Simplify reset control handling by
+ using reset_control_bulk*() function
+Message-ID: <20241015051141.g6fh222zrkvnn4l6@thinkpad>
+References: <20241014135210.224913-1-linux.amoon@gmail.com>
+ <20241014135210.224913-3-linux.amoon@gmail.com>
 MIME-Version: 1.0
-Message-ID: <7b45f190.452f.1928e41b746.Coremail.andyshrk@163.com>
-X-Coremail-Locale: zh_CN
-X-CM-TRANSID: aSgvCgD3D0_E4w1nOdsNAA--.5362W
-X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/xtbB0g15XmcN3QaI4gAEsn
-X-Coremail-Antispam: 1U5529EdanIXcx71UUUUU7vcSsGvfC2KfnxnUU==
+Content-Disposition: inline
+In-Reply-To: <20241014135210.224913-3-linux.amoon@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241014_203932_033408_69E70CF5 
-X-CRM114-Status: GOOD (  19.20  )
+X-CRM114-CacheID: sfid-20241014_221149_543652_2B5553CD 
+X-CRM114-Status: GOOD (  31.28  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,386 +98,182 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-
-Hi Piotr,
-
-At 2024-10-15 06:30:27, "Piotr Zalewski" <pZ010001011111@proton.me> wrote:
->Add support for gamma LUT in VOP2 driver. The implementation was inspired
->by one found in VOP1 driver. Blue and red channels in gamma LUT register
->write were swapped with respect to how gamma LUT values are written in
->VOP1. Gamma LUT port selection was added before the write of new gamma LUT 
->table. If the current SoC is RK3588, "seamless" gamma lut update is 
->performed similarly to how it was done in the case of RK3399 in VOP1[1]. In
->seamless update gamma LUT disable before the write isn't necessary, 
->different register is being used to select gamma LUT port[2] and after 
->setting DSP_LUT_EN bit, GAMMA_UPDATE_EN bit is set[3]. Gamma size is set 
->and drm color management is enabled for each video port's CRTC except ones 
->which have no associated device. 
->
->Solution was tested on RK3566 (Pinetab2). When using userspace tools
->which set eg. constant color temperature no issues were noticed. When
->using userspace tools which adjust eg. color temperature the slight screen
->flicker is visible probably because of gamma LUT disable.
->
->Compare behaviour of eg.:
->```
->gammastep -O 3000
->```
->
->To eg.:
->```
->gammastep -l 53:23 -t 6000:3000
->```
->
->In latter case color temperature is slowly adjusted at the beginning which
->causes screen to slighly flicker. Then it adjusts every few seconds which 
->also causes slight screen flicker.
->
->[1] https://lists.infradead.org/pipermail/linux-rockchip/2021-October/028132.html
->[2] https://lore.kernel.org/linux-rockchip/48249708-8c05-40d2-a5d8-23de960c5a77@rock-chips.com/
->[3] https://github.com/radxa/kernel/blob/linux-6.1-stan-rkr1/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c#L3437
->
->Helped-by: Daniel Stone <daniel@fooishbar.org>
->Helped-by: Dragan Simic <dsimic@manjaro.org>
->Helped-by: Diederik de Haas <didi.debian@cknow.org>
->Helped-by: Andy Yan <andy.yan@rock-chips.com>
->Signed-off-by: Piotr Zalewski <pZ010001011111@proton.me>
->---
->
->Notes:
->    Changes in v5:
->        - Do not trigger full modeset in case seamless gamma lut update
->		  isn't possible (eg. rk356x case). It was discovered that with 
->		  full modeset, userspace tools which adjust color temperature with
->          high frequency cause screen to go black and reduce overall
->          performance. Instead, revert to previous behaviour of lut update
->		  happening in atomic_begin or (in case there is a modeset) in
->		  atomic_enable. Also, add unrelated to modeset trigger
->		  changes/improvements from v4 on top. Improve code readability
->		  too.
->
->    Changes in v4:
->        - rework the implementation to better utilize DRM atomic updates[2]
->        - handle the RK3588 case[2][3]
->    
->    Changes in v3:
->        - v3 is patch v2 "resend", by mistake the incremental patch was
->        sent in v2
->    
->    Changes in v2:
->        - Apply code styling corrections[1]
->        - Move gamma LUT write inside the vop2 lock
->	
->	Link to v4: https://lore.kernel.org/linux-rockchip/20240815124306.189282-2-pZ010001011111@proton.me/
->    Link to v3: https://lore.kernel.org/linux-rockchip/TkgKVivuaLFLILPY-n3iZo_8KF-daKdqdu-0_e0HP-5Ar_8DALDeNWog2suwWKjX7eomcbGET0KZe7DlzdhK2YM6CbLbeKeFZr-MJzJMtw0=@proton.me/
->    Link to v2: https://lore.kernel.org/linux-rockchip/Hk03HDb6wSSHWtEFZHUye06HR0-9YzP5nCHx9A8_kHzWSZawDrU1o1pjEGkCOJFoRg0nTB4BWEv6V0XBOjF4-0Mj44lp2TrjaQfnytzp-Pk=@proton.me/T/#u
->    Link to v1: https://lore.kernel.org/linux-rockchip/9736eadf6a9d8e97eef919c6b3d88828@manjaro.org/T/#t
->    
->    [1] https://lore.kernel.org/linux-rockchip/d019761504b540600d9fc7a585d6f95f@manjaro.org
->    [2] https://lore.kernel.org/linux-rockchip/CAPj87rOM=j0zmuWL9frGKV1xzPbJrk=Q9ip7F_HAPYnbCqPouw@mail.gmail.com
->    [3] https://lore.kernel.org/linux-rockchip/7d998e4c-e1d3-4e8b-af76-c5bc83b43647@rock-chips.com
->
-> drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 161 +++++++++++++++++++
-> drivers/gpu/drm/rockchip/rockchip_drm_vop2.h |   5 +
-> 2 files changed, 166 insertions(+)
->
->diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
->index 9873172e3fd3..a6a2d7df5ecc 100644
->--- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
->+++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
->@@ -278,6 +278,15 @@ static u32 vop2_readl(struct vop2 *vop2, u32 offset)
-> 	return val;
-> }
-> 
->+static u32 vop2_vp_read(struct vop2_video_port *vp, u32 offset)
->+{
->+	u32 val;
->+
->+	regmap_read(vp->vop2->map, vp->data->offset + offset, &val);
->+
->+	return val;
->+}
->+
-> static void vop2_win_write(const struct vop2_win *win, unsigned int reg, u32 v)
-> {
-> 	regmap_field_write(win->reg[reg], v);
->@@ -998,6 +1007,55 @@ static void vop2_disable(struct vop2 *vop2)
-> 	clk_disable_unprepare(vop2->hclk);
-> }
-> 
->+static bool vop2_vp_dsp_lut_is_enabled(struct vop2_video_port *vp)
->+{
->+	return (u32) (vop2_vp_read(vp, RK3568_VP_DSP_CTRL) & RK3568_VP_DSP_CTRL__DSP_LUT_EN) >
->+	    0;
->+}
->+
->+static void vop2_vp_dsp_lut_disable(struct vop2_video_port *vp)
->+{
->+	u32 dsp_ctrl = vop2_vp_read(vp, RK3568_VP_DSP_CTRL);
->+
->+	dsp_ctrl &= ~RK3568_VP_DSP_CTRL__DSP_LUT_EN;
->+	vop2_vp_write(vp, RK3568_VP_DSP_CTRL, dsp_ctrl);
->+}
->+
->+static bool vop2_vp_dsp_lut_poll_disable(struct vop2_video_port *vp)
->+{
->+	u32 dsp_ctrl;
->+	int ret = readx_poll_timeout(vop2_vp_dsp_lut_is_enabled, vp, dsp_ctrl,
->+				!dsp_ctrl, 5, 30 * 1000);
->+	if (ret) {
->+		drm_err(vp->vop2->drm, "display LUT RAM enable timeout!\n");
->+		return false;
->+	}
->+
->+	return true;
->+}
->+
->+static void vop2_vp_dsp_lut_enable(struct vop2_video_port *vp)
->+{
->+	u32 dsp_ctrl = vop2_vp_read(vp, RK3568_VP_DSP_CTRL);
->+
->+	dsp_ctrl |= RK3568_VP_DSP_CTRL__DSP_LUT_EN;
->+	vop2_vp_write(vp, RK3568_VP_DSP_CTRL, dsp_ctrl);
->+}
->+
->+static void vop2_vp_dsp_lut_update_enable(struct vop2_video_port *vp)
->+{
->+	u32 dsp_ctrl = vop2_vp_read(vp, RK3568_VP_DSP_CTRL);
->+
->+	dsp_ctrl |= RK3588_VP_DSP_CTRL__GAMMA_UPDATE_EN;
->+	vop2_vp_write(vp, RK3568_VP_DSP_CTRL, dsp_ctrl);
->+}
->+
->+static inline bool vop2_supports_seamless_gamma_lut_update(struct vop2 *vop2)
->+{
->+	return (vop2->data->soc_id == 3588);
->+}
->+
->+
-> static void vop2_crtc_atomic_disable(struct drm_crtc *crtc,
-> 				     struct drm_atomic_state *state)
-> {
->@@ -1482,6 +1540,66 @@ static bool vop2_crtc_mode_fixup(struct drm_crtc *crtc,
-> 	return true;
-> }
-> 
->+static void vop2_crtc_write_gamma_lut(struct vop2 *vop2, struct drm_crtc *crtc)
->+{
->+	const struct vop2_video_port *vp = to_vop2_video_port(crtc);
->+	const struct vop2_video_port_data *vp_data = &vop2->data->vp[vp->id];
->+
->+	struct drm_color_lut *lut = crtc->state->gamma_lut->data;
->+	unsigned int i, bpc = ilog2(vp_data->gamma_lut_len);
->+	u32 word;
->+
->+	for (i = 0; i < crtc->gamma_size; i++) {
->+		word = (drm_color_lut_extract(lut[i].blue, bpc) << (2 * bpc)) |
->+		    (drm_color_lut_extract(lut[i].green, bpc) << bpc) |
->+		    drm_color_lut_extract(lut[i].red, bpc);
->+
->+		writel(word, vop2->lut_regs + i * 4);
->+	}
->+}
->+
->+static void vop2_crtc_atomic_try_set_gamma(struct vop2 *vop2,
-
-Why we need a  _try_ in the function name ?
-
->+					struct vop2_video_port *vp,
->+					struct drm_crtc *crtc,
->+					struct drm_crtc_state *crtc_state)
->+{
->+
->+	if (vop2->lut_regs && crtc_state->color_mgmt_changed) {
->+		if (!crtc_state->gamma_lut) {
->+			vop2_vp_dsp_lut_disable(vp);
->+			return;
->+		}
->+
->+		if (vop2_supports_seamless_gamma_lut_update(vop2)) {
-I think it's bettery to check for rk3568/rk3566 here,  the newer soc will all follow
-rk3588 support seamless gamma lut update.
-
-
->+			vop2_writel(vop2, RK3568_LUT_PORT_SEL, FIELD_PREP(
->+				RK3588_LUT_PORT_SEL__GAMMA_AHB_WRITE_SEL,
->+				vp->id));
->+			vop2_crtc_write_gamma_lut(vop2, crtc);
->+			vop2_vp_dsp_lut_enable(vp);
->+			vop2_vp_dsp_lut_update_enable(vp);
->+		} else {
-
-As for rk3566/68, we should do exclusive check here, because there is only
-one gamma ,  only one VP can use it at a time. See my comments in V3:
-
-https://patchwork.kernel.org/project/linux-rockchip/patch/TkgKVivuaLFLILPY-n3iZo_8KF-daKdqdu-0_e0HP-5Ar_8DALDeNWog2suwWKjX7eomcbGET0KZe7DlzdhK2YM6CbLbeKeFZr-MJzJMtw0=@proton.me/
-
-
->+			vop2_vp_dsp_lut_disable(vp);
->+			vop2_cfg_done(vp);
->+			if (!vop2_vp_dsp_lut_poll_disable(vp))
->+				return;
->+
->+			vop2_writel(vop2, RK3568_LUT_PORT_SEL, vp->id);
->+			vop2_crtc_write_gamma_lut(vop2, crtc);
->+			vop2_vp_dsp_lut_enable(vp);
->+		}
->+	}
->+}
->+
->+static inline void vop2_crtc_atomic_try_set_gamma_locked(struct vop2 *vop2,
->+					struct vop2_video_port *vp,
->+					struct drm_crtc *crtc,
->+					struct drm_crtc_state *crtc_state)
->+{
->+	vop2_lock(vop2);
->+	vop2_crtc_atomic_try_set_gamma(vop2, vp, crtc, crtc_state);
->+	vop2_unlock(vop2);
->+}
->+
-> static void vop2_dither_setup(struct drm_crtc *crtc, u32 *dsp_ctrl)
-> {
-> 	struct rockchip_crtc_state *vcstate = to_rockchip_crtc_state(crtc->state);
->@@ -2057,11 +2175,35 @@ static void vop2_crtc_atomic_enable(struct drm_crtc *crtc,
-> 
-> 	vop2_vp_write(vp, RK3568_VP_DSP_CTRL, dsp_ctrl);
-> 
->+	vop2_crtc_atomic_try_set_gamma(vop2, vp, crtc, crtc_state);
->+
-> 	drm_crtc_vblank_on(crtc);
-> 
-> 	vop2_unlock(vop2);
-> }
-> 
->+static int vop2_crtc_atomic_check_gamma(struct vop2_video_port *vp,
->+					struct drm_crtc *crtc,
->+					struct drm_atomic_state *state,
->+					struct drm_crtc_state *crtc_state)
->+{
->+	struct vop2 *vop2 = vp->vop2;
->+	unsigned int len;
->+
->+	if (!vp->vop2->lut_regs || !crtc_state->color_mgmt_changed ||
->+	    !crtc_state->gamma_lut)
->+		return 0;
->+
->+	len = drm_color_lut_size(crtc_state->gamma_lut);
->+	if (len != crtc->gamma_size) {
->+		drm_dbg(vop2->drm, "Invalid LUT size; got %d, expected %d\n",
->+				      len, crtc->gamma_size);
->+		return -EINVAL;
->+	}
->+
->+	return 0;
->+}
->+
-> static int vop2_crtc_atomic_check(struct drm_crtc *crtc,
-> 				  struct drm_atomic_state *state)
-> {
->@@ -2069,6 +2211,11 @@ static int vop2_crtc_atomic_check(struct drm_crtc *crtc,
-> 	struct drm_plane *plane;
-> 	int nplanes = 0;
-> 	struct drm_crtc_state *crtc_state = drm_atomic_get_new_crtc_state(state, crtc);
->+	int ret;
->+
->+	ret = vop2_crtc_atomic_check_gamma(vp, crtc, state, crtc_state);
->+	if (ret)
->+		return ret;
-> 
-> 	drm_atomic_crtc_state_for_each_plane(plane, crtc_state)
-> 		nplanes++;
->@@ -2456,9 +2603,12 @@ static void vop2_setup_dly_for_windows(struct vop2 *vop2)
-> 	vop2_writel(vop2, RK3568_SMART_DLY_NUM, sdly);
-> }
-> 
->+
-> static void vop2_crtc_atomic_begin(struct drm_crtc *crtc,
-> 				   struct drm_atomic_state *state)
-> {
->+	struct drm_crtc_state *crtc_state =
->+		drm_atomic_get_new_crtc_state(state, crtc);
-> 	struct vop2_video_port *vp = to_vop2_video_port(crtc);
-> 	struct vop2 *vop2 = vp->vop2;
-> 	struct drm_plane *plane;
->@@ -2482,6 +2632,11 @@ static void vop2_crtc_atomic_begin(struct drm_crtc *crtc,
-> 	vop2_setup_layer_mixer(vp);
-> 	vop2_setup_alpha(vp);
-> 	vop2_setup_dly_for_windows(vop2);
->+
->+	// NOTE: in case of modeset gamma lut update
->+	// already happened in atomic enable
->+	if (!drm_atomic_crtc_needs_modeset(crtc_state))
->+		vop2_crtc_atomic_try_set_gamma_locked(vop2, vp, crtc, crtc_state);
-
-I would like update gamma at crtc_atomic_flush callback like mediateck, tidss, ast, and
-we also following these in our bsp code.
-
-> }
-> 
-> static void vop2_crtc_atomic_flush(struct drm_crtc *crtc,
->@@ -2790,7 +2945,13 @@ static int vop2_create_crtcs(struct vop2 *vop2)
-> 		}
-> 
-> 		drm_crtc_helper_add(&vp->crtc, &vop2_crtc_helper_funcs);
->+		if (vop2->lut_regs && vp->crtc.dev != NULL) {
->+			const struct vop2_video_port_data *vp_data = &vop2_data->vp[vp->id];
-> 
->+			drm_mode_crtc_set_gamma_size(&vp->crtc, vp_data->gamma_lut_len);
->+			drm_crtc_enable_color_mgmt(&vp->crtc, 0, false,
->+						   vp_data->gamma_lut_len);
-
-It seems that we can keep it in one line,  the default limit  of linux kernel coding style is 100 characters now.
-
-
->+		}
-> 		init_completion(&vp->dsp_hold_completion);
-> 	}
-> 
->diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h
->index 615a16196aff..510dda6f9092 100644
->--- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h
->+++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h
->@@ -394,6 +394,7 @@ enum dst_factor_mode {
-> #define RK3568_REG_CFG_DONE__GLB_CFG_DONE_EN		BIT(15)
-> 
-> #define RK3568_VP_DSP_CTRL__STANDBY			BIT(31)
->+#define RK3568_VP_DSP_CTRL__DSP_LUT_EN			BIT(28)
-> #define RK3568_VP_DSP_CTRL__DITHER_DOWN_MODE		BIT(20)
-> #define RK3568_VP_DSP_CTRL__DITHER_DOWN_SEL		GENMASK(19, 18)
-> #define RK3568_VP_DSP_CTRL__DITHER_DOWN_EN		BIT(17)
->@@ -408,6 +409,8 @@ enum dst_factor_mode {
-> #define RK3568_VP_DSP_CTRL__CORE_DCLK_DIV		BIT(4)
-> #define RK3568_VP_DSP_CTRL__OUT_MODE			GENMASK(3, 0)
-> 
->+#define RK3588_VP_DSP_CTRL__GAMMA_UPDATE_EN		BIT(22)
->+
-> #define RK3588_VP_CLK_CTRL__DCLK_OUT_DIV		GENMASK(3, 2)
-> #define RK3588_VP_CLK_CTRL__DCLK_CORE_DIV		GENMASK(1, 0)
-> 
->@@ -460,6 +463,8 @@ enum dst_factor_mode {
-> #define RK3588_DSP_IF_POL__DP1_PIN_POL			GENMASK(14, 12)
-> #define RK3588_DSP_IF_POL__DP0_PIN_POL			GENMASK(10, 8)
-> 
->+#define RK3588_LUT_PORT_SEL__GAMMA_AHB_WRITE_SEL	GENMASK(13, 12)
->+
-> #define RK3568_VP0_MIPI_CTRL__DCLK_DIV2_PHASE_LOCK	BIT(5)
-> #define RK3568_VP0_MIPI_CTRL__DCLK_DIV2			BIT(4)
-> 
->-- 
->2.47.0
->
->
->
->_______________________________________________
->Linux-rockchip mailing list
->Linux-rockchip@lists.infradead.org
->http://lists.infradead.org/mailman/listinfo/linux-rockchip
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gTW9uLCBPY3QgMTQsIDIwMjQgYXQgMDc6MjI6MDNQTSArMDUzMCwgQW5hbmQgTW9vbiB3cm90
+ZToKPiBSZWZhY3RvciB0aGUgcmVzZXQgY29udHJvbCBoYW5kbGluZyBpbiB0aGUgUm9ja2NoaXAg
+UENJZSBkcml2ZXIsCj4gaW50cm9kdWNlIGEgbW9yZSByb2J1c3QgYW5kIGVmZmljaWVudCBtZXRo
+b2QgZm9yIGFzc2VydCBhbmQKPiBkZWFzc2VydCByZXNldCBjb250cm9sbGVyIHVzaW5nIHJlc2V0
+X2NvbnRyb2xfYnVsayooKSBBUEkuIFVzaW5nIHRoZQo+IHJlc2V0X2NvbnRyb2xfYnVsayBBUElz
+LCB0aGUgcmVzZXQgaGFuZGxpbmcgZm9yIHRoZSBjb3JlIGNsb2NrcyByZXNldAo+IHVuaXQgYmVj
+b21lcyBtdWNoIHNpbXBsZXIuCj4gCj4gU3BpbHQgdGhlIHJlc2V0IGNvbnRyb2xsZXIgaW4gdHdv
+IGdyb3VwcyBhcyBwZXIgdGhlCj4gIFJLMzM5OSBUTSAgMTcuNS44LjEgUENJZSBJbml0aWFsaXph
+dGlvbiBTZXF1ZW5jZQo+ICAgICAxNy41LjguMS4xIFBDSWUgYXMgUm9vdCBDb21wbGV4Lgo+IAo+
+IDYuIERlLWFzc2VydCB0aGUgUElQRV9SRVNFVF9OL01HTVRfU1RJQ0tZX1JFU0VUX04vTUdNVF9S
+RVNFVF9OL1JFU0VUX04KPiAgICBzaW11bHRhbmVvdXNseS4KPiAKCkknZCByZXdvcmQgaXQgc2xp
+Z2h0bHk6CgpGb2xsb3dpbmcgdGhlIHJlY29tbWVuZGF0aW9ucyBpbiAnUm9ja2NoaXAgUkszMzk5
+IFRSTSB2MS4zIFBhcnQyJzoKCjEuIFNwbGl0IHRoZSByZXNldCBjb250cm9scyBpbnRvIHR3byBn
+cm91cHMgYXMgcGVyIHNlY3Rpb24gJzE3LjUuOC4xLjEgUENJZQphcyBSb290IENvbXBsZXgnLgoK
+Mi4gRGVhc3NlcnQgdGhlICdQaXBlLCBNR01UIFN0aWNreSwgTUdNVCwgQ29yZScgcmVzZXRzIGlu
+IGdyb3VwcyBhcyBwZXIgc2VjdGlvbgonMTcuNS44LjEuMSBQQ0llIGFzIFJvb3QgQ29tcGxleCcu
+IFRoaXMgaXMgYWNjb21wbGlzaGVkIHVzaW5nIHRoZQpyZXNldF9jb250cm9sX2J1bGsgQVBJcy4K
+Cj4gLSBkZXZtX3Jlc2V0X2NvbnRyb2xfYnVsa19nZXRfZXhjbHVzaXZlKCk6IEFsbG93cyB0aGUg
+ZHJpdmVyIHRvIGdldCBhbGwKPiAgIHJlc2V0cyBkZWZpbmVkIGluIHRoZSBEVCB0aGVyZWJ5IHJl
+bW92aW5nIHRoZSBoYXJkY29kZWQgcmVzZXQgbmFtZXMKPiAgIGluIHRoZSBkcml2ZXIuCj4gLSBy
+ZXNldF9jb250cm9sX2J1bGtfYXNzZXJ0KCk6IEFsbG93cyB0aGUgZHJpdmVyIHRvIGFzc2VydCB0
+aGUgcmVzZXRzCj4gICBkZWZpbmVkIGluIHRoZSBkcml2ZXIuCj4gLSByZXNldF9jb250cm9sX2J1
+bGtfZGVhc3NlcnQoKTogQWxsb3dzIHRoZSBkcml2ZXIgdG8gZGVhc3NlcnQgdGhlIHJlc2V0cwo+
+ICAgZGVmaW5lZCBpbiB0aGUgZHJpdmVyLgo+IAoKTm8gbmVlZCB0byBsaXN0IG91dCB0aGUgQVBJ
+cy4gSnVzdCBhZGQgdGhlbSB0byB0aGUgZmlyc3QgcGFyYWdyYXBoIGl0c2VsZiB0bwpleHBsYWlu
+IGhvdyB0aGV5IGFyZSB1c2VkLgoKPiBTaWduZWQtb2ZmLWJ5OiBBbmFuZCBNb29uIDxsaW51eC5h
+bW9vbkBnbWFpbC5jb20+CgpTb21lIG5pdHBpY2tzIGJlbG93LiBSZXN0IGxvb2tzIGdvb2QuCgo+
+IC0tLQo+IHY4OiBJIHRyaWVkIHRvIGFkZHJlc3MgcmV2aWV3cyBhbmQgY29tbWVudHMgZnJvbSBN
+YW5pLgo+ICAgICBGb2xsb3cgdGhlIHNlcXVlbmNlIG9mIERlLWFzc2VydCBhcyBwZXIgdGhlIGRy
+aXZlciBjb2RlLgo+ICAgICBEcm9wIHRoZSBjb21tZW50IGluIHRoZSBkcml2ZXIuCj4gICAgIElt
+cHJvdmUgdGhlIGNvbW1pdCBtZXNzYWdlIHdpdGggdGhlIGRlc2NyaXB0aW9uIG9mIHRoZSBUTVAg
+c2VjdGlvbi4KPiAgICAgSW1wcm92ZSB0aGUgcmVhc29uIGZvciB0aGUgY29yZSBmdW5jdGlvbmFs
+IGNoYW5nZXMgaW4gdGhlIGNvbW1pdAo+ICAgICBkZXNjcmlwdGlvbi4KPiAgICAgSW1wcm92ZSB0
+aGUgZXJyb3IgaGFuZGxpbmcgbWVzc2FnZXMgb2YgdGhlIGNvZGUuCj4gdjc6IHJlcGxhY2UgZGV2
+bV9yZXNldF9jb250cm9sX2J1bGtfZ2V0X29wdGlvbmFsX2V4Y2x1c2l2ZSgpCj4gICAgICAgICB3
+aXRoIGRldm1fcmVzZXRfY29udHJvbF9idWxrX2dldF9leGNsdXNpdmUoKQo+ICAgICB1cGRhdGUg
+dGhlIGZ1bmN0aW9uYWwgY2hhbmdlcy4KPiBWNjogQWRkIHJlYXNvbiBmb3IgdGhlIHNwbGl0IG9m
+IHRoZSBSRVNFVCBwaW5zLgo+IHY1OiBGaXggdGhlIERlLWFzc2VydCByZXNldCBjb3JlIGFzIHBl
+ciB0aGUgVFJNCj4gICAgIERlLWFzc2VydCB0aGUgUElQRV9SRVNFVF9OL01HTVRfU1RJQ0tZX1JF
+U0VUX04vTUdNVF9SRVNFVF9OL1JFU0VUX04KPiAgICAgc2ltdWx0YW5lb3VzbHkuCj4gdjQ6IHVz
+ZSBkZXZfZXJyX3Byb2JlIGluIGVycm9yIHBhdGguCj4gdjM6IEZpeCB0eXBvIGluIGNvbW1pdCBt
+ZXNzYWdlLCBkcm9wcGVkIHJlcG9ydGVkIGJ5Lgo+IHYyOiBGaXggY29tcGlsYXRpb24gZXJyb3Ig
+cmVwb3J0ZWQgYnkgSW50ZWwgdGVzdCByb2JvdAo+ICAgICBmaXhlZCBjaGVja3BhdGNoIHdhcm5p
+bmcuCj4gLS0tCj4gIGRyaXZlcnMvcGNpL2NvbnRyb2xsZXIvcGNpZS1yb2NrY2hpcC5jIHwgMTU1
+ICsrKysrLS0tLS0tLS0tLS0tLS0tLS0tLS0KPiAgZHJpdmVycy9wY2kvY29udHJvbGxlci9wY2ll
+LXJvY2tjaGlwLmggfCAgMjYgKysrLS0KPiAgMiBmaWxlcyBjaGFuZ2VkLCA0OSBpbnNlcnRpb25z
+KCspLCAxMzIgZGVsZXRpb25zKC0pCj4gCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvcGNpL2NvbnRy
+b2xsZXIvcGNpZS1yb2NrY2hpcC5jIGIvZHJpdmVycy9wY2kvY29udHJvbGxlci9wY2llLXJvY2tj
+aGlwLmMKPiBpbmRleCAyNzc3ZWYwY2I1OTkuLjQzZDgzYzFmMzE5NiAxMDA2NDQKPiAtLS0gYS9k
+cml2ZXJzL3BjaS9jb250cm9sbGVyL3BjaWUtcm9ja2NoaXAuYwo+ICsrKyBiL2RyaXZlcnMvcGNp
+L2NvbnRyb2xsZXIvcGNpZS1yb2NrY2hpcC5jCj4gQEAgLTMwLDcgKzMwLDcgQEAgaW50IHJvY2tj
+aGlwX3BjaWVfcGFyc2VfZHQoc3RydWN0IHJvY2tjaGlwX3BjaWUgKnJvY2tjaGlwKQo+ICAJc3Ry
+dWN0IHBsYXRmb3JtX2RldmljZSAqcGRldiA9IHRvX3BsYXRmb3JtX2RldmljZShkZXYpOwo+ICAJ
+c3RydWN0IGRldmljZV9ub2RlICpub2RlID0gZGV2LT5vZl9ub2RlOwo+ICAJc3RydWN0IHJlc291
+cmNlICpyZWdzOwo+IC0JaW50IGVycjsKPiArCWludCBlcnIsIGk7Cj4gIAo+ICAJaWYgKHJvY2tj
+aGlwLT5pc19yYykgewo+ICAJCXJlZ3MgPSBwbGF0Zm9ybV9nZXRfcmVzb3VyY2VfYnluYW1lKHBk
+ZXYsCj4gQEAgLTY5LDU1ICs2OSwyMyBAQCBpbnQgcm9ja2NoaXBfcGNpZV9wYXJzZV9kdChzdHJ1
+Y3Qgcm9ja2NoaXBfcGNpZSAqcm9ja2NoaXApCj4gIAlpZiAocm9ja2NoaXAtPmxpbmtfZ2VuIDwg
+MCB8fCByb2NrY2hpcC0+bGlua19nZW4gPiAyKQo+ICAJCXJvY2tjaGlwLT5saW5rX2dlbiA9IDI7
+Cj4gIAo+IC0Jcm9ja2NoaXAtPmNvcmVfcnN0ID0gZGV2bV9yZXNldF9jb250cm9sX2dldF9leGNs
+dXNpdmUoZGV2LCAiY29yZSIpOwo+IC0JaWYgKElTX0VSUihyb2NrY2hpcC0+Y29yZV9yc3QpKSB7
+Cj4gLQkJaWYgKFBUUl9FUlIocm9ja2NoaXAtPmNvcmVfcnN0KSAhPSAtRVBST0JFX0RFRkVSKQo+
+IC0JCQlkZXZfZXJyKGRldiwgIm1pc3NpbmcgY29yZSByZXNldCBwcm9wZXJ0eSBpbiBub2RlXG4i
+KTsKPiAtCQlyZXR1cm4gUFRSX0VSUihyb2NrY2hpcC0+Y29yZV9yc3QpOwo+IC0JfQo+IC0KPiAt
+CXJvY2tjaGlwLT5tZ210X3JzdCA9IGRldm1fcmVzZXRfY29udHJvbF9nZXRfZXhjbHVzaXZlKGRl
+diwgIm1nbXQiKTsKPiAtCWlmIChJU19FUlIocm9ja2NoaXAtPm1nbXRfcnN0KSkgewo+IC0JCWlm
+IChQVFJfRVJSKHJvY2tjaGlwLT5tZ210X3JzdCkgIT0gLUVQUk9CRV9ERUZFUikKPiAtCQkJZGV2
+X2VycihkZXYsICJtaXNzaW5nIG1nbXQgcmVzZXQgcHJvcGVydHkgaW4gbm9kZVxuIik7Cj4gLQkJ
+cmV0dXJuIFBUUl9FUlIocm9ja2NoaXAtPm1nbXRfcnN0KTsKPiAtCX0KPiAtCj4gLQlyb2NrY2hp
+cC0+bWdtdF9zdGlja3lfcnN0ID0gZGV2bV9yZXNldF9jb250cm9sX2dldF9leGNsdXNpdmUoZGV2
+LAo+IC0JCQkJCQkJCSJtZ210LXN0aWNreSIpOwo+IC0JaWYgKElTX0VSUihyb2NrY2hpcC0+bWdt
+dF9zdGlja3lfcnN0KSkgewo+IC0JCWlmIChQVFJfRVJSKHJvY2tjaGlwLT5tZ210X3N0aWNreV9y
+c3QpICE9IC1FUFJPQkVfREVGRVIpCj4gLQkJCWRldl9lcnIoZGV2LCAibWlzc2luZyBtZ210LXN0
+aWNreSByZXNldCBwcm9wZXJ0eSBpbiBub2RlXG4iKTsKPiAtCQlyZXR1cm4gUFRSX0VSUihyb2Nr
+Y2hpcC0+bWdtdF9zdGlja3lfcnN0KTsKPiAtCX0KPiAtCj4gLQlyb2NrY2hpcC0+cGlwZV9yc3Qg
+PSBkZXZtX3Jlc2V0X2NvbnRyb2xfZ2V0X2V4Y2x1c2l2ZShkZXYsICJwaXBlIik7Cj4gLQlpZiAo
+SVNfRVJSKHJvY2tjaGlwLT5waXBlX3JzdCkpIHsKPiAtCQlpZiAoUFRSX0VSUihyb2NrY2hpcC0+
+cGlwZV9yc3QpICE9IC1FUFJPQkVfREVGRVIpCj4gLQkJCWRldl9lcnIoZGV2LCAibWlzc2luZyBw
+aXBlIHJlc2V0IHByb3BlcnR5IGluIG5vZGVcbiIpOwo+IC0JCXJldHVybiBQVFJfRVJSKHJvY2tj
+aGlwLT5waXBlX3JzdCk7Cj4gLQl9Cj4gKwlmb3IgKGkgPSAwOyBpIDwgUk9DS0NISVBfTlVNX1BN
+X1JTVFM7IGkrKykKPiArCQlyb2NrY2hpcC0+cG1fcnN0c1tpXS5pZCA9IHJvY2tjaGlwX3BjaV9w
+bV9yc3RzW2ldOwo+ICAKPiAtCXJvY2tjaGlwLT5wbV9yc3QgPSBkZXZtX3Jlc2V0X2NvbnRyb2xf
+Z2V0X2V4Y2x1c2l2ZShkZXYsICJwbSIpOwo+IC0JaWYgKElTX0VSUihyb2NrY2hpcC0+cG1fcnN0
+KSkgewo+IC0JCWlmIChQVFJfRVJSKHJvY2tjaGlwLT5wbV9yc3QpICE9IC1FUFJPQkVfREVGRVIp
+Cj4gLQkJCWRldl9lcnIoZGV2LCAibWlzc2luZyBwbSByZXNldCBwcm9wZXJ0eSBpbiBub2RlXG4i
+KTsKPiAtCQlyZXR1cm4gUFRSX0VSUihyb2NrY2hpcC0+cG1fcnN0KTsKPiAtCX0KPiArCWVyciA9
+IGRldm1fcmVzZXRfY29udHJvbF9idWxrX2dldF9leGNsdXNpdmUoZGV2LAo+ICsJCQkJCQkgICAg
+Uk9DS0NISVBfTlVNX1BNX1JTVFMsCj4gKwkJCQkJCSAgICByb2NrY2hpcC0+cG1fcnN0cyk7Cj4g
+KwlpZiAoZXJyKQo+ICsJCXJldHVybiBkZXZfZXJyX3Byb2JlKGRldiwgZXJyLCAiQ2Fubm90IGdl
+dCB0aGUgUE0gcmVzZXQgY29udHJvbFxuIik7CgoiQ291bGRuJ3QgZ2V0IFBNIHJlc2V0cyIKCj4g
+IAo+IC0Jcm9ja2NoaXAtPnBjbGtfcnN0ID0gZGV2bV9yZXNldF9jb250cm9sX2dldF9leGNsdXNp
+dmUoZGV2LCAicGNsayIpOwo+IC0JaWYgKElTX0VSUihyb2NrY2hpcC0+cGNsa19yc3QpKSB7Cj4g
+LQkJaWYgKFBUUl9FUlIocm9ja2NoaXAtPnBjbGtfcnN0KSAhPSAtRVBST0JFX0RFRkVSKQo+IC0J
+CQlkZXZfZXJyKGRldiwgIm1pc3NpbmcgcGNsayByZXNldCBwcm9wZXJ0eSBpbiBub2RlXG4iKTsK
+PiAtCQlyZXR1cm4gUFRSX0VSUihyb2NrY2hpcC0+cGNsa19yc3QpOwo+IC0JfQo+ICsJZm9yIChp
+ID0gMDsgaSA8IFJPQ0tDSElQX05VTV9DT1JFX1JTVFM7IGkrKykKPiArCQlyb2NrY2hpcC0+Y29y
+ZV9yc3RzW2ldLmlkID0gcm9ja2NoaXBfcGNpX2NvcmVfcnN0c1tpXTsKPiAgCj4gLQlyb2NrY2hp
+cC0+YWNsa19yc3QgPSBkZXZtX3Jlc2V0X2NvbnRyb2xfZ2V0X2V4Y2x1c2l2ZShkZXYsICJhY2xr
+Iik7Cj4gLQlpZiAoSVNfRVJSKHJvY2tjaGlwLT5hY2xrX3JzdCkpIHsKPiAtCQlpZiAoUFRSX0VS
+Uihyb2NrY2hpcC0+YWNsa19yc3QpICE9IC1FUFJPQkVfREVGRVIpCj4gLQkJCWRldl9lcnIoZGV2
+LCAibWlzc2luZyBhY2xrIHJlc2V0IHByb3BlcnR5IGluIG5vZGVcbiIpOwo+IC0JCXJldHVybiBQ
+VFJfRVJSKHJvY2tjaGlwLT5hY2xrX3JzdCk7Cj4gLQl9Cj4gKwllcnIgPSBkZXZtX3Jlc2V0X2Nv
+bnRyb2xfYnVsa19nZXRfZXhjbHVzaXZlKGRldiwKPiArCQkJCQkJICAgIFJPQ0tDSElQX05VTV9D
+T1JFX1JTVFMsCj4gKwkJCQkJCSAgICByb2NrY2hpcC0+Y29yZV9yc3RzKTsKPiArCWlmIChlcnIp
+Cj4gKwkJcmV0dXJuIGRldl9lcnJfcHJvYmUoZGV2LCBlcnIsICJDYW5ub3QgZ2V0IHRoZSBDT1JF
+IHJlc2V0IGNvbnRyb2xcbiIpOwoKIkNvdWxkbid0IGdldCBDb3JlIHJlc2V0cyIKCj4gIAo+ICAJ
+aWYgKHJvY2tjaGlwLT5pc19yYykgewo+ICAJCXJvY2tjaGlwLT5lcF9ncGlvID0gZGV2bV9ncGlv
+ZF9nZXRfb3B0aW9uYWwoZGV2LCAiZXAiLAo+IEBAIC0xNDcsMjMgKzExNSwxMCBAQCBpbnQgcm9j
+a2NoaXBfcGNpZV9pbml0X3BvcnQoc3RydWN0IHJvY2tjaGlwX3BjaWUgKnJvY2tjaGlwKQo+ICAJ
+aW50IGVyciwgaTsKPiAgCXUzMiByZWdzOwo+ICAKPiAtCWVyciA9IHJlc2V0X2NvbnRyb2xfYXNz
+ZXJ0KHJvY2tjaGlwLT5hY2xrX3JzdCk7Cj4gLQlpZiAoZXJyKSB7Cj4gLQkJZGV2X2VycihkZXYs
+ICJhc3NlcnQgYWNsa19yc3QgZXJyICVkXG4iLCBlcnIpOwo+IC0JCXJldHVybiBlcnI7Cj4gLQl9
+Cj4gLQo+IC0JZXJyID0gcmVzZXRfY29udHJvbF9hc3NlcnQocm9ja2NoaXAtPnBjbGtfcnN0KTsK
+PiAtCWlmIChlcnIpIHsKPiAtCQlkZXZfZXJyKGRldiwgImFzc2VydCBwY2xrX3JzdCBlcnIgJWRc
+biIsIGVycik7Cj4gLQkJcmV0dXJuIGVycjsKPiAtCX0KPiAtCj4gLQllcnIgPSByZXNldF9jb250
+cm9sX2Fzc2VydChyb2NrY2hpcC0+cG1fcnN0KTsKPiAtCWlmIChlcnIpIHsKPiAtCQlkZXZfZXJy
+KGRldiwgImFzc2VydCBwbV9yc3QgZXJyICVkXG4iLCBlcnIpOwo+IC0JCXJldHVybiBlcnI7Cj4g
+LQl9Cj4gKwllcnIgPSByZXNldF9jb250cm9sX2J1bGtfYXNzZXJ0KFJPQ0tDSElQX05VTV9QTV9S
+U1RTLAo+ICsJCQkJCXJvY2tjaGlwLT5wbV9yc3RzKTsKPiArCWlmIChlcnIpCj4gKwkJcmV0dXJu
+IGRldl9lcnJfcHJvYmUoZGV2LCBlcnIsICJDb3VsZG4ndCBhc3NlcnQgUE0gcmVzZXRzXG4iKTsK
+PiAgCj4gIAlmb3IgKGkgPSAwOyBpIDwgTUFYX0xBTkVfTlVNOyBpKyspIHsKPiAgCQllcnIgPSBw
+aHlfaW5pdChyb2NrY2hpcC0+cGh5c1tpXSk7Cj4gQEAgLTE3Myw0NyArMTI4LDE3IEBAIGludCBy
+b2NrY2hpcF9wY2llX2luaXRfcG9ydChzdHJ1Y3Qgcm9ja2NoaXBfcGNpZSAqcm9ja2NoaXApCj4g
+IAkJfQo+ICAJfQo+ICAKPiAtCWVyciA9IHJlc2V0X2NvbnRyb2xfYXNzZXJ0KHJvY2tjaGlwLT5j
+b3JlX3JzdCk7Cj4gLQlpZiAoZXJyKSB7Cj4gLQkJZGV2X2VycihkZXYsICJhc3NlcnQgY29yZV9y
+c3QgZXJyICVkXG4iLCBlcnIpOwo+IC0JCWdvdG8gZXJyX2V4aXRfcGh5Owo+IC0JfQo+IC0KPiAt
+CWVyciA9IHJlc2V0X2NvbnRyb2xfYXNzZXJ0KHJvY2tjaGlwLT5tZ210X3JzdCk7Cj4gLQlpZiAo
+ZXJyKSB7Cj4gLQkJZGV2X2VycihkZXYsICJhc3NlcnQgbWdtdF9yc3QgZXJyICVkXG4iLCBlcnIp
+Owo+IC0JCWdvdG8gZXJyX2V4aXRfcGh5Owo+IC0JfQo+IC0KPiAtCWVyciA9IHJlc2V0X2NvbnRy
+b2xfYXNzZXJ0KHJvY2tjaGlwLT5tZ210X3N0aWNreV9yc3QpOwo+IC0JaWYgKGVycikgewo+IC0J
+CWRldl9lcnIoZGV2LCAiYXNzZXJ0IG1nbXRfc3RpY2t5X3JzdCBlcnIgJWRcbiIsIGVycik7Cj4g
+LQkJZ290byBlcnJfZXhpdF9waHk7Cj4gLQl9Cj4gLQo+IC0JZXJyID0gcmVzZXRfY29udHJvbF9h
+c3NlcnQocm9ja2NoaXAtPnBpcGVfcnN0KTsKPiAtCWlmIChlcnIpIHsKPiAtCQlkZXZfZXJyKGRl
+diwgImFzc2VydCBwaXBlX3JzdCBlcnIgJWRcbiIsIGVycik7Cj4gLQkJZ290byBlcnJfZXhpdF9w
+aHk7Cj4gLQl9Cj4gKwllcnIgPSByZXNldF9jb250cm9sX2J1bGtfYXNzZXJ0KFJPQ0tDSElQX05V
+TV9DT1JFX1JTVFMsCj4gKwkJCQkJcm9ja2NoaXAtPmNvcmVfcnN0cyk7Cj4gKwlpZiAoZXJyKQo+
+ICsJCXJldHVybiBkZXZfZXJyX3Byb2JlKGRldiwgZXJyLCAiQ291bGRuJ3QgYXNzZXJ0IENvcmUg
+cmVzZXRzXG4iKTsKCiJDb3VsZG4ndCBhc3NlcnQgQ29yZSByZXNldHNcbiIKCj4gIAo+ICAJdWRl
+bGF5KDEwKTsKPiAgCj4gLQllcnIgPSByZXNldF9jb250cm9sX2RlYXNzZXJ0KHJvY2tjaGlwLT5w
+bV9yc3QpOwo+IC0JaWYgKGVycikgewo+IC0JCWRldl9lcnIoZGV2LCAiZGVhc3NlcnQgcG1fcnN0
+IGVyciAlZFxuIiwgZXJyKTsKPiAtCQlnb3RvIGVycl9leGl0X3BoeTsKPiAtCX0KPiAtCj4gLQll
+cnIgPSByZXNldF9jb250cm9sX2RlYXNzZXJ0KHJvY2tjaGlwLT5hY2xrX3JzdCk7Cj4gKwllcnIg
+PSByZXNldF9jb250cm9sX2J1bGtfZGVhc3NlcnQoUk9DS0NISVBfTlVNX1BNX1JTVFMsCj4gKwkJ
+CQkJICByb2NrY2hpcC0+cG1fcnN0cyk7Cj4gIAlpZiAoZXJyKSB7Cj4gLQkJZGV2X2VycihkZXYs
+ICJkZWFzc2VydCBhY2xrX3JzdCBlcnIgJWRcbiIsIGVycik7Cj4gLQkJZ290byBlcnJfZXhpdF9w
+aHk7Cj4gLQl9Cj4gLQo+IC0JZXJyID0gcmVzZXRfY29udHJvbF9kZWFzc2VydChyb2NrY2hpcC0+
+cGNsa19yc3QpOwo+IC0JaWYgKGVycikgewo+IC0JCWRldl9lcnIoZGV2LCAiZGVhc3NlcnQgcGNs
+a19yc3QgZXJyICVkXG4iLCBlcnIpOwo+ICsJCWRldl9lcnIoZGV2LCAiQ291bGRuJ3QgZGVhc3Nl
+cnQgUE0gcmVzZXRzICVkXG4iLCBlcnIpOwoKIkNvdWxkbid0IGRlYXNzZXJ0IFBNIHJlc2V0czog
+JWRcbiIKCj4gIAkJZ290byBlcnJfZXhpdF9waHk7Cj4gIAl9Cj4gIAo+IEBAIC0yNTIsMzUgKzE3
+NywxNSBAQCBpbnQgcm9ja2NoaXBfcGNpZV9pbml0X3BvcnQoc3RydWN0IHJvY2tjaGlwX3BjaWUg
+KnJvY2tjaGlwKQo+ICAJCWdvdG8gZXJyX3Bvd2VyX29mZl9waHk7Cj4gIAl9Cj4gIAo+IC0JLyoK
+PiAtCSAqIFBsZWFzZSBkb24ndCByZW9yZGVyIHRoZSBkZWFzc2VydCBzZXF1ZW5jZSBvZiB0aGUg
+Zm9sbG93aW5nCj4gLQkgKiBmb3VyIHJlc2V0IHBpbnMuCj4gLQkgKi8KPiAtCWVyciA9IHJlc2V0
+X2NvbnRyb2xfZGVhc3NlcnQocm9ja2NoaXAtPm1nbXRfc3RpY2t5X3JzdCk7Cj4gLQlpZiAoZXJy
+KSB7Cj4gLQkJZGV2X2VycihkZXYsICJkZWFzc2VydCBtZ210X3N0aWNreV9yc3QgZXJyICVkXG4i
+LCBlcnIpOwo+IC0JCWdvdG8gZXJyX3Bvd2VyX29mZl9waHk7Cj4gLQl9Cj4gLQo+IC0JZXJyID0g
+cmVzZXRfY29udHJvbF9kZWFzc2VydChyb2NrY2hpcC0+Y29yZV9yc3QpOwo+ICsJZXJyID0gcmVz
+ZXRfY29udHJvbF9idWxrX2RlYXNzZXJ0KFJPQ0tDSElQX05VTV9DT1JFX1JTVFMsCj4gKwkJCQkJ
+ICByb2NrY2hpcC0+Y29yZV9yc3RzKTsKPiAgCWlmIChlcnIpIHsKPiAtCQlkZXZfZXJyKGRldiwg
+ImRlYXNzZXJ0IGNvcmVfcnN0IGVyciAlZFxuIiwgZXJyKTsKPiAtCQlnb3RvIGVycl9wb3dlcl9v
+ZmZfcGh5Owo+IC0JfQo+IC0KPiAtCWVyciA9IHJlc2V0X2NvbnRyb2xfZGVhc3NlcnQocm9ja2No
+aXAtPm1nbXRfcnN0KTsKPiAtCWlmIChlcnIpIHsKPiAtCQlkZXZfZXJyKGRldiwgImRlYXNzZXJ0
+IG1nbXRfcnN0IGVyciAlZFxuIiwgZXJyKTsKPiAtCQlnb3RvIGVycl9wb3dlcl9vZmZfcGh5Owo+
+IC0JfQo+IC0KPiAtCWVyciA9IHJlc2V0X2NvbnRyb2xfZGVhc3NlcnQocm9ja2NoaXAtPnBpcGVf
+cnN0KTsKPiAtCWlmIChlcnIpIHsKPiAtCQlkZXZfZXJyKGRldiwgImRlYXNzZXJ0IHBpcGVfcnN0
+IGVyciAlZFxuIiwgZXJyKTsKPiArCQlkZXZfZXJyKGRldiwgIkNvdWxkbid0IGRlYXNzZXJ0IENP
+UkUgZXJyICVkXG4iLCBlcnIpOwoKIkNvdWxkbid0IGRlYXNzZXJ0IENvcmUgcmVzZXRzOiAlZFxu
+IgoKPiAgCQlnb3RvIGVycl9wb3dlcl9vZmZfcGh5Owo+ICAJfQo+ICAKPiAgCXJldHVybiAwOwo+
+ICsKClNwdXJpb3VzIGNoYW5nZS4KCi0gTWFuaQoKLS0gCuCuruCuo+Cuv+CuteCuo+CvjeCuo+Cu
+qeCvjSDgrprgrqTgrr7grprgrr/grrXgrq7gr40KCl9fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1y
+b2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21h
+aWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
