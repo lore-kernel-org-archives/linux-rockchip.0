@@ -4,54 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 81493D1F9C5
-	for <linux-rockchip@archiver.kernel.org>; Tue, 15 Oct 2024 20:16:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 07192D1F9C6
+	for <linux-rockchip@archiver.kernel.org>; Tue, 15 Oct 2024 20:21:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Subject:Cc:From:To:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=fo6tjHU2YAQr2TAhhn80NqpxStEZ86N9MPPcjdEBJHw=; b=RvzVDdlXI4NJbO
-	s6Ksjj52NzRYG2snvKi0lkIeyIB0uWtCJ4rVfudWIsiI9KOxId3gkyCWHVbEr1BmDVmmswGfE/gmb
-	Urtf+COpxbgcLd60mkguMVgE2fdiMAIEmQhBZrPt7+FuSTXeMxXxH7qwUnP3/JxpdKzTqJIiRjCVh
-	IfJ6N/sCnLdw9NHZ6/gmV+TRetgt95P+/CTn57dXcTaS+xwaSt9oj7Z+bEE6n5glJ7wEdzT0EzUIE
-	IysiebFLmCbH/qJhexqEq/EvhyHnk7FwQKCzdurEl7E3+RkWrzpAub+ZAY6ZM3Eqpiqjt6uYOECFl
-	kHpRZ4cImsB7/yRTvrAw==;
+	List-Owner; bh=5f0ICWCjbBoZY6fqkscxf3+iYW/9WaO5IHMwFEruexg=; b=hZmUGjw2qRKqYD
+	bi+WQOiP0rwgZKS25lVErU190BU5PNKCO85U7R9zRF8/n3jQwYdoiEtGNlONF2udsXcdbxYFvCe6N
+	KbgUYuh0KkR+6EZ90ufBIKlZ2cbS+//6vHbmsPJTXgAU5exLoCICYRUts5fjpx3cNVUKL75Kh2fBs
+	Td0jA9g7EzdU/cuBGninYpuHgATpz/qCsloTPTi8T+RSa30xQXlSIkjG6lbtCYHoZLe2w3QQ2GrZU
+	ldU/5nz+eIrq9yvPHfCRK9Nrc1ad/OMLbS6Scznfe0Qx9uy1oTngy9TNC6mFytnIf0mLlkVJweYY9
+	UbaQT4q7mOWYulcphLPQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t0nxs-00000009Uvl-3rCe;
-	Tue, 15 Oct 2024 20:16:20 +0000
-Received: from mail-4316.protonmail.ch ([185.70.43.16])
+	id 1t0o33-00000009VLP-0JhT;
+	Tue, 15 Oct 2024 20:21:41 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t0nva-00000009UcJ-0Ric;
-	Tue, 15 Oct 2024 20:14:01 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=proton.me;
-	s=protonmail; t=1729023234; x=1729282434;
-	bh=oWZAEWmWn11pICS2WghDTqvtxTlwbis+AKwY8WLaaII=;
-	h=Date:To:From:Cc:Subject:Message-ID:In-Reply-To:References:
-	 Feedback-ID:From:To:Cc:Date:Subject:Reply-To:Feedback-ID:
-	 Message-ID:BIMI-Selector;
-	b=N3q2vmdCHEAzWfagD0SM+pZXcpUTWCzquQH0AbCpxZsxZolcyASpe6qALHsApCvzz
-	 fMmbnbAxPk3OpMQBg5kjZKRlUVT49Kd/Yo08Q9Ny5sUbUV0jX9/xbWDIH3tL8n291d
-	 GAMWj0pFpnMrQnKbeDuJFNEUkr5rlR5ZRPux5cGyrqkeEjOoHsWKg7p+hWerSWt+iS
-	 RLx/sOeAee0DWR6ZDooP1b3G1A3Obq6adcwyK8XftOREDpCrmc2x7Ylg2F9IWTRvuB
-	 NE/ltpZ+2dtazvzEWM4MYLC1UXGVADuQFVyrzLmaUGomvY7xeB1oTT/xo/U4P0Btk5
-	 rjcTlzl9Bso6Q==
-Date: Tue, 15 Oct 2024 20:13:40 +0000
-To: Andy Yan <andyshrk@163.com>
-From: Piotr Zalewski <pZ010001011111@proton.me>
-Cc: hjc@rock-chips.com, heiko@sntech.de, andy.yan@rock-chips.com, maarten.lankhorst@linux.intel.com, mripard@kernel.org, tzimmermann@suse.de, airlied@gmail.com, simona@ffwll.ch, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, skhan@linuxfoundation.org, Daniel Stone <daniel@fooishbar.org>, Dragan Simic <dsimic@manjaro.org>, Diederik de Haas <didi.debian@cknow.org>
-Subject: Re:Re:[PATCH v5] rockchip/drm: vop2: add support for gamma LUT
-Message-ID: <1974DYrs9gLrQrZ5VwCglFgKDDK686iyqnS_g6uPB-s9wZ_4CqfZXPjmYWihLgrkRu7ptNjpkFeqB0uTt73RFId6cL8FowQ8LFltPmaKCoI=@proton.me>
-In-Reply-To: <30940542.b36d.19290215124.Coremail.andyshrk@163.com>
-References: <20241014222022.571819-4-pZ010001011111@proton.me> <7b45f190.452f.1928e41b746.Coremail.andyshrk@163.com> <o_Cyz_ARcHj4zNlovv75MBwslIRhn3YWlscoNrlpLVobh7eWIMEQR5bNv0yhHx2KEx_gbYi_gH-8Y-CdvRZs9lZscz3-lhAbM50GXUdtSKY=@proton.me> <30940542.b36d.19290215124.Coremail.andyshrk@163.com>
-Feedback-ID: 53478694:user:proton
-X-Pm-Message-ID: 932c22f934c19cba4c98a2e1488d80d40e7faf7a
+	id 1t0o1b-00000009VEp-30Aq;
+	Tue, 15 Oct 2024 20:20:12 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 9F2AB5C5CB6;
+	Tue, 15 Oct 2024 20:20:06 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 83BB5C4CEC6;
+	Tue, 15 Oct 2024 20:20:10 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1729023610;
+	bh=x0dv1P7HzpQz4hE653c48L2iacolgQtCuY2vADBo2ew=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=PiDmF2tuZMfM7dxtZRtLkXRo3SXilj/RlJ8d2HDlilDGK2XJPlp2PN6VY5U3chydC
+	 p26rdE6Wkj3Q+/Q69JISEV3mS2tcK8QGr7oHbB1HYjCunoqunRPdUrCxplr9AkCLnn
+	 vxzcdFA9yHYJ2/LYOn2O+J3CUM1eh3jmFUR0SnGRlWyfZqKBvVs+LPtE/ffxpC9i/Z
+	 NatGgpJFY2dv4ttdADq+eVAJ/gwxKQUA97bp2mWl/H4byBTtIjbd//o3hx8rupce2z
+	 d0UVOqCd4CXr0SgCf6hWdjlEHoKREeTGCFiVgZq11NQmfQv/97CXPxd9vDwJuhcarL
+	 o/ycSgdPH/iRA==
+Date: Tue, 15 Oct 2024 15:20:09 -0500
+From: "Rob Herring (Arm)" <robh@kernel.org>
+To: Frank Wang <frawang.cn@gmail.com>
+Cc: linux-arm-kernel@lists.infradead.org, tim.chen@rock-chips.com,
+	devicetree@vger.kernel.org, conor+dt@kernel.org,
+	linux-phy@lists.infradead.org, krzk+dt@kernel.org,
+	william.wu@rock-chips.com, linux-rockchip@lists.infradead.org,
+	kishon@kernel.org, vkoul@kernel.org, linux-kernel@vger.kernel.org,
+	heiko@sntech.de, Frank Wang <frank.wang@rock-chips.com>
+Subject: Re: [PATCH 1/2] dt-bindings: phy: rockchip: add rk3576 compatible
+Message-ID: <172902360776.1846766.3809277607860876723.robh@kernel.org>
+References: <20241015013351.4884-1-frawang.cn@gmail.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20241015013351.4884-1-frawang.cn@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241015_131358_797943_38D0259F 
-X-CRM114-Status: GOOD (  23.08  )
+X-CRM114-CacheID: sfid-20241015_132011_823620_9A4FF113 
+X-CRM114-Status: UNSURE (   8.02  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,105 +76,20 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Andy
 
-On Tuesday, October 15th, 2024 at 2:22 PM, Andy Yan <andyshrk@163.com> wrote:
-
-> > > > + struct vop2_video_port *vp,
-> > > > + struct drm_crtc *crtc,
-> > > > + struct drm_crtc_state *crtc_state)
-> > > > +{
-> > > > +
-> > > > + if (vop2->lut_regs && crtc_state->color_mgmt_changed) {
-> > > > + if (!crtc_state->gamma_lut) {
-> > > > + vop2_vp_dsp_lut_disable(vp);
-> > > > + return;
-> > > > + }
-> > > > +
-> > > > + if (vop2_supports_seamless_gamma_lut_update(vop2)) {
-> > > 
-> > > I think it's bettery to check for rk3568/rk3566 here, the newer soc will all follow
-> > > rk3588 support seamless gamma lut update.
-> > 
-> > I will change in the next version.
-> > 
-> > > > + vop2_writel(vop2, RK3568_LUT_PORT_SEL, FIELD_PREP(
-> > > > + RK3588_LUT_PORT_SEL__GAMMA_AHB_WRITE_SEL,
-> > > > + vp->id));
-> > > > + vop2_crtc_write_gamma_lut(vop2, crtc);
-> > > > + vop2_vp_dsp_lut_enable(vp);
-> > > > + vop2_vp_dsp_lut_update_enable(vp);
-> > > > + } else {
-> > > 
-> > > As for rk3566/68, we should do exclusive check here, because there is only
-> > > one gamma , only one VP can use it at a time. See my comments in V3:
-> > 
-> > What do you mean exactly by exclusive check in this case.It's true that
-> > gamma LUT is shared across video ports in rk356x but, if I correctly
-> > understand, this doesn't forbid to reprogram LUT port sel and allow other
-> > VP to use gamma LUT.
+On Tue, 15 Oct 2024 09:33:50 +0800, Frank Wang wrote:
+> From: Frank Wang <frank.wang@rock-chips.com>
 > 
+> Adds the compatible line to support RK3576 SoC.
 > 
-> Yes, we can reprogram LUT port sel, but we need to make sure the the dsp_lut_en bit in VPx is cleared if we
-> want reprogram LUT port sel form VPx to VPy.
+> Signed-off-by: Frank Wang <frank.wang@rock-chips.com>
+> ---
+>  .../devicetree/bindings/phy/phy-rockchip-naneng-combphy.yaml     | 1 +
+>  1 file changed, 1 insertion(+)
 > 
 
-Ok I get it now. Is such rework correct? - when gamma LUT for rk356x is
-being set, instead of disabling the LUT before the gamma LUT write for the
-current CRTC's video port, active video port is selected. Selection is 
-based on if DSP LUT EN bit is set for particular video port. eg:
-```
-static struct vop2_video_port *vop2_vp_dsp_lut_get_active_vp(struct vop2 *vop2)
-{
-	struct vop2_video_port *vp;
-	int i;
-	for (i = 0; i < vop2->data->nr_vps; i++) {
-		vp = &vop2->vps[i];
+Acked-by: Rob Herring (Arm) <robh@kernel.org>
 
-		if (vp->crtc.dev != NULL && vop2_vp_dsp_lut_is_enabled(vp)) {
-			return vp;
-		}
-	}
-	return NULL;
-}
-
-(...)
-
-struct vop2_video_port *active_vp = vop2_vp_dsp_lut_get_active_vp(vop2);
-
-if (active_vp) {
-	vop2_vp_dsp_lut_disable(active_vp);
-	vop2_cfg_done(active_vp);
-	if (!vop2_vp_dsp_lut_poll_disable(active_vp))
-		return;
-}
-
-vop2_writel(vop2, RK3568_LUT_PORT_SEL, vp->id);
-vop2_crtc_write_gamma_lut(vop2, crtc);
-vop2_vp_dsp_lut_enable(vp);
-```
-
-
-> > > > 
-> > > > drm_crtc_helper_add(&vp->crtc, &vop2_crtc_helper_funcs);
-> > > > + if (vop2->lut_regs && vp->crtc.dev != NULL) {
-> > > > + const struct vop2_video_port_data *vp_data = &vop2_data->vp[vp->id];
-> > > > 
-> > > > + drm_mode_crtc_set_gamma_size(&vp->crtc, vp_data->gamma_lut_len);
-> > > > + drm_crtc_enable_color_mgmt(&vp->crtc, 0, false,
-> > > > + vp_data->gamma_lut_len);
-> > > 
-> > > It seems that we can keep it in one line, the default limit of linux kernel coding style is 100 characters now.
-> > 
-> > Thanks. I didn't know, I will amend it.
-> 
-> 
-> See bdc48fa11e46("checkpatch/coding-style: deprecate 80-column warning")
-> 
-
-Interesting.
-
-Best regards, Piotr Zalewski
 
 _______________________________________________
 Linux-rockchip mailing list
