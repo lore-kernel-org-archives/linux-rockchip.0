@@ -4,68 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7E8ECD1F9C6
-	for <linux-rockchip@archiver.kernel.org>; Tue, 15 Oct 2024 20:14:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 81493D1F9C5
+	for <linux-rockchip@archiver.kernel.org>; Tue, 15 Oct 2024 20:16:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Subject:Cc:From:To:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=KFHgJtH3g6y6w7h4xtzSLQ1TVucZl4si8Kv842XiCvU=; b=Y0KaPqpDPVkq4a
-	snKWi9x/886B/qGdvq7Dk+vlPMYUE1xzuaNPqghXUZ2j+YH+H/pefQX7ErVxi5wCcRP3pjcZYUxGD
-	G2eRjZpucylDT9X+EByefyiFhTUWRFmdgyAxjL0ctmZKPPmDO2RpLpbzLU93tQwBDz5Nz6OYJuptH
-	O2sEkTMiqXD46EQyhqdSe4JDJ7VziSCv/f7DXRGcUuMbUIBPODACXQxwsxOcAYRpk5AcYqQVALWEg
-	D6htwTYRSkW9ZUuZ4fh9TwMabFNjVk7XfL2POH9Woz8ESykLb9bh16GncW9fwSa3to43HeHBMk/mD
-	9c4TYIdJCX2uwY9U3jXw==;
+	List-Owner; bh=fo6tjHU2YAQr2TAhhn80NqpxStEZ86N9MPPcjdEBJHw=; b=RvzVDdlXI4NJbO
+	s6Ksjj52NzRYG2snvKi0lkIeyIB0uWtCJ4rVfudWIsiI9KOxId3gkyCWHVbEr1BmDVmmswGfE/gmb
+	Urtf+COpxbgcLd60mkguMVgE2fdiMAIEmQhBZrPt7+FuSTXeMxXxH7qwUnP3/JxpdKzTqJIiRjCVh
+	IfJ6N/sCnLdw9NHZ6/gmV+TRetgt95P+/CTn57dXcTaS+xwaSt9oj7Z+bEE6n5glJ7wEdzT0EzUIE
+	IysiebFLmCbH/qJhexqEq/EvhyHnk7FwQKCzdurEl7E3+RkWrzpAub+ZAY6ZM3Eqpiqjt6uYOECFl
+	kHpRZ4cImsB7/yRTvrAw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t0nwU-00000009Um7-3UtI;
-	Tue, 15 Oct 2024 20:14:54 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1t0nxs-00000009Uvl-3rCe;
+	Tue, 15 Oct 2024 20:16:20 +0000
+Received: from mail-4316.protonmail.ch ([185.70.43.16])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t0nv4-00000009UVC-0Zkw;
-	Tue, 15 Oct 2024 20:13:27 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 417125C117A;
-	Tue, 15 Oct 2024 20:13:21 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2807DC4CEC6;
-	Tue, 15 Oct 2024 20:13:25 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1729023205;
-	bh=i6xUc2BLIxopI8JVWx6yrBevmVH88BaZ1U6j/GtsNaI=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=DPiYtKXpb7VReZQjPz4f5W7ppw/AqYRmw1kJOmBgklH9jFfoquXVrwjGzou4Nj+Cg
-	 NlbsyMuuT5mWw/zCjy1fQMxIfr2Ijop5jS5q77dnlmK9H7qKuBjvn4bzwWHpuhFjUL
-	 obT0/Mw7A7lDpaI4bu1Wl3AUZGqlDZbE8GDmkl2Rxjv02D/MDRyuruiUKBMOJ848zl
-	 SSGO2/rbRilAyJyprHzSik7OlTLKId4AM/XLVZYcEDwP092bWUHUmZf0Wx+0dOTCFT
-	 gGu1XHc6hEJ6xTfAx7o04/78twSM66dTc9Ixi82RFAxImYMT5CoI+VhrsSUYg7z5NQ
-	 Ugw/6lq+zBcTg==
-Date: Tue, 15 Oct 2024 15:13:24 -0500
-From: "Rob Herring (Arm)" <robh@kernel.org>
-To: Cenk Uluisik <cenk.uluisik@googlemail.com>
-Cc: Andy Yan <andyshrk@163.com>, Dragan Simic <dsimic@manjaro.org>,
-	Tim Lunn <tim@feathertop.org>, Jagan Teki <jagan@edgeble.ai>,
-	linux-arm-kernel@lists.infradead.org,
-	Jonas Karlman <jonas@kwiboo.se>, Jing Luo <jing@jing.rocks>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Chris Morgan <macromorgan@hotmail.com>,
-	Michael Riesch <michael.riesch@wolfvision.net>,
-	linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	Jimmy Hon <honyuenkwun@gmail.com>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>
-Subject: Re: [PATCH v5 1/2] dt-bindings: arm: rockchip: Add Orange Pi 5b enum
- to Orange Pi 5 entry
-Message-ID: <172902320363.1787838.552661206100007627.robh@kernel.org>
-References: <20241014180324.536702-1-cenk.uluisik@googlemail.com>
+	id 1t0nva-00000009UcJ-0Ric;
+	Tue, 15 Oct 2024 20:14:01 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=proton.me;
+	s=protonmail; t=1729023234; x=1729282434;
+	bh=oWZAEWmWn11pICS2WghDTqvtxTlwbis+AKwY8WLaaII=;
+	h=Date:To:From:Cc:Subject:Message-ID:In-Reply-To:References:
+	 Feedback-ID:From:To:Cc:Date:Subject:Reply-To:Feedback-ID:
+	 Message-ID:BIMI-Selector;
+	b=N3q2vmdCHEAzWfagD0SM+pZXcpUTWCzquQH0AbCpxZsxZolcyASpe6qALHsApCvzz
+	 fMmbnbAxPk3OpMQBg5kjZKRlUVT49Kd/Yo08Q9Ny5sUbUV0jX9/xbWDIH3tL8n291d
+	 GAMWj0pFpnMrQnKbeDuJFNEUkr5rlR5ZRPux5cGyrqkeEjOoHsWKg7p+hWerSWt+iS
+	 RLx/sOeAee0DWR6ZDooP1b3G1A3Obq6adcwyK8XftOREDpCrmc2x7Ylg2F9IWTRvuB
+	 NE/ltpZ+2dtazvzEWM4MYLC1UXGVADuQFVyrzLmaUGomvY7xeB1oTT/xo/U4P0Btk5
+	 rjcTlzl9Bso6Q==
+Date: Tue, 15 Oct 2024 20:13:40 +0000
+To: Andy Yan <andyshrk@163.com>
+From: Piotr Zalewski <pZ010001011111@proton.me>
+Cc: hjc@rock-chips.com, heiko@sntech.de, andy.yan@rock-chips.com, maarten.lankhorst@linux.intel.com, mripard@kernel.org, tzimmermann@suse.de, airlied@gmail.com, simona@ffwll.ch, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, skhan@linuxfoundation.org, Daniel Stone <daniel@fooishbar.org>, Dragan Simic <dsimic@manjaro.org>, Diederik de Haas <didi.debian@cknow.org>
+Subject: Re:Re:[PATCH v5] rockchip/drm: vop2: add support for gamma LUT
+Message-ID: <1974DYrs9gLrQrZ5VwCglFgKDDK686iyqnS_g6uPB-s9wZ_4CqfZXPjmYWihLgrkRu7ptNjpkFeqB0uTt73RFId6cL8FowQ8LFltPmaKCoI=@proton.me>
+In-Reply-To: <30940542.b36d.19290215124.Coremail.andyshrk@163.com>
+References: <20241014222022.571819-4-pZ010001011111@proton.me> <7b45f190.452f.1928e41b746.Coremail.andyshrk@163.com> <o_Cyz_ARcHj4zNlovv75MBwslIRhn3YWlscoNrlpLVobh7eWIMEQR5bNv0yhHx2KEx_gbYi_gH-8Y-CdvRZs9lZscz3-lhAbM50GXUdtSKY=@proton.me> <30940542.b36d.19290215124.Coremail.andyshrk@163.com>
+Feedback-ID: 53478694:user:proton
+X-Pm-Message-ID: 932c22f934c19cba4c98a2e1488d80d40e7faf7a
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20241014180324.536702-1-cenk.uluisik@googlemail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241015_131326_239773_EA79DED8 
-X-CRM114-Status: GOOD (  14.71  )
+X-CRM114-CacheID: sfid-20241015_131358_797943_38D0259F 
+X-CRM114-Status: GOOD (  23.08  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,34 +68,105 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Hi Andy
 
-On Mon, 14 Oct 2024 20:02:52 +0200, Cenk Uluisik wrote:
-> This extends the Xunlong Orange Pi 5 device tree binding
-> with an enum for the Orange Pi 5b, which is implemented
-> before the device tree.
+On Tuesday, October 15th, 2024 at 2:22 PM, Andy Yan <andyshrk@163.com> wrote:
+
+> > > > + struct vop2_video_port *vp,
+> > > > + struct drm_crtc *crtc,
+> > > > + struct drm_crtc_state *crtc_state)
+> > > > +{
+> > > > +
+> > > > + if (vop2->lut_regs && crtc_state->color_mgmt_changed) {
+> > > > + if (!crtc_state->gamma_lut) {
+> > > > + vop2_vp_dsp_lut_disable(vp);
+> > > > + return;
+> > > > + }
+> > > > +
+> > > > + if (vop2_supports_seamless_gamma_lut_update(vop2)) {
+> > > 
+> > > I think it's bettery to check for rk3568/rk3566 here, the newer soc will all follow
+> > > rk3588 support seamless gamma lut update.
+> > 
+> > I will change in the next version.
+> > 
+> > > > + vop2_writel(vop2, RK3568_LUT_PORT_SEL, FIELD_PREP(
+> > > > + RK3588_LUT_PORT_SEL__GAMMA_AHB_WRITE_SEL,
+> > > > + vp->id));
+> > > > + vop2_crtc_write_gamma_lut(vop2, crtc);
+> > > > + vop2_vp_dsp_lut_enable(vp);
+> > > > + vop2_vp_dsp_lut_update_enable(vp);
+> > > > + } else {
+> > > 
+> > > As for rk3566/68, we should do exclusive check here, because there is only
+> > > one gamma , only one VP can use it at a time. See my comments in V3:
+> > 
+> > What do you mean exactly by exclusive check in this case.It's true that
+> > gamma LUT is shared across video ports in rk356x but, if I correctly
+> > understand, this doesn't forbid to reprogram LUT port sel and allow other
+> > VP to use gamma LUT.
 > 
-> How does this board differ from the original Orange Pi 5?
->   - the Orange Pi 5 has a M.2 NVMe M-key PCI 2.0x1
->     slot (hooked to combphy0_ps) whereas the Orange Pi 5b uses combphy0_ps
->     for the WiFi.
->   - The Orange Pi 5 with the M.2 socket has a regulator defined hooked to
->     "GPIO0_C5" (i.e. PCIE_PWREN_H) whereas the Orange Pi 5B has GPIO0_C5
->     hooked to BT_WAKE_HOST.
->   - builtin eMMC storage
->   - no SPI NOR flash (u-boot, preboot etc. initiates
->       from within the eMMC
->       storage)
->   - ap6275p Wifi module (like the Orange Pi 5 Plus)
->   - builtin BlueTooth module
 > 
-> Signed-off-by: Cenk Uluisik <cenk.uluisik@googlemail.com>
-> ---
->  Documentation/devicetree/bindings/arm/rockchip.yaml | 4 +++-
->  1 file changed, 3 insertions(+), 1 deletion(-)
+> Yes, we can reprogram LUT port sel, but we need to make sure the the dsp_lut_en bit in VPx is cleared if we
+> want reprogram LUT port sel form VPx to VPy.
 > 
 
-Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
+Ok I get it now. Is such rework correct? - when gamma LUT for rk356x is
+being set, instead of disabling the LUT before the gamma LUT write for the
+current CRTC's video port, active video port is selected. Selection is 
+based on if DSP LUT EN bit is set for particular video port. eg:
+```
+static struct vop2_video_port *vop2_vp_dsp_lut_get_active_vp(struct vop2 *vop2)
+{
+	struct vop2_video_port *vp;
+	int i;
+	for (i = 0; i < vop2->data->nr_vps; i++) {
+		vp = &vop2->vps[i];
 
+		if (vp->crtc.dev != NULL && vop2_vp_dsp_lut_is_enabled(vp)) {
+			return vp;
+		}
+	}
+	return NULL;
+}
+
+(...)
+
+struct vop2_video_port *active_vp = vop2_vp_dsp_lut_get_active_vp(vop2);
+
+if (active_vp) {
+	vop2_vp_dsp_lut_disable(active_vp);
+	vop2_cfg_done(active_vp);
+	if (!vop2_vp_dsp_lut_poll_disable(active_vp))
+		return;
+}
+
+vop2_writel(vop2, RK3568_LUT_PORT_SEL, vp->id);
+vop2_crtc_write_gamma_lut(vop2, crtc);
+vop2_vp_dsp_lut_enable(vp);
+```
+
+
+> > > > 
+> > > > drm_crtc_helper_add(&vp->crtc, &vop2_crtc_helper_funcs);
+> > > > + if (vop2->lut_regs && vp->crtc.dev != NULL) {
+> > > > + const struct vop2_video_port_data *vp_data = &vop2_data->vp[vp->id];
+> > > > 
+> > > > + drm_mode_crtc_set_gamma_size(&vp->crtc, vp_data->gamma_lut_len);
+> > > > + drm_crtc_enable_color_mgmt(&vp->crtc, 0, false,
+> > > > + vp_data->gamma_lut_len);
+> > > 
+> > > It seems that we can keep it in one line, the default limit of linux kernel coding style is 100 characters now.
+> > 
+> > Thanks. I didn't know, I will amend it.
+> 
+> 
+> See bdc48fa11e46("checkpatch/coding-style: deprecate 80-column warning")
+> 
+
+Interesting.
+
+Best regards, Piotr Zalewski
 
 _______________________________________________
 Linux-rockchip mailing list
