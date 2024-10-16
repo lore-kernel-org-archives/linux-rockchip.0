@@ -4,84 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 99B2BD1AD50
-	for <linux-rockchip@archiver.kernel.org>; Wed, 16 Oct 2024 12:30:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 16896D1F9CC
+	for <linux-rockchip@archiver.kernel.org>; Wed, 16 Oct 2024 13:45:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=2/x+qA5deh+DQAySO/KuuKLPd6TJecdVq2heUnC4H78=; b=oPpi2ABqJK/6+p
-	z4I6OORZh8/7HmuQVpNKg1rwtrjI8KpTMcB4o+7R5pHXeFIC+F1BsX2oAERZlZuH7VyGKoIGMWzyu
-	4wFeiZ3E2tyJi/9Lh4JZqZq9i/TxEK9W9/fShH9f3GxJ8U3RS0fHSe7Nkr4yEXoN+MVo0JhrsmuBP
-	Zd5txzwUYHW71h8Gu0B+SvaZkyQzzWomWZsfbbTvyGpZY6v8LLQy5nyaXdTt+N3Mss4cvL3GCrnYn
-	PrQoRUFVKmmtJQK4znGTS+Vl67mteBR4JDixzecru0Eyt7InagTxeQAj5FxQfs3D/07bZcZAG6ZlX
-	oIIkOvn0S2Y+SOSTs3fw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:References:To:From:Subject:Cc:Message-Id:Date:Mime-Version:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=cWdjtbfG5zJggA4UdFKGeYkWkl8DgZzu1M4xT2XzHnQ=; b=vRjHzg6kGq5lRpzle2K1kFk4K2
+	bOyCsTrKdxdOrZy+pKyqvA4sFDejMl7khglIRbLkh1QnN8HzuOrhKIAq7om75r/xm+hglCAWv9v8M
+	IxPWi5QOR+RuBDBpZKxaLPBH8GbNRfiIUm+J8Gj/WkZFXfIsHYNsax3TgVbvXtG3xG8wvM70BRjK/
+	Boq8xHwkUXrMLSyw54/kbw8Ef8Wy0oWSrX7alkQwjs9IHnRti9ZI89Qtybbc1oEzG3mNdlup+LGxS
+	3p5BYDaI6npL/N4qip65P36sinPVNR7zAI8lbs7Zydqta5hXCxNjI3xfmkXQHlMXB/SdUfJuQcEpb
+	Z3zxnRkg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t13A8-0000000BkRp-0zMR;
-	Wed, 16 Oct 2024 12:30:00 +0000
-Received: from mail-qk1-x731.google.com ([2607:f8b0:4864:20::731])
+	id 1t14LR-0000000Bxu8-0VgV;
+	Wed, 16 Oct 2024 13:45:45 +0000
+Received: from out-187.mta0.migadu.com ([91.218.175.187])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t137X-0000000Bjnp-2cRN
+	id 1t13Fe-0000000BkzR-0cvb
 	for linux-rockchip@lists.infradead.org;
-	Wed, 16 Oct 2024 12:27:22 +0000
-Received: by mail-qk1-x731.google.com with SMTP id af79cd13be357-7b14443a71eso86372385a.1
-        for <linux-rockchip@lists.infradead.org>; Wed, 16 Oct 2024 05:27:18 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=fooishbar.org; s=google; t=1729081638; x=1729686438; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=BNLjlnEnDyHjV3CBswVgJafVhgghTbfH6ZETGps1FrE=;
-        b=O4M3pXW2WNSMrwmXRx+ec33flNTvH/dGIAXl5gLF/U35u1zN4Nk6s1cyJcL/TSfNIF
-         fdJFnyMLGhS9iqywMS/o3OKz46CmQ+3ZK9R1lPgCONq3L3PeXy17jOTq/BE9cWHl2wfo
-         /o+pipBqneJ54lFhLuRnGmnxj/8HCM2x+Arg8ROKc1ng8R3Tw0A+KEwC1O3Ld47C6jWO
-         OyWrLIGocz325kWuCyDGFIpqKP6tDjUg+Xim1pKyxbWru/TUiaZFMujx3SO515IAA2ef
-         zE/ABadZz+kJq/shKT0uv/MP5gDFgtEDfrXCk1Vh1XVqdhaaX1EbHnObypULrQcks1x7
-         mpOQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1729081638; x=1729686438;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=BNLjlnEnDyHjV3CBswVgJafVhgghTbfH6ZETGps1FrE=;
-        b=w7jwcic9xSeWD2UDtYM+j4It6FZKkfnNi5tWm39Ogv4k+yyUA9Di2DGj7cMfuQEnvh
-         9r9xfEHQI2fGva0jxdEY2U4kiJESbKxLhQh3BPwfZJzPAPYyyRXBR1amNGBkly0KmBF0
-         521GlyfObaZoSwj7HXkEWSO2bsHYOnr6SaspvGpVHI9HFG0QWmYvJl0QoeBZHmsE1FuW
-         kfGGNUfrxqlF3Gb9vlC/VqGNahvTB15pp9LuIjNRDqdGcuUQbclgh23leJFPpzBl3mR2
-         WnjMXO6z3owrhljyz1WBuFoIRoXYWQBL3BPaga4lNe8Ifq/guY9fpSP9KxSvWfe9xjX6
-         cA6Q==
-X-Forwarded-Encrypted: i=1; AJvYcCVM/SExsdZ+04VFO8dvr1fJEZLjGVyBOti8dJFUsIEZjARQDrBNHvIQbKCkVuI+Hc+YEf6mqDM/NxdDsPIOBA==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yw2tKQ6Fy3hIucGQ/PeZiG0wzpfi8gujDEgi7PfkRHwBOt35vOV
-	+0W4qDb1ecWzmt84Sh4Noqitn/hxbFSUusINkoUfKNG79nLzUggpBJk9mD7787jQCST6GXrjMib
-	yVbnOLlRAmu+72wknS5zHcla+m/jz+8NyfdLBuw==
-X-Google-Smtp-Source: AGHT+IEr2RGRH7z7eOPt4+/WSGTQZH3Rri8cgQyjmurOqgpwt74+wkRyeSLE84F+GLTwunyO3mI8dvjKyhWbsrjeDMI=
-X-Received: by 2002:a05:620a:2989:b0:7a9:ab72:7374 with SMTP id
- af79cd13be357-7b120fc4b5bmr2484755985a.35.1729081637696; Wed, 16 Oct 2024
- 05:27:17 -0700 (PDT)
-MIME-Version: 1.0
-References: <20241014222022.571819-4-pZ010001011111@proton.me>
- <7b45f190.452f.1928e41b746.Coremail.andyshrk@163.com> <o_Cyz_ARcHj4zNlovv75MBwslIRhn3YWlscoNrlpLVobh7eWIMEQR5bNv0yhHx2KEx_gbYi_gH-8Y-CdvRZs9lZscz3-lhAbM50GXUdtSKY=@proton.me>
- <30940542.b36d.19290215124.Coremail.andyshrk@163.com> <1974DYrs9gLrQrZ5VwCglFgKDDK686iyqnS_g6uPB-s9wZ_4CqfZXPjmYWihLgrkRu7ptNjpkFeqB0uTt73RFId6cL8FowQ8LFltPmaKCoI=@proton.me>
- <1ae9f15d.e52.19292e05e73.Coremail.andyshrk@163.com>
-In-Reply-To: <1ae9f15d.e52.19292e05e73.Coremail.andyshrk@163.com>
-From: Daniel Stone <daniel@fooishbar.org>
-Date: Wed, 16 Oct 2024 13:27:06 +0100
-Message-ID: <CAPj87rOmPyat12S4WUixiUBAsuAEEbyNX5VY2JS+wn5a1jux0A@mail.gmail.com>
-Subject: Re: Re:Re:[PATCH v5] rockchip/drm: vop2: add support for gamma LUT
-To: Andy Yan <andyshrk@163.com>
-Cc: Piotr Zalewski <pZ010001011111@proton.me>, hjc@rock-chips.com, heiko@sntech.de, 
-	andy.yan@rock-chips.com, maarten.lankhorst@linux.intel.com, 
-	mripard@kernel.org, tzimmermann@suse.de, airlied@gmail.com, simona@ffwll.ch, 
-	dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	skhan@linuxfoundation.org, Dragan Simic <dsimic@manjaro.org>, 
-	Diederik de Haas <didi.debian@cknow.org>
+	Wed, 16 Oct 2024 12:35:44 +0000
+Mime-Version: 1.0
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow.org; s=key1;
+	t=1729082138;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=nTaj8AXpVBWrhNSy1JcE6EXS2SykZrY/1WbUR5yvdpw=;
+	b=x/b20hD0hEvfaBAi+hWs8pUvE/sfpOeqDCYrktpK1t2O/NFekaKGmAlokw5DPD4fUtDNnv
+	Fx0dArSexcydEYCoBeTElusQR4SnX1iKaqgCHb0M3yNVY+3/sAN8T536FPY7Aih3b56T4r
+	myylYYmiNBVVZ3pnsBqBYtbNdVF+JwiOhVEXTqZHhfmuUnNYIyOPVsKEnRTx7zL15tWAQN
+	hK6beHJbnnLPJEV//altlD6g9l7cX9KPnmc4igsF/Ebz+lOB9Mqrryi6AG7xgEnQBIBlNZ
+	MASHvglPFFD3DpSAq+OSa5Uwz19/h9uuwVbe4XDdGvIkxJAr328zL8qh4cO8ag==
+Date: Wed, 16 Oct 2024 14:35:28 +0200
+Message-Id: <D4X8GJV0W6JL.32E469JSATFEP@cknow.org>
+Cc: <linux-rockchip@lists.infradead.org>, "Diederik de Haas"
+ <didi.debian@cknow.org>, "Samuel Holland" <samuel@sholland.org>, "Dragan
+ Simic" <dsimic@manjaro.org>, <devicetree@vger.kernel.org>,
+ <linux-kernel@vger.kernel.org>, "Michael Riesch"
+ <michael.riesch@wolfvision.net>, <linux-arm-kernel@lists.infradead.org>
+Subject: Re: (subset) [PATCH v2 0/4] rockchip: Fix several DT validation
+ errors
+X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
+From: "Diederik de Haas" <didi.debian@cknow.org>
+To: "Heiko Stuebner" <heiko@sntech.de>, "Krzysztof Kozlowski"
+ <krzk+dt@kernel.org>, "Rob Herring" <robh@kernel.org>, "Conor Dooley"
+ <conor+dt@kernel.org>
+References: <20241008113344.23957-1-didi.debian@cknow.org>
+ <172841572989.2562611.18254512768409976284.b4-ty@sntech.de>
+ <D4X4RACGCRRH.39SMPGMZZ2GK4@cknow.org>
+In-Reply-To: <D4X4RACGCRRH.39SMPGMZZ2GK4@cknow.org>
+X-Migadu-Flow: FLOW_OUT
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241016_052719_794074_66928A05 
-X-CRM114-Status: GOOD (  13.06  )
+X-CRM114-CacheID: sfid-20241016_053542_553632_D278015E 
+X-CRM114-Status: GOOD (  15.17  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,30 +72,85 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: multipart/mixed; boundary="===============5334202873070597497=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGkgYWxsLAoKT24gV2VkLCAxNiBPY3QgMjAyNCBhdCAwMjoxMSwgQW5keSBZYW4gPGFuZHlzaHJr
-QDE2My5jb20+IHdyb3RlOgo+IEF0IDIwMjQtMTAtMTYgMDQ6MTM6NDAsICJQaW90ciBaYWxld3Nr
-aSIgPHBaMDEwMDAxMDExMTExQHByb3Rvbi5tZT4gd3JvdGU6Cj4gPk9rIEkgZ2V0IGl0IG5vdy4g
-SXMgc3VjaCByZXdvcmsgY29ycmVjdD8gLSB3aGVuIGdhbW1hIExVVCBmb3IgcmszNTZ4IGlzCj4g
-PmJlaW5nIHNldCwgaW5zdGVhZCBvZiBkaXNhYmxpbmcgdGhlIExVVCBiZWZvcmUgdGhlIGdhbW1h
-IExVVCB3cml0ZSBmb3IgdGhlCj4gPmN1cnJlbnQgQ1JUQydzIHZpZGVvIHBvcnQsIGFjdGl2ZSB2
-aWRlbyBwb3J0IGlzIHNlbGVjdGVkLiBTZWxlY3Rpb24gaXMKPiA+YmFzZWQgb24gaWYgRFNQIExV
-VCBFTiBiaXQgaXMgc2V0IGZvciBwYXJ0aWN1bGFyIHZpZGVvIHBvcnQuIGVnOgo+Cj4gSWYgdGhl
-IHVzZXJzcGFjZSB3YW50IHRvIHNldCBnYW1tYSBmb3IgQ1JUQ3gsICB0aGVuIHRoYXQgaXMgaW5k
-ZWVkIHdoZXJlIHRoZXkgd2FudCB0byBzZXQgdGhlCj4gZ2FtbWEgb27jgIJUaGUgZHJpdmVyIHNp
-bGVudGx5IHNldHMgdGhlIGdhbW1hIG9uIGFub3RoZXIgQ1JUQywgd2hpY2ggaXMgbm90IHdoYXQg
-dGhlIHVzZXIgd2FudHMuCj4KPiBJIHRoaW5rIHRoZXJlIGFyZSB0d28gb3B0aW9uc++8mgo+IO+8
-iDHvvIlyZXR1cm4gYSBlcnJvciBpZiBnYW1tYSBpcyBlbmFibGUgb24gb3RoZXIgQ1JUQ++8jCB0
-aGlzIGlzIHdoYXQgd2UgZG9uZSBpbiBvdXIgQlNQIGNvZGVbMV0KPiAgICgyKSAgZGlzYWJsZSB0
-aGUgZHNwX2x1dCBvbiBwcml2aW91cyBDUlRDLCB0aGVuIHN3aXRjaCB0byB0aGUgY3VycmVudCBD
-UlRDIHdoaWNoIHVzZXJzcGFjZSB3YW50cy4KCjEgaXMgdGhlIG9ubHkgc29sdXRpb24gdGhhdCBj
-YW4gd29yay4gU2lsZW50bHkgY2hhbmdpbmcgdGhlIGNvbG91cgpwcm9wZXJ0aWVzIG9mIGEgc2Vw
-YXJhdGUgQ1JUQyBpcyBub3QgT0ssIHNpbmNlIHRoaXMgY2FuIGxlYWQgdG8KZGlzcGxheWluZyBp
-bmNvcnJlY3QgY29udGVudC4KCkNoZWVycywKRGFuaWVsCgpfX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGlu
-dXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9y
-Zy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+--===============5334202873070597497==
+Content-Type: multipart/signed;
+ boundary=420a352999a5f0637b0a389b86766f09be8702651d3ea0d2c89ab02af30c;
+ micalg=pgp-sha256; protocol="application/pgp-signature"
+
+--420a352999a5f0637b0a389b86766f09be8702651d3ea0d2c89ab02af30c
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=UTF-8
+
+Hi Heiko,
+
+On Wed Oct 16, 2024 at 11:41 AM CEST, Diederik de Haas wrote:
+> On Tue Oct 8, 2024 at 9:28 PM CEST, Heiko Stuebner wrote:
+> > On Tue, 8 Oct 2024 13:15:35 +0200, Diederik de Haas wrote:
+> > > This is a set of 4 small device-tree validation fixes.
+> > >=20
+> > > Patch 1 adds the power-domains property to the csi dphy node on rk356=
+x.
+> > > Patch 2 removes the 2nd interrupt from the hdmi node on rk3328.
+> > > Patch 3 replaces 'wake' with 'wakeup' on PineNote BT node.
+> > > Patch 4 replaces 'reset-gpios' with 'shutdown-gpios' on brcm BT nodes=
+.
+> >
+> > Applied, thanks!
+> >
+> > [2/4] arm64: dts: rockchip: Remove hdmi's 2nd interrupt on rk3328
+> >       commit: de50a7e3681771c6b990238af82bf1dea9b11b21
+> > [3/4] arm64: dts: rockchip: Fix wakeup prop names on PineNote BT node
+> >       commit: 87299d6ee95a37d2d576dd8077ea6860f77ad8e2
+> > [4/4] arm64: dts: rockchip: Fix reset-gpios property on brcm BT nodes
+> >       commit: 2b6a3f857550e52b1cd4872ebb13cb3e3cf12f5f
+>
+> Please revert the 4th patch.
+>
+> I must have messed up my testing previously, but BT does not work on the
+> PineNote with the 4th patch applied and does work with it reverted.
+
+FWIW, I figured out what went wrong.
+My testing was correct, but redo-ing the implementation to make it ready
+for submission wasn't very smart.
+
+With ``shutdown-gpios =3D <&gpio0 RK_PC4 GPIO_ACTIVE_HIGH>;``
+it does work correctly, but I forgot to change GPIO_ACTIVE_LOW to
+GPIO_ACTIVE_HIGH before submitting.
+
+I'll first figure out a better procedure before making a new submission,
+so the revert is still the best approach IMO.
+
+Cheers,
+  Diederik
+
+--420a352999a5f0637b0a389b86766f09be8702651d3ea0d2c89ab02af30c
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYIAB0WIQT1sUPBYsyGmi4usy/XblvOeH7bbgUCZw+zEwAKCRDXblvOeH7b
+bjbgAP9YbTBY27TFko/D2mKhNunoxZyzGN1Ss/H9noU7e6dOtQEAkqQg/YHMODFT
+3YTB0Lngl+UqeAUuasytSAUgJxyAhQ8=
+=QZhM
+-----END PGP SIGNATURE-----
+
+--420a352999a5f0637b0a389b86766f09be8702651d3ea0d2c89ab02af30c--
+
+
+--===============5334202873070597497==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============5334202873070597497==--
+
