@@ -4,56 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 44EF5D2A53D
-	for <linux-rockchip@archiver.kernel.org>; Wed, 16 Oct 2024 18:32:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9F88BD2A53D
+	for <linux-rockchip@archiver.kernel.org>; Wed, 16 Oct 2024 18:45:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Date:To:Cc:From:Subject:References:
-	In-Reply-To:MIME-Version:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=+t1B88UCw4vWc80ii2n6RhauBMSYt/RLAx9FrS1ghRg=; b=OtX+IBl7HNC1eX
-	Tiq6EwEfn99ToaHn01DVOSarJ2ZjTyTDerMZ/v/X8Q278i+fE/xm8wH+J8/d8LQZ/Jqm+zX/d34f5
-	ZM/6pXi98LEf2QN72YxsKkrPW6n/KxkZge/RLbg+11zL7aBRbbDolw3xQZTsYG6DB6LIXmgnIfuUE
-	h7J4S7RDw5cQmJuEtIqIkJSoVcjOcv4KnIvXAxMHaUQ5LTIiTOzfRrkK4avunHuSS1vLu3Yq/s8Rv
-	QtslX/FNWaPhwkuiJbit142zS2PRWpIkQj17Wec+V+0+j0wo4Iz+WNFcCvXho1+7VzpEOAy1aujMc
-	j6SqSyypAseSMVlqREsw==;
+	List-Owner; bh=EL0DmpXzHsbXPFiJk+9lJtf1dPrL1Wvpgtqkr2cXXE4=; b=A4rekRUqjnbwpP
+	sde0qhXRt13v/x+VSVQqkkaBRN9AL1JuRp+9elysWNPBbrzfJt1Q2C/r0E4P7zT7/FdJ52pGMy6A8
+	DoSgLKzM8KFcjCqL+Ye3bb4EW9ffB7Fuhr1N2i0gLy9BzQBn6nBtG6sLP8QjupyOpdmgC+jj7mYuS
+	PsKlTv4n8Kiowq+vxoNZ36ZhXsawDxHluEemvertKcySjHHVfQVCvxuup2gXz89Kn9ntYJMJKEAdu
+	sYFc7mG9hYZ2tGgJ7SRB7ma49i+ryosGtqOvhTEFtDArWFJUnh6VAnncmiz0XDedsWO0Kjkk2iENf
+	CahB2LgcEMEXAG5TS/8Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t18oS-0000000CgiL-0O72;
-	Wed, 16 Oct 2024 18:32:00 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1t191n-0000000CiUn-2t9I;
+	Wed, 16 Oct 2024 18:45:47 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t18jI-0000000Cfzz-2Lxd;
-	Wed, 16 Oct 2024 18:26:41 +0000
+	id 1t17or-0000000CY2P-1dwu;
+	Wed, 16 Oct 2024 17:28:22 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id A91DBA41B59;
-	Wed, 16 Oct 2024 18:26:30 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 45C58C4CEC5;
-	Wed, 16 Oct 2024 18:26:39 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 5A45D5C588E;
+	Wed, 16 Oct 2024 17:28:16 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2CDD2C4CECE;
+	Wed, 16 Oct 2024 17:28:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1729103199;
-	bh=VzEcdM7oxg8go3c06Uetl0AaBL4Nyw8umwHBNlCH7RE=;
-	h=In-Reply-To:References:Subject:From:Cc:To:Date:From;
-	b=mLI7RXIZ8p1Pg+Oo11M03Y0owKEKpR+zIRwNuD2phQi+AM3rpFNXNQg8fN8fxObHa
-	 i83p+4ttgkPrSHBPJfjAHXsF3ysit2WuGQZ7K7hcY3PtVsbcv3VIYWvyCM3S/XBlNJ
-	 y/nQDOPrCBbJgGjzwntVupTKZuUWvHyvyI2CxKyQMOxwlrgo3SGXvScyzynZInog1X
-	 E/+uMl0mat0kT4Do4sL4CUmqdIemyySQgSI7PADT8EJNB40zyQxLjod3RC/pOIllEC
-	 5b2xblTGCqrt2MGPS38Q3E+DbjFnTypiCTWS5+L3DGaC4eXug1TaPkG92Mx5G+fW8f
-	 1s1BECml7Gh9w==
-Message-ID: <de44454fe6d3c7238e28ec5545b2b84e.sboyd@kernel.org>
+	s=k20201202; t=1729099700;
+	bh=LjDcX667/F9Hi+2Io56Vk5FjxxOv458dsz9pGrGc0d8=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=T0abOOeb75W+adAf3te2gfQWfgHXvgw9M6rDuHYd1w8O669wIlY1JIULTC0fyiJw1
+	 RolzVYSpQXzlnwaY5Kgcs69+ZAfL00by4ByPDcZeEFxrBJ2hc+fFu3YHswoUBHZIId
+	 O32DMc/m2qNUpDZnRI5qY2J96fV0xEjr9NhRDS6fQ2IMv1kH8C9WG2KiHKapwBVeWA
+	 IFasGt/yWuceRLy7a78f+pprMDOZ+rZTrTS4aX9YJPRjEKhpYt1XJiYewC9O3NyTlD
+	 I3cVYo1MPMyjsRh/Y4MizUvBtiU+a8Yr2pxZ/ObB2YibKB+G/FEC25tVzhgjFnpyV4
+	 EELVvOElIUUOA==
+Date: Wed, 16 Oct 2024 12:28:19 -0500
+From: "Rob Herring (Arm)" <robh@kernel.org>
+To: Frank Wang <frawang.cn@gmail.com>
+Cc: linux-phy@lists.infradead.org, krzk+dt@kernel.org, kishon@kernel.org,
+	conor+dt@kernel.org, linux-kernel@vger.kernel.org,
+	linux-rockchip@lists.infradead.org, vkoul@kernel.org,
+	devicetree@vger.kernel.org, Frank Wang <frank.wang@rock-chips.com>,
+	linux-arm-kernel@lists.infradead.org, william.wu@rock-chips.com,
+	heiko@sntech.de, tim.chen@rock-chips.com
+Subject: Re: [PATCH v6 2/4] dt-bindings: soc: rockchip: add rk3576 usb2phy
+ syscon
+Message-ID: <172909969920.2069526.212963099055166502.robh@kernel.org>
+References: <20241016073713.14133-1-frawang.cn@gmail.com>
+ <20241016073713.14133-2-frawang.cn@gmail.com>
 MIME-Version: 1.0
-In-Reply-To: <20240906082511.2963890-5-heiko@sntech.de>
-References: <20240906082511.2963890-1-heiko@sntech.de> <20240906082511.2963890-5-heiko@sntech.de>
-Subject: Re: [PATCH v4 4/5] clk: clk-gpio: add driver for gated-fixed-clocks
-From: Stephen Boyd <sboyd@kernel.org>
-Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org, linux-clk@vger.kernel.org, heiko@sntech.de, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
-To: Heiko Stuebner <heiko@sntech.de>, mturquette@baylibre.com
-Date: Wed, 16 Oct 2024 11:26:37 -0700
-User-Agent: alot/0.10
+Content-Disposition: inline
+In-Reply-To: <20241016073713.14133-2-frawang.cn@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241016_112640_685730_90FFE523 
-X-CRM114-Status: UNSURE (   8.52  )
+X-CRM114-CacheID: sfid-20241016_102821_496746_6DC31C2E 
+X-CRM114-Status: UNSURE (   9.87  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -71,18 +78,28 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Quoting Heiko Stuebner (2024-09-06 01:25:10)
-> In contrast to fixed clocks that are described as ungateable, boards
-> sometimes use additional oscillators for things like PCIe reference
-> clocks, that need actual supplies to get enabled and enable-gpios to be
-> toggled for them to work.
-> 
-> This adds a driver for those generic gated-fixed-clocks
-> that can show up in schematics looking like
-> 
->          ----------------
 
-Applied to clk-next
+On Wed, 16 Oct 2024 15:37:11 +0800, Frank Wang wrote:
+> From: Frank Wang <frank.wang@rock-chips.com>
+> 
+> The usb2phy is accessible via a syscon registers on RK3576, similar
+> to RK3588.
+> 
+> Signed-off-by: Frank Wang <frank.wang@rock-chips.com>
+> ---
+> Changelog:
+> v6:
+>  - This is a new patch adds rk3576-usb2phy-grf syscon.
+> 
+> v1-v5:
+>  - none
+> 
+>  Documentation/devicetree/bindings/soc/rockchip/grf.yaml | 2 ++
+>  1 file changed, 2 insertions(+)
+> 
+
+Acked-by: Rob Herring (Arm) <robh@kernel.org>
+
 
 _______________________________________________
 Linux-rockchip mailing list
