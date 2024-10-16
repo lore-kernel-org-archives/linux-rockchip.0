@@ -4,66 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2159CD2068A
-	for <linux-rockchip@archiver.kernel.org>; Wed, 16 Oct 2024 01:28:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 66CABD20691
+	for <linux-rockchip@archiver.kernel.org>; Wed, 16 Oct 2024 02:37:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Message-ID:MIME-Version:References:
-	In-Reply-To:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=lG3md4Mke7bc4ZI029vNJhPq5k55II98NThHL9mATJ8=; b=sqCQtcm9gBqkcl
-	MvAcZnHwSveup6EJkogyYvTL/1xTvHLnByC4RS2mUIYaEesjusJW7RICsZ0DGq0pkYUrqd+XfVnFg
-	EiqxHWebYkQeojXn8UyJASctaxeNJv6ancgQbGafHfNn9DrHqFn8qAMM0cbjLjltvxvNKyU0psyGi
-	bkgato/2OQW8VDiwT18hN7Ti0yKcW5LfWDNjyNwpUvxUqaexheelsN4IwS5gaB+bLTIEXEqYH/4uw
-	gFO/GF1HRHHVP2ufRxcesaIKtG4Wwu9K+TxhZTE+NKzx2ffN7tSZF96IQZOJ5bz2thgeluuRyUi/1
-	PkcCR9VF8wtJAKWSDTTw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=PTD4QgFA6WPomkoNyMcVabKQPnyc3kdtCyyT94FedDs=; b=iH8FA6H8LFjMTh
+	spq60A90h93//d9MKlK2Mfihz1gxaPCzSpSYR3Fo39dwZ5m7mvP6+J3PtoEiMB/4Yn7XM1Z2S+jzw
+	dn9aHtnLngahKKZpe9b35XCLDCx6hhakLys2VAFp4AN2mTty2HfEhy1cC5NLAAJ0paid0LT9N9fqO
+	/WBs4b2dwunSpZHzWz6ZaudbjLupl1Z8yW0GjEHHXDmkih64yagNLLjyTgcjbKbJy7/6aatGdHWmG
+	GTqb65OVeWpzJvKdLF3xuJdUSp8aA2pucixV1pUDQ0d/o5bfRVzVymn/rG23Ee86Br118grLfSRZS
+	97mlUw2Mce0Fo8D8LK9A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t0sq0-0000000A8V1-0xXh;
-	Wed, 16 Oct 2024 01:28:32 +0000
-Received: from m16.mail.163.com ([220.197.31.4])
-	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t0soU-0000000A8EQ-21Xd;
-	Wed, 16 Oct 2024 01:27:00 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=Date:From:Subject:Content-Type:MIME-Version:
-	Message-ID; bh=P0ekQvQ+dPoIFA6wGxuRLazrhmw8eTenDFS4dndW1uM=; b=F
-	t2CjACzuv4kdQE+evu2GDrf/Sc5A+RuOfsOv1al6gcwt0FBez/GylMtLs8NVmtNv
-	5jt8gareIlVg0YoaqSDoGLnMP/7SqmFuVppShtcE6dL29bBdMbGN5qvTXwcn3xrd
-	R0aRoulShTgmw6dJ0266sZ7LKtbad/5DrMuj6IOgvE=
-Received: from andyshrk$163.com ( [58.22.7.114] ) by
- ajax-webmail-wmsvr-40-105 (Coremail) ; Wed, 16 Oct 2024 09:26:14 +0800
- (CST)
-X-Originating-IP: [58.22.7.114]
-Date: Wed, 16 Oct 2024 09:26:14 +0800 (CST)
-From: "Andy Yan" <andyshrk@163.com>
-To: "Piotr Zalewski" <pZ010001011111@proton.me>
-Cc: hjc@rock-chips.com, heiko@sntech.de, andy.yan@rock-chips.com, 
-	maarten.lankhorst@linux.intel.com, mripard@kernel.org, 
-	tzimmermann@suse.de, airlied@gmail.com, simona@ffwll.ch, 
-	dri-devel@lists.freedesktop.org, 
-	linux-arm-kernel@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	skhan@linuxfoundation.org, "Daniel Stone" <daniel@fooishbar.org>, 
-	"Dragan Simic" <dsimic@manjaro.org>, 
-	"Diederik de Haas" <didi.debian@cknow.org>
-Subject: Re:[PATCH v5] rockchip/drm: vop2: add support for gamma LUT
-X-Priority: 3
-X-Mailer: Coremail Webmail Server Version XT5.0.14 build 20240801(9da12a7b)
- Copyright (c) 2002-2024 www.mailtech.cn 163com
-In-Reply-To: <20241014222022.571819-4-pZ010001011111@proton.me>
-References: <20241014222022.571819-4-pZ010001011111@proton.me>
-X-NTES-SC: AL_Qu2ZC/yfvkEs4iCRZekXn0kXhec2W8Czvvgg34JRP5k0tyTsxzgGbW9cHXjP+s6ULwOhoAi6XyNfxM5FYqxheYf70yWZ7UbNR57PtvYxrm1k
+	id 1t0tuS-0000000AFEt-3Yji;
+	Wed, 16 Oct 2024 02:37:12 +0000
+Received: from mail-pg1-x536.google.com ([2607:f8b0:4864:20::536])
+	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
+	id 1t0tt1-0000000AF0O-0gSO;
+	Wed, 16 Oct 2024 02:35:44 +0000
+Received: by mail-pg1-x536.google.com with SMTP id 41be03b00d2f7-7ea6cbc90b7so121276a12.0;
+        Tue, 15 Oct 2024 19:35:42 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1729046142; x=1729650942; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=Tnt5DpGHzegrynfkadyD2B5UMZRREmWTkNZg6fg83aQ=;
+        b=NVAi9+2O19uCihoRWcG+Rgh6kl/fUe266y9dBh1rpC7IKR1mpJx8AECzRwCsIhDEU6
+         YcqzCoTFBg/+SN6mOqFSmeNFU5NY2jjQ+HuGZdidrtDroNgIrQm8FPFJQpiuBI8piuzr
+         0Epuyt8hmXkbPrLGLsPZAdpCmzlLBEs/wveHLmfy7ARzgp7+MHN+6BfiYJxDc430xjBI
+         p/pcuHagY4aY2B0QzRQ9w/rogICoRy44M9DnOCgHoy4wq0MVrVYCFWDJHTqNdsWLwd54
+         UtyJup0wl0iMYIfO91RVmyU+tkD7Sq7cQNYMPvbWFhhTVKJmkBQ8aFBqX6THkl7cGQQ9
+         HHog==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1729046142; x=1729650942;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=Tnt5DpGHzegrynfkadyD2B5UMZRREmWTkNZg6fg83aQ=;
+        b=b5oHFxna3WtpZvxPFAyQM6qiBQ/KiYFP4xYJ+HJ7Z86Rw5lrfKby4kam2jw191vOF1
+         9B1IcSBZ5arcMgNK2Ybu3JPZ4S8wG56yCqAq8392/OuPuY4F+3H9RCVp7D+H/8fkGi/G
+         OuT8e3GqBYP1Pwy1nH5TxazX0GxboF0ntx3wmEAPlYBp4/tkXM9BsgWW8ghUeSNYJtqf
+         rnPGGCuu+vbw98dSISrc8d8tjA0Xg9o8vNJH21bQ6DKXL5vIKdC3Nbvz7bPRwC1gRWy8
+         L9e9zAzru7sxdG0WsCbZ9P8l/NR+CcsBh/q3jb2+L4r7y4eKD/b2HRfrPX/S64nJSGGk
+         wqMw==
+X-Forwarded-Encrypted: i=1; AJvYcCVASl3UpkLUpitDRlW9JEAxpLPui14Rx8DYNEWlQyl1nJuRZugn40G5OiLIEXZpKIiUYqA+JlaskLzXkbK4Czg=@lists.infradead.org, AJvYcCWjPjFL4BsqY99xeE6AB5xlsEKxMIlrJiRIkusf9fO6qyxbEk7gMdY6S//TmrVMczYK8Xw7gqSBRhAPKDsTa7/+@lists.infradead.org
+X-Gm-Message-State: AOJu0Yx3l9Nc3BDy+JibgDOXsR13G7nqBStKktQRyWfuUjGvCeq6gUH0
+	XpZETvfbbf+EPSfbohY+QMhp4MNyGJHIdC8j1cHhFzhrGtHeBVCu
+X-Google-Smtp-Source: AGHT+IFPA2+Q8qPUGLhCU45KSlCy5f4LjPJeH+FKGYtHQrxltaoOTrgJVlSFnWk9ugDrUn2wtSppLQ==
+X-Received: by 2002:a05:6a00:6f12:b0:71e:596a:a392 with SMTP id d2e1a72fcca58-71e596aa3e0mr6809808b3a.2.1729046141498;
+        Tue, 15 Oct 2024 19:35:41 -0700 (PDT)
+Received: from localhost.localdomain ([103.29.142.67])
+        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-7ea9c70587asm2192920a12.72.2024.10.15.19.35.37
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 15 Oct 2024 19:35:41 -0700 (PDT)
+From: Frank Wang <frawang.cn@gmail.com>
+To: vkoul@kernel.org,
+	kishon@kernel.org,
+	robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
+	heiko@sntech.de
+Cc: linux-phy@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	william.wu@rock-chips.com,
+	tim.chen@rock-chips.com,
+	Frank Wang <frank.wang@rock-chips.com>
+Subject: [PATCH v2 1/2] dt-bindings: phy: rockchip: add rk3576 compatible
+Date: Wed, 16 Oct 2024 10:35:32 +0800
+Message-Id: <20241016023533.12018-1-frawang.cn@gmail.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-Message-ID: <13fc0084.1321.19292eec34e.Coremail.andyshrk@163.com>
-X-Coremail-Locale: zh_CN
-X-CM-TRANSID: aSgvCgDnb0w2Fg9nfJ8OAA--.31367W
-X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/1tbiMx16XmcPEuY48gACse
-X-Coremail-Antispam: 1U5529EdanIXcx71UUUUU7vcSsGvfC2KfnxnUU==
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241015_182658_837849_AE2DDDF9 
-X-CRM114-Status: GOOD (  16.92  )
+X-CRM114-CacheID: sfid-20241015_193543_233702_CC2D1803 
+X-CRM114-Status: UNSURE (   8.75  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,313 +101,40 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Piotr,
+From: Frank Wang <frank.wang@rock-chips.com>
 
-At 2024-10-15 06:30:27, "Piotr Zalewski" <pZ010001011111@proton.me> wrote:
->Add support for gamma LUT in VOP2 driver. The implementation was inspired
->by one found in VOP1 driver. Blue and red channels in gamma LUT register
->write were swapped with respect to how gamma LUT values are written in
->VOP1. Gamma LUT port selection was added before the write of new gamma LUT 
->table. If the current SoC is RK3588, "seamless" gamma lut update is 
->performed similarly to how it was done in the case of RK3399 in VOP1[1]. In
->seamless update gamma LUT disable before the write isn't necessary, 
->different register is being used to select gamma LUT port[2] and after 
->setting DSP_LUT_EN bit, GAMMA_UPDATE_EN bit is set[3]. Gamma size is set 
->and drm color management is enabled for each video port's CRTC except ones 
->which have no associated device. 
->
->Solution was tested on RK3566 (Pinetab2). When using userspace tools
->which set eg. constant color temperature no issues were noticed. When
->using userspace tools which adjust eg. color temperature the slight screen
->flicker is visible probably because of gamma LUT disable.
->
->Compare behaviour of eg.:
->```
->gammastep -O 3000
->```
->
->To eg.:
->```
->gammastep -l 53:23 -t 6000:3000
->```
->
->In latter case color temperature is slowly adjusted at the beginning which
->causes screen to slighly flicker. Then it adjusts every few seconds which 
->also causes slight screen flicker.
->
->[1] https://lists.infradead.org/pipermail/linux-rockchip/2021-October/028132.html
->[2] https://lore.kernel.org/linux-rockchip/48249708-8c05-40d2-a5d8-23de960c5a77@rock-chips.com/
->[3] https://github.com/radxa/kernel/blob/linux-6.1-stan-rkr1/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c#L3437
->
->Helped-by: Daniel Stone <daniel@fooishbar.org>
->Helped-by: Dragan Simic <dsimic@manjaro.org>
->Helped-by: Diederik de Haas <didi.debian@cknow.org>
->Helped-by: Andy Yan <andy.yan@rock-chips.com>
->Signed-off-by: Piotr Zalewski <pZ010001011111@proton.me>
->---
->
->Notes:
->    Changes in v5:
->        - Do not trigger full modeset in case seamless gamma lut update
->		  isn't possible (eg. rk356x case). It was discovered that with 
->		  full modeset, userspace tools which adjust color temperature with
->          high frequency cause screen to go black and reduce overall
->          performance. Instead, revert to previous behaviour of lut update
->		  happening in atomic_begin or (in case there is a modeset) in
->		  atomic_enable. Also, add unrelated to modeset trigger
->		  changes/improvements from v4 on top. Improve code readability
->		  too.
->
->    Changes in v4:
->        - rework the implementation to better utilize DRM atomic updates[2]
->        - handle the RK3588 case[2][3]
->    
->    Changes in v3:
->        - v3 is patch v2 "resend", by mistake the incremental patch was
->        sent in v2
->    
->    Changes in v2:
->        - Apply code styling corrections[1]
->        - Move gamma LUT write inside the vop2 lock
->	
->	Link to v4: https://lore.kernel.org/linux-rockchip/20240815124306.189282-2-pZ010001011111@proton.me/
->    Link to v3: https://lore.kernel.org/linux-rockchip/TkgKVivuaLFLILPY-n3iZo_8KF-daKdqdu-0_e0HP-5Ar_8DALDeNWog2suwWKjX7eomcbGET0KZe7DlzdhK2YM6CbLbeKeFZr-MJzJMtw0=@proton.me/
->    Link to v2: https://lore.kernel.org/linux-rockchip/Hk03HDb6wSSHWtEFZHUye06HR0-9YzP5nCHx9A8_kHzWSZawDrU1o1pjEGkCOJFoRg0nTB4BWEv6V0XBOjF4-0Mj44lp2TrjaQfnytzp-Pk=@proton.me/T/#u
->    Link to v1: https://lore.kernel.org/linux-rockchip/9736eadf6a9d8e97eef919c6b3d88828@manjaro.org/T/#t
->    
->    [1] https://lore.kernel.org/linux-rockchip/d019761504b540600d9fc7a585d6f95f@manjaro.org
->    [2] https://lore.kernel.org/linux-rockchip/CAPj87rOM=j0zmuWL9frGKV1xzPbJrk=Q9ip7F_HAPYnbCqPouw@mail.gmail.com
->    [3] https://lore.kernel.org/linux-rockchip/7d998e4c-e1d3-4e8b-af76-c5bc83b43647@rock-chips.com
->
-> drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 161 +++++++++++++++++++
-> drivers/gpu/drm/rockchip/rockchip_drm_vop2.h |   5 +
-> 2 files changed, 166 insertions(+)
->
->diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
->index 9873172e3fd3..a6a2d7df5ecc 100644
->--- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
->+++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
->@@ -278,6 +278,15 @@ static u32 vop2_readl(struct vop2 *vop2, u32 offset)
-> 	return val;
-> }
-> 
->+static u32 vop2_vp_read(struct vop2_video_port *vp, u32 offset)
->+{
->+	u32 val;
->+
->+	regmap_read(vp->vop2->map, vp->data->offset + offset, &val);
->+
->+	return val;
->+}
->+
-> static void vop2_win_write(const struct vop2_win *win, unsigned int reg, u32 v)
-> {
-> 	regmap_field_write(win->reg[reg], v);
->@@ -998,6 +1007,55 @@ static void vop2_disable(struct vop2 *vop2)
-> 	clk_disable_unprepare(vop2->hclk);
-> }
-> 
->+static bool vop2_vp_dsp_lut_is_enabled(struct vop2_video_port *vp)
->+{
->+	return (u32) (vop2_vp_read(vp, RK3568_VP_DSP_CTRL) & RK3568_VP_DSP_CTRL__DSP_LUT_EN) >
->+	    0;
->+}
->+
->+static void vop2_vp_dsp_lut_disable(struct vop2_video_port *vp)
->+{
->+	u32 dsp_ctrl = vop2_vp_read(vp, RK3568_VP_DSP_CTRL);
->+
->+	dsp_ctrl &= ~RK3568_VP_DSP_CTRL__DSP_LUT_EN;
->+	vop2_vp_write(vp, RK3568_VP_DSP_CTRL, dsp_ctrl);
->+}
->+
->+static bool vop2_vp_dsp_lut_poll_disable(struct vop2_video_port *vp)
->+{
->+	u32 dsp_ctrl;
->+	int ret = readx_poll_timeout(vop2_vp_dsp_lut_is_enabled, vp, dsp_ctrl,
->+				!dsp_ctrl, 5, 30 * 1000);
->+	if (ret) {
->+		drm_err(vp->vop2->drm, "display LUT RAM enable timeout!\n");
->+		return false;
->+	}
->+
->+	return true;
->+}
->+
->+static void vop2_vp_dsp_lut_enable(struct vop2_video_port *vp)
->+{
->+	u32 dsp_ctrl = vop2_vp_read(vp, RK3568_VP_DSP_CTRL);
->+
->+	dsp_ctrl |= RK3568_VP_DSP_CTRL__DSP_LUT_EN;
->+	vop2_vp_write(vp, RK3568_VP_DSP_CTRL, dsp_ctrl);
->+}
->+
->+static void vop2_vp_dsp_lut_update_enable(struct vop2_video_port *vp)
->+{
->+	u32 dsp_ctrl = vop2_vp_read(vp, RK3568_VP_DSP_CTRL);
->+
->+	dsp_ctrl |= RK3588_VP_DSP_CTRL__GAMMA_UPDATE_EN;
->+	vop2_vp_write(vp, RK3568_VP_DSP_CTRL, dsp_ctrl);
->+}
->+
->+static inline bool vop2_supports_seamless_gamma_lut_update(struct vop2 *vop2)
->+{
->+	return (vop2->data->soc_id == 3588);
->+}
->+
->+
-> static void vop2_crtc_atomic_disable(struct drm_crtc *crtc,
-> 				     struct drm_atomic_state *state)
-> {
->@@ -1482,6 +1540,66 @@ static bool vop2_crtc_mode_fixup(struct drm_crtc *crtc,
-> 	return true;
-> }
-> 
->+static void vop2_crtc_write_gamma_lut(struct vop2 *vop2, struct drm_crtc *crtc)
->+{
->+	const struct vop2_video_port *vp = to_vop2_video_port(crtc);
->+	const struct vop2_video_port_data *vp_data = &vop2->data->vp[vp->id];
->+
->+	struct drm_color_lut *lut = crtc->state->gamma_lut->data;
->+	unsigned int i, bpc = ilog2(vp_data->gamma_lut_len);
->+	u32 word;
->+
->+	for (i = 0; i < crtc->gamma_size; i++) {
->+		word = (drm_color_lut_extract(lut[i].blue, bpc) << (2 * bpc)) |
->+		    (drm_color_lut_extract(lut[i].green, bpc) << bpc) |
->+		    drm_color_lut_extract(lut[i].red, bpc);
->+
->+		writel(word, vop2->lut_regs + i * 4);
->+	}
->+}
->+
->+static void vop2_crtc_atomic_try_set_gamma(struct vop2 *vop2,
->+					struct vop2_video_port *vp,
->+					struct drm_crtc *crtc,
->+					struct drm_crtc_state *crtc_state)
->+{
->+
->+	if (vop2->lut_regs && crtc_state->color_mgmt_changed) {
->+		if (!crtc_state->gamma_lut) {
->+			vop2_vp_dsp_lut_disable(vp);
->+			return;
->+		}
->+
->+		if (vop2_supports_seamless_gamma_lut_update(vop2)) {
->+			vop2_writel(vop2, RK3568_LUT_PORT_SEL, FIELD_PREP(
->+				RK3588_LUT_PORT_SEL__GAMMA_AHB_WRITE_SEL,
->+				vp->id));
->+			vop2_crtc_write_gamma_lut(vop2, crtc);
->+			vop2_vp_dsp_lut_enable(vp);
->+			vop2_vp_dsp_lut_update_enable(vp);
->+		} else {
->+			vop2_vp_dsp_lut_disable(vp);
->+			vop2_cfg_done(vp);
->+			if (!vop2_vp_dsp_lut_poll_disable(vp))
->+				return;
->+
->+			vop2_writel(vop2, RK3568_LUT_PORT_SEL, vp->id);
->+			vop2_crtc_write_gamma_lut(vop2, crtc);
->+			vop2_vp_dsp_lut_enable(vp);
->+		}
->+	}
->+}
->+
->+static inline void vop2_crtc_atomic_try_set_gamma_locked(struct vop2 *vop2,
->+					struct vop2_video_port *vp,
->+					struct drm_crtc *crtc,
->+					struct drm_crtc_state *crtc_state)
->+{
->+	vop2_lock(vop2);
->+	vop2_crtc_atomic_try_set_gamma(vop2, vp, crtc, crtc_state);
->+	vop2_unlock(vop2);
->+}
->+
-> static void vop2_dither_setup(struct drm_crtc *crtc, u32 *dsp_ctrl)
-> {
-> 	struct rockchip_crtc_state *vcstate = to_rockchip_crtc_state(crtc->state);
->@@ -2057,11 +2175,35 @@ static void vop2_crtc_atomic_enable(struct drm_crtc *crtc,
-> 
-> 	vop2_vp_write(vp, RK3568_VP_DSP_CTRL, dsp_ctrl);
-> 
->+	vop2_crtc_atomic_try_set_gamma(vop2, vp, crtc, crtc_state);
->+
-> 	drm_crtc_vblank_on(crtc);
-> 
-> 	vop2_unlock(vop2);
-> }
-> 
->+static int vop2_crtc_atomic_check_gamma(struct vop2_video_port *vp,
->+					struct drm_crtc *crtc,
->+					struct drm_atomic_state *state,
->+					struct drm_crtc_state *crtc_state)
->+{
->+	struct vop2 *vop2 = vp->vop2;
->+	unsigned int len;
->+
->+	if (!vp->vop2->lut_regs || !crtc_state->color_mgmt_changed ||
->+	    !crtc_state->gamma_lut)
->+		return 0;
->+
->+	len = drm_color_lut_size(crtc_state->gamma_lut);
->+	if (len != crtc->gamma_size) {
->+		drm_dbg(vop2->drm, "Invalid LUT size; got %d, expected %d\n",
->+				      len, crtc->gamma_size);
->+		return -EINVAL;
->+	}
->+
->+	return 0;
->+}
->+
-> static int vop2_crtc_atomic_check(struct drm_crtc *crtc,
-> 				  struct drm_atomic_state *state)
-> {
->@@ -2069,6 +2211,11 @@ static int vop2_crtc_atomic_check(struct drm_crtc *crtc,
-> 	struct drm_plane *plane;
-> 	int nplanes = 0;
-> 	struct drm_crtc_state *crtc_state = drm_atomic_get_new_crtc_state(state, crtc);
->+	int ret;
->+
->+	ret = vop2_crtc_atomic_check_gamma(vp, crtc, state, crtc_state);
->+	if (ret)
->+		return ret;
-> 
-> 	drm_atomic_crtc_state_for_each_plane(plane, crtc_state)
-> 		nplanes++;
->@@ -2456,9 +2603,12 @@ static void vop2_setup_dly_for_windows(struct vop2 *vop2)
-> 	vop2_writel(vop2, RK3568_SMART_DLY_NUM, sdly);
-> }
-> 
->+
-> static void vop2_crtc_atomic_begin(struct drm_crtc *crtc,
-> 				   struct drm_atomic_state *state)
-> {
->+	struct drm_crtc_state *crtc_state =
->+		drm_atomic_get_new_crtc_state(state, crtc);
-> 	struct vop2_video_port *vp = to_vop2_video_port(crtc);
-> 	struct vop2 *vop2 = vp->vop2;
-> 	struct drm_plane *plane;
->@@ -2482,6 +2632,11 @@ static void vop2_crtc_atomic_begin(struct drm_crtc *crtc,
-> 	vop2_setup_layer_mixer(vp);
-> 	vop2_setup_alpha(vp);
-> 	vop2_setup_dly_for_windows(vop2);
->+
->+	// NOTE: in case of modeset gamma lut update
->+	// already happened in atomic enable
->+	if (!drm_atomic_crtc_needs_modeset(crtc_state))
->+		vop2_crtc_atomic_try_set_gamma_locked(vop2, vp, crtc, crtc_state);
-> }
-> 
-> static void vop2_crtc_atomic_flush(struct drm_crtc *crtc,
->@@ -2790,7 +2945,13 @@ static int vop2_create_crtcs(struct vop2 *vop2)
-> 		}
-> 
-> 		drm_crtc_helper_add(&vp->crtc, &vop2_crtc_helper_funcs);
->+		if (vop2->lut_regs && vp->crtc.dev != NULL) {
+Adds the compatible line to support RK3576 SoC.
 
+Signed-off-by: Frank Wang <frank.wang@rock-chips.com>
+Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+Acked-by: Rob Herring (Arm) <robh@kernel.org>
+---
+Changelog:
+v2:
+ - add Reviewed and Acked tag.
 
-There is no need to check vp->crtc.dev here,  set has been set in drm_crtc_init_with_planes .
+v1:
+ - https://patchwork.kernel.org/project/linux-phy/patch/20241015013351.4884-1-frawang.cn@gmail.com/
+
+ .../devicetree/bindings/phy/phy-rockchip-naneng-combphy.yaml     | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/Documentation/devicetree/bindings/phy/phy-rockchip-naneng-combphy.yaml b/Documentation/devicetree/bindings/phy/phy-rockchip-naneng-combphy.yaml
+index d3cd7997879f7..1b3de6678c087 100644
+--- a/Documentation/devicetree/bindings/phy/phy-rockchip-naneng-combphy.yaml
++++ b/Documentation/devicetree/bindings/phy/phy-rockchip-naneng-combphy.yaml
+@@ -13,6 +13,7 @@ properties:
+   compatible:
+     enum:
+       - rockchip,rk3568-naneng-combphy
++      - rockchip,rk3576-naneng-combphy
+       - rockchip,rk3588-naneng-combphy
  
+   reg:
+-- 
+2.25.1
+
+
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
