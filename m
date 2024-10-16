@@ -4,63 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 16896D1F9CC
-	for <linux-rockchip@archiver.kernel.org>; Wed, 16 Oct 2024 13:45:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4E2F9D2A52F
+	for <linux-rockchip@archiver.kernel.org>; Wed, 16 Oct 2024 17:34:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:References:To:From:Subject:Cc:Message-Id:Date:Mime-Version:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=cWdjtbfG5zJggA4UdFKGeYkWkl8DgZzu1M4xT2XzHnQ=; b=vRjHzg6kGq5lRpzle2K1kFk4K2
-	bOyCsTrKdxdOrZy+pKyqvA4sFDejMl7khglIRbLkh1QnN8HzuOrhKIAq7om75r/xm+hglCAWv9v8M
-	IxPWi5QOR+RuBDBpZKxaLPBH8GbNRfiIUm+J8Gj/WkZFXfIsHYNsax3TgVbvXtG3xG8wvM70BRjK/
-	Boq8xHwkUXrMLSyw54/kbw8Ef8Wy0oWSrX7alkQwjs9IHnRti9ZI89Qtybbc1oEzG3mNdlup+LGxS
-	3p5BYDaI6npL/N4qip65P36sinPVNR7zAI8lbs7Zydqta5hXCxNjI3xfmkXQHlMXB/SdUfJuQcEpb
-	Z3zxnRkg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=QnU1WLTlzGM1hDyhtvr+JFjQ9UiEQX6T6d0BbfA5RF4=; b=r5CouDpDpR5X/+
+	RA6cM0u5E8x/ZfCVOTqbSWf3nfdNk5mQVy470y4+Pq92WJ1EHCaI/TE8MVirOSmRjK5lhSIkZuFQQ
+	KiWxWU9N+97k40XQ4JcJDwOzFv3IZCB5w/B4FI+xS7ci1z5X1HApB2DSKNGBts8e+1tvVB3WQJl/s
+	pF25BOeqABuqna6xHBj8ghCKVlUJe2X95v16NsKWcsn4a6TDU3u1TKEV9J7w6FOFsdi47MF4TGtdA
+	68UmVyY+ROTRrJFY3+anr9FyZpy83JeOuHzll93K0RnxxLum1Wt2Gr6GiA4M5HLbQ0+Unn18yAWc6
+	7sM6xU9HlQMzJx2khfXQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t14LR-0000000Bxu8-0VgV;
-	Wed, 16 Oct 2024 13:45:45 +0000
-Received: from out-187.mta0.migadu.com ([91.218.175.187])
+	id 1t17uz-0000000CYvN-2taB;
+	Wed, 16 Oct 2024 17:34:41 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t13Fe-0000000BkzR-0cvb
-	for linux-rockchip@lists.infradead.org;
-	Wed, 16 Oct 2024 12:35:44 +0000
-Mime-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow.org; s=key1;
-	t=1729082138;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=nTaj8AXpVBWrhNSy1JcE6EXS2SykZrY/1WbUR5yvdpw=;
-	b=x/b20hD0hEvfaBAi+hWs8pUvE/sfpOeqDCYrktpK1t2O/NFekaKGmAlokw5DPD4fUtDNnv
-	Fx0dArSexcydEYCoBeTElusQR4SnX1iKaqgCHb0M3yNVY+3/sAN8T536FPY7Aih3b56T4r
-	myylYYmiNBVVZ3pnsBqBYtbNdVF+JwiOhVEXTqZHhfmuUnNYIyOPVsKEnRTx7zL15tWAQN
-	hK6beHJbnnLPJEV//altlD6g9l7cX9KPnmc4igsF/Ebz+lOB9Mqrryi6AG7xgEnQBIBlNZ
-	MASHvglPFFD3DpSAq+OSa5Uwz19/h9uuwVbe4XDdGvIkxJAr328zL8qh4cO8ag==
-Date: Wed, 16 Oct 2024 14:35:28 +0200
-Message-Id: <D4X8GJV0W6JL.32E469JSATFEP@cknow.org>
-Cc: <linux-rockchip@lists.infradead.org>, "Diederik de Haas"
- <didi.debian@cknow.org>, "Samuel Holland" <samuel@sholland.org>, "Dragan
- Simic" <dsimic@manjaro.org>, <devicetree@vger.kernel.org>,
- <linux-kernel@vger.kernel.org>, "Michael Riesch"
- <michael.riesch@wolfvision.net>, <linux-arm-kernel@lists.infradead.org>
-Subject: Re: (subset) [PATCH v2 0/4] rockchip: Fix several DT validation
- errors
-X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
-From: "Diederik de Haas" <didi.debian@cknow.org>
-To: "Heiko Stuebner" <heiko@sntech.de>, "Krzysztof Kozlowski"
- <krzk+dt@kernel.org>, "Rob Herring" <robh@kernel.org>, "Conor Dooley"
- <conor+dt@kernel.org>
-References: <20241008113344.23957-1-didi.debian@cknow.org>
- <172841572989.2562611.18254512768409976284.b4-ty@sntech.de>
- <D4X4RACGCRRH.39SMPGMZZ2GK4@cknow.org>
-In-Reply-To: <D4X4RACGCRRH.39SMPGMZZ2GK4@cknow.org>
-X-Migadu-Flow: FLOW_OUT
+	id 1t17tX-0000000CYeu-0Ejv;
+	Wed, 16 Oct 2024 17:33:12 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id 551A3A4172C;
+	Wed, 16 Oct 2024 17:33:01 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id CEF19C4CEC5;
+	Wed, 16 Oct 2024 17:33:09 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1729099990;
+	bh=WPrD40hISrWG6l6LJDVLR/3iKsPYJfFh0eBKmBOWvCc=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=dliDsSGJJOrK3aCli3Rr+aiHdE3SJJAA0U5kcmd1rn5lt6TLTUg0CeoJJD//Vb3d3
+	 O7ivCQkWX1LWzO1iLPJd77tuGI1rqz4fGt/Au5TtU46F0HnJPslPtpxGaLydfDgOR7
+	 BBttuoIYUYLe3XoKYUjX7lWY4VQ6SxHfFXGreUoXE73rtxyyNy73kMTko5rsxGqm5v
+	 9q95TcpC+54eqrX1kn1JhkxfAbfEBUvAPvTjuCHCfZBLr5K1zNFCwOMsfluDBztPto
+	 gvB+2XQLQa4UyJoeRMpwFiYoAz3XMEJ3ahIp9keZ3FDwR8jTNIplehwYir6+JlzKqU
+	 4CGhcx9e+xUdA==
+Date: Wed, 16 Oct 2024 12:33:09 -0500
+From: "Rob Herring (Arm)" <robh@kernel.org>
+To: Frank Wang <frawang.cn@gmail.com>
+Cc: devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org,
+	william.wu@rock-chips.com, gregkh@linuxfoundation.org,
+	linux-usb@vger.kernel.org, Frank Wang <frank.wang@rock-chips.com>,
+	linux-arm-kernel@lists.infradead.org, krzk+dt@kernel.org,
+	heiko@sntech.de, tim.chen@rock-chips.com, conor+dt@kernel.org,
+	linux-kernel@vger.kernel.org
+Subject: Re: [PATCH] dt-bindings: usb: add rk3576 compatible to rockchip,dwc3
+Message-ID: <172909998847.2076107.16244680063698227537.robh@kernel.org>
+References: <20241016083224.14839-1-frawang.cn@gmail.com>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20241016083224.14839-1-frawang.cn@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241016_053542_553632_D278015E 
-X-CRM114-Status: GOOD (  15.17  )
+X-CRM114-CacheID: sfid-20241016_103311_181522_6495A584 
+X-CRM114-Status: GOOD (  10.20  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,85 +70,27 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============5334202873070597497=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
---===============5334202873070597497==
-Content-Type: multipart/signed;
- boundary=420a352999a5f0637b0a389b86766f09be8702651d3ea0d2c89ab02af30c;
- micalg=pgp-sha256; protocol="application/pgp-signature"
 
---420a352999a5f0637b0a389b86766f09be8702651d3ea0d2c89ab02af30c
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain; charset=UTF-8
+On Wed, 16 Oct 2024 16:32:24 +0800, Frank Wang wrote:
+> From: Frank Wang <frank.wang@rock-chips.com>
+> 
+> Add the compatible for the Rockchip RK3576 variant.
+> 
+> Signed-off-by: Frank Wang <frank.wang@rock-chips.com>
+> ---
+>  Documentation/devicetree/bindings/usb/rockchip,dwc3.yaml | 6 +++++-
+>  1 file changed, 5 insertions(+), 1 deletion(-)
+> 
 
-Hi Heiko,
+Acked-by: Rob Herring (Arm) <robh@kernel.org>
 
-On Wed Oct 16, 2024 at 11:41 AM CEST, Diederik de Haas wrote:
-> On Tue Oct 8, 2024 at 9:28 PM CEST, Heiko Stuebner wrote:
-> > On Tue, 8 Oct 2024 13:15:35 +0200, Diederik de Haas wrote:
-> > > This is a set of 4 small device-tree validation fixes.
-> > >=20
-> > > Patch 1 adds the power-domains property to the csi dphy node on rk356=
-x.
-> > > Patch 2 removes the 2nd interrupt from the hdmi node on rk3328.
-> > > Patch 3 replaces 'wake' with 'wakeup' on PineNote BT node.
-> > > Patch 4 replaces 'reset-gpios' with 'shutdown-gpios' on brcm BT nodes=
-.
-> >
-> > Applied, thanks!
-> >
-> > [2/4] arm64: dts: rockchip: Remove hdmi's 2nd interrupt on rk3328
-> >       commit: de50a7e3681771c6b990238af82bf1dea9b11b21
-> > [3/4] arm64: dts: rockchip: Fix wakeup prop names on PineNote BT node
-> >       commit: 87299d6ee95a37d2d576dd8077ea6860f77ad8e2
-> > [4/4] arm64: dts: rockchip: Fix reset-gpios property on brcm BT nodes
-> >       commit: 2b6a3f857550e52b1cd4872ebb13cb3e3cf12f5f
->
-> Please revert the 4th patch.
->
-> I must have messed up my testing previously, but BT does not work on the
-> PineNote with the 4th patch applied and does work with it reverted.
-
-FWIW, I figured out what went wrong.
-My testing was correct, but redo-ing the implementation to make it ready
-for submission wasn't very smart.
-
-With ``shutdown-gpios =3D <&gpio0 RK_PC4 GPIO_ACTIVE_HIGH>;``
-it does work correctly, but I forgot to change GPIO_ACTIVE_LOW to
-GPIO_ACTIVE_HIGH before submitting.
-
-I'll first figure out a better procedure before making a new submission,
-so the revert is still the best approach IMO.
-
-Cheers,
-  Diederik
-
---420a352999a5f0637b0a389b86766f09be8702651d3ea0d2c89ab02af30c
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYIAB0WIQT1sUPBYsyGmi4usy/XblvOeH7bbgUCZw+zEwAKCRDXblvOeH7b
-bjbgAP9YbTBY27TFko/D2mKhNunoxZyzGN1Ss/H9noU7e6dOtQEAkqQg/YHMODFT
-3YTB0Lngl+UqeAUuasytSAUgJxyAhQ8=
-=QZhM
------END PGP SIGNATURE-----
-
---420a352999a5f0637b0a389b86766f09be8702651d3ea0d2c89ab02af30c--
-
-
---===============5334202873070597497==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============5334202873070597497==--
-
