@@ -4,63 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EFE29D206AB
-	for <linux-rockchip@archiver.kernel.org>; Wed, 16 Oct 2024 07:39:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C483AD206AB
+	for <linux-rockchip@archiver.kernel.org>; Wed, 16 Oct 2024 07:40:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=5NZSt4hPNoFXsT7tisVWvegEjqF2MA6bNU/URg7Z6Nk=; b=3NXCpnC16eYBcz
-	ArSrYBuDJIpe4fPp++v9kSp/jZoFeJq50TVii/CdB+LKwrNs7SCtCiAkRt/g/YgxJbRD0Hg2AH8i3
-	lkXi0ZqpgLSy6692I52/KN14R1aOHs26Bb2G/yBa7vp9n/DhZgWJ8HB9qvQ7SKg/gAtx4+l5Qpani
-	cGTk4KS+48KYSsWiQQjRo8OIy8h69zetUqJ7DT3sOj5NBXyNtXpBSmv52IUparGIN2vt8p8VkpXcz
-	a9a5cBfV5qUp/ceivOSg5/Bnb4sqxydQtILjgijTMTA2Zjsboc5jICcDpMIef0+TlrbILqXk/VqKm
-	f6WOAvI0VyPumfo0kP/Q==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=r3OaEH7Y2U99Upny+NMj6cEy48fwIQSBHweDyKjR88U=; b=wXLQlWMO3Bv8hd
+	Q3DumN1WQepQSOAyKIM3M9713+wIGU3I210vdnA/VRF3fPRfPpoV/KmiNgH9MzgJo5qH5pQce5O3H
+	SSgOgWb8iOu9eywQUcuFGiXklg3ir5M2LRTUrKV337o778iuOzUMqyAmq2J3dK32//2se5n1KBAvx
+	GM8qVzTr9yh3p36okiAVuyun89dipmEsqKPKTcCK0o1sEJpJY7lW4eMATxiD+nEEgEGenz3e3Sqr4
+	vh8cYON3mZ9tZy40aLXZz+sQXnXRVKj0tsbYeUVnj6s5V7AMyWBntJin7rt4l8brSF5Qh/ZK4ElEI
+	q/cblwhUbmX4eQN7LxUw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t0ycR-0000000Ar4w-30eN;
-	Wed, 16 Oct 2024 07:38:55 +0000
-Received: from mail-pj1-x102c.google.com ([2607:f8b0:4864:20::102c])
+	id 1t0ydq-0000000ArKf-2Q1z;
+	Wed, 16 Oct 2024 07:40:22 +0000
+Received: from mail-pj1-x1033.google.com ([2607:f8b0:4864:20::1033])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t0yax-0000000Aqey-1zYE;
-	Wed, 16 Oct 2024 07:37:24 +0000
-Received: by mail-pj1-x102c.google.com with SMTP id 98e67ed59e1d1-2e2e31aacbbso516415a91.2;
-        Wed, 16 Oct 2024 00:37:22 -0700 (PDT)
+	id 1t0yb2-0000000Aqg0-0Cpy;
+	Wed, 16 Oct 2024 07:37:29 +0000
+Received: by mail-pj1-x1033.google.com with SMTP id 98e67ed59e1d1-2e2b4110341so1071938a91.1;
+        Wed, 16 Oct 2024 00:37:27 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1729064242; x=1729669042; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=tE76eFeF0w5KNSCI8LEUq1pGIui/CIG/PhuBZfyVnmM=;
-        b=m7/5jAklhzubwzlNtBXwUC5Qlr6F6hduivO4gc9wXwA+kmsn+5MhMR/0O/GSRCkxGN
-         F03P+dATJUOQiUHHsonj5MC6rADs0Li6AVz6DbO30e6DSvdLmlJsj9hpQB2dJVwJ03YX
-         e7MAxtJR0FzlP/K8xJd8WaV53/JUAYP2VJ2UjOJ0uIO99itJPi7U/6BkKTekgaPHl/f0
-         CDqwwFbjedWJUKRImARUiM2tVl9O57NGPETcq88zWNPUAwQwDJg0lH996X5PctAIdXny
-         OhvjT1MKLG6bSup7DVzE8qHS6rSN3n65VIdcL1w95c226XgJ381UR+KQwKS6pP32k8UV
-         ds+g==
+        d=gmail.com; s=20230601; t=1729064246; x=1729669046; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=HdXBvIE3AExRgp3hXtIJcaBGzKqp9wpTyWZscjBbOt0=;
+        b=Ot2PW80r/ZHrNeLJcXWUr2ZDJco3s/Wien4qOo8l7kHANmtCbjBd68/+4EK1A8Jnay
+         B1d8EGfUA+a400YtOROMC+lRrwfRReMEZFu2CZvdBcuHYHb/uz+M2d14dadpTD1xy+R9
+         0H4g1Rk0/sCSWIx4HUihtjKe26iXxxwQsgk/LjgqdPI3aYDwzxojcJXOwUrwai6OQuel
+         I4WGQmm+FyMZg7ubOccjR1g32JzgwGG8FplECIpOGWUY1EQRrHnTvnmgwrZ8ivBW6fZ+
+         eqThN4ewV4UyjnqzfiiLLrEwk9P/W+hh+ZdXLNYrzgUSpJAfoTEwvQRNlvcYiozWqYPM
+         HcrQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1729064242; x=1729669042;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=tE76eFeF0w5KNSCI8LEUq1pGIui/CIG/PhuBZfyVnmM=;
-        b=LObBd8+TBJPLC67wmoGgYGLVF+vamqU4pig41GTwxpkoxy8gKqedbp7Xo1nX5eyItH
-         Um6smQHO49/bXLQv/VSpfsudPQMbmPp8C6ujE8V7Dl7YqgZxs4Ighzwu56Tlg/k1uPh9
-         gpkO1tANIeynr28//R7+8HzUjWFmELna1EG5ufd3Xggg0lP1qwByk1R4ERPojoBFdu1V
-         /PYBTkmfSNh3Swt+1n3rD/YDvVvnx1R6RL51FBF9csHTop0YTe5vT/CTf8Nm8QhwSQrz
-         hb5d+0TgvqwPW2NqdemKkXFFXS+p62Ti1l2qIkfSyL2SsyXdhHAJSDdGk+QeOWMSfN0y
-         0WSg==
-X-Forwarded-Encrypted: i=1; AJvYcCU1Jjjvi8DUPaJnLbFMmHQOHvijmyCchDvUzNvggc+24Upk/LentFjDQLHKfbhFBHsO/dLuRXL5wOmKSpaTHYqQ@lists.infradead.org, AJvYcCUHUldGIvuOHiVWvFHtBXr24Ij/SlWp1mROrISRaT++acvwV2MXtcmP73bdzfGfztKzHYKcNnyV7mY8e48iW0M=@lists.infradead.org
-X-Gm-Message-State: AOJu0YyyxMrpDbxYj5GbqGgNK0nhKK6Bvajno+OaG/Ox8ym1b+ymN4FT
-	TOjxtKsC/W7YLX1Abr/EjgO7oV0yYs4IxFWl6z8DIWv3O8sh4PLpP3xPRQ==
-X-Google-Smtp-Source: AGHT+IEhzIpQMDtfFdV12qVQsmmk7szjHI+s/s4R35Hmx1nztSoglJmv993u13LVpMZmItO0dLlVng==
-X-Received: by 2002:a17:90b:1d01:b0:2e3:1af7:6ead with SMTP id 98e67ed59e1d1-2e31af76f40mr7378844a91.5.1729064241915;
-        Wed, 16 Oct 2024 00:37:21 -0700 (PDT)
+        d=1e100.net; s=20230601; t=1729064246; x=1729669046;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=HdXBvIE3AExRgp3hXtIJcaBGzKqp9wpTyWZscjBbOt0=;
+        b=MjBo9sF7H8MuEXRzghfe0KQ5iOHbF0PGb5bSgRdi50DJhPqfzVhQ0A3x1JG+wC5COb
+         Ei9eq+ivkGpwnn5CeEi5DkQLdSi8iTNNjDTnh6P0H+7uwunMcBA/mX8y4InjBrOFAQrr
+         5NHi5xzVX0YcK10VNt7/1UFZZKHhAKN4Valz+Mpl5hC0Kt2zNo0V+14OJwlAVpXKur76
+         p9zX4S18mY4KmYgSf2x3M4/gDyOMuY8SIfy8ubD3ZiMNI8fR1V/itycmjB8eAE111X27
+         7m8UmxOZ+Jgcx0WNqKcvfJDyv8ISi/2+buAM/1nYt/zH8zQvt8Vm7vGGUqYosG+lbVXl
+         dkRQ==
+X-Forwarded-Encrypted: i=1; AJvYcCUL+VAjM6aGH7lO5kOzfUG35w4bVMXlYf0GxbrqMhvAXEC0w2J2hfiEszh9I8SYUqwWdMCUn5DJ0BTAyIl4R4U=@lists.infradead.org, AJvYcCW539rAGXaCump4nUcTv+vTIGLCoZsJygLHYOzZY+JRt3XNP6Dwj5dfNNTrWl15GROXirXhpnOGiR7SqLQ3oeIH@lists.infradead.org
+X-Gm-Message-State: AOJu0YzxSN0CFJqGQXm/OA1Ydti/osUbYiRlSuiqN8KjhctnX5waDmPA
+	jyGrJvwrgALCCn0+VOXJOmt6SRXS9wa3OmYX+ImZVEOuvnr6ueBH
+X-Google-Smtp-Source: AGHT+IHTFYf2RmMoLVt3mWD27psiArXEXPum3fHQrqEBzIUzKiTNe15MOy/O+7lWes5lJSM0AcAojg==
+X-Received: by 2002:a17:90a:680e:b0:2e2:e139:447d with SMTP id 98e67ed59e1d1-2e3b786ebacmr895197a91.0.1729064246313;
+        Wed, 16 Oct 2024 00:37:26 -0700 (PDT)
 Received: from localhost.localdomain ([103.29.142.67])
-        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-2e3b7e6339fsm765471a91.1.2024.10.16.00.37.17
+        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-2e3b7e6339fsm765471a91.1.2024.10.16.00.37.22
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 16 Oct 2024 00:37:21 -0700 (PDT)
+        Wed, 16 Oct 2024 00:37:26 -0700 (PDT)
 From: Frank Wang <frawang.cn@gmail.com>
 To: vkoul@kernel.org,
 	kishon@kernel.org,
@@ -76,14 +77,17 @@ Cc: linux-phy@lists.infradead.org,
 	william.wu@rock-chips.com,
 	tim.chen@rock-chips.com,
 	Frank Wang <frank.wang@rock-chips.com>
-Subject: [PATCH v6 1/4] phy: rockchip: inno-usb2: convert clock management to bulk
-Date: Wed, 16 Oct 2024 15:37:10 +0800
-Message-Id: <20241016073713.14133-1-frawang.cn@gmail.com>
+Subject: [PATCH v6 2/4] dt-bindings: soc: rockchip: add rk3576 usb2phy syscon
+Date: Wed, 16 Oct 2024 15:37:11 +0800
+Message-Id: <20241016073713.14133-2-frawang.cn@gmail.com>
 X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20241016073713.14133-1-frawang.cn@gmail.com>
+References: <20241016073713.14133-1-frawang.cn@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241016_003723_544382_E0C6FD7D 
-X-CRM114-Status: GOOD (  20.16  )
+X-CRM114-CacheID: sfid-20241016_003728_160205_668BAAA3 
+X-CRM114-Status: UNSURE (   9.53  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,130 +106,41 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Frank Wang <frank.wang@rock-chips.com>
 
-Since some Rockchip SoCs (e.g RK3576) have more than one clock,
-this converts the clock management from single to bulk method to
-make the driver more flexible.
+The usb2phy is accessible via a syscon registers on RK3576, similar
+to RK3588.
 
 Signed-off-by: Frank Wang <frank.wang@rock-chips.com>
-Reviewed-by: Heiko Stuebner <heiko@sntech.de>
 ---
 Changelog:
 v6:
- - add Reviewed tag.
+ - This is a new patch adds rk3576-usb2phy-grf syscon.
 
-v5:
- - use dev_err_probe() in clock enable error path in probe.
-
-v4:
- - a new patch split from the [PATCH v3 2/2], suggestions from Heiko.
-
-v1-v3:
+v1-v5:
  - none
 
- drivers/phy/rockchip/phy-rockchip-inno-usb2.c | 45 +++++++++++++++----
- 1 file changed, 37 insertions(+), 8 deletions(-)
+ Documentation/devicetree/bindings/soc/rockchip/grf.yaml | 2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/drivers/phy/rockchip/phy-rockchip-inno-usb2.c b/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
-index 6e5214862b8a3..f71266c27091e 100644
---- a/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
-+++ b/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
-@@ -229,9 +229,10 @@ struct rockchip_usb2phy_port {
-  * @dev: pointer to device.
-  * @grf: General Register Files regmap.
-  * @usbgrf: USB General Register Files regmap.
-- * @clk: clock struct of phy input clk.
-+ * @clks: array of phy input clocks.
-  * @clk480m: clock struct of phy output clk.
-  * @clk480m_hw: clock struct of phy output clk management.
-+ * @num_clks: number of phy input clocks.
-  * @phy_reset: phy reset control.
-  * @chg_state: states involved in USB charger detection.
-  * @chg_type: USB charger types.
-@@ -246,9 +247,10 @@ struct rockchip_usb2phy {
- 	struct device	*dev;
- 	struct regmap	*grf;
- 	struct regmap	*usbgrf;
--	struct clk	*clk;
-+	struct clk_bulk_data	*clks;
- 	struct clk	*clk480m;
- 	struct clk_hw	clk480m_hw;
-+	int			num_clks;
- 	struct reset_control	*phy_reset;
- 	enum usb_chg_state	chg_state;
- 	enum power_supply_type	chg_type;
-@@ -310,6 +312,13 @@ static int rockchip_usb2phy_reset(struct rockchip_usb2phy *rphy)
- 	return 0;
- }
+diff --git a/Documentation/devicetree/bindings/soc/rockchip/grf.yaml b/Documentation/devicetree/bindings/soc/rockchip/grf.yaml
+index 50d727f4b76c6..62a28cb2bc7bb 100644
+--- a/Documentation/devicetree/bindings/soc/rockchip/grf.yaml
++++ b/Documentation/devicetree/bindings/soc/rockchip/grf.yaml
+@@ -80,6 +80,7 @@ properties:
+               - rockchip,rk3568-pmugrf
+               - rockchip,rk3576-ioc-grf
+               - rockchip,rk3576-pmu0-grf
++              - rockchip,rk3576-usb2phy-grf
+               - rockchip,rk3588-usb2phy-grf
+               - rockchip,rv1108-grf
+               - rockchip,rv1108-pmugrf
+@@ -233,6 +234,7 @@ allOf:
+               - rockchip,rk3308-usb2phy-grf
+               - rockchip,rk3328-usb2phy-grf
+               - rockchip,rk3399-grf
++              - rockchip,rk3576-usb2phy-grf
+               - rockchip,rk3588-usb2phy-grf
+               - rockchip,rv1108-grf
  
-+static void rockchip_usb2phy_clk_bulk_disable(void *data)
-+{
-+	struct rockchip_usb2phy *rphy = data;
-+
-+	clk_bulk_disable_unprepare(rphy->num_clks, rphy->clks);
-+}
-+
- static int rockchip_usb2phy_clk480m_prepare(struct clk_hw *hw)
- {
- 	struct rockchip_usb2phy *rphy =
-@@ -376,7 +385,9 @@ rockchip_usb2phy_clk480m_register(struct rockchip_usb2phy *rphy)
- {
- 	struct device_node *node = rphy->dev->of_node;
- 	struct clk_init_data init;
-+	struct clk *refclk = NULL;
- 	const char *clk_name;
-+	int i;
- 	int ret = 0;
- 
- 	init.flags = 0;
-@@ -386,8 +397,15 @@ rockchip_usb2phy_clk480m_register(struct rockchip_usb2phy *rphy)
- 	/* optional override of the clockname */
- 	of_property_read_string(node, "clock-output-names", &init.name);
- 
--	if (rphy->clk) {
--		clk_name = __clk_get_name(rphy->clk);
-+	for (i = 0; i < rphy->num_clks; i++) {
-+		if (!strncmp(rphy->clks[i].id, "phyclk", 6)) {
-+			refclk = rphy->clks[i].clk;
-+			break;
-+		}
-+	}
-+
-+	if (!IS_ERR(refclk)) {
-+		clk_name = __clk_get_name(refclk);
- 		init.parent_names = &clk_name;
- 		init.num_parents = 1;
- 	} else {
-@@ -1399,15 +1417,26 @@ static int rockchip_usb2phy_probe(struct platform_device *pdev)
- 	if (IS_ERR(rphy->phy_reset))
- 		return PTR_ERR(rphy->phy_reset);
- 
--	rphy->clk = devm_clk_get_optional_enabled(dev, "phyclk");
--	if (IS_ERR(rphy->clk))
--		return dev_err_probe(&pdev->dev, PTR_ERR(rphy->clk),
--				     "failed to get phyclk\n");
-+	ret = devm_clk_bulk_get_all(dev, &rphy->clks);
-+	if (ret == -EPROBE_DEFER)
-+		return dev_err_probe(&pdev->dev, -EPROBE_DEFER,
-+				     "failed to get phy clock\n");
-+
-+	/* Clocks are optional */
-+	rphy->num_clks = ret < 0 ? 0 : ret;
- 
- 	ret = rockchip_usb2phy_clk480m_register(rphy);
- 	if (ret)
- 		return dev_err_probe(dev, ret, "failed to register 480m output clock\n");
- 
-+	ret = clk_bulk_prepare_enable(rphy->num_clks, rphy->clks);
-+	if (ret)
-+		return dev_err_probe(dev, ret, "failed to enable phy clock\n");
-+
-+	ret = devm_add_action_or_reset(dev, rockchip_usb2phy_clk_bulk_disable, rphy);
-+	if (ret)
-+		return ret;
-+
- 	if (rphy->phy_cfg->phy_tuning) {
- 		ret = rphy->phy_cfg->phy_tuning(rphy);
- 		if (ret)
 -- 
 2.25.1
 
