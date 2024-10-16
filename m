@@ -4,74 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B461FD2A555
-	for <linux-rockchip@archiver.kernel.org>; Wed, 16 Oct 2024 20:13:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B28D2D2A555
+	for <linux-rockchip@archiver.kernel.org>; Wed, 16 Oct 2024 20:16:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
-	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=BlQPFb+z1yyDaRsqP5TStdW6UbIuu02y6E9DwwwS6A4=; b=bt1DQs3LDJQbwc
-	EM1yv6SVSN8jLAAiwAZPUY680R8ncR82eLe6cpf4AkvwzFF8P9HtvcbeXktvekkSMjS787+e5Sewx
-	G2QtlyV6P/qPHQXmXvc3GB65YMTABWGbhfEr1nJocQQKDm4MlRO3r9KVoAbXmA4YSWOq474zIUgED
-	50U9BQ4y0WTg389d1t9sKUdcLxPrG4t+7RPvqdn2wqYgS+fViIgRU+FHfkHj0Tmq6uidw+rHABHkR
-	rcXSvD0Hg2ofpFBVRgtvVlHm+K5si8+sW5O7P7c/4IBVNE4hFHQ6RYqmmSX7LBGyW2MhcXJoiRwDV
-	qMcl548aOqgGxEGQpJbA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=7SMEfMlW/C27udljXPMs/mrFr0o7yBc0XZRSqXr/gI0=; b=EcobM/P3F8Rvsn
+	Tgvw8ZDenHRhb/7Gw/6cq8FHQKZBtgzKIMN2+uujtvjx9UOCgTdMrEZlTdq0YcmYvHQXVhxbkCldT
+	D9DPU5neCZhp0Kz94OAygtOegfS8JAz4sWCcIKjPFsG/Z+rHWZQeNkuExO4u6YPLIhlEcLbXBsX4q
+	191WI9MbMDwrf92WuI+oVUeHgU9ikt1iUNdFwnasu+CNU8RBS4oITTNiJZzgSxA55ilZHz9lwPcJE
+	WUf43pLzQ/mON1c5ueg46+1xdqappJEcoPcnrJcsHjiqwMoBfMfP4NaeJV6tTgWS35mh26uZRcPYo
+	eOAzPycoDRN5CGv/n24Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t1AOX-0000000Cub1-1lhO;
-	Wed, 16 Oct 2024 20:13:21 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1t1ARL-0000000Cuzg-0ksi;
+	Wed, 16 Oct 2024 20:16:15 +0000
+Received: from mail-qk1-x742.google.com ([2607:f8b0:4864:20::742])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t1AIk-0000000Cte4-2vKc;
-	Wed, 16 Oct 2024 20:07:36 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1729109241;
-	bh=MWTTB9YO2vsfXWFChk9Y+IZdlx3iRP4eUC+G51pj1do=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=OHVvimjdoKQ13FHCMCUIVbitkEoS0HR+LV+GwIKesDvBqh19kEnuh/0MeBhQTPf8F
-	 N9jl+KQ6JrQtbC1Ahvp7WrfDqxijLMupO3w2+lUJYBRhUKCxyOAyuxzChDZjt7g2mc
-	 XDdrBBJhbFeB7ctTidU1L2JEh0ivZnwW2uOY8tRLVe9DQRf23OV8s8eDRVNeA8NM+D
-	 oapKcN8ycWhHjArzrS34lYhA8hP+/DhJyulPjV+l9t0ATliOjvR/ndLLJJ4MzygAnd
-	 9VRAikhDk8lcjmBKFHdzBZagjn3ucqyCoDbR6sqmHYctHVQ2yEmo9r+qCkO3e1t1fx
-	 kwJYNvGacYsYQ==
-Received: from localhost (unknown [188.24.146.62])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id D9A2917E36F1;
-	Wed, 16 Oct 2024 22:07:20 +0200 (CEST)
-From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Date: Wed, 16 Oct 2024 23:06:53 +0300
-Subject: [PATCH v10 3/3] drm/rockchip: Add basic RK3588 HDMI output support
+	id 1t1AJa-0000000CtvO-3AAi;
+	Wed, 16 Oct 2024 20:08:24 +0000
+Received: by mail-qk1-x742.google.com with SMTP id af79cd13be357-7ac83a98e5eso18066185a.0;
+        Wed, 16 Oct 2024 13:08:14 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1729109293; x=1729714093; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=xo/VBxOKFH/TmGJuUnZWn7QS7QFDBk9dtLuBtP6fhKE=;
+        b=neQQbJrLiOTKGzL7EQkNu9oWdyM55tlCy00vHNlQIT+lueNiVIMO+T/MzTbhF1YfaU
+         1p7aR6/PELzTVbZ/eLXE3uDfOqMqfqmZ70xhiqSBp3VWDvw4WYbk8cQOqFNAlMOP9d0S
+         leqkENHFA5ohsaXP8RlqPT/LQrmylDvFV9I2HYTYRXEAQX3VcxKTc/l5mZV8USQo+rV/
+         1Haf/qVHfidogeiJZsjlqis8Pr1lQurhitjUVPJM9ZA743ZlnigGyYXfbsiMgD1meWAW
+         +KGtqTQHWPw4deccH+pGgLO8DflMuNciDhCS9K3QrsUy9oMexBB/7w6UN1Utqb2vKHoO
+         hRkQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1729109293; x=1729714093;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=xo/VBxOKFH/TmGJuUnZWn7QS7QFDBk9dtLuBtP6fhKE=;
+        b=UrQPos7JWChiGxsiGGUWBqfrKhAn0NK0w0COEfLPiCw7VCPgg1upezAkLS/gKMsNs3
+         Lwe519fOBk/GMtwOxs6JElO9pw9Z5HWQNoAOOQ3SZ4rHttpVb6gDh7iNfZxJ2BjkDbLC
+         F0KN8cdUFzP0trZDz5jtGZJacbqN0YG5V7qMXBlUP6rhfuidnbEYzpRwSm5OxRXIKfmi
+         Jn8qfjcvExOksex6fhhiT6AUNp5LKYRmaJuh2ZrGxq/xfcJ+Up2J44YktyWdZ0WwCbSC
+         CaW/AQFhIkhOYAQAX2OgfHiet51copjXnkMP8Gsft70RCYGJa85qNLN1DQnlhDspIxc/
+         1IjQ==
+X-Forwarded-Encrypted: i=1; AJvYcCV2uL34USg/CJOxRZ7vb/rinh2e+x07Oxs7blcHaR3VARDylOINeMr1ES/CLgAa5xPptAvVR5jFXmkwW3Gqi+hu@lists.infradead.org, AJvYcCVqOFVFRiLZBJHKytpLD8JOFI73Zw3y4/tynogD6+YuaEqBPHMeVBBXING58/1x1dRJF2g20NFQY1Jjx9Uyuc8=@lists.infradead.org
+X-Gm-Message-State: AOJu0Yz297sCwrDA2veqNnr0j+pBQL7CZZmuksCQSRK+O5TO6LHl8vFj
+	DZvl7AAt5unYgRwuOtsw5lGR1AukwDYlmBxoYITiYsY+BPa/lZTw
+X-Google-Smtp-Source: AGHT+IGqzpMWnAtWSKXsmhZf+cVv4uS+uDJF6vqc9SzgpRrXL8Am/lH5oizptIoGSFk3X614I1khTQ==
+X-Received: by 2002:a05:620a:3181:b0:7a6:6b97:4da2 with SMTP id af79cd13be357-7b14d4f6069mr131156685a.11.1729109293178;
+        Wed, 16 Oct 2024 13:08:13 -0700 (PDT)
+Received: from localhost.localdomain (mobile-130-126-255-54.near.illinois.edu. [130.126.255.54])
+        by smtp.gmail.com with ESMTPSA id af79cd13be357-7b136397252sm223113285a.80.2024.10.16.13.08.11
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 16 Oct 2024 13:08:12 -0700 (PDT)
+From: Gax-c <zichenxie0106@gmail.com>
+To: hjc@rock-chips.com,
+	heiko@sntech.de,
+	andy.yan@rock-chips.com,
+	maarten.lankhorst@linux.intel.com,
+	mripard@kernel.org,
+	tzimmermann@suse.de,
+	airlied@gmail.com,
+	simona@ffwll.ch,
+	markyao0591@gmail.com
+Cc: dri-devel@lists.freedesktop.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	chenyuan0y@gmail.com,
+	zzjas98@gmail.com,
+	Zichen Xie <zichenxie0106@gmail.com>
+Subject: [PATCH] drm/rockchip: fix potential integer overflow in rockchip_gem_dumb_create()
+Date: Wed, 16 Oct 2024 15:06:55 -0500
+Message-Id: <20241016200654.13472-1-zichenxie0106@gmail.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-Message-Id: <20241016-b4-rk3588-bridge-upstream-v10-3-87ef92a6d14e@collabora.com>
-References: <20241016-b4-rk3588-bridge-upstream-v10-0-87ef92a6d14e@collabora.com>
-In-Reply-To: <20241016-b4-rk3588-bridge-upstream-v10-0-87ef92a6d14e@collabora.com>
-To: Andrzej Hajda <andrzej.hajda@intel.com>, 
- Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
- Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
- David Airlie <airlied@gmail.com>, Sandy Huang <hjc@rock-chips.com>, 
- =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
- Andy Yan <andy.yan@rock-chips.com>, Rob Herring <robh@kernel.org>, 
- Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Mark Yao <markyao0591@gmail.com>, 
- Sascha Hauer <s.hauer@pengutronix.de>, Simona Vetter <simona@ffwll.ch>, 
- Simona Vetter <simona.vetter@ffwll.ch>
-Cc: dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
- devicetree@vger.kernel.org, kernel@collabora.com, 
- Alexandre ARNOUD <aarnoud@me.com>, Luis de Arquer <ldearquer@gmail.com>, 
- Algea Cao <algea.cao@rock-chips.com>
-X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241016_130723_137466_7EDC6812 
-X-CRM114-Status: GOOD (  25.70  )
+X-CRM114-CacheID: sfid-20241016_130814_829630_312E8570 
+X-CRM114-Status: GOOD (  11.11  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,523 +101,38 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The RK3588 SoC family integrates the newer Synopsys DesignWare HDMI 2.1
-Quad-Pixel (QP) TX controller IP and a HDMI/eDP TX Combo PHY based on a
-Samsung IP block.
+From: Zichen Xie <zichenxie0106@gmail.com>
 
-Add just the basic support for now, i.e. RGB output up to 4K@60Hz,
-without audio, CEC or any of the HDMI 2.1 specific features.
+There may be potential integer overflow issue in
+rockchip_gem_dumb_create(). args->size is defined
+as "__u64" while args->pitch and args->height are
+both defined as "__u32". The result of
+"args->pitch * args->height" will be limited to
+"__u32" without correct casting.
+Cast it to "__u64" first to avoid possible
+integer overflow.
 
-Co-developed-by: Algea Cao <algea.cao@rock-chips.com>
-Signed-off-by: Algea Cao <algea.cao@rock-chips.com>
-Tested-by: Heiko Stuebner <heiko@sntech.de>
-Reviewed-by: Maxime Ripard <mripard@kernel.org>
-Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+Fixes: e3c4abdb3bc9 ("drm/rockchip: fix wrong pitch/size using on gem")
+Signed-off-by: Zichen Xie <zichenxie0106@gmail.com>
 ---
- drivers/gpu/drm/rockchip/Kconfig               |   9 +
- drivers/gpu/drm/rockchip/Makefile              |   1 +
- drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c | 424 +++++++++++++++++++++++++
- drivers/gpu/drm/rockchip/rockchip_drm_drv.c    |   2 +
- drivers/gpu/drm/rockchip/rockchip_drm_drv.h    |   1 +
- 5 files changed, 437 insertions(+)
+ drivers/gpu/drm/rockchip/rockchip_drm_gem.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/gpu/drm/rockchip/Kconfig b/drivers/gpu/drm/rockchip/Kconfig
-index 23c49e91f1ccfcee6ed302feefdaf0cc0d20b688..448fadd4ba15d0a7c421495c9f851645a8bd6550 100644
---- a/drivers/gpu/drm/rockchip/Kconfig
-+++ b/drivers/gpu/drm/rockchip/Kconfig
-@@ -8,6 +8,7 @@ config DRM_ROCKCHIP
- 	select VIDEOMODE_HELPERS
- 	select DRM_ANALOGIX_DP if ROCKCHIP_ANALOGIX_DP
- 	select DRM_DW_HDMI if ROCKCHIP_DW_HDMI
-+	select DRM_DW_HDMI_QP if ROCKCHIP_DW_HDMI_QP
- 	select DRM_DW_MIPI_DSI if ROCKCHIP_DW_MIPI_DSI
- 	select GENERIC_PHY if ROCKCHIP_DW_MIPI_DSI
- 	select GENERIC_PHY_MIPI_DPHY if ROCKCHIP_DW_MIPI_DSI
-@@ -63,6 +64,14 @@ config ROCKCHIP_DW_HDMI
- 	  enable HDMI on RK3288 or RK3399 based SoC, you should select
- 	  this option.
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_gem.c b/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
+index 93ed841f5dce..76dea12fe394 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
+@@ -409,7 +409,7 @@ int rockchip_gem_dumb_create(struct drm_file *file_priv,
+ 	 * align to 64 bytes since Mali requires it.
+ 	 */
+ 	args->pitch = ALIGN(min_pitch, 64);
+-	args->size = args->pitch * args->height;
++	args->size = (__u64)args->pitch * args->height;
  
-+config ROCKCHIP_DW_HDMI_QP
-+	bool "Rockchip specific extensions for Synopsys DW HDMI QP"
-+	select DRM_BRIDGE_CONNECTOR
-+	help
-+	  This selects support for Rockchip SoC specific extensions
-+	  for the Synopsys DesignWare HDMI QP driver. If you want to
-+	  enable HDMI on RK3588 based SoC, you should select this option.
-+
- config ROCKCHIP_DW_MIPI_DSI
- 	bool "Rockchip specific extensions for Synopsys DW MIPI DSI"
- 	select GENERIC_PHY_MIPI_DPHY
-diff --git a/drivers/gpu/drm/rockchip/Makefile b/drivers/gpu/drm/rockchip/Makefile
-index 3ff7b21c041498913b80edb4b31b1054e2e9ba2e..3eab662a5a1d662fcbc87851cd1795daf967bd81 100644
---- a/drivers/gpu/drm/rockchip/Makefile
-+++ b/drivers/gpu/drm/rockchip/Makefile
-@@ -11,6 +11,7 @@ rockchipdrm-$(CONFIG_ROCKCHIP_VOP) += rockchip_drm_vop.o rockchip_vop_reg.o
- rockchipdrm-$(CONFIG_ROCKCHIP_ANALOGIX_DP) += analogix_dp-rockchip.o
- rockchipdrm-$(CONFIG_ROCKCHIP_CDN_DP) += cdn-dp-core.o cdn-dp-reg.o
- rockchipdrm-$(CONFIG_ROCKCHIP_DW_HDMI) += dw_hdmi-rockchip.o
-+rockchipdrm-$(CONFIG_ROCKCHIP_DW_HDMI_QP) += dw_hdmi_qp-rockchip.o
- rockchipdrm-$(CONFIG_ROCKCHIP_DW_MIPI_DSI) += dw-mipi-dsi-rockchip.o
- rockchipdrm-$(CONFIG_ROCKCHIP_INNO_HDMI) += inno_hdmi.o
- rockchipdrm-$(CONFIG_ROCKCHIP_LVDS) += rockchip_lvds.o
-diff --git a/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c b/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
-new file mode 100644
-index 0000000000000000000000000000000000000000..9c796ee4c303a9a9075b251f681bf14de2dbb9a4
---- /dev/null
-+++ b/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
-@@ -0,0 +1,424 @@
-+// SPDX-License-Identifier: GPL-2.0-or-later
-+/*
-+ * Copyright (c) 2021-2022 Rockchip Electronics Co., Ltd.
-+ * Copyright (c) 2024 Collabora Ltd.
-+ *
-+ * Author: Algea Cao <algea.cao@rock-chips.com>
-+ * Author: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-+ */
-+
-+#include <linux/clk.h>
-+#include <linux/gpio/consumer.h>
-+#include <linux/mfd/syscon.h>
-+#include <linux/module.h>
-+#include <linux/platform_device.h>
-+#include <linux/phy/phy.h>
-+#include <linux/regmap.h>
-+#include <linux/workqueue.h>
-+
-+#include <drm/bridge/dw_hdmi_qp.h>
-+#include <drm/display/drm_hdmi_helper.h>
-+#include <drm/drm_bridge_connector.h>
-+#include <drm/drm_of.h>
-+#include <drm/drm_probe_helper.h>
-+#include <drm/drm_simple_kms_helper.h>
-+
-+#include "rockchip_drm_drv.h"
-+
-+#define RK3588_GRF_SOC_CON2		0x0308
-+#define RK3588_HDMI0_HPD_INT_MSK	BIT(13)
-+#define RK3588_HDMI0_HPD_INT_CLR	BIT(12)
-+#define RK3588_GRF_SOC_CON7		0x031c
-+#define RK3588_SET_HPD_PATH_MASK	GENMASK(13, 12)
-+#define RK3588_GRF_SOC_STATUS1		0x0384
-+#define RK3588_HDMI0_LEVEL_INT		BIT(16)
-+#define RK3588_GRF_VO1_CON3		0x000c
-+#define RK3588_SCLIN_MASK		BIT(9)
-+#define RK3588_SDAIN_MASK		BIT(10)
-+#define RK3588_MODE_MASK		BIT(11)
-+#define RK3588_I2S_SEL_MASK		BIT(13)
-+#define RK3588_GRF_VO1_CON9		0x0024
-+#define RK3588_HDMI0_GRANT_SEL		BIT(10)
-+
-+#define HIWORD_UPDATE(val, mask)	((val) | (mask) << 16)
-+#define HOTPLUG_DEBOUNCE_MS		150
-+
-+struct rockchip_hdmi_qp {
-+	struct device *dev;
-+	struct regmap *regmap;
-+	struct regmap *vo_regmap;
-+	struct rockchip_encoder encoder;
-+	struct clk *ref_clk;
-+	struct dw_hdmi_qp *hdmi;
-+	struct phy *phy;
-+	struct gpio_desc *enable_gpio;
-+	struct delayed_work hpd_work;
-+};
-+
-+static struct rockchip_hdmi_qp *to_rockchip_hdmi_qp(struct drm_encoder *encoder)
-+{
-+	struct rockchip_encoder *rkencoder = to_rockchip_encoder(encoder);
-+
-+	return container_of(rkencoder, struct rockchip_hdmi_qp, encoder);
-+}
-+
-+static void dw_hdmi_qp_rockchip_encoder_enable(struct drm_encoder *encoder)
-+{
-+	struct rockchip_hdmi_qp *hdmi = to_rockchip_hdmi_qp(encoder);
-+	struct drm_crtc *crtc = encoder->crtc;
-+	unsigned long long rate;
-+
-+	/* Unconditionally switch to TMDS as FRL is not yet supported */
-+	gpiod_set_value(hdmi->enable_gpio, 1);
-+
-+	if (crtc && crtc->state) {
-+		rate = drm_hdmi_compute_mode_clock(&crtc->state->adjusted_mode,
-+						   8, HDMI_COLORSPACE_RGB);
-+		clk_set_rate(hdmi->ref_clk, rate);
-+		/*
-+		 * FIXME: Temporary workaround to pass pixel clock rate
-+		 * to the PHY driver until phy_configure_opts_hdmi
-+		 * becomes available in the PHY API. See also the related
-+		 * comment in rk_hdptx_phy_power_on() from
-+		 * drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
-+		 */
-+		phy_set_bus_width(hdmi->phy, rate / 100);
-+	}
-+}
-+
-+static int
-+dw_hdmi_qp_rockchip_encoder_atomic_check(struct drm_encoder *encoder,
-+					 struct drm_crtc_state *crtc_state,
-+					 struct drm_connector_state *conn_state)
-+{
-+	struct rockchip_crtc_state *s = to_rockchip_crtc_state(crtc_state);
-+
-+	s->output_mode = ROCKCHIP_OUT_MODE_AAAA;
-+	s->output_type = DRM_MODE_CONNECTOR_HDMIA;
-+
-+	return 0;
-+}
-+
-+static const struct
-+drm_encoder_helper_funcs dw_hdmi_qp_rockchip_encoder_helper_funcs = {
-+	.enable		= dw_hdmi_qp_rockchip_encoder_enable,
-+	.atomic_check	= dw_hdmi_qp_rockchip_encoder_atomic_check,
-+};
-+
-+static int dw_hdmi_qp_rk3588_phy_init(struct dw_hdmi_qp *dw_hdmi, void *data)
-+{
-+	struct rockchip_hdmi_qp *hdmi = (struct rockchip_hdmi_qp *)data;
-+
-+	return phy_power_on(hdmi->phy);
-+}
-+
-+static void dw_hdmi_qp_rk3588_phy_disable(struct dw_hdmi_qp *dw_hdmi,
-+					  void *data)
-+{
-+	struct rockchip_hdmi_qp *hdmi = (struct rockchip_hdmi_qp *)data;
-+
-+	phy_power_off(hdmi->phy);
-+}
-+
-+static enum drm_connector_status
-+dw_hdmi_qp_rk3588_read_hpd(struct dw_hdmi_qp *dw_hdmi, void *data)
-+{
-+	struct rockchip_hdmi_qp *hdmi = (struct rockchip_hdmi_qp *)data;
-+	u32 val;
-+
-+	regmap_read(hdmi->regmap, RK3588_GRF_SOC_STATUS1, &val);
-+
-+	return val & RK3588_HDMI0_LEVEL_INT ?
-+		connector_status_connected : connector_status_disconnected;
-+}
-+
-+static void dw_hdmi_qp_rk3588_setup_hpd(struct dw_hdmi_qp *dw_hdmi, void *data)
-+{
-+	struct rockchip_hdmi_qp *hdmi = (struct rockchip_hdmi_qp *)data;
-+
-+	regmap_write(hdmi->regmap,
-+		     RK3588_GRF_SOC_CON2,
-+		     HIWORD_UPDATE(RK3588_HDMI0_HPD_INT_CLR,
-+				   RK3588_HDMI0_HPD_INT_CLR |
-+				   RK3588_HDMI0_HPD_INT_MSK));
-+}
-+
-+static const struct dw_hdmi_qp_phy_ops rk3588_hdmi_phy_ops = {
-+	.init		= dw_hdmi_qp_rk3588_phy_init,
-+	.disable	= dw_hdmi_qp_rk3588_phy_disable,
-+	.read_hpd	= dw_hdmi_qp_rk3588_read_hpd,
-+	.setup_hpd	= dw_hdmi_qp_rk3588_setup_hpd,
-+};
-+
-+static void dw_hdmi_qp_rk3588_hpd_work(struct work_struct *work)
-+{
-+	struct rockchip_hdmi_qp *hdmi = container_of(work,
-+						     struct rockchip_hdmi_qp,
-+						     hpd_work.work);
-+	struct drm_device *drm = hdmi->encoder.encoder.dev;
-+	bool changed;
-+
-+	if (drm) {
-+		changed = drm_helper_hpd_irq_event(drm);
-+		if (changed)
-+			drm_dbg(hdmi, "connector status changed\n");
-+	}
-+}
-+
-+static irqreturn_t dw_hdmi_qp_rk3588_hardirq(int irq, void *dev_id)
-+{
-+	struct rockchip_hdmi_qp *hdmi = dev_id;
-+	u32 intr_stat, val;
-+
-+	regmap_read(hdmi->regmap, RK3588_GRF_SOC_STATUS1, &intr_stat);
-+
-+	if (intr_stat) {
-+		val = HIWORD_UPDATE(RK3588_HDMI0_HPD_INT_MSK,
-+				    RK3588_HDMI0_HPD_INT_MSK);
-+		regmap_write(hdmi->regmap, RK3588_GRF_SOC_CON2, val);
-+		return IRQ_WAKE_THREAD;
-+	}
-+
-+	return IRQ_NONE;
-+}
-+
-+static irqreturn_t dw_hdmi_qp_rk3588_irq(int irq, void *dev_id)
-+{
-+	struct rockchip_hdmi_qp *hdmi = dev_id;
-+	u32 intr_stat, val;
-+
-+	regmap_read(hdmi->regmap, RK3588_GRF_SOC_STATUS1, &intr_stat);
-+	if (!intr_stat)
-+		return IRQ_NONE;
-+
-+	val = HIWORD_UPDATE(RK3588_HDMI0_HPD_INT_CLR,
-+			    RK3588_HDMI0_HPD_INT_CLR);
-+	regmap_write(hdmi->regmap, RK3588_GRF_SOC_CON2, val);
-+
-+	mod_delayed_work(system_wq, &hdmi->hpd_work,
-+			 msecs_to_jiffies(HOTPLUG_DEBOUNCE_MS));
-+
-+	val |= HIWORD_UPDATE(0, RK3588_HDMI0_HPD_INT_MSK);
-+	regmap_write(hdmi->regmap, RK3588_GRF_SOC_CON2, val);
-+
-+	return IRQ_HANDLED;
-+}
-+
-+static const struct of_device_id dw_hdmi_qp_rockchip_dt_ids[] = {
-+	{ .compatible = "rockchip,rk3588-dw-hdmi-qp",
-+	  .data = &rk3588_hdmi_phy_ops },
-+	{},
-+};
-+MODULE_DEVICE_TABLE(of, dw_hdmi_qp_rockchip_dt_ids);
-+
-+static int dw_hdmi_qp_rockchip_bind(struct device *dev, struct device *master,
-+				    void *data)
-+{
-+	static const char * const clk_names[] = {
-+		"pclk", "earc", "aud", "hdp", "hclk_vo1",
-+		"ref" /* keep "ref" last */
-+	};
-+	struct platform_device *pdev = to_platform_device(dev);
-+	struct dw_hdmi_qp_plat_data plat_data;
-+	struct drm_device *drm = data;
-+	struct drm_connector *connector;
-+	struct drm_encoder *encoder;
-+	struct rockchip_hdmi_qp *hdmi;
-+	struct clk *clk;
-+	int ret, irq, i;
-+	u32 val;
-+
-+	if (!pdev->dev.of_node)
-+		return -ENODEV;
-+
-+	hdmi = devm_kzalloc(&pdev->dev, sizeof(*hdmi), GFP_KERNEL);
-+	if (!hdmi)
-+		return -ENOMEM;
-+
-+	plat_data.phy_ops = of_device_get_match_data(dev);
-+	if (!plat_data.phy_ops)
-+		return -ENODEV;
-+
-+	plat_data.phy_data = hdmi;
-+	hdmi->dev = &pdev->dev;
-+
-+	encoder = &hdmi->encoder.encoder;
-+	encoder->possible_crtcs = drm_of_find_possible_crtcs(drm, dev->of_node);
-+
-+	rockchip_drm_encoder_set_crtc_endpoint_id(&hdmi->encoder,
-+						  dev->of_node, 0, 0);
-+	/*
-+	 * If we failed to find the CRTC(s) which this encoder is
-+	 * supposed to be connected to, it's because the CRTC has
-+	 * not been registered yet.  Defer probing, and hope that
-+	 * the required CRTC is added later.
-+	 */
-+	if (encoder->possible_crtcs == 0)
-+		return -EPROBE_DEFER;
-+
-+	hdmi->regmap = syscon_regmap_lookup_by_phandle(dev->of_node,
-+						       "rockchip,grf");
-+	if (IS_ERR(hdmi->regmap)) {
-+		drm_err(hdmi, "Unable to get rockchip,grf\n");
-+		return PTR_ERR(hdmi->regmap);
-+	}
-+
-+	hdmi->vo_regmap = syscon_regmap_lookup_by_phandle(dev->of_node,
-+							  "rockchip,vo-grf");
-+	if (IS_ERR(hdmi->vo_regmap)) {
-+		drm_err(hdmi, "Unable to get rockchip,vo-grf\n");
-+		return PTR_ERR(hdmi->vo_regmap);
-+	}
-+
-+	for (i = 0; i < ARRAY_SIZE(clk_names); i++) {
-+		clk = devm_clk_get_enabled(hdmi->dev, clk_names[i]);
-+
-+		if (IS_ERR(clk)) {
-+			ret = PTR_ERR(clk);
-+			if (ret != -EPROBE_DEFER)
-+				drm_err(hdmi, "Failed to get %s clock: %d\n",
-+					clk_names[i], ret);
-+			return ret;
-+		}
-+	}
-+	hdmi->ref_clk = clk;
-+
-+	hdmi->enable_gpio = devm_gpiod_get_optional(hdmi->dev, "enable",
-+						    GPIOD_OUT_HIGH);
-+	if (IS_ERR(hdmi->enable_gpio)) {
-+		ret = PTR_ERR(hdmi->enable_gpio);
-+		drm_err(hdmi, "Failed to request enable GPIO: %d\n", ret);
-+		return ret;
-+	}
-+
-+	hdmi->phy = devm_of_phy_get_by_index(dev, dev->of_node, 0);
-+	if (IS_ERR(hdmi->phy)) {
-+		ret = PTR_ERR(hdmi->phy);
-+		if (ret != -EPROBE_DEFER)
-+			drm_err(hdmi, "failed to get phy: %d\n", ret);
-+		return ret;
-+	}
-+
-+	val = HIWORD_UPDATE(RK3588_SCLIN_MASK, RK3588_SCLIN_MASK) |
-+	      HIWORD_UPDATE(RK3588_SDAIN_MASK, RK3588_SDAIN_MASK) |
-+	      HIWORD_UPDATE(RK3588_MODE_MASK, RK3588_MODE_MASK) |
-+	      HIWORD_UPDATE(RK3588_I2S_SEL_MASK, RK3588_I2S_SEL_MASK);
-+	regmap_write(hdmi->vo_regmap, RK3588_GRF_VO1_CON3, val);
-+
-+	val = HIWORD_UPDATE(RK3588_SET_HPD_PATH_MASK,
-+			    RK3588_SET_HPD_PATH_MASK);
-+	regmap_write(hdmi->regmap, RK3588_GRF_SOC_CON7, val);
-+
-+	val = HIWORD_UPDATE(RK3588_HDMI0_GRANT_SEL,
-+			    RK3588_HDMI0_GRANT_SEL);
-+	regmap_write(hdmi->vo_regmap, RK3588_GRF_VO1_CON9, val);
-+
-+	val = HIWORD_UPDATE(RK3588_HDMI0_HPD_INT_MSK, RK3588_HDMI0_HPD_INT_MSK);
-+	regmap_write(hdmi->regmap, RK3588_GRF_SOC_CON2, val);
-+
-+	INIT_DELAYED_WORK(&hdmi->hpd_work, dw_hdmi_qp_rk3588_hpd_work);
-+
-+	plat_data.main_irq = platform_get_irq_byname(pdev, "main");
-+	if (plat_data.main_irq < 0)
-+		return plat_data.main_irq;
-+
-+	irq = platform_get_irq_byname(pdev, "hpd");
-+	if (irq < 0)
-+		return irq;
-+
-+	ret = devm_request_threaded_irq(hdmi->dev, irq,
-+					dw_hdmi_qp_rk3588_hardirq,
-+					dw_hdmi_qp_rk3588_irq,
-+					IRQF_SHARED, "dw-hdmi-qp-hpd",
-+					hdmi);
-+	if (ret)
-+		return ret;
-+
-+	drm_encoder_helper_add(encoder, &dw_hdmi_qp_rockchip_encoder_helper_funcs);
-+	drm_simple_encoder_init(drm, encoder, DRM_MODE_ENCODER_TMDS);
-+
-+	platform_set_drvdata(pdev, hdmi);
-+
-+	hdmi->hdmi = dw_hdmi_qp_bind(pdev, encoder, &plat_data);
-+	if (IS_ERR(hdmi->hdmi)) {
-+		ret = PTR_ERR(hdmi->hdmi);
-+		drm_encoder_cleanup(encoder);
-+		return ret;
-+	}
-+
-+	connector = drm_bridge_connector_init(drm, encoder);
-+	if (IS_ERR(connector)) {
-+		ret = PTR_ERR(connector);
-+		drm_err(hdmi, "failed to init bridge connector: %d\n", ret);
-+		return ret;
-+	}
-+
-+	return drm_connector_attach_encoder(connector, encoder);
-+}
-+
-+static void dw_hdmi_qp_rockchip_unbind(struct device *dev,
-+				       struct device *master,
-+				       void *data)
-+{
-+	struct rockchip_hdmi_qp *hdmi = dev_get_drvdata(dev);
-+
-+	cancel_delayed_work_sync(&hdmi->hpd_work);
-+
-+	drm_encoder_cleanup(&hdmi->encoder.encoder);
-+}
-+
-+static const struct component_ops dw_hdmi_qp_rockchip_ops = {
-+	.bind	= dw_hdmi_qp_rockchip_bind,
-+	.unbind	= dw_hdmi_qp_rockchip_unbind,
-+};
-+
-+static int dw_hdmi_qp_rockchip_probe(struct platform_device *pdev)
-+{
-+	return component_add(&pdev->dev, &dw_hdmi_qp_rockchip_ops);
-+}
-+
-+static void dw_hdmi_qp_rockchip_remove(struct platform_device *pdev)
-+{
-+	component_del(&pdev->dev, &dw_hdmi_qp_rockchip_ops);
-+}
-+
-+static int __maybe_unused dw_hdmi_qp_rockchip_resume(struct device *dev)
-+{
-+	struct rockchip_hdmi_qp *hdmi = dev_get_drvdata(dev);
-+	u32 val;
-+
-+	val = HIWORD_UPDATE(RK3588_SCLIN_MASK, RK3588_SCLIN_MASK) |
-+	      HIWORD_UPDATE(RK3588_SDAIN_MASK, RK3588_SDAIN_MASK) |
-+	      HIWORD_UPDATE(RK3588_MODE_MASK, RK3588_MODE_MASK) |
-+	      HIWORD_UPDATE(RK3588_I2S_SEL_MASK, RK3588_I2S_SEL_MASK);
-+	regmap_write(hdmi->vo_regmap, RK3588_GRF_VO1_CON3, val);
-+
-+	val = HIWORD_UPDATE(RK3588_SET_HPD_PATH_MASK,
-+			    RK3588_SET_HPD_PATH_MASK);
-+	regmap_write(hdmi->regmap, RK3588_GRF_SOC_CON7, val);
-+
-+	val = HIWORD_UPDATE(RK3588_HDMI0_GRANT_SEL,
-+			    RK3588_HDMI0_GRANT_SEL);
-+	regmap_write(hdmi->vo_regmap, RK3588_GRF_VO1_CON9, val);
-+
-+	dw_hdmi_qp_resume(dev, hdmi->hdmi);
-+
-+	if (hdmi->encoder.encoder.dev)
-+		drm_helper_hpd_irq_event(hdmi->encoder.encoder.dev);
-+
-+	return 0;
-+}
-+
-+static const struct dev_pm_ops dw_hdmi_qp_rockchip_pm = {
-+	SET_SYSTEM_SLEEP_PM_OPS(NULL, dw_hdmi_qp_rockchip_resume)
-+};
-+
-+struct platform_driver dw_hdmi_qp_rockchip_pltfm_driver = {
-+	.probe = dw_hdmi_qp_rockchip_probe,
-+	.remove = dw_hdmi_qp_rockchip_remove,
-+	.driver = {
-+		.name = "dwhdmiqp-rockchip",
-+		.pm = &dw_hdmi_qp_rockchip_pm,
-+		.of_match_table = dw_hdmi_qp_rockchip_dt_ids,
-+	},
-+};
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_drv.c b/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
-index 11e5d10de4d73849163a01dc9a9a3f4055d237c2..ddf0be331c0ac8407af28d1e1426667f4de1d2f9 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
-@@ -507,6 +507,8 @@ static int __init rockchip_drm_init(void)
- 	ADD_ROCKCHIP_SUB_DRIVER(cdn_dp_driver, CONFIG_ROCKCHIP_CDN_DP);
- 	ADD_ROCKCHIP_SUB_DRIVER(dw_hdmi_rockchip_pltfm_driver,
- 				CONFIG_ROCKCHIP_DW_HDMI);
-+	ADD_ROCKCHIP_SUB_DRIVER(dw_hdmi_qp_rockchip_pltfm_driver,
-+				CONFIG_ROCKCHIP_DW_HDMI_QP);
- 	ADD_ROCKCHIP_SUB_DRIVER(dw_mipi_dsi_rockchip_driver,
- 				CONFIG_ROCKCHIP_DW_MIPI_DSI);
- 	ADD_ROCKCHIP_SUB_DRIVER(inno_hdmi_driver, CONFIG_ROCKCHIP_INNO_HDMI);
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_drv.h b/drivers/gpu/drm/rockchip/rockchip_drm_drv.h
-index 8d566fcd80a231966ff50dd0b5d3dad89921629c..24b4ce5ceaf19562b3ae0a39b7f0cecd32fd85f9 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_drv.h
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_drv.h
-@@ -88,6 +88,7 @@ int rockchip_drm_encoder_set_crtc_endpoint_id(struct rockchip_encoder *rencoder,
- int rockchip_drm_endpoint_is_subdriver(struct device_node *ep);
- extern struct platform_driver cdn_dp_driver;
- extern struct platform_driver dw_hdmi_rockchip_pltfm_driver;
-+extern struct platform_driver dw_hdmi_qp_rockchip_pltfm_driver;
- extern struct platform_driver dw_mipi_dsi_rockchip_driver;
- extern struct platform_driver inno_hdmi_driver;
- extern struct platform_driver rockchip_dp_driver;
-
+ 	rk_obj = rockchip_gem_create_with_handle(file_priv, dev, args->size,
+ 						 &args->handle);
 -- 
-2.47.0
+2.25.1
 
 
 _______________________________________________
