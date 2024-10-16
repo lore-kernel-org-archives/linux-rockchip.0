@@ -4,90 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 97CC7D1AD38
-	for <linux-rockchip@archiver.kernel.org>; Wed, 16 Oct 2024 09:33:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 325E1D1AD39
+	for <linux-rockchip@archiver.kernel.org>; Wed, 16 Oct 2024 09:52:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	In-Reply-To:References:Cc:To:From:Subject:Message-Id:Date:Mime-Version:
 	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
 	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=gv1Hy1L7pnF0fmHipAgxkBVSGpysgDZRIWOgDuOdcU0=; b=YBtUeHsBFUG0YGxE7I7OKITLyE
-	h1qxlyHOHAC6P1xre9tBJaglIU1qiBlW3luIbBvXOFlXNtFvNrj67QDm+vP5K5qzBpSdglF4D2Wgz
-	JLEFq9M+WUEW2re8AlhqIi+/I+E8A7PRRlb1593vMAT0HfvkJNMHnJosP+i8/Tj/uJfLrpaIggIJe
-	UNz421ZwMd5x9nn96gus2oF3LCPVqGfDoE7i3yy018muSIV+2vXNfMhd9CORZs50EupfjsLgMwYHY
-	Vh58lLXZSg2AqVjymkMUqzrOuPxDHZm+5W1vcbi79LwTWQuf/u05wlnHy/Sq/nQvyQfpi4+wfqKnF
-	nHjn890g==;
+	bh=Gr6oWBlhuicM3cNF2pgL/3j4kTSa49DCnZbM/bBxxZI=; b=H7+Wjoqcyac1w/9ZmWlYHqVOJ7
+	Qn3HTw04PHMN+GHd7uRMZhRe0+4i6pGEHHt86viMU5wECSwSjnPe25IZXorfVsW1aa8xUJ0MbxflY
+	su9LWHQ/jV9MRKq0pPbiIabplyGEHmkls8CHCaTZHPxrq328j24/E5azTHZm1uZrP2MlCLQMC4FQU
+	1fZvw43uzqjpbc91gG4Qp/+T7Oc4afweNaVcC5ObYylS2cAN/2dCKK+kuR0KNXxcrgOR8k/Hs8u4W
+	X0HSoYZYTlgAw1E8R00uRWjhII+ZnWJ2E8zQYFeV4NwMkdDPaBYvGzRwIA+AdonyhDhmgd1oYzoUq
+	7vrHuLgQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t10PG-0000000BFK7-3M7w;
-	Wed, 16 Oct 2024 09:33:26 +0000
-Received: from mail-ej1-x62e.google.com ([2a00:1450:4864:20::62e])
+	id 1t10hh-0000000BJMg-05uX;
+	Wed, 16 Oct 2024 09:52:29 +0000
+Received: from out-189.mta0.migadu.com ([2001:41d0:1004:224b::bd])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t10Jf-0000000BELS-44AF
-	for linux-rockchip@lists.infradead.org;
-	Wed, 16 Oct 2024 09:27:42 +0000
-Received: by mail-ej1-x62e.google.com with SMTP id a640c23a62f3a-a99e3b3a411so120100466b.0
-        for <linux-rockchip@lists.infradead.org>; Wed, 16 Oct 2024 02:27:39 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1729070858; x=1729675658; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=xkTWYiGZQ+keiIE1fDd/NGylZkJ/o8QzKwt0lHenVNU=;
-        b=W3DWaIMpt/HqLVWaHQZcNHbgRjpPFuzP597BQ/pWcSUaiso8HR7yTtsAYgqMnGFxHV
-         4UGW0jLAXLb4XYeH6AAc7/OuItzWbLoEAAI/JV4vxaKSWBWcf1q0l56rScGzyjkn6O3x
-         lK7LDg1QNgJI1A1nE2Ta0t4CAqsU5oXtHdcONBbg+Mse4YhC9sJEGBE74HkZdfi3k5xc
-         GrQ9Hm5BDu3p8u7z0r0grbhVIbabolPPJQB/huQyhD8J24ImV2MTbHJjfoDfvugeL5mz
-         zEw/A+FCD6ZCZsysC8PSQEKDeOxgAo/Za2HKHWjKf6tFbdr+FDPDLVZK+ghCnMBQo8G2
-         u5ig==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1729070858; x=1729675658;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=xkTWYiGZQ+keiIE1fDd/NGylZkJ/o8QzKwt0lHenVNU=;
-        b=aaM//SsAeVI7ShOhMycUmyJvcIgosRnQ3+Km2ruqqBgkQDFF8eXz7FQFaNuubRUqON
-         8Ee8uVzrbhLC71RCh4XzYRvENQnB3FPdndSgb35ddtmMY+/RlCMAVU/54ImTqIguDMac
-         iRv1WZSpJSsiIBPShl3O8bhzJuHMqKBRTAjCCSKI9JU9llia1eipLhvBtdkAThIEq3iZ
-         vm7NEzFb6jHjofRolDLhrfM/rKoXx7d3vOaNh4bjJqyuO6rkv1GnVvNnmrBlpYWLSRCW
-         1bPuTW+nUCi43Tqn+MBmds4krTWMoaXGN3fn0uWcONeMDANfCD2X32f0TxlFwk8+dQHO
-         ggVg==
-X-Forwarded-Encrypted: i=1; AJvYcCUsw0g1KNSoxSS5o4BC7Kg7xJBBcRtqnn6tU89DTgAzSXKPlnBO66PFrSTfm4PQCHHSc0g+UknrRVQr2xFBpg==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yxj5YUCqBFZW10ZyhnHNHagZsIxoI4NgTB9GaKYJdED7awEYFRx
-	ahJC5YF3Z7UAyT67fKck4OC1YJIIJtuNN3CpunW65QYOVA07cR9dSgfPPG1ifaI=
-X-Google-Smtp-Source: AGHT+IHsN4Gvg9FXmit1XET1Omd/eAaw9Bqv6hVqc+m9T0ybnBbiCdCdwTlYq6+4D4QNBZh5AvCM+Q==
-X-Received: by 2002:a17:907:7da6:b0:a99:5687:496 with SMTP id a640c23a62f3a-a9a3370fc51mr241819266b.30.1729070857783;
-        Wed, 16 Oct 2024 02:27:37 -0700 (PDT)
-Received: from localhost (p200300f65f19e3002f38cf427133ca7b.dip0.t-ipconnect.de. [2003:f6:5f19:e300:2f38:cf42:7133:ca7b])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a9a29844cc9sm160331866b.182.2024.10.16.02.27.37
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 16 Oct 2024 02:27:37 -0700 (PDT)
-Date: Wed, 16 Oct 2024 11:27:36 +0200
-From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@baylibre.com>
-To: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Cc: Andrzej Hajda <andrzej.hajda@intel.com>, 
-	Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
-	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Jonas Karlman <jonas@kwiboo.se>, 
-	Jernej Skrabec <jernej.skrabec@gmail.com>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
-	Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
-	David Airlie <airlied@gmail.com>, Sandy Huang <hjc@rock-chips.com>, 
-	Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>, 
-	Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
-	Conor Dooley <conor+dt@kernel.org>, Mark Yao <markyao0591@gmail.com>, 
-	Sascha Hauer <s.hauer@pengutronix.de>, Simona Vetter <simona@ffwll.ch>, 
-	Simona Vetter <simona.vetter@ffwll.ch>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, 
-	kernel@collabora.com, Alexandre ARNOUD <aarnoud@me.com>, 
-	Luis de Arquer <ldearquer@gmail.com>, Algea Cao <algea.cao@rock-chips.com>
-Subject: Re: [PATCH v9 3/3] drm/rockchip: Add basic RK3588 HDMI output support
-Message-ID: <3wjk75z2ozz2lg7qx6by3phjoe2brov6rz4jezpowrreedjua6@wt2js5hzqqdi>
-References: <20241010-b4-rk3588-bridge-upstream-v9-0-68c47dde0410@collabora.com>
- <20241010-b4-rk3588-bridge-upstream-v9-3-68c47dde0410@collabora.com>
-MIME-Version: 1.0
-In-Reply-To: <20241010-b4-rk3588-bridge-upstream-v9-3-68c47dde0410@collabora.com>
+	id 1t10XN-0000000BGyQ-2Vcz;
+	Wed, 16 Oct 2024 09:41:51 +0000
+Mime-Version: 1.0
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow.org; s=key1;
+	t=1729071705;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=+G7yTuYEAXeIa8//sVKc2le4Wa/PTI7ahlJZN0gv2IE=;
+	b=Kdoh349s00o3RtuPRonP7fb2sxvK01XJjgBydUPeuemDro+f5fqaJ1qZO2sZlxd0+gq1Qn
+	8UiKvqUnLa7P9hO8/1vqKY//+737tiUadRBKdbXhcuxzCD3Jdc9KSwvyKq714dUHzT3DBs
+	22mUU8K4tu5grXv+Qio7j2Pfry79RuVjScFO83vTuZOTAVTMdDqU3gea/AGz3aApQwaPpt
+	fIkLcbMecTIQWmDZsXr4ydKY7bt0+/yn/FPFt+vtR51V/eplDzbFsV/d0ZblJih3FGcEM2
+	8Q3nNCXIh6S3SbwgyD77jhg+DrRatRGb70Qye49WMWwN7edkiYkWHrg/Vr6aTg==
+Date: Wed, 16 Oct 2024 11:41:25 +0200
+Message-Id: <D4X4RACGCRRH.39SMPGMZZ2GK4@cknow.org>
+Subject: Re: (subset) [PATCH v2 0/4] rockchip: Fix several DT validation
+ errors
+X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
+From: "Diederik de Haas" <didi.debian@cknow.org>
+To: "Heiko Stuebner" <heiko@sntech.de>, "Krzysztof Kozlowski"
+ <krzk+dt@kernel.org>, "Rob Herring" <robh@kernel.org>, "Conor Dooley"
+ <conor+dt@kernel.org>
+Cc: <linux-rockchip@lists.infradead.org>, "Samuel Holland"
+ <samuel@sholland.org>, "Dragan Simic" <dsimic@manjaro.org>,
+ <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>, "Michael
+ Riesch" <michael.riesch@wolfvision.net>,
+ <linux-arm-kernel@lists.infradead.org>, "Diederik de Haas"
+ <didi.debian@cknow.org>
+References: <20241008113344.23957-1-didi.debian@cknow.org>
+ <172841572989.2562611.18254512768409976284.b4-ty@sntech.de>
+In-Reply-To: <172841572989.2562611.18254512768409976284.b4-ty@sntech.de>
+X-Migadu-Flow: FLOW_OUT
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241016_022740_039555_74F890BD 
-X-CRM114-Status: GOOD (  10.72  )
+X-CRM114-CacheID: sfid-20241016_024149_966415_C3C6D46B 
+X-CRM114-Status: GOOD (  14.74  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,65 +71,101 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============5605369709792056354=="
+Content-Type: multipart/mixed; boundary="===============0676462793056889834=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+--===============0676462793056889834==
+Content-Type: multipart/signed;
+ boundary=faeb94c4c6c54e37cbfcce4f20fd5406a08769967964b4ca64d2ba0e7639;
+ micalg=pgp-sha256; protocol="application/pgp-signature"
 
---===============5605369709792056354==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="kxr7txtbzz25ydaa"
-Content-Disposition: inline
+--faeb94c4c6c54e37cbfcce4f20fd5406a08769967964b4ca64d2ba0e7639
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=UTF-8
 
+Hi Heiko,
 
---kxr7txtbzz25ydaa
-Content-Type: text/plain; protected-headers=v1; charset=us-ascii
-Content-Disposition: inline
-Subject: Re: [PATCH v9 3/3] drm/rockchip: Add basic RK3588 HDMI output support
-MIME-Version: 1.0
+On Tue Oct 8, 2024 at 9:28 PM CEST, Heiko Stuebner wrote:
+> On Tue, 8 Oct 2024 13:15:35 +0200, Diederik de Haas wrote:
+> > This is a set of 4 small device-tree validation fixes.
+> >=20
+> > Patch 1 adds the power-domains property to the csi dphy node on rk356x.
+> > Patch 2 removes the 2nd interrupt from the hdmi node on rk3328.
+> > Patch 3 replaces 'wake' with 'wakeup' on PineNote BT node.
+> > Patch 4 replaces 'reset-gpios' with 'shutdown-gpios' on brcm BT nodes.
+>
+> Applied, thanks!
+>
+> [2/4] arm64: dts: rockchip: Remove hdmi's 2nd interrupt on rk3328
+>       commit: de50a7e3681771c6b990238af82bf1dea9b11b21
+> [3/4] arm64: dts: rockchip: Fix wakeup prop names on PineNote BT node
+>       commit: 87299d6ee95a37d2d576dd8077ea6860f77ad8e2
+> [4/4] arm64: dts: rockchip: Fix reset-gpios property on brcm BT nodes
+>       commit: 2b6a3f857550e52b1cd4872ebb13cb3e3cf12f5f
 
-Hello,
+Please revert the 4th patch.
 
-On Thu, Oct 10, 2024 at 01:40:51AM +0300, Cristian Ciocaltea wrote:
-> +struct platform_driver dw_hdmi_qp_rockchip_pltfm_driver = {
-> +	.probe  = dw_hdmi_qp_rockchip_probe,
-> +	.remove_new = dw_hdmi_qp_rockchip_remove,
-> +	.driver = {
-> +		.name = "dwhdmiqp-rockchip",
-> +		.pm = &dw_hdmi_qp_rockchip_pm,
-> +		.of_match_table = dw_hdmi_qp_rockchip_dt_ids,
-> +	},
-> +};
+I must have messed up my testing previously, but BT does not work on the
+PineNote with the 4th patch applied and does work with it reverted.
 
-After commit 0edb555a65d1 ("platform: Make platform_driver::remove()
-return void") .remove() is (again) the right callback to implement for
-platform drivers. Please just drop "_new".
+With the 4th patch applied I get this:
+[   20.298465] Bluetooth: hci0: command 0x0c03 tx timeout
+[   20.299036] Bluetooth: hci0: BCM: Reset failed (-110)
 
-Additionally I suggest to drop one of the white spaces between .probe
-and =.
+And then running the `list` command in `bluetoothctl` returns no
+controllers and `hciconfig -a hci0` reports `DOWN` and when trying to
+reset hci0, I get that timeout error again.
 
-Best regards
-Uwe
+With the 4th patch reverted, the controller does work.
 
---kxr7txtbzz25ydaa
+I also get a HUGE amount of 'spam' when running `bluetoothctl` like:
+
+[bluetooth]# [CHG] Controller 90:E8:68:B9:60:46 UUIDs: 0000110e-0000-1000-8=
+000-00805f9b34fb
+[bluetooth]# [CHG] Controller 90:E8:68:B9:60:46 UUIDs: 0000112d-0000-1000-8=
+000-00805f9b34fb
+[bluetooth]# [CHG] Controller 90:E8:68:B9:60:46 UUIDs: 00001200-0000-1000-8=
+000-00805f9b34fb
+[bluetooth]# [CHG] Controller 90:E8:68:B9:60:46 UUIDs: 0000111f-0000-1000-8=
+000-00805f9b34fb
+[bluetooth]# [CHG] Controller 90:E8:68:B9:60:46 UUIDs: 0000110c-0000-1000-8=
+000-00805f9b34fb
+[bluetooth]# [CHG] Controller 90:E8:68:B9:60:46 UUIDs: 00001800-0000-1000-8=
+000-00805f9b34fb
+[bluetooth]# [CHG] Controller 90:E8:68:B9:60:46 UUIDs: 00001801-0000-1000-8=
+000-00805f9b34fb
+[bluetooth]# [CHG] Controller 90:E8:68:B9:60:46 UUIDs: 0000180a-0000-1000-8=
+000-00805f9b34fb
+[bluetooth]# [CHG] Controller 90:E8:68:B9:60:46 UUIDs: 03b80e5a-ede8-4b33-a=
+751-6ce34ec4c700
+
+and this is only a tiny fraction. So there's definitely room for
+improvement there, but at least it does work.
+
+Dunno yet what to make of it as this will re-introduce the DT validation
+error, but working hardware seems still be preferable to non-working HW.
+
+Sorry about this.
+
+Regards,
+  Diederik
+
+--faeb94c4c6c54e37cbfcce4f20fd5406a08769967964b4ca64d2ba0e7639
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iQEzBAABCgAdFiEEP4GsaTp6HlmJrf7Tj4D7WH0S/k4FAmcPhwUACgkQj4D7WH0S
-/k711wf8DoNI0nAJrwWSlZ6jh7cUNs9hFjDKDxrrmJWOmI/UNFwavdEYgYH50Gwd
-0g2uYmZW7C9N3fJlT4+gYj9ReVz3+SEPGgrgp8NFdoyAvrqx1pbJ9WRX9Oo5X48J
-jEm0/qX2zpy6mUD9EMbU8SbckuNB7WtlsKF/ruOFztTR+ieEe3WEpmRVZfBrWUyH
-OMC2rev1TYtyQT3hN0fG8lbee3IMRjopaFXRNZEq9wHLYgienLj6eheiEm51gb5x
-PeXUp+b+wQnUTWOoX1POE07IjfK0oUDvhOLIP74zGPwXeOCpMidZQeHjTtIq2gYM
-d/mVwN0enReCIbhebaBqmfP4cd3vTQ==
-=REG3
+iHUEABYIAB0WIQT1sUPBYsyGmi4usy/XblvOeH7bbgUCZw+KUQAKCRDXblvOeH7b
+bhnxAP9n+rlPuUutF7F77uY3BcDFisDJkTklvco4RH+AzVaO/QD/foEQc21La4tM
+T9BfqGjcYGN2XKJ9U/7D3koBQyOXCAQ=
+=xqKK
 -----END PGP SIGNATURE-----
 
---kxr7txtbzz25ydaa--
+--faeb94c4c6c54e37cbfcce4f20fd5406a08769967964b4ca64d2ba0e7639--
 
 
---===============5605369709792056354==
+--===============0676462793056889834==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -168,5 +176,5 @@ Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
---===============5605369709792056354==--
+--===============0676462793056889834==--
 
