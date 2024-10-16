@@ -4,81 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CAC93D2F7C2
-	for <linux-rockchip@archiver.kernel.org>; Wed, 16 Oct 2024 21:16:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0828ED2F7CF
+	for <linux-rockchip@archiver.kernel.org>; Wed, 16 Oct 2024 22:06:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
-	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=56msRuDu8Ke9jJ0iuUHLMdUxMjm4+wdx2cIwZ54BBpI=; b=m21ZjS2yQaAms5
-	S7n7ZEZ+aHaG6ELK1ZfBN2vY97isZeHRhRE6lvlTCxxahJkLcU/aOLXVItt7/DjZh05AXimC7lX/s
-	MBMMNHGxzMOIF7h4URhPUDDhfoqzVM930gTYIm6r8IO5xwvzp8syqz75v/MuLrUonqeGM2tpzlz3Q
-	bGVJWC9djYxksg4XHBMJLpxxW20UHPTGH5dqkbBgX12YNrmW5dK4KWS1MBCd5Lfn21fVTN5HQ9wwZ
-	V0P7wqspfgGalSZV9aFDaTmG/5sjTekVNBlRoIbcAFOePO4m6SB8q96Ve/y/G8avY3i93+/phhBs+
-	ziEdqG5ScsjaRYKGhPMg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Subject:Cc:From:To:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=wY2pf8y3ZMZUYsiLsfPYBTl7ePUox+j3/PDZ7LM4Wy8=; b=0M508A5sxKuMGW
+	jdVYm19XZ+Dxis8eLZiBaejw35+VdF/tAfQ0ABB0n909zv6t58Ws9qgxMusKlLLwjoge7cM4OpTzp
+	W7XXoAOjZGnDd+ot9RCdDpAiZxj8dWkRVyh0qCweJSKiq3meoI74pmH4xdymcDSXSh92cav+IO4Zv
+	/UHg7nX4zrDHdDYMK0ZUTyHOgK29IHWdGPROuJW11sRBKxYf4kalbZedl9WT66nAuKBVZosMpNaCr
+	UBawY+D3DVHPH7Mmogvj3/OEcAt3tIJM81Wr5cRYP9SEWO+p5BiQyRKTV1u187gvMI5Vu1gJFFtCx
+	QVjQcr4BMuor4YmNiLaQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t1BN3-0000000D1sB-2dHZ;
-	Wed, 16 Oct 2024 21:15:53 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1t1CAK-0000000D8CA-0Lkl;
+	Wed, 16 Oct 2024 22:06:48 +0000
+Received: from mail-40134.protonmail.ch ([185.70.40.134])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t1AIi-0000000Ctcs-28bn;
-	Wed, 16 Oct 2024 20:07:31 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1729109238;
-	bh=A0Q9tNyQ3iHXXqfLpZjkylS2FY8nuKymUen7oRtOtGo=;
-	h=From:Subject:Date:To:Cc:From;
-	b=lu+s/6fg5EOnqGdZxUW8Y+0bKXROZnIM6tYtYPGQqbxnrr/RfGHC+z4y4MREkxxwS
-	 N6RO+GP2DQLTE3wDBLFygxqVIa7AslKyqPT3T0VZDCVbiVrp11J8BCkl+POMY4Hsxt
-	 qH9oniWjr/32ds9+9KENiAtl9O6ZULnmxCHsOa3zfPxl3tOUKmI88IyhETR94/luBE
-	 HoNRSvwPbmxkdvJLOD2f0R/icIsuX7f7HMWDRcJy8kD9jGz4RUEQ3vEtKVCRsw7yl8
-	 7UxDx9rPHspUrdZWnkNaEz1t0Wy41zLj8tpjlhOeSU/Elvk6zyXwghU0pIqrLRxCXF
-	 SzIoWfz5spCfQ==
-Received: from localhost (unknown [188.24.146.62])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 43C0717E36C7;
-	Wed, 16 Oct 2024 22:07:18 +0200 (CEST)
-From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Subject: [PATCH v10 0/3] Add initial support for the Rockchip RK3588 HDMI
- TX Controller
-Date: Wed, 16 Oct 2024 23:06:50 +0300
-Message-Id: <20241016-b4-rk3588-bridge-upstream-v10-0-87ef92a6d14e@collabora.com>
+	id 1t1C8V-0000000D7ti-1a3K;
+	Wed, 16 Oct 2024 22:04:57 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=proton.me;
+	s=protonmail; t=1729116291; x=1729375491;
+	bh=otJbHyZujNBalaTmidGF7B0oyofrDrA0kk+tMXiuG/s=;
+	h=Date:To:From:Cc:Subject:Message-ID:In-Reply-To:References:
+	 Feedback-ID:From:To:Cc:Date:Subject:Reply-To:Feedback-ID:
+	 Message-ID:BIMI-Selector;
+	b=YZNJi6NI5uCjD1Kuu2PpS3Ieh1Zh06zEO3pEMXQfwiMmQ2rsIZQ6p7qO8nvrmfL89
+	 gu2Wvgmyg34MyeWwuq6CBcJcC08bxC6J7ONvmjPq3LiYmq5M3aqw2IXgB4Sp4XRdqp
+	 Vj6YeH60MTXk4pTyv7SUhxPdoErnwttSJm/FyPSNs4tM94SFKUt9q2ZngbFL8T9gt4
+	 VUTZG8bdKCGY06yI7t2xQhz3I7+S5pkhd617unvm0hZoF6nWGaHpmYgR3HOctqLJLU
+	 rB1eSaSWjLtjojHXuOoRRCcdZIq2oAlfPV0983dje0NqIn+0deFw2Go5wejuADSXsH
+	 UwF0LeKUpu3lg==
+Date: Wed, 16 Oct 2024 22:04:47 +0000
+To: Andy Yan <andyshrk@163.com>
+From: Piotr Zalewski <pZ010001011111@proton.me>
+Cc: hjc@rock-chips.com, heiko@sntech.de, andy.yan@rock-chips.com, maarten.lankhorst@linux.intel.com, mripard@kernel.org, tzimmermann@suse.de, airlied@gmail.com, simona@ffwll.ch, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, skhan@linuxfoundation.org, Daniel Stone <daniel@fooishbar.org>, Dragan Simic <dsimic@manjaro.org>, Diederik de Haas <didi.debian@cknow.org>
+Subject: Re:[PATCH v5] rockchip/drm: vop2: add support for gamma LUT
+Message-ID: <qQ8K1eMN92mXXKiHVEiv4sUKmuXirPwokVQJRMsoMu4SmeW5OksIhhsx7P2MCymkWJeyAqX_YSvg-iUbP3Njt7XHHDXAqIRxtKmwoBkfRYA=@proton.me>
+In-Reply-To: <bDA4Uh6mp04Po1miJIueRsMNZ9W09DHEnRjG4CzWBn243gI_ExYhjwC9j-KMgOvUS5ofKsAa926IGfVGz4fNt9P_kOBpTyIOakgbB9Sqc-4=@proton.me>
+References: <20241014222022.571819-4-pZ010001011111@proton.me> <13fc0084.1321.19292eec34e.Coremail.andyshrk@163.com> <bDA4Uh6mp04Po1miJIueRsMNZ9W09DHEnRjG4CzWBn243gI_ExYhjwC9j-KMgOvUS5ofKsAa926IGfVGz4fNt9P_kOBpTyIOakgbB9Sqc-4=@proton.me>
+Feedback-ID: 53478694:user:proton
+X-Pm-Message-ID: 9bf1c476827f42656380d0b9b801739f99b648d3
 MIME-Version: 1.0
-X-B4-Tracking: v=1; b=H4sIANocEGcC/43RS07DMBAG4KsgrzGah19hxT0QC9uxaUTbVE6JQ
- FXvjtMFjVBksZzx+LPm90VMqQxpEs8PF1HSPEzDeKwFwuODiDt/fE9y6GtDEJACAyiDkuWDtXM
- ylKGv55+n6VySP0hPNvicMbgcRb1/KikPXzf89a3Wu2E6j+X79taMS/c/6owSZDYEbDUTU3iJ4
- 37vw1j8UxwPYpFnumuurVHVuuyNtl4l1JsarzXb0rhqBnoTfIA+2rilqZWGXUtTi6bQRks1S9V
- taXqlcXNTvWyqgUOKCZDNlmbuWgempZmqeUZyOSBw2szNrjRULc1WjQKycsgWibc0t9KomZurm
- mPNLlKMTHpL6341BISW1i2/4KKyfZ+gTv/VrtfrD8sbRsU3AwAA
-X-Change-ID: 20240601-b4-rk3588-bridge-upstream-a27baff1b8fc
-To: Andrzej Hajda <andrzej.hajda@intel.com>, 
- Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
- Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
- David Airlie <airlied@gmail.com>, Sandy Huang <hjc@rock-chips.com>, 
- =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
- Andy Yan <andy.yan@rock-chips.com>, Rob Herring <robh@kernel.org>, 
- Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Mark Yao <markyao0591@gmail.com>, 
- Sascha Hauer <s.hauer@pengutronix.de>, Simona Vetter <simona@ffwll.ch>, 
- Simona Vetter <simona.vetter@ffwll.ch>
-Cc: dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
- devicetree@vger.kernel.org, kernel@collabora.com, 
- Alexandre ARNOUD <aarnoud@me.com>, Luis de Arquer <ldearquer@gmail.com>, 
- Algea Cao <algea.cao@rock-chips.com>, 
- Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241016_130720_771811_37DEAA88 
-X-CRM114-Status: GOOD (  25.53  )
+X-CRM114-CacheID: sfid-20241016_150456_205749_E80B1287 
+X-CRM114-Status: UNSURE (   9.79  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,183 +69,28 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The Rockchip RK3588 SoC family integrates the Synopsys DesignWare HDMI
-2.1 Quad-Pixel (QP) TX controller, which is a new IP block, quite
-different from those used in the previous generations of Rockchip SoCs.
+Hi Andy
 
-The controller supports the following features, among others:
+On Wednesday, October 16th, 2024 at 11:23 AM, Piotr Zalewski <pZ010001011111@proton.me> wrote:
 
-* Fixed Rate Link (FRL)
-* Display Stream Compression (DSC)
-* 4K@120Hz and 8K@60Hz video modes
-* Variable Refresh Rate (VRR) including Quick Media Switching (QMS)
-* Fast Vactive (FVA)
-* SCDC I2C DDC access
-* Multi-stream audio
-* Enhanced Audio Return Channel (EARC)
+> > > static void vop2_crtc_atomic_flush(struct drm_crtc *crtc,
+> > > @@ -2790,7 +2945,13 @@ static int vop2_create_crtcs(struct vop2 *vop2)
+> > > }
+> > > 
+> > > drm_crtc_helper_add(&vp->crtc, &vop2_crtc_helper_funcs);
+> > > + if (vop2->lut_regs && vp->crtc.dev != NULL) {
+> > 
+> > There is no need to check vp->crtc.dev here, set has been set in drm_crtc_init_with_planes .
+> 
+> 
+> I tested it and this check must be here because trying to enable color mgmt
+> on CRTC with no associated device, causes null ptr dereference later on in
+> drm_crtc_enable_color_mgmt (unless something changed in recent kernel
+> versions, last time I tested was 6.10? or even 6.8).
 
-This is the last component that needs to be supported in order to enable
-the HDMI output functionality on the RK3588 based SBCs, such as the
-RADXA Rock 5B.  The other components are the Video Output Processor
-(VOP2) and the Samsung IP based HDMI/eDP TX Combo PHY, for which basic
-support has been already made available via [1] and [2], respectively.
+Just tested it without the null check and it works. Next version will be without it.
 
-Please note this is a reworked version of the original series, which
-relied on a commonized dw-hdmi approach.  Since the general consensus
-was to handle it as an entirely new IP, I dropped all patches related to
-the old dw-hdmi and Rockchip glue code - a few of them might still make
-sense as general improvements and will be submitted separately.
-
-It's worth mentioning the HDMI output support is currently limited to
-RGB output up to 4K@60Hz, without audio, CEC or any of the HDMI 2.1
-specific features.  Moreover, the VOP2 driver is not able to properly
-handle all display modes supported by the connected screens, e.g. it
-doesn't cope with non-integer refresh rates.
-
-A possible workaround consists of enabling the display controller to
-make use of the clock provided by the HDMI PHY PLL.  This is still work
-in progress and will be submitted later, as well as the required DTS
-updates.
-
-To facilitate testing and experimentation, all HDMI output related
-patches, including those part of this series, are available at [3].
-
-So far I could only verify this on the RADXA Rock 5B board.
-
-Thanks,
-Cristian
-
-[1]: 5a028e8f062f ("drm/rockchip: vop2: Add support for rk3588")
-[2]: 553be2830c5f ("phy: rockchip: Add Samsung HDMI/eDP Combo PHY driver")
-[3]: https://gitlab.collabora.com/hardware-enablement/rockchip-3588/linux/-/commits/rk3588-hdmi-bridge-v6.12-rc2
-[4]: https://lore.kernel.org/lkml/20240801-dw-hdmi-qp-tx-v1-0-148f542de5fd@collabora.com/
-
-Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
----
-Changes in v10:
-- Used the .remove() callback instead of .remove_new() and dropped the
-  superfluous white space after .probe assignment (Uwe)
-- Link to v9: https://lore.kernel.org/r/20241010-b4-rk3588-bridge-upstream-v9-0-68c47dde0410@collabora.com
-
-Changes in v9:
-- Introduced HOTPLUG_DEBOUNCE_MS constant and used it for both HPD
-  high/low IRQs handling (Jonas)
-- Made use of drm_hdmi_compute_mode_clock() instead of assuming TMDS
-  character rate does always match pixel clock (Maxime)
-- Collected R-b tags from Maxime
-- Rebased series onto v6.12-rc2
-- Link to v8: https://lore.kernel.org/r/20240929-b4-rk3588-bridge-upstream-v8-0-83538c2cc325@collabora.com
-
-Changes in v8:
-- Added R-b tag from Maxime on the HDMI controller library patch
-- Dropped dw_hdmi_qp_rockchip_encoder_mode_set() from the platform
-  driver according to Maxime's review, the ref_clk rate adjustment is
-  already handled in dw_hdmi_qp_rockchip_encoder_enable()
-- Link to v7: https://lore.kernel.org/r/20240914-b4-rk3588-bridge-upstream-v7-0-2b1348137123@collabora.com
-
-Changes in v7:
-- Added R-b from Krzysztof on DT binding patch (also dropped the
-  superfluous minItems property from resets)
-- Fixed a sparse warning reported by kernel test robot when returning
-  the error pointer from devm_platform_ioremap_resource() (made use of
-  ERR_CAST() helper)
-- Simplified locking in dw_hdmi_qp_i2c_xfer() via guard() (Markus)
-- Dropped high TMDS clock ratio and scrambling support for now (will be
-  submitted separately when ready)
-- Introduced dw_hdmi_qp_bridge_mode_valid() function to filter out
-  unsupported mode clocks
-- Dropped the superfluous 'display' parameter of ->init() in struct
-  dw_hdmi_qp_phy_ops
-- Improved error handling in dw_hdmi_qp_bridge_atomic_enable()
-- Handled dw_hdmi_qp_i2c_adapter() errors as fatal for bridge setup
-- Rebased series onto next-20240913
-- Updated ROCKCHIP_DW_HDMI_QP kconfig to select the recently introduced
-  DRM_BRIDGE_CONNECTOR dependency (Heiko)
-- Link to v6: https://lore.kernel.org/r/20240906-b4-rk3588-bridge-upstream-v6-0-a3128fb103eb@collabora.com
-
-Changes in v6:
-- Improved scrambling setup by using a delayed work queue in conjunction
-  with the bridge ->detect() callback to support use cases like modetest
-  where ->atomic_enable() is not called on reconnection (Maxime)
-- Explicitly include workqueue.h in platform driver
-- Dropped the common binding patch after merging its content into RK
-  specific one; also moved the clocks & irq setup from the bridge
-  library to the platform driver
-- Got rid of the phy-names property and fixed indentation in the binding
-  example (Krzysztof)
-- Link to v5: https://lore.kernel.org/r/20240831-b4-rk3588-bridge-upstream-v5-0-9503bece0136@collabora.com
-
-Changes in v5:
-- Renamed Rockchip binding file to match the SoC compatible (Conor)
-- Made all clocks mandatory (Conor)
-- Renamed rockchip,vo1-grf property to rockchip,vo-grf as future SoCs
-  (e.g. RK3576) may refer to it as vo0 instead of vo1
-- Reworked the setup of high TMDS clock ratio and scrambling
-  * Dropped curr_conn & pix_clock from struct dw_hdmi_qp
-  * Also removed exported function dw_hdmi_qp_set_high_tmds_clock_ratio()
-  * A few additional (mostly cosmetic) changes
-- Link to v4: https://lore.kernel.org/r/20240819-b4-rk3588-bridge-upstream-v4-0-6417c72a2749@collabora.com
-
-Changes in v4:
-- Added Tested-by tag from Heiko
-- Updated "[PATCH v3 3/5] dt-bindings: display: rockchip: Add schema for
-  RK3588 HDMI TX Controller" according to Rob's review
-  * Referenced full path for synopsys,dw-hdmi-qp.yaml
-  * Moved ports to common schema and updated descriptions
-  * Renamed rockchip,vo1_grf to rockchip,vo1-grf and updated "[PATCH v3
-    5/5] drm/rockchip: Add basic RK3588 HDMI output support" accordingly
-- Dropped "[PATCH v3 4/5] drm/rockchip: Explicitly include bits header"
-  already applied by Heiko
-- Link to v3: https://lore.kernel.org/r/20240807-b4-rk3588-bridge-upstream-v3-0-60d6bab0dc7c@collabora.com
-
-Changes in v3:
-- Reintegrated bridge patchset [4] to allow automated testing and
-  simplify reviewing (Krzysztof); the after-split changes were:
-  * Made use of the new bridge HDMI helpers indicated by Dmitry
-  * Dropped connector creation to ensure driver does only support
-    DRM_BRIDGE_ATTACH_NO_CONNECTOR
-  * Updated I2C segment handling to properly handle connected DVI
-    displays (reported and fixed by Heiko)
-- Updated schema for DW HDMI QP TX IP providing some hardware details
-- Updated patch for DW HDMI QP TX Controller module referring to a
-  support library instead of a platform driver (Krzysztof)
-- Drop empty dw_hdmi_qp_unbind() export from the library and related
-  usage from RK platform driver
-- Drop Fixes tag from "drm/rockchip: Explicitly include bits header"
-  patch (Krzysztof)
-- Link to v2: https://lore.kernel.org/r/20240801-b4-rk3588-bridge-upstream-v2-0-9fa657a4e15b@collabora.com
-
-Changes in v2:
-- Reworked the glue code for RK3588 into a new Rockchip platform driver
-- Moved bridge driver patches to a separate series [4]
-- Dropped all the patches touching to the old dw-hdmi and RK platform
-  drivers
-- Added connector creation to ensure the HDMI QP bridge driver does only
-  support DRM_BRIDGE_ATTACH_NO_CONNECTOR
-- Link to v1: https://lore.kernel.org/r/20240601-b4-rk3588-bridge-upstream-v1-0-f6203753232b@collabora.com
-
----
-Cristian Ciocaltea (3):
-      drm/bridge: synopsys: Add DW HDMI QP TX Controller support library
-      dt-bindings: display: rockchip: Add schema for RK3588 HDMI TX Controller
-      drm/rockchip: Add basic RK3588 HDMI output support
-
- .../rockchip/rockchip,rk3588-dw-hdmi-qp.yaml       | 188 +++++
- drivers/gpu/drm/bridge/synopsys/Kconfig            |   8 +
- drivers/gpu/drm/bridge/synopsys/Makefile           |   2 +
- drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c       | 647 ++++++++++++++++
- drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.h       | 834 +++++++++++++++++++++
- drivers/gpu/drm/rockchip/Kconfig                   |   9 +
- drivers/gpu/drm/rockchip/Makefile                  |   1 +
- drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c     | 424 +++++++++++
- drivers/gpu/drm/rockchip/rockchip_drm_drv.c        |   2 +
- drivers/gpu/drm/rockchip/rockchip_drm_drv.h        |   1 +
- include/drm/bridge/dw_hdmi_qp.h                    |  32 +
- 11 files changed, 2148 insertions(+)
----
-base-commit: 8cf0b93919e13d1e8d4466eb4080a4c4d9d66d7b
-change-id: 20240601-b4-rk3588-bridge-upstream-a27baff1b8fc
-
+Best regards, Piotr Zalewski
 
 _______________________________________________
 Linux-rockchip mailing list
