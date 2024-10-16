@@ -4,70 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DED6DD1AD2C
-	for <linux-rockchip@archiver.kernel.org>; Wed, 16 Oct 2024 08:36:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4B047D1AD2D
+	for <linux-rockchip@archiver.kernel.org>; Wed, 16 Oct 2024 08:42:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=RngXk6Q/tyuCQTlTfKd9ZXLW9ebdmGr4YS+O/YmV7pE=; b=CHBI8kt31RUE1/
-	4OcDG90O0maiPgXgqkQZmULmyNiu8thVTyleoRdtgbwvImONYL0dXlzcXprCQab8rZFMk4MAQXyq0
-	TwmAgXGWagEUm5JVe+ypdVHGRUIcYzPZ7q1xtUNAt8qUa5CcrnY15hTZPNcnuw1TnvgU+H04I6Kcy
-	sUKCkMGK3bx8DpCMxp/7U/IJXnnr+3elM03SsK4SXvLEiVMYn6E3YMKjGx3pilqbDQdHd2quNk+LU
-	RAYDALJqgTiMZ7E7dx1hd6m/fRbmKPlyrToOKUi6Hkpn9ydP3Fx1t16aWT6P4aiPzRkEbBJy8ecMo
-	suE/fEFXQpKYfwixZUwQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=xUPddJqv/x+QQ2gDO0grqJjHxCHYrIf/l4nEhyaAthc=; b=IUbY8WXAsk02en
+	CXt8pblg9VFwX6p0NzeEDkfj+88gK1xb3HI7Aq+k5PHXR6dt278SztQzEHNPuIss7xJ0zu6BvxeO1
+	Bt6/Jwn69zH9Yj9N/aPqZUDhbxNfJUMrjzyJpqtSenGYRY7XcVE9pH6xxR8CPHCfcig2eLP8VFdTk
+	OE+R89KkmnYRn2kQ4WZf2u8A2bKl4K63anVGDg+bhCC2jdeiJqbJ5M63e7WkMKg18U1cJOAzarV5n
+	a1py+cRkO2pqkvplioHhabvaNiqtCSnc8NWl4Bf2JoimfA8mLXOnrH5eY+zkGcAOi1GMzZlUpy6WV
+	rjaUiQ8F7FV6FdX9ztsw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t0zWS-0000000B3Yk-21ew;
-	Wed, 16 Oct 2024 08:36:48 +0000
-Received: from smtpbg150.qq.com ([18.132.163.193])
+	id 1t0zc6-0000000B4gn-3pTl;
+	Wed, 16 Oct 2024 08:42:38 +0000
+Received: from mail-pg1-x52f.google.com ([2607:f8b0:4864:20::52f])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t0zEz-0000000AzlF-3P6J
-	for linux-rockchip@lists.infradead.org;
-	Wed, 16 Oct 2024 08:18:48 +0000
-X-QQ-mid: bizesmtpip3t1729066706tkxe5xk
-X-QQ-Originating-IP: cTZ+f0wIPRrDaLomOb2z9gaidsaRWiSeJPZrSHIV2i0=
-Received: from [IPV6:240f:10b:7440:1:e88d:8fa3 ( [localhost])
-	by bizesmtp.qq.com (ESMTP) with 
-	id ; Wed, 16 Oct 2024 16:18:23 +0800 (CST)
-X-QQ-SSF: 0000000000000000000000000000000
-X-QQ-GoodBg: 0
-X-BIZMAIL-ID: 17745560261723660001
-Message-ID: <DEE06BE58D53101E+59027b3d-9db9-4005-9659-041b08176944@radxa.com>
-Date: Wed, 16 Oct 2024 17:18:23 +0900
+	id 1t0zSL-0000000B2Yf-1b8u;
+	Wed, 16 Oct 2024 08:32:34 +0000
+Received: by mail-pg1-x52f.google.com with SMTP id 41be03b00d2f7-7ea64af4bbbso404626a12.1;
+        Wed, 16 Oct 2024 01:32:32 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1729067552; x=1729672352; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=AkvqRkXMu0WbwdlNBbyi9/KgHkkN3Ncs5otSFtEzCg0=;
+        b=l5IsBodp0XvyskXVuKa7JhNsodgDOcW+8qwMYwG5uV+TQw7uFmsK1JrcOkTAf7YzSK
+         +1k2ukwi5c7FEbWiCGD1vegsk1jX8j01LorxIwIHzEfx2da9BMS+XFwCGsbCKd9MUo+O
+         xUlLDKZzX47gArAWlRdY8bCwGBcNTdxQ9L4WgUrQGkywUtmyCbTVKk/PqLOdM4ZYcTkA
+         OwezWCR0esYiTcZrDIxSPeDiQ/d9id8p3NHiXBNd3yk8mbKw043ITeSVlCo7w+k1d0Bk
+         VPtcBkAzva8p+iLBqvDlCGL5Xwidp4dGMnXXcJALmrqC4YNkVhAEWOSvtIkpUfG5ZTpz
+         CCYg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1729067552; x=1729672352;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=AkvqRkXMu0WbwdlNBbyi9/KgHkkN3Ncs5otSFtEzCg0=;
+        b=jg0EDT9gqt/k30eqHCraSxa7xTxKTKpCk9GG1gcJQwQK6SgQfGXpcHc62P7+O4wIhw
+         /in2wXRxn0vXmwxErRT/kKtkpQaItw7PiKbNuhDnLKnM/PVqL6SnAamNvVJSFKRKO6pL
+         dhZJFdgb+rqwQv1Db1x3q0JzSPKWlofMBFDqC19fgqAADrBT16JU3LLgdbHrF44XaEQw
+         T7WftyE1wqe3GVVbJ0qMYxKp/RLoqxsSveeHmx/3H81dOwwyAFIvRGlb7a9F8+KQKEPn
+         DzSFZG/xPMHueutAPFYUrqWW79VMabViJvJLrDtJI7QJkjvXBoZeTNekgSCDB4eJo30k
+         ZddQ==
+X-Forwarded-Encrypted: i=1; AJvYcCV1VwyTSWfo8lLpU3o6MMVe3l0fafWZbT+OOPtCBks2HBS4tEG3OV9ORqO3CO2bYb55xY1eU6oO+0VX0Co0OUY=@lists.infradead.org, AJvYcCVT1+DBMOL28Y/NKhP8lr2DaGb2+04OY3y+huNIj3COm3Kr0qm47WctfKUmIektl4Ia0L3XQYABXZHQ+HPa4CVr@lists.infradead.org
+X-Gm-Message-State: AOJu0Yz7TG8X2YQy6HYUed2PX8BV/k9YHggN3OaRWoFrl+m6CXxUPMc9
+	vA4rYPoOssZJEYc5GnPTXo9JLuGJ7O0/0yA7fsb39cnxFshikj4d
+X-Google-Smtp-Source: AGHT+IFMDyRo+nhzjKM0ITHKuIUCT/fwiSYJItDfy7iC/4cEBwIZYTdSwUQo1SZUUDlkKEHKATkTMg==
+X-Received: by 2002:a17:903:191:b0:20b:80e6:bce6 with SMTP id d9443c01a7336-20d2fd34a58mr10929065ad.4.1729067551670;
+        Wed, 16 Oct 2024 01:32:31 -0700 (PDT)
+Received: from localhost.localdomain ([103.29.142.67])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-20d1804eccdsm24067755ad.223.2024.10.16.01.32.27
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 16 Oct 2024 01:32:31 -0700 (PDT)
+From: Frank Wang <frawang.cn@gmail.com>
+To: gregkh@linuxfoundation.org,
+	robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
+	heiko@sntech.de
+Cc: linux-usb@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	william.wu@rock-chips.com,
+	tim.chen@rock-chips.com,
+	Frank Wang <frank.wang@rock-chips.com>
+Subject: [PATCH] dt-bindings: usb: add rk3576 compatible to rockchip,dwc3
+Date: Wed, 16 Oct 2024 16:32:24 +0800
+Message-Id: <20241016083224.14839-1-frawang.cn@gmail.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 1/2] arm64: dts: rockchip: change pinctrl-0 name in
- pcie3x1 for Radxa E25
-To: heiko@sntech.de
-Cc: amadeus@jmu.edu.cn, linux-rockchip@lists.infradead.org
-References: <20240918073236.648-1-naoki@radxa.com>
-Content-Language: en-US
-From: FUKAUMI Naoki <naoki@radxa.com>
-In-Reply-To: <20240918073236.648-1-naoki@radxa.com>
-X-QQ-SENDSIZE: 520
-Feedback-ID: bizesmtpip:radxa.com:qybglogicsvrgz:qybglogicsvrgz8a-1
-X-QQ-XMAILINFO: NqVPOlD8LFce7NO7T59kygGmMgd8dKIRDZESUbcMKdRH6cGbakeMW4Zp
-	w0DRCcgukdEaXk9rGOMnMwFPyYNi+vr8EdsevLbf0VXykeOldSeK+RirUlUFW2zJE2O3LyA
-	QeXRC1ZexC63h7+6v2I0DmGUYwVz7lDKWX1dPW/LQEyJoxzRaTxWI2Muu8Mxop2L0q+ZHD4
-	YjnBV5vM4rQR53Iv7CXFaRKoo2FyVa6cIU2gqVrzbV/XxxgOIxB2d9e9jz6oIyin6S/6lMQ
-	WE4pluPQNKdHaZtAJTdjNBvxLRq+2tt/HOGhx5pcuIA2tQ+LrAE0OIvGnym8AwjHShxV9c4
-	xcg4JGCeenVigVN4Uzw53EacxhcIyt2lrAgLo+xBna120ZdU+uMu9x+6NG02al3KKMmoeDJ
-	RlPcStUPgFcxGnYXlJjdgPiGC5LB6hyJhX/TaOwuEcMeggYED48evms570leJ4gdD2yTQCH
-	3ACI9p2uqBKiz9poDUJ3OcmMkpxaQ5Vvsh/p5hQ28oxuR4ZgqGLMnFlLj2OEt3vAGqSIgm/
-	zzezNe1gCeRrZw7i7OZU5j1shGxZRAaPKE4S40MNAPYty8cQWTqlWEWeYo/Bc09aR9v00A7
-	1nVcMa2DENXDAaKJbXn2mR6zJiu3zXEE9ZEQy6/YeQJbGZB1oYRg7c6J0w979ol2D5e+hB1
-	r9Y84+lyn97DHQZelyG2zjpwzjtqRU3aDiNZZCfc/jJ4ABIroAiNMNg0Ae9NhTQd8cRod6q
-	4DxaqjdGzcMxMd1WTK0A1JQvTofQiET2lJ74ynbmykXnPlaTC5jDpZ36fmMFEhFmSZbF3fi
-	pPObH9fJuj+1C9z5MB9dEA9zu3J4rq9DsnPZqrY43H0G94M6Rm0PvGALdzK10cAOhDlqG/y
-	/DF/PthUzV4DVBRcwzH9lhk92wkOs168
-X-QQ-XMRINFO: Mp0Kj//9VHAxr69bL5MkOOs=
-X-QQ-RECHKSPAM: 0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241016_011846_356883_1CCD9855 
-X-CRM114-Status: GOOD (  11.58  )
+X-CRM114-CacheID: sfid-20241016_013233_447169_97073470 
+X-CRM114-Status: UNSURE (   9.64  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,56 +95,53 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi,
+From: Frank Wang <frank.wang@rock-chips.com>
 
-can anyone review this series?
+Add the compatible for the Rockchip RK3576 variant.
 
-Best regards,
+Signed-off-by: Frank Wang <frank.wang@rock-chips.com>
+---
+ Documentation/devicetree/bindings/usb/rockchip,dwc3.yaml | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
 
---
-FUKAUMI Naoki
-Radxa Computer (Shenzhen) Co., Ltd.
-
-On 9/18/24 16:32, FUKAUMI Naoki wrote:
-> to avoid conflict with sdmmc_det, change pci3x1 pinctrl-0 name.
-> 
-> Signed-off-by: FUKAUMI Naoki <naoki@radxa.com>
-> ---
-> Changes in v2:
-> - new
-> ---
->   arch/arm64/boot/dts/rockchip/rk3568-radxa-e25.dts | 6 +++++-
->   1 file changed, 5 insertions(+), 1 deletion(-)
-> 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3568-radxa-e25.dts b/arch/arm64/boot/dts/rockchip/rk3568-radxa-e25.dts
-> index 84a0789fad96a..bf8f2d8e9e2a1 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3568-radxa-e25.dts
-> +++ b/arch/arm64/boot/dts/rockchip/rk3568-radxa-e25.dts
-> @@ -123,7 +123,7 @@ &pcie30phy {
->   &pcie3x1 {
->   	num-lanes = <1>;
->   	pinctrl-names = "default";
-> -	pinctrl-0 = <&pcie30x1m0_pins>;
-> +	pinctrl-0 = <&pcie30x1_reset_h>;
->   	reset-gpios = <&gpio0 RK_PC3 GPIO_ACTIVE_HIGH>;
->   	vpcie3v3-supply = <&vcc3v3_minipcie>;
->   	status = "okay";
-> @@ -148,6 +148,10 @@ pcie30x1_enable_h: pcie30x1-enable-h {
->   			rockchip,pins = <0 RK_PC5 RK_FUNC_GPIO &pcfg_pull_none>;
->   		};
->   
-> +		pcie30x1_reset_h: pcie30x1-reset-h {
-> +			rockchip,pins = <0 RK_PC3 RK_FUNC_GPIO &pcfg_pull_none>;
-> +		};
-> +
->   		pcie30x2_reset_h: pcie30x2-reset-h {
->   			rockchip,pins = <2 RK_PD6 RK_FUNC_GPIO &pcfg_pull_none>;
->   		};
+diff --git a/Documentation/devicetree/bindings/usb/rockchip,dwc3.yaml b/Documentation/devicetree/bindings/usb/rockchip,dwc3.yaml
+index c4924113f9bde..a21cc098542d7 100644
+--- a/Documentation/devicetree/bindings/usb/rockchip,dwc3.yaml
++++ b/Documentation/devicetree/bindings/usb/rockchip,dwc3.yaml
+@@ -27,6 +27,7 @@ select:
+         enum:
+           - rockchip,rk3328-dwc3
+           - rockchip,rk3568-dwc3
++          - rockchip,rk3576-dwc3
+           - rockchip,rk3588-dwc3
+   required:
+     - compatible
+@@ -37,6 +38,7 @@ properties:
+       - enum:
+           - rockchip,rk3328-dwc3
+           - rockchip,rk3568-dwc3
++          - rockchip,rk3576-dwc3
+           - rockchip,rk3588-dwc3
+       - const: snps,dwc3
+ 
+@@ -113,7 +115,9 @@ allOf:
+       properties:
+         compatible:
+           contains:
+-            const: rockchip,rk3568-dwc3
++            enum:
++              - rockchip,rk3568-dwc3
++              - rockchip,rk3576-dwc3
+     then:
+       properties:
+         clocks:
+-- 
+2.25.1
 
 
 _______________________________________________
