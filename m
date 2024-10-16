@@ -4,67 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 97449D1F9CB
-	for <linux-rockchip@archiver.kernel.org>; Tue, 15 Oct 2024 20:39:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BEDB4D2068A
+	for <linux-rockchip@archiver.kernel.org>; Wed, 16 Oct 2024 00:43:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=0y8Oi5wvIuSSVu6kLbc4BsbQRnlvec65sOl0KZMxFlw=; b=MwjY27/9YiLUNe
-	hbCfVUYI4ZrqhP9CssdaLCaARBspZBz+N5rgpUVIogKk7oVOEmb/8d3Mfuj3j9Qj4sN3WlpelGl0L
-	qaY5Q1fg2MMqJyeLaxXZrOJuHFWnKdUnmcb8h97XFxW4MuVgwSjRuZaVo//0dxwlsEP4Aif5dk99R
-	TnJ+Ox4rjcdhxCCU+62GNGvWovPL0huqVcW0CW/RT2YQUUKEIM92kwvTefdVfNKLLTZ1K21GNnROY
-	IaI8xdbVOoUwhb/C+B3wvrcDJKtj4hxxi2Y44ZoDLD2NvcEVA56CzyJXy1VZ735KzkaIgS/p3suII
-	YZ8ntEWhNgJNjwkkrvsA==;
+	List-Owner; bh=VHmbJX5VA/2tBXLr9yUmeFSIFbC/XUxfVGI2nDnwtKk=; b=iXLWjN3d25KUfM
+	wv2k6n8oRjNTGuu9pyvSfWThNtiyaWQFOZ+sXlVIBhERFbXWYf3f+CqNz/DdMjFDVtPt6zbZNQCFg
+	X09m6YpdHONqsDGjJcWXi6Luqb1yl5Ht9W4VBLe7XwEnuFRiu2wKvGGHAYMjCOzaKKxLfMF/BJUDr
+	jzQkofJPm2DUYq+lbx8R1XnK6SESUdTTx3TDT7kk1iT64o73CeFiSNhF6EUbURXO4mrMuDqUUezSG
+	38SQhcrCXtpvVBds+jnFIoPe/frmqiwqOrSG6wtNQ6dcKb2nmLl4ehh4TFNk5Mt5xx7QNhYXg/5yA
+	SxSvksoLDob4u3Suq4Wg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t0oJo-00000009X0B-16Sa;
-	Tue, 15 Oct 2024 20:39:00 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1t0s8S-0000000A1wQ-0z1i;
+	Wed, 16 Oct 2024 00:43:32 +0000
+Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t0oIN-00000009Wmw-2SBR;
-	Tue, 15 Oct 2024 20:37:32 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 4E1345C5AAF;
-	Tue, 15 Oct 2024 20:37:26 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id DE1C6C4CEC6;
-	Tue, 15 Oct 2024 20:37:29 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1729024650;
-	bh=wEllmQzVhgF4GVOEm1VErXB6Nk08jOpeFQrbb38vU6w=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=AIdXaRjtRU52RixQ78a0qnfo5er9t1kQMM6/HBYQRQ+WSdI4fqrBoN8e/Q6Pqqqo2
-	 3YQfF9R4ARVIG2TKqAqi/nwZsnqXg9RDWa5AXJkGXZ+Mp6bsw1tS3v+cim4TfxAlVt
-	 2XhZRYUAvsgZsmDuGoyzYTMuq7KQKY0KRsI9gChZ4DZVzDzaxFkLN78/FOTcuDBiEb
-	 zvgqPikaEeEaHEbbe9aZX+EURghDT+tr8usAZMM2vfp0HMCucCKE5p4/tDI4kOKqE4
-	 G8mohUPqezznGm4E7+AbrPz2BQujfH7D8TTKJ7XrYqzexc2zRI6njmae4p5CjaabyH
-	 gSEFMnBvLw4GQ==
-Date: Tue, 15 Oct 2024 15:37:28 -0500
-From: Rob Herring <robh@kernel.org>
-To: Cenk Uluisik <cenk.uluisik@googlemail.com>
-Cc: Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Chris Morgan <macromorgan@hotmail.com>,
-	Dragan Simic <dsimic@manjaro.org>, Jonas Karlman <jonas@kwiboo.se>,
-	Andy Yan <andyshrk@163.com>, Tim Lunn <tim@feathertop.org>,
-	Jagan Teki <jagan@edgeble.ai>,
-	Michael Riesch <michael.riesch@wolfvision.net>,
-	Jimmy Hon <honyuenkwun@gmail.com>, Jing Luo <jing@jing.rocks>,
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v6 1/2] dt-bindings: arm: rockchip: Add Orange Pi 5b enum
- to Orange Pi 5 entry
-Message-ID: <20241015203728.GA1914063-robh@kernel.org>
-References: <20241015192905.28969-1-cenk.uluisik@googlemail.com>
+	id 1t0s71-0000000A1nQ-3jRR;
+	Wed, 16 Oct 2024 00:42:05 +0000
+Received: by mail-wm1-x32c.google.com with SMTP id 5b1f17b1804b1-4314b316495so6199965e9.2;
+        Tue, 15 Oct 2024 17:42:02 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1729039321; x=1729644121; darn=lists.infradead.org;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=GvcX0gGeep0GUuFVn3JiQ4Xt9Q6qGunv1EzUF9AFO/8=;
+        b=LqGmBFFdO4m367UthlU6wZGmveiSuV0/P92BlSsGmf8VuyQNPE8Cvultx2T607vT/N
+         X2hsuTao+G1lQ8omy1tBXgW8xpAhAq0+Wwe2vMOgFVJ88Kj4ftFOR4UnrlfSTVIcJD6g
+         T3aS/4a3RSQlxdseTspCK2KeTc1EmzsfPYRWpWlizCaINFDpU8V0fr5XZ2aFffBkHHWe
+         Ja/KqebCH5qGqzkhbqOhs77Mk3OYP+SqYga/uIrSbq6tTM9oZTDCg/5Z5i+Zfv7hDHzE
+         Kr7W6BjYlgDQpuvnr051XgYYDTiK1sEyabtvOR3Ut7PmWoYO5oVtogG7Fgpkk0ZcEnpU
+         2G4w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1729039321; x=1729644121;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=GvcX0gGeep0GUuFVn3JiQ4Xt9Q6qGunv1EzUF9AFO/8=;
+        b=LvWxRelkSamGqrafUI6fKH12aLL/WCiDQ0wSTgRrqLjpFuf0KYLG/2YCxkBKh4KS5W
+         E+T1jM311Blb+IhGJuVGXETtujY+GXRyo8CnbQAhoBj2KaIP1i6JNzgDBWqLQ8fgq35K
+         KEpWg//3xFjANhDCA3dDu0wh/YZgLtAI9chE5AEI0xqJqyjPCuNeKNt/yg5ENY2jZOZf
+         0Q41vkpr+Ya3oUiCAPSBcwQC1zuN1WjRvHQBU74EQhGd7QdY2IAD41ScNtNDYD0T6ct0
+         1OHp5jtbbipZUIqH+7Ymu4ML7z+RZytxevQebOkKsK2k+thi1vx1wBeNT/jPEYt+gaF9
+         kKew==
+X-Forwarded-Encrypted: i=1; AJvYcCU6/lh/6DJPT4uBE+pMdvCK/FyNMj4BzMrfqeVVF/t7rA9tbQXWCvNLYCLoghv4GRQEwiSoAybOlqj/tMg75II=@lists.infradead.org, AJvYcCXgv+EYa+a1OXcggsl4H1PHVfUJzzwH6WjTEDdrHYmwZX5LloyzcVhl5s8/2A9fDG7cRko98zpDrahAodrpJ5mi@lists.infradead.org
+X-Gm-Message-State: AOJu0YyQ9+u07MYXnXnFSy6wEZbGsTBt9+TURXIl3ZjgWDyBcYg2eS3y
+	78ZsfLYmWmzp70byzuFy2aIWSApuRhDKRAyfMB3jt7iM5c86Le9NMzCOakmgFfrubjLSDH3Q8TB
+	OuILm0Fjgs/gDXKMcN+cfKFNYO6U=
+X-Google-Smtp-Source: AGHT+IErA0JGeWcAknCGVEPwXfu/nx8v5bP7gX5Pgx/kAAKv1urxza1nggwKBv/4ZtWjALceGSIICkf/jqP9FPFZMvo=
+X-Received: by 2002:a05:600c:1c9e:b0:430:57f2:bae5 with SMTP id
+ 5b1f17b1804b1-4311df42aa5mr122976905e9.27.1729039321310; Tue, 15 Oct 2024
+ 17:42:01 -0700 (PDT)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20241015192905.28969-1-cenk.uluisik@googlemail.com>
+References: <20241015192905.28969-1-cenk.uluisik@googlemail.com> <20241015192905.28969-2-cenk.uluisik@googlemail.com>
+In-Reply-To: <20241015192905.28969-2-cenk.uluisik@googlemail.com>
+From: Jimmy Hon <honyuenkwun@gmail.com>
+Date: Tue, 15 Oct 2024 19:41:49 -0500
+Message-ID: <CALWfF7K5vGL6GPMWdi0_kwXPabKv70LSoGwK-QxL+Br+PDowqw@mail.gmail.com>
+Subject: Re: [PATCH v6 2/2] arm64: dts: rockchip: Add rk3588-orangepi-5b
+ device tree and refactor
+To: Cenk Uluisik <cenk.uluisik@googlemail.com>
+Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+	Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+	Chris Morgan <macromorgan@hotmail.com>, Jonas Karlman <jonas@kwiboo.se>, Andy Yan <andyshrk@163.com>, 
+	Tim Lunn <tim@feathertop.org>, Jagan Teki <jagan@edgeble.ai>, Dragan Simic <dsimic@manjaro.org>, 
+	Michael Riesch <michael.riesch@wolfvision.net>, Jing Luo <jing@jing.rocks>, 
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241015_133731_690624_8E81A83C 
-X-CRM114-Status: GOOD (  20.82  )
+X-CRM114-CacheID: sfid-20241015_174203_948845_638C051C 
+X-CRM114-Status: UNSURE (   8.73  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,53 +95,46 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, Oct 15, 2024 at 09:28:35PM +0200, Cenk Uluisik wrote:
-> This extends the Xunlong Orange Pi 5 device tree binding with an enum for
-> the Orange Pi 5b, which is implemented before the device tree.
-> 
-> How does this board differ from the original Orange Pi 5?
->   - the Orange Pi 5 has a M.2 NVMe M-key PCI 2.0x1
->     slot (hooked to combphy0_ps) whereas the Orange Pi 5b uses combphy0_ps
->     for the WiFi.
->   - The Orange Pi 5 with the M.2 socket has a regulator defined hooked to
->     "GPIO0_C5" (i.e. PCIE_PWREN_H) whereas the Orange Pi 5B has GPIO0_C5
->     hooked to BT_WAKE_HOST.
->   - builtin eMMC storage
->   - no SPI NOR flash (u-boot, preboot etc. initiates
->       from within the eMMC
->       storage)
->   - ap6275p Wifi module (like the Orange Pi 5 Plus)
->   - builtin BlueTooth module
-> 
-> Signed-off-by: Cenk Uluisik <cenk.uluisik@googlemail.com>
-> ---
->  Documentation/devicetree/bindings/arm/rockchip.yaml | 4 +++-
->  1 file changed, 3 insertions(+), 1 deletion(-)
+> +// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
+> +
+> +/dts-v1/;
+> +
+> +#include "rk3588s-orangepi-5.dtsi"
+> +
+> +/ {
+> +       model = "Xunlong Orange Pi 5";
+> +       compatible = "xunlong,orangepi-5", "rockchip,rk3588s";
+> +
+> +       vcc3v3_pcie20: vcc3v3-pcie20-regulator {
+> +               compatible = "regulator-fixed";
+> +               enable-active-high;
+> +               gpios = <&gpio0 RK_PC5 GPIO_ACTIVE_HIGH>;
+> +               regulator-name = "vcc3v3_pcie20";
+> +               regulator-boot-on;
+> +               regulator-min-microvolt = <1800000>;
+> +               regulator-max-microvolt = <1800000>;
+> +               startup-delay-us = <50000>;
+> +               vin-supply = <&vcc5v0_sys>;
+> +       };
+> +};
+> +
+> +&pcie2x1l2 {
+> +       reset-gpios = <&gpio3 RK_PD1 GPIO_ACTIVE_HIGH>;
+> +       vpcie3v3-supply = <&vcc3v3_pcie20>;
+> +       status = "okay";
+> +};
+> +
+> +&sfc {
+> +       status = "okay";
+> +};
 
-Well, still kind of too fast because I just acked v5. Before you send 
-v7, read the process for adding tags.
+Regression tested on the original Orange Pi 5. Still works after the refactor.
+The microsd card is accessible from /dev/mmcblk1 just like the
+vendor's 6.1 kernel.
+NVMe works
+SFC works
 
-You should also read the part on adding change log to your patches.
-
-> 
-> diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
-> index 687823e58c22..62bb6587da8f 100644
-> --- a/Documentation/devicetree/bindings/arm/rockchip.yaml
-> +++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
-> @@ -1051,7 +1051,9 @@ properties:
->  
->        - description: Xunlong Orange Pi 5
->          items:
-> -          - const: xunlong,orangepi-5
-> +          - enum:
-> +              - xunlong,orangepi-5
-> +              - xunlong,orangepi-5b
->            - const: rockchip,rk3588s
->  
->        - description: Zkmagic A95X Z2
-> -- 
-> 2.46.1
-> 
+Tested-by: Jimmy Hon <honyuenkwun@gmail.com>
 
 _______________________________________________
 Linux-rockchip mailing list
