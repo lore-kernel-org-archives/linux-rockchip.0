@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 42A01D2F7DA
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 93B25D2F7DD
 	for <linux-rockchip@archiver.kernel.org>; Thu, 17 Oct 2024 01:59:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=yZgHvfXiYDmUK9fECWdzBxgXEJvrvzT/EiRFUDO2ZCQ=; b=UB9hhI6bLRniA1
-	mMyjs6R2BeDsdG5fDoU8vaxmS3QL4xzbulx1zXcLgxch5PCNp4WB214mMChySJ3pbHigSCabR4G7P
-	k+W/4saS0L+OBTK/VIdLoHrdfn1EfyJaXbpuUxzzWTQ8QshBwUgaNxKzqGWhJ9mnrPbsqdOGEOtDP
-	Evt7Lqpass40qSNe/J03kDO3pmOJLLWNBqhs8BnTGIfWjfyiQoSYNelh1MwwuM2TVa/BklhBeuhpQ
-	l4mivoxUB3pIT6ZT7+8BMz86CojegVwgbuQ0aPzHlFA2sgh5wV1GoZyD6VPs9DSgVuxKEU1hxfyRY
-	RRRpU2M/5islzTi2MkIA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=sbg2MTx6P9EPOBV/dKLRFGui1sLL6MR58pSxezITXro=; b=Plbf1n5RRqWnfR
+	IDOa2O8HwbOJwbVX9rXBmMRsGY14IhWv+QxlfUK7ag/csKNug0qvhNRAUfyXcKOIQk+t0QUI1a+vI
+	z+ADW+9QmAZip5HRMoT5c0bphvZAxedRG3WBt+2VFBpvquhgsT0RkrFNmDv0dmIr+DqReQGmZxquV
+	7jzHDdJOdlT7P34wowFnYutWj2nFBrXCdRKG2B+1iLCHzqExKvItu4qgJ1JMGsA4A+e3H+ylEpRg7
+	r4PfiDar7pd5cAIkvGLyCXPF7QggiBEaGmXE0foxUwWL+tJWwo3+oPlemowN6UiNRri5Pj7BwmXJ1
+	NqGQSHbfgwMIbmenh1jA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t1Fmx-0000000DUfz-2sEY;
-	Thu, 17 Oct 2024 01:58:55 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1t1Fn0-0000000DUgW-0aww;
+	Thu, 17 Oct 2024 01:58:58 +0000
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t1Fmv-0000000DUfM-0u3A
+	id 1t1Fmx-0000000DUfk-1R14
 	for linux-rockchip@lists.infradead.org;
-	Thu, 17 Oct 2024 01:58:54 +0000
+	Thu, 17 Oct 2024 01:58:56 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 0B91E5C1D94;
-	Thu, 17 Oct 2024 01:58:48 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6C879C4CEC5;
-	Thu, 17 Oct 2024 01:58:50 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id 59745A43324;
+	Thu, 17 Oct 2024 01:58:45 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 77CB6C4CED3;
+	Thu, 17 Oct 2024 01:58:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1729130332;
-	bh=lARG9evqlHd4IXGRQKdVmMfZMk2GD5Jo3kWsnqF+zLg=;
-	h=From:To:Cc:Subject:Date:From;
-	b=GfQeCbbxHixLrE/Vrv0Y8wpe8YmEf+CByNAuWQKPpLHKBpjBMbtHUi0XuTHYVXX6b
-	 6GLBtLBZnzD7KAIBnywUvSg0GYQc9no1BKVX1xZ/SRNJ84OmXRpXhTvXGRHpJDsejF
-	 PU4Rv5/ep3mvq/kif8YzbnPz0wdv80slFUs85BTxoe8tyhVixazH/dSMtXgnKsOTfD
-	 RBWAtachfLbh467OUQNsr03JPFdG03uDhDmTRRYEqV9NvgEET7cjwr7cqTVhvnFMe0
-	 dT/h6sD3FarCsL/VosNuhPLYC/crcSsqKwqlf1WSIL9HdCwABmxX5O1vGFTFbxi4So
-	 zqCkMqloJgzqA==
+	s=k20201202; t=1729130334;
+	bh=5hrJOQYC2viBOT0J3u4iqIZmFH2YCX8M3aVKEAlS5sk=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=u3MeY6MAPQKnkOMylFwbPYZiO+919Y7109levfIEGVoKeYdGO1ACtyz3cqstduu4m
+	 OzMb1jwoBZvU9gwVTbvIxx7TxFew8Us6OucO1K0wOBTgnGxI3w+SQHqn2KMM1EitxH
+	 PvG7devRouLbRghmpjvGQ+aKWZA9ZUwSLrI0il08rF0rfX9VpKco/fedwsAzC7eug+
+	 zBJkn7pIwTDI4a8yLpAJtXC2OHoJE9IoKwdPchNZVSXLKWklIjl15g79EPRnKg4Qsp
+	 qBiVK3XQG0DcctnBh0S+CURtFc1tdLwCv/EO4pYHG1hsgm5KRC47ZhkOPCNtRG9vuM
+	 NHanpOFN4IFdg==
 From: Damien Le Moal <dlemoal@kernel.org>
 To: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
 	Lorenzo Pieralisi <lpieralisi@kernel.org>,
@@ -58,14 +58,16 @@ To: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
 Cc: linux-rockchip@lists.infradead.org,
 	Rick Wertenbroek <rick.wertenbroek@gmail.com>,
 	Niklas Cassel <cassel@kernel.org>
-Subject: [PATCH v5 00/14] Fix and improve the Rockchip endpoint driver
-Date: Thu, 17 Oct 2024 10:58:35 +0900
-Message-ID: <20241017015849.190271-1-dlemoal@kernel.org>
+Subject: [PATCH v5 01/14] PCI: rockchip-ep: Fix address translation unit programming
+Date: Thu, 17 Oct 2024 10:58:36 +0900
+Message-ID: <20241017015849.190271-2-dlemoal@kernel.org>
 X-Mailer: git-send-email 2.47.0
+In-Reply-To: <20241017015849.190271-1-dlemoal@kernel.org>
+References: <20241017015849.190271-1-dlemoal@kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241016_185853_362666_D870C4DF 
-X-CRM114-Status: GOOD (  14.59  )
+X-CRM114-CacheID: sfid-20241016_185855_528759_0E0CF3B7 
+X-CRM114-Status: GOOD (  14.32  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,82 +84,89 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This patch series fix the PCI address mapping handling of the Rockchip
-PCI endpoint driver, refactor some of its code, improves link training
-and adds handling of the PERST# signal.
+The rockchip PCIe endpoint controller handles PCIe transfers addresses
+by masking the lower bits of the programmed PCI address and using the
+same number of lower bits masked from the CPU address space used for the
+mapping. For a PCI mapping of <size> bytes starting from <pci_addr>,
+the number of bits masked is the number of address bits changing in the
+address range [pci_addr..pci_addr + size - 1].
 
-This series is organized as follows:
- - Patch 1 fixes the rockchip ATU programming
- - Patch 2, 3 and 4 introduce small code improvments
- - Patch 5 implements the .align_addr() operation to make the RK3399
-   endpoint controller driver fully functional with the new
-   pci_epc_mem_map() function
- - Patch 6 uses the new align_addr operation function to fix the ATU
-   programming for MSI IRQ data mapping
- - Patch 7, 8, 9 and 10 refactor the driver code to make it more
-   readable
- - Patch 11 introduces the .stop() endpoint controller operation to
-   correctly disable the endpopint controller after use
- - Patch 12 improves link training
- - Patch 13 implements handling of the #PERST signal
- - Patch 14 adds a DT overlay file to enable EP mode and define the
-   PERST# GPIO (reset-gpios) property.
+However, rockchip_pcie_prog_ep_ob_atu() calculates num_pass_bits only
+using the size of the mapping, resulting in an incorrect number of mask
+bits depending on the value of the PCI address to map.
 
-These patches were tested using a Pine Rockpro64 board used as an
-endpoint with the test endpoint function driver and a prototype nvme
-endpoint function driver.
+Fix this by introducing the helper function
+rockchip_pcie_ep_ob_atu_num_bits() to correctly calculate the number of
+mask bits to use to program the address translation unit. The number of
+mask bits is calculated depending on both the PCI address and size of
+the mapping, and clamped between 8 and 20 using the macros
+ROCKCHIP_PCIE_AT_MIN_NUM_BITS and ROCKCHIP_PCIE_AT_MAX_NUM_BITS. As
+defined in the Rockchip RK3399 TRM V1.3 Part2, Sections 17.5.5.1.1 and
+17.6.8.2.1, this clamping is necessary because:
+1) The lower 8 bits of the PCI address to be mapped by the outbound
+   region are ignored. So a minimum of 8 address bits are needed and
+   imply that the PCI address must be aligned to 256.
+2) The outbound memory regions are 1MB in size. So while we can specify
+   up to 63-bits for the PCI address (num_bits filed uses bits 0 to 5 of
+   the outbound address region 0 register), we must limit the number of
+   valid address bits to 20 to match the memory window maximum size (1
+   << 20 = 1MB).
 
-Changes from v4:
- - Added patch 6
- - Added comments to patch 12 and 13 to clarify link training handling
-   and PERST# GPIO use.
- - Added patch 14
+Fixes: cf590b078391 ("PCI: rockchip: Add EP driver for Rockchip PCIe controller")
+Cc: stable@vger.kernel.org
+Signed-off-by: Damien Le Moal <dlemoal@kernel.org>
+---
+ drivers/pci/controller/pcie-rockchip-ep.c | 15 +++++++++++----
+ drivers/pci/controller/pcie-rockchip.h    |  4 ++++
+ 2 files changed, 15 insertions(+), 4 deletions(-)
 
-Changes from v3:
- - Addressed Mani's comments (see mailing list for details).
- - Removed old patch 11 (dt-binding changes) and instead use in patch 12
-   the already defined reset_gpios property.
- - Added patch 6
- - Added review tags
-
-Changes from v2:
- - Split the patch series
- - Corrected patch 11 to add the missing "maxItem"
-
-Changes from v1:
- - Changed pci_epc_check_func() to pci_epc_function_is_valid() in patch
-   1.
- - Removed patch "PCI: endpoint: Improve pci_epc_mem_alloc_addr()"
-   (former patch 2 of v1)
- - Various typos cleanups all over. Also fixed some blank space
-   indentation.
- - Added review tags
-
-Damien Le Moal (14):
-  PCI: rockchip-ep: Fix address translation unit programming
-  PCI: rockchip-ep: Use a macro to define EP controller .align feature
-  PCI: rockchip-ep: Improve rockchip_pcie_ep_unmap_addr()
-  PCI: rockchip-ep: Improve rockchip_pcie_ep_map_addr()
-  PCI: rockchip-ep: Implement the pci_epc_ops::align_addr() operation
-  PCI: rockchip-ep: Fix MSI IRQ data mapping
-  PCI: rockchip-ep: Rename rockchip_pcie_parse_ep_dt()
-  PCI: rockchip-ep: Refactor rockchip_pcie_ep_probe() memory allocations
-  PCI: rockchip-ep: Refactor rockchip_pcie_ep_probe() MSI-X hiding
-  PCI: rockchip-ep: Refactor endpoint link training enable
-  PCI: rockship-ep: Implement the pci_epc_ops::stop_link() operation
-  PCI: rockchip-ep: Improve link training
-  PCI: rockchip-ep: Handle PERST# signal in endpoint mode
-  arm64: dts: rockchip: Add rockpro64 overlay for PCIe endpoint mode
-
- arch/arm64/boot/dts/rockchip/Makefile         |   1 +
- .../rockchip/rk3399-rockpro64-pcie-ep.dtso    |  20 +
- drivers/pci/controller/pcie-rockchip-ep.c     | 432 ++++++++++++++----
- drivers/pci/controller/pcie-rockchip-host.c   |   4 +-
- drivers/pci/controller/pcie-rockchip.c        |  21 +-
- drivers/pci/controller/pcie-rockchip.h        |  24 +-
- 6 files changed, 406 insertions(+), 96 deletions(-)
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3399-rockpro64-pcie-ep.dtso
-
+diff --git a/drivers/pci/controller/pcie-rockchip-ep.c b/drivers/pci/controller/pcie-rockchip-ep.c
+index 136274533656..27a7febb74e0 100644
+--- a/drivers/pci/controller/pcie-rockchip-ep.c
++++ b/drivers/pci/controller/pcie-rockchip-ep.c
+@@ -63,16 +63,23 @@ static void rockchip_pcie_clear_ep_ob_atu(struct rockchip_pcie *rockchip,
+ 			    ROCKCHIP_PCIE_AT_OB_REGION_DESC1(region));
+ }
+ 
++static int rockchip_pcie_ep_ob_atu_num_bits(struct rockchip_pcie *rockchip,
++					    u64 pci_addr, size_t size)
++{
++	int num_pass_bits = fls64(pci_addr ^ (pci_addr + size - 1));
++
++	return clamp(num_pass_bits, ROCKCHIP_PCIE_AT_MIN_NUM_BITS,
++		     ROCKCHIP_PCIE_AT_MAX_NUM_BITS);
++}
++
+ static void rockchip_pcie_prog_ep_ob_atu(struct rockchip_pcie *rockchip, u8 fn,
+ 					 u32 r, u64 cpu_addr, u64 pci_addr,
+ 					 size_t size)
+ {
+-	int num_pass_bits = fls64(size - 1);
++	int num_pass_bits =
++		rockchip_pcie_ep_ob_atu_num_bits(rockchip, pci_addr, size);
+ 	u32 addr0, addr1, desc0;
+ 
+-	if (num_pass_bits < 8)
+-		num_pass_bits = 8;
+-
+ 	addr0 = ((num_pass_bits - 1) & PCIE_CORE_OB_REGION_ADDR0_NUM_BITS) |
+ 		(lower_32_bits(pci_addr) & PCIE_CORE_OB_REGION_ADDR0_LO_ADDR);
+ 	addr1 = upper_32_bits(pci_addr);
+diff --git a/drivers/pci/controller/pcie-rockchip.h b/drivers/pci/controller/pcie-rockchip.h
+index 6111de35f84c..15ee949f2485 100644
+--- a/drivers/pci/controller/pcie-rockchip.h
++++ b/drivers/pci/controller/pcie-rockchip.h
+@@ -245,6 +245,10 @@
+ 	(PCIE_EP_PF_CONFIG_REGS_BASE + (((fn) << 12) & GENMASK(19, 12)))
+ #define ROCKCHIP_PCIE_EP_VIRT_FUNC_BASE(fn) \
+ 	(PCIE_EP_PF_CONFIG_REGS_BASE + 0x10000 + (((fn) << 12) & GENMASK(19, 12)))
++
++#define ROCKCHIP_PCIE_AT_MIN_NUM_BITS  8
++#define ROCKCHIP_PCIE_AT_MAX_NUM_BITS  20
++
+ #define ROCKCHIP_PCIE_AT_IB_EP_FUNC_BAR_ADDR0(fn, bar) \
+ 	(PCIE_CORE_AXI_CONF_BASE + 0x0828 + (fn) * 0x0040 + (bar) * 0x0008)
+ #define ROCKCHIP_PCIE_AT_IB_EP_FUNC_BAR_ADDR1(fn, bar) \
 -- 
 2.47.0
 
