@@ -4,61 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 97E8AD374AE
-	for <linux-rockchip@archiver.kernel.org>; Thu, 17 Oct 2024 15:38:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A93EDD374A9
+	for <linux-rockchip@archiver.kernel.org>; Thu, 17 Oct 2024 15:39:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
 	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ltOlawNKwTYhCJbaiGUe/VamQ/a4LPxK3gjw28Vk1vE=; b=uCiLHixlePJQEn
-	sdeXcq5UjmqT5oqj/DjBiy+EULFKIvCDTOdAtW+mBWsO0tb14GBYfa7N08FOG3T1LrJF9xRQJRYDO
-	klx6laLSwrpbZ6u5taYl9lX99MabjjUfrM9weWiIGQbHsPmvI11xTU7lG1lRFYFwJjUKTw6GAOMnK
-	qwhIQcWbwBgYJC6O+CtO1DDW0mAY2fN01m5Cm1t3/30BsJol6WsycHHxTtW6jbx57Zw/cK+3nqyfF
-	2k/xzDpoo+8QyntSv8+BVetNiOb++7JF+oCkW0JXlvR3XQU5ID/AFwugTHOJa0shh+3aCdVOAEbJz
-	1YHumYx6GiSfLqnbKlZA==;
+	List-Owner; bh=BBjbjYUNDihYmxWBr65vGQdD3tX/PHaz6Wg3M+K6RA4=; b=i9q7q4hDGtPon8
+	LosUepROKMasBEj2QaKhwipBet4RBWKurdUCLePUlkBWE84OO5uVFJvgn/ErBLtShdwjyRnGL9w4C
+	jcEkFBTGPNNttPbaZ4WG68vgzt/fg1imd3ijkPYi2nyNShZStOp27QZIUF5xjBp009Tqtw2jeka6I
+	+EDePidxPqIjgne6e8iA2J5wWcLKr6CmjSekysTkjQlIiEhQxWGs9C8Dxs3UNm5NbH6tCsm21CroT
+	rkxCy90dHjYkstXBFoLP4x7E2yq3LiYWT9oxQvywIxJy6gt3JIO6X8mQ2bhxIrKd5W8Kz+vxYd930
+	BsFzAq+uadEX8Y9HuSsw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t1SZl-0000000FJd1-0t9R;
-	Thu, 17 Oct 2024 15:38:09 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1t1SbG-0000000FK4c-4BYh;
+	Thu, 17 Oct 2024 15:39:43 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t1SXS-0000000FInc-2GFV;
-	Thu, 17 Oct 2024 15:35:49 +0000
+	id 1t1SXb-0000000FIrC-0ONo;
+	Thu, 17 Oct 2024 15:35:56 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 8B79F5C53C8;
-	Thu, 17 Oct 2024 15:35:41 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3A864C4CEC3;
-	Thu, 17 Oct 2024 15:35:41 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 2A72B5C61C3;
+	Thu, 17 Oct 2024 15:35:50 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 94151C4CEC7;
+	Thu, 17 Oct 2024 15:35:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1729179345;
-	bh=B+abq4J2qxeK8JBY/cAF42RFyKzjO6n4dj5krRyRfkg=;
+	s=k20201202; t=1729179354;
+	bh=tQZtVVyCeRnI9TF1cSK9C2Pyi0D01P9dpdlS4+GOqAo=;
 	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=I43IDB33AoTqRiUwxSTauBr0Juo9Zh2yfZW8Kf89blTuRYUucR78nXaU3DxnZKPmY
-	 CDgeo9Pdu/S4lLAKof2KECZ/43tboTN9x15xcR0OGYGbRs0hmt/gSIxKsiQ21m2xRf
-	 K2hoQktDHD5i+RJ+VvLNVZaubXFuQmErUo3mKMdekiJKUH8ktiM+sAbn5sUB+ZNI2e
-	 iugqRknpdqV6JEsRg5I+wcDLieV4jG9ObKU4eAIeTwn6tpYdC48XPYqIEhNeMfoUPm
-	 z2qT2mBP3YW/qzkaFFRlNqHKRW+at4v1nuHsK7oPxbcKYQrcO2ayZ2EnJUsmhzkqFe
-	 LoeQYTWTz3LyQ==
+	b=KioPyikL26+HrMcb/XoQ6mCUhqrcOWg77GM9etxhrPh2M04O1rkbspnA7DAS70dVj
+	 Npm2j6Si0m6kkpx0hqk1B+IsYJCBhcJ4FwODFiMeVtQ5IGH4vGvlAOmO4kuo8oxu4i
+	 EPPv7t4vtl/Cfav4BuRTcXqsx8f/iq4+YMbXLcOBDPqlTM+qCQ/+yx8iYZIn313RiU
+	 fIcmLKWaUrzope7I/b1xg3aZ0Lv5urH5Hyp6KHpGHOXnYk13DPwvSWv/iNyqVJqULk
+	 piQH1J6nuBOXmBWpaA8AkQqt+z8IZSJR09qwtFhLQ9GiQfaay9SOUSkdTg/mYeUYbN
+	 yk1OKEv0jWgyA==
 From: Vinod Koul <vkoul@kernel.org>
 To: kishon@kernel.org, robh@kernel.org, krzk+dt@kernel.org, 
  conor+dt@kernel.org, heiko@sntech.de, Frank Wang <frawang.cn@gmail.com>
 Cc: linux-phy@lists.infradead.org, devicetree@vger.kernel.org, 
  linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
  linux-rockchip@lists.infradead.org, william.wu@rock-chips.com, 
- tim.chen@rock-chips.com, Frank Wang <frank.wang@rock-chips.com>
-In-Reply-To: <20241016073713.14133-1-frawang.cn@gmail.com>
-References: <20241016073713.14133-1-frawang.cn@gmail.com>
-Subject: Re: (subset) [PATCH v6 1/4] phy: rockchip: inno-usb2: convert
- clock management to bulk
-Message-Id: <172917934187.288841.9418215937562601531.b4-ty@kernel.org>
-Date: Thu, 17 Oct 2024 21:05:41 +0530
+ tim.chen@rock-chips.com, yubing.zhang@rock-chips.com, 
+ Frank Wang <frank.wang@rock-chips.com>
+In-Reply-To: <20241014020342.15974-1-frawang.cn@gmail.com>
+References: <20241014020342.15974-1-frawang.cn@gmail.com>
+Subject: Re: [PATCH 1/2] dt-bindings: phy: rockchip-usbdp: add rk3576
+Message-Id: <172917935024.288841.18254840723244928611.b4-ty@kernel.org>
+Date: Thu, 17 Oct 2024 21:05:50 +0530
 MIME-Version: 1.0
 X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241017_083546_903779_D6757618 
-X-CRM114-Status: UNSURE (   6.29  )
+X-CRM114-CacheID: sfid-20241017_083555_205388_B071A400 
+X-CRM114-Status: UNSURE (   4.02  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -77,21 +77,17 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
-On Wed, 16 Oct 2024 15:37:10 +0800, Frank Wang wrote:
-> Since some Rockchip SoCs (e.g RK3576) have more than one clock,
-> this converts the clock management from single to bulk method to
-> make the driver more flexible.
+On Mon, 14 Oct 2024 10:03:41 +0800, Frank Wang wrote:
+> Add compatible for the USBDP phy in the Rockchip RK3576 SoC.
 > 
 > 
 
 Applied, thanks!
 
-[1/4] phy: rockchip: inno-usb2: convert clock management to bulk
-      commit: 86e2ed4e9a9680013ec9ab7c0428c9b8c5108efe
-[3/4] dt-bindings: phy: rockchip,inno-usb2phy: add rk3576
-      commit: 0217f4aef0b07a57086baeed9c0ac05160435a45
-[4/4] phy: rockchip: inno-usb2: Add usb2 phys support for rk3576
-      commit: 3d7de6e870ece5a32153382df9df6fb87613335e
+[1/2] dt-bindings: phy: rockchip-usbdp: add rk3576
+      commit: b3e804ab9aad465ba7285aa5daf83656d5efc59f
+[2/2] phy: rockchip: usbdp: add rk3576 device match data
+      commit: a76de028c619dd18f89786805bcc7bb4d379ea9f
 
 Best regards,
 -- 
