@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 91205D2F7E2
-	for <linux-rockchip@archiver.kernel.org>; Thu, 17 Oct 2024 03:01:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B492AD2F7DA
+	for <linux-rockchip@archiver.kernel.org>; Thu, 17 Oct 2024 03:01:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ScxQnf9fRgOOQkVGu3D046i7typMfUQ9SktNk86a9qI=; b=ti/+cO/z0oeuIM
-	a0Vpmpcsp2pBGqhMGJ4PkCPqX4iDiSRX9ZiqMQlj/PmJ9gYkwlXp1FVCmzZmwgq1lZ18hygBZiDHj
-	icS+E5dLdPo4SopZKgpWeSESRc/qX5ca+TGBNEu33AnOAYf6pCcYw2Ld5ZlsLP0FeAyjJ87REHCOZ
-	7gK6nusdr40Snb/yprSL74RYRMoynqf5zmbkmiDQAt1HJqJtwhYySp/N4AOaK49SUhEOZxsUddg5E
-	LMedhy5p4th3A/AU0BboWU42tlN36DNLh2l12OXl4syeIsKNle2qm1HGCLsxvIaE50lANK+Wcih8i
-	kZiyQpzr9FjJci1U4j7Q==;
+	List-Owner; bh=nVQ6ndhbUMPKhcY5r5KO4QNPpl8ksSVYDY6uAjliuTg=; b=BD3jFagVR0xqQP
+	hP/R2UVG/nxWbEoqwv7DRsl/9hZLlprrbXR3HFTsvjC8vkjnbrhrFbiN4Jw/o2YOuDJ2Aj0nHjGKa
+	JTDHDmJxsPkLr4NZ9ZxMBbgY8hh2Cblsc6jkGNrBpGvD1ElfUK7v3ANU+PvfLUEWrTTJBSVX82J8k
+	aWGV9E5kXgIh9INJ5yEB+IdZqWAyl0r7AYjgJw7neOJb4CvGT2BEQ0M67ge5rp/ZI3LO/t4h2VmRw
+	E8ssPiTw/bSKJSQdnMcICKdx7uNyPV5LFHv7Od5KtMiIDu3W33X4+FyL6CwhHJlu1Jfy4O4M5E2NZ
+	YIKRypPImdaH1CCRe16A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t1Gky-0000000DbwC-0VaC;
-	Thu, 17 Oct 2024 03:00:56 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1t1Gkz-0000000Dbwi-1fq1;
+	Thu, 17 Oct 2024 03:00:57 +0000
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t1FnA-0000000DUoP-0HwY
+	id 1t1FnD-0000000DUsC-2TwU
 	for linux-rockchip@lists.infradead.org;
-	Thu, 17 Oct 2024 01:59:10 +0000
+	Thu, 17 Oct 2024 01:59:15 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 8EFAAA40DED;
-	Thu, 17 Oct 2024 01:58:57 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 88DB4C4CED0;
-	Thu, 17 Oct 2024 01:59:04 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id A68E2A43323;
+	Thu, 17 Oct 2024 01:59:01 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 89AE4C4CED0;
+	Thu, 17 Oct 2024 01:59:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1729130346;
-	bh=cGogfKDAaP5QdN9tIREGdoJWnNKUGTNQsxIwLw1Hkwo=;
+	s=k20201202; t=1729130350;
+	bh=NZPcvMNuuYIfcbG2joADk3VepWG0efvQX25DV7OprLg=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=ENbypHjkiFN71XKpXMX/O2XF5TmHRJ8GkuUQEz10j6ffehYmn9Gdvt2r0+pxmGyh2
-	 uWJdJcry0O8u4NF+8YJ28UId1T2l97blSKp5iKcOvYCA+xijbpRjkxKxipWo6t0f4i
-	 5xKACM1kKwi/T8ki/hYW+MdaAqsDAfySOyvhUnaHqHlW8Xjy/YTZkERSwrkdb4ARdV
-	 tFxr3ETOSP21WIMCH3vuJv+XlurkWpB6QGV54WXMw6ZsYDokowh87etCm5SZflUCp0
-	 3k5dx4x9Q9kd/jiRKuRj+2mNsZwhVxWMavcS2i2hb/czP984UeD1z+oJbIuWpzG3oO
-	 e03Q4Ua05n3/g==
+	b=DrIqEtrYYKnQOh1Uw67nKZkEKJJuRVDxS4YgoykA3+sQi6CjPhbhk6C1OpGBHyEMV
+	 Kri7DLYD+oXyTKmtw0//BwGa0NOC6pnkW8LWTbH2hBYKxZcU3e4V/phXQDc/Zs/Mw+
+	 DIR2abGpt7cDbmtPOYkP52OHOBUpd3Q+JYLPLRSzyBWM+kLPCHbbB03DjUxD3TpHN8
+	 lPI/C113nXclSFHgpUx+4kOEOjIk7SfOBwW2i0zD3LXY0Rv0MhjR5YbgB+eFiu4IET
+	 8gT/phqnMEz/4SOJMdgsm3N9rrxWxLLxtF24ZYRdyydKXorvE2s9pvhrLm5r3dorcz
+	 xo+pdCESm8QeQ==
 From: Damien Le Moal <dlemoal@kernel.org>
 To: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
 	Lorenzo Pieralisi <lpieralisi@kernel.org>,
@@ -58,16 +58,16 @@ To: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
 Cc: linux-rockchip@lists.infradead.org,
 	Rick Wertenbroek <rick.wertenbroek@gmail.com>,
 	Niklas Cassel <cassel@kernel.org>
-Subject: [PATCH v5 07/14] PCI: rockchip-ep: Rename rockchip_pcie_parse_ep_dt()
-Date: Thu, 17 Oct 2024 10:58:42 +0900
-Message-ID: <20241017015849.190271-8-dlemoal@kernel.org>
+Subject: [PATCH v5 09/14] PCI: rockchip-ep: Refactor rockchip_pcie_ep_probe() MSI-X hiding
+Date: Thu, 17 Oct 2024 10:58:44 +0900
+Message-ID: <20241017015849.190271-10-dlemoal@kernel.org>
 X-Mailer: git-send-email 2.47.0
 In-Reply-To: <20241017015849.190271-1-dlemoal@kernel.org>
 References: <20241017015849.190271-1-dlemoal@kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241016_185908_376568_2C09638F 
-X-CRM114-Status: GOOD (  10.98  )
+X-CRM114-CacheID: sfid-20241016_185912_143445_E7EC177E 
+X-CRM114-Status: GOOD (  14.82  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,41 +84,101 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-To be consistent with the usual "get_resources" naming of driver
-functions that acquire controller resources like clocks, PHY etc, rename
-the function rockchip_pcie_parse_ep_dt() to
-rockchip_pcie_ep_get_resources().
-
+Move the code in rockchip_pcie_ep_probe() to hide the MSI-X capability
+to its own function, rockchip_pcie_ep_hide_broken_msix_cap().
 No functional changes.
 
 Signed-off-by: Damien Le Moal <dlemoal@kernel.org>
+Reviewed-by: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
 ---
- drivers/pci/controller/pcie-rockchip-ep.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ drivers/pci/controller/pcie-rockchip-ep.c | 54 +++++++++++++----------
+ 1 file changed, 30 insertions(+), 24 deletions(-)
 
 diff --git a/drivers/pci/controller/pcie-rockchip-ep.c b/drivers/pci/controller/pcie-rockchip-ep.c
-index dcd1b5415602..705f6741fa53 100644
+index 8dd2a812e446..d980e0b92745 100644
 --- a/drivers/pci/controller/pcie-rockchip-ep.c
 +++ b/drivers/pci/controller/pcie-rockchip-ep.c
-@@ -494,8 +494,8 @@ static const struct pci_epc_ops rockchip_pcie_epc_ops = {
- 	.get_features	= rockchip_pcie_ep_get_features,
- };
+@@ -582,6 +582,34 @@ static void rockchip_pcie_ep_exit_ob_mem(struct rockchip_pcie_ep *ep)
+ 	pci_epc_mem_exit(ep->epc);
+ }
  
--static int rockchip_pcie_parse_ep_dt(struct rockchip_pcie *rockchip,
--				     struct rockchip_pcie_ep *ep)
-+static int rockchip_pcie_ep_get_resources(struct rockchip_pcie *rockchip,
-+					  struct rockchip_pcie_ep *ep)
++static void rockchip_pcie_ep_hide_broken_msix_cap(struct rockchip_pcie *rockchip)
++{
++	u32 cfg_msi, cfg_msix_cp;
++
++	/*
++	 * MSI-X is not supported but the controller still advertises the MSI-X
++	 * capability by default, which can lead to the Root Complex side
++	 * allocating MSI-X vectors which cannot be used. Avoid this by skipping
++	 * the MSI-X capability entry in the PCIe capabilities linked-list: get
++	 * the next pointer from the MSI-X entry and set that in the MSI
++	 * capability entry (which is the previous entry). This way the MSI-X
++	 * entry is skipped (left out of the linked-list) and not advertised.
++	 */
++	cfg_msi = rockchip_pcie_read(rockchip, PCIE_EP_CONFIG_BASE +
++				     ROCKCHIP_PCIE_EP_MSI_CTRL_REG);
++
++	cfg_msi &= ~ROCKCHIP_PCIE_EP_MSI_CP1_MASK;
++
++	cfg_msix_cp = rockchip_pcie_read(rockchip, PCIE_EP_CONFIG_BASE +
++					 ROCKCHIP_PCIE_EP_MSIX_CAP_REG) &
++					 ROCKCHIP_PCIE_EP_MSIX_CAP_CP_MASK;
++
++	cfg_msi |= cfg_msix_cp;
++
++	rockchip_pcie_write(rockchip, cfg_msi,
++			    PCIE_EP_CONFIG_BASE + ROCKCHIP_PCIE_EP_MSI_CTRL_REG);
++}
++
+ static int rockchip_pcie_ep_probe(struct platform_device *pdev)
  {
- 	struct device *dev = rockchip->dev;
+ 	struct device *dev = &pdev->dev;
+@@ -589,7 +617,6 @@ static int rockchip_pcie_ep_probe(struct platform_device *pdev)
+ 	struct rockchip_pcie *rockchip;
+ 	struct pci_epc *epc;
  	int err;
-@@ -557,7 +557,7 @@ static int rockchip_pcie_ep_probe(struct platform_device *pdev)
- 	ep->epc = epc;
- 	epc_set_drvdata(epc, ep);
+-	u32 cfg_msi, cfg_msix_cp;
  
--	err = rockchip_pcie_parse_ep_dt(rockchip, ep);
-+	err = rockchip_pcie_ep_get_resources(rockchip, ep);
+ 	ep = devm_kzalloc(dev, sizeof(*ep), GFP_KERNEL);
+ 	if (!ep)
+@@ -624,6 +651,8 @@ static int rockchip_pcie_ep_probe(struct platform_device *pdev)
  	if (err)
- 		return err;
+ 		goto err_disable_clocks;
+ 
++	rockchip_pcie_ep_hide_broken_msix_cap(rockchip);
++
+ 	/* Establish the link automatically */
+ 	rockchip_pcie_write(rockchip, PCIE_CLIENT_LINK_TRAIN_ENABLE,
+ 			    PCIE_CLIENT_CONFIG);
+@@ -631,29 +660,6 @@ static int rockchip_pcie_ep_probe(struct platform_device *pdev)
+ 	/* Only enable function 0 by default */
+ 	rockchip_pcie_write(rockchip, BIT(0), PCIE_CORE_PHY_FUNC_CFG);
+ 
+-	/*
+-	 * MSI-X is not supported but the controller still advertises the MSI-X
+-	 * capability by default, which can lead to the Root Complex side
+-	 * allocating MSI-X vectors which cannot be used. Avoid this by skipping
+-	 * the MSI-X capability entry in the PCIe capabilities linked-list: get
+-	 * the next pointer from the MSI-X entry and set that in the MSI
+-	 * capability entry (which is the previous entry). This way the MSI-X
+-	 * entry is skipped (left out of the linked-list) and not advertised.
+-	 */
+-	cfg_msi = rockchip_pcie_read(rockchip, PCIE_EP_CONFIG_BASE +
+-				     ROCKCHIP_PCIE_EP_MSI_CTRL_REG);
+-
+-	cfg_msi &= ~ROCKCHIP_PCIE_EP_MSI_CP1_MASK;
+-
+-	cfg_msix_cp = rockchip_pcie_read(rockchip, PCIE_EP_CONFIG_BASE +
+-					 ROCKCHIP_PCIE_EP_MSIX_CAP_REG) &
+-					 ROCKCHIP_PCIE_EP_MSIX_CAP_CP_MASK;
+-
+-	cfg_msi |= cfg_msix_cp;
+-
+-	rockchip_pcie_write(rockchip, cfg_msi,
+-			    PCIE_EP_CONFIG_BASE + ROCKCHIP_PCIE_EP_MSI_CTRL_REG);
+-
+ 	rockchip_pcie_write(rockchip, PCIE_CLIENT_CONF_ENABLE,
+ 			    PCIE_CLIENT_CONFIG);
  
 -- 
 2.47.0
