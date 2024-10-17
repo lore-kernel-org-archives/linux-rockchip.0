@@ -4,44 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C120ED2F7DD
-	for <linux-rockchip@archiver.kernel.org>; Thu, 17 Oct 2024 01:59:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EC687D2F7DD
+	for <linux-rockchip@archiver.kernel.org>; Thu, 17 Oct 2024 01:59:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=98cEfVIRcFYLokQ77WhPQ0Ow15CYuwdrkEuIBikcj1s=; b=x3H7/HVdXE8Ltf
-	jg67YKsxFxMt6+/jLosBJbh0td0+JFsx8ecxyXTz1ekRBZuVit9Ys0Za8Cyw/WsPrcTSuIITML+v6
-	+awZNWPIbyzEHqXBAljvaXQ+vu1VqPoc4h1FsFAbGYheEYGMiYnhY6H/KZEAOVIvTqWiQa8nAlgbu
-	LVen1NBA1zYVVpl/2hEAyz5xftTFK6KBJ7AoBoJRRpysIO+HDOB80Rlxc+mU5dE5o8ky2L+KVi4Fc
-	UVbGTSbY4tkLaJwHf5jfUInpSy60W1OatCtYbWc28X8frocf1yb+mMpxjaogM89ZX9uUYFF5r5YPF
-	/Msy5KO9L/suCmkpZK6g==;
+	List-Owner; bh=KQ7d8BT40CDKJZGAPhu1vN8kaH/1iCsV5MJgAoot/T4=; b=PhCyqzH8WsEA4K
+	6ZwvZPj1p4Gk2z0QQcaB5UEBbDsV5ovI1Zkh1IdSVah9rMZCDkPmXWewYZhiRC9pfARnM+I7dNlIu
+	m7knnf1M4aupqJibiXzi0378SswdagMF4PoA/yzXSyb5sgWUX+qQyeOkJ4ksqCwR/g+A1/40xmFQ2
+	87bVJdiCbD3bjgIJ46dZPAnLou6NzIe7QBeNu+tUcOGMETAz6Ml0sZiNitvizxC1yZ0W0kakkuyJq
+	Vy0MkFH/PvotluubRyZa0ZmyR0acFL31vOfZ95V3fXIoG1ApMQuE5x43uXhcl77qiqQFN32xoUX7g
+	7YNRpgYp+tu83x8nCJFw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t1FnD-0000000DUsA-0sH0;
-	Thu, 17 Oct 2024 01:59:11 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1t1FnJ-0000000DUy9-2MEH;
+	Thu, 17 Oct 2024 01:59:17 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t1Fn7-0000000DUmU-1YyJ
+	id 1t1FnI-0000000DUwg-2bPT
+	for linux-rockchip@bombadil.infradead.org;
+	Thu, 17 Oct 2024 01:59:16 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
+	:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-Type:Content-ID:Content-Description;
+	bh=/+zdzpy8y9z48fI3JqGj5LoiDpcFFlhvY0FRB5OACfg=; b=HR3UMUUmWcIaRQ8i2vddgCWSXt
+	1b2mVQf7OhF2tHL//RiCAsM0sROQuFg7Eyn/2eRvp7ZrgQke0RDV0ISjebGmJajCOvIjCc9hE8dvJ
+	NtDsLEkPaiEsKvJ27YZ3nWgxfPDyyf1bF5USdozhMK4J1keLJ5Mtbk9/8FNezTVFz0dRFI3lf2g5Y
+	matrZVu4d+BbKx7tSPYA/hWBnwEbG9xPQdUlQN402eDzMItyMpEU5gsamy4ehaqUvq/+dZYAjnT5U
+	tb1dqZY2flYvBurr/8iasaysAVtnGmvNJ7uVANLejMXyO4ef2SDB2qiz9+ZV7sqXjD7BVJ+4LP2VH
+	upv4EaFw==;
+Received: from nyc.source.kernel.org ([147.75.193.91])
+	by desiato.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
+	id 1t1FnF-000000070ha-0i8g
 	for linux-rockchip@lists.infradead.org;
-	Thu, 17 Oct 2024 01:59:07 +0000
+	Thu, 17 Oct 2024 01:59:15 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id A3D5DA40DE5;
-	Thu, 17 Oct 2024 01:58:55 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 87D5EC4CECF;
-	Thu, 17 Oct 2024 01:59:02 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id 8FECBA40DE6;
+	Thu, 17 Oct 2024 01:58:59 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8FACBC4CECF;
+	Thu, 17 Oct 2024 01:59:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1729130344;
-	bh=7C0hw6Xvm/YDpj0Qd/1mzkBWX8qAwGyMmQLAjgMUqK8=;
+	s=k20201202; t=1729130348;
+	bh=TZTC/UN+ioxo8kHC1srfQQYjsUIYfU7EFjfKzLP8H9w=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=pu+jOt9WMdPC+tc7WU7kCqCAKrA6RW0lOOIV4Ch8NL2+KQQb7SuVfxd3vHIBzWGVt
-	 AIzk94e0gZcPc81Hk6kaCFWsPH9vDM6TLEdJ84sdPUkbxk+lCKL4zx/nnLf/J3K/+A
-	 qJp743NUARFFhTIqSEJByEaJx2XrxyWMm5JG2njWBKmCqlwfBRlMuR53X0Nqfi9D5+
-	 Fe4hSs4+yWObsq8ycMDGNjKE0BlVpnf5yrexHZRVkM4oIPNnooDhoIEPHIy4q91LIx
-	 FLPXtKZsW8X0id9Oxa2N9d4caULUo5G5qKrz87N0ITbE4yrG9yrK8jnR+06XMXEntE
-	 WHStCHIKncwtg==
+	b=Vft2HIxTJdPc5yRYN1H9fBOSThk3i5v6HXmTjF/BnwyJgiGCPEjFqLMJtL2LHL94U
+	 MlpR20RFwrRvQX301EZ43p3XkAezdJH+fKMfgPKUXINvg0UY388Fd/OzBGDP/8ZPpr
+	 3NLa5a3VgEM8hABxSX3lpZMl965vFDNOKO9+ogni1pE3jelgp822UZXn4QHw6vAOmH
+	 5PfWOnXoM15MxDkrDpLZ1B2mk7Z9Fyp2zC09ylbP7ygFd3klLKhydLG1MSY76U2Xne
+	 QUruNdnTxx2ZKF1KKPtfESUobk6sLUTuOZADrJ0/8Y/FSV/WVq9XEq6uUX3+BOOXxL
+	 C/yK5Cx1CZTGQ==
 From: Damien Le Moal <dlemoal@kernel.org>
 To: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
 	Lorenzo Pieralisi <lpieralisi@kernel.org>,
@@ -58,16 +73,16 @@ To: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
 Cc: linux-rockchip@lists.infradead.org,
 	Rick Wertenbroek <rick.wertenbroek@gmail.com>,
 	Niklas Cassel <cassel@kernel.org>
-Subject: [PATCH v5 06/14] PCI: rockchip-ep: Fix MSI IRQ data mapping
-Date: Thu, 17 Oct 2024 10:58:41 +0900
-Message-ID: <20241017015849.190271-7-dlemoal@kernel.org>
+Subject: [PATCH v5 08/14] PCI: rockchip-ep: Refactor rockchip_pcie_ep_probe() memory allocations
+Date: Thu, 17 Oct 2024 10:58:43 +0900
+Message-ID: <20241017015849.190271-9-dlemoal@kernel.org>
 X-Mailer: git-send-email 2.47.0
 In-Reply-To: <20241017015849.190271-1-dlemoal@kernel.org>
 References: <20241017015849.190271-1-dlemoal@kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241016_185905_625338_7AAC617D 
-X-CRM114-Status: GOOD (  13.94  )
+X-CRM114-CacheID: sfid-20241017_025913_707836_DC286802 
+X-CRM114-Status: GOOD (  18.97  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,72 +99,167 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The call to rockchip_pcie_prog_ep_ob_atu() used to map the PCI address
-of MSI data to the memory window allocated on probe for IRQs is done
-in rockchip_pcie_ep_send_msi_irq() assuming a fixed alignment to a
-256B boundary of the PCI address.  This is not correct as the alignment
-constraint for the RK3399 PCI mapping depends on the number of bits of
-address changing in the mapped region. This leads to an unstable system
-which sometimes work and sometimes does not (crashing on paging faults
-when memcpy_toio() or memcpy_fromio() are used).
+Introduce the function rockchip_pcie_ep_init_ob_mem()
+allocate the outbound memory regions and memory needed for IRQ handling.
 
-Similar to regular data mapping, the MSI data mapping must thus be
-handled according to the information provided by
-rockchip_pcie_ep_align_addr(). Modify rockchip_pcie_ep_send_msi_irq()
-to use rockchip_pcie_ep_align_addr() to correctly program entry 0 of
-the ATU for sending MSI IRQs.
+These changes tidy up rockchip_pcie_ep_probe(). No functional change.
 
 Signed-off-by: Damien Le Moal <dlemoal@kernel.org>
 ---
- drivers/pci/controller/pcie-rockchip-ep.c | 22 +++++++++++++---------
- 1 file changed, 13 insertions(+), 9 deletions(-)
+ drivers/pci/controller/pcie-rockchip-ep.c | 107 ++++++++++++----------
+ 1 file changed, 61 insertions(+), 46 deletions(-)
 
 diff --git a/drivers/pci/controller/pcie-rockchip-ep.c b/drivers/pci/controller/pcie-rockchip-ep.c
-index f6959f9b94b7..dcd1b5415602 100644
+index 705f6741fa53..8dd2a812e446 100644
 --- a/drivers/pci/controller/pcie-rockchip-ep.c
 +++ b/drivers/pci/controller/pcie-rockchip-ep.c
-@@ -379,9 +379,10 @@ static int rockchip_pcie_ep_send_msi_irq(struct rockchip_pcie_ep *ep, u8 fn,
+@@ -529,15 +529,66 @@ static const struct of_device_id rockchip_pcie_ep_of_match[] = {
+ 	{},
+ };
+ 
++static int rockchip_pcie_ep_init_ob_mem(struct rockchip_pcie_ep *ep)
++{
++	struct rockchip_pcie *rockchip = &ep->rockchip;
++	struct device *dev = rockchip->dev;
++	struct pci_epc_mem_window *windows = NULL;
++	int err, i;
++
++	ep->ob_addr = devm_kcalloc(dev, ep->max_regions, sizeof(*ep->ob_addr),
++				   GFP_KERNEL);
++
++	if (!ep->ob_addr)
++		return -ENOMEM;
++
++	windows = devm_kcalloc(dev, ep->max_regions,
++			       sizeof(struct pci_epc_mem_window), GFP_KERNEL);
++	if (!windows)
++		return -ENOMEM;
++
++	for (i = 0; i < ep->max_regions; i++) {
++		windows[i].phys_base = rockchip->mem_res->start + (SZ_1M * i);
++		windows[i].size = SZ_1M;
++		windows[i].page_size = SZ_1M;
++	}
++	err = pci_epc_multi_mem_init(ep->epc, windows, ep->max_regions);
++	devm_kfree(dev, windows);
++
++	if (err < 0) {
++		dev_err(dev, "failed to initialize the memory space\n");
++		return err;
++	}
++
++	ep->irq_cpu_addr = pci_epc_mem_alloc_addr(ep->epc, &ep->irq_phys_addr,
++						  SZ_1M);
++	if (!ep->irq_cpu_addr) {
++		dev_err(dev, "failed to reserve memory space for MSI\n");
++		goto err_epc_mem_exit;
++	}
++
++	ep->irq_pci_addr = ROCKCHIP_PCIE_EP_DUMMY_IRQ_ADDR;
++
++	return 0;
++
++err_epc_mem_exit:
++	pci_epc_mem_exit(ep->epc);
++
++	return err;
++}
++
++static void rockchip_pcie_ep_exit_ob_mem(struct rockchip_pcie_ep *ep)
++{
++	pci_epc_mem_exit(ep->epc);
++}
++
+ static int rockchip_pcie_ep_probe(struct platform_device *pdev)
  {
- 	struct rockchip_pcie *rockchip = &ep->rockchip;
- 	u32 flags, mme, data, data_mask;
-+	size_t irq_pci_size, offset;
-+	u64 irq_pci_addr;
- 	u8 msi_count;
- 	u64 pci_addr;
--	u32 r;
+ 	struct device *dev = &pdev->dev;
+ 	struct rockchip_pcie_ep *ep;
+ 	struct rockchip_pcie *rockchip;
+ 	struct pci_epc *epc;
+-	size_t max_regions;
+-	struct pci_epc_mem_window *windows = NULL;
+-	int err, i;
++	int err;
+ 	u32 cfg_msi, cfg_msix_cp;
  
- 	/* Check MSI enable bit */
- 	flags = rockchip_pcie_read(&ep->rockchip,
-@@ -417,18 +418,21 @@ static int rockchip_pcie_ep_send_msi_irq(struct rockchip_pcie_ep *ep, u8 fn,
- 				       PCI_MSI_ADDRESS_LO);
+ 	ep = devm_kzalloc(dev, sizeof(*ep), GFP_KERNEL);
+@@ -561,10 +612,14 @@ static int rockchip_pcie_ep_probe(struct platform_device *pdev)
+ 	if (err)
+ 		return err;
  
- 	/* Set the outbound region if needed. */
--	if (unlikely(ep->irq_pci_addr != (pci_addr & PCIE_ADDR_MASK) ||
-+	irq_pci_size = ~PCIE_ADDR_MASK + 1;
-+	irq_pci_addr = rockchip_pcie_ep_align_addr(ep->epc,
-+						   pci_addr & PCIE_ADDR_MASK,
-+						   &irq_pci_size, &offset);
-+	if (unlikely(ep->irq_pci_addr != irq_pci_addr ||
- 		     ep->irq_pci_fn != fn)) {
--		r = rockchip_ob_region(ep->irq_phys_addr);
--		rockchip_pcie_prog_ep_ob_atu(rockchip, fn, r,
--					     ep->irq_phys_addr,
--					     pci_addr & PCIE_ADDR_MASK,
--					     ~PCIE_ADDR_MASK + 1);
--		ep->irq_pci_addr = (pci_addr & PCIE_ADDR_MASK);
-+		rockchip_pcie_prog_ep_ob_atu(rockchip, fn,
-+					rockchip_ob_region(ep->irq_phys_addr),
-+					ep->irq_phys_addr,
-+					irq_pci_addr, irq_pci_size);
-+		ep->irq_pci_addr = irq_pci_addr;
- 		ep->irq_pci_fn = fn;
- 	}
+-	err = rockchip_pcie_enable_clocks(rockchip);
++	err = rockchip_pcie_ep_init_ob_mem(ep);
+ 	if (err)
+ 		return err;
  
--	writew(data, ep->irq_cpu_addr + (pci_addr & ~PCIE_ADDR_MASK));
-+	writew(data, ep->irq_cpu_addr + offset + (pci_addr & ~PCIE_ADDR_MASK));
++	err = rockchip_pcie_enable_clocks(rockchip);
++	if (err)
++		goto err_exit_ob_mem;
++
+ 	err = rockchip_pcie_init_port(rockchip);
+ 	if (err)
+ 		goto err_disable_clocks;
+@@ -573,47 +628,9 @@ static int rockchip_pcie_ep_probe(struct platform_device *pdev)
+ 	rockchip_pcie_write(rockchip, PCIE_CLIENT_LINK_TRAIN_ENABLE,
+ 			    PCIE_CLIENT_CONFIG);
+ 
+-	max_regions = ep->max_regions;
+-	ep->ob_addr = devm_kcalloc(dev, max_regions, sizeof(*ep->ob_addr),
+-				   GFP_KERNEL);
+-
+-	if (!ep->ob_addr) {
+-		err = -ENOMEM;
+-		goto err_uninit_port;
+-	}
+-
+ 	/* Only enable function 0 by default */
+ 	rockchip_pcie_write(rockchip, BIT(0), PCIE_CORE_PHY_FUNC_CFG);
+ 
+-	windows = devm_kcalloc(dev, ep->max_regions,
+-			       sizeof(struct pci_epc_mem_window), GFP_KERNEL);
+-	if (!windows) {
+-		err = -ENOMEM;
+-		goto err_uninit_port;
+-	}
+-	for (i = 0; i < ep->max_regions; i++) {
+-		windows[i].phys_base = rockchip->mem_res->start + (SZ_1M * i);
+-		windows[i].size = SZ_1M;
+-		windows[i].page_size = SZ_1M;
+-	}
+-	err = pci_epc_multi_mem_init(epc, windows, ep->max_regions);
+-	devm_kfree(dev, windows);
+-
+-	if (err < 0) {
+-		dev_err(dev, "failed to initialize the memory space\n");
+-		goto err_uninit_port;
+-	}
+-
+-	ep->irq_cpu_addr = pci_epc_mem_alloc_addr(epc, &ep->irq_phys_addr,
+-						  SZ_1M);
+-	if (!ep->irq_cpu_addr) {
+-		dev_err(dev, "failed to reserve memory space for MSI\n");
+-		err = -ENOMEM;
+-		goto err_epc_mem_exit;
+-	}
+-
+-	ep->irq_pci_addr = ROCKCHIP_PCIE_EP_DUMMY_IRQ_ADDR;
+-
+ 	/*
+ 	 * MSI-X is not supported but the controller still advertises the MSI-X
+ 	 * capability by default, which can lead to the Root Complex side
+@@ -643,10 +660,8 @@ static int rockchip_pcie_ep_probe(struct platform_device *pdev)
+ 	pci_epc_init_notify(epc);
+ 
  	return 0;
- }
- 
+-err_epc_mem_exit:
+-	pci_epc_mem_exit(epc);
+-err_uninit_port:
+-	rockchip_pcie_deinit_phys(rockchip);
++err_exit_ob_mem:
++	rockchip_pcie_ep_exit_ob_mem(ep);
+ err_disable_clocks:
+ 	rockchip_pcie_disable_clocks(rockchip);
+ 	return err;
 -- 
 2.47.0
 
