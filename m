@@ -4,61 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1A333D374A9
-	for <linux-rockchip@archiver.kernel.org>; Thu, 17 Oct 2024 15:34:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 72F3FD374AF
+	for <linux-rockchip@archiver.kernel.org>; Thu, 17 Oct 2024 15:37:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
 	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ur+lEvzbU+weLDt/aewPUC+IwuYS/j7/FgryF+J3My0=; b=B3spQ8mX00tA6u
-	c4YeP+qySwaYaz9kUYF5FH+xMOvIMWCdd6gvpGV6LPppYHqRceQ/g1JtQaTy/CqMI0+wdnmY9QqME
-	F7Qgc9WZYlNEKrD8TQgDOaSli70W2VoRRgo0aFAgkJz34caQJR/DAlKciBeI7QFkNWwQ469lJrpdy
-	xfpbnXKYKZBvx8iy9uaAuO/TaEriyzn3Z3EzDSHfFKlgH519vmnjMz7L2g4GOJO4cm5UQyXNughPG
-	eP8zRU1QrCPPtwGDW105DO2+Ki4lb+MLafivp0GaNBg28uXArH9kTy9X089/sd3vyBgU9/OqECeQ1
-	dy7ckHnaso83z+J3kKDA==;
+	List-Owner; bh=nLbMC3BI9atw3UihKx/mrR2yihTRmyMmZeTipsl22P8=; b=leRtYW+R5NR/y7
+	P6SEyAkeqXOC8gcdrEAGDohQeEV8RebgA5N9DIdnG5kyOZjdx94jXLiylgBk9lwq7zAynBtqXmVYK
+	gftkLcSLelfqgKnyrd/WYZ2bIfGaXk78lXoDhqJTzIFfdTWfou6Icx2zVTseJWIMVFyrdxgsPwrqr
+	VKk0d80cpJirR2qN83dAESDeQ659Iuc20KlOt9vV1Y0uYeXgPGWBC936Bom/drvcefxz9knyt7rDw
+	ZS2Mj7O442k4TdqvYoRliQG4B3KP5xzMIkt4MrtRL8XC7z7xzCifzYngpL0zr/uG/1KRfMqcTqyqA
+	dbOmvynV7uACyHj52OCw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t1SWH-0000000FIRW-07mq;
-	Thu, 17 Oct 2024 15:34:33 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1t1SZO-0000000FJT1-18m8;
+	Thu, 17 Oct 2024 15:37:46 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t1STO-0000000FHpn-49eW;
-	Thu, 17 Oct 2024 15:31:36 +0000
+	id 1t1SXE-0000000FIjU-48LB;
+	Thu, 17 Oct 2024 15:35:34 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 37D7AA44184;
-	Thu, 17 Oct 2024 15:31:25 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A3ABEC4CEC7;
-	Thu, 17 Oct 2024 15:31:31 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 02EB95C617B;
+	Thu, 17 Oct 2024 15:35:28 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2E9C3C4CEC3;
+	Thu, 17 Oct 2024 15:35:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1729179094;
-	bh=ECx1lDXvwWS4376i+gg20ZVRZy7s1XIM5Q1ERrjIGCY=;
+	s=k20201202; t=1729179332;
+	bh=poBaeIXGhWrOXxHqNDXA9/SiaWES5p961HT2/STyJzQ=;
 	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=eqQ/9DxZA0gG6PokB+PlBPossYFi43fxJu9nthmCv/TAHIQnlHEKI93duunau9a19
-	 03AK6FZaFcDj6/20O0U9WJKhgrQriK/lwrBjHA23/GhKnv8vyZHUpoj8jWaBso0bUL
-	 cp3wtwo7QMCWSnjFDcxbrhnOJIMpV+8eR7aGT4t2fBqhkzqoBuuQRHBKZHm21cJGsc
-	 vY1AzK5N7MxcPJRinq5aT0FBnkpzn9xmLnvKwyvpbAvzh2NdaTr6QWNuU3mmML1QDP
-	 wY4yYT5lX+zw7/QaK2Y1sqQS3zJi9QDtlIPevmf70AIF79yqJxLQSNZshssVO0gQGe
-	 S3Y2wt833M1OA==
+	b=brNnxV2APJL6CDVOruAOYWetiD0wY1K6o7Im04dQsDiBlwDAzik83b0miXsZ1sYKY
+	 tppdn3RcGe28cwVl4GbYpWHuFyqZ15U0wYLSCz/D3npInK4hsuuU+vNj/PlaZMYgeC
+	 6relWYfvShMr/MdoOM+AvUNtzoXrE3IC3GrcYgVqISUMd7Au7PbbYdww+/Uig2K76S
+	 xNPM99SjWsSlAs5Vsk8vKwL/wo3iBesF1KaAAGrVc1pjyz0fymaxnGw6Xd+8/FLT13
+	 g0w0kcpL59Q9z1CA6jyIWKZ0o6xn83ZwcHyQzEfkfrFPfoyZuTRWmbgrnR58c2Wpi6
+	 ZfwQoNJsfcr1g==
 From: Vinod Koul <vkoul@kernel.org>
-To: Kishon Vijay Abraham I <kishon@kernel.org>, 
- Heiko Stuebner <heiko@sntech.de>, 
- Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Cc: kernel@collabora.com, linux-phy@lists.infradead.org, 
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
- linux-kernel@vger.kernel.org, kernel test robot <lkp@intel.com>
-In-Reply-To: <20240923-sam-hdptx-link-fix-v1-1-8d10d7456305@collabora.com>
-References: <20240923-sam-hdptx-link-fix-v1-1-8d10d7456305@collabora.com>
-Subject: Re: [PATCH] phy: phy-rockchip-samsung-hdptx: Depend on
- CONFIG_COMMON_CLK
-Message-Id: <172917909130.278159.917332740340210062.b4-ty@kernel.org>
-Date: Thu, 17 Oct 2024 21:01:31 +0530
+To: kishon@kernel.org, robh@kernel.org, krzk+dt@kernel.org, 
+ conor+dt@kernel.org, heiko@sntech.de, Frank Wang <frawang.cn@gmail.com>
+Cc: linux-phy@lists.infradead.org, devicetree@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ linux-rockchip@lists.infradead.org, william.wu@rock-chips.com, 
+ tim.chen@rock-chips.com, yubing.zhang@rock-chips.com, 
+ Frank Wang <frank.wang@rock-chips.com>
+In-Reply-To: <20241017025230.28752-1-frawang.cn@gmail.com>
+References: <20241017025230.28752-1-frawang.cn@gmail.com>
+Subject: Re: (subset) [PATCH v2 1/3] dt-bindings: soc: rockchip: add rk3576
+ vo1-grf syscon
+Message-Id: <172917932783.288841.4239096557035814697.b4-ty@kernel.org>
+Date: Thu, 17 Oct 2024 21:05:27 +0530
 MIME-Version: 1.0
 X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241017_083135_126925_4AC74D6C 
-X-CRM114-Status: UNSURE (   5.85  )
+X-CRM114-CacheID: sfid-20241017_083533_099611_D1073318 
+X-CRM114-Status: UNSURE (   4.77  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -77,23 +78,20 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
-On Mon, 23 Sep 2024 19:40:16 +0300, Cristian Ciocaltea wrote:
-> Ensure CONFIG_PHY_ROCKCHIP_SAMSUNG_HDPTX depends on CONFIG_COMMON_CLK to
-> fix the following link errors when compile testing some random kernel
-> configurations:
+On Thu, 17 Oct 2024 10:52:28 +0800, Frank Wang wrote:
+> From: Frank Wang <frank.wang@rock-chips.com>
 > 
->   m68k-linux-ld: drivers/phy/rockchip/phy-rockchip-samsung-hdptx.o: in function `rk_hdptx_phy_clk_register':
->   drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c:1031:(.text+0x470): undefined reference to `__clk_get_name'
->   m68k-linux-ld: drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c:1036:(.text+0x4ba): undefined reference to `devm_clk_hw_register'
->   m68k-linux-ld: drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c:1040:(.text+0x4d2): undefined reference to `of_clk_hw_simple_get'
->   m68k-linux-ld: drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c:1040:(.text+0x4da): undefined reference to `devm_of_clk_add_hw_provider'
+> Add rockchip,rk3576-vo1-grf syscon compatible, the vo1-grf is
+> configured in usbdp phy driver.
 > 
-> [...]
+> 
 
 Applied, thanks!
 
-[1/1] phy: phy-rockchip-samsung-hdptx: Depend on CONFIG_COMMON_CLK
-      commit: d8f9d6d826fc15780451802796bb88ec52978f17
+[2/3] dt-bindings: phy: rockchip-usbdp: add rk3576
+      commit: b3e804ab9aad465ba7285aa5daf83656d5efc59f
+[3/3] phy: rockchip: usbdp: add rk3576 device match data
+      commit: a76de028c619dd18f89786805bcc7bb4d379ea9f
 
 Best regards,
 -- 
