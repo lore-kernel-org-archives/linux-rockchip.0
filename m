@@ -4,69 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 74747D21274
-	for <linux-rockchip@archiver.kernel.org>; Thu, 17 Oct 2024 10:15:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 774AAD3749A
+	for <linux-rockchip@archiver.kernel.org>; Thu, 17 Oct 2024 14:12:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
+	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Vb08Lq94TfBr/qAP3+Jm2GfHPEUyDe3vRD/K+vIyoUU=; b=RikXnfODeQZnYH
-	AuU7uGRO+aaOW61dUFzRHNLV67OdgJlnohsnqLJpYNk3eA1rUn60TKqQoJEw8nd5aIkU7XNdB8gna
-	s2KKrZyo29iH0MYZiYwqxKgbEYpDGIugGBaLsapvRwoNTST45dzEi8t4eoVfXC2D4Esx26u8lzzON
-	2+koTHiHbNI6dwch0SOFHRWHwj8+rACgURiHdJw1CvW0K+gFYG5TeYgkfSz8VyVOv0/oFfQIaER3G
-	QOTk6KO6E9R6124JmLw7U5n4JAeee1O0WmHGBO0GR8ExXDttBhmaAGcRKN9BLv31dVeEnsvQDbPju
-	YX17AEAvFCEuwW4UC/Tw==;
+	List-Owner; bh=CNkyzq0fyGMJnWl1u/srEWDkwVG7GOdsutPOTKXH7Dk=; b=FzlHZdREPnzXZ6
+	J6rvy08nQrLVM2YjIbTvqKrlQfqqmN6xG1uZLVRcHj4suGqc3urcpSdMsgEdq1HH63vzxPsTjvyVW
+	o9js6bR3iTXttfqVTyhKDa4lM4h5KOD7ur5E/oxMXIVGYCjnju2ZPbTieNwmI+qaowVoabd+eCb7i
+	jpXRM7TPZ0ymuLwECHl5y8QwKKSZs8qZbXt3P9IDfm6EDoof9qyWMCsMnRHqDbEgxVn7r0OO8mZKO
+	gqfstZXqBld+y1ttdGgKnXOgNFqDyf/TLyZd1Ewy/A/gQEsJ8vesx7JdboIyaPhS56NCyLQWNr+6Z
+	Th3aK8P+nvE2IwFNAUzg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t1NXs-0000000EUQ2-0IlE;
-	Thu, 17 Oct 2024 10:15:52 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1t1REi-0000000F43z-1rNO;
+	Thu, 17 Oct 2024 14:12:20 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t1NBR-0000000EQE1-38uP
-	for linux-rockchip@lists.infradead.org;
-	Thu, 17 Oct 2024 09:52:43 +0000
+	id 1t1RDp-0000000F3pY-3SVv;
+	Thu, 17 Oct 2024 14:11:27 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 0A8D0A43AFE;
-	Thu, 17 Oct 2024 09:52:32 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B701EC4CED1;
-	Thu, 17 Oct 2024 09:52:37 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id 7553CA44019;
+	Thu, 17 Oct 2024 14:11:15 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A1D9CC4CEC7;
+	Thu, 17 Oct 2024 14:11:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1729158760;
-	bh=uukEasIQNFgjyA46j6yP84HfXniUu+fVrEHA2EgplSs=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=PIN/UOb+jYQdtHShMKSEAPVkRiEk3O+matAyczVNRM/9cCII3p41QM1Vh1LRUWBew
-	 Dkn62I7kl0iao9jlrXinm4nG/n/JeU0HsxGwZa4befRw/12t8EferCYJLCDGMWCPuW
-	 9GvNu2F6dm39IZqm4WXmzDfbkSuDhhmhB2KN2YB4nXU8uOAdFrPju31DH/TI/ZQQ6C
-	 puvtBGDxKIlbvV/8g6rxVp/3lTvuu55B/FJU3DTudJwfr63QjuvkLWgA5AxANfFoBT
-	 Y4ZzJDH3db3zdHHx0rhAStjm5NU9ktl7uCMBhkMtwelN+LutLnQRbI6gvE/fBzwfaF
-	 lGdtEzb3OxwSg==
-Date: Thu, 17 Oct 2024 11:52:34 +0200
-From: Niklas Cassel <cassel@kernel.org>
-To: Damien Le Moal <dlemoal@kernel.org>
-Cc: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Kishon Vijay Abraham I <kishon@kernel.org>,
-	Shawn Lin <shawn.lin@rock-chips.com>,
-	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
-	Bjorn Helgaas <bhelgaas@google.com>, linux-pci@vger.kernel.org,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>, devicetree@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	Rick Wertenbroek <rick.wertenbroek@gmail.com>
-Subject: Re: [PATCH v5 06/14] PCI: rockchip-ep: Fix MSI IRQ data mapping
-Message-ID: <ZxDeYqfti0iiK8D2@ryzen.lan>
-References: <20241017015849.190271-1-dlemoal@kernel.org>
- <20241017015849.190271-7-dlemoal@kernel.org>
+	s=k20201202; t=1729174284;
+	bh=P7LRMT5V/UAyFIi2zjmQ8b9UCs/nHWtLwIpUD5KHXEk=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=GfkODlVKHsJs4WEAUl905tfbJfpPdYBTdfoCoXofZmItiDs/4HizBJj9RBBE48ih4
+	 W/Bw42A/lq2IeoXZimuhybKEs82zyRTvZ2hQavgauH4bYRUpq9qCJXsrScAXdQd55G
+	 LTcTeJk4AWepF1iEiBuMrsgT/Gv8jOdPIFG2ifE5OdizRABk/MXNwWf10w70yXmnZJ
+	 lg/0JK44YH1o8vC8sr6Tvk4V0ZcrG5iteD+p0fDStyxAllIS3RNrzzf4MSDWnVEglL
+	 crgkUosfeNtf1VmdwcV8CaMztC+8OS9ox8qc8abN24hGoiBBkP1+be/pT+n8Rcu0aF
+	 cltg8Ev5uxTdQ==
+From: Maxime Ripard <mripard@kernel.org>
+To: Andrzej Hajda <andrzej.hajda@intel.com>, 
+ Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
+ Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+ Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, 
+ Sandy Huang <hjc@rock-chips.com>, 
+ =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
+ Andy Yan <andy.yan@rock-chips.com>, Rob Herring <robh@kernel.org>, 
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Mark Yao <markyao0591@gmail.com>, 
+ Sascha Hauer <s.hauer@pengutronix.de>, Simona Vetter <simona@ffwll.ch>, 
+ Simona Vetter <simona.vetter@ffwll.ch>, 
+ Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+Cc: dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+ devicetree@vger.kernel.org, kernel@collabora.com, 
+ Alexandre ARNOUD <aarnoud@me.com>, Luis de Arquer <ldearquer@gmail.com>, 
+ Algea Cao <algea.cao@rock-chips.com>, 
+ Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20241016-b4-rk3588-bridge-upstream-v10-0-87ef92a6d14e@collabora.com>
+References: <20241016-b4-rk3588-bridge-upstream-v10-0-87ef92a6d14e@collabora.com>
+Subject: Re: [PATCH v10 0/3] Add initial support for the Rockchip RK3588
+ HDMI TX Controller
+Message-Id: <172917428139.3344404.160573495360164649.b4-ty@kernel.org>
+Date: Thu, 17 Oct 2024 16:11:21 +0200
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20241017015849.190271-7-dlemoal@kernel.org>
+X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241017_025241_938373_4884B56E 
-X-CRM114-Status: GOOD (  24.09  )
+X-CRM114-CacheID: sfid-20241017_071125_982287_47A75B50 
+X-CRM114-Status: UNSURE (   7.23  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,99 +90,29 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, Oct 17, 2024 at 10:58:41AM +0900, Damien Le Moal wrote:
-> The call to rockchip_pcie_prog_ep_ob_atu() used to map the PCI address
-> of MSI data to the memory window allocated on probe for IRQs is done
-> in rockchip_pcie_ep_send_msi_irq() assuming a fixed alignment to a
-> 256B boundary of the PCI address.  This is not correct as the alignment
-> constraint for the RK3399 PCI mapping depends on the number of bits of
-> address changing in the mapped region. This leads to an unstable system
-> which sometimes work and sometimes does not (crashing on paging faults
-> when memcpy_toio() or memcpy_fromio() are used).
+On Wed, 16 Oct 2024 23:06:50 +0300, Cristian Ciocaltea wrote:
+> The Rockchip RK3588 SoC family integrates the Synopsys DesignWare HDMI
+> 2.1 Quad-Pixel (QP) TX controller, which is a new IP block, quite
+> different from those used in the previous generations of Rockchip SoCs.
 > 
-> Similar to regular data mapping, the MSI data mapping must thus be
-> handled according to the information provided by
-> rockchip_pcie_ep_align_addr(). Modify rockchip_pcie_ep_send_msi_irq()
-> to use rockchip_pcie_ep_align_addr() to correctly program entry 0 of
-> the ATU for sending MSI IRQs.
+> The controller supports the following features, among others:
 > 
-> Signed-off-by: Damien Le Moal <dlemoal@kernel.org>
-> ---
->  drivers/pci/controller/pcie-rockchip-ep.c | 22 +++++++++++++---------
->  1 file changed, 13 insertions(+), 9 deletions(-)
+> * Fixed Rate Link (FRL)
+> * Display Stream Compression (DSC)
+> * 4K@120Hz and 8K@60Hz video modes
+> * Variable Refresh Rate (VRR) including Quick Media Switching (QMS)
+> * Fast Vactive (FVA)
+> * SCDC I2C DDC access
+> * Multi-stream audio
+> * Enhanced Audio Return Channel (EARC)
 > 
-> diff --git a/drivers/pci/controller/pcie-rockchip-ep.c b/drivers/pci/controller/pcie-rockchip-ep.c
-> index f6959f9b94b7..dcd1b5415602 100644
-> --- a/drivers/pci/controller/pcie-rockchip-ep.c
-> +++ b/drivers/pci/controller/pcie-rockchip-ep.c
-> @@ -379,9 +379,10 @@ static int rockchip_pcie_ep_send_msi_irq(struct rockchip_pcie_ep *ep, u8 fn,
->  {
->  	struct rockchip_pcie *rockchip = &ep->rockchip;
->  	u32 flags, mme, data, data_mask;
-> +	size_t irq_pci_size, offset;
-> +	u64 irq_pci_addr;
->  	u8 msi_count;
->  	u64 pci_addr;
-> -	u32 r;
->  
->  	/* Check MSI enable bit */
->  	flags = rockchip_pcie_read(&ep->rockchip,
-> @@ -417,18 +418,21 @@ static int rockchip_pcie_ep_send_msi_irq(struct rockchip_pcie_ep *ep, u8 fn,
->  				       PCI_MSI_ADDRESS_LO);
->  
->  	/* Set the outbound region if needed. */
-> -	if (unlikely(ep->irq_pci_addr != (pci_addr & PCIE_ADDR_MASK) ||
-> +	irq_pci_size = ~PCIE_ADDR_MASK + 1;
-> +	irq_pci_addr = rockchip_pcie_ep_align_addr(ep->epc,
-> +						   pci_addr & PCIE_ADDR_MASK,
-> +						   &irq_pci_size, &offset);
-> +	if (unlikely(ep->irq_pci_addr != irq_pci_addr ||
->  		     ep->irq_pci_fn != fn)) {
-> -		r = rockchip_ob_region(ep->irq_phys_addr);
-> -		rockchip_pcie_prog_ep_ob_atu(rockchip, fn, r,
-> -					     ep->irq_phys_addr,
-> -					     pci_addr & PCIE_ADDR_MASK,
-> -					     ~PCIE_ADDR_MASK + 1);
-> -		ep->irq_pci_addr = (pci_addr & PCIE_ADDR_MASK);
-> +		rockchip_pcie_prog_ep_ob_atu(rockchip, fn,
-> +					rockchip_ob_region(ep->irq_phys_addr),
-> +					ep->irq_phys_addr,
-> +					irq_pci_addr, irq_pci_size);
-> +		ep->irq_pci_addr = irq_pci_addr;
->  		ep->irq_pci_fn = fn;
->  	}
->  
-> -	writew(data, ep->irq_cpu_addr + (pci_addr & ~PCIE_ADDR_MASK));
-> +	writew(data, ep->irq_cpu_addr + offset + (pci_addr & ~PCIE_ADDR_MASK));
->  	return 0;
->  }
->  
-> -- 
-> 2.47.0
-> 
+> [...]
 
-Nice catch.
+Applied to misc/kernel.git (drm-misc-next).
 
-For DWC, in dw_pcie_ep_raise_msi_irq()
-https://github.com/torvalds/linux/blob/v6.12-rc3/drivers/pci/controller/dwc/pcie-designware-ep.c#L519-L522
+Thanks!
+Maxime
 
-and in dw_pcie_ep_raise_msix_irq()
-https://github.com/torvalds/linux/blob/v6.12-rc3/drivers/pci/controller/dwc/pcie-designware-ep.c#L603-L606
-
-We also make sure that the address that we map is aligned,
-and then write to the correct offset within that mapping:
-ep->msi_mem + aligned_offset;
-in order to write to the actual MSI address.
-
-To me, it looks like doing a similar change as this patch does,
-to dw_pcie_ep_raise_msi_irq() and dw_pcie_ep_raise_msix_irq(),
-would make the PCI endpoint code more consistent overall.
-
-Thoughts?
-
-
-Kind regards,
-Niklas
 
 _______________________________________________
 Linux-rockchip mailing list
