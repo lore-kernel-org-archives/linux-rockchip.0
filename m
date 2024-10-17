@@ -4,91 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EED87D2F7DA
-	for <linux-rockchip@archiver.kernel.org>; Thu, 17 Oct 2024 02:57:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 91205D2F7E2
+	for <linux-rockchip@archiver.kernel.org>; Thu, 17 Oct 2024 03:01:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=E1UaEXhhRYRVnVuqK9mv85wdej3XeCC7gAgbXZLHTZ4=; b=kuIHJEcV+T6d/i
-	1Jbxm5gpmNYmV6E9VxhDiGmPbhg4AMoE1oHEgoU61UXwiFttGZE8DxMKL6DB/OaM5Ely8abkO48an
-	ohXS6bl0Z8iAFyxp81x8zhK9OT2X64LGmLGUGdMBh8RkBIXA9M18T0FDyopYy5P55AiIh+LW7HbQJ
-	vipOWJb5nqZNVFtqiJzApoqcBPPFiMcwTfLveSEgKGv4Pp58ADnuaalEQw/IbZNWdqDlyhRk/K8Yt
-	oHXp0GdwACqAPDtvDvekE8jI3ut2E6207ms8QIfPLmVD8mincFUfmnz8W2VnMNUkYXzCFKr1HUmGN
-	3OeOJwgqgzvpc0ztlAuA==;
+	List-Owner; bh=ScxQnf9fRgOOQkVGu3D046i7typMfUQ9SktNk86a9qI=; b=ti/+cO/z0oeuIM
+	a0Vpmpcsp2pBGqhMGJ4PkCPqX4iDiSRX9ZiqMQlj/PmJ9gYkwlXp1FVCmzZmwgq1lZ18hygBZiDHj
+	icS+E5dLdPo4SopZKgpWeSESRc/qX5ca+TGBNEu33AnOAYf6pCcYw2Ld5ZlsLP0FeAyjJ87REHCOZ
+	7gK6nusdr40Snb/yprSL74RYRMoynqf5zmbkmiDQAt1HJqJtwhYySp/N4AOaK49SUhEOZxsUddg5E
+	LMedhy5p4th3A/AU0BboWU42tlN36DNLh2l12OXl4syeIsKNle2qm1HGCLsxvIaE50lANK+Wcih8i
+	kZiyQpzr9FjJci1U4j7Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t1GhT-0000000DbQp-3qxs;
-	Thu, 17 Oct 2024 02:57:19 +0000
-Received: from mail-pj1-x102f.google.com ([2607:f8b0:4864:20::102f])
+	id 1t1Gky-0000000DbwC-0VaC;
+	Thu, 17 Oct 2024 03:00:56 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t1Gd7-0000000DajH-0HS3;
-	Thu, 17 Oct 2024 02:52:50 +0000
-Received: by mail-pj1-x102f.google.com with SMTP id 98e67ed59e1d1-2e29497f11cso76922a91.2;
-        Wed, 16 Oct 2024 19:52:48 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1729133568; x=1729738368; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=Gf+PMX6YxweSXYAEzNrfFe+MZTHHEq+3Qule4g5FzBA=;
-        b=EnsO1sTv5RwXZfER/hWuBrMdXLw6WUZRhKfW8Qeek2j86ixN8cQ14VcQvvwww11trD
-         ntRDlHFf+kcyY4dxWEpb8vjbjcMPo4XILNa6PW8dpVCiiuwOwKwodIvX5E4S4u7V3kug
-         UzYGNm0JSG1Q0IQpkeJEFPTa1yAkKcJVozOczsTVUtPqPf54X/uIWnQ4IfntAq4jjkbu
-         rhBvs4rx+WO4dCWrVR3V4e71wJA8DcITIjPA3zLUQJsXEYKt+CYeqJ6KrHMFVMif/y46
-         DB/Jx+sbVSBY3YoC5oAU8CYUfk9YNCMb9fBGJ+PeOOsYDS7eFXY0eKfJyX53w3QPjB30
-         OBZw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1729133568; x=1729738368;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=Gf+PMX6YxweSXYAEzNrfFe+MZTHHEq+3Qule4g5FzBA=;
-        b=q3Z9Ug+D5alXqpfR4FzqUcOb2urnTj4RUxwBSVgwl3Yn/O45UagwIGPDlgDOoBLvQB
-         +3LXEILXO9pHi6s5uuoWEwJesDo5VQ9QtQqtHLsUtKtt9lagkJld7kv3due0Bo29Ejjj
-         YXFmtQPgOG7rCD7YGnJLB6xPwj7RyST59xKtRqxYwDe0uR5MAMsT4Jv33YGlmpeI5U24
-         I/TRUy4dvItR5u0mLaCMPW+olM2nxgDI3DdutvwHjnH2JS3AsYMEwDqBQGifj4oNo9M0
-         ANF0E10SY6cTbbcItK3QsjwPyjFclb2oo21YrdBEUcEcMy4PYsDRibzAXOcKFKDfYkcS
-         zcRQ==
-X-Forwarded-Encrypted: i=1; AJvYcCU8VIEVjIg7BbKrfVRBTSbV7wcKNrAfWtd4iFHcY692qhFaMOXlV/qDnplucGrcVCtAMPb3F4j5NLjXLc8CN8aV@lists.infradead.org, AJvYcCVagMOGCkT/xagCf7Obovv/uxaCpMwso9BGy2GR8MnZjrGy/gjmeXOJpXhNt4i8CrrUTlv8unXl5RS1HyrHk2w=@lists.infradead.org
-X-Gm-Message-State: AOJu0Yzu1g1XYVdpXa4oe3/3Nf6ACqPXiz/xxIKr2LcU/7TG0tyzTksO
-	0P2NRZGwcXcykHBfHz7xzEQv2BdjCf1umrNTyE/5j5VisvYSbL+cCWT+yA==
-X-Google-Smtp-Source: AGHT+IHEYEmjYlU0tYbqmxNPBntwEjtGskPlYMwZntBvTJCgBTEhOctyXNt80QCb485EeMieShL0Sg==
-X-Received: by 2002:a17:90a:bf85:b0:2e2:ada8:2984 with SMTP id 98e67ed59e1d1-2e3dc25fc19mr918337a91.4.1729133568018;
-        Wed, 16 Oct 2024 19:52:48 -0700 (PDT)
-Received: from localhost.localdomain ([103.29.142.67])
-        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-2e3e08d8b6esm628537a91.29.2024.10.16.19.52.43
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 16 Oct 2024 19:52:47 -0700 (PDT)
-From: Frank Wang <frawang.cn@gmail.com>
-To: vkoul@kernel.org,
-	kishon@kernel.org,
-	robh@kernel.org,
-	krzk+dt@kernel.org,
-	conor+dt@kernel.org,
-	heiko@sntech.de
-Cc: linux-phy@lists.infradead.org,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	william.wu@rock-chips.com,
-	tim.chen@rock-chips.com,
-	yubing.zhang@rock-chips.com,
-	Frank Wang <frank.wang@rock-chips.com>,
-	Dragan Simic <dsimic@manjaro.org>
-Subject: [PATCH v2 3/3] phy: rockchip: usbdp: add rk3576 device match data
-Date: Thu, 17 Oct 2024 10:52:30 +0800
-Message-Id: <20241017025230.28752-3-frawang.cn@gmail.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20241017025230.28752-1-frawang.cn@gmail.com>
-References: <20241017025230.28752-1-frawang.cn@gmail.com>
+	id 1t1FnA-0000000DUoP-0HwY
+	for linux-rockchip@lists.infradead.org;
+	Thu, 17 Oct 2024 01:59:10 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id 8EFAAA40DED;
+	Thu, 17 Oct 2024 01:58:57 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 88DB4C4CED0;
+	Thu, 17 Oct 2024 01:59:04 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1729130346;
+	bh=cGogfKDAaP5QdN9tIREGdoJWnNKUGTNQsxIwLw1Hkwo=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=ENbypHjkiFN71XKpXMX/O2XF5TmHRJ8GkuUQEz10j6ffehYmn9Gdvt2r0+pxmGyh2
+	 uWJdJcry0O8u4NF+8YJ28UId1T2l97blSKp5iKcOvYCA+xijbpRjkxKxipWo6t0f4i
+	 5xKACM1kKwi/T8ki/hYW+MdaAqsDAfySOyvhUnaHqHlW8Xjy/YTZkERSwrkdb4ARdV
+	 tFxr3ETOSP21WIMCH3vuJv+XlurkWpB6QGV54WXMw6ZsYDokowh87etCm5SZflUCp0
+	 3k5dx4x9Q9kd/jiRKuRj+2mNsZwhVxWMavcS2i2hb/czP984UeD1z+oJbIuWpzG3oO
+	 e03Q4Ua05n3/g==
+From: Damien Le Moal <dlemoal@kernel.org>
+To: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Kishon Vijay Abraham I <kishon@kernel.org>,
+	Shawn Lin <shawn.lin@rock-chips.com>,
+	=?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kw@linux.com>,
+	Bjorn Helgaas <bhelgaas@google.com>,
+	linux-pci@vger.kernel.org,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	devicetree@vger.kernel.org
+Cc: linux-rockchip@lists.infradead.org,
+	Rick Wertenbroek <rick.wertenbroek@gmail.com>,
+	Niklas Cassel <cassel@kernel.org>
+Subject: [PATCH v5 07/14] PCI: rockchip-ep: Rename rockchip_pcie_parse_ep_dt()
+Date: Thu, 17 Oct 2024 10:58:42 +0900
+Message-ID: <20241017015849.190271-8-dlemoal@kernel.org>
+X-Mailer: git-send-email 2.47.0
+In-Reply-To: <20241017015849.190271-1-dlemoal@kernel.org>
+References: <20241017015849.190271-1-dlemoal@kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241016_195249_131785_C36B5A79 
-X-CRM114-Status: GOOD (  10.60  )
+X-CRM114-CacheID: sfid-20241016_185908_376568_2C09638F 
+X-CRM114-Status: GOOD (  10.98  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,85 +84,44 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Frank Wang <frank.wang@rock-chips.com>
+To be consistent with the usual "get_resources" naming of driver
+functions that acquire controller resources like clocks, PHY etc, rename
+the function rockchip_pcie_parse_ep_dt() to
+rockchip_pcie_ep_get_resources().
 
-This adds RK3576 device match data support.
+No functional changes.
 
-Signed-off-by: Frank Wang <frank.wang@rock-chips.com>
-Acked-by: Dragan Simic <dsimic@manjaro.org>
-Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+Signed-off-by: Damien Le Moal <dlemoal@kernel.org>
 ---
-Changelog:
-v2:
- - add Reviewed and Acked tag.
+ drivers/pci/controller/pcie-rockchip-ep.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-v1:
- - https://patchwork.kernel.org/project/linux-phy/patch/20241014020342.15974-2-frawang.cn@gmail.com/
-
- drivers/phy/rockchip/phy-rockchip-usbdp.c | 41 +++++++++++++++++++++++
- 1 file changed, 41 insertions(+)
-
-diff --git a/drivers/phy/rockchip/phy-rockchip-usbdp.c b/drivers/phy/rockchip/phy-rockchip-usbdp.c
-index 2c51e5c62d3eb..5b1e8a3806ed4 100644
---- a/drivers/phy/rockchip/phy-rockchip-usbdp.c
-+++ b/drivers/phy/rockchip/phy-rockchip-usbdp.c
-@@ -1538,6 +1538,43 @@ static const char * const rk_udphy_rst_list[] = {
- 	"init", "cmn", "lane", "pcs_apb", "pma_apb"
+diff --git a/drivers/pci/controller/pcie-rockchip-ep.c b/drivers/pci/controller/pcie-rockchip-ep.c
+index dcd1b5415602..705f6741fa53 100644
+--- a/drivers/pci/controller/pcie-rockchip-ep.c
++++ b/drivers/pci/controller/pcie-rockchip-ep.c
+@@ -494,8 +494,8 @@ static const struct pci_epc_ops rockchip_pcie_epc_ops = {
+ 	.get_features	= rockchip_pcie_ep_get_features,
  };
  
-+static const struct rk_udphy_cfg rk3576_udphy_cfgs = {
-+	.num_phys = 1,
-+	.phy_ids = { 0x2b010000 },
-+	.num_rsts = ARRAY_SIZE(rk_udphy_rst_list),
-+	.rst_list = rk_udphy_rst_list,
-+	.grfcfg	= {
-+		/* u2phy-grf */
-+		.bvalid_phy_con		= RK_UDPHY_GEN_GRF_REG(0x0010, 1, 0, 0x2, 0x3),
-+		.bvalid_grf_con		= RK_UDPHY_GEN_GRF_REG(0x0000, 15, 14, 0x1, 0x3),
-+
-+		/* usb-grf */
-+		.usb3otg0_cfg		= RK_UDPHY_GEN_GRF_REG(0x0030, 15, 0, 0x1100, 0x0188),
-+
-+		/* usbdpphy-grf */
-+		.low_pwrn		= RK_UDPHY_GEN_GRF_REG(0x0004, 13, 13, 0, 1),
-+		.rx_lfps		= RK_UDPHY_GEN_GRF_REG(0x0004, 14, 14, 0, 1),
-+	},
-+	.vogrfcfg = {
-+		{
-+			.hpd_trigger	= RK_UDPHY_GEN_GRF_REG(0x0000, 11, 10, 1, 3),
-+			.dp_lane_reg    = 0x0000,
-+		},
-+	},
-+	.dp_tx_ctrl_cfg = {
-+		rk3588_dp_tx_drv_ctrl_rbr_hbr_typec,
-+		rk3588_dp_tx_drv_ctrl_rbr_hbr_typec,
-+		rk3588_dp_tx_drv_ctrl_hbr2,
-+		rk3588_dp_tx_drv_ctrl_hbr3,
-+	},
-+	.dp_tx_ctrl_cfg_typec = {
-+		rk3588_dp_tx_drv_ctrl_rbr_hbr_typec,
-+		rk3588_dp_tx_drv_ctrl_rbr_hbr_typec,
-+		rk3588_dp_tx_drv_ctrl_hbr2,
-+		rk3588_dp_tx_drv_ctrl_hbr3,
-+	},
-+};
-+
- static const struct rk_udphy_cfg rk3588_udphy_cfgs = {
- 	.num_phys = 2,
- 	.phy_ids = {
-@@ -1584,6 +1621,10 @@ static const struct rk_udphy_cfg rk3588_udphy_cfgs = {
- };
+-static int rockchip_pcie_parse_ep_dt(struct rockchip_pcie *rockchip,
+-				     struct rockchip_pcie_ep *ep)
++static int rockchip_pcie_ep_get_resources(struct rockchip_pcie *rockchip,
++					  struct rockchip_pcie_ep *ep)
+ {
+ 	struct device *dev = rockchip->dev;
+ 	int err;
+@@ -557,7 +557,7 @@ static int rockchip_pcie_ep_probe(struct platform_device *pdev)
+ 	ep->epc = epc;
+ 	epc_set_drvdata(epc, ep);
  
- static const struct of_device_id rk_udphy_dt_match[] = {
-+	{
-+		.compatible = "rockchip,rk3576-usbdp-phy",
-+		.data = &rk3576_udphy_cfgs
-+	},
- 	{
- 		.compatible = "rockchip,rk3588-usbdp-phy",
- 		.data = &rk3588_udphy_cfgs
+-	err = rockchip_pcie_parse_ep_dt(rockchip, ep);
++	err = rockchip_pcie_ep_get_resources(rockchip, ep);
+ 	if (err)
+ 		return err;
+ 
 -- 
-2.25.1
+2.47.0
 
 
 _______________________________________________
