@@ -4,50 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AABBBD3F2A6
-	for <linux-rockchip@archiver.kernel.org>; Fri, 18 Oct 2024 21:46:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 91CE8D3F2AA
+	for <linux-rockchip@archiver.kernel.org>; Fri, 18 Oct 2024 21:47:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=7JCcvaR9qZtsGd1nEF8eNB2YjOsryNDWvamt8wIQkmE=; b=aHNoVKsLidpIHQ
-	utYdmB0ccIf0Mhml5CuWHNYBKL2AEOifKHP7wk3NvRKo0RdpaCY3jAa/TM7K7NRdgdrR8mElxXWcY
-	PBQyZ/Wt8z7DoOtc5uS3oj/rqr7RRrob1Jum93J7gOupMaMGdADIyooyXfU2xCCvVuMXxijjfuoNs
-	Fsndb3jTdqY0/KJduZoi+0oLVxlXEh7oCzEI6VISVwQQDA/cOv1XNXd9/z37wCp4LPnMbHTySf6Xx
-	ZCBrBX9dwILelvzC0nhMljtiJpuLvMv4de/BrRqgUb90Tdf4zFUzDGsTI4zzL737KGHn0puFvAUb7
-	XSeNnb5uvFIISJl3Loaw==;
+	List-Owner; bh=XX+QupAVigbnfTMyQpN36dRrAatgRPQ9zd1MmLA6GuA=; b=G1Fkq4+mIdF2Q+
+	U5OY48LeNJrxlHo4myMGqu5j88tu8DMySJltPuBT/hJn4wnZWp5iy2ab8QxY8IcTkqWwc3JNtdFQX
+	bYmG8ylXUANIi/UFuFuZ2++uGtIBBzg9zxLKkF8TPI0Hf46FWicoUKlQOIDbtclWxt71y8ss7qGa1
+	rmnjxsge3QHG48/bpsj3OOfNTV56BSiUfUGDrN0FduY1IWyUUjJgVxefZwGkZUjByYhZTuypfFa2D
+	8CrvY7Km01wdm5nAiEAHLAB4bfswFd+UNdBC3jzLfRKfqJRxar6vi2QMOiGG0ycozS3ewQmpbjcEM
+	CTvn8oUFbhYyUDpL1FwQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t1und-000000026mr-3YC3;
-	Fri, 18 Oct 2024 21:46:21 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1t1up4-000000026w0-0Pvy;
+	Fri, 18 Oct 2024 21:47:50 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t1uhs-000000025lh-0ec5;
-	Fri, 18 Oct 2024 21:40:25 +0000
+	id 1t1uhs-000000025m4-3XCm;
+	Fri, 18 Oct 2024 21:40:26 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1729287622;
-	bh=dcAzLYdeTArkjRaoR6EOKg0UQYPSvk1zvu+tq9qsMAc=;
+	s=mail; t=1729287623;
+	bh=Jr41L06cJhaViYFmP0B+b+cWwpUnFddqeq9b14cNNXc=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=fdxaEPPsZ0cZbzcOismxEHksc24MU+GjT4/pQZMYTja2rK4PJoU17XkhsMDrm2GQS
-	 GOIhDBJgVzTy3CSNa0rymHNl3xzGEBmsyKSbgwuNVTtJEkUgj/dhShaP2c3QTIzvyb
-	 y2OrCv3kxX6Wsih8tuMLAPgdIbyEUGCSJQMD9lp2PqDMceyrbMthcqmlx6dDBRIuI1
-	 JKHvvA9omTKNhpXdxyA1l4jijNeFx2zCEVmrUXKEFjhpYcyvkAZqRR7uuI+LkZrA0H
-	 1/vcf/AA0s4vuymnT5qR3wG71eksEKUabvoyAw8Q2pnL8RhwQTRtPHD8cPbnh+0CnO
-	 l7wcLByO3TVLw==
+	b=S8+CYsaNvWg/8oM5l8TiHg2+L0tUOQ5F+Ie2KbojtBwBr1rDzQJOHhh9CBp7bPoJ8
+	 5eFB+hkripTfdshvfqpohHz0fOoqfA6Wxi23/2h80mAWOrYo1IgsbR29LIlgtsSNXU
+	 PjAEkC4jAP2vcOHB3JYZ7WfUnApqDt2vcJgLt8Ea6ZDX2ama+gePvRzYzRsmlcXN3L
+	 wEf+ACYpVNO59/GcwS2uICJiVVgOti6iHhZKIKGSV4sXX2KoguUJ1AmEmKxQuu/dpX
+	 w0HYrdHElE4tjDlkKnrLkEw8iv4nrHKy+w5Oq0ol0KVHhnlJq2iTQRhCreIvuY1ADo
+	 0B6kdLuepMpnQ==
 Received: from localhost (unknown [188.24.146.62])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 767C817E3761;
-	Fri, 18 Oct 2024 23:40:22 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 3CBD117E3762;
+	Fri, 18 Oct 2024 23:40:23 +0200 (CEST)
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Date: Sat, 19 Oct 2024 00:39:51 +0300
-Subject: [PATCH 3/5] arm64: dts: rockchip: Enable HDMI0 on rk3588-evb1
+Date: Sat, 19 Oct 2024 00:39:52 +0300
+Subject: [PATCH 4/5] arm64: dts: rockchip: Enable HDMI0 on orangepi-5-plus
 MIME-Version: 1.0
-Message-Id: <20241019-rk3588-hdmi0-dt-v1-3-bd8f299feacd@collabora.com>
+Message-Id: <20241019-rk3588-hdmi0-dt-v1-4-bd8f299feacd@collabora.com>
 References: <20241019-rk3588-hdmi0-dt-v1-0-bd8f299feacd@collabora.com>
 In-Reply-To: <20241019-rk3588-hdmi0-dt-v1-0-bd8f299feacd@collabora.com>
 To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
@@ -59,8 +59,8 @@ Cc: kernel@collabora.com, devicetree@vger.kernel.org,
  linux-kernel@vger.kernel.org
 X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241018_144024_401504_D29C4950 
-X-CRM114-Status: UNSURE (   9.31  )
+X-CRM114-CacheID: sfid-20241018_144025_077056_E50B391C 
+X-CRM114-Status: UNSURE (   9.62  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -78,27 +78,27 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add the necessary DT changes to enable HDMI0 on Rockchip RK3588 EVB1.
+Add the necessary DT changes to enable HDMI0 on Orange Pi 5 Plus.
 
 Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 ---
- arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dts | 47 ++++++++++++++++++++++++
+ .../boot/dts/rockchip/rk3588-orangepi-5-plus.dts   | 47 ++++++++++++++++++++++
  1 file changed, 47 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dts b/arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dts
-index df44dbc394ca54fac61664fc3c647cf8e1189dff..863a73b0e3da73150d2874abc5762ab0c4c0ce63 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dts
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-plus.dts b/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-plus.dts
+index c73fecf1c73c94944bb25e1243d5390b84241338..9b1f985a32ebe73478d4318d5246aada78c08ffa 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-plus.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-plus.dts
 @@ -9,6 +9,7 @@
- #include <dt-bindings/gpio/gpio.h>
+ #include <dt-bindings/leds/common.h>
  #include <dt-bindings/input/input.h>
  #include <dt-bindings/pinctrl/rockchip.h>
 +#include <dt-bindings/soc/rockchip,vop2.h>
  #include <dt-bindings/usb/pd.h>
  #include "rk3588.dtsi"
  
-@@ -120,6 +121,17 @@ backlight: backlight {
- 		pwms = <&pwm2 0 25000 0>;
+@@ -85,6 +86,17 @@ led {
+ 		};
  	};
  
 +	hdmi0-con {
@@ -112,11 +112,11 @@ index df44dbc394ca54fac61664fc3c647cf8e1189dff..863a73b0e3da73150d2874abc5762ab0
 +		};
 +	};
 +
- 	pcie20_avdd0v85: pcie20-avdd0v85-regulator {
- 		compatible = "regulator-fixed";
- 		regulator-name = "pcie20_avdd0v85";
-@@ -300,6 +312,26 @@ &gpu {
- 	status = "okay";
+ 	fan: pwm-fan {
+ 		compatible = "pwm-fan";
+ 		cooling-levels = <0 70 75 80 100>;
+@@ -263,6 +275,26 @@ &cpu_l3 {
+ 	cpu-supply = <&vdd_cpu_lit_s0>;
  };
  
 +&hdmi0 {
@@ -139,11 +139,11 @@ index df44dbc394ca54fac61664fc3c647cf8e1189dff..863a73b0e3da73150d2874abc5762ab0
 +	status = "okay";
 +};
 +
- &i2c2 {
- 	status = "okay";
- 
-@@ -1256,3 +1288,18 @@ &usb_host1_xhci {
- 	dr_mode = "host";
+ &i2c0 {
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&i2c0m2_xfer>;
+@@ -883,3 +915,18 @@ &usb_host1_ehci {
+ &usb_host1_ohci {
  	status = "okay";
  };
 +
