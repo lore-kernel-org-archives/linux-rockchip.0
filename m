@@ -4,66 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BF3A6D3DEA2
-	for <linux-rockchip@archiver.kernel.org>; Fri, 18 Oct 2024 17:26:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EB6E7D3F2A6
+	for <linux-rockchip@archiver.kernel.org>; Fri, 18 Oct 2024 21:42:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
+	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=joZSdE1wnjkwxf91bnLn51yzUp5fZSe+sHbTNf0GkkE=; b=COSeqi63yCoFmJ
-	xwlCzdqh9Y42kmWcamSnUMdlZmzGv+jOcWmrpCeZ0EpEOVoDdIyrReLtHmX84635f3mfBne3KIrAm
-	11FCpq/nQSgZMJnLsH5N0PgvcAe6u/3zr8d4wc7qin/JqBAa+VwSiUYPNY/7BwICEoA7eKRSS749y
-	PqOoIBrxE3+FeXmJt5EH9/azwZUweo3t0fIfzLm6CFWKtfTcrlfUGU2XAp2+ZaPPvJUFYCmuojS36
-	t1udcsgZJE3m7SLN6KqQpBxQ6JtblbjmLSIT800cNy0Sd67eC2TF38bn9nMQqVKMB4d5rAK1KJdAd
-	ZOIttKOnFUBeKw8ieGSA==;
+	List-Owner; bh=Eg6ErK+r1w5bd74wBZKitRSaNlpEUYKXaAfpJOYvYVA=; b=JM9qorRQHaEMfI
+	DL9WAZQweGZMAeVNOvfuxfayN1vry9VMhqUXtx9rVwsdWfgPKe6LMjMB5QH5oj6hVQmJPB90FfrBj
+	N0OXOcrDYF11kXdnEcVYmLDrBy6cva33M/OPESGdqIFMbGXX2HjmnjQKOPRNDiu5nslrTIuOkxlzt
+	QvtjZs1+q6iQBsqjKImpiPsI4wW4bsjRdQbQNgBlsKrHJrpx63W3PoHT2c5IDxYLdjyiyaTqHPZvU
+	EWXHCC4Zsy2928CKAoOEDF2LETni5xDUJqsT5RC+GXN5TNNJ14BUd0//VCKOWfs3ezwV0UDtlqJ7R
+	pLpKr1R0/5kH6/EjfIIA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t1qjp-00000001U5Y-0Rqa;
-	Fri, 18 Oct 2024 17:26:09 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1t1ujL-0000000266Q-1OCu;
+	Fri, 18 Oct 2024 21:41:55 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t1qiK-00000001TfV-2hdw;
-	Fri, 18 Oct 2024 17:24:38 +0000
+	id 1t1uhq-000000025lL-2DgH;
+	Fri, 18 Oct 2024 21:40:24 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1729272274;
-	bh=fWTUGUbvtxGgdUl3mI+I8UiYVV3ELG6T2ASGw2R93Dg=;
-	h=From:To:Cc:Subject:Date:From;
-	b=jtLQakgatYLOAtYpLqyRV51Un6cbN7cvmnh4hy+F2b3cHB9kxk0IyDIwBX+rR+3+J
-	 h2o198viNsa0rHJIEWTtm4clJuQKpe4eTherydBqnz0caYTDV82UAiNnEuWV1hRDcq
-	 oj5pjUBOyzAceB8biQ90QdaF2rAd1iT2zYyVXeVbEHFAUdLR9Ls80SW3cKVhezsFDF
-	 p2BY4MberRL5alzfJTILUlG0e9K9N9cTvUXIcwdHreWvPBa7Iqd1jjsxipQgqlWR0B
-	 GPWvgXNWWGI+xlmjc/sP1KxtrVuUUuvqiCoctEtN+UQWLxPP5NYThGlmoZdEllFTl8
-	 lyzR8GC3QScuQ==
-Received: from jupiter.universe (dyndsl-091-248-211-226.ewe-ip-backbone.de [91.248.211.226])
+	s=mail; t=1729287619;
+	bh=jzMY5ROrS69sk17xI0Wa3em7WxCWgNTftdL4b/p4/Po=;
+	h=From:Subject:Date:To:Cc:From;
+	b=hs9w+OYGnrPcqkRLJ/Gth7If4b1/T4/Q5rkkSGFfHn5l3TDjsaZhpmXK6t8U+2NOY
+	 990gMBfW12IfEUT8F52QEUeU9KsJ3KFGrXl0cnZDaftNCijfq78soiYhnJN9iDGe05
+	 deA6EDexQxqjaFOIxCsJyUhGd3vhrLK7pI0CvI6H0yLAhlTFwqgoJHQwkua7Ze5fxg
+	 38w2cYv7qhSLb1XFnVdHsjVhpbtttGvEQ96KwxOv1OWKtbEDqXYYd6noqdQB/t/rva
+	 QpP+tzRe3m0BFuVvjl3CkW//tKO/UPf0EjisxVcOfYulW5LwQZ72XozbfML5s+trMl
+	 P0y67ucPp8Sfw==
+Received: from localhost (unknown [188.24.146.62])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	(Authenticated sender: sre)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 0451217E367D;
-	Fri, 18 Oct 2024 19:24:34 +0200 (CEST)
-Received: by jupiter.universe (Postfix, from userid 1000)
-	id 9A6764800EA; Fri, 18 Oct 2024 19:24:33 +0200 (CEST)
-From: Sebastian Reichel <sebastian.reichel@collabora.com>
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	linux-rockchip@lists.infradead.org,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	Sebastian Reichel <sebastian.reichel@collabora.com>,
-	kernel@collabora.com
-Subject: [PATCH v1 1/1] arm64: dts: rockchip: rk3588-evb1: add WLAN controller
-Date: Fri, 18 Oct 2024 19:24:21 +0200
-Message-ID: <20241018172432.53182-1-sebastian.reichel@collabora.com>
-X-Mailer: git-send-email 2.45.2
+	(Authenticated sender: cristicc)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id B935C17E3759;
+	Fri, 18 Oct 2024 23:40:19 +0200 (CEST)
+From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+Subject: [PATCH 0/5] Enable HDMI0 on several RK3588 based boards
+Date: Sat, 19 Oct 2024 00:39:48 +0300
+Message-Id: <20241019-rk3588-hdmi0-dt-v1-0-bd8f299feacd@collabora.com>
 MIME-Version: 1.0
+X-B4-Tracking: v=1; b=H4sIAKTVEmcC/6tWKk4tykwtVrJSqFYqSi3LLM7MzwNyDHUUlJIzE
+ vPSU3UzU4B8JSMDIxNDA0ML3aJsY1MLC92MlNxMA92UEl3DRENj0xQDA3OzxDQloK6CotS0zAq
+ widGxtbUAeCa8V2EAAAA=
+X-Change-ID: 20241018-rk3588-hdmi0-dt-1a135d0076af
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+ Sebastian Reichel <sebastian.reichel@collabora.com>, 
+ Luis de Arquer <ldearquer@gmail.com>, Alexandre ARNOUD <aarnoud@me.com>
+Cc: kernel@collabora.com, devicetree@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+ linux-kernel@vger.kernel.org
+X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241018_102436_885525_F577FFBF 
-X-CRM114-Status: GOOD (  11.20  )
+X-CRM114-CacheID: sfid-20241018_144022_754049_76B9D300 
+X-CRM114-Status: UNSURE (   8.22  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,138 +80,40 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The RK3588 EVB1 has an onboard AP6275P WLAN/BT module. This adds
-support for the WLAN side, which is connected to the second
-PCIe bus. The Bluetooth side is connected to UART and handled
-separately.
+Since the initial support for the RK3588 HDMI TX Controller [1] has been
+merged as of next-20241018, let's enable the HDMI0 output port for the
+following boards: Radxa ROCK 5A & 5B, Rockchip RK3588 EVB1 V10, Xunlong
+Orange Pi 5+.
 
-Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+@Luis: Could you please verify this series still works as expected on
+your Orange Pi device?
+
+The ROCK 5A related patch is currently untested, but we might be able to
+validate it beginning of next week.
+
+Thanks,
+Cristian
+
+[1]: https://lore.kernel.org/all/20241016-b4-rk3588-bridge-upstream-v10-0-87ef92a6d14e@collabora.com/
+
+Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 ---
- .../boot/dts/rockchip/rk3588-evb1-v10.dts     | 82 +++++++++++++++++++
- 1 file changed, 82 insertions(+)
+Cristian Ciocaltea (5):
+      arm64: dts: rockchip: Add HDMI0 node to rk3588
+      arm64: dts: rockchip: Enable HDMI0 on rock-5b
+      arm64: dts: rockchip: Enable HDMI0 on rk3588-evb1
+      arm64: dts: rockchip: Enable HDMI0 on orangepi-5-plus
+      [UNTESTED] arm64: dts: rockchip: Enable HDMI0 on rock-5a
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dts b/arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dts
-index df44dbc394ca..f55ab8f59d65 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dts
-@@ -237,12 +237,48 @@ vcc5v0_usb: vcc5v0-usb-regulator {
- 		regulator-max-microvolt = <5000000>;
- 		vin-supply = <&vcc5v0_usbdcin>;
- 	};
-+
-+	vccio_wl: vccio-wl {
-+		compatible = "regulator-fixed";
-+		regulator-name = "wlan-vddio";
-+		regulator-min-microvolt = <1800000>;
-+		regulator-max-microvolt = <1800000>;
-+		regulator-always-on;
-+		regulator-boot-on;
-+		vin-supply = <&vcc_1v8_s0>;
-+	};
-+
-+	vcc3v3_pciewl_vbat: vcc3v3-pciewl-vbat {
-+		compatible = "regulator-fixed";
-+		regulator-name = "wlan-vbat";
-+		regulator-min-microvolt = <3300000>;
-+		regulator-max-microvolt = <3300000>;
-+		regulator-always-on;
-+		regulator-boot-on;
-+		vin-supply = <&vcc_3v3_s0>;
-+	};
-+
-+	vcc3v3_wlan: vcc3v3-wlan {
-+		compatible = "regulator-fixed";
-+		enable-active-high;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&wifi_pwren>;
-+		regulator-name = "wlan-en";
-+		regulator-min-microvolt = <3300000>;
-+		regulator-max-microvolt = <3300000>;
-+		gpios = <&gpio3 RK_PB1 GPIO_ACTIVE_HIGH>;
-+		vin-supply = <&vcc3v3_pciewl_vbat>;
-+	};
- };
- 
- &combphy0_ps {
- 	status = "okay";
- };
- 
-+&combphy1_ps {
-+	status = "okay";
-+};
-+
- &combphy2_psu {
- 	status = "okay";
- };
-@@ -408,6 +444,30 @@ rgmii_phy: ethernet-phy@1 {
- 	};
- };
- 
-+&pcie2x1l0 {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&pcie2_0_rst>, <&pcie2_0_wake>, <&pcie2_0_clkreq>, <&wifi_host_wake_irq>;
-+	reset-gpios = <&gpio4 RK_PA5 GPIO_ACTIVE_HIGH>;
-+	vpcie3v3-supply = <&vcc3v3_wlan>;
-+	status = "okay";
-+
-+	pcie@0,0 {
-+		reg = <0x200000 0 0 0 0>;
-+		#address-cells = <3>;
-+		#size-cells = <2>;
-+		ranges;
-+		device_type = "pci";
-+		bus-range = <0x20 0x2f>;
-+
-+		wifi: wifi@0,0 {
-+			compatible = "pci14e4,449d";
-+			reg = <0x210000 0 0 0 0>;
-+			clocks = <&hym8563>;
-+			clock-names = "lpo";
-+		};
-+	};
-+};
-+
- &pcie2x1l1 {
- 	reset-gpios = <&gpio4 RK_PA2 GPIO_ACTIVE_HIGH>;
- 	pinctrl-names = "default";
-@@ -462,6 +522,18 @@ hym8563_int: hym8563-int {
- 	};
- 
- 	pcie2 {
-+		pcie2_0_rst: pcie2-0-rst {
-+			rockchip,pins = <4 RK_PA5 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+
-+		pcie2_0_wake: pcie2-0-wake {
-+			rockchip,pins = <4 RK_PA4 4 &pcfg_pull_none>;
-+		};
-+
-+		pcie2_0_clkreq: pcie2-0-clkreq {
-+			rockchip,pins = <4 RK_PA3 4 &pcfg_pull_none>;
-+		};
-+
- 		pcie2_1_rst: pcie2-1-rst {
- 			rockchip,pins = <4 RK_PA2 RK_FUNC_GPIO &pcfg_pull_none>;
- 		};
-@@ -492,6 +564,16 @@ usbc0_int: usbc0-int {
- 			rockchip,pins = <3 RK_PB4 RK_FUNC_GPIO &pcfg_pull_up>;
- 		};
- 	};
-+
-+	wlan {
-+		wifi_host_wake_irq: wifi-host-wake-irq {
-+			rockchip,pins = <3 RK_PA7 RK_FUNC_GPIO &pcfg_pull_down>;
-+		};
-+
-+		wifi_pwren: wifi-pwren {
-+			rockchip,pins = <3 RK_PB1 RK_FUNC_GPIO &pcfg_pull_up>;
-+		};
-+	};
- };
- 
- &pwm2 {
--- 
-2.45.2
+ arch/arm64/boot/dts/rockchip/rk3588-base.dtsi      | 41 +++++++++++++++++++
+ arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dts   | 47 ++++++++++++++++++++++
+ .../boot/dts/rockchip/rk3588-orangepi-5-plus.dts   | 47 ++++++++++++++++++++++
+ arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts    | 47 ++++++++++++++++++++++
+ arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts   | 47 ++++++++++++++++++++++
+ 5 files changed, 229 insertions(+)
+---
+base-commit: f2493655d2d3d5c6958ed996b043c821c23ae8d3
+change-id: 20241018-rk3588-hdmi0-dt-1a135d0076af
 
 
 _______________________________________________
