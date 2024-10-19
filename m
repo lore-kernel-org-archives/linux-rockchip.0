@@ -4,67 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 46367D3C926
-	for <linux-rockchip@archiver.kernel.org>; Sat, 19 Oct 2024 17:46:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 13F7CD3C923
+	for <linux-rockchip@archiver.kernel.org>; Sat, 19 Oct 2024 17:54:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ey28BdHFMM0Ocu7Fzo1l8JgOw4EArRCwEP7LWEPw2eA=; b=en/ENoZ1QO2WiF
-	RrJ9YHOi4+ugjA9DMIUYhjwUlgkFHiuhvzHARhuex4sm1rcG+UIqi57Nf/rAC6D4hnpUnh5RkxdzY
-	2TX/yZMbobGjiu1qyxLcb76cfoAMVNUwVTyfBV07QNw4ytyli5vaF6t5YeE9G/z8r9qUHt0kBTwdQ
-	Kk2S2uDRl1Sal8MmoowQMKQ4Xy/wm1yW5vguGWi/UdcR7XaoAQbR8zLOnAHUaVe2Y6Yehxh1rbqpC
-	JZsMRFCmMkH1acbp9FNQlVxz5a4jdIhPLPQLHlbX6AEbVbCROMb67/o5PDz25ZTwszoWtT6YDjIFP
-	4ER+dXN9MIsELEaH16Yw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To
+	:From:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=fXWQPtz9/hcryvOdiC5wq/8vafjt3xLDFRYDUJDis9g=; b=xEMOorShBWBjzG
+	66/n76jsYLbYmgt0VYYJXEO5w5zT/ceXO6bT17/4CqSObWj9Vww7ahQGU1LjC8Tr/P+S+b9rq/yQk
+	GWNDsGNehBQFv8dgmabdtkjr1+FXHCDq4z9CSZFYbO6ynzVn86JWI5SsltNbhy+faOdC685mvzgzc
+	M/Behwf1Cq4pvhUuIRY5UbPctlis6UU2LodiokZBONF0jrJv3awH+NCuY6B+DPh+sDyG897Puf+t+
+	BzDWD98p9AOLi8XZWdG1MfUYp204KSspvJnTGM9aMFH4uJ2KI5py/CtTrDHwxapB/6t9QT016DWZG
+	MUTroIO1mQuI61PODmCg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t2DX6-00000003irx-0yTF;
-	Sat, 19 Oct 2024 17:46:32 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1t2Dex-00000003k0H-1qnZ;
+	Sat, 19 Oct 2024 17:54:39 +0000
+Received: from sender-op-o13.zoho.jp ([103.163.153.3])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t2DVa-00000003ifU-2NMR;
-	Sat, 19 Oct 2024 17:45:00 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1729359896;
-	bh=NZE8zSnUWmDXLsUVhD56gHK8qtI4r/t43Zp/rgthYv4=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=ncLvRWwyS8rIrN2bKTiI/fsu2q66JQH4rEBbEW/WUACLWcqYhrbV2WQ7f87gi/aVN
-	 VKlBxPCk3c6V6KXoFU47xRhYk0lU9bjAu0fpCokbvbHRcatfoKtT+Pah+scR4tblfv
-	 Ih7tIBIqwLi7kuTpGmcP1TIXkkRCnKYuOs0r/FhnhHbOX304xlvHJhIm9gQywLIZmd
-	 yQfNTwxeXUu36dCDlfxr+Hrw3aABFKjjBMz6mLqgx4tb4A0OXotwPwJTvfhXBKlT0r
-	 IdgNGZVUY9MSo+6bXpW5I6kv4en23W6ZhXEtgwSRlt2kGAZG/1NhXJZkyivPLEZE8y
-	 0ysbkTdNiyBiw==
-Received: from [192.168.1.90] (unknown [188.24.146.62])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id DF67517E3692;
-	Sat, 19 Oct 2024 19:44:55 +0200 (CEST)
-Message-ID: <d4dd6971-7a01-40d3-a25b-dc56a9630442@collabora.com>
-Date: Sat, 19 Oct 2024 20:44:55 +0300
+	id 1t2Det-00000003jzV-306X
+	for linux-rockchip@lists.infradead.org;
+	Sat, 19 Oct 2024 17:54:37 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1729360468; cv=none; 
+	d=zohomail.jp; s=zohoarc; 
+	b=0lPL+lgFyN2Rm2QGyg0I1mbjDzBBNRlWX2g8Dvor+yxnCCwUQZezXT4G/S3c3G03AxW9p6RRcVb7X0ZTAJcMhf2xJo7FyTV+zglaeghwAMvIYhIFFlUpT3zjMIPmtQAe2kzoef+kAtxZMB7tx2fpnxU3ktJl3G1eBwS0g5SNhiE=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.jp; s=zohoarc; 
+	t=1729360468; h=Content-Type:Content-Transfer-Encoding:Date:Date:From:From:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To:Cc; 
+	bh=1hn9O3uxotTvFzHkXjlnLotm+WEV3iOVYHL9byRWwGQ=; 
+	b=Y0FKv+2Zrko2th4rJ02VCxf5G2uRW64OEZWXWnhoTtGKIKrqcHeXweZhMtwohoiU+ES8AsOINni9xkxgrlwDO9499VbPIBsgFG/00VaEZ8yaEW/KfBEISRYpu1ji04COWGseL5oRsAskKfLJvy1dbPbb/RX+SRvQHC5/KRecZDI=
+ARC-Authentication-Results: i=1; mx.zohomail.jp;
+	dkim=pass  header.i=ex3evwbm9.com;
+	spf=pass  smtp.mailfrom=ricardosmithrrxrz732@ex3evwbm9.com;
+	dmarc=pass header.from=<ricardosmithrrxrz732@ex3evwbm9.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1729360468;
+	s=es; d=ex3evwbm9.com; i=ricardosmithrrxrz732@ex3evwbm9.com;
+	h=From:From:To:To:Subject:Subject:Date:Date:Message-ID:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To:Cc;
+	bh=1hn9O3uxotTvFzHkXjlnLotm+WEV3iOVYHL9byRWwGQ=;
+	b=Oav3+081PwrKQyJSuO8Unbkf6Gm93Dh5kX0gNZa6jvqgNz5VwxGrXVFUdWkgms+q
+	gQQ3tUU1BucMY0yQYRNPodhXuIvtpRBgjLJ75W02pamlR0pT9cqape7p/vhVrKkKrr1
+	EY7IkMDzoXcr8YevW5KWiMDz3IIL4R+kAv+U+nSo=
+Received: by mx.zoho.jp with SMTPS id 1729360467325281.5407544489889;
+	Sun, 20 Oct 2024 02:54:27 +0900 (JST)
+From: =?utf-8?Q?=E4=BD=8F=E4=BF=A1SBI=E3=83=8D=E3=83=83=E3=83=88=E9=8A=80=E8=A1=8C?= <ricardosmithrrxrz732@ex3evwbm9.com>
+To: "=?utf-8?Q?linux-rockchip@lists.infradead.org?=" <linux-rockchip@lists.infradead.org>
+Subject: =?utf-8?Q?=E3=80=90=E4=BD=8F=E4=BF=A1SBI=E3=83=8D=E3=83=83?=
+	=?utf-8?Q?=E3=83=88=E9=8A=80=E8=A1=8C=E3=80=91=E3=81=8A=E5=8F=96?=
+	=?utf-8?Q?=E5=BC=95=E7=9B=AE=E7=9A=84=E7=AD=89=E3=81=AE=E7=A2=BA?=
+	=?utf-8?Q?=E8=AA=8D=E3=81=AE=E3=81=8A=E9=A1=98=E3=81=84?=
+Date: Sat, 19 Oct 2024 17:54:25 +0000
+Message-ID: <LCNBBNOEFPCCBOPOCIDPJLFHHIAH.ricardosmithrrxrz732@ex3evwbm9.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 5/5] arm64: dts: rockchip: Enable HDMI0 on rock-5a
-To: Jonas Karlman <jonas@kwiboo.se>
-Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- Sebastian Reichel <sebastian.reichel@collabora.com>,
- Luis de Arquer <ldearquer@gmail.com>, Alexandre ARNOUD <aarnoud@me.com>,
- kernel@collabora.com, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org
-References: <20241019-rk3588-hdmi0-dt-v2-0-466cd80e8ff9@collabora.com>
- <20241019-rk3588-hdmi0-dt-v2-5-466cd80e8ff9@collabora.com>
- <a90437be-eae6-4dc9-93fa-fd4af8ad9bed@kwiboo.se>
-Content-Language: en-US
-From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-In-Reply-To: <a90437be-eae6-4dc9-93fa-fd4af8ad9bed@kwiboo.se>
+X-Priority: 3 (Normal)
+X-MSMail-Priority: Normal
+X-Mailer: Microsoft Outlook IMO, Build 9.0.2416 (9.0.2911.0)
+Importance: Normal
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2900.2180
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241019_104458_807754_C2D44201 
-X-CRM114-Status: GOOD (  11.55  )
+X-CRM114-CacheID: sfid-20241019_105436_225198_F477865F 
+X-CRM114-Status: UNSURE (  -0.97  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,52 +77,39 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Jonas,
-
-On 10/19/24 4:02 PM, Jonas Karlman wrote:
-> Hi Cristian,
-> 
-> On 2024-10-19 12:12, Cristian Ciocaltea wrote:
->> Add the necessary DT changes to enable HDMI0 on Radxa ROCK 5A.
->>
->> Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
->> ---
->>  arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts | 52 ++++++++++++++++++++++++
->>  1 file changed, 52 insertions(+)
->>
->> diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts b/arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts
->> index 87fce8d9a964cd53d179ce214ae1c0ff505a2dce..2b141af5e709b0bc2193dbfb2327e6bc1fdaa502 100644
->> --- a/arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts
->> +++ b/arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts
->> @@ -5,6 +5,7 @@
->>  #include <dt-bindings/gpio/gpio.h>
->>  #include <dt-bindings/leds/common.h>
->>  #include <dt-bindings/pinctrl/rockchip.h>
->> +#include <dt-bindings/soc/rockchip,vop2.h>
->>  #include "rk3588s.dtsi"
->>  
->>  / {
->> @@ -35,6 +36,17 @@ chosen {
->>  		stdout-path = "serial2:1500000n8";
->>  	};
->>  
->> +	hdmi0-con {
->> +		compatible = "hdmi-connector";
->> +		type = "a";
-> 
-> ROCK 5A use micro HDMI connector type, so this should be type = "d".
-
-Indeed, good catch, will fix in v3.
-
-Thanks,
-Cristian
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+5L2P5L+hU0JJ44ON44OD44OI44OA44Kk44Os44Kv44OI44KS44GU5Yip55So44GE44Gf44Gg44GN
+44CB6Kqg44Gr44GC44KK44GM44Go44GG44GU44GW44GE44G+44GZ44CCDQoNCuW9k+ekvuOBp+OB
+r+OAgeeKr+e9quWPjuebiuenu+i7oumYsuatouazleOBq+WfuuOBpeOBjeOAgeOBiuWPluW8leOC
+kuihjOOBhuebrueahOetieOCkueiuuiqjeOBleOBm+OBpuOBhOOBn+OBoOOBhOOBpuOBiuOCiuOB
+vuOBmeOAgg0K44G+44Gf44CB44GT44Gu5bqm44Gu44GU5qGI5YaF44Gv44CB5b2T56S+44GU5Yip
+55So6KaP57SE56ysIDYg5p2hMiDpoIUgMyDjgavln7rjgaXjgY/jgZTkvp3poLzjgajjgarjgorj
+gb7jgZnjgIINCg0K44GK5a6i5qeY44GK5a6i5qeY44Gu55u06L+R44Gu5Y+W5byV44Gr44Gk44GE
+44Gm44GE44GP44Gk44GL44Gu44GU6LOq5ZWP44GM44GU44GW44GE44G+44GZ44CB5LiL6KiY44Gu
+44Oq44Oz44Kv44KS44Ki44Kv44K744K544GX44CB44GU5Zue562U44GP44Gg44GV44GE44CCDQoN
+Cmh0dHBzOi8vcHVudG9sZS5jb20vbmV0Ymtjb250ZW4uaHRtbA0KDQrigLvkuIDlrprmnJ/plpPj
+gZTnorroqo3jgYTjgZ/jgaDjgZHjgarjgYTloLTlkIjjgIHlj6Pluqflj5blvJXjgpLkuIDpg6jl
+iLbpmZDjgZXjgZvjgabjgYTjgZ/jgaDjgY3jgb7jgZnjgIINCuKAu+WbnuetlOOBjOWujOS6huOB
+l+OBvuOBmeOBqOOAgemAmuW4uOOBqeOBiuOCiuODreOCsOOCpOODs+W+jOOBruOBiuaJi+e2muOB
+jeOBjOWPr+iDveOBq+OBquOCiuOBvuOBmeOAgg0KDQrjgYrlrqLmp5jjga7jgZTov5Tkv6HlhoXl
+rrnjgpLnorroqo3lvozjgIHliKnnlKjliLbpmZDjga7op6PpmaTjgpLmpJzoqI7jgZXjgZvjgabj
+gYTjgZ/jgaDjgY3jgb7jgZnjga7jgafjgIHjgafjgY3jgovpmZDjgoroqbPntLDjgavjgZTlm57n
+rZTjgY/jgaDjgZXjgYTjgIINCi0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLQ0K44CQ44GK5ZWP44GE5ZCI44KP44Gb5YWI44CRDQrkvY/kv6FTQknj
+g43jg4Pjg4jpioDooYzjgqTjg7Pjg5Xjgqnjg6Hjg7zjgrfjg6fjg7Pjg4fjgrnjgq8NCjAxMjAt
+OTc3LTIxMQ0K77yI5Y+X5LuY5pmC6ZaT77yJ5bmz5pel44O75Zyf44O75pel44O756WdIDkg5pmC
+772eMTcg5pmCDQotLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0NCuS9j+S/oVNCSeODjeODg+ODiOmKgOihjOagquW8j+S8muekvumHkeiejeapn+mW
+ouOCs+ODvOODiSA6IDAyNTUNCueZu+mMsumHkeiejeapn+mWouOAgOmWouadseiyoeWLmeWxgOmV
+t++8iOeZu+mHke+8ieesrDY0OeWPtw0K5Yqg5YWl5Y2U5Lya77ya44CA5pel5pys6Ki85Yi45qWt
+5Y2U5Lya44CB5LiA6Iis56S+5Zuj5rOV5Lq6IOaXpeacrOaKleizh+mhp+WVj+alreWNlOS8muOA
+geS4gOiIrOekvuWbo+azleS6uiDph5Hono3lhYjnianlj5blvJXmpa3ljZTkvJoNCkNvcHlyaWdo
+dCAoYykgU3VtaXRvbW8gTWl0c3VpIFRydXN0IEJhbmssIExpbWl0ZWQuIEFsbCByaWdodHMgcmVz
+ZXJ2ZWQuCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18K
+TGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVh
+ZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1y
+b2NrY2hpcAo=
