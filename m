@@ -4,45 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1DAD8D3C935
-	for <linux-rockchip@archiver.kernel.org>; Sun, 20 Oct 2024 23:30:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 77792D3C92D
+	for <linux-rockchip@archiver.kernel.org>; Sun, 20 Oct 2024 23:30:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=147MYSbxAJYrDRGavWY4e4xlD/7kLt8SxNNxUodifKI=; b=GRJakzAosqvai8
-	sBBbFmbC6Ysyx8Ed/evh4/3yZrUp5KNTUwdnJXef+rUEi2rGfBB9z9Mwe9TTrtugUMSKmGJJuyCbw
-	fSgAr3IcPVKYQJ6/y4wniiB9pvw0yX0Lj7HJrq7QoJk0lcrk9ruCdzwlBrZOuxqn32XDJ5uHCt/ZP
-	aI/QVv+Wjgbrfpm/VtFPSJJLZj5BZHdBKBYH3V5u8oN/tXc7HdIo/Vd2csUIVPvMcz/Wh8svCsFWv
-	u7mg4zBZ60fb1NxS85R5kZ02EGoUPceV77hhe2gfIyaO2eXn2XTTSUK8mKhJawgzxbT2nKFMz9VWo
-	dz/a/Fjp48Nh+32N8XlQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=tYGicQNHHLVMZ9QRL2Kew+lwx4NZqKi6osgJ7gRP5Mg=; b=HP5miatGadJr5u
+	lWtHZLOkLcgnNmkjk2lYJmjNLrmuACVqPzZ1VdRa9KXzs5ip0gt3WxrFqakd70ysfPtHYWKuzCJ+5
+	aeSOE8OfTahgITLKF062eGeKLbIcxnpzSEDnq7ZTVoW80p/iUMQEm8kXAiC2O6FxtEl3DD6c6OWdF
+	be8FT4/AoGt3foc6Hj9q93cPZD20bk//yahcCFm/ZO2YX9NL7dv5R202GytoaY9f7wLpuTwRg+lqe
+	UMLJqcA2GG9DxZ8KUFr1pJ59y/mChDRZGNOrBmYsim55CDiKdTXyit9RPuNNIErXCpPKCpI9YTqQc
+	JOD00iq4wBjZfwO1NBrQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t2fNY-00000005ck3-1xFs;
-	Sun, 20 Oct 2024 23:30:32 +0000
+	id 1t2fNa-00000005ckS-0tfT;
+	Sun, 20 Oct 2024 23:30:34 +0000
 Received: from sakura.naobsd.org ([160.16.200.221] helo=mail.naobsd.org)
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t2fNU-00000005cin-3cPT
+	id 1t2fNW-00000005cjf-49hS
 	for linux-rockchip@lists.infradead.org;
-	Sun, 20 Oct 2024 23:30:30 +0000
+	Sun, 20 Oct 2024 23:30:32 +0000
 Received: from secure.fukaumi.org ([10.0.0.2])
-	by mail.naobsd.org (8.14.4/8.14.4/Debian-4.1ubuntu1.1) with ESMTP id 49KNU26t011137;
-	Mon, 21 Oct 2024 08:30:02 +0900
+	by mail.naobsd.org (8.14.4/8.14.4/Debian-4.1ubuntu1.1) with ESMTP id 49KNU26v011137;
+	Mon, 21 Oct 2024 08:30:05 +0900
 From: FUKAUMI Naoki <naoki@radxa.com>
 To: heiko@sntech.de
 Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org, jonas@kwiboo.se,
         dsimic@manjaro.org, kever.yang@rock-chips.com,
         linux-rockchip@lists.infradead.org, FUKAUMI Naoki <naoki@radxa.com>
-Subject: [PATCH v2 1/3] dt-bindings: arm: rockchip: add Radxa ROCK 5C
-Date: Sun, 20 Oct 2024 23:29:54 +0000
-Message-ID: <20241020232956.1012-1-naoki@radxa.com>
+Subject: [PATCH v2 3/3] arm64: dts: rockchip: Enable HDMI0 on rock-5c
+Date: Sun, 20 Oct 2024 23:29:56 +0000
+Message-ID: <20241020232956.1012-3-naoki@radxa.com>
 X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20241020232956.1012-1-naoki@radxa.com>
+References: <20241020232956.1012-1-naoki@radxa.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241020_163029_128673_E4EA9710 
-X-CRM114-Status: UNSURE (   5.82  )
+X-CRM114-CacheID: sfid-20241020_163031_262133_DA617C9F 
+X-CRM114-Status: UNSURE (   8.21  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -60,37 +62,98 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add devicetree binding for the Radxa ROCK 5C.
-
-Radxa ROCK 5C is a 8K computer for everything[1] using the Rockchip
-RK3588S2 chip.
-
-[1] https://radxa.com/products/rock5/5c
+Add the necessary DT changes to enable HDMI0 on Radxa ROCK 5C.
 
 Signed-off-by: FUKAUMI Naoki <naoki@radxa.com>
 ---
-Changes in v2:
-- none
+Changes in v2
+- sort nodes alphanumerically
+- fix pinctrl for hdmi0
 ---
- Documentation/devicetree/bindings/arm/rockchip.yaml | 5 +++++
- 1 file changed, 5 insertions(+)
+ .../boot/dts/rockchip/rk3588s-rock-5c.dts     | 52 +++++++++++++++++++
+ 1 file changed, 52 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
-index 70bd2e4d1195..01d03f2157e1 100644
---- a/Documentation/devicetree/bindings/arm/rockchip.yaml
-+++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
-@@ -890,6 +890,11 @@ properties:
-           - const: radxa,rock-5b
-           - const: rockchip,rk3588
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-rock-5c.dts b/arch/arm64/boot/dts/rockchip/rk3588s-rock-5c.dts
+index c80428305f0b..9b14d5383cdc 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588s-rock-5c.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3588s-rock-5c.dts
+@@ -8,6 +8,7 @@
+ #include <dt-bindings/gpio/gpio.h>
+ #include <dt-bindings/leds/common.h>
+ #include <dt-bindings/pinctrl/rockchip.h>
++#include <dt-bindings/soc/rockchip,vop2.h>
+ #include "rk3588s.dtsi"
  
-+      - description: Radxa ROCK 5C
-+        items:
-+          - const: radxa,rock-5c
-+          - const: rockchip,rk3588s
+ / {
+@@ -35,6 +36,17 @@ analog-sound {
+ 			  "Headphone", "Headphones";
+ 	};
+ 
++	hdmi0-con {
++		compatible = "hdmi-connector";
++		type = "a";
 +
-       - description: Radxa ROCK S0
-         items:
-           - const: radxa,rock-s0
++		port {
++			hdmi0_con_in: endpoint {
++				remote-endpoint = <&hdmi0_out_con>;
++			};
++		};
++	};
++
+ 	leds {
+ 		compatible = "gpio-leds";
+ 		pinctrl-names = "default";
+@@ -245,6 +257,31 @@ &gpu {
+ 	status = "okay";
+ };
+ 
++&hdmi0 {
++	pinctrl-names = "default";
++	pinctrl-0 = <&hdmim0_tx0_cec
++		     &hdmim1_tx0_hpd
++		     &hdmim0_tx0_scl
++		     &hdmim0_tx0_sda>;
++	status = "okay";
++};
++
++&hdmi0_in {
++	hdmi0_in_vp0: endpoint {
++		remote-endpoint = <&vp0_out_hdmi0>;
++	};
++};
++
++&hdmi0_out {
++	hdmi0_out_con: endpoint {
++		remote-endpoint = <&hdmi0_con_in>;
++	};
++};
++
++&hdptxphy_hdmi0 {
++	status = "okay";
++};
++
+ &i2c0 {
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&i2c0m2_xfer>;
+@@ -866,3 +903,18 @@ &usb_host1_ohci {
+ &usb_host2_xhci {
+ 	status = "okay";
+ };
++
++&vop_mmu {
++	status = "okay";
++};
++
++&vop {
++	status = "okay";
++};
++
++&vp0 {
++	vp0_out_hdmi0: endpoint@ROCKCHIP_VOP2_EP_HDMI0 {
++		reg = <ROCKCHIP_VOP2_EP_HDMI0>;
++		remote-endpoint = <&hdmi0_in_vp0>;
++	};
++};
 -- 
 2.43.0
 
