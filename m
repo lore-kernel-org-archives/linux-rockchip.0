@@ -4,59 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8AEA3D3C90C
-	for <linux-rockchip@archiver.kernel.org>; Sat, 19 Oct 2024 18:11:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EDC68D3C927
+	for <linux-rockchip@archiver.kernel.org>; Sun, 20 Oct 2024 01:07:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:References:To:From:Subject:Cc:Message-Id:Date:Mime-Version:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=wMpJ4vYQhfniz4UPy0lBVzKZ9DnIerWKk5aT/xtvRvU=; b=zi/Ffjx0kWn/k38qCmDxbXGuR3
-	uaj9HtpZidI1xWnE5IeezVLj4BIuQOfG1BInuePn4JSfzdUkkuQVuC7FycGM9IQa5mcNhF8vkcaC8
-	/TGwoBLII5R+tg3e6B0McMUQMXb8R4Aou3jNzdbXb6DwCjy5aunRdPZqSUGJPo7eqb3wNB6ESxA5H
-	yWpUARdQZx2SEnTzGIINvywhnsCjilSnl62V2xlT+vbXLRX5ITPYzKnXQyqNFsYuJxH4b0ZbPX8ka
-	21xhX/C9fM+75ALmtTx11dXvGcjJFxkXTYKVdBV+bGgQ/KhaPpsEW9c/dn0iMkzSl48vG8ZJPs6yB
-	hGcii90Q==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=3xe/dJ0pqB3hM+OCTyys3bhzy75+3zdgcz1EGQE8iL8=; b=s7A7A5q4KA3Dd1
+	w5+UfWQC8xeAiIcZaftn01mI5HuSwYXjyHnyyFbF65uKygNZjNvXldaYFMczreAFvo3BqxyuuW5oE
+	yD8oM1JjQhfZGszuIOTMm9y+YDI5Vg52mMKXJyka8YabbMSQHBYOXQCHWwPiU1OEdm9S+vlAYDPj3
+	d1n7KYfqq0oufKmDm75FMmnCfkH8X9peglLpcoPMYdxuR1Ujcqju2Y0Vmo//ZmbBQXFyEkUXNoQi0
+	kzuvNN4S+Vnoc2ZG9l6U9ALZQaT1Fh4Bz/91VCPWHMkAybnGRX5Z/aTJGXO2myhxJ4W4VqkgfNSLX
+	vBa3hl2mKKMvVVqq9rzQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t2Dul-00000003ksX-2nR6;
-	Sat, 19 Oct 2024 18:10:59 +0000
-Received: from out-188.mta1.migadu.com ([2001:41d0:203:375::bc])
+	id 1t2KPP-00000004CiR-1wVm;
+	Sun, 20 Oct 2024 01:07:03 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t2DtC-00000003kcZ-0I6V
+	id 1t2KPM-00000004Chy-2Fo9
 	for linux-rockchip@lists.infradead.org;
-	Sat, 19 Oct 2024 18:09:25 +0000
-Mime-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow.org; s=key1;
-	t=1729361355;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=f3RtjINZGSgrKRy2wNDqwWrIHrIIPJ53FJ8P+x6DkhI=;
-	b=AQsNfew+K6F+CLgKgr50utpQXBypfTUxchrOeI73zMAcWok/7hgMhCo6fub0UnDP6iuk5d
-	ZutrSF4lZ5udnjXawQlruQMscn5kBPnMmo1oBfOpCu+wW68/QujudwXWre10YG4AD1vj8j
-	Cz5ZOjRz+xwUEhUCEYXsnPJme9hUa3DABRy4c7ypl0BcmJAzWRPT7n3udouF89ohdHBCVC
-	i4/6mGEHDVrbMtmh/v6HKjrwxqyfkT3jfGi8R99cBpi+eAxk9HRv0kFBqsBeqoITrqq1ya
-	3OjTbRJemUVysfTQbgYf1LvJ8i1Af0xMBNNQFjB2gxCVywk8mf1pyN/Ye/Y5nA==
-Date: Sat, 19 Oct 2024 20:09:02 +0200
-Message-Id: <D4ZZFL98AMFI.1TDPL2DJPSQ3D@cknow.org>
-Cc: <heiko@sntech.de>, <linux-arm-kernel@lists.infradead.org>,
- <linux-kernel@vger.kernel.org>, <devicetree@vger.kernel.org>,
- <robh@kernel.org>, <krzk+dt@kernel.org>, <conor+dt@kernel.org>
-Subject: Re: [PATCH 2/3] arm64: dts: rockchip: Prepare RK356x SoC dtsi files
- for per-variant OPPs
-X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
-From: "Diederik de Haas" <didi.debian@cknow.org>
-To: "Dragan Simic" <dsimic@manjaro.org>,
- <linux-rockchip@lists.infradead.org>
-References: <cover.1728752527.git.dsimic@manjaro.org>
- <cc2aed3116a57dd50e2bb15ab41b12784adfafe3.1728752527.git.dsimic@manjaro.org> <D4U30AUOH6UR.1QPH47KN5EWE4@cknow.org>
-In-Reply-To: <D4U30AUOH6UR.1QPH47KN5EWE4@cknow.org>
-X-Migadu-Flow: FLOW_OUT
+	Sun, 20 Oct 2024 01:07:01 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 0E6805C1113;
+	Sun, 20 Oct 2024 01:06:54 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9C04FC4CEC5;
+	Sun, 20 Oct 2024 01:06:55 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1729386418;
+	bh=QykmPv/BE6IkDfW5xnvum0kBf+OEw3Cv6VurB2ePnZU=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=CP5lx5NDeHvNn1dsSX9/F0Nl0iOQemMFzRDokTKuQD90OB5AC8Gyb8/cu/az29bX+
+	 yRp4Pr6Ydv4aSBtadDIXn4bG/M0kv7v4nBMG51XglANyLJ730E4nlwl4vFfcT6SJd/
+	 GmF4TqhWcvUEV0UJo8/N2rWTNw/rVXnguKGdsZc7HWhTkEEqzOnnqTnwCaUpWh3R6V
+	 4VxZB5rJjgsbZX5WqtlVQtmLrVQv1dzEpkp2NFLQO7TDiRxpKUcVNcEZVyEg92ms2N
+	 uH+ZamMstcWnbIvYTND0oisZ7C2XH39drySY0QEmrQf2b0c+8WfgCLzaKmcoahMM+y
+	 kctDBFacgFexg==
+Message-ID: <6aa0a404-9bc8-4b0c-b6f9-a455a3033670@kernel.org>
+Date: Sun, 20 Oct 2024 10:06:54 +0900
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v4 00/12] Fix and improve the Rockchip endpoint driver
+To: Anand Moon <linux.amoon@gmail.com>
+Cc: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
+ Lorenzo Pieralisi <lpieralisi@kernel.org>,
+ Kishon Vijay Abraham I <kishon@kernel.org>,
+ Shawn Lin <shawn.lin@rock-chips.com>, =?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?=
+ <kw@linux.com>, Bjorn Helgaas <bhelgaas@google.com>,
+ Heiko Stuebner <heiko@sntech.de>, linux-pci@vger.kernel.org,
+ Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org,
+ linux-rockchip@lists.infradead.org,
+ Rick Wertenbroek <rick.wertenbroek@gmail.com>,
+ Niklas Cassel <cassel@kernel.org>
+References: <20241011121408.89890-1-dlemoal@kernel.org>
+ <CANAwSgQ+YmSTqJs3-53nmpmCRKuqfRysT37uHQNGibw5FZhRvg@mail.gmail.com>
+ <f13618a6-0922-4fc8-af01-10be1ef95f0d@kernel.org>
+ <CANAwSgRDbCCridYMciq=xSDPV0qGhs-OhCJ_uniXFbp-yM5CcQ@mail.gmail.com>
+ <0f2cf12b-3f27-403c-802e-bb8b539766b0@kernel.org>
+ <CANAwSgRXfZ9hgdJpSrwucHQfMToZwSC8N-b4MYLZjsryid=Fpw@mail.gmail.com>
+From: Damien Le Moal <dlemoal@kernel.org>
+Content-Language: en-US
+Organization: Western Digital Research
+In-Reply-To: <CANAwSgRXfZ9hgdJpSrwucHQfMToZwSC8N-b4MYLZjsryid=Fpw@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241019_110922_982772_53514C9F 
-X-CRM114-Status: GOOD (  10.94  )
+X-CRM114-CacheID: sfid-20241019_180700_705912_5E68FE59 
+X-CRM114-Status: UNSURE (   8.15  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,105 +85,28 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============7357137841023812774=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
---===============7357137841023812774==
-Content-Type: multipart/signed;
- boundary=eb9158f3fd3022c747c09e202d1d0a175e416ede785f1ca7d155a4b18fff;
- micalg=pgp-sha256; protocol="application/pgp-signature"
+On 10/19/24 15:24, Anand Moon wrote:
+> I have a question can new test external low power GPU with external cables
+> which supports PCI host (RC mode) with external power supply for GPU card.
 
---eb9158f3fd3022c747c09e202d1d0a175e416ede785f1ca7d155a4b18fff
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain; charset=UTF-8
+I do not understand this sentence.
 
-Hi Dragan,
+> Which mode is suitable for the PCIe endpoint controller or PCIe host controller?
 
-On Sat Oct 12, 2024 at 9:41 PM CEST, Diederik de Haas wrote:
-> On Sat Oct 12, 2024 at 7:04 PM CEST, Dragan Simic wrote:
-> > =20
-> > -&pipegrf {
-> > -	compatible =3D "rockchip,rk3566-pipe-grf", "syscon";
->
-> This seems unrelated?
->
-> > +&cpu0 {
-> > +	operating-points-v2 =3D <&cpu0_opp_table>;
-> >  };
-> > =20
-> > -&power {
-> > -	power-domain@RK3568_PD_PIPE {
-> > -		reg =3D <RK3568_PD_PIPE>;
-> > -		clocks =3D <&cru PCLK_PIPE>;
-> > -		pm_qos =3D <&qos_pcie2x1>,
-> > -			 <&qos_sata1>,
-> > -			 <&qos_sata2>,
-> > -			 <&qos_usb3_0>,
-> > -			 <&qos_usb3_1>;
-> > -		#power-domain-cells =3D <0>;
-> > -	};
->
-> This seems unrelated to me and possibly a functional change?
-> If this was intended, then a description in the commit message would be
-> nice why this is appropriate and possibly moved to a separate patch?
->
-> > +&cpu1 {
-> > +	operating-points-v2 =3D <&cpu0_opp_table>;
-> > +};
-> > +
-> > +&cpu2 {
-> > +	operating-points-v2 =3D <&cpu0_opp_table>;
-> >  };
-> > =20
-> > -&usb_host0_xhci {
-> > -	phys =3D <&usb2phy0_otg>;
-> > -	phy-names =3D "usb2-phy";
-> > -	extcon =3D <&usb2phy0>;
-> > -	maximum-speed =3D "high-speed";
->
-> This also looks unrelated and a functional change?
->
-> > +&cpu3 {
-> > +	operating-points-v2 =3D <&cpu0_opp_table>;
-> >  };
-> > =20
-> > -&vop {
-> > -	compatible =3D "rockchip,rk3566-vop";
->
-> This also looks unrelated?
+If you do not know/understand what PCI endpoint is, you probably do not need it
+at all. If you are using your board to simply connect and use regular PCI
+devices, you do not need the PCI endpoint framework/drivers.
 
-It turns out I was wrong.
-The elements I thought were removed, aren't removed.
-
-Sorry for the noise.
-
-Diederik
-
---eb9158f3fd3022c747c09e202d1d0a175e416ede785f1ca7d155a4b18fff
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYIAB0WIQT1sUPBYsyGmi4usy/XblvOeH7bbgUCZxP1wwAKCRDXblvOeH7b
-bnomAQCauVO5HYPsaXNdYa5Tz50X1ZlJC7CDUvnlwWrQif3qFQEApyYcsmXRi4Xv
-ePPHwirwTWwZXt6w4Rr5ksGu3kE2Rg4=
-=NC6L
------END PGP SIGNATURE-----
-
---eb9158f3fd3022c747c09e202d1d0a175e416ede785f1ca7d155a4b18fff--
-
-
---===============7357137841023812774==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+-- 
+Damien Le Moal
+Western Digital Research
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============7357137841023812774==--
-
