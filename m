@@ -4,76 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 16F3ED0E6C2
-	for <linux-rockchip@archiver.kernel.org>; Mon, 21 Oct 2024 07:38:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C8842D0E6D1
+	for <linux-rockchip@archiver.kernel.org>; Mon, 21 Oct 2024 09:07:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=bxWBYoTFtH9arTcfH6pX0nn57IllsZJrglQLQiuqwVg=; b=SAb1uPkV0rKWYx
-	RLZxkMLtd5mHxnOEs2GyHEaBy8LtudmanVXeoqKi2Ui4KGLfLvCUtizCexd4J1i0A0BJOFhUvByoV
-	lmf4HtrKapF/dtt3DJChVcRqRGy4a80Bh22K21bzsY5Yn8m/lowYP+AZDe++PjCv22/2bIVLZBR1r
-	lQbvX7MpaWd+xt98UtC62RbNSHROgQwM7H63AdCjpEiW5rgm4cDb8tTDr6E71vA8lv2CH0W2sVejJ
-	m+DrVtokPlulyvakjcMHsUW8R8hqsqa3dSgUiKG7CeI1sSFMyngrgYzm2k1tTzzyqfQnbav3MY0k1
-	maETaCrW4q0+wAMvFUbA==;
+	List-Owner; bh=147MYSbxAJYrDRGavWY4e4xlD/7kLt8SxNNxUodifKI=; b=rEh1ALFr/vSnCu
+	x15ZVpUaSCOWQepYF00+qOBanGWHlmZj5lIBAKf49BXUqbg28lLeNVVp/V0epnCp8umvFYQCfa9o0
+	6Xy4X0QqDBDmb3BV/qL7o7FB7cpt+fCA+Nh50QPcYT9A1cYH+Ga6xiuxO/oZqlVL41GbM0fPxCTEb
+	ejOx6Nls8vDZma2q1/rRdhRWjn4OdETU92BvVejmnbaKqCFe7AOVqngdrOL4QA+sGgKgKWlgPfEeK
+	jVszdhYroYV9LZ84jQe4jf4Xlug2YDiaZaWkb8KO9EYge3iB83AKLm+8tD2wJbtd/RLbUx/ttd39s
+	f3M6e1daIhXrynHVhrrA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t2mzP-00000006Oie-1Vlw;
-	Mon, 21 Oct 2024 07:38:07 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1t2oNw-00000006eii-1MQ3;
+	Mon, 21 Oct 2024 09:07:32 +0000
+Received: from sakura.naobsd.org ([160.16.200.221] helo=mail.naobsd.org)
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t2mqT-00000006NUP-1IoK
-	for linux-rockchip@bombadil.infradead.org;
-	Mon, 21 Oct 2024 07:28:53 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
-	:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
-	Content-Description:In-Reply-To:References;
-	bh=gmjLE7ZfiDPnsgkk+1WmAmqTeadGIqt3ARNYz5u8TEc=; b=RD3q1sqGsmuJZexFgmu/K5rbM8
-	3/ZzTlUO3jGaCoeE4+NnBTM5vvmBe5AIs8rAqWaLEz2jksvFGjc+n9YaSGqp5GlN0Nu8U3t+H/oFB
-	6eVZCirgh1DjlRnNA66u/djetrhAX9Ppj1v2Fv7dKG3c1eFY3baGKSRdxwrpzq1Nv3CJj5IgKMbDw
-	7zB1gvABmYIzRA5iGI/t9xsDEfo3vLnQQRQHBo+0PdIfKa9P9W2H4ENQ6oBi02A2EF9Aw/WuqsM4x
-	4l1dt/P52eiWJm/Wa2i8B+epbcpMub+AVqT7Yfy+5WiS66PbpF/dPClAN7au11Jsy9xqp2Kl+nsFQ
-	aRN1MA6A==;
-Received: from m16.mail.163.com ([117.135.210.4])
-	by desiato.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t2mqP-00000007qoF-2C7M
+	id 1t2oNc-00000006edw-1WG3
 	for linux-rockchip@lists.infradead.org;
-	Mon, 21 Oct 2024 07:28:52 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=From:Subject:Date:Message-ID:MIME-Version; bh=gmjLE
-	7ZfiDPnsgkk+1WmAmqTeadGIqt3ARNYz5u8TEc=; b=kzyYEsZjGd2zUP6ZkekdI
-	5YjmdXs9gnZELqzMJnuULVMLxZ0BSiU9I53qPun9qOFIhD4Wd/p7j+25YKt3SxVU
-	taHkCOQ7TADtC4SmKKFJGnCN517eojRufvOob+i2mvol6ytP6Dao7GEm22aETaBW
-	6n3OJVE61CtD+huJXtK/fw=
-Received: from ProDesk.. (unknown [58.22.7.114])
-	by gzsmtp2 (Coremail) with SMTP id PSgvCgD396eTAhZnIAYQAA--.4735S2;
-	Mon, 21 Oct 2024 15:28:23 +0800 (CST)
-From: Andy Yan <andyshrk@163.com>
+	Mon, 21 Oct 2024 09:07:14 +0000
+Received: from secure.fukaumi.org ([10.0.0.2])
+	by mail.naobsd.org (8.14.4/8.14.4/Debian-4.1ubuntu1.1) with ESMTP id 49L96G5j012440;
+	Mon, 21 Oct 2024 18:06:16 +0900
+From: FUKAUMI Naoki <naoki@radxa.com>
 To: heiko@sntech.de
-Cc: mripard@kernel.org,
-	enric.balletbo@collabora.com,
-	tzimmermann@suse.de,
-	dri-devel@lists.freedesktop.org,
-	linux-rockchip@lists.infradead.org,
-	Andy Yan <andy.yan@rock-chips.com>
-Subject: [PATCH] drm/rockchip: vop: Fix a dereferenced before check warning
-Date: Mon, 21 Oct 2024 15:28:06 +0800
-Message-ID: <20241021072818.61621-1-andyshrk@163.com>
+Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
+        macromorgan@hotmail.com, jonas@kwiboo.se, andyshrk@163.com,
+        tim@feathertop.org, jagan@edgeble.ai, dsimic@manjaro.org,
+        michael.riesch@wolfvision.net, sebastian.reichel@collabora.com,
+        cfsworks@gmail.com, kever.yang@rock-chips.com, jing@jing.rocks,
+        devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org,
+        FUKAUMI Naoki <naoki@radxa.com>
+Subject: [PATCH v2 RESEND 1/3] dt-bindings: arm: rockchip: add Radxa ROCK 5C
+Date: Mon, 21 Oct 2024 09:05:46 +0000
+Message-ID: <20241021090548.1052-1-naoki@radxa.com>
 X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-X-CM-TRANSID: PSgvCgD396eTAhZnIAYQAA--.4735S2
-X-Coremail-Antispam: 1Uf129KBjvJXoW7CFW8AF1fAw4UuFy5WrWktFb_yoW8GFWDpr
-	WDAryjgr48Kayjqr9rJwnIvrs3GanFkayxKr97G3WSqFy7KanxCwn5urZ7urW7XrW7G347
-	t3srJ3sxCF4jvw7anT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07j-6p9UUUUU=
-X-Originating-IP: [58.22.7.114]
-X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/1tbiMwh-XmcV-hZ9LQAAsQ
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241021_082850_128710_2D7E2706 
-X-CRM114-Status: UNSURE (   9.42  )
+X-CRM114-CacheID: sfid-20241021_020712_675577_991FD296 
+X-CRM114-Status: UNSURE (   6.11  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -91,43 +64,39 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Andy Yan <andy.yan@rock-chips.com>
+Add devicetree binding for the Radxa ROCK 5C.
 
-The 'state' can't be NULL, we should check crtc_state.
+Radxa ROCK 5C is a 8K computer for everything[1] using the Rockchip
+RK3588S2 chip.
 
-Fix warning:
-drivers/gpu/drm/rockchip/rockchip_drm_vop.c:1096
-vop_plane_atomic_async_check() warn: variable dereferenced before check
-'state' (see line 1077)
+[1] https://radxa.com/products/rock5/5c
 
-Fixes: 5ddb0bd4ddc3 ("drm/atomic: Pass the full state to planes async atomic check and update")
-Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
+Signed-off-by: FUKAUMI Naoki <naoki@radxa.com>
 ---
+Changes in v2:
+- none
+---
+ Documentation/devicetree/bindings/arm/rockchip.yaml | 5 +++++
+ 1 file changed, 5 insertions(+)
 
- drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
-
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-index a13473b2d54c..26aff9c5644e 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-@@ -1093,10 +1093,10 @@ static int vop_plane_atomic_async_check(struct drm_plane *plane,
- 	if (!plane->state->fb)
- 		return -EINVAL;
+diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
+index 70bd2e4d1195..01d03f2157e1 100644
+--- a/Documentation/devicetree/bindings/arm/rockchip.yaml
++++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
+@@ -890,6 +890,11 @@ properties:
+           - const: radxa,rock-5b
+           - const: rockchip,rk3588
  
--	if (state)
--		crtc_state = drm_atomic_get_existing_crtc_state(state,
--								new_plane_state->crtc);
--	else /* Special case for asynchronous cursor updates. */
-+	crtc_state = drm_atomic_get_existing_crtc_state(state, new_plane_state->crtc);
++      - description: Radxa ROCK 5C
++        items:
++          - const: radxa,rock-5c
++          - const: rockchip,rk3588s
 +
-+	/* Special case for asynchronous cursor updates. */
-+	if (!crtc_state)
- 		crtc_state = plane->crtc->state;
- 
- 	return drm_atomic_helper_check_plane_state(plane->state, crtc_state,
+       - description: Radxa ROCK S0
+         items:
+           - const: radxa,rock-s0
 -- 
-2.34.1
+2.43.0
 
 
 _______________________________________________
