@@ -4,103 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 68DF6D3C93F
-	for <linux-rockchip@archiver.kernel.org>; Mon, 21 Oct 2024 06:11:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 16F3ED0E6C2
+	for <linux-rockchip@archiver.kernel.org>; Mon, 21 Oct 2024 07:38:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=BNph1ciQHMwU6T4Y+bJsheNrjxrifoO0km8JGrdMRio=; b=Ngz/nZjFUzp61P
-	/OXna0SMl10Alnd4AhYucLxUmT1JId8VKew6rf5OBPgze6zeqoPzUYv3+9HzimV9vdkvcmeepndsb
-	3/zIzorymDgr23dXqA8tcHyc5DRodRYCa++uyUgQQRmCOrXtCw/vvv3PHRYKEB+xHKHpt4YeGpWnN
-	tuuvZ7XL6zx9dXB15TQKQYEiw6+8n6XrdweClIG7v8LetY9VPrKaMJV1Tf4CxLNUSCMDNSKkOWRi2
-	lKpJg5aptyJX/WXEWYXxkJT/+oeoSRMw/yeDqzRr1odnLMT+Ya7aLXN4bvQJbMhQnTwbwrDlRr3X6
-	GXI5jUR7DDVLaa8MRv4w==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=bxWBYoTFtH9arTcfH6pX0nn57IllsZJrglQLQiuqwVg=; b=SAb1uPkV0rKWYx
+	RLZxkMLtd5mHxnOEs2GyHEaBy8LtudmanVXeoqKi2Ui4KGLfLvCUtizCexd4J1i0A0BJOFhUvByoV
+	lmf4HtrKapF/dtt3DJChVcRqRGy4a80Bh22K21bzsY5Yn8m/lowYP+AZDe++PjCv22/2bIVLZBR1r
+	lQbvX7MpaWd+xt98UtC62RbNSHROgQwM7H63AdCjpEiW5rgm4cDb8tTDr6E71vA8lv2CH0W2sVejJ
+	m+DrVtokPlulyvakjcMHsUW8R8hqsqa3dSgUiKG7CeI1sSFMyngrgYzm2k1tTzzyqfQnbav3MY0k1
+	maETaCrW4q0+wAMvFUbA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t2ldr-00000006BCj-1bQv;
-	Mon, 21 Oct 2024 06:11:47 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1t2mzP-00000006Oie-1Vlw;
+	Mon, 21 Oct 2024 07:38:07 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t2lcQ-00000006AxS-20Yk
+	id 1t2mqT-00000006NUP-1IoK
+	for linux-rockchip@bombadil.infradead.org;
+	Mon, 21 Oct 2024 07:28:53 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
+	:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
+	Content-Description:In-Reply-To:References;
+	bh=gmjLE7ZfiDPnsgkk+1WmAmqTeadGIqt3ARNYz5u8TEc=; b=RD3q1sqGsmuJZexFgmu/K5rbM8
+	3/ZzTlUO3jGaCoeE4+NnBTM5vvmBe5AIs8rAqWaLEz2jksvFGjc+n9YaSGqp5GlN0Nu8U3t+H/oFB
+	6eVZCirgh1DjlRnNA66u/djetrhAX9Ppj1v2Fv7dKG3c1eFY3baGKSRdxwrpzq1Nv3CJj5IgKMbDw
+	7zB1gvABmYIzRA5iGI/t9xsDEfo3vLnQQRQHBo+0PdIfKa9P9W2H4ENQ6oBi02A2EF9Aw/WuqsM4x
+	4l1dt/P52eiWJm/Wa2i8B+epbcpMub+AVqT7Yfy+5WiS66PbpF/dPClAN7au11Jsy9xqp2Kl+nsFQ
+	aRN1MA6A==;
+Received: from m16.mail.163.com ([117.135.210.4])
+	by desiato.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
+	id 1t2mqP-00000007qoF-2C7M
 	for linux-rockchip@lists.infradead.org;
-	Mon, 21 Oct 2024 06:10:20 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 278D5A41618;
-	Mon, 21 Oct 2024 06:10:08 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4AB4AC4CEC3;
-	Mon, 21 Oct 2024 06:10:14 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1729491016;
-	bh=5EZf2E2ihOngPTWTjAF+8Ag2oYNYTrqfvU2ITJf3uPY=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=nuLXcMAOTExAti3mbTsyh61SQzIe8PDAiF4Wku1vJcCV4xYBzSY4UAIRUIL3u30r4
-	 koEpal+ubBDS7UFoYh1tU+q3wr8GgZT6BEwD19EGOtkvgSA1vuN2SMtDPGNZXQSv8j
-	 yGoYtXldSt5S7Fj5jivhCas4WOKL4yJb+Mcr5OCAmNrEhakQHl+g+Dle/BeUEDlRND
-	 rlJs/HKe3nsVFRbYFsNrDRqiautN5WXGB65jza6gL65d4XETe72USqTH5koEuaJAhv
-	 7F/mCCIRL7zJKbHDk879n0rr3eeTF2yarDo4L9fYHzHAPyqSsykElFAvjBhTet/gMu
-	 +oS/TX2Srhnkw==
-Message-ID: <5b8b2964-1fd4-4b56-a9c9-049ea0471bdb@kernel.org>
-Date: Mon, 21 Oct 2024 08:10:12 +0200
+	Mon, 21 Oct 2024 07:28:52 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
+	s=s110527; h=From:Subject:Date:Message-ID:MIME-Version; bh=gmjLE
+	7ZfiDPnsgkk+1WmAmqTeadGIqt3ARNYz5u8TEc=; b=kzyYEsZjGd2zUP6ZkekdI
+	5YjmdXs9gnZELqzMJnuULVMLxZ0BSiU9I53qPun9qOFIhD4Wd/p7j+25YKt3SxVU
+	taHkCOQ7TADtC4SmKKFJGnCN517eojRufvOob+i2mvol6ytP6Dao7GEm22aETaBW
+	6n3OJVE61CtD+huJXtK/fw=
+Received: from ProDesk.. (unknown [58.22.7.114])
+	by gzsmtp2 (Coremail) with SMTP id PSgvCgD396eTAhZnIAYQAA--.4735S2;
+	Mon, 21 Oct 2024 15:28:23 +0800 (CST)
+From: Andy Yan <andyshrk@163.com>
+To: heiko@sntech.de
+Cc: mripard@kernel.org,
+	enric.balletbo@collabora.com,
+	tzimmermann@suse.de,
+	dri-devel@lists.freedesktop.org,
+	linux-rockchip@lists.infradead.org,
+	Andy Yan <andy.yan@rock-chips.com>
+Subject: [PATCH] drm/rockchip: vop: Fix a dereferenced before check warning
+Date: Mon, 21 Oct 2024 15:28:06 +0800
+Message-ID: <20241021072818.61621-1-andyshrk@163.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 1/3] dt-bindings: arm: rockchip: add Radxa ROCK 5C
-To: FUKAUMI Naoki <naoki@radxa.com>, heiko@sntech.de
-Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
- jonas@kwiboo.se, dsimic@manjaro.org, kever.yang@rock-chips.com,
- linux-rockchip@lists.infradead.org
-References: <20241020232956.1012-1-naoki@radxa.com>
-From: Krzysztof Kozlowski <krzk@kernel.org>
-Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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 fv0=
-In-Reply-To: <20241020232956.1012-1-naoki@radxa.com>
+X-CM-TRANSID: PSgvCgD396eTAhZnIAYQAA--.4735S2
+X-Coremail-Antispam: 1Uf129KBjvJXoW7CFW8AF1fAw4UuFy5WrWktFb_yoW8GFWDpr
+	WDAryjgr48Kayjqr9rJwnIvrs3GanFkayxKr97G3WSqFy7KanxCwn5urZ7urW7XrW7G347
+	t3srJ3sxCF4jvw7anT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07j-6p9UUUUU=
+X-Originating-IP: [58.22.7.114]
+X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/1tbiMwh-XmcV-hZ9LQAAsQ
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241020_231018_702659_86CB8E6F 
-X-CRM114-Status: UNSURE (   7.77  )
+X-CRM114-CacheID: sfid-20241021_082850_128710_2D7E2706 
+X-CRM114-Status: UNSURE (   9.42  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -118,38 +91,43 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 21/10/2024 01:29, FUKAUMI Naoki wrote:
-> Add devicetree binding for the Radxa ROCK 5C.
-> 
-> Radxa ROCK 5C is a 8K computer for everything[1] using the Rockchip
-> RK3588S2 chip.
-> 
-> [1] https://radxa.com/products/rock5/5c
-> 
-> Signed-off-by: FUKAUMI Naoki <naoki@radxa.com>
+From: Andy Yan <andy.yan@rock-chips.com>
 
-<form letter>
-Please use scripts/get_maintainers.pl to get a list of necessary people
-and lists to CC. It might happen, that command when run on an older
-kernel, gives you outdated entries. Therefore please be sure you base
-your patches on recent Linux kernel.
+The 'state' can't be NULL, we should check crtc_state.
 
-Tools like b4 or scripts/get_maintainer.pl provide you proper list of
-people, so fix your workflow. Tools might also fail if you work on some
-ancient tree (don't, instead use mainline) or work on fork of kernel
-(don't, instead use mainline). Just use b4 and everything should be
-fine, although remember about `b4 prep --auto-to-cc` if you added new
-patches to the patchset.
+Fix warning:
+drivers/gpu/drm/rockchip/rockchip_drm_vop.c:1096
+vop_plane_atomic_async_check() warn: variable dereferenced before check
+'state' (see line 1077)
 
-You missed at least devicetree list (maybe more), so this won't be
-tested by automated tooling. Performing review on untested code might be
-a waste of time.
+Fixes: 5ddb0bd4ddc3 ("drm/atomic: Pass the full state to planes async atomic check and update")
+Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
+---
 
-Please kindly resend and include all necessary To/Cc entries.
-</form letter>
+ drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
-Best regards,
-Krzysztof
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+index a13473b2d54c..26aff9c5644e 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+@@ -1093,10 +1093,10 @@ static int vop_plane_atomic_async_check(struct drm_plane *plane,
+ 	if (!plane->state->fb)
+ 		return -EINVAL;
+ 
+-	if (state)
+-		crtc_state = drm_atomic_get_existing_crtc_state(state,
+-								new_plane_state->crtc);
+-	else /* Special case for asynchronous cursor updates. */
++	crtc_state = drm_atomic_get_existing_crtc_state(state, new_plane_state->crtc);
++
++	/* Special case for asynchronous cursor updates. */
++	if (!crtc_state)
+ 		crtc_state = plane->crtc->state;
+ 
+ 	return drm_atomic_helper_check_plane_state(plane->state, crtc_state,
+-- 
+2.34.1
 
 
 _______________________________________________
