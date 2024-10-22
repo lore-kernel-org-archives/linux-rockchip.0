@@ -4,59 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C0AEFCDD0EA
-	for <linux-rockchip@archiver.kernel.org>; Tue, 22 Oct 2024 20:39:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AE9ADCDD0FF
+	for <linux-rockchip@archiver.kernel.org>; Tue, 22 Oct 2024 22:56:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=LIISdyMqjRml2RKqk5rQhY7Y9FSOpt2cGbbT3cD2szw=; b=E6Zfs1Jti0w/IJ
-	JRLutkKhN43ZsP0GyZXsA15azxSoAnLJ28jjPtCA2eJA0dnzMnTuvhp3H6SSCv4A+1crq48A41bOF
-	VWn33u8NcLYtgfoj6M71TLETECDdLgUMh4zM5qWL/SkOAKTpYu8BvSkoE+qmpWM9P+kQcpeEuZHbL
-	FICmjL/TPYNZn8n7GGhIfLWYkz2YpTyOO4+FHEMsgl0ywpF8ER1/A+lPgy++6ZR74aKeF5GUmqI3m
-	r4Nb2J4/pNLNQBi4eGl1JEc70W1+oiYIhrctpNooP9AKo4utzzEaQVX2wvOtZeHWqTlsukfIo+u5z
-	6Zjqwxcbk8j3WfdbGx7A==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
+	References:List-Owner; bh=5suMBX5KVOBG0H5wP9Th2cWZpJ9agRcakG96Nv4z5VY=; b=OPZ
+	6dM3X7uii3Jm0vO5YzUsrZmnQLJjdon+htsfjSlZSOS83B2CaogrnmPtUAX93yR/+9RzNWHfH+9nY
+	z+5njhHxhSAKmTAHKhO3/aq2d0MgoYsx8BUDPT1uXrWcO6KViCrRr2rUp6Jl0MnaEqGcra7GCeAfA
+	qRsRgSjPUeTPegBu6eaLJMlzzYYzP9R4iHSKoLlZbSx+Ka5AOQJGCeUNeLXMcAZlKQ3K3dYm/Tq7X
+	Sqht5S/2PTT990EV5p4RBJlTcGx3zLbHJkZuEg63VlL7xGTXQyxE5tc2OG5H7hKypzng+VWiBQDcM
+	+DhlBl44AF/oqzEBk2pFF5m4qDUkhoA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t3Lei-0000000C6o4-1Avk;
-	Tue, 22 Oct 2024 20:39:04 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1t3NnR-0000000CO4V-2owf;
+	Tue, 22 Oct 2024 22:56:13 +0000
+Received: from mail-oi1-x236.google.com ([2607:f8b0:4864:20::236])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t3Lef-0000000C6nc-3jFn
+	id 1t3NnO-0000000CO3i-367H
 	for linux-rockchip@lists.infradead.org;
-	Tue, 22 Oct 2024 20:39:03 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
-	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=MQt8retUkqZ25m45uw/r/9nueROlQYViwNiSNSMKABY=; b=RtGZ92MVrsIJPtQjU22PFRSfQZ
-	GJBvakB8iDUOITMJRbdQHE5rCEsyoBsjtWamwF//Eq7C9q98t8rgo3ytwq3i2Ovj14+GS2t37t7+y
-	RNcoKgJkcSMndvccBIjOq7aja/H7KRrMCG7tXZhYP8LbttmCDNqrn2yOTAcfsLFK9vSc0jlPaglo2
-	4WLi283oF/TUr8A1l/rGz2jVdgEYXN3axdQ+261xiehvWl74EA8NncUNFEET4laPXCzHTk6bv3Y4V
-	Gv1JQ+Cqa2kM8E8A+oRtG9Aab6YVMQeXruGYPzF8korjjbnL7xznjOKPn1YIO7wSrWWjiBnodOluz
-	i8Nm4ZXw==;
-Received: from i53875b34.versanet.de ([83.135.91.52] helo=diego.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1t3Lee-000299-8L; Tue, 22 Oct 2024 22:39:00 +0200
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: Jimmy Hon <honyuenkwun@gmail.com>
-Cc: "Rob Herring (Arm)" <robh@kernel.org>, linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH] arm64: dts: rockchip: analog audio on Orange Pi 5
-Date: Tue, 22 Oct 2024 22:39:01 +0200
-Message-ID: <2211450.Mh6RI2rZIc@diego>
-In-Reply-To: <CALWfF7+pT0VHD_DQfBsOvyi-qPksgxNoziaW=efOUt-SrPXDQw@mail.gmail.com>
-References: <20241008031429.2410-1-honyuenkwun@gmail.com> <4958831.31r3eYUQgx@phil>
- <CALWfF7+pT0VHD_DQfBsOvyi-qPksgxNoziaW=efOUt-SrPXDQw@mail.gmail.com>
+	Tue, 22 Oct 2024 22:56:12 +0000
+Received: by mail-oi1-x236.google.com with SMTP id 5614622812f47-3e5ffbc6acbso2966022b6e.3
+        for <linux-rockchip@lists.infradead.org>; Tue, 22 Oct 2024 15:56:10 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1729637769; x=1730242569; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=f2B8vtJRkfFuf7RKh3LB4I8OvkrTbWdiGsWUNIcfVXU=;
+        b=AcKN4IWhjRzS+bVk1tnZHOSjamKW5/s9ib6swL3Id45NTpqRpFxgw0fup5REzOVaUx
+         hxkO17S24/kMMK+5OsLsNyrZfsCXwuS8MMbl/aXwNJvoGrZVyNPdQqlzpSvLzsqGTGi4
+         VF3p7gL+A9HQTdvfHgriBAP0i4DQfQ6xUkoSCSvJNBuIkqcxGd603tCpejiYZXuKndAK
+         DCqWLMcDGrJo0KiQJ/777upg/2XDPD1V6e6LsbzvfRXi0zznpaVYQp7asR1B+ZP1t/69
+         GR7q2/B38X2XKXqA9ZjwWDYV1d3JSO/pn7p+irp5rX3gZw0lSVGUsYqu5QHrY1y75+r1
+         njtQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1729637769; x=1730242569;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=f2B8vtJRkfFuf7RKh3LB4I8OvkrTbWdiGsWUNIcfVXU=;
+        b=E3dB27fdXbSh8+UQmrNN9+rGAx9HPFH4DnjvmmmHK0f4uPh3tCkhVzSFN1lZH6n74J
+         fLFS7SIEzsETyuVj0CxgvCNtvo/e+CZKwdi2rcVJ5iMYZhwtWKqouY0QeaqTRJzHLyGI
+         tNSkNueJA42SfT4dMCpyNqdMKniDxyD7lSw37HoNB5xNFDFTW+2J7TXHtIlcn+o/COt4
+         z2qXujw/9Pg/jP4rgL0jhYcpUyTizw0R3VPPgSwFBKiPFaSxoDuRhON2yHNvIV0GWwJ1
+         KLTDIJf6UuLUTaus8xfRkByLvdLNoIv2z+FSm+PtBL4vPDid+GGnYwnQblk3L54UYwhA
+         m5Fw==
+X-Forwarded-Encrypted: i=1; AJvYcCUQU/KjBzvgrrx93Y+hCF5KtbYpB34MBXsf3qqee1D/td1NvTDLiDDgBDiUleb3TxURqQE7rTThnsAlrn2yDQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxFmqk660UmgWPJKEnewpRUm6Za5mWlU0gLLPmNjiuWR/2dNONi
+	2YIF84l0y93rNJ+MoOFPFC+nK7gDDEb6KYsn1cwbePQqR7VWX9p/
+X-Google-Smtp-Source: AGHT+IEwrlzk+YCK+wIum9qbHdvOzre6J3BE6t9DWCEtjuv4t5qqPKoelfo3aAA+otuDMbY+oC3D2Q==
+X-Received: by 2002:a05:6808:1783:b0:3e6:2432:aafc with SMTP id 5614622812f47-3e624500a2fmr542777b6e.4.1729637769224;
+        Tue, 22 Oct 2024 15:56:09 -0700 (PDT)
+Received: from tower.cjhon.com ([2603:8081:ad40:11:3885:3c8d:dd4e:9891])
+        by smtp.gmail.com with ESMTPSA id 5614622812f47-3e61035fc2dsm1522940b6e.52.2024.10.22.15.56.07
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 22 Oct 2024 15:56:07 -0700 (PDT)
+From: Jimmy Hon <honyuenkwun@gmail.com>
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: Rob Herring <robh@kernel.org>,
+	Cenk Uluisik <cenk.uluisik@googlemail.com>,
+	linux-rockchip@lists.infradead.org,
+	Jimmy Hon <honyuenkwun@gmail.com>
+Subject: [PATCH] pwm-leds for Orange Pi 5
+Date: Tue, 22 Oct 2024 17:46:54 -0500
+Message-ID: <20241022224653.1483-2-honyuenkwun@gmail.com>
+X-Mailer: git-send-email 2.47.0
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241022_133901_961815_43CC0EAB 
-X-CRM114-Status: GOOD (  20.17  )
+X-CRM114-CacheID: sfid-20241022_155610_798875_EF681A07 
+X-CRM114-Status: GOOD (  10.60  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,44 +87,96 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============8906751083756047927=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Am Dienstag, 22. Oktober 2024, 17:56:44 CEST schrieb Jimmy Hon:
-> > > New warnings running 'make CHECK_DTBS=y rockchip/rk3588s-orangepi-5.dtb' for 20241008031429.2410-1-honyuenkwun@gmail.com:
-> > >
-> > > arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5.dtb: gpio-func: leds-gpio: {'rockchip,pins': [[0, 2, 0, 243]], 'phandle': 256} is not of type 'array'
-> > >       from schema $id: http://devicetree.org/schemas/gpio/gpio-consumer.yaml#
-> >
-> > the error is predating this patch but should be fixed
-> > nevertheless.
-> >
-> > @Jimmy: can you check if the schematics for your board provide
-> > an alternative name for the pin that is "leds-gpio" currently
-> > in the orangepi-5 ?
-> >
-> > Or just rename it to something like status_pin or something?
-> >
-> > Thanks
-> > Heiko
-> >
-> >
-> The schematic calls the pin PWM0_LED.
-> The schematic for the LED RUN led on the Orange Pi 5 looks a lot like
-> Orange Pi 5 Plus's PWM_LED0 which is being driven by the "pwm-leds".
-> Unlike the PWM_LED1 which is not connected to a PWM capable pin.
-> https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-plus.dts#n97
-> 
-> I'll try to switch it over to the pwm-leds and use "pwm0_led_pin",
-> otherwise I'll just relabel it to run_led_pin or green_led_pin.
+--===============8906751083756047927==
+Content-Transfer-Encoding: 8bit
 
-Thanks a lot for looking into that :-)
+The green LED RUN is driven by PWM0_LED that can be controlled by PWM0_M2
+
+Fixes: b6bc755d806e ("arm64: dts: rockchip: Add Orange Pi 5")
+Signed-off-by: Jimmy Hon <honyuenkwun@gmail.com>
+---
+Based off of v6.12-armsoc/dtsfixes in the same spirit as the cleaning up of
+enable-active-low
+This change will also avoid the DTB warning when using the id "leds-gpio"
+This commit basically implements Ondřej Jirman suggestion from the first
+patch series. [1]
+
+[1] https://patchwork.kernel.org/project/linux-rockchip/patch/a1eca379d151c3f91f4cd4e1751ba389096c4f13.1692102057.git.efectn@6tel.net/#25472495
+
+ .../boot/dts/rockchip/rk3588s-orangepi-5.dts  | 26 +++++++++----------
+ 1 file changed, 13 insertions(+), 13 deletions(-)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5.dts b/arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5.dts
+index 6b77be643249..c78eb298a017 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5.dts
+@@ -36,15 +36,15 @@ button-recovery {
+ 		};
+ 	};
+ 
+-	leds {
+-		compatible = "gpio-leds";
+-		pinctrl-names = "default";
+-		pinctrl-0 = <&leds_gpio>;
++	pwm-leds {
++		compatible = "pwm-leds";
+ 
+-		led-1 {
+-			gpios = <&gpio1 RK_PA2 GPIO_ACTIVE_HIGH>;
+-			label = "status_led";
++		led {
++			color = <LED_COLOR_ID_GREEN>;
++			function = LED_FUNCTION_STATUS;
+ 			linux,default-trigger = "heartbeat";
++			max-brightness = <255>;
++			pwms = <&pwm0 0 25000 0>;
+ 		};
+ 	};
+ 
+@@ -297,12 +297,6 @@ &pcie2x1l2 {
+ };
+ 
+ &pinctrl {
+-	gpio-func {
+-		leds_gpio: leds-gpio {
+-			rockchip,pins = <0 RK_PA2 RK_FUNC_GPIO &pcfg_pull_none>;
+-		};
+-	};
+-
+ 	hym8563 {
+ 		hym8563_int: hym8563-int {
+ 			rockchip,pins = <0 RK_PB0 RK_FUNC_GPIO &pcfg_pull_none>;
+@@ -320,6 +314,12 @@ typec5v_pwren: typec5v-pwren {
+ 	};
+ };
+ 
++&pwm0 {
++	pinctrl-0 = <&pwm0m2_pins>;
++	pinctrl-names = "default";
++	status = "okay";
++};
++
+ &saradc {
+ 	vref-supply = <&avcc_1v8_s0>;
+ 	status = "okay";
+-- 
+2.47.0
 
 
+
+--===============8906751083756047927==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============8906751083756047927==--
