@@ -4,64 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6EE82CDD0DB
-	for <linux-rockchip@archiver.kernel.org>; Tue, 22 Oct 2024 19:42:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9B0B6CDD0DB
+	for <linux-rockchip@archiver.kernel.org>; Tue, 22 Oct 2024 19:44:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=TmoHR816pBfYvSqosA+rTHMUY4J6iK96NifZrGHzjuk=; b=EF6lkXjWwLLrqD
-	K+2+1cKsS9i9MHuobx5QmQgSahZ8XVtBarveTv7JbNoqsKBGsuomG93e7f5A+E5U8irPNVYCktWDg
-	QErp6RKrUJsw3iXooIHOsSTuCtTuh61AGmnUhl+yyG41uAPsIQE+YGq3Lyn55pASYKvpwEXHslN/o
-	lO9s/lHpsG77yHOpXPmKyzUV+BrDrtGuIk1k6wRHx5eT8Q6eSoazb9bgYxS6uLs8vGsYDHjPBtyUp
-	ZgCdpZ6gYXfNDY+XVY8aGmlteoAFBc8xp/Y5f5CjOgGwsM6w6NV8qrfUcOqYaF2nuF/WMbWxSM4Zg
-	OakPB5+KJVdG8jFp1pjQ==;
+	List-Owner; bh=6KehcQnI5bKPCYVVOtHaBbX6a3s8hVs0fI7Lkrecj00=; b=CFuF0I9Dswr+u1
+	sM+GHqpcvlTnyGv2PtB5GCUEu0GJc7GY/vUsTwRFXlcYJTcZaSzq525qQgjcQxzlGBPizKsMso/jT
+	bS/RSDz7hh8vTZazw3Zu4lF+5Rof52g4DH4/cniaXeefYEYYwC92/vzaRt7fTpJZ3kH//2bzQSaPF
+	SqznqKaizVslYiK15L2+/1/mPEatmKF993PmNDjU6bWjfMl6N5O9VQe+XNY+NRUFP0O3fftnPVk3z
+	jhKubdz2VPJf3Sm4Cx4K8K/SDHqF3CKJqq3yYk1zzzOR7HCObqL1FQs0gZQU77SGj3cJlWYOgFFFw
+	YE6kMQPHNGfxPkzJtIRg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t3Km4-0000000BypU-3FzG;
-	Tue, 22 Oct 2024 19:42:36 +0000
-Received: from mail-pg1-x529.google.com ([2607:f8b0:4864:20::529])
+	id 1t3Knc-0000000BzIb-1Hlw;
+	Tue, 22 Oct 2024 19:44:12 +0000
+Received: from mail-pg1-x535.google.com ([2607:f8b0:4864:20::535])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t3Kfv-0000000BxcO-0vvV;
-	Tue, 22 Oct 2024 19:36:16 +0000
-Received: by mail-pg1-x529.google.com with SMTP id 41be03b00d2f7-7ea76a12c32so4879958a12.1;
-        Tue, 22 Oct 2024 12:36:14 -0700 (PDT)
+	id 1t3Kg2-0000000BxgA-3RLl;
+	Tue, 22 Oct 2024 19:36:25 +0000
+Received: by mail-pg1-x535.google.com with SMTP id 41be03b00d2f7-7ea7ad1e01fso132562a12.0;
+        Tue, 22 Oct 2024 12:36:22 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1729625774; x=1730230574; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1729625782; x=1730230582; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=ZATNHLu7ryXLlEMWdw/soQewkOcMuE+6eXALk2zJ/y8=;
-        b=b94lF01XzZ5GvAQsHY5iLaetjBqxeKkFsckSFiuTgEZSOpjJ+TNCcKny3MMxJSyQ1D
-         WCe61BpYIMxEvGm4JDmmwXh0Dl+VhWbHIyMWFnro6ChSUSUOIUUhAutRCUS4f3AwnVkP
-         e7Csl0HiwOlhByceheuuVx9/5QJ6EP0NdNTxQq/ON0uF7T3YC4TTQNQ87/0DnybS4OV8
-         /eoYFwtW9ibWGkF+kOE9l0lUwIxUtqHjCNJVceJvpdlLk7aw6Z8i4Fw8MGwO26IbojFI
-         Iq2lOj69A7E7fiKXuFs1XvXKYq1+7sva+SsCU+tfnzgu8+M23w7M6cJywueIhu/8bbQd
-         0nFg==
+        bh=OX3rGRTXjTnfbyh3jkkVkK45Jb1/cfnPyM7MP3Mq4nk=;
+        b=iWvkLpZjE2ab/DUUxndOOA6uzJ0BNvBxIdnDEcxwAVoEfkafH3UvxhHgcE4TssZw1L
+         vC7PVnnUPH8/UZJsKdwRJlKQ7dTdDppZ1pz8jaGzM0jvoacFf0rV5633c9aKNRhvtzD/
+         DGyj0HdqOieRplVs1Wo0zlTs/dFbHSeyY76ayX46TbfgLABbLI6MaM5r181DvanAS3W/
+         d0EpARpn4laTFhPmX161n29ykEr/mlVeUPLnD1iUZIuttgvJo0b/TxWC7p/CRB3Zpgl3
+         tG1Okftg0U7rS34ENfMCYH+XoUoeczlRx4qftEDqmxGHDuX6USJ107cK+5IZ9rppAxw3
+         KTkg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1729625774; x=1730230574;
+        d=1e100.net; s=20230601; t=1729625782; x=1730230582;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=ZATNHLu7ryXLlEMWdw/soQewkOcMuE+6eXALk2zJ/y8=;
-        b=vFrsejmBIGT3J4N1fuiDTy0BFjzEqKa7PMqBxur5YNNE2uQ90l4czaO/o8DRYzdv+X
-         MRIUV9RgdMT6aXk/KppnNaXtmDzIJ9Klv105OYwG8SHit+5/+M4/wc78tqy1fGGdr3fB
-         /JfleSozc8LFujQGoi8U/z9VhTkoQ09Y1OgJD44mIndeOnbyfXsPPyIYDooIYufB75kc
-         z4zWy1gk6UaCxdJGDoZ7aNvyRzVt4wA6uJzTGUHrQK3GJz2Hpzk/L5H38XaDcfDeMCTo
-         t2ToNvEcnU+sahi1FmzPfzm6y97Rgp4av4mfXcYI1PDTzom++8X+ToFB9HerSyaKc0Gi
-         loBQ==
-X-Forwarded-Encrypted: i=1; AJvYcCWM+4ywdjfOIbyK54t7H8KVRMNXAZ09QXwP97PRAX8JM1bCR5AFJFidroQj1bjLx7XeALLhkaogM/kgWLb8asg=@lists.infradead.org, AJvYcCX7AUmzdDt8o+1ayyBvuQNmb9h/7BOngME5nTdIVgHuiHL55ZSEqN+8hPSOe/+e51HPUtxoXOCtymKfeG7mrP0D@lists.infradead.org
-X-Gm-Message-State: AOJu0YwD25XqcHgz4b75/TRXHaoGKZXguyQQR8lOnvFfeNdvAK+Ir82J
-	ANt85BF7PG+70FIaI5miMW25GUzc4frEQhTiCp5wqMXKTkhpdxnk
-X-Google-Smtp-Source: AGHT+IGuEr0jw3gysbwK6xAgXQVAp73Rxim5u5IqSonSQ50FehaQdZxMf9RI5ejAh/MnH32asL036w==
-X-Received: by 2002:a05:6a21:168e:b0:1d9:2a0e:971e with SMTP id adf61e73a8af0-1d978bb27c5mr96065637.46.1729625773809;
-        Tue, 22 Oct 2024 12:36:13 -0700 (PDT)
+        bh=OX3rGRTXjTnfbyh3jkkVkK45Jb1/cfnPyM7MP3Mq4nk=;
+        b=lYDY7/0L4WqVTbZ7bNKDCyuwAox4zl8Ks2F2E8t+fSSQqPSxs3/N1ArRQnIgfmlP42
+         0auutk4kxXrCm3K0BZQ+vRyywXAlsPHehOr9mQiGFeew+s41VoQO/dYd9l6Q8KHZi6xa
+         +PWuqaQAl2EdMl6LmVfCN7FKRnE9Iq/zqsxkI++YWcNyNXa+sR+9jw5xaelMpbTJUCQG
+         45DfFDvvZIggHsSyPf/zAF89rvGSYi0A7LYbgIgnLOt9DT/fiPM6HXv0YzvcOlq2LgJ1
+         0TACrayTgPKBisDLFfY9C4epefUFx9Kiq32WBQCmayHJdMi7dffx2CEExFYmtvjmf03h
+         4eWg==
+X-Forwarded-Encrypted: i=1; AJvYcCWhfCOkt7lgnIblga6UdP/qh0mEQC5CnrpJbxnCVNxihtF4BnLTRMuoWRPHvNq23CF9FKLBHh43cJTah4sH0BY=@lists.infradead.org, AJvYcCXgmN5w9yDRRePaLrTNCx+RNaYXeFbVK2C0gF1txtK97/8aDQaBENI3YmT6aqHd7oL8AqHJYrgehOwGyGrDkQcv@lists.infradead.org
+X-Gm-Message-State: AOJu0YwubhCEPMcMhxdrTh8S3MO1/6EZZ/6XZTHHV1WpZsczm3l7Bpke
+	M2F0wwFQuqc4xiK0fX4/1faD3s877A3k5vjCIeFAYpB3EdYAG//E
+X-Google-Smtp-Source: AGHT+IGxChW/ByuZYjhL4nrxVUwxoOienwQqLSub4S6jDZ1mxsfZoXM4s4/2IaaNf54eWRFhDaDgpw==
+X-Received: by 2002:a05:6a21:7747:b0:1d8:a9fa:f7fe with SMTP id adf61e73a8af0-1d96c29621fmr4948174637.10.1729625781417;
+        Tue, 22 Oct 2024 12:36:21 -0700 (PDT)
 Received: from CNSZTL-DEB.lan ([2408:8262:245d:4d65:bc4b:53ff:fead:2725])
-        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-7eaeaafb1e0sm5467316a12.3.2024.10.22.12.36.07
+        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-7eaeaafb1e0sm5467316a12.3.2024.10.22.12.36.14
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 22 Oct 2024 12:36:13 -0700 (PDT)
+        Tue, 22 Oct 2024 12:36:20 -0700 (PDT)
 From: Tianling Shen <cnsztl@gmail.com>
 To: Rob Herring <robh@kernel.org>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
@@ -76,16 +76,16 @@ Cc: devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org
-Subject: [PATCH 3/5] arm64: dts: rockchip: sort props in pmu_io_domains node for NanoPi R3S
-Date: Wed, 23 Oct 2024 03:35:28 +0800
-Message-ID: <20241022193537.1117919-4-cnsztl@gmail.com>
+Subject: [PATCH 4/5] arm64: dts: rockchip: enable eMMC HS200 mode for NanoPi R3S
+Date: Wed, 23 Oct 2024 03:35:29 +0800
+Message-ID: <20241022193537.1117919-5-cnsztl@gmail.com>
 X-Mailer: git-send-email 2.47.0
 In-Reply-To: <20241022193537.1117919-1-cnsztl@gmail.com>
 References: <20241022193537.1117919-1-cnsztl@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241022_123615_285336_1ADC345A 
-X-CRM114-Status: GOOD (  12.50  )
+X-CRM114-CacheID: sfid-20241022_123622_919994_D655DFD7 
+X-CRM114-Status: GOOD (  10.32  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,35 +102,27 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The status prop is typically the last prop.
+It is required to boot from eMMC without additional patch in u-boot.
 
 Fixes: 50decd493c83 ("arm64: dts: rockchip: Add FriendlyARM NanoPi R3S board")
 Suggested-by: Jonas Karlman <jonas@kwiboo.se>
 Signed-off-by: Tianling Shen <cnsztl@gmail.com>
 ---
- arch/arm64/boot/dts/rockchip/rk3566-nanopi-r3s.dts | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ arch/arm64/boot/dts/rockchip/rk3566-nanopi-r3s.dts | 1 +
+ 1 file changed, 1 insertion(+)
 
 diff --git a/arch/arm64/boot/dts/rockchip/rk3566-nanopi-r3s.dts b/arch/arm64/boot/dts/rockchip/rk3566-nanopi-r3s.dts
-index 66a00cddda0c..243574f8da78 100644
+index 243574f8da78..03a2f90f6217 100644
 --- a/arch/arm64/boot/dts/rockchip/rk3566-nanopi-r3s.dts
 +++ b/arch/arm64/boot/dts/rockchip/rk3566-nanopi-r3s.dts
-@@ -476,7 +476,6 @@ vcc5v0_usb_host_en: vcc5v0-usb-host-en {
- };
- 
- &pmu_io_domains {
--	status = "okay";
- 	pmuio1-supply = <&vcc3v3_pmu>;
- 	pmuio2-supply = <&vcc3v3_pmu>;
- 	vccio1-supply = <&vccio_acodec>;
-@@ -486,6 +485,7 @@ &pmu_io_domains {
- 	vccio5-supply = <&vcc_1v8>;
- 	vccio6-supply = <&vcc_3v3>;
- 	vccio7-supply = <&vcc_3v3>;
-+	status = "okay";
- };
- 
+@@ -491,6 +491,7 @@ &pmu_io_domains {
  &sdhci {
+ 	bus-width = <8>;
+ 	max-frequency = <200000000>;
++	mmc-hs200-1_8v;
+ 	non-removable;
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&emmc_bus8 &emmc_clk &emmc_cmd &emmc_datastrobe>;
 -- 
 2.47.0
 
