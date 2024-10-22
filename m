@@ -4,75 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DD693D2CDFB
-	for <linux-rockchip@archiver.kernel.org>; Tue, 22 Oct 2024 15:57:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2956DD2CDFF
+	for <linux-rockchip@archiver.kernel.org>; Tue, 22 Oct 2024 16:44:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=8/6LvQ8EyuA9kYggHF7eWV2mvO1vjGaS9IgWiKTngUw=; b=46HTO1zSPo/kJb
-	HCm4l7JzYCZjt/xOet5d+ky/EYt9+hZgdRpmovUbD8WD9BXRWOYtRnfK2YD6pWyBZ7mAwBFyl47nH
-	VOrNbPSu2kLLXKMbHN1GPuVZJecwiC/uqyhkAgBMhcSUcVlVcEEuLev+5pTlot0rPGDdc1XuFCIRW
-	N8b7wx144wQgVQH3/92Wt21a1/G06654ZNVKFspZL7v1BvQ8zJdzinWprFGt5I/Pv/XWvAACniQQz
-	yV799443/ThN5Gp8C/HzEyjJyuEsN4K5NWlrrOX8Ap4qM2idNHGuTWYaWd1we0pk54MlBT6QckVJ7
-	eHLLNDMi5QHu419XjSgA==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:MIME-Version:Subject:
+	Date:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=apy9WKQtaoy1S+QNcQcUy64xU7VFsI9qR1QXWGjruVU=; b=BW93f6KROtls8S
+	oX5hJkgXYKcIuGufUWXwK8NIVIkqs6Y0rqN1IJxFM0YB3tbOB+LcWUwroa3CJNJWkZYLZWgQL90/D
+	uxSGwln+0fPg+PrmuJeKMLBFXLUmp08ssxaFZOrJdJraWD7M3+8z4kU7D8BSoJReWDvTCtjNXs5xm
+	uSJmtEBesmthHaQTefyOKKS/ibCVkZnCDo4ei9jROuUCU782WsMnKVkSM8F9qIScU6cTraBIyRycg
+	+ljDOhYd9z3rMgOnpnggqhB+917PpIVJtZ9dxoMiqYChTFoXe2CDFhaCrv7Ur+frooiDdM6iqWNXm
+	uvOTp76HJ90Z7QC9EXvg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t3HGT-0000000BKxQ-2YQ6;
-	Tue, 22 Oct 2024 15:57:45 +0000
-Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
+	id 1t3Hzx-0000000BWFX-3vNz;
+	Tue, 22 Oct 2024 16:44:45 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t3HFh-0000000BKjv-43x7
-	for linux-rockchip@lists.infradead.org;
-	Tue, 22 Oct 2024 15:56:59 +0000
-Received: by mail-wr1-x42c.google.com with SMTP id ffacd0b85a97d-37d4a5ecc44so4286312f8f.2
-        for <linux-rockchip@lists.infradead.org>; Tue, 22 Oct 2024 08:56:56 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1729612615; x=1730217415; darn=lists.infradead.org;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=eoUFYnoX2oUL2AziIPfIJDDAZ+iERWN+wybcOJOaeZU=;
-        b=WZczVWWuFiFmRH293kyC67hzd/zYS1l2s+iZfnhXA78hLEa/i9YH4ENDStEh+4+/4N
-         HdYGyNu7K3TPRFHLK+DsSIWUDSQ7EBdc4zz0R0EX4n0JtjFXEAdUnpwIDuF2qba54mBG
-         JSmTUWbkqmmuzZOWQinUnwD1IcY+34bcAmfwO8ixUmB4GtLJH9Z50952VeImZ5+M2/fU
-         yIm9XGuVcxUboh5lTMPrn9l1d/wtQUdrjItLf9uzB8o3n09ww5F5+LZyLVmlhqVQ8IIV
-         BhJNlJnSUWfi2PoorhgpAavmjkdBuGBFLyOoTJq56SiTqQ0CDaZqMWNDzSFnakQwt2ur
-         VnXw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1729612615; x=1730217415;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=eoUFYnoX2oUL2AziIPfIJDDAZ+iERWN+wybcOJOaeZU=;
-        b=whlT2lwftFwS2oz7ydPez6g72Xyv5YGC2VApsM/UcY7hIGXK8vp6/H8xZ9l8dMwAWS
-         sse+d0ZyBx91AQxaHLAqfv3ijmcZ1xUHmvswBIspma7qpvVn1zIeHqZPF+ET0yY1d+Hc
-         npmijDPkfYHFj6pNBtlrQZp/Rwur7edi1HSOh1FQ+8zn/B4K5aqdIrj7yOLN1meG8/o2
-         FYc/X/98TzJBgrdU+7YFTNN2xKLk8Yah+nnNgEnzuI2fKbElCnPbehrv0AbzwlhLh/qF
-         7nFIZPgj8J4ww/bymmw4VwOHEmdi2L3GZVU3xyKCkLBDowofhg0jXjcj+cdYv/UyDfAV
-         AeEg==
-X-Forwarded-Encrypted: i=1; AJvYcCXG5WD5vewNhszrWYega37LbxLPdjkWAD5hoA3XHaqH4kt81Sew5R0//D9h4x63Cx1ngoAet8JUdEu5uSB4kA==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yw4zSXtf9sQpFSL9NAM0yq7OQPT+O0zlgKU3dm0ri2rOIlccMJI
-	j0VVKgZXXa5UpdSBNpnQBzxlYMYXCXId2Zz3Uy3KnOfcPApR2W60lnlPEFG++1uTJn3MqbPFEWS
-	EmSWWUK/oqaVdBoBsa32daryJr5BXf6Dz1ew=
-X-Google-Smtp-Source: AGHT+IGGpJCZrl2ulXh3AqCe3aoFgAk6SSHC3Cacxq9q/SWqdxn6MArljVC+vQ7lrNwHiUdWzkJ4nTYYVwV59M12dTs=
-X-Received: by 2002:adf:e9c2:0:b0:37d:493c:f7b8 with SMTP id
- ffacd0b85a97d-37eab72779emr9549550f8f.2.1729612615262; Tue, 22 Oct 2024
- 08:56:55 -0700 (PDT)
+	id 1t3HNo-0000000BN7j-0No5;
+	Tue, 22 Oct 2024 16:05:21 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1729613117;
+	bh=OynJaLzMucy3vyn4kZXuh4tD4dsnHaoATki7l4g0SmM=;
+	h=From:Date:Subject:To:Cc:From;
+	b=cJSPzcCWjFLx6mkYM+D4SNX8Nk0MW+obST65upmRoc37JhwJb2tiy6WNT8/TfU02O
+	 KMwsLCr13ftAJt5XEkynWkHmaB7rNhgFOJZ/VWkEtCV7B5pdT0WP3FZLqPP7HYindA
+	 vW0oqi8GHrUowMvqQ52EA5wX0gBiZVtGrD+S6el+jFspQZTD0iezRInZZgu/8NJis3
+	 gZF7ToI/9yOs4vpzt8jUUy2c2gG9g3x2vXwGO7IXeiAZqZZteEBS4X9zuF5d+RuSn5
+	 yoVrIEzcs1LFJH8FycR+s7lL+K2cONMi3ym+ezH+89t/m/g47KNJHKOKJGbzCD0psE
+	 xPUKxupBP6bgg==
+Received: from localhost (unknown [188.24.146.62])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: cristicc)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id C0F2717E3677;
+	Tue, 22 Oct 2024 18:05:17 +0200 (CEST)
+From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+Date: Tue, 22 Oct 2024 19:04:42 +0300
+Subject: [PATCH v3] arm64: dts: rockchip: Enable HDMI0 on rock-5a
 MIME-Version: 1.0
-References: <20241008031429.2410-1-honyuenkwun@gmail.com> <172839929050.1375676.6206290291229445428.robh@kernel.org>
- <4958831.31r3eYUQgx@phil>
-In-Reply-To: <4958831.31r3eYUQgx@phil>
-From: Jimmy Hon <honyuenkwun@gmail.com>
-Date: Tue, 22 Oct 2024 10:56:44 -0500
-Message-ID: <CALWfF7+pT0VHD_DQfBsOvyi-qPksgxNoziaW=efOUt-SrPXDQw@mail.gmail.com>
-Subject: Re: [PATCH] arm64: dts: rockchip: analog audio on Orange Pi 5
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: "Rob Herring (Arm)" <robh@kernel.org>, linux-rockchip@lists.infradead.org
+Message-Id: <20241022-rk3588-hdmi0-dt-v3-1-3cc981e89afb@collabora.com>
+X-B4-Tracking: v=1; b=H4sIABnNF2cC/4XNTQ7CIBCG4as0rMUM9EfoynsYF5QBS2yLgYZom
+ t5d2sSNLly+XzLPLCSa4EwkbbGQYJKLzk85ykNBdK+mm6EOcxMOvGLABA33shaC9jg6oDhTplh
+ ZI8CpUZbkq0cw1j138XLN3bs4+/DaHyS2rR9L/liJUaAdCsultEZpPGs/DKrzQR21H8nmJf7H4
+ NmomkajACOsld/Guq5vYTSqjPYAAAA=
+X-Change-ID: 20241018-rk3588-hdmi0-dt-1a135d0076af
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+ Sebastian Reichel <sebastian.reichel@collabora.com>
+Cc: kernel@collabora.com, devicetree@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+ linux-kernel@vger.kernel.org
+X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241022_085658_071149_D2BA336E 
-X-CRM114-Status: GOOD (  15.49  )
+X-CRM114-CacheID: sfid-20241022_090520_375143_B713F719 
+X-CRM114-Status: GOOD (  11.50  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,32 +79,122 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-> > New warnings running 'make CHECK_DTBS=y rockchip/rk3588s-orangepi-5.dtb' for 20241008031429.2410-1-honyuenkwun@gmail.com:
-> >
-> > arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5.dtb: gpio-func: leds-gpio: {'rockchip,pins': [[0, 2, 0, 243]], 'phandle': 256} is not of type 'array'
-> >       from schema $id: http://devicetree.org/schemas/gpio/gpio-consumer.yaml#
->
-> the error is predating this patch but should be fixed
-> nevertheless.
->
-> @Jimmy: can you check if the schematics for your board provide
-> an alternative name for the pin that is "leds-gpio" currently
-> in the orangepi-5 ?
->
-> Or just rename it to something like status_pin or something?
->
-> Thanks
-> Heiko
->
->
-The schematic calls the pin PWM0_LED.
-The schematic for the LED RUN led on the Orange Pi 5 looks a lot like
-Orange Pi 5 Plus's PWM_LED0 which is being driven by the "pwm-leds".
-Unlike the PWM_LED1 which is not connected to a PWM capable pin.
-https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-plus.dts#n97
+Add the necessary DT changes to enable HDMI0 on Radxa ROCK 5A.
 
-I'll try to switch it over to the pwm-leds and use "pwm0_led_pin",
-otherwise I'll just relabel it to run_led_pin or green_led_pin.
+Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+---
+Since the initial support for the RK3588 HDMI TX Controller [1] has been
+merged as of next-20241018, let's enable the HDMI0 output port for the
+following boards: Radxa ROCK 5A & 5B, Rockchip RK3588 EVB1 V10, Xunlong
+Orange Pi 5+.
+
+Thanks,
+Cristian
+
+[1]: https://lore.kernel.org/all/20241016-b4-rk3588-bridge-upstream-v10-0-87ef92a6d14e@collabora.com/
+---
+Changes in v3:
+- Used the proper (i.e. micro) HDMI connector type for ROCK 5A (Jonas)
+- Rebased series onto next-20241022 and dropped patches already merged
+  by Heiko
+- Link to v2: https://lore.kernel.org/r/20241019-rk3588-hdmi0-dt-v2-0-466cd80e8ff9@collabora.com
+
+Changes in v2:
+- Updated descriptions for rock-5a & rock-5b patches to include Radxa,
+  per Naoki's review; also collected his Tested-by on the latter
+- Included Naoki's HPD pin related fix in rock-5a patch and dropped the
+  UNTESTED prefix from the subject
+- Link to v1: https://lore.kernel.org/r/20241019-rk3588-hdmi0-dt-v1-0-bd8f299feacd@collabora.com
+---
+ arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts | 52 ++++++++++++++++++++++++
+ 1 file changed, 52 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts b/arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts
+index 5882027ab64c94066ead9a1c6cc84226968a69c8..3ca23555d90c5fedd95d4e8681c073b6523f5bf8 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts
+@@ -5,6 +5,7 @@
+ #include <dt-bindings/gpio/gpio.h>
+ #include <dt-bindings/leds/common.h>
+ #include <dt-bindings/pinctrl/rockchip.h>
++#include <dt-bindings/soc/rockchip,vop2.h>
+ #include "rk3588s.dtsi"
+ 
+ / {
+@@ -35,6 +36,17 @@ chosen {
+ 		stdout-path = "serial2:1500000n8";
+ 	};
+ 
++	hdmi0-con {
++		compatible = "hdmi-connector";
++		type = "d";
++
++		port {
++			hdmi0_con_in: endpoint {
++				remote-endpoint = <&hdmi0_out_con>;
++			};
++		};
++	};
++
+ 	leds {
+ 		compatible = "gpio-leds";
+ 		pinctrl-names = "default";
+@@ -301,6 +313,31 @@ &gmac1_rgmii_clk
+ 	status = "okay";
+ };
+ 
++&hdmi0 {
++	pinctrl-names = "default";
++	pinctrl-0 = <&hdmim0_tx0_cec
++		     &hdmim1_tx0_hpd
++		     &hdmim0_tx0_scl
++		     &hdmim0_tx0_sda>;
++	status = "okay";
++};
++
++&hdmi0_in {
++	hdmi0_in_vp0: endpoint {
++		remote-endpoint = <&vp0_out_hdmi0>;
++	};
++};
++
++&hdmi0_out {
++	hdmi0_out_con: endpoint {
++		remote-endpoint = <&hdmi0_con_in>;
++	};
++};
++
++&hdptxphy_hdmi0 {
++	status = "okay";
++};
++
+ &mdio1 {
+ 	rgmii_phy1: ethernet-phy@1 {
+ 		/* RTL8211F */
+@@ -793,3 +830,18 @@ &usb_host1_ohci {
+ &usb_host2_xhci {
+ 	status = "okay";
+ };
++
++&vop_mmu {
++	status = "okay";
++};
++
++&vop {
++	status = "okay";
++};
++
++&vp0 {
++	vp0_out_hdmi0: endpoint@ROCKCHIP_VOP2_EP_HDMI0 {
++		reg = <ROCKCHIP_VOP2_EP_HDMI0>;
++		remote-endpoint = <&hdmi0_in_vp0>;
++	};
++};
+
+---
+base-commit: 7436324ebd147598f940dde1335b7979dbccc339
+change-id: 20241018-rk3588-hdmi0-dt-1a135d0076af
+
 
 _______________________________________________
 Linux-rockchip mailing list
