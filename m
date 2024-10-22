@@ -4,84 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A7AF9D2C55F
-	for <linux-rockchip@archiver.kernel.org>; Tue, 22 Oct 2024 14:18:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C0765D2C56D
+	for <linux-rockchip@archiver.kernel.org>; Tue, 22 Oct 2024 15:45:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=V1cro9gZ+47XpIv3YrbKjx91iia2rXdH4X5HsQsVxP0=; b=OdhfKnAinjXohA
-	S/a8bmd4e9HdrHJTBl8+xfKx/p3dNaeBXk5ewx+mun1bknBh+xRpA9wJ7Ol8SbahHYiwjW2+DX5uI
-	2/FGOrqTK/e7M+CY6yjBj2nXJrYcdUFTV4v4FXv8uvZ6n3PMAoODrPFeQq2umYi4q6AyhH5+FqSEp
-	OX04CWuHElLxJVWsdEJMoWeDeCgBN3lggT9dXEpJ8/1YBHmw17FH0FGe5M1/XAS7wnwgmbg5HFhNY
-	8RfAj+dkT0mR3V4YP62MQ8N+/Nwik3dhCDlBA2FIYvVu8vyljoUjjMSCK1WSJufo1noq9siOTsIol
-	IQV/exTPxboUPhb4Dn/A==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=puVD1OzPmepg7sOqqcdCj47gk4n+5OmYhSUS/zWskSI=; b=lhEHO/HpC7N0h/
+	TFW8HoLRy2YkGwtlKI+ai3ntPvQufVWGwMlN4fybZfZsLlG3Ynv8sBfabvZWeSVasZXWWLkaRrIFX
+	kahRFIfmGhacYYXY+KX8yToaW/HC2BKjBVRNKZeTqWZsJWiIUqFZpTU6I7lA4Bf4Ep4egpQXoomm2
+	Wgpnz/IsY2CFndrQWgayPRH63NanqFXGkT8xjY14qe5VWnR+0KHjVIyAv8TP1Jb3+Yu1HuUHf4vPl
+	ydBO8zo0PXHZFYgslo2k7n3rQdkcWj2AePKJpxp+j7MGnLB8Paa39RU15ammpRJ1ijVct0fDINOpV
+	B/Kk+cf7AhKnDpwVyGTw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t3Fij-0000000B4pN-1ksp;
-	Tue, 22 Oct 2024 14:18:49 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1t3H4N-0000000BI4x-2LIG;
+	Tue, 22 Oct 2024 15:45:15 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t3Fcw-0000000B3qg-2z7m;
-	Tue, 22 Oct 2024 14:12:50 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
-	:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=d/zGrPtBECfUn9Wxr74oIUe8eBmH+ZAAzMoPX4DpgiU=; b=Aip/kP2BfGvoJYlXTGAcJ0AzFT
-	Xptd1lEmQA9grgS6bQLY6/RmySyMDA9nAc8qQanJeGuOTCpQCT7gTY5VJKNIrnAamp7kEIhClvcv8
-	ybIUolaBrSODdzVERTfYz5PgWY3UXMqwX5207CHU4U0JpupG/Ptc0HsF8CNikoBQEIKHjl1QvLrWb
-	OCv4eeKOjNuN4+ohEq26OU8NDzLcdooK2a5AdlJ62sPe5WMaAI0bYR62j+vu1Vb4zkE9bX6O3DgQM
-	L3Tws8ACK1/zMmEQ9swOk4ekKKYTxrJ/Gu8MYCXXlD2JFL5+C5IrOUcHPO6YGF+/VVEsnfPKuaipT
-	msGKS8jw==;
-Received: from gloria.sntech.de ([185.11.138.130])
-	by desiato.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t3Fct-00000008E6V-3S9r;
-	Tue, 22 Oct 2024 14:12:49 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
-	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=d/zGrPtBECfUn9Wxr74oIUe8eBmH+ZAAzMoPX4DpgiU=; b=JXJdiNI2wuQdoiGf5sMJ16a76m
-	2nZj0BQ81sYF0+L4PPq8a7qW/Oyh4YKWJrj4WDNv6wDHba6XvCREFyBraJzPB5ONupiNpK3y1MXyi
-	faxyhbqsdnLFel4szgxVQu0V/p7yYPwE+9mZInnFw09R5n3IsF8vXSzT7K4cfona7Oj0QCdaxy33O
-	d3HKvsOkGS4McdZvYiPqphPdLssCCvLoaWcs+IA2YVhQGlU930hkTNR1Fh+xUTGJmqO0CVX6GK108
-	l29UkInWIeC/gNmrGRwod+ef/d2hYWJbtJ1vMfmpbs44rbj1NTvUz/76Oi8HLx6Q339pEX41cMkbX
-	baNcbsFg==;
-Received: from [213.70.40.217] (helo=phil.sntech)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1t3Fck-0005eb-L4; Tue, 22 Oct 2024 16:12:38 +0200
-From: Heiko Stuebner <heiko@sntech.de>
-To: Jagan Teki <jagan@edgeble.ai>,
-	Rob Herring <robh@kernel.org>,
-	Andy Yan <andyshrk@163.com>,
-	Tianling Shen <cnsztl@gmail.com>,
-	Jonas Karlman <jonas@kwiboo.se>,
+	id 1t3H4J-0000000BI2T-3G2A
+	for linux-rockchip@lists.infradead.org;
+	Tue, 22 Oct 2024 15:45:13 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1729611909;
+	bh=M0bq/DvLeH0XIHZLMAHQAQJxIOvTez7VZya3lPCe2Gk=;
+	h=From:To:Cc:Subject:Date:From;
+	b=JlK9/aXU3yotrT+ZdDKCuV0cxRiZAgoqrk+oWTa10rSqk651kI+0/UlP9dJr+gVz3
+	 EHM+U+XtUi9b0BXPOV+JF87ZK5Z+kSZ+RIWDf+mbEGVKUAKSWkbk7sjBEqUQMkFeC4
+	 lt58tCANmk5oEH+MrjIE2KLjLWSTcPfAVahoJA+zwjEtV6/zQLs6De5Gu714bEDI0U
+	 dqQyo82aRTFb3P503fe0ybFU3owHI2b02eCM1XUq/8KsVZnAjNoKajRXpDRJ5k/2Nw
+	 AEOuk3DuzjvppyDNHe12y92jbKZaxPg54/mJ+HvUk4oEjR3uTuND7eHl7/VxfWN8Z8
+	 /s4jIIt2A4hgA==
+Received: from jupiter.universe (dyndsl-091-248-085-026.ewe-ip-backbone.de [91.248.85.26])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: sre)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id B27DA17E3662;
+	Tue, 22 Oct 2024 17:45:09 +0200 (CEST)
+Received: by jupiter.universe (Postfix, from userid 1000)
+	id 6467C4800EA; Tue, 22 Oct 2024 17:45:09 +0200 (CEST)
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+To: Rob Herring <robh@kernel.org>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Chris Morgan <macromorgan@hotmail.com>,
-	Conor Dooley <conor+dt@kernel.org>
-Cc: Heiko Stuebner <heiko@sntech.de>,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Ulf Hansson <ulf.hansson@linaro.org>,
+	Mark Brown <broonie@kernel.org>
+Cc: Liam Girdwood <lgirdwood@gmail.com>,
+	Elaine Zhang <zhangqing@rock-chips.com>,
+	=?UTF-8?q?Adri=C3=A1n=20Mart=C3=ADnez=20Larumbe?= <adrian.larumbe@collabora.com>,
+	Boris Brezillon <boris.brezillon@collabora.com>,
+	Chen-Yu Tsai <wens@csie.org>,
 	devicetree@vger.kernel.org,
-	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH 1/2] dt-bindings: arm: rockchip: Add FriendlyARM NanoPi R3S
-Date: Tue, 22 Oct 2024 16:12:25 +0200
-Message-ID: <172960632903.1476617.9941592027677995572.b4-ty@sntech.de>
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-pm@vger.kernel.org,
+	Sebastian Reichel <sebastian.reichel@collabora.com>,
+	kernel@collabora.com
+Subject: [PATCH v3 0/7] Fix RK3588 GPU domain
+Date: Tue, 22 Oct 2024 17:41:45 +0200
+Message-ID: <20241022154508.63563-1-sebastian.reichel@collabora.com>
 X-Mailer: git-send-email 2.45.2
-In-Reply-To: <20241020173946.225960-1-cnsztl@gmail.com>
-References: <20241020173946.225960-1-cnsztl@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241022_151248_035197_792D7451 
-X-CRM114-Status: UNSURE (   9.26  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20241022_084512_011342_2832F0ED 
+X-CRM114-Status: GOOD (  20.85  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,21 +88,105 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, 21 Oct 2024 01:39:45 +0800, Tianling Shen wrote:
-> Add devicetree binding for FriendlyARM NanoPi R3S.
-> 
-> 
+Hi,
 
-Applied, thanks!
+I got a report, that the Linux kernel crashes on Rock 5B when the panthor
+driver is loaded late after booting. The crash starts with the following
+shortened error print:
 
-[1/2] dt-bindings: arm: rockchip: Add FriendlyARM NanoPi R3S
-      commit: 1e94bfea52bee081c42ab922c19156dd3d2bade8
-[2/2] arm64: dts: rockchip: Add FriendlyARM NanoPi R3S board
-      commit: 50decd493c8394c52d04561fe4ede34df27a46ba
+rockchip-pm-domain fd8d8000.power-management:power-controller: failed to set domain 'gpu', val=0
+rockchip-pm-domain fd8d8000.power-management:power-controller: failed to get ack on domain 'gpu', val=0xa9fff
+SError Interrupt on CPU4, code 0x00000000be000411 -- SError
 
-Best regards,
+This series first does some cleanups in the Rockchip power domain
+driver and changes the driver, so that it no longer tries to continue
+when it fails to enable a domain. This gets rid of the SError interrupt
+and long backtraces. But the kernel still hangs when it fails to enable
+a power domain. I have not done further analysis to check if that can
+be avoided.
+
+Last but not least this provides a fix for the GPU power domain failing
+to get enabled - after some testing from my side it seems to require the
+GPU voltage supply to be enabled.
+
+This series is now based on the pull request from Mark Brown:
+https://lore.kernel.org/linux-pm/ZvsVfQ1fuSVZpF6A@finisterre.sirena.org.uk/
+
+I added one more patch, which adds devm_of_regulator_get without the
+_optional suffix, since that is more sensible for the Rockchip usecase.
+Longer explanation can be seen in patch 6, which adds the handling to
+the Rockchip driver. My merge suggestion would be that Mark adds the
+regulator patch on top of the immutable branch and creates a new pull
+request.
+
+The last patch, which updates the RK3588 board files only covers the
+boards from 6.12-rc1. Any board missing the update will behave as before,
+so it is perfectly fine not to update all DT files at once.
+
+Changes since PATCHv2:
+ * https://lore.kernel.org/linux-rockchip/20240919091834.83572-1-sebastian.reichel@collabora.com/
+ * Rebase to 6.12-rc1 + devm_of_regulator_get_optional branch (Ulf Hansson, Chen-Yu Tsai)
+  - Introduce devm_of_regulator_get()
+  - Add code to only request regulators for domains needing them
+ * Mention other platforms in the DT binding patch (Rob Murphy)
+ * Update more RK3588 DT files (Jonas Karlman)
+
+Changes since PATCHv1:
+ * https://lore.kernel.org/all/20240910180530.47194-1-sebastian.reichel@collabora.com/
+ * Collect Reviewed-by/Acked-by/Tested-by
+ * swap first and second patch to avoid introducing and directly removing a mutex_unlock
+ * fix spelling of indentation
+ * fix double empty line after rockchip_pd_regulator_disable()
+
+Greetings,
+
+-- Sebastian
+
+Sebastian Reichel (7):
+  regulator: Add (devm_)of_regulator_get()
+  pmdomain: rockchip: cleanup mutex handling in rockchip_pd_power
+  pmdomain: rockchip: forward rockchip_do_pmu_set_power_domain errors
+  pmdomain: rockchip: reduce indentation in rockchip_pd_power
+  dt-bindings: power: rockchip: add regulator support
+  pmdomain: rockchip: add regulator support
+  arm64: dts: rockchip: Add GPU power domain regulator dependency for
+    RK3588
+
+ .../power/rockchip,power-controller.yaml      |   3 +
+ .../boot/dts/rockchip/rk3588-armsom-sige7.dts |   4 +
+ arch/arm64/boot/dts/rockchip/rk3588-base.dtsi |   2 +-
+ .../boot/dts/rockchip/rk3588-coolpi-cm5.dtsi  |   4 +
+ .../rockchip/rk3588-edgeble-neu6a-common.dtsi |   4 +
+ .../boot/dts/rockchip/rk3588-evb1-v10.dts     |   4 +
+ .../boot/dts/rockchip/rk3588-fet3588-c.dtsi   |   4 +
+ .../rockchip/rk3588-friendlyelec-cm3588.dtsi  |   4 +
+ .../arm64/boot/dts/rockchip/rk3588-jaguar.dts |   4 +
+ .../boot/dts/rockchip/rk3588-nanopc-t6.dtsi   |   4 +
+ .../boot/dts/rockchip/rk3588-ok3588-c.dts     |   4 +
+ .../dts/rockchip/rk3588-orangepi-5-plus.dts   |   4 +
+ .../boot/dts/rockchip/rk3588-quartzpro64.dts  |   4 +
+ .../boot/dts/rockchip/rk3588-rock-5-itx.dts   |   4 +
+ .../boot/dts/rockchip/rk3588-rock-5b.dts      |   4 +
+ .../arm64/boot/dts/rockchip/rk3588-tiger.dtsi |   4 +
+ .../boot/dts/rockchip/rk3588-toybrick-x0.dts  |   4 +
+ .../boot/dts/rockchip/rk3588-turing-rk1.dtsi  |   4 +
+ .../boot/dts/rockchip/rk3588s-coolpi-4b.dts   |   4 +
+ .../dts/rockchip/rk3588s-gameforce-ace.dts    |   4 +
+ .../dts/rockchip/rk3588s-indiedroid-nova.dts  |   4 +
+ .../dts/rockchip/rk3588s-khadas-edge2.dts     |   4 +
+ .../boot/dts/rockchip/rk3588s-nanopi-r6s.dts  |   4 +
+ .../boot/dts/rockchip/rk3588s-odroid-m2.dts   |   4 +
+ .../boot/dts/rockchip/rk3588s-orangepi-5.dts  |   4 +
+ .../boot/dts/rockchip/rk3588s-rock-5a.dts     |   4 +
+ drivers/pmdomain/rockchip/pm-domains.c        | 190 +++++++++++-------
+ drivers/regulator/devres.c                    |  17 ++
+ drivers/regulator/of_regulator.c              |  21 ++
+ include/linux/regulator/consumer.h            |   6 +
+ 30 files changed, 266 insertions(+), 69 deletions(-)
+
 -- 
-Heiko Stuebner <heiko@sntech.de>
+2.45.2
+
 
 _______________________________________________
 Linux-rockchip mailing list
