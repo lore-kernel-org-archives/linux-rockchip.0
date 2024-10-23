@@ -4,80 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D8B68CDDE49
-	for <linux-rockchip@archiver.kernel.org>; Wed, 23 Oct 2024 10:20:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2D45BCFA45D
+	for <linux-rockchip@archiver.kernel.org>; Wed, 23 Oct 2024 18:16:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=B1uqjgZlXLjby2C7v7bxlnAVwPMdYZ/FubG1CkWItu8=; b=Var7zbcgSYO/B3
-	j1KhfvQx8RL6bQANTeYMREwXZBcn/VpEDK/V/WMIiQnxhkK3KP8E+cKrmgYh2RBoD3QEMEZWeo4LA
-	KHq0nJzgc0k7SijlseAM8DQh8GV64lMaO2y7vcxNM+ugIWY1mToDcsDeAMWsBXvgPJpI8OE3x7w0X
-	yxYC1cYuBXRiay1gAPtGGMrrzdcdLEZQvf7fin4vezShlq2Pja7G0gn1T4Ib4VrhPnFliXV4ZTtEN
-	E7vXf0tuujcu8tI5neoLD7gtVF6/SL5SjsiVGhnNZBfJ+sz7uuDmFV5rp9swlsRPnOaOoB5hzREmE
-	72Gco+TwQS0bLFOTUsGQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=fiQXpptmALcHOoh7EZy0IyEVmSF+imTJKC/eFJIsDNA=; b=Y4KL5Z2HHousI8
+	h1sH0JYg2ms4SlQbbbv2BjVFVg/8ocCsg2UZ3fen2ueArgMx5UgdjFuIYsfM05QxOAFvpZf25CPSB
+	9xN5gxHUiBJWlpWDE8mVBjKMFkm3eN4Nb9zBGfFGeGDWdrizhg1OIOmWzrkLkPgRHfSd6OAhDnqB7
+	1+SWEPBvPXDJ4HV2u2NoWsDZbfTuxQVaY9qly2S6J4o75J+OW1YLQDr5qmsWxkfctr2e8lIK+A+32
+	PjaE0fbu4Xtw4ytxIwldVHNTJsy9JX+mc/kJNhzQi4943hw07JRh+qHdWi2hsIDIqpWt0tuiGNDdr
+	9TyFzric90ojhiyHL05A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t3YTA-0000000DxZL-41m0;
-	Wed, 23 Oct 2024 10:20:00 +0000
-Received: from mail-yw1-x112d.google.com ([2607:f8b0:4864:20::112d])
+	id 1t3ftk-0000000FUMx-3NN8;
+	Wed, 23 Oct 2024 18:15:56 +0000
+Received: from mail-ot1-x332.google.com ([2607:f8b0:4864:20::332])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t3YG5-0000000DvU7-0Upq
+	id 1t3eST-0000000FCVM-2kIy
 	for linux-rockchip@lists.infradead.org;
-	Wed, 23 Oct 2024 10:08:29 +0000
-Received: by mail-yw1-x112d.google.com with SMTP id 00721157ae682-6e39bf12830so5295097b3.1
-        for <linux-rockchip@lists.infradead.org>; Wed, 23 Oct 2024 03:06:28 -0700 (PDT)
+	Wed, 23 Oct 2024 16:43:43 +0000
+Received: by mail-ot1-x332.google.com with SMTP id 46e09a7af769-71815313303so359a34.1
+        for <linux-rockchip@lists.infradead.org>; Wed, 23 Oct 2024 09:43:40 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1729677987; x=1730282787; darn=lists.infradead.org;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=a95S/TCmJUb9zAzOT/Z7FGsQTjMV4ZgF2D4dSS7l1HM=;
-        b=rwb0iusKfS/G5Y2dsdgruqp3tfjghUNoYvtE+qq2h4+/8ZAlPGrPSrXpfl9sMW0+LW
-         etA1Z/czXKsUnQaX1FOQmJU/YKAQ8rbV1ZGOaTItLX9+eB9Qy71pZRSpA7oB2OJ/tGX9
-         7iQTj+AI/smABWe5MiChuiQY7PMcd5QDrg6EBbbZJI5RiwwnmdOdFsH4OahWfw7AK0uG
-         8Ik+fSzyCC7Z8Ev5aO/9aeSWkQGNYNCxdIV7CgSYiDfCDzaBmcoZQEdetDN5Bg8JJxTJ
-         +I+fMpEbfbFiGMcnPYU7+Br+hPJ7OI6zFGEcgvHBd9WWfziVVEILQHvB2yJ7Ivo5T6BL
-         rOAA==
+        d=gmail.com; s=20230601; t=1729701819; x=1730306619; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=o4SaRfRF23TDik88eWDn0Sxjds9qpbndyUqJVaDs1jk=;
+        b=C1e2dMYlCptta2sNke6JN5Hr1JvolB7ZQYrT1THR6GXwNh312/4wuE46YrgdmkkaYv
+         ixZZH7thsgHSiFSEpsIWUEkpgJNKl98yMsoA+xHoO6IYZtIgrvN/CUId+y/ifeTYIipS
+         DmpmSrkxNNlJg6F2b+tEfrOl2Q9AmO/7ep57vPpR8zhqQq3hpZb2gM+SgaVaLQisVsYC
+         E0d6xfEGKsCG7vHABXzieS7AQ3Y1s0yXYiTRatcSKaSkzulvROehyKppGoITLuZ/OC6m
+         WjKSmwWfoCKtbjZhgel3x/ydMSAuueBO2QGo44nksiWAWrETyJctRodwtZh3rPq5FeKa
+         X0xQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1729677987; x=1730282787;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+        d=1e100.net; s=20230601; t=1729701819; x=1730306619;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=a95S/TCmJUb9zAzOT/Z7FGsQTjMV4ZgF2D4dSS7l1HM=;
-        b=gLgV91WXSUjENeJwsb/S44kR3uxjEjrgSQe/kYRpmbHfuNWgqY709yl0aFgr0mT15r
-         IdSWofOhuVu6/CHt5CFWlU81b6hYxDFc+M07DyyIFzr20AgfC1C/46G2cnwsP1Zed+v2
-         PsWop7cdVLQJTKhgyUWhybw6j816ScG4Ii0F7UzPj/8O4YrRG/SmZPX21/eEk03ha6tD
-         20YS2n2kGr3awm0su2KCEXqBmQZl7CN1jOX86anNumOIKQVArUN6xzesFhyN22EX/Ej5
-         r/59BgXrvu689siWbtArBYL+Q+J5az6zOzspx9eGivL3v6U2y1ZdBhu38ldOal0grtqM
-         KcyA==
-X-Forwarded-Encrypted: i=1; AJvYcCUA28WgDxi2jKeDpA1sYSgo6QxUEspMkhKv6Q+P1iEMswD470LNEZz7LVyZ3vkyYjORdO0cCYT6ydty/jRrsg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyWAA0bq6kzF5FyzrEFmGLKywiOdnzeyZcN/lTBfZUW8fLVJv3a
-	RU19RqDpRHpyfmtqeUFnbrGGgJ3yJwY6BdG73QmNpUkpIqw2FE3zXeu+ivQZ/FYaqAHXNkrz/PB
-	uBKe44rxmfkxQ84hMb1Fw+RHGF6BntTKlBIUKOQ==
-X-Google-Smtp-Source: AGHT+IFwOZBv/9xV3wiaI1U67V6VvBJcsk2sGD6YUBFHxuleavk/W9fHcm2zNaYIQVNokSq8zuqqKdyHygLlMwbU20o=
-X-Received: by 2002:a05:690c:fc7:b0:6e2:b262:bebc with SMTP id
- 00721157ae682-6e7f060d560mr19960777b3.0.1729677987373; Wed, 23 Oct 2024
- 03:06:27 -0700 (PDT)
+        bh=o4SaRfRF23TDik88eWDn0Sxjds9qpbndyUqJVaDs1jk=;
+        b=ojJExOZ8+kM6rQRybITp80esy6hm5aniaK+kJ9pzbmQEGLiFt6G4/9O0O5U9+20OJ0
+         VzBhDaccKkxA30nETsrL5HR13azVOF99QeUXkODDsLAIld0JvZvKR4NdVfLBScbfeIY3
+         lFkdfk+zAF31MlKQRZHVACe1OetZNTlC/hjVquR/AL5NYyYf0WfrL0LbWnjwK4asA4hc
+         Rv2K3HeXjb68UfVZhZNW7ARwZ0+ZaxsA/LFp9JCfqwA3XpHzXmheJvXxBtsVB7CoLUoM
+         6rb2IciaOBEPtcrCEH59P/GgNc56ZggaBpIKB95nTK67vB3KLmZzVrep+vkXQhpUf3F9
+         ku6g==
+X-Gm-Message-State: AOJu0YwZ8PId/htfcwlDWe6KGweuYADMm28Yujv8FxxXIsjehRdDMPx8
+	AJjdVgpVdnlKxu/YAj/3HEXiDq6IGshE2MvTcGoMYlHVkVUiwiqPXy7iGA==
+X-Google-Smtp-Source: AGHT+IGYMvdYvDGiIN9nPdWWEd0fKUUCMRwg4kw8ZuEVZKTYTD3LTZuB+y1tyIwPvil9qc1iEB+FWQ==
+X-Received: by 2002:a05:6830:264b:b0:718:13da:ea98 with SMTP id 46e09a7af769-7184b2bcd5emr2797391a34.15.1729701819481;
+        Wed, 23 Oct 2024 09:43:39 -0700 (PDT)
+Received: from localhost.localdomain ([2600:1700:fb0:1bcf::54])
+        by smtp.gmail.com with ESMTPSA id 006d021491bc7-5ebb7a0948esm1861367eaf.15.2024.10.23.09.43.38
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 23 Oct 2024 09:43:38 -0700 (PDT)
+From: Chris Morgan <macroalpha82@gmail.com>
+To: linux-rockchip@lists.infradead.org
+Cc: devicetree@vger.kernel.org,
+	heiko@sntech.de,
+	conor+dt@kernel.org,
+	krzk+dt@kernel.org,
+	robh@kernel.org,
+	Chris Morgan <macromorgan@hotmail.com>
+Subject: [PATCH 0/2] Indiedroid Nova Audio/HDMI Updates
+Date: Wed, 23 Oct 2024 11:41:02 -0500
+Message-ID: <20241023164104.66282-1-macroalpha82@gmail.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-References: <20241022154508.63563-1-sebastian.reichel@collabora.com>
-In-Reply-To: <20241022154508.63563-1-sebastian.reichel@collabora.com>
-From: Ulf Hansson <ulf.hansson@linaro.org>
-Date: Wed, 23 Oct 2024 12:05:51 +0200
-Message-ID: <CAPDyKFoAv1jeQitHmTMhvwG9vGzN-vLby0fPzkX1E6+-Qe2dog@mail.gmail.com>
-Subject: Re: [PATCH v3 0/7] Fix RK3588 GPU domain
-To: Mark Brown <broonie@kernel.org>, Sebastian Reichel <sebastian.reichel@collabora.com>
-Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
-	Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
-	Liam Girdwood <lgirdwood@gmail.com>, Elaine Zhang <zhangqing@rock-chips.com>, 
-	=?UTF-8?Q?Adri=C3=A1n_Mart=C3=ADnez_Larumbe?= <adrian.larumbe@collabora.com>, 
-	Boris Brezillon <boris.brezillon@collabora.com>, Chen-Yu Tsai <wens@csie.org>, 
-	devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org, 
-	linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org, kernel@collabora.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241023_030629_181572_0BFA9852 
-X-CRM114-Status: GOOD (  23.45  )
+X-CRM114-CacheID: sfid-20241023_094341_717919_D202CAEF 
+X-CRM114-Status: UNSURE (   8.96  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,47 +94,23 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, 22 Oct 2024 at 17:45, Sebastian Reichel
-<sebastian.reichel@collabora.com> wrote:
->
-> Hi,
->
-> I got a report, that the Linux kernel crashes on Rock 5B when the panthor
-> driver is loaded late after booting. The crash starts with the following
-> shortened error print:
->
-> rockchip-pm-domain fd8d8000.power-management:power-controller: failed to set domain 'gpu', val=0
-> rockchip-pm-domain fd8d8000.power-management:power-controller: failed to get ack on domain 'gpu', val=0xa9fff
-> SError Interrupt on CPU4, code 0x00000000be000411 -- SError
->
-> This series first does some cleanups in the Rockchip power domain
-> driver and changes the driver, so that it no longer tries to continue
-> when it fails to enable a domain. This gets rid of the SError interrupt
-> and long backtraces. But the kernel still hangs when it fails to enable
-> a power domain. I have not done further analysis to check if that can
-> be avoided.
->
-> Last but not least this provides a fix for the GPU power domain failing
-> to get enabled - after some testing from my side it seems to require the
-> GPU voltage supply to be enabled.
->
-> This series is now based on the pull request from Mark Brown:
-> https://lore.kernel.org/linux-pm/ZvsVfQ1fuSVZpF6A@finisterre.sirena.org.uk/
->
-> I added one more patch, which adds devm_of_regulator_get without the
-> _optional suffix, since that is more sensible for the Rockchip usecase.
-> Longer explanation can be seen in patch 6, which adds the handling to
-> the Rockchip driver. My merge suggestion would be that Mark adds the
-> regulator patch on top of the immutable branch and creates a new pull
-> request.
+From: Chris Morgan <macromorgan@hotmail.com>
 
-The merge strategy seems reasonable to me. But I am fine with that
-whatever works for Mark.
+This series is for a handful of fixes and updates for the Indiedroid
+Nova. This series corrects the device name of the audio card to stop
+a kernel log error, and adds support for both the HDMI and GPU (now
+that HDMI support has been queued for linux-next).
 
-[...]
+Chris Morgan (2):
+  arm64: dts: rockchip: correct analog audio name on Indiedroid Nova
+  arm64: dts: rockchip: Enable HDMI0 and GPU on Indiedroid Nova
 
-Kind regards
-Uffe
+ .../dts/rockchip/rk3588s-indiedroid-nova.dts  | 58 ++++++++++++++++++-
+ 1 file changed, 57 insertions(+), 1 deletion(-)
+
+-- 
+2.43.0
+
 
 _______________________________________________
 Linux-rockchip mailing list
