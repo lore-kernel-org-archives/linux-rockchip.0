@@ -4,80 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EDD14CFA45C
-	for <linux-rockchip@archiver.kernel.org>; Wed, 23 Oct 2024 18:25:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2D730CFA464
+	for <linux-rockchip@archiver.kernel.org>; Wed, 23 Oct 2024 20:11:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=23usDEandFZl8s9UBDtxHM7TbVo/rOEAS55kymgQNg8=; b=tdzhOs6utT9jhp
-	HcR5AkOqxxlBCmsPgf+2eh4UkDzr3dx7SX21rIqlC+DOiOpAW73YCYFcRZJ7IhYkXa90zX6pzBa40
-	0A/e3WVXJwIUhEteooetbrQOJHPPuDavFM5rg4g/8MrPaEIksvtFFayZzUoNgo7mw0UtBJAgNMHpk
-	95bX3nKanMt6q8V9UDIXPx/FuvFHTXMKVdyCO89NK5XYCYafStM0nAVyX9KcZsF1wm3OEB8qWvIkG
-	bNypOD3BBpTkrEFaNQtILZRCo1+cRVoWomTcPvoZP6J38lX9Ghdh4G8cskfBuNYvQnfaAZ8ByWlKS
-	4SaOM/tFq3govm7rAMeA==;
+	List-Owner; bh=EQcW7eaV2tfGFpBrqDya8kpLGaRWpczWqLXKOi/Ktes=; b=ukPvwvZ2rFZ6kW
+	t9zXEZOnP4n88BWXHMJTE7nqhvi7HwaqVASDd12UZU3DhjU9iBHyT50UWuytDBeF7EbZygXuRU3+Z
+	zpqxNv3jm0b7LKhUsVc8GAcDVmJyVX8vBw4nXFfS7uVxeDBZs3ILhoB306dwHLYd8w6zPWIvEJxZH
+	/EBGQBRVWwS6I+5BIYrurAVZluMkG2HnCUrefnSW9lEslEhqKRuTcSZJWN11H1Qt79EJV3RYddD+h
+	m+BQ/wxrsvtDeC58r8KhGvT2u8m1HPrhwI9V96f6CIbfcQ56j+SwTnAc0wVNxbfxWdAsULeWLoHOa
+	J8rOkacau8VDulf4fllA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t3g2f-0000000FWZd-17cT;
-	Wed, 23 Oct 2024 18:25:09 +0000
-Received: from mail-io1-xd33.google.com ([2607:f8b0:4864:20::d33])
+	id 1t3hh8-0000000Fmjp-1XPC;
+	Wed, 23 Oct 2024 20:11:02 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t3fGx-0000000FOEN-14hS;
-	Wed, 23 Oct 2024 17:35:52 +0000
-Received: by mail-io1-xd33.google.com with SMTP id ca18e2360f4ac-83ab9445254so176239f.0;
-        Wed, 23 Oct 2024 10:35:50 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1729704949; x=1730309749; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=8ovYWQjSscguidicVSZDApcP9vThLQFuZ25Zqnn2i2k=;
-        b=mkUcLud5c0Pb3Fsb4LStOPOgaogGK+O9iUvHo5f1yfAJqGUt5GIbZS+KC+KQtNG82i
-         EBQhZIGESOjdO2PvA5v5MnqRmHM7dFY1Xo1jTeTSvOxm7U6K33ZPrhHFP9kqrzet1lZ5
-         WKtAbbDIFILTlDq1Hvapvn06LdIOnYNOn7lohEzjAvOwfYigc6CxeT4EWeE3245FItzM
-         bZKEUIQYLMiCH14v0UDJtf9L8/fLbrQepHE4s4A9KimidkJ4K/swlhvP2iMAlkrY717x
-         u4MYSUowi0J0OtS1rZ0CIzJKOO+ht/jmQXSW/1dQShxJKR2vcTz8/R4oI49b5H/tNuUf
-         2ooQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1729704949; x=1730309749;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=8ovYWQjSscguidicVSZDApcP9vThLQFuZ25Zqnn2i2k=;
-        b=no/J3ydjtEE081oKO/25zzDdLscB7wCD8Tnai2nHkGHcMXSOtMQS/Gp5Ts//QD4hgI
-         uKJJ88lmK+aJEnozkL+swAIdDC6M4ApcND0lo1Gc69VvYJMiO0MTRzTzLXp/3bGI5Kkn
-         perRl/pMcj9YrO8oNkUkehmJR0EbWMfIDyCZok/foiarRuLeONuCvQGZRxQqAEISRbtj
-         UkxG3dngXUIbdMhCKjYR8NLr0YuhMQcwwb7TBZxECfHn5SrwzOWD5KISBDtdek0EvsTl
-         kgc7KRYkQn+oUnI+AAf1NIaZoTjwV3FtbYW/JGBICuEFDU1fCpy1D+qfzuEy86wQ4OqT
-         VNqg==
-X-Forwarded-Encrypted: i=1; AJvYcCUJhe6bJTOcZiBX1c2EOk0hRKMUM6pUnnFH5+IzA3woYmnFN2SfVlmbFH10an2jEVRr4VUJl71DNvJhqJ3j+g==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yz1OGv29BBxYO7Cx/RtNM7kxmlZBh7nXzzxibASknBndIUg0NZl
-	f7izJSqNWyJ9uOXkebZtcDiBN3JmW1qCimC6lVemxIXWbPJozWEWyxe0ZA==
-X-Google-Smtp-Source: AGHT+IFNcfiRI5mXvySi+X2Q1V2GhkJCnsfc97v6IoePj6n99bdtlwZMFJ+F/+hJRzyQeQU4ZrmN5Q==
-X-Received: by 2002:a05:6e02:1aac:b0:3a3:9792:e9e8 with SMTP id e9e14a558f8ab-3a4d592c8famr36322185ab.5.1729704949159;
-        Wed, 23 Oct 2024 10:35:49 -0700 (PDT)
-Received: from localhost.localdomain (174-20-195-90.mpls.qwest.net. [174.20.195.90])
-        by smtp.gmail.com with ESMTPSA id e9e14a558f8ab-3a4db304c0asm2501945ab.78.2024.10.23.10.35.45
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 23 Oct 2024 10:35:48 -0700 (PDT)
-From: Shimrra Shai <shimrrashai@gmail.com>
-To: dsimic@manjaro.org
-Cc: linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	shimrrashai@gmail.com
-Subject: Re: Re: Thinking about firmware and hardware description for latest Rockchip platforms
-Date: Wed, 23 Oct 2024 12:35:14 -0500
-Message-ID: <20241023173514.4538-1-shimrrashai@gmail.com>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <b12103b968cd5817f25deb7277d6054a@manjaro.org>
-References: <b12103b968cd5817f25deb7277d6054a@manjaro.org>
+	id 1t3hGt-0000000FitQ-45TF
+	for linux-rockchip@lists.infradead.org;
+	Wed, 23 Oct 2024 19:43:57 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+	List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=JWKBCrheMnDwDxxa6Xpd5V/N96xN2BH0moUZB4LkXaI=; b=I1wYRPVSEd0WFKjzgZCgMdJV2p
+	+uEZJDMsRrZsLt1KIRx4JLJZqZB7DwmX7UAlxasxvfWM1Fv1P7/I+g2cpG5zZd6F6YmRFGGgMtlHk
+	KpE81dHu5w5tT/zQUZC3cmqQxJB3G0PmHhNzIQS1yKsGM0g4z3wi90gjamjJ51blxm2dBDpgcUW6d
+	cXx7sQjuexahECDWhpyv+Bh8njQV297aQ4NRfaYEbaZaN2SGBXFJOtymzeUnnM5da0JEZlej9N5so
+	ZOeEvyQO7UIJDa9BkIYx3kbW1qUWqo/fWP7x0JEOzLYFsFsDf2PQ6BldDMKMtaJnxc1sDQkK3hhwP
+	j4jM0xuw==;
+Received: from i53875b34.versanet.de ([83.135.91.52] helo=diego.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1t3hGs-0002eH-38; Wed, 23 Oct 2024 21:43:54 +0200
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+To: linux-rockchip@lists.infradead.org, Chris Morgan <macroalpha82@gmail.com>
+Cc: devicetree@vger.kernel.org, conor+dt@kernel.org, krzk+dt@kernel.org,
+ robh@kernel.org, Chris Morgan <macromorgan@hotmail.com>
+Subject: Re: [PATCH 2/2] arm64: dts: rockchip: Enable HDMI0 and GPU on Indiedroid Nova
+Date: Wed, 23 Oct 2024 21:43:54 +0200
+Message-ID: <46754280.fMDQidcC6G@diego>
+In-Reply-To: <20241023164104.66282-3-macroalpha82@gmail.com>
+References: <20241023164104.66282-1-macroalpha82@gmail.com>
+ <20241023164104.66282-3-macroalpha82@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241023_103551_378604_58A28324 
-X-CRM114-Status: GOOD (  20.68  )
+X-CRM114-CacheID: sfid-20241023_124356_072917_FF8EB9A0 
+X-CRM114-Status: GOOD (  17.70  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,57 +74,118 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 2024-10-23  2:46, Dragan Simic wrote:
-> As you noted already, the DT definitions are fixed and improved
-> all the time, which is actually great.  However, the backward
-> compatibility is ensured, because newer kernels are guaranteed
-> to work with older DTs, which doesn't mean that the board DTs
-> provided through firmware should become frozen in any way, as
-> explained further below.
+Am Mittwoch, 23. Oktober 2024, 18:41:04 CEST schrieb Chris Morgan:
+> From: Chris Morgan <macromorgan@hotmail.com>
+> 
+> Enable the HDMI0 and GPU for the Indiedroid Nova.
 
-Thanks - my concern was about backward compatibility so that if some
-user did not upgrade their FW but then tried to install a *newer*
-Linux found things mysteriously breaking due to that some DT revision
-in code had broken the backwards compatibility. Of course that could
-also be considered a bug, even while new FWs could/would still be
-rolled out.
+in general please notice the "and" in your commit message. This generally
+indicates a situation that wants to be more than one patch.
 
-> Freezing anything would be simply wrong.  It might look good from
-> the perspective of having something "stable", which is similar to
-> how x86_64 firmware works on PC motheboards, but the continual
-> bugfixes and improvements are actually extremely good, because
-> they prevent various ARM boards from effectively becoming abandoned,
-> which is unfortunately rather usual with x86_64 motherboards that
-> become so "stable" that some nasty firmware bugs are never fixed
-> and their users are left high and dry.
+With the gpu + hdmi being close cousins and the gpu actually tiny,
+there is not a big reason to resend this series though.
 
-Yes, I'm not against new FW upgrades, just the idea of users *having*
-to upgrade their FW simply because a new kernel came out when nothing
-like that is typical on x86 or at least in my experience using it over
-many years).
+So I would've preferred 2 patches, but it'll do this time ;-)
 
-Note that the situation of a DT upgrade that is obtained by FW
-upgrade breaking older kernels, i.e. broken *forward* compatibility of
-the older kernel with later DT, isn't so much a problem because we can
-simply keep the older DT in the FW when issuing the FW upgrade, as I
-believe there is a facility for supporting multiple, versioned DTs in
-that UEFI package [and if not, it could easily be added]. It's the
-backward compatibility that is my issue because reflashing FW, even
-though not too hard on these boards, is perhaps more heady for your
-average PC or smartphone user.
 
-That is to say, I'm imagining the case of bundled computers
-pre-shipped with the loaded FW and OS installed as usual and someone
-says "hey they got a new Ubuntu [or whatever], let's install it!" BAM,
-devices stop working because they did not upgrade FW, forcing an FW
-upgrade in a way an x86 user would not be similarly forced. Though of
-course, that could then be reasonably called a regression bug (as it
-would appear from the user's perspective, not knowing about the FW
-change), if backwards compatibility is indeed already a long-standing
-policy (and is really what I was after with that "freeze" suggestion
-even if it itself would not be the way to get it).
+Heiko
 
- - Shimrra Shai
+> 
+> Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
+> ---
+>  .../dts/rockchip/rk3588s-indiedroid-nova.dts  | 56 +++++++++++++++++++
+>  1 file changed, 56 insertions(+)
+> 
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-indiedroid-nova.dts b/arch/arm64/boot/dts/rockchip/rk3588s-indiedroid-nova.dts
+> index a4b930f6987f..547b3ca881e0 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3588s-indiedroid-nova.dts
+> +++ b/arch/arm64/boot/dts/rockchip/rk3588s-indiedroid-nova.dts
+> @@ -5,6 +5,7 @@
+>  #include <dt-bindings/gpio/gpio.h>
+>  #include <dt-bindings/input/linux-event-codes.h>
+>  #include <dt-bindings/pinctrl/rockchip.h>
+> +#include <dt-bindings/soc/rockchip,vop2.h>
+>  #include <dt-bindings/usb/pd.h>
+>  #include "rk3588s.dtsi"
+>  
+> @@ -50,6 +51,17 @@ chosen {
+>  		stdout-path = "serial2:1500000n8";
+>  	};
+>  
+> +	hdmi0-con {
+> +		compatible = "hdmi-connector";
+> +		type = "c";
+> +
+> +		port {
+> +			hdmi0_con_in: endpoint {
+> +				remote-endpoint = <&hdmi0_out_con>;
+> +			};
+> +		};
+> +	};
+> +
+>  	sdio_pwrseq: sdio-pwrseq {
+>  		compatible = "mmc-pwrseq-simple";
+>  		clock-names = "ext_clock";
+> @@ -242,6 +254,35 @@ &gpio4 {
+>  			  "", "", "", "";
+>  };
+>  
+> +&gpu {
+> +	mali-supply = <&vdd_gpu_s0>;
+> +	status = "okay";
+> +};
+> +
+> +&hdmi0 {
+> +	pinctrl-0 = <&hdmim0_rx_hpdin>, <&hdmim0_tx0_scl>,
+> +		    <&hdmim0_tx0_sda>, <&hdmim0_tx0_hpd>,
+> +		    <&hdmim0_tx0_cec>;
+> +	pinctrl-names = "default";
+> +	status = "okay";
+> +};
+> +
+> +&hdmi0_in {
+> +	hdmi0_in_vp0: endpoint {
+> +		remote-endpoint = <&vp0_out_hdmi0>;
+> +	};
+> +};
+> +
+> +&hdmi0_out {
+> +	hdmi0_out_con: endpoint {
+> +		remote-endpoint = <&hdmi0_con_in>;
+> +	};
+> +};
+> +
+> +&hdptxphy_hdmi0 {
+> +	status = "okay";
+> +};
+> +
+>  &i2c0 {
+>  	pinctrl-0 = <&i2c0m2_xfer>;
+>  	pinctrl-names = "default";
+> @@ -919,3 +960,18 @@ usbdp_phy0_dp_altmode_mux: endpoint@1 {
+>  		};
+>  	};
+>  };
+> +
+> +&vop {
+> +	status = "okay";
+> +};
+> +
+> +&vop_mmu {
+> +	status = "okay";
+> +};
+> +
+> +&vp0 {
+> +	vp0_out_hdmi0: endpoint@ROCKCHIP_VOP2_EP_HDMI0 {
+> +		reg = <ROCKCHIP_VOP2_EP_HDMI0>;
+> +		remote-endpoint = <&hdmi0_in_vp0>;
+> +	};
+> +};
+> 
+
+
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
