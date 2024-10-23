@@ -4,67 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E0BADCFA45D
-	for <linux-rockchip@archiver.kernel.org>; Wed, 23 Oct 2024 18:24:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EDD14CFA45C
+	for <linux-rockchip@archiver.kernel.org>; Wed, 23 Oct 2024 18:25:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:MIME-Version:Subject:
-	Date:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=G4EDidD7VG2pFCRM4olaO0Tt8vOoBXbMfcBeOoKHkYg=; b=MsXp0EJyL64swx
-	ODfuQmZRXBTPZv0S/WJDJIkzd9EbDzmijcLtf33ac6J7oAVcNbHSIU5rwyONFANpG1Ogo9VxKxwoy
-	zFVE1PEaUK62pTWDI6xAscKyueqoJaO+U9myOtsF1z3ksORxkVax9JuB7akH2V9FOcEfnlplcRhDA
-	DBH2g5CTjvuqDO5OjqVmFRN7/MbOdereMGSdsEpxLSAuqzaT3GUgEfJfBjzo4+CAsWmlXE9GGDcrb
-	hDXzrRFG+XAklLaARQxZnfotDMm4xmYmm6iOIyV3KKcM4Z8kPSf+LuY5zA4frXZewmk3QEpAhcdNH
-	8V7ELj4fD55FR6taI6Zg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=23usDEandFZl8s9UBDtxHM7TbVo/rOEAS55kymgQNg8=; b=tdzhOs6utT9jhp
+	HcR5AkOqxxlBCmsPgf+2eh4UkDzr3dx7SX21rIqlC+DOiOpAW73YCYFcRZJ7IhYkXa90zX6pzBa40
+	0A/e3WVXJwIUhEteooetbrQOJHPPuDavFM5rg4g/8MrPaEIksvtFFayZzUoNgo7mw0UtBJAgNMHpk
+	95bX3nKanMt6q8V9UDIXPx/FuvFHTXMKVdyCO89NK5XYCYafStM0nAVyX9KcZsF1wm3OEB8qWvIkG
+	bNypOD3BBpTkrEFaNQtILZRCo1+cRVoWomTcPvoZP6J38lX9Ghdh4G8cskfBuNYvQnfaAZ8ByWlKS
+	4SaOM/tFq3govm7rAMeA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t3g2K-0000000FWOs-2IzQ;
-	Wed, 23 Oct 2024 18:24:48 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1t3g2f-0000000FWZd-17cT;
+	Wed, 23 Oct 2024 18:25:09 +0000
+Received: from mail-io1-xd33.google.com ([2607:f8b0:4864:20::d33])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t3fBd-0000000FNgF-3w0H;
-	Wed, 23 Oct 2024 17:30:23 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1729704617;
-	bh=jldwutBZphTyZk0A97ZTFnQDd2dt3KyWgWlWpUn/IUc=;
-	h=From:Date:Subject:To:Cc:From;
-	b=WXXer3mxLwPsYMZxNw9mWDbOAg3QNt38De98+ntsBMfnBefHqWHfLAXK7zW/14la6
-	 MrHjtgwdSHVqBUo0NddBvx/r+ywiPZr7RYTK2Em55dHjJddihCgqBOiboJpkOev4Bh
-	 ayH+RFgwRxaCCvddEBgublFj9w2gvaNFdxHn61/w/jfnbBbpUNaMiTaMtNscUcsZf0
-	 RsStV0BFm48EZt4JYZz33YHtJJN4KyWh8/6iWEaquYVUmwdLVrKC1pkrcSyKPkwsjg
-	 52pztVODxNSYYudtf+EdKHn/zxQEhA+yKovARBGmZLYPteZrRNDkRhu6Fz877pyCxJ
-	 Sgx3LHmqYN/WA==
-Received: from localhost (unknown [188.24.146.62])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 98EB517E36A7;
-	Wed, 23 Oct 2024 19:30:17 +0200 (CEST)
-From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Date: Wed, 23 Oct 2024 20:29:54 +0300
-Subject: [PATCH] phy: rockchip: samsung-hdptx: Set drvdata before enabling
- runtime PM
+	id 1t3fGx-0000000FOEN-14hS;
+	Wed, 23 Oct 2024 17:35:52 +0000
+Received: by mail-io1-xd33.google.com with SMTP id ca18e2360f4ac-83ab9445254so176239f.0;
+        Wed, 23 Oct 2024 10:35:50 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1729704949; x=1730309749; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=8ovYWQjSscguidicVSZDApcP9vThLQFuZ25Zqnn2i2k=;
+        b=mkUcLud5c0Pb3Fsb4LStOPOgaogGK+O9iUvHo5f1yfAJqGUt5GIbZS+KC+KQtNG82i
+         EBQhZIGESOjdO2PvA5v5MnqRmHM7dFY1Xo1jTeTSvOxm7U6K33ZPrhHFP9kqrzet1lZ5
+         WKtAbbDIFILTlDq1Hvapvn06LdIOnYNOn7lohEzjAvOwfYigc6CxeT4EWeE3245FItzM
+         bZKEUIQYLMiCH14v0UDJtf9L8/fLbrQepHE4s4A9KimidkJ4K/swlhvP2iMAlkrY717x
+         u4MYSUowi0J0OtS1rZ0CIzJKOO+ht/jmQXSW/1dQShxJKR2vcTz8/R4oI49b5H/tNuUf
+         2ooQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1729704949; x=1730309749;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=8ovYWQjSscguidicVSZDApcP9vThLQFuZ25Zqnn2i2k=;
+        b=no/J3ydjtEE081oKO/25zzDdLscB7wCD8Tnai2nHkGHcMXSOtMQS/Gp5Ts//QD4hgI
+         uKJJ88lmK+aJEnozkL+swAIdDC6M4ApcND0lo1Gc69VvYJMiO0MTRzTzLXp/3bGI5Kkn
+         perRl/pMcj9YrO8oNkUkehmJR0EbWMfIDyCZok/foiarRuLeONuCvQGZRxQqAEISRbtj
+         UkxG3dngXUIbdMhCKjYR8NLr0YuhMQcwwb7TBZxECfHn5SrwzOWD5KISBDtdek0EvsTl
+         kgc7KRYkQn+oUnI+AAf1NIaZoTjwV3FtbYW/JGBICuEFDU1fCpy1D+qfzuEy86wQ4OqT
+         VNqg==
+X-Forwarded-Encrypted: i=1; AJvYcCUJhe6bJTOcZiBX1c2EOk0hRKMUM6pUnnFH5+IzA3woYmnFN2SfVlmbFH10an2jEVRr4VUJl71DNvJhqJ3j+g==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yz1OGv29BBxYO7Cx/RtNM7kxmlZBh7nXzzxibASknBndIUg0NZl
+	f7izJSqNWyJ9uOXkebZtcDiBN3JmW1qCimC6lVemxIXWbPJozWEWyxe0ZA==
+X-Google-Smtp-Source: AGHT+IFNcfiRI5mXvySi+X2Q1V2GhkJCnsfc97v6IoePj6n99bdtlwZMFJ+F/+hJRzyQeQU4ZrmN5Q==
+X-Received: by 2002:a05:6e02:1aac:b0:3a3:9792:e9e8 with SMTP id e9e14a558f8ab-3a4d592c8famr36322185ab.5.1729704949159;
+        Wed, 23 Oct 2024 10:35:49 -0700 (PDT)
+Received: from localhost.localdomain (174-20-195-90.mpls.qwest.net. [174.20.195.90])
+        by smtp.gmail.com with ESMTPSA id e9e14a558f8ab-3a4db304c0asm2501945ab.78.2024.10.23.10.35.45
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 23 Oct 2024 10:35:48 -0700 (PDT)
+From: Shimrra Shai <shimrrashai@gmail.com>
+To: dsimic@manjaro.org
+Cc: linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	shimrrashai@gmail.com
+Subject: Re: Re: Thinking about firmware and hardware description for latest Rockchip platforms
+Date: Wed, 23 Oct 2024 12:35:14 -0500
+Message-ID: <20241023173514.4538-1-shimrrashai@gmail.com>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <b12103b968cd5817f25deb7277d6054a@manjaro.org>
+References: <b12103b968cd5817f25deb7277d6054a@manjaro.org>
 MIME-Version: 1.0
-Message-Id: <20241023-phy-sam-hdptx-rpm-fix-v1-1-87f4c994e346@collabora.com>
-X-B4-Tracking: v=1; b=H4sIAJEyGWcC/x2MSQqAMBDAviJzdqCLuH1FPLiMdg5qaUUqpX+3e
- EwgieDJMXnoiwiOHvZ8nRlkWcBipnMn5DUzKKEqKZRGa17004FmtXdAZw/cOOCsatFVWuhGtpB
- b6yjr/zuMKX3FircFZwAAAA==
-X-Change-ID: 20241023-phy-sam-hdptx-rpm-fix-b26094303718
-To: Vinod Koul <vkoul@kernel.org>, 
- Kishon Vijay Abraham I <kishon@kernel.org>, 
- Heiko Stuebner <heiko@sntech.de>, Algea Cao <algea.cao@rock-chips.com>
-Cc: kernel@collabora.com, linux-phy@lists.infradead.org, 
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
- linux-kernel@vger.kernel.org, 
- Dmitry Osipenko <dmitry.osipenko@collabora.com>
-X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241023_103022_198554_6F4F4FEE 
-X-CRM114-Status: UNSURE (   9.34  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20241023_103551_378604_58A28324 
+X-CRM114-Status: GOOD (  20.68  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,45 +94,57 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-In some cases, rk_hdptx_phy_runtime_resume() may be invoked before
-platform_set_drvdata() is executed in ->probe(), leading to a NULL
-pointer dereference when using the return of dev_get_drvdata().
+On 2024-10-23  2:46, Dragan Simic wrote:
+> As you noted already, the DT definitions are fixed and improved
+> all the time, which is actually great.  However, the backward
+> compatibility is ensured, because newer kernels are guaranteed
+> to work with older DTs, which doesn't mean that the board DTs
+> provided through firmware should become frozen in any way, as
+> explained further below.
 
-Ensure platform_set_drvdata() is called before devm_pm_runtime_enable().
+Thanks - my concern was about backward compatibility so that if some
+user did not upgrade their FW but then tried to install a *newer*
+Linux found things mysteriously breaking due to that some DT revision
+in code had broken the backwards compatibility. Of course that could
+also be considered a bug, even while new FWs could/would still be
+rolled out.
 
-Reported-by: Dmitry Osipenko <dmitry.osipenko@collabora.com>
-Fixes: 553be2830c5f ("phy: rockchip: Add Samsung HDMI/eDP Combo PHY driver")
-Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
----
- drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+> Freezing anything would be simply wrong.  It might look good from
+> the perspective of having something "stable", which is similar to
+> how x86_64 firmware works on PC motheboards, but the continual
+> bugfixes and improvements are actually extremely good, because
+> they prevent various ARM boards from effectively becoming abandoned,
+> which is unfortunately rather usual with x86_64 motherboards that
+> become so "stable" that some nasty firmware bugs are never fixed
+> and their users are left high and dry.
 
-diff --git a/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c b/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
-index ceab9c71d3b53ae0b746a10c081fcfaa7d5c5ae7..0965b9d4f9cf1926ba2aaa54c3d1b105ecd1a5a2 100644
---- a/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
-+++ b/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
-@@ -1101,6 +1101,8 @@ static int rk_hdptx_phy_probe(struct platform_device *pdev)
- 		return dev_err_probe(dev, PTR_ERR(hdptx->grf),
- 				     "Could not get GRF syscon\n");
- 
-+	platform_set_drvdata(pdev, hdptx);
-+
- 	ret = devm_pm_runtime_enable(dev);
- 	if (ret)
- 		return dev_err_probe(dev, ret, "Failed to enable runtime PM\n");
-@@ -1110,7 +1112,6 @@ static int rk_hdptx_phy_probe(struct platform_device *pdev)
- 		return dev_err_probe(dev, PTR_ERR(hdptx->phy),
- 				     "Failed to create HDMI PHY\n");
- 
--	platform_set_drvdata(pdev, hdptx);
- 	phy_set_drvdata(hdptx->phy, hdptx);
- 	phy_set_bus_width(hdptx->phy, 8);
- 
+Yes, I'm not against new FW upgrades, just the idea of users *having*
+to upgrade their FW simply because a new kernel came out when nothing
+like that is typical on x86 or at least in my experience using it over
+many years).
 
----
-base-commit: ceab669fdf7b7510b4e4997b33d6f66e433a96db
-change-id: 20241023-phy-sam-hdptx-rpm-fix-b26094303718
+Note that the situation of a DT upgrade that is obtained by FW
+upgrade breaking older kernels, i.e. broken *forward* compatibility of
+the older kernel with later DT, isn't so much a problem because we can
+simply keep the older DT in the FW when issuing the FW upgrade, as I
+believe there is a facility for supporting multiple, versioned DTs in
+that UEFI package [and if not, it could easily be added]. It's the
+backward compatibility that is my issue because reflashing FW, even
+though not too hard on these boards, is perhaps more heady for your
+average PC or smartphone user.
 
+That is to say, I'm imagining the case of bundled computers
+pre-shipped with the loaded FW and OS installed as usual and someone
+says "hey they got a new Ubuntu [or whatever], let's install it!" BAM,
+devices stop working because they did not upgrade FW, forcing an FW
+upgrade in a way an x86 user would not be similarly forced. Though of
+course, that could then be reasonably called a regression bug (as it
+would appear from the user's perspective, not knowing about the FW
+change), if backwards compatibility is indeed already a long-standing
+policy (and is really what I was after with that "freeze" suggestion
+even if it itself would not be the way to get it).
+
+ - Shimrra Shai
 
 _______________________________________________
 Linux-rockchip mailing list
