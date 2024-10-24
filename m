@@ -4,63 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7F814CE8E8A
-	for <linux-rockchip@archiver.kernel.org>; Thu, 24 Oct 2024 15:29:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 81125CE8E8C
+	for <linux-rockchip@archiver.kernel.org>; Thu, 24 Oct 2024 15:29:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=vVgOZUJtR7R7AgiEAgLjNtp0OS7gW5z3h9bNAtpMFoI=; b=rlbLWJnySgEa8t
-	FBorMhoxqihVH0jTXwUfnuf5nyN1GgLNyqVhp4MvqHy0/Cd2rfogo5G0mf8PNd/zs+LhgyLNIuBdm
-	DTviYw9g4TLYplePUph74zfFmM+x63p2IbEC/rv6ugXUgAuFrOtWb8ifwK5cV5vT29y+CXpPI9NQU
-	5BJ9FsbEbDipXt7WyWixxecVAaWW2XLtTgZOAr/vlj5CLwXPENRNF+Xx/Vfa2fILAUXkrftV7oN5+
-	95GKOLZw5HbDjB1msljXefhG2Orw2XG337TOsBvZ9zyQyxLoHVK/q90As1I84H3K/82UKFZaCyZni
-	MtiUp2io5fLpWHbZMwpg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=GSqPvO1cn+AIS18AdNcr3T2YzB5wJFkGnQjFHTp/4AA=; b=bFgjrdoOnWAhqr
+	pFtRSTO5sa1Ma7byDe+G5LZeebXQDBWh9pJWUPhr+QnwOLkEuGq2/rjhkin9mm2wRJbC2a4ADHMTA
+	87WWgpuHkrUQFQxKbDovu6GfDOBQKRijcvWcPeLw+Fd48VKgfO1twBowKxSAcG+V+hIo44OhJO4/Y
+	omf1IKurGeSwXrpocmJx6WfsEpkQnH9LJC/APFIcdwMT3pvmnGnC8vBSzS7kuPeHa7119fVQhauPC
+	TuSjiDZb80Q+YKTfWvzZBZm79esjOcRa8EJ1PRGu8PTpddKYNMd+3i3+cLX5+ZI8qtzLu/eEjWeWE
+	GHS4S1WVZc4Y59KiEcdQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t3zmN-00000000uw0-3tA6;
-	Thu, 24 Oct 2024 15:29:39 +0000
+	id 1t3zmO-00000000uwI-1K0t;
+	Thu, 24 Oct 2024 15:29:40 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t3zXM-00000000sXq-3Lrl;
+	id 1t3zXM-00000000sXi-0QgE;
 	Thu, 24 Oct 2024 15:15:29 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Transfer-Encoding:MIME-Version:References:
-	In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+	s=gloria202408; h=Content-Transfer-Encoding:MIME-Version:Message-ID:Date:
+	Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
 	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=tT0U40vv7udlyyxS/UUhxQXBmlfc4h3QNcCT/CwDSHw=; b=aENqxCrlMoVWcNI5m97whKwwDx
-	sfcr7DpCIZAQEFOdxx4DafhqabWaY7q6cN3SP6WRdLAwmwSQ+wGVmQp3qUG78P9ouI8vNdu/qccis
-	8Ezhr28LZKVr8PqCG6+FSPPf9zRjo5BW84cwEqUA7A5jKuhwtQMPO8vezrvPcc5g4m1xvjNQjViqB
-	5AW0oeLQEhc7B4OS2L1xanNFmZyw0QoFQie2rTWPVxUMpFXfXk8dS5JZ7ZQ08pZx47BQra42s67V+
-	STuvV+4RFko1j1t6V+kSGwGVKyq9P4+AF+AM7ug2Erypeyf/2meAj40EnCkKpt9BRBvI6FclmCHcv
-	zKDyzgbA==;
+	bh=CBiG9tFbLqIx7KKBRCWnQHbT9NWhqeOvBRJqbKiGd9Q=; b=M6OPtpzQvZbVZiuWkrc3p230yO
+	HPi4NVdrU8/xETZanFmH1TXojf2TVftlbJ0yeckBFO2H5M9ewFODfiIlLKKUQ2TZ4B+VaLOJlYo3V
+	gMlBfqXNvnAUIqP4eSMh1ozb4FuGzAwLmSbRRIFS7Z0SEZVtX0zL2n6RD88nuX1zfwTxz5cH/LCpr
+	lxKZncYmIzYeesPhCulT5IsBXKxeOb/iKZAGbcntkmVL6ZSwCIjRMmQXfwFIqAMaPOz0rPnD5aALX
+	FmIBOq5kt+8/ABsCJ07pe97Qd1SsUFUXSnRweIccoyDDTjjvSyl6GcezzRsZVOhbP7tPnBPJtNxAC
+	igChQNHQ==;
 Received: from i53875b34.versanet.de ([83.135.91.52] helo=phil.lan)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1t3zXL-0004at-Ea; Thu, 24 Oct 2024 17:14:07 +0200
+	id 1t3zXK-0004at-Cr; Thu, 24 Oct 2024 17:14:06 +0200
 From: Heiko Stuebner <heiko@sntech.de>
 To: heiko@sntech.de
 Cc: quentin.schulz@cherry.de,
 	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Heiko Stuebner <heiko.stuebner@cherry.de>
-Subject: [PATCH v2 3/3] arm64: dts: rockchip: add HDMI support to rk3588-jaguar
-Date: Thu, 24 Oct 2024 17:14:03 +0200
-Message-ID: <20241024151403.1748554-4-heiko@sntech.de>
+	linux-kernel@vger.kernel.org
+Subject: [PATCH v2 0/3] HDMI Support for Theobroma/Cherry rk3588 boards
+Date: Thu, 24 Oct 2024 17:14:00 +0200
+Message-ID: <20241024151403.1748554-1-heiko@sntech.de>
 X-Mailer: git-send-email 2.45.2
-In-Reply-To: <20241024151403.1748554-1-heiko@sntech.de>
-References: <20241024151403.1748554-1-heiko@sntech.de>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241024_081408_841545_C4689CFF 
-X-CRM114-Status: GOOD (  12.64  )
+X-CRM114-CacheID: sfid-20241024_081408_186440_A389257F 
+X-CRM114-Status: UNSURE (   8.03  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,98 +75,18 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Heiko Stuebner <heiko.stuebner@cherry.de>
+This adds HDMI support for the Tiger and Jaguar boards.
 
-The jaguar has an hdmi output port, which is connected
-to the hdmi0 controller of the rk3588.
+Heiko Stuebner (3):
+  arm64: dts: rockchip: add HDMI pinctrl to rk3588-tiger SoM
+  arm64: dts: rockchip: add HDMI support to rk3588-tiger-haikou
+  arm64: dts: rockchip: add HDMI support to rk3588-jaguar
 
-Add the necessary plumbing to enable it using the recently merged
-hdmi-qp controller.
+ .../arm64/boot/dts/rockchip/rk3588-jaguar.dts | 50 +++++++++++++++++
+ .../boot/dts/rockchip/rk3588-tiger-haikou.dts | 53 +++++++++++++++++++
+ .../arm64/boot/dts/rockchip/rk3588-tiger.dtsi |  6 +++
+ 3 files changed, 109 insertions(+)
 
-Signed-off-by: Heiko Stuebner <heiko.stuebner@cherry.de>
----
- .../arm64/boot/dts/rockchip/rk3588-jaguar.dts | 50 +++++++++++++++++++
- 1 file changed, 50 insertions(+)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-jaguar.dts b/arch/arm64/boot/dts/rockchip/rk3588-jaguar.dts
-index e24da1a4331d..6a59887979ce 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-jaguar.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-jaguar.dts
-@@ -8,6 +8,7 @@
- #include <dt-bindings/input/input.h>
- #include <dt-bindings/leds/common.h>
- #include <dt-bindings/pinctrl/rockchip.h>
-+#include <dt-bindings/soc/rockchip,vop2.h>
- #include <dt-bindings/usb/pd.h>
- #include "rk3588.dtsi"
- 
-@@ -58,6 +59,17 @@ emmc_pwrseq: emmc-pwrseq {
- 		reset-gpios = <&gpio2 RK_PA3 GPIO_ACTIVE_HIGH>;
- 	};
- 
-+	hdmi-con {
-+		compatible = "hdmi-connector";
-+		type = "a";
-+
-+		port {
-+			hdmi_con_in: endpoint {
-+				remote-endpoint = <&hdmi0_out_con>;
-+			};
-+		};
-+	};
-+
- 	leds {
- 		compatible = "gpio-leds";
- 		pinctrl-names = "default";
-@@ -271,6 +283,29 @@ &gpu {
- 	status = "okay";
- };
- 
-+&hdmi0 {
-+	/* No CEC on Jaguar */
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&hdmim0_tx0_hpd &hdmim0_tx0_scl &hdmim0_tx0_sda>;
-+	status = "okay";
-+};
-+
-+&hdmi0_in {
-+	hdmi0_in_vp0: endpoint {
-+		remote-endpoint = <&vp0_out_hdmi0>;
-+	};
-+};
-+
-+&hdmi0_out {
-+	hdmi0_out_con: endpoint {
-+		remote-endpoint = <&hdmi_con_in>;
-+	};
-+};
-+
-+&hdptxphy_hdmi0 {
-+	status = "okay";
-+};
-+
- &i2c0 {
- 	pinctrl-0 = <&i2c0m2_xfer>;
- 	status = "okay";
-@@ -1052,3 +1087,18 @@ &usb_host1_ehci {
- &usb_host1_ohci {
- 	status = "okay";
- };
-+
-+&vop {
-+	status = "okay";
-+};
-+
-+&vop_mmu {
-+	status = "okay";
-+};
-+
-+&vp0 {
-+	vp0_out_hdmi0: endpoint@ROCKCHIP_VOP2_EP_HDMI0 {
-+		reg = <ROCKCHIP_VOP2_EP_HDMI0>;
-+		remote-endpoint = <&hdmi0_in_vp0>;
-+	};
-+};
 -- 
 2.45.2
 
