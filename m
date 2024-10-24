@@ -4,85 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 532FFCFA456
-	for <linux-rockchip@archiver.kernel.org>; Thu, 24 Oct 2024 10:03:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DF4CFCE8E76
+	for <linux-rockchip@archiver.kernel.org>; Thu, 24 Oct 2024 13:34:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:To:From:Reply-To:Cc:Content-ID:Content-Description:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=fpuVm4goDhOUzPKhcKFHBH/E7246gsirIwjxswxAozA=; b=0PTWMUrf6YUW48
-	QAQcGxSdejh9JU0+dGRJo40Ldw89FZXaPFDxp3InGgP8Q7BZFKbjpqXNp/nt6+JBQ5QqoXCSZ3GLf
-	pOuTVUEYqo1LJZ1sZQoC1YYRt/LcQwACzkPZIXeMn/sck6rLLUknCt/SasCnsExgEXJzT9U4s3PgG
-	idC1WEIGrrGWguNgL+NwroqIDecR909w0RAb4GWzN8EkISpq0A86sjvnzqZBt9xYpBoH54/vUOKAZ
-	MCKbx1xUpxkYUJLFxH+Z5dd7ruVz369v36BBnHGy+MGt6FWOkZe/u1h4y1Zfjx9XeqQTha9fXfPPT
-	jfJ1M3jdGFr6MElSHAZQ==;
+	List-Owner; bh=vVgOZUJtR7R7AgiEAgLjNtp0OS7gW5z3h9bNAtpMFoI=; b=XDAQc2Hd59IXrI
+	H1fQVOkxOe8/+L2xYB8Xyj21ACYHDEA0n+oKlVU9Akh4dEbFdrI+VyrMXvUNdkLADQFRLNLbB2BW4
+	9d+9jsaCCmCtsGy6rZHGoK11s4pGfcFthyQ/8KsufgCMp5a7eK47ESAkU33Y/139KC989k5xCe5ht
+	2fkUiE+fligGsc3bkVzJ2BrulLi571YGUwGAj40GacdRv9x/t5I7pJQN9TGsNTce5wr1/hKh+uoD4
+	4Zj1t3ojTZIw6zyyUxrbIlx5m1chGDHCTIL7rMizUAWpNRuEQnby5Fie6B7MRMkhPFCV/SLhn9hAO
+	WmokcvtP+MVmNp8W7ScA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t3ugm-0000000Hb6g-3DIS;
-	Thu, 24 Oct 2024 10:03:32 +0000
-Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
+	id 1t3xyq-00000000XXo-1Spw;
+	Thu, 24 Oct 2024 13:34:24 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t3uWE-0000000HYcx-3EyF;
-	Thu, 24 Oct 2024 09:52:40 +0000
-Received: by mail-wr1-x42c.google.com with SMTP id ffacd0b85a97d-37d4c1b1455so457206f8f.3;
-        Thu, 24 Oct 2024 02:52:38 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=googlemail.com; s=20230601; t=1729763557; x=1730368357; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=RnCDGJfcN3PLmfYBMIFGhUBG768VdNHJJP6i96p6xYA=;
-        b=Czxv3cXcIQR561Iqh0W8VqU3DUexIq8jL36ZE/MMF43AFjnDSG0uVOkK26KFTiytUv
-         8NF+ifLDPSBDVKxTlzqZv5LSUujW7P5md/2jyIGOcdo0NTK9a7Aix6F0tTU3aucLLgmq
-         t4Eo/usZ54b0X6gyqUytsji5FiectMpPFbuOfX+WWxz31tkx8fEiaF0wCax07iwala/f
-         LYYlqZvylZ9lQKz/XVQjK42DTMl9GNZhe765BNS1vLnRdnXNCGTQQcj9a/Waow8AYLSP
-         hmKuT0qKpIFUcbGTxB7PM7jUR8YZmOxUMbKVqTXFTFLc0PCRxJY/xIO8LdFJC+p2ujhm
-         03Jw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1729763557; x=1730368357;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=RnCDGJfcN3PLmfYBMIFGhUBG768VdNHJJP6i96p6xYA=;
-        b=W3DjgmD6HCGzcLp/10lybfU/WvZhZIMcQjqEzLxvYjw/x7ILw5+arZwTUOFW6ERNTY
-         ckMis+Nk6/6ioLWPLl6ZiRuUnCkLMb30FkkujDTFyTNDZpozrPviF2d3YKD22JqXTBon
-         OfEFeVVYpQ/F2q0pSFQmh0hNcOATZJYYr7nn59VODl0E0JG+LbqO0aU2kKJII1U0BPZF
-         C+35v409AQj4Dto0SEn0r3G8EBclPkGJ7iltuROFQOmd1SEsUT6/dymZGbnrkB2ZRrfp
-         LUzrF4s2eAp03HpRM76JG74s02UQuDV87qKIAkXPYmS/wXH9dknL4CpWVmLbRdhyuGmj
-         acmQ==
-X-Forwarded-Encrypted: i=1; AJvYcCU9h6Rat9QedvO80mCY0Jvx4NHvNw8niKSE0dzZuia4g0ZqBH5mZ/HN6B9xQ8N3Rm6QCb58v11wd8apv5og7Pa8@lists.infradead.org, AJvYcCXzdEfs5+0G1dnMdkOrYtR8i2WY5QXOtCUq0A3gSyGV9sxgpsLtw4E1BPVz3pSXd/8xOdEfgKDOxpBeNVzL97w=@lists.infradead.org
-X-Gm-Message-State: AOJu0YxGyXi8JXYg0nRUATvGISvqU6VCMeMEdivrarqvZYLDe5BdI0mM
-	LEOmsSnaGa3TdYYew1tzMKytM9IF7dreoY3j9Lr76S77qi+xr2Q2
-X-Google-Smtp-Source: AGHT+IHOGIh30cZeVBaManyxCwsLnI9f8EReanEFaNeNhbdtE6TT2V9YrSK8ERkjOnhQ6SSbt3KcFg==
-X-Received: by 2002:adf:fbca:0:b0:37d:377d:c7b0 with SMTP id ffacd0b85a97d-37efcf0699bmr3536455f8f.18.1729763556938;
-        Thu, 24 Oct 2024 02:52:36 -0700 (PDT)
-Received: from localhost.localdomain ([2a02:908:1587:1e60:e265:6c8b:f62b:1474])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-37ee0a37ac4sm10996286f8f.6.2024.10.24.02.52.36
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 24 Oct 2024 02:52:36 -0700 (PDT)
-From: Cenk Uluisik <cenk.uluisik@googlemail.com>
-To: Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Jimmy Hon <honyuenkwun@gmail.com>,
-	Cenk Uluisik <cenk.uluisik@googlemail.com>,
+	id 1t3xxF-00000000X9y-2LGA;
+	Thu, 24 Oct 2024 13:32:46 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Transfer-Encoding:MIME-Version:References:
+	In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+	List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=tT0U40vv7udlyyxS/UUhxQXBmlfc4h3QNcCT/CwDSHw=; b=ZoVkvGoeh5dnJY8bocUvlnB0Ji
+	mHsR/RwnpRK+fX/EPaaxu5OdLtDT6MLLR6/XGxCvnfeoNnjfYR4hFWZloe5hXYr/Ddv/CinvCUl+n
+	tjfd6ohqHXQTeAw8CwusR0vpbM1tyYaTbtXY4GBHskivVRQ3krbVs3WgMwtkCgKXV2DZjbsCuUGrB
+	EI0T/elkEdZPxbJebwQFQGx/uYTVvXhDnmi+HryKRLMytWpZCiwLI5D0uB0xqgZ67AuI9OhVbcnpa
+	470zDLDsKjGvG1Q1NDyXhEjGwlCVLBgt+eUFM9F62ycskM/tkhO7cu50YDymgdRI4k4fpbw5ATRYz
+	MziFEWJw==;
+Received: from i53875b34.versanet.de ([83.135.91.52] helo=phil.lan)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1t3xxD-0007hQ-M6; Thu, 24 Oct 2024 15:32:43 +0200
+From: Heiko Stuebner <heiko@sntech.de>
+To: heiko@sntech.de
+Cc: quentin.schulz@cherry.de,
 	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH v7 3/3] arm64: dts: rockchip: Add rk3588-orangepi-5b device tree
-Date: Thu, 24 Oct 2024 09:50:22 +0000
-Message-ID: <20241024095038.42079-3-cenk.uluisik@googlemail.com>
-X-Mailer: git-send-email 2.46.1
-In-Reply-To: <20241024095038.42079-1-cenk.uluisik@googlemail.com>
-References: <20241024095038.42079-1-cenk.uluisik@googlemail.com>
+	linux-kernel@vger.kernel.org,
+	Heiko Stuebner <heiko.stuebner@cherry.de>
+Subject: [PATCH 2/2] arm64: dts: rockchip: add HDMI support to rk3588-jaguar
+Date: Thu, 24 Oct 2024 15:32:40 +0200
+Message-ID: <20241024133240.1737647-2-heiko@sntech.de>
+X-Mailer: git-send-email 2.45.2
+In-Reply-To: <20241024133240.1737647-1-heiko@sntech.de>
+References: <20241024133240.1737647-1-heiko@sntech.de>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241024_025238_838414_5E3B37E3 
-X-CRM114-Status: GOOD (  15.45  )
+X-CRM114-CacheID: sfid-20241024_063245_649276_627E9432 
+X-CRM114-Status: GOOD (  12.60  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,89 +77,100 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Implements a slightly modified rk3588s-orangepi-5b.dts from the vendor.
-Unfortunately the &wireless_bluetooth and &wireless_wlan are not
-implemented yet.
+From: Heiko Stuebner <heiko.stuebner@cherry.de>
 
-Therefore add the sdhci alias to be mmc0 on the rk3588s-orangepi-5b.dts.
+The jaguar has an hdmi output port, which is connected
+to the hdmi0 controller of the rk3588.
 
-How is the Orange Pi 5B unique?
-  - the Orange Pi 5b uses combphy0_ps for the WiFi.
-  - the Orange Pi 5B has GPIO0_C5 hooked to BT_WAKE_HOST.
-  - builtin eMMC storage
-  - ap6275p Wifi module (like the Orange Pi 5 Plus)
-  - builtin BlueTooth module
+Add the necessary plumbing to enable it using the recently merged
+hdmi-qp controller.
 
-Signed-off-by: Cenk Uluisik <cenk.uluisik@googlemail.com>
+Signed-off-by: Heiko Stuebner <heiko.stuebner@cherry.de>
 ---
-Changes in v7:
-- Set sdmmc to mmc1 (because this is now reverted in common .dtsi to be
-	mmc0, to avoid breaking changes)
+ .../arm64/boot/dts/rockchip/rk3588-jaguar.dts | 50 +++++++++++++++++++
+ 1 file changed, 50 insertions(+)
 
- arch/arm64/boot/dts/rockchip/Makefile         |  1 +
- .../boot/dts/rockchip/rk3588s-orangepi-5.dtsi | 11 +++++++++++
- .../boot/dts/rockchip/rk3588s-orangepi-5b.dts | 19 +++++++++++++++++++
- 3 files changed, 31 insertions(+)
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5b.dts
-
-diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
-index e641033d2..2e485553c 100644
---- a/arch/arm64/boot/dts/rockchip/Makefile
-+++ b/arch/arm64/boot/dts/rockchip/Makefile
-@@ -160,3 +160,4 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588s-nanopi-r6c.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588s-rock-5a.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588s-odroid-m2.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588s-orangepi-5.dtb
-+dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588s-orangepi-5b.dtb
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5.dtsi b/arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5.dtsi
-index 5ef0ccfcf..0573b8f2d 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5.dtsi
-@@ -400,6 +400,17 @@ &saradc {
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588-jaguar.dts b/arch/arm64/boot/dts/rockchip/rk3588-jaguar.dts
+index e24da1a4331d..6a59887979ce 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588-jaguar.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3588-jaguar.dts
+@@ -8,6 +8,7 @@
+ #include <dt-bindings/input/input.h>
+ #include <dt-bindings/leds/common.h>
+ #include <dt-bindings/pinctrl/rockchip.h>
++#include <dt-bindings/soc/rockchip,vop2.h>
+ #include <dt-bindings/usb/pd.h>
+ #include "rk3588.dtsi"
+ 
+@@ -58,6 +59,17 @@ emmc_pwrseq: emmc-pwrseq {
+ 		reset-gpios = <&gpio2 RK_PA3 GPIO_ACTIVE_HIGH>;
+ 	};
+ 
++	hdmi-con {
++		compatible = "hdmi-connector";
++		type = "a";
++
++		port {
++			hdmi_con_in: endpoint {
++				remote-endpoint = <&hdmi0_out_con>;
++			};
++		};
++	};
++
+ 	leds {
+ 		compatible = "gpio-leds";
+ 		pinctrl-names = "default";
+@@ -271,6 +283,29 @@ &gpu {
  	status = "okay";
  };
  
-+&sdhci {
-+	bus-width = <8>;
-+	no-sdio;
-+	no-sd;
-+	non-removable;
-+	max-frequency = <200000000>;
-+	mmc-hs400-1_8v;
-+	mmc-hs400-enhanced-strobe;
-+	status = "disabled";
++&hdmi0 {
++	/* No CEC on Jaguar */
++	pinctrl-names = "default";
++	pinctrl-0 = <&hdmim0_tx0_hpd &hdmim0_tx0_scl &hdmim0_tx0_sda>;
++	status = "okay";
 +};
 +
- &sdmmc {
- 	bus-width = <4>;
- 	cap-sd-highspeed;
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5b.dts b/arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5b.dts
-new file mode 100644
-index 000000000..d21ec320d
---- /dev/null
-+++ b/arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5b.dts
-@@ -0,0 +1,19 @@
-+// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
-+
-+/dts-v1/;
-+
-+#include "rk3588s-orangepi-5.dtsi"
-+
-+/ {
-+	model = "Xunlong Orange Pi 5B";
-+	compatible = "xunlong,orangepi-5b", "rockchip,rk3588s";
-+
-+	aliases {
-+		mmc0 = &sdhci;
-+		mmc1 = &sdmmc;
++&hdmi0_in {
++	hdmi0_in_vp0: endpoint {
++		remote-endpoint = <&vp0_out_hdmi0>;
 +	};
 +};
 +
-+&sdhci {
++&hdmi0_out {
++	hdmi0_out_con: endpoint {
++		remote-endpoint = <&hdmi_con_in>;
++	};
++};
++
++&hdptxphy_hdmi0 {
 +	status = "okay";
 +};
++
+ &i2c0 {
+ 	pinctrl-0 = <&i2c0m2_xfer>;
+ 	status = "okay";
+@@ -1052,3 +1087,18 @@ &usb_host1_ehci {
+ &usb_host1_ohci {
+ 	status = "okay";
+ };
++
++&vop {
++	status = "okay";
++};
++
++&vop_mmu {
++	status = "okay";
++};
++
++&vp0 {
++	vp0_out_hdmi0: endpoint@ROCKCHIP_VOP2_EP_HDMI0 {
++		reg = <ROCKCHIP_VOP2_EP_HDMI0>;
++		remote-endpoint = <&hdmi0_in_vp0>;
++	};
++};
 -- 
-2.46.1
+2.45.2
 
 
 _______________________________________________
