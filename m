@@ -4,79 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9F1B3D0BB4B
-	for <linux-rockchip@archiver.kernel.org>; Thu, 24 Oct 2024 01:15:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C7022D0BB4C
+	for <linux-rockchip@archiver.kernel.org>; Thu, 24 Oct 2024 01:28:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=9i8h7QQeZYogC/WkMrNUfHI+zLMMQCjhFYjiDS2hN3E=; b=Wzr0nQ3iT3rCjI
-	Hf5bHKq0lcI+dQa8Mr0t6j89mWXwfNsUQri+EP1fZXQSZcJ6YYEYtubq/b4Hu21u8f8eJJO+LG6xl
-	SnEE+TcNURahZrUNZ7CXwCHW3WkrxjHI8AWCjZQePWscsI4ZA8XMXMSZM+BO7YNDjngTAhvE9XF2x
-	FtTdJycmRIWkM19qR94efs+OQNqdKGVVu3T5cZHXmuKgXzgJSIvzMQykY2EEJwuFD816optY9sv2L
-	eRzseaZEurlTYq0cQUOPRyNnUyxxq9EIV1Zfej05CwdOWBASvSszc6/MnkcR6+3mtlASl4uOTmpC3
-	4bcQVuAzj1OobXfxo48Q==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
+	References:List-Owner; bh=5Lqcf74KSJs1yP/8iRCrPJc8Rza1EzVazv56DqYkWRE=; b=JYD
+	gbvrBDHV+OV4vkLfEdiUJqtuhZkOuyGQ1mKbzeW6oM0WghqW//Y6xW1H9Z0C1YHUG79LbIKeIv9/t
+	E/oGqdvijjaMkhrfvsyQr5q/D5tyt/DczoN8H5E/1NSfYpDUroCn21M5x1uXFFxv9tL2Do8KfS1U1
+	tTZuSZjfCdt4yqa93RO6ufnUVy0r3AlMsHuTIH61xpTOWKKQmyDonGV6QBhLdPKENcT3dmQuwbdPG
+	5rKgf/r9fsh8NMTIygU+D+jjyhtkr0ERSEOEUwaIk1t8jBolzpMW9BEP0pPPbvdbFHfmC3wrNHzzO
+	GjxyDZ+2ig4MPPSGFZ4iY/TKM31XoLQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t3mRJ-0000000GOss-13zu;
-	Thu, 24 Oct 2024 01:15:01 +0000
-Received: from mail-oi1-x22e.google.com ([2607:f8b0:4864:20::22e])
+	id 1t3mej-0000000GPql-19fN;
+	Thu, 24 Oct 2024 01:28:53 +0000
+Received: from mail-oi1-x22a.google.com ([2607:f8b0:4864:20::22a])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t3mRG-0000000GOsO-2f0o
+	id 1t3meV-0000000GPo4-0z7F
 	for linux-rockchip@lists.infradead.org;
-	Thu, 24 Oct 2024 01:14:59 +0000
-Received: by mail-oi1-x22e.google.com with SMTP id 5614622812f47-3e6104701ffso292860b6e.0
-        for <linux-rockchip@lists.infradead.org>; Wed, 23 Oct 2024 18:14:57 -0700 (PDT)
+	Thu, 24 Oct 2024 01:28:40 +0000
+Received: by mail-oi1-x22a.google.com with SMTP id 5614622812f47-3e5fcf464ecso325090b6e.0
+        for <linux-rockchip@lists.infradead.org>; Wed, 23 Oct 2024 18:28:38 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1729732497; x=1730337297; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=ME0p3OiIOK68ps8RV3ywN8O06ajMLsAXH5P911hYUsE=;
-        b=U+OdNwwQR7OhUNd8TmTzknKP1fWv3hgr4WQ+rIHmKbNeQuwOSU3R9dzJTAiL7OH05I
-         lnRUaYIhoiTCK2eOKU06PZdBiAPIUTDHJBt6oT96GOCQezOyX5KENqa4SQBV93lsOIwD
-         uYqve/wpp9KmramEEs6g2La5L3yXIWGpDDkDZLjaxkMS4pY6CmQgtXqiVBAjQsfDss2b
-         TnbcQntt1sQLsfvdCCCqIWMFExBumH0Hrflj6robqx6B/Y8Gt2+M2nQrI/FJBWI59LiG
-         xyx2XBfigvwEWmantFb5BSMfsUSQm9uw+c7YYH8a0mcHa3TIW6G1/S8zqbLTdXabk9hE
-         Hr0g==
+        d=gmail.com; s=20230601; t=1729733318; x=1730338118; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=3uPjqbZnGt45u75+pVjtSMOBbPqo0uPCU2rHzaPyTOo=;
+        b=mamZHxq7JPhg4VRZ4knBDwhfISaarufhcmZMGFKCbSWh0kAPXvdaiTq8NWMyclUrSE
+         4nNqjzmYwGB4qG2lypWuwHyG2oUT9rp3KhJAWIWxCVmn+hELHVt6ZMeI1d5LM7p2KqSx
+         oqigWQaiUM2ZvL9CljAtyuq+5YBTSlKeV6lMCgZEBoPLfJ9d6A3wrjrYwzsRUuiOkcBz
+         FQqCjxYWxiMKFawWZBX5ubq/5ka602TJCw3NeF5GT9AtLfp3b3jMv788lmMeuz+Gti5P
+         K/vyqGeTf1JcQqJPC8dJM/TcrYwwuSo8AbH9q/h3HGkhRLN4OVaLOH8kmkGMxm9u9nfH
+         Vv3Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1729732497; x=1730337297;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=ME0p3OiIOK68ps8RV3ywN8O06ajMLsAXH5P911hYUsE=;
-        b=pbm3h5sgo/Lt1GNStvzX08w7u1u2bL0N1x5vV1Dj2T3TIVoEV2rRU6UVpl/hqjjMrj
-         3O0OpG+pA6Zsf6+5PXQEd4H/L8ENA254VvzRL9+vIlWPUkioytbkEYwjq2NDKiUcpEgz
-         RvskenV2iOG44YVWodEfoTs6L9P/mkTrEV1Z3OUP4oaL2e27ecO9biUu9xRCWYaIHqLz
-         Zwhcn/cuvC0jpeQfX8aCv9hDEjMIPlgDXnS1d/mPF4vIjcb8rlZ9xzb+DmfSKFYvJcT8
-         FiQKJS6th5pzvYaUVTk/TXVacyWcmwmjojX6nQwZio8JgKlggusfv7sEmsWnVXBaNzDP
-         9vpg==
-X-Gm-Message-State: AOJu0YxvUKMZrHUfsKYEGurFwQWdTm6ApsjU7sSds9Sh56eujnA5BPf1
-	/TMNmIemPlMjbyjMu3vKhj8g2YAL/e1lJ5DGBbC9hxQUQZkGObscUI+YeQ==
-X-Google-Smtp-Source: AGHT+IHWQa7NPata85Z+k/w79iTw2sXLFp6FAVyq6DVrAD3YJZ/I5zPVLK8hZ/ew+9TmEuw2xjbheg==
-X-Received: by 2002:a05:6808:3a15:b0:3e5:fbdd:e33a with SMTP id 5614622812f47-3e62cbb31e7mr194344b6e.13.1729732497006;
-        Wed, 23 Oct 2024 18:14:57 -0700 (PDT)
+        d=1e100.net; s=20230601; t=1729733318; x=1730338118;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=3uPjqbZnGt45u75+pVjtSMOBbPqo0uPCU2rHzaPyTOo=;
+        b=v6PiDTzEKupYtdDXhiUwSJxuvupJPUV2D8kSVvPDflM2f16dzLXp2WjZanxz4aKjPH
+         EotNuoiBMyv4t1jOF4RcuiC+kdNRJ7P677Um81HpDIcxb8wUZp5Dd6JBB1JYTRzs0p7/
+         PM/n2mq2z5q6Aqv0ABgYoB1sSk+xa2ViT7lCqcLVJY9whS+qO3Ov5SUIHej+WAZGxxjp
+         gz/BJwFnRJTKkujCl9VWMSdFPwfRW4LFOmzXVtA06xcoMQgooFVOjr+YZkG4OQkLHdN7
+         cFX6NVhMIsjJrowZ6qiGMzYhGfpc/LEJwwdpvf4uSCfFoUGOnWViTegoh6H4JZN4U1Mc
+         5/pw==
+X-Forwarded-Encrypted: i=1; AJvYcCUtvbJ2V2yfqMD3NMYk2PyhXhorubMECXFxFTgr4Yg2BlJtbUi/kLc0T7pXBklnObI4bmNVu6rI5cS05PLlHw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzSvkoJQIBVbLnwwfA3p8KYhxY1620iOdW6Y/K+884Acii6wkTz
+	g3af1f7hc8rLDnAk24/DPO8c4QrSME+kKGvd//Z8PwgH9UjLENZH
+X-Google-Smtp-Source: AGHT+IHtT0vKO33sJIN4VASrJrH4GU0JPJXi9UULcpwOma6LCoMjQ+UHFSzu7Kk93BWWUGe8LvC8+A==
+X-Received: by 2002:a05:6870:55c8:b0:287:481:13aa with SMTP id 586e51a60fabf-28ced48f7e6mr235269fac.45.1729733318102;
+        Wed, 23 Oct 2024 18:28:38 -0700 (PDT)
 Received: from tower.cjhon.com ([2603:8081:ad40:11:a8b5:55db:99cd:f335])
-        by smtp.gmail.com with ESMTPSA id 5614622812f47-3e6102fa91dsm2062848b6e.26.2024.10.23.18.14.54
+        by smtp.gmail.com with ESMTPSA id 586e51a60fabf-28c792a1db7sm2866843fac.31.2024.10.23.18.28.36
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 23 Oct 2024 18:14:55 -0700 (PDT)
+        Wed, 23 Oct 2024 18:28:37 -0700 (PDT)
 From: Jimmy Hon <honyuenkwun@gmail.com>
-To: Chris Morgan <macroalpha82@gmail.com>
-Cc: linux-rockchip@lists.infradead.org,
-	=?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>
-Subject: Re: [PATCH 2/2] arm64: dts: rockchip: Enable HDMI0 and GPU on Indiedroid Nova
-Date: Wed, 23 Oct 2024 20:14:54 -0500
-Message-ID: <20241024011454.1611-1-honyuenkwun@gmail.com>
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: Rob Herring <robh@kernel.org>,
+	=?UTF-8?q?Ond=C5=99ej=20Jirman?= <megi@xff.cz>,
+	Muhammed Efe Cetin <efectn@6tel.net>,
+	Cenk Uluisik <cenk.uluisik@googlemail.com>,
+	linux-rockchip@lists.infradead.org,
+	Jimmy Hon <honyuenkwun@gmail.com>
+Subject: [PATCH v2] arm64: dts: rockchip: pwm-leds for Orange Pi 5
+Date: Wed, 23 Oct 2024 20:27:27 -0500
+Message-ID: <20241024012726.1730-2-honyuenkwun@gmail.com>
 X-Mailer: git-send-email 2.47.0
-In-Reply-To: <20241023164104.66282-3-macroalpha82@gmail.com>
-References: <20241023164104.66282-3-macroalpha82@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241023_181458_691549_8B4BFE44 
-X-CRM114-Status: UNSURE (   6.42  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20241023_182839_294121_4085A229 
+X-CRM114-Status: GOOD (  10.57  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,33 +89,97 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============0629461739888094271=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
->+	hdmi0-con {
->+		compatible = "hdmi-connector";
->+		type = "c";
-This should be type d, the Nova has a micro HDMI port, not a mini HDMI port.
+--===============0629461739888094271==
+Content-Transfer-Encoding: 8bit
+
+The green LED RUN is driven by PWM0_LED that can be controlled by PWM0_M2
+
+Fixes: b6bc755d806e ("arm64: dts: rockchip: Add Orange Pi 5")
+Signed-off-by: Jimmy Hon <honyuenkwun@gmail.com>
+---
+v2: add subsystem prefix to header
+
+Based off of v6.12-armsoc/dtsfixes in the same spirit as the clean up of
+enable-active-low
+This change will also avoid the DTB warning coming from using the id "leds-gpio"
+This commit implements Ondřej Jirman's suggestion from the first patch series. [1]
+
+[1] https://patchwork.kernel.org/project/linux-rockchip/patch/a1eca379d151c3f91f4cd4e1751ba389096c4f13.1692102057.git.efectn@6tel.net/#25472495
+
+ .../boot/dts/rockchip/rk3588s-orangepi-5.dts  | 26 +++++++++----------
+ 1 file changed, 13 insertions(+), 13 deletions(-)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5.dts b/arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5.dts
+index 6b77be643249..c78eb298a017 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5.dts
+@@ -36,15 +36,15 @@ button-recovery {
+ 		};
+ 	};
+ 
+-	leds {
+-		compatible = "gpio-leds";
+-		pinctrl-names = "default";
+-		pinctrl-0 = <&leds_gpio>;
++	pwm-leds {
++		compatible = "pwm-leds";
+ 
+-		led-1 {
+-			gpios = <&gpio1 RK_PA2 GPIO_ACTIVE_HIGH>;
+-			label = "status_led";
++		led {
++			color = <LED_COLOR_ID_GREEN>;
++			function = LED_FUNCTION_STATUS;
+ 			linux,default-trigger = "heartbeat";
++			max-brightness = <255>;
++			pwms = <&pwm0 0 25000 0>;
+ 		};
+ 	};
+ 
+@@ -297,12 +297,6 @@ &pcie2x1l2 {
+ };
+ 
+ &pinctrl {
+-	gpio-func {
+-		leds_gpio: leds-gpio {
+-			rockchip,pins = <0 RK_PA2 RK_FUNC_GPIO &pcfg_pull_none>;
+-		};
+-	};
+-
+ 	hym8563 {
+ 		hym8563_int: hym8563-int {
+ 			rockchip,pins = <0 RK_PB0 RK_FUNC_GPIO &pcfg_pull_none>;
+@@ -320,6 +314,12 @@ typec5v_pwren: typec5v-pwren {
+ 	};
+ };
+ 
++&pwm0 {
++	pinctrl-0 = <&pwm0m2_pins>;
++	pinctrl-names = "default";
++	status = "okay";
++};
++
+ &saradc {
+ 	vref-supply = <&avcc_1v8_s0>;
+ 	status = "okay";
+-- 
+2.47.0
 
 
->+
->+&hdmi0 {
->+	pinctrl-0 = <&hdmim0_rx_hpdin>, <&hdmim0_tx0_scl>,
->+		    <&hdmim0_tx0_sda>, <&hdmim0_tx0_hpd>,
->+		    <&hdmim0_tx0_cec>;
->+	pinctrl-names = "default";
->+	status = "okay";
->+};
-Why is the additional hdmim0_rx_hpdin needed? Is it supposed to represent
-HDMI0_TX_ON_H? I'm curious why this board needs it, when the other boards
-do not.
 
-Jimmy
-
+--===============0629461739888094271==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============0629461739888094271==--
