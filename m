@@ -4,160 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DDC9ECE8E6A
-	for <linux-rockchip@archiver.kernel.org>; Thu, 24 Oct 2024 17:57:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4E80ACE8E6A
+	for <linux-rockchip@archiver.kernel.org>; Thu, 24 Oct 2024 18:10:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:From:References:Cc:To:
-	Subject:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
+	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=g+BrLoApQnUQgqb0a4SzJCiZ52YUuFpqQovP5FeRC7A=; b=nC8rV5qbAsp6FSR7PFlG3HSWfz
-	xzpHvgvER7XDTdq03ObP8lTrjwoEKBmUA6gs5g6hQxzQ7jRuQ4m+lhY+CpcQGBKr5xGBcdl5YGkRo
-	XUfeHd7ayxPcmU9+EVoOudUeigtU3H7yRbD0BXZiKVle/szPZGwUyzvovQ+QowVx0NG93o2V7ug+R
-	xP+KjtosN7saDeuM3pbGvYA4y6dW+G6EZwOIgM2rafzhJ/VB7LYVtialyjJqQ2LZ8SkyHWOGewjOI
-	BNFeNZqQ0xZRjIJNYDP4RE5pFV9i4WLMnsJeB0ek33978lqjeqnPgWjFL/DczsT98spgPYeBewN1X
-	xlgH9QEw==;
+	bh=DP0eg8pmdtJ0zHomtFpCm65/olxfU6vlj+8aiihN/30=; b=yyGB0bkVx0ChGQZrC0jxM3A8Gv
+	Kq2QqJ7CZFXAM5Xa0HaPaFB+HELZWrJLvJdLCza9u2GD5vOr9l8EME5UTZQkHYwKU5yRCrIPG8DVM
+	NcMpDTJjZ8pLO1AH+EQh5ZcBQTpkSlqouZMLWfMzWqzyr965213Uj7lP58uCeGkXkuhXe1OdQJBGJ
+	kK+TVxmkeMnPtwxWpy7I6g75u/yvGxyBmXX+M0EbWaAOdpYhu6xKbZuGFQoXRdDpO2fdQimb5Rgxo
+	abbDxSWUEii63XjbIOLxABmBrGz/z6gTcLkziN2Yuj9QlpDdKm5T2Q9wMDeuLbtRcWh5Kzek+QXQn
+	9g/v1jOw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t4259-00000001NK1-3ffD;
-	Thu, 24 Oct 2024 17:57:11 +0000
-Received: from mail-vi1eur02on2060f.outbound.protection.outlook.com ([2a01:111:f403:2607::60f] helo=EUR02-VI1-obe.outbound.protection.outlook.com)
+	id 1t42Ha-00000001QAL-3a7T;
+	Thu, 24 Oct 2024 18:10:02 +0000
+Received: from mail.manjaro.org ([116.203.91.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t41iA-00000001IcN-2GG9;
-	Thu, 24 Oct 2024 17:33:28 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=I+j5WY4wo0tRalq3u1C6PbeRuUN8sspaAO78CjZ2GIng/5NNbvMnuZ+UyH7BBOVDFTv9ptxNPYQAR+JKMrahT4Ki0zktGwnZjvONFfsDdlNiNrqBVkefxUlENooHpToU8H5/5oLbYMNPTyS3Pn0BXt4O9BDKD2OQm1J90NDSbMhFipYhxXbO1/hqPmaTFx7Y02Lh2e+GcqOamwuLBiNVtON1itqKvSwVxYpb+3OfkNZDGgQv7m6dXQXvWiTej7wVWu8myWF1MzOE65xERnWE2c++XiHMiKvNTcHV9z2nKEDuW/lYCIHsDmUvQkGvNfnc+Nv3a3GerYBkUkhKfcjMZg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=JSaH/xY7KqGMRZY24EQ00COdWciwEaORAZzoxl4vEco=;
- b=t5x1XCIvxlL+fLpF92LVQ9NhJix+LtftH1xdEsWHHMoSY6M3Nktr8Au/3XfqMbUXhHBFv8YJgxXJQxf+n5WDVOqr5+kO+x8emfWl1/Mk4OkRe4QF0lAR8WYzq+Ev8ksmjp0GaBBjH143bWWMsD2e6QHCxaVRMSqUlSru3bnQ6ACks4lllLlNMkKd5J82KgbfBMYJrjdyF/c/WOt/tij2YGqE6IwMYf1Y2gf9JzUY4z0OCspcQYiVlJCVpoV8P6tYB+cCDJjWvHZyzApaD8dGNucKozrS7Dl1X17b0oUVgP8hENlcCxLigIhWCu6bOJdVJjuHJRmHFosGJewwZ3jOsw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=cherry.de; dmarc=pass action=none header.from=cherry.de;
- dkim=pass header.d=cherry.de; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cherry.de;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=JSaH/xY7KqGMRZY24EQ00COdWciwEaORAZzoxl4vEco=;
- b=mW3wl50hNIeYyNmr6TJSTibNK7EBsqUSLBX08mh5yKwDqrLdRfwDuRNgZc0f/Lfkx3vqn7KBaBPeoa6yuGTJw+Prm/GmNi0BaJOXO6FBFLC0dYJg4qOJlzAKL8dck3BSzuPLQMPTx8J2uKRJOMdpL146uQiWPRDJq7xjgG7pzC4=
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=cherry.de;
-Received: from AS8PR04MB8897.eurprd04.prod.outlook.com (2603:10a6:20b:42c::20)
- by PA4PR04MB7838.eurprd04.prod.outlook.com (2603:10a6:102:cd::24) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8093.18; Thu, 24 Oct
- 2024 17:33:21 +0000
-Received: from AS8PR04MB8897.eurprd04.prod.outlook.com
- ([fe80::35f6:bc7d:633:369a]) by AS8PR04MB8897.eurprd04.prod.outlook.com
- ([fe80::35f6:bc7d:633:369a%7]) with mapi id 15.20.8093.014; Thu, 24 Oct 2024
- 17:33:21 +0000
-Message-ID: <eb9d14ca-5729-4a63-937d-46ec42ae8ee0@cherry.de>
-Date: Thu, 24 Oct 2024 19:33:20 +0200
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 3/3] arm64: dts: rockchip: add HDMI support to
- rk3588-jaguar
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
- Heiko Stuebner <heiko.stuebner@cherry.de>
-References: <20241024151403.1748554-1-heiko@sntech.de>
- <20241024151403.1748554-4-heiko@sntech.de>
-Content-Language: en-US
-From: Quentin Schulz <quentin.schulz@cherry.de>
-In-Reply-To: <20241024151403.1748554-4-heiko@sntech.de>
-X-ClientProxiedBy: FR4P281CA0287.DEUP281.PROD.OUTLOOK.COM
- (2603:10a6:d10:e7::12) To AS8PR04MB8897.eurprd04.prod.outlook.com
- (2603:10a6:20b:42c::20)
+	id 1t428q-00000001ON7-2I6n;
+	Thu, 24 Oct 2024 18:01:06 +0000
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: AS8PR04MB8897:EE_|PA4PR04MB7838:EE_
-X-MS-Office365-Filtering-Correlation-Id: d8f44504-703a-41bb-f489-08dcf451f469
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|366016|1800799024|376014;
-X-Microsoft-Antispam-Message-Info: =?utf-8?B?WlczcTJRTVROZWJiOTFyY3duemtNeTVDOEx4c2NyMGJTaUtuQjFBdHlYdE9Z?=
- =?utf-8?B?SWJqUngxWXRlQVkwV2prZlFqVGpWRElhQnVNRDBlN2hMWEowYktjWVQ3bmRz?=
- =?utf-8?B?OWNIVWJyYVplaHNTV3grRWlJVjR0SGJwTzg5UGZZdWdzWnZ1WkRWWGVUSWRr?=
- =?utf-8?B?aEVKWlJzUUpOS3ZxOXM1QmowN1FCa2c1QVZxRzNrZzAzRFE4RVF2SnlEQWFl?=
- =?utf-8?B?WDhDMEFjM05PL1ZCczZ5QlFTZ3NiWmxQV0NRTkM5RTgyTVlrZ1o5dWhkeFhE?=
- =?utf-8?B?cmxKY0lybCs4QjZLVmlsd0U5VjAvY01JRGt1RGF4RjdFK1FIcWxHT1EvV2Zt?=
- =?utf-8?B?MUZDcHhSbkJlclU4UGljT0hERS9JRjdxVndSQngrMUtrR0FRcHI0WDhuQ3pH?=
- =?utf-8?B?ZG9FVUJETmFldnhtT1AvcGdQdk52cG14VXg4a2lLNDN3Ry9CejY3aCt2cE5r?=
- =?utf-8?B?SU9abG5UN2FCNE5WQU9NNjFQTlFGLzRyNEs1bEF1aUc4ZzgvT1IwSWYveTlW?=
- =?utf-8?B?RTdnVTVFcndOR09pV0gxWURQOE9NaTJZT3UrdDFJTUI1czIvdlJVVGtvdkJF?=
- =?utf-8?B?WnRxaEE5ZVRFSjR1VmlxOWh6QkxmQ1JsbG9wOGgxZ1dsSzFrTFI3eXJsQVpP?=
- =?utf-8?B?SXFwZ3doY3V0ZEc0Q3JINEpjNytrK2l4MjJpeW1ndkRpdXNZMU9BUUVtaUV4?=
- =?utf-8?B?VzFNNEVBakdtSnNJZ3VBTEZjQ0dMZ0lncThaZU9aeDFFTk9mMVJxci90R0Iy?=
- =?utf-8?B?NjU2dysyRWxHaHFoY3NnQWo0aVNKVGRrU1NuUFU3UUxjU1hhdlVtRWRFcTNi?=
- =?utf-8?B?dk44WHZIVVY1RWZCejdxNnh5c2c1VXRudVVjYkFEbVV2bzU0eWVJNnlLY2Zx?=
- =?utf-8?B?eHpxa2l5cTNJRUpONzRwYjlqN3NMZDljSmpmMFRHWmxxKzdNSTl4c3dweERW?=
- =?utf-8?B?SW5nb1BiZFhTdDYvZXczMkpzb21NaFVhdzRVUnk0Mm1BdGlQVmQxR2tsRS9v?=
- =?utf-8?B?eGVBS2d6T3kzSXdMVy9zOXEvSXR0VkNYV09NaVI3TDdZQmI2S3Bxa1puOGU4?=
- =?utf-8?B?dmdBbFEvRzdFYmN6aUZLS3FVWllUbTBtV0xvS1QwRmo1Z3ptVDRyNGpFMThL?=
- =?utf-8?B?Q1VlQmlaQThPRDBqZGhIU214WWYzOWNPZnphQWQvVzZJdDVSQTU0NUhwUGRH?=
- =?utf-8?B?OWxpNmFVMEJUcGYvckM0eFY2d3gxUmFNSXlCbWovTTZvUGRDOXpuR2xRUTN5?=
- =?utf-8?B?VHYrQ2t0VmtlcUdHVTRPU29LSmhCa2tJZWEvN0l3L3dGb01DK05tYmhtdXNo?=
- =?utf-8?B?WDJpeDhiWVBHSHJkZ3FnODhMR2J4RU5JYkx1dFB0UUxLR3g4ZW1CZ0lyNlRG?=
- =?utf-8?B?WHVCQ3lJWkIyZXIvcW5BdktWbW1nbVJPSE16L1NqQUFiVlpuaXAzV1d3YzRD?=
- =?utf-8?B?RlQyR1RiSkVDZkJJRll5NUpjQXBoU3k3S0twN2d6YjNaL2hWMCtOdEVLNGlv?=
- =?utf-8?B?ZHFNRllOQ0kxeWpqT0F3d0pjZGhGMTRUYTRJYXRHOGQxeFRRZm5LMGxQSzJu?=
- =?utf-8?B?dkdwSUd4eUxZOGcyM3AyYTFscVlXODVKUm5HcmJ4QkNpQ2RZcEp5L0txN1lw?=
- =?utf-8?B?WXhkN0hEYm1XSTFMNFBrNVRCbWlTS0ppa05rOUUwRWtsbDVKejBWNG4xQ1ho?=
- =?utf-8?Q?WvdtUo++UwLU50zrV9qg?=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:AS8PR04MB8897.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(366016)(1800799024)(376014);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?ZERzYXpndkZKMzM1SFNqSFlZa3VRZGRoY1pyWUVYNlhtYUxXQk5iNkp1SC9s?=
- =?utf-8?B?emxFRFgxWVZhYnpacncwSWVQdDZURk1IZGZRSXZLdlhSVnk4aHl2Y2szTDJq?=
- =?utf-8?B?MS9oQjJKeGx3RmRxSGlHQU4zMmNrQ0N6b3R2WEZ4SG54Zng5a1RxMWJpL0lN?=
- =?utf-8?B?Rjc4c1Z2WWROaGUzMmZocml0MkNXUVQ4RHpPdWVaWHFqaFBjU1luRnMwcFdL?=
- =?utf-8?B?QThZU3N5THpmZXNPbi9mL1FoNXdLRGE0cU91SGgwRUovUTBTdUk0Z3doaVVs?=
- =?utf-8?B?QnZ4ODdQdTl4NytCdlczd1hjNnhuOUs3SjZsQ2dJVFQvZUZGOXhxMVcwS2x6?=
- =?utf-8?B?azRNb2tscE8yVWd4YjdvclE2eTJIZjlRNHAxUlhEUHdVTk5Lam85TGxOeis5?=
- =?utf-8?B?dnZOR0Y0Q25hTVZUWW9IWU1zNXJhdFJGMFhsRnVOT2U0WmhodzlOMHZBcGFP?=
- =?utf-8?B?YU51RWVjVVprTUJucklybjJ0blpOOGtoa2xxcXpidzZOZ0hkWUZiTU8wQ3BE?=
- =?utf-8?B?WVphWjdCaDFWNUxDUnY1eWQzT1dKa09FUXh4TFUwZTJXYWVGd0xQSnBlelNQ?=
- =?utf-8?B?cjhKQjRiamNEbXgyYlFHQ3BoNGx1ZlZzQlN6KzFPdHJGZU1hUURuYXp5TzNq?=
- =?utf-8?B?TEphc3ZoOGJUUlpQR082N1Y5VUdpRCtwOFlJbnRyc1ZDVXVNUDczeW9yZ2dJ?=
- =?utf-8?B?aklUMVNTcHgvNkJWTzZVbmlUcVVHdnhteDI3dmZET01xa253N0NSNlg1MUM3?=
- =?utf-8?B?TEFiSjhBMGZGa2xYVEViMXVBRndsMWt5NFNlcnE2aW1rL005SW1ZNzR5SmVm?=
- =?utf-8?B?VzRBSVlqREx3THROT2l1V1BPeWdCVSs3bVhvMVViVnZaSE9nT0FsTHlZdEkw?=
- =?utf-8?B?cjFzN2t0NGZicXdNVUgyV0l2dFhWZnE3VGlQam1pbXJYK0xwS2R3a2pud0hz?=
- =?utf-8?B?R00vOVVES0RDYUdxSit6OVdJTjNhdE5randIejhpOTZLNDhnV0o2ZmZSSHBl?=
- =?utf-8?B?cWYxV3F6ZTQrcWkyZ3BTc28xN0pjei9qa3dKTFVTb2Y0Z0xkQ1FtYXFRNi9Y?=
- =?utf-8?B?R01pa0xRT2xZdDFrY09ZZTR2S0lWaXRMZTJ5K3VyalAzQnJFcENGNmxDeEVZ?=
- =?utf-8?B?cjFBb3gxZEZ1NFFVZkl4VEZjS1MxOUk3dEk5NDNCZVRhLzhDYm5uN094VERi?=
- =?utf-8?B?RTllZnk5TGw5cmdRUklCeGZxSFkyNUpGc3dHMmhnRGVMM01rckJYNWdHTEpQ?=
- =?utf-8?B?RFFHcWpBeTR5UFNpT2Z4dGZ5eFBDNktSVURLSzRwMFo2QzVUL0xEdEdiUVp2?=
- =?utf-8?B?L3FlZ3VlVGVLZ3diR3JyRjNUSXNaZDM0ajhwVEoxSkl3UnRaNkszRVpCaE9w?=
- =?utf-8?B?T3luSkpNdXBZVEorYnpvanh2bFlKNm9HejU0TDFvUFIwb05CWm1uQVk1MEd1?=
- =?utf-8?B?cjhCNlorK3RJaHpReVR4K0JvV1NwUTRTTDdqVnNUNFBneEVGaW41RUNhRXA0?=
- =?utf-8?B?b3dDRGpWc08ybVhRWjNZQnVPVFM2SCtOU09QcEhNeko5OGlCbkY1d0V3VjhD?=
- =?utf-8?B?SWRXR1NFM0dELzVwdXNzU0UvdTl3OXZlQmtBSmxwTTdLSXBGT0hzUjg5YWJ2?=
- =?utf-8?B?cGo3RFhndHhpYmlOWDRRKzI3Zml2M3F1anNicmZpajZXclg5eW1EMlhiRlVv?=
- =?utf-8?B?RTR3aFpKQnIwM1lDdVhselBTQlF5ZE9xMDltTFhxcVozalMxVzlxTldnbjgw?=
- =?utf-8?B?Y3Rzc2NnTTFtYzlLc0Y5UnZVa0FqQ3RBOSt2cUg3L2FjcnNnaVcrQTM5TmxW?=
- =?utf-8?B?cEJudDVSelpYSk4xNmw4YUdtNDBWWnZhenBCNVgyaTdHMlhKMkNPMWpKellW?=
- =?utf-8?B?UUMwTFFiTEJiRDFDdHFvemxpR1JTdXN3a21BUGNWbm1hUjVlaExNdHQvd1FI?=
- =?utf-8?B?UkdjNW5vZnpUMC9PSlhkWDZiUk8zdi8wQ0Y0NEFBbFFMT3JWYlppcTBDaUFT?=
- =?utf-8?B?Ui9wbnVuODBSc2hLR1lEZW9CK2tZakNUL2c3WW5wK2FPbk5pYjRwRThTY01p?=
- =?utf-8?B?VmQwTDNYa0lrcjhKWnBxS3NmcGtvT1U0dlc0N2dENEluQ2dacXI0bDVKZExX?=
- =?utf-8?B?dGZuUW5xQzJLZWZLMng4SU1HUkNIVHR0dzI2eTFBYk1XZzAvSWc4ZzhVVkdl?=
- =?utf-8?B?dFE9PQ==?=
-X-OriginatorOrg: cherry.de
-X-MS-Exchange-CrossTenant-Network-Message-Id: d8f44504-703a-41bb-f489-08dcf451f469
-X-MS-Exchange-CrossTenant-AuthSource: AS8PR04MB8897.eurprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 24 Oct 2024 17:33:21.1922
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 5e0e1b52-21b5-4e7b-83bb-514ec460677e
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: brRe2XcAWqrdKnWYa9aAB4AvcVlBmBLLLKORDRujUmUFEUzT127r6JZtH6IWQVGT8TT56QqgSlxq4HXQwp+JaLzY4M6Zkk8UVgbcRYLPoSY=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: PA4PR04MB7838
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
+	t=1729792856;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=GHgDKeqNVrBn9md44XPQvQ0FnJfd+8TS+EEdFg8hSss=;
+	b=Wmgj/tGeb9etrXamiid7kJygIUFAPiuOTEw2Bl7jRkdMO3AeVubAJOrxP7xjX+u/JtGO7W
+	QukaMZNhloBrZ3M3gVEwSLM8XhcZqdqMrlsNrG46CEXZ28OsCcUUYtcHriPn7hlW3eEE1t
+	rMGti/cpYeTQk+SZU1S5qhZQPHC4kf62+hkLuSIvcOeGARcraCu8MmhzGhlPlum9dZc3iL
+	DSH3sO/Ved//K0YDX9OqghfLchk9n4pd0sSR1vtco0220Rl61wqtbWJ65/GuGu55Ez66KH
+	XrvtUqZANP95XOSVsn/yWDLu37EZMq1GZjc3IyxkmOODfjMoTzul/2RbxD5eLA==
+Date: Thu, 24 Oct 2024 20:00:56 +0200
+From: Dragan Simic <dsimic@manjaro.org>
+To: Shimrra Shai <shimrrashai@gmail.com>
+Cc: linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-rockchip@lists.infradead.org
+Subject: Re: Thinking about firmware and hardware description for latest
+ Rockchip platforms
+In-Reply-To: <20241023173514.4538-1-shimrrashai@gmail.com>
+References: <b12103b968cd5817f25deb7277d6054a@manjaro.org>
+ <20241023173514.4538-1-shimrrashai@gmail.com>
+Message-ID: <560b5a4f419aa4bbe2df198fd528e5a8@manjaro.org>
+X-Sender: dsimic@manjaro.org
+Authentication-Results: ORIGINATING;
+	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241024_103326_620841_1B1A49BF 
-X-CRM114-Status: GOOD (  10.52  )
+X-CRM114-CacheID: sfid-20241024_110100_940571_37FB72B0 
+X-CRM114-Status: GOOD (  28.42  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -174,33 +72,84 @@ Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Heiko,
+Hello Shimrra,
 
-On 10/24/24 5:14 PM, Heiko Stuebner wrote:
-> From: Heiko Stuebner <heiko.stuebner@cherry.de>
+On 2024-10-23 19:35, Shimrra Shai wrote:
+> On 2024-10-23  2:46, Dragan Simic wrote:
+>> As you noted already, the DT definitions are fixed and improved
+>> all the time, which is actually great.  However, the backward
+>> compatibility is ensured, because newer kernels are guaranteed
+>> to work with older DTs, which doesn't mean that the board DTs
+>> provided through firmware should become frozen in any way, as
+>> explained further below.
 > 
-> The jaguar has an hdmi output port, which is connected
-> to the hdmi0 controller of the rk3588.
+> Thanks - my concern was about backward compatibility so that if some
+> user did not upgrade their FW but then tried to install a *newer*
+> Linux found things mysteriously breaking due to that some DT revision
+> in code had broken the backwards compatibility. Of course that could
+> also be considered a bug, even while new FWs could/would still be
+> rolled out.
+
+That's a valid concern, but such scenarios shouldn't happen by
+design, unless there's some bug, of course.
+
+>> Freezing anything would be simply wrong.  It might look good from
+>> the perspective of having something "stable", which is similar to
+>> how x86_64 firmware works on PC motheboards, but the continual
+>> bugfixes and improvements are actually extremely good, because
+>> they prevent various ARM boards from effectively becoming abandoned,
+>> which is unfortunately rather usual with x86_64 motherboards that
+>> become so "stable" that some nasty firmware bugs are never fixed
+>> and their users are left high and dry.
 > 
-> Add the necessary plumbing to enable it using the recently merged
-> hdmi-qp controller.
-> 
-> Signed-off-by: Heiko Stuebner <heiko.stuebner@cherry.de>
+> Yes, I'm not against new FW upgrades, just the idea of users *having*
+> to upgrade their FW simply because a new kernel came out when nothing
+> like that is typical on x86 or at least in my experience using it over
+> many years).
 
-I have this Chinese portable HDMI display[1] which doesn't print 
-anything at boot but works with modetest. Same behavior can be observed 
-on downstream, maybe we can get some people interested in debugging this 
-now that it also impacts upstream :)
+Yes, users don't _have_ to upgrade their firmware, as described
+above in more detail, but they actually _should_ upgrade.  In fact,
+they should be happy and eager to upgrade. :)
 
-With a decent, FHD, monitor everything is fine so:
+> Note that the situation of a DT upgrade that is obtained by FW
+> upgrade breaking older kernels, i.e. broken *forward* compatibility of
+> the older kernel with later DT, isn't so much a problem because we can
+> simply keep the older DT in the FW when issuing the FW upgrade, as I
+> believe there is a facility for supporting multiple, versioned DTs in
+> that UEFI package [and if not, it could easily be added]. It's the
+> backward compatibility that is my issue because reflashing FW, even
+> though not too hard on these boards, is perhaps more heady for your
+> average PC or smartphone user.
 
-Tested-by: Quentin Schulz <quentin.schulz@cherry.de>
-Reviewed-by: Quentin Schulz <quentin.schulz@cherry.de>
+Hmm, I don't think that keeping older DTs around is a good idea.
+Instead, we should simply document the required kernel version,
+or even better, make some kind of a dependency between the firmware
+version and the version of the kernel packages.  The latter is,
+of course, a much more complex option, but also better.
 
-Thanks!
-Quentin
+For the record, please note that I have zero interest whatsoever
+in any kind of "full-fat" UEFI firmware implementation.
 
-[1] https://www.amazon.de/dp/B0CKYR6FN5
+> That is to say, I'm imagining the case of bundled computers
+> pre-shipped with the loaded FW and OS installed as usual and someone
+> says "hey they got a new Ubuntu [or whatever], let's install it!" BAM,
+> devices stop working because they did not upgrade FW, forcing an FW
+> upgrade in a way an x86 user would not be similarly forced. Though of
+> course, that could then be reasonably called a regression bug (as it
+> would appear from the user's perspective, not knowing about the FW
+> change), if backwards compatibility is indeed already a long-standing
+> policy (and is really what I was after with that "freeze" suggestion
+> even if it itself would not be the way to get it).
+
+Well, it's perfectly reasonable to expect the users to install
+different Linux distributions, etc.  However, as already described
+above, running a newer kernel version without updating the firmware
+should never lead to such issues.
+
+I think we should raise the awareness of the actual benefits coming
+from the openness of firmware on various ARM boards, and the available
+choice of _not_ having to use "full-fat" UEFI firmware, instead of
+trying to make the whole thing be more like x86_64 UEFI firmware.
 
 _______________________________________________
 Linux-rockchip mailing list
