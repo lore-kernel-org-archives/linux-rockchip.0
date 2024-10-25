@@ -4,88 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C66D1D149EB
-	for <linux-rockchip@archiver.kernel.org>; Fri, 25 Oct 2024 19:55:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E1D58D149EB
+	for <linux-rockchip@archiver.kernel.org>; Fri, 25 Oct 2024 20:14:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Subject:Cc:To:From:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=JbhIl6FGKbphMLjeY3206T0FPjAkX4whfuXe583qc6k=; b=VOr28gqRpToM1q
-	trerrCHBWGCD4Twri1UuxYUb/eXPysq++6AVfACn0E29SPSm3Jem1fxmeILtSV0pR8dcK284BJM06
-	Uwqzsu3mk2X0i1LgfSmr2GcUloFlW9hxqobeSi/DxjQ9vB6D3eFvapRaqcLgCGz9ajtnBJHhr6T5x
-	DGOUSPIUPku2I+ihjLZgjPnPGuIk+wlz97gsyTfVh0sVyw/GXr0y0i1iqCWl0PXyFhSadmcD7qa0a
-	zHM3JScj5IiWHAHIF0Pqdjx2DN34DzD3oZ6hyrqtQ88qsECnbAtr5h0G6B+Sd0t8qq3FLUb+2Nmvk
-	fekQeF6y6F49WFqH6JgQ==;
+	List-Owner; bh=QW06Hkd1GdsHSEF/DLCtQ0FAZCSlcEToGbIK/NYdxZg=; b=ZRYR/fcg3ZFTFa
+	VyWgj7AEw9ehCtZ3qT69hl1n88VKCiilZwAFlEqXFKLLx7Nskjj/7UMiOQlolDWuYGtcVWEHytNp2
+	PFj3356wL02fhMCF9NLUvakuVoPX8QH6uIuy7SgR/11kkqTQFGjgzllsb0bazcXKCgOHC0E4Pt5b5
+	T0PCWo1oTzbci46Pn8k0LccEZYDXuGWNiPxkOk0IXJakqA2TI9+7Y1dW20oznYSTgy81FuDGVaFOI
+	YHejtRpYeVtdgbZzpzgPjgqvKXhwaOinaZRy/lvf4Jvd5VEKvrBi3orc/tAd2X0cGxoC3rmicxWqy
+	6093gieLYOs785VnBagg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t4QP7-00000005351-2C40;
-	Fri, 25 Oct 2024 19:55:25 +0000
-Received: from mail-oi1-x231.google.com ([2607:f8b0:4864:20::231])
+	id 1t4Qhd-00000005576-1aMc;
+	Fri, 25 Oct 2024 20:14:33 +0000
+Received: from smtp.forwardemail.net ([149.28.215.223])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t4PrD-00000004x52-2ooY
+	id 1t4Qh9-0000000553b-3fTo
 	for linux-rockchip@lists.infradead.org;
-	Fri, 25 Oct 2024 19:20:26 +0000
-Received: by mail-oi1-x231.google.com with SMTP id 5614622812f47-3e602a73ba1so1414569b6e.2
-        for <linux-rockchip@lists.infradead.org>; Fri, 25 Oct 2024 12:20:22 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1729884021; x=1730488821; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:subject:cc
-         :to:from:date:message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=UFiCFtyXCtM0cfXvBWureE7jstH1bP+NqgjN2z9rdyw=;
-        b=IoRWtdvzco+Mt4OPnaRs9Cbeh1jHTGOrHC6HZsQPEMaVmyEkZMw83uhhYCDkEweZEC
-         3aSq5R2fT5THhnn9Gnr03ZqWuOVDh/t5rhRtrdC9wAdroTxd3uUR/hRoVYwpachMzMXX
-         bH76SZy8c2fSiz4iCdO5n8HShmmHGOjeSRdwgphj+olBAE4Vy5iLCMgpHVf7zKuCZmpo
-         qeElSo99sbQJo9uuXdvXUe/65nFt68Q/nD15WxaGEBg6/ZGtLv9nSZOBOIZWhasAGrb3
-         iJQ2L1istU2+WjoULwqDp1FPumB4g6QbPLx2pMiBKI87yn3KtenafscSVS78wuorKhzK
-         5zug==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1729884021; x=1730488821;
-        h=in-reply-to:content-disposition:mime-version:references:subject:cc
-         :to:from:date:message-id:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=UFiCFtyXCtM0cfXvBWureE7jstH1bP+NqgjN2z9rdyw=;
-        b=HACoKJWbIXaAOB/U2bbgMI3fdEY04qsSIdzjXABOlfi5jHFxPBMT5ovZpsvDY7fiHm
-         1zIRJtZ9oSvKLRjock856ieXxnv4Sgv5mSl6CM7hdxoFyhH4/nadaJOMSjlO/KzwvEyu
-         bgBcz7r/8aFX9zZ+xsxYP2zKh+8jW5bP8PvTnHFZ6rp6+8pkoXxNWxpD4rITyiH9i0yN
-         R8W9+2bvdvs6pS0zyuVh+8s4InXVAGCvTyDhzrEKhOnSELFLwEhRJvQwCn9av0FTlvxP
-         mCk9yuTDysjDZNVkvWEcWnvTGpBRu38M3/urn2QJ4Z23Z/RXSp/IA9cWjZcVztd3vRK+
-         pWgg==
-X-Forwarded-Encrypted: i=1; AJvYcCVst7r8VZCaU3monQcRtarmjTMLeuoURv59ssxlhgZD6ZWpsfsonjfwPrn/UnvROSm6TNUo4EQdZQ+MOUb5iQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzmUgYH9As3Y0TwgBgqavzhWYxTUPsuuM8wKw/0IGO3F3JgR8jo
-	avaP720e3sXSG/Uamhschi8ev3Ii6v4UToqQ8jWciogiNfI4cNOc
-X-Google-Smtp-Source: AGHT+IHOU/yoWxT8qW/MXMQq/wMel6zgqBgbkv9VBifq5zyHr7GCtzsN1GvySw7RXKuVZa+ZXeUxxw==
-X-Received: by 2002:a05:6808:3097:b0:3e5:fbdc:ba03 with SMTP id 5614622812f47-3e63848a0d3mr761378b6e.30.1729884021461;
-        Fri, 25 Oct 2024 12:20:21 -0700 (PDT)
-Received: from neuromancer. ([2600:1700:fb0:1bcf:5f0:c09c:9b2f:306d])
-        by smtp.gmail.com with ESMTPSA id 5614622812f47-3e6324957afsm349778b6e.32.2024.10.25.12.20.20
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 25 Oct 2024 12:20:21 -0700 (PDT)
-Message-ID: <671bef75.050a0220.e4bcd.1821@mx.google.com>
-X-Google-Original-Message-ID: <Zxvvc6F3eg9B2wH6@neuromancer.>
-Date: Fri, 25 Oct 2024 14:20:19 -0500
-From: Chris Morgan <macroalpha82@gmail.com>
-To: Roger Quadros <rogerq@kernel.org>
-Cc: Thinh Nguyen <Thinh.Nguyen@synopsys.com>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	John Youn <John.Youn@synopsys.com>,
-	"linux-usb@vger.kernel.org" <linux-usb@vger.kernel.org>,
-	"stable@vger.kernel.org" <stable@vger.kernel.org>, msp@baylibre.com,
-	"Vardhan, Vibhore" <vibhore@ti.com>,
-	"Govindarajan, Sriramakrishnan" <srk@ti.com>,
-	Dhruva Gole <d-gole@ti.com>, Vishal Mahaveer <vishalm@ti.com>,
-	heiko@sntech.de, linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH 2/2] usb: dwc3: core: Prevent phy suspend during init
-References: <cover.1713310411.git.Thinh.Nguyen@synopsys.com>
- <e8f04e642889b4c865aaf06762cde9386e0ff830.1713310411.git.Thinh.Nguyen@synopsys.com>
- <1519dbe7-73b6-4afc-bfe3-23f4f75d772f@kernel.org>
+	Fri, 25 Oct 2024 20:14:05 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
+ h=Content-Transfer-Encoding: Content-Type: In-Reply-To: From: References:
+ Cc: To: Subject: MIME-Version: Date: Message-ID; q=dns/txt;
+ s=fe-e1b5cab7be; t=1729887229;
+ bh=74bozFZJmgGck6VJe39IrYdh4GsmkB/jNFiY9XvyFLw=;
+ b=ufGZOBKrqL26Ytoow/NNIvN0XNL/SgPCWd26rrQZ5c9F2WQzNKHD9BTluf12cqxd2tKAU0iMj
+ /90E9a3SkbA3MdIxjyhIhGseaRamJ+qkmmmTRjSN5/iktOgvwmteAJUwFBYM6Hbmky+sodGpJ8U
+ rz4IfVZjeL8fbJSkzrDQdT+1kfSwnLkvIQW0BNRXKQo/XBTDiFu014kGdcJACMy6twStGrUsfjy
+ dTbhzVV5EL1K/LWK2FJHQuUfwUC80pczo8iNZn424hbqFGQUpWA4FCmxH6rmgVnmdbnGNJ5RifM
+ CTTfY0HbYtB8b/XThTVLOXDWFH3dKCCN4VlY5C0S+Amg==
+Message-ID: <7ceb8209-c292-46bc-88e4-2e19a5ed5fda@kwiboo.se>
+Date: Fri, 25 Oct 2024 22:13:42 +0200
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <1519dbe7-73b6-4afc-bfe3-23f4f75d772f@kernel.org>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v6 00/11] media: rkvdec: Add H.264 High 10 and 4:2:2
+ profile support
+To: Nicolas Dufresne <nicolas.dufresne@collabora.com>,
+ Sebastian Fricke <sebastian.fricke@collabora.com>
+Cc: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, Alex Bee <knaerzche@gmail.com>,
+ Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+ Detlev Casanova <detlev.casanova@collabora.com>,
+ Dan Carpenter <dan.carpenter@linaro.org>, linux-media@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, linux-staging@lists.linux.dev,
+ linux-kernel@vger.kernel.org
+References: <20240909192522.1076704-1-jonas@kwiboo.se>
+ <71159f58-be8b-41a4-9fed-522e09a7a564@kwiboo.se>
+ <20241025103022.yuaepqxllwi7gghb@basti-XPS-13-9310>
+ <07674bcb4b7650c21bbb3dbe9855b2240444d4f3.camel@collabora.com>
+ <ab14cb57f3ef22c486afad9eb4aa9abec1b33dd2.camel@collabora.com>
+Content-Language: en-US
+From: Jonas Karlman <jonas@kwiboo.se>
+In-Reply-To: <ab14cb57f3ef22c486afad9eb4aa9abec1b33dd2.camel@collabora.com>
+X-Report-Abuse-To: abuse@forwardemail.net
+X-Report-Abuse: abuse@forwardemail.net
+X-Complaints-To: abuse@forwardemail.net
+X-ForwardEmail-Version: 0.4.40
+X-ForwardEmail-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
+ 149.28.215.223
+X-ForwardEmail-ID: 671bfbfcdada393b6a403ed3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241025_122023_810901_8179F753 
-X-CRM114-Status: GOOD (  52.89  )
+X-CRM114-CacheID: sfid-20241025_131404_473491_8E927508 
+X-CRM114-Status: GOOD (  15.86  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,347 +81,125 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, Sep 25, 2024 at 10:50:05AM +0300, Roger Quadros wrote:
-> Hello Thinh,
-> 
-> On 17/04/2024 02:41, Thinh Nguyen wrote:
-> > GUSB3PIPECTL.SUSPENDENABLE and GUSB2PHYCFG.SUSPHY should be cleared
-> > during initialization. Suspend during initialization can result in
-> > undefined behavior due to clock synchronization failure, which often
-> > seen as core soft reset timeout.
-> > 
-> > The programming guide recommended these bits to be cleared during
-> > initialization for DWC_usb3.0 version 1.94 and above (along with
-> > DWC_usb31 and DWC_usb32). The current check in the driver does not
-> > account if it's set by default setting from coreConsultant.
-> > 
-> > This is especially the case for DRD when switching mode to ensure the
-> > phy clocks are available to change mode. Depending on the
-> > platforms/design, some may be affected more than others. This is noted
-> > in the DWC_usb3x programming guide under the above registers.
-> > 
-> > Let's just disable them during driver load and mode switching. Restore
-> > them when the controller initialization completes.
-> > 
-> > Note that some platforms workaround this issue by disabling phy suspend
-> > through "snps,dis_u3_susphy_quirk" and "snps,dis_u2_susphy_quirk" when
-> > they should not need to.
-> > 
-> > Cc: stable@vger.kernel.org
-> > Fixes: 9ba3aca8fe82 ("usb: dwc3: Disable phy suspend after power-on reset")
-> > Signed-off-by: Thinh Nguyen <Thinh.Nguyen@synopsys.com>
-> 
-> This patch is causing system suspend failures on TI AM62 platforms [1]
-> 
-> I will try to explain why.
-> Before this patch, both DWC3_GUSB3PIPECTL_SUSPHY and DWC3_GUSB2PHYCFG_SUSPHY
-> bits (hence forth called 2 SUSPHY bits) were being set during initialization
-> and even during re-initialization after a system suspend/resume.
-> 
-> These bits are required to be set for system suspend/resume to work correctly
-> on AM62 platforms.
-> 
-> After this patch, the bits are only set when Host controller starts or
-> when Gadget driver starts.
-> 
-> On AM62 platform we have 2 USB controllers, one in Host and one in Dual role.
-> Just after boot, for the Host controller we have the 2 SUSPHY bits set but
-> for the Dual-Role controller, as no role has started the 2 SUSPHY bits are
-> not set. Thus system suspend resume will fail.
-> 
-> On the other hand, if we load a gadget driver just after boot then both
-> controllers have the 2 SUSPHY bits set and system suspend resume works for
-> the first time.
-> However, after system resume, the core is re-initialized so the 2 SUSPHY bits
-> are cleared for both controllers. For host controller it is never set again.
-> For gadget controller as gadget start is called, the 2 SUSPHY bits are set
-> again. The second system suspend resume will still fail as one controller
-> (Host) doesn't have the 2 SUSPHY bits set.
-> 
-> To summarize, the existing solution is not sufficient for us to have a
-> reliable behavior. We need the 2 SUSPHY bits to be set regardless of what
-> role we are in or whether the role has started or not.
-> 
-> My suggestion is to move back the SUSPHY enable to end of dwc3_core_init().
-> Then if SUSPHY needs to be disabled for DRD role switching, it should be
-> disabled and enabled exactly there.
-> 
-> What do you suggest?
-> 
-> [1] - https://lore.kernel.org/linux-arm-kernel/20240904194229.109886-1-msp@baylibre.com/
-> 
-> -- 
-> cheers,
-> -roger
-> 
-> > ---
-> >  drivers/usb/dwc3/core.c   | 90 +++++++++++++++++----------------------
-> >  drivers/usb/dwc3/core.h   |  1 +
-> >  drivers/usb/dwc3/gadget.c |  2 +
-> >  drivers/usb/dwc3/host.c   | 27 ++++++++++++
-> >  4 files changed, 68 insertions(+), 52 deletions(-)
-> > 
-> > diff --git a/drivers/usb/dwc3/core.c b/drivers/usb/dwc3/core.c
-> > index 31684cdaaae3..100041320e8d 100644
-> > --- a/drivers/usb/dwc3/core.c
-> > +++ b/drivers/usb/dwc3/core.c
-> > @@ -104,6 +104,27 @@ static int dwc3_get_dr_mode(struct dwc3 *dwc)
-> >  	return 0;
-> >  }
-> >  
-> > +void dwc3_enable_susphy(struct dwc3 *dwc, bool enable)
-> > +{
-> > +	u32 reg;
-> > +
-> > +	reg = dwc3_readl(dwc->regs, DWC3_GUSB3PIPECTL(0));
-> > +	if (enable && !dwc->dis_u3_susphy_quirk)
-> > +		reg |= DWC3_GUSB3PIPECTL_SUSPHY;
-> > +	else
-> > +		reg &= ~DWC3_GUSB3PIPECTL_SUSPHY;
-> > +
-> > +	dwc3_writel(dwc->regs, DWC3_GUSB3PIPECTL(0), reg);
-> > +
-> > +	reg = dwc3_readl(dwc->regs, DWC3_GUSB2PHYCFG(0));
-> > +	if (enable && !dwc->dis_u2_susphy_quirk)
-> > +		reg |= DWC3_GUSB2PHYCFG_SUSPHY;
-> > +	else
-> > +		reg &= ~DWC3_GUSB2PHYCFG_SUSPHY;
-> > +
-> > +	dwc3_writel(dwc->regs, DWC3_GUSB2PHYCFG(0), reg);
-> > +}
-> > +
-> >  void dwc3_set_prtcap(struct dwc3 *dwc, u32 mode)
-> >  {
-> >  	u32 reg;
-> > @@ -585,11 +606,8 @@ static int dwc3_core_ulpi_init(struct dwc3 *dwc)
-> >   */
-> >  static int dwc3_phy_setup(struct dwc3 *dwc)
-> >  {
-> > -	unsigned int hw_mode;
-> >  	u32 reg;
-> >  
-> > -	hw_mode = DWC3_GHWPARAMS0_MODE(dwc->hwparams.hwparams0);
-> > -
-> >  	reg = dwc3_readl(dwc->regs, DWC3_GUSB3PIPECTL(0));
-> >  
-> >  	/*
-> > @@ -599,21 +617,16 @@ static int dwc3_phy_setup(struct dwc3 *dwc)
-> >  	reg &= ~DWC3_GUSB3PIPECTL_UX_EXIT_PX;
-> >  
-> >  	/*
-> > -	 * Above 1.94a, it is recommended to set DWC3_GUSB3PIPECTL_SUSPHY
-> > -	 * to '0' during coreConsultant configuration. So default value
-> > -	 * will be '0' when the core is reset. Application needs to set it
-> > -	 * to '1' after the core initialization is completed.
-> > -	 */
-> > -	if (!DWC3_VER_IS_WITHIN(DWC3, ANY, 194A))
-> > -		reg |= DWC3_GUSB3PIPECTL_SUSPHY;
-> > -
-> > -	/*
-> > -	 * For DRD controllers, GUSB3PIPECTL.SUSPENDENABLE must be cleared after
-> > -	 * power-on reset, and it can be set after core initialization, which is
-> > -	 * after device soft-reset during initialization.
-> > +	 * Above DWC_usb3.0 1.94a, it is recommended to set
-> > +	 * DWC3_GUSB3PIPECTL_SUSPHY to '0' during coreConsultant configuration.
-> > +	 * So default value will be '0' when the core is reset. Application
-> > +	 * needs to set it to '1' after the core initialization is completed.
-> > +	 *
-> > +	 * Similarly for DRD controllers, GUSB3PIPECTL.SUSPENDENABLE must be
-> > +	 * cleared after power-on reset, and it can be set after core
-> > +	 * initialization.
-> >  	 */
-> > -	if (hw_mode == DWC3_GHWPARAMS0_MODE_DRD)
-> > -		reg &= ~DWC3_GUSB3PIPECTL_SUSPHY;
-> > +	reg &= ~DWC3_GUSB3PIPECTL_SUSPHY;
-> >  
-> >  	if (dwc->u2ss_inp3_quirk)
-> >  		reg |= DWC3_GUSB3PIPECTL_U2SSINP3OK;
-> > @@ -639,9 +652,6 @@ static int dwc3_phy_setup(struct dwc3 *dwc)
-> >  	if (dwc->tx_de_emphasis_quirk)
-> >  		reg |= DWC3_GUSB3PIPECTL_TX_DEEPH(dwc->tx_de_emphasis);
-> >  
-> > -	if (dwc->dis_u3_susphy_quirk)
-> > -		reg &= ~DWC3_GUSB3PIPECTL_SUSPHY;
-> > -
-> >  	if (dwc->dis_del_phy_power_chg_quirk)
-> >  		reg &= ~DWC3_GUSB3PIPECTL_DEPOCHANGE;
-> >  
-> > @@ -689,24 +699,15 @@ static int dwc3_phy_setup(struct dwc3 *dwc)
-> >  	}
-> >  
-> >  	/*
-> > -	 * Above 1.94a, it is recommended to set DWC3_GUSB2PHYCFG_SUSPHY to
-> > -	 * '0' during coreConsultant configuration. So default value will
-> > -	 * be '0' when the core is reset. Application needs to set it to
-> > -	 * '1' after the core initialization is completed.
-> > -	 */
-> > -	if (!DWC3_VER_IS_WITHIN(DWC3, ANY, 194A))
-> > -		reg |= DWC3_GUSB2PHYCFG_SUSPHY;
-> > -
-> > -	/*
-> > -	 * For DRD controllers, GUSB2PHYCFG.SUSPHY must be cleared after
-> > -	 * power-on reset, and it can be set after core initialization, which is
-> > -	 * after device soft-reset during initialization.
-> > +	 * Above DWC_usb3.0 1.94a, it is recommended to set
-> > +	 * DWC3_GUSB2PHYCFG_SUSPHY to '0' during coreConsultant configuration.
-> > +	 * So default value will be '0' when the core is reset. Application
-> > +	 * needs to set it to '1' after the core initialization is completed.
-> > +	 *
-> > +	 * Similarly for DRD controllers, GUSB2PHYCFG.SUSPHY must be cleared
-> > +	 * after power-on reset, and it can be set after core initialization.
-> >  	 */
-> > -	if (hw_mode == DWC3_GHWPARAMS0_MODE_DRD)
-> > -		reg &= ~DWC3_GUSB2PHYCFG_SUSPHY;
-> > -
-> > -	if (dwc->dis_u2_susphy_quirk)
-> > -		reg &= ~DWC3_GUSB2PHYCFG_SUSPHY;
-> > +	reg &= ~DWC3_GUSB2PHYCFG_SUSPHY;
-> >  
-> >  	if (dwc->dis_enblslpm_quirk)
-> >  		reg &= ~DWC3_GUSB2PHYCFG_ENBLSLPM;
-> > @@ -1227,21 +1228,6 @@ static int dwc3_core_init(struct dwc3 *dwc)
-> >  	if (ret)
-> >  		goto err_exit_phy;
-> >  
-> > -	if (hw_mode == DWC3_GHWPARAMS0_MODE_DRD &&
-> > -	    !DWC3_VER_IS_WITHIN(DWC3, ANY, 194A)) {
-> > -		if (!dwc->dis_u3_susphy_quirk) {
-> > -			reg = dwc3_readl(dwc->regs, DWC3_GUSB3PIPECTL(0));
-> > -			reg |= DWC3_GUSB3PIPECTL_SUSPHY;
-> > -			dwc3_writel(dwc->regs, DWC3_GUSB3PIPECTL(0), reg);
-> > -		}
-> > -
-> > -		if (!dwc->dis_u2_susphy_quirk) {
-> > -			reg = dwc3_readl(dwc->regs, DWC3_GUSB2PHYCFG(0));
-> > -			reg |= DWC3_GUSB2PHYCFG_SUSPHY;
-> > -			dwc3_writel(dwc->regs, DWC3_GUSB2PHYCFG(0), reg);
-> > -		}
-> > -	}
-> > -
-> >  	dwc3_core_setup_global_control(dwc);
-> >  	dwc3_core_num_eps(dwc);
-> >  
-> > diff --git a/drivers/usb/dwc3/core.h b/drivers/usb/dwc3/core.h
-> > index 7e80dd3d466b..180dd8d29287 100644
-> > --- a/drivers/usb/dwc3/core.h
-> > +++ b/drivers/usb/dwc3/core.h
-> > @@ -1580,6 +1580,7 @@ int dwc3_event_buffers_setup(struct dwc3 *dwc);
-> >  void dwc3_event_buffers_cleanup(struct dwc3 *dwc);
-> >  
-> >  int dwc3_core_soft_reset(struct dwc3 *dwc);
-> > +void dwc3_enable_susphy(struct dwc3 *dwc, bool enable);
-> >  
-> >  #if IS_ENABLED(CONFIG_USB_DWC3_HOST) || IS_ENABLED(CONFIG_USB_DWC3_DUAL_ROLE)
-> >  int dwc3_host_init(struct dwc3 *dwc);
-> > diff --git a/drivers/usb/dwc3/gadget.c b/drivers/usb/dwc3/gadget.c
-> > index 4df2661f6675..f94f68f1e7d2 100644
-> > --- a/drivers/usb/dwc3/gadget.c
-> > +++ b/drivers/usb/dwc3/gadget.c
-> > @@ -2924,6 +2924,7 @@ static int __dwc3_gadget_start(struct dwc3 *dwc)
-> >  	dwc3_ep0_out_start(dwc);
-> >  
-> >  	dwc3_gadget_enable_irq(dwc);
-> > +	dwc3_enable_susphy(dwc, true);
-> >  
-> >  	return 0;
-> >  
-> > @@ -4690,6 +4691,7 @@ void dwc3_gadget_exit(struct dwc3 *dwc)
-> >  	if (!dwc->gadget)
-> >  		return;
-> >  
-> > +	dwc3_enable_susphy(dwc, false);
-> >  	usb_del_gadget(dwc->gadget);
-> >  	dwc3_gadget_free_endpoints(dwc);
-> >  	usb_put_gadget(dwc->gadget);
-> > diff --git a/drivers/usb/dwc3/host.c b/drivers/usb/dwc3/host.c
-> > index 0204787df81d..a171b27a7845 100644
-> > --- a/drivers/usb/dwc3/host.c
-> > +++ b/drivers/usb/dwc3/host.c
-> > @@ -10,10 +10,13 @@
-> >  #include <linux/irq.h>
-> >  #include <linux/of.h>
-> >  #include <linux/platform_device.h>
-> > +#include <linux/usb.h>
-> > +#include <linux/usb/hcd.h>
-> >  
-> >  #include "../host/xhci-port.h"
-> >  #include "../host/xhci-ext-caps.h"
-> >  #include "../host/xhci-caps.h"
-> > +#include "../host/xhci-plat.h"
-> >  #include "core.h"
-> >  
-> >  #define XHCI_HCSPARAMS1		0x4
-> > @@ -57,6 +60,24 @@ static void dwc3_power_off_all_roothub_ports(struct dwc3 *dwc)
-> >  	}
-> >  }
-> >  
-> > +static void dwc3_xhci_plat_start(struct usb_hcd *hcd)
-> > +{
-> > +	struct platform_device *pdev;
-> > +	struct dwc3 *dwc;
-> > +
-> > +	if (!usb_hcd_is_primary_hcd(hcd))
-> > +		return;
-> > +
-> > +	pdev = to_platform_device(hcd->self.controller);
-> > +	dwc = dev_get_drvdata(pdev->dev.parent);
-> > +
-> > +	dwc3_enable_susphy(dwc, true);
-> > +}
-> > +
-> > +static const struct xhci_plat_priv dwc3_xhci_plat_quirk = {
-> > +	.plat_start = dwc3_xhci_plat_start,
-> > +};
-> > +
-> >  static void dwc3_host_fill_xhci_irq_res(struct dwc3 *dwc,
-> >  					int irq, char *name)
-> >  {
-> > @@ -167,6 +188,11 @@ int dwc3_host_init(struct dwc3 *dwc)
-> >  		}
-> >  	}
-> >  
-> > +	ret = platform_device_add_data(xhci, &dwc3_xhci_plat_quirk,
-> > +				       sizeof(struct xhci_plat_priv));
-> > +	if (ret)
-> > +		goto err;
-> > +
-> >  	ret = platform_device_add(xhci);
-> >  	if (ret) {
-> >  		dev_err(dwc->dev, "failed to register xHCI device\n");
-> > @@ -192,6 +218,7 @@ void dwc3_host_exit(struct dwc3 *dwc)
-> >  	if (dwc->sys_wakeup)
-> >  		device_init_wakeup(&dwc->xhci->dev, false);
-> >  
-> > +	dwc3_enable_susphy(dwc, false);
-> >  	platform_device_unregister(dwc->xhci);
-> >  	dwc->xhci = NULL;
-> >  }
-> 
-
-This patch seems to break system suspend on at least the Rockchip
-RK3566 platform. I noticed that I was no longer able to suspend
-and git bisect led me to this patch.
-
-My kernel message log shows the following, at which point it freezes
-and does not allow me to resume from suspend:
-
-[   27.235049] PM: suspend entry (deep)
-[   27.871641] Filesystems sync: 0.636 seconds
-[   27.885320] Freezing user space processes
-[   27.886932] Freezing user space processes completed (elapsed 0.001 seconds)
-[   27.887642] OOM killer disabled.
-[   27.887981] Freezing remaining freezable tasks
-[   27.889655] Freezing remaining freezable tasks completed (elapsed 0.001 seconds)
-
-Thank you,
-Chris
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gMjAyNC0xMC0yNSAxOTo0NywgTmljb2xhcyBEdWZyZXNuZSB3cm90ZToKPiBMZSB2ZW5kcmVk
+aSAyNSBvY3RvYnJlIDIwMjQgw6AgMDg6NTQgLTA0MDAsIE5pY29sYXMgRHVmcmVzbmUgYSDDqWNy
+aXTCoDoKPj4gTGUgdmVuZHJlZGkgMjUgb2N0b2JyZSAyMDI0IMOgIDEyOjMwICswMjAwLCBTZWJh
+c3RpYW4gRnJpY2tlIGEgw6ljcml0wqA6Cj4+PiBIZXkgSm9uYXMsCj4+Pgo+Pj4gT24gMjUuMTAu
+MjAyNCAxMDoyMCwgSm9uYXMgS2FybG1hbiB3cm90ZToKPj4+PiBIaSBTZWJhc3RpYW4sCj4+Pj4K
+Pj4+PiBXaWxsIHlvdSBoYXZlIHRpbWUgdG8gbG9vayBhdCB0aGlzIHNlcmllcyBhbnkgdGltZSBz
+b29uPwo+Pj4+Cj4+Pj4gV291bGQgbGlrZSB0byBzZW5kIGEgdjIgb2YgdGhlIG5vdyBvbmUgeWVh
+ciBvbGQgcmt2ZGVjIGhldmMgc2VyaWVzIGJ1dAo+Pj4+IHRoaXMgc2VyaWVzIGlzIHNvcnQgb2Yg
+aG9sZGluZyB0aGF0IGJhY2sgOy0pCj4+Pgo+Pj4gU29ycnkgZm9yIHRoZSBkZWxheSB3ZSAobWFp
+bnRhaW5lciAmIHJldmlld2VyIGZyb20gQ29sbGFib3JhKSBhcmUKPj4+IGN1cnJlbnRseSBhIGJp
+dCBidXN5LCB0aGlzIGlzIG9uIHRvcCBvZiBvdXIgcmV2aWV3IGxpc3QgaG93ZXZlciwgc28KPj4+
+IHBsZWFzZSBhbm90aGVyIDEgb3IgMiB3ZWVrcyBvZiBwYXRpZW5jZSA6KS4KPj4KPj4gQWN0dWFs
+bHksIEknbGwgZ28gb3ZlciBpdCB0b2RheS4KPiAKPiBJJ20gZG9uZSwgdGhlcmUgaXMgb25seSBj
+b3NtZXRpYyBjb21tZW50LCBpZiB5b3UgcmVzcGluIHF1aWNrbHksIEknbSBzdXJlIHdlIGNhbgo+
+IGdldCB0aGlzIG9uZSBpbiBzb29uLgoKVGhhbmtzISwgSSB3aWxsIHJlc3BpbiBhIHY3IHdpdGgg
+dGhlIG5pdHMgZml4ZWQgbGF0ZXIgdGhpcyB3ZWVrZW5kIDotKQoKUmVnYXJkcywKSm9uYXMKCj4g
+Cj4+Cj4+IHJlZ2FyZHMsCj4+IE5pY29sYXMKPj4KPj4+Cj4+Pj4KPj4+PiBSZWdhcmRzLAo+Pj4+
+IEpvbmFzCj4+Pgo+Pj4gVGhhbmtzIGZvciB5b3VyIHdvcmsgYW5kIHJlZ2FyZHMhCj4+PiBTZWJh
+c3RpYW4KPj4+Cj4+Pj4KPj4+PiBPbiAyMDI0LTA5LTA5IDIxOjI0LCBKb25hcyBLYXJsbWFuIHdy
+b3RlOgo+Pj4+PiBUaGlzIHNlcmllcyBhZGQgSC4yNjQgSGlnaCAxMCBhbmQgNDoyOjIgcHJvZmls
+ZSBzdXBwb3J0IHRvIHRoZSBSb2NrY2hpcAo+Pj4+PiBWaWRlbyBEZWNvZGVyIGRyaXZlci4KPj4+
+Pj4KPj4+Pj4gUGF0Y2ggMSBhZGQgaGVscGVycyBmb3IgY2FsY3VsYXRpbmcgcGxhbmUgYnl0ZXNw
+ZXJsaW5lIGFuZCBzaXplaW1hZ2UuCj4+Pj4+IFBhdGNoIDIgYWRkIHR3byBuZXcgcGl4ZWxmb3Jt
+YXRzIGZvciBzZW1pLXBsYW5lciAxMC1iaXQgNDoyOjAvNDoyOjIgWVVWLgo+Pj4+Pgo+Pj4+PiBQ
+YXRjaCAzIGNoYW5nZSB0byB1c2UgYnl0ZXNwZXJsaW5lIGFuZCBidWZmZXIgaGVpZ2h0IHRvIGNv
+bmZpZ3VyZSBzdHJpZGVzLgo+Pj4+PiBQYXRjaCA0IGNoYW5nZSB0byB1c2UgdmFsdWVzIGZyb20g
+U1BTL1BQUyBjb250cm9sIHRvIGNvbmZpZ3VyZSB0aGUgSFcuCj4+Pj4+Cj4+Pj4+IFBhdGNoIDUt
+OSByZWZhY3RvciBjb2RlIHRvIHN1cHBvcnQgZmlsdGVyaW5nIG9mIENBUFVUUkUgZm9ybWF0cyBi
+YXNlZAo+Pj4+PiBvbiB0aGUgaW1hZ2UgZm9ybWF0IHJldHVybmVkIGZyb20gYSBnZXRfaW1hZ2Vf
+Zm10IG9wcy4KPj4+Pj4KPj4+Pj4gUGF0Y2ggMTAgYWRkIGZpbmFsIGJpdHMgdG8gc3VwcG9ydCBI
+LjI2NCBIaWdoIDEwIGFuZCA0OjI6MiBwcm9maWxlcy4KPj4+Pj4KPj4+Pj4gUGF0Y2ggMTEgYWRk
+IGEgZml4IGZvciBlbnVtZXJhdGVkIGZyYW1lIHNpemVzIHJldHVybmVkIHRvIHVzZXJzcGFjZS4K
+Pj4+Pj4KPj4+Pj4gVGVzdGVkIG9uIGEgUk9DSyBQaSA0IChSSzMzOTkpIGFuZCBSb2NrNjQgKFJL
+MzMyOCk6Cj4+Pj4+Cj4+Pj4+ICAgdjRsMi1jb21wbGlhbmNlIDEuMjguMSwgNjQgYml0cywgNjQt
+Yml0IHRpbWVfdAo+Pj4+PiAgIC4uLgo+Pj4+PiAgIFRvdGFsIGZvciBya3ZkZWMgZGV2aWNlIC9k
+ZXYvdmlkZW8xOiA0OCwgU3VjY2VlZGVkOiA0OCwgRmFpbGVkOiAwLCBXYXJuaW5nczogMAo+Pj4+
+Pgo+Pj4+PiAgIFJ1bm5pbmcgdGVzdCBzdWl0ZSBKVlQtRlItRVhUIHdpdGggZGVjb2RlciBGRm1w
+ZWctSC4yNjQtdjRsMnJlcXVlc3QKPj4+Pj4gICAuLi4KPj4+Pj4gICBSYW4gNjUvNjkgdGVzdHMg
+c3VjY2Vzc2Z1bGx5Cj4+Pj4+Cj4+Pj4+ICAgUnVubmluZyB0ZXN0IHN1aXRlIEpWVC1BVkNfVjEg
+d2l0aCBkZWNvZGVyIEZGbXBlZy1ILjI2NC12NGwycmVxdWVzdAo+Pj4+PiAgIC4uLgo+Pj4+PiAg
+IFJhbiAxMjkvMTM1IHRlc3RzIHN1Y2Nlc3NmdWxseQo+Pj4+Pgo+Pj4+PiBCZWZvcmUgdGhpcyBz
+ZXJpZXM6Cj4+Pj4+Cj4+Pj4+ICAgUnVubmluZyB0ZXN0IHN1aXRlIEpWVC1GUi1FWFQgd2l0aCBk
+ZWNvZGVyIEZGbXBlZy1ILjI2NC12NGwycmVxdWVzdAo+Pj4+PiAgIC4uLgo+Pj4+PiAgIFJhbiA0
+NC82OSB0ZXN0cyBzdWNjZXNzZnVsbHkKPj4+Pj4KPj4+Pj4gQ2hhbmdlcyBpbiB2NjoKPj4+Pj4g
+LSBDaGFuZ2UgdG8gdXNlIGZtdF9pZHggaW5zdGVhZCBvZiBqKysgdHVja2VkIGluc2lkZSBhIGNv
+bmRpdGlvbiAoRGFuKQo+Pj4+PiAtIEFkZCBwYXRjaCB0byBmaXggZW51bWVyYXRlZCBmcmFtZSBz
+aXplcyByZXR1cm5lZCB0byB1c2Vyc3BhY2UgKEFsZXgpCj4+Pj4+IC0gRmx1c3RlciB0ZXN0IHNj
+b3JlIGlzIHNhbWUgYXMgdjQgYW5kIHY1LCBzZWUgWzRdIGFuZCBbNV0KPj4+Pj4gTGluayB0byB2
+NTogaHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcvbGludXgtbWVkaWEvMjAyNDA2MTgxOTQ2NDcuNzQy
+MDM3LTEtam9uYXNAa3dpYm9vLnNlLwo+Pj4+Pgo+Pj4+PiBDaGFuZ2VzIGluIHY1Ogo+Pj4+PiAt
+IERyb3AgUmVtb3ZlIFNQUyB2YWxpZGF0aW9uIGF0IHN0cmVhbWluZyBzdGFydCBwYXRjaAo+Pj4+
+PiAtIE1vdmUgYnVmZmVyIGFsaWduIGZyb20gcmt2ZGVjX2ZpbGxfZGVjb2RlZF9waXhmbXQgdG8g
+bWluL3N0ZXBfd2lkdGgKPj4+Pj4gLSBVc2UgY29ycmVjdCBwcm9maWxlcyBmb3IgVjRMMl9DSURf
+TVBFR19WSURFT19IMjY0X1BST0ZJTEUKPj4+Pj4gLSBDb2xsZWN0IHItYiBhbmQgdC1iIHRhZ3MK
+Pj4+Pj4gLSBGbHVzdGVyIHRlc3Qgc2NvcmUgaXMgc2FtZSBhcyB2NCwgc2VlIFs0XSBhbmQgWzVd
+Cj4+Pj4+IExpbmsgdG8gdjQ6IGh0dHBzOi8vbG9yZS5rZXJuZWwub3JnL2xpbnV4LW1lZGlhLzIw
+MjMxMTA1MTY1NTIxLjM1OTIwMzctMS1qb25hc0Brd2lib28uc2UvCj4+Pj4+Cj4+Pj4+IENoYW5n
+ZXMgaW4gdjQ6Cj4+Pj4+IC0gRml4IGZhaWxlZCB2NGwyLWNvbXBsaWFuY2UgdGVzdHMgcmVsYXRl
+ZCB0byBDQVBUVVJFIHF1ZXVlCj4+Pj4+IC0gUmV3b3JrIENBUFRVUkUgZm9ybWF0IGZpbHRlciBh
+bnYgdmFsaWRhdGUgdG8gdXNlIGFuIGltYWdlIGZvcm1hdAo+Pj4+PiAtIFJ1biBmbHVzdGVyIHRl
+c3Qgc3VpdGUgSlZULUZSLUVYVCBbNF0gYW5kIEpWVC1BVkNfVjEgWzVdCj4+Pj4+IExpbmsgdG8g
+djM6IGh0dHBzOi8vbG9yZS5rZXJuZWwub3JnL2xpbnV4LW1lZGlhLzIwMjMxMDI5MTgzNDI3LjE3
+ODE1NTQtMS1qb25hc0Brd2lib28uc2UvCj4+Pj4+Cj4+Pj4+IENoYW5nZXMgaW4gdjM6Cj4+Pj4+
+IC0gRHJvcCBtZXJnZWQgcGF0Y2hlcwo+Pj4+PiAtIFVzZSBicHAgYW5kIGJwcF9kaXYgaW5zdGVh
+ZCBvZiBwcmlvciBtaXN1c2Ugb2YgYmxvY2tfdy9ibG9ja19oCj4+Pj4+IC0gTmV3IHBhdGNoIHRv
+IHVzZSB2YWx1ZXMgZnJvbSBTUFMvUFBTIGNvbnRyb2wgdG8gY29uZmlndXJlIHRoZSBIVwo+Pj4+
+PiAtIE5ldyBwYXRjaCB0byByZW1vdmUgYW4gdW5uZWNlc3NhcnkgY2FsbCB0byB2YWxpZGF0ZSBz
+cHMgYXQgc3RyZWFtaW5nIHN0YXJ0Cj4+Pj4+IC0gUmV3b3JrZWQgcGl4ZWwgZm9ybWF0IHZhbGlk
+YXRpb24KPj4+Pj4gTGluayB0byB2MjogaHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcvbGludXgtbWVk
+aWEvMjAyMDA3MDYyMTU0MzAuMjI4NTktMS1qb25hc0Brd2lib28uc2UvCj4+Pj4+Cj4+Pj4+IENo
+YW5nZXMgaW4gdjI6Cj4+Pj4+IC0gQ29sbGVjdCByLWIgdGFncwo+Pj4+PiAtIFNQUyBwaWMgd2lk
+dGggYW5kIGhlaWdodCBpbiBtYnMgdmFsaWRhdGlvbiBtb3ZlZCB0byBya3ZkZWNfdHJ5X2N0cmwK
+Pj4+Pj4gLSBOZXcgcGF0Y2ggdG8gbm90IG92ZXJyaWRlIG91dHB1dCBidWZmZXIgc2l6ZWltYWdl
+Cj4+Pj4+IC0gUmV3b3JrZWQgcGl4ZWwgZm9ybWF0IHZhbGlkYXRpb24KPj4+Pj4gLSBPbmx5IGFs
+aWduIGRlY29kZWQgYnVmZmVyIGluc3RlYWQgb2YgY2hhbmdpbmcgZnJtc2l6ZSBzdGVwX3dpZHRo
+Cj4+Pj4+IExpbmsgdG8gdjE6IGh0dHBzOi8vbG9yZS5rZXJuZWwub3JnL2xpbnV4LW1lZGlhLzIw
+MjAwNzAxMjE1NjE2LjMwODc0LTEtam9uYXNAa3dpYm9vLnNlLwo+Pj4+Pgo+Pj4+PiBUbyBmdWxs
+eSBydW50aW1lIHRlc3QgdGhpcyBzZXJpZXMgeW91IG1heSBuZWVkIEZGbXBlZyBwYXRjaGVzIGZy
+b20gWzFdCj4+Pj4+IGFuZCBmbHVzdGVyIHBhdGNoZXMgZnJvbSBbMl0sIHRoaXMgc2VyaWVzIGlz
+IGFsc28gYXZhaWxhYmxlIGF0IFszXS4KPj4+Pj4KPj4+Pj4gWzFdIGh0dHBzOi8vZ2l0aHViLmNv
+bS9Ld2lib28vRkZtcGVnL2NvbW1pdHMvdjRsMnJlcXVlc3QtMjAyNC12Mi1ya3ZkZWMvCj4+Pj4+
+IFsyXSBodHRwczovL2dpdGh1Yi5jb20vS3dpYm9vL2ZsdXN0ZXIvY29tbWl0cy9mZm1wZWctdjRs
+MnJlcXVlc3Qtcmt2ZGVjLwo+Pj4+PiBbM10gaHR0cHM6Ly9naXRodWIuY29tL0t3aWJvby9saW51
+eC1yb2NrY2hpcC9jb21taXRzL2xpbnV4dHYtcmt2ZGVjLWhpZ2gtMTAtdjYvCj4+Pj4+IFs0XSBo
+dHRwczovL2dpc3QuZ2l0aHViLmNvbS9Ld2lib28vZjRhYzE1NTc2YjJjNzI4ODdhZTJiYzVkNThi
+NWM4NjUKPj4+Pj4gWzVdIGh0dHBzOi8vZ2lzdC5naXRodWIuY29tL0t3aWJvby80NTlhMWM4ZjFk
+Y2I1NmU0NWRjN2E3YTI5Y2MyOGFkZgo+Pj4+Pgo+Pj4+PiBSZWdhcmRzLAo+Pj4+PiBKb25hcwo+
+Pj4+Pgo+Pj4+PiBBbGV4IEJlZSAoMSk6Cj4+Pj4+ICAgbWVkaWE6IHJrdmRlYzogaDI2NDogRG9u
+J3QgaGFyZGNvZGUgU1BTL1BQUyBwYXJhbWV0ZXJzCj4+Pj4+Cj4+Pj4+IEpvbmFzIEthcmxtYW4g
+KDEwKToKPj4+Pj4gICBtZWRpYTogdjRsMi1jb21tb246IEFkZCBoZWxwZXJzIHRvIGNhbGN1bGF0
+ZSBieXRlc3BlcmxpbmUgYW5kCj4+Pj4+ICAgICBzaXplaW1hZ2UKPj4+Pj4gICBtZWRpYTogdjRs
+MjogQWRkIE5WMTUgYW5kIE5WMjAgcGl4ZWwgZm9ybWF0cwo+Pj4+PiAgIG1lZGlhOiBya3ZkZWM6
+IGgyNjQ6IFVzZSBieXRlc3BlcmxpbmUgYW5kIGJ1ZmZlciBoZWlnaHQgYXMgdmlyc3RyaWRlCj4+
+Pj4+ICAgbWVkaWE6IHJrdmRlYzogRXh0cmFjdCBya3ZkZWNfZmlsbF9kZWNvZGVkX3BpeGZtdCBp
+bnRvIGhlbHBlcgo+Pj4+PiAgIG1lZGlhOiBya3ZkZWM6IE1vdmUgcmt2ZGVjX3Jlc2V0X2RlY29k
+ZWRfZm10IGhlbHBlcgo+Pj4+PiAgIG1lZGlhOiBya3ZkZWM6IEV4dHJhY3QgZGVjb2RlZCBmb3Jt
+YXQgZW51bWVyYXRpb24gaW50byBoZWxwZXIKPj4+Pj4gICBtZWRpYTogcmt2ZGVjOiBBZGQgaW1h
+Z2UgZm9ybWF0IGNvbmNlcHQKPj4+Pj4gICBtZWRpYTogcmt2ZGVjOiBBZGQgZ2V0X2ltYWdlX2Zt
+dCBvcHMKPj4+Pj4gICBtZWRpYTogcmt2ZGVjOiBoMjY0OiBTdXBwb3J0IEhpZ2ggMTAgYW5kIDQ6
+MjoyIHByb2ZpbGVzCj4+Pj4+ICAgbWVkaWE6IHJrdmRlYzogRml4IGVudW1lcmF0ZSBmcmFtZSBz
+aXplcwo+Pj4+Pgo+Pj4+PiAgLi4uL21lZGlhL3Y0bC9waXhmbXQteXV2LXBsYW5hci5yc3QgICAg
+ICAgICAgIHwgMTI4ICsrKysrKysrKysKPj4+Pj4gIGRyaXZlcnMvbWVkaWEvdjRsMi1jb3JlL3Y0
+bDItY29tbW9uLmMgICAgICAgICB8ICA4MCArKystLS0KPj4+Pj4gIGRyaXZlcnMvbWVkaWEvdjRs
+Mi1jb3JlL3Y0bDItaW9jdGwuYyAgICAgICAgICB8ICAgMiArCj4+Pj4+ICBkcml2ZXJzL3N0YWdp
+bmcvbWVkaWEvcmt2ZGVjL3JrdmRlYy1oMjY0LmMgICAgfCAgNjQgKysrLS0KPj4+Pj4gIGRyaXZl
+cnMvc3RhZ2luZy9tZWRpYS9ya3ZkZWMvcmt2ZGVjLmMgICAgICAgICB8IDIzOSArKysrKysrKysr
+KysrLS0tLS0KPj4+Pj4gIGRyaXZlcnMvc3RhZ2luZy9tZWRpYS9ya3ZkZWMvcmt2ZGVjLmggICAg
+ICAgICB8ICAxOCArLQo+Pj4+PiAgaW5jbHVkZS91YXBpL2xpbnV4L3ZpZGVvZGV2Mi5oICAgICAg
+ICAgICAgICAgIHwgICAyICsKPj4+Pj4gIDcgZmlsZXMgY2hhbmdlZCwgNDEwIGluc2VydGlvbnMo
+KyksIDEyMyBkZWxldGlvbnMoLSkKPj4+Pj4KPj4+Pgo+Pj4+Cj4+PiBTZWJhc3RpYW4gRnJpY2tl
+Cj4+PiBDb25zdWx0YW50IFNvZnR3YXJlIEVuZ2luZWVyCj4+Pgo+Pj4gQ29sbGFib3JhIEx0ZAo+
+Pj4gUGxhdGludW0gQnVpbGRpbmcsIFN0IEpvaG4ncyBJbm5vdmF0aW9uIFBhcmssIENhbWJyaWRn
+ZSBDQjQgMERTLCBVSwo+Pj4gUmVnaXN0ZXJlZCBpbiBFbmdsYW5kICYgV2FsZXMgbm8gNTUxMzcx
+OC4KPj4KPj4KPiAKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5m
+cmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xp
+bnV4LXJvY2tjaGlwCg==
