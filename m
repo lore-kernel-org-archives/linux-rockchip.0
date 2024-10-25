@@ -4,73 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D1E6FD0C5FC
-	for <linux-rockchip@archiver.kernel.org>; Fri, 25 Oct 2024 10:30:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 373C5D0C5FD
+	for <linux-rockchip@archiver.kernel.org>; Fri, 25 Oct 2024 10:31:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=g63T3neyV3iHQM8RsCWD9TTcKRZ6NAWaRqxXpCDZqcI=; b=QH0aO5scKvLpHaTImlqpW+ouu9
-	ex1e39eCcsHlw15dr/RSrltJkYmHM7n7z7fL+4UOOLwbAW9l7bEcA8mhi7dD/+v9q6FgUPsh6t0sz
-	59XJJ+zAUuz+2WCiq1N8ceUZLAX4G6LESspj4zqXVER4TN1WIAmyg+6Wdp+JUEj4ntyXy6q2q0Bm7
-	ezTl2VDwzwWyuZjXaeZmHmLSex37dFj7lLTMTJgHGnkcnfrLIO0NM0vNpJiQJW5Cyv+RYNERF20Xq
-	Wyym9oSmZs0znpeywq4ICgqPrd/cDszMVBF+/jlPZ0e1SYziLXCsZKuKsi2qK1V/gNaJHsgIGvjbY
-	K3VkYeFw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=QX6rMhoKLVClCPfXxW1brOcqe8BBtGb6a1M1Hnc+3sY=; b=wP6U8cvu/vdSGm
+	oR04X5ObfPEpaQ/iBVwId53qks2uE88eMddFAG2fYIrwz4LiV//Gtb82JY6VOFi/Yt5Be9zUlrkEF
+	D1OGuwSoFhRZpBYobCkmOdfnmjfBBLrYQ43obenZuNhC/omtT/Kh7r1Ej6mNj7sxC0lBar7BVLTQh
+	aPuzarYJpy1MPe4XVLb+Yi9Eu2S/GHuOqARgr1zaLuV76Dpi1gaimVOjAjzqNOC7fmIZbvYwC+EQI
+	P4/JLdotHzh3U3W93KvYQ7Ct7l924N9Pj/PqmAI8rohOekmlvFnW0EL3rIEASDyBuOgwKYJBeblNH
+	TekhQdz2DI0ln59OVLHA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t4Hak-00000003MnN-1vOH;
-	Fri, 25 Oct 2024 10:30:50 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1t4HbA-00000003Mtt-1p1P;
+	Fri, 25 Oct 2024 10:31:16 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t4HaX-00000003MmD-2YET
+	id 1t4GTY-000000039BW-0ZVh
 	for linux-rockchip@lists.infradead.org;
-	Fri, 25 Oct 2024 10:30:39 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1729852229; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=eEfLbRyKI0pumJ+ktY40BIqULXnsnbz5bZnFbfz5JGXUrTM5U26rrYbcOMD97aHWOg7Z9Xsj0Ci46DMNe2kDX6s6Pq4CtLXkcEyQ3X9rh298iRdkRHFlpq04vZTUu06neuJRChwjtqk8s93QW7/XbA14CCgU/YKVboctzy6DsHI=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1729852229; h=Content-Type:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=+9mVhEtzkKFNjwJHVZdas57FP868lJ/b1QfbF+NQLL8=; 
-	b=ehqWJY3SlqzYc1CiKkQWKBijZTXQrBVgdmHmYamvOxxtBV3E/MqCGMQrQZgGwImvXZYTfwOaj/GOCiMpC1uc/j7ZiagHoAay2U5cmILBMVrbPSsLlzmJ/Z65rhZwRHTIkvsL8WQmJ0aU8HfoeqSBOzK9YohWfEObNZKz4jYAmEg=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=sebastian.fricke@collabora.com;
-	dmarc=pass header.from=<sebastian.fricke@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1729852229;
-	s=zohomail; d=collabora.com; i=sebastian.fricke@collabora.com;
-	h=Date:Date:From:From:To:To:Cc:Cc:Subject:Subject:Message-ID:References:MIME-Version:Content-Type:In-Reply-To:Message-Id:Reply-To;
-	bh=+9mVhEtzkKFNjwJHVZdas57FP868lJ/b1QfbF+NQLL8=;
-	b=enWVHTqSpTAheKshjZA5wBgoV2bGGfuNJ5RBbZdcRldDzWanVorPXm0/IDbxe4z9
-	OG/k5pIDQ8x7PTk9JgwzIIxnLpm4UZKO/HC5nviC8xy1g7tYdpyj1x+Hxn8/RxRr8rE
-	Z5sc028uBB90lI0YPUx+Ld+2itEUNNOHTaETRTbI=
-Received: by mx.zohomail.com with SMTPS id 1729852227667906.5869458822274;
-	Fri, 25 Oct 2024 03:30:27 -0700 (PDT)
-Date: Fri, 25 Oct 2024 12:30:22 +0200
-From: Sebastian Fricke <sebastian.fricke@collabora.com>
-To: Jonas Karlman <jonas@kwiboo.se>
-Cc: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Alex Bee <knaerzche@gmail.com>,
-	Nicolas Dufresne <nicolas.dufresne@collabora.com>,
-	Benjamin Gaignard <benjamin.gaignard@collabora.com>,
-	Detlev Casanova <detlev.casanova@collabora.com>,
-	Dan Carpenter <dan.carpenter@linaro.org>,
-	linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
-	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v6 00/11] media: rkvdec: Add H.264 High 10 and 4:2:2
- profile support
-Message-ID: <20241025103022.yuaepqxllwi7gghb@basti-XPS-13-9310>
-References: <20240909192522.1076704-1-jonas@kwiboo.se>
- <71159f58-be8b-41a4-9fed-522e09a7a564@kwiboo.se>
+	Fri, 25 Oct 2024 09:19:22 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+	List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=y+jm9ardZfDQqVqtaj+yn7oty3xNlqz/dKihmWT8xaE=; b=FYFaZyx+NfXBTA/kmDH+CvbKAT
+	9G8SxA0/a14dY6GCNROeC8sI5TlH5eC5mp+KdcnxtAPmWtvUYHBrzjGROCSD1SHBUx0sOBLFmadWi
+	8c7Wol6ijbwAKzVqKBS/ma7Wx6Jc0I98kOl8TkWZWMv1/PRL+rBqmuMadgL6UMd5cTsgqfgQlenSG
+	5HlCExAuwXR5muP/9zFcgrrINeut+nWXd53zdJifo9WSmI6CP55o2mUPjo53BHqdOjMPAF0x/v14i
+	LmdSguVRgkKIlEPmwZeG1DcWktKT1MvKyPEOgLCjJK9SOLqDcWDq9KCHFTmSry/n3UJUtaB45sTOq
+	bAC4Ol9A==;
+Received: from i53875b34.versanet.de ([83.135.91.52] helo=diego.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1t4GTJ-0008U9-V4; Fri, 25 Oct 2024 11:19:05 +0200
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Ulf Hansson <ulf.hansson@linaro.org>,
+ Mark Brown <broonie@kernel.org>,
+ Sebastian Reichel <sebastian.reichel@collabora.com>
+Cc: Liam Girdwood <lgirdwood@gmail.com>,
+ Elaine Zhang <zhangqing@rock-chips.com>,
+ =?ISO-8859-1?Q?Adri=E1n_Mart=EDnez?= Larumbe <adrian.larumbe@collabora.com>,
+ Boris Brezillon <boris.brezillon@collabora.com>,
+ Chen-Yu Tsai <wens@csie.org>, devicetree@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-pm@vger.kernel.org,
+ Sebastian Reichel <sebastian.reichel@collabora.com>, kernel@collabora.com
+Subject: Re: [PATCH v3 0/7] Fix RK3588 GPU domain
+Date: Fri, 25 Oct 2024 11:19:04 +0200
+Message-ID: <16964583.geO5KgaWL5@diego>
+In-Reply-To: <20241022154508.63563-1-sebastian.reichel@collabora.com>
+References: <20241022154508.63563-1-sebastian.reichel@collabora.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <71159f58-be8b-41a4-9fed-522e09a7a564@kwiboo.se>
-X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241025_033037_740803_E3D52E38 
-X-CRM114-Status: GOOD (  17.96  )
+X-CRM114-CacheID: sfid-20241025_021920_226598_A81E6B9C 
+X-CRM114-Status: GOOD (  25.52  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,151 +77,55 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hey Jonas,
+Am Dienstag, 22. Oktober 2024, 17:41:45 CEST schrieb Sebastian Reichel:
+> Hi,
+> 
+> I got a report, that the Linux kernel crashes on Rock 5B when the panthor
+> driver is loaded late after booting. The crash starts with the following
+> shortened error print:
+> 
+> rockchip-pm-domain fd8d8000.power-management:power-controller: failed to set domain 'gpu', val=0
+> rockchip-pm-domain fd8d8000.power-management:power-controller: failed to get ack on domain 'gpu', val=0xa9fff
+> SError Interrupt on CPU4, code 0x00000000be000411 -- SError
+> 
+> This series first does some cleanups in the Rockchip power domain
+> driver and changes the driver, so that it no longer tries to continue
+> when it fails to enable a domain. This gets rid of the SError interrupt
+> and long backtraces. But the kernel still hangs when it fails to enable
+> a power domain. I have not done further analysis to check if that can
+> be avoided.
+> 
+> Last but not least this provides a fix for the GPU power domain failing
+> to get enabled - after some testing from my side it seems to require the
+> GPU voltage supply to be enabled.
+> 
+> This series is now based on the pull request from Mark Brown:
+> https://lore.kernel.org/linux-pm/ZvsVfQ1fuSVZpF6A@finisterre.sirena.org.uk/
+> 
+> I added one more patch, which adds devm_of_regulator_get without the
+> _optional suffix, since that is more sensible for the Rockchip usecase.
+> Longer explanation can be seen in patch 6, which adds the handling to
+> the Rockchip driver. My merge suggestion would be that Mark adds the
+> regulator patch on top of the immutable branch and creates a new pull
+> request.
+> 
+> The last patch, which updates the RK3588 board files only covers the
+> boards from 6.12-rc1. Any board missing the update will behave as before,
+> so it is perfectly fine not to update all DT files at once.
 
-On 25.10.2024 10:20, Jonas Karlman wrote:
->Hi Sebastian,
->
->Will you have time to look at this series any time soon?
->
->Would like to send a v2 of the now one year old rkvdec hevc series but
->this series is sort of holding that back ;-)
+My rk3588 jaguar somehow developed some delay when dhcp'ing for its nfs
+root and with that actually started running into that gpu-regulator-issue.
 
-Sorry for the delay we (maintainer & reviewer from Collabora) are
-currently a bit busy, this is on top of our review list however, so
-please another 1 or 2 weeks of patience :).
+With this series applied, that issue goes away:
 
->
->Regards,
->Jonas
+Tested-by: Heiko Stuebner <heiko@sntech.de>
 
-Thanks for your work and regards!
-Sebastian
 
->
->On 2024-09-09 21:24, Jonas Karlman wrote:
->> This series add H.264 High 10 and 4:2:2 profile support to the Rockchip
->> Video Decoder driver.
->>
->> Patch 1 add helpers for calculating plane bytesperline and sizeimage.
->> Patch 2 add two new pixelformats for semi-planer 10-bit 4:2:0/4:2:2 YUV.
->>
->> Patch 3 change to use bytesperline and buffer height to configure strides.
->> Patch 4 change to use values from SPS/PPS control to configure the HW.
->>
->> Patch 5-9 refactor code to support filtering of CAPUTRE formats based
->> on the image format returned from a get_image_fmt ops.
->>
->> Patch 10 add final bits to support H.264 High 10 and 4:2:2 profiles.
->>
->> Patch 11 add a fix for enumerated frame sizes returned to userspace.
->>
->> Tested on a ROCK Pi 4 (RK3399) and Rock64 (RK3328):
->>
->>   v4l2-compliance 1.28.1, 64 bits, 64-bit time_t
->>   ...
->>   Total for rkvdec device /dev/video1: 48, Succeeded: 48, Failed: 0, Warnings: 0
->>
->>   Running test suite JVT-FR-EXT with decoder FFmpeg-H.264-v4l2request
->>   ...
->>   Ran 65/69 tests successfully
->>
->>   Running test suite JVT-AVC_V1 with decoder FFmpeg-H.264-v4l2request
->>   ...
->>   Ran 129/135 tests successfully
->>
->> Before this series:
->>
->>   Running test suite JVT-FR-EXT with decoder FFmpeg-H.264-v4l2request
->>   ...
->>   Ran 44/69 tests successfully
->>
->> Changes in v6:
->> - Change to use fmt_idx instead of j++ tucked inside a condition (Dan)
->> - Add patch to fix enumerated frame sizes returned to userspace (Alex)
->> - Fluster test score is same as v4 and v5, see [4] and [5]
->> Link to v5: https://lore.kernel.org/linux-media/20240618194647.742037-1-jonas@kwiboo.se/
->>
->> Changes in v5:
->> - Drop Remove SPS validation at streaming start patch
->> - Move buffer align from rkvdec_fill_decoded_pixfmt to min/step_width
->> - Use correct profiles for V4L2_CID_MPEG_VIDEO_H264_PROFILE
->> - Collect r-b and t-b tags
->> - Fluster test score is same as v4, see [4] and [5]
->> Link to v4: https://lore.kernel.org/linux-media/20231105165521.3592037-1-jonas@kwiboo.se/
->>
->> Changes in v4:
->> - Fix failed v4l2-compliance tests related to CAPTURE queue
->> - Rework CAPTURE format filter anv validate to use an image format
->> - Run fluster test suite JVT-FR-EXT [4] and JVT-AVC_V1 [5]
->> Link to v3: https://lore.kernel.org/linux-media/20231029183427.1781554-1-jonas@kwiboo.se/
->>
->> Changes in v3:
->> - Drop merged patches
->> - Use bpp and bpp_div instead of prior misuse of block_w/block_h
->> - New patch to use values from SPS/PPS control to configure the HW
->> - New patch to remove an unnecessary call to validate sps at streaming start
->> - Reworked pixel format validation
->> Link to v2: https://lore.kernel.org/linux-media/20200706215430.22859-1-jonas@kwiboo.se/
->>
->> Changes in v2:
->> - Collect r-b tags
->> - SPS pic width and height in mbs validation moved to rkvdec_try_ctrl
->> - New patch to not override output buffer sizeimage
->> - Reworked pixel format validation
->> - Only align decoded buffer instead of changing frmsize step_width
->> Link to v1: https://lore.kernel.org/linux-media/20200701215616.30874-1-jonas@kwiboo.se/
->>
->> To fully runtime test this series you may need FFmpeg patches from [1]
->> and fluster patches from [2], this series is also available at [3].
->>
->> [1] https://github.com/Kwiboo/FFmpeg/commits/v4l2request-2024-v2-rkvdec/
->> [2] https://github.com/Kwiboo/fluster/commits/ffmpeg-v4l2request-rkvdec/
->> [3] https://github.com/Kwiboo/linux-rockchip/commits/linuxtv-rkvdec-high-10-v6/
->> [4] https://gist.github.com/Kwiboo/f4ac15576b2c72887ae2bc5d58b5c865
->> [5] https://gist.github.com/Kwiboo/459a1c8f1dcb56e45dc7a7a29cc28adf
->>
->> Regards,
->> Jonas
->>
->> Alex Bee (1):
->>   media: rkvdec: h264: Don't hardcode SPS/PPS parameters
->>
->> Jonas Karlman (10):
->>   media: v4l2-common: Add helpers to calculate bytesperline and
->>     sizeimage
->>   media: v4l2: Add NV15 and NV20 pixel formats
->>   media: rkvdec: h264: Use bytesperline and buffer height as virstride
->>   media: rkvdec: Extract rkvdec_fill_decoded_pixfmt into helper
->>   media: rkvdec: Move rkvdec_reset_decoded_fmt helper
->>   media: rkvdec: Extract decoded format enumeration into helper
->>   media: rkvdec: Add image format concept
->>   media: rkvdec: Add get_image_fmt ops
->>   media: rkvdec: h264: Support High 10 and 4:2:2 profiles
->>   media: rkvdec: Fix enumerate frame sizes
->>
->>  .../media/v4l/pixfmt-yuv-planar.rst           | 128 ++++++++++
->>  drivers/media/v4l2-core/v4l2-common.c         |  80 +++---
->>  drivers/media/v4l2-core/v4l2-ioctl.c          |   2 +
->>  drivers/staging/media/rkvdec/rkvdec-h264.c    |  64 +++--
->>  drivers/staging/media/rkvdec/rkvdec.c         | 239 +++++++++++++-----
->>  drivers/staging/media/rkvdec/rkvdec.h         |  18 +-
->>  include/uapi/linux/videodev2.h                |   2 +
->>  7 files changed, 410 insertions(+), 123 deletions(-)
->>
->
->
-Sebastian Fricke
-Consultant Software Engineer
-
-Collabora Ltd
-Platinum Building, St John's Innovation Park, Cambridge CB4 0DS, UK
-Registered in England & Wales no 5513718.
 
 _______________________________________________
 Linux-rockchip mailing list
