@@ -4,83 +4,105 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 19A1CD10BF5
-	for <linux-rockchip@archiver.kernel.org>; Sat, 26 Oct 2024 10:04:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B1EBAD0C604
+	for <linux-rockchip@archiver.kernel.org>; Sat, 26 Oct 2024 17:58:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Y1W3qda5ZPqKkQwttMGlDzLje3unG5mKc8BQXBzEegE=; b=0rS1jnraZ0jcCY
-	rREkR8jVROVggXaqOqcigP4Ab9P5KDDYlx+3mPNjH2zewJJC0S5UBUvFblF8Kn0oKxfIHav79EFxm
-	LJXOKyC0maIHyuqoZk6zff7uVII2Z8rroFWbwJWyY7ae65GMKZOVij0xGTUp+FHiqZpS+WGhpBb9o
-	K3P30WpxNQD6Xb2W1/KfEqcYomyf1kn63pbnOYSE/Zu9qIhDGgl02+5l8LDhc9b4ajr0iY78JSdXP
-	OOZzIs8HjXeYTgNz5LypVB58eI3pPurfPkvu4NAhXWqA2MutvdVcshR+a0g1bHCf8N818XTknAode
-	Uh+b2yCnariNfTeejCug==;
+	List-Owner; bh=EJtbr01LlmLHiFg4DJuO+tK3MWfoN0XcukOTcTNVk1Y=; b=F7azQVPqTxe5Xd
+	GdMlHRs0giOIHZSbxN0CDnqfZxO28dN7aqVs170kVtz55sKU3fjIlyiR6GLRmcyBtT7YHjXVzqwha
+	4tb/i7m+Zbb6WBG517ZQ4Xe575ptSrda/CIpahxeKdu7EFKyRdXsa1S0MNLTuBAmlkD0RUBnWGzS2
+	4cyct+V1WicF/z16L3FBbOl4jS5Jz4KiN0wcJ/9fkDaybUfX58wsIurnqxoSl0S5uJjtguWplOxxC
+	fh9ui9SRr+VT9Z4PpNErYsmclR+uYmMasHrdTPIFcxVOJ0SbmL7mWYiZlRibPNses2Va49fWJyo8I
+	YmLs3yzsKSz0NWq5S7pQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t4deO-00000006L8h-3c2P;
-	Sat, 26 Oct 2024 10:04:04 +0000
-Received: from mail-oi1-x22e.google.com ([2607:f8b0:4864:20::22e])
+	id 1t4l3O-000000071mX-13y6;
+	Sat, 26 Oct 2024 17:58:22 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t4deI-00000006L3f-0n6y
+	id 1t4l3L-000000071lB-20ji
 	for linux-rockchip@lists.infradead.org;
-	Sat, 26 Oct 2024 10:04:00 +0000
-Received: by mail-oi1-x22e.google.com with SMTP id 5614622812f47-3e605ffe10cso1663832b6e.3
-        for <linux-rockchip@lists.infradead.org>; Sat, 26 Oct 2024 03:03:57 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1729937037; x=1730541837; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=L6NoHFPIFs3PIFOi1h5re+of84q7O6NmybcEySOfaLs=;
-        b=WHNtoofpDcGWia7H6UTwtTxj1/S0B/NHxRmQvfji8vrt7pLQf9VeIMBL6IU9ODY8ae
-         5DsiGUAi7eiZmpXUcyYslwuG945NaryKHiBuTxiMgVIriGcpAcIfB22VgPiWzbSB8VFl
-         o2z8zWRDQcMsIMTnDsbFIo1WnClkA+I8bo1ol8uWCjTK/NwV+efsGaX1ESxorY66Qqdw
-         DQ512hz8H0WM9c9zQgN2CTcS2eHGAxc6BjL/vpa+XNMU8EQLDZFQ2xgt6FpAZbWtwdJV
-         UBNp20p46FlUCFDA82Oca4smo38DMQm8OfXkA0cBcuFIh9RHzF7f5IvyX4ujq2pCsF6l
-         e+LQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1729937037; x=1730541837;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=L6NoHFPIFs3PIFOi1h5re+of84q7O6NmybcEySOfaLs=;
-        b=M4uHIj4a2QPy4RnLlaRgiJkF4qpqfFe5hgS5S4LgNpUpJHYlsVJdf+obLmOQF8FuAE
-         9W9Bn6oYzgI4MLW/x/r6+E9rX561tp8gjir/yik4RX73BHosYfgK1Y5X2L/U5SVhy+4a
-         r6xZofqgKC9mXE793u3Z5mwuPBtUPWE1eqa30bMKUi38H19rpW2s6tlbrLXZfluAGsQh
-         dzdf3CngAhC63SOvDUO1tBnirjauMrdMfo+rYBbeaf7FXgifRVCirxP/Yec/bPE3sSy/
-         bRJYur+B2FTnDzxZ01jT4zMCmhNJ5A5oJJpylaHB2rTRWn920aKW3O7MUBbcO6IChzij
-         8fYQ==
-X-Forwarded-Encrypted: i=1; AJvYcCVWTM+vlDRrkG2i7rSBblLyU6JiCDS6C1q2n34cNnefCSfCcs69HiVyGfK6BdFm+QAIFYEjA2mBjLCJUH05/g==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yxn77qaDWvpzJKG3Ba0zyii9o+0PeMWPXIJOnCpzaiL3AySUbZA
-	+ARQNf0yRPXlBf5GHBa7XvjwuMd7kGnNpn0d3nuXa8zhaqP39B6KXHBFhP2M
-X-Google-Smtp-Source: AGHT+IEb/F7juQx531sdwLj61E8uPZx6UXoHt2xsQH/E+ZcJCVB1KVnU+043eOSLuWvfBzz5SLdNWw==
-X-Received: by 2002:a05:6830:6382:b0:718:162e:7712 with SMTP id 46e09a7af769-7186811b273mr2269120a34.14.1729937037048;
-        Sat, 26 Oct 2024 03:03:57 -0700 (PDT)
-Received: from tower.cjhon.com ([2603:8081:ad40:11:cefb:5eea:7da6:3c6d])
-        by smtp.gmail.com with ESMTPSA id 46e09a7af769-7186165841asm632243a34.48.2024.10.26.03.03.54
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 26 Oct 2024 03:03:56 -0700 (PDT)
-From: Jimmy Hon <honyuenkwun@gmail.com>
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	linux-rockchip@lists.infradead.org,
-	Ondrej Jirman <megi@xff.cz>,
-	Jimmy Hon <honyuenkwun@gmail.com>
-Subject: [PATCH 14/15] arm64: dts: rockchip: analog audio on opi5max
-Date: Sat, 26 Oct 2024 04:48:30 -0500
-Message-ID: <20241026100310.52679-15-honyuenkwun@gmail.com>
-X-Mailer: git-send-email 2.47.0
-In-Reply-To: <20241026100310.52679-1-honyuenkwun@gmail.com>
-References: <20241026100310.52679-1-honyuenkwun@gmail.com>
+	Sat, 26 Oct 2024 17:58:20 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id B115D5C4BF2;
+	Sat, 26 Oct 2024 17:57:33 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 95B3DC4CEC6;
+	Sat, 26 Oct 2024 17:58:16 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1729965498;
+	bh=uE4Y8VVx2f8PLwQ6WclDFaFkdw2AZ+XjpT3wL/KWOnI=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=N4/XQxqsLT4SWDvV5jKLIykLTd+46ZHcl6pAKt4ZU5KUcgjCAtSMD2nDOzmiuz3uT
+	 wVkdjkNRwiRa6H3FOQINWjXq6Qmunz3jpdWKdse0n3XR8G1ri9xtx/SMZR1H53DmaN
+	 /CJAScOxXxuqyiMMwI7Qlvj94tJwiwPqn8H66zPKnSsqLxVqfkvnd7AEfK1ORUdOM4
+	 Z1iQUsZzWrPHsx81KsgcbJdrAEdp8KU0WbNBVTKr6ikOPV5RG+AMyTgBu2P17i7FMQ
+	 6w+Ce3gm7aUnpU+HBa/QT8F0V8DnqBuBFn7B5xqCdNBqLZC+vKqqCuRyw3lZ69U53W
+	 QzSI4ES5EMt7g==
+Message-ID: <f8782325-0fba-4c32-869e-64b87d5e87d9@kernel.org>
+Date: Sat, 26 Oct 2024 19:58:13 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 01/15] dt-bindings: arm: rockchip: Add Xunlong Orange Pi 5
+ Max
+To: Jimmy Hon <honyuenkwun@gmail.com>, Heiko Stuebner <heiko@sntech.de>
+Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, linux-rockchip@lists.infradead.org,
+ Ondrej Jirman <megi@xff.cz>
+References: <20241026100310.52679-1-honyuenkwun@gmail.com>
+ <20241026100310.52679-2-honyuenkwun@gmail.com>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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 fv0=
+In-Reply-To: <20241026100310.52679-2-honyuenkwun@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241026_030358_555989_DC3C7EBD 
-X-CRM114-Status: UNSURE (   9.53  )
+X-CRM114-CacheID: sfid-20241026_105819_639859_9884171A 
+X-CRM114-Status: UNSURE (   8.16  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -98,115 +120,39 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Analog audio using es8388 codec via the headset jack and onboard mic for
-the Orange Pi 5 Max
+On 26/10/2024 11:48, Jimmy Hon wrote:
+> Add devicetree binding for the Xunlong Orange Pi 5 Max board.
+> 
+> The Orange Pi 5 Max is a single board computer powered by the Rockchip
+> RK3588.
+> 
+> Signed-off-by: Jimmy Hon <honyuenkwun@gmail.com>
 
-Signed-off-by: Jimmy Hon <honyuenkwun@gmail.com>
----
- .../dts/rockchip/rk3588-orangepi-5-max.dts    | 74 +++++++++++++++++++
- 1 file changed, 74 insertions(+)
+The list of Cc is supposed to be taken by tools, not manually edited to
+strip something.
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-max.dts b/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-max.dts
-index dc5de21cddd1..b98514ea62d1 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-max.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-max.dts
-@@ -36,6 +36,47 @@ button-maskrom {
- 		};
- 	};
- 
-+	amp_audio: audio-amplifier {
-+		compatible = "simple-audio-amplifier";
-+		/* PHONE_CTL */
-+		enable-gpios = <&gpio4 RK_PB0 GPIO_ACTIVE_HIGH>;
-+	};
-+
-+	analog-sound {
-+		compatible = "simple-audio-card";
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&hp_detect>;
-+		simple-audio-card,name = "rockchip,es8388";
-+		simple-audio-card,aux-devs = <&amp_audio>;
-+		simple-audio-card,bitclock-master = <&masterdai>;
-+		simple-audio-card,format = "i2s";
-+		simple-audio-card,frame-master = <&masterdai>;
-+		simple-audio-card,hp-det-gpios = <&gpio3 RK_PD2 GPIO_ACTIVE_HIGH>;
-+		simple-audio-card,mclk-fs = <256>;
-+		/*TODO: SARADC_VIN3_HP_HOOK is used as MIC detection / key input */
-+
-+		simple-audio-card,routing =
-+			"Headphones", "LOUT1",
-+			"Headphones", "ROUT1",
-+			"LINPUT1", "Microphone Jack",
-+			"RINPUT1", "Microphone Jack",
-+			"LINPUT2", "Onboard Microphone",
-+			"RINPUT2", "Onboard Microphone";
-+		simple-audio-card,widgets =
-+			"Microphone", "Microphone Jack",
-+			"Microphone", "Onboard Microphone",
-+			"Headphone", "Headphones";
-+
-+		simple-audio-card,cpu {
-+			sound-dai = <&i2s0_8ch>;
-+		};
-+
-+		masterdai: simple-audio-card,codec {
-+			sound-dai = <&es8388>;
-+			system-clock-frequency = <12288000>;
-+		};
-+	};
-+
- 	fan: pwm-fan {
- 		compatible = "pwm-fan";
- 		cooling-levels = <0 70 75 80 100>;
-@@ -259,6 +300,33 @@ hym8563: rtc@51 {
- 	};
- };
- 
-+&i2c7 {
-+	status = "okay";
-+
-+	es8388: audio-codec@11 {
-+		compatible = "everest,es8388";
-+		reg = <0x11>;
-+		clocks = <&cru I2S0_8CH_MCLKOUT>;
-+		AVDD-supply = <&vcc_3v3_s0>;
-+		DVDD-supply = <&vcc_1v8_s0>;
-+		HPVDD-supply = <&vcc_3v3_s0>;
-+		PVDD-supply = <&vcc_1v8_s0>;
-+		assigned-clocks = <&cru I2S0_8CH_MCLKOUT>;
-+		assigned-clock-rates = <12288000>;
-+		#sound-dai-cells = <0>;
-+	};
-+};
-+
-+&i2s0_8ch {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&i2s0_lrck
-+		     &i2s0_mclk
-+		     &i2s0_sclk
-+		     &i2s0_sdi0
-+		     &i2s0_sdo0>;
-+	status = "okay";
-+};
-+
- /* phy2 */
- &pcie2x1l1 {
- 	reset-gpios = <&gpio4 RK_PD4 GPIO_ACTIVE_HIGH>;
-@@ -283,6 +351,12 @@ hym8563_int: hym8563-int {
- 		};
- 	};
- 
-+	sound {
-+		hp_detect: hp-detect {
-+			rockchip,pins = <3 RK_PD2 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
-+
- 	usb {
- 		usb_host_pwren: usb-host-pwren {
- 			rockchip,pins = <3 RK_PD5 RK_FUNC_GPIO &pcfg_pull_none>;
--- 
-2.47.0
+<form letter>
+Please use scripts/get_maintainers.pl to get a list of necessary people
+and lists to CC. It might happen, that command when run on an older
+kernel, gives you outdated entries. Therefore please be sure you base
+your patches on recent Linux kernel.
+
+Tools like b4 or scripts/get_maintainer.pl provide you proper list of
+people, so fix your workflow. Tools might also fail if you work on some
+ancient tree (don't, instead use mainline) or work on fork of kernel
+(don't, instead use mainline). Just use b4 and everything should be
+fine, although remember about `b4 prep --auto-to-cc` if you added new
+patches to the patchset.
+
+You missed at least devicetree list (maybe more), so this won't be
+tested by automated tooling. Performing review on untested code might be
+a waste of time.
+
+Please kindly resend and include all necessary To/Cc entries.
+</form letter>
+
+Best regards,
+Krzysztof
 
 
 _______________________________________________
