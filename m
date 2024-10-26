@@ -4,65 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5E9E1D10BF0
-	for <linux-rockchip@archiver.kernel.org>; Sat, 26 Oct 2024 10:03:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CCBDBD10BF6
+	for <linux-rockchip@archiver.kernel.org>; Sat, 26 Oct 2024 10:03:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=tIFqPDrvalM6EtIjADGGAzzP7hCR5GZ8d+yG4QZERpE=; b=mSkOGj4/SHrMxC
-	q1r3eRQuCEFc+HtrgP435L3pTHCAqNP8XK6gLDL4Kcz1LF46HHRUsEFpsSzVYvNB+j2xWFEU8MVOC
-	XLlKhtD1BBtL6PFLLrRN6H4oe93QtMmQqLqd74MV6wLwcciqFpewdZlDXemE+CtORrIvEEOHbWscg
-	gJq5uvwic8bUZkkxUSfPIz7es8DjmUUgP4eiz2Vo8+aFh7TK+sC+vCpauJOtE4lTdpiD1fKUGo7oF
-	S4+NR/WbEiSvZLKi86Kmo8ejFdNVXF6HOvnLMxKTAnRj+8USCuEJJSseFdtoR8VLss9U0a7TVlON8
-	PWae+qEFz59/SO/Yo6qQ==;
+	List-Owner; bh=wy8lBMnIQcASvZDOl5iOWscZ4J+ZLMqp4Jss2Sj+BGQ=; b=sO6p3ffItrcmyV
+	vWk46Xss0KABnvJtkdQAP7nEYLEr754cjc92eu/oYCw980edY2rVvu3Gfou/vc7wcP3yYAW4/0KUO
+	HhztZcmZzMTvX9rvSI2paXNkUtpHvzdb8v9R953+OMXyqOJWNLUJ/0WMeTgJkPpQHlssJMJ0fCJZx
+	DE7BRvOh41EeH4ZnQMVdc22S83h8kDMsHTLKXFVDvXMJZbSNWwl3csCgLRnqT/H7WWAzHAvIF6DQu
+	ivb1oy7qqNT/O4HG7TgAc8g6QlG8z6HQwmecpL3j08cnLnZTLVVBoR86XO1vGHXvV7FhUQEvlwRZO
+	cHYFktZnfyIPdvIMLrFA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t4de0-00000006KqF-3jyX;
+	id 1t4de0-00000006Kpo-1vXG;
 	Sat, 26 Oct 2024 10:03:40 +0000
-Received: from mail-ot1-x333.google.com ([2607:f8b0:4864:20::333])
+Received: from mail-ot1-x335.google.com ([2607:f8b0:4864:20::335])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t4ddx-00000006Kny-2hrB
+	id 1t4ddv-00000006Kmo-0ocv
 	for linux-rockchip@lists.infradead.org;
-	Sat, 26 Oct 2024 10:03:38 +0000
-Received: by mail-ot1-x333.google.com with SMTP id 46e09a7af769-71808e95ae2so1578837a34.0
-        for <linux-rockchip@lists.infradead.org>; Sat, 26 Oct 2024 03:03:37 -0700 (PDT)
+	Sat, 26 Oct 2024 10:03:36 +0000
+Received: by mail-ot1-x335.google.com with SMTP id 46e09a7af769-7181b86a749so1501200a34.3
+        for <linux-rockchip@lists.infradead.org>; Sat, 26 Oct 2024 03:03:34 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1729937016; x=1730541816; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1729937014; x=1730541814; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=vln2kjvTiaEnEIV0ZkT7Cwe0mJcBgbSUVXBSCAwi4P4=;
-        b=Tjz9JFs6Cl7XVCxpPug9g2q7ej+6TppKrakjZwE8UF5UZwRdN1AcfIoLS1k0ylicSR
-         uHvbBurjxTO6mHiNlVHMqi97iL1eTBohzo+IPzWB7IYtpuCSyEsmu+FAoh3dNMcyrmwo
-         tYxYD/z/lFTnErrCI8idSFe2GwbCaonhrstkI3OQn203SVXJkJLPiqepxRq1UH+0ndcq
-         P03OkmOnB9nxHM4HITgsLXAXNtMLgXXSfagik5hdlgp2bEE21P1kiw9VXwrj+fPnajSJ
-         d6T5meo/cgL0yijj+u7pvUhtPi/OK3PmYIaJPZELwMm5731RXVeYYejjcnUAfQ6nN46H
-         ajYg==
+        bh=ikQinEU8DnSuzan7Q2x3yM30D0mwxJ1OP0EuX9uqPK4=;
+        b=JZ/BGN/JrX7RkTMPkBIjyJNir7nqGkbm4+aDzjjo7kkHczQQfQib2+tn0dwyhAY7eh
+         RKQiWYdROeSEOFjllEh36x556t0ZvCYVvkc7+cV2IDe53OJGAtxVc35/yHdnGnipIyUj
+         bJilL1XXM++jO1urYqyNtI/qeCzkSoA7dQEv5cMCqeStFT76YH4mjo2f1PLgVsJSWRfb
+         jCxyBpMmSmeQy8VFuVYrz3v47tTx/TTuEdPDlU+L3AZUG1m1saR/nq4Xdr+16Shtn7O7
+         SGbmhpszq8X52IG0lsZkcEDJQrzYDCLCW400us+ESQ5uETYJmB+D/i4P6beWf2jbLwjT
+         asOw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1729937016; x=1730541816;
+        d=1e100.net; s=20230601; t=1729937014; x=1730541814;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=vln2kjvTiaEnEIV0ZkT7Cwe0mJcBgbSUVXBSCAwi4P4=;
-        b=vTj0UK9rlkdoT1LZ7beABlJ/kSdkIi1ZNFS3wNqnDYUQ2WirZw6xgJgANJRbkFkhMk
-         prlFJYsYeYnsvnGippPR4ttiVtTTP1TThJJK0S9jCnqh8W61Tho0EcSQBPZXSaki7hRO
-         WmUOn188mJaFBM/HG92MmI9OvWOquzn6UuMbKONcy5DOXE7XASNaag4NYWAp06gXnEnm
-         tbvhfWI4TlUo5ZPlkcOCnmgKZdn7k0kYgCFfzgeKBASOiw65JLu+L9NpqF7Fsm7mD/rB
-         ILddo8+TMG5hnU1QMOYSGV1dN7GLEYbS6/VbgX8G6kQL6fjtNtZj85eQpFqUZ//aNXAg
-         IZjw==
-X-Forwarded-Encrypted: i=1; AJvYcCXKrR3djByn/9/2V08/QAiuFVMa77QE9r5CT47Ehe/URhKADrcCVhx29PO4SJxCcOcjSUDkHc1052JSMl4RfQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YymXLevNTpVSvsLHsxGNmAgiJtXLg4BCglYywn1ZSvrGUkaTn7A
-	iTJEJhVC+QTv8hhFGCcHsrS6fMVI1kNEdbXXGSHDEcltTUo+n0Bw
-X-Google-Smtp-Source: AGHT+IFbn26hcInv+sOr51oPcQ7mdhPnCT+vAxzb2EfKGgUeU7wx1hDR6Fd1fmsBokWFc0LbcgfHYw==
-X-Received: by 2002:a05:6830:2648:b0:710:f22b:c825 with SMTP id 46e09a7af769-7186801ce8bmr1201710a34.1.1729937016432;
-        Sat, 26 Oct 2024 03:03:36 -0700 (PDT)
+        bh=ikQinEU8DnSuzan7Q2x3yM30D0mwxJ1OP0EuX9uqPK4=;
+        b=jD3QYzL4+pTTf+DiDtI3Nj2m5eIXzxNTFwzZ0pNBuZ2ebhp1mFKlgCWb0jagyipI8N
+         3S2WH9Njmi7kioNazHTGcQGtdyzs24xVmVgL61t+r+NDedfnWMZe+V42iFfJwgsCnP/V
+         L0NB11NR7S9to2e3TXaXaCDjHzmcgnlXmIo8r+823jcW4hhKo3ov5MNIg3N0TSJ905oy
+         xcazV1J9EDWhwVEfnS0aXRYB1mJNgknmyGO9xTbuYcqSzyNlmSRYq1+9/2ZiYimVmuPo
+         +iq/Hx0uzhkdF+iZOwNG7aujfPbt/O5K96G0+brbREDmwSv6tD9JC2VOQ7olQbBagOQl
+         IeRw==
+X-Forwarded-Encrypted: i=1; AJvYcCU3aR+zGNLyRGRQC7p9PFZ6EuRm/W0zgLOz4HFJaZFQL+49S6/nROiT0/U520ju6CVyuDxpQz4fbV7ngrOaBA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxozE0/G7XOVtAdAf6dAustdMLTXGiX1dAQPTByUpn5vrTz0CsK
+	ZTpVu/v6rMk91MIJpIoxAg6CAjWW1PbVjjK6WelfG4nztPAruVUp
+X-Google-Smtp-Source: AGHT+IGGFOlXCwhkwhnufwNjpSEglxiaU8EryiNdRJ1rxaExPtzL8v5Gjebj0lwoFkayI9tAoJGSMw==
+X-Received: by 2002:a05:6830:2703:b0:718:1863:a3fa with SMTP id 46e09a7af769-7186801ea8bmr1388130a34.10.1729937014097;
+        Sat, 26 Oct 2024 03:03:34 -0700 (PDT)
 Received: from tower.cjhon.com ([2603:8081:ad40:11:cefb:5eea:7da6:3c6d])
-        by smtp.gmail.com with ESMTPSA id 46e09a7af769-7186165841asm632243a34.48.2024.10.26.03.03.34
+        by smtp.gmail.com with ESMTPSA id 46e09a7af769-7186165841asm632243a34.48.2024.10.26.03.03.31
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 26 Oct 2024 03:03:35 -0700 (PDT)
+        Sat, 26 Oct 2024 03:03:33 -0700 (PDT)
 From: Jimmy Hon <honyuenkwun@gmail.com>
 To: Heiko Stuebner <heiko@sntech.de>
 Cc: Rob Herring <robh@kernel.org>,
@@ -71,16 +71,16 @@ Cc: Rob Herring <robh@kernel.org>,
 	linux-rockchip@lists.infradead.org,
 	Ondrej Jirman <megi@xff.cz>,
 	Jimmy Hon <honyuenkwun@gmail.com>
-Subject: [PATCH 04/15] arm64: dts: rockchip: Enable RTC support for opi5max
-Date: Sat, 26 Oct 2024 04:48:20 -0500
-Message-ID: <20241026100310.52679-5-honyuenkwun@gmail.com>
+Subject: [PATCH 03/15] arm64: dts: rockchip: add status LED to opi5max
+Date: Sat, 26 Oct 2024 04:48:19 -0500
+Message-ID: <20241026100310.52679-4-honyuenkwun@gmail.com>
 X-Mailer: git-send-email 2.47.0
 In-Reply-To: <20241026100310.52679-1-honyuenkwun@gmail.com>
 References: <20241026100310.52679-1-honyuenkwun@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241026_030337_730501_A168D56C 
-X-CRM114-Status: UNSURE (   9.23  )
+X-CRM114-CacheID: sfid-20241026_030335_254197_774BE0A2 
+X-CRM114-Status: UNSURE (   9.18  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -98,50 +98,73 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add DT node to enable RTC support for Orange Pi 5 Max
+Describe the Orange Pi 5 Max 2 status LEDs in its device tree.
 
 Signed-off-by: Jimmy Hon <honyuenkwun@gmail.com>
 ---
- .../dts/rockchip/rk3588-orangepi-5-max.dts    | 26 +++++++++++++++++++
- 1 file changed, 26 insertions(+)
+ .../dts/rockchip/rk3588-orangepi-5-max.dts    | 35 +++++++++++++++++++
+ 1 file changed, 35 insertions(+)
 
 diff --git a/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-max.dts b/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-max.dts
-index 83a118e52bb0..961f9271d0f0 100644
+index 53a34cb37487..83a118e52bb0 100644
 --- a/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-max.dts
 +++ b/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-max.dts
-@@ -150,6 +150,32 @@ regulator-state-mem {
+@@ -3,6 +3,7 @@
+ /dts-v1/;
+ 
+ #include <dt-bindings/gpio/gpio.h>
++#include <dt-bindings/leds/common.h>
+ #include <dt-bindings/pinctrl/rockchip.h>
+ #include "rk3588.dtsi"
+ 
+@@ -19,6 +20,28 @@ chosen {
+ 		stdout-path = "serial2:1500000n8";
+ 	};
+ 
++	pwm-leds {
++		compatible = "pwm-leds";
++
++		blue_led: led-1 {
++			color = <LED_COLOR_ID_BLUE>;
++			function = LED_FUNCTION_STATUS;
++			linux,default-trigger = "heartbeat";
++			max-brightness = <255>;
++			/* PWM_LED1 */
++			pwms = <&pwm4 0 25000 0>;
++		};
++
++		green_led: led-2 {
++			color = <LED_COLOR_ID_GREEN>;
++			function = LED_FUNCTION_STATUS;
++			linux,default-trigger = "heartbeat";
++			max-brightness = <255>;
++			/* PWM_LED2 */
++			pwms = <&pwm5 0 25000 0>;
++		};
++	};
++
+ 	/* PMIC_EXT_EN */
+ 	vcc_1v1_nldo_s3: vcc-1v1-ndlo-s3-regulator {
+ 		compatible = "regulator-fixed";
+@@ -127,6 +150,18 @@ regulator-state-mem {
  	};
  };
  
-+&i2c6 {
-+	clock-frequency = <400000>;
++&pwm4 {
++	pinctrl-names = "default";
++	pinctrl-0 = <&pwm4m0_pins>;
 +	status = "okay";
-+
-+	hym8563: rtc@51 {
-+		compatible = "haoyu,hym8563";
-+		reg = <0x51>;
-+		/* RTC_INT_L */
-+		interrupt-parent = <&gpio0>;
-+		interrupts = <RK_PC4 IRQ_TYPE_LEVEL_LOW>;
-+		#clock-cells = <0>;
-+		clock-output-names = "hym8563";
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&hym8563_int>;
-+		wakeup-source;
-+	};
 +};
 +
-+&pinctrl {
-+	hym8563 {
-+		hym8563_int: hym8563-int {
-+			rockchip,pins = <0 RK_PC4 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
++&pwm5 {
++	pinctrl-names = "default";
++	pinctrl-0 = <&pwm5m1_pins>;
++	status = "okay";
 +};
 +
- &pwm4 {
- 	pinctrl-names = "default";
- 	pinctrl-0 = <&pwm4m0_pins>;
+ &saradc {
+ 	vref-supply = <&vcca_1v8_s0>;
+ 	status = "okay";
 -- 
 2.47.0
 
