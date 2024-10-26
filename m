@@ -4,65 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 206CAD10BF5
-	for <linux-rockchip@archiver.kernel.org>; Sat, 26 Oct 2024 10:03:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C6F4AD10BF5
+	for <linux-rockchip@archiver.kernel.org>; Sat, 26 Oct 2024 10:03:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=x0w3inb6E5U7uASzyIPTbFirOqq7LSYXzfWpdZDwa9g=; b=dWZJJPA2txDwDs
-	Kbj+oRSmsMZyCnh50G/yQJv8fLQ6tJgyVPA5p718fdQtf2KdWDVPcPN4g0iy1g95cKDQTn+0ObAYa
-	l52XS9x6N+mc1qqXptmdhrZB+Rf8GZST+U4VhaRJiE6C2XQwiLAkQcnZt2aG45isAuhEVC8wkZWAX
-	nKEXRcoTBpKv9NROKnuCf8lN6S9QEML36Qx8ui3AasiTs8Pj75sEab3EpmZVtU5BoYo/rXEoxmS/v
-	cPPB63hYy2VbwaZlAbnLZWZJmApaQ1DRULaljtZ0yrPJoMZ5T7UfEEa21//6U1Dp/EiotDxAAsq54
-	l7wDAlzV4yNxif5XmYXA==;
+	List-Owner; bh=hwTtx+o14KopXQ8gFfl07T6lEhtOfmTZPjqwjwxPr1c=; b=riaoQRDkb1b9Tz
+	ir5K9imN6iFwpKSsroAV6b0oAvVFR1Ez5KOqWmULMO3QOHOjo6RX2qYHJUWf3iNQrHxMNrilkwqEc
+	7tJ8d0EXKFEsFYj/dAURuKlEJ1XhG2yzQEKuFKWQ2V0gefWYy/lba8/MeFuN+suOQSjgeaJsWzYTU
+	xfSbHIv3YtIKemrNIc8yJeZ82FU82eoeBG/wuFD+8dNDpAwouKxG3yQ26MIPW02FwhFrCqtNhRJx3
+	iWI7PGitWg24vYL8qhAIUPxPoa3jQggEC51gEgrHYOd7tE0bksE140H648NBIAtIfyKXMoiYR+SsR
+	eC2uN4P3xcxXt68WiQpA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t4deA-00000006Ky1-2bu8;
-	Sat, 26 Oct 2024 10:03:50 +0000
-Received: from mail-ot1-x32a.google.com ([2607:f8b0:4864:20::32a])
+	id 1t4deF-00000006L1b-0bLx;
+	Sat, 26 Oct 2024 10:03:55 +0000
+Received: from mail-ot1-x32e.google.com ([2607:f8b0:4864:20::32e])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t4de5-00000006KtG-3p4I
+	id 1t4de8-00000006Kw5-2O7a
 	for linux-rockchip@lists.infradead.org;
-	Sat, 26 Oct 2024 10:03:47 +0000
-Received: by mail-ot1-x32a.google.com with SMTP id 46e09a7af769-7180dc76075so1511325a34.3
-        for <linux-rockchip@lists.infradead.org>; Sat, 26 Oct 2024 03:03:45 -0700 (PDT)
+	Sat, 26 Oct 2024 10:03:51 +0000
+Received: by mail-ot1-x32e.google.com with SMTP id 46e09a7af769-7180dc76075so1511337a34.3
+        for <linux-rockchip@lists.infradead.org>; Sat, 26 Oct 2024 03:03:48 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1729937025; x=1730541825; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1729937028; x=1730541828; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=TYeTYHWTjp7cA/WYWuIhCpZ4XmDorEuPTS9DnqV9+L4=;
-        b=VbbbT+RP6NKD07E4JY1welL4x5C67RLfH43FBuKhS2iob0Ha7ykL8JvaPcfVpn3kb0
-         a9oR4cB2OiheKQF8bIUI903sP/JResL8H9wuTwfx89zS1XSqlZeKgf+HBpdHNWEGH2Ec
-         KG5j7SHTG+TyM2xLnjb4fn9DLexYZIxQbJgq3S3Y+BwRaoE4Jr4wajFmgepUAUH21VvP
-         OTPzEAcWQZlIurvH6Zq2HphHXc3JBEaiDPRVWGWeMXmHfC3qWDDiRRJu/vMbhvkaLxvD
-         jA2zJcYRj/SFDWeFMgEWsrGSzhHZb4S/fPqVuwJAMif4MeeIcSAfaOUmyprriareQJZh
-         0/nw==
+        bh=cqKRUAcew9KonltBOUBQFqsl33gHXPHUiMeMosYb4xw=;
+        b=LOagOLLSViEfbdKshKvAyF3aogzDO1aploQwydEUNlR7Un/MkC7SZ1BgzhL+eBweUL
+         rf7OaVA/O6PagSQNpB15+eioYUbWufr9lPSucQ9Ktv/6tSUxXIKAB2KVIl1lYVZOqub1
+         Hd8fzkOgSM03TtnSILi/TLeIBYtTU283zKWwHS/4cyT0fgwM9YTNWfRaVbRXi8cBOjRb
+         mpa9LDTCMd8IowGExooWnTpqv6gGt6RCT1IfK0P0WHheX8D92N9Vc9Cr4tU2b+iEJ7Wz
+         Otf2qfDLAB4Fo3q2N9y/Gwly/5fwNluWFGw1CFuH7xLPKf1JNV3pnd/I49FnJCZrbawB
+         TOmg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1729937025; x=1730541825;
+        d=1e100.net; s=20230601; t=1729937028; x=1730541828;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=TYeTYHWTjp7cA/WYWuIhCpZ4XmDorEuPTS9DnqV9+L4=;
-        b=TbcCYV05TG1JVyCzgYF1eGKSXcdDTxuVzHqv/P1V56GAD1v0h0UB7jSAOw2l8ptpPW
-         Fj5rrx3Ffa5kCq/rmdUtN5aYHpHGqSlb6f0zQ2gX5CW1e0jqkARqPJtRlhlZAtltSgjW
-         TJOAsvMGvZPWmEQH+Gm4KvwuQpSe4yCurdMNueS+FnOZXSKk/xakh/v6gCbZjmXx8K2s
-         Z4X1Nm3lYSLvKV8K5y8bE7HDymHGvTjzwRfHDgJMiNxXvCWVuXbO++eEckzUeigXR9y1
-         5miOOIW+lMeVWVpZlrYm//YDxybyJE/+4PCwhqcxlabNYPdqYh/bInnwMZi13/2wu1y7
-         VnLQ==
-X-Forwarded-Encrypted: i=1; AJvYcCUevOctKNB3sB7KNd/twMKiX7h13G9RE3m4pMFp78gMQRBfwHh6uSqMTUYPQUWKGSYQP2mIAv37zDKLs2r+3A==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yz1TLiy+gnMFeH0zX3Zklahfl/old+Qwv69WNs0HMxdY3e6zJmJ
-	l+9EKzNiyG/Vcrner37fHbzFzdXIdJxOT969Tug6/eYO6rpH/0lI
-X-Google-Smtp-Source: AGHT+IG5My3otiFkNlKt+LrPvMCRwRWlktLlaITSbUCSlxRBX0CDMt2c1Rv0oumzk5QS7oL6wMR6WA==
-X-Received: by 2002:a05:6830:2694:b0:718:194d:8ab with SMTP id 46e09a7af769-718682a0ac4mr2057089a34.27.1729937024751;
-        Sat, 26 Oct 2024 03:03:44 -0700 (PDT)
+        bh=cqKRUAcew9KonltBOUBQFqsl33gHXPHUiMeMosYb4xw=;
+        b=i+knZxDFYGvWt6OEwIl3UZm8FckkfWN5X8uq0ISU37oJFZSMPFnizDJdCVyyhkWN+k
+         h+QcDamps7ZkL+FuQQ/9kc3OQtCDdd+1oYVWkQy0llRRd15b2HpJ/phhySGo4CbqBXVW
+         ckB1GqAzqqneHzS09QFCRQKSZV0tioRDNIKcWpoHz8DGHsnqRyX66N+CskAFtP/8ZSe8
+         YFskeuKr+kLwx3IMFx53O1OcaF0TjONMRSIBWuTg+a73l96DAopxMG6ezXJObMHD1Sha
+         448EvVMr5fP6rZNd17pXC/5KcXAEPzL7hdfcnFrvNKZwRMUyqIx7+5X5J6U2aHj3Ys5P
+         a6Sw==
+X-Forwarded-Encrypted: i=1; AJvYcCUKd1bzKnGkXu2mPozyg0m42wyTYomn+58nILDXYGIZuDs8mfm8rxkDGaK+VaEIJkg2DpYfx2Z636dUN20GDw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxZ34Y0XtdwWNnozu+tNKQqJ77820Yzj7+JEd8EU1uy4s6KYQp1
+	7BbhWJWgCLA/ek6lrMvVZHvCLfPlQ6R4ICvY6eIAnIEWRpvENg0x
+X-Google-Smtp-Source: AGHT+IFCbN/6oVsJSiSHWOdIrqJzSfHJV6TmzF/QiS/d/ijeIllfKbgOG3iUATFoIMwXmAk0C5Skww==
+X-Received: by 2002:a05:6830:600e:b0:718:441b:d4cb with SMTP id 46e09a7af769-71867e6a8b0mr2800045a34.0.1729937027822;
+        Sat, 26 Oct 2024 03:03:47 -0700 (PDT)
 Received: from tower.cjhon.com ([2603:8081:ad40:11:cefb:5eea:7da6:3c6d])
-        by smtp.gmail.com with ESMTPSA id 46e09a7af769-7186165841asm632243a34.48.2024.10.26.03.03.42
+        by smtp.gmail.com with ESMTPSA id 46e09a7af769-7186165841asm632243a34.48.2024.10.26.03.03.46
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 26 Oct 2024 03:03:43 -0700 (PDT)
+        Sat, 26 Oct 2024 03:03:46 -0700 (PDT)
 From: Jimmy Hon <honyuenkwun@gmail.com>
 To: Heiko Stuebner <heiko@sntech.de>
 Cc: Rob Herring <robh@kernel.org>,
@@ -71,16 +71,17 @@ Cc: Rob Herring <robh@kernel.org>,
 	linux-rockchip@lists.infradead.org,
 	Ondrej Jirman <megi@xff.cz>,
 	Jimmy Hon <honyuenkwun@gmail.com>
-Subject: [PATCH 08/15] arm64: dts: rockchip: add USB2 to opi5max
-Date: Sat, 26 Oct 2024 04:48:24 -0500
-Message-ID: <20241026100310.52679-9-honyuenkwun@gmail.com>
+Subject: [PATCH 10/15] arm64: dts: rockchip: add upper USB3 port to opi5max
+Date: Sat, 26 Oct 2024 04:48:26 -0500
+Message-ID: <20241026100310.52679-11-honyuenkwun@gmail.com>
 X-Mailer: git-send-email 2.47.0
 In-Reply-To: <20241026100310.52679-1-honyuenkwun@gmail.com>
 References: <20241026100310.52679-1-honyuenkwun@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241026_030346_030556_0FFC98DB 
-X-CRM114-Status: GOOD (  10.30  )
+X-CRM114-CacheID: sfid-20241026_030348_829053_97E81846 
+X-CRM114-Status: UNSURE (   9.26  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,32 +98,30 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Enable USB2 (EHCI and OCHI mode) support for the Orange Pi 5 Max
-This adds USB support for the two USB2 ports.
+Enable full support (XHCI) for the upper USB3 port from Orange Pi 5 Max.
 
 Signed-off-by: Jimmy Hon <honyuenkwun@gmail.com>
 ---
- .../dts/rockchip/rk3588-orangepi-5-max.dts    | 56 +++++++++++++++++++
- 1 file changed, 56 insertions(+)
+ .../dts/rockchip/rk3588-orangepi-5-max.dts    | 37 +++++++++++++++++++
+ 1 file changed, 37 insertions(+)
 
 diff --git a/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-max.dts b/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-max.dts
-index 03ae3564b8f4..be4af5006d69 100644
+index f32e5827dce6..39d2a38710df 100644
 --- a/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-max.dts
 +++ b/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-max.dts
-@@ -109,6 +109,22 @@ vcc5v0_sys: vcc5v0-sys-regulator {
- 		regulator-min-microvolt = <5000000>;
+@@ -127,6 +127,21 @@ vcc5v0_host: vcc5v0-host-regulator {
  		regulator-max-microvolt = <5000000>;
+ 		vin-supply = <&vcc5v0_sys>;
  	};
 +
-+	/* Represents the vcc5v0_usb20 in the schematic */
-+	vcc5v0_host: vcc5v0-host-regulator {
++	vcc5v0_usb30_otg: vcc5v0-usb30-otg-regulator {
 +		compatible = "regulator-fixed";
 +		enable-active-high;
-+		/* USB_HOST_PWREN */
-+		gpios = <&gpio3 RK_PD5 GPIO_ACTIVE_HIGH>;
++		/* USB_OTG_PWREN */
++		gpios = <&gpio4 RK_PB3 GPIO_ACTIVE_HIGH>;
 +		pinctrl-names = "default";
-+		pinctrl-0 = <&usb_host_pwren>;
-+		regulator-name = "vcc5v0_host";
++		pinctrl-0 = <&usb_otg_pwren>;
++		regulator-name = "vcc5v0_usb30_otg";
 +		regulator-always-on;
 +		regulator-boot-on;
 +		regulator-min-microvolt = <5000000>;
@@ -132,61 +131,56 @@ index 03ae3564b8f4..be4af5006d69 100644
  };
  
  &combphy2_psu {
-@@ -228,6 +244,12 @@ hym8563_int: hym8563-int {
- 			rockchip,pins = <0 RK_PC4 RK_FUNC_GPIO &pcfg_pull_none>;
+@@ -251,6 +266,10 @@ usb {
+ 		usb_host_pwren: usb-host-pwren {
+ 			rockchip,pins = <3 RK_PD5 RK_FUNC_GPIO &pcfg_pull_none>;
  		};
- 	};
 +
-+	usb {
-+		usb_host_pwren: usb-host-pwren {
-+			rockchip,pins = <3 RK_PD5 RK_FUNC_GPIO &pcfg_pull_none>;
++		usb_otg_pwren: usb-otg-pwren {
++			rockchip,pins = <4 RK_PB3 RK_FUNC_GPIO &pcfg_pull_none>;
 +		};
-+	};
+ 	};
  };
  
- &pwm4 {
-@@ -612,7 +634,41 @@ &tsadc {
+@@ -636,6 +655,15 @@ &tsadc {
  	status = "okay";
  };
  
-+&u2phy2 {
++&u2phy0 {
 +	status = "okay";
 +};
 +
-+&u2phy2_host {
-+	phy-supply = <&vcc5v0_host>;
++&u2phy0_otg {
++	phy-supply = <&vcc5v0_usb30_otg>;
 +	status = "okay";
 +};
 +
-+&u2phy3 {
-+	status = "okay";
-+};
-+
-+&u2phy3_host {
-+	phy-supply = <&vcc5v0_host>;
-+	status = "okay";
-+};
-+
- &uart2 {
- 	pinctrl-0 = <&uart2m0_xfer>;
+ &u2phy1 {
  	status = "okay";
  };
-+
-+&usb_host0_ehci {
+@@ -668,6 +696,10 @@ &uart2 {
+ 	status = "okay";
+ };
+ 
++&usbdp_phy0 {
 +	status = "okay";
 +};
 +
-+&usb_host0_ohci {
+ &usbdp_phy1 {
+ 	status = "okay";
+ };
+@@ -680,6 +712,11 @@ &usb_host0_ohci {
+ 	status = "okay";
+ };
+ 
++&usb_host0_xhci {
++	dr_mode = "host";
 +	status = "okay";
 +};
 +
-+&usb_host1_ehci {
-+	status = "okay";
-+};
-+
-+&usb_host1_ohci {
-+	status = "okay";
-+};
+ &usb_host1_ehci {
+ 	status = "okay";
+ };
 -- 
 2.47.0
 
