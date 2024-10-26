@@ -4,56 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B1EBAD0C604
-	for <linux-rockchip@archiver.kernel.org>; Sat, 26 Oct 2024 17:58:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9215AD10C01
+	for <linux-rockchip@archiver.kernel.org>; Sat, 26 Oct 2024 17:59:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=EJtbr01LlmLHiFg4DJuO+tK3MWfoN0XcukOTcTNVk1Y=; b=F7azQVPqTxe5Xd
-	GdMlHRs0giOIHZSbxN0CDnqfZxO28dN7aqVs170kVtz55sKU3fjIlyiR6GLRmcyBtT7YHjXVzqwha
-	4tb/i7m+Zbb6WBG517ZQ4Xe575ptSrda/CIpahxeKdu7EFKyRdXsa1S0MNLTuBAmlkD0RUBnWGzS2
-	4cyct+V1WicF/z16L3FBbOl4jS5Jz4KiN0wcJ/9fkDaybUfX58wsIurnqxoSl0S5uJjtguWplOxxC
-	fh9ui9SRr+VT9Z4PpNErYsmclR+uYmMasHrdTPIFcxVOJ0SbmL7mWYiZlRibPNses2Va49fWJyo8I
-	YmLs3yzsKSz0NWq5S7pQ==;
+	List-Owner; bh=vKFuU5hchUgmg9l7agrdxq4vvd29DZJcCRA2yDCKubo=; b=d/rbCdLjPurrq6
+	JR/a0kFayLTWX+AgLK5RdrgZKXwvjKj+VPkRr7mM3v2Rdmps4VunjlBsbsHsjZp1w2CQ2nXfx0Y0Y
+	cNShCwv8qtiKX26v2tmYhFEjGBdHrGuJOjEB4dB5UhuhqkIY9bxYmrHt5TRboGTqvo8Tu4pGM/3cC
+	Zkyxd08Yy3tcZgb305WzpTe6wUM17AuNyTg/wjLBvLXgLeMCfiGxQ9Rsl7DlpWpbGcaK1IWbqGqP8
+	tEa8OBGk6fsJWNTz7qlJ6DGrIE51gOn/3ST/7x3iLi/tZvgaf/L5H0UFe6teHZYsvg9VVk/PqIIv5
+	1cnBiGL8rujrWYgZslxg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t4l3O-000000071mX-13y6;
-	Sat, 26 Oct 2024 17:58:22 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1t4l49-000000071sc-3GQe;
+	Sat, 26 Oct 2024 17:59:09 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t4l3L-000000071lB-20ji
+	id 1t4l47-000000071s5-0swX
 	for linux-rockchip@lists.infradead.org;
-	Sat, 26 Oct 2024 17:58:20 +0000
+	Sat, 26 Oct 2024 17:59:08 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id B115D5C4BF2;
-	Sat, 26 Oct 2024 17:57:33 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 95B3DC4CEC6;
-	Sat, 26 Oct 2024 17:58:16 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id 37B68A40312;
+	Sat, 26 Oct 2024 17:57:10 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 20E70C4CEC6;
+	Sat, 26 Oct 2024 17:59:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1729965498;
-	bh=uE4Y8VVx2f8PLwQ6WclDFaFkdw2AZ+XjpT3wL/KWOnI=;
+	s=k20201202; t=1729965546;
+	bh=BgXh5MpQ2jyndYIY87ja2azP04WOb36ivcWuCe4crIU=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=N4/XQxqsLT4SWDvV5jKLIykLTd+46ZHcl6pAKt4ZU5KUcgjCAtSMD2nDOzmiuz3uT
-	 wVkdjkNRwiRa6H3FOQINWjXq6Qmunz3jpdWKdse0n3XR8G1ri9xtx/SMZR1H53DmaN
-	 /CJAScOxXxuqyiMMwI7Qlvj94tJwiwPqn8H66zPKnSsqLxVqfkvnd7AEfK1ORUdOM4
-	 Z1iQUsZzWrPHsx81KsgcbJdrAEdp8KU0WbNBVTKr6ikOPV5RG+AMyTgBu2P17i7FMQ
-	 6w+Ce3gm7aUnpU+HBa/QT8F0V8DnqBuBFn7B5xqCdNBqLZC+vKqqCuRyw3lZ69U53W
-	 QzSI4ES5EMt7g==
-Message-ID: <f8782325-0fba-4c32-869e-64b87d5e87d9@kernel.org>
-Date: Sat, 26 Oct 2024 19:58:13 +0200
+	b=qsKoUNvSbWJAW4DVqEfTkCAEejV+HGRPaTQNqXD5NQszSSzRiut3GeMmR7qqx5/oz
+	 VGafG0NkRYNROfXDrlbMCp1HNk7OUUDWsGfVwj0taslI4zr1qWJ3FZDXvNF2T0QpAl
+	 tgKZrpdllD6PJ0wwoQPlUwd/bZLOXV//erOIyXDNPRe587MpQLmVYTcsdMSHHPNju0
+	 G9Vv7tEQin707kN7in+9Pt0300a5xGrUNvBjUBFp/Z0Za18Z1gsTdXcB5ozJKAtYZP
+	 E1UuwAN6neRQBqXHVeXKwDZOiotLE2hmEaeqriRj3BshJbNViHcybGr1pcQT+jULBb
+	 DXSRy45kSdmgw==
+Message-ID: <eb6956d3-27f5-416d-a3d2-26a4b2d940fc@kernel.org>
+Date: Sat, 26 Oct 2024 19:59:01 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 01/15] dt-bindings: arm: rockchip: Add Xunlong Orange Pi 5
- Max
+Subject: Re: [PATCH 03/15] arm64: dts: rockchip: add status LED to opi5max
 To: Jimmy Hon <honyuenkwun@gmail.com>, Heiko Stuebner <heiko@sntech.de>
 Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
  Conor Dooley <conor+dt@kernel.org>, linux-rockchip@lists.infradead.org,
  Ondrej Jirman <megi@xff.cz>
 References: <20241026100310.52679-1-honyuenkwun@gmail.com>
- <20241026100310.52679-2-honyuenkwun@gmail.com>
+ <20241026100310.52679-4-honyuenkwun@gmail.com>
 From: Krzysztof Kozlowski <krzk@kernel.org>
 Content-Language: en-US
 Autocrypt: addr=krzk@kernel.org; keydata=
@@ -99,10 +98,10 @@ Autocrypt: addr=krzk@kernel.org; keydata=
  uZwJCLykjad45hsWcOGk3OcaAGQS6NDlfhM6O9aYNwGL6tGt/6BkRikNOs7VDEa4/HlbaSJo
  7FgndGw1kWmkeL6oQh7wBvYll2buKod4qYntmNKEicoHGU+x91Gcan8mCoqhJkbqrL7+nXG2
  5Q/GS5M9RFWS+nYyJh+c3OcfKqVcZQNANItt7+ULzdNJuhvTRRdC3g9hmCEuNSr+CLMdnRBY fv0=
-In-Reply-To: <20241026100310.52679-2-honyuenkwun@gmail.com>
+In-Reply-To: <20241026100310.52679-4-honyuenkwun@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241026_105819_639859_9884171A 
-X-CRM114-Status: UNSURE (   8.16  )
+X-CRM114-CacheID: sfid-20241026_105907_416678_4D6CA1E5 
+X-CRM114-Status: UNSURE (   8.25  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -121,35 +120,19 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 On 26/10/2024 11:48, Jimmy Hon wrote:
-> Add devicetree binding for the Xunlong Orange Pi 5 Max board.
-> 
-> The Orange Pi 5 Max is a single board computer powered by the Rockchip
-> RK3588.
+> Describe the Orange Pi 5 Max 2 status LEDs in its device tree.
 > 
 > Signed-off-by: Jimmy Hon <honyuenkwun@gmail.com>
+> ---
+>  .../dts/rockchip/rk3588-orangepi-5-max.dts    | 35 +++++++++++++++++++
+>  1 file changed, 35 insertions(+)
+> 
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-max.dts b/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-max.dts
+> index 53a34cb37487..83a118e52bb0 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-max.dts
+> +++ b/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-max.dts
 
-The list of Cc is supposed to be taken by tools, not manually edited to
-strip something.
-
-<form letter>
-Please use scripts/get_maintainers.pl to get a list of necessary people
-and lists to CC. It might happen, that command when run on an older
-kernel, gives you outdated entries. Therefore please be sure you base
-your patches on recent Linux kernel.
-
-Tools like b4 or scripts/get_maintainer.pl provide you proper list of
-people, so fix your workflow. Tools might also fail if you work on some
-ancient tree (don't, instead use mainline) or work on fork of kernel
-(don't, instead use mainline). Just use b4 and everything should be
-fine, although remember about `b4 prep --auto-to-cc` if you added new
-patches to the patchset.
-
-You missed at least devicetree list (maybe more), so this won't be
-tested by automated tooling. Performing review on untested code might be
-a waste of time.
-
-Please kindly resend and include all necessary To/Cc entries.
-</form letter>
+This is a new board. Why do you add incomplete board in first patch?
 
 Best regards,
 Krzysztof
