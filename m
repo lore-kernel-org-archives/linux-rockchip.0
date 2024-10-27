@@ -4,80 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C40D6D10C16
-	for <linux-rockchip@archiver.kernel.org>; Sun, 27 Oct 2024 09:42:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E629AD10C16
+	for <linux-rockchip@archiver.kernel.org>; Sun, 27 Oct 2024 09:42:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:From:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=bxJPDDPH76B44XvgOv9tArHi+778Nu7n90BN5x/QyO0=; b=s7FGNxQ6ut+QrK
-	mP1IPuGzA33PZnCT0dxv/7QOPJNJzZNhGX19BpZvmQHLES5MjQ5S1emQqJg6mtBYoF9KfICU4+ZYH
-	TUH/R1xN+2uQHD9NaGAtYcTmQSRK2wsl78Qb5zAuJWq8lnbC6sYjHCf1hig/qedTzBtrn7tjetjen
-	6+MSp+aGR+ozPfJPpMW4dseh/m42Y6eVJ1kDvQG9CpzYfqibKRv7aFccCIDXkcyVXKbf+IBTHIc8f
-	VqWw4bXLqv2aTrWebEyj8rVsrtgjtK5Zi9lLNnxz7D5JhgW8IPAooJcOYR9palHcROq69ssRLQ2GV
-	QsbddDW7HLBs2EJLc9Gg==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To:Subject:
+	From:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=YITNkrmqR61w4v0eM9EKw+QoNHcvDdcRgkieyKol0hE=; b=jnYKxYf5yu6AIc
+	twNLAexa63UxYZC31ugHPjASHrfqu0P+rrxmQ5dKbNTXvplIXi4iiMcf+041QP3WWBA6rqSAi3tnW
+	OIUfr2cQfZAUeDaO7t0R3LxRrdFLCpOcT0qJlc4MCbdL30eVqHCYPiweXnDZ53KKclRckzcuF+1o0
+	DmxZ5bCe++SswKyKF0WR27X6tKRHemAxAxz1Ndqt1Gni633uSf0Tpj/u5S0IOVwFaZZVZAUay5ogR
+	1nG0+w+MUxaCCZLMN70RadWKSCMXH/SJ6AjVCm4cQDHYF4ZwtfWoLDMY2QZ8ZbxryFZuMMajRsr22
+	N6y80K893eAGx/HWIJWQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t4zmV-00000007v2o-3wK1;
-	Sun, 27 Oct 2024 09:41:55 +0000
-Received: from mail-ej1-x633.google.com ([2a00:1450:4864:20::633])
+	id 1t4znR-00000007vKM-2Od1;
+	Sun, 27 Oct 2024 09:42:53 +0000
+Received: from mail-ej1-x632.google.com ([2a00:1450:4864:20::632])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t4zmT-00000007v2D-1Y7H
+	id 1t4znO-00000007vJv-1UiF
 	for linux-rockchip@lists.infradead.org;
-	Sun, 27 Oct 2024 09:41:55 +0000
-Received: by mail-ej1-x633.google.com with SMTP id a640c23a62f3a-a9a2068f348so45066366b.2
-        for <linux-rockchip@lists.infradead.org>; Sun, 27 Oct 2024 02:41:52 -0700 (PDT)
+	Sun, 27 Oct 2024 09:42:52 +0000
+Received: by mail-ej1-x632.google.com with SMTP id a640c23a62f3a-a9a1b8d45fcso33097066b.2
+        for <linux-rockchip@lists.infradead.org>; Sun, 27 Oct 2024 02:42:49 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1730022111; x=1730626911; darn=lists.infradead.org;
-        h=content-transfer-encoding:content-language:cc:to:subject:from
-         :user-agent:mime-version:date:message-id:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=n2vkwpVcb4kCS4Ij9rwKADi36HiqXNmkZd+FH34mnDY=;
-        b=fnxms25C1T+8v2e1TYtDjFcRC8WWJo1vlNykraiA17XIrfH1Pxux4g8SRsVNh6nSSr
-         UMpYSeVD8T0HLedfECBz0xvAucC9i4W/Epq9H6pMfy0c3NsyZ+TOZyncbSEF9xjqD7dI
-         o8DmfPRYyHkpP9aXCS5GxuQGsS8C6omJwbOJm18uT6R+GfvoC7bVPa1OlNr4ILv3YKGE
-         0eIB4UnrU2NKj0Rj4RyTvO3jiX7Y5daHwTZyNlwVFfEc9ADE4EIdtwLuy3CWJU/1kjHp
-         Na6jJQZptpXcGnSHazQGEzGUWHrYoL3PaQ3ETPZcx3aTg7Fb0ftqd+a9giu6PE33M/4A
-         tQ7A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1730022111; x=1730626911;
-        h=content-transfer-encoding:content-language:cc:to:subject:from
-         :user-agent:mime-version:date:message-id:x-gm-message-state:from:to
+        d=gmail.com; s=20230601; t=1730022168; x=1730626968; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:content-language:references
+         :cc:to:subject:from:user-agent:mime-version:date:message-id:from:to
          :cc:subject:date:message-id:reply-to;
-        bh=n2vkwpVcb4kCS4Ij9rwKADi36HiqXNmkZd+FH34mnDY=;
-        b=qudJc1rhvnEuZfadZhlF7+LRzeb19Bxn3umTcjAGVDfMFotDUaTYYYbjnTlR3Ncnp0
-         nW8hWFZVGsRAYenMvdZ0eXzUnErQtYW/2NEdAwpC1fVj22XOue8NC0A5aou2Dgrn5H5Z
-         ehwehV5o7Zb3buI9MFV8v0ZuDdT9Ss9N24I6QQcpv9A/ItGXIqUBt1qNzbKi6s5ouwUY
-         zwJecMgbvvgfxJapWbCBM39Gcb2CiX3L3qZ6wzyVvKk9nRRcRU1yqoTE7NsR/d3wC2XM
-         BCUPEMj3P1oRUURjprLBaxwRUqlH2cQTU8szF8usWncPSsCjmEppsOCJOROLc6MTg1bS
-         MhTg==
-X-Forwarded-Encrypted: i=1; AJvYcCXMDOSMq6ZHd8jhk8P9cmSg6v3IZ6ypckSxUJx17N2YR91MTFMB0DgYr4qR2BMifKvGlYP0pljhwWBkeJg6sA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyZsvlFXZNRUpSW4tJE1q396kyNGrftq27y/gyeRkIKJtFduorG
-	Ft0xp4Ws8+xyyDtMn7aIfNrFHWll2y+kW6A5Mr7Trm8Hf8R7haNk
-X-Google-Smtp-Source: AGHT+IF6cXRGWL8cWTAfzT3Nbf0RVAMBXRR65eslgwEvWjHlEu6M4EFg/RFkFWQlQLDO9Izqdc9p0w==
-X-Received: by 2002:a17:907:7287:b0:a9a:1a17:e1cc with SMTP id a640c23a62f3a-a9de5a4a878mr153647666b.0.1730022110663;
-        Sun, 27 Oct 2024 02:41:50 -0700 (PDT)
+        bh=YY5DrXBKhx+MfbfGjjReDCLRQB1YXc8GnyEu7fo66wA=;
+        b=CDLoGTRNwe0Mp8BjacfYrZY9GZ2aiw+ap3QPCZ3MMTnZKWczKbvKW+FodiFT+Rh5Ny
+         Ls9qQZ+UAPIR+dti2WmxcmhrvUtw0MGEAlG8SQkBhA7NzPJRqRkuOFMfVL2qFC0UgJ2+
+         oiCDi8YXdA7qWN8MozFpj24pzADuMgfitgxw90u9qMwW3DSUkVV66zwYMfE/yRvdKZnP
+         enaGhn9Bf5JHrHMzkLMy7m2bsvNa/To0aCrKFJdXzK3dLmK97lZBRwGcjOwYyeGsxbXM
+         PBbTrxMKWY8WuHTxt9FySCO43vw+76EkeEYOXUKAearuwIWqhVX1QdBEmdPOeMjNXgfd
+         pb9w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1730022168; x=1730626968;
+        h=content-transfer-encoding:in-reply-to:content-language:references
+         :cc:to:subject:from:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=YY5DrXBKhx+MfbfGjjReDCLRQB1YXc8GnyEu7fo66wA=;
+        b=npekDsij8JjABsKTnyq030NAEFidb3JtpZak6YH0R+Q90p9eaGUQx1ESM1LG9F89hb
+         hv4z2t3BkGp5u7Vj0u1pI6X3ypRjRnZ6q85xJGdujuD32UmEwyeKLgQe3EF2Hze6keLI
+         cGj6Plc4Awash+4kbN1AYAZceZwI47VP6Sb8GZFR+OQYfBB8t0v7XTVdFe5CKmKTqyi+
+         bsRlI3GpXLtBMwpbVzG+qZcceIrXcURzM+rRCJtBQB1OTHz4Ol+JlRduDSG5+SZC7fPp
+         y/oix45yPfF6GRke50BRhLXCu9/60bTWa8wXaUGoArjo8fBU2vYukioIABM1GWopjCNI
+         ojew==
+X-Forwarded-Encrypted: i=1; AJvYcCXKbhq4yU1P5yyIoJvfxhplbVZJMCTzfCS3rohXOkeZQuFkCKmyjyHTtudeCuWHTWWi969z3+z2dBboKJ61+Q==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyWBGaNeb0wWx0jaPkeJfbuSgvB0cRsnJHwzrSMhCOJZrslrI1G
+	7C0WNsoGtaFOWo/AdIGLCPpzvihwkxVMvWQZj5NwX/p5Lcjns9Dx
+X-Google-Smtp-Source: AGHT+IGIfRkTGbie0sdxgr2bFkrqd9cYqI0s4fuOvHAN9dPLLBBZC22W2WV8T+zFBGXb2tJ7Jzf87w==
+X-Received: by 2002:a17:907:9815:b0:a99:5a3d:3cb with SMTP id a640c23a62f3a-a9de5f30d18mr136124566b.8.1730022168220;
+        Sun, 27 Oct 2024 02:42:48 -0700 (PDT)
 Received: from ?IPV6:2a02:a449:4071:1:32d0:42ff:fe10:6983? ([2a02:a449:4071:1:32d0:42ff:fe10:6983])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a9b1f029564sm262490866b.51.2024.10.27.02.41.49
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a9b2fe2af87sm265968866b.143.2024.10.27.02.42.46
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sun, 27 Oct 2024 02:41:49 -0700 (PDT)
-Message-ID: <dcb70a05-2607-47dd-8abd-f6cf1b012c51@gmail.com>
-Date: Sun, 27 Oct 2024 10:41:48 +0100
+        Sun, 27 Oct 2024 02:42:47 -0700 (PDT)
+Message-ID: <f04c2cfd-d2d6-4dc6-91a5-0ed1d1155171@gmail.com>
+Date: Sun, 27 Oct 2024 10:42:45 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 From: Johan Jonker <jbx6244@gmail.com>
-Subject: [PATCH v1 1/2] ethernet: arc: fix the device for
- dma_map_single/dma_unmap_single
+Subject: [PATCH v1 2/2] net: arc: rockchip: fix emac mdio node support
 To: davem@davemloft.net, edumazet@google.com, kuba@kernel.org,
  pabeni@redhat.com
 Cc: david.wu@rock-chips.com, andy.yan@rock-chips.com, netdev@vger.kernel.org,
  linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org
+References: <dcb70a05-2607-47dd-8abd-f6cf1b012c51@gmail.com>
 Content-Language: en-US
+In-Reply-To: <dcb70a05-2607-47dd-8abd-f6cf1b012c51@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241027_024153_471331_67783FE1 
-X-CRM114-Status: GOOD (  13.65  )
+X-CRM114-CacheID: sfid-20241027_024250_431352_48E98E7D 
+X-CRM114-Status: UNSURE (   8.89  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,151 +96,43 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The ndev->dev and pdev->dev aren't the same device, use ndev->dev.parent
-which has dma_mask, ndev->dev.parent is just pdev->dev.
-Or it would cause the following issue:
+The binding emac_rockchip.txt is converted to YAML.
+Changed against the original binding is an added MDIO subnode.
+Fix emac_mdio.c so that it can handle both old and new
+device trees.
 
-[   39.933526] ------------[ cut here ]------------
-[   39.938414] WARNING: CPU: 1 PID: 501 at kernel/dma/mapping.c:149 dma_map_page_attrs+0x90/0x1f8
-
-Signed-off-by: David Wu <david.wu@rock-chips.com>
 Signed-off-by: Johan Jonker <jbx6244@gmail.com>
 ---
+ drivers/net/ethernet/arc/emac_mdio.c | 9 ++++++++-
+ 1 file changed, 8 insertions(+), 1 deletion(-)
 
-Original:
-https://github.com/andyshrk/linux/commit/a98b368ca6ae79d227415c34e4ca39934af08a6f
+diff --git a/drivers/net/ethernet/arc/emac_mdio.c b/drivers/net/ethernet/arc/emac_mdio.c
+index 87f40c2ba904..078b1a72c161 100644
+--- a/drivers/net/ethernet/arc/emac_mdio.c
++++ b/drivers/net/ethernet/arc/emac_mdio.c
+@@ -133,6 +133,7 @@ int arc_mdio_probe(struct arc_emac_priv *priv)
+ 	struct arc_emac_mdio_bus_data *data = &priv->bus_data;
+ 	struct device_node *np = priv->dev->of_node;
+ 	const char *name = "Synopsys MII Bus";
++	struct device_node *mdio_node;
+ 	struct mii_bus *bus;
+ 	int error;
 
-Changed:
-Use dev variable
----
- drivers/net/ethernet/arc/emac_main.c | 27 ++++++++++++++++-----------
- 1 file changed, 16 insertions(+), 11 deletions(-)
+@@ -164,7 +165,13 @@ int arc_mdio_probe(struct arc_emac_priv *priv)
 
-diff --git a/drivers/net/ethernet/arc/emac_main.c b/drivers/net/ethernet/arc/emac_main.c
-index 31ee477dd131..8283aeee35fb 100644
---- a/drivers/net/ethernet/arc/emac_main.c
-+++ b/drivers/net/ethernet/arc/emac_main.c
-@@ -111,6 +111,7 @@ static void arc_emac_tx_clean(struct net_device *ndev)
- {
- 	struct arc_emac_priv *priv = netdev_priv(ndev);
- 	struct net_device_stats *stats = &ndev->stats;
-+	struct device *dev = ndev->dev.parent;
- 	unsigned int i;
+ 	snprintf(bus->id, MII_BUS_ID_SIZE, "%s", bus->name);
 
- 	for (i = 0; i < TX_BD_NUM; i++) {
-@@ -140,7 +141,7 @@ static void arc_emac_tx_clean(struct net_device *ndev)
- 			stats->tx_bytes += skb->len;
- 		}
-
--		dma_unmap_single(&ndev->dev, dma_unmap_addr(tx_buff, addr),
-+		dma_unmap_single(dev, dma_unmap_addr(tx_buff, addr),
- 				 dma_unmap_len(tx_buff, len), DMA_TO_DEVICE);
-
- 		/* return the sk_buff to system */
-@@ -174,6 +175,7 @@ static void arc_emac_tx_clean(struct net_device *ndev)
- static int arc_emac_rx(struct net_device *ndev, int budget)
- {
- 	struct arc_emac_priv *priv = netdev_priv(ndev);
-+	struct device *dev = ndev->dev.parent;
- 	unsigned int work_done;
-
- 	for (work_done = 0; work_done < budget; work_done++) {
-@@ -223,9 +225,9 @@ static int arc_emac_rx(struct net_device *ndev, int budget)
- 			continue;
- 		}
-
--		addr = dma_map_single(&ndev->dev, (void *)skb->data,
-+		addr = dma_map_single(dev, (void *)skb->data,
- 				      EMAC_BUFFER_SIZE, DMA_FROM_DEVICE);
--		if (dma_mapping_error(&ndev->dev, addr)) {
-+		if (dma_mapping_error(dev, addr)) {
- 			if (net_ratelimit())
- 				netdev_err(ndev, "cannot map dma buffer\n");
- 			dev_kfree_skb(skb);
-@@ -237,7 +239,7 @@ static int arc_emac_rx(struct net_device *ndev, int budget)
- 		}
-
- 		/* unmap previosly mapped skb */
--		dma_unmap_single(&ndev->dev, dma_unmap_addr(rx_buff, addr),
-+		dma_unmap_single(dev, dma_unmap_addr(rx_buff, addr),
- 				 dma_unmap_len(rx_buff, len), DMA_FROM_DEVICE);
-
- 		pktlen = info & LEN_MASK;
-@@ -423,6 +425,7 @@ static int arc_emac_open(struct net_device *ndev)
- {
- 	struct arc_emac_priv *priv = netdev_priv(ndev);
- 	struct phy_device *phy_dev = ndev->phydev;
-+	struct device *dev = ndev->dev.parent;
- 	int i;
-
- 	phy_dev->autoneg = AUTONEG_ENABLE;
-@@ -445,9 +448,9 @@ static int arc_emac_open(struct net_device *ndev)
- 		if (unlikely(!rx_buff->skb))
- 			return -ENOMEM;
-
--		addr = dma_map_single(&ndev->dev, (void *)rx_buff->skb->data,
-+		addr = dma_map_single(dev, (void *)rx_buff->skb->data,
- 				      EMAC_BUFFER_SIZE, DMA_FROM_DEVICE);
--		if (dma_mapping_error(&ndev->dev, addr)) {
-+		if (dma_mapping_error(dev, addr)) {
- 			netdev_err(ndev, "cannot dma map\n");
- 			dev_kfree_skb(rx_buff->skb);
- 			return -ENOMEM;
-@@ -548,6 +551,7 @@ static void arc_emac_set_rx_mode(struct net_device *ndev)
- static void arc_free_tx_queue(struct net_device *ndev)
- {
- 	struct arc_emac_priv *priv = netdev_priv(ndev);
-+	struct device *dev = ndev->dev.parent;
- 	unsigned int i;
-
- 	for (i = 0; i < TX_BD_NUM; i++) {
-@@ -555,7 +559,7 @@ static void arc_free_tx_queue(struct net_device *ndev)
- 		struct buffer_state *tx_buff = &priv->tx_buff[i];
-
- 		if (tx_buff->skb) {
--			dma_unmap_single(&ndev->dev,
-+			dma_unmap_single(dev,
- 					 dma_unmap_addr(tx_buff, addr),
- 					 dma_unmap_len(tx_buff, len),
- 					 DMA_TO_DEVICE);
-@@ -579,6 +583,7 @@ static void arc_free_tx_queue(struct net_device *ndev)
- static void arc_free_rx_queue(struct net_device *ndev)
- {
- 	struct arc_emac_priv *priv = netdev_priv(ndev);
-+	struct device *dev = ndev->dev.parent;
- 	unsigned int i;
-
- 	for (i = 0; i < RX_BD_NUM; i++) {
-@@ -586,7 +591,7 @@ static void arc_free_rx_queue(struct net_device *ndev)
- 		struct buffer_state *rx_buff = &priv->rx_buff[i];
-
- 		if (rx_buff->skb) {
--			dma_unmap_single(&ndev->dev,
-+			dma_unmap_single(dev,
- 					 dma_unmap_addr(rx_buff, addr),
- 					 dma_unmap_len(rx_buff, len),
- 					 DMA_FROM_DEVICE);
-@@ -679,6 +684,7 @@ static netdev_tx_t arc_emac_tx(struct sk_buff *skb, struct net_device *ndev)
- 	unsigned int len, *txbd_curr = &priv->txbd_curr;
- 	struct net_device_stats *stats = &ndev->stats;
- 	__le32 *info = &priv->txbd[*txbd_curr].info;
-+	struct device *dev = ndev->dev.parent;
- 	dma_addr_t addr;
-
- 	if (skb_padto(skb, ETH_ZLEN))
-@@ -692,10 +698,9 @@ static netdev_tx_t arc_emac_tx(struct sk_buff *skb, struct net_device *ndev)
- 		return NETDEV_TX_BUSY;
- 	}
-
--	addr = dma_map_single(&ndev->dev, (void *)skb->data, len,
--			      DMA_TO_DEVICE);
-+	addr = dma_map_single(dev, (void *)skb->data, len, DMA_TO_DEVICE);
-
--	if (unlikely(dma_mapping_error(&ndev->dev, addr))) {
-+	if (unlikely(dma_mapping_error(dev, addr))) {
- 		stats->tx_dropped++;
- 		stats->tx_errors++;
- 		dev_kfree_skb_any(skb);
+-	error = of_mdiobus_register(bus, priv->dev->of_node);
++	/* Backwards compatibility for EMAC nodes without MDIO subnode. */
++	mdio_node = of_get_child_by_name(np, "mdio");
++	if (!mdio_node)
++		mdio_node = of_node_get(np);
++
++	error = of_mdiobus_register(bus, mdio_node);
++	of_node_put(mdio_node);
+ 	if (error) {
+ 		mdiobus_free(bus);
+ 		return dev_err_probe(priv->dev, error,
 --
 2.39.2
 
