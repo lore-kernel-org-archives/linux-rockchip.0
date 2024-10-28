@@ -4,60 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AD7E8D10C0B
-	for <linux-rockchip@archiver.kernel.org>; Mon, 28 Oct 2024 12:45:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6A788D1039A
+	for <linux-rockchip@archiver.kernel.org>; Mon, 28 Oct 2024 13:00:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=1BmZg+6yYcK483UDYMmusImiLR6WcqlHtnSy4dp75uQ=; b=RF2ToZ2zIr4Usw
-	S/FdFu4RXWZt4P4vzhRyt/a/H39VaIW3yiJIFMvsPUgcxl75p5VuHSlNllgrNCGyXroQMU4ie9JyA
-	dGKrPbttV1JmS43g1bwEO4KgT71BU72YvfI4SGyO0QAO94+Njv+FzhlUhJ4hQB8xKIwu7C7pY61uJ
-	7w+txKA587UOQiySc3y3ALoOPbjwMfuvGjTxvLRAyb3yGOm1KDWYEyY0EPcs0beO4Zv2NpcA4rwvY
-	L5Rsxm2Du2i8Llaawh1oqWJYIUV1BP/qeF4mlvMeZfxX17KP6SfhTfdQJymsU8qC/FVYymDq0Dle9
-	3+rLRseY1AmvqaiqFwrw==;
+	List-Owner; bh=TUN82rPc2SpyFTKMjLxkANbCmdPQ412skLuBv9YuOjI=; b=A0lKckeJhoSPeS
+	6u16CcfET+AIZNiShgtJLNmcmeMVJq4OiNpw9LnO0tkdBpyqa1eJzAv8o8wpPRNAroVDvxXwhZTlQ
+	kfZwigxnavFcB28GPmt2JmoKE2kOottfE/5KNtte4IXBwprycmMKsu2MVPPZHvnknhsWLCUacCtwb
+	o4srt/TJcP/3Aqldjxe5EqwdDIcL6SB2Z6v82/QhYB0ecDUyZA/LAcuYYG/PlF9Q3MpHIpM6/wAMS
+	+fAIJXOrxCeFpr03aGQdAYC8FLJBWZxh7jTGx6GHyl7EjFFMBI04xN1GAqXPyglNChnJh7A5QUYrb
+	dHeN2+gAnxGtwmeFEO2Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t5P7l-0000000AoYM-0pTP;
-	Mon, 28 Oct 2024 12:45:33 +0000
-Received: from m16.mail.163.com ([117.135.210.3])
-	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t5Oxo-0000000AlpI-1knB;
-	Mon, 28 Oct 2024 12:35:18 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=From:Subject:Date:Message-ID:MIME-Version; bh=6GXIR
-	h4j3i518ko1cqgv7mz2+TyzA7OmqSNKoxe1+2M=; b=A9E7NStithBvNIB9BsLnn
-	uH8DNRgS8Bm0O9kkjTt2Kll5x3tPSjEXKPicflFAAWmWxQfLY27+Bn180LQHfuW9
-	G+sCg6nCF8sBojvmhDWh+ZEZtP8K9K4lGtLwOHHTrrkh5E6SYFKxhLWL/am11grn
-	+uyjNaBMJsH9yN0cFFeIi8=
-Received: from ProDesk.. (unknown [58.22.7.114])
-	by gzga-smtp-mtada-g1-3 (Coremail) with SMTP id _____wD3f+b5hB9nytgkBw--.9113S3;
-	Mon, 28 Oct 2024 20:35:09 +0800 (CST)
-From: Andy Yan <andyshrk@163.com>
-To: heiko@sntech.de
-Cc: linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	Andy Yan <andyshrk@163.com>
-Subject: [PATCH v2 1/3] arm64: dts: rockchip: Enable HDMI0 for rk3588 Cool Pi CM5 EVB
-Date: Mon, 28 Oct 2024 20:34:56 +0800
-Message-ID: <20241028123503.384866-2-andyshrk@163.com>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20241028123503.384866-1-andyshrk@163.com>
-References: <20241028123503.384866-1-andyshrk@163.com>
+	id 1t5PLs-0000000Arpg-1671;
+	Mon, 28 Oct 2024 13:00:08 +0000
+Received: from vps0.lunn.ch ([156.67.10.101])
+	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
+	id 1t5PLK-0000000Argp-0kXb
+	for linux-rockchip@lists.infradead.org;
+	Mon, 28 Oct 2024 12:59:35 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
+	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
+	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
+	bh=jzRfsORNZvsjrYssNca38SOvtAL4bIuf/RDFrDeFoV0=; b=IS41XOy3kWGvXgWiQkdJVqIqhP
+	P5ZWgMaxOmti1evlonFJvqk3PovM+95v1BM6GU3LwA8sTYQ4g/4u4VRvj3VMHvM7ZEBD3qIbMTboK
+	s2zY3DNyDJxkUGD4anKRqQKVNHsU6fJ2EvpyIR4XkW9LuFVKJtAMrcEo1UGXAcfhGTlM=;
+Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
+	(envelope-from <andrew@lunn.ch>)
+	id 1t5PL4-00BRmK-E7; Mon, 28 Oct 2024 13:59:18 +0100
+Date: Mon, 28 Oct 2024 13:59:18 +0100
+From: Andrew Lunn <andrew@lunn.ch>
+To: Andy Yan <andyshrk@163.com>
+Cc: Johan Jonker <jbx6244@gmail.com>, davem@davemloft.net,
+	edumazet@google.com, kuba@kernel.org, pabeni@redhat.com,
+	david.wu@rock-chips.com, andy.yan@rock-chips.com,
+	netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH v1 2/2] net: arc: rockchip: fix emac mdio node support
+Message-ID: <0a60a838-42cb-4df8-ab1f-91002dcaaa14@lunn.ch>
+References: <dcb70a05-2607-47dd-8abd-f6cf1b012c51@gmail.com>
+ <f04c2cfd-d2d6-4dc6-91a5-0ed1d1155171@gmail.com>
+ <250cdfef.1bfc.192cd6a1f72.Coremail.andyshrk@163.com>
 MIME-Version: 1.0
-X-CM-TRANSID: _____wD3f+b5hB9nytgkBw--.9113S3
-X-Coremail-Antispam: 1Uf129KBjvJXoWxJrWfZw48Kw18Xr13GFW5GFg_yoW8Ww17p3
-	ZxurZ5GFZ3WFW7tw45Arn7tFs0yws5urW3GwnxZFy7tr4agFnYyw18GwnavFyDZFZrZayx
-	CF1kJF1j9r4Dtr7anT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x0pEU73DUUUUU=
-X-Originating-IP: [58.22.7.114]
-X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/1tbiMxGGXmcfhCYMvQAAsR
+Content-Disposition: inline
+In-Reply-To: <250cdfef.1bfc.192cd6a1f72.Coremail.andyshrk@163.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241028_053516_879518_7CE00911 
-X-CRM114-Status: UNSURE (   9.57  )
+X-CRM114-CacheID: sfid-20241028_055934_234757_8A012C98 
+X-CRM114-Status: UNSURE (   4.74  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -75,92 +74,12 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-As the hdmi-qp controller recently get merged, we can enable the
-HDMI0 display on this board now.
+> Hello Johan,
+>     Thanks for your patch.  Maybe we need a Fixes tag here?
 
-Signed-off-by: Andy Yan <andyshrk@163.com>
+What is actually broken?
 
----
-
-Changes in v2:
-- Remove enable-gpios as it is unevaluated
-- Remove pinctrl setting as it use the default
-
- .../dts/rockchip/rk3588-coolpi-cm5-evb.dts    | 47 +++++++++++++++++++
- 1 file changed, 47 insertions(+)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-coolpi-cm5-evb.dts b/arch/arm64/boot/dts/rockchip/rk3588-coolpi-cm5-evb.dts
-index a4946cdc3bb3..010a1f2761e6 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-coolpi-cm5-evb.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-coolpi-cm5-evb.dts
-@@ -7,6 +7,7 @@
- /dts-v1/;
- 
- #include <dt-bindings/leds/common.h>
-+#include <dt-bindings/soc/rockchip,vop2.h>
- #include "rk3588-coolpi-cm5.dtsi"
- 
- / {
-@@ -22,6 +23,17 @@ backlight: backlight {
- 		pwms = <&pwm2 0 25000 0>;
- 	};
- 
-+	hdmi-con {
-+		compatible = "hdmi-connector";
-+		type = "a";
-+
-+		port {
-+			hdmi_con_in: endpoint {
-+				remote-endpoint = <&hdmi0_out_con>;
-+			};
-+		};
-+	};
-+
- 	leds: leds {
- 		compatible = "gpio-leds";
- 
-@@ -214,3 +226,38 @@ &usb_host1_ehci {
- &usb_host1_ohci {
- 	status = "okay";
- };
-+
-+&hdmi0 {
-+	status = "okay";
-+};
-+
-+&hdmi0_in {
-+	hdmi0_in_vp0: endpoint {
-+		remote-endpoint = <&vp0_out_hdmi0>;
-+	};
-+};
-+
-+&hdmi0_out {
-+	hdmi0_out_con: endpoint {
-+		remote-endpoint = <&hdmi_con_in>;
-+	};
-+};
-+
-+&hdptxphy_hdmi0 {
-+	status = "okay";
-+};
-+
-+&vop {
-+	status = "okay";
-+};
-+
-+&vop_mmu {
-+	status = "okay";
-+};
-+
-+&vp0 {
-+	vp0_out_hdmi0: endpoint@ROCKCHIP_VOP2_EP_HDMI0 {
-+		reg = <ROCKCHIP_VOP2_EP_HDMI0>;
-+		remote-endpoint = <&hdmi0_in_vp0>;
-+	};
-+};
--- 
-2.43.0
-
+	Andrew
 
 _______________________________________________
 Linux-rockchip mailing list
