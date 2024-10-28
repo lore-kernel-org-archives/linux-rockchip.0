@@ -4,55 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6B364D5B156
-	for <linux-rockchip@archiver.kernel.org>; Mon, 28 Oct 2024 21:17:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9E9D6D5B158
+	for <linux-rockchip@archiver.kernel.org>; Mon, 28 Oct 2024 21:55:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Subject:Cc:From:To:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=sKaMf304uUqzEyqW4vxH02ACEeSLNyV4OmPQxbBzCnc=; b=ERUAYAwG+SikXu
-	Hz1przm4sniGOjSr1SFMrRizx8tTjNgI07JPITeJ8RonjLMWF9oc1ZXsMsHg8iSmx7YQZFJAqV5y6
-	uYpGF+vYc+RCMp+c8Uy0nnH3eiidpAQH+IuoVo2pH+HtS30Gb5WasKv+LfsR4YuhBMCly0H3nDBRK
-	UbEbKcHlyxIQFgqRFthrE4imF8xwBvh1RJgCxd6GLalkFbgG4l9JANkj8GKR0oxzDMb6KMIgJa3DE
-	V+E3HuEr48QQgvqukcnX2rX8f2wcsWqoSVpe7FlT9xEPFZHSDVODjc6uTiT28N/aC6zvz83rEgMKF
-	9B6Y5bA4IXic/OLVdICA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=+9IUUmydF76tZeLAVFBtsu+DSas07rdLU43pQ/3rwkg=; b=hoiiQXHYMxyct/
+	19ZiBbvtldLd4lat7oK50H+am90IxQDmPzw9FuZRmn3Fque9vqJY/bHom1/zmFr/wVmmaiH1vtPY1
+	jpBDs+a47JZbqWRN/L4ItnPYu3nt19MfvD49Zmvex1sHSN2D/vAjJoqLLyplEixtsB51sTO7nuYZK
+	K+Etzx7gkvOp6jjvJC14zZB/yG4uCG5emNz/HwoGFRbbd7rAk79MfsmNn9QYhMgRBKBxvdKUT8Djx
+	Mrx0jj4soKACk4BQwzyStpWdIuxYlUqYCNWjj2/v5+OnN6QKPY20EDEdSLWzUwWM8J4l0YkH39rgT
+	04Co/UFCdhFbDtOUAWqA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t5X6y-0000000CJYM-04Fg;
-	Mon, 28 Oct 2024 21:17:16 +0000
-Received: from mail-40133.protonmail.ch ([185.70.40.133])
+	id 1t5Xi6-0000000CQX0-1HLV;
+	Mon, 28 Oct 2024 21:55:38 +0000
+Received: from mail-lf1-x129.google.com ([2a00:1450:4864:20::129])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t5Wm2-0000000CGUS-26CM
-	for linux-rockchip@lists.infradead.org;
-	Mon, 28 Oct 2024 20:55:40 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=proton.me;
-	s=protonmail; t=1730148931; x=1730408131;
-	bh=o0OL5D3wRRnScnzyZ9auDpW3UVQiUgrhsjMKbblKCAs=;
-	h=Date:To:From:Cc:Subject:Message-ID:In-Reply-To:References:
-	 Feedback-ID:From:To:Cc:Date:Subject:Reply-To:Feedback-ID:
-	 Message-ID:BIMI-Selector;
-	b=LvLyWoWiUh9ggZTBZ8zvQN5/B8ObjInqvBYhRHgkDODoLIPoHwDpmzcKoCLpx7zTj
-	 vW8CXBLVD4VHqjrSARPpXxEa8WG7lLfIBOgyu4y17E9N03LO4Nv13G24lyxJcnPB98
-	 ojl2y1CTGAOMKBpUfMyVBIySZ4bL9i2t+iJnwOGWHyx4JQrCZgX95OysTKBSF+4cHx
-	 UY+VtUJKyZl0Nrlb4xwUNMUqyTMpLTSa4HvWq/wqzglu6ysFWkrVVtEtgMdcSz9PKm
-	 dE51KCNUudFfX0gaWEZti32YbEMyrgava2m14Xqz/qHrsNpKUbRq+Mfk8LHr7oX6hx
-	 EjNYZ8PFu1/jg==
-Date: Mon, 28 Oct 2024 20:55:28 +0000
-To: Andy Yan <andyshrk@163.com>
-From: Piotr Zalewski <pZ010001011111@proton.me>
-Cc: hjc@rock-chips.com, heiko@sntech.de, andy.yan@rock-chips.com, maarten.lankhorst@linux.intel.com, mripard@kernel.org, tzimmermann@suse.de, airlied@gmail.com, simona@ffwll.ch, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, skhan@linuxfoundation.org, Daniel Stone <daniel@fooishbar.org>, Dragan Simic <dsimic@manjaro.org>, Diederik de Haas <didi.debian@cknow.org>
-Subject: Re:Re: [PATCH v6] rockchip/drm: vop2: add support for gamma LUT
-Message-ID: <wXgQHAvchmtDzCTJX5pnEcLvGM1Rf2HTeooQ7GwE-6luNP_BLRQ2LW0wWSXcGWgARzDnfhKd1xQXeMMGYSAhIlX9m7pl3CZ6FxM1yc0qslg=@proton.me>
-In-Reply-To: <-rVNN65kgfRzFJBJDIwQF3jNMfXIZFP8GibtUgB_p-eWGLBkNZhYFr-BXEas8IjjofHxWQUqNicUSTp5rb9XmuLi35XsDd0PzJPz79j-M-8=@proton.me>
-References: <20241016223558.673145-2-pZ010001011111@proton.me> <DurUfF_0TBHKv4DHKIP3ggQh_85nRY0usYWn_fu_oJ45txO7dGKv-OK5rl6EDEPmX5l8WzrwPCzAvYz0xFPfeKGyx7enu1g-prsWIpilv88=@proton.me> <2bb58a1c.6287.192d1dc9b2d.Coremail.andyshrk@163.com> <-rVNN65kgfRzFJBJDIwQF3jNMfXIZFP8GibtUgB_p-eWGLBkNZhYFr-BXEas8IjjofHxWQUqNicUSTp5rb9XmuLi35XsDd0PzJPz79j-M-8=@proton.me>
-Feedback-ID: 53478694:user:proton
-X-Pm-Message-ID: c6c0ed3cb59d5081b7c3f97d9c933c5ec18de402
+	id 1t5XMu-0000000CLdg-2JDA;
+	Mon, 28 Oct 2024 21:33:46 +0000
+Received: by mail-lf1-x129.google.com with SMTP id 2adb3069b0e04-53a007743e7so5497744e87.1;
+        Mon, 28 Oct 2024 14:33:43 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1730151222; x=1730756022; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=P3jhy7g92HAelJpeRVsKB0qQVe3H+zDTlj5MJNUzblc=;
+        b=U7CF0vJXBkznJCmftDMwsV1aP1PSKTXMNZPDXNHelVNzhSNEAHypWN3TU4CfIQ7bVc
+         fj6HjRFBm+Zh/SWHAiHTaO5McqtVsVPMxYYZUnkUv+t5TW4xc/w5nLtJn+8ivkpwUepj
+         LfYKH7RJSag8S/+QtBae7kS6NBMWpIG9qN4Y120jDyxs5fd6mAeYV5YZuI1mB78R4XMA
+         +SlLpN9a9CtzvkxVKlNgA7enyjuhr6QJLx0dBU34tESjN5jNahiGCiGphdU1S5gBmL+c
+         lWTY9OYIEJy5TqeqEsY/GxFDOunG92qYEk1qDdggKyfTZBmjM97qGLGKPQbt9Veg0oQB
+         3Gpg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1730151222; x=1730756022;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=P3jhy7g92HAelJpeRVsKB0qQVe3H+zDTlj5MJNUzblc=;
+        b=gDOSH90nrZ6u26+Xym2B7JOiGDVwy5jGKhVCg9DDIGiHY+cUotRJMPGr8Fh9cKW7iK
+         HtnUvIc512Nz21vLGMmkHN8iC1VNFGc06dd2pqCjSBKsJvwRGAg5jQ6NeZpg6ljCKMDU
+         mP5UmKk2tqlTfLAzPsylpOLuVAWJr+lEXPEwL1/U4ag0uaZsLMlFu3THUWBm/M2PULnl
+         1B6utveZzs4R0shWJtPExDJZLF5eps+aQjymUNYrImaYVpOjmaPEOkPBVb2iYFdZgWAB
+         TtNWpO4k4DizPEzPsWeBx5dZ2+jFKkI2v+f3RBJGSabq9WpOLot0r6d9hjR4R6klhMWL
+         L8fg==
+X-Forwarded-Encrypted: i=1; AJvYcCVf3Fem9SOW0pO/4wVD+BeI+52wnr61eTDppNtspJOlrbmbfLrsrwgqPpt3RpEKYXML3BuWHuosvrnu88/Xvqg=@lists.infradead.org, AJvYcCWBV2GnFDW62iAXXomvU4/B6iB0CsrrdA/lgugVYf8AKk4PyImpNb0prdPf3IVZaIIUYIFEPifj2pxqMloYq9HY@lists.infradead.org
+X-Gm-Message-State: AOJu0YyWnVrZO3aIQmBdBmRLJT6LVPwrIxSD2jtHo3ILLuWU1ai1N7RC
+	17k4qotPDYGofLGIEgQcQ4E7e0QEOHNsslVYJPgnEP7ryyh5auFx
+X-Google-Smtp-Source: AGHT+IH8QWe0UkauZn2bm3eeSh3k+dWuXtsVQf4Au1Nx9JEZxSU0NN5Ic64IUzcAKVKuVoc6QI2zug==
+X-Received: by 2002:a05:6512:3d22:b0:539:f6c4:c29d with SMTP id 2adb3069b0e04-53b34b39798mr4508983e87.54.1730151221818;
+        Mon, 28 Oct 2024 14:33:41 -0700 (PDT)
+Received: from localhost.localdomain ([91.90.219.38])
+        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-53b2e1c98b9sm1204625e87.224.2024.10.28.14.33.40
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 28 Oct 2024 14:33:41 -0700 (PDT)
+From: Dmitry Yashin <dmt.yashin@gmail.com>
+To: Luca Ceresoli <luca.ceresoli@bootlin.com>,
+	Liam Girdwood <lgirdwood@gmail.com>,
+	Mark Brown <broonie@kernel.org>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>
+Cc: linux-sound@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Dmitry Yashin <dmt.yashin@gmail.com>
+Subject: [PATCH 0/3] arm64: dts: rockchip: add Banana Pi BPI-P2 Pro board
+Date: Tue, 29 Oct 2024 02:33:11 +0500
+Message-ID: <20241028213314.476776-1-dmt.yashin@gmail.com>
+X-Mailer: git-send-email 2.47.0
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241028_135538_988555_E8CB6A22 
-X-CRM114-Status: GOOD (  13.12  )
+X-CRM114-CacheID: sfid-20241028_143344_625020_476705D4 
+X-CRM114-Status: UNSURE (   8.99  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -64,39 +95,36 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGkgYWdhaW4KCk9uIE1vbmRheSwgT2N0b2JlciAyOHRoLCAyMDI0IGF0IDU6NDAgUE0sIFBpb3Ry
-IFphbGV3c2tpIDxwWjAxMDAwMTAxMTExMUBwcm90b24ubWU+IHdyb3RlOgoKPiBPbiBNb25kYXks
-IE9jdG9iZXIgMjh0aCwgMjAyNCBhdCA3OjQyIEFNLCBBbmR5IFlhbiBhbmR5c2hya0AxNjMuY29t
-IHdyb3RlOgo+IAo+ID4gSGkgUGlvdHLvvIwKPiAKPiAKPiBIaSBBbmR5Cj4gCj4gPiBUZXN0ZWQg
-b24gdG9wIG9mIExpbnV4IDYuMTItcmM1IHdpdGggcmszNTY2LWJveC1kZW1vIGluIGEgYnVpbGRy
-b290ICsgd2VzdG9uIGVudmlyb25tZW50Ogo+ID4gd2VzdG9uIC0tYmFja2VuZD1kcm0tYmFja2Vu
-ZC5zbyAtaSAwIC0tY29udGludWUtd2l0aG91dC1pbnB1dAo+ID4gd2VzdG9uLXNpbXBsZS1lZ2wK
-PiAKPiAKPiBUaGFuayB5b3UgZm9yIHRlc3RpbmcgaXQhCj4gCj4gPiBzaW1wbGUtZWdsIHdpbGwg
-ZHJhdyBhIHRyaWFuZ2xlIG9uIHRoZSBkZXNrdG9wLgo+ID4gQWZ0ZXIgdGhlIHBhdGNoIGFwcGxp
-ZWTvvIx0aGUgdHJpYW5nbGUgd2lsbCBmbGlja2VyIGFnYWluIGFuZCBhZ2lhbuOAggo+ID4gU28g
-aXQgYnJlYWsgc29tZSBmdW5jdGlvbuOAggo+IAo+IAo+IERpZCB5b3UgaGF2ZSBnYW1tYSBvbj8g
-VGhlIHNjcmVlbiBmbGlja2VyZWQgZm9yIG1lIHdoZW4gSSByYW4gc29tZXRoaW5nCj4gd3JpdGlu
-ZyBnYW1tYSBMVVQgZnJlcXVlbnRseSBiZWNhdXNlIG9mIGRpc2FibGUgc3RlcCBJIHJlY2tvbi4K
-PiAKPiA+IEkndmUgYmVlbiBxdWl0ZSBidXN5IGxhdGVseSwgYW5kIGl0IHdpbGwgdGFrZSBzb21l
-IHRpbWUgYmVmb3JlIEkgY2FuIGFuYWx5emUgd2hhdCB0aGUgc3BlY2lmaWMgcmVhc29uIGlzLgo+
-IAo+IAo+IE5wLCBJIHdpbGwgdHJ5IHRvIHJlcHJvZHVjZSB0aGlzIGJlaGF2aW9yIHdpdGggd2Vz
-dG9uIG9uIFBpbmV0YWIyIGluIHRoZQo+IG1lYW50aW1lLgo+CgpTbyBJIGdvdCB3ZXN0b24gKHZl
-cnNpb24gMTMpIGFuZCByYW4gaXQgYXMgeW91IGRpZCwgdGhlbiByYW4gdGhlIHNhbWUKY2xpZW50
-LiBOb3RoaW5nIGZsaWNrZXJlZC4gU2luY2Ugd2VzdG9uIGRvZXNuJ3Qgc3VwcG9ydCBnYW1tYSBj
-b250cm9sLCBJCnJhbiBzd2F5IGluIHRoZSBvdGhlciB0dHkgYW5kIHNldCBjb2xvciB0ZW1wZXJh
-dHVyZSB0aGVyZSB3aXRoIGBnYW1tYXN0ZXAKLU8gMzAwMGAuIFRoZW4gc3dpdGNoZWQgYWdhaW4g
-dG8gd2VzdG9uIGFuZCBjb2xvciB0ZW1wLiB3YXNuJ3QgcmV0YWluZWQsCnRyaWFuZ2xlIGRpZG4n
-dCBmbGlja2VyLiBUaGVuIEkgcmFuIHdlc3Rvbi1zaW1wbGUtZWdsIHVuZGVyIHN3YXkgKHdoaWxl
-CmhhdmluZyBgZ2FtbWFzdGVwYCBydW5uaW5nIGFuZCBkb2luZyBnYW1tYSBsdXQgYWRqdXN0bWVu
-dHMgZXZlcnkgfjUKc2Vjb25kcykgYW5kIHRoZSB0cmlhbmdsZSBkaWRuJ3QgZmxpY2tlciB0b28g
-KGJ1dCB0aGVyZSB3ZXJlIF9leHBlY3RlZF8KZmxpY2tlcnMgZXZlcnkgfjUgc2Vjb25kcyBiZWNh
-dXNlIG9mIGdhbW1hIGFkanVzdG1lbnRzIGJ5IGdhbW1hc3RlcCkuCgpCZXN0IFJlZ2FyZHMsIFBp
-b3RyIFphbGV3c2tpCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5m
-cmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xp
-bnV4LXJvY2tjaGlwCg==
+This series add support for Banana Pi BPI-P2 Pro based on Rockchip RK3308
+(RK3308B-S variant) made by Shenzhen SINOVOIP.
+
+Patch 1 fixes rk3308-codec DTB warning.
+Patch 2-3 adds binding and dts for the board.
+
+Dmitry Yashin (3):
+  ASoC: dt-bindings: rockchip,rk3308-codec: add port property
+  dt-bindings: arm: rockchip: add Banana Pi BPI-P2 Pro board
+  arm64: dts: rockchip: add Banana Pi BPI-P2 Pro board
+
+ .../devicetree/bindings/arm/rockchip.yaml     |   5 +
+ .../bindings/sound/rockchip,rk3308-codec.yaml |   4 +
+ arch/arm64/boot/dts/rockchip/Makefile         |   1 +
+ .../boot/dts/rockchip/rk3308-bpi-p2-pro.dts   | 362 ++++++++++++++++++
+ 4 files changed, 372 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3308-bpi-p2-pro.dts
+
+
+base-commit: 9220a541da2bc49ac79e0475843048ba29e4d076
+-- 
+2.39.5
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
