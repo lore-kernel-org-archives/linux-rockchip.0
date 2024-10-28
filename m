@@ -4,57 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ABDF5D33998
-	for <linux-rockchip@archiver.kernel.org>; Mon, 28 Oct 2024 15:56:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C4837D3399D
+	for <linux-rockchip@archiver.kernel.org>; Mon, 28 Oct 2024 16:00:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:In-reply-to:
+	Date:Subject:Cc:To:From:References:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=PVMz2Th0J4Q6gVMLNxdl4i2vSP6s89XFoBjbJjoJC/o=; b=jGXFR1rZGl8Liz
-	NZyREbxPuvPRKyZ5J/NnQZyJzhu04P1srHgn8UREqbkITdZH50xxTpNEEMhp3ueu9YNHIGSlzrWQ5
-	bpktb+7MDBxy8t6+02Z0xMWimxuqoxFnBh5XG/S/Xbgcn9JGvxai89X8e/Uo8xETY+qYuFGEla0mW
-	KOU+meVVUst0DP3rN4wfO3iPTX2zWrSJ1KOGr43aauqqWALgiEGUq/VkCpULFYcJBOxsFGR73ILkk
-	HD97C5sZC65mExAi8K2ZvERkYYTswv/GinkdduQxOPP+14zHMkIiyPOXiQJFaeyDkYNs13DukkuK8
-	NK2ar5zwLmnOunzQn+dw==;
+	List-Owner; bh=16xs6fewISujZzXoqjw4qD8NVxeCK+8pIP/FLdQLuqM=; b=KWptsGxSPLR4c+
+	Deya9Xh04HF43pFp3QB3D2bdZh7qYenyv5/FxlrCpjkJA/UX99F+EwO9fzN9i9wTnx+CB88TESBtJ
+	ObNnmEyGPM40W4YQ0YamJ4ZSNAn0k4kFCdurm1f/rwwEwPfw/IckFZnzWyieV/AdblLYdmTD7UrLX
+	uWA6wHrdCJjSxDqUBMSBjr94PdA347gIldAeZOfzM8hVu63ScqHshLSJWsGrOwT17R0b4F7E4Z7Mg
+	ZUyJa7DHL4v8oPqpO06SlYvBqFqJXNzCiJfldRyzi/mM2HERzx+3WCBHOSMygwt9OyNP4V/amd3mM
+	7/xgJHIcFsFWJL/PsSuw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t5S5z-0000000BNyX-2JBu;
-	Mon, 28 Oct 2024 15:55:55 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
+	id 1t5SAk-0000000BOu5-0IhG;
+	Mon, 28 Oct 2024 16:00:50 +0000
+Received: from mail-lf1-x131.google.com ([2a00:1450:4864:20::131])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t5Rh6-0000000BJlj-0Hvi
-	for linux-rockchip@lists.infradead.org;
-	Mon, 28 Oct 2024 15:30:13 +0000
-Received: from ideasonboard.com (mob-5-90-59-111.net.vodafone.it [5.90.59.111])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id B3DF91AFB;
-	Mon, 28 Oct 2024 16:30:04 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1730129405;
-	bh=/6Bcj0CPEUpTetdghXBMkQBN5vHJHRw+yJI9qQfbVDY=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=I+73oouv5/YjFLjXkHISCWjde46eiZBgA+BQJ8x78XJjNSTtqajldC1smQ+/c8jiC
-	 YBx/UqS7PchhvUddtN+yv1D9vITiZ2gjjYSP+YdrGD2D8fdYsJYK3re9XxNKmwjj0w
-	 nYzdfM+1Td4pk9dkbU7Opf3louwFG04/RHqqX/kc=
-Date: Mon, 28 Oct 2024 16:30:02 +0100
-From: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
-To: Hans Verkuil <hverkuil@xs4all.nl>
-Cc: Jacopo Mondi <jacopo.mondi@ideasonboard.com>, 
-	Dafna Hirschfeld <dafna@fastmail.com>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, 
-	"open list:ROCKCHIP ISP V1 DRIVER" <linux-media@vger.kernel.org>, Mauro Carvalho Chehab <mchehab@kernel.org>, 
-	Heiko Stuebner <heiko@sntech.de>, 
-	"open list:ROCKCHIP ISP V1 DRIVER" <linux-rockchip@lists.infradead.org>, Adam Pigg <adam@piggz.co.uk>
-Subject: Re: [PATCH v2] media: rkisp1: Reduce min_queued_buffers to 0
-Message-ID: <ncxqnajjdty456w6wsk5sonjuk3e2uzvcse7bdmmmmk4lop5i2@73vuqxkol4nr>
-References: <20241028143553.36704-1-jacopo.mondi@ideasonboard.com>
- <392682fd-3325-41ab-825d-67cb3de4c7b2@xs4all.nl>
+	id 1t5Ro8-0000000BKwo-0p9G;
+	Mon, 28 Oct 2024 15:37:29 +0000
+Received: by mail-lf1-x131.google.com with SMTP id 2adb3069b0e04-539f1292a9bso5183728e87.2;
+        Mon, 28 Oct 2024 08:37:27 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1730129846; x=1730734646; darn=lists.infradead.org;
+        h=mime-version:message-id:in-reply-to:date:subject:cc:to:from
+         :user-agent:references:from:to:cc:subject:date:message-id:reply-to;
+        bh=7e74bDnvczhbgPY2hFm8VtRHbs4Ka+p6FF5bmoD6B5w=;
+        b=i8fTz1P4kjwJfC/me7vlPLN5A+OsF31VgB1NzrrgEzAq9LvZXiiMuaGWQpwFR9S0Yz
+         COEPCAri8KX3QHb8l4iyISJL9+5+4i1aVXO2XiRYS7/VmjsirHQkdpQu6R7BGEROESCT
+         CiUtJzCEMw2Skvq6Wf/H4m64Ppxjv+1dRHEVk47h5J1vZALN65JvoznluwcT99MrMM/0
+         8n2+BQYJpTrhcEK/H5r/ommV2PM8YvEMFN3KHfbOSKRU3yKJRSU/x3eNoXpUiLDnVfmu
+         D2n2Ey5iGKhaNF2xRN4Wq8F88ivcVz69Y/2zjz9ycGh33+SAtbJ1zadD3uE3phmkkz5O
+         67kg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1730129846; x=1730734646;
+        h=mime-version:message-id:in-reply-to:date:subject:cc:to:from
+         :user-agent:references:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=7e74bDnvczhbgPY2hFm8VtRHbs4Ka+p6FF5bmoD6B5w=;
+        b=QUHvoSQHJWUwlgSueMwsPwDXqlvCXKpH14/T/7Tvd7e5llraytQMa7I7O4Lf4o3rX2
+         kJjHjQAVvdeoI3zWXsX40ki2H5iUNbMa/UxFSg+iQoH0wGay3smV0oqHoMEv1akgRqLV
+         ztxZOz42l9XTyHrIizCOSvxJ61LAmo9ffWKl4+wEihqVjYCwI6//Ct3LIfCpZiEbL/R9
+         zGu8wkqzYPn6E2oHIhSkb0NxgvMCmTAslSluQEvk4zejpwn46Ek0G4GZqks4bLVSbcXG
+         Q3pCJ/Ca5iQS6SGSiTe5mAOlh++LqQELf/KGHEAgZzP+7ODoeAQX2zIN04A35qB6Ncuw
+         jZ+Q==
+X-Forwarded-Encrypted: i=1; AJvYcCUmHVSMt3hKx8InuYAI17/sDtyG9rfhJDWS3yYq8iSfNbs8glG5sg8L8SogWoQrIaynzePUKB3Z86W9iVWPcxI=@lists.infradead.org, AJvYcCVbWbu1bu/7WwFQkZ6AKj8TAeJHmfkaEkSq6JmrEnJ6l2cwZmr0BNwgh26AarQZP8VIaVlOuCy2hbD567XhnteS@lists.infradead.org
+X-Gm-Message-State: AOJu0YzoQUOHNevgunEsKh5RkckUu0Gcr36UbQB1idqnhrPOK99FMcow
+	Lzh8cR1tKItPBYWhRjME7qhGZA2Acg2q1Qeki7c/aEMtlU1pWVqPhZ19GFddTRA=
+X-Google-Smtp-Source: AGHT+IEKqRcc/BlM5jdtPFigKOcuoyKaziXHTFpzuCBlf/+AQSM1aLQDV5fQ2Q5I6XrKnFzSoZmINQ==
+X-Received: by 2002:a05:6512:401f:b0:52c:9383:4c16 with SMTP id 2adb3069b0e04-53b348cea2amr3986159e87.22.1730129845496;
+        Mon, 28 Oct 2024 08:37:25 -0700 (PDT)
+Received: from razdolb ([45.12.135.46])
+        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-53b2e1dcbbdsm1110984e87.236.2024.10.28.08.37.24
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 28 Oct 2024 08:37:24 -0700 (PDT)
+References: <20241017-rk809-dcdc3-v1-1-e3c3de92f39c@gmail.com>
+User-agent: mu4e 1.10.8; emacs 29.4.50
+From: Mikhail Rudenko <mike.rudenko@gmail.com>
+To: linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org
+Cc: Liam Girdwood <lgirdwood@gmail.com>,
+    Mark Brown <broonie@kernel.org>,
+    Alex Bee <knaerzche@gmail.com>,
+    Lee Jones <lee@kernel.org>,
+    Quentin Schulz <foss+kernel@0leil.net>,
+    Linus Walleij <linus.walleij@linaro.org>,
+    Chris Zhong <zyw@rock-chips.com>,
+    Zhang Qing <zhangqing@rock-chips.com>,
+    Mikhail Rudenko <mike.rudenko@gmail.com>
+Subject: Re: [PATCH] regulator: rk808: Add apply_bit for BUCK3 on RK809
+Date: Mon, 28 Oct 2024 18:20:55 +0300
+In-reply-to: <20241017-rk809-dcdc3-v1-1-e3c3de92f39c@gmail.com>
+Message-ID: <87v7xcp7bh.fsf@gmail.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <392682fd-3325-41ab-825d-67cb3de4c7b2@xs4all.nl>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241028_083012_279754_A07AC2A8 
-X-CRM114-Status: GOOD (  41.35  )
+X-CRM114-CacheID: sfid-20241028_083728_254477_A80FA7BF 
+X-CRM114-Status: GOOD (  16.68  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,127 +99,49 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Hans
+Gentle ping.
 
-On Mon, Oct 28, 2024 at 04:02:13PM +0100, Hans Verkuil wrote:
-> On 28/10/2024 15:35, Jacopo Mondi wrote:
-> > There apparently is no reason to require 3 queued buffers to call
-> > streamon() for the RkISP1 as the driver operates with a scratch buffer
-> > where frames can be directed to if there's no available buffer provided
-> > by userspace.
-> >
-> > Reduce the number of required buffers to 0 to allow applications to
-> > operate by queueing capture buffers on-demand.
-> >
-> > Tested with libcamera, by operating with a single capture request. The
-> > same request (and associated capture buffer) gets recycled once
-> > completed. This of course causes a frame rate drop but doesn't hinder
-> > operations.
-> >
-> > Signed-off-by: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
-> > ---
-> > The first version of this patch set min_queued_buffers to 1, but setting it
-> > to 0 doesn't compromise operations and it's even better as it allows application
-> > to queue buffers to the capture devices on-demand. If a buffer is not provided
-> > to the DMA engines, image data gets directed to the driver's internal scratch
-> > buffer.
-> > ---
-> >  drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c | 4 +---
-> >  1 file changed, 1 insertion(+), 3 deletions(-)
-> >
-> > diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
-> > index 2bddb4fa8a5c..5fcf9731f41b 100644
-> > --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
-> > +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
-> > @@ -35,8 +35,6 @@
-> >  #define RKISP1_SP_DEV_NAME	RKISP1_DRIVER_NAME "_selfpath"
-> >  #define RKISP1_MP_DEV_NAME	RKISP1_DRIVER_NAME "_mainpath"
-> >
-> > -#define RKISP1_MIN_BUFFERS_NEEDED 3
-> > -
-> >  enum rkisp1_plane {
-> >  	RKISP1_PLANE_Y	= 0,
-> >  	RKISP1_PLANE_CB	= 1,
-> > @@ -1563,7 +1561,7 @@ static int rkisp1_register_capture(struct rkisp1_capture *cap)
-> >  	q->ops = &rkisp1_vb2_ops;
-> >  	q->mem_ops = &vb2_dma_contig_memops;
-> >  	q->buf_struct_size = sizeof(struct rkisp1_buffer);
-> > -	q->min_queued_buffers = RKISP1_MIN_BUFFERS_NEEDED;
-> > +	q->min_queued_buffers = 0;
+Also Cc more potential reviewers.
+
+On 2024-10-17 at 21:37 +03, Mikhail Rudenko <mike.rudenko@gmail.com> wrote:
+
+> Currently, RK809's BUCK3 regulator is modelled in the driver as a
+> configurable regulator with 0.5-2.4V voltage range. But the voltage
+> setting is not actually applied, because when bit 6 of
+> PMIC_POWER_CONFIG register is set to 0 (default), BUCK3 output voltage
+> is determined by the external feedback resistor. Fix this, by setting
+> bit 6 when voltage selection is set. Existing users which do not
+> specify voltage constraints in their device trees will not be affected
+> by this change, since no voltage setting is applied in those cases,
+> and bit 6 is not enabled.
 >
-> You can probably just drop this since the vb2_queue struct is zeroed when it
-> is allocated. So no need to set it to 0.
-
-I suspected so :)
-
+> Signed-off-by: Mikhail Rudenko <mike.rudenko@gmail.com>
+> ---
+>  drivers/regulator/rk808-regulator.c | 2 ++
+>  1 file changed, 2 insertions(+)
 >
-> And is the RKISP1_MIN_BUFFERS_NEEDED define still needed after this change?
-
-No, and this patch removes it in facts
-
- -#define RKISP1_MIN_BUFFERS_NEEDED 3
- -
-
+> diff --git a/drivers/regulator/rk808-regulator.c b/drivers/regulator/rk808-regulator.c
+> index 14b60abd6afc..01a8d0487918 100644
+> --- a/drivers/regulator/rk808-regulator.c
+> +++ b/drivers/regulator/rk808-regulator.c
+> @@ -1379,6 +1379,8 @@ static const struct regulator_desc rk809_reg[] = {
+>  		.n_linear_ranges = ARRAY_SIZE(rk817_buck1_voltage_ranges),
+>  		.vsel_reg = RK817_BUCK3_ON_VSEL_REG,
+>  		.vsel_mask = RK817_BUCK_VSEL_MASK,
+> +		.apply_reg = RK817_POWER_CONFIG,
+> +		.apply_bit = RK817_BUCK3_FB_RES_INTER,
+>  		.enable_reg = RK817_POWER_EN_REG(0),
+>  		.enable_mask = ENABLE_MASK(RK817_ID_DCDC3),
+>  		.enable_val = ENABLE_MASK(RK817_ID_DCDC3),
 >
-> Also, see my RFC I posted today:
->
-> https://lore.kernel.org/linux-media/126cd76a-6224-483b-a18d-a3cc89e5ff2d@xs4all.nl/T/#u
->
-> My main concern is that applications that just call VIDIOC_REQBUFS with count = 1
-> and expect the driver to change that to a workable value, will, in fact, now just get
-> one buffer. And streaming that will cause lots of frame drops.
->
-> It makes sense to leave min_queued_buffers at 0 if a scratch buffer is available,
-> but I'm unhappy with the fact that you get a poor experience when REQBUFS(1) is called.
-
-Yeah, I've read the discussion between you and Tomi and it seemed like
-a good time to re-send this patch.
-
->
-> My RFC suggests improvements in the uAPI. With that in place you can use CREATE_BUFS in
-> libcamera to get much better control over how many buffers should be allocated.
+> ---
+> base-commit: 9852d85ec9d492ebef56dc5f229416c925758edc
+> change-id: 20241017-rk809-dcdc3-388632b4da03
 >
 
-In my understanding min_queued_buffers identifies how many buffers
-should be queued before calling start_streaming, and this comes
-directly from an hw/driver requirement. This doesn't mean that at
-least min_queue_buffers should be queued at all the times during
-streaming, at least, I don't see how and where videobuf2 enforces
-this. Or does it ?
-
-If the above is correct, then the number of buffers to be queued
-during streaming is, in my opinion, less an hw/driver requirement but
-more an application decision. As you said an application should be good with
-3 buffers (one queued, one currently being written to, one to be
-consumed by the application), but in very specific cases where an
-application retains the buffer for longer, for whatever reason, it
-might need a larger number of queued buffers to provide the DMA
-engines a space where to write data without them being discarded (to
-scratch buffers or discarded by the DMA engine itself, if the HW
-supports that). Or maybe an application is fine to drop frames and
-only queue buffers sporadically (if the HW supports that ofc).
-
-For libcamera, and for this specific platform in particular, we're
-going to base new developments on the assumption that
-min_queued_buffers == 0, and it would be more convenient for use to be
-able to access its value from userspace to identify if we're running
-on a kernel with or without this patch being applied.
-
-Thanks
-  j
-
-> Regards,
->
-> 	Hans
->
-> >  	q->timestamp_flags = V4L2_BUF_FLAG_TIMESTAMP_MONOTONIC;
-> >  	q->lock = &node->vlock;
-> >  	q->dev = cap->rkisp1->dev;
-> > --
-> > 2.47.0
-> >
-> >
->
+--
+Best regards,
+Mikhail Rudenko
 
 _______________________________________________
 Linux-rockchip mailing list
