@@ -4,85 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C4837D3399D
-	for <linux-rockchip@archiver.kernel.org>; Mon, 28 Oct 2024 16:00:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 36619D3399B
+	for <linux-rockchip@archiver.kernel.org>; Mon, 28 Oct 2024 16:05:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:In-reply-to:
-	Date:Subject:Cc:To:From:References:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=16xs6fewISujZzXoqjw4qD8NVxeCK+8pIP/FLdQLuqM=; b=KWptsGxSPLR4c+
-	Deya9Xh04HF43pFp3QB3D2bdZh7qYenyv5/FxlrCpjkJA/UX99F+EwO9fzN9i9wTnx+CB88TESBtJ
-	ObNnmEyGPM40W4YQ0YamJ4ZSNAn0k4kFCdurm1f/rwwEwPfw/IckFZnzWyieV/AdblLYdmTD7UrLX
-	uWA6wHrdCJjSxDqUBMSBjr94PdA347gIldAeZOfzM8hVu63ScqHshLSJWsGrOwT17R0b4F7E4Z7Mg
-	ZUyJa7DHL4v8oPqpO06SlYvBqFqJXNzCiJfldRyzi/mM2HERzx+3WCBHOSMygwt9OyNP4V/amd3mM
-	7/xgJHIcFsFWJL/PsSuw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=steXytTKg8OccVIHBd5vyfpJzDXJu7bod+N+7fn5KEQ=; b=HbMEgYxIHoBUTyKn0HDCclgAOY
+	38M2WifL//1p5dUhkys+jD3Y93Lk6SLKijUHNDo4gKLHbZjfHxXvJeqAdXdhuFhzFu+xjEE334zVj
+	Sl2mFSaJ9tZi53RYy8ZOq5ckSWcY42aVa033kHc63abR6wQUrLFO52SRP1A66gm2j+04VADmQcu4o
+	C5xLKX+Ra7wkUXKFsoRfRHRDfoezo43pAeKnxjC6fcc9PPFIcO83249nEiCZ6Fb1qWGs0tlzWhsnh
+	zbjOoZXKUUvIG6+d9kUlwrV3WoUgNl3FDpJrdpz5IoS0O7D2HoxiNR9k0gS3P08kovDTiXQzBRA1H
+	3ErrtXZg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t5SAk-0000000BOu5-0IhG;
-	Mon, 28 Oct 2024 16:00:50 +0000
-Received: from mail-lf1-x131.google.com ([2a00:1450:4864:20::131])
+	id 1t5SFU-0000000BPrq-2Xw8;
+	Mon, 28 Oct 2024 16:05:44 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t5Ro8-0000000BKwo-0p9G;
-	Mon, 28 Oct 2024 15:37:29 +0000
-Received: by mail-lf1-x131.google.com with SMTP id 2adb3069b0e04-539f1292a9bso5183728e87.2;
-        Mon, 28 Oct 2024 08:37:27 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1730129846; x=1730734646; darn=lists.infradead.org;
-        h=mime-version:message-id:in-reply-to:date:subject:cc:to:from
-         :user-agent:references:from:to:cc:subject:date:message-id:reply-to;
-        bh=7e74bDnvczhbgPY2hFm8VtRHbs4Ka+p6FF5bmoD6B5w=;
-        b=i8fTz1P4kjwJfC/me7vlPLN5A+OsF31VgB1NzrrgEzAq9LvZXiiMuaGWQpwFR9S0Yz
-         COEPCAri8KX3QHb8l4iyISJL9+5+4i1aVXO2XiRYS7/VmjsirHQkdpQu6R7BGEROESCT
-         CiUtJzCEMw2Skvq6Wf/H4m64Ppxjv+1dRHEVk47h5J1vZALN65JvoznluwcT99MrMM/0
-         8n2+BQYJpTrhcEK/H5r/ommV2PM8YvEMFN3KHfbOSKRU3yKJRSU/x3eNoXpUiLDnVfmu
-         D2n2Ey5iGKhaNF2xRN4Wq8F88ivcVz69Y/2zjz9ycGh33+SAtbJ1zadD3uE3phmkkz5O
-         67kg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1730129846; x=1730734646;
-        h=mime-version:message-id:in-reply-to:date:subject:cc:to:from
-         :user-agent:references:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=7e74bDnvczhbgPY2hFm8VtRHbs4Ka+p6FF5bmoD6B5w=;
-        b=QUHvoSQHJWUwlgSueMwsPwDXqlvCXKpH14/T/7Tvd7e5llraytQMa7I7O4Lf4o3rX2
-         kJjHjQAVvdeoI3zWXsX40ki2H5iUNbMa/UxFSg+iQoH0wGay3smV0oqHoMEv1akgRqLV
-         ztxZOz42l9XTyHrIizCOSvxJ61LAmo9ffWKl4+wEihqVjYCwI6//Ct3LIfCpZiEbL/R9
-         zGu8wkqzYPn6E2oHIhSkb0NxgvMCmTAslSluQEvk4zejpwn46Ek0G4GZqks4bLVSbcXG
-         Q3pCJ/Ca5iQS6SGSiTe5mAOlh++LqQELf/KGHEAgZzP+7ODoeAQX2zIN04A35qB6Ncuw
-         jZ+Q==
-X-Forwarded-Encrypted: i=1; AJvYcCUmHVSMt3hKx8InuYAI17/sDtyG9rfhJDWS3yYq8iSfNbs8glG5sg8L8SogWoQrIaynzePUKB3Z86W9iVWPcxI=@lists.infradead.org, AJvYcCVbWbu1bu/7WwFQkZ6AKj8TAeJHmfkaEkSq6JmrEnJ6l2cwZmr0BNwgh26AarQZP8VIaVlOuCy2hbD567XhnteS@lists.infradead.org
-X-Gm-Message-State: AOJu0YzoQUOHNevgunEsKh5RkckUu0Gcr36UbQB1idqnhrPOK99FMcow
-	Lzh8cR1tKItPBYWhRjME7qhGZA2Acg2q1Qeki7c/aEMtlU1pWVqPhZ19GFddTRA=
-X-Google-Smtp-Source: AGHT+IEKqRcc/BlM5jdtPFigKOcuoyKaziXHTFpzuCBlf/+AQSM1aLQDV5fQ2Q5I6XrKnFzSoZmINQ==
-X-Received: by 2002:a05:6512:401f:b0:52c:9383:4c16 with SMTP id 2adb3069b0e04-53b348cea2amr3986159e87.22.1730129845496;
-        Mon, 28 Oct 2024 08:37:25 -0700 (PDT)
-Received: from razdolb ([45.12.135.46])
-        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-53b2e1dcbbdsm1110984e87.236.2024.10.28.08.37.24
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 28 Oct 2024 08:37:24 -0700 (PDT)
-References: <20241017-rk809-dcdc3-v1-1-e3c3de92f39c@gmail.com>
-User-agent: mu4e 1.10.8; emacs 29.4.50
-From: Mikhail Rudenko <mike.rudenko@gmail.com>
-To: linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org
-Cc: Liam Girdwood <lgirdwood@gmail.com>,
-    Mark Brown <broonie@kernel.org>,
-    Alex Bee <knaerzche@gmail.com>,
-    Lee Jones <lee@kernel.org>,
-    Quentin Schulz <foss+kernel@0leil.net>,
-    Linus Walleij <linus.walleij@linaro.org>,
-    Chris Zhong <zyw@rock-chips.com>,
-    Zhang Qing <zhangqing@rock-chips.com>,
-    Mikhail Rudenko <mike.rudenko@gmail.com>
+	id 1t5RqT-0000000BLMg-2TMG;
+	Mon, 28 Oct 2024 15:39:54 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id C42BF5C5B61;
+	Mon, 28 Oct 2024 15:39:07 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4CDF4C4CEC7;
+	Mon, 28 Oct 2024 15:39:50 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1730129992;
+	bh=Fx4vDdViRJ8GcQyvhRhbci3FJE9Eix0UuCepUomfBko=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=MIU4DVl/ICbBONRfOJ78jWcnPlXWX85nIcNollz35p37CBnWr9WE2D9YFGUqwpy6T
+	 AvMZkI8V/mOsMw7s3ICzEeTM7go3Wbb1xF4fflMPVLaR94dzQiXS9mSokovK150zzg
+	 Dl+56JLPy1/2kkXed3l09MLTA0Ra5c+m1gyVO8m+ELozLlI304K04eSdUx42QlTzkt
+	 cuuZxEqgUg1ezOWocpl4laFF4Afho3rBK4cGrMXZjZDRHZXa88FLFc2xa6kf0DoH3t
+	 V6s/obpZt83YsWAihAQpvAWPl1LYvwI3ARFkaPn3EOCrj6rhO0Aii+53fPf+qEQMIE
+	 aOHXQT3sJ6WSA==
+Date: Mon, 28 Oct 2024 15:39:47 +0000
+From: Mark Brown <broonie@kernel.org>
+To: Mikhail Rudenko <mike.rudenko@gmail.com>
+Cc: linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	Liam Girdwood <lgirdwood@gmail.com>, Alex Bee <knaerzche@gmail.com>,
+	Lee Jones <lee@kernel.org>, Quentin Schulz <foss+kernel@0leil.net>,
+	Linus Walleij <linus.walleij@linaro.org>,
+	Chris Zhong <zyw@rock-chips.com>,
+	Zhang Qing <zhangqing@rock-chips.com>
 Subject: Re: [PATCH] regulator: rk808: Add apply_bit for BUCK3 on RK809
-Date: Mon, 28 Oct 2024 18:20:55 +0300
-In-reply-to: <20241017-rk809-dcdc3-v1-1-e3c3de92f39c@gmail.com>
-Message-ID: <87v7xcp7bh.fsf@gmail.com>
+Message-ID: <a979db13-9ced-487a-ad35-47d6ea50ddf2@sirena.org.uk>
+References: <20241017-rk809-dcdc3-v1-1-e3c3de92f39c@gmail.com>
+ <87v7xcp7bh.fsf@gmail.com>
 MIME-Version: 1.0
+In-Reply-To: <87v7xcp7bh.fsf@gmail.com>
+X-Cookie: Remember the... the... uhh.....
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241028_083728_254477_A80FA7BF 
-X-CRM114-Status: GOOD (  16.68  )
+X-CRM114-CacheID: sfid-20241028_083953_710800_34E29425 
+X-CRM114-Status: GOOD (  13.15  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,56 +72,71 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============4705761337220697322=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Gentle ping.
 
-Also Cc more potential reviewers.
+--===============4705761337220697322==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="5gCpyIDO+BYmkXID"
+Content-Disposition: inline
 
-On 2024-10-17 at 21:37 +03, Mikhail Rudenko <mike.rudenko@gmail.com> wrote:
 
-> Currently, RK809's BUCK3 regulator is modelled in the driver as a
-> configurable regulator with 0.5-2.4V voltage range. But the voltage
-> setting is not actually applied, because when bit 6 of
-> PMIC_POWER_CONFIG register is set to 0 (default), BUCK3 output voltage
-> is determined by the external feedback resistor. Fix this, by setting
-> bit 6 when voltage selection is set. Existing users which do not
-> specify voltage constraints in their device trees will not be affected
-> by this change, since no voltage setting is applied in those cases,
-> and bit 6 is not enabled.
->
-> Signed-off-by: Mikhail Rudenko <mike.rudenko@gmail.com>
-> ---
->  drivers/regulator/rk808-regulator.c | 2 ++
->  1 file changed, 2 insertions(+)
->
-> diff --git a/drivers/regulator/rk808-regulator.c b/drivers/regulator/rk808-regulator.c
-> index 14b60abd6afc..01a8d0487918 100644
-> --- a/drivers/regulator/rk808-regulator.c
-> +++ b/drivers/regulator/rk808-regulator.c
-> @@ -1379,6 +1379,8 @@ static const struct regulator_desc rk809_reg[] = {
->  		.n_linear_ranges = ARRAY_SIZE(rk817_buck1_voltage_ranges),
->  		.vsel_reg = RK817_BUCK3_ON_VSEL_REG,
->  		.vsel_mask = RK817_BUCK_VSEL_MASK,
-> +		.apply_reg = RK817_POWER_CONFIG,
-> +		.apply_bit = RK817_BUCK3_FB_RES_INTER,
->  		.enable_reg = RK817_POWER_EN_REG(0),
->  		.enable_mask = ENABLE_MASK(RK817_ID_DCDC3),
->  		.enable_val = ENABLE_MASK(RK817_ID_DCDC3),
->
-> ---
-> base-commit: 9852d85ec9d492ebef56dc5f229416c925758edc
-> change-id: 20241017-rk809-dcdc3-388632b4da03
->
+--5gCpyIDO+BYmkXID
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
---
-Best regards,
-Mikhail Rudenko
+On Mon, Oct 28, 2024 at 06:20:55PM +0300, Mikhail Rudenko wrote:
+> Gentle ping.
+
+Please don't send content free pings and please allow a reasonable time
+for review.  People get busy, go on holiday, attend conferences and so=20
+on so unless there is some reason for urgency (like critical bug fixes)
+please allow at least a couple of weeks for review.  If there have been
+review comments then people may be waiting for those to be addressed.
+
+Sending content free pings adds to the mail volume (if they are seen at
+all) which is often the problem and since they can't be reviewed
+directly if something has gone wrong you'll have to resend the patches
+anyway, so sending again is generally a better approach though there are
+some other maintainers who like them - if in doubt look at how patches
+for the subsystem are normally handled.
+
+Please don't top post, reply in line with needed context.  This allows
+readers to readily follow the flow of conversation and understand what
+you are talking about and also helps ensure that everything in the
+discussion is being addressed.
+
+--5gCpyIDO+BYmkXID
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmcfsEIACgkQJNaLcl1U
+h9AP3gf/Uo6vVVZ6YhtYq18TjA/BmdNMf6/mLW1e27b4glU3DHiJ0/C8Yi0FIFgq
+v0b2Xiczw/KjSc5T/xu/lz4epzO5vCnqOQ6zk+xzUyOkAg5OGcEEXnq7Ru75YJUL
++CZj+n8OzccZ+OBtwCSV4AJeValaUO06/ZSRdkY8Y62/fQphXNTJ0SpBBMEV1LJd
+Nb2aL2R5gkQzxRdzEEtG/I8BZIh5XG9PtC+LgkqsoPBCZKderLmJ5huCkrnuBVUN
+DZAF6s6jYDG+wjXYzdfdII4o3l44UDarGzcViWIYlZCeuhw+YPXNxNp0L8Z28bFs
+ln4TlJl1jvXbqEciGDsDAjPI3RmpYA==
+=29HX
+-----END PGP SIGNATURE-----
+
+--5gCpyIDO+BYmkXID--
+
+
+--===============4705761337220697322==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============4705761337220697322==--
+
