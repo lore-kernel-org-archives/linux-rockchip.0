@@ -4,60 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 86AD8D13570
-	for <linux-rockchip@archiver.kernel.org>; Mon, 28 Oct 2024 07:43:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5E365D1359F
+	for <linux-rockchip@archiver.kernel.org>; Mon, 28 Oct 2024 12:39:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=KVjF534uVbdhoVq+BDjWpcJULrIz33JgNfPZBLrJz2k=; b=0FyyvqzL1C8CEr
-	jq3G8jA4nqLkrJFvBy5HhxKLuGH8ZQNYg7IOJCViM7u3iW3pnkTrEvRQEWkOMGw3nHkBVHhNDsLeL
-	cFHpTz2Bx7XLm3tWOWqLUX9u8AHEFJ+7GrOw45Hrmn5iNCgNEewLJ/iB9kuhOTZJGyBChugpUoSQU
-	uGr4bn8xY1x+qsurzJSqU/wmie/+CfV78/iCbm+NFuxpaqJ+VPYGKuwBqIelnL23SAGwF46sOP1YO
-	txTElzN8jog5M3HCiStPZWmrJkfuH7XkazwO3QHtbru6ClrCn5IfYF67z+tPlt80YcW5DJtSheUmC
-	dcSpPP4l/0qHc2jEZS5w==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=VMq74pVT3WSC4TeuINihQQZxJVdYroiQIBHUrsVc8PM=; b=rOtmeucKQpka8F
+	Zl+3BKqT1498iYDoEIWX17D3RUs8g9jK3EPckN+Np8t0qFQucwotiF7MwuR3UsMf68bSA5Eyg7qwK
+	OAIO/rOfstF2N5dyQ+FH+aipAoz0DvnbQv2vPUNEXgYMFH3IsVupsC38koc3UYMsGzP2MpGu3Svkf
+	fiYCApZaSXlUx8WACUC2rtuGEZcLR9nbYh/kCLbzzkin4+T+nXuZqQ76AeRRpusWExDJ3gX8NEp4X
+	9ZLzEiomYh44TTJYEgLIvpAXIkaCUl8DcNu9DqRx1ETdlkH5HsLSwQb5SUMyBXG4j1iXJ8uHfj0+w
+	6cE2vBroOwsty+uWDIlw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t5KPV-00000009vjc-2clt;
-	Mon, 28 Oct 2024 07:43:33 +0000
-Received: from m16.mail.163.com ([220.197.31.4])
+	id 1t5P1O-0000000AmfB-0p4q;
+	Mon, 28 Oct 2024 12:38:58 +0000
+Received: from m16.mail.163.com ([220.197.31.3])
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t5KNt-00000009vMU-1Tqs;
-	Mon, 28 Oct 2024 07:41:55 +0000
+	id 1t5Oxm-0000000AlpS-3cav;
+	Mon, 28 Oct 2024 12:35:16 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=From:Subject:Date:Message-ID:MIME-Version; bh=ReNNa
-	/bjIUuQfNRlBiXhYY/+3u8nvvMSOrGOZBdjHB0=; b=O3ZDwoOajOf3TPWHJlXlb
-	DnNxqlYO2fv0gRHOTg8W7dd/MUwDJwX1SFnWeH23dqRvT4GFRdXh3VWdWKT9UcgB
-	99EIr0BQe71NtFKty3glh2L9IFl5Pbo2YJxok4mrk0+ne3vmNOI9I799m1h3T0nC
-	jaaC+8sE4A5ZcXYto9eRP0=
+	s=s110527; h=From:Subject:Date:Message-ID:MIME-Version; bh=sGXAv
+	ZN6OzVPvAHYYKDVulgxFxNefKXk3I0OnEojRD0=; b=dZPxq51+r33wrg9bHdss3
+	PnWA0Q7hx5WgDht40418kF2nMK7IV4uYviEUm1l+5KMScDVcjTKwpCTy1OVSVpe8
+	VAOaL6LL8ZXws0y3/NwLDC0Wuh/0Vn2a49Wvm0n63ADC6CieKQOawmKp/hQqHEvm
+	JlGgice12QzMkznHnQO0cs=
 Received: from ProDesk.. (unknown [58.22.7.114])
-	by gzga-smtp-mtada-g0-4 (Coremail) with SMTP id _____wDnr6c1QB9nigGjDg--.909S2;
-	Mon, 28 Oct 2024 15:41:44 +0800 (CST)
+	by gzga-smtp-mtada-g1-3 (Coremail) with SMTP id _____wD3f+b5hB9nytgkBw--.9113S4;
+	Mon, 28 Oct 2024 20:35:09 +0800 (CST)
 From: Andy Yan <andyshrk@163.com>
 To: heiko@sntech.de
-Cc: hjc@rock-chips.com,
-	dri-devel@lists.freedesktop.org,
-	linux-arm-kernel@lists.infradead.org,
+Cc: linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
-	Andy Yan <andy.yan@rock-chips.com>
-Subject: [PATCH] drm/rockchip: vop2: Don't spam logs in atomic update
-Date: Mon, 28 Oct 2024 15:41:34 +0800
-Message-ID: <20241028074140.382199-1-andyshrk@163.com>
+	Andy Yan <andyshrk@163.com>
+Subject: [PATCH v2 2/3] arm64: dts: rockchip: Enable HDMI display for rk3588 Cool Pi 4B
+Date: Mon, 28 Oct 2024 20:34:57 +0800
+Message-ID: <20241028123503.384866-3-andyshrk@163.com>
 X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20241028123503.384866-1-andyshrk@163.com>
+References: <20241028123503.384866-1-andyshrk@163.com>
 MIME-Version: 1.0
-X-CM-TRANSID: _____wDnr6c1QB9nigGjDg--.909S2
-X-Coremail-Antispam: 1Uf129KBjvJXoWxJw13Gr1xCw4kAr4rZFyUGFg_yoW5WFW8pF
-	y7CF909r4Utr4qga47JrZxZr43K392ka4xtF4xW3W7K343trn7JrsxGF4xJrWYvF48u34U
-	AFn8J34Y9a4xZF7anT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07j-SdgUUUUU=
+X-CM-TRANSID: _____wD3f+b5hB9nytgkBw--.9113S4
+X-Coremail-Antispam: 1Uf129KBjvJXoW7tFyrGFWfAw4xCFW7tr1fJFb_yoW8Ww43p3
+	ZrurZ5GrZ3urW7XwsxAF1xJrsYyws5CayxGw13ZFy3tr42gas5tw1xGrnYvFyDAFWxZ3y3
+	Cr1kJFyq9r4UXw7anT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x0ziNVy3UUUUU=
 X-Originating-IP: [58.22.7.114]
-X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/xtbB0gyGXmcfN0LRQQAAsb
+X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/1tbiqRGGXmcffS5+9gAAsD
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241028_004153_718157_82C5A30C 
-X-CRM114-Status: UNSURE (   9.28  )
+X-CRM114-CacheID: sfid-20241028_053515_244049_4636FCC8 
+X-CRM114-Status: UNSURE (   9.73  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -75,73 +75,90 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Andy Yan <andy.yan@rock-chips.com>
+Enable the micro HDMI on Cool Pi 4B.
 
-Demote the error message to drm_dbg_kms to only print the message
-if the respective debug messages are enabled.
+Signed-off-by: Andy Yan <andyshrk@163.com>
 
-Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
 ---
 
- drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 16 +++++++++-------
- 1 file changed, 9 insertions(+), 7 deletions(-)
+Changes in v2:
+- Remove enable-gpios as it is unevaluated
+- Remove pinctrl setting as it use the default
 
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-index 5c5459ee03076..e75b027674869 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-@@ -1373,8 +1373,9 @@ static void vop2_plane_atomic_update(struct drm_plane *plane,
- 	dsp_w = drm_rect_width(dest);
+ .../boot/dts/rockchip/rk3588s-coolpi-4b.dts   | 47 +++++++++++++++++++
+ 1 file changed, 47 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-coolpi-4b.dts b/arch/arm64/boot/dts/rockchip/rk3588s-coolpi-4b.dts
+index 074c316a9a69..27a89a110085 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588s-coolpi-4b.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3588s-coolpi-4b.dts
+@@ -11,6 +11,7 @@
+ #include <dt-bindings/gpio/gpio.h>
+ #include <dt-bindings/leds/common.h>
+ #include <dt-bindings/pinctrl/rockchip.h>
++#include <dt-bindings/soc/rockchip,vop2.h>
+ #include "rk3588s.dtsi"
  
- 	if (dest->x1 + dsp_w > adjusted_mode->hdisplay) {
--		drm_err(vop2->drm, "vp%d %s dest->x1[%d] + dsp_w[%d] exceed mode hdisplay[%d]\n",
--			vp->id, win->data->name, dest->x1, dsp_w, adjusted_mode->hdisplay);
-+		drm_dbg_kms(vop2->drm,
-+			    "vp%d %s dest->x1[%d] + dsp_w[%d] exceed mode hdisplay[%d]\n",
-+			    vp->id, win->data->name, dest->x1, dsp_w, adjusted_mode->hdisplay);
- 		dsp_w = adjusted_mode->hdisplay - dest->x1;
- 		if (dsp_w < 4)
- 			dsp_w = 4;
-@@ -1384,8 +1385,9 @@ static void vop2_plane_atomic_update(struct drm_plane *plane,
- 	dsp_h = drm_rect_height(dest);
+ / {
+@@ -38,6 +39,17 @@ chosen {
+ 		stdout-path = "serial2:1500000n8";
+ 	};
  
- 	if (dest->y1 + dsp_h > adjusted_mode->vdisplay) {
--		drm_err(vop2->drm, "vp%d %s dest->y1[%d] + dsp_h[%d] exceed mode vdisplay[%d]\n",
--			vp->id, win->data->name, dest->y1, dsp_h, adjusted_mode->vdisplay);
-+		drm_dbg_kms(vop2->drm,
-+			    "vp%d %s dest->y1[%d] + dsp_h[%d] exceed mode vdisplay[%d]\n",
-+			    vp->id, win->data->name, dest->y1, dsp_h, adjusted_mode->vdisplay);
- 		dsp_h = adjusted_mode->vdisplay - dest->y1;
- 		if (dsp_h < 4)
- 			dsp_h = 4;
-@@ -1398,14 +1400,14 @@ static void vop2_plane_atomic_update(struct drm_plane *plane,
- 	 */
- 	if (!(win->data->feature & WIN_FEATURE_AFBDC)) {
- 		if (actual_w > dsp_w && (actual_w & 0xf) == 1) {
--			drm_err(vop2->drm, "vp%d %s act_w[%d] MODE 16 == 1\n",
-+			drm_dbg_kms(vop2->drm, "vp%d %s act_w[%d] MODE 16 == 1\n",
- 				vp->id, win->data->name, actual_w);
- 			actual_w -= 1;
- 		}
- 	}
- 
- 	if (afbc_en && actual_w % 4) {
--		drm_err(vop2->drm, "vp%d %s actual_w[%d] not 4 pixel aligned\n",
-+		drm_dbg_kms(vop2->drm, "vp%d %s actual_w[%d] not 4 pixel aligned\n",
- 			vp->id, win->data->name, actual_w);
- 		actual_w = ALIGN_DOWN(actual_w, 4);
- 	}
-@@ -1443,7 +1445,7 @@ static void vop2_plane_atomic_update(struct drm_plane *plane,
- 		 */
- 		stride = (fb->pitches[0] << 3) / bpp;
- 		if ((stride & 0x3f) && (xmirror || rotate_90 || rotate_270))
--			drm_err(vop2->drm, "vp%d %s stride[%d] not 64 pixel aligned\n",
-+			drm_dbg_kms(vop2->drm, "vp%d %s stride[%d] not 64 pixel aligned\n",
- 				vp->id, win->data->name, stride);
- 
- 		uv_swap = vop2_afbc_uv_swap(fb->format->format);
++	hdmi-con {
++		compatible = "hdmi-connector";
++		type = "d";
++
++		port {
++			hdmi_con_in: endpoint {
++				remote-endpoint = <&hdmi0_out_con>;
++			};
++		};
++	};
++
+ 	leds: leds {
+ 		compatible = "gpio-leds";
+ 		pinctrl-names = "default";
+@@ -815,3 +827,38 @@ &usb_host1_ehci {
+ &usb_host1_ohci {
+ 	status = "okay";
+ };
++
++&hdmi0 {
++	status = "okay";
++};
++
++&hdmi0_in {
++	hdmi0_in_vp0: endpoint {
++		remote-endpoint = <&vp0_out_hdmi0>;
++	};
++};
++
++&hdmi0_out {
++	hdmi0_out_con: endpoint {
++		remote-endpoint = <&hdmi_con_in>;
++	};
++};
++
++&hdptxphy_hdmi0 {
++	status = "okay";
++};
++
++&vop {
++	status = "okay";
++};
++
++&vop_mmu {
++	status = "okay";
++};
++
++&vp0 {
++	vp0_out_hdmi0: endpoint@ROCKCHIP_VOP2_EP_HDMI0 {
++		reg = <ROCKCHIP_VOP2_EP_HDMI0>;
++		remote-endpoint = <&hdmi0_in_vp0>;
++	};
++};
 -- 
-2.34.1
+2.43.0
 
 
 _______________________________________________
