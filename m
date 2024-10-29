@@ -4,37 +4,37 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F2090D2AB11
-	for <linux-rockchip@archiver.kernel.org>; Tue, 29 Oct 2024 10:07:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6F246D2AB1C
+	for <linux-rockchip@archiver.kernel.org>; Tue, 29 Oct 2024 10:26:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=vwphjTf8RyBDI9SopK5hQEJGmvJFkIaQBDtlBf48ECo=; b=KiWdLT57yaIrlb
-	/ONQxV+yzJR4z9EFWnrxA28Nocmt+86M83hAbWMRw8IZcMfAhuWJE0iN6dJNoSHU31ovi36GBBjPP
-	HOAhbEHzfAQLpryx24meBFh/G2S1Sw8F9cB0MN4lqYL9SnoVSteVgNS9DRmpG6zL9fTYKWirThEQP
-	l7v3TrVZOEpZDjT5ZcbBk8rHAcEuueWPeGyY1D/ehmcjg5U2I7Jseoh4+Y/e9KRctXpZMO8q1zv0y
-	OXIoTub72VEc9QP1PoVK+rvJpkXUl/pwVIrRKEQZb5JTm11J7lcyFVWqLhr/R2LxcODwJpqEExl4M
-	KqpfOPbWZNaRI3pV5oeQ==;
+	List-Owner; bh=gEcVBLp1HxvSn5Qkz1oeIXgmZrPTTs7kvDIQSD7eyHE=; b=ty1sOEeVEIMea5
+	8khmNYTBHxraugwxDSXWVKmF7qIQA8OgF62ChzuZMjNqFhZZC3ZYG/VTh16rzhhcVcI1xpI/s/8vD
+	l0mbFA+fe9HixZ+04HISwHkV/hiV4h9imVMfzFWUkQWYmKpjlSjjP1TIOxbovK8FRc+xj+1b7iSPl
+	2WRb/2tCaaL/KgvZkcMYRB60lEdib5Phi9Z97R8O2hIoCL8mRPSF2aUCThmkt1dKKkoxJxGJdABbL
+	FSjosyzprYR7nOxiUnuDS6zECej/GrsDsW0QQYAdT5mtdPH6ny1zlAekyHuVQ0gpEW1VgBul+FuzA
+	Y6O1Xr8Yc9DwwiNUdlGA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t5j7s-0000000Dyxq-14Gc;
-	Tue, 29 Oct 2024 10:07:00 +0000
-Received: from m16.mail.163.com ([220.197.31.3])
+	id 1t5jR1-0000000E1z5-3zUC;
+	Tue, 29 Oct 2024 10:26:47 +0000
+Received: from m16.mail.163.com ([117.135.210.4])
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t5iz0-0000000DwtG-1bwQ;
-	Tue, 29 Oct 2024 09:57:52 +0000
+	id 1t5iz9-0000000Dwxa-3ycm;
+	Tue, 29 Oct 2024 09:58:01 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=From:Subject:Date:Message-ID:MIME-Version; bh=Ebd2N
-	R+FrvOf/s5g3A8lj2DRjveKn76Ov6EDVujGgZ0=; b=IQupB7NMRW6Y54FbKabYP
-	YyKOh988v8GoiHYCK3HOwAgIrUpKTrdmmYqtl6IdTioccHNH+Qi+/MHJgGNzxGpk
-	524knLKmRdPC5UTj/aUWv4uCL/uXtvqo1Xf04sojr+BKp59JP6Ju7s3lLvFBG8Bt
-	dyXG2LBkDBczsBy3u4rqNY=
+	s=s110527; h=From:Subject:Date:Message-ID:MIME-Version; bh=yxux1
+	By2rnGvzR/PFyyiJzKm2Pk7omvqYG5lZ9tl4rk=; b=DSpswal2Zm/aheRuKJx2V
+	fS5U4Lryow77QLGUaBTOAcI1SHQp6riOHVMLGgrN8osMeNTcNMaBwWwq7T9Nq/G2
+	EyMAgoR+c65Ip0C86iOfkU+wW4r7wGuvbHmmWjUfzAwgnHNe+ux3BUGBrSL+qk+N
+	h69hCruroxFw6KM2BtVfgA=
 Received: from ProDesk.. (unknown [58.22.7.114])
-	by gzga-smtp-mtada-g1-1 (Coremail) with SMTP id _____wDXXwWNsSBntUreEA--.3518S2;
-	Tue, 29 Oct 2024 17:57:37 +0800 (CST)
+	by gzsmtp1 (Coremail) with SMTP id PCgvCgBn7OKZsSBncgm2Bg--.53474S2;
+	Tue, 29 Oct 2024 17:57:49 +0800 (CST)
 From: Andy Yan <andyshrk@163.com>
 To: heiko@sntech.de
 Cc: hjc@rock-chips.com,
@@ -49,24 +49,25 @@ Cc: hjc@rock-chips.com,
 	minhuadotchen@gmail.com,
 	detlev.casanova@collabora.com,
 	Andy Yan <andy.yan@rock-chips.com>,
-	Michael Riesch <michael.riesch@wolfvision.net>
-Subject: [PATCH v4 12/14] drm/rockchip: vop2: Add uv swap for cluster window
-Date: Tue, 29 Oct 2024 17:57:31 +0800
-Message-ID: <20241029095732.391105-1-andyshrk@163.com>
+	Krzysztof Kozlowski <krzk@kernel.org>
+Subject: [PATCH v4 13/14] dt-bindings: display: vop2: Add rk3576 support
+Date: Tue, 29 Oct 2024 17:57:42 +0800
+Message-ID: <20241029095744.391134-1-andyshrk@163.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20241029095513.391006-1-andyshrk@163.com>
 References: <20241029095513.391006-1-andyshrk@163.com>
 MIME-Version: 1.0
-X-CM-TRANSID: _____wDXXwWNsSBntUreEA--.3518S2
-X-Coremail-Antispam: 1Uf129KBjvJXoW7tFW8Ww1kAF4UAw47JFy7ZFb_yoW8XrWkpr
-	43ArWqgw45Kws2q34DJFW5ZFWfJwnxKayxZwsrtw1F9ry3KFyDGwn0kFWUAr1qyanFkF47
-	tF93XrW7Zr4jvrJanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07jnOzsUUUUU=
+X-CM-TRANSID: PCgvCgBn7OKZsSBncgm2Bg--.53474S2
+X-Coremail-Antispam: 1Uf129KBjvJXoW7WrWrKFW5try7CFWkWw17Wrg_yoW8WF4Upa
+	93CF9rXry8GF17X34kGF1rCrs8XF97Aa13GF4ktw1xtrsxKrsYgw4agrn8Zr45GFyxZaya
+	9F4ak34UJ392vrJanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07UBMKtUUUUU=
 X-Originating-IP: [58.22.7.114]
-X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/1tbiqRaHXmcgr44kwAAAsk
+X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/1tbiqQqHXmcgr44lkQAAso
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241029_025750_790922_702F1BF4 
-X-CRM114-Status: GOOD (  10.10  )
+X-CRM114-CacheID: sfid-20241029_025800_375759_CFDB842B 
+X-CRM114-Status: UNSURE (   9.80  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,40 +86,57 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Andy Yan <andy.yan@rock-chips.com>
 
-The Cluster windows of upcoming VOP on rk3576 also support
-linear YUV support, we need to set uv swap bit for it.
-
-As the VOP2_WIN_UV_SWA register defined on rk3568/rk3588 is
-0xffffffff, so this register will not be touched on these
-two platforms.
+Add vop found on rk3576, the main difference between rk3576 and the
+previous vop is that each VP has its own interrupt line.
 
 Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
-Tested-by: Michael Riesch <michael.riesch@wolfvision.net> # on RK3568
-Tested-by: Detlev Casanova <detlev.casanova@collabora.com>
+Reviewed-by: Krzysztof Kozlowski <krzk@kernel.org>
+
 ---
 
-(no changes since v1)
+(no changes since v3)
 
- drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 6 ++----
- 1 file changed, 2 insertions(+), 4 deletions(-)
+Changes in v3:
+- ordered by soc name
+- Add description for newly added interrupt
 
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-index 9603bd8491bc3..84c67f5d267f6 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-@@ -1284,10 +1284,8 @@ static void vop2_plane_atomic_update(struct drm_plane *plane,
+Changes in v2:
+- Add dt bindings
+
+ .../bindings/display/rockchip/rockchip-vop2.yaml    | 13 +++++++++----
+ 1 file changed, 9 insertions(+), 4 deletions(-)
+
+diff --git a/Documentation/devicetree/bindings/display/rockchip/rockchip-vop2.yaml b/Documentation/devicetree/bindings/display/rockchip/rockchip-vop2.yaml
+index 2531726af306b..a44964b6c36a0 100644
+--- a/Documentation/devicetree/bindings/display/rockchip/rockchip-vop2.yaml
++++ b/Documentation/devicetree/bindings/display/rockchip/rockchip-vop2.yaml
+@@ -20,6 +20,7 @@ properties:
+     enum:
+       - rockchip,rk3566-vop
+       - rockchip,rk3568-vop
++      - rockchip,rk3576-vop
+       - rockchip,rk3588-vop
  
- 	rb_swap = vop2_win_rb_swap(fb->format->format);
- 	vop2_win_write(win, VOP2_WIN_RB_SWAP, rb_swap);
--	if (!vop2_cluster_window(win)) {
--		uv_swap = vop2_win_uv_swap(fb->format->format);
--		vop2_win_write(win, VOP2_WIN_UV_SWAP, uv_swap);
--	}
-+	uv_swap = vop2_win_uv_swap(fb->format->format);
-+	vop2_win_write(win, VOP2_WIN_UV_SWAP, uv_swap);
+   reg:
+@@ -37,10 +38,14 @@ properties:
+       - const: gamma-lut
  
- 	if (fb->format->is_yuv) {
- 		vop2_win_write(win, VOP2_WIN_UV_VIR, DIV_ROUND_UP(fb->pitches[1], 4));
+   interrupts:
+-    maxItems: 1
+-    description:
+-      The VOP interrupt is shared by several interrupt sources, such as
+-      frame start (VSYNC), line flag and other status interrupts.
++    minItems: 1
++    items:
++      - description:
++          vop system interrupt, such as bus error, and vsync for vop version under
++          rk3576.
++      - description:
++          independent interrupts for each video port, such as vsync and other video
++          port related error interrupts.
+ 
+   # See compatible-specific constraints below.
+   clocks:
 -- 
 2.34.1
 
