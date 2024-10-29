@@ -4,63 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 33F06D2AB13
-	for <linux-rockchip@archiver.kernel.org>; Tue, 29 Oct 2024 09:58:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8D9DDD2AB11
+	for <linux-rockchip@archiver.kernel.org>; Tue, 29 Oct 2024 09:58:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=1KuPyKIi9XeU6lvyj3n2Qze4yHJdpC6OITi+3ebRwus=; b=MmJyhGV6i9UxPD
-	jkT317vXNSvtQfi7xuaMOLK1oJrb9LjWAj1cgtr0F1VQXEsOjPKJfbcU5pfsIpDffLdCMm0XwmfN8
-	n2cDZ3bNyEJO/WcsL+NNyRxyk24gz61qIbLen9Qev6yK5inUourqPF2aPx5NA31wqxzPwkucEUjCs
-	AIYgBcRgCwo0xOaUiCznYWvAAWGL1Yv4DMwABS3Q5106qEQd1dAWBwNFORAT9giXiLzgjKKYt8eJd
-	dnK7E7Pv69bRjmOBQxhg42x2XG8zErAJ3mCxSVgYDTV+IYMCc9dom9EHuqJrOZT/4rZc3XZJerZ4O
-	RV0zrlS60rlV61zsHOfQ==;
+	List-Owner; bh=9e1n9iJOzxa7s8mDQixMCvJzCXw/Uw7+WlKnTvq7mM8=; b=ZDrtXftXzdLck/
+	Z7+XVdrH08vRNmyK8cHW7q5ICPGegXc9nXCx4vY9vKuS58HC14766L1E/LJ52jSoYZJ1ojb33ZMLR
+	1b/rWFrtT1P28fnEUTW2ZXxzbRzUrVLdmAcSeg2RQELAGvIhPhGuw3CK5q4vfk4N0y9vfa0VXtQ8i
+	M9tjVjasFi3qd9FN7HgnZqk31K6KjjqhMtwX4sZXxYfPUoky2j6z5CQJEL9XtELkRMS/dVPgWRpBZ
+	Fg4gi2wxbWll5eDKJPkjpYKk0bvAI8CGgvTr0Exh+Rt17YTIn9yukc2Lnm4dRnvR48s2pMEIjLTDv
+	htKQRFHYEQyMdV+9BGBg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t5izL-0000000Dx2C-1Nzh;
-	Tue, 29 Oct 2024 09:58:11 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
-	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t5ivr-0000000Dw0E-1vZw
-	for linux-rockchip@lists.infradead.org;
-	Tue, 29 Oct 2024 09:54:37 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id ACB4BA426D5;
-	Tue, 29 Oct 2024 09:52:38 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7BD29C4CEE3;
-	Tue, 29 Oct 2024 09:54:32 +0000 (UTC)
-Message-ID: <97ff3502-587f-4d2e-8ca6-58137e495bf1@xs4all.nl>
-Date: Tue, 29 Oct 2024 10:54:31 +0100
+	id 1t5izW-0000000Dx76-2KDG;
+	Tue, 29 Oct 2024 09:58:22 +0000
+Received: from m16.mail.163.com ([220.197.31.2])
+	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
+	id 1t5iws-0000000DwDm-00f2;
+	Tue, 29 Oct 2024 09:55:39 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
+	s=s110527; h=From:Subject:Date:Message-ID:MIME-Version; bh=UeECk
+	2NNGiU4afGhFyL6WxYiXpnwwPdwR71UMoipH+k=; b=WPlyYo5KbueiL+n/e+PkV
+	zjiLcAhhcKb74u/uFHcjbpieA/BqZ7jgEG7yUIs2yC0xcD5EvEsWUT9Q523BKm/K
+	NYxTY49pMfXqpu7bR/nnT/A9bLaUNoAvC7MEFNAx1A+M2YNLu3izSADppKzy03vs
+	NirC1Z/BqWdmKjnppAzVq4=
+Received: from ProDesk.. (unknown [58.22.7.114])
+	by gzga-smtp-mtada-g1-1 (Coremail) with SMTP id _____wD3nxoCsSBn8+3dEA--.3291S7;
+	Tue, 29 Oct 2024 17:55:24 +0800 (CST)
+From: Andy Yan <andyshrk@163.com>
+To: heiko@sntech.de
+Cc: hjc@rock-chips.com,
+	krzk+dt@kernel.org,
+	s.hauer@pengutronix.de,
+	devicetree@vger.kernel.org,
+	dri-devel@lists.freedesktop.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	derek.foreman@collabora.com,
+	minhuadotchen@gmail.com,
+	detlev.casanova@collabora.com,
+	Andy Yan <andy.yan@rock-chips.com>
+Subject: [PATCH v4 05/14] drm/rockchip: vop2: include rockchip_drm_drv.h
+Date: Tue, 29 Oct 2024 17:54:58 +0800
+Message-ID: <20241029095513.391006-6-andyshrk@163.com>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20241029095513.391006-1-andyshrk@163.com>
+References: <20241029095513.391006-1-andyshrk@163.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2] media: rkisp1: Reduce min_queued_buffers to 0
-Content-Language: en-US
-To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-Cc: Jacopo Mondi <jacopo.mondi@ideasonboard.com>,
- Dafna Hirschfeld <dafna@fastmail.com>,
- "open list:ROCKCHIP ISP V1 DRIVER" <linux-media@vger.kernel.org>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, Heiko Stuebner
- <heiko@sntech.de>,
- "open list:ROCKCHIP ISP V1 DRIVER" <linux-rockchip@lists.infradead.org>,
- Adam Pigg <adam@piggz.co.uk>
-References: <20241028143553.36704-1-jacopo.mondi@ideasonboard.com>
- <392682fd-3325-41ab-825d-67cb3de4c7b2@xs4all.nl>
- <ncxqnajjdty456w6wsk5sonjuk3e2uzvcse7bdmmmmk4lop5i2@73vuqxkol4nr>
- <6fcbb221-2b28-4fd2-8466-8c3aa711edb2@xs4all.nl>
- <20241028162141.GA26852@pendragon.ideasonboard.com>
- <j4va4obettev3q6t3woojmh7lknomicei7urgxm77ammnmdzdb@54zmlbbvspvd>
- <20241028183936.GF26852@pendragon.ideasonboard.com>
- <qnu7amebr5gcvv67qavgbul7ubienwl6tyojxrialwbq345hth@7xmi5tnlton7>
- <5576c3dd-d667-47f0-a21f-c66c7ea0e6f3@xs4all.nl>
- <20241029085609.GD22600@pendragon.ideasonboard.com>
-From: Hans Verkuil <hverkuil@xs4all.nl>
-In-Reply-To: <20241029085609.GD22600@pendragon.ideasonboard.com>
+X-CM-TRANSID: _____wD3nxoCsSBn8+3dEA--.3291S7
+X-Coremail-Antispam: 1Uf129KBjvJXoW7uFyxKw45Wr48JrWfuF4fAFb_yoW8CFW3pF
+	s8AFWUZrWxKFWjqr1DAF9Ikr4Fy3ZrCayxG3Z7G3W3ZF12gF1DGwnrW3s8JrZrXr42vF42
+	krs3J34UCF42vr7anT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07UZVysUUUUU=
+X-Originating-IP: [58.22.7.114]
+X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/1tbiMwqHXmcgqJmjwgADs0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241029_025435_677544_493002FB 
-X-CRM114-Status: GOOD (  59.58  )
+X-CRM114-CacheID: sfid-20241029_025538_436269_C121FB1F 
+X-CRM114-Status: GOOD (  11.12  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,241 +82,61 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 10/29/24 09:56, Laurent Pinchart wrote:
-> On Tue, Oct 29, 2024 at 09:26:58AM +0100, Hans Verkuil wrote:
->> On 29/10/2024 08:01, Jacopo Mondi wrote:
->>> On Mon, Oct 28, 2024 at 08:39:36PM +0200, Laurent Pinchart wrote:
->>>> On Mon, Oct 28, 2024 at 06:08:18PM +0100, Jacopo Mondi wrote:
->>>>> On Mon, Oct 28, 2024 at 06:21:41PM +0200, Laurent Pinchart wrote:
->>>>>> On Mon, Oct 28, 2024 at 04:48:55PM +0100, Hans Verkuil wrote:
->>>>>>> On 28/10/2024 16:30, Jacopo Mondi wrote:
->>>>>>>> On Mon, Oct 28, 2024 at 04:02:13PM +0100, Hans Verkuil wrote:
->>>>>>>>> On 28/10/2024 15:35, Jacopo Mondi wrote:
->>>>>>>>>> There apparently is no reason to require 3 queued buffers to call
->>>>>>>>>> streamon() for the RkISP1 as the driver operates with a scratch buffer
->>>>>>>>>> where frames can be directed to if there's no available buffer provided
->>>>>>>>>> by userspace.
->>>>>>>>>>
->>>>>>>>>> Reduce the number of required buffers to 0 to allow applications to
->>>>>>>>>> operate by queueing capture buffers on-demand.
->>>>>>>>>>
->>>>>>>>>> Tested with libcamera, by operating with a single capture request. The
->>>>>>>>>> same request (and associated capture buffer) gets recycled once
->>>>>>>>>> completed. This of course causes a frame rate drop but doesn't hinder
->>>>>>>>>> operations.
->>>>>>>>>>
->>>>>>>>>> Signed-off-by: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
->>>>>>>>>> ---
->>>>>>>>>> The first version of this patch set min_queued_buffers to 1, but setting it
->>>>>>>>>> to 0 doesn't compromise operations and it's even better as it allows application
->>>>>>>>>> to queue buffers to the capture devices on-demand. If a buffer is not provided
->>>>>>>>>> to the DMA engines, image data gets directed to the driver's internal scratch
->>>>>>>>>> buffer.
->>>>>>>>>> ---
->>>>>>>>>>  drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c | 4 +---
->>>>>>>>>>  1 file changed, 1 insertion(+), 3 deletions(-)
->>>>>>>>>>
->>>>>>>>>> diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
->>>>>>>>>> index 2bddb4fa8a5c..5fcf9731f41b 100644
->>>>>>>>>> --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
->>>>>>>>>> +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
->>>>>>>>>> @@ -35,8 +35,6 @@
->>>>>>>>>>  #define RKISP1_SP_DEV_NAME	RKISP1_DRIVER_NAME "_selfpath"
->>>>>>>>>>  #define RKISP1_MP_DEV_NAME	RKISP1_DRIVER_NAME "_mainpath"
->>>>>>>>>>
->>>>>>>>>> -#define RKISP1_MIN_BUFFERS_NEEDED 3
->>>>>>>>>> -
->>>>>>>>>>  enum rkisp1_plane {
->>>>>>>>>>  	RKISP1_PLANE_Y	= 0,
->>>>>>>>>>  	RKISP1_PLANE_CB	= 1,
->>>>>>>>>> @@ -1563,7 +1561,7 @@ static int rkisp1_register_capture(struct rkisp1_capture *cap)
->>>>>>>>>>  	q->ops = &rkisp1_vb2_ops;
->>>>>>>>>>  	q->mem_ops = &vb2_dma_contig_memops;
->>>>>>>>>>  	q->buf_struct_size = sizeof(struct rkisp1_buffer);
->>>>>>>>>> -	q->min_queued_buffers = RKISP1_MIN_BUFFERS_NEEDED;
->>>>>>>>>> +	q->min_queued_buffers = 0;
->>>>>>>>>
->>>>>>>>> You can probably just drop this since the vb2_queue struct is zeroed when it
->>>>>>>>> is allocated. So no need to set it to 0.
->>>>>>>>
->>>>>>>> I suspected so :)
->>>>>>>>
->>>>>>>>>
->>>>>>>>> And is the RKISP1_MIN_BUFFERS_NEEDED define still needed after this change?
->>>>>>>>
->>>>>>>> No, and this patch removes it in facts
->>>>>>>>
->>>>>>>>  -#define RKISP1_MIN_BUFFERS_NEEDED 3
->>>>>>>>  -
->>>>>>>
->>>>>>> I should have checked the patch :-) Sorry for the noise.
->>>>>>>
->>>>>>>>>
->>>>>>>>> Also, see my RFC I posted today:
->>>>>>>>>
->>>>>>>>> https://lore.kernel.org/linux-media/126cd76a-6224-483b-a18d-a3cc89e5ff2d@xs4all.nl/T/#u
->>>>>>>>>
->>>>>>>>> My main concern is that applications that just call VIDIOC_REQBUFS with count = 1
->>>>>>>>> and expect the driver to change that to a workable value, will, in fact, now just get
->>>>>>>>> one buffer. And streaming that will cause lots of frame drops.
->>>>>>>>>
->>>>>>>>> It makes sense to leave min_queued_buffers at 0 if a scratch buffer is available,
->>>>>>>>> but I'm unhappy with the fact that you get a poor experience when REQBUFS(1) is called.
->>>>>>>>
->>>>>>>> Yeah, I've read the discussion between you and Tomi and it seemed like
->>>>>>>> a good time to re-send this patch.
->>>>>>>>
->>>>>>>>> My RFC suggests improvements in the uAPI. With that in place you can use CREATE_BUFS in
->>>>>>>>> libcamera to get much better control over how many buffers should be allocated.
->>>>>>>>
->>>>>>>> In my understanding min_queued_buffers identifies how many buffers
->>>>>>>> should be queued before calling start_streaming, and this comes
->>>>>>>> directly from an hw/driver requirement. This doesn't mean that at
->>>>>>>> least min_queue_buffers should be queued at all the times during
->>>>>>>> streaming, at least, I don't see how and where videobuf2 enforces
->>>>>>>> this. Or does it ?
->>>>>>>
->>>>>>> It's an intrinsic property of the HW/driver: e.g. if it needs two buffers
->>>>>>> queued up for the DMA engine to work, then it really is always holding on
->>>>>>> to two buffers. The only thing the framework does is postpone calling
->>>>>>> start_streaming until that number of buffers is queued to ensure the
->>>>>>> DMA engine has what it needs to start. But after that vb2 doesn't check
->>>>>>> it.
->>>>>>
->>>>>> The "driver" part of "HW/driver" is important here, as drivers can
->>>>>> influence this in multiple ways. One of them is usage of scratch
->>>>>> buffers, but even without that, a DMA engine that requires two buffers
->>>>>> can easily be operated with a single buffer by programming the DMA
->>>>>> engine with the same buffer address twice. Drivers should really do so
->>>>>> unless they really can't.
->>>>>>
->>>>>>>> If the above is correct, then the number of buffers to be queued
->>>>>>>> during streaming is, in my opinion, less an hw/driver requirement but
->>>>>>>> more an application decision.
->>>>>>>
->>>>>>> No, min_queued_buffers is a HW/drivers property: the DMA engine can't
->>>>>>> start until that many buffers are queued up, and once it is started
->>>>>>> it will always hold on to that many buffers.
->>>>>
->>>>> I get it, my point was that once start_streaming has been called, even
->>>>> if min_queued_buffers=2, there is nothing preventing userspace from
->>>>> queing one buffer at the time once the first two have completed. Sure, the
->>>>> hw/driver might not like it, but while delaying start_streaming
->>>>> prevents bad things from happening, there is nothing in the core that
->>>>> prevents applications from potentially stalling the capture
->>>>> operations.
->>>>>
->>>>> But I get your point, if the system needs 2 buffers to start
->>>>> streaming, it will probably need two buffers to continue producing
->>>>> frames.
->>
->> Right, it won't be able to complete anything and return it to userspace
->> until it gets a third buffer. Only then can it return one buffer to userspace.
->>
->>>>>> That's not always true. The imx7-media-csi driver, for instance, sets
->>>>>> min_queued_buffers to 2, but allocates scratch buffers and uses them at
->>>>>> runtime, so that it can return all queued buffers to userspace.
->>>>>
->>>>> That's interesting. From your mention of "scratch buffers" I get there
->>>>> actually is a need to have 2 buffers queued to the HW ? How does
->>>>> that work, after all queuing a buffer to the DMA engine usually means
->>>>> pointing its write engine to one (set of) addresses.
->>>>>
->>>>> Or is it a driver-only requirement to ask for two buffers ?
->>>>
->>>> The hardware has a ping-pong mechanism with two addresses and switches
->>>> between them automatically.
->>>>
->>>>>> Grepping for min_queued_buffers I see drivers setting it to 4
->>>>>> (rcar-dma.c, rzg2l-video.c), 6 (cxusb-analog.c) or even 9
->>>>>> (zoran_driver.c) ! I doubt the zoran driver holds on to 9 buffers at
->>>>>> runtime. Your statement is not universally true today?.
->>>>>>
->>>>>> This could be considered as driver issues, and the min_queued_buffers
->>>>>> values should be fixed to match the runtime behaviour. In some cases I
->>>>>> expect it will require more work than just changing the value, as
->>>>>> drivers may implement the logic to operate with less buffers at runtime
->>>>>> but not at start time. This would be fixable, but it may also call for
->>>>>> asking if the start at runtime behaviours need to be identical.
->>>>>>
->>>>>>> So the application has to know somehow how many buffers are needed to
->>>>>>> actually stream. One way is via VIDIOC_REQBUFS since that is supposed to
->>>>>>> always return a workable number of buffers, the other is by actually
->>>>>>> reporting the minimum number of buffers as per my RFC.
->>>>>>>
->>>>>>>> As you said an application should be good with> 3 buffers (one queued, one currently being written to, one to be
->>>>>>>> consumed by the application), but in very specific cases where an
->>>>>>>> application retains the buffer for longer, for whatever reason, it
->>>>>>>> might need a larger number of queued buffers to provide the DMA
->>>>>>>> engines a space where to write data without them being discarded (to
->>>>>>>> scratch buffers or discarded by the DMA engine itself, if the HW
->>>>>>>> supports that). Or maybe an application is fine to drop frames and
->>>>>>>> only queue buffers sporadically (if the HW supports that ofc).
->>>>>>>>
->>>>>>>> For libcamera, and for this specific platform in particular, we're
->>>>>>>> going to base new developments on the assumption that
->>>>>>>> min_queued_buffers == 0, and it would be more convenient for use to be
->>>>>>>> able to access its value from userspace to identify if we're running
->>>>>>>> on a kernel with or without this patch being applied.
->>>>>>>
->>>>>>> So my proposal in my RFC to expose min_num_buffers would work for libcamera?
->>>>>>> It sounds like that's what you need.
->>>>>
->>>>> My immediate need is to know if I'm running on a "legacy" version of
->>>>> this driver that still requires 3 buffers for no apparent reason, or
->>>>> on a new version. Your proposal might work, but I still feel like we
->>>>> should report the HW/driver requirement (min_queued_buffers) instead
->>>>> of trying to suggest applications how many buffers they need to
->>>>> allocate to get "smooth streaming" or similar, as the use cases
->>>>> might be different.
->>>>>
->>>>>> It may be useful, but I think we may also just require min_num_buffers
->>>>>> == 0 for a device to be supported in libcamera. We have to implement
->>>>>
->>>>> While I concur this would be ideal, how would it work for existing
->>>>> rkisp1 implementation that do not include this patch ? libcamera
->>>>> should be able to run on both, probably in two different "modes" /o\
->>>>
->>>> A simple option is to check the kernel version, we do that in a few
->>>> places. Over time we'll increase the minimum kernel version and drop
->>>
->>> I considered that, but this patch is pretty easy to backport, having
->>> something that tells to userspace the value of
->>> min_queued_buffers might be useful indeed.
->>
->> The implementation is similar to that of the new max_num_buffers field
->> in struct v4l2_create_buffers: it will be signaled by a new buffer
->> capability flag. So you can check that in the code. Much better than
->> relying on kernel versions.
-> 
-> Sure, I agree that an explicit API is better. I'm not a big fan of
-> adding a field to v4l2_create_buffers though (I didn't realize it was
-> extended with a max_num_buffers field) as it would require calling
-> VIDIOC_CREATE_BUFS to get the information. That can get quite awkward to
-> use for userspace.
+From: Min-Hua Chen <minhuadotchen@gmail.com>
 
-Why would that be awkward? If called with count = 0, then it will just
-report the capabilities and it will not create any buffers.
+Move rockchip_drm_drv.h in rockchip_drm_vop2.h to fix the follow
+sparse warning:
 
-Regards,
+ARCH=arm64 LLVM=1 make C=1 CF='-fdiagnostic-prefix -D__CHECK_ENDIAN__'
+mrproper defconfig all  -j12
 
-	Hans
+drivers/gpu/drm/rockchip/rockchip_vop2_reg.c:502:24: sparse:
+warning: symbol 'vop2_platform_driver' was not declared. Should it
+be static?
 
-> 
-> This being said, libcamera today won't behave properly with rkisp1, as
-> it won't be able to give the application the last buffers, as guaranteed
-> by the libcamera API. Relying on min_num_buffers == 0 will fix it and
-> won't cause any regression on kernels that still use 3, it will just
-> keep the current behaviour.
-> 
->>>> support for legacy APIs.
->>>>
->>>>>> APIs such as the Android camera HAL that has no concept of buffers being
->>>>>> kept by the device. This could possibly be handled within libcamera by
->>>>>> allocating scratch buffers in userspace, but that comes with other
->>>>>> challenges. I would like to at least try to get help from the kernel
->>>>>> until proven that it's a bad idea.
-> 
+It is also beneficial for the upcoming support for rk3576.
+
+Fixes: 604be85547ce ("drm/rockchip: Add VOP2 driver")
+Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
+Signed-off-by: Min-Hua Chen <minhuadotchen@gmail.com>
+
+---
+
+(no changes since v3)
+
+Changes in v3:
+- Split it from 10/15, as it fix a exiting compile warning.
+
+ drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 1 -
+ drivers/gpu/drm/rockchip/rockchip_drm_vop2.h | 1 +
+ 2 files changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+index 4776a227e62c8..a7f9f88869a6d 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+@@ -35,7 +35,6 @@
+ #include <uapi/linux/videodev2.h>
+ #include <dt-bindings/soc/rockchip,vop2.h>
+ 
+-#include "rockchip_drm_drv.h"
+ #include "rockchip_drm_gem.h"
+ #include "rockchip_drm_vop2.h"
+ #include "rockchip_rgb.h"
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h
+index 59cd6b933bfba..bc001f7158476 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h
+@@ -9,6 +9,7 @@
+ 
+ #include <linux/regmap.h>
+ #include <drm/drm_modes.h>
++#include "rockchip_drm_drv.h"
+ #include "rockchip_drm_vop.h"
+ 
+ #define VOP2_VP_FEATURE_OUTPUT_10BIT        BIT(0)
+-- 
+2.34.1
 
 
 _______________________________________________
