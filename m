@@ -4,77 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8B289D3A67C
-	for <linux-rockchip@archiver.kernel.org>; Tue, 29 Oct 2024 18:59:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 58FA7D74941
+	for <linux-rockchip@archiver.kernel.org>; Tue, 29 Oct 2024 21:04:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
-	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Subject:Cc:To:From:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=L+BRdLZb5j5JChAmVWvsoOOhe6LcMbTv2u6iZg68vYA=; b=P5690c/+WXvxJc
-	imH3Bvoz79h5fO9kTHkSCiR4SosV7+/Z6XyrE0TTQ4CVzx+Gd1hwTB4LFi1wRTKRbr8MWaAD5ZeI/
-	E/ApSBkitA/daNoMmAPCLaame0PpINH5CKKbMdu+uqfrM4dcybBtAY0yeGb9Oi61FdieLbP5M7MCd
-	QWQ4/isZ6+m62hMUn3Y0jXFssBSOgQhKe+aem7NG0PVtSlvoooKjUkB6GOcIQmJBm5KGbu4mnLmIM
-	TiqJ5SIr8o7q+3dWx9ELI3TKd2u3m0cBUp40o15AzD6CvLeIKtNKrNzxOsMgTXXmy0Rj9YtF8RGhK
-	/tK5BAZd6ZK3fx127yCw==;
+	List-Owner; bh=n2JeRJ9CCWI+nVM4vjyfpgjtrY0rr+1XtKuilRG7sVg=; b=X2Yc7Kp0oCuFfu
+	eCQ8MX9+BN1oH+zhUFy6OqWuX6wg37sizH0MS8bsWHL9lGuuO7sMnI9T3x0tjyFi5YfCHiFEODYRN
+	ng/NH7Jsi+9H4uQEv3wNjaURjIM/CFYf9bDvo6DMbuWlP3GophbhChn7xPF+U2E+sP4By+nXksE1/
+	x9h0UuvsdryNxuXdJwLz2v4Rp0Jq5Ef8ONXjvS+nQ2PVK1HjYlzques+LHcON7+UWToL2iu864QGr
+	NwHI5OISViPo7RP2RLeISP0xL4GxGNVfHyBPMDwdKgSRziQ+sjmU6VZxWlOxcKS3sorEj54L0p+ng
+	xtW0T+Y915eKr+NUCDDQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t5rRB-0000000FaxW-46qi;
-	Tue, 29 Oct 2024 18:59:29 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1t5tOI-0000000FuYd-2rrd;
+	Tue, 29 Oct 2024 21:04:38 +0000
+Received: from mail-ot1-x32f.google.com ([2607:f8b0:4864:20::32f])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t5rOW-0000000Fada-2kCD;
-	Tue, 29 Oct 2024 18:56:44 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
-	:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:To:From:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=KcnKqDu4vYMLcUrzLfWym3dgQuYqMxMi7m2J1SGHMIM=; b=qvv8/N5H+Mjih7KSipu0bF4j8C
-	vJjB26I7W9VzNYWI+STA+StW7u+b6LhpsEsICRPkCnc2Qnz+3+oQBSarRPbY1zzr7elpeuCy3oVlR
-	vBZSZCvfAfq4cmPPwn42757BI5Pp49K1a/fZsiiEsMXRdYggD7dc72+iRIXRVfwkxHS/t84NBMNqz
-	3iX03DVkcVJHezrFhtruTmewSBEa+X1plpSsv868aHynfhqrKtrbM3Wcz17KNssRx04t9xb2EQdnS
-	7ydMnOTEn6bquL0eygTIBdzoKawZehFGIrhYUdlvGFzBKmlP85UFWpaj5z41cY5+DBF66F2qlztfj
-	CyNyavvA==;
-Received: from dfw.source.kernel.org ([139.178.84.217])
-	by desiato.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t5rOT-00000009zBx-2BNd;
-	Tue, 29 Oct 2024 18:56:43 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 489E75C377F;
-	Tue, 29 Oct 2024 18:55:53 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C1D12C4CEE4;
-	Tue, 29 Oct 2024 18:56:35 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1730228198;
-	bh=9wfadzzh1VnQtg6LRhMagkiOx4YTPfzItSf0HhOo8IQ=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=jRya4OeQfmmxvY7x5muWWu5Ig00y++Aa7s6voYFgMNP3UXnJGSCy8mWcoFH9jaAaZ
-	 Gevmg+OY4USApAe/g1zY9I4ULdh0eAVDgGQ9nmJ4yojmFeVFX+KEPPAfzeH6IGBW0o
-	 ut0wHOK4YfEmWdpXDggEa7KjuHSH6tKxizQwstJxr69xL1tRrxEQGRR4lO3OuEbvDC
-	 fU1MndB8HvLcaoFb0fUNXoc7RcGTgqNEZ8Uxq8HSCkk0sd6QFUeum0qIVk1NN1B5s0
-	 GIdf5O+wyYjJvL7QY+mU4k5FzXaGGRRklfEHmuJInaFq/wN1FW/OLKeDk1Rz38C2+P
-	 mEK8LAiIxd/pw==
-From: Mark Brown <broonie@kernel.org>
-To: Luca Ceresoli <luca.ceresoli@bootlin.com>, 
- Liam Girdwood <lgirdwood@gmail.com>, Rob Herring <robh@kernel.org>, 
- Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
- Dmitry Yashin <dmt.yashin@gmail.com>
-Cc: linux-sound@vger.kernel.org, devicetree@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
- linux-kernel@vger.kernel.org
-In-Reply-To: <20241028213314.476776-1-dmt.yashin@gmail.com>
-References: <20241028213314.476776-1-dmt.yashin@gmail.com>
-Subject: Re: (subset) [PATCH 0/3] arm64: dts: rockchip: add Banana Pi
- BPI-P2 Pro board
-Message-Id: <173022819553.134081.16666383098906856024.b4-ty@kernel.org>
-Date: Tue, 29 Oct 2024 18:56:35 +0000
+	id 1t5soJ-0000000Fm9w-0nTX
+	for linux-rockchip@lists.infradead.org;
+	Tue, 29 Oct 2024 20:27:28 +0000
+Received: by mail-ot1-x32f.google.com with SMTP id 46e09a7af769-7180bd5b79dso2379949a34.2
+        for <linux-rockchip@lists.infradead.org>; Tue, 29 Oct 2024 13:27:25 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1730233644; x=1730838444; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:subject:cc
+         :to:from:date:message-id:from:to:cc:subject:date:message-id:reply-to;
+        bh=/5C6RNVdpPOMV+ompnRbmfGF79IXxDl6fVLaU9AkhfU=;
+        b=nXDYk9nyWSQ7DkwRA2dM8G5gErqtAbkf8DFfQMxbX9PR8/td2MWgt9kEB22+7iPw7S
+         Dhzk7kRmYHhTHzfCUS7/btrSHQBtvY9FiQdbkN3lURNjWZN6DUlUCRcEhNEmc/ZdTXs9
+         ASN0sf/e8h8SrvDMaU4AT/+VFLXuTHB2pd/oCPOj2OxQ7uE4SKRXu9oKmzw8Z2WY7WeO
+         69b+capnenNhxtAz49JOzoxf+fgEwEMjqfce7IG+5G/XiwLBj7cpF6OktALbYYnkLzFT
+         eBnXb9M/O0jLN/dwtzU7Lo0qgTN/Wh36HTFxoaKR7akGxA1vcZvZTCARfRb5DdWOMIVi
+         Pq7w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1730233644; x=1730838444;
+        h=in-reply-to:content-disposition:mime-version:references:subject:cc
+         :to:from:date:message-id:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=/5C6RNVdpPOMV+ompnRbmfGF79IXxDl6fVLaU9AkhfU=;
+        b=rrcdqJD9HdMhvddUEPta/+CsZ40JRB+PHAlai+n9vCL64P7N7L2Ww63X+OEBpmVRtY
+         l3voONA9Ai5gt20neqtjh718cVolNMjxe/Wbgo9vRSDSlIrTEUTCeyoWSmDwK3XHWmvR
+         DYWCJPBdbDCuYjhAyzJBxCLuC1yKkGjo6daoHPrQnA4pOtyDie831T8/JdUlUgQ8N/Sd
+         /YGswlx8sk3tkYPkN3ByTUI44jZrLC8ayFZ5l3HHddluy6S5jobMJuLkvULbfYOruUhF
+         2m15hqNVv5nEbpwrOTI56U7n7l0WcefH9ORTfj86XX/AA2XreBcLF2vmtvnCPGLYqYVd
+         mquQ==
+X-Gm-Message-State: AOJu0YyVlPplQYtbakVA7DSh8gEDN8kwE9cAXXgIyWYNUp90Vpt14T0F
+	oxwoneEb16c/mr+Zf1/0lgoANVR6zLsF/g20jxbnO8wro43nS28azpsyvg==
+X-Google-Smtp-Source: AGHT+IHf/L6/YOLZ+C2D8alVVPiEQL9lvjabcFg/tf84AF6Jr48CaY6FAxq/oVQhvom8CiUgjgCNMw==
+X-Received: by 2002:a05:6830:411f:b0:703:7827:6a68 with SMTP id 46e09a7af769-71867f100abmr14041591a34.6.1730233644369;
+        Tue, 29 Oct 2024 13:27:24 -0700 (PDT)
+Received: from neuromancer. ([2600:1700:fb0:1bcf::54])
+        by smtp.gmail.com with ESMTPSA id 006d021491bc7-5ec18598bc9sm2482361eaf.12.2024.10.29.13.27.24
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 29 Oct 2024 13:27:24 -0700 (PDT)
+Message-ID: <6721452c.4a0a0220.38161e.8f5c@mx.google.com>
+X-Google-Original-Message-ID: <ZyFFKmsFYQ82l0Hb@neuromancer.>
+Date: Tue, 29 Oct 2024 15:27:22 -0500
+From: Chris Morgan <macroalpha82@gmail.com>
+To: Jimmy Hon <honyuenkwun@gmail.com>
+Cc: linux-rockchip@lists.infradead.org,
+	Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+Subject: Re: [PATCH 2/2] arm64: dts: rockchip: Enable HDMI0 and GPU on
+ Indiedroid Nova
+References: <20241023164104.66282-3-macroalpha82@gmail.com>
+ <20241024011454.1611-1-honyuenkwun@gmail.com>
 MIME-Version: 1.0
-X-Mailer: b4 0.15-dev-9b746
+Content-Disposition: inline
+In-Reply-To: <20241024011454.1611-1-honyuenkwun@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241029_185641_796867_DC555DA3 
-X-CRM114-Status: GOOD (  12.58  )
+X-CRM114-CacheID: sfid-20241029_132727_249713_46684AC8 
+X-CRM114-Status: GOOD (  13.99  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,48 +94,35 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, 29 Oct 2024 02:33:11 +0500, Dmitry Yashin wrote:
-> This series add support for Banana Pi BPI-P2 Pro based on Rockchip RK3308
-> (RK3308B-S variant) made by Shenzhen SINOVOIP.
+On Wed, Oct 23, 2024 at 08:14:54PM -0500, Jimmy Hon wrote:
+> >+	hdmi0-con {
+> >+		compatible = "hdmi-connector";
+> >+		type = "c";
+> This should be type d, the Nova has a micro HDMI port, not a mini HDMI port.
 > 
-> Patch 1 fixes rk3308-codec DTB warning.
-> Patch 2-3 adds binding and dts for the board.
 > 
-> Dmitry Yashin (3):
->   ASoC: dt-bindings: rockchip,rk3308-codec: add port property
->   dt-bindings: arm: rockchip: add Banana Pi BPI-P2 Pro board
->   arm64: dts: rockchip: add Banana Pi BPI-P2 Pro board
+> >+
+> >+&hdmi0 {
+> >+	pinctrl-0 = <&hdmim0_rx_hpdin>, <&hdmim0_tx0_scl>,
+> >+		    <&hdmim0_tx0_sda>, <&hdmim0_tx0_hpd>,
+> >+		    <&hdmim0_tx0_cec>;
+> >+	pinctrl-names = "default";
+> >+	status = "okay";
+> >+};
+> Why is the additional hdmim0_rx_hpdin needed? Is it supposed to represent
+> HDMI0_TX_ON_H? I'm curious why this board needs it, when the other boards
+> do not.
 > 
-> [...]
+> Jimmy
+> 
 
-Applied to
+You are correct about the port type, it is type d not type c.
+As for the HDMI0_TX_ON_H, that pin is hooked up per the schematic so I
+thought it prudent to define it in the device tree as such (this being
+one of the very few boards I get to work on with actual schematics).
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
-
-Thanks!
-
-[1/3] ASoC: dt-bindings: rockchip,rk3308-codec: add port property
-      commit: cc8475a07cf34891bf11a63025659d3537b638ef
-
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
-
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
-
+Thank you,
+Chris
 
 _______________________________________________
 Linux-rockchip mailing list
