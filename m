@@ -4,67 +4,104 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AF0A7D5B164
-	for <linux-rockchip@archiver.kernel.org>; Tue, 29 Oct 2024 08:26:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A06E8D5B16F
+	for <linux-rockchip@archiver.kernel.org>; Tue, 29 Oct 2024 08:39:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Message-ID:MIME-Version:References:
-	In-Reply-To:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=RbczteWA0vcZhWqeY4PwhKJySxI1yXSJzlb+L7h4aEI=; b=a7v04x5oT16L1U
-	iqjLaa78oYhtaEzlUDk0q7m5dICDBMiq5FOxvwsoAWx5LzJOymZLFbvt8/lt4S97Du5rtDSx/vEsW
-	VAPhL7qa0DWe7Ma66QKa4mBoNYrdDXFxgXH/KriRC9Mw7BqmJXqOz5F6ESZ18R5LGYWJliLGN1QpU
-	NxZ32KvrjOs1kr9xhDymdrRljYzGL4XKBzDq2pdGfhfle2JgG1JXMfnJy3HWk3v3wcZXnqlJShgJe
-	PsXXOxB+cmthUKMpAfLzOwSUlPK96SmgmqJ8Q5+nnbRNIfXmXD2fVh8rNt/PH9qT1DbR+pupVoZdR
-	zRoXkhXv6iFHJVkVwLew==;
+	List-Owner; bh=3bBAo/UwcPdngBUFi68jthTBMg0yXV6EtRqcv3o0vbA=; b=TgjGKigjEzpepI
+	BHcXJBYCTGPTAiMSpOu4Stn9beEQOBmfNRZbngzOc6H9zdFqjco7nKsU7cf4+RdrYD+i02rqDf5sZ
+	kVCmznsxcFqV/UqjhSKvEISkfhJvvF31sY9fKcdhyqh+reGxWJ8q0lRvxWuyZABOMIPE22TG93jIC
+	7edCB2DhJEGavjqGNuYi9kT6O6QDu1z+KuL89IbS4NGcJrJiLDzq+pWfoTwlDER43qT3rhH9RMZS5
+	JHxeCb+6eTs8HMNFnzgtj8WNMakaDFWVGtl2uuzTooXaw6/AKFsVoPzhgnF5ThqIHhDay4mxMvt6D
+	LqWnoKDHYCM8pIJAlFDg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t5hYv-0000000DgEy-3HCR;
-	Tue, 29 Oct 2024 08:26:49 +0000
-Received: from m16.mail.163.com ([117.135.210.2])
-	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t5hVH-0000000DfBm-3iJu
+	id 1t5hki-0000000Di34-03tj;
+	Tue, 29 Oct 2024 08:39:00 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
+	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
+	id 1t5hZ8-0000000DgLU-3qwd
 	for linux-rockchip@lists.infradead.org;
-	Tue, 29 Oct 2024 08:23:08 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=Date:From:Subject:Content-Type:MIME-Version:
-	Message-ID; bh=6WXE9mUg3P5hjkvI4QQV/zWTg3ZpNccIdHRuTSzHYbI=; b=Y
-	N6tt5TGtmhU68omS2gBWRZwiNrznTVwhKgoIbeweAaidSYtqThNHkVglvn6rKwak
-	3OAF8BFU+vq9mdDqg0XNcXifHuDqfDW/C7MYaxFf24MDWXWyyOsIYi/6y9OCEVnP
-	1B+yUHk7VEqxDVhRdpVD7d71d232VSYVnfbh24SLMY=
-Received: from andyshrk$163.com ( [58.22.7.114] ) by
- ajax-webmail-wmsvr-40-117 (Coremail) ; Tue, 29 Oct 2024 16:22:16 +0800
- (CST)
-X-Originating-IP: [58.22.7.114]
-Date: Tue, 29 Oct 2024 16:22:16 +0800 (CST)
-From: "Andy Yan" <andyshrk@163.com>
-To: "Andrew Lunn" <andrew@lunn.ch>
-Cc: "Johan Jonker" <jbx6244@gmail.com>, davem@davemloft.net, edumazet@google.com, 
-	kuba@kernel.org, pabeni@redhat.com, david.wu@rock-chips.com, 
-	andy.yan@rock-chips.com, netdev@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org
-Subject: Re:Re: [PATCH v1 2/2] net: arc: rockchip: fix emac mdio node
- support
-X-Priority: 3
-X-Mailer: Coremail Webmail Server Version XT5.0.14 build 20240801(9da12a7b)
- Copyright (c) 2002-2024 www.mailtech.cn 163com
-In-Reply-To: <0a60a838-42cb-4df8-ab1f-91002dcaaa14@lunn.ch>
-References: <dcb70a05-2607-47dd-8abd-f6cf1b012c51@gmail.com>
- <f04c2cfd-d2d6-4dc6-91a5-0ed1d1155171@gmail.com>
- <250cdfef.1bfc.192cd6a1f72.Coremail.andyshrk@163.com>
- <0a60a838-42cb-4df8-ab1f-91002dcaaa14@lunn.ch>
-X-NTES-SC: AL_Qu2YAv2Sv0ko4CifY+lS/DNR+6hBMKv32aNaoMQOZ8UqqTHC6CwvbV1SBFDxyvoKJBLKOS6J7O0VAl6MYG8s
+	Tue, 29 Oct 2024 08:27:05 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 3AB335C5A7E;
+	Tue, 29 Oct 2024 08:26:17 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2DAD6C4CECD;
+	Tue, 29 Oct 2024 08:27:00 +0000 (UTC)
+Message-ID: <5576c3dd-d667-47f0-a21f-c66c7ea0e6f3@xs4all.nl>
+Date: Tue, 29 Oct 2024 09:26:58 +0100
 MIME-Version: 1.0
-Message-ID: <a7c2431.871a.192d75e5631.Coremail.andyshrk@163.com>
-X-Coremail-Locale: zh_CN
-X-CM-TRANSID: dSgvCgAHJGw4myBntukZAA--.994W
-X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/1tbiMwiHXmcgkjHMLQADsk
-X-Coremail-Antispam: 1U5529EdanIXcx71UUUUU7vcSsGvfC2KfnxnUU==
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2] media: rkisp1: Reduce min_queued_buffers to 0
+To: Jacopo Mondi <jacopo.mondi@ideasonboard.com>,
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+Cc: Dafna Hirschfeld <dafna@fastmail.com>,
+ "open list:ROCKCHIP ISP V1 DRIVER" <linux-media@vger.kernel.org>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, Heiko Stuebner
+ <heiko@sntech.de>,
+ "open list:ROCKCHIP ISP V1 DRIVER" <linux-rockchip@lists.infradead.org>,
+ Adam Pigg <adam@piggz.co.uk>
+References: <20241028143553.36704-1-jacopo.mondi@ideasonboard.com>
+ <392682fd-3325-41ab-825d-67cb3de4c7b2@xs4all.nl>
+ <ncxqnajjdty456w6wsk5sonjuk3e2uzvcse7bdmmmmk4lop5i2@73vuqxkol4nr>
+ <6fcbb221-2b28-4fd2-8466-8c3aa711edb2@xs4all.nl>
+ <20241028162141.GA26852@pendragon.ideasonboard.com>
+ <j4va4obettev3q6t3woojmh7lknomicei7urgxm77ammnmdzdb@54zmlbbvspvd>
+ <20241028183936.GF26852@pendragon.ideasonboard.com>
+ <qnu7amebr5gcvv67qavgbul7ubienwl6tyojxrialwbq345hth@7xmi5tnlton7>
+Content-Language: en-US, nl
+From: Hans Verkuil <hverkuil@xs4all.nl>
+Autocrypt: addr=hverkuil@xs4all.nl; keydata=
+ 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
+In-Reply-To: <qnu7amebr5gcvv67qavgbul7ubienwl6tyojxrialwbq345hth@7xmi5tnlton7>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241029_012304_572694_A70B6EB4 
-X-CRM114-Status: UNSURE (   5.92  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20241029_012703_123119_800F5A06 
+X-CRM114-Status: GOOD (  52.88  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,51 +118,233 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+On 29/10/2024 08:01, Jacopo Mondi wrote:
+> Hi Laurent
+> 
+> On Mon, Oct 28, 2024 at 08:39:36PM +0200, Laurent Pinchart wrote:
+>> On Mon, Oct 28, 2024 at 06:08:18PM +0100, Jacopo Mondi wrote:
+>>> On Mon, Oct 28, 2024 at 06:21:41PM +0200, Laurent Pinchart wrote:
+>>>> On Mon, Oct 28, 2024 at 04:48:55PM +0100, Hans Verkuil wrote:
+>>>>> On 28/10/2024 16:30, Jacopo Mondi wrote:
+>>>>>> On Mon, Oct 28, 2024 at 04:02:13PM +0100, Hans Verkuil wrote:
+>>>>>>> On 28/10/2024 15:35, Jacopo Mondi wrote:
+>>>>>>>> There apparently is no reason to require 3 queued buffers to call
+>>>>>>>> streamon() for the RkISP1 as the driver operates with a scratch buffer
+>>>>>>>> where frames can be directed to if there's no available buffer provided
+>>>>>>>> by userspace.
+>>>>>>>>
+>>>>>>>> Reduce the number of required buffers to 0 to allow applications to
+>>>>>>>> operate by queueing capture buffers on-demand.
+>>>>>>>>
+>>>>>>>> Tested with libcamera, by operating with a single capture request. The
+>>>>>>>> same request (and associated capture buffer) gets recycled once
+>>>>>>>> completed. This of course causes a frame rate drop but doesn't hinder
+>>>>>>>> operations.
+>>>>>>>>
+>>>>>>>> Signed-off-by: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
+>>>>>>>> ---
+>>>>>>>> The first version of this patch set min_queued_buffers to 1, but setting it
+>>>>>>>> to 0 doesn't compromise operations and it's even better as it allows application
+>>>>>>>> to queue buffers to the capture devices on-demand. If a buffer is not provided
+>>>>>>>> to the DMA engines, image data gets directed to the driver's internal scratch
+>>>>>>>> buffer.
+>>>>>>>> ---
+>>>>>>>>  drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c | 4 +---
+>>>>>>>>  1 file changed, 1 insertion(+), 3 deletions(-)
+>>>>>>>>
+>>>>>>>> diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
+>>>>>>>> index 2bddb4fa8a5c..5fcf9731f41b 100644
+>>>>>>>> --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
+>>>>>>>> +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
+>>>>>>>> @@ -35,8 +35,6 @@
+>>>>>>>>  #define RKISP1_SP_DEV_NAME	RKISP1_DRIVER_NAME "_selfpath"
+>>>>>>>>  #define RKISP1_MP_DEV_NAME	RKISP1_DRIVER_NAME "_mainpath"
+>>>>>>>>
+>>>>>>>> -#define RKISP1_MIN_BUFFERS_NEEDED 3
+>>>>>>>> -
+>>>>>>>>  enum rkisp1_plane {
+>>>>>>>>  	RKISP1_PLANE_Y	= 0,
+>>>>>>>>  	RKISP1_PLANE_CB	= 1,
+>>>>>>>> @@ -1563,7 +1561,7 @@ static int rkisp1_register_capture(struct rkisp1_capture *cap)
+>>>>>>>>  	q->ops = &rkisp1_vb2_ops;
+>>>>>>>>  	q->mem_ops = &vb2_dma_contig_memops;
+>>>>>>>>  	q->buf_struct_size = sizeof(struct rkisp1_buffer);
+>>>>>>>> -	q->min_queued_buffers = RKISP1_MIN_BUFFERS_NEEDED;
+>>>>>>>> +	q->min_queued_buffers = 0;
+>>>>>>>
+>>>>>>> You can probably just drop this since the vb2_queue struct is zeroed when it
+>>>>>>> is allocated. So no need to set it to 0.
+>>>>>>
+>>>>>> I suspected so :)
+>>>>>>
+>>>>>>>
+>>>>>>> And is the RKISP1_MIN_BUFFERS_NEEDED define still needed after this change?
+>>>>>>
+>>>>>> No, and this patch removes it in facts
+>>>>>>
+>>>>>>  -#define RKISP1_MIN_BUFFERS_NEEDED 3
+>>>>>>  -
+>>>>>
+>>>>> I should have checked the patch :-) Sorry for the noise.
+>>>>>
+>>>>>>>
+>>>>>>> Also, see my RFC I posted today:
+>>>>>>>
+>>>>>>> https://lore.kernel.org/linux-media/126cd76a-6224-483b-a18d-a3cc89e5ff2d@xs4all.nl/T/#u
+>>>>>>>
+>>>>>>> My main concern is that applications that just call VIDIOC_REQBUFS with count = 1
+>>>>>>> and expect the driver to change that to a workable value, will, in fact, now just get
+>>>>>>> one buffer. And streaming that will cause lots of frame drops.
+>>>>>>>
+>>>>>>> It makes sense to leave min_queued_buffers at 0 if a scratch buffer is available,
+>>>>>>> but I'm unhappy with the fact that you get a poor experience when REQBUFS(1) is called.
+>>>>>>
+>>>>>> Yeah, I've read the discussion between you and Tomi and it seemed like
+>>>>>> a good time to re-send this patch.
+>>>>>>
+>>>>>>> My RFC suggests improvements in the uAPI. With that in place you can use CREATE_BUFS in
+>>>>>>> libcamera to get much better control over how many buffers should be allocated.
+>>>>>>
+>>>>>> In my understanding min_queued_buffers identifies how many buffers
+>>>>>> should be queued before calling start_streaming, and this comes
+>>>>>> directly from an hw/driver requirement. This doesn't mean that at
+>>>>>> least min_queue_buffers should be queued at all the times during
+>>>>>> streaming, at least, I don't see how and where videobuf2 enforces
+>>>>>> this. Or does it ?
+>>>>>
+>>>>> It's an intrinsic property of the HW/driver: e.g. if it needs two buffers
+>>>>> queued up for the DMA engine to work, then it really is always holding on
+>>>>> to two buffers. The only thing the framework does is postpone calling
+>>>>> start_streaming until that number of buffers is queued to ensure the
+>>>>> DMA engine has what it needs to start. But after that vb2 doesn't check
+>>>>> it.
+>>>>
+>>>> The "driver" part of "HW/driver" is important here, as drivers can
+>>>> influence this in multiple ways. One of them is usage of scratch
+>>>> buffers, but even without that, a DMA engine that requires two buffers
+>>>> can easily be operated with a single buffer by programming the DMA
+>>>> engine with the same buffer address twice. Drivers should really do so
+>>>> unless they really can't.
+>>>>
+>>>>>> If the above is correct, then the number of buffers to be queued
+>>>>>> during streaming is, in my opinion, less an hw/driver requirement but
+>>>>>> more an application decision.
+>>>>>
+>>>>> No, min_queued_buffers is a HW/drivers property: the DMA engine can't
+>>>>> start until that many buffers are queued up, and once it is started
+>>>>> it will always hold on to that many buffers.
+>>>
+>>> I get it, my point was that once start_streaming has been called, even
+>>> if min_queued_buffers=2, there is nothing preventing userspace from
+>>> queing one buffer at the time once the first two have completed. Sure, the
+>>> hw/driver might not like it, but while delaying start_streaming
+>>> prevents bad things from happening, there is nothing in the core that
+>>> prevents applications from potentially stalling the capture
+>>> operations.
+>>>
+>>> But I get your point, if the system needs 2 buffers to start
+>>> streaming, it will probably need two buffers to continue producing
+>>> frames.
 
-Hi Andrew,
+Right, it won't be able to complete anything and return it to userspace
+until it gets a third buffer. Only then can it return one buffer to userspace.
 
-At 2024-10-28 20:59:18, "Andrew Lunn" <andrew@lunn.ch> wrote:
->> Hello Johan,
->>     Thanks for your patch.  Maybe we need a Fixes tag here?
->
->What is actually broken?
+>>>
+>>>> That's not always true. The imx7-media-csi driver, for instance, sets
+>>>> min_queued_buffers to 2, but allocates scratch buffers and uses them at
+>>>> runtime, so that it can return all queued buffers to userspace.
+>>>
+>>> That's interesting. From your mention of "scratch buffers" I get there
+>>> actually is a need to have 2 buffers queued to the HW ? How does
+>>> that work, after all queuing a buffer to the DMA engine usually means
+>>> pointing its write engine to one (set of) addresses.
+>>>
+>>> Or is it a driver-only requirement to ask for two buffers ?
+>>
+>> The hardware has a ping-pong mechanism with two addresses and switches
+>> between them automatically.
+>>
+>>>> Grepping for min_queued_buffers I see drivers setting it to 4
+>>>> (rcar-dma.c, rzg2l-video.c), 6 (cxusb-analog.c) or even 9
+>>>> (zoran_driver.c) ! I doubt the zoran driver holds on to 9 buffers at
+>>>> runtime. Your statement is not universally true today?.
+>>>>
+>>>> This could be considered as driver issues, and the min_queued_buffers
+>>>> values should be fixed to match the runtime behaviour. In some cases I
+>>>> expect it will require more work than just changing the value, as
+>>>> drivers may implement the logic to operate with less buffers at runtime
+>>>> but not at start time. This would be fixable, but it may also call for
+>>>> asking if the start at runtime behaviours need to be identical.
+>>>>
+>>>>> So the application has to know somehow how many buffers are needed to
+>>>>> actually stream. One way is via VIDIOC_REQBUFS since that is supposed to
+>>>>> always return a workable number of buffers, the other is by actually
+>>>>> reporting the minimum number of buffers as per my RFC.
+>>>>>
+>>>>>> As you said an application should be good with> 3 buffers (one queued, one currently being written to, one to be
+>>>>>> consumed by the application), but in very specific cases where an
+>>>>>> application retains the buffer for longer, for whatever reason, it
+>>>>>> might need a larger number of queued buffers to provide the DMA
+>>>>>> engines a space where to write data without them being discarded (to
+>>>>>> scratch buffers or discarded by the DMA engine itself, if the HW
+>>>>>> supports that). Or maybe an application is fine to drop frames and
+>>>>>> only queue buffers sporadically (if the HW supports that ofc).
+>>>>>>
+>>>>>> For libcamera, and for this specific platform in particular, we're
+>>>>>> going to base new developments on the assumption that
+>>>>>> min_queued_buffers == 0, and it would be more convenient for use to be
+>>>>>> able to access its value from userspace to identify if we're running
+>>>>>> on a kernel with or without this patch being applied.
+>>>>>
+>>>>> So my proposal in my RFC to expose min_num_buffers would work for libcamera?
+>>>>> It sounds like that's what you need.
+>>>
+>>> My immediate need is to know if I'm running on a "legacy" version of
+>>> this driver that still requires 3 buffers for no apparent reason, or
+>>> on a new version. Your proposal might work, but I still feel like we
+>>> should report the HW/driver requirement (min_queued_buffers) instead
+>>> of trying to suggest applications how many buffers they need to
+>>> allocate to get "smooth streaming" or similar, as the use cases
+>>> might be different.
+>>>
+>>>> It may be useful, but I think we may also just require min_num_buffers
+>>>> == 0 for a device to be supported in libcamera. We have to implement
+>>>
+>>> While I concur this would be ideal, how would it work for existing
+>>> rkisp1 implementation that do not include this patch ? libcamera
+>>> should be able to run on both, probably in two different "modes" /o\
+>>
+>> A simple option is to check the kernel version, we do that in a few
+>> places. Over time we'll increase the minimum kernel version and drop
+> 
+> I considered that, but this patch is pretty easy to backport, having
+> something that tells to userspace the value of
+> min_queued_buffers might be useful indeed.
 
-The emac failed to probe after bellow patch merged.
+The implementation is similar to that of the new max_num_buffers field
+in struct v4l2_create_buffers: it will be signaled by a new buffer
+capability flag. So you can check that in the code. Much better than
+relying on kernel versions.
 
- [    2.324583] loop: module loaded
-    [    2.328435] SPI driver spidev has no spi_device_id for rockchip,spidev
-    [    2.338688] tun: Universal TUN/TAP device driver, 1.6
-    [    2.345397] rockchip_emac 10200000.ethernet: no regulator found
-    [    2.351892] rockchip_emac 10200000.ethernet: ARC EMAC detected with id: 0x7fd02
-    [    2.359331] rockchip_emac 10200000.ethernet: IRQ is 43
-    [    2.364719] rockchip_emac 10200000.ethernet: MAC address is now e6:58:d6:ec:d9:7c
-    [    2.396993] mdio_bus Synopsys MII Bus: mdio has invalid PHY address
-    [    2.403306] mdio_bus Synopsys MII Bus: scan phy mdio at address 0
-    [    2.508656] rockchip_emac 10200000.ethernet: of_phy_connect() failed
-    [    2.516334] rockchip_emac 10200000.ethernet: failed to probe arc emac (-19)
+Regards,
+
+	Hans
+
+> 
+>> support for legacy APIs.
+>>
+>>>> APIs such as the Android camera HAL that has no concept of buffers being
+>>>> kept by the device. This could possibly be handled within libcamera by
+>>>> allocating scratch buffers in userspace, but that comes with other
+>>>> challenges. I would like to at least try to get help from the kernel
+>>>> until proven that it's a bad idea.
+>>
+>> --
+>> Regards,
+>>
+>> Laurent Pinchart
 
 
-commit 1dabb74971b38d966ecef566bafddc4a34f4db9d
-Author: Johan Jonker <jbx6244@gmail.com>
-Date:   Fri Jun 3 18:35:39 2022 +0200
-
-    ARM: dts: rockchip: restyle emac nodes
-    
-    The emac_rockchip.txt file is converted to YAML.
-    Phy nodes are now a subnode of mdio, so restyle
-    the emac nodes of rk3036/rk3066/rk3188.
-    
-    Signed-off-by: Johan Jonker <jbx6244@gmail.com>
-    Link: https://lore.kernel.org/r/20220603163539.537-3-jbx6244@gmail.com
-    Signed-off-by: Heiko Stuebner <heiko@sntech.de>
-
->
->	Andrew
->
->_______________________________________________
->Linux-rockchip mailing list
->Linux-rockchip@lists.infradead.org
->http://lists.infradead.org/mailman/listinfo/linux-rockchip
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
