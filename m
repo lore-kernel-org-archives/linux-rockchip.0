@@ -4,83 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 64B7ED3A66B
-	for <linux-rockchip@archiver.kernel.org>; Tue, 29 Oct 2024 15:06:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3C60DD3A66F
+	for <linux-rockchip@archiver.kernel.org>; Tue, 29 Oct 2024 15:46:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ZJzlnB3xmAnxlZFsz7VuFuss3qG8nHKPYs4e0VuVMyU=; b=j1FhC1I35rf5n+
-	NYzvLWQpRxYHDJL9vbk1GyHDArFukwvo9OP76f0yt9VjdHjo7w/Zci4GofpIlxspeUgLh4pdy8gQ7
-	AYwji91N0T3nlz+278VwWJfbQVieBp9Qn3tIwUEqE/6FtzG/z5CRbmosBCL4PXxboXkKyXdkdsEQ9
-	H8a6UhzUMrZwhlUWeYBnctIyrhn7VYnIGO1iU9zbDCloBPUmyGPeks4CS+WKKjaneexycevQJdlBN
-	Saz9ZWeokuyetB2feqR7AS3fM4GjC33CPcx9ays9y6nUKaWS67Jp8dY9cDnHZff3V7LJYzSDpHG8R
-	XBTwPKrAI8NXWtnuuTag==;
+	List-Owner; bh=cP4PoiMjJS99oB5rzz0OpQkLEP4jlt7GZwwdZO4+VAQ=; b=eQaVWuYWTQ6OSt
+	L3BTF2axMdxdvLvp5jF1iwz1qu4DSeEpZbXbBBkIyzu1XEn55vCxD+lMSaDSJcyPTuqHcXQe8scWU
+	3+H5CiuujjA7EtWlrjheHns+Wz8KNCFR8VIadG76CmH4IBVBX9E0o1Oo4uiZRpl1xBpxR0mY/8oGL
+	vZ0EeE1ZpVGeWfeWuMesAcIhMcQKeticWR8cytbMX69xGbMG+H7m9veWThllb/thopG/WUyugCiq2
+	HHKA+sgcyLN5dlHMfkpMkZN5hCLLPdmsmvkGMhK2gzBKkbpK4tPCQPqowZLxARLfgJegPDbKzNnd8
+	miOG6jAhKnNzdO5IeF3w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t5nnL-0000000Eono-0Bhy;
-	Tue, 29 Oct 2024 15:06:07 +0000
-Received: from mail-ej1-x635.google.com ([2a00:1450:4864:20::635])
+	id 1t5oPp-0000000Eyb5-2gKV;
+	Tue, 29 Oct 2024 15:45:53 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t5nb8-0000000En7h-0PmS
-	for linux-rockchip@lists.infradead.org;
-	Tue, 29 Oct 2024 14:53:31 +0000
-Received: by mail-ej1-x635.google.com with SMTP id a640c23a62f3a-a9a19bf0a1dso68579866b.1
-        for <linux-rockchip@lists.infradead.org>; Tue, 29 Oct 2024 07:53:28 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1730213607; x=1730818407; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=b7H64C/J9e8GCD1HkGwsMKQrPcurnGJ6w4i8btUxmUo=;
-        b=RUxtDslZlVg0S4/6+zjLpO4mSacRykJ7qZ25zSiFxJQDjC8619bwWXhDCspLksFXXh
-         0zkvphQfDJJdt54xzsa4dIgOrcqv/pbI+f43To5OWFiuMasfAEIlu9SvJ697LIcTLGCA
-         bT6f6uVdQNinK+VRm28yqWNfWPqOrt/kscC+XtKUxyPWKdAtUs89WLVc7CHcfa+uSlzr
-         59xQLgG1Em4t3e29yjO4Wy34lcR7eh0uttplNiesoY+pq7wF8Mqosvz7busoMLLOD6de
-         LKgycagc4vu3Hqp85pGeyfP1o3gg4VwJlwegnu+vbygiMdhirF/7sLHrtnPe3iz3nv/7
-         isfw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1730213607; x=1730818407;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=b7H64C/J9e8GCD1HkGwsMKQrPcurnGJ6w4i8btUxmUo=;
-        b=cEV2zIrZbQfugJJFvB6wT8LyoykaYMcTIlfHtvPcHuiuSCWqfKiFZhGh0Jz8bpzc4w
-         Qm0bmdvkQb6m5r0y386SqagxWuKXKi2JXHKNIcFg23piPZJYnyk4O2Jo3d5j0kpDz3e6
-         m+oWfEV27aD+cgTL+SEVod1xhFgTccCzp9cD9h0T7ml0578Yw2kI4C/i44mP7Zj5TepB
-         W/b7wrHfalyda/kuiZy7WGgTXrTWLDtN4JCmjg2oKJ8cx3P/w61oOTr3e0QpKPV18l9R
-         FjVJcaSdy4IESQBGFQiEhUHcahdQ/pjA3pxoL/s0zNr3Fs1+7YvLKSIk+N4PYpKalJK8
-         bRNw==
-X-Forwarded-Encrypted: i=1; AJvYcCWn6/aboQxp91lk4rguWyIHbOl3st4A5L1oT9M8E8gUnOtar044Ji/LJcOhVvywEAKtFJPuHBkFL1AcPp1CGQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yy5CBzviZpVCCdJTFyuTkiXzJInNpP08VuJs4ec0niK4FUNuOi2
-	+2pMw5ZUJR5msZ7QsF12iQUcmKWwg07rRUhL8AzjEAN6e1WAB33P
-X-Google-Smtp-Source: AGHT+IGHyWendIeeMVLYSDpNkQYgJQ01EFCXgFqz8SyS42c5j0kvV8cl2qOVXH9XZ7KSxvHFYFf3eQ==
-X-Received: by 2002:a17:907:6d24:b0:a7a:a33e:47cd with SMTP id a640c23a62f3a-a9de5fa6a7bmr550235466b.8.1730213607266;
-        Tue, 29 Oct 2024 07:53:27 -0700 (PDT)
-Received: from ?IPV6:2a02:a449:4071:1:32d0:42ff:fe10:6983? ([2a02:a449:4071:1:32d0:42ff:fe10:6983])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a9b3a0834a6sm479602166b.191.2024.10.29.07.53.26
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 29 Oct 2024 07:53:26 -0700 (PDT)
-Message-ID: <f147c6c4-30e8-40cc-8a01-dc8df3913421@gmail.com>
-Date: Tue, 29 Oct 2024 15:53:26 +0100
+	id 1t5o4v-0000000EuQ6-2FNf;
+	Tue, 29 Oct 2024 15:24:17 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Sender:Reply-To:Content-ID:Content-Description;
+	bh=ZkWZGKb51lNq5GXpAPgw2PWMYs1TWirtQYaIbVCFreI=; b=OvgoYV8cK3ra6eKTCWqJHV5Xq8
+	kS99iaBOBu3ie1hQR2qDHItGpg19YzfYpzOU+PUREQJrIGGMELasA+hN3z/58BNuOyigpa419oWZ/
+	SVTLEsji6oHjXOhIBX3gZ95KTmvEAmI5maN8VpbGsa+TwotPwYLXaaV0/bnhQ1I+QRTyv6VUnEO94
+	Sv/h4Y0hukbwc6WSwS3pcqUeA1AjK0Q9IJNsVcVYRrwKVNJ5bpGavzLDFblzkpDtUZRO0vl9mwRAE
+	JdI/1YeEoLYIl5s5sX1c//qMe33zKwrC4NOb4+GObNkmdgKF7L5bskmXeT0Ektu7/q1BGHNnd0t7m
+	3RqTYaug==;
+Received: from dfw.source.kernel.org ([139.178.84.217])
+	by desiato.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
+	id 1t5o4r-00000009vQN-16EO;
+	Tue, 29 Oct 2024 15:24:16 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id A19205C55E2;
+	Tue, 29 Oct 2024 15:23:23 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C660FC4CECD;
+	Tue, 29 Oct 2024 15:24:04 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1730215448;
+	bh=OnfPNjPFcprKl1sN97TkhOv/xNK+Q/zpiKD+oNhDMSk=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=E31i4+n2VfP73VqUtiK+gGGwGyJPG/gqLdz1F/Xn8gtzgIte2GFbSrzS2tWamSxWl
+	 9Zw0YDHmBYpciQUj3b95NnqAHMns0WZL/efHJoyMUe+TT5Av6j75+LIOn2d10jG2Sa
+	 Y/wGc+s3uqYoxSChwozTI4vlkJhehj9XoxmAnsXi9m/WRyrUAexAyJpLI7kZGMq9cI
+	 Jv7t9zvjRKrRJHu6S4D0XxbuREDxDww2gja2p+62K9u14TvqnkkJV5ZTCLzYcENc29
+	 ekLAvwOCsdlxLy8apvJqWVnUINaro65w+MkYq8mkZm8f4/4hV8Vcja9W6w98QyEBGi
+	 YG75XcuK7bCvw==
+Date: Tue, 29 Oct 2024 10:24:02 -0500
+From: Bjorn Andersson <andersson@kernel.org>
+To: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@baylibre.com>
+Cc: Arnd Bergmann <arnd@arndb.de>, Olof Johansson <olof@lixom.net>, 
+	Joel Stanley <joel@jms.id.au>, Andrew Jeffery <andrew@codeconstruct.com.au>, 
+	Christophe Leroy <christophe.leroy@csgroup.eu>, Herve Codina <herve.codina@bootlin.com>, 
+	Qiang Zhao <qiang.zhao@nxp.com>, Hitomi Hasegawa <hasegawa-hitomi@fujitsu.com>, 
+	Huisong Li <lihuisong@huawei.com>, Linus Walleij <linusw@kernel.org>, 
+	Imre Kaloz <kaloz@openwrt.org>, Karol Gugala <kgugala@antmicro.com>, 
+	Mateusz Holenko <mholenko@antmicro.com>, Gabriel Somlo <gsomlo@gmail.com>, 
+	Yinbo Zhu <zhuyinbo@loongson.cn>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Conor Dooley <conor.dooley@microchip.com>, 
+	Daire McNamara <daire.mcnamara@microchip.com>, Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, 
+	Konrad Dybcio <konradybcio@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+	Alim Akhtar <alim.akhtar@samsung.com>, Thierry Reding <thierry.reding@gmail.com>, 
+	Jonathan Hunter <jonathanh@nvidia.com>, Nishanth Menon <nm@ti.com>, 
+	Santosh Shilimkar <ssantosh@kernel.org>, Michal Simek <michal.simek@amd.com>, 
+	Andy Shevchenko <andriy.shevchenko@linux.intel.com>, Duje =?utf-8?Q?Mihanovi=C4=87?= <duje.mihanovic@skole.hr>, 
+	Mark Brown <broonie@kernel.org>, David Wu <david.wu@rock-chips.com>, 
+	Jianqun Xu <jay.xu@rock-chips.com>, Jay Buddhabhatti <jay.buddhabhatti@amd.com>, 
+	Radhey Shyam Pandey <radhey.shyam.pandey@amd.com>, Izhar Ameer Shaikh <izhar.ameer.shaikh@amd.com>, 
+	Naman Trivedi Manojbhai <naman.trivedimanojbhai@amd.com>, linux-arm-kernel@lists.infradead.org, soc@lists.linux.dev, 
+	linux-aspeed@lists.ozlabs.org, linux-kernel@vger.kernel.org, linuxppc-dev@lists.ozlabs.org, 
+	loongarch@lists.linux.dev, linux-mediatek@lists.infradead.org, 
+	linux-riscv@lists.infradead.org, linux-arm-msm@vger.kernel.org, 
+	linux-rockchip@lists.infradead.org, linux-samsung-soc@vger.kernel.org, linux-tegra@vger.kernel.org, 
+	linux-pm@vger.kernel.org
+Subject: Re: [PATCH] soc: Switch back to struct platform_driver::remove()
+Message-ID: <7iufjf4cnoofq63vtzrnlxneyjhmuhuaq2tqflzw6nc6xpixiu@dnyh4etii2vz>
+References: <20241029074859.509587-2-u.kleine-koenig@baylibre.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1 1/2] ethernet: arc: fix the device for
- dma_map_single/dma_unmap_single
-To: Andrew Lunn <andrew@lunn.ch>, andy.yan@rock-chips.com
-Cc: davem@davemloft.net, edumazet@google.com, kuba@kernel.org,
- pabeni@redhat.com, david.wu@rock-chips.com, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org
-References: <dcb70a05-2607-47dd-8abd-f6cf1b012c51@gmail.com>
- <86192630-e09f-4392-9aca-9cc7e577107f@lunn.ch>
-Content-Language: en-US
-From: Johan Jonker <jbx6244@gmail.com>
-In-Reply-To: <86192630-e09f-4392-9aca-9cc7e577107f@lunn.ch>
+Content-Disposition: inline
+In-Reply-To: <20241029074859.509587-2-u.kleine-koenig@baylibre.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241029_075330_175203_8527A500 
-X-CRM114-Status: GOOD (  18.33  )
+X-CRM114-CacheID: sfid-20241029_152413_698004_F6EE997C 
+X-CRM114-Status: GOOD (  11.88  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,72 +102,32 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+On Tue, Oct 29, 2024 at 08:48:58AM GMT, Uwe Kleine-K=F6nig wrote:
+> After commit 0edb555a65d1 ("platform: Make platform_driver::remove()
+> return void") .remove() is (again) the right callback to implement for
+> platform drivers.
+> =
 
+> Convert all platform drivers below drivers/soc to use .remove(), with
+> the eventual goal to drop struct platform_driver::remove_new(). As
+> .remove() and .remove_new() have the same prototypes, conversion is done
+> by just changing the structure member name in the driver initializer.
+> =
 
-On 10/28/24 14:03, Andrew Lunn wrote:
-> On Sun, Oct 27, 2024 at 10:41:48AM +0100, Johan Jonker wrote:
->> The ndev->dev and pdev->dev aren't the same device, use ndev->dev.parent
->> which has dma_mask, ndev->dev.parent is just pdev->dev.
->> Or it would cause the following issue:
->>
->> [   39.933526] ------------[ cut here ]------------
->> [   39.938414] WARNING: CPU: 1 PID: 501 at kernel/dma/mapping.c:149 dma_map_page_attrs+0x90/0x1f8
->>
->> Signed-off-by: David Wu <david.wu@rock-chips.com>
->> Signed-off-by: Johan Jonker <jbx6244@gmail.com>
-> 
-> A few process issues:
-> 
-> For a patch set please add a patch 0/X which explains the big picture
-> of what the patchset does. For a single patch, you don't need one.
-> 
-> Please read:
-> 
-> https://www.kernel.org/doc/html/latest/process/maintainer-netdev.html
-> 
+> On the way do a few whitespace changes to make indention consistent.
+> =
 
-> It is not clear which tree you intend these patches to be applied
-> to. This one looks like it should be to net, but needs a Fixes:
-> tag. The MDIO patch might be for net-next? 
+> Signed-off-by: Uwe Kleine-K=F6nig <u.kleine-koenig@baylibre.com>
 
-Hi Andrew, Andy,
+Acked-by: Bjorn Andersson <andersson@kernel.org> # qcom parts
 
-My desktop setup has a problem compiling older kernels for rk3066 MK808 to verify.
-
-Are you able to bisect/compile for rk3036 before this one:
-
-====
-commit bc0e610a6eb0d46e4123fafdbe5e6141d9fff3be (HEAD -> test1)
-Author: Jianglei Nie <niejianglei2021@163.com>
-Date:   Wed Mar 9 20:18:24 2022 +0800
-
-    net: arc_emac: Fix use after free in arc_mdio_probe()
-
-====
-This is the oldest EMAC related checkout I can compile.
-At that patch it still gives this warnings in the kernel log.
-
-[   16.678988] ------------[ cut here ]------------
-[   16.684189] WARNING: CPU: 0 PID: 809 at kernel/dma/mapping.c:151 dma_map_page_attrs+0x2b4/0x358
-
-The driver was maintained on auto pilot recent years without a check by Rockchip users somehow.
-Currently I don't know where and when this was introduced.
-Please advise how to move forward. Should we just mark it net-next?
-
-Johan
-
-> 
->     Andrew
-> 
-> ---
-> pw-bot: cr
-> 
-> 
+Regards,
+Bjorn
 
 _______________________________________________
 Linux-rockchip mailing list
