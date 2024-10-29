@@ -4,37 +4,37 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 82BD0D2AB11
-	for <linux-rockchip@archiver.kernel.org>; Tue, 29 Oct 2024 09:58:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E0949D2AB13
+	for <linux-rockchip@archiver.kernel.org>; Tue, 29 Oct 2024 09:58:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=I6rbJvohD5OkLnDSGjcdmEkDMQVfs+0u/Mp8J8AaJ5k=; b=G1I4oDdgdqKXil
-	QGqnKQ1qxPimhTgi5LslWa8wzzAP1AQPTW5A/jQhK2vAEAXaQpRdhEs+LPXYR1tNeX5B33NtEnStQ
-	6+bCFkTlbahfy/U1UC8+bxS1YGAtHxemxAoRjgq8Y7+QY35L7ATIGiVtJb9MU6ygLTVZHq3oGZxcU
-	xHcuFu4OhdH58IkeF3F5nj/83qc3eCzEfTYPljBQuNOGFmO4lqx9NIZDXhXx+5L3nfikxJG5HetZa
-	I4Sq9/o6IHyhCVHLmDMNcHJo7SFUE/w3lusuMnzfIweqOQF51pD/a9O2Xgh5+JFqTlvySO3MTuMv0
-	exCRuzlJAUVhmYb2KnZA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=fl593EFOqvHXvRAX0Nu3kTbTJ/gojw13aUkqanTw148=; b=IDwdWyxKzBM5K4
+	Kq/r9EGtDya9KC7dMi5O6L5iwTG437VrwPzuVCIk1J1zl0Mu/wnqR+/VjWg2TdXFOsRuAZrnI6r5F
+	3xckR08ev7JBZJ1WJrNZcL+nTs7ObvZHDopWGRgxXtM3i3KbBFbESofLJyRjXfAD/x+BIBuRSIqJ2
+	TWvYGTiVIkI9sOaVnv/83UwE/u6cPluxl0aKuRxUCDXEb/wmOQcG3aZGWPkSyY6WInBxkbKow82qz
+	SzTeBncIscZtoYjdz68/kg4djc9JYeHZrz+rw0+n318r0cmIajjPbGgQgBCx4WwVT75Vswn8yOaid
+	m7EBplSeT+g9NA/iizrA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t5izr-0000000DxEz-0519;
-	Tue, 29 Oct 2024 09:58:43 +0000
-Received: from m16.mail.163.com ([220.197.31.5])
+	id 1t5j02-0000000DxJB-0iBa;
+	Tue, 29 Oct 2024 09:58:54 +0000
+Received: from m16.mail.163.com ([117.135.210.5])
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t5iws-0000000DwDs-3DAH;
-	Tue, 29 Oct 2024 09:55:40 +0000
+	id 1t5iws-0000000DwDt-3Rnl;
+	Tue, 29 Oct 2024 09:55:41 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=From:Subject:Date:Message-ID:MIME-Version; bh=YkP+h
-	HuVKz3drYv66Z6ob+bBObbmmlMznGnxdNwYQgA=; b=RqyHhxShp7vkJw9Sxgz8r
-	auzw7BM8Ffhibbz8hNslcMkmgFUB0dd9mJIUOqreCAOVZadE82V2lrU5p1fbZ+u7
-	28eiBGec+S6TNBdvmH9RKpcbSli1s5AOpdo4TTf06FNEqE68WrrfB4JE4FVAMeUO
-	sYhGdDie8sS6q27zNs0aiM=
+	s=s110527; h=From:Subject:Date:Message-ID:MIME-Version; bh=gO972
+	vPWIhe4zly4yr2H4uC4lZBv1i4XKsX7IhxkJlo=; b=qLRwsqLD+LZ64UuOjTQ7S
+	jZhHh0zdl4gyADooNULb6KVqrtU84LWyc+oBej7LwUMP4USXbyOgYXMmaHHoWZrE
+	Rvf2B91txhPyYPvEO2U7jPE6Wp6YkL0jXp81/trNnX7hn0IvFo1LLJBC5QcvQz5K
+	+HKzu1eTejTDRZncZjHSe4=
 Received: from ProDesk.. (unknown [58.22.7.114])
-	by gzga-smtp-mtada-g1-1 (Coremail) with SMTP id _____wD3nxoCsSBn8+3dEA--.3291S2;
-	Tue, 29 Oct 2024 17:55:18 +0800 (CST)
+	by gzga-smtp-mtada-g1-1 (Coremail) with SMTP id _____wD3nxoCsSBn8+3dEA--.3291S10;
+	Tue, 29 Oct 2024 17:55:27 +0800 (CST)
 From: Andy Yan <andyshrk@163.com>
 To: heiko@sntech.de
 Cc: hjc@rock-chips.com,
@@ -48,22 +48,25 @@ Cc: hjc@rock-chips.com,
 	derek.foreman@collabora.com,
 	minhuadotchen@gmail.com,
 	detlev.casanova@collabora.com,
-	Andy Yan <andy.yan@rock-chips.com>
-Subject: [PATCH v4 00/14] VOP Support for rk3576
-Date: Tue, 29 Oct 2024 17:54:53 +0800
-Message-ID: <20241029095513.391006-1-andyshrk@163.com>
+	Andy Yan <andy.yan@rock-chips.com>,
+	Michael Riesch <michael.riesch@wolfvision.net>
+Subject: [PATCH v4 08/14] drm/rockchip: vop2: Support for different layer select configuration between VPs
+Date: Tue, 29 Oct 2024 17:55:01 +0800
+Message-ID: <20241029095513.391006-9-andyshrk@163.com>
 X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20241029095513.391006-1-andyshrk@163.com>
+References: <20241029095513.391006-1-andyshrk@163.com>
 MIME-Version: 1.0
-X-CM-TRANSID: _____wD3nxoCsSBn8+3dEA--.3291S2
-X-Coremail-Antispam: 1Uf129KBjvJXoWxuF13Gr4rAF48WrWUWFyUWrg_yoW5CF1fp3
-	98CryrZrWxCFyjqrs7Jw1UCrWFvwnayay7Ww4fG3W7J3W5KFnrKr9I9Fn8ZrZxX3WxZF4j
-	krs3X34UKFsIvFJanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07UmZXwUUUUU=
+X-CM-TRANSID: _____wD3nxoCsSBn8+3dEA--.3291S10
+X-Coremail-Antispam: 1Uf129KBjvJXoWxtrW8JF4UZF47CF4UWFy8Zrb_yoWfGF43pa
+	yUursIg3Z8Cr45tryUJay8Zr4rGwnxtay3uan3Kw1xGF1rKrWDJF4ktF93A3Z8KF93Zry8
+	Xw1YgryDZrZrtFJanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07jF38nUUUUU=
 X-Originating-IP: [58.22.7.114]
-X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/1tbiqQyHXmcgr44a3QAAsd
+X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/xtbB0hyHXmcgp1S+TwAAsS
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241029_025539_261818_451C0A6A 
-X-CRM114-Status: GOOD (  15.05  )
+X-CRM114-CacheID: sfid-20241029_025539_348666_50F5F82A 
+X-CRM114-Status: GOOD (  15.57  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,84 +85,207 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Andy Yan <andy.yan@rock-chips.com>
 
+In the upcoming VOP for rk3576, every VP has it's own LAYER_SEL
+register, and the configuration value of each VP for the same
+window maybe different, so extend the layer_sel_id to array,
+let it can descption the layer select configuration value for
+different VP.
 
-Thanks for the basic work from Collabora, I can bringup a HDMI
-display out on rk3576.
+Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
+Tested-by: Michael Riesch <michael.riesch@wolfvision.net> # on RK3568
+Tested-by: Detlev Casanova <detlev.casanova@collabora.com>
 
-No big changes in this version.
-
-I remove the patch that set dma mask to 64 bit in V3, as it seems
-that it's not easy to come up with a suitable solution in the short
-term.
-
-Others are some typo fix and collection of Tested-by
-
-PATCH 1 is a carryover from the working when add support for
-        rk3588[0], is very usefull when some people want me
-        help debug some issue online, so I really hope it can
-        be merged at this round.
-PATCH 2~4 are bugfix of rk3588 alpha blending which report and
-        test by Derek
-PATCH 5~12 are preparations for rk3576 support
-PATCH 13~14 are real support for rk376
-
-I test it with a 1080P/4K HDMI output with modetest and weston output.
-
-The hdmi depends Cristian's work which get merged in drm-misc recently[1]
-If there are some one want to have a try, I have a tree here[2]
-
-[0] https://patchwork.kernel.org/project/linux-rockchip/cover/20231211115547.1784587-1-andyshrk@163.com/
-[1] https://lore.kernel.org/linux-rockchip/172917428139.3344404.160573495360164649.b4-ty@kernel.org/
-[2] https://github.com/andyshrk/linux/tree/rk3576-vop2-upstream-v4
+---
 
 Changes in v4:
-- Fix some typo
 - Typo fix: selet->select
-- collection of Tested-by and Reviewed-by
 
-Changes in v3:
-- Split it from 10/15, as it fix a exiting compile warning.
-- Add comments for why we should treat rk3566 with special care.
-- Add hardware version check
-- Add comments for why we should treat rk3566 with special care.
-- ordered by soc name
-- Add description for newly added interrupt
-- Share the alpha setup function with rk3568
-- recoder the code block by soc
+ drivers/gpu/drm/rockchip/rockchip_drm_vop2.h |  4 +--
+ drivers/gpu/drm/rockchip/rockchip_vop2_reg.c | 38 ++++++++++----------
+ 2 files changed, 22 insertions(+), 20 deletions(-)
 
-Changes in v2:
-- split it from main patch add support for rk3576
-- Add platform specific callback
-- Introduce vop hardware version
-- Add dt bindings
-- Add platform specific callback
-
-Andy Yan (13):
-  drm/rockchip: vop2: Add debugfs support
-  drm/rockchip: vop2: Fix cluster windows alpha ctrl registers offset
-  drm/rockchip: vop2: Fix the mixer alpha setup for layer 0
-  drm/rockchip: vop2: Fix the windows switch between different layers
-  drm/rockchip: vop2: Support 32x8 superblock afbc
-  drm/rockchip: vop2: Add platform specific callback
-  drm/rockchip: vop2: Support for different layer select configuration
-    between VPs
-  drm/rockchip: vop2: Introduce vop hardware version
-  drm/rockchip: vop2: Register the primary plane and overlay plane
-    separately
-  drm/rockchip: vop2: Set plane possible crtcs by possible vp mask
-  drm/rockchip: vop2: Add uv swap for cluster window
-  dt-bindings: display: vop2: Add rk3576 support
-  drm/rockchip: vop2: Add support for rk3576
-
-Min-Hua Chen (1):
-  drm/rockchip: vop2: include rockchip_drm_drv.h
-
- .../display/rockchip/rockchip-vop2.yaml       |   13 +-
- drivers/gpu/drm/rockchip/rockchip_drm_vop2.c  | 1572 ++++---------
- drivers/gpu/drm/rockchip/rockchip_drm_vop2.h  |  274 ++-
- drivers/gpu/drm/rockchip/rockchip_vop2_reg.c  | 1948 ++++++++++++++++-
- 4 files changed, 2680 insertions(+), 1127 deletions(-)
-
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h
+index b27163f561dea..9b269f6e576e8 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h
+@@ -163,9 +163,9 @@ struct vop2_win_data {
+ 	const unsigned int supported_rotations;
+ 
+ 	/**
+-	 * @layer_sel_id: defined by register OVERLAY_LAYER_SEL of VOP2
++	 * @layer_sel_id: defined by register OVERLAY_LAYER_SEL or PORTn_LAYER_SEL
+ 	 */
+-	unsigned int layer_sel_id;
++	unsigned int layer_sel_id[ROCKCHIP_MAX_CRTC];
+ 	uint64_t feature;
+ 
+ 	unsigned int max_upscale_factor;
+diff --git a/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c b/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
+index 0e577aabc9e49..8473dc9c232c1 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
++++ b/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
+@@ -342,7 +342,8 @@ static const struct vop2_win_data rk3568_vop_win_data[] = {
+ 		.formats = formats_smart,
+ 		.nformats = ARRAY_SIZE(formats_smart),
+ 		.format_modifiers = format_modifiers,
+-		.layer_sel_id = 3,
++		/* 0xf means this layer can't attached to this VP */
++		.layer_sel_id = { 3, 3, 3, 0xf },
+ 		.supported_rotations = DRM_MODE_REFLECT_Y,
+ 		.type = DRM_PLANE_TYPE_PRIMARY,
+ 		.max_upscale_factor = 8,
+@@ -355,7 +356,7 @@ static const struct vop2_win_data rk3568_vop_win_data[] = {
+ 		.nformats = ARRAY_SIZE(formats_smart),
+ 		.format_modifiers = format_modifiers,
+ 		.base = 0x1e00,
+-		.layer_sel_id = 7,
++		.layer_sel_id = { 7, 7, 7, 0xf },
+ 		.supported_rotations = DRM_MODE_REFLECT_Y,
+ 		.type = DRM_PLANE_TYPE_PRIMARY,
+ 		.max_upscale_factor = 8,
+@@ -368,7 +369,7 @@ static const struct vop2_win_data rk3568_vop_win_data[] = {
+ 		.nformats = ARRAY_SIZE(formats_rk356x_esmart),
+ 		.format_modifiers = format_modifiers,
+ 		.base = 0x1a00,
+-		.layer_sel_id = 6,
++		.layer_sel_id = { 6, 6, 6, 0xf },
+ 		.supported_rotations = DRM_MODE_REFLECT_Y,
+ 		.type = DRM_PLANE_TYPE_PRIMARY,
+ 		.max_upscale_factor = 8,
+@@ -381,7 +382,7 @@ static const struct vop2_win_data rk3568_vop_win_data[] = {
+ 		.nformats = ARRAY_SIZE(formats_rk356x_esmart),
+ 		.format_modifiers = format_modifiers,
+ 		.base = 0x1800,
+-		.layer_sel_id = 2,
++		.layer_sel_id = { 2, 2, 2, 0xf },
+ 		.supported_rotations = DRM_MODE_REFLECT_Y,
+ 		.type = DRM_PLANE_TYPE_PRIMARY,
+ 		.max_upscale_factor = 8,
+@@ -394,7 +395,7 @@ static const struct vop2_win_data rk3568_vop_win_data[] = {
+ 		.formats = formats_cluster,
+ 		.nformats = ARRAY_SIZE(formats_cluster),
+ 		.format_modifiers = format_modifiers_afbc,
+-		.layer_sel_id = 0,
++		.layer_sel_id = { 0, 0, 0, 0xf },
+ 		.supported_rotations = DRM_MODE_ROTATE_90 | DRM_MODE_ROTATE_270 |
+ 					DRM_MODE_REFLECT_X | DRM_MODE_REFLECT_Y,
+ 		.max_upscale_factor = 4,
+@@ -409,7 +410,7 @@ static const struct vop2_win_data rk3568_vop_win_data[] = {
+ 		.formats = formats_cluster,
+ 		.nformats = ARRAY_SIZE(formats_cluster),
+ 		.format_modifiers = format_modifiers_afbc,
+-		.layer_sel_id = 1,
++		.layer_sel_id = { 1, 1, 1, 0xf },
+ 		.supported_rotations = DRM_MODE_ROTATE_90 | DRM_MODE_ROTATE_270 |
+ 					DRM_MODE_REFLECT_X | DRM_MODE_REFLECT_Y,
+ 		.type = DRM_PLANE_TYPE_OVERLAY,
+@@ -574,7 +575,7 @@ static const struct vop2_win_data rk3588_vop_win_data[] = {
+ 		.formats = formats_cluster,
+ 		.nformats = ARRAY_SIZE(formats_cluster),
+ 		.format_modifiers = format_modifiers_afbc,
+-		.layer_sel_id = 0,
++		.layer_sel_id = { 0, 0, 0, 0 },
+ 		.supported_rotations = DRM_MODE_ROTATE_90 | DRM_MODE_ROTATE_270 |
+ 				       DRM_MODE_REFLECT_X | DRM_MODE_REFLECT_Y,
+ 		.max_upscale_factor = 4,
+@@ -589,7 +590,7 @@ static const struct vop2_win_data rk3588_vop_win_data[] = {
+ 		.formats = formats_cluster,
+ 		.nformats = ARRAY_SIZE(formats_cluster),
+ 		.format_modifiers = format_modifiers_afbc,
+-		.layer_sel_id = 1,
++		.layer_sel_id = { 1, 1, 1, 1 },
+ 		.supported_rotations = DRM_MODE_ROTATE_90 | DRM_MODE_ROTATE_270 |
+ 				       DRM_MODE_REFLECT_X | DRM_MODE_REFLECT_Y,
+ 		.type = DRM_PLANE_TYPE_PRIMARY,
+@@ -604,7 +605,7 @@ static const struct vop2_win_data rk3588_vop_win_data[] = {
+ 		.formats = formats_cluster,
+ 		.nformats = ARRAY_SIZE(formats_cluster),
+ 		.format_modifiers = format_modifiers_afbc,
+-		.layer_sel_id = 4,
++		.layer_sel_id = { 4, 4, 4, 4 },
+ 		.supported_rotations = DRM_MODE_ROTATE_90 | DRM_MODE_ROTATE_270 |
+ 				       DRM_MODE_REFLECT_X | DRM_MODE_REFLECT_Y,
+ 		.type = DRM_PLANE_TYPE_PRIMARY,
+@@ -619,7 +620,7 @@ static const struct vop2_win_data rk3588_vop_win_data[] = {
+ 		.formats = formats_cluster,
+ 		.nformats = ARRAY_SIZE(formats_cluster),
+ 		.format_modifiers = format_modifiers_afbc,
+-		.layer_sel_id = 5,
++		.layer_sel_id =  { 5, 5, 5, 5 },
+ 		.supported_rotations = DRM_MODE_ROTATE_90 | DRM_MODE_ROTATE_270 |
+ 				       DRM_MODE_REFLECT_X | DRM_MODE_REFLECT_Y,
+ 		.type = DRM_PLANE_TYPE_PRIMARY,
+@@ -634,7 +635,7 @@ static const struct vop2_win_data rk3588_vop_win_data[] = {
+ 		.nformats = ARRAY_SIZE(formats_esmart),
+ 		.format_modifiers = format_modifiers,
+ 		.base = 0x1800,
+-		.layer_sel_id = 2,
++		.layer_sel_id = { 2, 2, 2, 2 },
+ 		.supported_rotations = DRM_MODE_REFLECT_Y,
+ 		.type = DRM_PLANE_TYPE_OVERLAY,
+ 		.max_upscale_factor = 8,
+@@ -647,7 +648,7 @@ static const struct vop2_win_data rk3588_vop_win_data[] = {
+ 		.nformats = ARRAY_SIZE(formats_esmart),
+ 		.format_modifiers = format_modifiers,
+ 		.base = 0x1a00,
+-		.layer_sel_id = 3,
++		.layer_sel_id = { 3, 3, 3, 3 },
+ 		.supported_rotations = DRM_MODE_REFLECT_Y,
+ 		.type = DRM_PLANE_TYPE_OVERLAY,
+ 		.max_upscale_factor = 8,
+@@ -660,7 +661,7 @@ static const struct vop2_win_data rk3588_vop_win_data[] = {
+ 		.formats = formats_esmart,
+ 		.nformats = ARRAY_SIZE(formats_esmart),
+ 		.format_modifiers = format_modifiers,
+-		.layer_sel_id = 6,
++		.layer_sel_id =  { 6, 6, 6, 6 },
+ 		.supported_rotations = DRM_MODE_REFLECT_Y,
+ 		.type = DRM_PLANE_TYPE_OVERLAY,
+ 		.max_upscale_factor = 8,
+@@ -673,7 +674,7 @@ static const struct vop2_win_data rk3588_vop_win_data[] = {
+ 		.nformats = ARRAY_SIZE(formats_esmart),
+ 		.format_modifiers = format_modifiers,
+ 		.base = 0x1e00,
+-		.layer_sel_id = 7,
++		.layer_sel_id =  { 7, 7, 7, 7 },
+ 		.supported_rotations = DRM_MODE_REFLECT_Y,
+ 		.type = DRM_PLANE_TYPE_OVERLAY,
+ 		.max_upscale_factor = 8,
+@@ -1420,7 +1421,7 @@ static void rk3568_vop2_setup_layer_mixer(struct vop2_video_port *vp)
+ 		 */
+ 		for (old_layer_id = 0; old_layer_id < vop2->data->win_size; old_layer_id++) {
+ 			layer_sel_id = (layer_sel >> (4 * old_layer_id)) & 0xf;
+-			if (layer_sel_id == win->data->layer_sel_id)
++			if (layer_sel_id == win->data->layer_sel_id[vp->id])
+ 				break;
+ 		}
+ 
+@@ -1430,7 +1431,7 @@ static void rk3568_vop2_setup_layer_mixer(struct vop2_video_port *vp)
+ 		for (i = 0; i < vop2->data->win_size; i++) {
+ 			old_win = &vop2->win[i];
+ 			layer_sel_id = (layer_sel >> (4 * (plane->state->normalized_zpos + ofs))) & 0xf;
+-			if (layer_sel_id == old_win->data->layer_sel_id)
++			if (layer_sel_id == old_win->data->layer_sel_id[vp->id])
+ 				break;
+ 		}
+ 
+@@ -1480,13 +1481,14 @@ static void rk3568_vop2_setup_layer_mixer(struct vop2_video_port *vp)
+ 		layer_sel &= ~RK3568_OVL_LAYER_SEL__LAYER(plane->state->normalized_zpos + ofs,
+ 							  0x7);
+ 		layer_sel |= RK3568_OVL_LAYER_SEL__LAYER(plane->state->normalized_zpos + ofs,
+-							 win->data->layer_sel_id);
++							 win->data->layer_sel_id[vp->id]);
+ 		/*
+ 		 * When we bind a window from layerM to layerN, we also need to move the old
+ 		 * window on layerN to layerM to avoid one window selected by two or more layers.
+ 		 */
+ 		layer_sel &= ~RK3568_OVL_LAYER_SEL__LAYER(old_layer_id, 0x7);
+-		layer_sel |= RK3568_OVL_LAYER_SEL__LAYER(old_layer_id, old_win->data->layer_sel_id);
++		layer_sel |= RK3568_OVL_LAYER_SEL__LAYER(old_layer_id,
++			     old_win->data->layer_sel_id[vp->id]);
+ 	}
+ 
+ 	vop2_writel(vop2, RK3568_OVL_LAYER_SEL, layer_sel);
 -- 
 2.34.1
 
