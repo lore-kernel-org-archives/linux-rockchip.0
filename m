@@ -4,57 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5AA3DD5B166
-	for <linux-rockchip@archiver.kernel.org>; Tue, 29 Oct 2024 08:22:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AF0A7D5B164
+	for <linux-rockchip@archiver.kernel.org>; Tue, 29 Oct 2024 08:26:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=WmHIJejW8XYV9b/x3RM90rX3sNxeX0/RSZmejI6ak7M=; b=L44EmF2BcAi0/O
-	lS4Yegqn2jgv+4+RRHno3mv+DGuLf8d4+E5EwiomhE2hn3gSKSqiJ+TP8+0Nn21CrfBDRmnuCnmgv
-	FgJs72YWIEFNZ6MkQ1/Qwhv8uRhX+41Orfhy9Afw075CFJQtzmD31uRyZk1fzCYcs2FCAowXfKQMA
-	Cd1tmXlw10oqSfw0Jo7jwxneoa9YhzyzRroFkEGzMorZE7NNDdnnIILIddVp9NdJOAaQLNLfRK3b2
-	odvANnw2IZcrSjDvZKwf2gwQXJaZtxYkeRti9MXEdXPVswjL6MurQ9YXuWN2DSoqXfh2XCxN24Tnl
-	ivezBhP4A1Day/IRjPNQ==;
+	List-Archive:List-Unsubscribe:List-Id:Message-ID:MIME-Version:References:
+	In-Reply-To:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=RbczteWA0vcZhWqeY4PwhKJySxI1yXSJzlb+L7h4aEI=; b=a7v04x5oT16L1U
+	iqjLaa78oYhtaEzlUDk0q7m5dICDBMiq5FOxvwsoAWx5LzJOymZLFbvt8/lt4S97Du5rtDSx/vEsW
+	VAPhL7qa0DWe7Ma66QKa4mBoNYrdDXFxgXH/KriRC9Mw7BqmJXqOz5F6ESZ18R5LGYWJliLGN1QpU
+	NxZ32KvrjOs1kr9xhDymdrRljYzGL4XKBzDq2pdGfhfle2JgG1JXMfnJy3HWk3v3wcZXnqlJShgJe
+	PsXXOxB+cmthUKMpAfLzOwSUlPK96SmgmqJ8Q5+nnbRNIfXmXD2fVh8rNt/PH9qT1DbR+pupVoZdR
+	zRoXkhXv6iFHJVkVwLew==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t5hV1-0000000Df4u-1lu2;
-	Tue, 29 Oct 2024 08:22:47 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
-	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t5hTn-0000000Dev0-2XWL
+	id 1t5hYv-0000000DgEy-3HCR;
+	Tue, 29 Oct 2024 08:26:49 +0000
+Received: from m16.mail.163.com ([117.135.210.2])
+	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
+	id 1t5hVH-0000000DfBm-3iJu
 	for linux-rockchip@lists.infradead.org;
-	Tue, 29 Oct 2024 08:21:33 +0000
-Received: from ideasonboard.com (mob-5-90-50-182.net.vodafone.it [5.90.50.182])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id BC5D44D4;
-	Tue, 29 Oct 2024 09:21:26 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1730190087;
-	bh=gY8gAnJmjmAm1iIjaHWycvChikO7TknVEVxU2X2bhko=;
-	h=From:To:Cc:Subject:Date:From;
-	b=TeG6JMJCnpdI8pGSB8j6/TKnkCgJJKt5ERu65UgZJWzWaVYl4sH0aKjsSX9VBN5SY
-	 ePKxUq99hVTT2dYsm1JfscjX18u8X3KSr7on62cDKiumgy7rO+heUsG/TIBi+D473x
-	 cDVEKqzoSRp0Pa2mzP+TLXdOm2nOiN2Mv3GLPta8=
-From: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
-To: Dafna Hirschfeld <dafna@fastmail.com>,
-	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
-	Hans Verkuil <hverkuil@xs4all.nl>,
-	linux-media@vger.kernel.org (open list:ROCKCHIP ISP V1 DRIVER)
-Cc: Jacopo Mondi <jacopo.mondi@ideasonboard.com>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	linux-rockchip@lists.infradead.org (open list:ROCKCHIP ISP V1 DRIVER),
-	Adam Pigg <adam@piggz.co.uk>
-Subject: [PATCH v3] media: rkisp1: Remove min_queued_buffers
-Date: Tue, 29 Oct 2024 09:21:16 +0100
-Message-ID: <20241029082117.55385-1-jacopo.mondi@ideasonboard.com>
-X-Mailer: git-send-email 2.47.0
+	Tue, 29 Oct 2024 08:23:08 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
+	s=s110527; h=Date:From:Subject:Content-Type:MIME-Version:
+	Message-ID; bh=6WXE9mUg3P5hjkvI4QQV/zWTg3ZpNccIdHRuTSzHYbI=; b=Y
+	N6tt5TGtmhU68omS2gBWRZwiNrznTVwhKgoIbeweAaidSYtqThNHkVglvn6rKwak
+	3OAF8BFU+vq9mdDqg0XNcXifHuDqfDW/C7MYaxFf24MDWXWyyOsIYi/6y9OCEVnP
+	1B+yUHk7VEqxDVhRdpVD7d71d232VSYVnfbh24SLMY=
+Received: from andyshrk$163.com ( [58.22.7.114] ) by
+ ajax-webmail-wmsvr-40-117 (Coremail) ; Tue, 29 Oct 2024 16:22:16 +0800
+ (CST)
+X-Originating-IP: [58.22.7.114]
+Date: Tue, 29 Oct 2024 16:22:16 +0800 (CST)
+From: "Andy Yan" <andyshrk@163.com>
+To: "Andrew Lunn" <andrew@lunn.ch>
+Cc: "Johan Jonker" <jbx6244@gmail.com>, davem@davemloft.net, edumazet@google.com, 
+	kuba@kernel.org, pabeni@redhat.com, david.wu@rock-chips.com, 
+	andy.yan@rock-chips.com, netdev@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org
+Subject: Re:Re: [PATCH v1 2/2] net: arc: rockchip: fix emac mdio node
+ support
+X-Priority: 3
+X-Mailer: Coremail Webmail Server Version XT5.0.14 build 20240801(9da12a7b)
+ Copyright (c) 2002-2024 www.mailtech.cn 163com
+In-Reply-To: <0a60a838-42cb-4df8-ab1f-91002dcaaa14@lunn.ch>
+References: <dcb70a05-2607-47dd-8abd-f6cf1b012c51@gmail.com>
+ <f04c2cfd-d2d6-4dc6-91a5-0ed1d1155171@gmail.com>
+ <250cdfef.1bfc.192cd6a1f72.Coremail.andyshrk@163.com>
+ <0a60a838-42cb-4df8-ab1f-91002dcaaa14@lunn.ch>
+X-NTES-SC: AL_Qu2YAv2Sv0ko4CifY+lS/DNR+6hBMKv32aNaoMQOZ8UqqTHC6CwvbV1SBFDxyvoKJBLKOS6J7O0VAl6MYG8s
 MIME-Version: 1.0
+Message-ID: <a7c2431.871a.192d75e5631.Coremail.andyshrk@163.com>
+X-Coremail-Locale: zh_CN
+X-CM-TRANSID: dSgvCgAHJGw4myBntukZAA--.994W
+X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/1tbiMwiHXmcgkjHMLQADsk
+X-Coremail-Antispam: 1U5529EdanIXcx71UUUUU7vcSsGvfC2KfnxnUU==
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241029_012132_035270_F6A6A82D 
-X-CRM114-Status: GOOD (  11.62  )
+X-CRM114-CacheID: sfid-20241029_012304_572694_A70B6EB4 
+X-CRM114-Status: UNSURE (   5.92  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,59 +81,51 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-There apparently is no reason to require 3 queued buffers for RkISP1,
-as the driver operates with a scratch buffer where data can be
-directed to if there's no available buffer provided by userspace.
 
-Reduce the number of required buffers to 0 by removing the
-initialization of min_queued_buffers, to allow applications to operate
-by queueing capture buffers on-demand.
+Hi Andrew,
 
-Tested with libcamera, by operating with a single capture request. The
-same request (and the associated capture buffer) gets recycled once
-completed. This of course causes a frame rate drop but doesn't hinder
-operations.
+At 2024-10-28 20:59:18, "Andrew Lunn" <andrew@lunn.ch> wrote:
+>> Hello Johan,
+>>     Thanks for your patch.  Maybe we need a Fixes tag here?
+>
+>What is actually broken?
 
-Signed-off-by: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
----
-v2->v3:
-- Remove min_queued_buffers initialization
+The emac failed to probe after bellow patch merged.
 
-v1->v2:
-The first version of this patch set min_queued_buffers to 1, but setting it
-to 0 doesn't compromise operations and it's even better as it allows application
-to queue buffers to the capture devices on-demand. If a buffer is not provided
-to the DMA engines, image data gets directed to the driver's internal scratch
-buffer.
----
- drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c | 3 ---
- 1 file changed, 3 deletions(-)
-
-diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
-index 2bddb4fa8a5c..2f0c610e74b9 100644
---- a/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
-+++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
-@@ -35,8 +35,6 @@
- #define RKISP1_SP_DEV_NAME	RKISP1_DRIVER_NAME "_selfpath"
- #define RKISP1_MP_DEV_NAME	RKISP1_DRIVER_NAME "_mainpath"
-
--#define RKISP1_MIN_BUFFERS_NEEDED 3
--
- enum rkisp1_plane {
- 	RKISP1_PLANE_Y	= 0,
- 	RKISP1_PLANE_CB	= 1,
-@@ -1563,7 +1561,6 @@ static int rkisp1_register_capture(struct rkisp1_capture *cap)
- 	q->ops = &rkisp1_vb2_ops;
- 	q->mem_ops = &vb2_dma_contig_memops;
- 	q->buf_struct_size = sizeof(struct rkisp1_buffer);
--	q->min_queued_buffers = RKISP1_MIN_BUFFERS_NEEDED;
- 	q->timestamp_flags = V4L2_BUF_FLAG_TIMESTAMP_MONOTONIC;
- 	q->lock = &node->vlock;
- 	q->dev = cap->rkisp1->dev;
---
-2.47.0
+ [    2.324583] loop: module loaded
+    [    2.328435] SPI driver spidev has no spi_device_id for rockchip,spidev
+    [    2.338688] tun: Universal TUN/TAP device driver, 1.6
+    [    2.345397] rockchip_emac 10200000.ethernet: no regulator found
+    [    2.351892] rockchip_emac 10200000.ethernet: ARC EMAC detected with id: 0x7fd02
+    [    2.359331] rockchip_emac 10200000.ethernet: IRQ is 43
+    [    2.364719] rockchip_emac 10200000.ethernet: MAC address is now e6:58:d6:ec:d9:7c
+    [    2.396993] mdio_bus Synopsys MII Bus: mdio has invalid PHY address
+    [    2.403306] mdio_bus Synopsys MII Bus: scan phy mdio at address 0
+    [    2.508656] rockchip_emac 10200000.ethernet: of_phy_connect() failed
+    [    2.516334] rockchip_emac 10200000.ethernet: failed to probe arc emac (-19)
 
 
+commit 1dabb74971b38d966ecef566bafddc4a34f4db9d
+Author: Johan Jonker <jbx6244@gmail.com>
+Date:   Fri Jun 3 18:35:39 2022 +0200
+
+    ARM: dts: rockchip: restyle emac nodes
+    
+    The emac_rockchip.txt file is converted to YAML.
+    Phy nodes are now a subnode of mdio, so restyle
+    the emac nodes of rk3036/rk3066/rk3188.
+    
+    Signed-off-by: Johan Jonker <jbx6244@gmail.com>
+    Link: https://lore.kernel.org/r/20220603163539.537-3-jbx6244@gmail.com
+    Signed-off-by: Heiko Stuebner <heiko@sntech.de>
+
+>
+>	Andrew
+>
+>_______________________________________________
+>Linux-rockchip mailing list
+>Linux-rockchip@lists.infradead.org
+>http://lists.infradead.org/mailman/listinfo/linux-rockchip
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
