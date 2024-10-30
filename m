@@ -4,57 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E6793D3A67D
-	for <linux-rockchip@archiver.kernel.org>; Wed, 30 Oct 2024 09:26:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 670E9D6B6C4
+	for <linux-rockchip@archiver.kernel.org>; Wed, 30 Oct 2024 19:25:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=f9dlqqUmDDlQNWN+ufQKXh1hmyEjangQpN53hpEyn6U=; b=EeX3OSfJo31tau
-	d+jS7TRhlazreFYNkVPOkB1fqGzhqoTc0Ni57BM8eRmguAO53eCK5ctPclcZw3XtYL4uYoOo6Z7et
-	BgTCj/gmUFuCkL+8IrCtgYkPP4QAVy/GqvX7381Uq+UYRy3+GLnlvFvpx43vEqwGKryD4U7x4KZ1j
-	Ez+w75uNjrB0/fsZxnPM05fNurxOJ4aHs8yh5pzWfKUGFffMkZeKnCVXFVhNkiRKBrrNoctE/HmcI
-	5plPzjU0cGrh+HAUFN9wI5pg2v/MXkA5LHd7DDWT33OSFQWu6IYahVHCb2ylr/x4r6WcSLHAGufy5
-	B02o0LPq49q7w6PmCEyQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=hb4pYIRM99/0DphrJXpyIlqoYwcL9L3sIX1YDc349mE=; b=y2+OjOUl6aqrzD
+	nqOcNUw5aI1hcTA1yc4OByqvTv3gaaLBOw7jFlQ0fqdqjP/286n/lpyCAYPLcPDmJCJEoD3FWYCJS
+	SaY94quSlLgUGQLD7hSynMSN6vlBn8Y0Rt17nxo5fjVhkKUSA26RYED1bqYazteObAP3pwI9iASWh
+	GRtEYGH/LGtWZDTAmsHDgMY08jruxspRlfevOFAw/nYDr55aYxFwQm4KdIpA43ViNGYP2Q+ryzsCi
+	ag8qQ72rg0EW51m8g1Y6366JA1/1p4i8KFXScOeSyPNfJCmHUdruhy3rsEgbHTEgPZkwLNxAVdqXH
+	QbdkObmJVdxSjf0ylB3Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t64yU-0000000HOIr-2EVG;
-	Wed, 30 Oct 2024 09:26:46 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1t6EJX-00000001XWm-04Zk;
+	Wed, 30 Oct 2024 19:25:07 +0000
+Received: from mail-oi1-x22e.google.com ([2607:f8b0:4864:20::22e])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t64vn-0000000HNv2-0YZO;
-	Wed, 30 Oct 2024 09:24:00 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
-	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=Hisw5ieYkqzn1NRZL7F74ibhzAvrAfnC7G8H4VNcj1I=; b=KTPms5k8M8jMZJkCdocaT5J4wk
-	NNtPnpxMuiUvqlxZqyMKPGzQcdpldANfZBuUXN3KLKREjmsnoIYnFfUu1esLVPYRR8To1D13BRZbp
-	/sgI8ULRQaeSKTko7SR5Qi+UurM9RBQEQH/VMOtuYttQm7fA3m6sTT5xTo3JcRUYR1T0UuaoAd7vj
-	pOQ+tE1Fb4jPQLKP/ayS4RJ9sHP58HkuExJssqffErwPML9xOJfMBZWtcPWhXOZsNraqPLB39xR28
-	dEjjFSSY4Ai2wDoPGLgagI6q4STcAd+X9Jk+fG5+xf+BaSFRglsOH9KWAUHF8Oq+ZuhnkGt+t7Eyz
-	wI3YnyJA==;
-Received: from [185.156.123.69] (helo=phil.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1t64vl-0000lm-Qb; Wed, 30 Oct 2024 10:23:57 +0100
-From: Heiko Stuebner <heiko@sntech.de>
-To: arm@kernel.org
-Cc: soc@kernel.org, linux-rockchip@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org
-Subject: [GIT PULL] Rockchip driver changes for 6.13 #1
-Date: Wed, 30 Oct 2024 10:23:57 +0100
-Message-ID: <4605658.LvFx2qVVIh@phil>
+	id 1t6EJS-00000001XUq-054s
+	for linux-rockchip@lists.infradead.org;
+	Wed, 30 Oct 2024 19:25:04 +0000
+Received: by mail-oi1-x22e.google.com with SMTP id 5614622812f47-3e6075cba82so158581b6e.0
+        for <linux-rockchip@lists.infradead.org>; Wed, 30 Oct 2024 12:25:01 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1730316300; x=1730921100; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=OzA8BNukFWHhlgBsJYf3XljcmP8nqxT8Kq/BFuqh9C8=;
+        b=PhnyHUzGwbIQ+0TQAjL+n5fSLuOV70kqK1oSvs17WFkDhOTqT0k7BqjiagChgX0vGX
+         4vF1iGmy2Y9HuKp6eUfH1d9kCG6IhFLFzeNjWjW+JTGjqPpwpJdJLyW5fcyvikB0Xedc
+         qIhPkLJSbO8uyhfBM9ociJhaSRduCrM2tjgQ9evfKfUxdv3EGSQJm5NvzMZymbnNHgXw
+         0XbE6pj34l3wpPDu0aDgWSbLdghPfluN8O+0eTczOPbeEVk5IlXva5Hs6wkwi40hQ2SH
+         un2Si6dDtlkyZh350Y7UmND7TDjqG19ZulvhuH6AySo2k3LwXY4XNCwspAJncTtlYDJm
+         tdeQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1730316300; x=1730921100;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=OzA8BNukFWHhlgBsJYf3XljcmP8nqxT8Kq/BFuqh9C8=;
+        b=fMLlIWCb+eU8qrYL1YDFh3dF2lXwQaotNf/3kDgQouw41G/lqGDeeazwbrEzHrpwNk
+         pk10AxdHM0FJiL8Xs1G4JE7YNE6h+LH39VDdZvnkuADFkf0VBUfOrBmjqpsTQaom+pqa
+         XnDHcyuA3gSTJOZPuUsgU2uJt/DfagVhZz7+c6iEwOtuospcHwbODOEdD29R6JEM5Eso
+         5RcB6F4v/iYq+1VCpHcaBrz5SARIVx8wC3VpEPc7Tfixy2L5PdOyuI/9vIXIFLriYTg+
+         FmC4UGSU5T16rEahQoJH8mHjhTgUuN9fvjby0d8eow/59W/Qjb67HnBpfn0j3K9R0W1L
+         b1LQ==
+X-Gm-Message-State: AOJu0Yx3CxAvUXpbn1ANs1CGujWOII7T7VHggCTrnX81W/UtFLCAJa3r
+	GCh3/xbWh7lBeEj4ZMP395Ly5kAVkqdhKskIIfrZwtu9eN290Jv/kbrwdw==
+X-Google-Smtp-Source: AGHT+IGDjIQHAz86Sc2E5cyg3CMl4OU1oTgIFtLtOW/7+bq6Y16R3i+Xck+yJAG0957Za+Capduq+Q==
+X-Received: by 2002:a05:6808:14d4:b0:3e6:2464:9f50 with SMTP id 5614622812f47-3e6384acac2mr14489078b6e.43.1730316300497;
+        Wed, 30 Oct 2024 12:25:00 -0700 (PDT)
+Received: from localhost.localdomain ([2600:1700:fb0:1bcf::54])
+        by smtp.gmail.com with ESMTPSA id 5614622812f47-3e63248d3e0sm2689204b6e.24.2024.10.30.12.24.59
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 30 Oct 2024 12:25:00 -0700 (PDT)
+From: Chris Morgan <macroalpha82@gmail.com>
+To: linux-rockchip@lists.infradead.org
+Cc: devicetree@vger.kernel.org,
+	honyuenkwun@gmail.com,
+	heiko@sntech.de,
+	conor+dt@kernel.org,
+	krzk+dt@kernel.org,
+	robh@kernel.org,
+	Chris Morgan <macromorgan@hotmail.com>
+Subject: [PATCH V2 3/3] arm64: dts: rockchip: Enable HDMI0 on Indiedroid Nova
+Date: Wed, 30 Oct 2024 14:22:36 -0500
+Message-ID: <20241030192236.839105-4-macroalpha82@gmail.com>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20241030192236.839105-1-macroalpha82@gmail.com>
+References: <20241030192236.839105-1-macroalpha82@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241030_022359_203793_A3FB8461 
-X-CRM114-Status: UNSURE (   7.24  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20241030_122502_779498_6371D546 
+X-CRM114-Status: GOOD (  11.26  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,33 +97,99 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The following changes since commit 9852d85ec9d492ebef56dc5f229416c925758edc:
+From: Chris Morgan <macromorgan@hotmail.com>
 
-  Linux 6.12-rc1 (2024-09-29 15:06:19 -0700)
+Enable the HDMI0 port for the Indiedroid Nova. The schematics available
+show the hdmim0_rx_hpdin is connected, so this pinctrl is enabled in
+contrast with the other rk3588 boards.
 
-are available in the Git repository at:
+Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
+---
+ .../dts/rockchip/rk3588s-indiedroid-nova.dts  | 51 +++++++++++++++++++
+ 1 file changed, 51 insertions(+)
 
-  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v6.13-armsoc/drivers1
-
-for you to fetch changes up to 22e027cc74488dba49f19f943c2da02726261f08:
-
-  dt-bindings: soc: rockchip: add rk3588 mipi dcphy syscon (2024-10-27 21:28:05 +0100)
-
-----------------------------------------------------------------
-Compatibles for some additional "General Register Files" syscons
-
-----------------------------------------------------------------
-Frank Wang (2):
-      dt-bindings: soc: rockchip: add rk3576 vo1-grf syscon
-      dt-bindings: soc: rockchip: add rk3576 usb2phy syscon
-
-Heiko Stuebner (1):
-      dt-bindings: soc: rockchip: add rk3588 mipi dcphy syscon
-
- Documentation/devicetree/bindings/soc/rockchip/grf.yaml | 5 +++++
- 1 file changed, 5 insertions(+)
-
-
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-indiedroid-nova.dts b/arch/arm64/boot/dts/rockchip/rk3588s-indiedroid-nova.dts
+index 065d44735001..7272aba998cf 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588s-indiedroid-nova.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3588s-indiedroid-nova.dts
+@@ -5,6 +5,7 @@
+ #include <dt-bindings/gpio/gpio.h>
+ #include <dt-bindings/input/linux-event-codes.h>
+ #include <dt-bindings/pinctrl/rockchip.h>
++#include <dt-bindings/soc/rockchip,vop2.h>
+ #include <dt-bindings/usb/pd.h>
+ #include "rk3588s.dtsi"
+ 
+@@ -50,6 +51,17 @@ chosen {
+ 		stdout-path = "serial2:1500000n8";
+ 	};
+ 
++	hdmi0-con {
++		compatible = "hdmi-connector";
++		type = "d";
++
++		port {
++			hdmi0_con_in: endpoint {
++				remote-endpoint = <&hdmi0_out_con>;
++			};
++		};
++	};
++
+ 	sdio_pwrseq: sdio-pwrseq {
+ 		compatible = "mmc-pwrseq-simple";
+ 		clock-names = "ext_clock";
+@@ -247,6 +259,30 @@ &gpu {
+ 	status = "okay";
+ };
+ 
++&hdmi0 {
++	pinctrl-0 = <&hdmim0_rx_hpdin>, <&hdmim0_tx0_scl>,
++		    <&hdmim0_tx0_sda>, <&hdmim0_tx0_hpd>,
++		    <&hdmim0_tx0_cec>;
++	pinctrl-names = "default";
++	status = "okay";
++};
++
++&hdmi0_in {
++	hdmi0_in_vp0: endpoint {
++		remote-endpoint = <&vp0_out_hdmi0>;
++	};
++};
++
++&hdmi0_out {
++	hdmi0_out_con: endpoint {
++		remote-endpoint = <&hdmi0_con_in>;
++	};
++};
++
++&hdptxphy_hdmi0 {
++	status = "okay";
++};
++
+ &i2c0 {
+ 	pinctrl-0 = <&i2c0m2_xfer>;
+ 	pinctrl-names = "default";
+@@ -924,3 +960,18 @@ usbdp_phy0_dp_altmode_mux: endpoint@1 {
+ 		};
+ 	};
+ };
++
++&vop {
++	status = "okay";
++};
++
++&vop_mmu {
++	status = "okay";
++};
++
++&vp0 {
++	vp0_out_hdmi0: endpoint@ROCKCHIP_VOP2_EP_HDMI0 {
++		reg = <ROCKCHIP_VOP2_EP_HDMI0>;
++		remote-endpoint = <&hdmi0_in_vp0>;
++	};
++};
+-- 
+2.43.0
 
 
 _______________________________________________
