@@ -4,75 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2FF41D74978
-	for <linux-rockchip@archiver.kernel.org>; Wed, 30 Oct 2024 06:57:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9190FD3A667
+	for <linux-rockchip@archiver.kernel.org>; Wed, 30 Oct 2024 09:23:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=keKRCTusvrMuJguLlPT+pqmIeL/EaYSqVW1dTxrDHiQ=; b=SsmsGScZnAGFQv
-	mXTL2/4FU39niyHR6Nbt61Us6hTyD5CZeF5aCToe4VllZ3bBCah0j9GzqKCMDcXiEhG6wKMU1Jrn5
-	/CSPxFjSACCNUT96sCrCFS8B1wN+G5n/hM4Ik0rfxTfVGDdBkx1jz4lcSiFYr61qthw31dQjTBQGC
-	tnINGUilMiG30m32Dp7tLW+7XisMXO/NNTwOfLWFtNh94HvFTXPVUgAu8Zmp/6P/j3eCNZnHvwrCt
-	zX5cxNubPAvLNbcTPZyTBevqcIabcYoccF8yqbcsPA7AAjYOeTRTcETkpWCDXYsEMc8JWWoiYzhUM
-	cOK03LZy2Or2YN4JywXg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=2UiiFsSNXwDr3wj9Do4JTPgJNwOAPgr9QWtPu03fdmc=; b=FGUy5I9Balof8U
+	erOJtm5RgcXf2P/4af0x/rztZJY5lZ2RS4htq2Plpj21lSjxXH5R7gGWP7D9aikNSCYGU5nMK+tMJ
+	2M+/3MxbXqe2OgvDbHzilH3ZtssoVnKuHk8RRyn060ncyS7LNzI6YHIzB7O7xTbKtOnXo94g3t3nT
+	n31pxduWILO5Amd2qB3kSF/nrlQdRYW2iUnhAHthzBP07ZqV+Eb0QmYwrJU+2PU1kivkhbctOdiyd
+	ZTI4xorlN+/zBQ+mURTweDOUaJG8gAd1itt0bYS3NmCPPjjQNR1MtyvBGscwbAxUJZQHwqVK8v0Ip
+	8cjo8yS17nKiKKS2kAvw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t62dm-0000000H3fE-1o9v;
-	Wed, 30 Oct 2024 06:57:14 +0000
-Received: from smtpbguseast3.qq.com ([54.243.244.52])
+	id 1t64vH-0000000HNod-1wSj;
+	Wed, 30 Oct 2024 09:23:27 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t62di-0000000H3e3-0enj
-	for linux-rockchip@lists.infradead.org;
-	Wed, 30 Oct 2024 06:57:12 +0000
-X-QQ-mid: bizesmtpip3t1730271398tosmee8
-X-QQ-Originating-IP: HYPucG35j92Rx/gYRVc91fYMW7X2Dz/rbJNQGFnK5tA=
-Received: from [IPV6:240f:10b:7440:1:2231:c46: ( [localhost])
-	by bizesmtp.qq.com (ESMTP) with 
-	id ; Wed, 30 Oct 2024 14:56:33 +0800 (CST)
-X-QQ-SSF: 0000000000000000000000000000000
-X-QQ-GoodBg: 0
-X-BIZMAIL-ID: 207981743245967855
-Message-ID: <C05BCF5E4F84451F+e29f0311-b245-4c3a-a9eb-0f8a7ef3c3d6@radxa.com>
-Date: Wed, 30 Oct 2024 15:56:33 +0900
+	id 1t64vD-0000000HNnq-3ZJp;
+	Wed, 30 Oct 2024 09:23:25 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
+	List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=uu3ZQracmyXKjnGtslK36vhe3Y/Ue/aAIyzqKHVzdsY=; b=BXxPM5+jpoGcUKORcsXdRBepu3
+	VsUAQjfYp6DpRGj3Nx+fwQFDWv2PNrqy2ScIOylM0xnjKlIBMfrgMyurwgcGuHat1nlK1sWmYs/Qb
+	c5/mTSVE+ejo8LcoAvtaVz+bLKWq7YLFJUmwP/fDqML7UN8qE6SB2MtwEwtal3N6+Y5AQJsraYNG8
+	DzqxIiRP0DHGTtfh7IwjRynpeR7Ql42eBdF62DbSJr85SLfraKNqSKq7MMuk7qNlEmIQa79tdQ5Hy
+	YCSPoEdazmCmq/7WDLWpq2oSPefi/Cg+o1sYAlWetjVyssCK1IGIw+zVLaUs9oRVsbL/85ruRGy5F
+	uhuwlb7Q==;
+Received: from [185.156.123.69] (helo=phil.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1t64v9-0000kI-Mz; Wed, 30 Oct 2024 10:23:19 +0100
+From: Heiko Stuebner <heiko@sntech.de>
+To: arm@kernel.org
+Cc: soc@kernel.org, linux-rockchip@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org
+Subject: [GIT PULL] Rockchip dts64 changes for 6.13 #1
+Date: Wed, 30 Oct 2024 10:23:18 +0100
+Message-ID: <12542111.O9o76ZdvQC@phil>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] arm64: dts: rockchip: use "pwm-leds" for multicolor PWM
- LEDs on Radxa E25
-To: Krzysztof Kozlowski <krzk@kernel.org>, =?UTF-8?Q?Heiko_St=C3=BCbner?=
- <heiko@sntech.de>
-Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
- devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org
-References: <20240816110402.840-1-naoki@radxa.com> <2335200.ElGaqSPkdT@diego>
- <5667DC6446CBC344+3d442915-f28d-4d50-85e3-3863e3c7092a@radxa.com>
- <6f9994b3-d16a-4bfa-aaf8-ce1c5abde91b@kernel.org>
-Content-Language: en-US
-From: FUKAUMI Naoki <naoki@radxa.com>
-In-Reply-To: <6f9994b3-d16a-4bfa-aaf8-ce1c5abde91b@kernel.org>
-X-QQ-SENDSIZE: 520
-Feedback-ID: bizesmtpip:radxa.com:qybglogicsvrgz:qybglogicsvrgz8a-1
-X-QQ-XMAILINFO: Nwz8Cs33/LprWeYpsbhHmuJX5rMTG6YZq25lhNA7P9Hzqgqedwh77bPb
-	X8SzO5oA7I7xQ3VBicEMZGR7X4zV+NTyuQUCJy/+Impg2TE9LobvWTV0obpwN8TPeHxJYPk
-	5xpHqQA4uuwo1Hat7FRcNFO0LE3Vda0uBdsGjXW37jJWLT87xJML9G4GPbVVsXNnfDssNnM
-	DR3XAgTTeg78NX9B1iTYE0wsos/muOd61wCjW81UsZr1/Tl2/AbKeInaERqaDF0j6mN2eAX
-	UXipjFK1CtZeWvG6cbNnCWb6fZhifyeuvFk0PeEPrOPeKwUhzk02icVt3ko6KhlnWAF39/D
-	fhYSzNSftiGfl4PA82jtYHIGYAm8Qtz7/1mT3AfhVGguMxrPe/whpHLF/o406xJ5RsmBpJ4
-	V/3CZytRFQw0JMe2nGV9qvJn1WDhUlPulZ/VxSfVICEbhY4vdKl0xZ8mEhxmg2IALP9cx7A
-	N/uFTK32GhZLKuaVYZRdXpKOWbvPolvYDFGW1ff3eqTqPFkSOs4JSoJkYRvr+o2+UrG5uwV
-	bgjnl6PwGjtzS4lgletrTQyjGLG+KZ83Zr93Wth45juJvR+jJhfhpQuAB6uK/YCmgLRUdgS
-	0osNWNgXk+iPuz/a1r2+H/RN5GgpRabgpTzxsNr2LcHXrbMJDPiIP4IR/GQ9YcQBRKfaxPl
-	FDeGRf+Ha6kkqYQHEu9vO+ZEbaFs7qOMqJQ3b+UZxlHfJjbNPktkLbUoU5TQLPVc8comsic
-	IAPL+bK5TxfpHbQa+f7IY+G6xmwV6DaalgNmYjYygxwGzWYPb0gM1lb0SP+nkZQOFwVLF2M
-	H189RfNYl5szF3aePvBE7qcZRAeulYB8zXNUVQFqXLEnXtMV0sMX5H3dpCKYNAwE1/3K4Na
-	M65dXFgWSek5Xb3bX6y9B4xhSTCjJpVOI4Qf/LPphvqxqploax998fF9TalWjmtCHvTmx1+
-	b0bk=
-X-QQ-XMRINFO: M/715EihBoGSf6IYSX1iLFg=
-X-QQ-RECHKSPAM: 0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241029_235710_699982_8926CAE2 
-X-CRM114-Status: GOOD (  12.33  )
+X-CRM114-CacheID: sfid-20241030_022324_253116_350A66F6 
+X-CRM114-Status: GOOD (  18.06  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,38 +65,316 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGksCgpPbiA4LzE2LzI0IDIxOjI1LCBLcnp5c3p0b2YgS296bG93c2tpIHdyb3RlOgo+IE9uIDE2
-LzA4LzIwMjQgMTM6NTcsIEZVS0FVTUkgTmFva2kgd3JvdGU6Cj4+IEhpLAo+Pgo+PiBPbiA4LzE2
-LzI0IDIwOjI2LCBIZWlrbyBTdMO8Ym5lciB3cm90ZToKPj4+IEFtIEZyZWl0YWcsIDE2LiBBdWd1
-c3QgMjAyNCwgMTM6MDQ6MDIgQ0VTVCBzY2hyaWViIEZVS0FVTUkgTmFva2k6Cj4+Pj4gdG8gbWFr
-ZSBtdWx0aWNvbG9yIFBXTSBMRURzIGJlaGF2aW9yIG1vcmUgY29uc2lzdGVudCB3aXRoIHZlbmRv
-cgo+Pj4+IGtlcm5lbFsxXSwgdXNlICJwd20tbGVkcyIgZm9yIGl0IG9uIFJhZHhhIEUyNS4KPj4+
-Cj4+PiBzb3JyeSwgYnV0IHRoYXQgaXMgZGVmaW5pdGx5IG5vdCBhIHZhbGlkIHJlYXNvbi4KPj4K
-Pj4gSSBzZWUuIEknbGwgbm90IGNoYW5nZSBpdC4KPj4KPj4+IEEgZGV2aWNldHJlZSBkb2VzIGRl
-c2NyaWJlIGFjdHVhbCBoYXJkd2FyZSBhbmQgaXMgbm90IGEgc3BhY2UgZm9yCj4+PiBjb25maWd1
-cmF0aW9uIGNob2ljZXMuIFNvIHRoYXQgd2hvbGUgbm90aW9uIHRvICJtYXRjaCBhIGtlcm5lbCIK
-Pj4+IGlzIG5vdCBjb3JyZWN0Lgo+Pj4KPj4+IExvb2tpbmcgYXQKPj4+IGh0dHBzOi8vd2lraS5y
-YWR4YS5jb20vUm9jazMvQ00vQ00zSS9FMjUvZ2V0dGluZ19zdGFydGVkCj4+PiB0aGUgc3BlY2lm
-aWNhdGlvbiB0YWJsZSBjbGVhcmx5IGRlc2lnbmF0ZXMgdGhlIGJvYXJkJ3MgTEVEIGFzCj4+PiAi
-UkdCIExFRCIgLSBzbyBvbmUgTEVEIGFuZCBtdWx0aWNvbG9yIC4KPj4KPj4gSSB1bmRlcnN0YW5k
-IGZvbGxvd2luZyBiZWhhdmlvciBpcyBub3QgcG9zc2libGUgb24gbWFpbmxpbmUuCj4+Cj4+IGh0
-dHBzOi8vZ2l0aHViLmNvbS9yYWR4YS1wa2cvcnNldHVwL2Jsb2IvbWFpbi9jb25maWcvMDAtcmdi
-MC1yYWluYm93LmNvbmYKPj4KPj4gdGhpcyBpcyBub3Qgd2hhdCB3ZShSYWR4YSkgd2FudCwgYnV0
-IHdlIG5lZWQgdG8gZm9sbG93IHRoZSBydWxlLgo+Pgo+PiAoYnR3IHdpa2kucmFkeGEuY29tIGlz
-IG91dGRhdGVkLCBpdCdzIG5vdCB1c2VkIGFueW1vcmUpCj4gCj4gWW91ciBSYWR4YSB2ZW5kb3Ig
-a2VybmVsIGFuZCB3aGF0ZXZlciB5b3UgaGF2ZSAqTVVTVCogYWxpZ24gdG8gdGhlCj4gdXBzdHJl
-YW0sIG5vdCB0aGUgb3RoZXIgd2F5LiBUaGUgdXBzdHJlYW0gaXMgdGhlIGNvcnJlY3Qgc291cmNl
-IG9mIGRvaW5nCj4gdGhpbmdzLCBub3QgdGhlIG90aGVyIHdheS4KCmNvdWxkIHlvdSB0ZWxsIG1l
-IGhvdyB0byBtYWtlIHJhaW5ib3cgY29sb3IgZWZmZWN0IHdpdGggCiJwd20tbGVkcy1tdWx0aWNv
-bG9yIiBkcml2ZXI/CgphcyBmYXIgYXMgSSBrbm93LCAicGF0dGVybiIgdHJpZ2dlciBjYW4gY2hh
-bmdlIChvbmx5KSBicmlnaHRuZXNzLCBub3QgY29sb3IuCgpCZXN0IHJlZ2FyZHMsCgotLQpGVUtB
-VU1JIE5hb2tpClJhZHhhIENvbXB1dGVyIChTaGVuemhlbikgQ28uLCBMdGQuCgo+IEJlc3QgcmVn
-YXJkcywKPiBLcnp5c3p0b2YKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlz
-dHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3Rp
-bmZvL2xpbnV4LXJvY2tjaGlwCg==
+Hi Arnd, Kevin, Olof,
+
+please find below and in a subsequent pull-requests
+Rockchip changes for for 6.13 .
+
+Some new boards, some new peripherals and the rk3588 hdmi support
+as the really notable thing, now people can see all the fancy
+panthor (mali) results using the mainline kernel without needing
+additional patches.
+
+
+Please pull.
+Thanks
+Heiko
+
+
+The following changes since commit 9852d85ec9d492ebef56dc5f229416c925758edc:
+
+  Linux 6.12-rc1 (2024-09-29 15:06:19 -0700)
+
+are available in the Git repository at:
+
+  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v6.13-armsoc/dts64-1
+
+for you to fetch changes up to 46fa3fee0b1c027862b04717b51630195c253a30:
+
+  arm64: dts: rockchip: Add rk3588-orangepi-5b device tree (2024-10-25 08:48:01 +0200)
+
+----------------------------------------------------------------
+New SoCs: basic RK3528 support, RK3399S - a variant made specifically
+for the Pinephone Pro and for consistencies sake it gets its own SoC
+dtsi to not hide the specifics in the Pinephone Pro devicetree.
+
+New boards: OrangePi-5b, NanoPi R3S, ArmSom Sige 5 (first rk3576 board),
+Radxa e20c (first rk3528 board), Powkiddy RGB20SX, RK3588S-EVB1 and
+the ArmSoM LM7 SoM with W3 carrier board.
+
+HDMI support for rk3588 brings the first graphical output capability
+there. This includes of course needed changes to a number of boards.
+
+And finally a bunch of newly enabled peripherals on different boards,
+as well as changes to adhere better to bindings and removal/change of
+deprecated properties.
+
+----------------------------------------------------------------
+Cenk Uluisik (3):
+      arm64: dts: rockchip: refactor common Orange Pi 5 board
+      dt-bindings: arm: rockchip: Add Orange Pi 5b enum to Orange Pi 5 entry
+      arm64: dts: rockchip: Add rk3588-orangepi-5b device tree
+
+Chris Morgan (2):
+      dt-bindings: arm: rockchip: Add Powkiddy RGB20SX
+      arm64: dts: rockchip: Add Powkiddy RGB20SX
+
+Cristian Ciocaltea (5):
+      arm64: dts: rockchip: Add HDMI0 node to rk3588
+      arm64: dts: rockchip: Enable HDMI0 on rock-5b
+      arm64: dts: rockchip: Enable HDMI0 on rk3588-evb1
+      arm64: dts: rockchip: Enable HDMI0 on orangepi-5-plus
+      arm64: dts: rockchip: Enable HDMI0 on rock-5a
+
+Damon Ding (2):
+      dt-bindings: arm: rockchip: Add RK3588S EVB1 board
+      arm64: dts: rockchip: Add RK3588S EVB1 board
+
+Daniel Semkowicz (1):
+      arm64: dts: rockchip: Add power button for puma-haikou
+
+Detlev Casanova (3):
+      dt-bindings: arm: rockchip: Add ArmSoM Sige 5
+      arm64: dts: rockchip: Add rk3576 SoC base DT
+      arm64: dts: rockchip: Add rk3576-armsom-sige5 board
+
+Diederik de Haas (5):
+      arm64: dts: rockchip: Drop rockchip prefix of s-p-c PMIC prop from px30
+      arm64: dts: rockchip: Drop rockchip prefix of s-p-c PMIC prop from rk3328
+      arm64: dts: rockchip: Drop rockchip prefix of s-p-c PMIC prop from rk3368
+      arm64: dts: rockchip: Drop rockchip prefix of s-p-c PMIC prop from rk3399
+      arm64: dts: rockchip: Drop rockchip prefix of s-p-c PMIC prop from rk356x
+
+Dragan Simic (2):
+      arm64: dts: rockchip: Convert dts files used as parents to dtsi files
+      arm64: dts: rockchip: Add dtsi file for RK3399S SoC variant
+
+FUKAUMI Naoki (2):
+      arm64: dts: rockchip: add LED_FUNCTION_STATUS for RGB LEDs on Radxa E25
+      arm64: dts: rockchip: add and enable gpu node for Radxa ROCK 5A
+
+Farouk Bouabid (4):
+      arm64: dts: rockchip: add tsd,mule-i2c-mux on rk3588-jaguar
+      arm64: dts: rockchip: add tsd,mule-i2c-mux on rk3399-puma
+      arm64: dts: rockchip: add tsd,mule-i2c-mux on rk3588-tiger
+      arm64: dts: rockchip: add tsd,mule-i2c-mux on px30-ringneck
+
+Florian Klink (1):
+      arm64: dts: rockchip: enable automatic fan control on Orange Pi 5+
+
+Geert Uytterhoeven (2):
+      arm64: dts: rockchip: Switch to simple-audio-card,hp-det-gpios
+      arm64: dts: rockchip: Switch to hp-det-gpios
+
+Heiko Stuebner (5):
+      arm64: dts: rockchip: fix the pcie refclock oscillator on Rock 5 ITX
+      arm64: dts: rockchip: add HDMI pinctrl to rk3588-tiger SoM
+      arm64: dts: rockchip: add HDMI support to rk3588-tiger-haikou
+      arm64: dts: rockchip: add HDMI support to rk3588-jaguar
+      arm64: dts: rockchip: Remove 'enable-active-low' from two boards
+
+Jacobe Zang (1):
+      arm64: dts: rockchip: Add AP6275P wireless support to Khadas Edge 2
+
+Jakob Unterwurzacher (1):
+      arm64: dts: rockchip: add attiny_rst_gate to Ringneck
+
+Jianfeng Liu (3):
+      dt-bindings: arm: rockchip: Add ArmSoM LM7 SoM
+      arm64: dts: rockchip: Add ArmSoM LM7 SoM
+      arm64: dts: rockchip: Add ArmSoM W3 board
+
+Jimmy Hon (4):
+      arm64: dts: rockchip: Enable HDMI0 on Orange Pi 5
+      arm64: dts: rockchip: analog audio on Orange Pi 5
+      arm64: dts: rockchip: reorder audio/hdmi nodes in Orange Pi 5
+      arm64: dts: rockchip: pwm-leds for Orange Pi 5
+
+Johan Jonker (2):
+      arm64: dts: rockchip: fix compatible string rk3328 cru node
+      arm64: rockchip: add clocks property to cru node rk3328
+
+Marcin Juszkiewicz (1):
+      arm64: dts: rockchip: Enable HDMI0 on rk3588-nanopc-t6
+
+Sam Edwards (5):
+      arm64: dts: rockchip: Split up RK3588's PCIe pinctrls
+      arm64: dts: rockchip: Fix Turing RK1 PCIe3 hang
+      arm64: dts: rockchip: Enable automatic fan control on Turing RK1
+      arm64: dts: rockchip: Enable GPU on Turing RK1
+      arm64: dts: rockchip: Enable all 3 USBs on Turing RK1
+
+Tianling Shen (7):
+      dt-bindings: arm: rockchip: Add FriendlyARM NanoPi R3S
+      arm64: dts: rockchip: Add FriendlyARM NanoPi R3S board
+      arm64: dts: rockchip: fix model name for FriendlyElec NanoPi R3S
+      arm64: dts: rockchip: replace deprecated snps,reset props for NanoPi R3S
+      arm64: dts: rockchip: sort props in pmu_io_domains node for NanoPi R3S
+      arm64: dts: rockchip: enable eMMC HS200 mode for NanoPi R3S
+      arm64: dts: rockchip: reorder mmc aliases for NanoPi R3S
+
+Yao Zi (3):
+      dt-bindings: arm: rockchip: Add Radxa E20C board
+      arm64: dts: rockchip: Add base DT for rk3528 SoC
+      arm64: dts: rockchip: Add Radxa e20c board
+
+ .../devicetree/bindings/arm/rockchip.yaml          |   32 +-
+ arch/arm64/boot/dts/rockchip/Makefile              |    7 +
+ .../boot/dts/rockchip/px30-engicam-px30-core.dtsi  |    2 +-
+ arch/arm64/boot/dts/rockchip/px30-evb.dts          |    2 +-
+ .../boot/dts/rockchip/px30-firefly-jd4-core.dtsi   |    2 +-
+ arch/arm64/boot/dts/rockchip/px30-ringneck.dtsi    |   37 +-
+ .../boot/dts/rockchip/rk3326-anbernic-rg351m.dtsi  |    2 +-
+ .../boot/dts/rockchip/rk3326-gameforce-chi.dts     |    2 +-
+ arch/arm64/boot/dts/rockchip/rk3326-odroid-go.dtsi |    2 +-
+ arch/arm64/boot/dts/rockchip/rk3328-a1.dts         |    2 +-
+ arch/arm64/boot/dts/rockchip/rk3328-evb.dts        |    2 +-
+ arch/arm64/boot/dts/rockchip/rk3328-nanopi-r2.dtsi |  394 ++
+ .../boot/dts/rockchip/rk3328-nanopi-r2c-plus.dts   |    3 +-
+ arch/arm64/boot/dts/rockchip/rk3328-nanopi-r2c.dts |   28 +-
+ .../arm64/boot/dts/rockchip/rk3328-nanopi-r2c.dtsi |   35 +
+ .../boot/dts/rockchip/rk3328-nanopi-r2s-plus.dts   |   20 +-
+ arch/arm64/boot/dts/rockchip/rk3328-nanopi-r2s.dts |  399 +-
+ .../arm64/boot/dts/rockchip/rk3328-nanopi-r2s.dtsi |   29 +
+ .../dts/rockchip/rk3328-orangepi-r1-plus-lts.dts   |    6 +-
+ .../boot/dts/rockchip/rk3328-orangepi-r1-plus.dts  |  346 +-
+ .../boot/dts/rockchip/rk3328-orangepi-r1-plus.dtsi |  358 ++
+ arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts     |  379 +-
+ arch/arm64/boot/dts/rockchip/rk3328-roc-pc.dts     |    3 +-
+ arch/arm64/boot/dts/rockchip/rk3328-roc.dtsi       |  377 ++
+ arch/arm64/boot/dts/rockchip/rk3328-rock-pi-e.dts  |    2 +-
+ arch/arm64/boot/dts/rockchip/rk3328-rock64.dts     |    2 +-
+ arch/arm64/boot/dts/rockchip/rk3328.dtsi           |    4 +-
+ arch/arm64/boot/dts/rockchip/rk3368-geekbox.dts    |    2 +-
+ arch/arm64/boot/dts/rockchip/rk3368-lba3368.dts    |    2 +-
+ arch/arm64/boot/dts/rockchip/rk3368-lion.dtsi      |    2 +-
+ arch/arm64/boot/dts/rockchip/rk3368-px5-evb.dts    |    2 +-
+ arch/arm64/boot/dts/rockchip/rk3399-eaidk-610.dts  |    4 +-
+ arch/arm64/boot/dts/rockchip/rk3399-evb.dts        |    2 +-
+ arch/arm64/boot/dts/rockchip/rk3399-firefly.dts    |    2 +-
+ arch/arm64/boot/dts/rockchip/rk3399-hugsun-x99.dts |    2 +-
+ .../boot/dts/rockchip/rk3399-khadas-edge.dtsi      |    2 +-
+ .../boot/dts/rockchip/rk3399-kobol-helios64.dts    |    2 +-
+ arch/arm64/boot/dts/rockchip/rk3399-leez-p710.dts  |    2 +-
+ arch/arm64/boot/dts/rockchip/rk3399-nanopi-m4.dts  |   47 +-
+ arch/arm64/boot/dts/rockchip/rk3399-nanopi-m4.dtsi |   60 +
+ arch/arm64/boot/dts/rockchip/rk3399-nanopi-m4b.dts |    3 +-
+ .../dts/rockchip/rk3399-nanopi-r4s-enterprise.dts  |    3 +-
+ arch/arm64/boot/dts/rockchip/rk3399-nanopi-r4s.dts |  124 +-
+ .../arm64/boot/dts/rockchip/rk3399-nanopi-r4s.dtsi |  131 +
+ arch/arm64/boot/dts/rockchip/rk3399-nanopi4.dtsi   |    2 +-
+ arch/arm64/boot/dts/rockchip/rk3399-orangepi.dts   |    2 +-
+ .../boot/dts/rockchip/rk3399-pinebook-pro.dts      |    4 +-
+ .../boot/dts/rockchip/rk3399-pinephone-pro.dts     |   25 +-
+ .../arm64/boot/dts/rockchip/rk3399-puma-haikou.dts |    8 +
+ arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi      |   26 +-
+ .../arm64/boot/dts/rockchip/rk3399-roc-pc-plus.dts |    2 +-
+ arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi    |    2 +-
+ .../boot/dts/rockchip/rk3399-rock-4c-plus.dts      |    2 +-
+ arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dtsi |    2 +-
+ .../boot/dts/rockchip/rk3399-rock-pi-4a-plus.dts   |    2 +-
+ .../boot/dts/rockchip/rk3399-rock-pi-4b-plus.dts   |    2 +-
+ arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4c.dts |    2 +-
+ arch/arm64/boot/dts/rockchip/rk3399-rock960.dtsi   |    2 +-
+ arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dtsi |    2 +-
+ arch/arm64/boot/dts/rockchip/rk3399-s.dtsi         |  123 +
+ .../dts/rockchip/rk3399-sapphire-excavator.dts     |    2 +-
+ arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi  |    2 +-
+ .../boot/dts/rockchip/rk3399pro-vmarc-som.dtsi     |    2 +-
+ arch/arm64/boot/dts/rockchip/rk3528-radxa-e20c.dts |   22 +
+ arch/arm64/boot/dts/rockchip/rk3528.dtsi           |  189 +
+ .../boot/dts/rockchip/rk3566-anbernic-rg-arc.dtsi  |    2 +-
+ .../boot/dts/rockchip/rk3566-anbernic-rg353p.dts   |    2 +-
+ .../boot/dts/rockchip/rk3566-anbernic-rg353ps.dts  |    2 +-
+ .../boot/dts/rockchip/rk3566-anbernic-rg353v.dts   |    2 +-
+ .../boot/dts/rockchip/rk3566-anbernic-rg353vs.dts  |    2 +-
+ .../boot/dts/rockchip/rk3566-anbernic-rg503.dts    |    2 +-
+ arch/arm64/boot/dts/rockchip/rk3566-lckfb-tspi.dts |    2 +-
+ arch/arm64/boot/dts/rockchip/rk3566-lubancat-1.dts |    2 +-
+ arch/arm64/boot/dts/rockchip/rk3566-nanopi-r3s.dts |  554 ++
+ arch/arm64/boot/dts/rockchip/rk3566-pinenote.dtsi  |    2 +-
+ arch/arm64/boot/dts/rockchip/rk3566-pinetab2.dtsi  |    4 +-
+ .../boot/dts/rockchip/rk3566-powkiddy-rgb20sx.dts  |   89 +
+ .../boot/dts/rockchip/rk3566-powkiddy-x55.dts      |    2 +-
+ arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts |    2 +-
+ arch/arm64/boot/dts/rockchip/rk3566-quartz64-b.dts |    2 +-
+ arch/arm64/boot/dts/rockchip/rk3566-radxa-cm3.dtsi |    2 +-
+ arch/arm64/boot/dts/rockchip/rk3566-roc-pc.dts     |    2 +-
+ arch/arm64/boot/dts/rockchip/rk3566-soquartz.dtsi  |    2 +-
+ arch/arm64/boot/dts/rockchip/rk3568-bpi-r2-pro.dts |    2 +-
+ arch/arm64/boot/dts/rockchip/rk3568-evb1-v10.dts   |    2 +-
+ .../boot/dts/rockchip/rk3568-fastrhino-r66s.dtsi   |    2 +-
+ arch/arm64/boot/dts/rockchip/rk3568-lubancat-2.dts |    2 +-
+ .../arm64/boot/dts/rockchip/rk3568-nanopi-r5s.dtsi |    2 +-
+ arch/arm64/boot/dts/rockchip/rk3568-odroid-m1.dts  |    4 +-
+ .../arm64/boot/dts/rockchip/rk3568-radxa-cm3i.dtsi |    2 +-
+ arch/arm64/boot/dts/rockchip/rk3568-radxa-e25.dts  |    1 +
+ arch/arm64/boot/dts/rockchip/rk3568-roc-pc.dts     |    2 +-
+ arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts    |    2 +-
+ .../rk3568-wolfvision-pf5-io-expander.dtso         |    1 -
+ .../boot/dts/rockchip/rk3568-wolfvision-pf5.dts    |    2 +-
+ .../boot/dts/rockchip/rk3576-armsom-sige5.dts      |  659 +++
+ arch/arm64/boot/dts/rockchip/rk3576-pinctrl.dtsi   | 5775 ++++++++++++++++++++
+ arch/arm64/boot/dts/rockchip/rk3576.dtsi           | 1678 ++++++
+ .../arm64/boot/dts/rockchip/rk3588-armsom-lm7.dtsi |  455 ++
+ .../boot/dts/rockchip/rk3588-armsom-sige7.dts      |    2 +-
+ arch/arm64/boot/dts/rockchip/rk3588-armsom-w3.dts  |  408 ++
+ .../boot/dts/rockchip/rk3588-base-pinctrl.dtsi     |  271 +-
+ arch/arm64/boot/dts/rockchip/rk3588-base.dtsi      |   41 +
+ arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dts   |   49 +-
+ .../rockchip/rk3588-friendlyelec-cm3588-nas.dts    |    2 +-
+ arch/arm64/boot/dts/rockchip/rk3588-jaguar.dts     |   75 +-
+ arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dtsi |   49 +-
+ arch/arm64/boot/dts/rockchip/rk3588-ok3588-c.dts   |    2 +-
+ .../boot/dts/rockchip/rk3588-orangepi-5-plus.dts   |   79 +-
+ .../arm64/boot/dts/rockchip/rk3588-quartzpro64.dts |    2 +-
+ arch/arm64/boot/dts/rockchip/rk3588-rock-5-itx.dts |   40 +-
+ arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts    |   49 +-
+ .../boot/dts/rockchip/rk3588-tiger-haikou.dts      |   53 +
+ arch/arm64/boot/dts/rockchip/rk3588-tiger.dtsi     |   29 +-
+ .../arm64/boot/dts/rockchip/rk3588-turing-rk1.dtsi |  138 +-
+ arch/arm64/boot/dts/rockchip/rk3588s-evb1-v10.dts  | 1170 ++++
+ .../boot/dts/rockchip/rk3588s-gameforce-ace.dts    |    2 +-
+ .../boot/dts/rockchip/rk3588s-khadas-edge2.dts     |   16 +
+ .../arm64/boot/dts/rockchip/rk3588s-nanopi-r6.dtsi |  760 +++
+ .../arm64/boot/dts/rockchip/rk3588s-nanopi-r6c.dts |    2 +-
+ .../arm64/boot/dts/rockchip/rk3588s-nanopi-r6s.dts |  756 +--
+ .../arm64/boot/dts/rockchip/rk3588s-orangepi-5.dts |  736 +--
+ .../boot/dts/rockchip/rk3588s-orangepi-5.dtsi      |  866 +++
+ .../boot/dts/rockchip/rk3588s-orangepi-5b.dts      |   19 +
+ arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts   |   63 +-
+ 125 files changed, 15260 insertions(+), 2981 deletions(-)
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3328-nanopi-r2.dtsi
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3328-nanopi-r2c.dtsi
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3328-nanopi-r2s.dtsi
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3328-orangepi-r1-plus.dtsi
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3328-roc.dtsi
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3399-nanopi-m4.dtsi
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3399-nanopi-r4s.dtsi
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3399-s.dtsi
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3528-radxa-e20c.dts
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3528.dtsi
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3566-nanopi-r3s.dts
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3566-powkiddy-rgb20sx.dts
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3576-armsom-sige5.dts
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3576-pinctrl.dtsi
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3576.dtsi
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3588-armsom-lm7.dtsi
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3588-armsom-w3.dts
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3588s-evb1-v10.dts
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3588s-nanopi-r6.dtsi
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5.dtsi
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5b.dts
+
+
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
