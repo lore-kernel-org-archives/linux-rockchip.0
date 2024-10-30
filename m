@@ -4,59 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4A9CFD6B6CE
-	for <linux-rockchip@archiver.kernel.org>; Wed, 30 Oct 2024 19:25:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 42F1DD6B6D0
+	for <linux-rockchip@archiver.kernel.org>; Wed, 30 Oct 2024 19:25:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=cyuD0n0rmw7UIIkSTPbCq3b4GiySNmZ/NUWOIbTUTFo=; b=3A2tm6KPTN2Qnc
-	g0dnEZAbdeHximOc83awda5/+bqY7nOKAlPCbgT5773lukaUCpbVvSEcyQVRsts8GqNxk43eLawEv
-	zx50Tyz/GAlwbe2IrpWWD7ofVBFlNGnf9qxRVfITtN/hCy6bbRYGAo98ajgVZNhvt2AOsOC8IZTC/
-	h8tnUzGRD2gIzU+3upSVIjxR33wuVVu4x21eaMWig4XXHriFzl4SElrvGm1Aht0jLvUv6XrlDOA9e
-	lwpBH2pR78HmsV8CLOUgEC9ygfZ1L6JMixR7+12RbM9IRVCM5aywMHS0Phd4oVEkADOLjFZvmOUvg
-	ddFVm2C51AEzmN+rjfig==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=HKnZui+VJKnvYQ8wK1Mm+SCokrbZynC5jRASPR/jyOE=; b=14mdsa8yBW9Jqh
+	VuxIdzkAHzYIwftxIPUHC4Yv4etWHD9Leu7QYfjjjmKTdANEu2UZYeuNtGRue+py9VuNDI9Njsc7L
+	HZ7AQb237HyIdtkGN4Fb6GQTBQ9Q0Up04EHf8IgqcbnyM4jCtHgdF2eeo/2Q0MWHDNtsqDWBGJhXb
+	tlcQ5J/C01zyu4eMUioeNTK/z7TC1Uc7XdqJYp4BUejnt364gACIlYE96xnOb+eZvzCWNVpVYn0YT
+	yI3MYXtNHZMLPh0jfnCluD8fWYR1dFUb9K3u6CpqXuEDR5owkuPnVNvIahCRo2kRiTSXyH1zBWKha
+	K5135v+qVAM+vGiuxacg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t6EJT-00000001XW8-3bCd;
-	Wed, 30 Oct 2024 19:25:03 +0000
-Received: from mail-oi1-x22a.google.com ([2607:f8b0:4864:20::22a])
+	id 1t6EJW-00000001XWQ-1Bya;
+	Wed, 30 Oct 2024 19:25:06 +0000
+Received: from mail-oi1-x232.google.com ([2607:f8b0:4864:20::232])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t6EJQ-00000001XU3-0g50
+	id 1t6EJQ-00000001XUA-2WKM
 	for linux-rockchip@lists.infradead.org;
-	Wed, 30 Oct 2024 19:25:01 +0000
-Received: by mail-oi1-x22a.google.com with SMTP id 5614622812f47-3e6104701ffso169103b6e.0
-        for <linux-rockchip@lists.infradead.org>; Wed, 30 Oct 2024 12:24:59 -0700 (PDT)
+	Wed, 30 Oct 2024 19:25:02 +0000
+Received: by mail-oi1-x232.google.com with SMTP id 5614622812f47-3e5fef69f2eso161011b6e.3
+        for <linux-rockchip@lists.infradead.org>; Wed, 30 Oct 2024 12:25:00 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1730316298; x=1730921098; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=HLeVcpMs22RhQ9P+S+WzLz2UKXz7BVsEnqwj5SzCpTs=;
-        b=JHobrK0A8Qek7wGZ3fO8A5bhR3hJvr9LhpqmL0s0dVwHhqOfUjQld91XpJnsQTiwF2
-         xKcNObprANr98abipEt6zPVo69qMDYBMhm3TMnygIwJTT5vYE/hfZGaobwSIWGr2srJQ
-         OnUovEUy6F5RICRZAdwzGQtFKMgw1XA8vCN/bwu/eooYPI9Noih4aBvR4ve6zS1+G8K5
-         gM2WJILGLoqE8hvBVci+43panYcmIO5sjmwMgFERZd4500cKqF2IGLOYVyz58OOhulrQ
-         AE/CO5RId28Uvr2QXUalmALsy+AEl3f2AVt1Ooha+Eu1eF7IDnIQ/ESqtaSYXeRjDA6H
-         hzjQ==
+        d=gmail.com; s=20230601; t=1730316299; x=1730921099; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=N0jI7anFu6tACdmq1ktw+g6zdLi6HmxfPbYpW9ePEvg=;
+        b=Q+cTi4891ct07U40QGtuHAspOB3hGi4pbBPF/PO/HC3QNExApK0wkeMkcPglK95GeJ
+         ERU8U1uI65YIAobl1n2W60Wx6+a2yj3QyzNnmzRwjF8RkP5eyuquIZEge7yZdcbhXJ+c
+         0r3obwddqb1BvS0t4Z4blPPWPaBFu1auglWIhnkvqcAcvzw3JEmD0OYG+la2LEY2HZ2p
+         wUPaaCVxBMQOmawxf9ODjJcCrbI8bPTtIs2rh9cv978KMoKpGPLlf36iM2DjT81Weo74
+         Ex+uUS2yzJt82eCWNXXqPR9DW6g4FIsbH1VACyz2YI4Peh3azMLuAjTI6WZ9aUuNorjn
+         gHEA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1730316298; x=1730921098;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=HLeVcpMs22RhQ9P+S+WzLz2UKXz7BVsEnqwj5SzCpTs=;
-        b=wazlA/wi191f7FkQCKaunrzPkIKGChVzQNZbP082FbCVzZwbKQBfyzsLlq+y9pvX0K
-         fK+HYvUwbW0A+nF5y5Ys17j4YDterhVMCrDBWQ/lZhiQm0JhykHt6dDnNbBBq8wBdeQL
-         P0RjQGxtS2vEvoM9/jd9U4g1MRzAeoBiIP8dPxWMS1nZ+iJBoin6hZKDCgCsaKXgGsVa
-         sFlLpjkef7OSy+xGqiMGMuCNONZIzE6Zw3Kqo+oBFQSUZSQRbO+oy8ZN1zR0MoLvSGCb
-         s8p6Pwuw7Pff+2FnJrN7ToAsoo1MGm1KKWoNuoaPVXWoqJFTTj96NGAX6jWc7ICFVTEu
-         pryA==
-X-Gm-Message-State: AOJu0YyAbSGJJJY6BHRCrAfXhtTKLkzXDZhVpGq7KendDqVIRbgWIkEE
-	86fVAS+DBbjlU0PBz+HdglBFruZdbzTD3rMLwI2BzpM8HXy4YpwmSZcJsA==
-X-Google-Smtp-Source: AGHT+IFSK9dQOa/K/bFoWGtT3qo0L6EWNVL9/zH0xG+ffRsMPAJrOCCHCSDJLTSDPQkU5cUNth0V6w==
-X-Received: by 2002:a05:6808:2117:b0:3e6:1513:4c04 with SMTP id 5614622812f47-3e63845ad6cmr16077828b6e.20.1730316298576;
-        Wed, 30 Oct 2024 12:24:58 -0700 (PDT)
+        d=1e100.net; s=20230601; t=1730316299; x=1730921099;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=N0jI7anFu6tACdmq1ktw+g6zdLi6HmxfPbYpW9ePEvg=;
+        b=rDk2P4r+Ol/c/aVPjMEoRJCrQDsJQPQs2l2SJ9UPM7zpMdnb3svxHT6V9P/qzMcn18
+         vST/CySvhCCUn5DDjfbjvVPTqsHu2EJttEQHwQcqzJvYGuW8w9NRgJu4Ox69K8gnv+7W
+         SAtLoXI1dF7Ikrh2CykwOy7CquavAnJICVsRAZ8ZKs/HROS0lQ1iuEd7wGjFfZY14hL/
+         FNefCUFz9PEUx1OFWo8huW9UdFxxl0pBv3LfkQg6d2By+ylLjkRQkbR3S4okzvPVwXLx
+         7Q7u/h+Bl92tmliJHY0p10i5CaUNevQ9adWdx6OgGs7HnSO13eHuylA/yLw528+fFcJj
+         zj5w==
+X-Gm-Message-State: AOJu0Yw/8UxwBQs5yWYEq/h5u5jviEyIVXgOLUTMXG4DwqjGRDn/7ea0
+	aIzvgj6tF6FeHM1hSLKtb8Qy4K/LjNXGGeIV68QsWIFmEo7cCsXGF5VEyA==
+X-Google-Smtp-Source: AGHT+IFrqkfM7z4LQrqXwq/YG6kPA6xu7Hgh5LsO3qpoCQRLhGx71THyPMYVSfC+R7c2gCQDbzcfyg==
+X-Received: by 2002:a05:6808:f01:b0:3e5:f172:3a3 with SMTP id 5614622812f47-3e6608e06dbmr524825b6e.19.1730316299245;
+        Wed, 30 Oct 2024 12:24:59 -0700 (PDT)
 Received: from localhost.localdomain ([2600:1700:fb0:1bcf::54])
         by smtp.gmail.com with ESMTPSA id 5614622812f47-3e63248d3e0sm2689204b6e.24.2024.10.30.12.24.58
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
@@ -70,14 +71,16 @@ Cc: devicetree@vger.kernel.org,
 	krzk+dt@kernel.org,
 	robh@kernel.org,
 	Chris Morgan <macromorgan@hotmail.com>
-Subject: [PATCH V2 0/3] Indiedroid Nova Audio/HDMI Updates
-Date: Wed, 30 Oct 2024 14:22:33 -0500
-Message-ID: <20241030192236.839105-1-macroalpha82@gmail.com>
+Subject: [PATCH V2 1/3] arm64: dts: rockchip: correct analog audio name on Indiedroid Nova
+Date: Wed, 30 Oct 2024 14:22:34 -0500
+Message-ID: <20241030192236.839105-2-macroalpha82@gmail.com>
 X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20241030192236.839105-1-macroalpha82@gmail.com>
+References: <20241030192236.839105-1-macroalpha82@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241030_122500_227483_11ED10B2 
-X-CRM114-Status: GOOD (  10.11  )
+X-CRM114-CacheID: sfid-20241030_122500_662884_663A9A37 
+X-CRM114-Status: GOOD (  11.91  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,25 +99,30 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Chris Morgan <macromorgan@hotmail.com>
 
-This series is for a handful of fixes and updates for the Indiedroid
-Nova. This series corrects the device name of the audio card to stop
-a kernel log error, and adds support for both the HDMI and GPU (now
-that HDMI support has been queued for linux-next).
+Correct the audio name for the Indiedroid Nova from
+rockchip,es8388-codec to rockchip,es8388. This name change corrects a
+kernel log error of "ASoC: driver name too long 'rockchip,es8388-codec'
+-> 'rockchip_es8388'".
 
-Changes since v1:
- - Corrected HDMI port from mini HDMI (c) to micro HDMI (d).
- - Explained why I enable hdmim0_rx_hpdin in contrast to the other
-   rk3588 boards.
- - Split HDMI0 and GPU patches into different patches.
+Fixes: 3900160e164b ("arm64: dts: rockchip: Add Indiedroid Nova board")
+Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
+---
+ arch/arm64/boot/dts/rockchip/rk3588s-indiedroid-nova.dts | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Chris Morgan (3):
-  arm64: dts: rockchip: correct analog audio name on Indiedroid Nova
-  arm64: dts: rockchip: Enable GPU on Indiedroid Nova
-  arm64: dts: rockchip: Enable HDMI0 on Indiedroid Nova
-
- .../dts/rockchip/rk3588s-indiedroid-nova.dts  | 58 ++++++++++++++++++-
- 1 file changed, 57 insertions(+), 1 deletion(-)
-
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-indiedroid-nova.dts b/arch/arm64/boot/dts/rockchip/rk3588s-indiedroid-nova.dts
+index d8c50fdcca3b..a4b930f6987f 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588s-indiedroid-nova.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3588s-indiedroid-nova.dts
+@@ -62,7 +62,7 @@ sdio_pwrseq: sdio-pwrseq {
+ 
+ 	sound {
+ 		compatible = "audio-graph-card";
+-		label = "rockchip,es8388-codec";
++		label = "rockchip,es8388";
+ 		widgets = "Microphone", "Mic Jack",
+ 			  "Headphone", "Headphones";
+ 		routing = "LINPUT2", "Mic Jack",
 -- 
 2.43.0
 
