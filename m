@@ -4,84 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9E5EFD6B6D6
-	for <linux-rockchip@archiver.kernel.org>; Wed, 30 Oct 2024 20:30:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9983CE68941
+	for <linux-rockchip@archiver.kernel.org>; Thu, 31 Oct 2024 00:49:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=zGfbkFxgI0+SPlzRVTXbcDk0y8tmiZ7Sp04IfZ2R/q8=; b=4YXspCsDer9Hqq
-	3+ye/GfzWpub5FHBqKMt5abdZtpPec/gFz6IeeC3rG/Rwk62Wx5qxAr/WP70LqK18gyeZCvqtI70z
-	F4zLFlGsLD8Wgq2LuhJ3LGtiKCgqnMiLQ2Su1YPpM21OJa2lcNsrxqNKMjj0zXxaXSkMAAPZrspYZ
-	25l+ASVg/V3GxbsKqb3gxPmKZELsIINKtLSXysykivtdxhA6KlsagYe/YGBPkqDVL0bDaAHxYjbwJ
-	rKaun83wsh6k+5sWdqAnEfhCkyAleE57uYDzrAsE4sK+dNCCv4mrnGtNybNloIIMOc9ZR15ya98m7
-	r6rmmud/F4v0w47cHxuA==;
+	List-Owner; bh=Dja/DEyolSWRBqHfvNnvpzB4lNNjY+NfQbwFLnd0h/M=; b=l0NS0JjDJG8NPV
+	bX1bT2A6VO7tdg4qWvuxyjbr21vYKZJRq9Ky63FAHSstxMOBlLH5OouMDoDR/2hJmpLWuslREbUyP
+	KPDrvqnt8Xas59rtXKoASVHYY5dH9LNdONwQXqc0PToqybXT/GkeZv310X+A841GS31uGalqlj788
+	+Rfg8ReAng5RZ83wuLLie7YG6kP4OvNkjRcSxxfYrbv3jZQSIHj+Kd7s2tLJ6gcdi5Na04gTVeUii
+	9jT6IpZxsD75iOH/2m+4s2xYkfDmob1jMI3JkgslyxmxgnXeSiixKOgLuPl3wkoP9VIrkxWOgxmCF
+	uWxrTA9yCOIbWAOzz3iw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t6FKq-00000001fdX-1Bib;
-	Wed, 30 Oct 2024 20:30:32 +0000
-Received: from mail-lf1-x12e.google.com ([2a00:1450:4864:20::12e])
+	id 1t6JNM-00000002C5d-29lB;
+	Thu, 31 Oct 2024 00:49:24 +0000
+Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t6FFw-00000001ej6-3sax;
-	Wed, 30 Oct 2024 20:25:30 +0000
-Received: by mail-lf1-x12e.google.com with SMTP id 2adb3069b0e04-539f4d8ef66so341367e87.1;
-        Wed, 30 Oct 2024 13:25:28 -0700 (PDT)
+	id 1t6JNJ-00000002C55-2vFZ
+	for linux-rockchip@lists.infradead.org;
+	Thu, 31 Oct 2024 00:49:23 +0000
+Received: by mail-wm1-x32d.google.com with SMTP id 5b1f17b1804b1-4314c4cb752so3482445e9.2
+        for <linux-rockchip@lists.infradead.org>; Wed, 30 Oct 2024 17:49:20 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1730319926; x=1730924726; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+        d=gmail.com; s=20230601; t=1730335759; x=1730940559; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=XyEhEOgxThb7d7+N3ApRPh6+wTSlDIyGHam5i44pOZ0=;
-        b=jSbi15nOoKl4Vrhi9gNUF/2Syt0SqNZ6CqbFNLuM+kMpsA76ekmJ2NiJl/82oj1MQi
-         aL9lOMS/rSLmKLKsewjxnr0AuEtBRO6y0aGZU0hP1o/KpO+UDrnENS7lbM5sNxpKa8kJ
-         5MYRrlP0qW5Oxcg8biR+W/beLPRWm0mYDnjzIbLCg5AJGZA6rQvmSuaXsQb9bgUzHDiN
-         1iPAr5xCFQacUAL6wDDESC10C5EuwHwoZGuksd5NhRNgGrHNEBMQCt2/jEiXzJB+RyaK
-         YfiJ4H5fDXst7iFgOcG6IOhcTVIQFlU0qg+eW0SW/wiCQ+0wTynHq+QH5BfWp6w9s/Qv
-         N2Iw==
+        bh=ZjtbT2Pdo5aYguq16kK5+0TmKumhpkQwfo5YKWlpA4U=;
+        b=nWh8PZwR0llkaTESuPBQgAHDp7Wcr6w2MIWOzCBuBLS0yLEzei38YnJuNBZe5UWG2c
+         urxUg50qMRtriSWvf7b8ommr/LfsGO8uW1/D/TyQr5MfZSIkIFIXlnjXpmeNIlj5IOUo
+         SGHUX4hlvcFoWdWBixnZONr702YHkPd3/EghoX3UHfZjTSAWnBl5JiJA27FXbz1zi03P
+         WpBL1vjoNYEwaBdx1m3eCb3IY+H6TQLNo2woiktnXsprfirROxcyQtxnoERV3cj0/XRP
+         +qp2EIvKE7YbHDtsvx9bulloJS/k+S996jkuuFsZ9sTXKGOGFMWnrgqeUDJCIG6SS73E
+         KNug==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1730319926; x=1730924726;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+        d=1e100.net; s=20230601; t=1730335759; x=1730940559;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=XyEhEOgxThb7d7+N3ApRPh6+wTSlDIyGHam5i44pOZ0=;
-        b=uLiRZiQcMsWJocnbBn/LhAfNrs1mEGviV8AGdkcQSUCbZ8uN3MVW7XIFcLfzoFFsVZ
-         W1awGV9myu1cXCcs6DePYudhdWvx2QK1E5zdoU1OVHtbYyN4mfS3zZEfLx3LxdRTiKRM
-         pBpKkJHXf2m2R3+1TWk1jIY66wxiQlenYFSjA9dN1tJHaWqwZxTNPegDdPXaeBZUt9SB
-         5rlX+QOrX4+zplDrSF9cnYe3keNsIYli/bC5V5z/ke92UJlOSr54qWazGcnAFyfrtr5m
-         arC0I1xW03q+4haS76jGxxUoms8GvZTtRKmzqFwOviD31laehaEe+K+k1MfJDTe2rF/A
-         JRuw==
-X-Forwarded-Encrypted: i=1; AJvYcCWqGG9HBu7yvkI2TGVzFQuad/AEPTkYjPVsTNKJzU3cBkckN2opwOfSnRinJ5Kl279C31tw+oIHsqZn4Dszhni6@lists.infradead.org, AJvYcCXwDSu91fS7VkBU2UpDRSsTRfBBeMOklNkjNwMIP5I2clzAQoyoWYX+DkShHRuHxnYlsx/Flkz6cZqUN9vboeo=@lists.infradead.org
-X-Gm-Message-State: AOJu0Ywn+Bmq31Gbn+Z82aJX74ODO1CI8G2qpTsuG8g9dFvfLvcbXBMw
-	luY4/4V2xNvPPHuZcnY5nY02GRGRTw+jxln1FqWEe3RERFDRGKEOJzPF2A==
-X-Google-Smtp-Source: AGHT+IH6uM7t2JTy0pUuTgiLogiMPS6a2rpUn8zTuzrYOehSN8Kg1Zh/Zyf0NBZ/XDN6UzlH6s/F/w==
-X-Received: by 2002:a05:6512:1304:b0:53b:1f77:e95e with SMTP id 2adb3069b0e04-53b34c5f595mr8106413e87.44.1730319925638;
-        Wed, 30 Oct 2024 13:25:25 -0700 (PDT)
-Received: from localhost.localdomain ([91.90.219.38])
-        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-53bc0d6ff10sm334644e87.269.2024.10.30.13.25.24
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 30 Oct 2024 13:25:25 -0700 (PDT)
-From: Dmitry Yashin <dmt.yashin@gmail.com>
-To: Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>
-Cc: devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Dmitry Yashin <dmt.yashin@gmail.com>
-Subject: [PATCH v2 2/2] arm64: dts: rockchip: add Banana Pi P2 Pro board
-Date: Thu, 31 Oct 2024 01:21:44 +0500
-Message-ID: <20241030202144.629956-3-dmt.yashin@gmail.com>
-X-Mailer: git-send-email 2.47.0
-In-Reply-To: <20241030202144.629956-1-dmt.yashin@gmail.com>
-References: <20241030202144.629956-1-dmt.yashin@gmail.com>
+        bh=ZjtbT2Pdo5aYguq16kK5+0TmKumhpkQwfo5YKWlpA4U=;
+        b=AYNMre+zvb5HVerkw49ZTVrsDn8jQVKLgaYOKbip5FbiaJtY5E4TLKxLFmox08kCdz
+         2j2+rSlJxof+GCNs7QKsAmRY0wXFHzUzRD0T71snjxj19PARSuKNeeE08E6IWAQSRQTk
+         wpmkiFNujF8YROAp11JEhg0wTtcXiiDv5ApR3PGnf4+EpjERZPONuO4yCFfJ9JoQGOUH
+         9M3zUZkqxwHJlWKvfdKj7rfpcOWPwdmWojeA8Eee0wzbUXlkQhPy5mtODvn7wxt6uPFE
+         /ERB9oLiXPv301OWY1BArJI0z0aedzToRoDeGU0/0PMGJsRqWuh5Jjn94XqxJRa04Ag/
+         tTeQ==
+X-Gm-Message-State: AOJu0Yw8LYxzvGqu1a39dRZdyMOXcPx7xJ/GsIfb94of1PhlhBThDa5N
+	l62k99ohETPVrGVjPl3woce0ELDt8+OX6hlLpTfteOIuTuHfFK3R1IFlgkqM+H50DgZXH5ivgYL
+	MOZxmF28rIj58y2aR/lJh0XVC5zg=
+X-Google-Smtp-Source: AGHT+IE9kEhPn7zleAyFMbH7KL0/80IedkMpTxBdxFKB0CUsFcu0GnoRPTCofF61WV28ypcgTSjTd1XcRg3PlY2rXu8=
+X-Received: by 2002:a05:600c:1f91:b0:426:66a2:b200 with SMTP id
+ 5b1f17b1804b1-4327b6c79f7mr12136815e9.0.1730335758928; Wed, 30 Oct 2024
+ 17:49:18 -0700 (PDT)
 MIME-Version: 1.0
+References: <20241030192236.839105-1-macroalpha82@gmail.com> <20241030192236.839105-4-macroalpha82@gmail.com>
+In-Reply-To: <20241030192236.839105-4-macroalpha82@gmail.com>
+From: Jimmy Hon <honyuenkwun@gmail.com>
+Date: Wed, 30 Oct 2024 19:49:07 -0500
+Message-ID: <CALWfF7LNN2dAtr00nLyk8rgE-K1vtSXkjhCFMbkVSzxhhSDvWQ@mail.gmail.com>
+Subject: Re: [PATCH V2 3/3] arm64: dts: rockchip: Enable HDMI0 on Indiedroid Nova
+To: Chris Morgan <macroalpha82@gmail.com>
+Cc: linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, 
+	heiko@sntech.de, conor+dt@kernel.org, krzk+dt@kernel.org, robh@kernel.org, 
+	Chris Morgan <macromorgan@hotmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241030_132528_993886_A012F7B2 
-X-CRM114-Status: GOOD (  14.61  )
+X-CRM114-CacheID: sfid-20241030_174921_757790_6022494E 
+X-CRM114-Status: UNSURE (   9.95  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,419 +86,31 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Banana Pi P2 Pro is the SBC made by Shenzhen SINOVOIP based on
-Rockchip RK3308.
-
-Banana Pi P2 Pro features:
-- Rockchip RK3308B-S
-- DDR3 512 MB
-- eMMC 8 GB
-- 100M lan + onboard PoE
-- 40 pin and 12 pin headers
-- AP6256 BT + WIFI
-- TF card slot
-- 2x USB 2.0 (Type-C OTG and Type-A)
-- Headphone jack
-
-Add support for Banana Pi P2 Pro.
-
-Signed-off-by: Dmitry Yashin <dmt.yashin@gmail.com>
----
- arch/arm64/boot/dts/rockchip/Makefile         |   1 +
- .../boot/dts/rockchip/rk3308-bpi-p2-pro.dts   | 362 ++++++++++++++++++
- 2 files changed, 363 insertions(+)
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3308-bpi-p2-pro.dts
-
-diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
-index 2e485553ce8b..4c1fd113bdef 100644
---- a/arch/arm64/boot/dts/rockchip/Makefile
-+++ b/arch/arm64/boot/dts/rockchip/Makefile
-@@ -5,6 +5,7 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += px30-engicam-px30-core-ctouch2-of10.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += px30-engicam-px30-core-edimm2.2.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += px30-firefly-jd4-core-mb.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += px30-ringneck-haikou.dtb
-+dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3308-bpi-p2-pro.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3308-evb.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3308-roc-cc.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3308-rock-pi-s.dtb
-diff --git a/arch/arm64/boot/dts/rockchip/rk3308-bpi-p2-pro.dts b/arch/arm64/boot/dts/rockchip/rk3308-bpi-p2-pro.dts
-new file mode 100644
-index 000000000000..2f7b09b7f43f
---- /dev/null
-+++ b/arch/arm64/boot/dts/rockchip/rk3308-bpi-p2-pro.dts
-@@ -0,0 +1,362 @@
-+// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
-+
-+/dts-v1/;
-+
-+#include <dt-bindings/input/input.h>
-+#include <dt-bindings/leds/common.h>
-+#include "rk3308.dtsi"
-+
-+/ {
-+	model = "Banana Pi P2 Pro (RK3308) Board";
-+	compatible = "sinovoip,rk3308-bpi-p2pro", "rockchip,rk3308";
-+
-+	aliases {
-+		ethernet0 = &gmac;
-+		mmc0 = &emmc;
-+		mmc1 = &sdmmc;
-+		mmc2 = &sdio;
-+	};
-+
-+	chosen {
-+		stdout-path = "serial2:1500000n8";
-+	};
-+
-+	adc-keys {
-+		compatible = "adc-keys";
-+		io-channels = <&saradc 1>;
-+		io-channel-names = "buttons";
-+		keyup-threshold-microvolt = <1800000>;
-+		poll-interval = <100>;
-+
-+		button-recovery {
-+			label = "Recovery";
-+			linux,code = <KEY_VENDOR>;
-+			press-threshold-microvolt = <10000>;
-+		};
-+	};
-+
-+	analog-sound {
-+		compatible = "audio-graph-card";
-+		label = "rockchip,rk3308";
-+
-+		dais = <&i2s_8ch_2_p0>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&phone_ctl>;
-+	};
-+
-+	leds {
-+		compatible = "gpio-leds";
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&led_en0>, <&led_en1>;
-+
-+		blue-led {
-+			color = <LED_COLOR_ID_BLUE>;
-+			default-state = "on";
-+			function = LED_FUNCTION_POWER;
-+			gpios = <&gpio0 RK_PA6 GPIO_ACTIVE_HIGH>;
-+			label = "blue:power";
-+			linux,default-trigger = "default-on";
-+		};
-+
-+		green-led {
-+			color = <LED_COLOR_ID_GREEN>;
-+			default-state = "on";
-+			function = LED_FUNCTION_HEARTBEAT;
-+			gpios = <&gpio0 RK_PA5 GPIO_ACTIVE_HIGH>;
-+			label = "green:heartbeat";
-+			linux,default-trigger = "heartbeat";
-+		};
-+	};
-+
-+	vdd_log: regulator-1v04-vdd-log {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vdd_log";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-min-microvolt = <1040000>;
-+		regulator-max-microvolt = <1040000>;
-+		vin-supply = <&vcc_in>;
-+	};
-+
-+	vcc_ddr: regulator-1v5-vcc-ddr {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vcc_ddr";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-min-microvolt = <1500000>;
-+		regulator-max-microvolt = <1500000>;
-+		vin-supply = <&vcc_in>;
-+	};
-+
-+	vcc_1v8: regulator-1v8-vcc {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vcc_1v8";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-min-microvolt = <1800000>;
-+		regulator-max-microvolt = <1800000>;
-+		vin-supply = <&vcc_io>;
-+	};
-+
-+	vcc_io: regulator-3v3-vcc-io {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vcc_io";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-min-microvolt = <3300000>;
-+		regulator-max-microvolt = <3300000>;
-+		vin-supply = <&vcc_in>;
-+	};
-+
-+	vcc_in: regulator-5v0-vcc-in {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vcc_in";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-min-microvolt = <5000000>;
-+		regulator-max-microvolt = <5000000>;
-+	};
-+
-+	vdd_core: regulator-vdd-core {
-+		compatible = "pwm-regulator";
-+		pwms = <&pwm0 0 5000 1>;
-+		pwm-supply = <&vcc_in>;
-+		regulator-name = "vdd_core";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-min-microvolt = <827000>;
-+		regulator-max-microvolt = <1340000>;
-+		regulator-settling-time-up-us = <250>;
-+	};
-+
-+	sdio_pwrseq: sdio-pwrseq {
-+		compatible = "mmc-pwrseq-simple";
-+		pinctrl-0 = <&wifi_reg_on>;
-+		pinctrl-names = "default";
-+		reset-gpios = <&gpio0 RK_PA2 GPIO_ACTIVE_LOW>;
-+	};
-+};
-+
-+&codec {
-+	status = "okay";
-+
-+	port {
-+		codec_p0_0: endpoint {
-+			remote-endpoint = <&i2s_8ch_2_p0_0>;
-+		};
-+	};
-+};
-+
-+&cpu0 {
-+	cpu-supply = <&vdd_core>;
-+};
-+
-+&emmc {
-+	cap-mmc-highspeed;
-+	mmc-hs200-1_8v;
-+	no-sd;
-+	no-sdio;
-+	non-removable;
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&emmc_bus8 &emmc_clk &emmc_cmd &emmc_pwren>;
-+	status = "okay";
-+};
-+
-+&gmac {
-+	assigned-clocks = <&cru SCLK_MAC>;
-+	assigned-clock-parents = <&mac_clkin>;
-+	clock_in_out = "input";
-+	phy-handle = <&rtl8201f>;
-+	phy-supply = <&vcc_io>;
-+	status = "okay";
-+
-+	mdio {
-+		#address-cells = <1>;
-+		#size-cells = <0>;
-+		compatible = "snps,dwmac-mdio";
-+
-+		rtl8201f: ethernet-phy@1 {
-+			compatible = "ethernet-phy-ieee802.3-c22";
-+			reg = <1>;
-+			pinctrl-names = "default";
-+			pinctrl-0 = <&mac_rst>;
-+			reset-assert-us = <50000>;
-+			reset-deassert-us = <50000>;
-+			reset-gpios = <&gpio0 RK_PA7 GPIO_ACTIVE_LOW>;
-+		};
-+	};
-+};
-+
-+&i2s_8ch_2 {
-+	#sound-dai-cells = <0>;
-+	status = "okay";
-+
-+	i2s_8ch_2_p0: port {
-+		i2s_8ch_2_p0_0: endpoint {
-+			dai-format = "i2s";
-+			mclk-fs = <256>;
-+			remote-endpoint = <&codec_p0_0>;
-+		};
-+	};
-+};
-+
-+&io_domains {
-+	vccio0-supply = <&vcc_io>;
-+	vccio1-supply = <&vcc_io>;
-+	vccio2-supply = <&vcc_io>;
-+	vccio3-supply = <&vcc_io>;
-+	vccio4-supply = <&vcc_1v8>;
-+	vccio5-supply = <&vcc_io>;
-+	status = "okay";
-+};
-+
-+&pinctrl {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&rtc_32k>;
-+
-+	bt {
-+		bt_reg_on: bt-reg-on {
-+			rockchip,pins = <4 RK_PB3 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+
-+		bt_wake_host: bt-wake-host {
-+			rockchip,pins = <4 RK_PB4 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+
-+		host_wake_bt: host-wake-bt {
-+			rockchip,pins = <4 RK_PB2 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
-+
-+	gmac {
-+		mac_rst: mac-rst {
-+			rockchip,pins = <0 RK_PA7 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
-+
-+	leds {
-+		led_en0: led-en0 {
-+			rockchip,pins = <0 RK_PA5 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+
-+		led_en1: led-en1 {
-+			rockchip,pins = <0 RK_PA6 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
-+
-+	sound {
-+		phone_ctl: phone-ctl {
-+			rockchip,pins = <0 RK_PA1 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
-+
-+	wifi {
-+		wifi_reg_on: wifi-reg-on {
-+			rockchip,pins = <0 RK_PA2 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+
-+		wifi_wake_host: wifi-wake-host {
-+			rockchip,pins = <0 RK_PA0 RK_FUNC_GPIO &pcfg_pull_down>;
-+		};
-+	};
-+};
-+
-+&pwm0 {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&pwm0_pin_pull_down>;
-+	status = "okay";
-+};
-+
-+&saradc {
-+	vref-supply = <&vcc_1v8>;
-+	status = "okay";
-+};
-+
-+/* WIFI part of the AP6256 connected with SDIO */
-+&sdio {
-+	#address-cells = <1>;
-+	#size-cells = <0>;
-+	cap-sd-highspeed;
-+	cap-sdio-irq;
-+	disable-wp;
-+	keep-power-in-suspend;
-+	mmc-pwrseq = <&sdio_pwrseq>;
-+	no-mmc;
-+	no-sd;
-+	non-removable;
-+	sd-uhs-sdr104;
-+	status = "okay";
-+
-+	ap6256: wifi@1 {
-+		compatible = "brcm,bcm43456-fmac", "brcm,bcm4329-fmac";
-+		reg = <1>;
-+		interrupt-parent = <&gpio0>;
-+		interrupts = <RK_PA0 IRQ_TYPE_LEVEL_HIGH>;
-+		interrupt-names = "host-wake";
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&wifi_wake_host>;
-+	};
-+};
-+
-+&sdmmc {
-+	cap-mmc-highspeed;
-+	cap-sd-highspeed;
-+	disable-wp;
-+	vmmc-supply = <&vcc_io>;
-+	status = "okay";
-+};
-+
-+&u2phy {
-+	status = "okay";
-+};
-+
-+&u2phy_host {
-+	status = "okay";
-+};
-+
-+&u2phy_otg {
-+	status = "okay";
-+};
-+
-+&uart2 {
-+	status = "okay";
-+};
-+
-+/* BT part of the AP6256 connected with UART */
-+&uart4 {
-+	uart-has-rtscts;
-+	status = "okay";
-+
-+	bluetooth {
-+		compatible = "brcm,bcm4345c5";
-+		clocks = <&cru SCLK_RTC32K>;
-+		clock-names = "lpo";
-+		interrupt-parent = <&gpio4>;
-+		interrupts = <RK_PB4 IRQ_TYPE_LEVEL_HIGH>;
-+		interrupt-names = "host-wakeup";
-+		device-wakeup-gpios = <&gpio4 RK_PB2 GPIO_ACTIVE_HIGH>;
-+		shutdown-gpios = <&gpio4 RK_PB3 GPIO_ACTIVE_HIGH>;
-+		max-speed = <1500000>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&bt_reg_on &bt_wake_host &host_wake_bt>;
-+		vbat-supply = <&vcc_io>;
-+		vddio-supply = <&vcc_1v8>;
-+	};
-+};
-+
-+&usb20_otg {
-+	dr_mode = "peripheral";
-+	status = "okay";
-+};
-+
-+&usb_host_ehci {
-+	status = "okay";
-+};
-+
-+&usb_host_ohci {
-+	status = "okay";
-+};
-+
-+&wdt {
-+	status = "okay";
-+};
--- 
-2.39.5
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gV2VkLCBPY3QgMzAsIDIwMjQgYXQgMjoyNeKAr1BNIENocmlzIE1vcmdhbiA8bWFjcm9hbHBo
+YTgyQGdtYWlsLmNvbT4gd3JvdGU6Cj4KPiBGcm9tOiBDaHJpcyBNb3JnYW4gPG1hY3JvbW9yZ2Fu
+QGhvdG1haWwuY29tPgo+Cj4gRW5hYmxlIHRoZSBIRE1JMCBwb3J0IGZvciB0aGUgSW5kaWVkcm9p
+ZCBOb3ZhLiBUaGUgc2NoZW1hdGljcyBhdmFpbGFibGUKPiBzaG93IHRoZSBoZG1pbTBfcnhfaHBk
+aW4gaXMgY29ubmVjdGVkLCBzbyB0aGlzIHBpbmN0cmwgaXMgZW5hYmxlZCBpbgo+IGNvbnRyYXN0
+IHdpdGggdGhlIG90aGVyIHJrMzU4OCBib2FyZHMuCgpXaGljaCBwaW4gaW4gdGhlIHNjaGVtYXRp
+YyBbMV0gKHBhZ2UgMjQpIGRvZXMgaXQgcmVmZXIgdG8/IEl0J3Mgbm90Cm9idmlvdXMgaG93IHRv
+IG1hdGNoIGl0IHVwLgpUaGUgc2NoZW1hdGljIGxvb2tzIHRoZSBzYW1lIGFzIHRoZSBSb2NrIDVC
+IHNjaGVtYXRpYyBbMl0gKHBhZ2UgMzEpCmFuZCB0aGUgUm9jayA1QiBkdHMgdXNlcyB0aGUgZGVm
+YXVsdCBwaW5jdHJsIFszXQoKTm90ZTogVGhlIHZlbmRvciBrZXJuZWwgRFRTIGRvZXNuJ3QgbW9k
+aWZ5IHRoZSBwaW5jdHJsIGVpdGhlci4gWzRdCgpJZiB5b3UgdHJ5IHVzaW5nIHRoZSBkZWZhdWx0
+IHBpbmN0cmwgKG5vdCBvdmVycmlkaW5nKSwgZG9lcyBIRE1JIG5vdCB3b3JrPwoKSmltbXkKClsx
+XSBodHRwczovL3dpa2kuaW5kaWVkcm9pZC51cy9Ob3ZhL3NjaGVtYXRpY3MKWzJdIGh0dHBzOi8v
+ZGwucmFkeGEuY29tL3JvY2s1LzViL2RvY3MvaHcvcmFkeGFfcm9ja181Yl92MTQ1MF9zY2hlbWF0
+aWMucGRmClszXSBodHRwczovL2dpdC5rZXJuZWwub3JnL3B1Yi9zY20vbGludXgva2VybmVsL2dp
+dC9tbWluZC9saW51eC1yb2NrY2hpcC5naXQvdHJlZS9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tj
+aGlwL3JrMzU4OC1yb2NrLTViLmR0cz9oPWZvci1uZXh0JmlkPWM4MTUyZjc5YzJkZDgwMzllMTQw
+NzNiZTc2ZmRiY2U4NzYwMTc1ZGEjbjIwNwpbNF0gaHR0cHM6Ly9naXRodWIuY29tL3N0dmhheS9r
+ZXJuZWwvYmxvYi9iYXRvY2VyYS1yazM1ODgtNC4wL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2No
+aXAvcmszNTg4cy05dHJpcG9kLXgzNTg4cy5kdHNpI0wyMjYKCl9fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApM
+aW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQu
+b3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
