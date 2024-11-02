@@ -4,78 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 30AA4E6F091
-	for <linux-rockchip@archiver.kernel.org>; Fri,  1 Nov 2024 21:36:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 93038E6F07E
+	for <linux-rockchip@archiver.kernel.org>; Sat,  2 Nov 2024 03:11:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=CHLSiRqYVTNMyDdzJm8FAexFO0IVi9XmXdAs05qZem0=; b=Tayvrj2mVmfnVp0ao122XZKzIx
-	Me0Cveswof9cRC4m9SCsD06ZBvWgld1MA4DC8q4J0I4OdBxiWeKjaWJ7NFwKyWOnGOkcId4IesvYw
-	/lE2/cuE0HYFB9FCqZ+LWeN1vMPCXgf9sjhBW0X6mKGhJYsai7O/Z8zK1In+zvo++es1G7AqbBl6g
-	ujcBYr77lG9bqwmKZRHKkClhwMkMewVtKXW0eGqKBOowaAiPnbzSXfyArFwxPynVpNuHqs/h8zV4/
-	cGIi5V4YUbiq2hCmevF09I5SdVwQ929QNazyt9oYDU7HJChYnJ0h8IEpTN9BLZaDEnkkn6++6ZEqU
-	nd3M/Hpw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=s7lyC1vGEd702/0faBBc8PmsAlXVPPMT2cmq2c/3d2U=; b=bo1FP6MwQ27VPP
+	TSYc5TdVXvHZdt3Yg0/vFuQ28KyA/nYLTevKZmXDLNjGSUS3p7JAySmVZIkE+2ABcFf06OcW8BCM0
+	qV1doBgZuAFazmK2E2MAxj+HDFfJuVta+SkSHZRpjxhxMiuePpUb6b1BKG/Z9ALiwxU7WSfc9Nnza
+	Gx1MV33zLCC8npVAfBN2P7OzgSQcLDSx1tdeUvnuxbabPEspBj/p12FRg5phI+aWMBJN9jggWT7gy
+	0r6Pyb43J1JuLHhtpSaTQZUBJK2Tro4e4sUebFKhwhZ2BdO5VK/5b0hmkSw6Qw5MvfaLRvrDbupg+
+	4+mkKWyZKGZMY3lOqEQA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t6zJZ-00000008NPq-0c8X;
-	Fri, 01 Nov 2024 21:36:17 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1t74Xh-00000008vhu-3BJA;
+	Sat, 02 Nov 2024 03:11:13 +0000
+Received: from mail.manjaro.org ([116.203.91.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t6zJW-00000008NPR-1Wf1
-	for linux-rockchip@lists.infradead.org;
-	Fri, 01 Nov 2024 21:36:16 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1730496962; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=c0/oSnW3qgXohyX2ioSOL6MsthONf456o2MyAC90ucdp/0GIaV0mDBTaIpySDqr9v3B0qT0UtEDpu6TAlhOQwIaSh9j780dxyYkxDrE1EG1y7MHQ7YGMRIo8UVk+lNPCtbCzboz/SzODmDilpzSLil9N2Oqo7tor286GjYbn3Ro=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1730496962; h=Content-Type:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=dUYHsEZiYqbUgRMNwFN/xI61QBnMhgl08f0EFMD2ha8=; 
-	b=bDR0qiYaIPIRJI79NFUAcvJaXK8Nh8Pnkm1IDgHi+ogZHygWINdPVOUa14mRZMhhCcARQI7x9oq2PzI08ckSlUUuExnFJkLVdPvxpt523SyfU5SH5O1nXBpf6iAZpDn6U3yQFPJ9GzKiOAhX9e6QxkKcBm3RxexYCFSxtzz+4ZE=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=sebastian.reichel@collabora.com;
-	dmarc=pass header.from=<sebastian.reichel@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1730496962;
-	s=zohomail; d=collabora.com; i=sebastian.reichel@collabora.com;
-	h=Date:Date:From:From:To:To:Cc:Cc:Subject:Subject:Message-ID:References:MIME-Version:Content-Type:In-Reply-To:Message-Id:Reply-To;
-	bh=dUYHsEZiYqbUgRMNwFN/xI61QBnMhgl08f0EFMD2ha8=;
-	b=kJFGcK7PraYbPv6+lH4VJtSEtn0RmXlwv65YniGVukJFQJjQ7NIEsbipvdd+v4bH
-	hTZivSykCSQyzDNBJMKc/7vLrVfrEWnStHsq89EFpVLfRwNGuNJ4yibM2ddoLYDMp81
-	xjxcELlEfOhkH2iKkG4LLn1BgBQZu9p4vggHiyTc=
-Received: by mx.zohomail.com with SMTPS id 1730496960315327.07503190696764;
-	Fri, 1 Nov 2024 14:36:00 -0700 (PDT)
-Received: by mercury (Postfix, from userid 1000)
-	id 95B8010604B0; Fri, 01 Nov 2024 22:35:53 +0100 (CET)
-Date: Fri, 1 Nov 2024 22:35:53 +0100
-From: Sebastian Reichel <sebastian.reichel@collabora.com>
-To: Mark Brown <broonie@kernel.org>
-Cc: Chen-Yu Tsai <wens@kernel.org>, Ulf Hansson <ulf.hansson@linaro.org>, 
-	Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
-	Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
-	Liam Girdwood <lgirdwood@gmail.com>, Elaine Zhang <zhangqing@rock-chips.com>, 
-	=?utf-8?B?QWRyacOhbiBNYXJ0w61uZXo=?= Larumbe <adrian.larumbe@collabora.com>, Boris Brezillon <boris.brezillon@collabora.com>, 
-	devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	linux-pm@vger.kernel.org, kernel@collabora.com
-Subject: Re: [PATCH v3 0/7] Fix RK3588 GPU domain
-Message-ID: <avq5v5c23croz7fydzmmuj7zmcfp37ehgrt3gl5csyam5lbx2g@id4prnbhv4ot>
-References: <20241022154508.63563-1-sebastian.reichel@collabora.com>
- <CAPDyKFoAv1jeQitHmTMhvwG9vGzN-vLby0fPzkX1E6+-Qe2dog@mail.gmail.com>
- <CAPDyKFp=sRLVBhW2aK87pYHVGi_6gNw=e3j3AGMnEWP2SVYFpw@mail.gmail.com>
- <9b4c9b61-a2be-465e-a4d9-034951fc862f@sirena.org.uk>
- <CAGb2v65ahUB_Q+HPFV6B-UqWCbCNLdGz58BGo9iHRhVyf1ruZA@mail.gmail.com>
- <27yrptpmhdbugmrgxaxllnbllv3adu3tzgl7e26b3flsvhlf3g@nfqn2fvmktmc>
- <cbe94b51-09f3-44ca-b2f1-f8da7ffdf05a@sirena.org.uk>
+	id 1t74Vz-00000008vSu-3MnD;
+	Sat, 02 Nov 2024 03:09:29 +0000
+From: Dragan Simic <dsimic@manjaro.org>
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
+	t=1730516957;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=IokIVkNSt4ES1wovgJeW/dP40rMHM/y+rSgYmJiJZ6M=;
+	b=gzNQWntGZCnSbVnelnFmAvF805b20plMmapOhEpoDjoxcpPEcyMhdwhvA95oHDP1rDH2Ok
+	smqsBFfs0okEel18dHG+mOuTfYUmDGrZJK0Bj5CCToG3WiQZ9KTlMlewB1+4Cr2jH/tz5N
+	Pcx2aK88jVJ5mYhF2aDJ1q1c3l0xIxGfpwoGdnNYcWZ//HncPqULx2AOl61Zi+7SttR+Tw
+	G0fKR7JRxujD2JRe20oe9ITFLv2uo/s8xZUvAuMYG0zskdU6PgTyAxpldsvy7lgreODW2g
+	vtmeG3TyWFj80Akd7ah3lhMpc78be+Z3DWBwpJUDyF4GB9ZFx8Ew36RhCBEWQg==
+To: linux-rockchip@lists.infradead.org
+Cc: heiko@sntech.de,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
+	didi.debian@cknow.org
+Subject: [PATCH v2 0/3] Update, encapsulate and expand the RK356x SoC dtsi files
+Date: Sat,  2 Nov 2024 04:08:58 +0100
+Message-Id: <cover.1730516702.git.dsimic@manjaro.org>
 MIME-Version: 1.0
-In-Reply-To: <cbe94b51-09f3-44ca-b2f1-f8da7ffdf05a@sirena.org.uk>
-X-Zoho-Virus-Status: 1
-X-Zoho-AV-Stamp: zmail-av-1.3.1/230.373.91
-X-ZohoMailClient: External
+Authentication-Results: ORIGINATING;
+	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241101_143614_483197_3370179F 
-X-CRM114-Status: GOOD (  18.06  )
+X-CRM114-CacheID: sfid-20241101_200928_160986_723FE42A 
+X-CRM114-Status: GOOD (  14.35  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,88 +67,64 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============9198037072626029117=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+This series tackles the Rockchip RK356x SoC dtsi files in a few different
+ways.  First, it updates the lower and upper voltage limits and the exact
+voltages for the Rockchip RK356x CPU OPPs, using the most conservative
+per-OPP values for different SoC bins.  This is rather similar to the
+already performed adjustment of the GPU OPP voltages. [1]
 
---===============9198037072626029117==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="qwagicrogdfbufct"
-Content-Disposition: inline
+Next, this series prepares the RK356x SoC dtsi files for per-variant OPPs,
+with the RK3566T being the first new RK356x SoC variant to be introduced.
+This follows the approach used for the RK3588 SoC variants. [2]
 
+Lastly, this series introduces new SoC dtsi for the RK3566T variant, which
+is capable of operating at the CPU and GPU OPPs/frequencies lower than the
+"full-fat" RK3566 variant's.  The RK3566T is found on some of the already
+supported boards and rather importantly, this stops the CPU cores and the
+GPU from being overclocked on these boards.
 
---qwagicrogdfbufct
-Content-Type: text/plain; protected-headers=v1; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH v3 0/7] Fix RK3588 GPU domain
-MIME-Version: 1.0
+Changes in v2:
+  - Improved the wording of the patch 3/3 description, to make it more
+    clear which of the mentioned RK3566T-based SBCs are already supported
+  - Renumbered the references in patch 3/3, so their numbering follows
+    the order in which the references appear in the patch description
+  - Adjusted the patch generation options passed to git-format-patch(1),
+    to make the patch 2/3 a bit more readable, [3] and added a note about
+    the git-log(1) options to the description of patch 2/3
+  - No changes to the actual patches are introduced
 
-Hi,
+Link to v1: https://lore.kernel.org/linux-rockchip/cover.1728752527.git.dsimic@manjaro.org/T/#u
 
-On Fri, Nov 01, 2024 at 07:22:28PM +0000, Mark Brown wrote:
-> On Fri, Nov 01, 2024 at 08:04:52PM +0100, Sebastian Reichel wrote:
-> > On Fri, Nov 01, 2024 at 10:41:14PM +0800, Chen-Yu Tsai wrote:
->=20
-> > > There's still the issue of backwards compatibility with older device
-> > > trees that are missing said supply though.
->=20
-> > Exactly :)
->=20
-> > As far as I can see the same misuse potential also exists for the
-> > plain devm_regulator_get() version.
->=20
-> You'll get warnings but I'm not sure that's such a huge issue?
+[1] https://lore.kernel.org/linux-rockchip/cover.1719763100.git.dsimic@manjaro.org/T/#m786f0e0a45377d29aea826f05c95b5052a8bb3d9
+[2] https://lore.kernel.org/all/9ffedc0e2ca7f167d9d795b2a8f43cb9f56a653b.1717923308.git.dsimic@manjaro.org/T/#u
+[3] https://lore.kernel.org/linux-rockchip/D4ZZFL98AMFI.1TDPL2DJPSQ3D@cknow.org/
 
-I see that as a feature and not as an issue. Obviously the
-dependency should be properly described in DT. When we upstreamed
-GPU support for RK3588 we did not mark the GPU regulator as always-on
-[*] and that has been copied to all other upstreamed RK3588 board DTs.
-This means all of them are buggy now. Getting a warning might help
-people to understand what is going on. In any case I fixed up every
-in-tree user as part of this series.
+Dragan Simic (3):
+  arm64: dts: rockchip: Update CPU OPP voltages in RK356x SoC dtsi
+  arm64: dts: rockchip: Prepare RK356x SoC dtsi files for per-variant
+    OPPs
+  arm64: dts: rockchip: Add new SoC dtsi for the RK3566T variant
 
-[*] Older Rockchip platforms (which are not touched by this series)
-and downstream RK3588 have the GPU regulator marked as always-on.
+ .../{rk3566.dtsi => rk3566-base.dtsi}         |   2 +-
+ .../dts/rockchip/rk3566-radxa-zero-3.dtsi     |   2 +-
+ .../boot/dts/rockchip/rk3566-rock-3c.dts      |   2 +-
+ arch/arm64/boot/dts/rockchip/rk3566.dtsi      | 142 +++++++++++++-----
+ arch/arm64/boot/dts/rockchip/rk3566t.dtsi     |  90 +++++++++++
+ arch/arm64/boot/dts/rockchip/rk3568.dtsi      | 113 +++++++++++++-
+ .../{rk356x.dtsi => rk356x-base.dtsi}         |  81 ----------
+ 7 files changed, 307 insertions(+), 125 deletions(-)
+ copy arch/arm64/boot/dts/rockchip/{rk3566.dtsi => rk3566-base.dtsi} (95%)
+ rewrite arch/arm64/boot/dts/rockchip/rk3566.dtsi (87%)
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3566t.dtsi
+ rename arch/arm64/boot/dts/rockchip/{rk356x.dtsi => rk356x-base.dtsi} (96%)
 
-Greetings,
-
--- Sebastian
-
---qwagicrogdfbufct
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmclSbYACgkQ2O7X88g7
-+prITQ/+Lo2bN91GtZH1sC9wK852DhkaHZ3XYvltKURPIJZu7p2GuqGeFZw+mUWr
-PIoHHiVAfjOI+I2Ycvg5cuvXVaTaDV1ATBiJjaKN/qWH7fgq0Q3iQgNi4ArU3KS8
-6v6NBCzzUiWslu057EeEIvq3KeH+Q7OSxl3IUWPSJS6NvelgecvneNi1j9KCwq3h
-RVl3IuumWYLfFZ4uW5ft/+dy3GNCv6HdlFmLvcGFupZMqpXFv9yOvpZGl83YyPv5
-amSxtr++aKMi7h7kryjXHySD7BxR90JL+fPHXMGvxbL8ayKgPVyjM1kfFVhmcYt4
-yKRAc/G5Y6TY2d0bshHDRfpuVL4/mv8Nzbz4mxai1+KvLnEAWi1A6845dzKje1Ar
-m0CEj0WpiMgffPw/E088YvwNMdntMrLB/okNn+EjMQlecz332dNFDlj/KvXB5+sk
-8hwW8MjOK8ALlS9RcVS/s3CzD3dcgTo+5MOGA2i2WqFEwORDvjDmzltwA0Pj5Pl3
-Pqy+0T/scBUtdrjGoeTxO4iGZSn49TFjEMO92DAjnyt9MUq7Q7aCUM1qPCtbE1fe
-9ukZF7jBz6DhJ4ahNv9Uk8uw1KcwPa7I0jxRAscacZBvBWwb0D9nGF33vY4h1Ivc
-dvz68qw0uirqexV2G6aczQ5FoCY3qbZ71NX8MWUWY0ykK5do+cc=
-=9b8r
------END PGP SIGNATURE-----
-
---qwagicrogdfbufct--
-
-
---===============9198037072626029117==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============9198037072626029117==--
-
