@@ -4,32 +4,32 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F2301D111B3
-	for <linux-rockchip@archiver.kernel.org>; Mon,  4 Nov 2024 07:33:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EF4CCD111B3
+	for <linux-rockchip@archiver.kernel.org>; Mon,  4 Nov 2024 07:34:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
 	List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=VlsOt+q3QyxkDGSH7Tf2qMopeaaShqXyNVzri8shfCE=; b=wwvJt09KRKHc4r
-	O9uDwrS/7IN5QAR8lPFytk57K4x2r5QlU1wcxIhLBCIAPoX19TeYERodrNLzgbNwVKxW/CdX0iSOy
-	3kXwWpa+q1F+zjt5QXNMse93C+d88g0FW4T8yGTrFWR2a8HXbIgMxNBgbNqXUtLm4UeH3MyxFcokY
-	l2oaLmeuMPxct9pJwNQWNNpDY5CNfh0jZxi71YLMDK2exy24OqMvdk1/nnEWbE45cxepT/xn25nHb
-	SceAknfubjtPs7bIkcbthAu1sba2ieHwTEqpSGY8IdHh9Szeq7UqOxqE+mED97jNHRuvVcC5GlH2n
-	tQlLQ0YJk1EEEB7v/44w==;
+	List-Owner; bh=zyRMopaQEtzV731k765Q5yUgeI8FCZuJIml9rYi4U78=; b=qj0fXATqP16pXE
+	n9tTBbrER1ZUtcNvPOjDUdBtCmIpSFXid1oKypCCydGg2uk0tqFQLA8eTNroJ2K99EiFSU3gmP8Hf
+	9mkpKDwXuXXh/EyvqXsZw9UvBNvX6voZQljN3qIqNBS+tk8WBY41CySdR38wYR2rfnCRjTQO+6L+d
+	qK5Tn5TgdOCCdLEkxYCifyEhP6f/x9+WpW56YbsjQT27Jo3U5lZZHIDiKyTbGLenjmVG07XvJFZCz
+	oRo7dJgW5rrh8oC9I76Os1JVcGOla3zGBaTUvhuZV0Kb4s4Malrn400iH4l6PQ7S85F7SqRurpnkG
+	bddoypN3uG8fSbZ47QQw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t7rat-0000000CrKZ-42mQ;
-	Mon, 04 Nov 2024 07:33:48 +0000
-Received: from mail-m17246.xmail.ntesmail.com ([45.195.17.246])
+	id 1t7rb3-0000000CrMH-3j7f;
+	Mon, 04 Nov 2024 07:33:57 +0000
+Received: from mail-m2418.xmail.ntesmail.com ([45.195.24.18])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t7raq-0000000CrJr-47WI
+	id 1t7rb1-0000000CrLc-0CCj
 	for linux-rockchip@lists.infradead.org;
-	Mon, 04 Nov 2024 07:33:46 +0000
+	Mon, 04 Nov 2024 07:33:56 +0000
 Received: from localhost.localdomain (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 1b5f869f;
-	Mon, 4 Nov 2024 15:33:40 +0800 (GMT+08:00)
+	by smtp.qiye.163.com (Hmail) with ESMTP id 1b5f86df;
+	Mon, 4 Nov 2024 15:33:50 +0800 (GMT+08:00)
 From: Shawn Lin <shawn.lin@rock-chips.com>
 To: Rob Herring <robh+dt@kernel.org>,
 	"James E . J . Bottomley" <James.Bottomley@HansenPartnership.com>,
@@ -50,28 +50,28 @@ Cc: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
 	devicetree@vger.kernel.org,
 	linux-pm@vger.kernel.org,
 	Shawn Lin <shawn.lin@rock-chips.com>
-Subject: [PATCH v4 5/7] pmdomain: rockchip: Add smc call to inform firmware
-Date: Mon,  4 Nov 2024 15:31:59 +0800
-Message-Id: <1730705521-23081-6-git-send-email-shawn.lin@rock-chips.com>
+Subject: [PATCH v4 6/7] PM: wakeup: Add device_clr_wakeup_path()
+Date: Mon,  4 Nov 2024 15:32:00 +0800
+Message-Id: <1730705521-23081-7-git-send-email-shawn.lin@rock-chips.com>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1730705521-23081-1-git-send-email-shawn.lin@rock-chips.com>
 References: <1730705521-23081-1-git-send-email-shawn.lin@rock-chips.com>
 X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGktJGVZJT0hMS0IfSx1JH0tWFRQJFh
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQkhITVZJH05CTB0dH0lCQxhWFRQJFh
 	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSUhCSE
 	NVSktLVUpCS0tZBg++
-X-HM-Tid: 0a92f617feb709cckunm1b5f869f
+X-HM-Tid: 0a92f61826b509cckunm1b5f86df
 X-HM-MType: 1
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6Nxw6Vgw4PzIqKDpNDiM8NQ04
-	KgMwCwJVSlVKTEhLTEtOTUlJSE9PVTMWGhIXVQgTGgwVVRcSFTsJFBgQVhgTEgsIVRgUFkVZV1kS
-	C1lBWU5DVUlJVUxVSkpPWVdZCAFZQUpPTEo3Bg++
+X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6MTY6Syo4EjIuQzpKDiwaNUk5
+	IjEwFDBVSlVKTEhLTEtOTUhJTkhPVTMWGhIXVQgTGgwVVRcSFTsJFBgQVhgTEgsIVRgUFkVZV1kS
+	C1lBWU5DVUlJVUxVSkpPWVdZCAFZQUpJTks3Bg++
 DKIM-Signature: a=rsa-sha256;
-	b=KOc/V3TOi9CZ+bjGn0XBxZzJxc1ucrWpUkLu9Mto0M5wPnRkMSSVRTi+r+4YrC75jwQAy6JCr0KHm7eTX7ADwMMdsZja1RtfkDAYJnCDDSCN0mCrk6hnh0K57xKUAj7XfnNGO3o2hU0vZUP7xggLECJhVAthb43p1aovPmW919A=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
-	bh=5bC3QYHOjJ3/vZ0+0nCR2up4r8RzKDUexJly/sw7L6Y=;
+	b=XaaNKC6e9jeXqryncvNsBaCCLREY+vONROjoHez11dB18+jm+UL9dCm5gu9pODOQRIl0A8t23sXpeJ+FzyI9QzD6BGxmG/KAnDhEVmefnISft1PjWZBhxdSPXQG/ed9FGHJlLxhwwOBy3cy2im1j7JNJ8kMwyN5lx0ehTWW8MNs=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
+	bh=WAt8KEoMkcRQkVhcAHLvz96VVs1tPx6HkdCub024pBU=;
 	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241103_233345_255218_3B54C699 
-X-CRM114-Status: GOOD (  12.07  )
+X-CRM114-CacheID: sfid-20241103_233355_314798_2E834402 
+X-CRM114-Status: GOOD (  10.46  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,9 +89,9 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Inform firmware to keep the power domain on or off.
+device_clr_wakeup_path() is used to disable wakeup path support
+which is symmetrical to device_set_wakeup_path().
 
-Suggested-by: Ulf Hansson <ulf.hansson@linaro.org>
 Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
 ---
 
@@ -99,41 +99,34 @@ Changes in v4: None
 Changes in v3: None
 Changes in v2: None
 
- drivers/pmdomain/rockchip/pm-domains.c | 7 +++++++
+ include/linux/pm_wakeup.h | 7 +++++++
  1 file changed, 7 insertions(+)
 
-diff --git a/drivers/pmdomain/rockchip/pm-domains.c b/drivers/pmdomain/rockchip/pm-domains.c
-index cb0f938..8b5dd7f 100644
---- a/drivers/pmdomain/rockchip/pm-domains.c
-+++ b/drivers/pmdomain/rockchip/pm-domains.c
-@@ -5,6 +5,7 @@
-  * Copyright (c) 2015 ROCKCHIP, Co. Ltd.
-  */
- 
-+#include <linux/arm-smccc.h>
- #include <linux/io.h>
- #include <linux/iopoll.h>
- #include <linux/err.h>
-@@ -20,6 +21,7 @@
- #include <linux/regmap.h>
- #include <linux/mfd/syscon.h>
- #include <soc/rockchip/pm_domains.h>
-+#include <soc/rockchip/rockchip_sip.h>
- #include <dt-bindings/power/px30-power.h>
- #include <dt-bindings/power/rockchip,rv1126-power.h>
- #include <dt-bindings/power/rk3036-power.h>
-@@ -567,6 +569,11 @@ static void rockchip_do_pmu_set_power_domain(struct rockchip_pm_domain *pd,
- 			genpd->name, is_on);
- 		return;
- 	}
-+
-+	/* Inform firmware to keep this pd on or off */
-+	arm_smccc_smc(ROCKCHIP_SIP_SUSPEND_MODE, ROCKCHIP_SLEEP_PD_CONFIG,
-+			pmu->info->pwr_offset + pd_pwr_offset,
-+			pd->info->pwr_mask, on, 0, 0, 0, NULL);
+diff --git a/include/linux/pm_wakeup.h b/include/linux/pm_wakeup.h
+index 76cd1f9..45405a3 100644
+--- a/include/linux/pm_wakeup.h
++++ b/include/linux/pm_wakeup.h
+@@ -94,6 +94,11 @@ static inline void device_set_wakeup_path(struct device *dev)
+ 	dev->power.wakeup_path = true;
  }
  
- static int rockchip_pd_power(struct rockchip_pm_domain *pd, bool power_on)
++static inline void device_clr_wakeup_path(struct device *dev)
++{
++	dev->power.wakeup_path = false;
++}
++
+ /* drivers/base/power/wakeup.c */
+ extern struct wakeup_source *wakeup_source_create(const char *name);
+ extern void wakeup_source_destroy(struct wakeup_source *ws);
+@@ -177,6 +182,8 @@ static inline bool device_wakeup_path(struct device *dev)
+ 
+ static inline void device_set_wakeup_path(struct device *dev) {}
+ 
++static inline void device_clr_wakeup_path(struct device *dev) {}
++
+ static inline void __pm_stay_awake(struct wakeup_source *ws) {}
+ 
+ static inline void pm_stay_awake(struct device *dev) {}
 -- 
 2.7.4
 
