@@ -4,60 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 935FFD1BDD7
-	for <linux-rockchip@archiver.kernel.org>; Mon,  4 Nov 2024 17:58:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1D14FD1BDD4
+	for <linux-rockchip@archiver.kernel.org>; Mon,  4 Nov 2024 18:02:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=qPw4sv9Ut/QRDaAQcqkFP0CAFnTZFGxQ4TpVDkPjrpQ=; b=IKgw9pZ1zRZcdC
-	idVJxWBpY34yRQLV40PZz5AitRTrdWZ7pv5iktMNLfmqImtWEVYDjrTidMGjsNFZsawwGKp2H0oWk
-	NHeGgHyw5xZudNV45Emb/LdWSBuP6Cw8Qh7N/BGVlRPfU7OWzqDB0AmEsiDxZ2p2uAww1a0jWOBTm
-	DCxgfhpyLsFPnjM03Sc4iQpXw7QqSv+T+dnY0kpvi2d9ROkYTfOLUtMvV2bnMuFlvL8pDs+ACzPbn
-	HiA/1VrU2dVEUMuEEW3LS7a8EsOc98c8+wofmUiEpRzgjzc3HfXj2re0niwOEn1LzTfCOelKh3VVH
-	AdtsflFToMs/OHvyU1hQ==;
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=LDa5tFaIhr5bgODNcukdMN3rjzETuDK9mEsmJGW41ic=; b=uBe91Ss8du61v/
+	fm8njTpEJKrPojoKddYY2dBkikWvl61yU3LueuiGF77+CHSTadfEow3CVUGijlUn1eQ20+UEjC+tR
+	zOq6vt/2K8bLeQ+oWKT4+xXbjEt8jFCQfZF4CwNtfVUE0jtLjdYDIq7CNma4BbI3vI6ckC581cIV7
+	YDJYcKZmeV7bcs7VTdKJMpNDL4DrsuuYDcSemgoBRHiqBWRAAjZSsQQAfAL3RYp4E8jJeltkZif/y
+	k778Um4QhYSzMfqKjYiSwTBipDOFoxgrwtcaWcuNv47xtc1fnyqd7V5HHsx8K1miYFjQXe+egQPL1
+	RoecbxbRvif3cw3Aojdg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t81Ll-0000000Ed2f-09z6;
-	Mon, 04 Nov 2024 17:58:49 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1t81P8-0000000Edmo-2fgc;
+	Mon, 04 Nov 2024 18:02:18 +0000
+Received: from a7-44.smtp-out.eu-west-1.amazonses.com ([54.240.7.44])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t80tm-0000000EX9v-1C7H;
-	Mon, 04 Nov 2024 17:29:55 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id D773BA43194;
-	Mon,  4 Nov 2024 17:27:57 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C4221C4CECE;
-	Mon,  4 Nov 2024 17:29:51 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1730741392;
-	bh=VIsm+vKuTiWLxy8wAD3WL4oTrYDz0+DlaUdFVPEaR6A=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=U1+njhmS9C1BnrW3KesZysOFKxuFALDbFR1vlBXfaD5I7h4iBZPIIkY4h1VvoQbPh
-	 cfMYVpEODRoCc08vE5388BaJKGrm1XAhcTSqvWGVtSGLCmH1mhp26WC2ALSW639Xxp
-	 EkwIVT3Ml1rrDaIS74t9EDDYEDq7Y9mS8Un2QOz9Ygg5MUEjhurM5QgTPOiVOAieN3
-	 wPulMMf+wmGO0evh0Dt4fi0fvv7Ds5JNLVpZwyQPqBmEM6ozf4oW6C2fgGkUQsB8JY
-	 mmcL1vYtMPRamsYCNVaoKKPy6lpWWuE6IfrN+qPWY2c0MSXiw/AaKXIR88x99+uWLe
-	 aClf85IRVrBPQ==
-Date: Mon, 4 Nov 2024 10:29:50 -0700
-From: Nathan Chancellor <nathan@kernel.org>
-To: Arnd Bergmann <arnd@kernel.org>, Sandy Huang <hjc@rock-chips.com>,
-	Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>,
-	Andy Yan <andy.yan@rock-chips.com>,
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>
-Subject: Re: [PATCH] drm/rockchip: avoid 64-bit division
-Message-ID: <20241104172950.GA741087@thelio-3990X>
-References: <20241018151016.3496613-1-arnd@kernel.org>
+	id 1t810B-0000000EYWN-2eHg
+	for linux-rockchip@lists.infradead.org;
+	Mon, 04 Nov 2024 17:36:33 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=bc7lryepznv65m6r2ewkpoafjt4fiq42; d=collabora.com; t=1730741787;
+	h=From:To:Cc:Subject:Date:Message-ID:MIME-Version:Content-Transfer-Encoding;
+	bh=yl34RGvn530eol6KKKlCd1cMYmqiFsLcin5kdTgiGlw=;
+	b=mEUqLzMKEDY11vgHNBOEWhqra23z0MbmnlnBV9Ayu6orbyeSjuNGlt3N6O8bwQT/
+	DdMKoVjCMy9VSybDjpXB+0WnX8iSzW2SmtcBqGBWPDjJs6GEnMQrVnWHp4v6RZY45Ml
+	BmkNPllZL2/x/ul99B1u0BBAq19J0Kxl+cAzhpyQhV5HClhANo7jJthpQRhJCXzZvo3
+	MxmNENuEpZeHARQLQ2bCs7LZbUZeC9KYLfgm67Yricciy+IL/JmPAaHJ4//PzjjxGKW
+	cM9nL0BuTzS50dt0TWVR338dhT+Vwj5gI9HqGgKMhjZAWDFLdcWnHVjvmo+rzDELz6P
+	KOPj9mT2mQ==
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=uku4taia5b5tsbglxyj6zym32efj7xqv; d=amazonses.com; t=1730741787;
+	h=From:To:Cc:Subject:Date:Message-ID:MIME-Version:Content-Transfer-Encoding:Feedback-ID;
+	bh=yl34RGvn530eol6KKKlCd1cMYmqiFsLcin5kdTgiGlw=;
+	b=VzbPvsWEt4eG9KU6Ym0jzfXfbM+oysnmdHnLHPy//ijja75sY84DZkvYywkiVUS4
+	bq+9yJ8ev5DYTNyxRbyl/FLHwt2cXmY8pbBbeDjKvbE3Dfm5M2IgJ0JNTU9xQGZQOJj
+	0Hvnrbq8y/TDLaFo09Y1GM1pT/Ini5dgAPjhvDbo=
+From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+To: ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de, 
+	mchehab@kernel.org
+Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+	linux-kernel@vger.kernel.org, kernel@collabora.com, 
+	Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Subject: [PATCH 0/2] media: verisilicon: fix reference padding issue
+Date: Mon, 4 Nov 2024 17:36:27 +0000
+Message-ID: <01020192f83fdb1f-34d2a074-79e4-4fb8-af50-f065312cb65f-000000@eu-west-1.amazonses.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20241018151016.3496613-1-arnd@kernel.org>
+Feedback-ID: ::1.eu-west-1.YpP9ZbxnARFfy3Cb5pfsLd/pdsXBCNK0KEM7HforL4k=:AmazonSES
+X-SES-Outgoing: 2024.11.04-54.240.7.44
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241104_092954_408542_785A87FC 
-X-CRM114-Status: GOOD (  18.49  )
+X-CRM114-CacheID: sfid-20241104_093631_884663_D27E0205 
+X-CRM114-Status: UNSURE (   7.88  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,50 +72,37 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: Simona Vetter <simona@ffwll.ch>, Algea Cao <algea.cao@rock-chips.com>, Arnd Bergmann <arnd@arndb.de>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, David Airlie <airlied@gmail.com>, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, Oct 18, 2024 at 03:10:10PM +0000, Arnd Bergmann wrote:
-> From: Arnd Bergmann <arnd@arndb.de>
-> 
-> Dividing a 64-bit integer prevents building this for 32-bit targets:
-> 
-> ERROR: modpost: "__aeabi_uldivmod" [drivers/gpu/drm/rockchip/rockchipdrm.ko] undefined!
-> 
-> As this function is not performance criticial, just Use the div_u64() helper.
-> 
-> Fixes: 128a9bf8ace2 ("drm/rockchip: Add basic RK3588 HDMI output support")
-> Signed-off-by: Arnd Bergmann <arnd@arndb.de>
+Hantro hardware is splited into two parts: the decoder which produce
+tiled pixels formats and the post-processor which produce raster pixels
+formats.
+When post-processor is used the selected pixels format may not have the
+some padding/stride than the decoder output pixels format. This led to
+miscomputing chroma and motion vectors offsets so data are overlapping.
+This series introduce a reference pixels format that decoder use to
+compute the various needed offsets and size.
 
-Reviewed-by: Nathan Chancellor <nathan@kernel.org>
+With this series Fluster for VP9 tests is now 207/305 vs 145/305.
+HEVC test score isn't impacted by these patches (still 141/147).
 
-Can someone please pick this up? It is still broken in next-20241104...
+Benjamin Gaignard (2):
+  media: verisilicon: Store reference frames pixels format
+  media: verisilicon: Fix IMX8 native pixels format steps values
 
-https://storage.tuxsuite.com/public/clangbuiltlinux/continuous-integration2/builds/2oNvJFRj8tkDieb6VfrMf4rh1Kn/build.log
+ drivers/media/platform/verisilicon/hantro.h   |  2 ++
+ .../media/platform/verisilicon/hantro_g2.c    |  2 +-
+ .../platform/verisilicon/hantro_postproc.c    | 28 ++++++-------------
+ .../media/platform/verisilicon/hantro_v4l2.c  | 21 ++++++++++++++
+ .../media/platform/verisilicon/imx8m_vpu_hw.c | 10 +++----
+ 5 files changed, 38 insertions(+), 25 deletions(-)
 
-> ---
->  drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c b/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
-> index 9c796ee4c303..c8b362cc2b95 100644
-> --- a/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
-> +++ b/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
-> @@ -82,7 +82,7 @@ static void dw_hdmi_qp_rockchip_encoder_enable(struct drm_encoder *encoder)
->  		 * comment in rk_hdptx_phy_power_on() from
->  		 * drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
->  		 */
-> -		phy_set_bus_width(hdmi->phy, rate / 100);
-> +		phy_set_bus_width(hdmi->phy, div_u64(rate, 100));
->  	}
->  }
->  
-> -- 
-> 2.39.5
-> 
+-- 
+2.43.0
+
 
 _______________________________________________
 Linux-rockchip mailing list
