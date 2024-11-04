@@ -4,88 +4,100 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 02859D1BDEB
-	for <linux-rockchip@archiver.kernel.org>; Mon,  4 Nov 2024 20:17:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 614B1D1BDFF
+	for <linux-rockchip@archiver.kernel.org>; Mon,  4 Nov 2024 21:46:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=nTw5TsSxjGR/BcZBu644HsHI6Ho/0AHS2OEIWH2MNPA=; b=SVFi2/OpY/l6pY
-	QNVgOzpLPQ+5BCupfI/YNm2n76XXs28ALJYxiINcoy8GjoVrFybBHHPpyJi3BsXY8rOMlAu4fFN4m
-	bTSeBsL1aqg7rifmmfdonQHoWAYmSjoW+re+mw/wT8PlspMgWSS3E1DH4Kqch+p2ziVwNcKv2KIk8
-	z/Wo1UwVCaVLcT2MlDZfrl6BHo4I/+s/oFfU50qyad9AI5SWF9NLZ9i1Br5wbaT+j2XDzpqPsoFqT
-	aIL8Cv+9rKUul7xAQVsfFLr4K0QfvD/YfsV2PwjaisDgriTVnHq/Ih2PVh/JvQCusXT5iUwoVt0mB
-	0YyIemijKo31Fu4PdXHg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=K+ilJQzobWeBLsNXBf7gbXE7DrKcWSJi8/MepAy/rlU=; b=KV0qiQ32DwtRSb
+	gkyTgA9CIVfisW+IiCVRddKFkS83dm5nBR4YRJCb3/Ib49pHX+1qhxwbVjQrGy9UcsDwj5mQX4guf
+	mLSAZzjImZ5aUvRgADebD4tOHZuKnR+OpUFH6968U8P/Uj6dLuEf/bnVdIv6tmS7TzdgJyVoEjpVO
+	WTutzTxvE+PmFj8Zzoxe5Gur7EepYDde67LlwaSxvRIZhqDqwudCcEh8NUGVhhK7DJNBjEu2TzyaD
+	QckpplBn6LJ34gl+yXAhqegevch94DJ9n8AmN71HUpHWErd3r+ZrJAOsCTySoBXSsMMC3WNSC3EbX
+	sy2E+UZrLiO+93Kmv06Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t83WD-0000000F09K-0V3t;
-	Mon, 04 Nov 2024 20:17:45 +0000
-Received: from mgamail.intel.com ([198.175.65.12])
+	id 1t84tn-0000000FDKi-0boF;
+	Mon, 04 Nov 2024 21:46:11 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t83WA-0000000F08s-1Vgu
-	for linux-rockchip@lists.infradead.org;
-	Mon, 04 Nov 2024 20:17:44 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1730751462; x=1762287462;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=5MWgbh4aOjwoJiLBWxpgay+wgAMi+P1rkEAd6ZT8gdE=;
-  b=mP/eZqW22FWbhN/14vloWn2jUkpIqJWB/6PqZpjkyNKrJk8KrXxeWzBn
-   /D3mxNcFh/kj4A/qLhn/bzbcYcLWpD+3eXgTX6OcHBJ2F0LxyOWJXWfkW
-   xvKL9nHLQucrM03fo1hGgRx94883fBH8x/gCEkxIAGKP93zPThZa5L+Qk
-   CiHzTujd0V5dbMzLTBEJA7yr6kFzEiUCbks+zwThqehhVKZ8fEMvivsmj
-   aupT94HXhR+QKmtioPXeeH7BG8NRmUWL4NKPE1XgGJYRm28hAJXsUd7Rp
-   Aw1N77U9o1YdHlGqTYseCI4A7YlB2DmVekhZZEt3c1qUjorO4IWUbfsSR
-   g==;
-X-CSE-ConnectionGUID: j1WVCcq0RoKswqW5phhCVQ==
-X-CSE-MsgGUID: OD5nODC+QTackrq/20OUVQ==
-X-IronPort-AV: E=McAfee;i="6700,10204,11246"; a="41858050"
-X-IronPort-AV: E=Sophos;i="6.11,258,1725346800"; 
-   d="scan'208";a="41858050"
-Received: from fmviesa006.fm.intel.com ([10.60.135.146])
-  by orvoesa104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 04 Nov 2024 12:17:40 -0800
-X-CSE-ConnectionGUID: DjDAKnVUQtS4/c7pKUkeQg==
-X-CSE-MsgGUID: a15UI2hBS9yREI5ghSgxJg==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.11,258,1725346800"; 
-   d="scan'208";a="83286325"
-Received: from lkp-server01.sh.intel.com (HELO a48cf1aa22e8) ([10.239.97.150])
-  by fmviesa006.fm.intel.com with ESMTP; 04 Nov 2024 12:17:35 -0800
-Received: from kbuild by a48cf1aa22e8 with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1t83W1-000lFV-1X;
-	Mon, 04 Nov 2024 20:17:33 +0000
-Date: Tue, 5 Nov 2024 04:17:30 +0800
-From: kernel test robot <lkp@intel.com>
-To: Shawn Lin <shawn.lin@rock-chips.com>, Rob Herring <robh+dt@kernel.org>,
-	"James E . J . Bottomley" <James.Bottomley@hansenpartnership.com>,
-	"Martin K . Petersen" <martin.petersen@oracle.com>,
-	Krzysztof Kozlowski <krzk@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Ulf Hansson <ulf.hansson@linaro.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	"Rafael J . Wysocki" <rafael@kernel.org>
-Cc: llvm@lists.linux.dev, oe-kbuild-all@lists.linux.dev,
-	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
-	Alim Akhtar <alim.akhtar@samsung.com>,
-	Avri Altman <avri.altman@wdc.com>,
-	Bart Van Assche <bvanassche@acm.org>,
-	YiFeng Zhao <zyf@rock-chips.com>, Liang Chen <cl@rock-chips.com>,
-	linux-scsi@vger.kernel.org, linux-rockchip@lists.infradead.org,
-	devicetree@vger.kernel.org, linux-pm@vger.kernel.org
-Subject: Re: [PATCH v4 4/7] pmdomain: core: Introduce
- dev_pm_genpd_rpm_always_on()
-Message-ID: <202411050317.abJatSkD-lkp@intel.com>
-References: <1730705521-23081-5-git-send-email-shawn.lin@rock-chips.com>
+	id 1t84r3-0000000FCtA-3FJS;
+	Mon, 04 Nov 2024 21:43:21 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
+	:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
+	Content-Description:In-Reply-To:References;
+	bh=/4tmB1crXrQeW2xb2p4HQOS59dYvDstelXee2aLIlks=; b=NcVkjO+XlpVfFsHODDo1D0stFq
+	CxKDkYvnX/YwTeDRHzXFD1w9nRNVRlo8KjrhckKYhlLx/JsIkGhJEK2Rk1WXmG2WIL/ugTBd7H1nj
+	8MhZVV5sRYuClMut4U3ui0Ge+3YL1lcU6XbQaUlx6bQf/Hm70SPret0lLoyHqtWhbBrlMsOStAyMq
+	QKI95bRjotpZ5dFplLfG+eXN41K03G7bLgKj6JEzKf8Kwarb2Vj/WbT7OeJdPRDK7H9A5F8TqKdJ2
+	LXQmF5dBGYUbGrndlqXOiGgSdgB4YreXDi3+4slRmYIxnVl1x76h7yMnc0qtgHjtduSObTzMt09VL
+	HMnrczVg==;
+Received: from mail-qv1-xf2a.google.com ([2607:f8b0:4864:20::f2a])
+	by desiato.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
+	id 1t84r0-0000000BaJh-2E4f;
+	Mon, 04 Nov 2024 21:43:20 +0000
+Received: by mail-qv1-xf2a.google.com with SMTP id 6a1803df08f44-6cbe9914487so33311236d6.1;
+        Mon, 04 Nov 2024 13:43:15 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1730756594; x=1731361394; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=/4tmB1crXrQeW2xb2p4HQOS59dYvDstelXee2aLIlks=;
+        b=RQYD7tJ1+VCrbQhuHxETdHT11bEXswcWrfkodlCufWg2sh3feebEamtKiABCVLmbFP
+         reUTbr4bvMWgEXNrwnQ8Pqtj7lwIwQhsYlCQW8QVis2gq/4NNhWQ7HRVTov+gjRremlL
+         N6qmPpY5U1LN7D5DcUG+K/fyylGBovZsRJiXQsTroM0SH3/YaswwutH9woydbT6Uce0m
+         QrSdQ8sS0ie7Xi49qtN0pISG2ka/2Kn/LVv5xUl0kUnA/cW/Cwhtzd8/omEU2Ne2LM+W
+         gfzUZ1sI3+241lW1EMyQ7S0yTox1+O22DmwWogmjJFtGOZVAjk95OeHZRgBqJkgzpRlP
+         gbLQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1730756594; x=1731361394;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=/4tmB1crXrQeW2xb2p4HQOS59dYvDstelXee2aLIlks=;
+        b=Zd0bQYEZTq2NmRoQDYtHmWLF+/3BFRE9YuBSgEuauoC3Z86CwXrgj0JwlG+cx+OUpE
+         q6dIP8mmvGLuCUJGE5d+VSydUpJ1bcO+fPZIMHjzbGZ195m2b82KyhpwipSFIyOeXqM/
+         b1QmbhObtGKXnDhfBtDy1uwfU0QJo6yJRXPxtbmRLlB2ZPjEdjoC2LlaLiipx+SNwnvg
+         8Y+BOcn5Jm5FbsxMYhKXR4guq5qfDxxRQmna9nIQ5225XNagSvQS1YdgGldNpGlwhJJ4
+         sjwaclXIHQdBEl+Q2pRH3QVqAzdy6FBODHGhABKn5f1bwlEF39DcB2JizLoHRnxV1LP+
+         +zUw==
+X-Forwarded-Encrypted: i=1; AJvYcCWIBG4youB9vZAA22Edmbu4dQNa8DoCJlm8fVCPq/kdnem8ud9tVnSxyHkOcww1tbAhl1ggwOc/ULVextD6Hg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxoFw5/hGlb73rvB4ppD7XB6cSdtSmU7I/DwfVGLWv81PajdQR/
+	JTpplYBKp7YuhzHJL77Mf2/zjXM3jf43p+l6FW2+6tp8+2YUdYDx
+X-Google-Smtp-Source: AGHT+IHiD08rBdxTtb8aWm9tjEu6W9aqyM2twM5OiMs1ouAVCkDkPquU7pdY0W4uFRX0AKoynB85Ww==
+X-Received: by 2002:a05:6214:3386:b0:6cb:fa1c:87da with SMTP id 6a1803df08f44-6d351b2083emr248567506d6.38.1730756593883;
+        Mon, 04 Nov 2024 13:43:13 -0800 (PST)
+Received: from newman.cs.purdue.edu ([128.10.127.250])
+        by smtp.gmail.com with ESMTPSA id 6a1803df08f44-6d35415b1edsm52553916d6.75.2024.11.04.13.43.13
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 04 Nov 2024 13:43:13 -0800 (PST)
+From: Jiasheng Jiang <jiashengjiangcool@gmail.com>
+To: rmk@dyn-67.arm.linux.org.uk,
+	max.schwarz@online.de,
+	dianders@chromium.org,
+	david.wu@rock-chips.com,
+	heiko@sntech.de,
+	vz@mleia.com,
+	andi.shyti@kernel.org,
+	wsa@kernel.org,
+	manabian@gmail.com
+Cc: linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-i2c@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	Jiasheng Jiang <jiashengjiangcool@gmail.com>
+Subject: [PATCH 1/3] i2c: lpc2k: Add check for clk_enable()
+Date: Mon,  4 Nov 2024 21:43:08 +0000
+Message-Id: <20241104214310.6048-1-jiashengjiangcool@gmail.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <1730705521-23081-5-git-send-email-shawn.lin@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241104_121742_478903_8A520CAA 
-X-CRM114-Status: GOOD (  22.50  )
+X-CRM114-CacheID: sfid-20241104_214318_867948_4BCCB23D 
+X-CRM114-Status: GOOD (  11.13  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,156 +114,38 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Shawn,
+Add check for the return value of clk_enable() in order to catch the
+potential exception.
 
-kernel test robot noticed the following build warnings:
+Fixes: 3f9c37a0c9a5 ("i2c: lpc2k: add driver")
+Signed-off-by: Jiasheng Jiang <jiashengjiangcool@gmail.com>
+---
+ drivers/i2c/busses/i2c-lpc2k.c | 8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
 
-[auto build test WARNING on jejb-scsi/for-next]
-[also build test WARNING on robh/for-next linus/master v6.12-rc6]
-[cannot apply to mkp-scsi/for-next next-20241104]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
-
-url:    https://github.com/intel-lab-lkp/linux/commits/Shawn-Lin/dt-bindings-ufs-Document-Rockchip-UFS-host-controller/20241104-191810
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/jejb/scsi.git for-next
-patch link:    https://lore.kernel.org/r/1730705521-23081-5-git-send-email-shawn.lin%40rock-chips.com
-patch subject: [PATCH v4 4/7] pmdomain: core: Introduce dev_pm_genpd_rpm_always_on()
-config: x86_64-buildonly-randconfig-002-20241104 (https://download.01.org/0day-ci/archive/20241105/202411050317.abJatSkD-lkp@intel.com/config)
-compiler: clang version 19.1.3 (https://github.com/llvm/llvm-project ab51eccf88f5321e7c60591c5546b254b6afab99)
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20241105/202411050317.abJatSkD-lkp@intel.com/reproduce)
-
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202411050317.abJatSkD-lkp@intel.com/
-
-All warnings (new ones prefixed by >>):
-
-   In file included from drivers/pmdomain/core.c:21:
-   In file included from include/linux/suspend.h:5:
-   In file included from include/linux/swap.h:9:
-   In file included from include/linux/memcontrol.h:21:
-   In file included from include/linux/mm.h:2213:
-   include/linux/vmstat.h:518:36: warning: arithmetic between different enumeration types ('enum node_stat_item' and 'enum lru_list') [-Wenum-enum-conversion]
-     518 |         return node_stat_name(NR_LRU_BASE + lru) + 3; // skip "nr_"
-         |                               ~~~~~~~~~~~ ^ ~~~
->> drivers/pmdomain/core.c:898:4: warning: misleading indentation; statement is not part of the previous 'if' [-Wmisleading-indentation]
-     898 |                         if (to_gpd_data(pdd)->rpm_always_on)
-         |                         ^
-   drivers/pmdomain/core.c:893:3: note: previous statement is here
-     893 |                 if (!pm_runtime_suspended(pdd->dev) ||
-         |                 ^
-   2 warnings generated.
-
-
-vim +/if +898 drivers/pmdomain/core.c
-
-   837	
-   838	/**
-   839	 * genpd_power_off - Remove power from a given PM domain.
-   840	 * @genpd: PM domain to power down.
-   841	 * @one_dev_on: If invoked from genpd's ->runtime_suspend|resume() callback, the
-   842	 * RPM status of the releated device is in an intermediate state, not yet turned
-   843	 * into RPM_SUSPENDED. This means genpd_power_off() must allow one device to not
-   844	 * be RPM_SUSPENDED, while it tries to power off the PM domain.
-   845	 * @depth: nesting count for lockdep.
-   846	 *
-   847	 * If all of the @genpd's devices have been suspended and all of its subdomains
-   848	 * have been powered down, remove power from @genpd.
-   849	 */
-   850	static int genpd_power_off(struct generic_pm_domain *genpd, bool one_dev_on,
-   851				   unsigned int depth)
-   852	{
-   853		struct pm_domain_data *pdd;
-   854		struct gpd_link *link;
-   855		unsigned int not_suspended = 0;
-   856		int ret;
-   857	
-   858		/*
-   859		 * Do not try to power off the domain in the following situations:
-   860		 * (1) The domain is already in the "power off" state.
-   861		 * (2) System suspend is in progress.
-   862		 */
-   863		if (!genpd_status_on(genpd) || genpd->prepared_count > 0)
-   864			return 0;
-   865	
-   866		/*
-   867		 * Abort power off for the PM domain in the following situations:
-   868		 * (1) The domain is configured as always on.
-   869		 * (2) When the domain has a subdomain being powered on.
-   870		 */
-   871		if (genpd_is_always_on(genpd) ||
-   872				genpd_is_rpm_always_on(genpd) ||
-   873				atomic_read(&genpd->sd_count) > 0)
-   874			return -EBUSY;
-   875	
-   876		/*
-   877		 * The children must be in their deepest (powered-off) states to allow
-   878		 * the parent to be powered off. Note that, there's no need for
-   879		 * additional locking, as powering on a child, requires the parent's
-   880		 * lock to be acquired first.
-   881		 */
-   882		list_for_each_entry(link, &genpd->parent_links, parent_node) {
-   883			struct generic_pm_domain *child = link->child;
-   884			if (child->state_idx < child->state_count - 1)
-   885				return -EBUSY;
-   886		}
-   887	
-   888		list_for_each_entry(pdd, &genpd->dev_list, list_node) {
-   889			/*
-   890			 * Do not allow PM domain to be powered off, when an IRQ safe
-   891			 * device is part of a non-IRQ safe domain.
-   892			 */
-   893			if (!pm_runtime_suspended(pdd->dev) ||
-   894				irq_safe_dev_in_sleep_domain(pdd->dev, genpd))
-   895				not_suspended++;
-   896	
-   897				/* The device may need its PM domain to stay powered on. */
- > 898				if (to_gpd_data(pdd)->rpm_always_on)
-   899					return -EBUSY;
-   900		}
-   901	
-   902		if (not_suspended > 1 || (not_suspended == 1 && !one_dev_on))
-   903			return -EBUSY;
-   904	
-   905		if (genpd->gov && genpd->gov->power_down_ok) {
-   906			if (!genpd->gov->power_down_ok(&genpd->domain))
-   907				return -EAGAIN;
-   908		}
-   909	
-   910		/* Default to shallowest state. */
-   911		if (!genpd->gov)
-   912			genpd->state_idx = 0;
-   913	
-   914		/* Don't power off, if a child domain is waiting to power on. */
-   915		if (atomic_read(&genpd->sd_count) > 0)
-   916			return -EBUSY;
-   917	
-   918		ret = _genpd_power_off(genpd, true);
-   919		if (ret) {
-   920			genpd->states[genpd->state_idx].rejected++;
-   921			return ret;
-   922		}
-   923	
-   924		genpd->status = GENPD_STATE_OFF;
-   925		genpd_update_accounting(genpd);
-   926		genpd->states[genpd->state_idx].usage++;
-   927	
-   928		list_for_each_entry(link, &genpd->child_links, child_node) {
-   929			genpd_sd_counter_dec(link->parent);
-   930			genpd_lock_nested(link->parent, depth + 1);
-   931			genpd_power_off(link->parent, false, depth + 1);
-   932			genpd_unlock(link->parent);
-   933		}
-   934	
-   935		return 0;
-   936	}
-   937	
-
+diff --git a/drivers/i2c/busses/i2c-lpc2k.c b/drivers/i2c/busses/i2c-lpc2k.c
+index 9fb33cbf7419..ea9831f34cd6 100644
+--- a/drivers/i2c/busses/i2c-lpc2k.c
++++ b/drivers/i2c/busses/i2c-lpc2k.c
+@@ -442,8 +442,14 @@ static int i2c_lpc2k_suspend(struct device *dev)
+ static int i2c_lpc2k_resume(struct device *dev)
+ {
+ 	struct lpc2k_i2c *i2c = dev_get_drvdata(dev);
++	int ret;
++
++	ret = clk_enable(i2c->clk);
++	if (ret) {
++		dev_err(dev, "failed to enable clock: %d\n", ret);
++		return ret;
++	}
+ 
+-	clk_enable(i2c->clk);
+ 	i2c_lpc2k_reset(i2c);
+ 
+ 	return 0;
 -- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+2.25.1
+
 
 _______________________________________________
 Linux-rockchip mailing list
