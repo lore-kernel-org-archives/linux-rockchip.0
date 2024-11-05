@@ -4,78 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E2507D3610E
-	for <linux-rockchip@archiver.kernel.org>; Tue,  5 Nov 2024 19:17:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 689E2D36137
+	for <linux-rockchip@archiver.kernel.org>; Tue,  5 Nov 2024 20:30:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=o+5WYBE7vKKwaHodOLX3AOdzVJvzpAnj9U2SJIiQFbI=; b=aO7MpIJ1pbkoxE
-	HdRd6qxehcUsO4fsHXZM/AxJvgn6zHpOR1tWa+CJYmTkSoAyJOuAbRhxh5g1yvxJnCGXy+3FOv4IG
-	erthspoKe2MBIe0tSO5pIiHkDfVBPNAO8zRCfKLj3+VSvSJ+8HhmGIzpZc7UrDE1x6L0bR58RjPAC
-	enjpP9bgTJHslh0uHfu5a1fkS70yFHJHVfJ2MWaXg7fhgPMW9v+XHNks0jutLlKbZAoQtExx9AbZT
-	eXIhzJMxpeXUJiF2gJjHmTHkAVwkLHdrjvTl4MEeJCMeqy/C3E89UEbR9AfkNxWdWeuUBXc3NHCw1
-	vgC1TzC71ywqFgeFWnSw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=k/sHyT3+Myz75V9Pa8/++4eftqbTeWnjwhEsqRy+haY=; b=a/Ys+5Amd8dbOL
+	A16WRJtnpbSzW+IcHmGS7oxweCMX9uQd6NLD2rfflInJh8B3LjA5VAG0bi/aJqD8+xPRXEnFyFy3Z
+	Lw6k2L792pI+kTxaHp/WOIoAiynqoklqOc87t9palA3psj63hi14pS/1XziWDlrdK8+5sC10IVWxx
+	fBI0X6bbym8YVp/ec6BfaOhAoNkCIgjlhSdVLeUAte3OZfFh2mxQaCf8JiZvozvNijWXZArpzGM9H
+	9UQ0Y2G/Ofexh19aqhPPws0aV7vz3oCeOK0coMsk6TzNCwUju8VAydt7f70K32p08tPWTP7AfUP1r
+	GRwRJUZgiuXqIZfJfLyw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t8P3Z-00000000WxB-33Lm;
-	Tue, 05 Nov 2024 19:17:37 +0000
-Received: from mgamail.intel.com ([198.175.65.12])
+	id 1t8QC1-00000000izH-0lww;
+	Tue, 05 Nov 2024 20:30:25 +0000
+Received: from mail.manjaro.org ([2a01:4f8:c0c:51f3::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t8P1p-00000000WkB-3Far;
-	Tue, 05 Nov 2024 19:15:52 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1730834150; x=1762370150;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=9Shq7F5zshytH1TIeEjlYPA2wyJYy7tpdhCPane9pqc=;
-  b=ctzZ44VX4zU6Qfsml76ta/k2S/NzL2yg/UO/ADcCFZ4E8S2zF8Za89Vh
-   fZnrBy2AUWSbFROel5SZmi5y/fPdh1IyvH3yH+sNMEj5xcnxylSqpdGNL
-   F2HG4lB0w3vG87PROcZ4EKjWm72B2EpGePbEGtgbeRo5G//Ix9jGXZuYe
-   ePW0KLpaHVgsHvwwrXw+atvLLkRxScuEcqSjoYAASI7M/+6AcP0oY+wwJ
-   RO6kBGcFJtRk36rjWjtLuXw/XA8v1iaYI9TR2XcOLDxf2ctKvNzmz4CLh
-   5uJH/RaoBwCtqj4p8lzw1NNi/DYYm00vcZVZ9WZz8+yAiFyIamO9VmPQv
-   w==;
-X-CSE-ConnectionGUID: PDzMDsMLTG+VDGVrPd2Czg==
-X-CSE-MsgGUID: GxV1dDzzRcS0xnj2noXVZw==
-X-IronPort-AV: E=McAfee;i="6700,10204,11247"; a="42001998"
-X-IronPort-AV: E=Sophos;i="6.11,260,1725346800"; 
-   d="scan'208";a="42001998"
-Received: from fmviesa008.fm.intel.com ([10.60.135.148])
-  by orvoesa104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 05 Nov 2024 11:15:47 -0800
-X-CSE-ConnectionGUID: wR4K5R08S7SJ1rmt0i2Ouw==
-X-CSE-MsgGUID: ktw9GgY6Tl2VnQ74Ya5blg==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.11,260,1725346800"; 
-   d="scan'208";a="84248501"
-Received: from lkp-server01.sh.intel.com (HELO a48cf1aa22e8) ([10.239.97.150])
-  by fmviesa008.fm.intel.com with ESMTP; 05 Nov 2024 11:15:44 -0800
-Received: from kbuild by a48cf1aa22e8 with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1t8P1h-000mNN-2I;
-	Tue, 05 Nov 2024 19:15:41 +0000
-Date: Wed, 6 Nov 2024 03:14:50 +0800
-From: kernel test robot <lkp@intel.com>
-To: Heiko Stuebner <heiko@sntech.de>, vkoul@kernel.org, kishon@kernel.org
-Cc: oe-kbuild-all@lists.linux.dev, robh@kernel.org, krzk+dt@kernel.org,
-	conor+dt@kernel.org, quentin.schulz@cherry.de,
-	linux-phy@lists.infradead.org, devicetree@vger.kernel.org,
+	id 1t8QAG-00000000idl-0pWW;
+	Tue, 05 Nov 2024 20:28:38 +0000
+From: Dragan Simic <dsimic@manjaro.org>
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
+	t=1730838513;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=aBHle+OmOKJ3GRYlaXusg7k6eCXaPNAxaIyVWZZMSto=;
+	b=baeAwYAByo6F6KHLbMhtp+gExlg0rVpoZqzBs+OCjm3SBE0U0PsJMixAmn16/sJ2pY6UFJ
+	xpJAK4HAZRkmK4DUAjS5gPuhkz+dsABoYjuwLh6jtEo2rzVKUHc1J7ti7qDLgOK49T10kL
+	C8JPSFyI0DW2+4DSiyzhgt+5L017gSDzDW0OKA8EDM3w7L7DSGQVSutGbgAqjmYnRVtvuE
+	ZRcqG8+MWZ3UXpLyfF3n8/9Jzrpjt+q00M1PtZ/V4FNwPQ2mSDyppngYag49qbdU48rrSB
+	CDPzml/J1OHCZdEcy/D06ehxXblZdvSp/GzrhiehKdCs/NwC4GAGjCtlJHjFrw==
+To: linux-rockchip@lists.infradead.org
+Cc: heiko@sntech.de,
 	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
-	heiko@sntech.de, Heiko Stuebner <heiko.stuebner@cherry.de>
-Subject: Re: [PATCH v2 2/2] phy: rockchip: Add Samsung CSI/DSI Combo DCPHY
- driver
-Message-ID: <202411060336.yBL7jGAs-lkp@intel.com>
-References: <20241104111121.99274-3-heiko@sntech.de>
+	linux-kernel@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
+	Quentin Schulz <quentin.schulz@cherry.de>
+Subject: [PATCH] arm64: dts: rockchip: Add OPP voltage ranges to RK3399 OP1 SoC dtsi
+Date: Tue,  5 Nov 2024 21:28:22 +0100
+Message-Id: <806d5e2a07ae0c81d9907bbe8bec4e3e1138b392.1730838347.git.dsimic@manjaro.org>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20241104111121.99274-3-heiko@sntech.de>
+Authentication-Results: ORIGINATING;
+	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241105_111549_908903_6E50CB76 
-X-CRM114-Status: GOOD (  13.07  )
+X-CRM114-CacheID: sfid-20241105_122836_771303_CD7A728A 
+X-CRM114-Status: UNSURE (   9.45  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,61 +73,179 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Heiko,
+Add support for voltage ranges to the CPU, GPU and DMC OPPs defined in the
+SoC dtsi for Rockchip OP1, as a variant of the Rockchip RK3399.  This may be
+useful if there are any OP1-based boards whose associated voltage regulators
+are unable to deliver the exact voltages; otherwise, it causes no functional
+changes to the resulting OPP voltages at runtime.
 
-kernel test robot noticed the following build warnings:
+These changes cannot cause stability issues or any kind of damage, because
+it's perfectly safe to use the highest voltage from an OPP group for each OPP
+in the same group.  The only possible negative effect of using higher voltages
+is wasted energy in form of some additionally generated heat.
 
-[auto build test WARNING on rockchip/for-next]
-[also build test WARNING on robh/for-next linus/master v6.12-rc6 next-20241105]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
+Reported-by: Quentin Schulz <quentin.schulz@cherry.de>
+Signed-off-by: Dragan Simic <dsimic@manjaro.org>
+---
+ arch/arm64/boot/dts/rockchip/rk3399-op1.dtsi | 52 ++++++++++----------
+ 1 file changed, 26 insertions(+), 26 deletions(-)
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Heiko-Stuebner/dt-bindings-phy-Add-Rockchip-MIPI-CSI-DSI-PHY-schema/20241104-193646
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git for-next
-patch link:    https://lore.kernel.org/r/20241104111121.99274-3-heiko%40sntech.de
-patch subject: [PATCH v2 2/2] phy: rockchip: Add Samsung CSI/DSI Combo DCPHY driver
-config: m68k-randconfig-r113-20241105 (https://download.01.org/0day-ci/archive/20241106/202411060336.yBL7jGAs-lkp@intel.com/config)
-compiler: m68k-linux-gcc (GCC) 14.1.0
-reproduce: (https://download.01.org/0day-ci/archive/20241106/202411060336.yBL7jGAs-lkp@intel.com/reproduce)
-
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202411060336.yBL7jGAs-lkp@intel.com/
-
-All warnings (new ones prefixed by >>):
-
->> drivers/phy/rockchip/phy-rockchip-samsung-dcphy.c:1630:34: warning: 'samsung_mipi_dcphy_of_match' defined but not used [-Wunused-const-variable=]
-    1630 | static const struct of_device_id samsung_mipi_dcphy_of_match[] = {
-         |                                  ^~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Kconfig warnings: (for reference only)
-   WARNING: unmet direct dependencies detected for GET_FREE_REGION
-   Depends on [n]: SPARSEMEM [=n]
-   Selected by [y]:
-   - RESOURCE_KUNIT_TEST [=y] && RUNTIME_TESTING_MENU [=y] && KUNIT [=y]
-
-
-vim +/samsung_mipi_dcphy_of_match +1630 drivers/phy/rockchip/phy-rockchip-samsung-dcphy.c
-
-  1629	
-> 1630	static const struct of_device_id samsung_mipi_dcphy_of_match[] = {
-  1631		{
-  1632			.compatible = "rockchip,rk3576-mipi-dcphy",
-  1633			.data = &rk3576_samsung_mipi_dcphy_plat_data,
-  1634		}, {
-  1635			.compatible = "rockchip,rk3588-mipi-dcphy",
-  1636			.data = &rk3588_samsung_mipi_dcphy_plat_data,
-  1637		},
-  1638		{ /* sentinel */ }
-  1639	};
-  1640	MODULE_DEVICE_TABLE(of, samsung_mipi_dcphy_of_match);
-  1641	
-
--- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-op1.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-op1.dtsi
+index b24bff511513..aa79219471d3 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-op1.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399-op1.dtsi
+@@ -12,125 +12,125 @@ cluster0_opp: opp-table-0 {
+ 
+ 		opp00 {
+ 			opp-hz = /bits/ 64 <408000000>;
+-			opp-microvolt = <800000>;
++			opp-microvolt = <800000 800000 1150000>;
+ 			clock-latency-ns = <40000>;
+ 		};
+ 		opp01 {
+ 			opp-hz = /bits/ 64 <600000000>;
+-			opp-microvolt = <825000>;
++			opp-microvolt = <825000 825000 1150000>;
+ 		};
+ 		opp02 {
+ 			opp-hz = /bits/ 64 <816000000>;
+-			opp-microvolt = <850000>;
++			opp-microvolt = <850000 850000 1150000>;
+ 		};
+ 		opp03 {
+ 			opp-hz = /bits/ 64 <1008000000>;
+-			opp-microvolt = <900000>;
++			opp-microvolt = <900000 900000 1150000>;
+ 		};
+ 		opp04 {
+ 			opp-hz = /bits/ 64 <1200000000>;
+-			opp-microvolt = <975000>;
++			opp-microvolt = <975000 975000 1150000>;
+ 		};
+ 		opp05 {
+ 			opp-hz = /bits/ 64 <1416000000>;
+-			opp-microvolt = <1100000>;
++			opp-microvolt = <1100000 1100000 1150000>;
+ 		};
+ 		opp06 {
+ 			opp-hz = /bits/ 64 <1512000000>;
+-			opp-microvolt = <1150000>;
++			opp-microvolt = <1150000 1150000 1150000>;
+ 		};
+ 	};
+ 
+ 	cluster1_opp: opp-table-1 {
+ 		compatible = "operating-points-v2";
+ 		opp-shared;
+ 
+ 		opp00 {
+ 			opp-hz = /bits/ 64 <408000000>;
+ 			opp-microvolt = <800000>;
+-			clock-latency-ns = <40000>;
++			clock-latency-ns = <40000 40000 1250000>;
+ 		};
+ 		opp01 {
+ 			opp-hz = /bits/ 64 <600000000>;
+-			opp-microvolt = <800000>;
++			opp-microvolt = <800000 800000 1250000>;
+ 		};
+ 		opp02 {
+ 			opp-hz = /bits/ 64 <816000000>;
+-			opp-microvolt = <825000>;
++			opp-microvolt = <825000 825000 1250000>;
+ 		};
+ 		opp03 {
+ 			opp-hz = /bits/ 64 <1008000000>;
+-			opp-microvolt = <850000>;
++			opp-microvolt = <850000 850000 1250000>;
+ 		};
+ 		opp04 {
+ 			opp-hz = /bits/ 64 <1200000000>;
+-			opp-microvolt = <900000>;
++			opp-microvolt = <900000 900000 1250000>;
+ 		};
+ 		opp05 {
+ 			opp-hz = /bits/ 64 <1416000000>;
+-			opp-microvolt = <975000>;
++			opp-microvolt = <975000 975000 1250000>;
+ 		};
+ 		opp06 {
+ 			opp-hz = /bits/ 64 <1608000000>;
+-			opp-microvolt = <1050000>;
++			opp-microvolt = <1050000 1050000 1250000>;
+ 		};
+ 		opp07 {
+ 			opp-hz = /bits/ 64 <1800000000>;
+-			opp-microvolt = <1150000>;
++			opp-microvolt = <1150000 1150000 1250000>;
+ 		};
+ 		opp08 {
+ 			opp-hz = /bits/ 64 <2016000000>;
+-			opp-microvolt = <1250000>;
++			opp-microvolt = <1250000 1250000 1250000>;
+ 		};
+ 	};
+ 
+ 	gpu_opp_table: opp-table-2 {
+ 		compatible = "operating-points-v2";
+ 
+ 		opp00 {
+ 			opp-hz = /bits/ 64 <200000000>;
+-			opp-microvolt = <800000>;
++			opp-microvolt = <800000 800000 1075000>;
+ 		};
+ 		opp01 {
+ 			opp-hz = /bits/ 64 <297000000>;
+-			opp-microvolt = <800000>;
++			opp-microvolt = <800000 800000 1075000>;
+ 		};
+ 		opp02 {
+ 			opp-hz = /bits/ 64 <400000000>;
+-			opp-microvolt = <825000>;
++			opp-microvolt = <825000 825000 1075000>;
+ 		};
+ 		opp03 {
+ 			opp-hz = /bits/ 64 <500000000>;
+-			opp-microvolt = <850000>;
++			opp-microvolt = <850000 850000 1075000>;
+ 		};
+ 		opp04 {
+ 			opp-hz = /bits/ 64 <600000000>;
+-			opp-microvolt = <925000>;
++			opp-microvolt = <925000 925000 1075000>;
+ 		};
+ 		opp05 {
+ 			opp-hz = /bits/ 64 <800000000>;
+-			opp-microvolt = <1075000>;
++			opp-microvolt = <1075000 1075000 1075000>;
+ 		};
+ 	};
+ 
+ 	dmc_opp_table: opp-table-3 {
+ 		compatible = "operating-points-v2";
+ 
+ 		opp00 {
+ 			opp-hz = /bits/ 64 <400000000>;
+-			opp-microvolt = <900000>;
++			opp-microvolt = <900000 900000 925000>;
+ 		};
+ 		opp01 {
+ 			opp-hz = /bits/ 64 <666000000>;
+-			opp-microvolt = <900000>;
++			opp-microvolt = <900000 900000 925000>;
+ 		};
+ 		opp02 {
+ 			opp-hz = /bits/ 64 <800000000>;
+-			opp-microvolt = <900000>;
++			opp-microvolt = <900000 900000 925000>;
+ 		};
+ 		opp03 {
+ 			opp-hz = /bits/ 64 <928000000>;
+-			opp-microvolt = <925000>;
++			opp-microvolt = <925000 925000 925000>;
+ 		};
+ 	};
+ };
 
 _______________________________________________
 Linux-rockchip mailing list
