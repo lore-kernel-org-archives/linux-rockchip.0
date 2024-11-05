@@ -4,59 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5FEC1D31767
-	for <linux-rockchip@archiver.kernel.org>; Tue,  5 Nov 2024 16:38:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4000CD31768
+	for <linux-rockchip@archiver.kernel.org>; Tue,  5 Nov 2024 16:58:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=jbaMfFhbtJcmfg40KQOel0mmNuQ9kELgU3QwsD9D4OE=; b=mgmKa1FV8fm5dq
-	OPSP8wNmX3x6Rij5okMQL7YbCeVm//ojw40kJEcVS4AuYkmbq+ZDjT7lZ7rJ/4Ut1csNxRtlF/v02
-	noDFKp/2yqi0WpaA2630sIuC/itJ9qj7jRKKpJs/SXHLXoT5HOH14JRgn5GM3hDuGe0MPK1J0gJcy
-	JjDb97PQrp7gzp1a/vY+tg5WKODemopuU1sWJ8nTFBsdy6qP6BXQdzLvlF/bhatCfwNIKeSx90rgL
-	K1vnKWmoYDaXT9gLDRt+cQbfVmMP3LVQEXWsbS/xTkDRbXKeRpFdQjmYlW0TSqG9NkTZaxHk+me7N
-	RmyNUI4k16knuQorq2GQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=fNq4Dl42VYVwcOldhktZBkUvAFxzAMR9ZHPb5mKRu+k=; b=ML97HLBEO3ypx6
+	AWv1a/TdN0JJuoc05A6c6VCnt3kLxmShnxwCk6Ysj9fIivPp+/P6rirvAn8EcCbdj1dznSCtaQ1N9
+	9Waa57zCyWnsGpSZ5vrA1xUE0XXQFqLUSTf1nb6/0IOYelE8REUXmY1R1Kh662y0tizajlBcbmyI/
+	BYMR0vTahLjMR5kGcQ8aS4KEbyrN93TCvWfGBp7D849eyIFk0CS5u0B9lOtBdIGW/eOa0gcHuSz/a
+	i6W2utC1OSAICe25bNp32NEimyIbA8h7MVc9U8jCGJn+GNdDX5G9tcGOiLRHn5d2LYViezcvPZnL/
+	BVirIZFNoYEkVdniGCvA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t8MZf-000000004QM-0mm0;
-	Tue, 05 Nov 2024 16:38:35 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1t8Msn-000000008QP-1Mj4;
+	Tue, 05 Nov 2024 16:58:21 +0000
+Received: from mail-qk1-x72a.google.com ([2607:f8b0:4864:20::72a])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t8M97-0000000HaTP-2prp;
-	Tue, 05 Nov 2024 16:11:10 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
-	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=UUlPSBaOC9d+zd+83UAmHf4D5WXCkU2ZNOnKm544xr0=; b=P/tXaSv90nk6bdipbMTMj/vRGt
-	IDM6BNLW6i0VuzErzDEVBN9hV9vpg1mk49x1B86HjXEMDYd2KbpWOJCbfKSBC+0MqwPhZ+Re1MFVl
-	DLX3kutygIT+jIff8xJl1amvNNYrdugI58Avp4IfEuUjO5HHY7jTIFKMChmpCI8itX27ZSTxSS8JK
-	dHIlxB3WJt5DNgkyGFnjqn8ZcprfNgqQ095Dn78bln92O8zW5Q1w3lf5Il+GKH1TkQ58iUgrDv1xw
-	gFBTILN0O/GdxXUTjJ7uEYb0HlOdbVaaLnm3CRHpeNACeL0NUksu9xJ29unzDHxm2MSobs4bduzNi
-	IvQLbzKg==;
-Received: from i53875b28.versanet.de ([83.135.91.40] helo=diego.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1t8M92-0000mH-59; Tue, 05 Nov 2024 17:11:04 +0100
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: Linus Walleij <linus.walleij@linaro.org>,
- Bartosz Golaszewski <brgl@bgdev.pl>, "Rob Herring (Arm)" <robh@kernel.org>
-Cc: linux-gpio@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] gpio: Use of_property_present() for non-boolean properties
-Date: Tue, 05 Nov 2024 17:11:03 +0100
-Message-ID: <7731755.EvYhyI6sBW@diego>
-In-Reply-To: <20241104190628.274717-1-robh@kernel.org>
-References: <20241104190628.274717-1-robh@kernel.org>
+	id 1t8MG9-0000000014N-3tvE;
+	Tue, 05 Nov 2024 16:18:27 +0000
+Received: by mail-qk1-x72a.google.com with SMTP id af79cd13be357-7b1539faa0bso363693185a.1;
+        Tue, 05 Nov 2024 08:18:25 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1730823504; x=1731428304; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=KmtWlz91TJSK4h5e5cNQt2Ayuv3I7VTg5EZ5rZ7D4Fs=;
+        b=bj42NX8jhhDebJznLM3bauGI+J6VQ6rWz0PeNFpoXQNXbhH9WFQqVziedxbh5Nz07t
+         e5nPMg82nrpyV9yyUXrnJJ08R1nd/LzqqoAIE7bUSdObMKNcnknOUgdb2iCftpMcdbMU
+         m2NiRwdUfSA1KaX/kCEVvmlq3fNfUseoNQsDes0g62FE8+ySEdGIij/qj5ClAJtV7x3K
+         OHVni4nYWMD3KP/VGweNP5dt0fjYr7lBC45NBB6Af79ObV0qZxGXOVItZz3/5DgZYSLV
+         hSMang0RLFPlyjOrYK/bb5eAIzgXuik38FnmJVujdCaSAmL4es2Udc9vy9vUB7sMW3SW
+         ry/w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1730823504; x=1731428304;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=KmtWlz91TJSK4h5e5cNQt2Ayuv3I7VTg5EZ5rZ7D4Fs=;
+        b=Mtvzwchf9KrYZKFuGEVXziI6UZfAfEoHUcKNi6m9FkWoAGvi46qGISmXNzcIJ5VaGT
+         txcQWPrG3URN1kbsmEHyu/IQ9WtJY1SBvu6neJyMhwLFjH2/RGWZv1JV+sGTTsg2uJlw
+         vihjqdKpKlyvmKFuBmj46A3RCw41fP1Rz9rsy9Hu8pXHA7ITxON5ffTU5ievRPJTPIFc
+         LeuO4CKki8UiwRsBcQK4re8IAjshy0qzei7oQQems116R1qCacx8B2EAEUpHePTTABTj
+         tOEmF9071771SK4AMO61eZe43WEHk+hxl4tUFIuywW26u9miCG4m3TKaqM6P4+vl+Tcf
+         2RBw==
+X-Forwarded-Encrypted: i=1; AJvYcCUGQ25gqEA7eD8yuZj+oMLbERgyj45XwSju3BQp/TIuVZ/8VKGELs6SyhkbheTdHx1nZxmvYCkZWiZPt+UnyzPu@lists.infradead.org, AJvYcCW0LGo+uJL7wHKQ/PZccV60iD3/SY9+IukvQuegISGmPIlqTspVuExROG135Ll0LamYxVC7He87k3QOzm5GIFc=@lists.infradead.org
+X-Gm-Message-State: AOJu0YyeTwaO8hE3D6kVnreQzUQjiLMZ31g0Vhrx7dMuV044UCCYwW8b
+	WpTWgoLUofko4agYfHU0vkuHQkzIF2wE1iCsGikKvfrge+Leq509
+X-Google-Smtp-Source: AGHT+IFeexANrtepr8tFxuvgULw0OpAvbMZOzidMyaWEF29zaJWbq8+xGIA3j9ZNrjvW8hCKk2crvg==
+X-Received: by 2002:a05:620a:4608:b0:7b1:4d3b:d618 with SMTP id af79cd13be357-7b2f25529e5mr2568975885a.57.1730823504072;
+        Tue, 05 Nov 2024 08:18:24 -0800 (PST)
+Received: from newman.cs.purdue.edu ([128.10.127.250])
+        by smtp.gmail.com with ESMTPSA id af79cd13be357-7b2f39eb14fsm538010885a.7.2024.11.05.08.18.23
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 05 Nov 2024 08:18:23 -0800 (PST)
+From: Jiasheng Jiang <jiashengjiangcool@gmail.com>
+To: andi.shyti@kernel.org
+Cc: rmk@dyn-67.arm.linux.org.uk,
+	max.schwarz@online.de,
+	dianders@chromium.org,
+	david.wu@rock-chips.com,
+	heiko@sntech.de,
+	vz@mleia.com,
+	wsa@kernel.org,
+	manabian@gmail.com,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-i2c@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	Jiasheng Jiang <jiashengjiangcool@gmail.com>
+Subject: [PATCH v2 1/3] i2c: lpc2k: Add check for clk_enable()
+Date: Tue,  5 Nov 2024 16:18:18 +0000
+Message-Id: <20241105161820.32512-1-jiashengjiangcool@gmail.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241105_081109_775628_6AAA6511 
-X-CRM114-Status: GOOD (  22.43  )
+X-CRM114-CacheID: sfid-20241105_081825_986794_A62982F8 
+X-CRM114-Status: GOOD (  11.59  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,53 +100,41 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Am Montag, 4. November 2024, 20:06:27 CET schrieb Rob Herring (Arm):
-> The use of of_property_read_bool() for non-boolean properties is
-> deprecated in favor of of_property_present() when testing for property
-> presence.
-> 
-> Signed-off-by: Rob Herring (Arm) <robh@kernel.org>
+Add check for the return value of clk_enable() in order to catch the
+potential exception.
 
-With of_property_present essentially just mapping to of_property_read_bool,
-this change looks correct and should not introduce any functional differences
+Signed-off-by: Jiasheng Jiang <jiashengjiangcool@gmail.com>
+---
+Changelog:
 
-Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+v1 -> v2:
 
-> ---
->  drivers/gpio/gpio-rockchip.c | 2 +-
->  drivers/gpio/gpiolib-of.c    | 2 +-
->  2 files changed, 2 insertions(+), 2 deletions(-)
-> 
-> diff --git a/drivers/gpio/gpio-rockchip.c b/drivers/gpio/gpio-rockchip.c
-> index 365ab947983c..64924bc01591 100644
-> --- a/drivers/gpio/gpio-rockchip.c
-> +++ b/drivers/gpio/gpio-rockchip.c
-> @@ -602,7 +602,7 @@ static int rockchip_gpiolib_register(struct rockchip_pin_bank *bank)
->  	 * files which don't set the "gpio-ranges" property or systems that
->  	 * utilize ACPI the driver has to call gpiochip_add_pin_range().
->  	 */
-> -	if (!of_property_read_bool(bank->of_node, "gpio-ranges")) {
-> +	if (!of_property_present(bank->of_node, "gpio-ranges")) {
->  		struct device_node *pctlnp = of_get_parent(bank->of_node);
->  		struct pinctrl_dev *pctldev = NULL;
->  
-> diff --git a/drivers/gpio/gpiolib-of.c b/drivers/gpio/gpiolib-of.c
-> index 880f1efcaca5..2e537ee979f3 100644
-> --- a/drivers/gpio/gpiolib-of.c
-> +++ b/drivers/gpio/gpiolib-of.c
-> @@ -337,7 +337,7 @@ static void of_gpio_flags_quirks(const struct device_node *np,
->  	 * to determine if the flags should have inverted semantics.
->  	 */
->  	if (IS_ENABLED(CONFIG_SPI_MASTER) && !strcmp(propname, "cs-gpios") &&
-> -	    of_property_read_bool(np, "cs-gpios")) {
-> +	    of_property_present(np, "cs-gpios")) {
->  		u32 cs;
->  		int ret;
->  
-> 
+1. Remove the Fixes tag.
+2. Use dev_err_probe to simplify error handling.
+---
+ drivers/i2c/busses/i2c-lpc2k.c | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
 
-
-
+diff --git a/drivers/i2c/busses/i2c-lpc2k.c b/drivers/i2c/busses/i2c-lpc2k.c
+index 9fb33cbf7419..0fe7d4421a31 100644
+--- a/drivers/i2c/busses/i2c-lpc2k.c
++++ b/drivers/i2c/busses/i2c-lpc2k.c
+@@ -442,8 +442,12 @@ static int i2c_lpc2k_suspend(struct device *dev)
+ static int i2c_lpc2k_resume(struct device *dev)
+ {
+ 	struct lpc2k_i2c *i2c = dev_get_drvdata(dev);
++	int ret;
++
++	ret = clk_enable(i2c->clk);
++	if (ret)
++		return dev_err_probe(dev, ret, "failed to enable clock: %d\n", ret);
+ 
+-	clk_enable(i2c->clk);
+ 	i2c_lpc2k_reset(i2c);
+ 
+ 	return 0;
+-- 
+2.25.1
 
 
 _______________________________________________
