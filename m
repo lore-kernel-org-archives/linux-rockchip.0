@@ -4,65 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 15A6DD1269F
-	for <linux-rockchip@archiver.kernel.org>; Tue,  5 Nov 2024 12:34:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B8933D2B928
+	for <linux-rockchip@archiver.kernel.org>; Tue,  5 Nov 2024 13:29:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Message-ID:MIME-Version:References:
-	In-Reply-To:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=48xwLVchXZI0uppgoSlNFMmpK7pXQuCOicESZZftyKQ=; b=BkduRME/s1NPtO
-	wN6dUTRlMNCCTcM+HKCHDENejL4ByfgP0OutNnzcczG03mBSMXUmnw0hJqhuKt1HzSmdUWLtFCews
-	6ArDwmwvJ8bP29AfX7Ug812qjREe0cmM7df3vWuEZpKeXwXNd7F+0TiXA7oG7ZJE+TkHP7BC+b1Id
-	FKvS7AlKAPSSf23sJ8HP0ipwksRZ/qR/L9CI6BCRke/+n2UoXWBwyfeYJA6LwTPqO6GH3V3ONkLqs
-	P885kmpwgz7wd9YU809OvlgTou9o2hGEqPo9gfUOTL8oI4qsT5xADbWPL7ZoZekbpqkCXOVOgf7PH
-	PUhCsuD2/9ZKMGQczoYA==;
+	List-Owner; bh=LXYWOcLr49dLN3s/Ioy1V9FJYSX0iuPEz6RoeUWvhiA=; b=DEanVkFelbaF5S
+	XLS+v7xFEGuQ9CSbpKwtLqbTZYTDVNjUoV0/ky1DTQPJ5d9wUeZ4msgzTsWJsMvNd4GAxT4nWQ+LS
+	A/5GoGDjM8FzuG6C23kAQmgzPDagYT8q8D18Wdc4E4v0iz4Ke1xz/UPYWYB14U6NfHBavhYVpxRAE
+	ub6KDT0f9+7/eRLWkEpdBN3jhHIauFusejTjrkxbwjUaQ994/rNOvGgdr75ACl3N5+WIcGyt8ItET
+	gU2VwikNq8nykc9L8LNvXghbCDPluhgHNWvyyulPyUGB/pYMRfk7R5/WomdK1rJnt95BgiFGRpFuw
+	Fnmve9JcrlD19zsoO7Xg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t8IlE-0000000H06J-1zqX;
-	Tue, 05 Nov 2024 12:34:16 +0000
-Received: from m16.mail.163.com ([117.135.210.3])
-	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t8IjV-0000000Gzrr-02i6;
-	Tue, 05 Nov 2024 12:32:30 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=Date:From:Subject:Content-Type:MIME-Version:
-	Message-ID; bh=OWyriM+3/blbjVLY5+oEe8o7/tf1VoT5Kih67DFYnqM=; b=h
-	A7w8m2xgcx6sAp3tH4yUZVNZ1P8a5bPe45AOZTIERbgNTOuElO6A6GXHewujNf2J
-	q0wf/i7sj+fL0uG7z8h+JJRLFNILczsLfxYa+xuoJgfVRI9EUh9ooKGnCe402yOQ
-	QSJQ0/aUBlRQJSf6O6Sb7MzmZOI5oxrr84k5EUXXG0=
-Received: from andyshrk$163.com ( [58.22.7.114] ) by
- ajax-webmail-wmsvr-40-141 (Coremail) ; Tue, 5 Nov 2024 20:30:55 +0800 (CST)
-X-Originating-IP: [58.22.7.114]
-Date: Tue, 5 Nov 2024 20:30:55 +0800 (CST)
-From: "Andy Yan" <andyshrk@163.com>
-To: "Piotr Zalewski" <pZ010001011111@proton.me>
-Cc: hjc@rock-chips.com, heiko@sntech.de, andy.yan@rock-chips.com, 
-	maarten.lankhorst@linux.intel.com, mripard@kernel.org, 
-	tzimmermann@suse.de, airlied@gmail.com, simona@ffwll.ch, 
-	dri-devel@lists.freedesktop.org, 
-	linux-arm-kernel@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	skhan@linuxfoundation.org, "Daniel Stone" <daniel@fooishbar.org>, 
-	"Dragan Simic" <dsimic@manjaro.org>, 
-	"Diederik de Haas" <didi.debian@cknow.org>
-Subject: Re:[PATCH v7] rockchip/drm: vop2: add support for gamma LUT
-X-Priority: 3
-X-Mailer: Coremail Webmail Server Version XT5.0.14 build 20240801(9da12a7b)
- Copyright (c) 2002-2024 www.mailtech.cn 163com
-In-Reply-To: <20241101185545.559090-3-pZ010001011111@proton.me>
-References: <20241101185545.559090-3-pZ010001011111@proton.me>
-X-NTES-SC: AL_Qu2YAvSbtkAu4ymdYOkZnEobh+Y5UcK2s/ki2YFXN5k0sibz6BkccnB8E3HH4sO2JgqSvxeyWSJl28JgcIV6XKN8wRB9hENfF8X7hcPXUq0F
+	id 1t8JcT-0000000H7ml-1zKD;
+	Tue, 05 Nov 2024 13:29:17 +0000
+Received: from mx.treblig.org ([2a00:1098:5b::1])
+	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
+	id 1t8JcQ-0000000H7lO-2JgN;
+	Tue, 05 Nov 2024 13:29:15 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=treblig.org
+	; s=bytemarkmx; h=Content-Type:MIME-Version:Message-ID:Subject:From:Date:From
+	:Subject; bh=Rni1On+4mOltPkVhnP9DXSxhrFHE3c1gu9PqntacxGw=; b=EeX+x2dVtB5Y5gUz
+	M57DLCynM4e4fGecj9gyPr31qs0VhBEkxm3oSlszwPnWdtN4jV4jU3EhGglkddUh/TkuOfOybpLrr
+	kq2KR2h/TNshQIdstteci+vqCAa3HWx4BkkjRqw70LFnANzGtQBwucbp4zRsSXDutw6QGE1eyz6K4
+	P3JgyKt4u6xLCm6qRcyQZs+kjpSHakN4fgVmJAfkhQZu7SKe2u6UHhRD/nlLhl1RDR9twty97izRd
+	5YNi9CIf6BxzBZemqQxuXc6IPZwyM0fouFOl+kAUW/BlOySMIOxmBfRHaNZgu0Im+VX4vJrwqrEkE
+	FIPX7T5Y3vkq0aMc5w==;
+Received: from dg by mx.treblig.org with local (Exim 4.96)
+	(envelope-from <dg@treblig.org>)
+	id 1t8JcF-00FY1n-26;
+	Tue, 05 Nov 2024 13:29:03 +0000
+Date: Tue, 5 Nov 2024 13:29:03 +0000
+From: "Dr. David Alan Gilbert" <linux@treblig.org>
+To: hjc@rock-chips.com, heiko@sntech.de, andy.yan@rock-chips.com,
+	maarten.lankhorst@linux.intel.com, mripard@kernel.org,
+	tzimmermann@suse.de, airlied@gmail.com, simona@ffwll.ch
+Cc: dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH] drm/rockchip: cdn-dp: Remove unused functions
+Message-ID: <Zyodn5bfqtqoMTJ3@gallifrey>
+References: <20241005232551.307399-1-linux@treblig.org>
 MIME-Version: 1.0
-Message-ID: <13b9cf0b.b341.192fc4e7fda.Coremail.andyshrk@163.com>
-X-Coremail-Locale: zh_CN
-X-CM-TRANSID: jSgvCgDXP4oEECpnvIMfAA--.6392W
-X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/1tbiMxaOXmcqB5x69AABss
-X-Coremail-Antispam: 1U5529EdanIXcx71UUUUU7vcSsGvfC2KfnxnUU==
+Content-Disposition: inline
+In-Reply-To: <20241005232551.307399-1-linux@treblig.org>
+X-Chocolate: 70 percent or better cocoa solids preferably
+X-Operating-System: Linux/6.1.0-21-amd64 (x86_64)
+X-Uptime: 13:28:51 up 181 days, 42 min,  1 user,  load average: 0.04, 0.01,
+ 0.00
+User-Agent: Mutt/2.2.12 (2023-09-09)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241105_043229_453349_8747E61B 
-X-CRM114-Status: GOOD (  17.38  )
+X-CRM114-CacheID: sfid-20241105_052914_598390_795F2B91 
+X-CRM114-Status: GOOD (  15.73  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,192 +75,106 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-
-Hi Piotr,
-
-At 2024-11-02 03:01:17, "Piotr Zalewski" <pZ010001011111@proton.me> wrote:
->Add support for gamma LUT in VOP2 driver. The implementation was inspired
->by one found in VOP1 driver. Blue and red channels in gamma LUT register
->write were swapped with respect to how gamma LUT values are written in
->VOP1. Gamma LUT port selection was added before the write of new gamma LUT
->table.
->
->If the current SoC is rk356x, check if no other CRTC has gamma LUT enabled
->in atomic_check (only one video port can use gamma LUT at a time) and
->disable gamma LUT before the LUT table write.
->
->If the current SoC isn't rk356x, "seamless" gamma lut update is performed
->similarly to how it was done in the case of RK3399 in VOP1[1]. In seamless
->update gamma LUT disable before the write isn't necessary, check if no
->other CRTC has gamma LUT enabled is also not necessary, different register
->is being used to select gamma LUT port[2] and after setting DSP_LUT_EN bit,
->GAMMA_UPDATE_EN bit is set[3].
->
->Gamma size is set and drm color management is enabled for each video port's
->CRTC except ones which have no associated device.
->
->Patch was tested on RK3566 (Pinetab2). When using userspace tools
->which set eg. constant color temperature no issues were noticed. When
->using userspace tools which adjust eg. color temperature the slight screen
->flicker is visible probably because of gamma LUT disable needed in the
->case of RK356x before gamma LUT write.
->
->Compare behaviour of eg.:
->```
->gammastep -O 3000
->```
->
->To eg.:
->```
->gammastep -l 53:23 -t 6000:3000
->```
->
->In latter case color temperature is slowly adjusted at the beginning which
->causes screen to slighly flicker. Then it adjusts every few seconds which
->also causes slight screen flicker.
->
->[1] https://lists.infradead.org/pipermail/linux-rockchip/2021-October/028132.html
->[2] https://lore.kernel.org/linux-rockchip/48249708-8c05-40d2-a5d8-23de960c5a77@rock-chips.com/
->[3] https://github.com/radxa/kernel/blob/linux-6.1-stan-rkr1/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c#L3437
->
->Helped-by: Daniel Stone <daniel@fooishbar.org>
->Helped-by: Dragan Simic <dsimic@manjaro.org>
->Helped-by: Diederik de Haas <didi.debian@cknow.org>
->Helped-by: Andy Yan <andy.yan@rock-chips.com>
->Signed-off-by: Piotr Zalewski <pZ010001011111@proton.me>
-
-    Reviewed-by: Andy Yan <andyshrk@163.com>
-
->---
->
->Notes:
->    Changes in v7:
->        - Code styling changes only [6].
->
->    Changes in v6:
->        - Move gamma lut write to atomic_flush[4].
->        - In atomic_check if any other than the currently updated CRTC has
->          gamma lut enabled, return -EINVAL [5] (perform a check only if
->          device is rk356x).
->        - Instead of checking for rk3588 to determine seamless gamma
->          update availability check for rk3566/rk3568.
->        - remove null check in vop2_create_crtcs
->        - Move some code to separate functions to increase readability.
->
->    Changes in v5:
->        - Do not trigger full modeset in case seamless gamma lut update
->          isn't possible (eg. rk356x case). It was discovered that with
->          full modeset, userspace tools which adjust color temperature with
->          high frequency cause screen to go black and reduce overall
->          performance. Instead, revert to previous behaviour of lut update
->          happening in atomic_begin or (in case there is a modeset) in
->          atomic_enable. Also, add unrelated to modeset trigger
->          changes/improvements from v4 on top. Improve code readability
->          too.
->
->    Changes in v4:
->        - rework the implementation to better utilize DRM atomic updates[2]
->        - handle the RK3588 case[2][3]
->
->    Changes in v3:
->        - v3 is patch v2 "resend", by mistake the incremental patch was
->        sent in v2
->
->    Changes in v2:
->        - Apply code styling corrections[1]
->        - Move gamma LUT write inside the vop2 lock
->
->    Link to v6: https://lore.kernel.org/linux-rockchip/20241016223558.673145-2-pZ010001011111@proton.me/
->    Link to v5: https://lore.kernel.org/linux-rockchip/20241014222022.571819-4-pZ010001011111@proton.me/
->    Link to v4: https://lore.kernel.org/linux-rockchip/20240815124306.189282-2-pZ010001011111@proton.me/
->    Link to v3: https://lore.kernel.org/linux-rockchip/TkgKVivuaLFLILPY-n3iZo_8KF-daKdqdu-0_e0HP-5Ar_8DAL
->DeNWog2suwWKjX7eomcbGET0KZe7DlzdhK2YM6CbLbeKeFZr-MJzJMtw0=@proton.me/
->    Link to v2: https://lore.kernel.org/linux-rockchip/Hk03HDb6wSSHWtEFZHUye06HR0-9YzP5nCHx9A8_kHzWSZawDr
->U1o1pjEGkCOJFoRg0nTB4BWEv6V0XBOjF4-0Mj44lp2TrjaQfnytzp-Pk=@proton.me/
->    Link to v1: https://lore.kernel.org/linux-rockchip/ZVMxgcrtgHui9fJpnhbN6TSPhofHbbXElh241lImrzzTUl-8We
->jGpaR8CPzYhBgoqe_xj7N6En8Ny7Z-gsCr0kaFs7apwjYV1MBJJLmLHxs=@proton.me/
->
->    [1] https://lore.kernel.org/linux-rockchip/d019761504b540600d9fc7a585d6f95f@manjaro.org
->    [2] https://lore.kernel.org/linux-rockchip/CAPj87rOM=j0zmuWL9frGKV1xzPbJrk=Q9ip7F_HAPYnbCqPouw@mail.g
->mail.com
->    [3] https://lore.kernel.org/linux-rockchip/7d998e4c-e1d3-4e8b-af76-c5bc83b43647@rock-chips.com
->    [4] https://lore.kernel.org/linux-rockchip/7b45f190.452f.1928e41b746.Coremail.andyshrk@163.com/
->    [5] https://lore.kernel.org/linux-rockchip/CAPj87rOdQPsuH9qB_ZLfC9S=cO2noNi1mOGW0ZmQ6SHCugb9=w@mail.g
->mail.com/
->    [6] https://lore.kernel.org/linux-rockchip/6a92e23a.56c.192d5ae32d5.Coremail.andyshrk@163.com/
->
-> drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 190 +++++++++++++++++++
-> drivers/gpu/drm/rockchip/rockchip_drm_vop2.h |   5 +
-> 2 files changed, 195 insertions(+)
->
->diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
->index 9873172e3fd3..58439ee8a52c 100644
->--- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
->+++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
->@@ -278,6 +278,15 @@ static u32 vop2_readl(struct vop2 *vop2, u32 offset)
-> 	return val;
-> }
+* linux@treblig.org (linux@treblig.org) wrote:
+> From: "Dr. David Alan Gilbert" <linux@treblig.org>
 > 
->+static u32 vop2_vp_read(struct vop2_video_port *vp, u32 offset)
->+{
->+	u32 val;
->+
->+	regmap_read(vp->vop2->map, vp->data->offset + offset, &val);
->+
->+	return val;
->+}
->+
-> static void vop2_win_write(const struct vop2_win *win, unsigned int reg, u32 v)
-> {
-> 	regmap_field_write(win->reg[reg], v);
->@@ -998,6 +1007,67 @@ static void vop2_disable(struct vop2 *vop2)
-> 	clk_disable_unprepare(vop2->hclk);
-> }
+> cdn_dp_get_event and cdn_dp_dpcd_write were added in 2017 by commit
+> 1a0f7ed3abe2 ("drm/rockchip: cdn-dp: add cdn DP support for rk3399")
 > 
->+static bool vop2_vp_dsp_lut_is_enabled(struct vop2_video_port *vp)
->+{
->+	u32 dsp_ctrl = vop2_vp_read(vp, RK3568_VP_DSP_CTRL);
->+
->+	return dsp_ctrl & RK3568_VP_DSP_CTRL__DSP_LUT_EN;
->+}
->+
->+static void vop2_vp_dsp_lut_disable(struct vop2_video_port *vp)
->+{
->+	u32 dsp_ctrl = vop2_vp_read(vp, RK3568_VP_DSP_CTRL);
->+
->+	dsp_ctrl &= ~RK3568_VP_DSP_CTRL__DSP_LUT_EN;
->+	vop2_vp_write(vp, RK3568_VP_DSP_CTRL, dsp_ctrl);
->+}
->+
->+static bool vop2_vp_dsp_lut_poll_disabled(struct vop2_video_port *vp)
->+{
->+	u32 dsp_ctrl;
->+	int ret = readx_poll_timeout(vop2_vp_dsp_lut_is_enabled, vp, dsp_ctrl,
->+				!dsp_ctrl, 5, 30 * 1000);
->+	if (ret) {
->+		drm_err(vp->vop2->drm, "display LUT RAM enable timeout!\n");
->+		return false;
->+	}
->+
->+	return true;
->+}
->+
->+static void vop2_vp_dsp_lut_enable(struct vop2_video_port *vp)
->+{
->+	u32 dsp_ctrl = vop2_vp_read(vp, RK3568_VP_DSP_CTRL);
->+
->+	dsp_ctrl |= RK3568_VP_DSP_CTRL__DSP_LUT_EN;
->+	vop2_vp_write(vp, RK3568_VP_DSP_CTRL, dsp_ctrl);
->+}
->+
->+static void vop2_vp_dsp_lut_update_enable(struct vop2_video_port *vp)
->+{
->+	u32 dsp_ctrl = vop2_vp_read(vp, RK3568_VP_DSP_CTRL);
->+
->+	dsp_ctrl |= RK3588_VP_DSP_CTRL__GAMMA_UPDATE_EN;
->+	vop2_vp_write(vp, RK3568_VP_DSP_CTRL, dsp_ctrl);
->+}
->+
+> but unused.
+> Remove them.
+> (Build tested only on x86-64)
+> 
+> Signed-off-by: Dr. David Alan Gilbert <linux@treblig.org>
+
+Ping.
+
+Dave
+
+> ---
+>  drivers/gpu/drm/rockchip/cdn-dp-reg.c | 39 ---------------------------
+>  drivers/gpu/drm/rockchip/cdn-dp-reg.h |  2 --
+>  2 files changed, 41 deletions(-)
+> 
+> diff --git a/drivers/gpu/drm/rockchip/cdn-dp-reg.c b/drivers/gpu/drm/rockchip/cdn-dp-reg.c
+> index 33fb4d05c506..a57cda971f20 100644
+> --- a/drivers/gpu/drm/rockchip/cdn-dp-reg.c
+> +++ b/drivers/gpu/drm/rockchip/cdn-dp-reg.c
+> @@ -244,40 +244,6 @@ int cdn_dp_dpcd_read(struct cdn_dp_device *dp, u32 addr, u8 *data, u16 len)
+>  	return ret;
+>  }
+>  
+> -int cdn_dp_dpcd_write(struct cdn_dp_device *dp, u32 addr, u8 value)
+> -{
+> -	u8 msg[6], reg[5];
+> -	int ret;
+> -
+> -	msg[0] = 0;
+> -	msg[1] = 1;
+> -	msg[2] = (addr >> 16) & 0xff;
+> -	msg[3] = (addr >> 8) & 0xff;
+> -	msg[4] = addr & 0xff;
+> -	msg[5] = value;
+> -	ret = cdn_dp_mailbox_send(dp, MB_MODULE_ID_DP_TX, DPTX_WRITE_DPCD,
+> -				  sizeof(msg), msg);
+> -	if (ret)
+> -		goto err_dpcd_write;
+> -
+> -	ret = cdn_dp_mailbox_validate_receive(dp, MB_MODULE_ID_DP_TX,
+> -					      DPTX_WRITE_DPCD, sizeof(reg));
+> -	if (ret)
+> -		goto err_dpcd_write;
+> -
+> -	ret = cdn_dp_mailbox_read_receive(dp, reg, sizeof(reg));
+> -	if (ret)
+> -		goto err_dpcd_write;
+> -
+> -	if (addr != (reg[2] << 16 | reg[3] << 8 | reg[4]))
+> -		ret = -EINVAL;
+> -
+> -err_dpcd_write:
+> -	if (ret)
+> -		DRM_DEV_ERROR(dp->dev, "dpcd write failed: %d\n", ret);
+> -	return ret;
+> -}
+> -
+>  int cdn_dp_load_firmware(struct cdn_dp_device *dp, const u32 *i_mem,
+>  			 u32 i_size, const u32 *d_mem, u32 d_size)
+>  {
+> @@ -400,11 +366,6 @@ int cdn_dp_event_config(struct cdn_dp_device *dp)
+>  	return ret;
+>  }
+>  
+> -u32 cdn_dp_get_event(struct cdn_dp_device *dp)
+> -{
+> -	return readl(dp->regs + SW_EVENTS0);
+> -}
+> -
+>  int cdn_dp_get_hpd_status(struct cdn_dp_device *dp)
+>  {
+>  	u8 status;
+> diff --git a/drivers/gpu/drm/rockchip/cdn-dp-reg.h b/drivers/gpu/drm/rockchip/cdn-dp-reg.h
+> index 441248b7a79e..68c3dbff1123 100644
+> --- a/drivers/gpu/drm/rockchip/cdn-dp-reg.h
+> +++ b/drivers/gpu/drm/rockchip/cdn-dp-reg.h
+> @@ -459,9 +459,7 @@ int cdn_dp_load_firmware(struct cdn_dp_device *dp, const u32 *i_mem,
+>  int cdn_dp_set_firmware_active(struct cdn_dp_device *dp, bool enable);
+>  int cdn_dp_set_host_cap(struct cdn_dp_device *dp, u8 lanes, bool flip);
+>  int cdn_dp_event_config(struct cdn_dp_device *dp);
+> -u32 cdn_dp_get_event(struct cdn_dp_device *dp);
+>  int cdn_dp_get_hpd_status(struct cdn_dp_device *dp);
+> -int cdn_dp_dpcd_write(struct cdn_dp_device *dp, u32 addr, u8 value);
+>  int cdn_dp_dpcd_read(struct cdn_dp_device *dp, u32 addr, u8 *data, u16 len);
+>  int cdn_dp_get_edid_block(void *dp, u8 *edid,
+>  			  unsigned int block, size_t length);
+> -- 
+> 2.46.2
+> 
+-- 
+ -----Open up your eyes, open up your mind, open up your code -------   
+/ Dr. David Alan Gilbert    |       Running GNU/Linux       | Happy  \ 
+\        dave @ treblig.org |                               | In Hex /
+ \ _________________________|_____ http://www.treblig.org   |_______/
 
 _______________________________________________
 Linux-rockchip mailing list
