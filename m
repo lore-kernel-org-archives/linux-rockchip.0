@@ -4,61 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B8933D2B928
-	for <linux-rockchip@archiver.kernel.org>; Tue,  5 Nov 2024 13:29:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DC7E0D2B931
+	for <linux-rockchip@archiver.kernel.org>; Tue,  5 Nov 2024 14:32:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=LXYWOcLr49dLN3s/Ioy1V9FJYSX0iuPEz6RoeUWvhiA=; b=DEanVkFelbaF5S
-	XLS+v7xFEGuQ9CSbpKwtLqbTZYTDVNjUoV0/ky1DTQPJ5d9wUeZ4msgzTsWJsMvNd4GAxT4nWQ+LS
-	A/5GoGDjM8FzuG6C23kAQmgzPDagYT8q8D18Wdc4E4v0iz4Ke1xz/UPYWYB14U6NfHBavhYVpxRAE
-	ub6KDT0f9+7/eRLWkEpdBN3jhHIauFusejTjrkxbwjUaQ994/rNOvGgdr75ACl3N5+WIcGyt8ItET
-	gU2VwikNq8nykc9L8LNvXghbCDPluhgHNWvyyulPyUGB/pYMRfk7R5/WomdK1rJnt95BgiFGRpFuw
-	Fnmve9JcrlD19zsoO7Xg==;
+	List-Owner; bh=jweJz44ysUJutfKvPxYRpPpVNX8JYNlRsglBiQjzUcQ=; b=R4Mr4ZPAZE3Y6R
+	b4LeUnOlcG75hmW9187BnI0vkBwTgV+SDD2SIPbpSeUA6zRl9K3TZjsZsWqPfGOtSTaREIto/YaH6
+	15g89i5CmHRtNcQ2ajQRREbb6NrLPhqTKq8kJbysWe6Lk1yYtMn0BZoRh8ybe/P0Hv1BLoNoo4bYV
+	DY2tUC2CfC5sJZpwTN07ttQuQxzIP/Zbe0kMeO0AEpOsrZLnqShXoW8Ngp+BEiv4o2XSehsepq07i
+	/XZI1Qv8D57Wyaz+KCYJWeLXdWpRQVWWx8m+pu/nracKSePOa2sb6btlR/91R4omsiAzSYEVaI/j2
+	VnTz7ZuRW/eWnS+GD23g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t8JcT-0000000H7ml-1zKD;
-	Tue, 05 Nov 2024 13:29:17 +0000
-Received: from mx.treblig.org ([2a00:1098:5b::1])
+	id 1t8Kbn-0000000HHY0-23dG;
+	Tue, 05 Nov 2024 14:32:39 +0000
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t8JcQ-0000000H7lO-2JgN;
-	Tue, 05 Nov 2024 13:29:15 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=treblig.org
-	; s=bytemarkmx; h=Content-Type:MIME-Version:Message-ID:Subject:From:Date:From
-	:Subject; bh=Rni1On+4mOltPkVhnP9DXSxhrFHE3c1gu9PqntacxGw=; b=EeX+x2dVtB5Y5gUz
-	M57DLCynM4e4fGecj9gyPr31qs0VhBEkxm3oSlszwPnWdtN4jV4jU3EhGglkddUh/TkuOfOybpLrr
-	kq2KR2h/TNshQIdstteci+vqCAa3HWx4BkkjRqw70LFnANzGtQBwucbp4zRsSXDutw6QGE1eyz6K4
-	P3JgyKt4u6xLCm6qRcyQZs+kjpSHakN4fgVmJAfkhQZu7SKe2u6UHhRD/nlLhl1RDR9twty97izRd
-	5YNi9CIf6BxzBZemqQxuXc6IPZwyM0fouFOl+kAUW/BlOySMIOxmBfRHaNZgu0Im+VX4vJrwqrEkE
-	FIPX7T5Y3vkq0aMc5w==;
-Received: from dg by mx.treblig.org with local (Exim 4.96)
-	(envelope-from <dg@treblig.org>)
-	id 1t8JcF-00FY1n-26;
-	Tue, 05 Nov 2024 13:29:03 +0000
-Date: Tue, 5 Nov 2024 13:29:03 +0000
-From: "Dr. David Alan Gilbert" <linux@treblig.org>
-To: hjc@rock-chips.com, heiko@sntech.de, andy.yan@rock-chips.com,
-	maarten.lankhorst@linux.intel.com, mripard@kernel.org,
-	tzimmermann@suse.de, airlied@gmail.com, simona@ffwll.ch
-Cc: dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] drm/rockchip: cdn-dp: Remove unused functions
-Message-ID: <Zyodn5bfqtqoMTJ3@gallifrey>
-References: <20241005232551.307399-1-linux@treblig.org>
+	id 1t8KIs-0000000HDns-0Mzy;
+	Tue, 05 Nov 2024 14:13:07 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id 9B47BA432A0;
+	Tue,  5 Nov 2024 14:11:09 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id DC80EC4CECF;
+	Tue,  5 Nov 2024 14:13:03 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1730815984;
+	bh=o6Aw4cLXm/9l1y3eKvOCg9DO8JdisefQjjjqhLByyZI=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=of0sFt/wAowGigdCPNv+Qea29vcJbSjXU1qgp5ubsj1sJS6/DQVQ+8QGa+TB1Pvcj
+	 3KHR91v+HxumeQaBEK7eNhyAE/cEfVyZnKYq1uRRStbXwuprBPPeqvifajQoLfTYcb
+	 wzFnE5jb/xi84kZQ4d8JziHC1yP9uv51JVP6dXhE8wF4lBr5CUnw/IF2XCCUyYfHXt
+	 amKoZpY00RwnEyxZWIYoMlhl1iB22FCEufEBNZZsLdu4hU68Xax0WtDgROIhhUwhk4
+	 HORpbbOBekQGbYrXFpPyneK8ZeFZFm/0fCkUXvAwH1GWTBsvlrLn2pS4MLwLToCslW
+	 vKbz2bcZ0L43A==
+Date: Tue, 5 Nov 2024 15:13:00 +0100
+From: Andi Shyti <andi.shyti@kernel.org>
+To: Jiasheng Jiang <jiashengjiangcool@gmail.com>
+Cc: rmk@dyn-67.arm.linux.org.uk, max.schwarz@online.de, 
+	dianders@chromium.org, david.wu@rock-chips.com, heiko@sntech.de, vz@mleia.com, 
+	wsa@kernel.org, manabian@gmail.com, linux-arm-kernel@lists.infradead.org, 
+	linux-rockchip@lists.infradead.org, linux-i2c@vger.kernel.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH 2/3] i2c: pxa: Add check for clk_enable() and
+ clk_prepare_enable()
+Message-ID: <pyutqiut5yascxkwrv5ozrwdbmb4k4n2vu5jiia3fpgkra4up2@u7nvqpdscb4n>
+References: <20241104214310.6048-1-jiashengjiangcool@gmail.com>
+ <20241104214310.6048-2-jiashengjiangcool@gmail.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20241005232551.307399-1-linux@treblig.org>
-X-Chocolate: 70 percent or better cocoa solids preferably
-X-Operating-System: Linux/6.1.0-21-amd64 (x86_64)
-X-Uptime: 13:28:51 up 181 days, 42 min,  1 user,  load average: 0.04, 0.01,
- 0.00
-User-Agent: Mutt/2.2.12 (2023-09-09)
+In-Reply-To: <20241104214310.6048-2-jiashengjiangcool@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241105_052914_598390_795F2B91 
-X-CRM114-Status: GOOD (  15.73  )
+X-CRM114-CacheID: sfid-20241105_061306_211002_CEC90682 
+X-CRM114-Status: GOOD (  17.11  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,106 +75,41 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-* linux@treblig.org (linux@treblig.org) wrote:
-> From: "Dr. David Alan Gilbert" <linux@treblig.org>
-> 
-> cdn_dp_get_event and cdn_dp_dpcd_write were added in 2017 by commit
-> 1a0f7ed3abe2 ("drm/rockchip: cdn-dp: add cdn DP support for rk3399")
-> 
-> but unused.
-> Remove them.
-> (Build tested only on x86-64)
-> 
-> Signed-off-by: Dr. David Alan Gilbert <linux@treblig.org>
+Hi Jiasheng,
 
-Ping.
+On Mon, Nov 04, 2024 at 09:43:09PM +0000, Jiasheng Jiang wrote:
+> Add check for the return values of clk_enable() and clk_prepare_enable()
+> in order to catch the potential exceptions.
+> 
+> Fixes: e7d48fa2b5fb ("[I2C] pxa: provide late suspend and early resume hooks")
+> Fixes: c3cef3f3c07b ("[ARM] pxa: update pxa i2c driver to use clk support")
 
-Dave
+I don't think we need the fixes tag here and nowhere else in this
+series.
 
+> Signed-off-by: Jiasheng Jiang <jiashengjiangcool@gmail.com>
 > ---
->  drivers/gpu/drm/rockchip/cdn-dp-reg.c | 39 ---------------------------
->  drivers/gpu/drm/rockchip/cdn-dp-reg.h |  2 --
->  2 files changed, 41 deletions(-)
+>  drivers/i2c/busses/i2c-pxa.c | 14 ++++++++++++--
+>  1 file changed, 12 insertions(+), 2 deletions(-)
 > 
-> diff --git a/drivers/gpu/drm/rockchip/cdn-dp-reg.c b/drivers/gpu/drm/rockchip/cdn-dp-reg.c
-> index 33fb4d05c506..a57cda971f20 100644
-> --- a/drivers/gpu/drm/rockchip/cdn-dp-reg.c
-> +++ b/drivers/gpu/drm/rockchip/cdn-dp-reg.c
-> @@ -244,40 +244,6 @@ int cdn_dp_dpcd_read(struct cdn_dp_device *dp, u32 addr, u8 *data, u16 len)
->  	return ret;
->  }
+> diff --git a/drivers/i2c/busses/i2c-pxa.c b/drivers/i2c/busses/i2c-pxa.c
+> index 4d76e71cdd4b..1118a7f5c6bf 100644
+> --- a/drivers/i2c/busses/i2c-pxa.c
+> +++ b/drivers/i2c/busses/i2c-pxa.c
+> @@ -1503,7 +1503,11 @@ static int i2c_pxa_probe(struct platform_device *dev)
+>  				i2c->adap.name);
+>  	}
 >  
-> -int cdn_dp_dpcd_write(struct cdn_dp_device *dp, u32 addr, u8 value)
-> -{
-> -	u8 msg[6], reg[5];
-> -	int ret;
-> -
-> -	msg[0] = 0;
-> -	msg[1] = 1;
-> -	msg[2] = (addr >> 16) & 0xff;
-> -	msg[3] = (addr >> 8) & 0xff;
-> -	msg[4] = addr & 0xff;
-> -	msg[5] = value;
-> -	ret = cdn_dp_mailbox_send(dp, MB_MODULE_ID_DP_TX, DPTX_WRITE_DPCD,
-> -				  sizeof(msg), msg);
-> -	if (ret)
-> -		goto err_dpcd_write;
-> -
-> -	ret = cdn_dp_mailbox_validate_receive(dp, MB_MODULE_ID_DP_TX,
-> -					      DPTX_WRITE_DPCD, sizeof(reg));
-> -	if (ret)
-> -		goto err_dpcd_write;
-> -
-> -	ret = cdn_dp_mailbox_read_receive(dp, reg, sizeof(reg));
-> -	if (ret)
-> -		goto err_dpcd_write;
-> -
-> -	if (addr != (reg[2] << 16 | reg[3] << 8 | reg[4]))
-> -		ret = -EINVAL;
-> -
-> -err_dpcd_write:
-> -	if (ret)
-> -		DRM_DEV_ERROR(dp->dev, "dpcd write failed: %d\n", ret);
-> -	return ret;
-> -}
-> -
->  int cdn_dp_load_firmware(struct cdn_dp_device *dp, const u32 *i_mem,
->  			 u32 i_size, const u32 *d_mem, u32 d_size)
->  {
-> @@ -400,11 +366,6 @@ int cdn_dp_event_config(struct cdn_dp_device *dp)
->  	return ret;
->  }
->  
-> -u32 cdn_dp_get_event(struct cdn_dp_device *dp)
-> -{
-> -	return readl(dp->regs + SW_EVENTS0);
-> -}
-> -
->  int cdn_dp_get_hpd_status(struct cdn_dp_device *dp)
->  {
->  	u8 status;
-> diff --git a/drivers/gpu/drm/rockchip/cdn-dp-reg.h b/drivers/gpu/drm/rockchip/cdn-dp-reg.h
-> index 441248b7a79e..68c3dbff1123 100644
-> --- a/drivers/gpu/drm/rockchip/cdn-dp-reg.h
-> +++ b/drivers/gpu/drm/rockchip/cdn-dp-reg.h
-> @@ -459,9 +459,7 @@ int cdn_dp_load_firmware(struct cdn_dp_device *dp, const u32 *i_mem,
->  int cdn_dp_set_firmware_active(struct cdn_dp_device *dp, bool enable);
->  int cdn_dp_set_host_cap(struct cdn_dp_device *dp, u8 lanes, bool flip);
->  int cdn_dp_event_config(struct cdn_dp_device *dp);
-> -u32 cdn_dp_get_event(struct cdn_dp_device *dp);
->  int cdn_dp_get_hpd_status(struct cdn_dp_device *dp);
-> -int cdn_dp_dpcd_write(struct cdn_dp_device *dp, u32 addr, u8 value);
->  int cdn_dp_dpcd_read(struct cdn_dp_device *dp, u32 addr, u8 *data, u16 len);
->  int cdn_dp_get_edid_block(void *dp, u8 *edid,
->  			  unsigned int block, size_t length);
-> -- 
-> 2.46.2
-> 
--- 
- -----Open up your eyes, open up your mind, open up your code -------   
-/ Dr. David Alan Gilbert    |       Running GNU/Linux       | Happy  \ 
-\        dave @ treblig.org |                               | In Hex /
- \ _________________________|_____ http://www.treblig.org   |_______/
+> -	clk_prepare_enable(i2c->clk);
+> +	ret = clk_prepare_enable(i2c->clk);
+> +	if (ret) {
+> +		dev_err(&dev->dev, "failed to enable clock: %d\n", ret);
+
+please use dev_err_probe here.
+
+Thanks for your patch.
+
+Andi
 
 _______________________________________________
 Linux-rockchip mailing list
