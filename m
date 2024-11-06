@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 077CED44D54
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CAAA2D44D5B
 	for <linux-rockchip@archiver.kernel.org>; Wed,  6 Nov 2024 13:17:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,19 +12,19 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=axUeqv/CW0NbVOn75j5PzyiomrkkwK+9VbLeL1bB/sU=; b=3mPEmqiDFrXURl
-	6BPspmzGkLuusDhUdPdwJahvwOMSRu130iFKCiCgyy2UeMerIDpEKN6Je6x4pPYJj778jatpzFbuK
-	rBfZAWsuRXtbhJztjf2qki0DXEQsemRW6oYXGPp0iToIWchtfdiXny8TOHf4JpG1bYSH9BFpQ0lvl
-	s4uXedqcM5hg7IX/D7ZjVne5+uYp0damPabW0dosakYX25tbCBpdZKBkzxFHylC6iprn7aNjDI7Eh
-	k3WOIDM1iTmU0N/GQwqz3eqswjxSwljzKARVPaGsxj/kBGTBEdct80FlhWcPoXfo51u9HoUgrNcVC
-	3YX5FxK9X+1jkHtahFtQ==;
+	List-Owner; bh=N4KHu3h4HiN2uSr9Z2ytuDgYL/dCD2Fz9IyAEdm5qJE=; b=Nx03+bBKRdyaBy
+	XsJT7L6XpQgXY+zaUL96uN0VnZOWR+eJ00PWsPpyM+6qQ9wQSwDurIolumpa9EW417ssptkXRAgSu
+	QWkqwQcDP4edn5QE3QcORtbZJTh7qa/Z+umbcw9MmsLZCNe3lDyi9zBkUwoHGH2Gb19v9dBR6QdYK
+	K8wH6t0ZgWRyUEqm3Na2fXY1uM+TqumAgIHPvpBIyU2HwVEhPn5sFZ5jMI1CXVRN51fuX3O7YNfJn
+	nylp8YvtnTrHtihRmLHwmN7NO5yQ8y3GEfFCczHsznkvhprF0EFYf3BOuFRe+5s67Qf5EvkQR+0iC
+	un4a4X6OecLr/DuXDpxQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t8fuY-00000003Nk7-2npB;
-	Wed, 06 Nov 2024 13:17:26 +0000
+	id 1t8fub-00000003Nms-1yiV;
+	Wed, 06 Nov 2024 13:17:29 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t8fIX-00000003F8H-1NGN;
+	id 1t8fIX-00000003F8P-30C4;
 	Wed, 06 Nov 2024 12:38:20 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Transfer-Encoding:MIME-Version:References:
@@ -32,17 +32,17 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
 	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=JPM/CaXFyY/a4sEGw6rIBS5Qu/8VC3MAZ527UKrKvBE=; b=0XvfO7h+50cRfYq5ugr8nVZedy
-	pIwW6k5wH1Vnc4pCdF9kLUUTZ8MTVKLCFxscstV04UZJDLe9ZJInOxn1JwLY3GbUk8gfMchWlUSvE
-	HVJXfgA65vKX2++sthIS4QK6JPIsegsLM7TdAauX4irbk/rpPutUfzto1gS6B1xvopk3ChMurcjfl
-	vOF5o0tEs5VGWjkfzQxmWRsuqXfeQe8UapKLb/kOiP7naj7KdMg5k0DdFpNIOTGGxL6t8+TkcQJLJ
-	7f7a1akkSDqqRwVLG6U7WWoAZj4D7RieONfMmq1S407nchi9veuMjbMtcnDUFAkkuVTUCEPZi55hc
-	ZqoM/C2Q==;
+	bh=nd8WDBdT4JcyHkbixH6x2sPY4R14WnZRTUvb0ld1FwA=; b=PqnMfRssaNkWIHW6vVO88Pw+lg
+	GgbHjce6zAZnmMoqiX9JgT/2VEghfg22EfjNpIFpe1xbsBTKEFXWnyqf319oOZTNPzcgzSiRh8QtQ
+	VY0fX6QF+m4+oXZE5JW+nmua6nbIfd2ou0Dq2WFcH7gvm2wJyrhklRKXY02kzihusbUBRsnxxkj/G
+	TfeyOqUe4OpJMmbJ/Jw52vhaSw3koKfPOgSaPnMHRQS98HDXfe/oVKMk/MJwIAm77W4LY6M8QfcjE
+	CNwf96hPOlQ3dxfB1eS3m40gBQLTqYtW1t7P60SesS1+RT22FT6dDNxr4cNjGkpnPuLquDjB+XKxS
+	3d/zmOBw==;
 Received: from i53875b28.versanet.de ([83.135.91.40] helo=localhost.localdomain)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1t8fIV-0007A8-TR; Wed, 06 Nov 2024 13:38:07 +0100
+	id 1t8fIW-0007A8-8i; Wed, 06 Nov 2024 13:38:08 +0100
 From: Heiko Stuebner <heiko@sntech.de>
 To: heiko@sntech.de
 Cc: quentin.schulz@cherry.de,
@@ -51,15 +51,15 @@ Cc: quentin.schulz@cherry.de,
 	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	Heiko Stuebner <heiko.stuebner@cherry.de>
-Subject: [PATCH 1/3] arm64: dts: rockchip: add mipi dcphy nodes to rk3588
-Date: Wed,  6 Nov 2024 13:37:56 +0100
-Message-ID: <20241106123758.423584-2-heiko@sntech.de>
+Subject: [PATCH 2/3] arm64: dts: rockchip: add dsi controller nodes on rk3588
+Date: Wed,  6 Nov 2024 13:37:57 +0100
+Message-ID: <20241106123758.423584-3-heiko@sntech.de>
 X-Mailer: git-send-email 2.45.2
 In-Reply-To: <20241106123758.423584-1-heiko@sntech.de>
 References: <20241106123758.423584-1-heiko@sntech.de>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241106_043809_580448_8228875E 
+X-CRM114-CacheID: sfid-20241106_043809_872540_704A0D23 
 X-CRM114-Status: GOOD (  12.73  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -79,74 +79,81 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Heiko Stuebner <heiko.stuebner@cherry.de>
 
-Add the two MIPI-DC-phy nodes to the RK3588, that will be used by the
-DSI2 controllers and hopefully in some future also for camera input.
+The RK3588 comes with two DSI2 controllers based on a new Synopsis IP.
+Add the necessary nodes for them.
 
 Signed-off-by: Heiko Stuebner <heiko.stuebner@cherry.de>
 ---
- arch/arm64/boot/dts/rockchip/rk3588-base.dtsi | 42 +++++++++++++++++++
- 1 file changed, 42 insertions(+)
+ arch/arm64/boot/dts/rockchip/rk3588-base.dtsi | 56 +++++++++++++++++++
+ 1 file changed, 56 insertions(+)
 
 diff --git a/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
-index 51ba7563f7d0..8c95c56e8097 100644
+index 8c95c56e8097..6d31de2a6930 100644
 --- a/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
 +++ b/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
-@@ -576,6 +576,16 @@ sys_grf: syscon@fd58c000 {
- 		reg = <0x0 0xfd58c000 0x0 0x1000>;
- 	};
- 
-+	mipidcphy0_grf: syscon@fd5e8000 {
-+		compatible = "rockchip,rk3588-dcphy-grf", "syscon";
-+		reg = <0x0 0xfd5e8000 0x0 0x4000>;
-+	};
-+
-+	mipidcphy1_grf: syscon@fd5ec000 {
-+		compatible = "rockchip,rk3588-dcphy-grf", "syscon";
-+		reg = <0x0 0xfd5ec000 0x0 0x4000>;
-+	};
-+
- 	vop_grf: syscon@fd5a4000 {
- 		compatible = "rockchip,rk3588-vop-grf", "syscon";
- 		reg = <0x0 0xfd5a4000 0x0 0x2000>;
-@@ -2878,6 +2888,38 @@ usbdp_phy0: phy@fed80000 {
+@@ -1414,6 +1414,62 @@ i2s9_8ch: i2s@fddfc000 {
  		status = "disabled";
  	};
  
-+	mipidcphy0: phy@feda0000 {
-+		compatible = "rockchip,rk3588-mipi-dcphy";
-+		reg = <0x0 0xfeda0000 0x0 0x10000>;
-+		rockchip,grf = <&mipidcphy0_grf>;
-+		clocks = <&cru PCLK_MIPI_DCPHY0>,
-+			 <&cru CLK_USBDPPHY_MIPIDCPPHY_REF>;
-+		clock-names = "pclk", "ref";
-+		resets = <&cru SRST_M_MIPI_DCPHY0>,
-+			 <&cru SRST_P_MIPI_DCPHY0>,
-+			 <&cru SRST_P_MIPI_DCPHY0_GRF>,
-+			 <&cru SRST_S_MIPI_DCPHY0>;
-+		reset-names = "m_phy", "apb", "grf", "s_phy";
-+		#phy-cells = <0>;
++	dsi0: dsi@fde20000 {
++		compatible = "rockchip,rk3588-mipi-dsi2";
++		reg = <0x0 0xfde20000 0x0 0x10000>;
++		interrupts = <GIC_SPI 167 IRQ_TYPE_LEVEL_HIGH 0>;
++		clocks = <&cru PCLK_DSIHOST0>, <&cru CLK_DSIHOST0>;
++		clock-names = "pclk", "sys";
++		resets = <&cru SRST_P_DSIHOST0>;
++		reset-names = "apb";
++		power-domains = <&power RK3588_PD_VOP>;
++		phys = <&mipidcphy0>;
++		phy-names = "dcphy";
++		rockchip,grf = <&vop_grf>;
 +		status = "disabled";
++
++		ports {
++			#address-cells = <1>;
++			#size-cells = <0>;
++
++			dsi0_in: port@0 {
++				reg = <0>;
++			};
++
++			dsi0_out: port@1 {
++				reg = <1>;
++			};
++		};
 +	};
 +
-+	mipidcphy1: phy@fedb0000 {
-+		compatible = "rockchip,rk3588-mipi-dcphy";
-+		reg = <0x0 0xfedb0000 0x0 0x10000>;
-+		rockchip,grf = <&mipidcphy1_grf>;
-+		clocks = <&cru PCLK_MIPI_DCPHY1>,
-+			 <&cru CLK_USBDPPHY_MIPIDCPPHY_REF>;
-+		clock-names = "pclk", "ref";
-+		resets = <&cru SRST_M_MIPI_DCPHY1>,
-+			 <&cru SRST_P_MIPI_DCPHY1>,
-+			 <&cru SRST_P_MIPI_DCPHY1_GRF>,
-+			 <&cru SRST_S_MIPI_DCPHY1>;
-+		reset-names = "m_phy", "apb", "grf", "s_phy";
-+		#phy-cells = <0>;
++	dsi1: dsi@fde30000 {
++		compatible = "rockchip,rk3588-mipi-dsi2";
++		reg = <0x0 0xfde30000 0x0 0x10000>;
++		interrupts = <GIC_SPI 168 IRQ_TYPE_LEVEL_HIGH 0>;
++		clocks = <&cru PCLK_DSIHOST1>, <&cru CLK_DSIHOST1>;
++		clock-names = "pclk", "sys";
++		resets = <&cru SRST_P_DSIHOST1>;
++		reset-names = "apb";
++		power-domains = <&power RK3588_PD_VOP>;
++		phys = <&mipidcphy1>;
++		phy-names = "dcphy";
++		rockchip,grf = <&vop_grf>;
 +		status = "disabled";
++
++		ports {
++			#address-cells = <1>;
++			#size-cells = <0>;
++
++			dsi1_in: port@0 {
++				reg = <0>;
++			};
++
++			dsi1_out: port@1 {
++				reg = <1>;
++			};
++		};
 +	};
 +
- 	combphy0_ps: phy@fee00000 {
- 		compatible = "rockchip,rk3588-naneng-combphy";
- 		reg = <0x0 0xfee00000 0x0 0x100>;
+ 	hdmi0: hdmi@fde80000 {
+ 		compatible = "rockchip,rk3588-dw-hdmi-qp";
+ 		reg = <0x0 0xfde80000 0x0 0x20000>;
 -- 
 2.45.2
 
