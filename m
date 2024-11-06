@@ -4,63 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7CDECD44D42
-	for <linux-rockchip@archiver.kernel.org>; Wed,  6 Nov 2024 10:34:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CEB65D44D51
+	for <linux-rockchip@archiver.kernel.org>; Wed,  6 Nov 2024 11:36:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=OSU3biqgeoX7jPrPYhj/BpzdoGbjUp96JsSBSf6OIqg=; b=Hdc2BKRL2agAWX
-	4K84keAaCF6OHT4nQqtUrEdVd9HvLHJvxAQBAcG4Uu0FONiwVwhPJ3CXy+4RcVav08/bk3WbI7M3C
-	cVa7HHgTxmdduZmn3LiSoqm5SHp61RWIskrURqFj8IXWOBlKDKZqXSP5XUFIoFWKicuWYtFmaUZuq
-	RQUfow79wNGh06EvcHWoc24pXSCny0qxYgbO4qAKxJicvr/Q0Fi2ZqIvlovjAAygCurvuGAPAWL9U
-	nZGbRdJhTeFvqxZBwJTRe6NhYV6aRm8MtEOfd15cQHBFPgxIi9I/iInNnvPCejBqXaUvtlLr9U5kO
-	xW1xlJaDTZXmfVjaEVew==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
+	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=L0j0oqATKX+3pryTkJ5K05GPhCVFRzHUdec4cbXOIMs=; b=dMAk3z6rhuox/SQpaBeg5cJ1Nt
+	JP+FkMjq4OHUh0zKwlQUF7U43IdolmTIBQfKPHKLZYreTvpMcZ1xRjWRnyxd1W8rCvQequCa7cF1+
+	Lgx2lwy/bkyHPGHF3WPQjVhm6rOb40R0xZq8GHkopf/JbuFr2wpOGYNj4YbdGs4qvBpS47QQQZxs/
+	nuD+wQsaEBbVfwWGa1lbl4JarjoQi7nNsm5016hewbekI9BdQN3DqphcZElsyAuOucd6TfM52yrP2
+	vHpM2ZjPvO3nOEnh12jdXzDTvIiRuFjAkfDQX27g9UXk8hkP+kXMX1g2qoJrRiQk5DP8cBRuBJKuv
+	hl9JDdaw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t8dMZ-00000002l02-3kKi;
-	Wed, 06 Nov 2024 10:34:11 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1t8eKb-00000002wRV-3YFl;
+	Wed, 06 Nov 2024 11:36:13 +0000
+Received: from mail.manjaro.org ([2a01:4f8:c0c:51f3::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t8caB-00000002bS3-0GHf;
-	Wed, 06 Nov 2024 09:44:12 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
-	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=55zvySz6mffWQ+++ZbZ/oF+SBTtaOs4T74NYodmXzqA=; b=D4LdaYL70wPDH+ZYvWP1kv/GRX
-	86a/H/2vzVYvjhlAmVf5xv5Pzb2T6Myj9Q2aNBx/kDUYkMOFIXvJY1pjNXQh/pYn0xxnPGVE8T9GG
-	lBp2unVeZVU/h83ROlppwJ4hUcwhqp3i1EdbRdnaWNsXFS0sff+CYBSSTgUkPqZzGPcacaSlGZPum
-	PKyqSfOIZ6VbeiQjC68KiNA7VyJsEoRZY+A3tc52HmlSb5oe6sr6PPz2VpRvsK/fMZ50AJpgyxK7v
-	yeGZIDtJOBOEit6X0qRZ1Blr19HP6iWXZ3X2O5SxDZwJ9NdF1mmNIVNKqWyJnC+7Vfy1lP9g8AwO6
-	MR9oZnAQ==;
-Received: from i53875b28.versanet.de ([83.135.91.40] helo=diego.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1t8ca4-000639-VL; Wed, 06 Nov 2024 10:44:05 +0100
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: vkoul@kernel.org, kishon@kernel.org, robh@kernel.org, krzk+dt@kernel.org,
- conor+dt@kernel.org, Frank Wang <frawang.cn@gmail.com>
-Cc: linux-phy@lists.infradead.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-rockchip@lists.infradead.org, william.wu@rock-chips.com,
- tim.chen@rock-chips.com, Kever Yang <kever.yang@rock-chips.com>,
- Frank Wang <frank.wang@rock-chips.com>
-Subject: Re: [RESEND PATCH v3 2/2] phy: rockchip-naneng-combo: add rk3576 support
-Date: Wed, 06 Nov 2024 10:44:04 +0100
-Message-ID: <1809753.VLH7GnMWUR@diego>
-In-Reply-To: <20241106021357.19782-2-frawang.cn@gmail.com>
-References: <20241106021357.19782-1-frawang.cn@gmail.com>
- <20241106021357.19782-2-frawang.cn@gmail.com>
+	id 1t8dRG-00000002lr7-0WAc;
+	Wed, 06 Nov 2024 10:39:03 +0000
 MIME-Version: 1.0
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
+	t=1730889539;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=8MHWiUN+hvZJqLkzW7YR9dn2TMo/r1ycB79pCW3nHhQ=;
+	b=ZpaYPOovhJrW7WRmAad0cBiYuAVwYFCfh7Q+1vQRonZIIGdRHJET+NX/BoOiOBaCj1Z3Rj
+	iIEk7q+V4CPqnbfxZP355dNGim7xBFY3bbgUJlX3Uro/RcGR2gdsBndLqiaWNVnFkUTirY
+	Ja8gHV7nRVlwWXiBXdlgtTxGcwoM9bAJy7a6Ws35djO1VmKy76lvZWGBN45IPopWfRkJiL
+	nbtu1nwj8sESAT+d2YGrSG19B1Th395mGvi2ppD2YbaozIKgbVGCGBKSd1+QuaSrVVAN2e
+	EEV+P3Ifhooi65+YC2r/5TTO/K2wgH3vAi6bf1TLGIjdR55QVfGdtVRanNFutw==
+Date: Wed, 06 Nov 2024 11:38:59 +0100
+From: Dragan Simic <dsimic@manjaro.org>
+To: Quentin Schulz <quentin.schulz@cherry.de>
+Cc: linux-rockchip@lists.infradead.org, heiko@sntech.de,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ devicetree@vger.kernel.org, robh@kernel.org, krzk+dt@kernel.org,
+ conor+dt@kernel.org, alchark@gmail.com
+Subject: Re: [PATCH v2] arm64: dts: rockchip: Add OPP voltage ranges to RK3399
+ OP1 SoC dtsi
+In-Reply-To: <f6bb3387-4396-45d4-9cb4-594d58095510@cherry.de>
+References: <dbee35c002bda99e44f8533623d94f202a60da95.1730881777.git.dsimic@manjaro.org>
+ <f6bb3387-4396-45d4-9cb4-594d58095510@cherry.de>
+Message-ID: <afbc922d80e2c122bd412782ee882ec1@manjaro.org>
+X-Sender: dsimic@manjaro.org
+Authentication-Results: ORIGINATING;
+	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241106_014411_134713_3F2C9B57 
-X-CRM114-Status: GOOD (  10.85  )
+X-CRM114-CacheID: sfid-20241106_023902_369740_4B6D7256 
+X-CRM114-Status: GOOD (  17.02  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,28 +69,60 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Am Mittwoch, 6. November 2024, 03:13:57 CET schrieb Frank Wang:
-> From: Kever Yang <kever.yang@rock-chips.com>
+Hello Quentin,
+
+On 2024-11-06 10:32, Quentin Schulz wrote:
+> On 11/6/24 9:33 AM, Dragan Simic wrote:
+>> Add support for voltage ranges to the CPU, GPU and DMC OPPs defined in 
+>> the
+>> SoC dtsi for Rockchip OP1, as a variant of the Rockchip RK3399.  This 
+>> may be
+>> useful if there are any OP1-based boards whose associated voltage 
+>> regulators
+>> are unable to deliver the exact voltages; otherwise, it causes no 
+>> functional
+>> changes to the resulting OPP voltages at runtime.
+>> 
+>> These changes cannot cause stability issues or any kind of damage, 
+>> because
+>> it's perfectly safe to use the highest voltage from an OPP group for 
+>> each OPP
+>> in the same group.  The only possible negative effect of using higher 
+>> voltages
+>> is wasted energy in form of some additionally generated heat.
+>> 
+>> Reported-by: Quentin Schulz <quentin.schulz@cherry.de>
 > 
-> Rockchip RK3576 integrates two naneng-combo PHY, PHY0 is used for
-> PCIE and SATA, PHY1 is used for PCIE, SATA and USB3.
+> Well, I merely highlighted that the voltage was different on OP1
+> compared to RK3399 for the 600MHz OPP :)
+
+I just wanted to somehow acknowledge that you made me work on
+this patch, so to speak. :)
+
+> So... If there's ONE SoC I'm pretty sure is working as expected it's
+> the OP1 fitted on the Gru Chromebooks with the ChromiumOS kernel fork
+> (though yes, I believe all Gru CB are EoL since August 2023). In the
+> 6.1 kernel fork, there's also no range:
+> https://chromium.googlesource.com/chromiumos/third_party/kernel/+/refs/heads/chromeos-6.1/arch/arm64/boot/dts/rockchip/rk3399-op1-opp.dtsi
 > 
-> This adds device specific data support.
-> 
-> Signed-off-by: Kever Yang <kever.yang@rock-chips.com>
-> Signed-off-by: William Wu <william.wu@rock-chips.com>
-> Signed-off-by: Frank Wang <frank.wang@rock-chips.com>
+> So not sure we need to handle theoretical cases here. Will let
+> maintainers decide on that one. FWIW, there are two other OP1 devices,
+> the RockPi4A+ and RockPi4B+ which do not change the OPP either.
 
-With less magic values, everything looks a bit nicer now, thanks a lot.
+The thing is that adding the voltage ranges won't change anything
+for the devices whose voltage regulators are capable of providing
+the exact OPP voltages.  They'll still be set to the exact values
+as before these changes, so there's no worry about breaking anything,
+while we make the things a bit more consistent this way.
 
-Reviewed-by: Heiko Stuebner <heiko@sntech.de>
-
-
+I also plan to implement and upstream the DT for TinkerBoard 2S,
+which is based on the OP1, and its voltage regulator setup may
+actually need these voltage ranges.
 
 _______________________________________________
 Linux-rockchip mailing list
