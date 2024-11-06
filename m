@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BC4F1D44D57
-	for <linux-rockchip@archiver.kernel.org>; Wed,  6 Nov 2024 12:42:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3CF2CD44D57
+	for <linux-rockchip@archiver.kernel.org>; Wed,  6 Nov 2024 12:44:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=/LT1R4uQAf1aOx9596bzB+FehdjIgzkqimtIZ9GZBQM=; b=WUDtyg0Z0TDsK7
-	rJNvxozMSWN/lkG1SEfO96QWz+rcQrIu7/mdFQNqD02EpugGh+OGqEVayYoha6snPCxtdpDu6ugsz
-	WG4PnQOQHVIiHlVDQoMgwQYTOMzVAHYhFZuwjEz6DHVkte/QkcJEF3ZK9pheCphIq/iOnL1EwtPqZ
-	vu9XbhkmDqfYH7+aO+OkjAiLuEQ4wm05ENnjB9+SZhiAESNdpGd9bE0ltlt+718LKglOZDue3+Zmu
-	SE60Hv8ImWCFJJszRfie6xo2MTHUGyhaVuQMMcNddqtL1OhDXhId8RkI1jHCUHCu88U4GdmvmosOi
-	dwyFWahbl+M+H5PjqdjQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=lX6ti1rQBO3ajevrPk5MQAtyAG2GqkHv5yCF2RBolHU=; b=4mZH2Ph1rgpEwv
+	YMDhwwEpljCIlUWc8v8BnPxfAk0iZA23OosvirIftHY7g/PjF1Ok6ddPtFFdTRXFdGs8QonxALtd6
+	fmJN6AzuVtZSYKRikalqUP3uz2tvzrvwmWSP3Q1QW5FGNF/wOYhPxWw7nv0Y/qk7EguyEZxZ+lEJT
+	fHbFCFGjf72tYQ824qYBMwMQjOCd55A7fZeZ4kUDRqBs37Ljo+AZCUm0w6/WrB18WkLFpakVSUv2d
+	S0e44YWtE2E8V5plACikJ9O/O9B7EyYnCmNRGi8lGiarmDOy2SNcIDGREJ7KU3bVpZm544ySCyhJ5
+	NrB/8YDrSAMFI4hS3/Dw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t8fMl-00000003Gh8-3iZL;
-	Wed, 06 Nov 2024 12:42:32 +0000
+	id 1t8fOW-00000003HRA-1Hw4;
+	Wed, 06 Nov 2024 12:44:20 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t8fFD-00000003CwY-2aG3;
-	Wed, 06 Nov 2024 12:34:46 +0000
+	id 1t8fFF-00000003CxJ-2Rz5;
+	Wed, 06 Nov 2024 12:34:47 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Transfer-Encoding:MIME-Version:Message-ID:Date:
-	Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
+	s=gloria202408; h=Content-Transfer-Encoding:MIME-Version:References:
+	In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
 	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=BlLMQyMstC3sPzt2Orx206ooiIEP56wl/WvG5xtdvMo=; b=hjjTrm4by7oyiQBvyo7Mq2PDbK
-	xbaWxAiWSQwaJGqmjdBdlmUWJCxU8EbarhB5EgnY8EbDbkWYBQCdnriCAE0CcEOLpHOWAeX/ffdNw
-	HYf1utXEMnqQ7bagVLYXN96FN476pL8qH6czOYRrT19LggAQo7XZF3pRgD136m1SMo8p4CfhGVE0H
-	DjHb6S0+s/c1eBw1X5Y+3PKA08RYs8DSR2ru5D4GYMi7YCgyVLXPWhSfPvgfpK+MFgrkvYCEqD137
-	RR6XJ2zscKhA5KzdVPTEtQjUcKj77kBQx3UKDyYfV2Gi+8xNOhMkM+pPivCXtG8EkR0IYgbeNRuny
-	erL/vVjg==;
+	bh=JBo3Q5+1j4+wvQjQz6eDOxbQpTleN40pzgbl2CA/Zmo=; b=1MumclPdyl6rC0YUl9vshRxsG2
+	PaeWFxD0TRaVllqGk123fmQuWSOEaeov5OanBVB8+XjF0ZVrfy+uWpl7GyWXCO3d+ksq2jCtouzHe
+	xpa6A96iyF3qMCu9MqN5IEH6lfza3N3e/s2aCEnPIMM18kD9LfH2yxnsXGBBabRVW/g/vHZ5rNAie
+	WBSwFiF+6DSllGuNEAMbqRIsGxbubk5tEl8otv+VMGuXdcDH6PfX8XENriQNk39FeXVFQOUdnFZXt
+	gczQdH0FNwj7v00lj75HwNiv5PYNd3Pw91/MuGn4zu9xxgrhsg6eZv5iZdhK6pUoE965Pguaw+3wd
+	wxzt2Fxg==;
 Received: from i53875b28.versanet.de ([83.135.91.40] helo=localhost.localdomain)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1t8fEn-00076s-MJ; Wed, 06 Nov 2024 13:34:17 +0100
+	id 1t8fEp-00076s-EB; Wed, 06 Nov 2024 13:34:19 +0100
 From: Heiko Stuebner <heiko@sntech.de>
 To: heiko@sntech.de
 Cc: andy.yan@rock-chips.com,
@@ -63,15 +63,18 @@ Cc: andy.yan@rock-chips.com,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
-	quentin.schulz@cherry.de
-Subject: [PATCH 0/3] drm/rockchip: Add driver for the new DSI2 controller
-Date: Wed,  6 Nov 2024 13:33:01 +0100
-Message-ID: <20241106123304.422854-1-heiko@sntech.de>
+	quentin.schulz@cherry.de,
+	Heiko Stuebner <heiko.stuebner@cherry.de>
+Subject: [PATCH 2/3] dt-bindings: display: rockchip: Add schema for RK3588 DW DSI2 controller
+Date: Wed,  6 Nov 2024 13:33:03 +0100
+Message-ID: <20241106123304.422854-3-heiko@sntech.de>
 X-Mailer: git-send-email 2.45.2
+In-Reply-To: <20241106123304.422854-1-heiko@sntech.de>
+References: <20241106123304.422854-1-heiko@sntech.de>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241106_043443_924215_AAD261A6 
-X-CRM114-Status: GOOD (  14.41  )
+X-CRM114-CacheID: sfid-20241106_043445_654958_342977E6 
+X-CRM114-Status: GOOD (  15.07  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,46 +91,144 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This series adds a bridge and glue driver for the DSI2 controller found
-in the rk3588 soc from Rockchip, that is based on a Synopsis IP block.
+From: Heiko Stuebner <heiko.stuebner@cherry.de>
 
-As the manual states:
 The Display Serial Interface 2 (DSI-2) is part of a group of communication
-protocols defined by the MIPI Alliance. The MIPI DSI-2 Host Controller is
-a digital core that implements all protocol functions defined in the
-MIPI DSI-2 Specification.
+protocols defined by the MIPI Alliance. The RK3588 implements this
+specification in its two MIPI DSI-2 Host Controllers that are based on a
+new Synopsis IP.
 
-
-While the driver structure is very similar to the previous DSI controller,
-the programming model of the core is quite different, with a completely
-new register set.
-
-Another notable difference is that the phy interface is variable now too
-in its width and some other settings.
-
-
-Heiko Stuebner (3):
-  drm/bridge/synopsys: Add MIPI DSI2 host controller bridge
-  dt-bindings: display: rockchip: Add schema for RK3588 DW DSI2
-    controller
-  drm/rockchip: Add MIPI DSI2 glue driver for RK3588
-
- .../rockchip/rockchip,rk3588-mipi-dsi2.yaml   |  119 ++
- drivers/gpu/drm/bridge/synopsys/Kconfig       |    6 +
- drivers/gpu/drm/bridge/synopsys/Makefile      |    1 +
- .../gpu/drm/bridge/synopsys/dw-mipi-dsi2.c    | 1034 +++++++++++++++++
- drivers/gpu/drm/rockchip/Kconfig              |   10 +
- drivers/gpu/drm/rockchip/Makefile             |    1 +
- .../gpu/drm/rockchip/dw-mipi-dsi2-rockchip.c  |  524 +++++++++
- drivers/gpu/drm/rockchip/rockchip_drm_drv.c   |    2 +
- drivers/gpu/drm/rockchip/rockchip_drm_drv.h   |    1 +
- include/drm/bridge/dw_mipi_dsi2.h             |   94 ++
- 10 files changed, 1792 insertions(+)
+Signed-off-by: Heiko Stuebner <heiko.stuebner@cherry.de>
+---
+ .../rockchip/rockchip,rk3588-mipi-dsi2.yaml   | 119 ++++++++++++++++++
+ 1 file changed, 119 insertions(+)
  create mode 100644 Documentation/devicetree/bindings/display/rockchip/rockchip,rk3588-mipi-dsi2.yaml
- create mode 100644 drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi2.c
- create mode 100644 drivers/gpu/drm/rockchip/dw-mipi-dsi2-rockchip.c
- create mode 100644 include/drm/bridge/dw_mipi_dsi2.h
 
+diff --git a/Documentation/devicetree/bindings/display/rockchip/rockchip,rk3588-mipi-dsi2.yaml b/Documentation/devicetree/bindings/display/rockchip/rockchip,rk3588-mipi-dsi2.yaml
+new file mode 100644
+index 000000000000..8fc6b4a63f06
+--- /dev/null
++++ b/Documentation/devicetree/bindings/display/rockchip/rockchip,rk3588-mipi-dsi2.yaml
+@@ -0,0 +1,119 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/display/rockchip/rockchip,dw-mipi-dsi2.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: Rockchip specific extensions to the Synopsys Designware MIPI DSI2
++
++maintainers:
++  - Heiko Stuebner <heiko@sntech.de>
++
++properties:
++  compatible:
++    enum:
++      - rockchip,rk3588-mipi-dsi2
++
++  reg:
++    maxItems: 1
++
++  interrupts:
++    maxItems: 1
++
++  clocks:
++    maxItems: 2
++
++  clock-names:
++    items:
++      - const: pclk
++      - const: sys
++
++  rockchip,grf:
++    $ref: /schemas/types.yaml#/definitions/phandle
++    description:
++      This SoC uses GRF regs to switch between vopl/vopb.
++
++  phys:
++    maxItems: 1
++
++  phy-names:
++    const: dcphy
++
++  ports:
++    $ref: /schemas/graph.yaml#/properties/ports
++
++    properties:
++      port@0:
++        $ref: /schemas/graph.yaml#/properties/port
++        description: Input node to receive pixel data.
++
++      port@1:
++        $ref: /schemas/graph.yaml#/properties/port
++        description: DSI output node to panel.
++
++    required:
++      - port@0
++      - port@1
++
++  power-domains:
++    maxItems: 1
++
++  resets:
++    maxItems: 1
++
++  reset-names:
++    const: apb
++
++required:
++  - compatible
++  - clocks
++  - clock-names
++  - rockchip,grf
++  - phys
++  - phy-names
++  - ports
++  - reg
++
++allOf:
++  - $ref: ../dsi-controller.yaml#
++
++unevaluatedProperties: false
++
++examples:
++  - |
++    #include <dt-bindings/clock/rockchip,rk3588-cru.h>
++    #include <dt-bindings/interrupt-controller/arm-gic.h>
++    #include <dt-bindings/interrupt-controller/irq.h>
++    #include <dt-bindings/power/rk3588-power.h>
++    #include <dt-bindings/reset/rockchip,rk3588-cru.h>
++
++    soc {
++      #address-cells = <2>;
++      #size-cells = <2>;
++
++      dsi0: dsi@fde20000 {
++        compatible = "rockchip,rk3588-mipi-dsi2";
++        reg = <0x0 0xfde20000 0x0 0x10000>;
++        interrupts = <GIC_SPI 167 IRQ_TYPE_LEVEL_HIGH 0>;
++        clocks = <&cru PCLK_DSIHOST0>, <&cru CLK_DSIHOST0>;
++        clock-names = "pclk", "sys";
++        resets = <&cru SRST_P_DSIHOST0>;
++        reset-names = "apb";
++        power-domains = <&power RK3588_PD_VOP>;
++        phys = <&mipidcphy0>;
++        phy-names = "dcphy";
++        rockchip,grf = <&vop_grf>;
++
++        ports {
++          #address-cells = <1>;
++          #size-cells = <0>;
++          dsi0_in: port@0 {
++            reg = <0>;
++          };
++
++          dsi0_out: port@1 {
++            reg = <1>;
++          };
++        };
++      };
++    };
 -- 
 2.45.2
 
