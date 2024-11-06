@@ -4,63 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AA18CD44D55
-	for <linux-rockchip@archiver.kernel.org>; Wed,  6 Nov 2024 11:59:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 40A5BD44D54
+	for <linux-rockchip@archiver.kernel.org>; Wed,  6 Nov 2024 12:28:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=zw+Qfkc9re64YNvTE3181f7nkfRGdaVyNatZpC8zD9Y=; b=AAwiut1oyyXHXb
-	VmZS3htjdC0Mo4CuH+dMSmOGmbvRW6HRC4FaJ4RHz+dCA22yyNt4Mp0fkK7JWKGn38Bm4cNw1ZqWp
-	QHVTvXkNU3pHSfrdiGiE0zIc9NkIfIkk8oPOaGPAl05FdS1+zFz9ofQcUj6jBmxaKbebhnIwGhRVT
-	kuV0mPYO+cl1+czTmR8P8k/kpr0BC/GI0FRkdAosFZTEddAaAjJsoqFiNUFou74drlWCMTp+7wlJf
-	Wkf4ElpolK7xifaRU467h3liqN793Cu7jhQpd1F/Sas1EWGink+lNnhT66dhNqtMAKecQGwOcCSkK
-	/k3isoS3uI/EwuEKh6Hw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
+	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=QNaLgXYj70uStySNL4j1Yra2qb07PSgnHyGUx17/WOM=; b=tLda8vBaqXD9igh3kn8Np6i8D8
+	1DHsnTvQKXyWCWs1D35KrQutRYn50s58dVYlAKTNkiR4pn4IXjlsvFWYJfTB9VE0sXrsxMJ/hjyto
+	VDa66Bh+SCGgUsjf1Uea3cmdc5XXlaQZvcrAI9UKk12w8rOG57wsecj2ArELDXSEVmH2RZ3iFTnVu
+	cvhX8Tcbvg22Usz5JYDhAAhm0EhgGZqvJSA5SfXA3Dq9ot9HYYIQIgAm01gRVDiScI9zQQOuu0gjG
+	IPogS1iniIyHqLOg6sUZ3eIUus3H7uPRU2NilMGvcy7V3UtOlLLhsDfaPLwC9VSFI69B4oWOHJCn2
+	7VvO0Zlg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t8egt-00000003482-1Lek;
-	Wed, 06 Nov 2024 11:59:15 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1t8f95-00000003By9-1inL;
+	Wed, 06 Nov 2024 12:28:23 +0000
+Received: from mail.manjaro.org ([116.203.91.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t8e9V-00000002uf7-2ZMk;
-	Wed, 06 Nov 2024 11:24:46 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
-	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=vis9DrxowZ/AktTU/z9vKtuDIMJQDhrIDdxt5nA9NwY=; b=L2/RcPKXHIPU7IIHUAjSMoHx/t
-	8HwvGQ4D+Nx8SxCH+ld24GX/I1F/AGJa2YN4UCFEzlmJGCv++/nfFb08IIaFlmVOo6P+WahmEAgdX
-	PKfAHuLOoHEBE4AL2RZv3nCcBGB0F8oIhz7M/B3474NeBCIzHwG2BGGuHnOR4pvmMkpNd+IkNIXAa
-	+c08jdnycrbGBoB3aq3Z3ZgHyxaux14UQ7flR3AIWzNhtSNoBMRT89eKjSAbzMY3NWilBGd9tk4TD
-	AsN45eQSfr4wBAeKg4K/OZWeoG0QbyVWnwW1qBKDiWSNIHZpQEeMFAaNEgq1qNREZyhL1meX+AIHn
-	+V6T2c3Q==;
-Received: from i53875b28.versanet.de ([83.135.91.40] helo=diego.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1t8e9S-0006fE-Av; Wed, 06 Nov 2024 12:24:42 +0100
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: Dragan Simic <dsimic@manjaro.org>
-Cc: linux-rockchip@lists.infradead.org,
- Quentin Schulz <quentin.schulz@cherry.de>,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- devicetree@vger.kernel.org, robh@kernel.org, krzk+dt@kernel.org,
- conor+dt@kernel.org, alchark@gmail.com
-Subject: Re: [PATCH v2] arm64: dts: rockchip: Add OPP voltage ranges to RK3399 OP1 SoC
- dtsi
-Date: Wed, 06 Nov 2024 12:24:41 +0100
-Message-ID: <3515804.QJadu78ljV@diego>
-In-Reply-To: <77bc2898bbbd2633d6713b4935bd5ee3@manjaro.org>
+	id 1t8eM9-00000002wbj-23lG;
+	Wed, 06 Nov 2024 11:37:51 +0000
+MIME-Version: 1.0
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
+	t=1730893067;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=SAVWN1jllFgopZaf0TDwkFXp6oVX56WTH2lis0u2zBw=;
+	b=HpFhxp/4D+HOZ1HX/JiwwgNR5olDDT/A5VwquOc7q6EymSbB089NHLszIJrfeKEe5KZu9Q
+	pfNa7XV8BdPon3Ke9uuHChHXCo6xJXiXt7zPpQ50ropiwuAwdf0ysy5ghxe+ts658YUlna
+	oqOgy51LmGzKl83jo1b9HARZW0JghhKO7DhVq/aTlV3Gl7QGUse/dbgDhg9LvBIp5Ja9kL
+	NIgpdLryTocWhziCDe9N6a6RFoVhsOrj922k3Arryy7jlv5zumNT0vE242UAhuipSHapKK
+	zsCITqgvY/Qzdu6iX1j4ZN883OWdlGVwodShSgWMIdsS3077++Zc2zimhN3NvQ==
+Date: Wed, 06 Nov 2024 12:37:47 +0100
+From: Dragan Simic <dsimic@manjaro.org>
+To: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>
+Cc: linux-rockchip@lists.infradead.org, Quentin Schulz
+ <quentin.schulz@cherry.de>, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, robh@kernel.org,
+ krzk+dt@kernel.org, conor+dt@kernel.org, alchark@gmail.com
+Subject: Re: [PATCH v2] arm64: dts: rockchip: Add OPP voltage ranges to RK3399
+ OP1 SoC dtsi
+In-Reply-To: <3515804.QJadu78ljV@diego>
 References: <dbee35c002bda99e44f8533623d94f202a60da95.1730881777.git.dsimic@manjaro.org>
  <3252308.5fSG56mABF@diego> <77bc2898bbbd2633d6713b4935bd5ee3@manjaro.org>
-MIME-Version: 1.0
+ <3515804.QJadu78ljV@diego>
+Message-ID: <09212b36eddf74748afa7e97172d89de@manjaro.org>
+X-Sender: dsimic@manjaro.org
+Authentication-Results: ORIGINATING;
+	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241106_032445_700928_5CC3848A 
-X-CRM114-Status: GOOD (  32.96  )
+X-CRM114-CacheID: sfid-20241106_033749_838812_947C0C46 
+X-CRM114-Status: GOOD (  31.33  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,105 +70,77 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Am Mittwoch, 6. November 2024, 11:45:06 CET schrieb Dragan Simic:
-> Hello Heiko,
-> =
-
-> On 2024-11-06 10:41, Heiko St=FCbner wrote:
-> > Am Mittwoch, 6. November 2024, 10:32:06 CET schrieb Quentin Schulz:
-> >> On 11/6/24 9:33 AM, Dragan Simic wrote:
-> >> > Add support for voltage ranges to the CPU, GPU and DMC OPPs defined =
-in the
-> >> > SoC dtsi for Rockchip OP1, as a variant of the Rockchip RK3399.  Thi=
-s may be
-> >> > useful if there are any OP1-based boards whose associated voltage re=
-gulators
-> >> > are unable to deliver the exact voltages; otherwise, it causes no fu=
-nctional
-> >> > changes to the resulting OPP voltages at runtime.
-> >> >
-> >> > These changes cannot cause stability issues or any kind of damage, b=
-ecause
-> >> > it's perfectly safe to use the highest voltage from an OPP group for=
- each OPP
-> >> > in the same group.  The only possible negative effect of using highe=
-r voltages
-> >> > is wasted energy in form of some additionally generated heat.
-> >> >
-> >> > Reported-by: Quentin Schulz <quentin.schulz@cherry.de>
-> >> =
-
-> >> Well, I merely highlighted that the voltage was different on OP1
-> >> compared to RK3399 for the 600MHz OPP :)
-> >> =
-
-> >> So... If there's ONE SoC I'm pretty sure is working as expected it's =
-
-> >> the
-> >> OP1 fitted on the Gru Chromebooks with the ChromiumOS kernel fork
-> >> (though yes, I believe all Gru CB are EoL since August 2023). In the =
-
-> >> 6.1
-> >> kernel fork, there's also no range:
-> >> https://chromium.googlesource.com/chromiumos/third_party/kernel/+/refs=
-/heads/chromeos-6.1/arch/arm64/boot/dts/rockchip/rk3399-op1-opp.dtsi
-> > =
-
-> > yeah, this somehow goes quite a bit into the "stuff that doesn't need =
-
-> > to
-> > change" area. On the one hand it does make "some" sense to unify things
-> > if we're using ranges everywhere else.
-> =
-
-> I agree that it might be unneeded, but there's no possible harm, and
-> unifying the things may be seen as beneficial.
-> =
-
-> > On the other hand, as Quentin noted below, all existing OP1 devices =
-
-> > seem
-> > to run just fine, and there won't be any more entering the kernel.
-> =
-
-> Hmm, why can't we add more OP1-based devices?  As I mentioned in my
-> earlier response to Quentin, my plan is to implement the board dts
-> for OP1-based TinkerBoard 2S, so I'd like to know is there something
-> that might prevent that board dts from becoming merged?
-> =
-
-> > So what do we realisitically gain here, except hiding existing =
-
-> > git-history
-> > under another layer?
-> =
-
-> Sorry, I'm not sure what would become hidden by this patch?
-
-When you change a part of the file, a git blame points to you,
-hiding the previous blame, so it makes traversing history a tiny
-bit harder.
-
-If you're actually doing the Tinkerboard and thus adding new things this
-changes the whole judgement a bit too.
-Like I was on the mindset-road of rk3399 is mostly done in terms of new
-boards, so what's in the kernel now will at max get some new peripherals
-but is in general already mostly working.
-
-If we're still adding new rk3399 boards, it does make more sense to go
-back and make the underlying parts nicer :-)
-
-
-Heiko
-
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gMjAyNC0xMS0wNiAxMjoyNCwgSGVpa28gU3TDvGJuZXIgd3JvdGU6Cj4gQW0gTWl0dHdvY2gs
+IDYuIE5vdmVtYmVyIDIwMjQsIDExOjQ1OjA2IENFVCBzY2hyaWViIERyYWdhbiBTaW1pYzoKPj4g
+T24gMjAyNC0xMS0wNiAxMDo0MSwgSGVpa28gU3TDvGJuZXIgd3JvdGU6Cj4+ID4gQW0gTWl0dHdv
+Y2gsIDYuIE5vdmVtYmVyIDIwMjQsIDEwOjMyOjA2IENFVCBzY2hyaWViIFF1ZW50aW4gU2NodWx6
+Ogo+PiA+PiBPbiAxMS82LzI0IDk6MzMgQU0sIERyYWdhbiBTaW1pYyB3cm90ZToKPj4gPj4gPiBB
+ZGQgc3VwcG9ydCBmb3Igdm9sdGFnZSByYW5nZXMgdG8gdGhlIENQVSwgR1BVIGFuZCBETUMgT1BQ
+cyBkZWZpbmVkIGluIHRoZQo+PiA+PiA+IFNvQyBkdHNpIGZvciBSb2NrY2hpcCBPUDEsIGFzIGEg
+dmFyaWFudCBvZiB0aGUgUm9ja2NoaXAgUkszMzk5LiAgVGhpcyBtYXkgYmUKPj4gPj4gPiB1c2Vm
+dWwgaWYgdGhlcmUgYXJlIGFueSBPUDEtYmFzZWQgYm9hcmRzIHdob3NlIGFzc29jaWF0ZWQgdm9s
+dGFnZSByZWd1bGF0b3JzCj4+ID4+ID4gYXJlIHVuYWJsZSB0byBkZWxpdmVyIHRoZSBleGFjdCB2
+b2x0YWdlczsgb3RoZXJ3aXNlLCBpdCBjYXVzZXMgbm8gZnVuY3Rpb25hbAo+PiA+PiA+IGNoYW5n
+ZXMgdG8gdGhlIHJlc3VsdGluZyBPUFAgdm9sdGFnZXMgYXQgcnVudGltZS4KPj4gPj4gPgo+PiA+
+PiA+IFRoZXNlIGNoYW5nZXMgY2Fubm90IGNhdXNlIHN0YWJpbGl0eSBpc3N1ZXMgb3IgYW55IGtp
+bmQgb2YgZGFtYWdlLCBiZWNhdXNlCj4+ID4+ID4gaXQncyBwZXJmZWN0bHkgc2FmZSB0byB1c2Ug
+dGhlIGhpZ2hlc3Qgdm9sdGFnZSBmcm9tIGFuIE9QUCBncm91cCBmb3IgZWFjaCBPUFAKPj4gPj4g
+PiBpbiB0aGUgc2FtZSBncm91cC4gIFRoZSBvbmx5IHBvc3NpYmxlIG5lZ2F0aXZlIGVmZmVjdCBv
+ZiB1c2luZyBoaWdoZXIgdm9sdGFnZXMKPj4gPj4gPiBpcyB3YXN0ZWQgZW5lcmd5IGluIGZvcm0g
+b2Ygc29tZSBhZGRpdGlvbmFsbHkgZ2VuZXJhdGVkIGhlYXQuCj4+ID4+ID4KPj4gPj4gPiBSZXBv
+cnRlZC1ieTogUXVlbnRpbiBTY2h1bHogPHF1ZW50aW4uc2NodWx6QGNoZXJyeS5kZT4KPj4gPj4K
+Pj4gPj4gV2VsbCwgSSBtZXJlbHkgaGlnaGxpZ2h0ZWQgdGhhdCB0aGUgdm9sdGFnZSB3YXMgZGlm
+ZmVyZW50IG9uIE9QMQo+PiA+PiBjb21wYXJlZCB0byBSSzMzOTkgZm9yIHRoZSA2MDBNSHogT1BQ
+IDopCj4+ID4+Cj4+ID4+IFNvLi4uIElmIHRoZXJlJ3MgT05FIFNvQyBJJ20gcHJldHR5IHN1cmUg
+aXMgd29ya2luZyBhcyBleHBlY3RlZCBpdCdzCj4+ID4+IHRoZQo+PiA+PiBPUDEgZml0dGVkIG9u
+IHRoZSBHcnUgQ2hyb21lYm9va3Mgd2l0aCB0aGUgQ2hyb21pdW1PUyBrZXJuZWwgZm9yawo+PiA+
+PiAodGhvdWdoIHllcywgSSBiZWxpZXZlIGFsbCBHcnUgQ0IgYXJlIEVvTCBzaW5jZSBBdWd1c3Qg
+MjAyMykuIEluIHRoZQo+PiA+PiA2LjEKPj4gPj4ga2VybmVsIGZvcmssIHRoZXJlJ3MgYWxzbyBu
+byByYW5nZToKPj4gPj4gaHR0cHM6Ly9jaHJvbWl1bS5nb29nbGVzb3VyY2UuY29tL2Nocm9taXVt
+b3MvdGhpcmRfcGFydHkva2VybmVsLysvcmVmcy9oZWFkcy9jaHJvbWVvcy02LjEvYXJjaC9hcm02
+NC9ib290L2R0cy9yb2NrY2hpcC9yazMzOTktb3AxLW9wcC5kdHNpCj4+ID4KPj4gPiB5ZWFoLCB0
+aGlzIHNvbWVob3cgZ29lcyBxdWl0ZSBhIGJpdCBpbnRvIHRoZSAic3R1ZmYgdGhhdCBkb2Vzbid0
+IG5lZWQKPj4gPiB0bwo+PiA+IGNoYW5nZSIgYXJlYS4gT24gdGhlIG9uZSBoYW5kIGl0IGRvZXMg
+bWFrZSAic29tZSIgc2Vuc2UgdG8gdW5pZnkgdGhpbmdzCj4+ID4gaWYgd2UncmUgdXNpbmcgcmFu
+Z2VzIGV2ZXJ5d2hlcmUgZWxzZS4KPj4gCj4+IEkgYWdyZWUgdGhhdCBpdCBtaWdodCBiZSB1bm5l
+ZWRlZCwgYnV0IHRoZXJlJ3Mgbm8gcG9zc2libGUgaGFybSwgYW5kCj4+IHVuaWZ5aW5nIHRoZSB0
+aGluZ3MgbWF5IGJlIHNlZW4gYXMgYmVuZWZpY2lhbC4KPj4gCj4+ID4gT24gdGhlIG90aGVyIGhh
+bmQsIGFzIFF1ZW50aW4gbm90ZWQgYmVsb3csIGFsbCBleGlzdGluZyBPUDEgZGV2aWNlcwo+PiA+
+IHNlZW0KPj4gPiB0byBydW4ganVzdCBmaW5lLCBhbmQgdGhlcmUgd29uJ3QgYmUgYW55IG1vcmUg
+ZW50ZXJpbmcgdGhlIGtlcm5lbC4KPj4gCj4+IEhtbSwgd2h5IGNhbid0IHdlIGFkZCBtb3JlIE9Q
+MS1iYXNlZCBkZXZpY2VzPyAgQXMgSSBtZW50aW9uZWQgaW4gbXkKPj4gZWFybGllciByZXNwb25z
+ZSB0byBRdWVudGluLCBteSBwbGFuIGlzIHRvIGltcGxlbWVudCB0aGUgYm9hcmQgZHRzCj4+IGZv
+ciBPUDEtYmFzZWQgVGlua2VyQm9hcmQgMlMsIHNvIEknZCBsaWtlIHRvIGtub3cgaXMgdGhlcmUg
+c29tZXRoaW5nCj4+IHRoYXQgbWlnaHQgcHJldmVudCB0aGF0IGJvYXJkIGR0cyBmcm9tIGJlY29t
+aW5nIG1lcmdlZD8KPj4gCj4+ID4gU28gd2hhdCBkbyB3ZSByZWFsaXNpdGljYWxseSBnYWluIGhl
+cmUsIGV4Y2VwdCBoaWRpbmcgZXhpc3RpbmcKPj4gPiBnaXQtaGlzdG9yeQo+PiA+IHVuZGVyIGFu
+b3RoZXIgbGF5ZXI/Cj4+IAo+PiBTb3JyeSwgSSdtIG5vdCBzdXJlIHdoYXQgd291bGQgYmVjb21l
+IGhpZGRlbiBieSB0aGlzIHBhdGNoPwo+IAo+IFdoZW4geW91IGNoYW5nZSBhIHBhcnQgb2YgdGhl
+IGZpbGUsIGEgZ2l0IGJsYW1lIHBvaW50cyB0byB5b3UsCj4gaGlkaW5nIHRoZSBwcmV2aW91cyBi
+bGFtZSwgc28gaXQgbWFrZXMgdHJhdmVyc2luZyBoaXN0b3J5IGEgdGlueQo+IGJpdCBoYXJkZXIu
+CgpBaCwgSSBzZWUsIHRoYW5rcyBmb3IgdGhlIGNsYXJpZmljYXRpb24uICBJJ20gd2lsbGluZyB0
+byB0YWtlIHRoZQpyZXN1bHRpbmcgYmxhbWUsIHRob3VnaC4gOikKCj4gSWYgeW91J3JlIGFjdHVh
+bGx5IGRvaW5nIHRoZSBUaW5rZXJib2FyZCBhbmQgdGh1cyBhZGRpbmcgbmV3IHRoaW5ncyAKPiB0
+aGlzCj4gY2hhbmdlcyB0aGUgd2hvbGUganVkZ2VtZW50IGEgYml0IHRvby4KClllcywgSSBuZWVk
+IGFuIE9QMS1iYXNlZCBib2FyZCBmb3IgbXkgdXBjb21pbmcgUm9ja2NoaXAgU29DIGJpbm5pbmcK
+ZW5kZWF2b3IsIHdoaWNoIGZvciBtZSBiYXNpY2FsbHkgYm9pbHMgZG93biB0byBnZXR0aW5nIGEg
+VGlua2VyQm9hcmQKMlMuICBPZiBjb3Vyc2UsIEkgbmVlZCB0byBoYXZlIG15IGZ1dHVyZSBUaW5r
+ZXJCb2FyZCAyUyB3b3JraW5nIGFuZApydW5uaW5nIG1haW5saW5lIGtlcm5lbCwgYW5kIHdoYXQn
+cyBhIGJldHRlciB3YXkgZm9yIGRvaW5nIHRoYXQgdGhhbgpoYXZpbmcgaXRzIGJvYXJkIGR0cyB1
+cHN0cmVhbWVkLCBmb3IgZXZlcnlvbmUncyBiZW5lZml0LiA6KQoKPiBMaWtlIEkgd2FzIG9uIHRo
+ZSBtaW5kc2V0LXJvYWQgb2YgcmszMzk5IGlzIG1vc3RseSBkb25lIGluIHRlcm1zIG9mIG5ldwo+
+IGJvYXJkcywgc28gd2hhdCdzIGluIHRoZSBrZXJuZWwgbm93IHdpbGwgYXQgbWF4IGdldCBzb21l
+IG5ldyAKPiBwZXJpcGhlcmFscwo+IGJ1dCBpcyBpbiBnZW5lcmFsIGFscmVhZHkgbW9zdGx5IHdv
+cmtpbmcuCj4gCj4gSWYgd2UncmUgc3RpbGwgYWRkaW5nIG5ldyByazMzOTkgYm9hcmRzLCBpdCBk
+b2VzIG1ha2UgbW9yZSBzZW5zZSB0byBnbwo+IGJhY2sgYW5kIG1ha2UgdGhlIHVuZGVybHlpbmcg
+cGFydHMgbmljZXIgOi0pCgpZZXMsIEkgc2VlIHRoZSBSSzMzOTkgYXMgYW4gYWN0aXZlbHkgbWFp
+bnRhaW5lZCBwYXJ0IG9mIHRoZSBrZXJuZWwuIDopCldpdGggYWxsIHRoYXQgaW4gbWluZCwgSSBo
+b3BlIHRoZSBhc3NvY2lhdGVkIGNsZWFudXBzIHdpbGwgYmUgc2VlbiBhcwpqdXN0aWZpZWQuCgpf
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2Nr
+Y2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRw
+Oi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
