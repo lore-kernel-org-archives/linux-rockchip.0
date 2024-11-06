@@ -4,63 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CAAA2D44D5B
-	for <linux-rockchip@archiver.kernel.org>; Wed,  6 Nov 2024 13:17:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 92406D44D5E
+	for <linux-rockchip@archiver.kernel.org>; Wed,  6 Nov 2024 13:35:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=N4KHu3h4HiN2uSr9Z2ytuDgYL/dCD2Fz9IyAEdm5qJE=; b=Nx03+bBKRdyaBy
-	XsJT7L6XpQgXY+zaUL96uN0VnZOWR+eJ00PWsPpyM+6qQ9wQSwDurIolumpa9EW417ssptkXRAgSu
-	QWkqwQcDP4edn5QE3QcORtbZJTh7qa/Z+umbcw9MmsLZCNe3lDyi9zBkUwoHGH2Gb19v9dBR6QdYK
-	K8wH6t0ZgWRyUEqm3Na2fXY1uM+TqumAgIHPvpBIyU2HwVEhPn5sFZ5jMI1CXVRN51fuX3O7YNfJn
-	nylp8YvtnTrHtihRmLHwmN7NO5yQ8y3GEfFCczHsznkvhprF0EFYf3BOuFRe+5s67Qf5EvkQR+0iC
-	un4a4X6OecLr/DuXDpxQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=LgZKXLLQ87P3q3DC+D6CD5QcGzns217Ig77WeQmQqQA=; b=dV4kxtEEkBY0iH
+	6ihqtCucv1koS4vMBdVxMthfn9RvMH9RKDrd4XKjR22IE4sKuBe9ibGxM7HEVZTYibzCZkGCIrR4r
+	9CVGNEa6waDxSdtmiSa60SsnN/VzbMLw2sYxJvuYKfs4I0fgTpAdULxMwt6Sg7PYLGOhNRo0gjDns
+	mjg1qDLGT0LJUVWTJ+mXtWK2NBX0t++waULi0DTr1SCQIXb5nXeMNT8MNhGAZL7KmC9oIsWqIDXDV
+	SFT+GVjfKK1Hvoo0AGUrMBZ9MzACmy5k8mrBlIj8wz0Jt/eqqK2Buq5MkZyiXBe65WhiR6A67VER3
+	KGJulHDK9QDhALTmaDuQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t8fub-00000003Nms-1yiV;
-	Wed, 06 Nov 2024 13:17:29 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1t8gC9-00000003RDH-31aS;
+	Wed, 06 Nov 2024 13:35:37 +0000
+Received: from mail-ed1-x52f.google.com ([2a00:1450:4864:20::52f])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t8fIX-00000003F8P-30C4;
-	Wed, 06 Nov 2024 12:38:20 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Transfer-Encoding:MIME-Version:References:
-	In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
-	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=nd8WDBdT4JcyHkbixH6x2sPY4R14WnZRTUvb0ld1FwA=; b=PqnMfRssaNkWIHW6vVO88Pw+lg
-	GgbHjce6zAZnmMoqiX9JgT/2VEghfg22EfjNpIFpe1xbsBTKEFXWnyqf319oOZTNPzcgzSiRh8QtQ
-	VY0fX6QF+m4+oXZE5JW+nmua6nbIfd2ou0Dq2WFcH7gvm2wJyrhklRKXY02kzihusbUBRsnxxkj/G
-	TfeyOqUe4OpJMmbJ/Jw52vhaSw3koKfPOgSaPnMHRQS98HDXfe/oVKMk/MJwIAm77W4LY6M8QfcjE
-	CNwf96hPOlQ3dxfB1eS3m40gBQLTqYtW1t7P60SesS1+RT22FT6dDNxr4cNjGkpnPuLquDjB+XKxS
-	3d/zmOBw==;
-Received: from i53875b28.versanet.de ([83.135.91.40] helo=localhost.localdomain)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1t8fIW-0007A8-8i; Wed, 06 Nov 2024 13:38:08 +0100
-From: Heiko Stuebner <heiko@sntech.de>
-To: heiko@sntech.de
-Cc: quentin.schulz@cherry.de,
+	id 1t8fh6-00000003LZr-1i7U;
+	Wed, 06 Nov 2024 13:03:44 +0000
+Received: by mail-ed1-x52f.google.com with SMTP id 4fb4d7f45d1cf-5ceca0ec4e7so5327582a12.0;
+        Wed, 06 Nov 2024 05:03:31 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1730898210; x=1731503010; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=AkhTqMAEy+wfKt4c1zlkHxKZoS9y22psXlk3N9SJC2I=;
+        b=DIfSSzsW5nz6nyjE9LxqlpmEXnud6zKajLlhoyYHcRjfP/q1WDqnY90/4O1YwR33rM
+         KCoG3Mki/px65+qx4cefMkZ5HhcN8Xmln5aWzoo9jsOpI/SKZyHwwNBf1TEn4iP8J3hu
+         wmK8xqJ6XzcRJVePVVMBBdam6WleHq8PoO7K2fKQJHNojMzavNU83JUPfhf709l24CY2
+         RbCKQdnfwCMVquQKU+7gKpUJny5d4zOWtZxqZeiEzV3cpnYh2TIBqBrSDx+T+IqYsiga
+         Kyo6RFkDm/cbA8ph5PsFEKeU7XgTJNFLMHHEsD4ITXf1G7p6Jpe/46+mm7hMBRF8XRQO
+         2ABg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1730898210; x=1731503010;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=AkhTqMAEy+wfKt4c1zlkHxKZoS9y22psXlk3N9SJC2I=;
+        b=v7RAdzlzmLVtarux7nZ/UC5a+QUf7k3KzIWcEs2ShfNiZFKskno0pmH2IU2rVSp2gf
+         lfd6ZYAuBETYZ7Zyd3chGKlN+sDduI5v7WQidFXkvX6CwfJnaoY7A0Gxjm2i2dURxFhx
+         wkdp07dQ6wsSTorM4cWIJqDE6XsTinCJCKvJAoFP5NjL+dZZ7IOO3dBRmX8y0ez0/CjS
+         xS+E4vQijSVPDltavXe9UGmMmI6DM1p1d9rSMBMrzAw9eqNcCeSrEN/qhRD4IyxE4j+3
+         Q1eFONposRkfZ/9UeQfyrT159vAoN+YSrWTJoMKcjceNFU89M9Jpg1mhygy6B5ynCdcG
+         UneQ==
+X-Forwarded-Encrypted: i=1; AJvYcCUJ00Hw7Ii5mZAYV7OoxpIf2YghEpz1Ru0xwK/O/hKtWAG2AMkvCGOT1inAhgyCOiB2t2DLnchXd61vALagvmY=@lists.infradead.org, AJvYcCXswguXQ1tMgLP4dsae1oDAD7s4XDesa/w+mnBNcEmO0JvQhqUzv4BKuCneN5K/7/5n0ZZZpQMUkm8vF1UbLs1l@lists.infradead.org
+X-Gm-Message-State: AOJu0YxOUNbYIFF9EPIEnqeRCUqv/AddHqu4Ks29a2UCmstGFcfwp341
+	PSEO1Ou2JIlk6sVkj9L31Z7NueqtTgxCRMMFsdA5OuttUgyRpgXM
+X-Google-Smtp-Source: AGHT+IEqBTEWgsrzkfZOna1FwJf1E2BQ8X3eInejzxvLIxEo2OwtK5vRIp0mlLmeUW8b3wBaksf0Kg==
+X-Received: by 2002:a17:906:db0d:b0:a9a:129a:1862 with SMTP id a640c23a62f3a-a9de61a17cemr4108748466b.60.1730898209309;
+        Wed, 06 Nov 2024 05:03:29 -0800 (PST)
+Received: from A13PC04R.einet.ad.eivd.ch ([193.134.219.72])
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a9eb16a4836sm279603666b.11.2024.11.06.05.03.28
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 06 Nov 2024 05:03:28 -0800 (PST)
+From: Rick Wertenbroek <rick.wertenbroek@gmail.com>
+To: 
+Cc: rick.wertenbroek@heig-vd.ch,
+	Rick Wertenbroek <rick.wertenbroek@gmail.com>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>,
+	John Clark <inindev@gmail.com>,
+	Hugh Cole-Baker <sigmaris@gmail.com>,
 	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Heiko Stuebner <heiko.stuebner@cherry.de>
-Subject: [PATCH 2/3] arm64: dts: rockchip: add dsi controller nodes on rk3588
-Date: Wed,  6 Nov 2024 13:37:57 +0100
-Message-ID: <20241106123758.423584-3-heiko@sntech.de>
-X-Mailer: git-send-email 2.45.2
-In-Reply-To: <20241106123758.423584-1-heiko@sntech.de>
-References: <20241106123758.423584-1-heiko@sntech.de>
+	linux-kernel@vger.kernel.org
+Subject: [PATCH] arm64: dts: rockchip: enable USB3 on NanoPC-T6
+Date: Wed,  6 Nov 2024 14:03:13 +0100
+Message-Id: <20241106130314.1289055-1-rick.wertenbroek@gmail.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241106_043809_872540_704A0D23 
-X-CRM114-Status: GOOD (  12.73  )
+X-CRM114-CacheID: sfid-20241106_050332_471758_CB241073 
+X-CRM114-Status: GOOD (  10.09  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,85 +100,90 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Heiko Stuebner <heiko.stuebner@cherry.de>
+Enable the USB3 port on FriendlyELEC NanoPC-T6.
 
-The RK3588 comes with two DSI2 controllers based on a new Synopsis IP.
-Add the necessary nodes for them.
-
-Signed-off-by: Heiko Stuebner <heiko.stuebner@cherry.de>
+Signed-off-by: Rick Wertenbroek <rick.wertenbroek@gmail.com>
 ---
- arch/arm64/boot/dts/rockchip/rk3588-base.dtsi | 56 +++++++++++++++++++
- 1 file changed, 56 insertions(+)
+ .../boot/dts/rockchip/rk3588-nanopc-t6.dtsi   | 36 +++++++++++++++++++
+ 1 file changed, 36 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
-index 8c95c56e8097..6d31de2a6930 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
-@@ -1414,6 +1414,62 @@ i2s9_8ch: i2s@fddfc000 {
- 		status = "disabled";
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dtsi
+index bf8e1f1116d1..b93c2590feb5 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dtsi
+@@ -171,6 +171,20 @@ vbus5v0_typec: vbus5v0-typec-regulator {
+ 		vin-supply = <&vcc5v0_sys>;
  	};
  
-+	dsi0: dsi@fde20000 {
-+		compatible = "rockchip,rk3588-mipi-dsi2";
-+		reg = <0x0 0xfde20000 0x0 0x10000>;
-+		interrupts = <GIC_SPI 167 IRQ_TYPE_LEVEL_HIGH 0>;
-+		clocks = <&cru PCLK_DSIHOST0>, <&cru CLK_DSIHOST0>;
-+		clock-names = "pclk", "sys";
-+		resets = <&cru SRST_P_DSIHOST0>;
-+		reset-names = "apb";
-+		power-domains = <&power RK3588_PD_VOP>;
-+		phys = <&mipidcphy0>;
-+		phy-names = "dcphy";
-+		rockchip,grf = <&vop_grf>;
-+		status = "disabled";
-+
-+		ports {
-+			#address-cells = <1>;
-+			#size-cells = <0>;
-+
-+			dsi0_in: port@0 {
-+				reg = <0>;
-+			};
-+
-+			dsi0_out: port@1 {
-+				reg = <1>;
-+			};
-+		};
++	vbus5v0_usb: vbus5v0-usb-regulator {
++		compatible = "regulator-fixed";
++		enable-active-high;
++		gpio = <&gpio4 RK_PB0 GPIO_ACTIVE_HIGH>;
++		pinctrl-names = "default";
++		pinctrl-0 = <&usb5v_pwren>;
++		regulator-always-on;
++		regulator-boot-on;
++		regulator-name = "vbus5v0_usb";
++		regulator-min-microvolt = <5000000>;
++		regulator-max-microvolt = <5000000>;
++		vin-supply = <&vcc5v0_sys>;
 +	};
 +
-+	dsi1: dsi@fde30000 {
-+		compatible = "rockchip,rk3588-mipi-dsi2";
-+		reg = <0x0 0xfde30000 0x0 0x10000>;
-+		interrupts = <GIC_SPI 168 IRQ_TYPE_LEVEL_HIGH 0>;
-+		clocks = <&cru PCLK_DSIHOST1>, <&cru CLK_DSIHOST1>;
-+		clock-names = "pclk", "sys";
-+		resets = <&cru SRST_P_DSIHOST1>;
-+		reset-names = "apb";
-+		power-domains = <&power RK3588_PD_VOP>;
-+		phys = <&mipidcphy1>;
-+		phy-names = "dcphy";
-+		rockchip,grf = <&vop_grf>;
-+		status = "disabled";
-+
-+		ports {
-+			#address-cells = <1>;
-+			#size-cells = <0>;
-+
-+			dsi1_in: port@0 {
-+				reg = <0>;
-+			};
-+
-+			dsi1_out: port@1 {
-+				reg = <1>;
-+			};
+ 	vcc3v3_pcie2x1l0: vcc3v3-pcie2x1l0-regulator {
+ 		compatible = "regulator-fixed";
+ 		enable-active-high;
+@@ -607,6 +621,10 @@ typec5v_pwren: typec5v-pwren {
+ 			rockchip,pins = <1 RK_PD2 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 
++		usb5v_pwren: usb5v_pwren {
++			rockchip,pins = <4 RK_PB0 RK_FUNC_GPIO &pcfg_pull_none>;
 +		};
-+	};
 +
- 	hdmi0: hdmi@fde80000 {
- 		compatible = "rockchip,rk3588-dw-hdmi-qp";
- 		reg = <0x0 0xfde80000 0x0 0x20000>;
+ 		usbc0_int: usbc0-int {
+ 			rockchip,pins = <0 RK_PD3 RK_FUNC_GPIO &pcfg_pull_up>;
+ 		};
+@@ -1005,6 +1023,14 @@ &u2phy0_otg {
+ 	status = "okay";
+ };
+ 
++&u2phy1 {
++	status = "okay";
++};
++
++&u2phy1_otg {
++	status = "okay";
++};
++
+ &u2phy2_host {
+ 	status = "okay";
+ };
+@@ -1044,6 +1070,11 @@ usbdp_phy0_typec_sbu: endpoint@1 {
+ 	};
+ };
+ 
++&usbdp_phy1 {
++	phy-supply = <&vbus5v0_usb>;
++	status = "okay";
++};
++
+ &usb_host0_ehci {
+ 	status = "okay";
+ };
+@@ -1064,6 +1095,11 @@ usb_host0_xhci_drd_sw: endpoint {
+ 	};
+ };
+ 
++&usb_host1_xhci {
++	dr_mode = "host";
++	status = "okay";
++};
++
+ &usb_host1_ehci {
+ 	status = "okay";
+ };
 -- 
-2.45.2
+2.25.1
 
 
 _______________________________________________
