@@ -4,60 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3E88FD29FB3
-	for <linux-rockchip@archiver.kernel.org>; Wed,  6 Nov 2024 08:09:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 86FAAD29FB8
+	for <linux-rockchip@archiver.kernel.org>; Wed,  6 Nov 2024 08:41:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
-	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ZJHqVtT88g5EKgYPjs7KiLz9pze5IMTgdCql/uyUg1M=; b=SXlThkq19M1U5WB8LOKgqjDE/0
-	dQYuIi6IMjdh5xinEsMbAKfGTQxLvj1J/TQ6Ja7syz+tM3Nj3HISQ0FFaRLTTRPFhOj/SyM+gQkPr
-	qATbCW2O8YJqSRZkqWRW1g50pCHkHR+NfWu7PO6iGbryhbi3xz7rw9ifC3xz0cncvX7KEG0X+kOYw
-	YWauBVXB+JcRkeVPJPj/JYe/3zzkdlpmyKyuG3/ciZNUr03BQJtdrmZHYGcvi9iKm03oHifDhukxY
-	E5Se/AOIeOWxECKjUb460yKsVTpDpc5ZD/ayAaXaeGthXgATQk26qwf/JRGiga0ri5fhKWYzF9BER
-	L9caQ0kw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=VGMD7OeqWpHBxV2txvhvXKLmqYZW5X8dg/jf4AR3NT0=; b=kvbdfg96wO9zEp
+	4crQg/aTxQdEgABLvxL6SXVxAYfpLjQuRTGoAg7TMFs7vENENUoHDEwt0wq2mOCYvX+6+cgIHG7AO
+	5ltndsPyPd1E2m2utxzP4UkT4G5DPx7pBXEoKLjf2Punl2sT4qvmVRC5zR1Ofi0OxItoz+pTgyT45
+	sNTft3Go+5JbRY0lITT0t2e1+RfdZR6oqeqRQcDiwUkUWndKdxBgxjJ+NzJgBpY4eGfBld6yS2DbL
+	uSDEX4EwWtGWpAABa9XoUfIRXxHZ5O/M9VTJEysNB1mFEZkhJEn9rD3QgDERb6vZGusTRavca+h4D
+	q6RNyAK3w8xeH+wafygA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t8b6P-00000002E3Q-1scE;
-	Wed, 06 Nov 2024 08:09:21 +0000
+	id 1t8bbJ-00000002KSg-3yCG;
+	Wed, 06 Nov 2024 08:41:17 +0000
 Received: from mail.manjaro.org ([116.203.91.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t8b4f-00000002DpW-0CLP;
-	Wed, 06 Nov 2024 08:07:34 +0000
-MIME-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
-	t=1730880450;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=UY64bCPpVbXy9hxdShMRYV6mVpN8/Beip6P+YTYfKuA=;
-	b=goFnjRWR3MqEbxOAmz+OSD92aBLglKZ0Ww1FInqUvpn5uN7G9WRufX0YLGVMOUmhUilxy3
-	bnfMIXIPaAIC8Oh2qZw0yU9D1W1mcciebQDmbmMKFk8ia3JRzH0rmYzVNOaNZgQa6qDFIH
-	xdcSIHo665/5pnkjQA4x3vxU3rbGJXPd1YKwQJpUq/SYx/B+QJBnQNfF1QTxlm6qjLo93g
-	/1eLfhn74Q6SlPeeBWgreGaNQHRCCl49/W2piBwbwF5I1HaedFBWADVlVpYoX2eDLM5jAg
-	VaTlcQKWyTrOqk/j5Hl4mSHvfMi+fxx8ySA67sPOrFp5s0FH/DhQRTJrfC17DA==
-Date: Wed, 06 Nov 2024 09:07:30 +0100
+	id 1t8bTX-00000002Irs-2eYQ;
+	Wed, 06 Nov 2024 08:33:17 +0000
 From: Dragan Simic <dsimic@manjaro.org>
-To: Alexey Charkov <alchark@gmail.com>
-Cc: linux-rockchip@lists.infradead.org, heiko@sntech.de,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- devicetree@vger.kernel.org, robh@kernel.org, krzk+dt@kernel.org,
- conor+dt@kernel.org, Quentin Schulz <quentin.schulz@cherry.de>
-Subject: Re: [PATCH] arm64: dts: rockchip: Add OPP voltage ranges to RK3399
- OP1 SoC dtsi
-In-Reply-To: <CABjd4Yyt6WiY5E5DbyjnboFvsTpp33dydkGMF7AwMB9m7bfX6A@mail.gmail.com>
-References: <806d5e2a07ae0c81d9907bbe8bec4e3e1138b392.1730838347.git.dsimic@manjaro.org>
- <CABjd4Yyt6WiY5E5DbyjnboFvsTpp33dydkGMF7AwMB9m7bfX6A@mail.gmail.com>
-Message-ID: <0c237c49fae03bdad99be04053285ea2@manjaro.org>
-X-Sender: dsimic@manjaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
+	t=1730881993;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=TmaL8PPJ/UHeiTUk6acBviC2uKf2V/Awig/1ks3o27s=;
+	b=sDM/n7i0llCDpO1gtMBjWsGXMbtUl8T1D+TNuuOKe7bk9Qyz65Y6Mwy+b46gNzf/IU0Oi+
+	zAKgjbLMPi++GYk4r00/dDzqZp8VFt2SrTl9G+7n5rTykhrWFr3qsuz04ceXAuIWmEPnUv
+	pz+/p32PyMrv7dM/LF3E0C5KYt6MIWZN6ojp0D04qA/NGV9XoxrjxbJKmJDFwyI6u69SQc
+	rvy/u4W2pfQF0OSD/KPK6MbwZXfWBGCTVc9Y8LMfBPp0jlTL0+Np0RHFhm14kKXu3ivSy9
+	9ixjBHohVratdR1BPcY14eX14SRq76V+0Jdp65XRnGd7+LPn+xumj/4Hgj1Jxw==
+To: linux-rockchip@lists.infradead.org
+Cc: heiko@sntech.de,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
+	alchark@gmail.com,
+	Quentin Schulz <quentin.schulz@cherry.de>
+Subject: [PATCH v2] arm64: dts: rockchip: Add OPP voltage ranges to RK3399 OP1 SoC dtsi
+Date: Wed,  6 Nov 2024 09:33:08 +0100
+Message-Id: <dbee35c002bda99e44f8533623d94f202a60da95.1730881777.git.dsimic@manjaro.org>
+MIME-Version: 1.0
 Authentication-Results: ORIGINATING;
 	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241106_000733_413286_BD3C18B0 
-X-CRM114-Status: GOOD (  19.44  )
+X-CRM114-CacheID: sfid-20241106_003316_133494_2FCC39EF 
+X-CRM114-Status: GOOD (  10.08  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,91 +68,197 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGVsbG8gQWxleGV5LAoKT24gMjAyNC0xMS0wNiAwODo1NSwgQWxleGV5IENoYXJrb3Ygd3JvdGU6
-Cj4gT24gV2VkLCBOb3YgNiwgMjAyNCBhdCAxMTo1MOKAr0FNIERyYWdhbiBTaW1pYyA8ZHNpbWlj
-QG1hbmphcm8ub3JnPiAKPiB3cm90ZToKPj4gCj4+IEFkZCBzdXBwb3J0IGZvciB2b2x0YWdlIHJh
-bmdlcyB0byB0aGUgQ1BVLCBHUFUgYW5kIERNQyBPUFBzIGRlZmluZWQgaW4gCj4+IHRoZQo+PiBT
-b0MgZHRzaSBmb3IgUm9ja2NoaXAgT1AxLCBhcyBhIHZhcmlhbnQgb2YgdGhlIFJvY2tjaGlwIFJL
-MzM5OS4gIFRoaXMgCj4+IG1heSBiZQo+PiB1c2VmdWwgaWYgdGhlcmUgYXJlIGFueSBPUDEtYmFz
-ZWQgYm9hcmRzIHdob3NlIGFzc29jaWF0ZWQgdm9sdGFnZSAKPj4gcmVndWxhdG9ycwo+PiBhcmUg
-dW5hYmxlIHRvIGRlbGl2ZXIgdGhlIGV4YWN0IHZvbHRhZ2VzOyBvdGhlcndpc2UsIGl0IGNhdXNl
-cyBubyAKPj4gZnVuY3Rpb25hbAo+PiBjaGFuZ2VzIHRvIHRoZSByZXN1bHRpbmcgT1BQIHZvbHRh
-Z2VzIGF0IHJ1bnRpbWUuCj4+IAo+PiBUaGVzZSBjaGFuZ2VzIGNhbm5vdCBjYXVzZSBzdGFiaWxp
-dHkgaXNzdWVzIG9yIGFueSBraW5kIG9mIGRhbWFnZSwgCj4+IGJlY2F1c2UKPj4gaXQncyBwZXJm
-ZWN0bHkgc2FmZSB0byB1c2UgdGhlIGhpZ2hlc3Qgdm9sdGFnZSBmcm9tIGFuIE9QUCBncm91cCBm
-b3IgCj4+IGVhY2ggT1BQCj4+IGluIHRoZSBzYW1lIGdyb3VwLiAgVGhlIG9ubHkgcG9zc2libGUg
-bmVnYXRpdmUgZWZmZWN0IG9mIHVzaW5nIGhpZ2hlciAKPj4gdm9sdGFnZXMKPj4gaXMgd2FzdGVk
-IGVuZXJneSBpbiBmb3JtIG9mIHNvbWUgYWRkaXRpb25hbGx5IGdlbmVyYXRlZCBoZWF0Lgo+PiAK
-Pj4gUmVwb3J0ZWQtYnk6IFF1ZW50aW4gU2NodWx6IDxxdWVudGluLnNjaHVsekBjaGVycnkuZGU+
-Cj4+IFNpZ25lZC1vZmYtYnk6IERyYWdhbiBTaW1pYyA8ZHNpbWljQG1hbmphcm8ub3JnPgo+PiAt
-LS0KPj4gIGFyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszMzk5LW9wMS5kdHNpIHwgNTIg
-Cj4+ICsrKysrKysrKystLS0tLS0tLS0tCj4+ICAxIGZpbGUgY2hhbmdlZCwgMjYgaW5zZXJ0aW9u
-cygrKSwgMjYgZGVsZXRpb25zKC0pCj4+IAo+PiBkaWZmIC0tZ2l0IGEvYXJjaC9hcm02NC9ib290
-L2R0cy9yb2NrY2hpcC9yazMzOTktb3AxLmR0c2kgCj4+IGIvYXJjaC9hcm02NC9ib290L2R0cy9y
-b2NrY2hpcC9yazMzOTktb3AxLmR0c2kKPj4gaW5kZXggYjI0YmZmNTExNTEzLi5hYTc5MjE5NDcx
-ZDMgMTAwNjQ0Cj4+IC0tLSBhL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszMzk5LW9w
-MS5kdHNpCj4+ICsrKyBiL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszMzk5LW9wMS5k
-dHNpCj4+IEBAIC0xMiwxMjUgKzEyLDEyNSBAQCBjbHVzdGVyMF9vcHA6IG9wcC10YWJsZS0wIHsK
-Pj4gCj4+ICAgICAgICAgICAgICAgICBvcHAwMCB7Cj4+ICAgICAgICAgICAgICAgICAgICAgICAg
-IG9wcC1oeiA9IC9iaXRzLyA2NCA8NDA4MDAwMDAwPjsKPj4gLSAgICAgICAgICAgICAgICAgICAg
-ICAgb3BwLW1pY3Jvdm9sdCA9IDw4MDAwMDA+Owo+PiArICAgICAgICAgICAgICAgICAgICAgICBv
-cHAtbWljcm92b2x0ID0gPDgwMDAwMCA4MDAwMDAgMTE1MDAwMD47Cj4+ICAgICAgICAgICAgICAg
-ICAgICAgICAgIGNsb2NrLWxhdGVuY3ktbnMgPSA8NDAwMDA+Owo+PiAgICAgICAgICAgICAgICAg
-fTsKPj4gICAgICAgICAgICAgICAgIG9wcDAxIHsKPj4gICAgICAgICAgICAgICAgICAgICAgICAg
-b3BwLWh6ID0gL2JpdHMvIDY0IDw2MDAwMDAwMDA+Owo+PiAtICAgICAgICAgICAgICAgICAgICAg
-ICBvcHAtbWljcm92b2x0ID0gPDgyNTAwMD47Cj4+ICsgICAgICAgICAgICAgICAgICAgICAgIG9w
-cC1taWNyb3ZvbHQgPSA8ODI1MDAwIDgyNTAwMCAxMTUwMDAwPjsKPj4gICAgICAgICAgICAgICAg
-IH07Cj4+ICAgICAgICAgICAgICAgICBvcHAwMiB7Cj4+ICAgICAgICAgICAgICAgICAgICAgICAg
-IG9wcC1oeiA9IC9iaXRzLyA2NCA8ODE2MDAwMDAwPjsKPj4gLSAgICAgICAgICAgICAgICAgICAg
-ICAgb3BwLW1pY3Jvdm9sdCA9IDw4NTAwMDA+Owo+PiArICAgICAgICAgICAgICAgICAgICAgICBv
-cHAtbWljcm92b2x0ID0gPDg1MDAwMCA4NTAwMDAgMTE1MDAwMD47Cj4+ICAgICAgICAgICAgICAg
-ICB9Owo+PiAgICAgICAgICAgICAgICAgb3BwMDMgewo+PiAgICAgICAgICAgICAgICAgICAgICAg
-ICBvcHAtaHogPSAvYml0cy8gNjQgPDEwMDgwMDAwMDA+Owo+PiAtICAgICAgICAgICAgICAgICAg
-ICAgICBvcHAtbWljcm92b2x0ID0gPDkwMDAwMD47Cj4+ICsgICAgICAgICAgICAgICAgICAgICAg
-IG9wcC1taWNyb3ZvbHQgPSA8OTAwMDAwIDkwMDAwMCAxMTUwMDAwPjsKPj4gICAgICAgICAgICAg
-ICAgIH07Cj4+ICAgICAgICAgICAgICAgICBvcHAwNCB7Cj4+ICAgICAgICAgICAgICAgICAgICAg
-ICAgIG9wcC1oeiA9IC9iaXRzLyA2NCA8MTIwMDAwMDAwMD47Cj4+IC0gICAgICAgICAgICAgICAg
-ICAgICAgIG9wcC1taWNyb3ZvbHQgPSA8OTc1MDAwPjsKPj4gKyAgICAgICAgICAgICAgICAgICAg
-ICAgb3BwLW1pY3Jvdm9sdCA9IDw5NzUwMDAgOTc1MDAwIDExNTAwMDA+Owo+PiAgICAgICAgICAg
-ICAgICAgfTsKPj4gICAgICAgICAgICAgICAgIG9wcDA1IHsKPj4gICAgICAgICAgICAgICAgICAg
-ICAgICAgb3BwLWh6ID0gL2JpdHMvIDY0IDwxNDE2MDAwMDAwPjsKPj4gLSAgICAgICAgICAgICAg
-ICAgICAgICAgb3BwLW1pY3Jvdm9sdCA9IDwxMTAwMDAwPjsKPj4gKyAgICAgICAgICAgICAgICAg
-ICAgICAgb3BwLW1pY3Jvdm9sdCA9IDwxMTAwMDAwIDExMDAwMDAgMTE1MDAwMD47Cj4+ICAgICAg
-ICAgICAgICAgICB9Owo+PiAgICAgICAgICAgICAgICAgb3BwMDYgewo+PiAgICAgICAgICAgICAg
-ICAgICAgICAgICBvcHAtaHogPSAvYml0cy8gNjQgPDE1MTIwMDAwMDA+Owo+PiAtICAgICAgICAg
-ICAgICAgICAgICAgICBvcHAtbWljcm92b2x0ID0gPDExNTAwMDA+Owo+PiArICAgICAgICAgICAg
-ICAgICAgICAgICBvcHAtbWljcm92b2x0ID0gPDExNTAwMDAgMTE1MDAwMCAxMTUwMDAwPjsKPj4g
-ICAgICAgICAgICAgICAgIH07Cj4+ICAgICAgICAgfTsKPj4gCj4+ICAgICAgICAgY2x1c3RlcjFf
-b3BwOiBvcHAtdGFibGUtMSB7Cj4+ICAgICAgICAgICAgICAgICBjb21wYXRpYmxlID0gIm9wZXJh
-dGluZy1wb2ludHMtdjIiOwo+PiAgICAgICAgICAgICAgICAgb3BwLXNoYXJlZDsKPj4gCj4+ICAg
-ICAgICAgICAgICAgICBvcHAwMCB7Cj4+ICAgICAgICAgICAgICAgICAgICAgICAgIG9wcC1oeiA9
-IC9iaXRzLyA2NCA8NDA4MDAwMDAwPjsKPj4gICAgICAgICAgICAgICAgICAgICAgICAgb3BwLW1p
-Y3Jvdm9sdCA9IDw4MDAwMDA+Owo+PiAtICAgICAgICAgICAgICAgICAgICAgICBjbG9jay1sYXRl
-bmN5LW5zID0gPDQwMDAwPjsKPj4gKyAgICAgICAgICAgICAgICAgICAgICAgY2xvY2stbGF0ZW5j
-eS1ucyA9IDw0MDAwMCA0MDAwMCAxMjUwMDAwPjsKPiAKPiBEaWQgeW91IG1lYW4gdG8gdXBkYXRl
-IG9wcC1taWNyb3ZvbHQgaW5zdGVhZD8KCk9vcHMsIGxvb2sgYXQgdGhhdCEgOi8gIFRoYW5rcyBm
-b3IgdGhlIGNvcnJlY3Rpb24sIEknbGwgc2VuZCB0aGUgdjIKd2l0aCB0aGUgZml4LiAgSSBjcmVh
-dGVkIHNvbWUgbWFjcm8gaW4gdmltIHRoYXQgcHJvZHVjZWQgdGhlIHZvbHRhZ2UKcmFuZ2UgYWRk
-aXRpb25zLCBhbmQgYXMgeW91IGNhbiBzZWUsIEkgYXBwbGllZCB0aGF0IG1hY3JvIG1vcmUgdGhh
-bgphIGZldyB0aW1lcywgYW5kIHNvbWV0aW1lcyBhIGJpdCBjYXJlbGVzc2x5LiA6LwoKPiBTcGVh
-a2luZyBvZiB3aGljaCwgdGhpcyBzaW5nbGUgb3BwIGhhdmluZyBjbG9jay1sYXRlbmN5LW5zIHdo
-aWxlIG5vbmUKPiBvZiB0aGUgb3RoZXJzIGRvIChleGNlcHQgdGhlIGZpcnN0IG9uZSBpbiBjbHVz
-dGVyMCkgbG9va3Mgd2VpcmQuCgpZZXMsIEkgYWxzbyBub3RpY2VkIHRoYXQuICBUaG91Z2gsIHRo
-ZSB3YXkgdGhlIE9QUCBkcml2ZXIgd29ya3MsIG9ubHkKb25lIG9mIHRoZSBPUFBzIG5lZWQgdG8g
-aGF2ZSBjbG9jay1sYXRlbmN5LW5zIGRlZmluZWQgZm9yIGV2ZXJ5dGhpbmcKdG8gd29yayBhcyBl
-eHBlY3RlZC4KCkkgZGlkICJzcHJpbmtsZSIgdGhlIG1pc3NpbmcgY2xvY2stbGF0ZW5jeS1ucyB2
-YWx1ZXMgaW4gb25lIG9mIG15Cm90aGVyIHBhdGNoZXMsIFsqXSB1c2luZyB0aGUgdmFsdWVzIGZy
-b20gdGhlIHZlbmRvciBrZXJuZWwgc291cmNlLApidXQgaW4gdGhpcyBjYXNlIG5vIHN1Y2ggdmFs
-dWVzIGFyZSBhdmFpbGFibGUgZnJvbSB0aGUgdmVuZG9yLCBzbwp3ZSBjYW5ub3QgZ28gd2l0aCAi
-aW52ZW50aW5nIiB0aGVtIHNvbWVob3csIGFuZCB3ZSBuZWVkIHRvIGtlZXAKcmVseWluZyBvbiB0
-aGUgYWJvdmUtZGVzY3JpYmVkIE9QUCBkcml2ZXIncyBiZWhhdmlvci4KClsqXSAKaHR0cHM6Ly9s
-b3JlLmtlcm5lbC5vcmcvbGludXgtcm9ja2NoaXAvMmUxZTEwMDI4NGIxZWRiNDcwZDZlN2ZkZTAy
-MWEwZjE3NzkzMzZjOC4xNzI4NzUyNTI3LmdpdC5kc2ltaWNAbWFuamFyby5vcmcvCgpfX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBt
-YWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlz
-dHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+Add support for voltage ranges to the CPU, GPU and DMC OPPs defined in the
+SoC dtsi for Rockchip OP1, as a variant of the Rockchip RK3399.  This may be
+useful if there are any OP1-based boards whose associated voltage regulators
+are unable to deliver the exact voltages; otherwise, it causes no functional
+changes to the resulting OPP voltages at runtime.
+
+These changes cannot cause stability issues or any kind of damage, because
+it's perfectly safe to use the highest voltage from an OPP group for each OPP
+in the same group.  The only possible negative effect of using higher voltages
+is wasted energy in form of some additionally generated heat.
+
+Reported-by: Quentin Schulz <quentin.schulz@cherry.de>
+Signed-off-by: Dragan Simic <dsimic@manjaro.org>
+---
+
+Notes:
+    Changes in v2:
+      - Fixed one wrong application of a vim macro [1] that somehow slipped
+        through the cracks, as pointed out by Alexey [2]
+    
+    Link to v1: https://lore.kernel.org/linux-rockchip/806d5e2a07ae0c81d9907bbe8bec4e3e1138b392.1730838347.git.dsimic@manjaro.org/T/#u
+    
+    [1] https://lore.kernel.org/linux-rockchip/0c237c49fae03bdad99be04053285ea2@manjaro.org/
+    [2] https://lore.kernel.org/linux-rockchip/CABjd4Yyt6WiY5E5DbyjnboFvsTpp33dydkGMF7AwMB9m7bfX6A@mail.gmail.com/
+
+ arch/arm64/boot/dts/rockchip/rk3399-op1.dtsi | 52 ++++++++++----------
+ 1 file changed, 26 insertions(+), 26 deletions(-)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-op1.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-op1.dtsi
+index b24bff511513..c4f4f1ff6117 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-op1.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399-op1.dtsi
+@@ -12,125 +12,125 @@ cluster0_opp: opp-table-0 {
+ 
+ 		opp00 {
+ 			opp-hz = /bits/ 64 <408000000>;
+-			opp-microvolt = <800000>;
++			opp-microvolt = <800000 800000 1150000>;
+ 			clock-latency-ns = <40000>;
+ 		};
+ 		opp01 {
+ 			opp-hz = /bits/ 64 <600000000>;
+-			opp-microvolt = <825000>;
++			opp-microvolt = <825000 825000 1150000>;
+ 		};
+ 		opp02 {
+ 			opp-hz = /bits/ 64 <816000000>;
+-			opp-microvolt = <850000>;
++			opp-microvolt = <850000 850000 1150000>;
+ 		};
+ 		opp03 {
+ 			opp-hz = /bits/ 64 <1008000000>;
+-			opp-microvolt = <900000>;
++			opp-microvolt = <900000 900000 1150000>;
+ 		};
+ 		opp04 {
+ 			opp-hz = /bits/ 64 <1200000000>;
+-			opp-microvolt = <975000>;
++			opp-microvolt = <975000 975000 1150000>;
+ 		};
+ 		opp05 {
+ 			opp-hz = /bits/ 64 <1416000000>;
+-			opp-microvolt = <1100000>;
++			opp-microvolt = <1100000 1100000 1150000>;
+ 		};
+ 		opp06 {
+ 			opp-hz = /bits/ 64 <1512000000>;
+-			opp-microvolt = <1150000>;
++			opp-microvolt = <1150000 1150000 1150000>;
+ 		};
+ 	};
+ 
+ 	cluster1_opp: opp-table-1 {
+ 		compatible = "operating-points-v2";
+ 		opp-shared;
+ 
+ 		opp00 {
+ 			opp-hz = /bits/ 64 <408000000>;
+-			opp-microvolt = <800000>;
++			opp-microvolt = <800000 800000 1250000>;
+ 			clock-latency-ns = <40000>;
+ 		};
+ 		opp01 {
+ 			opp-hz = /bits/ 64 <600000000>;
+-			opp-microvolt = <800000>;
++			opp-microvolt = <800000 800000 1250000>;
+ 		};
+ 		opp02 {
+ 			opp-hz = /bits/ 64 <816000000>;
+-			opp-microvolt = <825000>;
++			opp-microvolt = <825000 825000 1250000>;
+ 		};
+ 		opp03 {
+ 			opp-hz = /bits/ 64 <1008000000>;
+-			opp-microvolt = <850000>;
++			opp-microvolt = <850000 850000 1250000>;
+ 		};
+ 		opp04 {
+ 			opp-hz = /bits/ 64 <1200000000>;
+-			opp-microvolt = <900000>;
++			opp-microvolt = <900000 900000 1250000>;
+ 		};
+ 		opp05 {
+ 			opp-hz = /bits/ 64 <1416000000>;
+-			opp-microvolt = <975000>;
++			opp-microvolt = <975000 975000 1250000>;
+ 		};
+ 		opp06 {
+ 			opp-hz = /bits/ 64 <1608000000>;
+-			opp-microvolt = <1050000>;
++			opp-microvolt = <1050000 1050000 1250000>;
+ 		};
+ 		opp07 {
+ 			opp-hz = /bits/ 64 <1800000000>;
+-			opp-microvolt = <1150000>;
++			opp-microvolt = <1150000 1150000 1250000>;
+ 		};
+ 		opp08 {
+ 			opp-hz = /bits/ 64 <2016000000>;
+-			opp-microvolt = <1250000>;
++			opp-microvolt = <1250000 1250000 1250000>;
+ 		};
+ 	};
+ 
+ 	gpu_opp_table: opp-table-2 {
+ 		compatible = "operating-points-v2";
+ 
+ 		opp00 {
+ 			opp-hz = /bits/ 64 <200000000>;
+-			opp-microvolt = <800000>;
++			opp-microvolt = <800000 800000 1075000>;
+ 		};
+ 		opp01 {
+ 			opp-hz = /bits/ 64 <297000000>;
+-			opp-microvolt = <800000>;
++			opp-microvolt = <800000 800000 1075000>;
+ 		};
+ 		opp02 {
+ 			opp-hz = /bits/ 64 <400000000>;
+-			opp-microvolt = <825000>;
++			opp-microvolt = <825000 825000 1075000>;
+ 		};
+ 		opp03 {
+ 			opp-hz = /bits/ 64 <500000000>;
+-			opp-microvolt = <850000>;
++			opp-microvolt = <850000 850000 1075000>;
+ 		};
+ 		opp04 {
+ 			opp-hz = /bits/ 64 <600000000>;
+-			opp-microvolt = <925000>;
++			opp-microvolt = <925000 925000 1075000>;
+ 		};
+ 		opp05 {
+ 			opp-hz = /bits/ 64 <800000000>;
+-			opp-microvolt = <1075000>;
++			opp-microvolt = <1075000 1075000 1075000>;
+ 		};
+ 	};
+ 
+ 	dmc_opp_table: opp-table-3 {
+ 		compatible = "operating-points-v2";
+ 
+ 		opp00 {
+ 			opp-hz = /bits/ 64 <400000000>;
+-			opp-microvolt = <900000>;
++			opp-microvolt = <900000 900000 925000>;
+ 		};
+ 		opp01 {
+ 			opp-hz = /bits/ 64 <666000000>;
+-			opp-microvolt = <900000>;
++			opp-microvolt = <900000 900000 925000>;
+ 		};
+ 		opp02 {
+ 			opp-hz = /bits/ 64 <800000000>;
+-			opp-microvolt = <900000>;
++			opp-microvolt = <900000 900000 925000>;
+ 		};
+ 		opp03 {
+ 			opp-hz = /bits/ 64 <928000000>;
+-			opp-microvolt = <925000>;
++			opp-microvolt = <925000 925000 925000>;
+ 		};
+ 	};
+ };
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
