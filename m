@@ -4,160 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E8D02D44D5C
-	for <linux-rockchip@archiver.kernel.org>; Wed,  6 Nov 2024 13:44:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 69751D44D6A
+	for <linux-rockchip@archiver.kernel.org>; Wed,  6 Nov 2024 13:52:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:From:References:Cc:To:
-	Subject:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=P5AOcXawY+FB3u+KxyxAQXtzqmXPoWerV1/VK3RXDfo=; b=D9sKxs4kzb/iZzgEYhKWE5v2Ox
-	m5txl+q8g9k2dlIYTg2d8BUJ8ClTbZfUgTwsI+qxwCyTh2l9McTfjeE2cMW7cbQha0x+6rjnDYrP9
-	bGX5ig4lX0KOEw7cwizhC2NYMx9ZP//JotqNVZ6zhryATOR05y70vdAvN1GEBrcnaH9RFZ1Wvc89P
-	7gWZDq8/y9GrBx6HddrbGZvEsr6DeDxyqAYgP3E24B+MAsf5UTsbH37xuBjqrXYOGmCcbdwWH84vE
-	Xvs3/dK52kuRkylZRRQQbnz9003AMxZa7DLVdHuXRGLRRGDEyFddXAYB0DajZ5Ei3QEUvWQUxZHrS
-	umIU6lEw==;
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:References:To:From:Subject:Cc:Message-Id:Date:Mime-Version:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=PWAsNFCd+Mde2nH39B+0fb5LEUWpAylc6Z7JPEBvRA0=; b=RX7itbCNIl1uK/5PUt/RSC6O+5
+	l5qK8LlVSlGOfKg30Nqp3xniWcOJ78tfPjO+aCy8qaNXBGfV/sol9QQ8nNZL/nYZ/aLekPFXD5jaz
+	taU+FIENeBUBBoFwtGhTtdC1SMh3rVKK2ypDh2NX6FhwiYOcNxECqPcg5NzXrGyUWEKX7+QKcDB6G
+	9i5O4MQtDO7gKnCgHv/JBsumwD1iyJc6jnVw3nz+6xNrOFvAL5WbQJOKqcS0rEgHXz4zxyT3x7irc
+	ykDVF7TiEuXuO9XKsb7qU0hUz7ilKDeGy0gIoUj2KWIFexqruFl0jAFd5sOgqEUd+uSTwKI/KCp1P
+	+GEu38rQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t8gKj-00000003T6c-3fcX;
-	Wed, 06 Nov 2024 13:44:29 +0000
-Received: from mail-vi1eur03on2060f.outbound.protection.outlook.com ([2a01:111:f403:260c::60f] helo=EUR03-VI1-obe.outbound.protection.outlook.com)
+	id 1t8gSG-00000003Uof-1KrJ;
+	Wed, 06 Nov 2024 13:52:16 +0000
+Received: from out-174.mta0.migadu.com ([91.218.175.174])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t8fw0-00000003OYe-0YWM;
-	Wed, 06 Nov 2024 13:18:58 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=i0u1sx8qJvfFbUEyJq3uQMrg9wyly+232cwYJGJIY5kpSZjEukkuFX43svkM+Fr9RYL+sSPz2WHPh9DUj7URgBcr7sm32a+c1ORQXyOUgvAl85TQgs3P1g0S7+neReP3Mm4m6B2xvgd6isjCKPBFwIcVBY9/bIxzFCCpbceHJwso1MW00q6I91/7cKRCES67FELKy3u4c414Df+fngTqJajuIl0HyDE9uQ1A3NEy39+AdWUkFjLywe254U0x5W8fqMJOvbw1nFFk//DFMoGXPBV42az3A+ryjcfWH0ZQRgCcDSXdcGlsYiNz31VAgTocfaas3JFls4t9mnTwVfMjhA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=2K6dgjN5KzaaH9tZiZ6WedJuuaUsgkKqMIFPblQUvKA=;
- b=KXM6VSXeg6/Zl0jt6wszZQKBBS6dEDM4YxNvxEAk329uc/TUjSaveUzCQjwkldV/F0Osrdsuzr0SBf3De/UnXvYI2qcpBhwUGfa287oS534sJsJu0qgBkOoANGEIOPJB65xpD1o5QZmJJoz+l3WnYTK0atLjkzcH9Xg80O386Sgw+FqTwfFkGxgah9A5nQTqUFE5R+raUEGQL/tBE6h5tCjY8pXJNQpH+9NK78U0dLjkc/DIn/JuKzXK96d7/t/fTJE5xLGRIMYdFCNiBMsoy0V69cZ80GPSr2E+4wEY3Db4IBM5T+Ubr0KZhDAPkUzKU9UUXDqeW4XCT+FkpH810g==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=cherry.de; dmarc=pass action=none header.from=cherry.de;
- dkim=pass header.d=cherry.de; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cherry.de;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=2K6dgjN5KzaaH9tZiZ6WedJuuaUsgkKqMIFPblQUvKA=;
- b=fntnaTIZBEK5ndOcG6DhM2ANa8khyLjHmFPpOZL2d6+FoMUnmoIbITZ39hzxfYBsbQOaViCdBlL/6+CXhEKnjnikyGRyVK9Bp8kgq+BufiGS/1zgCT7TZI14z+H0zc9lhOOCP4rJhNHEYPkJ4AYQEXLWl3u77GpoFNq4VourS/0=
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=cherry.de;
-Received: from AS8PR04MB8897.eurprd04.prod.outlook.com (2603:10a6:20b:42c::20)
- by PA4PR04MB7600.eurprd04.prod.outlook.com (2603:10a6:102:f2::8) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8114.31; Wed, 6 Nov
- 2024 13:18:51 +0000
-Received: from AS8PR04MB8897.eurprd04.prod.outlook.com
- ([fe80::35f6:bc7d:633:369a]) by AS8PR04MB8897.eurprd04.prod.outlook.com
- ([fe80::35f6:bc7d:633:369a%7]) with mapi id 15.20.8137.018; Wed, 6 Nov 2024
- 13:18:50 +0000
-Message-ID: <c53b4149-fc8c-4357-a881-de07d6ebf7ac@cherry.de>
-Date: Wed, 6 Nov 2024 14:18:49 +0100
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 3/3] arm64: dts: rockchip: add overlay for tiger-haikou
- video-demo adapter
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
- Heiko Stuebner <heiko.stuebner@cherry.de>
-References: <20241106123758.423584-1-heiko@sntech.de>
- <20241106123758.423584-4-heiko@sntech.de>
-Content-Language: en-US
-From: Quentin Schulz <quentin.schulz@cherry.de>
-In-Reply-To: <20241106123758.423584-4-heiko@sntech.de>
-X-ClientProxiedBy: FR3P281CA0184.DEUP281.PROD.OUTLOOK.COM
- (2603:10a6:d10:a4::19) To AS8PR04MB8897.eurprd04.prod.outlook.com
- (2603:10a6:20b:42c::20)
-MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: AS8PR04MB8897:EE_|PA4PR04MB7600:EE_
-X-MS-Office365-Filtering-Correlation-Id: 2172e59d-9d13-4390-11f2-08dcfe658dfc
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|366016|376014|1800799024|10070799003;
-X-Microsoft-Antispam-Message-Info: =?utf-8?B?WkJQaTBoL0F1K0ZHK1A5S1pLNkFFNGY3emF1NWRnNnlydi9ZbTZXNXpYblov?=
- =?utf-8?B?Zy9Obzlmd3NJU0NHc1I2WW5nYWo1Tk5CMUszejNFSmpyVTBWMXRSZThjMHpN?=
- =?utf-8?B?TU5CVGZCSGQ1WUVHT0VaVDVBVVdlbVZzdXRFaVpQTGtpcU91UEFBTXA0SFBV?=
- =?utf-8?B?ZmVUQnJxL0g1RlB6b3Z0aUV2OXFqYUJzcWwvN1hUbHNmQnNEWmh4STRmYXFk?=
- =?utf-8?B?SndGUG1lVmpQQlM1akVJclM1RlhKWk1YejA2eWRnajRJT3JsdUV4eUhUWEFl?=
- =?utf-8?B?Rkp6eVBuWmIvTklYRmZOUS9EdHgvUlhReWhjZk9FU3h6NVoxL1paRmVWQWlI?=
- =?utf-8?B?RU16Q2Z6MTNnbHlzRHZJQldMaytVY3N3N1RRZkxrWnI5N0tWNXMyN0dtOWh1?=
- =?utf-8?B?V0V2cC9Pa1dER0xydkh4d2NJU3F4NE5wcnB2OE5lTjBDMzdkUTRHWVpaOXFu?=
- =?utf-8?B?ZjJvZE5TS1puRU51Z3lSUFAxdU53bytTei9BejFlbGw5S0pqVlA0NS9MeFQx?=
- =?utf-8?B?dHVlSzlneFdFYUVvRzhzRTFUai9JV0RsOXNRWFZ1cGFId3JXamJSTUJuWnpY?=
- =?utf-8?B?N09WR2NaT3VuaXlyd0tUZkNqa0ZJK0dUQ3NTWEk4ZXl1SW5aMkZickpCVnRw?=
- =?utf-8?B?N01wQnFYdjl3N0Uza2h5L0pIOWk5VXg1TndCUUZiVUdkTy9qY2NOZkczU0hz?=
- =?utf-8?B?b0hMWWx0L1I0OVdZQ3BnV01VZC9Dc3JvUmZTVEZPWjc5M0hnbHNWUXlWTzY1?=
- =?utf-8?B?bHZrNytDdFZhaG85UnhzQjV0STFmY3V6MCtZSTlsTFF4V2RCUkxEOVVwdFg3?=
- =?utf-8?B?S0RYQStML3BJUHllVitnVXdRRFJpeWYvODJJYTZzaWVhb2N0RlduUGNLR0Zn?=
- =?utf-8?B?MFJTTlIzbzFlS3VyT2hFWXl4bTZuRUUzdTBZS3pVaUFlZjhXUnNpZzdMQVYy?=
- =?utf-8?B?OHhRdVNiR25uRXFzQnQ0UllMSE1RS3IxdlU5V2htY01wb2J2YW5YMFByV3Zj?=
- =?utf-8?B?OUhJWEhJcDNVVDBRRVlnSkppVjRQWXBYcUZZanZzR1M1RVBXeFppSUZlUDM3?=
- =?utf-8?B?RXZ4MHhoN1d0ZTVOZVJOVDBpamY0ZDBGYVdZdy82SWJ3bUlSK1VyZHMxOEhl?=
- =?utf-8?B?b0F6aERmUEo2djZJT091NldYN3JTZ2ZLalY5Qy9oTzRpdEJUeThqQy9xbTFP?=
- =?utf-8?B?UnQwMG5xNXZlU2ZEQWNpbStrVDBqK0diK2FvNWNqYkpUalhFa2JOQy9FUUxC?=
- =?utf-8?B?NGFCZkJTc0MzTjlreTBOSjFIdjIyS2dhbEgyODB5N1h2cXZOMDNZb2Y3VEdx?=
- =?utf-8?B?NS9XUEFzZ0RqRThQKytnZFkwT1lQRkRPbmtUT0gwd1BlbFJja3kxTngwbTZ1?=
- =?utf-8?B?OEkvL3VLMGJWYjVCV0tOYmNKOUYvdHpwcG1VajdLdkxWL2F4c3NBOW1WazZ3?=
- =?utf-8?B?cnBpWFlqWS9wTE5GOUdPQTRieDJETGxCaTUzandJVmZFc1pwN2pwcVJjRytX?=
- =?utf-8?B?RDQ3Rjkwa3ZLSzg4ajNKUi93RENwdlRPNEM5TFpBanNhYi8rN0VHcHo1Mmlw?=
- =?utf-8?B?WWF3M3grUXZBYnIwTzVlMXJjSHI5YkNFTDF1M2dMdS8rejA0R0VwL3hPb3Vl?=
- =?utf-8?B?NE1EZHhjakIvQk13ZzdSU3RVQ0lESnhSR0xxM3lKcCsrbXNhNnQ1cFkwMng3?=
- =?utf-8?Q?xKlpZa7zR0yoodZZkwr8?=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:AS8PR04MB8897.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(366016)(376014)(1800799024)(10070799003);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?TDlSZi9ORXp1cDN3dDdqazd2NEFUNCs1czh3ajdxS0o3aTZpZlRpU3F2aGNG?=
- =?utf-8?B?Q2ZWTkxHODRTTklDNG13YlYvVnJXZzZhRDZORU5JRG0zUi96VmMwZGl0dUhV?=
- =?utf-8?B?ZnlmcFFWTFhqZ2ZEdzM4TkVLdE1pVHN6bzkzbEdCR0hVVllzS3NWZjc1ZnJP?=
- =?utf-8?B?WWZzTkNrajRnTTcyS1ltaTBwRlpFeXRCYjI0RGpSbkF1ekh4c3hEeTBpbFJl?=
- =?utf-8?B?UTdKTmRHcDhiS0NVcS9VWlpHRkFHNTdPcGt5TEpzbjNtS3VQVzFRT00xSUJ4?=
- =?utf-8?B?TFNWZTRiN0xEMlFqclFTUlhKZXdpaHlncFRYZTh2NWo3VGFZa2d5bjcxWElk?=
- =?utf-8?B?N3RZanZyNk9uYkk2Z2JDSVhQQzVyYUczYlRUdnNpRWxLMml1U29CNlQvdWlS?=
- =?utf-8?B?Q0JpczRnamwzTVE4UzVVUjNzM0dKK3lpMlJ2My9OSDRDeEVnaU5LWnByZWFp?=
- =?utf-8?B?UHhUNzdUWGZ3cHZPOHdsRVBBMjVPeEd5RHdLN3pGUm9vajY5b2dVWGc3MnZh?=
- =?utf-8?B?V1Ivckh2NjRVTFFmZjJrRnVSQlJLN2xxNnNYK2Y2akkxL1hUMzRBeVdkWDlS?=
- =?utf-8?B?OSt1STlSRG56aTBqazlnZHNvSEhjbGw1ZHFUeXgwWVpVK1lmajNwK3NTUUky?=
- =?utf-8?B?bUxwSVBCQWVldGdrUmVseldKcy9wZmxMN3k3eVdxTk14bS9JaVZ3K1k1UHVj?=
- =?utf-8?B?b3RVOUh6MWlkRWhLclRJdnl6czRQeEtVa2U5UUZTYVFzdlJNcEZDU1p3R0dR?=
- =?utf-8?B?eGduc05JMDRtSnBqTHJVKzVDTU5STEtpeHVDRlBEVGZmQTZxWURTd3E0TTdO?=
- =?utf-8?B?RHRDMThqOUtyd3pVYjJLSjN0ZzRTWHlxSTAxUEh1WE1RRzJtT0RoeG1jTVEy?=
- =?utf-8?B?V2pPWVdpbHR6bUZLcktUdldsaHhzMExGSDh4Qjh6WFB2ck0yVVhUVUlhSUEx?=
- =?utf-8?B?c3QyTkxaZ25KMlYzU0JxVEgzM2pnV0JFTDkzeWRYZ2xBQ3puQzBWSHlicW4w?=
- =?utf-8?B?N012THdFWlFlbS9nQ1Q3NW9SbmF1cXE3WGZoYUY5MFgyTCtpSWhJdzRQZUs3?=
- =?utf-8?B?UXRTczYyblV3WlFBcm1xeUdSNHlxZ3ZGZDU0bkhNUXl3TlVTSS9mRHYwUDda?=
- =?utf-8?B?SUwvQzhIRmczVzVwSFoyTU14RG1pd1B1YzNoaFpqNHhuM1J6RGhqclZIbTUz?=
- =?utf-8?B?SnF5c0lHbGVOblNLQjdXS0QwaER0U2NTMmc0dkNwRXBIdXpmVjgzUnF2YW9u?=
- =?utf-8?B?YXAyaFd0OGk2V2lsOWRJMHlMUy9Ba2tFbldEUkx5WFB2WUVJMlQ3VS9MZXdv?=
- =?utf-8?B?amRyOFBTeGdkdFFiWHRpK1RpVkt1Y2MzRjl5RjJvcEh0eGtpd3pmM2NxMFpM?=
- =?utf-8?B?dVpZUkY1WnZTblgxWlhwMHc4Z2VOZTdKNnVHV2ZTTmsyckJGMzJSbDlEN0ky?=
- =?utf-8?B?U2lmNVhJQXNNZmxHZk5PYXlML2xpY0lTU2krdEVtUndrU2VNdUl2d25ickR1?=
- =?utf-8?B?aG5FWXpXMVlBWnVKdkdYamxsV01wYUh0bnRrclo1S0ZTeis4ajArT2ZLWE1U?=
- =?utf-8?B?N2piUWdhc2Q3S1FjSTA4a1Q3cUxKcXlRNlQ1MFgvN1crWDRBeDFDS0pldUV2?=
- =?utf-8?B?SHRGQlppcnVpMnRGZlJPcVprU0djTGxRMmRvQXM1eW9pV05ueWVuYlVyeS8y?=
- =?utf-8?B?V1NoU2pkTEhabmhWdjNqKzhRZHlEQTdTSnFEZjJadU1ReE5TcldibU1tRGsy?=
- =?utf-8?B?c0VCZG9LOFVYZUpzWWg1VVBJeHJUei9XeE52Z1ZVNnNISGhqNXBGOU1GbElu?=
- =?utf-8?B?MDU1a2dvSjlwSzMxM0tiaHNURVlCaEFlTmJld2Q3Mjg4c21RMzJ0ejNJM1Jq?=
- =?utf-8?B?N2pkVTk1c28yZkNQNGw1VU9maEFXQnZEUEVIVFhNZUFGbjU4aCtTUXJ1ajZB?=
- =?utf-8?B?eXpTVEZNaVY5QjRFK2pqSFNNc0pIblUyRG53aHFCNm1zN0k3c2dZR296RnRs?=
- =?utf-8?B?R2xsbnk1a2s2ckFXNmhUMTRxbDFaOHRESi9LTDZNT1U2cFdwM1l2cWYwMGhh?=
- =?utf-8?B?aTBLbWcyNkdWVXUvVERPbkFZbWpGaEdTUkI5Q1RTZHY0ZnRUaHlKdmR1K1J0?=
- =?utf-8?B?eFRBRnZpNytJak9hV3FwdCsvMkpGS2NBQ3EzTDNWVjNIVElJdVJVSU9STHV5?=
- =?utf-8?Q?L2xsGezY26OMrSmtn3Fstpo=3D?=
-X-OriginatorOrg: cherry.de
-X-MS-Exchange-CrossTenant-Network-Message-Id: 2172e59d-9d13-4390-11f2-08dcfe658dfc
-X-MS-Exchange-CrossTenant-AuthSource: AS8PR04MB8897.eurprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 06 Nov 2024 13:18:50.8758
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 5e0e1b52-21b5-4e7b-83bb-514ec460677e
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: 8AaEgRisaHGbvMT+AWun/ZhEIxv9DHfNgPwAvQhKQAJJmJHKATGI5Eu15GMpDkfti+OqL8eQGULgnwTGatv/0Iyrhpg5odHMYa4tFKdrqDg=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: PA4PR04MB7600
+	id 1t8gAK-00000003Qn6-2vkI
+	for linux-rockchip@lists.infradead.org;
+	Wed, 06 Nov 2024 13:33:46 +0000
+Mime-Version: 1.0
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow.org; s=key1;
+	t=1730900016;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=L0Hs6MfDCm9OBvKWZZJPXB/waj4QxbzOt9Cz60jbht4=;
+	b=LeRUpQNYFntxZ+/Nas9OV9ZCgqsiaBopA9T6kwwlVsGNY7e1+NIIFQWDTdcaRDu9qyf6ih
+	w32tggnc5H2JES/qBsegQYw7JjbB3qsl3Pe0ToX/p8Tk51LfXoFKVroIcwN2K0WOJY01lc
+	a3wcNKIQxJ/IDoxtK2cYh3niQWjxQuwJiDsoQpY200HRyjoDOAseFIJppgiqyyQvI292e2
+	FEOb/J/BnmRdoRGOt5AAZzBxBvHt1XW7HIJJtWjGVbXl4RwUZovFtWBGl7ppBcaBiaA7Ma
+	28nvs1fC+duP1hADHeC1H/nebhqJRclV4Apz6f9D51wkHChYLzV2bzs0Vcgvkw==
+Date: Wed, 06 Nov 2024 14:33:25 +0100
+Message-Id: <D5F4UD59MUJG.2HFCTRSPELO98@cknow.org>
+Cc: <andy.yan@rock-chips.com>, <maarten.lankhorst@linux.intel.com>,
+ <mripard@kernel.org>, <tzimmermann@suse.de>, <robh@kernel.org>,
+ <krzk+dt@kernel.org>, <conor+dt@kernel.org>, <andrzej.hajda@intel.com>,
+ <neil.armstrong@linaro.org>, <rfoss@kernel.org>,
+ <Laurent.pinchart@ideasonboard.com>, <jonas@kwiboo.se>,
+ <jernej.skrabec@gmail.com>, <dri-devel@lists.freedesktop.org>,
+ <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-rockchip@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+ <quentin.schulz@cherry.de>, "Heiko Stuebner" <heiko.stuebner@cherry.de>
+Subject: Re: [PATCH 3/3] drm/rockchip: Add MIPI DSI2 glue driver for RK3588
+X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
+From: "Diederik de Haas" <didi.debian@cknow.org>
+To: "Heiko Stuebner" <heiko@sntech.de>
+References: <20241106123304.422854-1-heiko@sntech.de>
+ <20241106123304.422854-4-heiko@sntech.de>
+In-Reply-To: <20241106123304.422854-4-heiko@sntech.de>
+X-Migadu-Flow: FLOW_OUT
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241106_051856_390347_95AEA012 
-X-CRM114-Status: GOOD (  26.98  )
+X-CRM114-CacheID: sfid-20241106_053345_001807_133F9CFF 
+X-CRM114-Status: GOOD (  23.49  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -169,261 +72,201 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: multipart/mixed; boundary="===============4521031688668873928=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Heiko,
+--===============4521031688668873928==
+Content-Type: multipart/signed;
+ boundary=941c37924af32141fe5e0f79007b5e08666732b6921ee74e1ee56a0ed058;
+ micalg=pgp-sha256; protocol="application/pgp-signature"
 
-On 11/6/24 1:37 PM, Heiko Stuebner wrote:
+--941c37924af32141fe5e0f79007b5e08666732b6921ee74e1ee56a0ed058
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=UTF-8
+
+On Wed Nov 6, 2024 at 1:33 PM CET, Heiko Stuebner wrote:
 > From: Heiko Stuebner <heiko.stuebner@cherry.de>
-> 
-> This adds support for the video-demo-adapter for the Haikou devkit with
-> Tiger RK3588 SoM.
-> 
-> The Video Demo adapter is an adapter connected to the fake PCIe slot
-> labeled "Video Connector" on the Haikou devkit.
-> 
-> It's main feature is a Leadtek DSI-display with touchscreen. To drive these
-
-Well that and a camera :)
-
-Maybe we can provide the "official" name of that adapter so people can 
-easily find it on our product page?
-
-DEVKIT ADDON CAM-TS-A01
-https://embedded.cherry.de/product/development-kit/
-
-> components a number of additional regulators are grouped on the adapter as
-> well as a PCA9670 gpio-expander to provide the needed additional gpio-lines.
-> 
+>
+> This adds the glue code for the MIPI DSI2 bridge on Rockchip SoCs and
+> enables its use on the RK3588.
+>
+> Right now the DSI2 controller is always paired with a DC-phy based on a
+> Samsung IP, so the interface values are set statically for now.
+> This stays true for the upcoming RK3576 as well.
+>
 > Signed-off-by: Heiko Stuebner <heiko.stuebner@cherry.de>
 > ---
->   arch/arm64/boot/dts/rockchip/Makefile         |   1 +
->   .../rk3588-tiger-haikou-video-demo.dtso       | 153 ++++++++++++++++++
->   2 files changed, 154 insertions(+)
->   create mode 100644 arch/arm64/boot/dts/rockchip/rk3588-tiger-haikou-video-demo.dtso
-> 
-> diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
-> index 09423070c992..0c4ee6a767b8 100644
-> --- a/arch/arm64/boot/dts/rockchip/Makefile
-> +++ b/arch/arm64/boot/dts/rockchip/Makefile
-> @@ -143,6 +143,7 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-rock-5b.dtb
->   dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-rock-5b-pcie-ep.dtbo
->   dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-rock-5b-pcie-srns.dtbo
->   dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-tiger-haikou.dtb
-> +dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-tiger-haikou-video-demo.dtbo
->   dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-toybrick-x0.dtb
->   dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-turing-rk1.dtb
->   dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588s-coolpi-4b.dtb
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3588-tiger-haikou-video-demo.dtso b/arch/arm64/boot/dts/rockchip/rk3588-tiger-haikou-video-demo.dtso
+>  drivers/gpu/drm/rockchip/Kconfig              |  10 +
+>  drivers/gpu/drm/rockchip/Makefile             |   1 +
+>  .../gpu/drm/rockchip/dw-mipi-dsi2-rockchip.c  | 524 ++++++++++++++++++
+>  drivers/gpu/drm/rockchip/rockchip_drm_drv.c   |   2 +
+>  drivers/gpu/drm/rockchip/rockchip_drm_drv.h   |   1 +
+>  5 files changed, 538 insertions(+)
+>  create mode 100644 drivers/gpu/drm/rockchip/dw-mipi-dsi2-rockchip.c
+>
+> diff --git a/drivers/gpu/drm/rockchip/Kconfig b/drivers/gpu/drm/rockchip/=
+Kconfig
+> index 448fadd4ba15..99d4b260de85 100644
+> --- a/drivers/gpu/drm/rockchip/Kconfig
+> +++ b/drivers/gpu/drm/rockchip/Kconfig
+> @@ -10,6 +10,7 @@ config DRM_ROCKCHIP
+>  	select DRM_DW_HDMI if ROCKCHIP_DW_HDMI
+>  	select DRM_DW_HDMI_QP if ROCKCHIP_DW_HDMI_QP
+>  	select DRM_DW_MIPI_DSI if ROCKCHIP_DW_MIPI_DSI
+> +	select DRM_DW_MIPI_DSI2 if ROCKCHIP_DW_MIPI_DSI2
+>  	select GENERIC_PHY if ROCKCHIP_DW_MIPI_DSI
+>  	select GENERIC_PHY_MIPI_DPHY if ROCKCHIP_DW_MIPI_DSI
+>  	select SND_SOC_HDMI_CODEC if ROCKCHIP_CDN_DP && SND_SOC
+> @@ -81,6 +82,15 @@ config ROCKCHIP_DW_MIPI_DSI
+>  	  enable MIPI DSI on RK3288 or RK3399 based SoC, you should
+>  	  select this option.
+> =20
+> +config ROCKCHIP_DW_MIPI_DSI2
+> +	bool "Rockchip specific extensions for Synopsys DW MIPI DSI"
+> +	select GENERIC_PHY_MIPI_DPHY
+> +	help
+> +	  This selects support for Rockchip SoC specific extensions
+> +	  for the Synopsys DesignWare dsi driver. If you want to
+> +	  enable MIPI DSI on RK3288 or RK3399 based SoC, you should
+> +	  select this option.
+
+The commit message and the cover letter talk about RK3588 (and RK3576),
+so this seems like a copy-n-paste error (from DSI '1')?
+I'd also prefer 'dsi' to be in capitals (thus 'DSI').
+
+> +
+>  config ROCKCHIP_INNO_HDMI
+>  	bool "Rockchip specific extensions for Innosilicon HDMI"
+>  	select DRM_DISPLAY_HDMI_HELPER
+> diff --git a/drivers/gpu/drm/rockchip/Makefile b/drivers/gpu/drm/rockchip=
+/Makefile
+> index 3eab662a5a1d..2b867cebbc12 100644
+> --- a/drivers/gpu/drm/rockchip/Makefile
+> +++ b/drivers/gpu/drm/rockchip/Makefile
+> @@ -13,6 +13,7 @@ rockchipdrm-$(CONFIG_ROCKCHIP_CDN_DP) +=3D cdn-dp-core.=
+o cdn-dp-reg.o
+>  rockchipdrm-$(CONFIG_ROCKCHIP_DW_HDMI) +=3D dw_hdmi-rockchip.o
+>  rockchipdrm-$(CONFIG_ROCKCHIP_DW_HDMI_QP) +=3D dw_hdmi_qp-rockchip.o
+>  rockchipdrm-$(CONFIG_ROCKCHIP_DW_MIPI_DSI) +=3D dw-mipi-dsi-rockchip.o
+> +rockchipdrm-$(CONFIG_ROCKCHIP_DW_MIPI_DSI2) +=3D dw-mipi-dsi2-rockchip.o
+>  rockchipdrm-$(CONFIG_ROCKCHIP_INNO_HDMI) +=3D inno_hdmi.o
+>  rockchipdrm-$(CONFIG_ROCKCHIP_LVDS) +=3D rockchip_lvds.o
+>  rockchipdrm-$(CONFIG_ROCKCHIP_RGB) +=3D rockchip_rgb.o
+> diff --git a/drivers/gpu/drm/rockchip/dw-mipi-dsi2-rockchip.c b/drivers/g=
+pu/drm/rockchip/dw-mipi-dsi2-rockchip.c
 > new file mode 100644
-> index 000000000000..c7416349e7d5
+> index 000000000000..42a7a80e2138
 > --- /dev/null
-> +++ b/arch/arm64/boot/dts/rockchip/rk3588-tiger-haikou-video-demo.dtso
-> @@ -0,0 +1,153 @@
-> +// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
+> +++ b/drivers/gpu/drm/rockchip/dw-mipi-dsi2-rockchip.c
+> @@ -0,0 +1,524 @@
+> +// SPDX-License-Identifier: GPL-2.0+
 > +/*
-> + * DT-overlay for the camera / DSI demo appliance for Haikou boards.
-> + * In the flavour for use with a Tiger system-on-module.
-
-Add the official name in the comment here (maybe a link too?).
-
-Aren't we missing a copyright notice here as well (I personally don't 
-care :) )?
-
-If so, that would be
-
-Copyright (C) 2024 Cherry Embedded Solutions GmbH
-
-for us.
-
+> + * Copyright (C) 2024 Rockchip Electronics Co.Ltd
+> + * Author:
+> + *      Guochun Huang <hero.huang@rock-chips.com>
+> + *      Heiko Stuebner <heiko.stuebner@cherry.de>
 > + */
 > +
-> +/dts-v1/;
-> +/plugin/;
-> +
-> +#include <dt-bindings/gpio/gpio.h>
-> +#include <dt-bindings/interrupt-controller/irq.h>
-> +#include <dt-bindings/leds/common.h>
-> +#include <dt-bindings/pinctrl/rockchip.h>
-> +#include <dt-bindings/soc/rockchip,vop2.h>
-> +
-> +&{/} {
-> +	video-adapter-leds {
+> +#include <linux/clk.h>
+> +#include <linux/component.h>
+> +#include <linux/gpio.h>
+> +#include <linux/iopoll.h>
+> +#include <linux/math64.h>
+> +#include <linux/media-bus-format.h>
+> +#include <linux/module.h>
+> +#include <linux/of_device.h>
+> +#include <linux/of_gpio.h>
+> +#include <linux/of_platform.h>
 
-Please order the register-less-direct-children-nodes-of-root alphabetically.
+In commit 722d4f06e560 ("drm: Explicitly include correct DT includes")
+several changes were made to header includes.
+One of the things I noticed is that ``of_device.h`` often was removed
+and ``of.h`` added.
+Thus are the above headers as they should be or should they be updated
+like was done in commit 722d4f06e560?
 
-> +		compatible = "gpio-leds";
-> +		status = "okay";
-
-Isn't the default if omitted already "okay"?
-
+> +#include <linux/pm_runtime.h>
+> +#include <linux/platform_device.h>
+> +#include <linux/regmap.h>
+> +#include <linux/reset.h>
+> +#include <linux/mfd/syscon.h>
+> +#include <linux/phy/phy.h>
 > +
-> +		video-adapter-led {
-> +			color = <LED_COLOR_ID_BLUE>;
-> +			gpios = <&pca9670 7 GPIO_ACTIVE_HIGH>;
-> +			label = "video-adapter-led";
-> +			linux,default-trigger = "none";
-> +		};
-> +	};
+> +#include <drm/bridge/dw_mipi_dsi2.h>
 > +
-> +	backlight: backlight {
-> +		compatible = "pwm-backlight";
-> +		power-supply = <&dc_12v>;
-> +		pwms = <&pwm0 0 25000 0>;
-> +	};
+> +#include <drm/display/drm_dsc.h>
+> +#include <drm/drm_atomic_helper.h>
+> +#include <drm/drm_crtc.h>
+> +#include <drm/drm_crtc_helper.h>
+> +#include <drm/drm_mipi_dsi.h>
+> +#include <drm/drm_of.h>
+> +#include <drm/drm_panel.h>
+> +#include <video/mipi_display.h>
+> +#include <video/videomode.h>
+> +#include <drm/drm_connector.h>
+> +#include <drm/drm_probe_helper.h>
+> +#include <drm/drm_simple_kms_helper.h>
 > +
-> +	hdmi-con {
-> +		compatible = "hdmi-connector";
-> +		type = "a";
+> +#include <uapi/linux/videodev2.h>
 > +
-> +		port {
-> +			hdmi_con_in: endpoint {
-> +				remote-endpoint = <&hdmi0_out_con>;
-> +			};
-> +		};
-> +	};
+> +#include "rockchip_drm_drv.h"
+> +#include "rockchip_drm_vop.h"
 > +
-
-Wrong copy-paste here I guess? No HDMI connector on that adapter :)
-
-> +	vcc1v8_video: regulator-vcc1v8-video {
-> +		compatible = "regulator-fixed";
-> +		regulator-name = "vcc1v8-video";
-> +		regulator-always-on;
-> +		regulator-boot-on;
-> +		regulator-min-microvolt = <1800000>;
-> +		regulator-max-microvolt = <1800000>;
-> +		vin-supply = <&vcc3v3_baseboard>;
-> +	};
+> +#define PSEC_PER_SEC			1000000000000LL
 > +
-> +	vcc2v8_video: regulator-vcc2v8-video {
-> +		compatible = "regulator-fixed";
-> +		regulator-name = "vcc2v8-video";
-> +		regulator-always-on;
-> +		regulator-boot-on;
-> +		regulator-min-microvolt = <2800000>;
-> +		regulator-max-microvolt = <2800000>;
-> +		vin-supply = <&vcc3v3_baseboard>;
-> +	};
+> +struct dsigrf_reg {
+> +	u16 offset;
+> +	u16 lsb;
+> +	u16 msb;
 > +};
 > +
-> +&dsi0 {
-> +	#address-cells = <1>;
-> +	#size-cells = <0>;
-
-Shouldn't those be in the SoC dtsi? Is there any world where this would 
-be different per board?
-
-> +	status = "okay";
-> +
-> +	panel@0 {
-> +		compatible = "leadtek,ltk050h3148w";
-> +		reg = <0>;
-> +		backlight = <&backlight>;
-> +		iovcc-supply = <&vcc1v8_video>;
-> +		reset-gpios = <&pca9670 0 GPIO_ACTIVE_LOW>;
-> +		vci-supply = <&vcc2v8_video>;
-> +
-> +		port {
-> +			mipi_panel_in: endpoint {
-> +				remote-endpoint = <&dsi0_out_panel>;
-> +			};
-> +		};
-> +	};
+> +enum grf_reg_fields {
+> +	TXREQCLKHS_EN,
+> +	GATING_EN,
+> +	IPI_SHUTDN,
+> +	IPI_COLORM,
+> +	IPI_COLOR_DEPTH,
+> +	IPI_FORMAT,
+> +	MAX_FIELDS,
 > +};
 > +
-> +&dsi0_in {
-> +	dsi0_in_vp3: endpoint {
-> +		remote-endpoint = <&vp3_out_dsi0>;
-> +	};
-> +};
-> +
-> +&dsi0_out {
-> +	dsi0_out_panel: endpoint {
-> +		remote-endpoint = <&mipi_panel_in>;
-> +	};
-> +};
-> +
-> +&i2c6 {
-> +	/* OV5675, GT911, DW9714 are limited to 400KHz */
-> +	clock-frequency = <400000>;
-> +	#address-cells = <1>;
-> +	#size-cells = <0>;
-> +
+> +#define IPI_DEPTH_5_6_5_BITS		0x02
+> +#define IPI_DEPTH_6_BITS		0x03
+> +#define IPI_DEPTH_8_BITS		0x05
+> +#define IPI_DEPTH_10_BITS		0x06
 
-Mmmm why the address and size cells properties here? They should already 
-be part of the SoC dtsi no?
-
-> +	touchscreen@14 {
-> +		compatible = "goodix,gt911";
-> +		reg = <0x14>;
-> +		interrupt-parent = <&gpio3>;
-> +		interrupts = <RK_PC3 IRQ_TYPE_LEVEL_LOW>;
-> +		irq-gpios = <&gpio3 RK_PC3 GPIO_ACTIVE_HIGH>;
-> +		pinctrl-0 = <&touch_int>;
-> +		pinctrl-names = "default";
-> +		reset-gpios = <&pca9670 1 GPIO_ACTIVE_HIGH>;
-
-So this is correct because of a cancelling mistake. The driver inverts 
-the signal and here we invert it as well. c.f. 
-https://lore.kernel.org/linux-rockchip/20221103-upstream-goodix-reset-v3-0-0975809eb183@theobroma-systems.com/
-
-I haven't send a new version yet, I don't really know what should be 
-done there. The main pain point being that this is probably a big patch 
-that spans multiple maintainer trees at once?
-
-> +		AVDD28-supply = <&vcc2v8_video>;
-> +		VDDIO-supply = <&vcc3v3_baseboard>;
-> +	};
-> +
-> +	pca9670: gpio@27 {
-> +		compatible = "nxp,pca9670";
-> +		reg = <0x27>;
-> +		gpio-controller;
-> +		#gpio-cells = <2>;
-> +	};
-> +};
-> +
-> +&mipidcphy0 {
-> +	status = "okay";
-> +};
-> +
-> +&pinctrl {
-> +	touch {
-> +		touch_int: touch-int {
-> +			rockchip,pins = <3 RK_PC3 RK_FUNC_GPIO &pcfg_pull_none>;
-> +		};
-> +	};
-> +};
-> +
-> +&pwm0 {
-> +	pinctrl-0 = <&pwm0m1_pins>;
-> +	pinctrl-names = "default";
-
-The other two pin muxes for PWM0 are either:
-- the pin used for CAN
-- the pin routed to an internal component (unexposed to Q7) and used as 
-a GPIO
-
-so please move the pinctrl to the Tiger SoM DTSI.
-
-> +	status = "okay";
-> +};
-> +
-> +&vp3 {
-> +	#address-cells = <1>;
-> +	#size-cells = <0>;
-> +
-
-Shouldn't those be in the SoC dtsi?
+Possibly dumb remark (sorry):
+drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi2.c also defines these
+values, so wouldn't it be better if they're defined in 1 place?
 
 Cheers,
-Quentin
+  Diederik
+
+--941c37924af32141fe5e0f79007b5e08666732b6921ee74e1ee56a0ed058
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYIAB0WIQT1sUPBYsyGmi4usy/XblvOeH7bbgUCZytwKgAKCRDXblvOeH7b
+biV/AP4zAYHiHOY+G+ZWghI6d64xjETs3tPKgVHZL09dfdL/JwD/TSO6qqGeYLHi
+B98Lhvs7MDrWNaq9pz6STkXM4wXDRQQ=
+=9pLY
+-----END PGP SIGNATURE-----
+
+--941c37924af32141fe5e0f79007b5e08666732b6921ee74e1ee56a0ed058--
+
+
+--===============4521031688668873928==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============4521031688668873928==--
+
