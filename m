@@ -4,78 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 41D3DD43356
-	for <linux-rockchip@archiver.kernel.org>; Thu,  7 Nov 2024 12:10:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 222D2D4335A
+	for <linux-rockchip@archiver.kernel.org>; Thu,  7 Nov 2024 12:39:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=q4yCOwBqwSHoMVArM0A9raQt473NpPs6FoIA9S/JFX0=; b=Asq/7T757kJAcD
-	pMUY931PzUb8QBeQX/5f5WPWyDyo6uN7/p7MjR7wAHXhxhbOhgR3Jy4a2s+7JVUpii3ahyWUqrvfh
-	HE6HLRsZptKX6RgLXZg2jUSTaYBHNYQMe9as/zOandW8dq+p7nJVQET7o6dvZlDX7Otewh4ew7IYc
-	suvLhnbabBu4mXdjT5R90jiG4m4nukj1omtb81UudkNE5BC2EigC7w3OY4PADWNnW8BGuAfrNgqYu
-	6oUhqwt2dNApL5ZC/5Jyu3SIvfE5nCZv4gahVh+TXpENx/gXLCSdujP+iMurJlokjIrz5DXGKGRI7
-	Y5w4bZehiPIj7sSic4pg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=g2tsBncsNPcNeL0+UMO8p5s66ceDgbmW2Iw0tl841HE=; b=hWxBeEWJfdkODl
+	/0YNHmoYO4WSwHRqAoxFzOgLcVMnL78Naxo02iTCIpazWSUZ05lx5z0avlvqaTHXOsV1k/2vHcJwX
+	J4pcpfMpCkFApVb+jc68+GeaQT/yhiuVJnoaQ5Z/up0K5DZnkaoUlF96huttNXuNYxn1oQrBVlaqq
+	d/nSL/bFVbCVB0aTCFTiWBRUzVX7/EJJrfLxfoFx56fptWjS3t3T0Z4iTJlVCbKRRzU7T96nuvNLU
+	3h6Z+IvJ8cTiJPxFBT4dFGXrqTCxnpTjPmyFrfD0lrAdYBw+aV4chxBtN+lhotQbdc790gQdpGeT8
+	H/wuqApSxBZM6rPTdB9g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t91LD-00000006sfL-2U3T;
-	Thu, 07 Nov 2024 12:10:23 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1t91nN-00000006xRA-1tUn;
+	Thu, 07 Nov 2024 12:39:29 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t90zR-00000006nlK-1Adx;
-	Thu, 07 Nov 2024 11:47:56 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Transfer-Encoding:MIME-Version:References:
-	In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
-	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=3TTK9hx0Q0YVsYayd2HMfhhvX3Er6OFuU5Vv4/bDBu8=; b=GMnk/1UKzRihev+bb2TLkMLGyY
-	HZyiR5/ULzyBihb84DjtqR3ELMTt29BYZ+J6qc1qkjpHMVQuv7qk1FRHk0RwLIMHRHJe0LWu3vZPx
-	5deQ9nz3r/oUWpxhVc4b4PgEY2hBDTRz/6fYygkNiJTYjfxFvAh73K1nuXlxwDeioVFm2wJf4dhoB
-	nwxRMHYwinok8JI9A+gFxwnkXjP+ZO4FngAZzWpfUynAQqoNJEE71qHdI0PB+99nTvTrIvGG7ckAk
-	d/Ei9Nm2jf35gVt24tA+pa36PaAZxOoBAhBCdjrRpt0sPAX/RGdappAqDxbCpi0bvWNSHunKo9t/z
-	cWFUjHhQ==;
-Received: from i53875b28.versanet.de ([83.135.91.40] helo=localhost.localdomain)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1t90z2-0005lF-2s; Thu, 07 Nov 2024 12:47:28 +0100
-From: Heiko Stuebner <heiko@sntech.de>
-To: lee@kernel.org,
-	jikos@kernel.org,
-	jic23@kernel.org
-Cc: robh@kernel.org,
-	krzk+dt@kernel.org,
-	conor+dt@kernel.org,
-	jdelvare@suse.com,
-	linux@roeck-us.net,
-	srinivas.pandruvada@linux.intel.com,
-	bentiss@kernel.org,
-	dmitry.torokhov@gmail.com,
-	pavel@ucw.cz,
-	ukleinek@debian.org,
+	id 1t91lb-00000006xC4-2SWc;
+	Thu, 07 Nov 2024 12:37:42 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id E23A25C584D;
+	Thu,  7 Nov 2024 12:36:53 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2E8E2C4CED0;
+	Thu,  7 Nov 2024 12:37:35 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1730983058;
+	bh=JupmGb9015WA+7ZrISN7klsmE+UWxlE8YkOEg7MMi6M=;
+	h=From:To:Cc:Subject:Date:From;
+	b=q5mAMdjweSV2HmvxiK9NXGeGBBThNSvDW8ctyLZ0oTzxZ6oxRpHuSXC3lEOZQ7w7Y
+	 JyK4PNAszGEmAgEoVUrUtZNu35xiy38fzMUQ66bRPHwGCuwVHa3peo/uOWzIlhfsZY
+	 oRCv//SwDxlMSO+gXQAebuDOVH+bjnyUrx2kIlpTHFEQov85DWntmfmpBGTD7boXA6
+	 P2sgseHyVz6fiDwzdwrhhtyA/i8hLpR9otGhnDyUzVL6/2FwDLnDRvJp0bRnMJatna
+	 N8byM8Wi3wQEjrRi8h96i2KrnOP4krVaL869g+7wbCMHatH6Ck0L7TOAjoPANstUfa
+	 jKabW20MQIfsw==
+From: Niklas Cassel <cassel@kernel.org>
+To: Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>
+Cc: Damien Le Moal <dlemoal@kernel.org>,
+	Sebastian Reichel <sebastian.reichel@collabora.com>,
+	Niklas Cassel <cassel@kernel.org>,
 	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-hwmon@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-input@vger.kernel.org,
-	linux-iio@vger.kernel.org,
-	linux-leds@vger.kernel.org,
-	heiko@sntech.de
-Subject: [PATCH v9 5/9] leds: add driver for LEDs from qnap-mcu devices
-Date: Thu,  7 Nov 2024 12:47:08 +0100
-Message-ID: <20241107114712.538976-6-heiko@sntech.de>
-X-Mailer: git-send-email 2.45.2
-In-Reply-To: <20241107114712.538976-1-heiko@sntech.de>
-References: <20241107114712.538976-1-heiko@sntech.de>
+	linux-rockchip@lists.infradead.org
+Subject: [PATCH] arm64: dts: rockchip: enable the mmu600_pcie IOMMU on the rk3588 SoC
+Date: Thu,  7 Nov 2024 13:37:33 +0100
+Message-ID: <20241107123732.1160063-2-cassel@kernel.org>
+X-Mailer: git-send-email 2.47.0
 MIME-Version: 1.0
+X-Developer-Signature: v=1; a=openpgp-sha256; l=4968; i=cassel@kernel.org; h=from:subject; bh=JupmGb9015WA+7ZrISN7klsmE+UWxlE8YkOEg7MMi6M=; b=owGbwMvMwCV2MsVw8cxjvkWMp9WSGNJ1tvT8YEyKFhQq+rCj9rrSzbZ3s9/9Z733vfzIWha7O TUyrapXOkpZGMS4GGTFFFl8f7jsL+52n3Jc8Y4NzBxWJpAhDFycAjARHxlGhik1b54Z3w0tUeu/ kcn96qe2e/pijwo2Tn+Pd3JnQg8J/WD4p9/1Mid2c3PmCvVZ3N8OLfaecLBaeP2Ft3ybo8VZziW u5AAA
+X-Developer-Key: i=cassel@kernel.org; a=openpgp; fpr=5ADE635C0E631CBBD5BE065A352FE6582ED9B5DA
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241107_034753_628942_F1EBD49E 
-X-CRM114-Status: GOOD (  28.81  )
+X-CRM114-CacheID: sfid-20241107_043739_765764_4A7E9ABB 
+X-CRM114-Status: GOOD (  19.01  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,299 +78,121 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This adds a driver that connects to the qnap-mcu mfd driver and provides
-access to the LEDs on it.
+Commit cd81d3a0695c ("arm64: dts: rockchip: add rk3588 pcie and php
+IOMMUs") added the rk3588 SoC's pcie IOMMU and php IOMMU as disabled.
 
-Signed-off-by: Heiko Stuebner <heiko@sntech.de>
+The mmu600_pcie is connected with the five PCIe controllers.
+See 8.2 Block Diagram, in rk3588 TRM (Technical Reference Manual).
+
+The five PCIe controllers are:
+pcie3x4, pcie3x2, pcie2x1l0, pcie2x1l1, pcie2x1l2.
+
+pcie3x4 can run in either Root Complex mode or Endpoint mode, the other
+four PCIe controllers can only run in Root Complex mode. To describe this
+we thus have six different device nodes in the device tree.
+
+A PCIe controller in Root Complex mode needs to specify an iommu-map, such
+that the device knows how to convert a Requester ID (PCI BDF) to an IOMMU
+master ID (stream ID). (A PCIe controller in Endpoint mode should use the
+iommus property, just like a regular device.)
+
+If you look at the device tree bindings for msi-map and iommu-map, you can
+see that the conversion from Requester ID to MSI-specifier data is the same
+as the conversion from Requester ID to IOMMU specifier data. Thus it is
+sensible to define the iommu-map property value similar to the msi-map,
+such that the conversion will be identical.
+
+Add the proper iommu device tree properties for these six device nodes
+connected to the mmu600_pcie, so that we can enable the mmu600_pcie IOMMU.
+(The mmu600_php IOMMU is not touched, so it is still disabled.)
+
+Signed-off-by: Niklas Cassel <cassel@kernel.org>
 ---
- MAINTAINERS                  |   1 +
- drivers/leds/Kconfig         |  11 ++
- drivers/leds/Makefile        |   1 +
- drivers/leds/leds-qnap-mcu.c | 227 +++++++++++++++++++++++++++++++++++
- 4 files changed, 240 insertions(+)
- create mode 100644 drivers/leds/leds-qnap-mcu.c
+Testing done:
+-pcie2x1l2: Ethernet connected to the pcie2x1l2 works as expected.
+-pcie3x4: A PCIe endpoint (running the PCI endpoint framework) connected to
+ pcie3x4 can run pcitest.sh without any issues.
+ Modifying the PCI endpoint to DMA to an invalid address gives IOMMU errors
+ (as expected).
+-pcie3x4_ep: A PCIe root complex (running Linux) connected to pcie3x4_ep can
+ run pcitest.sh without any issues.
+ Modifying the PCI endpoint's inbound address translation to point to a
+ buffer that has not been mapped using the DMA API, results in IOMMU errors
+ when the RC writes to the PCI BARs exposed by the endpoint (as expected).
+-My board does not expose a convenient method to test the other PCIe
+ controllers, but considering that the ones that I did test worked fine,
+ I do not see any reason why the others should not do the same.
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index cd8d18f76d28..9abea0772d2b 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -18881,6 +18881,7 @@ F:	drivers/media/tuners/qm1d1c0042*
- QNAP MCU DRIVER
- M:	Heiko Stuebner <heiko@sntech.de>
- S:	Maintained
-+F:	drivers/leds/leds-qnap-mcu.c
- F:	drivers/mfd/qnap-mcu.c
- F:	include/linux/qnap-mcu.h
+ arch/arm64/boot/dts/rockchip/rk3588-base.dtsi  | 3 ++-
+ arch/arm64/boot/dts/rockchip/rk3588-extra.dtsi | 4 ++++
+ 2 files changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
+index d97d84b888375..f96e607db2857 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
+@@ -551,7 +551,6 @@ mmu600_pcie: iommu@fc900000 {
+ 			     <GIC_SPI 367 IRQ_TYPE_LEVEL_HIGH 0>;
+ 		interrupt-names = "eventq", "gerror", "priq", "cmdq-sync";
+ 		#iommu-cells = <1>;
+-		status = "disabled";
+ 	};
  
-diff --git a/drivers/leds/Kconfig b/drivers/leds/Kconfig
-index b784bb74a837..28a208fa893e 100644
---- a/drivers/leds/Kconfig
-+++ b/drivers/leds/Kconfig
-@@ -580,6 +580,17 @@ config LEDS_PCA995X
- 	  LED driver chips accessed via the I2C bus. Supported
- 	  devices include PCA9955BTW, PCA9952TW and PCA9955TW.
- 
-+config LEDS_QNAP_MCU
-+	tristate "LED Support for QNAP MCU controllers"
-+	depends on LEDS_CLASS
-+	depends on MFD_QNAP_MCU
-+	help
-+	  This option enables support for LEDs available on embedded
-+	  controllers used in QNAP NAS devices.
-+
-+	  This driver can also be built as a module. If so, the module
-+	  will be called qnap-mcu-leds.
-+
- config LEDS_WM831X_STATUS
- 	tristate "LED support for status LEDs on WM831x PMICs"
- 	depends on LEDS_CLASS
-diff --git a/drivers/leds/Makefile b/drivers/leds/Makefile
-index 18afbb5a23ee..c6f74865d729 100644
---- a/drivers/leds/Makefile
-+++ b/drivers/leds/Makefile
-@@ -79,6 +79,7 @@ obj-$(CONFIG_LEDS_PCA995X)		+= leds-pca995x.o
- obj-$(CONFIG_LEDS_PM8058)		+= leds-pm8058.o
- obj-$(CONFIG_LEDS_POWERNV)		+= leds-powernv.o
- obj-$(CONFIG_LEDS_PWM)			+= leds-pwm.o
-+obj-$(CONFIG_LEDS_QNAP_MCU)		+= leds-qnap-mcu.o
- obj-$(CONFIG_LEDS_REGULATOR)		+= leds-regulator.o
- obj-$(CONFIG_LEDS_SC27XX_BLTC)		+= leds-sc27xx-bltc.o
- obj-$(CONFIG_LEDS_SUN50I_A100)		+= leds-sun50i-a100.o
-diff --git a/drivers/leds/leds-qnap-mcu.c b/drivers/leds/leds-qnap-mcu.c
-new file mode 100644
-index 000000000000..4e4709456261
---- /dev/null
-+++ b/drivers/leds/leds-qnap-mcu.c
-@@ -0,0 +1,227 @@
-+// SPDX-License-Identifier: GPL-2.0-only
-+/*
-+ * Driver for LEDs found on QNAP MCU devices
-+ *
-+ * Copyright (C) 2024 Heiko Stuebner <heiko@sntech.de>
-+ */
-+
-+#include <linux/leds.h>
-+#include <linux/mfd/qnap-mcu.h>
-+#include <linux/module.h>
-+#include <linux/platform_device.h>
-+#include <linux/slab.h>
-+#include <uapi/linux/uleds.h>
-+
-+enum qnap_mcu_err_led_mode {
-+	QNAP_MCU_ERR_LED_ON = 0,
-+	QNAP_MCU_ERR_LED_OFF = 1,
-+	QNAP_MCU_ERR_LED_BLINK_FAST = 2,
-+	QNAP_MCU_ERR_LED_BLINK_SLOW = 3,
-+};
-+
-+struct qnap_mcu_err_led {
-+	struct qnap_mcu *mcu;
-+	struct led_classdev cdev;
-+	char name[LED_MAX_NAME_SIZE];
-+	u8 num;
-+	u8 mode;
-+};
-+
-+static inline struct qnap_mcu_err_led *
-+		cdev_to_qnap_mcu_err_led(struct led_classdev *led_cdev)
-+{
-+	return container_of(led_cdev, struct qnap_mcu_err_led, cdev);
-+}
-+
-+static int qnap_mcu_err_led_set(struct led_classdev *led_cdev,
-+				enum led_brightness brightness)
-+{
-+	struct qnap_mcu_err_led *err_led = cdev_to_qnap_mcu_err_led(led_cdev);
-+	u8 cmd[] = { '@', 'R', '0' + err_led->num, '0' };
-+
-+	/* Don't disturb a possible set blink-mode if LED stays on */
-+	if (brightness != 0 && err_led->mode >= QNAP_MCU_ERR_LED_BLINK_FAST)
-+		return 0;
-+
-+	err_led->mode = brightness ? QNAP_MCU_ERR_LED_ON : QNAP_MCU_ERR_LED_OFF;
-+	cmd[3] = '0' + err_led->mode;
-+
-+	return qnap_mcu_exec_with_ack(err_led->mcu, cmd, sizeof(cmd));
-+}
-+
-+static int qnap_mcu_err_led_blink_set(struct led_classdev *led_cdev,
-+				      unsigned long *delay_on,
-+				      unsigned long *delay_off)
-+{
-+	struct qnap_mcu_err_led *err_led = cdev_to_qnap_mcu_err_led(led_cdev);
-+	u8 cmd[] = { '@', 'R', '0' + err_led->num, '0' };
-+
-+	/* LED is off, nothing to do */
-+	if (err_led->mode == QNAP_MCU_ERR_LED_OFF)
-+		return 0;
-+
-+	if (*delay_on < 500) {
-+		*delay_on = 100;
-+		*delay_off = 100;
-+		err_led->mode = QNAP_MCU_ERR_LED_BLINK_FAST;
-+	} else {
-+		*delay_on = 500;
-+		*delay_off = 500;
-+		err_led->mode = QNAP_MCU_ERR_LED_BLINK_SLOW;
-+	}
-+
-+	cmd[3] = '0' + err_led->mode;
-+
-+	return qnap_mcu_exec_with_ack(err_led->mcu, cmd, sizeof(cmd));
-+}
-+
-+static int qnap_mcu_register_err_led(struct device *dev, struct qnap_mcu *mcu, int num_err_led)
-+{
-+	struct qnap_mcu_err_led *err_led;
-+	int ret;
-+
-+	err_led = devm_kzalloc(dev, sizeof(*err_led), GFP_KERNEL);
-+	if (!err_led)
-+		return -ENOMEM;
-+
-+	err_led->mcu = mcu;
-+	err_led->num = num_err_led;
-+	err_led->mode = QNAP_MCU_ERR_LED_OFF;
-+
-+	scnprintf(err_led->name, LED_MAX_NAME_SIZE, "hdd%d:red:status", num_err_led + 1);
-+	err_led->cdev.name = err_led->name;
-+
-+	err_led->cdev.brightness_set_blocking = qnap_mcu_err_led_set;
-+	err_led->cdev.blink_set = qnap_mcu_err_led_blink_set;
-+	err_led->cdev.brightness = 0;
-+	err_led->cdev.max_brightness = 1;
-+
-+	ret = devm_led_classdev_register(dev, &err_led->cdev);
-+	if (ret)
-+		return ret;
-+
-+	return qnap_mcu_err_led_set(&err_led->cdev, 0);
-+}
-+
-+enum qnap_mcu_usb_led_mode {
-+	QNAP_MCU_USB_LED_ON = 1,
-+	QNAP_MCU_USB_LED_OFF = 3,
-+	QNAP_MCU_USB_LED_BLINK = 2,
-+};
-+
-+struct qnap_mcu_usb_led {
-+	struct qnap_mcu *mcu;
-+	struct led_classdev cdev;
-+	u8 mode;
-+};
-+
-+static inline struct qnap_mcu_usb_led *
-+		cdev_to_qnap_mcu_usb_led(struct led_classdev *led_cdev)
-+{
-+	return container_of(led_cdev, struct qnap_mcu_usb_led, cdev);
-+}
-+
-+static int qnap_mcu_usb_led_set(struct led_classdev *led_cdev,
-+				enum led_brightness brightness)
-+{
-+	struct qnap_mcu_usb_led *usb_led = cdev_to_qnap_mcu_usb_led(led_cdev);
-+	u8 cmd[] = { '@', 'C', 0 };
-+
-+	/* Don't disturb a possible set blink-mode if LED stays on */
-+	if (brightness != 0 && usb_led->mode == QNAP_MCU_USB_LED_BLINK)
-+		return 0;
-+
-+	usb_led->mode = brightness ? QNAP_MCU_USB_LED_ON : QNAP_MCU_USB_LED_OFF;
-+
-+	/*
-+	 * Byte 3 is shared between the usb led target on/off/blink
-+	 * and also the buzzer control (in the input driver)
-+	 */
-+	cmd[2] = 'D' + usb_led->mode;
-+
-+	return qnap_mcu_exec_with_ack(usb_led->mcu, cmd, sizeof(cmd));
-+}
-+
-+static int qnap_mcu_usb_led_blink_set(struct led_classdev *led_cdev,
-+				      unsigned long *delay_on,
-+				      unsigned long *delay_off)
-+{
-+	struct qnap_mcu_usb_led *usb_led = cdev_to_qnap_mcu_usb_led(led_cdev);
-+	u8 cmd[] = { '@', 'C', 0 };
-+
-+	/* LED is off, nothing to do */
-+	if (usb_led->mode == QNAP_MCU_USB_LED_OFF)
-+		return 0;
-+
-+	*delay_on = 250;
-+	*delay_off = 250;
-+	usb_led->mode = QNAP_MCU_USB_LED_BLINK;
-+
-+	/*
-+	 * Byte 3 is shared between the USB LED target on/off/blink
-+	 * and also the buzzer control (in the input driver)
-+	 */
-+	cmd[2] = 'D' + usb_led->mode;
-+
-+	return qnap_mcu_exec_with_ack(usb_led->mcu, cmd, sizeof(cmd));
-+}
-+
-+static int qnap_mcu_register_usb_led(struct device *dev, struct qnap_mcu *mcu)
-+{
-+	struct qnap_mcu_usb_led *usb_led;
-+	int ret;
-+
-+	usb_led = devm_kzalloc(dev, sizeof(*usb_led), GFP_KERNEL);
-+	if (!usb_led)
-+		return -ENOMEM;
-+
-+	usb_led->mcu = mcu;
-+	usb_led->mode = QNAP_MCU_USB_LED_OFF;
-+	usb_led->cdev.name = "usb:blue:disk";
-+	usb_led->cdev.brightness_set_blocking = qnap_mcu_usb_led_set;
-+	usb_led->cdev.blink_set = qnap_mcu_usb_led_blink_set;
-+	usb_led->cdev.brightness = 0;
-+	usb_led->cdev.max_brightness = 1;
-+
-+	ret = devm_led_classdev_register(dev, &usb_led->cdev);
-+	if (ret)
-+		return ret;
-+
-+	return qnap_mcu_usb_led_set(&usb_led->cdev, 0);
-+}
-+
-+static int qnap_mcu_leds_probe(struct platform_device *pdev)
-+{
-+	struct qnap_mcu *mcu = dev_get_drvdata(pdev->dev.parent);
-+	const struct qnap_mcu_variant *variant = pdev->dev.platform_data;
-+	int ret;
-+
-+	for (int i = 0; i < variant->num_drives; i++) {
-+		ret = qnap_mcu_register_err_led(&pdev->dev, mcu, i);
-+		if (ret)
-+			return dev_err_probe(&pdev->dev, ret,
-+					"failed to register error LED %d\n", i);
-+	}
-+
-+	if (variant->usb_led) {
-+		ret = qnap_mcu_register_usb_led(&pdev->dev, mcu);
-+		if (ret)
-+			return dev_err_probe(&pdev->dev, ret,
-+					"failed to register USB LED\n");
-+	}
-+
-+	return 0;
-+}
-+
-+static struct platform_driver qnap_mcu_leds_driver = {
-+	.probe = qnap_mcu_leds_probe,
-+	.driver = {
-+		.name = "qnap-mcu-leds",
-+	},
-+};
-+module_platform_driver(qnap_mcu_leds_driver);
-+
-+MODULE_ALIAS("platform:qnap-mcu-leds");
-+MODULE_AUTHOR("Heiko Stuebner <heiko@sntech.de>");
-+MODULE_DESCRIPTION("QNAP MCU LEDs driver");
-+MODULE_LICENSE("GPL");
+ 	mmu600_php: iommu@fcb00000 {
+@@ -1641,6 +1640,7 @@ pcie2x1l1: pcie@fe180000 {
+ 		linux,pci-domain = <3>;
+ 		max-link-speed = <2>;
+ 		msi-map = <0x3000 &its0 0x3000 0x1000>;
++		iommu-map = <0x3000 &mmu600_pcie 0x3000 0x1000>;
+ 		num-lanes = <1>;
+ 		phys = <&combphy2_psu PHY_TYPE_PCIE>;
+ 		phy-names = "pcie-phy";
+@@ -1692,6 +1692,7 @@ pcie2x1l2: pcie@fe190000 {
+ 		linux,pci-domain = <4>;
+ 		max-link-speed = <2>;
+ 		msi-map = <0x4000 &its0 0x4000 0x1000>;
++		iommu-map = <0x4000 &mmu600_pcie 0x4000 0x1000>;
+ 		num-lanes = <1>;
+ 		phys = <&combphy0_ps PHY_TYPE_PCIE>;
+ 		phy-names = "pcie-phy";
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588-extra.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-extra.dtsi
+index 0ce0934ec6b79..4a950907ea6f5 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588-extra.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3588-extra.dtsi
+@@ -162,6 +162,7 @@ pcie3x4: pcie@fe150000 {
+ 		linux,pci-domain = <0>;
+ 		max-link-speed = <3>;
+ 		msi-map = <0x0000 &its1 0x0000 0x1000>;
++		iommu-map = <0x0000 &mmu600_pcie 0x0000 0x1000>;
+ 		num-lanes = <4>;
+ 		phys = <&pcie30phy>;
+ 		phy-names = "pcie-phy";
+@@ -212,6 +213,7 @@ pcie3x4_ep: pcie-ep@fe150000 {
+ 		interrupt-names = "sys", "pmc", "msg", "legacy", "err",
+ 				  "dma0", "dma1", "dma2", "dma3";
+ 		max-link-speed = <3>;
++		iommus = <&mmu600_pcie 0x0000>;
+ 		num-lanes = <4>;
+ 		phys = <&pcie30phy>;
+ 		phy-names = "pcie-phy";
+@@ -248,6 +250,7 @@ pcie3x2: pcie@fe160000 {
+ 		linux,pci-domain = <1>;
+ 		max-link-speed = <3>;
+ 		msi-map = <0x1000 &its1 0x1000 0x1000>;
++		iommu-map = <0x1000 &mmu600_pcie 0x1000 0x1000>;
+ 		num-lanes = <2>;
+ 		phys = <&pcie30phy>;
+ 		phy-names = "pcie-phy";
+@@ -297,6 +300,7 @@ pcie2x1l0: pcie@fe170000 {
+ 		linux,pci-domain = <2>;
+ 		max-link-speed = <2>;
+ 		msi-map = <0x2000 &its0 0x2000 0x1000>;
++		iommu-map = <0x2000 &mmu600_pcie 0x2000 0x1000>;
+ 		num-lanes = <1>;
+ 		phys = <&combphy1_ps PHY_TYPE_PCIE>;
+ 		phy-names = "pcie-phy";
 -- 
-2.45.2
+2.47.0
 
 
 _______________________________________________
