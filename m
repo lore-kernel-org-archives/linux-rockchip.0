@@ -4,89 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0EF5BD5D688
-	for <linux-rockchip@archiver.kernel.org>; Thu,  7 Nov 2024 21:21:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DF3EED5D688
+	for <linux-rockchip@archiver.kernel.org>; Thu,  7 Nov 2024 21:31:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ZzmIpg5TyeRYUI5gxcGlyVz/GSUzrQiTftmEYZGLAgk=; b=NhrfjBDTumw/F5
-	Lrc1lxCVoRCk0vJfpftfFxFg5lsijVRNj2f54CAAkQ35X4lZI1gTjeOsdu00K6wi9SeTpBcXHmbns
-	Ev0uxTIrXW/ib+TD+sQ4GyHd7chIAdNnGh5rPAD+dBiO12RCrMzDXZMEK4zoCg8nKjFlpLIN+H1Cn
-	KqW/2KY8zkVRCkkxWNFKsDlLhHT4x1bkvXDIplR8OrqT7GuVt41Y2lOS8uo6s8Z0bxNcLzMp1/ZSx
-	kx2FCMjp3f8JSSvcZyzVFGuTyouHMZ+kLjojX83Bm8UjBFcCe4O5ZwVXWs82Xo9Ej1bT0bsCROyc2
-	LZl8LBYqTbkLY7aAbEjg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=eODLpcnbhMv7zYQk+Ytx0kGg0JHCjI6f/iiC8EOd6UA=; b=UMd29+XgPvTikx
+	FTSXy1xTVLmnsWagIUtuX4t5rnCZxSrkgUnuD7NkOT4xhFr9gLTdw2DW7F5aNmpj9XEyzPdOlYi4v
+	E7yBUqY3v/yjo2zSGQ8jyMJ+VLoMU8n/pUKrFHHJTbbKrn+b22U0RO4u7daFrXNUtDk30kkoG8O2S
+	B27xqXKCdkJN/NPpN/9YyZs3MNstBBuH5I2SLdmm1EELutoMFi05dWDBhchekb8Tuu8zwh1Bs3ioj
+	CX96BDsFkUDN+8W6v5S68RDGC1mU1fj4WYmKIcWTcaSIMBq5+5LHSJs7PzUzN/vNZcfsBq0YDLlAG
+	i4js33Bu+C3OtUMZUEJg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t99wT-00000008OLj-2RlN;
-	Thu, 07 Nov 2024 21:21:25 +0000
-Received: from mail-oi1-x230.google.com ([2607:f8b0:4864:20::230])
+	id 1t9A6H-00000008Psn-2bsD;
+	Thu, 07 Nov 2024 21:31:33 +0000
+Received: from smtp.forwardemail.net ([149.28.215.223])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t99pt-00000008NOM-2nOK;
-	Thu, 07 Nov 2024 21:14:39 +0000
-Received: by mail-oi1-x230.google.com with SMTP id 5614622812f47-3e5fa17a79dso1017299b6e.1;
-        Thu, 07 Nov 2024 13:14:37 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1731014076; x=1731618876; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=vtYJat2vwne5+4WJO2r1NKcoNFx7A4N4AD7ayp8QtCI=;
-        b=JB6sxk9Eju0xlJS8F+q1Hfn2/UdU10Ghi2NQbtVKYU0/0cR+Ic1P6RkAY7PjZa3vDL
-         ueoKnLneL5WLaTC92bsaKRpR8SUbkXXQgz0bn7mdcHTgSXelDesKOPlvPVuciXPc4x5D
-         AFLA58Y+bbtZ5Z6Jy1QlQpiyW5Ujj/t9ajjkgt7YjYzJiJlL45dHSwh/HXEJk04phnhv
-         Zoovc+tDwlnV2/iec/2bg5xunLK2NhkUBcKuvDZtpcga9oeuDu1syUsV8abYFUI+zvrI
-         YYx4zOEDioKveOvtNv+Rdq+KBhkcPPLbObVIkgchX0W7TWvmljWIahqiWCBH86mijLF7
-         fxsg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1731014076; x=1731618876;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=vtYJat2vwne5+4WJO2r1NKcoNFx7A4N4AD7ayp8QtCI=;
-        b=uBpDOyGAPzwp5MF0NjvPveh6ggZvmd/3HLUCWpL1csW5Kqxadxu/KyazVJl++R66vi
-         DcLmETzQVHf06fUB8cJ+dG148J6xqX9bBowkc/VQwPZeyAjMtKGhFMqOGsQGciNXhr4T
-         kt+ZOzUecM0TVS7YsDGZniJbs11ufR7E6yQioZazact2hRqDd1loHzHQTm6kTGMTxrc+
-         VxIB3kl8JXsei4TKfeBMzIk6EhYM/uY5seLnHUsVbxLjwi4G14aIVdboUgu16kmmB+Z1
-         G8XrNW14BTtH4HF2IQBH+NcMEnW1Ex/F5BdDaP3tCKoi7zd26+0FMdHFchR/fqkIrKJK
-         0KNw==
-X-Forwarded-Encrypted: i=1; AJvYcCVVlVukAECnLYzJ1D1b7QAblhbEjUxwvSsDbDWcsS3GWerwkDokEtF0Zp9PIKM4Bee4XuycbyiLEC/ba5UhnEk=@lists.infradead.org, AJvYcCVw6fSZX4+K7TPii7w+DGcBHlkyEi4jJ+EF6D5dGZaokywW2qVtPtqvzbLQtjOjpkNe6EuHkGZfKdGIyq1UsapZ@lists.infradead.org
-X-Gm-Message-State: AOJu0YwYNlFM8ouG9xKI03mX8/T5Q5tS+/N9yTENT++fEK585x96JIJQ
-	hsp7y22E/8RcofgJbUnIXnALbZnAyADcz5YP7mLLHVvIR/tSGgZR
-X-Google-Smtp-Source: AGHT+IGHP0pu9JWTZVGvNEWya7gP+rkzPi0pM59LG1R+OZu7lEwHGebIcNHfjBTkDrWb+2m5YeySdQ==
-X-Received: by 2002:a05:6358:790:b0:1c6:12aa:a50d with SMTP id e5c5f4694b2df-1c641f81b71mr65221955d.25.1731014076286;
-        Thu, 07 Nov 2024 13:14:36 -0800 (PST)
-Received: from newman.cs.purdue.edu ([128.10.127.250])
-        by smtp.gmail.com with ESMTPSA id 6a1803df08f44-6d3962089fesm11486116d6.61.2024.11.07.13.14.35
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 07 Nov 2024 13:14:36 -0800 (PST)
-From: Jiasheng Jiang <jiashengjiangcool@gmail.com>
-To: andi.shyti@kernel.org
-Cc: dianders@chromium.org,
-	rmk@dyn-67.arm.linux.org.uk,
-	max.schwarz@online.de,
-	david.wu@rock-chips.com,
-	heiko@sntech.de,
-	vz@mleia.com,
-	wsa@kernel.org,
-	manabian@gmail.com,
-	linux-arm-kernel@lists.infradead.org,
+	id 1t9A4V-00000008Pie-1JKh
+	for linux-rockchip@lists.infradead.org;
+	Thu, 07 Nov 2024 21:29:45 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
+ h=Content-Transfer-Encoding: MIME-Version: Message-ID: Date: Subject: Cc:
+ To: From; q=dns/txt; s=fe-e1b5cab7be; t=1731014972;
+ bh=6rS61pmtnnZyCNnDhYW7Yxzdh8e4M7TjjBsbO0wWTpw=;
+ b=bYfjDPWx5cGRo79LdjQA79gU5aXrBNSm2M05ghq6Hb4sbAzke1t+iV7rFJgFfAtrih/hWl3Xy
+ 6a/kyGeS2N8Q0lW1Bh4DRrNPMSLVMo67lm7akCEEdguu2FuJOSh2sNWOaY1905eY8cEZa7mCBXL
+ xkoUYLwufpbIi27267Dn2f7lkO5fLxAxpZOJx0uzlXKs0/Gxv8U3nDcYeGJbBy7IfIwFU9Cy2dv
+ dqUVSgJBgJsyAi+fY+Ec+VvQnS/GwxmGSTmNF79gd8fL/Eow698edwuLSadMsdNufDby510KvjF
+ Gz3ePsk7gCuwt6W0uZbWuiAcbYbysjWXSrBesfiDrl/g==
+From: Jonas Karlman <jonas@kwiboo.se>
+To: Heiko Stuebner <heiko@sntech.de>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>
+Cc: devicetree@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
-	linux-i2c@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
-	Jiasheng Jiang <jiashengjiangcool@gmail.com>
-Subject: [PATCH v3 3/3] i2c: rk3x: Add check for clk_enable()
-Date: Thu,  7 Nov 2024 21:14:28 +0000
-Message-Id: <20241107211428.32273-3-jiashengjiangcool@gmail.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20241107211428.32273-1-jiashengjiangcool@gmail.com>
-References: <20241107211428.32273-1-jiashengjiangcool@gmail.com>
+	Jonas Karlman <jonas@kwiboo.se>
+Subject: [PATCH 0/2] arm64: dts: rockchip: Enable GPU and HDMI on NanoPi R6C/R6S
+Date: Thu,  7 Nov 2024 21:29:08 +0000
+Message-ID: <20241107212913.1322666-1-jonas@kwiboo.se>
+X-Mailer: git-send-email 2.46.2
 MIME-Version: 1.0
+X-Report-Abuse-To: abuse@forwardemail.net
+X-Report-Abuse: abuse@forwardemail.net
+X-Complaints-To: abuse@forwardemail.net
+X-ForwardEmail-Version: 0.4.40
+X-ForwardEmail-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
+ 149.28.215.223
+X-ForwardEmail-ID: 672d31376ff4b179fef28893
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241107_131437_782448_C8A51058 
-X-CRM114-Status: GOOD (  16.87  )
+X-CRM114-CacheID: sfid-20241107_132943_418283_8BB69BE2 
+X-CRM114-Status: UNSURE (   4.87  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,145 +78,21 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add check for the return value of clk_enable() in order to catch the
-potential exception. Moreover, convert the return type of
-rk3x_i2c_adapt_div() into int and add the check.
+This series add the necessary DT changes to enable GPU and HDMI on
+NanoPi R6C/R6S.
 
-Signed-off-by: Jiasheng Jiang <jiashengjiangcool@gmail.com>
----
-Changelog:
+Runtime tested and working with video=1920x1080@60 cmdline on a
+NanoPi R6C.
 
-v2 -> v3:
+Jonas Karlman (2):
+  arm64: dts: rockchip: Enable GPU on NanoPi R6C/R6S
+  arm64: dts: rockchip: Enable HDMI on NanoPi R6C/R6S
 
-1. Roll back unsuitable dev_err_probe() to dev_err()
+ .../boot/dts/rockchip/rk3588s-nanopi-r6.dtsi  | 52 +++++++++++++++++++
+ 1 file changed, 52 insertions(+)
 
-v1 -> v2:
-
-1. Remove the Fixes tag.
-2. Use dev_err_probe to simplify error handling.
----
- drivers/i2c/busses/i2c-rk3x.c | 55 ++++++++++++++++++++++++++---------
- 1 file changed, 41 insertions(+), 14 deletions(-)
-
-diff --git a/drivers/i2c/busses/i2c-rk3x.c b/drivers/i2c/busses/i2c-rk3x.c
-index 4ef9bad77b85..0263ee0e0470 100644
---- a/drivers/i2c/busses/i2c-rk3x.c
-+++ b/drivers/i2c/busses/i2c-rk3x.c
-@@ -871,7 +871,7 @@ static int rk3x_i2c_v1_calc_timings(unsigned long clk_rate,
- 	return ret;
- }
- 
--static void rk3x_i2c_adapt_div(struct rk3x_i2c *i2c, unsigned long clk_rate)
-+static int rk3x_i2c_adapt_div(struct rk3x_i2c *i2c, unsigned long clk_rate)
- {
- 	struct i2c_timings *t = &i2c->t;
- 	struct rk3x_i2c_calced_timings calc;
-@@ -883,7 +883,11 @@ static void rk3x_i2c_adapt_div(struct rk3x_i2c *i2c, unsigned long clk_rate)
- 	ret = i2c->soc_data->calc_timings(clk_rate, t, &calc);
- 	WARN_ONCE(ret != 0, "Could not reach SCL freq %u", t->bus_freq_hz);
- 
--	clk_enable(i2c->pclk);
-+	ret = clk_enable(i2c->pclk);
-+	if (ret) {
-+		dev_err(i2c->dev, "Can't enable bus clk for rk3399: %d\n", ret);
-+		return ret;
-+	}
- 
- 	spin_lock_irqsave(&i2c->lock, flags);
- 	val = i2c_readl(i2c, REG_CON);
-@@ -904,6 +908,8 @@ static void rk3x_i2c_adapt_div(struct rk3x_i2c *i2c, unsigned long clk_rate)
- 		clk_rate / 1000,
- 		1000000000 / t->bus_freq_hz,
- 		t_low_ns, t_high_ns);
-+
-+	return 0;
- }
- 
- /**
-@@ -942,19 +948,27 @@ static int rk3x_i2c_clk_notifier_cb(struct notifier_block *nb, unsigned long
- 			return NOTIFY_STOP;
- 
- 		/* scale up */
--		if (ndata->new_rate > ndata->old_rate)
--			rk3x_i2c_adapt_div(i2c, ndata->new_rate);
-+		if (ndata->new_rate > ndata->old_rate) {
-+			if (rk3x_i2c_adapt_div(i2c, ndata->new_rate))
-+				return NOTIFY_STOP;
-+		}
- 
- 		return NOTIFY_OK;
- 	case POST_RATE_CHANGE:
- 		/* scale down */
--		if (ndata->new_rate < ndata->old_rate)
--			rk3x_i2c_adapt_div(i2c, ndata->new_rate);
-+		if (ndata->new_rate < ndata->old_rate) {
-+			if (rk3x_i2c_adapt_div(i2c, ndata->new_rate))
-+				return NOTIFY_STOP;
-+		}
-+
- 		return NOTIFY_OK;
- 	case ABORT_RATE_CHANGE:
- 		/* scale up */
--		if (ndata->new_rate > ndata->old_rate)
--			rk3x_i2c_adapt_div(i2c, ndata->old_rate);
-+		if (ndata->new_rate > ndata->old_rate) {
-+			if (rk3x_i2c_adapt_div(i2c, ndata->old_rate))
-+				return NOTIFY_STOP;
-+		}
-+
- 		return NOTIFY_OK;
- 	default:
- 		return NOTIFY_DONE;
-@@ -1068,8 +1082,20 @@ static int rk3x_i2c_xfer_common(struct i2c_adapter *adap,
- 
- 	spin_lock_irqsave(&i2c->lock, flags);
- 
--	clk_enable(i2c->clk);
--	clk_enable(i2c->pclk);
-+	ret = clk_enable(i2c->clk);
-+	if (ret) {
-+		spin_unlock_irqrestore(&i2c->lock, flags);
-+		dev_err(i2c->dev, "Can't enable bus clk: %d\n", ret);
-+		return ret;
-+	}
-+
-+	ret = clk_enable(i2c->pclk);
-+	if (ret) {
-+		clk_disable(i2c->clk);
-+		spin_unlock_irqrestore(&i2c->lock, flags);
-+		dev_err(i2c->dev, "Can't enable bus clk for rk3399: %d\n", ret);
-+		return ret;
-+	}
- 
- 	i2c->is_last_msg = false;
- 
-@@ -1149,9 +1175,7 @@ static __maybe_unused int rk3x_i2c_resume(struct device *dev)
- {
- 	struct rk3x_i2c *i2c = dev_get_drvdata(dev);
- 
--	rk3x_i2c_adapt_div(i2c, clk_get_rate(i2c->clk));
--
--	return 0;
-+	return rk3x_i2c_adapt_div(i2c, clk_get_rate(i2c->clk));
- }
- 
- static u32 rk3x_i2c_func(struct i2c_adapter *adap)
-@@ -1365,9 +1389,12 @@ static int rk3x_i2c_probe(struct platform_device *pdev)
- 	}
- 
- 	clk_rate = clk_get_rate(i2c->clk);
--	rk3x_i2c_adapt_div(i2c, clk_rate);
-+	ret = rk3x_i2c_adapt_div(i2c, clk_rate);
- 	clk_disable(i2c->clk);
- 
-+	if (ret)
-+		goto err_clk_notifier;
-+
- 	ret = i2c_add_adapter(&i2c->adap);
- 	if (ret < 0)
- 		goto err_clk_notifier;
 -- 
-2.25.1
+2.46.2
 
 
 _______________________________________________
